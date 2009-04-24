@@ -57,6 +57,11 @@ $aliases['fr'] = array(
 	'Call' => array( 'Appeler', 'Appels', 'Appel' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'Call' => array( 'Apelar', 'Apèl', 'Apèls' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Call' => array( 'Chamada' ),

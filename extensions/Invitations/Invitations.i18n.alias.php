@@ -63,6 +63,11 @@ $aliases['fi'] = array(
 	'Invitations' => array( 'Kutsut' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'Invitations' => array( 'Envitacions' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Invitations' => array( 'Invitacións' ),

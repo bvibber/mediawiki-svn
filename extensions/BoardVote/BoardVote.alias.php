@@ -71,6 +71,11 @@ $aliases['fr'] = array(
 	'BoardVote' => array( "Vote du conseil d'administration", 'VoteConseil' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'BoardVote' => array( "Èlèccion du Consèly d'administracion", 'ÈlèccionDuConsèlyDAdministracion' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'BoardVote' => array( 'Kuratoriumswahl' ),

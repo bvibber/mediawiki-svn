@@ -333,6 +333,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'scanset-desc' => 'Ver imágenes escaneadas de los conjuntos CD/DVD de Andreas Grosz',
+	'scanset_no_name' => 'Error: Usted debe especificar un nombre de conjunto de escán, por ejemplo &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Error: Conjunto de escán inválido o ausente.',
 	'scanset_unrecognised_index_format' => 'Error: Índice de formato desconocido',
 	'scanset_opendir_error' => 'Error: No se puede abrir el directorio $1',
 	'scanset_no_files' => 'Error: Sin archivos presentes en el directorio especificado.',

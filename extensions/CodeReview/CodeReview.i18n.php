@@ -1595,6 +1595,7 @@ $messages['es'] = array(
 	'codereview-batch-title' => 'Cambiar todas las revisiones seleccionadas',
 	'codereview-batch-submit' => 'Enviar',
 	'code-releasenotes' => 'notas de la versión',
+	'code-release-legend' => 'Generar notas de entrega',
 	'code-release-startrev' => 'Primera rev:',
 	'code-release-endrev' => 'Última rev:',
 	'codereview-subtitle' => 'Para $1',
@@ -6406,6 +6407,7 @@ $messages['vec'] = array(
 	'code' => 'Revision del codice',
 	'code-rev-title' => 'r$1 - Revision del còdese',
 	'code-comments' => 'Comenti',
+	'code-references' => 'Revision seguenti',
 	'code-change-status' => "ga canbià el '''stato''' de r$1",
 	'code-change-tags' => "ga canbià i '''tag''' de r$1",
 	'code-change-removed' => 'cavà:',
@@ -6489,6 +6491,14 @@ $messages['vec'] = array(
 URL par intiero: $2
 
 Comento:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Canbiamenti seguenti',
+	'codereview-email-body2' => 'L\'utente "$1" el gà fato dele modifiche seguenti a r$2.
+
+URL par intiero: $3
+
+Ojeto de la modifica:
 
 $4',
 	'repoadmin' => "'Ministrassion dei depositi",

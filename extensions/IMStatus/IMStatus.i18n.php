@@ -298,6 +298,13 @@ ID, kótaryž musyš pódaś, su licby a pismiki mjazy "$2 a "$3".',
 	'imstatus_yahoo_style' => 'stil tłocaška, wót $1 (nejmjeńšy) do $2 (nejwětšy), $3 a $4 stej za Voicemail.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'imstatus_default' => 'Προεπιλογή',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats

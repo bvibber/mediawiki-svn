@@ -63,6 +63,12 @@ $aliases['fr'] = array(
 	'WhiteListEdit' => array( 'ModifierListeBlanche' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'WhiteList' => array( 'Lista blanche', 'ListaBlanche' ),
+	'WhiteListEdit' => array( 'Changiér la lista blanche', 'ChangiérLaListaBlanche' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'WhiteList' => array( 'Lista branca' ),

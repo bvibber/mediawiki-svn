@@ -53,6 +53,11 @@ $aliases['fr'] = array(
 	'ImportUsers' => array( 'Importer utilisateurs', 'ImporterUtilisateurs', 'ImporterUtilisateur' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'ImportUsers' => array( 'Importar des utilisators', 'ImportarDesUtilisators' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'ImportUsers' => array( 'Importar usuarios' ),

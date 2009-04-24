@@ -52,6 +52,11 @@ $aliases['fr'] = array(
 	'ChangeAuthor' => array( "Modifier l'auteur", 'ModifierAuteur', 'Changer auteur', 'ChangerAuteur' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'ChangeAuthor' => array( "Changiér l'ôtor", 'ChangiérLÔtor' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'ChangeAuthor' => array( 'Cambiar o autor' ),

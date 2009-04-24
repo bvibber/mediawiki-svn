@@ -72,6 +72,11 @@ $aliases['fr'] = array(
 	'CategoryIntersection' => array( 'Recoupage de catégories' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'CategoryIntersection' => array( 'Recopâjo de catègories', 'RecopâjoDeCatègories' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'CategoryIntersection' => array( 'Intersección de categorías' ),

@@ -47,6 +47,11 @@ $aliases['fr'] = array(
 	'Patroller' => array( 'Patrouilleur' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'Patroller' => array( 'Patrolyor' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'Patroller' => array( 'Fäldhieter' ),

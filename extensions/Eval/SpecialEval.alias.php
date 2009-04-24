@@ -48,6 +48,11 @@ $aliases['fr'] = array(
 	'Eval' => array( 'Évaluer', 'Evaluer' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'Eval' => array( 'Èstimar' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Eval' => array( 'Avaliación' ),

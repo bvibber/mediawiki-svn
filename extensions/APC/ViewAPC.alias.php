@@ -57,6 +57,11 @@ $aliases['fr'] = array(
 	'ViewAPC' => array( 'Voir APC', 'VoirAPC' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'ViewAPC' => array( 'Vêre APC', 'VêreAPC' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'ViewAPC' => array( 'Ver APC' ),

@@ -43,6 +43,11 @@ $aliases['fr'] = array(
 	'GlobalUserrights' => array( 'Droits des utilisateurs globaux', 'DroitsDesUtilisateursGlobaux' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'GlobalUserrights' => array( 'Drêts des utilisators globals', 'DrêtsDesUtilisatorsGlobals' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'GlobalUserrights' => array( 'Dereitos de usuario globais' ),

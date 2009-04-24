@@ -314,11 +314,8 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'unicodeconverter' => 'Unicode Wandler',
-	'unicodeconverter-desc' => 'En eijfach Beijspöll för en Söndersigg.
-[[Special:UnicodeConverter|Jif ene Tex en UTF-8 en]],
-dä weed in <i lang="en">HTML entities</i> ömjewandelt.
-Dat deit för en ISO 8859-1 Websigg paße.',
+	'unicodeconverter' => '<i lang="en">Unicode</i> Wandler',
+	'unicodeconverter-desc' => 'En eijfach Beijspöll för en Söndersigg. [[Special:UnicodeConverter|Jif ene Tex en UTF-8 en]], dä weed in <i lang="en">HTML entities</i> ömjewandelt. Dat deit för en ISO 8859-1 Websigg paße.',
 	'unicodeconverter-ok' => 'Loß jonn!',
 	'unicodeconverter-oldtext' => 'Ojinaal Tex:',
 	'unicodeconverter-newtext' => 'Ömjesaz Tex:',

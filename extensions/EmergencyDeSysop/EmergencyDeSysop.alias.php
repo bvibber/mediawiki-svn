@@ -36,6 +36,11 @@ $aliases['fr'] = array(
 	'EmergencyDeSysop' => array( 'DesysopageUrgent', 'DésysopageUrgent', 'DéSysopageUrgent', 'DeSysopageUrgent' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'EmergencyDeSysop' => array( "DèSisopâjo d'urgence", 'DèSisopâjoDUrgence', "Dèsisopâjo d'urgence", 'DèsisopâjoDUrgence' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'EmergencyDeSysop' => array( 'Emerxencia de administrador' ),

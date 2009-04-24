@@ -114,6 +114,13 @@ $aliases['fr'] = array(
 	'ViewConfig' => array( 'Voir la configuration', 'VoirConfiguration' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'Configure' => array( 'Configurar' ),
+	'Extensions' => array( 'Èxtensions' ),
+	'ViewConfig' => array( 'Vêre la configuracion', 'VêreLaConfiguracion' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Configure' => array( 'Configurar' ),

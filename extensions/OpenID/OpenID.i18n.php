@@ -1391,6 +1391,12 @@ OpenID מאפשר לכם להיכנס לחשבון במגוון אתרים מב�
 	'openid-prefstext' => 'העדפות [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'הסתרת ה־<a href="http://openid.net/">OpenID</a> מדף המשתמש, במקרה של כניסה לחשבון עם OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'עדכון המידע שלי מכרטיס ה־OpenID עם כל כניסה לחשבון',
+	'openidsigninorcreateaccount' => 'הכנסו או צרו חשבון חדש',
+	'openid-provider-label-openid' => 'הזינו את כתובת ה־OpenID שלכם',
+	'openid-provider-label-google' => 'הכנסו באמצעות חשבונכם ב־Google',
+	'openid-provider-label-yahoo' => 'הכנסו באמצעות חשבונכם ב־Yahoo',
+	'openid-provider-label-aol' => 'הזינו את כינוי המסך שלכם ב־AOL',
+	'openid-provider-label-other-username' => 'הזינו את שם המשתמש שלכם ב־$1',
 );
 
 /** Hindi (हिन्दी)
@@ -3834,6 +3840,12 @@ Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp Open
 	'openid-prefstext' => 'Tùy chỉnh [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ẩn <a href="http://openid.net/">ID Mở</a> của bạn khỏi trang thành viên, nếu bạn đăng nhập bằng ID Mở.',
 	'openid-pref-update-userinfo-on-login' => 'Cập nhật thông tin của tôi từ OpenID persona mỗi khi tôi đăng nhập',
+	'openidsigninorcreateaccount' => 'Đăng nhập hay mở tài khoản mới',
+	'openid-provider-label-openid' => 'Ghi vào URL OpenID của bạn',
+	'openid-provider-label-google' => 'Đăng nhập dùng tài khoản Google',
+	'openid-provider-label-yahoo' => 'Đăng nhập dùng tài khoản Yahoo!',
+	'openid-provider-label-aol' => 'Ghi vào tên màn hình AOL',
+	'openid-provider-label-other-username' => 'Ghi vào tên người dùng $1',
 );
 
 /** Volapük (Volapük)

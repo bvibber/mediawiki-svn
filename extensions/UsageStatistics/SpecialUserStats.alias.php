@@ -57,6 +57,11 @@ $aliases['fr'] = array(
 	'SpecialUserStats' => array( 'StatistiquesUtilisateur' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'SpecialUserStats' => array( 'Statistiques utilisator', 'StatistiquesUtilisator' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'SpecialUserStats' => array( 'Estatísticas do usuario' ),

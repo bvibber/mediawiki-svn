@@ -53,6 +53,11 @@ $aliases['fr'] = array(
 	'Watchers' => array( 'Suiveurs', 'Suiveur' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'Watchers' => array( 'Siuvors' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Watchers' => array( 'Vixilantes' ),

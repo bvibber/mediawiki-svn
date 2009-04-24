@@ -2154,8 +2154,11 @@ $wgCustomToolbarMessages['vi'] = array(
 	'ct_nowiki_caption' => 'Không wiki',
 	'ct_horizontal_caption' => 'Đường gạch ngang',
 	'ct_upload' => 'Tải liên $1',
+	'ct_submit' => 'Đi!',
 	'ct_close' => 'Đóng cửa sổ',
 	'ct_user_user' => 'Người dùng',
+	'ct_user_caption' => 'Liên kết người dùng',
+	'ct_user_sample' => 'Tên người dùng',
 );
 
 /** Volapük (Volapük)

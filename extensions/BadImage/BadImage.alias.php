@@ -57,6 +57,11 @@ $aliases['fr'] = array(
 	'Badimages' => array( 'Mauvaises images', 'MauvaisesImages' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'Badimages' => array( 'Crouyes émâges', 'CrouyesÉmâges' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'Badimages' => array( 'Bilder wu nit gwinscht sin' ),

@@ -69,6 +69,11 @@ $aliases['fr'] = array(
 	'Vote' => array( 'Voter' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'Vote' => array( 'Votar' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Vote' => array( 'Votar' ),

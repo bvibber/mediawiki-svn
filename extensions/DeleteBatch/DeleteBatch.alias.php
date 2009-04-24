@@ -49,6 +49,11 @@ $aliases['fr'] = array(
 	'DeleteBatch' => array( 'Supression en série', 'SuppressionEnSérie', 'SuppressionEnSerie' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'DeleteBatch' => array( 'Suprèssion en sèria', 'SuprèssionEnSèria' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'DeleteBatch' => array( 'Borrar o conxunto' ),

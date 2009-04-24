@@ -76,6 +76,14 @@ $messages['gsw'] = array(
 	'wikiarticlefeeds_combined_description' => 'Des isch e Kombinations-Feed, wu s Inhalt vu verschidene Feed-Quälle din het.',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'wikiarticlefeeds-desc' => 'יצירת הזנות מדפי מדיהוויקי',
+	'wikiarticlefeeds_combined_description' => 'זוהי הזנה משולבת, הניזונה ממספר מקורות.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -130,7 +130,7 @@ This is the text next to an input box which allows the map-maker to add a captio
 {{Identical|Height}}',
 	'gm-scale-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-overview-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
-	'gm-selector-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-selector-control' => "Part of the Google Maps extension. Text next to a radio button (see [http://www.mediawiki.org/wiki/Extension:Google_Maps screenshot]), allows the map editor to add a 'selector' (possible synonyms: menu bar, control) at the top of the map, allowing a viewer to choose between map, satellite and hybrid images - see this [http://www.wikidus.de/Schl%C3%B6sser_im_Schneider_Wibbel example] of a map containing the 'map/satellite selector'.",
 	'gm-zoom-control' => '{{Identical|Navigation}}',
 	'gm-large' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
 
@@ -796,6 +796,7 @@ $wgGoogleMapsMessages['cy'] = array(
 	'gm-incompatible-browser-link' => 'Pwyswch yma i weld rhestr porwyr cydnaws.',
 	'gm-no-editor' => 'Nid yw\'ch porwr, ysywaeth, yn gallu trin yr offer rhyngweithiol ar gyfer gwneud mapiau. Rhowch gynnig ar y fersiwn diweddaraf o <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) neu <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, a Linux).',
 	'gm-balloon-title' => 'Teitl:',
+	'gm-balloon-link-article' => 'Cyswllt at y dudalen hon (dewisol):',
 	'gm-make-marker' => 'Pennawd (gallwch ddefnyddio cystrawen wici):',
 	'gm-remove' => 'tynnu',
 	'gm-caption' => 'Pennawd',
@@ -821,6 +822,7 @@ $wgGoogleMapsMessages['cy'] = array(
 	'gm-height' => 'Uchder',
 	'gm-scale-control' => 'Graddfa',
 	'gm-overview-control' => 'Trosolwg',
+	'gm-selector-control' => 'Dewislen map/lloeren',
 	'gm-zoom-control' => 'Llywio',
 	'gm-large' => 'Mawr',
 	'gm-medium' => 'Canolig',
@@ -847,7 +849,7 @@ $wgGoogleMapsMessages['cy'] = array(
 	'gm-line-color' => 'Lliw llinell',
 	'gm-opacity' => 'Didreiddedd',
 	'gm-line-width' => 'Lled',
-	'gm-make-map' => 'gwneuthur map',
+	'gm-make-map' => 'gwneud map',
 	'gm-hide-map' => "cuddio'r map",
 	'gm-back' => 'nôl',
 	'gm-kml-include' => 'KML/GeoRSS allanol:',

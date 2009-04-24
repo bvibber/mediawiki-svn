@@ -59,6 +59,11 @@ $aliases['fr'] = array(
 	'WhosOnline' => array( 'Qui est en ligne', 'QuiEstEnLigne' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'WhosOnline' => array( 'Qui est en legne', 'QuiEstEnLegne' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'WhosOnline' => array( 'Quen está en liña' ),

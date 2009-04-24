@@ -50,6 +50,11 @@ $aliases['fr'] = array(
 	'WhoIsWatching' => array( 'Qui a en suivi', 'QuiAEnSuivi' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'WhoIsWatching' => array( 'Qui at en survelyence', 'QuiAtEnSurvelyence' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'WhoIsWatching' => array( 'Quen está vixiando' ),

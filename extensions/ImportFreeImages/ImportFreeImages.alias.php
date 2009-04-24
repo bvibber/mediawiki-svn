@@ -52,6 +52,11 @@ $aliases['fr'] = array(
 	'ImportFreeImages' => array( 'ImporterImagesLibres' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'ImportFreeImages' => array( 'Importar des émâges abades', 'ImportarDesÉmâgesAbades' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'ImportFreeImages' => array( 'Freji Bilder importiere' ),

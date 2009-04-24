@@ -69,6 +69,12 @@ $aliases['fr'] = array(
 	'Oversight' => array( 'Superviser', 'Superviseur', 'Supervision' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'HideRevision' => array( 'Cachiér la vèrsion', 'CachiérLaVèrsion' ),
+	'Oversight' => array( 'Supèrvisar', 'Supèrvisor', 'Supèrvision' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'HideRevision' => array( 'Version verstecke' ),

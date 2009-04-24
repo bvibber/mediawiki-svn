@@ -42,6 +42,11 @@ $aliases['fr'] = array(
 	'ViewXML' => array( 'Voir le XML', 'Voir XML', 'VoirXML' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'ViewXML' => array( 'Vêre lo XML', 'VêreLoXML' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'ViewXML' => array( 'Ver XML' ),

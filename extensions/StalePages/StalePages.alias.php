@@ -29,6 +29,11 @@ $aliases['fa'] = array(
 	'StalePages' => array( 'صفحه‌های_کهنه' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'StalePages' => array( 'Pâges dèpassâs', 'PâgesDèpassâs' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'StalePages' => array( 'Abglofeni Syte' ),

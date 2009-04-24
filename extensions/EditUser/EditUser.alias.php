@@ -48,6 +48,11 @@ $aliases['fr'] = array(
 	'EditUser' => array( 'Modifier l’utilisateur', 'ModifierUtilisateur', 'EditerUtilisateur', 'ÉditerUtilisateur', 'Éditer l’utilisateur' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'EditUser' => array( "Changiér l'utilisator", 'ChangiérLUtilisator' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'EditUser' => array( 'Editar o usuario' ),

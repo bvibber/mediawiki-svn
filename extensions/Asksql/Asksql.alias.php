@@ -52,6 +52,11 @@ $aliases['fr'] = array(
 	'Asksql' => array( 'Requête SQL', 'Requete SQL', 'RequêteSQL', 'RequeteSQL' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'Asksql' => array( 'Requéta SQL', 'RequétaSQL' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'Asksql' => array( 'SQL-Abfrog' ),

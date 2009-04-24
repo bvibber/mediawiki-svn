@@ -44,6 +44,11 @@ $aliases['fr'] = array(
 	'InspectCache' => array( 'InspecterCache' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'InspectCache' => array( 'Controlar lo cache', 'ControlarLoCache' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'InspectCache' => array( 'Inspeccionar a caché' ),

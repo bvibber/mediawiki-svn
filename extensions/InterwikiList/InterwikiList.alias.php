@@ -63,6 +63,11 @@ $aliases['fr'] = array(
 	'InterwikiList' => array( 'Liste interwiki', 'ListeInterwiki' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'InterwikiList' => array( 'Lista entèrvouiqui', 'ListaEntèrvouiqui' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'InterwikiList' => array( 'Lista de interwikis' ),

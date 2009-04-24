@@ -182,6 +182,13 @@ $messages['ja'] = array(
 	'editown-desc' => '全編集（editall）権限がない利用者に対し、自分の作成したページ以外は編集できないようにする',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'editown-desc' => '편집권한이 없는 사용자는 오직 그들이 만든 페이지만 편집할 수 있습니다.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

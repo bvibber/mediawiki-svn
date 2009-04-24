@@ -42,6 +42,11 @@ $aliases['fr'] = array(
 	'AccountManager' => array( 'Gestionnaire de compte', 'GestionnaireDeCompte' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'AccountManager' => array( 'Administrator de comptos', 'AdministratorDeComptos' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'AccountManager' => array( 'Xestor de contas' ),

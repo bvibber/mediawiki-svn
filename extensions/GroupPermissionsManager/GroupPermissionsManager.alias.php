@@ -60,6 +60,13 @@ $aliases['fr'] = array(
 	'SortPermissions' => array( 'Trier les permissions' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'GroupPermissions' => array( 'Pèrmissions de les tropes', 'PèrmissionsDeLesTropes' ),
+	'RemoveUnusedGroups' => array( 'Enlevar les tropes inutilisâs', 'EnlevarLesTropesInutilisâs' ),
+	'SortPermissions' => array( 'Rengiér les pèrmissions', 'RengiérLesPèrmissions' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'GroupPermissions' => array( 'Grupperächt' ),

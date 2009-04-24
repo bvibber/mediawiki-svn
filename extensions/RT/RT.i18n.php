@@ -32,3 +32,24 @@ You tried: '''\$1'''",
 You tried: '''\$1'''",
 	'rt-nomatches'    => 'No matching RT tickets were found',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'rt-desc' => 'Interface naar RT (Request Tracker)',
+	'rt-inactive' => 'De uitbreiding RT is niet actief',
+	'rt-badquery' => 'In de uitbreiding RT is een fout opgetreden in de communicatie met de RT-database',
+	'rt-badlimit' => "Ongeldige LIMIET (l) arg: moet een getal zijn.
+U hebt het volgende geprobeerd: '''$1'''",
+	'rt-badorderby' => "Ongeldige ORDER BY (ob) arg: moet een standaard veld zijn (zie documentatie).
+U hebt het volgende geprobeerd: '''$1'''",
+	'rt-badstatus' => "Ongeldige status (s) arg: moet een standaard veld zijn (zie documentatie).
+U hebt het volgende geprobeerd: '''$1'''",
+	'rt-badqueue' => "Ongeldige wachtrij (q) arg: moet een eenvoudig woord zijn.
+U hebt het volgende geprobeerd: '''$1'''",
+	'rt-badowner' => "Ongeldige eigenaar (o) arg: moet een geldige gebruikersnaam zijn.
+U hebt het volgende geprobeerd: '''$1'''",
+	'rt-nomatches' => 'Er zijn geen RT-meldingen gevonden die aan de critera voldoen',
+);
+

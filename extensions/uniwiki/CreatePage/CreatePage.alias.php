@@ -40,6 +40,11 @@ $aliases['fr'] = array(
 	'CreatePage' => array( 'Créer page', 'CréerPage' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'CreatePage' => array( 'Fâre una pâge', 'FâreUnaPâge' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'CreatePage' => array( 'Crear a páxina' ),

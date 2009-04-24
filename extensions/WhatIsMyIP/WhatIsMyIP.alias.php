@@ -67,6 +67,11 @@ $aliases['fr'] = array(
 	'WhatIsMyIP' => array( 'Quelle est mon IP', 'QuelleEstMonIP' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'WhatIsMyIP' => array( 'Quinta est mon adrèce IP', 'QuintaEstMonAdrèceIP' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'WhatIsMyIP' => array( 'Cal é a miña IP' ),

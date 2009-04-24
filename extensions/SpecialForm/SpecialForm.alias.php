@@ -39,6 +39,11 @@ $aliases['fa'] = array(
 	'Form' => array( 'فرم' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'Form' => array( 'Formulèro' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Form' => array( 'Formulario' ),

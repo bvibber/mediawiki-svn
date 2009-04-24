@@ -376,6 +376,15 @@ $messages['km'] = array(
 	'block_title_error' => 'សូមអភ័យទោស! ចំណងជើង​ទំព័រនេះ​មិនត្រូវ​បាន​អនុញ្ញាតឱ្យរក្សាទុកទេ​។',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'block_title_error_page_title' => '금지된 제목',
+	'block_title_error-desc' => '페이지에 특정한 제목을 저장하거나 만드는 것을 막는 기본적인 방법을 제공합니다.',
+	'block_title_error' => '죄송합니다. 이 페이지의 제목은 저장이 허용되지 않습니다.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

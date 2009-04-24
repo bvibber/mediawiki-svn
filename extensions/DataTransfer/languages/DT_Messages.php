@@ -496,19 +496,26 @@ $messages['haw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'dt-desc' => 'אפשרות של ייבוא ושל ייצוא נתונים מבניים הנכללים בהכללות של תבניות',
+	'dt-desc' => 'אפשרות לייבוא ולייצוא נתונים מבניים הנכללים בהכללות של תבניות',
 	'viewxml' => 'הצגת XML',
 	'dt_viewxml_docu' => 'אנא בחרו את מרחבי השם והקטגוריות אותם תרצו להציג בפורמט XML.',
 	'dt_viewxml_categories' => 'קטגוריות',
 	'dt_viewxml_namespaces' => 'מרחבי שם',
 	'dt_viewxml_simplifiedformat' => 'מבנה מפושט',
 	'dt_xml_namespace' => 'מרחב שם',
+	'dt_xml_pages' => 'דפים',
 	'dt_xml_page' => 'דף',
+	'dt_xml_template' => 'תבנית',
 	'dt_xml_field' => 'שדה',
 	'dt_xml_name' => 'שם',
 	'dt_xml_title' => 'כותרת',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'טקסט חופשי',
+	'importxml' => 'ייבוא XML',
+	'dt_importxml_selectfile' => 'אנא בחרו את קובץ ה־XML לייצוא:',
+	'dt_importxml_editsummary' => 'ייבוא XML',
+	'dt_importxml_importing' => 'בתהליכי ייבוא...',
+	'dt_importxml_success' => '{{PLURAL:$1|דף אחד ייובא|$1 דפים ייובאו}} מקובץ ה־XML.',
 );
 
 /** Hindi (हिन्दी)

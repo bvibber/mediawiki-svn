@@ -70,6 +70,11 @@ $aliases['fr'] = array(
 	'ExpandTemplates' => array( 'ExpansionDesModèles' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'ExpandTemplates' => array( 'Èxpension des modèlos', 'ÈxpensionDesModèlos' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'ExpandTemplates' => array( 'Expandir os modelos' ),

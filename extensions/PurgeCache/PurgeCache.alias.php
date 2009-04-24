@@ -44,6 +44,11 @@ $aliases['fr'] = array(
 	'PurgeCache' => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'PurgeCache' => array( 'Purgiér lo cache', 'PurgiérLoCache' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'PurgeCache' => array( 'Purgar a caché' ),

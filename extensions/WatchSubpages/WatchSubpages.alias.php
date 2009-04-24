@@ -54,6 +54,11 @@ $aliases['fr'] = array(
 	'WatchSubpages' => array( 'Voir les sous-pages', 'VoirSousPages' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'WatchSubpages' => array( 'Siuvre les sot-pâges', 'SiuvreLesSotPâges' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'WatchSubpages' => array( 'Vixiar as subpáxinas' ),

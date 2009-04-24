@@ -39,6 +39,11 @@ $aliases['fa'] = array(
 	'TemplateLink' => array( 'پیوند_الگو' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'TemplateLink' => array( 'Lim vers un modèlo', 'LimVersUnModèlo' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'TemplateLink' => array( 'Vorlagegleich' ),

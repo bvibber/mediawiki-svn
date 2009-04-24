@@ -70,6 +70,11 @@ $aliases['fr'] = array(
 	'SiteMatrix' => array( 'Matrice des sites', 'Wikis de Wikimedia' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'SiteMatrix' => array( 'Matrice des setos', 'MatriceDesSetos', 'Vouiquis de Wikimedia', 'VouiquisDeWikimedia' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'SiteMatrix' => array( 'Wikis Wikimedia' ),

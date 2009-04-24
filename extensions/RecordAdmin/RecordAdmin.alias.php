@@ -25,6 +25,11 @@ $aliases['fr'] = array(
 	'RecordAdmin' => array( 'Gérer enregistrement', 'GérerEnregistrement', 'GererEnregistrement' ),
 );
 
+/** Franco-Provençal (Arpetan) */
+$aliases['frp'] = array(
+	'RecordAdmin' => array( "G·èrar l'enregistrament", 'G·èrarLEnregistrament' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'RecordAdmin' => array( 'Ammann yytrage' ),
