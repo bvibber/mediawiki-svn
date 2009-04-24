@@ -1,7 +1,7 @@
 package de.brightbyte.wikiword.builder;
 
 import de.brightbyte.data.filter.Filter;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 
 public class PageTitleFilter implements WikiPageFilter {
 	protected Filter<CharSequence> filter;
@@ -13,7 +13,7 @@ public class PageTitleFilter implements WikiPageFilter {
 		this.name = name;
 	}
 
-	public boolean matches(WikiTextAnalyzer.WikiPage page) {
+	public boolean matches(WikiPage page) {
 		CharSequence t = page.getTitle();
 		return filter.matches(t);
 	}

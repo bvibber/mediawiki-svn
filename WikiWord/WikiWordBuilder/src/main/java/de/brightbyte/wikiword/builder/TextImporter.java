@@ -8,7 +8,7 @@ import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiPage;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
 
 public class TextImporter extends AbstractImporter {

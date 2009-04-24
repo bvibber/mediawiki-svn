@@ -6,12 +6,27 @@ import java.util.regex.Pattern;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
-import de.brightbyte.wikiword.analyzer.AbstractAnalyzer;
-import de.brightbyte.wikiword.analyzer.DeepTemplateExtractor;
-import de.brightbyte.wikiword.analyzer.TemplateExtractor;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.analyzer.TemplateExtractor.Context;
+import de.brightbyte.wikiword.analyzer.WikiPage;
+import de.brightbyte.wikiword.analyzer.extractor.PagePropertyValueExtractor;
+import de.brightbyte.wikiword.analyzer.extractor.PropertyValueExtractor;
+import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterExtractor;
+import de.brightbyte.wikiword.analyzer.extractor.TitlePartExtractor;
+import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
+import de.brightbyte.wikiword.analyzer.mangler.TextArmor;
+import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
+import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
+import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
+import de.brightbyte.wikiword.analyzer.sensor.HasCategorySensor;
+import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
+import de.brightbyte.wikiword.analyzer.sensor.HasTemplateSensor;
+import de.brightbyte.wikiword.analyzer.sensor.TitleSensor;
+import de.brightbyte.wikiword.analyzer.template.AbstractTemplateParameterPropertySpec;
+import de.brightbyte.wikiword.analyzer.template.DeepTemplateExtractor;
+import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
+import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
+import de.brightbyte.wikiword.analyzer.template.TemplateParameterPropertySpec;
+import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.Context;
 import de.brightbyte.wikiword.lifescience.LifeScienceConceptType;
 
 public class WikiConfiguration_enwiki extends WikiConfiguration {
@@ -133,8 +148,8 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 	public static final String lifeScienceJournalPattern = "(^|[ _])(Chem[a-z]*|Bio[a-z]*|Gen[eo][a-z]*|Med[a-z]*|Cell[a-z]*|DNA|RNA|Nucleic|EMBO|FEBS|Onco[a-z]*|Blood|Immono[a-z]*|Cancer|Virol[a-z]*|Med[a-z]*|Clin[a-z]*|Lancet|Neuro[a-z]*|Zootaxa|JAMA|FASEB|Bacter[a-z]*|Mutat[a-z]*|Mol[a-z]*|Protein|Dermat[a-z]*|Pathol[a-z]*|Endocr[a-z]*|Microbio[a-z]*)($|[_ ])";
 
 	
-	protected static WikiTextAnalyzer.DefaultTemplateParameterPropertySpec makeNamePropertySpec(String param, String prop, boolean multi, boolean space) {
-		WikiTextAnalyzer.DefaultTemplateParameterPropertySpec spec = new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec(param, prop);
+	protected static DefaultTemplateParameterPropertySpec makeNamePropertySpec(String param, String prop, boolean multi, boolean space) {
+		DefaultTemplateParameterPropertySpec spec = new DefaultTemplateParameterPropertySpec(param, prop);
 		
 		if (multi) {
 			if (space) spec.setSplitPattern(nameSeparatorPattern);
@@ -147,8 +162,8 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		return spec;
 	}
 
-	protected static WikiTextAnalyzer.DefaultTemplateParameterPropertySpec makeIdentifierPropertySpec(String param, String prop, String pattern) {
-		WikiTextAnalyzer.DefaultTemplateParameterPropertySpec spec = new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec(param, prop);
+	protected static DefaultTemplateParameterPropertySpec makeIdentifierPropertySpec(String param, String prop, String pattern) {
+		DefaultTemplateParameterPropertySpec spec = new DefaultTemplateParameterPropertySpec(param, prop);
 		
 		pattern = "(?<=[^\\w\\d]|^)("+pattern+")(?=[^\\w\\d]|$)";
 		
@@ -165,7 +180,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		super();
 		
 		templateExtractorFactory= new TemplateExtractor.Factory() {
-			public TemplateExtractor newTemplateExtractor(Context context, AbstractAnalyzer.TextArmor armor) {
+			public TemplateExtractor newTemplateExtractor(Context context, TextArmor armor) {
 				DeepTemplateExtractor extractor = new DeepTemplateExtractor(context, armor);
 				extractor.addContainerField("Protbox", "Codes");
 				extractor.addContainerField("Protbox", "Caption");
@@ -174,35 +189,35 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		};
 		
 		//NOTE: apply template replacement only when stripping markup, but then before everything else
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("ICD9", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("ICD10", 3, true), " $2$3.$4 ") ); //XXX: use all 5 params?
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("ICDO", 2, true), " M$2/$3 ") ); 
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("CAS", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("ATC", 2, true), " $2$3 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("DiseasesDB2", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("OMIM\\d?", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("SMILES", 1, true), " $2 ") ); //FIXME: named param S= !
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("eMedicine2", 2, true), " $2/$3 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("MedlinePlus2", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("PDB", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("PDB2", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("PDB3", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("EC_number", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("OMIM", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("EntrezGene", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("UniProt", 1, true), " $2 ") );
-		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("RefSeq", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("ICD9", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("ICD10", 3, true), " $2$3.$4 ") ); //XXX: use all 5 params?
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("ICDO", 2, true), " M$2/$3 ") ); 
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("CAS", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("ATC", 2, true), " $2$3 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("DiseasesDB2", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("OMIM\\d?", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("SMILES", 1, true), " $2 ") ); //FIXME: named param S= !
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("eMedicine2", 2, true), " $2/$3 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("MedlinePlus2", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("PDB", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("PDB2", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("PDB3", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("EC_number", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("OMIM", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("EntrezGene", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("UniProt", 1, true), " $2 ") );
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("RefSeq", 1, true), " $2 ") );
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor( new WikiTextAnalyzer.ExactNameMatcher("Cite_journal"), 
-				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("journal", "journal")
+		propertyExtractors.add( new TemplateParameterExtractor( new ExactNameMatcher("Cite_journal"), 
+				new DefaultTemplateParameterPropertySpec("journal", "journal")
 						.addNormalizer(punctuationStripPattern, "")
 						.setCondition(lifeScienceJournalPattern, 0, false) ) );
 		
-		WikiTextAnalyzer.TemplateParameterPropertySpec atcSpec = new WikiTextAnalyzer.AbstractTemplateParameterPropertySpec("ATC") {
+		TemplateParameterPropertySpec atcSpec = new AbstractTemplateParameterPropertySpec("ATC") {
 			private Matcher validator = Pattern.compile("["+upperAlphaNumericChars+"]+").matcher("");
 			
 			@Override
-			public CharSequence getPropertyValue(WikiTextAnalyzer.WikiPage page, TemplateExtractor.TemplateData params) {
+			public CharSequence getPropertyValue(WikiPage page, TemplateExtractor.TemplateData params) {
 				CharSequence code= params.getParameter("ATCCode");
 				if (code!=null) {
 					if (code.length()==0) return null;
@@ -230,7 +245,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 			}
 		};
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Drugbox"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Drugbox"),
 				makeNamePropertySpec("IUPAC_name", "IUPAC", false, false).addCleanup(iupacCleanupPattern, ""),
 				makeNamePropertySpec("synonyms", "Name", true, true),
 				
@@ -246,12 +261,12 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				atcSpec
 			) );
 		
-		WikiTextAnalyzer.TemplateParameterPropertySpec eMedSpec = new WikiTextAnalyzer.AbstractTemplateParameterPropertySpec("eMedicine") {
+		TemplateParameterPropertySpec eMedSpec = new AbstractTemplateParameterPropertySpec("eMedicine") {
 			private Matcher subjectValidator = Pattern.compile("["+alphaNumericChars+"]+").matcher("");
 			private Matcher topicValidator = Pattern.compile("["+numericChars+"]+").matcher("");
 			
 			@Override
-			public CharSequence getPropertyValue(WikiTextAnalyzer.WikiPage page, TemplateExtractor.TemplateData params) {
+			public CharSequence getPropertyValue(WikiPage page, TemplateExtractor.TemplateData params) {
 				CharSequence pre= params.getParameter("eMedicineSubj");
 				CharSequence suf= params.getParameter("eMedicineTopic");
 				if (pre==null || suf==null) return null;
@@ -269,12 +284,12 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		};
 		
 		
-		WikiTextAnalyzer.TemplateParameterPropertySpec dorlandsSpec = new WikiTextAnalyzer.AbstractTemplateParameterPropertySpec("Dorlands") {
+		TemplateParameterPropertySpec dorlandsSpec = new AbstractTemplateParameterPropertySpec("Dorlands") {
 			private Matcher preValidator = Pattern.compile("["+alphabeticChars+"]_["+numericChars+"]+").matcher("");
 			private Matcher sufValidator = Pattern.compile("["+numericChars+"]+").matcher("");
 			
 			@Override
-			public CharSequence getPropertyValue(WikiTextAnalyzer.WikiPage page, TemplateExtractor.TemplateData params) {
+			public CharSequence getPropertyValue(WikiPage page, TemplateExtractor.TemplateData params) {
 				CharSequence pre= params.getParameter("DorlandsPre");
 				CharSequence suf= params.getParameter("DorlandsSuf");
 				if (pre==null || suf==null) return null;
@@ -290,7 +305,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 			}
 		};
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.PatternNameMatcher("Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox", 0, true),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox", 0, true),
 				makeIdentifierPropertySpec("DiseasesDB", "DiseasesDB", diseasesDbChars),
 				makeIdentifierPropertySpec("ICD10", "ICD10", icd10Chars),
 				makeIdentifierPropertySpec("ICD9", "ICD9", icd9Chars),
@@ -307,23 +322,23 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				eMedSpec
 			) );
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Chembox_new"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Chembox_new"),
 				makeNamePropertySpec("IUPACName", "IUPAC", true, true).addCleanup(iupacCleanupPattern, ""),
 				makeNamePropertySpec("OtherNames", "Name", true, true) //FIXME: often spaced for auto-breaks and separated by <br>
 			) );
 		
 		//TODO: terms from names
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.PatternNameMatcher("Chembox_[Pp]harmacology", 0, true), 
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Chembox_[Pp]harmacology", 0, true), 
 				makeIdentifierPropertySpec("DrugBank", "DrugBank", drugBankChars), 
 				atcSpec
 		) );
 				
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.PatternNameMatcher("Chembox_[Hh]azards", 0, true), 
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Chembox_[Hh]azards", 0, true), 
 				makeIdentifierPropertySpec("RTECS", "RTECS", rtecsChars)
 		) );
 				
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.PatternNameMatcher("Chembox_[Ii]dentifiers", 0, true), 
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Chembox_[Ii]dentifiers", 0, true), 
 				makeIdentifierPropertySpec("Abbreviations", "ChemAbbrev", chemAbbrevChars),
 				makeIdentifierPropertySpec("CASNo", "CAS", casChars),
 				makeIdentifierPropertySpec("SMILES", "SMILES", smilesChars).addCleanup(breakStripPattern, ""),
@@ -345,7 +360,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				atcSpec
 			) );
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.PatternNameMatcher("NatOrganicBox", 0, true), 
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("NatOrganicBox", 0, true), 
 				makeNamePropertySpec("name", "IUPAC", false, false).addCleanup(iupacCleanupPattern, ""),
 				makeNamePropertySpec("synonyms", "Name", true, true),
 				makeIdentifierPropertySpec("abbreviations", "ChemAbbrev", chemAbbrevChars),
@@ -359,7 +374,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				atcSpec
 			) );
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.PatternNameMatcher("Elementbox", 0, true), 
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Elementbox", 0, true), 
 				makeNamePropertySpec("name", "Name", true, true),
 				makeIdentifierPropertySpec("number", "ElementNumber", "["+numericChars+"]"),
 				makeIdentifierPropertySpec("symbol", "ElementSymbol", "["+alphaNumericChars+"]"),
@@ -370,7 +385,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		
 		//TODO: ...as terms
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Protbox"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protbox"),
 				makeNamePropertySpec("Name", "ProteinName", false, true),
 				makeNamePropertySpec("Names", "ProteinName", true, true),
 
@@ -390,38 +405,38 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				makeIdentifierPropertySpec("ECnumber", "EC/enzyme", ecEnzymeChars)
 			) );
 
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.PatternNameMatcher("Enzyme_(links|references)", 0, true),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Enzyme_(links|references)", 0, true),
 				makeIdentifierPropertySpec("EC_number", "EC/enzyme", ecEnzymeChars)
 			) );
 
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("GO_code_links"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("GO_code_links"),
 				makeNamePropertySpec("name", "ProteinName", false, true),
 				makeIdentifierPropertySpec("GO_code", "GO_code", goCodeChars)
 			) );
 
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("CAS_registry"), //XXX: only as identifying element, or also in-context?
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("CAS_registry"), //XXX: only as identifying element, or also in-context?
 				makeIdentifierPropertySpec("1", "CAS", casChars)
 			) );
 
 		//Stuff from the container field Codes in Protbox:
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Protbox.Codes::OMIM"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protbox.Codes::OMIM"),
 				makeIdentifierPropertySpec("1", "OMIM", omimChars) ) );
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Protbox.Codes::OMIM2"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protbox.Codes::OMIM2"),
 				makeIdentifierPropertySpec("1", "OMIM", omimChars) ) );
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Protbox.Codes::EntrezGene"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protbox.Codes::EntrezGene"),
 				makeIdentifierPropertySpec("1", "EntrezGene", entrezGeneChars) ) );
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Protbox.Codes::UniProt"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protbox.Codes::UniProt"),
 				makeIdentifierPropertySpec("1", "UniProt", uniProtChars) ) );
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Protbox.Codes::RefSeq"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protbox.Codes::RefSeq"),
 				makeIdentifierPropertySpec("1", "RefSeq", refSeqChars) ) );
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Protbox.Codes::EC_number"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protbox.Codes::EC_number"),
 				makeIdentifierPropertySpec("1", "EC/enzyme", ecEnzymeChars) ) );
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Protbox.Codes::PDB"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protbox.Codes::PDB"),
 				makeIdentifierPropertySpec("1", "PDB", pdbChars) ) );
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Protbox.Caption::PDB"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protbox.Caption::PDB"),
 				makeIdentifierPropertySpec("1", "PDB", pdbChars) ) );
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Protein"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protein"),
 				makeIdentifierPropertySpec("Symbol", "ProteinSymbol", proteinSymbolChars),
 				makeIdentifierPropertySpec("AltSymbols", "ProteinSymbol", proteinSymbolChars),
 				makeIdentifierPropertySpec("CAS_number", "CAS", casChars),
@@ -441,7 +456,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		
 		//TODO: pull names and symbols as terms!
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("GNF_Protein_box"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("GNF_Protein_box"),
 				makeIdentifierPropertySpec("Symbol", "ProteinSymbol", proteinSymbolChars),
 				makeIdentifierPropertySpec("AltSymbols", "ProteinSymbol", proteinSymbolChars),
 				makeIdentifierPropertySpec("HGNCid", "HGNC", hgncChars),
@@ -453,7 +468,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				makeIdentifierPropertySpec("MGIid", "MGI", mgiChars)
 			) );
 
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("GNF_Ortholog_box"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("GNF_Ortholog_box"),
 				makeIdentifierPropertySpec("Hs_Uniprot", "UniProt", uniProtChars),
 				makeIdentifierPropertySpec("Mm_Uniprot", "UniProt", uniProtChars),
 				makeIdentifierPropertySpec("Hs_Ensembl", "Ensembl", ensemblChars),
@@ -468,7 +483,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		
 		//TODO: {{MedlinePlus}}...?
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Infobox_Anatomy"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_Anatomy"),
 				makeNamePropertySpec("Latin", "AnatomyLatin", true, true),
 				makeNamePropertySpec("GraySubject", "GraySubject", true, true),
 				makeNamePropertySpec("MeshName", "MeSHName", true, true),
@@ -482,50 +497,50 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		//      GraySubject, MeSH name&number, DorlandsPre/DorlandsSuf (Elsevier )
 		//TODO: NeuroNames
 
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("ICSC"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("ICSC"),
 				makeIdentifierPropertySpec("1", "ICSC", icscChars)
 			) );
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("PubChem"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("PubChem"),
 				makeIdentifierPropertySpec("1", "PubChem", pubChemChars)
 			) );
 		
 		
-		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("PBB"),
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("PBB"),
 				makeIdentifierPropertySpec("geneid", "_PBB_", pbbChars)
 			) );
 		
-		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("IUPAC") ); 
-		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("AnatomyLatin") ); 
-		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("ProteinSymbol") ); 
-		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("MeSHName") ); 
-		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("Name") ); 
-		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("Symbol") ); 
+		pageTermExtractors.add( new PagePropertyValueExtractor("IUPAC") ); 
+		pageTermExtractors.add( new PagePropertyValueExtractor("AnatomyLatin") ); 
+		pageTermExtractors.add( new PagePropertyValueExtractor("ProteinSymbol") ); 
+		pageTermExtractors.add( new PagePropertyValueExtractor("MeSHName") ); 
+		pageTermExtractors.add( new PagePropertyValueExtractor("Name") ); 
+		pageTermExtractors.add( new PagePropertyValueExtractor("Symbol") ); 
 		
-		supplementSensors.add( new WikiTextAnalyzer.TitleSensor<ResourceType>(ResourceType.SUPPLEMENT, Namespace.TEMPLATE, "PBB/\\d+", 0));
+		supplementSensors.add( new TitleSensor<ResourceType>(ResourceType.SUPPLEMENT, Namespace.TEMPLATE, "PBB/\\d+", 0));
 		
-		supplementNameExtractors.add( new WikiTextAnalyzer.PropertyValueExtractor("_PBB_").setPrefix("Template:PBB/") );
+		supplementNameExtractors.add( new PropertyValueExtractor("_PBB_").setPrefix("Template:PBB/") );
 		
-		supplementedConceptExtractors.add( new WikiTextAnalyzer.TitlePartExtractor(Namespace.MAIN, "(.*)_\\(data_page\\)", 0, "$1") );
-		supplementedConceptExtractors.add( new WikiTextAnalyzer.TitlePartExtractor(Namespace.TEMPLATE, "Infobox_(.*)", 0, "$1")
-				.addCondition( new WikiTextAnalyzer.HasCategorySensor<ResourceType>(ResourceType.SUPPLEMENT, "Periodic_table_infobox_templates") ) );
+		supplementedConceptExtractors.add( new TitlePartExtractor(Namespace.MAIN, "(.*)_\\(data_page\\)", 0, "$1") );
+		supplementedConceptExtractors.add( new TitlePartExtractor(Namespace.TEMPLATE, "Infobox_(.*)", 0, "$1")
+				.addCondition( new HasCategorySensor<ResourceType>(ResourceType.SUPPLEMENT, "Periodic_table_infobox_templates") ) );
 		
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.DRUG, "_(treatments|therapies)$", 0));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateSensor<ConceptType>(LifeScienceConceptType.DRUG, "Drugbox", null));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DRUG, "^Drugs_|^DrugsNav$", 0, null));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateSensor<ConceptType>(LifeScienceConceptType.DRUG, "Major_Drug_Groups", null));
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.DRUG, "_(treatments|therapies)$", 0));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(LifeScienceConceptType.DRUG, "Drugbox", null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DRUG, "^Drugs_|^DrugsNav$", 0, null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(LifeScienceConceptType.DRUG, "Major_Drug_Groups", null));
 		
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "EC_\\d+(\\.\\d+)*", 0)); //FIXME: too much meta-stuff!
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "^(Enzyme_links|PBB|Protein|GNF_.*_box)$", 0, null) ); 
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "EC_\\d+(\\.\\d+)*", 0)); //FIXME: too much meta-stuff!
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "^(Enzyme_links|PBB|Protein|GNF_.*_box)$", 0, null) ); 
 		
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "^Chembox|^NatOrganicBox$|^ICSC$|^Elementbox$", 0, null));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategorySensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "Chemical_elements"));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "^Chembox|^NatOrganicBox$|^ICSC$|^Elementbox$", 0, null));
+		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "Chemical_elements"));
 
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "^(Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox)$", 0, null));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "(_diseases|_disorders)$", 0));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "^(Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox)$", 0, null));
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "(_diseases|_disorders)$", 0));
 		
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "^Infobox_(Brain|Nerve|Muscle|Vein|Artery|Bone|Anatomy)$", 0, null));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "_glands$|^SUNYAnatomy|^(BUHistology|AnatomyAtlasesMicroscopic|Gray's|Anatomy-stub)$", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "^Infobox_(Brain|Nerve|Muscle|Vein|Artery|Bone|Anatomy)$", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "_glands$|^SUNYAnatomy|^(BUHistology|AnatomyAtlasesMicroscopic|Gray's|Anatomy-stub)$", 0, null));
 		
 		//TODO; LOTS of anatomy navigation boxes
 

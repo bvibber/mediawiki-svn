@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.analyzer;
+package de.brightbyte.wikiword.analyzer.template;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.brightbyte.data.MultiMap;
+import de.brightbyte.wikiword.analyzer.mangler.TextArmor;
 
 public interface TemplateExtractor {
 	public static class TemplateData {
@@ -81,7 +82,7 @@ public interface TemplateExtractor {
 	}
 	
 	public interface Factory {
-		public TemplateExtractor newTemplateExtractor(Context context, AbstractAnalyzer.TextArmor armor);
+		public TemplateExtractor newTemplateExtractor(Context context, TextArmor armor);
 	}
 	
 	public MultiMap<String, TemplateData, List<TemplateData>> extractTemplates(CharSequence text);

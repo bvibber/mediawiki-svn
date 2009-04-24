@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.analyzer;
+package de.brightbyte.wikiword.analyzer.template;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -7,12 +7,14 @@ import java.util.regex.Pattern;
 import de.brightbyte.data.MultiMap;
 import de.brightbyte.data.ValueListMultiMap;
 import de.brightbyte.util.StringUtils;
+import de.brightbyte.wikiword.analyzer.AnalyzerUtils;
+import de.brightbyte.wikiword.analyzer.mangler.TextArmor;
 import de.brightbyte.xml.HtmlEntities;
 
 public class FlatTemplateExtractor extends AbstractTemplateExtractor {
 	
 	public static final Factory factory = new Factory() {
-		public TemplateExtractor newTemplateExtractor(Context context, AbstractAnalyzer.TextArmor armor) {
+		public TemplateExtractor newTemplateExtractor(Context context, TextArmor armor) {
 			return new FlatTemplateExtractor(context, armor);
 		}
 	};
@@ -20,7 +22,7 @@ public class FlatTemplateExtractor extends AbstractTemplateExtractor {
 	private Matcher templateMarkerMatcher = Pattern.compile("\\{\\{([^|]+?)(?=\\||\\}\\}|\\{\\{)|\\}\\}").matcher("");
 	private Matcher templateParamMatcher = Pattern.compile("\\||\\{\\{!\\}\\}").matcher("");
 
-	public FlatTemplateExtractor(Context context, AbstractAnalyzer.TextArmor armor) {
+	public FlatTemplateExtractor(Context context, TextArmor armor) {
 		super(context, armor);
 	}
 
@@ -77,7 +79,7 @@ public class FlatTemplateExtractor extends AbstractTemplateExtractor {
 								n = getMagicTemplateId(n);
 								
 								if (n!=null) {
-									CharSequence v = AbstractAnalyzer.trim( name.substring(idx+1) );
+									CharSequence v = AnalyzerUtils.trim( name.substring(idx+1) );
 									
 									data = new TemplateData();
 									data.setParameter("0", v);
@@ -144,11 +146,11 @@ public class FlatTemplateExtractor extends AbstractTemplateExtractor {
 			int idx = StringUtils.indexOf('=', s);
 			if (idx<0) {	
 				k = String.valueOf(i++);
-				v = AbstractAnalyzer.trim( s );
+				v = AnalyzerUtils.trim( s );
 			}
 			else {
-				k = AbstractAnalyzer.trim( s.subSequence(0, idx) );
-				v = AbstractAnalyzer.trim( s.subSequence(idx+1, s.length()) );
+				k = AnalyzerUtils.trim( s.subSequence(0, idx) );
+				v = AnalyzerUtils.trim( s.subSequence(idx+1, s.length()) );
 				
 				try {
 					i = Math.max(i, Integer.parseInt(k.toString())); //XXX: The Right Thing? Check MediaWiki's behavior

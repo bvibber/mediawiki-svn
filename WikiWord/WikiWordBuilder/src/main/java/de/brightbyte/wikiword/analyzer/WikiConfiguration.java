@@ -9,13 +9,21 @@ import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
-import de.brightbyte.wikiword.analyzer.AbstractAnalyzer.RegularExpressionArmorer;
-import de.brightbyte.wikiword.analyzer.AbstractAnalyzer.RegularExpressionMangler;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.BoxStripMangler;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.DefaultLinkSimilarityMeasure;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.EntityDecodeMangler;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.LinkSimilarityMeasureFactory;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiLink;
+import de.brightbyte.wikiword.analyzer.extractor.PropertyExtractor;
+import de.brightbyte.wikiword.analyzer.extractor.ValueExtractor;
+import de.brightbyte.wikiword.analyzer.mangler.Armorer;
+import de.brightbyte.wikiword.analyzer.mangler.BoxStripMangler;
+import de.brightbyte.wikiword.analyzer.mangler.EntityDecodeMangler;
+import de.brightbyte.wikiword.analyzer.mangler.Mangler;
+import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionArmorer;
+import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
+import de.brightbyte.wikiword.analyzer.mangler.SuccessiveMangler;
+import de.brightbyte.wikiword.analyzer.sensor.Sensor;
+import de.brightbyte.wikiword.analyzer.template.FlatTemplateExtractor;
+import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
 
 /**
  * A WikiConfiguration represents knowledge about language specific and project specific
@@ -33,64 +41,64 @@ public class WikiConfiguration {
 	 *  List of Mangler objects for stripping all remaingin wiki markup from a text. To be applied after 
 	 *  stripClutterManglers, stripClutterArmorers, and stripBoxesManglers. Used to provide "plain" text.
 	 */
-	public List<WikiTextAnalyzer.Mangler> stripMarkupManglers = new ArrayList<WikiTextAnalyzer.Mangler>();
+	public List<Mangler> stripMarkupManglers = new ArrayList<Mangler>();
 	
 	/**
 	 * List of Mangler objects for stripping box structures from wiki-text, like templates, tables, 
 	 * and blocks enclosed by some XML-style tags. Used to generate a version of the text suitable 
 	 * for identifying paragraphs and sentences.
 	 */ 
-	public List<WikiTextAnalyzer.Mangler> stripBoxesManglers = new ArrayList<WikiTextAnalyzer.Mangler>();
+	public List<Mangler> stripBoxesManglers = new ArrayList<Mangler>();
 	
 	/**
 	 * List of Mangler objects for stripping unwanted markup elements, like images and galleries; 
 	 * also used to replace templates that are required for accuratly parsing the page structure later,
 	 * especially those starting or ending tables or blocks.
 	 */ 
-	public List<WikiTextAnalyzer.Mangler> stripClutterManglers = new ArrayList<WikiTextAnalyzer.Mangler>();
+	public List<Mangler> stripClutterManglers = new ArrayList<Mangler>();
 	
 	/**
 	 * List of Armorer objects for subsituting parts of the text for which wiki-text markup should not apply.
 	 * This includes especially comments, &lt;nowiki&gt;-blocks and &lt;pre&gt;-blocks. 
 	 */ 
-	public List<WikiTextAnalyzer.Armorer> stripClutterArmorers = new ArrayList<WikiTextAnalyzer.Armorer>();
+	public List<Armorer> stripClutterArmorers = new ArrayList<Armorer>();
 	
 	/**
 	 * List of sensors for determining the page's resource type, applicable
 	 * for the main namespace.
 	 */
-	public List<WikiTextAnalyzer.Sensor<ResourceType>> resourceTypeSensors = new ArrayList<WikiTextAnalyzer.Sensor<ResourceType>>();
+	public List<Sensor<ResourceType>> resourceTypeSensors = new ArrayList<Sensor<ResourceType>>();
 		
 	/**
 	 * List of sensors for determining the page's resource type, prior to namespace considerations.
 	 */
-	public List<WikiTextAnalyzer.Sensor<ResourceType>> supplementSensors = new ArrayList<WikiTextAnalyzer.Sensor<ResourceType>>();
+	public List<Sensor<ResourceType>> supplementSensors = new ArrayList<Sensor<ResourceType>>();
 
 	/**
 	 * List of sensors for determining an article's concept type, that is, 
 	 * assigning a ConceptTypes object. 
 	 */
-	public List<WikiTextAnalyzer.Sensor<ConceptType>> conceptTypeSensors = new ArrayList<WikiTextAnalyzer.Sensor<ConceptType>>();
+	public List<Sensor<ConceptType>> conceptTypeSensors = new ArrayList<Sensor<ConceptType>>();
 	
 	/**
 	 * List of extractors for determining an article's properties. 
 	 */
-	public List<WikiTextAnalyzer.PropertyExtractor> propertyExtractors = new ArrayList<WikiTextAnalyzer.PropertyExtractor>();
+	public List<PropertyExtractor> propertyExtractors = new ArrayList<PropertyExtractor>();
 	
 	/**
 	 * List of extractors for determining terms for an article. 
 	 */
-	public List<WikiTextAnalyzer.ValueExtractor> pageTermExtractors = new ArrayList<WikiTextAnalyzer.ValueExtractor>();
+	public List<ValueExtractor> pageTermExtractors = new ArrayList<ValueExtractor>();
 	
 	/**
 	 * List of extractors for determining the name of supplement pages. 
 	 */
-	public List<WikiTextAnalyzer.ValueExtractor> supplementNameExtractors = new ArrayList<WikiTextAnalyzer.ValueExtractor>();
+	public List<ValueExtractor> supplementNameExtractors = new ArrayList<ValueExtractor>();
 
 	/**
 	 * List of extractors for determining the name the supplemented page. 
 	 */
-	public List<WikiTextAnalyzer.ValueExtractor> supplementedConceptExtractors = new ArrayList<WikiTextAnalyzer.ValueExtractor>();
+	public List<ValueExtractor> supplementedConceptExtractors = new ArrayList<ValueExtractor>();
 	
 	/**
 	 * Pattern for matching the name of the DISPLAYNAME magic word, to be used 
@@ -153,7 +161,7 @@ public class WikiConfiguration {
 	 * which includes tables, templates, and some blocks formed with html-tags. This task is
 	 * usually performed mainly by an instance of BoxStripMangler. 
 	 */
-	public WikiTextAnalyzer.SuccessiveMangler extractParagraphMangler = null;
+	public SuccessiveMangler extractParagraphMangler = null;
 	
 	/**
 	 * Pattern matching conventional title suffixes (qualifiers). On most wikis, 

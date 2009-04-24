@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import de.brightbyte.wikiword.analyzer.AbstractAnalyzer.RegularExpressionMangler;
+import de.brightbyte.wikiword.analyzer.mangler.Mangler;
+import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
+
 
 /**
  * This class is the basis for language-specific configuration classes. It defines the 
@@ -49,7 +51,7 @@ public class LanguageConfiguration {
 	 * sentences. This is usually set to strip out any parts enclodes in parentacies and 
 	 * possibly also quotes.
 	 */
-	public List<WikiTextAnalyzer.Mangler> sentenceManglers = new ArrayList<WikiTextAnalyzer.Mangler>();
+	public List<Mangler> sentenceManglers = new ArrayList<Mangler>();
 
 	/**
 	 * A pattern matching individual words, for splitting a string into words. This is usually

@@ -3,7 +3,6 @@ package de.brightbyte.wikiword.analyzer;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParsePosition;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -39,7 +37,14 @@ import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.NamespaceSet;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.analyzer.TemplateExtractor.TemplateData;
+import de.brightbyte.wikiword.analyzer.extractor.ValueExtractor;
+import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
+import de.brightbyte.wikiword.analyzer.mangler.TextArmor;
+import de.brightbyte.wikiword.analyzer.sensor.Sensor;
+import de.brightbyte.wikiword.analyzer.template.DummyTemplateUser;
+import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
+import de.brightbyte.wikiword.analyzer.template.TemplateUser;
+import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.TemplateData;
 import de.brightbyte.xml.HtmlEntities;
 
 /**
@@ -52,81 +57,8 @@ import de.brightbyte.xml.HtmlEntities;
  */
 public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtractor.Context {
 	
-	private static final Logger logger = Logger.getLogger(WikiTextAnalyzer.class); 
+	static final Logger logger = Logger.getLogger(WikiTextAnalyzer.class); 
 	
-	public interface TemplateUser {
-		public String getTemplateNamePattern();
-	}
-	
-	public static class DummyTemplateUser implements TemplateUser {
-		protected String pattern;
-		//protected boolean anchored;
-		
-		public DummyTemplateUser(Matcher matcher, boolean anchored) {
-			this(getRegularExpression(matcher.pattern(), anchored));
-		}
-		
-		public DummyTemplateUser(Pattern pattern, boolean anchored) {
-			this(getRegularExpression(pattern, anchored));
-		}
-		
-		public DummyTemplateUser(String s) {
-			this.pattern = s;
-		}
-		
-		public String getTemplateNamePattern() {
-			return this.pattern;
-		}
-	}
-	
-	/*
-	protected class LinksByTarget implements Comparator<WikiLink> {
-
-		private Measure<String> measure;
-		private boolean strip;
-		private boolean sensitive;
-
-		public LinksByTarget(Measure<String> measure, boolean strip, boolean sensitive) {
-			this.measure = measure;
-			this.strip = strip;
-			this.sensitive = sensitive;
-		}
-
-		public int compare(WikiLink a, WikiLink b) {
-			if (a==b) return 0;
-			
-			String na = a.getPage();
-			String nb = b.getPage();
-			if (na==nb || StringUtils.equals(na, nb)) return 0;
-
-			String ta = a.getText();
-			String tb = b.getText();
-			if (ta==tb || StringUtils.equals(ta, tb)) return 0;
-			
-			if (strip) {
-				na = extractBaseName(na);
-				nb = extractBaseName(nb);
-				ta = extractBaseName(ta);
-				tb = extractBaseName(tb);
-			}
-			
-			if (!sensitive) {
-				na = na.toLowerCase();
-				nb = nb.toLowerCase();
-				ta = ta.toLowerCase();
-				tb = tb.toLowerCase();
-			}
-			
-			double d = Math.min(measure.measure(na), measure.measure(ta)) 
-				- Math.min(measure.measure(nb), measure.measure(tb)); //XXX: provide max option?
-			
-			if (d<0) return (int)(d-1);
-			else if (d>0) return (int)(d+1);
-			else return 0;
-		}
-
-	}*/
-
 	protected abstract class LinkFilter implements Filter<WikiLink> {
 
 		protected CharSequence basename;
@@ -180,1179 +112,6 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
     */
 	
-	public static class ArmorEntry {
-		protected String marker;
-		protected String value;
-		
-		public ArmorEntry(String marker, String value) {
-			if (marker==null) throw new NullPointerException();
-			if (value==null) throw new NullPointerException();
-
-			this.marker = marker;
-			this.value = value;
-		}
-		
-		public String getMarker() {
-			return marker;
-		}
-		
-		public String getValue() {
-			return value;
-		}
-		
-		@Override
-		public int hashCode() {
-			final int PRIME = 31;
-			int result = 1;
-			result = PRIME * result + ((marker == null) ? 0 : marker.hashCode());
-			result = PRIME * result + ((value == null) ? 0 : value.hashCode());
-			return result;
-		}
-		
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			final ArmorEntry other = (ArmorEntry) obj;
-			if (marker == null) {
-				if (other.marker != null)
-					return false;
-			} else if (!StringUtils.equals(marker, other.marker))
-				return false;
-			if (value == null) {
-				if (other.value != null)
-					return false;
-			} else if (!StringUtils.equals(value, other.value))
-				return false;
-			return true;
-		}
-		
-		@Override
-		public String toString() {
-			return marker + " => " + value;
-		}
-	}
-	
-	public interface AttributeMatcher<T> extends Filter<T> {
-		public boolean matches(T s);
-		
-		public <V> Iterable<V> matches(Map<? extends T, V> m);
-		public <V, C extends Collection<V>> Iterable<C> matches(MultiMap<? extends T, V, C> m);
-		public <V extends T> Iterable<V> matches(Set<V> values);
-	}
-	
-	public interface NameMatcher extends AttributeMatcher<CharSequence> {
-		public boolean matchesLine(String lines);
-		
-		public String getRegularExpression();
-	}
-
-	public static abstract class  AbstractAttributeMatcher<T> implements AttributeMatcher<T> {
-
-		public <V, C extends Collection<V>> Iterable<C> matches(MultiMap<? extends T, V, C> m) {
-			final Iterator it = m.entrySet().iterator();
-			return matches(it);
-		}
-		
-		public <V> Iterable<V> matches(Map<? extends T, V> m) {
-			final Iterator it = m.entrySet().iterator();
-			return matches(it);
-		}
-		
-		public <V extends T> Iterable<V> matches(Set<V> m) {
-			final Iterator it = m.iterator();
-			return matches(it);
-		}
-		
-		protected <V> Iterable<V> matches(final Iterator it) {
-			return new Iterable<V>() {
-				public Iterator<V> iterator() {
-					return new Iterator<V>() {
-						
-						private V next;
-						private boolean hasNext;
-						
-						{ scan(); }
-						
-						private void scan() {
-							hasNext = false;
-							while (it.hasNext()) {
-								hasNext = true;
-								Map.Entry<? extends T, V> e = (Map.Entry<? extends T, V>) it.next();
-								next = e.getValue();
-								if (matches(e.getKey())) break;
-								hasNext = false;
-							}
-						}
-					
-						public void remove() {
-							throw new UnsupportedOperationException();
-						}
-					
-						public V next() {
-							if (!hasNext) return null;
-							
-							V n = next;
-							scan();
-							return n;
-						}
-					
-						public boolean hasNext() {
-							return hasNext;
-						}
-					
-					};
-				}
-			};
-		}
-	}
-	
-	public static class AnyNameMatcher implements NameMatcher {
-		
-		public AnyNameMatcher() {
-			//noop
-		}
-
-		public String getRegularExpression() {
-			return ".*";
-		}
-
-		public boolean matches(CharSequence s) {
-			return true;
-		}
-
-		public boolean matchesLine(String s) {
-			return true;
-		}
-
-		public <V> Iterable<V> matches(Map<? extends CharSequence, V> m) {
-			return m.values();
-		}
-
-		public <V, C extends Collection<V>> Iterable<C> matches(MultiMap<? extends CharSequence, V, C> m) {
-			return m.values();
-		}
-
-		public <V extends CharSequence> Iterable<V> matches(Set<V> values) {
-			return values;
-		}
-	}
-	
-	public static class ExactNameMatcher implements NameMatcher {
-		private String name;
-		
-		public ExactNameMatcher(String name) {
-			if (name==null) throw new NullPointerException();
-			this.name = name;
-		}
-
-		public String getRegularExpression() {
-			return "^" + Pattern.quote(name) + "$";
-		}
-
-		public boolean matches(CharSequence s) {
-			return StringUtils.equals(name, s);
-		}
-
-		public boolean matchesLine(String s) {
-			int i = s.indexOf(name);
-			if (i<0) return false;
-			if (i>0 && s.charAt(i-1)!='\n') return false;
-			
-			int c = name.length();
-			int j = i+c;
-			
-			if (j<s.length()-1 && s.charAt(j+1)!='\n') return false;
-			
-			return true;
-		}
-
-		public <V> Iterable<V> matches(Map<? extends CharSequence, V> m) {
-			V v = m.get(name);
-			if (v==null) return Collections.emptySet();
-			else return Collections.singleton(v);
-		}
-
-		public <V, C extends Collection<V>> Iterable<C> matches(MultiMap<? extends CharSequence, V, C> m) {
-			C c = m.get(name);
-			if (c==null) return Collections.emptySet();
-			else return Collections.singleton(c);
-		}
-
-		@SuppressWarnings("unchecked")
-		public <V extends CharSequence> Iterable<V> matches(Set<V> values) {
-			if (values.contains(name)) return Collections.singleton((V)name);
-			else return Collections.emptySet();
-		}
-	}
-	
-	public static class PatternNameMatcher extends AbstractAttributeMatcher<CharSequence> implements NameMatcher {
-		protected Matcher matcher;
-		protected boolean anchored;
-
-		public PatternNameMatcher(String p, int flags, boolean anchored) {
-			this(Pattern.compile(p, flags), anchored);
-		}
-		
-		public PatternNameMatcher(Pattern p, boolean anchored) {
-			this(p.matcher(""), anchored);
-		}
-		
-		public PatternNameMatcher(Matcher matcher, boolean anchored) {
-			if (matcher==null) throw new NullPointerException();
-			this.matcher = matcher;
-			this.anchored = anchored;
-			
-			if (anchored) {
-				String p = matcher.pattern().pattern();
-				if (p.startsWith("^") || p.endsWith("$")) {
-					logger.warn("Anchored pattern contains anchor mark: "+p);
-				}
-			}
-		}
-
-		public String getRegularExpression() {
-			return WikiTextAnalyzer.getRegularExpression(matcher.pattern(), anchored);
-		}
-
-		public boolean matchesLine(String s) {
-			if ((matcher.pattern().flags() & Pattern.MULTILINE)==0) throw new UnsupportedOperationException();
-			return matches(s);
-		}
-		
-		public boolean matches(CharSequence s) {
-			matcher.reset(s);
-			
-			if (anchored) return matcher.matches();
-			else return matcher.find();
-		}
-	}
-	
-	/**
-	 * Sensor to detect if a WikiPage matches some condition. 
-	 * In addition, a Sensor defines a value that is associated
-	 * with matching the condition.
-	 * For example, if the Sensor matches a pattern in the page title, 
-	 * which indicates the type of page, then the value would represent
-	 * that type of page.
-	 */
-	public interface Sensor<V> {
-		
-		/** returns true iff the given WikiPage matches the condition
-		 * this sensor represents.
-		 **/
-		public boolean sense(WikiPage page);
-		
-		/**
-		 * returns the value of this sensor, that is, the value that is 
-		 * associated with matching the condition this Sensor represents.
-		 */
-		public V getValue();
-	}
-	
-	public static abstract class AbstractSensor<V> implements Sensor<V> {
-		protected V value;
-		
-		public AbstractSensor(V value) {
-			super();
-			this.value = value;
-		}
-
-		public abstract boolean sense(WikiPage page);
-		
-		public V getValue() {
-			return value;
-		}
-		
-		/*
-		public AbstractSensor setValue(Object v) {
-			if (value!=null) throw new IllegalStateException("value already set");
-			value = v;
-			return this;
-		}
-		*/
-	}
-	
-	public static class EntityDecodeMangler implements Mangler {
-		public CharSequence mangle(CharSequence text) {
-			return HtmlEntities.decodeEntities(text);
-		}
-	}
-	
-	public static class StripMarkupMangler implements Mangler {
-		private WikiTextAnalyzer analyzer;
-
-		public StripMarkupMangler(WikiTextAnalyzer analyzer) {
-			if (analyzer==null) throw new NullPointerException();
-			this.analyzer = analyzer;
-		}
-		
-		public CharSequence mangle(CharSequence text) {
-			return this.analyzer.stripMarkup(text);
-		}
-	}
-	
-	public static class BoxStripMangler implements Mangler, SuccessiveMangler {
-		protected Matcher matcher;
-		protected String[] beginnings;
-		protected String[] ends;
-		
-		public BoxStripMangler(String[] beginnings, String[] ends, String stop) {
-			this.beginnings = beginnings;
-			this.ends = ends;
-			
-			if (beginnings.length!=ends.length) throw new IllegalArgumentException("must have the same number of ends and beginnings");
-			
-			StringBuilder regex = new StringBuilder();
-			for (int i = 0; i < beginnings.length; i++) {
-				if (i>0) regex.append('|');
-				regex.append('(');
-				regex.append(beginnings[i]);
-				regex.append(')');
-			}
-			for (int i = 0; i < ends.length; i++) {
-				regex.append('|');
-				regex.append('(');
-				regex.append(ends[i]);
-				regex.append(')');
-			}
-			
-			if (stop!=null) {
-				regex.append('|');
-				regex.append('(');
-				regex.append(stop);
-				regex.append(')');
-			}
-			
-			Pattern pattern = Pattern.compile(regex.toString(), Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
-			matcher = pattern.matcher("");
-		}
-		
-		public CharSequence mangle(CharSequence text) {
-			return mangle(text, null);
-		}
-		
-		public CharSequence mangle(CharSequence text, ParsePosition pp) {
-			StringBuilder out = new StringBuilder(text.length());
-			
-			int[] stack = new int[100];
-			int level = 0;
-			int last = pp == null ? 0 : pp.getIndex();
-			
-			//System.out.print("."); System.out.flush();
-			
-			matcher.reset(text);
-			if (pp!=null) matcher.region(pp.getIndex(), text.length());
-			while (matcher.find()) {
-				if (level==0) out.append(text, last, matcher.start());
-				if (pp!=null) pp.setIndex(matcher.start());
-				
-				int marker = getMarkerId(matcher);
-				//System.out.println(marker+": "+m.group(0));
-				
-				if (marker==0) { //end
-					if (level==0) {
-						if (trim(out).length()>0 || matcher.group().trim().length()>0) {
-							return out; //NOTE: hefty hack //TODO: min length?
-						}
-					}
-				}
-				else if (marker>0) { //push
-					if (level<stack.length) {
-						stack[level] = -marker;
-						level++;
-					}
-				}
-				else { //pop
-					if (level>0) {
-						if (marker==stack[level-1]) {
-							level--;
-						}
-						else { //mismatching closing thingy!
-							//scan up the stack for matching open block
-							//XXX: maybe use precedence order (level ordinals?)
-							int lvl = level;
-							while (lvl>0 && marker!=stack[lvl-1]) {
-								lvl--;
-							}
-							
-							if (lvl>0) {
-								level = lvl -1;
-							}
-						}
-					}
-				}
-				
-				last = matcher.end();
-				if (pp!=null) pp.setIndex(last);
-			}
-			
-			if (level==0) {
-				out.append(text, last, text.length());
-				if (pp!=null) pp.setIndex(text.length());
-			}
-			
-			return out;
-		}
-		
-		protected int getMarkerId(Matcher m) {
-			for (int i=1; i<=beginnings.length*2; i++) {
-				if (m.group(i)!=null) {
-					if (i<=beginnings.length) return i;
-					else return -i +beginnings.length;
-				}
-			}
-			
-			if (m.group(beginnings.length*2+1)!=null) {
-				return 0;
-			}
-			
-			throw new RuntimeException("no group matched (can't happen!)");
-		}
-		
-	}
-	
-	public static class MultiSensor<V> extends AbstractSensor<V> {
-		protected Sensor<V>[] sensors;
-
-		public MultiSensor(V value, Sensor<V>... sensors) {
-			super(value);
-			this.sensors = sensors;
-		}
-		
-		@Override
-		public boolean sense(WikiPage page) {
-			for(Sensor<V> s: sensors) {
-				if (!s.sense(page)) return false;
-			}
-			
-			return true;
-		}
-	}
-	
-	public static class CleanedTextSensor<V> extends AbstractSensor<V> {
-		protected NameMatcher matcher;
-		
-		public CleanedTextSensor(V value, String pattern, int flags) {
-			this(value, new PatternNameMatcher(pattern, flags, false));
-		}
-		
-		public CleanedTextSensor(V value, NameMatcher matcher) {
-			super(value);
-			this.matcher = matcher;
-		}
-
-		@Override
-		public boolean sense(WikiPage page) {
-			return matcher.matches( page.getCleanedText(true) );
-		}
-	}
-	
-	public static class TitleSensor<V> extends AbstractSensor<V> {
-		protected NameMatcher matcher;
-		protected int namespace;
-		
-		public TitleSensor(V value, String pattern, int flags) {
-			this(value, Namespace.NONE, pattern, flags);
-		}
-		
-		public TitleSensor(V value, NameMatcher matcher) {
-			this(value, Namespace.NONE, matcher);
-		}
-		
-		public TitleSensor(V value, int ns, String pattern, int flags) {
-			this(value, ns, new PatternNameMatcher(pattern, flags, true));
-		}
-		
-		public TitleSensor(V value, int ns, NameMatcher matcher) {
-			super(value);
-			this.matcher = matcher;
-			this.namespace = ns;
-		}
-
-		@Override
-		public boolean sense(WikiPage page) {
-			if (namespace!=Namespace.NONE && namespace!=page.getNamespace()) return false;
-			return matcher.matches(page.getName());
-		}
-	}
-	
-	public static class PropertyValueExtractor implements ValueExtractor {
-		protected String property;
-		private String prefix;
-		private String suffix;
-		private boolean normalize = true;
-		
-		public PropertyValueExtractor(String property) {
-			super();
-			this.property = property;
-		}
-
-		public PropertyValueExtractor setPrefix(String prefix) {
-			this.prefix = prefix;
-			return this;
-		}
-
-		public PropertyValueExtractor setSuffix(String suffix) {
-			this.suffix = suffix;
-			return this;
-		}
-		
-		public Set<CharSequence> extract(WikiPage page, Set<CharSequence> into) {
-			Set<CharSequence> vv = page.getProperties().get(property);
-			
-			if (vv!=null && !vv.isEmpty()) {
-				if (into==null) into = new HashSet<CharSequence>();
-				
-				for(CharSequence v: vv) {
-					//TODO: use builder?!
-					if (prefix!=null) v = prefix + v;
-					if (suffix!=null) v = v + suffix;
-					
-					if (normalize) v = page.getAnalyzer().normalizeTitle(v);
-					into.add(v);
-				}
-			}
-			
-			return into;
-		}
-		
-	}
-	
-	public static class TitlePartExtractor implements ValueExtractor {
-		protected Matcher matcher;
-		protected int namespace;
-		protected String replacement;
-		protected List<Sensor<?>> conditions = null;
-		protected boolean normalize= true;
-		
-		public TitlePartExtractor(String pattern, int flags, String replacement) {
-			this(Namespace.NONE, pattern, flags, replacement);
-		}
-		
-		public TitlePartExtractor(Pattern pattern, String replacement) {
-			this(Namespace.NONE, pattern, replacement);
-		}
-		
-		public TitlePartExtractor(int ns, String pattern, int flags, String replacement) {
-			this(ns, Pattern.compile(pattern, flags), replacement);
-		}
-		
-		public TitlePartExtractor(int ns, Pattern pattern, String replacement) {
-			this.matcher = pattern.matcher("");
-			this.namespace = ns;
-			this.replacement = replacement;
-		}
-
-		public Set<CharSequence> extract(WikiPage page, Set<CharSequence> into) {
-			if (namespace!=Namespace.NONE && namespace!=page.getNamespace()) return into;
-			
-			if (conditions!=null) {
-				for(Sensor<?> sensor: conditions) {
-					if (!sensor.sense(page)) return into;
-				}
-			}
-			
-			matcher.reset(page.getName());
-			if (!matcher.matches()) return into;
-
-			CharSequence v = matcher.replaceFirst(replacement);
-			if (normalize) v = page.getAnalyzer().normalizeTitle(v);
-			return addToSet(into, v);
-		}
-		
-		public TitlePartExtractor addCondition(Sensor<?> sensor) { 
-			if (conditions==null) conditions = new ArrayList<Sensor<?>>();
-			conditions.add(sensor);
-			return this;
-		}
-	}
-	
-	
-	protected static <V> Map<String, V> paramKeyMap(String[] params) {
-		if (params==null) return null;
-		
-		HashMap<String, V> m = new HashMap<String, V>();
-		for (String p: params) {
-			m.put(p, null);
-		}
-		
-		return m;
-	}
-	
-	public static class HasTemplateLikeSensor<V> extends AbstractSensor<V> implements TemplateUser {
-		protected NameMatcher matcher;
-		protected Map<String, NameMatcher> params;
-		
-		//TODO: provide an OR mode, so this triggers if *any* param matches
-		
-		public HasTemplateLikeSensor(V value, String pattern, int flags) {
-			this(value, new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false), null);
-		}
-		
-		public HasTemplateLikeSensor(V value, String pattern, int flags, String[] params) {
-			this(value, new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false), WikiTextAnalyzer.<NameMatcher>paramKeyMap(params));
-		}
-		
-		public HasTemplateLikeSensor(V value, NameMatcher matcher, Map<String, NameMatcher> params) {
-			super(value);
-			this.matcher = matcher;
-		}
-
-		@Override
-		public boolean sense(WikiPage page) {
-			if (params==null) {
-				CharSequence t = page.getTemplatesString();
-				return matcher.matchesLine(t.toString());
-			}
-			
-			MultiMap<String, TemplateData, List<TemplateData>> templates = page.getTemplates();
-			if (templates.size()==0) return false;
-			
-			templateLoop : for (List<TemplateExtractor.TemplateData> ll: matcher.matches(templates)) {
-					if (params==null) return true;
-				
-					for (TemplateExtractor.TemplateData tpl: ll) {
-						for (Map.Entry<String, NameMatcher> f: params.entrySet()) {
-							String key = f.getKey();
-							NameMatcher valueMatcher = f.getValue();
-							
-							CharSequence value = tpl.getParameter(key);
-							if (value!=null) {
-								if (valueMatcher==null) ;
-								else {
-									if (valueMatcher.matches(value)) ;
-									else continue templateLoop;
-								}
-							}
-							else continue templateLoop;
-						}
-						
-						return true;
-					}
-			}
-			
-			return false;
-		}
-
-		public String getTemplateNamePattern() {
-			return matcher.getRegularExpression();
-		}
-	}
-	
-	public static class HasTemplateSensor<V> extends HasTemplateLikeSensor<V> {
-		
-		public HasTemplateSensor(V value, String pattern) {
-			this(value, new ExactNameMatcher(pattern), null);
-		}
-		
-		public HasTemplateSensor(V value, String pattern, String[] params) {
-			this(value, new ExactNameMatcher(pattern), WikiTextAnalyzer.<NameMatcher>paramKeyMap(params));
-		}
-		
-		private HasTemplateSensor(V value, NameMatcher matcher, Map<String, NameMatcher> params) {
-			super(value, matcher, params);
-		}
-	}
-	
-	public static class HasPropertySensor<V> extends AbstractSensor<V> {
-		protected String name; 
-		protected NameMatcher matcher; 
-		
-		public HasPropertySensor(V value, String name) {
-			this(value, name, null);
-		}
-		
-		public HasPropertySensor(V value, String name, String pattern, int flags) {
-			this(value, name, new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false));
-		}
-		
-		public HasPropertySensor(V value, String name, NameMatcher matcher) {
-			super(value);
-			this.matcher = matcher;
-		}
-
-		@Override
-		public boolean sense(WikiPage page) {
-			Set<CharSequence> vv = page.getProperties().get(name);
-			
-			if (matcher==null) {
-				return vv!=null && !vv.isEmpty();
-			}
-			else {
-				return matcher.matches(vv).iterator().hasNext();
-			}
-		}
-	}
-	
-	public static class HasCategoryLikeSensor<V> extends AbstractSensor<V> {
-		//protected Pattern pattern;
-		protected NameMatcher matcher; 
-		
-		public HasCategoryLikeSensor(V value, String pattern, int flags) {
-			this(value, new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false));
-		}
-		
-		public HasCategoryLikeSensor(V value, NameMatcher matcher) {
-			super(value);
-			this.matcher = matcher;
-		}
-
-		@Override
-		public boolean sense(WikiPage page) {
-			String categories = page.getCategoriesString();
-			return matcher.matchesLine(categories);
-		}
-	}
-	
-	public static class HasCategorySensor<V> extends HasCategoryLikeSensor<V> {
-		
-		public HasCategorySensor(V value, String category) {
-			super(value, new ExactNameMatcher(category));
-		}
-	}
-	
-	public static class HasSectionLikeSensor<V> extends AbstractSensor<V> {
-		protected NameMatcher matcher;
-		
-		public HasSectionLikeSensor(V value, String pattern, int flags) {
-			this(value, new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false));
-		}
-		
-		public HasSectionLikeSensor(V value, NameMatcher matcher) {
-			super(value);
-			this.matcher = matcher;
-		}
-
-		@Override
-		public boolean sense(WikiPage page) {
-			String sections = page.getSectionsString();
-			return matcher.matchesLine(sections);
-		}
-	}
-	
-	public static class HasSectionSensor<V> extends HasSectionLikeSensor<V> {
-		
-		public HasSectionSensor(V value, String section) {
-			super(value, new ExactNameMatcher(section));
-		}
-
-	}
-	
-	/**
-	 * Extractor to extract some value from a WikiPage. 
-	 */
-	public interface ValueExtractor {
-		
-		public Set<CharSequence> extract(WikiPage page, Set<CharSequence> into);
-	}
-	
-	public static class PagePropertyValueExtractor implements ValueExtractor {
-		protected String name;
-
-		public PagePropertyValueExtractor(String name) {
-			this.name = name;
-		}
-
-		public Set<CharSequence> extract(WikiPage page, Set<CharSequence> into) {
-			Set<CharSequence> vv = page.getProperties().get(name);
-			if (vv!=null && vv.size()>0) {
-				if (into==null) into = new HashSet<CharSequence>();
-				into.addAll(vv);
-			}
-			
-			return into;
-		}
-		
-	}
-	
-	/**
-	 * Extractor to extract some value from a WikiPage. 
-	 */
-	public interface PropertyExtractor {
-		
-		/** extracts properties and returns them as a map. If a map instance is provided,
-		 * that instance will be used to store the properties. Otherwise, a new instance
-		 * will be created if any properties have been found. If no map was provided and no
-		 * properties have been found, this method returns null. 
-		 **/
-		public MultiMap<String, CharSequence, Set<CharSequence>> extract(WikiPage page, MultiMap<String, CharSequence, Set<CharSequence>> into);
-	}
-
-	/**
-	 * Property specification for properties derived from template parameters 
-	 */
-	public interface TemplateParameterPropertySpec {
-		
-		/** determins a property value from a map of template parameters.
-		 **/
-		public Set<CharSequence> getPropertyValues(WikiPage page, TemplateExtractor.TemplateData params, Set<CharSequence> values);
-		
-		public String getPropertyName();
-	}
-	
-	public static abstract class AbstractTemplateParameterPropertySpec implements TemplateParameterPropertySpec {
-		protected String propertyName;
-		
-		public AbstractTemplateParameterPropertySpec(String name) {
-			if (name==null) throw new NullPointerException();
-			this.propertyName = name;
-		}
-		
-		public String getPropertyName() {
-			return propertyName;
-		}
-
-		public Set<CharSequence> getPropertyValues(WikiPage page, TemplateExtractor.TemplateData params, Set<CharSequence> values) {
-			CharSequence v = getPropertyValue(page, params); 
-			if (v==null) return values;
-			
-			if (values==null) values = new HashSet<CharSequence>();
-			values.add(v);
-			
-			return values;
-		}
-
-		protected abstract CharSequence getPropertyValue(WikiPage page, TemplateExtractor.TemplateData params);
-		
-	}
-	
-	protected static <V> Set<V> addToSet(Set<V> set, V... values) {
-		if (values==null) return set;
-		if (values.length==0) return set;
-		
-		for (V v: values) {
-			if (v==null) continue;
-			
-			if (set==null) set = new HashSet<V>();
-			set.add(v);
-		}
-		
-		return set;
-	}
-	
-	@SuppressWarnings("unchecked")
-	protected static <V> V[] append(V[] arr, V v, Class<V> c) {
-		V[] a = (V[])Array.newInstance(c, arr==null ? 1 : arr.length+1);
-		
-		if (arr!=null) System.arraycopy(arr, 0, a, 0, arr.length);
-		arr = a;
-		arr[ arr.length -1 ] = v;
-
-		return arr;
-	}
-	
-	public static class DefaultTemplateParameterPropertySpec implements TemplateParameterPropertySpec {
-		protected Mangler[] norm = null;
-		protected Mangler[] clean = null;
-		protected Matcher find = null;
-		protected Matcher split = null;
-		
-		protected NameMatcher cond = null;
-		
-		protected boolean upper = false;
-		protected boolean strip = false;
-		
-		protected String property;
-		protected String parameter;
-		
-		protected String prefix = null;
-		protected String suffix = null;
-		
-		public DefaultTemplateParameterPropertySpec(String param, String prop) {
-			if (param==null) throw new NullPointerException();
-			if (prop==null) throw new NullPointerException();
-			
-			this.parameter = param;
-			this.property = prop;
-		}
-		
-		public DefaultTemplateParameterPropertySpec addCleanup(Pattern pattern, String rep) {
-			return addCleanup(new RegularExpressionMangler(pattern, rep));
-		}
-		
-		public DefaultTemplateParameterPropertySpec addCleanup(Mangler clean) {
-			if (clean==null) return this;
-			
-			this.clean = append(this.clean, clean, Mangler.class);
-			return this;
-		}
-		
-		public DefaultTemplateParameterPropertySpec setCondition(NameMatcher cond) {
-			this.cond = cond;
-			return this;
-		}
-		
-		public DefaultTemplateParameterPropertySpec setCondition(Pattern p, boolean anchored) {
-			return setCondition( new PatternNameMatcher(p, anchored));
-		}
-		
-		public DefaultTemplateParameterPropertySpec setCondition(String p, int flags, boolean anchored) {
-			return setCondition( new PatternNameMatcher(p, flags, anchored));
-		}
-		
-		public DefaultTemplateParameterPropertySpec addNormalizer(Pattern pattern, String rep) {
-			return addNormalizer(new RegularExpressionMangler(pattern, rep));
-		}
-		
-		public DefaultTemplateParameterPropertySpec addNormalizer(Mangler norm) {
-			if (norm==null) return this;
-			
-			this.norm = append(this.norm, norm, Mangler.class);
-			return this;
-		}
-
-		public DefaultTemplateParameterPropertySpec setSplitPattern(Pattern split) {
-			this.split = split==null ? null : split.matcher("");
-			return this;
-		}
-
-		public DefaultTemplateParameterPropertySpec setFindPattern(Pattern find) {
-			this.find = find==null ? null : find.matcher("");
-			return this;
-		}
-
-		public DefaultTemplateParameterPropertySpec setToUpperCase(boolean upper) {
-			this.upper = upper;
-			return this;
-		}
-
-		public DefaultTemplateParameterPropertySpec setStripMarkup(boolean strip) {
-			this.strip = strip;
-			return this;
-		}
-
-		public DefaultTemplateParameterPropertySpec setPrefix(String prefix) {
-			this.prefix = prefix;
-			return this;
-		}
-
-		public DefaultTemplateParameterPropertySpec setSuffix(String suffix) {
-			this.suffix = suffix;
-			return this;
-		}
-
-		public Set<CharSequence> getPropertyValues(WikiPage page, TemplateExtractor.TemplateData params, Set<CharSequence> values) {
-			CharSequence v = params.getParameter(parameter);
-			if (v==null) return values;
-			if (v.length()==0) return values;
-			
-			if (clean!=null) {
-				for (Mangler m: clean) v = m.mangle(v);
-			}
-			
-			if (cond!=null) {
-				if (!cond.matches(v)) return values;
-			}
-			
-			if (split!=null) {
-				int i = 0;
-				int j = 0;
-				
-				split.reset(v);
-				boolean done = false;
-				
-				while (i<v.length()) {
-					if (split.find(i)) {
-						j = split.start();
-					}
-					else {
-						j = v.length();
-						done = true;
-					}
-					
-					CharSequence w = v.subSequence(i, j);
-					
-					if (done) i = j;
-					else i = split.end();
-					
-					values = addValue(w, page, values);
-				}
-			}
-			else if (find!=null) {
-				find.reset(v);
-				while (find.find()) {
-					CharSequence w = find.groupCount() > 0 ? find.group(1) : find.group();
-					
-					values = addValue(w, page, values);
-				}
-			}
-			else if (split==null) {
-				values = addValue(v, page, values);
-			}
-			
-			return values;
-		}
-		
-		protected Set<CharSequence> addValue(CharSequence w, WikiPage page, Set<CharSequence> values) {
-			if (w==null || w.length()==0) return values;
-			
-			w = trim(w);
-			if (w.length()==0) return values;
-			
-			w = mangle(page, w);
-			if (w.length()==0) return values;
-			
-			values = addToSet(values, w);
-			return values;
-		}
-		
-		protected CharSequence mangle(WikiPage page, CharSequence v) {
-			if (strip) {
-				WikiTextAnalyzer analyzer = page.getAnalyzer(); 
-				/*if (analyzer.smellsLikeWikiText(v))*/ v = analyzer.stripMarkup(v);
-			}
-			
-			if (norm!=null) {
-				for (Mangler m: norm) v = m.mangle(v);
-			}
-			
-			if (upper) v = v.toString().toUpperCase();
-			
-			//TODO: use builder!
-			if (prefix!=null) v = prefix + v;
-			if (suffix!=null) v = v + suffix;
-			
-			return v;
-		}
-
-		public String getPropertyName() {
-			return property;
-		}
-		
-	}
-
-	public static interface TemplateMatcher  extends AttributeMatcher<TemplateExtractor.TemplateData> {
-	}
-	
-	public static class TemplateNameMatcher extends AbstractAttributeMatcher<TemplateExtractor.TemplateData> implements TemplateMatcher {
-		protected NameMatcher matcher;
-		
-		public TemplateNameMatcher(NameMatcher matcher) {
-			if(matcher==null) throw new NullPointerException();
-			this.matcher = matcher;
-		}
-
-		public boolean matches(TemplateData t) {
-			return false;
-		}
-	}
-	
-	public static class CategoryPatternParameterExtractor implements PropertyExtractor {
-		protected String property;
-		protected Matcher matcher;
-		protected String replacement;
-
-		public CategoryPatternParameterExtractor(String pattern, String replacement, int flags, String property) {
-			this(Pattern.compile(pattern, flags), replacement, property);
-		}
-
-		public CategoryPatternParameterExtractor(Pattern pattern, String replacement, String property) {
-			this(pattern.matcher(""), replacement, property);
-		}
-
-		public CategoryPatternParameterExtractor(Matcher matcher, String replacement, String property) {
-			this.property = property;
-			this.matcher = matcher;
-			this.replacement = replacement;
-		}
-
-		public MultiMap<String, CharSequence, Set<CharSequence>> extract(WikiPage page, MultiMap<String, CharSequence, Set<CharSequence>> into) {
-			for(CharSequence s: page.getCategories()) {
-				matcher.reset(s);
-				if (matcher.find()) {
-					String v = matcher.group();
-					v = matcher.replaceAll(replacement);
-					
-					if (into==null) into = new ValueSetMultiMap<String, CharSequence>();
-					into.put(property, v);
-				}
-			}
-			
-			return into;
-		}
-	}
-	
-	public static class TemplateParameterExtractor implements PropertyExtractor, TemplateUser {
-		//TODO: allow for matching templates by the parameters they contain, etc. use TemplateMatcher
-		protected NameMatcher template;
-		protected TemplateParameterPropertySpec[] properties;
-		
-		public TemplateParameterExtractor(String template, int flags, TemplateParameterPropertySpec... properties) {
-			this(new ExactNameMatcher(template), properties);
-		}
-		
-		public TemplateParameterExtractor(Pattern template, TemplateParameterPropertySpec... properties) {
-			this(new PatternNameMatcher(template, true), properties);
-		}
-		
-		public TemplateParameterExtractor(NameMatcher template, TemplateParameterPropertySpec... properties) {
-/*			this(new TemplateNameMatcher(template), properties);
-		}
-		
-		public TemplateParameterExtractor(TemplateMatcher template, TemplateParameterPropertySpec... properties) {
-*/
-			if (template==null) throw new NullPointerException();
-			if (properties==null) throw new NullPointerException();
-			
-			this.template = template;
-			this.properties = properties;
-		}
-
-		public MultiMap<String, CharSequence, Set<CharSequence>> extract(WikiPage page, MultiMap<String, CharSequence, Set<CharSequence>> into) {
-			MultiMap<String, TemplateExtractor.TemplateData, List<TemplateExtractor.TemplateData>> tpl = page.getTemplates();
-			
-			for (Iterable<TemplateExtractor.TemplateData> list : template.matches(tpl)) {
-				for (TemplateExtractor.TemplateData m: list) {
-					for (TemplateParameterPropertySpec prop: properties) {
-
-						Set<CharSequence> set = null;
-						set = prop.getPropertyValues(page, m, set);
-
-						if (set!=null) {
-							if (into==null) into = new ValueSetMultiMap<String, CharSequence>();
-							into.putAll(prop.getPropertyName(), set);
-						}
-					}
-				}
-			}
-			
-			return into;
-		}
-
-		public String getTemplateNamePattern() {
-			return template.getRegularExpression();
-		}
-		
-	}
-	
-	protected static String getRegularExpression(Pattern pattern, boolean anchored) {
-		int f = pattern.flags();
-		String p = pattern.pattern();
-		
-		if ((f & Pattern.LITERAL) > 0) return "(" + Pattern.quote(p) + ")";
-		
-		StringBuilder s = new StringBuilder();
-		
-		if ((f & Pattern.CASE_INSENSITIVE) > 0) s.append('i');
-		if ((f & Pattern.UNIX_LINES) > 0) s.append('d');
-		if ((f & Pattern.MULTILINE) > 0) s.append('m');
-		if ((f & Pattern.DOTALL) > 0) s.append('s');
-		if ((f & Pattern.UNICODE_CASE) > 0) s.append('u');
-		if ((f & Pattern.COMMENTS) > 0) s.append('x');
-		
-		if (s.length()>0) s.insert(0, "(?").append(':').append(p).append(')');
-		else s.append(p);
-			
-		if (anchored) s.insert(0, "^").append("$");
-		
-		return s.toString();
-	}
-	
 	public static enum LinkMagic {
 		NONE, 
 		CATEGORY,
@@ -1387,7 +146,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 		public DefaultLinkSimilarityMeasure(CharSequence basename, WikiTextAnalyzer analyzer) {
 			this.analyzer = analyzer;
-			this.basename = toLowerCase(analyzer.normalizeTitle(basename));
+			this.basename = AnalyzerUtils.toLowerCase(analyzer.normalizeTitle(basename));
 		}
 
 		public double measure(WikiLink link) {
@@ -1433,8 +192,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			if (levsim>sim) sim = levsim;
 			if (sim>=1) return sim;
 			
-			if (basewords==null) basewords = analyzer.language.extractWords(replaceUnderscoreBySpace(basename));
-			List<String> textwords = analyzer.language.extractWords(replaceUnderscoreBySpace(text));
+			if (basewords==null) basewords = analyzer.language.extractWords(AnalyzerUtils.replaceUnderscoreBySpace(basename));
+			List<String> textwords = analyzer.language.extractWords(AnalyzerUtils.replaceUnderscoreBySpace(text));
 			
 			double wsim = calculateWordOverlapSimilarity(basewords, textwords);
 			if (wsim>sim) sim = wsim;
@@ -1544,7 +303,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		}
 		
 		public CharSequence getLenientPage() {
-			if (lenientTarget==null) lenientTarget = trimAndLower(determineBaseName(getTarget()));
+			if (lenientTarget==null) lenientTarget = AnalyzerUtils.trimAndLower(determineBaseName(getTarget()));
 			return lenientTarget;
 		}
 		
@@ -1552,14 +311,14 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			CharSequence s = getSection();
 			if (s==null) return null;
 			
-			if (lenientSection==null) lenientSection = trimAndLower(normalizeTitle(s));
+			if (lenientSection==null) lenientSection = AnalyzerUtils.trimAndLower(normalizeTitle(s));
 			return lenientSection;
 		}
 		
 		public CharSequence getLenientText() {
 			if (lenientText==null && StringUtils.equals(text, page)) return getLenientPage();
 			
-			if (lenientText==null) lenientText = trimAndLower(normalizeTitle(getText()));
+			if (lenientText==null) lenientText = AnalyzerUtils.trimAndLower(normalizeTitle(getText()));
 			return lenientText;
 		}
 		
@@ -1641,7 +400,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 	}
 		
-	public class WikiPage {
+	protected class Page implements WikiPage {
 		protected int namespace;
 		protected String title;
 		protected String text;
@@ -1685,14 +444,16 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 		private TemplateExtractor templateExtractor;
 		
-		protected WikiPage(int namespace, String title, String text, boolean forceCase) {
-			super();
+		protected Page(int namespace, String title, String text, boolean forceCase) {
 			this.namespace = namespace;
 			this.title = title;
 			this.text = text;
 			this.name = normalizeTitle(title, forceCase).toString();
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getResourceName()
+		 */
 		public String getResourceName() {
 			if (resourceName==null) {
 				if (namespace == Namespace.MAIN) {
@@ -1707,6 +468,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return resourceName;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getConceptName()
+		 */
 		public String getConceptName() {
 			if (conceptName==null) {
 				if (namespace == Namespace.MAIN || namespace == Namespace.CATEGORY) {
@@ -1720,11 +484,17 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return conceptName;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getProperties()
+		 */
 		public MultiMap<String, CharSequence, Set<CharSequence>> getProperties() {
 			if (properties==null) properties = extractProperties(this);
 			return properties;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getTemplateExtractor()
+		 */
 		public TemplateExtractor getTemplateExtractor() {
 			if (templateExtractor==null) {
 				templateExtractor = 
@@ -1734,14 +504,23 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return templateExtractor;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getNamespace()
+		 */
 		public int getNamespace() {
 			return namespace;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getText()
+		 */
 		public CharSequence getText() {
 			return text;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getCleanedText(boolean)
+		 */
 		public CharSequence getCleanedText(boolean armored) {
 			if (cleaned==null) {
 				cleaned = stripClutter( getText(), namespace, title, armor );
@@ -1751,6 +530,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			else return armor.unarmor(cleaned);
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getFlatText(boolean)
+		 */
 		public CharSequence getFlatText(boolean armored) {
 			if (flat==null) {
 				flat = stripBoxes( getCleanedText(true) );
@@ -1760,6 +542,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			else return armor.unarmor(flat);
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getPlainText(boolean)
+		 */
 		public CharSequence getPlainText(boolean armored) {
 			if (plain==null) {
 				plain = stripMarkup( getFlatText(true) );
@@ -1769,6 +554,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			else return armor.unarmor(plain);
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getFirstParagraph()
+		 */
 		public CharSequence getFirstParagraph() {
 			if (firstParagraph==null) {
 				firstParagraph = armor.unarmor( extractFirstParagraph( getCleanedText(true) ) );
@@ -1801,6 +589,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return firstParagraph;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getFirstSentence()
+		 */
 		public CharSequence getFirstSentence() {
 			if (firstSentence==null) {
 				CharSequence p = getFirstParagraph();
@@ -1810,14 +601,23 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return firstSentence;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getTitle()
+		 */
 		public CharSequence getTitle() {
 			return title;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getName()
+		 */
 		public CharSequence getName() {
 			return name;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getLinks()
+		 */
 		public List<WikiLink> getLinks() {
 			if (links==null) {
 				links = Collections.unmodifiableList( extractLinks( getName(), getCleanedText(true) ) );
@@ -1826,6 +626,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return links;
 		}
 
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getSupplementLinks()
+		 */
 		public Set<CharSequence> getSupplementLinks() {
 			if (supplementLinks==null) {
 				supplementLinks = Collections.unmodifiableSet( determineSupplementLinks( this ) );
@@ -1834,6 +637,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return supplementLinks;
 		}
 
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getSupplementedConcept()
+		 */
 		public CharSequence getSupplementedConcept() {
 			if (supplementedConcept==null) {
 				supplementedConcept = new Holder<CharSequence>(determineSupplementedConcepts( this ));
@@ -1842,6 +648,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return supplementedConcept.getValue();
 		}
 
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getDisambigLinks()
+		 */
 		public List<WikiLink> getDisambigLinks() {
 			if (disambig==null) {
 				disambig = extractDisambigLinks( getName(), getFlatText(true) );
@@ -1850,6 +659,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return disambig;
 		}
 
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getTemplates()
+		 */
 		public MultiMap<String, TemplateData, List<TemplateData>> getTemplates() {
 			if (templates==null) {
 				CharSequence s = getCleanedText(true);
@@ -1860,6 +672,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return templates;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getCategories()
+		 */
 		public Set<String> getCategories() {
 			if (categories==null) {
 				Set<String> c = new HashSet<String>();
@@ -1876,6 +691,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return categories;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getSections()
+		 */
 		public Set<String> getSections() {
 			if (sections==null) {
 				sections = Collections.unmodifiableSet( extractSections( getCleanedText(true) ) );
@@ -1884,6 +702,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return sections;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getSectionsString()
+		 */
 		public String getSectionsString() {
 			if (sectionsString == null) {
 				StringBuilder s = new StringBuilder();
@@ -1899,6 +720,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return sectionsString;
 		}
 
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getCategoriesString()
+		 */
 		public String getCategoriesString() {
 			if (categoriesString == null) {
 				StringBuilder s = new StringBuilder();
@@ -1914,6 +738,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return categoriesString;
 		}
 
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getTemplatesString()
+		 */
 		public String getTemplatesString() {
 			if (templatesString == null) {
 				StringBuilder s = new StringBuilder();
@@ -1929,16 +756,25 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return templatesString;
 		}
 
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getResourceType()
+		 */
 		public ResourceType getResourceType() {
 			if (pageType==null) pageType = determineResourceType(this);
 			return pageType;
 		}
 
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getConceptType()
+		 */
 		public ConceptType getConceptType() {
 			if (conceptType==null) conceptType = determineConceptType(this);
 			return conceptType;
 		}
 
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getTitleTerms()
+		 */
 		public Set<CharSequence> getTitleTerms() {
 			if (titleTerms==null) {
 				titleTerms = determineTitleTerms(this);
@@ -1946,6 +782,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return titleTerms;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getPageTerms()
+		 */
 		public Set<CharSequence> getPageTerms() {
 			if (pageTerms==null) {
 				pageTerms = determinePageTerms(this);
@@ -1953,6 +792,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return pageTerms;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getRedirect()
+		 */
 		public WikiLink getRedirect() {
 			if (redirect==null) {
 				redirect = extractRedirectLink( getName(), getCleanedText(true) );
@@ -1961,6 +803,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return redirect;
 		}
 
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getTitleSuffix()
+		 */
 		public CharSequence getTitleSuffix() {
 			if (titleSuffix == null) {
 				titleSuffix = determineTitleSuffix(name);
@@ -1969,6 +814,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return titleSuffix;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getTitlePrefix()
+		 */
 		public CharSequence getTitlePrefix() {
 			if (titlePrefix == null) {
 				titlePrefix = determineTitlePrefix(name);
@@ -1977,6 +825,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return titlePrefix;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getTitleBaseName()
+		 */
 		public CharSequence getTitleBaseName() {
 			if (baseName == null) {
 				baseName = determineBaseName(name);
@@ -1985,6 +836,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return baseName;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getDisplayTitle()
+		 */
 		public CharSequence getDisplayTitle() {
 			if (displayTitle == null) {
 				TemplateExtractor.TemplateData dt;
@@ -2000,6 +854,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return displayTitle;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getDefaultSortKey()
+		 */
 		public CharSequence getDefaultSortKey() {
 			if (defaultSortKey == null) {
 				TemplateExtractor.TemplateData dst;
@@ -2015,6 +872,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return defaultSortKey;
 		}
 		
+		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getAnalyzer()
+		 */
 		public WikiTextAnalyzer getAnalyzer() {
 			return WikiTextAnalyzer.this;
 		}
@@ -2191,34 +1051,11 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	
 	public WikiPage makePage(int namespace, String title, String text, boolean forceCase) {
 		if (!initialized) throw new IllegalStateException("call initialize() first");
-		return new WikiPage(namespace, title, text, forceCase);
-	}
-	
-	protected static <V> V evalSensors(Collection<Sensor<V>> sensors, WikiPage page, V defValue) {
-		if (sensors==null) return null;
-		
-		for (Sensor<V> sensor : sensors) {
-			if (sensor.sense(page)) return sensor.getValue();
-		}
-		
-		return defValue;
-	}
-	
-	protected static MultiMap<String, CharSequence, Set<CharSequence>> evalPropertyExtractors(Collection<PropertyExtractor> extractors, WikiPage page) {
-		if (extractors==null) return null;
-		
-		MultiMap<String, CharSequence, Set<CharSequence>> m = null;
-		
-		for (PropertyExtractor extractor : extractors) {
-			m = extractor.extract(page, m);
-		}
-		
-		if (m==null) m = ValueSetMultiMap.empty();
-		return m;
+		return new Page(namespace, title, text, forceCase);
 	}
 	
 	protected MultiMap<String, CharSequence, Set<CharSequence>> extractProperties(WikiPage page) {
-		MultiMap<String, CharSequence, Set<CharSequence>> m = evalPropertyExtractors(config.propertyExtractors, page);
+		MultiMap<String, CharSequence, Set<CharSequence>> m = AnalyzerUtils.evalPropertyExtractors(config.propertyExtractors, page);
 		if (m==null) m = ValueSetMultiMap.empty();
 		return m;
 	}
@@ -2244,40 +1081,40 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		String name = matcher.group(1).toUpperCase();
 		
 		if (name.equals("PAGENAME")) {
-			return replaceUnderscoreBySpace(title);
+			return AnalyzerUtils.replaceUnderscoreBySpace(title);
 		}
 		else if (name.equals("PAGENAMEE")) {
-			return replaceSpaceByUnderscore(title);
+			return AnalyzerUtils.replaceSpaceByUnderscore(title);
 		}
 		else if (name.equals("SUBPAGENAME")) {
 			subpageMatcher.reset(title);
-			return replaceUnderscoreBySpace(subpageMatcher.replaceAll("$2"));
+			return AnalyzerUtils.replaceUnderscoreBySpace(subpageMatcher.replaceAll("$2"));
 		}
 		else if (name.equals("SUBPAGENAMEE")) {
 			subpageMatcher.reset(title);
-			return replaceSpaceByUnderscore(subpageMatcher.replaceAll("$2"));
+			return AnalyzerUtils.replaceSpaceByUnderscore(subpageMatcher.replaceAll("$2"));
 		}
 		else if (name.equals("BASEPAGENAME")) {
 			subpageMatcher.reset(title);
-			return replaceUnderscoreBySpace(subpageMatcher.replaceAll("$1"));
+			return AnalyzerUtils.replaceUnderscoreBySpace(subpageMatcher.replaceAll("$1"));
 		}
 		else if (name.equals("BASEPAGENAMEE")) {
 			subpageMatcher.reset(title);
-			return replaceSpaceByUnderscore(subpageMatcher.replaceAll("$1"));
+			return AnalyzerUtils.replaceSpaceByUnderscore(subpageMatcher.replaceAll("$1"));
 		}
 		else if (name.equals("NAMESPACE")) {
-			return replaceUnderscoreBySpace(namespaces.getNamespace(namespace).getLocalName());
+			return AnalyzerUtils.replaceUnderscoreBySpace(namespaces.getNamespace(namespace).getLocalName());
 		}
 		else if (name.equals("NAMESPACEE")) {
-			return replaceUnderscoreBySpace(namespaces.getNamespace(namespace).getLocalName());
+			return AnalyzerUtils.replaceUnderscoreBySpace(namespaces.getNamespace(namespace).getLocalName());
 		}
 		else if (name.equals("FULLPAGENAME")) {
 			if (namespace!=0) title = namespaces.getNamespace(namespace).getLocalName() + ":" + title;  
-			return replaceUnderscoreBySpace(title);
+			return AnalyzerUtils.replaceUnderscoreBySpace(title);
 		}
 		else if (name.equals("FULLPAGENAMEE")) {
 			if (namespace!=0) title = namespaces.getNamespace(namespace).getLocalName() + ":" + title;  
-			return replaceSpaceByUnderscore(title);
+			return AnalyzerUtils.replaceSpaceByUnderscore(title);
 		}
 		else {
 			return matcher.group(0);
@@ -2303,23 +1140,23 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
 
 	protected ResourceType determineResourceType(WikiPage page) {
-		if (page.namespace == Namespace.CATEGORY) return ResourceType.CATEGORY;
+		if (page.getNamespace() == Namespace.CATEGORY) return ResourceType.CATEGORY;
 		
-		ResourceType t = evalSensors(config.supplementSensors, page, null);
+		ResourceType t = AnalyzerUtils.evalSensors(config.supplementSensors, page, null);
 		if (t != null) return t;
 		
 		if (page.getSupplementedConcept()!=null) return ResourceType.SUPPLEMENT;
 		
-		if (page.namespace != Namespace.MAIN) return ResourceType.OTHER;
+		if (page.getNamespace() != Namespace.MAIN) return ResourceType.OTHER;
 		
 		redirectMatcher.reset(page.getCleanedText(true));
 		if (redirectMatcher.find()) return ResourceType.REDIRECT;
 		
-		return (ResourceType)evalSensors(config.resourceTypeSensors, page, ResourceType.ARTICLE);
+		return (ResourceType)AnalyzerUtils.evalSensors(config.resourceTypeSensors, page, ResourceType.ARTICLE);
 	}
 
 	protected ConceptType determineConceptType(WikiPage page) {
-		return (ConceptType)evalSensors(config.conceptTypeSensors, page, ConceptType.OTHER);
+		return (ConceptType)AnalyzerUtils.evalSensors(config.conceptTypeSensors, page, ConceptType.OTHER);
 	}
 
 	protected CharSequence determineTitleSuffix(CharSequence title) {
@@ -2370,7 +1207,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 		//XXX: should take the cached one from a WikiPage, if possible. 
 		//XXX: make another Title class?
-		CharSequence name = trim(replaceUnderscoreBySpace(determineBaseName(title))); 
+		CharSequence name = AnalyzerUtils.trim(AnalyzerUtils.replaceUnderscoreBySpace(determineBaseName(title))); 
 		terms.add( name.toString() );
 		
 		//TODO: use subpage-titles
@@ -2491,7 +1328,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 		//FIXME: decode entities HERE?! That MAY be once too often...
 		
-		target = trim(target);
+		target = AnalyzerUtils.trim(target);
 		if (target.length()<config.minNameLength || target.length()>config.maxNameLength) return null;
 		
 		target = decodeLinkTarget(target);
@@ -2526,14 +1363,14 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		}
 		
 		if (section!=null) { //handle special encoded chars in section ref
-			section = decodeSectionName(trim(section));
-			section = replaceSpaceByUnderscore(section);
+			section = decodeSectionName(AnalyzerUtils.trim(section));
+			section = AnalyzerUtils.replaceSpaceByUnderscore(section);
 		}
 		
 		//handle qualifiers ------------------------
 		idx = StringUtils.indexOf(':', page);
 		if (idx>=0) {
-			CharSequence pre = trim(page.subSequence(0, idx));
+			CharSequence pre = AnalyzerUtils.trim(page.subSequence(0, idx));
 			pre = normalizeTitle(pre);
 			int ns = getNamespaceId(pre);
 			if (ns!=Namespace.NONE) {
@@ -2547,7 +1384,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			}
 			else if (isInterwikiPrefix(pre)) {
 				page = page.subSequence(idx+1, page.length());
-				interwiki = toLowerCase(pre);
+				interwiki = AnalyzerUtils.toLowerCase(pre);
 
 				if (isInterlanguagePrefix(pre) && !esc) {
 					magic = LinkMagic.LANGUAGE;
@@ -2583,7 +1420,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
 
 	public boolean isInterlanguagePrefix(CharSequence pre) {
-		pre = trimAndLower(pre);
+		pre = AnalyzerUtils.trimAndLower(pre);
 		return getLanguageNames().containsKey(pre);
 	}
 	
@@ -2613,10 +1450,10 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
 	
 	public CharSequence normalizeTitle(CharSequence title, boolean forceCase) {
-		title = trim(title);
+		title = AnalyzerUtils.trim(title);
 		if (title.length()==0) return title;
 		
-		title = replaceSpaceByUnderscore(title);
+		title = AnalyzerUtils.replaceSpaceByUnderscore(title);
 		
 		if (titleCase && forceCase && title.charAt(0)>'Z') { //fast check for ascii caps first
 			int ch = Character.codePointAt(title, 0);
@@ -2683,7 +1520,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 				
 			s = config.extractParagraphMangler.mangle(text, pp);
 			if (s==null || s.length()==0) return s;
-			s = trim(stripMarkup(s));
+			s = AnalyzerUtils.trim(stripMarkup(s));
 		} while (s.length()==0 && pp.getIndex()<text.length());
 		
 		return s.length()==0 ? null : s;
@@ -2999,8 +1836,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
 	
 	public boolean mayBeFormOf(CharSequence form, CharSequence base) {
-		form = toLowerCase(form);
-		base = toLowerCase(base);
+		form = AnalyzerUtils.toLowerCase(form);
+		base = AnalyzerUtils.toLowerCase(base);
 		
 		if (config.maxWordFormDistance <= 0) return StringUtils.equals(form, base);
 		
@@ -3056,22 +1893,6 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		}
 	}
 	
-	public static CharSequence replaceSpaceByUnderscore(CharSequence s) {
-		return StringUtils.replace(s, ' ', '_');
-	}
-	
-	public static CharSequence replaceUnderscoreBySpace(CharSequence s) {
-		return StringUtils.replace(s, '_', ' ');
-	}
-	
-	public static void substSpaceByUnderscore(StringBuilder s) {
-		StringUtils.subst(s, ' ', '_');
-	}
-	
-	public static void substUnderscoreBySpace(StringBuilder s) {
-		StringUtils.subst(s, '_', ' ');
-	}
-		
 	public static void main(String[] args) throws InstantiationException, IOException {
 		String lang = args[0];
 		String name = args[1];

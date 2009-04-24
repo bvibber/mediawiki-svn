@@ -119,8 +119,8 @@ public class PlainTextAnalyzer extends AbstractAnalyzer {
 			pos = text.length();
 		}
 		
-		if (pos!=0) text = trim(s);
-		else trim(text);
+		if (pos!=0) text = AnalyzerUtils.trim(s);
+		else AnalyzerUtils.trim(text);
 		
 		return text;
 	}

@@ -22,9 +22,10 @@ import de.brightbyte.util.SystemUtils;
 import de.brightbyte.wikiword.NamespaceSet;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.analyzer.AnalyzerUtils;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiTextSniffer;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiPage;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
@@ -312,7 +313,7 @@ public abstract class AbstractImporter implements WikiWordImporter {
 	}	
 	
 	protected final int importPage(int namespace, String title, String text, Date timestamp) throws PersistenceException {
-		    WikiTextAnalyzer.WikiPage page = analyzer.makePage(namespace, title, text, forceTitleCase);
+		    WikiPage page = analyzer.makePage(namespace, title, text, forceTitleCase);
 
 		    //TODO: check if page is stored. if up to date, skip. if older, update. if missing, create. optionally force update.
 		    
@@ -324,7 +325,7 @@ public abstract class AbstractImporter implements WikiWordImporter {
 			return importPage(page, timestamp); 
 	}
 
-	protected abstract int importPage(WikiTextAnalyzer.WikiPage page, Date timestamp) throws PersistenceException;
+	protected abstract int importPage(WikiPage page, Date timestamp) throws PersistenceException;
 	
 	public int getProgressInterval() {
 		return progressInterval;
@@ -376,7 +377,7 @@ public abstract class AbstractImporter implements WikiWordImporter {
 			this.skip = 1;
 		}
 
-		if (skipTo!=null) skipTo = WikiTextAnalyzer.replaceUnderscoreBySpace(analyzer.normalizeTitle(skipTo)).toString();
+		if (skipTo!=null) skipTo = AnalyzerUtils.replaceUnderscoreBySpace(analyzer.normalizeTitle(skipTo)).toString();
 		this.limit = args.getIntOption("limit", -1);
 		this.skip = args.getIntOption("skip", 0);
 		

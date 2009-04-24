@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.analyzer;
+package de.brightbyte.wikiword.analyzer.template;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,17 +15,19 @@ import de.brightbyte.data.ValueSetMultiMap;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.IOUtil;
 import de.brightbyte.util.SubstringMatcher;
+import de.brightbyte.wikiword.analyzer.AnalyzerUtils;
+import de.brightbyte.wikiword.analyzer.mangler.TextArmor;
 import de.brightbyte.xml.HtmlEntities;
 
 public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 	
 	public static final Factory factory = new Factory() {
-		public TemplateExtractor newTemplateExtractor(Context context, AbstractAnalyzer.TextArmor armor) {
+		public TemplateExtractor newTemplateExtractor(Context context, TextArmor armor) {
 			return new DeepTemplateExtractor(context, armor);
 		}
 	};
 	
-	public DeepTemplateExtractor(Context context, AbstractAnalyzer.TextArmor armor) {
+	public DeepTemplateExtractor(Context context, TextArmor armor) {
 		super(context, armor);
 	}
 
@@ -81,7 +83,7 @@ public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 			n = getMagicTemplateId(n);
 			
 			if (n!=null) {
-				CharSequence v = AbstractAnalyzer.trim( name.substring(idx+1) );
+				CharSequence v = AnalyzerUtils.trim( name.substring(idx+1) );
 				
 				data = new TemplateData();
 
@@ -196,7 +198,7 @@ public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 		else {
 			if (data!=null) {
 				n = markerScanner.getText().subSequence(start, end);
-				n = AbstractAnalyzer.trim(n);
+				n = AnalyzerUtils.trim(n);
 			}
 			
 			if (m!=6) { //no =, so not a named param
@@ -248,7 +250,7 @@ public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 			if (data!=null) {
 				v = markerScanner.getText().subSequence(start, end);
 
-				v = AbstractAnalyzer.trim(v);
+				v = AnalyzerUtils.trim(v);
 				v = stripMarkup(v, true);
 				
 				v = HtmlEntities.decodeEntities(v);
@@ -329,7 +331,7 @@ public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 		
 		};
 		
-		DeepTemplateExtractor extractor = new DeepTemplateExtractor(context, new AbstractAnalyzer.TextArmor());
+		DeepTemplateExtractor extractor = new DeepTemplateExtractor(context, new TextArmor());
 				
 		MultiMap<String, TemplateData, List<TemplateData>> templates = extractor.extractTemplates(t);
 		

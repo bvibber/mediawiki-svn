@@ -1,11 +1,13 @@
-package de.brightbyte.wikiword.analyzer;
+package de.brightbyte.wikiword.analyzer.template;
+
+import de.brightbyte.wikiword.analyzer.mangler.TextArmor;
 
 
 public abstract class AbstractTemplateExtractor implements TemplateExtractor {
 	private Context context;
-	private AbstractAnalyzer.TextArmor armor;
+	private TextArmor armor;
 	
-	public AbstractTemplateExtractor(Context context, AbstractAnalyzer.TextArmor armor) {
+	public AbstractTemplateExtractor(Context context, TextArmor armor) {
 		if (context==null) throw new NullPointerException();
 		if (armor==null) throw new NullPointerException();
 		

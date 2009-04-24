@@ -11,7 +11,7 @@ import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiPage;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 
 public class PropertyImporter extends ConceptImporter {
@@ -40,7 +40,7 @@ public class PropertyImporter extends ConceptImporter {
 	*/
 	
 	@Override
-	public int importPage(WikiTextAnalyzer.WikiPage analyzerPage, Date timestamp) throws PersistenceException {
+	public int importPage(WikiPage analyzerPage, Date timestamp) throws PersistenceException {
 		String name = analyzerPage.getConceptName();
 		String rcName = analyzerPage.getResourceName();
 		

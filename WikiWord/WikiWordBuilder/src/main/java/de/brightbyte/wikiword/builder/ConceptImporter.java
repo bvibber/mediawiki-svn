@@ -17,7 +17,7 @@ import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiPage;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
@@ -147,7 +147,7 @@ public class ConceptImporter extends AbstractImporter {
 				
 				LocalConceptReference r;
 				while ((r = c.next())!=null) {
-					WikiTextAnalyzer.WikiPage analyzerPage = analyzer.makePage(0, r.getName(), "", false); //XXX: bypass analyzer page? 
+					WikiPage analyzerPage = analyzer.makePage(0, r.getName(), "", false); //XXX: bypass analyzer page? 
 					storePageTerms(-1, r.getId(), analyzerPage); //FIXME: skip sections, foo#bar is not a good term!
 		
 					if (useSuffixAsCategory) {
@@ -225,7 +225,7 @@ public class ConceptImporter extends AbstractImporter {
 		}
 	}
 	
-	protected void storePageTerms(int rcId, int conceptId, WikiTextAnalyzer.WikiPage analyzerPage) throws PersistenceException {
+	protected void storePageTerms(int rcId, int conceptId, WikiPage analyzerPage) throws PersistenceException {
 		storePageTerms(rcId, analyzerPage.getTitleTerms(), conceptId, analyzerPage.getName().toString(), ExtractionRule.TERM_FROM_TITLE);
 		storePageTerms(rcId, analyzerPage.getPageTerms(), conceptId, analyzerPage.getName().toString(), ExtractionRule.TERM_FROM_IDENTIFIER);
 		
@@ -242,7 +242,7 @@ public class ConceptImporter extends AbstractImporter {
 	}
 	
 	@Override
-	public int importPage(WikiTextAnalyzer.WikiPage analyzerPage, Date timestamp) throws PersistenceException {
+	public int importPage(WikiPage analyzerPage, Date timestamp) throws PersistenceException {
 		ResourceType ptype = analyzerPage.getResourceType();
 		String name = analyzerPage.getConceptName();
 		String rcName = analyzerPage.getResourceName();
