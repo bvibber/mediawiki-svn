@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Translations of Tasks extension.
  *
@@ -12,79 +11,79 @@ $messages = array();
  * @author Magnus Manske
  */
 $messages['en'] = array( 
-		'tasks' => 'Tasks',
-		'tasks_desc' => 'An extension to manage tasks',
-		'tasks_tab' => 'Tasks',
-		'tasks_title' => "Tasks for \"$1\"",
-		'tasks_form_new' => "Create new task",
-		'tasks_form_comment' => "Comment",
-		'tasks_error1' => "Task was not created: there is already such a task!",
-		'tasks_ok1' => "New task has been created!",
-		'tasks_create_header' => "Create a new task",
-		'tasks_existing_header' => "Existing tasks",
-		'tasks_existing_table_header' => "Task|Dates|Initial comment|Assignment/Actions/Page",
-		'tasks_noone' => "no one",
-		'tasks_assign_me' => "Assign myself",
-		'tasks_assign_to' => "Assign to",
-		'tasks_unassign_me' => "Remove my assignment",
-		'tasks_close' => "Close task",
-		'tasks_wontfix' => "Won't fix",
-		'tasks_delete' => "Delete",
-		'tasks_no_task_delete_title' => "Not allowed",
-		'tasks_no_task_delete_texe' => "You are not allowed to delete a task. Only admins can do that.",
-		'tasks_action_delete' => "A task was deleted.",
-		'tasks_task_was_deleted' => "The task was successfully deleted.",
-		'tasks_reopen' => "Reopen task",
-		'tasks_assignedto' => "Assigned to $1",
-		'tasks_created_by' => "Created by $1",
-		'tasks_discussion_page_link' => "Task discussion page",
-		'tasks_closedby' => "Closed by $1",
-		'tasks_assigned_myself_log' => "Self-assignment of task \"$1\"",
-		'tasks_discussion_page_for' => "This task is for the page \"$1\". The list of all tasks for that page is $2.",
-		'tasks_sidebar_title' => "Open tasks",
-		'tasks_here' => "here",
-		'tasks_returnto' => "You will be redirected now. If you have not been redirected in a few seconds, click $1.",
-		'tasks_see_page_tasks' => "(tasks of this page)",
-		'tasks_task_is_assigned' => "(assigned)",
-		'tasks_plain_text_only' => "(plain text, 256 chars only)",
-		'tasks_help_page' => "Tasks",
-		'tasks_help_page_link' => "?", # only translate this message to other languages if you have to change it
-		'tasks_help_separator' => "$2{{int:pipe-separator}}$1", # do not translate or duplicate this message to other languages
-		'tasks_more_like_it' => "more",
-		'tasks_task_types' => "1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write|7:check:Check",
-		'tasks_significance_order' => "rewrite<delete", # do not translate or duplicate this message to other languages
-		'tasks_creation_tasks' => "5,6", # do not translate or duplicate this message to other languages
-		'tasks_event_on_creation' => "check",
-		'tasks_event_on_creation_anon' => "check",
-		'tasks_on_creation_comment' => "Automatic task, generated on page creation",
-		'tasks_link_your_assignments' => "open assignments",
-		'tasks_see_your_assignments' => "You currently have $1 open {{PLURAL:$1|assignment|assignments}}. See your $2.",
-		'tasks_my_assignments' => "Your current {{PLURAL:$1|assignment|assignments}}",
-		'tasks_table_header_page' => "Page",
-		'tasks_you_have_no_assignments' => "You have no open assignments",
-		'tasks_search_form_title' => "Search",
-		'tasks_search_tasks' => "Tasks",
-		'tasks_search_status' => "Status",
-		'tasks_search_no_tasks_chosen_note' => "(No selection here will search all task types.)",
-		'tasks_search_results' => "Search results",
-		'tasks_previous' => "Previous",
-		'tasks_next' => "Next",
-		'tasks_sort' => "Sort",
-		'tasks_ascending' => "Oldest first",
-		'tasks_search_limit' => "10",
-		'tasks_status_open' => "Open",
-		'tasks_status_assigned' => "Assigned",
-		'tasks_status_closed' => "Closed",
-		'tasks_status_wontfix' => "Won't fix",
-		'tasks_action_open' => "Task \"$1\" opened.",
-		'tasks_action_assigned' => "Task \"$1\" assigned.",
-		'tasks_action_closed' => "Task \"$1\" closed.",
-		'tasks_action_wontfix' => "Won't fix task \"$1\".",
-		'tasks_sign_delete' => "<b>It has been asked to delete this page!</b>",
-		'tasks_logpage' => "Tasks log",
-		'tasks_logpagetext' => 'This is a log of changes to tasks',
-		'tasks_logentry' => 'For "[[$1]]"',
-		'tog-show_task_comments' => 'Transclude task comments page.',
+	'tasks' => 'Tasks',
+	'tasks_desc' => 'An extension to manage tasks',
+	'tasks_tab' => 'Tasks',
+	'tasks_title' => "Tasks for \"$1\"",
+	'tasks_form_new' => "Create new task",
+	'tasks_form_comment' => "Comment",
+	'tasks_error1' => "Task was not created: there is already such a task!",
+	'tasks_ok1' => "New task has been created!",
+	'tasks_create_header' => "Create a new task",
+	'tasks_existing_header' => "Existing tasks",
+	'tasks_existing_table_header' => "Task|Dates|Initial comment|Assignment/Actions/Page",
+	'tasks_noone' => "no one",
+	'tasks_assign_me' => "Assign myself",
+	'tasks_assign_to' => "Assign to",
+	'tasks_unassign_me' => "Remove my assignment",
+	'tasks_close' => "Close task",
+	'tasks_wontfix' => "Won't fix",
+	'tasks_delete' => "Delete",
+	'tasks_no_task_delete_title' => "Not allowed",
+	'tasks_no_task_delete_texe' => "You are not allowed to delete a task. Only admins can do that.",
+	'tasks_action_delete' => "A task was deleted.",
+	'tasks_task_was_deleted' => "The task was successfully deleted.",
+	'tasks_reopen' => "Reopen task",
+	'tasks_assignedto' => "Assigned to $1",
+	'tasks_created_by' => "Created by $1",
+	'tasks_discussion_page_link' => "Task discussion page",
+	'tasks_closedby' => "Closed by $1",
+	'tasks_assigned_myself_log' => "Self-assignment of task \"$1\"",
+	'tasks_discussion_page_for' => "This task is for the page \"$1\". The list of all tasks for that page is $2.",
+	'tasks_sidebar_title' => "Open tasks",
+	'tasks_here' => "here",
+	'tasks_returnto' => "You will be redirected now. If you have not been redirected in a few seconds, click $1.",
+	'tasks_see_page_tasks' => "(tasks of this page)",
+	'tasks_task_is_assigned' => "(assigned)",
+	'tasks_plain_text_only' => "(plain text, 256 chars only)",
+	'tasks_help_page' => "Tasks",
+	'tasks_help_page_link' => "?", # only translate this message to other languages if you have to change it
+	'tasks_help_separator' => "$2{{int:pipe-separator}}$1", # do not translate or duplicate this message to other languages
+	'tasks_more_like_it' => "more",
+	'tasks_task_types' => "1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write|7:check:Check",
+	'tasks_significance_order' => "rewrite<delete", # do not translate or duplicate this message to other languages
+	'tasks_creation_tasks' => "5,6", # do not translate or duplicate this message to other languages
+	'tasks_event_on_creation' => "check",
+	'tasks_event_on_creation_anon' => "check",
+	'tasks_on_creation_comment' => "Automatic task, generated on page creation",
+	'tasks_link_your_assignments' => "open assignments",
+	'tasks_see_your_assignments' => "You currently have $1 open {{PLURAL:$1|assignment|assignments}}. See your $2.",
+	'tasks_my_assignments' => "Your current {{PLURAL:$1|assignment|assignments}}",
+	'tasks_table_header_page' => "Page",
+	'tasks_you_have_no_assignments' => "You have no open assignments",
+	'tasks_search_form_title' => "Search",
+	'tasks_search_tasks' => "Tasks",
+	'tasks_search_status' => "Status",
+	'tasks_search_no_tasks_chosen_note' => "(No selection here will search all task types.)",
+	'tasks_search_results' => "Search results",
+	'tasks_previous' => "Previous",
+	'tasks_next' => "Next",
+	'tasks_sort' => "Sort",
+	'tasks_ascending' => "Oldest first",
+	'tasks_search_limit' => "10",
+	'tasks_status_open' => "Open",
+	'tasks_status_assigned' => "Assigned",
+	'tasks_status_closed' => "Closed",
+	'tasks_status_wontfix' => "Won't fix",
+	'tasks_action_open' => "Task \"$1\" opened.",
+	'tasks_action_assigned' => "Task \"$1\" assigned.",
+	'tasks_action_closed' => "Task \"$1\" closed.",
+	'tasks_action_wontfix' => "Won't fix task \"$1\".",
+	'tasks_sign_delete' => "<b>It has been asked to delete this page!</b>",
+	'tasks_logpage' => "Tasks log",
+	'tasks_logpagetext' => 'This is a log of changes to tasks',
+	'tasks_logentry' => 'For "[[$1]]"',
+	'tasks-pref-showtaskcomments' => 'Transclude task comments page.',
 );
 
 /** Message documentation (Message documentation)
@@ -199,7 +198,7 @@ $messages['ar'] = array(
 	'tasks_logpage' => 'سجل المهام',
 	'tasks_logpagetext' => 'هذا سجل لتغييرات المهام',
 	'tasks_logentry' => 'لأجل [[$1]]',
-	'tog-show_task_comments' => 'ضمن صفحة تعليقات المهمة.',
+	'tasks-pref-showtaskcomments' => 'ضمن صفحة تعليقات المهمة.',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -276,7 +275,7 @@ $messages['arz'] = array(
 	'tasks_logpage' => 'سجل المهام',
 	'tasks_logpagetext' => 'هذا سجل لتغييرات المهام',
 	'tasks_logentry' => 'لأجل [[$1]]',
-	'tog-show_task_comments' => 'ضمن صفحة تعليقات المهمة.',
+	'tasks-pref-showtaskcomments' => 'ضمن صفحة تعليقات المهمة.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -352,7 +351,7 @@ $messages['be-tarask'] = array(
 	'tasks_logpage' => 'Журнал заданьняў',
 	'tasks_logpagetext' => 'Гэта журнал зьменаў заданьняў',
 	'tasks_logentry' => 'Для «[[$1]]»',
-	'tog-show_task_comments' => 'Далучыць старонку камэнтараў заданьня.',
+	'tasks-pref-showtaskcomments' => 'Далучыць старонку камэнтараў заданьня.',
 );
 
 /** Bulgarian (Български)
@@ -464,7 +463,7 @@ $messages['bs'] = array(
 	'tasks_logpage' => 'Zapisnik zadataka',
 	'tasks_logpagetext' => 'Ovo je zapisnik promjena u zadacima',
 	'tasks_logentry' => 'za "[[$1]]"',
-	'tog-show_task_comments' => 'Uključivanje stranice komentara zadatka.',
+	'tasks-pref-showtaskcomments' => 'Uključivanje stranice komentara zadatka.',
 );
 
 /** Czech (Česky)
@@ -537,7 +536,7 @@ $messages['cs'] = array(
 	'tasks_logpage' => 'Seznam úkolů',
 	'tasks_logpagetext' => 'Toto je seznam změn v úkolech',
 	'tasks_logentry' => 'Pro „[[$1]]“',
-	'tog-show_task_comments' => 'Vložení diskusní stránky úkolu.',
+	'tasks-pref-showtaskcomments' => 'Vložení diskusní stránky úkolu.',
 );
 
 /** German (Deutsch)
@@ -619,7 +618,7 @@ Falls du nicht in ein paar Sekunden weitergeleitet wirst, klicke $1.',
 	'tasks_logpage' => 'Aufgaben-Logbuch',
 	'tasks_logpagetext' => 'Dieses Logbuch protokolliert Änderungen an Aufgaben.',
 	'tasks_logentry' => 'für „[[$1]]“',
-	'tog-show_task_comments' => 'Aufgaben-Diskussionsseite einbinden.',
+	'tasks-pref-showtaskcomments' => 'Aufgaben-Diskussionsseite einbinden.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -705,7 +704,7 @@ $messages['dsb'] = array(
 	'tasks_logpage' => 'Protokol nadawkow',
 	'tasks_logpagetext' => 'To jo protokol změnow k nadawkam',
 	'tasks_logentry' => 'Za "[[$1]]"',
-	'tog-show_task_comments' => 'Bok za nadawkowe komentary zapśěgnuś',
+	'tasks-pref-showtaskcomments' => 'Bok za nadawkowe komentary zapśěgnuś',
 );
 
 /** Greek (Ελληνικά)
@@ -808,7 +807,7 @@ $messages['eo'] = array(
 	'tasks_logpage' => 'Protokolo de taskoj',
 	'tasks_logpagetext' => 'Jen protokolo de ŝanĝoj al taskoj',
 	'tasks_logentry' => 'Por "[[$1]]"',
-	'tog-show_task_comments' => 'Transinkluzivi paĝon de taskaj komentoj.',
+	'tasks-pref-showtaskcomments' => 'Transinkluzivi paĝon de taskaj komentoj.',
 );
 
 /** Spanish (Español)
@@ -1009,7 +1008,7 @@ $messages['fr'] = array(
 	'tasks_logpage' => 'Historique des tâches',
 	'tasks_logpagetext' => 'Ceci est un historique des changements dans les tâches',
 	'tasks_logentry' => 'Pour « [[$1]] »',
-	'tog-show_task_comments' => 'Voir la page de commentaires à propos des tâches.',
+	'tasks-pref-showtaskcomments' => 'Voir la page de commentaires à propos des tâches.',
 );
 
 /** Galician (Galego)
@@ -1083,7 +1082,7 @@ $messages['gl'] = array(
 	'tasks_logpage' => 'Rexistro de tarefas',
 	'tasks_logpagetext' => 'Este é un rexistro dos cambios feitos nas tarefas',
 	'tasks_logentry' => 'De "[[$1]]"',
-	'tog-show_task_comments' => 'Páxina de comentarios das tarefas.',
+	'tasks-pref-showtaskcomments' => 'Páxina de comentarios das tarefas.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1174,7 +1173,7 @@ Wänn Du in e paar Sekunden imfall nit wytergleitet wirsch, no druck $1.',
 	'tasks_logpage' => 'Ufgabe-Logbuech',
 	'tasks_logpagetext' => 'In däm Logbuech stehn d Änderige an Ufgabe.',
 	'tasks_logentry' => 'Fir „[[$1]]“',
-	'tog-show_task_comments' => 'Ufgabe-Diskussionssyte yybinde.',
+	'tasks-pref-showtaskcomments' => 'Ufgabe-Diskussionssyte yybinde.',
 );
 
 /** Hawaiian (Hawai`i)
@@ -1256,7 +1255,7 @@ $messages['he'] = array(
 	'tasks_logpage' => 'יומן משימות',
 	'tasks_logpagetext' => 'יומן זה מציג את השינויים במשימות',
 	'tasks_logentry' => 'עבור "[[$1]]"',
-	'tog-show_task_comments' => 'הכללת דף השיחה של המשימה.',
+	'tasks-pref-showtaskcomments' => 'הכללת דף השיחה של המשימה.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1330,7 +1329,7 @@ $messages['hsb'] = array(
 	'tasks_logpage' => 'Protokol nadawkow',
 	'tasks_logpagetext' => 'To je protokol změnow za nadawki',
 	'tasks_logentry' => 'Za "[[$1]]"',
-	'tog-show_task_comments' => 'Komentarowu stronu nadawkow zapřijeć',
+	'tasks-pref-showtaskcomments' => 'Komentarowu stronu nadawkow zapřijeć',
 );
 
 /** Interlingua (Interlingua)
@@ -1404,7 +1403,7 @@ $messages['ia'] = array(
 	'tasks_logpage' => 'Registro de cargas',
 	'tasks_logpagetext' => 'Isto es un registro de cambiamentos in le cargas',
 	'tasks_logentry' => 'Pro "[[$1]]"',
-	'tog-show_task_comments' => 'Inserer le pagina de commentos super le carga.',
+	'tasks-pref-showtaskcomments' => 'Inserer le pagina de commentos super le carga.',
 );
 
 /** Italian (Italiano)
@@ -1479,7 +1478,7 @@ $messages['it'] = array(
 	'tasks_logpage' => 'Registro attività',
 	'tasks_logpagetext' => 'Registro delle modifiche alle attività',
 	'tasks_logentry' => 'Per "[[$1]]"',
-	'tog-show_task_comments' => "Inclusione della pagina dei commenti dell'attività",
+	'tasks-pref-showtaskcomments' => "Inclusione della pagina dei commenti dell'attività",
 );
 
 /** Japanese (日本語)
@@ -1554,7 +1553,7 @@ $messages['ja'] = array(
 	'tasks_logpage' => '課題記録',
 	'tasks_logpagetext' => 'これは各課題に対する変更の記録です',
 	'tasks_logentry' => '「[[$1]]」関連',
-	'tog-show_task_comments' => '課題へのコメント用ページをトランスクルードする。',
+	'tasks-pref-showtaskcomments' => '課題へのコメント用ページをトランスクルードする。',
 );
 
 /** Javanese (Basa Jawa)
@@ -1758,7 +1757,7 @@ Loor op Ding $2.',
 	'tasks_logpage' => 'Logbooch met de Änderunge aan Aufjabe',
 	'tasks_logpagetext' => 'Dat Logbooch hee zeich Änderunge aan Aufjabe',
 	'tasks_logentry' => 'för „[[$1]]“',
-	'tog-show_task_comments' => 'Dä Aufjab ier Klaafsigg he met aanzeije.',
+	'tasks-pref-showtaskcomments' => 'Dä Aufjab ier Klaafsigg he met aanzeije.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1910,7 +1909,7 @@ Zie uw $2.',
 	'tasks_logpage' => 'Takenlogboek',
 	'tasks_logpagetext' => 'Hieronder staan alle wijzigingen aan taken',
 	'tasks_logentry' => 'Voor "[[$1]]"',
-	'tog-show_task_comments' => 'Opmerkingenpagina voor taak transcluderen.',
+	'tasks-pref-showtaskcomments' => 'Opmerkingenpagina voor taak transcluderen.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1985,7 +1984,7 @@ $messages['nn'] = array(
 	'tasks_logpage' => 'Oppgåvelogg',
 	'tasks_logpagetext' => 'Dette er ein logg over endringar i oppgåver.',
 	'tasks_logentry' => 'For "[[$1]]"',
-	'tog-show_task_comments' => 'Inkluder kommentarsida for oppgåver.',
+	'tasks-pref-showtaskcomments' => 'Inkluder kommentarsida for oppgåver.',
 );
 
 /** Occitan (Occitan)
@@ -2059,7 +2058,7 @@ $messages['oc'] = array(
 	'tasks_logpage' => 'Istoric dels prètzfaches',
 	'tasks_logpagetext' => 'Aquò es un istoric dels cambiaments dins los prètzfaches',
 	'tasks_logentry' => 'Per « [[$1]] »',
-	'tog-show_task_comments' => 'Veire la pagina de comentaris a prepaus dels prètzfaches.',
+	'tasks-pref-showtaskcomments' => 'Veire la pagina de comentaris a prepaus dels prètzfaches.',
 );
 
 /** Ossetic (Иронау)
@@ -2151,7 +2150,7 @@ $messages['pl'] = array(
 	'tasks_logpage' => 'Rejestr zadań',
 	'tasks_logpagetext' => 'To jest rejestr zmian dotyczących zadań',
 	'tasks_logentry' => 'Dla „[[$1]]“',
-	'tog-show_task_comments' => 'Wklej stronę dyskusji zadania.',
+	'tasks-pref-showtaskcomments' => 'Wklej stronę dyskusji zadania.',
 );
 
 /** Pashto (پښتو)
@@ -2242,7 +2241,7 @@ $messages['pt'] = array(
 	'tasks_logpage' => 'Registo de tarefas',
 	'tasks_logpagetext' => 'Este é um registo de alterações às tarefas',
 	'tasks_logentry' => 'Para "[[$1]]"',
-	'tog-show_task_comments' => 'Transcluir página de comentários da tarefa',
+	'tasks-pref-showtaskcomments' => 'Transcluir página de comentários da tarefa',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -2316,7 +2315,7 @@ $messages['pt-br'] = array(
 	'tasks_logpage' => 'Registro de tarefas',
 	'tasks_logpagetext' => 'Este é um registro de alterações às tarefas',
 	'tasks_logentry' => 'Para "[[$1]]"',
-	'tog-show_task_comments' => 'Transcluir página de comentários da tarefa',
+	'tasks-pref-showtaskcomments' => 'Transcluir página de comentários da tarefa',
 );
 
 /** Romanian (Română)
@@ -2439,7 +2438,7 @@ $messages['ru'] = array(
 	'tasks_logpage' => 'Журнал задач',
 	'tasks_logpagetext' => 'Это журнал изменения задач',
 	'tasks_logentry' => 'Для «[[$1]]»',
-	'tog-show_task_comments' => 'Включить страницу примечаний задачи.',
+	'tasks-pref-showtaskcomments' => 'Включить страницу примечаний задачи.',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
@@ -2521,7 +2520,7 @@ $messages['sk'] = array(
 	'tasks_logpage' => 'Záznam úloh',
 	'tasks_logpagetext' => 'Toto je záznam zmien v úlohách',
 	'tasks_logentry' => 'Pre "[[$1]]"',
-	'tog-show_task_comments' => 'Transklúzia diskusnej stránky úlohy.',
+	'tasks-pref-showtaskcomments' => 'Transklúzia diskusnej stránky úlohy.',
 );
 
 /** Seeltersk (Seeltersk)
@@ -2596,7 +2595,7 @@ Fals du nit in n poor Sekunden fääre laited wädst, klik $1.',
 	'tasks_logpage' => 'Apgoawen-Logbouk',
 	'tasks_logpagetext' => 'Dit Logbouk protokolliert Annerengen an Apgoawen.',
 	'tasks_logentry' => 'foar „[[$1]]“',
-	'tog-show_task_comments' => 'Apgoawen-Diskussionssiede ienbiende.',
+	'tasks-pref-showtaskcomments' => 'Apgoawen-Diskussionssiede ienbiende.',
 );
 
 /** Swedish (Svenska)
@@ -2758,7 +2757,7 @@ $messages['tl'] = array(
 	'tasks_logpage' => 'Talaan ng mga gawain',
 	'tasks_logpagetext' => 'Isa itong talaan ng mga pagbabago sa mga gawain',
 	'tasks_logentry' => 'Para kay "[[$1]]"',
-	'tog-show_task_comments' => 'Ilipat-sama ang pahina ng mga puna/kumentong panggawain.',
+	'tasks-pref-showtaskcomments' => 'Ilipat-sama ang pahina ng mga puna/kumentong panggawain.',
 );
 
 /** Turkish (Türkçe)
