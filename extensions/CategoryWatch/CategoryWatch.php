@@ -80,7 +80,7 @@ class CategoryWatch {
 	/**
 	 * Find changes in categorisation and send messages to watching users
 	 */
-	function onArticleSaveComplete( &$article, &$user, &$text, &$summary, &$medit, ) {
+	function onArticleSaveComplete( &$article, &$user, &$text, &$summary, &$medit ) {
 
 		# Get cats after update
 		$this->after = array();
