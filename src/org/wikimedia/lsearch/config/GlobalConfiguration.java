@@ -1536,7 +1536,7 @@ public class GlobalConfiguration {
 	}
 	
 	public ArticleNamespaceScaling getNamespaceScaling(String dbname){
-		if(namespaceBoost.contains(dbname))
+		if(namespaceBoost.containsKey(dbname))
 			return namespaceBoost.get(dbname);
 		else if(namespaceBoost.containsKey("<default>"))
 			return namespaceBoost.get("<default>");
