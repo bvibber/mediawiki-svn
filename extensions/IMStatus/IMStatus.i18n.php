@@ -34,7 +34,7 @@ $messages['en'] = array(
 
         'imstatus_live_code' => 'your Live Messenger website id',
         'imstatus_live_get_code' => 'your Live Messenger website id: <strong>this is not your e-mail address</strong>, you need to generate one in
-<a href="$1">your live messenger options</a>.
+<a href="$1">your Live Messenger options</a>.
 The id you need to provide is the numbers and letters between "$2" and "$3".',
 
         'imstatus_skype_nbstyle' => 'Note: If you choose a style which is also an action, your action choice will be overridden by the action matching your chosen style.',
