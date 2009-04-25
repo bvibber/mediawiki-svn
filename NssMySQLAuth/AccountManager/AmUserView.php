@@ -46,11 +46,15 @@ class AmUserView {
 	}
 	
 	function makeRow( $prop ) {
+		$label = wfMsg( "am-$prop" );
+		if ( wfEmptyMsg( "am-$prop", $label ) )
+			$label = "am-$prop";
+		
 		return ( "\t<tr><td>" . 
-			Xml::label( wfMsg( "am-$prop" ), "am-$prop" ) .
+			Xml::label( $label, "am-$prop" ) .
 			"</td><td>" .
 			Xml::input( /* $name */ "am-$prop", /* $size */ false, 
-				/* $value */ $this->get( $prop ),
+				/* $value */ $this->user->get( $prop ),
 				array( 'id' => "am-$prop" ) ) .
 			"</td></tr>\n"
 		);

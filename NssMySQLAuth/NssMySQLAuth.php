@@ -18,7 +18,7 @@
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'NssMySQLAuth',
-	'version'        => '1.0',
+	'version'        => '1.1',
 	'author'         => 'Bryan Tong Minh',
 	'description'    => 'A plugin to authenticate against a libnss-mysql database. Contains an [[Special:AccountManager|account manager]]',
 	'descriptionmsg' => 'nss-desc',

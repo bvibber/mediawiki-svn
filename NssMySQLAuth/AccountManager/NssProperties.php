@@ -31,6 +31,10 @@ class NssProperties {
 		$this->props = array();
 		$this->changed = array();
 	}
+	
+	function get( $name ) {
+		return $this->props[$name];
+	}
 	function set( $name, $value ) {
 		$this->changed[] = $name;
 		$this->props[$name] = $value;

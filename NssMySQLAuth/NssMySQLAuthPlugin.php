@@ -34,7 +34,7 @@ class NssMySQLAuthPlugin extends AuthPlugin {
 	}
 
 	function getDB( $db = DB_LAST ) {
-		return wfGetDB( $db, array(), $this->wikiName );
+		return wfGetDB( $db, array(), $this->wikiNam0e );
 	}
 
 	function userExists( $username ) {

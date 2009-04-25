@@ -24,7 +24,7 @@ class NssUser {
 		// Load the user existence from passwd
 		$result = $dbr->select( 'passwd',
 			array( 'pwd_uid', 'pwd_gid', 'pwd_home', 'pwd_active', 'pwd_email' ),
-		 	array( 'pwd_name', $this->name ),
+		 	array( 'pwd_name' => $this->name ),
 		 	__METHOD__ 
 		);
 		$row = $result->fetchObject();
@@ -62,9 +62,30 @@ class NssUser {
 	}
 	
 	function get( $name ) {
-		return $this->properties->get( $name );
+		switch ( $name ) {
+			case 'username':
+				return $this->name;
+			case 'home':
+				return $this->home;
+			case 'active':
+				return $this->active;
+			case 'email':
+				return $this->email;
+			default:
+				return $this->properties->get( $name );		
+		}
 	}
 	function set( $name, $value ) {
+		switch ( $name ) {
+			case 'username':
+				return;
+			case 'home':
+				$this->home = $value;
+			case 'active':
+				$this->active = $value;
+			case 'email':
+				$this->email = $value;
+		}
 		return $this->properties->set( $name, $value );
 	}
 	
@@ -86,7 +107,7 @@ class NssUser {
 		global $wgAuth;
 		$dbr = $wgAuth->getDB( DB_READ );
 		
-		$res = $dbr->select( 'passwd', 'pwd_name', __METHOD__ );
+		$res = $dbr->select( 'passwd', 'pwd_name', array(), __METHOD__ );
 		
 		$names = array();
 		while ( $row = $res->fetchObject() )

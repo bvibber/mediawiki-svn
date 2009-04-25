@@ -3,8 +3,8 @@
 class NssGroup {
 	private static $groupsByGid = array();
 	public static function nameFromGid( $gid ) {
-		if ( isset( self::$groupsByGid( $gid ) ) )
-			return self::$groupsByGid( $gid );
+		if ( isset( self::$groupsByGid[$gid] ) )
+			return self::$groupsByGid[$gid];
 		
 		global $wgAuth;
 		$dbr = $wgAuth->getDB( DB_READ );
@@ -13,6 +13,6 @@ class NssGroup {
 		$row = $res->fetchObject();
 		self::$groupsByGid[$gid] = $row ? $row->grp_name : strval( $gid );
 		
-		return self::$groupsByGid( $gid );
+		return self::$groupsByGid[$gid];
 	}
 }
