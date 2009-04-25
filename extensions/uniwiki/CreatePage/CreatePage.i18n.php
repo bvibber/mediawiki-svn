@@ -711,9 +711,19 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'createpage' => 'Tạo trang',
+	'createpage-desc' => 'Thêm một [[Special:CreatePage|trang đặc biệt]] để tạo trang mới',
+	'createpage_submitbutton' => 'Lưu trang',
+	'createpage_instructions' => 'Nhập vào tựa đề của trang bạn muốn tạo:',
+	'createpage_entertitle' => 'Xin nhập vào tựa đề cho trang.',
+	'createpage_titleexists' => 'Đã tồn tại một trang có tựa đề [[$1]].
+Bạn có muốn sửa đổi trang hiện có?',
+	'createpage_tryagain' => 'Không. Tôi muốn tạo một trang khác với tựa đề khác.',
+	'createpage_editexisting' => 'Có. Tôi muốn đóng góp vào trang hiện tại.',
+	'createpage-badtitle' => 'Không được dùng “$1” làm tựa đề trang',
 );
 
 /** Volapük (Volapük)
