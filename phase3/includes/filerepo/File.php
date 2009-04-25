@@ -1087,11 +1087,15 @@ abstract class File {
 				wfDebug("miss\n");
 			}
 			wfDebug( "Fetching shared description from $renderUrl\n" );
-			$res = Http::get( $renderUrl );
-			if ( $res && $this->repo->descriptionCacheExpiry > 0 ) {
-				$wgMemc->set( $key, $res, $this->repo->descriptionCacheExpiry );
+			$status = Http::get( $renderUrl );
+			if( $status->isOK() ){				
+				if ( $status->value && $this->repo->descriptionCacheExpiry > 0 ) {
+					$wgMemc->set( $key, $status->value, $this->repo->descriptionCacheExpiry );
+				}
+				return $res;
+			}else{
+				//http get error
 			}
-			return $res;
 		} else {
 			return false;
 		}

@@ -39,7 +39,6 @@ class ApiUpload extends ApiBase {
 
 	public function execute() {
 		global $wgUser;		
-		
 			
 		$this->getMain()->requestWriteMode();
 		$this->mParams = $this->extractRequestParams();
@@ -84,7 +83,7 @@ class ApiUpload extends ApiBase {
 				);				
 			} elseif( isset( $this->mParams['url'] ) ) {											
 				$this->mUpload = new UploadFromUrl();
-				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url'] );											
+				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url']);											
 			}
 		}		
 		
@@ -233,6 +232,7 @@ class ApiUpload extends ApiBase {
 		return array (
 			'filename' => 'Target filename',
 			'file' => 'File contents',
+			'chunk'=> 'Chunk File Contents',
 			'url' => 'Url to upload from',
 			'comment' => 'Upload comment or initial page text',
 			'watch' => 'Watch the page',

@@ -2147,23 +2147,8 @@ function wfIniGetBool( $setting ) {
  */
 function wfShellExec( $cmd, &$retval=null ) {
 	global $IP, $wgMaxShellMemory, $wgMaxShellFileSize, $wgMaxShellTime;
-
-	static $disabled;
-	if ( is_null( $disabled ) ) {
-		$disabled = false;
-		if( wfIniGetBool( 'safe_mode' ) ) {
-			wfDebug( "wfShellExec can't run in safe_mode, PHP's exec functions are too broken.\n" );
-			$disabled = true;
-		}
-		$functions = explode( ',', ini_get( 'disable_functions' ) );
-		$functions = array_map( 'trim', $functions );
-		$functions = array_map( 'strtolower', $functions );
-		if ( in_array( 'passthru', $functions ) ) {
-			wfDebug( "passthru is in disabled_functions\n" );
-			$disabled = true;
-		}
-	}
-	if ( $disabled ) {
+	
+	if ( ! wfShellExecEnabled() ) {
 		$retval = 1;
 		return "Unable to run external programs in safe mode.";
 	}
@@ -2199,7 +2184,24 @@ function wfShellExec( $cmd, &$retval=null ) {
 	}
 	return $output;
 }
-
+/**
+ * Checks if the current instance can execute a shell command
+ *
+ */
+function wfShellExecEnabled(){			
+	if( wfIniGetBool( 'safe_mode' ) ) {
+		wfDebug( "wfShellExec can't run in safe_mode, PHP's exec functions are too broken.\n" );
+		return false;
+	}
+	$functions = explode( ',', ini_get( 'disable_functions' ) );
+	$functions = array_map( 'trim', $functions );
+	$functions = array_map( 'strtolower', $functions );
+	if ( in_array( 'passthru', $functions ) ) {
+		wfDebug( "passthru is in disabled_functions\n" );
+		return false;
+	}
+	return true;
+}
 /**
  * Workaround for http://bugs.php.net/bug.php?id=45132
  * escapeshellarg() destroys non-ASCII characters if LANG is not a UTF-8 locale
@@ -2597,9 +2599,12 @@ function wfCreateObject( $name, $p ){
  * Alias for modularized function
  * @deprecated Use Http::get() instead
  */
-function wfGetHTTP( $url, $timeout = 'default' ) {
+function wfGetHTTP( $url ) {
 	wfDeprecated(__FUNCTION__);
-	return Http::get( $url, $timeout );
+	$status = Http::get( $url );
+	if( $status->isOK() )
+		return $status->value;		
+	return null;
 }
 
 /**

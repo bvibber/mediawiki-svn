@@ -1,56 +1,42 @@
 <?php
-
 /**
-* simple wrapper / helper PEAR HTTP_Request2
-* http://pear.php.net/package/HTTP_Request2/
+ * HTTP handling class
+ *
  */
-//get our Request2 class: 
-require_once 'HTTP/Request2.php';
+
 
 class Http {
+	const SYNC_DOWNLOAD = 1;  //syncronys upload (in a single request) 
+	const ASYNC_DOWNLOAD = 2; //asynchronous upload we should spawn out another process and monitor progress if possible) 
 	/**
 	 * Simple wrapper for Http::request( 'GET' )
 	 */
 	public static function get( $url, $opts = array() ) {		
 		return self::request($url, 'GET',  $opts );		
 	}		
-	public static function request( $url, $method = 'GET' , $opts = array()){
-		//FIXME do something with the $opts ;
-		$req = new HTTP_Request2( $url, $method, array(	
-			'adapter' 	=>	self::getAdapter(),	
-			'user-agent' => self::userAgent()
-		));
-		return self::doRequest( $req );
-	}
-	/**
-	 * does the actual request 
-	 * returns false on errors
-	 */
-	public static function doRequest( &$req ){
-		try{
-			return $req->send();
-		} catch ( HTTP_Request2_Exception $e ) {
-			//http error:
-			wfDebug( __METHOD__ . $e->getMessage() . "\ncode:" . $e->getCode() );			
-			return false;
-		}
-	}
-	
-	public static function doDownload( $url, $target_path ){
+		
+	public static function doDownload( $url, $target_path , $dl_mode = self::SYNC_DOWNLOAD ){
 		global $wgPhpCliPath, $wgMaxUploadSize;
 				
-		//do a quick check to HEAD to insure the file size is not > $wgMaxUploadSize if it is no need to try and download it
+		//do a quick check to HEAD to insure the file size is not > $wgMaxUploadSize to large no need to download it
 		$head = get_headers($url, 1);
 		if(isset($head['Content-Length']) && $head['Content-Length'] > $wgMaxUploadSize){
 			return Status::newFatal('requested file length ' .$head['Content-Length'] . ' is greater than $wgMaxUploadSize: ' . $wgMaxUploadSize);	
 		}
 		
 		//check if we can find phpCliPath (for doing a background shell request to php to do the download: 
-		if( $wgPhpCliPath ){
+		if( $wgPhpCliPath && wfShellExecEnabled() && $dl_mode == self::ASYNC_DOWNLOAD){
+			//setup session
+			die('do shell exec');
+			//do shell exec req
 			
-		}else{
+			//return success status and download_session_key
+			
+			//(seperate ajax request can now check on the status of the shell exec)... and even kill or cancel it)
+			 
+		}else if( $dl_mode== self::SYNC_DOWNLOAD ){
 			//else just download as much as we can in the time we have left: 
-			self::doDownloadtoFile();
+			return self::doDownloadtoFile($url, $target_path);
 		}
 		
 	}
@@ -62,9 +48,11 @@ class Http {
 	public static function initBackgroundDownload( $url ){
 		global $wgMaxUploadSize;
 		$status = Status::newGood();	
-		//generate a session id with all the details for the download						 
+		//generate a session id with all the details for the download (pid, target_file ) 
+
+		//later add in (destName & description) 
 		$session_id = session_id();
-		print "should spin out a proccess with id: $session_id\n";
+		print "should spin out a process with id: $session_id\n";
 		//maintenance/http_download.php passing it a upload session_id
 			
 		//return status
@@ -81,23 +69,18 @@ class Http {
 	public static function doDownloadtoFile($url, $target_file_path){
 		global $wgCopyUploadTimeout;
 		
-		if(is_file($target_file_path)){
-			$req = new HTTP_Request2( $url, 'GET', array(	
-				'adapter' 			=> self::getAdapter(),	
-				'user-agent' 		=> self::userAgent(),
-				'connect_timeout'	=> $wgCopyUploadTimeout,
-				'target_file_path'	=> $target_file_path
-			));			
-		}
-		self::doRequest( $req );
-		print "GOT FILE of size: " . filesize( $target_file_path ) . "\n";
-		return true;				
+		$status = self::request( $url, array(
+			'target_file'=> $target_file_path
+		) );
+		//print "downloading to FILE target: $target_file_path " . filesize( $target_file_path ) . "\n";
+		return Status::newGood('upload-ok');				
 	}	
 	/**
 	 * Simple wrapper for Http::request( 'POST' )
 	 */
-	public static function post( $url, $timeout = 'default', $opts = array() ) {
-		return Http::request( "POST", $url, $timeout, $opts );
+	public static function post( $url, $opts = array() ) {
+		$opts['method']='POST';
+		return Http::request( $url, $opts );
 	}
 	/*
 	 * sets the remote adapter (we prefer curl) could add a config var if we want.
@@ -111,38 +94,41 @@ class Http {
 	}
 	/**
 	 * Get the contents of a file by HTTP
-	 * @param $method string HTTP method. Usually GET/POST
-	 * @param $url string Full URL to act on
-	 * @param $timeout int Seconds to timeout. 'default' falls to $wgHTTPTimeout
-	 * @param $curlOptions array Optional array of extra params to pass 
-	 * to curl_setopt()
+	 * @param $url string Full URL to act on	 
+	 * @param $Opt associative array Optional array of options:
+	 * 		'method'	  => 'GET', 'POST' etc. 
+	 * 		'target_file' => if curl should output to a target file
+	 * 		'adapter'	  => 'curl', 'soket'
 	 */
-	/*public static function request( $method, $url, $timeout = 'default', $curlOptions = array() ) {
+	 public static function request( $url, $opt = array() ) {
 		global $wgHTTPTimeout, $wgHTTPProxy, $wgTitle;
-
-		// Go ahead and set the timeout if not otherwise specified
-		if ( $timeout == 'default' ) {
-			$timeout = $wgHTTPTimeout;
-		}
+		//set defaults: 
+		$method = (isset($opt['method']))?$opt['method']:'GET';
+		$target_file = (isset($opt['target_file']))?$opt['target_file']:false;
+		
+		$status = Status::newGood();
 
 		wfDebug( __METHOD__ . ": $method $url\n" );
 		# Use curl if available
 		if ( function_exists( 'curl_init' ) ) {
 			$c = curl_init( $url );
+			
+			//proxy setup: 
 			if ( self::isLocalURL( $url ) ) {
 				curl_setopt( $c, CURLOPT_PROXY, 'localhost:80' );
 			} else if ($wgHTTPProxy) {
 				curl_setopt($c, CURLOPT_PROXY, $wgHTTPProxy);
 			}
 
-			curl_setopt( $c, CURLOPT_TIMEOUT, $timeout );
+			curl_setopt( $c, CURLOPT_TIMEOUT, $wgHTTPTimeout );			
 			curl_setopt( $c, CURLOPT_USERAGENT, self :: userAgent() );
+			
 			if ( $method == 'POST' ) {
 				curl_setopt( $c, CURLOPT_POST, true );
 				curl_setopt( $c, CURLOPT_POSTFIELDS, '' );
-			}
-			else
+			}else{
 				curl_setopt( $c, CURLOPT_CUSTOMREQUEST, $method );
+			}
 
 			# Set the referer to $wgTitle, even in command-line mode
 			# This is useful for interwiki transclusion, where the foreign
@@ -152,12 +138,7 @@ class Http {
 			if ( is_object( $wgTitle ) ) {
 				curl_setopt( $c, CURLOPT_REFERER, $wgTitle->getFullURL() );
 			}
-			
-			if ( is_array( $curlOptions ) ) {
-				foreach( $curlOptions as $option => $value ) {
-					curl_setopt( $c, $option, $value );
-				}
-			}
+						
 
 			ob_start();
 			curl_exec( $c );
@@ -179,7 +160,7 @@ class Http {
 			}
 			curl_close( $c );
 		} else {
-			# Otherwise use file_get_contents...
+			# Otherwise use file_get_contents...			
 			# This doesn't have local fetch capabilities...
 
 			$headers = array( "User-Agent: " . self :: userAgent() );
@@ -194,10 +175,17 @@ class Http {
 					'timeout' => $timeout ) );
 			$ctx = stream_context_create($opts);
 
-			$text = file_get_contents( $url, false, $ctx );
+			$status->value = file_get_contents( $url, false, $ctx );
+			if(!$status->value){
+				$status->error('file_get_contents-failed');
+			}
 		}
-		return $text;
-	}*/
+		if(!$target_file){
+			return $status;
+		}else{
+			return true;
+		}
+	}
 
 	/**
 	 * Check if the URL can be served by localhost

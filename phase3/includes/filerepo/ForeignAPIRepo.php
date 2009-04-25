@@ -89,11 +89,13 @@ class ForeignAPIRepo extends FileRepo {
 			$key = wfMemcKey( 'ForeignAPIRepo', 'Metadata', md5( $url ) );
 			$data = $wgMemc->get( $key );
 			if( !$data ) {
-				$data = Http::get( $url );
-				if ( !$data ) {
+				$status = Http::get( $url );
+				if ( $status->isOK() ) {
+					$wgMemc->set( $key, $data, 3600 );	
+				}else{
+					//FIXME maybe return status? 
 					return null;
-				}
-				$wgMemc->set( $key, $data, 3600 );
+				}				
 			}
 
 			if( count( $this->mQueryCache ) > 100 ) {
@@ -167,9 +169,12 @@ class ForeignAPIRepo extends FileRepo {
 				return $foreignUrl;
 			}
 			$localUrl =  $wgServer . $wgUploadPath . '/' . $path . $fileName;
-			$thumb = Http::get( $foreignUrl );
-			# FIXME: Delete old thumbs that aren't being used. Maintenance script?
-			file_put_contents($wgUploadDirectory . '/' . $path . $fileName, $thumb );
+			//FIXME could use the download to file::
+			$status = Http::doDownload( $foreignUrl, 
+				$wgUploadDirectory . '/' . $path . $fileName,
+				Http::SYNC_DOWNLOAD //need to download right away
+			);						
+			# FIXME: Delete old thumbs that aren't being used. Maintenance script?			
 			$wgMemc->set( $key, $localUrl, $this->apiThumbCacheExpiry );
 			wfDebug( __METHOD__ . " got local thumb $localUrl, saving to cache \n" );
 			return $localUrl;

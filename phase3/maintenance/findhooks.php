@@ -49,8 +49,9 @@ function getHooksFromDoc() {
 	global $doc, $options;
 	$m = array();
 	if( isset( $options['online'] ) ){
-		$content = Http::get( 'http://www.mediawiki.org/w/index.php?title=Manual:Hooks&action=raw' );
-		preg_match_all( '/\[\[\/([a-zA-Z0-9-_:]+)\|/', $content, $m );
+		$status = Http::get( 'http://www.mediawiki.org/w/index.php?title=Manual:Hooks&action=raw' );
+		if( $status->isOK() )
+			preg_match_all( '/\[\[\/([a-zA-Z0-9-_:]+)\|/', $status->value, $m );
 	} else {
 		$content = file_get_contents( $doc );
 		preg_match_all( "/\n'(.*?)'/", $content, $m );

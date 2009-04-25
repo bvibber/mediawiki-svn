@@ -45,6 +45,7 @@
  * Base class for HTTP_Request2 adapters
  */
 require_once 'HTTP/Request2/Adapter.php';
+require_once 'HTTP/Request2/Response.php';
 
 /**
  * Adapter for HTTP_Request2 wrapping around cURL extension
@@ -167,14 +168,16 @@ class HTTP_Request2_Adapter_Curl extends HTTP_Request2_Adapter
     * @return   resource    a cURL handle, as created by curl_init()
     * @throws   HTTP_Request2_Exception
     */
-    protected function createCurlHandle()
+    public function createCurlHandle()
     {
         $ch = curl_init();
 
         curl_setopt_array($ch, array(
             // setup callbacks
             CURLOPT_READFUNCTION   => array($this, 'callbackReadBody'),
-           // CURLOPT_HEADERFUNCTION => array($this, 'callbackWriteHeader'),
+            
+            CURLOPT_HEADERFUNCTION => array($this, 'callbackWriteHeader'),
+            
             CURLOPT_WRITEFUNCTION  => array($this, 'callbackWriteBody'),                                            
             // disallow redirects
             CURLOPT_FOLLOWLOCATION => false,
@@ -325,7 +328,8 @@ class HTTP_Request2_Adapter_Curl extends HTTP_Request2_Adapter
     * @see      HTTP_Request2_Response::parseHeaderLine()
     */
     protected function callbackWriteHeader($ch, $string)
-    {
+    {    	
+    	print "called callbackWriteHeader";
         // we may receive a second set of headers if doing e.g. digest auth
         if ($this->eventReceivedHeaders || !$this->eventSentHeaders) {
             // don't bother with 100-Continue responses (bug #15785)
@@ -343,8 +347,11 @@ class HTTP_Request2_Adapter_Curl extends HTTP_Request2_Adapter
                 $this->response             = null;
             }
         }
+        
         if (empty($this->response)) {
+        	print "going to try to get response:"; 
             $this->response = new HTTP_Request2_Response($string, false, $this->request->getConfig('target-file-path'));
+            print "ok";
         } else {
             $this->response->parseHeaderLine($string);
             if ('' == trim($string)) {
@@ -355,7 +362,8 @@ class HTTP_Request2_Adapter_Curl extends HTTP_Request2_Adapter
                 $this->eventReceivedHeaders = true;
             }
         }
-        return strlen($string);
+        
+     	return strlen($string);
     }
 
    /**
@@ -370,12 +378,15 @@ class HTTP_Request2_Adapter_Curl extends HTTP_Request2_Adapter
     {
         // cURL calls WRITEFUNCTION callback without calling HEADERFUNCTION if 
         // response doesn't start with proper HTTP status line (see bug #15716)
-        if (empty($this->response)) {
-            throw new HTTP_Request2_Exception("Malformed response: {$string}");
-        }        
+        //if (empty($this->response)) {
+        //    throw new HTTP_Request2_Exception("Malformed response: {$string}");
+        //}        
         $this->response->appendBody($string);
         $this->request->setLastEvent('receivedBodyPart', $string);
         return strlen($string);
     }
+}
+function callbackWriteBody($ch, $string){
+	print 'test write test';
 }
 ?>

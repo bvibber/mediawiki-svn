@@ -140,6 +140,8 @@ class UploadForm {
 	 * Do the upload
 	 * Checks are made in SpecialUpload::execute()
 	 *
+	 * FIXME this should really use the standard Status class (instead of associative array) 
+	 * 
 	 * @access private
 	 */
 	function processUpload(){
@@ -152,10 +154,8 @@ class UploadForm {
 				break;
 
 			case UploadBase::BEFORE_PROCESSING:
-				// Do... nothing? Why?
-				// In fact we should do something because this is where curl errors and similar live
+				$this->uploadError( $details['error'] );
 				break;
-
 			case UploadBase::LARGE_FILE_SERVER:
 				$this->mainUploadForm( wfMsgHtml( 'largefileserver' ) );
 				break;
@@ -252,12 +252,13 @@ class UploadForm {
 		if( $permErrors !== true ) {
 			return array( 'status' => UploadBase::PROTECTED_PAGE, 'permissionserrors' => $permErrors );
 		}
-
+		
 		// Fetch the file if required
-		$result = $this->mUpload->fetchFile();
-		if( $result != UploadBase::OK )
-			return $result;
-
+		$status = $this->mUpload->fetchFile();
+		if( !$status->isOK() ){			
+			return array( 'status' =>UploadBase::BEFORE_PROCESSING, 'error'=>$status->getWikiText() );
+		}
+		
 		// Check whether this is a sane upload
 		$result = $this->mUpload->verifyUpload();
 		if( $result != UploadBase::OK )

@@ -354,15 +354,16 @@ class WikiRevision {
 
 		// @fixme!
 		$src = $this->getSrc();
-		$data = Http::get( $src );
-		if( !$data ) {
-			wfDebug( "IMPORT: couldn't fetch source $src\n" );
-			fclose( $f );
-			unlink( $tempo );
-			return false;
+		$status = Http::get( $src );
+		if( !$status->isOK() ){		
+			if( !$data ) {
+				wfDebug( "IMPORT: couldn't fetch source $src\n" );
+				fclose( $f );
+				unlink( $tempo );
+				return false;
+			}
 		}
-
-		fwrite( $f, $data );
+		fwrite( $f, $status->value );
 		fclose( $f );
 
 		return $tempo;

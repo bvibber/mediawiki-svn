@@ -3117,16 +3117,16 @@ class Parser
 			}
 		}
 
-		$text = Http::get($url);
-		if (!$text)
+		$status = Http::get($url);
+		if ( !$status->isOK() )
 			return wfMsg('scarytranscludefailed', $url);
-
+			
 		$dbw = wfGetDB(DB_MASTER);
 		$dbw->replace('transcache', array('tc_url'), array(
 			'tc_url' => $url,
 			'tc_time' => time(),
-			'tc_contents' => $text));
-		return $text;
+			'tc_contents' => $status->value));
+		return $status->value;			
 	}
 
 
