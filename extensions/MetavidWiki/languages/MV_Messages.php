@@ -305,7 +305,7 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 	'video_feed_cat' => 'Video feed for category:',
 	'mv_cat_search_note' => 'Note: Categories only lists top level categories.
 For all metadata in category ranges search for $1',
-	'mv-category-media-count' => '$1 media segments in category',
+	'mv-category-media-count' => '$1 media {{PLURAL:$1|segment|segments}} in category',
 
 # Messages for MV_DataPage
 	'mv_mvd_linkback' => 'Part of stream $1 <br />
