@@ -27,6 +27,15 @@ $wgExtensionCredits['other'][] = array(
  */
 $wgAllowAnyUserOnlineStatusFunction = true;
 
+/**
+ * New preferences for this extension
+ */
+$wgDefaultUserOptions['online'] = 'online';
+$wgDefaultUserOptions['showonline'] = 0;
+$wgDefaultUserOptions['onlineonlogin'] = 1;
+$wgDefaultUserOptions['offlineonlogout'] = 1;
+
+
 // FIXME: Should be a separate class file
 class OnlineStatus {
 
@@ -226,14 +235,14 @@ class OnlineStatus {
 			$radios[wfMsg( 'onlinestatus-toggle-' . $lev )] = $lev;
 		}
 
-		$preferences['onlinestatusonlogin'] =
+		$preferences['onlineonlogin'] =
 			array(
 				'type' => 'toggle',
 				'section' => 'misc',
 				'label-message' => 'onlinestatus-pref-onlineonlogin',
 			);
 
-		$preferences['onlinestatusonlogoff'] =
+		$preferences['offlineonlogout'] =
 			array(
 				'type' => 'toggle',
 				'section' => 'misc',
@@ -263,7 +272,7 @@ class OnlineStatus {
 	 * Hook for UserLoginComplete
 	 */
 	static function UserLoginComplete( $user ){
-		if( $user->getOption( 'offlineonlogout' ) ){
+		if( $user->getOption( 'onlineonlogin' ) ){
 			$user->setOption( 'online', 'online' );
 			$user->saveSettings();
 		}
