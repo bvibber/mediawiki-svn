@@ -199,8 +199,8 @@ Please report this to the site administrator.',
 	'mvexportsearch' => 'MetaVid export',
 	'mvexportsequence' => 'MetaVid export sequence',
 	'mvexportstream' => 'MetaVid export stream',
-	'mv_move_delete_msg' => 'mvd moved to $1',
-	'mv_add_stream_page' => 'Mv add stream',
+	'mv_move_delete_msg' => 'moved to $1',
+	'mv_add_stream_page' => 'MetaVid add stream',
 	'mv_edit_strea_docu' => '<p>Edit stream <b>admin</b><br />for normal user view/edit see $1 page',
 	'mv_add_stream_docu' => '<p>Add a new stream with the field below.</p>
 <p>More information is given on the <a href="$1">help page for add stream</a>.</p>',
@@ -295,7 +295,7 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 
 # Messages for  Special List stream
 	'mv_list_streams' => 'MetaVid list streams',
-	'mv_list_streams_page' => 'Mv list streams',
+	'mv_list_streams_page' => 'MetaVid list streams',
 	'mv_list_streams_docu' => 'The following streams exist:',
 	'mv_list_streams_none' => 'No streams exist',
 
