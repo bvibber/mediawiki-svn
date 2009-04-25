@@ -16,6 +16,7 @@ $wgHooks['BeforePageDisplay'][] = 'efSkinPerPageBeforePageDisplayHook';
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'SkinPerNamespace',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:SkinPerNamespace',
+	'version'     => '2009-04-25',
 	'description' => 'Allow a per-namespace skin',
 	'author'      => 'Alexandre Emsenhuber',
 	
@@ -31,6 +32,12 @@ $wgExtensionCredits['other'][] = array(
 $wgSkinPerNamespace = array();
 
 /**
+ * Skins for special pages, mapping canonical name (see SpecialPage.php) to skin
+ * names
+ */
+$wgSkinPerSpecialPage = array();
+
+/**
  * Override preferences for logged in users ?
  * if set to false, this will only apply to anonymous users
  */
@@ -42,13 +49,30 @@ $wgSkinPerNamespaceOverrideLoggedIn = true;
  * Hook function for BeforePageDisplay
  */
 function efSkinPerPageBeforePageDisplayHook( &$out, &$skin ){
-	global $wgSkinPerNamespace, $wgSkinPerNamespaceOverrideLoggedIn, $wgUser, $wgTitle;
+	global $wgSkinPerNamespace, $wgSkinPerSpecialPage,
+		$wgSkinPerNamespaceOverrideLoggedIn, $wgUser, $wgTitle;
+
 	if( !$wgSkinPerNamespaceOverrideLoggedIn && $wgUser->isLoggedIn() )
 		return true;
 
-	$ns = $wgTitle->getNamespace();
-	if( isset( $wgSkinPerNamespace[$ns] ) ) {
-		$skin = Skin::newFromKey( $wgSkinPerNamespace[$ns] );
+	$title = is_callable( array( $out, 'getTitle' ) ) ? # 1.15 +
+		$out->getTitle() : $wgTitle;
+	$ns = $title->getNamespace();
+	$skinName = null;
+
+	if( $ns == NS_SPECIAL ) {
+		list( $canonical, /* $subpage */ ) = SpecialPage::resolveAliasWithSubpage( $title->getDBkey() );
+		if( isset( $wgSkinPerSpecialPage[$canonical] ) ) {
+			$skinName = $wgSkinPerSpecialPage[$canonical];
+		}
+	}
+
+	if( $skinName === null && isset( $wgSkinPerNamespace[$ns] ) ) {
+		$skinName = $wgSkinPerNamespace[$ns];
+	}
+	
+	if( $skinName !== null ) {
+		$skin = Skin::newFromKey( $skinName );
 		if( is_callable( array( $skin, 'setTitle' ) ) ) # 1.15 +
 			$skin->setTitle( $out->getTitle() );
 	}
