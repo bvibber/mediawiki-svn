@@ -16,6 +16,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'OnlineStatus',
 	'author'         => 'Alexandre Emsenhuber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:OnlineStatus',
+	'version'        => '2009-04-25',
 	'description'    => 'Add a preference to show if the user is currently present or not on the wiki',
 	'descriptionmsg' => 'onlinestatus-desc',
 );
@@ -46,11 +47,7 @@ class OnlineStatus {
 		$wgExtensionMessagesFiles['OnlineStatus'] = dirname( __FILE__ ) . '/OnlineStatus.i18n.php';
 
 		// Hooks for the Parser
-		// Use ParserFirstCallInit if aviable
-		if( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) )
-			$wgHooks['ParserFirstCallInit'][] = 'OnlineStatus::ParserFirstCallInit';
-		else
-			$wgExtensionFunctions[] = 'OnlineStatus::Setup';
+		$wgHooks['ParserFirstCallInit'][] = 'OnlineStatus::ParserFirstCallInit';
 
 		// Magic words hooks
 		$wgHooks['MagicWordwgVariableIDs'][] = 'OnlineStatus::MagicWordVariable';
@@ -143,14 +140,6 @@ class OnlineStatus {
 				return wfMsgHtml( 'onlinestatus-js-error', $stat );
 			}
 		}
-	}
-
-	/**
-	 * Extension function
-	 */
-	static function Setup() {
-		global $wgParser;
-		self::ParserFirstCallInit( $wgParser );
 	}
 
 	/**
