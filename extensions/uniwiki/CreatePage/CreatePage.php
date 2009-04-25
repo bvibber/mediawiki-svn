@@ -27,7 +27,7 @@ $wgExtensionMessagesFiles['CreatePage'] = $dir . '/CreatePage.i18n.php';
 $wgExtensionAliasesFiles['CreatePage'] = $dir . 'CreatePage.alias.php';
 $wgAutoloadClasses['SpecialCreatePage'] = $dir . '/CreatePage_body.php';
 $wgSpecialPages['CreatePage'] = 'SpecialCreatePage';
-
+$wgSpecialPageGroups['CreatePage'] = 'pagetools';
 
 $wgHooks['BeforePageDisplay'][] = 'UW_CreatePage_CSS';
 function UW_CreatePage_CSS( $out ) {
