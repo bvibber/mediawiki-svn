@@ -5322,6 +5322,7 @@ $wgGoogleMapsMessages['yue'] = array(
  * @author Wmr89502270
  */
 $wgGoogleMapsMessages['zh-hans'] = array(
+	'gm-desc' => '轻松地创建地图的wiki-fied标志',
 	'gm-incompatible-browser' => '您必须使用相容的网页浏览器以利设查看所设置于此处的地图。',
 	'gm-incompatible-browser-link' => '按此处以查看相容浏览器的列表。',
 	'gm-no-editor' => '抱歉！您的浏览器不支持此互动式地图制作元件，请尝试最新版Windows下的<a href="http://www.microsoft.com/ie">Internet Explorer</a>，或可安装于Windows，Mac和Linux的<a href="http://www.mozilla.org/products/firefox">Mozilla Firefox</a>。',

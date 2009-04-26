@@ -159,6 +159,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Aotake
+ * @author Darth Kule
  * @author Fryed-peach
  * @author Malafaya
  */
@@ -170,7 +171,8 @@ $messages['qqq'] = array(
 	'voctrain_I_don_t_know_what_to_do_with_action_' => "Action unknown: body text of page (don't translate %action).",
 	'voctrain_User_added' => 'login: title of User added page',
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => "login: Greeting when user created. (Don't translate %username)",
-	'voctrain_continue' => 'continue operation (used in multiple locations)',
+	'voctrain_continue' => 'continue operation (used in multiple locations)
+{{Identical|Continue}}',
 	'voctrain_hello_place' => "Test message (don't translate %place)",
 	'voctrain_bye' => 'Test message',
 	'voctrain_Set_up_your_exercise' => 'setup: Page title',
@@ -1542,9 +1544,11 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Darth Kule
  * @author Pietrodn
  */
 $messages['it'] = array(
+	'voctrain_continue' => 'continua',
 	'voctrain_User_name' => 'Nome utente',
 );
 
@@ -3112,6 +3116,7 @@ $messages['vi'] = array(
 	'voctrain_Questions' => 'Câu hỏi',
 	'voctrain_Answers' => 'Câu trả lời',
 	'voctrain_start_exercise' => 'bắt đầu bài tập',
+	'voctrain_collection' => 'tập hợp',
 	'voctrain_ISO_639_3_format' => 'Dạng ISO 639-3',
 	'voctrain_Definition' => 'Định nghĩa',
 	'voctrain_Word' => 'Từ',
@@ -3141,6 +3146,8 @@ $messages['vi'] = array(
 	'voctrain_Definitions' => 'Định nghĩa',
 	'voctrain_Could_not_create_new_user' => 'Không có thể mở tài khoản',
 	'voctrain_Translation' => 'Lời dịch',
+	'voctrain_hiding' => 'Ẩn',
+	'voctrain_other' => 'khác',
 );
 
 /** Volapük (Volapük)

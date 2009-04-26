@@ -1882,6 +1882,7 @@ $messages['fi'] = array(
 	'code-status-reverted' => 'palautettu',
 	'code-status-resolved' => 'ratkaistu',
 	'code-status-ok' => 'ok',
+	'code-status-verified' => 'vahvistettu',
 	'code-status-deferred' => 'odottaa',
 	'code-pathsearch-legend' => 'Etsi tämän varaston versioita polun perusteella',
 	'code-pathsearch-path' => 'Polku',

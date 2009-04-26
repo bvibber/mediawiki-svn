@@ -59,7 +59,7 @@ $aliases['gsw'] = array(
 
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'FindSpam' => array( 'Sapm namakać' ),
+	'FindSpam' => array( 'Spam namakać' ),
 );
 
 /** Hungarian (Magyar) */

@@ -1586,14 +1586,26 @@ riddler|''Riddler'' (\"Mambubugtong\")",
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'vote' => 'Oy',
+	'vote-desc' => 'Basit oylama yetenekleri sağlar',
+	'vote-header' => "Burada '''Dünyanın Yüce Derebeyi''' için oy kullanabilirsiniz!",
+	'vote-current' => "Şuanki oyunuz '''$1''' için.",
+	'vote-legend' => 'Oyu yerleştir veya düzelt',
 	'vote-caption' => 'Oyunuz :',
 	'vote-submit' => 'Oy',
+	'vote-registered' => 'Oyunuz kaydedilmiştir.',
+	'vote-view-results' => 'Sonuçları görüntüle',
+	'vote-results' => 'Oylama sonuçları',
 	'vote-results-choice' => 'Seçim',
 	'vote-results-count' => 'Sayma',
+	'vote-results-none' => 'Şu anda hiç bir oy yerleştirilmemiş.',
+	'vote-login' => 'Oy kullanmak için $1malısınız.',
+	'vote-login-link' => 'giriş yap',
+	'vote-invalid-choice' => 'Müsait seçeneklerden birini seçmelisiniz.',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
@@ -1642,18 +1654,28 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'vote' => 'Bỏ phiếu',
+	'vote-desc' => 'Cung cấp tính năng bầu cử đơn giản',
+	'vote-header' => "Bạn có thể bỏ phiếu cho '''Chúa tể Tối cao Thế giới''' tại đây!",
+	'vote-current' => "Phiếu bầu của bạn hiện ủng hộ '''$1'''.",
 	'vote-legend' => 'Bỏ hay đổi phiếu',
 	'vote-caption' => 'Lựa chọn của bạn:',
+	'vote-choices' => 'joker|The Joker
+penguin|The Penguin
+riddler|Riddler',
 	'vote-submit' => 'Bỏ phiếu',
+	'vote-registered' => 'Phiếu bầu của bạn đã được đăng ký.',
 	'vote-view-results' => 'Xem kết quả',
 	'vote-results' => 'Kết quả bỏ phiếu',
 	'vote-results-choice' => 'Lựa chọn',
 	'vote-results-count' => 'Đếm',
+	'vote-results-none' => 'Chưa có phiếu nào được bỏ vào lúc này.',
 	'vote-login' => 'Bạn cần $1 trước khi bỏ phiếu.',
 	'vote-login-link' => 'đăng nhập',
+	'vote-invalid-choice' => 'Bạn phải chọn một trong các tùy chọn hiện có.',
 );
 
 /** Volapük (Volapük)

@@ -662,9 +662,11 @@ $messages['fi'] = array(
 	'extensiondistributor' => 'Lataa MediaWikin laajennus',
 	'extdist-desc' => 'Laajennus laajennusten tilannevedosarkistojen jakelulle.',
 	'extdist-no-such-extension' => 'Laajennusta ”$1” ei löydy',
+	'extdist-choose-extension' => 'Valitse mitkä laajennukset haluat ladata:',
 	'extdist-submit-extension' => 'Jatka',
 	'extdist-current-version' => 'Kehitysversio (trunk)',
 	'extdist-submit-version' => 'Jatka',
+	'extdist-no-remote' => 'Subversion-asiakasohjelmaan ei saatu yhteyttä.',
 	'extdist-svn-error' => 'Subversion kohtasi virheen: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar-ohjelman suoritus päättyi paluuarvoon $1:',
 );

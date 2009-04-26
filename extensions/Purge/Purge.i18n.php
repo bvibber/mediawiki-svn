@@ -136,10 +136,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'purge' => 'מחיקה כוללת',
+	'purge' => 'רענון המטמון',
 	'purge-desc' => 'הוספת לשונית ריקון לכל הדפים הרגילים, ועקיפת בדיקת הריקון למשתמשים אנונימיים כדי לאפשר ריקון זריז של המטמון.',
 );
 

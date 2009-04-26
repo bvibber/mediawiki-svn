@@ -869,6 +869,7 @@ $messages['gv'] = array(
  * @author Singularity
  */
 $messages['haw'] = array(
+	'regexblock-expire-duration' => '1 hola,2 hola,4 hola,6 hola,1 lā,3 lā,1 pule,2 pule,1 mahina,3 mahina,6 mahina,1 makahiki,pau ʻole',
 	'regexblock-form-reason' => 'Kumu:',
 );
 

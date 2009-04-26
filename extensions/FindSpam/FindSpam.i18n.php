@@ -912,5 +912,6 @@ $messages['zh-hans'] = array(
 	'findspam-ip' => 'IP地址：',
 	'findspam-ok' => '确定',
 	'findspam-notextfound' => '没有查找到贡献',
+	'right-findspam' => '搜索最近增加的垃圾信息',
 );
 

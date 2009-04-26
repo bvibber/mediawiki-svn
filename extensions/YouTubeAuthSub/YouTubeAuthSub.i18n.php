@@ -2653,9 +2653,9 @@ $messages['uk'] = array(
 	'youtubeauthsub_submit' => 'Надіслати',
 	'youtubeauthsub_clickhere' => 'Клацніть сюди, щоб увійти до YouTube',
 	'youtubeauthsub_tokenerror' => 'Помилка створення токена авторизації, спробуйте оновити сторінку.',
-	'youtubeauthsub_success' => "Вітаємо!
+	'youtubeauthsub_success' => "ітаємо!
 Ваше відео завантажене.
-Щоб переглянути ваше відео, натисніть <a href='http://www.youtube.com/watch?v=$1'>тут</a>.
+<a href='http://www.youtube.com/watch?v=$1'>Переглянути відео</a>.
 YouTube може знадобитися деякий час, щоб обробити ваше відео, тому воно може бути недоступним прямо зараз.
 
 Щоб додати відео на вашу вікі-сторінку, вставте такий код на сторінку:

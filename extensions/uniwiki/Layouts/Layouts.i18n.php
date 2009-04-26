@@ -341,6 +341,13 @@ $messages['ia'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Modificaretiquettasdepaginas',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'layouts_continue' => 'Continua',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

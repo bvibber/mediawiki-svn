@@ -287,6 +287,7 @@ $messages['be-tarask'] = array(
 	'grouppermissions-never' => 'Ніколі',
 	'grouppermissions-sp-save' => 'Захаваць',
 	'grouppermissions-sp-remove' => 'выдаліць',
+	'right-info' => 'Прагляд інфармацыі аб старонцы',
 );
 
 /** Bulgarian (Български)

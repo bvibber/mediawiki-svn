@@ -512,7 +512,7 @@ $messages['he'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'טקסט חופשי',
 	'importxml' => 'ייבוא XML',
-	'dt_importxml_selectfile' => 'אנא בחרו את קובץ ה־XML לייצוא:',
+	'dt_importxml_selectfile' => 'אנא בחרו את קובץ ה־XML לייבוא:',
 	'dt_importxml_editsummary' => 'ייבוא XML',
 	'dt_importxml_importing' => 'בתהליכי ייבוא...',
 	'dt_importxml_success' => '{{PLURAL:$1|דף אחד ייובא|$1 דפים ייובאו}} מקובץ ה־XML.',
@@ -1005,7 +1005,7 @@ $messages['pdc'] = array(
  * @author Wpedzich
  */
 $messages['pl'] = array(
-	'dt-desc' => 'Pozwala na importowanie i eksportowanie struktur danych zawartych w wywołaniach szablonu',
+	'dt-desc' => 'Pozwala na importowanie i eksportowanie danych zawartych w wywołaniach szablonu',
 	'viewxml' => 'Podgląd XML',
 	'dt_viewxml_docu' => 'Wybierz, które spośród następujących kategorii i przestrzeni nazw chcesz podejrzeć w formacie XML.',
 	'dt_viewxml_categories' => 'Kategorie',
@@ -1437,10 +1437,17 @@ $messages['zh-tw'] = array(
 	'dt_viewxml_namespaces' => '名字空間',
 	'dt_viewxml_simplifiedformat' => '簡化的格式',
 	'dt_xml_namespace' => '名字空間',
+	'dt_xml_pages' => '頁面',
 	'dt_xml_page' => '頁面',
+	'dt_xml_template' => '模板',
 	'dt_xml_field' => '欄位',
 	'dt_xml_name' => '名稱',
 	'dt_xml_title' => '標題(Title)',
 	'dt_xml_freetext' => '隨意文字',
+	'importxml' => '匯入XML',
+	'dt_importxml_selectfile' => '請選取XML檔以供匯入',
+	'dt_importxml_editsummary' => '匯入XML',
+	'dt_importxml_importing' => '匯入中...',
+	'dt_importxml_success' => '將從該XML檔匯入$1{{PLURAL:$1|頁面頁面}}。',
 );
 

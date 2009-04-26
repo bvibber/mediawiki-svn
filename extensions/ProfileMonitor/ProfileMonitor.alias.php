@@ -24,6 +24,16 @@ $aliases['arz'] = array(
 	'ProfileMonitor' => array( 'مراقب_الملف' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'ProfileMonitor' => array( 'Profiklowy monitor' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'ProfileMonitor' => array( 'Profilowy monitor' ),
+);
+
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
 	'ProfileMonitor' => array( 'Analyse de rendimento' ),

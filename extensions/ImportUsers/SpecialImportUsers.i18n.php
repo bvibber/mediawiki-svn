@@ -575,6 +575,8 @@ $messages['hak'] = array(
  * @author Kalani
  */
 $messages['haw'] = array(
+	'importusers-uploadfile' => 'Hoʻouka i ka waihona',
+	'importusers-log-summary' => 'Hōʻuluʻulu manaʻo',
 	'importusers-log-summary-all' => 'Apau',
 	'importusers-password' => 'ʻōlelo hūnā',
 );
@@ -595,7 +597,7 @@ $messages['he'] = array(
 	'importusers-user-present-update' => "המשתמש '''$1''' כבר קיים. עודכן.",
 	'importusers-user-present-not-update' => "המשתמש '''$1''' כבר קיים. לא עודכן.",
 	'importusers-user-invalid-format' => 'נתוני המשתמש בשורה $1 ריקים או שהם בפורמט בלתי תקין, ולכן דולגו.',
-	'importusers-log' => 'ייבוא יומני משתמשים',
+	'importusers-log' => 'יומן ייבוא משתמשים',
 	'importusers-log-summary' => 'תקציר',
 	'importusers-log-summary-all' => 'הכול',
 	'importusers-log-summary-added' => 'נוסף',
@@ -1220,7 +1222,7 @@ $messages['pt-br'] = array(
 	'importusers-user-present-update' => "Utilizador '''$1''' já existe. Atualizado.",
 	'importusers-user-present-not-update' => "Utilizador '''$1''' já existe. Não foi atualizado.",
 	'importusers-user-invalid-format' => 'Dados de utilizador na linha #$1 têm um formato inválido ou estão vazios. Passado à frente.',
-	'importusers-log' => 'Registro de importação',
+	'importusers-log' => 'Registro de importação de utilizadores',
 	'importusers-log-summary' => 'Sumário',
 	'importusers-log-summary-all' => 'Todos',
 	'importusers-log-summary-added' => 'Adicionado',
@@ -1581,7 +1583,7 @@ $messages['vi'] = array(
 	'importusers-user-present-update' => "Thành viên '''$1''' đã tồn tại. Đã cập nhật.",
 	'importusers-user-present-not-update' => "Thành viên '''$1''' đã tồn tại. Không cập nhật.",
 	'importusers-user-invalid-format' => 'Dữ liệu thành viên tại dòng #$1 có định dạng sai hoặc bỏ trống. Bỏ qua.',
-	'importusers-log' => 'Nhật trình nhập',
+	'importusers-log' => 'Nhật trình nhập thành viên',
 	'importusers-log-summary' => 'Tóm tắt',
 	'importusers-log-summary-all' => 'Tất cả',
 	'importusers-log-summary-added' => 'Được thêm vào',

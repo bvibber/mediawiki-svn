@@ -42,7 +42,7 @@ $aliases['de'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'WhiteList' => array( 'Běła lisćina' ),
-	'WhiteListEdit' => array( 'Běłi lisćinu wobźěłaś' ),
+	'WhiteListEdit' => array( 'Běłu lisćinu wobźěłaś' ),
 );
 
 /** Divehi (ދިވެހިބަސް) */

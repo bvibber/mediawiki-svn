@@ -747,6 +747,19 @@ $messages['vep'] = array(
 	'specialwhoiswatchingaddbtn' => 'Ližata valitud kävutajid',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'whoiswatching' => 'Ai đang theo dõi một trang wiki',
+	'whoiswatching-desc' => 'Cung cấp danh sách các người dùng đang theo dõi một trang wiki',
+	'specialwhoiswatchingthepage' => 'Ai đang theo dõi %s',
+	'specialwhoiswatchingusage' => 'Trang đặc biệt này không thể hoạt động một mình được.
+Xin dùng trang [[MediaWiki:Number_of_watching_users_pageview]] để định nghĩa một điểm nhập cho trang đặc biệt này.',
+	'specialwhoiswatchingaddusers' => 'Thêm thành viên theo dõi trang',
+	'specialwhoiswatchingaddbtn' => 'Thêm các thành viên đã chọn',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

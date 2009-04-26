@@ -1391,12 +1391,12 @@ OpenID מאפשר לכם להיכנס לחשבון במגוון אתרים מב�
 	'openid-prefstext' => 'העדפות [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'הסתרת ה־<a href="http://openid.net/">OpenID</a> מדף המשתמש, במקרה של כניסה לחשבון עם OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'עדכון המידע שלי מכרטיס ה־OpenID עם כל כניסה לחשבון',
-	'openidsigninorcreateaccount' => 'הכנסו או צרו חשבון חדש',
+	'openidsigninorcreateaccount' => 'כניסה או יצירת חשבון חדש',
 	'openid-provider-label-openid' => 'הזינו את כתובת ה־OpenID שלכם',
-	'openid-provider-label-google' => 'הכנסו באמצעות חשבונכם ב־Google',
-	'openid-provider-label-yahoo' => 'הכנסו באמצעות חשבונכם ב־Yahoo',
-	'openid-provider-label-aol' => 'הזינו את כינוי המסך שלכם ב־AOL',
-	'openid-provider-label-other-username' => 'הזינו את שם המשתמש שלכם ב־$1',
+	'openid-provider-label-google' => 'היכנסו באמצעות חשבונכם ב־Google',
+	'openid-provider-label-yahoo' => 'היכנסו באמצעות חשבונכם ב־Yahoo',
+	'openid-provider-label-aol' => 'כתבו את כינוי המסך שלכם ב־AOL',
+	'openid-provider-label-other-username' => 'כתבו את שם המשתמש שלכם ב־$1',
 );
 
 /** Hindi (हिन्दी)
@@ -2782,6 +2782,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'openid-desc' => 'Autentique-se no wiki com um [http://openid.net/ OpenID], e autentique-se noutros sítios que usem OpenID com uma conta de utilizador wiki',
@@ -2851,7 +2852,11 @@ Existems vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de
 	'openid-prefstext' => 'Preferências do [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Esconder o seu <a href="http://openid.net/">OpenID</a> na sua página de utilizador, se se autenticar com OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Atualizar a minha informação a partir da minha "persona" OpenID cada vez que me autentico',
+	'openidsigninorcreateaccount' => 'Entrar ou Criar Nova Conta',
 	'openid-provider-label-openid' => 'Introduza a sua URL OpenID',
+	'openid-provider-label-google' => 'Entrar usando a sua conta do Google',
+	'openid-provider-label-yahoo' => 'Entrar usando a sua conta do Yahoo',
+	'openid-provider-label-aol' => 'Digite seu nome de utilizador AOL',
 	'openid-provider-label-other-username' => 'Introduza o seu nome de utilizador $1',
 );
 
@@ -2926,6 +2931,12 @@ Existem vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de 
 	'openid-prefstext' => 'Preferências do [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Esconder o seu <a href="http://openid.net/">OpenID</a> na sua página de utilizador, caso se autentique com OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Atualizar a minha informação a partir da minha "persona" OpenID cada vez que me autentico',
+	'openidsigninorcreateaccount' => 'Entrar ou Criar Nova Conta',
+	'openid-provider-label-openid' => 'Introduza a sua URL OpenID',
+	'openid-provider-label-google' => 'Entrar usando a sua conta do Google',
+	'openid-provider-label-yahoo' => 'Entrar usando a sua conta do Yahoo',
+	'openid-provider-label-aol' => 'Digite seu nome de utilizador AOL',
+	'openid-provider-label-other-username' => 'Introduza o seu nome de utilizador $1',
 );
 
 /** Romanian (Română)

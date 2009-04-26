@@ -1147,8 +1147,10 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'edituser-desc' => '允许特许用户改变其他用户的个人偏好',
 	'edituser' => '编辑用户',
 	'edituser-logout' => '用户退出',
 	'edituser-username' => '用户名',

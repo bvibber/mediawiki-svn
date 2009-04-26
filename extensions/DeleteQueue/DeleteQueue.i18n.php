@@ -697,10 +697,12 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Loupeter
+ * @author SMP
  */
 $messages['ca'] = array(
 	'deletequeue-review-reason' => 'Comentaris:',
 	'deletequeue-vote-reason' => 'Comentaris:',
+	'deletequeue-vote-submit' => 'Tramet',
 );
 
 /** German (Deutsch)

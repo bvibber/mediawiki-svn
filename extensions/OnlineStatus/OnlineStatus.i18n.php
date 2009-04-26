@@ -923,13 +923,19 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'onlinestatus-desc' => 'Thêm tùy chọn để hiển thị xem một thành viên hiện có đang trực tuyến tại wiki hay không',
+	'onlinestatus-js-anon' => 'Lỗi: bạn phải đăng nhập để sử dụng tính năng này',
+	'onlinestatus-js-changed' => 'Trạng thái của bạn đã được đổi thành “$1”',
+	'onlinestatus-js-error' => 'Không thể thay đỏi trạng thái, giá trị “$1” không hợp lệ',
 	'onlinestatus-subtitle-offline' => 'Thành viên này hiện đang ngoại tuyến',
 	'onlinestatus-subtitle-online' => 'Thành viên này hiện đang trực tuyến',
+	'onlinestatus-tab' => 'Trạng thái',
 	'onlinestatus-toggles-desc' => 'Trạng thái của bạn:',
 	'onlinestatus-toggles-explain' => 'Lựa chọn này cho phép bạn tùy chọn để người khác thấy bạn trực tuyến hay không khi xem trang thành viên của bạn.',
 	'onlinestatus-toggles-show' => 'Hiển thị trạng thái trực tuyến trên trang thành viên của tôi',
 	'onlinestatus-toggle-offline' => 'Ngoại tuyến',
 	'onlinestatus-toggle-online' => 'Trực tuyến',
+	'onlinestatus-pref-onlineonlogin' => 'Thay đổi trạng thái của tôi sang đang trực tuyến khi tôi đăng nhập',
+	'onlinestatus-pref-offlineonlogout' => 'Thay đổi trạng thái của tôi sang đang ngoại tuyến khi tôi đăng xuất',
 );
 
 /** Volapük (Volapük)

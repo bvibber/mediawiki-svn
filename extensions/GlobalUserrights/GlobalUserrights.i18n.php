@@ -407,6 +407,18 @@ $messages['tl'] = array(
 	'right-userrights-global' => 'Pamahalaan ang mga karapatan ng pandaigdigang tagagamit',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'globaluserrights' => 'Quản Lý Quyền Thành Viên Toàn Cục',
+	'gur-desc' => 'Dễ dàng quản trị [[Special:GlobalUserRights|quyền thành viên toàn cục]]',
+	'gur-rightslog-name' => 'Nhật trình quyền toàn cục',
+	'gur-rightslog-header' => 'Đây là nhật trình ghi lại các thay đổi về quyền toàn cục.',
+	'gur-rightslog-entry' => 'đã đổi nhóm thành viên toàn cục cho $1 từ $2 thành $3',
+	'right-userrights-global' => 'Quản lý quyền thành viên toàn cục',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Wmr89502270
  */

@@ -2730,7 +2730,7 @@ En neuer Version ($2) steiht ald parat op http://pecl.php.net/package/APC/$2',
  */
 $messages['lb'] = array(
 	'viewapc' => 'Informatiounen iwwer APC',
-	'viewapc-desc' => '[[Special:ViewAPC|Den APC-Cache]] matt MediaWiki kucken a geréieren',
+	'viewapc-desc' => '[[Special:ViewAPC|Den APC-Cache]] mat MediaWiki kucken a geréieren',
 	'right-apc' => 'Benotz all Fonctionalitéite vu [[Special:ViewAPC]]',
 	'viewapc-clear-confirm' => 'Wëllt Dir de Cache eidel maachen?',
 	'viewapc-clear-user-cache' => 'Benotzer Cache eidel maachen',

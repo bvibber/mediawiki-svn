@@ -275,9 +275,11 @@ Kliknite na dugme ispod da se prijavite.',
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Jordi Roqué
  */
 $messages['ca'] = array(
+	'povwatch_unknown_subpage' => 'Subpàgina desconeguda.',
 	'povwatch_title' => 'Títol:',
 );
 

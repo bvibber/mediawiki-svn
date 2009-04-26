@@ -77,11 +77,12 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'wikiarticlefeeds-desc' => 'יצירת הזנות מדפי מדיהוויקי',
-	'wikiarticlefeeds_combined_description' => 'זוהי הזנה משולבת, הניזונה ממספר מקורות.',
+	'wikiarticlefeeds-desc' => 'יצירת הזנות מדפי מדיה־ויקי',
+	'wikiarticlefeeds_combined_description' => 'זוהי הזנה משולבת, המכילה פריטים ממספר מקורות.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

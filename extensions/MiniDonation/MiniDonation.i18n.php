@@ -450,6 +450,14 @@ $messages['tl'] = array(
 	'donationform-submit' => 'Mag-ambag sa pamamagitan ng PayPal',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'donationform-desc' => 'PayPal üzerinden bağış desteği için bir <tt>&lt;donateform&gt;</tt> etiketi ekler',
+	'donationform-submit' => 'PayPal üzerinden bağış yap',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

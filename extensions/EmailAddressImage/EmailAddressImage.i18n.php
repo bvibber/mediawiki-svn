@@ -371,6 +371,13 @@ $messages['tl'] = array(
 	'emailaddressimage-desc' => 'Nagdaragdag ng <tt>&lt;email&gt;</tt> upang ipakita ang isang adres ng e-liham bilang isang larawan',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'emailaddressimage-desc' => 'E-posta adresini resim olarak görüntülemek için <tt>&lt;email&gt;</tt> ekler',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

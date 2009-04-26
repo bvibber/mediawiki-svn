@@ -392,6 +392,13 @@ $messages['id'] = array(
 	'randomincategory-label' => 'Kategori:',
 );
 
+/** Ido (Ido)
+ * @author Wyvernoid
+ */
+$messages['io'] = array(
+	'randomincategory-toolbox' => 'Hazarda pagino',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

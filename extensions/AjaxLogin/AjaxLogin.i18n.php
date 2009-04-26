@@ -488,10 +488,12 @@ $messages['zh-cn'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
  * @author 許瑜真 (Yuchen Hsu/KaurJmeb)
  */
 $messages['zh-hans'] = array(
 	'ajaxLogin2' => '这动作可能会使你跳离编辑页面，可能会损失编辑结果。确定要离开吗？',
+	'ajaxlogin-create' => '创建一个账户',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -374,6 +374,18 @@ $messages['tl'] = array(
 	'logentry-invalidtoken' => 'Hindi tanggap na pananda',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'logentry-append' => 'Nối',
+	'logentry-parserhook-desc' => 'Bộ mở rộng thẻ này cung cấp một mẫu đơn để nối/cắt các trang nhật trình',
+	'logentry-specialpage-desc' => 'Bộ mở rộng thẻ này cung cấp cách xử lý nối các trang nhật trình',
+	'logentry' => 'Mục nhật trình',
+	'logentry-invalidpage' => 'Trang không hợp lệ',
+	'logentry-invalidtoken' => 'Khóa không hợp lệ',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

@@ -588,6 +588,18 @@ $messages['vec'] = array(
 	'interwikilist-prefix' => 'Prefisso interwiki:',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'interwikilist' => 'Danh sách liên wiki',
+	'interwikilist-desc' => 'Thêm một [[Special:Interwikilist|trang đặc biệt]] để xem các liên kết liên wiki hiện có',
+	'interwikilist-linkname' => 'Liên kết liên wiki',
+	'interwikilist-target' => 'URL đích',
+	'interwikilist-filter' => 'Lọc danh sách',
+	'interwikilist-prefix' => 'Tiền tố liên wiki:',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

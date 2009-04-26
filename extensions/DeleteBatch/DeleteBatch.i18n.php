@@ -463,6 +463,13 @@ D Datei, wu soll uffeglade wäre, sott pro Zyyle ei Sytetitel haa un s cha optio
 	'right-deletebatch' => 'E Zyylete vu Syte lesche',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'deletebatch-reason' => 'Ke kumu no ke kāpae ʻana',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
