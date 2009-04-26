@@ -19,6 +19,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'AdvancedRandom',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AdvancedRandom', 
 	'description' => 'Get a random page from any namespace, the talk or subjectpage ' .

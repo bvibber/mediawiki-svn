@@ -53,6 +53,7 @@ $abcOggHandler = false;
 $abcDelayedRendering = false;
 
 $wgExtensionCredits['parserhooks'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'ABC',
 	'author'         => 'River Tarnell',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ABC',

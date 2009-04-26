@@ -15,6 +15,7 @@ if (!defined('MEDIAWIKI'))
 	exit;
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Ask SQL',
 	'description' => 'Do SQL queries through a [[Special:Asksql|special page]]',
 	'descriptionmsg' => 'asksql-desc',

@@ -27,6 +27,7 @@ if ( !$wgUseAjax ) {
  * Register extension setup hook and credits
  */
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'AjaxTest',
 	'author' => 'Daniel Kinzler',
 	'description' => 'AjaxTest extension',

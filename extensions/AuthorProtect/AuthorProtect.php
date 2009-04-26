@@ -10,6 +10,7 @@ if(!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Author Protect',
 	'author' => 'Ryan Schmidt',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AuthorProtect',

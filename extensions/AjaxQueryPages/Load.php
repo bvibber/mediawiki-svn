@@ -12,6 +12,7 @@ if( version_compare( $wgVersion, '1.12alpha', '<' ) ) {
 		);
 } else {
 	$wgExtensionCredits['other'][] = array(
+		'path' => __FILE__,
 		'name' => 'Ajax Query Pages',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxQueryPages',
 		'author' => 'Ashar Voultoiz',

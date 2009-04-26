@@ -24,6 +24,7 @@ EOT;
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'AdvancedSearch',
 	'author' => 'Roan Kattouw',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AdvancedSearch',

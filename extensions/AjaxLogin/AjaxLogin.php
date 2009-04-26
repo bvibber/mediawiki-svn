@@ -16,6 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'AjaxLogin',
 	'version' => '1.1.1',
 	'author' => array( 'Inez Korczyński', 'Jack Phoenix' ),

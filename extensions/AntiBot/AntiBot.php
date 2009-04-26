@@ -32,6 +32,7 @@ $wgAntiBotPayloads = array(
 /** END CONFIGURATION */
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'AntiBot',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AntiBot',
 	'author' => 'Tim Starling',

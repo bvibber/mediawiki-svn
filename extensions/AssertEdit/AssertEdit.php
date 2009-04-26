@@ -18,6 +18,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'AssertEdit',
 	'author' => 'Steve Sanbeg',
 	'description' => 'Adds edit assertions for use by bots',

@@ -44,6 +44,7 @@ if ( $err ) {
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'AmazonPlus',
 	'description'    => 'A highly customizable extension to display Amazon information',
 	'descriptionmsg' => 'amazonplus-desc',

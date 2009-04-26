@@ -12,6 +12,7 @@ if (!defined('MEDIAWIKI')) die();
  */
 
 $wgExtensionCredits['variable'][] = array(
+	'path' => __FILE__,
 	'name' => 'Autoincrement',
 	'description' => 'a variable hook that adds an autoincrementing variable, <nowiki>{{AUTOINCREMENT}}</nowiki>',
 	'author' => 'Ævar Arnfjörð Bjarmason',

@@ -11,6 +11,7 @@ if(!defined('MEDIAWIKI')) {
 $wgAbsenteeLandlordMaxDays = 90; //how many days do the sysops have to be inactive for?
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Absentee Landlord',
 	'author' => array( 'Ryan Schmidt', 'Tim Laqua' ),
 	'version' => '1.1',
