@@ -18,7 +18,6 @@ require_once("$uw/Layouts/Layouts.php");
 # Broken. creditLink() missing.
 #require_once("$uw/Authors/Authors.php"); 
 require_once("$uw/CustomToolbar/CustomToolbar.php"); 
-# Obsolete. Added to MediaWiki 1.15 alpha in r49880
-#require_once("$uw/CreatePage/CreatePage.php"); 
+require_once("$uw/CreatePage/CreatePage.php"); 
 require_once("$uw/FormatChanges/FormatChanges.php"); 
 require_once("$uw/FormatSearch/FormatSearch.php");
