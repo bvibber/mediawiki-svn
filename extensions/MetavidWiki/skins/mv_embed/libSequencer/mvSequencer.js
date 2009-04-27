@@ -955,7 +955,7 @@ mvSequencer.prototype = {
 						//render out adjustment text
 						track_html+='<div id="' + base_id + '_adj' + '" class="mv_adj_text" style="top:'+ (this.track_clipThumb_height+10 )+'px;">'+
 										'<span class="mv_adjust_click" onClick="'+this.instance_name+'.adjClipDur(' + track_id + ',' + j + ',\'-\')" /> - </span>'+
-										  ( (clip.getDuration() > 60 )? seconds2ntp(clip.getDuration()): clip.getDuration() )  +
+										  ( (clip.getDuration() > 60 )? seconds2npt(clip.getDuration()): clip.getDuration() )  +
 										'<span class="mv_adjust_click" onClick="'+this.instance_name+'.adjClipDur(' + track_id + ',' + j + ',\'+\')" /> + </span>'+ 
 									'</div>';																	
 						track_html+='</span>';						
@@ -1272,10 +1272,10 @@ mvSequencer.prototype = {
 		this.edit_delta = clip_dif;
 		
 		//get new length: 
-		clip_desc+='length: ' + seconds2ntp(new_clip_dur) +'('+clip_dif_str+')';	
+		clip_desc+='length: ' + seconds2npt(new_clip_dur) +'('+clip_dif_str+')';	
 		if(this_seq.resize_mode=='resize_end'){	
 			//expanding right		
-			var new_end = seconds2ntp(npt2seconds(clip.embed.end_ntp)+clip_dif);
+			var new_end = seconds2npt(npt2seconds(clip.embed.end_ntp)+clip_dif);
 			clip_desc+='<br>end time: ' + new_end;		
 			//also shift all the other clips (after the current) 
 			//js_log("track_inx: " + track_inx + ' clip inx:'+clip_inx);
@@ -1288,7 +1288,7 @@ mvSequencer.prototype = {
 			});
 		}else{
 			//expanding left (resize_start)
-			var new_start = seconds2ntp(npt2seconds(clip.embed.start_ntp)+clip_dif);
+			var new_start = seconds2npt(npt2seconds(clip.embed.start_ntp)+clip_dif);
 			clip_desc+='<br>start time: ' + new_start;					
 		}
 			
@@ -1321,7 +1321,7 @@ mvSequencer.prototype = {
 				out+='<div onclick="'+this.instance_name+'.jt('+i*this.timeline_scale+');"' +
 						' style="z-index:2;position:absolute;left:'+i+'px;width:10px;height:20px;top:0px;"></div>';			
 				if(n==0)				
-					out+='<span style="position:absolute;left:'+i+'px;">|'+seconds2ntp(Math.round(i*this.timeline_scale))+'</span>';						
+					out+='<span style="position:absolute;left:'+i+'px;">|'+seconds2npt(Math.round(i*this.timeline_scale))+'</span>';						
 				n++;
 				if(n==10)n=0;
 			}	
@@ -1349,7 +1349,7 @@ mvSequencer.prototype = {
 		js_log('jt:' + jh_time);
 		var this_seq = this;
 		this.playline_time = jh_time;
-		js_log('time: ' + seconds2ntp(jh_time) + ' ' + Math.round(jh_time/this.timeline_scale));
+		js_log('time: ' + seconds2npt(jh_time) + ' ' + Math.round(jh_time/this.timeline_scale));
 		//render playline at given time
 		$j('#'+this.timeline_id+'_playline').css('left', Math.round(jh_time/this.timeline_scale)+'px' );		 
 		cur_pl_time=0;

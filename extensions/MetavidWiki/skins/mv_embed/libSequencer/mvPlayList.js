@@ -461,7 +461,7 @@ mvPlayList.prototype = {
 		$j('#ptitle_'+this.id).html(''+
 			'<b>' + this.title + '</b> '+				
 			this.getClipCount()+' clips, <i>'+
-			seconds2ntp( this.getDuration() ) + '</i>');
+			seconds2npt( this.getDuration() ) + '</i>');
 			
 		//only show the inline edit button if mediaWiki write API is enabled:
 		if( typeof wgEnableWriteAPI != 'undefined'){		
@@ -473,7 +473,7 @@ mvPlayList.prototype = {
 		//render out the dividers on the timeline: 
 		this.colorPlayHead();		
 		//update status:
-		this.setStatus( '0:0:00/' + seconds2ntp( this.getDuration() ) );				
+		this.setStatus( '0:0:00/' + seconds2npt( this.getDuration() ) );				
 	},	
 	/*setStatus override (could call the jquery directly) */
 	setStatus:function(value){
@@ -543,11 +543,19 @@ mvPlayList.prototype = {
 		js_log("pl onClipDone");		
 		this.cur_clip.embed.stop();
 	},
-	updateCurrentClip:function(new_clip){				
+	updateCurrentClip:function( new_clip ){				
 		js_log('f:updateCurrentClip:'+new_clip.id);
-		//keep the active play clip in sync:
-		if( this.cur_clip )
-			this.activeClipList.remove(this.cur_clip )			
+		//make sure we are not switching to the current
+		if( this.cur_clip.id == new_clip.id )
+			return js_log('trying to updateCurrentClip to same clip');
+			
+		//keep the active play clip in sync (stop the other clip) 
+		if( this.cur_clip ){
+			if( !this.cur_clip.embed.isStoped() )
+				 this.cur_clip.embed.stop();
+			this.activeClipList.remove(this.cur_clip )
+		}
+						
 		this.activeClipList.add( new_clip );	
 				
 		//do swap:		
@@ -694,9 +702,10 @@ mvPlayList.prototype = {
 		//FIXME still some issues with "stoping" and reseting the playlist	
 	},	
 	doSeek:function(v){
-		js_log('pl:doSeek:'+v);
+		js_log('pl:doSeek:' + v + ' sts:' + this.seek_time_sec );
 		var plObj = this;
-		var prevClip=null;
+		var prevClip=null;						
+		
 		//jump to the clip in the current percent. 
 		var perc_offset=0;
 		var next_perc_offset=0;
@@ -704,12 +713,15 @@ mvPlayList.prototype = {
 			var clip = plObj.default_track.clips[i];		
 			next_perc_offset+=( clip.getDuration() /  plObj.getDuration()) ;
 			//js_log('on ' + clip.getDuration() +' next_perc_offset:'+ next_perc_offset);
-			if(next_perc_offset > v ){	
+			if( next_perc_offset > v ){	
 				//pass along the relative percentage to embed object: 				
 				//js_log('seek:'+ v +' - '+perc_offset + ') /  (' + next_perc_offset +' - '+ perc_offset);
-				var relative_perc =  (v -perc_offset) /  (next_perc_offset - perc_offset);  					
-				plObj.cur_clip = clip;
-				plObj.cur_clip.embed.doSeek( relative_perc );
+				var relative_perc =  (v -perc_offset) /  (next_perc_offset - perc_offset);  	
+				//update the current clip: 								
+				plObj.updateCurrentClip( clip );
+				
+				//update the clip relative seek_time_sec
+				plObj.cur_clip.embed.doSeek( relative_perc );								
 				this.play();
 				return '';
 			}
@@ -936,10 +948,10 @@ mvClip.prototype = {
 		if(this.embed){		
 			if(side=='start'){
 				var start_offset =parseInt(this.embed.start_offset)+parseInt(delta*-1);				
-				this.embed.updateVideoTime( seconds2ntp(start_offset), seconds2ntp ( this.embed.start_offset + this.embed.getDuration() ) );
+				this.embed.updateVideoTime( seconds2npt(start_offset), seconds2npt ( this.embed.start_offset + this.embed.getDuration() ) );
 			}else if(side=='end'){
 				var end_offset = parseInt(this.embed.start_offset) + parseInt( this.embed.getDuration() ) + parseInt(delta);
-				this.embed.updateVideoTime( seconds2ntp(this.embed.start_offset), seconds2ntp(end_offset) );
+				this.embed.updateVideoTime( seconds2npt(this.embed.start_offset), seconds2npt(end_offset) );
 			}
 			//update everything: 
 			this.pp.refresh();
@@ -948,11 +960,11 @@ mvClip.prototype = {
 			if(side=='start'){
 				//since we adjust start invert the delta: 
 				var start_offset =parseInt(this.embed.start_offset/1000)+parseInt(delta*-1);
-				this.src = base_src +'?t='+ seconds2ntp(start_offset) +'/'+ this.embed.end_ntp;							
+				this.src = base_src +'?t='+ seconds2npt(start_offset) +'/'+ this.embed.end_ntp;							
 			}else if(side=='end'){
 				//put back into seconds for adjustment: 
 				var end_offset = parseInt(this.embed.start_offset/1000) + parseInt(this.embed.duration/1000) + parseInt(delta);
-				this.src = base_src +'?t='+ this.embed.start_ntp +'/'+ seconds2ntp(end_offset);
+				this.src = base_src +'?t='+ this.embed.start_ntp +'/'+ seconds2npt(end_offset);
 			}				
 			this.embed.updateVideoTime( this.src );
 			//update values
@@ -1020,7 +1032,7 @@ mvClip.prototype = {
 				//if a metavid image (has request parameters) use size and time args
 				if(this.img.indexOf('?')!=-1){
 					js_log('get with offset: '+ start_offset);
-					var time = seconds2ntp( start_offset+ (this.embed.start_offset/1000) );
+					var time = seconds2npt( start_offset+ (this.embed.start_offset/1000) );
 					js_log("time is: " + time);
 					this.img = this.img.replace(/t\=[^&]*/gi, "t="+time);
 					if(this.img.indexOf('&size=')!=-1){
@@ -1091,7 +1103,7 @@ PlMvEmbed.prototype = {
 		js_log('pl onClipDone (should go to next)');
 		//go to next in playlist: 
 		this.pc.pp.playNext();			
-	},
+	},	
 	stop:function(){
 		js_log('pl:do stop');
 		//set up convenience pointer to parent playlist
@@ -1334,7 +1346,7 @@ mvPlayList.prototype.monitor = function(){
 		
 	//update slider: 
 	if(!this.userSlide){
-		this.setStatus(seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.getDuration()) );				
+		this.setStatus(seconds2npt(this.currentTime) + '/' + seconds2npt(this.getDuration()) );				
 		this.setSliderValue(this.currentTime / this.getDuration());
 	}
 

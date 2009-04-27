@@ -1060,15 +1060,26 @@ function getURLParamReplace( url, opt ){
 	
 	return new_url;
 }
-
-function seconds2ntp(sec){	
-	var sec = parseInt(sec);
+/**
+ * seconds2npt given a float seconds returns npt format response:
+ * @param float seconds
+ * @param boolean if we should show ms or not.    
+ */
+function seconds2npt(sec, show_ms){
 	if( isNaN( sec ) ){
+		js_log("warning: trying to get npt time on NaN:" + sec);
 		return '0:0:0';
 	}		
 	var hours = Math.floor(sec/ 3600);
-	var minutes = Math.floor((sec/60) % 60);
+	var minutes = Math.floor((sec/60) % 60);	
 	var seconds = sec % 60;
+	//round the second amount requested significant digits
+	if(show_ms){
+		seconds = Math.round( seconds * 1000 ) / 1000;
+	}else{
+		seconds = Math.round( seconds );
+	}
+	
 	if ( minutes < 10 ) minutes = "0" + minutes;
 	if ( seconds < 10 ) seconds = "0" + seconds;
 	return hours+":"+minutes+":"+seconds;

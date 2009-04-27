@@ -109,9 +109,9 @@ mvClipEdit.prototype = {
 				//do clock mouse scroll duration editor
 				var end_ntp = ( _this.rObj.embed.end_ntp) ? _this.rObj.embed.end_ntp : _this.rObj.embed.getDuration();
 				if(!end_ntp)
-					end_ntp = seconds2ntp( _this.rObj.dur );
+					end_ntp = seconds2npt( _this.rObj.dur );
 					
-				var start_ntp = (_this.rObj.embed.start_ntp) ? _this.rObj.embed.start_ntp : seconds2ntp( 0 );
+				var start_ntp = (_this.rObj.embed.start_ntp) ? _this.rObj.embed.start_ntp : seconds2npt( 0 );
 				$j('#sub_cliplib_ic').html(
 					_this.getSetInOut({
 						'start_ntp'	: start_ntp, 
@@ -604,7 +604,7 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 		js_log('start > end : ' + start_sec + ' > ' + end_sec);
 		//update end time to start_time + 1 second
 		end_sec = parseInt(start_sec+1);
-		$j('#mv_end_hr_'+mvd_id).val(seconds2ntp(end_sec));
+		$j('#mv_end_hr_'+mvd_id).val(seconds2npt(end_sec));
 	}
 
 	var duration = end_sec - start_sec;
@@ -625,8 +625,8 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 	}
 	js_log('BASE OFFSET: '+ base_offset);
 	//set the base offset / track_dur interface vars:
-	$j('#track_time_start_'+mvd_id).html( seconds2ntp(base_offset) );
-	$j('#track_time_end_'+mvd_id).html( seconds2ntp( base_offset+track_dur ));
+	$j('#track_time_start_'+mvd_id).html( seconds2npt(base_offset) );
+	$j('#track_time_end_'+mvd_id).html( seconds2npt( base_offset+track_dur ));
 
 	//set up start /end slider values:
 	var slider_start = (start_sec - base_offset) / track_dur;
@@ -741,10 +741,10 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 			 	$j('#resize_'+mvd_id).width())	/
 			 	$j('#container_track_'+mvd_id).width()));
 			if(end_time>(track_dur+base_offset))end_time=track_dur+base_offset;
-			$j('#mv_end_hr_'+mvd_id).val( seconds2ntp(end_time) );
+			$j('#mv_end_hr_'+mvd_id).val( seconds2npt(end_time) );
     	}
     	if(update_start)
-			$j('#mv_start_hr_'+mvd_id).val( seconds2ntp(base_offset + (track_dur *($j('#resize_'+mvd_id).position().left /
+			$j('#mv_start_hr_'+mvd_id).val( seconds2npt(base_offset + (track_dur *($j('#resize_'+mvd_id).position().left /
 				$j('#container_track_'+mvd_id).width()) ) ));
 	}
 }

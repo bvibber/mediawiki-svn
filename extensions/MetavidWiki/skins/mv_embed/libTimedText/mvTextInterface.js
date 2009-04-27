@@ -371,7 +371,7 @@ timedTextCMML = {
 			if( key != 't'){
 				url+=key+'='+val+'&';
 			}else{
-				url+= 't=' + seconds2ntp(req_time[0]) + '/' + seconds2ntp(req_time[1]) + '&';
+				url+= 't=' + seconds2npt(req_time[0]) + '/' + seconds2npt(req_time[1]) + '&';
 			}
 		});							
 		do_request( url, function(data){			

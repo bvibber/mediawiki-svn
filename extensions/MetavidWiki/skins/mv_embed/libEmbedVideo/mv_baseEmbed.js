@@ -130,7 +130,7 @@ var ctrlBuilder = {
 						/
 					($j('#mv_seeker_'+embedObj.id).width()-14));   															
 									 													
-				embedObj.jump_time = seconds2ntp( parseInt( embedObj.getDuration() * perc ) + embedObj.start_time_sec);	
+				embedObj.jump_time = seconds2npt( parseInt( embedObj.getDuration() * perc ) + embedObj.start_time_sec);	
 				//js_log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
 				embedObj.setStatus( gM('seek_to')+' '+embedObj.jump_time );    
 				//update the thumbnail / frame 
@@ -150,11 +150,11 @@ var ctrlBuilder = {
         		var perc = (($j('#mv_seeker_slider_'+embedObj.id).get(0).offsetLeft-embedObj.base_seeker_slider_offset)
 						/
 					($j('#mv_seeker_'+embedObj.id).width()-14));   
-        		js_log('do jump to: '+embedObj.jump_time + ' perc:' +perc);
+					        		
         		
         		//set seek time (in case we have to do a url seek)        		
-        		embedObj.seek_time_sec=npt2seconds(embedObj.jump_time);   
-        		var test = embedObj;        		
+        		embedObj.seek_time_sec = npt2seconds( embedObj.jump_time, true );   
+        		js_log('do jump to: '+embedObj.jump_time + ' perc:' +perc + ' sts:' + embedObj.seek_time_sec);        		        		
         		embedObj.doSeek(perc);
         	}
         });
@@ -367,7 +367,7 @@ mediaSource.prototype =
 	{
 		this.duration = duration;
 		if(!this.end_ntp){
-			this.end_ntp = seconds2ntp( this.start_offset + duration);
+			this.end_ntp = seconds2npt( this.start_offset + duration);
 		}
 	},
     /** MIME type accessor function.
@@ -379,18 +379,18 @@ mediaSource.prototype =
         return this.mime_type;
     },
     /** URI accessor function.
-     * 	@param int seek_time_sec (used to adjust the URI for players that can't do local seeks well on given media types) 
+     * 	@param int seek_time_sec (used to adjust the URI for url based seeks) 
         @return the URI of the source.
         @type String
     */
-    getURI : function(seek_time_sec)
+    getURI : function( seek_time_sec )
     {    	
     	js_log("f:getURI: tf:" + this.timeFormat +' uri_enc:'+this.serverSideSeeking);
     	if( !seek_time_sec || !this.serverSideSeeking ){    		
        		return this.src;       		       	
     	}
        	if( this.timeFormat == 'anx' ){
-       		var new_url = getURLParamReplace(this.src,  { 't': seconds2ntp(seek_time_sec)+'/'+ this.end_ntp } );
+       		var new_url = getURLParamReplace(this.src,  { 't': seconds2npt( seek_time_sec )+'/'+ this.end_ntp } );
        	}else if(this.timeFormat=='mp4'){
        		var mp4URL =  parseUri( this.src );
 	    	var new_url = mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + '?start='
@@ -434,10 +434,10 @@ mediaSource.prototype =
 	    	if( this.timeFormat == 'mp4' ){
 	    		var mp4URL =  parseUri( this.src );	    		
 	    		if( typeof mp4URL.queryKey['start'] != 'undefined' )    		 	
-	    			this.start_ntp = seconds2ntp( mp4URL.queryKey['start'] );
+	    			this.start_ntp = seconds2npt( mp4URL.queryKey['start'] );
 	    
 	    		if( typeof mp4URL.queryKey['end'] != 'undefined' ){
-	    			this.end_ntp = seconds2ntp( mp4URL.queryKey['end'] );
+	    			this.end_ntp = seconds2npt( mp4URL.queryKey['end'] );
 	    			
 	    			//strip the &end param here (as per the mp4 format request (should fix server side)  
 	    			this.src = mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + '?start=' + mp4URL.queryKey['start'];
@@ -452,7 +452,7 @@ mediaSource.prototype =
 	     	//else normal media request (can't predict the duration without the plugin reading it)
 	     	this.duration = null;
 	   	 	this.start_offset = 0;
-			this.start_ntp = seconds2ntp(this.start_offset);			
+			this.start_ntp = seconds2npt(this.start_offset);			
         }
         //js_log('f:parseURLDuration() for:' + this.src  + ' d:' + this.duration);
 	},
@@ -979,7 +979,7 @@ embedVideo.prototype = {
         	//update start end_ntp if duration !=0 (set from plugin) 
         	if(this.duration && this.duration !=0){
         		this.start_ntp = '0:0:0';
-        		this.end_ntp = seconds2ntp( this.duration );
+        		this.end_ntp = seconds2npt( this.duration );
         	}        	
         }        
         //return the duration
@@ -987,7 +987,7 @@ embedVideo.prototype = {
     },
   	/* get the duration in ntp format */
 	getDurationNTP:function(){
-		return seconds2ntp(this.getDuration());
+		return seconds2npt(this.getDuration());
 	},
 	/*
 	 * wrapEmebedContainer
@@ -1009,15 +1009,18 @@ embedVideo.prototype = {
 	//do seek function (should be overwritten by implementing embedLibs)
 	// first check if seek can be done on locally downloaded content. 
 	doSeek : function( perc ){
-		js_log('f:mv_embed:doSeek:'+perc);
+		js_log('f:baseEmbed:doSeek:' + perc + ' to st:' + this.seek_time_sec );
 		if( this.supportsURLTimeEncoding() ){
 			js_log('Seeking to ' + this.seek_time_sec + ' (local copy of clip not loaded at' + perc + '%)');
+			
+			//make sure this.seek_time_sec is up-to-date:
+			this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );
+			js_log('updated seek_time_sec: ' + seconds2npt ( this.seek_time_sec) );
 			this.stop();					
 			this.didSeekJump=true;
 			//update the slider
 			this.setSliderValue( perc ); 
-		}
-		
+		}		
 		//do play in 100ms (give things time to clear) 
 		setTimeout('$j(\'#' + this.id + '\').get(0).play()',100);
 	},	
@@ -1231,7 +1234,7 @@ embedVideo.prototype = {
 					}    	
 					var time_req = 	clip.time_req;
 					if(link_type=='current') //if current start from end of current clip play to end of current meta: 				
-						time_req = curTime[1]+ '/' + seconds2ntp( clip.end_time_sec );
+						time_req = curTime[1]+ '/' + seconds2npt( clip.end_time_sec );
 					
 					//do special linkbacks for metavid content: 
 					var regTimeCheck = new RegExp(/[0-9]+:[0-9]+:[0-9]+\/[0-9]+:[0-9]+:[0-9]+/);				
@@ -1354,7 +1357,7 @@ embedVideo.prototype = {
 		var my_thumb_src = this.media_element.getThumbnailURL();
 		
 		if( my_thumb_src.indexOf('t=') !== -1){
-			var time_ntp =  seconds2ntp ( options.time + parseInt(this.start_offset) );
+			var time_ntp =  seconds2npt ( options.time + parseInt(this.start_offset) );
 			my_thumb_src = getURLParamReplace( my_thumb_src, { 't':time_ntp, 'size': options.size } );
 		}
 		var thumb_class = (typeof options['thumb_class'] !='undefined')? options['thumb_class'] : '';
@@ -1377,7 +1380,7 @@ embedVideo.prototype = {
 		}							
 		if( this.org_thum_src.indexOf('t=') !== -1){
 			this.last_thumb_url = getURLParamReplace(this.org_thum_src, 
-				{ 't' : seconds2ntp( float_sec + parseInt(this.start_offset)) } );									
+				{ 't' : seconds2npt( float_sec + parseInt(this.start_offset)) } );									
 			if(!this.thumbnail_updating){				
 				this.updateThumbnail(this.last_thumb_url ,false);
 				this.last_thumb_url =null;
@@ -1777,7 +1780,8 @@ embedVideo.prototype = {
 	*	the play button calls
 	*/
 	play:function(){
-		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;		
+		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
+				
 		//js_log( "mv_embed play:" + this.id);		
 		//js_log('thum disp:'+this.thumbnail_disp);
 		//check if thumbnail is being displayed and embed html
@@ -1907,10 +1911,10 @@ embedVideo.prototype = {
 			if( !this.userSlide ){
 				if( this.start_offset  ){ //if start offset included add that in: 
 					this.setSliderValue( ( this.currentTime - this.start_offset ) / this.duration );			
-					this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.start_offset+this.duration ));		
+					this.setStatus( seconds2npt(this.currentTime) + '/'+ seconds2npt(this.start_offset+this.duration ));		
 				}else{
 					this.setSliderValue( this.currentTime / this.duration );
-					this.setStatus( seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.duration ));
+					this.setStatus( seconds2npt(this.currentTime) + '/' + seconds2npt(this.duration ));
 				}				
 			}
 		}else{
@@ -1921,7 +1925,7 @@ embedVideo.prototype = {
 				this.setStatus( "paused" );
 			}else if( this.isPlaying() ){
 				if( this.currentTime && ! this.duration ) 
-					this.setStatus( seconds2ntp( this.currentTime ) + ' /' );
+					this.setStatus( seconds2npt( this.currentTime ) + ' /' );
 				else   
 					this.setStatus(" - - - ");
 			}else{
@@ -2014,7 +2018,7 @@ embedVideo.prototype = {
 		var slider_perc=0;
 		if( rel_start_sec <= 0 ){
 			left_perc =0; 			
-			options['start'] = seconds2ntp( this.start_offset );
+			options['start'] = seconds2npt( this.start_offset );
 			rel_start_sec=0;			
 			this.setSliderValue( 0 , hide_progress);
 		}else{
@@ -2038,7 +2042,7 @@ embedVideo.prototype = {
 		this.jump_time =  options['start'];
 		this.seek_time_sec = npt2seconds( options['start']);
 		//trim output to 
-		this.setStatus( gM('seek_to')+' '+ seconds2ntp( this.seek_time_sec ) );
+		this.setStatus( gM('seek_to')+' '+ seconds2npt( this.seek_time_sec ) );
 		js_log('DO update: ' +  this.jump_time);
 		this.updateThumbTime( rel_start_sec );	
 	},

@@ -57,12 +57,14 @@ var nativeEmbed = {
 		}
 	},	
 	doSeek:function(perc){				
-		js_log('native:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() );
-		if( this.supportsURLTimeEncoding() ){
+		js_log('native:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
+		
+		//@@todo check if the clip is loaded here (if so we can do a local seek)
+		if( this.supportsURLTimeEncoding() ){			
 			this.parent_doSeek(perc);
-		}else if( this.vid.duration ){		
+		}else if( this.vid.duration ){					
 			this.vid.currentTime = perc * this.vid.duration;
-			//issue a play here? 
+			
 		}
 	},
 	monitor : function(){
