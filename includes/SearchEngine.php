@@ -63,15 +63,24 @@ class SearchEngine {
 			$title = Title::newFromText( $term );
 			if (is_null($title))
 				return NULL;
-
-			if ( $title->getNamespace() == NS_SPECIAL || $title->exists() ) {
+			if ( $title->exists() ) {
 				return $title;
 			}
 
-	                if(!empty($wgDefaultGoPrefix) && $title->getNamespace() == NS_MAIN ) {
-	                	$term=$wgDefaultGoPrefix.$term;
+			if ( $title->getNamespace() == NS_SPECIAL ) {
+				return $title;
 			}
-                                                                                
+
+			if(!empty($wgDefaultGoPrefix) && $title->getNamespace() == NS_MAIN ) {
+				# if no NS was specified in the query : search the "Expression:" NS
+				$term=$wgDefaultGoPrefix.$term;
+
+				$title = Title::newFromText( $term );
+				if ( $title->exists() ) {
+					return $title;
+				}
+ 			}
+
 			# Now try all lower case (i.e. first letter capitalized)
 			#
 			$title = Title::newFromText( $wgContLang->lc( $term ) );
