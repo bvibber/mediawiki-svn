@@ -84,8 +84,7 @@ loadGM({
 	
 	"mv_ogg-player-vlc-mozilla" : "VLC Plugin",
 	"mv_ogg-player-videoElement" : "Native Ogg Video Support",
-	"mv_ogg-player-vlc-activex" : "VLC ActiveX",
-	"mv_ogg-player-oggPlay" : "Annodex OggPlay Plugin",
+	"mv_ogg-player-vlc-activex" : "VLC ActiveX",	
 	"mv_ogg-player-oggPlugin" : "Generic Ogg Plugin",
 	"mv_ogg-player-quicktime-mozilla" : "Quicktime Plugin",
 	"mv_ogg-player-quicktime-activex" : "Quicktime ActiveX",
@@ -412,7 +411,6 @@ var videoElementPlayer = new mediaPlayer('videoElement',['video/ogg'],'native');
 var vlcMozillaPlayer = new mediaPlayer('vlc-mozilla',['video/ogg', 'video/x-flv', 'video/mp4',  'video/h264'],'vlc');
 var vlcActiveXPlayer = new mediaPlayer('vlc-activex',['video/ogg', 'video/x-flv', 'video/mp4',  'video/h264'],'vlc');
 
-var oggPlayPlayer = new mediaPlayer('oggPlay',['video/ogg'],'oggplay');
 var oggPluginPlayer = new mediaPlayer('oggPlugin',['video/ogg'],'generic');
 var quicktimeMozillaPlayer = new mediaPlayer('quicktime-mozilla',['video/ogg'],'quicktime');
 var quicktimeActiveXPlayer = new mediaPlayer('quicktime-activex',['video/ogg'],'quicktime');
@@ -685,11 +683,7 @@ var embedTypes = {
 				if ( javaEnabled && type == 'application/x-java-applet' ) {
 					this.players.addPlayer(cortadoPlayer);
 					continue;
-				}
-				if( type=='application/liboggplay'){
-					this.players.addPlayer(oggPlayPlayer);
-					continue;
-				}
+				}				
 		
 				if ( type == 'application/ogg' ) {
 					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' )
@@ -1082,14 +1076,17 @@ function seconds2ntp(sec){
 /* 
  * takes hh:mm:ss,ms or  hh:mm:ss.ms input returns number of seconds 
  */
-function npt2seconds(ntp){
-	if(!ntp){		
+function npt2seconds( npt_str ){
+	if(!npt_str){		
 		//js_log('npt2seconds:not valid ntp:'+ntp);
 		return false;
 	}
-	times = ntp.split(':');
+	//strip npt: time definition if present
+	npt_str = npt_str.replace('npt:', ''); 
+	
+	times = npt_str.split(':');
 	if(times.length!=3){		
-		js_log('npt2seconds:nnpt2secondsp:'+ntp);
+		js_log('npt2seconds: ' + npt_str);
 		return false;
 	}
 	//sometimes the comma is used inplace of pereid for ms

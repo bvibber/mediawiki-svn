@@ -366,7 +366,9 @@ mediaSource.prototype =
 	setDuration:function (duration)
 	{
 		this.duration = duration;
-		this.end_ntp = seconds2ntp(this.start_offset + duration);
+		if(!this.end_ntp){
+			this.end_ntp = seconds2ntp( this.start_offset + duration);
+		}
 	},
     /** MIME type accessor function.
         @return the MIME type of the source.
@@ -442,7 +444,7 @@ mediaSource.prototype =
 	    		}	    			    			    		  	    		
 	    	}
 	    	this.serverSideSeeking = true;
-	    	this.start_offset = npt2seconds(this.start_ntp);
+	    	this.start_offset = npt2seconds( this.start_ntp );
 	    	this.duration = npt2seconds( this.end_ntp ) - this.start_offset;
     	} //time format	   		
     	
@@ -1045,6 +1047,7 @@ embedVideo.prototype = {
     },
     /* todo abstract out onClipDone chain of functions and merge with mvTextInterface */
     onClipDone:function(){
+    	js_log('base:onClipDone');
     	//stop the clip (load the thumbnail etc) 
     	this.stop();
     	var _this = this;
@@ -1928,10 +1931,18 @@ embedVideo.prototype = {
 		
 		//update monitorTimerId to call child monitor
 		if( ! this.monitorTimerId ){
-	    	if(document.getElementById(this.id)){
+	    	if( document.getElementById(this.id) ){
 	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
 	    	}
 	    }
+	},	
+	relativeCurrentTime: function(){
+		if(!this.start_offset)
+			this.start_offset =0;
+		var rt = this.currentTime - this.start_offset;
+		if( rt < 0 ) //should not happen but does. 
+			return 0;
+		return rt;
 	},
 	getPluginEmbed : function(){
 		if (window.document[this.pid]){

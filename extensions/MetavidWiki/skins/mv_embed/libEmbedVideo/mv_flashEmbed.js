@@ -1729,7 +1729,7 @@ var flashEmbed = {
         	this.currentTime = flash_state.time;        	  
         	//js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration()); 
         }else{
-        	this.currentTime = flash_state.time + this.media_element.selected_source.start_offset;        	        	
+        	this.currentTime = flash_state.time + this.start_offset;        	        	
         	//stop buffering if greater than the duration: 
         	if( flash_state.bufferEnd > this.getDuration() + 5 ){
         		//js_log('should stop buffering (does not seem to work)' + flash_state.bufferEnd + ' > dur: ' + this.getDuration() );

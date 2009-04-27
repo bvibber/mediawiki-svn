@@ -56,12 +56,13 @@ var nativeEmbed = {
 			}			
 		}
 	},	
-	doSeek:function(perc){
-		js_log('native:seek:' + this.supportsURLTimeEncoding() + ' dur: ' + this.vid.duration);
+	doSeek:function(perc){				
+		js_log('native:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() );
 		if( this.supportsURLTimeEncoding() ){
 			this.parent_doSeek(perc);
 		}else if( this.vid.duration ){		
 			this.vid.currentTime = perc * this.vid.duration;
+			//issue a play here? 
 		}
 	},
 	monitor : function(){
@@ -104,12 +105,9 @@ var nativeEmbed = {
 		this.bufferedPercent =   e.loaded / e.total;
 		//js_log("onprogress:" +e.loaded + ' / ' +  (e.total) + ' = ' + this.bufferedPercent);
 	},
-	onended:function(){
-		//clip "ended" 
-		js_log('f:onended ');
-		//stop monitor
-		this.stopMonitor();
-		this.stop();
+	onended:function(){		
+		js_log('native:onended:');
+		this.onClipDone();
 	},
 	stopMonitor:function(){
 		if( this.monitorTimerId != 0 )
@@ -147,11 +145,5 @@ var nativeEmbed = {
     /* 
      * playlist driver      
      * mannages native playlist calls          
-     */
-    playlistNext:function(){
-    	if(!this.pc){//make sure we are a clip
-    		//
-    		
-    	}
-    }
+     */    
 }

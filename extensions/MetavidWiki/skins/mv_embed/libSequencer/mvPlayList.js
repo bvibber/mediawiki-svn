@@ -238,8 +238,9 @@ mvPlayList.prototype = {
 		$j.each( this.default_track.clips, function( i, clip ){	
 			if( clip.embed ){
 				clip.dur_offset = durSum;
-				if( clip.embed.supports['playlist_swap_loader'] ){
-					//don't include transition time (for 	playlist_swap_loader compatible clips) should have a better name for that				
+				//only calculate the solo Duration if a smil clip that could contain a transition: 
+				if( clip.instanceOf == 'mvSMILClip' ){
+					//don't include transition time (for playlist_swap_loader compatible clips)				
 					durSum += clip.getSoloDuration(); 
 				}else{
 					durSum += clip.getDuration();	
@@ -443,19 +444,13 @@ mvPlayList.prototype = {
 				break;
 			}
 			pl_sum_time+=clip.getDuration();
-		}		
-		
-		//update start_offset 
-		if(typeof this.cur_clip.embed.start_offset=='undefined'){
-			if(!typeof this.cur_clip.embed.media_element.selected_source!='undefined')
-				this.cur_clip.embed.start_offset=this.cur_clip.embed.media_element.selected_source.start_offset;
-		}							
+		}				
 		
 		//issue thumbnail update request: (if plugin supports it will render out frame 
 		// if not then we do a call to the server to get a new jpeg thumbnail  
 		this.cur_clip.embed.updateThumbTime( float_sec - pl_sum_time );
 		
-		this.cur_clip.embed.currentTime = (float_sec -pl_sum_time)+this.cur_clip.embed.start_offset ;
+		this.cur_clip.embed.currentTime = (float_sec -pl_sum_time) + this.cur_clip.embed.start_offset ;
 		this.cur_clip.embed.seek_time_sec = (float_sec -pl_sum_time );
 		
 		//render effects ontop: (handled by doSmilActions)		
@@ -526,14 +521,16 @@ mvPlayList.prototype = {
 	loadEmbedPlaylist: function(){
 		//js_log('load playlist');
 	},
-	//called when the plugin advances to the next clip in the playlist
-	playlistNext:function(){
-		js_log('pl advance');
-		this.cur_clip=this.getClip(1);
-	},
-	next: function(){		
+	//called to play the next clip if done call onClipDone 
+	playNext: function(){
 		//advance the playhead to the next clip			
-		var next_clip = this.getClip(1);									
+		var next_clip = this.getNextClip();
+		
+		if( !next_clip ){
+			js_log('play next with no next clip... must be done:');
+			this.onClipDone();
+			return ;
+		}									
 		//@@todo where the plugin supports pre_loading future clips and manage that in javascript
 		//stop current clip
 		this.cur_clip.embed.stop();
@@ -541,6 +538,10 @@ mvPlayList.prototype = {
 		this.updateCurrentClip(next_clip);
 				
 		this.cur_clip.embed.play();					
+	},
+	onClipDone:function(){
+		js_log("pl onClipDone");		
+		this.cur_clip.embed.stop();
 	},
 	updateCurrentClip:function(new_clip){				
 		js_log('f:updateCurrentClip:'+new_clip.id);
@@ -556,9 +557,13 @@ mvPlayList.prototype = {
 		//update the playhead: 
 		this.setSliderValue( this.cur_clip.dur_offset / this.getDuration() ); 			
 	},
-	prev: function(){
+	playPrev: function(){
 		//advance the playhead to the previous clip			
-		var prev_clip = this.getClip(-1);
+		var prev_clip = this.getPrevClip();
+		if(!prev_clip){
+			js_log("tried to play PrevClip with no prev Clip.. setting prev_clip to start clip");
+			prev_clip = this.start_clip; 
+		}
 		//@@todo we could do something fancy like use playlist for sets of clips where supported. 
 		// or in cases where the player nativly supports the playlist format we can just pass it in (ie m3u or xspf)
 		if(this.cur_clip.embed.supports['playlist_swap_loader']){
@@ -755,6 +760,7 @@ mvPlayList.prototype = {
 			cur_pixle+=pwidth;								
 		});				
 	},
+	//@@todo currently not really in use
 	setUpHover:function(){
 		js_log('Setup Hover');
 		//set up hover for prev,next 
@@ -762,8 +768,9 @@ mvPlayList.prototype = {
 		var tw = th*this.pl_layout.clip_aspect;
 		var plObj = this;
 		$j('#mv_prev_link_'+plObj.id+',#mv_next_link_'+plObj.id).hover(function() {
-		  	var clip = (this.id=='mv_prev_link_'+plObj.id)?
-		  		plObj.getClip(-1):plObj.getClip(1);
+		  	var clip = (this.id=='mv_prev_link_'+plObj.id) ? plObj.getPrevClip() : plObj.getNextClip();
+		  	if(!clip)
+		  		return js_log('missing clip for Hover');
 		  	//get the position of #mv_perv|next_link:
   			var loc = getAbsolutePos(this.id);
 		  	//js_log('Hover: x:'+loc.x + ' y:' + loc.y + ' :'+clip.img);
@@ -775,21 +782,25 @@ mvPlayList.prototype = {
       		$j('#mv_Athub').remove();
       });     
 	},
-	//returns a clip. If offset is out of bound returns first or last clip
-	getClip: function(clip_offset){				
-		if(!clip_offset)clip_offset=0;	
-					
-		var cov = parseInt( this.cur_clip.order ) + parseInt( clip_offset );
-		var cmax = this.getClipCount()-1;
-		//js_log( 'f:getClip: '+clip_offset + ' cov:'+cov +' cmax:'+ cmax);
+	//@@todo we need to move a lot of this track logic like "cur_clip" to the track Obj
+	// and have the playlist just drive the tracks. 
+	getNextClip:function( track ){
+		if(!track)
+			track = this.default_track;		
+		var tc = parseInt(this.cur_clip.order) + 1;
+		var cat = track;		
+		if( tc > track.getClipCount() -1 )
+			return false; // out of range
 		
-		//force first or last clip if offset is outOfBounds 
-		if( cov >= 0 && cov <= cmax ){			
-			return this.default_track.clips[ cov ];
-		}else{
-			if(cov < 0) return this.default_track.clips[0];
-			if(cov > cmax) return this.default_track.clips[cmax];
-		}
+		return 	track.getClip( tc );
+	},	
+	getPrevClip:function( track ) {
+		if(!track)
+			track = this.default_track;		
+		var tc = parseInt(this.cur_clip.order) - 1;
+		if( tc < 0 )
+			return false;
+		return track.getClip( tc );  
 	},
 	/* 
 	 * generic add Clip to ~default~ track
@@ -837,11 +848,11 @@ mvPlayList.prototype = {
 	//this is pretty outdated: 	
 	getPLControls: function(){
 		js_log('getPL cont');
-		return 	'<a id="mv_prev_link_'+this.id+'" title="Previus Clip" onclick="document.getElementById(\''+this.id+'\').prev();return false;" href="#">'+
+		return 	'<a id="mv_prev_link_'+this.id+'" title="Previus Clip" onclick="document.getElementById(\''+this.id+'\').playPrev();return false;" href="#">'+
 					getTransparentPng({id:'mv_prev_btn_'+this.id,style:'float:left',width:'27', height:'27', border:"0", 
 						src:mv_embed_path+'images/vid_prev_sm.png' }) + 
 				'</a>'+
-				'<a id="mv_next_link_'+this.id+'"  title="Next Clip"  onclick="document.getElementById(\''+this.id+'\').next();return false;" href="#">'+
+				'<a id="mv_next_link_'+this.id+'"  title="Next Clip"  onclick="document.getElementById(\''+this.id+'\').playNext();return false;" href="#">'+
 					getTransparentPng({id:'mv_next_btn_'+this.id,style:'float:left',width:'27', height:'27', border:"0", 
 						src:mv_embed_path+'images/vid_next_sm.png' }) + 
 				'</a>';		
@@ -887,8 +898,7 @@ mvClip.prototype = {
 		js_log('id is: '+ this.id);
 	},
 	//setup the embed object:
-	setUpEmbedObj:function(){
-		js_log('pl:setUpEmbedObj');
+	setUpEmbedObj:function(){		
 		//init:
 		//debugger;
 		
@@ -917,7 +927,7 @@ mvClip.prototype = {
 		
 		this.embed = new PlMvEmbed( init_pl_embed );
 				
-		js_log('media src len:' + this.embed.media_element.sources.length);
+		//js_log('media Duration:' + this.embed.getDuration() );
 		//js_log('media element:'+ this.embed.media_element.length);
 		//js_log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);		
 	},
@@ -1048,7 +1058,7 @@ var PlMvEmbed=function(vid_init){
 	js_log('ve src len:'+ ve.media_element.sources.length);
 	return ve;
 }
-//all the overwritten and new methods for playlist extension of mv_embed
+//all the overwritten and new methods for playlist extension of baseEmbed
 PlMvEmbed.prototype = {	
 	init:function(vid_init){				
 		//send embed_video a created video element: 
@@ -1065,7 +1075,7 @@ PlMvEmbed.prototype = {
 		//inherit the videoInterface
 		for( method in videoInterface ){			
 			if(method!='style'){
-				if(this[method]){
+				if( this[ method ] ){
 					//parent embed method preservation:
 					this['pe_'+method]=videoInterface[method];	
 				}else{
@@ -1076,13 +1086,18 @@ PlMvEmbed.prototype = {
 			if(this[method]=="false")this[method]=false;
 			if(this[method]=="true")this[method]=true;
 		}						
+	},	
+	onClipDone:function(){
+		js_log('pl onClipDone (should go to next)');
+		//go to next in playlist: 
+		this.pc.pp.playNext();			
 	},
 	stop:function(){
+		js_log('pl:do stop');
 		//set up convenience pointer to parent playlist
 		var plObj = this.pc.pp;
 		var plEmbed = this;					
-			
-		js_log('do stop');
+					
 		var th=Math.round( plObj.pl_layout.clip_desc * plObj.height );	
 		var tw=Math.round( th * plObj.pl_layout.clip_aspect );
 		//run the parent stop:
@@ -1299,14 +1314,14 @@ mvPlayList.prototype.monitor = function(){
 		//clearInterval( this.smil_monitorTimerId );
 		return ;
 	}
-	//js_log("pl check: " + this.currentTime + ' < '+this.getDuration());
+	//js_log("pl check: " + this.currentTime + ' > '+this.getDuration());
 	//check if we should be done:
 	if( this.currentTime >  this.getDuration() ) 
 		this.stop();
 	
 	//update the playlist current time: 
 	//check for a trsnOut from the previus clip to subtract
-	/*var prev_clip =  this.getClip(-1);
+	/*var prev_clip =  this.getPrevClip();
 	var transOffset = 0;
 	if( prev_clip.id != this.cur_clip.id ){
 		if( prev_clip.transOut ){
@@ -1315,7 +1330,7 @@ mvPlayList.prototype.monitor = function(){
 				 ' = ' + ( this.cur_clip.dur_offset + this.cur_clip.embed.currentTime + transOffset) );
 		}
 	}*/
-	this.currentTime = this.cur_clip.dur_offset + this.cur_clip.embed.currentTime;	
+	this.currentTime = this.cur_clip.dur_offset + this.cur_clip.embed.relativeCurrentTime();	
 		
 	//update slider: 
 	if(!this.userSlide){
@@ -1351,7 +1366,7 @@ mvPlayList.prototype.doSmilActions = function( single_frame ){
 			js_log('order:'  + _clip.order + ' != count:' + ( _clip.pp.getClipCount()-1 ) +
 				' smil dur: ' + _clip.dur + ' <= curTime: ' + _clip.embed.currentTime + ' go to next clip..');		
 				//do a _play next:
-				_clip.pp.next();				
+				_clip.pp.playNext();				
 		}
 	}						
 	//@@todo could maybe generalize transIn with trasOut into one "flow" with a few scattered if statements	
@@ -1436,12 +1451,12 @@ var mvTransLib = {
 		//setup overlay_selector_id			
 		if(tObj.subtype=='crossfade'){
 			if(tObj.transAttrType=='transIn')				
-				var other_pClip = tObj.pClip.pp.getClip(-1);
+				var other_pClip = tObj.pClip.pp.getPrevClip();
 			if(tObj.transAttrType=='transOut')
-				var other_pClip = tObj.pClip.pp.getClip(1);
+				var other_pClip = tObj.pClip.pp.getNextClip();
 				
-			if(typeof(other_pClip)=='undefined' ||  other_pClip.id == tObj.pClip.pp.cur_clip.id)
-				js_log('Error: crossfade without media asset');
+			if(typeof(other_pClip)=='undefined' || other_pClip === false || other_pClip.id == tObj.pClip.pp.cur_clip.id)
+				js_log('Error: crossfade without target media asset');
 			//if not sliding start playback: 
 			if(!tObj.pClip.pp.userSlide){			
 				other_pClip.embed.play();
@@ -1645,7 +1660,8 @@ var mvSMILClip=function(sClipElm, mvClipInit){
 	return this.init(sClipElm, mvClipInit);
 }
 //all the overwritten and new methods for SMIL extension of mv_embed
-mvSMILClip.prototype = {		
+mvSMILClip.prototype = {	
+	instanceOf:'mvSMILClip',	
 	params : {}, //support param as child of ref clips per SMIL spec  
 	init:function(sClipElm, mvClipInit){
 		_this = this;						
@@ -1955,6 +1971,11 @@ trackObj.prototype = {
 		this.clips.splice(pos, 0, clipObj);			
 		//keep the clip order values accurate:
 		this.reOrderClips();				
+	},
+	getClip:function( inx ){
+		if( !this.clips[inx] )
+			return false;
+		return this.clips[inx];
 	},
 	reOrderClips:function(){
 		for(var k in this.clips){
