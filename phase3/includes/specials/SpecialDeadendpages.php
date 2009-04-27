@@ -38,13 +38,13 @@ class DeadendPagesPage extends PageQueryPage {
 	function getQueryInfo() {
 		return array(
 			'tables' => array( 'page', 'pagelinks' ),
-			'fields' => array( "'{$this->getName()} AS type",
+			'fields' => array( "'{$this->getName()}' AS type",
 					'page_namespace AS namespace',
 					'page_title AS title',
 					'page_title AS value'
 			),
 			'conds' => array( 'pl_from IS NULL',
-					'page_namespace' => NS_MAIN,
+					'page_namespace' => MWNamespace::getContentNamespaces(),
 					'page_is_redirect' => 0
 			),
 			'join_conds' => array( 'pagelinks' => array( 'LEFT JOIN', array(

@@ -25,7 +25,7 @@ class MostcategoriesPage extends QueryPage {
 					'page_namespace AS namespace',
 					'page_title AS title',
 					'COUNT(*) AS value' ),
-			'conds' => array ( 'page_namespace' => NS_MAIN ),
+			'conds' => array ( 'page_namespace' => MWNamespace::getContentNamespaces() ),
 			'options' => array ( 'HAVING' => 'COUNT(*) > 1',
 				'GROUP BY' => 'page_namespace, page_title' ),
 			// TODO: test this JOIN
