@@ -331,6 +331,14 @@ DismissableSiteNotice
 settings[] = wgMajorSiteNoticeID: int
 url = http://www.mediawiki.org/wiki/Extension:DismissableSiteNotice
 
+Drafts
+settings[] = egDraftsAutoSaveWait: int
+settings[] = egDraftsAutoSaveTimeout: int
+settings[] = egDraftsLifeSpan: int
+settings[] = egDraftsCleanRatio: int
+schema = true
+url = http://www.mediawiki.org/wiki/Extension:Drafts
+
 Duplicator
 settings[] = wgDuplicatorRevisionLimit: int
 schema = true
