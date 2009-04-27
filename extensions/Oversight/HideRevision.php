@@ -41,6 +41,7 @@ $wgGroupPermissions['oversight']['oversight'] = true;
 // $wgGroupPermissions['quiscustodiet']['oversight'] = true;
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Oversight',
 	'author'         => 'Brion Vibber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Oversight',

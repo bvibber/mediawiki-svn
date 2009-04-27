@@ -184,6 +184,7 @@ $wgExtensionFunctions[] = 'wfGoogleMaps_Install'; # array( $wgGoogleMapExtension
 
 // extension credits
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Google Maps Extension',
 	'author'         => '[http://www.evanmiller.org/ Evan Miller]',
 	'version'        => GOOGLE_MAPS_EXTENSION_VERSION,

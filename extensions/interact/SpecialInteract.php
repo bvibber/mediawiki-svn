@@ -3,6 +3,7 @@ if (!defined('MEDIAWIKI')) die();
 
 /** Register the extension */
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Interact',
 	'description' => 'Add Special:Interact that let you know who you talked with.',
 	'author'	=> 'Ashar Voultoiz',

@@ -38,6 +38,7 @@ if (!defined('MEDIAWIKI')) die('This file is part of MediaWiki. It is not a vali
 $wgExtensionMessagesFiles['IMStatus'] = dirname( __FILE__ ) . "/IMStatus.i18n.php";
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'IM Status',
 	'version' => '1.3',
 	'author' => array( 'PatheticCockroach', 'various MediaWiki contributors' ),

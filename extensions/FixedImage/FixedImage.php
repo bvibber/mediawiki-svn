@@ -34,6 +34,7 @@ $wgFixedImageHooks = array(
 	);
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'FixedImage',
 	'author'         => 'Brion Vibber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:FixedImage',

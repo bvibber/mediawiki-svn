@@ -71,6 +71,7 @@ $wgAjaxExportList[] = 'wfSajaxSearchTemplateFCKeditor';
 $wgAjaxExportList[] = 'wfSajaxSearchSpecialTagFCKeditor';
 
 $wgExtensionCredits['other'][] = array(
+"path" => __FILE__,
 "name" => "FCKeditor extension",
 "author" => "FCKeditor.net (inspired by the code written by Mafs [Meta])",
 "version" => 'fckeditor/mw-extension $LastChangedRevision$ 2008',

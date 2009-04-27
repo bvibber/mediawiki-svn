@@ -5,6 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
         'name' => 'MathStatFunctions',
         'version' => '1.1',
         'author' => 'Carl Fürstenberg (AzaToth)',

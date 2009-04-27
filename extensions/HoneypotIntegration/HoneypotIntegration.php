@@ -15,6 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 
 $dir = dirname( __FILE__ );
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'HoneypotIntegration',
 	'author'         => 'Andrew Garrett',
 	'description'    => 'Provides integration with Project Honey Pot for MediaWiki sites',

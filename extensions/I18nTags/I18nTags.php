@@ -11,9 +11,10 @@
 if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'Parser i18n tags',
 	'description' => 'Access the i18n functions for number formatting, ' .
-		'grammar and plural in any available language',
+	'grammar and plural in any available language',
 	'descriptionmsg' => 'i18ntags-desc',
 	'version' => '2009-01-11',
 	'author' => 'Niklas Laxström',

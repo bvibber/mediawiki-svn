@@ -24,6 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 define('Invitations',1);
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'author'         => 'Andrew Garrett',
 	'version'        => '$Revision$',
 	'name'           => 'Invitations',

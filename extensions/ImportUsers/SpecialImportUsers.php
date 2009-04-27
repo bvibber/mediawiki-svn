@@ -11,6 +11,7 @@
 if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Import Users',
 	'author' => array('Yuriy Ilkiv', 'Rouslan Zenetl'),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportUsers',

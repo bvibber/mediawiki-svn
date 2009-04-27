@@ -108,6 +108,7 @@ $wgOpenIDShowProviderIcons = false;
 # END CONFIGURATION VARIABLES
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'OpenID',
 	'version' => MEDIAWIKI_OPENID_VERSION,
 	'author' => 'Evan Prodromou',

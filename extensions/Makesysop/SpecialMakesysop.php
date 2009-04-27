@@ -13,6 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'author' => 'Tim Starling',
 	'name' => 'Makesysop',
 	'description' => 'Gives bureaucrats the ability to make users into sysops or bureaucrats',

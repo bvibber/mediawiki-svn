@@ -23,6 +23,7 @@
 if( !defined( 'MEDIAWIKI' ) ) die( "This is an extension to the MediaWiki package and cannot be run standalone." );
 
 $wgExtensionCredits['parserhook'][] = array (
+	"path" => __FILE__,
 	"name" => "Negref",
 	"author" => "[http://mediawiki.org/wiki/User:Dantman Daniel Friesen]",
 	"description" => "Provides a tag to negotiate the location of any <nowiki><ref/></nowiki> tags inside of input text to fix some template use cases."

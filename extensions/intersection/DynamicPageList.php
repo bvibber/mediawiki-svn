@@ -49,6 +49,7 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 }
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'DynamicPageList',
 	'description'    => 'outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
 	'descriptionmsg' => 'intersection-desc',

@@ -4,6 +4,7 @@
 #
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'LocalFileLink',
 	'author' => 'Moisa Doru (tmoisa@optaros.com), Optaros Inc.',
 	'description' => 'Allows the usage of local file links with FCKEditor',

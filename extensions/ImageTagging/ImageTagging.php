@@ -14,6 +14,7 @@ $wgHooks['UnknownAction'][] = 'tagSearch';
 
 $wgExtensionFunctions[] = 'wfImageTagPageSetup';
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Image Tagging',
 	'author'         => 'Wikia, Inc. (Tristan Harris, Tomasz Klim)',
 	'version'        => '1.1',

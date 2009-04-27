@@ -21,6 +21,7 @@ if( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 
 // Extension credits.
 $wgExtensionCredits[ 'other' ][] = array(
+	'path'           => __FILE__,
 	'name'           => 'MultiBoilerplate',
 	'description'    => 'Allows a boilerplate to be selected from a drop down box located above the edit form when editing pages.',
 	'descriptionmsg' => 'multiboilerplate-desc',

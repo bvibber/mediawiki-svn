@@ -17,6 +17,7 @@ $wgMaxUploadFiles = isset( $wgMaxUploadFiles ) ? intval( $wgMaxUploadFiles ) : 5
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'MultipleUpload',
 	'author' => 'Travis Derouin',
 	'version' => '1.01',

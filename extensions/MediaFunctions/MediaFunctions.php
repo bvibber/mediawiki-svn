@@ -10,6 +10,7 @@ if (!defined('MEDIAWIKI')) die();
  */
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'MediaFunctions',
 	'version' => '1.1',
 	'author' => 'Rob Church',

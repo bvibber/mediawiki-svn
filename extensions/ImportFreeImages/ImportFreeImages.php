@@ -31,6 +31,7 @@ $wgIFI_ThumbType = 't'; // s for square t for thumbnail
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'ImportFreeImages',
 	'author' => 'Travis Derouin',
 	'version' => '1.0',

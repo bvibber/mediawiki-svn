@@ -10,6 +10,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Icon',
 	'version'        => '1.5',
 	'author'         => 'Tim Laqua',

@@ -40,6 +40,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
         'name' => 'MagicNoNumberedHeadings',
         'version' => '$Revision: 1.11 $',
         'author' => 'Purodha Blissenbach',

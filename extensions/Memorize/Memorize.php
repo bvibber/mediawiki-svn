@@ -58,6 +58,7 @@ function addMemorizeJavascriptAndCSS( &$m_pageObj ) {
  * Add extension information to Special:Version
  */
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Memorizable parser extension',
 	'version' => '1.0a',
 	'author' => 'Ryan Lane',

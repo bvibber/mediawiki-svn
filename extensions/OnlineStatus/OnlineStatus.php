@@ -13,6 +13,7 @@
 
 // Add credit :)
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'OnlineStatus',
 	'author'         => 'Alexandre Emsenhuber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:OnlineStatus',

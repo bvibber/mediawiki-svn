@@ -14,6 +14,7 @@ if (!defined('MEDIAWIKI')) die();
 
 // Extension credits
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'GlobalUserrights',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GlobalUserrights',
 	'version'        => '1.0.2',

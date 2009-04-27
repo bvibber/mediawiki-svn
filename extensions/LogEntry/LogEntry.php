@@ -26,6 +26,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 // Credits
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'LogEntry',
 	'author'         => 'Trevor Parscal', 
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:LogEntry', 

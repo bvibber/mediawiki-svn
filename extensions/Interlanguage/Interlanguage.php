@@ -23,6 +23,7 @@
 $wgExtensionFunctions[]="wfInterlanguageExtension";
 $wgHooks['LanguageGetMagic'][] = 'wfInterlanguageExtensionMagic';
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Interlanguage',
 	'author'         => 'Nikola Smolenski',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Interlanguage',

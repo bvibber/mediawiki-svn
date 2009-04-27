@@ -20,6 +20,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['parserhook'][] = array( 
+	'path'           => __FILE__,
 	'name'           => 'HTMLets', 
 	'author'         => 'Daniel Kinzler', 
 	'url'            => 'http://mediawiki.org/wiki/Extension:HTMLets',

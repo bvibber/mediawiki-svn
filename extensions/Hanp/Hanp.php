@@ -13,6 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Hangul particle chooser',
 	'version' => '2008-09-21',
 	'author' => 'Niklas Laxström',

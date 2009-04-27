@@ -11,6 +11,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'version'        => '0.3',
 	'name'           => 'InspectCache',
 	'author'         => array( 'Tim Starling', 'Brion Vibber' ),

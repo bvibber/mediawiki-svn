@@ -19,6 +19,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'GetFamily',
 	'version' => '1.0',
 	'author' => 'Łukasz Matysiak',

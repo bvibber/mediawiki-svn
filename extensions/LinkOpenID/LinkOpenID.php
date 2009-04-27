@@ -13,6 +13,7 @@ if ( !defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'LinkOpenID',
 	'author'         => 'Michael Holzt',
 	'description'    => 'allow users to link their account to an external OpenID',

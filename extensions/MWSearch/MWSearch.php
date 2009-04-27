@@ -58,6 +58,7 @@ $wgLuceneSearchCacheExpiry = 0;
 $wgLuceneSearchTimeout = 6;
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'MWSearch',
 	'author'         => array( 'Kate Turner', 'Brion Vibber' ),
 	'descriptionmsg' => 'mwsearch-desc',
