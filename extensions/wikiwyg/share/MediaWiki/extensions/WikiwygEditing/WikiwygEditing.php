@@ -7,6 +7,7 @@ $wgHooks['EditPage::AfterEdit:Form'][] = 'WikiwygEditTagCloud';
 
 $wgExtensionFunctions[] = 'registerWikiwygEditing';
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'WikiwygEditing',
 	'author' => 'Bartek Łapiński',
 	'version' => '1.0',

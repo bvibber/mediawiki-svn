@@ -33,6 +33,7 @@ $wgExtensionFunctions[] = 'wfSetupRecordAdmin';
 $wgHooks['LanguageGetMagic'][] = 'wfRecordAdminLanguageGetMagic';
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Record administration',
 	'author'         => array( '[http://www.organicdesign.co.nz/nad User:Nad]', 'Bertrand GRONDIN', 'Siebrand Mazeland' ),
 	'description'    => 'A special page for finding and editing record articles using a form',

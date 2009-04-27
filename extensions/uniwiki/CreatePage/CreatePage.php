@@ -15,6 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) )
  *     GNU GPL v2.0 or later */
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'CreatePage',
 	'author'         => 'Travis Derouin, Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Adds a [[Special:CreatePage|special page]] for creating new pages',

@@ -7,6 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Javascript',
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Adds uniwiki.js to each page containing Javascript code shared between Uniwiki extensions',

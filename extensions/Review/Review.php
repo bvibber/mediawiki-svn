@@ -31,6 +31,7 @@ if( !defined( 'MEDIAWIKI' ) ) die();
 if( !defined( 'REVIEW_CSS' ) ) define('REVIEW_CSS', $wgScriptPath.'/extensions/Review/review.css' );
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Review',
 	'description' => 'The resurrected validation feature.',
 	'descriptionmsg' => 'review-desc',

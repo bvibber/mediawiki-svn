@@ -14,6 +14,7 @@ if (!defined('MEDIAWIKI')) die();
 
 // credits
 $wgExtensionCredits['parserhook'][] = array(
+	'path'            => __FILE__,
 	'name'            => 'Semantic Google Maps',
 	'version'         => '0.6.2',
 	'author'          => array( 'Robert Buzink', 'Yaron Koren' ),

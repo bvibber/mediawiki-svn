@@ -12,6 +12,7 @@ if (!defined('MEDIAWIKI')) die();
  */
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'UserStats',
 	'version'        => 'v1.11.4',
 	'author'         => 'Paul Grinberg',

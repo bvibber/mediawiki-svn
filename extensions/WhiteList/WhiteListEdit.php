@@ -29,6 +29,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'WhiteListEdit',
 	'version'        => 'v0.11.2',
 	'author'         => array('Paul Grinberg', 'Mike Sullivan'),

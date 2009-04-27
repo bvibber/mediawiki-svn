@@ -9,6 +9,7 @@ if ( !defined( "MEDIAWIKI" ) )
 /* ---- CREDITS ---- */
 
 $wgExtensionCredits['other'][] = array(
+	'path'        => __FILE__,
 	'name'        => 'CssHooks',
 	'author'      => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description' => 'Add some CSS hooks to the HTML output of articles, for better styling',

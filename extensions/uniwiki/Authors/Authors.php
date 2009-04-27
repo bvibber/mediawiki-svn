@@ -11,6 +11,7 @@ $wgShowAuthorsNamespaces = array ( NS_MAIN );
 $wgShowAuthors = true;
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Authors',
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Appends a list of contributors to articles',

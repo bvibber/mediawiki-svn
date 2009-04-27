@@ -96,6 +96,7 @@ $wgSpecialPageGroups['PlayerStatsGrabber'] = 'wiki'; // like Special:Statistics
 $wgAjaxExportList[] = 'mw_push_player_stats';
 
 $wgExtensionCredits['media'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'PlayerStats',
 	'author'         => 'Michael Dale',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:PlayerStats',

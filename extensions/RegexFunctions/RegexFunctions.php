@@ -13,6 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionFunctions[] = 'wfRegexFunctions';
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'RegexFunctions',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:RegexFunctions',

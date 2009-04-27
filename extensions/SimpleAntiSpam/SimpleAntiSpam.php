@@ -11,6 +11,7 @@ if(!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'SimpleAntiSpam',
 	'description'    => 'Adds a simple spam/bot check to forms',
 	'descriptionmsg' => 'simpleantispam-desc',

@@ -7,6 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Layouts',
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Populate newly-created pages with editable "layouts" to encourage a common structure for pages',

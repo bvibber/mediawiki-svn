@@ -30,6 +30,7 @@
  */
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'UniversalEditButton',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:UniversalEditButton',
 	'description'    => 'Adds HTML header <code>&lt;link&gt;</code> to support Universal Edit Button browser extension.',

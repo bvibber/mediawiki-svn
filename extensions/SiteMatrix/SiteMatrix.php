@@ -11,6 +11,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'SiteMatrix',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SiteMatrix',
 	'description'    => 'Displays a list of Wikimedia wikis',

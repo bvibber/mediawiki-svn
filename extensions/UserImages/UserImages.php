@@ -15,6 +15,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'User Image Gallery',
 	'version' => '1.1',
 	'author' => 'Rob Church',

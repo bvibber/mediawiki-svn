@@ -79,6 +79,7 @@ if (defined('MEDIAWIKI')) {
 	/* Config end */
 	
 	$wgExtensionCredits['other'][] = array(
+		'path' => __FILE__,
 		'name' => 'RDF',
 		'version' => MWRDF_VERSION,
 		'description' => 'RDF framework for MediaWiki',

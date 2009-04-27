@@ -12,6 +12,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = array( 'CssHook', 'setup' );
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'Page CSS',
 	'description' => 'Parser hook to add per-page CSS using the <tt>&lt;css&gt;</tt> tag',
 	'author' => 'Ævar Arnfjörð Bjarmason'

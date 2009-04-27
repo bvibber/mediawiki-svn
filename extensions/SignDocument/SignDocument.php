@@ -26,6 +26,7 @@ EOT;
 $wgExtensionFunctions[] = 'wfCreateSignatureLog';
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'SignDocument',
 	'author'         => 'Daniel Cannon',
 	'description'    => 'Enables document signing',

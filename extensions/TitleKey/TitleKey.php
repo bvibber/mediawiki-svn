@@ -20,6 +20,7 @@
  */
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'TitleKey',
 	'author' => 'Brion Vibber',
 	'description' => 'Title prefix search suggestion backend',

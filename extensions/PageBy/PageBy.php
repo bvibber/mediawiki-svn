@@ -15,6 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'PageBy',
 	'author' => 'Daniel Kinzler, brightbyte.de',
 	'url' => 'http://mediawiki.org/wiki/Extension:PageBy',

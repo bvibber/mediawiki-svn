@@ -21,6 +21,7 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['WikiTextLoginInOut'] = $dir . 'WikiTextLoggedInOut.i18n.php';
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'WikiTextLoggedInOut',
 	'version' => '1.0',
 	'author' => 'Wikia New York Team',

@@ -12,6 +12,7 @@ $wgHooks['getEditingPreferencesTab'][] = 'wfWikiwygAddEditingPrefs';
 
 $wgExtensionFunctions[] = 'registerWikiwygExtension';
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'MediaWikiWyg',
 	'author' => array('http://svn.wikiwyg.net/code/trunk/wikiwyg/AUTHORS', 'Bartek Łapiński'),
 	'version' => 0.20,

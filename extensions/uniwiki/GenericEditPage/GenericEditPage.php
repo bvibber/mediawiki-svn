@@ -7,6 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'GenericEditPage',
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Supplements the edit page with something more usable',

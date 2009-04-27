@@ -12,6 +12,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialFilelist';
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'File list',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SpecialFileList',
 	'description' => 'Special Page for listing uploaded files',

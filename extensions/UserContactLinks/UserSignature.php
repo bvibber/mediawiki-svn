@@ -19,6 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 global $wgHooks, $wgOut;
 $wgHooks['ParserAfterStrip'][]      = 'parseUserSignatures';
 $wgExtensionCredits['parserhook'][] = array(
+	'path'        => __FILE__,
 	'version'     => '0.4.1',
 	'name'        => 'UserSignature',
 	'author'      => 'Paul Grinberg',

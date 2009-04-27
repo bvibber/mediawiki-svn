@@ -23,6 +23,7 @@ if ( !defined('MEDIAWIKI') ) {
 
 // Extension credits that show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'WhatIsMyIP',
 	'version' => '1.2',
 	'description' => 'Shows current user\'s IP address on [[Special:WhatIsMyIP]]',

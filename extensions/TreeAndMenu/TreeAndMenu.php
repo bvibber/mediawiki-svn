@@ -26,6 +26,7 @@ $wgExtensionFunctions[]        = 'wfSetupTreeAndMenu';
 $wgHooks['LanguageGetMagic'][] = 'wfTreeAndMenuLanguageGetMagic';
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path'        => __FILE__,
 	'name'        => 'TreeAndMenu',
 	'author'      => '[http://www.organicdesign.co.nz/nad Nad], [http://www.organicdesign.co.nz/User:Sven Sven]',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Treeview',

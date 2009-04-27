@@ -17,10 +17,12 @@
  */
 
 $wgExtensionCredits['other'][] = array(
-       'name' => 'Purge Tab 1.0',
+       'path' => __FILE__,
+       'name' => 'Purge Tab',
        'author' =>'Jonathan Tse and Joe Beaudoin Jr.',
        'url' => 'http://www.mediawiki.org/wiki/Extension:Purgetab',
        'description' => 'An extension to add the purge tab to all pages without the use of JavaScript.'
+       'version' => '1.0',
        );
 
 $wgHooks['SkinTemplateContentActions'][] = 'purgetab_ReplaceTabs';

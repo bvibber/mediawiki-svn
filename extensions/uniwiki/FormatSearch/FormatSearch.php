@@ -6,6 +6,7 @@ if ( !defined( "MEDIAWIKI" ) )
 	die();
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'FormatSearch',
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Changes to clean up the search results page',

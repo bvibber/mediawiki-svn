@@ -20,6 +20,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'SharedUserRights',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SharedUserRights',
 	'version' => '0.10',

@@ -9,6 +9,7 @@
 
 $wgExtensionFunctions[] = 'wfPurge';
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Purge',
 	'author' => 'Ævar Arnfjörð Bjarmason',
 	'description' => 'Adds a purge tab on all normal pages and bypasses the purge check for anonymous users allowing for quick purging of the cache',

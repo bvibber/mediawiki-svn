@@ -17,6 +17,7 @@ if( !defined( 'MEDIAWIKI' ) ){
 
 // Extension credits that will be shown on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Refresh Special',
 	'author' => array( 'Bartek Łapiński', 'Jack Phoenix' ),
 	'version' => '1.2.1',

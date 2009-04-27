@@ -8,6 +8,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 
 /* ---- CREDITS ---- */
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'AutoCreateCategoryPages',
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Create stub Category pages automatically',

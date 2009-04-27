@@ -52,6 +52,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Credits for Special:Version
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'RT',
 	'version'        => '1.8',
 	'author'         => array( 'Greg Sabino Mullane' ),

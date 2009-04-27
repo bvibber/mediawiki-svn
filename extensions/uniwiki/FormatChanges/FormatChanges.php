@@ -6,6 +6,7 @@ if ( !defined( "MEDIAWIKI" ) )
 	die();
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'FormatChanges',
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Reformats the [[Special:RecentChanges|recent changes]]',

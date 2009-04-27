@@ -105,6 +105,7 @@ require_once( "$IP/includes/Sanitizer.php" );
 
 # Credits
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'WikiArticleFeeds',
 	'author' => 'Jim Wilson (wilson.jim.r&lt;at&gt;gmail.com)',
 	'url' => 'http://jimbojw.com/wiki/index.php?title=WikiArticleFeeds',

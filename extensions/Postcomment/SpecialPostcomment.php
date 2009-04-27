@@ -18,6 +18,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $wgExtensionFunctions[] = 'wfPostComment';
 
 $wgExtensionCredits['other'][] = array(
+    'path' => __FILE__,
     'name' => 'PostComment',
     'author' => 'Travis Derouin, Siebrand Mazeland',
     'description' => 'Allows users to post comments directly to discussion pages.',

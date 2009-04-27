@@ -10,6 +10,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Stale pages',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Stale_Pages',
 	'author'         => 'Tim Laqua',

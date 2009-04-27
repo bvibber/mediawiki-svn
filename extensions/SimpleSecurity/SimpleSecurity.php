@@ -53,6 +53,7 @@ array_unshift( $wgExtensionFunctions, 'wfSetupSimpleSecurity' );
 
 $wgHooks['LanguageGetMagic'][] = 'wfSimpleSecurityLanguageGetMagic';
 $wgExtensionCredits['parserhook'][] = array(
+	'path'        => __FILE__,
 	'name'        => "SimpleSecurity",
 	'author'      => "[http://www.organicdesign.co.nz/User:Nad User:Nad]",
 	'description' => "Extends the MediaWiki article protection to allow restricting viewing of article content",

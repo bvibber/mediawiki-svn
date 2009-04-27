@@ -14,6 +14,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efUserRightsNotifierSetup';
 	$wgExtensionCredits['other'][] = array(
+		'path' => __FILE__,
 		'name' => 'User Rights Email Notification',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:User_Rights_Email_Notification',
 		'author' => 'Rob Church',

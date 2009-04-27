@@ -27,6 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 
 $wgHooks[ 'ParserFirstCallInit' ][] = 'ExtPipeEsc::setup';
 $wgExtensionCredits[ 'parserhook' ][] = array(
+	'path'            => __FILE__,
 	'author'          => 'David M. Sledge',
 	'name'            => 'Pipe Escape',
 	'version'         => ExtPipeEsc::VERSION,

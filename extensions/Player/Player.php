@@ -16,6 +16,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Player',
 	'author' => 'Daniel Kinzler, brightbyte.de',
 	'url' => 'http://mediawiki.org/wiki/Extension:Player',

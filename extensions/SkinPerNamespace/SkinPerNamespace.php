@@ -14,6 +14,7 @@ $wgHooks['BeforePageDisplay'][] = 'efSkinPerPageBeforePageDisplayHook';
 
 // Add credits :)
 $wgExtensionCredits['other'][] = array(
+	'path'        => __FILE__,
 	'name'        => 'SkinPerNamespace',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:SkinPerNamespace',
 	'version'     => '2009-04-25',

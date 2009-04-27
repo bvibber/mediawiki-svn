@@ -28,6 +28,7 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'RandomUsersWithAvatars',
 	'version' => '1.0',
 	'author' => 'Wikia New York Team',

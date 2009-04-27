@@ -14,6 +14,7 @@ to a number to anonymize results ("X or more" / "Fewer than X" people watching t
 */
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Watchers',
 	'version'        => '0.2',
 	'author'         => 'Magnus Manske',

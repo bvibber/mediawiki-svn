@@ -13,6 +13,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgAutoloadClasses['RandomImage'] = dirname( __FILE__ ) . '/RandomImage.class.php';
 	$wgExtensionCredits['parserhook'][] = array(
+		'path'           => __FILE__,
 		'name'           => 'RandomImage',
 		'author'         => 'Rob Church',
 		'url'            => 'http://www.mediawiki.org/wiki/Extension:RandomImage',

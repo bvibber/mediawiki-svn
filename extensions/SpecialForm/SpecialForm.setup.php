@@ -34,6 +34,7 @@ $wgExtensionAliasesFiles['Form'] = $dir . 'SpecialForm.alias.php';
 $wgSpecialPages['Form'] = 'SpecialForm'; # Let MediaWiki know about your new special page.
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Form',
 	'version' => SPECIALFORM_VERSION,
 	'author' => 'Evan Prodromou',

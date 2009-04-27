@@ -68,6 +68,7 @@ $wgAutoloadClasses['WebStoreCommon'] = $dir . 'WebStoreCommon.php';
 $wgAutoloadClasses['WebStorePostFile'] = $dir . 'WebStorePostFile.php';
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'WebStore',
 	'author' => 'Tim Starling',
 	'description' => 'Web-only (non-NFS) file storage middleware',

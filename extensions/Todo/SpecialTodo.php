@@ -18,6 +18,7 @@ INDEX owner_status_queue_timestamp(todo_owner,todo_status,todo_queue,todo_timest
 */
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Todo',
 	'version' => '0.2',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Todo',

@@ -32,6 +32,7 @@ define ( 'NS_YOUTUBE' , 20);
 define ( 'NS_YOUTUBE_TALK' , 21);
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'YouTubeAuthSub',
 	'author'         => 'Travis Derouin',
 	'description'    => 'Allows users to upload videos directly to YouTube through the wiki',

@@ -20,6 +20,7 @@ $wgSpamBlacklistArticle = "Project:Spam-Blacklist";
 require_once("SpecialPage.php");
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'SpamDiffTool',
 	'author' => 'Travis Derouin',
 	'description' => 'Provides a basic way of adding new entries to the Spam Blacklist from diff pages',

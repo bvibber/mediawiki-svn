@@ -35,6 +35,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'ProtectSection',
 	'author' => 'ThomasV',
 	'description' => 'Allows authorised users to protect parts of a text',

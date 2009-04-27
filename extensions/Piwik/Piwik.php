@@ -13,6 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Piwik Integration',
 	'version'        => '0.8-piwik0.2.26 (1.0-RC3)',
 	'author'         => 'Isb1009',

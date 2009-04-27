@@ -10,6 +10,7 @@ if (!defined('MEDIAWIKI')) die();
 define('SC_VERSION','0.2.9');
 
 $wgExtensionCredits['parserhook'][]= array(
+	'path'           => __FILE__,
 	'name'           => 'Semantic Calendar',
 	'version'        => SC_VERSION,
 	'author'         => 'Yaron Koren',

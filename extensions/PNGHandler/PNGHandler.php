@@ -5,6 +5,7 @@ $wgAutoloadClasses['PNGHandler'] = $dir . 'PNGHandler_body.php';
 $wgExtensionMessagesFiles['PNGHandler'] = $dir . 'PNGHandler.i18n.php';
 
 $wgExtensionCredits['PNGHandler'][] = array(
+	'path' => __FILE__,
 	'name' => 'PNGHandler',
 	'author' => 'Bryan Tong Minh', 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PNGHandler', 

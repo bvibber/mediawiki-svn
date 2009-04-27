@@ -262,6 +262,7 @@ function startVote(){
 
 # Credits
    $wgExtensionCredits['parserhook'][] = array(
+	 				       'path' => __FILE__,
 					       'name' => 'Trust Coloring',
 					       'author' =>'Ian Pye', 
 					       'url' => 

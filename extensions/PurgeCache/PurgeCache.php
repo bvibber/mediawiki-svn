@@ -15,6 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Purge Cache',
 	'author' => 'Rob Church',
 	'description' => 'Special page used to wipe the OBJECTCACHE table',

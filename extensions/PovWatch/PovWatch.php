@@ -19,6 +19,7 @@ require_once( "$IP/extensions/PovWatch/PovWatch.php" );
 endif;
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'PovWatch',
 	'version'        => '1.1.1',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:PovWatch',

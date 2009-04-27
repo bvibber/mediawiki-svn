@@ -17,6 +17,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'TalkHere',
 	'version' => '2008-01-19',
 	'author' => 'Daniel Kinzler',

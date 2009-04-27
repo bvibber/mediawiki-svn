@@ -7,6 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'MooTools12core',
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Adds mootools-1.2-core-yc.js to each page',

@@ -24,6 +24,7 @@ $wgValidPasswords = array(
 $wgSecurePasswordSpecialChars = '.|\/!@#$%^&*\(\)-_=+\[\]{}`~,<>?\'";: '; # Character class of special characters for a regex
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'SecurePasswords',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SecurePasswords',

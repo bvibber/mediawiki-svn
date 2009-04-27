@@ -9,6 +9,7 @@ if ( !defined( "MEDIAWIKI" ) )
 /* ---- CREDITS ---- */
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'CatBoxAtTop',
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Adds a category box to the top right of pages',

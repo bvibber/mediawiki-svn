@@ -94,6 +94,7 @@ function smoothGalleryParserOutput( &$outputPage, &$parserOutput )  {
  * Add extension information to Special:Version
  */
 $wgExtensionCredits['other'][] = array(
+	'path'        => __FILE__,
 	'name'        => 'SmoothGallery parser extension',
 	'version'     => '1.1c (beta)',
 	'author'      => 'Ryan Lane',

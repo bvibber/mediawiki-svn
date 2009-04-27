@@ -24,6 +24,7 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 	$wgExtensionFunctions[] = 'wfPoemExtension';
 }
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Poem',
 	'author'         => array( 'Nikola Smolenski', 'Brion Vibber', 'Steve Sanbeg' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Poem',

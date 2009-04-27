@@ -22,6 +22,7 @@ $wgExtensionFunctions[]        = 'wfSetupPdfBook';
 $wgHooks['LanguageGetMagic'][] = 'wfPdfBookLanguageGetMagic';
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path'        => __FILE__,
 	'name'	      => 'PdfBook',
 	'author'      => '[http://www.organicdesign.co.nz/nad User:Nad]',
 	'description' => 'Composes a book from articles in a category and exports as a PDF book',

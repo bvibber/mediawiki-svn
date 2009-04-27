@@ -18,6 +18,7 @@
  */
  
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'redircite',
 	'author' => 'Roan Kattouw',
 	'description' => 'Allows for abbreviated inline citations',

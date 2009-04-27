@@ -21,6 +21,7 @@ if (!defined('MEDIAWIKI')) die();
 $wgTodoTasksExtensionVersion = '0.9.7';
 
 $wgExtensionCredits['parserhook'][]    = array(
+	'path'           => __FILE__,
 	'version'        => $wgTodoTasksExtensionVersion,
 	'name'           => 'Todo Tasks',
 	'author'         => 'Paul Grinberg',
@@ -29,7 +30,8 @@ $wgExtensionCredits['parserhook'][]    = array(
 	'description'    => 'adds <nowiki>{{#todo:}}</nowiki> parser function for assigning tasks',
 	'descriptionmsg' => 'tasklist-parser-desc',
 );
-$wgExtensionCredits['specialpage'][] = array(
+	$wgExtensionCredits['specialpage'][] = array(
+	'path'        => __FILE__,
 	'name'        => 'Todo Tasks',
 	'version'     => $wgTodoTasksExtensionVersion,
 	'author'      => 'Paul Grinberg',

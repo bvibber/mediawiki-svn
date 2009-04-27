@@ -23,6 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['other'][] = array( 
+	'path' => __FILE__,
 	'name' => 'Polyglot', 
 	'author' => 'Daniel Kinzler', 
 	'url' => 'http://mediawiki.org/wiki/Extension:Polyglot',

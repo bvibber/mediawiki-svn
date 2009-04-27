@@ -13,6 +13,7 @@
 $wgHooks['BeforePageDisplay'][] = 'wfWhosOnline_update_data';
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'WhosOnline',
 	'version' => '1.3',
 	'author' => 'Maciej Brencz',

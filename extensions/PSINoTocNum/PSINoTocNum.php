@@ -42,6 +42,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path'        => __FILE__,
 	'name'        => 'PSINoTocNum',
 	'version'     => '$Revision: 1.4 $',
 	'author'      => 'Benedikt Meuthrath',

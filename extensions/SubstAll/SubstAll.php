@@ -14,6 +14,7 @@
 
 $wgExtensionMessagesFiles['SubstAll'] = dirname(__FILE__) . '/' . 'SubstAll.i18n.php';
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'SubstAll',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SubstAll',
 	'author'         => 'Chad Horohoe',
