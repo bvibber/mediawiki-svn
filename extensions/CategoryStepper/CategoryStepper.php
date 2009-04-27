@@ -20,6 +20,7 @@ if( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 
 // Extension credits.
 $wgExtensionCredits[ 'other' ][] = array(
+	'path'           => __FILE__,
 	'name'           => 'CategoryStepper',
 	'description'    => 'Displays a category stepper box allowing one to navigate forward and backwards alphabetically through one or more categories a page is in.',
 	'descriptionmsg' => 'categorystepper-desc',

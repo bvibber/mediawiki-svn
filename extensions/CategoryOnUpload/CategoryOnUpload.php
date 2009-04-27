@@ -21,6 +21,7 @@ if( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 
 // Register extension credits.
 $wgExtensionCredits[ 'other' ][] = array(
+	'path'          => __FILE__,
 	'name'          => 'CategoryOnUpload',
 	'url'           => 'http://www.mediawiki.org/wiki/Extension:CategoryOnUpload',
 	'author'        => 'MinuteElectron',

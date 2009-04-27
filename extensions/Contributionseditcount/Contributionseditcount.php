@@ -14,6 +14,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfContributionseditcount';
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Contributionseditcount',
 	'description' => 'Displays an edit count on Special:Contributions',
 	'descriptionmsg' => 'contributionseditcount-desc',

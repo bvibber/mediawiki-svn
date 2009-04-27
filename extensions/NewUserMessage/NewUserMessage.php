@@ -27,6 +27,7 @@ $wgHooks['AuthPluginAutoCreate'][] = 'NewUserMessage::createNewUserMessageAutoCr
 $wgHooks['UserGetReservedNames'][] = 'NewUserMessage::onUserGetReservedNames';
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'NewUserMessage',
 	'version'        => NEWUSERMESSAGE_VERSION,
 	'author'         => array( "[http://www.organicdesign.co.nz/User:Nad Nad]", 'Siebrand Mazeland' ),

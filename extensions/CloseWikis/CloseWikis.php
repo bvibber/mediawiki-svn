@@ -22,6 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'CloseWikis',
 	'author'         => 'Victor Vasiliev',
 	'description'    => 'Allows to close wiki sites',

@@ -16,6 +16,7 @@ $wgExtensionMessagesFiles['DiscussionThreading'] =  dirname(__FILE__) . '/Discus
 
 $wgExtensionFunctions[] = 'efDiscussionThreadSetup';
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'DiscussionThreading',
 	'author' => 'Jack D. Pond, Daniel Brice',
 	'version' => '1.3',

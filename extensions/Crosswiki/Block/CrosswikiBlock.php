@@ -4,6 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Crosswiki Blocking',
 	'author' => 'VasilievVV',
 	'version' => '1.0alpha',

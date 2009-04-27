@@ -20,6 +20,7 @@ $wgExtensionAliasesFiles['Call'] = $dir . 'Call.alias.php';
 $wgSpecialPages['Call'] = 'Call';
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Call',
 	'version' => '1.1',
 	'author' => 'Algorithmix',

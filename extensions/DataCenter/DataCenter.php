@@ -33,6 +33,7 @@ $egDataCenterGoogleMapsAPIKey =
 
 // Credits
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'DataCenter',
 	'author' => 'Trevor Parscal',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DataCenter',

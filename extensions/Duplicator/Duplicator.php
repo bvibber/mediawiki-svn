@@ -9,6 +9,7 @@ if (!defined('MEDIAWIKI')) die();
  */
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Duplicator',
 	'version' => '1.2',
 	'author' => 'Rob Church',

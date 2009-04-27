@@ -25,10 +25,11 @@ $wgExtensionMessagesFiles['Breadcrumbs'] = dirname(__FILE__) . '/BreadCrumbs.i18
 ## Register extension setup hook and credits:
 $wgExtensionFunctions[] = 'fnBreadCrumbs';
 $wgExtensionCredits['parserhook'][] = array(
-  'name'          => 'BreadCrumbs',
-  'author'        => 'Manuel Schneider',
-  'url'           => 'http://www.mediawiki.org/wiki/Extension:BreadCrumbs',
-  'description'   => 'Shows a breadcrumb navigation.',
+  'path'           => __FILE__,
+  'name'           => 'BreadCrumbs',
+  'author'         => 'Manuel Schneider',
+  'url'            => 'http://www.mediawiki.org/wiki/Extension:BreadCrumbs',
+  'description'    => 'Shows a breadcrumb navigation.',
   'descriptionmsg' => 'breadcrumbs-desc',
 );
                                 

@@ -7,6 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 require_once( 'DYMNorm.php' );
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'DidYouMean',
 	'author'         => 'hippietrail (Andrew Dunbar)',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:DidYouMean',

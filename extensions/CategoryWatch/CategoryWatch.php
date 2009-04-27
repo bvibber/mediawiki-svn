@@ -22,6 +22,7 @@ $wgCategoryWatchUseAutoCat   = false;
 
 $wgExtensionFunctions[] = 'wfSetupCategoryWatch';
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'CategoryWatch',
 	'author'         => '[http://www.organicdesign.co.nz/User:Nad User:Nad]',
 	'description'    => 'Extends watchlist functionality to include notification about membership changes of watched categories',

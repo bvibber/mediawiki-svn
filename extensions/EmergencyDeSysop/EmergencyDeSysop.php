@@ -9,6 +9,7 @@ EOT;
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'          => __FILE__,
 	'author'	=> 'SQL',
 	'name'		=> 'EmergencyDeSysop',
 	'url' 		=> 'http://www.mediawiki.org/wiki/Extension:EmergencyDeSysop',

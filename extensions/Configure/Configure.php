@@ -12,6 +12,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 # Adding credit :)
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Configure',
 	'author' => array( 'Alexandre Emsenhuber', 'Andrew Garrett' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',

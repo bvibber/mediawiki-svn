@@ -36,6 +36,7 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 
 $wgHooks['UnknownAction'][] = 'actionCreate';
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'CreateBox',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:CreateBox',
 	'description'    => 'Specialized inputbox for page creation',

@@ -7,6 +7,7 @@
  */
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Edit Messages',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:EditMessages',
 	'author' => 'Tim Starling',

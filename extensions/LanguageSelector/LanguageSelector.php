@@ -21,7 +21,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionCredits['other'][] = array( 
+$wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,	
 	'name'           => 'Language Selector', 
 	'author'         => 'Daniel Kinzler', 
 	'url'            => 'http://mediawiki.org/wiki/Extension:LanguageSelector',

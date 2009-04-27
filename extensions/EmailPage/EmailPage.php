@@ -35,6 +35,7 @@ $wgExtensionAliasesFiles['EmailPage']  = $dir . 'EmailPage.alias.php';
 $wgSpecialPages['EmailPage']           = 'SpecialEmailPage';
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'EmailPage',
 	'author'         => '[http://www.organicdesign.co.nz/nad User:Nad]',
 	'description'    => 'Send rendered HTML page to an email address or list of addresses using [http://phpmailer.sourceforge.net phpmailer].',

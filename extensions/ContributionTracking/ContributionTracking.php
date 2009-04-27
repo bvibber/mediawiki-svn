@@ -10,6 +10,7 @@ EOT;
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'ContributionTracking',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ContributionTracking',
 	'author'         => 'David Strauss',

@@ -14,6 +14,7 @@
 $wgHooks['SkinTemplateOutputPageBeforeExec'][] = "canonicalHref";
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
         'name' => 'Canonical Href',
         'author' => 'Nick Sullivan nick at wikia-inc.com',
         'description' => 'This extension prints a link type="canonical" tag with a canonical representation of the url, which is used by Google, MSN, and Yahoo! to funnel PageRank'

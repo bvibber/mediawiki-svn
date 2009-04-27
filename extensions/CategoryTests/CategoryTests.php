@@ -13,6 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 //credits and hooks
 $wgExtensionFunctions[] = 'wfCategoryTests';
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'Category Tests',
 	'version' => '1.2',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryTests',

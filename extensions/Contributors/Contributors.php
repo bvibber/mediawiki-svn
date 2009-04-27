@@ -11,6 +11,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efContributors';
 	$wgExtensionCredits['specialpage'][] = array(
+		'path' => __FILE__,
 		'name' => 'Contributors',
 		'version' => '1.0.1beta',
 		'author' => 'Rob Church',

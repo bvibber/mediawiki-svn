@@ -35,6 +35,7 @@ if (!defined('MEDIAWIKI')) die();
 
 # Credentials.
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Special:Chemicalsources',
 	'description' => '[[Special:Chemicalsources|Special page]] for Chemical sources',
 	'author' => 'Dirk Beetstra',

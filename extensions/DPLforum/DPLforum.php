@@ -38,6 +38,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionFunctions[] = 'wfDPLforum';
 $wgHooks['LanguageGetMagic'][] = 'wfDPLmagic';
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'DPLforum',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:DPLforum',
 	'description'    => 'DPL-based forum extension',

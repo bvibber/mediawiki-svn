@@ -24,6 +24,7 @@
  */
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Crowd Authentication Plugin',
 	'author'         => 'River Tarnell',
 	'description'    => 'Authentication plugin for Atlassian Crowd',

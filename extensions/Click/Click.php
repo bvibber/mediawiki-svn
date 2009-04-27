@@ -19,6 +19,7 @@ if( !defined( 'MEDIAWIKI' ) ) die;
 
 // Extension credits.
 $wgExtensionCredits[ 'parserhook' ][] = array(
+	'path'        => __FILE__,
 	'name'        => 'Click',
 	'description' => 'Adds a parser function to display an image with a link that leads to a page other than the image description page.',
 	'author'      => array( 'MinuteElectron', 'Danny B.' ),

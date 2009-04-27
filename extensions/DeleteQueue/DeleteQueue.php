@@ -14,6 +14,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'DeleteQueue',
 	'author'         => 'Andrew Garrett',
 	'description'    => 'Creates a queue-based system for managing deletion.',

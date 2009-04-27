@@ -29,6 +29,7 @@ $wgEditSimilarCounterValue = 1;
 $wgExtensionFunctions[] = 'wfEditSimilarSetup';
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'EditSimilar',
 	'version' => '1.17',
 	'author' => array( 'Bartek Łapiński', "Łukasz 'TOR' Garczewski" ),

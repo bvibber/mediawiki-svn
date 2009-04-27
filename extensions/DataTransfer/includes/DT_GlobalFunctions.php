@@ -14,6 +14,7 @@ define('DT_SP_HAS_XML_GROUPING', 1);
 define('DT_SP_IS_EXCLUDED_FROM_XML', 2);
 
 $wgExtensionCredits['specialpage'][]= array(
+	'path'           => __FILE__,
 	'name'           => 'Data Transfer',
 	'version'        => DT_VERSION,
 	'author'         => 'Yaron Koren',

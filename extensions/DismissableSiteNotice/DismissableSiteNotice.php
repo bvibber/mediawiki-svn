@@ -1,6 +1,7 @@
 <?php
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'DismissableSiteNotice',
 	'author' => 'Brion Vibber',
 	'description' => 'Allows users to close the sitenotice.',

@@ -12,6 +12,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'BadImages',
 	'version' => '1.1',
 	'author' => 'Rob Church',

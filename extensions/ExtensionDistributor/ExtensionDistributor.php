@@ -39,6 +39,7 @@ $wgAutoloadClasses['ExtensionDistributorPage'] = $dir . 'ExtensionDistributor_bo
 $wgExtensionMessagesFiles['ExtensionDistributor'] = $dir . 'ExtensionDistributor.i18n.php';
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Extension Distributor',
 	'author'         => 'Tim Starling',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ExtensionDistributor',

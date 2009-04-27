@@ -6,6 +6,7 @@
  */
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'CommentPages',
 	'author'         => '[http://en.wikinews.org/wiki/User:Zachary Zachary Hauri]',
 	'description'    => 'Comment pages for the main namespace',

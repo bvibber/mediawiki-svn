@@ -24,6 +24,7 @@ EOT;
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path'          => __FILE__,
 	'name'          => 'EditOwn',
 	'author'        => 'Roan Kattouw',
 	'url'           => 'http://www.mediawiki.org/wiki/Extension:EditOwn',

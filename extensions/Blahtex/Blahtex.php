@@ -26,6 +26,7 @@ $wgBlahtexOptions = '--texvc-compatible-commands --mathml-version-1-fonts --disa
 
 $wgExtensionFunctions[] = 'efBlahtex';
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Blahtex',
 	'author' => 'David Harvey and Jitse Niesen',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Blahtex',

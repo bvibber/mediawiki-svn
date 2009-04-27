@@ -10,6 +10,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Count Edits',
 	'author' => 'Rob Church',
 	'description' => '[[Special:CountEdits|Special page]] that counts user edits and provides a top-ten contributor list',

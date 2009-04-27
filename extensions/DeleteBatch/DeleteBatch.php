@@ -14,6 +14,7 @@ if( !defined( 'MEDIAWIKI' ) )
 
 // Extension credits that will show up on Special:version
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Delete Batch',
 	'version' => '1.1',
 	'author' => 'Bartek Łapiński',

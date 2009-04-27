@@ -14,6 +14,7 @@
 if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efContributorsAddon';
 	$wgExtensionCredits['other'][] = array(
+		'path' => __FILE__,
 		'name' => 'ContributorsAddon',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:ContributorsAddon',
 		'author' => 'Tim Laqua',

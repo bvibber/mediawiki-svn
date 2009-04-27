@@ -24,6 +24,7 @@
 $wgHooks['OutputPageBeforeHTML'][] = 'addMatchedText' ;
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'DoubleWiki',
 	'author' => 'ThomasV',
 	'url' => 'http://wikisource.org/wiki/Wikisource:DoubleWiki_Extension',

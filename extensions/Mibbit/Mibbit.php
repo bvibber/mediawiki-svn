@@ -19,6 +19,7 @@ if( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 
 // Extension credits.
 $wgExtensionCredits[ 'specialpage' ][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Mibbit',
 	'description'    => 'Adds a special page used to chat in real time with other wiki users.',
 	'descriptionmsg' => 'mibbit-desc',
