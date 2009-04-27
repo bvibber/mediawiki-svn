@@ -115,7 +115,7 @@ mvTextInterface.prototype = {
 		//make sure the clip does not already exist:
 		if($j('#tc_'+text_clip.id).length==0){
 			var inserted = false;
-			var text_clip_start_time = ntp2seconds( text_clip.start );
+			var text_clip_start_time = npt2seconds( text_clip.start );
 			
 			var insertHTML = '<div style="border:solid thin black;" id="tc_'+text_clip.id+'" ' +
 				'start="'+text_clip.start+'" end="'+text_clip.end+'" class="mvtt tt_'+text_clip.type_id+'">' +
@@ -128,8 +128,8 @@ mvTextInterface.prototype = {
 			//js_log("ADDING CLIP: "  + text_clip_start_time + ' html: ' + insertHTML);
 			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
 				if(!inserted){
-					//js_log( ntp2seconds($j(this).attr('start')) + ' > ' + text_clip_start_time);
-					if( ntp2seconds($j(this).attr('start')) > text_clip_start_time){
+					//js_log( npt2seconds($j(this).attr('start')) + ' > ' + text_clip_start_time);
+					if( npt2seconds($j(this).attr('start')) > text_clip_start_time){
 						inserted=true;
 						$j(this).before(insertHTML);
 					}
@@ -246,7 +246,7 @@ mvTextInterface.prototype = {
 			//search for current time:  flash red border trascript
 			_this = this;
 			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
-				if(ntp2seconds($j(this).attr('start')) == cur_time){
+				if(npt2seconds($j(this).attr('start')) == cur_time){
 					_this.prevTimeScroll=cur_time;
 					$j('#mmbody_'+_this.pe.id).animate({scrollTop: $j(this).get(0).offsetTop}, 'slow');
 				}
@@ -268,7 +268,7 @@ mvTextInterface.prototype = {
 			_this = this;
 			var scroll_to_id='';
 			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
-				if(cur_time > ntp2seconds($j(this).attr('start'))  ){
+				if(cur_time > npt2seconds($j(this).attr('start'))  ){
 					_this.prevTimeScroll=cur_time;
 					if( $j(this).attr('id') )	
 						scroll_to_id = $j(this).attr('id');	
@@ -359,8 +359,8 @@ timedTextCMML = {
 		
 		var pcurl =  parseUri( _this.getSRC() );
 		var req_time = pcurl.queryKey['t'].split('/');
-		req_time[0]=ntp2seconds(req_time[0]);
-		req_time[1]=ntp2seconds(req_time[1]);
+		req_time[0]=npt2seconds(req_time[0]);
+		req_time[1]=npt2seconds(req_time[1]);
 		if(req_time[1]-req_time[0]> _this.request_length){
 			//longer than 5 min will only issue a (request 5 min)
 			req_time[1] = req_time[0]+_this.request_length;

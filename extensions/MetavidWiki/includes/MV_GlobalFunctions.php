@@ -44,15 +44,14 @@ function enableMetavid() {
 }
 function mvSetupExtension() {
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore,
-	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions, $markerList,$wgVersion,
+	$wgParser, $mvArticlePath, $mvgScriptPath, $wgScriptPath, $wgServer, $wgExtensionFunctions, $markerList,$wgVersion,
 	$wgAjaxExportList, $mvEnableAutoComplete, $mvEnableJSMVDrewrite, 
 	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers, $wgJSAutoloadClasses,
 	$wgAPIModules;
 	
-
+	//setupMsg
 	mvfInitMessages();
-	//add the ALL page header 	
-	mvfAutoAllPageHeader();
+
 	
 	/********************************
  	* Ajax Hooks 
@@ -98,7 +97,13 @@ function mvSetupExtension() {
 	/**********************************************/
 	/***** register autoLoad javascript Classes:  */
 	/**********************************************/
-	$mv_jspath =  $mvgIP . '/skins/';
+	
+	//build a shortcut to the local js extension path from the $mvgScriptPath setting:
+	$mv_jspath =  str_replace($wgScriptPath, '', $mvgScriptPath) . '/skins/';
+	//remove leading slash
+	if($mv_jspath[0]=='/') 
+		$mv_jspath = substr($mv_jspath, 1);
+		
 	$mvjsp = $mv_jspath . 'mv_embed/';
 	//core: 	
 	$wgJSAutoloadClasses['window.jQuery']		= $mvjsp . 'jquery/jquery-1.2.6.js';
@@ -305,7 +310,8 @@ function mvSetupExtension() {
 	 *  API extension (this may be integrated into semantic wiki at some point) 
 	 **************************************/
 	 
-	
+	//add the ALL page header 	
+	mvfAutoAllPageHeader();	
 	
 	
 	// $wgHooks['BeforePageDisplay'][] = 'mvDoSpecialPage';	
@@ -359,15 +365,20 @@ function mvfAutoAllPageHeader() {
 		$unique_req_param = MV_VERSION;
 	}
 	
+	//if scriptload is off manually load the requested js: 
 	if( $wgEnableScriptLoader ){
-		$debug_param = ( $mvgJSDebug ||
+		/*$debug_param = ( $mvgJSDebug ||
 						 $wgRequest->getVal('debug')=='true' ||
 						 $wgRequest->getVal('debug')=='1' ) 
 			 		 ? '&debug=true' : '';	
 		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/mvwScriptLoader.php?" . 
 								"class=window.jQuery,j.fn.autocomplete,j.fn.hoverIntent,mv_embed,mv_allpages,mv_search" .
 								'&urid=' .$unique_req_param . $debug_param . "\"></script>"
-						 );
+	 					);*/
+		$classes = array( 'window.jQuery','j.fn.autocomplete','j.fn.hoverIntent','mv_embed','mv_allpages','mv_search');
+		foreach($classes as $js_class){
+			$wgOut->addScriptClass( $js_class );
+		}					
 	}else{
 		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.6.min.js?{$unique_req_param}\"></script>" );
 		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js?{$unique_req_param}\"></script>" );
@@ -647,7 +658,7 @@ function mvIsNtpTime( $time ) {
 /*
  * takes ntp time of format hh:mm:ss and converts to seconds 
  */
-function ntp2seconds( $str_time ) {
+function npt2seconds( $str_time ) {
 	$time_ary = explode( ':', $str_time );	
 	$hours = $min = $sec = 0;
 	if ( count( $time_ary ) == 3 ) {

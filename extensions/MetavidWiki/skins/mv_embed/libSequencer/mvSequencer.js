@@ -1275,7 +1275,7 @@ mvSequencer.prototype = {
 		clip_desc+='length: ' + seconds2ntp(new_clip_dur) +'('+clip_dif_str+')';	
 		if(this_seq.resize_mode=='resize_end'){	
 			//expanding right		
-			var new_end = seconds2ntp(ntp2seconds(clip.embed.end_ntp)+clip_dif);
+			var new_end = seconds2ntp(npt2seconds(clip.embed.end_ntp)+clip_dif);
 			clip_desc+='<br>end time: ' + new_end;		
 			//also shift all the other clips (after the current) 
 			//js_log("track_inx: " + track_inx + ' clip inx:'+clip_inx);
@@ -1288,7 +1288,7 @@ mvSequencer.prototype = {
 			});
 		}else{
 			//expanding left (resize_start)
-			var new_start = seconds2ntp(ntp2seconds(clip.embed.start_ntp)+clip_dif);
+			var new_start = seconds2ntp(npt2seconds(clip.embed.start_ntp)+clip_dif);
 			clip_desc+='<br>start time: ' + new_start;					
 		}
 			

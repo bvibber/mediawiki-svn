@@ -232,7 +232,7 @@ function do_insert_stream_file( $mvStream, $path, $quality_msg ) {
 					if ( strpos( $len, '.' ) !== false ) {
 						$len = substr( $len, 0, strpos( $len, '.' ) );
 					}
-					$dur = ntp2seconds( $len );
+					$dur = npt2seconds( $len );
 				} else {
 					echo "empty nfo file: $nfo_url \n";
 					$dur = 0;

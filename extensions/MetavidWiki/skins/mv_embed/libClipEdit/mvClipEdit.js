@@ -597,8 +597,8 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 		do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
 	});
 	//read the ntp time from the fields
-	var start_sec = ntp2seconds( $j('#mv_start_hr_'+mvd_id).val() );
-	var end_sec = ntp2seconds( $j('#mv_end_hr_'+mvd_id).val() );
+	var start_sec = npt2seconds( $j('#mv_start_hr_'+mvd_id).val() );
+	var end_sec = npt2seconds( $j('#mv_end_hr_'+mvd_id).val() );
 	js_log('start_sec:'+start_sec + ' end: ' + end_sec);
 	if(start_sec > end_sec){
 		js_log('start > end : ' + start_sec + ' > ' + end_sec);
@@ -708,7 +708,7 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 				adj_callback();
 		},
 		resize: function(e,ui) {
-			base_offset = ntp2seconds( $j('#track_time_start_'+mvd_id).html());
+			base_offset = npt2seconds( $j('#track_time_start_'+mvd_id).html());
 			mv_slider_update_stats(mvd_id);
 		}
 	});

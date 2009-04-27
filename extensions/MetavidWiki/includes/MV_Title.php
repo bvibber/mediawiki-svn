@@ -149,9 +149,9 @@
 			$this->start_time_sec = 0;
  			$this->start_time = seconds2ntp( $this->start_time_sec ); 			
  		} else {
- 			$this->start_time_sec = ntp2seconds( $this->start_time );
+ 			$this->start_time_sec = npt2seconds( $this->start_time );
 		}
- 		if ( $this->end_time == null || ntp2seconds( $this->end_time ) < $this->start_time_sec ) {
+ 		if ( $this->end_time == null || npt2seconds( $this->end_time ) < $this->start_time_sec ) {
  			if ( $this->start_time_sec == 0 ) {
  				$this->end_time = seconds2ntp( $mvDefaultStreamViewLength );
  				$this->end_time_sec = $mvDefaultStreamViewLength;
@@ -172,7 +172,7 @@
 	 */
 	function getStartTimeSeconds() {
 		if ( isset( $this->start_time_sec ) )return $this->start_time_sec;
-		$this->start_time_sec = ntp2seconds( $this->start_time );
+		$this->start_time_sec = npt2seconds( $this->start_time );
 		return $this->start_time_sec;
 	}
 	/* 
@@ -181,7 +181,7 @@
 	function getEndTimeSeconds() {
 		if ( isset( $this->end_time ) ) {
 			if ( isset( $this->end_time_sec ) )return $this->end_time_sec;
-			$this->end_time_sec = ntp2seconds( $this->end_time );
+			$this->end_time_sec = npt2seconds( $this->end_time );
 			return $this->end_time_sec;
 		}
 		return null;
@@ -494,7 +494,7 @@
  		// (support null endtimes)
  		// if the endtime is unset set it to the default length after the start time: 
  		// if(!isset($end_time)){
- 			// $this->end_time = seconds2ntp(ntp2seconds($this->start_time) + $mvDefaultClipLength) ;
+ 			// $this->end_time = seconds2ntp(npt2seconds($this->start_time) + $mvDefaultClipLength) ;
  		// }
 
  		// @@todo make sure start time is not negative & end time is not > duration 
@@ -507,7 +507,7 @@
  			if ( mvIsNtpTime( $this->end_time ) == false )$this->end_time = null;
  			
  			// make sure the end time is > than the start time: 		
- 			if ( ntp2seconds( $this->start_time ) > ntp2seconds( $this->end_time ) ) {
+ 			if ( npt2seconds( $this->start_time ) > npt2seconds( $this->end_time ) ) {
  				// @@TODO better error handling 
  				$this->start_time = null;
  				$this->end_time = null;

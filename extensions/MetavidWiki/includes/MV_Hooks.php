@@ -103,12 +103,12 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
  			if( $title->getNamespace() == MV_NS_STREAM ){
 		 		if( substr( $param, 0, 6 ) == 'start='){
 		 			$start_str =  substr( $param, 6 );
-		 			$timeSec = ntp2seconds($start_str);
+		 			$timeSec = npt2seconds($start_str);
 		 			if( (int) $timeSec > 0 )
 		 				$start_ntp = seconds2ntp($timeSec);
 		 		}else if(substr( $param, 0, 4 ) == 'end='){
 		 			$end_str =  substr( $param, 6 );
-		 			$timeSec = ntp2seconds($start_str);
+		 			$timeSec = npt2seconds($start_str);
 		 			if( (int) $timeSec > 0 )
 		 				$end_ntp = seconds2ntp($timeSec);
 		 		}else{

@@ -52,10 +52,10 @@ function do_request(){
 		//@@todo support more time request formats
 		if(strpos( $time_req,'/')!==false){
 			list($start_time_ntp, $end_time_ntp)=explode('/',$time_req);
-			$start_sec 	= ntp2seconds($start_time_ntp);
-			$end_sec 	= ntp2seconds($end_time_ntp);
+			$start_sec 	= npt2seconds($start_time_ntp);
+			$end_sec 	= npt2seconds($end_time_ntp);
 		}else{
-			$start_sec 	= ntp2seconds($time_req);
+			$start_sec 	= npt2seconds($time_req);
 			$end_sec	= null;
 			if($start_sec==0)output_full_file($file_loc);
 		}
@@ -93,7 +93,7 @@ function output_full_file($file_loc){
 	die();
 }
 
-function ntp2seconds($str_time){
+function npt2seconds($str_time){
 	$time_ary = explode(':', $str_time);	
 	$hours=$min=$sec=0;
 	if(count($time_ary)==3){

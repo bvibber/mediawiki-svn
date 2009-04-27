@@ -1082,14 +1082,14 @@ function seconds2ntp(sec){
 /* 
  * takes hh:mm:ss,ms or  hh:mm:ss.ms input returns number of seconds 
  */
-function ntp2seconds(ntp){
+function npt2seconds(ntp){
 	if(!ntp){		
-		//js_log('ntp2seconds:not valid ntp:'+ntp);
+		//js_log('npt2seconds:not valid ntp:'+ntp);
 		return false;
 	}
 	times = ntp.split(':');
 	if(times.length!=3){		
-		js_log('ntp2seconds:not valid ntp:'+ntp);
+		js_log('npt2seconds:nnpt2secondsp:'+ntp);
 		return false;
 	}
 	//sometimes the comma is used inplace of pereid for ms

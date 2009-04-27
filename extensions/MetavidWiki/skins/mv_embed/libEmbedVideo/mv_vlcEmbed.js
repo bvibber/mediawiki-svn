@@ -206,7 +206,7 @@ var vlcEmbed = {
         	//js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration());
         	
         	//if we are way out of range... add offset (hack)
-        	if(  ( this.currentTime + 10 ) < ntp2seconds( this.start_ntp) ){
+        	if(  ( this.currentTime + 10 ) < npt2seconds( this.start_ntp) ){
         		this.currentTime = (this.vlc.input.time/1000) + this.media_element.selected_source.start_offset;
         	}
         }else{

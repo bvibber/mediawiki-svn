@@ -181,7 +181,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		   	$fistValid = true;
 		   	for ( $i = 0; $i < count( $cspan_person_ary ); $i++ ) {
 		   		// print "looking at: ". $cspan_person_ary[$i]['Spoken_by'] . "\n";
-		   		print "\tCSPAN: " . $cspan_person_ary[$i]['Spoken_by'] . ' on screen for ' . $cspan_person_ary[$i]['length'] . ' or:' . ntp2seconds( $cspan_person_ary[$i]['length'] ) . "\n";
+		   		print "\tCSPAN: " . $cspan_person_ary[$i]['Spoken_by'] . ' on screen for ' . $cspan_person_ary[$i]['length'] . ' or:' . npt2seconds( $cspan_person_ary[$i]['length'] ) . "\n";
 		   		// set up cur, the next and prev pointers:
 		   		$cur_person = $cspan_person_ary[$i]['Spoken_by'];
 
@@ -226,7 +226,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		   			}
 
 		   			// check how long they where on screen (also check subquent)
-		   			$cspan_on_screen_time = ntp2seconds( $cspan_person_ary[$i]['length'] );
+		   			$cspan_on_screen_time = npt2seconds( $cspan_person_ary[$i]['length'] );
 
 		   			// print "NOW STARTING AT: $cur_db_inx of " . count($db_person_ary) . "\n";
 		   			for ( $j = $cur_db_inx; $j < count( $db_person_ary ); $j++ ) {
@@ -275,7 +275,7 @@ class MV_BillScraper extends MV_BaseScraper {
 	   						while ( $cur_person == $cspan_person_ary[$i + $k]['Spoken_by'] ) {
 	   							// use the last cspan_person for start case
 	   							$cspan_person_ary[$i + $k]['wiki_start_time'] = $cur_start_time;
-		   						if ( ntp2seconds( $cspan_person_ary[$i + $k]['length'] ) >
+		   						if ( npt2seconds( $cspan_person_ary[$i + $k]['length'] ) >
 	   									$db_person_ary[$j]['end_time'] - $cur_start_time ) {
 		   								$cspan_person_ary[$i + $k]['wiki_end_time'] = $db_person_ary[$j]['end_time'];
 		   								// already used up our db_person_ary continue:
@@ -287,9 +287,9 @@ class MV_BillScraper extends MV_BaseScraper {
 		   								break;
 	   							} else {
 	   									$cspan_person_ary[$i + $k]['wiki_end_time'] = $cur_start_time +
-	   												ntp2seconds( $cspan_person_ary[$i + $k]['length'] );
-	   									// print "add " . ntp2seconds($cspan_person_ary[$i+$k]['length']) . "\n";
-	   									$cur_start_time += ntp2seconds( $cspan_person_ary[$i + $k]['length'] );
+	   												npt2seconds( $cspan_person_ary[$i + $k]['length'] );
+	   									// print "add " . npt2seconds($cspan_person_ary[$i+$k]['length']) . "\n";
+	   									$cur_start_time += npt2seconds( $cspan_person_ary[$i + $k]['length'] );
 	   							}
 	   							print "p cspan insert sync " .
 										' ' . $cspan_person_ary[$i + $k]['wiki_start_time'] . " to " .

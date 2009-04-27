@@ -309,7 +309,7 @@ function mv_doTextScrollMonitor(){
 				mv_scroll2Time(evid.currentTime);
 		}
 		if( evid.userSlide ){		
-			var mvd_id = mv_scroll2Time( ntp2seconds( evid.jump_time ) );
+			var mvd_id = mv_scroll2Time( npt2seconds( evid.jump_time ) );
 			if( mvd_id ){
 				//also update the image:
 				var img_url = $j('#mv_fd_mvd_'+mvd_id).attr('image_url');
@@ -369,8 +369,8 @@ function getMvdObject(mvd_id){
 				parts = this.name.split('/');
 				this.start_ntp = parts[1];
 				this.end_ntp = parts[2];
-				this.start_time = ntp2seconds(this.start_ntp);
-				this.end_time = ntp2seconds(this.end_ntp);
+				this.start_time = npt2seconds(this.start_ntp);
+				this.end_time = npt2seconds(this.end_ntp);
 			}
 		});
 	}
@@ -657,8 +657,8 @@ function get_titleObject(titleKey){
 			parts = this.title.split('/');
 			this.start_ntp = parts[1];
 			this.end_ntp = parts[2];
-			this.start_time = ntp2seconds(this.start_ntp);
-			this.end_time = ntp2seconds(this.end_ntp);
+			this.start_time = npt2seconds(this.start_ntp);
+			this.end_time = npt2seconds(this.end_ntp);
 		}
 	});
 	titleObj.parseTitle();
@@ -904,7 +904,7 @@ function mv_do_play( mvd_id ){
 	//check if we are out of range: 
 	if(mvd_id){
 		var time_ary = $j('#mv_fd_mvd_'+mvd_id).attr('name').split('/');
-		if( ntp2seconds( time_ary[1] ) <  ntp2seconds( $j('#embed_vid').get(0).start_ntp ) ){			
+		if( npt2seconds( time_ary[1] ) <  npt2seconds( $j('#embed_vid').get(0).start_ntp ) ){			
 			window.location =  wgArticlePath.replace( '$1', wgPageName +'/'+ time_ary[1] + '/' + time_ary[2]) + '#autoplay';
 			return ;
 		}	

@@ -122,7 +122,7 @@ var ctrlBuilder = {
         		$j('#big_play_link_'+id).fadeOut('fast');
         		 //if playlist always start at 0
 		        embedObj.start_time_sec = (embedObj.instanceOf == 'mvPlayList')?0:
-        						ntp2seconds(embedObj.getTimeReq().split('/')[0]);       
+        						npt2seconds(embedObj.getTimeReq().split('/')[0]);       
         	},
         	drag:function(e, ui){
         		//@@todo get the -14 number from the skin somehow
@@ -153,7 +153,7 @@ var ctrlBuilder = {
         		js_log('do jump to: '+embedObj.jump_time + ' perc:' +perc);
         		
         		//set seek time (in case we have to do a url seek)        		
-        		embedObj.seek_time_sec=ntp2seconds(embedObj.jump_time);   
+        		embedObj.seek_time_sec=npt2seconds(embedObj.jump_time);   
         		var test = embedObj;        		
         		embedObj.doSeek(perc);
         	}
@@ -342,10 +342,10 @@ mediaSource.prototype =
     	//if we have time we can use:
     	if( this.serverSideSeeking ){
     		//make sure its a valid start time / end time (else set default) 
-    		if( !ntp2seconds(start_ntp) ) 
+    		if( !npt2seconds(start_ntp) ) 
     			start_ntp = this.start_ntp;
     			
-    		if( !ntp2seconds(end_ntp) )
+    		if( !npt2seconds(end_ntp) )
     			end_ntp = this.end_ntp;
     			
     		if( this.timeFormat == 'anx' ){
@@ -353,8 +353,8 @@ mediaSource.prototype =
     		}else if ( this.timeFormat =='mp4'){
     			var mp4URL =  parseUri( this.src );
 	    		this.src =  mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + 
-	    					'?start=' + ( ntp2seconds( start_ntp ) ) +
-	    					'&end=' + ( ntp2seconds( end_ntp ) );
+	    					'?start=' + ( npt2seconds( start_ntp ) ) +
+	    					'&end=' + ( npt2seconds( end_ntp ) );
     		}	
     		
 	        //update the duration
@@ -442,8 +442,8 @@ mediaSource.prototype =
 	    		}	    			    			    		  	    		
 	    	}
 	    	this.serverSideSeeking = true;
-	    	this.start_offset = ntp2seconds(this.start_ntp);
-	    	this.duration = ntp2seconds( this.end_ntp ) - this.start_offset;
+	    	this.start_offset = npt2seconds(this.start_ntp);
+	    	this.duration = npt2seconds( this.end_ntp ) - this.start_offset;
     	} //time format	   		
     	
         if( !this.serverSideSeeking ){ 
@@ -820,7 +820,7 @@ embedVideo.prototype = {
 	        }
 	    }		   
 	    if( this.duration!=null && this.duration.split(':').length >= 2)
-	    	this.duration = ntp2seconds( this.duration );	    
+	    	this.duration = npt2seconds( this.duration );	    
 	        	
 	    //if style is set override width and height
 	    var dwh = mv_default_video_size.split('x');
@@ -1156,8 +1156,8 @@ embedVideo.prototype = {
 	    			//grab all metadata and put it into the anno_data_cache: 	    			
 	    			$j.each(cmml_data.getElementsByTagName('clip'), function(inx, clip){
 	    				_this.anno_data_cache[ $j(clip).attr("id") ]={
-	    						'start_time_sec':ntp2seconds($j(clip).attr("start").replace('npt:','')),
-	    						'end_time_sec':ntp2seconds($j(clip).attr("end").replace('npt:','')),
+	    						'start_time_sec':npt2seconds($j(clip).attr("start").replace('npt:','')),
+	    						'end_time_sec':npt2seconds($j(clip).attr("end").replace('npt:','')),
 	    						'time_req':$j(clip).attr("start").replace('npt:','')+'/'+$j(clip).attr("end").replace('npt:','')
 	    					};
 	    				//grab all its meta
@@ -1186,8 +1186,8 @@ embedVideo.prototype = {
     	}    	
     	var curTime = this.getTimeReq().split('/');
     	
-    	var s_sec = ntp2seconds(curTime[0]);
-    	var e_sec = ntp2seconds(curTime[1]); 
+    	var s_sec = npt2seconds(curTime[0]);
+    	var e_sec = npt2seconds(curTime[1]); 
     	js_log('showNextPrevLinks: req time: '+ s_sec + ' to ' + e_sec);
     	//now we have all the data in anno_data_cache
     	var current_done=false;
@@ -1344,7 +1344,7 @@ embedVideo.prototype = {
 		if(this.media_element.selected_source.serverSideSeeking)
 			this.seek_time_sec=0;
 		else
-			this.seek_time_sec=ntp2seconds(start_ntp);
+			this.seek_time_sec=npt2seconds(start_ntp);
 	},		
 	//@@todo overwite by embed library if we can render frames natavily 
 	renderTimelineThumbnail:function( options ){
@@ -1364,7 +1364,7 @@ embedVideo.prototype = {
 				'</div>';
 	},
 	updateThumbTimeNTP:function( time){
-		this.updateThumbTime( ntp2seconds(time) - parseInt(this.start_offset) );
+		this.updateThumbTime( npt2seconds(time) - parseInt(this.start_offset) );
 	},
 	updateThumbTime:function( float_sec ){
 		//js_log('updateThumbTime:'+float_sec);
@@ -1998,7 +1998,7 @@ embedVideo.prototype = {
 		var dur = this.getDuration();
 		var hide_progress = true;
 		//set the left percet and update the slider: 
-		rel_start_sec = ( ntp2seconds( options['start']) - this.start_offset );
+		rel_start_sec = ( npt2seconds( options['start']) - this.start_offset );
 		
 		var slider_perc=0;
 		if( rel_start_sec <= 0 ){
@@ -2014,7 +2014,7 @@ embedVideo.prototype = {
 			this.setSliderValue( slider_perc , hide_progress);		
 		}
 		
-		width_perc = parseInt( (( ntp2seconds( options['end'] ) - ntp2seconds( options['start'] ) ) / dur)*100 ) ; 							
+		width_perc = parseInt( (( npt2seconds( options['end'] ) - npt2seconds( options['start'] ) ) / dur)*100 ) ; 							
 		if( (width_perc + left_perc) > 100 ){
 			width_perc = 100 - left_perc; 
 		}		
@@ -2025,7 +2025,7 @@ embedVideo.prototype = {
 		}).show();				
 		
 		this.jump_time =  options['start'];
-		this.seek_time_sec = ntp2seconds( options['start']);
+		this.seek_time_sec = npt2seconds( options['start']);
 		//trim output to 
 		this.setStatus( gM('seek_to')+' '+ seconds2ntp( this.seek_time_sec ) );
 		js_log('DO update: ' +  this.jump_time);

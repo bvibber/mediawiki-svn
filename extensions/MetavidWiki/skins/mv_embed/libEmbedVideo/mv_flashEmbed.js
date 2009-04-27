@@ -1737,7 +1737,7 @@ var flashEmbed = {
         	} 
         }                  
 		
-        if(this.currentTime > ntp2seconds(this.start_ntp) && !this.startedTimedPlayback){
+        if(this.currentTime > npt2seconds(this.start_ntp) && !this.startedTimedPlayback){
         	var fail = false;
         	try
 			{
@@ -1762,9 +1762,9 @@ var flashEmbed = {
         
         //checks to see if we reached the end of playback:	    	    
         if(this.duration && this.startedTimedPlayback && 
-        	( 	this.currentTime > (ntp2seconds(this.end_ntp)+1) 
+        	( 	this.currentTime > (npt2seconds(this.end_ntp)+1) 
         		|| 
-        		( this.currentTime > (ntp2seconds(this.end_ntp)-1) 
+        		( this.currentTime > (npt2seconds(this.end_ntp)-1) 
         			&& this.prevTime == this.currentTime) )
         	){        		        	
         	js_log('prbally reached end of stream: '+this.currentTime);
@@ -1776,7 +1776,7 @@ var flashEmbed = {
         
         
 	    this.prevTime = this.currentTime;    
-	    //js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - ntp2seconds(this.start_ntp)) +' / ' +(ntp2seconds(this.end_ntp)-ntp2seconds(this.start_ntp)));
+	    //js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - npt2seconds(this.start_ntp)) +' / ' +(npt2seconds(this.end_ntp)-npt2seconds(this.start_ntp)));
     },
     restorePlayer:function(){    	
     	if(!this.fla)

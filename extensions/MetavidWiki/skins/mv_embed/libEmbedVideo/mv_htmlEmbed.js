@@ -161,7 +161,7 @@ var htmlEmbed ={
 	},
 	updateVideoTime:function(start_ntp, end_ntp){
 		//since we don't really have timeline for html elements just take the delta and set it as the duration
-		this.pc.dur = ntp2seconds(end_ntp) - ntp2seconds(start_ntp);			
+		this.pc.dur = npt2seconds(end_ntp) - npt2seconds(start_ntp);			
 	},	
 	//gives a chance to make any nesseary external requests
 	//@@todo we can "start loading images" if we want

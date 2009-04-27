@@ -431,7 +431,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		
 		// print 'st ' . $this->start_context . "<br />" ;		
 		// $mvd_page->start_time = $start_context; //seconds2ntp(0);		
- 		// $mvd_page->end_time  = seconds2ntp( ntp2seconds($start_context) +  $mvDefaultClipLength);
+ 		// $mvd_page->end_time  = seconds2ntp( npt2seconds($start_context) +  $mvDefaultClipLength);
  		$mvd_page->wiki_title = $mvdType . ':' . strtolower( $baseTitle ) . '/_new';
 		$this->get_edit_disp( $mvd_page->wiki_title, 'new' );
  				
@@ -472,8 +472,8 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		if ( $do_adjust  ) {
 			$tmpMvPage = new MV_Title( $wgRequest->getVal( 'newTitle' ) );
 			$mvd_page->wiki_title = $tmpMvPage->wiki_title;
-			$mvd_page->start_time = ntp2seconds( $tmpMvPage->start_time );
-			$mvd_page->end_time	  = ntp2seconds( $tmpMvPage->end_time );
+			$mvd_page->start_time = npt2seconds( $tmpMvPage->start_time );
+			$mvd_page->end_time	  = npt2seconds( $tmpMvPage->end_time );
 		}
 		
 		$out = '';
@@ -639,7 +639,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			global $mvDefaultClipLength;
 			$start_time = isset( $this->start_context ) ? $this->start_context:seconds2ntp( 0 );
  			$end_time  = isset( $this->end_context ) ?
-	 			seconds2ntp( ntp2seconds( $this->start_context ) + $mvDefaultClipLength ):
+	 			seconds2ntp( npt2seconds( $this->start_context ) + $mvDefaultClipLength ):
 	 			seconds2ntp( $mvDefaultClipLength );
 		} else {
 	  		$mvTitle = new MV_Title( $titleKey );
