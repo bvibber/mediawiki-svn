@@ -21,7 +21,7 @@ if( MV_EMBED_VERSION ){
 	MV_DO_INIT=false;	
 }
 //used to grab fresh copies of scripts. (should be changed on commit)  
-var MV_EMBED_VERSION = '1.0r14';
+var MV_EMBED_VERSION = '1.0r15';
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';

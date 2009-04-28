@@ -11,7 +11,7 @@ $mv_path = str_replace( 'example_usage/', '', $mv_path );
 <html>
 <head>
 	<title>sample playlist usage</title>
- 	<script type="text/javascript" src="<?php echo htmlspecialchars( $mv_path ) ?>mv_embed.js?<?php echo time()?>"></script> 	
+ 	<script type="text/javascript" src="<?php echo htmlspecialchars( $mv_path ) ?>mv_embed.js?urid=<?php echo time()?>"></script> 	
 </head>
 <body>
 <h3> Sample Playlists</h3>
@@ -38,7 +38,7 @@ $sample_embed[6]['tag'] = '<playlist id="warplaylist" src="' . $plurl . '"/>';
 
 
 // sample smil
-$smilURL = 'sample_smil.smil.xml';
+$smilURL = 'sample_wikimedia_remote.smil.xml';
 $sample_embed[8]['tag'] = '<playlist id="smil_pl" src="' . $smilURL . '" />';
 $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/transit.htm">source</a>
 			The first video fades up from green when it starts to play, 
@@ -63,7 +63,7 @@ $sample_embed[9]['desc'] = ' <br><b>MediaWiki example:</b><br/>'.
   <table border="1" cellpadding="6" width="600">
   	<?php foreach ( $sample_embed as $key => $aval ) {
   		//  &&
-  		if ( $key != 9 && $key != 8 && $key !=4)continue;
+  		if ( $key != 8 )continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?php echo $aval['tag']?></td>
