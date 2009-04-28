@@ -1433,7 +1433,17 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'spamregex-page-title-1' => 'Cấm cụm từ dùng biểu thức chính quy',
+	'spamregex-unblock-success' => 'Bỏ cấm thành công',
+	'spamregex-block-success' => 'Cấm thành công',
+	'spamregex-block-message' => "Cụm từ '''$1''' đã bị cấm.",
+	'spamregex-error-1' => 'Biểu thức chính quy không hợp lệ.',
 	'spamregex-already-blocked' => '“$1” đã bị cấm rồi',
+	'spamregex-phrase-block' => 'Cụm từ để cấm:',
+	'spamregex-phrase-block-text' => 'cấm cụm từ trong nội dung trang',
+	'spamregex-phrase-block-summary' => 'cấm cụm từ trong tóm lược',
+	'spamregex-block-submit' => 'Cấm&nbsp;cụm&nbsp;từ&nbsp;này',
+	'spamregex-text' => '(Văn bản)',
 	'spamregex-summary-log' => '(Tóm lược)',
 );
 

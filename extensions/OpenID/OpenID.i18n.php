@@ -943,6 +943,7 @@ Hay muchos [[http://openid.net/get proveedores de OpenID]] y quizás ya disponga
 	'openid-provider-label-openid' => 'Ingresar tu URL OpenID',
 	'openid-provider-label-google' => 'Iniciar sesión usando tu cuenta Google',
 	'openid-provider-label-yahoo' => 'Iniciar sesión usando tu cuenta Yahoo',
+	'openid-provider-label-aol' => 'Ingrese su nombre screen de AOL',
 	'openid-provider-label-other-username' => 'Ingresar tu nombre de usuario $1',
 );
 
@@ -2517,6 +2518,11 @@ Det er mange [http://wiki.openid.net/Public_OpenID_providers leverandørar av Op
 	'openid-prefstext' => '[http://openid.net/ OpenID] instillingar',
 	'openid-pref-hide' => 'Gøym <a href="http://openid.net/">OpenID</a> på brukarsida di om du loggar inn med ein.',
 	'openid-pref-update-userinfo-on-login' => 'Oppdatér informasjonen min frå OpenID-persona kvar gong eg loggar inn',
+	'openid-provider-label-openid' => 'Skriv inn din OpenID URL',
+	'openid-provider-label-google' => 'Logg inn ved bruk av di Google-konto',
+	'openid-provider-label-yahoo' => 'Logg inn ved å bruka din Yahoo-konto',
+	'openid-provider-label-aol' => 'Skriv inn til AOL skjermnamn',
+	'openid-provider-label-other-username' => 'Skriv inn $1-brukarnamnet ditt',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

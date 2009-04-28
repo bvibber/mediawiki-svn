@@ -374,6 +374,7 @@ Obsahuje všetky stránky v kategórii „$1“ ako aj všeky podkategórie kate
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'autocreatecategorypages-desc' => 'Аутоматски направи недостајуће стране категорија по снимању',
 	'autocreatecategorypages-editor' => 'Аутоматско прављење категорија',
 );
 

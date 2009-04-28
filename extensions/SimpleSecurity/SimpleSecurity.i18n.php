@@ -385,6 +385,8 @@ $messages['lb'] = array(
 	'security' => 'Sécherheets-Logbuch',
 	'security-desc' => "Erweidert de MediaWiki-Säiteschutz fir et z'erlaben d'Kucke vum Säiteninhalt ze limitéieren",
 	'security-logpage' => 'Sécherheets-Logbuch',
+	'security-logpagetext' => "Dëst ass d'Logbuch vun den Aktioune vun der [http://www.mediawiki.org/wiki/Extension:SimpleSecurity SimpleSecurity Erweiderung].",
+	'badaccess-read' => 'Opgepasst: "$1" weist heihinn, awer dir hutt net genuch Rechter fir d\'Säit ze gesinn.',
 	'security-info' => 'Et sinn $1 op dëser Säit',
 	'security-info-toggle' => 'Sécherheetsrestrictiounen',
 	'security-inforestrict' => '$1 ass limitéiert op $2',
@@ -597,5 +599,18 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'security' => 'Güvenlik günlüğü',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'security' => 'Nhật trình an toàn',
+	'security-logpage' => 'Nhật trình an toàn',
+	'security-info' => 'Có $1 tại trang này',
+	'security-info-toggle' => 'hạn chế an toàn',
+	'security-manygroups' => 'các nhóm $1 và $2',
+	'security-type-category' => 'thể loại',
+	'security-type-namespace' => 'không gian tên',
 );
 

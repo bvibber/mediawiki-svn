@@ -393,7 +393,9 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'authors-desc' => 'Допуњује списак доприносиоца страна',
 	'authors_authors' => 'Аутори',
+	'authors_anonymous' => 'Анонимно',
 );
 
 /** Seeltersk (Seeltersk)

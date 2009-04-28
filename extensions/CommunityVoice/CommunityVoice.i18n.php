@@ -499,3 +499,12 @@ $messages['tl'] = array(
 	'communityvoice-ratings-error-no-title' => 'Nawawala ang katangian ng pamagat mula sa tatak ng pag-aantas.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'communityvoice-ratings' => 'Đánh giá',
+	'communityvoice-ratings-scale-status-sending' => 'Đang gửi…',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 lá phiếu)',
+);
+

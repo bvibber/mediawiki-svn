@@ -1164,6 +1164,7 @@ $messages['lb'] = array(
 	'review_blocked' => 'Dir sidd gespaart a kënnt net beim Nokucke vu Säite matmaachen.',
 	'review_topic' => 'Thema',
 	'review_no_opinion' => 'Keng Meenung',
+	'review_rating' => 'Bewertung',
 	'review_comment' => 'Bemierkung',
 );
 

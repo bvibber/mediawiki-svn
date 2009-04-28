@@ -4395,6 +4395,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'deletequeue-desc' => 'Tạo [[Special:DeleteQueue|hệ thống hàng đợi xóa]]',
+	'deletequeue-action-queued' => 'Xóa',
 	'deletequeue-action' => 'Đề nghị xóa',
 	'deletequeue-action-title' => 'Đề nghị xóa “$1”',
 	'deletequeue-prod-title' => 'Đề nghị xóa “$1”',
@@ -4409,7 +4410,7 @@ $messages['vi'] = array(
 	'right-speedy-nominate' => 'Đề nghị xóa nhanh trang',
 	'right-speedy-review' => 'Duyệt các trang chờ xóa nhanh',
 	'right-prod-nominate' => 'Đề nghị xóa trang',
-	'right-prod-review' => 'Duyệt trang chờ xóa',
+	'right-prod-review' => 'Duyệt các trang có đề xuất xóa không ai tranh luận',
 	'right-deletediscuss-nominate' => 'Bắt đầu thảo luận về trang chờ xóa',
 	'right-deletediscuss-review' => 'Kết thúc thảo luận về trang chờ xóa',
 	'deletequeue-queue-speedy' => 'Xóa nhanh',
@@ -4430,6 +4431,7 @@ $messages['vi'] = array(
 	'deletequeue-reviewprod-title' => 'Duyệt đề nghị xóa “$1”',
 	'deletequeue-reviewdeletediscuss-tab' => 'Duyệt đề nghị xóa',
 	'deletequeue-reviewdeletediscuss-title' => 'Duyệt thảo luận về việc xóa “$1”',
+	'deletequeue-review-success-title' => 'Duyệt xong',
 	'deletequeue-discusscreate-summary' => 'Đang tạo trang thảo luận về việc xóa [[$1]].',
 	'deletequeue-discusscreate-text' => 'Trang bị đề nghị xóa vì lý do sau: $2',
 	'deletequeue-role-nominator' => 'người đầu tiên đề nghị xóa',
@@ -4459,7 +4461,12 @@ $messages['vi'] = array(
 	'deletequeue-list-header-votes' => 'Số phiếu',
 	'deletequeue-list-header-expiry' => 'Thời hạn',
 	'deletequeue-list-header-discusspage' => 'Trang thảo luận',
+	'deletequeue-list-header-reason' => 'Lý do xóa',
+	'deletequeue-case-title' => 'Chi tiết về vụ xóa',
+	'deletequeue-case-details' => 'Chi tiết cơ bản',
+	'deletequeue-case-page' => 'Trang:',
 	'deletequeue-case-reason' => 'Lý do:',
+	'deletequeue-case-expiry' => 'Thời hạn:',
 );
 
 /** Volapük (Volapük)

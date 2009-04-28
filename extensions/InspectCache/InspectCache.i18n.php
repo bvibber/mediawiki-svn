@@ -803,10 +803,12 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'inspectcache' => 'Испитај кеш',
+	'inspectcache-desc' => 'Једноставан дебагер за проверу садржаја заједничког кеша',
 	'inspectcache-ok' => 'Потврди',
 	'inspectcache-general' => 'Општи кеш',
 	'inspectcache-parser' => 'Кеш парсера',
 	'inspectcache-message' => 'Кеш за поруке',
+	'inspectcache-get' => 'Преузми',
 	'inspectcache-delete' => 'Обриши',
 	'inspectcache-deleted' => 'Обрисан кеш',
 	'inspectcache-list' => 'Списак',

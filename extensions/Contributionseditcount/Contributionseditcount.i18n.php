@@ -454,6 +454,14 @@ $messages['sk'] = array(
 	'contributionseditcount-desc' => 'Zobrazuje počet úprav na stránke [[Special:Contributions|Príspevky používateľa]]',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'contributionseditcount' => 'Овај корисник има $1 измена.',
+	'contributionseditcount-desc' => 'Приказује бројач измена на [[Special:Contributions|страни корисничких доприноса]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -415,6 +415,16 @@ $messages['sk'] = array(
 	'piwik-browsers' => 'Prehliadače',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'piwik-desc' => 'Убацује Piwik скрипту у МедијаВики стране зарад праћења и додаје [[Special:Piwik|статистике]]',
+	'piwik-lastvisits' => 'Последње посете',
+	'piwik-countries' => 'Земље',
+	'piwik-browsers' => 'Браузери',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

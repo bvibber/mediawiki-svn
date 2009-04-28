@@ -824,6 +824,8 @@ $messages['sr-ec'] = array(
 	'onlinestatus-toggles-show' => 'Показуј присутност на мојој корисничкој страни',
 	'onlinestatus-toggle-offline' => 'Одсутан',
 	'onlinestatus-toggle-online' => 'Присутан',
+	'onlinestatus-pref-onlineonlogin' => 'Промени мој статус на онлајн када се улогујем',
+	'onlinestatus-pref-offlineonlogout' => 'Промени мој статус на офлајн када се излогујем',
 );
 
 /** Swedish (Svenska)

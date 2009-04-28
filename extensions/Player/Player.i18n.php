@@ -1075,9 +1075,22 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'player' => 'Плејер',
+	'player-desc' => 'Уграђени плејер за мултимедијалне фајлове, који користи устаљене плагинове за браузере, и [[Special:Player|специјалну страну]]',
+	'player-title' => 'Плејер',
+	'player-playertitle' => 'Плејер: $1',
+	'player-file' => 'Назив фајла',
+	'player-play' => 'Пусти',
+	'player-not-allowed' => 'недозвољен формат',
+	'player-not-found' => 'фајл није пронађен',
+	'player-invalid-title' => 'погрешан наслов',
+	'player-clicktoplay' => 'Пусти $1',
+	'player-goto-player' => 'плејер',
 	'player-goto-page' => 'Страна',
+	'player-goto-file' => 'фајл',
 );
 
 /** Seeltersk (Seeltersk)

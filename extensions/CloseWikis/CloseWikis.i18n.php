@@ -1221,7 +1221,7 @@ $messages['sr-ec'] = array(
 	'closewikis-page-err-nowiki' => 'Наведен је погрешан Вики',
 	'closewikis-page-err-closed' => 'Вики је већ затворен',
 	'closewikis-page-err-opened' => 'Вики није затворен',
-	'closewikis-list' => 'Затворио листу Викија',
+	'closewikis-list' => 'Списак затвореник Викија',
 	'closewikis-list-intro' => 'Овај списак садржи Викије које су стјуарди затворили.',
 	'closewikis-list-header-wiki' => 'Вики',
 	'closewikis-list-header-by' => 'Затворио',
@@ -1229,6 +1229,7 @@ $messages['sr-ec'] = array(
 	'closewikis-list-header-dispreason' => 'Приказани разлог',
 	'closewikis-log' => 'Историја затварања Викија',
 	'closewikis-log-close' => 'затворен $2',
+	'closewikis-log-reopen' => 'поново отворен $2',
 	'right-editclosedwikis' => 'Измени затворене Викије',
 	'right-closewikis' => 'Затвори Викије',
 );

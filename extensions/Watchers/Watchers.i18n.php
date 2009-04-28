@@ -799,6 +799,20 @@ $messages['vec'] = array(
 	'watchers_less_than_x' => "Manco de $1 {{PLURAL:$1|utente el|utenti i}} tien d'ocio sta pagina.",
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'watchers' => 'Người theo dõi',
+	'watchers-desc' => 'Liệt kê [[Special:Watchers|những người theo dõi trang]]',
+	'watchers_link_title' => 'Ai theo dõi trang này?',
+	'watchers_error_article' => "'''Lỗi:''' Trang không tồn tại.",
+	'watchers_header' => '{{PLURAL:$2|Người|Những người}} đang theo dõi “$1”',
+	'watchers_noone_watches' => 'Không ai theo dõi trang này.',
+	'watchers_x_or_more' => '$1 người trở lên có trang này trong danh sách theo dõi của họ.',
+	'watchers_less_than_x' => 'Ít hơn $1 người có trang này trong danh sách theo dõi của họ.',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

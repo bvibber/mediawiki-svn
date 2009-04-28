@@ -1298,6 +1298,20 @@ $messages['vep'] = array(
 	'formsave' => 'Panda muštho',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'form' => 'Biểu mẫu',
+	'formnoname' => 'Biểu mẫu không có tên',
+	'formtitlepattern' => 'Thêm $1 mới',
+	'formsave' => 'Lưu',
+	'formarticleexists' => 'Trang đã tồn tại',
+	'formarticleexiststext' => 'Trang [[$1]] đã tồn tại.',
+	'formsavesummary' => 'Trang mới theo [[Special:Form/$1|biểu mẫu $1]]',
+	'formsaveerror' => 'Lỗi lưu biểu mẫu',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

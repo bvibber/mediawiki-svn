@@ -1002,13 +1002,24 @@ Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'gep-emailsubject' => '[$1] Сугерисана категорија: $2',
+	'gep-emailbody' => 'Корисник "$1" је сугерисао категорију "$2" за сајт "$3".',
+	'gep-emailfailure' => 'Жао нам је, Ваша сугестија није могла бити процесирана.',
+	'gep-emailsuccess' => 'Хвала за сугерисање категорије: $1.',
 	'gep-categories' => 'Категорије',
 	'gep-addcategory' => 'Додај категорију',
 	'gep-addcategorybutton' => 'Додај',
 	'gep-suggestcategory' => 'Сугериши категорију',
 	'gep-suggestcategorybutton' => 'Пошаљи',
+	'gep-sections' => 'Одељци',
+	'gep-sectionnotdisabled' => 'Овај одељак не може бити онемогућен',
 	'gep-addsection' => 'Додај секцију',
 	'gep-addsectionbutton' => 'Додај',
+	'gep-classicmode' => 'Класичан мод',
+	'gep-genericmode' => 'Генерички мод',
+	'gep-nosectioninstructions' => 'Овај чланак нема одељака.
+Додајте их помоћу алата у мени-бару.',
+	'gep-nocategories' => 'Молимо вас да изаберете макар једну категорију пре снимања',
 );
 
 /** Seeltersk (Seeltersk)

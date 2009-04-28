@@ -393,10 +393,12 @@ $wgGoogleMapsMessages['az'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $wgGoogleMapsMessages['be-tarask'] = array(
 	'gm-balloon-title' => 'Назва:',
 	'gm-remove' => 'выдаліць',
+	'gm-load-map-from-article' => 'Загрузіць мапу са старонкі:',
 	'gm-load-map' => 'Загрузіць мапу',
 	'gm-map' => 'Мапа',
 	'gm-are-you-sure' => 'Вы ўпэўнены?',

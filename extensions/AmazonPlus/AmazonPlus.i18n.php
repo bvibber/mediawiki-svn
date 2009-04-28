@@ -1088,12 +1088,19 @@ $messages['tr'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Wrightbus
  */
 $messages['vi'] = array(
+	'amazonplus-used' => 'cũ',
 	'amazonplus-german' => 'Tiếng Đức',
 	'amazonplus-french' => 'Tiếng Pháp',
 	'amazonplus-japanese' => 'Tiếng Nhật',
+	'amazonplus-amazon' => 'giá tại Amazon',
+	'amazonplus-new' => 'mới',
+	'amazonplus-cp-none' => 'Không có',
+	'amazonplus-more' => 'thêm',
+	'amazonplus-less' => 'ít hơn',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

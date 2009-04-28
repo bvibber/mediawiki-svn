@@ -1528,6 +1528,7 @@ Dibabit un dastumad da enporzhiañ. E prenestr testenn ar yezhoù, merkit ur rol
  */
 $wdMessages['bs'] = array(
 	'languages' => 'Wikidata: Upravljač jezika',
+	'langman-desc' => 'Dodavanje i izmjena jezičnih postavki sa [[Special:Languages]]',
 	'langman_title' => 'Upravitelj jezika',
 	'langman_not_allowed' => 'Nemate dopuštenja da mijenjate jezične postavke.',
 	'langman_header' => 'Upišite kod jezika i njegovo englesko ime ispod:',
@@ -1657,6 +1658,7 @@ Molimo provjerite web adresu.',
 	'ow_TranslatedTextAttributeValue' => 'Tekst',
 	'ow_TranslatedTextAttributeValues' => 'Tekstovi koji se mogu prevoditi',
 	'ow_Label' => 'Naslov',
+	'ow_Link' => 'Link',
 	'ow_LinkAttribute' => 'Svojstvo',
 	'ow_LinkAttributeValues' => 'Linkovi',
 	'ow_User' => 'Korisnik',
@@ -1680,8 +1682,10 @@ Operacija kopiranja nije izvedena.',
 Desila se greška u samoj bazi podataka, wikidata ne može naći valjane podatke koji su povezani sa ovim naznačenim ID značenjem.
 Moguće je su izgubljeni.
 Molimo kontaktirajte operatora servera ili administratora.',
+	'ow_history_transaction' => 'Transakcija:',
 	'ow_class_attr_type_plain' => 'Obični tekst',
 	'ow_class_attr_type_link' => 'Link',
+	'ow_show' => 'Pokaži',
 	'ow_create' => 'Napravi',
 	'ow_suggest_previous' => 'Prethodni',
 	'ow_suggest_next' => 'Slijedeći',

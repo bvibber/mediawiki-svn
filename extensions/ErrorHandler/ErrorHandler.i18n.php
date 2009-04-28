@@ -980,6 +980,20 @@ $messages['vep'] = array(
 	'errorhandler-error-strict' => 'Tarkad standartad',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'errorhandler-errors' => 'Lỗi:',
+	'errorhandler-error-warning' => 'Cảnh báo',
+	'errorhandler-error-user-error' => 'Lỗi tại người dùng',
+	'errorhandler-error-user-warning' => 'Cảnh báo do người dùng',
+	'errorhandler-msg-text' => '$1 : $2 trong $3 (dòng $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> trong <b>$3</b> (dòng <b>$4</b>)',
+	'errorhandler-trace-line' => '$1 (dòng $2): $3',
+	'errorhandler-trace-line-internal' => '[hàm nội bộ]: $1',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */

@@ -2792,7 +2792,7 @@ $messages['lb'] = array(
 	'viewapc-ls-limit-none' => 'Alleguer',
 	'viewapc-version-info' => "Informatiounen iwwert d'Versioun",
 	'viewapc-version-changelog' => 'Lëscht vun den Ännerungen',
-	'viewapc-version-failed' => "Et as net mégilech d'Informatioune vun der Versioun ze fannen.",
+	'viewapc-version-failed' => "Et ass net mégilech d'Informatioune vun der Versioun ze fannen.",
 	'viewapc-version-ok' => 'Dir benotzt déi neiste Versioun vun APC ($1)',
 	'viewapc-version-old' => 'Dir benotzt eng al Versioun vun APC ($1).
 Eng méi nei Versioun $2 ass op http://pecl.php.net/package/APC/$2 disponibel.',

@@ -23,13 +23,16 @@ Would you like to edit the existing page?',
 );
 
 /** Message documentation (Message documentation)
+ * @author Darth Kule
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'createpage' => 'Name of special page [[Special:CreatePage]] in [[Special:SpecialPages]] and its title.',
 	'createpage-desc' => 'Short description of the extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 	'createpage_submitbutton' => '{{Identical|Submit}}',
+	'createpage-badtitle' => 'Error message displayed in CreatePage special page when is specified an invalid title. See for example [[Special:CreatePage/]]',
 );
 
 /** Arabic (العربية)
@@ -132,6 +135,14 @@ Přejete si upravit existující stránku?',
 	'createpage-badtitle' => '„$1“ nelze použít jako název stránky',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'createpage' => 'Dechrau tudalen',
+	'createpage-badtitle' => 'Ni ellir defnyddio "$1" fel teitl',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -219,6 +230,22 @@ Sortutako orria aldatu nahiko al zenuke?',
 	'createpage-badtitle' => '"$1" ezin da orrialdearen izenburua bezala erabili.',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'createpage' => 'ایجاد یک صفحه',
+	'createpage-badtitle' => '«$1» نمی‌تواند برای عنوان یک صفحه استفاده شود',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'createpage' => 'Luo sivu',
+	'createpage-badtitle' => 'Nimeä ”$1” ei voi käyttää sivun nimenä.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex
@@ -291,7 +318,7 @@ $messages['he'] = array(
 האם ברצונכם לערוך את הדף הקיים?',
 	'createpage_tryagain' => 'לא, אלא ליצור דף חדש בשם נפרד.',
 	'createpage_editexisting' => 'כן, לתרום לדף הקיים.',
-	'createpage-badtitle' => 'לא ניתן להשתמש ב"$1" ככותרת לדף',
+	'createpage-badtitle' => '"$1" אינו כותרת תקינה לדף',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -324,6 +351,14 @@ Vole tu modificar le pagina existente?',
 	'createpage_tryagain' => 'No. Io vole crear un nove pagina con un titulo distincte.',
 	'createpage_editexisting' => 'Si. Io vole contribuer al pagina existente.',
 	'createpage-badtitle' => '"$1" non pote esser usate qua titulo de pagina',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'createpage' => 'Crea una pagina',
+	'createpage-badtitle' => '"$1" non può essere usato come titolo di una pagina',
 );
 
 /** Japanese (日本語)
@@ -390,6 +425,13 @@ Wells De di Sigg ändere?',
 	'createpage-badtitle' => '„$1“ es als ene Tittel för en Sigg nit ze bruche',
 );
 
+/** Latin (Latina)
+ * @author UV
+ */
+$messages['la'] = array(
+	'createpage' => 'Paginam creare',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -404,6 +446,12 @@ Wëll Dir déi Säit veränneren?',
 	'createpage_tryagain' => 'Neen. Ech wëll eng nei Säit mat engem aneren Titel uleeën.',
 	'createpage_editexisting' => 'Jo. Ech wëll déi Säit déi et gëtt änneren.',
 	'createpage-badtitle' => '"$1" kann net als Titel fir eng Säit benotzt ginn',
+);
+
+/** Literary Chinese (文言) */
+$messages['lzh'] = array(
+	'createpage' => '建新頁',
+	'createpage-badtitle' => '「$1」無頁題用也',
 );
 
 /** Macedonian (Македонски)
@@ -435,6 +483,7 @@ $messages['nds'] = array(
 Wullt du de Sied, de dat al gifft, ännern?',
 	'createpage_tryagain' => 'Nee. Ik will en ne’e Sied mit en annern Naam anleggen.',
 	'createpage_editexisting' => 'Jo. Ik will wat to de Sied toschrieven, de dat al gifft.',
+	'createpage-badtitle' => '„$1“ geiht as Siedennaam nich',
 );
 
 /** Dutch (Nederlands)
@@ -578,6 +627,14 @@ $messages['ru'] = array(
 	'createpage-badtitle' => '«$1» нельзя использовать как заголовок страницы',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'createpage' => 'Сирэйи ай',
+	'createpage-badtitle' => '"$1" ааты сирэй аатын быһыытынан туттар сатаммат',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -599,7 +656,15 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'createpage' => 'Направи чланак',
+	'createpage-desc' => 'Додаје [[Special:CreatePage|специјалну страну]] за прављење нових страна',
 	'createpage_submitbutton' => 'Пошаљи',
+	'createpage_instructions' => 'Унеси наслов кога желиш да направиш:',
+	'createpage_entertitle' => 'Молимо Вас да унесете наслов за Ваш чланак.',
+	'createpage_titleexists' => 'Чланак са насловом [[$1]] већ постоји.
+Да ли бисте желели да измените постојећи чланак?',
+	'createpage_tryagain' => 'Не. Желим да направим нови чланак са његовим сопственим насловом.',
+	'createpage_editexisting' => 'Да. Желим да допринесем постојећем чланку.',
+	'createpage-badtitle' => '"$1" не може бити употребљен као наслов стране',
 );
 
 /** Seeltersk (Seeltersk)
@@ -629,6 +694,7 @@ $messages['sv'] = array(
 	'createpage_instructions' => 'Skriv in titeln till sidan som du vill skapa:',
 	'createpage_entertitle' => 'Var god skriv in en titel för din sida.',
 	'createpage_tryagain' => 'Nej, jag vill skapa en ny sida med ett annat namn.',
+	'createpage-badtitle' => '"$1" kan inte användas som sidtitel',
 );
 
 /** Swahili (Kiswahili)
@@ -684,6 +750,14 @@ Nais mo bang baguhin ang umiiral na pahina?',
 	'createpage-badtitle' => 'Hindi magagamit ang "$1" bilang pamagat ng isang pahina',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'createpage' => 'Bir sayfa oluştur',
+	'createpage-badtitle' => '"$1" bir sayfa başlığı olarak kullanılamaz',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */
@@ -698,6 +772,14 @@ $messages['uk'] = array(
 	'createpage_tryagain' => 'Ні. Я хочу створити нову сторінку з іншою назвою.',
 	'createpage_editexisting' => 'Так. Я хочу внести свій внесок в існуючу сторінку.',
 	'createpage-badtitle' => '«$1» не можна використовувати як заголовок сторінки',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'createpage' => 'Crèa na pagina',
+	'createpage-badtitle' => 'No se pol doparar "$1" come titolo de pagina',
 );
 
 /** Veps (Vepsan kel')
@@ -758,21 +840,29 @@ Danga bëgg a soppi xët wi fi nekk ?',
 	'createpage-badtitle' => '« $1 » manoo koo jëfandikoo niki kojuw xët',
 );
 
+/** Yue (粵語) */
+$messages['yue'] = array(
+	'createpage' => '開新版',
+	'createpage-badtitle' => '『$1』唔可以用做頁標題',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
-	'createpage' => '创建一个页面',
+	'createpage' => '创建新页面',
 	'createpage_submitbutton' => '提交',
 	'createpage_entertitle' => '请输入您的页面标题。',
+	'createpage-badtitle' => '“$1”无法用作页面标题',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'createpage' => '建立一個頁面',
+	'createpage' => '創建新頁面',
 	'createpage_submitbutton' => '提交',
 	'createpage_entertitle' => '請輸入您的頁面標題。',
+	'createpage-badtitle' => '「$1」不可以用作頁面標題',
 );
 

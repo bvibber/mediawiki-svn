@@ -1371,17 +1371,28 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'recordadmin' => 'Quản lý bản ghi',
 	'recordadmin-desc' => 'Một [[Special:RecordAdmin|trang đặc biệt]] để tìm kiếm và sửa đổi các trang bản ghi bằng cách dùng một mẫu có sẵn',
-	'recordadmin-select' => 'Chọn một loại bản ghi cần tìm',
+	'recordadmin-select' => 'Chọn một loại bản ghi để quản lý',
 	'recordadmin-newsearch' => 'Tìm $1 mới',
 	'recordadmin-newrecord' => 'Chọn một loại bản ghi khác',
 	'recordadmin-submit' => 'Đăng',
-	'recordadmin-create' => 'Tìm hoặc tạo một bản ghi “$1”',
+	'recordadmin-create' => 'Tìm hoặc tạo bản ghi “$1”',
 	'recordadmin-alreadyexist' => 'Xin lỗi,  	 	 	“$1” đã tồn tại!',
+	'recordadmin-buttonsearch' => 'Tìm kiếm',
+	'recordadmin-buttoncreate' => 'Tạo',
+	'recordadmin-buttonreset' => 'Mặc định lại',
+	'recordadmin-searchresult' => 'Kết quả tìm kiếm',
+	'recordadmin-edit' => 'Sửa đổi “$1”',
+	'recordadmin-buttonsave' => 'Lưu',
+	'recordadmin-viewlink' => 'xem',
+	'recordadmin-editlink' => 'sửa đổi',
+	'recordadmin-actions' => 'Tác động',
+	'recordadmin-needscontent' => 'Thêm nội dung…',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

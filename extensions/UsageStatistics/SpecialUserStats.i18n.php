@@ -1492,9 +1492,29 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'specialuserstats' => 'Статистике коришћења',
+	'usagestatistics' => 'Статистике коришћења',
+	'usagestatistics-desc' => 'Покажи појединачне кориснике и укупну статистику коришћења Викија',
+	'usagestatisticsfor' => '<h2>Статистике коришћења за [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Статистике коришћења за све кориснике</h2>',
+	'usagestatisticsinterval' => 'Интервал',
+	'usagestatisticstype' => 'Тип',
+	'usagestatisticsstart' => 'Почетни датум',
+	'usagestatisticsend' => 'Завршни датум',
+	'usagestatisticssubmit' => 'Генериши статистике',
+	'usagestatisticsnostart' => 'Молимо Вас да задате почетни датум',
+	'usagestatisticsnoend' => 'Молимо Вас да задате завршни датум',
+	'usagestatisticsbadstartend' => '<b>Лош <i>почетни</i> и/или <i>завршни</i> датум!</b>',
 	'usagestatisticsintervalday' => 'Дан',
 	'usagestatisticsintervalweek' => 'Недеља',
 	'usagestatisticsintervalmonth' => 'Месец',
+	'usagestatisticsincremental' => 'Инкрементално',
+	'usagestatisticsincremental-text' => 'инкрементално',
+	'usagestatisticscumulative' => 'Кумулативно',
+	'usagestatisticscumulative-text' => 'кумулативно',
+	'usagestatisticscalselect' => 'Изабери',
+	'usagestatistics-editindividual' => 'Статистике измена појединачног корисника $1',
+	'usagestatistics-editpages' => 'Статистике страна индивидуалних корисника $1',
 );
 
 /** Seeltersk (Seeltersk)

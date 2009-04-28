@@ -369,8 +369,6 @@ $messages['ja'] = array(
  */
 $messages['ko'] = array(
 	'categorywatch-desc' => '주시된 분류에 포함되는 문서의 분류 변경을 알리도록 주시문서 목록 기능을 확장',
-	'categorywatch-emailbody' => '$1님 안녕하세요. 당신은 "$2" 분류를 주시하고 있기 때문에 이 메시지를 수신하였습니다.
-이 메시지는 $3에 $4가 $5하였다는 것을 알리고자 전달되었습니다.',
 	'categorywatch-emailsubject' => '주시된 분류 "$1"에 대한 바뀜',
 	'categorywatch-catmovein' => '$1 문서를 $3에서 $2로 이동',
 	'categorywatch-catmoveout' => '$1 문서를 분류 $2에서 $3으로 이동',
@@ -611,6 +609,19 @@ Toto je oznam, že $3 používateľ $4 $5.',
 	'categorywatch-catadd' => 'pridal $1 do kategórie $2',
 	'categorywatch-catsub' => 'odstránil $1 z kategórie $2',
 	'categorywatch-autocat' => 'Automaticky sleduje $1',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'categorywatch-desc' => 'Проширује функционалност списка праћења на обавештавање о променама садржаја категорија',
+	'categorywatch-emailsubject' => 'Активност која укључује надгледану категорију "$1"',
+	'categorywatch-catmovein' => '$1 је премештен у $2 из $3',
+	'categorywatch-catmoveout' => '$1 је премештен из $2 у $3',
+	'categorywatch-catadd' => '$1 је додат у $2',
+	'categorywatch-catsub' => '$1 је избачен из $2',
+	'categorywatch-autocat' => 'Аутоматски надгледано од $1',
 );
 
 /** Seeltersk (Seeltersk)

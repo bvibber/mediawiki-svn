@@ -1314,9 +1314,29 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'patrol' => 'Потролирање измена',
+	'patrol-revert' => 'Врати',
 	'patrol-revert-reason' => 'Разлог:',
+	'patrol-skip' => 'Прескочи',
+	'patrol-reverting' => 'Враћање: $1',
+	'patrol-nonefound' => 'Нема измена које би се могле патролирати',
+	'patrol-endorsed-ok' => 'Измена је обележена као патролисана.',
+	'patrol-endorsed-failed' => 'Измена није могла бити обележена као патролирана.',
+	'patrol-reverted-ok' => 'Измена је враћена.',
+	'patrol-reverted-failed' => 'Измена није могла бити враћена.',
+	'patrol-skipped-ok' => 'Игнорисање измене.',
+	'patrol-reasons' => '* Обичан вандализам
+* Тест почетника
+* Види страну за разговор',
+	'patrol-another' => 'Покажи неку другу измену, ако је доступна.',
+	'patrol-resume' => 'Кликните овде да се вратите.',
+	'group-patroller' => 'Патролери',
+	'group-patroller-member' => 'патролер',
+	'grouppage-patroller' => '{{ns:project}}:Патролер',
+	'right-patroller' => 'Патролирање страна',
 );
 
 /** Seeltersk (Seeltersk)

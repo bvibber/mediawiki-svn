@@ -1370,22 +1370,30 @@ $messages['uk'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'dt-desc' => 'Cho phép nhập và xuất dữ liệu có cấu trúc được chứa trong lời gọi tiêu bản',
+	'dt-desc' => 'Cho phép nhập xuất dữ liệu có cấu trúc được chứa trong lời gọi tiêu bản',
 	'viewxml' => 'Xem XML',
 	'dt_viewxml_docu' => 'Xin hãy chọn trong những thể loại và không gian tên dưới đây để xem ở dạng XML.',
 	'dt_viewxml_categories' => 'Thể loại',
 	'dt_viewxml_namespaces' => 'Không gian tên',
 	'dt_viewxml_simplifiedformat' => 'Định dạng đơn giản hóa',
 	'dt_xml_namespace' => 'Không gian tên',
+	'dt_xml_pages' => 'Trang',
 	'dt_xml_page' => 'Trang',
+	'dt_xml_template' => 'Tiêu bản',
 	'dt_xml_field' => 'Trường',
 	'dt_xml_name' => 'Tên',
 	'dt_xml_title' => 'Tựa đề',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Văn bản Tự do',
+	'importxml' => 'Nhập XML',
+	'dt_importxml_selectfile' => 'Xin hãy chọn tập tin XML để nhập:',
+	'dt_importxml_editsummary' => 'Nhập XML',
+	'dt_importxml_importing' => 'Đang nhập…',
+	'dt_importxml_success' => '$1 trang sẽ được nhập từ tập tin XML.',
 );
 
 /** Volapük (Volapük)

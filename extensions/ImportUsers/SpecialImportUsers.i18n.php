@@ -1031,6 +1031,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
  */
@@ -1046,7 +1047,7 @@ $messages['nn'] = array(
 	'importusers-user-present-update' => "Brukaren '''$1''' finst allereie. Oppdatert.",
 	'importusers-user-present-not-update' => "Brukeren '''$1''' finst allereie. Ikkje oppdatert.",
 	'importusers-user-invalid-format' => 'Brukerdataa på linja #$1 har ugyldig format eller er blank. Hoppa over.',
-	'importusers-log' => 'Brukarimporteringslogg',
+	'importusers-log' => 'Loggføring for importering av brukarar',
 	'importusers-log-summary' => 'Samandrag',
 	'importusers-log-summary-all' => 'Alle',
 	'importusers-log-summary-added' => 'Lagt til',

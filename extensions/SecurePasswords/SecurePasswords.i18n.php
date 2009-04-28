@@ -586,6 +586,21 @@ Dapat itong:',
 	'securepasswords-word' => 'hindi isang salita',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'securepasswords-valid' => 'Mật khẩu của bạn không hợp lệ hay ngắn quá.
+Nó phải:',
+	'securepasswords-minlength' => 'dài đến $1 ký tự trở lên',
+	'securepasswords-lowercase' => 'có ít nhất một chữ nhỏ',
+	'securepasswords-uppercase' => 'có ít nhất một chữ hoa',
+	'securepasswords-digit' => 'có ít nhất một chữ số',
+	'securepasswords-special' => 'có ít nhất một ký tự đặc biệt (tức là: $1)',
+	'securepasswords-username' => 'khác với tên hiệu',
+	'securepasswords-word' => 'không phải là từ',
+);
+
 /** Volapük (Volapük)
  * @author Malafaya
  * @author Smeira

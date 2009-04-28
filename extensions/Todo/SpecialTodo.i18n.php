@@ -1357,9 +1357,19 @@ $4',
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'todo' => 'Списак ствари за урадити',
+	'todo-desc' => 'Екстензија за експерименталан лични [[Special:Todo|списак ствари за урадити]]',
+	'todo-tab' => 'за урадити',
+	'todo-new-queue' => 'ново',
+	'todo-unrecognize-type' => 'Непознат тип',
+	'todo-no-item' => 'Нема ствари за урадити.',
+	'todo-add-queue' => 'Додај ред…',
+	'todo-move-queue' => 'Премести у ред…',
+	'todo-list-for' => 'Списак ствари за урадити, за $1',
 	'todo-list-change' => 'Промени',
 	'todo-list-cancel' => 'Поништи',
 	'todo-form-details' => 'Детаљи:',
+	'todo-form-submit' => 'Пошањи упит',
 );
 
 /** Seeltersk (Seeltersk)

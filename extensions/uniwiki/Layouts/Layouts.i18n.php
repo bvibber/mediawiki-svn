@@ -570,6 +570,16 @@ $messages['sk'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'layouts_title' => 'Направи чланак',
+	'layouts_continue' => 'Настави',
+	'layouts_choosecategory' => 'Изабери категорију за $1:',
+	'layouts_unknown' => 'Непознато',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

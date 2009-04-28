@@ -296,6 +296,13 @@ $messages['sq'] = array(
 	'metakeywords-desc' => 'Lejon konfigurimin e kodeve <tt><nowiki><meta "keywords"></nowiki></tt> dhe <tt><nowiki><meta "description"></nowiki></tt> për çdo hapësirë',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'metakeywords-desc' => 'Омогућује конфигурацију <tt><nowiki><meta "keywords"></nowiki></tt> и <tt><nowiki><meta "description"></nowiki></tt> тагова по именском простору',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

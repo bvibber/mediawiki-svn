@@ -882,6 +882,7 @@ $messages['es'] = array(
 	'tasks_logpage' => 'Registro de tareas',
 	'tasks_logpagetext' => 'Este es un registro de cambios a las tareas',
 	'tasks_logentry' => 'Para "[[$1]]"',
+	'tasks-pref-showtaskcomments' => 'Transcluir página de comentarios de tareas.',
 );
 
 /** Basque (Euskara)

@@ -635,3 +635,10 @@ $messages['tr'] = array(
 	'editsimilar-thankyou' => 'Katkılarınız için teşekkürler, $1!',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'editsimilar-link-disable' => 'tùy chọn',
+);
+

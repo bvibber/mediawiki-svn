@@ -525,6 +525,10 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'categoryintersection' => 'Пресек категорија',
+	'categoryintersection-desc' => 'Одржава табелу са хеш вредностима за [[Special:CategoryIntersection|пресеке категорија]] унутар стране',
+	'categoryintersection-doit' => 'Дај списак страна у свим овим категоријама',
+	'categoryintersection-maxcategories' => 'Максималан дозвољен број категорија у пресеку је $1.',
+	'categoryintersection-results' => 'Претрага је вратила $1 {{PLURAL:$1|резултат|резултата}}.',
 );
 
 /** Seeltersk (Seeltersk)

@@ -1591,6 +1591,10 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'changeauthor' => 'Промени аутора ревизије',
+	'changeauthor-desc' => 'Омогући промене аутора ревизија',
+	'changeauthor-title' => 'Промени аутора неке ревизије',
+	'changeauthor-search-box' => 'Претражи ревизије',
 	'changeauthor-pagename-or-revid' => 'Име странице или ИД ревизије:',
 	'changeauthor-pagenameform-go' => 'Иди',
 	'changeauthor-comment' => 'Коментар:',

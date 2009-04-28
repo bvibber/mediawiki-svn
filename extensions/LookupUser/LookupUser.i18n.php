@@ -277,6 +277,7 @@ $messages['es'] = array(
 	'lookupuser-realname' => 'Nombre real: $1',
 	'lookupuser-registration' => 'Fecha de registro: $1',
 	'lookupuser-no-registration' => 'no grabado',
+	'lookupuser-touched' => 'Registro de usuario tocado por último: $1',
 	'lookupuser-info-authenticated' => 'Autenticación de correo electrónico: $1',
 	'lookupuser-useroptions' => 'Opciones de usuario:',
 	'right-lookupuser' => 'Ver preferencias de usuario',

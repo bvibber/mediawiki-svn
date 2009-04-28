@@ -1057,6 +1057,24 @@ Svoj kompletný Zoznam úloh si môžete pozrieť na %s.
 Váš priateľský upozorňovací systém %s',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'tasklist' => 'Списак послова',
+	'tasklist-parser-desc' => 'Додаје <nowiki>{{#todo:}}</nowiki> парсер функцију за давање задатака',
+	'tasklist-special-desc' => 'Додаје специјалну страну за преглед [[Special:TaskList|додељених задатака]]',
+	'tasklistbyproject' => 'Списак задатака по пројекту',
+	'tasklistunknownproject' => 'Непознати пројекат',
+	'tasklistunspecuser' => 'Неодређени корисник',
+	'tasklistincorrectuser' => 'Неисправно корисничко име',
+	'tasklistemail' => 'Драги %s',
+	'tasklistemailsubject' => '[%s] Промена списка задатака',
+	'tasklistmytasks' => 'Моји задаци',
+	'tasklistchooseproj' => 'Изабери пројекат:',
+	'tasklistprojdisp' => 'Прикажи',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -1201,6 +1219,19 @@ $messages['vep'] = array(
 	'tasklistincorrectuser' => 'Vär kävutajan nimi',
 	'tasklistemail' => 'Kalliž %s',
 	'tasklistprojdisp' => 'Ozutada',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'tasklist' => 'Danh sách công việc',
+	'tasklistbyproject' => 'Danh sách công việc theo dự án',
+	'tasklistemail' => 'Chào %s',
+	'tasklistmytasks' => 'Công việc của tôi',
+	'tasklistchooseproj' => 'Chọn dự án:',
+	'tasklistprojdisp' => 'Hiển thị',
+	'tasklistbyname' => '== Danh sách công việc của %s ==',
 );
 
 /** Volapük (Volapük)

@@ -419,6 +419,14 @@ $messages['sk'] = array(
 	'nstab-comments' => 'Komentár',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'commentpages-desc' => 'Коментарисање страна главног именског простора',
+	'nstab-comments' => 'Коментари',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

@@ -1890,9 +1890,11 @@ $messages['sr'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'badimages' => 'Списак лоших слика',
+	'badimages-desc' => 'Проширује могућности списка лоших слика МедијаВикија',
 	'badimages-add-btn' => 'додај',
 	'badimages-added' => '$1 је додата у списак.',
 	'badimages-count' => "Тренутно {{PLURAL:$1|је|су}} '''$1''' {{PLURAL:$1|слика|слике|слика}} на списку лоших слика.",

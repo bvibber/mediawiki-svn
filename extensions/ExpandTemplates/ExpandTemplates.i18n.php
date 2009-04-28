@@ -339,7 +339,7 @@ $messages['co'] = array(
  */
 $messages['cs'] = array(
 	'expandtemplates' => 'Substituce šablon',
-	'expandtemplates-desc' => 'Rozbaluje šablony, funkce parseru a proměnné; zobrazuje rozbalený wikitext a náhled stránky, jak se zobrazí',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Rozbaluje šablony, funkce parseru a proměnné]], načež zobrazí výsledný wikitext a náhled stránky',
 	'expand_templates_intro' => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}}</code> – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
 	'expand_templates_title' => 'Název stránky kvůli kontextu pro {{PAGENAME}} apod.:',
 	'expand_templates_input' => 'Vstupní text:',

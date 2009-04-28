@@ -227,6 +227,13 @@ $messages['sq'] = array(
 	'jskit-desc' => 'Integron mjetet js-kit në një faqe wiki',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'jskit-desc' => 'Интегрише js-kit алате у Вики-чланак',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

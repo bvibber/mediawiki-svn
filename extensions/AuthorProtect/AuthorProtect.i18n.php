@@ -1058,6 +1058,7 @@ $messages['sr-ec'] = array(
 	'authorprotect-success' => 'Заштита успешна!',
 	'authorprotect-failure' => 'Заштита неуспешна',
 	'protect-level-author' => 'Заштити од не-аутора',
+	'restriction-level-author' => 'Кориснички заштићено',
 );
 
 /** Seeltersk (Seeltersk)

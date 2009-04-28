@@ -493,6 +493,8 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'unicodeconverter' => 'Јуникод конвертер',
+	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Оригинални текст:',
 	'unicodeconverter-newtext' => 'Конвертован текст:',
 );

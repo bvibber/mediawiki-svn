@@ -677,6 +677,9 @@ $messages['vep'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'emergencydesysop' => 'Rút quyền quản lý khẩn cấp',
+	'emergencydesysop-reason' => 'Lý do rút quyền',
+	'emergencydesysop-submit' => 'Thực hiện',
 	'emergencydesysop-nogroups' => 'Không có',
 );
 
