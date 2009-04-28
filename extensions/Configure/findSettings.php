@@ -61,11 +61,20 @@ if ( isset( $options['ext'] ) ) {
 		# Core
 		'wgTitle', 'wgArticle', 'wgContLang', 'wgLang', 'wgOut', 'wgParser', 'wgMessageCache',
 		# Extensions
+		'wgAbuseFilterStyleVersion',
+		'wgCategoryTreeUseCategoryTable', 'wgCategoryTreeVersion',
+		'wgCheckUserStyleVersion',
 		'wgCaptcha', 'wgConfirmEditIP',
 		'wgCitationCache', 'wgCitationCounter', 'wgCitationRunning',
+		'wgCodeReviewStyleVersion',
 		'wgCSS',
+		'wgDeleteQueueStyleVersion',
 		'wgErrorHandlerErrors', 'wgErrorHandlerOutputDone',
+		'wgFlaggedRevStyleVersion',
+		'wgOggScriptVersion',
 		'wgExtParserFunctions',
+		'wgUserBoardScripts', 'wgUserProfileDirectory', 'wgUserProfileScripts', 'wgUserRelationshipScripts',
+		'wgTimelineSettings',
 		'wgTitleBlacklist',
 	);
 	foreach ( $exts as $ext ) {
@@ -73,7 +82,7 @@ if ( isset( $options['ext'] ) ) {
 		$file = file_get_contents( $ext->getFile() );
 		$name = $ext->getName();
 		$m = array();
-		preg_match_all( '/\$(wg[A-Za-z0-9]+)\s*\=/', $file, $m );
+		preg_match_all( '/\$([ew]g[A-Za-z0-9]+)\s*\=/', $file, $m );
 		$definedSettings = array_unique( $m[1] );
 		$allSettings = array_keys( $ext->getSettings() );
 
