@@ -209,7 +209,8 @@ url = http://www.mediawiki.org/wiki/Extension:Click
 CodeReview
 settings[] = wgCodeReviewENotif: bool, wgCodeReviewImgRegex: text
 settings[] = wgSubversionProxy: text, wgSubversionProxyTimeout: int
-settings[] = wgSubversionUser: text, wgSubversionPassword: text, wgWikiSVN: text
+settings[] = wgSubversionUser: text, wgSubversionPassword: text
+settings[] = wgCodeReviewImportBatchSize: int, wgWikiSVN: text
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:CodeReview
 
@@ -559,8 +560,11 @@ ReplaceText
 url = http://www.mediawiki.org/wiki/Extension:ReplaceText
 
 SkinPerNamespace
-settings[] = wgSkinPerNamespace: array, wgSkinPerNamespaceOverrideLoggedIn: bool
+settings[] = wgSkinPerNamespace: array
+settings[] = wgSkinPerSpecialPage: array
+settings[] = wgSkinPerNamespaceOverrideLoggedIn: bool
 array[] = wgSkinPerNamespace: ns-text
+array[] = wgSkinPerSpecialPage: assoc
 url = http://www.mediawiki.org/wiki/Extension:SkinPerNamespace
 
 SkinPerPage
