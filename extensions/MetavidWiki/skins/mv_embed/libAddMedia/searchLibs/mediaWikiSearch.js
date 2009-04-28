@@ -27,7 +27,7 @@ mediaWikiSearch.prototype = {
 		var reqObj = {
 			'action':'query', 			
 			'generator':'search',
-			'gsrsearch': encodeURIComponent( $j('#rsd_q').val() ),  
+			'gsrsearch':  $j('#rsd_q').val(),  
 			'gsrnamespace':6, //(only search the "file" namespace (audio, video, images)
 			'gsrwhat':'title',
 			'gsrlimit':  this.cp.limit,
@@ -67,10 +67,13 @@ mediaWikiSearch.prototype = {
 		if(data.query && data.query.pages){
 			for(var page_id in  data.query.pages){
 				var page =  data.query.pages[ page_id ];
-				//make sure the reop is shared
+				
+				//make sure the reop is shared (don't show for now it confusing things)
+				//@@todo support remote repository better
 				if( page.imagerepository == 'shared'){
 					continue;
 				}
+				
 				//make sure the page is not a redirect
 				if(page.revisions[0]['*'].indexOf('#REDIRECT')===0){
 					//skip page is redirect 
