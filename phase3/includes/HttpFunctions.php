@@ -18,17 +18,17 @@ class Http {
 		$req = newReq($url, $opts );	
 		return $req->request();	
 	}		
-	//setup a new request
-	public static function newReq($url, $opts){
-		$req = new Http();
-		$req->url = $url;
-		$req->method = (isset($opt['method']))?$opt['method']:'GET';		
-		$req->target_file = (isset($opt['target_file']))?$opt['target_file']:false;
-		return $req;
+	/**
+	 * Simple wrapper for Http::request( 'POST' )
+	 */
+	public static function post( $url, $opts = array() ) {
+		$opts['method']='POST';
+		$req = newReq($url, $opts );	
+		return $req->request();	
 	}
-	public static function doDownload( $url, $target_path , $dl_mode = self::SYNC_DOWNLOAD ){
+	public static function doDownload( $url, $target_file_path , $dl_mode = self::SYNC_DOWNLOAD ){
 		global $wgPhpCliPath, $wgMaxUploadSize;
-				
+		print "doDownload:$target_file_path";
 		//do a quick check to HEAD to insure the file size is not > $wgMaxUploadSize to large no need to download it
 		$head = get_headers($url, 1);
 		if(isset($head['Content-Length']) && $head['Content-Length'] > $wgMaxUploadSize){
@@ -36,29 +36,39 @@ class Http {
 		}
 		
 		//check if we can find phpCliPath (for doing a background shell request to php to do the download: 
-		if( $wgPhpCliPath && wfShellExecEnabled() && $dl_mode == self::ASYNC_DOWNLOAD){
-			//setup session
-			die('do shell exec');
-			//do shell exec req
+		if( $wgPhpCliPath && wfShellExecEnabled() && $dl_mode == self::ASYNC_DOWNLOAD){			
+			//setup session and shell call: 			
+			return self::initBackgroundDownload( $url, $target_file_path );
 			
 			//return success status and download_session_key
 			
 			//(separate ajax request can now check on the status of the shell exec)... and even kill or cancel it)
 			 
 		}else if( $dl_mode== self::SYNC_DOWNLOAD ){
-			//else just download as much as we can in the time we have left: 
-			return self::doDownloadtoFile($url, $target_path);
+			//else just download as much as we can in the time we have left:
+			$opts['method']='GET';
+			$opts['target_file_path'] = $target_file_path;
+			$req = self::newReq($url, $opts );	
+			return $req->request();	
 		}		
+	}
+	//setup a new request
+	public static function newReq($url, $opt){
+		$req = new Http();
+		$req->url = $url;
+		$req->method = (isset($opt['method']))?$opt['method']:'GET';		
+		$req->target_file_path = (isset($opt['target_file_path']))?$opt['target_file_path']:false;
+		return $req;
 	}
 	/**
 	 * a non blocking request (generally an exit point in the application)
 	 * should write to a file location and give updates 
 	 *	 
 	 */
-	public static function initBackgroundDownload( $url ){
+	private function initBackgroundDownload( $url, $target_file_path ){
 		global $wgMaxUploadSize;
 		$status = Status::newGood();	
-		//generate a session id with all the details for the download (pid, target_file ) 
+		//generate a session id with all the details for the download (pid, target_file_path ) 
 
 		//later add in (destName & description) 
 		$session_id = session_id();
@@ -67,54 +77,43 @@ class Http {
 			
 		//return status
 		return $status; 
-	}	
-	//called from the command line: : 
+	}				
+	/**
+	 * used to run a session based download. Is initiated via the shell. 
+	 *
+	 * @param string $dn_session_id  // the session id to grab download details from
+	 */
 	public static function doSessionIdDownload( $dn_session_id ){
 		//get all the vars we need from session_id
 		session_id( $dn_session_id );
 		$url = $_SESSION[ 'wsDownload' ][ 'url' ];
-		$target_file_path = $_SESSION[ 'wsDownload' ][ 'target_file_path' ];
-		self::doDownloadtoFile($url, $target_file_path);
-		return true;
-	}
-	public static function doDownloadtoFile($url, $target_file_path){
-		global $wgCopyUploadTimeout;
-		$req = self::newReq($url, array(
-			'target_file'=> $target_file_path
-		) );
-		$status = $req->request( $url );
-		print "downloading $url \nto FILE target: $target_file_path \n" . filesize( $target_file_path ) . "\n";
-		return Status::newGood('upload-ok');				
-	}	
-	/**
-	 * Simple wrapper for Http::request( 'POST' )
-	 */
-	public static function post( $url, $opts = array() ) {
-		$opts['method']='POST';
-		return Http::request( $url, $opts );
+		$target_file_path_path = $_SESSION[ 'wsDownload' ][ 'target_file_path_path' ];
+
+		//new req here: 
 	}
 	/**
 	 * Get the contents of a file by HTTP
 	 * @param $url string Full URL to act on	 
 	 * @param $Opt associative array Optional array of options:
 	 * 		'method'	  => 'GET', 'POST' etc. 
-	 * 		'target_file' => if curl should output to a target file
+	 * 		'target_file_path' => if curl should output to a target file
 	 * 		'adapter'	  => 'curl', 'soket'
 	 */
 	 private function request() {
 		global $wgHTTPTimeout, $wgHTTPProxy, $wgTitle;
 				
-		wfDebug( __METHOD__ . ": $method $url\n" );
+		wfDebug( __METHOD__ . ": $method $url\n" );		
 		# Use curl if available
-		if ( function_exists( 'curl_init' ) ) {
+		if ( function_exists( 'curl_init' ) ) {			
 			return $this->doCurlReq();
-		}else{
+		}else{			
 			return $this->doPhpReq();
 		}
 	 }
 	 private function doCurlReq(){
+	 	$status = Status::newGood();
 		$c = curl_init( $this->url );
-		
+				
 		//proxy setup: 
 		if ( self::isLocalURL( $this->url ) ) {
 			curl_setopt( $c, CURLOPT_PROXY, 'localhost:80' );
@@ -144,28 +143,36 @@ class Http {
 		}
 		
 		//set the write back function (if we are writing to a file) 
-		if( $this->target_file ){
-			$cwrite = new simpleFileWriter( $this->target_file );									
+		if( $this->target_file_path ){			
+			$cwrite = new simpleFileWriter( $this->target_file_path );									
 			curl_setopt( $c, CURLOPT_WRITEFUNCTION, array($cwrite, 'callbackWriteBody') );
 		}
 
 		//start output grabber: 
-		if(!$this->target_file)
+		if(!$this->target_file_path)
 			ob_start();			
-				
+		
+		//run the actual curl_exec:
 		try {
             if (false === curl_exec($c)) {
                 $status = Status::newFatal( 'Error sending request: #' . curl_errno($c) .
-                                                       ' ' . curl_error($c) );
+                                                       				' '. curl_error($c) );
             }
         } catch (Exception $e) {
         	//do something with curl exec error?
         }	 	 
 		//if direct request output the results to the stats value: 
-		if( !$target_file && $status->isOK() ){       						
+		if( !$this->target_file_path && $status->isOK() ){       						
         	$status->value = ob_get_contents();
 			ob_end_clean();
-		}      
+		}      		
+		//if we wrote to a target file close up or return error
+		if( $this->target_file_path ){
+			$cwrite->close();			
+			if( ! $cwrite->status->isOK() ){
+				return $cwrite->status;			
+			}
+		}
 		
 		# Don't return the text of error messages, return false on error
 		$retcode = curl_getinfo( $c, CURLINFO_HTTP_CODE );
@@ -180,10 +187,8 @@ class Http {
 			wfDebug( __METHOD__ . ": CURL error code $errno: $errstr\n" );
 				$status = Status::newFatal( " CURL error code $errno: $errstr\n" );
 		}
-		curl_close( $c );
-		
-		
-			
+		curl_close( $c );			 
+					
 		//return the result obj							
 		return $status;							
 	}
@@ -255,14 +260,35 @@ class Http {
  * a simpleFileWriter 
  */
 class simpleFileWriter{
-	var $target_file;		
-	function __constructor($target_file){
-		$this->target_file = $target_file;
+	var $target_file_path;
+	var $status = null;		
+	function simpleFileWriter($target_file_path){
+		$this->target_file_path = $target_file_path;
+		$this->status = Status::newGood();
+		//open the file:
+		$this->fp = fopen( $this->target_file_path, 'w');
+		if( $this->fp === false ){
+			$this->status = Status::newFatal('HTTP::could-not-open-file-for-writing'); 
+		}
 	}
-	public function callbackWriteBody($ch, $string){
-		$wgMaxUploadSize;
-		//write out to the target file
-			
-		//
+	public function callbackWriteBody($ch, $data_packet){
+		global $wgMaxUploadSize;
+		//check file size: 
+		clearstatcache();
+		if( filesize( $this->target_file_path) > $wgMaxUploadSize){
+			$this->status = Status::newFatal('HTTP::file-has-grown-beyond-upload-limit-killing: '.  filesize( $this->target_file_path) . ' > ' . $wgMaxUploadSize);
+			return ;
+		}			
+		//write out the content
+		if( fwrite($this->fp, $data_packet) === false){
+			$this->status = Status::newFatal('HTTP::could-not-write-to-file');
+			return 0;
+		}					
+		return strlen($data_packet);		
+	}
+	public function close(){
+		if(false === fclose( $this->fp )){
+			$this->status = Status::newFatal('HTTP::could-not-close-file');
+		}		
 	}
 }
