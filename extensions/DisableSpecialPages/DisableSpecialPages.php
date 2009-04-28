@@ -11,7 +11,7 @@
  
 if( defined( 'MEDIAWIKI' ) ) {
 
-	$wgExtensionCredits['other'][] = array( 'name' => 'Disable Special Pages', 'author' => 'Rob Church' );
+	$wgExtensionCredits['other'][] = array( 'path' => __FILE__, 'name' => 'Disable Special Pages', 'author' => 'Rob Church' );
 	
 	if( version_compare( $wgVersion, '1.7.0' ) ) {
 		# Use the new hooks in 1.7+
