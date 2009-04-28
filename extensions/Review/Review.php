@@ -693,7 +693,7 @@ function wfReviewExtensionFunction () {
 		 * @todo document
 		 */
 		function review_page  ( $page , $revision ) {
-			global $wgTitle, $wgUser , $wgReviewExtensionTopics, $wgArticle, $action, $wgRequest;
+			global $wgTitle, $wgUser , $wgReviewExtensionTopics, $action, $wgRequest;
 			$title = Title::newFromID ( $page ) ;
 			
 			# Do we care?

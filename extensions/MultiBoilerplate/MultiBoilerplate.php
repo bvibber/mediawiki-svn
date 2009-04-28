@@ -55,7 +55,7 @@ $wgMultiBoilerplateOverwrite = false;
 function efMultiBoilerplate( $form ) {
 
 	// Get various variables needed for this extension.
-	global $wgMultiBoilerplateOptions, $wgMultiBoilerplateOverwrite, $wgArticle, $wgTitle, $wgRequest;
+	global $wgMultiBoilerplateOptions, $wgMultiBoilerplateOverwrite, $wgTitle, $wgRequest;
 
 	// Load messages into the message cache.
 	wfLoadExtensionMessages( 'MultiBoilerplate' );
