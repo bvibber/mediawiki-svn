@@ -18,7 +18,7 @@ function wfSpecialUpload() {
  * implements Special:Upload
  * @ingroup SpecialPage
  */
-class UploadForm {
+class UploadForm extends SpecialPage {
 	/**#@+
 	 * @access private
 	 */
@@ -41,7 +41,7 @@ class UploadForm {
 	 * Get data POSTed through the form and assign them to the object
 	 * @param $request Data posted.
 	 */
-	function __construct( &$request ) {		
+	function __construct( &$request ) {
 		// Guess the desired name from the filename if not provided
 		$this->mDesiredDestName   = $request->getText( 'wpDestFile' );
 		if( !$this->mDesiredDestName )
@@ -72,7 +72,8 @@ class UploadForm {
 		$this->mReUpload          = $request->getCheck( 'wpReUpload' );
 
 		$this->mAction            = $request->getVal( 'action' );		
-		$this->mUpload = UploadBase::createFromRequest( $request );
+		
+		$this->mUpload 			  = UploadBase::createFromRequest( $request );				
 	}
 
 
@@ -80,8 +81,8 @@ class UploadForm {
 	 * Start doing stuff
 	 * @access public
 	 */
-	function execute() {
-		global $wgUser, $wgOut;
+	function execute() {		
+		global $wgUser, $wgOut;		
 		
 		# Check uploading enabled
 		if( !UploadBase::isEnabled() ) {
@@ -114,9 +115,9 @@ class UploadForm {
 			$wgOut->readOnlyPage();
 			return;
 		}		
-		if( $this->mReUpload ) {
-			// User did not choose to ignore warnings
-			if( !$this->mUpload->unsaveUploadedFile() ) {
+		if( $this->mReUpload ) {					
+			// User choose to cancel upload
+			if( !$this->mUpload->unsaveUploadedFile() ) {				
 				return;
 			}
 			# Because it is probably checked and shouldn't be
@@ -484,15 +485,12 @@ class UploadForm {
 		global $wgOut, $wgUser;
 		global $wgUseCopyrightUpload;
 		
-		$sessionData = $this->mUpload->stashSession();
+		$this->mSessionKey = $this->mUpload->stashSession();
 		
 		if( $sessionData === false ) {
 			# Couldn't save file; an error has been displayed so let's go.
 			return;
-		}
-		
-		$this->mSessionKey = mt_rand( 0, 0x7fffffff );
-		$_SESSION['wsUploadData'][$this->mSessionKey] = $sessionData;
+		}				
 		
 		$sk = $wgUser->getSkin();
 

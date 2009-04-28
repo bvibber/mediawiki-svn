@@ -52,40 +52,11 @@ class UploadFromUrl extends UploadBase {
 		//now do the actual download to the shared target: 	
 		$status = Http::doDownload ( $this->mUrl, $this->mTempPath, $this->dl_mode);		
 		//update the local filesize var: 
-		$this->mFileSize = filesize($this->mTempPath);
-				
-		return $status;	
-		
-		/*
-		$res = $this->curlCopy();
-		if( $res !== true ) {
-			return array(
-				'status' => self::BEFORE_PROCESSING,
-				'error' => $res,
-			);
-		}*/
+		$this->mFileSize = filesize( $this->mTempPath );				
+		return $status;			
 		
 	}
 	
-
-	/**
-	 * Callback function for CURL-based web transfer
-	 * Write data to file unless we've passed the length limit;
-	 * if so, abort immediately.
-	 * @access private
-	 
-	function uploadCurlCallback( $ch, $data ) {
-		global $wgMaxUploadSize;
-		$length = strlen( $data );
-		$this->mFileSize += $length; 
-		if( $this->mFileSize > $wgMaxUploadSize ) {
-			return 0;
-		}
-		fwrite( $this->mCurlDestHandle, $data );
-		return $length;
-	}
-*/
-	//this can be deprecated in favor of http_request2 functions
 	static function isValidRequest( $request ){
 		if( !$request->getVal('wpUploadFileURL') )
 			return false;

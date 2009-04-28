@@ -19,7 +19,7 @@ class UploadFromChunks extends UploadBase {
 	const DONE 	= 3;
 	
 	function initializeFromParams( &$param , &$request) {		
-		$this->initFromSessionKey( $param['chunksessionkey'] );			
+		$this->initFromSessionKey( $param['chunksessionkey'], $request );			
 		//set the chunk mode: 
 		if( !$this->mSessionKey && !$param['done'] ){
 			//session key not set init the chunk upload system: 
@@ -43,19 +43,22 @@ class UploadFromChunks extends UploadBase {
 		return $this->status;
 	}	
 	
-	function initFromSessionKey( $sessionKey ){		
+	function initFromSessionKey( $sessionKey, $request ){		
 		if( !$sessionKey || empty( $sessionKey ) ){
 			return false;
 		}		
 		$this->mSessionKey = $sessionKey;
-		if( isset( $_SESSION['wsUploadData'][$this->mSessionKey]['version'] ) &&
-			$_SESSION['wsUploadData'][$this->mSessionKey]['version'] == self::SESSION_VERSION ) {
+		//load the sessionData array:
+		$sessionData = $request->getSessionData('wsUploadData');
+		
+		if( isset( $sessionData[$this->mSessionKey]['version'] ) &&
+			$sessionData[$this->mSessionKey]['version'] == self::SESSION_VERSION ) {
 				//update the local object from the session
-				$this->mComment			= $_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mComment' ];
-				$this->mWatch			= $_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mWatch' ];
-				$this->mFilteredName	= $_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mFilteredName' ];	
-				$this->mTempAppendPath  = $_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mTempAppendPath' ];
-				$this->mDesiredDestName	= $_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mDesiredDestName' ];
+				$this->mComment			= $sessionData[ $this->mSessionKey ][ 'mComment' ];
+				$this->mWatch			= $sessionData[ $this->mSessionKey ][ 'mWatch' ];
+				$this->mFilteredName	= $sessionData[ $this->mSessionKey ][ 'mFilteredName' ];	
+				$this->mTempAppendPath  = $sessionData[ $this->mSessionKey ][ 'mTempAppendPath' ];
+				$this->mDesiredDestName	= $sessionData[ $this->mSessionKey ][ 'mDesiredDestName' ];
 		}else{
 			$this->status = Array( 'error'=> 'missing session data');
 			return false;

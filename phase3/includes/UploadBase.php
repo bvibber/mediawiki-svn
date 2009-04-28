@@ -57,9 +57,11 @@ class UploadBase {
 	 * Create a form of UploadBase depending on wpSourceType and initializes it
 	 */
 	static function createFromRequest( &$request, $type = null ) {		
-		$type = $type ? $type : $request->getVal( 'wpSourceType' );
+		$type = $type ? $type : $request->getVal( 'wpSourceType' );		
+	
 		if( !$type ) 
 			return null;
+			
 		$type = ucfirst($type);	
 		$className = 'UploadFrom'.$type;
 		if( !in_array( $type, self::$uploadHandlers ) )
@@ -67,11 +69,12 @@ class UploadBase {
 											
 		if( !call_user_func( array( $className, 'isEnabled' ) ) )
 			return null;		
-			
+		
 		if( !call_user_func( array( $className, 'isValidRequest' ), $request ) )
 			return null;
-					
+		
 		$handler = new $className;				
+		
 		$handler->initializeFromRequest( $request );
 		return $handler;
 	}	
@@ -98,7 +101,7 @@ class UploadBase {
 	 * Fetch the file. Usually a no-op
 	 */
 	function fetchFile() {
-		return self::OK;
+		return Status::newGood();
 	}
 	//return the file size
 	function isEmptyFile(){		
@@ -280,9 +283,12 @@ class UploadBase {
 		
 		// Check whether this may be a thumbnail
 		if( $exists !== false && $exists[0] != 'thumb' 
-				&& self::isThumbName( $this->mLocalFile->getName() ) )
+				&& self::isThumbName( $this->mLocalFile->getName() ) ){
+			//make the title:
+			$nt = $this->getTitle();
 			$warning['file-thumbnail-no'] = substr( $filename , 0, 
 				strpos( $nt->getText() , '-' ) +1 );
+		}
 		
 		// Check dupes against existing files
 		$hash = File::sha1Base36( $this->mTempPath );
@@ -444,16 +450,16 @@ class UploadBase {
 	 * @access private
 	 */
 	function stashSession() {
-		$stash = $this->saveTempUploadedFile( $this->mDestName, $this->mTempPath );
-
-		if( !$stash ) {
+		$status = $this->saveTempUploadedFile( $this->mDestName, $this->mTempPath );
+		if( !$status->isOK() ) {
 			# Couldn't save the file.
 			return false;
 		}
+		$mTempPath = $status->value;
 
 		$key = $this->getSessionKey ();
 		$_SESSION['wsUploadData'][$key] = array(
-			'mTempPath'       => $stash,
+			'mTempPath'       => $mTempPath,
 			'mFileSize'       => $this->mFileSize,
 			'mSrcName'        => $this->mSrcName,
 			'mFileProps'      => $this->mFileProps,
@@ -472,9 +478,10 @@ class UploadBase {
 	 * Remove a temporarily kept file stashed by saveTempUploadedFile().
 	 * @return success
 	 */
-	function unsaveUploadedFile() {
-		$repo = RepoGroup::singleton()->getLocalRepo();
-		$success = $repo->freeTemp( $this->mTempPath );
+	function unsaveUploadedFile() {		
+		$repo = RepoGroup::singleton()->getLocalRepo();		
+		print "free temp: {$this->mTempPath}\n";
+		$success = $repo->freeTemp( $this->mTempPath );		
 		return $success;
 	}
 	
@@ -483,7 +490,7 @@ class UploadBase {
 	 * on exit to clean up.
 	 * @access private
 	 */
-	function cleanupTempFile() {
+	function cleanupTempFile() {		
 		if ( $this->mRemoveTempFile && $this->mTempPath && file_exists( $this->mTempPath ) ) {
 			wfDebug( __METHOD__.": Removing temporary file {$this->mTempPath}\n" );
 			unlink( $this->mTempPath );

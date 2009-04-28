@@ -274,13 +274,13 @@ class FSRepo extends FileRepo {
 	 * @param string $virtualUrl The virtual URL returned by storeTemp
 	 * @return boolean True on success, false on failure
 	 */
-	function freeTemp( $virtualUrl ) {
-		$temp = "mwrepo://{$this->name}/temp";
+	function freeTemp( $virtualUrl ) {		
+		$temp = "mwrepo://{$this->name}/temp";		
 		if ( substr( $virtualUrl, 0, strlen( $temp ) ) != $temp ) {
 			wfDebug( __METHOD__.": Invalid virtual URL\n" );
 			return false;
-		}
-		$path = $this->resolveVirtualUrl( $virtualUrl );
+		}		
+		$path = $this->resolveVirtualUrl( $virtualUrl );		
 		wfSuppressWarnings();
 		$success = unlink( $path );
 		wfRestoreWarnings();

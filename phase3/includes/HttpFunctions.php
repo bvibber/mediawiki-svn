@@ -27,8 +27,7 @@ class Http {
 		return $req->request();	
 	}
 	public static function doDownload( $url, $target_file_path , $dl_mode = self::SYNC_DOWNLOAD ){
-		global $wgPhpCliPath, $wgMaxUploadSize;
-		print "doDownload:$target_file_path";
+		global $wgPhpCliPath, $wgMaxUploadSize;		
 		//do a quick check to HEAD to insure the file size is not > $wgMaxUploadSize to large no need to download it
 		$head = get_headers($url, 1);
 		if(isset($head['Content-Length']) && $head['Content-Length'] > $wgMaxUploadSize){

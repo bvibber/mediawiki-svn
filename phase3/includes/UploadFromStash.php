@@ -1,6 +1,6 @@
 <?php
 class UploadFromStash extends UploadBase {
-	static function isValidSessionKey( $key, $sessionData ) {
+	static function isValidSessionKey( $key, $sessionData ) {		
 		return !empty( $key ) && 
 			is_array( $sessionData ) && 
 			isset( $sessionData[$key] ) && 
@@ -8,7 +8,7 @@ class UploadFromStash extends UploadBase {
 			$sessionData[$key]['version'] == self::SESSION_VERSION
 		;
 	}
-	static function isValidRequest( $request ) {
+	static function isValidRequest(& $request ) {		
 		$sessionData = $request->getSessionData('wsUploadData');
 		return self::isValidSessionKey( 
 			$request->getInt( 'wpSessionKey' ),
@@ -21,7 +21,7 @@ class UploadFromStash extends UploadBase {
 			 * We don't want path names to be forged, so we keep
 			 * them in the session on the server and just give
 			 * an opaque key to the user agent.
-			 */
+			 */						
 			parent::initialize( $name, 
 				$sessionData['mTempPath'], 
 				$sessionData['mFileSize'],
