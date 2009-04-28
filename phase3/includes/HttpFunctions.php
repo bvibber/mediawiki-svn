@@ -7,14 +7,25 @@
 
 class Http {
 	const SYNC_DOWNLOAD = 1;  //syncronys upload (in a single request) 
-	const ASYNC_DOWNLOAD = 2; //asynchronous upload we should spawn out another process and monitor progress if possible) 
+	const ASYNC_DOWNLOAD = 2; //asynchronous upload we should spawn out another process and monitor progress if possible)
+
+	var $body = '';
 	/**
 	 * Simple wrapper for Http::request( 'GET' )
 	 */
-	public static function get( $url, $opts = array() ) {		
-		return self::request($url, 'GET',  $opts );		
+	public static function get( $url, $opts = array() ) {
+		$opt['method'] = 'GET';
+		$req = newReq($url, $opts );	
+		return $req->request();	
 	}		
-		
+	//setup a new request
+	public static function newReq($url, $opts){
+		$req = new Http();
+		$req->url = $url;
+		$req->method = (isset($opt['method']))?$opt['method']:'GET';		
+		$req->target_file = (isset($opt['target_file']))?$opt['target_file']:false;
+		return $req;
+	}
 	public static function doDownload( $url, $target_path , $dl_mode = self::SYNC_DOWNLOAD ){
 		global $wgPhpCliPath, $wgMaxUploadSize;
 				
@@ -32,13 +43,12 @@ class Http {
 			
 			//return success status and download_session_key
 			
-			//(seperate ajax request can now check on the status of the shell exec)... and even kill or cancel it)
+			//(separate ajax request can now check on the status of the shell exec)... and even kill or cancel it)
 			 
 		}else if( $dl_mode== self::SYNC_DOWNLOAD ){
 			//else just download as much as we can in the time we have left: 
 			return self::doDownloadtoFile($url, $target_path);
-		}
-		
+		}		
 	}
 	/**
 	 * a non blocking request (generally an exit point in the application)
@@ -58,6 +68,7 @@ class Http {
 		//return status
 		return $status; 
 	}	
+	//called from the command line: : 
 	public static function doSessionIdDownload( $dn_session_id ){
 		//get all the vars we need from session_id
 		session_id( $dn_session_id );
@@ -68,11 +79,11 @@ class Http {
 	}
 	public static function doDownloadtoFile($url, $target_file_path){
 		global $wgCopyUploadTimeout;
-		
-		$status = self::request( $url, array(
+		$req = self::newReq($url, array(
 			'target_file'=> $target_file_path
 		) );
-		//print "downloading to FILE target: $target_file_path " . filesize( $target_file_path ) . "\n";
+		$status = $req->request( $url );
+		print "downloading $url \nto FILE target: $target_file_path \n" . filesize( $target_file_path ) . "\n";
 		return Status::newGood('upload-ok');				
 	}	
 	/**
@@ -82,16 +93,6 @@ class Http {
 		$opts['method']='POST';
 		return Http::request( $url, $opts );
 	}
-	/*
-	 * sets the remote adapter (we prefer curl) could add a config var if we want.
-	 */
-	public static function getAdapter(){
-		if ( function_exists( 'curl_init' ) ) {
-			return 'curl';
-		}else{
-			return 'socket';
-		}
-	}
 	/**
 	 * Get the contents of a file by HTTP
 	 * @param $url string Full URL to act on	 
@@ -100,93 +101,114 @@ class Http {
 	 * 		'target_file' => if curl should output to a target file
 	 * 		'adapter'	  => 'curl', 'soket'
 	 */
-	 public static function request( $url, $opt = array() ) {
+	 private function request() {
 		global $wgHTTPTimeout, $wgHTTPProxy, $wgTitle;
-		//set defaults: 
-		$method = (isset($opt['method']))?$opt['method']:'GET';
-		$target_file = (isset($opt['target_file']))?$opt['target_file']:false;
-		
-		$status = Status::newGood();
-
+				
 		wfDebug( __METHOD__ . ": $method $url\n" );
 		# Use curl if available
 		if ( function_exists( 'curl_init' ) ) {
-			$c = curl_init( $url );
-			
-			//proxy setup: 
-			if ( self::isLocalURL( $url ) ) {
-				curl_setopt( $c, CURLOPT_PROXY, 'localhost:80' );
-			} else if ($wgHTTPProxy) {
-				curl_setopt($c, CURLOPT_PROXY, $wgHTTPProxy);
-			}
-
-			curl_setopt( $c, CURLOPT_TIMEOUT, $wgHTTPTimeout );			
-			curl_setopt( $c, CURLOPT_USERAGENT, self :: userAgent() );
-			
-			if ( $method == 'POST' ) {
-				curl_setopt( $c, CURLOPT_POST, true );
-				curl_setopt( $c, CURLOPT_POSTFIELDS, '' );
-			}else{
-				curl_setopt( $c, CURLOPT_CUSTOMREQUEST, $method );
-			}
-
-			# Set the referer to $wgTitle, even in command-line mode
-			# This is useful for interwiki transclusion, where the foreign
-			# server wants to know what the referring page is.
-			# $_SERVER['REQUEST_URI'] gives a less reliable indication of the
-			# referring page.
-			if ( is_object( $wgTitle ) ) {
-				curl_setopt( $c, CURLOPT_REFERER, $wgTitle->getFullURL() );
-			}
-						
-
-			ob_start();
-			curl_exec( $c );
-			$text = ob_get_contents();
-			ob_end_clean();
-
-			# Don't return the text of error messages, return false on error
-			$retcode = curl_getinfo( $c, CURLINFO_HTTP_CODE );
-			if ( $retcode != 200 ) {
-				wfDebug( __METHOD__ . ": HTTP return code $retcode\n" );
-				$text = false;
-			}
-			# Don't return truncated output
-			$errno = curl_errno( $c );
-			if ( $errno != CURLE_OK ) {
-				$errstr = curl_error( $c );
-				wfDebug( __METHOD__ . ": CURL error code $errno: $errstr\n" );
-				$text = false;
-			}
-			curl_close( $c );
-		} else {
-			# Otherwise use file_get_contents...			
-			# This doesn't have local fetch capabilities...
-
-			$headers = array( "User-Agent: " . self :: userAgent() );
-			if( strcasecmp( $method, 'post' ) == 0 ) {
-				// Required for HTTP 1.0 POSTs
-				$headers[] = "Content-Length: 0";
-			}
-			$opts = array(
-				'http' => array(
-					'method' => $method,
-					'header' => implode( "\r\n", $headers ),
-					'timeout' => $timeout ) );
-			$ctx = stream_context_create($opts);
-
-			$status->value = file_get_contents( $url, false, $ctx );
-			if(!$status->value){
-				$status->error('file_get_contents-failed');
-			}
-		}
-		if(!$target_file){
-			return $status;
+			return $this->doCurlReq();
 		}else{
-			return true;
+			return $this->doPhpReq();
 		}
-	}
+	 }
+	 private function doCurlReq(){
+		$c = curl_init( $this->url );
+		
+		//proxy setup: 
+		if ( self::isLocalURL( $this->url ) ) {
+			curl_setopt( $c, CURLOPT_PROXY, 'localhost:80' );
+		} else if ($wgHTTPProxy) {
+			curl_setopt($c, CURLOPT_PROXY, $wgHTTPProxy);
+		}
 
+		curl_setopt( $c, CURLOPT_TIMEOUT, $wgHTTPTimeout );			
+			
+		
+		curl_setopt( $c, CURLOPT_USERAGENT, self :: userAgent() );
+		
+		if ( $this->method == 'POST' ) {
+			curl_setopt( $c, CURLOPT_POST, true );
+			curl_setopt( $c, CURLOPT_POSTFIELDS, '' );
+		}else{
+			curl_setopt( $c, CURLOPT_CUSTOMREQUEST, $this->method );
+		}
+
+		# Set the referer to $wgTitle, even in command-line mode
+		# This is useful for interwiki transclusion, where the foreign
+		# server wants to know what the referring page is.
+		# $_SERVER['REQUEST_URI'] gives a less reliable indication of the
+		# referring page.
+		if ( is_object( $wgTitle ) ) {
+			curl_setopt( $c, CURLOPT_REFERER, $wgTitle->getFullURL() );
+		}
+		
+		//set the write back function (if we are writing to a file) 
+		if( $this->target_file ){
+			$cwrite = new simpleFileWriter( $this->target_file );									
+			curl_setopt( $c, CURLOPT_WRITEFUNCTION, array($cwrite, 'callbackWriteBody') );
+		}
+
+		//start output grabber: 
+		if(!$this->target_file)
+			ob_start();			
+				
+		try {
+            if (false === curl_exec($c)) {
+                $status = Status::newFatal( 'Error sending request: #' . curl_errno($c) .
+                                                       ' ' . curl_error($c) );
+            }
+        } catch (Exception $e) {
+        	//do something with curl exec error?
+        }	 	 
+		//if direct request output the results to the stats value: 
+		if( !$target_file && $status->isOK() ){       						
+        	$status->value = ob_get_contents();
+			ob_end_clean();
+		}      
+		
+		# Don't return the text of error messages, return false on error
+		$retcode = curl_getinfo( $c, CURLINFO_HTTP_CODE );
+		if ( $retcode != 200 ) {
+			wfDebug( __METHOD__ . ": HTTP return code $retcode\n" );
+			$status = Status::newFatal( "HTTP return code $retcode\n" );
+		}
+		# Don't return truncated output
+		$errno = curl_errno( $c );
+		if ( $errno != CURLE_OK ) {
+			$errstr = curl_error( $c );
+			wfDebug( __METHOD__ . ": CURL error code $errno: $errstr\n" );
+				$status = Status::newFatal( " CURL error code $errno: $errstr\n" );
+		}
+		curl_close( $c );
+		
+		
+			
+		//return the result obj							
+		return $status;							
+	}
+	public function doPhpReq(){
+		#$use file_get_contents...			
+		# This doesn't have local fetch capabilities...
+
+		$headers = array( "User-Agent: " . self :: userAgent() );
+		if( strcasecmp( $method, 'post' ) == 0 ) {
+			// Required for HTTP 1.0 POSTs
+			$headers[] = "Content-Length: 0";
+		}
+		$opts = array(
+			'http' => array(
+				'method' => $method,
+				'header' => implode( "\r\n", $headers ),
+				'timeout' => $timeout ) );
+		$ctx = stream_context_create( $opts );
+
+		$status->value = file_get_contents( $url, false, $ctx );
+		if(!$status->value){
+			$status->error('file_get_contents-failed');
+		}
+		return $status;
+	}
 	/**
 	 * Check if the URL can be served by localhost
 	 * @param $url string Full url to check
@@ -227,5 +249,20 @@ class Http {
 	public static function userAgent() {
 		global $wgVersion;
 		return "MediaWiki/$wgVersion";
+	}
+}
+/**
+ * a simpleFileWriter 
+ */
+class simpleFileWriter{
+	var $target_file;		
+	function __constructor($target_file){
+		$this->target_file = $target_file;
+	}
+	public function callbackWriteBody($ch, $string){
+		$wgMaxUploadSize;
+		//write out to the target file
+			
+		//
 	}
 }
