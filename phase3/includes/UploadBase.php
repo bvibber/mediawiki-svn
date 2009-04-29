@@ -479,8 +479,7 @@ class UploadBase {
 	 * @return success
 	 */
 	function unsaveUploadedFile() {		
-		$repo = RepoGroup::singleton()->getLocalRepo();		
-		print "free temp: {$this->mTempPath}\n";
+		$repo = RepoGroup::singleton()->getLocalRepo();				
 		$success = $repo->freeTemp( $this->mTempPath );		
 		return $success;
 	}

@@ -384,10 +384,11 @@ class Skin extends Linker {
 			'wgDigitTransformTable' => $compactDigitTransTable,
 		);
 		
-		//if on upload page output the extension list:
+		//if on upload page output the extension list & js_upload
 		if( SpecialPage::resolveAlias( $wgTitle->getDBkey() ) ==  "Upload" ){ 
-			global $wgFileExtensions;
-			$vars['wgFileExtensions'] = $wgFileExtensions;
+			global $wgFileExtensions, $wgAjaxUploadInterface;
+			$vars['wgFileExtensions'] 	 = $wgFileExtensions;
+			$vars['wgAjaxUploadInterface'] = $wgAjaxUploadInterface;			
 		}
 		
 		if( $wgUseAjax && $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false )){

@@ -11,7 +11,17 @@ function licenseSelectorCheck() {
 	wgUploadLicenseObj.fetchPreview( selection );
 }
 
-function licenseSelectorFixup() {
+function wgUploadSetup() {
+	//disable source type if not checked: 
+	var e = document.getElementById('wpSourceTypeURL');
+	if(e){
+		if(!e.checked){
+			var ein = document.getElementById('wpUploadFileURL');
+			if(ein)
+				ein.setAttribute('disabled', 'disabled');
+		}
+	}
+	
 	// for MSIE/Mac; non-breaking spaces cause the <option> not to render
 	// but, for some reason, setting the text to itself works
 	var selector = document.getElementById("wpLicense");
@@ -103,7 +113,6 @@ var wgUploadWarningObj = {
 			ackElt.value = '1';
 		}
 	},
-
 	'setInnerHTML' : function (element, text) {
 		// Check for no change to avoid flicker in IE 7
 		if (element.innerHTML != text) {
@@ -144,7 +153,7 @@ function fillDestFilename(id) {
 		if( fname.lastIndexOf('.')!=-1 ){		
 			var ext = fname.substr( fname.lastIndexOf('.')+1 );			
 			for(var i=0; i < wgFileExtensions.length; i++){						
-				if( wgFileExtensions[i] == ext )
+				if( strtolower( wgFileExtensions[i] )  == strtolower( ext ) )
 					found = true;
 			}
 		}
@@ -222,4 +231,4 @@ var wgUploadLicenseObj = {
 	
 }
 
-addOnloadHook( licenseSelectorFixup );
+addOnloadHook( wgUploadSetup );

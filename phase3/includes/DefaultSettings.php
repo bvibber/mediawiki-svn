@@ -3425,6 +3425,11 @@ $wgAjaxWatch = true;
 $wgAjaxUploadDestCheck = true;
 
 /**
+ * Enable AJAX upload interface (need for large http uploads & to display progress on uploads for browsers that support it) 
+ */
+$wgAjaxUploadInterface = true;
+
+/**
  * Enable previewing licences via AJAX
  */
 $wgAjaxLicensePreview = true;
