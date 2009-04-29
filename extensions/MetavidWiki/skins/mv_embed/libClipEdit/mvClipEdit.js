@@ -192,7 +192,7 @@ mvClipEdit.prototype = {
 									'rvprop':'content' 
 								};
 					//get the interface uri from the plObject
-					var api_url = _this.p_seqObj.plObj.interface_url.replace(/index\.php/, 'api.php'); 
+					var api_url = _this.p_seqObj.plObj.interface_url; 
 					//first check 					
 					do_api_req( {
 						'data':reqObj,

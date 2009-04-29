@@ -3,31 +3,29 @@
  */
 
 loadGM( {
-	"mv_upload_done" : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",
+	"mv_upload_done" 	  : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",
 	"mv_upload_completed" : "Upload Completed"
 });
 
 var default_firefogg_options = {
 	'upload_done_action':'redirect',
-	'enabled':false,
-	'api_url':false
+	'fogg_enabled':false,
+	'api_url':null
 }
 var mvFirefogg = function(initObj){
 	return this.init( initObj );
 }
-mvFirefogg.prototype = {
+mvFirefogg.prototype = { //extends mvBaseUploadInterface
 
 	min_firefogg_version : '0.9.5',
-	enabled : false, 			//if firefogg is enabled or not. 
-	upload_mode:'autodetect', 	//can be 'post', 'chunks' or autodetect. (autodetect issues an api call)   
+	fogg_enabled : false, 			//if firefogg is enabled or not. 	
 	encoder_settings:{			//@@todo allow server to set this 
 		'maxSize': 400, 
 		'videoBitrate': 400,
 		'noUpscaling':true
 	},	
-	formData:{}, //the form to be submitted
 	
-	init : function( iObj ){
+	init: function( iObj ){
 		if(!iObj)
 			iObj = {};
 		//inherit iObj properties:
@@ -38,10 +36,22 @@ mvFirefogg.prototype = {
 				this[i] = default_firefogg_options[i];
 			}
 		}
-		this.setupFirefogg();
+		var myBUI = new mvBaseUploadInterface( iObj );
+		//standard extends code: 
+		for(var i in myBUI){			
+			if(this[i]){
+				this['pe_'+ i] = myBUI[i];
+			}else{
+				this[i] =  myBUI[i];
+			}
+		}			
 	},
-	setupFirefogg : function(){
+	setupForm: function(){		
 		var _this = this;		
+		//call the parent form setup
+		_this.pe_setupForm();
+		
+		//do all firefogg form setup:
 		if(typeof(Firefogg) == 'undefined'){ 
 			$j('#wgfogg_not_installed').show();
 			return false;
@@ -62,11 +72,11 @@ mvFirefogg.prototype = {
 				$j('#wgfogg_installed').hide();
 			}
 			//make sure the checkbox accurately reflects the current state per config:  			
-			$j('#wgEnableFirefogg').get(0).checked = this.enabled;
+			$j('#wgEnableFirefogg').get(0).checked = this.fogg_enabled;
 			
 			//setup the click bindding: 
 			$j('#wgEnableFirefogg').click( function(){
-				if( _this.enabled ){						
+				if( _this.fogg_enabled ){						
 					_this.disable_fogg();			
 				}else{
 					_this.enable_fogg();
@@ -80,17 +90,16 @@ mvFirefogg.prototype = {
 		var _this = this;
 			
 		//enable the FOGG_TOGGLE
-		this.enabled=true;
+		this.fogg_enabled=true;
 		
 		//make sure file is "checked"
 		if($j( '#wpSourceTypeFile' ).length != 0)
 			$j( '#wpSourceTypeFile' ).get(0).checked = true;		
 		
 		//hide normal file upload stuff
-		$j( '#wg-base-upload' ).hide();
-		
+		$j( '#wg-base-upload' ).hide();		
 		//setup the form pointer:
-		_this.editForm = $j( '#mw-upload-form' ).get(0);
+		_this.getEditForm();		
 			
 		//show fogg & add click binding: 
 		$j( '#fogg-video-file' ).unbind().show().click( function(){
@@ -100,19 +109,12 @@ mvFirefogg.prototype = {
 	disable_fogg:function(){
 		var _this = this;
 		//not enabled: 
-		this.enabled=false;		
+		this.fogg_enabled=false;		
 
 		$j( '#wg-base-upload' ).show();
 		
 		//hide any errors warnings and video select:
-		$j( '#wgfogg_waring_ogg_upload,#wgfogg_waring_bad_extension,#fogg-video-file' ).hide();	
-		
-		//restore the orignal  		
-		if( _this.org_onsubmit ){	
-			_this.editForm.onsubmit = _this.org_onsubmit;
-		}else{
-			_this.editForm.onsubmit = function(){ return true; };
-		}
+		$j( '#wgfogg_waring_ogg_upload,#wgfogg_waring_bad_extension,#fogg-video-file' ).hide();					
 	},
 	fogg_update_progress:function(progress){		
 		$j( '#fogg-progressbar' ).css( 'width', parseInt(progress*100) +'%');		
@@ -148,78 +150,30 @@ mvFirefogg.prototype = {
 			}
 			//run the onClick hanndle: 
 			if( toggleFilenameFiller ) 		
-				toggleFilenameFiller();						
-			
-			//set up the org_onsubmit if not set: 
-			if( typeof( _this.org_onsubmit ) == 'undefined' )
-				_this.org_onsubmit = _this.editForm.onsubmit;
-					
-			_this.editForm.onsubmit = function() {	
-				
-				//run the original onsubmit (if not run yet set flag to avoid excessive chaining ) 
-				if( typeof( _this.org_onsubmit ) == 'function' ){										  
-					if( ! _this.org_onsubmit() ){
-						//error in org submit return false;
-						return false;					
-					}
-				}												
-				//get the input form data in flat json: 										
-				var tmpAryData = $j( _this.editForm ).serializeArray();					
-				for(var i=0; i < tmpAryData.length; i++){
-					if( tmpAryData[i]['name'] )
-						_this.formData[ tmpAryData[i]['name'] ] = tmpAryData[i]['value'];
-				}							
-				
-				//display the loader:
-				$j('#dlbox-centered,#dlbox-overlay').show();				
-				
-				//for some unknown reason we have to drop down the #p-search z-index:
-				$j('#p-search').css('z-index', 1);								
-				
-				//select upload mode: 
-				_this.doUploadSwitch();
-				//don't submit the form (firefogg will handle that)	
-		  		return false;			
-			}
+				toggleFilenameFiller();												
 		}
 	},
-	doUploadSwitch:function(){
+	getProgressTitle:function(){
+		//return the parent if we don't have fogg turned on: 
+		if(! this.fogg_enabled )
+			return this.pe_getProgressTitle();
+			
+		return gM('upload-transcode-in-progress');
+	},	
+	doUploadSwitch:function(){				
 		var _this = this;
-		//check the upload mode: 
-		if( _this.upload_mode == 'autodetect' ){
-			if( ! _this.api_url )
-				return js_error( 'Error: can\'t autodetect mode without api url' );
-			do_api_req( {
-				'data':{ 'action':'paraminfo','modules':'upload' },
-				'url':_this.api_url 
-			}, function(data){
-				if( typeof data.paraminfo == 'undefined' || typeof data.paraminfo.modules == 'undefined' )
-					return js_error( 'Error: bad api results' );
-				if( typeof data.paraminfo.modules[0].classname == 'undefined'){
-					js_log( 'Autodetect Upload Mode: \'post\' ');
-					_this.upload_mode = 'post';
-				}else{					
-					for( var i in data.paraminfo.modules[0].parameters ){						
-						var pname = data.paraminfo.modules[0].parameters[i].name;
-						if( pname == 'enablechunks' ){
-							js_log( 'Autodetect Upload Mode: chunks ' );
-							_this.upload_mode = 'chunks';
-							break;
-						}
-					}											
-					if( _this.upload_mode != 'chunks'){
-						return js_error('Upload API without chunks param is not supported');
-					}
-				}				
-				_this.doUploadSwitch();
-			});
-		}else if( _this.upload_mode == 'post') {
+		//make sure firefogg is enabled otherwise do parent UploadSwich:		
+		if( ! this.fogg_enabled )
+			return _this.pe_doUploadSwitch();
+		
+		//check what mode to use firefogg in: 
+		if( _this.upload_mode == 'post' ){
 			_this.doEncUpload();
-		}else if( _this.upload_mode == 'chunks'){
+		}else if( _this.upload_mode == 'api' && _this.chunks_supported){ //if api mode and chunks supported do chunkUpload
 			_this.doChunkUpload();
-		}else{			
+		}else{
 			js_error( 'Error: unrecongized upload mode: ' + _this.upload_mode );
-		}			
+		}		
 	},
 	//doChunkUpload does both uploading and encoding at the same time and uploads one meg chunks as they are ready
 	doChunkUpload : function(){

@@ -1134,7 +1134,7 @@ function do_api_req( options, callback ){
 	//force format to json (if not already set)  		
 	options.data['format'] = 'json';
 	
-	js_log('do api req: ' + options.url +' data' + JSON.stringify( options.data ) );			
+	js_log('do api req: ' + options.url +' data' +  options.data );			
 	//build request string:	 		
 	if( parseUri( document.URL ).host == parseUri( options.url ).host ){		
 		//local request do api request directly		

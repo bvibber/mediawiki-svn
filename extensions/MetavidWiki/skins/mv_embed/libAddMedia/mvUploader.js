@@ -6,7 +6,8 @@ will be replaced with upload API once that is ready
 loadGM( { 
 	"upload-enable-converter" : "Enable video converter (to upload source video not yet converted to theora format) <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>",
 	"upload-fogg_not_installed": "If you want to upload video consider installing <a href=\"http://firefogg.org\">firefogg.org</a>, <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>",
-	"upload-in-progress":"Doing Transcode & Upload (do not close this window)",
+	"upload-transcode-in-progress":"Doing Transcode & Upload (do not close this window)",
+	"upload-in-progress": "Upload in Progress (do not close this window)",
 	"upload-transcoded-status": "Transcoded",
 	"uploaded-status": "Uploaded",
 	"upload-select-file": "Select File...",	
@@ -66,10 +67,26 @@ mvUploader.prototype = {
 						});	
 					});				
 				}else{
-					_this.setupFirefogg();
+					//@@could check if firefogg is enabled here: 
+					_this.setupFirefogg();			
+					//if only want httpUploadFrom help enable it here: 		
 				}							
 			}
 		);
+	},
+	/**
+	 * setupBaseUpInterface supports intefaces for progress indication if the browser supports it
+	 * also sets up ajax progress updates for http posts
+	 * //pre
+	 */	 
+	setupBaseUpInterface:function(){	
+		//check if this feature is not false (we want it on by default (null) instances that don't have the upload api or any modifications)  			
+		this.upForm = new mvBaseUploadInterface( {
+				'api_url' : this.api_url,
+				'parent_uploader': this
+			} 
+		);		
+		this.upForm.setupForm();		
 	},
 	setupFirefogg:function(){
 		var _this = this;
@@ -93,10 +110,10 @@ mvUploader.prototype = {
 				};
 		if( _this.api_url )
 			intFirefoggObj['api_url'] =  _this.api_url;
-		js_log('new mvFirefogg');
-		//if firefog is not taking over the submit we can here: 
-		_this.fogg = new mvFirefogg( intFirefoggObj );			
-			
+		
+		js_log('new mvFirefogg  extends mvUploader (this)');		
+		this.fogg = new mvFirefogg( intFirefoggObj );		
+		this.fogg.setupForm();					
 	},
 	//same add code as specialUpload if($wgEnableFirefogg){
 	addFirefoggHtml:function(){		
@@ -123,22 +140,171 @@ mvUploader.prototype = {
 						"<span id='wgfogg_installed' style='display:none' >"+
 							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
 								gM('upload-enable-converter') +
-						'</span><br></p>');		
-		//add in loader dl box: 	
-		//hard code style (since not always easy to import style sheets)
-		$j('body').append('<div id="dlbox-centered" class="dlbox-centered" style="display:none;'+
-				'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
-				'height:300px;padding: 10px;z-index:100;top:100px;bottom:40%;left:20%;" >'+		
-					'<h5>' + gM('upload-in-progress') + '</h5>' +
-					'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
-						'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
-					'</div>' +
-					'<span id="fogg-pstatus">0%</span>' +
-					'<span id="fogg-status-transcode">' + gM('upload-transcoded-status') + '</span>'+  
-					'<span style="display:none" id="fogg-status-upload">' + gM('uploaded-status') + '</span>' +
-			'</div>' +					
-			'<div id="dlbox-overlay" class="dlbox-overlay" style="display:none;background:#000;cursor:wait;height:100%;'+
-						'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
-						'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');				
+						'</span><br></p>');					
 	}
+}
+/**
+ * the base Upload Interface extended via firefogg 
+ */
+var default_bui_options = {
+	'api_url':null,
+	'parent_uploader':null
+}
+var mvBaseUploadInterface = function( iObj ){
+	return this.init( iObj );
+}
+mvBaseUploadInterface.prototype = {
+	parent_uploader:false,
+	formData:{}, //the form to be submitted
+	upload_mode:'autodetect', 	//can be 'post', 'chunks' or autodetect. (autodetect issues an api call)   
+	chunks_supported:false,
+	form_post_override:false,
+	init: function( iObj ){
+		if(!iObj)
+			iObj = {};
+		//inherit iObj properties:
+		for(var i in default_bui_options){
+			if(iObj[i]){
+				this[i] = iObj[i];
+			}else{
+				this[i] = default_bui_options[i];
+			}
+		}		
+	},
+	setupForm:function(){
+		var _this = this;			
+		//set up the local pointer to the edit form:
+		_this.getEditForm();
+						
+		if(_this.editForm){
+			//set up the org_onsubmit if not set: 
+			if( typeof( _this.org_onsubmit ) == 'undefined' )
+				_this.org_onsubmit = _this.editForm.onsubmit;
+			
+			//bind the onSubmit the base onSubmit action:
+			js_log("should have ...remove org:: " + _this.editForm.onsubmit);	
+			
+			//have to define the onsubmit function inline or its hard to pass the "_this" instance
+			_this.editForm.onsubmit = function(){								
+				//run the original onsubmit (if not run yet set flag to avoid excessive chaining ) 
+				if( typeof( _this.org_onsubmit ) == 'function' ){										  
+					if( ! _this.org_onsubmit() ){
+						//error in org submit return false;
+						return false;					
+					}
+				}
+				
+				//check for post action override: 															
+				if( _this.form_post_override ){
+					alert('woudld submit here');
+					//return true;
+				}
+				
+						
+				//get the input form data in flat json: 										
+				var tmpAryData = $j( _this.editForm ).serializeArray();					
+				for(var i=0; i < tmpAryData.length; i++){
+					if( tmpAryData[i]['name'] )
+						_this.formData[ tmpAryData[i]['name'] ] = tmpAryData[i]['value'];
+				}							
+						
+				//display the loader:
+				_this.dispProgressOverlay();								
+				
+				//for some unknown reason we have to drop down the #p-search z-index:
+				$j('#p-search').css('z-index', 1);								
+				
+				//select upload mode: 
+				
+				_this.detectUploadMode();
+				
+				//don't submit the form we will do the post in ajax
+				return false;	
+			};							
+		}
+					
+	},	
+	detectUploadMode:function( callback ){
+		var _this = this;
+		js_log('detectUploadMode::' + _this.upload_mode + ' api:' + _this.api_url);
+		//check the upload mode: 
+		if( _this.upload_mode == 'autodetect' ){
+			if( ! _this.api_url )
+				return js_error( 'Error: can\'t autodetect mode without api url' );
+			do_api_req( {
+				'data':{ 'action':'paraminfo','modules':'upload' },
+				'url':_this.api_url 
+			}, function(data){
+				if( typeof data.paraminfo == 'undefined' || typeof data.paraminfo.modules == 'undefined' )
+					return js_error( 'Error: bad api results' );
+				if( typeof data.paraminfo.modules[0].classname == 'undefined'){
+					js_log( 'Autodetect Upload Mode: \'post\' ');
+					_this.upload_mode = 'post';
+				}else{		
+					js_log( 'Autodetect Upload Mode: api ' );
+					_this.upload_mode = 'api';
+					//make sure chunks are supported:			
+					for( var i in data.paraminfo.modules[0].parameters ){						
+						var pname = data.paraminfo.modules[0].parameters[i].name;
+						if( pname == 'enablechunks' ){
+							js_log( 'this.chunks_supported = true' );
+							_this.chunks_supported = true;							
+							break;
+						}
+					}																
+				}				
+				_this.doUploadSwitch();
+			});
+		}else{
+			_this.doUploadSwitch();
+		}
+	},
+	doUploadSwitch:function(){
+		js_log('mvUPload:doUploadSwitch()');
+		var _this = this;			
+		//issue a post req: 		
+		if( _this.upload_mode == 'post' || $j('#wpSourceTypeFile').get(0).checked ){				
+			//update the status
+			$j('#dlbox-centered').html('<h5>' + _this.getProgressTitle() + '</h5>' + 
+				mv_get_loading_img( 'left:40%;top:20%')
+			);
+						
+			//do normal post upload no status indicators (also since its a file I think we have to submit the form)
+			_this.form_post_override=true; 
+			//js_log('run form submit!!');
+			_this.editForm.submit();
+		}else if( _this.upload_mode == 'api'){
+			//do api upload 
+		}else{
+			js_error( 'Error: unrecongized upload mode: ' + _this.upload_mode );
+		}		
+	},
+	getProgressTitle:function(){
+		return gM('upload-in-progress');
+	},	
+	getEditForm:function(){
+		this.editForm = $j( '#mw-upload-form' ).get(0);
+	},
+	dispProgressOverlay:function(){
+		var _this = this;
+		//add in loader dl box if not present: 
+		if( $j('#dlbox-centered').length ==0 ){ 	
+			//hard code style (since not always easy to import style sheets)
+			$j('body').append('<div id="dlbox-centered" class="dlbox-centered" style="'+
+					'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
+					'height:300px;padding: 10px;z-index:100;top:100px;bottom:40%;left:20%;" >'+		
+						'<h5>' + _this.getProgressTitle() + '</h5>' +
+						'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
+							'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
+						'</div>' +
+						'<span id="fogg-pstatus">0%</span>' +
+						'<span id="fogg-status-transcode">' + gM('upload-transcoded-status') + '</span>'+  
+						'<span style="display:none" id="fogg-status-upload">' + gM('uploaded-status') + '</span>' +
+				'</div>' +					
+				'<div id="dlbox-overlay" class="dlbox-overlay" style="background:#000;cursor:wait;height:100%;'+
+							'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
+							'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');	
+		}
+	}
+	
 }

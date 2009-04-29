@@ -833,13 +833,13 @@ remoteSearchDriver.prototype = {
 		
 		$j('#rsd_edit_img').remove();//remove any existing rsd_edit_img 
 		
-		//left side holds the image right size the controls /														
+		//left side holds the image right size the controls /															
 		$j(rsdElement).clone().attr('id', 'rsd_edit_img').appendTo('#clip_edit_disp').css({
 			'position':'absolute',
 			'top':'40%',
 			'left':'20%',
 			'opacity':0	
-		});							
+		});			
 								
 		
 		//assume we keep aspect ratio for the thumbnail that we clicked:			
@@ -857,9 +857,11 @@ remoteSearchDriver.prototype = {
 			'height': parseInt( tRatio * maxWidth)  + 'px'
 		}, "slow"); // do it slow to give it a chance to finish loading the HQ version
 		
-		_this.loadHQImg(rObj, {'width':maxWidth}, 'rsd_edit_img', function(){
-			$j('.mv_img_loader').remove();
-		});
+		if( mediaType == 'image' ){
+			_this.loadHQImg(rObj, {'width':maxWidth}, 'rsd_edit_img', function(){
+				$j('.mv_img_loader').remove();
+			});
+		}
 		//also fade in the container: 
 		$j('#rsd_resource_edit').animate({
 			'opacity':1,
@@ -916,15 +918,15 @@ remoteSearchDriver.prototype = {
 				'control_ct': 'clip_edit_ctrl',
 				'media_type': mediaType,
 				'p_rsdObj': _this						
-		};
-		var loadLibs =  {'mvClipEdit':'libClipEdit/mvClipEdit.js'};		
+		};		
+		var clibs = {'mvClipEdit':'libClipEdit/mvClipEdit.js'};
 		if( mediaType == 'image'){
 			//load the crop library:
 			//loadLibs['$j.Jcrop']='jquery/plugins/Jcrop/js/jquery.Jcrop.js';
 			//@@todo integrate css calls into mvJsLoader or move jcrop css
 			//loadExternalCss( mv_embed_path + 'jquery/plugins/Jcrop/css/jquery.Jcrop.css');
 			//display the mvClipEdit obj once we are done loading:
-			mvJsLoader.doLoad( loadLibs,function(){				
+			mvJsLoader.doLoad( clibs,function(){				
 				//run the image clip tools 
 				_this.cEdit = new mvClipEdit( mvClipInit );
 			});				
@@ -935,15 +937,15 @@ remoteSearchDriver.prototype = {
 				rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})
 			);	
 			//rewrite by id handldes getting any libs we are missing: 		
-			rewrite_by_id('embed_vid',function(){
-				//hide the rsd_edit_img: 
-				$j('#rsd_edit_img').hide();
+			rewrite_by_id('embed_vid',function(){				
 				//grab any information that we got from the ROE xml or parsed from the media file
 				rObj = rObj.pSobj.getEmbedObjParsedInfo( rObj, 'embed_vid' );					
-				//add the re-sizable to the doLoad request: 
-				loadLibs['$j.ui.resizable']	  = 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
-				loadLibs['$j.fn.hoverIntent'] = 'jquery/plugins/jquery.hoverIntent.js';
-				mvJsLoader.doLoad( loadLibs,function(){				
+				//add the re-sizable to the doLoad request:				
+				clibs['$j.ui.resizable']   ='jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js';	
+				clibs['$j.fn.hoverIntent'] ='jquery/plugins/jquery.hoverIntent.js';
+				mvJsLoader.doLoad(clibs, function(){	
+					//make sure the rsd_edit_img is hidden: 
+					$j('#rsd_edit_img').hide();			
 					//run the image clip tools 
 					_this.cEdit = new mvClipEdit( mvClipInit );
 				});	

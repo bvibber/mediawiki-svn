@@ -444,7 +444,7 @@ mvSequencer.prototype = {
 		}		
 	},
 	getLocalApiUrl:function(){
-		return this.plObj.interface_url.replace(/index\.php/, 'api.php'); 
+		return this.plObj.interface_url; 
 	},
 	plReadyInit:function(){
 		var this_seq = this;
@@ -740,7 +740,8 @@ mvSequencer.prototype = {
 			js_log('error: presently we can\'t copy clips across domains'); 
 		}else{					
 			if( this_seq.clipboardEditToken ){			
-				var req_url = this_seq.plObj.interface_url + '?action=ajax&rs=mv_seqtool_clipboard&rsargs[]=copy';
+				//@@todo we need a api entry point to store a "clipboard"
+				var req_url = this_seq.plObj.interface_url.replace(/api.php/, 'index.php') + '?action=ajax&rs=mv_seqtool_clipboard&rsargs[]=copy';
 				$j.ajax({
 					type: "POST",
 					url:req_url,

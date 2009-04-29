@@ -28,14 +28,14 @@
 		transOut="xFade" 	
 		type="video/ogg" 	
 		fill="transition"
-		dur="12s"
+		dur="7s"
 		poster="sample_fish.jpg"/>	
 	
-    <video src="sample_eclipse.ogg?t=0:0:0/0:0:06" 
+    <video src="sample_jellyfish.ogg?t=0:0:0/0:0:10" 
 		region="video_region" 				
 		fill="transition" 
 		type="video/ogg" 
-		poster="sample_eclipse.jpg"/>     
+		poster="sample_jellyfish.jpg"/>     
     </seq>
   </body>
 </smil>
