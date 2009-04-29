@@ -13,7 +13,7 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:DidYouMean',
 	'descriptionmsg' => 'didyoumean-desc',
 );
-$dir = dirname(__FILE__) . '/'
+$dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['DidYouMean'] =  $dir . 'DidYouMean.i18n.php';
 $wgAutoloadClasses['DidYouMeanHooks'] = $dir . 'DidYouMean.hooks.php';
 $wgAutoloadClasses['DidYouMean'] = $dir . 'DidYouMean_body.php';
