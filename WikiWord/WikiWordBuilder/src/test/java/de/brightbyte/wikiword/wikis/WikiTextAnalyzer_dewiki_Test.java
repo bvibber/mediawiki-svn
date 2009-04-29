@@ -1,18 +1,17 @@
 package de.brightbyte.wikiword.wikis;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import de.brightbyte.data.MultiMap;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzerTestBase;
-import de.brightbyte.wikiword.analyzer.TemplateExtractor.TemplateData;
+import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.TemplateData;
 
 
 public class WikiTextAnalyzer_dewiki_Test extends WikiTextAnalyzerTestBase {
@@ -22,7 +21,7 @@ public class WikiTextAnalyzer_dewiki_Test extends WikiTextAnalyzerTestBase {
 	}
 	
 	public void testCase_Mont_Blanc() throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Mont_Blanc");
+		WikiPage page = makeTestPage("Mont_Blanc");
 		
 		assertTestCase(page, "resourceType", ResourceType.REDIRECT);
 		
@@ -33,7 +32,7 @@ public class WikiTextAnalyzer_dewiki_Test extends WikiTextAnalyzerTestBase {
 	public void testCase_Kilauea() throws Throwable {
 		String definition = "K\u012blauea ist ein aktiver Schildvulkan auf den Hawai\u02bbi-Inseln und einer der f\u00fcnf Vulkane, die zusammen die Hauptinsel Hawai\u02bbi bilden.";
 		
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Kilauea");
+		WikiPage page = makeTestPage("Kilauea");
 		assertTestCase(page, "firstSentence", definition);
 
 		Set<String> categories = new HashSet<String>();
@@ -69,7 +68,7 @@ public class WikiTextAnalyzer_dewiki_Test extends WikiTextAnalyzerTestBase {
 	public void testCase_Herrenhausen_Stoecken() throws Throwable {
 		String definition = "Herrenhausen-Stöcken ist der 12. Stadtbezirk in Hannover.";
 		
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Herrenhausen-Stoecken");
+		WikiPage page = makeTestPage("Herrenhausen-Stoecken");
 		assertTestCase(page, "firstSentence", definition);
 		
 		assertTestCase(page, "resourceType", ResourceType.ARTICLE);
@@ -81,7 +80,7 @@ public class WikiTextAnalyzer_dewiki_Test extends WikiTextAnalyzerTestBase {
 	public void testCase_Hofstetten_Gruenau() throws Throwable {
 		String definition = "Hofstetten-Grünau ist eine Marktgemeinde mit 2.622 Einwohnern im Bezirk Sankt Pölten-Land in Niederösterreich.";
 		
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Hofstetten-Gruenau");
+		WikiPage page = makeTestPage("Hofstetten-Gruenau");
 		assertTestCase(page, "firstSentence", definition);
 		
 		assertTestCase(page, "resourceType", ResourceType.ARTICLE);

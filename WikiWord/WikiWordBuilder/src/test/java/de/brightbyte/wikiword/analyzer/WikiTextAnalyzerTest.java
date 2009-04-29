@@ -15,7 +15,13 @@ import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
-import de.brightbyte.wikiword.analyzer.TemplateExtractor.TemplateData;
+import de.brightbyte.wikiword.analyzer.mangler.Armorer;
+import de.brightbyte.wikiword.analyzer.mangler.TextArmor;
+import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
+import de.brightbyte.wikiword.analyzer.sensor.HasSectionSensor;
+import de.brightbyte.wikiword.analyzer.sensor.HasTemplateSensor;
+import de.brightbyte.wikiword.analyzer.sensor.TitleSensor;
+import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.TemplateData;
 
 /**
  * Unit tests for WikiTextAnalyzer
@@ -41,19 +47,19 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 		
 		public void testUnarmor() {
 			TextArmor armor = new TextArmor();
-			armor.put(AbstractAnalyzer.ARMOR_MARKER_CHAR+"[1]", "one");
-			armor.put(AbstractAnalyzer.ARMOR_MARKER_CHAR+"[2]", "two");
-			armor.put(AbstractAnalyzer.ARMOR_MARKER_CHAR+"[3]", "three");
+			armor.put(Armorer.ARMOR_MARKER_CHAR+"[1]", "one");
+			armor.put(Armorer.ARMOR_MARKER_CHAR+"[2]", "two");
+			armor.put(Armorer.ARMOR_MARKER_CHAR+"[3]", "three");
 			
-			CharSequence s = armor.unarmor("and "+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[1] and "+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[2] and "+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[3] and "+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[4]!");
-			assertEquals("simple unarmor", "and one and two and three and "+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[4]!", s.toString());
+			CharSequence s = armor.unarmor("and "+Armorer.ARMOR_MARKER_CHAR+"[1] and "+Armorer.ARMOR_MARKER_CHAR+"[2] and "+Armorer.ARMOR_MARKER_CHAR+"[3] and "+Armorer.ARMOR_MARKER_CHAR+"[4]!");
+			assertEquals("simple unarmor", "and one and two and three and "+Armorer.ARMOR_MARKER_CHAR+"[4]!", s.toString());
 			
 			armor = new TextArmor();
-			armor.put(""+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[1]", "foo");
-			armor.put(""+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[2]", "bar");
-			armor.put(""+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[3]", ""+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[1]"+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[2]");
+			armor.put(""+Armorer.ARMOR_MARKER_CHAR+"[1]", "foo");
+			armor.put(""+Armorer.ARMOR_MARKER_CHAR+"[2]", "bar");
+			armor.put(""+Armorer.ARMOR_MARKER_CHAR+"[3]", ""+Armorer.ARMOR_MARKER_CHAR+"[1]"+Armorer.ARMOR_MARKER_CHAR+"[2]");
 
-			s = armor.unarmor("it's "+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[1], "+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[2], and "+AbstractAnalyzer.ARMOR_MARKER_CHAR+"[3]!");
+			s = armor.unarmor("it's "+Armorer.ARMOR_MARKER_CHAR+"[1], "+Armorer.ARMOR_MARKER_CHAR+"[2], and "+Armorer.ARMOR_MARKER_CHAR+"[3]!");
 			assertEquals("nested unarmor", "it's foo, bar, and foobar!", s.toString());			
 		}
 
@@ -647,16 +653,16 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 		language.initialize();
 
 		WikiConfiguration config = new WikiConfiguration();
-		config.resourceTypeSensors.add( new WikiTextAnalyzer.TitleSensor(ResourceType.DISAMBIG, ".*_\\(Disambiguation\\)", 0) );
-		config.resourceTypeSensors.add( new WikiTextAnalyzer.HasTemplateSensor(ResourceType.DISAMBIG, "Disambiguation", null) );
-		config.resourceTypeSensors.add( new WikiTextAnalyzer.HasTemplateSensor(ResourceType.BAD, "Delete", null) );
+		config.resourceTypeSensors.add( new TitleSensor(ResourceType.DISAMBIG, ".*_\\(Disambiguation\\)", 0) );
+		config.resourceTypeSensors.add( new HasTemplateSensor(ResourceType.DISAMBIG, "Disambiguation", null) );
+		config.resourceTypeSensors.add( new HasTemplateSensor(ResourceType.BAD, "Delete", null) );
 
-		config.conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor(ConceptType.PERSON, "^Died_|^Born_", 0) );
-		config.conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor(ConceptType.NAME, "(^N|_n)ames?$", 0) );
-		config.conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor(ConceptType.PLACE, "^Town_in_|^Country_in_|^Region_in_", 0) );
-		config.conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateSensor(ConceptType.LIFEFORM, "Taxobox", null) );
-		config.conceptTypeSensors.add( new WikiTextAnalyzer.TitleSensor(ConceptType.TIME, "-?\\d+", 0) );
-		config.conceptTypeSensors.add( new WikiTextAnalyzer.HasSectionSensor(ConceptType.PERSON, "Life") );
+		config.conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.PERSON, "^Died_|^Born_", 0) );
+		config.conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.NAME, "(^N|_n)ames?$", 0) );
+		config.conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.PLACE, "^Town_in_|^Country_in_|^Region_in_", 0) );
+		config.conceptTypeSensors.add( new HasTemplateSensor(ConceptType.LIFEFORM, "Taxobox", null) );
+		config.conceptTypeSensors.add( new TitleSensor(ConceptType.TIME, "-?\\d+", 0) );
+		config.conceptTypeSensors.add( new HasSectionSensor(ConceptType.PERSON, "Life") );
 		
 		config.disambigStripSectionPattern = WikiConfiguration.sectionPattern("see also|external links", Pattern.CASE_INSENSITIVE);
 		

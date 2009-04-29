@@ -8,6 +8,7 @@ import java.util.Set;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzerTestBase;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.LinkMagic;
@@ -22,7 +23,7 @@ public class WikiTextAnalyzer_yywiki_Test extends WikiTextAnalyzerTestBase {
 	public void testCase_Yoo() throws Throwable {
 		String definition = "Yoo is yoo.";
 		
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Yoo");
+		WikiPage page = makeTestPage("Yoo");
 		assertTestCase(page, "firstSentence", definition);
 		assertTestCase(page, "resourceType", ResourceType.ARTICLE);
 		assertTestCase(page, "conceptType", ConceptType.OTHER);

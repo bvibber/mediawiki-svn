@@ -33,7 +33,7 @@ public class WikiTextAnalyzerBenchmark {
 
 		long t = System.currentTimeMillis();
 		for (int i = 0; i<count; i++) {
-			WikiTextAnalyzer.WikiPage page = analyzer.makePage(0, file, text, false);
+			WikiPage page = analyzer.makePage(0, file, text, false);
 			page.getResourceType();
 			page.getConceptType();
 			page.getCleanedText(true);

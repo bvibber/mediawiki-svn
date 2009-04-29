@@ -2,7 +2,7 @@ package de.brightbyte.wikiword.wikis;
 
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzerTestBase;
 
 public class WikiTextAnalyzer_simplewiki_Test extends WikiTextAnalyzerTestBase {
@@ -12,12 +12,12 @@ public class WikiTextAnalyzer_simplewiki_Test extends WikiTextAnalyzerTestBase {
 	}
 	
 	public void testCase_Bending() throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Bending_(disambiguation)");
+		WikiPage page = makeTestPage("Bending_(disambiguation)");
 		assertTestCase(page, "resourceType", ResourceType.DISAMBIG);
 	}
 	
 	public void testCase_Dinosaur() throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Dinosaur");
+		WikiPage page = makeTestPage("Dinosaur");
 		assertTestCase(page, "resourceType", ResourceType.ARTICLE);
 		assertTestCase(page, "conceptType", ConceptType.LIFEFORM);
 		
@@ -26,7 +26,7 @@ public class WikiTextAnalyzer_simplewiki_Test extends WikiTextAnalyzerTestBase {
 	}
 	
 	public void testCase_Peanuts() throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Peanuts");
+		WikiPage page = makeTestPage("Peanuts");
 		assertTestCase(page, "resourceType", ResourceType.ARTICLE);
 		assertTestCase(page, "conceptType", ConceptType.OTHER);
 		
@@ -35,7 +35,7 @@ public class WikiTextAnalyzer_simplewiki_Test extends WikiTextAnalyzerTestBase {
 	}
 	
 	public void testCase_Kielce() throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Kielce");
+		WikiPage page = makeTestPage("Kielce");
 		assertTestCase(page, "resourceType", ResourceType.ARTICLE);
 		assertTestCase(page, "conceptType", ConceptType.PLACE);
 		
@@ -44,7 +44,7 @@ public class WikiTextAnalyzer_simplewiki_Test extends WikiTextAnalyzerTestBase {
 	}
 	
 	public void testCase_Stuttgart() throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Stuttgart");
+		WikiPage page = makeTestPage("Stuttgart");
 		assertTestCase(page, "resourceType", ResourceType.ARTICLE);
 		assertTestCase(page, "conceptType", ConceptType.PLACE);
 		
@@ -53,7 +53,7 @@ public class WikiTextAnalyzer_simplewiki_Test extends WikiTextAnalyzerTestBase {
 	}
 
 	public void testCase_Aarhus() throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Aarhus");
+		WikiPage page = makeTestPage("Aarhus");
 		assertTestCase(page, "resourceType", ResourceType.ARTICLE);
 		assertTestCase(page, "conceptType", ConceptType.PLACE);
 		

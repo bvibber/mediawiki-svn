@@ -12,9 +12,8 @@ import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.NamespaceSet;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiLink;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiPage;
 
 
 public class PropertyDump {
@@ -45,7 +44,7 @@ public class PropertyDump {
 		NamespaceSet namespaces = Namespace.getNamespaces(null);
 		analyzer.initialize(namespaces, true);
 		
-		WikiLink t = analyzer.makeLink(p, p, null, null);
+		WikiTextAnalyzer.WikiLink t = analyzer.makeLink(p, p, null, null);
 		
 		WikiPage page = analyzer.makePage(t.getNamespace(), t.getTarget().toString(), text, true);
 

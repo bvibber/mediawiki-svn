@@ -55,12 +55,12 @@ public abstract class WikiTextAnalyzerTestBase extends TestCase {
 	}
 
 	protected void assertTestCase(String title, String property, Object value) throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage(title);
+		WikiPage page = makeTestPage(title);
 		assertTestCase(page, property, value);
 	}
 	
 	protected void assertTestCase(String title, Map<String, Object> values) throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage(title);
+		WikiPage page = makeTestPage(title);
 		assertTestCase(page, values);
 	}
 	
@@ -87,22 +87,22 @@ public abstract class WikiTextAnalyzerTestBase extends TestCase {
 		return text.toString();
 	}
 	
-	protected WikiTextAnalyzer.WikiPage makeTestPage(String title) throws IOException {		
+	protected WikiPage makeTestPage(String title) throws IOException {		
 		String text = loadTestPage(title, getClass(), corpus);
 		return makeTestPage(0, title, text);
 	}
 	
-	protected WikiTextAnalyzer.WikiPage makeTestPage(int namespace, String title, String text) {
-		WikiTextAnalyzer.WikiPage page = analyzer.makePage(namespace, title, text, false);
+	protected WikiPage makeTestPage(int namespace, String title, String text) {
+		WikiPage page = analyzer.makePage(namespace, title, text, false);
 		return page;
 	}
 	
 	protected void assertTestCase(int namespace, String title, String text, Map<String, Object> values) throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage(namespace, title, text);
+		WikiPage page = makeTestPage(namespace, title, text);
 		assertTestCase(page, values);
 	}
 	
-	protected void assertTestCase(WikiTextAnalyzer.WikiPage page, String property, Object expected) throws Throwable {
+	protected void assertTestCase(WikiPage page, String property, Object expected) throws Throwable {
 		BeanInfo info = Introspector.getBeanInfo(page.getClass());
 		PropertyDescriptor p = null;
 		for (PropertyDescriptor prop: info.getPropertyDescriptors()) {
@@ -116,7 +116,7 @@ public abstract class WikiTextAnalyzerTestBase extends TestCase {
 		assertTestCase(page, p, expected);
 	}
 	
-	protected void assertTestCase(WikiTextAnalyzer.WikiPage page, PropertyDescriptor p, Object expected) throws Throwable {
+	protected void assertTestCase(WikiPage page, PropertyDescriptor p, Object expected) throws Throwable {
 		Object actual = getPropertyValue(page, p);
 		
 		if (expected instanceof String && !(actual instanceof String) && actual instanceof CharSequence) actual = actual.toString();
@@ -127,7 +127,7 @@ public abstract class WikiTextAnalyzerTestBase extends TestCase {
 		else assertEquals(p.getName(), expected, actual);
 	}
 	
-	protected void assertTestCase(WikiTextAnalyzer.WikiPage page, Map<String, Object> values) throws Throwable {
+	protected void assertTestCase(WikiPage page, Map<String, Object> values) throws Throwable {
 		BeanInfo info = Introspector.getBeanInfo(page.getClass());
 		Map<String, PropertyDescriptor> props = new HashMap<String, PropertyDescriptor>();
 		for (PropertyDescriptor p: info.getPropertyDescriptors()) {

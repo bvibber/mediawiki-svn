@@ -5,7 +5,7 @@ import java.util.Set;
 
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzerTestBase;
 
 
@@ -16,7 +16,7 @@ public class WikiTextAnalyzer_enwiki_Test extends WikiTextAnalyzerTestBase {
 	}
 	
 	public void testCase_Hill() throws Throwable {
-		WikiTextAnalyzer.WikiPage page = makeTestPage("Hill");
+		WikiPage page = makeTestPage("Hill");
 		assertTestCase(page, "resourceType", ResourceType.ARTICLE);
 		assertTestCase(page, "conceptType", ConceptType.OTHER);
 		assertTestCase(page, "firstSentence", "A hill is a landform that extends above the surrounding terrain, in a limited area.");
