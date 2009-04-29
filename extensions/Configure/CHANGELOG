@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.13.14 - 29 April 2009
+  Changed section for some settings in Special:Configure.
+
 0.13.13 - 28 April 2009
   Updated CodeReview and SkinPerPage extensions.
 

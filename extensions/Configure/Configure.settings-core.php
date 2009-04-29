@@ -178,6 +178,7 @@ $settings = array(
 			'wgSharedTables'  => 'array',
 			'wgAntiLockFlags' => 'int',
 			'wgUseDumbLinkUpdate' => 'bool',
+			'wgExternalStores' => 'array',
 		),
 		'load-balancing' => array(
 			'wgDBClusterTimeout' => 'int',
@@ -509,6 +510,7 @@ $settings = array(
 	'parser' => array(
 		'parser' => array(
 			'wgAllowDisplayTitle' => 'bool',
+			'wgAllowSlowParserFunctions' => 'bool',
 			'wgRestrictDisplayTitle' => 'bool',
 			'wgAllowExternalImages' => 'bool',
 			'wgAllowExternalImagesFrom' => 'text',
@@ -645,6 +647,7 @@ $settings = array(
 	),
 	'search' => array(
 		'search' => array(
+			'wgDisableInternalSearch' => 'bool',
 			'wgAdvancedSearchHighlighting' => 'bool',
 			'wgEnableMWSuggest' => 'bool',
 			'wgGoToEdit' => 'bool',
@@ -695,20 +698,17 @@ $settings = array(
 	),
 	'extension' => array(
 		'extension' => array(
-			'wgAllowSlowParserFunctions' => 'bool',
 			'wgAPIListModules' => 'array',
 			'wgAPIMetaModules' => 'array',
 			'wgAPIModules' => 'array',
 			'wgAPIPropModules' => 'array',
 			'wgAutoloadClasses' => 'array',
 			'wgAvailableRights' => 'array',
-			'wgDisableInternalSearch' => 'bool',
 			'wgExceptionHooks' => 'array',
 			'wgExtensionAliasesFiles' => 'array',
 			'wgExtensionCredits' => 'array',
 			'wgExtensionFunctions' => 'array',
 			'wgExtensionMessagesFiles' => 'array',
-			'wgExternalStores' => 'array',
 			'wgHooks' => 'array',
 			'wgPagePropLinkInvalidations' => 'array',
 			'wgParserOutputHooks' => 'array',
@@ -971,6 +971,7 @@ $editRestricted = array(
 	'wgDBtype',
 	'wgDBuser',
 	'wgDefaultExternalStore',
+	'wgExternalStores',
 	'wgLBFactoryConf',
 #	'wgLegacySchemaConversion',
 	'wgLocalDatabases',
@@ -1022,15 +1023,13 @@ $editRestricted = array(
 # Special pages
 	'wgRC2UDPAddress',
 	'wgRC2UDPPort',
-# Extensions
+# Search
 	'wgDisableInternalSearch',
-	'wgExternalStores',
+	'wgMWSuggestTemplate',
+	'wgOpenSearchTemplate',
 # htcp
 	'wgHTCPMulticastAddress',
 	'wgHTCPPort',
-# Misc
-	'wgMWSuggestTemplate',
-	'wgOpenSearchTemplate',
 );
 
 /**
