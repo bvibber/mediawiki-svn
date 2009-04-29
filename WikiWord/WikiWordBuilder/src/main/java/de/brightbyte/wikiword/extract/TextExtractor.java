@@ -12,9 +12,8 @@ import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.builder.AbstractImporter;
 import de.brightbyte.wikiword.output.TextOutput;
 
-public class TextExtractor extends AbstractExtractor {
+public class TextExtractor extends AbstractExtractor<TextOutput> {
 	
-	private TextOutput textOutput;
 	//private LocalConceptStore localConceptStore;
 
 	//private boolean storeDefinitions = true;
@@ -25,8 +24,6 @@ public class TextExtractor extends AbstractExtractor {
 	
 	public TextExtractor(WikiTextAnalyzer analyzer, TextOutput output, TweakSet tweaks) {
 		super(analyzer, output, tweaks);
-		
-		this.output = output;
 	}
 	
 	/*
@@ -78,13 +75,13 @@ public class TextExtractor extends AbstractExtractor {
 		textId ++;
 		
 		if (storeWikiText) { //TODO: separate access path... 
-			textOutput.storeRawText(textId, name, ptype, text);
+			output.storeRawText(textId, name, ptype, text);
 		}
 		
 		if (storePlainText) { //TODO: separate access path... 
 			String plain = analyzerPage.getPlainText(false).toString();
 			checkSmellsLikeWiki(0, plain, "plain text: "+name+" (id={0})", textId);
-			textOutput.storePlainText(textId, name, ptype, plain);
+			output.storePlainText(textId, name, ptype, plain);
 		}
 		
 		/*
@@ -103,8 +100,8 @@ public class TextExtractor extends AbstractExtractor {
 	public static void declareOptions(Arguments args) {
 		AbstractImporter.declareOptions(args);
 		
-		args.declare("wiki", null, true, String.class, "store raw wiki text");
-		args.declare("plain", null, true, String.class, "store stripped plain text");
+		args.declare("wikitext", null, true, String.class, "store raw wiki text");
+		args.declare("flattext", null, true, String.class, "store stripped plain text");
 		//args.declare("defs", null, true, String.class, "extract and store definitions");
 	}
 
@@ -113,8 +110,13 @@ public class TextExtractor extends AbstractExtractor {
 		super.configure(args);
 		
 		//this.storeDefinitions = !args.isSet("defs");
-		this.storeWikiText = !args.isSet("wiki");
-		this.storePlainText = !args.isSet("plain");
+		storeWikiText = args.isSet("wikitext");
+		storePlainText = args.isSet("flattext");
+		
+		if (!storeWikiText && !storePlainText) {
+			storeWikiText = true;
+			storePlainText = true;
+		}
 	}
 
 }

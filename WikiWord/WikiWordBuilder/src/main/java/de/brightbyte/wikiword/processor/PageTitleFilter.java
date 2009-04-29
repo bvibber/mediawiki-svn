@@ -14,7 +14,7 @@ public class PageTitleFilter implements WikiPageFilter {
 	}
 
 	public boolean matches(WikiPage page) {
-		CharSequence t = page.getTitle();
+		CharSequence t = page.getResourceName();
 		return filter.matches(t);
 	}
 

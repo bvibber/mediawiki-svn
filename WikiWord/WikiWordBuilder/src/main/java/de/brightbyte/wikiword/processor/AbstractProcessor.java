@@ -295,8 +295,8 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 	}
 
 	public static void declareOptions(Arguments args) {
-		args.declare("from", "f", true, String.class, "ignores all pages in the dump before (but excluding) the one with the given title");
-		args.declare("after", "a", true, String.class, "ignores all pages in the dump until (and including) the one with the given title");
+		args.declare("from", "f", true, String.class, "ignores all pages in the input before (but excluding) the one with the given title");
+		args.declare("after", "a", true, String.class, "ignores all pages in the input until (and including) the one with the given title");
 		args.declare("limit", "l", true, String.class, "maximum number of pages to process");
 		args.declare("skip", "k", true, String.class, "number number of pages to skip before starting to process. " +
 				"if --from or --after are given, this number is counted from the position the given title occurrs at. " +

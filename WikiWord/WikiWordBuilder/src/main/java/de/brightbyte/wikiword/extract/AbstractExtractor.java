@@ -6,11 +6,11 @@ import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.output.DataOutput;
 import de.brightbyte.wikiword.processor.AbstractProcessor;
 
-public abstract class AbstractExtractor extends AbstractProcessor implements WikiWordExtractor {
+public abstract class AbstractExtractor<S extends DataOutput> extends AbstractProcessor implements WikiWordExtractor {
 	
-	protected DataOutput output;
+	protected S output;
 
-	public AbstractExtractor(WikiTextAnalyzer analyzer, DataOutput output, TweakSet tweaks) {
+	public AbstractExtractor(WikiTextAnalyzer analyzer, S output, TweakSet tweaks) {
 		super(analyzer, tweaks);
 		
 		if (output==null) throw new NullPointerException();

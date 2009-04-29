@@ -13,8 +13,6 @@ import de.brightbyte.wikiword.processor.XmlDumpDriver;
 
 public abstract class ExtractFromDump<S extends DataOutput> extends ExtractorApp<S> {
 
-	protected S output;
-	
 	public ExtractFromDump() {
 		super();
 	}
