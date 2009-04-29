@@ -49,6 +49,13 @@ public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 		return true;
 	}
 
+	@Override
+	protected void declareOptions() {
+		super.declareOptions();
+
+		ConceptImporter.declareOptions(args);
+	}
+	
 	public static void main(String[] argv) throws Exception {
 		ImportConcepts app = new ImportConcepts();
 		app.launch(argv);

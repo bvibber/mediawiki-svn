@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.builder;
+package de.brightbyte.wikiword.processor;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -11,6 +11,6 @@ import de.brightbyte.util.PersistenceException;
  * wiki pages (such as a dump or database), with the ability to send 
  * these entries to the importer, one after the other. 
  */
-public interface ImportDriver {
-	public void runImport(WikiWordImporter importer) throws IOException, SQLException, InterruptedException, PersistenceException;
+public interface DataSourceDriver {
+	public void runImport(WikiWordProcessor importer) throws IOException, SQLException, InterruptedException, PersistenceException;
 }

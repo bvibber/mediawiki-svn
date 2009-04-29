@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.builder;
+package de.brightbyte.wikiword.extract;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -12,9 +12,9 @@ import de.brightbyte.wikiword.processor.WikiWordProcessor;
 import de.brightbyte.wikiword.processor.XmlDumpDriver;
 import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 
-public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends WikiWordConcept>> extends ImportApp<S> {
+public abstract class ExtractFromDump<S extends WikiWordConceptStoreBuilder<? extends WikiWordConcept>> extends ExtractorApp<S> {
 
-	public ImportDump(String agendaTask) {
+	public ExtractFromDump(String agendaTask) {
 		super(agendaTask, false, true);
 	}
 
@@ -46,7 +46,7 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 	@Override
 	protected void declareOptions() {
 		super.declareOptions();
-		
+
 		args.declareHelp("<wiki>", null);
 		args.declareHelp("<dump-file>", "the dump file to process. If --url is set, this is read as a full URL");
 		args.declare("wiki", null, true, String.class, "sets the wiki name (overrides the name given by, or " +
@@ -66,9 +66,9 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		*/
 
 		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(getCorpus(), tweaks); 
-		WikiWordProcessor importer = newImporter(analyzer);
-		importer.setLogOutput(getLogOutput());
-		importer.configure(args);
+		WikiWordProcessor processor = newProcessor(analyzer);
+		processor.setLogOutput(getLogOutput());
+		processor.configure(args);
 		
 		/*
 		if (!fresh && agenda.canContinue(agendaTask)) { 
@@ -105,7 +105,7 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		///////////////////////// main import run ////////////////////////////////////
 		if (agenda.beginTask("ImportDump.run", "analysis")) {
 			DataSourceDriver driver = new XmlDumpDriver(dumpFile, getLogOutput(), tweaks);
-			driver.runImport(importer);
+			driver.runImport(processor);
 			agenda.endTask("ImportDump.run", "analysis");
 		}
 		//////////////////////////////////////////////////////////////////////////////
@@ -126,6 +126,6 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		//noop
 	}
 
-	protected abstract WikiWordProcessor newImporter(WikiTextAnalyzer analyzer) throws PersistenceException;
+	protected abstract WikiWordProcessor newProcessor(WikiTextAnalyzer analyzer) throws PersistenceException;
 
 }

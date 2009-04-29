@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.builder;
+package de.brightbyte.wikiword.processor;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -35,7 +35,7 @@ import de.brightbyte.wikiword.TweakSet;
  * DumpImportDriver implements ImportDriver for reading content from 
  * MediaWiki XML dumps.
  */
-public class DumpImportDriver implements ImportDriver {
+public class XmlDumpDriver implements DataSourceDriver {
 		
 	protected URL dump;
 	protected InputStream in;
@@ -44,10 +44,10 @@ public class DumpImportDriver implements ImportDriver {
 
 	protected class Sink implements DumpWriter {
 		
-		protected WikiWordImporter importer;
+		protected WikiWordProcessor importer;
 		protected BlockingJobQueue executor = null;
 		
-		public Sink(WikiWordImporter importer, int queueCapacity) {
+		public Sink(WikiWordProcessor importer, int queueCapacity) {
 			this.importer = importer;
 
 			if (queueCapacity > 0) {
@@ -207,13 +207,13 @@ public class DumpImportDriver implements ImportDriver {
 		
 	}
 	
-	public DumpImportDriver(URL dump, LeveledOutput log, TweakSet tweaks) {
+	public XmlDumpDriver(URL dump, LeveledOutput log, TweakSet tweaks) {
 		if (dump==null) throw new NullPointerException();
 		this.dump= dump;
 		init(log, tweaks);
 	}
 	
-	public DumpImportDriver(InputStream in, LeveledOutput log, TweakSet tweaks) {
+	public XmlDumpDriver(InputStream in, LeveledOutput log, TweakSet tweaks) {
 		if (in==null) throw new NullPointerException();
 		this.in= in;
 		init(log, tweaks);
@@ -235,7 +235,7 @@ public class DumpImportDriver implements ImportDriver {
 		externalGunzip = tweaks.getTweak("dumpdriver.externalGunzip", null);
 	}
 	
-	public void runImport(WikiWordImporter importer) throws IOException, SQLException, InterruptedException, PersistenceException {
+	public void runImport(WikiWordProcessor importer) throws IOException, SQLException, InterruptedException, PersistenceException {
 		importer.reset();
 		
 		//trackerChunk();

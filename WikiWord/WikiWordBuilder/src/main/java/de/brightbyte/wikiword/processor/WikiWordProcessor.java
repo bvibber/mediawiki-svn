@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.builder;
+package de.brightbyte.wikiword.processor;
 
 import java.io.IOException;
 import java.util.Date;
@@ -27,7 +27,7 @@ import de.brightbyte.wikiword.NamespaceSet;
  * 
  * @author daniel
  */
-public interface WikiWordImporter {
+public interface WikiWordProcessor {
 
 	/** called before a new inport run. Must reset all internal state, including trackers. **/
 	public void reset();

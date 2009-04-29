@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.store.dumper;
+package de.brightbyte.wikiword.output;
 
 import java.io.IOException;
 import java.io.OutputStream;

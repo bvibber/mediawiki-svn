@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.builder;
+package de.brightbyte.wikiword.processor;
 
 import de.brightbyte.data.filter.Filter;
 import de.brightbyte.wikiword.analyzer.WikiPage;

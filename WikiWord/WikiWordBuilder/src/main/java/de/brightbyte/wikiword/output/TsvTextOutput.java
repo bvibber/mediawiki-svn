@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.store.dumper;
+package de.brightbyte.wikiword.output;
 
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -8,9 +8,8 @@ import java.io.Writer;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.ResourceType;
-import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
 
-public class TsvTextOutput extends AbstractTsvOutput implements TextStoreBuilder {
+public class TsvTextOutput extends AbstractTsvOutput implements TextOutput {
 	
 	public TsvTextOutput(Corpus corpus, OutputStream out, String enc) throws UnsupportedEncodingException {
 		this( corpus, new OutputStreamWriter(out, enc));
@@ -20,18 +19,16 @@ public class TsvTextOutput extends AbstractTsvOutput implements TextStoreBuilder
 		super(corpus, out);
 	}
 
-	public void storeProperty(int rcId, int conceptId, String concept, String property, String value) throws PersistenceException {
-		writeRow(concept, property, value);
-	}
-
-	public Corpus getCorpus() {
-		return (Corpus)getDatasetIdentifier();
-	}
-
+	/* (non-Javadoc)
+	 * @see de.brightbyte.wikiword.output.TextOutput#storePlainText(int, java.lang.String, de.brightbyte.wikiword.ResourceType, java.lang.String)
+	 */
 	public void storePlainText(int textId, String name, ResourceType ptype, String text) throws PersistenceException {
 		writeRow("plain", name, text);
 	}
 
+	/* (non-Javadoc)
+	 * @see de.brightbyte.wikiword.output.TextOutput#storeRawText(int, java.lang.String, de.brightbyte.wikiword.ResourceType, java.lang.String)
+	 */
 	public void storeRawText(int textId, String name, ResourceType ptype, String text) throws PersistenceException {
 		writeRow("raw", name, text);
 	}

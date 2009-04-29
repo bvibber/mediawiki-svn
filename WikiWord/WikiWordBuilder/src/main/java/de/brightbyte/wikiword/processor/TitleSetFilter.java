@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.builder;
+package de.brightbyte.wikiword.processor;
 
 import java.io.File;
 import java.io.FileInputStream;

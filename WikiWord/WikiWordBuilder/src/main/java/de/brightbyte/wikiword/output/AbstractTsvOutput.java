@@ -1,17 +1,14 @@
-package de.brightbyte.wikiword.store.dumper;
+package de.brightbyte.wikiword.output;
 
-import java.io.IOException;
 import java.io.Writer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
-import de.brightbyte.wikiword.store.builder.FauxStoreBuilder;
 
-public class AbstractTsvOutput extends FauxStoreBuilder {
-	
-	protected Writer out;
+public abstract class AbstractTsvOutput extends AbstractWriterOutput {
 	
 	private CharSequence terminator = "\r\n";
 	private CharSequence separator = "\t";
@@ -22,9 +19,12 @@ public class AbstractTsvOutput extends FauxStoreBuilder {
 		return mangler.replaceAll(" ");
 	}
 	
+	public Corpus getCorpus() {
+		return (Corpus)getDatasetIdentifier();
+	}
+	
 	public AbstractTsvOutput(DatasetIdentifier dataset, Writer out) {
-		super(dataset);
-		this.out = out;
+		super(dataset, out);
 	}
 
 
@@ -49,27 +49,7 @@ public class AbstractTsvOutput extends FauxStoreBuilder {
 		
 		buffer.append(terminator);
 		
-		try {
-			out.write(buffer.toString());
-		} catch (IOException e) {
-			throw new PersistenceException();
-		}
+		write(buffer.toString());
 	}
 	
-	public void close(boolean flush) throws PersistenceException {
-		try {
-			out.close();
-		} catch (IOException e) {
-			throw new PersistenceException(e);
-		}
-	}
-
-	public void flush() throws PersistenceException {
-		try {
-			out.flush();
-		} catch (IOException e) {
-			throw new PersistenceException(e);
-		}
-	}
-
 }

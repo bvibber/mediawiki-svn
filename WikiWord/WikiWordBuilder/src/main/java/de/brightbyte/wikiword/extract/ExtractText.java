@@ -1,9 +1,12 @@
-package de.brightbyte.wikiword.builder;
+package de.brightbyte.wikiword.extract;
 
 import java.io.IOException;
 
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
+import de.brightbyte.wikiword.builder.ConceptImporter;
+import de.brightbyte.wikiword.builder.ImportDump;
+import de.brightbyte.wikiword.builder.TextImporter;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
