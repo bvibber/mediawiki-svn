@@ -36,6 +36,9 @@ if (!window.onloadFuncts) {
 }
 
 function addOnloadHook(hookFunct) {
+	if (!onloadFuncts) {
+		onloadFuncts = [];
+	}
 	// Allows add-on scripts to add onload functions
 	if(!doneOnloadHook) {
 		onloadFuncts[onloadFuncts.length] = hookFunct;

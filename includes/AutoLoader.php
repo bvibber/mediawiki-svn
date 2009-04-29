@@ -562,11 +562,11 @@ $wgJSAutoloadLocalClasses = array(
 	'metadata' => 'skins/common/metadata.js',
 	'mwsuggest' => 'skins/common/mwsuggest.js',
 	'prefs' => 'skins/common/prefs.js',
-	'preview' => 'skins/commn/preview.js',
-	'protect' => 'skins/commn/protect.js',
-	'rightclickedit' => 'skins/commn/rightclickedit.js',
-	'sticky'	=> 'skins/commn/sticky.js',
-	'upload' => 'skins/commn/upload.js',
+	'preview' => 'skins/common/preview.js',
+	'protect' => 'skins/common/protect.js',
+	'rightclickedit' => 'skins/common/rightclickedit.js',
+	'sticky'	=> 'skins/common/sticky.js',
+	'upload' => 'skins/common/upload.js',
 	'wikibits' => 'skins/common/wikibits.js'	
 );
 
