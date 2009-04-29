@@ -9,7 +9,7 @@ import de.brightbyte.io.Prompt;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.store.WikiWordConceptStoreBase;
 
-public abstract class ConsoleApp<S extends WikiWordConceptStoreBase> extends CliApp<S> {
+public abstract class ConsoleApp<S extends WikiWordConceptStoreBase> extends StoreBackedApp<S> {
 
 	protected Prompt prompt;
 	

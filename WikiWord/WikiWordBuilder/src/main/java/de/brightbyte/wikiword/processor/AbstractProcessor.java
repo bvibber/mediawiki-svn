@@ -6,10 +6,8 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Map;
 import java.util.Random;
 
-import de.brightbyte.application.Agenda;
 import de.brightbyte.application.Arguments;
 import de.brightbyte.data.ChunkyBitSet;
 import de.brightbyte.io.LeveledOutput;
@@ -23,14 +21,9 @@ import de.brightbyte.wikiword.NamespaceSet;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.AnalyzerUtils;
+import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiTextSniffer;
-import de.brightbyte.wikiword.analyzer.WikiPage;
-import de.brightbyte.wikiword.processor.TitleSetFilter;
-import de.brightbyte.wikiword.processor.WikiPageFilter;
-import de.brightbyte.wikiword.processor.WikiWordProcessor;
-import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
-import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
 public abstract class AbstractProcessor implements WikiWordProcessor {
 	
@@ -90,9 +83,7 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 	}
 	
 	private int progressInterval = 1000;
-	private int safepointInterval = 30 * 1000;
 	
-	private WikiWordStoreBuilder store;
 	protected WikiTextAnalyzer analyzer;
 	
 	private Tracker pageTracker;
@@ -100,17 +91,15 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 	private MemoryTracker memoryTracker;
 	
 	private int progressTicks = 0;
-	private int safepointTicks = 0;
-	private int safepointNumber = 0;
 	
 	private boolean first = true;
 	protected TweakSet tweaks;
 	
-	private String skipTo = null;
-	private int skipToId = -1;
-	private int skip = 0;
-	private int limit = -1;
-	private int lastRcId = 0;
+	protected String skipTo = null;
+	protected int skipToId = -1;
+	protected int skip = 0;
+	protected int limit = -1;
+	protected int lastRcId = 0;
 	
 	private Random skipRandom;
 	private int skipRandomBias = 0;
@@ -123,16 +112,13 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 	private Collection<WikiPageFilter> filters;
 	protected String fileecoding = SystemUtils.getPropertySafely("file.encoding", "utf-8");
 
-	public AbstractProcessor(WikiTextAnalyzer analyzer, WikiWordStoreBuilder store, TweakSet tweaks) {
+	public AbstractProcessor(WikiTextAnalyzer analyzer, TweakSet tweaks) {
 		if (analyzer==null) throw new NullPointerException();
-		if (store==null) throw new NullPointerException();
-		
+
 		this.analyzer = analyzer;
-		this.store = store;
 		this.tweaks = tweaks;
 		
 		progressInterval = tweaks.getTweak("importer.progressInterval", progressInterval);
-		safepointInterval = tweaks.getTweak("importer.safepointInterval", safepointInterval);
 		
 		if (tweaks.getTweak("importer.catchDupes", false)) stoplist = new ChunkyBitSet();
 		
@@ -170,7 +156,6 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 		bulkTracker = new Tracker("chars");
 		memoryTracker = new MemoryTracker();
 		progressTicks = 0;
-		safepointTicks = 0;
 	}
 	
 	public void trackerChunk() {
@@ -225,29 +210,7 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 					first = false;
 				}
 				
-				boolean doit = true;
-				
-				if (safepointTicks==0) {					
-					String state = "lastRcId_="+lastRcId+",nextPageId_="+id;
-					if (!beginTask("handlePage", "analysis-safepoint#"+safepointNumber, state)) {
-						out.info("=== SKIPPING BLOCK FOR SAFEPOINT#"+safepointNumber+" ===");
-						skip = safepointInterval; //FIXME: make sure we are not off-by-one here! 
-						doit = false;
-					}
-					else {
-						if (getAgenda().isTaskDirty() && store instanceof IncrementalStoreBuilder) {
-							Agenda.Record rec = getAgenda().getCurrentRecord();
-
-							int delAfter = (Integer)rec.parameters.get("lastRcId_");
-							out.info("=== DIRTY BLOCK FOR SAFEPOINT#"+safepointNumber+", Deleting entries starting after id: #"+delAfter+" ===");
-							((IncrementalStoreBuilder)store).deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
-						}
-						
-						out.info("=== BEGINNING BLOCK FOR SAFEPOINT#"+safepointNumber+": "+getAgenda().getCurrentRecord().parameters+" ===");
-					}
-				}
-				
-				if (doit) {
+				if (prepareStep(id)) {
 					pageTracker.step();
 					bulkTracker.step(text.length());
 					memoryTracker.step();
@@ -266,27 +229,20 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 			}
 		}
 		
-		safepointTicks++;
-		if (safepointTicks>=safepointInterval) {
-			flushSafepoint("handlePage");
-			safepointTicks = 0;
-			safepointNumber++;
-		}
+		concludeStep();
 	}
 	
-	protected void flushSafepoint(String context) throws PersistenceException {
-		Agenda.Record rec = getAgenda().getCurrentRecord();
-		if (!"handlePage".equals(rec.context)) throw new IllegalStateException("bad agenda record context when attempting to store safepoint: expected '"+context+"', found '"+rec.context+"'");
-		if (!rec.task.startsWith("analysis-safepoint#")) throw new IllegalStateException("bad agenda record task when attempting to store safepoint: expected prefix 'analysis-safepoint#', found '"+rec.task+"'");
-		
-		if (rec.state==Agenda.State.STARTED) {
-			out.info("=== FLUSHING SAFEPOINT#"+safepointNumber+" ===");
-			store.flush();
-			endTask(context, "analysis-safepoint#"+safepointNumber);
-		}
+	protected boolean prepareStep(int id) throws PersistenceException{
+			//noop
+			return true;
 	}
 	
+	protected void concludeStep() throws PersistenceException{
+		//noop
+	}
 	
+	protected abstract void flush() throws PersistenceException;
+
 	protected boolean isRelevant(WikiPage analyzerPage) {
 		ResourceType ptype = analyzerPage.getResourceType();
 		CharSequence text = analyzerPage.getText();
@@ -336,14 +292,6 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 
 	public void setProgressInterval(int progressInterval) {
 		this.progressInterval = progressInterval;
-	}
-
-	public int getSafepointInterval() {
-		return safepointInterval;
-	}
-
-	public void setSafepointInterval(int safepointInterval) {
-		this.safepointInterval = safepointInterval;
 	}
 
 	public static void declareOptions(Arguments args) {
@@ -415,11 +363,10 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 
 	public void afterPages() throws PersistenceException {
 		trackerChunk();		
-		flushSafepoint("handlePage");
 	}
 	
 	public void finish() throws PersistenceException {
-		store.flush();
+		flush();
 	}
 
 	/*
@@ -427,43 +374,6 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 		return shouldRun("analyze", "id=0,name=null");
 	}
 	*/
-	
-	@Deprecated
-	public boolean beginPrimitiveTask(String context, String task) throws PersistenceException {
-		return store.getAgenda().beginPrimitiveTask(context, task);
-	}
-
-	@Deprecated
-	public boolean beginPrimitiveTask(String context, String task, String params) throws PersistenceException {
-		return store.getAgenda().beginPrimitiveTask(task, params);
-	}
-
-	@Deprecated
-	public boolean beginPrimitiveTask(String context, String task, Map<String, Object> params) throws PersistenceException {
-		return store.getAgenda().beginPrimitiveTask(context, task, params);
-	}
-
-	public boolean beginTask(String context, String task) throws PersistenceException {
-		return store.getAgenda().beginTask(context, task);
-	}
-
-	public boolean beginTask(String context, String task, String params) throws PersistenceException {
-		return store.getAgenda().beginTask(context, task, params);
-	}
-
-	public boolean beginTask(String context, String task, Map<String, Object> params) throws PersistenceException {
-		return store.getAgenda().beginTask(context, task, params);
-	}
-	
-	public Agenda getAgenda() throws PersistenceException {
-		return store.getAgenda();
-	}
-	
-	public void endTask(String context, String task) throws PersistenceException {
-		store.getAgenda().endTask(context, task);
-		memoryTrackerChunk();
-	}
-
 	public int getSkip() {
 		return skip;
 	}
@@ -521,13 +431,13 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 		
 		if (ex!=null) details += "\n" + ex;
 
-		try {
-			store.storeWarning(rcId, problem, details);
-		} catch (PersistenceException e) {
-			out.error("failed to store warning!", e);
-		}
+		storeWarning(rcId, problem, details);
 	}
 	
+	protected void storeWarning(int rcId, String problem, String details) {
+		// noop
+	}
+
 	protected boolean checkTerm(int rcId, String text, String descr, int ctxId) throws PersistenceException {
 		int c = text.length();
 		String problem = null;

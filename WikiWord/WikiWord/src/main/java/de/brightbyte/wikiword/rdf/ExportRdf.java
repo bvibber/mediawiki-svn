@@ -29,6 +29,7 @@ import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ExtractionRule;
+import de.brightbyte.wikiword.StoreBackedApp;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
@@ -44,7 +45,7 @@ import de.brightbyte.wikiword.store.WikiWordConceptStore;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseStatisticsStore;
 
-public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordConceptStore> {
+public class ExportRdf<V, R extends V, A, W> extends StoreBackedApp<WikiWordConceptStore> {
 	
 	protected RdfPlatform<V, R, A, W> platform;
 	protected RdfOutput<V, R, A, W> output;

@@ -35,7 +35,7 @@ public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 	}
 
 	@Override
-	protected ConceptImporter newImporter(WikiTextAnalyzer analyzer) throws PersistenceException {
+	protected WikiWordImporter newImporter(WikiTextAnalyzer analyzer) throws PersistenceException {
 		return new ConceptImporter(analyzer, conceptStore, tweaks);
 	}
 	

@@ -5,8 +5,6 @@ import static de.brightbyte.util.LogLevels.LOG_INFO;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +12,6 @@ import javax.sql.DataSource;
 
 import de.brightbyte.application.Arguments;
 import de.brightbyte.db.DatabaseConnectionInfo;
-import de.brightbyte.db.DatabaseSchema;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.LeveledOutput;
 import de.brightbyte.io.LogOutput;
@@ -22,16 +19,11 @@ import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.SystemUtils;
 import de.brightbyte.wikiword.rdf.WikiWordIdentifiers;
-import de.brightbyte.wikiword.store.DatabaseWikiWordStore;
-import de.brightbyte.wikiword.store.WikiWordConceptStoreBase;
-import de.brightbyte.wikiword.store.WikiWordLocalStore;
-import de.brightbyte.wikiword.store.WikiWordStore;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
 /**
  * This is the base class for entry points to WikiWord.
  */
-public abstract class CliApp<S extends WikiWordConceptStoreBase> {
+public abstract class CliApp {
 	
 	public static final String VERSION_INFO = "WikiWord by Daniel Kinzler, brightbyte.de, 2007-2009";
 	public static final String LICENSE_INFO = "Originally created at the University of Leipzig,\n\tdevelopment supported by Wikimedia Deutschland.\n\tFree Software, GNU LGPL. See COPYING for details.";
@@ -43,36 +35,15 @@ public abstract class CliApp<S extends WikiWordConceptStoreBase> {
 	protected int logLevel;
 	protected int exitCode;
 	
-	protected List<WikiWordStore> stores = new ArrayList<WikiWordStore>();
-	protected S conceptStore;
-	//protected DatasetIdentifier dataset;
-	//protected DataSource dataSource;
-	
 	protected TweakSet tweaks;
 	protected WikiWordIdentifiers identifiers;
 	protected boolean keepAlive;
 	
-	protected boolean allowLocalStore;
-	protected boolean allowGlobalStore;
-	
-	protected WikiWordStoreFactory<? extends S> conceptStoreFactory;
-	
-	public CliApp(boolean allowGlobal, boolean allowLocal) { //TODO: agenda-params?!
+	public CliApp() { //TODO: agenda-params?!
 		args = new Arguments();
 		out = new LogOutput();
-		
-		allowGlobalStore = allowGlobal;
-		allowLocalStore  = allowLocal;
 	}
-	
-	protected void registerStore(WikiWordStore store) {
-		stores.add(store);
-	}
-	
-	protected Collection<WikiWordStore> getStores() {
-		return stores;
-	}
-	
+
 	public boolean isKeepAlive() {
 		return keepAlive;
 	}
@@ -176,18 +147,14 @@ public abstract class CliApp<S extends WikiWordConceptStoreBase> {
 	}
 	
 	public Corpus getCorpus() {
-		DatasetIdentifier dataset = getStoreDataset();
-		if (dataset==null) dataset = getConfiguredDataset();
+		DatasetIdentifier dataset = getConfiguredDataset();
 		
 		if (dataset==null) return null;
+		
 		if (!(dataset instanceof Corpus)) {
-			if (conceptStore instanceof WikiWordLocalStore) {
-				dataset = ((WikiWordLocalStore)conceptStore).getCorpus();
-			}
-			else {
-				throw new IllegalStateException("this application uses a non-corpus dataset!");
-			}
+			return null;
 		}
+		
 		return (Corpus)dataset;
 	}
 	
@@ -216,36 +183,19 @@ public abstract class CliApp<S extends WikiWordConceptStoreBase> {
 		return s;
 	}
 	
-	public DatasetIdentifier getStoreDataset() {
-		if (conceptStore==null) return null;
-		return conceptStore.getDatasetIdentifier();
-	}
-	
 	public DatasetIdentifier getConfiguredDataset() {
 		DatasetIdentifier dataset;
 
 		String c = getConfiguredCollectionName();
 		String n = getConfiguredDatasetName();
 
-		if (!allowGlobalStore) {
-			if (!allowLocalStore) throw new RuntimeException("bad setup: nither global nor local stores allowed for this app!");
-			dataset = Corpus.forName(c, n, tweaks);
-		}
-		else {
-			dataset = DatasetIdentifier.forName(c, n);
-		}
+		dataset = Corpus.forName(c, n, tweaks);
 		
 		return dataset;
 	}
 	
 	public boolean isDatasetLocal() {
-		if (conceptStore!=null && conceptStore instanceof WikiWordLocalStore) return true;
-		
-		DatasetIdentifier dataset = getStoreDataset();
-		if (dataset==null) dataset = getConfiguredDataset();
-		
-		if (dataset!=null && dataset instanceof Corpus) return true;
-		return false;
+		return true;
 	}
 	
 	public void exit(int code) {
@@ -295,80 +245,34 @@ public abstract class CliApp<S extends WikiWordConceptStoreBase> {
 		
 		DatasetIdentifier dataset = getConfiguredDataset();
 		section("*** DATASET: "+dataset.getQName()+" ***");
-		
-		if (conceptStoreFactory==null) conceptStoreFactory= createConceptStoreFactory();
-		
-		createStores(conceptStoreFactory);
-		if (conceptStore==null) throw new RuntimeException("createStores() failed to initialize conceptStore");
 
+		launchExecute();
+	}
+	
+	protected void launchExecute() throws Exception {
 		exitCode = 23;
 
 		prepareApp();
 		
 		try {
-			openStores();
-
-			if (args.isSet("dbtest")) {
-				section("-- db test --------------------------------------------------");
-				Object o = args.getOption("dbtest", null); 
-                String t;
-                if (o instanceof String) {
-                	t = (String)o;
-                }
-                else {
-                	t = "\u00c4 \u00d6 \u00dc - \ud800\udf30";
-                }
-
-                String s = ((DatabaseSchema)((DatabaseWikiWordStore)conceptStore).getDatabaseAccess()).echo(t, args.getStringOption("dbcharset", "binary"));
-
-                if (s.equals(t)) {
-                        info("DB TEST OK: "+t);
-                }
-                else {
-                		closeStores(true);
-                        warn("DB TEST FAILED: "+t+" != "+s+" !");
-                        exit(5);
-                        return;
-                }
-			}
-	
 			execute();
 
-			closeStores(true);
-          
             section("-- DONE --------------------------------------------------");
 			exitCode = 0;
-			
 		}
 		catch (Throwable ex) {
 			error("uncaught throwable", ex);
-			closeStores(false);
 		}
 		finally {
+			finalizeApp();
 			exit(exitCode);
 		}		
 	}
 	
-	protected abstract WikiWordStoreFactory<S> createConceptStoreFactory() throws IOException, PersistenceException;
-
-	protected void openStores() throws PersistenceException {
-		for (WikiWordStore store: stores) {
-			store.open();
-		}
+	protected void finalizeApp() throws Exception {
+		// noop
 	}
 
-	protected void closeStores(boolean flush) throws PersistenceException {
-		for (WikiWordStore store: stores) {
-			store.close(flush);
-		}
-	}
-	
-	protected void dumpTableStats() throws PersistenceException {
-		for (WikiWordStore store: stores) {
-			store.dumpTableStats(getLogOutput());
-		}
-	}
-	
 	protected void prepareApp() throws Exception {
 		// noop
 	}
@@ -380,11 +284,6 @@ public abstract class CliApp<S extends WikiWordConceptStoreBase> {
 	protected DataSource getConfiguredDataSource() throws IOException, PersistenceException {
 		File dbf = getDatabaseFile();
 		return new DatabaseConnectionInfo(dbf);
-	}
-	
-	protected void createStores(WikiWordStoreFactory<? extends S> factory) throws IOException, PersistenceException {
-		conceptStore = factory.newStore();
-		registerStore(conceptStore);
 	}
 	
 	protected File getDatabaseFile() {
@@ -497,9 +396,9 @@ public abstract class CliApp<S extends WikiWordConceptStoreBase> {
 	public void setTweaks(TweakSet tweaks) {
 		this.tweaks = tweaks;
 	}
-
-	public void setConceptStoreFactory(WikiWordStoreFactory<? extends S> conceptStoreFactory) {
-		this.conceptStoreFactory = conceptStoreFactory;
+	
+	public int getExitCode() {
+		return exitCode;
 	}
 	
 }

@@ -3,7 +3,6 @@ package de.brightbyte.wikiword.processor;
 import java.io.IOException;
 import java.util.Date;
 
-import de.brightbyte.application.Agenda;
 import de.brightbyte.application.Arguments;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
@@ -102,10 +101,6 @@ public interface WikiWordProcessor {
 	 */
 	public void setSkip(int count);
 
-	/**
-	 * returns the Agenda used to controll the import process
-	 */
-	public Agenda getAgenda() throws PersistenceException;
 
 	/**
 	 * sets the log output to be used by the inporter  

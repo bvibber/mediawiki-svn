@@ -28,7 +28,7 @@ public class ImportProperties extends ImportDump<LocalConceptStoreBuilder> {
 	}
 	
 	@Override
-	protected PropertyImporter newImporter(WikiTextAnalyzer analyzer) throws PersistenceException {
+	protected WikiWordImporter newImporter(WikiTextAnalyzer analyzer) throws PersistenceException {
 		return new PropertyImporter(analyzer, conceptStore, tweaks);
 	}
 	

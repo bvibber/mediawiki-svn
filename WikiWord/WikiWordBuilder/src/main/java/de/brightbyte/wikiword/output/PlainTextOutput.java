@@ -6,21 +6,16 @@ import java.io.OutputStream;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ResourceType;
-import de.brightbyte.wikiword.store.builder.FauxStoreBuilder;
-import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
 
-public class PlainTextOutput extends FauxStoreBuilder implements TextStoreBuilder {
+public class PlainTextOutput extends AbstractStreamOutput implements TextOutput {
 	
-	protected OutputStream out;
 	protected String encoding;
 	
 	public PlainTextOutput(DatasetIdentifier dataset, OutputStream out, String enc) {
-		super(dataset);
+		super(dataset, out);
 		
-		if (out==null) throw new NullPointerException();
 		if (enc==null) throw new NullPointerException();
 		
-		this.out = out;
 		this.encoding = enc;
 	}
 
@@ -59,30 +54,10 @@ public class PlainTextOutput extends FauxStoreBuilder implements TextStoreBuilde
 
 			byte[] b = s.toString().getBytes(encoding);
 			
-			out.write(b);
-			out.write(data);
+			write(b);
+			write(data);
 		} catch (IOException e) {
 			throw new PersistenceException(e);
 		}
 	}
-	public void flush() throws PersistenceException {
-		try {
-			out.flush();
-		} catch (IOException e) {
-			throw new PersistenceException(e);
-		}
-	}
-
-	public void open() throws PersistenceException {
-		//noop
-	}
-
-	public void close(boolean flush) throws PersistenceException {
-		try {
-			out.close();
-		} catch (IOException e) {
-			throw new PersistenceException(e);
-		}
-	}
-
 }

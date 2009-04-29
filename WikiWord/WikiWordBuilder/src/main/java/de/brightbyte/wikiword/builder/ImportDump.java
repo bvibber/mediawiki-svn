@@ -105,7 +105,20 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		///////////////////////// main import run ////////////////////////////////////
 		if (agenda.beginTask("ImportDump.run", "analysis")) {
 			DataSourceDriver driver = new XmlDumpDriver(dumpFile, getLogOutput(), tweaks);
-			driver.runImport(importer);
+			
+			importer.reset();
+			importer.prepare();
+
+			if (agenda.beginTask("runImport", "readDump")) {
+				driver.run(importer);
+				agenda.endTask("runImport", "readDump");
+			}
+
+			if (agenda.beginTask("runImport", "finish")) {
+				importer.finish();
+				agenda.endTask("runImport", "finish");
+			}
+			
 			agenda.endTask("ImportDump.run", "analysis");
 		}
 		//////////////////////////////////////////////////////////////////////////////
@@ -126,6 +139,6 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		//noop
 	}
 
-	protected abstract WikiWordProcessor newImporter(WikiTextAnalyzer analyzer) throws PersistenceException;
+	protected abstract WikiWordImporter newImporter(WikiTextAnalyzer analyzer) throws PersistenceException;
 
 }

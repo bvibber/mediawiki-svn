@@ -1,37 +1,22 @@
 package de.brightbyte.wikiword.extract;
 
-import java.io.IOException;
-
-import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.builder.ConceptImporter;
-import de.brightbyte.wikiword.builder.ImportDump;
-import de.brightbyte.wikiword.builder.TextImporter;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
-import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
-import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
+import de.brightbyte.wikiword.output.TextOutput;
+import de.brightbyte.wikiword.output.TsvTextOutput;
 
-public class ExtractText extends ImportDump<LocalConceptStoreBuilder> {
-
-	private TextStoreBuilder textStore;
+public class ExtractText extends ExtractFromDump<TextOutput> {
 
 	public ExtractText() {
-		super("ExtractText");
+		super();
 	}
 
 
 	@Override
-	protected void createStores(WikiWordStoreFactory<? extends LocalConceptStoreBuilder> factory) throws IOException, PersistenceException {
-		super.createStores(factory);
-		
-		textStore = conceptStore.getTextStoreBuilder();
-		registerStore(textStore);
+	protected TextExtractor newProcessor(WikiTextAnalyzer analyzer) {
+		return new TextExtractor(analyzer, output, tweaks);
 	}
-
-	@Override
-	protected TextImporter newImporter(WikiTextAnalyzer analyzer) {
-		return new TextImporter(analyzer, textStore, tweaks);
-	}
+	
 	
 	@Override
 	protected void declareOptions() {
@@ -51,4 +36,10 @@ public class ExtractText extends ImportDump<LocalConceptStoreBuilder> {
 		ExtractText app = new ExtractText();
 		app.launch(argv);
 	}
+
+	@Override
+	protected TextOutput createOutput() {
+		return new TsvTextOutput(getCorpus(), getOutputWriter());
+	}
+	
 }

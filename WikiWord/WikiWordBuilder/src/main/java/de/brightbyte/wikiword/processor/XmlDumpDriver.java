@@ -235,14 +235,7 @@ public class XmlDumpDriver implements DataSourceDriver {
 		externalGunzip = tweaks.getTweak("dumpdriver.externalGunzip", null);
 	}
 	
-	public void runImport(WikiWordProcessor importer) throws IOException, SQLException, InterruptedException, PersistenceException {
-		importer.reset();
-		
-		//trackerChunk();
-		
-		importer.prepare();
-
-		if (importer.getAgenda().beginTask("runImport", "readDump")) {
+	public void run(WikiWordProcessor importer) throws IOException, SQLException, InterruptedException, PersistenceException {
 			DumpWriter sink = new Sink(importer, importQueueCapacity);
 			
 			try {
@@ -252,19 +245,12 @@ public class XmlDumpDriver implements DataSourceDriver {
 				reader.readDump();
 							
 				importer.afterPages();
-				importer.getAgenda().endTask("runImport", "readDump");
 				
 				in.close();
 			}
 			finally {
 				sink.close(); //NOTE: make sure the executor queue is terminated
 			}
-		}
-		
-		if (importer.getAgenda().beginTask("runImport", "finish")) {
-			importer.finish();
-			importer.getAgenda().endTask("runImport", "finish");
-		}
 	}
 
 	protected InputStream openURL(URL u) throws IOException {

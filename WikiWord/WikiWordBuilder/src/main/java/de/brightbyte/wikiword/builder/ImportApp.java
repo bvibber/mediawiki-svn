@@ -9,7 +9,7 @@ import de.brightbyte.application.Agenda;
 import de.brightbyte.application.Agenda.Monitor;
 import de.brightbyte.io.Prompt;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.CliApp;
+import de.brightbyte.wikiword.StoreBackedApp;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.store.WikiWordStore;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
@@ -20,7 +20,7 @@ import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 /**
  * This is the base class for entry points to WikiWord.
  */
-public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends WikiWordConcept>> extends CliApp<S> {
+public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends WikiWordConcept>> extends StoreBackedApp<S> {
 	
 	protected static enum Operation {
 		FRESH,

@@ -12,5 +12,5 @@ import de.brightbyte.util.PersistenceException;
  * these entries to the importer, one after the other. 
  */
 public interface DataSourceDriver {
-	public void runImport(WikiWordProcessor importer) throws IOException, SQLException, InterruptedException, PersistenceException;
+	public void run(WikiWordProcessor importer) throws IOException, SQLException, InterruptedException, PersistenceException;
 }

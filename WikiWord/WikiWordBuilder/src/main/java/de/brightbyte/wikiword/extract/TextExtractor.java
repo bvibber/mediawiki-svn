@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.builder;
+package de.brightbyte.wikiword.extract;
 
 import java.util.Date;
 
@@ -7,13 +7,14 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiPage;
-import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
+import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
+import de.brightbyte.wikiword.builder.AbstractImporter;
+import de.brightbyte.wikiword.output.TextOutput;
 
-public class TextImporter extends AbstractImporter {
+public class TextExtractor extends AbstractExtractor {
 	
-	private TextStoreBuilder store;
+	private TextOutput textOutput;
 	//private LocalConceptStore localConceptStore;
 
 	//private boolean storeDefinitions = true;
@@ -22,10 +23,10 @@ public class TextImporter extends AbstractImporter {
 	
 	private int textId = 0;
 	
-	public TextImporter(WikiTextAnalyzer analyzer, TextStoreBuilder store, TweakSet tweaks) {
-		super(analyzer, store, tweaks);
+	public TextExtractor(WikiTextAnalyzer analyzer, TextOutput output, TweakSet tweaks) {
+		super(analyzer, output, tweaks);
 		
-		this.store = store;
+		this.output = output;
 	}
 	
 	/*
@@ -77,13 +78,13 @@ public class TextImporter extends AbstractImporter {
 		textId ++;
 		
 		if (storeWikiText) { //TODO: separate access path... 
-			store.storeRawText(textId, name, ptype, text);
+			textOutput.storeRawText(textId, name, ptype, text);
 		}
 		
 		if (storePlainText) { //TODO: separate access path... 
 			String plain = analyzerPage.getPlainText(false).toString();
 			checkSmellsLikeWiki(0, plain, "plain text: "+name+" (id={0})", textId);
-			store.storePlainText(textId, name, ptype, plain);
+			textOutput.storePlainText(textId, name, ptype, plain);
 		}
 		
 		/*
