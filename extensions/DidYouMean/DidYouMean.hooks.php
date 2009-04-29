@@ -162,7 +162,7 @@ class DidYouMeanHooks {
 				DidYouMean::doDelete( $article->getID() );
 		} else {
 			if (!empty( $wgParser->mDymRedirBeforeEdit ) || $flags & EDIT_NEW)
-				DidYouMean:doInsert( $article->getID(), $article->getTitle()->getText() );
+				DidYouMean::doInsert( $article->getID(), $article->getTitle()->getText() );
 		}
    
 		$wgParser->mDymRedirBeforeEdit = false;
