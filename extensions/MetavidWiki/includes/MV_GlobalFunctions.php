@@ -353,7 +353,7 @@ function mvMagicParserFunction_Render( &$parser ) {
 	 * enables linkback and autocomplete for search
 	 */
 function mvfAutoAllPageHeader() {
-	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $wgTitle, $mvgJSDebug, $wgEnableScriptLoader, $wgRequest, $wgScriptPath;
+	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $mvgJSDebug, $wgEnableScriptLoader, $wgRequest, $wgScriptPath;
 		
 	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
 	$wgJsMimeType = htmlspecialchars( $wgJsMimeType ) ;	

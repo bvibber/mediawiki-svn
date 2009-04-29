@@ -110,8 +110,8 @@ function WL_doCheckWhiteList(&$title, &$uwUser, $action, &$result) {
 	return WhiteListExec::CheckWhiteList($title, $uwUser, $action, $result);
 }
 
-function WL_doAddRestrictedPagesTab(&$personal_urls, $wgTitle) {
-	return WhiteListHooks::AddRestrictedPagesTab($personal_urls, $wgTitle);
+function WL_doAddRestrictedPagesTab(&$personal_urls, $title ) {
+	return WhiteListHooks::AddRestrictedPagesTab($personal_urls, $title );
 }
 
 // TODO - this is missing from Siebrand's changes

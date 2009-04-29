@@ -22,14 +22,9 @@ $wgExtensionCredits['specialpage'][] = array(
 
 
 function canonicalHref(&$skin, &$template){
-        global $wgTitle;
-	if (!is_object($wgTitle) || !method_exists($wgTitle, "getFullURL")){
-		// Avoid a fatal error if for any reason $wgTitle isn't an object
-		return true;
-	}
         $link = Xml::element("link", array(
                         'rel' => 'canonical',
-                        'href' => $wgTitle->getFullURL()
+                        'href' => $skin->mTitle->getFullURL()
                 )
         );
         $template->set('headlinks', $template->data['headlinks'] . "\n" . $link . "\n");

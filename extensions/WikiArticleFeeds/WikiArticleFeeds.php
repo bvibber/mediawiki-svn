@@ -236,9 +236,9 @@ function wfAddWikiFeedHeaders( $out, $text ) {
 	# If its not being fed by feedBurner, do it ourselves!
 	if ( !array_key_exists( 'href', $rssArr ) || !$rssArr['href'] ) {
 
-		global $wgServer, $wgScript, $wgTitle;
+		global $wgServer, $wgScript;
 
-		$baseUrl = $wgServer . $wgScript . '?title=' . $wgTitle->getDBkey() . '&action=feed&feed=';
+		$baseUrl = $wgServer . $wgScript . '?title=' . $out->getTitle()->getDBkey() . '&action=feed&feed=';
 		$rssArr['href'] = $baseUrl . 'rss';
 		$atomArr['href'] = $baseUrl . 'atom';
 	}

@@ -194,7 +194,7 @@ function wfTodoParserFunction_Render( &$parser, $input, $users, $project='') {
     return $text;
 }
 
-function addPersonalUrl(&$personal_urls, $wgTitle)
+function addPersonalUrl( &$personal_urls, $title )
 {
     global $wgOut, $wgUser;
 
