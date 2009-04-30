@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Map;
 import java.util.Random;
 
 import javax.sql.DataSource;
@@ -33,6 +34,7 @@ import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.ExtractionRule;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.builder.NameMaps;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
@@ -153,8 +155,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			
 			int bsz = tweaks.getTweak("dbstore.idManager.bufferSize", 16*1024);
 			
-			//FIXME: use factory to create map impl!
-			idManager = new PersistentIdManager(new PatriciaTrie<String, Integer>(new StringKeyAnalyzer()), f, "UTF-8", bsz);
+			Map<String, Integer> map = NameMaps.newMap();
+			idManager = new PersistentIdManager(map, f, "UTF-8", bsz);
 		}
 		
 		/*

@@ -4,29 +4,28 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.Set;
-
-import org.ardverk.collection.PatriciaTrie;
-import org.ardverk.collection.StringKeyAnalyzer;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.filter.StaticSetFilter;
 import de.brightbyte.io.LineCursor;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.builder.NameMaps;
 
 public class TitleSetFilter extends PageTitleFilter {
 	
 	protected static Set<String> slurpCursor(DataCursor<String> titleCursor) throws PersistenceException {
-		PatriciaTrie<String, Integer> trie = new PatriciaTrie<String, Integer>(new StringKeyAnalyzer());
+		Map<String, Integer> map = NameMaps.newMap();
 		
 		final Integer ONE = new Integer(1);
 		
 		String s;
 		while ((s = titleCursor.next()) != null) {
-			trie.put(s, ONE);
+			map.put(s, ONE);
 		}
 		
-		return trie.keySet();
+		return map.keySet();
 	}
 
 	protected static Set<String> slurpLines(File f, String enc) throws PersistenceException {

@@ -35,6 +35,10 @@
         <include>*.jar</include>
       </includes>
     </fileSet>-->
+    <fileSet>
+      <directory>lib</directory>
+   		<outputDirectory>/lib</outputDirectory>
+    </fileSet>
   </fileSets>
   <dependencySets>
     <dependencySet>
