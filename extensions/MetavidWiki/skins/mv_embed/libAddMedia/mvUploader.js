@@ -196,8 +196,8 @@ mvBaseUploadInterface.prototype = {
 				
 				//check for post action override: 															
 				if( _this.form_post_override ){
-					alert('woudld submit here');
-					//return true;
+					//alert('woudld submit here');
+					return true;
 				}
 				
 						
@@ -233,7 +233,7 @@ mvBaseUploadInterface.prototype = {
 				return js_error( 'Error: can\'t autodetect mode without api url' );
 			do_api_req( {
 				'data':{ 'action':'paraminfo','modules':'upload' },
-				'url':_this.api_url 
+				'url' :_this.api_url 
 			}, function(data){
 				if( typeof data.paraminfo == 'undefined' || typeof data.paraminfo.modules == 'undefined' )
 					return js_error( 'Error: bad api results' );
@@ -243,7 +243,7 @@ mvBaseUploadInterface.prototype = {
 				}else{		
 					js_log( 'Autodetect Upload Mode: api ' );
 					_this.upload_mode = 'api';
-					//make sure chunks are supported:			
+					//check to see if chunks are supported:			
 					for( var i in data.paraminfo.modules[0].parameters ){						
 						var pname = data.paraminfo.modules[0].parameters[i].name;
 						if( pname == 'enablechunks' ){
@@ -262,7 +262,7 @@ mvBaseUploadInterface.prototype = {
 	doUploadSwitch:function(){
 		js_log('mvUPload:doUploadSwitch()');
 		var _this = this;			
-		//issue a post req: 		
+		//issue a normal post request 		
 		if( _this.upload_mode == 'post' || $j('#wpSourceTypeFile').get(0).checked ){				
 			//update the status
 			$j('#dlbox-centered').html('<h5>' + _this.getProgressTitle() + '</h5>' + 
@@ -270,14 +270,28 @@ mvBaseUploadInterface.prototype = {
 			);
 						
 			//do normal post upload no status indicators (also since its a file I think we have to submit the form)
-			_this.form_post_override=true; 
-			//js_log('run form submit!!');
-			_this.editForm.submit();
-		}else if( _this.upload_mode == 'api'){
-			//do api upload 
+			_this.form_post_override = true;
+			//trick the browser into thinking the wpUpload button was pressed (there might be a cleaner way to do this) 
+			$j(_this.editForm).append('<input type="hidden" name="wpUpload" value="' + $j('#wpUpload').val() + '"/>');
+			//do the submit :			
+			_this.editForm.submit();						
+		}else if( _this.upload_mode == 'api' && $j('#wpSourceTypeURL').get(0).checked){
+			//if the api is supported.. && source type is http do upload with http status updates
+			_this.doHttpUpload();			
 		}else{
 			js_error( 'Error: unrecongized upload mode: ' + _this.upload_mode );
 		}		
+	},
+	doHttpUpload:function(){
+		//build the api query:
+		js_log('do doHttpUpload upload!');
+		 
+		/*do_api_req( {
+			'data':{ 'action':'upload','modules':'upload' },
+			'url':_this.api_url 
+		}, function(data){
+			js_log('result data:')
+		});	*/
 	},
 	getProgressTitle:function(){
 		return gM('upload-in-progress');
