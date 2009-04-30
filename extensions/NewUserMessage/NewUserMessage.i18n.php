@@ -562,6 +562,14 @@ $messages['vo'] = array(
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Benokömanun]] paläükon lä bespikapad gebana nulik',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'newusermessage-desc' => "響新用戶討論版度加一句訊息",
+	'newuseredit-summary' => '加[[{{int:newusermessage-template}}|歡迎訊息]]到新用戶討論版度',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */
@@ -575,5 +583,6 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'newusermessage-desc' => '增加一個訊息給新創建帳戶的使用者的討論頁。',
+	'newuseredit-summary' => '在新用戶的討論頁上增加[[{{int:newusermessage-template}}|歡迎訊息]]',
 );
 
