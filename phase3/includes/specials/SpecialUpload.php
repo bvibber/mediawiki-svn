@@ -82,15 +82,15 @@ class UploadForm extends SpecialPage {
 	 * @access public
 	 */
 	function execute() {		
-		global $wgUser, $wgOut;		
-		
+		global $wgUser, $wgOut;
+				
 		# Check uploading enabled
 		if( !UploadBase::isEnabled() ) {
 			$wgOut->showErrorPage( 'uploaddisabled', 'uploaddisabledtext' );
 			return;
 		}
 
-		# Check permissions
+		# Check permissions		
 		if( $this->mUpload ) {
 			$permission = $this->mUpload->isAllowed( $wgUser );
 		} else {
@@ -114,7 +114,7 @@ class UploadForm extends SpecialPage {
 		if( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
-		}		
+		}				
 		if( $this->mReUpload ) {					
 			// User choose to cancel upload
 			if( !$this->mUpload->unsaveUploadedFile() ) {				

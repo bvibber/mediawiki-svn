@@ -2170,9 +2170,9 @@ function wfShellExec( $cmd, &$retval=null ) {
 		# This is a hack to work around PHP's flawed invocation of cmd.exe
 		# http://news.php.net/php.internals/21796
 		$cmd = '"' . $cmd . '"';
-	}
+	}	
+	
 	wfDebug( "wfShellExec: $cmd\n" );
-
 	$retval = 1; // error by default?
 	ob_start();
 	passthru( $cmd, $retval );
@@ -2183,6 +2183,15 @@ function wfShellExec( $cmd, &$retval=null ) {
 		wfDebugLog( 'exec', "Possibly missing executable file: $cmd\n" );
 	}
 	return $output;
+}
+/**
+ * Executes a shell command in the background. Passes back the PID of the operation 
+ *
+ * @param string $cmd
+ */
+function wfShellBackgroundExec(&$cmd){	
+	$pid = shell_exec( "nohup $cmd > /dev/null & echo $!" );
+	return $pid;
 }
 /**
  * Checks if the current instance can execute a shell command

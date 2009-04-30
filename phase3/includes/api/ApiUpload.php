@@ -38,7 +38,7 @@ class ApiUpload extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgUser;		
+		global $wgUser;			
 			
 		$this->getMain()->requestWriteMode();
 		$this->mParams = $this->extractRequestParams();
@@ -46,7 +46,7 @@ class ApiUpload extends ApiBase {
 		
 		// Add the uploaded file to the params array
 		$this->mParams['file'] = $request->getFileName( 'file' );				
-		
+	
 		// Check whether upload is enabled
 		if( !UploadBase::isEnabled() )
 			$this->dieUsageMsg( array( 'uploaddisabled' ) );
@@ -81,9 +81,33 @@ class ApiUpload extends ApiBase {
 					$request->getFileTempName( 'file' ),
 					$request->getFileSize( 'file' )					
 				);				
-			} elseif( isset( $this->mParams['url'] ) ) {											
+			} elseif( isset( $this->mParams['url'] ) ) {
+														
 				$this->mUpload = new UploadFromUrl();
-				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url']);											
+				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url']);	
+				
+				$status = $this->mUpload->fetchFile();
+				if( !$status->isOK() ){			
+					$this->dieUsage( 'fetchfilerror', $status->getWikiText());
+				}														
+				//check if we doing a async request (return session info)
+				if( $this->mUpload->isAsync() ){
+					$upload_session_key = $status->value;			
+					//update the session with anything with the params we will need to finish up the upload later on:
+					if(!isset($_SESSION['wsDownload'][$upload_session_key]))
+						$_SESSION['wsDownload'][$upload_session_key] = array();
+						
+					$sd =& $_SESSION['wsDownload'][$upload_session_key];
+
+					//do a wholesale copy of mParams 
+					$sd['mParams'] = $this->mParams;
+					
+					
+					return $this->getResult()->addValue( null, $this->getModuleName(),  
+									array( 'upload_session_key' => $upload_session_key 
+							));
+				}
+				//else the file downloaded in place continue with validation: 
 			}
 		}		
 		
@@ -216,12 +240,12 @@ class ApiUpload extends ApiBase {
 			'file' => null,
 			'chunk' => null,
 			'url' => null,
+			'enablechunks' => null,
 			'comment' => array(
 				ApiBase :: PARAM_DFLT => ''
 			),
 			'watch' => false,
-			'ignorewarnings' => false,
-			'enablechunks' => false,
+			'ignorewarnings' => false,			
 			'done'	=> false,
 			'sessionkey' => null,
 			'chunksessionkey'=> null,
@@ -234,10 +258,10 @@ class ApiUpload extends ApiBase {
 			'file' => 'File contents',
 			'chunk'=> 'Chunk File Contents',
 			'url' => 'Url to upload from',
+			'enablechunks' => 'Boolean If we are in chunk mode; accepts many small file POSTs',
 			'comment' => 'Upload comment or initial page text',
 			'watch' => 'Watch the page',
-			'ignorewarnings' => 'Ignore any warnings',
-			'enablechunks' => 'Boolean If we are in chunk mode; accepts many small file POSTs',			
+			'ignorewarnings' => 'Ignore any warnings',					
 			'done'	=> 'When used with "chunks", Is sent to notify the api The last chunk is being uploaded.',
 			'sessionkey' => 'Session key in case there were any warnings.', 
 			'chunksessionkey'=> 'Used to sync uploading of chunks',

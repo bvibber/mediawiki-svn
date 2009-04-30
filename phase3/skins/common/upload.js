@@ -153,7 +153,7 @@ function fillDestFilename(id) {
 		if( fname.lastIndexOf('.')!=-1 ){		
 			var ext = fname.substr( fname.lastIndexOf('.')+1 );			
 			for(var i=0; i < wgFileExtensions.length; i++){						
-				if( strtolower( wgFileExtensions[i] )  == strtolower( ext ) )
+				if(  wgFileExtensions[i].toLowerCase()   ==  ext.toLowerCase() )
 					found = true;
 			}
 		}

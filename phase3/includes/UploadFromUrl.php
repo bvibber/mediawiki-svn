@@ -16,15 +16,21 @@ class UploadFromUrl extends UploadBase {
 	}	
 	/*entry point for Api upload:: ASYNC_DOWNLOAD (if possible) */
 	function initialize( $name, $url ) {		
-		global $wgTmpDirectory;
+		global $wgTmpDirectory, $wgPhpCliPath;
 		
-		if(!$this->dl_mode)
+		if(!$this->dl_mode &&  $wgPhpCliPath && wfShellExecEnabled() ){
 			$this->dl_mode = Http::ASYNC_DOWNLOAD;
+		}else{
+			$this->dl_mode = Http::SYNC_DOWNLOAD;	
+		}
 		
 		$local_file = tempnam( $wgTmpDirectory, 'WEBUPLOAD' );
 		parent::initialize( $name, $local_file, 0, true );
 
 		$this->mUrl = trim( $url );
+	}
+	public function isAsync(){
+		return $this->dl_mode == Http::ASYNC_DOWNLOAD;
 	}
 	/*entry point for SpecialUpload no ASYNC_DOWNLOAD possible: */
 	function initializeFromRequest( &$request ) {		
@@ -43,18 +49,20 @@ class UploadFromUrl extends UploadBase {
 	/**
 	 * Do the real fetching stuff
 	 */
-	function fetchFile( ) {
+	function fetchFile( ) {		
 		//entry point for SpecialUplaod 
 		if( stripos($this->mUrl, 'http://') !== 0 && stripos($this->mUrl, 'ftp://') !== 0 ) {
 			return Status::newFatal('upload-proto-error');
 		}
 		//print "fetchFile:: $this->dl_mode";
-		//now do the actual download to the shared target: 	
-		$status = Http::doDownload ( $this->mUrl, $this->mTempPath, $this->dl_mode);		
-		//update the local filesize var: 
-		$this->mFileSize = filesize( $this->mTempPath );				
-		return $status;			
 		
+		//now do the actual download to the target file: 	
+		$status = Http::doDownload ( $this->mUrl, $this->mTempPath, $this->dl_mode );	
+					
+		//update the local filesize var: 
+		$this->mFileSize = filesize( $this->mTempPath );
+						
+		return $status;					
 	}
 	
 	static function isValidRequest( $request ){

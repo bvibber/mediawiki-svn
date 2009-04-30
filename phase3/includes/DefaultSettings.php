@@ -3354,9 +3354,15 @@ $wgTrustedMediaFormats= array(
 $wgAllowSpecialInclusion = true;
 
 /**
- * Timeout for HTTP requests done via CURL
+ * Timeout for HTTP requests done via CURL 
+ *
  */
-$wgHTTPTimeout = 3;
+$wgHTTPTimeout = 3; 
+
+/**
+ * Timeout for large http file copy over http (default 2 hours) 
+ */ 
+$wgHTTPFileTimeout = 60*60*2;
 
 /**
  * Proxy to use for CURL requests.
