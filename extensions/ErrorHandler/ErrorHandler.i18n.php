@@ -904,6 +904,7 @@ $messages['sr-ec'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Najami
  */
 $messages['sv'] = array(
 	'errorhandler-desc' => 'Felhanterare för MediaWiki',
@@ -912,6 +913,7 @@ $messages['sv'] = array(
 	'errorhandler-error-warning' => 'Varning',
 	'errorhandler-error-parse' => 'Parser-fel',
 	'errorhandler-error-notice' => 'Meddelande',
+	'errorhandler-error-deprecated' => 'Nedgraderad',
 	'errorhandler-error-core-error' => 'Fel i kärnan',
 	'errorhandler-error-core-warning' => 'Kärn-varning',
 	'errorhandler-error-compile-error' => 'Kompileringsfel',
@@ -919,6 +921,7 @@ $messages['sv'] = array(
 	'errorhandler-error-user-error' => 'Användarfel',
 	'errorhandler-error-user-warning' => 'Användarvarning',
 	'errorhandler-error-user-notice' => 'Användarmeddelande',
+	'errorhandler-error-user-deprecated' => 'Användare nedgraderad',
 	'errorhandler-error-strict' => 'Strikta standarder',
 	'errorhandler-error-recoverable' => 'Hanterbart allvarligt fel',
 	'errorhandler-msg-text' => '$1 : $2 i $3 (rad $4)',

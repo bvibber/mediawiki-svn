@@ -84,10 +84,11 @@ $messages['bs'] = array(
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'advancedrandom' => 'Pokročilý náhodný výběr',
-	'advancedrandom-desc' => 'Vrátí náhodnou stránku, která sama nebo jí příslušná diskuse odkazuje na zadanou stránku. Je možné ho použít na získání náhodného nejlepšího článku ve tvaru [[{{ns:Special}}:AdvancedRandom/Šablona:Nejlepší článek/Diskuse]] nebo na získání náhodného GFDL souboru ve tvaru [[{{ns:Special}}:AdvancedRandom/Šablona:GFDL/Soubor]]',
+	'advancedrandom-desc' => 'Vrátí náhodnou stránku, která sama nebo jí příslušná diskuse odkazuje na zadanou stránku. Je možné ho použít na získání náhodného nejlepšího článku ve tvaru [[{{ns:Special}}:AdvancedRandom/{{ns:Template}}:Nejlepší článek/{{ns:Talk}}]] nebo na získání náhodného GFDL souboru ve tvaru [[{{ns:Special}}:AdvancedRandom/{{ns:Template}}:GFDL/{{ns:File}}]]',
 );
 
 /** Welsh (Cymraeg)

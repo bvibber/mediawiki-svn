@@ -112,9 +112,10 @@ $messages['bs'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
-	'lua_desc' => 'Rozšiřuje sntaktický analyzátor o podporu vložených kódů v jazyku [http://www.lua.org/ Lua]',
+	'lua_desc' => 'Rozšiřuje syntaktický analyzátor o možnost vkládání bloků kódu v jazyce [http://www.lua.org/ Lua]',
 	'lua_error' => 'Chyba na řádku $1',
 	'lua_extension_notfound' => 'Rozšíření Lua není nakonfigurováno',
 	'lua_interp_notfound' => 'Nebyl nalezen překladač Lua',

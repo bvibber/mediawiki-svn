@@ -78,9 +78,10 @@ $messages['ca'] = array(
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
-	'contributionseditcount' => 'Tento uživatel má {{PLURAL:$1|editaci|editace|editací}}.',
+	'contributionseditcount' => 'Tento uživatel má $1 {{PLURAL:$1|editaci|editace|editací}}.',
 	'contributionseditcount-desc' => 'Zobrazuje počet editací na stránce [[Special:Contributions|Příspěvky uživatele]]',
 );
 

@@ -200,6 +200,13 @@ $messages['sk'] = array(
 	'semanticgallery-desc' => 'Pridáva výstupný formát galérie medzi inline požiadavky SMW',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'semanticgallery-desc' => 'Lägger till en galleriutdataformatering till SMW-frågor',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -562,11 +562,11 @@ $messages['vo'] = array(
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Benokömanun]] paläükon lä bespikapad gebana nulik',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
-	'newusermessage-desc' => "響新用戶討論版度加一句訊息",
+	'newusermessage-desc' => '響新用戶討論版度加一句訊息',
 	'newuseredit-summary' => '加[[{{int:newusermessage-template}}|歡迎訊息]]到新用戶討論版度',
 );
 

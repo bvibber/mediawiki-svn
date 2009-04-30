@@ -1383,6 +1383,7 @@ $messages['lb'] = array(
 	'regexblock-block-success' => "D'Spär ass elo ageschalt",
 	'regexblock-currently-blocked' => 'Aktuell gespaarten Adressen:',
 	'regexblock-expire-duration' => '1 Stonn,2 Stonnen, 4 Stonnen,6 Stonnen,1 Dag,3 Deeg,1 Woch,2 Wochen,1 Mount,3 Méint,6 Méint,1 Joer,onbegrenzt',
+	'regexblock-page-title' => 'Spär vun engem Numm mat engem regulärem Ausdrock',
 	'regexblockstats' => 'Regex Spärstatistiken',
 	'regexblock-page-title-1' => 'Adress spären andem regulär Ausdréck (Regex) benotzt ginn',
 	'regexblock-reason-name' => 'Dëse Benotzernumm ass wéinst Vandalismus oder aus ähnlechen Ursaache gespaart an däerf keng Ännerunge maachen. 

@@ -3341,6 +3341,7 @@ $messages['su'] = array(
  * @author Jon Harald Søby
  * @author Lokal Profil
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'openid-desc' => 'Logga in på wikin med en [http://openid.net/ OpenID] och logga in på andra sidor som använder OpenID med konton härifrån',
@@ -3398,7 +3399,7 @@ Om du vill använda OpenID att logga in i framtiden, kan du [[Special:OpenIDConv
 	'openidclientonlytext' => 'Du kan inte använda konton från denna wikin som OpenID på en annan sida.',
 	'openidloginlabel' => 'OpenID-adress',
 	'openidlogininstructions' => '{{SITENAME}} stödjer [http://openid.net/ OpenID]-standarden för enhetlig inlogging på många webbsidor.
-OpenID låter dig logga in på många webbsidor utan att använda olika lösenord för varje.
+OpenID låter dig logga in på många webbsidor utan att använda olika lösenord för varje. 
 (Se [http://en.wikipedia.org/wiki/OpenID Wikipedia-artikeln om OpenID] för mer information.)
 
 Om du redan har ett konto på {{SITENAME}}, kan du [[Special:UserLogin|logga in]] som vanligt med ditt användarnamn och lösenord.
@@ -3409,6 +3410,12 @@ Det finns många [http://openid.net/get/ leverantörer av OpenID], och du kan re
 	'openid-prefstext' => '[http://openid.net/ OpenID] inställningar',
 	'openid-pref-hide' => 'Dölj <a href="http://openid.net/">OpenID</a> på din användarsida, om du loggar in med OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Uppdatera min informationen från OpenID-persona varje gång jag loggar in',
+	'openidsigninorcreateaccount' => 'Logga in eller skapa ett nytt konto',
+	'openid-provider-label-openid' => 'Skriv in din OpenID-URL',
+	'openid-provider-label-google' => 'Logga in genom att använda ditt Google-konto',
+	'openid-provider-label-yahoo' => 'Logga in genom att använda ditt Yahoo-konto',
+	'openid-provider-label-aol' => 'Skriv in ditt AOL-skärmnamn',
+	'openid-provider-label-other-username' => 'Skriv in ditt $1-användarnamn',
 );
 
 /** Telugu (తెలుగు)

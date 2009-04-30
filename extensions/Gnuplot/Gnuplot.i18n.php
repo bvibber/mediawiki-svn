@@ -39,6 +39,13 @@ $messages['arz'] = array(
 	'gnuplot-desc' => 'يضيف الوسم <code><nowiki><gnuplot></nowiki></code> لاستخدام جنو بلوت',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'gnuplot-desc' => 'Дадае тэг <code><nowiki><gnuplot></nowiki></code> для выкарыстаньня Gnuplot',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

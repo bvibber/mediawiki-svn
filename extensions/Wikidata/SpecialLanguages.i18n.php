@@ -1708,15 +1708,16 @@ $wdMessages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $wdMessages['cs'] = array(
 	'languages' => 'Wikidata: Správce jazyků',
 	'langman_title' => 'Správce jazyků',
 	'langman_not_allowed' => 'Nemáte oprávnění měnit jazykové nastavení.',
-	'langman_header' => 'Níže napište kód a anglický název jazyku:',
-	'langman_req_fields' => 'Název jazyku i jeho ISO 693-3 kód musí být vyplněny.',
+	'langman_header' => 'Níže napište kód a anglický název jazyka:',
+	'langman_req_fields' => 'Musí být vyplněn název jazyka i jeho kód podle ISO 693-3.',
 	'langman_adding' => 'Přidává se jazyk $1 s kódem $2.',
-	'langman_langname' => 'Název jazyku:',
+	'langman_langname' => 'Název jazyka:',
 	'langman_iso639-3' => 'ISO 639-3 kód:',
 	'langman_iso639-2' => 'ISO 639-2 kód:',
 	'langman_wikimedia' => 'Kód Wikimedia:',

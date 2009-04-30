@@ -44,6 +44,13 @@ $messages['bar'] = array(
 	'googleadsense-desc' => 'Fügt [http://www.google.com/adsense Google AdSense] zu da Sidebar dazua',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'googleadsense-desc' => 'Дадае [http://www.google.com/adsense Google AdSense] ў навігацыйную панэль',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

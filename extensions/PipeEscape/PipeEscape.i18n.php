@@ -190,6 +190,13 @@ $messages['sk'] = array(
 	'pipeescape-desc' => 'Funkciu syntaktického analyzátora <code>#!</code> použijete vtedy, keď chcete, aby bol znak rúry iba znakom rúry',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'pipeescape-desc' => 'Parserfunktionen <code>#!</code> låter "|"-tecknet bara vara ett "|"-tecken.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

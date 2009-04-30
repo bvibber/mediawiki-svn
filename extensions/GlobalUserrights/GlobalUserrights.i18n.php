@@ -58,6 +58,18 @@ $messages['arz'] = array(
 	'right-userrights-global' => 'إدارة سجل الحقوق العامه',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'globaluserrights' => 'Кіраваньне глябальнымі правамі ўдзельніка',
+	'gur-desc' => 'Лёгкае кіраваньне [[Special:GlobalUserRights|глябальнымі правамі ўдзельніка]]',
+	'gur-rightslog-name' => 'Журнал глябальных правоў',
+	'gur-rightslog-header' => 'Гэта журнал зьменаў глябальных правоў.',
+	'gur-rightslog-entry' => 'зьменены глябальны ўдзел у групах з $2 у $3 для $1',
+	'right-userrights-global' => 'Кіраваньне глябальнымі правамі ўдзельніка',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

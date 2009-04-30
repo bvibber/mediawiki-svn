@@ -527,9 +527,12 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'review_sidebar_title' => 'Revisar',
+	'review-desc' => 'Permite a los usuarios [[Special:Review|revisar]] páginas',
 	'review_topic_page' => 'Revisar tópicos',
 	'review_save' => 'Almacenar revisión',
+	'review_your_review' => 'Tu revisión de esta página/revisión:',
 	'review_page_link' => 'revisar estadísticas',
+	'review_sidebar_final' => 'Para datos de revisión de esta vista de página, vea su $1',
 	'review_for_page' => 'Revisión para página "$1"',
 	'review_for_user' => 'Revisión para usuario "$1"',
 	'review_error' => 'Algo está equivocado!',
@@ -1743,7 +1746,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sv'] = array(
 	'review_sidebar_title' => 'Granska',
-	'review-desc' => 'Den återupplivade [[Special:Review|kontrolleringsfunktionen]].',
+	'review-desc' => 'Låter användare [[Special:Review|granska]] sidor',
 	'review_topics' => '# Följande är listan över ämnen och rankningar för kontrolleringstillägget.
 # Varje ämne definieras av en linje på fem värden, skiljt från varandra med ":" (alla andra linjer ignoreras).
 # Följden är: numeriskt värde (>0), namn, maximalt värde (>1; 2=yes/no), betydelsen av de lägsta värdena (t.ex. "dålig"), betydelse av högsta värde (t.ex. "bra").
@@ -1763,7 +1766,7 @@ $messages['sv'] = array(
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Revision',
 	'review_version_link' => 'Revision #$1',
-	'review_statistic_cell' => 'Genomsnitt: $1 av $2<br />($4 registrerade, $5 andra)',
+	'review_statistic_cell' => 'Genomsnitt: $1 av $2<br />($4 registrerade {{PLURAL:$4|användare|användare}}, $5 anonyma {{PLURAL:$5|användare|användare}})',
 	'review_version_statistic_cell' => '$1 av $2',
 	'review_version_reviews_link' => '<small>(versionsgranskningar)</small>',
 	'review_concerns_page' => 'Den här granskningen gäller sidan "$1".',

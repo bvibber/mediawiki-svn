@@ -159,6 +159,7 @@ $messages['bs'] = array(
 	'deletebatch-from-file' => 'iz spiska datoteke',
 	'deletebatch-from-form' => 'iz obrazca',
 	'deletebatch-success-subtitle' => 'za $1',
+	'deletebatch-file-missing' => 'Ne možete se pročitati navedena datoteka',
 	'deletebatch-select-yourself' => 'vi',
 );
 

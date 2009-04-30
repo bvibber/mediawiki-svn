@@ -2403,8 +2403,27 @@ $1',
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'inplace_scaler_not_enough_params' => 'Không có đủ tham số.',
+	'inplace_scaler_invalid_image' => 'Hình không hợp lệ: không thể tính kích cỡ được.',
+	'webstore_path_invalid' => 'Tên tập tin không hợp lệ.',
+	'webstore_src_open' => 'Lỗi khi mở tập tin nguồn “$1”.',
+	'webstore_src_close' => 'Lỗi khi đóng tập tin nguồn “$1”.',
+	'webstore_src_delete' => 'Lỗi khi xóa tập tin nguồn “$1”.',
+	'webstore_rename' => 'Lỗi khi đổi tên tập tin “$1” thành “$2”.',
+	'webstore_lock_open' => 'Lỗi mở tập tin chìu khóa “$1”.',
+	'webstore_lock_close' => 'Lỗi đóng tập tin chìu khóa “$1”.',
+	'webstore_dest_exists' => 'Lỗi: tập tin đích “$1” đã tồn tại.',
+	'webstore_temp_open' => 'Lỗi mở tập tin tạm “$1”.',
+	'webstore_temp_copy' => 'Lỗi chép tập tin tạm “$1” qua tập tin đích “$2”.',
+	'webstore_temp_close' => 'Lỗi đóng tập tin tạm “$1”.',
+	'webstore_temp_lock' => 'Lỗi khóa tập tin tạm “$1”.',
+	'webstore_no_file' => 'Chưa tải lên tập tin nào.',
 	'webstore_curl' => 'Lỗi cURL: $1',
+	'webstore_404' => 'Không tìm thấy tập tin.',
 	'webstore_php_warning' => 'Cảnh báo PHP: $1',
+	'webstore_metadata_not_found' => 'Không tìm thấy tập tin: $1',
+	'webstore_postfile_not_found' => 'Không tìm thấy tập tin để đăng.',
+	'webstore_php_error' => 'Gặp lỗi PHP:',
 );
 
 /** Volapük (Volapük)
