@@ -212,6 +212,12 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		var _this = this;				
 		_this.fogg.encode( JSON.stringify( _this.encoder_settings ) );		  	
 		
+		 //show transcode status:
+		$j('#fogg-status-transcode').show();
+			    			
+	    //hide the fogg-status-upload
+	    $j('#fogg-status-upload').hide();	
+		
 		//setup a local function for timed callback:
 		var encodingStatus = function() {
 			var status = _this.fogg.status();
@@ -222,15 +228,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			//loop to get new status if still encoding
 			if( _this.fogg.state == 'encoding' ) {
 				setTimeout(encodingStatus, 500);
-			}else if ( _this.fogg.state == 'encoding done' ) { //encoding done, state can also be 'encoding failed'
-				//now call the upload function 
-								    		
-			    //hide the fogg-status-transcode
-			    $j('#fogg-status-transcode').hide();
-			    			
-			    //show the fogg-status-upload
-			    $j('#fogg-status-upload').show();			    			    					    																											 						
-				
+			}else if ( _this.fogg.state == 'encoding done' ) { //encoding done, state can also be 'encoding failed				
 				// ignore warnings & set source type 
 				//_this.formData[ 'wpIgnoreWarning' ]='true';
 				_this.formData[ 'wpSourceType' ]='file';		
@@ -255,6 +253,10 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	},	
 	doUploadStatus:function() {	
 		var _this = this;
+	 	//setup display for upload status: 
+	    $j('#fogg-status-transcode').hide();			    			
+	    $j('#fogg-status-upload').show();		
+	    
 		_this.oldResponseText = '';
 		//setup a local function for timed callback: 				
 		var uploadStatus = function(){

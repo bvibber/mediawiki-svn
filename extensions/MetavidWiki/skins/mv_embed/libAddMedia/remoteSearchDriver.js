@@ -328,8 +328,8 @@ remoteSearchDriver.prototype = {
 					'<form id="rsd_form" action="javascript:return false;" method="GET">'+
 					'<table style="width:100%;background-color:transparent;">' +
 						'<tr>'+
-							'<td style="width:110px">'+
-								'<h3> Media Search </h3>'+
+							'<td style="width:120px">'+
+								'<h3>' + gM('mv_media_search') +'</h3>'+
 							'</td>'+
 							'<td style="width:190px">'+
 								'<input type="text" tabindex="1" value="' + dq + '" maxlength="512" id="rsd_q" name="rsd_q" '+ 
@@ -1253,10 +1253,11 @@ remoteSearchDriver.prototype = {
 		var about_desc ='';
 		if( this.content_providers[this.disp_item] ){
 			var cp = this.content_providers[this.disp_item];
-			about_desc ='<div style="position:absolute;bottom:0px;left:5px;"><i>About <a href="'+ cp.homepage + '" target="_new" >'+ cp.title +'</a> </i></div>';
+			about_desc ='<span style="position:relative;top:0px;font-style:italic;">' +
+					' <i> Results From <a href="'+ cp.homepage + '" target="_new" >'+ cp.title +'</a> </i></span>';
 		}
-		$j('#rsd_results').append( about_desc + '<div id="rds_results_bar">'+				
-			'<span style="position:relative;top:-5px;font-style:italic;">'+
+		$j('#rsd_results').append( '<div id="rds_results_bar">'+			 			
+			'<span style="position:relative;top:0px;font-style:italic;">'+
 				gM('rsd_layout')+' '+
 			'</span>'+
 				'<img id="msc_box_layout" ' +
@@ -1267,7 +1268,8 @@ remoteSearchDriver.prototype = {
 					'title = "' + gM('rsd_list_layout') + '" '+
 					'src = "' +  ( (_this.result_display_mode=='list')?list_dark_url:list_light_url ) + '" '+			
 					'style="width:20px;height:20px;cursor:pointer;">'+			
-			'<span id="rsd_paging_ctrl" style="position:absolute;right:5px;"></span>'+
+			'<span id="rsd_paging_ctrl" style="position:absolute;right:5px;top:5px;"></span>'+
+			about_desc +
 			'</div>'
 		);
 		//get paging with bindings:

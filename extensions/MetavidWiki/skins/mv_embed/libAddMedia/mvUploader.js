@@ -259,13 +259,13 @@ mvBaseUploadInterface.prototype = {
 			_this.doUploadSwitch();
 		}
 	},
-	doUploadSwitch:function(){
+	doUploadSwitch:function(){		
 		js_log('mvUPload:doUploadSwitch()');
 		var _this = this;			
 		//issue a normal post request 		
-		if( _this.upload_mode == 'post' || $j('#wpSourceTypeFile').get(0).checked ){				
+		if( _this.upload_mode == 'post' || $j('#wpSourceTypeFile').get(0).checked ){			
 			//update the status
-			$j('#dlbox-centered').html('<h5>' + _this.getProgressTitle() + '</h5>' + 
+			$j('#dlbox-centered').html( '<h5>' + _this.getProgressTitle() + '</h5>' + 
 				mv_get_loading_img( 'left:40%;top:20%')
 			);
 						
@@ -275,7 +275,7 @@ mvBaseUploadInterface.prototype = {
 			$j(_this.editForm).append('<input type="hidden" name="wpUpload" value="' + $j('#wpUpload').val() + '"/>');
 			//do the submit :			
 			_this.editForm.submit();						
-		}else if( _this.upload_mode == 'api' && $j('#wpSourceTypeURL').get(0).checked){
+		}else if( _this.upload_mode == 'api' && $j('#wpSourceTypeURL').get(0).checked){	
 			//if the api is supported.. && source type is http do upload with http status updates
 			_this.doHttpUpload();			
 		}else{
@@ -283,15 +283,21 @@ mvBaseUploadInterface.prototype = {
 		}		
 	},
 	doHttpUpload:function(){
+		var _this = this;
 		//build the api query:
-		js_log('do doHttpUpload upload!');
-		 
-		/*do_api_req( {
-			'data':{ 'action':'upload','modules':'upload' },
-			'url':_this.api_url 
-		}, function(data){
-			js_log('result data:')
-		});	*/
+		js_log('do doHttpUpload upload!');			
+		do_api_req({
+			'data':{ 
+				'action'	: 'upload',
+				'url'		: $j('#wpUploadFileURL').val(),
+				'filename'	: $j('#wpDestFile').val(),
+				'comment' 	: $j('#wpUploadDescription').val(),
+			},
+			'url' : _this.api_url 
+		}, function( data ){
+			js_log('result data got:');
+			//start a timmed updates			
+		});	
 	},
 	getProgressTitle:function(){
 		return gM('upload-in-progress');
@@ -311,9 +317,9 @@ mvBaseUploadInterface.prototype = {
 						'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
 							'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
 						'</div>' +
-						'<span id="fogg-pstatus">0%</span>' +
-						'<span id="fogg-status-transcode">' + gM('upload-transcoded-status') + '</span>'+  
-						'<span style="display:none" id="fogg-status-upload">' + gM('uploaded-status') + '</span>' +
+						'<span id="fogg-pstatus">0% </span>' +
+						'<span style="display:none" id="fogg-status-transcode">' + gM('upload-transcoded-status') + '</span>'+  
+						'<span id="fogg-status-upload">' + gM('uploaded-status') + '</span>' +
 				'</div>' +					
 				'<div id="dlbox-overlay" class="dlbox-overlay" style="background:#000;cursor:wait;height:100%;'+
 							'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+

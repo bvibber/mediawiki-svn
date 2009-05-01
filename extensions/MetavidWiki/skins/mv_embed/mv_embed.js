@@ -718,28 +718,27 @@ function mv_addLoadEvent(func) {
 
 //does a remote or local api request based on request url 
 //@param options: url, data, cbParam, callback
-function do_api_req( options, callback ){	
-	if(typeof options.data != 'object'){
-		js_log('Error: request paramaters must be an object');
-		return false;
+function do_api_req( options, callback ){		
+	if(typeof options.data != 'object'){		
+		return js_error('Error: request paramaters must be an object');;
 	}
+	//gennerate the url if its missing:
 	if( typeof options.url == 'undefined' ){
-		if(!wgServer || ! wgScriptPath){
-			js_log('Error: no api url');
-			return false;
+		if(!wgServer || ! wgScriptPath){			
+			return js_error('Error: no api url for api request');;
 		}		
 		if (wgServer && wgScript)
 			options.url = wgServer + wgScript;
 		//update to api.php (if index.php was in the wgScript path): 
 	 	options.url =  options.url.replace(/index.php/, 'api.php');		
 	}			
-	if(typeof options.data == 'undefined')
+	if( typeof options.data == 'undefined' )
 		options.data = {};	
 	
 	//force format to json (if not already set)  		
 	options.data['format'] = 'json';
 	
-	js_log('do api req: ' + options.url +' data' +  options.data );			
+	js_log('do api req: ' + options.url +'?' +  jQuery.param(options.data) );			
 	//build request string:	 		
 	if( parseUri( document.URL ).host == parseUri( options.url ).host ){		
 		//local request do api request directly		
@@ -749,7 +748,7 @@ function do_api_req( options, callback ){
 			data: options.data,
 			dataType:'json', //api requests _should_ always return JSON data: 
             async: false,
-			success:function(data){			
+			success:function(data){						
 				callback(  data );
 			},
 			error:function(e){

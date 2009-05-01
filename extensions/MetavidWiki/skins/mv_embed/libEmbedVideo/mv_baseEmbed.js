@@ -2364,21 +2364,22 @@ var embedTypes = {
 				|| typeof HTMLVideoElement == 'function' ) // Opera
 		{
 			//do another test for safari: 
-			if( this.safari ){
-				/*var dummyvid = document.createElement("video");
+			if( this.safari ){				
 				try{
+					var dummyvid = document.createElement("video");
 					if (dummyvid.canPlayType("video/ogg;codecs=\"theora,vorbis\"") == "probably")
 					{
 						this.players.addPlayer( videoElementPlayer );
 					} else {
-						could add some user nagging to install the xiph qt 
+						//@@todo add some user nagging to install the xiph qt 
 					}
-				}*/
+				}catch(e){
+					js_log('could not run canPlayType in safari');
+				}
 			}else{
 				this.players.addPlayer( videoElementPlayer );
 			}
-		}
-		 	
+		}		 
 		
 		 // Mozilla plugins
 		if( navigator.mimeTypes && navigator.mimeTypes.length > 0) {
