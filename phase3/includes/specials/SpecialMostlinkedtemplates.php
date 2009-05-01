@@ -52,8 +52,7 @@ class SpecialMostlinkedtemplates extends QueryPage {
 	public function getQueryInfo() {
 		return array (
 			'tables' => array ( 'templatelinks' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'tl_namespace AS namespace',
+			'fields' => array ( 'tl_namespace AS namespace',
 					'tl_title AS title',
 					'COUNT(*) AS value' ),
 			'conds' => array ( 'tl_namespace' => NS_TEMPLATE' ),

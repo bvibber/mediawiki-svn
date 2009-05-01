@@ -30,8 +30,7 @@ class ShortPagesPage extends QueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'page' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'page_namespace AS namespace',
+			'fields' => array ( 'page_namespace AS namespace',
 					'page_title AS title',
 					'page_len AS value' ),
 			'conds' => array ( 'page_namespace' => MWNamespace::getContentNamespaces(),

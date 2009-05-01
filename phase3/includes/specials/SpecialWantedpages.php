@@ -51,8 +51,7 @@ class WantedPagesPage extends WantedQueryPage {
 		$query = array (
 			'tables' => array ( 'pagelinks', 'page AS pg1',
 					'page AS pg2' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'pl_namespace AS namespace',
+			'fields' => array ( 'pl_namespace AS namespace',
 					'pl_title AS title',
 					'COUNT(*) AS value' ),
 			'conds' => array ( 'pg1.page_namespace IS NULL',

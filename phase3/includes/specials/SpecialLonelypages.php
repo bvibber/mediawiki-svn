@@ -31,8 +31,7 @@ class LonelyPagesPage extends PageQueryPage {
 		return array (
 			'tables' => array ( 'page', 'pagelinks',
 					'templatelinks' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'page_namespace AS namespace',
+			'fields' => array ( 'page_namespace AS namespace',
 					'page_title AS title',
 					'page_title AS value' ),
 			'conds' => array ( 'pl_namespace IS NULL',

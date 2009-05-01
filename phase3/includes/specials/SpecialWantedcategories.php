@@ -22,8 +22,7 @@ class WantedCategoriesPage extends WantedQueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'categorylinks', 'page' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					"'" . NS_CATEGORY . "' AS namespace",
+			'fields' => array ( "'" . NS_CATEGORY . "' AS namespace",
 					'cl_to AS title',
 					'COUNT(*) AS value' ),
 			'conds' => array ( 'page_title IS NULL' ),

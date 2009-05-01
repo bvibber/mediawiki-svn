@@ -26,8 +26,7 @@ class BrokenRedirectsPage extends PageQueryPage {
 	function getQueryInfo() {
 		return array(
 			'tables' => array( 'redirect', 'page AS p1', 'page AS p2' ),
-			'fields' => array( "'{$this->getName()}' AS type",
-					'p1.page_namespace AS namespace',
+			'fields' => array( 'p1.page_namespace AS namespace',
 					'p1.page_title AS title',
 					'rd_namespace',
 					'rd_title'

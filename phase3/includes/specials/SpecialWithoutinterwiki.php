@@ -53,8 +53,7 @@ class WithoutInterwikiPage extends PageQueryPage {
 	function getQueryInfo() {
 		$query = array (
 			'tables' => array ( 'page', 'langlinks' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'page_namespace AS namespace',
+			'fields' => array ( 'page_namespace AS namespace',
 					'page_title AS title',
 					'page_title AS value' ),
 			'conds' => array ( 'll_title IS NULL' ),

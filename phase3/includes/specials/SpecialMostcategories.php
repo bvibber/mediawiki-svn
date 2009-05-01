@@ -21,8 +21,7 @@ class MostcategoriesPage extends QueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'categorylinks', 'page' ),
-			'fields' => array ( "'{$this->getName()}' AS name",
-					'page_namespace AS namespace',
+			'fields' => array ( 'page_namespace AS namespace',
 					'page_title AS title',
 					'COUNT(*) AS value' ),
 			'conds' => array ( 'page_namespace' => MWNamespace::getContentNamespaces() ),
