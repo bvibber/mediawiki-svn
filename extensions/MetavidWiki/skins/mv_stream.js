@@ -54,7 +54,7 @@ mv_addLoadEvent(mv_load_interface_libs);
 function mv_load_interface_libs(){
 	js_log('f:mv_load_interface_libs');
 	//make sure the mv_embed stuff is loaded 
-	mvJsLoader.loadBaseLibs(function(){
+	mvJsLoader.jQueryCheck(function(){
 		js_log('load stream js');
 		//load some additional plugins/components:
 		//:hoverIntent

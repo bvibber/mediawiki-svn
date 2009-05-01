@@ -18,7 +18,7 @@ var gMvd={};
 function mv_setup_allpage(){
 	js_log("mv embed done loading now setup 'all page'");		
 	//make sure we have jQuery and any base required libs:
-	mvJsLoader.loadBaseLibs(function(){ 		
+	mvJsLoader.jQueryCheck(function(){ 		
  		js_log('allpage_ did jquery check'); 		
  		mvJsLoader.doLoad( {
  			'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',

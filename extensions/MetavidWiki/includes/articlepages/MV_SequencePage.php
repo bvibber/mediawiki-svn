@@ -81,7 +81,7 @@ class MV_SequencePage extends Article {
 		$talkTitle = $this->mTitle->getTalkPage();
 		$metaData = array(
 			'title'			=> $this->mTitle->getText(), 
-			'interface_url' => $wgServer . $wgScript,
+			'interface_url' => str_replace('index.php', 'api.php', $wgServer . $wgScript), //api link (might be a better way to grab that) 
 			'linkback'		=> $this->mTitle->getFullURL(),
 			'mTitle'		=> $this->mTitle->getPrefixedDBKey(),
 			'mTalk'			=> $talkTitle->getPrefixedDBKey()

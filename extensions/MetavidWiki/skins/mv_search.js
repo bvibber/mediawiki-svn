@@ -4,7 +4,7 @@ var maxFilters = 8;
 var mv_search_action='';
 function mv_pre_setup_search(req_mode){
 	//make sure we have jQuery and any base required libs:
-	mvJsLoader.loadBaseLibs(function(){
+	mvJsLoader.jQueryCheck(function(){
 		mv_setup_search(req_mode);
 	});
 }

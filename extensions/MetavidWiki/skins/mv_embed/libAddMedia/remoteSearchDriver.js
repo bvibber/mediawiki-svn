@@ -932,23 +932,26 @@ remoteSearchDriver.prototype = {
 			});				
 		}
 		if( mediaType == 'video' || mediaType == 'audio'){
-			js_log('append html: ' + rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'}) );
-			$j('#clip_edit_disp').append(
-				rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})
-			);	
-			//rewrite by id handldes getting any libs we are missing: 		
-			rewrite_by_id('embed_vid',function(){				
-				//grab any information that we got from the ROE xml or parsed from the media file
-				rObj = rObj.pSobj.getEmbedObjParsedInfo( rObj, 'embed_vid' );					
-				//add the re-sizable to the doLoad request:				
-				clibs['$j.ui.resizable']   ='jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js';	
-				clibs['$j.fn.hoverIntent'] ='jquery/plugins/jquery.hoverIntent.js';
-				mvJsLoader.doLoad(clibs, function(){	
-					//make sure the rsd_edit_img is hidden: 
-					$j('#rsd_edit_img').hide();			
-					//run the image clip tools 
-					_this.cEdit = new mvClipEdit( mvClipInit );
-				});	
+			//make sure we have the embedVideo libs: 
+			mvJsLoader.embedVideoCheck(function(){
+				js_log('append html: ' + rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'}) );
+				$j('#clip_edit_disp').append(
+					rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})
+				);	
+				//rewrite by id handldes getting any libs we are missing: 		
+				rewrite_by_id('embed_vid',function(){				
+					//grab any information that we got from the ROE xml or parsed from the media file
+					rObj = rObj.pSobj.getEmbedObjParsedInfo( rObj, 'embed_vid' );					
+					//add the re-sizable to the doLoad request:				
+					clibs['$j.ui.resizable']   ='jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js';	
+					clibs['$j.fn.hoverIntent'] ='jquery/plugins/jquery.hoverIntent.js';
+					mvJsLoader.doLoad(clibs, function(){	
+						//make sure the rsd_edit_img is hidden: 
+						$j('#rsd_edit_img').hide();			
+						//run the image clip tools 
+						_this.cEdit = new mvClipEdit( mvClipInit );
+					});	
+				});
 			});
 		}	
 	},

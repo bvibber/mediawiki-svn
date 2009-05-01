@@ -44,7 +44,7 @@ if( MV_EMBED_VIDEO_HANDLER ){
 		}			
 		if( vidIdList.length > 0){
 			load_mv_embed( function(){
-				mvJsLoader.loadBaseLibs(function(){													
+				mvJsLoader.embedVideoCheck(function(){													
 					//do utilty rewrite of oggHanlder content: 
 					rewrite_for_oggHanlder( vidIdList );					
 				});
@@ -85,7 +85,7 @@ if( wgPageName== "Special:Upload" ){
 		//alert("!!upload hook");
 		load_mv_embed( function(){			
 			//load jQuery and what not
-			mvJsLoader.loadBaseLibs(function(){
+			mvJsLoader.jQueryCheck(function(){
 				mvJsLoader.doLoad( {
 					'mvFirefogg' : 'libAddMedia/mvFirefogg.js',	
 					'mvUploader' : 'libAddMedia/mvUploader.js'

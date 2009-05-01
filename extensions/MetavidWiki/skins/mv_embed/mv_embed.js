@@ -143,66 +143,6 @@ function mv_set_loading(target, load_id){
 			mv_get_loading_img('top:30px;left:30px') + 
 		'</div>');	
 }
-//library to load core mv_embed libraries
-var mvBaseLoader = {
-	calledloadBaseLibs:false,	
-	callbacks:new Array(),
-	done:false,
-	load:function( callback){
-		//if we are done loading the libs just jump directly to the callback
-		if(this.done==true){
-			callback();
-			return ;
-		}
-		//queue the callback: 
-	 	if(callback)
-	 		mvBaseLoader.addLoadEvent(callback);
-	 	//run if not already running: 
-	 	if( ! mvBaseLoader.calledloadBaseLibs ){	 		
-		 	js_log("called loadBaseLibs");  	
-		 	//only call load base libs once
-		 	mvBaseLoader.calledloadBaseLibs=true;    	
-		 	//issue a style sheet request can come in whenever:
-		 	if(!styleSheetPresent( mv_embed_path + 'skins/'+mv_skin_name+'/styles.css'))
-				loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
-			  	  	  
-			//two loading stages, first get jQuery
-			var _this = this;
-		 	mvJsLoader.doLoad({
-		 		'window.jQuery'		:'jquery/jquery-1.2.6.js'	 		
-		 	},function(){  				 		
-		 		//once jQuery is loaded set up no conflict & load plugins:
-				_global['$j'] = jQuery.noConflict();
-				//set up ajax to not send dynamic urls for loading scripts
-				$j.ajaxSetup({		  
-			  		cache: true
-				});
-				js_log('jquery loaded');
-				//load the jQuery dependent plugins:  		 		
-				mvJsLoader.doLoad({
-					'embedVideo'	  : 'libEmbedVideo/mv_baseEmbed.js',
-					'$j.ui.mouse'	  : 'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
-					'$j.ui.droppable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
-					'$j.ui.draggable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js'
-					},function(){			
-						js_log('plugins loaded: ');			
-						mvBaseLoader.done = true;						
-						// run queued functions from (addLoadEvent)
-						mvBaseLoader.runQuededFunctions();									
-					});
-			 	});
-	 	}
-	},
-	runQuededFunctions:function(){	 	
-	 	js_log('runQuededFunctions::');
-		 while( mvBaseLoader.callbacks.length ){
-			mvBaseLoader.callbacks.shift()();
-		}	
-	 },
-	 addLoadEvent:function(fn){
-	 	mvBaseLoader.callbacks.push(fn);
-	 }	
-}
 
 /**
   * mvJsLoader class handles initialization and js file loads 
@@ -210,6 +150,8 @@ var mvBaseLoader = {
 var mvJsLoader = {
 	 libreq:{},
 	 libs:{},
+	 //base lib flags:
+	 onReadyEvents:new Array(),
 	 //to keep consistency across threads: 
 	 ptime:0,
 	 ctime:0,	 
@@ -319,9 +261,51 @@ var mvJsLoader = {
 		 this.cur_path = cur_path;
 		 return true;
 	},
-	loadBaseLibs:function( callback ){
-		mvBaseLoader.load( callback);
-	}
+	/**
+	 * checks for jQuery and adds the $j noConflict var
+	 */
+	jQueryCheck:function(callback){	
+		var _this = this;
+		_this.doLoad({
+		 	'window.jQuery'		:'jquery/jquery-1.2.6.js'
+		},function(){
+			_global['$j'] = jQuery.noConflict();
+			//set up ajax to not send dynamic urls for loading scripts (we control that with the scriptLoader) 
+			$j.ajaxSetup({		  
+		  		cache: true
+			});
+			js_log('jquery loaded');
+			//run the callback 
+			callback();
+		});	
+	},
+	embedVideoCheck:function( callback ){
+		var _this = this;
+		//issue a style sheet request (no load checks on style sheets):
+	 	if(!styleSheetPresent( mv_embed_path + 'skins/'+mv_skin_name+'/styles.css'))
+			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
+		//make sure we have jQuery		
+		_this.jQueryCheck(function(){
+			_this.doLoad({
+				'embedVideo'	  : 'libEmbedVideo/mv_baseEmbed.js',
+				'$j.ui.mouse'	  : 'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
+				'$j.ui.droppable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
+				'$j.ui.draggable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js'
+				},function(){			
+					js_log('embedVideo libs ready run callback:: ');			
+					callback();							
+				});
+		});
+	},	
+	addLoadEvent:function(fn){
+	 	this.onReadyEvents.push(fn);
+	},	
+	runQuededFunctions:function(){	 	
+	 	js_log('runQuededFunctions:: onReadyEvents');
+		 while( this.onReadyEvents.length ){
+			this.onReadyEvents.shift()();
+		}	
+	}	
 }
 
 
@@ -369,7 +353,7 @@ function init_mv_embed(force){
 	   document.getElementsByTagName("playlist").length!=0){
 		js_log('we have vids to process');		
 		//load libs and proccess: 		    		
-		mvJsLoader.loadBaseLibs(function(){
+		mvJsLoader.embedVideoCheck(function(){
 			//run any queded global events:
 			mv_embed( function(){
 				while(mvLoadEvent.length){
@@ -390,7 +374,7 @@ function init_mv_embed(force){
 function rewrite_by_id( vid_id, ready_callback ){
 	js_log('f:rewrite_by_id: ' + vid_id);	
 	//force a recheck of the dom for playlist or video element: 	
-	mvJsLoader.loadBaseLibs(function(){
+	mvJsLoader.embedVideoCheck(function(){
 	 	mv_embed(ready_callback, vid_id ); 
 	});
 }
@@ -546,7 +530,7 @@ mvEmbed = {
 				if(method=='style'){
 						embed_video.setAttribute('style', videoInterface[method]);
 				}else if(method=='class'){
-					if(embedTypes.msie)
+					if( $j.browser.msie )
 						embed_video.setAttribute("className", videoInterface['class']);
 					else
 						embed_video.setAttribute("class", videoInterface['class']);
@@ -603,8 +587,13 @@ mvEmbed = {
 /* init remote search */
 function mv_do_remote_search(initObj){
 	js_log(':::::mv_do_remote_search::::');
+	
+	//issue a load skin request: 
+	if(!styleSheetPresent( mv_embed_path + 'skins/'+mv_skin_name+'/styles.css'))
+		loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
+			
 	//insure we have the basic libs (jquery etc) : 
-	mvJsLoader.loadBaseLibs(function(){
+	mvJsLoader.jQueryCheck(function(){
 		//load search specifc extra stuff 
 		mvJsLoader.doLoad({
 			'remoteSearchDriver':'libAddMedia/remoteSearchDriver.js'
@@ -623,7 +612,7 @@ function mv_do_sequence(initObj){
 	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css'))
 		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');
 	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
-	mvJsLoader.loadBaseLibs(function(){		
+	mvJsLoader.embedVideoCheck(function(){		
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
 				'mvPlayList':'libSequencer/mvPlayList.js',
@@ -722,6 +711,7 @@ function npt2seconds( npt_str ){
 }
 
 //addLoadEvent for adding functions to be run when the page DOM is done loading
+//@@todo depricate in favor of: 
 function mv_addLoadEvent(func) {
 	mvLoadEvent.push(func);
 }
@@ -858,7 +848,7 @@ function mv_jsdata_cb(response){
 				//js_log('load string:'+"\n"+ response['pay_load']);
 				//debugger;
 				//attempt to parse as xml for IE
-				if( embedTypes.msie ){
+				if( $j.browser.msie ){
 					var xmldata=new ActiveXObject("Microsoft.XMLDOM");
 					xmldata.async="false";
 					xmldata.loadXML(response['pay_load']);
@@ -1035,7 +1025,7 @@ function js_log(string){
      	log_elm.value+=string+"\n";
      }*/
   }
-  //return false;
+  return false;
 }
 
 function js_error(string){

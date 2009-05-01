@@ -2365,13 +2365,15 @@ var embedTypes = {
 		{
 			//do another test for safari: 
 			if( this.safari ){
-				var dummyvid = document.createElement("video");
-				if (dummyvid.canPlayType("video/ogg;codecs=\"theora,vorbis\"") == "probably")
-				{
-					this.players.addPlayer( videoElementPlayer );
-				} else {
-					/* could add some user nagging to install the xiph qt */
-				}
+				/*var dummyvid = document.createElement("video");
+				try{
+					if (dummyvid.canPlayType("video/ogg;codecs=\"theora,vorbis\"") == "probably")
+					{
+						this.players.addPlayer( videoElementPlayer );
+					} else {
+						could add some user nagging to install the xiph qt 
+					}
+				}*/
 			}else{
 				this.players.addPlayer( videoElementPlayer );
 			}
