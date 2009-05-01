@@ -32,7 +32,8 @@ if (!defined('MEDIAWIKI')) {
  * @ingroup API
  */
 class ApiUpload extends ApiBase {
-	
+	var $mUpload = null;
+		
 	public function __construct($main, $action) {
 		parent :: __construct($main, $action);
 	}
@@ -63,7 +64,7 @@ class ApiUpload extends ApiBase {
 			if( isset( $this->mUpload->status[ 'error' ] ) )		
 				$this->dieUsageMsg( $this->mUpload->status[ 'error' ] );
 						
-		} else if( $this->mParams['sessionkey'] ) {
+		}else if( $this->mParams['sessionkey'] ) {
 			// Stashed upload			
 			$this->mUpload = new UploadFromStash();
 			$this->mUpload->initialize( $this->mParams['sessionkey'] );							
@@ -90,7 +91,7 @@ class ApiUpload extends ApiBase {
 				if( !$status->isOK() ){			
 					$this->dieUsage( 'fetchfilerror', $status->getWikiText());
 				}														
-				//check if we doing a async request (return session info)
+				//check if we doing a async request set session info and return the upload_session_key)
 				if( $this->mUpload->isAsync() ){
 					$upload_session_key = $status->value;			
 					//update the session with anything with the params we will need to finish up the upload later on:
@@ -99,9 +100,8 @@ class ApiUpload extends ApiBase {
 						
 					$sd =& $_SESSION['wsDownload'][$upload_session_key];
 
-					//do a wholesale copy of mParams 
-					$sd['mParams'] = $this->mParams;
-					
+					//copy mParams for finishing up after: 					
+					$sd['mParams'] = $this->mParams;			
 					
 					return $this->getResult()->addValue( null, $this->getModuleName(),  
 									array( 'upload_session_key' => $upload_session_key 
@@ -112,10 +112,32 @@ class ApiUpload extends ApiBase {
 		}		
 		
 		if( !isset( $this->mUpload ) )		
-			$this->dieUsage( 'No upload module set', 'nomodule' );		
+			$this->dieUsage( 'No upload module set', 'nomodule' );
+
+		//finish up the exec command: 		
+		$this->doExecUpload();						
+	}
+	/**
+	 * alternate entry point 
+	 */
+	function execFromSession($tempPath){
+		wfDebug("execFromSession: $tempPath");
+		//get the params from the init session: 
+		$this->mParams = $this->extractRequestParams();
 		
+		$fileSize = filesize($tempPath);
 		
-		// Check whether the user has the appropriate permissions to upload anyway
+		$this->mUpload = new UploadFromUpload();
+		$this->mUpload->initialize( $this->mParams['filename'], $tempPath, $fileSize);
+		if( !isset( $this->mUpload ) )		
+			$this->dieUsage( 'No upload module set', 'nomodule' );
+			
+		//finish up the exec command as a normal request: 		
+		$this->doExecUpload();	
+	}
+	function doExecUpload(){
+		global $wgUser;	
+		//Check whether the user has the appropriate permissions to upload anyway
 		$permission = $this->mUpload->isAllowed( $wgUser );
 		
 		
@@ -133,7 +155,6 @@ class ApiUpload extends ApiBase {
 		
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
-	
 	private function performUpload() {
 		global $wgUser;		
 		$result = array();
@@ -248,7 +269,7 @@ class ApiUpload extends ApiBase {
 			'ignorewarnings' => false,			
 			'done'	=> false,
 			'sessionkey' => null,
-			'chunksessionkey'=> null,
+			'chunksessionkey'=> null
 		);
 	}
 

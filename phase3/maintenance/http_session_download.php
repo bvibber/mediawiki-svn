@@ -24,7 +24,20 @@ EOT;
 
 	exit();
 }
+wfProfileIn('http_session_download.php');
+
 //run the download: 
 Http::doSessionIdDownload( $options['sid'], $options['usk'] );
 
+//close up shop:
+// Execute any deferred updates
+wfDoUpdates();
+			
+// Log what the user did, for book-keeping purposes.	
+wfLogProfilingData();
+			
+// Shut down the database before exit
+wfGetLBFactory()->shutdown();
+
+wfProfileOut('http_session_download.php');
 ?>

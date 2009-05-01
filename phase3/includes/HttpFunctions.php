@@ -33,14 +33,15 @@ class Http {
 		$head = get_headers($url, 1);
 		if(isset($head['Content-Length']) && $head['Content-Length'] > $wgMaxUploadSize){
 			return Status::newFatal('requested file length ' . $head['Content-Length'] . ' is greater than $wgMaxUploadSize: ' . $wgMaxUploadSize);	
-		}
-		
+		}		
 		//check if we can find phpCliPath (for doing a background shell request to php to do the download: 
-		if( $wgPhpCliPath && wfShellExecEnabled() && $dl_mode == self::ASYNC_DOWNLOAD){			
+		if( $wgPhpCliPath && wfShellExecEnabled() && $dl_mode == self::ASYNC_DOWNLOAD){		
+			wfDebug("\ASYNC_DOWNLOAD\n");
 			//setup session and shell call: 			
 			return self::initBackgroundDownload( $url, $target_file_path );							
 		}else if( $dl_mode== self::SYNC_DOWNLOAD ){
-			//else just download as much as we can in the time we have left:
+			wfDebug("\nSYNC_DOWNLOAD\n");
+			//SYNC_DOWNLOAD download as much as we can in the time we have to execute
 			$opts['method']='GET';
 			$opts['target_file_path'] = $target_file_path;
 			$req = new HttpRequest($url, $opts );	
@@ -90,8 +91,9 @@ class Http {
 	 * @param string $upload_session_key //the key of the given upload session 
 	 * 			(a given client could have started a few http uploads at once)
 	 */
-	public static function doSessionIdDownload( $session_id, $upload_session_key ){		
-		
+	public static function doSessionIdDownload( $session_id, $upload_session_key ){
+		global $wgUser;					
+		wfDebug("\n\ndoSessionIdDownload\n\n");
 		//set session to the provided key:
 		session_id($session_id);
 		//start the session					
@@ -99,6 +101,14 @@ class Http {
 			wfDebug( __METHOD__ . ' could not start session');		
 		}
 		//get all the vars we need from session_id			
+		if(!isset($_SESSION[ 'wsDownload' ][$upload_session_key])){
+			wfDebug(  __METHOD__ .' Error:could not find upload session');
+			exit();
+		}
+		//setup the global user from the session key we just inherited
+		$wgUser = User::newFromSession();
+		
+		//grab the session data to setup the request: 
 		$sessionData = $_SESSION[ 'wsDownload' ][$upload_session_key];
 		//close down the session so we can other http queries can get session updates:
 		session_write_close();		
@@ -107,17 +117,38 @@ class Http {
 			'target_file_path' => $sessionData['target_file_path'],			
 			'upload_session_key' => $upload_session_key			
 		) );	
-		$status = $req->doRequest();
-		if( $status->isOK() ){
-			//regrab the updated session data: 
+		//run the actual request .. (this can take some time) 
+		wfDebug("do Request: " . $sessionData['url'] . ' tf: ' .$sessionData['target_file_path'] );
+		$status = $req->doRequest();		
+		
+		if( $status->isOK() ){		
+			//start up the session again:			
+			if( session_start() === false){
+				wfDebug( __METHOD__ . ' ERROR:: Could not start session');	
+			}			
+			//re-grab the updated session data: 
 			$sessionData = $_SESSION[ 'wsDownload' ][$upload_session_key];
-			//done with 'download' now to inject and display warnings 
-			wfDebug("\nDONE with session download now to inject:\n");
-			wfDebug( print_r($_SESSION, true));
-				
+			$reqData = $sessionData['mParam'];												
 			
-			//$faxReq = new FauxRequest($sessionData['mParam'], true);
-			//print_r($faxReq);
+			$reqData['action'] = 'upload';		
+						
+			wfDebug('running FauxRequest: ' . print_r($reqData, true) );
+					
+			$faxReq = new FauxRequest($reqData, true);											
+			$processor = new ApiMain($faxReq, $wgEnableWriteAPI);
+			
+			//init the mUpload var for the $processor
+			$processor->execFromSession($sessionData['target_file_path']);
+			
+			ob_start();
+			$processor->doExecUpload();
+			$apiUploadResult = ob_get_contents();			
+			ob_get_clean();
+			
+				
+			//the status updates runner will grab the result form the session: 
+			$_SESSION[ 'wsDownload' ][$upload_session_key]['apiUploadResult'] = $apiUploadResult;			
+			session_write_close();				
 		}
 	}
 	
@@ -191,8 +222,10 @@ class HttpRequest{
 	 private function doCurlReq(){
 	 	global $wgHTTPFileTimeout, $wgHTTPProxy, $wgTitle;
 	 	
-	 	$status = Status::newGood();	 	 	
-		$c = curl_init( $this->url );	
+	 	$status = Status::newGood();	 	 
+	 	wfDebug("\ncurReq: $this->url (sleep 1 sec)\n");
+	 	sleep(1);	
+		$c = curl_init( $this->url );			
 		
 		//proxy setup: 
 		if ( Http::isLocalURL( $this->url ) ) {
@@ -224,7 +257,11 @@ class HttpRequest{
 		
 		//set the write back function (if we are writing to a file) 
 		if( $this->target_file_path ){			
-			$cwrite = new simpleFileWriter( $this->target_file_path, $this->upload_session_key );									
+			$cwrite = new simpleFileWriter( $this->target_file_path, $this->upload_session_key );				
+			if(!$cwrite->status->isOK()){
+				wfDebug("ERROR in setting up simpleFileWriter\n");		
+				$status = $cwrite->status;	
+			}
 			curl_setopt( $c, CURLOPT_WRITEFUNCTION, array($cwrite, 'callbackWriteBody') );
 		}
 
@@ -235,12 +272,14 @@ class HttpRequest{
 		//run the actual curl_exec:
 		try {
             if (false === curl_exec($c)) {
-                $status = Status::newFatal( 'Error sending request: #' . curl_errno($c) .
-                                                       				' '. curl_error($c) );
+            	$error_txt ='Error sending request: #' . curl_errno($c) .' '. curl_error($c);
+            	wfDebug($error_txt . "\n");
+                $status = Status::newFatal( $error_txt);
             }
         } catch (Exception $e) {
         	//do something with curl exec error?
         }	 	 
+        wfDebug("\nDONE WITH curl_exec \n");
 		//if direct request output the results to the stats value: 
 		if( !$this->target_file_path && $status->isOK() ){       						
         	$status->value = ob_get_contents();
@@ -303,7 +342,7 @@ class simpleFileWriter{
 	var $target_file_path;
 	var $status = null;	
 	var $session_id = null;	
-	static $session_update_interval = 2; //how offten to update the session while downloading 
+	var $session_update_interval = 0; //how offten to update the session while downloading 
 	
 	function simpleFileWriter($target_file_path, $session_id=false){
 		$this->target_file_path = $target_file_path;
@@ -317,26 +356,30 @@ class simpleFileWriter{
 		$this->prevTime = time();
 	}
 	public function callbackWriteBody($ch, $data_packet){
-		global $wgMaxUploadSize;
+		global $wgMaxUploadSize;	
+		wfDebug("\ncallbackWriteBody::" . strlen($data_packet) . "\n");
 		//check file size: 
 		clearstatcache();
 		$this->current_fsize = filesize( $this->target_file_path);
 		
 		if( $this->current_fsize > $wgMaxUploadSize){
-			wfDebug( __METHOD__ . ' http download too large');
+			wfDebug( __METHOD__ . " ::http download too large\n");
 			$this->status = Status::newFatal('HTTP::file-has-grown-beyond-upload-limit-killing: downloaded more than ' . 
 				Language::formatSize($wgMaxUploadSize) . ' ');			
 			return 0;
 		}
-					
+		wfDebug("passed fsize check\n");			
 		//write out the content
 		if( fwrite($this->fp, $data_packet) === false){
+			wfDebug(__METHOD__ ." ::could-not-write-to-file\n");
 			$this->status = Status::newFatal('HTTP::could-not-write-to-file');
 			return 0;
 		}
+		wfDebug("did fwrite oky\n");
 						
+		wfDebug("\n" .'check if we should update: ' . time() . ' - ' .$this->prevTime . ' > '. $this->session_update_interval . "\n");
 		//if more than 2 second have passed update_session_progress
-		if($this->upload_session_key && (time() - $this->prevTime) > self::session_update_interval) {
+		if($this->upload_session_key && (time() - $this->prevTime) > $this->session_update_interval ) {
 			$this->prevTime = time();
 			$session_status = $this->update_session_progress();
 			if( !$session_status->isOK() ){
