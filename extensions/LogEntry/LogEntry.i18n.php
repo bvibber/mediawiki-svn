@@ -126,6 +126,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'logentry-append' => 'Apéndice',
 	'logentry-invalidpage' => 'Página inválida',
 	'logentry-invalidtoken' => 'Ficha inválida',
 );

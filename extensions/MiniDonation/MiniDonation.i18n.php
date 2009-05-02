@@ -376,6 +376,14 @@ $messages['ro'] = array(
 	'donationform-submit' => 'Donează via PayPal',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'donationform-desc' => "Aggiunge 'u tag <tt>&lt;donateform&gt;</tt> pe supportà le donazziune ausanne PayPal",
+	'donationform-submit' => 'Dduene ausanne PayPal',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -688,6 +688,7 @@ De Akßjuhn en dä Aanzeisch weet jenumme.",
  * @author Robby
  */
 $messages['lb'] = array(
+	'imstatus-desc' => 'Setzt Markéierungen derbäi déi den Online-Status vu verschiddenen Instant Messanger Systemer AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo) weisen',
 	'imstatus_syntax' => 'Syntax',
 	'imstatus_default' => 'Standard',
 	'imstatus_example' => 'Beispill',
@@ -702,6 +703,8 @@ $messages['lb'] = array(
 	'imstatus_gtalk_width' => 'Breet vun der Këscht, a Pixel.',
 	'imstatus_icq_id' => 'är ICQ ID',
 	'imstatus_icq_style' => 'eng Zuel tëschent 0 a 26 (jo, et gëtt 27 verschidde Stylen ...).',
+	'imstatus_xfire_size' => "d'Gréisst vum Knäppchen, vun $1 (gréissten) bis $2 (klengsten).",
+	'imstatus_yahoo_style' => 'de Styl vum Knäppchen, vun $1 (klengsten) bis $2 (gréissten), $3 a(n) $4 si fir Voicemail.',
 );
 
 /** Macedonian (Македонски)

@@ -716,6 +716,14 @@ $messages['sk'] = array(
 	'watchers_less_than_x' => 'Menej ako $1 {{PLURAL:$1|používateľ sleduje|používatelia sledujú|používateľov sleduje}} túto stránku.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'watchers_link_title' => 'Ко гледа овај чланак?',
+	'watchers_error_article' => "'''Грешка:''' Чланак не постоји.",
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

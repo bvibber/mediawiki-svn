@@ -2553,11 +2553,33 @@ Táto stránka sa týka iba obmedzneých používateľov.",
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'mywhitelistpages' => 'Моје стране',
+	'whitelisttablemodifyall' => 'Све',
 	'whitelisttablemodifynone' => 'Нема',
+	'whitelisttablepage' => 'Вики чланак',
+	'whitelisttabletype' => 'Тип приступа',
+	'whitelisttableexpires' => 'Истиче на',
+	'whitelisttablemodby' => 'Последњу измену направио',
+	'whitelisttablemodon' => 'Последња измена на',
 	'whitelisttableedit' => 'Уреди',
+	'whitelisttableview' => 'Преглед',
+	'whitelisttablenewdate' => 'Нови датум:',
+	'whitelisttablechangedate' => 'Промени датум истека',
 	'whitelisttableremove' => 'Уклони',
+	'whitelistnewtabledate' => 'Датум истека:',
+	'whitelistoverview' => '== Преглед измена за $1 ==',
+	'whitelistoverviewcd' => "* Мењање датума на '''$1''' за [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Постављање приступа на '''$1''' за [:$2|$2]]",
+	'whitelistoverviewrm' => '* Уклањање приступа за [[:$1|$1]]',
+	'whitelistrequest' => 'Захтевање приступа за више страна',
+	'whitelistrequestmsg' => '$1 је захтевао приступ {{PLURAL:$3|следећој страни|следећим странама}}:
+
+$2',
+	'whitelistrequestconf' => 'Захтев за новим странама је послат $1',
+	'whitelistnever' => 'никад',
 );
 
 /** Seeltersk (Seeltersk)

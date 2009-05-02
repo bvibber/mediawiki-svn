@@ -1537,6 +1537,7 @@ $messages['lb'] = array(
 	'grouppermissions-dosearch' => 'Lass',
 	'grouppermissions-searchlabel' => 'Sich no engem Grupp',
 	'grouppermissions-deletelabel' => 'Grupp läschen',
+	'grouppermissions-error' => 'en onbekannte Feeler ass geschitt, klickt w.e.g. op den Zréck-Knäppche vun ärem Browser a versicht nach eng Kéier',
 	'grouppermissions-change' => "D'Rechter vum Grupp änneren",
 	'grouppermissions-add' => 'Grupp derbäisetzen',
 	'grouppermissions-delete' => 'Grupp läschen',

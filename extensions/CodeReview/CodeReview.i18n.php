@@ -4820,6 +4820,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'code' => 'Revisão de Código',
+	'code-rev-title' => 'r$1 - Revisão de Código',
 	'code-comments' => 'Comentários',
 	'code-change-status' => "alterou o '''estado''' da revisão r$1",
 	'code-change-tags' => "alterou as '''etiquetas''' da revisão r$1",

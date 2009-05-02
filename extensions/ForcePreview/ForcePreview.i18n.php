@@ -69,6 +69,15 @@ $messages['ast'] = array(
 	'right-forcepreviewexempt' => 'Poder guardar ensin amosar previsualización',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'forcepreview' => 'Захаваць старонку (спачатку выкарыстоўвайце папярэдні прагляд)',
+	'forcepreview-desc' => 'Вымушае выкарыстоўваць абавязковы папярэдні прагляд для звычайных удзельнікаў',
+	'right-forcepreviewexempt' => 'магчымасьць захаваньня старонак без папярэдняга прагляду',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -76,6 +85,15 @@ $messages['bs'] = array(
 	'forcepreview' => 'Sačuvaj stranicu (koristi prvo pregled)',
 	'forcepreview-desc' => 'Zahtjeva obavezan pregled za nepotvrđene korisnike',
 	'right-forcepreviewexempt' => 'Može sačuvati izmjene bez obaveznog prikaza izgleda',
+);
+
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'forcepreview' => 'Desar la pàgina (usar abans la previsualització)',
+	'forcepreview-desc' => 'Força la previsualització als usuaris sense permisos',
+	'right-forcepreviewexempt' => 'Pot desar sense utilitzar la Vista prèvia',
 );
 
 /** Czech (Česky)
@@ -403,6 +421,8 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'forcepreview' => "Reggistre 'a vosce (ause l'andeprime apprime)",
+	'forcepreview-desc' => "Sfuèrze l'andeprime pe l'utinde senza privilegge",
+	'right-forcepreviewexempt' => "Puè reggistrà senze ca ause ''Vide l'andeprime''",
 );
 
 /** Russian (Русский)

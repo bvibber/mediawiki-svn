@@ -144,6 +144,19 @@ Anonymním uživatelům se přidělí automaticky vygenerované jméno, ale je m
 	'right-mibbit' => 'Používání Mibbit chatu',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'mibbit' => 'Sgwrs Mibbit',
+	'mibbit-desc' => "Yn ychwanegu [[Special:Mibbit|tudalen arbennig]] i alluogi defnyddwyr y wici i sgwrsio a'i gilydd ar y pryd",
+	'mibbit-header' => "Mae'r dudalen arbennig hon yn eich galluogi i gydweithio gyda defnyddwyr eraill y wici ar y pryd.
+Gwasgwch y botwm \"Connect\" er mwyn cysylltu.
+Os ydych wedi mewngofnodi fe fydd eich llysenw wedi ei deipio'n barod.
+Rhoddir enw wedi ei gynhyrchu'n awtomatig i ddefnyddwyr anhysbys, ond gallant ei newid.",
+	'right-mibbit' => 'Yn gallu defnyddio Mibbit i sgwrsio',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

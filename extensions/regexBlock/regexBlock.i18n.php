@@ -1382,6 +1382,7 @@ $messages['lb'] = array(
 	'regexblock-block-log' => "De Benotzer oder d'IP-Adress '''$1''' gouf gespaart.",
 	'regexblock-block-success' => "D'Spär ass elo ageschalt",
 	'regexblock-currently-blocked' => 'Aktuell gespaarten Adressen:',
+	'regexblock-desc' => "Erweiderung fir d'Späre vu Benotzernimm an IP-Adressen mat regulären Ausdréck. D'Erweiderung huet esouwuel e Spär-Mechansmus wéi och eng [[Special:Regexblock|Spezialsäit]] fir Spären derbäizesetzen/ze geréieren",
 	'regexblock-expire-duration' => '1 Stonn,2 Stonnen, 4 Stonnen,6 Stonnen,1 Dag,3 Deeg,1 Woch,2 Wochen,1 Mount,3 Méint,6 Méint,1 Joer,onbegrenzt',
 	'regexblock-page-title' => 'Spär vun engem Numm mat engem regulärem Ausdrock',
 	'regexblockstats' => 'Regex Spärstatistiken',

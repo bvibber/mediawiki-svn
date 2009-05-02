@@ -331,6 +331,14 @@ Metmaacher se ze Ändere.',
  */
 $messages['lb'] = array(
 	'editsubpages-desc' => "Erlaabt engem Adiministrateur fir d'Spär vu Säiten opzehiewen an all Ënnersäite vun däer Säit fir anonym Ännerungen via [[MediaWiki:Unlockedpages|Säiten denen hir Spär opgehuewen ass]]",
+	'unlockedpages' => " #<!-- Dës Zeil net änneren --><pre>
+# Säiten vun denen Dir ëllt datt se net gespaart sinn hei ënndrënner schreiwen mat dem
+# * Säitennumm
+# Säiten denen hir Spär opgehuewe sll gi musse mat engem * markéiert sinn.
+# Alles Anescht gëtt als Bemierkung gewert.
+# D'Spär vun Diskussionssäite gëtt automatesch matopgehuewen.
+# Kuckt: http://www.mediawiki.org/wiki/Extension:EditSubpages fir méi Informatiounen
+  #</pre><!-- Dës Zeil net änneren -->",
 );
 
 /** Malayalam (മലയാളം)
@@ -476,6 +484,15 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'editsubpages-desc' => "Permette a le sysop de sbloccà 'na pàgene e tutte le sottopàggene de quedda pàgene pe 'nu camngiamende anonime ausanne [[MediaWiki:Unlockedpages|sbluecche le pàggene]]",
+	'unlockedpages' => "  #<!-- Lasse sta linea sole --><pre>
+# Mitte le vôsce ca tu vuè ccu sbluecche sotte ausanne
+# * Nome d'a pàgene
+# Le vôsce sbloccate onne accumenzà cu 'nu punde pe essere cundate,
+# tutte odre cose sonde conziderate commende
+# Le nome de le pàggene ponne essere [[collegate]] e so senzibbile a le maiuscole/minuscole
+# Pure le pàggene de le 'ngazzaminde avènene automaticamende sbloccate cu 'a vôscia prengepàle
+# Vide http://www.mediawiki.org/wiki/Extension:EditSubpages pe maggiore 'mbormaziune
+  #</pre><!-- Lasse sta linea sole -->",
 );
 
 /** Russian (Русский)

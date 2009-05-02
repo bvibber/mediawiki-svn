@@ -1260,12 +1260,14 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'importusers' => "Utinde ca 'mbortane",
 	'importusers-uploadfile' => "Careche 'u file",
+	'importusers-form-file' => "Ause 'u formate d'u file (CSV):",
 	'importusers-form-button' => "'Mborte",
 	'importusers-user-added' => "Utende '''$1''' ha state aggiunde.",
 	'importusers-user-present-update' => "Utende '''$1''' esiste ggià. Aggiorne.",
 	'importusers-user-present-not-update' => "Utende '''$1''' esiste ggià. Non g'ù puè aggiornà.",
-	'importusers-log' => "Archivije de le 'mbortaziune",
+	'importusers-log' => "Archivije de l'utinde ca 'mbortane",
 	'importusers-log-summary' => 'Riepileghe',
 	'importusers-log-summary-all' => 'Tutte',
 	'importusers-log-summary-added' => 'Aggiunde',

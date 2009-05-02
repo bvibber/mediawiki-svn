@@ -58,9 +58,10 @@ $messages['an'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido
+ * @author OsamaK
  */
 $messages['ar'] = array(
-	'sitenotice_close' => 'إغلاق',
+	'sitenotice_close' => 'أغلق',
 	'sitenotice-desc' => 'يسمح للمستخدمين بإغلاق إعلان الموقع',
 );
 

@@ -18,7 +18,8 @@ $messages['en'] = array(
  * @author Jan Luca
  */
 $messages['de'] = array(
-    'tspoll-desc' => 'Bindet das [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] als ein HTML-Tag ein',
-    'tspoll-fetch-error' => 'Fehler beim Aufrufen der URL!',
-    'tspoll-id-error' => 'Keine ID angegeben!',     
+	'tspoll-desc' => 'Bindet das [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] als ein HTML-Tag ein',
+	'tspoll-fetch-error' => 'Fehler beim Aufrufen der URL!',
+	'tspoll-id-error' => 'Keine ID angegeben!',
 );
+

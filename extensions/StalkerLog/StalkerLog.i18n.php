@@ -407,6 +407,15 @@ $messages['sk'] = array(
 	'stalkerlog-log-text' => 'Toto je záznam prihlásení a odhlásení používateľov.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'stalkerlog-log-login' => 'улогован.',
+	'stalkerlog-log-logout' => 'излогован.',
+	'stalkerlog-log-type' => 'Историја логовања корисника',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

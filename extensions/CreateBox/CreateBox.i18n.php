@@ -504,6 +504,11 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'createbox-desc' => 'scatele de input specializzate pe le ccreaziune de le pàggene',
 	'createbox-create' => 'Ccreje',
+	'createbox-exists' => "Me dispiace, \"'''{{FULLPAGENAME}}'''\" già esiste.
+
+Tu non ge puè ccrejà sta pàgene, ma tu 'a puè [{{fullurl:{{FULLPAGENAME}}|action=edit}} cangià], [{{fullurl:{{FULLPAGENAME}}}} leggerle], o scacchie de ccrejà 'a pàgene cu 'nu nome differende ausanne 'a scatele ca ste aqquà sotte.
+
+<createbox>break=no</createbox>",
 );
 
 /** Russian (Русский)

@@ -2969,6 +2969,7 @@ $messages['roa-tara'] = array(
 	'openidrequired' => 'Richieste',
 	'openidemail' => 'Indirizze e-mail',
 	'openidlanguage' => 'Lènghe',
+	'openidchoosepassword' => 'password:',
 );
 
 /** Russian (Русский)

@@ -158,6 +158,13 @@ $messages['bs'] = array(
 	'errorhandler-trace-line-internal' => '[unutrašnja funkcija]: $1',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'errorhandler-error-compile-error' => 'Error de compilació',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian

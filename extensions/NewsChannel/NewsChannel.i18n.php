@@ -91,10 +91,12 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'newschannel-desc' => 'Създава емисия с новини като [[Special:NewsChannel|специална страница]]',
 	'newschannel_format' => 'Формат:',
 	'newschannel_limit' => 'Лимит:',
 	'newschannel_include_category' => 'Допълнителна категория:',
 	'newschannel_exclude_category' => 'Изключване на категория:',
+	'newschannel_submit_button' => 'Създаване на емисия',
 );
 
 /** Bosnian (Bosanski)

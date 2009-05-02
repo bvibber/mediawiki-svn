@@ -274,6 +274,18 @@ Die Nochricht mäldet Dir, ass Benutzer $4 am $3 $5.',
 	'categorywatch-autocat' => 'Automatisch beobachtet dur $1',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'categorywatch-emailsubject' => 'ધ્યાનમાં રાખેલી શ્રેણી "$1"ને લગતી પ્રવૃત્તિ',
+	'categorywatch-catmovein' => '"$1", "$3"થી ખસીને "$2"માં ગયું છે.',
+	'categorywatch-catmoveout' => '"$1" એ "$2"માંથી ખસીને "$3"માં ગયું છે.',
+	'categorywatch-catadd' => '"$1"ને "$2"માં ઉમેરવામાં આવ્યું છે.',
+	'categorywatch-catsub' => '"$1"ને "$2"માંથી દૂર કરવામાં આવ્યું છે.',
+	'categorywatch-autocat' => '"$1" દ્વારા સ્વયંભુ ધ્યાનમાં રખાયું',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

@@ -849,6 +849,7 @@ Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-raj
 /** Spanish (Español)
  * @author Aleator
  * @author Crazymadlover
+ * @author Dferg
  * @author Imre
  * @author Remember the dot
  * @author Sanbec
@@ -858,7 +859,7 @@ $messages['es'] = array(
 	'hiderevision' => 'Esconder revisiones permanentemente',
 	'hiderevision-desc' => 'Esconde revisiones individuales de todos los usuarios para motivos legales etc.',
 	'group-oversight' => 'Oversighters',
-	'group-oversight-member' => 'supervisor',
+	'group-oversight-member' => 'Supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Supervisión',
 	'right-oversight' => 'Ver una revisión anteriormente escondida',
 	'right-hiderevision' => 'Ocultar revisiones de los administradores',

@@ -79,6 +79,14 @@ $messages['ca'] = array(
 	'minnamelength-error' => "El vostre nom d'usuari és massa curt. La longitud mínima és de $1.",
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'minnamelength-error' => "Mae'ch enw defnyddiwr yn rhy fyr. Rhaid iddo fod yn $1 neu'n hwy.",
+	'minnamelength-desc' => 'Pennu hyd isaf ar gyfer enwau defnyddwyr',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

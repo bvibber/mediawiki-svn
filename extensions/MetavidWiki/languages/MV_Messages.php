@@ -2148,6 +2148,7 @@ $messages['fr'] = array(
 	'loading_txt' => 'Chargement en cours <blink>...</blink>',
 	'loading_plugin' => 'Chargement du plugin en cours <blink>...</blink>',
 	'select_playback' => 'Définir les préférences de lecture',
+	'link_back' => 'Lier en arrière',
 	'error_load_lib' => 'mv_embed : Impossible de charger les bibliothèques JavaScript requises.
 L’insertion via DOM a échoué.
 Essayez de recharger la page.',
@@ -2172,6 +2173,7 @@ Voyez les <a href="http://metavid.org/wiki/Client_Playback">méthodes de lecture
 	'missing_video_stream' => 'Le fichier vidéo pour ce flux est manquant',
 	'auto_scroll' => 'défilement automatique',
 	'close' => 'fermer',
+	'improve_transcript' => 'Améliorer la transcription',
 	'next_clip_msg' => 'Jouer le clip suivant',
 	'prev_clip_msg' => 'Jouer le clip précédent',
 	'current_clip_msg' => 'Continuer à jouer ce clip',
@@ -2180,6 +2182,8 @@ Voyez les <a href="http://metavid.org/wiki/Client_Playback">méthodes de lecture
 	'upload-transcoded-status' => 'Transcodé',
 	'uploaded-status' => 'Téléversé',
 	'upload-select-file' => 'Sélectionnez un fichier...',
+	'wgfogg_wrong_version' => 'Vous avez installé Firefogg mais la version est dépassée.
+<a href="http://firefogg.org">Mettre à jour.</a>',
 	'wgfogg_waring_ogg_upload' => 'Vous avez sélectionné un fichier .ogg pour conversion vers Ogg.
 Ceci n’est probablement pas nécessaire.
 Désactiver peut-être le convertisseur de vidéo ?',
@@ -2233,6 +2237,9 @@ Toutes les changements seront perdus.',
 	'zoom_in' => 'Zoom avant',
 	'zoom_out' => 'Zoom arrière',
 	'cut_clip' => 'Couper les clips',
+	'expand_track' => 'étendre la piste',
+	'colapse_track' => 'réduire la piste',
+	'play_clip' => 'Lecture depuis la position du curseur de lecture',
 	'rmclip' => 'Supprimer le clip',
 	'no_selected_resource' => '<h3> Aucune ressource sélectionné </h3>
 Sélectionnez un clip afin de permettre la modification des ressources',

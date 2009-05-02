@@ -678,6 +678,8 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'languageselector' => 'Lènghe',
+	'languageselector-desc' => "'U selezzionatore de le lènghe sus a ogne pàgene, pure pe le visitature",
+	'languageselector-setlang' => "'mboste",
 );
 
 /** Russian (Русский)
