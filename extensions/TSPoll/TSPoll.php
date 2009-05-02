@@ -61,15 +61,14 @@ function efTSPollRender( $input, $args, $parser ) {
 	if ( isset( $args['id'] )  ) {
 		$id = wfUrlencode( $args['id'] );
 	} else {
-		// @todo: maybe output an error?
-		$id = '';
+		wfLoadExtensionMessages( 'TSPoll' );
+		return wfMsgExt( 'tspoll-id-error', array( 'parse' ) );
 	}
 
 	// @todo Can't we just use the Http class?
-	$http = new http_w( 'toolserver.org', '/~jan/poll/main.php?page=wiki_output&id=' . $id ); 
-	$get_server = $http->get( '' );
-	// @todo If false? How can this ever be true?
-	if( false&& $get_server != '' ) {
+	$http = new http_w( 'toolserver.org', '/~jan/poll/dev/main.php?page=wiki_output&id=' . $id ); 
+	$get_server = $http->get();
+	if( $get_server != '' ) {
 		return $get_server;
 	}
 	else {
