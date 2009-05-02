@@ -57,21 +57,19 @@ function efTSPollSetupHook( &$parser ) {
 
 function efTSPollRender( $input, $args, $parser ) {
 
-	if ( isset( $args['id'] )  ) {
+	if ( isset( $args['id'] ) && $args['id'] != "" ) {
 		$id = wfUrlencode( $args['id'] );
 	} else {
-		wfLoadExtensionMessages( 'TSPoll' );
-		return wfMsgExt( 'tspoll-id-error', array( 'parse' ) );
+    wfLoadExtensionMessages( 'TSPoll' );
+		return wfMsg('tspoll-id-error');
 	}
 
-	// @todo Can't we just use the Http class?
 	$get_server = Http::get( 'http://toolserver.org/~jan/poll/dev/main.php?page=wiki_output&id='.$id );
 	if( $get_server != '' ) {
 		return $get_server;
 	}
 	else {
 		wfLoadExtensionMessages( 'TSPoll' );
-		// @todo: Should this be parsing before returning? 
-		return wfMsgExt( 'tspoll-fetch-error', array( 'parse' ) );
+		return wfMsg('tspoll-fetch-error');
 	}
 }
