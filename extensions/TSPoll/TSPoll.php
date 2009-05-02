@@ -37,7 +37,7 @@ $wgExtensionCredits['parserhook'][] = array(
 if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 	$wgHooks['ParserFirstCallInit'][] = 'efTSPollSetup';
 } else { // Otherwise do things the old fashioned way
-	$wgExtensionFunctions[] = 'efTSPollSetup';
+	$wgExtensionFunctions[] = 'efTSPollSetupHook';
 }
 
 $wgExtensionMessagesFiles['TSPoll'] = dirname( __FILE__ ) . '/TSPoll.i18n.php';
@@ -50,6 +50,12 @@ function efTSPollSetup() {
 	return true;
 }
 
+function efTSPollSetupHook( &$parser ) {
+	$parser->setHook( 'TSPoll', 'efTSPollRender' );
+	$parser->setHook( 'tspoll', 'efTSPollRender' );
+	return true;
+}
+
 function efTSPollRender( $input, $args, $parser ) {
 
 	if ( isset( $args['id'] )  ) {
@@ -58,14 +64,17 @@ function efTSPollRender( $input, $args, $parser ) {
 		// @todo: maybe output an error?
 		$id = '';
 	}
-  
+
+	// @todo Can't we just use the Http class?
 	$http = new http_w( 'toolserver.org', '/~jan/poll/main.php?page=wiki_output&id=' . $id ); 
 	$get_server = $http->get( '' );
+	// @todo If false? How can this ever be true?
 	if( false&& $get_server != '' ) {
 		return $get_server;
 	}
 	else {
 		wfLoadExtensionMessages( 'TSPoll' );
+		// @todo: Should this be parsing before returning? 
 		return wfMsgExt( 'tspoll-fetch-error', array( 'parse' ) );
 	}
 }
