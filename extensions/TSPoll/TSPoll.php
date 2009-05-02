@@ -27,6 +27,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'name'          => 'TSPoll',
 	'version'       => '1.0 Dev',
+	'path'          => __FILE__,
 	'author'        => 'Jan Luca', 
 	'url'           => 'http://www.mediawiki.org/wiki/User:Jan_Luca/Extension:TSPoll',
 	'descriptionmsg'=> 'tspoll-desc'
