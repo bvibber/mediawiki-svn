@@ -41,7 +41,7 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 }
 
 $wgExtensionMessagesFiles['TSPoll'] = dirname( __FILE__ ) . '/TSPoll.i18n.php';
-include_once(dirname( __FILE__ ) . '/http.func.php');
+include_once($IP.'/includes/HttpFunctions.php');
  
 function efTSPollSetup() {
 	global $wgParser;
@@ -66,8 +66,8 @@ function efTSPollRender( $input, $args, $parser ) {
 	}
 
 	// @todo Can't we just use the Http class?
-	$http = new http_w( 'toolserver.org', '/~jan/poll/dev/main.php?page=wiki_output&id=' . $id ); 
-	$get_server = $http->get();
+	$http = new http();
+	$get_server = $http->get( 'http://toolserver.org/~jan/poll/dev/main.php?page=wiki_output&id='.$id );
 	if( $get_server != '' ) {
 		return $get_server;
 	}
