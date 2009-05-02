@@ -29,7 +29,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'       => '1.0 Dev',
 	'author'        => 'Jan Luca', 
 	'url'           => 'http://www.mediawiki.org/wiki/User:Jan_Luca/Extension:TSPoll',
-	'descriptionmsg'=> 'descript_msg'
+	'descriptionmsg'=> 'tspoll-desc'
 );
 
 //Avoid unstubbing $wgParser on setHook() too early on modern (1.12+) MW versions, as per r35980
@@ -45,27 +45,26 @@ include_once(dirname( __FILE__ ) . '/http.func.php');
 function efTSPollSetup() {
 	global $wgParser;
 	$wgParser->setHook( 'TSPoll', 'efTSPollRender' );
-  $wgParser->setHook( 'tspoll', 'efTSPollRender' );
-  return true;
+	$wgParser->setHook( 'tspoll', 'efTSPollRender' );
+	return true;
 }
 
 function efTSPollRender( $input, $args, $parser ) {
-	foreach( $args as $name => $value ) {
-    if ($name == "id") {
-		    $id = htmlspecialchars( $value );
-        break;
-    }
-    else {
-        continue;
-    }
-  }
+
+	if ( isset( $args['id'] )  ) {
+		$id = wfUrlencode( $args['id'] );
+	} else {
+		// @todo: maybe output an error?
+		$id = '';
+	}
   
-  $http = new http_w("toolserver.org","/~jan/poll/main.php?page=wiki_output&id=".$id.""); 
-  $get_server = $http->get("");
-  if($get_server != "") {
-	    return $get_server;
-  }
-  else {
-      return "Fehler beim Holen!";
-  }
+	$http = new http_w( 'toolserver.org', '/~jan/poll/main.php?page=wiki_output&id=' . $id ); 
+	$get_server = $http->get( '' );
+	if( false&& $get_server != '' ) {
+		return $get_server;
+	}
+	else {
+		wfLoadExtensionMessages( 'TSPoll' );
+		return wfMsgExt( 'tspoll-fetch-error', array( 'parse' ) );
+	}
 }

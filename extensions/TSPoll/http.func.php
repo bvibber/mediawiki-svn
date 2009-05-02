@@ -162,5 +162,3 @@ Content-Length: ".strlen($content["message"])."
         }
     }
 }
-
-?> 
