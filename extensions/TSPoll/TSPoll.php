@@ -41,7 +41,6 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 }
 
 $wgExtensionMessagesFiles['TSPoll'] = dirname( __FILE__ ) . '/TSPoll.i18n.php';
-include_once($IP.'/includes/HttpFunctions.php');
  
 function efTSPollSetup() {
 	global $wgParser;
