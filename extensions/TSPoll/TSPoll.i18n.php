@@ -10,7 +10,7 @@ $messages = array();
 
 $messages['en'] = array(
     'tspoll-desc' => 'Include the [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] as a HTML-tag',
-	'tspoll-fetch-error' => 'Error while fetching the URL!',
+	  'tspoll-fetch-error' => 'Error while fetching the URL!',
 );
 
 /** German (Deutsch)
@@ -18,4 +18,5 @@ $messages['en'] = array(
  */
 $messages['de'] = array(
     'tspoll-desc' => 'Bindet das [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] als ein HTML-Tag ein',
+    'tspoll-fetch-error' => 'Fehler beim Aufrufen der URL!',
 );
