@@ -208,9 +208,9 @@ Please create it or change it to use this extension.',
 	'configure-boolop-description-xor'    => 'Exactly one condition must be true',
 	'configure-boolop-description-not'    => 'No conditions must be true',
 
-	'configure-farmer-settings'           => 'The settings for this wiki can be configured on [[Special:Configure]].',
-	'configure-farmer-extensions'         => 'The extensions used in this wiki can be configured on [[Special:Extensions]].',
-	'configure-farmer-extensions-list'    => 'The extensions available for this wiki are listed on [[Special:Extensions]].',
+	'configure-farmer-settings'           => '[[Special:Configure|Configure this wiki]].',
+	'configure-farmer-extensions'         => '[[Special:Extensions|Configure extensions for this wiki]].',
+	'configure-farmer-extensions-list'    => '[[Special:Extensions|List extensions available for this wiki]].',
 );
 
 /** Message documentation (Message documentation)
