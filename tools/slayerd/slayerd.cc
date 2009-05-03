@@ -140,7 +140,6 @@ process::_read_proc_data(fs::path const &pth)
 {
 	{
 		std::ifstream f((pth / "stat").native_file_string().c_str());
-		std::string sline;
 
 		if (!f)
 			throw std::runtime_error("could not read line from stat");
@@ -159,7 +158,6 @@ process::_read_proc_data(fs::path const &pth)
 
 	{
 		std::ifstream f((pth / "statm").native_file_string().c_str());
-		std::string sline;
 
 		if (!f)
 			throw std::runtime_error("could not read line from stat");
@@ -170,7 +168,6 @@ process::_read_proc_data(fs::path const &pth)
 
 	{
 		std::ifstream f((pth / "cmdline").native_file_string().c_str());
-		std::string sline;
 
 		if (!f)
 			throw std::runtime_error("could not read line from cmdline");
