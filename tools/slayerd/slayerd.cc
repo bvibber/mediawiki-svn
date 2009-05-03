@@ -662,7 +662,8 @@ main(int argc, char **argv)
 						% (thissize / 1024 / 1024)
 						% ((bytes - thissize) / 1024 / 1024)));
 
-				process_list += str(boost::format("    %s (pid %d), using %d megabyte(s). Command was:\n    \"%s\"\n")
+				process_list += str(boost::format("    %s (pid %d), using %d megabyte(s).\n"
+								  "       command: \"%s\"\n")
 						% comm % p._pid % (thissize / 1024 / 1024) % p._fullcomm);
 
 				bytes -= thissize;
