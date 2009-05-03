@@ -70,7 +70,10 @@ struct process {
 	process(fs::path const &pth);
 
 	pid_t _pid;
+	/* short command from /proc/{pid}/stat */
 	std::string _comm;
+	/* fulll command from /proc/{pid}/cmdline */
+	std::string _fullcomm;
 	char _state;
 	pid_t _ppid;
 	pid_t _pgrp;
@@ -162,6 +165,17 @@ process::_read_proc_data(fs::path const &pth)
 
 		if (!(f >> _msize >> _mres >> _mshare >> _mtext >> _mlib >> _mdata))
 			throw std::runtime_error("could not parse statm line");
+	}
+
+	{
+		std::ifstream f((pth / "cmdline").native_file_string().c_str());
+		std::string sline;
+
+		if (!f)
+			throw std::runtime_error("could not read line from cmdline");
+
+		if (!(f >> _fullcomm))
+			throw std::runtime_error("could not parse cmdline");
 	}
 }
 
@@ -629,8 +643,13 @@ main(int argc, char **argv)
 
 			while (bytes >= config.thresh && !u.processes.empty()) {
 				process &p = u.processes[0];
+
+				/* command is (%s) formatted, strip parentheses. */
 				std::string comm = p._comm.substr(1);
 				comm.resize(comm.size() - 1);
+
+				/* arguments are \0 separated, use spaces for display */
+				std::replace(p._fullcomm.begin(), p._fullcomm.end(), '\0', ' ');
 
 				if (!config.debug)
 					kill(p._pid, SIGKILL);
@@ -642,8 +661,8 @@ main(int argc, char **argv)
 						% (thissize / 1024 / 1024)
 						% ((bytes - thissize) / 1024 / 1024)));
 
-				process_list += str(boost::format("    %s (pid %d), using %d megabyte(s)\n")
-						% comm % p._pid % (thissize / 1024 / 1024));
+				process_list += str(boost::format("    %s (pid %d), using %d megabyte(s). Command was:\n    \"%s\"\n")
+						% comm % p._pid % (thissize / 1024 / 1024) % p._fullcomm);
 
 				bytes -= thissize;
 				u.processes.erase(u.processes.begin());
