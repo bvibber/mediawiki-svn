@@ -114,3 +114,49 @@ function efConfigureGetAllRights( &$rights ) {
 	$rights = array_unique( array_merge( $rights, $newrights ) );
 	return true;
 }
+
+/**
+ * Display link to Special:Configure
+ */
+function efConfigureFarmerAdminPermissions( $farmer ) {
+	global $wgOut;
+
+	wfLoadExtensionMessages( 'Configure' );
+	$wgOut->wrapWikiMsg( '== $1 ==', 'farmer-basic-permission' );
+	$wgOut->addWikiMsg( 'configure-farmer-settings' );
+
+	return false;
+}
+
+/**
+ * Avoid displaying anything :)
+ */
+function efConfigureFarmerAdminSkin( $farmer ) {
+	return false;	
+}
+
+/**
+ * Display link to Special:Extensions
+ */
+function efConfigureFarmerAdminExtensions( $farmer ) {
+	global $wgOut;
+
+	wfLoadExtensionMessages( 'Configure' );
+	$wgOut->wrapWikiMsg( '== $1 ==', 'farmer-extensions' );
+	$wgOut->addWikiMsg( 'configure-farmer-extensions' );
+
+	return false;
+}
+
+/**
+ * Display link to Special:Extensions
+ */
+function efConfigureFarmerManageExtensions( $farmer ) {
+	global $wgOut;
+
+	wfLoadExtensionMessages( 'Configure' );
+	$wgOut->wrapWikiMsg( '== $1 ==', 'farmer-extensions-available' );
+	$wgOut->addWikiMsg( 'configure-farmer-extensions-list' );
+
+	return false;
+}
