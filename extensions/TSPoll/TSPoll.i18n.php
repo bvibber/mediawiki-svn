@@ -9,9 +9,9 @@
 $messages = array();
 
 $messages['en'] = array(
-    'tspoll-desc' => 'Include the [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] as a HTML-tag',
-	  'tspoll-fetch-error' => 'Error while fetching the URL!',
-    'tspoll-id-error' => 'No ID is giving!', 
+	'tspoll-desc' => 'Include the [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] as a HTML-tag',
+	'tspoll-fetch-error' => 'Error while fetching the URL!',
+	'tspoll-id-error' => 'No ID is given!',
 );
 
 /** German (Deutsch)
