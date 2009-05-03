@@ -26,8 +26,8 @@ class UploadFromUrl extends UploadBase {
 		
 		$local_file = tempnam( $wgTmpDirectory, 'WEBUPLOAD' );
 		parent::initialize( $name, $local_file, 0, true );
-
-		$this->mUrl = trim( $url );
+		
+		$this->mUrl = trim( $url );		
 	}
 	public function isAsync(){
 		return $this->dl_mode == Http::ASYNC_DOWNLOAD;

@@ -63,7 +63,39 @@ class ApiUpload extends ApiBase {
 			//if getAPIresult did not exit report the status error: 
 			if( isset( $this->mUpload->status[ 'error' ] ) )		
 				$this->dieUsageMsg( $this->mUpload->status[ 'error' ] );
-						
+		}else if( $this->mParams['internalSession'] ){
+			
+			wfDebug("execFromSession: $tempPath");
+			//get the params from the init session: 			
+			
+			$fileSize = filesize($tempPath);
+			
+			$this->mUpload = new UploadFromUpload();
+			$this->mUpload->initialize( $this->mParams['filename'], $tempPath, $fileSize);
+			if( !isset( $this->mUpload ) )		
+				$this->dieUsage( 'No upload module set', 'nomodule' );
+			
+		}else if( $this->mParams['httpstatus'] && $this->mParams['sessionkey']){
+			//return the status of the given upload session_key:
+			if(!isset($_SESSION['wsDownload'][ $this->mParams['sessionkey'] ])){
+					return $this->getResult()->addValue( null, $this->getModuleName(),  
+									array( 'error' => 'invalid-session-key'
+							));
+			}
+			$sd = & $_SESSION['wsDownload'][ $this->mParams['sessionkey'] ];
+			//keep passing down the upload sessionkey
+			$statusResult = array(
+				'upload_session_key' => $this->mParams['sessionkey'] 
+			);
+			
+			//put values into the final apiResult if available 			
+			if( isset($sd['apiUploadResult'])) $statusResult['apiUploadResult'] = $sd['apiUploadResult']; 
+			if( isset($sd['loaded']) ) $statusResult['loaded'] = $sd['loaded'];
+			if( isset($sd['content_length']) ) $statusResult['content_length'] = $sd['content_length'];
+			
+			return $this->getResult()->addValue( null, $this->getModuleName(),  
+						$statusResult
+			);
 		}else if( $this->mParams['sessionkey'] ) {
 			// Stashed upload			
 			$this->mUpload = new UploadFromStash();
@@ -116,25 +148,7 @@ class ApiUpload extends ApiBase {
 
 		//finish up the exec command: 		
 		$this->doExecUpload();						
-	}
-	/**
-	 * alternate entry point 
-	 */
-	function execFromSession($tempPath){
-		wfDebug("execFromSession: $tempPath");
-		//get the params from the init session: 
-		$this->mParams = $this->extractRequestParams();
-		
-		$fileSize = filesize($tempPath);
-		
-		$this->mUpload = new UploadFromUpload();
-		$this->mUpload->initialize( $this->mParams['filename'], $tempPath, $fileSize);
-		if( !isset( $this->mUpload ) )		
-			$this->dieUsage( 'No upload module set', 'nomodule' );
-			
-		//finish up the exec command as a normal request: 		
-		$this->doExecUpload();	
-	}
+	}	
 	function doExecUpload(){
 		global $wgUser;	
 		//Check whether the user has the appropriate permissions to upload anyway
@@ -260,7 +274,7 @@ class ApiUpload extends ApiBase {
 			'filename' => null,
 			'file' => null,
 			'chunk' => null,
-			'url' => null,
+			'url' => null,			
 			'enablechunks' => null,
 			'comment' => array(
 				ApiBase :: PARAM_DFLT => ''
@@ -269,6 +283,7 @@ class ApiUpload extends ApiBase {
 			'ignorewarnings' => false,			
 			'done'	=> false,
 			'sessionkey' => null,
+			'httpstatus' => null,
 			'chunksessionkey'=> null
 		);
 	}
@@ -285,6 +300,7 @@ class ApiUpload extends ApiBase {
 			'ignorewarnings' => 'Ignore any warnings',					
 			'done'	=> 'When used with "chunks", Is sent to notify the api The last chunk is being uploaded.',
 			'sessionkey' => 'Session key in case there were any warnings.', 
+			'httpstatus' => 'When set to true, will return the status of a given sessionKey (used for progress meters)',
 			'chunksessionkey'=> 'Used to sync uploading of chunks',
 		);
 	}

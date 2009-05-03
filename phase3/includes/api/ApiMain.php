@@ -375,7 +375,7 @@ class ApiMain extends ApiBase {
 	/**
 	 * Execute the actual module, without any error handling
 	 */
-	protected function executeAction() {
+	protected function executeAction() {		
 		// First add the id to the top element
 		$requestid = $this->getParameter('requestid');
 		if(!is_null($requestid))
@@ -425,10 +425,10 @@ class ApiMain extends ApiBase {
 
 			if ($this->mPrinter->getNeedsRawData())
 				$this->getResult()->setRawMode();
-		}
-
+		}		
 		// Execute
 		$module->profileIn();
+		
 		$module->execute();
 		wfRunHooks('APIAfterExecute', array(&$module));
 		$module->profileOut();

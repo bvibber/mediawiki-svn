@@ -2189,7 +2189,13 @@ function wfShellExec( $cmd, &$retval=null ) {
  *
  * @param string $cmd
  */
-function wfShellBackgroundExec(&$cmd){	
+function wfShellBackgroundExec( $cmd ){	
+	wfDebug( "wfShellBackgroundExec: $cmd\n" );
+	
+	if ( ! wfShellExecEnabled() ) {
+		return "Unable to run external programs";
+	}
+	
 	$pid = shell_exec( "nohup $cmd > /dev/null & echo $!" );
 	return $pid;
 }
