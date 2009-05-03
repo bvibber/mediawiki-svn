@@ -21,6 +21,7 @@
 #include <map>
 #include <set>
 #include <cerrno>
+#include <cstring>
 
 #include <sys/types.h>
 #include <sys/mman.h>
@@ -174,7 +175,7 @@ process::_read_proc_data(fs::path const &pth)
 		if (!f)
 			throw std::runtime_error("could not read line from cmdline");
 
-		if (!(f >> _fullcomm))
+		if (!std::getline(f, _fullcomm))
 			throw std::runtime_error("could not parse cmdline");
 	}
 }
