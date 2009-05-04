@@ -10,7 +10,7 @@ class LuceneSearch extends SearchEngine {
 	 */
 	function searchText( $term ) {
 		return LuceneSearchSet::newFromQuery( isset($this->related)? 'related' : 'search',
-				$term, $this->namespaces, $this->limit, $this->offset );
+				$term, $this->namespaces, $this->limit, $this->offset, $this->searchingEverything() );
 	}
 
 	/**
@@ -36,6 +36,15 @@ class LuceneSearch extends SearchEngine {
 		
 		return false;
 	}
+
+	/**
+	 * Check if we are searching all the namespaces on this wiki
+	 * 
+	 * @return boolean
+	 */
+	function searchingEverything(){
+		return $this->namespaces ==  array_keys( SearchEngine::searchableNamespaces() );
+	}
 		
 	/**
 	 * Prepare query for the lucene-search daemon:
@@ -60,13 +69,7 @@ class LuceneSearch extends SearchEngine {
 		$inquotes = false;
 		
 		// "search everything" keyword
-		$allkeyword = wfMsgForContent('searchall');		
-		
-		// if all namespaces are set, convert to prefixed all: syntax which is more quickly handled by backend
-		$nsAllSet = array_keys( SearchEngine::searchableNamespaces() );
-		if( $this->namespaces ==  $nsAllSet && strncmp($query, $allkeyword, strlen($allkeyword)) != 0){
-			$query = $allkeyword.':'.$query;
-		}
+		$allkeyword = wfMsgForContent('searchall');			
 		
 		$qlen = strlen($query);
 		
@@ -424,10 +427,13 @@ class LuceneSearchSet extends SearchResultSet {
 	 * @param string $query
 	 * @param int $limit
 	 * @param int $offset
+	 * @param bool $searchAll
 	 * @return array
 	 * @access public
 	 */
-	static function newFromQuery( $method, $query, $namespaces = array(), $limit = 20, $offset = 0 ) {
+	static function newFromQuery( $method, $query, $namespaces = array(), 
+	    $limit = 20, $offset = 0, $searchAll = False ) {
+	    	
 		$fname = 'LuceneSearchSet::newFromQuery';
 		wfProfileIn( $fname );
 		
@@ -457,6 +463,7 @@ class LuceneSearchSet extends SearchResultSet {
 				'limit'      => $limit,
 				'version'    => $wgLuceneSearchVersion,
 				'iwlimit'	 => 10,
+				'searchall'  => $searchAll? 1 : 0,
 			) );
 				
 		// try to fetch cached if caching is turned on
