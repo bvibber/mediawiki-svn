@@ -96,7 +96,7 @@ public class SearchEngine {
 		if (what.equals("search") || what.equals("explain")) {
 			int offset = 0, limit = 20; boolean exactCase = false;
 			int iwlimit = 10; int iwoffset = 0;
-			boolean searchOnly = false;
+			boolean searchOnly = false, searchAll = false;
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
@@ -109,10 +109,17 @@ public class SearchEngine {
 				exactCase = true;
 			if(query.containsKey("searchonly"))
 				searchOnly = Boolean.parseBoolean((String)query.get("searchonly"));
+			if(query.containsKey("searchall"))
+				searchAll = Boolean.parseBoolean((String)query.get("searchall")) || 
+				((String)query.get("searchall")).equals("1");
 			if(version <= 2)
 				searchOnly = true;
-			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
-			SearchResults res = search(iid, searchterm, offset, limit, iwoffset, iwlimit, namespaces, what.equals("explain"), exactCase, false, searchOnly);
+			NamespaceFilter namespaces = null;
+			if(searchAll)
+				namespaces = new NamespaceFilter("");
+			else
+				namespaces = new NamespaceFilter((String)query.get("namespaces"));
+			SearchResults res = search(iid, searchterm, offset, limit, iwoffset, iwlimit, namespaces, what.equals("explain"), exactCase, false, searchOnly, searchAll);
 			if(!res.isSuccess()){
 				// note failed search
 				if(SearchServer.stats != null)
@@ -132,6 +139,7 @@ public class SearchEngine {
 		} else if (what.equals("raw") || what.equals("rawexplain")) {
 			int offset = 0, limit = 20; boolean exactCase = false;
 			int iwlimit = 10; int iwoffset = 0;
+			boolean searchAll = false;
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
@@ -142,8 +150,10 @@ public class SearchEngine {
 				iwlimit = Math.min(Integer.parseInt((String)query.get("iwlimit")), MAXLINES);
 			if (query.containsKey("case") && global.exactCaseIndex(iid.getDBname()) && ((String)query.get("case")).equalsIgnoreCase("exact"))
 				exactCase = true;
+			if(query.containsKey("searchall"))
+				searchAll = Boolean.parseBoolean((String)query.get("searchall"));
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
-			return search(iid, searchterm, offset, limit, iwoffset, iwlimit, namespaces, what.equals("rawexplain"), exactCase, true, true);
+			return search(iid, searchterm, offset, limit, iwoffset, iwlimit, namespaces, what.equals("rawexplain"), exactCase, true, true, searchAll);
 		} else if (what.equals("prefix")){
 			int limit = MAXPREFIX;
 			if (query.containsKey("limit"))
@@ -577,7 +587,8 @@ public class SearchEngine {
 	 * the default namespaces filter
 	 */
 	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, int iwoffset, int iwlimit, 
-			NamespaceFilter nsDefault, boolean explain, boolean exactCase, boolean raw, boolean searchOnly){
+			NamespaceFilter nsDefault, boolean explain, boolean exactCase, boolean raw, boolean searchOnly, 
+			boolean searchAllFromRequest){
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
@@ -599,8 +610,12 @@ public class SearchEngine {
 			return res;
 		}
 		
+		// check if request is explicitely on one field
+		if(searchAllFromRequest){
+			nsfw.setNamespaceFilter(new NamespaceFilter());  
+			searchAll = true;
 		// if search is over one field, try to use filters
-		if(fields.size()==1){
+		} else if(fields.size()==1){
 			if(fields.contains(new NamespaceFilter())){
 				nsfw.setNamespaceFilter(new NamespaceFilter());  // empty filter: "all" keyword
 				searchAll = true;

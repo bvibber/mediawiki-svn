@@ -1035,33 +1035,38 @@ public class WikiQueryParser {
 		return query;
 	}
 	
-	/** return true if buffer is wildcard  */
+	/** 
+	 * return true if buffer is wildcard
+	 * the only allowed patterns are *q and q* and not other combinations like *q* or q*r  
+	 * 
+	 */
 	private boolean bufferIsWildCard(){
-		if(length < 1)
+		if(length < 2)
 			return false;
 		boolean wild = false;
 		int index = -1;
-		for(int i=0;i<length;i++){
-			if(buffer[i] == '*'){
-				wild = true;
-				index = i;
-				break;
-			}
+		// only allow '*' at begin and end
+		if(buffer[0] == '*'){
+			index = 0;
+			wild = true;
+		} else if( buffer[length-1] == '*' ){
+			index = length-1;
+			wild = true;
 		}
+
 		// check if it's a valid wildcard
 		if(wild){
-			if((buffer[0] == '*') && (buffer[length-1]=='*'))
-				return false; // don't support patterns like *a*
-			//if(index == length-1 && buffer[index]=='?')
-			//	return false; // probably just an ordinary question mark
+			// check if this is the only asterix
+			for(int i=0;i<length;i++){
+				if( i!= index && buffer[i] == '*'){
+					return false; // more than one '*'
+				}
+			}
 			
-			// don't let * be in middle for performance reasons
-			if(Character.isLetterOrDigit(buffer[0]) && Character.isLetterOrDigit(buffer[length-1]))
-				return false;
-			
+			// require at least one letter besides the wildcard sign
 			for(int i=0;i<length;i++){
 				if(Character.isLetterOrDigit(buffer[i]))
-					return true; // +card :P
+					return true; // found it!
 			}
 		}
 		return false;
