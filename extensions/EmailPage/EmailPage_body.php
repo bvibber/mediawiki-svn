@@ -88,9 +88,13 @@ class SpecialEmailPage extends SpecialPage {
 
 		# Allow selection of a group
 		$groups = "<option />";
-		foreach ( array_keys( $wgGroupPermissions ) as $group ) if ( $group != '*' ) {
+		foreach ( array_keys( $wgGroupPermissions ) as $group ) if ( $group != '*' && $group != 'user' ) {
 			$selected = $group == $this->group ? ' selected' : '';
-			if ( $wgEmailPageAllowAllUsers ) $groups .= "<option$selected>$group</option>";
+			$groups .= "<option$selected>$group</option>";
+		}
+		if ( $wgEmailPageAllowAllUsers ) {
+			$selected = 'user' == $this->group ? ' selected' : '';
+			$groups .= "<option$selected value='user'>ALL USERS</option>";
 		}
 		$wgOut->addHTML( "<tr><td>" . wfMsg( 'ea-fromgroup' ) . "</td><td><select name=\"ea-group\">$groups</select></td></tr>\n" );
 		$wgOut->addHTML( "</table>" );
