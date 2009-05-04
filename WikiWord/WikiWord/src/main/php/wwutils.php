@@ -47,7 +47,7 @@ class WWUtils {
 	$term = trim($term);
 
 	$sql = "SELECT M.*, O.*, definition FROM {$wwTablePrefix}_{$lang}_meaning as M"
-	      . " JOIN {$wwTablePrefix}_{$lang}_definition as D ON M.concept = D.concept "
+	      . " LEFT JOIN {$wwTablePrefix}_{$lang}_definition as D ON M.concept = D.concept "
 	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND M.concept = O.local_concept "
 	      . " WHERE term_text = \"" . mysql_real_escape_string($term) . "\""
 	      . " ORDER BY freq DESC "
