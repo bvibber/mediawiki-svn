@@ -1556,6 +1556,7 @@ $wdMessages['bs'] = array(
 	'datasearch_language' => 'Jezik:',
 	'datasearch_found_word' => 'Pronađena riječ',
 	'datasearch_meaning' => 'Značenje',
+	'datasearch_ext_identifier' => 'Vanjski identifikatori',
 	'datasearch_search_text' => 'Traži tekst:',
 	'datasearch_within_words' => 'Unutar riječi:',
 	'datasearch_showing_only' => 'Prikazuj samo najviše $1 {{PLURAL:$1|rezultat|rezultata}}.',
@@ -1599,6 +1600,8 @@ Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivan
 	'ow_transaction_operation' => 'Operacija',
 	'ow_transaction_is_latest' => 'je posljednji',
 	'ow_transaction_object' => 'Objekt',
+	'ow_transaction_first_dm' => 'Prvo definisano značenje',
+	'ow_transaction_second_dm' => 'Drugo definisano značenje',
 	'ow_transaction_summary' => 'Sažetak',
 	'ow_conceptmapping_help' => '<p>moguće akcije: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  ubacivanje mappinga</li>
@@ -1690,13 +1693,18 @@ Desila se greška u samoj bazi podataka, wikidata ne može naći valjane podatke
 Moguće je su izgubljeni.
 Molimo kontaktirajte operatora servera ili administratora.',
 	'ow_history_transaction' => 'Transakcija:',
+	'ow_class_attr_type_dm' => 'Definisano značenje',
 	'ow_class_attr_type_plain' => 'Obični tekst',
 	'ow_class_attr_type_link' => 'Link',
+	'ow_needs_xlation_source_lang' => 'Izvorni jezik:',
+	'ow_needs_xlation_dest_lang' => 'Odredišni jezik:',
 	'ow_show' => 'Pokaži',
 	'ow_create' => 'Napravi',
 	'ow_suggest_previous' => 'Prethodni',
 	'ow_suggest_next' => 'Slijedeći',
 	'ow_suggest_clear' => 'Očisti',
+	'ow_nstab_definedmeaning' => 'definisano značenje',
+	'right-addlanguage' => 'Dodavanje i promjena jezičnih postavki',
 );
 
 /** Catalan (Català)
@@ -2595,6 +2603,8 @@ donde iso es el código del lenguaje.</p>",
 El lenguaje debe utilizar código ISO 639-3.</p>',
 	'exporttsv' => 'Wikidata: Exportar TSV',
 	'ow_exporttsv_title' => 'Exportar una colección a TSV',
+	'ow_exporttsv_header' => "<p>Exportar una colección a un formato de texto de pestaña separada que puedes importar en OpenOffice.org, Excel u otro software de hoja de cálculo.<br />
+Seleccionar una colección a exportar. En la tabla de textos de lenguajes, ingresar una coma para una lista separada de códigos de lenguaje ISO 639-3. Comenzar con los lenguajes desde los que estarás traduciendo (escoger tantos como desees) y terminar con hacia los cuales estarás traduciendo. Después haz click en 'Crear' para crear el archivo.</p>",
 	'ow_exporttsv_languages' => 'Lenguajes:',
 	'ow_exporttsv_not_allowed' => 'No tiene permiso para hacer un exporte de TVS',
 	'ow_exporttsv_export_failed' => 'Falló la exportación',

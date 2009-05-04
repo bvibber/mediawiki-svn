@@ -851,6 +851,7 @@ $messages['lb'] = array(
 	'patrol-revert-reason' => 'Grond:',
 	'patrol-skip' => 'Iwwersprangen',
 	'patrol-reverting' => 'Zrécksetzen: $1',
+	'patrol-nonefound' => "Et goufe keng passend Ännerunge fir z'iwerkucke fonnt.",
 	'patrol-reverted-ok' => "D'Ännerung gouf zréckgesat.",
 	'patrol-reverted-failed' => "D'Ännerung konnt net zréck gesat ginn.",
 	'patrol-skipped-ok' => 'Ännerung ignoréieren',
@@ -859,6 +860,7 @@ $messages['lb'] = array(
 * Kuckt d'Diskussiounssäit",
 	'patrol-another' => 'Weis eng aner Ännerung, wann se disponibel ass',
 	'patrol-resume' => 'Hei clicke fir weiderzefueren.',
+	'right-patroller' => 'Sàiten iwwerkucken',
 );
 
 /** Eastern Mari (Олык Марий)

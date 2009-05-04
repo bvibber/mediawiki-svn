@@ -239,6 +239,7 @@ $messages['bs'] = array(
 	'recordadmin-edit' => 'Uređuje se $1',
 	'recordadmin-typeupdated' => '$1 svojstvo ažurirano',
 	'recordadmin-updatesuccess' => '$1 ažurirano',
+	'recordadmin-updateerror' => 'Desila se greška pri ažuriranju',
 	'recordadmin-buttonsave' => 'Sačuvaj',
 	'recordadmin-createlink' => 'napravi jedan',
 	'recordadmin-summary-typecreated' => 'Novi $1 napravljen',

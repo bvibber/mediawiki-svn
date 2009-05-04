@@ -323,13 +323,23 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'viewxml' => 'Ver XML',
+	'dt_viewxml_docu' => 'Por favor seleccionar entre las siguientes categorías y nombres de espacio para ver en formato XML.',
 	'dt_viewxml_categories' => 'Categorías',
 	'dt_viewxml_namespaces' => 'Espacios de nombres',
 	'dt_viewxml_simplifiedformat' => 'Formato simplificado',
 	'dt_xml_namespace' => 'Espacio de nombres',
+	'dt_xml_pages' => 'Páginas',
 	'dt_xml_page' => 'Página',
+	'dt_xml_template' => 'Plantilla',
+	'dt_xml_field' => 'Campo',
 	'dt_xml_name' => 'Nombre',
 	'dt_xml_title' => 'Título',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Texto libre',
+	'importxml' => 'Importar XML',
+	'dt_importxml_selectfile' => 'Por favor seleccione el archivo XML a importar:',
+	'dt_importxml_importing' => 'Importando...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|página|páginas}} serán importadas del archivo XML.',
 );
 
 /** Finnish (Suomi)

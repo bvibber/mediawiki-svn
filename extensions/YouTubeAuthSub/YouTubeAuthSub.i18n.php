@@ -2789,6 +2789,13 @@ $messages['vo'] = array(
 	'youtubeauthsub_uploadbutton' => 'Löpükön',
 );
 
+/** Waray (Winaray)
+ * @author Harvzsf
+ */
+$messages['war'] = array(
+	'youtubeauthsub_category' => 'Kaarangay',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

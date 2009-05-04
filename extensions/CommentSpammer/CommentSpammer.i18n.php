@@ -138,6 +138,7 @@ $messages['es'] = array(
 [[Special:UserLogin|Inicie sesión o cree una cuenta]] para evitar esto.',
 	'commentspammer-desc' => 'Rechaza ediciones de comentadores spammer sospechosos en una lista negra DNS',
 	'commentspammer-log-msg' => 'edición de [[Special:Contributions/$1|$1]] en [[:$2]].',
+	'cspammerlogpagetext' => 'Registro de ediciones que han sido permitidas o denegadas basados en si la fuente fue un conocido comentador spammer.',
 	'cspammer-log-page' => 'Registro de comentadores spammer',
 );
 

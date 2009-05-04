@@ -178,6 +178,7 @@ $messages['bs'] = array(
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Jedan poziv|$1 poziva}} dostupno)',
 	'invitations-feature-access' => 'Trenutno imate pristup za upotrebu <i>$1</i>.',
 	'invitations-inviteform-title' => 'Pozovi korisnika da koristi $1',
+	'invitations-inviteform-username' => 'Korisnik koji se poziva',
 	'invitations-inviteform-submit' => 'Pozovi',
 	'invitations-invite-success' => 'Uspješno se pozvali $1 da koristi ovu mogućnost!',
 );

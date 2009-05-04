@@ -127,6 +127,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'logentry-append' => 'Apéndice',
+	'logentry-parserhook-desc' => 'Esta extensión de etiqueta provee un formulario para añadir/preprocesar a páginas de registro',
+	'logentry-specialpage-desc' => 'Esta extensión de etiqueta provee un proceso para añadir a páginas de registro',
 	'logentry-invalidpage' => 'Página inválida',
 	'logentry-invalidtoken' => 'Ficha inválida',
 );

@@ -860,9 +860,9 @@ $messages['es'] = array(
 	'hiderevision-desc' => 'Esconde revisiones individuales de todos los usuarios para motivos legales etc.',
 	'group-oversight' => 'Oversighters',
 	'group-oversight-member' => 'Supervisor',
-	'grouppage-oversight' => '{{ns:project}}:Supervisión',
+	'grouppage-oversight' => '{{ns:project}}:Supervisor',
 	'right-oversight' => 'Ver una revisión anteriormente escondida',
-	'right-hiderevision' => 'Ocultar revisiones de los administradores',
+	'right-hiderevision' => 'Ocultar revisiones a los administradores',
 	'hiderevision-prompt' => 'Número de revisión a ocultar:',
 	'hiderevision-continue' => 'Seguir',
 	'hiderevision-text' => "Esto '''sólo''' se debería usar en los siguientes casos:
@@ -872,10 +872,10 @@ $messages['es'] = array(
 '''El abuso de este sistema llevará consigo la pérdida de privilegios.'''
 
 Los elementos eliminados no serán visibles por nadie en todo el sitio web, pero los borrados quedan registrados y podrían ser restaurados manualmente por un administrador de la base de datos si cometieras un error.",
-	'hiderevision-reason' => 'Motivo (será registrado privadamente):',
+	'hiderevision-reason' => 'Motivo (será registrado de manera privada):',
 	'hiderevision-submit' => 'Esconder estos datos permanentemente',
 	'hiderevision-tab' => 'Esconder revisión',
-	'hiderevision-link' => 'Contribuciones ocultas de usuario',
+	'hiderevision-link' => 'Contribuciones ocultas del usuario',
 	'hiderevision-norevisions' => 'No se han especificado revisiones para borrar.',
 	'hiderevision-noreason' => 'Debes describir el motivo de esta eliminación.',
 	'hiderevision-status' => 'Revisión $1: $2',

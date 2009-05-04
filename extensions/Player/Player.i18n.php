@@ -291,6 +291,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'player' => 'Reproductor',
+	'player-desc' => 'Reproducción multimedia empotrada usando plugins de navegadores comunes, y una [[Special:Player|página especial]]',
 	'player-title' => 'Reproductor',
 	'player-playertitle' => 'Reproductor: $1',
 	'player-file' => 'Nombre de archivo',

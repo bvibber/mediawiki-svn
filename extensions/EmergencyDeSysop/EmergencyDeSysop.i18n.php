@@ -186,6 +186,7 @@ $messages['es'] = array(
 	'emergencydesysop-invalidtarget' => 'El usuario objetivo no existe.',
 	'emergencydesysop-blocked' => 'No puede acceder a esta página mientras esté bloqueado',
 	'emergencydesysop-noright' => 'No tienes suficientes permisos para acceder a esta página',
+	'right-emergencydesysop' => 'Capáz de retirar los privilegios de administrador a otro usuario, perdiendo el suyo propio.',
 );
 
 /** Finnish (Suomi)

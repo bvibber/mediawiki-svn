@@ -194,13 +194,20 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'form-desc' => '[[Special:Form|Interfejs obrazac]] za započinjanje novih stranica',
 	'form' => 'Obrazac',
 	'formnoname' => 'Nema imena obrasca',
 	'formbadname' => 'Loš naziv obrasca',
+	'formbadnametext' => 'Ne postoji obrazac s takvim imenom.',
 	'formtitlepattern' => 'Dodaj novi $1',
 	'formsave' => 'Sačuvaj',
+	'formindexmismatch-title' => 'Naslov šeme i šablona se ne podudaraju',
+	'formarticleexists' => 'Stranica postoji',
+	'formarticleexiststext' => 'Stranica [[$1]] već postoji.',
 	'formbadpagename' => 'Loš naziv stranice',
+	'formsavesummary' => 'Nova stranica koristeći [[Special:Form/$1|obrazac $1]]',
 	'formsaveerror' => 'Greška pri spremanju obrasca',
+	'formsaveerrortext' => "Desila se nepoznata greška pri spremanju stranice '$1'.",
 );
 
 /** Czech (Česky)

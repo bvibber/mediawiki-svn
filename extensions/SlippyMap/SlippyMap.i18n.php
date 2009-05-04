@@ -750,6 +750,7 @@ $messages['lb'] = array(
 	'slippymap_zoomsmall' => 'Zoom (z) de Wert kann net méi kleng si wéi null',
 	'slippymap_zoombig' => 'Zoom (z) de Wert kann net méi grouss si wéi 17.',
 	'slippymap_maperror' => 'Kaartefeeler:',
+	'slippymap_osmtext' => 'Kuckt dës Kaart op OpenStreetMap.org',
 	'slippymap_code' => 'Wikicode fir dës Kaart ze kucken:',
 	'slippymap_button_code' => 'Wikicode weisen',
 	'slippymap_resetview' => 'Zrécksetzen',

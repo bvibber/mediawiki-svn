@@ -592,6 +592,7 @@ $messages['el'] = array(
 	'contrib-hist-previous' => 'Νεότερες δωρεές',
 	'contrib-hist-anonymous' => 'Ανώνυμος',
 	'contributionstatistics' => 'Στατιστικά συνεισφορών',
+	'contribstats-desc' => 'Δείχνει τα στατιστικά για τις συνεισφορές που γίνονται στο Ίδρυμα Wikimedia',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Σύνολο για σήμερα|Ημερήσια σύνολα για τις προηγούμενες $1 μέρες}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Σύνολο για αυτόν τον μήνα|Μηνιαία σύνολα για τους προηγούμενους $1 μήνες}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Σύνολο για $1 μήνα|Μηνιαία σύνολα για $1 μήνες}}',

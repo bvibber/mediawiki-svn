@@ -1753,6 +1753,9 @@ Pšosym napóraj jen abo změń jen, aby wužywał rozšyrjenje.',
 	'configure-boolop-description-or' => 'Nanejmjenjej jadne wuměnjenje musy wěrno byś',
 	'configure-boolop-description-xor' => 'Rowno jadne wuměnjenje musy wěrno byś',
 	'configure-boolop-description-not' => 'Žedne wuměnjenja njemuse wěrno byś',
+	'configure-farmer-settings' => '[[Special:Configure|Toś ten wiki konfigurěrowaś]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Rozšyrjenja za toś ten wiki konfigurěrowaś]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Rozšyrjenja nalicyś, kótarež stoje za toś ten wiki k dispoziciji]].',
 );
 
 /** Greek (Ελληνικά)
@@ -1902,10 +1905,14 @@ $messages['es'] = array(
 	'configure-desc-val' => 'Valor',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Extensiones',
+	'configure-viewconfig-default-diff' => 'Cambios de configuraciones por defecto',
+	'configure-ext-ext-dependencies' => "'''Advertencia:''' esta extensión requiere las siguientes {{PLURAL:$2|extensión|extensiones}} a ser activadas: $1.",
+	'configure-ext-ext-dependency-err' => "'''Error:''' la extensión $1 requiere la extensión $2 para ser activada.",
 	'configure-ext-doc' => 'Ver documentación online',
 	'configure-ext-schemachange' => "'''Advertencia:''' ¡esta extensión requiere una actualización en la base de datos para trabajar correctamente!",
 	'configure-ext-settings' => 'Configuraciones',
 	'configure-ext-settings-dep-errors' => 'Esta extensión no puede ser habilitada porque las siguientes {{PLURAL:$1|configuración tiene|configuraciones tienen}} un valor inaceptable:',
+	'configure-ext-settings-dep-error' => '$1: valor requerido: $2, valor actual: $3',
 	'configure-ext-use-extension' => 'Usar esta extensión',
 	'configure-ext-use' => 'Usar',
 	'configure-form-reason' => 'Razones para cambiar:',
@@ -1913,6 +1920,7 @@ $messages['es'] = array(
 	'configure-arrayinput-oneperline' => "''(uno por línea)''",
 	'configure-summary' => 'Esta página especial le permite configurar esta wiki, vea [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] para mas información',
 	'configure-btn-save' => 'Guardar configuraciones',
+	'configure-db-table-error' => 'La base de datos que has especificado no tiene las tablas requeridas. Por favor aplica configure.sql en esa base de datos.',
 	'configure-directory-not-writable' => 'El directorio usado para guardar las configuraciones <tt>$1</tt>, está protegido contra escritura.
 Por favor cambie los permisos para que PHP pueda escribir si quiere usar esta extensión.',
 	'configure-edit-old' => "'''Advertencia''': estás editando una versión <strong>antigua</strong> de la configuración (del $1).",
@@ -1922,6 +1930,10 @@ Por favor cambie los permisos para que PHP pueda escribir si quiere usar esta ex
 	'configure-js-prompt-group' => 'Ingrese el nombre del nuevo grupo:',
 	'configure-js-remove' => 'Borrar',
 	'configure-js-remove-row' => 'Eliminar esta entrada',
+	'configure-js-get-image-url' => 'Convertir nombre de archivo a URL',
+	'configure-js-image-error' => 'Un error ocurrió cuando cargaba el URL. Por favor verifica que el archivo existe.',
+	'configure-js-biglist-shown' => 'Detalles de configuración pueden ser escondidos',
+	'configure-js-biglist-hidden' => 'detalles de configuración ocultos',
 	'configure-js-biglist-show' => '[mostrar detalles]',
 	'configure-js-biglist-hide' => '[ocultar detalles]',
 	'configure-js-summary-none' => 'Sin configuraciones',
@@ -1966,6 +1978,7 @@ Por favor, créelo o cámbielo para usar esta extensión.',
 	'configure-section-cookie' => 'Cookies',
 	'configure-section-performance' => 'Desempeño',
 	'configure-section-upload' => 'Subir',
+	'configure-section-sharedupload' => 'Carga compartida',
 	'configure-section-mime' => 'Tipos MIME',
 	'configure-section-images' => 'Archivos',
 	'configure-section-antivirus' => 'Antivirus',
@@ -1981,6 +1994,7 @@ Por favor, créelo o cámbielo para usar esta extensión.',
 	'configure-section-filter' => 'Filtrando',
 	'configure-section-mw-extensions' => 'Extensiones MediaWiki',
 	'configure-section-external-tools' => 'Herramientas externas',
+	'configure-section-thumbnail' => 'Miniaturización de imagen',
 	'configure-section-output' => 'Salida',
 	'configure-select-wiki' => 'Selección Wiki',
 	'configure-select-wiki-desc' => 'Seleccione el wiki que desea configurar.',
@@ -2004,16 +2018,20 @@ Por favor, créelo o cámbielo para usar esta extensión.',
 	'right-extensions-interwiki' => 'Configurar las extensiones wiki extranjeras',
 	'right-viewconfig' => 'Ver la configuración wiki',
 	'right-viewconfig-all' => 'Ver toda la configuración wiki',
+	'right-viewconfig-interwiki' => 'Ver configuración de wiki foráneo',
 	'viewconfig' => 'Ver configuración wiki',
 	'configure-throttle-action-edit' => 'Editar',
 	'configure-throttle-action-move' => 'Trasladar',
 	'configure-throttle-action-rollback' => 'Revertir',
+	'configure-throttle-action-mailpassword' => 'Enviar recordador de contraseña',
 	'configure-throttle-action-emailuser' => 'Enviar correo electrónico',
 	'configure-throttle-group-anon' => 'Todos los usuarios anónimos',
 	'configure-throttle-group-user' => 'Por cuenta de usuario',
 	'configure-throttle-group-newbie' => 'Por cuenta de nuevos usuarios',
 	'configure-throttle-group-ip' => 'Por dirección IP',
 	'configure-throttle-count' => 'Acciones permitidas:',
+	'configure-throttle-period' => 'Restablecer periodo (segundos):',
+	'configure-throttle-summary' => '$1 acciones en $2 segundos.',
 	'configure-throttle-group' => 'Tipo',
 	'configure-throttle-limit' => 'Límite',
 	'configure-throttle-none' => 'Sin límite',
@@ -2034,6 +2052,9 @@ Por favor, créelo o cámbielo para usar esta extensión.',
 	'configure-boolop-description-or' => 'Al menos una condición debe ser cierta',
 	'configure-boolop-description-xor' => 'Exactamente una condición debe ser cierta',
 	'configure-boolop-description-not' => 'Ninguna condición debe ser cierta',
+	'configure-farmer-settings' => '[[Special:Configure|Configurar este wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Configurar extensiones para este wiki]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Listar extensiones disponibles para este wiki]].',
 );
 
 /** Basque (Euskara)
@@ -2434,6 +2455,9 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-boolop-description-or' => 'Au moins une condition doit être vérifiée',
 	'configure-boolop-description-xor' => 'Exactement une condition doit être vérifiée',
 	'configure-boolop-description-not' => 'Aucune condition ne doit être vérifiée',
+	'configure-farmer-settings' => '[[Special:Configure|Configurer ce wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Configurer les extensions pour ce wiki]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Liste des extensions disponibles pour ce wiki]].',
 );
 
 /** Western Frisian (Frysk)
@@ -2636,6 +2660,9 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'configure-boolop-description-or' => 'Polo menos unha condición debe ser verdade',
 	'configure-boolop-description-xor' => 'Exactamente unha condición debe ser verdade',
 	'configure-boolop-description-not' => 'Ningunha condición debe ser verdade',
+	'configure-farmer-settings' => '[[Special:Configure|Configurar este wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Configurar as extensións deste wiki]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Lista de extensións dispoñibles neste wiki]].',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -2840,6 +2867,9 @@ Bitte leg si aa fier configure.sql drin uus oder korrigier ihre Name.',
 	'configure-boolop-description-or' => 'Zmindescht ei Bedingig muess wohr syy',
 	'configure-boolop-description-xor' => 'Gnau ei Bedingig muess wohr syy',
 	'configure-boolop-description-not' => 'Kei Bedingig derf wohr syy',
+	'configure-farmer-settings' => '[[Special:Configure|Des Wiki konfiguriere]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Erwyterige fir des Wiki konfiguriere]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Verfiegbari Erwyterige fir des Wiki uflischte]].',
 );
 
 /** Manx (Gaelg)
@@ -3408,6 +3438,9 @@ Prošu wutwor abo změń jón, zo by tute rozšěrjenje wužiwał.',
 	'configure-boolop-description-or' => 'Znajmjeńša jedne wuměnjenje dyrbi wěrne być',
 	'configure-boolop-description-xor' => 'Dokładnje jedne wuměnjenje dyrbi wěrne być',
 	'configure-boolop-description-not' => 'Žane wuměnjenja njetrjebaja wěrne być',
+	'configure-farmer-settings' => '[[Special:Configure|Tutón wiki konfigurować]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Rozšěrjenja za tutón wiki konfigurować]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Rozšěrjenja nalistować, kotrež za tutón wiki k dispoziciji steja]].',
 );
 
 /** Hungarian (Magyar)
@@ -3610,6 +3643,9 @@ Per favor crea lo o cambia lo pro poter usar iste extension.',
 	'configure-boolop-description-or' => 'Al minus un condition debe esser ver',
 	'configure-boolop-description-xor' => 'Exactemente un condition debe esser ver',
 	'configure-boolop-description-not' => 'Nulle condition debe esser ver',
+	'configure-farmer-settings' => '[[Special:Configure|Configurar iste wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Configurar extensiones pro iste wiki]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Lista de extensions disponibile pro iste wiki]].',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -4010,6 +4046,9 @@ $messages['ja'] = array(
 	'configure-boolop-description-or' => '少なくとも1つの条件が真でなくてはならない',
 	'configure-boolop-description-xor' => 'ちょうど1つの条件が真でなくてはならない',
 	'configure-boolop-description-not' => 'どの条件も真であってはならない',
+	'configure-farmer-settings' => '[[Special:Configure|このウィキを構成する]]。',
+	'configure-farmer-extensions' => '[[Special:Extensions|このウィキの拡張機能を構成する]]。',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|このウィキで利用可能な拡張機能の一覧]]。',
 );
 
 /** Javanese (Basa Jawa)
@@ -4273,6 +4312,7 @@ Donn ens pröfe, ov di Datei övverhoup do es.',
 	'configure-backlink' => 'Retuur op et Fommulaa för et Enjävve',
 	'configure-image-url-explanation' => 'Jif dä URL för e Beld aan, udder dä Name fun enem Beld hee em Wiki, ävver ohne
 et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeihß.',
+	'configure-section-robots' => 'Robbots, di et Web dorschsöhke',
 	'configure-section-features' => 'Funxione udder Eijeschaffte',
 	'configure-section-general' => 'Alljemein Enstellunge',
 	'configure-section-pages' => 'Sigge',
@@ -4284,6 +4324,7 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-section-sqlite' => 'Enstellunge för <i lang="en">SQLite</i>',
 	'configure-section-email' => '<i lang="en">e-mail</i>',
 	'configure-section-enotif' => 'Noheschte övver de <i lang="en">e-mail</i>',
+	'configure-section-localization' => 'Shprooche, un Enshtellunge för en Jääjend',
 	'configure-section-timezone' => 'Zickzon',
 	'configure-section-zh-conversion' => 'Ömwandlunge för et Shineesesche',
 	'configure-section-debug' => 'Fähler Söke',
@@ -4395,6 +4436,9 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-boolop-description-or' => 'Winnischßdens ein Bedengung moß wohr sen',
 	'configure-boolop-description-xor' => 'Jenou ein Bedengung moß wohr sen',
 	'configure-boolop-description-not' => 'Kein Bedengung moß wohr sin',
+	'configure-farmer-settings' => 'De Enstellunge för dat Wiki hee künne op [[{{#special:Configure}}]] jemaat wääde.',
+	'configure-farmer-extensions' => 'De Projramm-Zohsäz för dat Wiki hee künne op [[{{#special:Extensions}}]] enjshtallt wääde.',
+	'configure-farmer-extensions-list' => 'De Projramm-Zohsäz för dat Wiki hee sen op [[{{#special:Extensions}}]] opjeleß.',
 );
 
 /** Cornish (Kernewek)
@@ -4563,6 +4607,9 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-boolop-description-or' => 'Mindestens eng Bedingung muss wouer sinn',
 	'configure-boolop-description-xor' => 'Genee eng Bedingung muss wouer sinn',
 	'configure-boolop-description-not' => 'Keng Bedingung däerf wouer sinn',
+	'configure-farmer-settings' => '[[Special:Configure|Konfiguréiert dës Wiki]].',
+	'configure-farmer-extensions' => "[[Special:Extensions|Konfiguréiert d'Erweiderunge fir dës Wiki]].",
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Lëscht vun den Erweiderungen déi fir dës Wiki disponibel sinn]].',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
@@ -5139,6 +5186,9 @@ Er wordt een voorvertoning weergegeven als u het veld verlaat.',
 	'configure-boolop-description-or' => 'Aan tenminste een voorwaarde moet voldaan zijn',
 	'configure-boolop-description-xor' => 'Precies een voorwaarde moet waar zijn',
 	'configure-boolop-description-not' => 'Aan geen enkele voorwaarde moet voldaan zijn',
+	'configure-farmer-settings' => '[[Special:Configure|Instellingen maken voor deze wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Uitbreidingen voor deze wiki instellen]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Voor deze wiki beschikbare uitbreidingen weergegeven]].',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -5666,6 +5716,9 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 	'configure-boolop-description-or' => 'Al mens una condicion deu èsser verificada',
 	'configure-boolop-description-xor' => 'Exactament una condicion deu èsser verificada',
 	'configure-boolop-description-not' => 'Cap de condicion deu pas èsser verificada',
+	'configure-farmer-settings' => "Los paramètres d'aqueste wiki pòdon èsser configurats sus [[Special:Configure]].",
+	'configure-farmer-extensions' => 'Las extensions utilizadas sus aqueste wiki pòdon èsser configuradas sus [[Special:Extensions]].',
+	'configure-farmer-extensions-list' => 'Las extensions disponiblas sus aqueste wiki son listadas sus [[Special:Extensions]].',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -6479,6 +6532,9 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 	'configure-boolop-description-or' => 'Aspoň jedna z podmienok musí byť splnená',
 	'configure-boolop-description-xor' => 'Práve jedna z podmienok musí byť splnená',
 	'configure-boolop-description-not' => 'Žiadna z podmienok nesmie byť splnená',
+	'configure-farmer-settings' => '[[Special:Configure|Nastaviť túto wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Nastaviť rozšírenia tejto wiki]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Zoznam rozšírení dostupných pre túto wiki]].',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
