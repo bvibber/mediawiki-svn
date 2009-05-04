@@ -442,12 +442,18 @@ function toggle_element_activation(ida,idb) {
 	}
 	//hide and show appropriate upload sizes
 	if(idb == 'wpUploadFileURL'){
-		document.getElementById('mw-upload-maxfilesize').style.display = "none";		
-		document.getElementById('mw-upload-maxfilesize-url').style.display = "block";		
+		var e = document.getElementById('mw-upload-maxfilesize');
+		if(e) e.style.display = "none";		
+		
+		var e = document.getElementById('mw-upload-maxfilesize-url');
+		if(e) e..style.display = "block";		
 	}
 	if(idb == 'wpUploadFile'){
-		document.getElementById('mw-upload-maxfilesize-url').style.display =  "none";	
-		document.getElementById('mw-upload-maxfilesize').style.display =  "block";
+		var e = document.getElementById('mw-upload-maxfilesize-url');
+		if(e) e.style.display =  "none";
+					
+		var e = document.getElementById('mw-upload-maxfilesize');
+		if(e) e.style.display =  "block";
 	}
 	document.getElementById(ida).disabled=true;
 	document.getElementById(idb).disabled=false;
