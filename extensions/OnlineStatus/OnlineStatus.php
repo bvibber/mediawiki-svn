@@ -242,13 +242,13 @@ class OnlineStatus {
 		$prefs = array(
 			'online' => array(
 				'type' => 'radio',
-				'section' => 'personal',
+				'section' => 'personal/info',
 				'options' => $radios,
 				'label-message' => 'onlinestatus-toggles-desc',
 			),
 			'showonline' => array(
 				'type' => 'check',
-				'section' => 'personal',
+				'section' => 'personal/info',
 				'label-message' => 'onlinestatus-toggles-show',
 				'help-message' => 'onlinestatus-toggles-explain',
 			)
