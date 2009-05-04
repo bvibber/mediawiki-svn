@@ -143,6 +143,7 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <?php } ?>
     </tr>
 
+    <?php if (isset($a_definition) && !empty($a_definition)) { ?>
     <tr class="row_def">
       <td></td>
       <td class="cell_label">Definition:</td>
@@ -152,6 +153,7 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <td colspan="2"><?php print htmlspecialchars($b_definition); ?></td>
       <?php } ?>
     </tr>
+    <?php } ?>
 
     <?php if (isset($a_terms) && !empty($a_terms)) { ?>
     <tr class="row_details row_terms">
