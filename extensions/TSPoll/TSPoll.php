@@ -26,10 +26,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['parserhook'][] = array(
 	'name'          => 'TSPoll',
-	'version'       => '1.0 Dev',
+	'version'       => '1.0 Beta',
 	'path'          => __FILE__,
 	'author'        => 'Jan Luca',
-	'url'           => 'http://www.mediawiki.org/wiki/User:Jan_Luca/Extension:TSPoll',
+	'url'           => 'http://www.mediawiki.org/wiki/Extension:TSPoll',
 	'descriptionmsg' => 'tspoll-desc'
 );
 
