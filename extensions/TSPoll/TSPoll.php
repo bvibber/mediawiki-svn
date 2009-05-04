@@ -64,7 +64,12 @@ function efTSPollRender( $input, $args, $parser ) {
 		return wfMsg( 'tspoll-id-error' );
 	}
 
-	$get_server = Http::get( 'http://toolserver.org/~jan/poll/dev/main.php?page=wiki_output&id=' . $id );
+  if ( isset( $args['dev'] ) && $args['dev'] != "1" ) { // If the arrgument dev is given, use the TSPoll-Dev-Version
+      $get_server = Http::get( 'http://toolserver.org/~jan/poll/dev/main.php?page=wiki_output&id='.$id );
+  } else { // sonst die normale Version verwenden
+      $get_server = Http::get( 'http://toolserver.org/~jan/poll/main.php?page=wiki_output&id='.$id );
+  }
+
 	if ( $get_server != '' ) {
 		return $get_server;
 	}
