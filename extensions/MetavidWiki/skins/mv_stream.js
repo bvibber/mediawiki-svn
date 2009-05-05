@@ -65,7 +65,7 @@ function mv_load_interface_libs(){
 			'$j.ui'				: 'jquery/jquery.ui-1.7.1/ui/ui.core.js',
 			'$j.ui.resizable'	: 'jquery/jquery.ui-1.7.1/ui/ui.resizable.js',
 			'mvClipEdit'		: 'libClipEdit/mvClipEdit.js',
-			'$j.ui.draggable'	: 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js'
+			'$j.ui.draggable'	: 'jquery/jquery.ui-1.7.1/ui/ui.draggable.js'
 	  	},function(){		  		
 	  		//make sure mv_embed has done video re-write: 			  		
 	  		mv_embed( function(){
