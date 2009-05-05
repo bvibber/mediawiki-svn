@@ -668,7 +668,7 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 	//jQuery slider:
 	$j('#resize_'+mvd_id).resizable({
 		minWidth: 10,
-		maxWidth:  $j('#resize_'+mvd_id).width(),
+		containment:'parent',
 		minHeight: 20,
 		maxHeight: 20,
 		handles: {
@@ -683,18 +683,18 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 			right_x = ( $j('#resize_'+mvd_id).position().left+
 					  $j('#resize_'+mvd_id).width()
 				);
-			/*js_log('left:' + $j('#resize_'+mvd_id).position().left + ' width: '+
-			*	$j('#resize_'+mvd_id).width() + ' right_x:'+ right_x);
-			*/
-			if(cur_handle.indexOf('handle1')!=-1){
+			js_log('left:' + $j('#resize_'+mvd_id).position().left + ' width: '+
+				$j('#resize_'+mvd_id).width() + ' right_x:'+ right_x);
+			
+			/*if(cur_handle.indexOf('handle1')!=-1){
 				ui.options.maxWidth= right_x;
 			}else{
 				ui.options.maxWidth= (
 					 $j('#container_track_'+mvd_id).width() -
-					$j('#resize_'+mvd_id).position().left
+					 $j('#resize_'+mvd_id).position().left
 				);
-			}
-			js_log("updated maxWidth: " + ui.options.maxWidth);
+			}*/
+			//js_log("updated maxWidth: " + ui.options.maxWidth);
 			//js_log('grabbed: ' + e.explicitOriginalTarget.id);
 			//console.log('start ', ui);
 		},

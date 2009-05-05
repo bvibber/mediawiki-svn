@@ -320,7 +320,7 @@ var mvJsLoader = {
 			 if( ! this.checkObjPath( i ) ){				 
 				 if(!this.libreq[i]) loadExternalJs( this.libs[i] );
 				 this.libreq[i]=1;
-				 js_log("has not yet loaded: " + i);
+				 //js_log("has not yet loaded: " + i);
 				 loading=1;
 			 }
 		 }		 
