@@ -164,28 +164,23 @@ class ApiUpload extends ApiBase {
 				$this->dieUsageMsg( array( 'mustbeloggedin', 'upload' ) );
 			else
 				$this->dieUsageMsg( array( 'badaccess-groups' ) );		
-		}				
-		wfDebug("\n\n do perform UPLOAD\n");
+		}						
 		// Perform the upload
 		$result = $this->performUpload();
-		wfDebug("\n\ndid performUpload result: $result \n\n");
 		// Cleanup any temporary mess
 		$this->mUpload->cleanupTempFile();
-		wfDebug("\n\n do output REsult:\n");
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 	private function performUpload() {
 		global $wgUser;		
 		$result = array();
-		$resultDetails = null;
-		wfDebug("\n\n call verifyPermissions\n\n");
+		$resultDetails = null;		
 		$permErrors = $this->mUpload->verifyPermissions( $wgUser );
 		if( $permErrors !== true ) {
 			$result['result'] = 'Failure';
 			$result['error'] = 'permission-denied';
 			return $result;
-		}
-		wfDebug("\n\n call verifyUpload\n\n");					
+		}						
 		$verification = $this->mUpload->verifyUpload( $resultDetails );	
 		if( $verification != UploadBase::OK ) {
 			$result['result'] = 'Failure';
@@ -246,21 +241,19 @@ class ApiUpload extends ApiBase {
 					$result['sessionkey'] = $sessionKey;
 				return $result;
 			}
-		}								
-		wfDebug("\n\n call performUpload\n\n");					
+		}														
 		//do the upload			
 		$status = $this->mUpload->performUpload( $this->mParams['comment'],
 			$this->mParams['comment'], $this->mParams['watch'], $wgUser );
-		
-		wfDebug("\n\n check if status is good:".$status->isGood() . ' e: ' . print_r($status->getErrorsArray(), true). "\n\n");	
+				
 		if( !$status->isGood() ) {
 			$result['result'] = 'Failure';
 			$result['error'] = 'internal-error';
 			$result['details'] = $status->getErrorsArray();
 			$this->getResult()->setIndexedTagName( $result['details'], 'error' );
 			return $result;
-		}
-		wfDebug("\n\nstatus is good, get local file: \n");
+		}		
+		
 		$file = $this->mUpload->getLocalFile();
 		$result['result'] = 'Success';
 		$result['filename'] = $file->getName();

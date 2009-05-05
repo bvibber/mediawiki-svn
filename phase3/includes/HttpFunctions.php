@@ -125,9 +125,8 @@ class Http {
 			'upload_session_key' => $upload_session_key			
 		) );	
 		//run the actual request .. (this can take some time) 
-		wfDebug("do Request: " . $sd['url'] . ' tf: ' . $sd['target_file_path'] );
-		$status = $req->doRequest();		
-		wfDebug("done with req status is: ". $status->isOK(). ' '.$status->value. "\n");				
+		wfDebug("doRequest: " . $sd['url'] . ' tf: ' . $sd['target_file_path'] );
+		$status = $req->doRequest();					
 		
 		if( $status->isOK() ){
 					
@@ -143,8 +142,7 @@ class Http {
 			$fauxReqData['action'] = 'upload';		
 			$fauxReqData['format'] = 'json';
 			$fauxReqData['internalhttpsession'] = $upload_session_key;			
-			//evil but no other clean way about it: 
-				
+
 			$faxReq = new FauxRequest($fauxReqData, true);				
 			$processor = new ApiMain($faxReq, $wgEnableWriteAPI);
 								
@@ -155,9 +153,7 @@ class Http {
 			$printer->initPrinter(false);	
 			ob_start();
 			$printer->execute();
-			$apiUploadResult = ob_get_clean();
-			
-			wfDebug("\n\n got:" . $apiUploadResult." \n");
+			$apiUploadResult = ob_get_clean();						
 						
 			wfDebug("\n\n got api result:: $apiUploadResult \n" );
 			//the status updates runner will grab the result form the session: 
