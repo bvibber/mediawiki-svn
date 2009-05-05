@@ -22,7 +22,7 @@
 if ( !defined( 'MEDIAWIKI' ) )                     die( 'Not an entry point.' );
 if ( version_compare( $wgVersion, '1.12.0' ) < 0 ) die( 'Sorry, this extension requires at least MediaWiki version 1.12.0' );
 
-define( 'SIMPLESECURITY_VERSION', '4.3.1, 2009-03-26' );
+define( 'SIMPLESECURITY_VERSION', '4.3.2, 2009-05-06' );
 
 # Load the SimpleSecurity class and messages
 $dir = dirname( __FILE__ ) . '/';
@@ -44,6 +44,9 @@ $wgSecurityExtraActions  = array( 'read' => 'Read' );
 
 # Extra groups available in protection form
 $wgSecurityExtraGroups   = array();
+
+# Alternatively, the extra groups can be defined in an article
+$wgSecurityGroupsArticle = false;
 
 # Extra group permissions rules
 $wgPageRestrictions = array();

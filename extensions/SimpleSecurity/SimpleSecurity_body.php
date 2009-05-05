@@ -12,7 +12,7 @@ class SimpleSecurity {
 		global $wgParser, $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions, $wgMessageCache,
 			$wgSecurityMagicIf, $wgSecurityMagicGroup, $wgSecurityExtraActions, $wgSecurityExtraGroups,
 			$wgRestrictionTypes, $wgRestrictionLevels, $wgGroupPermissions,
-			$wgSecurityRenderInfo, $wgSecurityAllowUnreadableLinks;
+			$wgSecurityRenderInfo, $wgSecurityAllowUnreadableLinks, $wgSecurityGroupsArticle;
 
 		# $wgGroupPermissions has to have its default read entry removed because Title::userCanRead checks it directly
 		if ( $this->default_read = ( isset( $wgGroupPermissions['*']['read'] ) && $wgGroupPermissions['*']['read'] ) )
@@ -33,7 +33,7 @@ class SimpleSecurity {
 
 		# Load messages
 		wfLoadExtensionMessages ( 'SimpleSecurity' );
-		$wgMessageCache->addMessages( array( 'protect-unchain' => wfMsg( 'security-unchain' ) ) );
+		$wgMessageCache->addMessages( array( 'protect-unchain'  => wfMsg( 'security-unchain' ) ) );
 		$wgMessageCache->addMessages( array( 'badaccess-group1' => wfMsg( 'badaccess-group0' ) ) );
 		$wgMessageCache->addMessages( array( 'badaccess-group2' => wfMsg( 'badaccess-group0' ) ) );
 		$wgMessageCache->addMessages( array( 'badaccess-groups' => wfMsg( 'badaccess-group0' ) ) );
@@ -44,11 +44,23 @@ class SimpleSecurity {
 			$wgMessageCache->addMessages( array( "restriction-$k" => $v ) );
 		}
 
+		# Add extra available groups if $wgSecurityGroupsArticle is set
+		if ( $wgSecurityGroupsArticle ) {
+			$groups = new Article( Title::newFromText( $wgSecurityGroupsArticle, NS_MEDIAWIKI ) );
+			if ( preg_match_all( '/^\\*?\\s*(.+?)\\s*$/m', $groups->getContent(), $match ) ) {
+				foreach( $match[1] as $group ) $wgSecurityExtraGroups[$group] = '';
+			}
+		}
+
 		# Ensure the new groups show up in rights management
 		# - note that 1.13 does a strange check in the ProtectionForm::buildSelector
 		#   $wgUser->isAllowed($key) where $key is an item from $wgRestrictionLevels
 		#   this requires that we treat the extra groups as an action and make sure its allowed by the user
 		foreach ( $wgSecurityExtraGroups as $k => $v ) {
+			if ( is_numeric( $k ) ) {
+				$k = strtolower( $v );
+				$v = ucfirst( $v );
+			}
 			if ( empty( $v ) ) $v = ucfirst( $k );
 			$wgRestrictionLevels[] = $k;
 			$wgMessageCache->addMessages( array( "protect-level-$k" => $v ) );
@@ -90,9 +102,9 @@ class SimpleSecurity {
 	 * Render security info if any restrictions on this title
 	 */
 	public function onOutputPageBeforeHTML( &$out, &$text ) {
-		global $wgUser;
+		global $wgUser, $wgTitle;
 
-		$title = $out->getTitle();
+		$title = $wgTitle;
 		# Render security info if any
 		if ( is_object( $title ) && $title->exists() && count( $this->info['LS'] ) + count( $this->info['PR'] ) ) {
 
