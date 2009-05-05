@@ -363,7 +363,7 @@ url = http://www.mediawiki.org/wiki/Extension:EditUser
 ErrorHandler
 settings[] = wgErrorHandlerReport: int, wgErrorHandlerShowBackTrace: bool
 settings[] = wgErrorHandlerMaxStringSize: int, wgErrorHandlerAlwaysReport: bool
-settings[] = wgErrorHandlerLog: text
+settings[] = wgErrorHandlerLog: text, wgErrorHandlerReportAfterOutput: bool
 url = http://www.mediawiki.org/wiki/Extension:ErrorHandler
 
 ExpandTemplates

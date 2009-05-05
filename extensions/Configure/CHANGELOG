@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.13.16 - 5 May 2009
+  Updated ErrorHandler extension.
+
 0.13.15 - 3 May 2009
   When using Farmer extension, Special:Farmer/admin will now link to
   Special:Configure and Special:Extensions.
