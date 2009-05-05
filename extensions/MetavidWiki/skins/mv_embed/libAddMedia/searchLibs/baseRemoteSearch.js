@@ -1,4 +1,4 @@
-//base remote search obj
+//base remote search obj 
 
 // @key is name of rObj variable 
 // @value is where to find the value in the item xml
@@ -181,6 +181,9 @@ baseRemoteSearch.prototype = {
 	},
 	getEmbedObjParsedInfo:function(rObj, eb_id){
 		return rObj;
+	},
+	getEmbedTimeMeta:function(rObj, callback){
+		callback();
 	},
 	getEmbedWikiText:function(rObj){
 		var layout = ( rObj.layout)? rObj.layout:"right"

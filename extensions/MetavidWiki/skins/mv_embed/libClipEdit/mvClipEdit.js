@@ -103,9 +103,7 @@ mvClipEdit.prototype = {
 		'inoutpoints':{
 			'd':1,
 			'media':['video'],
-			'doEdit':function( _this ){
-				var cat = _this.rObj
-				//debugger;
+			'doEdit':function( _this ){								
 				//do clock mouse scroll duration editor
 				var end_ntp = ( _this.rObj.embed.end_ntp) ? _this.rObj.embed.end_ntp : _this.rObj.embed.getDuration();
 				if(!end_ntp)

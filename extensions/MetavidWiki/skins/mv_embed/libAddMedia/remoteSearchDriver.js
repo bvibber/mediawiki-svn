@@ -50,7 +50,8 @@ var default_remote_search_options = {
 	'cFileNS':'File', //what is the cannonical namespace for images 
 					  //@@todo (should get that from the api or inpage vars)
 					  
-	'enable_uploads':false // if we want to enable an uploads tab:  
+	'enable_upload_tab':true, // if we want to enable an uploads tab:  
+	'enable_combined_tab':false
 }
 
 if(typeof wgServer == 'undefined')
@@ -79,7 +80,13 @@ remoteSearchDriver.prototype = {
 		'advanced_search':{
 			'title': 'Advanced Options'
 		}		
-	},	
+	},		
+	/** the default content providers list.  
+	 * 
+	 * (should be note that special tabs like "upload" and "combined" don't go into the content proviers list: 
+	 * 
+	 * @@todo we will want to load more per user-preference and per category lookup 
+	 */
 	content_providers:{				
 		/*content_providers documentation: 			
 		 *  @@todo we should move the bulk of the configuration to each file
@@ -480,7 +487,7 @@ remoteSearchDriver.prototype = {
 		js_log('checkForCopyURLSupport:: ' + wgArticlePath);	
 		if( this.import_url_mode == 'autodetect' ){
 			do_api_req( {
-				'data':{ 'action':'paraminfo','modules':'upload' },
+				'data': { 'action':'paraminfo', 'modules':'upload' },
 				'url': _this.local_wiki_api_url 
 			}, function(data){						
 				if( typeof data.paraminfo.modules[0].classname == 'undefined'){										
@@ -615,8 +622,10 @@ remoteSearchDriver.prototype = {
 		//add the tabs to the rsd_results container: 
 		var o='<div class="rsd_tabs_container" style="position:absolute;top:41px;width:100%;left:12px;height:25px;">';
 		//o+= '<ul class="rsd_cp_tabs" style="margin: 0 0 0 0;position:absolute;top:0px;padding:0;">'; //no idea why margin does not overwrite from the css		
-			//output combined tab:			
-			o+='<div id="rsd_tab_combined" class="rsd_cp_tab"><img src="' + mv_embed_path + 'skins/'+mv_skin_name+ '/images/remote_cp/combined_tab.png"></div>';		 			 	
+			//output combined tab:		
+			if(_this.enable_combined_tab)	
+				o+='<div id="rsd_tab_combined" class="rsd_cp_tab"><img src="' + mv_embed_path + 'skins/'+mv_skin_name+ '/images/remote_cp/combined_tab.png"></div>';
+						 			 	
 			for(var cp_id in  this.content_providers){
 				var cp = this.content_providers[cp_id];
 				if( cp.enabled && cp.checked){
@@ -634,9 +643,10 @@ remoteSearchDriver.prototype = {
 				}
 			}
 		//do an upload tab if enabled: 
-		if( this.enable_uploads ){
-			var class_attr = ( this.disp_item =='upload' ) ? 'class="rsd_selected"':'';	
-			o+='<div id="rsd_tab_upload" ' + class_attr + ' >'+gM('upload');+'</div>';
+		if( this.enable_upload_tab ){
+			var class_attr = 'class="rsd_cp_tab';
+			class_attr+= ( this.disp_item =='upload' ) ?' rsd_selected"':'"';
+			o+='<div id="rsd_tab_upload" ' + class_attr + '> ' + gM('upload') + '</div>';
 		}
 		//o+='</ul>';		
 		o+='</div>';
@@ -910,7 +920,7 @@ remoteSearchDriver.prototype = {
 	},
 	//loads the media editor:
 	doMediaEdit:function( rObj , mediaType){
-		var _this = this;
+		var _this = this;				 					
 		var mvClipInit = {
 				'rObj':rObj, //the resource object	
 				'parent_ct':'rsd_resource_edit',
@@ -932,25 +942,29 @@ remoteSearchDriver.prototype = {
 			});				
 		}
 		if( mediaType == 'video' || mediaType == 'audio'){
-			//make sure we have the embedVideo libs: 
-			mvJsLoader.embedVideoCheck(function(){
-				js_log('append html: ' + rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'}) );
-				$j('#clip_edit_disp').append(
-					rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})
-				);	
-				//rewrite by id handldes getting any libs we are missing: 		
-				rewrite_by_id('embed_vid',function(){				
-					//grab any information that we got from the ROE xml or parsed from the media file
-					rObj = rObj.pSobj.getEmbedObjParsedInfo( rObj, 'embed_vid' );					
-					//add the re-sizable to the doLoad request:				
-					clibs['$j.ui.resizable']   ='jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js';	
-					clibs['$j.fn.hoverIntent'] ='jquery/plugins/jquery.hoverIntent.js';
-					mvJsLoader.doLoad(clibs, function(){	
-						//make sure the rsd_edit_img is hidden: 
-						$j('#rsd_edit_img').hide();			
-						//run the image clip tools 
-						_this.cEdit = new mvClipEdit( mvClipInit );
-					});	
+			//get any additonal embedding helper meta data prior to doing the acutal embed 
+			// normally this meta should be provided in the search result (but archive.org has a seperate query for more meida meta)
+			rObj.pSobj.getEmbedTimeMeta( rObj, function(){													
+				//make sure we have the embedVideo libs:			 
+				mvJsLoader.embedVideoCheck(function(){
+					js_log('append html: ' + rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'}) );
+					$j('#clip_edit_disp').append(
+						rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})
+					);	
+					//rewrite by id
+					rewrite_by_id('embed_vid',function(){				
+						//grab any information that we got from the ROE xml or parsed from the media file
+						rObj.pSobj.getEmbedObjParsedInfo( rObj, 'embed_vid' );
+						//add the re-sizable to the doLoad request:				
+						clibs['$j.ui.resizable']   ='jquery/jquery.ui-1.7.1/ui/ui.resizable.js';	
+						clibs['$j.fn.hoverIntent'] ='jquery/plugins/jquery.hoverIntent.js';
+						mvJsLoader.doLoad(clibs, function(){	
+							//make sure the rsd_edit_img is hidden: 
+							$j('#rsd_edit_img').hide();																					
+							//run the image clip tools 
+							_this.cEdit = new mvClipEdit( mvClipInit );
+						});	
+					});
 				});
 			});
 		}	

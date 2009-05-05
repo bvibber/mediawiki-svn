@@ -6,6 +6,9 @@ var archiveOrgSearch = function ( initObj){
 	return this.init( initObj );
 }
 archiveOrgSearch.prototype = {
+	//archive.org constants: 
+	dnUrl:'http://www.archive.org/download/',
+	dtUrl:'http://www.archive.org/details/',
 	init:function( initObj ){
 		//init base class and inherit: 
 		var baseSearch = new baseRemoteSearch( initObj );
@@ -58,14 +61,14 @@ archiveOrgSearch.prototype = {
 				var resource = data.response.docs[resource_id];				
 				var rObj = {
 					'titleKey'	 : resource.identifier,
-					'link'		 : 'http://www.archive.org/details/' + resource.identifier,				
+					'link'		 : _this.dtUrl + resource.identifier,				
 					'title'		 : resource.title,
-					'poster'	 : 'http://www.archive.org/download/' + resource.identifier+'/format=thumbnail',
-					'poster_ani' : 'http://www.archive.org/download/' + resource.identifier+'/format=Animated+Gif',
+					'poster'	 : _this.dnUrl + resource.identifier+'/format=thumbnail',
+					'poster_ani' : _this.dnUrl + resource.identifier+'/format=Animated+Gif',
 					'thumbwidth' : 160,
 					'thumbheight': 110,			
 					'desc'		 : resource.description,
-					'src' 		 : 'http://www.archive.org/download/' + resource.identifier+'/format=Ogg+video',
+					'src' 		 : _this.dnUrl + resource.identifier+'/format=Ogg+video',
 					'mime' 		 : 'application/ogg',
 					//set the licence: (rsd is a pointer to the parent remoteSearchDriver ) 		
 					'license' 	 : this.rsd.getLicenceFromUrl( resource.licenseurl ),
@@ -83,11 +86,28 @@ archiveOrgSearch.prototype = {
 			}
 		}		
 	},
+	getEmbedTimeMeta:function(rObj, callback){
+		var _this = this;
+		do_api_req( {
+			'data':{'avinfo':1},
+			'url':_this.dnUrl + rObj.titleKey + '/format=Ogg+video'
+		},function(data){			
+			var cat = data;
+			if(data['length'])
+				rObj.duration = data['length'];
+			if(data['width'])
+				rObj.width = data['width'];
+			if(data['height'])
+				rObj.height = data['height'];
+			callback();
+		});
+	},
 	getEmbedHTML: function( rObj , options) {
 		js_log('getEmbedHTML:: ' + rObj.poster );
 		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';
+		var src = rObj.src + '?t=0:0:0/'+ seconds2npt( rObj.duration );
 		if(rObj.mime == 'application/ogg' || rObj.mime == 'audio/ogg' || rObj.mime=='video/ogg'){
-			return '<video ' + id_attr + ' src="' + rObj.src + '" poster="' + rObj.poster + '" type="video/ogg"></video>';
+			return '<video ' + id_attr + ' src="' + src + '" poster="' + rObj.poster + '" type="video/ogg"></video>';
 		}
 	}
 }
