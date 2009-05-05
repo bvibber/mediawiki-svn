@@ -40,6 +40,11 @@ $wgErrorHandlerMaxStringSize = 50;
 $wgErrorHandlerAlwaysReport = false;
 
 /**
+ * Whether to report even after output
+ */
+$wgErrorHandlerReportAfterOutput = true;
+
+/**
  * Log errors?
  * if true, this will in php error log and if it's a string and the file exists
  * it'll be in that file
@@ -79,9 +84,9 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 	global $wgErrorHandlerErrors,        $wgErrorHandlerOutputDone,
 	       $wgErrorHandlerShowBackTrace, $wgErrorHandlerReport,
 	       $wgErrorHandlerMaxStringSize, $wgErrorHandlerAlwaysReport,
-	       $wgErrorHandlerLog;
+	       $wgErrorHandlerReportAfterOutput, $wgErrorHandlerLog;
 	global $IP, $wgCommandLineMode;
-	static $errorsMap = array (
+	static $errorsMap = array(
 		E_ERROR              => 'fatal',
 		E_WARNING            => 'warning',
 		E_PARSE              => 'parse',
@@ -187,7 +192,8 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 		echo $errText;
 	} else {
 		if( $wgErrorHandlerOutputDone )
-			echo efErrorGetText( $err );
+			if( $wgErrorHandlerReportAfterOutput )
+				echo efErrorGetText( $err );
 		else
 			$wgErrorHandlerErrors[] = $err;
 	}
