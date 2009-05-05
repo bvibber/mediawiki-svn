@@ -1,7 +1,7 @@
 <?php
 /*
- * 	mvwScriptLoader.php
-* Script Loading Library for MediaWiki
+ * mvwScriptLoader.php
+* Script Loading Library for mv_embed
 *
 * @author Michael Dale mdale@wikimedia.org
 * @date  feb, 2009
@@ -25,16 +25,11 @@
 /*
  * mvwScriptLoader:
  * 
- * some documentation goes here
+ * @@TODO this is the self contained verison of the scirpt loader (remove all mediaWiki dependencies)
  * 
  */
 
 //include WebStart.php (this can be simplified once we move mvwScriptLoader to the root dir: 
-$root_path = dirname(__FILE__) . '/../../../../';
-chdir( $root_path );
-require_once('includes/WebStart.php');
-
-wfProfileIn('mvwScriptLoader.php');
 
 if( isset( $_SERVER['SCRIPT_URL'] ) ) {
 	$url = $_SERVER['SCRIPT_URL'];
@@ -43,17 +38,12 @@ if( isset( $_SERVER['SCRIPT_URL'] ) ) {
 }
 
 //if( strcmp( "$wgScriptPath/mvwScriptLoader$wgScriptExtension", $url ) ) {
-if( strpos($url, "mvwScriptLoader$wgScriptExtension") === false){
+if( strpos($url, "simpleScriptLoader") === false){
 	wfHttpError( 403, 'Forbidden',
-		'mvwScriptLoader must be accessed through the primary script entry point.' );
+		'simpleScriptLoader must be accessed through the primary script entry point.' );
 	return ;
 }
-//Verify the script loader is on: 
-if (!$wgEnableScriptLoader) {
-	echo 'ScriptLoader is not enabled for this site. To enable add the following line to your LocalSettings.php';
-	echo '<pre><b>$wgEnableScriptLoader=true;</b></pre>';
-	die(1);
-}
+
 //run the main action: 
 $myScriptLoader = new jsScriptLoader();
 $myScriptLoader->doScriptLoader();

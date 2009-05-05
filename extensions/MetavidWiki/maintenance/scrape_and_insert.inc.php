@@ -427,8 +427,8 @@ class MV_BillScraper extends MV_BaseScraper {
 		   			$cspan_title_str = 	$this->get_aligned_time_title( $pData, 'Thomas_en', $stream );
 		   			if ( !$cspan_title_str ) {
 		   				$cspan_title_str = 'Thomas_en:' . $stream->name . '/' .
-			   				seconds2ntp( $pData['wiki_start_time'] ) . '/' .
-			   				seconds2ntp( $pData['wiki_end_time'] );
+			   				seconds2npt( $pData['wiki_start_time'] ) . '/' .
+			   				seconds2npt( $pData['wiki_end_time'] );
 		   			}
 		   			$cspanTitle = Title::makeTitle( MV_NS_MVD, ucfirst( $cspan_title_str ) );
 		   			// print "do edit ".$cspanTitle->getText()."\n";
@@ -476,8 +476,8 @@ class MV_BillScraper extends MV_BaseScraper {
 		   			$anno_title_str = $this->get_aligned_time_title( $pData, 'Anno_en', $stream );
 					if ( !$anno_title_str ) {
 						$anno_title_str =  'Anno_en:' . $stream->name . '/' .
-			   				seconds2ntp( $pData['wiki_start_time'] ) . '/' .
-			   				seconds2ntp( $pData['wiki_end_time'] );
+			   				seconds2npt( $pData['wiki_start_time'] ) . '/' .
+			   				seconds2npt( $pData['wiki_end_time'] );
 					}
 		   			$annoTitle = Title::makeTitle( MV_NS_MVD, ucfirst( $anno_title_str ) );
 		   			do_update_wiki_page( $annoTitle, $annotate_body );
@@ -521,8 +521,8 @@ class MV_BillScraper extends MV_BaseScraper {
 				if ( $row->Speech_by == $pData['Spoken_by'] ) {
 					print "match update existing: $row->Speech_by  == " . $pData['Spoken_by'] . "\n";
 					$anno_title_str =  $preFix . ':' . $stream->name . '/' .
-		   				seconds2ntp( $row->start_time ) . '/' .
-		   				seconds2ntp( $row->end_time );
+		   				seconds2npt( $row->start_time ) . '/' .
+		   				seconds2npt( $row->end_time );
 		   			return $anno_title_str;
 				} else {
 					print "\nno existing speech match:$row->Speech_by != " . $pData['Spoken_by'] . "\n\n";

@@ -105,12 +105,12 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
 		 			$start_str =  substr( $param, 6 );
 		 			$timeSec = npt2seconds($start_str);
 		 			if( (int) $timeSec > 0 )
-		 				$start_ntp = seconds2ntp($timeSec);
+		 				$start_ntp = seconds2npt($timeSec);
 		 		}else if(substr( $param, 0, 4 ) == 'end='){
 		 			$end_str =  substr( $param, 6 );
 		 			$timeSec = npt2seconds($start_str);
 		 			if( (int) $timeSec > 0 )
-		 				$end_ntp = seconds2ntp($timeSec);
+		 				$end_ntp = seconds2npt($timeSec);
 		 		}else{
 		 			//caption text / desc
 		 		}
@@ -282,8 +282,8 @@ function mvCatHook( &$catArticle ) {
 	return true;
 }
 function mvMissingStreamPage( $missing_stream_name ) {
-	$streamListTitle = Title::newFromText( wfMsg( 'mv_list_streams_page' ), NS_SPECIAL );
-	$streamAddTitle = Title::newFromText( wfMsg( 'mv_add_stream_page' ), NS_SPECIAL );
+	$streamListTitle = Title::newFromText( 'Mv_List_Streams', NS_SPECIAL );
+	$streamAddTitle = Title::newFromText( 'Mv_Add_Stream', NS_SPECIAL );
 	
 	$html = wfMsg( 'mv_missing_stream_text',
 		$missing_stream_name,

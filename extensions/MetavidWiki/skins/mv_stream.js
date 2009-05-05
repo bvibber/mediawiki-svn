@@ -59,22 +59,18 @@ function mv_load_interface_libs(){
 		//load some additional plugins/components:
 		//:hoverIntent
 		//http://cherne.net/brian/resources/jquery.hoverIntent.html
-		mvJsLoader.doLoad({
-			'$j.fn.autocomplete'	: 'jquery/plugins/jquery.autocomplete.js',
+		mvJsLoader.doLoad({			
+			'$j.fn.autocomplete': 'jquery/plugins/jquery.autocomplete.js',
 			'$j.fn.hoverIntent'	: 'jquery/plugins/jquery.hoverIntent.js',
-			'$j.ui.resizable'	: 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
-			'mvClipEdit'		: 'libClipEdit/mvClipEdit.js'
-	  	},function(){
-	  		//now extend draggable
-	  		mvJsLoader.doLoad({
-				'$j.ui.draggable.prototype.plugins.drag':'jquery/plugins/ui.draggable.ext.js'
-		  	},function(){		  	
-		  		//make sure mv_embed has done video re-write: 			  		
-		  		mv_embed( function(){
-	  				mv_stream_interface.init();
-	  			});
-	  				
-		  	});
+			'$j.ui'				: 'jquery/jquery.ui-1.7.1/ui/ui.core.js',
+			'$j.ui.resizable'	: 'jquery/jquery.ui-1.7.1/ui/ui.resizable.js',
+			'mvClipEdit'		: 'libClipEdit/mvClipEdit.js',
+			'$j.ui.draggable'	: 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js'
+	  	},function(){		  		
+	  		//make sure mv_embed has done video re-write: 			  		
+	  		mv_embed( function(){
+  				mv_stream_interface.init();
+  			});	  				
 	  	});
 	});
 }
@@ -384,17 +380,21 @@ function mv_disp_add_mvd(mvd_type){
 		js_error(gMsg['mv_open_edit']);
 		return ;
 	}
+	if($j('#embed_vid').length == 0){
+		js_error('Error: no video present');
+		return ;
+	}
 	mv_open_edit_mvd=mvd_type;
 	$j('#embed_vid').get(0).preview_mode=true; //turn on clip preivew mode:
 	
 	sajax_request_type='GET';
 	sajax_do_call( "mv_add_disp",[wgTitle, mvd_type, org_vid_time_req], f );
 	//insert before the first mvd:	
-	$j('#mv_add_new_mvd').css({display:'inline'});
+	$j('#mv_add_new_mvd').css( { display : 'inline' } );
 	$j('#mv_add_new_mvd').html( gM('loading_txt') );
 	var mvd_id='new';
 	//scroll to the new (loading) (top of mvd_cont)
-	$j('#selectionsBox').animate({scrollTop: 0}, 'slow');
+	$j('#selectionsBox').animate( { scrollTop: 0}, 'slow');
 	function f( request ) {
 		result= request.responseText;
 		if (request.status != 200){

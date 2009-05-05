@@ -112,6 +112,8 @@ mvClipEdit.prototype = {
 					end_ntp = seconds2npt( _this.rObj.dur );
 					
 				var start_ntp = (_this.rObj.embed.start_ntp) ? _this.rObj.embed.start_ntp : seconds2npt( 0 );
+				if(!start_ntp)
+					seconds2npt( 0 );
 				$j('#sub_cliplib_ic').html(
 					_this.getSetInOut({
 						'start_ntp'	: start_ntp, 
@@ -588,18 +590,22 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 		//ie seems to crash so no interface updates for IE for the time being
 		if(!$j.browser.msie){
 			if(mvd_id=='nav'||mvd_id=='seq'){
-				add_adjust_hooks(mvd_id);
+				add_adjust_hooks(mvd_id); // (no adj_callback)
 			}else{
 				add_adjust_hooks(mvd_id)
 			}
 		}
 		//update the video time for onChange
-		do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
+		do_video_time_update( $j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
 	});
 	//read the ntp time from the fields
 	var start_sec = npt2seconds( $j('#mv_start_hr_'+mvd_id).val() );
 	var end_sec = npt2seconds( $j('#mv_end_hr_'+mvd_id).val() );
-	js_log('start_sec:'+start_sec + ' end: ' + end_sec);
+	
+	if(!start_sec || start_sec=='null')
+		start_sec = 0;
+	
+	js_log('start_sec:' + start_sec + ' end: ' + end_sec);
 	if(start_sec > end_sec){
 		js_log('start > end : ' + start_sec + ' > ' + end_sec);
 		//update end time to start_time + 1 second
@@ -626,7 +632,7 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 	js_log('BASE OFFSET: '+ base_offset);
 	//set the base offset / track_dur interface vars:
 	$j('#track_time_start_'+mvd_id).html( seconds2npt(base_offset) );
-	$j('#track_time_end_'+mvd_id).html( seconds2npt( base_offset+track_dur ));
+	$j('#track_time_end_'+mvd_id).html( seconds2npt( base_offset+track_dur ) );
 
 	//set up start /end slider values:
 	var slider_start = (start_sec - base_offset) / track_dur;

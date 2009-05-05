@@ -143,7 +143,7 @@
 			}
 			echo " (" . $this->stream_size . " bytes)";
 			// now get the stream length (for educated page location guessing)
-			print "stream length: " . $this->getStreamLength() . 's Or:' . seconds2ntp( floor( $this->getStreamLength() ) );
+			print "stream length: " . $this->getStreamLength() . 's Or:' . seconds2npt( floor( $this->getStreamLength() ) );
 		}
 		function getStreamLength() {
 			if ( !isset( $this->stream_length ) ) {
@@ -294,10 +294,10 @@ class oggPage {
 
 
 		    echo "gran piece: " . $granulepos . "<br />";
-		    echo "stream time: " . seconds2ntp($granulepos/1000) . "<br />";
+		    echo "stream time: " . seconds2npt($granulepos/1000) . "<br />";
 		    */
 			// echo " gran time: " .substr($this->getGranulepos(), 0, $this->parent_stream->kfgshfit/8 ). "<br />";
-			// echo " time: " . seconds2ntp(substr($this->getGranulepos(), 0, $this->parent_stream->kfgshfit/8));
+			// echo " time: " . seconds2npt(substr($this->getGranulepos(), 0, $this->parent_stream->kfgshfit/8));
 
 		}
 		// return 0;
@@ -330,7 +330,7 @@ function findAllOccurences( & $haystack, $needle, $limit = 0 )
 /*
  * takes seconds duration and return hh:mm:ss time
  */
-function seconds2ntp( $seconds ) {
+function seconds2npt( $seconds ) {
 	$dur = time_duration_2array( $seconds );
 	print_r( $dur );
 	// be sure to output leading zeros (for min,sec):

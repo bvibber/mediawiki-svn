@@ -120,6 +120,9 @@ class MV_SpecialExport {
 					case 'cmml':
 						$this->get_stream_cmml();
 					break;
+					case 'srt':
+						$this->get_stream_srt();
+					break;
 					case 'roe':
 						$this->get_roe_xml();
 					break;
@@ -277,13 +280,17 @@ class MV_SpecialExport {
 </switch>
 </track>
 <track id="t" provides="text layers">
-<switch distinction="layer">
-	<?				while ( $row = $dbr->fetchObject( $this->mvd_type_res ) ) {
+<switch distinction="layer">	
+	<?	while ( $row = $dbr->fetchObject( $this->mvd_type_res ) ) {
 		// output cmml header:
 		// @@todo lookup language for layer key patterns
 		$sTitle = Title::makeTitle( NS_SPECIAL, 'MvExportStream' );
 		$query = 'stream_name=' . $this->stream_name . '&t=' . $this->req_time . '&feed_format=cmml&tracks=' . strtolower( $row->mvd_type );
 		$clink = $sTitle->getFullURL( $query );
+		
+		$srt_query = 'stream_name=' . $this->stream_name . '&t=' . $this->req_time . '&feed_format=srt&tracks=' . strtolower( $row->mvd_type );
+		$srt_clink = $sTitle->getFullURL( $srt_query );
+		
 		$inline = ( in_array( strtolower( $row->mvd_type ), $this->mvcp->mvd_tracks ) ) ? 'true':'false';
 		// for now make ht_en or anno_en the default layer
 		$default_attr = ( 	strtolower( $row->mvd_type ) == 'ht_en' ||
@@ -291,8 +298,9 @@ class MV_SpecialExport {
 							 'default="true"':
 							 '';
 		?>
+		<switch distinction="content-type">
 <mediaSource id="<?php echo htmlentities( $row->mvd_type )?>"
-	title="<?php echo wfMsg( $row->mvd_type )?>" <?php echo $default_attr?>
+	title="<?php echo wfMsg( $row->mvd_type )?> (CMML)" <?php echo $default_attr?>
 	inline="<?php echo htmlentities( $inline )?>" lang="en"
 	content-type="text/cmml" src="<?php echo htmlentities( $clink )?>">
 		<?					// output inline cmml (if requested):
@@ -301,6 +309,12 @@ class MV_SpecialExport {
 		}
 		?>
 </mediaSource>
+<mediaSource id="<?php echo htmlentities( $row->mvd_type )?>_srt"
+	title="<?php echo wfMsg( $row->mvd_type )  ?> (SRT)"
+	inline="<?php echo htmlentities( $inline )?>" lang="en"
+	content-type="text/x-srt" src="<?php echo htmlentities( $srt_clink )?>">		
+</mediaSource>
+		</switch>
 		<?
 	}
 	?>
@@ -311,7 +325,44 @@ class MV_SpecialExport {
 	<?
 	// get all available stream text layers ( inline request CMML (if apropo ))
 	}
-
+	function get_stream_srt(){
+		$dbr =& wfGetDB( DB_SLAVE );
+		header('Content-Type: text/plain');	
+		
+		// check the request to get trac set:
+		$mvcp = new MV_Component();
+		$mvcp->procMVDReqSet();
+		$tracks = $mvcp->mvd_tracks;
+		if ( count( $mvcp->mvd_tracks ) > 1 )$encap = true;
+		
+		// get the stream title
+		$streamTitle = new MV_Title( $this->stream_name . '/' . $this->req_time );
+		$wgTitle = Title::newFromText( $this->stream_name . '/' . $this->req_time, MV_NS_STREAM );
+		
+		$mvd_rows = MV_Index::getMVDInRange( $streamTitle->getStreamId(),
+			$streamTitle->getStartTimeSeconds(),
+			$streamTitle->getEndTimeSeconds(), $tracks, true);
+		$inx =1;
+		$MV_Overlay = new MV_Overlay();
+		foreach($mvd_rows as $mvd){
+			print $inx . "\n";
+			print seconds2npt( $mvd->start_time ) . ' --> ' . seconds2npt( $mvd->end_time ) . "\n";
+			
+			//strip according to the srt: 
+			//http://matroska.org/technical/specs/subtitles/srt.html
+			print trim( 
+					str_replace("\n\n", "\n", 
+						strip_tags( 
+							$MV_Overlay->getMVDhtml( $mvd, $absolute_links = true ),
+							'<b><i><u><font>'
+						)
+					)
+				);
+			print "\n\n";
+			$inx++;
+		}
+		
+	}
 	/*get stream CMML */
 	function get_stream_cmml( $inline = false, $force_track = null ) {
 		$dbr =& wfGetDB( DB_SLAVE );
@@ -350,8 +401,8 @@ class MV_SpecialExport {
 			foreach ( $mvd_rows as $mvd ) {
 				if ( !isset( $tracks[$mvd->mvd_type] ) )$tracks[$mvd->mvd_type] = '';
 				$tracks[$mvd->mvd_type] .= '
-						<' . $ns . 'clip id="mvd_' . htmlentities( $mvd->id ) . '" start="npt:' . htmlentities( seconds2ntp( $mvd->start_time ) ) . '" end="npt:' . htmlentities( seconds2ntp( $mvd->end_time ) ) . '">
-							<' . $ns . 'img src="' . htmlentities( $streamTitle->getFullStreamImageURL( null, seconds2ntp( $mvd->start_time ) ) ) . '"/>';
+						<' . $ns . 'clip id="mvd_' . htmlentities( $mvd->id ) . '" start="npt:' . htmlentities( seconds2npt( $mvd->start_time ) ) . '" end="npt:' . htmlentities( seconds2npt( $mvd->end_time ) ) . '">
+							<' . $ns . 'img src="' . htmlentities( $streamTitle->getFullStreamImageURL( null, seconds2npt( $mvd->start_time ) ) ) . '"/>';
 				// output all metadata @@todo we should generalize the semantic properties.
 				$tracks[$mvd->mvd_type] .= ( isset( $mvd->Speech_by ) && trim( $mvd->Speech_by ) != '' ) ? '<meta name="Speech_by" content="' . htmlentities (  $mvd->Speech_by  ) . '"/>':'';
 				$tracks[$mvd->mvd_type] .= ( isset( $mvd->Bill ) && trim( $mvd->Bill ) != '' ) ? '<meta name="Bill" content="' . htmlentities( $mvd->Bill ) . '"/>':'';

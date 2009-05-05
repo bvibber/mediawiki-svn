@@ -114,11 +114,11 @@ function mvSetupExtension() {
 	$wgJSAutoloadClasses['mv_stream']			= $mv_jspath . 'mv_stream.js';
 	
 	//$wgJSAutoloadClasses['']
-	$wgJSAutoloadClasses['j.ui.mouse']			= $mvjsp . 'jquery/jquery.ui-1.5.2/ui/ui.core.js';
-	$wgJSAutoloadClasses['j.ui.droppable']		= $mvjsp . 'jquery/jquery.ui-1.5.2/ui/ui.droppable.js';	
-	$wgJSAutoloadClasses['j.ui.draggable']		= $mvjsp . 'jquery/jquery.ui-1.5.2/ui/ui.draggable.js';	
-	$wgJSAutoloadClasses['j.ui.sortable']		= $mvjsp . 'jquery/jquery.ui-1.5.2/ui/ui.sortable.js';
-	$wgJSAutoloadClasses['j.ui.resizable']		= $mvjsp . 'jquery/jquery.ui-1.5.2/ui/ui.resizable.js';
+	$wgJSAutoloadClasses['j.ui']				= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.core.js';
+	$wgJSAutoloadClasses['j.ui.droppable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js';	
+	$wgJSAutoloadClasses['j.ui.draggable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js';	
+	$wgJSAutoloadClasses['j.ui.sortable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.sortable.js';
+	$wgJSAutoloadClasses['j.ui.resizable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.resizable.js';
 	$wgJSAutoloadClasses['j.contextMenu']		= $mvjsp . 'jquery/plugins/jquery.contextMenu.js';
 	$wgJSAutoloadClasses['j.fn.autocomplete']	= $mvjsp . 'jquery/plugins/jquery.autocomplete.js';
 	$wgJSAutoloadClasses['j.fn.hoverIntent']	= $mvjsp . 'jquery/plugins/jquery.hoverIntent.js';
@@ -380,7 +380,7 @@ function mvfAutoAllPageHeader() {
 			$wgOut->addScriptClass( $js_class );
 		}					
 	}else{
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.6.min.js?{$unique_req_param}\"></script>" );
+		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.3.2.min.js?{$unique_req_param}\"></script>" );
 		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js?{$unique_req_param}\"></script>" );
 		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js?{$unique_req_param}\"></script>" );
 			
@@ -676,7 +676,7 @@ function npt2seconds( $str_time ) {
 /*
  * takes seconds duration and return hh:mm:ss time
  */
-function seconds2ntp( $seconds, $short = false ) {
+function seconds2npt( $seconds, $short = false ) {
 	$dur = time_duration_2array( $seconds );
 	if( ! $dur )
 		return null;

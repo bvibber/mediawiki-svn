@@ -140,29 +140,29 @@
 		//if overview mode override the time settings: 
 		if( $wgRequest->getVal('view') == 'overview' ){
 			$this->start_time_sec = 0;
-			$this->start_time = seconds2ntp( $this->start_time_sec ); 
+			$this->start_time = seconds2npt( $this->start_time_sec ); 
 			$this->end_time_sec = $this->getDuration();
-			$this->end_time = seconds2ntp( $this->end_time_sec );
+			$this->end_time = seconds2npt( $this->end_time_sec );
 		}
 		
 		if ( $this->start_time == null ) {
 			$this->start_time_sec = 0;
- 			$this->start_time = seconds2ntp( $this->start_time_sec ); 			
+ 			$this->start_time = seconds2npt( $this->start_time_sec ); 			
  		} else {
  			$this->start_time_sec = npt2seconds( $this->start_time );
 		}
  		if ( $this->end_time == null || npt2seconds( $this->end_time ) < $this->start_time_sec ) {
  			if ( $this->start_time_sec == 0 ) {
- 				$this->end_time = seconds2ntp( $mvDefaultStreamViewLength );
+ 				$this->end_time = seconds2npt( $mvDefaultStreamViewLength );
  				$this->end_time_sec = $mvDefaultStreamViewLength;
  			} else {
  				$this->end_time_sec = ( $this->start_time_sec + $mvDefaultStreamViewLength );
- 				$this->end_time = seconds2ntp( $this->end_time_sec );
+ 				$this->end_time = seconds2npt( $this->end_time_sec );
  			}
  			if ( $this->getDuration() != 0 ) {
 	 			if ( $this->end_time_sec > $this->getDuration() ) {
 	 				$this->end_time_sec = $this->getDuration();
-	 				$this->end_time = seconds2ntp( $this->end_time_sec );
+	 				$this->end_time = seconds2npt( $this->end_time_sec );
 	 			}
  			}
  		}
@@ -198,7 +198,7 @@
 		return $this->getEndTimeSeconds() - $this->getStartTimeSeconds();
 	}
 	function getSegmentDurationNTP( $short_time = false ) {
-		return seconds2ntp( $this->getSegmentDuration(), $short_time );
+		return seconds2npt( $this->getSegmentDuration(), $short_time );
 	}
 	/*
 	 * returns a near by stream range:
@@ -215,17 +215,17 @@
 		$start_t = $this->getStartTimeSeconds()  - $range;
 		if ( $start_t < 0 )$start_t = 0;
 		
-		$start_ntp = seconds2ntp( $start_t ) ;
+		$start_ntp = seconds2npt( $start_t ) ;
 		// add $range seconds to the end time:
 		if ( isset( $this->end_time ) ) {
 			$end_t = $this->getEndTimeSeconds()  + $range;
 			if ( $end_t > $stream->getDuration() ) {
 				$end_t = $stream->getDuration();
 			}
-			$end_ntp = '/' . seconds2ntp( $this->getEndTimeSeconds()  + $range );
+			$end_ntp = '/' . seconds2npt( $this->getEndTimeSeconds()  + $range );
 		} else {
 			// make the end time the default Clip length
-			$end_ntp = '/' . seconds2ntp( $this->getStartTimeSeconds() + $length + $range );
+			$end_ntp = '/' . seconds2npt( $this->getStartTimeSeconds() + $length + $range );
 		}
 		return $this->stream_name . '/' . $start_ntp . $end_ntp;
 	}
@@ -494,7 +494,7 @@
  		// (support null endtimes)
  		// if the endtime is unset set it to the default length after the start time: 
  		// if(!isset($end_time)){
- 			// $this->end_time = seconds2ntp(npt2seconds($this->start_time) + $mvDefaultClipLength) ;
+ 			// $this->end_time = seconds2npt(npt2seconds($this->start_time) + $mvDefaultClipLength) ;
  		// }
 
  		// @@todo make sure start time is not negative & end time is not > duration 

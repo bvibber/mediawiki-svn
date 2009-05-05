@@ -385,7 +385,7 @@ mediaSource.prototype =
     */
     getURI : function( seek_time_sec )
     {    	
-    	js_log("f:getURI: tf:" + this.timeFormat +' uri_enc:'+this.serverSideSeeking);
+    	//js_log("f:getURI: tf:" + this.timeFormat +' uri_enc:'+this.serverSideSeeking);
     	if( !seek_time_sec || !this.serverSideSeeking ){    		
        		return this.src;       		       	
     	}
@@ -1763,7 +1763,7 @@ embedVideo.prototype = {
                 + source.getTitle()+'</a> '+ '</li>'+"\n";            
 			if(	 source.getURI().indexOf('?t=')!==-1){
                 out+=dl_line;
-			}else if(this.getMIMEType()=="text/cmml"){
+			}else if(this.getMIMEType()=="text/cmml" || this.getMIMEType()=="text/x-srt"){
 				dl_txt_list+=dl_line;
 			}else{
 				dl_list+=dl_line;

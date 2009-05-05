@@ -279,7 +279,7 @@ var mvJsLoader = {
 			}
 		}
 		if( callback ){ 
-		 	 	this.callbacks.push(callback);
+			this.callbacks.push(callback);
 		}		
 		if( mvJsLoader.checkLoading() ){
 			 if( this.load_time++ > 3000){ //time out after ~30seconds
@@ -313,13 +313,14 @@ var mvJsLoader = {
 		 }
 		 this.ptime=this.ctime;		
 	 },
-	 checkLoading:function(){
+	 checkLoading:function(){	 	 
 	 	 var loading=0;
 		 var i=null;
 		 for(var i in this.libs){ //for in loop oky on object			 		 
 			 if( ! this.checkObjPath( i ) ){				 
 				 if(!this.libreq[i]) loadExternalJs( this.libs[i] );
 				 this.libreq[i]=1;
+				 js_log("has not yet loaded: " + i);
 				 loading=1;
 			 }
 		 }		 
@@ -365,10 +366,10 @@ var mvJsLoader = {
 		_this.jQueryCheck(function(){
 			_this.doLoad({
 				'embedVideo'	  : 'libEmbedVideo/mv_baseEmbed.js',
-				'$j.ui.mouse'	  : 'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
-				'$j.ui.droppable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
-				'$j.ui.draggable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js'
-				},function(){			
+				'$j.ui.mouse'	  : 'jquery/jquery.ui-1.7.1/ui/ui.core.js',
+				'$j.ui.droppable' : 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js',
+				'$j.ui.draggable' : 'jquery/jquery.ui-1.7.1/ui/ui.draggable.js'
+				},function(){
 					js_log('embedVideo libs ready run callback:: ');			
 					callback();							
 				});
@@ -693,14 +694,10 @@ function mv_do_sequence(initObj){
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
 				'mvPlayList':'libSequencer/mvPlayList.js',
-				'$j.ui.sortable':'jquery/jquery.ui-1.5.2/ui/minified/ui.sortable.min.js',
-				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
+				'$j.ui'			:'jquery/jquery.ui-1.7.1/ui/ui.core.js',
+				'$j.ui.sortable':'jquery/jquery.ui-1.7.1/ui/ui.sortable.js',
+				'$j.ui.resizable':'jquery/jquery.ui-1.7.1/ui/ui.resizable.js',
 				'$j.contextMenu':'jquery/plugins/jquery.contextMenu.js'
-				//'$j.ui'			:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
-				//'$j.effects':'jquery/jquery.ui-1.5.2/ui/minified/effects.core.min.js',	
-				//'$j.effects.slide':'jquery/jquery.ui-1.5.2/ui/minified/effects.slide.min.js'
-				//'$j.effects.puff':'jquery/jquery.ui-1.5.2/ui/minified/effects.scale.min.js'
-				//'$j.ui.sortable':'jquery/plugins/ui.sortable.js'
 			},function(){
 				//debugger;
 				//load the sequencer

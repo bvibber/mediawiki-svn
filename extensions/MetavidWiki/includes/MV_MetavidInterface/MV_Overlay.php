@@ -70,16 +70,23 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 	}
 	
 	function render_controls() {
-		return '<div class="layers">	
+		global $mvgShowLayerControls;
+		$ct = '<div class="layers">	
 				<ul>
 					<li>
 						<a href="javascript:mv_disp_add_mvd(\'anno_en\')">' . wfMsg( 'mv_new_anno_en' ) . '</a>
 					</li>
 					<li>
 						<a title="' . htmlspecialchars( wfMsg( 'mv_new_ht_en' ) ) . '" href="javascript:mv_disp_add_mvd(\'ht_en\')">' . wfMsg( 'mv_new_ht_en' ) . '</a> 
-					</li>
-				</ul>
+					</li>';
+		if($mvgShowLayerControls){
+			$ct.= '<li>
+						<a title="' . htmlspecialchars( wfMsg( 'mv_mang_layers' ) ) . '" href="javascript:mv_tool_disp(\'mang_layers\')">' . wfMsg( 'mv_mang_layers' ) . '</a> 
+				   </li>';
+		}	
+		$ct.='		</ul>
 				</div>';
+		return $ct;
 	}
 	function render_menu() {
 		global $wgLang;
@@ -212,7 +219,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 	function get_timeline_html( &$mvd_page ) {
 		$out = '<div id="mv_tl_mvd_' . $mvd_page->id . '" ' .
 			'class="mv_timeline_mvd_jumper" ' .
-			'title="' . wfMsg( 'mv_play' ) . ' ' . seconds2ntp( $mvd_page->start_time ) . '" ' .
+			'title="' . wfMsg( 'mv_play' ) . ' ' . seconds2npt( $mvd_page->start_time ) . '" ' .
 			/*
 			 * time_line actions added by jQuery
 			'onmouseover="mv_mvd_tlOver(\''.$mvd_page->id.'\')" '.
@@ -430,8 +437,8 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		$mvd_page->id = 'new';
 		
 		// print 'st ' . $this->start_context . "<br />" ;		
-		// $mvd_page->start_time = $start_context; //seconds2ntp(0);		
- 		// $mvd_page->end_time  = seconds2ntp( npt2seconds($start_context) +  $mvDefaultClipLength);
+		// $mvd_page->start_time = $start_context; //seconds2npt(0);		
+ 		// $mvd_page->end_time  = seconds2npt( npt2seconds($start_context) +  $mvDefaultClipLength);
  		$mvd_page->wiki_title = $mvdType . ':' . strtolower( $baseTitle ) . '/_new';
 		$this->get_edit_disp( $mvd_page->wiki_title, 'new' );
  				
@@ -447,8 +454,8 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		// make a "new" mvd:
 		// $mvd_page = new mvd_pageObj();
 		// $mvd_page->id = 'new';
-		// $mvd_page->start_time = seconds2ntp(0);
- 		// $mvd_page->end_time  = seconds2ntp($mvDefaultClipLength);
+		// $mvd_page->start_time = seconds2npt(0);
+ 		// $mvd_page->end_time  = seconds2npt($mvDefaultClipLength);
 		// $mvd_page->wiki_title = 'Ht_en:' . $baseTitle.'_'.rand(0,99999).'/'.	$mvd_page->start_time . '/' . $mvd_page->end_time;				
 
 		// $this->get_edit_disp($mvd_page->wiki_title,'new');
@@ -493,14 +500,14 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		$dTitle =  Title::newFromText( $mvd_page->wiki_title, MV_NS_MVD_TALK );
 		$dlink = $sk->makeKnownLinkObj( $dTitle,  wfMsg( 'talk' ) );
 		
-		// {s:\''.seconds2ntp($mvd_page->start_time).'\',e:\''.seconds2ntp($mvd_page->end_time).'\'}
-		/*$plink='<a title="'.htmlspecialchars(wfMsg('mv_play').' '.seconds2ntp($mvd_page->start_time) . ' to ' . seconds2ntp($mvd_page->end_time)).' " ' .
+		// {s:\''.seconds2npt($mvd_page->start_time).'\',e:\''.seconds2npt($mvd_page->end_time).'\'}
+		/*$plink='<a title="'.htmlspecialchars(wfMsg('mv_play').' '.seconds2npt($mvd_page->start_time) . ' to ' . seconds2npt($mvd_page->end_time)).' " ' .
 				'style="text-decoration:none;" ' .		
 				'href="javascript:mv_do_play('.htmlspecialchars($mvd_page->id).');">' .
 					'<span style="width:44px"><img src="'.htmlspecialchars($mvgScriptPath).'/skins/images/control_play_blue.png"></span>'.'</a>'.
-					htmlspecialchars(seconds2ntp($mvd_page->start_time) . ' to ' . htmlspecialchars(seconds2ntp($mvd_page->end_time)));
+					htmlspecialchars(seconds2npt($mvd_page->start_time) . ' to ' . htmlspecialchars(seconds2npt($mvd_page->end_time)));
 		*/
-		$plink = htmlspecialchars( seconds2ntp( $mvd_page->start_time ) ) . ' to ' . htmlspecialchars( seconds2ntp( $mvd_page->end_time ) );
+		$plink = htmlspecialchars( seconds2npt( $mvd_page->start_time ) ) . ' to ' . htmlspecialchars( seconds2npt( $mvd_page->end_time ) );
 		// @@TODO set up conditional display: (view source if not logged on, protect, remove if given permission)  
 		$out .= $plink;
 		$out .= "( $elink $hlink $dlink";
@@ -637,10 +644,10 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		$out = '';
 		if ( $mvd_id == 'new' || $mvd_id == 'seq' ) {
 			global $mvDefaultClipLength;
-			$start_time = isset( $this->start_context ) ? $this->start_context:seconds2ntp( 0 );
+			$start_time = isset( $this->start_context ) ? $this->start_context:seconds2npt( 0 );
  			$end_time  = isset( $this->end_context ) ?
-	 			seconds2ntp( npt2seconds( $this->start_context ) + $mvDefaultClipLength ):
-	 			seconds2ntp( $mvDefaultClipLength );
+	 			seconds2npt( npt2seconds( $this->start_context ) + $mvDefaultClipLength ):
+	 			seconds2npt( $mvDefaultClipLength );
 		} else {
 	  		$mvTitle = new MV_Title( $titleKey );
 	  		if ( !$mvTitle->validRequestTitle() ) {
@@ -649,7 +656,8 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 	  		$start_time = $mvTitle->getStartTime();
 	  		$end_time = $mvTitle->getEndTime();
 		}
-  		  	
+		if($start_time == "null")
+			$start_time = '0:00:00';			
 		/*
 		 * @@todo move some of this to CSS
   		 */

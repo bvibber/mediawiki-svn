@@ -145,7 +145,7 @@ $mvDispROEicon=false;
 $mvEmbedKey = 'Embed';
 
 //wars people of archive inacuracys (given its a wiki and the source is close caption feed)
-$mvEnableStreamNotice=true;
+$mvEnableStreamNotice = false;
 
 /*
  * All Available meta data layers
@@ -162,6 +162,9 @@ $mvMVDTypeAllAvailable = array( 'ht_en', 'anno_en', 'thomas_en' );
  * this also dictates the default search layers
 */
 $mvMVDTypeDefaultDisp = array( 'ht_en', 'anno_en' );
+
+//if we should show the layer controls: 
+$mvgShowLayerControls = false;
 
 # ##################
 # Special Pages with Interface functions

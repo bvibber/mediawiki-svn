@@ -95,15 +95,17 @@
  		}
  		
  		// confirm the edit token:
- 		if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
- 			$this->status_error = wfMsg( 'token_suffix_mismatch' );
- 			return ;
- 		} 		
- 		
+ 		if( $wgRequest->getVal( 'wpEditToken' ) ){
+	 		if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+	 			$this->status_error = wfMsg( 'token_suffix_mismatch' );
+	 			return ;
+	 		} 		
+ 		}
+ 		$stream =  $this->mArticle->mvTitle->mvStream;
  		$this->mv_action = $wgRequest->getVal( 'mv_action' );
  		if ( $this->mv_action == 'new_stream_file' ) {
  			// @@todo a bit more input scrubbing: 
- 			$newSf = new MV_StreamFile( $this->mArticle->mvTitle->mvStream, $_POST['sf_new'] );
+ 			$newSf = new MV_StreamFile( $stream, $_POST['sf_new'] );
  			// check against existing stream files:
  			$doAdd = true;
  			foreach ( $streamFiles as $sf ) {
@@ -116,13 +118,30 @@
  				$newSf->writeStreamFileDB();
  				$streamFiles[] = $newSf;
  			}
+ 			
+ 			//check if stream length is 0 then update that to the stream-file length
+ 			if( $stream->getDuration() == 0 ){
+ 				$stream->duration = $newSf->getDuration();
+ 				$stream->updateStreamDB();
+ 			}
+ 			
+ 			
  		} else if ( $this->mv_action == 'edit_stream_files' ) {
+ 			$dur = 0;
  			foreach ( $streamFiles as $sf ) {
  				if ( $_POST['sf_' . $sf->id] ) {
  					$sf->updateValues( $_POST['sf_' . $sf->id] );
  					$sf->writeStreamFileDB();
+ 					if( $sf->getDuration() > $dur);
+ 						$dur = $sf->getDuration();
  				}
  			}
+ 			//check if stream length is 0 then update that to the stream-file length
+ 			if( $stream->getDuration() == 0 ){
+ 				$stream->duration = $dur;
+ 				$stream->updateStreamDB();
+ 			}
+ 			
  			$this->status_ok = wfMsg( 'mv_updated_stream_files' );
  		} else if ( $this->mv_action == 'rm_stream_file' ) {
  			$rmID = $wgRequest->getVal( 'rid' );

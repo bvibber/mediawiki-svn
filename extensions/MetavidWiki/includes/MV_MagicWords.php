@@ -260,8 +260,8 @@ class MV_MagicWords {
 		if( ($row->end_time - $row->start_time) > 20*60)
 			$row->end_time = $row->start_time + 20*60;			
 		
-		$nt = $mvStream->getStreamName() . '/' . seconds2ntp( $row->start_time )
-		. '/' . seconds2ntp( $row->end_time );
+		$nt = $mvStream->getStreamName() . '/' . seconds2npt( $row->start_time )
+		. '/' . seconds2npt( $row->end_time );
 		$mvTitle = new MV_Title( $nt, MV_NS_STREAM );
 			
 		$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( $extra_range = '0' ) );

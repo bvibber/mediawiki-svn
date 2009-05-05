@@ -30,7 +30,7 @@ function do_stream_attr_check( $old_stream ) {
 		$mvStream->duration = ( $old_stream->adj_end_time - $old_stream->adj_start_time );
 	}
 	$mvStream->updateStreamDB();
-	print "$old_stream->name update: duration:" . seconds2ntp( $mvStream->duration ) . ' startDay:' . date( 'm-d-y', $mvStream->date_start_time ) . "\n";
+	print "$old_stream->name update: duration:" . seconds2npt( $mvStream->duration ) . ' startDay:' . date( 'm-d-y', $mvStream->date_start_time ) . "\n";
 	// if($i==3)die;
 	// $i++;
 }
@@ -366,7 +366,7 @@ function do_annotate_speeches( $stream, $force ) {
 							// diffrent person: if more than 1 min long
 							if ( $prev_et - $prev_st > 60 ) {
 								$doSpeechUpdate = true;
-								print "insert annotation $prev_person: " . seconds2ntp( $prev_st ) . " to " . seconds2ntp( $prev_et ) . " \n";
+								print "insert annotation $prev_person: " . seconds2npt( $prev_st ) . " to " . seconds2npt( $prev_et ) . " \n";
 								// check for existing speech by in range if so skip (add subtract 1 to start/end (to not get matches that land on edges) (up to 10,000 meta per stream)
 								$mvd_anno_rows = MV_Index::getMVDInRange( $mvStream->getStreamId(), $prev_st + 1, $prev_et - 1, 'Anno_en', false, 'Speech_by' );
 								foreach($mvd_anno_rows as  $row) {
@@ -378,7 +378,7 @@ function do_annotate_speeches( $stream, $force ) {
 								}
 								if ( $doSpeechUpdate ) {
 									$page_txt = '[[Speech by:=' . str_replace( '_', ' ', $prev_person ) . ']]';
-									$annoTitle = Title::makeTitle( MV_NS_MVD, 'Anno_en:' . $mvStream->getStreamName() . '/' . seconds2ntp( $prev_st ) . '/' . seconds2ntp( $prev_et ) );
+									$annoTitle = Title::makeTitle( MV_NS_MVD, 'Anno_en:' . $mvStream->getStreamName() . '/' . seconds2npt( $prev_st ) . '/' . seconds2npt( $prev_et ) );
 									do_update_wiki_page( $annoTitle, $page_txt );
 								}
 							}
@@ -388,7 +388,7 @@ function do_annotate_speeches( $stream, $force ) {
 					}
 				}
 			}
-			print "\n\ndone with annotation inserts got to " . seconds2ntp( $prev_et ) . ' of ' . seconds2ntp( $mvStream->getDuration() ) . "\n";
+			print "\n\ndone with annotation inserts got to " . seconds2npt( $prev_et ) . ' of ' . seconds2npt( $mvStream->getDuration() ) . "\n";
 		}else{
 			print "no annotations added 0 mvd transcript pages found\n";
 		}
@@ -442,7 +442,7 @@ function do_process_text( $stream, $force ) {
 			$i++;
 			$j++;
 			$start_time = $page->time - $stream->adj_start_time;
-			if ( seconds2ntp( $start_time ) < 0 )
+			if ( seconds2npt( $start_time ) < 0 )
 				$start_time = '0:00:00';
 			if ( ( $inx + 1 ) == count( $pages ) ) {
 				$end_time = $stream->adj_end_time - $stream->adj_start_time;
@@ -467,7 +467,7 @@ function do_process_text( $stream, $force ) {
 			"LIMIT 1 ";
 			$person_res = $dbr->query( $sql );
 
-			$page_title = $stream->name . '/' . seconds2ntp( $start_time ) . '/' . seconds2ntp( $end_time );
+			$page_title = $stream->name . '/' . seconds2npt( $start_time ) . '/' . seconds2npt( $end_time );
 			// print $page_title . "\n";
 			$page_body = '';
 			if ( $dbr->numRows( $person_res ) != 0 ) {
@@ -517,7 +517,7 @@ function do_process_images( $stream, $force = false ) {
 		$relative_time = $row->time - $stream->adj_start_time;
 		// status updates:
 		if ( $i == 10 ) {
-			print "On image $j of $img_count time: " . seconds2ntp( $relative_time ) . " $metavid_img_url\n";
+			print "On image $j of $img_count time: " . seconds2npt( $relative_time ) . " $metavid_img_url\n";
 			$i = 0;
 		}
 		$j++;
@@ -538,7 +538,7 @@ function do_process_images( $stream, $force = false ) {
 			// make sure its there and matches what it should be:
 			if ( is_file( $local_img_file ) ) {
 				$row = $dbr->fetchObject( $img_check );
-				// print "file $local_img_file skiped, stream_id:" . $mv_stream_id . " time: " . seconds2ntp($relative_time) . "\n";
+				// print "file $local_img_file skiped, stream_id:" . $mv_stream_id . " time: " . seconds2npt($relative_time) . "\n";
 				continue;
 			} else {
 				// grab but don't insert:
