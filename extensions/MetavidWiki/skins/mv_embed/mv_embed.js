@@ -138,6 +138,37 @@ function gM( key , args ) {
 		return '[' + key + ']';
 	}	 
 }
+/*
+ * msgSet is either a string corresponding to a single msg to load
+ * or msgSet is an array with set of msg to load
+ */
+function gMsgLoadRemote(msgSet, callback){
+	var ammessages = '';
+	if(typeof msgSet == 'object' ){
+		for(var i in msgSet){			
+			ammessages +=  msgSet[i];
+		}
+	}else if(typeof msgSet == 'string'){
+		ammessages += msgSet;
+	}
+	if(ammessages=='')
+		return js_log('gMsgLoadRemote::no msg set requested');
+		
+	do_api_req({
+		'data':{'meta':'allmessages', 'ammessages':ammessages}		
+	},function(data){
+		if(data.query.allmessages){
+			var msgs = data.query.allmessages;
+			for(var i in msgs){
+				var ld = {};
+				ld[ msgs[i]['name'] ] =  msgs[i]['*'];
+				loadGM( ld );
+			}
+		}
+		//load the result into local msg var
+		callback();
+	});		
+}
 
 /**
  * Format a size in bytes for output, using an appropriate
@@ -783,6 +814,10 @@ function do_api_req( options, callback ){
 	
 	//force format to json (if not already set)  		
 	options.data['format'] = 'json';
+	
+	//if action not set assume query
+	if(!options.data['action'])
+		options.data['action']='query';
 	
 	js_log('do api req: ' + options.url +'?' +  jQuery.param(options.data) );			
 	//build request string:	 		

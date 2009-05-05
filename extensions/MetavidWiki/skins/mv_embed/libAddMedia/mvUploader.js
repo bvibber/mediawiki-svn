@@ -15,8 +15,14 @@ loadGM( {
 	"wgfogg_waring_ogg_upload": "You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?",
 	"wgfogg_waring_bad_extension" : "You have selected a file with an unsuported extension. <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">More help</a>",
 	"upload-stats-fileprogres": "$1 of $2",
-	"mv_upload_done" 	  : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",
-	"mv_upload_completed" : "Upload Completed"
+	"mv_upload_done" 	  : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",	
+	
+	"successfulupload" : 'Successful upload',
+	"uploaderror" : "Upload error",
+	"uploadwarning": "Upload warning",
+	"unknown-error": "Unknown Error",
+	"return-to-form": "Return to form"
+	
 });
 
 var default_upload_options = {
@@ -106,11 +112,12 @@ mvUploader.prototype = {
 		var intFirefoggObj = ( this.on_upload_page )? 
 				{'upload_done_action':'redirect'}:
 				{'upload_done_action':function( rTitle ){
-						js_log('add_done_action callback for uploader');
+						js_log( 'add_done_action callback for uploader' );
 						//call the parent insert resource preview	
 						_this.upload_done_action( rTitle );		
 					}
 				};
+				
 		if( _this.api_url )
 			intFirefoggObj['api_url'] =  _this.api_url;
 		
@@ -192,15 +199,12 @@ mvBaseUploadInterface.prototype = {
 						//error in org submit return false;
 						return false;					
 					}
-				}
-				
+				}				
 				//check for post action override: 															
 				if( _this.form_post_override ){
 					//alert('woudld submit here');
 					return true;
-				}
-				
-						
+				}									
 				//get the input form data in flat json: 										
 				var tmpAryData = $j( _this.editForm ).serializeArray();					
 				for(var i=0; i < tmpAryData.length; i++){
@@ -214,8 +218,7 @@ mvBaseUploadInterface.prototype = {
 				//for some unknown reason we have to drop down the #p-search z-index:
 				$j('#p-search').css('z-index', 1);								
 				
-				//select upload mode: 
-				
+				//select upload mode: 				
 				_this.detectUploadMode();
 				
 				//don't submit the form we will do the post in ajax
@@ -334,7 +337,8 @@ mvBaseUploadInterface.prototype = {
 					}else{
 						var apiResult = JSON.parse ( data.upload['apiUploadResult'] ) ;
 						_this.processApiResult( apiResult );						
-					}				
+					}
+					return ;				
 				}
 				
 				//@@ else update status:
@@ -358,12 +362,39 @@ mvBaseUploadInterface.prototype = {
 		}
 		uploadStatus();
 	},
-	processApiResult: function( apiResult ){
-		if(apiResult['descriptionurl'])
-			_this.updateUploadDone( apiResult['descriptionurl'] );
+	processApiResult: function( apiRes ){	
+		var _this = this;			
+		//check for error
+		if( apiRes.upload.result == "Failure" ){			
+			//error space is too large so we don't front load it
+			//do a remote call to get the error msg: 
+			if(apiRes.upload.error != "unknown-error"){
+				gMsgLoadRemote(apiRes.upload.error, function(msg){
+					_this.updateUploadError( gM( apiRes.upload.error ));
+				});
+			}else{
+				_this.updateUploadError( gM('unknown-error'));
+			}
+		}else if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){
+			_this.updateUploadDone( apiRes.upload.imageinfo.descriptionurl );
+		}else{			
+			//nothing fits assume unkown error:
+			_this.updateUploadError( gM('unknown-error'));
+		} 
+		
+	},
+	updateUploadError:function( msg ){
+		$j( '#dlbox-centered' ).html( '<h3>' + gM('uploaderror') + '</h3>' +
+			msg  + '<p>' + 
+			'<a id="mv-return-to-form" href="#" >' + gM('return-to-form') + '</a>');	
+		$j('#mv-return-to-form').click(function(){
+			//hide / close up shop
+			$j('#dlbox-overlay,#dlbox-centered').hide();
+			return false;
+		});
 	},
 	updateUploadDone:function(url){
-		$j( '#dlbox-centered' ).html( '<h3>' + gM('mv_upload_completed') + '</h3>' +
+		$j( '#dlbox-centered' ).html( '<h3>' + gM('successfulupload') + '</h3>' +
 			gM( 'mv_upload_done', url) );	
 	},
 	getProgressTitle:function(){
@@ -378,24 +409,23 @@ mvBaseUploadInterface.prototype = {
 	},
 	dispProgressOverlay:function(){
 		var _this = this;
-		//add in loader dl box if not present: 
-		if( $j('#dlbox-centered').length ==0 ){ 	
-			//hard code style (since not always easy to import style sheets)
-			$j('body').append('<div id="dlbox-centered" class="dlbox-centered" style="'+
-					'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
-					'height:300px;padding: 10px;z-index:100;top:100px;bottom:40%;left:20%;" >'+		
-						'<h5>' + _this.getProgressTitle() + '</h5>' +
-						'<div id="up-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
-							'<div id="up-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
-						'</div>' +
-						'<span id="up-pstatus">0% - </span> ' +						 
-						'<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +				
-						'<span id="upload-stats-fileprogres"></span>'+		
-				'</div>' +					
-				'<div id="dlbox-overlay" class="dlbox-overlay" style="background:#000;cursor:wait;height:100%;'+
-							'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
-							'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');	
-		}
+		//remove old instance: 
+		$j('#dlbox-centered,#dlbox-overlay').remove(); 	
+		//hard code style (since not always easy to import style sheets)
+		$j('body').append('<div id="dlbox-centered" class="dlbox-centered" style="'+
+				'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
+				'height:300px;padding: 10px;z-index:100;top:100px;bottom:40%;left:20%;" >'+		
+					'<h5>' + _this.getProgressTitle() + '</h5>' +
+					'<div id="up-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
+						'<div id="up-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
+					'</div>' +
+					'<span id="up-pstatus">0% - </span> ' +						 
+					'<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +				
+					'<span id="upload-stats-fileprogres"></span>'+		
+			'</div>' +					
+			'<div id="dlbox-overlay" class="dlbox-overlay" style="background:#000;cursor:wait;height:100%;'+
+						'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
+						'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');				
 	}
 	
 }
