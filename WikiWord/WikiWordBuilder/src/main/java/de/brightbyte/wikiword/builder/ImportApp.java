@@ -273,7 +273,7 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 
 			if (operation == Operation.FRESH) {
 				section("-- purge --------------------------------------------------");
-				initializeStores(true, getDropWarnings()); //FIXME: don't purge warning always... but when?!
+				initializeStores(getPurgeData(), getDropWarnings()); 
 			}
 			else {
 				initializeStores(false, getDropWarnings()); 
@@ -312,6 +312,10 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 
 	protected boolean getDropWarnings() {
 		return false;
+	}
+
+	protected boolean getPurgeData() {
+		return true;
 	}
 
 	public int getExitCode() {

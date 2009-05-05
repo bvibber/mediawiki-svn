@@ -12,9 +12,12 @@ import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiPage;
+import de.brightbyte.wikiword.store.builder.ConceptBasedStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 
 public class PropertyImporter extends ConceptImporter {
+	
+	boolean buildConcepts = true;
 	
 	public PropertyImporter(WikiTextAnalyzer analyzer, LocalConceptStoreBuilder store, TweakSet tweaks) throws PersistenceException {
 		super(analyzer, store, tweaks);
@@ -44,23 +47,36 @@ public class PropertyImporter extends ConceptImporter {
 		String name = analyzerPage.getConceptName();
 		String rcName = analyzerPage.getResourceName();
 		
-		int rcId = storeResource(rcName, analyzerPage.getResourceType(), timestamp);
+		int rcId  = 0;
+		int cid = 0;
 		
-		ConceptType ctype = analyzerPage.getConceptType();
-		int cid = storeConcept(rcId, name, ctype);
+		ResourceType rcType = analyzerPage.getResourceType();
 		
-		//storeProperty(rcId, cid, name, "__TYPE__", analyzerPage.getConceptType().getName()); //FIXME: remove me!
-		
-		MultiMap<String, CharSequence, Set<CharSequence>> properties = analyzerPage.getProperties();
-		for (Map.Entry<String, Set<CharSequence>> e: properties.entrySet()) {
-			String property = e.getKey();
+		if (buildConcepts) {
+			rcId = storeResource(rcName, rcType, timestamp);	
 			
-			for (CharSequence v: e.getValue()) {
-				storeProperty(rcId, cid, name, property, v.toString());
+			if (rcType == ResourceType.REDIRECT) {
+				storeAlias(analyzerPage, rcId);
+			}
+			
+			ConceptType ctype = analyzerPage.getConceptType();
+			cid = storeConcept(rcId, name, ctype);
+		} 
+		
+		if (rcType == ResourceType.ARTICLE || rcType == ResourceType.SUPPLEMENT) {
+			MultiMap<String, CharSequence, Set<CharSequence>> properties = analyzerPage.getProperties();
+			for (Map.Entry<String, Set<CharSequence>> e: properties.entrySet()) {
+				String property = e.getKey();
+				
+				for (CharSequence v: e.getValue()) {
+					storeProperty(rcId, cid, name, property, v.toString());
+				}
+			}
+			
+			if (buildConcepts) {
+				storeSupplements(rcId, cid, analyzerPage);
 			}
 		}
-		
-		storeSupplements(rcId, cid, analyzerPage);
 		
 		return cid;
 	}
@@ -71,10 +87,16 @@ public class PropertyImporter extends ConceptImporter {
 		
 		if (t!=ResourceType.ARTICLE 
 				&& t!=ResourceType.CATEGORY 
-				&& t!=ResourceType.SUPPLEMENT) return false;
+				&& t!=ResourceType.SUPPLEMENT) {
+			return false;
+		}
 		
 		if (t==ResourceType.SUPPLEMENT) {
 			return true;
+		}
+		
+		if (t==ResourceType.REDIRECT) {
+			return buildConcepts;
 		}
 		
 		if ( analyzerPage.getProperties().isEmpty()
@@ -90,11 +112,44 @@ public class PropertyImporter extends ConceptImporter {
 
 	public static void declareOptions(Arguments args) {
 		AbstractImporter.declareOptions(args);
+
+		args.declare("attach", null, false, Boolean.class, "attach properties to existing thesaurus");
 	}
 
 	@Override
 	public void configure(Arguments args) throws Exception  {
 		super.configure(args);
+		
+		if (args.isSet("attach")) buildConcepts = false;
 	}
 
+	protected boolean getPurgeData() {
+		return buildConcepts;
+	}
+	
+	@Override
+	public void finish() throws PersistenceException {
+		ConceptBasedStoreBuilder store = buildConcepts ? this.store : this.propertyStore;
+		boolean resolveIdsFirst = buildConcepts ? true : false;
+		
+		if (beginTask("PropertyImporter.finish", "finishImport")) {
+			store.finalizeImport();
+			endTask("PropertyImporter.finish", "finishImport");
+		}
+		
+		if (resolveIdsFirst && beginTask("PropertyImporter.finish", "finishIdReferences#1")) {
+			store.finishIdReferences();
+			endTask("PropertyImporter.finish", "finishIdReferences#1");
+		}
+		
+		if (beginTask("PropertyImporter.finish", "finishAliases")) {
+			store.finishAliases();
+			endTask("PropertyImporter.finish", "finishAliases");
+		}
+		
+		if (!resolveIdsFirst && beginTask("PropertyImporter.finish", "finishIdReferences#2")) {
+			store.finishIdReferences();
+			endTask("PropertyImporter.finish", "finishIdReferences#2");
+		}
+	}	
 }

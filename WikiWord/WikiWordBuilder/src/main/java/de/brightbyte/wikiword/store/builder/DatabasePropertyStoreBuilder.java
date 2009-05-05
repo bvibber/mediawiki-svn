@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import de.brightbyte.application.Agenda;
+import de.brightbyte.data.PersistentIdManager;
 import de.brightbyte.db.Inserter;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
@@ -17,12 +18,13 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 
 	protected RelationTable propertyTable;
 	protected Inserter propertyInserter;
-	private LocalConceptStoreSchema conceptStoreSchema;
+	protected LocalConceptStoreSchema conceptStoreSchema;
+	protected PersistentIdManager idManager;
 
 	public DatabasePropertyStoreBuilder(Corpus corpus, Connection connection, TweakSet tweaks) throws SQLException, PersistenceException {
 		this(new LocalConceptStoreSchema(corpus, connection, tweaks, true), 
 				new PropertyStoreSchema(corpus, connection, tweaks, true), 
-				tweaks, null);
+				null, tweaks, null);
 	}
 	
 	public DatabasePropertyStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, TweakSet tweaks) throws SQLException, PersistenceException {
@@ -32,11 +34,12 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 				new PropertyStoreSchema(conceptStore.getCorpus(), 
 						conceptStore.getDatabaseAccess().getConnection(), 
 						tweaks, true), 
+				conceptStore.idManager,
 				tweaks,
 				conceptStore.getAgenda());
 	}
 	
-	protected DatabasePropertyStoreBuilder(LocalConceptStoreSchema conceptStoreSchema, PropertyStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
+	protected DatabasePropertyStoreBuilder(LocalConceptStoreSchema conceptStoreSchema, PropertyStoreSchema database, PersistentIdManager idManager, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
 		super(database, tweaks, agenda);
 
 		//this.conceptStore = conceptStore;
@@ -45,6 +48,7 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 		this.propertyTable =  (RelationTable)propertyInserter.getTable();
 		
 		this.conceptStoreSchema = conceptStoreSchema;
+		this.idManager = idManager;
 	}	
 
 	@Override
@@ -62,16 +66,6 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 		super.flush();
 	}
 	
-	protected int getConceptId(String title) throws SQLException {
-		//String sql = "select id from "+localConceptDatabase.getSQLTableName("resource")
-		//				+" where name = "+localConceptDatabase.quoteString(title);
-		//return (Integer) localConceptDatabase.executeSingleValueQuery("getResourceId", sql);
-		
-		//TODO: get concept id
-		throw new UnsupportedOperationException();
-		//return -1;
-	}
-
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeRawText(int, java.lang.String)
 	 */
@@ -80,7 +74,8 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 			//int cId = getConceptId(name); //TODO: use join? //FIXME: when not provided
 			
 			propertyInserter.updateInt("resource", resourceId); 
-			if (concept>0) propertyInserter.updateInt("concept", concept); //FIXME: id cache!
+			if (concept>0) propertyInserter.updateInt("concept", concept); 
+			else if (idManager!=null) propertyInserter.updateInt("concept", idManager.aquireId(name));   
 			propertyInserter.updateString("concept_name", name);
 			propertyInserter.updateString("property", property);
 			propertyInserter.updateString("value", value);
@@ -108,12 +103,17 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 	}
 	
 	public void finishAliases() throws PersistenceException {
-		
-		if (beginTask("finishAliases", "resolveRedirects:property")) {
+		if (beginTask("DatabasePropertyStoreBuilder.finishAliases", "resolveRedirects:property")) {
 			RelationTable aliasTable = (RelationTable)conceptStoreSchema.getTable("alias");
-			
-			int n = resolveRedirects(aliasTable, propertyTable, "concept_name", "concept", AliasScope.REDIRECT, 3, null, null);     
-			endTask("finishAliases", "resolveRedirects:property", n+" entries");
+			int n = resolveRedirects(aliasTable, propertyTable, "concept_name", idManager!=null ? "concept" : null, AliasScope.REDIRECT, 3, null, null);
+			endTask("DatabasePropertyStoreBuilder.finishAliases", "resolveRedirects:property", n+" entries");
+		}
+	}
+
+	public void finishIdReferences() throws PersistenceException {
+		if (idManager==null && beginTask("DatabasePropertyStoreBuilder.finishIdReferences", "buildIdLinks:property")) {
+			int n = buildIdLinks(propertyTable, "concept_name", "concept", 1);     
+			endTask("DatabasePropertyStoreBuilder.finishIdReferences", "buildIdLinks:property", n+" references");
 		}
 	}
 }

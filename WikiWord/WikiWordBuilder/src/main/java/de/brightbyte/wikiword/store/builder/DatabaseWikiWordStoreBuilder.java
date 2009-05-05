@@ -492,6 +492,34 @@ public class DatabaseWikiWordStoreBuilder
 		
 		return executeChunkedUpdate("resolveRedirects", table.getName()+"."+relNameField+"+"+relIdField, sql, where, aliasTable, "source", chunkFactor);
 	}
+	
+	
+	/**
+	 * Builds id-references from name-references
+	 */
+	protected int buildIdLinks(DatabaseTable table, String relNameField, String relIdField, int chunkFactor) throws PersistenceException {
+		DatabaseField nmField = table.getField(relNameField);
+		DatabaseField idField = table.getField(relIdField);
+		
+		if (!(nmField instanceof ReferenceField)) throw new IllegalArgumentException(relNameField+" is not a reference field in table "+table.getName());
+		if (!(idField instanceof ReferenceField)) throw new IllegalArgumentException(relIdField+" is not a reference field in table "+table.getName());
+		
+		String nmTable = ((ReferenceField)nmField).getTargetTable();
+		String idTable = ((ReferenceField)idField).getTargetTable();
+		
+		if (!nmTable.equals(idTable)) throw new IllegalArgumentException(relNameField+" and "+relIdField+" in table "+table.getName()+" do not reference the same table: "+nmTable+" != "+idTable);
+		DatabaseTable target = getTable(nmTable);
+
+		String targetNameField = ((ReferenceField)nmField).getTargetField();
+		String targetIdField = ((ReferenceField)idField).getTargetField();
+		
+		String sql = "UPDATE "+table.getSQLName()+" as R JOIN "+target.getSQLName()+" as E "
+					+ " ON R."+relNameField+" = E."+targetNameField+" "
+					+ " SET R."+relIdField+" = E."+targetIdField+" ";
+		String where = " R."+relIdField+" IS NULL";
+		
+		return executeChunkedUpdate("buildIdLinks", table.getName()+"."+relNameField, sql, where, target, targetIdField, chunkFactor);
+	}
 
 	public void finalizeImport() throws PersistenceException {
 		flush();

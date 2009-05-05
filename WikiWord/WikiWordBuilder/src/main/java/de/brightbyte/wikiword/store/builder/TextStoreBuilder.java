@@ -1,13 +1,15 @@
 package de.brightbyte.wikiword.store.builder;
 
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.ResourceType;
 
-public interface TextStoreBuilder extends WikiWordStoreBuilder {
-	public abstract void storeRawText(int textId, String name, ResourceType ptype, String text)
+public interface TextStoreBuilder extends WikiWordStoreBuilder, IncrementalStoreBuilder {
+	public abstract void storeRawText(int rcId, String rcName, String text)
 		throws PersistenceException;
 
-	public abstract void storePlainText(int textId, String name, ResourceType ptype, String text)
+	public abstract void storePlainText(int rcId, String rcName, String text)
 		throws PersistenceException;
+
+	//public abstract void finishAliases() throws PersistenceException;
+	//public abstract void finishIdReferences() throws PersistenceException;
 	
 }

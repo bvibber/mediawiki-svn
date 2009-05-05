@@ -4,13 +4,15 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import de.brightbyte.application.Agenda;
+import de.brightbyte.data.PersistentIdManager;
 import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.Inserter;
+import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
-import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.TextStoreSchema;
 
@@ -59,6 +61,8 @@ public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder im
 		
 		plainTextTable =  (EntityTable)plainTextInserter.getTable();
 		rawTextTable =   (EntityTable)rawTextInserter.getTable();
+		
+		//this.idManager = idManager;
 	}	
 
 	@Override
@@ -67,21 +71,22 @@ public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder im
 		deleteDataFrom(rcId, op, plainTextTable, "id");
 	}
 	
+	/*
 	protected int getResourceId(String title) throws SQLException {
 		String sql = "select id from "+localConceptDatabase.getSQLTableName("resource")
 						+" where name = "+localConceptDatabase.quoteString(title);
 		return (Integer) localConceptDatabase.executeSingleValueQuery("getResourceId", sql);
-	}
-
+	}*/
+	
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeRawText(int, java.lang.String)
 	 */
-	public void storeRawText(int textId, String title, String text) throws PersistenceException {
+	public void storeRawText(int rcId, String title, String text) throws PersistenceException {
 		try {
 			if (rawTextInserter==null) rawTextInserter = rawTextTable.getInserter();
-			int rcId = getResourceId(title); //TODO: use join?
+			//if (rcId<=0) rcId = getResourceId(title); //TODO: use join?
 			
-			rawTextInserter.updateInt("id", textId);
+			rawTextInserter.updateInt("id", rcId);
 			rawTextInserter.updateInt("resource", rcId);
 			rawTextInserter.updateString("text", text);
 			rawTextInserter.updateRow();
@@ -93,12 +98,12 @@ public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder im
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storePlainText(int, java.lang.String)
 	 */
-	public void storePlainText(int textId, String title, String text) throws PersistenceException {
+	public void storePlainText(int rcId, String title, String text) throws PersistenceException {
 		try {
 			if (plainTextInserter==null) plainTextInserter = plainTextTable.getInserter();
-			int rcId = getResourceId(title); //TODO: use join?
+//			if (rcId<=0) rcId = getResourceId(title); //TODO: use join?
 			
-			plainTextInserter.updateInt("id", textId);
+			plainTextInserter.updateInt("id", rcId);
 			plainTextInserter.updateInt("resource", rcId);
 			plainTextInserter.updateString("text", text);
 			plainTextInserter.updateRow();
@@ -107,6 +112,7 @@ public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder im
 		}
 	}
 	
+	/*
 	public void storePlainText(int textId, String name, ResourceType ptype, String text) throws PersistenceException {
 		storePlainText(textId, name, text);
 	}
@@ -114,7 +120,7 @@ public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder im
 	public void storeRawText(int textId, String name, ResourceType ptype, String text) throws PersistenceException {
 		storeRawText(textId, name, text);
 	}
-
+ */
 	public ConceptType getConceptType(int type) {
 		return localConceptDatabase.getConceptType(type);
 	}
@@ -122,4 +128,21 @@ public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder im
 	public Corpus getCorpus() {
 		return ((TextStoreSchema)database).getCorpus();
 	}
+	
+	/*
+	public void finishAliases() throws PersistenceException {
+		if (beginTask("DatabaseTextStoreBuilder.finishAliases", "resolveRedirects:property")) {
+			RelationTable aliasTable = (RelationTable)database.getTable("alias");
+			int n = resolveRedirects(aliasTable, rawTextTable, "concept_name", idManager!=null ? "concept" : null, AliasScope.REDIRECT, 3, null, null);
+			endTask("DatabaseTextStoreBuilder.finishAliases", "resolveRedirects:property", n+" entries");
+		}
+	}
+
+	public void finishIdReferences() throws PersistenceException {
+		if (idManager==null && beginTask("DatabaseTextStoreBuilder.finishIdReferences", "buildIdLinks:property")) {
+			int n = buildIdLinks(rawTextTable, "concept_name", "concept", 1);     
+			endTask("DatabaseTextStoreBuilder.finishIdReferences", "buildIdLinks:property", n+" references");
+		}
+	}
+	*/
 }

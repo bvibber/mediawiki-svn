@@ -18,7 +18,7 @@ import de.brightbyte.wikiword.schema.AliasScope;
  * (generally by a WikiTextAnalyzer) may be written to. It may be backed by
  * a RDBMS, or some other way of storing the data. 
  */
-public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<LocalConcept>, IncrementalStoreBuilder  {
+public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<LocalConcept>, IncrementalStoreBuilder, ConceptBasedStoreBuilder  {
 	
 	public abstract void storeDefinition(int rcId, int conceptId, String definition)
 			throws PersistenceException;
@@ -90,8 +90,6 @@ public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<Lo
 	public void finishSections() throws PersistenceException;
 	public void finishBadLinks() throws PersistenceException;
 	public void finishMissingConcepts() throws PersistenceException;
-	public void finishIdReferences() throws PersistenceException;
-	public void finishAliases() throws PersistenceException;
 	public void finishRelations() throws PersistenceException;
 	public void finishMeanings() throws PersistenceException;
 	//public void finishConceptInfo() throws PersistenceException;

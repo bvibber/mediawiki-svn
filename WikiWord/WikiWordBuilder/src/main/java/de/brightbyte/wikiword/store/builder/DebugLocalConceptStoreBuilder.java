@@ -32,14 +32,22 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
 	public class DebugTextStoreBuilder implements TextStoreBuilder {
 
-		public void storePlainText(int textId, String name, ResourceType ptype, String text) throws PersistenceException {
-			log("* storePlainText("+textId+", "+name+", "+ptype+", "+ptype+") *");
+		public void storePlainText(int rcId, String name, String text) throws PersistenceException {
+			log("* storePlainText("+rcId+", "+name+") *");
 		}
 
-		public void storeRawText(int textId, String name, ResourceType ptype, String text) throws PersistenceException {
-			log("* storeRawText("+textId+", "+name+", "+ptype+", "+ptype+") *");
+		public void storeRawText(int rcId, String name, String text) throws PersistenceException {
+			log("* storeRawText("+rcId+", "+name+") *");
 		}
 
+		public void finishAliases() throws PersistenceException {
+			log("* finishAliases *");
+		}
+		
+		public void finishIdReferences() throws PersistenceException {
+			log("* finishIdReferences *");
+		}
+		
 		public void checkConsistency() throws PersistenceException {
 			log("* checkConsistency *");
 		}
@@ -125,9 +133,12 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			log("* finishAliases *");
 		}
 
-
 		public void finalizeImport() throws PersistenceException {
 			log("* finalizeImport *");			
+		}
+
+		public void finishIdReferences() throws PersistenceException {
+			log("* finishIdReferences *");			
 		}
 
 		public void prepareImport() throws PersistenceException {

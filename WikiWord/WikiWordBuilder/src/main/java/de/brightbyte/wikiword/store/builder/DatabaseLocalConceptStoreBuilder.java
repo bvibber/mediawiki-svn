@@ -12,12 +12,11 @@ import java.util.Random;
 
 import javax.sql.DataSource;
 
-import org.ardverk.collection.PatriciaTrie;
-import org.ardverk.collection.StringKeyAnalyzer;
-
 import de.brightbyte.application.Agenda;
+import de.brightbyte.data.Pair;
 import de.brightbyte.data.PersistentIdManager;
 import de.brightbyte.data.cursor.CursorProcessor;
+import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.db.DatabaseAccess;
 import de.brightbyte.db.DatabaseDataSet;
@@ -172,18 +171,39 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		}
 		else {
 			//FIXME: should fail if we are continuing a previous import, but the file doesn't exist.
-			//FIXME: should failon partial load
+			//FIXME: should fail on partial load
 			//XXX: could probably be skipped if continuing at a stage after dump reading
 			if (idManager!=null) {
-				log("loading persisted ID map..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
-				idManager.load(); 
-				log("Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+				if (idManager.fileExists()) {
+					log("loading persisted ID map..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+					idManager.load(); 
+					log("Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+				} else {
+					log("building persisted ID map..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+					DataCursor<Pair<String, Integer>> cursor = getConceptIdCursor();
+					idManager.slurp(cursor);
+					cursor.close();
+					log("Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+				}
 			}
 		}
 		
 		super.initialize(purge, dropAll);
 	}	
 	
+	protected DataCursor<Pair<String, Integer>> getConceptIdCursor() throws PersistenceException {
+		String sql = "SELECT name, id from " + conceptTable.getSQLName();
+		ResultSet rs = executeQuery("getConceptIdCursor", sql);
+		
+		DatabaseDataSet.Factory<Pair<String, Integer>> f = new DatabaseDataSet.Factory<Pair<String, Integer>>() {
+			public Pair<String, Integer> newInstance(ResultSet row) throws Exception {
+				return new Pair<String, Integer>(row.getString(1), row.getInt(2));
+			}
+		};
+		
+		return new DatabaseDataSet.Cursor<Pair<String, Integer>>(rs, f);
+	}
+
 	public ConceptType getConceptType(int type) {
 		return corpus.getConceptTypes().getType(type);
 	}
@@ -258,7 +278,6 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			throw new PersistenceException(e);
 		}
 	}	
-	
 
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeResourceAbout(java.lang.String, de.brightbyte.wikiword.ResourceType, java.util.Date, int conceptId, String conceptName)
@@ -525,6 +544,10 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 	
 	public void finalizeImport() throws PersistenceException {
+		if (idManager!=null) { //delete temporary ID file
+			idManager.deleteFile();
+		}
+		
 		try {
 			flush();
 			if (beginTask("DatabaseLocalConceptStore.finishImport", "enableKeys")) {
@@ -534,6 +557,16 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		} 
+
+		if (propertyStore!=null && beginTask("finishAliases", "propertyStore.finalizeImport")) {
+			propertyStore.finalizeImport();
+			endTask("finishAliases", "propertyStore.finalizeImport");
+		}
+		
+		if (textStore!=null && beginTask("finishAliases", "textStore.finalizeImport")) {
+			textStore.finalizeImport();
+			endTask("finishAliases", "textStore.finalizeImport");
+		}
 	}
 	
 	public void finishSections() throws PersistenceException {
@@ -744,6 +777,18 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				endTask("finishIdReferences", "buildIdLinks:alias", n+" references");
 			}
 			//if (beginTask("finishIdReferences", "buildIdLinks:reference")) buildIdLinks(referenceTable, "target_name", "target"); 
+			
+			if (idManager==null &&  propertyStore!=null && beginTask("finishIdReferences", "propertyStore.finishIdReferences")) {
+				propertyStore.finishIdReferences();
+				endTask("finishIdReferences", "propertyStore.finishIdReferences");
+			}
+			
+			/*
+			if (idManager==null &&  textStore!=null && beginTask("finishIdReferences", "textStore.finishIdReferences")) {
+				textStore.finishIdReferences();
+				endTask("finishIdReferences", "textStore.finishIdReferences");
+			}
+			*/
 	}
 	
 	public void finishAliases() throws PersistenceException {
@@ -771,6 +816,18 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				endTask("finishAliases", "resolveRedirects:broad", n+" entries");
 			}
 						
+			if (propertyStore!=null && beginTask("finishAliases", "propertyStore.finishAliases")) {
+				propertyStore.finishAliases();
+				endTask("finishAliases", "propertyStore.finishAliases");
+			}
+			
+			/*
+			if (textStore!=null && beginTask("finishAliases", "textStore.finishAliases")) {
+				textStore.finishAliases();
+				endTask("finishAliases", "textStore.finishAliases");
+			}
+			*/
+			
 			/*
 			//NOTE: way too late for that!
 			if (beginTask("finishAliases", "resolveRedirects:section")) {
@@ -1126,33 +1183,6 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		String group = "GROUP BY target, term_text ";
 		
 		return executeChunkedUpdate("buildMeanings", "buildMeanings", sql, group, linkTable, "target");
-	}
-	
-	/**
-	 * Builds id-references from name-references
-	 */
-	protected int buildIdLinks(DatabaseTable table, String relNameField, String relIdField, int chunkFactor) throws PersistenceException {
-		DatabaseField nmField = table.getField(relNameField);
-		DatabaseField idField = table.getField(relIdField);
-		
-		if (!(nmField instanceof ReferenceField)) throw new IllegalArgumentException(relNameField+" is not a reference field in table "+table.getName());
-		if (!(idField instanceof ReferenceField)) throw new IllegalArgumentException(relIdField+" is not a reference field in table "+table.getName());
-		
-		String nmTable = ((ReferenceField)nmField).getTargetTable();
-		String idTable = ((ReferenceField)idField).getTargetTable();
-		
-		if (!nmTable.equals(idTable)) throw new IllegalArgumentException(relNameField+" and "+relIdField+" in table "+table.getName()+" do not reference the same table: "+nmTable+" != "+idTable);
-		DatabaseTable target = getTable(nmTable);
-
-		String targetNameField = ((ReferenceField)nmField).getTargetField();
-		String targetIdField = ((ReferenceField)idField).getTargetField();
-		
-		String sql = "UPDATE "+table.getSQLName()+" as R JOIN "+target.getSQLName()+" as E "
-					+ " ON R."+relNameField+" = E."+targetNameField+" "
-					+ " SET R."+relIdField+" = E."+targetIdField+" ";
-		String where = " R."+relIdField+" IS NULL";
-		
-		return executeChunkedUpdate("buildIdLinks", table.getName()+"."+relNameField, sql, where, target, targetIdField, chunkFactor);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////

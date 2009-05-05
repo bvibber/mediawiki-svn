@@ -60,16 +60,6 @@ public class ConceptImporter extends AbstractImporter {
 			endTask("ConceptImporter.finish", "finishImport");
 		}
 		
-		if (storeProperties && beginTask("ConceptImporter.finish", "finishImport")) {
-			propertyStore.finalizeImport();
-			endTask("ConceptImporter.finish", "finishImport");
-		}
-		
-		if (storeFlatText && beginTask("ConceptImporter.finish", "finishImport")) {
-			textStore.finalizeImport();
-			endTask("ConceptImporter.finish", "finishImport");
-		}
-		
 		if (beginTask("ConceptImporter.finish", "finishBadLinks")) {
 			store.finishBadLinks();
 			endTask("ConceptImporter.finish", "finishBadLinks");
@@ -96,11 +86,6 @@ public class ConceptImporter extends AbstractImporter {
 		if (beginTask("ConceptImporter.finish", "finishAliases")) {
 			store.finishAliases();
 			endTask("ConceptImporter.finish", "finishAliases");
-		}
-		
-		if (propertyStore!=null && beginTask("ConceptImporter.finish", "propertyStore#finishAliases")) {
-			propertyStore.finishAliases();
-			endTask("ConceptImporter.finish", "propertyStore#finishAliases");
 		}
 		
 		//TODO: finish aliases for textStore!
@@ -243,7 +228,7 @@ public class ConceptImporter extends AbstractImporter {
 	
 	@Override
 	public int importPage(WikiPage analyzerPage, Date timestamp) throws PersistenceException {
-		ResourceType ptype = analyzerPage.getResourceType();
+		ResourceType rcType = analyzerPage.getResourceType();
 		String name = analyzerPage.getConceptName();
 		String rcName = analyzerPage.getResourceName();
 		String text = analyzerPage.getText().toString();
@@ -251,18 +236,18 @@ public class ConceptImporter extends AbstractImporter {
 		//String title = analyzerPage.getTitle().toString();
 		
 		//TODO: check if page is stored. if up to date, skip. if older, update. if missing, create. optionally force update.
-		int rcId = storeResource(rcName, ptype, timestamp);
+		int rcId = storeResource(rcName, rcType, timestamp);
 				
 		if (storeFlatText) {  
-			textStore.storeRawText(rcId, rcName, ptype, text);
+			textStore.storeRawText(rcId, rcName, text);
 		}
 		
 		if (storeFlatText) {  
 			CharSequence plain = analyzerPage.getPlainText(false);
-			textStore.storePlainText(rcId, rcName, ptype, plain.toString());
+			textStore.storePlainText(rcId, rcName, plain.toString());
 		}
 		
-		if (ptype == ResourceType.CATEGORY) {
+		if (rcType == ResourceType.CATEGORY) {
 			List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
 			linkTracker.step(links.size());
 			
@@ -290,7 +275,7 @@ public class ConceptImporter extends AbstractImporter {
 			//      need resolve-ids on langling, then!
 			//      beware aliased categories!
 		}
-		else if (ptype == ResourceType.ARTICLE || ptype == ResourceType.SUPPLEMENT) {
+		else if (rcType == ResourceType.ARTICLE || rcType == ResourceType.SUPPLEMENT) {
 			conceptTracker.step();
 			
 			//TODO: handle "other meanings" header (mini-disambig!)
@@ -392,7 +377,7 @@ public class ConceptImporter extends AbstractImporter {
 			
 			//FIXME: store supplement links
 		}
-		else if (ptype == ResourceType.DISAMBIG) {
+		else if (rcType == ResourceType.DISAMBIG) {
 			//storeConcept(rcId, name, ConceptType.NONE); 
 
 			Set<CharSequence> terms = analyzerPage.getTitleTerms();
@@ -416,7 +401,7 @@ public class ConceptImporter extends AbstractImporter {
 				}
 			}
 		}
-		else if (ptype == ResourceType.LIST) {
+		else if (rcType == ResourceType.LIST) {
 			//storeConcept(rcId, name, ConceptType.NONE);
 
 			//FIXME: extract fewer links... use disambig-logic?
@@ -428,35 +413,47 @@ public class ConceptImporter extends AbstractImporter {
 			//TODO: extract concept name from "List of..." ?
 			//FIXME: category-like interpretation!
 		}
-		else if (ptype == ResourceType.REDIRECT) {
-			WikiTextAnalyzer.WikiLink link = analyzerPage.getRedirect();
-			
-			if (link==null) {
-				warn(rcId, "bad redirect (no link)", "Text: "+StringUtils.clipString(text, 256, "..."), null);
-			}
-			else if (link.getInterwiki()!=null || link.getNamespace()!=0) {
-				//redirects to other wikis or into another namespace are handeled as BAD page.
-				out.info("skipped bad redirect "+rcName+" -> "+link);
-			}
-			else if (name.equals(link.getPage().toString())) {
-				warn(rcId, "bad redirect (self-link)", "page "+name, null);
-			}
-			else {
-				int conceptId = storeConcept(rcId, name, ConceptType.ALIAS); 
-				storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_REDIRECT );
-				storeConceptAlias(rcId, conceptId, name, -1, link.getPage().toString(), AliasScope.REDIRECT); //TODO: confidence?...
-				
-				//FIXME: redir to section!
-			}
+		else if (rcType == ResourceType.REDIRECT) {
+			storeAlias(analyzerPage, rcId);
 		}
-		else if (ptype == ResourceType.BAD) {
+		else if (rcType == ResourceType.BAD) {
 			out.info("skipped BAD page "+rcName);
 		}
 		else {
-			out.warn("skipped page "+rcName+" ["+ptype+"]");
+			out.warn("skipped page "+rcName+" ["+rcType+"]");
 		}
 		
 		return rcId;
+	}
+	
+	protected int storeAlias(WikiPage analyzerPage, int rcId) throws PersistenceException {
+		String name = analyzerPage.getConceptName();
+		String rcName = analyzerPage.getResourceName();
+		String text = analyzerPage.getText().toString();
+
+		WikiTextAnalyzer.WikiLink link = analyzerPage.getRedirect();
+		
+		int conceptId  = 0;
+		
+		if (link==null) {
+			warn(rcId, "bad redirect (no link)", "Text: "+StringUtils.clipString(text, 256, "..."), null);
+		}
+		else if (link.getInterwiki()!=null || link.getNamespace()!=0) {
+			//redirects to other wikis or into another namespace are handeled as BAD page.
+			out.info("skipped bad redirect "+rcName+" -> "+link);
+		}
+		else if (name.equals(link.getPage().toString())) {
+			warn(rcId, "bad redirect (self-link)", "page "+name, null);
+		}
+		else {
+			conceptId = storeConcept(rcId, name, ConceptType.ALIAS); 
+			storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_REDIRECT );
+			storeConceptAlias(rcId, conceptId, name, -1, link.getPage().toString(), AliasScope.REDIRECT); //TODO: confidence?...
+			
+			//FIXME: redir to section!
+		}
+		
+		return conceptId;
 	}
 	
 	public static void declareOptions(Arguments args) {
@@ -551,7 +548,6 @@ public class ConceptImporter extends AbstractImporter {
 		for (CharSequence supp: supplementLinks) {
 			storeConceptAlias(rcId, -1, supp.toString(), cid, name, AliasScope.SUPPLEMENT);
 		}
-		
 	}
 	
 }
