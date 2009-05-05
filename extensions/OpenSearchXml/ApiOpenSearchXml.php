@@ -41,7 +41,8 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	}
 	
 	protected function validateFormat() {
-		$format = $this->getMain()->getParameter('format');
+		$params = $this->extractRequestParams();
+		$format = $params['format'];
 		$allowed = array( 'json', 'jsonfm', 'xml', 'xmlfm' );
 		if( in_array( $format, $allowed ) ) {
 			return $format;
@@ -79,6 +80,12 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		$result->addValue( null, 'Query', array( '*' => strval( $search ) ) );
 		$result->setIndexedTagName( $items, 'Item' );
 		$result->addValue( null, 'Section', $items );
+	}
+	
+	public function getAllowedParams() {
+		$params = parent::getAllowedParams();
+		$params['format'] = null;
+		return $params;
 	}
 	
 	protected function formatItem( $name ) {
