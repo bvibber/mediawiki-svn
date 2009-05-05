@@ -2,10 +2,6 @@
 * autodetects: new upload api or old http POST.  
  */
 
-loadGM( {
-	"mv_upload_done" 	  : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",
-	"mv_upload_completed" : "Upload Completed"
-});
 
 var default_firefogg_options = {
 	'upload_done_action':'redirect',
@@ -115,11 +111,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		
 		//hide any errors warnings and video select:
 		$j( '#wgfogg_waring_ogg_upload,#wgfogg_waring_bad_extension,#fogg-video-file' ).hide();					
-	},
-	fogg_update_progress:function(progress){		
-		$j( '#fogg-progressbar' ).css( 'width', parseInt(progress*100) +'%');		
-		$j( '#fogg-pstatus' ).html( parseInt(progress*100) + '% - ');
-	},
+	},	
 	select_fogg:function(){			
 		var _this = this;
 		if( _this.fogg.selectVideo() ) {
@@ -213,17 +205,14 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		_this.fogg.encode( JSON.stringify( _this.encoder_settings ) );		  	
 		
 		 //show transcode status:
-		$j('#fogg-status-transcode').show();
-			    			
-	    //hide the fogg-status-upload
-	    $j('#fogg-status-upload').hide();	
+		$j('#up-status-state').html( gM('upload-transcoded-status') );
 		
 		//setup a local function for timed callback:
 		var encodingStatus = function() {
 			var status = _this.fogg.status();
 			
 			//update progress bar
-			_this.fogg_update_progress( _this.fogg.progress() );			
+			_this.updateProgress( _this.fogg.progress() );			
 			
 			//loop to get new status if still encoding
 			if( _this.fogg.state == 'encoding' ) {
@@ -253,9 +242,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	},	
 	doUploadStatus:function() {	
 		var _this = this;
-	 	//setup display for upload status: 
-	    $j('#fogg-status-transcode').hide();			    			
-	    $j('#fogg-status-upload').show();		
+		$j('#up-status-state').html( gM('uploaded-status')  );
 	    
 		_this.oldResponseText = '';
 		//setup a local function for timed callback: 				
@@ -278,7 +265,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				   
 			}		
 		    //update progress bar
-		    _this.fogg_update_progress( _this.fogg.progress() );
+		    _this.updateProgress( _this.fogg.progress() );
 		    		    
 		    //loop to get new status if still uploading (could also be encoding if we are in chunk upload mode) 
 		    if( _this.fogg.state == 'encoding' || _this.fogg.state == 'uploading') {
@@ -291,7 +278,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		       	if( _this.upload_mode == 'post' ) {		       		
 		       		//js_log( 'done upload response is: ' + cat["responseText"] );
 		       		_this.procPageResponse( response_text );
-		       		
+		       			
 		       	}else if( _this.upload_mode == 'chunks'){
 		       		if( _this.fogg.resultUrl ){		       		
 		       			//should have an json result:

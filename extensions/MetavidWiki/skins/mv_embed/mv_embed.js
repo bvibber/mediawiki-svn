@@ -106,27 +106,73 @@ loadGM({
 	"next_clip_msg" : "Play Next Clip",
 	"prev_clip_msg" : "Play Previous Clip",
 	"current_clip_msg" : "Continue Playing this Clip",	
-	"seek_to" : "Seek to"
+	"seek_to" : "Seek to",
+	
+	"size-gigabytes": "$1 GB",
+	"size-megabytes": "$1 MB",
+	"size-kilobytes": "$1 K",
+	"size-bytes": "$1 B"
 });
 
-//get a language message 
+/**
+ * Language Functions:
+ * 
+ * These functions try to losely mirro the functionality of Language.php in mediaWiki
+ */ 
 function gM( key , args ) {
-	var ms ='';
+	var ms ='';	
 	if ( key in gMsg ) {
 		ms = gMsg[ key ];
-		if(typeof args == 'object'){	    		 
+		if(typeof args == 'object' || typeof args == 'array'){	    		 
 		 	for(var v in args){
 		 		var rep = '\$'+ ( parseInt(v) + 1 );
 		 		//msg test replace arguments start at 1 insted of zero: 
 		 		ms = ms.replace( rep, args[v]);
 		 	}		 	
-		}else if(typeof args =='string'){
+		}else if(typeof args =='string' || typeof args =='number'){
 			ms = ms.replace(/\$1/, args);
 	 	}
  		return ms;
 	} else{
+		//key is missing return indication: 
 		return '[' + key + ']';
 	}	 
+}
+
+/**
+ * Format a size in bytes for output, using an appropriate
+ * unit (B, KB, MB or GB) according to the magnitude in question
+ *
+ * @param size Size to format
+ * @return string Plain text (not HTML)
+ */
+function formatSize( size ) {
+	// For small sizes no decimal places necessary
+	var round = 0;
+	var msg = '';
+	if( size > 1024 ) {
+		size = size / 1024;
+		if( size > 1024 ) {
+			size = size / 1024;
+			// For MB and bigger two decimal places are smarter
+			round = 2;
+			if( size > 1024 ) {
+				size = size / 1024;
+				msg = 'size-gigabytes';
+			} else {
+				msg = 'size-megabytes';
+			}
+		} else {
+			msg = 'size-kilobytes';
+		}
+	} else {
+		msg = 'size-bytes';
+	}
+	//javascript does not let you do precession points in rounding
+	var p =  Math.pow(10,round);
+	var size = Math.round( size * p  ) / p;
+	//@@todo we need a formatNum and we need to request some special packaged info to deal with that case. 
+	return  gM( msg , size );
 }
 
 //gets the loading image:

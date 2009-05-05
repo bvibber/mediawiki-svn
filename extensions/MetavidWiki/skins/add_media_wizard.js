@@ -7,7 +7,7 @@ var wg_content_proivers_config = {}; //you can overwrite by defining (after)
 var wg_local_wiki_api_url = wgServer + wgScriptPath + '/api.php';
 
 //if mv_embed is hosted somewhere other than near by the add_media_wizard you can define it here: 
-var force_mv_add_media_wizard_path=false;
+var force_mv_add_media_wizard_path = false;
 //var force_mv_add_media_wizard_path = 'http://metavid.org/w/extensions/MetavidWiki/skins/';
 
 var force_mv_embed_path = false;

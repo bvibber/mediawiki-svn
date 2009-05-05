@@ -13,7 +13,10 @@ loadGM( {
 	"upload-select-file": "Select File...",	
 	"wgfogg_wrong_version": "You have firefogg installed but its outdated, <a href=\"http://firefogg.org\">please upgrade</a> ",
 	"wgfogg_waring_ogg_upload": "You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?",
-	"wgfogg_waring_bad_extension" : "You have selected a file with an unsuported extension. <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">More help</a>" 
+	"wgfogg_waring_bad_extension" : "You have selected a file with an unsuported extension. <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">More help</a>",
+	"upload-stats-fileprogres": "$1 of $2",
+	"mv_upload_done" 	  : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",
+	"mv_upload_completed" : "Upload Completed"
 });
 
 var default_upload_options = {
@@ -180,10 +183,7 @@ mvBaseUploadInterface.prototype = {
 			//set up the org_onsubmit if not set: 
 			if( typeof( _this.org_onsubmit ) == 'undefined' )
 				_this.org_onsubmit = _this.editForm.onsubmit;
-			
-			//bind the onSubmit the base onSubmit action:
-			js_log("should have ...remove org:: " + _this.editForm.onsubmit);	
-			
+						
 			//have to define the onsubmit function inline or its hard to pass the "_this" instance
 			_this.editForm.onsubmit = function(){								
 				//run the original onsubmit (if not run yet set flag to avoid excessive chaining ) 
@@ -295,15 +295,86 @@ mvBaseUploadInterface.prototype = {
 			},
 			'url' : _this.api_url 
 		}, function( data ){
-			js_log('result data got:');
-			//start a timmed updates			
+			if( !data.upload.upload_session_key )
+				return js_error('could not start upload api request');
+			
+			//set the session key
+			_this.upload_session_key = data.upload.upload_session_key;
+			js_log("set session key: " + _this.upload_session_key);
+			//do ajax upload status: 
+			_this.doAjaxUploadStatus();	
+									
 		});	
+	},
+	doAjaxUploadStatus:function() {
+		var _this = this;	
+		var uploadStatus = function(){
+			//do the api request: 
+			do_api_req({
+				'data':{
+					'action'	 : 'upload',
+					'httpstatus' : 'true',
+					'sessionkey' : _this.upload_session_key
+				},
+				'url' : _this.api_url
+			}, function( data ){				
+					
+				//@@check if we are done
+				if( data.upload['apiUploadResult'] ){
+					//update status to 100%
+					_this.updateProgress( 1 );
+					if(typeof JSON == 'undefined'){
+						//we need to load the jQuery json parser: (older browsers don't have JSON.parse 
+						mvJsLoader.doLoad({
+							'$.secureEvalJSON':'jquery/plugins/jquery.json-1.3.js'
+						},function(){
+							var  apiResult = $j.secureEvalJSON( data.upload['apiUploadResult'] );
+							_this.processApiResult( apiResult );
+						});
+					}else{
+						var apiResult = JSON.parse ( data.upload['apiUploadResult'] ) ;
+						_this.processApiResult( apiResult );						
+					}				
+				}
+				
+				//@@ else update status:
+				if( data.upload['content_length'] &&  data.upload['loaded'] ){
+					//we have content length we can show percentage done: 
+					var perc =  data.upload['loaded'] / data.upload['content_length'];
+					//update the status:
+					_this.updateProgress( perc );
+					//special case update the file progress where we have data size: 
+					$j('#upload-stats-fileprogres').html( 
+						gM('upload-stats-fileprogres', [ 
+							formatSize( data.upload['loaded'] ), 
+							formatSize( data.upload['content_length'] )
+							]  
+						)
+					);
+				}				
+				//(we got a result) set it to 100ms + your server update interval (in our case 2s)
+				setTimeout(uploadStatus, 2100); 		
+			});			
+		}
+		uploadStatus();
+	},
+	processApiResult: function( apiResult ){
+		if(apiResult['descriptionurl'])
+			_this.updateUploadDone( apiResult['descriptionurl'] );
+	},
+	updateUploadDone:function(url){
+		$j( '#dlbox-centered' ).html( '<h3>' + gM('mv_upload_completed') + '</h3>' +
+			gM( 'mv_upload_done', url) );	
 	},
 	getProgressTitle:function(){
 		return gM('upload-in-progress');
 	},	
 	getEditForm:function(){
 		this.editForm = $j( '#mw-upload-form' ).get(0);
+	},
+	updateProgress:function( perc ){		
+		$j( '#up-progressbar' ).css( 'width', parseInt( perc * 100 ) + '%' );		
+		$j( '#up-pstatus' ).html( parseInt( perc * 100 ) + '% - ' );
 	},
 	dispProgressOverlay:function(){
 		var _this = this;
@@ -314,12 +385,12 @@ mvBaseUploadInterface.prototype = {
 					'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
 					'height:300px;padding: 10px;z-index:100;top:100px;bottom:40%;left:20%;" >'+		
 						'<h5>' + _this.getProgressTitle() + '</h5>' +
-						'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
-							'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
+						'<div id="up-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
+							'<div id="up-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
 						'</div>' +
-						'<span id="fogg-pstatus">0% </span>' +
-						'<span style="display:none" id="fogg-status-transcode">' + gM('upload-transcoded-status') + '</span>'+  
-						'<span id="fogg-status-upload">' + gM('uploaded-status') + '</span>' +
+						'<span id="up-pstatus">0% - </span> ' +						 
+						'<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +				
+						'<span id="upload-stats-fileprogres"></span>'+		
 				'</div>' +					
 				'<div id="dlbox-overlay" class="dlbox-overlay" style="background:#000;cursor:wait;height:100%;'+
 							'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
