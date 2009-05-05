@@ -39,23 +39,24 @@ class ApiUpload extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgUser;			
-			
+		global $wgUser;								
+		
 		$this->getMain()->requestWriteMode();
 		$this->mParams = $this->extractRequestParams();
-		$request = $this->getMain()->getRequest();			
+		$request = $this->getMain()->getRequest();							
 		
 		// Add the uploaded file to the params array
 		$this->mParams['file'] = $request->getFileName( 'file' );				
-	
+			
 		// Check whether upload is enabled
 		if( !UploadBase::isEnabled() )
 			$this->dieUsageMsg( array( 'uploaddisabled' ) );
-		
+			
+		wfDebug("running require param\n");
 		// One and only one of the following parameters is needed
 		$this->requireOnlyOneParameter( $this->mParams,
-			'sessionkey', 'file', 'url', 'enablechunks' );
-					
+			'sessionkey', 'file', 'url', 'enablechunks' );				
+		
 		if( $this->mParams['enablechunks'] ){
 			//chunks upload enabled
 			$this->mUpload = new UploadFromChunks();
@@ -63,15 +64,18 @@ class ApiUpload extends ApiBase {
 			//if getAPIresult did not exit report the status error: 
 			if( isset( $this->mUpload->status[ 'error' ] ) )		
 				$this->dieUsageMsg( $this->mUpload->status[ 'error' ] );
-		}else if( $this->mParams['internalSession'] ){
+		}else if( $this->mParams['internalhttpsession'] ){
+			wfDebug("internalhttpsession:\n");
+			$sd = & $_SESSION['wsDownload'][ $this->mParams['internalhttpsession'] ];
 			
-			wfDebug("execFromSession: $tempPath");
 			//get the params from the init session: 			
-			
-			$fileSize = filesize($tempPath);
-			
 			$this->mUpload = new UploadFromUpload();
-			$this->mUpload->initialize( $this->mParams['filename'], $tempPath, $fileSize);
+			
+			$this->mUpload->initialize( $this->mParams['filename'], 
+				$sd['target_file_path'], 
+				filesize( $sd['target_file_path'] )
+			);
+			
 			if( !isset( $this->mUpload ) )		
 				$this->dieUsage( 'No upload module set', 'nomodule' );
 			
@@ -159,27 +163,29 @@ class ApiUpload extends ApiBase {
 			if( !$wgUser->isLoggedIn() )
 				$this->dieUsageMsg( array( 'mustbeloggedin', 'upload' ) );
 			else
-				$this->dieUsageMsg( array( 'badaccess-groups' ) );
+				$this->dieUsageMsg( array( 'badaccess-groups' ) );		
 		}				
+		wfDebug("\n\n do perform UPLOAD\n");
 		// Perform the upload
 		$result = $this->performUpload();
-		
+		wfDebug("\n\ndid performUpload result: $result \n\n");
 		// Cleanup any temporary mess
 		$this->mUpload->cleanupTempFile();
-		
+		wfDebug("\n\n do output REsult:\n");
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 	private function performUpload() {
 		global $wgUser;		
 		$result = array();
 		$resultDetails = null;
-		
+		wfDebug("\n\n call verifyPermissions\n\n");
 		$permErrors = $this->mUpload->verifyPermissions( $wgUser );
 		if( $permErrors !== true ) {
 			$result['result'] = 'Failure';
 			$result['error'] = 'permission-denied';
 			return $result;
-		}					
+		}
+		wfDebug("\n\n call verifyUpload\n\n");					
 		$verification = $this->mUpload->verifyUpload( $resultDetails );	
 		if( $verification != UploadBase::OK ) {
 			$result['result'] = 'Failure';
@@ -240,11 +246,13 @@ class ApiUpload extends ApiBase {
 					$result['sessionkey'] = $sessionKey;
 				return $result;
 			}
-		}									
+		}								
+		wfDebug("\n\n call performUpload\n\n");					
 		//do the upload			
 		$status = $this->mUpload->performUpload( $this->mParams['comment'],
 			$this->mParams['comment'], $this->mParams['watch'], $wgUser );
 		
+		wfDebug("\n\n check if status is good:".$status->isGood() . ' e: ' . print_r($status->getErrorsArray(), true). "\n\n");	
 		if( !$status->isGood() ) {
 			$result['result'] = 'Failure';
 			$result['error'] = 'internal-error';
@@ -252,16 +260,23 @@ class ApiUpload extends ApiBase {
 			$this->getResult()->setIndexedTagName( $result['details'], 'error' );
 			return $result;
 		}
-		
+		wfDebug("\n\nstatus is good, get local file: \n");
 		$file = $this->mUpload->getLocalFile();
 		$result['result'] = 'Success';
 		$result['filename'] = $file->getName();
 		
+		
 		// Append imageinfo to the result
+		
+		//might be a cleaner way to call this: 
+		$imParam = ApiQueryImageInfo::getAllowedParams();
+		$imProp = $imParam['prop'][ApiBase :: PARAM_TYPE];		
 		$result['imageinfo'] = ApiQueryImageInfo::getInfo( $file,
-			array_flip( ApiQueryImageInfo::allProps() ),
+			array_flip( $imProp ),
 			$this->getResult() );
 		
+		wfDebug("\n\n return result: " . print_r($result, true));
+			
 		return $result; 
 	}
 
@@ -284,7 +299,8 @@ class ApiUpload extends ApiBase {
 			'done'	=> false,
 			'sessionkey' => null,
 			'httpstatus' => null,
-			'chunksessionkey'=> null
+			'chunksessionkey'=> null,
+			'internalhttpsession'=> null,
 		);
 	}
 
@@ -301,7 +317,8 @@ class ApiUpload extends ApiBase {
 			'done'	=> 'When used with "chunks", Is sent to notify the api The last chunk is being uploaded.',
 			'sessionkey' => 'Session key in case there were any warnings.', 
 			'httpstatus' => 'When set to true, will return the status of a given sessionKey (used for progress meters)',
-			'chunksessionkey'=> 'Used to sync uploading of chunks',
+			'chunksessionkey' => 'Used to sync uploading of chunks',
+			'internalhttpsession' => 'Used internally for http session downloads',
 		);
 	}
 

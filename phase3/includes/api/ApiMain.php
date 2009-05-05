@@ -238,7 +238,7 @@ class ApiMain extends ApiBase {
 	/**
 	 * Execute api request. Any errors will be handled if the API was called by the remote client.
 	 */
-	public function execute() {
+	public function execute() {		
 		$this->profileIn();
 		if ($this->mInternalMode)
 			$this->executeAction();
@@ -286,7 +286,7 @@ class ApiMain extends ApiBase {
 			// Reset and print just the error message
 			ob_clean();
 
-			// If the error occured during printing, do a printer->profileOut()
+			// If the error occurred during printing, do a printer->profileOut()
 			$this->mPrinter->safeProfileOut();
 			$this->printResult(true);
 		}
@@ -442,7 +442,7 @@ class ApiMain extends ApiBase {
 	/**
 	 * Print results using the current printer
 	 */
-	protected function printResult($isError) {
+	private function printResult($isError) {
 		$this->getResult()->cleanUpUTF8();
 		$printer = $this->mPrinter;
 		$printer->profileIn();

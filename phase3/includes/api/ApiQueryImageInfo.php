@@ -107,7 +107,8 @@ class ApiQueryImageInfo extends ApiQueryBase {
 	 * @param File f The image
 	 * @return array Result array
 	 */
-	static function getInfo($file, $prop, $result, $scale = null) {
+	static function getInfo($file, $prop, $result, $scale = null) {		
+		wfDebug("\n\ngetInfo\n\n");
 		$vals = array();
 		if( isset( $prop['timestamp'] ) )
 			$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $file->getTimestamp());
@@ -151,7 +152,9 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			
 		if( isset( $prop['bitdepth'] ) )
 			$vals['bitdepth'] = $file->getBitDepth();
-
+		
+		wfDebug("\n\done with image getINfo" . print_r($vals) . "\n\n");
+		
 		return $vals;
 	}
 

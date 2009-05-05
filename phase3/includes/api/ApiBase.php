@@ -148,6 +148,7 @@ abstract class ApiBase {
 	 * @return ApiResult
 	 */
 	public function getResult() {
+		wfDebug("\n\napiBase:getResult()\n\n");
 		// Main module has getResult() method overriden
 		// Safety - avoid infinite loop:
 		if ($this->isMain())
@@ -442,8 +443,10 @@ abstract class ApiBase {
 				create_function('$x', 'return !is_null($x);')
 			)), $required);
 		if (count($intersection) > 1) {
+			wfDebug('The parameters '.implode(', ', $intersection).' can not be used together', 'invalidparammix' . "\n");
 			$this->dieUsage('The parameters '.implode(', ', $intersection).' can not be used together', 'invalidparammix');
 		} elseif (count($intersection) == 0) {
+			wfDebug('One of the parameters '.implode(', ', $required).' is required', 'missingparam'. "\n");
 			$this->dieUsage('One of the parameters '.implode(', ', $required).' is required', 'missingparam');
 		}
 	}

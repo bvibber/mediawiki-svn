@@ -10,6 +10,9 @@
 global $optionsWithArgs;
 $optionsWithArgs = Array('sid', 'usk');
 
+//act like a "normal user"
+$wgUseNormalUser = true;
+
 require_once( 'commandLine.inc' );
 
 if(!isset($options['sid']) || !isset($options['usk'])){

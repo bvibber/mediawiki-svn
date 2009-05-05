@@ -446,7 +446,7 @@ function toggle_element_activation(ida,idb) {
 		if(e) e.style.display = "none";		
 		
 		var e = document.getElementById('mw-upload-maxfilesize-url');
-		if(e) e..style.display = "block";		
+		if(e) e.style.display = "block";		
 	}
 	if(idb == 'wpUploadFile'){
 		var e = document.getElementById('mw-upload-maxfilesize-url');
@@ -455,8 +455,8 @@ function toggle_element_activation(ida,idb) {
 		var e = document.getElementById('mw-upload-maxfilesize');
 		if(e) e.style.display =  "block";
 	}
-	document.getElementById(ida).disabled=true;
-	document.getElementById(idb).disabled=false;
+	document.getElementById(ida).disabled = true;
+	document.getElementById(idb).disabled = false;
 }
 
 function toggle_element_check(ida,idb) {

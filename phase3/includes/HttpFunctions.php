@@ -74,9 +74,8 @@ class Http {
 		
 		
 		//run the background download request: 	
-		$cmd = $wgPhpCliPath . ' ' . $IP . "/maintenance/http_session_download.php --sid {$session_id} --usk {$upload_session_key}";		
-		$pid = wfShellBackgroundExec($cmd , $retval);				
-		wfDebug('GOT PID: '. $pid . " running cmd: $cmd\n" );
+		$cmd = $wgPhpCliPath . ' ' . $IP . "/maintenance/http_session_download.php --sid {$session_id} --usk {$upload_session_key}";			
+		$pid = wfShellBackgroundExec($cmd , $retval);					
 		//the pid is not of much use since we won't be visiting this same apache any-time soon.				
 		if(!$pid)
 			return Status::newFatal('could not run background shell exec');
@@ -128,8 +127,10 @@ class Http {
 		//run the actual request .. (this can take some time) 
 		wfDebug("do Request: " . $sd['url'] . ' tf: ' . $sd['target_file_path'] );
 		$status = $req->doRequest();		
-		wfDebug("done with req status is: ". $status->isOK(). ' '.$status->value. "\n");
-		if( $status->isOK() ){		
+		wfDebug("done with req status is: ". $status->isOK(). ' '.$status->value. "\n");				
+		
+		if( $status->isOK() ){
+					
 			//start up the session again:			
 			if( session_start() === false){
 				wfDebug( __METHOD__ . ' ERROR:: Could not start session');	
@@ -141,20 +142,24 @@ class Http {
 			$fauxReqData = $sd['mParams'];															
 			$fauxReqData['action'] = 'upload';		
 			$fauxReqData['format'] = 'json';
-			$fauxReqData['internalSession'] = true;
-			$fauxReqData['sessionkey'] = $upload_session_key;
+			$fauxReqData['internalhttpsession'] = $upload_session_key;			
 			//evil but no other clean way about it: 
-			
-						
+				
 			$faxReq = new FauxRequest($fauxReqData, true);				
 			$processor = new ApiMain($faxReq, $wgEnableWriteAPI);
+								
 			//init the mUpload var for the $processor					
+			$processor->execute();					
+			$processor->getResult()->cleanUpUTF8();				
+			$printer = $processor->createPrinterByName('json');
+			$printer->initPrinter(false);	
 			ob_start();
-			$processor->execute();		
-			$apiUploadResult = ob_get_contents();			
-			ob_get_clean();
+			$printer->execute();
+			$apiUploadResult = ob_get_clean();
 			
-			wfDebug(":: $apiUploadResult \n" );
+			wfDebug("\n\n got:" . $apiUploadResult." \n");
+						
+			wfDebug("\n\n got api result:: $apiUploadResult \n" );
 			//the status updates runner will grab the result form the session: 
 			$sd['apiUploadResult'] = $apiUploadResult;			
 			session_write_close();				
@@ -382,8 +387,6 @@ class simpleFileWriter{
 				Language::formatSize($wgMaxUploadSize) . ' ');			
 			return 0;
 		}		
-		//wfDebug('simulating slow download....'."\n");
-		sleep(1);
 		
 		//if more than session_update_interval second have passed update_session_progress
 		if($this->upload_session_key && ( (time() - $this->prevTime) > $this->session_update_interval )) {
