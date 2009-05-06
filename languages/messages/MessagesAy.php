@@ -1,6 +1,9 @@
 <?php
 /** Aymara (Aymar aru)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -115,16 +118,18 @@ $messages = array(
 
 'article'       => 'Amtachinu',
 'cancel'        => 'Jan saña',
+'moredotdotdot' => 'Yapa...',
+'mypage'        => 'Uñstawija',
+'navigation'    => 'Wampuña',
+'and'           => '&#32;-mpi',
+
+# Cologne Blue skin
 'qbfind'        => 'Thaqaña',
 'qbbrowse'      => 'Wampuña',
 'qbedit'        => 'Turkaña',
 'qbpageoptions' => 'Uñstawitaki ajllita',
 'qbpageinfo'    => "Uñstawxat uñt'ayawi",
 'qbmyoptions'   => 'Ajllitanakaja',
-'moredotdotdot' => 'Yapa...',
-'mypage'        => 'Uñstawija',
-'navigation'    => 'Wampuña',
-'and'           => '&#32;-mpi',
 
 'errorpagetitle'    => 'Pantja',
 'help'              => 'Yanapaña',
@@ -185,13 +190,10 @@ $messages = array(
 'error' => 'Pantja',
 
 # Login and logout pages
-'loginpagetitle'     => "Qillqt'ayasiña",
 'login'              => "Qillqt'ayasiña",
 'userlogin'          => "Qillqt'ayasiña",
 'logout'             => 'Mistuña',
 'userlogout'         => 'Mistuña',
-'yourlanguage'       => 'Aru:',
-'email'              => 'Chaski jalayiri',
 'loginlanguagelabel' => 'Aru: $1',
 
 # Edit pages
@@ -202,6 +204,8 @@ $messages = array(
 # Preferences page
 'prefs-rc'       => 'Jichha kutikiptatanaka',
 'timezoneoffset' => 'Jalaqtata',
+'yourlanguage'   => 'Aru:',
+'email'          => 'Chaski jalayiri',
 
 # Recent changes
 'recentchanges' => 'Jichha kutikiptatanaka',

@@ -6,10 +6,8 @@
  */
 class ExternalStoreHttp {
 	/* Fetch data from given URL */
-	function fetchFromURL($url) {
-		ini_set( "allow_url_fopen", true );
-		$ret = file_get_contents( $url );
-		ini_set( "allow_url_fopen", false );
+	function fetchFromURL( $url ) {
+		$ret = Http::get( $url );
 		return $ret;
 	}
 

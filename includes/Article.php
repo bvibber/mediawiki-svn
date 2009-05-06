@@ -883,9 +883,9 @@ class Article {
 		}
 		# Fetch content and check for errors
 		if( !$outputDone ) {
-			# If the article does not exist and was deleted, show the log
+			# If the article does not exist and was deleted/moved, show the log
 			if( $this->getID() == 0 ) {
-				$this->showDeletionLog();
+				$this->showLogs();
 			}
 			$text = $this->getContent();
 			// For now, check also for ID until getContent actually returns
@@ -1062,14 +1062,14 @@ class Article {
 		wfProfileOut( __METHOD__ );
 	}
 	
-	protected function showDeletionLog() {
+	protected function showLogs() {
 		global $wgUser, $wgOut;
 		$loglist = new LogEventsList( $wgUser->getSkin(), $wgOut );
-		$pager = new LogPager( $loglist, 'delete', false, $this->mTitle->getPrefixedText() );
+		$pager = new LogPager( $loglist, array('move', 'delete'), false, $this->mTitle->getPrefixedText() );
 		if( $pager->getNumRows() > 0 ) {
 			$pager->mLimit = 10;
 			$wgOut->addHTML( '<div class="mw-warning-with-logexcerpt">' );
-			$wgOut->addWikiMsg( 'deleted-notice' );
+			$wgOut->addWikiMsg( 'moveddeleted-notice' );
 			$wgOut->addHTML(
 				$loglist->beginLogEventsList() .
 				$pager->getBody() .
@@ -1078,9 +1078,9 @@ class Article {
 			if( $pager->getNumRows() > 10 ) {
 				$wgOut->addHTML( $wgUser->getSkin()->link(
 					SpecialPage::getTitleFor( 'Log' ),
-					wfMsgHtml( 'deletelog-fulllog' ),
+					wfMsgHtml( 'log-fulllog' ),
 					array(),
-					array( 'type' => 'delete', 'page' => $this->mTitle->getPrefixedText() ) 
+					array( 'page' => $this->mTitle->getPrefixedText() ) 
 				) );
 			}
 			$wgOut->addHTML( '</div>' );
@@ -1680,7 +1680,6 @@ class Article {
 					$dbw->rollback();
 				} else {
 					global $wgUseRCPatrol;
-					wfRunHooks( 'NewRevisionFromEditComplete', array($this, $revision, $baseRevId, $user) );
 					# Update recentchanges
 					if( !( $flags & EDIT_SUPPRESS_RC ) ) {
 						# Mark as patrolled if the user can do so
@@ -1695,6 +1694,8 @@ class Article {
 							PatrolLog::record( $rc, true );
 						}
 					}
+					# Notify extensions of a new edit
+					wfRunHooks( 'NewRevisionFromEditComplete', array(&$this, $revision, $baseRevId, $user) );
 					$user->incEditCount();
 					$dbw->commit();
 				}
@@ -1761,7 +1762,6 @@ class Article {
 			# Update the page record with revision data
 			$this->updateRevisionOn( $dbw, $revision, 0 );
 
-			wfRunHooks( 'NewRevisionFromEditComplete', array($this, $revision, false, $user) );
 			# Update recentchanges
 			if( !( $flags & EDIT_SUPPRESS_RC ) ) {
 				global $wgUseRCPatrol, $wgUseNPPatrol;
@@ -1775,6 +1775,8 @@ class Article {
 					PatrolLog::record( $rc, true );
 				}
 			}
+			# Notify extensions of a new page edit
+			wfRunHooks( 'NewRevisionFromEditComplete', array(&$this, $revision, false, $user) );
 			$user->incEditCount();
 			$dbw->commit();
 
@@ -1960,6 +1962,16 @@ class Article {
 	 * action=protect handler
 	 */
 	public function protect() {
+		global $wgUser, $wgOut;
+		
+		# Check permissions
+		$permission_errors = $this->mTitle->getUserPermissionsErrors( 'protect', $wgUser );
+
+		if( count( $permission_errors ) > 0 ) {
+			$wgOut->showPermissionsErrorPage( $permission_errors );
+			return;
+		}
+	
 		$form = new ProtectionForm( $this );
 		$form->execute();
 	}
@@ -3567,7 +3579,7 @@ class Article {
 	 * @param $cache Boolean
 	 */
 	public function outputWikiText( $text, $cache = true ) {
-		global $wgParser, $wgUser, $wgOut, $wgEnableParserCache, $wgUseFileCache;
+		global $wgParser, $wgOut, $wgEnableParserCache, $wgUseFileCache;
 
 		$popts = $wgOut->parserOptions();
 		$popts->setTidy(true);

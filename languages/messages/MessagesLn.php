@@ -1,6 +1,9 @@
 <?php
 /** Lingala (Lingála)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -71,14 +74,16 @@ $messages = array(
 'subcategories'   => 'Ndéngé-bǎna',
 'category-empty'  => "''Loléngé loye ezalí na ekakola tɛ̂, loléngé-mwǎna tɛ̂ tǒ nkásá mitímediá tɛ̂.''",
 
-'about'          => 'elɔ́kɔ elobámí',
-'article'        => 'ekakoli',
-'cancel'         => 'Kozóngela',
+'about'      => 'elɔ́kɔ elobámí',
+'article'    => 'ekakoli',
+'cancel'     => 'Kozóngela',
+'mytalk'     => 'Ntembe na ngáí',
+'navigation' => 'Botamboli',
+'and'        => '&#32;mpé',
+
+# Cologne Blue skin
 'qbedit'         => 'kobalusa',
 'qbspecialpages' => 'Nkásá ya ndéngé isúsu',
-'mytalk'         => 'Ntembe na ngáí',
-'navigation'     => 'Botamboli',
-'and'            => '&#32;mpé',
 
 'errorpagetitle'   => 'Mbéba',
 'tagline'          => 'Artíclɛ ya {{SITENAME}}.',
@@ -157,11 +162,6 @@ $messages = array(
 'nologinlink'             => 'Míkomísá yɔ̌-mɛ́i',
 'gotaccount'              => 'Omíkomísí naíno ? $1.',
 'createaccountmail'       => 'na mokánda',
-'youremail'               => 'Mokandá (e-mail) *',
-'username'                => 'Nkómbó ya ekitoli :',
-'yourrealname'            => 'nkómbó ya sɔ̂lɔ́',
-'yourlanguage'            => 'Lokótá',
-'email'                   => 'Mokánda',
 
 # Edit page toolbar
 'bold_sample'     => 'Nkomá ya mbinga',
@@ -217,11 +217,16 @@ $messages = array(
 'preferences'       => 'Malúli',
 'mypreferences'     => 'Malúli ma ngáí',
 'dateformat'        => 'bokomi ya mokɔlɔ',
-'datetime'          => 'Mokɔlɔ mpé ntángo',
+'prefs-datetime'    => 'Mokɔlɔ mpé ntángo',
 'prefs-rc'          => 'Mbóngwana ya nsúka',
 'saveprefs'         => 'kobómbisa',
 'searchresultshead' => 'Boluki',
 'allowemail'        => 'Enable mokánda from other users',
+'youremail'         => 'Mokandá (e-mail) *',
+'username'          => 'Nkómbó ya ekitoli :',
+'yourrealname'      => 'nkómbó ya sɔ̂lɔ́',
+'yourlanguage'      => 'Lokótá',
+'email'             => 'Mokánda',
 
 # Groups
 'group-sysop' => 'Bayángeli',

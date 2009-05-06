@@ -1,12 +1,16 @@
 <?php
 /** Kashubian (Kaszëbsczi)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
  * @author Kaszeba
  * @author Leinad
  * @author MinuteElectron
+ * @author RobertL
  * @author Warszk
  * @author לערי ריינהארט
  */
@@ -140,10 +144,18 @@ $messages = array(
 
 'mainpagetext' => "<big>'''MediaWiki òsta zainstalowónô.'''</big>",
 
-'about'          => 'Ò serwise',
-'article'        => 'Artikel',
-'newwindow'      => '(òtmëkô sã w nowim òczenkù)',
-'cancel'         => 'Anulujë',
+'about'         => 'Ò serwise',
+'article'       => 'Artikel',
+'newwindow'     => '(òtmëkô sã w nowim òczenkù)',
+'cancel'        => 'Anulujë',
+'moredotdotdot' => 'Wicy...',
+'mypage'        => 'Mòja starna',
+'mytalk'        => 'Diskùsëjô',
+'anontalk'      => 'Diskùsëjô dlô ti IP-adresë',
+'navigation'    => 'Nawigacëjô',
+'and'           => '&#32;ë',
+
+# Cologne Blue skin
 'qbfind'         => 'Nalézë',
 'qbbrowse'       => 'Przezeranié',
 'qbedit'         => 'Edicëjô',
@@ -151,12 +163,6 @@ $messages = array(
 'qbpageinfo'     => 'Ò starnie',
 'qbmyoptions'    => 'Mòje òptacëje',
 'qbspecialpages' => 'Specjalné starnë',
-'moredotdotdot'  => 'Wicy...',
-'mypage'         => 'Mòja starna',
-'mytalk'         => 'Diskùsëjô',
-'anontalk'       => 'Diskùsëjô dlô ti IP-adresë',
-'navigation'     => 'Nawigacëjô',
-'and'            => '&#32;ë',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -208,7 +214,7 @@ $messages = array(
 'otherlanguages'    => 'W jinëch jãzëkach',
 'redirectedfrom'    => '(Przeczerowóné z $1)',
 'redirectpagesub'   => 'Przeczerëjë starnã',
-'lastmodifiedat'    => 'Na starna bëła slédno editowónô ò $2, $1;', # $1 date, $2 time
+'lastmodifiedat'    => 'Na starna bëła slédno editowónô ò $2, $1;',
 'viewcount'         => 'Na starna je òbzéranô ju {{PLURAL:$1|jeden rôz|$1 razy}}',
 'protectedpage'     => 'Starna je zazychrowónô',
 'jumpto'            => 'Skòczë do:',
@@ -302,7 +308,6 @@ Przemëszlë dolmaczënié na [http://translatewiki.net/wiki/Main_Page?setlang=c
 
 # Login and logout pages
 'logouttext'                 => 'Të jes ju wëlogòwóny. Mòżesz prôcowac z {{SITENAME}} jakno anonimòwi brëkòwnik abò wlogòwac sã jakno zaregistrowóny brëkòwnik.',
-'loginpagetitle'             => 'Logòwanié brëkòwnika',
 'yourname'                   => 'Miono brëkòwnika',
 'yourpassword'               => 'Twòja parola',
 'yourpasswordagain'          => 'Pòwtórzë parolã',
@@ -322,23 +327,7 @@ Przemëszlë dolmaczënié na [http://translatewiki.net/wiki/Main_Page?setlang=c
 'createaccountmail'          => 'òb e-mail',
 'badretype'                  => 'Wprowadzone parole jinaczą sã midze sobą.',
 'userexists'                 => 'To miono brëkòwnika je ju w ùżëcym. Proszã wëbrac jiné miono.',
-'youremail'                  => 'E-mail:',
-'username'                   => 'Miono brëkòwnika:',
-'uid'                        => 'ID brëkòwnika:',
-'yourrealname'               => 'Twòje jistné miono*',
-'yourlanguage'               => 'Twój jãzëk:',
-'yourvariant'                => 'Wariant:',
-'yournick'                   => 'Pòdpisënk:',
-'badsig'                     => 'Òchëbny pòdpisënk, sprôwdzë tadżi HTML.',
-'badsiglength'               => 'Pòdpisënk je za dłudżi. 
-Mô bëc mni jakno $1 {{PLURAL:$1|znak|znaczi/znaków}}.',
-'gender-male'                => 'Chłop',
-'gender-female'              => 'Białka',
-'email'                      => 'E-mail',
-'prefs-help-realname'        => 'Prôwdzewi miono je òptacjowé a czej je dôsz, òstanié ùżëté do pòdpisaniô Twòjégò wkłôdu',
 'loginerror'                 => 'Fela logòwaniô',
-'prefs-help-email'           => 'Adresa e-mail je òptacëjnô, zezwôlô równak sélac do ce nową parolã jak tã zabëjesz.
-Mòżesz zezwòlëc jinszim brëkòwniką na łączbã z Tobą przez Twòją starnã abò starnã diskùsëji, bez mùszebnotë wëskrzënianiô swòjich pòdôwków.',
 'loginsuccesstitle'          => 'ùdałé logòwanié',
 'loginsuccess'               => 'Të jes wlogòwóny do {{SITENAME}} jakno "$1".',
 'nosuchuser'                 => 'Nie dô brëkòwnika ò mionie "$1". 
@@ -477,7 +466,7 @@ Administrator, chtëren jã zablokòwôł, pòdôł przëczënã: $1",
 'histlast'               => 'Nowszé',
 
 # Revision feed
-'history-feed-item-nocomment' => '$1 ò $2', # user at time
+'history-feed-item-nocomment' => '$1 ò $2',
 
 # Revision deletion
 'rev-delundel'   => 'pòkażë/zatacë',
@@ -515,20 +504,21 @@ Administrator, chtëren jã zablokòwôł, pòdôł przëczënã: $1",
 'powersearch-redir'         => 'Lësta przeczerowaniów',
 'powersearch-field'         => 'Szëkba za',
 
+# Quickbar
+'qbsettings' => 'Sztrépk chùtczégò przistãpù',
+
 # Preferences page
 'preferences'           => 'Preferencëje',
 'mypreferences'         => 'Mòje nastôwë',
 'prefs-edits'           => 'Lëczba edicëjów:',
 'prefsnologin'          => 'Felënk logòwóniô',
-'qbsettings'            => 'Sztrépk chùtczégò przistãpù',
 'changepassword'        => 'Zmiana parolë',
-'skin'                  => 'Wëzdrzatk',
+'prefs-skin'            => 'Wëzdrzatk',
 'skin-preview'          => 'Pòdzérk',
-'math'                  => 'Matematika',
+'prefs-math'            => 'Matematika',
 'dateformat'            => 'Fòrmat datumù',
 'datedefault'           => 'Felëje preferencëji',
-'datetime'              => 'Datum ë czas',
-'math_failure'          => 'Parser nie rozmiôł rozpòznac',
+'prefs-datetime'        => 'Datum ë czas',
 'prefs-personal'        => 'Pòdôwczi brëkòwnika',
 'prefs-rc'              => 'Slédné edicëje',
 'prefs-watchlist'       => 'Lësta ùzérónëch artiklów',
@@ -537,7 +527,7 @@ Administrator, chtëren jã zablokòwôł, pòdôł przëczënã: $1",
 'prefs-misc'            => 'Jine',
 'saveprefs'             => 'Zapiszë',
 'resetprefs'            => 'Wëczëszczë niezapisóné zmianë',
-'textboxsize'           => 'Edicëjô',
+'prefs-editing'         => 'Edicëjô',
 'rows'                  => 'Régów:',
 'columns'               => 'Kòlumnów:',
 'searchresultshead'     => 'Szëkba',
@@ -549,14 +539,29 @@ Administrator, chtëren jã zablokòwôł, pòdôł przëczënã: $1",
 'recentchangescount'    => 'Wielëna pòzycëji na lësce slédnëch edicëji',
 'savedprefs'            => 'Twòjé nastôwë òstałë zapisóné.',
 'timezonelegend'        => 'Czasowô cona',
-'timezonetext'          => '¹Lëczba gòdzënów różnicë midze twòjim môlowim czasã a czasã na serwerze (UTC).',
 'localtime'             => 'Môlowi czas:',
 'timezoneoffset'        => 'Różnica¹:',
 'servertime'            => 'Czas serwera:',
 'guesstimezone'         => 'Wezmi z przezérnika',
 'allowemail'            => 'Włączë mòżlewòtã sélaniô e-mailów òd jinëch brëkòwników',
 'defaultns'             => 'Domëslno przeszëkùjë nôslédné rëmnotë mionów:',
-'files'                 => 'Lopczi',
+'prefs-files'           => 'Lopczi',
+'youremail'             => 'E-mail:',
+'username'              => 'Miono brëkòwnika:',
+'uid'                   => 'ID brëkòwnika:',
+'yourrealname'          => 'Twòje jistné miono*',
+'yourlanguage'          => 'Twój jãzëk:',
+'yourvariant'           => 'Wariant:',
+'yournick'              => 'Pòdpisënk:',
+'badsig'                => 'Òchëbny pòdpisënk, sprôwdzë tadżi HTML.',
+'badsiglength'          => 'Pòdpisënk je za dłudżi. 
+Mô bëc mni jakno $1 {{PLURAL:$1|znak|znaczi/znaków}}.',
+'gender-male'           => 'Chłop',
+'gender-female'         => 'Białka',
+'email'                 => 'E-mail',
+'prefs-help-realname'   => 'Prôwdzewi miono je òptacjowé a czej je dôsz, òstanié ùżëté do pòdpisaniô Twòjégò wkłôdu',
+'prefs-help-email'      => 'Adresa e-mail je òptacëjnô, zezwôlô równak sélac do ce nową parolã jak tã zabëjesz.
+Mòżesz zezwòlëc jinszim brëkòwniką na łączbã z Tobą przez Twòją starnã abò starnã diskùsëji, bez mùszebnotë wëskrzënianiô swòjich pòdôwków.',
 
 # User rights
 'editinguser' => "Zmiana praw brëkòwnika '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
@@ -867,7 +872,7 @@ Biéj do [[Special:IPBlockList|lëstë zascëgónëch adresów IP]] abë òbacz�
 'move-watch'              => 'Ùzérôj tã starnã',
 'movepagebtn'             => 'Przeniesë starnã',
 'pagemovedsub'            => 'Przeniesenié darzëło sã',
-'movepage-moved'          => '<big>\'\'\'"$1" òsta przeniosłô do "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'          => '<big>\'\'\'"$1" òsta przeniosłô do "$2"\'\'\'</big>',
 'articleexists'           => 'Starna ò taczim mionie ju je abò nie je òno bezzmiłkòwé. Wëbierzë nowé miono.',
 'movedto'                 => 'przeniesłô do',
 'movetalk'                => 'Przeniesë téż starnã <i>Diskùsëje</i>, jeżle je to mòżlëwé.',
@@ -950,7 +955,7 @@ Mòżesz òbaczëc ji zdrój.',
 # Attribution
 'anonymous'        => 'Anonimòwi {{PLURAL:$1|brëkòwnik|brëkòwnicë}} na {{SITENAME}}',
 'siteuser'         => 'Brëkòwnik {{SITENAME}} $1',
-'lastmodifiedatby' => 'Na starna bëła slédno editowónô $2, $1 przez $3.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Na starna bëła slédno editowónô $2, $1 przez $3.',
 'othercontribs'    => 'Òpiarté na prôcë $1.',
 'others'           => 'jiné',
 
@@ -964,6 +969,9 @@ Mòżesz òbaczëc ji zdrój.',
 'mw_math_source' => 'Òstawi jakno TeX (dlô tekstowich przezérników)',
 'mw_math_modern' => 'Zalécóné dlô nowoczasnëch przezérników',
 'mw_math_mathml' => 'Wëskrzëniwôj jakno MathML jeżlë mòżlëwé (eksperimentalné)',
+
+# Math errors
+'math_failure' => 'Parser nie rozmiôł rozpòznac',
 
 # Browsing diffs
 'previousdiff' => '← Pòprzédnô edicëjô',
@@ -1016,7 +1024,7 @@ Nôslédné lënczi w réżce bãdą ùwzglãdniwóné jakno wëjimczi – są t
 'watchlisttools-raw'  => 'Editëjë sërą lëstã',
 
 # Special:Version
-'version' => 'Wersëjô', # Not used as normal message but as header for the special page itself
+'version' => 'Wersëjô',
 
 # Special:SpecialPages
 'specialpages' => 'Specjalné starnë',

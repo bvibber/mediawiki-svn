@@ -33,7 +33,7 @@ if ( !defined( 'MW_PHP4' ) ) {
 }
 
 /** MediaWiki version number */
-$wgVersion			= '1.15alpha';
+$wgVersion			= '1.16alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -1477,7 +1477,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '212';
+$wgStyleVersion = '218';
 
 
 # Server-side caching:
@@ -1976,16 +1976,14 @@ $wgNamespacesToBeSearchedDefault = array(
 );
 
 /**
- * Additional namespaces to those in $wgNamespacesToBeSearchedDefault that
- * will be added to default search for "project" page inclusive searches
+ * Namespaces to be searched when user clicks the "Help" tab 
+ * on Special:Search
  * 
  * Same format as $wgNamespacesToBeSearchedDefault
  */  
-$wgNamespacesToBeSearchedProject = array(
-	NS_USER           => true,
+$wgNamespacesToBeSearchedHelp = array(
 	NS_PROJECT        => true,	
 	NS_HELP           => true,
-	NS_CATEGORY       => true,
 );
 
 $wgUseOldSearchUI = true; // temp testing variable
@@ -2492,6 +2490,8 @@ $wgDefaultUserOptions = array(
 	'watchdeletion'           => 0,
 	'noconvertlink'           => 0,
 	'gender'                  => 'unknown',
+	'ccmeonemails'            => 0,
+	'disablemail'			  => 0,
 );
 
 /** Whether or not to allow and use real name fields. Defaults to true. */
@@ -3558,6 +3558,13 @@ $wgDjvuDump = null;
 $wgDjvuRenderer = null;
 
 /**
+ * Path of the djvutxt DJVU text extraction utility
+ * Enable this and $wgDjvuDump to enable text layer extraction from djvu files
+ */
+# $wgDjvuTxt = 'djvutxt';
+$wgDjvuTxt = null;
+
+/**
  * Path of the djvutoxml executable
  * This works like djvudump except much, much slower as of version 3.5.
  *
@@ -3834,3 +3841,10 @@ $wgInvalidUsernameCharacters = '@';
  * modify the user rights of those users via Special:UserRights
  */
 $wgUserrightsInterwikiDelimiter = '@';
+
+/**
+ * The $wgSectionContainers variable is used by the parser to determine if it should
+ * wrap each section of an article in a div. It is automatically enabled if the EditSectionHiliteLink
+ * extension is installed.
+ */
+$wgSectionContainers = false;

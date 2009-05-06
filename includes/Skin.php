@@ -24,6 +24,8 @@ class Skin extends Linker {
 	/**#@-*/
 	protected $mRevisionId; // The revision ID we're looking at, null if not applicable.
 	protected $skinname = 'standard';
+	// @fixme Should be protected :-\
+	var $mTitle = null;
 
 	/** Constructor, call parent constructor */
 	function Skin() { parent::__construct(); }
@@ -267,7 +269,7 @@ class Skin extends Linker {
 	}
 
 	/**
-	 * Set some local globals
+	 * Set some local variables
 	 */
 	protected function setMembers(){
 		global $wgUser;
@@ -282,6 +284,11 @@ class Skin extends Linker {
 	 */
 	public function setTitle( $t ) {
 		$this->mTitle = $t;
+	}
+	
+	/** Get the title */
+	public function getTitle() {
+		return $this->mTitle;
 	}
 
 	function outputPage( OutputPage $out ) {
@@ -1039,10 +1046,13 @@ END;
 	}
 
 	function getUndeleteLink() {
-		global $wgUser, $wgContLang, $wgLang, $action;
-		if(	$wgUser->isAllowed( 'deletedhistory' ) &&
-			( ( $this->mTitle->getArticleId() == 0 ) || ( $action == 'history' ) ) &&
-			( $n = $this->mTitle->isDeleted() ) ){
+		global $wgUser, $wgContLang, $wgLang, $wgRequest;
+
+		$action = $wgRequest->getVal( 'action', 'view' );
+
+		if ( $wgUser->isAllowed( 'deletedhistory' ) &&
+			( $this->mTitle->getArticleId() == 0 || $action == 'history' ) &&
+			$n = $this->mTitle->isDeleted() ) {
 			if ( $wgUser->isAllowed( 'undelete' ) ) {
 				$msg = 'thisisdeleted';
 			} else {

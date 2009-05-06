@@ -159,12 +159,12 @@ img { border: none; }
     display: block;
     color: #005189;
 }
-#prefcontrol {
+.mw-prefs-buttons {
     clear: left;
     float: left;
     margin-top: 1em;
 }
-div.prefsectiontip {
+div.htmlform-tip {
     font-size: 94%;
     margin-top: 0.4em;
     color: #666;

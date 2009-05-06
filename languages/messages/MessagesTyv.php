@@ -1,6 +1,9 @@
 <?php
 /** Tuvinian (Тыва дыл)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -108,21 +111,23 @@ $messages = array(
 'category-media-header' => '"$1" деп бөлүкте медиа',
 'category-empty'        => "''Амгы бо бөлүкте медиа база арыннар чок.''",
 
-'about'          => 'Дугайында',
-'article'        => 'Допчу арын',
-'newwindow'      => '(чаа козенекке ажыытынар)',
-'cancel'         => 'Соксаар',
+'about'         => 'Дугайында',
+'article'       => 'Допчу арын',
+'newwindow'     => '(чаа козенекке ажыытынар)',
+'cancel'        => 'Соксаар',
+'moredotdotdot' => 'Ам-даа...',
+'mypage'        => 'Мээң арыным',
+'mytalk'        => 'Мээң чугаалажырым',
+'anontalk'      => 'Бо ИП-адрестиң чугаа',
+'navigation'    => 'Навигация',
+
+# Cologne Blue skin
 'qbfind'         => 'Тывар',
 'qbbrowse'       => 'Ажыдар',
 'qbedit'         => 'Өскертир',
 'qbpageoptions'  => 'Бо арын',
 'qbmyoptions'    => 'Мээң арыннарым',
 'qbspecialpages' => 'Тускай арыннар',
-'moredotdotdot'  => 'Ам-даа...',
-'mypage'         => 'Мээң арыным',
-'mytalk'         => 'Мээң чугаалажырым',
-'anontalk'       => 'Бо ИП-адрестиң чугаа',
-'navigation'     => 'Навигация',
 
 'errorpagetitle'    => 'Алдаг',
 'returnto'          => '$1 деп арынже эглир.',
@@ -165,7 +170,7 @@ $messages = array(
 'categorypage'      => 'Бөлүк арынын көөр',
 'viewtalkpage'      => 'Чугаалажырыны көөр',
 'otherlanguages'    => 'Өске дылдарга',
-'lastmodifiedat'    => 'Бо арын сөөлгү каттап $2, $1 өскерилген.', # $1 date, $2 time
+'lastmodifiedat'    => 'Бо арын сөөлгү каттап $2, $1 өскерилген.',
 'jumptonavigation'  => 'навигация',
 'jumptosearch'      => 'дилээр',
 
@@ -219,8 +224,6 @@ $messages = array(
 # General errors
 'error'              => 'Алдаг',
 'databaseerror'      => 'Медээ шыгжамыры алдаг',
-'noconnect'          => 'Буруулуг болдувус! Викиде чамдык техниктиг бергедээшкиннер бар болганындан database серверинче коштунмаан. <br />
-$1',
 'laggedslavemode'    => 'Оваарымчалыг: Бо арында чаартыышкыннар чок болуп болур',
 'readonly'           => 'шоочалаарынга медээ шыгжамыры',
 'internalerror'      => 'Иштики алдаг',
@@ -229,7 +232,6 @@ $1',
 'viewsource'         => 'Бажы көөр',
 
 # Login and logout pages
-'loginpagetitle'     => 'Ажыглакчы кирери',
 'yourname'           => 'Aжыглакчының ады',
 'yourpassword'       => 'Чажыт сөс',
 'remembermypassword' => 'Мени сактып алыр',
@@ -244,12 +246,6 @@ $1',
 'createaccountmail'  => 'е-чагаа-биле',
 'badretype'          => 'Силерниң парлаан чажыт созуңер таарышпас.',
 'userexists'         => 'Силерниң парлаан адыңар амгы уеде ажыглаттынып турар. өске аттан шилип алыңар.',
-'youremail'          => 'Э-чагааңар:',
-'username'           => 'Aжыглакчының ады:',
-'yourrealname'       => 'Шын адыңар *',
-'yourlanguage'       => 'Дылыңар:',
-'yournick'           => 'Шола ат:',
-'email'              => 'Э-чагаа',
 'loginerror'         => 'Багай кирери',
 'loginsuccesstitle'  => 'Чедимчелиг кирери',
 'mailmypassword'     => 'Э-чагаа чажыт сөзүңер',
@@ -345,22 +341,27 @@ $1',
 'powersearch'    => 'Дилээр',
 
 # Preferences page
-'preferences'        => 'Дээре деп санаарылар',
-'changepassword'     => 'Чажыт сөстү өскертир',
-'skin'               => 'Кеш',
-'skin-preview'       => 'Чижеглей көөр',
-'math_unknown_error' => 'билбес алдаг',
-'prefs-personal'     => 'Ажыглакчының медээлери',
-'prefs-rc'           => 'Дээм чаагы өскерлиишкиннер',
-'prefs-watchlist'    => 'Хайгаарылга даңзызы',
-'saveprefs'          => 'Шыгжаар',
-'textboxsize'        => 'Өскертир',
-'rows'               => 'Одуруглар:',
-'columns'            => 'Баганалар:',
-'searchresultshead'  => 'Дилээр',
-'servertime'         => 'Сервер шакы',
-'default'            => 'ниити',
-'files'              => 'файлдар',
+'preferences'       => 'Дээре деп санаарылар',
+'changepassword'    => 'Чажыт сөстү өскертир',
+'prefs-skin'        => 'Кеш',
+'skin-preview'      => 'Чижеглей көөр',
+'prefs-personal'    => 'Ажыглакчының медээлери',
+'prefs-rc'          => 'Дээм чаагы өскерлиишкиннер',
+'prefs-watchlist'   => 'Хайгаарылга даңзызы',
+'saveprefs'         => 'Шыгжаар',
+'prefs-editing'     => 'Өскертир',
+'rows'              => 'Одуруглар:',
+'columns'           => 'Баганалар:',
+'searchresultshead' => 'Дилээр',
+'servertime'        => 'Сервер шакы',
+'default'           => 'ниити',
+'prefs-files'       => 'файлдар',
+'youremail'         => 'Э-чагааңар:',
+'username'          => 'Aжыглакчының ады:',
+'yourrealname'      => 'Шын адыңар *',
+'yourlanguage'      => 'Дылыңар:',
+'yournick'          => 'Шола ат:',
+'email'             => 'Э-чагаа',
 
 # User rights
 'editinguser' => '<b>$1</b> деп ажыглакчыны өскертип турар ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
@@ -654,6 +655,9 @@ $1',
 'skinname-myskin'      => 'MySkin',
 'skinname-chick'       => 'Chick',
 
+# Math errors
+'math_unknown_error' => 'билбес алдаг',
+
 # Image deletion
 'filedelete-missing' => '"$1" деп файл чок, ынчангаш ол ап калдынмас.',
 
@@ -711,7 +715,7 @@ $1',
 'watchlisttools-raw'  => 'Чиг хайгаарылга даңзын өскертир',
 
 # Special:Version
-'version' => 'Үндүрери', # Not used as normal message but as header for the special page itself
+'version' => 'Үндүрери',
 
 # Special:SpecialPages
 'specialpages' => 'Тускай арыннар',

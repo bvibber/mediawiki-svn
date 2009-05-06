@@ -1,6 +1,9 @@
 <?php
 /** Fijian (Na Vosa Vakaviti)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -57,9 +60,11 @@ $messages = array(
 'dec'           => 'Tiseba',
 
 'cancel'     => 'Sasamaki',
-'qbedit'     => 'Veisautaki',
 'mytalk'     => 'Noqu vosa',
 'navigation' => 'Vakatasosoko',
+
+# Cologne Blue skin
+'qbedit' => 'Veisautaki',
 
 'help'             => 'Veivuke',
 'search'           => 'Vaqaqara',
@@ -105,9 +110,6 @@ $messages = array(
 'nologinlink'        => 'Dolava nomu Akaude',
 'createaccount'      => 'Dolava nomu Akaude',
 'gotaccountlink'     => 'Curu mai',
-'youremail'          => 'I vola livaliva *:',
-'username'           => 'Yaca vakayagataki:',
-'email'              => 'I vola livaliva',
 
 # Edit pages
 'summary'      => 'Kena i Soqoni:',
@@ -123,6 +125,9 @@ $messages = array(
 # Preferences page
 'mypreferences'     => 'Ulutaga taleitaki',
 'searchresultshead' => 'Vaqaqara',
+'youremail'         => 'I vola livaliva *:',
+'username'          => 'Yaca vakayagataki:',
+'email'             => 'I vola livaliva',
 
 # Recent changes
 'recentchanges' => 'Veisau vovou',

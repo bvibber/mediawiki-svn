@@ -1,6 +1,9 @@
 <?php
 /** Pangasinan (Pangasinan)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -18,15 +21,17 @@ $messages = array(
 # Categories related messages
 'category_header' => 'Saray artikulo ed category ya "$1"',
 
-'about'          => 'Nipakar ed',
-'article'        => 'Bolong na laman',
-'cancel'         => 'I-tonda',
+'about'    => 'Nipakar ed',
+'article'  => 'Bolong na laman',
+'cancel'   => 'I-tonda',
+'mypage'   => 'Say bolong ko',
+'mytalk'   => 'Say tongtongan ko',
+'anontalk' => 'Tongtongan para ed sayan IP',
+'and'      => '&#32;san',
+
+# Cologne Blue skin
 'qbpageoptions'  => 'Ayan bolong',
 'qbspecialpages' => 'Niduma ran Bolobolong',
-'mypage'         => 'Say bolong ko',
-'mytalk'         => 'Say tongtongan ko',
-'anontalk'       => 'Tongtongan para ed sayan IP',
-'and'            => '&#32;san',
 
 'returnto'          => 'Impawel ed $1.',
 'help'              => 'Tolong',
@@ -56,7 +61,7 @@ $messages = array(
 'categorypage'      => 'Nengnengen so bolong na saray category',
 'viewtalkpage'      => 'Nengnengen so tongtongan',
 'otherlanguages'    => 'Diad arom ran salita',
-'lastmodifiedat'    => 'Say ayan bolong: otet ya binalo nen $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'Say ayan bolong: otet ya binalo nen $2, $1.',
 'protectedpage'     => 'Iyayagel yan bolong',
 'jumptosearch'      => 'anapen',
 
@@ -85,7 +90,6 @@ $messages = array(
 'nstab-mediawiki' => 'Pakabat',
 
 # General errors
-'nodb'            => 'Aga napili so database ya $1',
 'badarticleerror' => 'Aga sarag ya gaween so ayan action ed sayan bolong.',
 'cannotdelete'    => 'Aga nabural so nibagan bolong o file. (Sarag ton abural la na arom.)',
 'badtitle'        => 'Aga sarag ya titulo',
@@ -101,8 +105,6 @@ $messages = array(
 'createaccount'              => 'Mangawa na account',
 'gotaccountlink'             => 'Onloob',
 'badretype'                  => 'Aga parehas so en-type mo ran password.',
-'yourrealname'               => 'Tuwan ngaran:',
-'badsiglength'               => 'Andukey ya maong so nickname. Say dukey to dapat mas daiset en say $1 ya character.',
 'acct_creation_throttle_hit' => 'Sorry, nangawala ka la na $1 account. Agka la makapangawa na account.',
 'accountcreated'             => 'Agawa so account',
 'accountcreatedtext'         => 'Agawa la so user account para $1.',
@@ -125,7 +127,6 @@ $messages = array(
 'blockededitsource'     => "Wadyad leksab so text na '''saray binalom''' anggag '''$1''':",
 'whitelistedittitle'    => 'Nakaukulan ya onloob umpian makapanbalo',
 'whitelistedittext'     => 'Nakaukulan mo ya $1 umpian nabalo o nadagdagan ray bolobolong.',
-'confirmedittitle'      => 'Nakaukulan na e-mail confirmation para makapan-edit',
 'loginreqtitle'         => 'Nakaukulan kan Onloob',
 'loginreqlink'          => 'onloob',
 'loginreqpagetext'      => 'Nakaukulan kan $1 umpian nanengneng so arom ran bolobolong.',
@@ -156,17 +157,20 @@ San ipropromisam met ya insulat mo yan dili o kinopyam ya manlapo ed sakey ya pu
 'searchhelp-url'        => 'Help:Saray Laman',
 'powersearch'           => 'Anapen',
 
+# Quickbar
+'qbsettings-none' => 'Anggapo',
+
 # Preferences page
-'mypreferences'      => 'Saray preference ko',
-'qbsettings-none'    => 'Anggapo',
-'changepassword'     => 'Salatan so password',
-'datedefault'        => 'Anggapoy preference',
-'datetime'           => 'Bilang na agew san oras',
-'math_unknown_error' => 'aga-antan error',
-'prefs-rc'           => 'Sampot ran binalo',
-'prefs-watchlist'    => 'Listaan na babantayan',
-'textboxsize'        => 'Babaloen',
-'searchresultshead'  => 'Anapen',
+'mypreferences'     => 'Saray preference ko',
+'changepassword'    => 'Salatan so password',
+'datedefault'       => 'Anggapoy preference',
+'prefs-datetime'    => 'Bilang na agew san oras',
+'prefs-rc'          => 'Sampot ran binalo',
+'prefs-watchlist'   => 'Listaan na babantayan',
+'prefs-editing'     => 'Babaloen',
+'searchresultshead' => 'Anapen',
+'yourrealname'      => 'Tuwan ngaran:',
+'badsiglength'      => 'Andukey ya maong so nickname. Say dukey to dapat mas daiset en say $1 ya character.',
 
 # User rights
 'userrights-user-editname' => 'Isulat so username:',
@@ -359,7 +363,10 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 'tooltip-ca-nstab-mediawiki' => 'Nengnengen so pakabat na oksoy',
 
 # Attribution
-'lastmodifiedatby' => 'Sampot ya binalo yan bolong nen agew ya $2, $1 nen $3.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Sampot ya binalo yan bolong nen agew ya $2, $1 nen $3.',
+
+# Math errors
+'math_unknown_error' => 'aga-antan error',
 
 # Special:NewFiles
 'ilsubmit' => 'Anapen',

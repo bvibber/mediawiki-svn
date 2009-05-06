@@ -1,6 +1,9 @@
 <?php
 /** Burmese (Myanmasa)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -87,13 +90,15 @@ $messages = array(
 'december-gen'  => 'ဒီ​ဇင်​ဘာ​',
 'may'           => 'မေ​',
 
-'about'          => 'အကြောင်း',
-'cancel'         => 'မ​လုပ်​တော့​ပါ​',
+'about'      => 'အကြောင်း',
+'cancel'     => 'မ​လုပ်​တော့​ပါ​',
+'mytalk'     => 'ကျွန်​တော့​ပြော​ရေး​ဆို​ရာ​',
+'navigation' => 'အ​ညွှန်း​',
+
+# Cologne Blue skin
 'qbfind'         => 'ရှာပါ',
 'qbedit'         => 'ပြင်​ဆင်​ရန်​',
 'qbspecialpages' => 'အ​ထူး​စာ​မျက်​နှာ​',
-'mytalk'         => 'ကျွန်​တော့​ပြော​ရေး​ဆို​ရာ​',
-'navigation'     => 'အ​ညွှန်း​',
 
 'help'             => 'အ​ကူ​အ​ညီ​',
 'search'           => 'ရှာ​ဖွေ​ရန်​',
@@ -154,13 +159,6 @@ $messages = array(
 'nologinlink'             => 'မှတ်​ပုံ​တင်​ပြု​လုပ်​ပါ​',
 'createaccount'           => 'မှတ်​ပုံ​တင်​ပြု​လုပ်​ပါ​',
 'gotaccountlink'          => 'မှတ်​ပုံ​တင်​ဖြင့်​ဝင်​ပါ​',
-'youremail'               => 'အီ​မေး:',
-'username'                => 'မှတ်​ပုံ​တင်​အ​မည်:',
-'uid'                     => 'မှတ်​ပုံ​တင်​ID:',
-'yourrealname'            => 'နာမည်ရင်း:',
-'yourlanguage'            => 'ဘာသာ:',
-'yournick'                => 'ဆိုင်း:',
-'email'                   => 'အီ​မေး​',
 'loginsuccesstitle'       => 'မှတ်​ပုံ​တင်​ဖြင့်​ဝင်​ခြင်းအောင်မြင်သည်။',
 'loginlanguagelabel'      => 'ဘာသာ: $1',
 
@@ -208,9 +206,16 @@ $messages = array(
 'prefsnologin'      => 'မှတ်​ပုံ​တင်​ဖြင့်​မ​ဝင်​ရ​သေး​ပါ​',
 'changepassword'    => 'ဝှက်​စ​ကား​လုံးကိုပြောင်းပါ',
 'skin-preview'      => 'နမူနာ',
-'math'              => 'သင်္ချာ',
-'datetime'          => 'နေ့စွဲနှင့် အချိန်',
+'prefs-math'        => 'သင်္ချာ',
+'prefs-datetime'    => 'နေ့စွဲနှင့် အချိန်',
 'searchresultshead' => 'ရှာ​ဖွေ​ရန်​',
+'youremail'         => 'အီ​မေး:',
+'username'          => 'မှတ်​ပုံ​တင်​အ​မည်:',
+'uid'               => 'မှတ်​ပုံ​တင်​ID:',
+'yourrealname'      => 'နာမည်ရင်း:',
+'yourlanguage'      => 'ဘာသာ:',
+'yournick'          => 'ဆိုင်း:',
+'email'             => 'အီ​မေး​',
 
 # Groups
 'group-all' => '(အားလုံး)',
@@ -305,7 +310,7 @@ $messages = array(
 
 # Protect
 'prot_1movedto2'         => '[[$1]]  မှ​ [[$2]] သို့​',
-'protect-expiry-options' => '၂ နာရီ:2 hours,၁ နေ့:1 day,၃ နေ့:3 days,၁ ပတ်:1 week,၂ ပတ်:2 weeks,၁ လ:1 month,၃ လ:3 months,၆ လ:6 months,၁ နှစ်:1 year,အနန္တ:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options' => '၂ နာရီ:2 hours,၁ နေ့:1 day,၃ နေ့:3 days,၁ ပတ်:1 week,၂ ပတ်:2 weeks,၁ လ:1 month,၃ လ:3 months,၆ လ:6 months,၁ နှစ်:1 year,အနန္တ:infinite',
 'restriction-type'       => 'အခွင့်:',
 
 # Restrictions (nouns)
@@ -330,7 +335,7 @@ $messages = array(
 # Block/unblock
 'ipbreason'          => 'အ​ကြောင်း​ပြ​ချက်:',
 'ipbother'           => 'အခြားအချိန်:',
-'ipboptions'         => '၂ နာရီ:2 hours,၁ နေ့:1 day,၃ နေ့:3 days,၁ ပတ်:1 week,၂ ပတ်:2 weeks,၁ လ:1 month,၃ လ:3 months,၆ လ:6 months,၁ နှစ်:1 year,အနန္တ:infinite', # display1:time1,display2:time2,...
+'ipboptions'         => '၂ နာရီ:2 hours,၁ နေ့:1 day,၃ နေ့:3 days,၁ ပတ်:1 week,၂ ပတ်:2 weeks,၁ လ:1 month,၃ လ:3 months,၆ လ:6 months,၁ နှစ်:1 year,အနန္တ:infinite',
 'ipbotheroption'     => 'အခြား',
 'ipblocklist-submit' => 'ရှာ​ဖွေ​ရန်​',
 'expiringblock'      => '$1 ဆုံးမည်',

@@ -1,6 +1,9 @@
 <?php
 /** Tok Pisin (Tok Pisin)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -78,13 +81,15 @@ $messages = array(
 'category-media-header' => 'Ol media (olsem piksa) insait long grup "$1"',
 'category-empty'        => "''Dispela grup i no gat wanpela pes o media (olsem piksa) insait long en nau.''",
 
-'newwindow'      => '(bai kamap long nupela windo)',
-'cancel'         => 'Toromwe senis',
+'newwindow'  => '(bai kamap long nupela windo)',
+'cancel'     => 'Toromwe senis',
+'mytalk'     => 'Toktok bilong mi',
+'navigation' => 'Ol bikpela pes',
+
+# Cologne Blue skin
 'qbfind'         => 'Painim',
 'qbedit'         => 'Senisim',
 'qbspecialpages' => 'Ol sipesol pes',
-'mytalk'         => 'Toktok bilong mi',
-'navigation'     => 'Ol bikpela pes',
 
 'help'             => 'Halivim mi',
 'search'           => 'Painim',

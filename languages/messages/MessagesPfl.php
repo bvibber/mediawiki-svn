@@ -1,6 +1,9 @@
 <?php
 /** Pfälzisch (Pfälzisch)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -63,9 +66,11 @@ $messages = array(
 'about'      => 'Iwwer',
 'newwindow'  => '(werd im e naie Fenschter uffgmacht)',
 'cancel'     => 'Abbreche',
-'qbfind'     => 'Finne',
 'mytalk'     => 'Gebabbel mit dir.',
 'navigation' => 'Navigation',
+
+# Cologne Blue skin
+'qbfind' => 'Finne',
 
 'errorpagetitle'   => 'Fehler',
 'returnto'         => 'Zrick zu $1.',
@@ -98,7 +103,7 @@ $messages = array(
 'otherlanguages'   => 'In annere Sproche',
 'redirectedfrom'   => '(Wairrerglaidet vun $1)',
 'redirectpagesub'  => 'Wairerlaidungssaid',
-'lastmodifiedat'   => 'Die Said isch zum ledschde Mol gänneret woore am $1, am $2.', # $1 date, $2 time
+'lastmodifiedat'   => 'Die Said isch zum ledschde Mol gänneret woore am $1, am $2.',
 'viewcount'        => 'Die Seid isch bis jetzerd {{PLURAL:$1|$1|$1}} mol uffgerufe worre.',
 'jumpto'           => 'Spring zu:',
 'jumptonavigation' => 'Navigation',
@@ -229,7 +234,7 @@ du gebbscht do au zu, dass Du des selwerscht gschriwwe hoscht orrer vun ere effe
 'template-semiprotected'           => '(halb-gschitzt)',
 'hiddencategories'                 => 'Die Said ghert zu {{PLURAL:$1|1 versteckelte Kategorie|$1 versteckelte Kategorie}}:',
 'permissionserrorstext-withaction' => 'Du därfscht nid $2, aus {{PLURAL:$1|dem Grund|denne Grind}}:',
-'deleted-notice'                   => 'Die Said isch glescht worre.
+'moveddeleted-notice'              => 'Die Said isch glescht worre.
 De Leschaidrach fer die Said isch do unne aagewwe als Quell.',
 
 # History pages
@@ -532,7 +537,7 @@ Der Schutzstatus vun derre Said kannscht ännere, awwer des hot ken Aifluss uff 
 # Block/unblock
 'blockip'                  => 'Benutzer bloggiere',
 'ipbsubmit'                => 'Benutzer bloggiere',
-'ipboptions'               => '2 Stunne:2 hours,1 Dach:1 day,3 Dache:3 days,1 Woch:1 week,2 Woche:2 weeks,1 Monet:1 month,3 Monet:3 months,6 Monet:6 months,1 Johr:1 year,Fer immer:infinite', # display1:time1,display2:time2,...
+'ipboptions'               => '2 Stunne:2 hours,1 Dach:1 day,3 Dache:3 days,1 Woch:1 week,2 Woche:2 weeks,1 Monet:1 month,3 Monet:3 months,6 Monet:6 months,1 Johr:1 year,Fer immer:infinite',
 'ipusubmit'                => 'Die Adreß freigewwe',
 'ipblocklist'              => 'Gsperrte IP-Adresse un Benutzername',
 'blocklink'                => 'sperre',
@@ -572,7 +577,7 @@ In denne Fäll misst mer d Dischbediersaid vun Hand kopiere.",
 'move-watch'       => 'Die Said beowachde',
 'movepagebtn'      => 'Seid verschiewe',
 'pagemovedsub'     => 'Verschiewung hot geklappt',
-'movepage-moved'   => '<big>\'\'\'"$1" isch verschowe worre uff "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'   => '<big>\'\'\'"$1" isch verschowe worre uff "$2"\'\'\'</big>',
 'articleexists'    => 'E Said mid dem Name gebbt s schun, orrer de Name, wu du gewählt hoscht, isch nid gildich.
 Bitte nemm e annere Name.',
 'talkexists'       => "'''Die Said selwerschd, isch verschowe worre, awwer d Dischbediersaid hot nid kenne verschowe werre, wail s schun enni gebbt mid dem Name.
@@ -686,7 +691,7 @@ Annere Metadate sinn standardmäßig versteckelt.
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* focallength',
 
 # External editor support
 'edit-externally'      => 'Die Datei bearwaide mit ener externe Aawendung',

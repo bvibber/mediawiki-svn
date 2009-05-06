@@ -1,6 +1,9 @@
 <?php
 /** Papiamento (Papiamentu)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -60,6 +63,10 @@ $messages = array(
 'navigation'    => 'Nabegashon',
 'and'           => '&#32;i',
 
+# Cologne Blue skin
+'faq'     => 'Preguntanan mas Puntrá',
+'faqpage' => 'Project:Preguntanan mas Puntrá',
+
 'errorpagetitle'    => 'Eror',
 'returnto'          => 'Bai bèk $1.',
 'tagline'           => 'Di {{SITENAME}}',
@@ -93,7 +100,7 @@ $messages = array(
 'otherlanguages'    => 'Na otro idioma',
 'redirectedfrom'    => '(Bo a yega akinan pa via di e página $1)',
 'redirectpagesub'   => 'Página ku ta sirbi komo portal',
-'lastmodifiedat'    => 'E páginá aki a wòrdu kambiá ultimo biaha riba $1, ora $2.', # $1 date, $2 time
+'lastmodifiedat'    => 'E páginá aki a wòrdu kambiá ultimo biaha riba $1, ora $2.',
 'viewcount'         => 'E paginá aki a wòrdu mirá {{PLURAL:$1|biaha|$1 biaha}}.',
 'protectedpage'     => 'Página Protehá',
 'jumpto'            => 'Bai na:',
@@ -112,8 +119,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Deklarashon di Liberashon for di Responsabilidat General',
 'edithelp'             => 'Ayudo ku editamentu',
 'edithelppage'         => 'Help:Kon pa editá artíkulo',
-'faq'                  => 'Preguntanan mas Puntrá',
-'faqpage'              => 'Project:Preguntanan mas Puntrá',
 'helppage'             => 'Help:Kontenido',
 'mainpage'             => 'Página Prinsipal',
 'mainpage-description' => 'Página Prinsipal',
@@ -171,14 +176,6 @@ No lubidá di kambia bo [[Special:Preferences|{{SITENAME}} preferensianan]].',
 'userlogin'                  => 'Traha un kuenta nobo òf outentiká',
 'userlogout'                 => 'Terminá sesion',
 'badretype'                  => 'E kontraseñanan hinká no ta kuadra.',
-'youremail'                  => 'E-mail:',
-'username'                   => 'Nòmber di uzadó:',
-'uid'                        => 'ID di uzadó:',
-'yourrealname'               => 'Nòmber berdadero:',
-'yourlanguage'               => 'Idioma:',
-'yourvariant'                => 'Variante:',
-'yournick'                   => 'Nòmber di kariño:',
-'badsig'                     => 'Firma inválido; kontrolá e HTML uzá.',
 'wrongpassword'              => 'Kontraseña no ta korekto. Por fabor purba atrobe.',
 'wrongpasswordempty'         => 'Kontraseña tabata bashí. Por fabor purba atrobe.',
 'acct_creation_throttle_hit' => 'Bishitantenan na uzando bo IP adrès a traha $1 kuenta den e último 24 ora, lokual ta e máksimo permití den e periodo aki. Esaki ta nifiká ku hendenan uzando e IP adrès aki no por traha mas kuenta na e momentu aki.',
@@ -194,7 +191,6 @@ No lubidá di kambia bo [[Special:Preferences|{{SITENAME}} preferensianan]].',
 Bo por kambia página libremente, pero tene kuenta ku lo nota bo IP adrès den e historia di kambionan hasí na e página aki.',
 'blockedtitle'       => 'Uzadó ta blokiá',
 'whitelistedittitle' => 'Mester outentiká promé pa editá',
-'confirmedittitle'   => 'Konfirmashon di e-mail eksigí pa editá',
 'confirmedittext'    => 'Bo mester konfirmá bo e-mail adrès promé ku bo editá página. Por fabor duna i validá bo e-mail adrès via bo [[Special:Preferences|preferensianan]].',
 'accmailtitle'       => 'Kontraseña mandá.',
 'accmailtext'        => "E kontraseña pa '$1' tabata mandá pa $2.",
@@ -224,6 +220,14 @@ Bo por kambia página libremente, pero tene kuenta ku lo nota bo IP adrès den e
 'changepassword' => 'Kambia kontraseña',
 'timezonelegend' => 'Zona di tempu',
 'allowemail'     => 'Akseptá e-mail di otro uzadó',
+'youremail'      => 'E-mail:',
+'username'       => 'Nòmber di uzadó:',
+'uid'            => 'ID di uzadó:',
+'yourrealname'   => 'Nòmber berdadero:',
+'yourlanguage'   => 'Idioma:',
+'yourvariant'    => 'Variante:',
+'yournick'       => 'Nòmber di kariño:',
+'badsig'         => 'Firma inválido; kontrolá e HTML uzá.',
 
 # Recent changes
 'recentchanges'     => 'Kambionan resien',

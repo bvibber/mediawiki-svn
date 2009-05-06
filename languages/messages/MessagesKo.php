@@ -1,6 +1,9 @@
 <?php
 /** Korean (한국어)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -362,7 +365,7 @@ $messages = array(
 'category-media-header'          => '‘$1’ 분류에 속하는 자료',
 'category-empty'                 => '이 분류에 속하는 문서나 자료가 없습니다.',
 'hidden-categories'              => '숨은 분류',
-'hidden-category-category'       => '숨은 분류', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => '숨은 분류',
 'category-subcat-count'          => '{{PLURAL:$2|이 분류에는 다음의 하위 분류만이 속해 있습니다.|다음은 이 분류에 속하는 $2 개의 하위 분류 중 $1 개입니다.}}',
 'category-subcat-count-limited'  => '이 분류에는 하위 분류가 $1개 있습니다.',
 'category-article-count'         => '{{PLURAL:$2|이 분류에는 다음의 문서만이 속해 있습니다.|다음은 이 분류에 속하는 $2 개의 문서 중 $1 개입니다.}}',
@@ -380,10 +383,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ 미디어위키 FAQ]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce 미디어위키 발표 메일링 리스트]',
 
-'about'          => '소개',
-'article'        => '문서 내용',
-'newwindow'      => '(새 창으로 열림)',
-'cancel'         => '취소',
+'about'         => '소개',
+'article'       => '문서 내용',
+'newwindow'     => '(새 창으로 열림)',
+'cancel'        => '취소',
+'moredotdotdot' => '더 보기...',
+'mypage'        => '내 사용자 문서',
+'mytalk'        => '내 사용자 토론',
+'anontalk'      => '익명 사용자 토론',
+'navigation'    => '둘러보기',
+'and'           => ',',
+
+# Cologne Blue skin
 'qbfind'         => '찾기',
 'qbbrowse'       => '탐색',
 'qbedit'         => '편집',
@@ -391,12 +402,8 @@ $messages = array(
 'qbpageinfo'     => '문서 정보',
 'qbmyoptions'    => '내 문서',
 'qbspecialpages' => '특수 문서',
-'moredotdotdot'  => '더 보기...',
-'mypage'         => '내 사용자 문서',
-'mytalk'         => '내 사용자 토론',
-'anontalk'       => '익명 사용자 토론',
-'navigation'     => '둘러보기',
-'and'            => ',',
+'faq'            => 'FAQ',
+'faqpage'        => 'Project:FAQ',
 
 # Metadata in edit box
 'metadata_help' => '메타데이터:',
@@ -449,7 +456,7 @@ $messages = array(
 'otherlanguages'    => '다른 언어',
 'redirectedfrom'    => '($1에서 넘어옴)',
 'redirectpagesub'   => '넘겨주기 문서',
-'lastmodifiedat'    => '이 문서는 $2, $1에 마지막으로 바뀌었습니다.', # $1 date, $2 time
+'lastmodifiedat'    => '이 문서는 $2, $1에 마지막으로 바뀌었습니다.',
 'viewcount'         => '이 문서는 총 $1번 읽혔습니다.',
 'protectedpage'     => '보호된 문서',
 'jumpto'            => '이동:',
@@ -468,8 +475,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:면책 조항',
 'edithelp'             => '편집 도움말',
 'edithelppage'         => 'Help:편집하기',
-'faq'                  => 'FAQ',
-'faqpage'              => 'Project:FAQ',
 'helppage'             => 'Help:목차',
 'mainpage'             => '대문',
 'mainpage-description' => '대문',
@@ -540,9 +545,6 @@ $messages = array(
 'databaseerror'        => '데이터베이스 오류',
 'dberrortext'          => '데이터베이스 쿼리 구문 오류가 발생했습니다. 소프트웨어의 버그가 있을 수 있습니다. 마지막으로 요청한 데이터베이스 쿼리는 "<tt>$2</tt>" 함수에서 쓰인 <blockquote><tt>$1</tt></blockquote>입니다. MySQL은 "<tt>$3: $4</tt>" 오류를 냈습니다.',
 'dberrortextcl'        => '데이터베이스 쿼리 구문 오류가 발생했습니다. 마지막으로 요청한 데이터베이스 쿼리는 "$2" 함수에서 쓰인 "$1"입니다. MySQL은 "$3: $4" 오류를 냈습니다.',
-'noconnect'            => '위키의 기술적인 문제로 인해 데이터베이스 서버에 접근할 수 없습니다.<br />$1',
-'nodb'                 => '$1 데이터베이스를 선택할 수 없습니다.',
-'cachederror'          => '아래는 요청한 문서의 캐시 복사본으로, 최신이 아닐 수 있습니다.',
 'laggedslavemode'      => '주의: 문서가 최근 것이 아닐 수 있습니다.',
 'readonly'             => '데이터베이스 잠김',
 'enterlockreason'      => '데이터베이스를 잠그는 이유와 예상되는 기간을 적어 주세요.',
@@ -605,7 +607,6 @@ $messages = array(
 'welcomecreation'            => '== $1 님, 환영합니다! ==
 계정이 만들어졌습니다.
 [[Special:Preferences|당신의 {{SITENAME}} 사용자 환경 설정]]을 바꿀 수 있습니다.',
-'loginpagetitle'             => '로그인',
 'yourname'                   => '계정 이름:',
 'yourpassword'               => '비밀번호:',
 'yourpasswordagain'          => '암호 확인',
@@ -628,27 +629,7 @@ $messages = array(
 'badretype'                  => '암호가 서로 다릅니다.',
 'userexists'                 => '입력하신 사용자 이름이 이미 등록되어 있습니다.
 다른 이름으로 만들어주십시오.',
-'youremail'                  => '이메일:',
-'username'                   => '계정 이름:',
-'uid'                        => '사용자 ID:',
-'prefs-memberingroups'       => '가지고 있는 권한 목록:',
-'yourrealname'               => '실명:',
-'yourlanguage'               => '언어:',
-'yournick'                   => '서명:',
-'badsig'                     => '서명이 잘못되었습니다. HTML 태그를 확인해주세요.',
-'badsiglength'               => '서명이 너무 깁니다.
-서명은 $1자보다 짧아야 합니다.',
-'yourgender'                 => '성별:',
-'gender-unknown'             => '무응답',
-'gender-male'                => '남성',
-'gender-female'              => '여성',
-'prefs-help-gender'          => '선택 사항: 소프트웨어에서 성별에 따른 언어 문제를 해결하기 위해 사용됩니다. 이 정보는 공개될 것입니다.',
-'email'                      => '이메일',
-'prefs-help-realname'        => '실명 기입은 자유입니다. 실명을 입력할 경우 문서 기여에 자신의 이름이 들어가게 됩니다.',
 'loginerror'                 => '로그인 오류',
-'prefs-help-email'           => '이메일 주소 입력은 선택이지만, 비밀번호를 잊었을 때 찾기 위해 이메일 주소가 필요할 수 있습니다.
-당신의 메일 주소를 공개하지 않고 사용자 및 사용자토론 문서를 통해 다른 사용자들과 이야기를 할 수 있습니다.',
-'prefs-help-email-required'  => '이메일 주소가 필요합니다.',
 'nocookiesnew'               => '사용자 계정을 만들었지만, 아직 로그인하지 않았습니다. {{SITENAME}}에서는 로그인 정보를 저장하기 위해 쿠키를 사용합니다. 지금 사용하는 웹 브라우저는 쿠키를 사용하지 않도록 설정되어 있습니다. 로그인하기 전에 웹 브라우저에서 쿠키를 사용하도록 설정해주세요.',
 'nocookieslogin'             => '{{SITENAME}}에서는 로그인을 위해 쿠키를 사용합니다. 당신의 웹 브라우저에서 쿠키가 비활성되어 있습니다. 쿠키 사용을 활성화한 다음 로그인해 주세요.',
 'noname'                     => '사용자 이름이 올바르지 않습니다.',
@@ -703,17 +684,12 @@ $messages = array(
 'retypenew'                 => '새 암호 확인:',
 'resetpass_submit'          => '암호를 변경하고 로그인하기',
 'resetpass_success'         => '암호가 성공적으로 변경되었습니다! 로그인을 해 주세요.',
-'resetpass_bad_temporary'   => '임시 암호가 잘못되었습니다. 암호를 이미 바꾸었거나, 임시 암호를 새로 받았을 수 있습니다.',
 'resetpass_forbidden'       => '비밀번호 변경 불가',
 'resetpass-no-info'         => '이 특수 문서에 직접 접근하려면 반드시 로그인해야 합니다.',
 'resetpass-submit-loggedin' => '비밀번호 변경',
 'resetpass-wrong-oldpass'   => '비밀번호가 잘못되었거나 현재의 비밀번호와 같습니다.
 당신은 이미 비밀번호를 성공적으로 변경하였거나 새 임시 비밀번호를 발급받았을 수 있습니다.',
 'resetpass-temp-password'   => '임시 비밀번호:',
-'resetpass-log'             => '비밀번호 변경 기록',
-'resetpass-logtext'         => '다음은 관리자에 의해 비밀번호가 변경된 사용자에 대한 기록입니다.',
-'resetpass-logentry'        => '$1 사용자의 비밀번호를 변경',
-'resetpass-comment'         => '비밀번호를 바꾸는 이유:',
 
 # Edit page toolbar
 'bold_sample'     => '굵은 글씨',
@@ -782,7 +758,6 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'blockededitsource'                => "아래에 '''$1'''에서의 '''당신의 편집'''이 나와 있습니다:",
 'whitelistedittitle'               => '편집하려면 로그인 필요',
 'whitelistedittext'                => '문서를 편집하려면 $1해야 합니다.',
-'confirmedittitle'                 => '편집하려면 이메일 인증 필요',
 'confirmedittext'                  => '문서를 고치려면 이메일 인증 절차가 필요합니다. [[Special:Preferences|사용자 환경 설정]]에서 이메일 주소를 입력하고 이메일 주소 인증을 해 주시기 바랍니다.',
 'nosuchsectiontitle'               => '해당 부분 없음',
 'nosuchsectiontext'                => '편집하려는 문단이 존재하지 않습니다. $1번째 문단이 없기 때문에 편집한 내용을 저장할 수 없습니다.',
@@ -864,13 +839,13 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'permissionserrors'                => '권한 오류',
 'permissionserrorstext'            => '해당 명령을 수행할 권한이 없습니다. 다음의 이유를 확인해보세요:',
 'permissionserrorstext-withaction' => '$2 권한이 없습니다. 다음의 이유를 확인해주세요:',
-'recreate-deleted-warn'            => "'''주의: 과거에 삭제된 문서를 다시 만들고 있습니다.'''
+'recreate-moveddeleted-warn'       => "'''주의: 과거에 삭제된 문서를 다시 만들고 있습니다.'''
 
 이 문서를 계속 편집하는 것이 적합한 것인지 확인해주세요.
 과거 삭제 기록은 다음과 같습니다:",
-'deleted-notice'                   => '이 문서는 삭제되어 있습니다.
-이 문서의 삭제 기록은 다음과 같습니다.',
-'deletelog-fulllog'                => '전체 기록 보기',
+'moveddeleted-notice'              => '이 문서는 삭제되어 있습니다.
+이 문서의 삭제 기록과 이동 기록은 다음과 같습니다.',
+'log-fulllog'                      => '전체 기록 보기',
 'edit-hook-aborted'                => '훅에 의해 편집이 중단되었습니다.
 아무런 설명도 주어지지 않았습니다.',
 'edit-gone-missing'                => '문서를 저장하지 못했습니다.
@@ -912,7 +887,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'currentrev'             => '현재 판',
 'currentrev-asof'        => '$1 현재 판',
 'revisionasof'           => '$1 판',
-'revision-info'          => '$2 사용자의 $1 버전', # Additionally available: $3: revision id
+'revision-info'          => '$2 사용자의 $1 버전',
 'previousrevision'       => '← 이전 판',
 'nextrevision'           => '다음 판 →',
 'currentrevisionlink'    => '현재 판',
@@ -932,7 +907,7 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 # Revision feed
 'history-feed-title'          => '편집 역사',
 'history-feed-description'    => '이 문서의 편집 역사',
-'history-feed-item-nocomment' => '$2에 대한 $1의 편집', # user at time
+'history-feed-item-nocomment' => '$2에 대한 $1의 편집',
 'history-feed-empty'          => '요청한 문서가 존재하지 않습니다.
 해당 문서가 삭제되었거나, 문서 이름이 바뀌었을 수 있습니다.
 [[Special:Search|위키 검색 기능]]을 이용해 관련 문서를 찾아보세요.',
@@ -1127,7 +1102,6 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'searchhelp-url'                   => 'Help:목차',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|이 접두어로 시작하는 문서 찾기]]',
 'searchprofile-articles'           => '일반 문서',
-'searchprofile-articles-and-proj'  => '일반 및 프로젝트 문서',
 'searchprofile-project'            => '프로젝트 문서',
 'searchprofile-images'             => '파일',
 'searchprofile-everything'         => '모든 문서 검색',
@@ -1137,8 +1111,6 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'searchprofile-images-tooltip'     => '파일 찾기',
 'searchprofile-everything-tooltip' => '토론 문서를 포함한 모든 문서 찾기',
 'searchprofile-advanced-tooltip'   => '다음 설정된 이름공간에서 찾기',
-'prefs-search-nsdefault'           => '다음을 기본으로 검색:',
-'prefs-search-nscustom'            => '다음 이름공간에서 찾기:',
 'search-result-size'               => '$1 ($2개 단어)',
 'search-result-score'              => '유사도: $1%',
 'search-redirect'                  => '($1에서 넘어옴)',
@@ -1166,35 +1138,27 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'search-external'                  => '외부 검색',
 'searchdisabled'                   => '{{SITENAME}} 검색 기능이 비활성화되어 있습니다. 기능이 작동하지 않는 동안에는 구글(Google)을 이용해 검색할 수 있습니다. 검색 엔진의 내용은 최근 것이 아닐 수 있다는 점을 주의해주세요.',
 
+# Quickbar
+'qbsettings'               => '빨리가기 맞춤',
+'qbsettings-none'          => '없음',
+'qbsettings-fixedleft'     => '왼쪽 고정',
+'qbsettings-fixedright'    => '오른쪽 고정',
+'qbsettings-floatingleft'  => '왼쪽 유동',
+'qbsettings-floatingright' => '오른쪽 유동',
+
 # Preferences page
 'preferences'               => '사용자 환경 설정',
 'mypreferences'             => '사용자 환경 설정',
 'prefs-edits'               => '편집 횟수:',
 'prefsnologin'              => '로그인하지 않음',
 'prefsnologintext'          => '사용자 환경 설정을 바꾸려면 먼저 <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} 로그인]</span>해야 합니다.',
-'prefsreset'                => '사용자 환경 설정을 기본값으로 되돌렸습니다.',
-'qbsettings'                => '빨리가기 맞춤',
-'qbsettings-none'           => '없음',
-'qbsettings-fixedleft'      => '왼쪽 고정',
-'qbsettings-fixedright'     => '오른쪽 고정',
-'qbsettings-floatingleft'   => '왼쪽 유동',
-'qbsettings-floatingright'  => '오른쪽 유동',
 'changepassword'            => '비밀번호 바꾸기',
-'skin'                      => '스킨',
+'prefs-skin'                => '스킨',
 'skin-preview'              => '미리 보기',
-'math'                      => '수식',
+'prefs-math'                => '수식',
 'dateformat'                => '날짜 형식',
 'datedefault'               => '기본값',
-'datetime'                  => '날짜와 시각',
-'math_failure'              => '해석 실패',
-'math_unknown_error'        => '알 수 없는 오류',
-'math_unknown_function'     => '알 수 없는 함수',
-'math_lexing_error'         => '어휘 오류',
-'math_syntax_error'         => '구문 오류',
-'math_image_error'          => 'PNG 변환 실패 - latex, dvips, gs, convert가 올바르게 설치되어 있는지 확인해 주세요.',
-'math_bad_tmpdir'           => '수식을 임시 폴더에 저장하거나 폴더를 만들 수 없습니다.',
-'math_bad_output'           => '수식을 출력 폴더에 저장하거나 폴더를 만들 수 없습니다.',
-'math_notexvc'              => '실행할 수 있는 texvc이 없습니다. 설정을 위해 math/README를 읽어 주세요.',
+'prefs-datetime'            => '날짜와 시각',
 'prefs-personal'            => '사용자 정보',
 'prefs-rc'                  => '최근 바뀜',
 'prefs-watchlist'           => '주시문서 목록',
@@ -1204,10 +1168,12 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'prefs-watchlist-edits-max' => '(최대 1000개)',
 'prefs-misc'                => '기타',
 'prefs-resetpass'           => '비밀번호 바꾸기',
+'prefs-email'               => '이메일 설정',
+'prefs-rendering'           => '문서 보이기 설정',
 'saveprefs'                 => '저장',
 'resetprefs'                => '저장하지 않은 설정 되돌리기',
 'restoreprefs'              => '기본값을 복구',
-'textboxsize'               => '편집상자 크기',
+'prefs-editing'             => '편집상자 크기',
 'prefs-edit-boxsize'        => '편집 창의 크기',
 'rows'                      => '줄 수:',
 'columns'                   => '열:',
@@ -1221,7 +1187,6 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'recentchangescount'        => '최근 바뀜, 문서 역사, 기록 보기에 기본으로 표시할 문서 수:',
 'savedprefs'                => '설정을 저장했습니다.',
 'timezonelegend'            => '시간대',
-'timezonetext'              => '¹현지 시각과 서버 시각(UTC) 사이의 시차를 써 주세요.',
 'localtime'                 => '현지 시각:',
 'timezoneselect'            => '시간대:',
 'timezoneuseserverdefault'  => '서버 기본값을 사용',
@@ -1244,12 +1209,40 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'prefs-namespaces'          => '이름공간',
 'defaultns'                 => '기본으로 다음의 이름공간에서 찾기:',
 'default'                   => '기본값',
-'files'                     => '파일',
+'prefs-files'               => '파일',
 'prefs-custom-css'          => '사용자 CSS',
 'prefs-custom-js'           => '사용자 자바스크립트',
+'prefs-reset-intro'         => '당신은 환경 설정을 위키 기본값으로 설정할 때 이 문서를 이용할 수 있습니다.
+이것은 복구될 수 없습니다.',
+'prefs-emailconfirm-label'  => '이메일 인증:',
+'prefs-textboxsize'         => '편집창의 크기',
+'youremail'                 => '이메일:',
+'username'                  => '계정 이름:',
+'uid'                       => '사용자 ID:',
+'prefs-memberingroups'      => '가지고 있는 권한 목록:',
+'prefs-registration'        => '등록 일시:',
+'yourrealname'              => '실명:',
+'yourlanguage'              => '언어:',
+'yournick'                  => '서명:',
+'badsig'                    => '서명이 잘못되었습니다. HTML 태그를 확인해주세요.',
+'badsiglength'              => '서명이 너무 깁니다.
+서명은 $1자보다 짧아야 합니다.',
+'yourgender'                => '성별:',
+'gender-unknown'            => '무응답',
+'gender-male'               => '남성',
+'gender-female'             => '여성',
+'prefs-help-gender'         => '선택 사항: 소프트웨어에서 성별에 따른 언어 문제를 해결하기 위해 사용됩니다. 이 정보는 공개될 것입니다.',
+'email'                     => '이메일',
+'prefs-help-realname'       => '실명 기입은 자유입니다. 실명을 입력할 경우 문서 기여에 자신의 이름이 들어가게 됩니다.',
+'prefs-help-email'          => '이메일 주소 입력은 선택이지만, 비밀번호를 잊었을 때 찾기 위해 이메일 주소가 필요할 수 있습니다.
+당신의 메일 주소를 공개하지 않고 사용자 및 사용자토론 문서를 통해 다른 사용자들과 이야기를 할 수 있습니다.',
+'prefs-help-email-required' => '이메일 주소가 필요합니다.',
+'prefs-info'                => '기본 정보',
+'prefs-i18n'                => '언어 설정',
+'prefs-signature'           => '서명',
 
 # User rights
-'userrights'                  => '사용자 권한 관리', # Not used as normal message but as header for the special page itself
+'userrights'                  => '사용자 권한 관리',
 'userrights-lookup-user'      => '사용자 권한 관리',
 'userrights-user-editname'    => '계정 이름:',
 'editusergroup'               => '사용자 그룹 편집',
@@ -1600,8 +1593,8 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'noimage'                   => '파일이 없습니다. $1 할 수 있습니다.',
 'noimage-linktext'          => '업로드',
 'uploadnewversion-linktext' => '이 파일의 새로운 버전을 올리기',
-'shared-repo-from'          => '($1)', # $1 is the repository name
-'shared-repo'               => '공용 저장소', # used when shared-repo-NAME does not exist
+'shared-repo-from'          => '($1)',
+'shared-repo'               => '공용 저장소',
 
 # File reversion
 'filerevert'                => '$1 되돌리기',
@@ -1950,6 +1943,7 @@ $NEWPAGE
 'historywarning'         => '주의: 현재 삭제하려는 문서에는 문서 역사가 있습니다:',
 'confirmdeletetext'      => '문서와 문서 역사를 삭제하려고 합니다. 삭제하려는 문서가 맞는지, 이 문서를 삭제하는 것이 [[{{MediaWiki:Policy-url}}|정책]]에 맞는 행동인지를 확인해 주세요.',
 'actioncomplete'         => '명령완료',
+'actionfailed'           => '명령 실패',
 'deletedtext'            => '‘<nowiki>$1</nowiki>’ 문서를 삭제했습니다. 최근 삭제 기록은 $2에 있습니다.',
 'deletedarticle'         => '이(가) [[$1]]을(를) 삭제하였습니다.',
 'suppressedarticle'      => '"[[$1]]"를 숨김',
@@ -1977,8 +1971,8 @@ $NEWPAGE
 'alreadyrolled'    => '[[:$1]]에서 [[User:$2|$2]] ([[User talk:$2|토론]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) 의 편집을 되돌릴 수 없습니다; 누군가가 문서를 고치거나 되돌렸습니다.
 
 마지막으로 문서를 편집한 사람은 [[User:$3|$3]] ([[User talk:$3|토론]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) 입니다.',
-'editcomment'      => "편집 요약: ''$1''", # only shown if there is an edit comment
-'revertpage'       => '[[Special:Contributions/$2|$2]]([[User talk:$2|토론]])의 편집을 [[User:$1|$1]]의 마지막 버전으로 되돌림', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'editcomment'      => "편집 요약: ''$1''",
+'revertpage'       => '[[Special:Contributions/$2|$2]]([[User talk:$2|토론]])의 편집을 [[User:$1|$1]]의 마지막 버전으로 되돌림',
 'rollback-success' => '$1의 편집을 $2의 마지막 버전으로 되돌렸습니다.',
 'sessionfailure'   => '로그인 세션에 문제가 발생한 것 같습니다. 세션 하이재킹을 막기 위해 동작이 취소되었습니다. 브라우저의 "뒤로" 버튼을 누르고 문서를 새로고침한 후에 다시 시도해 주세요.',
 
@@ -2023,7 +2017,7 @@ $NEWPAGE
 ** 비생산적인 편집 분쟁
 ** 방문이 많은 문서',
 'protect-edit-reasonlist'     => '보호 이유를 편집하기',
-'protect-expiry-options'      => '1시간:1 hour,1일:1 day,1주일:1 week,2주일:2 weeks,1개월:1 month,3개월:3 months,6개월:6 months,1년:1 year,무기한:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1시간:1 hour,1일:1 day,1주일:1 week,2주일:2 weeks,1개월:1 month,3개월:3 months,6개월:6 months,1년:1 year,무기한:infinite',
 'restriction-type'            => '권한:',
 'restriction-level'           => '보호 수준:',
 'minimum-size'                => '최소 크기',
@@ -2100,7 +2094,7 @@ $1',
 'contributions-title' => '$1 사용자의 기여 목록',
 'mycontris'           => '내 기여 목록',
 'contribsub2'         => '$1($2)의 기여',
-'nocontribs'          => '이 사용자는 어디에도 기여하지 않았습니다.', # Optional parameter: $1 is the user name
+'nocontribs'          => '이 사용자는 어디에도 기여하지 않았습니다.',
 'uctop'               => '(최신)',
 'month'               => '월:',
 'year'                => '연도:',
@@ -2161,7 +2155,7 @@ $1',
 'ipbenableautoblock'              => '이 사용자가 최근에 사용했거나 앞으로 사용하는 IP를 자동으로 막기',
 'ipbsubmit'                       => '사용자 차단',
 'ipbother'                        => '다른 기간:',
-'ipboptions'                      => '2시간:2 hours,1일:1 day,3일:3 days,1주일:1 week,2주일:2 weeks,1개월:1 month,3개월:3 months,6개월:6 months,1년:1 year,무기한:infinite', # display1:time1,display2:time2,...
+'ipboptions'                      => '2시간:2 hours,1일:1 day,3일:3 days,1주일:1 week,2주일:2 weeks,1개월:1 month,3개월:3 months,6개월:6 months,1년:1 year,무기한:infinite',
 'ipbotheroption'                  => '수동으로 지정',
 'ipbotherreason'                  => '다른 이유/추가적인 이유:',
 'ipbhidename'                     => '사용자 이름을 목록과 편집기록에서 숨깁니다.',
@@ -2284,7 +2278,7 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'move-watch'                   => '이 문서 주시하기',
 'movepagebtn'                  => '이동',
 'pagemovedsub'                 => '문서 이동함',
-'movepage-moved'               => "<big>'''‘$1’ 문서를 ‘$2’ 문서로 이동함'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => "<big>'''‘$1’ 문서를 ‘$2’ 문서로 이동함'''</big>",
 'movepage-moved-redirect'      => '넘겨주기 문서가 생성되었습니다.',
 'movepage-moved-noredirect'    => '넘겨주기 문서가 생성되지 않았습니다.',
 'articleexists'                => '문서가 이미 존재하거나, 문서 이름이 올바르지 않습니다. 다른 제목으로 시도해주세요.',
@@ -2293,7 +2287,7 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'movedto'                      => '새 이름',
 'movetalk'                     => '딸린 토론도 함께 이동합니다.',
 'move-subpages'                => '하위 문서도 함께 ($1으로) 이동합니다.',
-'move-talk-subpages'           => '가능하다면, 토론 문서의 하위 문서도 함께 이동합니다. ($1로 이동합니다)',
+'move-talk-subpages'           => '토론 문서의 하위 문서도 함께 이동합니다. ($1으로 이동합니다)',
 'movepage-page-exists'         => '이동할 수 없습니다. ‘$1’ 문서가 이미 존재합니다.',
 'movepage-page-moved'          => '$1 문서가 $2 (으)로 이동되었습니다.',
 'movepage-page-unmoved'        => '$1 문서를 $2로 이동할 수 없습니다.',
@@ -2363,6 +2357,9 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'djvu_no_xml'              => 'DjVu 파일의 XML 정보를 읽을 수 없음',
 'thumbnail_invalid_params' => '섬네일 매개변수가 잘못되었습니다.',
 'thumbnail_dest_directory' => '새 목적 디렉토리를 생성할 수 없습니다.',
+'thumbnail_image-type'     => '그림 유형이 지원되지 않습니다.',
+'thumbnail_gd-library'     => '불완전한 GD 라이브러리 구성: 사라진 기능 $1',
+'thumbnail_image-missing'  => '파일이 사라진 것 같음: $1',
 
 # Special:Import
 'import'                     => '문서 가져오기',
@@ -2492,7 +2489,7 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 # Attribution
 'anonymous'        => '{{SITENAME}} 익명 사용자',
 'siteuser'         => '{{SITENAME}} 사용자 $1',
-'lastmodifiedatby' => '이 문서는 $3에 의해 $2, $1에 마지막으로 바뀌었습니다.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => '이 문서는 $3에 의해 $2, $1에 마지막으로 바뀌었습니다.',
 'othercontribs'    => '$1의 작업을 바탕으로 함.',
 'others'           => '기타',
 'siteusers'        => '{{SITENAME}}의 $2명의 사용자 $1',
@@ -2534,6 +2531,17 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'mw_math_modern' => '최신 브라우저 사용자에게 권장',
 'mw_math_mathml' => '가능하면 MathML로 (실험적인 기능)',
 
+# Math errors
+'math_failure'          => '해석 실패',
+'math_unknown_error'    => '알 수 없는 오류',
+'math_unknown_function' => '알 수 없는 함수',
+'math_lexing_error'     => '어휘 오류',
+'math_syntax_error'     => '구문 오류',
+'math_image_error'      => 'PNG 변환 실패 - latex, dvips, gs, convert가 올바르게 설치되어 있는지 확인해 주세요.',
+'math_bad_tmpdir'       => '수식을 임시 폴더에 저장하거나 폴더를 만들 수 없습니다.',
+'math_bad_output'       => '수식을 출력 폴더에 저장하거나 폴더를 만들 수 없습니다.',
+'math_notexvc'          => '실행할 수 있는 texvc이 없습니다. 설정을 위해 math/README를 읽어 주세요.',
+
 # Patrolling
 'markaspatrolleddiff'                 => '검토된 것으로 표시',
 'markaspatrolledtext'                 => '이 문서를 검토된 것으로 표시',
@@ -2573,7 +2581,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''경고''': 이 파일에는 시스템을 위험하게 만드는 악성 코드가 들어있을 수 있습니다.<hr />",
-'imagemaxsize'         => '파일 설명 문서의 그림 크기를 제한하기:',
+'imagemaxsize'         => "그림 크기를 제한하기:<br />''(파일 설명 페이지)''",
 'thumbsize'            => '섬네일 크기:',
 'widthheightpage'      => '$1×$2, $3페이지',
 'file-info'            => '(파일 크기: $1, MIME 종류: $2)',
@@ -2622,7 +2630,7 @@ Variants for Chinese language
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => '너비',
@@ -2749,14 +2757,14 @@ Variants for Chinese language
 
 'exif-unknowndate' => '날짜를 알 수 없음',
 
-'exif-orientation-1' => '일반', # 0th row: top; 0th column: left
-'exif-orientation-2' => '수평으로 뒤집음', # 0th row: top; 0th column: right
-'exif-orientation-3' => '180° 회전됨', # 0th row: bottom; 0th column: right
-'exif-orientation-4' => '수직으로 뒤집음', # 0th row: bottom; 0th column: left
-'exif-orientation-5' => '시계 반대 방향으로 90° 회전하고 수직으로 뒤집음', # 0th row: left; 0th column: top
-'exif-orientation-6' => '시계 방향으로 90° 회전함', # 0th row: right; 0th column: top
-'exif-orientation-7' => '시계 방향으로 90° 회전하고 수직으로 뒤집음', # 0th row: right; 0th column: bottom
-'exif-orientation-8' => '시계 반대 방향으로 90° 회전됨', # 0th row: left; 0th column: bottom
+'exif-orientation-1' => '일반',
+'exif-orientation-2' => '수평으로 뒤집음',
+'exif-orientation-3' => '180° 회전됨',
+'exif-orientation-4' => '수직으로 뒤집음',
+'exif-orientation-5' => '시계 반대 방향으로 90° 회전하고 수직으로 뒤집음',
+'exif-orientation-6' => '시계 방향으로 90° 회전함',
+'exif-orientation-7' => '시계 방향으로 90° 회전하고 수직으로 뒤집음',
+'exif-orientation-8' => '시계 반대 방향으로 90° 회전됨',
 
 'exif-planarconfiguration-1' => '덩어리 형식',
 'exif-planarconfiguration-2' => '평면형',
@@ -2872,16 +2880,25 @@ Variants for Chinese language
 'exif-gpslongitude-e' => '동경',
 'exif-gpslongitude-w' => '서경',
 
+# Pseudotags used for GPSAltitudeRef
+'exif-gpsaltitude-0' => '해발',
+'exif-gpsaltitude-1' => '수심',
+
 'exif-gpsstatus-a' => '측정 중',
 'exif-gpsstatus-v' => '인터랙티브 측정',
 
 'exif-gpsmeasuremode-2' => '2차원 측정',
 'exif-gpsmeasuremode-3' => '3차원 측정',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => '킬로미터 매 시간',
 'exif-gpsspeed-m' => '마일 매 시간',
 'exif-gpsspeed-n' => '노트',
+
+# Pseudotags used for GPSDestDistanceRef
+'exif-gpsdestdistance-k' => '킬로미터',
+'exif-gpsdestdistance-m' => '마일',
+'exif-gpsdestdistance-n' => '해리',
 
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
 'exif-gpsdirection-t' => '실제 방위',
@@ -3016,7 +3033,7 @@ $1',
 'duplicate-defaultsort' => '경고: 기본 정렬 키 "$2"가 이전의 기본 정렬 키 "$2"를 덮어쓰고 있습니다.',
 
 # Special:Version
-'version'                          => '버전', # Not used as normal message but as header for the special page itself
+'version'                          => '버전',
 'version-extensions'               => '설치된 확장 기능',
 'version-specialpages'             => '특수 문서',
 'version-parserhooks'              => '파서 훅',
@@ -3030,7 +3047,7 @@ $1',
 'version-skin-extension-functions' => '스킨 확장 기능',
 'version-hook-name'                => '훅 이름',
 'version-hook-subscribedby'        => '훅이 사용된 위치',
-'version-version'                  => '버전',
+'version-version'                  => '(버전 $1)',
 'version-license'                  => '라이센스',
 'version-software'                 => '설치된 프로그램',
 'version-software-product'         => '제품',
@@ -3110,5 +3127,15 @@ $1',
 'dberr-usegoogle'   => '그 동안 구글을 통해 검색할 수도 있습니다.',
 'dberr-outofdate'   => '참고로, 구글의 내용 개요는 오래된 것일 수도 있습니다.',
 'dberr-cachederror' => '다음은 요청한 문서의 캐시된 복사본이며, 최신이 아닐 수도 있습니다.',
+
+# HTML forms
+'htmlform-invalid-input'       => '당신이 입력한 값에 문제가 있습니다.',
+'htmlform-select-badoption'    => '당신이 입력한 값은 올바른 설정이 아닙니다.',
+'htmlform-int-invalid'         => '당신이 입력한 값은 정수가 아닙니다.',
+'htmlform-int-toolow'          => '당신이 입력한 값은 최소값 $1 미만입니다.',
+'htmlform-int-toohigh'         => '당신이 입력한 값은 최대값 $1 이상입니다.',
+'htmlform-submit'              => '저장',
+'htmlform-reset'               => '변경한 것을 되돌리기',
+'htmlform-selectorother-other' => '기타',
 
 );

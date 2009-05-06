@@ -1963,7 +1963,9 @@ function wfGetCachedNotice( $name ) {
 	}
 
 	wfProfileOut( $fname );
-	return $notice;
+	// Use $wgContLang to get a converted string by language.
+	global $wgContLang;
+	return $wgContLang->convert( $notice );
 }
 
 function wfGetNamespaceNotice() {
@@ -3093,4 +3095,26 @@ function wfStripIllegalFilenameChars( $name ) {
 	$name = wfBaseName( $name );
 	$name = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $name );
 	return $name;
+}
+
+/**
+  * Insert array into another array after the specified *KEY*
+  * @param array $array 	The array.
+  * @param array $insert 	The array to insert.
+  * @param mixed $after 	The key to insert after
+  */
+function wfArrayInsertAfter( $array, $insert, $after ) {
+	// Find the offset of the element to insert after.
+	$keys = array_keys($array);
+	$offsetByKey = array_flip( $keys );
+	
+	$offset = $offsetByKey[$after];
+	
+	// Insert at the specified offset
+	$before = array_slice( $array, 0, $offset + 1, true );
+	$after = array_slice( $array, $offset + 1, count($array)-$offset, true );
+	
+	$output = $before + $insert + $after;
+	
+	return $output;
 }

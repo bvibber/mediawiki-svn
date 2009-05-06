@@ -1,6 +1,9 @@
 <?php
 /** Vietnamese (Tiếng Việt)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -228,26 +231,26 @@ $separatorTransformTable = array(',' => '.', '.' => ',' );
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Gạch chân liên kết:',
-'tog-highlightbroken'         => 'Liên kết đến trang chưa có sẽ <a href="" class="new">giống thế này</a> (nếu không chọn: giống thế này<a href="" class="internal">?</a>)',
+'tog-highlightbroken'         => 'Liên kết đến trang chưa được viết sẽ <a href="" class="new">như thế này</a> (nếu không chọn: như thế này<a href="" class="internal">?</a>)',
 'tog-justify'                 => 'Căn đều hai bên đoạn văn',
 'tog-hideminor'               => 'Ẩn sửa đổi nhỏ trong thay đổi gần đây',
 'tog-hidepatrolled'           => 'Ẩn sửa đổi đã tuần tra trong trang thay đổi gần đây',
 'tog-newpageshidepatrolled'   => 'Ẩn trang đã tuần trang trong danh sách các trang mới',
 'tog-extendwatchlist'         => 'Mở rộng danh sách theo dõi để hiển thị tất cả các thay đổi, chứ không chỉ các thay đổi gần đây',
-'tog-usenewrc'                => 'Thay đổi gần đây nhiều chức năng (JavaScript)',
+'tog-usenewrc'                => 'Sử dụng Thay đổi gần đây nâng cao (cần JavaScript)',
 'tog-numberheadings'          => 'Tự động đánh số các đề mục',
 'tog-showtoolbar'             => 'Hiển thị thanh định dạng (JavaScript)',
 'tog-editondblclick'          => 'Nhấn đúp để sửa đổi trang (JavaScript)',
 'tog-editsection'             => 'Cho phép sửa đổi đề mục qua liên kết [sửa]',
-'tog-editsectiononrightclick' => 'Cho phép sửa đổi mục bằng cách bấm chuột phải trên đề mục (JavaScript)',
+'tog-editsectiononrightclick' => 'Cho phép sửa đổi đề mục bằng cách bấm chuột phải trên tên đề mục (JavaScript)',
 'tog-showtoc'                 => 'Hiển thị mục lục (cho trang có trên 3 đề mục)',
 'tog-rememberpassword'        => 'Nhớ thông tin đăng nhập của tôi trên máy tính này',
-'tog-editwidth'               => 'Ô sửa đổi có bề rộng tối đa',
+'tog-editwidth'               => 'Mở rộng ô sửa đổi ra toàn màn hình',
 'tog-watchcreations'          => 'Tự động theo dõi trang tôi viết mới',
 'tog-watchdefault'            => 'Tự động theo dõi trang tôi sửa',
 'tog-watchmoves'              => 'Tự động theo dõi trang tôi di chuyển',
 'tog-watchdeletion'           => 'Tự động theo dõi trang tôi xóa',
-'tog-minordefault'            => 'Đánh dấu mặc định sửa đổi của tôi là thay đổi nhỏ',
+'tog-minordefault'            => 'Mặc định đánh dấu tất cả sửa đổi của tôi là sửa đổi nhỏ',
 'tog-previewontop'            => 'Hiển thị phần xem thử nằm trên hộp sửa đổi',
 'tog-previewonfirst'          => 'Hiện xem thử tại lần sửa đầu tiên',
 'tog-nocache'                 => 'Không lưu trang trong bộ nhớ đệm',
@@ -338,7 +341,7 @@ $messages = array(
 'category-media-header'          => 'Các tập tin trong thể loại “$1”',
 'category-empty'                 => "''Thể loại này hiện không có trang hay tập tin nào.''",
 'hidden-categories'              => '{{PLURAL:$1|Thể loại ẩn|Thể loại ẩn}}',
-'hidden-category-category'       => 'Thể loại ẩn', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Thể loại ẩn',
 'category-subcat-count'          => 'Thể loại này có {{PLURAL:$2|tiểu thể loại sau|{{PLURAL:$1||$1}} tiểu thể loại sau, trên tổng số $2 tiểu thể loại}}.',
 'category-subcat-count-limited'  => 'Thể loại này có {{PLURAL:$1||$1}} tiểu thể loại sau.',
 'category-article-count'         => '{{PLURAL:$2|Thể loại này gồm trang sau.|{{PLURAL:$1|Trang|$1 trang}} sau nằm trong thể loại này, trên tổng số $2 trang.}}',
@@ -356,10 +359,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ Các câu hỏi thường gặp MediaWiki]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Danh sách gửi thư về việc phát hành MediaWiki]',
 
-'about'          => 'Giới thiệu',
-'article'        => 'Trang nội dung',
-'newwindow'      => '(mở cửa sổ mới)',
-'cancel'         => 'Hủy bỏ',
+'about'         => 'Giới thiệu',
+'article'       => 'Trang nội dung',
+'newwindow'     => '(mở cửa sổ mới)',
+'cancel'        => 'Hủy bỏ',
+'moredotdotdot' => 'Thêm nữa…',
+'mypage'        => 'Trang của tôi',
+'mytalk'        => 'Thảo luận với tôi',
+'anontalk'      => 'Thảo luận với IP này',
+'navigation'    => 'Xem nhanh',
+'and'           => '&#32;và',
+
+# Cologne Blue skin
 'qbfind'         => 'Tìm kiếm',
 'qbbrowse'       => 'Xem qua',
 'qbedit'         => 'Sửa đổi',
@@ -367,12 +378,8 @@ $messages = array(
 'qbpageinfo'     => 'Ngữ cảnh',
 'qbmyoptions'    => 'Trang cá nhân',
 'qbspecialpages' => 'Trang đặc biệt',
-'moredotdotdot'  => 'Thêm nữa...',
-'mypage'         => 'Trang của tôi',
-'mytalk'         => 'Thảo luận với tôi',
-'anontalk'       => 'Thảo luận với IP này',
-'navigation'     => 'Xem nhanh',
-'and'            => '&#32;và',
+'faq'            => 'Câu hỏi thường gặp',
+'faqpage'        => 'Project:Các câu hỏi thường gặp',
 
 # Metadata in edit box
 'metadata_help' => 'Đặc tính hình:',
@@ -425,7 +432,7 @@ $messages = array(
 'otherlanguages'    => 'Ngôn ngữ khác',
 'redirectedfrom'    => '(đổi hướng từ $1)',
 'redirectpagesub'   => 'Trang đổi hướng',
-'lastmodifiedat'    => 'Lần sửa cuối : $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'Lần sửa cuối : $2, $1.',
 'viewcount'         => 'Trang này đã được đọc {{PLURAL:$1|một|$1}} lần.',
 'protectedpage'     => 'Trang bị khóa',
 'jumpto'            => 'Bước tới:',
@@ -444,8 +451,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Phủ nhận chung',
 'edithelp'             => 'Trợ giúp sửa đổi',
 'edithelppage'         => 'Help:Sửa đổi',
-'faq'                  => 'Câu hỏi thường gặp',
-'faqpage'              => 'Project:Các câu hỏi thường gặp',
 'helppage'             => 'Help:Nội dung',
 'mainpage'             => 'Trang Chính',
 'mainpage-description' => 'Trang Chính',
@@ -518,10 +523,6 @@ từ hàm “<tt>$2</tt>”. MySQL báo lỗi “<tt>$3: $4</tt>”.',
 'dberrortextcl'        => 'Đã xảy ra lỗi cú pháp trong truy vấn cơ sở dữ liệu. Truy vấn vừa rồi là:
 <blockquote><tt>$1</tt></blockquote>
 từ hàm “<tt>$2</tt>”. MySQL báo lỗi “<tt>$3: $4</tt>”.',
-'noconnect'            => 'Wiki đang gặp một số trục trặc kỹ thuật, và không thể kết nối với cơ sở dữ liệu. <br />
-$1',
-'nodb'                 => 'Không thấy cơ sở dữ liệu $1',
-'cachederror'          => 'Đây là bản sao trong bộ nhớ đệm của trang bạn yêu cầu, nó có thể đã lỗi thời.',
 'laggedslavemode'      => 'Cảnh báo: Trang có thể chưa được cập nhật.',
 'readonly'             => 'Cơ sở dữ liệu bị khóa',
 'enterlockreason'      => 'Nêu lý do khóa, cùng với thời hạn khóa',
@@ -586,9 +587,8 @@ Bạn có thể tiếp tục dùng {{SITENAME}} một cách vô danh, hoặc b�
 'welcomecreation'            => '== Chào mừng, $1! ==
 Tài khoản của bạn đã mở.
 Đừng quên thay đổi [[Special:Preferences|tùy chọn cá nhân của bạn tại {{SITENAME}}]].',
-'loginpagetitle'             => 'Đăng nhập',
 'yourname'                   => 'Tên người dùng:',
-'yourpassword'               => 'Mật khẩu',
+'yourpassword'               => 'Mật khẩu:',
 'yourpasswordagain'          => 'Gõ lại mật khẩu',
 'remembermypassword'         => 'Nhớ thông tin đăng nhập của tôi trên máy tính này',
 'yourdomainname'             => 'Tên miền của bạn:',
@@ -609,28 +609,7 @@ Tài khoản của bạn đã mở.
 'badretype'                  => 'Hai mật khẩu không khớp.',
 'userexists'                 => 'Tên người dùng này đã có người lấy.
 Hãy chọn một tên khác.',
-'youremail'                  => 'Thư điện tử:',
-'username'                   => 'Tên người dùng:',
-'uid'                        => 'Số thứ tự thành viên:',
-'prefs-memberingroups'       => 'Thành viên của {{PLURAL:$1|nhóm|nhóm}}:',
-'yourrealname'               => 'Tên thật:',
-'yourlanguage'               => 'Ngôn ngữ:',
-'yourvariant'                => 'Ngôn ngữ địa phương:',
-'yournick'                   => 'Chữ ký:',
-'badsig'                     => 'Chữ ký không hợp lệ; hãy kiểm tra thẻ HTML.',
-'badsiglength'               => 'Chữ ký của bạn quá dài.
-Nó không được dài quá $1 {{PLURAL:$1|ký tự|ký tự}}.',
-'yourgender'                 => 'Giới tính:',
-'gender-unknown'             => 'Không chỉ rõ',
-'gender-male'                => 'Nam',
-'gender-female'              => 'Nữ',
-'prefs-help-gender'          => 'Tùy chọn: được dùng để phần mềm có thể diễn đạt theo đúng giới tính. Thông tin này là công khai.',
-'email'                      => 'Thư điện tử',
-'prefs-help-realname'        => 'Tên thật là không bắt buộc, nhưng nếu bạn ghi lại, tên này sẽ dùng để ghi công cho bạn.',
 'loginerror'                 => 'Lỗi đăng nhập',
-'prefs-help-email'           => 'Địa chỉ thư điện tử là tùy chọn, nhưng nó giúp bạn nhận lại mật khẩu qua thư điện tử nếu bạn quên.
-Bạn cũng có thể lựa chọn để cho phép người khác liên lạc với bạn thông qua trang thành_viên hoặc thảo_luận_thành_viên mà không cần để lộ danh tính.',
-'prefs-help-email-required'  => 'Bắt buộc phải có địa chỉ e-mail.',
 'nocookiesnew'               => 'Tài khoản đã mở, nhưng bạn chưa đăng nhập. {{SITENAME}} sử dụng cookie để đăng nhập vào tài khoản. Bạn đã tắt cookie. Xin hãy kích hoạt nó, rồi đăng nhập lại với tên người dùng và mật khẩu mới.',
 'nocookieslogin'             => '{{SITENAME}} sử dụng cookie để đăng nhập thành viên. Bạn đã tắt cookie. Xin hãy kích hoạt rồi thử lại.',
 'noname'                     => 'Chưa nhập tên.',
@@ -683,17 +662,12 @@ Xin hãy bỏ qua thông báo này nếu tài khoản này không phải do bạ
 'retypenew'                 => 'Gõ lại:',
 'resetpass_submit'          => 'Chọn mật khẩu và đăng nhập',
 'resetpass_success'         => 'Đã đổi mật khẩu thành công! Đang đăng nhập…',
-'resetpass_bad_temporary'   => 'Mật khẩu tạm sai. Có thể là bạn đã đổi mật khẩu thành công hay đã xin mật khẩu tạm mới.',
 'resetpass_forbidden'       => 'Không được đổi mật khẩu',
 'resetpass-no-info'         => 'Bạn phải đăng nhập mới có thể truy cập trực tiếp trang này.',
 'resetpass-submit-loggedin' => 'Thay đổi mật khẩu',
 'resetpass-wrong-oldpass'   => 'Mật khẩu tạm hoặc mật khẩu hiện thời không hợp lệ.
 Có thể bạn đã thay đổi thành công mật khẩu của mình hoặc đã yêu cầu cung cấp một mật khẩu tạm mới.',
 'resetpass-temp-password'   => 'Mật khẩu tạm:',
-'resetpass-log'             => 'Nhật trình tái tạo mật khẩu',
-'resetpass-logtext'         => 'Dưới đây là nhật trình ghi lại những thành viên đã được người quản lý tái tạo mật khẩu giúp.',
-'resetpass-logentry'        => 'đã thay đổi mật khẩu cho $1',
-'resetpass-comment'         => 'Lý do tái tạo mật khẩu:',
 
 # Edit page toolbar
 'bold_sample'     => 'Chữ đậm',
@@ -768,7 +742,6 @@ Xin hãy ghi kèm tất cả các chi tiết trên vào thư yêu cầu của b�
 'blockededitsource'                => "Các '''sửa đổi của bạn''' ở '''$1''':",
 'whitelistedittitle'               => 'Cần đăng nhập để sửa trang',
 'whitelistedittext'                => 'Bạn phải $1 để sửa trang.',
-'confirmedittitle'                 => 'Cần xác nhận địa chỉ thư điện tử trước khi sửa đổi',
 'confirmedittext'                  => 'Bạn cần phải xác nhận địa chỉ thư điện tử trước khi được sửa đổi trang. Xin hãy đặt và xác nhận địa chỉ thư điện tử của bạn dùng trang [[Special:Preferences|tùy chọn]].',
 'nosuchsectiontitle'               => 'Không có mục nào như vậy',
 'nosuchsectiontext'                => 'Bạn vừa sửa đổi một mục chưa tồn tại.  Vì không có mục nào mang tên $1, không thể lưu sửa đổi của bạn vào đó.',
@@ -789,7 +762,7 @@ Nếu bạn là một thành viên vô danh và cảm thấy rằng có những 
 Bạn có thể [[Special:Search/{{PAGENAME}}|tìm kiếm tựa trang này]] trong các trang khác, <span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} tìm trong các nhật trình liên quan],
 hoặc [{{fullurl:{{FULLPAGENAME}}|action=edit}} sửa đổi trang này]</span>.',
 'userpage-userdoesnotexist'        => 'Tài khoản mang tên “$1” chưa được đăng ký. Xin hãy kiểm tra lại nếu bạn muốn tạo/sửa trang này.',
-'clearyourcache'                   => "'''Ghi chú - Sau khi lưu trang, có thể bạn sẽ phải xóa bộ nhớ đệm của trình duyệt để xem các thay đổi.''' '''Mozilla / Firefox / Safari:''' giữ phím ''Shift'' trong khi nhấn ''Reload'', hoặc nhấn tổ hợp ''Ctrl-F5'' hay ''Ctrl-R'' (''Command-R'' trên Macintosh); '''Konqueror:''': nhấn nút ''Reload'' hoặc nhấn ''F5''; '''Opera:''' xóa bộ nhớ đệm trong ''Tools → Preferences''; '''Internet Explorer:''' giữ phím ''Ctrl'' trong khi nhấn ''Refresh'', hoặc nhấn tổ hợp ''Ctrl-F5''.",
+'clearyourcache'                   => "'''Ghi chú&nbsp;– Sau khi lưu trang, có thể bạn sẽ phải xóa bộ nhớ đệm của trình duyệt để xem các thay đổi.''' '''Mozilla / Firefox / Safari:''' giữ phím ''Shift'' trong khi nhấn ''Reload'' (''Tải lại''), hoặc nhấn tổ hợp ''Ctrl-F5'' hay ''Ctrl-R'' (<span title=\"Command\">⌘</span>''R'' trên Macintosh); '''Konqueror:''' nhấn nút ''Reload'' hoặc nhấn ''F5''; '''Opera:''' xóa bộ nhớ đệm trong ''Tools → Preferences''; '''Internet Explorer:''' giữ phím ''Ctrl'' trong khi nhấn ''Refresh'', hoặc nhấn tổ hợp ''Ctrl-F5''.",
 'usercssjsyoucanpreview'           => "'''Mẹo:''' Sử dụng nút “Xem thử” để kiểm thử trang CSS/JS của bạn trước khi lưu trang.",
 'usercsspreview'                   => "'''Hãy nhớ rằng bạn chỉ đang xem thử trang CSS cá nhân của bạn.
 Nó chưa được lưu!'''",
@@ -854,13 +827,13 @@ Bạn có thể quay trở lại và sửa đổi các trang đã có, hoặc [[
 'permissionserrors'                => 'Không có quyền thực hiện',
 'permissionserrorstext'            => 'Bạn không có quyền thực hiện thao tác đó, vì {{PLURAL:$1|lý do|lý do}}:',
 'permissionserrorstext-withaction' => 'Bạn không quyền $2, với {{PLURAL:$1|lý do|lý do}} sau:',
-'recreate-deleted-warn'            => "'''Cảnh báo: Bạn vừa tạo lại một trang từng bị xóa trước đây.'''
+'recreate-moveddeleted-warn'       => "'''Cảnh báo: Bạn sắp tạo lại một trang từng bị xóa trước đây.'''
 
 Bạn nên cân nhắc trong việc tiếp tục soạn thảo trang này.
-Nhật trình xóa của trang được đưa ra dưới đây để tiện theo dõi:",
-'deleted-notice'                   => 'Trang này đã bị xóa.
-Nhật trình xóa trang được ghi dưới đây để tiện theo dõi.',
-'deletelog-fulllog'                => 'Xem nhật trình đầy đủ',
+Các nhật trình xóa và di chuyển của trang được đưa ra dưới đây để tiện theo dõi:",
+'moveddeleted-notice'              => 'Trang này đã bị xóa.
+Các nhật trình xóa và di chuyển của trang được đưa ra dưới đây để tiện theo dõi.',
+'log-fulllog'                      => 'Xem nhật trình đầy đủ',
 'edit-hook-aborted'                => 'Một phần bổ trợ phần mềm đã bỏ qua sửa đổi này.
 Không có lý do nào được đưa ra.',
 'edit-gone-missing'                => 'Không thể cập nhật trang.
@@ -902,7 +875,7 @@ Lý do được $3 đưa ra là ''$2''",
 'currentrev'             => 'Bản hiện tại',
 'currentrev-asof'        => 'Bản hiện tại lúc $1',
 'revisionasof'           => 'Phiên bản lúc $1',
-'revision-info'          => 'Phiên bản vào lúc $1 do $2 sửa đổi', # Additionally available: $3: revision id
+'revision-info'          => 'Phiên bản vào lúc $1 do $2 sửa đổi',
 'previousrevision'       => '← Phiên bản cũ',
 'nextrevision'           => 'Phiên bản mới →',
 'currentrevisionlink'    => 'xem phiên bản hiện hành',
@@ -924,7 +897,7 @@ Chú giải: (hiện) = khác với phiên bản hiện hành,
 # Revision feed
 'history-feed-title'          => 'Lịch sử thay đổi',
 'history-feed-description'    => 'Lịch sử thay đổi của trang này ở wiki',
-'history-feed-item-nocomment' => '$1 vào lúc $2', # user at time
+'history-feed-item-nocomment' => '$1 vào lúc $2',
 'history-feed-empty'          => 'Trang bạn yêu cầu không tồn tại. Có thể là nó đã bị xóa khỏi wiki hay được đổi tên. Hãy [[Special:Search|tìm kiếm trong wiki]] về các trang mới có liên quan.',
 
 # Revision deletion
@@ -1115,10 +1088,9 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'searchmenu-new'                   => "'''Tạo trang “[[:$1]]” trên wiki này!'''",
 'searchhelp-url'                   => 'Help:Nội dung',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Duyệt các trang với tiền tố này]]',
-'searchprofile-articles'           => 'Trang có nội dung',
-'searchprofile-articles-and-proj'  => 'Trang có nội dung & Trang dự án',
-'searchprofile-project'            => 'Trang dự án',
-'searchprofile-images'             => 'Tập tin',
+'searchprofile-articles'           => 'Bài viết',
+'searchprofile-project'            => 'Trợ giúp',
+'searchprofile-images'             => 'Đa phương tiện',
 'searchprofile-everything'         => 'Tất cả',
 'searchprofile-advanced'           => 'Nâng cao',
 'searchprofile-articles-tooltip'   => 'Tìm trong $1',
@@ -1126,8 +1098,6 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'searchprofile-images-tooltip'     => 'Tìm tập tin',
 'searchprofile-everything-tooltip' => 'Tìm tất cả nội dung (gồm cả các trang thảo luận)',
 'searchprofile-advanced-tooltip'   => 'Tìm trong không gian tên tùy chọn',
-'prefs-search-nsdefault'           => 'Tìm sử dụng giá trị mặc định:',
-'prefs-search-nscustom'            => 'Tìm không gian tên tùy chọn:',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 từ|$2 từ}})',
 'search-result-score'              => 'Độ phù hợp: $1%',
 'search-redirect'                  => '(đổi hướng $1)',
@@ -1144,7 +1114,8 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'searchall'                        => 'tất cả',
 'showingresults'                   => "Dưới đây là {{PLURAL:$1|'''1'''|'''$1'''}} kết quả bắt đầu từ #'''$2'''.",
 'showingresultsnum'                => "Dưới đây là {{PLURAL:$3|'''1'''|'''$3'''}} kết quả bắt đầu từ #'''$2'''.",
-'showingresultstotal'              => "Dưới đây là {{PLURAL:$4|kết quả thứ '''$1''' trong tổng số '''$3'''|những kết quả từ '''$1 - $2''' trong tổng số '''$3'''}}",
+'showingresultstotal'              => "Dưới đây là {{PLURAL:$4|kết quả thứ '''$1''' trong tổng số '''$3'''|những kết quả từ '''$1–$2''' trong tổng số '''$3'''}}",
+'showingresultsheader'             => "{{PLURAL:$5|Kết quả thứ '''$1''' trong tổng số '''$3''' kết quả|Kết quả từ '''$1 - $2''' trong tổng số '''$3''' kết quả}} cho '''$4'''",
 'nonefound'                        => "'''Chú ý''': Theo mặc định chỉ tìm kiếm một số không gian tên. Hãy thử bắt đầu từ khóa bằng ''all:'' để tìm mọi nội dung (kể cả trang thảo luận, tiêu bản, v.v.), hoặc bắt đầu bằng không gian tên mong muốn (ví dụ ''Thảo luận:'', ''Tiêu bản:'', ''Thể loại:''…).",
 'search-nonefound'                 => 'Không có kết quả nào khớp với câu truy vấn.',
 'powersearch'                      => 'Tìm kiếm nâng cao',
@@ -1155,35 +1126,27 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'search-external'                  => 'Tìm kiếm từ bên ngoài',
 'searchdisabled'                   => 'Chức năng tìm kiếm tại {{SITENAME}} đã bị tắt. Bạn có tìm kiếm bằng Google trong thời gian này. Chú ý rằng các chỉ mục từ {{SITENAME}} của chúng có thể đã lỗi thời.',
 
+# Quickbar
+'qbsettings'               => 'Thanh công cụ',
+'qbsettings-none'          => 'Không có',
+'qbsettings-fixedleft'     => 'Cố định trái',
+'qbsettings-fixedright'    => 'Cố định phải',
+'qbsettings-floatingleft'  => 'Nổi bên trái',
+'qbsettings-floatingright' => 'Nổi bên phải',
+
 # Preferences page
 'preferences'               => 'Tùy chọn',
 'mypreferences'             => 'Tùy chọn',
 'prefs-edits'               => 'Số lần sửa đổi:',
 'prefsnologin'              => 'Chưa đăng nhập',
 'prefsnologintext'          => 'Bạn phải <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} đăng nhập]</span> để thiết lập tùy chọn cá nhân.',
-'prefsreset'                => 'Các tùy chọn cá nhân đã được mặc định lại.',
-'qbsettings'                => 'Thanh công cụ',
-'qbsettings-none'           => 'Không có',
-'qbsettings-fixedleft'      => 'Cố định trái',
-'qbsettings-fixedright'     => 'Cố định phải',
-'qbsettings-floatingleft'   => 'Nổi bên trái',
-'qbsettings-floatingright'  => 'Nổi bên phải',
 'changepassword'            => 'Đổi mật khẩu',
-'skin'                      => 'Hình dạng',
+'prefs-skin'                => 'Hình dạng',
 'skin-preview'              => 'Xem thử',
-'math'                      => 'Công thức toán',
-'dateformat'                => 'Kiểu ngày tháng',
-'datedefault'               => 'Không lựa chọn',
-'datetime'                  => 'Ngày tháng',
-'math_failure'              => 'Không thể phân tích cú pháp',
-'math_unknown_error'        => 'lỗi lạ',
-'math_unknown_function'     => 'hàm lạ',
-'math_lexing_error'         => 'lỗi chính tả',
-'math_syntax_error'         => 'lỗi cú pháp',
-'math_image_error'          => 'Không chuyển sang định dạng PNG được; xin kiểm tra lại cài đặt latex, dvips, gs và convert',
-'math_bad_tmpdir'           => 'Không tạo mới hay viết vào thư mục toán tạm thời được',
-'math_bad_output'           => 'Không tạo mới hay viết vào thư mục kết quả được',
-'math_notexvc'              => 'Không thấy hàm thực thi texvc; xin xem math/README để biết cách cấu hình.',
+'prefs-math'                => 'Công thức toán',
+'dateformat'                => 'Định dạng ngày',
+'datedefault'               => 'Không quan tâm',
+'prefs-datetime'            => 'Ngày tháng',
 'prefs-personal'            => 'Thông tin cá nhân',
 'prefs-rc'                  => 'Thay đổi gần đây',
 'prefs-watchlist'           => 'Theo dõi',
@@ -1193,10 +1156,12 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'prefs-watchlist-edits-max' => '(con số tối đa: 1000)',
 'prefs-misc'                => 'Linh tinh',
 'prefs-resetpass'           => 'Thay đổi mật khẩu',
+'prefs-email'               => 'Tùy chọn thư điện tử',
+'prefs-rendering'           => 'Bề ngoài',
 'saveprefs'                 => 'Lưu tùy chọn',
 'resetprefs'                => 'Mặc định lại lựa chọn',
 'restoreprefs'              => 'Mặc định lại toàn bộ tùy chọn',
-'textboxsize'               => 'Sửa đổi',
+'prefs-editing'             => 'Sửa đổi',
 'prefs-edit-boxsize'        => 'Kích thước cửa sổ soạn thảo.',
 'rows'                      => 'Số hàng:',
 'columns'                   => 'Số cột:',
@@ -1207,14 +1172,13 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'stub-threshold'            => 'Định dạng <a href="#" class="stub">liên kết đến sơ khai</a> cho các trang ngắn hơn (byte):',
 'recentchangesdays'         => 'Số ngày hiển thị trong thay đổi gần đây:',
 'recentchangesdays-max'     => '(tối đa $1 {{PLURAL:$1|ngày|ngày}})',
-'recentchangescount'        => 'Số sửa đổi hiển thị trong trang thay đổi gần đây, lịch sử của trang, và các nhật trình, theo mặc định:',
+'recentchangescount'        => 'Số sửa đổi hiển thị trong trang thay đổi gần đây, lịch sử của trang và nhật trình, theo mặc định là:',
 'savedprefs'                => 'Đã lưu các tùy chọn cá nhân.',
 'timezonelegend'            => 'Múi giờ',
-'timezonetext'              => '¹Số giờ chênh lệch giữa giờ địa phương của bạn với giờ máy chủ (UTC)',
-'localtime'                 => 'Giờ địa phương:',
+'localtime'                 => 'Giờ hiện tại:',
 'timezoneselect'            => 'Múi giờ:',
 'timezoneuseserverdefault'  => 'Sử dụng giờ mặc định của máy chủ',
-'timezoneuseoffset'         => 'Khác (cần ghi mục chênh giờ)',
+'timezoneuseoffset'         => 'Khác (cần ghi số giờ chênh lệch)',
 'timezoneoffset'            => 'Chênh giờ¹:',
 'servertime'                => 'Giờ máy chủ:',
 'guesstimezone'             => 'Dùng giờ của trình duyệt',
@@ -1233,12 +1197,43 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'prefs-namespaces'          => 'Không gian tên',
 'defaultns'                 => 'Mặc định tìm kiếm trong không gian tên:',
 'default'                   => 'mặc định',
-'files'                     => 'Tập tin',
+'prefs-files'               => 'Tập tin',
 'prefs-custom-css'          => 'sửa CSS',
 'prefs-custom-js'           => 'sửa JS',
+'prefs-reset-intro'         => 'Có thể mặc định lại toàn bộ tùy chọn dùng trang này.
+Không có thể lùi lại tác động này.',
+'prefs-emailconfirm-label'  => 'Xác nhận thư điện tử:',
+'prefs-textboxsize'         => 'Kích cỡ hộp sửa đổi',
+'youremail'                 => 'Thư điện tử:',
+'username'                  => 'Tên người dùng:',
+'uid'                       => 'Số thứ tự thành viên:',
+'prefs-memberingroups'      => 'Thành viên của {{PLURAL:$1|nhóm|nhóm}}:',
+'prefs-registration'        => 'Thời điểm đăng ký:',
+'yourrealname'              => 'Tên thật:',
+'yourlanguage'              => 'Ngôn ngữ:',
+'yourvariant'               => 'Ngôn ngữ địa phương:',
+'yournick'                  => 'Chữ ký:',
+'badsig'                    => 'Chữ ký không hợp lệ; hãy kiểm tra thẻ HTML.',
+'badsiglength'              => 'Chữ ký của bạn quá dài.
+Nó không được dài quá $1 {{PLURAL:$1|ký tự|ký tự}}.',
+'yourgender'                => 'Giới tính:',
+'gender-unknown'            => 'Không chỉ rõ',
+'gender-male'               => 'Nam',
+'gender-female'             => 'Nữ',
+'prefs-help-gender'         => 'Tùy chọn: được phần mềm sử dụng để xác định đúng giới tính.
+Thông tin này là công khai.',
+'email'                     => 'Thư điện tử',
+'prefs-help-realname'       => 'Tên thật là không bắt buộc.
+Nếu bạn đồng ý cung cấp, nó sẽ dùng để ghi nhận công lao của bạn.',
+'prefs-help-email'          => 'Địa chỉ thư điện tử là tùy chọn, nhưng nó giúp chúng tôi gửi cho bạn mật khẩu mới qua thư điện tử nếu bạn quên mật khẩu của mình.
+Bạn cũng có thể lựa chọn cho phép người khác liên lạc với bạn thông qua trang thành_viên hoặc thảo_luận_thành_viên mà không cần để lộ danh tính.',
+'prefs-help-email-required' => 'Bắt buộc phải có địa chỉ e-mail.',
+'prefs-info'                => 'Thông tin cơ bản',
+'prefs-i18n'                => 'Quốc tế hóa',
+'prefs-signature'           => 'Chữ ký',
 
 # User rights
-'userrights'                  => 'Quản lý quyền thành viên', # Not used as normal message but as header for the special page itself
+'userrights'                  => 'Quản lý quyền thành viên',
 'userrights-lookup-user'      => 'Quản lý nhóm thành viên',
 'userrights-user-editname'    => 'Nhập tên thành viên:',
 'editusergroup'               => 'Sửa nhóm thành viên',
@@ -1588,8 +1583,8 @@ Lời miêu tả tại [$2 trang mô tả tập tin] tại đấy được hiể
 'noimage'                   => 'Không có tập tin có tên này, nhưng bạn có thể $1.',
 'noimage-linktext'          => 'tải tập tin lên',
 'uploadnewversion-linktext' => 'Tải lên phiên bản mới',
-'shared-repo-from'          => 'tại $1', # $1 is the repository name
-'shared-repo'               => 'kho lưu trữ dùng chung', # used when shared-repo-NAME does not exist
+'shared-repo-from'          => 'tại $1',
+'shared-repo'               => 'kho lưu trữ dùng chung',
 
 # File reversion
 'filerevert'                => 'Lùi lại phiên bản của $1',
@@ -1818,17 +1813,21 @@ Xem thêm [[Special:WantedCategories|thể loại cần thiết]].',
 'newuserlog-autocreate-entry' => 'Tài khoản được tạo tự động',
 
 # Special:ListGroupRights
-'listgrouprights'                 => 'Nhóm thành viên',
-'listgrouprights-summary'         => 'Dưới đây là danh sách nhóm thành viên được định nghĩa tại wiki này, với mức độ truy cập của từng nhóm.
+'listgrouprights'                      => 'Nhóm thành viên',
+'listgrouprights-summary'              => 'Dưới đây là danh sách nhóm thành viên được định nghĩa tại wiki này, với mức độ truy cập của từng nhóm.
 Có [[{{MediaWiki:Listgrouprights-helppage}}|thông tin thêm]] về từng nhóm riêng biệt.',
-'listgrouprights-group'           => 'Nhóm',
-'listgrouprights-rights'          => 'Khả năng',
-'listgrouprights-helppage'        => 'Help:Khả năng của nhóm thành viên',
-'listgrouprights-members'         => '(danh sách thành viên)',
-'listgrouprights-addgroup'        => 'Có thể thêm {{PLURAL:$2|nhóm|các nhóm}}: $1',
-'listgrouprights-removegroup'     => 'Có thể bỏ {{PLURAL:$2|nhóm|các nhóm}}: $1',
-'listgrouprights-addgroup-all'    => 'Có thể thêm tất cả các nhóm',
-'listgrouprights-removegroup-all' => 'Có thể bỏ tất cả các nhóm',
+'listgrouprights-group'                => 'Nhóm',
+'listgrouprights-rights'               => 'Khả năng',
+'listgrouprights-helppage'             => 'Help:Khả năng của nhóm thành viên',
+'listgrouprights-members'              => '(danh sách thành viên)',
+'listgrouprights-addgroup'             => 'Có thể thêm {{PLURAL:$2|nhóm|các nhóm}}: $1',
+'listgrouprights-removegroup'          => 'Có thể bỏ {{PLURAL:$2|nhóm|các nhóm}}: $1',
+'listgrouprights-addgroup-all'         => 'Có thể thêm tất cả các nhóm',
+'listgrouprights-removegroup-all'      => 'Có thể bỏ tất cả các nhóm',
+'listgrouprights-addgroup-self'        => 'Có thể đưa tài khoản của chính mình vào {{PLURAL:$2|nhóm|các nhóm}}: $1',
+'listgrouprights-removegroup-self'     => 'Có thể loại tài khoản của chính mình ra khỏi {{PLURAL:$2|nhóm|các nhóm}}: $1',
+'listgrouprights-addgroup-self-all'    => 'Có thể đưa tài khoản của chính mình vào tất cả các nhóm',
+'listgrouprights-removegroup-self-all' => 'Có thể loại tài khoản của chính mình ra khỏi tất cả các nhóm',
 
 # E-mail user
 'mailnologin'      => 'Không có địa chỉ gửi thư',
@@ -1940,6 +1939,7 @@ Xóa “$1”',
 'confirmdeletetext'      => 'Bạn sắp xóa hẳn một trang cùng với tất cả lịch sử của nó.
 Xin xác nhận việc bạn định làm, và hiểu rõ những hệ lụy của nó, và bạn thực hiện nó theo đúng đúng [[{{MediaWiki:Policy-url}}|quy định]].',
 'actioncomplete'         => 'Đã thực hiện xong',
+'actionfailed'           => 'Tác động bị thất bại',
 'deletedtext'            => 'Đã xóa “<nowiki>$1</nowiki>”. Xem danh sách các xóa bỏ gần nhất tại $2.',
 'deletedarticle'         => 'đã xóa “$1”',
 'suppressedarticle'      => 'đã giấu "[[$1]]"',
@@ -1971,8 +1971,8 @@ người viết trang cuối cùng cũng là tác giả duy nhất của trang n
 'alreadyrolled'    => 'Không thể lùi tất cả sửa đổi cuối của [[User:$2|$2]] ([[User talk:$2|thảo luận]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) tại [[:$1]]; ai đó đã thực hiện sửa đổi hoặc thực hiện lùi tất cả rồi.
 
 Sửa đổi cuối cùng tại trang do [[User:$3|$3]] ([[User talk:$3|thảo luận]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) thực hiện.',
-'editcomment'      => "Tóm lược sửa đổi: “''$1''”.", # only shown if there is an edit comment
-'revertpage'       => 'Đã hủy sửa đổi của [[Special:Contributions/$2|$2]] ([[User talk:$2|Thảo luận]]) quay về phiên bản của [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'editcomment'      => "Tóm lược sửa đổi: “''$1''”.",
+'revertpage'       => 'Đã hủy sửa đổi của [[Special:Contributions/$2|$2]] ([[User talk:$2|Thảo luận]]) quay về phiên bản của [[User:$1|$1]]',
 'rollback-success' => 'Đã hủy sửa đổi của $1;
 quay về phiên bản cuối của $2.',
 'sessionfailure'   => 'Dường như có trục trặc với phiên đăng nhập của bạn; thao tác này đã bị hủy để tránh việc cướp quyền đăng nhập. Xin hãy nhấn nút “Back”, tải lại trang đó, rồi thử lại.',
@@ -2020,7 +2020,7 @@ hiện tại của trang '''$1''':",
 ** Bút chiến thiếu tính xây dựng
 ** Trang nhiều người xem',
 'protect-edit-reasonlist'     => 'Sửa lý do khóa trang',
-'protect-expiry-options'      => '1 giờ:1 hour,1 ngày:1 day,1 tuần:1 week,2 tuần:2 weeks,1 tháng:1 month,3 tháng:3 months,6 tháng:6 months,1 năm:1 year,vô hạn:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1 giờ:1 hour,1 ngày:1 day,1 tuần:1 week,2 tuần:2 weeks,1 tháng:1 month,3 tháng:3 months,6 tháng:6 months,1 năm:1 year,vô hạn:infinite',
 'restriction-type'            => 'Quyền:',
 'restriction-level'           => 'Mức độ hạn chế:',
 'minimum-size'                => 'Kích thước tối thiểu',
@@ -2099,7 +2099,7 @@ $1',
 'contributions-title' => 'Đóng góp của thành viên $1',
 'mycontris'           => 'Đóng góp của tôi',
 'contribsub2'         => 'Của $1 ($2)',
-'nocontribs'          => 'Không tìm thấy thay đổi nào khớp với yêu cầu.', # Optional parameter: $1 is the user name
+'nocontribs'          => 'Không tìm thấy thay đổi nào khớp với yêu cầu.',
 'uctop'               => '(mới nhất)',
 'month'               => 'Từ tháng (trở về trước):',
 'year'                => 'Từ năm (trở về trước):',
@@ -2164,7 +2164,7 @@ $1',
 'ipbenableautoblock'              => 'Tự động cấm các địa chỉ IP mà thành viên này sử dụng',
 'ipbsubmit'                       => 'Cấm',
 'ipbother'                        => 'Thời hạn khác:',
-'ipboptions'                      => '2 giờ:2 hours,1 ngày:1 day,3 ngày:3 days,1 tuần:1 week,2 tuần:2 weeks,1 tháng:1 month,3 tháng:3 months,6 tháng:6 months,1 năm:1 year,vô hạn:infinite', # display1:time1,display2:time2,...
+'ipboptions'                      => '2 giờ:2 hours,1 ngày:1 day,3 ngày:3 days,1 tuần:1 week,2 tuần:2 weeks,1 tháng:1 month,3 tháng:3 months,6 tháng:6 months,1 năm:1 year,vô hạn:infinite',
 'ipbotheroption'                  => 'khác',
 'ipbotherreason'                  => 'Lý do khác',
 'ipbhidename'                     => 'Ẩn tên người dùng ra khỏi các sửa đổi và danh sách',
@@ -2292,7 +2292,7 @@ Trong những trường hợp đó, bạn phải di chuyển hoặc hợp nhất
 'move-watch'                   => 'Theo dõi trang này',
 'movepagebtn'                  => 'Di chuyển trang',
 'pagemovedsub'                 => 'Di chuyển thành công',
-'movepage-moved'               => "<big>'''“$1” đã được di chuyển đến “$2”'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => "<big>'''“$1” đã được di chuyển đến “$2”'''</big>",
 'movepage-moved-redirect'      => 'Đã tạo trang chuyển hướng.',
 'movepage-moved-noredirect'    => 'Chức năng tạo trang chuyển hướng đã bị tắt.',
 'articleexists'                => 'Đã có một trang với tên đó, hoặc tên bạn chọn không hợp lệ.
@@ -2374,6 +2374,9 @@ Mời vào [http://www.mediawiki.org/wiki/Localisation Địa phương hóa Medi
 'djvu_no_xml'              => 'Không thể truy xuất XML cho tập tin DjVu',
 'thumbnail_invalid_params' => 'Tham số hình thu nhỏ không hợp lệ',
 'thumbnail_dest_directory' => 'Không thể tạo thư mục đích',
+'thumbnail_image-type'     => 'Không hỗ trợ kiểu hình này',
+'thumbnail_gd-library'     => 'Cấu hình thư viện GD chưa hoàn thành: thiếu hàm $1',
+'thumbnail_image-missing'  => 'Hình như tập tin mất tích: $1',
 
 # Special:Import
 'import'                     => 'Nhập các trang',
@@ -2516,7 +2519,7 @@ Lưu nó vào máy tính của bạn rồi tải nó lên đây.',
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Thành viên|Thành viên}} vô danh của {{SITENAME}}',
 'siteuser'         => 'Thành viên $1 của {{SITENAME}}',
-'lastmodifiedatby' => 'Trang này được $3 cập nhật lần cuối lúc $2, $1.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Trang này được $3 cập nhật lần cuối lúc $2, $1.',
 'othercontribs'    => 'Dựa trên công trình của $1.',
 'others'           => 'những người khác',
 'siteusers'        => '{{PLURAL:$2|Thành viên|Các thành viên}} $1 của {{SITENAME}}',
@@ -2552,9 +2555,20 @@ Lưu nó vào máy tính của bạn rồi tải nó lên đây.',
 'mw_math_png'    => 'Luôn cho ra dạng hình PNG',
 'mw_math_simple' => 'HTML nếu rất đơn giản, nếu không thì PNG',
 'mw_math_html'   => 'HTML nếu có thể, nếu không thì PNG',
-'mw_math_source' => 'Để là TeX (dành cho trình duyệt văn bản)',
-'mw_math_modern' => 'Đề nghị, dành cho trình duyệt hiện đại',
+'mw_math_source' => 'Để nguyên mã TeX (dành cho trình duyệt văn bản)',
+'mw_math_modern' => 'Khuyên dùng với các trình duyệt hiện đại',
 'mw_math_mathml' => 'MathML nếu có thể (thử nghiệm)',
+
+# Math errors
+'math_failure'          => 'Không thể phân tích cú pháp',
+'math_unknown_error'    => 'lỗi lạ',
+'math_unknown_function' => 'hàm lạ',
+'math_lexing_error'     => 'lỗi chính tả',
+'math_syntax_error'     => 'lỗi cú pháp',
+'math_image_error'      => 'Không chuyển sang định dạng PNG được; xin kiểm tra lại cài đặt latex, dvips, gs và convert',
+'math_bad_tmpdir'       => 'Không tạo mới hay viết vào thư mục toán tạm thời được',
+'math_bad_output'       => 'Không tạo mới hay viết vào thư mục kết quả được',
+'math_notexvc'          => 'Không thấy hàm thực thi texvc; xin xem math/README để biết cách cấu hình.',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Đánh dấu tuần tra',
@@ -2595,8 +2609,8 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Cảnh báo''': Tập tin này có thể chứa mã hiểm độc, nếu thực thi nó máy tính của bạn có thể bị tiếm quyền.<hr />",
-'imagemaxsize'         => 'Giới hạn độ phân giải trên trang miêu tả tập tin:',
-'thumbsize'            => 'Kích thước thu nhỏ:',
+'imagemaxsize'         => "Giới hạn cỡ hình:<br />''(trên trang miêu tả tập tin)''",
+'thumbsize'            => 'Cỡ hình thu nhỏ:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|trang|trang}}',
 'file-info'            => '(kích thước tập tin: $1, định dạng MIME: $2)',
 'file-info-size'       => '($1 × $2 điểm ảnh, kích thước: $3, định dạng MIME: $4)',
@@ -2640,7 +2654,7 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Bề ngang',
@@ -2772,14 +2786,14 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 
 'exif-unknowndate' => 'Không biết ngày',
 
-'exif-orientation-1' => 'Thường', # 0th row: top; 0th column: left
-'exif-orientation-2' => 'Lộn ngược theo phương ngang', # 0th row: top; 0th column: right
-'exif-orientation-3' => 'Quay 180°', # 0th row: bottom; 0th column: right
-'exif-orientation-4' => 'Lộn ngược theo phương dọc', # 0th row: bottom; 0th column: left
-'exif-orientation-5' => 'Quay 90° bên trái và lộn thẳng đứng', # 0th row: left; 0th column: top
-'exif-orientation-6' => 'Quay 90° bên phải', # 0th row: right; 0th column: top
-'exif-orientation-7' => 'Quay 90° bên phải và lộn thẳng đứng', # 0th row: right; 0th column: bottom
-'exif-orientation-8' => 'Quay 90° bên trái', # 0th row: left; 0th column: bottom
+'exif-orientation-1' => 'Thường',
+'exif-orientation-2' => 'Lộn ngược theo phương ngang',
+'exif-orientation-3' => 'Quay 180°',
+'exif-orientation-4' => 'Lộn ngược theo phương dọc',
+'exif-orientation-5' => 'Quay 90° bên trái và lộn thẳng đứng',
+'exif-orientation-6' => 'Quay 90° bên phải',
+'exif-orientation-7' => 'Quay 90° bên phải và lộn thẳng đứng',
+'exif-orientation-8' => 'Quay 90° bên trái',
 
 'exif-planarconfiguration-1' => 'định dạng thấp',
 'exif-planarconfiguration-2' => 'định dạng phẳng',
@@ -2895,16 +2909,25 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 'exif-gpslongitude-e' => 'Kinh độ đông',
 'exif-gpslongitude-w' => 'Kinh độ tây',
 
+# Pseudotags used for GPSAltitudeRef
+'exif-gpsaltitude-0' => 'Mét trên mực nước biển',
+'exif-gpsaltitude-1' => 'Mét dưới mực nước biển',
+
 'exif-gpsstatus-a' => 'Đang đo',
 'exif-gpsstatus-v' => 'Mức độ khả năng liên điều hành',
 
 'exif-gpsmeasuremode-2' => 'Đo 2 chiều',
 'exif-gpsmeasuremode-3' => 'Đo 3 chiều',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'Kilômét một giờ',
 'exif-gpsspeed-m' => 'Dặm một giờ',
 'exif-gpsspeed-n' => 'Hải lý một giờ',
+
+# Pseudotags used for GPSDestDistanceRef
+'exif-gpsdestdistance-k' => 'Kilômét',
+'exif-gpsdestdistance-m' => 'Dặm Anh',
+'exif-gpsdestdistance-n' => 'Hải lý',
 
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
 'exif-gpsdirection-t' => 'Hướng thật',
@@ -3045,12 +3068,56 @@ Bạn cũng có thể [[Special:Watchlist/edit|dùng trình soạn thảo chuẩ
 'watchlisttools-edit' => 'Xem và sửa danh sách theo dõi',
 'watchlisttools-raw'  => 'Sửa danh sách theo dõi dạng thô',
 
+# Iranian month names
+'iranian-calendar-m1'  => 'Farvardin',
+'iranian-calendar-m2'  => 'Ordibehesht',
+'iranian-calendar-m3'  => 'Khordad',
+'iranian-calendar-m4'  => 'Tir',
+'iranian-calendar-m5'  => 'Mordad',
+'iranian-calendar-m6'  => 'Shahrivar',
+'iranian-calendar-m7'  => 'Mehr',
+'iranian-calendar-m8'  => 'Aban',
+'iranian-calendar-m9'  => 'Azar',
+'iranian-calendar-m10' => 'Dey',
+'iranian-calendar-m11' => 'Bahman',
+'iranian-calendar-m12' => 'Esfand',
+
+# Hijri month names
+'hijri-calendar-m1'  => 'Muharram',
+'hijri-calendar-m2'  => 'Safar',
+'hijri-calendar-m3'  => 'Rabi’ al-awwal',
+'hijri-calendar-m4'  => 'Rabi’ al-thani',
+'hijri-calendar-m5'  => 'Jumada al-awwal',
+'hijri-calendar-m6'  => 'Jumada al-thani',
+'hijri-calendar-m7'  => 'Rajab',
+'hijri-calendar-m8'  => 'Sha’aban',
+'hijri-calendar-m9'  => 'Ramadan',
+'hijri-calendar-m10' => 'Shawwal',
+'hijri-calendar-m11' => 'Dhu al-Qi’dah',
+'hijri-calendar-m12' => 'Dhu al-Hijjah',
+
+# Hebrew month names
+'hebrew-calendar-m1'  => 'Tishrei',
+'hebrew-calendar-m2'  => 'Cheshvan',
+'hebrew-calendar-m3'  => 'Kislev',
+'hebrew-calendar-m4'  => 'Tevet',
+'hebrew-calendar-m5'  => 'Shevat',
+'hebrew-calendar-m6'  => 'Adar',
+'hebrew-calendar-m6a' => 'Adar 1',
+'hebrew-calendar-m6b' => 'Adar 2',
+'hebrew-calendar-m7'  => 'Nisan',
+'hebrew-calendar-m8'  => 'Iyar',
+'hebrew-calendar-m9'  => 'Sivan',
+'hebrew-calendar-m10' => 'Tamuz',
+'hebrew-calendar-m11' => 'Av',
+'hebrew-calendar-m12' => 'Elul',
+
 # Core parser functions
 'unknown_extension_tag' => 'Không hiểu thẻ mở rộng “$1”',
 'duplicate-defaultsort' => 'Cảnh báo: Từ khóa xếp mặc định “$2” ghi đè từ khóa trước, “$1”.',
 
 # Special:Version
-'version'                          => 'Phiên bản', # Not used as normal message but as header for the special page itself
+'version'                          => 'Phiên bản',
 'version-extensions'               => 'Các phần mở rộng được cài đặt',
 'version-specialpages'             => 'Trang đặc biệt',
 'version-parserhooks'              => 'Hook trong bộ xử lý',
@@ -3064,7 +3131,7 @@ Bạn cũng có thể [[Special:Watchlist/edit|dùng trình soạn thảo chuẩ
 'version-skin-extension-functions' => 'Hàm mở rộng skin',
 'version-hook-name'                => 'Tên hook',
 'version-hook-subscribedby'        => 'Được theo dõi bởi',
-'version-version'                  => 'phiên bản',
+'version-version'                  => '(phiên bản $1)',
 'version-license'                  => 'Giấy phép bản quyền',
 'version-software'                 => 'Phần mềm được cài đặt',
 'version-software-product'         => 'Phần mềm',
@@ -3143,5 +3210,15 @@ Hãy cho vào tên của tập tin, trừ tiền tố “{{ns:file}}:”.',
 'dberr-usegoogle'   => 'Bạn có thể thử tìm trên Google trong khi chờ đợi.',
 'dberr-outofdate'   => 'Chú ý rằng các chỉ mục của Google có thể đã lỗi thời.',
 'dberr-cachederror' => 'Sau đây là bản sao được lưu bộ đệm của trang bạn muốn xem, và có thể đã lỗi thời.',
+
+# HTML forms
+'htmlform-invalid-input'       => 'Có vấn đề trong dữ liệu bạn vừa đưa vào',
+'htmlform-select-badoption'    => 'Giá trị đưa vào không hợp lệ.',
+'htmlform-int-invalid'         => 'Giá trị đưa vào không phải số nguyên.',
+'htmlform-int-toolow'          => 'Giá trị đưa vào phải ít nhất $1',
+'htmlform-int-toohigh'         => 'Giá trị không được vượt quá $1',
+'htmlform-submit'              => 'Đăng',
+'htmlform-reset'               => 'Hủy các thay đổi',
+'htmlform-selectorother-other' => 'Khác',
 
 );

@@ -1,6 +1,9 @@
 <?php
 /** Novial (Novial)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -68,21 +71,23 @@ $messages = array(
 'category_header' => 'Artikles in kategorie "$1"',
 'subcategories'   => 'Subkategories',
 
-'about'          => 'Pri',
-'article'        => 'Pagine de kontenaje',
-'newwindow'      => '(aperta in novi fenestre)',
-'cancel'         => 'Nihilisa',
+'about'         => 'Pri',
+'article'       => 'Pagine de kontenaje',
+'newwindow'     => '(aperta in novi fenestre)',
+'cancel'        => 'Nihilisa',
+'moredotdotdot' => 'Plu...',
+'mypage'        => 'Men pagine',
+'mytalk'        => 'Men parla-pagine',
+'anontalk'      => 'Parlo por disi IP',
+'navigation'    => 'Navigatione',
+'and'           => '&#32;e',
+
+# Cologne Blue skin
 'qbfind'         => 'Trova',
 'qbedit'         => 'Modifika',
 'qbpageoptions'  => 'Disi pagine',
 'qbmyoptions'    => 'Men pagines',
 'qbspecialpages' => 'Spesial pagines',
-'moredotdotdot'  => 'Plu...',
-'mypage'         => 'Men pagine',
-'mytalk'         => 'Men parla-pagine',
-'anontalk'       => 'Parlo por disi IP',
-'navigation'     => 'Navigatione',
-'and'            => '&#32;e',
 
 'returnto'         => 'Rivada a $1.',
 'tagline'          => 'Fro {{SITENAME}}',
@@ -116,7 +121,7 @@ $messages = array(
 'templatepage'     => 'Vida shablonal pagine',
 'categorypage'     => 'Regarda kategorial pagine',
 'otherlanguages'   => 'Altri lingues',
-'lastmodifiedat'   => 'Disi pagine blid lastim modifika: $2 ye $1.', # $1 date, $2 time
+'lastmodifiedat'   => 'Disi pagine blid lastim modifika: $2 ye $1.',
 'jumptonavigation' => 'navigatione',
 'jumptosearch'     => 'sercha',
 
@@ -161,7 +166,6 @@ $messages = array(
 'logouttext'                 => "'''Vu es nun eksignatat.'''<br />
 Vu pove kontinua usa {{SITENAME}} anonimim, o vu pove riensignata
 kom li sami o altri usere.",
-'loginpagetitle'             => 'Useren ensignato',
 'yourname'                   => 'Usere-nome:',
 'yourpassword'               => 'Pasa-vorde:',
 'remembermypassword'         => 'Memora men pasa-vorde (kun kuke)',
@@ -358,7 +362,7 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 'deletecomment'   => 'Resone de ekarto',
 
 # Rollback
-'revertpage' => 'Riverted modifikos da [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); restaurad lasti versione da [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage' => 'Riverted modifikos da [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); restaurad lasti versione da [[User:$1|$1]]',
 
 # Protect
 'prot_1movedto2'      => '[[$1]] movat a [[$2]]',
@@ -435,7 +439,7 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 'autosumm-new'     => 'Novi pagine: $1',
 
 # Special:Version
-'version'                  => 'Versione', # Not used as normal message but as header for the special page itself
+'version'                  => 'Versione',
 'version-specialpages'     => 'Spesial pagines',
 'version-software-version' => 'Versione',
 

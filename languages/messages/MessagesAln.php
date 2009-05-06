@@ -1,6 +1,9 @@
 <?php
 /** Gheg Albanian (Gegë)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -120,7 +123,7 @@ $messages = array(
 'category-media-header'    => 'Skeda në kategori "$1"',
 'category-empty'           => "''Kjo kategori tashpërtash nuk përmban asnji faqe apo media.''",
 'hidden-categories'        => '{{PLURAL:$1|Kategoritë e mshehta|Kategoritë e mshehta}}',
-'hidden-category-category' => 'Kategori të mshehta', # Name of the category where hidden categories will be listed
+'hidden-category-category' => 'Kategori të mshehta',
 'listingcontinuesabbrev'   => 'vazh.',
 
 'mainpagetext'      => "<big>'''MediaWiki software u instalue me sukses.'''</big>",
@@ -131,12 +134,20 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Help:Configuration_settings Parazgjedhjet e MediaWiki-t]
 * [http://www.mediawiki.org/wiki/Help:FAQ Pyetjet e shpeshta rreth MediaWiki-t]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce Njoftime rreth MediaWiki-t]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Njoftime rreth MediaWiki-t]',
 
-'about'          => 'Rreth',
-'article'        => 'Artikulli',
-'newwindow'      => '(çelet në një dritare të re)',
-'cancel'         => 'Harroji',
+'about'         => 'Rreth',
+'article'       => 'Artikulli',
+'newwindow'     => '(çelet në një dritare të re)',
+'cancel'        => 'Harroji',
+'moredotdotdot' => 'Ma shumë...',
+'mypage'        => 'Fáqja jémé',
+'mytalk'        => 'Diskutimet e mia',
+'anontalk'      => 'Diskutimet për këtë IP',
+'navigation'    => 'Shfleto',
+'and'           => '&#32;dhe',
+
+# Cologne Blue skin
 'qbfind'         => 'Kërko',
 'qbbrowse'       => 'Shfletoni',
 'qbedit'         => 'Redaktoni',
@@ -144,12 +155,8 @@ $messages = array(
 'qbpageinfo'     => 'Informacion mbi faqen',
 'qbmyoptions'    => 'Opsionet e mia',
 'qbspecialpages' => 'Fáqet speciále',
-'moredotdotdot'  => 'Ma shumë...',
-'mypage'         => 'Fáqja jémé',
-'mytalk'         => 'Diskutimet e mia',
-'anontalk'       => 'Diskutimet për këtë IP',
-'navigation'     => 'Shfleto',
-'and'            => '&#32;dhe',
+'faq'            => 'Pyetje e Përgjegjje',
+'faqpage'        => 'Project:Pyetje e Përgjegjje',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -200,7 +207,7 @@ $messages = array(
 'otherlanguages'    => "N'gjuhë tjera",
 'redirectedfrom'    => '(Përcjellë nga $1)',
 'redirectpagesub'   => 'Faqe përcjellëse',
-'lastmodifiedat'    => 'Kjo faqe asht ndryshue për herë të fundit më $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'Kjo faqe asht ndryshue për herë të fundit më $2, $1.',
 'viewcount'         => 'Kjo faqe asht pá $1 herë.',
 'protectedpage'     => 'Faqe e mbrojtme',
 'jumpto'            => 'Shko te:',
@@ -219,8 +226,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Shfajësimet e përgjithshme',
 'edithelp'             => 'Ndihmë për redaktim',
 'edithelppage'         => 'Help:Si me redaktue një faqe',
-'faq'                  => 'Pyetje e Përgjegjje',
-'faqpage'              => 'Project:Pyetje e Përgjegjje',
 'helppage'             => 'Help:Ndihmë',
 'mainpage'             => 'Faqja Kryesore',
 'mainpage-description' => 'Faqja Kryesore',
@@ -293,10 +298,6 @@ MySQL kthehu gabimin "<tt>$3: $4</tt>".',
 "$1"
 nga funksioni "$2".
 MySQL kthehu gabimin "$3: $4".',
-'noconnect'            => 'Ju kërkojmë të falme! Defekt teknik, rifillojmë së shpejti.<br />
-$1',
-'nodb'                 => 'Nuk mujta me zgjidh regjistrin $1',
-'cachederror'          => 'Kjo asht një kopje e faqes së kërkueme dhe munet me kánë e vjetër.',
 'laggedslavemode'      => 'Kujdes: Kjo faqe munet mos me kánë e përtërime nga shërbyesi kryesor dhe munet me pas informacion të vjetër',
 'readonly'             => 'Regjistri i bllokuem',
 'enterlockreason'      => 'Futni një arsye për bllokimin, gjithashtu futni edhe kohën se kur pritet të çbllokohet',
@@ -355,15 +356,6 @@ Llogaria juej asht hap. Mos harroni me ndryshu parapëlqimet e {{SITENAME}}-s.',
 'gotaccountlink'          => 'Hyni',
 'createaccountmail'       => 'me email',
 'userexists'              => 'Nofka që përdorët asht në përdorim. Zgjidhni një nofkë tjetër.',
-'youremail'               => 'Adresa e email-it*',
-'username'                => 'Nofka e përdoruesit:',
-'uid'                     => 'Nr. i identifikimit:',
-'yourrealname'            => 'Emri juej i vërtetë*',
-'yourlanguage'            => 'Ndërfaqja gjuhësore',
-'yournick'                => 'Nofka :',
-'badsig'                  => 'Sintaksa e nënshkrimit asht e pavlefshme, kontrolloni HTML-n.',
-'badsiglength'            => 'Emri i zgjedhun asht shumë i gjatë; duhet me pas ma pak se $1 shkronja',
-'email'                   => 'Email',
 'nocookieslogin'          => '{{SITENAME}} përdor "biskota" për me futë brenda përdoruesit. Prandaj, duhet të pranoni "biskota" dhe të provoni prap.',
 
 # Edit page toolbar
@@ -403,7 +395,7 @@ Llogaria juej asht hap. Mos harroni me ndryshu parapëlqimet e {{SITENAME}}-s.',
 
 # History pages
 'revisionasof'     => 'Versioni i $1',
-'revision-info'    => 'Versioni me $1 nga $2', # Additionally available: $3: revision id
+'revision-info'    => 'Versioni me $1 nga $2',
 'previousrevision' => '← Verzion ma i vjetër',
 'cur'              => 'tash',
 'last'             => 'fund',
@@ -426,6 +418,15 @@ Ju lutem kërkoni {{SITENAME}}-n para se me krijue një artikull të ri se munet
 # Preferences page
 'mypreferences' => 'Parapëlqimet',
 'skin-preview'  => 'Parapamje',
+'youremail'     => 'Adresa e email-it*',
+'username'      => 'Nofka e përdoruesit:',
+'uid'           => 'Nr. i identifikimit:',
+'yourrealname'  => 'Emri juej i vërtetë*',
+'yourlanguage'  => 'Ndërfaqja gjuhësore',
+'yournick'      => 'Nofka :',
+'badsig'        => 'Sintaksa e nënshkrimit asht e pavlefshme, kontrolloni HTML-n.',
+'badsiglength'  => 'Emri i zgjedhun asht shumë i gjatë; duhet me pas ma pak se $1 shkronja',
+'email'         => 'Email',
 
 # Recent changes
 'recentchanges'   => 'Ndryshimet e fundit',

@@ -1,5 +1,8 @@
 <?php
-/** Zhuang ((Cuengh))
+/** Zhuang (Sawcuengh)
+ *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
  *
  * @ingroup Language
  * @file
@@ -34,10 +37,12 @@ $messages = array(
 'september-gen' => 'Nin Gouj',
 'sep'           => 'Nin Gouj',
 
-'cancel'         => 'Fwtqfex',
+'cancel'     => 'Fwtqfex',
+'mytalk'     => 'Gaeq gou gangj',
+'navigation' => 'Dazzaeuh',
+
+# Cologne Blue skin
 'qbspecialpages' => 'Doenghmae daegxsei',
-'mytalk'         => 'Gaeq gou gangj',
-'navigation'     => 'Dazzaeuh',
 
 'help'             => 'Caeuq',
 'search'           => 'Cwmh',
@@ -68,7 +73,6 @@ $messages = array(
 # Login and logout pages
 'yourname'    => 'Ciu bouxdeiz:',
 'notloggedin' => 'Maengx laezhaej',
-'username'    => 'Ciu bouxdeiz:',
 
 # Edit pages
 'summary'            => 'Saegmangj:',
@@ -86,6 +90,7 @@ $messages = array(
 'mypreferences'     => 'Doenghgaeq gou hae',
 'prefsnologin'      => 'Maengx laezhaej',
 'searchresultshead' => 'Cwmh',
+'username'          => 'Ciu bouxdeiz:',
 
 # Recent changes
 'recentchanges' => 'Gaeqgaij suijnej',

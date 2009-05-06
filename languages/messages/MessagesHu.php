@@ -1,6 +1,9 @@
 <?php
 /** Hungarian (Magyar)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -388,7 +391,7 @@ $messages = array(
 'category-media-header'          => 'A(z) „$1” kategóriába tartozó médiafájlok',
 'category-empty'                 => "''Ebben a kategóriában pillanatnyilag egyetlen lap, médiafájl vagy alkategória sem szerepel.''",
 'hidden-categories'              => '{{PLURAL:$1|Rejtett kategória|Rejtett kategóriák}}',
-'hidden-category-category'       => 'Rejtett kategóriák', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Rejtett kategóriák',
 'category-subcat-count'          => '{{PLURAL:$2|Csak a következő alkategória található ebben a kategóriában.|Az összesen $2 alkategóriából a következő $1 található ebben a kategóriában.}}',
 'category-subcat-count-limited'  => 'Ebben a kategóriában {{PLURAL:$1|egy|$1}} alkategória található.',
 'category-article-count'         => '{{PLURAL:$2|Csak a következő lap található ebben a kategóriában.|Az összesen $2 lapból a következő $1 található ebben a kategóriában.}}',
@@ -405,10 +408,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki GyIK]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki-kiadások levelezőlistája]",
 
-'about'          => 'Névjegy',
-'article'        => 'Szócikk',
-'newwindow'      => '(új ablakban nyílik meg)',
-'cancel'         => 'Mégse',
+'about'         => 'Névjegy',
+'article'       => 'Szócikk',
+'newwindow'     => '(új ablakban nyílik meg)',
+'cancel'        => 'Mégse',
+'moredotdotdot' => 'Tovább…',
+'mypage'        => 'Lapom',
+'mytalk'        => 'Vitám',
+'anontalk'      => 'az IP-címhez tartozó vitalap',
+'navigation'    => 'Navigáció',
+'and'           => '&#32;és',
+
+# Cologne Blue skin
 'qbfind'         => 'Keresés',
 'qbbrowse'       => 'Böngészés',
 'qbedit'         => 'Szerkesztés',
@@ -416,12 +427,8 @@ $messages = array(
 'qbpageinfo'     => 'Lapinformáció',
 'qbmyoptions'    => 'Lapjaim',
 'qbspecialpages' => 'Speciális lapok',
-'moredotdotdot'  => 'Tovább…',
-'mypage'         => 'Lapom',
-'mytalk'         => 'Vitám',
-'anontalk'       => 'az IP-címhez tartozó vitalap',
-'navigation'     => 'Navigáció',
-'and'            => '&#32;és',
+'faq'            => 'GyIK',
+'faqpage'        => 'Project:GyIK',
 
 # Metadata in edit box
 'metadata_help' => 'Metaadatok:',
@@ -474,7 +481,7 @@ $messages = array(
 'otherlanguages'    => 'Más nyelveken',
 'redirectedfrom'    => '($1 szócikkből átirányítva)',
 'redirectpagesub'   => 'Átirányító lap',
-'lastmodifiedat'    => 'A lap utolsó módosítása: $1, $2', # $1 date, $2 time
+'lastmodifiedat'    => 'A lap utolsó módosítása: $1, $2',
 'viewcount'         => 'Ezt a lapot {{PLURAL:$1|egy|$1}} alkalommal keresték fel.',
 'protectedpage'     => 'Védett lap',
 'jumpto'            => 'Ugrás:',
@@ -493,8 +500,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Jogi nyilatkozat',
 'edithelp'             => 'Szerkesztési súgó',
 'edithelppage'         => 'Help:Szerkesztés',
-'faq'                  => 'GyIK',
-'faqpage'              => 'Project:GyIK',
 'helppage'             => 'Help:Tartalom',
 'mainpage'             => 'Kezdőlap',
 'mainpage-description' => 'Kezdőlap',
@@ -574,10 +579,6 @@ Az utoljára megkísérelt adatbázis lekérdezés
 „$1” volt
 a „<tt>$2</tt>” függvényből.
 A MySQL ezzel a hibával tért vissza: „<tt>$3: $4</tt>”.',
-'noconnect'            => 'A wikin technikai problémák merültek fel, és nem sikerült csatlakozni az adatbázisszerverhez.<br />
-$1',
-'nodb'                 => 'Nem sikerült kiválasztani a(z) $1 adatbázist',
-'cachederror'          => 'Ez a kért lap gyorsítótáras változata, ezért lehet, hogy nem tartalmazza a legújabb módosításokat.',
 'laggedslavemode'      => 'Figyelem: Ez a lap nem feltétlenül tartalmazza a legfrissebb változtatásokat!',
 'readonly'             => 'Az adatbázis le van zárva',
 'enterlockreason'      => 'Add meg a lezárás okát, valamint egy becslést, hogy mikor kerül a lezárás feloldásra',
@@ -643,7 +644,6 @@ Lehetséges, hogy néhány oldalon továbbra is azt látod, be vagy jelentkezve,
 'welcomecreation'            => '== Köszöntünk, $1! ==
 A felhasználói fiókodat létrehoztuk.
 Ne felejtsd el átnézni a [[Special:Preferences|személyes beállításaidat]].',
-'loginpagetitle'             => 'Bejelentkezés',
 'yourname'                   => 'Szerkesztőneved:',
 'yourpassword'               => 'Jelszavad:',
 'yourpasswordagain'          => 'Jelszavad ismét:',
@@ -666,28 +666,7 @@ Ne felejtsd el átnézni a [[Special:Preferences|személyes beállításaidat]].
 'badretype'                  => 'Az általad megadott jelszavak nem egyeznek.',
 'userexists'                 => 'A megadott szerkesztőnév már foglalt.
 Kérlek, válassz másikat!',
-'youremail'                  => 'Az e-mail címed:',
-'username'                   => 'Szerkesztőnév:',
-'uid'                        => 'Azonosító:',
-'prefs-memberingroups'       => '{{PLURAL:$1|Csoporttagság|Csoporttagságok}}:',
-'yourrealname'               => 'Valódi neved:',
-'yourlanguage'               => 'A felület nyelve:',
-'yourvariant'                => 'Változó',
-'yournick'                   => 'Aláírás:',
-'badsig'                     => 'Érvénytelen aláírás; ellenőrizd a HTML-formázást.',
-'badsiglength'               => 'Az aláírásod túl hosszú.
-{{PLURAL:$1|Egy|$1}} karakternél rövidebbnek kell lennie.',
-'yourgender'                 => 'Nem:',
-'gender-unknown'             => 'Nincs megadva',
-'gender-male'                => 'Férfi',
-'gender-female'              => 'Nő',
-'prefs-help-gender'          => 'Nem kötelező: a szoftver használja a nemalapú üzenetek megjelenítéséhez. Az információ mindenki számára látható.',
-'email'                      => 'E-mail',
-'prefs-help-realname'        => 'A valódi nevet nem kötelező megadni, de ha úgy döntesz, hogy megadod, azzal leszel feltüntetve a munkád szerzőjeként.',
 'loginerror'                 => 'Hiba történt a bejelentkezés során',
-'prefs-help-email'           => 'Az e-mail cím megadása nem kötelező, de így kérhetsz új jelszót, ha elfelejtenéd a meglévőt.
-Ezen kívül más szerkesztők is kapcsolatba lépjenek veled a szerkesztői vagy vitalapodon keresztül, anélkül, hogy névtelenséged feladnád.',
-'prefs-help-email-required'  => 'Meg kell adnod az e-mail címedet.',
 'nocookiesnew'               => 'A felhasználói fiókod létrejött, de nem vagy bejelentkezve. A wiki sütiket („cookie”) használ a szerkesztők azonosítására. Nálad ezek le vannak tiltva. Kérlek, engedélyezd őket, majd lépj be az új azonosítóddal és jelszavaddal.',
 'nocookieslogin'             => 'A wiki sütiket („cookie”) használ a szerkesztők azonosításhoz.
 Nálad ezek le vannak tiltva.
@@ -750,17 +729,12 @@ Ha nem kértél új azonosítót, és tévedésből kaptad ezt a levelet, nyugod
 'retypenew'                 => 'Új jelszó ismét:',
 'resetpass_submit'          => 'Add meg a jelszót és jelentkezz be',
 'resetpass_success'         => 'A jelszavad megváltoztatása sikeresen befejeződött! Bejelentkezés...',
-'resetpass_bad_temporary'   => 'Az ideiglenes jelszó hibás. Lehet, hogy már sikeresen megváltoztattad a jelszavadat, vagy új ideiglenes jelszót kértél.',
 'resetpass_forbidden'       => 'A jelszavak nem változtathatóak meg',
 'resetpass-no-info'         => 'Be kell jelentkezned hogy közvetlenül elérd ezt a lapot.',
 'resetpass-submit-loggedin' => 'Jelszó megváltoztatása',
 'resetpass-wrong-oldpass'   => 'Nem megfelelő ideiglenes vagy jelenlegi jelszó.
 Lehet, hogy már sikeresen megváltoztattad a jelszavad, vagy pedig időközben új ideiglenes jelszót kértél.',
 'resetpass-temp-password'   => 'Ideiglenes jelszó:',
-'resetpass-log'             => 'Jelszóvisszaállítási napló',
-'resetpass-logtext'         => 'Alább azon szerkesztők listája látható, akik új jelszót kaptak egy adminisztrátortól.',
-'resetpass-logentry'        => 'megváltozatta $1 jelszavát',
-'resetpass-comment'         => 'Új jelszó kérésének oka:',
 
 # Edit page toolbar
 'bold_sample'     => 'Félkövér szöveg',
@@ -836,7 +810,6 @@ Kérjük, hogy érdeklődés esetén mindkettőt add meg.",
 'blockededitsource'                => "A(z) '''$1''' lapon '''végrehajtott szerkesztésed''' szövege:",
 'whitelistedittitle'               => 'A lap szerkesztéséhez be kell jelentkezned',
 'whitelistedittext'                => 'Lapok szerkesztéséhez $1.',
-'confirmedittitle'                 => 'Lapok szerkesztéséhez meg kell erősítened az e-mail címedet',
 'confirmedittext'                  => 'Lapok szerkesztése előtt meg kell erősítened az e-mail címedet. Kérjük, hogy a [[Special:Preferences|szerkesztői beállításaidban]] add meg, majd erősítsd meg az e-mail címedet.',
 'nosuchsectiontitle'               => 'Nincs ilyen szakasz',
 'nosuchsectiontext'                => 'Egy olyan szakaszt próbáltál meg szerkeszteni, ami nem létezik.
@@ -931,13 +904,13 @@ Visszamehetsz és szerkeszthetsz egy létező lapot, valamint [[Special:UserLogi
 'permissionserrors'                => 'Engedélyezési hiba',
 'permissionserrorstext'            => 'A művelet elvégzése nem engedélyezett a számodra, a következő {{PLURAL:$1|ok|okok}} miatt:',
 'permissionserrorstext-withaction' => 'Nincs jogosultságod a következő művelet elvégzéséhez: $2, a következő {{PLURAL:$1|ok|okok}} miatt:',
-'recreate-deleted-warn'            => "'''Vigyázat: egy olyan lapot akarsz létrehozni, amit korábban már töröltek.'''
+'recreate-moveddeleted-warn'       => "'''Vigyázat: egy olyan lapot akarsz létrehozni, amit korábban már töröltek.'''
 
 Mielőtt létrehoznád, nézd meg, miért került törölték és ellenőrizd,
-hogy a törlés indoka nem érvényes-e még. A törlési naplóban a lapról az alábbi bejegyzések szerepelnek:",
-'deleted-notice'                   => 'Az oldal korábban törölve lett.
-A lap törlési naplója alább olvasható.',
-'deletelog-fulllog'                => 'Teljes napló megtekintése',
+hogy a törlés indoka nem érvényes-e még. A törlési és átnevezési naplókban a lapról az alábbi bejegyzések szerepelnek:",
+'moveddeleted-notice'              => 'Az oldal korábban törölve lett.
+A lap törlési és átnevezési naplója alább olvasható.',
+'log-fulllog'                      => 'Teljes napló megtekintése',
 'edit-hook-aborted'                => 'A szerkesztés meg lett szakítva egy hook által.
 Nem lett magyarázat csatolva.',
 'edit-gone-missing'                => 'Nem lehet frissíteni a lapot.
@@ -978,7 +951,7 @@ Néhány sablon nem fog megjelenni.',
 'currentrev'             => 'Aktuális változat',
 'currentrev-asof'        => 'A lap jelenlegi, $1-kori változata',
 'revisionasof'           => 'A lap $1-kori változata',
-'revision-info'          => 'A lap korábbi változatát látod, amilyen $2 $1-kor történt szerkesztése után volt.', # Additionally available: $3: revision id
+'revision-info'          => 'A lap korábbi változatát látod, amilyen $2 $1-kor történt szerkesztése után volt.',
 'previousrevision'       => '←Régebbi változat',
 'nextrevision'           => 'Újabb változat→',
 'currentrevisionlink'    => 'Aktuális változat',
@@ -999,7 +972,7 @@ Jelmagyarázat: (akt) = eltérés az aktuális változattól, (előző) = eltér
 # Revision feed
 'history-feed-title'          => 'Laptörténet',
 'history-feed-description'    => 'Az oldal laptörténete a wikiben',
-'history-feed-item-nocomment' => '$1, $2-n', # user at time
+'history-feed-item-nocomment' => '$1, $2-n',
 'history-feed-empty'          => 'A kért oldal nem létezik.
 Lehet, hogy törölték a wikiből, vagy átnevezték.
 Próbálkozhatsz a témával kapcsolatos lapok [[Special:Search|keresésével]].',
@@ -1105,68 +1078,69 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 'mergelogpagetext'   => 'A lapok egyesítéséről szóló napló. Szűkítheted a listát a műveletet végző szerkesztő, vagy az érintett oldal megadásával.',
 
 # Diffs
-'history-title'           => 'A(z) „$1” laptörténete',
-'difference'              => '(Változatok közti eltérés)',
-'lineno'                  => '$1. sor:',
-'compareselectedversions' => 'Kiválasztott változatok összehasonlítása',
-'visualcomparison'        => 'Vizuális összehasonlítás',
-'wikicodecomparison'      => 'Wikikód összehasonlítása',
-'editundo'                => 'visszavonás',
-'diff-multi'              => '({{PLURAL:$1|Egy közbeeső változat|$1 közbeeső változat}} nincs mutatva)',
-'diff-movedto'            => 'Áthelyezve ide: $1',
-'diff-styleadded'         => 'A(z) $1 stílus hozzáadva',
-'diff-added'              => 'A(z) $1 hozzáadva',
-'diff-changedto'          => 'Cserélve erre: $1',
-'diff-movedoutof'         => 'Elrakva innen: $1',
-'diff-styleremoved'       => 'A(z) $1 stílus eltávolítva',
-'diff-removed'            => 'A(z) $1 eltávolítva',
-'diff-changedfrom'        => 'Cserélve erről: $1',
-'diff-src'                => 'forrás',
-'diff-withdestination'    => 'céllal $1',
-'diff-with'               => '&#32;$1 $2',
-'diff-with-additional'    => '$1 $2',
-'diff-with-final'         => '&#32;és $1 $2',
-'diff-width'              => 'szélesség',
-'diff-height'             => 'magasság',
-'diff-p'                  => "egy '''bekezdés'''",
-'diff-blockquote'         => "egy '''idézet'''",
-'diff-h1'                 => "egy '''első szintű fejezetcím'''",
-'diff-h2'                 => "egy '''kettes szintű fejezetcím'''",
-'diff-h3'                 => "egy '''hármas szintű fejezetcím'''",
-'diff-h4'                 => "egy '''négyes szintű fejezetcím'''",
-'diff-h5'                 => "egy '''ötös szintű fejezetcím'''",
-'diff-pre'                => "egy '''formázatlan szöveget tartalmazó blokk'''",
-'diff-div'                => "egy '''div'''",
-'diff-ul'                 => "egy '''rendezetlen lista'''",
-'diff-ol'                 => "egy '''számozott lista'''",
-'diff-li'                 => "egy '''listaelem'''",
-'diff-table'              => "egy '''táblázat'''",
-'diff-tbody'              => "egy '''táblázat tartalma'''",
-'diff-tr'                 => "egy '''sor'''",
-'diff-td'                 => "egy '''cella'''",
-'diff-th'                 => "egy '''fejléc'''",
-'diff-br'                 => "egy '''sortörés'''",
-'diff-hr'                 => "egy '''vízszintes vonal'''",
-'diff-code'               => "egy '''programkód-blokk'''",
-'diff-dl'                 => "egy '''definíciós lista'''",
-'diff-dt'                 => "egy '''fogalom definíciója'''",
-'diff-dd'                 => "egy '''definíció'''",
-'diff-input'              => "egy '''beviteli mező'''",
-'diff-form'               => "egy '''űrlap'''",
-'diff-img'                => "egy '''fájl'''",
-'diff-span'               => "egy '''span'''",
-'diff-a'                  => "egy '''link'''",
-'diff-i'                  => "'''dőlt'''",
-'diff-b'                  => "'''félkövér'''",
-'diff-strong'             => "'''vastagított'''",
-'diff-em'                 => "'''kiemelés'''",
-'diff-font'               => "'''betűtípus'''",
-'diff-big'                => "'''nagy'''",
-'diff-del'                => "'''törölt'''",
-'diff-tt'                 => "'''fix szélességű szöveg'''",
-'diff-sub'                => "'''alsó index'''",
-'diff-sup'                => "'''felső index'''",
-'diff-strike'             => "'''áthúzás'''",
+'history-title'            => 'A(z) „$1” laptörténete',
+'difference'               => '(Változatok közti eltérés)',
+'lineno'                   => '$1. sor:',
+'compareselectedversions'  => 'Kiválasztott változatok összehasonlítása',
+'showhideselectedversions' => 'A kiválasztott verziók megjelenítése/elrejtése',
+'visualcomparison'         => 'Vizuális összehasonlítás',
+'wikicodecomparison'       => 'Wikikód összehasonlítása',
+'editundo'                 => 'visszavonás',
+'diff-multi'               => '({{PLURAL:$1|Egy közbeeső változat|$1 közbeeső változat}} nincs mutatva)',
+'diff-movedto'             => 'Áthelyezve ide: $1',
+'diff-styleadded'          => 'A(z) $1 stílus hozzáadva',
+'diff-added'               => 'A(z) $1 hozzáadva',
+'diff-changedto'           => 'Cserélve erre: $1',
+'diff-movedoutof'          => 'Elrakva innen: $1',
+'diff-styleremoved'        => 'A(z) $1 stílus eltávolítva',
+'diff-removed'             => 'A(z) $1 eltávolítva',
+'diff-changedfrom'         => 'Cserélve erről: $1',
+'diff-src'                 => 'forrás',
+'diff-withdestination'     => 'céllal $1',
+'diff-with'                => '&#32;$1 $2',
+'diff-with-additional'     => '$1 $2',
+'diff-with-final'          => '&#32;és $1 $2',
+'diff-width'               => 'szélesség',
+'diff-height'              => 'magasság',
+'diff-p'                   => "egy '''bekezdés'''",
+'diff-blockquote'          => "egy '''idézet'''",
+'diff-h1'                  => "egy '''első szintű fejezetcím'''",
+'diff-h2'                  => "egy '''kettes szintű fejezetcím'''",
+'diff-h3'                  => "egy '''hármas szintű fejezetcím'''",
+'diff-h4'                  => "egy '''négyes szintű fejezetcím'''",
+'diff-h5'                  => "egy '''ötös szintű fejezetcím'''",
+'diff-pre'                 => "egy '''formázatlan szöveget tartalmazó blokk'''",
+'diff-div'                 => "egy '''div'''",
+'diff-ul'                  => "egy '''rendezetlen lista'''",
+'diff-ol'                  => "egy '''számozott lista'''",
+'diff-li'                  => "egy '''listaelem'''",
+'diff-table'               => "egy '''táblázat'''",
+'diff-tbody'               => "egy '''táblázat tartalma'''",
+'diff-tr'                  => "egy '''sor'''",
+'diff-td'                  => "egy '''cella'''",
+'diff-th'                  => "egy '''fejléc'''",
+'diff-br'                  => "egy '''sortörés'''",
+'diff-hr'                  => "egy '''vízszintes vonal'''",
+'diff-code'                => "egy '''programkód-blokk'''",
+'diff-dl'                  => "egy '''definíciós lista'''",
+'diff-dt'                  => "egy '''fogalom definíciója'''",
+'diff-dd'                  => "egy '''definíció'''",
+'diff-input'               => "egy '''beviteli mező'''",
+'diff-form'                => "egy '''űrlap'''",
+'diff-img'                 => "egy '''fájl'''",
+'diff-span'                => "egy '''span'''",
+'diff-a'                   => "egy '''link'''",
+'diff-i'                   => "'''dőlt'''",
+'diff-b'                   => "'''félkövér'''",
+'diff-strong'              => "'''vastagított'''",
+'diff-em'                  => "'''kiemelés'''",
+'diff-font'                => "'''betűtípus'''",
+'diff-big'                 => "'''nagy'''",
+'diff-del'                 => "'''törölt'''",
+'diff-tt'                  => "'''fix szélességű szöveg'''",
+'diff-sub'                 => "'''alsó index'''",
+'diff-sup'                 => "'''felső index'''",
+'diff-strike'              => "'''áthúzás'''",
 
 # Search results
 'searchresults'                    => 'A keresés eredménye',
@@ -1192,10 +1166,9 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 'searchmenu-new'                   => "'''Hozd létre a(z) „[[:$1]]” nevű lapot ezen a wikin!'''",
 'searchhelp-url'                   => 'Help:Tartalom',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Ilyen előtagú lapok listázása]]',
-'searchprofile-articles'           => 'Fő tartalom',
-'searchprofile-articles-and-proj'  => 'Fő tartalom és projektlapok',
-'searchprofile-project'            => 'Projektlapok',
-'searchprofile-images'             => 'Fájlok',
+'searchprofile-articles'           => 'Szócikkek',
+'searchprofile-project'            => 'Segítség',
+'searchprofile-images'             => 'Médiafájlok',
 'searchprofile-everything'         => 'Minden lap',
 'searchprofile-advanced'           => 'Részletes',
 'searchprofile-articles-tooltip'   => 'A következőkben keres: $1',
@@ -1203,8 +1176,6 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 'searchprofile-images-tooltip'     => 'Fájlok keresése',
 'searchprofile-everything-tooltip' => 'Minden névtérben keres (a vitalapokat is beleértve)',
 'searchprofile-advanced-tooltip'   => 'Keresés adott névterekben',
-'prefs-search-nsdefault'           => 'Keresés alapbeállítások használatával:',
-'prefs-search-nscustom'            => 'Egyedi névterek keresése:',
 'search-result-size'               => '$1 ({{PLURAL:$2|egy|$2}} szó)',
 'search-result-score'              => 'Relevancia: $1%',
 'search-redirect'                  => '(átirányítás ide: $1)',
@@ -1222,6 +1193,7 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 'showingresults'                   => "Lent '''{{PLURAL:$1|egy|$1}}''' találat látható, az eleje '''$2'''.",
 'showingresultsnum'                => "Lent '''{{PLURAL:$3|egy|$3}}''' találat látható, az eleje '''$2'''.",
 'showingresultstotal'              => "{{PLURAL:$4|Találat: '''$1''' (összesen '''$3''')|Találatok: '''$1 – $2''' (összesen '''$3''')}}",
+'showingresultsheader'             => "{{PLURAL:$5|'''$1'''|'''$1 - $2'''}}. találat a(z) '''$4''' kifejezésre (összesen: '''$3''')",
 'nonefound'                        => "'''Megjegyzés''': Alapértelmezésben a keresés nem terjed ki minden névtérre. Ha az összes névtérben keresni akarsz, írd az ''all:'' karaktersorozatot a keresett kifejezés elé.",
 'search-nonefound'                 => 'Nincs egyezés a megadott szöveggel.',
 'powersearch'                      => 'Részletes keresés',
@@ -1232,35 +1204,27 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 'search-external'                  => 'Külső kereső',
 'searchdisabled'                   => 'Elnézésed kérjük, de a teljes szöveges keresés terhelési okok miatt átmenetileg nem használható. Ezidő alatt használhatod a lenti Google keresést, mely viszont lehetséges, hogy nem teljesen friss adatokkal dolgozik.',
 
+# Quickbar
+'qbsettings'               => 'Gyorsmenü',
+'qbsettings-none'          => 'Nincs',
+'qbsettings-fixedleft'     => 'Fix baloldali',
+'qbsettings-fixedright'    => 'Fix jobboldali',
+'qbsettings-floatingleft'  => 'Lebegő baloldali',
+'qbsettings-floatingright' => 'Lebegő jobboldali',
+
 # Preferences page
 'preferences'               => 'Beállításaim',
 'mypreferences'             => 'Beállításaim',
 'prefs-edits'               => 'Szerkesztéseid száma:',
 'prefsnologin'              => 'Nem jelentkeztél be',
 'prefsnologintext'          => 'Saját beállításaid elmentéséhez <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} be kell jelentkezned.] </span>',
-'prefsreset'                => 'A beállítások visszaállításra kerültek a tárolóból.',
-'qbsettings'                => 'Gyorsmenü',
-'qbsettings-none'           => 'Nincs',
-'qbsettings-fixedleft'      => 'Fix baloldali',
-'qbsettings-fixedright'     => 'Fix jobboldali',
-'qbsettings-floatingleft'   => 'Lebegő baloldali',
-'qbsettings-floatingright'  => 'Lebegő jobboldali',
 'changepassword'            => 'Jelszócsere',
-'skin'                      => 'Felület',
+'prefs-skin'                => 'Felület',
 'skin-preview'              => 'előnézet',
-'math'                      => 'Képletek',
+'prefs-math'                => 'Képletek',
 'dateformat'                => 'Dátum formátuma',
 'datedefault'               => 'Nincs beállítás',
-'datetime'                  => 'Dátum és idő',
-'math_failure'              => 'Értelmezés sikertelen',
-'math_unknown_error'        => 'ismeretlen hiba',
-'math_unknown_function'     => 'ismeretlen függvény',
-'math_lexing_error'         => 'lexikai hiba',
-'math_syntax_error'         => 'formai hiba',
-'math_image_error'          => 'Sikertelen PNG-vé alakítás; ellenőrizd a latex, dvips, gs telepítését',
-'math_bad_tmpdir'           => 'Nem írható vagy nem hozható létre a matematikai ideiglenes könyvtár',
-'math_bad_output'           => 'Nem lehet létrehozni vagy írni a matematikai függvények kimeneti könyvtárába',
-'math_notexvc'              => 'HIányzó texvc végrehajtható fájl; a beállítást lásd a math/README fájlban.',
+'prefs-datetime'            => 'Dátum és idő',
 'prefs-personal'            => 'Felhasználói adatok',
 'prefs-rc'                  => 'Friss változtatások',
 'prefs-watchlist'           => 'Figyelőlista',
@@ -1270,10 +1234,12 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 'prefs-watchlist-edits-max' => '(legfeljebb 1000)',
 'prefs-misc'                => 'Egyéb',
 'prefs-resetpass'           => 'Jelszó megváltoztatása',
+'prefs-email'               => 'Levelezés',
+'prefs-rendering'           => 'Lapok megjelenítése',
 'saveprefs'                 => 'Mentés',
 'resetprefs'                => 'Alaphelyzet',
 'restoreprefs'              => 'A beállítások alaphelyzetbe állítása',
-'textboxsize'               => 'Szerkesztés',
+'prefs-editing'             => 'Szerkesztés',
 'prefs-edit-boxsize'        => 'A szerkesztőablak mérete.',
 'rows'                      => 'Sor',
 'columns'                   => 'Oszlop',
@@ -1287,7 +1253,6 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 'recentchangescount'        => 'A friss változtatásokban, a laptörténetekben és a naplókban mutatott szerkesztések száma:',
 'savedprefs'                => 'Az új beállításaid érvénybe léptek.',
 'timezonelegend'            => 'Időzóna',
-'timezonetext'              => '¹Ennyi óra az eltérés a helyi idő és a szerver ideje (UTC) között.',
 'localtime'                 => 'Helyi idő:',
 'timezoneselect'            => 'Időzóna:',
 'timezoneuseserverdefault'  => 'A kiszolgáló alapértelmezett értékének használata',
@@ -1310,12 +1275,41 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 'prefs-namespaces'          => 'Névterek',
 'defaultns'                 => 'Alapértelmezett keresés az alábbi névterekben:',
 'default'                   => 'alapértelmezés',
-'files'                     => 'Fájlok',
+'prefs-files'               => 'Fájlok',
 'prefs-custom-css'          => 'saját CSS',
 'prefs-custom-js'           => 'saját JS',
+'prefs-reset-intro'         => 'Ezen a lapon állíthatod vissza a beállításaidat az oldal alapértelmezett értékeire.
+A műveletet nem lehet visszavonni.',
+'prefs-emailconfirm-label'  => 'E-mail cím megerősítése:',
+'prefs-textboxsize'         => 'A szerkesztőablak mérete',
+'youremail'                 => 'Az e-mail címed:',
+'username'                  => 'Szerkesztőnév:',
+'uid'                       => 'Azonosító:',
+'prefs-memberingroups'      => '{{PLURAL:$1|Csoporttagság|Csoporttagságok}}:',
+'prefs-registration'        => 'Regisztráció ideje:',
+'yourrealname'              => 'Valódi neved:',
+'yourlanguage'              => 'A felület nyelve:',
+'yourvariant'               => 'Változó',
+'yournick'                  => 'Aláírás:',
+'badsig'                    => 'Érvénytelen aláírás; ellenőrizd a HTML-formázást.',
+'badsiglength'              => 'Az aláírásod túl hosszú.
+{{PLURAL:$1|Egy|$1}} karakternél rövidebbnek kell lennie.',
+'yourgender'                => 'Nem:',
+'gender-unknown'            => 'Nincs megadva',
+'gender-male'               => 'Férfi',
+'gender-female'             => 'Nő',
+'prefs-help-gender'         => 'Nem kötelező: a szoftver használja a nemalapú üzenetek megjelenítéséhez. Az információ mindenki számára látható.',
+'email'                     => 'E-mail',
+'prefs-help-realname'       => 'A valódi nevet nem kötelező megadni, de ha úgy döntesz, hogy megadod, azzal leszel feltüntetve a munkád szerzőjeként.',
+'prefs-help-email'          => 'Az e-mail cím megadása nem kötelező, de így kérhetsz új jelszót, ha elfelejtenéd a meglévőt.
+Ezen kívül más szerkesztők is kapcsolatba lépjenek veled a szerkesztői vagy vitalapodon keresztül, anélkül, hogy névtelenséged feladnád.',
+'prefs-help-email-required' => 'Meg kell adnod az e-mail címedet.',
+'prefs-info'                => 'Alapinformációk',
+'prefs-i18n'                => 'Nyelvi beállítások',
+'prefs-signature'           => 'Aláírás',
 
 # User rights
-'userrights'                  => 'Szerkesztői jogok beállítása', # Not used as normal message but as header for the special page itself
+'userrights'                  => 'Szerkesztői jogok beállítása',
 'userrights-lookup-user'      => 'Szerkesztőcsoportok beállítása',
 'userrights-user-editname'    => 'Add meg a szerkesztő nevét:',
 'editusergroup'               => 'Szerkesztőcsoportok módosítása',
@@ -1576,7 +1570,7 @@ Ha még mindig fel szeretnéd tölteni a fájlt, menj vissza, és adj meg egy ú
 'sourcefilename'              => 'Forrásfájl neve:',
 'destfilename'                => 'Célfájlnév:',
 'upload-maxfilesize'          => 'Maximális fájlméret: $1',
-'watchthisupload'             => 'Lap figyelése',
+'watchthisupload'             => 'Fájl figyelése',
 'filewasdeleted'              => 'Korábban valaki már feltöltött ilyen néven egy fájlt, amelyet később töröltünk. Ellenőrizd a $1 bejegyzését, nehogy újra feltöltsd ugyanezt a fájlt.',
 'upload-wasdeleted'           => "'''Vigyázat: egy olyan fájlt akarsz feltölteni, ami korábban már törölve lett.'''
 
@@ -1662,8 +1656,8 @@ A [$2 fájl leírólapján] található leírás alább látható.',
 'noimage'                   => 'Nem létezik ilyen nevű fájl, de $1 egyet.',
 'noimage-linktext'          => 'feltölthetsz',
 'uploadnewversion-linktext' => 'Új változat feltöltése',
-'shared-repo-from'          => 'a(z) $1 megosztott tárhelyről', # $1 is the repository name
-'shared-repo'               => 'megosztott tárhely', # used when shared-repo-NAME does not exist
+'shared-repo-from'          => 'a(z) $1 megosztott tárhelyről',
+'shared-repo'               => 'megosztott tárhely',
 
 # File reversion
 'filerevert'                => '$1 visszaállítása',
@@ -1897,17 +1891,21 @@ Támogatott protokollok: <tt>$1</tt>',
 'newuserlog-autocreate-entry' => 'Felhasználói fiók automatikusan létrehozva',
 
 # Special:ListGroupRights
-'listgrouprights'                 => 'Szerkesztői csoportok jogai',
-'listgrouprights-summary'         => 'Lenn láthatóak a wikiben létező szerkesztői csoportok, valamint az azokhoz tartozó jogok.
+'listgrouprights'                      => 'Szerkesztői csoportok jogai',
+'listgrouprights-summary'              => 'Lenn láthatóak a wikiben létező szerkesztői csoportok, valamint az azokhoz tartozó jogok.
 Az egyes csoportokról további információt [[{{MediaWiki:Listgrouprights-helppage}}|itt]] találhatsz.',
-'listgrouprights-group'           => 'Csoport',
-'listgrouprights-rights'          => 'Jogok',
-'listgrouprights-helppage'        => 'Help:Csoportok jogai',
-'listgrouprights-members'         => '(tagok listája)',
-'listgrouprights-addgroup'        => '{{PLURAL:$2|ehhez a csoporthoz|ezekhez a csoportokhoz}} adhat szerkesztőket: $1',
-'listgrouprights-removegroup'     => '{{PLURAL:$2|ebből a csoportból|ezekből a csoportokból}} távolíthat el szerkesztőket: $1',
-'listgrouprights-addgroup-all'    => 'bármelyik csoporthoz adhat szerkesztőket',
-'listgrouprights-removegroup-all' => 'bármelyik csoportból távolíthat el szerkesztőket',
+'listgrouprights-group'                => 'Csoport',
+'listgrouprights-rights'               => 'Jogok',
+'listgrouprights-helppage'             => 'Help:Csoportok jogai',
+'listgrouprights-members'              => '(tagok listája)',
+'listgrouprights-addgroup'             => '{{PLURAL:$2|ehhez a csoporthoz|ezekhez a csoportokhoz}} adhat szerkesztőket: $1',
+'listgrouprights-removegroup'          => '{{PLURAL:$2|ebből a csoportból|ezekből a csoportokból}} távolíthat el szerkesztőket: $1',
+'listgrouprights-addgroup-all'         => 'bármelyik csoporthoz adhat szerkesztőket',
+'listgrouprights-removegroup-all'      => 'bármelyik csoportból távolíthat el szerkesztőket',
+'listgrouprights-addgroup-self'        => 'hozzáadhatja a következő {{PLURAL:$2|csoporthoz|csoportokhoz}} a saját fiókját: $1',
+'listgrouprights-removegroup-self'     => 'eltávolíthatja a következő {{PLURAL:$2|csoportból|csoportokból}} a saját fiókját: $1',
+'listgrouprights-addgroup-self-all'    => 'az összes csoportot hozzáadhatja a saját fiókjához',
+'listgrouprights-removegroup-self-all' => 'az összes csoporból eltávolíthatja a saját fiókját',
 
 # E-mail user
 'mailnologin'      => 'Nincs feladó',
@@ -2016,6 +2014,7 @@ Visszajelzés és további segítség:
 'confirmdeletetext'      => 'Egy lapot vagy fájlt készülsz törölni a teljes laptörténetével együtt.
 Kérjük, erősítsd meg, hogy valóban ezt szeretnéd tenni, átlátod a következményeit, és hogy a műveletet a [[{{MediaWiki:Policy-url}}|törlési irányelvekkel]] összhangban végzed.',
 'actioncomplete'         => 'Művelet végrehajtva',
+'actionfailed'           => 'A művelet nem sükerült',
 'deletedtext'            => 'A(z) „<nowiki>$1</nowiki>” lapot törölted.
 A legutóbbi törlések listájához lásd a $2 lapot.',
 'deletedarticle'         => '„$1” törölve',
@@ -2045,8 +2044,8 @@ A legutóbbi törlések listájához lásd a $2 lapot.',
 időközben valaki már visszavonta, vagy szerkesztette a lapot.
 
 Az utolsó szerkesztést [[User:$3|$3]] ([[User talk:$3|vita]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) végezte.',
-'editcomment'      => "A szerkesztési összefoglaló „''$1''” volt.", # only shown if there is an edit comment
-'revertpage'       => 'Visszaállítottam a lap korábbi változatát: [[Special:Contributions/$2|$2]]  ([[User talk:$2|vita]]) szerkesztéséről [[User:$1|$1]] szerkesztésére', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'editcomment'      => "A szerkesztési összefoglaló „''$1''” volt.",
+'revertpage'       => 'Visszaállítottam a lap korábbi változatát: [[Special:Contributions/$2|$2]]  ([[User talk:$2|vita]]) szerkesztéséről [[User:$1|$1]] szerkesztésére',
 'rollback-success' => '$1 szerkesztéseit visszaállítottam $2 utolsó változatára.',
 'sessionfailure'   => 'Úgy látszik, hogy probléma van a bejelentkezési munkameneteddel;
 ez a művelet a munkamenet eltérítése miatti óvatosságból megszakadt.
@@ -2096,7 +2095,7 @@ Megváltoztathatod ezen lap védelmi szintjét, de az nem lesz hatással a kaszk
 ** Gyakori spamelés
 ** Nagyforgalmú lap',
 'protect-edit-reasonlist'     => 'Lapvédelem oka',
-'protect-expiry-options'      => '1 óra:1 hour,1 nap:1 day,1 hét:1 week,2 hét:2 weeks,1 hónap:1 month,3 hónap:3 months,6 hónap:6 months,1 év:1 year,végtelen:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1 óra:1 hour,1 nap:1 day,1 hét:1 week,2 hét:2 weeks,1 hónap:1 month,3 hónap:3 months,6 hónap:6 months,1 év:1 year,végtelen:infinite',
 'restriction-type'            => 'Engedély:',
 'restriction-level'           => 'Korlátozási szint:',
 'minimum-size'                => 'Legkisebb méret',
@@ -2178,7 +2177,7 @@ $1',
 'contributions-title' => '$1 közreműködései',
 'mycontris'           => 'Közreműködéseim',
 'contribsub2'         => '$1 ($2)',
-'nocontribs'          => 'Nem található a feltételeknek megfelelő változtatás.', # Optional parameter: $1 is the user name
+'nocontribs'          => 'Nem található a feltételeknek megfelelő változtatás.',
 'uctop'               => ' (utolsó)',
 'month'               => 'E hónap végéig:',
 'year'                => 'Eddig az évig:',
@@ -2237,7 +2236,7 @@ $1',
 'ipbenableautoblock'              => 'A szerkesztő által használt IP-címek automatikus blokkolása',
 'ipbsubmit'                       => 'Blokkolás',
 'ipbother'                        => 'Más időtartam:',
-'ipboptions'                      => '2 óra:2 hours,1 nap:1 day,3 nap:3 days,1 hét:1 week,2 hét:2 weeks,1 hónap:1 month,3 hónap:3 months,6 hónap:6 months,1 év:1 year,végtelen:infinite', # display1:time1,display2:time2,...
+'ipboptions'                      => '2 óra:2 hours,1 nap:1 day,3 nap:3 days,1 hét:1 week,2 hét:2 weeks,1 hónap:1 month,3 hónap:3 months,6 hónap:6 months,1 év:1 year,végtelen:infinite',
 'ipbotheroption'                  => 'Más időtartam',
 'ipbotherreason'                  => 'Más/további ok:',
 'ipbhidename'                     => 'A felhasználónév ne jelenjen meg a szerkesztéseknél és a listákban',
@@ -2369,7 +2368,7 @@ Ezen esetekben a vitalapot külön, kézzel kell átnevezned a kívánságaid sz
 'move-watch'                   => 'Figyeld a lapot',
 'movepagebtn'                  => 'Lap átnevezése',
 'pagemovedsub'                 => 'Átnevezés sikeres',
-'movepage-moved'               => "<big>'''„$1” átnevezve „$2” névre'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => "<big>'''„$1” átnevezve „$2” névre'''</big>",
 'movepage-moved-redirect'      => 'Átirányítás létrehozva.',
 'movepage-moved-noredirect'    => 'A régi címről nem sikerült átirányítást készíteni.',
 'articleexists'                => 'Ilyen névvel már létezik lap, vagy az általad választott név érvénytelen.
@@ -2378,8 +2377,8 @@ Kérlek, válassz egy másik nevet.',
 'talkexists'                   => 'A lap átnevezése sikerült, de a hozzá tartozó vitalapot nem tudtam átnevezni, mert már létezik egy egyező nevű lap az új helyen. Kérjük, gondoskodj a két lap összefűzéséről.',
 'movedto'                      => 'átnevezve',
 'movetalk'                     => 'Nevezd át a vitalapot is, ha lehetséges',
-'move-subpages'                => 'Allapok átnevezése, ha lehetséges (maximum $1)',
-'move-talk-subpages'           => 'Vitalap allapjainak átnevezése, ha lehetséges (maximum $1)',
+'move-subpages'                => 'Allapok átnevezése (maximum $1)',
+'move-talk-subpages'           => 'A vitalap allapjainak átnevezése (maximum $1)',
 'movepage-page-exists'         => 'A(z) „$1” nevű lap már létezik, és nem írható felül automatikusan.',
 'movepage-page-moved'          => 'A(z) „$1” nevű lap át lett nevezve „$2” névre.',
 'movepage-page-unmoved'        => 'A(z) „$1” nevű lap nem nevezhető át „$2” névre.',
@@ -2454,6 +2453,9 @@ Ha részt szeretnél venni a MediaWiki fordításában, látogass el a [http://w
 'djvu_no_xml'              => 'Nem olvasható ki a DjVu fájl XML-je',
 'thumbnail_invalid_params' => 'Érvénytelen bélyegkép paraméterek',
 'thumbnail_dest_directory' => 'Nem hozható létre a célkönyvtár',
+'thumbnail_image-type'     => 'A képformátum nem támogatott',
+'thumbnail_gd-library'     => 'A GD-könyvtár nincs megfelelően beállítva: a(z) $1 függvény hiányzik',
+'thumbnail_image-missing'  => 'Úgy tűnik, hogy a fájl hiányzik: $1',
 
 # Special:Import
 'import'                     => 'Lapok importálása',
@@ -2579,7 +2581,7 @@ Valamennyi transwiki importálási művelet az [[Special:Log/import|importálás
 # Attribution
 'anonymous'        => 'Névtelen {{SITENAME}}-{{PLURAL:$1|szerkesztő|szerkesztők}}',
 'siteuser'         => '$1 {{SITENAME}}-felhasználó',
-'lastmodifiedatby' => 'Ezt a lapot utoljára $3 módosította $2, $1 időpontban.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Ezt a lapot utoljára $3 módosította $2, $1 időpontban.',
 'othercontribs'    => '$1 munkája alapján.',
 'others'           => 'mások',
 'siteusers'        => '$1 {{SITENAME}}-{{PLURAL:$2|szerkesztő|szerkesztők}}',
@@ -2621,6 +2623,17 @@ Ez valószínűleg egy olyan link miatt van, ami egy feketelistán lévő oldalr
 'mw_math_modern' => 'Modern böngészőknek ajánlott beállítás',
 'mw_math_mathml' => 'MathML',
 
+# Math errors
+'math_failure'          => 'Értelmezés sikertelen',
+'math_unknown_error'    => 'ismeretlen hiba',
+'math_unknown_function' => 'ismeretlen függvény',
+'math_lexing_error'     => 'lexikai hiba',
+'math_syntax_error'     => 'formai hiba',
+'math_image_error'      => 'Sikertelen PNG-vé alakítás; ellenőrizd a latex, dvips, gs telepítését',
+'math_bad_tmpdir'       => 'Nem írható vagy nem hozható létre a matematikai ideiglenes könyvtár',
+'math_bad_output'       => 'Nem lehet létrehozni vagy írni a matematikai függvények kimeneti könyvtárába',
+'math_notexvc'          => 'HIányzó texvc végrehajtható fájl; a beállítást lásd a math/README fájlban.',
+
 # Patrolling
 'markaspatrolleddiff'                 => 'Ellenőrzöttnek jelölöd',
 'markaspatrolledtext'                 => 'Ellenőriztem',
@@ -2660,7 +2673,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Figyelmeztetés''': Ez a fájl kártékony kódot tartalmazhat, futtatása során kárt tehet a számítógépedben.<hr />",
-'imagemaxsize'         => 'A kép leírólapján mutatott legnagyobb képméret:',
+'imagemaxsize'         => "A képek mérete, legfeljebb:<br />''(a leírólapokon)''",
 'thumbsize'            => 'Bélyegkép mérete:',
 'widthheightpage'      => '$1×$2, $3 oldal',
 'file-info'            => '(fájlméret: $1, MIME-típus: $2)',
@@ -2701,7 +2714,7 @@ tartalmazni fogja. A többi alapértelmezésként rejtett marad.
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Szélesség',
@@ -2828,14 +2841,14 @@ tartalmazni fogja. A többi alapértelmezésként rejtett marad.
 
 'exif-unknowndate' => 'Ismeretlen dátum',
 
-'exif-orientation-1' => 'Normál', # 0th row: top; 0th column: left
-'exif-orientation-2' => 'Vízszintesen tükrözött', # 0th row: top; 0th column: right
-'exif-orientation-3' => 'Elforgatott 180°', # 0th row: bottom; 0th column: right
-'exif-orientation-4' => 'Függőlegesen tükrözött', # 0th row: bottom; 0th column: left
-'exif-orientation-5' => 'Elforgatott 90° ÓE és függőlegesen tükrözött', # 0th row: left; 0th column: top
-'exif-orientation-6' => 'Elforgatott 90° ÓSZ', # 0th row: right; 0th column: top
-'exif-orientation-7' => 'Elforgatott 90° ÓSZ és függőlegesen tükrözött', # 0th row: right; 0th column: bottom
-'exif-orientation-8' => 'Elforgatott 90° ÓE', # 0th row: left; 0th column: bottom
+'exif-orientation-1' => 'Normál',
+'exif-orientation-2' => 'Vízszintesen tükrözött',
+'exif-orientation-3' => 'Elforgatott 180°',
+'exif-orientation-4' => 'Függőlegesen tükrözött',
+'exif-orientation-5' => 'Elforgatott 90° ÓE és függőlegesen tükrözött',
+'exif-orientation-6' => 'Elforgatott 90° ÓSZ',
+'exif-orientation-7' => 'Elforgatott 90° ÓSZ és függőlegesen tükrözött',
+'exif-orientation-8' => 'Elforgatott 90° ÓE',
 
 'exif-planarconfiguration-1' => 'Egyben',
 'exif-planarconfiguration-2' => 'sík formátum',
@@ -2951,16 +2964,25 @@ tartalmazni fogja. A többi alapértelmezésként rejtett marad.
 'exif-gpslongitude-e' => 'Keleti hosszúsági fok',
 'exif-gpslongitude-w' => 'Nyugati hosszúsági fok',
 
+# Pseudotags used for GPSAltitudeRef
+'exif-gpsaltitude-0' => 'méterrel a tenger szintje felett',
+'exif-gpsaltitude-1' => 'méterrel a tenger szintje alatt',
+
 'exif-gpsstatus-a' => 'Mérés folyamatban',
 'exif-gpsstatus-v' => 'Mérés közbeni működőképesség',
 
 'exif-gpsmeasuremode-2' => '2-dimenziós méret',
 'exif-gpsmeasuremode-3' => '3-dimenziós méret',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'Kilométer óránként',
 'exif-gpsspeed-m' => 'Márföld óránként',
 'exif-gpsspeed-n' => 'Csomó',
+
+# Pseudotags used for GPSDestDistanceRef
+'exif-gpsdestdistance-k' => 'kilométer',
+'exif-gpsdestdistance-m' => 'mérföld',
+'exif-gpsdestdistance-n' => 'tengeri mérföld',
 
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
 'exif-gpsdirection-t' => 'Igazi irány',
@@ -3102,7 +3124,7 @@ minden egyes sor egy figyelt lap címe. Ha kész vagy, kattints a lista alatt ta
 'duplicate-defaultsort' => 'Figyelem: a(z) „$2” rendezőkulcs felülírja a korábbit („$1”).',
 
 # Special:Version
-'version'                          => 'Névjegy', # Not used as normal message but as header for the special page itself
+'version'                          => 'Névjegy',
 'version-extensions'               => 'Telepített kiterjesztések',
 'version-specialpages'             => 'Speciális lapok',
 'version-parserhooks'              => 'Értelmező hookok',
@@ -3116,7 +3138,7 @@ minden egyes sor egy figyelt lap címe. Ha kész vagy, kattints a lista alatt ta
 'version-skin-extension-functions' => 'Felület kiterjeszések függvényei',
 'version-hook-name'                => 'Hook neve',
 'version-hook-subscribedby'        => 'Használja',
-'version-version'                  => 'verzió:',
+'version-version'                  => '(verzió: $1)',
 'version-license'                  => 'Licenc',
 'version-software'                 => 'Telepített szoftverek',
 'version-software-product'         => 'Termék',
@@ -3189,11 +3211,21 @@ Add meg a fájl nevét „{{ns:file}}:” előtag nélkül.',
 
 # Database error messages
 'dberr-header'      => 'A wikivel problémák vannak',
-'dberr-problems'    => 'Sajnáljuk, de az oldalnak technikai problémái akadtak.',
+'dberr-problems'    => 'Sajnáljuk, de az oldallal technikai problémák vannak.',
 'dberr-again'       => 'Várj néhány percet, majd frissítsd az oldalt.',
 'dberr-info'        => '(Nem sikerült kapcsolatot létesíteni az adatbázisszerverrel: $1)',
 'dberr-usegoogle'   => 'A probléma elmúlásáig próbálhatsz keresni a Google-lel.',
 'dberr-outofdate'   => 'Fontos tudnivaló, hogy az oldal tartalmáról készített indexeik elavultak lehetnek.',
 'dberr-cachederror' => 'Lenn a kért oldal gyorsítótárazott változata látható, és lehet, hogy nem teljesen friss.',
+
+# HTML forms
+'htmlform-invalid-input'       => 'Probléma van az általad megadott értékkel',
+'htmlform-select-badoption'    => 'A megadott érték nem érvényes.',
+'htmlform-int-invalid'         => 'A megadott érték nem szám.',
+'htmlform-int-toolow'          => 'A megadott érték a minimum, $1 alatt van',
+'htmlform-int-toohigh'         => 'A megadott érték a maximum, $1 felett van',
+'htmlform-submit'              => 'Elküldés',
+'htmlform-reset'               => 'Változtatások visszavonása',
+'htmlform-selectorother-other' => 'egyéb',
 
 );

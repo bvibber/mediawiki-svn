@@ -1,6 +1,9 @@
 <?php
 /** Lojban (Lojban)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -51,9 +54,13 @@ $messages = array(
 'category_header' => 'fe le kibypapri cu klesi "$1"',
 'subcategories'   => "le'a ti",
 
+'mytalk' => 'casnu mi',
+
+# Cologne Blue skin
 'qbedit'        => 'stika',
 'qbpageoptions' => 'ti ckupau',
-'mytalk'        => 'casnu mi',
+'faq'           => 'FAQ',
+'faqpage'       => 'Project:FAQ',
 
 'errorpagetitle'   => 'fliba',
 'help'             => 'sidju ckupau',
@@ -71,7 +78,7 @@ $messages = array(
 'talk'             => 'casnu',
 'toolbox'          => 'tutci',
 'otherlanguages'   => 'drata bangu',
-'lastmodifiedat'   => "le vi ckupau rore'u se galfi de'i li $2 $1", # $1 date, $2 time
+'lastmodifiedat'   => "le vi ckupau rore'u se galfi de'i li $2 $1",
 'jumptosearch'     => 'sisku',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -86,8 +93,6 @@ $messages = array(
 'disclaimerpage'       => "Project:kampu nunxusra be lo za'i na fuzme",
 'edithelp'             => 'stika nunsidju',
 'edithelppage'         => 'Help:Editing',
-'faq'                  => 'FAQ',
-'faqpage'              => 'Project:FAQ',
 'mainpage'             => 'ralju ckupau',
 'mainpage-description' => 'ralju ckupau',
 'portal'               => 'bende ckupau',
@@ -150,7 +155,7 @@ $messages = array(
 # Preferences page
 'preferences'       => 'zmaselnei',
 'mypreferences'     => 'zmaselnei liste',
-'textboxsize'       => 'ca galfi',
+'prefs-editing'     => 'ca galfi',
 'searchresultshead' => "tu'a le se sisku",
 'savedprefs'        => 'le do zmaselnei pu vreji',
 

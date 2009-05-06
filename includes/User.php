@@ -14,7 +14,7 @@ define( 'USER_TOKEN_LENGTH', 32 );
  * \int Serialized record version.
  * @ingroup Constants
  */
-define( 'MW_USER_VERSION', 6 );
+define( 'MW_USER_VERSION', 8 );
 
 /**
  * \string Some punctuation to prevent editing from broken text-mangling proxies.
@@ -109,7 +109,6 @@ class User {
 		'mNewpassword',
 		'mNewpassTime',
 		'mEmail',
-		'mOptions',
 		'mTouched',
 		'mToken',
 		'mEmailAuthenticated',
@@ -119,6 +118,8 @@ class User {
 		'mEditCount',
 		// user_group table
 		'mGroups',
+		// user_properties table
+		'mOptionOverrides',
 	);
 
 	/**
@@ -187,14 +188,14 @@ class User {
 	/** @name Cache variables */
 	//@{
 	var $mId, $mName, $mRealName, $mPassword, $mNewpassword, $mNewpassTime,
-		$mEmail, $mOptions, $mTouched, $mToken, $mEmailAuthenticated,
-		$mEmailToken, $mEmailTokenExpires, $mRegistration, $mGroups;
+		$mEmail, $mTouched, $mToken, $mEmailAuthenticated,
+		$mEmailToken, $mEmailTokenExpires, $mRegistration, $mGroups, $mOptionOverrides;
 	//@}
 
 	/**
 	 * \bool Whether the cache variables have been loaded.
 	 */
-	var $mDataLoaded, $mAuthLoaded;
+	var $mDataLoaded, $mAuthLoaded, $mOptionsLoaded;
 
 	/**
 	 * \string Initialization data source if mDataLoaded==false. May be one of:
@@ -211,7 +212,7 @@ class User {
 	//@{
 	var $mNewtalk, $mDatePreference, $mBlockedby, $mHash, $mSkin, $mRights,
 		$mBlockreason, $mBlock, $mEffectiveGroups, $mBlockedGlobally, 
-		$mLocked, $mHideName;
+		$mLocked, $mHideName, $mOptions;
 	//@}
 
 	/**
@@ -310,6 +311,7 @@ class User {
 	function saveToCache() {
 		$this->load();
 		$this->loadGroups();
+		$this->loadOptions();
 		if ( $this->isAnon() ) {
 			// Anonymous users are uncached
 			return;
@@ -770,7 +772,8 @@ class User {
 		$this->mPassword = $this->mNewpassword = '';
 		$this->mNewpassTime = null;
 		$this->mEmail = '';
-		$this->mOptions = null; # Defer init
+		$this->mOptionOverrides = null;
+		$this->mOptionsLoaded = false;
 
 		if ( isset( $_COOKIE[$wgCookiePrefix.'LoggedOut'] ) ) {
 			$this->mTouched = wfTimestamp( TS_MW, $_COOKIE[$wgCookiePrefix.'LoggedOut'] );
@@ -969,6 +972,7 @@ class User {
 		$this->mSkin = null;
 		$this->mRights = null;
 		$this->mEffectiveGroups = null;
+		$this->mOptions = null;
 
 		if ( $reloadFrom ) {
 			$this->mDataLoaded = false;
@@ -987,7 +991,7 @@ class User {
 		/**
 		 * Site defaults will override the global/language defaults
 		 */
-		global $wgDefaultUserOptions, $wgContLang;
+		global $wgDefaultUserOptions, $wgContLang, $wgDefaultSkin;
 		$defOpt = $wgDefaultUserOptions + $wgContLang->getDefaultUserOptionOverrides();
 
 		/**
@@ -996,10 +1000,11 @@ class User {
 		$variant = $wgContLang->getPreferredVariant( false );
 		$defOpt['variant'] = $variant;
 		$defOpt['language'] = $variant;
-
-		foreach( $wgNamespacesToBeSearchedDefault as $nsnum => $val ) {
-			$defOpt['searchNs'.$nsnum] = $val;
+		foreach(  SearchEngine::searchableNamespaces() as $nsnum => $nsname ) {
+			$defOpt['searchNs'.$nsnum] = !empty($wgNamespacesToBeSearchedDefault[$nsnum]);
 		}
+		$defOpt['skin'] = $wgDefaultSkin;
+		
 		return $defOpt;
 	}
 
@@ -1014,7 +1019,7 @@ class User {
 		if( isset( $defOpts[$opt] ) ) {
 			return $defOpts[$opt];
 		} else {
-			return '';
+			return null;
 		}
 	}
 
@@ -1866,8 +1871,8 @@ class User {
 	 * @see getBoolOption()
 	 * @see getIntOption()
 	 */
-	function getOption( $oname, $defaultOverride = '' ) {
-		$this->load();
+	function getOption( $oname, $defaultOverride = null ) {
+		$this->loadOptions();
 
 		if ( is_null( $this->mOptions ) ) {
 			if($defaultOverride != '') {
@@ -1877,7 +1882,7 @@ class User {
 		}
 
 		if ( array_key_exists( $oname, $this->mOptions ) ) {
-			return trim( $this->mOptions[$oname] );
+			return $this->mOptions[$oname];
 		} else {
 			return $defaultOverride;
 		}
@@ -1919,32 +1924,26 @@ class User {
 	 */
 	function setOption( $oname, $val ) {
 		$this->load();
-		if ( is_null( $this->mOptions ) ) {
-			$this->mOptions = User::getDefaultOptions();
-		}
+		$this->loadOptions();
+		
 		if ( $oname == 'skin' ) {
 			# Clear cached skin, so the new one displays immediately in Special:Preferences
 			unset( $this->mSkin );
 		}
-		// Filter out any newlines that may have passed through input validation.
-		// Newlines are used to separate items in the options blob.
-		if( $val ) {
-			$val = str_replace( "\r\n", "\n", $val );
-			$val = str_replace( "\r", "\n", $val );
-			$val = str_replace( "\n", " ", $val );
-		}
+		
 		// Explicitly NULL values should refer to defaults
 		global $wgDefaultUserOptions;
 		if( is_null($val) && isset($wgDefaultUserOptions[$oname]) ) {
 			$val = $wgDefaultUserOptions[$oname];
 		}
+		
 		$this->mOptions[$oname] = $val;
 	}
 	
 	/**
 	 * Reset all options to the site defaults
 	 */	
-	function restoreOptions() {
+	function resetOptions() {
 		$this->mOptions = User::getDefaultOptions();
 	}
 
@@ -2145,7 +2144,7 @@ class User {
 
 	/**
 	 * Get the current skin, loading it if required, and setting a title
-	 * @param Title $t The title to use in the skin
+	 * @param $t Title: the title to use in the skin
 	 * @return Skin The current skin
 	 * @todo FIXME : need to check the old failback system [AV]
 	 */
@@ -2166,11 +2165,13 @@ class User {
 			$this->mSkin =& Skin::newFromKey( $userSkin );
 			wfProfileOut( __METHOD__ );
 		}
-		if ( !$t ) {
-			global $wgOut;
-			$t = $wgOut->getTitle();
+		if( $t || !$this->mSkin->getTitle() ) {
+			if ( !$t ) {
+				global $wgOut;
+				$t = $wgOut->getTitle();
+			}
+			$this->mSkin->setTitle( $t );
 		}
-		$this->mSkin->setTitle( $t );
 		return $this->mSkin;
 	}
 
@@ -2292,35 +2293,24 @@ class User {
 	}
 
 	/**
-	 * Encode this user's options as a string
-	 * @return \string Encoded options
-	 * @private
-	 */
-	function encodeOptions() {
-		$this->load();
-		if ( is_null( $this->mOptions ) ) {
-			$this->mOptions = User::getDefaultOptions();
-		}
-		$a = array();
-		foreach ( $this->mOptions as $oname => $oval ) {
-			array_push( $a, $oname.'='.$oval );
-		}
-		$s = implode( "\n", $a );
-		return $s;
-	}
-
-	/**
 	 * Set this user's options from an encoded string
 	 * @param $str \string Encoded options to import
 	 * @private
 	 */
 	function decodeOptions( $str ) {
+		if (!$str)
+			return;
+			
+		$this->mOptionsLoaded = true;
+		$this->mOptionOverrides = array();
+		
 		$this->mOptions = array();
 		$a = explode( "\n", $str );
 		foreach ( $a as $s ) {
 			$m = array();
 			if ( preg_match( "/^(.[^=]*)=(.*)$/", $s, $m ) ) {
 				$this->mOptions[$m[1]] = $m[2];
+				$this->mOptionOverrides[$m[1]] = $m[2];
 			}
 		}
 	}
@@ -2385,7 +2375,6 @@ class User {
 	 * Log this user out.
 	 */
 	function logout() {
-		global $wgUser;
 		if( wfRunHooks( 'UserLogout', array(&$this) ) ) {
 			$this->doLogout();
 		}
@@ -2429,7 +2418,7 @@ class User {
 				'user_real_name' => $this->mRealName,
 		 		'user_email' => $this->mEmail,
 		 		'user_email_authenticated' => $dbw->timestampOrNull( $this->mEmailAuthenticated ),
-				'user_options' => $this->encodeOptions(),
+				'user_options' => '',
 				'user_touched' => $dbw->timestamp($this->mTouched),
 				'user_token' => $this->mToken,
 				'user_email_token' => $this->mEmailToken,
@@ -2438,6 +2427,9 @@ class User {
 				'user_id' => $this->mId
 			), __METHOD__
 		);
+		
+		$this->saveOptions();
+		
 		wfRunHooks( 'UserSaveSettings', array( $this ) );
 		$this->clearSharedCache();
 		$this->getUserPage()->invalidateCache();
@@ -2526,7 +2518,7 @@ class User {
 				'user_email' => $this->mEmail,
 				'user_email_authenticated' => $dbw->timestampOrNull( $this->mEmailAuthenticated ),
 				'user_real_name' => $this->mRealName,
-				'user_options' => $this->encodeOptions(),
+				'user_options' => '',
 				'user_token' => $this->mToken,
 				'user_registration' => $dbw->timestamp( $this->mRegistration ),
 				'user_editcount' => 0,
@@ -2536,6 +2528,8 @@ class User {
 
 		// Clear instance cache other than user table data, which is already accurate
 		$this->clearInstanceCache();
+		
+		$this->saveOptions();
 	}
 
 	/**
@@ -3513,6 +3507,73 @@ class User {
 		$log = new LogPage( 'newusers', false );
 		$log->addEntry( 'autocreate', $this->getUserPage(), '', array( $this->getId() ) );
 		return true;
+	}
+	
+	protected function loadOptions() {
+		$this->load();
+		if ($this->mOptionsLoaded || !$this->getId() )
+			return;
+	
+		$this->mOptions = self::getDefaultOptions();
+		
+		// Maybe load from the object
+		
+		if ( !is_null($this->mOptionOverrides) ) {
+			wfDebug( "Loading options for user ".$this->getId()." from override cache.\n" ); 
+			foreach( $this->mOptionOverrides as $key => $value ) {
+				$this->mOptions[$key] = $value;
+			}
+		} else {
+			wfDebug( "Loading options for user ".$this->getId()." from database.\n" );
+			// Load from database
+			$dbr = wfGetDB( DB_SLAVE );
+			
+			$res = $dbr->select( 'user_properties',
+									'*',
+									array('up_user' => $this->getId()),
+									__METHOD__
+								);
+			
+			while( $row = $dbr->fetchObject( $res ) ) {
+				$this->mOptionOverrides[$row->up_property] = $row->up_value;
+				$this->mOptions[$row->up_property] = $row->up_value;
+			}
+		}
+		
+		$this->mOptionsLoaded = true;
+		
+		wfRunHooks( 'UserLoadOptions', array( $this, &$this->mOptions ) );
+	}
+	
+	protected function saveOptions() {
+		$this->loadOptions();
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$insert_rows = array();
+		
+		$saveOptions = $this->mOptions;
+		
+		// Allow hooks to abort, for instance to save to a global profile.
+		// Reset options to default state before saving.
+		if (!wfRunHooks( 'UserSaveOptions', array($this, &$saveOptions) ) )
+			return;
+		
+		foreach( $saveOptions as $key => $value ) {
+			if ( ( is_null(self::getDefaultOption($key)) &&
+					!( $value === false || is_null($value) ) ) ||
+					$value != self::getDefaultOption( $key ) ) {
+				$insert_rows[] = array(
+						'up_user' => $this->getId(),
+						'up_property' => $key,
+						'up_value' => $value,
+					);
+			}
+		}
+		
+		$dbw->begin();
+		$dbw->delete( 'user_properties', array( 'up_user' => $this->getId() ), __METHOD__ );
+		$dbw->insert( 'user_properties', $insert_rows, __METHOD__ );
+		$dbw->commit();
 	}
 
 }

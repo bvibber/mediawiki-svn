@@ -1,6 +1,9 @@
 <?php
 /** Avaric (Авар)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -52,17 +55,15 @@ $messages = array(
 'viewsource'    => 'Код бихьи',
 
 # Login and logout pages
-'loginpagetitle' => 'Цlар бице',
-'userlogin'      => 'ЦIар бице',
-'userlogout'     => 'Къватlиве лъугьине',
+'userlogin'  => 'ЦIар бице',
+'userlogout' => 'Къватlиве лъугьине',
 
 # Edit pages
 'savearticle' => 'Хъвай-хъвай цIунизе',
 
 # Preferences page
-'preferences'        => 'Рекъезаби',
-'math_unknown_error' => 'Лъалареб гъалатl',
-'localtime'          => 'Бакlалъул заман',
+'preferences' => 'Рекъезаби',
+'localtime'   => 'Бакlалъул заман',
 
 # User rights
 'userrights-user-editname' => 'ГIахьалчиясул цIар хъвай:',
@@ -112,6 +113,9 @@ $messages = array(
 'move-page-legend' => 'Гьумералъул цlар хисизе',
 'movearticle'      => 'Гьумералъул цIар хисизе',
 'movepagebtn'      => 'Гьумералъул цlар хисизе',
+
+# Math errors
+'math_unknown_error' => 'Лъалареб гъалатl',
 
 # Special:SpecialPages
 'specialpages' => 'Хассал гьумерал',

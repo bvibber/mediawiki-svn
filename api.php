@@ -51,10 +51,10 @@ wfProfileIn('api.php');
 //
 // Ensure that all access is through the canonical entry point...
 //
-if( isset( $_SERVER['SCRIPT_URL'] ) ) {
-	$url = $_SERVER['SCRIPT_URL'];
+if( isset( $_SERVER['SCRIPT_NAME'] ) ) {
+	$url = $_SERVER['SCRIPT_NAME'];
 } else {
-	$url = $_SERVER['PHP_SELF'];
+	$url = $_SERVER['URL'];
 }
 if( strcmp( "$wgScriptPath/api$wgScriptExtension", $url ) ) {
 	wfHttpError( 403, 'Forbidden',
@@ -68,6 +68,13 @@ if (!$wgEnableAPI) {
 	echo '<pre><b>$wgEnableAPI=true;</b></pre>';
 	die(1);
 }
+
+// So extensions can check whether they're running in API mode
+define('MW_API', true);
+
+// Set a dummy $wgTitle, because $wgTitle == null breaks various things
+// In a perfect world this wouldn't be necessary
+$wgTitle = Title::newFromText('API');
 
 /* Construct an ApiMain with the arguments passed via the URL. What we get back
  * is some form of an ApiMain, possibly even one that produces an error message,

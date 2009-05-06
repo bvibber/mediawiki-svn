@@ -1,6 +1,9 @@
 <?php
 /** Deitsch (Deitsch)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -55,10 +58,12 @@ $messages = array(
 'dec'       => 'Dis.',
 
 'about'      => 'Iwwer',
-'qbedit'     => 'Ennere',
 'mytalk'     => 'Mei Gschwetz-Blatt',
 'navigation' => 'Faahre-Gnepp',
 'and'        => '&#32;unn',
+
+# Cologne Blue skin
+'qbedit' => 'Ennere',
 
 'tagline'          => 'Vun {{SITENAME}}',
 'help'             => 'Hilf',
@@ -90,9 +95,15 @@ $messages = array(
 'nstab-main' => 'Blatt',
 'nstab-help' => 'Hilf',
 
+# General errors
+'viewsourcefor' => 'fer $1',
+
 # Login and logout pages
 'login'  => 'kumm nei',
 'logout' => 'geh naus',
+
+# Edit pages
+'watchthis' => 'Watsch des Blatt',
 
 # Search results
 'nextn'              => 'neegschte $1',
@@ -109,6 +120,18 @@ $messages = array(
 'newpageletter'   => 'N',
 'boteditletter'   => 'B',
 
+# Recent changes linked
+'recentchangeslinked-page' => 'Blatt:',
+
+# Upload
+'watchthisupload' => 'Watsch des Blatt',
+
+# Special:ListFiles
+'listfiles_user' => 'Yuuser',
+
+# File description page
+'filehist-user' => 'Yuuser',
+
 # Random page
 'randompage' => 'Ennich Ardickel',
 
@@ -117,9 +140,13 @@ $messages = array(
 # Miscellaneous special pages
 'move' => 'Ziehe',
 
+# Special:Log
+'specialloguserlabel' => 'Yuuser:',
+
 # Watchlist
 'watchlist'     => 'Mei Watsch-Lischt',
 'mywatchlist'   => 'Mei Watsch-Lischt',
+'watchlistfor'  => "(fer '''$1''')",
 'watch'         => 'watsche',
 'watchthispage' => 'watsch des Blatt',
 
@@ -132,8 +159,14 @@ $messages = array(
 
 'sp-contributions-submit' => 'Guuck uff',
 
+# What links here
+'whatlinkshere-page' => 'Blatt:',
+
 # Block/unblock
 'ipblocklist-submit' => 'Guuck uff',
+
+# Move page
+'move-watch' => 'watsch des Blatt',
 
 # Tooltip help for the actions
 'tooltip-pt-mytalk' => 'Dei Gschwetz-Blatt',

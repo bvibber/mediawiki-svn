@@ -1,6 +1,9 @@
 <?php
 /** Ukrainian (Українська)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -223,7 +226,7 @@ $messages = array(
 'tog-hidepatrolled'           => 'Приховувати патрульовані редагування у списку нових редагувань',
 'tog-newpageshidepatrolled'   => 'Приховувати патрульовані сторінки у списку нових сторінок',
 'tog-extendwatchlist'         => 'Розширений список спостереження, що включає всі зміни, а не лише останню',
-'tog-usenewrc'                => 'Покращений список останніх змін (JavaScript)',
+'tog-usenewrc'                => 'Використовувати покращений список останніх змін (JavaScript)',
 'tog-numberheadings'          => 'Автоматично нумерувати заголовки',
 'tog-showtoolbar'             => 'Показувати панель інструментів при редагуванні (JavaScript)',
 'tog-editondblclick'          => 'Редагувати сторінки при подвійному клацанні мишкою (JavaScript)',
@@ -231,7 +234,7 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Редагувати розділи при клацанні правою кнопкою мишки на заголовку (JavaScript)',
 'tog-showtoc'                 => 'Показувати зміст (для сторінок з більш ніж трьома заголовками)',
 'tog-rememberpassword'        => "Запам'ятати мій обліковий запис на цьому комп'ютері",
-'tog-editwidth'               => 'Розширювати поле редагування до меж вікна браузера',
+'tog-editwidth'               => 'Розширювати поле редагування на весь екран',
 'tog-watchcreations'          => 'Додавати створені мною сторінки до мого списку спостереження',
 'tog-watchdefault'            => 'Додавати змінені мною сторінки до мого списку спостереження',
 'tog-watchmoves'              => 'Додавати перейменовані мною сторінки до мого списку спостереження',
@@ -326,7 +329,7 @@ $messages = array(
 'category-media-header'          => 'Файли в категорії «$1»',
 'category-empty'                 => "''Ця категорія зараз порожня.''",
 'hidden-categories'              => '{{PLURAL:$1|Прихована категорія|Приховані категорії}}',
-'hidden-category-category'       => 'Приховані категорії', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Приховані категорії',
 'category-subcat-count'          => '{{PLURAL:$2|Ця категорія містить лише таку підкатегорію.|{{PLURAL:$1|Показана $1 підкатегорія|Показані $1 підкатегорії|Показані $1 підкатегорій}} із $2.}}',
 'category-subcat-count-limited'  => 'У цій категорії {{PLURAL:$1|$1 підкатегорія|$1 підкатегорії|$1 підкатегорій}}.',
 'category-article-count'         => '{{PLURAL:$2|Ця категорія містить тільки таку сторінку.|{{PLURAL:$1|Показана $1 сторінка|Показані $1 сторінки|Показані $1 сторінок}} цієї категорії з $2.}}',
@@ -344,10 +347,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ Часті питання з приводу MediaWiki];
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Розсилка повідомлень про появу нових версій MediaWiki].',
 
-'about'          => 'Про',
-'article'        => 'Стаття',
-'newwindow'      => '(відкривається в новому вікні)',
-'cancel'         => 'Скасувати',
+'about'         => 'Про',
+'article'       => 'Стаття',
+'newwindow'     => '(відкривається в новому вікні)',
+'cancel'        => 'Скасувати',
+'moredotdotdot' => 'Детальніше…',
+'mypage'        => 'Моя особиста сторінка',
+'mytalk'        => 'Моя сторінка обговорення',
+'anontalk'      => 'Обговорення для цієї IP-адреси',
+'navigation'    => 'Навігація',
+'and'           => '&#32;і',
+
+# Cologne Blue skin
 'qbfind'         => 'Знайти',
 'qbbrowse'       => 'Переглянути',
 'qbedit'         => 'Редагувати',
@@ -355,12 +366,8 @@ $messages = array(
 'qbpageinfo'     => 'Інформація про сторінку',
 'qbmyoptions'    => 'Мої налаштування',
 'qbspecialpages' => 'Спеціальні сторінки',
-'moredotdotdot'  => 'Детальніше…',
-'mypage'         => 'Моя особиста сторінка',
-'mytalk'         => 'Моя сторінка обговорення',
-'anontalk'       => 'Обговорення для цієї IP-адреси',
-'navigation'     => 'Навігація',
-'and'            => '&#32;і',
+'faq'            => 'Часті питання',
+'faqpage'        => 'Project:Часті питання',
 
 # Metadata in edit box
 'metadata_help' => 'Метадані:',
@@ -413,7 +420,7 @@ $messages = array(
 'otherlanguages'    => 'Іншими мовами',
 'redirectedfrom'    => '(Перенаправлено з $1)',
 'redirectpagesub'   => 'Сторінка-перенаправлення',
-'lastmodifiedat'    => 'Остання зміна цієї сторінки: $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'Остання зміна цієї сторінки: $2, $1.',
 'viewcount'         => 'Цю сторінку переглядали $1 {{PLURAL:$1|раз|рази|разів}}.',
 'protectedpage'     => 'Захищена сторінка',
 'jumpto'            => 'Перейти до:',
@@ -432,8 +439,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Умови використання',
 'edithelp'             => 'Довідка про редагування',
 'edithelppage'         => 'Help:Редагування',
-'faq'                  => 'Часті питання',
-'faqpage'              => 'Project:Часті питання',
 'helppage'             => 'Help:Довідка',
 'mainpage'             => 'Головна сторінка',
 'mainpage-description' => 'Головна сторінка',
@@ -515,10 +520,6 @@ MySQL повернув помилку "<tt>$3: $4</tt>".',
 «$1»
 відбувся з функції «$2».
 MySQL повернув помилку «$3: $4».',
-'noconnect'            => "Через технічні проблеми зараз неможливо зв'язатися з сервером баз даних.<br />
-$1",
-'nodb'                 => 'Неможливо вибрати базу даних $1',
-'cachederror'          => 'Нижче показана кешована копія запитаної сторінки; можливо вона застаріла.',
 'laggedslavemode'      => 'Увага: сторінка може не містити останніх редагувань.',
 'readonly'             => 'Запис до бази даних заблокований',
 'enterlockreason'      => 'Зазначте причину і приблизний термін блокування',
@@ -584,7 +585,6 @@ $1",
 'welcomecreation'            => '== Вітаємо вас, $1! ==
 Ваш обліковий запис створено.
 Не забудьте змінити свої [[Special:Preferences|налаштування для сайту]].',
-'loginpagetitle'             => 'Вхід до системи',
 'yourname'                   => "Ім'я користувача:",
 'yourpassword'               => 'Пароль:',
 'yourpasswordagain'          => 'Повторний набір пароля:',
@@ -607,38 +607,17 @@ $1",
 'badretype'                  => 'Уведені вами паролі не збігаються.',
 'userexists'                 => "Уведене ім'я користувача вже існує.
 Оберіть інше ім'я.",
-'youremail'                  => 'Адреса електронної пошти:',
-'username'                   => "Ім'я користувача:",
-'uid'                        => 'Ідентифікатор користувача:',
-'prefs-memberingroups'       => 'Член {{PLURAL:$1|групи|груп}}:',
-'yourrealname'               => "Справжнє ім'я:",
-'yourlanguage'               => 'Мова інтерфейсу:',
-'yourvariant'                => 'Варіант мови:',
-'yournick'                   => 'Ваш псевдонім (для підписів):',
-'badsig'                     => 'Неправильний підпис. Перевірте коректність HTML-тегів.',
-'badsiglength'               => 'Ваш підпис дуже довгий.
-Повинно бути не більше $1 {{PLURAL:$1|символу|символів|символів}}.',
-'yourgender'                 => 'Стать:',
-'gender-unknown'             => 'не зазначена',
-'gender-male'                => 'чоловіча',
-'gender-female'              => 'жіноча',
-'prefs-help-gender'          => "Необов'язкове поле: використовується в деяких повідомленнях двигуна, які залежать від статі користувача. Значення параметра загальнодоступне.",
-'email'                      => 'Електронна пошта',
-'prefs-help-realname'        => "Справжнє ім'я (необов'язкове поле): якщо ви його зазначите, то воно буде використовуватися, щоб показувати, хто редагував сторінку.",
 'loginerror'                 => 'Помилка при вході до системи',
-'prefs-help-email'           => "Адреса електронної пошти (необов'язкове поле) дає можливість надіслати вам новий пароль у випадку, якщо ви забули поточний.
-Також вона дозволить іншим користувачам за допомогою вашої сторінки у вікі зв'язатися з вами, не виказуючи вашої електронної адреси.",
-'prefs-help-email-required'  => 'Потрібно зазначити адресу електронної пошти.',
 'nocookiesnew'               => 'Користувач зареєструвався, але не ввійшов до системи.
-{{SITENAME}} використовує «cookies» для входу до системи.
-У вас «cookies» заборонені.
-Будь ласка, дозвольте їх, а потім ввійдіть під вашим новим іменем користувача і паролем.',
+{{SITENAME}} використовує куки для входу до системи.
+У вас куки заборонені.
+Будь ласка, дозвольте їх, а потім увійдіть з вашим новим іменем користувача і паролем.',
 'nocookieslogin'             => "{{SITENAME}} використовує куки (''cookies'') для входу до системи.
 Ви їх вимкнули.
 Будь ласка, ввімкніть куки і спробуйте знову.",
-'noname'                     => "Ви вказали неіснуюче ім'я користувача.",
+'noname'                     => "Ви зазначили неправильне ім'я користувача.",
 'loginsuccesstitle'          => 'Успішний вхід до системи',
-'loginsuccess'               => "'''Тепер ви працюєте у {{grammar:genitive|{{SITENAME}}}} під іменем $1.'''",
+'loginsuccess'               => "'''Тепер ви працюєте у {{grammar:locative|{{SITENAME}}}} під іменем $1.'''",
 'nosuchuser'                 => 'Користувач з іменем «$1» не існує.
 Імена користувачів регістрозалежні.
 Перевірте правильність написання або скористайтеся формою нижче, щоб [[Special:UserLogin/signup|зареєструвати нового користувача]].',
@@ -695,17 +674,12 @@ $1",
 'retypenew'                 => 'Ще раз введіть новий пароль:',
 'resetpass_submit'          => 'Установити пароль і ввійти',
 'resetpass_success'         => 'Ваш пароль успішно змінено! Виконується вхід до системи…',
-'resetpass_bad_temporary'   => 'Недійсний тимчасовий пароль. Можливо, ви вже змінили ваш пароль. Спробуйте надіслати запит на тимчасовий пароль ще раз.',
 'resetpass_forbidden'       => 'Можливість зміни пароля не передбачена.',
 'resetpass-no-info'         => 'Щоб звертатися безпосередньо до цієї сторінки, вам слід увійти до системи.',
 'resetpass-submit-loggedin' => 'Змінити пароль',
 'resetpass-wrong-oldpass'   => 'Неправильний тимчасовий або поточний пароль.
 Можливо, ви вже успішно змінили пароль або зробили запит на новий тимчасовий пароль.',
 'resetpass-temp-password'   => 'Тимчасовий пароль:',
-'resetpass-log'             => 'Журнал зміни паролів',
-'resetpass-logtext'         => 'Нижче в журналі наведений список користувачів, для яких адміністратори скинули пароль.',
-'resetpass-logentry'        => 'змінив пароль для $1',
-'resetpass-comment'         => 'Причина скидання паролю:',
 
 # Edit page toolbar
 'bold_sample'     => 'Жирний текст',
@@ -778,7 +752,6 @@ $1",
 'blockededitsource'                => "Текст '''ваших редагувань''' сторінки «$1» наведено нижче:",
 'whitelistedittitle'               => 'Для редагування необхідно ввійти в систему',
 'whitelistedittext'                => 'Ви повинні $1 щоб редагувати сторінки.',
-'confirmedittitle'                 => 'Для редагування необхідно підтвердити адресу ел. пошти',
 'confirmedittext'                  => 'Ви повинні підтвердити вашу адресу електронної пошти перед редагуванням сторінок.
 Будь-ласка зазначте і підтвердіть вашу електронну адресу на [[Special:Preferences|сторінці налаштувань]].',
 'nosuchsectiontitle'               => 'Немає такого розділу',
@@ -875,12 +848,13 @@ $1",
 'permissionserrors'                => 'Помилки прав доступу',
 'permissionserrorstext'            => 'У вас нема прав на виконання цієї операції з {{PLURAL:$1|наступної причини|наступних причин}}:',
 'permissionserrorstext-withaction' => 'У вас нема дозволу на $2 з {{PLURAL:$1|наступної причини|наступних причин}}:',
-'recreate-deleted-warn'            => "'''Попередження: ви намагаєтеся створити сторінку, яка раніше вже була вилучена.'''
+'recreate-moveddeleted-warn'       => "'''Попередження: ви намагаєтеся створити сторінку, яка раніше вже була вилучена.'''
 
 Перевірте, чи справді вам потрібно знову створювати цю сторінку.
-Нижче наведений журнал вилучень:",
-'deleted-notice'                   => 'Ця сторінка була вилучена. Для довідки нижче наведені відповідні записи з журналу вилучень.',
-'deletelog-fulllog'                => 'Переглянути повний журнал',
+Нижче наведений журнал вилучень і перейменувань:",
+'moveddeleted-notice'              => 'Ця сторінка була вилучена.
+Для довідки нижче наведені відповідні записи з журналів вилучень і перейменувань.',
+'log-fulllog'                      => 'Переглянути весь журнал',
 'edit-hook-aborted'                => 'Редагування скасоване процедурою-перехоплювачем.
 Додаткові пояснення не наведені.',
 'edit-gone-missing'                => 'Неможливо оновити сторінку.
@@ -908,7 +882,7 @@ $1",
 'undo-success' => 'Редагування відмінено. Будь-ласка, натисніть «Зберегти», щоб зберегти зміни.',
 'undo-failure' => 'Неможливо скасувати редагування через несумісність проміжних змін.',
 'undo-norev'   => 'Редагування не може бути скасоване, бо воно не існує або було вилучене.',
-'undo-summary' => 'Відміна редагування № $1 користувача [[Special:Contributions/$2|$2]] ([[User talk:$2|обговорення]])',
+'undo-summary' => 'Скасування редагування № $1 користувача [[Special:Contributions/$2|$2]] ([[User talk:$2|обговорення]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Неможливо створити обліковий запис',
@@ -922,7 +896,7 @@ $3 зазначив таку причину: ''$2''",
 'currentrev'             => 'Поточна версія',
 'currentrev-asof'        => 'Поточна версія на $1',
 'revisionasof'           => 'Версія $1',
-'revision-info'          => 'Версія від $1; $2', # Additionally available: $3: revision id
+'revision-info'          => 'Версія від $1; $2',
 'previousrevision'       => '← Старіша версія',
 'nextrevision'           => 'Новіша версія →',
 'currentrevisionlink'    => 'Поточна версія',
@@ -943,7 +917,7 @@ $3 зазначив таку причину: ''$2''",
 # Revision feed
 'history-feed-title'          => 'Історія редагувань',
 'history-feed-description'    => 'Історія редагувань цієї сторінки в вікі',
-'history-feed-item-nocomment' => '$1 в $2', # user at time
+'history-feed-item-nocomment' => '$1 в $2',
 'history-feed-empty'          => 'Такої сторінки не існує.
 Її могли вилучити чи перейменувати.
 Спробуйте [[Special:Search|знайти в вікі]] подібні сторінки.',
@@ -962,9 +936,9 @@ $3 зазначив таку причину: ''$2''",
 Можливо, є пояснення в [{{fullurl:{{ns:special}}:Log/delete|page={{FULLPAGENAMEE}}}} журналі вилучень].",
 'rev-deleted-no-diff'            => "Ви не можете переглянути цю різницю версій, оскільки одна з версій сторінки '''вилучена'''.
 Можливо, деталі можна знайти в [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журналі вилучень].",
-'rev-deleted-unhide-diff'        => "Одну з версій сторінки '''вилучено'''.
-Можливо, подробиці можна знайти в [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журналі вилучень].
-Ви можете [$1 переглянути дану версію], оскільки є адміністратором.",
+'rev-deleted-unhide-diff'        => "Одна з версій сторінки '''вилучена'''.
+Можливо, деталі можна знайти в [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журналі вилучень].
+Ви можете [$1 переглянути цю версію], оскільки є адміністратором.",
 'rev-delundel'                   => 'показати/сховати',
 'revisiondelete'                 => 'Вилучити / відновити версії сторінки',
 'revdelete-nooldid-title'        => 'Не вказана цільова версія',
@@ -1055,7 +1029,7 @@ $3 зазначив таку причину: ''$2''",
 'difference'               => '(відмінності між версіями)',
 'lineno'                   => 'Рядок $1:',
 'compareselectedversions'  => 'Порівняти вибрані версії',
-'showhideselectedversions' => 'Показати/приховати вибрані версії',
+'showhideselectedversions' => 'Показати/приховати обрані версії',
 'visualcomparison'         => 'Наочне порівняння',
 'wikicodecomparison'       => 'Порівняння вікі-тексту',
 'editundo'                 => 'скасувати',
@@ -1141,7 +1115,6 @@ $3 зазначив таку причину: ''$2''",
 'searchhelp-url'                   => 'Help:Довідка',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Показати сторінки з цим префіксом]]',
 'searchprofile-articles'           => 'Статті',
-'searchprofile-articles-and-proj'  => 'Статті і сторінки проекту',
 'searchprofile-project'            => 'Сторінки проекту',
 'searchprofile-images'             => 'Файли',
 'searchprofile-everything'         => 'Усюди',
@@ -1151,8 +1124,6 @@ $3 зазначив таку причину: ''$2''",
 'searchprofile-images-tooltip'     => 'Пошук файлів',
 'searchprofile-everything-tooltip' => 'Пошук на всіх сторінках (включаючи сторінки обговорення)',
 'searchprofile-advanced-tooltip'   => 'Шукати в заданих просторах назв',
-'prefs-search-nsdefault'           => 'Пошук з використанням звичайних налаштувань:',
-'prefs-search-nscustom'            => 'Пошук у заданих просторах назв:',
 'search-result-size'               => '$1 ($2 {{PLURAL:$2|слово|слова|слів}})',
 'search-result-score'              => 'Відповідність: $1 %',
 'search-redirect'                  => '(перенаправлення $1)',
@@ -1180,35 +1151,27 @@ $3 зазначив таку причину: ''$2''",
 'search-external'                  => 'Зовнішній пошук',
 'searchdisabled'                   => '<p>Вибачте, повнотекстовий пошук тимчасово недоступний через перевантаження сервера; передбачається, що ця функція буде знову включена після установки нового обладнання. Поки що ми пропонуємо вам скористатися Google чи Yahoo!:</p>',
 
+# Quickbar
+'qbsettings'               => 'Панель навігації',
+'qbsettings-none'          => 'Не показувати панель',
+'qbsettings-fixedleft'     => 'Фіксована ліворуч',
+'qbsettings-fixedright'    => 'Фіксована праворуч',
+'qbsettings-floatingleft'  => 'Плаваюча ліворуч',
+'qbsettings-floatingright' => 'Плаваюча праворуч',
+
 # Preferences page
 'preferences'               => 'Налаштування',
 'mypreferences'             => 'Налаштування',
 'prefs-edits'               => 'Кількість редагувань:',
 'prefsnologin'              => 'Ви не ввійшли в систему',
 'prefsnologintext'          => 'Щоб змінити налаштування користувача, ви повинні <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} ввійти до системи]</span>.',
-'prefsreset'                => 'Відновлено стандартні налаштування.',
-'qbsettings'                => 'Панель навігації',
-'qbsettings-none'           => 'Не показувати панель',
-'qbsettings-fixedleft'      => 'Фіксована ліворуч',
-'qbsettings-fixedright'     => 'Фіксована праворуч',
-'qbsettings-floatingleft'   => 'Плаваюча ліворуч',
-'qbsettings-floatingright'  => 'Плаваюча праворуч',
 'changepassword'            => 'Змінити пароль',
-'skin'                      => 'Оформлення',
+'prefs-skin'                => 'Оформлення',
 'skin-preview'              => 'Попередній перегляд',
-'math'                      => 'Відображення формул',
+'prefs-math'                => 'Відображення формул',
 'dateformat'                => 'Формат дати',
 'datedefault'               => 'Стандартний',
-'datetime'                  => 'Дата й час',
-'math_failure'              => 'Неможливо розібрати вираз',
-'math_unknown_error'        => 'невідома помилка',
-'math_unknown_function'     => 'невідома функція',
-'math_lexing_error'         => 'лексична помилка',
-'math_syntax_error'         => 'синтаксична помилка',
-'math_image_error'          => 'Перетворення в PNG відбулося з помилкою; перевірте правильність встановлення latex, dvips, gs та convert',
-'math_bad_tmpdir'           => 'Не вдається створити чи записати в тимчасовий каталог математики',
-'math_bad_output'           => 'Не вдається створити чи записати в вихідний каталог математики',
-'math_notexvc'              => 'Не знайдено програму texvc; Див. math/README — довідку про налаштування.',
+'prefs-datetime'            => 'Дата й час',
 'prefs-personal'            => 'Особисті дані',
 'prefs-rc'                  => 'Сторінка останніх редагувань',
 'prefs-watchlist'           => 'Список спостереження',
@@ -1218,10 +1181,11 @@ $3 зазначив таку причину: ''$2''",
 'prefs-watchlist-edits-max' => '(максимальне число: 1000)',
 'prefs-misc'                => 'Інші налаштування',
 'prefs-resetpass'           => 'Змінити пароль',
+'prefs-email'               => 'Параметри електронної пошти',
 'saveprefs'                 => 'Зберегти',
 'resetprefs'                => 'Скасувати незбережені зміни',
 'restoreprefs'              => 'Відновити всі стандартні налаштування',
-'textboxsize'               => 'Розміри поля вводу',
+'prefs-editing'             => 'Розміри поля вводу',
 'prefs-edit-boxsize'        => 'Розмір вікна редагування.',
 'rows'                      => 'Рядків:',
 'columns'                   => 'Колонок:',
@@ -1235,7 +1199,6 @@ $3 зазначив таку причину: ''$2''",
 'recentchangescount'        => 'Кількість редагувань, які показуються у списку нових редагувань, історіях сторінок, журналах, за замовчуванням:',
 'savedprefs'                => 'Ваші налаштування збережено.',
 'timezonelegend'            => 'Часовий пояс',
-'timezonetext'              => '¹Зміщення вашого місцевого часу (в годинах) від часу сервера (UTC — за Гринвічем).',
 'localtime'                 => 'Місцевий час:',
 'timezoneselect'            => 'Часовий пояс:',
 'timezoneuseserverdefault'  => 'Використовувати налаштування сервера',
@@ -1258,12 +1221,36 @@ $3 зазначив таку причину: ''$2''",
 'prefs-namespaces'          => 'Простори назв',
 'defaultns'                 => 'За замовчуванням шукати в таких просторах назв:',
 'default'                   => 'за замовчуванням',
-'files'                     => 'Файли',
+'prefs-files'               => 'Файли',
 'prefs-custom-css'          => 'Власний CSS',
 'prefs-custom-js'           => 'Власний JS',
+'youremail'                 => 'Адреса електронної пошти:',
+'username'                  => "Ім'я користувача:",
+'uid'                       => 'Ідентифікатор користувача:',
+'prefs-memberingroups'      => 'Член {{PLURAL:$1|групи|груп}}:',
+'prefs-registration'        => 'Час реєстрації:',
+'yourrealname'              => "Справжнє ім'я:",
+'yourlanguage'              => 'Мова інтерфейсу:',
+'yourvariant'               => 'Варіант мови:',
+'yournick'                  => 'Підпис:',
+'badsig'                    => 'Неправильний підпис.
+Перевірте коректність HTML-тегів.',
+'badsiglength'              => 'Ваш підпис дуже довгий.
+Повинно бути не більше $1 {{PLURAL:$1|символу|символів|символів}}.',
+'yourgender'                => 'Стать:',
+'gender-unknown'            => 'не зазначена',
+'gender-male'               => 'чоловіча',
+'gender-female'             => 'жіноча',
+'prefs-help-gender'         => "Необов'язкове поле: використовується в деяких повідомленнях двигуна, які залежать від статі користувача. Значення параметра загальнодоступне.",
+'email'                     => 'Електронна пошта',
+'prefs-help-realname'       => "Справжнє ім'я необов'язково вказувати.
+Якщо ви його зазначите, то воно буде використовуватися, щоб показати, хто редагував сторінку.",
+'prefs-help-email'          => "Адреса електронної пошти (необов'язкове поле) дає можливість надіслати вам новий пароль у випадку, якщо ви забули поточний.
+Також вона дозволить іншим користувачам за допомогою вашої сторінки у вікі зв'язатися з вами, не знаючи вашої електронної адреси.",
+'prefs-help-email-required' => 'Потрібно зазначити адресу електронної пошти.',
 
 # User rights
-'userrights'                  => 'Управління правами користувачів', # Not used as normal message but as header for the special page itself
+'userrights'                  => 'Управління правами користувачів',
 'userrights-lookup-user'      => 'Управління групами користувача',
 'userrights-user-editname'    => "Введіть ім'я користувача:",
 'editusergroup'               => 'Редагувати групи користувача',
@@ -1625,8 +1612,8 @@ PICT # різні
 'noimage'                   => 'Немає файлу з такою назвою, але ви можете $1.',
 'noimage-linktext'          => 'завантажити його',
 'uploadnewversion-linktext' => 'Завантажити нову версію цього файлу',
-'shared-repo-from'          => 'з $1', # $1 is the repository name
-'shared-repo'               => 'спільного сховища', # used when shared-repo-NAME does not exist
+'shared-repo-from'          => 'з $1',
+'shared-repo'               => 'спільного сховища',
 
 # File reversion
 'filerevert'                => 'Повернення до старої версії $1',
@@ -1972,15 +1959,16 @@ $NEWPAGE
 'confirmdeletetext'      => 'Ви збираєтесь вилучити сторінку і всі її журнали редагувань з бази даних.
 Будь ласка, підтвердіть, що ви бажаєте зробити це, повністю розумієте наслідки і що робите це у відповідності з [[{{MediaWiki:Policy-url}}|правилами]].',
 'actioncomplete'         => 'Дію виконано',
+'actionfailed'           => 'Виконати дію не вдалося',
 'deletedtext'            => '"<nowiki>$1</nowiki>" було вилучено.
 Див. $2 для перегляду списку останніх вилучень.',
 'deletedarticle'         => 'вилучив «[[$1]]»',
 'suppressedarticle'      => 'прихована «[[$1]]»',
 'dellogpage'             => 'Журнал вилучень',
-'dellogpagetext'         => 'Нижче наведено список останніх вилучень.',
+'dellogpagetext'         => 'Нижче наведений список останніх вилучень.',
 'deletionlog'            => 'журнал вилучень',
-'reverted'               => 'Відновлено зі старої версії',
-'deletecomment'          => 'Причина вилучення',
+'reverted'               => 'Повернуто до більш ранньої версії',
+'deletecomment'          => 'Причина вилучення:',
 'deleteotherreason'      => 'Інша/додаткова причина:',
 'deletereasonotherlist'  => 'Інша причина',
 'deletereason-dropdown'  => '* Типові причини вилучення
@@ -2003,8 +1991,8 @@ $NEWPAGE
 'alreadyrolled'    => 'Неможливо відкинути останні редагування [[:$1]], зроблені [[User:$2|$2]] ([[User talk:$2|обговорення]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); хтось інший уже змінив чи відкинув редагування цієї статті.
 
 Останні редагування зробив [[User:$3|$3]] ([[User talk:$3|обговорення]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).',
-'editcomment'      => "Пояснення редагування було: «''$1''».", # only shown if there is an edit comment
-'revertpage'       => 'Редагування користувача [[Special:Contributions/$2|$2]] ([[User talk:$2|обговорення]]) відкинуті до версії користувача [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'editcomment'      => "Пояснення редагування було: «''$1''».",
+'revertpage'       => 'Редагування користувача [[Special:Contributions/$2|$2]] ([[User talk:$2|обговорення]]) відкинуті до версії користувача [[User:$1|$1]]',
 'rollback-success' => 'Відкинуті редагування користувача $1; повернення до версії користувача $2.',
 'sessionfailure'   => 'Здається, виникли проблеми з поточним сеансом роботи;
 ця дія була скасована з метою попередити «захоплення сеансу».
@@ -2054,7 +2042,7 @@ $NEWPAGE
 ** непродуктивна війна редагувань
 ** популярна сторінка',
 'protect-edit-reasonlist'     => 'Причини захисту від редагувань',
-'protect-expiry-options'      => '1 година:1 hour,1 день:1 day,1 тиждень:1 week,2 тижні:2 weeks,1 місяць:1 month,3 місяці:3 months,6 місяців:6 months,1 рік:1 year,назавжди:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1 година:1 hour,1 день:1 day,1 тиждень:1 week,2 тижні:2 weeks,1 місяць:1 month,3 місяці:3 months,6 місяців:6 months,1 рік:1 year,назавжди:infinite',
 'restriction-type'            => 'Права:',
 'restriction-level'           => 'Рівень доступу:',
 'minimum-size'                => 'Мінімальний розмір',
@@ -2129,7 +2117,7 @@ $1',
 'contributions-title' => 'Внесок користувача $1',
 'mycontris'           => 'Мій внесок',
 'contribsub2'         => 'Внесок $1 ($2)',
-'nocontribs'          => 'Редагувань, що задовольняють заданим умовам не знайдено.', # Optional parameter: $1 is the user name
+'nocontribs'          => 'Редагувань, що задовольняють заданим умовам не знайдено.',
 'uctop'               => ' (остання)',
 'month'               => 'Від місяця (і раніше):',
 'year'                => 'Від року (і раніше):',
@@ -2190,7 +2178,7 @@ $1',
 'ipbenableautoblock'              => 'Автоматично блокувати IP-адреси, які використовуються цим користувачем та будь-які наступні адреси, з яких він буде редагувати',
 'ipbsubmit'                       => 'Заблокувати доступ цьому користувачу',
 'ipbother'                        => 'Інший термін',
-'ipboptions'                      => '2 години:2 hours,1 день:1 day,3 дні:3 days,1 тиждень:1 week,2 тижні:2 weeks,1 місяць:1 month,3 місяці:3 months,6 місяців:6 months,1 рік:1 year,назавжди:infinite', # display1:time1,display2:time2,...
+'ipboptions'                      => '2 години:2 hours,1 день:1 day,3 дні:3 days,1 тиждень:1 week,2 тижні:2 weeks,1 місяць:1 month,3 місяці:3 months,6 місяців:6 months,1 рік:1 year,назавжди:infinite',
 'ipbotheroption'                  => 'інший термін',
 'ipbotherreason'                  => 'Інша/додаткова причина:',
 'ipbhidename'                     => "Приховати ім'я користувача у редагуваннях ті списках",
@@ -2321,7 +2309,7 @@ IP-адреси, що блокуються автоматично тут не в
 'move-watch'                   => 'Спостерігати за цією сторінкою',
 'movepagebtn'                  => 'Перейменувати сторінку',
 'pagemovedsub'                 => 'Сторінка перейменована',
-'movepage-moved'               => "<big>'''Сторінка «$1» перейменована на «$2»'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => "<big>'''Сторінка «$1» перейменована на «$2»'''</big>",
 'movepage-moved-redirect'      => 'Створено перенаправлення.',
 'movepage-moved-noredirect'    => 'Створення перенаправлення було заборонене.',
 'articleexists'                => 'Сторінка з такою назвою вже існує або зазначена вами назва недопустима.
@@ -2402,6 +2390,7 @@ IP-адреси, що блокуються автоматично тут не в
 'djvu_no_xml'              => 'Неможливо отримати XML для DjVu',
 'thumbnail_invalid_params' => 'Помилковий параметр мініатюри',
 'thumbnail_dest_directory' => 'Неможливо створити цільову директорію',
+'thumbnail_image-type'     => 'Тип зображення не підтримується',
 
 # Special:Import
 'import'                     => 'Імпорт статей',
@@ -2539,7 +2528,7 @@ The wiki server can't provide data in a format your client can read.",
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Анонімний користувач|Анонімні користувачі}} {{grammar:genitive|{{SITENAME}}}}',
 'siteuser'         => 'Користувач {{grammar:genitive|{{SITENAME}}}} $1',
-'lastmodifiedatby' => 'Остання зміна $2, $1 користувачем $3.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Остання зміна $2, $1 користувачем $3.',
 'othercontribs'    => 'Базується на праці $1.',
 'others'           => 'інші',
 'siteusers'        => '{{PLURAL:$2|Користувач|Користувачі}} {{grammar:genitive|{{SITENAME}}}} $1',
@@ -2581,6 +2570,17 @@ The wiki server can't provide data in a format your client can read.",
 'mw_math_modern' => 'Рекомендовано для сучасних браузерів',
 'mw_math_mathml' => 'Якщо можливо - MathML (експериментальна опція)',
 
+# Math errors
+'math_failure'          => 'Неможливо розібрати вираз',
+'math_unknown_error'    => 'невідома помилка',
+'math_unknown_function' => 'невідома функція',
+'math_lexing_error'     => 'лексична помилка',
+'math_syntax_error'     => 'синтаксична помилка',
+'math_image_error'      => 'Перетворення в PNG відбулося з помилкою; перевірте правильність встановлення latex, dvips, gs та convert',
+'math_bad_tmpdir'       => 'Не вдається створити чи записати в тимчасовий каталог математики',
+'math_bad_output'       => 'Не вдається створити чи записати в вихідний каталог математики',
+'math_notexvc'          => 'Не знайдено програму texvc; Див. math/README — довідку про налаштування.',
+
 # Patrolling
 'markaspatrolleddiff'                 => 'Позначити як перевірену',
 'markaspatrolledtext'                 => 'Позначити цю сторінку як перевірену',
@@ -2620,7 +2620,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Увага''': цей файл може містити шкідливий програмний код, виконання якого може бути небезпечним для вашої системи. <hr />",
-'imagemaxsize'         => 'Обмежити розмір зображень на сторінках опису зображень до:',
+'imagemaxsize'         => "Обмеження розміру зображення:<br />''(для сторінок опису файлів)''",
 'thumbsize'            => 'Розмір зменшеної версії зображення:',
 'widthheight'          => '$1 × $2',
 'widthheightpage'      => '$1 × $2, {{PLURAL:$3|$3 сторінка|$3 сторінки|$3 сторінок}}',
@@ -2660,7 +2660,7 @@ $1',
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Ширина',
@@ -2788,14 +2788,14 @@ $1',
 
 'exif-unknowndate' => 'Невідома дата',
 
-'exif-orientation-1' => 'Нормальна', # 0th row: top; 0th column: left
-'exif-orientation-2' => 'Відображено по горизонталі', # 0th row: top; 0th column: right
-'exif-orientation-3' => 'Повернуто на 180°', # 0th row: bottom; 0th column: right
-'exif-orientation-4' => 'Відображено по вертикалі', # 0th row: bottom; 0th column: left
-'exif-orientation-5' => 'Повернуто на 90° проти годинникової стрілки й відображено по вертикалі', # 0th row: left; 0th column: top
-'exif-orientation-6' => 'Повернуто на 90° за годинниковою стрілкою', # 0th row: right; 0th column: top
-'exif-orientation-7' => 'Повернуто на 90° за годинниковою стрілкою й відображено по вертикалі', # 0th row: right; 0th column: bottom
-'exif-orientation-8' => 'Повернуто на 90° проти годинникової стрілки', # 0th row: left; 0th column: bottom
+'exif-orientation-1' => 'Нормальна',
+'exif-orientation-2' => 'Відображено по горизонталі',
+'exif-orientation-3' => 'Повернуто на 180°',
+'exif-orientation-4' => 'Відображено по вертикалі',
+'exif-orientation-5' => 'Повернуто на 90° проти годинникової стрілки й відображено по вертикалі',
+'exif-orientation-6' => 'Повернуто на 90° за годинниковою стрілкою',
+'exif-orientation-7' => 'Повернуто на 90° за годинниковою стрілкою й відображено по вертикалі',
+'exif-orientation-8' => 'Повернуто на 90° проти годинникової стрілки',
 
 'exif-planarconfiguration-1' => 'формат «chunky»',
 'exif-planarconfiguration-2' => 'формат «planar»',
@@ -2916,16 +2916,25 @@ $1',
 'exif-gpslongitude-e' => 'східної довготи',
 'exif-gpslongitude-w' => 'західної довготи',
 
-'exif-gpsstatus-a' => 'Вимірювання не завершено',
+# Pseudotags used for GPSAltitudeRef
+'exif-gpsaltitude-0' => 'Метрів над рівнем моря',
+'exif-gpsaltitude-1' => 'Метрів нижче рівня моря',
+
+'exif-gpsstatus-a' => 'Вимірювання не закінчене',
 'exif-gpsstatus-v' => 'Готовий до передачі даних',
 
 'exif-gpsmeasuremode-2' => 'Вимірювання 2-х координат',
 'exif-gpsmeasuremode-3' => 'Вимірювання 3-х координат',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'км/год',
 'exif-gpsspeed-m' => 'миль/год',
 'exif-gpsspeed-n' => 'вузлів',
+
+# Pseudotags used for GPSDestDistanceRef
+'exif-gpsdestdistance-k' => 'Кілометри',
+'exif-gpsdestdistance-m' => 'Милі',
+'exif-gpsdestdistance-n' => 'Морські милі',
 
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
 'exif-gpsdirection-t' => 'справжній',
@@ -3072,7 +3081,7 @@ $1',
 'duplicate-defaultsort' => 'Увага. Ключ сортування «$2» перекриває попередній ключ сортування «$1».',
 
 # Special:Version
-'version'                          => 'Версія MediaWiki', # Not used as normal message but as header for the special page itself
+'version'                          => 'Версія MediaWiki',
 'version-extensions'               => 'Установлені розширення',
 'version-specialpages'             => 'Спеціальні сторінки',
 'version-parserhooks'              => 'Перехоплювачі синтаксичного аналізатора',
@@ -3086,7 +3095,7 @@ $1',
 'version-skin-extension-functions' => 'Функції розширень тем оформлення',
 'version-hook-name'                => "Ім'я перехоплювача",
 'version-hook-subscribedby'        => 'Підписаний на',
-'version-version'                  => 'Версія',
+'version-version'                  => '(Версія $1)',
 'version-license'                  => 'Ліцензія',
 'version-software'                 => 'Установлене програмне забезпечення',
 'version-software-product'         => 'Продукт',

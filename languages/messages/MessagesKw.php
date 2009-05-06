@@ -1,6 +1,9 @@
 <?php
 /** Cornish (Kernewek)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -74,22 +77,24 @@ $messages = array(
 'pagecategories'           => '{{PLURAL:$1|Klasyans|Klasyansow}}',
 'category_header'          => 'Folennow yn klasyans "$1"',
 'hidden-categories'        => '{{PLURAL:$1|Klasyans kudh|Klasyansow kudh}}',
-'hidden-category-category' => 'Klasyansow kudh', # Name of the category where hidden categories will be listed
+'hidden-category-category' => 'Klasyansow kudh',
 'listingcontinuesabbrev'   => 'pes.',
 
-'about'          => 'A-dro dhe',
-'cancel'         => 'Hedhi',
+'about'         => 'A-dro dhe',
+'cancel'        => 'Hedhi',
+'moredotdotdot' => 'Moy...',
+'mypage'        => 'Ow folen',
+'mytalk'        => 'Ow hewsel',
+'navigation'    => 'Lewyans',
+'and'           => '&#32;ha(g)',
+
+# Cologne Blue skin
 'qbfind'         => 'Kavos',
 'qbbrowse'       => 'Peuri',
 'qbedit'         => 'Chanjya',
 'qbpageoptions'  => 'An folen ma',
 'qbmyoptions'    => 'Ow folennow',
 'qbspecialpages' => 'Folennow arbennek',
-'moredotdotdot'  => 'Moy...',
-'mypage'         => 'Ow folen',
-'mytalk'         => 'Ow hewsel',
-'navigation'     => 'Lewyans',
-'and'            => '&#32;ha(g)',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -125,6 +130,7 @@ $messages = array(
 'talk'             => 'Dadhelva',
 'toolbox'          => 'Boks toulys',
 'otherlanguages'   => 'Tavosow erel',
+'jumpto'           => 'Lamma dhe:',
 'jumptonavigation' => 'lewyans',
 'jumptosearch'     => 'hwilas',
 
@@ -182,11 +188,6 @@ $messages = array(
 'gotaccount'              => 'Eus akont dhys seulabrys? $1.',
 'gotaccountlink'          => 'Rag omgelmi',
 'createaccountmail'       => 'dre e-bost',
-'youremail'               => 'E-bost:',
-'username'                => 'Hanow-usyer:',
-'yourlanguage'            => 'Yeth:',
-'yourgender'              => 'Reyth:',
-'email'                   => 'E-bost',
 'loginlanguagelabel'      => 'Yeth: $1',
 
 # Password reset dialog
@@ -194,15 +195,19 @@ $messages = array(
 'newpassword' => 'Ger-tremena nowyth:',
 
 # Edit page toolbar
-'link_tip'  => 'Kevren bervedhel',
-'image_tip' => 'Restren neythys',
-'media_tip' => 'Kevren restren',
+'bold_sample'   => 'Tekst tew',
+'italic_sample' => 'Tekst italek',
+'italic_tip'    => 'Tekst italek',
+'link_tip'      => 'Kevren bervedhel',
+'image_tip'     => 'Restren neythys',
+'media_tip'     => 'Kevren restren',
 
 # Edit pages
 'minoredit'    => 'Hemm yw chanj bian',
 'watchthis'    => 'Golyas an folen ma',
 'savearticle'  => 'Gwitha',
 'preview'      => 'Ragwel',
+'showpreview'  => 'Diskwedhes ragwel',
 'showdiff'     => 'Diskwedhes chanjyow',
 'loginreqlink' => 'omgelmi',
 'newarticle'   => '(Nowyth)',
@@ -251,7 +256,7 @@ $messages = array(
 # Preferences page
 'preferences'              => 'Teythi ow akont',
 'mypreferences'            => 'Teythi ow akont',
-'skin'                     => 'Krohen',
+'prefs-skin'               => 'Krohen',
 'prefs-watchlist'          => 'Rol golyas',
 'saveprefs'                => 'Gwitha',
 'searchresultshead'        => 'Hwilas',
@@ -260,7 +265,12 @@ $messages = array(
 'timezoneregion-asia'      => 'Asi',
 'timezoneregion-australia' => 'Ostrali',
 'timezoneregion-europe'    => 'Europa',
-'files'                    => 'Restrennow',
+'prefs-files'              => 'Restrennow',
+'youremail'                => 'E-bost:',
+'username'                 => 'Hanow-usyer:',
+'yourlanguage'             => 'Yeth:',
+'yourgender'               => 'Reyth:',
+'email'                    => 'E-bost',
 
 # Groups
 'group-user'  => 'Devnydhyow',
@@ -449,7 +459,9 @@ $messages = array(
 'import-upload-filename'  => 'Hanow-restren:',
 
 # Tooltip help for the actions
+'tooltip-pt-userpage'    => 'Dha folen devnydhyer',
 'tooltip-pt-preferences' => 'Teythi ow akont',
+'tooltip-pt-mycontris'   => 'Rol a dha hevrohow',
 'tooltip-pt-logout'      => 'Omdenna',
 'tooltip-ca-addsection'  => 'Dalleth tregh nowyth',
 'tooltip-ca-protect'     => 'Difres an folen ma',
@@ -461,6 +473,7 @@ $messages = array(
 'tooltip-t-upload'       => 'Ughkarga restrennow',
 'tooltip-t-specialpages' => 'Rol a bub folenn arbennik',
 'tooltip-t-print'        => 'Versyon pryntyadow an folen ma',
+'tooltip-save'           => 'Gwitha dha janjyow',
 
 # Attribution
 'siteuser'  => 'devnydhyer {{SITENAME}} $1',
@@ -504,9 +517,9 @@ $messages = array(
 'table_pager_limit_submit' => 'Ke',
 
 # Special:Version
-'version'         => 'Versyon', # Not used as normal message but as header for the special page itself
+'version'         => 'Versyon',
 'version-other'   => 'Aral',
-'version-version' => 'Versyon',
+'version-version' => '(Versyon $1)',
 
 # Special:FilePath
 'filepath-page' => 'Restren:',

@@ -854,6 +854,9 @@ class Title {
 	 * there's a fragment but the prefixed text is empty, we just return a link
 	 * to the fragment.
 	 *
+	 * The result obviously should not be URL-escaped, but does need to be
+	 * HTML-escaped if it's being output in HTML.
+	 *
 	 * @param $query \type{\arrayof{\string}} An associative array of key => value pairs for the
 	 *   query string.  Keys and values will be escaped.
 	 * @param $variant \type{\string} Language variant of URL (for sr, zh..).  Ignored
@@ -1015,8 +1018,7 @@ class Title {
 
 	/**
 	 * Can $wgUser perform $action on this page?
-	 * This skips potentially expensive cascading permission checks
-	 * as well as avoids expensive error formatting
+	 * This skips potentially expensive cascading permission checks.
 	 *
 	 * Suitable for use for nonessential UI controls in common cases, but
 	 * _not_ for functional access control.
@@ -1201,14 +1203,8 @@ class Title {
 			}
 		} elseif( !$user->isAllowed( $action ) ) {
 			$return = null;
-			
-			// We avoid expensive display logic for quickUserCan's and such
-			$groups = false; 
-			if (!$short) {
-				$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
-					User::getGroupsWithPermission( $action ) );
-			} 
-			
+			$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
+				User::getGroupsWithPermission( $action ) );
 			if( $groups ) {
 				$return = array( 'badaccess-groups',
 					array( implode( ', ', $groups ), count( $groups ) ) );
@@ -2772,7 +2768,7 @@ class Title {
 
 			# @bug 17860: old article can be deleted, if this the case,
 			# delete it from message cache
-			if ( $this->getArticleID === 0 ) {
+			if ( $this->getArticleID() === 0 ) {
 				$wgMessageCache->replace( $this->getDBkey(), false );
 			} else {
 				$oldarticle = new Article( $this );
@@ -2992,7 +2988,7 @@ class Title {
 	 *  arrays (errors) as values, or an error array with numeric indices if no pages were moved
 	 */
 	public function moveSubpages( $nt, $auth = true, $reason = '', $createRedirect = true ) {
-		global $wgUser, $wgMaximumMovedPages;
+		global $wgMaximumMovedPages;
 		// Check permissions
 		if( !$this->userCan( 'move-subpages' ) )
 			return array( 'cant-move-subpages' );

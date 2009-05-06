@@ -1,6 +1,9 @@
 <?php
 /** Wu (吴语)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -99,7 +102,7 @@ $messages = array(
 'category-media-header'         => '"$1"分类中个媒体',
 'category-empty'                => "''该个分类中尚未包含任何文章或媒体。''",
 'hidden-categories'             => '$1隐藏分类',
-'hidden-category-category'      => '囥脱分类', # Name of the category where hidden categories will be listed
+'hidden-category-category'      => '囥脱分类',
 'category-subcat-count-limited' => '该个分类中有个亚类。',
 
 'mainpagetext'      => "<big>'''已成功安装MediaWiki！'''</big>",
@@ -110,21 +113,23 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki 常见问题解答]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 发布邮件列表]',
 
-'about'          => '关于',
-'article'        => '文章',
-'newwindow'      => '(在新窗口中打开)',
-'cancel'         => '取消',
+'about'         => '关于',
+'article'       => '文章',
+'newwindow'     => '(在新窗口中打开)',
+'cancel'        => '取消',
+'moredotdotdot' => '还有...',
+'mypage'        => '我个页面',
+'mytalk'        => '我个讲张',
+'anontalk'      => '该IP个讲张',
+'navigation'    => '导航',
+'and'           => '&#32;搭仔',
+
+# Cologne Blue skin
 'qbfind'         => '查找',
 'qbedit'         => '编辑',
 'qbpageoptions'  => '页面选项',
 'qbmyoptions'    => '我个选项',
 'qbspecialpages' => '特殊页面',
-'moredotdotdot'  => '还有...',
-'mypage'         => '我个页面',
-'mytalk'         => '我个讲张',
-'anontalk'       => '该IP个讲张',
-'navigation'     => '导航',
-'and'            => '&#32;搭仔',
 
 'errorpagetitle'    => '错误',
 'returnto'          => '返回到$1。',
@@ -245,7 +250,6 @@ $messages = array(
 'welcomecreation'            => '== 欢迎， $1！ ==
 
 倷个户头已经建立哉。覅忘记脱改动倷个{{SITENAME}}偏好噢。',
-'loginpagetitle'             => '用户登录',
 'yourname'                   => '用户名:',
 'yourpassword'               => '密码:',
 'yourpasswordagain'          => '再打一遍密码:',
@@ -263,16 +267,7 @@ $messages = array(
 'gotaccountlink'             => '登录',
 'badretype'                  => '倷输入个密码搭倪个档案弗配。',
 'userexists'                 => '输入个用户名已经拨人注脱哉。请再选个两样个用户名。',
-'youremail'                  => '电子邮件:',
-'username'                   => '用户名:',
-'uid'                        => '用户号：',
-'yourrealname'               => '真实姓名:',
-'yourlanguage'               => '语言:',
-'yournick'                   => '绰号:',
-'badsig'                     => '无效原始签名；检查 HTML 标签。',
-'email'                      => '电子邮件',
 'loginerror'                 => '登录错误',
-'prefs-help-email'           => '电子邮箱是备选的，让别人家好通过倷个用户页或者用户讲张页面联系着倷，用弗着暴露倷个身份。',
 'loginsuccesstitle'          => '登录成功',
 'loginsuccess'               => "'''倷现在以 \"\$1\" 个身份登录到{{SITENAME}}。 '''",
 'nouserspecified'            => '侬必须选个用户名。',
@@ -372,24 +367,26 @@ $messages = array(
 'search-mwsuggest-disabled' => ' 没有建议',
 'powersearch'               => '高级搜索',
 
+# Quickbar
+'qbsettings-none' => '呒',
+
 # Preferences page
 'preferences'           => '偏好',
 'mypreferences'         => '我个所欢喜',
 'prefsnologin'          => '朆登录',
-'qbsettings-none'       => '呒',
 'changepassword'        => '改密码',
-'skin'                  => '皮肤',
+'prefs-skin'            => '皮肤',
 'skin-preview'          => '预览',
-'math'                  => '数学公式',
+'prefs-math'            => '数学公式',
 'datedefault'           => '呒拨偏好',
-'datetime'              => '日脚搭仔辰光',
+'prefs-datetime'        => '日脚搭仔辰光',
 'prefs-personal'        => '用户档案',
 'prefs-rc'              => '近段辰光个改动',
 'prefs-watchlist'       => '监控列表',
 'prefs-watchlist-days'  => '勒拉监控列表里向显示个日数：',
 'prefs-watchlist-edits' => '勒拉扩展个监控列表里向显示个编辑趟数：',
 'saveprefs'             => '保存',
-'textboxsize'           => '编辑',
+'prefs-editing'         => '编辑',
 'searchresultshead'     => '搜索',
 'recentchangescount'    => '近段辰光个改动标题数：',
 'savedprefs'            => '倷个偏好已经保存哉。',
@@ -398,7 +395,16 @@ $messages = array(
 'servertime'            => '服务器辰光',
 'allowemail'            => '接受别个用户个电子邮件',
 'default'               => '默认',
-'files'                 => '文件',
+'prefs-files'           => '文件',
+'youremail'             => '电子邮件:',
+'username'              => '用户名:',
+'uid'                   => '用户号：',
+'yourrealname'          => '真实姓名:',
+'yourlanguage'          => '语言:',
+'yournick'              => '绰号:',
+'badsig'                => '无效原始签名；检查 HTML 标签。',
+'email'                 => '电子邮件',
+'prefs-help-email'      => '电子邮箱是备选的，让别人家好通过倷个用户页或者用户讲张页面联系着倷，用弗着暴露倷个身份。',
 
 # User rights
 'userrights-user-editname' => '输入用户名:',
@@ -622,7 +628,7 @@ $messages = array(
 'rollback_short' => '恢复',
 'rollbacklink'   => '恢复',
 'rollbackfailed' => '恢复失败',
-'revertpage'     => '恢复[[Special:Contributions/$2|$2]] ([[User talk:$2|讲张]])个改动；恢复到[[User:$1|$1]]个上一版本', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'     => '恢复[[Special:Contributions/$2|$2]] ([[User talk:$2|讲张]])个改动；恢复到[[User:$1|$1]]个上一版本',
 
 # Protect
 'protectlogpage'  => '保护日志',
@@ -791,7 +797,7 @@ Variants for Chinese language
 
 'exif-contrast-2' => '高',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => '公里每小时',
 'exif-gpsspeed-m' => '英里每小时',
 
@@ -844,7 +850,7 @@ Variants for Chinese language
 'watchlistedit-normal-title' => '编辑监控列表',
 
 # Special:Version
-'version' => '版本', # Not used as normal message but as header for the special page itself
+'version' => '版本',
 
 # Special:FilePath
 'filepath'        => '文件路径',

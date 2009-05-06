@@ -1,6 +1,9 @@
 <?php
 /** Eastern Mari (Олык Марий)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -99,18 +102,20 @@ $messages = array(
 'category-article-count' => '{{PLURAL:$2|Тиде категорийыш ик лаштык гына пура.|{{PLURAL:$1|Тыгай $1 лаштык|Тыгане $1 лаштык-влак}} тиде категорийыште, чыла $2.}}',
 'listingcontinuesabbrev' => '(умбакыжым)',
 
-'about'          => 'Нерген',
-'newwindow'      => '(у окнаште почылтеш)',
-'cancel'         => 'Чараш',
+'about'      => 'Нерген',
+'newwindow'  => '(у окнаште почылтеш)',
+'cancel'     => 'Чараш',
+'mypage'     => 'Мыйын лаштык',
+'mytalk'     => 'Мыйын каҥашымаш',
+'anontalk'   => 'Каҥашымаш тиде IP нерген',
+'navigation' => 'Навигаций',
+
+# Cologne Blue skin
 'qbfind'         => 'Муаш',
 'qbedit'         => 'Тӧрлаташ',
 'qbpageoptions'  => 'Тиде лаштык',
 'qbmyoptions'    => 'Мыйын лаштык-влак',
 'qbspecialpages' => 'Лӱмын ыштыме лаштык-влак',
-'mypage'         => 'Мыйын лаштык',
-'mytalk'         => 'Мыйын каҥашымаш',
-'anontalk'       => 'Каҥашымаш тиде IP нерген',
-'navigation'     => 'Навигаций',
 
 'errorpagetitle'   => 'Йоҥылыш',
 'returnto'         => '$1 деке пӧртылаш.',
@@ -142,7 +147,7 @@ $messages = array(
 'otherlanguages'   => 'Вес йылме дене',
 'redirectedfrom'   => '(Колтымо $1 гыч)',
 'redirectpagesub'  => 'Вес верек колтымо лаштык',
-'lastmodifiedat'   => 'Тиде лаштыкым пытартыш гана $2 $1 тӧрлымӧ.', # $1 date, $2 time
+'lastmodifiedat'   => 'Тиде лаштыкым пытартыш гана $2 $1 тӧрлымӧ.',
 'jumpto'           => 'Куснаш:',
 'jumptonavigation' => 'навигациеш',
 'jumptosearch'     => 'кычалмашке',
@@ -219,15 +224,6 @@ $messages = array(
 'nologinlink'             => 'Регистрацийым эрте',
 'gotaccount'              => 'Тый регистрацийым эртенат? $1.',
 'gotaccountlink'          => 'Шке денет палымым ыште',
-'youremail'               => 'Электрон почто:',
-'username'                => 'Пайдаланышын лӱмжӧ:',
-'uid'                     => 'Пайдаланышын ID-же:',
-'prefs-memberingroups'    => '{{PLURAL:$1|Тӱшкаште шогышо|Тӱшка-влакыште шогышо}}:',
-'yourrealname'            => 'Чын лӱмжӧ:',
-'yourlanguage'            => 'Йылме:',
-'yournick'                => 'Кидпале:',
-'email'                   => 'Электрон почто',
-'prefs-help-email'        => 'Электрон почтын адресшым ончыктыде кертат, адакшым тудо моло ушнышо-влаклан тыйын лаштык гоч тый денет кылым кучаш йӧным ышта, тыгодымак нунылан палыдыме кодеш.',
 'nosuchuser'              => '"$1" лӱман пайдаланыше уке.
 Лӱмым чын возымым терге але [[Special:UserLogin/signup|регистрацийым эрте]].',
 'nouserspecified'         => 'Тылат пайдаланышын лӱмжым пуртыман.',
@@ -305,7 +301,7 @@ $messages = array(
 'template-semiprotected'           => '(верын аралыме)',
 'hiddencategories'                 => 'Тиде лаштык $1 {{PLURAL:$1|шылтыме категорийыш|шылтыме категорийыш}} лектеш:',
 'permissionserrorstext-withaction' => "Тыйын '''$2''' кертмешет шагал. Амалже:",
-'deleted-notice'                   => 'Тиде лаштык шӧрымӧ лийын.
+'moveddeleted-notice'              => 'Тиде лаштык шӧрымӧ лийын.
 Тиде лаштыклан шӧрымӧ нерген журнал ӱлнӧ ончыктымо.',
 
 # History pages
@@ -375,9 +371,9 @@ $messages = array(
 'mypreferences'         => 'Настройке-влак',
 'prefs-edits'           => 'Мыняр тӧрлатымашым ыштен?:',
 'changepassword'        => 'Шолыпмутым вашталташ',
-'skin'                  => 'Сӧрастарыме йӧн',
+'prefs-skin'            => 'Сӧрастарыме йӧн',
 'skin-preview'          => 'Ончылгоч ончымаш',
-'math'                  => 'Формуло-влак',
+'prefs-math'            => 'Формуло-влак',
 'prefs-personal'        => 'Пайдаланышын профильже',
 'prefs-rc'              => 'Шукертсе огыл тӧрлымаш-влак',
 'prefs-watchlist'       => 'Эскерымаш лӱмер',
@@ -390,6 +386,15 @@ $messages = array(
 'savedprefs'            => 'Тыйын настройке-влакетым аралыме.',
 'allowemail'            => 'Вес ушнышо-влак деч электрон почтым налаш кӧнаш',
 'default'               => 'ойлыде',
+'youremail'             => 'Электрон почто:',
+'username'              => 'Пайдаланышын лӱмжӧ:',
+'uid'                   => 'Пайдаланышын ID-же:',
+'prefs-memberingroups'  => '{{PLURAL:$1|Тӱшкаште шогышо|Тӱшка-влакыште шогышо}}:',
+'yourrealname'          => 'Чын лӱмжӧ:',
+'yourlanguage'          => 'Йылме:',
+'yournick'              => 'Кидпале:',
+'email'                 => 'Электрон почто',
+'prefs-help-email'      => 'Электрон почтын адресшым ончыктыде кертат, адакшым тудо моло ушнышо-влаклан тыйын лаштык гоч тый денет кылым кучаш йӧным ышта, тыгодымак нунылан палыдыме кодеш.',
 
 # Groups
 'group-bot'   => 'Бот-влак',
@@ -647,7 +652,7 @@ $messages = array(
 'blockip'                  => 'Пайдаланышылан йӧным петраш',
 'ipbreason'                => 'Амал:',
 'ipbreasonotherlist'       => 'Вес амал',
-'ipboptions'               => '2 жап:2 hours,1 кече:1 day,3 кече:3 days,1 арня:1 week,2 арня:2 weeks,1 тылзе:1 month,3 тылзе:3 months,6 тылзе:6 months,1 ий:1 year,нимучашдымылык:infinite', # display1:time1,display2:time2,...
+'ipboptions'               => '2 жап:2 hours,1 кече:1 day,3 кече:3 days,1 арня:1 week,2 арня:2 weeks,1 тылзе:1 month,3 тылзе:3 months,6 тылзе:6 months,1 ий:1 year,нимучашдымылык:infinite',
 'ipbotherreason'           => 'Вес/ешартыш амал:',
 'ipblocklist'              => 'Петырыме IP адрес-влак да пайдаланыше-влак',
 'ipblocklist-submit'       => 'Кычал',
@@ -684,7 +689,7 @@ $messages = array(
 'move-watch'       => 'Тиде лаштыкым эскераш',
 'movepagebtn'      => 'Лаштыкым кусараш',
 'pagemovedsub'     => 'Кусарымаш сайын эртен',
-'movepage-moved'   => '<big>\'\'\'"$1" лаштыкым "$2" лаштыкыш кусарыме\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'   => '<big>\'\'\'"$1" лаштыкым "$2" лаштыкыш кусарыме\'\'\'</big>',
 'articleexists'    => 'Тыгай лӱман лаштык уло але тиде лӱмым кучылташ огеш лий. Вес лӱмым ойыро.',
 'talkexists'       => "'''Лаштыкым кусарыме гынат, тудын каҥашымаш лаштыкшым тыгай лӱман лаштык улмылан кӧра кусараш огеш лий. Нуным шке кидет дене иктыш ушно.'''",
 'movedto'          => 'лаштыкыш кусарыме',
@@ -801,7 +806,7 @@ $messages = array(
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* focallength',
 
 # External editor support
 'edit-externally'      => 'Файлым ӧрдыж программыште тӧрлаташ',

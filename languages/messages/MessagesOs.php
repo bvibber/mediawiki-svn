@@ -1,6 +1,9 @@
 <?php
 /** Ossetic (Иронау)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -134,7 +137,7 @@ $messages = array(
 'category-media-header'          => 'Категори «$1»-ы файлтæ',
 'category-empty'                 => "''Ацы категори афтид ма у.''",
 'hidden-categories'              => 'Æмбæхст {{PLURAL:$1|категори|категоритæ}}',
-'hidden-category-category'       => 'Æмбæхст категоритæ', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Æмбæхст категоритæ',
 'category-subcat-count'          => '{{PLURAL:$2|Ацы категорийы мидæг æрмæст иу дæлкатегори и.|{{PLURAL:$1|$1 дæлкатегори æвдыст у|$1 дæлкатегорийы æвдыст сты}}, æдæппæт $2.}}',
 'category-subcat-count-limited'  => 'Ацы категорийы мидæг ис {{PLURAL:$1|$1 дæлкатегори|$1 дæлкатегорийы}}.',
 'category-article-count-limited' => 'Ацы категорийы мидæг {{PLURAL:$1|$1 фарс|$1 фарсы}} ис.',
@@ -143,10 +146,18 @@ $messages = array(
 
 'mainpagetext' => "<big>'''Вики-скрипт «MediaWiki» æнтыстджынæй æвæрд æрцыд.'''</big>",
 
-'about'          => 'Афыст',
-'article'        => 'Статья',
-'newwindow'      => '(ног рудзынджы)',
-'cancel'         => 'Фæстæмæ',
+'about'         => 'Афыст',
+'article'       => 'Статья',
+'newwindow'     => '(ног рудзынджы)',
+'cancel'        => 'Фæстæмæ',
+'moredotdotdot' => 'Фылдæр…',
+'mypage'        => 'Дæхи фарс',
+'mytalk'        => 'Дæумæ цы дзурынц',
+'anontalk'      => 'Ацы IP-адрисы дискусси',
+'navigation'    => 'хъæугæ æрвитæнтæ',
+'and'           => '&#32;æмæ',
+
+# Cologne Blue skin
 'qbfind'         => 'Агур',
 'qbbrowse'       => 'Фен',
 'qbedit'         => 'Баив æй',
@@ -154,12 +165,6 @@ $messages = array(
 'qbpageinfo'     => 'Фарсы контекст',
 'qbmyoptions'    => 'Мæ фæрстæ',
 'qbspecialpages' => 'Сæрмагонд фæрстæ',
-'moredotdotdot'  => 'Фылдæр…',
-'mypage'         => 'Дæхи фарс',
-'mytalk'         => 'Дæумæ цы дзурынц',
-'anontalk'       => 'Ацы IP-адрисы дискусси',
-'navigation'     => 'хъæугæ æрвитæнтæ',
-'and'            => '&#32;æмæ',
 
 'errorpagetitle'    => 'Рæдыд',
 'returnto'          => '$1 фарсмæ раздæх.',
@@ -207,7 +212,7 @@ $messages = array(
 'otherlanguages'    => 'Æндæр æвзæгтыл',
 'redirectedfrom'    => '(Рарвыстæуыд ацы статьяйæ: «$1»)',
 'redirectpagesub'   => 'Рарвысты фарс',
-'lastmodifiedat'    => 'Ацы фарс фæстаг хатт ивд æрцыд: $1, $2.', # $1 date, $2 time
+'lastmodifiedat'    => 'Ацы фарс фæстаг хатт ивд æрцыд: $1, $2.',
 'protectedpage'     => 'Æхгæд фарс',
 'jumpto'            => 'Тагъд æрвитæнтæ:',
 'jumptonavigation'  => 'навигаци',
@@ -272,7 +277,6 @@ $messages = array(
 # General errors
 'error'                => 'Рæдыд',
 'databaseerror'        => 'Бæрæггæнæнты базæйы рæдыд',
-'nodb'                 => 'Бæрæггæнæнты базæ $1 равзæрын нæ фæрæстмæ',
 'readonly'             => 'Бæрæггæнæнты базæ фыссынæн æхгæд у',
 'missingarticle-rev'   => '(верси № $1)',
 'missingarticle-diff'  => '(хъауджы: $1, $2)',
@@ -296,41 +300,28 @@ $messages = array(
 'virus-unknownscanner' => 'æнæзонгæ антивирус:',
 
 # Login and logout pages
-'welcomecreation'           => '<h2>Æгас цу, $1!</h2><p>Регистрацигонд æрцыдтæ.',
-'loginpagetitle'            => 'Дæхи бацамон системæйæн',
-'yourname'                  => 'Архайæджы ном:',
-'yourpassword'              => 'Пароль:',
-'yourpasswordagain'         => 'Дæ пароль иу хатт ма:',
-'remembermypassword'        => 'Системæ бахъуыды кæнæд мæ пароль ацы компьютерыл',
-'yourdomainname'            => 'Дæ домен:',
-'login'                     => 'Дæхи бавдис системæйæн',
-'nav-login-createaccount'   => 'Системæйæн дæхи бавдис',
-'userlogin'                 => 'Системæйæн дæхи бавдис',
-'logout'                    => 'Номсусæг суын',
-'userlogout'                => 'Номсусæг су',
-'notloggedin'               => 'Системæйæн дæхи нæ бацамыдтай',
-'createaccountmail'         => 'адрисмæ гæсгæ',
-'badretype'                 => 'Дыууæ хатты иу пароль хъуамæ ныффыстаис',
-'youremail'                 => 'Дæ электронон посты адрис',
-'username'                  => 'Регистрацигонд ном:',
-'yourrealname'              => 'Дæ æцæг ном*',
-'yourlanguage'              => 'Техникон фыстыты æвзаг:',
-'yourvariant'               => 'Æвзаджы вариант:',
-'yournick'                  => 'Фæсномыг (къухæрфыстытæм):',
-'badsiglength'              => 'Æгæр даргъ къухæрфыст, хъуамæ {{PLURAL:$1|дамгъæйæ|дамгъæйæ}} къаддæр уа.',
-'yourgender'                => 'Æрд:',
-'gender-male'               => 'нæлгоймаг',
-'gender-female'             => 'сылгоймаг',
-'email'                     => 'Эл. посты адрис',
-'prefs-help-email-required' => 'Электронон посты адрис хъæуы.',
-'loginsuccess'              => 'Ныр та Википедийы архайыс $1, зæгъгæ, ахæм номæй.',
-'nouserspecified'           => 'Дæхи бацамонын хъæуы: дæ архайæджы ном цы у.',
-'wrongpasswordempty'        => 'Пароль афтид уыд. Афтæ нæ баззы, ныффыс-ма исты пароль.',
-'mailmypassword'            => 'Рарвит мæм ног пароль',
-'noemail'                   => 'Архайæг $1 йæ электрон посты адрис нæ ныууагъта.',
-'mailerror'                 => 'Фыстæг арвитыны рæдыд: $1',
-'emailconfirmlink'          => 'Дæ электронон посты адрис сфидар кæн',
-'loginlanguagelabel'        => 'Æвзаг: $1',
+'welcomecreation'         => '<h2>Æгас цу, $1!</h2><p>Регистрацигонд æрцыдтæ.',
+'yourname'                => 'Архайæджы ном:',
+'yourpassword'            => 'Пароль:',
+'yourpasswordagain'       => 'Дæ пароль иу хатт ма:',
+'remembermypassword'      => 'Системæ бахъуыды кæнæд мæ пароль ацы компьютерыл',
+'yourdomainname'          => 'Дæ домен:',
+'login'                   => 'Дæхи бавдис системæйæн',
+'nav-login-createaccount' => 'Системæйæн дæхи бавдис',
+'userlogin'               => 'Системæйæн дæхи бавдис',
+'logout'                  => 'Номсусæг суын',
+'userlogout'              => 'Номсусæг су',
+'notloggedin'             => 'Системæйæн дæхи нæ бацамыдтай',
+'createaccountmail'       => 'адрисмæ гæсгæ',
+'badretype'               => 'Дыууæ хатты иу пароль хъуамæ ныффыстаис',
+'loginsuccess'            => 'Ныр та Википедийы архайыс $1, зæгъгæ, ахæм номæй.',
+'nouserspecified'         => 'Дæхи бацамонын хъæуы: дæ архайæджы ном цы у.',
+'wrongpasswordempty'      => 'Пароль афтид уыд. Афтæ нæ баззы, ныффыс-ма исты пароль.',
+'mailmypassword'          => 'Рарвит мæм ног пароль',
+'noemail'                 => 'Архайæг $1 йæ электрон посты адрис нæ ныууагъта.',
+'mailerror'               => 'Фыстæг арвитыны рæдыд: $1',
+'emailconfirmlink'        => 'Дæ электронон посты адрис сфидар кæн',
+'loginlanguagelabel'      => 'Æвзаг: $1',
 
 # Password reset dialog
 'resetpass_text'            => '<!-- Бахæсс дæ текст ам -->',
@@ -339,8 +330,6 @@ $messages = array(
 'resetpass_forbidden'       => 'Пароль баивæн нæй',
 'resetpass-submit-loggedin' => 'Пароль баив',
 'resetpass-temp-password'   => 'Рæстæгмæ пароль:',
-'resetpass-log'             => 'Парольтæ аппарыны лог',
-'resetpass-comment'         => 'Пароль аппарын цæмæн бахъуыд:',
 
 # Edit page toolbar
 'bold_sample'     => 'Ацы текст бæзджын суыдзæн',
@@ -399,7 +388,7 @@ $messages = array(
 
 # Revision feed
 'history-feed-title'          => 'Ивддзинæдты истори',
-'history-feed-item-nocomment' => '$1 $2', # user at time
+'history-feed-item-nocomment' => '$1 $2',
 
 # Revision deletion
 'rev-deleted-comment' => '(комментарий аппæрст у)',
@@ -445,17 +434,19 @@ $messages = array(
 'powersearch-legend'        => 'Сæрмагонд агуырд',
 'powersearch-redir'         => 'Рарвыстытæ дæр æвдис',
 
+# Quickbar
+'qbsettings'              => 'Навигацион таг',
+'qbsettings-none'         => 'Ма равдис',
+'qbsettings-fixedleft'    => 'Галиуырдыгæй',
+'qbsettings-fixedright'   => 'Рахизырдыгæй',
+'qbsettings-floatingleft' => 'Рахизырдыгæй ленккæнгæ',
+
 # Preferences page
 'mypreferences'             => 'Æрмадз',
 'prefsnologin'              => 'Системæйæн дæхи нæ бацамыдтай',
-'qbsettings'                => 'Навигацион таг',
-'qbsettings-none'           => 'Ма равдис',
-'qbsettings-fixedleft'      => 'Галиуырдыгæй',
-'qbsettings-fixedright'     => 'Рахизырдыгæй',
-'qbsettings-floatingleft'   => 'Рахизырдыгæй ленккæнгæ',
 'changepassword'            => 'Пароль баив',
 'skin-preview'              => 'Разæркаст',
-'datetime'                  => 'Датæ æмæ рæстæг',
+'prefs-datetime'            => 'Датæ æмæ рæстæг',
 'prefs-watchlist'           => 'Дæ цæст кæмæ дарыс, уыцы фæрсты номхыгъд',
 'prefs-watchlist-days'      => 'Цал боны ивддзинæдтæ æвдисын:',
 'saveprefs'                 => 'Афтæ уæд',
@@ -471,6 +462,18 @@ $messages = array(
 'timezoneregion-asia'       => 'Ази',
 'timezoneregion-australia'  => 'Австрали',
 'timezoneregion-europe'     => 'Европæ',
+'youremail'                 => 'Дæ электронон посты адрис',
+'username'                  => 'Регистрацигонд ном:',
+'yourrealname'              => 'Дæ æцæг ном*',
+'yourlanguage'              => 'Техникон фыстыты æвзаг:',
+'yourvariant'               => 'Æвзаджы вариант:',
+'yournick'                  => 'Фæсномыг (къухæрфыстытæм):',
+'badsiglength'              => 'Æгæр даргъ къухæрфыст, хъуамæ {{PLURAL:$1|дамгъæйæ|дамгъæйæ}} къаддæр уа.',
+'yourgender'                => 'Æрд:',
+'gender-male'               => 'нæлгоймаг',
+'gender-female'             => 'сылгоймаг',
+'email'                     => 'Эл. посты адрис',
+'prefs-help-email-required' => 'Электронон посты адрис хъæуы.',
 
 # User rights
 'userrights-nodatabase' => 'Бæрæггæнæнты базæ $1 нæй кæнæ уый у бынæттон базæ.',
@@ -871,8 +874,8 @@ $3',
 'watchlisttools-edit' => 'Номхыгъд фен/баив',
 
 # Special:Version
-'version'                  => 'MediaWiki-йы верси', # Not used as normal message but as header for the special page itself
-'version-version'          => 'Верси',
+'version'                  => 'MediaWiki-йы верси',
+'version-version'          => '(Верси $1)',
 'version-software-version' => 'Верси',
 
 # Special:SpecialPages

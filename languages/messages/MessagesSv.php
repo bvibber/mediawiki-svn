@@ -1,6 +1,9 @@
 <?php
 /** Swedish (Svenska)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -13,7 +16,9 @@
  * @author Leo Johannes
  * @author Lokal Profil
  * @author M.M.S.
+ * @author MagnusA
  * @author Micke
+ * @author NH
  * @author Najami
  * @author Petter Strandmark
  * @author S.Örvarr.S
@@ -272,7 +277,7 @@ $messages = array(
 'tog-hidepatrolled'           => 'Dölj patrullerade redigeringar i senaste ändringar',
 'tog-newpageshidepatrolled'   => 'Göm patrullerade sidor från listan över nya sidor',
 'tog-extendwatchlist'         => 'Utöka bevakningslistan till att visa alla ändringar, inte bara den senaste',
-'tog-usenewrc'                => 'Avancerad Senaste ändringar (Javascript)',
+'tog-usenewrc'                => 'Använd avancerad senaste ändringar (kräver JavaScript)',
 'tog-numberheadings'          => 'Numrerade rubriker',
 'tog-showtoolbar'             => 'Visa verktygsrad (Javascript)',
 'tog-editondblclick'          => 'Redigera sidor med dubbelklick (Javascript)',
@@ -280,7 +285,7 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Aktivera redigering av avsnitt genom högerklick på underrubriker (Javascript)',
 'tog-showtoc'                 => 'Visa innehållsförteckning (för sidor som har minst fyra rubriker)',
 'tog-rememberpassword'        => 'Kom ihåg lösenordet till nästa besök',
-'tog-editwidth'               => 'Full bredd på redigeringsrutan',
+'tog-editwidth'               => 'Utvidga redigeringsrutan till att fylla hela skärmen',
 'tog-watchcreations'          => 'Lägg till sidor jag skapar i min bevakningslista',
 'tog-watchdefault'            => 'Lägg till sidor jag redigerar i min bevakningslista',
 'tog-watchmoves'              => 'Lägg till sidor jag flyttar i min bevakningslista',
@@ -376,7 +381,7 @@ $messages = array(
 'category-media-header'          => 'Media i kategorin "$1"',
 'category-empty'                 => "''Den här kategorin innehåller just nu inga sidor eller filer.''",
 'hidden-categories'              => '{{PLURAL:$1|Dold kategori|Dolda kategorier}}',
-'hidden-category-category'       => 'Dolda kategorier', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Dolda kategorier',
 'category-subcat-count'          => '{{PLURAL:$2|Denna kategori har endast följande underkategori.|Denna kategori har följande {{PLURAL:$1|underkategori|$1 underkategorier}} (av totalt $2).}}',
 'category-subcat-count-limited'  => 'Denna kategori har följande {{PLURAL:$1|underkategori|$1 underkategorier}}.',
 'category-article-count'         => '{{PLURAL:$2|Denna kategori innehåller endast följande sida.|Följande {{PLURAL:$1|sida|$1 sidor}} (av totalt $2) finns i denna kategori.}}',
@@ -394,10 +399,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mail list]',
 
-'about'          => 'Om',
-'article'        => 'Innehållssida',
-'newwindow'      => '(öppnas i ett nytt fönster)',
-'cancel'         => 'Avbryt',
+'about'         => 'Om',
+'article'       => 'Innehållssida',
+'newwindow'     => '(öppnas i ett nytt fönster)',
+'cancel'        => 'Avbryt',
+'moredotdotdot' => 'Mer...',
+'mypage'        => 'Min sida',
+'mytalk'        => 'Min diskussion',
+'anontalk'      => 'Diskussionssida för denna IP-adress',
+'navigation'    => 'Navigering',
+'and'           => '&#32;och',
+
+# Cologne Blue skin
 'qbfind'         => 'Hitta',
 'qbbrowse'       => 'Bläddra igenom',
 'qbedit'         => 'Redigera',
@@ -405,12 +418,8 @@ $messages = array(
 'qbpageinfo'     => 'Sidinformation',
 'qbmyoptions'    => 'Mina inställningar',
 'qbspecialpages' => 'Specialsidor',
-'moredotdotdot'  => 'Mer...',
-'mypage'         => 'Min sida',
-'mytalk'         => 'Min diskussion',
-'anontalk'       => 'Diskussionssida för denna IP-adress',
-'navigation'     => 'Navigering',
-'and'            => '&#32;och',
+'faq'            => 'FAQ',
+'faqpage'        => 'Project:FAQ',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -463,7 +472,7 @@ $messages = array(
 'otherlanguages'    => 'På andra språk',
 'redirectedfrom'    => '(Omdirigerad från $1)',
 'redirectpagesub'   => 'Omdirigeringssida',
-'lastmodifiedat'    => 'Sidan ändrades senast den $1 kl. $2.', # $1 date, $2 time
+'lastmodifiedat'    => 'Sidan ändrades senast den $1 kl. $2.',
 'viewcount'         => 'Denna sidan har visats {{PLURAL:$1|en gång|$1 gånger}}.',
 'protectedpage'     => 'Skrivskyddad sida',
 'jumpto'            => 'Hoppa till:',
@@ -482,8 +491,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Allmänt förbehåll',
 'edithelp'             => 'Redigeringshjälp',
 'edithelppage'         => 'Help:Redigering',
-'faq'                  => 'FAQ',
-'faqpage'              => 'Project:FAQ',
 'helppage'             => 'Help:Innehåll',
 'mainpage'             => 'Huvudsida',
 'mainpage-description' => 'Huvudsida',
@@ -558,10 +565,6 @@ Den senaste utförda databasfrågan var:
 från funktionen "<tt>$2</tt>".
 MySQL returnerade felen "$3<tt>: $4</tt>".',
 'dberrortextcl'        => 'Ett felaktigt utformat sökbegrepp har påträffats. Senaste sökbegrepp var: "$1"  från funktionen "$2". MySQL svarade med felmeddelandet "$3: $4"',
-'noconnect'            => 'Wikin har tekniska problem, och kan inte få kontakt med databasservern.<br />
-$1',
-'nodb'                 => 'Kunde inte välja databasen $1',
-'cachederror'          => 'Detta är en cachad kopia av den efterfrågade sidan. Det är inte säkert att den är aktuell.',
 'laggedslavemode'      => 'Varning: Sidan kan sakna de senaste uppdateringarna.',
 'readonly'             => 'Databasen är skrivskyddad',
 'enterlockreason'      => 'Ange varför sidan skrivskyddats, och ge en uppskattning av hur länge skrivskyddet bör behållas.',
@@ -628,7 +631,6 @@ Observera att det, tills du tömmer din webbläsares cache, på vissa sidor kan 
 'welcomecreation'            => '== Välkommen, $1! ==
 Ditt konto har skapats.
 Glöm inte att justera dina [[Special:Preferences|{{SITENAME}}-inställningar]].',
-'loginpagetitle'             => 'Användarinloggning',
 'yourname'                   => 'Användarnamn:',
 'yourpassword'               => 'Lösenord:',
 'yourpasswordagain'          => 'Upprepa lösenord',
@@ -651,28 +653,7 @@ Glöm inte att justera dina [[Special:Preferences|{{SITENAME}}-inställningar]].
 'badretype'                  => 'De lösenord du uppgett överenstämmer inte med varandra.',
 'userexists'                 => 'Det valda användarnamnet används redan.
 Välj ett annat namn.',
-'youremail'                  => 'E-post:',
-'username'                   => 'Användarnamn:',
-'uid'                        => 'Användar-ID:',
-'prefs-memberingroups'       => 'Medlem av {{PLURAL:$1|gruppen|grupperna}}:',
-'yourrealname'               => 'Riktigt namn:',
-'yourlanguage'               => 'Språk:',
-'yournick'                   => 'Signatur:',
-'badsig'                     => 'Det är något fel med råsignaturen, kontrollera HTML-koden.',
-'badsiglength'               => 'Din signatur är för lång.
-Den får inte vara längre än $1 {{PLURAL:$1|tecken|tecken}}.',
-'yourgender'                 => 'Kön:',
-'gender-unknown'             => 'Ospecificerat',
-'gender-male'                => 'Man',
-'gender-female'              => 'Kvinna',
-'prefs-help-gender'          => 'Valfri: används för att mjukvaran ska kunna adressera med rätt genus. Denna information kommer vara offentlig.',
-'email'                      => 'E-post',
-'prefs-help-realname'        => 'Riktigt namn behöver inte anges.
-Om du väljer att ange ditt riktiga namn, kommer det att användas för att tillskriva dig ditt arbete.',
 'loginerror'                 => 'Inloggningsproblem',
-'prefs-help-email'           => 'Att ange e-postadress är valfritt, men gör det möjligt att få ditt lösenord mejlat till dig om du glömmer det.
-Du kan också välja att låta andra användare kontakta dig genom din användar- eller användardiskussionssida utan att du behöver avslöja din identitet.',
-'prefs-help-email-required'  => 'E-postadress måste anges.',
 'nocookiesnew'               => 'Användarkontot skapades, men du är inte inloggad.
 {{SITENAME}} använder cookies för att logga in användare.
 Du har cookies avaktiverade.
@@ -733,17 +714,12 @@ Vänta innan du försöker igen.',
 'retypenew'                 => 'Upprepa det nya lösenordet:',
 'resetpass_submit'          => 'Spara lösenord och logga in',
 'resetpass_success'         => 'Ditt lösenord har ändrats. Nu loggas du in...',
-'resetpass_bad_temporary'   => 'Ditt temporära lösenord är felaktigt. Du kanske redan har loggat in med det eller begärt att få ett nytt tillfälligt lösenord.',
 'resetpass_forbidden'       => 'Lösenord kan inte ändras',
 'resetpass-no-info'         => 'Du måste vara inloggad för att komma åt den här sidan direkt.',
 'resetpass-submit-loggedin' => 'Ändra lösenord',
 'resetpass-wrong-oldpass'   => 'Ogiltigt tillfälligt eller nuvarande lösenord.
 Du kanske redan har lyckats ändra ditt lösenord eller begärt ett nytt tillfälligt lösenord.',
 'resetpass-temp-password'   => 'Tillfälligt lösenord:',
-'resetpass-log'             => 'Logg för återställning av lösenord',
-'resetpass-logtext'         => 'Nedan finns en logg över användare som fått sina lösenord återställda av en administratör.',
-'resetpass-logentry'        => 'ändrade lösenordet för $1',
-'resetpass-comment'         => 'Anledning för lösenordsåterställning:',
 
 # Edit page toolbar
 'bold_sample'     => 'Fet text',
@@ -819,7 +795,6 @@ Vänligen ange informationen ovan i alla förfrågningar som du gör i ärendet.
 'blockededitsource'                => "Texten för '''dina ändringar''' av '''$1''' visas nedanför:",
 'whitelistedittitle'               => 'Du måste logga in för att redigera',
 'whitelistedittext'                => 'Du måste $1 för att kunna redigera sidor.',
-'confirmedittitle'                 => 'E-postbekräftelse krävs för redigering',
 'confirmedittext'                  => 'Du måste bekräfta din e-postadress innan du kan redigera sidor. Var vänlig ställ in och validera din e-postadress genom dina [[Special:Preferences|användarinställningar]].',
 'nosuchsectiontitle'               => 'Avsnittet finns inte',
 'nosuchsectiontext'                => 'Du försökte redigera ett avsnitt som inte finns. Eftersom avsnitt $1 inte finns, så kan inte din redigering sparas.',
@@ -909,12 +884,13 @@ Du kan redigera existerande sidor, eller [[Special:UserLogin|logga in eller skap
 'permissionserrors'                => 'Behörighetsfel',
 'permissionserrorstext'            => 'Du har inte behörighet att göra det du försöker göra, av följande {{PLURAL:$1|anledning|anledningar}}:',
 'permissionserrorstext-withaction' => 'Du har inte behörighet att $2, av följande {{PLURAL:$1|anledning|anledningar}}:',
-'recreate-deleted-warn'            => "'''Varning: Den sida du skapar har tidigare raderats.'''
+'recreate-moveddeleted-warn'       => "'''Varning: Du återskapar en sida som tidigare raderats.'''
 
-Du bör överväga om det är lämpligt att fortsätta redigera sidan.
-Raderingsloggen för sidan innehåller följande:",
-'deleted-notice'                   => 'Denna sida har blivit raderad. Som referens visas nedan raderingsloggen för sidan.',
-'deletelog-fulllog'                => 'Visa fullständig logg',
+Du bör överväga om det är lämpligt att fortsätta redigera den här sidan.
+Raderings- och sidflyttningsloggen för den här sidan visas här som hjälp:",
+'moveddeleted-notice'              => 'Den här sidan har raderats.
+Raderings- och sidflyttningsloggen för sidan visas nedan som referens.',
+'log-fulllog'                      => 'Visa fullständig logg',
 'edit-hook-aborted'                => 'Redigering avbruten av hook.
 Den gav ingen förklaring.',
 'edit-gone-missing'                => 'Kunde inte uppdatera sidan.
@@ -957,7 +933,7 @@ Anledningen till blockeringen var "$2".',
 'currentrev'             => 'Nuvarande version',
 'currentrev-asof'        => 'Nuvarande version från $1',
 'revisionasof'           => 'Versionen från $1',
-'revision-info'          => 'Version från den $1 av $2', # Additionally available: $3: revision id
+'revision-info'          => 'Version från den $1 av $2',
 'previousrevision'       => '← Äldre version',
 'nextrevision'           => 'Nyare version →',
 'currentrevisionlink'    => 'Nuvarande version',
@@ -965,7 +941,7 @@ Anledningen till blockeringen var "$2".',
 'next'                   => 'nästa',
 'last'                   => 'föregående',
 'page_first'             => 'första',
-'page_last'              => 'sista',
+'page_last'              => 'senaste',
 'histlegend'             => "Val av diff: markera i klickrutorna för att jämföra versioner och tryck enter eller knappen längst ner.<br />
 Förklaring: (nuvarande) = skillnad mot nuvarande version; (föregående) = skillnad mot föregående version; '''m''' = mindre ändring.",
 'history-fieldset-title' => 'Bläddra i historiken',
@@ -978,7 +954,7 @@ Förklaring: (nuvarande) = skillnad mot nuvarande version; (föregående) = skil
 # Revision feed
 'history-feed-title'          => 'Versionshistorik',
 'history-feed-description'    => 'Versionshistorik för denna sida på wikin',
-'history-feed-item-nocomment' => '$1 den $2', # user at time
+'history-feed-item-nocomment' => '$1 den $2',
 'history-feed-empty'          => 'Den begärda sidan finns inte.
 Den kan ha tagits bort från wikin eller bytt namn.
 Prova att [[Special:Search|söka på wikin]] för relevanta nya sidor.',
@@ -1171,10 +1147,9 @@ Se till att sidhistorikens kontinuitet behålls när du sammanfogar historik.',
 'searchmenu-new'                   => "'''Skapa sidan \"[[:\$1]]\" på denna wiki!'''",
 'searchhelp-url'                   => 'Help:Innehåll',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Bläddra igenom sidor med detta prefix]]',
-'searchprofile-articles'           => 'Innehållssidor',
-'searchprofile-articles-and-proj'  => 'Innehåll & projektsidor',
-'searchprofile-project'            => 'Projektsidor',
-'searchprofile-images'             => 'Filer',
+'searchprofile-articles'           => 'Artiklar',
+'searchprofile-project'            => 'Hjälp',
+'searchprofile-images'             => 'Multimedia',
 'searchprofile-everything'         => 'Allt',
 'searchprofile-advanced'           => 'Avancerad',
 'searchprofile-articles-tooltip'   => 'Sök i $1',
@@ -1182,8 +1157,6 @@ Se till att sidhistorikens kontinuitet behålls när du sammanfogar historik.',
 'searchprofile-images-tooltip'     => 'Sök efter filer',
 'searchprofile-everything-tooltip' => 'Sök allt innehåll (inklusive diskussionssidor)',
 'searchprofile-advanced-tooltip'   => 'Sök i vissa namnrymder',
-'prefs-search-nsdefault'           => 'Sök med standardvärden:',
-'prefs-search-nscustom'            => 'Sök valda namnrymder:',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 ord|$2 ord}})',
 'search-result-score'              => 'Relevans: $1%',
 'search-redirect'                  => '(omdirigering $1)',
@@ -1201,6 +1174,7 @@ Se till att sidhistorikens kontinuitet behålls när du sammanfogar historik.',
 'showingresults'                   => "Nedan visas upp till {{PLURAL:$1|'''1''' post|'''$1''' poster}} från och med nummer '''$2'''.",
 'showingresultsnum'                => "Nedan visas {{PLURAL:$3|'''1''' post|'''$3''' poster}} från och med nummer '''$2'''.",
 'showingresultstotal'              => "Härunder visas resultat {{PLURAL:$4|'''$1'''|'''$1 - $2'''}} av '''$3'''",
+'showingresultsheader'             => "{{PLURAL:$5|Resultat '''$1''' av '''$3'''|Resultat '''$1 - $2''' av '''$3'''}} för '''$4'''",
 'nonefound'                        => "'''Observera:''' Som standard sker sökning endast i vissa namnrymder. Du kan pröva att skriva ''all:'' i början av din sökning om du vill söka i alla sidor (inklusive diskussionssidor, mallar, m.m.), eller så kan du att börja din sökning med namnet på den namnrymd du vill söka i.",
 'search-nonefound'                 => 'Inga resultat matchade frågan.',
 'powersearch'                      => 'Avancerad sökning',
@@ -1213,35 +1187,27 @@ Se till att sidhistorikens kontinuitet behålls när du sammanfogar historik.',
 Du kan istället göra sökningar med hjälp av Google.
 Notera dock att deras indexering av {{SITENAME}} kan vara något föråldrad.',
 
+# Quickbar
+'qbsettings'               => 'Snabbmeny',
+'qbsettings-none'          => 'Ingen',
+'qbsettings-fixedleft'     => 'Fast vänster',
+'qbsettings-fixedright'    => 'Fast höger',
+'qbsettings-floatingleft'  => 'Flytande vänster',
+'qbsettings-floatingright' => 'Flytande höger',
+
 # Preferences page
 'preferences'               => 'Inställningar',
 'mypreferences'             => 'Mina inställningar',
 'prefs-edits'               => 'Antal redigeringar:',
 'prefsnologin'              => 'Inte inloggad',
 'prefsnologintext'          => 'Du måste vara <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} inloggad]</span> för att kunna ändra dina inställningar.',
-'prefsreset'                => 'Inställningarna har återställts till ursprungsvärdena.',
-'qbsettings'                => 'Snabbmeny',
-'qbsettings-none'           => 'Ingen',
-'qbsettings-fixedleft'      => 'Fast vänster',
-'qbsettings-fixedright'     => 'Fast höger',
-'qbsettings-floatingleft'   => 'Flytande vänster',
-'qbsettings-floatingright'  => 'Flytande höger',
 'changepassword'            => 'Byt lösenord',
-'skin'                      => 'Utseende',
+'prefs-skin'                => 'Utseende',
 'skin-preview'              => 'förhandsvisning',
-'math'                      => 'Matematik',
+'prefs-math'                => 'Matematik',
 'dateformat'                => 'Datumformat',
 'datedefault'               => 'Ovidkommande',
-'datetime'                  => 'Datum och tid',
-'math_failure'              => 'Misslyckades med att tolka formel.',
-'math_unknown_error'        => 'okänt fel',
-'math_unknown_function'     => 'okänd funktion',
-'math_lexing_error'         => 'regelfel',
-'math_syntax_error'         => 'syntaxfel',
-'math_image_error'          => 'Konvertering till PNG-format misslyckades; kontrollera om latex, dvips, gs och convert är korrekt installerade',
-'math_bad_tmpdir'           => 'Kan inte skriva till eller skapa temporär mapp för matematikresultat',
-'math_bad_output'           => 'Kan inte skriva till eller skapa mapp för matematikresultat',
-'math_notexvc'              => 'Applicationen texvc saknas; läs math/README för konfigureringsanvisningar.',
+'prefs-datetime'            => 'Datum och tid',
 'prefs-personal'            => 'Mitt konto',
 'prefs-rc'                  => 'Senaste ändringar',
 'prefs-watchlist'           => 'Bevakningslista',
@@ -1251,10 +1217,12 @@ Notera dock att deras indexering av {{SITENAME}} kan vara något föråldrad.',
 'prefs-watchlist-edits-max' => '(maximalt antal: 1 000)',
 'prefs-misc'                => 'Diverse',
 'prefs-resetpass'           => 'Ändra lösenord',
+'prefs-email'               => 'Alternativ för e-post',
+'prefs-rendering'           => 'Utseende',
 'saveprefs'                 => 'Spara',
 'resetprefs'                => 'Återställ osparade ändringar',
 'restoreprefs'              => 'Återställ alla standardinställningar',
-'textboxsize'               => 'Redigering',
+'prefs-editing'             => 'Redigering',
 'prefs-edit-boxsize'        => 'Storlek på redigeringsfönstret.',
 'rows'                      => 'Rader:',
 'columns'                   => 'Kolumner:',
@@ -1268,7 +1236,6 @@ Notera dock att deras indexering av {{SITENAME}} kan vara något föråldrad.',
 'recentchangescount'        => 'Antal ändringar som visas i senaste ändringarna, sidhistoriker och i loggsidor, som standard:',
 'savedprefs'                => 'Dina inställningar har sparats',
 'timezonelegend'            => 'Tidszon',
-'timezonetext'              => '¹Antal timmar din lokala tid skiljer från serverns tid (UTC).',
 'localtime'                 => 'Lokal tid:',
 'timezoneselect'            => 'Tidszon:',
 'timezoneuseserverdefault'  => 'Använd serverns standardinställning',
@@ -1291,12 +1258,41 @@ Notera dock att deras indexering av {{SITENAME}} kan vara något föråldrad.',
 'prefs-namespaces'          => 'Namnrymder',
 'defaultns'                 => 'Sök i följande namnrymder som förval:',
 'default'                   => 'ursprungsinställning',
-'files'                     => 'Filer',
+'prefs-files'               => 'Filer',
 'prefs-custom-css'          => 'Personlig CSS',
 'prefs-custom-js'           => 'Personlig JavaScript',
+'prefs-reset-intro'         => 'Du kan använda den här sidan till att återställa dina inställningar till webbplatsens standardinställningar.
+Detta kan inte återställas.',
+'prefs-emailconfirm-label'  => 'E-postbekräftelse:',
+'prefs-textboxsize'         => 'Storlek på redigeringsrutan',
+'youremail'                 => 'E-post:',
+'username'                  => 'Användarnamn:',
+'uid'                       => 'Användar-ID:',
+'prefs-memberingroups'      => 'Medlem av {{PLURAL:$1|gruppen|grupperna}}:',
+'prefs-registration'        => 'Registreringstid:',
+'yourrealname'              => 'Riktigt namn:',
+'yourlanguage'              => 'Språk:',
+'yournick'                  => 'Signatur:',
+'badsig'                    => 'Det är något fel med råsignaturen, kontrollera HTML-koden.',
+'badsiglength'              => 'Din signatur är för lång.
+Den får inte vara längre än $1 {{PLURAL:$1|tecken|tecken}}.',
+'yourgender'                => 'Kön:',
+'gender-unknown'            => 'Ospecificerat',
+'gender-male'               => 'Man',
+'gender-female'             => 'Kvinna',
+'prefs-help-gender'         => 'Valfri: används för att mjukvaran ska kunna adressera med rätt genus. Denna information kommer vara offentlig.',
+'email'                     => 'E-post',
+'prefs-help-realname'       => 'Riktigt namn behöver inte anges.
+Om du väljer att ange ditt riktiga namn, kommer det att användas för att tillskriva dig ditt arbete.',
+'prefs-help-email'          => 'Att ange e-postadress är valfritt, men gör det möjligt att få ditt lösenord mejlat till dig om du glömmer det.
+Du kan också välja att låta andra användare kontakta dig genom din användar- eller användardiskussionssida utan att du behöver avslöja din identitet.',
+'prefs-help-email-required' => 'E-postadress måste anges.',
+'prefs-info'                => 'Grundläggande information',
+'prefs-i18n'                => 'Internationalisering',
+'prefs-signature'           => 'Signatur',
 
 # User rights
-'userrights'                  => 'Hantering av användarrättigheter', # Not used as normal message but as header for the special page itself
+'userrights'                  => 'Hantering av användarrättigheter',
 'userrights-lookup-user'      => 'Hantera användargrupper',
 'userrights-user-editname'    => 'Skriv in ett användarnamn:',
 'editusergroup'               => 'Ändra användargrupper',
@@ -1557,7 +1553,7 @@ Om du ändå vill ladda upp din fil, gå då tillbaka och använd ett annat namn
 'sourcefilename'              => 'Ursprungsfilens namn:',
 'destfilename'                => 'Nytt filnamn:',
 'upload-maxfilesize'          => 'Maximal filstorlek: $1',
-'watchthisupload'             => 'Bevaka denna sida',
+'watchthisupload'             => 'Bevaka den här filen',
 'filewasdeleted'              => 'En fil med detta namn har tidigare laddats upp och därefter tagits bort. Du bör kontrollera $1 innan du fortsätter att ladda upp den.',
 'upload-wasdeleted'           => "'''Varning: Du håller på att ladda upp en fil som tidigare raderats.'''
 
@@ -1647,8 +1643,8 @@ Beskrivningen på dess [$2 filbeskrivningssida] visas nedan.',
 'noimage'                   => 'Det finns ingen fil med detta namn, men du kan $1.',
 'noimage-linktext'          => 'ladda upp en',
 'uploadnewversion-linktext' => 'Ladda upp en ny version av denna fil',
-'shared-repo-from'          => 'från $1', # $1 is the repository name
-'shared-repo'               => 'en gemensam filförvaring', # used when shared-repo-NAME does not exist
+'shared-repo-from'          => 'från $1',
+'shared-repo'               => 'en gemensam filförvaring',
 
 # File reversion
 'filerevert'                => 'Återställ $1',
@@ -1878,17 +1874,21 @@ Stödda protokoll: <tt>$1</tt>',
 'newuserlog-autocreate-entry' => 'Konto skapades automatiskt',
 
 # Special:ListGroupRights
-'listgrouprights'                 => 'Behörigheter för användargrupper',
-'listgrouprights-summary'         => 'Följande lista visar vilka användargrupper som är definierade på den här wikin och vilka behörigheter grupperna har.
+'listgrouprights'                      => 'Behörigheter för användargrupper',
+'listgrouprights-summary'              => 'Följande lista visar vilka användargrupper som är definierade på den här wikin och vilka behörigheter grupperna har.
 Det kan finnas [[{{MediaWiki:Listgrouprights-helppage}}|ytterligare information]] om de olika behörigheterna.',
-'listgrouprights-group'           => 'Grupp',
-'listgrouprights-rights'          => 'Behörigheter',
-'listgrouprights-helppage'        => 'Help:Gruppbehörigheter',
-'listgrouprights-members'         => '(lista över medlemmar)',
-'listgrouprights-addgroup'        => 'Kan lägga till {{PLURAL:$2|gruppen|grupperna}}: $1',
-'listgrouprights-removegroup'     => 'Kan ta bort {{PLURAL:$2|gruppen|grupperna}}: $1',
-'listgrouprights-addgroup-all'    => 'Kan lägga till alla användargrupper',
-'listgrouprights-removegroup-all' => 'Kan ta bort alla användargrupper',
+'listgrouprights-group'                => 'Grupp',
+'listgrouprights-rights'               => 'Behörigheter',
+'listgrouprights-helppage'             => 'Help:Gruppbehörigheter',
+'listgrouprights-members'              => '(lista över medlemmar)',
+'listgrouprights-addgroup'             => 'Kan lägga till {{PLURAL:$2|gruppen|grupperna}}: $1',
+'listgrouprights-removegroup'          => 'Kan ta bort {{PLURAL:$2|gruppen|grupperna}}: $1',
+'listgrouprights-addgroup-all'         => 'Kan lägga till alla användargrupper',
+'listgrouprights-removegroup-all'      => 'Kan ta bort alla användargrupper',
+'listgrouprights-addgroup-self'        => 'Kan lägga till {{PLURAL:$2|gruppen|grupperna}} till sitt eget konto: $1',
+'listgrouprights-removegroup-self'     => 'Kan ta bort {{PLURAL:$2|gruppen|grupperna}} från sitt eget konto: $1',
+'listgrouprights-addgroup-self-all'    => 'Kan lägga till alla grupperna till sitt eget konto',
+'listgrouprights-removegroup-self-all' => 'Kan ta bort alla grupperna från sitt eget konto',
 
 # E-mail user
 'mailnologin'      => 'Ingen adress att skicka till',
@@ -1997,6 +1997,7 @@ Feedback och hjälp:
 'confirmdeletetext'      => 'Du håller på att ta bort en sida med hela dess historik.
 Bekräfta att du förstår vad du håller på med och vilka konsekvenser detta leder till, och att du följer [[{{MediaWiki:Policy-url}}|riktlinjerna]].',
 'actioncomplete'         => 'Genomfört',
+'actionfailed'           => 'Handlingen misslyckades',
 'deletedtext'            => '"<nowiki>$1</nowiki>" har tagits bort.
 Se $2 för noteringar om de senaste raderingarna.',
 'deletedarticle'         => 'raderade "[[$1]]"',
@@ -2022,11 +2023,11 @@ Se $2 för noteringar om de senaste raderingarna.',
 'rollbacklink'     => 'rulla tillbaka',
 'rollbackfailed'   => 'Tillbakarullning misslyckades',
 'cantrollback'     => 'Det gick inte att rulla tillbaka, då sidan endast redigerats av en användare.',
-'alreadyrolled'    => 'Det gick inte att rulla tillbaka den sista redigeringen av [[User:$2|$2]] ([[User talk:$2|diskussion]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) på sidan [[:$1|$1]]. Någon annan har redan rullat tillbaka eller redigerat sidan.
+'alreadyrolled'    => 'Det gick inte att rulla tillbaka den senaste redigeringen av [[User:$2|$2]] ([[User talk:$2|diskussion]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]) på sidan [[:$1|$1]]. Någon annan har redan rullat tillbaka eller redigerat sidan.
 
 Sidan ändrades senast av [[User:$3|$3]] ([[User talk:$3|diskussion]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]).',
-'editcomment'      => "Redigeringskommentaren var: \"''\$1''\".", # only shown if there is an edit comment
-'revertpage'       => 'Återställde redigeringar av  [[Special:Contributions/$2|$2]] ([[User talk:$2|användardiskussion]]) till senaste versionen av [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'editcomment'      => "Redigeringskommentaren var: \"''\$1''\".",
+'revertpage'       => 'Återställde redigeringar av  [[Special:Contributions/$2|$2]] ([[User talk:$2|användardiskussion]]) till senaste versionen av [[User:$1|$1]]',
 'rollback-success' => 'Återställde ändringar av $1;
 ändrade tillbaka till senaste version av $2.',
 'sessionfailure'   => 'Något med din session som inloggad är på tok. Din begärda åtgärd har avbrutits, för att förhindra att någon kapar din session. Klicka på "Tillbaka" i din webbläsare och ladda om den sida du kom ifrån. Försök sedan igen.',
@@ -2075,7 +2076,7 @@ Du kan ändra skyddet av den här sidan, men det påverkar inte det kaskaderande
 ** Redigeringskrig
 ** Sida med många besökare',
 'protect-edit-reasonlist'     => 'Redigera skyddsanledningar',
-'protect-expiry-options'      => '1 timme:1 hour,1 dag:1 day,1 vecka:1 week,2 veckor:2 weeks,1 månad:1 month,3 månader:3 months,6 månader:6 months,1 år:1 year,oändlig:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1 timme:1 hour,1 dag:1 day,1 vecka:1 week,2 veckor:2 weeks,1 månad:1 month,3 månader:3 months,6 månader:6 months,1 år:1 year,oändlig:infinite',
 'restriction-type'            => 'Typ av skydd:',
 'restriction-level'           => 'Skyddsnivå:',
 'minimum-size'                => 'Minsta storlek',
@@ -2152,7 +2153,7 @@ $1',
 'contributions-title' => 'Bidrag av $1',
 'mycontris'           => 'Mina bidrag',
 'contribsub2'         => 'För $1 ($2)',
-'nocontribs'          => 'Inga ändringar som motsvarar dessa kriterier hittades.', # Optional parameter: $1 is the user name
+'nocontribs'          => 'Inga ändringar som motsvarar dessa kriterier hittades.',
 'uctop'               => '(senaste)',
 'month'               => 'Från månad (och tidigare):',
 'year'                => 'Från år (och tidigare):',
@@ -2162,7 +2163,7 @@ $1',
 'sp-contributions-newbies-title' => 'Bidrag från nya konton',
 'sp-contributions-blocklog'      => 'Blockeringslogg',
 'sp-contributions-deleted'       => 'raderade användarbidrag',
-'sp-contributions-logs'          => 'loggar',
+'sp-contributions-logs'          => 'Loggar',
 'sp-contributions-talk'          => 'diskussion',
 'sp-contributions-userrights'    => 'hantering av användarrättigheter',
 'sp-contributions-search'        => 'Sök efter användarbidrag',
@@ -2213,7 +2214,7 @@ Ange orsak nedan (exempelvis genom att nämna sidor som blivit vandaliserade).',
 'ipbenableautoblock'              => 'Blockera automatiskt den IP-adress som användaren använde senast, samt alla adresser som användaren försöker redigera ifrån',
 'ipbsubmit'                       => 'Blockera användaren',
 'ipbother'                        => 'Annan tidsperiod:',
-'ipboptions'                      => '2 timmar:2 hours,1 dag:1 day,3 dagar:3 days,1 vecka:1 week,2 veckor:2 weeks,1 månad:1 month,3 månader:3 months,6 månader:6 months,1 år:1 year,oändlig:infinite', # display1:time1,display2:time2,...
+'ipboptions'                      => '2 timmar:2 hours,1 dag:1 day,3 dagar:3 days,1 vecka:1 week,2 veckor:2 weeks,1 månad:1 month,3 månader:3 months,6 månader:6 months,1 år:1 year,oändlig:infinite',
 'ipbotheroption'                  => 'annan tidsperiod',
 'ipbotherreason'                  => 'Annan/ytterligare anledning:',
 'ipbhidename'                     => 'Dölj användarnamnet från redigeringar och listor',
@@ -2343,7 +2344,7 @@ I de fallen måste du flytta eller sammanfoga sidan manuellt, om det önskas.",
 'move-watch'                   => 'Bevaka denna sida',
 'movepagebtn'                  => 'Flytta sidan',
 'pagemovedsub'                 => 'Flyttningen lyckades',
-'movepage-moved'               => '<big>\'\'\'"$1" har flyttats till "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => '<big>\'\'\'"$1" har flyttats till "$2"\'\'\'</big>',
 'movepage-moved-redirect'      => 'En omdirigering har skapats.',
 'movepage-moved-noredirect'    => 'Skapandet av en omdirigering avbröts.',
 'articleexists'                => 'Antingen existerar redan en sida med det namnet, eller så har du valt ett namn som inte är tillåtet.
@@ -2426,6 +2427,9 @@ Besök [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] eller
 'djvu_no_xml'              => 'Kan inte hämta DjVu-filens XML',
 'thumbnail_invalid_params' => 'Ogiltiga parametrar för miniatyrbilden',
 'thumbnail_dest_directory' => 'Kan inte skapa målkatalogen',
+'thumbnail_image-type'     => 'Bildtypen stöds inte',
+'thumbnail_gd-library'     => 'Inkomplett GD library konfigurering: saknar funktionen $1',
+'thumbnail_image-missing'  => 'Fil verkar saknas: $1',
 
 # Special:Import
 'import'                     => 'Importera sidor',
@@ -2567,7 +2571,7 @@ Ger möjlighet att skriva en motivering i redigeringssammanfattningen',
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonym användare|Anonyma användare}} på {{SITENAME}}',
 'siteuser'         => 'användaren $1 på {{SITENAME}}',
-'lastmodifiedatby' => 'Den här sidan ändrades senast kl. $2 den $1 av $3.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Den här sidan ändrades senast kl. $2 den $1 av $3.',
 'othercontribs'    => 'Baserad på arbete av $1.',
 'others'           => 'andra',
 'siteusers'        => '{{SITENAME}}-{{PLURAL:$2|användaren|användarna}} $1',
@@ -2609,6 +2613,17 @@ Detta orsakades troligen av en länk till en svartlistad webbplats.',
 'mw_math_modern' => 'Rekommenderat för modern webbläsare',
 'mw_math_mathml' => 'MathML om möjligt (experimentellt)',
 
+# Math errors
+'math_failure'          => 'Misslyckades med att tolka formel.',
+'math_unknown_error'    => 'okänt fel',
+'math_unknown_function' => 'okänd funktion',
+'math_lexing_error'     => 'regelfel',
+'math_syntax_error'     => 'syntaxfel',
+'math_image_error'      => 'Konvertering till PNG-format misslyckades; kontrollera om latex, dvips, gs och convert är korrekt installerade',
+'math_bad_tmpdir'       => 'Kan inte skriva till eller skapa temporär mapp för matematikresultat',
+'math_bad_output'       => 'Kan inte skriva till eller skapa mapp för matematikresultat',
+'math_notexvc'          => 'Applicationen texvc saknas; läs math/README för konfigureringsanvisningar.',
+
 # Patrolling
 'markaspatrolleddiff'                 => 'Märk som patrullerad',
 'markaspatrolledtext'                 => 'Märk den här sidan som patrullerad',
@@ -2648,7 +2663,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Varning:''': Denna fil kan innehålla programkod som, om den körs, kan skada din dator.",
-'imagemaxsize'         => 'Begränsa bilders storlek på filbeskrivningssidor till:',
+'imagemaxsize'         => "Begränsa bilders storlek:<br />''(för filbeskrivningssidor)''",
 'thumbsize'            => 'Storlek på minibild:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|sida|sidor}}',
 'file-info'            => '(filstorlek: $1, MIME-typ: $2)',
@@ -2692,7 +2707,7 @@ Den första länken på en rad måste vara en länk till en otillåten fil.
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Bredd',
@@ -2819,14 +2834,14 @@ Den första länken på en rad måste vara en länk till en otillåten fil.
 
 'exif-unknowndate' => 'Okänt datum',
 
-'exif-orientation-1' => 'Normal', # 0th row: top; 0th column: left
-'exif-orientation-2' => 'Spegelvänd horisontellt', # 0th row: top; 0th column: right
-'exif-orientation-3' => 'Roterad 180°', # 0th row: bottom; 0th column: right
-'exif-orientation-4' => 'Spegelvänd vertikalt', # 0th row: bottom; 0th column: left
-'exif-orientation-5' => 'Roterad 90° moturs och spegelvänd vertikalt', # 0th row: left; 0th column: top
-'exif-orientation-6' => 'Roterad 90° medurs', # 0th row: right; 0th column: top
-'exif-orientation-7' => 'Roterad 90° medurs och spegelvänd vertikalt', # 0th row: right; 0th column: bottom
-'exif-orientation-8' => 'Roterad 90° moturs', # 0th row: left; 0th column: bottom
+'exif-orientation-1' => 'Normal',
+'exif-orientation-2' => 'Spegelvänd horisontellt',
+'exif-orientation-3' => 'Roterad 180°',
+'exif-orientation-4' => 'Spegelvänd vertikalt',
+'exif-orientation-5' => 'Roterad 90° moturs och spegelvänd vertikalt',
+'exif-orientation-6' => 'Roterad 90° medurs',
+'exif-orientation-7' => 'Roterad 90° medurs och spegelvänd vertikalt',
+'exif-orientation-8' => 'Roterad 90° moturs',
 
 'exif-planarconfiguration-1' => 'chunkformat',
 'exif-planarconfiguration-2' => 'planärformat',
@@ -2942,16 +2957,25 @@ Den första länken på en rad måste vara en länk till en otillåten fil.
 'exif-gpslongitude-e' => 'Östlig longitud',
 'exif-gpslongitude-w' => 'Västlig longitud',
 
+# Pseudotags used for GPSAltitudeRef
+'exif-gpsaltitude-0' => 'Meter över havsnivån',
+'exif-gpsaltitude-1' => 'Meter under havsnivån',
+
 'exif-gpsstatus-a' => 'Mätning pågår',
 'exif-gpsstatus-v' => 'Mätningsinteroperabilitet',
 
 'exif-gpsmeasuremode-2' => 'Tvådimensionell mätning',
 'exif-gpsmeasuremode-3' => 'Tredimensionell mätning',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'Kilometer i timmen',
 'exif-gpsspeed-m' => 'Miles i timmen',
 'exif-gpsspeed-n' => 'Knop',
+
+# Pseudotags used for GPSDestDistanceRef
+'exif-gpsdestdistance-k' => 'Kilometer',
+'exif-gpsdestdistance-m' => 'Mil',
+'exif-gpsdestdistance-n' => 'Nautiska mil',
 
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
 'exif-gpsdirection-t' => 'Sann bäring',
@@ -3098,7 +3122,7 @@ Du kan också [[Special:Watchlist/edit|använda standardeditorn]].',
 'duplicate-defaultsort' => 'Varning: Standardsorteringsnyckeln "$2" tar över från den tidigare standardsorteringsnyckeln "$1".',
 
 # Special:Version
-'version'                          => 'Version', # Not used as normal message but as header for the special page itself
+'version'                          => 'Version',
 'version-extensions'               => 'Installerade programtillägg',
 'version-specialpages'             => 'Specialsidor',
 'version-parserhooks'              => 'Parsertillägg',
@@ -3112,7 +3136,7 @@ Du kan också [[Special:Watchlist/edit|använda standardeditorn]].',
 'version-skin-extension-functions' => 'Skaltilläggsfunktioner',
 'version-hook-name'                => 'Namn',
 'version-hook-subscribedby'        => 'Används av',
-'version-version'                  => 'Version',
+'version-version'                  => '(Version $1)',
 'version-license'                  => 'Licens',
 'version-software'                 => 'Installerad programvara',
 'version-software-product'         => 'Produkt',
@@ -3191,5 +3215,15 @@ Skriv filnamnet utan prefixet "{{ns:file}}:" .',
 'dberr-usegoogle'   => 'Du kan pröva att söka med Google under tiden.',
 'dberr-outofdate'   => 'Observera att deras index av vårt innehåll kan vara föråldrat.',
 'dberr-cachederror' => 'Följande är en cachad kopia av den efterfrågade sidan, och kan vara föråldrad.',
+
+# HTML forms
+'htmlform-invalid-input'       => 'Det finns problem med din inmatning',
+'htmlform-select-badoption'    => 'Värdet du valde är inte ett giltigt alternativ.',
+'htmlform-int-invalid'         => 'Värdet du valde är inte ett heltal.',
+'htmlform-int-toolow'          => 'Värdet du valde är under minimumet på $1',
+'htmlform-int-toohigh'         => 'Värdet du valde är över maximumet på $1',
+'htmlform-submit'              => 'Spara',
+'htmlform-reset'               => 'Ogör ändringar',
+'htmlform-selectorother-other' => 'Andra',
 
 );

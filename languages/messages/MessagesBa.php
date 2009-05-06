@@ -1,6 +1,9 @@
 <?php
 /** Bashkir (Башҡорт)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -96,17 +99,19 @@ $messages = array(
 'nov'           => 'Ноябрь (Ҡырпағай)',
 'dec'           => 'Декабрь (Аҡъюлай)',
 
-'about'          => 'Тасуирлау',
-'article'        => 'Мәҡәлә',
-'newwindow'      => '(яңы биттә)',
-'cancel'         => 'Бөтөрөргә',
+'about'      => 'Тасуирлау',
+'article'    => 'Мәҡәлә',
+'newwindow'  => '(яңы биттә)',
+'cancel'     => 'Бөтөрөргә',
+'mypage'     => 'Шәхси бит',
+'mytalk'     => 'Минең менән фекер алышыу',
+'navigation' => 'Төп йүнәлештәр',
+'and'        => '&#32;һәм',
+
+# Cologne Blue skin
 'qbfind'         => 'Эҙләү',
 'qbmyoptions'    => 'Көйләү',
 'qbspecialpages' => 'Махсус биттәр',
-'mypage'         => 'Шәхси бит',
-'mytalk'         => 'Минең менән фекер алышыу',
-'navigation'     => 'Төп йүнәлештәр',
-'and'            => '&#32;һәм',
 
 'errorpagetitle'   => 'Хата',
 'returnto'         => '$1 битенә ҡайтыу.',
@@ -130,7 +135,7 @@ $messages = array(
 'talk'             => 'Фекер алышыу',
 'toolbox'          => 'Ярҙамсы йүнәлештәр',
 'otherlanguages'   => 'Башҡа телдәрҙә',
-'lastmodifiedat'   => 'Был биттең һуңғы тапҡыр үҙгәртелеү ваҡыты: $2, $1 .', # $1 date, $2 time
+'lastmodifiedat'   => 'Был биттең һуңғы тапҡыр үҙгәртелеү ваҡыты: $2, $1 .',
 'jumpto'           => 'Унда күсергә:',
 'jumptosearch'     => 'эҙләү',
 
@@ -166,7 +171,6 @@ $messages = array(
 'badtitle'        => 'Ярамаған исем',
 
 # Login and logout pages
-'loginpagetitle'          => 'Танышыу йәки теркәлеү',
 'yourname'                => 'Ҡатнашыусы исеме',
 'yourpassword'            => 'Һеҙҙең пароль',
 'yourpasswordagain'       => 'Парольде ҡабаттан яҙыу',
@@ -183,12 +187,6 @@ $messages = array(
 'gotaccount'              => 'Әгәр Һеҙ теркәлеү үткән булһағыҙ? $1.',
 'gotaccountlink'          => 'Үҙегеҙ менән таныштырығыҙ',
 'createaccountmail'       => 'эл. почта буйынса',
-'youremail'               => 'Электрон почта *',
-'yourrealname'            => 'Һеҙҙең ысын исемегеҙ (*)',
-'yourlanguage'            => 'Тышҡы күренештә ҡулланылған тел:',
-'yourvariant'             => 'Тел төрө',
-'yournick'                => 'Һеҙҙең уйҙырма исемегеҙ/ҡушаматығыҙ (имза өсөн):',
-'prefs-help-email'        => '* Электрон почта (күрһәтмәһәң дә була) башҡа ҡатнашыусылар менән туры бәйләнешкә инергә мөмкинселек бирә.',
 'loginsuccesstitle'       => 'Танышыу уңышлы үтте',
 'loginsuccess'            => 'Хәҙер һеҙ $1 исеме менән эшләйһегеҙ.',
 'wrongpassword'           => 'Һеҙ ҡулланған пароль ҡабул ителмәй. Яңынан яҙып ҡарағыҙ.',
@@ -210,7 +208,13 @@ $messages = array(
 'yourdiff'       => 'Айырмалыҡтар',
 
 # Preferences page
-'preferences' => 'Көйләүҙәр',
+'preferences'      => 'Көйләүҙәр',
+'youremail'        => 'Электрон почта *',
+'yourrealname'     => 'Һеҙҙең ысын исемегеҙ (*)',
+'yourlanguage'     => 'Тышҡы күренештә ҡулланылған тел:',
+'yourvariant'      => 'Тел төрө',
+'yournick'         => 'Һеҙҙең уйҙырма исемегеҙ/ҡушаматығыҙ (имза өсөн):',
+'prefs-help-email' => '* Электрон почта (күрһәтмәһәң дә була) башҡа ҡатнашыусылар менән туры бәйләнешкә инергә мөмкинселек бирә.',
 
 # User rights
 'editinguser' => "Мөхәрирләү  '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",

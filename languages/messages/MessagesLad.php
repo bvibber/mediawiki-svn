@@ -1,6 +1,9 @@
 <?php
 /** Ladino (Ladino)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -90,23 +93,27 @@ $messages = array(
 'subcategories'            => 'Subkategorías',
 'category-media-header'    => 'Archivos multimedia en la kategoría "$1"',
 'category-empty'           => "''La kategoría no kontiene aktualmente ningún artikolo o archivo multimedia''",
-'hidden-category-category' => 'Kategorías eskondidas', # Name of the category where hidden categories will be listed
+'hidden-category-category' => 'Kategorías eskondidas',
 'listingcontinuesabbrev'   => 'kont.',
 
-'about'          => 'Encima de',
-'article'        => 'Artikolo',
-'newwindow'      => '(Se abre en una ventana nueva)',
-'cancel'         => 'Suprimir',
+'about'         => 'Encima de',
+'article'       => 'Artikolo',
+'newwindow'     => '(Se abre en una ventana nueva)',
+'cancel'        => 'Suprimir',
+'moredotdotdot' => 'Mas...',
+'mypage'        => 'Mi pajina',
+'mytalk'        => 'Mi diścuśión',
+'anontalk'      => 'Diskusion para esta IP',
+'and'           => '&#32;e',
+
+# Cologne Blue skin
 'qbfind'         => 'Buscar',
 'qbedit'         => 'Editar',
 'qbpageoptions'  => 'Opsiones de pajina',
 'qbmyoptions'    => 'Mis opsiones',
 'qbspecialpages' => 'Pajinas espesiales',
-'moredotdotdot'  => 'Mas...',
-'mypage'         => 'Mi pajina',
-'mytalk'         => 'Mi diścuśión',
-'anontalk'       => 'Diskusion para esta IP',
-'and'            => '&#32;e',
+'faq'            => 'FAQ',
+'faqpage'        => 'Project:FAQ',
 
 'errorpagetitle'   => 'Yerro',
 'tagline'          => 'De {{SITENAME}}',
@@ -162,8 +169,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Desmintira general',
 'edithelp'             => 'Ayudo de edición',
 'edithelppage'         => 'Help:Cómo se edita una página',
-'faq'                  => 'FAQ',
-'faqpage'              => 'Project:FAQ',
 'helppage'             => 'Help:Ayudo',
 'mainpage'             => 'Página de Entrada',
 'mainpage-description' => 'Página de Entrada',
@@ -369,7 +374,7 @@ Si puede ser, que use el botón de previsualización antes de registrarla.',
 'tooltip-diff'            => 'Mostra los trocamientos que él/ella hizo en el texhto.',
 
 # Attribution
-'anonymous' => 'Uzuario(s) anonimo(s) de {{SITENAME}}',
+'anonymous' => '{{PLURAL:$1|Uzuario anonimo|Uzuarios anonimos}} de {{SITENAME}}',
 
 # Bad image list
 'bad_image_list' => 'El formato es ansina:
@@ -388,7 +393,7 @@ El resto de los linkes del mismo satir se juzgan como eccepciones (por enxemplo,
 'exif-lightsource-9'  => 'Bueno tiémpo',
 'exif-lightsource-10' => 'Tiémpo nuvlozo',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'Kilometros por óra',
 
 # External editor support
@@ -434,10 +439,10 @@ El resto de los linkes del mismo satir se juzgan como eccepciones (por enxemplo,
 'autosumm-new'     => 'Pajina mueva: $1',
 
 # Special:Version
-'version'                  => 'Versión', # Not used as normal message but as header for the special page itself
+'version'                  => 'Versión',
 'version-specialpages'     => 'Pajinas espesiales',
 'version-other'            => 'Otros',
-'version-version'          => 'Versión',
+'version-version'          => '(Versión $1)',
 'version-software-version' => 'Versión',
 
 # Special:FileDuplicateSearch

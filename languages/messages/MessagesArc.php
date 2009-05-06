@@ -1,6 +1,9 @@
 <?php
 /** Aramaic (ܐܪܡܝܐ)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -78,19 +81,21 @@ $messages = array(
 # Categories related messages
 'listingcontinuesabbrev' => '(ܫܘܠܡܐ)',
 
-'article'        => 'ܡܓܠܬܐ',
-'newwindow'      => '(ܦܬܚ ܒܟܘܬܐ ܚܕܬܐ)',
-'cancel'         => 'ܒܛܘܠ',
+'article'       => 'ܡܓܠܬܐ',
+'newwindow'     => '(ܦܬܚ ܒܟܘܬܐ ܚܕܬܐ)',
+'cancel'        => 'ܒܛܘܠ',
+'moredotdotdot' => '...ܝܬܝܪ̈ܐ',
+'mypage'        => 'ܦܐܬܝ',
+'mytalk'        => 'ܕܘܪܫܝ',
+'anontalk'      => 'ܡܡܠܠܐ ܠܗܢܐ IP',
+'navigation'    => 'ܐܠܦܪܘܬܐ',
+'and'           => '&#32;ܘ',
+
+# Cologne Blue skin
 'qbedit'         => 'ܫܚܠܦ',
 'qbpageoptions'  => 'ܗܕܐ ܦܐܬܐ',
 'qbmyoptions'    => 'ܓܒܝܘ̈ܬܝ',
 'qbspecialpages' => 'ܦܐܬܘܬܐ ܪܫܝܬܐ',
-'moredotdotdot'  => '...ܝܬܝܪ̈ܐ',
-'mypage'         => 'ܦܐܬܝ',
-'mytalk'         => 'ܕܘܪܫܝ',
-'anontalk'       => 'ܡܡܠܠܐ ܠܗܢܐ IP',
-'navigation'     => 'ܐܠܦܪܘܬܐ',
-'and'            => '&#32;ܘ',
 
 'errorpagetitle'    => 'ܦܘܕܐ',
 'returnto'          => 'ܕܥܘܪ ܠ $1.',
@@ -204,12 +209,6 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'createaccount'           => 'ܒܪܝ ܚܘܫܒܢܐ',
 'gotaccount'              => 'ܐܝܬ ܠܟ/ܠܟܝ ܚܘܫܒܢܐ؟ $1.',
 'gotaccountlink'          => 'ܥܘܠ',
-'username'                => 'ܫܡܐ ܕܡܦܠܚܢܐ:',
-'yourrealname'            => 'ܫܡܐ ܫܪܝܪܐ:',
-'yourlanguage'            => 'ܠܫܢܐ:',
-'yourgender'              => 'ܓܢܣܐ:',
-'gender-male'             => 'ܕܟܪܐ',
-'gender-female'           => 'ܢܩܒܐ',
 'mailmypassword'          => 'ܚܕܬܐ password ܫܕܪ ܠܝ',
 'accountcreated'          => 'ܐܬܒܪܝ ܚܘܫܒܢܐ',
 'accountcreatedtext'      => 'ܐܬܒܪܝ ܚܘܫܒܢܐ ܕܡܦܠܚܢܐ ܠ $1.',
@@ -233,7 +232,6 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'templatesused'                    => 'ܩܠܒ̈ܐ ܒܦܐܬܐ ܗܕܐ',
 'template-protected'               => '(ܚܡܝܐ)',
 'permissionserrorstext-withaction' => 'ܠܝܬ ܠܟ ܦܣܣܐ ܠ$2, ܒ{{PLURAL:$1|ܥܠܬܐ|ܥܠܬ̈ܐ}} ܕ:',
-'deletelog-fulllog'                => 'ܚܙܝ ܣܓܠܐ ܓܡܝܪܐ',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'ܒܪܝܐ ܕܚܘܫܒܢܐ ܠܐ ܡܬܡܨܝܢܐ',
@@ -268,10 +266,16 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'preferences'   => 'ܦܪ̈ܝܫܘܝܬܐ',
 'mypreferences' => 'ܦܪ̈ܝܫܘܝܬܝ',
 'prefs-edits'   => 'ܡܢܝܢܐ ܕܫܘܚܠܦ̈ܐ:',
-'math'          => 'ܡܬܡܐܛܝܩܘܬܐ',
+'prefs-math'    => 'ܡܬܡܐܛܝܩܘܬܐ',
 'prefs-rc'      => 'ܫܚܠܦܬ̈ܐ ܚܕ̈ܬܬܐ',
 'saveprefs'     => 'ܢܛܘܪ',
 'savedprefs'    => 'ܦܪ̈ܝܫܘܝܬܐ ܕܝܠܟ ܐܬܢܛܪܬ.',
+'username'      => 'ܫܡܐ ܕܡܦܠܚܢܐ:',
+'yourrealname'  => 'ܫܡܐ ܫܪܝܪܐ:',
+'yourlanguage'  => 'ܠܫܢܐ:',
+'yourgender'    => 'ܓܢܣܐ:',
+'gender-male'   => 'ܕܟܪܐ',
+'gender-female' => 'ܢܩܒܐ',
 
 # Groups
 'group-user' => 'ܡ̈ܦܠܚܢܐ',
@@ -384,7 +388,7 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'undelete-search-box' => 'ܒܨܝ ܦܐܬܘܬ̈ܐ ܫܝܦ̈ܐ',
 
 # Namespace form on various pages
-'invert'         => 'ܐܗܦܟ ܓܘܒܝܐ',
+'invert'         => 'ܐܗܦܟ ܠܓܘܒܝܐ',
 'blanknamespace' => '(ܪܫܝܬܐ)',
 
 # Contributions
@@ -392,8 +396,8 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'contributions-title' => 'ܫܘ̈ܬܦܘܝܬܐ ܕܡܦܠܚܢܐ ܠ $1',
 'mycontris'           => 'ܫܘ̈ܬܦܘܝܬܝ',
 'uctop'               => '(ܥܠܝܐ)',
-'month'               => 'ܡܢ ܝܪܚܐ (ܘܡܢ ܩܕܡ ܗܝܕܝܢ):',
-'year'                => 'ܡܢ ܫܢܬܐ (ܘܡܢ ܩܕܡ ܗܝܕܝܢ):',
+'month'               => 'ܡܢ ܝܪܚܐ ܕ (ܘܡܢ ܩܕܡ ܗܝܕܝܢ):',
+'year'                => 'ܡܢ ܫܢܬ (ܘܡܢ ܩܕܡ ܗܝܕܝܢ):',
 
 'sp-contributions-newbies'       => 'ܚܘܝ ܫܘܬܦܘܝܬ̈ܐ ܕ ܚܘܫܒܢ̈ܐ ܚܕܬ̈ܐ ܒܠܚܘܕ',
 'sp-contributions-newbies-sub'   => 'ܠܚܘܫܒܢ̈ܐ ܚܕܬ̈ܐ',

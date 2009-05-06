@@ -66,6 +66,13 @@ class CoreParserFunctions {
 		$parser->setFunctionHook( 'talkpagenamee',    array( __CLASS__, 'talkpagenamee'    ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'subjectpagename',  array( __CLASS__, 'subjectpagename'  ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'subjectpagenamee', array( __CLASS__, 'subjectpagenamee' ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionid',       array( __CLASS__, 'revisionid'       ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisiontimestamp',array( __CLASS__, 'revisiontimestamp'), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionday',      array( __CLASS__, 'revisionday'      ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionday2',     array( __CLASS__, 'revisionday2'     ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionmonth',    array( __CLASS__, 'revisionmonth'    ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionyear',     array( __CLASS__, 'revisionyear'     ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionuser',     array( __CLASS__, 'revisionuser'     ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'tag',              array( __CLASS__, 'tagObj'           ), SFH_OBJECT_ARGS );
 		$parser->setFunctionHook( 'formatdate',		  array( __CLASS__, 'formatDate'	   ) );
 		$parser->setFunctionHook( 'groupconvert', 	  array( __CLASS__, 'groupconvert'	   ), SFH_NO_HASH );
@@ -229,13 +236,25 @@ class CoreParserFunctions {
 	 * @param string $text Desired title text
 	 * @return string
 	 */
-	static function displaytitle( $parser, $displayTitle = '' ) {
+	static function displaytitle( $parser, $text = '' ) {
+		global $wgRestrictDisplayTitle;
+		
+		#list of disallowed tags for DISPLAYTITLE
+		#these will be escaped even though they are allowed in normal wiki text
+		$bad = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'blockquote', 'ol', 'ul', 'li',
+			'table', 'tr', 'th', 'td', 'dl', 'dd', 'caption', 'p', 'ruby', 'rb', 'rt', 'rp' );
+		
 		#only requested titles that normalize to the actual title are allowed through
 		#mimic the escaping process that occurs in OutputPage::setPageTitle
-		$title = Title::newFromText( Sanitizer::stripAllTags( Sanitizer::normalizeCharReferences( Sanitizer::removeHTMLtags( $displayTitle ) ) ) );
+		$text = Sanitizer::normalizeCharReferences( Sanitizer::removeHTMLtags( $text, null, array(), array(), $bad ) );
+		$title = Title::newFromText( Sanitizer::stripAllTags( $text ) );
 
-		if ( $title instanceof Title && $title->getFragment() == '' && $title->equals( $parser->mTitle ) ) {
-			$parser->mOutput->setDisplayTitle( $displayTitle );
+		if( !$wgRestrictDisplayTitle ) {
+			$parser->mOutput->setDisplayTitle( $text );
+		} else {
+			if ( $title instanceof Title && $title->getFragment() == '' && $title->equals( $parser->mTitle ) ) {
+				$parser->mOutput->setDisplayTitle( $text );
+			}
 		}
 
 		return '';
@@ -410,6 +429,90 @@ class CoreParserFunctions {
 		if ( is_null($t) )
 			return '';
 		return $t->getSubjectPage()->getPrefixedUrl();
+	}
+	/*
+	 * Functions to get revision informations, corresponding to the magic words
+	 * of the same names
+	 */
+	static function revisionid( $parser, $title = null ) {
+		static $cache = array ();
+		$t = Title::newFromText( $title );
+		if ( is_null( $t ) )
+			return '';
+		if ( $t->equals( $parser->getTitle() ) ) {
+			// Let the edit saving system know we should parse the page
+			// *after* a revision ID has been assigned.
+			$parser->mOutput->setFlag( 'vary-revision' );
+			wfDebug( __METHOD__ . ": {{REVISIONID}} used, setting vary-revision...\n" );
+			return $parser->getRevisionId();
+		}
+		if ( isset( $cache[$t->getPrefixedText()] ) )
+			return $cache[$t->getPrefixedText()];
+		elseif ( $parser->incrementExpensiveFunctionCount() ) {
+			$a = new Article( $t );
+			return $cache[$t->getPrefixedText()] = $a->getRevIdFetched();
+		}
+		return '';
+	}
+	static function revisiontimestamp( $parser, $title = null ) {
+		static $cache = array ();
+		$t = Title::newFromText( $title );
+		if ( is_null( $t ) )
+			return '';
+		if ( $t->equals( $parser->getTitle() ) ) {
+			// Let the edit saving system know we should parse the page
+			// *after* a revision ID has been assigned. This is for null edits.
+			$parser->mOutput->setFlag( 'vary-revision' );
+			wfDebug( __METHOD__ . ": {{REVISIONTIMESTAMP}} or related parser function used, setting vary-revision...\n" );
+			return $parser->getRevisionTimestamp();
+		}
+		if ( isset( $cache[$t->getPrefixedText()] ) )
+			return $cache[$t->getPrefixedText()];
+		elseif ( $parser->incrementExpensiveFunctionCount() ) {
+			$a = new Article( $t );
+			return $cache[$t->getPrefixedText()] = $a->getTimestamp();
+		}
+		return '';
+	}
+	static function revisionday( $parser, $title = null ) {
+		$timestamp = self::revisiontimestamp( $parser, $title );
+		if ( $timestamp == '' ) return '';
+		return intval( substr( $timestamp, 6, 2 ) );
+	}
+	static function revisionday2( $parser, $title = null ) {
+		$timestamp = self::revisiontimestamp( $parser, $title );
+		if ( $timestamp == '' ) return '';
+		return substr( $timestamp, 6, 2 );
+	}
+	static function revisionmonth( $parser, $title = null ) {
+		$timestamp = self::revisiontimestamp( $parser, $title );
+		if ( $timestamp == '' ) return '';
+		return intval( substr( $timestamp, 4, 2 ) );
+	}
+	static function revisionyear( $parser, $title = null ) {
+		$timestamp = self::revisiontimestamp( $parser, $title );
+		if ( $timestamp == '' ) return '';
+		return substr( $timestamp, 0, 4 );
+	}
+	static function revisionuser( $parser, $title = null ) {
+		static $cache = array();
+		$t = Title::newFromText( $title );
+		if ( is_null( $t ) )
+			return '';
+		if ( $t->equals( $parser->getTitle() ) ) {
+			// Let the edit saving system know we should parse the page
+			// *after* a revision ID has been assigned. This is for null edits.
+			$parser->mOutput->setFlag( 'vary-revision' );
+			wfDebug( __METHOD__ . ": {{REVISIONUSER}} used, setting vary-revision...\n" );
+			return $parser->getRevisionUser();
+		}
+		if ( isset( $cache[$t->getPrefixedText()] ) )
+			return $cache[$t->getPrefixedText()];
+		elseif ( $parser->incrementExpensiveFunctionCount() ) {
+			$a = new Article( $t );
+			return $cache[$t->getPrefixedText()] = $a->getUserText();
+		}
+		return '';
 	}
 	
 	/**

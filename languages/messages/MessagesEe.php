@@ -1,6 +1,9 @@
 <?php
 /** Ewe (Eʋegbe)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -72,16 +75,18 @@ $messages = array(
 'nov'           => 'Ade',
 'dec'           => 'Dzom',
 
-'about'          => 'Ŋutinya',
-'newwindow'      => '(eʋua fesre yeye)',
-'cancel'         => 'Dzudzɔ etɔtrɔ',
+'about'      => 'Ŋutinya',
+'newwindow'  => '(eʋua fesre yeye)',
+'cancel'     => 'Dzudzɔ etɔtrɔ',
+'mypage'     => 'Axa nye',
+'navigation' => 'Mɔtabiala',
+'and'        => '&#32;kpakple',
+
+# Cologne Blue skin
 'qbedit'         => 'Trɔ asi le eŋu',
 'qbpageoptions'  => 'Axa sia',
 'qbmyoptions'    => 'Nyeƒe axawo',
 'qbspecialpages' => 'Axa tɔxewo',
-'mypage'         => 'Axa nye',
-'navigation'     => 'Mɔtabiala',
-'and'            => '&#32;kpakple',
 
 'errorpagetitle'   => 'Vodada',
 'returnto'         => 'Gbugbɔ yi $1.',
@@ -167,7 +172,6 @@ $messages = array(
 'createaccount'              => 'Ŋlɔ ŋkɔ daɖi',
 'gotaccount'                 => 'Wò ŋlɔ ŋkɔ xoxoa? $1.',
 'gotaccountlink'             => 'Ge ɖe eme',
-'yourlanguage'               => 'Gbe:',
 'loginsuccesstitle'          => 'Wò ge ɖe eme azɔ̃.',
 'loginsuccess'               => "'''Wò le {{SITENAME}} me fifia abe \"\$1\" ene.'''",
 'acct_creation_throttle_hit' => 'Taflatse, wòŋlɔ {{PLURAL:$1|1 ŋkɔ|$1 ŋkɔwo}} xoxo.
@@ -194,7 +198,7 @@ Wòmageteŋu agbugbɔ aŋlɔe o.',
 
 # History pages
 'revisionasof'        => 'Tataa le $1',
-'revision-info'       => 'Tataa le $1 si $2 wɔ', # Additionally available: $3: revision id
+'revision-info'       => 'Tataa le $1 si $2 wɔ',
 'previousrevision'    => '← Tata xoxoa',
 'nextrevision'        => 'Tata yeyea →',
 'currentrevisionlink' => 'Tata susuea',
@@ -206,7 +210,7 @@ Wòmageteŋu agbugbɔ aŋlɔe o.',
 'histlast'            => 'Yeyeɛwu',
 
 # Revision feed
-'history-feed-item-nocomment' => '$1 le $2', # user at time
+'history-feed-item-nocomment' => '$1 le $2',
 'history-feed-empty'          => 'Axa si dim wòle meli o.
 Dewomahĩ, wotutui le wiki sia dzi alo wotrɔ eƒe ŋkɔ.
 Zã [[Special:Search|nuwo didi le wiki sia dzi]] kpɔ na axa yeyeawo.',
@@ -238,6 +242,7 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'preferences'   => 'Didiwo',
 'mypreferences' => 'Nyeƒe didiwo',
 'skin-preview'  => 'Kpɔe do ŋgɔ',
+'yourlanguage'  => 'Gbe:',
 
 # Groups
 'group-sysop' => 'Dɔdzikpɔlawo',
@@ -351,7 +356,7 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'prot_1movedto2'              => '[[$1]] wohee yi [[$2]]',
 'protect-default'             => 'Namɔ ezãlawo katã',
 'protect-level-autoconfirmed' => 'Xemɔ na ame yeyewo kple ŋkɔmaŋlɔlawo',
-'protect-expiry-options'      => 'gaƒoƒo 2:2 hours,ŋkeke 1:1 day,ŋkeke 3:3 days,kɔsiɖa 1:1 week,kɔsiɖa 2:2 weeks,ɣleti 1:1 month,ɣleti 3:3 months,ɣleti 6:6 months,ƒe 1:1 year,tegbe:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => 'gaƒoƒo 2:2 hours,ŋkeke 1:1 day,ŋkeke 3:3 days,kɔsiɖa 1:1 week,kɔsiɖa 2:2 weeks,ɣleti 1:1 month,ɣleti 3:3 months,ɣleti 6:6 months,ƒe 1:1 year,tegbe:infinite',
 'restriction-type'            => 'Mɔɖeɖe:',
 
 # Undelete
@@ -385,7 +390,7 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 # Block/unblock
 'blockip'                  => 'Xe mɔ na ezãla sia',
 'blockip-legend'           => 'Xe mɔ na ezãla sia',
-'ipboptions'               => 'gaƒoƒo 2:2 hours,ŋkeke 1:1 day,ŋkeke 3:3 days,kɔsiɖa 1:1 week,kɔsiɖa 2:2 weeks,ɣleti 1:1 month,ɣleti 3:3 months,ɣleti 6:6 months,ƒe 1:1 year,tegbe:infinite', # display1:time1,display2:time2,...
+'ipboptions'               => 'gaƒoƒo 2:2 hours,ŋkeke 1:1 day,ŋkeke 3:3 days,kɔsiɖa 1:1 week,kɔsiɖa 2:2 weeks,ɣleti 1:1 month,ɣleti 3:3 months,ɣleti 6:6 months,ƒe 1:1 year,tegbe:infinite',
 'createaccountblock'       => 'woxe mɔ na ŋkɔa ŋɔŋlɔ',
 'blocklink'                => 'xemɔ',
 'unblocklink'              => 'ɖe mɔxexe',
@@ -398,7 +403,7 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'movearticle'      => 'Ɖɔli eƒe nɔƒe:',
 'move-watch'       => 'Le ŋku ɖe axa sia ŋu',
 'movepagebtn'      => 'Ɖɔli eƒe nɔƒe',
-'movepage-moved'   => '<big>\'\'\'Wohe "$1" vayi "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'   => '<big>\'\'\'Wohe "$1" vayi "$2"\'\'\'</big>',
 'articleexists'    => 'Tanya alo ŋkɔ sia nye axa bubu aɖe tɔ xoxo, alo eda se dzi.
 Tia ŋkɔ alo tanya bubu.',
 'movedto'          => 'wohee yi',
@@ -452,7 +457,7 @@ Wòateŋu akpɔ alesi woŋlɔe.',
 'monthsall'     => 'wokatã',
 
 # Special:Version
-'version' => 'Tata', # Not used as normal message but as header for the special page itself
+'version' => 'Tata',
 
 # Special:SpecialPages
 'specialpages' => 'Axa tɔxewo',

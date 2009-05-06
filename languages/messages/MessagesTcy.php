@@ -1,6 +1,9 @@
 <?php
 /** Tulu (ತುಳು)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -116,7 +119,7 @@ $messages = array(
 'category-media-header'          => '"$1" ವರ್ಗಡುಪ್ಪುನಂಚಿನ ಚಿತ್ರ/ಶಬ್ಧ ಫೈಲ್’ಲು',
 'category-empty'                 => "''ಈ ವರ್ಗೊಡು ಸದ್ಯಗ್ ಓವುಲ ಪುಟೊಲಾವಡ್ ಅತ್ತ್’ನ್ಡ ಚಿತ್ರೊಲಾವಡ್ ಇಜ್ಜಿ.''",
 'hidden-categories'              => '{{PLURAL:$1|ದೆಂಗಾದ್ ದೀತಿನ ವರ್ಗ|ದೆಂಗಾದ್ ದೀತಿನ ವರ್ಗೊಲು}}',
-'hidden-category-category'       => 'ದೆಂಗಾದ್ ದೀತಿನ ವರ್ಗೊಲು', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'ದೆಂಗಾದ್ ದೀತಿನ ವರ್ಗೊಲು',
 'category-subcat-count'          => '{{PLURAL:$2|ಈ ವರ್ಗೊಡು ಈ ತಿರ್ತ್’ದ ಉಪವರ್ಗ ಉಂಡು.|ಈ ವರ್ಗೊಡು ಈ ತಿರ್ತ್’ದ {{PLURAL:$1|ಉಪವರ್ಗೊನು|$1 ಉಪವರ್ಗೊಲೆನ್}} ಸೇರಾದ್, ಒಟ್ಟಿಗೆ $2 ಉಂಡು.}}',
 'category-subcat-count-limited'  => 'ಈ ವರ್ಗೊಡು ತಿರ್ತ್ ತೊಜ್ಪಾದಿನ {{PLURAL:$1|ಉಪವರ್ಗ|$1 ಉಪವರ್ಗೊಲು}} ಉಂಡು.',
 'category-article-count'         => '{{PLURAL:$2|ಈ ವರ್ಗೊಡು ಈ ತಿರ್ತ್’ದ ಖಾಲಿ ಒಂಜಿ ಪುಟ ಉಂಡು.|ಈ ವರ್ಗೊಡು ಈ ತಿರ್ತ್’ದ {{PLURAL:$1|ಪುಟೊನು|$1 ಪುಟೊಲೆನ್}} ಸೇರ್ಪಾದ್, ಒಟ್ಟಿಗೆ $2 ಪುಟೊಲು ಉಂಡು.}}',
@@ -134,10 +137,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ ಮೀಡಿಯವಿಕಿ FAQ]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]',
 
-'about'          => 'ಎಂಕ್ಲೆನ ಬಗ್ಗೆ',
-'article'        => 'ಲೇಖನ ಪುಟ',
-'newwindow'      => '(ಪೊಸ ಕಂಡಿನ್ ಓಪನ್ ಮಲ್ಪುಂಡು)',
-'cancel'         => 'ವಜಾ ಮನ್ಪುಲೆ',
+'about'         => 'ಎಂಕ್ಲೆನ ಬಗ್ಗೆ',
+'article'       => 'ಲೇಖನ ಪುಟ',
+'newwindow'     => '(ಪೊಸ ಕಂಡಿನ್ ಓಪನ್ ಮಲ್ಪುಂಡು)',
+'cancel'        => 'ವಜಾ ಮನ್ಪುಲೆ',
+'moredotdotdot' => 'ನನಲ...',
+'mypage'        => 'ಎನ್ನ ಪುಟ',
+'mytalk'        => 'ಎನ್ನ ಚರ್ಚೆ',
+'anontalk'      => 'ಈ ಐ.ಪಿ ಗ್ ಪಾತೆರ್’ಲೆ',
+'navigation'    => 'ಸಂಚಾರ',
+'and'           => '&#32;ಬೊಕ್ಕ',
+
+# Cologne Blue skin
 'qbfind'         => 'ನಾಡ್’ಲೆ',
 'qbbrowse'       => 'ಬ್ರೌಸ್',
 'qbedit'         => 'ಸಂಪಾದನೆ ಮಲ್ಪುಲೆ',
@@ -145,12 +156,8 @@ $messages = array(
 'qbpageinfo'     => 'ಸನ್ನಿವೇಶ',
 'qbmyoptions'    => 'ಎನ್ನ ಪುಟೊಲು',
 'qbspecialpages' => 'ವಿಶೇಷ ಪುಟೊಲು',
-'moredotdotdot'  => 'ನನಲ...',
-'mypage'         => 'ಎನ್ನ ಪುಟ',
-'mytalk'         => 'ಎನ್ನ ಚರ್ಚೆ',
-'anontalk'       => 'ಈ ಐ.ಪಿ ಗ್ ಪಾತೆರ್’ಲೆ',
-'navigation'     => 'ಸಂಚಾರ',
-'and'            => '&#32;ಬೊಕ್ಕ',
+'faq'            => 'ಸಾಮಾನ್ಯವಾದ್ ಕೇನುನ ಪ್ರಶ್ನೆಲು',
+'faqpage'        => 'Project:ಸಾಮಾನ್ಯವಾದ್ ಕೇನುನ ಪ್ರಶ್ನೆಲು',
 
 # Metadata in edit box
 'metadata_help' => 'ಮೂಲಮಾಹಿತಿ:',
@@ -203,7 +210,7 @@ $messages = array(
 'otherlanguages'    => 'ಬೇತೆ ಭಾಷೆಲೆಡ್',
 'redirectedfrom'    => '($1 ರ್ದ್ ಪುನರ್ನಿರ್ದೇಶಿತ)',
 'redirectpagesub'   => 'ಪುನರ್ನಿರ್ದೇಶನ ಪುಟ',
-'lastmodifiedat'    => 'ಈ ಪುಟ ಇಂದೆತ ದುಂಬು $2, $1 ಕ್ ಬದಲಾತ್’ನ್ಡ್.', # $1 date, $2 time
+'lastmodifiedat'    => 'ಈ ಪುಟ ಇಂದೆತ ದುಂಬು $2, $1 ಕ್ ಬದಲಾತ್’ನ್ಡ್.',
 'viewcount'         => 'ಈ ಪುಟೊನು {{PLURAL:$1|1 ಸರಿ|$1 ಸರಿ}} ತೂತೆರ್.',
 'protectedpage'     => 'ಸಂರಕ್ಷಿತ ಪುಟ',
 'jumpto'            => 'ಇಡೆ ಪೋಲೆ:',
@@ -222,8 +229,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:ಸಾಮಾನ್ಯ ಅಬಾಧ್ಯತೆಲು',
 'edithelp'             => 'ಸಂಪಾದನೆ(ಎಡಿಟ್) ಮಲ್ಪೆರೆ ಸಹಾಯ',
 'edithelppage'         => 'Help:ಸಂಪಾದನೆ',
-'faq'                  => 'ಸಾಮಾನ್ಯವಾದ್ ಕೇನುನ ಪ್ರಶ್ನೆಲು',
-'faqpage'              => 'Project:ಸಾಮಾನ್ಯವಾದ್ ಕೇನುನ ಪ್ರಶ್ನೆಲು',
 'helppage'             => 'Help:ಪರಿವಿಡಿ',
 'mainpage'             => 'ಮುಖ್ಯ ಪುಟ',
 'mainpage-description' => 'ಮುಖ್ಯ ಪುಟ',
@@ -294,9 +299,6 @@ $messages = array(
 # General errors
 'error'                => 'ದೋಷ',
 'databaseerror'        => 'ಡೇಟಾಬೇಸ್ ದೋಷ',
-'noconnect'            => 'ವಿಕಿ ಡ್ ಕೆಲವು ತಾ೦ತ್ರಿಕ ದೋಶೊಲು ತೋಜೊ೦ದು೦ಡು ಬುಕ ಡಾಟಾಬೇಸ್ ಸರ್ವರ್ ನ್ ಸ೦ಪರ್ಕ ಮಲ್ಪೆರ್ ಆವೊ೦ದಿಜ್ಜಿ.<br />
-$1',
-'nodb'                 => 'ಡಾಟಾಬೇಸ್ $1 ನ್ ಆಯ್ಕೆ ಮಲ್ತೊನೆರೆ ಆಯಿಜಿ',
 'readonly'             => 'ಡಾಟಾಬೇಸ್ ಲಾಕ್ ಆತ್೦ಡ್',
 'missing-article'      => '"$1" $2 ಪುದರ್’ದ ಪುಟ ದೇಟಬೇಸ್’ಡ್ ಇಜ್ಜಿ.
 
@@ -386,7 +388,7 @@ $1',
 'template-semiprotected'           => '(ಅರೆ-ಸಂರಕ್ಷಿತ)',
 'hiddencategories'                 => 'ಈ ಪುಟ {{PLURAL:$1|೧ ಗುಪ್ತ ವರ್ಗಗ್|$1 ಗುಪ್ತ ವರ್ಗೊಲೆಗ್}} ಸೇರ್ದ್’ನ್ಡ್:',
 'permissionserrorstext-withaction' => '$2 ಗ್ ಇರೆಗ್ ಅನುಮತಿ ಇಜ್ಜಿ, ಐಕ್ {{PLURAL:$1|ಕಾರಣ|ಕಾರಣೊಲು}}:',
-'deleted-notice'                   => 'ಈ ಪೇಜ್ ಅಸ್ತಿತ್ವಡ್ ಇಜ್ಜಿ.
+'moveddeleted-notice'              => 'ಈ ಪೇಜ್ ಅಸ್ತಿತ್ವಡ್ ಇಜ್ಜಿ.
 ಪೂಟೊತ ಡಿಲೀಶನ್ ಲಾಗ್’ನ್ ತಿರ್ತ್ ಕೊರ್ತುಂಡು.',
 
 # History pages
@@ -625,7 +627,7 @@ $1',
 
 # Block/unblock
 'blockip'                  => 'ಈ ಸದಸ್ಯೆರೆನ್ ಬ್ಲಾಕ್ ಮಲ್ಪುಲೆ',
-'ipboptions'               => '2 ಗಂಟೆಲು:2 hours,1 ದಿನ:1 day,3 ದಿನೊಲು:3 days,1 ವಾರ:1 week,2 ವಾರೊಲು:2 weeks,1 ತಿಂಗೊಲು:1 month,3 ತಿಂಗೊಲು:3 months,6 ತಿಂಗೊಲು:6 months,1 ವರ್ಷ:1 year,ಅನಿರ್ಧಿಷ್ಟ:infinite', # display1:time1,display2:time2,...
+'ipboptions'               => '2 ಗಂಟೆಲು:2 hours,1 ದಿನ:1 day,3 ದಿನೊಲು:3 days,1 ವಾರ:1 week,2 ವಾರೊಲು:2 weeks,1 ತಿಂಗೊಲು:1 month,3 ತಿಂಗೊಲು:3 months,6 ತಿಂಗೊಲು:6 months,1 ವರ್ಷ:1 year,ಅನಿರ್ಧಿಷ್ಟ:infinite',
 'ipblocklist'              => 'ತಡೆಪತ್ತ್’ದಿನ ಐ.ಪಿ ವಿಳಾಸೊಲು ಅಂಚೆನೆ ಬಳಕೆದ ಪುದರ್’ಲು',
 'blocklink'                => 'ಅಡ್ಡ ಪತ್ತ್’ಲೆ',
 'unblocklink'              => 'ಅಡ್ಡನ್ ದೆಪ್ಪುಲೆ',
@@ -734,7 +736,7 @@ $1',
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* focallength',
 
 # External editor support
 'edit-externally'      => 'ಬಾಹ್ಯ(ಪಿದಯಿದ) ತಂತ್ರಾಶೊನು ಉಪಯೋಗ ಮಲ್ತ್’ದ್ ಇಂದೆನ್ ಸಂಪಾದನೆ ಮಲ್ಪುಲೆ',

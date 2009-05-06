@@ -1,4 +1,4 @@
-﻿# MediaWiki Parser test cases
+# MediaWiki Parser test cases
 # Some taken from http://meta.wikimedia.org/wiki/Parser_testing
 # All (C) their respective authors and released under the GPL
 #
@@ -6662,15 +6662,6 @@ ISBN 1 234 56789 0 - 2006
 
 
 !! test
-Pages in namespace (Magic word disabled currently)
-!! input
-{{PAGESINNAMESPACE:}}
-!! result
-
-!! end
-
-
-!! test
 anchorencode
 !! input
 {{anchorencode:foo bar©#%n}}
@@ -7289,7 +7280,16 @@ wgUseDynamicDates=false
 !! result
 <p><a href="/index.php?title=2009-03-24&amp;action=edit&amp;redlink=1" class="new" title="2009-03-24 (page does not exist)">2009-03-24</a>
 </p>
-!!end
+!! end
+
+!! test
+Spacing of numbers in formatted dates
+!! input
+{{#formatdate:January 15}}
+!! result
+<p><span class="mw-formatted-date" title="01-15">January 15</span>
+</p>
+!! end
 
 #
 #

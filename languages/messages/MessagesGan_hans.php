@@ -1,6 +1,9 @@
 <?php
 /** Simplified Gan script (赣语(简体))
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -129,7 +132,7 @@ $messages = array(
 'category-media-header'    => '“$1”分类里头𠮶媒体',
 'category-empty'           => '“个只分类有包到任何文章或媒体”',
 'hidden-categories'        => '{{PLURAL:$1|只隐藏分类|只隐藏分类}}',
-'hidden-category-category' => '弆到𠮶分类', # Name of the category where hidden categories will be listed
+'hidden-category-category' => '弆到𠮶分类',
 'listingcontinuesabbrev'   => '续',
 
 'mainpagetext'      => "<big>'''安装正MediaWiki喽。'''</big>",
@@ -141,10 +144,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki 平常问题解答]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 发布email清单]',
 
-'about'          => '关于',
-'article'        => '文章',
-'newwindow'      => '（开只新窗口）',
-'cancel'         => '取消',
+'about'         => '关于',
+'article'       => '文章',
+'newwindow'     => '（开只新窗口）',
+'cancel'        => '取消',
+'moredotdotdot' => '别𠮶...',
+'mypage'        => '偶𠮶页面',
+'mytalk'        => '偶𠮶对话框',
+'anontalk'      => '个只IP𠮶对话框',
+'navigation'    => '导航',
+'and'           => ' 同到',
+
+# Cologne Blue skin
 'qbfind'         => '寻',
 'qbbrowse'       => '查看',
 'qbedit'         => '编写',
@@ -152,12 +163,8 @@ $messages = array(
 'qbpageinfo'     => '个页信息',
 'qbmyoptions'    => '偶𠮶选项',
 'qbspecialpages' => '特殊页',
-'moredotdotdot'  => '别𠮶...',
-'mypage'         => '偶𠮶页面',
-'mytalk'         => '偶𠮶对话框',
-'anontalk'       => '个只IP𠮶对话框',
-'navigation'     => '导航',
-'and'            => ' 同到',
+'faq'            => 'FAQ',
+'faqpage'        => 'Project:问得蛮多𠮶问题',
 
 # Metadata in edit box
 'metadata_help' => '元数据:',
@@ -208,7 +215,7 @@ $messages = array(
 'otherlanguages'    => '别𠮶话',
 'redirectedfrom'    => '(从$1跳过来)',
 'redirectpagesub'   => '跳转页',
-'lastmodifiedat'    => '个页最晏𠮶改动系：$1 $2。', # $1 date, $2 time
+'lastmodifiedat'    => '个页最晏𠮶改动系：$1 $2。',
 'viewcount'         => '个页拖人眵嘞$1回。',
 'protectedpage'     => '拖保护页',
 'jumpto'            => '跳到:',
@@ -227,8 +234,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:免责声明',
 'edithelp'             => '编写帮助',
 'edithelppage'         => 'Help:啷编写文章',
-'faq'                  => 'FAQ',
-'faqpage'              => 'Project:问得蛮多𠮶问题',
 'helppage'             => 'Help:说明',
 'mainpage'             => '封面',
 'mainpage-description' => '封面',
@@ -305,10 +310,6 @@ MySQL回到错误 "<tt>$3: $4</tt>"。',
 “$1”
 来自函数“$2”。
 MySQL回到错误“$3: $4”。',
-'noconnect'            => '对伓住！wiki碰到嘞技术问题，连伓到数据库服务器。<br />
-$1',
-'nodb'                 => '选伓正服务器 $1',
-'cachederror'          => '底下系请求页𠮶缓存副本，可能伓系最新𠮶。',
 'laggedslavemode'      => '警告：页面可能冇有新近内容。',
 'readonly'             => '数据库上正锁啰',
 'enterlockreason'      => '请输入锁到数据库𠮶理由，包括预计几时间解锁',
@@ -357,7 +358,6 @@ $2',
 'welcomecreation'            => '== 欢迎, $1! ==
 
 建正嘞倷𠮶帐户，莫忘吥设置{{SITENAME}}𠮶个人参数。',
-'loginpagetitle'             => '用户登入',
 'yourname'                   => '用户名：',
 'yourpassword'               => '密码：',
 'yourpasswordagain'          => '输过道密码：',
@@ -379,20 +379,7 @@ $2',
 'createaccountmail'          => '通过email',
 'badretype'                  => '倷输𠮶密码伓合。',
 'userexists'                 => '倷输𠮶用户名系人家𠮶，选过只喽！',
-'youremail'                  => '电子邮件：',
-'username'                   => '用户名：',
-'uid'                        => '用户ID：',
-'yourrealname'               => '真名：',
-'yourlanguage'               => '语言：',
-'yourvariant'                => '转换字体',
-'yournick'                   => '签名：',
-'badsig'                     => '原始签名错误，请检查HTML。',
-'badsiglength'               => '花名咁长？佢𠮶长度要少过$1只字符。',
-'email'                      => '电子邮件',
-'prefs-help-realname'        => '真名系选填𠮶，要系倷填嘞，倷𠮶作品就会标到倷𠮶名字。',
 'loginerror'                 => '登入错误',
-'prefs-help-email'           => 'email系选填𠮶，佢可以让伓认得倷𠮶人通过email联系正倷。',
-'prefs-help-email-required'  => '需要电子邮件地址。',
 'nocookiesnew'               => '帐户扤正嘞！测到倷关吥嘞Cookies，麻烦倷开到佢登入过。',
 'nocookieslogin'             => '个首要用 Cookies 登入，测到倷关吥嘞Cookies，麻烦倷开到佢登入过。',
 'noname'                     => '倷冇输正有效𠮶用户名。',
@@ -428,16 +415,15 @@ $2',
 'loginlanguagelabel'         => '语言: $1',
 
 # Password reset dialog
-'resetpass'               => '设过帐户密码',
-'resetpass_announce'      => '倷系用到临时email𠮶代码登入𠮶。要登正入，倷要到个首设定只新密码:',
-'resetpass_header'        => '设过密码',
-'oldpassword'             => '老密码：',
-'newpassword'             => '新密码：',
-'retypenew'               => '确认密码:',
-'resetpass_submit'        => '设定密码同到登入',
-'resetpass_success'       => '倷𠮶密码改正喽！正帮倷登入...',
-'resetpass_bad_temporary' => '冇用𠮶临时密码。可能倷改正嘞倷𠮶密码，或者重新要过只新𠮶临时密码。',
-'resetpass_forbidden'     => '到{{SITENAME}}上改伓正密码',
+'resetpass'           => '设过帐户密码',
+'resetpass_announce'  => '倷系用到临时email𠮶代码登入𠮶。要登正入，倷要到个首设定只新密码:',
+'resetpass_header'    => '设过密码',
+'oldpassword'         => '老密码：',
+'newpassword'         => '新密码：',
+'retypenew'           => '确认密码:',
+'resetpass_submit'    => '设定密码同到登入',
+'resetpass_success'   => '倷𠮶密码改正喽！正帮倷登入...',
+'resetpass_forbidden' => '到{{SITENAME}}上改伓正密码',
 
 # Edit page toolbar
 'bold_sample'     => '粗体字',
@@ -460,23 +446,23 @@ $2',
 'hr_tip'          => '横线 (好生使用)',
 
 # Edit pages
-'summary'                   => '摘要:',
-'subject'                   => '主题/头条:',
-'minoredit'                 => '个系只细修改',
-'watchthis'                 => '眏到个页',
-'savearticle'               => '存到著',
-'preview'                   => '预览',
-'showpreview'               => '望吖起',
-'showlivepreview'           => '即时预览',
-'showdiff'                  => '望吖差别',
-'anoneditwarning'           => "'''警告:'''倷哈冇登入，个页𠮶编写历史会记到倷𠮶IP。",
-'missingsummary'            => "'''提示:''' 倷冇提供编写摘要。要系倷再按系保存𠮶话，倷保存𠮶编辑就会冇编辑摘要。",
-'missingcommenttext'        => '请到底下评论。',
-'missingcommentheader'      => "'''提示:''' 倷𠮶评论冇提供标题。要系倷再按系保存𠮶话，倷保存𠮶编辑就会冇标题。",
-'summary-preview'           => '摘要预览:',
-'subject-preview'           => '主题/头条预览:',
-'blockedtitle'              => '用户封到嘞',
-'blockedtext'               => "<big>倷𠮶用户名或IP地址拖$1封到嘞。</big>
+'summary'                    => '摘要:',
+'subject'                    => '主题/头条:',
+'minoredit'                  => '个系只细修改',
+'watchthis'                  => '眏到个页',
+'savearticle'                => '存到著',
+'preview'                    => '预览',
+'showpreview'                => '望吖起',
+'showlivepreview'            => '即时预览',
+'showdiff'                   => '望吖差别',
+'anoneditwarning'            => "'''警告:'''倷哈冇登入，个页𠮶编写历史会记到倷𠮶IP。",
+'missingsummary'             => "'''提示:''' 倷冇提供编写摘要。要系倷再按系保存𠮶话，倷保存𠮶编辑就会冇编辑摘要。",
+'missingcommenttext'         => '请到底下评论。',
+'missingcommentheader'       => "'''提示:''' 倷𠮶评论冇提供标题。要系倷再按系保存𠮶话，倷保存𠮶编辑就会冇标题。",
+'summary-preview'            => '摘要预览:',
+'subject-preview'            => '主题/头条预览:',
+'blockedtitle'               => '用户封到嘞',
+'blockedtext'                => "<big>倷𠮶用户名或IP地址拖$1封到嘞。</big>
 
 个道封锁系$1封𠮶。个中原因系''$2''。
 
@@ -485,7 +471,7 @@ $2',
 * 对于拖查封𠮶人：$7
 
 倷联系得正$1或别𠮶[[{{MediaWiki:Grouppage-sysop}}|管理员]]，讨论个回封锁。除非倷到倷𠮶[[Special:Preferences|帐号参数设置]]里度设正嘞有效𠮶email，伓然𠮶话倷系用伓正“email到个只用户”𠮶功能。设正嘞有效𠮶email后，个只功能系伓会拖封到𠮶。倷𠮶IP地址系$3，许拖封到𠮶ID系 #$5。请倷到全部𠮶查询里度注明个只地址同／或查封ID。",
-'autoblockedtext'           => '别𠮶人用过倷𠮶IP地址，故系佢拖自动锁到嘞。封佢𠮶人系$1.
+'autoblockedtext'            => '别𠮶人用过倷𠮶IP地址，故系佢拖自动锁到嘞。封佢𠮶人系$1.
 下首系封锁𠮶理由:
 
 :\'\'$2\'\'
@@ -498,82 +484,81 @@ $2',
 注意𠮶系话伓定倷冇"e-mail个只用户"𠮶功能，除非倷到[[Special:Preferences|用户设置]]有只注册email地址，再就系倷冇因为用佢拖封过。
 
 倷𠮶封锁ID系$5。请到查询𠮶时间都要紧标到佢。',
-'blockednoreason'           => '冇话理由',
-'blockedoriginalsource'     => "底下系'''$1'''𠮶源代码:",
-'blockededitsource'         => "底下系倷对'''$1'''𠮶'''编辑'''内容:",
-'whitelistedittitle'        => '登入后才编得正',
-'whitelistedittext'         => '起先倷要$1才编得正个页。',
-'confirmedittitle'          => 'email确认后才编得正',
-'confirmedittext'           => '确认嘞email才能编写个页。麻烦用[[Special:Preferences|参数设置]]设置同确认倷𠮶email。',
-'nosuchsectiontitle'        => '冇个只段落',
-'nosuchsectiontext'         => '倷尝试编写𠮶段落伓存在。到个首系冇第$1只段落，所以系冇场洼去存到倷𠮶编辑。',
-'loginreqtitle'             => '需要登入',
-'loginreqlink'              => '登入',
-'loginreqpagetext'          => '倷要$1才眵得正别𠮶页面。',
-'accmailtitle'              => '密码寄出嘞',
-'accmailtext'               => "'$1'𠮶密码发到$2嘞。",
-'newarticle'                => '(新)',
-'newarticletext'            => '倷连到𠮶页面伓存在。要新开个只页面，倷能到下底𠮶方框编写内容（细节请望[[Help:说明|说明]]）。要系倷伓系特试来到个首，按吖浏览器𠮶“返回”即可。',
-'anontalkpagetext'          => "---- ''个系匿名用户𠮶讨论页，话伓定佢哈冇开只帐户。别人单用得正IP地址同佢联系。个只IP地址可能有好几只用户共用。如果倷系匿名用户，觉得个页𠮶内容同倷冇关，欢迎去[[Special:UserLogin|开只新帐户或登入]]，省得同别𠮶匿名用户扤混来。''",
-'noarticletext'             => '眼下个页哈冇内容，倷可以到别𠮶页面[[Special:Search/{{PAGENAME}}|寻吖个页𠮶标题]]或[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} 编写个页]。',
-'clearyourcache'            => "'''注意:''' 保存之后, 倷要清吥浏览器𠮶缓存才眵得正改𠮶内容。 '''Mozilla / Firefox / Safari:''' 按到 ''Shift'' 接到按''刷新''(或按吖''Ctrl-Shift-R''，到苹果Mac上按''Cmd-Shift-R'')；'''IE:''' 按到 ''Ctrl''接到按''刷新''，或按吖''Ctrl-F5''；'''Konqueror:''' 单只要按 ''刷新''；'''Opera:''' 用户要到 ''工具-设置'' 完全𠮶清除缓存。",
-'usercssjsyoucanpreview'    => "'''提示:''' 存到前请用'望吖起'来测吖倷𠮶新CSS/JS 。",
-'usercsspreview'            => "'''注意倷单系到预览倷个人𠮶 CSS，内容哈冇保存！'''",
-'userjspreview'             => "'''注意倷单系到测试／预览倷个人𠮶 JavaScript，内容哈冇保存！'''",
-'userinvalidcssjstitle'     => "'''警告:''' 冇\"\$1\"𠮶皮肤。请记到自定义𠮶 .css 同 .js 页要用小写。就话，{{ns:user}}:Foo/monobook.css 伓等同 {{ns:user}}:Foo/Monobook.css。",
-'updated'                   => '(更新正喽)',
-'note'                      => "'''注意:'''",
-'previewnote'               => "'''请记到个光系预览，内容哈冇保存！'''",
-'previewconflict'           => '个只预览系上首文字编辑区𠮶内容。倷选择保存𠮶话佢才会保存到。',
-'session_fail_preview'      => "'''对伓住！个只段落𠮶资料跌吥嘞，偶个俚处理伓正倷𠮶编辑。请试过吖。哈系扤伓正𠮶话，试吖退出后登入过。'''",
-'session_fail_preview_html' => "'''对伓住！相关𠮶程式资料跌吥嘞，偶个俚处理伓正倷𠮶编辑。''' 
+'blockednoreason'            => '冇话理由',
+'blockedoriginalsource'      => "底下系'''$1'''𠮶源代码:",
+'blockededitsource'          => "底下系倷对'''$1'''𠮶'''编辑'''内容:",
+'whitelistedittitle'         => '登入后才编得正',
+'whitelistedittext'          => '起先倷要$1才编得正个页。',
+'confirmedittext'            => '确认嘞email才能编写个页。麻烦用[[Special:Preferences|参数设置]]设置同确认倷𠮶email。',
+'nosuchsectiontitle'         => '冇个只段落',
+'nosuchsectiontext'          => '倷尝试编写𠮶段落伓存在。到个首系冇第$1只段落，所以系冇场洼去存到倷𠮶编辑。',
+'loginreqtitle'              => '需要登入',
+'loginreqlink'               => '登入',
+'loginreqpagetext'           => '倷要$1才眵得正别𠮶页面。',
+'accmailtitle'               => '密码寄出嘞',
+'accmailtext'                => "'$1'𠮶密码发到$2嘞。",
+'newarticle'                 => '(新)',
+'newarticletext'             => '倷连到𠮶页面伓存在。要新开个只页面，倷能到下底𠮶方框编写内容（细节请望[[Help:说明|说明]]）。要系倷伓系特试来到个首，按吖浏览器𠮶“返回”即可。',
+'anontalkpagetext'           => "---- ''个系匿名用户𠮶讨论页，话伓定佢哈冇开只帐户。别人单用得正IP地址同佢联系。个只IP地址可能有好几只用户共用。如果倷系匿名用户，觉得个页𠮶内容同倷冇关，欢迎去[[Special:UserLogin|开只新帐户或登入]]，省得同别𠮶匿名用户扤混来。''",
+'noarticletext'              => '眼下个页哈冇内容，倷可以到别𠮶页面[[Special:Search/{{PAGENAME}}|寻吖个页𠮶标题]]或[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} 编写个页]。',
+'clearyourcache'             => "'''注意:''' 保存之后, 倷要清吥浏览器𠮶缓存才眵得正改𠮶内容。 '''Mozilla / Firefox / Safari:''' 按到 ''Shift'' 接到按''刷新''(或按吖''Ctrl-Shift-R''，到苹果Mac上按''Cmd-Shift-R'')；'''IE:''' 按到 ''Ctrl''接到按''刷新''，或按吖''Ctrl-F5''；'''Konqueror:''' 单只要按 ''刷新''；'''Opera:''' 用户要到 ''工具-设置'' 完全𠮶清除缓存。",
+'usercssjsyoucanpreview'     => "'''提示:''' 存到前请用'望吖起'来测吖倷𠮶新CSS/JS 。",
+'usercsspreview'             => "'''注意倷单系到预览倷个人𠮶 CSS，内容哈冇保存！'''",
+'userjspreview'              => "'''注意倷单系到测试／预览倷个人𠮶 JavaScript，内容哈冇保存！'''",
+'userinvalidcssjstitle'      => "'''警告:''' 冇\"\$1\"𠮶皮肤。请记到自定义𠮶 .css 同 .js 页要用小写。就话，{{ns:user}}:Foo/monobook.css 伓等同 {{ns:user}}:Foo/Monobook.css。",
+'updated'                    => '(更新正喽)',
+'note'                       => "'''注意:'''",
+'previewnote'                => "'''请记到个光系预览，内容哈冇保存！'''",
+'previewconflict'            => '个只预览系上首文字编辑区𠮶内容。倷选择保存𠮶话佢才会保存到。',
+'session_fail_preview'       => "'''对伓住！个只段落𠮶资料跌吥嘞，偶个俚处理伓正倷𠮶编辑。请试过吖。哈系扤伓正𠮶话，试吖退出后登入过。'''",
+'session_fail_preview_html'  => "'''对伓住！相关𠮶程式资料跌吥嘞，偶个俚处理伓正倷𠮶编辑。''' 
 
 ''个只wiki开放正嘞原HTML码，预览弆到嘞以防止JavaScript𠮶攻击。'' 
 
 '''要系佢系合法编辑𠮶，请试过吖。哈系扤伓正𠮶话，试吖退出后登入过。'''",
-'token_suffix_mismatch'     => "'''倷𠮶用户端𠮶编辑信毁吥嘞嚸标点符号字符，啖𠮶话倷𠮶编辑就拖拒绝嘞。
+'token_suffix_mismatch'      => "'''倷𠮶用户端𠮶编辑信毁吥嘞嚸标点符号字符，啖𠮶话倷𠮶编辑就拖拒绝嘞。
 个种情况通常系含到好多臭虫、以网络为主𠮶匿名代理服务扤得。'''",
-'editing'                   => '编辑嘚$1',
-'editingsection'            => '编辑嘚$1 (段落)',
-'editingcomment'            => '编辑嘚$1 (新段落)',
-'editconflict'              => '编辑仗: $1',
-'explainconflict'           => "倷起手编辑之后有人动过个页。
+'editing'                    => '编辑嘚$1',
+'editingsection'             => '编辑嘚$1 (段落)',
+'editingcomment'             => '编辑嘚$1 (新段落)',
+'editconflict'               => '编辑仗: $1',
+'explainconflict'            => "倷起手编辑之后有人动过个页。
 上首𠮶方框显示𠮶系眼下本页𠮶内容。
 倷𠮶修改到下底𠮶方框显示。
 倷要拿倷𠮶修改并到现存𠮶内容。
 '''单只系'''上首方框𠮶内容会等倷按\"存到著\"之后拖保存。",
-'yourtext'                  => '倷编𠮶内容',
-'storedversion'             => '存到𠮶版本',
-'nonunicodebrowser'         => "'''警告：倷𠮶浏览器伓兼容Unicode。个度有只办法方便倷安全𠮶编写得正文章：伓系ASCII𠮶字符会到编辑框里度用十六进制编码显到。'''",
-'editingold'                => "'''警告：倷于今正编写个页𠮶旧版本。
+'yourtext'                   => '倷编𠮶内容',
+'storedversion'              => '存到𠮶版本',
+'nonunicodebrowser'          => "'''警告：倷𠮶浏览器伓兼容Unicode。个度有只办法方便倷安全𠮶编写得正文章：伓系ASCII𠮶字符会到编辑框里度用十六进制编码显到。'''",
+'editingold'                 => "'''警告：倷于今正编写个页𠮶旧版本。
 要系倷存到佢𠮶话，个只版本𠮶全部改动会都跌吥去。'''",
-'yourdiff'                  => '差异',
-'copyrightwarning'          => "请记得到{{SITENAME}}𠮶全部贡献会拖认为系$2之下发出𠮶（望吖$1有别𠮶资料）。要系倷伓想自家𠮶编辑好嚟嚟拖乱扤吥，唉就莫递交。<br />
+'yourdiff'                   => '差异',
+'copyrightwarning'           => "请记得到{{SITENAME}}𠮶全部贡献会拖认为系$2之下发出𠮶（望吖$1有别𠮶资料）。要系倷伓想自家𠮶编辑好嚟嚟拖乱扤吥，唉就莫递交。<br />
 倷都要话正倷𠮶文字系倷自家写𠮶，或者系公有领域或别𠮶自由资源复制到𠮶。<br />
 '''冇任何许可𠮶情况下请莫递交有版权𠮶作品！'''",
-'copyrightwarning2'         => "请记得别𠮶人编得正、改得正或者删得正倷到{{SITENAME}}𠮶全部贡献。要系倷伓想自家𠮶编辑好嚟嚟拖改吥，唉就莫递交。<br />
+'copyrightwarning2'          => "请记得别𠮶人编得正、改得正或者删得正倷到{{SITENAME}}𠮶全部贡献。要系倷伓想自家𠮶编辑好嚟嚟拖改吥，唉就莫递交。<br />
 倷都要话正倷𠮶文字系倷自家写𠮶，或者系公有领域或别𠮶自由资源复制到𠮶（望吖$1有别𠮶资料）。
 '''冇任何许可𠮶情况下请莫递交有版权𠮶作品！'''",
-'longpagewarning'           => "'''警告：个页有$1 kilobytes咁长；有𠮶浏览器会编伓正超吥32 kb𠮶页面。
+'longpagewarning'            => "'''警告：个页有$1 kilobytes咁长；有𠮶浏览器会编伓正超吥32 kb𠮶页面。
 请考虑吖拿佢分到细嚸𠮶小段落。'''",
-'longpageerror'             => "'''错误：倷递交𠮶文字有$1 kilobytes咁长，佢长过最大𠮶$2 kilobytes。存伓正倷递交𠮶文字。'''",
-'readonlywarning'           => "'''警告: 数据库锁到嘞进行定期修护，眼下倷存伓正倷𠮶改动。倷可以拿佢存到文档再著。'''",
-'protectedpagewarning'      => "'''警告: 个页已经受保护，单只管理员权限𠮶用户才改得正。'''",
-'semiprotectedpagewarning'  => "'''注意：'''个页拖锁到嘞，单只注册用户编得正。",
-'cascadeprotectedwarning'   => '警告: 个页已经受保护，单只管理员权限𠮶用户才改得正，因为个页同底下𠮶连锁保护𠮶{{PLURAL:$1|一只|多只}}页面包到嘞:',
-'titleprotectedwarning'     => "'''警告：个只页锁到喽，只有一滴子人才建得正。'''",
-'templatesused'             => '个只页面使用𠮶模板有:',
-'templatesusedpreview'      => '个只预览使用𠮶模板有:',
-'templatesusedsection'      => '个只段落使用𠮶模板有:',
-'template-protected'        => '(保护)',
-'template-semiprotected'    => '(半保护)',
-'edittools'                 => '<!--个首𠮶文本会到下底𠮶编辑同上传列表里坨显示。 -->',
-'nocreatetitle'             => '新建页面拖限制',
-'nocreatetext'              => '个只网站限制新建页面𠮶功能。倷可以回头去编辑有嘞𠮶页面，或者[[Special:UserLogin|登入或新开帐户]]。',
-'nocreate-loggedin'         => '倷到 {{SITENAME}} 冇权新开页面。',
-'permissionserrors'         => '权限错误',
-'permissionserrorstext'     => '根据底下𠮶{{PLURAL:$1|原因|原因}}，倷冇权限去扤:',
-'recreate-deleted-warn'     => "'''警告: 倷正重建一只之前拖删吥𠮶页面。'''
+'longpageerror'              => "'''错误：倷递交𠮶文字有$1 kilobytes咁长，佢长过最大𠮶$2 kilobytes。存伓正倷递交𠮶文字。'''",
+'readonlywarning'            => "'''警告: 数据库锁到嘞进行定期修护，眼下倷存伓正倷𠮶改动。倷可以拿佢存到文档再著。'''",
+'protectedpagewarning'       => "'''警告: 个页已经受保护，单只管理员权限𠮶用户才改得正。'''",
+'semiprotectedpagewarning'   => "'''注意：'''个页拖锁到嘞，单只注册用户编得正。",
+'cascadeprotectedwarning'    => '警告: 个页已经受保护，单只管理员权限𠮶用户才改得正，因为个页同底下𠮶连锁保护𠮶{{PLURAL:$1|一只|多只}}页面包到嘞:',
+'titleprotectedwarning'      => "'''警告：个只页锁到喽，只有一滴子人才建得正。'''",
+'templatesused'              => '个只页面使用𠮶模板有:',
+'templatesusedpreview'       => '个只预览使用𠮶模板有:',
+'templatesusedsection'       => '个只段落使用𠮶模板有:',
+'template-protected'         => '(保护)',
+'template-semiprotected'     => '(半保护)',
+'edittools'                  => '<!--个首𠮶文本会到下底𠮶编辑同上传列表里坨显示。 -->',
+'nocreatetitle'              => '新建页面拖限制',
+'nocreatetext'               => '个只网站限制新建页面𠮶功能。倷可以回头去编辑有嘞𠮶页面，或者[[Special:UserLogin|登入或新开帐户]]。',
+'nocreate-loggedin'          => '倷到 {{SITENAME}} 冇权新开页面。',
+'permissionserrors'          => '权限错误',
+'permissionserrorstext'      => '根据底下𠮶{{PLURAL:$1|原因|原因}}，倷冇权限去扤:',
+'recreate-moveddeleted-warn' => "'''警告: 倷正重建一只之前拖删吥𠮶页面。'''
 
 倷应该要考虑吖继续编辑个页面系否有必要。
 为到方便，个页𠮶删除记录已经到下底提供:",
@@ -592,7 +577,7 @@ $2',
 'nohistory'           => '个页冇修改历史。',
 'currentrev'          => '眼前𠮶修改版本',
 'revisionasof'        => '$1𠮶修改版本',
-'revision-info'       => '$2到$1扤𠮶修订版本', # Additionally available: $3: revision id
+'revision-info'       => '$2到$1扤𠮶修订版本',
 'previousrevision'    => '←之前𠮶修改',
 'nextrevision'        => '接到𠮶修改→',
 'currentrevisionlink' => '眼前𠮶修改',
@@ -612,7 +597,7 @@ $2',
 # Revision feed
 'history-feed-title'          => '修改历史',
 'history-feed-description'    => '本站个页𠮶修改历史',
-'history-feed-item-nocomment' => '$1到$2', # user at time
+'history-feed-item-nocomment' => '$1到$2',
 'history-feed-empty'          => '要求𠮶页面伓存在。佢可能拖删吥嘞或改嘞名。试吖[[Special:Search|到本站寻]]有关𠮶新页面内容。',
 
 # Revision deletion
@@ -696,67 +681,71 @@ $2',
 'powersearch'           => '高级寻',
 'searchdisabled'        => '{{SITENAME}}𠮶搜索功能已经关闭。倷可以用Google寻吖。但系佢𠮶索引可能系早先𠮶。',
 
-# Preferences page
-'preferences'              => '参数设置',
-'mypreferences'            => '偶𠮶参数设置',
-'prefs-edits'              => '编辑数:',
-'prefsnologin'             => '哈冇登入',
-'prefsnologintext'         => '倷要[[Special:UserLogin|登入]]后才设得正个人参数。',
-'prefsreset'               => '参数已经拖重新设过。',
+# Quickbar
 'qbsettings'               => '快捷导航条',
 'qbsettings-none'          => '冇',
 'qbsettings-fixedleft'     => '左首固定',
 'qbsettings-fixedright'    => '右首固定',
 'qbsettings-floatingleft'  => '左首漂移',
 'qbsettings-floatingright' => '左首漂移',
-'changepassword'           => '改过密码',
-'skin'                     => '皮',
-'skin-preview'             => '（预览）',
-'math'                     => '数学公式',
-'dateformat'               => '日期格式',
-'datedefault'              => '默认项目',
-'datetime'                 => '日期同到时间',
-'math_failure'             => '分析失败',
-'math_unknown_error'       => '未知错误',
-'math_unknown_function'    => '未知函数',
-'math_lexing_error'        => '句法错误',
-'math_syntax_error'        => '文法错误',
-'math_image_error'         => 'PNG转换失败；请检查系否装正嘞latex, dvips, gs同到convert',
-'math_bad_tmpdir'          => '写伓正或建伓正数学公式临时目录',
-'math_bad_output'          => '写伓正或建伓正数学公式输出目录',
-'math_notexvc'             => '执行伓正"texvc"；请参看 math/README 再配置过。',
-'prefs-personal'           => '用户介绍',
-'prefs-rc'                 => '最近更改',
-'prefs-watchlist'          => '监视列表',
-'prefs-watchlist-days'     => '监视列表显示最久𠮶日数:',
-'prefs-watchlist-edits'    => '加强版𠮶监视列表显示最多更改数目:',
-'prefs-misc'               => '杂项',
-'saveprefs'                => '存到参数',
-'resetprefs'               => '设过参数',
-'textboxsize'              => '编写',
-'rows'                     => '横:',
-'columns'                  => '竖:',
-'searchresultshead'        => '设置寻到𠮶结果',
-'resultsperpage'           => '设置寻到𠮶链接数',
-'contextlines'             => '设置寻到𠮶行数:',
-'contextchars'             => '设置寻到𠮶字数:',
-'stub-threshold'           => '<a href="#" class="stub">细文链接</a>格式门槛:',
-'recentchangesdays'        => '最近更改中𠮶显示日数:',
-'recentchangescount'       => '最近更改中𠮶编辑数:',
-'savedprefs'               => '倷𠮶个人参数设置保存正嘞。',
-'timezonelegend'           => '时区',
-'timezonetext'             => '¹倷𠮶当地时区同服务器时间(UTC)𠮶时差。',
-'localtime'                => '当地时区',
-'timezoneoffset'           => '时差¹',
-'servertime'               => '服务器时间',
-'guesstimezone'            => '到浏览器上填',
-'allowemail'               => '接受别𠮶用户𠮶邮件',
-'defaultns'                => '默认搜索𠮶名字空间:',
-'default'                  => '默认',
-'files'                    => '档案',
+
+# Preferences page
+'preferences'               => '参数设置',
+'mypreferences'             => '偶𠮶参数设置',
+'prefs-edits'               => '编辑数:',
+'prefsnologin'              => '哈冇登入',
+'prefsnologintext'          => '倷要[[Special:UserLogin|登入]]后才设得正个人参数。',
+'changepassword'            => '改过密码',
+'prefs-skin'                => '皮',
+'skin-preview'              => '（预览）',
+'prefs-math'                => '数学公式',
+'dateformat'                => '日期格式',
+'datedefault'               => '默认项目',
+'prefs-datetime'            => '日期同到时间',
+'prefs-personal'            => '用户介绍',
+'prefs-rc'                  => '最近更改',
+'prefs-watchlist'           => '监视列表',
+'prefs-watchlist-days'      => '监视列表显示最久𠮶日数:',
+'prefs-watchlist-edits'     => '加强版𠮶监视列表显示最多更改数目:',
+'prefs-misc'                => '杂项',
+'saveprefs'                 => '存到参数',
+'resetprefs'                => '设过参数',
+'prefs-editing'             => '编写',
+'rows'                      => '横:',
+'columns'                   => '竖:',
+'searchresultshead'         => '设置寻到𠮶结果',
+'resultsperpage'            => '设置寻到𠮶链接数',
+'contextlines'              => '设置寻到𠮶行数:',
+'contextchars'              => '设置寻到𠮶字数:',
+'stub-threshold'            => '<a href="#" class="stub">细文链接</a>格式门槛:',
+'recentchangesdays'         => '最近更改中𠮶显示日数:',
+'recentchangescount'        => '最近更改中𠮶编辑数:',
+'savedprefs'                => '倷𠮶个人参数设置保存正嘞。',
+'timezonelegend'            => '时区',
+'localtime'                 => '当地时区',
+'timezoneoffset'            => '时差¹',
+'servertime'                => '服务器时间',
+'guesstimezone'             => '到浏览器上填',
+'allowemail'                => '接受别𠮶用户𠮶邮件',
+'defaultns'                 => '默认搜索𠮶名字空间:',
+'default'                   => '默认',
+'prefs-files'               => '档案',
+'youremail'                 => '电子邮件：',
+'username'                  => '用户名：',
+'uid'                       => '用户ID：',
+'yourrealname'              => '真名：',
+'yourlanguage'              => '语言：',
+'yourvariant'               => '转换字体',
+'yournick'                  => '签名：',
+'badsig'                    => '原始签名错误，请检查HTML。',
+'badsiglength'              => '花名咁长？佢𠮶长度要少过$1只字符。',
+'email'                     => '电子邮件',
+'prefs-help-realname'       => '真名系选填𠮶，要系倷填嘞，倷𠮶作品就会标到倷𠮶名字。',
+'prefs-help-email'          => 'email系选填𠮶，佢可以让伓认得倷𠮶人通过email联系正倷。',
+'prefs-help-email-required' => '需要电子邮件地址。',
 
 # User rights
-'userrights'               => '用户权限管理', # Not used as normal message but as header for the special page itself
+'userrights'               => '用户权限管理',
 'userrights-lookup-user'   => '管理用户群',
 'userrights-user-editname' => '输入用户名:',
 'editusergroup'            => '编辑用户群',
@@ -960,7 +949,7 @@ $2',
 'filedelete-success'          => "'''$1'''删吥嘞。",
 'filedelete-success-old'      => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\'于 $2 $3 𠮶版本删吥嘞。</span>',
 'filedelete-nofile'           => "{{SITENAME}}个只网站伓存在'''$1'''。",
-'filedelete-nofile-old'       => "按到指定属性𠮶情况，个首冇'''$1'''到$2 $3𠮶版本。",
+'filedelete-nofile-old'       => "按到指定属性𠮶情况，个首冇'''$1'''到𠮶版本。",
 'filedelete-otherreason'      => '别𠮶/附加缘故:',
 'filedelete-reason-otherlist' => '别𠮶缘故',
 'filedelete-reason-dropdown'  => '*常用删除理由
@@ -1215,8 +1204,8 @@ $NEWPAGE
 别𠮶人编辑过或系恢复嘞个页。
 
 最晏编辑人: [[User:$3|$3]] ([[User talk:$3|讨论]])。',
-'editcomment'      => "编辑介绍: \"''\$1''\"。", # only shown if there is an edit comment
-'revertpage'       => '返回由[[Special:Contributions/$2|$2]] ([[User talk:$2|对话]])𠮶编辑；恢复到[[User:$1|$1]]𠮶最末一只版本', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'editcomment'      => "编辑介绍: \"''\$1''\"。",
+'revertpage'       => '返回由[[Special:Contributions/$2|$2]] ([[User talk:$2|对话]])𠮶编辑；恢复到[[User:$1|$1]]𠮶最末一只版本',
 'rollback-success' => '返回由$1𠮶编辑；恢复到$2𠮶最末一只版本。',
 'sessionfailure'   => '倷𠮶登入好像有嚸问题，为到防范未然，个只动作拖取消嘞。
 
@@ -1251,7 +1240,7 @@ $NEWPAGE
 'protect-expiring'            => '$1 (UTC)到期',
 'protect-cascade'             => '保护个页含到𠮶页面 (连锁保护)',
 'protect-cantedit'            => '倷改伓正个页𠮶保护程度，因为倷冇搦到编辑授权。',
-'protect-expiry-options'      => '两个钟头:2 hours,一日:1 day,三日:3 days,一个礼拜:1 week,两个礼拜:2 weeks,一个月:1 month,三个月:3 months,六个月:6 months,一年:1 year,一世:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '两个钟头:2 hours,一日:1 day,三日:3 days,一个礼拜:1 week,两个礼拜:2 weeks,一个月:1 month,三个月:3 months,六个月:6 months,一年:1 year,一世:infinite',
 'restriction-type'            => '权限:',
 'restriction-level'           => '限制级别:',
 'minimum-size'                => '最细码子',
@@ -1314,7 +1303,7 @@ $NEWPAGE
 'contributions' => '用户贡献',
 'mycontris'     => '偶𠮶贡献',
 'contribsub2'   => '$1𠮶贡献 ($2)',
-'nocontribs'    => '冇寻到合到条件𠮶改动。', # Optional parameter: $1 is the user name
+'nocontribs'    => '冇寻到合到条件𠮶改动。',
 'uctop'         => '(头上)',
 'month'         => '从个月 (或更早):',
 'year'          => '从个年 (或更早):',
@@ -1363,7 +1352,7 @@ $NEWPAGE
 'ipbenableautoblock'          => '自动封锁个只用户最晏𠮶IP，同后来佢编写用过𠮶地址',
 'ipbsubmit'                   => '封锁个只地址',
 'ipbother'                    => '别𠮶时间:',
-'ipboptions'                  => '两个钟头:2 hours,一日:1 day,三日:3 days,一个礼拜:1 week,两个礼拜:2 weeks,一个月:1 month,三个月:3 months,六个月:6 months,一年:1 year,一世:infinite', # display1:time1,display2:time2,...
+'ipboptions'                  => '两个钟头:2 hours,一日:1 day,三日:3 days,一个礼拜:1 week,两个礼拜:2 weeks,一个月:1 month,三个月:3 months,六个月:6 months,一年:1 year,一世:infinite',
 'ipbotheroption'              => '别𠮶',
 'ipbotherreason'              => '别𠮶／附加原因:',
 'ipbhidename'                 => '封锁日志、活跃封锁列表同用户列表里头弆到用户名',
@@ -1461,7 +1450,7 @@ $NEWPAGE
 'move-watch'              => '眏到个页',
 'movepagebtn'             => '换卟个页',
 'pagemovedsub'            => '移正嘞',
-'movepage-moved'          => "<big>'''“$1”拖移到“$2”'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'          => "<big>'''“$1”拖移到“$2”'''</big>",
 'articleexists'           => '已经有页面叫个只名字，要伓倷拣𠮶名字冇用。请拣过只名字。',
 'cantmove-titleprotected' => '倷移伓正一只页面到个只位置，个只新题目已经拖保护起来嘞，新建伓正。',
 'talkexists'              => '页面本身移动正嘞，但系新标题下底有嘞对话页，所以对话页移伓正。请手工合并两页。',
@@ -1629,7 +1618,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 # Attribution
 'anonymous'        => '{{SITENAME}}𠮶匿名用户',
 'siteuser'         => '{{SITENAME}}用户$1',
-'lastmodifiedatby' => '个页由$3对$1 $2最晏𠮶改动。', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => '个页由$3对$1 $2最晏𠮶改动。',
 'othercontribs'    => '以$1为基础。',
 'others'           => '别𠮶',
 'siteusers'        => '{{SITENAME}}用户$1',
@@ -1659,6 +1648,17 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'mw_math_source' => '显示系TeX代码 (文字浏览器用)',
 'mw_math_modern' => '新版浏览器𠮶建议',
 'mw_math_mathml' => '尽可能用MathML (试验中)',
+
+# Math errors
+'math_failure'          => '分析失败',
+'math_unknown_error'    => '未知错误',
+'math_unknown_function' => '未知函数',
+'math_lexing_error'     => '句法错误',
+'math_syntax_error'     => '文法错误',
+'math_image_error'      => 'PNG转换失败；请检查系否装正嘞latex, dvips, gs同到convert',
+'math_bad_tmpdir'       => '写伓正或建伓正数学公式临时目录',
+'math_bad_output'       => '写伓正或建伓正数学公式输出目录',
+'math_notexvc'          => '执行伓正"texvc"；请参看 math/README 再配置过。',
 
 # Patrolling
 'markaspatrolleddiff'                 => '标到系检查过𠮶',
@@ -1730,7 +1730,7 @@ $1',
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => '阔',
@@ -1857,14 +1857,14 @@ $1',
 
 'exif-unknowndate' => '未知𠮶日期',
 
-'exif-orientation-1' => '标准', # 0th row: top; 0th column: left
-'exif-orientation-2' => '左右斢转', # 0th row: top; 0th column: right
-'exif-orientation-3' => '转动180°', # 0th row: bottom; 0th column: right
-'exif-orientation-4' => '上下翻转', # 0th row: bottom; 0th column: left
-'exif-orientation-5' => '逆时针转90°接到上下翻转', # 0th row: left; 0th column: top
-'exif-orientation-6' => '顺时针转90°', # 0th row: right; 0th column: top
-'exif-orientation-7' => '顺时针转90°接到上下翻转', # 0th row: right; 0th column: bottom
-'exif-orientation-8' => '逆时针转90°', # 0th row: left; 0th column: bottom
+'exif-orientation-1' => '标准',
+'exif-orientation-2' => '左右斢转',
+'exif-orientation-3' => '转动180°',
+'exif-orientation-4' => '上下翻转',
+'exif-orientation-5' => '逆时针转90°接到上下翻转',
+'exif-orientation-6' => '顺时针转90°',
+'exif-orientation-7' => '顺时针转90°接到上下翻转',
+'exif-orientation-8' => '逆时针转90°',
 
 'exif-planarconfiguration-1' => 'chunky格式',
 'exif-planarconfiguration-2' => 'planar格式',
@@ -1974,7 +1974,7 @@ $1',
 'exif-gpsmeasuremode-2' => '二维测量',
 'exif-gpsmeasuremode-3' => '三维测量',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => '公里每小时',
 'exif-gpsspeed-m' => '英里每小时',
 'exif-gpsspeed-n' => '海浬每小时(节)',
@@ -2101,7 +2101,7 @@ $1',
 'unknown_extension_tag' => '伓认得𠮶扩展标签 "$1"',
 
 # Special:Version
-'version'                          => '版本', # Not used as normal message but as header for the special page itself
+'version'                          => '版本',
 'version-extensions'               => '装正𠮶插件',
 'version-specialpages'             => '特别𠮶页面',
 'version-parserhooks'              => '解析器钩子',
@@ -2113,7 +2113,7 @@ $1',
 'version-skin-extension-functions' => '封皮插件功能',
 'version-hook-name'                => '钩子名',
 'version-hook-subscribedby'        => '订阅人',
-'version-version'                  => '版本',
+'version-version'                  => '(版本 $1)',
 'version-license'                  => '许可证',
 'version-software'                 => '装正𠮶软件',
 'version-software-version'         => '版本',

@@ -438,12 +438,15 @@ class ImagePage extends Article {
 
 			if($showLink) {
 				$filename = wfEscapeWikiText( $this->displayImg->getName() );
+				$medialink = $this->displayImg->isMissing() ?
+					"'''$filename'''" :
+					"[[Media:$filename|$filename]]";
 
 				if( !$this->displayImg->isSafeFile() ) {
 					$warning = wfMsgNoTrans( 'mediawarning' );
 					$wgOut->addWikiText( <<<EOT
 <div class="fullMedia">
-<span class="dangerousLink">[[Media:$filename|$filename]]</span>$dirmark
+<span class="dangerousLink">{$medialink}</span>$dirmark
 <span class="fileInfo">$longDesc</span>
 </div>
 <div class="mediaWarning">$warning</div>
@@ -452,7 +455,7 @@ EOT
 				} else {
 					$wgOut->addWikiText( <<<EOT
 <div class="fullMedia">
-[[Media:$filename|$filename]]$dirmark
+{$medialink}{$dirmark}
 <span class="fileInfo">$longDesc</span>
 </div>
 EOT
@@ -478,7 +481,7 @@ EOT
 	 * Show a notice that the file is from a shared repository
 	 */
 	protected function printSharedImageText() {
-		global $wgOut, $wgUser;
+		global $wgOut;
 
 		$this->loadFile();
 
@@ -697,7 +700,10 @@ EOT
 			$this->img->upgradeRow();
 			$this->img->purgeCache();
 		} else {
-			wfDebug( "ImagePage::doPurge no image\n" );
+			wfDebug( "ImagePage::doPurge no image for " . $this->img->getName() . "; limiting purge to cache only\n" );
+			// even if the file supposedly doesn't exist, force any cached information
+			// to be updated (in case the cached information is wrong)
+			$this->img->purgeCache();
 		}
 		parent::doPurge();
 	}
@@ -774,9 +780,7 @@ class ImageHistoryList {
 		$img = $iscur ? $file->getName() : $file->getArchiveName();
 		$user = $file->getUser('id');
 		$usertext = $file->getUser('text');
-		$size = $file->getSize();
 		$description = $file->getDescription();
-		$dims = $file->getDimensionsString();
 		$sha1 = $file->getSha1();
 
 		$local = $this->current->isLocal();
@@ -849,43 +853,32 @@ class ImageHistoryList {
 		if( !$file->userCan(File::DELETED_FILE) ) {
 			# Don't link to unviewable files
 			$row .= '<span class="history-deleted">' . $wgLang->timeAndDate( $timestamp, true ) . '</span>';
-		} else if( $file->isDeleted(File::DELETED_FILE) ) {
+		} elseif( $file->isDeleted(File::DELETED_FILE) ) {
 			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			# Make a link to review the image
 			$url = $this->skin->makeKnownLinkObj( $revdel, $wgLang->timeAndDate( $timestamp, true ),
 				"target=".$wgTitle->getPrefixedText()."&file=$sha1.".$this->current->getExtension() );
 			$row .= '<span class="history-deleted">'.$url.'</span>';
+		} elseif( $file->isMissing() ) {
+			# Don't link to missing files
+			$row .= $wgLang->timeAndDate( $timestamp, true );
 		} else {
 			$url = $iscur ? $this->current->getUrl() : $this->current->getArchiveUrl( $img );
 			$row .= Xml::element( 'a', array( 'href' => $url ), $wgLang->timeAndDate( $timestamp, true ) );
 		}
+		$row .= "</td>";
 
 		// Thumbnail
-		if( $file->allowInlineDisplay() && $file->userCan( File::DELETED_FILE ) && !$file->isDeleted( File::DELETED_FILE ) ) {
-			$params = array(
-				'width' => '120',
-				'height' => '120',
-			);
-			$thumbnail = $file->transform( $params );
-			$options = array(
-				'alt' => wfMsg( 'filehist-thumbtext', $wgLang->timeAndDate( $timestamp, true ) ),
-				'file-link' => true,
-			);
-			$row .= '</td><td>' . ( $thumbnail ? $thumbnail->toHtml( $options ) : 
-													wfMsgHtml( 'filehist-nothumb' ) );
-		} else {
-			$row .= '</td><td>' . wfMsgHtml( 'filehist-nothumb' );
-		}
-		$row .= "</td><td>";
+		$row .= '<td>' . $this->getThumbForLine( $file ) . '</td>';
 
-		// Image dimensions
-		$row .= htmlspecialchars( $dims );
-
-		// File size
-		$row .= " <span style='white-space: nowrap;'>(" . $this->skin->formatSize( $size ) . ')</span>';
+		// Image dimensions + size
+		$row .= '<td>';
+		$row .= htmlspecialchars( $file->getDimensionsString() );
+		$row .= " <span style='white-space: nowrap;'>(" . $this->skin->formatSize( $file->getSize() ) . ')</span>';
+		$row .= '</td>';
 
 		// Uploading user
-		$row .= '</td><td>';
+		$row .= '<td>';
 		if( $local ) {
 			// Hide deleted usernames
 			if( $file->isDeleted(File::DELETED_USER) ) {
@@ -911,6 +904,32 @@ class ImageHistoryList {
 		$classAttr = $rowClass ? " class='$rowClass'" : "";
 
 		return "<tr{$classAttr}>{$row}</tr>\n";
+	}
+
+	protected function getThumbForLine( $file ) {
+		global $wgLang;
+
+		if( $file->isMissing() ) {
+			return '<strong class="error">' . wfMsgHtml( 'filehist-missing' ) . '</strong>';
+		} elseif( $file->allowInlineDisplay() && $file->userCan( File::DELETED_FILE ) && !$file->isDeleted( File::DELETED_FILE ) ) {
+			$params = array(
+				'width' => '120',
+				'height' => '120',
+			);
+			$timestamp = wfTimestamp(TS_MW, $file->getTimestamp());
+
+			$thumbnail = $file->transform( $params );
+			$options = array(
+				'alt' => wfMsg( 'filehist-thumbtext', $wgLang->timeAndDate( $timestamp, true ) ),
+				'file-link' => true,
+			);
+			
+			if ( !$thumbnail ) return wfMsgHtml( 'filehist-nothumb' );
+
+			return $thumbnail->toHtml( $options );
+		} else {
+			return wfMsgHtml( 'filehist-nothumb' );
+		}
 	}
 }
 

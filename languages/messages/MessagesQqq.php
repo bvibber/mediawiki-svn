@@ -1,6 +1,9 @@
 <?php
 /** Message documentation (Message documentation)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -56,6 +59,7 @@
  * @author Sanbec
  * @author Sborsody
  * @author Seb35
+ * @author Sherbrooke
  * @author Shushruth
  * @author Siebrand
  * @author Singularity
@@ -189,7 +193,7 @@ This is the toolbar: [[Image:Toolbar.png]]",
 'category_header'                => 'In category description page',
 'category-media-header'          => 'In category description page',
 'category-empty'                 => 'The text displayed in category page when that category is empty',
-'hidden-category-category'       => 'Name of the category where hidden categories will be listed.', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Name of the category where hidden categories will be listed.',
 'category-subcat-count'          => 'This message is displayed at the top of a category page showing the number of pages in the category.
 
 * $1: number of subcategories shown
@@ -219,25 +223,30 @@ See http://test.wikipedia.org/wiki/Category:Test_ko?uselang={{SUBPAGENAME}}, for
 'mainpagedocfooter' => 'Along with {{msg|mainpagetext}}, the text you will see on the Main Page when your wiki is installed.
 This might be a good place to put information about <nowiki>{{GRAMMAR:}}</nowiki>. See [[{{NAMESPACE}}:{{BASEPAGENAME}}/fi]] for an example. For languages having grammatical distinctions and not having an appropriate <nowiki>{{GRAMMAR:}}</nowiki> software available, a suggestion to check and possibly amend the messages having <nowiki>{{SITENAME}}</nowiki> may be valuable. See [[{{NAMESPACE}}:{{BASEPAGENAME}}/ksh]] for an example.',
 
-'about'          => '{{Identical|About}}',
-'article'        => '{{Identical|Content page}}',
-'newwindow'      => 'Below the edit form, next to "[[MediaWiki:Edithelp/{{SUBPAGENAME}}|Editing help]]".',
-'cancel'         => 'Message shown below the edit form, and if you click on it, you stop with editing the page and go back to the normal page view.
+'about'         => '{{Identical|About}}',
+'article'       => '{{Identical|Content page}}',
+'newwindow'     => 'Below the edit form, next to "[[MediaWiki:Edithelp/{{SUBPAGENAME}}|Editing help]]".',
+'cancel'        => 'Message shown below the edit form, and if you click on it, you stop with editing the page and go back to the normal page view.
 
 {{Identical|Cancel}}',
-'qbfind'         => 'Alternative for "search" as used in Cologne Blue skin.',
-'qbedit'         => '{{Identical|Edit}}',
-'qbmyoptions'    => '{{Identical|My pages}}',
-'qbspecialpages' => '{{Identical|Special pages}}',
-'moredotdotdot'  => '{{Identical|More...}}',
-'mytalk'         => 'In the personal urls page section - right upper corner.',
-'anontalk'       => 'Link to the talk page appearing in [[mw:Help:Navigation#User_Links|user links]] for each anonymous users when [[mw:Manual:$wgShowIPinHeader|$wgShowIPinHeader]] is true.',
-'navigation'     => '{{Identical|Navigation}}',
-'and'            => 'The translation for "and" appears in the [[Special:Version]] page, between the last two items of a list. If a comma is needed, add it at the beginning without a gap between it and the "&". <nowiki>&#32;</nowiki> is a blank space, one character long. Please leave it as it is.
+'moredotdotdot' => '{{Identical|More...}}',
+'mytalk'        => 'In the personal urls page section - right upper corner.',
+'anontalk'      => 'Link to the talk page appearing in [[mw:Help:Navigation#User_Links|user links]] for each anonymous users when [[mw:Manual:$wgShowIPinHeader|$wgShowIPinHeader]] is true.',
+'navigation'    => '{{Identical|Navigation}}',
+'and'           => 'The translation for "and" appears in the [[Special:Version]] page, between the last two items of a list. If a comma is needed, add it at the beginning without a gap between it and the "&". <nowiki>&#32;</nowiki> is a blank space, one character long. Please leave it as it is.
 
 This can also appear in the credits page if the credits feature is enabled,for example [http://translatewiki.net/wiki/Support&action=credits the credits of the support page]. (To view any credits page type <nowiki>&action=credits</nowiki> at the end of any URL in the address bar.)
 
 {{Identical|And}}',
+
+# Cologne Blue skin
+'qbfind'         => 'Alternative for "search" as used in Cologne Blue skin.',
+'qbedit'         => '{{Identical|Edit}}',
+'qbmyoptions'    => '{{Identical|My pages}}',
+'qbspecialpages' => '{{Identical|Special pages}}',
+'faqpage'        => "FAQ is short for ''frequently asked questions''. This page is only linked on some of the old skins, not in Monobook or Modern.
+
+{{doc-important|Do not translate <tt>Project:</tt> part.}}",
 
 # Metadata in edit box
 'metadata_help' => '{{Identical|Metadata}}',
@@ -306,7 +315,7 @@ See also [[MediaWiki:Helppage/{{SUBPAGENAME}}|{{int:helppage}}]] and [[MediaWiki
 * $1: date
 * $2: time
 
-See also [[MediaWiki:Lastmodifiedatby/{{SUBPAGENAME}}]].', # $1 date, $2 time
+See also [[MediaWiki:Lastmodifiedatby/{{SUBPAGENAME}}]].',
 'jumpto'           => '"Jump to" navigation links. Hidden by default in monobook skin. The format is: {{int:jumpto}} [[MediaWiki:Jumptonavigation/{{SUBPAGENAME}}|{{int:jumptonavigation}}]], [[MediaWiki:Jumptosearch/{{SUBPAGENAME}}|{{int:jumptosearch}}]].',
 'jumptonavigation' => 'Part of the "jump to" navigation links. Hidden by default in monobook skin. The format is: [[MediaWiki:Jumpto/{{SUBPAGENAME}}|{{int:jumpto}}]] {{int:jumptonavigation}}, [[MediaWiki:Jumptosearch/{{SUBPAGENAME}}|{{int:jumptosearch}}]].
 
@@ -337,9 +346,6 @@ See also [[MediaWiki:Lastmodifiedatby/{{SUBPAGENAME}}]].', # $1 date, $2 time
 'edithelp'             => 'This is the text that appears on the editing help link that is near the bottom of the editing page',
 'edithelppage'         => 'The help page displayed when a user clicks on editing help link which is present on the right of Show changes button. 
 {{doc-important|Do not change <tt>Help:</tt> part.}}',
-'faqpage'              => "FAQ is short for ''frequently asked questions''. This page is only linked on some of the old skins, not in Monobook or Modern.
-
-{{doc-important|Do not translate <tt>Project:</tt> part.}}",
 'helppage'             => 'The link destination used by default in the sidebar, and in {{msg|noarticletext}}. 
 {{doc-important|Do not change <tt>Help:</tt> part.}}
 {{Identical|HelpContent}}',
@@ -520,26 +526,6 @@ The title of the warning is the message {{msg-mw|nosuchspecialpage}}. <code><now
 'gotaccountlink'             => 'Text of the link to the log in form. Before that link, the message [[MediaWiki:Gotaccount/{{SUBPAGENAME}}]] appears.
 
 {{Identical|Log in}}',
-'youremail'                  => '{{Identical|E-mail}}',
-'username'                   => '{{Identical|Username}}',
-'uid'                        => '{{Identical|User ID}}',
-'prefs-memberingroups'       => 'This message is shown on [[Special:Preferences]], first tab, where it is follwed by a colon.',
-'yourrealname'               => 'Used in [[Special:Preferences]], first tab.
-{{Identical|Real name}}',
-'yourlanguage'               => 'Used in [[Special:Preferences]], first tab.
-{{Identical|Language}}',
-'yourvariant'                => 'Used in [[Special:Preferences]], first tab, when the wiki content language has variants only.
-{{optional}}',
-'yournick'                   => 'Used in [[Special:Preferences]], first tab.',
-'badsig'                     => 'Error message displayed when entering invalid signature in user preferences',
-'badsiglength'               => 'Warning message that is displayed on [[Special:Preferences]] when trying to save a signature that is too long. Parameter $1 is the maximum number of characters that is allowed in a signature (multi-byte characters are counted as one character).',
-'yourgender'                 => 'Used in [[Special:Preferences]], first tab.',
-'gender-unknown'             => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name is not to be made public, or cannot be determined, or matches none of the other choices preset in the select.',
-'gender-male'                => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name should be "male" for those languages having a "normal" male grammatical gender.',
-'gender-female'              => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name should be "female" for those languages having a "normal" female grammatical gender.',
-'email'                      => '{{Identical|E-mail}}',
-'prefs-help-realname'        => 'In user preferences.',
-'prefs-help-email'           => 'Shown as explanation text on [[Special:Preferences]].',
 'nocookiesnew'               => "This message is displayed when a new account was successfully created, but the browser doesn't accept cookies.",
 'nocookieslogin'             => "This message is displayed when someone tried to login, but the browser doesn't accept cookies.",
 'loginsuccesstitle'          => 'The title of the page saying that you are logged in. The content of the page is the message "[[MediaWiki:Loginsuccess/{{SUBPAGENAME}}]]".',
@@ -589,8 +575,6 @@ $1 is the minimum number of characters in the password.',
 'resetpass-submit-loggedin' => 'Button on [[Special:ResetPass]] to submit new password.',
 'resetpass-wrong-oldpass'   => 'Error message shown on [[Special:Resetpass]] when the old password is not valid.',
 'resetpass-temp-password'   => 'The label of the input box for the temporary password (received by e-mail) on the form displayed after logging in with a temporary password.',
-'resetpass-logentry'        => 'Log entry.
-* $1 is a link to a user page.',
 
 # Edit page toolbar
 'bold_sample'     => 'This is the sample text that you get when you press the first button on the left on the edit toolbar.
@@ -697,8 +681,8 @@ Parameter $1 is the content of section parameter in the URL (for example 1234 in
 * $2 is one of the action-* messages (for example {{msg|action-edit}}).
 
 Please report at [[Support]] if you are unable to properly translate this message. Also see [[bugzilla:14246]]',
-'recreate-deleted-warn'            => 'Warning shown when creating a page which has already been deleted. See for example [[Test]].',
-'deleted-notice'                   => 'Shown on top of a deleted page in normal view modus ([http://translatewiki.net/wiki/Test example]).',
+'recreate-moveddeleted-warn'       => 'Warning shown when creating a page which has already been deleted. See for example [[Test]].',
+'moveddeleted-notice'              => 'Shown on top of a deleted page in normal view modus ([http://translatewiki.net/wiki/Test example]).',
 
 # Parser/template warnings
 'expensive-parserfunction-warning'        => 'On some (expensive) [[MetaWikipedia:Help:ParserFunctions|parser functions]] (e.g. <code><nowiki>{{#ifexist:}}</nowiki></code>) there is a limit of how many times it may be used. This is an error message shown when the limit is exceeded.
@@ -723,7 +707,7 @@ Please report at [[Support]] if you are unable to properly translate this messag
 
 * $1 indicates the time of that revision and 
 * $2 the author of the revision
-* (optional) $3 is the revision ID', # Additionally available: $3: revision id
+* (optional) $3 is the revision ID',
 'currentrevisionlink'    => '{{Identical|Current revision}}',
 'cur'                    => 'Link in page history',
 'next'                   => 'Link in page history
@@ -752,7 +736,7 @@ Please report at [[Support]] if you are unable to properly translate this messag
 
 '''$1''' - user name
 
-'''$2''' - date/time", # user at time
+'''$2''' - date/time",
 
 # Revision deletion
 'rev-delundel'              => 'Link in page history for oversight',
@@ -866,93 +850,94 @@ Used in the final position of a {{msg-mw|comma-separator}} separated list headed
 'diff-height'             => '{{Identical|Height}}',
 
 # Search results
-'searchresults-title'             => 'Appears as page title in the html header of the search result special page.',
-'noexactmatch'                    => 'This is the message that you get if you follow a link to a page or article that does not exist.',
-'notitlematches'                  => 'Header of results page after a search for a title for which no page exists',
-'textmatches'                     => 'When displaying search results',
-'notextmatches'                   => 'Error message when there are no results',
-'prevn'                           => "This is part of the navigation message on the top and bottom of Special pages (lists of things in alphabetical order, i.e. the '[[Special:Categories]]' page), where it is used as the first argument of {{msg-mw|Viewprevnext}}.
+'searchresults-title'            => 'Appears as page title in the html header of the search result special page.',
+'noexactmatch'                   => 'This is the message that you get if you follow a link to a page or article that does not exist.',
+'notitlematches'                 => 'Header of results page after a search for a title for which no page exists',
+'textmatches'                    => 'When displaying search results',
+'notextmatches'                  => 'Error message when there are no results',
+'prevn'                          => "This is part of the navigation message on the top and bottom of Special pages (lists of things in alphabetical order, i.e. the '[[Special:Categories]]' page), where it is used as the first argument of {{msg-mw|Viewprevnext}}.
 It is also used by Category pages (which do ''not'' use {{msg-mw|Viewprevnext}}).
 $1 is the number of items shown per page. It is not used when $1 is zero; not sure what happens when $1 is one.
 [[Special:WhatLinksHere|Whatlinkshere]] pages use {{msg-mw|Whatlinkshere-prev}} instead (still as an argument to {{msg-mw|Viewprevnext}}).
 
 {{Identical|Previous}}",
-'nextn'                           => "This is part of the navigation message on the top and bottom of Special pages (lists of things in alphabetical order, i.e. the '[[Special:Categories]]' page), where it is used as the second argument of {{msg-mw|Viewprevnext}}.
+'nextn'                          => "This is part of the navigation message on the top and bottom of Special pages (lists of things in alphabetical order, i.e. the '[[Special:Categories]]' page), where it is used as the second argument of {{msg-mw|Viewprevnext}}.
 It is also used by Category pages (which do ''not'' use {{msg-mw|Viewprevnext}}).
 $1 is the number of items shown per page. It is not used when $1 is zero; not sure what happens when $1 is one.
 [[Special:WhatLinksHere|Whatlinkshere]] pages use {{msg-mw|Whatlinkshere-next}} instead (still as an argument to {{msg-mw|Viewprevnext}}).
 
 {{Identical|Next $1}}",
-'viewprevnext'                    => 'This is part of the navigation message on the top and bottom of Special pages which are lists of things, e.g. the User\'s contributions page (in date order) or the list of all categories (in alphabetical order). ($1) and ($2) are either {{msg-mw|Pager-older-n}} and {{msg-mw|Pager-newer-n}} (for date order) or {{msg-mw|Prevn}} and {{msg-mw|Nextn}} (for alphabetical order).
+'viewprevnext'                   => 'This is part of the navigation message on the top and bottom of Special pages which are lists of things, e.g. the User\'s contributions page (in date order) or the list of all categories (in alphabetical order). ($1) and ($2) are either {{msg-mw|Pager-older-n}} and {{msg-mw|Pager-newer-n}} (for date order) or {{msg-mw|Prevn}} and {{msg-mw|Nextn}} (for alphabetical order).
 It is also used by [[Special:WhatLinksHere|Whatlinkshere]] pages, where ($1) and ($2) are {{msg-mw|Whatlinkshere-prev}} and {{msg-mw|Whatlinkshere-next}}.
 ($3) is made up in all cases of the various proposed numbers of results per page, e.g. "(20 | 50 | 100 | 250 | 500)".
 For Special pages, the navigation bar is prefixed by "({{msg-mw|Page_first}} | {{msg-mw|Page_last}})" (alphabetical order) or "({{msg-mw|Histfirst}} | {{msg-mw|Histlast}})" (date order).
 Viewprevnext is sometimes preceded by the {{msg-mw|Showingresults}} or {{msg-mw|Showingresultsnum}} message (for Special pages) or by the {{msg-mw|Linkshere}} message (for Whatlinkshere pages).',
-'searchmenu-legend'               => '{{Identical|Search options}}',
-'searchmenu-exists'               => 'An option shown in a menu beside search form offering a link to the existing page having the specified title (when using the default MediaWiki search engine).',
-'searchmenu-new'                  => 'An option shown in a menu beside search form offering a red link to the not yet existing page having the specified title (when using the default MediaWiki search engine).',
-'searchhelp-url'                  => '{{Identical|HelpContent}}
+'searchmenu-legend'              => '{{Identical|Search options}}',
+'searchmenu-exists'              => 'An option shown in a menu beside search form offering a link to the existing page having the specified title (when using the default MediaWiki search engine).',
+'searchmenu-new'                 => 'An option shown in a menu beside search form offering a red link to the not yet existing page having the specified title (when using the default MediaWiki search engine).',
+'searchhelp-url'                 => '{{Identical|HelpContent}}
 Description: The URL of the search help page.
 {{doc-important|Do not change "Help:" part.}}',
-'searchprofile-articles'          => 'A quick link in the advanced search box on [[Special:Search]]. Clicking on this link starts a search in the content pages of the wiki.
+'searchprofile-articles'         => 'A quick link in the advanced search box on [[Special:Search]]. Clicking on this link starts a search in the content pages of the wiki.',
+'searchprofile-project'          => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.
 
-{{Identical|Content page}}',
-'searchprofile-articles-and-proj' => '{{Identical|Content page}}',
-'searchprofile-project'           => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
-'searchprofile-images'            => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
-'searchprofile-everything'        => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
-'searchprofile-advanced'          => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
-'searchprofile-articles-tooltip'  => '{{Identical|Search in $1}}',
-'searchprofile-project-tooltip'   => '{{Identical|Search in $1}}',
-'search-result-size'              => 'Shown per line of a [[Special:Search|search result]]
+{{Identical|Help}}',
+'searchprofile-images'           => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
+'searchprofile-everything'       => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
+'searchprofile-advanced'         => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
+'searchprofile-articles-tooltip' => '{{Identical|Search in $1}}',
+'searchprofile-project-tooltip'  => '{{Identical|Search in $1}}',
+'search-result-size'             => 'Shown per line of a [[Special:Search|search result]]
 * $1 is the size of the page in bytes, but no need to add "byte" or similar as the unit is added by special function.
 * $2 is the sum of all words in this page.',
-'search-result-score'             => 'Shown per line of a [[Special:Search|search result]].
+'search-result-score'            => 'Shown per line of a [[Special:Search|search result]].
 
 $1 is the relevance of this result in per cent.
 
 {{Identical|Relevance: $1%}}',
-'search-redirect'                 => "$1 is a link to the redirect to the page (so, $1 is the page that the search result is redirected '''from''').",
-'search-interwiki-default'        => '* $1 is the hostname of the remote wiki from where the additional results listed below are returned',
-'search-relatedarticle'           => '{{Identical|Related}}',
-'searchrelated'                   => '{{Identical|Related}}',
-'searchall'                       => '{{Identical|All}}',
-'showingresults'                  => "This message is used on some special pages such as 'Wanted categories'. $1 is the total number of results in the batch shown and $2 is the number of the first item listed.",
-'showingresultsnum'               => '$3 is the number of results on the page and $2 is the first number in the batch of results.',
-'showingresultstotal'             => 'Text above list of search results on special page of search results. 
+'search-redirect'                => "$1 is a link to the redirect to the page (so, $1 is the page that the search result is redirected '''from''').",
+'search-interwiki-default'       => '* $1 is the hostname of the remote wiki from where the additional results listed below are returned',
+'search-relatedarticle'          => '{{Identical|Related}}',
+'searchrelated'                  => '{{Identical|Related}}',
+'searchall'                      => '{{Identical|All}}',
+'showingresults'                 => "This message is used on some special pages such as 'Wanted categories'. $1 is the total number of results in the batch shown and $2 is the number of the first item listed.",
+'showingresultsnum'              => '$3 is the number of results on the page and $2 is the first number in the batch of results.',
+'showingresultstotal'            => 'Text above list of search results on special page of search results. 
 * $1–$2 is the range of results shown on the page
 * $3 is the total number of results from the search
 * $4 is the number of results shown on the page (equal to the size of the $1–$2 interval)',
-'nonefound'                       => 'This message appears on the search results page if no results are found.
+'showingresultsheader'           => 'Used in search results of [[Special:Search]].',
+'nonefound'                      => 'This message appears on the search results page if no results are found.
 {{doc-important|Do not translate "all:".}}',
-'search-nonefound'                => 'Message shown when a search returned no results (when using the default MediaWiki search engine).',
-'powersearch'                     => 'Verb. Text of search button at the bottom of [[Special:Search]], for searching in selected namespaces.
+'search-nonefound'               => 'Message shown when a search returned no results (when using the default MediaWiki search engine).',
+'powersearch'                    => 'Verb. Text of search button at the bottom of [[Special:Search]], for searching in selected namespaces.
 
 {{Identical|Advanced search}}',
-'powersearch-legend'              => 'Advanced search
+'powersearch-legend'             => 'Advanced search
 
 {{Identical|Advanced search}}',
-'powersearch-ns'                  => 'Used in the extended search form at [[Special:Search]]',
-'powersearch-redir'               => 'Used in the extended search form at [[Special:Search]]',
-'powersearch-field'               => 'Used in the extended search form at [[Special:Search]]',
-'search-external'                 => 'Legend of the fieldset for the input form when the internal search is disabled. Inside the fieldset [[MediaWiki:Searchdisabled]] and [[MediaWiki:Googlesearch]] is shown.',
-'searchdisabled'                  => 'Shown on [[Special:Search]] when the internal search is disabled.',
+'powersearch-ns'                 => 'Used in the extended search form at [[Special:Search]]',
+'powersearch-redir'              => 'Used in the extended search form at [[Special:Search]]',
+'powersearch-field'              => 'Used in the extended search form at [[Special:Search]]',
+'search-external'                => 'Legend of the fieldset for the input form when the internal search is disabled. Inside the fieldset [[MediaWiki:Searchdisabled]] and [[MediaWiki:Googlesearch]] is shown.',
+'searchdisabled'                 => 'Shown on [[Special:Search]] when the internal search is disabled.',
+
+# Quickbar
+'qbsettings'      => 'The title of the section in [[Special:Preferences]], only shown when using the skins "Standard/Classic" or "Cologne Blue". The quicbar is the same as the sidebar.',
+'qbsettings-none' => '{{Identical|None}}',
 
 # Preferences page
 'preferences'               => '{{Identical|Preferences}}',
 'mypreferences'             => '{{Identical|My preferences}}',
 'prefs-edits'               => 'In user preferences.',
 'prefsnologin'              => '{{Identical|Not logged in}}',
-'qbsettings'                => 'The title of the section in [[Special:Preferences]], only shown when using the skins "Standard/Classic" or "Cologne Blue". The quicbar is the same as the sidebar.',
-'qbsettings-none'           => '{{Identical|None}}',
 'changepassword'            => "Section heading on [[Special:Preferences]], tab 'User profile'.",
-'skin'                      => 'Used in user preferences.',
+'prefs-skin'                => 'Used in user preferences.',
 'skin-preview'              => 'The link beside each skin name in [[Special:Preferences|your user preferences]], tab "skin".
 
 {{Identical|Preview}}',
-'math'                      => 'Used in user preferences.',
-'datetime'                  => '{{Identical|Date}}',
-'math_syntax_error'         => '{{Identical|Syntax error}}',
+'prefs-math'                => 'Used in user preferences.',
+'prefs-datetime'            => '{{Identical|Date}}',
 'prefs-personal'            => 'Title of a tab in [[Special:Preferences]].',
 'prefs-rc'                  => 'Used in user preferences.
 
@@ -964,12 +949,15 @@ $1 is the relevance of this result in per cent.
 'prefs-watchlist-edits-max' => 'Shown as hint in [[Special:Preferences]], tab "Watchlist"',
 'prefs-misc'                => 'Used in user preferences.',
 'prefs-resetpass'           => 'Button on user data tab in user preferences. When you click the button you go to the special page [[Special:ResetPass]].',
+'prefs-rendering'           => 'Title of tab in [[Special:Preferences]].',
 'saveprefs'                 => 'Button for saving changes in the preferences page.
 
 {{Identical|Save}}',
 'resetprefs'                => 'Button for resetting changes in the preferences page.',
 'restoreprefs'              => 'Used in [[Special:Preferences]]',
-'textboxsize'               => 'Title of a tab in [[Special:Preferences]].',
+'prefs-editing'             => 'Title of a tab in [[Special:Preferences]].',
+'rows'                      => 'Used on [[Special:Preferences]], "Editing" section in the "Size of editing window" fieldset',
+'columns'                   => 'Used on [[Special:Preferences]], "Editing" section in the "Size of editing window" fieldset',
 'searchresultshead'         => 'This is the label of the tab in [[Special:Preferences|my preferences]] which contains options for searching the wiki.
 
 {{Identical|Search}}',
@@ -979,7 +967,6 @@ $1 is the relevance of this result in per cent.
 'recentchangesdays-max'     => 'Shown as hint in [[Special:Preferences]], tab "Recent changes"',
 'recentchangescount'        => 'Used in [[Special:Preferences]], tab "Recent changes".',
 'savedprefs'                => 'This message appears after saving changes to your user preferences.',
-'timezonetext'              => "Additional explanation given in [[Special:Preferences]], tab 'date and time' with the preference in message ''timezoneoffset''",
 'timezoneoffset'            => "Text next to input box in [[Special:Preferences]], tab 'date and time', section 'timezone'.",
 'allowemail'                => 'Used in [[Special:Preferences]] > {{int:prefs-personal}} > {{int:email}}.',
 'prefs-searchoptions'       => '{{Identical|Search options}}',
@@ -987,11 +974,34 @@ $1 is the relevance of this result in per cent.
 Shown as legend of the second fieldset of the tab 'Search' in [[Special:Preferences]]",
 'defaultns'                 => 'Used in [[Special:Preferences]], tab "Search".',
 'default'                   => '{{Identical|Default}}',
-'files'                     => 'Title of a tab in [[Special:Preferences]].',
+'prefs-files'               => 'Title of a tab in [[Special:Preferences]].',
 'prefs-custom-css'          => 'visible on [[Special:Preferences]] -[Skins].',
+'prefs-reset-intro'         => 'Used in [[Special:Preferences/reset]].',
+'prefs-emailconfirm-label'  => 'Used in [[Special:Preferences]].',
+'youremail'                 => '{{Identical|E-mail}}',
+'username'                  => '{{Identical|Username}}',
+'uid'                       => '{{Identical|User ID}}',
+'prefs-memberingroups'      => 'This message is shown on [[Special:Preferences]], first tab, where it is follwed by a colon.',
+'prefs-registration'        => 'Used in [[Special:Preferences]].',
+'yourrealname'              => 'Used in [[Special:Preferences]], first tab.
+{{Identical|Real name}}',
+'yourlanguage'              => 'Used in [[Special:Preferences]], first tab.
+{{Identical|Language}}',
+'yourvariant'               => 'Used in [[Special:Preferences]], first tab, when the wiki content language has variants only.
+{{optional}}',
+'yournick'                  => 'Used in [[Special:Preferences]], first tab.',
+'badsig'                    => 'Error message displayed when entering invalid signature in user preferences',
+'badsiglength'              => 'Warning message that is displayed on [[Special:Preferences]] when trying to save a signature that is too long. Parameter $1 is the maximum number of characters that is allowed in a signature (multi-byte characters are counted as one character).',
+'yourgender'                => 'Used in [[Special:Preferences]], first tab.',
+'gender-unknown'            => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name is not to be made public, or cannot be determined, or matches none of the other choices preset in the select.',
+'gender-male'               => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name should be "male" for those languages having a "normal" male grammatical gender.',
+'gender-female'             => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name should be "female" for those languages having a "normal" female grammatical gender.',
+'email'                     => '{{Identical|E-mail}}',
+'prefs-help-realname'       => 'In user preferences.',
+'prefs-help-email'          => 'Shown as explanation text on [[Special:Preferences]].',
 
 # User rights
-'userrights'                     => 'Page title of [[Special:UserRights]].', # Not used as normal message but as header for the special page itself
+'userrights'                     => 'Page title of [[Special:UserRights]].',
 'userrights-lookup-user'         => 'Button text when managing user rights',
 'userrights-user-editname'       => 'Displayed on [[Special:UserRights]].',
 'editusergroup'                  => '{{Identical|Edit user groups}}',
@@ -1144,7 +1154,9 @@ The name of the bureaucrat who did this task appears before this message.',
 'action-reupload'             => '{{Doc-action}}',
 'action-reupload-shared'      => '{{Doc-action}}',
 'action-upload_by_url'        => '{{Doc-action|upload by url}}',
-'action-writeapi'             => '{{Doc-action}}',
+'action-writeapi'             => '{{Doc-action}}
+
+API is an abbreviation for [http://en.wikipedia.org/wiki/API application programming interface].',
 'action-delete'               => '{{Doc-action}}',
 'action-deleterevision'       => '{{Doc-action}}',
 'action-deletedhistory'       => '{{Doc-action}}',
@@ -1267,9 +1279,7 @@ Does not work under $wgMiserMode ([[mwr:48986|r48986]]).',
 'upload-maxfilesize'          => 'Shows at [[Special:Upload]] the maximum file size that can be uploaded.
 
 $1 is the value in KB/MB/GB',
-'watchthisupload'             => 'In [[Special:Upload]]
-
-{{Identical|Watch this page}}',
+'watchthisupload'             => 'In [[Special:Upload]]',
 'filewasdeleted'              => 'This warning is shown when trying to upload a file that does not exist, but has previously been deleted.
 Parameter $1 is a link to the deletion log, with the text in {{msg|deletionlog}}.',
 'filename-prefix-blacklist'   => "Do not translate the file name prefixes before the hash mark (#). Leave all the wiki markup, including the spaces, as is. You can translate the text, including 'Leave this line exactly as it is'. The first line of this messages has one (1) leading space.",
@@ -1357,10 +1367,10 @@ Example: [[:Image:Addon-icn.png]]',
 
 Example: http://test.wikipedia.org/wiki/File:Wiki.png#filelinks
 
-$1 is the name of the shared repository. On wikimedia sites, $1 is {{msg-mw|shared-repo-name-shared}}. The default value for $1 is {{msg-mw|shared-repo}}.', # $1 is the repository name
+$1 is the name of the shared repository. On wikimedia sites, $1 is {{msg-mw|shared-repo-name-shared}}. The default value for $1 is {{msg-mw|shared-repo}}.',
 'shared-repo'             => 'This message can be used as parameter $1 in the following messages:
 * {{msg-mw|shared-repo-from}}
-* {{msg-mw|sharedupload}}, {{msg-mw|sharedupload-desc-here}}, {{msg-mw|sharedupload-desc-there}}', # used when shared-repo-NAME does not exist
+* {{msg-mw|sharedupload}}, {{msg-mw|sharedupload-desc-here}}, {{msg-mw|sharedupload-desc-there}}',
 
 # File reversion
 'filerevert'                => '{{Identical|Revert}}',
@@ -1761,7 +1771,13 @@ $1 = the name of the page',
 * $3: the editor that cause collision
 
 {{Identical|Rollback}}",
-'revertpage'       => '{{Identical|Revert}}', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'editcomment'      => 'Only shown if there is an edit comment',
+'revertpage'       => '{{Identical|Revert}}
+Additionally available:
+* $3: revid of the revision reverted to,
+* $4: timestamp of the revision reverted to,
+* $5: revid of the revision reverted from,
+* $6: timestamp of the revision reverted from',
 'rollback-success' => 'This message shows up on screen after successful revert (generally visible only to admins). $1 describes user whose changes have been reverted, $2 describes user which produced version, which replaces reverted version.
 {{Identical|Revert}}
 {{Identical|Rollback}}',
@@ -1813,7 +1829,7 @@ $3 = time.
 * <font color=\"red\">Be careful:</font> '''1 translation:1 english''', so the first part is the translation and the second part should stay in English. 
 * Example: See e.g. [[MediaWiki:Protect-expiry-options/nl]] if you still don't know how to do it.
 
-{{Identical|Infinite}}", # display1:time1,display2:time2,...
+{{Identical|Infinite}}",
 'restriction-type'          => 'Used on [[Special:ProtectedPages]]. The text next to a drop-down box. See [[mw:Manual:Administrators|MediaWiki Manual]] for more information on protection.',
 'restriction-level'         => 'Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. The text next to a drop-down box. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.',
 'minimum-size'              => 'Used in [[Special:Protectedpages]] as a pair of radio buttons, with [[MediaWiki:Maximum-size]]. There is an input box to specify the minimum bites of the projected pages listed.',
@@ -1879,7 +1895,7 @@ $3 = time.
 'contributions'       => "Display name for the 'User contributions', shown in the sidebar menu of all user pages and user talk pages. Also the page name of the target page. The target page shows an overview of the most recent contributions by a user.",
 'contributions-title' => 'The page title in your browser bar, but not the page title. See also {{msg|contributions}}. Parameter $1 is the username.',
 'mycontris'           => 'In the personal urls page section - right upper corner.',
-'nocontribs'          => 'Optional parameter: $1 is the user name', # Optional parameter: $1 is the user name
+'nocontribs'          => 'Optional parameter: $1 is the user name',
 'uctop'               => 'This message is used in [[Special:Contributions]]. It is used to show that a particular edit was the last made to a page. Example: 09:57, 11 February 2008 (hist) (diff) Pagename‎ (edit summary) (top)',
 'month'               => 'Used in [[Special:Contributions]] and history pages ([{{fullurl:Sandbox|action=history}} example]), as label for a dropdown box to select a specific month to view the edits made in that month, and the earlier months. See also {{msg|year}}.',
 'year'                => 'Used in [[Special:Contributions]] and history pages ([{{fullurl:Sandbox|action=history}} example]), as label for a inputbox to select a specific year to view the edits made in that year, and the earlier years. See also {{msg|month}}.',
@@ -1890,6 +1906,7 @@ $3 = time.
 'sp-contributions-blocklog'      => 'Used as a display name for a link to the block log on for example [[Special:Contributions/Mediawiki default]]
 
 {{Identical|Block log}}',
+'sp-contributions-username'      => 'This message appears whenever someone requests [[Special:Contributions]].',
 'sp-contributions-submit'        => '{{Identical|Search}}',
 
 # What links here
@@ -1949,7 +1966,7 @@ Parameter $1 is the message "[[MediaWiki:Hide/{{SUBPAGENAME}}|hide]]" or "[[Medi
 * <font color=\"red\">Be careful:</font> '''1 translation:1 english''', so the first part is the translation and the second part should stay in English. 
 * Example: See e.g. [[MediaWiki:Ipboptions/nl]] if you still don't know how to do it.
 
-{{Identical|Infinite}}", # display1:time1,display2:time2,...
+{{Identical|Infinite}}",
 'ipbotheroption'               => '{{Identical|Other}}',
 'ipbotherreason'               => '{{Identical|Other/additional reason}}',
 'ipbhidename'                  => 'This is the label for a checkbox in the user block form on [[Special:Block]].',
@@ -2059,7 +2076,7 @@ Shown as subtitle of [[Special:MovePage/testpage]]. $1 is the title of the page 
 * $1 is the source page as a link with display name
 * $2 is the target page as a link with display name
 * $3 (optional) is the source page name without a link
-* $4 (optional) is the target page name without a link', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+* $4 (optional) is the target page name without a link',
 'movetalk'                => 'The text of the checkbox to watch the associated talk page to the page you are moving. This only appears when the talk page is not empty.',
 'move-subpages'           => 'The text of an option on the special page [[Special:MovePage|MovePage]]. If this option is ticked, any subpages will be moved with the main page to a new title.',
 'move-talk-subpages'      => 'The text of an option on the special page [[Special:MovePage|MovePage]]. If this option is ticked, any subpages will be moved with the talk page to a new title.',
@@ -2130,7 +2147,6 @@ Import failed: XML import parse failure at line 1, col 1 (byte 3; "- <mediawiki 
 Related messages: {{msg|right-importupload|pl=yes}} (the user right for this).',
 
 # Import log
-'importlogpage'          => '{{Identical|Import log}}',
 'importlogpagetext'      => 'This text appears at the top of the [http://translatewiki.net/w/i.php?title=Special%3ALog&type=import&user=&page=&year=&month=-1 import log] special page.',
 'import-logentry-upload' => 'This is the text of an entry in the Import log (and Recent Changes), after hour (and date, only in the Import log) and sysop name:
 * $1 is the name of the imported file',
@@ -2212,13 +2228,16 @@ This message appears at the very end of the list of names in the message [[Media
 * $1 is the number of anonymous users in the message',
 'siteuser'         => "This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on Betawiki). 
 
-This message is the variable $3 in the message [[Mediawiki:lastmodifiedatby/{{SUBPAGENAME}}]]. This message only appears if the user has not entered his 'real name' in his preferences. The variable $1 in this message is a user name.",
-'lastmodifiedatby' => "This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on Betawiki).
+This message is the variable $3 in the message {{msg-mw|lastmodifiedatby}}. This message only appears if the user has not entered his 'real name' in his preferences. The variable $1 in this message is a user name.
+
+See also {{msg-mw|Siteusers}}.",
+'lastmodifiedatby' => "This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on translatewiki.net).
 * $1: date
 * $2: time
 * $3: if the user has entered his 'real name' in his preferences then this variable is his 'real name'. If the user has not entered his 'real name' in his preferences then this variable is the message [[Mediawiki:siteuser/{{SUBPAGENAME}}]], which includes his username.
+* $4: username in plain text. Can be used for GENDER
 
-See also [[MediaWiki:Lastmodifiedat/{{SUBPAGENAME}}]].", # $1 date, $2 time, $3 user
+See also [[MediaWiki:Lastmodifiedat/{{SUBPAGENAME}}]].",
 'othercontribs'    => 'This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on Betawiki - to use type <nowiki>&action=credits</nowiki> at the end of any URL in the address bar).
 * $1: the list of author(s) of the revisions preceding the current revision. It appears after the message [[Mediawiki:lastmodifiedatby/{{SUBPAGENAME}}]]. If there are no previous authors this message does not appear at all. If needed the messages [[Mediawiki:siteusers/{{SUBPAGENAME}}]], [[Mediawiki:anonymous/{{SUBPAGENAME}}]] and [[Mediawiki:and/{{SUBPAGENAME}}]] are part of the list of names.',
 'others'           => 'The following explanation is guesswork. This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on Betawiki - to use type <nowiki>&action=credits</nowiki> at the end of any URL in the address bar). 
@@ -2230,7 +2249,9 @@ It should be in a form that fits with [[MediaWiki:Othercontribs/{{SUBPAGENAME}}|
 * $1 is a list of user names (example: "\'\'Jim, Janet, Jane, Joe\'\'") where the user has not put his \'real name\' in his preferences.
 * $2 is the number of user names in $1
 
-If there is more than one user in the list then the message [[Mediawiki:and/{{SUBPAGENAME}}]] appears before the last name. If $2 is NIL then this message does not appear at all.',
+If there is more than one user in the list then the message {{msg-mw|and}} appears before the last name. If $2 is NIL then this message does not appear at all.
+
+See also {{msg-mw|Siteuser}}.',
 'creditspage'      => "This message is the ''contentSub'' (the grey subtitle) shown when viewing credits of a page (example: {{fullurl:Betawiki:News|action=credits}}). Note that the credits action is disabled by default (currently enabled on Betawiki).",
 'nocredits'        => 'This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}) but when there are no credits available. Note that the credits action is disabled by default (currently enabled on Betawiki).',
 
@@ -2249,11 +2270,14 @@ If there is more than one user in the list then the message [[Mediawiki:and/{{SU
 
 # Math options
 'mw_math_png'    => 'In user preferences.',
-'mw_math_simple' => 'In user preferences.',
+'mw_math_simple' => 'In [[Special:Preferences|user preferences]].',
 'mw_math_html'   => 'In user preferences.',
 'mw_math_source' => 'In user preferences (math)',
 'mw_math_modern' => 'In user preferences (math)',
 'mw_math_mathml' => 'In user preferences.',
+
+# Math errors
+'math_syntax_error' => '{{Identical|Syntax error}}',
 
 # Patrol log
 'patrol-log-page'      => 'Name of log.',
@@ -2386,7 +2410,7 @@ Variant option for wikis with variants conversion enabled.',
 {{Identical|Metadata}}',
 'metadata-expand'   => 'On an image description page, there is mostly a table containing data (metadata) about the image. The most important data are shown, but if you click on this link, you can see more data and information. For the link to hide back the less important data, see "[[MediaWiki:Metadata-collapse/{{SUBPAGENAME}}|{{int:metadata-collapse}}]]".',
 'metadata-collapse' => 'On an image description page, there is mostly a table containing data (metadata) about the image. The most important data are shown, but if you click on the link "[[MediaWiki:Metadata-expand/{{SUBPAGENAME}}|{{int:metadata-expand}}]]", you can see more data and information. This message is for the link to hide back the less important data.',
-'metadata-fields'   => "'''Warning:''' Do not translate list items, only translate the text! So leave \"<tt>* make</tt>\" and the other items exactly as they are.", # Do not translate list items
+'metadata-fields'   => "'''Warning:''' Do not translate list items, only translate the text! So leave \"<tt>* make</tt>\" and the other items exactly as they are.",
 
 # EXIF tags
 'exif-imagewidth'                  => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].
@@ -2515,6 +2539,31 @@ Spatial frequency response is a measure for the capability of camera lenses to d
 'exif-focalplanexresolution'       => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].
 
 Indicates the number of pixels in the image width (X) direction per FocalPlaneResolutionUnit on the camera focal plane.',
+'exif-focalplaneyresolution'       => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].',
+'exif-focalplaneresolutionunit'    => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].',
+'exif-subjectlocation'             => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].',
+'exif-exposureindex'               => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].',
+'exif-sensingmethod'               => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].',
+'exif-filesource'                  => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].',
+'exif-scenetype'                   => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].',
+'exif-cfapattern'                  => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].
+
+CFA stands for [http://en.wikipedia.org/wiki/Color_filter_array color filter array].',
+'exif-customrendered'              => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].
+
+See also Wikipedia on [http://en.wikipedia.org/wiki/Image_processing image processing].',
+'exif-exposuremode'                => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].
+
+See also Wikipedia on [http://en.wikipedia.org/wiki/Exposure_(photography) exposure in photography].',
+'exif-whitebalance'                => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].
+
+See also Wikipedia on [http://en.wikipedia.org/wiki/Color_balance color balance].',
+'exif-digitalzoomratio'            => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].
+
+See also Wikipedia on [http://en.wikipedia.org/wiki/Digital_zoom digital zoom].',
+'exif-focallengthin35mmfilm'       => 'Exif is a format for storing metadata in image files. See this [http://en.wikipedia.org/wiki/Exchangeable_image_file_format Wikipedia article] and the example at the bottom of [http://commons.wikimedia.org/wiki/File:Phalacrocorax-auritus-020.jpg this page on Commons]. The tags are explained [http://www.awaresystems.be/imaging/tiff/tifftags/privateifd/exif.html briefly] and [http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf in further detail].
+
+See also Wikipedia on [http://en.wikipedia.org/wiki/Focal_length#In_photography focal length].',
 'exif-gpslatitude'                 => '{{Identical|Latitude}}',
 'exif-gpslongitude'                => '{{Identical|Longitude}}',
 
@@ -2523,7 +2572,15 @@ Indicates the number of pixels in the image width (X) direction per FocalPlaneRe
 
 'exif-photometricinterpretation-2' => '{{optional}}',
 
-'exif-orientation-1' => '{{Identical|Normal}}', # 0th row: top; 0th column: left
+'exif-orientation-1' => '{{Identical|Normal}}
+0th row: top; 0th column: left',
+'exif-orientation-2' => '0th row: top; 0th column: right',
+'exif-orientation-3' => '0th row: bottom; 0th column: right',
+'exif-orientation-4' => '0th row: bottom; 0th column: left',
+'exif-orientation-5' => '0th row: left; 0th column: top',
+'exif-orientation-6' => '0th row: right; 0th column: top',
+'exif-orientation-7' => '0th row: right; 0th column: bottom',
+'exif-orientation-8' => '0th row: left; 0th column: bottom',
 
 'exif-componentsconfiguration-1' => '{{optional}}',
 'exif-componentsconfiguration-2' => '{{optional}}',
@@ -2595,7 +2652,7 @@ Indicates the number of pixels in the image width (X) direction per FocalPlaneRe
 * {{msg|Exif-subjectdistancerange-2}}
 * {{msg|Exif-subjectdistancerange-3}}',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-n' => "Knots: ''Knot'' is a unit of speed on water used for ships, etc., equal to one nautical mile per hour.",
 
 # External editor support
@@ -2779,7 +2836,7 @@ Hint: the text "Remove Titles" is in {{msg-mw|watchlistedit-normal-submit}}',
 # Special:Version
 'version'                          => 'Name of special page displayed in [[Special:SpecialPages]]
 
-{{Identical|Version}}', # Not used as normal message but as header for the special page itself
+{{Identical|Version}}',
 'version-extensions'               => 'Header on [[Special:Version]].',
 'version-specialpages'             => 'Part of [[Special:Version]].
 
@@ -2795,6 +2852,9 @@ There are no such extensions here, so look at [[wikipedia:Special:Version]] for 
 'version-hook-name'                => 'Shown in [[Special:Version]]',
 'version-hook-subscribedby'        => 'Shown in [[Special:Version]]',
 'version-version'                  => '{{Identical|Version}}',
+'version-svn-revision'             => 'This is being used in [[Special:Version]], preceeding the subversion revision numbers of the extensions loaded inside brackets, like this: "({{int:version-revision}} r012345")
+
+{{Identical|Revision}}',
 'version-software-product'         => 'Shown in [[Special:Version]]',
 'version-software-version'         => '{{Identical|Version}}',
 
@@ -2875,5 +2935,10 @@ Used on [[Special:Tags]]. Verb. Used as display text on a link to create/edit a 
 'dberr-info'      => 'This message does not allow any wiki nor html markup.',
 'dberr-usegoogle' => 'This message does not allow any wiki nor html markup.',
 'dberr-outofdate' => "In this sentence, '''their''' indexes refers to '''Google's''' indexes. This message does not allow any wiki nor html markup.",
+
+# HTML forms
+'htmlform-submit'              => '{{Identical|Submit}}',
+'htmlform-reset'               => '{{Identical|Undo}}',
+'htmlform-selectorother-other' => '{{Identical|Other}}',
 
 );

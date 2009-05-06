@@ -1,6 +1,9 @@
 <?php
 /** Sanskrit (संस्कृत)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -279,17 +282,20 @@ $messages = array(
 'pagecategories'         => '{{PLURAL:$1|वर्ग|वर्गा}}',
 'listingcontinuesabbrev' => 'आगामि.',
 
-'about'         => 'विषये',
-'newwindow'     => '(उद्घट् नविन पृष्ठ)',
-'cancel'        => 'अपकर्ष',
+'about'      => 'विषये',
+'newwindow'  => '(उद्घट् नविन पृष्ठ)',
+'cancel'     => 'अपकर्ष',
+'mypage'     => 'मम पृष्ठ',
+'mytalk'     => 'मम लोकप्रवाद',
+'navigation' => 'सुचालन',
+'and'        => '&#32;एवम्',
+
+# Cologne Blue skin
 'qbfind'        => 'शोध',
 'qbedit'        => 'संपादयति',
 'qbpageoptions' => 'इदम्‌ पृष्ठ',
 'qbmyoptions'   => 'मदीय लिखितपृष्ठ',
-'mypage'        => 'मम पृष्ठ',
-'mytalk'        => 'मम लोकप्रवाद',
-'navigation'    => 'सुचालन',
-'and'           => '&#32;एवम्',
+'faq'           => 'अतिप्रश्नपृष्ट',
 
 'tagline'          => '{{SITENAME}}त्',
 'help'             => 'सहायता',
@@ -328,7 +334,6 @@ $messages = array(
 'disclaimers'          => 'स्वाम्यत्यागं',
 'disclaimerpage'       => 'Project:स्वाम्यत्यागं',
 'edithelp'             => 'संपादनार्थं सहायता',
-'faq'                  => 'अतिप्रश्नपृष्ट',
 'helppage'             => 'Help:सहाय्य',
 'mainpage'             => 'मुख्यपृष्ठम्',
 'mainpage-description' => 'मुख्यपृष्ठम्',
@@ -366,8 +371,6 @@ $messages = array(
 'userlogout'              => 'बहिर्गच्छति',
 'createaccount'           => 'सृज उपयोजकसंज्ञा',
 'gotaccountlink'          => 'प्रवेश करोसि',
-'yourlanguage'            => 'भाषा:',
-'email'                   => 'विद्युत्पत्रव्यवस्था',
 'loginsuccesstitle'       => 'सुस्वागतम्‌ प्रवेश यशस्वी अस्ति',
 
 # Edit page toolbar
@@ -389,7 +392,7 @@ $messages = array(
 'page_last'           => 'अन्तिम',
 
 # Revision feed
-'history-feed-item-nocomment' => '$1 उप $2', # user at time
+'history-feed-item-nocomment' => '$1 उप $2',
 
 # Diffs
 'lineno'   => 'रेखा $1:',
@@ -398,6 +401,10 @@ $messages = array(
 # Search results
 'nextn'       => 'आगामि$1',
 'powersearch' => 'परिणत शोध',
+
+# Preferences page
+'yourlanguage' => 'भाषा:',
+'email'        => 'विद्युत्पत्रव्यवस्था',
 
 # Recent changes
 'recentchanges'   => 'नवीनतम परिवर्तन',
@@ -523,7 +530,7 @@ $messages = array(
 'autosumm-new' => 'नवीन पृष्ठं: $1',
 
 # Special:Version
-'version' => 'आवृत्ति', # Not used as normal message but as header for the special page itself
+'version' => 'आवृत्ति',
 
 # Special:SpecialPages
 'specialpages' => 'विशेष पृष्ठ',

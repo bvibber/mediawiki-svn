@@ -1,6 +1,9 @@
 <?php
 /** Scots (Scots)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -141,10 +144,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki releese mailin leet]",
 
-'about'          => 'Aboot',
-'article'        => 'Content page',
-'newwindow'      => '(opens in new windae)',
-'cancel'         => 'Cancel',
+'about'         => 'Aboot',
+'article'       => 'Content page',
+'newwindow'     => '(opens in new windae)',
+'cancel'        => 'Cancel',
+'moredotdotdot' => 'Mair...',
+'mypage'        => 'Ma page',
+'mytalk'        => 'Ma collogue',
+'anontalk'      => 'Collogue for this IP',
+'navigation'    => 'Navigation',
+'and'           => '&#32;an',
+
+# Cologne Blue skin
 'qbfind'         => 'Rake',
 'qbbrowse'       => 'Brouse',
 'qbedit'         => 'Edit',
@@ -152,12 +163,8 @@ $messages = array(
 'qbpageinfo'     => 'Context',
 'qbmyoptions'    => 'Ma pages',
 'qbspecialpages' => 'Byordinar pages',
-'moredotdotdot'  => 'Mair...',
-'mypage'         => 'Ma page',
-'mytalk'         => 'Ma collogue',
-'anontalk'       => 'Collogue for this IP',
-'navigation'     => 'Navigation',
-'and'            => '&#32;an',
+'faq'            => 'ASQ',
+'faqpage'        => 'Project:ASQ',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -210,7 +217,7 @@ $messages = array(
 'otherlanguages'    => 'In ither leids',
 'redirectedfrom'    => '(Reguidit frae $1)',
 'redirectpagesub'   => 'Redirect page',
-'lastmodifiedat'    => 'This page wis hindermaist chynged $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'This page wis hindermaist chynged $2, $1.',
 'viewcount'         => 'This page haes been accesst $1 {{PLURAL:$1|once|$1 times}}.',
 'protectedpage'     => 'Protectit page',
 'jumpto'            => 'Lowp tae:',
@@ -229,8 +236,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:General_disclamation',
 'edithelp'             => 'Editin help',
 'edithelppage'         => 'Help:Editin',
-'faq'                  => 'ASQ',
-'faqpage'              => 'Project:ASQ',
 'helppage'             => 'Help:Contents',
 'mainpage'             => 'Main Page',
 'mainpage-description' => 'Main Page',
@@ -300,9 +305,6 @@ A leet o valid byordinar pages can be funnd at [[Special:SpecialPages|{{int:spec
 'databaseerror'        => 'Database error',
 'dberrortext'          => 'A database query syntax error haes occurt. This micht indicate a bug in the saftware. The last attemptit database query wis: <blockquote><tt>$1</tt></blockquote> frae athin function "<tt>$2</tt>". MySQL returned error "<tt>$3: $4</tt>".',
 'dberrortextcl'        => 'A database query syntax error haes occurt. The last attemptit database query wis: "$1" frae athin function "$2". MySQL returned error "$3: $4".',
-'noconnect'            => 'Sorry! The wiki is experiencin some technical difficulties, and canna contact the database server.<br /> $1',
-'nodb'                 => 'Cuidna select database $1',
-'cachederror'          => 'The follaein is a cached copy o the requestit page, an micht no be up tae date.',
 'laggedslavemode'      => 'Warning: Page micht nae contain recent updates',
 'readonly'             => 'Database lockit',
 'enterlockreason'      => "Enter a raeson for the lock, includin an estimate o whan the lock'll be lowsed",
@@ -360,7 +362,6 @@ The grunds for this are: ''$2''.",
 
 Yer accoont haes been creatit. 
 Mynd an chynge yer [[Special:Preferences|{{SITENAME}} preferences]].',
-'loginpagetitle'             => 'Uiser login',
 'yourname'                   => 'Yer uiser name',
 'yourpassword'               => 'Passwaird:',
 'yourpasswordagain'          => 'Retype passwaird:',
@@ -382,21 +383,7 @@ Mynd an chynge yer [[Special:Preferences|{{SITENAME}} preferences]].',
 'createaccountmail'          => 'bi email',
 'badretype'                  => 'The passwords ye entered disna match.',
 'userexists'                 => 'The uiser name ye entered is in uiss. Please chuise a different name.',
-'youremail'                  => 'Yer email:',
-'username'                   => 'Uisername:',
-'uid'                        => 'Uiser ID:',
-'prefs-memberingroups'       => 'Member o {{PLURAL:$1|group|groups}}:',
-'yourrealname'               => 'Yer real name:',
-'yourlanguage'               => 'Interface leid:',
-'yourvariant'                => 'Leid variant',
-'yournick'                   => 'Seegnatur:',
-'badsig'                     => 'Raw signature nae guid; check HTML tags.',
-'badsiglength'               => 'Yer nickname is ower lang; it haes tae be $1 {{PLURAL:$1|character|characters}} or less.',
-'email'                      => 'E-mail',
-'prefs-help-realname'        => 'Rael name is optional an gin ye chuise tae provide it this will be uised tae gie ye attreibution for yer wark.',
 'loginerror'                 => 'Login mishanter',
-'prefs-help-email'           => 'Email is optional, an lats ithers contact ye throu yer uiser or uiser_collogue page athoot you haein tae reveal yer identity.',
-'prefs-help-email-required'  => 'Yer e-mail address is needit.',
 'nocookiesnew'               => "The uiser accoont wis creatit, but ye'r no loggit in. {{SITENAME}} uises cookies tae log uisers in. Ye hae cookies disabled. Please enable them, than log in wi yer new uisername and password.",
 'nocookieslogin'             => '{{SITENAME}} uises cookies tae log in uisers. Ye hae cookies disabled. Please enable thaim an gie it anither shot.',
 'noname'                     => "Ye hivna specifee'd a valid uisername.",
@@ -450,15 +437,14 @@ Ye dinna hae tae heed this message, if this accoont wis creatit by mistak.',
 'loginlanguagelabel'         => 'Leid: $1',
 
 # Password reset dialog
-'resetpass'               => 'Chynge passwaird',
-'resetpass_announce'      => 'Ye loggit in wi a short term e-mailed code. To be duin logging in, ye hae tae mak a new passwaird here:',
-'resetpass_header'        => 'Chynge accoont password',
-'oldpassword'             => 'Auld password',
-'resetpass_submit'        => 'Mak passwaird an log in',
-'resetpass_success'       => 'Yer passwaird chynge wis braw! Nou loggin ye in...',
-'resetpass_bad_temporary' => 'Yer short term passwaird wisnae habile. Ye micht hae already chynged yer passwaird or requestit a new short term passwaird.',
-'resetpass_forbidden'     => 'Passwords canna be chynged',
-'resetpass-no-info'       => 'Ye maun be loggit in tae access this page directly.',
+'resetpass'           => 'Chynge passwaird',
+'resetpass_announce'  => 'Ye loggit in wi a short term e-mailed code. To be duin logging in, ye hae tae mak a new passwaird here:',
+'resetpass_header'    => 'Chynge accoont password',
+'oldpassword'         => 'Auld password',
+'resetpass_submit'    => 'Mak passwaird an log in',
+'resetpass_success'   => 'Yer passwaird chynge wis braw! Nou loggin ye in...',
+'resetpass_forbidden' => 'Passwords canna be chynged',
+'resetpass-no-info'   => 'Ye maun be loggit in tae access this page directly.',
 
 # Edit page toolbar
 'bold_sample'     => 'Bauld text',
@@ -530,7 +516,6 @@ Yer block ID is $5. Please include this ID in ony argies ye mak.',
 'blockededitsource'                => "The text o '''your edits''' tae '''$1''' is shawn ablo:",
 'whitelistedittitle'               => 'Login needit tae edit',
 'whitelistedittext'                => 'Ye hae tae $1 tae edit pages.',
-'confirmedittitle'                 => 'E-mail confirmation needit for tae edit',
 'confirmedittext'                  => 'Ye maun confirm yer e-mail address afore editin pages. Please set an validate yer e-mail address throu yer [[Special:Preferences|uiser settins]].',
 'nosuchsectiontitle'               => 'There isnae a section wi that teetle',
 'nosuchsectiontext'                => "Yer tryin tae edit a section that isnae there.  Acause there isnae a section $1, there's naegate to sauf yer edit.",
@@ -598,7 +583,7 @@ Ye can go back an eik tae an existing page, or [[Special:UserLogin|log in or mak
 'permissionserrors'                => 'Richts Errors',
 'permissionserrorstext'            => 'Ye dinnae hae the richts tae dae that, acause o the followin {{PLURAL:$1|grund|grunds}}:',
 'permissionserrorstext-withaction' => 'Ye dinna hae the richts tae $2, for the follaein {{PLURAL:$1|reason|reasons}}:',
-'recreate-deleted-warn'            => "'''Warnin: Ye are makkin a page that haes been deletit.'''
+'recreate-moveddeleted-warn'       => "'''Warnin: Ye are makkin a page that haes been deletit.'''
 
 Ye shuld check that it is guid tae keep editin this page.
 The deletion log for this page is providit here:",
@@ -623,7 +608,7 @@ The grund for this, given by $3 is ''$2''",
 'nohistory'           => "The'r nae edit history for this page.",
 'currentrev'          => 'Current reveision',
 'revisionasof'        => 'Reveision as o $1',
-'revision-info'       => 'Revision as o $1 by $2', # Additionally available: $3: revision id
+'revision-info'       => 'Revision as o $1 by $2',
 'previousrevision'    => '← Aulder reveision',
 'nextrevision'        => 'Newer reveision →',
 'currentrevisionlink' => 'see current reveision',
@@ -642,7 +627,7 @@ The grund for this, given by $3 is ''$2''",
 # Revision feed
 'history-feed-title'          => 'Revision history',
 'history-feed-description'    => 'Revision history for this page on the wiki',
-'history-feed-item-nocomment' => '$1 at $2', # user at time
+'history-feed-item-nocomment' => '$1 at $2',
 'history-feed-empty'          => 'The requestit page disnae exist.
 It micht hae been deletit frae the wiki, or the name micht hae been chynged.
 Try [[Special:Search|rakin on the wiki]] for new pages ye micht be interestit in.',
@@ -686,33 +671,45 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'searchdisabled'           => 'Rakin throu {{SITENAME}} is disabled for performance raesons. Ye can rake via Google juist nou. Mynd that thair indexes o {{SITENAME}} content micht be oot o date.',
 
 # Preferences page
-'mypreferences'      => 'Ma preferences',
-'prefsnologin'       => 'No loggit in',
-'prefsnologintext'   => 'Ye maun be [[Special:UserLogin|loggit in]] tae set uiser preferences.',
-'prefsreset'         => 'Preferences haes been reset frae storage.',
-'changepassword'     => 'Chynge password',
-'skin-preview'       => 'First Leuk',
-'math'               => 'Renderin math',
-'datedefault'        => 'Nae preference',
-'datetime'           => 'Date an time',
-'prefs-personal'     => 'Uiser data',
-'prefs-rc'           => 'Recent chynges an shawin stubs',
-'prefs-misc'         => 'Antrin settins',
-'saveprefs'          => 'Hain preferences',
-'textboxsize'        => 'Editin',
-'searchresultshead'  => 'Rake result settins',
-'resultsperpage'     => 'Hits tae shaw per page',
-'contextlines'       => 'Lines tae shaw per hit',
-'contextchars'       => 'Characters o context per line',
-'recentchangescount' => 'Nummer o teitles in recent chynges',
-'savedprefs'         => 'Yer preferences haes been hained.',
-'timezonetext'       => 'Enter nummer o hoors yer local time differs frae server time (UTC).',
-'timezoneoffset'     => 'Affset',
-'servertime'         => 'Server time is nou',
-'guesstimezone'      => 'Fill in frae brouser',
-'allowemail'         => 'Allou email frae ither uisers',
-'defaultns'          => 'Rake in thir namespaces bi defaut:',
-'default'            => 'defaut',
+'mypreferences'             => 'Ma preferences',
+'prefsnologin'              => 'No loggit in',
+'prefsnologintext'          => 'Ye maun be [[Special:UserLogin|loggit in]] tae set uiser preferences.',
+'changepassword'            => 'Chynge password',
+'skin-preview'              => 'First Leuk',
+'prefs-math'                => 'Renderin math',
+'datedefault'               => 'Nae preference',
+'prefs-datetime'            => 'Date an time',
+'prefs-personal'            => 'Uiser data',
+'prefs-rc'                  => 'Recent chynges an shawin stubs',
+'prefs-misc'                => 'Antrin settins',
+'saveprefs'                 => 'Hain preferences',
+'prefs-editing'             => 'Editin',
+'searchresultshead'         => 'Rake result settins',
+'resultsperpage'            => 'Hits tae shaw per page',
+'contextlines'              => 'Lines tae shaw per hit',
+'contextchars'              => 'Characters o context per line',
+'recentchangescount'        => 'Nummer o teitles in recent chynges',
+'savedprefs'                => 'Yer preferences haes been hained.',
+'timezoneoffset'            => 'Affset',
+'servertime'                => 'Server time is nou',
+'guesstimezone'             => 'Fill in frae brouser',
+'allowemail'                => 'Allou email frae ither uisers',
+'defaultns'                 => 'Rake in thir namespaces bi defaut:',
+'default'                   => 'defaut',
+'youremail'                 => 'Yer email:',
+'username'                  => 'Uisername:',
+'uid'                       => 'Uiser ID:',
+'prefs-memberingroups'      => 'Member o {{PLURAL:$1|group|groups}}:',
+'yourrealname'              => 'Yer real name:',
+'yourlanguage'              => 'Interface leid:',
+'yourvariant'               => 'Leid variant',
+'yournick'                  => 'Seegnatur:',
+'badsig'                    => 'Raw signature nae guid; check HTML tags.',
+'badsiglength'              => 'Yer nickname is ower lang; it haes tae be $1 {{PLURAL:$1|character|characters}} or less.',
+'email'                     => 'E-mail',
+'prefs-help-realname'       => 'Rael name is optional an gin ye chuise tae provide it this will be uised tae gie ye attreibution for yer wark.',
+'prefs-help-email'          => 'Email is optional, an lats ithers contact ye throu yer uiser or uiser_collogue page athoot you haein tae reveal yer identity.',
+'prefs-help-email-required' => 'Yer e-mail address is needit.',
 
 # User rights
 'editinguser'             => "Editin uiser '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
@@ -916,8 +913,8 @@ an that ye'r daein this in accord wi [[{{MediaWiki:Policy-url}}]].",
 'rollbackfailed' => 'Rowback failed',
 'cantrollback'   => 'Canna revert edit; last contreibutor is the ae author o this page.',
 'alreadyrolled'  => 'Canna rowback last edit o [[$1]] bi [[User:$2|$2]] ([[User talk:$2|Talk]]); some ither bodie haes editit or rowed back the page aareadies. Last edit wis bi [[User:$3|$3]] ([[User talk:$3|Talk]]).',
-'editcomment'    => "The edit comment wis: \"''\$1''\".", # only shown if there is an edit comment
-'revertpage'     => 'Revertit edit o [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]), chynged back tae last version bi [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'editcomment'    => "The edit comment wis: \"''\$1''\".",
+'revertpage'     => 'Revertit edit o [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]), chynged back tae last version bi [[User:$1|$1]]',
 
 # Protect
 'protectlogtext'         => 'Ablo is a leet o page locks/unlocks. See the [[Special:ProtectedPages|protected pages list]] for the list of currently operational page protections.',
@@ -928,7 +925,7 @@ an that ye'r daein this in accord wi [[{{MediaWiki:Policy-url}}]].",
 'protectcomment'         => 'Raeson for protectin',
 'protect-text'           => "Ye can see an chynge the protection level here for the page '''<nowiki>$1</nowiki>'''.",
 'protect-level-sysop'    => 'Juist administrators',
-'protect-expiry-options' => '2 oor:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options' => '2 oor:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite',
 
 # Undelete
 'undelete'               => 'Restore delete page',
@@ -948,7 +945,7 @@ afore it wis delete. The actual text o thir deletit reveisions is available tae 
 # Contributions
 'contributions' => 'Uiser contreibutions',
 'mycontris'     => 'Ma contreibutions',
-'nocontribs'    => 'Nae chynges wis funnd matchin thae criteria.', # Optional parameter: $1 is the user name
+'nocontribs'    => 'Nae chynges wis funnd matchin thae criteria.',
 'uctop'         => ' (tap)',
 'month'         => 'Frae month (an afore):',
 'year'          => 'Frae year (an afore):',
@@ -969,7 +966,7 @@ afore it wis delete. The actual text o thir deletit reveisions is available tae 
 'ipbreason'                   => 'Raeson',
 'ipbsubmit'                   => 'Block this uiser',
 'ipbother'                    => 'Ither time',
-'ipboptions'                  => '2 oor:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite', # display1:time1,display2:time2,...
+'ipboptions'                  => '2 oor:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite',
 'ipbotheroption'              => 'ither',
 'badipaddress'                => 'That IP address is nae guid',
 'blockipsuccesssub'           => 'Block succeedit',

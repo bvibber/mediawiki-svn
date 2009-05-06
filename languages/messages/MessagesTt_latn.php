@@ -1,6 +1,9 @@
 <?php
 /** Tatar (Latin) (Tatarça/Татарча (Latin))
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -123,10 +126,18 @@ $messages = array(
 
 'linkprefix' => '/^(.*?)([a-zäçğıñöşüA-ZÄÇĞİÑÖŞÜ«„]+)$/sDu',
 
-'about'          => 'Turında',
-'article'        => 'Eçtälek bite',
-'newwindow'      => '(yaña täräzädä açılır)',
-'cancel'         => 'Kiräkmi',
+'about'         => 'Turında',
+'article'       => 'Eçtälek bite',
+'newwindow'     => '(yaña täräzädä açılır)',
+'cancel'        => 'Kiräkmi',
+'moredotdotdot' => 'Kübräk...',
+'mypage'        => 'Bitem',
+'mytalk'        => 'Bäxäsem',
+'anontalk'      => 'Bu IP turında bäxäs',
+'navigation'    => 'Küçü',
+'and'           => '&#32;wä',
+
+# Cologne Blue skin
 'qbfind'         => 'Tap',
 'qbbrowse'       => 'Qaraw',
 'qbedit'         => 'Üzgärtü',
@@ -134,12 +145,8 @@ $messages = array(
 'qbpageinfo'     => 'Eçtälek',
 'qbmyoptions'    => 'Bitlärem',
 'qbspecialpages' => 'Maxsus bitlär',
-'moredotdotdot'  => 'Kübräk...',
-'mypage'         => 'Bitem',
-'mytalk'         => 'Bäxäsem',
-'anontalk'       => 'Bu IP turında bäxäs',
-'navigation'     => 'Küçü',
-'and'            => '&#32;wä',
+'faq'            => 'YBS',
+'faqpage'        => 'Project:YBS',
 
 'errorpagetitle'    => 'Xata',
 'returnto'          => '«$1» bitenä qaytu.',
@@ -176,7 +183,7 @@ $messages = array(
 'viewtalkpage'      => 'Bäxäsen qaraw',
 'otherlanguages'    => 'Başqa tellärdä',
 'redirectedfrom'    => '(«$1» bitennän yünältelde)',
-'lastmodifiedat'    => 'Betniñ soñğı özgerişi $2, $1 bolğan.', # $1 date, $2 time
+'lastmodifiedat'    => 'Betniñ soñğı özgerişi $2, $1 bolğan.',
 'protectedpage'     => 'Yaqlanğan bit',
 'jumpto'            => 'Küç:',
 'jumptosearch'      => 'ezläw',
@@ -191,8 +198,6 @@ $messages = array(
 'currentevents-url'    => 'Project:Xäzerge waqíğalar',
 'edithelp'             => 'Üzgärtü xaqında',
 'edithelppage'         => 'Help:Üzgärtü',
-'faq'                  => 'YBS',
-'faqpage'              => 'Project:YBS',
 'helppage'             => 'Help:Eçtälek',
 'mainpage'             => 'Täwge Bit',
 'mainpage-description' => 'Täwge Bit',
@@ -244,7 +249,6 @@ $messages = array(
 'welcomecreation'       => "== Räxim it, $1! ==
 
 Sineñ xísabıñ yasaldı. {{SITENAME}}'dağı köyläwläreñne dä üzgärtergä onıtma.",
-'loginpagetitle'        => 'Atama belän kerü',
 'yourname'              => 'İreşü isemeñ',
 'yourpassword'          => 'Sersüzeñ',
 'yourpasswordagain'     => 'Sersüz qabat',
@@ -258,9 +262,6 @@ Sineñ xísabıñ yasaldı. {{SITENAME}}'dağı köyläwläreñne dä üzgärter
 'createaccountmail'     => 'email buyınça',
 'badretype'             => 'Kertelgän sersüzeñ kileşmi.',
 'userexists'            => 'Äle genä kertkäneñ äğzä iseme qullanıla inde. Başqa isem sayla zínhar.',
-'youremail'             => "Email'ıñ*",
-'yourrealname'          => 'Çın isemeñ*',
-'yournick'              => 'Atamañ:',
 'loginerror'            => 'Kerü xatası',
 'loginsuccesstitle'     => 'Uñışlı kergänbez',
 'loginsuccess'          => "Sin {{SITENAME}}'ğa «$1» atama belän kergän buldıñ.",
@@ -348,38 +349,38 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'searchhelp-url' => 'Help:Eçtälek',
 'powersearch'    => 'Ezläw',
 
+# Quickbar
+'qbsettings' => 'Tiztirä caylawı',
+
 # Preferences page
-'preferences'           => 'Köyläwem',
-'mypreferences'         => 'Köyläwem',
-'prefsnologin'          => 'Kermägänseñ',
-'qbsettings'            => 'Tiztirä caylawı',
-'changepassword'        => 'Sersüz üzgärtü',
-'skin'                  => 'Tışlaw',
-'skin-preview'          => 'Küzläw',
-'dateformat'            => 'Waqıt qalıbı',
-'math_failure'          => 'Uqí almadım',
-'math_unknown_error'    => 'tanılmağan xata',
-'math_unknown_function' => 'tanılmağan funksí',
-'math_lexing_error'     => 'nöhü xatası',
-'math_syntax_error'     => 'nöhü xatası',
-'prefs-misc'            => 'Başqa köyläwlär',
-'saveprefs'             => 'Saqla köyläwlärne',
-'resetprefs'            => 'Awdar köyläwne',
-'textboxsize'           => 'Mätenqır ülçäme',
-'rows'                  => 'Yul:',
-'columns'               => 'Buy:',
-'searchresultshead'     => 'Ezläw',
-'resultsperpage'        => 'Bit sayın näticä sanı',
-'recentchangescount'    => 'Soñğı üzgärtmä tezmäsendä başlıq sanı',
-'savedprefs'            => 'Köyläwläreñ saqlandı.',
-'timezonelegend'        => 'Waqıt quşağı',
-'localtime'             => 'Cirle waqıt belän kürsätäse',
-'timezoneoffset'        => 'Çigenü',
-'servertime'            => 'Serverda xäzerge waqıt',
-'guesstimezone'         => 'Browserdan alası',
-'defaultns'             => 'Ğädättä bu isemarada ezlise:',
-'default'               => 'töpcay',
-'files'                 => 'Fayllar',
+'preferences'        => 'Köyläwem',
+'mypreferences'      => 'Köyläwem',
+'prefsnologin'       => 'Kermägänseñ',
+'changepassword'     => 'Sersüz üzgärtü',
+'prefs-skin'         => 'Tışlaw',
+'skin-preview'       => 'Küzläw',
+'dateformat'         => 'Waqıt qalıbı',
+'prefs-misc'         => 'Başqa köyläwlär',
+'saveprefs'          => 'Saqla köyläwlärne',
+'resetprefs'         => 'Awdar köyläwne',
+'prefs-editing'      => 'Mätenqır ülçäme',
+'rows'               => 'Yul:',
+'columns'            => 'Buy:',
+'searchresultshead'  => 'Ezläw',
+'resultsperpage'     => 'Bit sayın näticä sanı',
+'recentchangescount' => 'Soñğı üzgärtmä tezmäsendä başlıq sanı',
+'savedprefs'         => 'Köyläwläreñ saqlandı.',
+'timezonelegend'     => 'Waqıt quşağı',
+'localtime'          => 'Cirle waqıt belän kürsätäse',
+'timezoneoffset'     => 'Çigenü',
+'servertime'         => 'Serverda xäzerge waqıt',
+'guesstimezone'      => 'Browserdan alası',
+'defaultns'          => 'Ğädättä bu isemarada ezlise:',
+'default'            => 'töpcay',
+'prefs-files'        => 'Fayllar',
+'youremail'          => "Email'ıñ*",
+'yourrealname'       => 'Çın isemeñ*',
+'yournick'           => 'Atamañ:',
 
 # Recent changes
 'recentchanges'     => 'Soñğı üzgärtmälär',
@@ -557,7 +558,7 @@ Soñğı beterülär $2 bitendä terkälenä.',
 ** Bozıp yöriwçi işi',
 
 # Rollback
-'editcomment' => "Bu üzgärtü taswírı: \"''\$1''\".", # only shown if there is an edit comment
+'editcomment' => "Bu üzgärtü taswírı: \"''\$1''\".",
 
 # Protect
 'protectlogpage'     => 'Yaqlaw_köndälege',
@@ -699,6 +700,13 @@ yä isä saylanğan isem yaraqsız buldı. Başqa isem sayla zínhar.',
 # Info page
 'infosubtitle' => 'Bit turında',
 
+# Math errors
+'math_failure'          => 'Uqí almadım',
+'math_unknown_error'    => 'tanılmağan xata',
+'math_unknown_function' => 'tanılmağan funksí',
+'math_lexing_error'     => 'nöhü xatası',
+'math_syntax_error'     => 'nöhü xatası',
+
 # Media information
 'show-big-image' => 'Towlı ölçemi',
 
@@ -724,7 +732,7 @@ yä isä saylanğan isem yaraqsız buldı. Başqa isem sayla zínhar.',
 'autosumm-new' => 'Yeni bet: $1',
 
 # Special:Version
-'version' => 'Yurama', # Not used as normal message but as header for the special page itself
+'version' => 'Yurama',
 
 # Special:SpecialPages
 'specialpages' => 'Maxsus bitlär',

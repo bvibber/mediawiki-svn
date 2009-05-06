@@ -1,6 +1,9 @@
 <?php
 /** Aragonese (Aragonés)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -225,7 +228,7 @@ $messages = array(
 'category-media-header'          => 'Contenius multimedia en a categoría "$1"',
 'category-empty'                 => "''Ista categoría no tiene por agora garra articlo ni conteniu multimedia''",
 'hidden-categories'              => '{{PLURAL:$1|Categoría amagata|Categorías amagatas}}',
-'hidden-category-category'       => 'Categorías amagatas', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Categorías amagatas',
 'category-subcat-count'          => "{{PLURAL:$2|Ista categoría contiene nomás a siguient subcategoría.|Ista categoría encluye {{PLURAL:$1|a siguient subcategoría|as siguients $1 subcategorías}}, d'un total de $2.}}",
 'category-subcat-count-limited'  => 'Ista categoría contiene {{PLURAL:$1|a siguient subcategoría|as siguients $1 subcategorías}}.',
 'category-article-count'         => "{{PLURAL:$2|Ista categoría nomás encluye a pachina siguient.|{{PLURAL:$1|A pachina siguient fa parte|As pachinas siguients fan parte}} d'esta categoría, d'un total de $2.}}",
@@ -243,10 +246,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ Preguntas cutianas sobre MediaWiki (FAQ)]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de correu sobre ta anunzios de MediaWiki]",
 
-'about'          => 'Informazión sobre',
-'article'        => 'Articlo',
-'newwindow'      => "(s'ubre en una nueba finestra)",
-'cancel'         => 'Anular',
+'about'         => 'Informazión sobre',
+'article'       => 'Articlo',
+'newwindow'     => "(s'ubre en una nueba finestra)",
+'cancel'        => 'Anular',
+'moredotdotdot' => 'Más...',
+'mypage'        => 'A mía pachina',
+'mytalk'        => 'Pachina de descusión',
+'anontalk'      => "Pachina de descusión d'ista IP",
+'navigation'    => 'Nabego',
+'and'           => '&#32;y',
+
+# Cologne Blue skin
 'qbfind'         => 'Mirar',
 'qbbrowse'       => 'Nabegar',
 'qbedit'         => 'Editar',
@@ -254,12 +265,8 @@ $messages = array(
 'qbpageinfo'     => "Informazión d'a pachina",
 'qbmyoptions'    => 'Pachinas propias',
 'qbspecialpages' => 'Pachinas espezials',
-'moredotdotdot'  => 'Más...',
-'mypage'         => 'A mía pachina',
-'mytalk'         => 'Pachina de descusión',
-'anontalk'       => "Pachina de descusión d'ista IP",
-'navigation'     => 'Nabego',
-'and'            => '&#32;y',
+'faq'            => 'Preguntas cutianas',
+'faqpage'        => 'Project:Preguntas cutianas',
 
 # Metadata in edit box
 'metadata_help' => 'Metadatos:',
@@ -312,7 +319,7 @@ $messages = array(
 'otherlanguages'    => 'En atras luengas',
 'redirectedfrom'    => '(Reendrezato dende $1)',
 'redirectpagesub'   => 'Pachina reendrezata',
-'lastmodifiedat'    => "Zaguera edizión d'ista pachina: $2, $1.", # $1 date, $2 time
+'lastmodifiedat'    => "Zaguera edizión d'ista pachina: $2, $1.",
 'viewcount'         => 'Ista pachina ha tenito {{PLURAL:$1|una besita|$1 besitas}}.',
 'protectedpage'     => 'Pachina protechita',
 'jumpto'            => 'Ir ta:',
@@ -331,8 +338,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Abiso legal',
 'edithelp'             => 'Aduya ta editar pachinas',
 'edithelppage'         => "Help:Cómo s'edita una pachina",
-'faq'                  => 'Preguntas cutianas',
-'faqpage'              => 'Project:Preguntas cutianas',
 'helppage'             => 'Help:Aduya',
 'mainpage'             => 'Portalada',
 'mainpage-description' => 'Portalada',
@@ -408,10 +413,6 @@ A zaguera consulta que se miró de fer estió: <blockquote><tt>$1</tt></blockquo
 "$1"
 aintro d\'a funzión "$2".
 A base de datos retornó a error "<tt>$3: $4</tt>".',
-'noconnect'            => "Agora mesmo, a wiki ye tenendo bellas dificultaz tecnicas, y no se puede contautar con o serbidor d'a base de datos. <br />
-$1",
-'nodb'                 => 'No se podió trigar a base de datos $1',
-'cachederror'          => "Ista ye una copia en caché d'a pachina demandata, y puestar que no siga esbiellata.",
 'laggedslavemode'      => "Pare cuenta: podrían faltar as zagueras edizions d'ista pachina.",
 'readonly'             => 'Base de datos bloqueyata',
 'enterlockreason'      => "Esplique a causa d'o bloqueyo, encluyendo una estimazión de cuán se produzirá o desbloqueyo",
@@ -474,7 +475,6 @@ Puede continar nabegando por {{SITENAME}} anonimament, u puede [[Special:UserLog
 'welcomecreation'            => "== ¡Bienbeniu(da), $1! ==
 S'ha creyato a suya cuenta.
 No xublide presonalizar [[Special:Preferences|as suyas preferenzias en {{SITENAME}}]].",
-'loginpagetitle'             => 'Enzetar a sesión',
 'yourname'                   => "Nombre d'usuario:",
 'yourpassword'               => 'Palabra de paso:',
 'yourpasswordagain'          => 'Torne á escribir a palabra de paso:',
@@ -496,26 +496,7 @@ No xublide presonalizar [[Special:Preferences|as suyas preferenzias en {{SITENAM
 'createaccountmail'          => 'por correu electronico',
 'badretype'                  => 'As palabras de paso que ha escrito no son iguals.',
 'userexists'                 => 'Ixe nombre ya ye en uso. Por fabor, meta un nombre diferent.',
-'youremail'                  => 'Adreza de correu electronico:',
-'username'                   => "Nombre d'usuario:",
-'uid'                        => "ID d'usuario:",
-'prefs-memberingroups'       => "Miembro {{PLURAL:$1|d'a colla|d'as collas}}:",
-'yourrealname'               => 'Nombre reyal:',
-'yourlanguage'               => 'Luenga:',
-'yourvariant'                => 'Modalidat linguistica:',
-'yournick'                   => 'Siñadura:',
-'badsig'                     => 'A suya siñadura no ye conforme; comprebe as etiquetas HTML.',
-'badsiglength'               => 'A siñadura ye masiau larga. 
-Abría de tener menos de $1 {{PLURAL:$1|caráuter|caráuters}}.',
-'yourgender'                 => 'Secso:',
-'gender-unknown'             => 'No espezificato',
-'gender-male'                => 'Ombre',
-'gender-female'              => 'Muller',
-'email'                      => 'Adreza de correu-e',
-'prefs-help-realname'        => "* Nombre reyal (opzional): si esliche escribir-lo, se ferá serbir ta l'atribuzión d'a suya faina.",
 'loginerror'                 => 'Error en enzetar a sesión',
-'prefs-help-email'           => "L'adreza de correu-e ye opzional, pero premite que le nimbiemos una nueba palabra de paso si nunca la oblidase. Tamién premite que atros usuarios contauten con bustet dende a suya pachina d'usuario u de descusión d'usuario sin aber de rebelar a suya identidat.",
-'prefs-help-email-required'  => 'Cal una adreza de correu-e.',
 'nocookiesnew'               => "A cuenta d'usuario s'ha creyata, pero encara no ye indentificato. {{SITENAME}} fa serbir <em>cookies</em> ta identificar á os usuario rechistratos, pero pareix que las tiene desautibatas. Por fabor, autibe-las e identifique-se con o suyo nombre d'usuario y palabra de paso.",
 'nocookieslogin'             => "{{SITENAME}} fa serbir <em>cookies</em> ta la identificazión d'usuarios. Tiene as <em>cookies</em> desautibatas en o nabegador. Por fabor, autibe-las y prebe á identificar-se de nuebas.",
 'noname'                     => "No ha escrito un nombre d'usuario correuto.",
@@ -569,7 +550,6 @@ Si a cuenta s\'ha creyato por error, simplament innore iste mensache.',
 'retypenew'                 => 'Torne á escribir a nueba palabra de paso:',
 'resetpass_submit'          => 'Cambiar a palabra de paso e identificar-se',
 'resetpass_success'         => 'A suya palabra de paso ya ye cambiata. Agora ya puede dentrar-ie...',
-'resetpass_bad_temporary'   => "A palabra de paso temporal no ye conforme. Puede estar que ya aiga cambiato a suya palabra de paso u que aiga demandato o nimbío d'un atra.",
 'resetpass_forbidden'       => 'No se pueden cambiar as palabras de paso.',
 'resetpass-no-info'         => 'Debe identificar-se como usuario ta poder azeder dreitament ta ista pachina.',
 'resetpass-submit-loggedin' => 'Cambiar a palabra de paso',
@@ -648,7 +628,6 @@ A suya adreza IP autual ye \$3, y o identificador de bloqueyo ye #\$5. Por fabor
 'blockededitsource'                => "Contino s'amuestra o testo d'as suyas '''edizions''' á '''$1''':",
 'whitelistedittitle'               => 'Cal enzetar una sesión ta poder editar.',
 'whitelistedittext'                => 'Ha de $1 ta poder editar pachinas.',
-'confirmedittitle'                 => 'Cal que confirme a suya adreza de correu-e ta poder editar',
 'confirmedittext'                  => "Ha de confirmar a suya adreza de correu-e antis de poder editar pachinas. Por fabor, establa y confirme una adreza de correu-e a trabiés d'as suyas [[Special:Preferences|preferenzias d'usuario]].",
 'nosuchsectiontitle'               => 'No esiste ixa sezión',
 'nosuchsectiontext'                => "Has prebato d'editar una sezión que no existe. Como no bi ha sezión $1, as suyas edizions no se pueden alzar en garra puesto.",
@@ -732,13 +711,12 @@ A esplicazión ufierta por l'almenistrador que bloqueyó a base de datos ye ista
 'permissionserrors'                => 'Errors de premisos',
 'permissionserrorstext'            => 'No tiene premisos ta fer-lo, por {{PLURAL:$1|ista razón|istas razons}}:',
 'permissionserrorstext-withaction' => 'No tiene premisos ta $2, por {{PLURAL:$1|ista razón|istas razons}}:',
-'recreate-deleted-warn'            => "'''Pare cuenta: ye creyando una pachina que ya ha estato borrata denantes.'''
+'recreate-moveddeleted-warn'       => "'''Pare cuenta: ye creyando una pachina que ya ha estato borrata denantes.'''
 
 Abría de considerar si ye reyalment nezesario continar editando ista pachina.
 Puede consultar o rechistro de borraus que s'amuestra a continuazión:",
-'deleted-notice'                   => "Ista pachina ye borrata.
+'moveddeleted-notice'              => "Ista pachina ye borrata.
 Contino s'amuestra o rechistro de borrau como referenzia.",
-'deletelog-fulllog'                => 'Beyer o rechistro completo',
 'edit-hook-aborted'                => 'Edizión albortada por o grifio (hook). 
 No dio garra esplicazión.',
 'edit-gone-missing'                => "No s'ha puesto esbiellar a pachina.
@@ -779,7 +757,7 @@ A razón endicata por $3 ye ''$2''",
 'currentrev'             => 'Bersión autual',
 'currentrev-asof'        => "zaguera bersión d'o $1",
 'revisionasof'           => "Bersión d'o $1",
-'revision-info'          => "Bersión d'o $1 feita por $2", # Additionally available: $3: revision id
+'revision-info'          => "Bersión d'o $1 feita por $2",
 'previousrevision'       => '← Bersión anterior',
 'nextrevision'           => 'Bersión siguient →',
 'currentrevisionlink'    => 'Beyer bersión autual',
@@ -800,7 +778,7 @@ A razón endicata por $3 ye ''$2''",
 # Revision feed
 'history-feed-title'          => 'Istorial de bersions',
 'history-feed-description'    => "Istorial de bersions d'ista pachina en o wiki",
-'history-feed-item-nocomment' => '$1 en $2', # user at time
+'history-feed-item-nocomment' => '$1 en $2',
 'history-feed-empty'          => "A pachina demandata no esiste.
 Puede que aiga estato borrata d'o wiki u renombrata.
 Prebe de [[Special:Search|mirar en o wiki]] atras pachinas relebants.",
@@ -974,7 +952,6 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'searchhelp-url'                   => 'Help:Aduya',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Beyer pachinas con iste prefixo]]',
 'searchprofile-articles'           => 'Articlos',
-'searchprofile-articles-and-proj'  => "Articlos y pachinas d'o procheuto",
 'searchprofile-project'            => "Pachinas d'o procheuto",
 'searchprofile-images'             => 'Archibos',
 'searchprofile-everything'         => 'Tot',
@@ -984,8 +961,6 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'searchprofile-images-tooltip'     => 'Mirar archibos',
 'searchprofile-everything-tooltip' => 'Mirar en toz os contenius (tamién en as pachinas de descusión)',
 'searchprofile-advanced-tooltip'   => 'Mirar en os siguients espazios de nombres',
-'prefs-search-nsdefault'           => 'Mirar fendo serbir os parametros por defeuto:',
-'prefs-search-nscustom'            => 'Mirar en os siguients espazios de nombres:',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 palabra|$2 palabras}})',
 'search-result-score'              => 'Relebanzia: $1%',
 'search-redirect'                  => '(reendreza $1)',
@@ -1013,35 +988,27 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'search-external'                  => 'Busca externa',
 'searchdisabled'                   => 'A busca en {{SITENAME}} ye temporalment desautibata. Entremistanto, puede mirar en {{SITENAME}} fendo serbir buscadors esternos, pero pare cuenta que os suyos endizes de {{SITENAME}} puede no estar esbiellatos.',
 
+# Quickbar
+'qbsettings'               => 'Preferenzias de "Quickbar"',
+'qbsettings-none'          => 'Denguna',
+'qbsettings-fixedleft'     => 'Fixa á la zurda',
+'qbsettings-fixedright'    => 'Fixa á la dreita',
+'qbsettings-floatingleft'  => 'Flotant á la zurda',
+'qbsettings-floatingright' => 'Flotant á la dreita',
+
 # Preferences page
 'preferences'               => 'Preferenzias',
 'mypreferences'             => 'Preferenzias',
 'prefs-edits'               => "Numero d'edizions:",
 'prefsnologin'              => 'No ye identificato',
 'prefsnologintext'          => 'Ha d\'aber <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} enzetato una sesión] </span> ta cambiar as preferenzias d\'usuario.',
-'prefsreset'                => "S'ha tornato as preferenzias t'as suyas baluras almadazenatas.",
-'qbsettings'                => 'Preferenzias de "Quickbar"',
-'qbsettings-none'           => 'Denguna',
-'qbsettings-fixedleft'      => 'Fixa á la zurda',
-'qbsettings-fixedright'     => 'Fixa á la dreita',
-'qbsettings-floatingleft'   => 'Flotant á la zurda',
-'qbsettings-floatingright'  => 'Flotant á la dreita',
 'changepassword'            => 'Cambiar a palabra de paso',
-'skin'                      => 'Aparenzia',
+'prefs-skin'                => 'Aparenzia',
 'skin-preview'              => 'Fer una prebatina',
-'math'                      => 'Esprisions matematicas',
+'prefs-math'                => 'Esprisions matematicas',
 'dateformat'                => 'Formato de calendata',
 'datedefault'               => 'Sin de preferenzias',
-'datetime'                  => 'Calendata y ora',
-'math_failure'              => 'Error en o codigo',
-'math_unknown_error'        => 'error esconoxita',
-'math_unknown_function'     => 'funzión esconoxita',
-'math_lexing_error'         => 'error de lesico',
-'math_syntax_error'         => 'error de sintacsis',
-'math_image_error'          => "Bi abió una error en a combersión enta o formato PNG; comprebe que ''latex'', ''dvips'', ''gs'', y ''convert'' sigan instalatos correutament.",
-'math_bad_tmpdir'           => "No s'ha puesto escribir u creyar o direutorio temporal d'esprisions matematicas",
-'math_bad_output'           => "No s'ha puesto escribir u creyar o direutorio de salida d'esprisions matematicas",
-'math_notexvc'              => "No s'ha trobato l'archibo executable ''texvc''. Por fabor, leiga <em>math/README</em> ta confegurar-lo correutament.",
+'prefs-datetime'            => 'Calendata y ora',
 'prefs-personal'            => 'Datos presonals',
 'prefs-rc'                  => 'Zaguers cambeos',
 'prefs-watchlist'           => 'Lista de seguimiento',
@@ -1054,7 +1021,7 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'saveprefs'                 => 'Alzar preferenzias',
 'resetprefs'                => "Tornar t'as preferenzias por defeuto",
 'restoreprefs'              => 'Restaure todas as confegurazions por defeuto',
-'textboxsize'               => 'Edizión',
+'prefs-editing'             => 'Edizión',
 'prefs-edit-boxsize'        => "Grandaria d'a finestra d'edizión.",
 'rows'                      => 'Ringleras:',
 'columns'                   => 'Colunnas:',
@@ -1068,7 +1035,6 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'recentchangescount'        => "Numero d'edizions que s'amostrarán, por defeuto, en as pachinas de zaguers cambeos, istorials y rechistros:",
 'savedprefs'                => "S'han alzato as suyas preferenzias.",
 'timezonelegend'            => 'Fuso orario',
-'timezonetext'              => "¹Escriba a esferenzia (en oras) entre a suya ora local y a d'o serbidor (UTC).",
 'localtime'                 => 'Ora local:',
 'timezoneselect'            => 'Zona oraria:',
 'timezoneuseserverdefault'  => "Usar a zona d'o serbidor",
@@ -1081,12 +1047,31 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'prefs-namespaces'          => 'Espazios de nombres',
 'defaultns'                 => 'Mirar por defeuto en istos espazios de nombres:',
 'default'                   => 'por defeuto',
-'files'                     => 'Archibos',
+'prefs-files'               => 'Archibos',
 'prefs-custom-css'          => 'CSS presonalizato',
 'prefs-custom-js'           => 'JS presonalizato',
+'youremail'                 => 'Adreza de correu electronico:',
+'username'                  => "Nombre d'usuario:",
+'uid'                       => "ID d'usuario:",
+'prefs-memberingroups'      => "Miembro {{PLURAL:$1|d'a colla|d'as collas}}:",
+'yourrealname'              => 'Nombre reyal:',
+'yourlanguage'              => 'Luenga:',
+'yourvariant'               => 'Modalidat linguistica:',
+'yournick'                  => 'Siñadura:',
+'badsig'                    => 'A suya siñadura no ye conforme; comprebe as etiquetas HTML.',
+'badsiglength'              => 'A siñadura ye masiau larga. 
+Abría de tener menos de $1 {{PLURAL:$1|caráuter|caráuters}}.',
+'yourgender'                => 'Secso:',
+'gender-unknown'            => 'No espezificato',
+'gender-male'               => 'Ombre',
+'gender-female'             => 'Muller',
+'email'                     => 'Adreza de correu-e',
+'prefs-help-realname'       => "* Nombre reyal (opzional): si esliche escribir-lo, se ferá serbir ta l'atribuzión d'a suya faina.",
+'prefs-help-email'          => "L'adreza de correu-e ye opzional, pero premite que le nimbiemos una nueba palabra de paso si nunca la oblidase. Tamién premite que atros usuarios contauten con bustet dende a suya pachina d'usuario u de descusión d'usuario sin aber de rebelar a suya identidat.",
+'prefs-help-email-required' => 'Cal una adreza de correu-e.',
 
 # User rights
-'userrights'                  => "Confegurazión d'os dreitos d'os usuarios", # Not used as normal message but as header for the special page itself
+'userrights'                  => "Confegurazión d'os dreitos d'os usuarios",
 'userrights-lookup-user'      => "Confegurar collas d'usuarios",
 'userrights-user-editname'    => "Escriba un nombre d'usuario:",
 'editusergroup'               => "Editar as collas d'usuarios",
@@ -1798,8 +1783,8 @@ Se beiga en $2 un rechistro d\'os borraus rezients.',
 'alreadyrolled'    => "No se puet desfer a zaguer edizión de [[:$1]] feita por [[User:$2|$2]] ([[User talk:$2|descusión]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); belatro usuario ya ha editato u desfeito edizions en ixa pachina. 
 
 A zaguer edizión d'a pachina la fazió [[User:$3|$3]] ([[User talk:$3|descusión]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]).",
-'editcomment'      => "O resumen d'a edizión ye: \"''\$1''\".", # only shown if there is an edit comment
-'revertpage'       => "S'han esfeito as edizions de [[Special:Contributions/$2|$2]] ([[User talk:$2|Descusión]]); retornando t'a zaguera bersión editada por [[User:$1|$1]]", # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'editcomment'      => "O resumen d'a edizión ye: \"''\$1''\".",
+'revertpage'       => "S'han esfeito as edizions de [[Special:Contributions/$2|$2]] ([[User talk:$2|Descusión]]); retornando t'a zaguera bersión editada por [[User:$1|$1]]",
 'rollback-success' => "Esfeitas as edizions de $1; s'ha retornato á la zaguer bersión de $2.",
 'sessionfailure'   => 'Pareix que bi ha un problema con a suya sesión;
 s\'ha anulato ista aizión como mida de precura contra secuestros de sesión.
@@ -1846,7 +1831,7 @@ Contino se i amuestran as opzions autuals d'a pachina '''$1''':",
 **Guerra d'edizions
 **Pachina muit besitada",
 'protect-edit-reasonlist'     => 'Editar as razons ta protecher',
-'protect-expiry-options'      => '2 oras:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,ta cutio:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '2 oras:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,ta cutio:infinite',
 'restriction-type'            => 'Premiso:',
 'restriction-level'           => 'Libel de restrizión:',
 'minimum-size'                => 'Grandaria menima',
@@ -1919,7 +1904,7 @@ $1',
 'contributions-title' => "Contrebuzions de l'usuario $1",
 'mycontris'           => 'Contrebuzions',
 'contribsub2'         => 'De $1 ($2)',
-'nocontribs'          => "No s'han trobato cambeos que concordasen con ixos criterios", # Optional parameter: $1 is the user name
+'nocontribs'          => "No s'han trobato cambeos que concordasen con ixos criterios",
 'uctop'               => '(zaguer cambeo)',
 'month'               => 'Dende o mes (y anteriors):',
 'year'                => "Dende l'año (y anteriors):",
@@ -1980,7 +1965,7 @@ as pachinas que s'han bandalizato).",
 'ipbenableautoblock'              => "bloqueyar automaticament l'adreza IP emplegata por iste usuario, y cualsiquier IP posterior dende a que prebe d'editar",
 'ipbsubmit'                       => 'bloqueyar á iste usuario',
 'ipbother'                        => 'Espezificar atro periodo',
-'ipboptions'                      => '2 oras:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,ta cutio:infinite', # display1:time1,display2:time2,...
+'ipboptions'                      => '2 oras:2 hours,1 día:1 day,3 días:3 days,1 semana:1 week,2 semanas:2 weeks,1 mes:1 month,3 meses:3 months,6 meses:6 months,1 año:1 year,ta cutio:infinite',
 'ipbotheroption'                  => 'atro',
 'ipbotherreason'                  => 'Razons diferens u adizionals',
 'ipbhidename'                     => "Amagar usuario en o rechistro de bloqueyos, a lista de bloqueyos autibos y a lista d'usuarios",
@@ -2103,7 +2088,7 @@ En ixos casos, si lo deseya, abrá de tresladar u combinar manualment o conteniu
 'move-watch'                   => 'Cosirar iste articlo',
 'movepagebtn'                  => 'Tresladar pachina',
 'pagemovedsub'                 => 'Treslado feito correutament',
-'movepage-moved'               => "<big>S'ha tresladato '''\"\$1\"  ta \"\$2\"'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => "<big>S'ha tresladato '''\"\$1\"  ta \"\$2\"'''</big>",
 'movepage-moved-redirect'      => "S'ha creyato una reendrezera.",
 'movepage-moved-noredirect'    => "S'ha canzelato a creyazión d'una reendrezera.",
 'articleexists'                => 'Ya bi ha una pachina con ixe nombre u o nombre que ha eslechito no ye conforme. Por fabor trigue un atro nombre.',
@@ -2293,7 +2278,7 @@ Todas as importazions interwiki se rechistran en o [[Special:Log/import|rechistr
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Usuario anónimo|Usuarios anónimos}} de {{SITENAME}}',
 'siteuser'         => 'Usuario $1 de {{SITENAME}}',
-'lastmodifiedatby' => 'Ista pachina estió modificata por zaguer begada á $2, $1 por $3.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Ista pachina estió modificata por zaguer begada á $2, $1 por $3.',
 'othercontribs'    => 'Basato en o treballo de $1.',
 'others'           => 'atros',
 'siteusers'        => '{{PLURAL:$2|Usuario|Usuarios}} $1 de {{SITENAME}}',
@@ -2330,6 +2315,17 @@ Todas as importazions interwiki se rechistran en o [[Special:Log/import|rechistr
 'mw_math_source' => 'Deixar como TeX (ta nabegadores en formato testo)',
 'mw_math_modern' => 'Recomendato ta nabegadors modernos',
 'mw_math_mathml' => 'MathML si ye posible (esperimental)',
+
+# Math errors
+'math_failure'          => 'Error en o codigo',
+'math_unknown_error'    => 'error esconoxita',
+'math_unknown_function' => 'funzión esconoxita',
+'math_lexing_error'     => 'error de lesico',
+'math_syntax_error'     => 'error de sintacsis',
+'math_image_error'      => "Bi abió una error en a combersión enta o formato PNG; comprebe que ''latex'', ''dvips'', ''gs'', y ''convert'' sigan instalatos correutament.",
+'math_bad_tmpdir'       => "No s'ha puesto escribir u creyar o direutorio temporal d'esprisions matematicas",
+'math_bad_output'       => "No s'ha puesto escribir u creyar o direutorio de salida d'esprisions matematicas",
+'math_notexvc'          => "No s'ha trobato l'archibo executable ''texvc''. Por fabor, leiga <em>math/README</em> ta confegurar-lo correutament.",
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Siñalar como ya controlato',
@@ -2407,7 +2403,7 @@ Se consideran nomás os elementos d'una lista (linias que escomienzan por *). O 
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength", # Do not translate list items
+* focallength",
 
 # EXIF tags
 'exif-imagewidth'                  => 'Amplaria',
@@ -2534,14 +2530,14 @@ Se consideran nomás os elementos d'una lista (linias que escomienzan por *). O 
 
 'exif-unknowndate' => 'Calendata esconoixita',
 
-'exif-orientation-1' => 'Normal', # 0th row: top; 0th column: left
-'exif-orientation-2' => 'Contornata orizontalment', # 0th row: top; 0th column: right
-'exif-orientation-3' => 'Chirata 180º', # 0th row: bottom; 0th column: right
-'exif-orientation-4' => 'Contornata berticalment', # 0th row: bottom; 0th column: left
-'exif-orientation-5' => "Chirata 90° en contra d'as agullas d'o reloch y contornata berticalment", # 0th row: left; 0th column: top
-'exif-orientation-6' => "Chirata 90° como as agullas d'o reloch", # 0th row: right; 0th column: top
-'exif-orientation-7' => "Chirata 90° como as agullas d'o reloch y contornata berticalment", # 0th row: right; 0th column: bottom
-'exif-orientation-8' => "Chirata 90° en contra d'as agullas d'o reloch", # 0th row: left; 0th column: bottom
+'exif-orientation-1' => 'Normal',
+'exif-orientation-2' => 'Contornata orizontalment',
+'exif-orientation-3' => 'Chirata 180º',
+'exif-orientation-4' => 'Contornata berticalment',
+'exif-orientation-5' => "Chirata 90° en contra d'as agullas d'o reloch y contornata berticalment",
+'exif-orientation-6' => "Chirata 90° como as agullas d'o reloch",
+'exif-orientation-7' => "Chirata 90° como as agullas d'o reloch y contornata berticalment",
+'exif-orientation-8' => "Chirata 90° en contra d'as agullas d'o reloch",
 
 'exif-planarconfiguration-1' => 'formato de paquez de píxels',
 'exif-planarconfiguration-2' => 'formato plano',
@@ -2663,7 +2659,7 @@ Se consideran nomás os elementos d'una lista (linias que escomienzan por *). O 
 'exif-gpsmeasuremode-2' => 'Mesura bidimensional',
 'exif-gpsmeasuremode-3' => 'Mesura tridimensional',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'Quilometros por ora',
 'exif-gpsspeed-m' => 'Millas por ora',
 'exif-gpsspeed-n' => 'Nugos',
@@ -2803,7 +2799,7 @@ Tamién puede fer serbir o [[Special:Watchlist/edit|editor estándar]].",
 'duplicate-defaultsort' => "Pare cuenta: A clau d'ordenazión por defeuto «$2» anula l'anterior clau d'ordenazión por defeuto «$1».",
 
 # Special:Version
-'version'                          => 'Bersión', # Not used as normal message but as header for the special page itself
+'version'                          => 'Bersión',
 'version-extensions'               => 'Estensions instalatas',
 'version-specialpages'             => 'Pachinas espezials',
 'version-parserhooks'              => "Grifios d'o parser (parser hooks)",
@@ -2817,7 +2813,7 @@ Tamién puede fer serbir o [[Special:Watchlist/edit|editor estándar]].",
 'version-skin-extension-functions' => "Funzions d'estensión de l'aparenzia (Skin)",
 'version-hook-name'                => "Nombre d'o grifio",
 'version-hook-subscribedby'        => 'Suscrito por',
-'version-version'                  => 'Bersión',
+'version-version'                  => '(Bersión $1)',
 'version-license'                  => 'Lizenzia',
 'version-software'                 => 'Software instalato',
 'version-software-product'         => 'Produto',
