@@ -133,17 +133,8 @@ class SmoothGalleryParser {
 	
 		$galleryArray = Array();
 	
-		//We need a parser to pass to the render function, this
-		//seems kinda dirty, but it works on MediaWiki 1.6-1.9...
-		#$local_parser = clone $parser;
-		#$local_parser_options = new ParserOptions();
-		#$local_parser->mOptions = $local_parser_options;
-		#$local_parser->Title( $wgTitle );
-		#$local_parser->mArgStack = array();
-	
 		//Expand templates in the input
-		#$local_parser->replaceVariables( $input );
-		#$input = $parser->recursiveTagParse( $input );
+		$input = $parser->recursiveTagParse( $input );
 	
 		//The image array is a delimited list of images (strings)
 		$line_arr = preg_split( "/$wgSmoothGalleryDelimiter/", $input, -1, PREG_SPLIT_NO_EMPTY );
