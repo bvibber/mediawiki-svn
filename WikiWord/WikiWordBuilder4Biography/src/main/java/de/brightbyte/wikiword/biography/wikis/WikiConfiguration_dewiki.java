@@ -2,11 +2,14 @@ package de.brightbyte.wikiword.biography.wikis;
 
 import java.util.regex.Pattern;
 
+import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
 import de.brightbyte.wikiword.analyzer.extractor.CategoryPatternParameterExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.PagePropertyValueExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterExtractor;
 import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
+import de.brightbyte.wikiword.analyzer.sensor.HasPropertySensor;
+import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
 
 public class WikiConfiguration_dewiki extends WikiConfiguration {
@@ -18,9 +21,9 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 		propertyExtractors.add( new CategoryPatternParameterExtractor("^Gestorben_(\\d+(_v\\._Chr\\.)?)$", "$1", 0, "person-death-date") );
  
 		propertyExtractors.add( new CategoryPatternParameterExtractor("^Maler_(der|des)_(.+)$", "$2", 0, "artist-group") );
-		propertyExtractors.add( new CategoryPatternParameterExtractor("^(Maler|Bildhauer|Fotograf)(_|$)", "$2", 0, "artist-group") );
-		propertyExtractors.add( new CategoryPatternParameterExtractor("^.*[^_](maler|bildhauer|fotograf)$", "$2", 0, "artist-group") );
-		propertyExtractors.add( new CategoryPatternParameterExtractor("^.*([-_\\wäöü]+)(maler|bildhauer|fotograf)$", "$1", 0, "artist-group") );
+		propertyExtractors.add( new CategoryPatternParameterExtractor("^(Maler|Bildhauer|Fotograf)(_|$).*$", "$1", 0, "artist-group") );
+		propertyExtractors.add( new CategoryPatternParameterExtractor("^.*[^_](maler|bildhauer|fotograf)$", "$1", 0, "artist-group").setCapitalize(true) );
+		propertyExtractors.add( new CategoryPatternParameterExtractor("^.*?([-_\\wäöü]+)(maler|bildhauer|fotograf)$", "$2", 0, "artist-group") );
 
 		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Personendaten"),
 				new DefaultTemplateParameterPropertySpec("NAME", "person-sortname").setStripMarkup(true),
@@ -43,7 +46,11 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 		//TODO: {{BAM|Kohl|Helmut}}
 
 		pageTermExtractors.add( new PagePropertyValueExtractor("person-sortname") ); 
-		pageTermExtractors.add( new PagePropertyValueExtractor("person-name") ); 
+		pageTermExtractors.add( new PagePropertyValueExtractor("person-name") );
+		
+		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PERSON, "person-name") );
+		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PERSON, "person-birth-date") );
+		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PERSON, "artist-group") );
 	}
 	
 }
