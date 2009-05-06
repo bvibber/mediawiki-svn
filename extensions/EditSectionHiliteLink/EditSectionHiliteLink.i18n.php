@@ -11,7 +11,7 @@ $messages = array();
  * @author Arash Boostani
  */
 $messages['en'] = array(
-	'Editsectionhilitelink-desc' => 'Hilight the appropriate section of an article when you mouse over the edit link',
+	'Editsectionhilitelink-desc' => 'Highlight the appropriate section of a page when you move the mouse over the edit link',
 );
 
 /** Message documentation (Message documentation)
