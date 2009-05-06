@@ -549,6 +549,9 @@ PovWatch
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:PovWatch
 
+Purge
+url = http://www.mediawiki.org/wiki/Extension:Purge
+
 Redirect
 url = http://www.mediawiki.org/wiki/Extension:Redirect
 
