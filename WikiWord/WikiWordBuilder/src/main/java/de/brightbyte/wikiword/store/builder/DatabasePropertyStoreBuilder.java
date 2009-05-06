@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import de.brightbyte.application.Agenda;
 import de.brightbyte.data.PersistentIdManager;
+import de.brightbyte.db.DatabaseTable;
 import de.brightbyte.db.Inserter;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
@@ -25,6 +26,13 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 		this(new LocalConceptStoreSchema(corpus, connection, tweaks, true), 
 				new PropertyStoreSchema(corpus, connection, tweaks, true), 
 				null, tweaks, null);
+	}
+	
+	protected DatabaseTable getTable(String name) {
+		if (database.hasTable(name))
+			return database.getTable(name);
+		else
+			return conceptStoreSchema.getTable(name);
 	}
 	
 	public DatabasePropertyStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, TweakSet tweaks) throws SQLException, PersistenceException {

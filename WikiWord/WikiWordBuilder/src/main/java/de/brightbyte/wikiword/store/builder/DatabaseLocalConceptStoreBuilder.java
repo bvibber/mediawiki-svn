@@ -216,9 +216,14 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	public void flush() throws PersistenceException{
 		if (idManager!=null) idManager.flush();
 		super.flush();
+		
+		if (propertyStore!=null)
+			propertyStore.flush();
+		
+		if (textStore!=null)
+			textStore.flush();
 	}
 	
-
 	protected void deleteDataFrom(int rcId, String op) throws PersistenceException {
 		deleteDataFrom(rcId, op, definitionTable, "resource");
 		

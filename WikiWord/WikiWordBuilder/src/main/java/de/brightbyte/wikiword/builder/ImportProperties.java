@@ -16,7 +16,9 @@ public class ImportProperties extends ImportDump<LocalConceptStoreBuilder> {
 	private PropertyStoreBuilder propertyStore;
 
 	public ImportProperties() {
-		super("ExtractProperties");
+		super("ImportProperties");
+		
+		baseTasks = new String[] {"ImportProperties", "ImportConcepts", "BuildStatistics", "BuildConceptInfo", };
 	}
 
 	@Override

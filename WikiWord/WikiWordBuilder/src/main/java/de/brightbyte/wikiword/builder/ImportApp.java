@@ -25,7 +25,8 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 	protected static enum Operation {
 		FRESH,
 		CONTINUE,
-		APPEND
+		APPEND,
+		ATTACH
 	}
 	
 	private boolean useAgenda;
@@ -33,7 +34,8 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 	protected Agenda agenda;
 	
 	protected Operation operation = null;
-	private Monitor agendaMonitor;	
+	private Monitor agendaMonitor;
+	protected  String[] baseTasks  = new String[] {};	
 	
 	public ImportApp(String agendaTask, boolean allowGlobal, boolean allowLocal) { //TODO: agenda-params!
 		super(allowGlobal, allowLocal);
@@ -73,7 +75,7 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 		this.agendaMonitor = monitor;
 	}
 
-	protected void initAgenda(Agenda agenda) throws PersistenceException {
+	protected void initAgenda(Agenda agenda, String... canAttachTo) throws PersistenceException {
 		agenda.setLogger(
 				logLevel<=LOG_INFO ? out : null,
 				logLevel<=LOG_FINE ? out : null
@@ -86,12 +88,16 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 		if (args.isSet("fresh")) operation = Operation.FRESH;
 		else if (args.isSet("continue")) operation = Operation.CONTINUE;
 		else if (args.isSet("append")) operation = Operation.APPEND;
+		else if (args.isSet("attach")) operation = Operation.ATTACH;
 		
 		//String phase = fresh ? null : args.getStringOption("phase", null);
 		//if (phase != null) ctinue = true;
 		Prompt p = new Prompt();
 		
-		if (agenda.wasFinished(agendaTask)) {
+		if (operation==Operation.ATTACH && agenda.canRelyUpon(canAttachTo)) {
+			p.println("### building upon previous task ("+agenda.getLastRootTask()+")");
+		}
+		else if (agenda.wasFinished(agendaTask)) {
 			p.println("### the last run FINISHED.");
 
 			if (operation==Operation.FRESH) {
@@ -100,12 +106,15 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 			else if (operation==Operation.APPEND) {
 				p.println("### performing APPENDING import!");
 			}
+			else if (operation==Operation.ATTACH) {
+				p.println("### performing ATTACHING import!");
+			}
 			else if (operation==Operation.CONTINUE) {
 				p.println("### noting to CONTINUE.");
 				System.exit(0);
 			}
 			else {
-				String s = p.prompt("### type \"fresh\" to start a fresh run, or \"append\" to append.", "");
+				String s = p.prompt("### type \"fresh\" to start a fresh run", "");
 				
 				if (s==null) {
 					p.println("### UNEXPECTED EOF.");
@@ -118,9 +127,9 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 				if (s.equals("fresh")) {
 					operation = Operation.FRESH;
 				}
-				else if (s.equals("append")) {
+				/*else if (s.equals("append")) {
 					operation = Operation.APPEND;
-				}
+				}*/
 				else {
 					p.println("### aborted.");
 					System.exit(0);
@@ -139,6 +148,8 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 			else {
 				if (operation==Operation.APPEND) {
 					p.println("### can not append to incomplete database!");
+				} else if (operation==Operation.ATTACH) {
+					p.println("### can not attach to incomplete database!");
 				}
 				
 				String s = p.prompt("### type \"fresh\" to start a fresh run, or \"continue\" to continue the previous run\".", "");
@@ -174,6 +185,9 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 					
 					if (operation==Operation.APPEND) {
 						p.println("### can not append to incomplete database!");
+						operation = null;
+					} else  if (operation==Operation.ATTACH) {
+						p.println("### can not attach to incomplete database!");
 						operation = null;
 					}
 
@@ -268,7 +282,7 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 		if (!noimport) {
 			if (useAgenda) {
 				agenda = conceptStore.getAgenda();
-				initAgenda(agenda);
+				initAgenda(agenda, baseTasks  = new String[] {});
 			}
 
 			if (operation == Operation.FRESH) {

@@ -20,7 +20,7 @@ public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 	private TextStoreBuilder textStore;
 
 	public ImportConcepts() {
-		super("ImportDump");
+		super("ImportConcepts");
 	}
 
 	@Override

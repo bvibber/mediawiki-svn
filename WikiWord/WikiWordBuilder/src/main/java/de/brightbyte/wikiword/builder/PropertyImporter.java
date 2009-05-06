@@ -13,6 +13,7 @@ import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.store.builder.ConceptBasedStoreBuilder;
+import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 
 public class PropertyImporter extends ConceptImporter {
@@ -83,6 +84,11 @@ public class PropertyImporter extends ConceptImporter {
 		return cid;
 	}
 	
+	protected void deleteDataAfter(int delAfter) throws PersistenceException {
+		if (buildConcepts) ((IncrementalStoreBuilder)store).deleteDataAfter(delAfter, false); 
+		((IncrementalStoreBuilder)propertyStore).deleteDataAfter(delAfter, false); 
+	}
+		
 	@Override 
 	protected boolean isRelevant(WikiPage analyzerPage) {
 		ResourceType t = analyzerPage.getResourceType();

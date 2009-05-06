@@ -20,6 +20,7 @@ import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
+import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
@@ -118,6 +119,11 @@ public class ConceptImporter extends AbstractImporter {
 		}
 		
 		store.flush();
+	}
+	
+	protected void deleteDataAfter(int delAfter) throws PersistenceException {
+		((IncrementalStoreBuilder)store).deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
+		if (propertyStore!=null && storeProperties) ((IncrementalStoreBuilder)propertyStore).deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
 	}
 	
 	protected void buildTermsForMissingConcepts() throws PersistenceException {

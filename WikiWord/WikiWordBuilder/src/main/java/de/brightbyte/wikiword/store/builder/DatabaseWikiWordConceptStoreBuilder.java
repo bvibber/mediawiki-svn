@@ -408,6 +408,18 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		return executeChunkedUpdate("finishGlobalConcepts", "similarities:bilink", sql, suffix, linkTable, "A.anchor", 1);
 	}
 
+	
+	@Override
+	public void flush() throws PersistenceException{
+		super.flush();
+		
+		if (statsStore!=null)
+			statsStore.flush();
+		
+		if (infoStore!=null)
+			infoStore.flush();
+	}
+	
 	//----------------------------------------------------------------------------------
 
 	protected abstract DatabaseStatisticsStoreBuilder newStatisticsStoreBuilder() throws SQLException, PersistenceException;

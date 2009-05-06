@@ -125,7 +125,8 @@ public abstract class AbstractImporter extends AbstractProcessor implements Wiki
 
 					int delAfter = (Integer)rec.parameters.get("lastRcId_");
 					out.info("=== DIRTY BLOCK FOR SAFEPOINT#"+safepointNumber+", Deleting entries starting after id: #"+delAfter+" ===");
-					((IncrementalStoreBuilder)store).deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
+					
+					deleteDataAfter(delAfter); 
 				}
 				
 				out.info("=== BEGINNING BLOCK FOR SAFEPOINT#"+safepointNumber+": "+getAgenda().getCurrentRecord().parameters+" ===");
@@ -133,6 +134,10 @@ public abstract class AbstractImporter extends AbstractProcessor implements Wiki
 		}
 		
 		return doit;
+	}
+	
+	protected void deleteDataAfter(int delAfter) throws PersistenceException {
+		((IncrementalStoreBuilder)store).deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
 	}
 	
 	protected void concludeStep() throws PersistenceException{
