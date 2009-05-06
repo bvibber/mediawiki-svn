@@ -18,15 +18,8 @@ function do_testing_page(){
   <table border="1" cellpadding="6" width="600">
 	    <tr>
 	      <td valign="top">
-	      	<video  id="embed_vid" 
-thumbnail="http://metavid.org/wiki/index.php?action=ajax&rs=mv_frame_server&stream_id=501&t=0:01:32&amp;size=400x300" 
-roe="http://metavid.org/wiki/index.php?title=Special:MvExportStream&stream_name=House_proceeding_01-28-08&feed_format=roe&t=0:01:32/0:03:20" 
-style="width:400px;height:300px" 
-controls="true" embed_link="true" >	
-	<source type="video/x-flv" src="http://mvbox2.cse.ucsc.edu/mvFlvServer.php/house_proceeding_01-28-08.flv?t=0:01:32/0:03:20"></source>
-	<source type="video/ogg" src="http://metavidstorage01.ucsc.edu/media/house_proceeding_01-28-08.ogg?t=0:01:32/0:03:20"></source>
-</video>
-</td>
+	      	<video poster="sample_eclipse.jpg" src="sample_eclipse.ogg" ></video>
+	      </td>
 	      <td valign="top"><b>Test embed</b><br />
 	      </td>
 	    </tr>	    

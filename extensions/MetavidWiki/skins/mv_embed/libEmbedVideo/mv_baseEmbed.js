@@ -469,7 +469,7 @@ mediaSource.prototype =
     	//http://www.jibbering.com/2002/4/httprequest.html (this should be done by extending jquery's ajax objects)
     	var end_inx =  (uri.indexOf('?')!=-1)? uri.indexOf('?') : uri.length;
     	var no_param_uri = uri.substr(0, end_inx);
-        switch( no_param_uri.substr(no_param_uri.lastIndexOf('.'),4) ){
+        switch( no_param_uri.substr(no_param_uri.lastIndexOf('.'),4).toLowerCase() ){
         	case '.flv':return 'video/x-flv';break;
         	case '.ogg': case '.ogv': return 'video/ogg';break;
         	case '.anx':return 'video/ogg';break;
@@ -1932,6 +1932,8 @@ embedVideo.prototype = {
 				this.setStatus( this.getTimeReq() );
 			}			
 		}
+		//update buffer information 
+		this.updateBufferStatus();
 		
 		//update monitorTimerId to call child monitor
 		if( ! this.monitorTimerId ){
@@ -1939,7 +1941,24 @@ embedVideo.prototype = {
 	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
 	    	}
 	    }
-	},	
+	},		
+	updateBufferStatus: function(){	
+		//build the buffer targeet based for playlist vs clip 
+		var buffer_select = (this.pc) ? 
+			'#cl_status_' + this.id + ' .mv_buffer': 
+			'#mv_seeker_' + this.id + ' .mv_buffer';
+			
+		//update the buffer progress bar (if available )
+		if( this.bufferedPercent != 0 ){
+			//js_log('bufferedPercent: ' + this.bufferedPercent);			
+			if(this.bufferedPercent > 1)
+				this.bufferedPercent=1;							
+			
+			$j(buffer_select).css("width", (this.bufferedPercent*100) +'%' );
+		}else{
+			$j(buffer_select).css("width", '0px' );
+		}
+	},
 	relativeCurrentTime: function(){
 		if(!this.start_offset)
 			this.start_offset =0;
@@ -1992,17 +2011,7 @@ embedVideo.prototype = {
 		}else{
 			//hide the progress bar
 			$j('#mv_seeker_' + this_id + ' .mv_playback').css("width", "0px");
-		}
-		
-		//update the buffer progress bar (if available )
-		if( this.bufferedPercent != 0 ){
-			//js_log('bufferedPercent: ' + this.bufferedPercent);			
-			if(this.bufferedPercent > 1)
-				this.bufferedPercent=1;				
-			$j('#mv_seeker_' + this_id + ' .mv_buffer').css("width", (this.bufferedPercent*100) +'%' );
-		}else{
-			$j('#mv_seeker_' + this_id + ' .mv_buffer').css("width", '0px' );
-		}
+		}			
 		
 		//js_log('set#mv_seeker_slider_'+this_id + ' perc in: ' + perc + ' * ' + $j('#mv_seeker_'+this_id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');

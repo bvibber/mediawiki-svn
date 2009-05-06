@@ -755,7 +755,8 @@ mvPlayList.prototype = {
 			var pwidth = Math.round( perc * _this.track_len);
 			//var pwidth = Math.round( perc  * _this.track_len - (_this.mv_seeker_width*perc) );
 			
-			var barHtml = '<div id="cl_status_'+clip.id+'" class="cl_status"  style="' +					
+			//add the buffer child indicator: 						
+			var barHtml= '<div id="cl_status_' + clip.embed.id + '" class="cl_status"  style="' +					
 					'left:'+cur_pixle +'px;'+
 					'width:'+pwidth + 'px;';					
 			//set left or right border based on track pos 
@@ -763,8 +764,11 @@ mvPlayList.prototype = {
 				 'border-left:solid thin black;':
 				 'border-right:solid thin black;';											
 			barHtml+= 'filter:alpha(opacity=40);'+
-					'-moz-opacity:.40;">'+
-					'</div>';
+					'-moz-opacity:.40;">';	
+			
+			barHtml+='<div class="mv_progress mv_buffer"></div>';
+			
+			barHtml+='</div>';
 			//background:#DDDclip.getColor()
 			$j('#seeker_bar_'+_this.id).append(barHtml);
 																										

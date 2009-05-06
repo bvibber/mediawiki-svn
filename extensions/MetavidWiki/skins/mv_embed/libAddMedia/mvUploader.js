@@ -364,13 +364,18 @@ mvBaseUploadInterface.prototype = {
 	},
 	processApiResult: function( apiRes ){	
 		var _this = this;			
-		//check for error
-		if( apiRes.upload.result == "Failure" ){			
+		//check for simple error
+		debugger; 
+		if( apiRes.error ){
+			_this.updateUploadError( apiRes.error );
+		//check for upload api error: 
+		}else if( apiRes.upload && apiRes.upload.result == "Failure" ){						
 			//error space is too large so we don't front load it
 			//do a remote call to get the error msg: 
-			if(apiRes.upload.error != "unknown-error"){
-				gMsgLoadRemote(apiRes.upload.error, function(msg){
-					_this.updateUploadError( gM( apiRes.upload.error ));
+			if( apiRes.upload.code[0]){
+				gMsgLoadRemote(apiRes.upload.code[0], function(){
+					js_log('send msg: ' + gM( apiRes.upload.code[0] ));
+					_this.updateUploadError( gM( apiRes.upload.code[0] ));
 				});
 			}else{
 				_this.updateUploadError( gM('unknown-error'));
@@ -380,8 +385,7 @@ mvBaseUploadInterface.prototype = {
 		}else{			
 			//nothing fits assume unkown error:
 			_this.updateUploadError( gM('unknown-error'));
-		} 
-		
+		} 		
 	},
 	updateUploadError:function( msg ){
 		$j( '#dlbox-centered' ).html( '<h3>' + gM('uploaderror') + '</h3>' +
@@ -393,7 +397,7 @@ mvBaseUploadInterface.prototype = {
 			return false;
 		});
 	},
-	updateUploadDone:function(url){
+	updateUploadDone:function( url ){
 		$j( '#dlbox-centered' ).html( '<h3>' + gM('successfulupload') + '</h3>' +
 			gM( 'mv_upload_done', url) );	
 	},
