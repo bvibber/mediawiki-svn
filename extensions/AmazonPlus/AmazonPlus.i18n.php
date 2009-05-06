@@ -1089,15 +1089,22 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  * @author Wrightbus
  */
 $messages['vi'] = array(
+	'amazonplus-desc' => 'Một bộ mở rộng có khả năng tùy chỉnh cao để hiển thị thông tin từ Amazon',
+	'amazonplus-nores' => 'Lỗi: Không tìm thấy kết quả!',
+	'amazonplus-noidres' => 'Lỗi: Không tìm thấy mã số sản phẩm!',
+	'amazonplus-fgcerr' => 'Lỗi: Không thể truy xuất dữ liệu từ Amazon!',
+	'amazonplus-slserr' => 'Lỗi: Không thể đọc dữ liệu từ Amazon!',
 	'amazonplus-used' => 'cũ',
 	'amazonplus-german' => 'Tiếng Đức',
 	'amazonplus-french' => 'Tiếng Pháp',
 	'amazonplus-japanese' => 'Tiếng Nhật',
 	'amazonplus-amazon' => 'giá tại Amazon',
 	'amazonplus-new' => 'mới',
+	'amazonplus-none' => 'Không có bản nào của món hàng này được đăng bán.',
 	'amazonplus-cp-none' => 'Không có',
 	'amazonplus-more' => 'thêm',
 	'amazonplus-less' => 'ít hơn',

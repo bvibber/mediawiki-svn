@@ -183,10 +183,19 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'minipreview-desc' => 'MiniPreview muestra, próximo a una imagen, pequeñas previstas de otros medios en la mismas categorías o mostradas en las mismas páginas',
 	'minipreview-files_in_category' => "Esta categoría contiene '''$1''' {{PLURAL:$1|archivo|archivos}}.",
 	'minipreview-files_in_gallery' => "Esta galería contiene '''$1''' {{PLURAL:$1|archivo|archivos}}.",
 	'minipreview-no_more_files_here' => 'No más archivos en esta diracción.',
 	'minipreview-no_category_gallery' => 'Sin categorías ni galerías!',
+	'minipreview-ignore_categories' => 'La siguiente es una lista de nombres de categorías o nombres de comienzos.
+Estas categorías no serán mostradas por MiniPreview.
+Por ejemplo, "* PD-" No mostrará todas las categorías que comiencen con "PD-", tales como "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
 );
 
 /** Finnish (Suomi)

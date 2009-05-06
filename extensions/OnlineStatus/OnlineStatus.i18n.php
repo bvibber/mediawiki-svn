@@ -265,10 +265,14 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Cojoilustrado
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
 	'onlinestatus-desc' => 'Crea una preferencia para mostrar si el usuario está conectado al wiki',
+	'onlinestatus-js-anon' => 'Error: tienes que iniciar sesión para usar esta característica',
+	'onlinestatus-js-changed' => 'Tu status ha sido cambiado a "$1"',
+	'onlinestatus-js-error' => 'Imposible cambiar status, valor "$1" es inválido',
 	'onlinestatus-subtitle-offline' => 'Este usuario se encuentra desconectado',
 	'onlinestatus-subtitle-online' => 'Este usuario se encuentra conectado',
 	'onlinestatus-tab' => 'Estatus',
@@ -277,6 +281,8 @@ $messages['es'] = array(
 	'onlinestatus-toggles-show' => 'Muestra mi status en mi página de usuario',
 	'onlinestatus-toggle-offline' => 'Desconectado',
 	'onlinestatus-toggle-online' => 'Conectado',
+	'onlinestatus-pref-onlineonlogin' => 'Cambiar mi status a en línea cuando inicie sesión',
+	'onlinestatus-pref-offlineonlogout' => 'Cambiar mi estado a desconectado cuando inicie sesión',
 );
 
 /** Basque (Euskara)

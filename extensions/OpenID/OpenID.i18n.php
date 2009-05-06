@@ -2649,8 +2649,8 @@ Metetz-vos en rapòrt amb l’[[Special:ListUsers/sysop|administrator]].",
 Se desiratz utilizar vòstra OpenID per vos connectar ulteriorament, podètz [[Special:OpenIDConvert|convertir vòstre compte per utilizar OpenID]].",
 	'openidnousername' => 'Cap de nom d’utilizaire es pas estat indicat.',
 	'openidbadusername' => 'Un nom d’utilizaire marrit es estat indicat.',
-	'openidautosubmit' => 'Aquesta pagina compren un formulari que poiriá èsser mandat automaticament se avètz activat JavaScript.
-S’èra pas lo cas, ensajatz lo boton « Contunhar ».',
+	'openidautosubmit' => "Aquesta pagina conten un formulari que poiriá èsser mandat automaticament s'avètz activat JavaScript.
+S’èra pas lo cas, ensajatz lo boton « Contunhar ».",
 	'openidclientonlytext' => 'Podètz pas utilizar de comptes dempuèi aqueste wiki en tant qu’OpenID sus d’autres sits.',
 	'openidloginlabel' => 'Adreça OpenID',
 	'openidlogininstructions' => "{{SITENAME}} supòrta lo format [http://openid.net/ OpenID] estandard per una sola signatura entre de sits Internet.

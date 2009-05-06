@@ -1575,6 +1575,7 @@ $messages['lb'] = array(
 	'grouppermissions-sp-success' => "D'Rechter goufe sortéiert",
 	'grouppermissions-sp-addperm' => 'Rechter derbäisetzen',
 	'grouppermissions-sp-remove' => 'ewech huelen',
+	'grouppermissions-rug-success' => 'Benotzer goufen aus net benotzte Gruppen erausgeholl!',
 	'grouppermissions-rug-confirm' => 'Benotzer aus net benotzte Gruppen eraushuelen',
 	'right-grouppermissions' => 'Grupperechter verwalten',
 	'right-viewsource' => 'De Wiki-Quelltext vu gespaarte Säit weisen',

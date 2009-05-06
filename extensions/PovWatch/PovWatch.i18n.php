@@ -422,6 +422,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'povwatch' => 'PovWatch',
 	'povwatch_no_session' => 'Eraro: Ne eblis enigi formularon pro perdo de seancaj datenoj.',
 	'povwatch_invalid_title' => 'La enigita titolo estis nevalida',
 	'povwatch_pushed' => '[[$1]] estis sukcese pelita al $2 {{PLURAL:$2|uzula atentaro|uzulaj atentaroj}}',
@@ -437,6 +438,7 @@ $messages['eo'] = array(
 	'povwatch_added' => 'aldonita',
 	'right-povwatch_admin' => 'Administri uzulajn rajtojn por aldoni paĝojn al atentaroj de aliaj uzantoj',
 	'right-povwatch_user' => 'Aldoni paĝojn al atentaroj de aliaj uzantoj',
+	'action-povwatch_admin' => 'administri uzulajn rajtojn por PovWatch',
 );
 
 /** Spanish (Español)

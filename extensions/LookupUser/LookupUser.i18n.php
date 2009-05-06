@@ -230,11 +230,12 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'lookupuser-nonexistent' => 'Σφάλμα: Ο Χρήστης δεν υπάρχει',
-	'lookupuser-not-authenticated' => 'μην επικυρωμένος',
+	'lookupuser-not-authenticated' => 'μη επικυρωμένος',
 	'lookupuser-email' => 'Ηλεκτρονικό μήνυμα: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-realname' => 'Πραγματικό όνομα: $1',
 	'lookupuser-useroptions' => 'Επιλογές χρήστη:',

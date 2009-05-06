@@ -88,10 +88,11 @@ Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'expandtemplates' => 'فرد القوالب',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|يفرد القوالب، دوال المحلل والمتغيرات]] لعرض نص الويكي الممدد ورؤية الصفحة الناتجة',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|يفرد القوالب ودوال المحلل والمتغيرات]] لعرض نص الويكي الممدد ورؤية الصفحة الناتجة',
 	'expand_templates_intro' => 'تتعامل هذه الصفحة الخاصة مع نصوص الويكي وتقوم بفرد كل القوالب الموجودة به.
 وتقوم أيضا بفرد دوال القوالب مثل
 <nowiki>{{</nowiki>#if:...}}، والمتغيرات مثل

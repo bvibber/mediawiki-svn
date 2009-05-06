@@ -195,6 +195,7 @@ $messages['es'] = array(
 	'security-manygroups' => 'grupos $1 y $2',
 	'security-unchain' => 'modificar acciones individualmente',
 	'security-type-category' => 'categoría',
+	'security-type-namespace' => 'espacio de nombre',
 );
 
 /** French (Français)

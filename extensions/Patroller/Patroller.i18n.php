@@ -351,6 +351,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Sanbec
  * @author Titoxd
  */
@@ -373,6 +374,10 @@ $messages['es'] = array(
 	'patrol-another' => 'Mostrar otra edición (si disponible).',
 	'patrol-stopped' => 'Has optado no marcar otra edición como revisada. $1',
 	'patrol-resume' => 'Haz click aquí para continuar.',
+	'group-patroller' => 'Patrulladores',
+	'group-patroller-member' => 'patrullador',
+	'grouppage-patroller' => '{{ns:project}}:Patrullador',
+	'right-patroller' => 'Patrullar páginas',
 );
 
 /** Finnish (Suomi)

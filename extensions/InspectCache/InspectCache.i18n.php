@@ -229,6 +229,7 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
+	'inspectcache' => 'Inspeccionar cache',
 	'inspectcache-ok' => 'Aceptar',
 	'inspectcache-general' => 'Cache general',
 	'inspectcache-get' => 'Obtener',

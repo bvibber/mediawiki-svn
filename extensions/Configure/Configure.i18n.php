@@ -559,6 +559,9 @@ $messages['ar'] = array(
 	'configure-boolop-description-or' => 'على الأقل شرط واحد يجب أن يكون صوابا',
 	'configure-boolop-description-xor' => 'بالضبط شرط واحد يجب أن يكون صوابا',
 	'configure-boolop-description-not' => 'لا شروط يجب أن تكون صوابا',
+	'configure-farmer-settings' => '[[Special:Configure|ضبط هذا الويكي]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|ضبط الامتدادات لهذا الويكي]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|عرض الامتدادات المتوفرة لهذا الويكي]].',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -4436,9 +4439,9 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-boolop-description-or' => 'Winnischßdens ein Bedengung moß wohr sen',
 	'configure-boolop-description-xor' => 'Jenou ein Bedengung moß wohr sen',
 	'configure-boolop-description-not' => 'Kein Bedengung moß wohr sin',
-	'configure-farmer-settings' => 'De Enstellunge för dat Wiki hee künne op [[{{#special:Configure}}]] jemaat wääde.',
-	'configure-farmer-extensions' => 'De Projramm-Zohsäz för dat Wiki hee künne op [[{{#special:Extensions}}]] enjshtallt wääde.',
-	'configure-farmer-extensions-list' => 'De Projramm-Zohsäz för dat Wiki hee sen op [[{{#special:Extensions}}]] opjeleß.',
+	'configure-farmer-settings' => 'De [[special:Configure|Enstellunge för dat Wiki maache]]',
+	'configure-farmer-extensions' => 'De [[special:Extensions|Projramm-Zohsäz för dat Wiki hee enschtälle]]',
+	'configure-farmer-extensions-list' => 'De [[special:Extensions|Projramm-Zohsäz för dat Wiki hee opleßte]]',
 );
 
 /** Cornish (Kernewek)
@@ -5690,7 +5693,7 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 	'configure-throttle-group' => 'Tipe',
 	'configure-throttle-limit' => 'Limit',
 	'configure-throttle-none' => 'Pas cap de limit',
-	'configure-condition-operator' => 'Operator :',
+	'configure-condition-operator' => 'Operador :',
 	'configure-condition-operator-or' => 'O',
 	'configure-condition-operator-and' => 'E',
 	'configure-condition-operator-xor' => 'O exclusiu',
@@ -5716,9 +5719,9 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 	'configure-boolop-description-or' => 'Al mens una condicion deu èsser verificada',
 	'configure-boolop-description-xor' => 'Exactament una condicion deu èsser verificada',
 	'configure-boolop-description-not' => 'Cap de condicion deu pas èsser verificada',
-	'configure-farmer-settings' => "Los paramètres d'aqueste wiki pòdon èsser configurats sus [[Special:Configure]].",
-	'configure-farmer-extensions' => 'Las extensions utilizadas sus aqueste wiki pòdon èsser configuradas sus [[Special:Extensions]].',
-	'configure-farmer-extensions-list' => 'Las extensions disponiblas sus aqueste wiki son listadas sus [[Special:Extensions]].',
+	'configure-farmer-settings' => '[[Special:Configure|Configurar aqueste wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Configurar las extensions per aqueste wiki]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Lista de las extensions disponiblas per aqueste wiki]].',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -6138,6 +6141,9 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 	'configure-boolop-description-or' => 'Pelo menos uma condição tem de ser verdadeira',
 	'configure-boolop-description-xor' => 'Exatamente uma condição tem de ser verdadeira',
 	'configure-boolop-description-not' => 'Nenhuma condição pode ser verdadeira',
+	'configure-farmer-settings' => '[[Special:Configure|Configurar esta wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Configurar extensões para esta wiki]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Listar extensões disponíveis para esta wiki]].',
 );
 
 /** Tarifit (Tarifit)

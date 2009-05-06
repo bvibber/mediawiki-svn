@@ -1234,16 +1234,22 @@ $wdMessages['bg'] = array(
 	'langman_not_allowed' => 'Нямате право да променяте езиковите настройки.',
 	'langman_adding' => 'Добавяне на езика $1 с ключ $2.',
 	'langman_langname' => 'Име на езика:',
+	'langman_iso639-3' => 'ISO 639-3 код:',
+	'langman_iso639-2' => 'ISO 639-2 код:',
 	'langman_field_optional' => '(незадължително)',
 	'langman_addlang' => 'Добавяне на език',
 	'datasearch' => 'Уикиданни: Търсене на данни',
 	'datasearch_language' => 'Език:',
+	'datasearch_ext_identifier' => 'Външен идентификатор',
 	'datasearch_within_ext_ids' => 'Във външни идентификатори:',
 	'datasearch_showing_only' => 'Показване на максимум $1 {{PLURAL:$1|съвпадение|съвпадения}}.',
 	'ow_importtsv_title1' => 'Внасяне на TSV',
 	'ow_importtsv_title2' => 'Внасяне на дефиниции и преводи',
+	'ow_importtsv_importing' => 'Внасяне на TSV данни',
+	'ow_importtsv_import_failed' => 'Внасянето не сполучи',
 	'ow_importtsv_file' => 'TSV файл:',
 	'ow_importtsv_nothing_added' => 'Нищо не беше добавено.',
+	'ow_importtsv_nothing_added_test' => 'Не беше добавено нищо (беше проба).',
 	'exporttsv' => 'Wikidata: Изнасяне на TSV',
 	'ow_exporttsv_languages' => 'Езици:',
 	'ow_exporttsv_export_failed' => 'Изнасянето се провали',
@@ -7922,12 +7928,14 @@ $wdMessages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Aleksandrit
+ * @author Ferrer
  * @author Kaganer
  * @author Osd
  * @author Александр Сигачёв
  */
 $wdMessages['ru'] = array(
 	'languages' => 'Викиданные: Языковой менеджер',
+	'langman-desc' => 'Добавление и изменение языковых настроек с помощью [[Special:Languages]]',
 	'langman_title' => 'Языковой менеджер',
 	'langman_not_allowed' => 'У вас нет разрешения изменять языковые настройки.',
 	'langman_header' => 'Введите код языка и его английское название ниже:',
@@ -8136,6 +8144,7 @@ $wdMessages['ru'] = array(
 	'ow_suggest_clear' => 'Очистить',
 	'ow_nstab_definedmeaning' => 'определённое значение',
 	'ow_nstab_edit_copy' => 'править копию',
+	'right-addlanguage' => 'добавление и изменение языковых настроек',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

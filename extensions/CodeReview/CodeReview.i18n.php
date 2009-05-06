@@ -4822,6 +4822,7 @@ $messages['pt'] = array(
 	'code' => 'Revisão de Código',
 	'code-rev-title' => 'r$1 - Revisão de Código',
 	'code-comments' => 'Comentários',
+	'code-references' => 'Revisões de seguimento',
 	'code-change-status' => "alterou o '''estado''' da revisão r$1",
 	'code-change-tags' => "alterou as '''etiquetas''' da revisão r$1",
 	'code-change-removed' => 'removeu:',
@@ -4907,6 +4908,12 @@ URL completa: $2
 Comentário:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Mudanças de seguimento',
+	'codereview-email-body2' => 'Utilizador "$1" fez alterações de seguimento à r$2.
+
+URL completo: $3
+
+Sumário da submissão: $4',
 	'repoadmin' => 'Administração de Repositório',
 	'repoadmin-new-legend' => 'Criar um novo repositório',
 	'repoadmin-new-label' => 'Nome do repositório:',

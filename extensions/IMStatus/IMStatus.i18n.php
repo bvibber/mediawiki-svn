@@ -697,6 +697,7 @@ $messages['lb'] = array(
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'oder',
 	'imstatus_action' => 'Aktioun wann de Knäppche geklickt ass',
+	'imstatus_details_saa' => "fir méi Detailer iwwer d'Stiler and d'Aktioune, kukckt w.e.g. $1.",
 	'imstatus_your_name' => 'ären $1 Numm',
 	'imstatus_gtalk_code' => 'Äre Google Talk Code',
 	'imstatus_gtalk_height' => 'Höicht vun der Këscht a Pixel.',

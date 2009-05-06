@@ -588,8 +588,10 @@ Dapat itong:',
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'securepasswords-desc' => 'Tạo ra những bảng băm mật khẩu an toàn hơn và bổ sung một bộ kiểm tra độ mạnh mật khẩu',
 	'securepasswords-valid' => 'Mật khẩu của bạn không hợp lệ hay ngắn quá.
 Nó phải:',
 	'securepasswords-minlength' => 'dài đến $1 ký tự trở lên',
