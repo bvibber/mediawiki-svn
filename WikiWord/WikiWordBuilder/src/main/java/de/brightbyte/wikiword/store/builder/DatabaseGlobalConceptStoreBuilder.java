@@ -309,6 +309,9 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		String sql;
 		DatabaseTable t;
 
+		//FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME 
+		 //FIXME: langlinks point to resource names. Use aboutTable to resolve to concepts!
+		
 		String lang = localdb.getCorpus().getLanguage();
 		
 		t = localdb.getTable("langlink");

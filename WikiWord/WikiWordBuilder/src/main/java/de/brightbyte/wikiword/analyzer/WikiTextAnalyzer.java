@@ -282,6 +282,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return page;
 		}
 
+		@Deprecated
 		public CharSequence getTarget() {
 			return target;
 		}
@@ -1770,6 +1771,18 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	
 	public boolean useCategoryAliases() {
 		return config.useCategoryAliases;
+	}
+
+	public boolean useSuffixAsCategory() {
+		return config.useSuffixAsCategory;
+	}
+
+	public boolean flatTextSupported() {
+		return config.flatTextSupported;
+	}
+
+	public boolean definitionsSupported() {
+		return config.definitionsSupported;
 	}
 	
 	protected Set<CharSequence> determineSupplementLinks(WikiPage page) {

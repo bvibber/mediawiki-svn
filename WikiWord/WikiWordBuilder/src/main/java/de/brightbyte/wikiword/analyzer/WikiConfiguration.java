@@ -258,6 +258,17 @@ public class WikiConfiguration {
 	
 	/** The minimum number of characters required for terms */
 	public int minTermLength = 1;
+
+	/**
+	 * Switch to enable or disable the use of title suffixes as categories.
+	 */ 
+	public boolean useSuffixAsCategory; 
+
+	/** Flag indication wether extraction of plain prose text is supported for this wiki **/
+	public boolean flatTextSupported; 
+	
+	/** Flag indication wether extraction of definitions is supported for this wiki **/
+	public boolean definitionsSupported; 
 	
 	public TemplateExtractor.Factory templateExtractorFactory;
 
@@ -370,6 +381,10 @@ public class WikiConfiguration {
 		mainArtikeMarkerPattern = Pattern.compile("^[- !_*$@#+~/%]?"); //use "category main articles" to resolve plural names
 		
 		this.templateExtractorFactory = FlatTemplateExtractor.factory;
+		
+		this.useSuffixAsCategory = false;
+		this.definitionsSupported = true;
+		this.flatTextSupported = true;
 	}
 	
 	public void prepareFor(WikiTextAnalyzer analyzer) {
@@ -426,6 +441,10 @@ public class WikiConfiguration {
 		if (with.disambigStripSectionPattern!=null) disambigStripSectionPattern = with.disambigStripSectionPattern;
 
 		if (with.maxWordFormDistance>0) maxWordFormDistance = with.maxWordFormDistance;
+		
+		useSuffixAsCategory = useSuffixAsCategory || with.useSuffixAsCategory;
+		definitionsSupported = definitionsSupported && with.definitionsSupported;
+		flatTextSupported = flatTextSupported && with.flatTextSupported;
 	}
 	
 	/**

@@ -25,11 +25,10 @@ import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
 
 public class ConceptImporter extends AbstractImporter {
-	protected static final boolean useSuffixAsCategory = false; //NOTE: leads to inconsistencies if used...
-	
 	private boolean storeDefinitions = true;
 	private boolean storeProperties = true;
 	private boolean storeFlatText = true;
+	private boolean storeRawText = true;
 	
 	private Tracker conceptTracker;
 	private Tracker linkTracker;
@@ -50,7 +49,7 @@ public class ConceptImporter extends AbstractImporter {
 	public void prepare() throws PersistenceException {
 		store.prepareImport();
 		if (storeProperties) propertyStore.prepareImport();
-		if (storeFlatText) textStore.prepareImport();
+		if (storeFlatText || storeRawText) textStore.prepareImport();
 	}
 	
 	@Override
@@ -135,7 +134,7 @@ public class ConceptImporter extends AbstractImporter {
 					WikiPage analyzerPage = analyzer.makePage(0, r.getName(), "", false); //XXX: bypass analyzer page? 
 					storePageTerms(-1, r.getId(), analyzerPage); //FIXME: skip sections, foo#bar is not a good term!
 		
-					if (useSuffixAsCategory) {
+					if (analyzer.useSuffixAsCategory()) {
 						CharSequence sfx = analyzerPage.getTitleSuffix();
 						if (sfx!=null) storeConceptBroader(-1, r.getId(), r.getName(), analyzer.normalizeTitle(sfx).toString(), ExtractionRule.BROADER_FROM_SUFFIX);
 					}
@@ -238,21 +237,13 @@ public class ConceptImporter extends AbstractImporter {
 		//TODO: check if page is stored. if up to date, skip. if older, update. if missing, create. optionally force update.
 		int rcId = storeResource(rcName, rcType, timestamp);
 				
-		if (storeFlatText) {  
+		if (storeRawText) {  
 			textStore.storeRawText(rcId, rcName, text);
-		}
-		
-		if (storeFlatText) {  
-			CharSequence plain = analyzerPage.getPlainText(false);
-			textStore.storePlainText(rcId, rcName, plain.toString());
 		}
 		
 		if (rcType == ResourceType.CATEGORY) {
 			List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
 			linkTracker.step(links.size());
-			
-			//XXX: after resolving all aliases, change type to OTHER!
-			//int conceptId = storeConcept(rcId, name, ConceptType.UNKNOWN); 
 			
 			int conceptId = store.storeAbout(rcId, name);
 			
@@ -288,7 +279,7 @@ public class ConceptImporter extends AbstractImporter {
 			
 			//XXX: store interwiki-set inline for clustering ?
 			
-			if (useSuffixAsCategory) {
+			if (analyzer.useSuffixAsCategory()) {
 				CharSequence sfx = analyzerPage.getTitleSuffix();
 				if (sfx!=null) storeConceptBroader(rcId, conceptId, name, analyzer.normalizeTitle(sfx).toString(), ExtractionRule.BROADER_FROM_SUFFIX);
 			}
@@ -299,7 +290,12 @@ public class ConceptImporter extends AbstractImporter {
 			
 			//TODO: get all bold stuff from first sentence -> terms for page!
 			
-			if (storeDefinitions) {
+			if (storeFlatText && analyzer.flatTextSupported()) {  
+				CharSequence plain = analyzerPage.getPlainText(false);
+				textStore.storePlainText(rcId, rcName, plain.toString());
+			}
+			
+			if (storeDefinitions && analyzer.definitionsSupported()) {
 				String definition = analyzerPage.getFirstSentence().toString();
 				if (definition!=null && definition.length()>0) {
 					storeDefinition(rcId, conceptId, definition);
@@ -315,6 +311,8 @@ public class ConceptImporter extends AbstractImporter {
 						storeProperty(rcId, conceptId, name, property, v.toString());
 					}
 				}
+				
+				storeProperty(rcId, conceptId, name, "is-a", ctype.getName());
 			}
 			
 			storeSupplements(rcId, conceptId, analyzerPage);
@@ -438,9 +436,22 @@ public class ConceptImporter extends AbstractImporter {
 		if (link==null) {
 			warn(rcId, "bad redirect (no link)", "Text: "+StringUtils.clipString(text, 256, "..."), null);
 		}
-		else if (link.getInterwiki()!=null || link.getNamespace()!=0) {
+		else if (link.getInterwiki()!=null ) {
 			//redirects to other wikis or into another namespace are handeled as BAD page.
-			out.info("skipped bad redirect "+rcName+" -> "+link);
+			out.info("skipped interwiki redirect "+rcName+" -> "+link);
+		}
+		else if (link.getNamespace()!=analyzerPage.getNamespace()) {
+			if (link.getNamespace()==Namespace.CATEGORY && analyzerPage.getNamespace()==Namespace.MAIN) {
+				if ( StringUtils.equals(link.getPage(), analyzerPage.getTitle()) ) {
+						out.debug("ignored redundant category redirect "+rcName+" -> "+link);
+				} else {
+						out.debug("processing category redirect "+rcName+" -> "+link);
+						storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_REDIRECT );
+						storeConceptAlias(rcId, conceptId, name, -1, link.getPage().toString(), AliasScope.REDIRECT);
+				}
+			} else {
+					out.info("skipped inter-namespace redirect "+rcName+" -> "+link);
+			}
 		}
 		else if (name.equals(link.getPage().toString())) {
 			warn(rcId, "bad redirect (self-link)", "page "+name, null);
@@ -448,7 +459,7 @@ public class ConceptImporter extends AbstractImporter {
 		else {
 			conceptId = storeConcept(rcId, name, ConceptType.ALIAS); 
 			storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_REDIRECT );
-			storeConceptAlias(rcId, conceptId, name, -1, link.getPage().toString(), AliasScope.REDIRECT); //TODO: confidence?...
+			storeConceptAlias(rcId, conceptId, name, -1, link.getPage().toString(), AliasScope.REDIRECT); 
 			
 			//FIXME: redir to section!
 		}
@@ -471,6 +482,7 @@ public class ConceptImporter extends AbstractImporter {
 		this.storeDefinitions = !args.isSet("nodef");
 		this.storeProperties = !args.isSet("noprop");
 		this.storeFlatText = args.isSet("dotext");
+		this.storeRawText = args.isSet("dotext");
 	}
 
 	//-----------------------------------------------------------------------------

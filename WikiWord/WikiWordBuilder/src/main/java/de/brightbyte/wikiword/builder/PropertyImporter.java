@@ -51,6 +51,7 @@ public class PropertyImporter extends ConceptImporter {
 		int cid = 0;
 		
 		ResourceType rcType = analyzerPage.getResourceType();
+		ConceptType ctype = analyzerPage.getConceptType();
 		
 		if (buildConcepts) {
 			rcId = storeResource(rcName, rcType, timestamp);	
@@ -59,7 +60,6 @@ public class PropertyImporter extends ConceptImporter {
 				storeAlias(analyzerPage, rcId);
 			}
 			
-			ConceptType ctype = analyzerPage.getConceptType();
 			cid = storeConcept(rcId, name, ctype);
 		} 
 		
@@ -72,6 +72,8 @@ public class PropertyImporter extends ConceptImporter {
 					storeProperty(rcId, cid, name, property, v.toString());
 				}
 			}
+			
+			storeProperty(rcId, cid, name, "is-a", ctype.getName());
 			
 			if (buildConcepts) {
 				storeSupplements(rcId, cid, analyzerPage);
