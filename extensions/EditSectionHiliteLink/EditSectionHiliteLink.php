@@ -29,9 +29,10 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'EditSectionHiliteLink',
 	'author' => 'Arash Boostani',
+	'version' => '0.1.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:EditSectionHiliteLink',
 	'description' => 'Hilight the appropriate section of an article when you mouse over the edit link',
-	'description-msg' => 'EditSectionHiliteLink-desc',
+	'description-msg' => 'Editsectionhilitelink-desc',
 );
 
 // Turn on the section container divs in the Parser
