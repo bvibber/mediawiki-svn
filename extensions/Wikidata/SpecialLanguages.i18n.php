@@ -40,8 +40,8 @@ $wdMessages['en'] = array(
 	'datasearch_within_ext_ids'				=> 'Within external identifiers:',
 	'datasearch_showing_only'				=> 'Showing only a maximum of $1 {{PLURAL:$1|match|matches}}.',
 	'datasearch_match_ext_ids'				=> 'External identifiers matching <i>$1</i>',
-	'datasearch_match_words'				=> '{{PLURAL:$1|Word|Words}} matching <i>$1</i> and associated {{PLURAL:$1|meaning|meanings}}',
-	'datasearch_match_words_lang'			=> '{{PLURAL:$1|Word|Words}} in <i>$1</i> matching <i>$2</i> and associated {{PLURAL:$1|meaning|meanings}}',
+	'datasearch_match_words'				=> 'Words matching <i>$1</i> and associated meanings',
+	'datasearch_match_words_lang'			=> 'Words in <i>$1</i> matching <i>$2</i> and associated meanings',
 	
 	'importtsv'								=> 'Wikidata: Import TSV',
 	'ow_importtsv_title1'					=> 'Import TSV',

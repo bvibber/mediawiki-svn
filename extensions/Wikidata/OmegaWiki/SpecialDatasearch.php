@@ -152,9 +152,9 @@ function wfSpecialDatasearch() {
 
 			if ($withinWords) {
 				if ($languageId != 0 && $languageName != "")
-					$wgOut->addHTML('<h1>' . wfMsgExt('datasearch_match_words_lang', array( 'parse' ) , $languageName, $searchText) . '</h1>');
+					$wgOut->addHTML('<h1>' . wfMsg('datasearch_match_words_lang', $languageName, $searchText) . '</h1>');
 				else
-					$wgOut->addHTML('<h1>' . wfMsgExt('datasearch_match_words', array( 'parse' ) , $searchText) . '</h1>');
+					$wgOut->addHTML('<h1>' . wfMsg('datasearch_match_words', $searchText) . '</h1>');
 
 				$wgOut->addHTML('<p>' . wfMsgExt('datasearch_showing_only', 'parsemag', 100) . '</p>');
 
