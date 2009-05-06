@@ -1,6 +1,9 @@
 <?php
 /** Niuean (ko e vagahau Niuē)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -44,12 +47,14 @@ $messages = array(
 'december-gen'  => 'Tesemo',
 'may'           => 'Me',
 
-'article'        => 'Tohi Tala',
-'cancel'         => 'Tiaki',
+'article'    => 'Tohi Tala',
+'cancel'     => 'Tiaki',
+'mytalk'     => 'Haaku tutala',
+'navigation' => 'Navikati',
+
+# Cologne Blue skin
 'qbedit'         => 'Fakahakohako',
 'qbspecialpages' => 'Tau Lau Mahuiga',
-'mytalk'         => 'Haaku tutala',
-'navigation'     => 'Navikati',
 
 'help'             => 'Lagomatai',
 'search'           => 'Kumi',
@@ -105,9 +110,6 @@ Ua nimo ke hiki e haau tau manako {{SITENAME}}.',
 'notloggedin'             => 'Ai la hu ki loto',
 'createaccount'           => 'Talaga e poko',
 'gotaccountlink'          => 'Hu ki loto',
-'youremail'               => 'Meli hila:',
-'username'                => 'Matahigoa he tagata:',
-'email'                   => 'Meli hila',
 
 # Edit pages
 'summary'            => 'Fakakatoakatoa:',
@@ -128,6 +130,9 @@ Ua nimo ke hiki e haau tau manako {{SITENAME}}.',
 'prefsnologin'      => 'Ai la hu ki loto',
 'prefs-rc'          => 'Hikihikiaga mogoia',
 'searchresultshead' => 'Kumi',
+'youremail'         => 'Meli hila:',
+'username'          => 'Matahigoa he tagata:',
+'email'             => 'Meli hila',
 
 # Recent changes
 'recentchanges' => 'Hikihikiaga mogoia',

@@ -49,7 +49,6 @@ class ApiDelete extends ApiBase {
 	 */
 	public function execute() {
 		global $wgUser;
-		$this->getMain()->requestWriteMode();
 		$params = $this->extractRequestParams();
 
 		$this->requireOnlyOneParameter($params, 'title', 'pageid');
@@ -76,7 +75,7 @@ class ApiDelete extends ApiBase {
 			$retval = self::deleteFile($params['token'], $titleObj, $params['oldimage'], $reason, false);
 			if(count($retval))
 				// We don't care about multiple errors, just report one of them
-				$this->dieUsageMsg(current($retval));
+				$this->dieUsageMsg(reset($retval));
 		} else {
 			$articleObj = new Article($titleObj);
 			if($articleObj->isBigDeletion() && !$wgUser->isAllowed('bigdelete')) {
@@ -87,7 +86,7 @@ class ApiDelete extends ApiBase {
 			
 			if(count($retval))
 				// We don't care about multiple errors, just report one of them
-				$this->dieUsageMsg(current($retval));
+				$this->dieUsageMsg(reset($retval));
 			
 			if($params['watch'] || $wgUser->getOption('watchdeletion'))
 				$articleObj->doWatch();
@@ -177,6 +176,10 @@ class ApiDelete extends ApiBase {
 	}
 	
 	public function mustBePosted() { return true; }
+
+	public function isWriteMode() {
+		return true;
+	}
 
 	public function getAllowedParams() {
 		return array (

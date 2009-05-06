@@ -106,9 +106,21 @@ class ChangesList {
 	 * @returns string
 	 */
 	public static function showCharacterDifference( $old, $new ) {
-		global $wgRCChangedSizeThreshold, $wgLang;
+		global $wgRCChangedSizeThreshold, $wgLang, $wgMiserMode;
 		$szdiff = $new - $old;
-		$formatedSize = wfMsgExt( 'rc-change-size', array( 'parsemag', 'escape' ), $wgLang->formatNum( $szdiff ) );
+
+		$code = $wgLang->getCode();
+		static $fastCharDiff = array();
+		if ( !isset($fastCharDiff[$code]) ) {
+			$fastCharDiff[$code] = $wgMiserMode || wfMsgNoTrans( 'rc-change-size' ) === '$1';
+		}
+			
+		$formatedSize = $wgLang->formatNum($szdiff);
+
+		if ( !$fastCharDiff[$code] ) {
+			$formatedSize = wfMsgExt( 'rc-change-size', array( 'parsemag', 'escape' ), $formatedSize );
+		}
+			
 		if( abs( $szdiff ) > abs( $wgRCChangedSizeThreshold ) ) {
 			$tag = 'strong';
 		} else {
@@ -322,17 +334,17 @@ class ChangesList {
 	/** Inserts a rollback link */
 	protected function insertRollback( &$s, &$rc ) {
 		global $wgUser;
-		if( !$rc->mAttribs['rc_new'] && $rc->mAttribs['rc_this_oldid'] && $wgUser->isAllowed('rollback') ) {
+		if( !$rc->mAttribs['rc_new'] && $rc->mAttribs['rc_this_oldid'] && $rc->mAttribs['rc_cur_id'] ) {
 			$page = $rc->getTitle();
 			/** Check for rollback and edit permissions, disallow special pages, and only
 			  * show a link on the top-most revision */
-			if( $rc->mAttribs['rc_cur_id'] && $page->getLatestRevID() == $rc->mAttribs['rc_this_oldid'] 
-				&& $page->quickUserCan('rollback') && $page->quickUserCan('edit') )
+			if ($wgUser->isAllowed('rollback') && $rc->mAttribs['page_latest'] == $rc->mAttribs['rc_this_oldid'] )
 			{
 				$rev = new Revision( array(
 					'id'        => $rc->mAttribs['rc_this_oldid'],
 					'user'      => $rc->mAttribs['rc_user'],
-					'user_text' => $rc->mAttribs['rc_user_text']
+					'user_text' => $rc->mAttribs['rc_user_text'],
+					'deleted'   => $rc->mAttribs['rc_deleted']
 				) );
 				$rev->setTitle( $page );
 				$s .= ' '.$this->skin->generateRollback( $rev );
@@ -363,7 +375,7 @@ class OldChangesList extends ChangesList {
 	 * Format a line using the old system (aka without any javascript).
 	 */
 	public function recentChangesLine( &$rc, $watched = false, $linenumber = NULL ) {
-		global $wgContLang, $wgLang, $wgRCShowChangedSize, $wgUser;
+		global $wgLang, $wgRCShowChangedSize, $wgUser;
 		wfProfileIn( __METHOD__ );
 		# Should patrol-related stuff be shown?
 		$unpatrolled = $wgUser->useRCPatrol() && !$rc->mAttribs['rc_patrolled'];
@@ -468,7 +480,7 @@ class EnhancedChangesList extends ChangesList {
 	 * Format a line for enhanced recentchange (aka with javascript and block of lines).
 	 */
 	public function recentChangesLine( &$baseRC, $watched = false ) {
-		global $wgLang, $wgContLang, $wgUser;
+		global $wgLang, $wgUser;
 		
 		wfProfileIn( __METHOD__ );
 
@@ -479,7 +491,7 @@ class EnhancedChangesList extends ChangesList {
 		// FIXME: Would be good to replace this extract() call with something
 		// that explicitly initializes variables.
 		extract( $rc->mAttribs );
-		$curIdEq = 'curid=' . $rc_cur_id;
+		$curIdEq = array( 'curid' => $rc_cur_id );
 
 		# If it's a new day, add the headline and flush the cache
 		$date = $wgLang->date( $rc_timestamp, true );
@@ -504,19 +516,21 @@ class EnhancedChangesList extends ChangesList {
 		// Page moves
 		if( $rc_type == RC_MOVE || $rc_type == RC_MOVE_OVER_REDIRECT ) {
 			$msg = ( $rc_type == RC_MOVE ) ? "1movedto2" : "1movedto2_redir";
-			$clink = wfMsg( $msg, $this->skin->makeKnownLinkObj( $rc->getTitle(), '', 'redirect=no' ),
-			  $this->skin->makeKnownLinkObj( $rc->getMovedToTitle(), '' ) );
+			$clink = wfMsg( $msg, $this->skin->linkKnown( $rc->getTitle(), null,
+				array(), array( 'redirect' => 'no' ) ),
+				$this->skin->linkKnown( $rc->getMovedToTitle() ) );
 		// New unpatrolled pages
 		} else if( $rc->unpatrolled && $rc_type == RC_NEW ) {
-			$clink = $this->skin->makeKnownLinkObj( $rc->getTitle(), '', "rcid={$rc_id}" );
+			$clink = $this->skin->linkKnown( $rc->getTitle(), null, array(),
+				array( 'rcid' => $rc_id ) );
 		// Log entries
 		} else if( $rc_type == RC_LOG ) {
 			if( $rc_log_type ) {
 				$logtitle = SpecialPage::getTitleFor( 'Log', $rc_log_type );
-				$clink = '(' . $this->skin->makeKnownLinkObj( $logtitle, 
+				$clink = '(' . $this->skin->linkKnown( $logtitle, 
 					LogPage::logName($rc_log_type) ) . ')';
 			} else {
-				$clink = $this->skin->makeLinkObj( $rc->getTitle(), '' );
+				$clink = $this->skin->link( $rc->getTitle() );
 			}
 			$watched = false;
 		// Log entries (old format) and special pages
@@ -525,14 +539,14 @@ class EnhancedChangesList extends ChangesList {
 			if ( $specialName == 'Log' ) {
 				# Log updates, etc
 				$logname = LogPage::logName( $logtype );
-				$clink = '(' . $this->skin->makeKnownLinkObj( $rc->getTitle(), $logname ) . ')';
+				$clink = '(' . $this->skin->linkKnown( $rc->getTitle(), $logname ) . ')';
 			} else {
 				wfDebug( "Unexpected special page in recentchanges\n" );
 				$clink = '';
 			}
 		// Edits
 		} else {
-			$clink = $this->skin->makeKnownLinkObj( $rc->getTitle(), '' );
+			$clink = $this->skin->linkKnown( $rc->getTitle() );
 		}
 
 		# Don't show unusable diff links
@@ -540,34 +554,39 @@ class EnhancedChangesList extends ChangesList {
 			$showdifflinks = false;
 		}
 
-		$time = $wgContLang->time( $rc_timestamp, true, true );
+		$time = $wgLang->time( $rc_timestamp, true, true );
 		$rc->watched = $watched;
 		$rc->link = $clink;
 		$rc->timestamp = $time;
 		$rc->numberofWatchingusers = $baseRC->numberofWatchingusers;
 
-		# Make "cur" and "diff" links
+		# Make "cur" and "diff" links.  Don't use link(), it's too slow if
+		# called too many times (50% of CPU time on RecentChanges!).
 		if( $rc->unpatrolled ) {
-			$rcIdQuery = "&rcid={$rc_id}";
+			$rcIdQuery = array( 'rcid' => $rc_id );
 		} else {
-			$rcIdQuery = '';
+			$rcIdQuery = array();
 		}
-		$querycur = $curIdEq."&diff=0&oldid=$rc_this_oldid";
-		$querydiff = $curIdEq."&diff=$rc_this_oldid&oldid=$rc_last_oldid$rcIdQuery";
-		$aprops = ' tabindex="'.$baseRC->counter.'"';
-		$curLink = $this->skin->makeKnownLinkObj( $rc->getTitle(), 
-			$this->message['cur'], $querycur, '' ,'', $aprops );
+		$querycur = $curIdEq + array( 'diff' => '0', 'oldid' => $rc_this_oldid );
+		$querydiff = $curIdEq + array( 'diff' => $rc_this_oldid, 'oldid' =>
+			$rc_last_oldid ) + $rcIdQuery;
 
-		# Make "diff" an "cur" links
 		if( !$showdifflinks ) {
-		   $curLink = $this->message['cur'];
-		   $diffLink = $this->message['diff'];
+			$curLink = $this->message['cur'];
+			$diffLink = $this->message['diff'];
 		} else if( in_array( $rc_type, array(RC_NEW,RC_LOG,RC_MOVE,RC_MOVE_OVER_REDIRECT) ) ) {
-			$curLink = ($rc_type != RC_NEW) ? $this->message['cur'] : $curLink;
+			if ( $rc_type != RC_NEW ) {
+				$curLink = $this->message['cur'];
+			} else {
+				$curUrl = htmlspecialchars( $rc->getTitle()->getLinkUrl( $querycur ) );
+				$curLink = "<a href=\"$curUrl\" tabindex=\"{$baseRC->counter}\">{$this->message['cur']}</a>";
+			}
 			$diffLink = $this->message['diff'];
 		} else {
-			$diffLink = $this->skin->makeKnownLinkObj( $rc->getTitle(), $this->message['diff'], 
-				$querydiff, '' ,'', $aprops );
+			$diffUrl = htmlspecialchars( $rc->getTitle()->getLinkUrl( $querydiff ) );
+			$curUrl = htmlspecialchars( $rc->getTitle()->getLinkUrl( $querycur ) );
+			$diffLink = "<a href=\"$diffUrl\" tabindex=\"{$baseRC->counter}\">{$this->message['diff']}</a>";
+			$curLink = "<a href=\"$curUrl\" tabindex=\"{$baseRC->counter}\">{$this->message['cur']}</a>";
 		}
 
 		# Make "last" link
@@ -576,8 +595,8 @@ class EnhancedChangesList extends ChangesList {
 		} else if( $rc_type == RC_LOG || $rc_type == RC_MOVE || $rc_type == RC_MOVE_OVER_REDIRECT ) {
 			$lastLink = $this->message['last'];
 		} else {
-			$lastLink = $this->skin->makeKnownLinkObj( $rc->getTitle(), $this->message['last'],
-			$curIdEq.'&diff='.$rc_this_oldid.'&oldid='.$rc_last_oldid . $rcIdQuery );
+			$lastLink = $this->skin->linkKnown( $rc->getTitle(), $this->message['last'],
+				array(), $curIdEq + array('diff' => $rc_this_oldid, 'oldid' => $rc_last_oldid) + $rcIdQuery );
 		}
 
 		# Make user links
@@ -906,7 +925,7 @@ class EnhancedChangesList extends ChangesList {
 	 * @return string a HTML formated line (generated using $r)
 	 */
 	protected function recentChangesBlockLine( $rcObj ) {
-		global $wgContLang, $wgRCShowChangedSize;
+		global $wgRCShowChangedSize;
 
 		wfProfileIn( __METHOD__ );
 

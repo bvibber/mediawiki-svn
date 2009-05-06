@@ -173,8 +173,10 @@ class ApiQuery extends ApiBase {
 	
 	public function getCustomPrinter() {
 		// If &exportnowrap is set, use the raw formatter
-		if ($this->getParameter('exportnowrap'))
-			return new ApiFormatRaw($this->getMain());
+		if ($this->getParameter('export') &&
+				$this->getParameter('exportnowrap'))
+			return new ApiFormatRaw($this->getMain(),
+				$this->getMain()->createPrinterByName('xml'));
 		else
 			return null;
 	}
@@ -374,36 +376,35 @@ class ApiQuery extends ApiBase {
 			}
 
 			$result->setIndexedTagName($pages, 'page');
-			$result->addValue('query', 'pages', $pages);
-			
-			if ($this->params['export']) {
-				$exporter = new WikiExporter($this->getDB());
-				// WikiExporter writes to stdout, so catch its
-				// output with an ob
-				ob_start();
-				$exporter->openStream();
-				foreach ($pageSet->getGoodTitles() as $title)
-					if ($title->userCanRead())
-						$exporter->pageByTitle($title);
-				$exporter->closeStream();
-				$exportxml = ob_get_contents();
-				ob_end_clean();
-				// Don't check the size of exported stuff
-				// It's not continuable, so it would cause more
-				// problems than it'd solve
-				$result->disableSizeCheck();
-				if ($this->params['exportnowrap']) {
-					$result->reset();
-					// Raw formatter will handle this
-					$result->addValue(null, 'text', $exportxml);
-					$result->addValue(null, 'mime', 'text/xml');
-				} else {
-					$r = array();
-					ApiResult::setContent($r, $exportxml);
-					$result->addValue('query', 'export', $r);
-				}
-				$result->enableSizeCheck();
+			$result->addValue('query', 'pages', $pages);			
+		}
+		if ($this->params['export']) {
+			$exporter = new WikiExporter($this->getDB());
+			// WikiExporter writes to stdout, so catch its
+			// output with an ob
+			ob_start();
+			$exporter->openStream();
+			foreach (@$pageSet->getGoodTitles() as $title)
+				if ($title->userCanRead())
+					$exporter->pageByTitle($title);
+			$exporter->closeStream();
+			$exportxml = ob_get_contents();
+			ob_end_clean();
+			// Don't check the size of exported stuff
+			// It's not continuable, so it would cause more
+			// problems than it'd solve
+			$result->disableSizeCheck();
+			if ($this->params['exportnowrap']) {
+				$result->reset();
+				// Raw formatter will handle this
+				$result->addValue(null, 'text', $exportxml);
+				$result->addValue(null, 'mime', 'text/xml');
+			} else {
+				$r = array();
+				ApiResult::setContent($r, $exportxml);
+				$result->addValue('query', 'export', $r);
 			}
+			$result->enableSizeCheck();
 		}
 	}
 
@@ -552,11 +553,12 @@ class ApiQuery extends ApiBase {
 			'prop' => 'Which properties to get for the titles/revisions/pageids',
 			'list' => 'Which lists to get',
 			'meta' => 'Which meta data to get about the site',
-			'generator' => 'Use the output of a list as the input for other prop/list/meta items',
+			'generator' => array('Use the output of a list as the input for other prop/list/meta items',
+					'NOTE: generator parameter names must be prefixed with a \'g\', see examples.'),
 			'redirects' => 'Automatically resolve redirects',
 			'indexpageids' => 'Include an additional pageids section listing all returned page IDs.',
 			'export' => 'Export the current revisions of all given or generated pages',
-			'exportnowrap' => 'Return the export XML without wrapping it in an XML result',
+			'exportnowrap' => 'Return the export XML without wrapping it in an XML result (same format as Special:Export). Can only be used with export',
 		);
 	}
 
@@ -570,7 +572,8 @@ class ApiQuery extends ApiBase {
 
 	protected function getExamples() {
 		return array (
-			'api.php?action=query&prop=revisions&meta=siteinfo&titles=Main%20Page&rvprop=user|comment'
+			'api.php?action=query&prop=revisions&meta=siteinfo&titles=Main%20Page&rvprop=user|comment',
+			'api.php?action=query&generator=allpages&gapprefix=API/&prop=revisions',
 		);
 	}
 

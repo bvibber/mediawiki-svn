@@ -155,6 +155,7 @@ $wgUpdates = array(
 		array( 'add_table', 'change_tag',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'tag_summary',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'valid_tag',			   'patch-change_tag.sql' ),
+		array( 'add_table', 'user_properties',		   'patch-user_properties.sql' ),
 	),
 
 	'sqlite' => array(
@@ -168,6 +169,7 @@ $wgUpdates = array(
 		array( 'add_table', 'change_tag',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'tag_summary',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'valid_tag',			   'patch-change_tag.sql' ),
+		array( 'add_table', 'user_properties',		   'patch-user_properties.sql' ),
 	),
 );
 
@@ -176,7 +178,8 @@ $wgUpdates = array(
 # $wgDBtype should be checked to specifiy the proper file
 $wgExtNewTables = array(); // table, dir
 $wgExtNewFields = array(); // table, column, dir
-$wgExtPGNewFields = array(); // table, column attributes; for PostgreSQL
+$wgExtPGNewFields = array(); // table, column, column attributes; for PostgreSQL
+$wgExtPGAlteredFields = array(); // table, column, new type, conversion method; for PostgreSQL
 $wgExtNewIndexes = array(); // table, index, dir
 
 # Helper function: check if the given key is present in the updatelog table.
@@ -1500,8 +1503,9 @@ function do_postgres_updates() {
 		array("redirect",          "patch-redirect.sql"),
 		array("updatelog",         "patch-updatelog.sql"),
 		array('change_tag',        'patch-change_tag.sql'),
-		array('tag_summary',        'patch-change_tag.sql'),
-		array('valid_tag',        'patch-change_tag.sql'),
+		array('tag_summary',       'patch-change_tag.sql'),
+		array('valid_tag',         'patch-change_tag.sql'),
+		array('user_properties',   'patch-user_properties.sql'),
 	);
 
 	$newcols = array(
@@ -1522,6 +1526,7 @@ function do_postgres_updates() {
 		array("logging",       "log_id",               "INTEGER NOT NULL PRIMARY KEY DEFAULT nextval('log_log_id_seq')"),
 		array("logging",       "log_params",           "TEXT"),
 		array("mwuser",        "user_editcount",       "INTEGER"),
+		array("mwuser",        "user_hidden",          "SMALLINT NOT NULL DEFAULT 0"),
 		array("mwuser",        "user_newpass_time",    "TIMESTAMPTZ"),
 		array("oldimage",      "oi_deleted",           "SMALLINT NOT NULL DEFAULT 0"),
 		array("oldimage",      "oi_major_mime",        "TEXT NOT NULL DEFAULT 'unknown'"),
@@ -1569,7 +1574,7 @@ function do_postgres_updates() {
 		array("ipblocks",     "ipb_enable_autoblock", "smallint", "CASE WHEN ipb_enable_autoblock=' ' THEN 0 ELSE ipb_enable_autoblock::smallint END DEFAULT 1"),
 		array("ipblocks",     "ipb_block_email", "smallint", "CASE WHEN ipb_block_email=' ' THEN 0 ELSE ipb_block_email::smallint END DEFAULT 0"),
 		array("ipblocks",     "ipb_address",     "text",     "ipb_address::text"),
-		array("ipblocks",     "ipb_deleted",     "smallint", "ipb_deleted::smallint"),
+		array("ipblocks",     "ipb_deleted",     "smallint", "ipb_deleted::smallint DEFAULT 0"),
 		array("math",         "math_inputhash",  "bytea",    "decode(math_inputhash,'escape')"),
 		array("math",         "math_outputhash", "bytea",    "decode(math_outputhash,'escape')"),
 		array("mwuser",       "user_token",      "text",     ""),
@@ -1593,6 +1598,14 @@ function do_postgres_updates() {
 		array("revision",     "rev_minor_edit",  "smallint", "rev_minor_edit::smallint DEFAULT 0"),
 		array("templatelinks","tl_namespace",    "smallint", "tl_namespace::smallint"),
 		array("user_newtalk", "user_ip",         "text",     "host(user_ip)"),
+	);
+
+	# table, column, nullability
+	$nullchanges = array(
+		array("oldimage", "oi_bits",       "NULL"),
+		array("oldimage", "oi_timestamp",  "NULL"),
+		array("oldimage", "oi_major_mime", "NULL"),
+		array("oldimage", "oi_minor_mime", "NULL"),
 	);
 
 	$newindexes = array(
@@ -1681,6 +1694,34 @@ function do_postgres_updates() {
 		}
 	}
 
+	foreach ($nullchanges as $nc) {
+		$fi = $wgDatabase->fieldInfo($nc[0], $nc[1]);
+		if (is_null($fi)) {
+			wfOut( "... error: expected column $nc[0].$nc[1] to exist\n" );
+			exit(1);
+		}
+		if ($fi->nullable()) {
+			## It's NULL - does it need to be NOT NULL?
+			if ('NOT NULL' === $nc[2]) {
+				wfOut( "Changing \"$nc[0].$nc[1]\" to not allow NULLs\n" );
+				$wgDatabase->query( "ALTER TABLE $nc[0] ALTER $nc[1] SET NOT NULL" );
+			}
+			else {
+				wfOut( "... column \"$nc[0].$nc[1]\" is already set as NULL\n" );
+			}
+		}
+		else {
+			## It's NOT NULL - does it need to be NULL?
+			if ('NULL' === $nc[2]) {
+				wfOut( "Changing \"$nc[0].$nc[1]\" to allow NULLs\n" );
+				$wgDatabase->query( "ALTER TABLE $nc[0] ALTER $nc[1] DROP NOT NULL" );
+			}
+			else {
+				wfOut( "... column \"$nc[0].$nc[1]\" is already set as NOT NULL\n" );
+			}
+		}
+	}
+
 	if ($wgDatabase->fieldInfo('oldimage','oi_deleted')->type() !== 'smallint') {
 		wfOut( "Changing \"oldimage.oi_deleted\" to type \"smallint\"\n" );
 		$wgDatabase->query( "ALTER TABLE oldimage ALTER oi_deleted DROP DEFAULT" );
@@ -1710,7 +1751,7 @@ function do_postgres_updates() {
 	}
 
 	if ($wgDatabase->hasConstraint("oldimage_oi_name_fkey")) {
-		wfOut( "Making foriegn key on table \"oldimage\" (to image) a cascade delete\n" );
+		wfOut( "Making foreign key on table \"oldimage\" (to image) a cascade delete\n" );
 		$wgDatabase->query( "ALTER TABLE oldimage DROP CONSTRAINT oldimage_oi_name_fkey" );
 		$wgDatabase->query( "ALTER TABLE oldimage ADD CONSTRAINT oldimage_oi_name_fkey_cascade ".
 			"FOREIGN KEY (oi_name) REFERENCES image(img_name) ON DELETE CASCADE" );
@@ -1770,7 +1811,7 @@ function do_postgres_updates() {
 		dbsource(archive('patch-ipb_address_unique.sql'));
 	}
 
-	global $wgExtNewTables, $wgExtPGNewFields, $wgExtNewIndexes;
+	global $wgExtNewTables, $wgExtPGNewFields, $wgExtPGAlteredFields, $wgExtNewIndexes;
 	# Add missing extension tables
 	foreach ( $wgExtNewTables as $nt ) {
 		if ($wgDatabase->tableExists($nt[0])) {
@@ -1790,6 +1831,26 @@ function do_postgres_updates() {
 		wfOut( "Adding column \"$nc[0].$nc[1]\"\n" );
 		$wgDatabase->query( "ALTER TABLE $nc[0] ADD $nc[1] $nc[2]" );
 	}
+	# Change altered columns
+	foreach ( $wgExtPGAlteredFields as $nc ) {
+		$fi = $wgDatabase->fieldInfo($nc[0], $nc[1]);
+		if (is_null($fi)) {
+			wfOut( "WARNING! Column \"$nc[0].$nc[1]\" does not exist but had an alter request! Please report this.\n" );
+			continue;
+		}
+		$oldtype = $fi->type();
+		$newtype = strtolower( $nc[2] );
+		if ($oldtype === $newtype) {
+			wfOut( "... column \"$nc[0].$nc[1]\" has correct type of \"$newtype\"\n" );
+			continue;
+		}
+		$command = "ALTER TABLE $nc[0] ALTER $nc[1] TYPE $nc[2]";
+		if ( isset( $nc[3] ) ) {
+			$command .= " USING $nc[3]";
+		}
+		wfOut( "Altering column \"$nc[0].$nc[1]\" from type \"$oldtype\" to \"$newtype\"\n" );
+		$wgDatabase->query( $command );
+	}
 	# Add missing extension indexes
 	foreach ( $wgExtNewIndexes as $ni ) {
 		if (pg_index_exists($ni[0], $ni[1])) {
@@ -1797,7 +1858,12 @@ function do_postgres_updates() {
 			continue;
 		}
 		wfOut( "Creating index \"$ni[1]\" on table \"$ni[0]\"\n" );
-		dbsource($ni[2]);
+		if ( preg_match( '/^\(/', $ni[2] ) ) {
+			$wgDatabase->query( "CREATE INDEX $ni[1] ON $ni[0] $ni[2]" );
+		}
+		else {
+			dbsource($ni[2]);
+		}
 	}
 
 	# Tweak the page_title tsearch2 trigger to filter out slashes

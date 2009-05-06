@@ -1,6 +1,9 @@
 <?php
 /** Moldavian (Молдовеняскэ)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -135,6 +138,8 @@ $messages = array(
 
 # Namespace form on various pages
 'blanknamespace' => '(Принчиал)',
+
+'sp-contributions-talk' => 'Дискуций',
 
 # What links here
 'whatlinkshere'       => 'Че се лягэ аичь',

@@ -1,6 +1,9 @@
 <?php
 /** Fulah (Fulfulde)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -51,6 +54,8 @@ $messages = array(
 
 # Watchlist
 'watch' => 'Rewindaande',
+
+'sp-contributions-talk' => 'Kaldigal',
 
 # Special:NewFiles
 'ilsubmit' => 'Yiilaade',

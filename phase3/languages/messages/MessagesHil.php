@@ -1,6 +1,9 @@
 <?php
 /** Hiligaynon (Ilonggo)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -67,15 +70,17 @@ $messages = array(
 'nov'           => 'Nob',
 'dec'           => 'Dis',
 
-'about'          => 'Nahanungod',
-'cancel'         => 'Kanselahon',
+'about'      => 'Nahanungod',
+'cancel'     => 'Kanselahon',
+'mytalk'     => 'Akon paghisayranay',
+'navigation' => 'Nabigayson',
+'and'        => '&#32;kag',
+
+# Cologne Blue skin
 'qbfind'         => 'Pangita',
 'qbedit'         => 'Ilisan',
 'qbpageoptions'  => 'Ining panid',
 'qbspecialpages' => 'Pinasahi nga mga panid',
-'mytalk'         => 'Akon paghisayranay',
-'navigation'     => 'Nabigayson',
-'and'            => '&#32;kag',
 
 'tagline'          => 'Halin sa {{SITENAME}}',
 'help'             => 'Bulig',
@@ -144,9 +149,6 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 'nologinlink'             => 'Maghimo account',
 'createaccount'           => 'Maghimo Account',
 'gotaccountlink'          => 'Mag sulod',
-'youremail'               => 'E-mail:',
-'username'                => 'Ngalan sang Manog-gamit:',
-'email'                   => 'E-mail',
 
 # Edit pages
 'summary'            => 'Kabilogan:',
@@ -179,6 +181,9 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 'skin-preview'      => 'Ipakita subong',
 'prefs-rc'          => 'Mga Bag-o nga Inislan',
 'searchresultshead' => 'Pangita-a',
+'youremail'         => 'E-mail:',
+'username'          => 'Ngalan sang Manog-gamit:',
+'email'             => 'E-mail',
 
 # Recent changes
 'recentchanges' => 'Mga Bag-o nga Inislan',
@@ -242,6 +247,7 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 # Contributions
 'mycontris' => 'Akon contribusyon',
 
+'sp-contributions-talk'   => 'Hisayranay',
 'sp-contributions-submit' => 'Pangita-a',
 
 # What links here

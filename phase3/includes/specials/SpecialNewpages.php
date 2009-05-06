@@ -247,7 +247,7 @@ class SpecialNewpages extends SpecialPage {
 	 * @return string
 	 */
 	public function formatRow( $result ) {
-		global $wgLang, $wgContLang, $wgUser;
+		global $wgLang, $wgContLang;
 
 		$classes = array();
 		
@@ -438,7 +438,12 @@ class NewPagesPager extends ReverseChronologicalPager {
 		$fields = array();
 
 		## Modify query for tags
-		ChangeTags::modifyDisplayQuery( $info['tables'], $fields, $info['conds'], $info['join_conds'], $this->opts['tagfilter'] );
+		ChangeTags::modifyDisplayQuery( $info['tables'],
+										$fields,
+										$info['conds'],
+										$info['join_conds'],
+										$info['options'],
+										$this->opts['tagfilter'] );
 
 		return $info;
 	}

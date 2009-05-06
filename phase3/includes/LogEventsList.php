@@ -39,7 +39,8 @@ class LogEventsList {
 		// Precache various messages
 		if( !isset( $this->message ) ) {
 			$messages = array( 'revertmerge', 'protect_change', 'unblocklink', 'change-blocklink',
-				'revertmove', 'undeletelink', 'revdel-restore', 'rev-delundel', 'hist', 'pipe-separator' );
+				'revertmove', 'undeletelink', 'revdel-restore', 'rev-delundel', 'hist', 'diff',
+				'pipe-separator' );
 			foreach( $messages as $msg ) {
 				$this->message[$msg] = wfMsgExt( $msg, array( 'escapenoentities' ) );
 			}
@@ -59,7 +60,7 @@ class LogEventsList {
 
 	/**
 	 * Show options for the log list
-	 * @param $type String
+	 * @param $types string or Array
 	 * @param $user String
 	 * @param $page String
 	 * @param $pattern String
@@ -68,32 +69,38 @@ class LogEventsList {
 	 * @param $filter: array
 	 * @param $tagFilter: array?
 	 */
-	public function showOptions( $type = '', $user = '', $page = '', $pattern = '', $year = '', 
-		$month = '', $filter = null, $tagFilter='' ) 
+	public function showOptions( $types=array(), $user='', $page='', $pattern='', $year='', 
+		$month = '', $filter = null, $tagFilter='' )
 	{
 		global $wgScript, $wgMiserMode;
 		$action = htmlspecialchars( $wgScript );
 		$title = SpecialPage::getTitleFor( 'Log' );
 		$special = htmlspecialchars( $title->getPrefixedDBkey() );
+		// For B/C, we take strings, but make sure they are converted...
+		$types = ($types === '') ? array() : (array)$types;
 
 		$tagSelector = ChangeTags::buildTagFilterSelector( $tagFilter );
 
 		$this->out->addHTML( "<form action=\"$action\" method=\"get\"><fieldset>" .
 			Xml::element( 'legend', array(), wfMsg( 'log' ) ) .
 			Xml::hidden( 'title', $special ) . "\n" .
-			$this->getTypeMenu( $type ) . "\n" .
+			$this->getTypeMenu( $types ) . "\n" .
 			$this->getUserInput( $user ) . "\n" .
 			$this->getTitleInput( $page ) . "\n" .
 			( !$wgMiserMode ? ($this->getTitlePattern( $pattern )."\n") : "" ) .
 			"<p>" . Xml::dateMenu( $year, $month ) . "\n" .
 			( $tagSelector ? Xml::tags( 'p', null, implode( '&nbsp;', $tagSelector ) ) :'' ). "\n" .
-			( $filter ? "</p><p>".$this->getFilterLinks( $type, $filter )."\n" : "" ) . "\n" .
+			( $filter ? "</p><p>".$this->getFilterLinks( $filter )."\n" : "" ) . "\n" .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "</p>\n" .
 			"</fieldset></form>"
 		);
 	}
 	
-	private function getFilterLinks( $logType, $filter ) {
+	/**
+	 * @param $filter Array
+	 * @return String: Formatted HTML
+	 */
+	private function getFilterLinks( $filter ) {
 		global $wgTitle, $wgLang;
 		// show/hide links
 		$messages = array( wfMsgHtml( 'show' ), wfMsgHtml( 'hide' ) );
@@ -127,10 +134,10 @@ class LogEventsList {
 	}
 
 	/**
-	 * @param $queryType String
+	 * @param $queryTypes Array
 	 * @return String: Formatted HTML
 	 */
-	private function getTypeMenu( $queryType ) {
+	private function getTypeMenu( $queryTypes ) {
 		global $wgLogRestrictions, $wgUser;
 
 		$html = "<select name='type'>\n";
@@ -147,6 +154,8 @@ class LogEventsList {
 		// Second pass to sort by name
 		ksort($typesByName);
 
+		// Note the query type
+		$queryType = count($queryTypes) == 1 ? $queryTypes[0] : '';
 		// Third pass generates sorted XHTML content
 		foreach( $typesByName as $text => $type ) {
 			$selected = ($type == $queryType);
@@ -169,7 +178,7 @@ class LogEventsList {
 	 * @return String: Formatted HTML
 	 */
 	private function getUserInput( $user ) {
-		return Xml::inputLabel( wfMsg( 'specialloguserlabel' ), 'user', 'user', 15, $user );
+		return Xml::inputLabel( wfMsg( 'specialloguserlabel' ), 'user', 'mw-log-user', 15, $user );
 	}
 
 	/**
@@ -177,7 +186,7 @@ class LogEventsList {
 	 * @return String: Formatted HTML
 	 */
 	private function getTitleInput( $title ) {
-		return Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'page', 20, $title );
+		return Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'mw-log-page', 20, $title );
 	}
 
 	/**
@@ -224,7 +233,7 @@ class LogEventsList {
 		$paramArray = LogPage::extractParams( $row->log_params );
 		$revert = $del = '';
 		// Some user can hide log items and have review links
-		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+		if( !($this->flags & self::NO_ACTION_LINK) && $wgUser->isAllowed( 'deleterevision' ) ) {
 			$del = $this->getShowHideLinks( $row ) . ' ';
 		}
 		// Add review links and such...
@@ -281,31 +290,36 @@ class LogEventsList {
 					'mergepoint' => $paramArray[1] ) ) ) . ')';
 		// If an edit was hidden from a page give a review link to the history
 		} else if( self::typeAction($row,array('delete','suppress'),'revision','deleterevision') ) {
-			if( count($paramArray) == 2 ) {
+			if( count($paramArray) >= 2 ) {
 				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 				// Different revision types use different URL params...
 				$key = $paramArray[0];
-				// Link to each hidden object ID, $paramArray[1] is the url param
+				// $paramArray[1] is a CVS of the IDs
 				$Ids = explode( ',', $paramArray[1] );
-				$revParams = '';
-				foreach( $Ids as $n => $id ) {
-					$revParams .= '&' . urlencode($key) . '[]=' . urlencode($id);
+				$query = urlencode($paramArray[1]);
+				$revert = array();
+				// Diff link for single rev deletions
+				if( $key === 'oldid' && count($Ids) == 1 ) {
+					$token = urlencode( $wgUser->editToken( intval($Ids[0]) ) );
+					$revert[] = $this->skin->makeKnownLinkObj( $title, $this->message['diff'], 
+						'diff='.intval($Ids[0])."&unhide=1&token=$token" );
 				}
-				$revert = '(' . $this->skin->makeKnownLinkObj( $revdel, $this->message['revdel-restore'], 
-					'target=' . $title->getPrefixedUrl() . $revParams ) . ')';
+				// View/modify link...
+				$revert[] = $this->skin->makeKnownLinkObj( $revdel, $this->message['revdel-restore'],
+					'target='.$title->getPrefixedUrl()."&$key=$query" );
+				// Pipe links
+				$revert = '(' . implode(' | ',$revert) . ')';
 			}
 		// Hidden log items, give review link
 		} else if( self::typeAction($row,array('delete','suppress'),'event','deleterevision') ) {
-			if( count($paramArray) == 1 ) {
+			if( count($paramArray) >= 1 ) {
 				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
+				// $paramArray[1] is a CVS of the IDs
 				$Ids = explode( ',', $paramArray[0] );
+				$query = urlencode($paramArray[0]);
 				// Link to each hidden object ID, $paramArray[1] is the url param
-				$logParams = '';
-				foreach( $Ids as $n => $id ) {
-					$logParams .= '&logid[]=' . intval($id);
-				}
 				$revert = '(' . $this->skin->makeKnownLinkObj( $revdel, $this->message['revdel-restore'], 
-					'target=' . $title->getPrefixedUrl() . $logParams ) . ')';
+					'target='.$title->getPrefixedUrl()."&logid=$query" ) . ')';
 			}
 		// Self-created users
 		} else if( self::typeAction($row,'newusers','create2') ) {
@@ -353,16 +367,17 @@ class LogEventsList {
 		$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 		// If event was hidden from sysops
 		if( !self::userCan( $row, LogPage::DELETED_RESTRICTED ) ) {
-			$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.$this->message['rev-delundel'].')' );
+			$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
+				'('.$this->message['rev-delundel'].')' );
 		} else if( $row->log_type == 'suppress' ) {
-			// No one should be hiding from the oversight log
-			$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.$this->message['rev-delundel'].')' );
+			$del = ''; // No one should be hiding from the oversight log
 		} else {
 			$target = SpecialPage::getTitleFor( 'Log', $row->log_type );
+			$page = Title::makeTitle( $row->log_namespace, $row->log_title );
 			$query = array( 'target' => $target->getPrefixedDBkey(),
-				'logid' => $row->log_id
-			);
-			$del = $this->skin->revDeleteLink( $query, self::isDeleted( $row, LogPage::DELETED_RESTRICTED ) );
+				'logid' => $row->log_id, 'page' => $page->getPrefixedDBkey() );
+			$del = $this->skin->revDeleteLink( $query,
+				self::isDeleted( $row, LogPage::DELETED_RESTRICTED ) );
 		}
 		return $del;
 	}
@@ -375,7 +390,8 @@ class LogEventsList {
 	 * @return bool
 	 */
 	public static function typeAction( $row, $type, $action, $right='' ) {
-		$match = is_array($type) ? in_array($row->log_type,$type) : $row->log_type == $type;
+		$match = is_array($type) ?
+			in_array($row->log_type,$type) : $row->log_type == $type;
 		if( $match ) {
 			$match = is_array($action) ?
 				in_array($row->log_action,$action) : $row->log_action == $action;
@@ -419,17 +435,17 @@ class LogEventsList {
 	/**
 	 * Quick function to show a short log extract
 	 * @param $out OutputPage
-	 * @param $type String
+	 * @param $types String or Array
 	 * @param $page String
 	 * @param $user String
 	 * @param $lim Integer
 	 * @param $conds Array
 	 */
-	public static function showLogExtract( $out, $type='', $page='', $user='', $lim=0, $conds=array() ) {
+	public static function showLogExtract( $out, $types=array(), $page='', $user='', $lim=0, $conds=array() ) {
 		global $wgUser;
 		# Insert list of top 50 or so items
 		$loglist = new LogEventsList( $wgUser->getSkin(), $out, 0 );
-		$pager = new LogPager( $loglist, $type, $user, $page, '', $conds );
+		$pager = new LogPager( $loglist, $types, $user, $page, '', $conds );
 		if( $lim > 0 ) $pager->mLimit = $lim;
 		$logBody = $pager->getBody();
 		if( $logBody ) {
@@ -447,15 +463,16 @@ class LogEventsList {
 	/**
 	 * SQL clause to skip forbidden log types for this user
 	 * @param $db Database
+	 * @param $audience string, public/user
 	 * @return mixed (string or false)
 	 */
-	public static function getExcludeClause( $db ) {
+	public static function getExcludeClause( $db, $audience = 'public' ) {
 		global $wgLogRestrictions, $wgUser;
 		// Reset the array, clears extra "where" clauses when $par is used
 		$hiddenLogs = array();
 		// Don't show private logs to unprivileged users
 		foreach( $wgLogRestrictions as $logType => $right ) {
-			if( !$wgUser->isAllowed($right) ) {
+			if( $audience == 'public' || !$wgUser->isAllowed($right) ) {
 				$safeType = $db->strencode( $logType );
 				$hiddenLogs[] = $safeType;
 			}
@@ -473,13 +490,14 @@ class LogEventsList {
  * @ingroup Pager
  */
 class LogPager extends ReverseChronologicalPager {
-	private $type = '', $user = '', $title = '', $pattern = '';
+	private $types = array(), $user = '', $title = '', $pattern = '';
+	private $typeCGI = '';
 	public $mLogEventsList;
 
 	/**
 	 * constructor
 	 * @param $list LogEventsList
-	 * @param $type String
+	 * @param $types String or Array
 	 * @param $user String
 	 * @param $title String
 	 * @param $pattern String
@@ -487,7 +505,7 @@ class LogPager extends ReverseChronologicalPager {
 	 * @param $year Integer
 	 * @param $month Integer
 	 */
-	public function __construct( $list, $type = '', $user = '', $title = '', $pattern = '', 
+	public function __construct( $list, $types = array(), $user = '', $title = '', $pattern = '',
 		$conds = array(), $year = false, $month = false, $tagFilter = '' ) 
 	{
 		parent::__construct();
@@ -495,7 +513,7 @@ class LogPager extends ReverseChronologicalPager {
 
 		$this->mLogEventsList = $list;
 
-		$this->limitType( $type ); // also excludes hidden types
+		$this->limitType( $types ); // also excludes hidden types
 		$this->limitUser( $user );
 		$this->limitTitle( $title, $pattern );
 		$this->getDateCond( $year, $month );
@@ -504,17 +522,18 @@ class LogPager extends ReverseChronologicalPager {
 
 	public function getDefaultQuery() {
 		$query = parent::getDefaultQuery();
-		$query['type'] = $this->type;
+		$query['type'] = $this->typeCGI; // arrays won't work here
 		$query['user'] = $this->user;
 		$query['month'] = $this->mMonth;
 		$query['year'] = $this->mYear;
 		return $query;
 	}
 
+	// Call ONLY after calling $this->limitType() already!
 	public function getFilterParams() {
 		global $wgFilterLogTypes, $wgUser, $wgRequest;
 		$filters = array();
-		if( $this->type ) {
+		if( count($this->types) ) {
 			return $filters;
 		}
 		foreach( $wgFilterLogTypes as $type => $default ) {
@@ -532,24 +551,32 @@ class LogPager extends ReverseChronologicalPager {
 	/**
 	 * Set the log reader to return only entries of the given type.
 	 * Type restrictions enforced here
-	 * @param $type String: A log type ('upload', 'delete', etc)
+	 * @param $types String or array: Log types ('upload', 'delete', etc);
+	 *   empty string means no restriction
 	 */
-	private function limitType( $type ) {
+	private function limitType( $types ) {
 		global $wgLogRestrictions, $wgUser;
+		// If $types is not an array, make it an array
+		$types = ($types === '') ? array() : (array)$types;
 		// Don't even show header for private logs; don't recognize it...
-		if( isset($wgLogRestrictions[$type]) && !$wgUser->isAllowed($wgLogRestrictions[$type]) ) {
-			$type = '';
+		foreach ( $types as $type ) {
+			if( isset( $wgLogRestrictions[$type] ) && !$wgUser->isAllowed($wgLogRestrictions[$type]) ) {
+				$types = array_diff( $types, array( $type ) );
+			}
 		}
-		// Don't show private logs to unpriviledged users
-		$hideLogs = LogEventsList::getExcludeClause( $this->mDb );
+		// Don't show private logs to unprivileged users.
+		// Also, only show them upon specific request to avoid suprises.
+		$audience = $types ? 'user' : 'public';
+		$hideLogs = LogEventsList::getExcludeClause( $this->mDb, $audience );
 		if( $hideLogs !== false ) {
 			$this->mConds[] = $hideLogs;
 		}
-		if( !$type ) {
-			return false;
+		if( count($types) ) {
+			$this->types = $types;
+			$this->mConds['log_type'] = $types;
+			// Set typeCGI; used in url param for paging
+			if( count($types) == 1 ) $this->typeCGI = $types[0];
 		}
-		$this->type = $type;
-		$this->mConds['log_type'] = $type;
 	}
 
 	/**
@@ -571,9 +598,12 @@ class LogPager extends ReverseChronologicalPager {
 			   but for now it won't pass anywhere behind the optimizer */
 			$this->mConds[] = "NULL";
 		} else {
+			global $wgUser;
 			$this->mConds['log_user'] = $userid;
 			// Paranoia: avoid brute force searches (bug 17342)
-			$this->mConds[] = 'log_deleted & ' . LogPage::DELETED_USER . ' = 0';
+			if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
+				$this->mConds[] = 'log_deleted & ' . LogPage::DELETED_USER . ' = 0';
+			}
 			$this->user = $usertitle->getText();
 		}
 	}
@@ -585,7 +615,7 @@ class LogPager extends ReverseChronologicalPager {
 	 * @param $pattern String
 	 */
 	private function limitTitle( $page, $pattern ) {
-		global $wgMiserMode;
+		global $wgMiserMode, $wgUser;
 
 		$title = Title::newFromText( $page );
 		if( strlen($page) == 0 || !$title instanceof Title )
@@ -615,7 +645,9 @@ class LogPager extends ReverseChronologicalPager {
 			$this->mConds['log_title'] = $title->getDBkey();
 		}
 		// Paranoia: avoid brute force searches (bug 17342)
-		$this->mConds[] = 'log_deleted & ' . LogPage::DELETED_ACTION . ' = 0';
+		if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
+			$this->mConds[] = 'log_deleted & ' . LogPage::DELETED_ACTION . ' = 0';
+		}
 	}
 
 	public function getQueryInfo() {
@@ -623,7 +655,7 @@ class LogPager extends ReverseChronologicalPager {
 		# Don't use the wrong logging index
 		if( $this->title || $this->pattern || $this->user ) {
 			$index = array( 'USE INDEX' => array( 'logging' => array('page_time','user_time') ) );
-		} else if( $this->type ) {
+		} else if( $this->types ) {
 			$index = array( 'USE INDEX' => array( 'logging' => 'type_time' ) );
 		} else {
 			$index = array( 'USE INDEX' => array( 'logging' => 'times' ) );
@@ -637,7 +669,8 @@ class LogPager extends ReverseChronologicalPager {
 			'join_conds' => array( 'user' => array( 'INNER JOIN', 'user_id=log_user' ) ),
 		);
 
-		ChangeTags::modifyDisplayQuery( $info['tables'], $info['fields'], $info['conds'], $info['join_conds'], $this->mTagFilter );
+		ChangeTags::modifyDisplayQuery( $info['tables'], $info['fields'], $info['conds'],
+			$info['join_conds'], $info['options'], $this->mTagFilter );
 
 		return $info;
 	}
@@ -668,7 +701,7 @@ class LogPager extends ReverseChronologicalPager {
 	}
 
 	public function getType() {
-		return $this->type;
+		return $this->types;
 	}
 
 	public function getUser() {
@@ -693,6 +726,17 @@ class LogPager extends ReverseChronologicalPager {
 
 	public function getTagFilter() {
 		return $this->mTagFilter;
+	}
+
+	public function doQuery() {
+		// Work around MySQL optimizer bug
+		if ( in_array( get_class( $this->mDb ), array( 'Database', 'DatabaseMysql' ) ) ) {
+			$this->mDb->query( 'SET SQL_BIG_SELECTS=1' );
+			parent::doQuery();
+			$this->mDb->query( 'SET SQL_BIG_SELECTS=0' );
+		} else {
+			parent::doQuery();
+		}
 	}
 }
 
@@ -754,7 +798,6 @@ class LogViewer {
 	 *     LogEventsList::NO_ACTION_LINK   Don't show restore/unblock/block links
 	 */
 	function __construct( &$reader, $flags = 0 ) {
-		global $wgUser;
 		wfDeprecated(__METHOD__);
 		$this->reader =& $reader;
 		$this->reader->pager->mLogEventsList->flags = $flags;

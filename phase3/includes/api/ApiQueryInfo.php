@@ -345,7 +345,7 @@ class ApiQueryInfo extends ApiQueryBase {
 				$this->protections[$row->page_namespace][$row->page_title][] = $a;
 
 				# Also check old restrictions
-				if($pageRestrictions[$row->pr_page]) {
+				if($this->pageRestrictions[$row->pr_page]) {
 					$restrictions = explode(':', trim($this->pageRestrictions[$row->pr_page]));
 					foreach($restrictions as $restrict) {
 						$temp = explode('=', trim($restrict));
@@ -492,10 +492,10 @@ class ApiQueryInfo extends ApiQueryBase {
 		{
 			if(MWNamespace::isTalk($row->page_namespace))
 				$this->talkids[MWNamespace::getSubject($row->page_namespace)][$row->page_title] =
-						$row->page_id;
+						intval($row->page_id);
 			else
 				$this->subjectids[MWNamespace::getTalk($row->page_namespace)][$row->page_title] =
-						$row->page_id;
+						intval($row->page_id);
 		}
 	}
 

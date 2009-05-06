@@ -1,6 +1,9 @@
 <?php
 /** Pampanga (Kapampangan)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -115,7 +118,7 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 'category-media-header'          => 'Media king kategoriyang "$1"',
 'category-empty'                 => "''Ala yang bulung o media ngening salukuyan ining kategoriya.''",
 'hidden-categories'              => '{{PLURAL:$1|Makasalikut a kategoriya|Makasalikut a kategoriya}}',
-'hidden-category-category'       => 'Pakasalikut a categoria', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Pakasalikut a categoria',
 'category-subcat-count'          => '{{PLURAL:$2|Bukud mung ing makatuking subkategoriya ing atyu kaniting kategoriya.|Deng makatuking subkategoriya ing kayabe kaniting kategoriya {{PLURAL:$1|subkategoriya|$1 subkategoriya}}, ibat king $2 kabilugan.}}',
 'category-subcat-count-limited'  => 'Ining kategoriya bibilugan de reng makatuking {{PLURAL:$1|subkategoriya|$1 subkategoriya}}.',
 'category-article-count'         => '{{PLURAL:$2|Bukud mung ing makatuking bulung ing kayabe king kategoriyang iti.| {{PLURAL:$1|bulung ing kayabe|$1 bulung ding kayabe}} king kategoriyang iti, ibat king $2 pangkabilugan.}}',
@@ -132,10 +135,18 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
-'about'          => 'Tungkul',
-'article'        => 'Kalamnan ning bulung',
-'newwindow'      => '(mibusni ya king bayung awang)',
-'cancel'         => 'E taglus',
+'about'         => 'Tungkul',
+'article'       => 'Kalamnan ning bulung',
+'newwindow'     => '(mibusni ya king bayung awang)',
+'cancel'        => 'E taglus',
+'moredotdotdot' => 'Dakal pa...',
+'mypage'        => 'Ing kakung bulung',
+'mytalk'        => 'Makisabi kaku',
+'anontalk'      => 'Pamakisabi para keng IPing ini',
+'navigation'    => 'Pamaglibut',
+'and'           => '&#32;ampo',
+
+# Cologne Blue skin
 'qbfind'         => 'Maintun',
 'qbbrowse'       => 'Bation (browse)',
 'qbedit'         => 'Mag-edit',
@@ -143,12 +154,8 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 'qbpageinfo'     => 'Kontekstu/kabilian',
 'qbmyoptions'    => 'Deng kakung bulung',
 'qbspecialpages' => 'Bulung a makabukud',
-'moredotdotdot'  => 'Dakal pa...',
-'mypage'         => 'Ing kakung bulung',
-'mytalk'         => 'Makisabi kaku',
-'anontalk'       => 'Pamakisabi para keng IPing ini',
-'navigation'     => 'Pamaglibut',
-'and'            => '&#32;ampo',
+'faq'            => 'Maralas a Kukutang (MAK)',
+'faqpage'        => 'Project:MAK',
 
 'errorpagetitle'    => 'Mali',
 'returnto'          => 'Magbalik king $1.',
@@ -198,7 +205,7 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 'otherlanguages'    => 'Kareng aliwang amanu',
 'redirectedfrom'    => '(Miyalis direksiun manibat king $1)',
 'redirectpagesub'   => 'Bulung ning pamanaliling direksiun (redirect)',
-'lastmodifiedat'    => 'Tauli yang miyalilan ining bulung anyang $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'Tauli yang miyalilan ining bulung anyang $2, $1.',
 'viewcount'         => 'Ining bulung linawe da neng {{PLURAL:$1|misan|$1 besis/ukdu}}.',
 'protectedpage'     => 'Bulung a protektadu/makakambil',
 'jumpto'            => 'Lundag ka king:',
@@ -217,8 +224,6 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 'disclaimerpage'       => 'Project:Pangkabilugan a pamananggi',
 'edithelp'             => 'Saup pamanalili',
 'edithelppage'         => 'Help:Pamag-edit',
-'faq'                  => 'Maralas a Kukutang (MAK)',
-'faqpage'              => 'Project:MAK',
 'helppage'             => 'Help:Kalamnan',
 'mainpage'             => 'Pun Bulung',
 'mainpage-description' => 'Pun Bulung',
@@ -294,10 +299,6 @@ Ing tauling kutang king database yapin iti:
 "$1"
 manibat king kilub ning function "$2".
 Ini ing pamagkamaling linto king MySQL - "$3: $4"',
-'noconnect'            => 'Pasensia na ka! Mikaka-prublema yang teknikal ing wiki, at e ne ayaus ing database server.<br />
-$1',
-'nodb'                 => 'E ne apili ing database $1',
-'cachederror'          => 'Ing makatuki copia neng misimpan (cached copy) ning bulung a adwan mu, at mapalyaring e ne bayu o makapanaun.',
 'laggedslavemode'      => 'Kapiadian: Mapaliaring ala lu king bulung deng pekatauling mibayu.',
 'readonly'             => 'Makasara ya ing database',
 'enterlockreason'      => 'Ibie me ing sangkan ning pamaniara, pati ing tantia nung kapilan ya milako iti',
@@ -348,7 +349,6 @@ Ala kang paintulut a i-edit ya ing bulung a ini, uling atin yang personal settin
 Iti ing binie nang sangkan: ''$2''.",
 
 # Login and logout pages
-'logouttitle'                => 'Talagamit isulat-lumual (logout)',
 'logouttext'                 => "'''Maka logout na ka.'''
 
 Malyari mung isundu ing pamangamit mu king {{SITENAME}} a e ka papakilala, o malyari kang mag login pasibayu anting pareu o aliwang talagamit.
@@ -356,7 +356,6 @@ Apansingan mung mapalyaring makalto la pa murin deng aliwang bulung a bala mu ma
 'welcomecreation'            => '== Malaus ka, $1! ==
 
 Melalang ne ing kekang account. E mo kakalingwan alilan deng kekang piniling {{SITENAME}}',
-'loginpagetitle'             => 'Talagamit login',
 'yourname'                   => 'Lagyung talagamit (Username):',
 'yourpassword'               => 'Kekang password:',
 'yourpasswordagain'          => 'Pakisulat meng pasibayu ing password:',
@@ -379,20 +378,7 @@ Melalang ne ing kekang account. E mo kakalingwan alilan deng kekang piniling {{S
 'badretype'                  => 'Ding password a linub mu ela mibabage.',
 'userexists'                 => 'Atin nang gagamit king lagyung talagamit (username) a misulat.
 Mamili kang aliwang lagyu.',
-'youremail'                  => 'Ing kekang e-mail:',
-'username'                   => 'Talagamitlagyu:',
-'uid'                        => 'Ing kekang user ID:',
-'yourrealname'               => 'Tutung lagyu:',
-'yourlanguage'               => 'Amanu:',
-'yournick'                   => 'Pirma (Signature):',
-'badsig'                     => 'E ustu ing simpling pirma (raw signature); lon mo reng HTML tag.',
-'badsiglength'               => 'Masiadu yang makaba ing kekang pirma (signature). Kailangan, mas makuyad ya kesa king $1 kulit (characters).',
-'email'                      => 'Kekang e-mail',
-'prefs-help-realname'        => 'Ika ing bala nung buri meng ibie ing tutu mung lagyu.
-Nung ibie me, magamit ya bang kilalanan ing kekang ambag.',
 'loginerror'                 => 'E ustu ing pamag-login',
-'prefs-help-email'           => "E kailangang ibye ing kekang e-mail address, oneng masanting nung abie me, ba rakang ayabut kapamilata'ning kekang user o user_talk page a e me sasabian ing kekang tutung lagyu.",
-'prefs-help-email-required'  => 'Kailangan ya ing e-mail address.',
 'nocookiesnew'               => 'Melalang ya ing account ning talagamit (user account), oneng e ka makalogin. 
 Ing {{SITENAME}} mangailangan yang cookie ba lang makalogin deng talagamit.
 Makapatda la reng kekang cookie.
@@ -447,18 +433,16 @@ Malyari meng e pansinan ining mensahi, nung pamagkamali ing pamaglalang na nitin
 'loginlanguagelabel'         => 'Amanu: $1',
 
 # Password reset dialog
-'resetpass'               => 'Alilan ya ing account password',
-'resetpass_announce'      => 'Gagamit kang pansamantalang code a me e-mail keka aniang mig-login ka.
+'resetpass'           => 'Alilan ya ing account password',
+'resetpass_announce'  => 'Gagamit kang pansamantalang code a me e-mail keka aniang mig-login ka.
 Bang mayari ing kekang pamag-login, kailangan mung mangibiling bayung password keni:',
-'resetpass_header'        => 'Alilan ya ing password',
-'oldpassword'             => 'Sadiang/lumang password:',
-'newpassword'             => 'Bayung password:',
-'retypenew'               => 'Sulat meng pasibayu ing bayung password:',
-'resetpass_submit'        => 'Mangibili kang password at maglogin ka',
-'resetpass_success'       => 'Melaus ing pamanalili mung password! Ngeni mila-login naka...',
-'resetpass_bad_temporary' => 'E matatanggap ing kekang pansamantalang password.
-Mapaliaring melaus na ing pamanalili mung password, o mekapaniad na kang bayung pansamantalang password.',
-'resetpass_forbidden'     => 'E la malyaring alilan deng password keng wiking ini',
+'resetpass_header'    => 'Alilan ya ing password',
+'oldpassword'         => 'Sadiang/lumang password:',
+'newpassword'         => 'Bayung password:',
+'retypenew'           => 'Sulat meng pasibayu ing bayung password:',
+'resetpass_submit'    => 'Mangibili kang password at maglogin ka',
+'resetpass_success'   => 'Melaus ing pamanalili mung password! Ngeni mila-login naka...',
+'resetpass_forbidden' => 'E la malyaring alilan deng password keng wiking ini',
 
 # Edit page toolbar
 'bold_sample'     => 'Makapasalang kulitan',
@@ -481,25 +465,25 @@ Mapaliaring melaus na ing pamanalili mung password, o mekapaniad na kang bayung 
 'hr_tip'          => 'Gulis a pakera (e dapat paneng gagamitan)',
 
 # Edit pages
-'summary'                   => 'Sampulung (Summary):',
-'subject'                   => 'Paksa/pamagat (headline):',
-'minoredit'                 => 'Malati yang edit ini',
-'watchthis'                 => 'Banten ya ing bulung a ini',
-'savearticle'               => 'I-save ya ing bulung',
-'preview'                   => 'I-preview',
-'showpreview'               => 'Pakit ya ing preview',
-'showlivepreview'           => 'Kasalungsungan (live) a preview',
-'showdiff'                  => 'Pakit la reng miyalilan',
-'anoneditwarning'           => "'''Kapiadian:''' Eka maka-login.  Mitala ya ing kekang IP address king amlat pamanalili (edit history) ning bulung a ini.",
-'missingsummary'            => "'''Kapabaluan:''' Ala kang binieng sampulung (summary) da reng me-edit.
+'summary'                    => 'Sampulung (Summary):',
+'subject'                    => 'Paksa/pamagat (headline):',
+'minoredit'                  => 'Malati yang edit ini',
+'watchthis'                  => 'Banten ya ing bulung a ini',
+'savearticle'                => 'I-save ya ing bulung',
+'preview'                    => 'I-preview',
+'showpreview'                => 'Pakit ya ing preview',
+'showlivepreview'            => 'Kasalungsungan (live) a preview',
+'showdiff'                   => 'Pakit la reng miyalilan',
+'anoneditwarning'            => "'''Kapiadian:''' Eka maka-login.  Mitala ya ing kekang IP address king amlat pamanalili (edit history) ning bulung a ini.",
+'missingsummary'             => "'''Kapabaluan:''' Ala kang binieng sampulung (summary) da reng me-edit.
 Nung i-click meng pasibayu ing Save, ma-save ya ing kekang in-edit a alang anti kaniti.",
-'missingcommenttext'        => 'Pakisulat me ing kekang komentu/puna king lalam.',
-'missingcommentheader'      => "'''Kapabaluan:''' Ala kang binieng paksa/pamagat para kaniting komentu.
+'missingcommenttext'         => 'Pakisulat me ing kekang komentu/puna king lalam.',
+'missingcommentheader'       => "'''Kapabaluan:''' Ala kang binieng paksa/pamagat para kaniting komentu.
 Nung i-click meng pasibayu ing Save, ma-save ya ing kekang i-edit a yalang anti kaniti.",
-'summary-preview'           => 'Preview ning sampulung (summary preview):',
-'subject-preview'           => 'Preview ning paksa/pamagat:',
-'blockedtitle'              => 'Ing talagamit mesabat ya',
-'blockedtext'               => "<big>'''Mesabat ya ing kekang lagiung talagamit (user name) o IP address.'''</big>
+'summary-preview'            => 'Preview ning sampulung (summary preview):',
+'subject-preview'            => 'Preview ning paksa/pamagat:',
+'blockedtitle'               => 'Ing talagamit mesabat ya',
+'blockedtext'                => "<big>'''Mesabat ya ing kekang lagiung talagamit (user name) o IP address.'''</big>
 
 I $1 ing menyabat. Ini ing binie nang sangkan ''$2''.
 
@@ -510,7 +494,7 @@ I $1 ing menyabat. Ini ing binie nang sangkan ''$2''.
 Malyari meng pabaluan i $1 o deng aliwang [[{{MediaWiki:Grouppage-sysop}}|talapanibala]] ba yeng pisabian ing pangasabat.
 E me malyaring gamitan ing 'e-mail this user' feature liban namu nung ating mababanggit a e-mail address a gagana ketang kekang[[Special:Preferences|account preferences]], at e ka mesabat king pamangamit kaniti.
 Ing salukuyan mung IP address $3 ya, at ing blocked ID #$5 ya. Pakibanggit me ing sanu man kareti o detang adua kareng kekang kutang a maniad pamipalino.",
-'autoblockedtext'           => 'Tambing yang mesabat ing kekang IP address uling ginamit ne ning aliwang talagamit, a sebatan nang $1.
+'autoblockedtext'            => 'Tambing yang mesabat ing kekang IP address uling ginamit ne ning aliwang talagamit, a sebatan nang $1.
 Ing mibieng sangkan ya pin iti:
 
 :\'\'$2\'\'
@@ -524,99 +508,98 @@ Tandanan mung e me maliaring gamitan ing serbisiung "i e-mail me ining talagamit
 
 Ini ing kekang block ID: $5
 Pakibanggit me iting ID neng atin kang pamangutang.',
-'blockednoreason'           => 'alang mibieng sangkan',
-'blockedoriginalsource'     => "Makabili king lalam ing penibatan ning '''$1''':",
-'blockededitsource'         => "Atyu king lalam ing makasulat ketang '''ding kekang in-edit''' king '''$1''' ('''your edits''' to '''$1'''):",
-'whitelistedittitle'        => 'Kailangang mag-login bang makapag-edit',
-'whitelistedittext'         => 'Kailangan mung $1 bayu ka makapag-edit bulung.',
-'confirmedittitle'          => 'Kaylangan yang patutwan ing kekang e-mail ba kang makapag-edit o makapanalili.',
-'confirmedittext'           => "Kailangan meng kumpirman ing kekang e-mail address bayo mo a-edit deting bulung.
+'blockednoreason'            => 'alang mibieng sangkan',
+'blockedoriginalsource'      => "Makabili king lalam ing penibatan ning '''$1''':",
+'blockededitsource'          => "Atyu king lalam ing makasulat ketang '''ding kekang in-edit''' king '''$1''' ('''your edits''' to '''$1'''):",
+'whitelistedittitle'         => 'Kailangang mag-login bang makapag-edit',
+'whitelistedittext'          => 'Kailangan mung $1 bayu ka makapag-edit bulung.',
+'confirmedittext'            => "Kailangan meng kumpirman ing kekang e-mail address bayo mo a-edit deting bulung.
 Pakisulat me at patutuan ing kekang e-mail address kapamilata'ning [[Special:Preferences|pinili ning talagamit]] (user preferences).",
-'nosuchsectiontitle'        => 'Alang makanian a dake (seksiyon)',
-'nosuchsectiontext'         => 'Sibukan mung mag-edit king seksiyon a yala naman. 
+'nosuchsectiontitle'         => 'Alang makanian a dake (seksiyon)',
+'nosuchsectiontext'          => 'Sibukan mung mag-edit king seksiyon a yala naman. 
 Uling alang seksiyon a $1, alang lugal a pirinan ketang kekang in-edit.',
-'loginreqtitle'             => 'Kailangang Mag-login',
-'loginreqlink'              => 'mag-login',
-'loginreqpagetext'          => 'Kailangan mung $1 ba mong akit deng aliwang bulung.',
-'accmailtitle'              => 'Ing Password miparala ya.',
-'accmailtext'               => 'Ing password para keng "$1" miparala ya king $2.',
-'newarticle'                => '(Bayu)',
-'newarticletext'            => "Dela na ka ning suglung king bulung a e pa melalang.
+'loginreqtitle'              => 'Kailangang Mag-login',
+'loginreqlink'               => 'mag-login',
+'loginreqpagetext'           => 'Kailangan mung $1 ba mong akit deng aliwang bulung.',
+'accmailtitle'               => 'Ing Password miparala ya.',
+'accmailtext'                => 'Ing password para keng "$1" miparala ya king $2.',
+'newarticle'                 => '(Bayu)',
+'newarticletext'             => "Dela na ka ning suglung king bulung a e pa melalang.
 Ba meng lalangan ing bulung a iti, sumulat ka king kahun king lalam (lon me ing  [[{{MediaWiki:Helppage}}|help page]] para king karagdagang impormasiun).
 Nung migkamali kang minta keni, i-click me mu ing '''back''' (mibalik) button ning kekang browser.",
-'anontalkpagetext'          => "----''Ini ing bulung ning pamitalamitam (discussion page) para kareng gagamit a e pepakilala, e pa miglalang account, o e gagamit kaniti. Uli na nita, kaylangan ming gumamit IP address a nomiru ba yang makilala. Mapalyaring e ya mu metung ing gagamit kaniti. Nung metung kang gagamit a e pepakilala at king palage mu, mituran ka o meyatu king e dapat, pakisabi ming [[Special:UserLogin|maglalang kang account o mag-log in]] ba ra kang e pagkamalyan kareng aliwang gagamit.''",
-'noarticletext'             => 'King salukuyan, alang sulat king bulung a ini; malyari meng [[Special:Search/{{PAGENAME}}|paintunan ing pamagat ning bulung a ini]] kareng aliwang bulung o [{{fullurl:{{FULLPAGENAME}}|action=edit}} i-edit ining bulung].',
-'userpage-userdoesnotexist' => 'E makarehistru ing account ning talagamit (user account) a "$1". Pakilawe mu nung buri meng lalangan o i-edit ing bulung a ini.',
-'clearyourcache'            => "'''Kapabaluan:''' Kaibat mung mig-save, maliari meng lakton ing simpan (cache) ning kekang browser ba mong akit deng miyalilan. '''Mozilla / Firefox / Safari:''' timid me ing ''Shift'' kabang ki-click me ing ''Reload'', o timid me ing ''Ctrl-Shift-R'' (''Cmd-Shift-R'' king Apple Mac); '''IE:''' timid me ing ''Ctrl'' kabang ki-click me ing ''Refresh'', o timid me ing ''Ctrl-F5''; '''Konqueror:''': i-click me mu ing ''Reload'' button, o timid me ing ''F5''; deng talagamit ning '''Opera''', mapaliaring kailangan deng laganas a linisan (i-clear) ing karelang simpan (cache) king ''Tools→Preferences''.",
-'usercssjsyoucanpreview'    => "'''Tip:''' Gamitan me ing button a 'Pakit ya ing preview' ('Show preview') ba yang subukan ing kekang bayung CSS/JS bayu ka mag-save.",
-'usercsspreview'            => "'''Tandanan mung pi-preview me mu ing kekang user CSS, e ya pa me-save!'''",
-'userjspreview'             => "'''Tandanan mung susubukan/pi-preview me pamu ing kekang user JavaScript, e ya pa me-save iti!'''",
-'userinvalidcssjstitle'     => "'''Kapiadian:''' Alang pabalat (skin) a \"\$1\".
+'anontalkpagetext'           => "----''Ini ing bulung ning pamitalamitam (discussion page) para kareng gagamit a e pepakilala, e pa miglalang account, o e gagamit kaniti. Uli na nita, kaylangan ming gumamit IP address a nomiru ba yang makilala. Mapalyaring e ya mu metung ing gagamit kaniti. Nung metung kang gagamit a e pepakilala at king palage mu, mituran ka o meyatu king e dapat, pakisabi ming [[Special:UserLogin|maglalang kang account o mag-log in]] ba ra kang e pagkamalyan kareng aliwang gagamit.''",
+'noarticletext'              => 'King salukuyan, alang sulat king bulung a ini; malyari meng [[Special:Search/{{PAGENAME}}|paintunan ing pamagat ning bulung a ini]] kareng aliwang bulung o [{{fullurl:{{FULLPAGENAME}}|action=edit}} i-edit ining bulung].',
+'userpage-userdoesnotexist'  => 'E makarehistru ing account ning talagamit (user account) a "$1". Pakilawe mu nung buri meng lalangan o i-edit ing bulung a ini.',
+'clearyourcache'             => "'''Kapabaluan:''' Kaibat mung mig-save, maliari meng lakton ing simpan (cache) ning kekang browser ba mong akit deng miyalilan. '''Mozilla / Firefox / Safari:''' timid me ing ''Shift'' kabang ki-click me ing ''Reload'', o timid me ing ''Ctrl-Shift-R'' (''Cmd-Shift-R'' king Apple Mac); '''IE:''' timid me ing ''Ctrl'' kabang ki-click me ing ''Refresh'', o timid me ing ''Ctrl-F5''; '''Konqueror:''': i-click me mu ing ''Reload'' button, o timid me ing ''F5''; deng talagamit ning '''Opera''', mapaliaring kailangan deng laganas a linisan (i-clear) ing karelang simpan (cache) king ''Tools→Preferences''.",
+'usercssjsyoucanpreview'     => "'''Tip:''' Gamitan me ing button a 'Pakit ya ing preview' ('Show preview') ba yang subukan ing kekang bayung CSS/JS bayu ka mag-save.",
+'usercsspreview'             => "'''Tandanan mung pi-preview me mu ing kekang user CSS, e ya pa me-save!'''",
+'userjspreview'              => "'''Tandanan mung susubukan/pi-preview me pamu ing kekang user JavaScript, e ya pa me-save iti!'''",
+'userinvalidcssjstitle'      => "'''Kapiadian:''' Alang pabalat (skin) a \"\$1\".
 Tandanan mung deng pasadiang bulung (custom pages) a .css ampong .js, gagamit lang bansag a mababang letra (lowercase), alm. (alimbawa), {{ns:user}}:Foo/monobook.css, at e {{ns:user}}:Foo/Monobook.css.",
-'updated'                   => '(Mibayu)',
-'note'                      => "'''Kapabaluan:'''",
-'previewnote'               => "'''Preview ya mu ini;
+'updated'                    => '(Mibayu)',
+'note'                       => "'''Kapabaluan:'''",
+'previewnote'                => "'''Preview ya mu ini;
 e la pa me-save detang miyalilan!'''",
-'previewconflict'           => 'Ing ayus ning makasulat king dake nang babo ning lugal a pipag-edit-an (upper text editing area) ing magi nang itsura ning kekang gagawan nung i-save me iti.',
-'session_fail_preview'      => "'''Pasensia na ka! E mi ya apalub ing kekang in-edit uling mewala ing session data.
+'previewconflict'            => 'Ing ayus ning makasulat king dake nang babo ning lugal a pipag-edit-an (upper text editing area) ing magi nang itsura ning kekang gagawan nung i-save me iti.',
+'session_fail_preview'       => "'''Pasensia na ka! E mi ya apalub ing kekang in-edit uling mewala ing session data.
 Pakisubukan mung pasibayu. Nung ala pa muring miliari, subukan mung mag-logout at mag-login pasibayu.'''",
-'session_fail_preview_html' => "''' Pasensia na ka! E mi ya apalub ing kekang in-edit uling mewala ing session data.'''
+'session_fail_preview_html'  => "''' Pasensia na ka! E mi ya apalub ing kekang in-edit uling mewala ing session data.'''
 
 ''Uling ing {{SITENAME}} maki makasalangi yang HTML a e me-prosesu (raw HTML), makasalikut ya ing preview bang panyagka kareng ataking JavaScript.''
 
 '''Nung seriosu yang tangkang mag-edit ini, pakisubukan mung pasibayu. Nung ala pa muring miliari, subukan mung mag-logout at mag-login pasibayu.'''",
-'token_suffix_mismatch'     => "'''Your edit has been rejected because your client mangled the punctuation characters in the edit token.
+'token_suffix_mismatch'      => "'''Your edit has been rejected because your client mangled the punctuation characters in the edit token.
 The edit has been rejected to prevent corruption of the page text.
 This sometimes happens when you are using a buggy web-based anonymous proxy service.'''",
-'editing'                   => 'Manalili $1',
-'editingsection'            => 'Alilan (e-edit) ya ing $1 (dake)',
-'editingcomment'            => 'I-edit ya ing $1 (komentu)',
-'editconflict'              => 'Misasalungat a edit: $1',
-'explainconflict'           => 'Ating aliwang minalili king bulung a ini manibat aniang inumpisan meng i-edit. 
+'editing'                    => 'Manalili $1',
+'editingsection'             => 'Alilan (e-edit) ya ing $1 (dake)',
+'editingcomment'             => 'I-edit ya ing $1 (komentu)',
+'editconflict'               => 'Misasalungat a edit: $1',
+'explainconflict'            => 'Ating aliwang minalili king bulung a ini manibat aniang inumpisan meng i-edit. 
 Makabili ya king espasiung pirinan sulat king babo (upper text area)  ing kasalungsungan nang itsura niti. 
 Atyu la king espasiung pirinan sulat king lalam (lower text area) deng kekang elilan.
 Kailangan mong piyabe deng elilan mu ketang kasalungsungan a makasulat. 
 Bukud mung ing makasulat king babo ing ma-save katimid mu ketang   "I-save ya ining bulung" ("Save page").',
-'yourtext'                  => 'Ing kekang sinulat',
-'storedversion'             => 'Bersion a makasimpan',
-'nonunicodebrowser'         => "'''BABALA: E ya unicode compliant ing kekang browser.
+'yourtext'                   => 'Ing kekang sinulat',
+'storedversion'              => 'Bersion a makasimpan',
+'nonunicodebrowser'          => "'''BABALA: E ya unicode compliant ing kekang browser.
 Ating paralan ba kang e mika-prublema king pamag-edit: lunto la antimong hexadecimal code king kahun a pipag-editan deng letra/kulit a e-ASCII (non-ASCII characters).'''",
-'editingold'                => "'''KAPIADIAN: Laun neng pamagbayu ning bulung a ini ing kekang alilan.
+'editingold'                 => "'''KAPIADIAN: Laun neng pamagbayu ning bulung a ini ing kekang alilan.
 Nung i-save me, mawala la ngan deng miyalilan manibat ketang pamagbayung ini.'''",
-'yourdiff'                  => 'Pamiyaliwa',
-'copyrightwarning'          => "Pakitandanan mung tuturing lang mipaintulutan deng eganaganang ambag king {{SITENAME}} lalam ning $2 (lon ya ing $1 para kareng detalle). 
+'yourdiff'                   => 'Pamiyaliwa',
+'copyrightwarning'           => "Pakitandanan mung tuturing lang mipaintulutan deng eganaganang ambag king {{SITENAME}} lalam ning $2 (lon ya ing $1 para kareng detalle). 
 Nung e mu buri ing alilan deng laganas at alang patugut ing kekang sinulat, at mipamie ya angiang kaninu
 iti, e me duduang keni.
 <br />
 Mangaku ka mu naman a ika mismu ing sinulat kaniti, o acopia me ketang metung a pikuanan a mipaintulutan king malda o aliwa pang libring pikukuanan.
 '''E KA MÁNAMBAG OBRANG MAKI COPYRIGHT NUNG ALANG PAINTULUT!'''",
-'copyrightwarning2'         => "Pakitandanan da lang alilan, ibayu o ilako deng aliwang talagamit deng kekang ambag king {{SITENAME}}. 
+'copyrightwarning2'          => "Pakitandanan da lang alilan, ibayu o ilako deng aliwang talagamit deng kekang ambag king {{SITENAME}}. 
 Nung e mu buri ing alilan deng alang patugut at alang lunus ing kekang sinulat, e me duduang keni.<br />
 Mangaku ka mu naman a ika mismu ing sinulat kaniti, o akopia me ketang metung a pikuanan a mipaintulutan king malda o aliwa pang libring pikukuanan (lon me ing $1 para kareng detalle).
 '''E KA MANAMBAG OBRANG MAKI COPYRIGHT NUNG ALANG PAINTULUT!",
-'longpagewarning'           => "'''KAPIADIAN: Maki kaba yang $1 kilobyte ining bulung;
+'longpagewarning'            => "'''KAPIADIAN: Maki kaba yang $1 kilobyte ining bulung;
 mágkasákit lang mag-edit bulung a maigit 32 kb deng aliwang browser.
 Nung maliari, pakipitnan me kareng adua o maigit pang dake.'''",
-'longpageerror'             => "'''MALI: Miras yang $1 kilobyte ing kekang sinulat; sobra ya ketang $2 a pekamakabang maliaring iyambag. E ya ma-save iti.'''",
-'readonlywarning'           => "'''BABALA: Makasara ya ing database uling sasamasan de iti, ania e mo a-save ngeni detang kekang in-edit.
+'longpageerror'              => "'''MALI: Miras yang $1 kilobyte ing kekang sinulat; sobra ya ketang $2 a pekamakabang maliaring iyambag. E ya ma-save iti.'''",
+'readonlywarning'            => "'''BABALA: Makasara ya ing database uling sasamasan de iti, ania e mo a-save ngeni detang kekang in-edit.
 Maliari meng i-\"cut-n-paste\" ing sinulat mu king metung a text file, at i-save mu ne mu para king tutuki.'''",
-'protectedpagewarning'      => "'''BABALA:  Makasara ya ing bulung a ini. Den mung talagamit a maki upayang sysop ing maliaring mag-edit.'''",
-'semiprotectedpagewarning'  => "'''Babala:''' Misara ya ing bulung a ini, ania den mung talagamit a makarehistru ing makapag-edit kaniti.",
-'cascadeprotectedwarning'   => "'''Babala:''' Misara ya ing bulung a ini. Deta mung talagamit a maki upayang sysop ing makapag-edit kaniti, uling kayabe ya kareng makatuking bulung a maki proteksiun a mituki-tuki (cascade protected) {{PLURAL:$1|bulung|bulung}}:",
-'titleprotectedwarning'     => "'''BABALA:  Misara ya ing bulung a ini, ania den mung aliwang talagamit ing makapaglalang kaniti.'''",
-'templatesused'             => 'Deng template a magagamit king bulung a ini:',
-'templatesusedpreview'      => 'Deng modelung (template) megamit kening preview:',
-'templatesusedsection'      => 'Deng modelung (template) magagamit king seksiyon a ini:',
-'template-protected'        => '(protektadu)',
-'template-semiprotected'    => '(maki dakeng protektadu)',
-'hiddencategories'          => 'Kayabe ya ing bulung a ini king/karing {{PLURAL:$1|1 makasalikut a kategoriya|$1 makasalikut a kategoriya}}:',
-'nocreatetitle'             => 'Maki angganan (limitadu) ing pamangawang bulung',
-'nocreatetext'              => 'Lilimitan ning {{SITENAME}} ing pamangawa kareng bayung bulung.
+'protectedpagewarning'       => "'''BABALA:  Makasara ya ing bulung a ini. Den mung talagamit a maki upayang sysop ing maliaring mag-edit.'''",
+'semiprotectedpagewarning'   => "'''Babala:''' Misara ya ing bulung a ini, ania den mung talagamit a makarehistru ing makapag-edit kaniti.",
+'cascadeprotectedwarning'    => "'''Babala:''' Misara ya ing bulung a ini. Deta mung talagamit a maki upayang sysop ing makapag-edit kaniti, uling kayabe ya kareng makatuking bulung a maki proteksiun a mituki-tuki (cascade protected) {{PLURAL:$1|bulung|bulung}}:",
+'titleprotectedwarning'      => "'''BABALA:  Misara ya ing bulung a ini, ania den mung aliwang talagamit ing makapaglalang kaniti.'''",
+'templatesused'              => 'Deng template a magagamit king bulung a ini:',
+'templatesusedpreview'       => 'Deng modelung (template) megamit kening preview:',
+'templatesusedsection'       => 'Deng modelung (template) magagamit king seksiyon a ini:',
+'template-protected'         => '(protektadu)',
+'template-semiprotected'     => '(maki dakeng protektadu)',
+'hiddencategories'           => 'Kayabe ya ing bulung a ini king/karing {{PLURAL:$1|1 makasalikut a kategoriya|$1 makasalikut a kategoriya}}:',
+'nocreatetitle'              => 'Maki angganan (limitadu) ing pamangawang bulung',
+'nocreatetext'               => 'Lilimitan ning {{SITENAME}} ing pamangawa kareng bayung bulung.
 Malyari kang magbalik at mag-edit king bulung a atyu na, o makapag[[Special:UserLogin|log in ka at maglalang account]].',
-'nocreate-loggedin'         => 'Ala kang paintulut a maglalang bayung bulung king {{SITENAME}}.',
-'permissionserrors'         => 'Pamagkamali king Pamaniad Paintulut',
-'permissionserrorstext'     => 'Ala kang paintulut bang gawan ita, uling kareng makatuking {{PLURAL:$1|sangkan|sangkan}}:',
-'recreate-deleted-warn'     => "'''Babala: Maglalang kang pasibayu king bulung a mebura na.'''
+'nocreate-loggedin'          => 'Ala kang paintulut a maglalang bayung bulung king {{SITENAME}}.',
+'permissionserrors'          => 'Pamagkamali king Pamaniad Paintulut',
+'permissionserrorstext'      => 'Ala kang paintulut bang gawan ita, uling kareng makatuking {{PLURAL:$1|sangkan|sangkan}}:',
+'recreate-moveddeleted-warn' => "'''Babala: Maglalang kang pasibayu king bulung a mebura na.'''
 
 Pakaisipan mu sana nung karapatdapat yang isundu ing pamag-edit kaniti.
 Atiyu keni ing tala ding mebura (deletion log) kaniting bulung ba meng malaguang asuri:",
@@ -644,7 +627,7 @@ Ini ing sangkan a binie nang $3: ''$2''",
 'nohistory'           => 'Alang amlat ning pamag-edit (edit history) para king bulung a ini.',
 'currentrev'          => 'Kasalungsungan a pangayalili',
 'revisionasof'        => 'Ing mibayu aniang $1',
-'revision-info'       => 'Deng miyalilan aniang $1 ibat kang $2', # Additionally available: $3: revision id
+'revision-info'       => 'Deng miyalilan aniang $1 ibat kang $2',
 'previousrevision'    => '←Minunang pamagbayu',
 'nextrevision'        => 'Mas tauling pamagbayu→',
 'currentrevisionlink' => 'Kasalungsungan a pamagbayu',
@@ -665,7 +648,7 @@ Kabaldugan: (ngeni)=pamiyaliwa king salukuyan a bersion (bersion ngeni),
 # Revision feed
 'history-feed-title'          => 'Amlat ning pamanalili',
 'history-feed-description'    => 'Amlat ning pamagbayu/pamanalili ning bulu a ini king wiki',
-'history-feed-item-nocomment' => '$1 king $2', # user at time
+'history-feed-item-nocomment' => '$1 king $2',
 'history-feed-empty'          => 'Ala yu ing bulung a paintunan mu.
 Malyaring mebura ya king wiki, o miyalilan ya lagyu.
 Subukan me ing [[Special:Search|searching on the wiki]] para kareng bayung bulung a kawangis na niti.',
@@ -801,66 +784,68 @@ Malyari meng [[:\$1|lalangan ing bulung a iti]].",
 Samantala, maliari kang maintun kapamilatan ning Google.
 Pakitandanan mung maliaring e no makapanaun deng karelang index king kalamnan ning {{SITENAME}}.',
 
-# Preferences page
-'preferences'              => 'Pinili',
-'mypreferences'            => 'Deng pinili ku',
-'prefs-edits'              => 'Bilang da reng edit:',
-'prefsnologin'             => 'ekamaka log',
-'prefsnologintext'         => 'Kailangan kang [[Special:UserLogin|maka-login]] ba mong apagana deng pinili ning talagamit (user preferences).',
-'prefsreset'               => 'Misubli king sadia manibat ketang makasimpan (storage) deng pinili/preferences.',
+# Quickbar
 'qbsettings-none'          => 'Ala',
 'qbsettings-fixedleft'     => 'Makapirmi ya ing kaili',
 'qbsettings-fixedright'    => 'Makapirmi ya ing wanan',
 'qbsettings-floatingleft'  => 'Kikimut ya ing kaili',
 'qbsettings-floatingright' => 'Kikimut ya ing wanan',
-'changepassword'           => 'Alilan ya ing password',
-'skin'                     => 'Balat',
-'skin-preview'             => 'I-preview',
-'dateformat'               => 'Ayus ning petsa',
-'datedefault'              => 'Alang mepili',
-'datetime'                 => 'Petsa ampong oras',
-'math_failure'             => 'E melaus ing pamag-parse',
-'math_unknown_error'       => 'e makikilalang pamagkamali',
-'math_unknown_function'    => 'e makikilalang gamit (unknown function)',
-'math_lexing_error'        => 'pamagkamali king lexing',
-'math_syntax_error'        => 'pamagkamali king pamituki-tuki (syntax error)',
-'math_image_error'         => 'E melaus ing pamanalis king PNG;
-siguraduan mu ing ustung pamag-install king latex, dvips, gs, at kaibat iyalis (i-convert) me',
-'math_bad_tmpdir'          => 'E makasulat king o makapaglalang piyakitan (directory) a math temp',
-'math_bad_output'          => 'E makasulat king o makapaglalang piyakitan (directory) a math output',
-'math_notexvc'             => 'Mawawala ya ing texvc executable;
-pakilawe me ing math/README ba meng i-configure.',
-'prefs-personal'           => 'Impormasiun tungkul king talagamit (user profile)',
-'prefs-rc'                 => 'Bayung miyalilan',
-'prefs-watchlist'          => 'Talangbabanten',
-'prefs-watchlist-days'     => 'Aldong lunto king tala da reng babanten (watchlist):',
-'prefs-watchlist-edits'    => 'Pekamaragul a bilang da reng miyalilan a lunto king miragdagan a tala da reng babanten (expanded watchlist):',
-'prefs-misc'               => 'Alwp',
-'saveprefs'                => 'I-save',
-'resetprefs'               => 'Buran la retang miyalilan a e me-save',
-'textboxsize'              => 'Mag-edit',
-'rows'                     => 'Dane (rows):',
-'columns'                  => 'Ding asias:',
-'searchresultshead'        => 'Maintun',
-'resultsperpage'           => 'Tinud (hits) balang bulung:',
-'contextlines'             => 'Gulis balang tinud:',
-'contextchars'             => 'Kontekstu (patulug) balang gulis:',
-'stub-threshold'           => 'Angganan ning <a href="#" class="stub">stub link</a> formatting (byte):',
-'recentchangesdays'        => 'Deng aldong ipalto king bayung mengayalili:',
-'recentchangescount'       => 'Bilang da reng me-edit a ipalto king bayung mengayalili:',
-'savedprefs'               => 'Me-save la reng kekang pinili.',
-'timezonelegend'           => 'Oras zona',
-'timezonetext'             => '¹Nung pilan yang oras aliwa ing kekang lokal a oras ketang server time (UTC).',
-'localtime'                => 'Lokal a oras',
-'servertime'               => 'Oras king server (server time)',
-'guesstimezone'            => 'Pakibatan ya manibat king browser',
-'allowemail'               => 'Pabustan ya ing e-mail ibat karing aliwang talagamit',
-'defaultns'                => 'Paintunan ya karening pirinan lagyu (namespaces) nung alang mepili:',
-'default'                  => 'alang mepili',
-'files'                    => 'Simpan (files)',
+
+# Preferences page
+'preferences'               => 'Pinili',
+'mypreferences'             => 'Deng pinili ku',
+'prefs-edits'               => 'Bilang da reng edit:',
+'prefsnologin'              => 'ekamaka log',
+'prefsnologintext'          => 'Kailangan kang [[Special:UserLogin|maka-login]] ba mong apagana deng pinili ning talagamit (user preferences).',
+'changepassword'            => 'Alilan ya ing password',
+'prefs-skin'                => 'Balat',
+'skin-preview'              => 'I-preview',
+'dateformat'                => 'Ayus ning petsa',
+'datedefault'               => 'Alang mepili',
+'prefs-datetime'            => 'Petsa ampong oras',
+'prefs-personal'            => 'Impormasiun tungkul king talagamit (user profile)',
+'prefs-rc'                  => 'Bayung miyalilan',
+'prefs-watchlist'           => 'Talangbabanten',
+'prefs-watchlist-days'      => 'Aldong lunto king tala da reng babanten (watchlist):',
+'prefs-watchlist-edits'     => 'Pekamaragul a bilang da reng miyalilan a lunto king miragdagan a tala da reng babanten (expanded watchlist):',
+'prefs-misc'                => 'Alwp',
+'saveprefs'                 => 'I-save',
+'resetprefs'                => 'Buran la retang miyalilan a e me-save',
+'prefs-editing'             => 'Mag-edit',
+'rows'                      => 'Dane (rows):',
+'columns'                   => 'Ding asias:',
+'searchresultshead'         => 'Maintun',
+'resultsperpage'            => 'Tinud (hits) balang bulung:',
+'contextlines'              => 'Gulis balang tinud:',
+'contextchars'              => 'Kontekstu (patulug) balang gulis:',
+'stub-threshold'            => 'Angganan ning <a href="#" class="stub">stub link</a> formatting (byte):',
+'recentchangesdays'         => 'Deng aldong ipalto king bayung mengayalili:',
+'recentchangescount'        => 'Bilang da reng me-edit a ipalto king bayung mengayalili:',
+'savedprefs'                => 'Me-save la reng kekang pinili.',
+'timezonelegend'            => 'Oras zona',
+'localtime'                 => 'Lokal a oras',
+'servertime'                => 'Oras king server (server time)',
+'guesstimezone'             => 'Pakibatan ya manibat king browser',
+'allowemail'                => 'Pabustan ya ing e-mail ibat karing aliwang talagamit',
+'defaultns'                 => 'Paintunan ya karening pirinan lagyu (namespaces) nung alang mepili:',
+'default'                   => 'alang mepili',
+'prefs-files'               => 'Simpan (files)',
+'youremail'                 => 'Ing kekang e-mail:',
+'username'                  => 'Talagamitlagyu:',
+'uid'                       => 'Ing kekang user ID:',
+'yourrealname'              => 'Tutung lagyu:',
+'yourlanguage'              => 'Amanu:',
+'yournick'                  => 'Pirma (Signature):',
+'badsig'                    => 'E ustu ing simpling pirma (raw signature); lon mo reng HTML tag.',
+'badsiglength'              => 'Masiadu yang makaba ing kekang pirma (signature). Kailangan, mas makuyad ya kesa king $1 kulit (characters).',
+'email'                     => 'Kekang e-mail',
+'prefs-help-realname'       => 'Ika ing bala nung buri meng ibie ing tutu mung lagyu.
+Nung ibie me, magamit ya bang kilalanan ing kekang ambag.',
+'prefs-help-email'          => "E kailangang ibye ing kekang e-mail address, oneng masanting nung abie me, ba rakang ayabut kapamilata'ning kekang user o user_talk page a e me sasabian ing kekang tutung lagyu.",
+'prefs-help-email-required' => 'Kailangan ya ing e-mail address.',
 
 # User rights
-'userrights'                  => 'Pamanibala king katuliran da reng talagamit (user rights management)', # Not used as normal message but as header for the special page itself
+'userrights'                  => 'Pamanibala king katuliran da reng talagamit (user rights management)',
 'userrights-lookup-user'      => 'Panibalan la reng grupung talagamit',
 'userrights-user-editname'    => 'Mangibili kang lagyungtalagamit (username):',
 'editusergroup'               => 'I-edit ya ing Grupung Talagamit',
@@ -1134,10 +1119,7 @@ Miyalilan ing pamanayus nung i-click ya ing pamagat ning kolum (column header).'
 'imagelinks'                => 'Deng suglung',
 'linkstoimage'              => 'Makasuglung la king simpan a reti deng makatuking bulung:',
 'nolinkstoimage'            => 'Alang bulung a pakasuglung king simpan (file) a ini.',
-'sharedupload'              => 'Abe-abe yang milulan (shared upload) ya ing simpan a ini, at mapalyaring gagamitan de murin deng aliwang proyektu. $2', # $1 is the repo name, $2 is shareduploadwiki(-desc)
-'shareduploadwiki'          => 'Pakilawe me ing $1 para king karagdagang impormasiun.',
-'shareduploadwiki-desc'     => 'Makabili ya king lalam ing pamilarawan (description) ketang kayang $1.',
-'shareduploadwiki-linktext' => 'bulung ning pamilarawan simpan (file description page)',
+'sharedupload'              => 'Abe-abe yang milulan (shared upload) ya ing simpan a ini, at mapalyaring gagamitan de murin deng aliwang proyektu.',
 'noimage'                   => 'Alang simpan a anti kaniyan lagyu; malyari kang $1.',
 'noimage-linktext'          => 'ilulan ya',
 'uploadnewversion-linktext' => 'Maglulan bayung bersion na niting simpan',
@@ -1465,9 +1447,9 @@ pakakalale ka.',
 a gewa nang [[User:$2|$2]] ([[User talk:$2|Talk]]); atin nang aliwang menalili o minyubli ketang bulung.
 
 I [[User:$3|$3]] ([[User talk:$3|Talk]]) ing tawling menalili.',
-'editcomment'      => "Ini ing komentu king edit: \"''\$1''\".", # only shown if there is an edit comment
+'editcomment'      => "Ini ing komentu king edit: \"''\$1''\".",
 'revertpage'       => 'Miurung la reng in-edit nang [[Special:Contributions/$2|$2]] ([[User talk:$2|Pamisabi-sabi]]);
-binalik neng [[User:$1|$1]] king tauling bersion', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+binalik neng [[User:$1|$1]] king tauling bersion',
 'rollback-success' => 'Deng edit nang $1 a miurung;
 binalik nong $2 king sadiang bersion.',
 'sessionfailure'   => 'Balamu ating prublema king kekang login session;
@@ -1504,7 +1486,7 @@ Deni reng kasalungsungan a setting para king bulung '''$1''':",
 'protect-expiring'            => 'mayari ya keng $1 (UTC)',
 'protect-cascade'             => 'Protektan/kambilan la reng bulung a kayabe kening bulung a ini (tuki-tuking proteksiun o cascading protection)',
 'protect-cantedit'            => 'E mo malyaring alilan deng sikan ning proteksiun (protection levels) king bulung a ini, uling ala kang paintulut a i-edit ya.',
-'protect-expiry-options'      => '2 oras:2 hours,metung a yaldo:1 day,3ng aldo:3 days,paruminggu:1 week,2ng duminggu:2 weeks,pabulan:1 month,3ng bulan:3 months,6 a bulan:6 months,pabanua:1 year,alang kapupusan:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '2 oras:2 hours,metung a yaldo:1 day,3ng aldo:3 days,paruminggu:1 week,2ng duminggu:2 weeks,pabulan:1 month,3ng bulan:3 months,6 a bulan:6 months,pabanua:1 year,alang kapupusan:infinite',
 'restriction-type'            => 'Paintulut:',
 'restriction-level'           => 'Lebel ning pamag-limita:',
 'minimum-size'                => 'Pekamalati',
@@ -1587,6 +1569,9 @@ $1',
 'sp-contributions-newbies'     => 'Den mung ambag da reng bayung account ing palto',
 'sp-contributions-newbies-sub' => 'Para kareng bayung account',
 'sp-contributions-blocklog'    => 'Sabatan ya ing tala',
+'sp-contributions-deleted'     => 'Deng ambag da reng talagamit a mebura',
+'sp-contributions-talk'        => 'Pisasabian',
+'sp-contributions-userrights'  => 'Pamanibala king katuliran da reng talagamit (user rights management)',
 'sp-contributions-search'      => 'Maintun ambag',
 'sp-contributions-username'    => 'IP Address o lagyungtalagamit (username):',
 'sp-contributions-submit'      => 'Maintun',
@@ -1636,7 +1621,7 @@ mu nung sanu retang bulung a sinira da).',
 'ipbenableautoblock'          => 'Tambing yang sabatan ing tauling IP address a ginamit ning talagamit a ini, at deng IP nung nu na pa subukang mag-edit',
 'ipbsubmit'                   => 'Sabatan ya ing talagamit a ini',
 'ipbother'                    => 'Keng tutuki',
-'ipboptions'                  => '2 oras:2 hours,metung a yaldo:1 day,3ng aldo:3 days,paruminggu:1 week,2ng duminggu:2 weeks,pabulan:1 month,3ng bulan:3 months,6 a bulan:6 months,pabanua:1 year,alang kapupusan:infinite', # display1:time1,display2:time2,...
+'ipboptions'                  => '2 oras:2 hours,metung a yaldo:1 day,3ng aldo:3 days,paruminggu:1 week,2ng duminggu:2 weeks,pabulan:1 month,3ng bulan:3 months,6 a bulan:6 months,pabanua:1 year,alang kapupusan:infinite',
 'ipbotheroption'              => 'aliwa',
 'ipbotherreason'              => 'Karagdagang/aliuang sangkan:',
 'ipbhidename'                 => 'Isalikut ya ing lagyungtalagamit (username) king tala ring mesabat (block log), tala ring makasabat (active block list), ampong tala ring talagamit (user list)',
@@ -1746,7 +1731,7 @@ Nung makanyan pin ing milyari, kailangan meng iyalis o isanib (merge) ing bulung
 'move-watch'              => 'Banten ya ing bulung a ini',
 'movepagebtn'             => 'Iyalis ya ing bulung',
 'pagemovedsub'            => 'Merapat ing pamanalis',
-'movepage-moved'          => '<big>\'\'\'Ing "$1" miyalis ya king "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'          => '<big>\'\'\'Ing "$1" miyalis ya king "$2"\'\'\'</big>',
 'articleexists'           => 'Ing bulung a yan atinang miki lagyu, okaya
 ing lagyu ginamit mu e malyari.
 Gumamit na kang aliwang lagyu.',
@@ -1922,7 +1907,7 @@ Maka-login la reng eganaganang pamaglub a transwiki (transwiki import actions) k
 # Attribution
 'anonymous'        => 'Ing/Deng gagamit king {{SITENAME}} a e pepakilala.',
 'siteuser'         => 'talagamit ning {{SITENAME}} $1',
-'lastmodifiedatby' => 'Ining bulung tauli neng elilan $3 aniang $2, $1.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Ining bulung tauli neng elilan $3 aniang $2, $1.',
 'othercontribs'    => 'Agpang basi king obra nang $1.',
 'others'           => 'aliwa',
 'siteusers'        => '{{SITENAME}} user(s) $1
@@ -1954,6 +1939,19 @@ Mapaliaring ing sangkan metung yang suglung king karinan king kilual (link to an
 'mw_math_source' => 'Paburen yang TeX (para kareng text browser)',
 'mw_math_modern' => 'Rerekomenda de kareng makabayung browser',
 'mw_math_mathml' => 'MathML nung maliari (susubukan da pamu [experimental])',
+
+# Math errors
+'math_failure'          => 'E melaus ing pamag-parse',
+'math_unknown_error'    => 'e makikilalang pamagkamali',
+'math_unknown_function' => 'e makikilalang gamit (unknown function)',
+'math_lexing_error'     => 'pamagkamali king lexing',
+'math_syntax_error'     => 'pamagkamali king pamituki-tuki (syntax error)',
+'math_image_error'      => 'E melaus ing pamanalis king PNG;
+siguraduan mu ing ustung pamag-install king latex, dvips, gs, at kaibat iyalis (i-convert) me',
+'math_bad_tmpdir'       => 'E makasulat king o makapaglalang piyakitan (directory) a math temp',
+'math_bad_output'       => 'E makasulat king o makapaglalang piyakitan (directory) a math output',
+'math_notexvc'          => 'Mawawala ya ing texvc executable;
+pakilawe me ing math/README ba meng i-configure.',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Tatakan yang babanten (patrolled)',
@@ -2027,7 +2025,7 @@ Detang aliwa tambing (by default) lang makasalikut.
 * datetimeoriginal
 * exposuretime
 * fnumber
-* focallength', # Do not translate list items
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Lapad',
@@ -2122,14 +2120,14 @@ Detang aliwa tambing (by default) lang makasalikut.
 
 'exif-unknowndate' => 'E makabili ing petsa',
 
-'exif-orientation-1' => 'Karaniwan', # 0th row: top; 0th column: left
-'exif-orientation-2' => 'Mitumbalik yang pakera (horizontally)', # 0th row: top; 0th column: right
-'exif-orientation-3' => 'Pepadurut yang 180°', # 0th row: bottom; 0th column: right
-'exif-orientation-4' => 'Mitumbalik yang patikdo (vertically)', # 0th row: bottom; 0th column: left
-'exif-orientation-5' => 'Dinurut yang 90° pa-kaili at mitumbalik yang patikdo (vertically)', # 0th row: left; 0th column: top
-'exif-orientation-6' => 'Pepadurut yang 90° a pa-wanan', # 0th row: right; 0th column: top
-'exif-orientation-7' => 'Dinurut yang 90° pa-wanan at mitumbalik patikdo (vertically)', # 0th row: right; 0th column: bottom
-'exif-orientation-8' => 'Pepadurut yang 90° a pa-kaili', # 0th row: left; 0th column: bottom
+'exif-orientation-1' => 'Karaniwan',
+'exif-orientation-2' => 'Mitumbalik yang pakera (horizontally)',
+'exif-orientation-3' => 'Pepadurut yang 180°',
+'exif-orientation-4' => 'Mitumbalik yang patikdo (vertically)',
+'exif-orientation-5' => 'Dinurut yang 90° pa-kaili at mitumbalik yang patikdo (vertically)',
+'exif-orientation-6' => 'Pepadurut yang 90° a pa-wanan',
+'exif-orientation-7' => 'Dinurut yang 90° pa-wanan at mitumbalik patikdo (vertically)',
+'exif-orientation-8' => 'Pepadurut yang 90° a pa-kaili',
 
 'exif-planarconfiguration-1' => 'ayus a bikual-bikual (chunky format)',
 'exif-planarconfiguration-2' => 'ayus a patag (planar format)',
@@ -2209,7 +2207,7 @@ Detang aliwa tambing (by default) lang makasalikut.
 'exif-gpsmeasuremode-2' => 'Pamaniukad a 2-dimensional',
 'exif-gpsmeasuremode-3' => 'Pamaniukad a 3-dimensional',
 
-# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+# Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'Kilometru balang oras',
 'exif-gpsspeed-m' => 'Milla balang oras',
 
@@ -2326,10 +2324,10 @@ Mayari/mapasu ya ining confirmation code keng $4.',
 'watchlisttools-raw'  => 'I-edit ya ing e pa metagin a tala ding babanten (raw watchlist)',
 
 # Special:Version
-'version'                  => 'Bersion', # Not used as normal message but as header for the special page itself
+'version'                  => 'Bersion',
 'version-specialpages'     => 'Bulung a makabukud',
 'version-other'            => 'Aliwa',
-'version-version'          => 'Bersion',
+'version-version'          => '(Bersion $1)',
 'version-license'          => 'Lisensia',
 'version-software-product' => 'Produktu',
 'version-software-version' => 'Bersion',

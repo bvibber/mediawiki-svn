@@ -1,6 +1,9 @@
 <?php
 /** Maithili (मैथिली)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -238,6 +241,8 @@ $messages = array(
 
 # Contributions
 'mycontris' => 'हमर योगदान',
+
+'sp-contributions-talk' => 'कहू',
 
 # What links here
 'whatlinkshere'       => 'एतय कोन लिंक अछि',

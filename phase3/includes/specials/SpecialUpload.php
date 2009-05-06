@@ -146,7 +146,7 @@ class UploadForm extends SpecialPage {
 	 * @access private
 	 */
 	function processUpload(){
-		global $wgUser, $wgOut, $wgFileExtensions, $wgLang;
+		global $wgOut, $wgFileExtensions, $wgLang;
 	 	$details = $this->internalProcessUpload();		
 		
 	 	switch( $details['status'] ) {
@@ -770,10 +770,26 @@ wgUploadAutoFill = {$autofill};
 				<td class='mw-label'>
 					<label for='wpDestFile'>{$destfilename}</label>
 				</td>
-				<td class='mw-input'>
-					<input tabindex='2' type='text' name='wpDestFile' id='wpDestFile' size='60'
-						value=\"{$encDestName}\" onchange='toggleFilenameFiller()' $destOnkeyup />
-				</td>
+				<td class='mw-input'>"
+		);
+		if( $this->mForReUpload ) {
+			$wgOut->addHTML(
+				Xml::hidden( 'wpDestFile', $this->mDesiredDestName, array('id'=>'wpDestFile','tabindex'=>2) ) .
+				"<tt>" .
+				$encDestName .
+				"</tt>"
+			);
+		}
+		else {
+			$wgOut->addHTML(
+				"<input tabindex='2' type='text' name='wpDestFile' id='wpDestFile' size='60'
+						value=\"{$encDestName}\" onchange='toggleFilenameFiller()' $destOnkeyup />"
+			);
+		}
+		
+
+		$wgOut->addHTML(
+				"</td>
 			</tr>
 			<tr>
 				<td class='mw-label'>
@@ -855,14 +871,17 @@ wgUploadAutoFill = {$autofill};
 			<tr>
 				<td></td>
 					<td class='mw-input'>
-						<input tabindex='9' type='submit' name='wpUpload' value=\"{$ulb}\"" . $wgUser->getSkin()->tooltipAndAccesskey( 'upload' ) . " />
+						<input tabindex='9' type='submit' name='wpUpload' value=\"{$ulb}\"" .
+							$wgUser->getSkin()->tooltipAndAccesskey( 'upload' ) . " />
 					</td>
 			</tr>
 			<tr>
 				<td></td>
 				<td class='mw-input'>"
 		);
-		$wgOut->addWikiText( wfMsgForContent( 'edittools' ) );
+		$wgOut->addHTML( '<div class="mw-editTools">' );
+		$wgOut->addWikiMsgArray( 'edittools', array(), array( 'content' ) );
+		$wgOut->addHTML( '</div>' );
 		$wgOut->addHTML( "
 				</td>
 			</tr>" .

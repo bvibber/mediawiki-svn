@@ -1,6 +1,9 @@
 <?php
 /** Araucanian (Mapudungun)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -74,14 +77,19 @@ $messages = array(
 # Categories related messages
 'listingcontinuesabbrev' => 'ramt.',
 
-'qbfind'        => 'Kintun',
-'qbedit'        => 'Wirin',
-'qbmyoptions'   => 'tañi nütramkawe',
 'moredotdotdot' => 'Doy...',
 'mypage'        => 'tañi nütramkawe',
 'mytalk'        => 'Tañi nütramkawe',
 'anontalk'      => 'Tüfachi IP ñi nütramkawe',
 'and'           => '&#32;ka',
+
+# Cologne Blue skin
+'qbfind'         => 'Kintun',
+'qbedit'         => 'Wirin',
+'qbmyoptions'    => 'tañi nütramkawe',
+'qbspecialpages' => 'Kangelu',
+'faq'            => 'FAQ',
+'faqpage'        => 'Project:FAQ',
 
 'returnto'         => 'Amutun $1 püle.',
 'tagline'          => '{{SITENAME}} mew',
@@ -103,6 +111,7 @@ $messages = array(
 'newpage'          => 'We Pakina',
 'talkpage'         => 'Nütramkafinge tüfachi pakina',
 'talkpagelinktext' => 'Nütramkawe',
+'specialpage'      => 'Kangelu',
 'personaltools'    => 'Kisungechi küdawpeyüm',
 'articlepage'      => 'adkintun artículo',
 'talk'             => 'Nütramkawe',
@@ -123,8 +132,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'edithelp'             => 'Kellü wirin',
 'edithelppage'         => 'Help:Chum wiringekey pakina',
-'faq'                  => 'FAQ',
-'faqpage'              => 'Project:FAQ',
 'helppage'             => 'Help:Kellu',
 'mainpage'             => 'Wüne pakina',
 'mainpage-description' => 'Wüne pakina',
@@ -154,7 +161,6 @@ $messages = array(
 'badtitle'        => 'Nornongey ta üy',
 
 # Login and logout pages
-'loginpagetitle'          => 'Konün',
 'yourname'                => 'Tami üy',
 'yourpassword'            => 'Tami kondungu',
 'login'                   => 'Konün',
@@ -166,10 +172,6 @@ $messages = array(
 'nologin'                 => 'Nielaymi kiñe lludüwe? $1.',
 'nologinlink'             => 'Dewmafinge',
 'gotaccountlink'          => 'Konün',
-'yourrealname'            => 'Tami mupiñ üy *',
-'yourlanguage'            => 'Dungun:',
-'gender-male'             => 'Wentru',
-'gender-female'           => 'Domo',
 'loginlanguagelabel'      => 'Dungun: $1',
 
 # Edit pages
@@ -192,13 +194,17 @@ $messages = array(
 'historyempty'           => '(welli)',
 
 # Revision feed
-'history-feed-item-nocomment' => '$1 $2 mew', # user at time
+'history-feed-item-nocomment' => '$1 $2 mew',
 
 # Revision deletion
-'rev-delundel'  => 'pengelün/ellkan',
-'pagehist'      => 'pünon pakina',
-'deletedhist'   => 'Ñamümüngelu pünon',
-'revdelete-hid' => 'Ellkan $1',
+'rev-delundel'    => 'pengelün/ellkan',
+'pagehist'        => 'pünon pakina',
+'deletedhist'     => 'Ñamümüngelu pünon',
+'revdelete-uname' => 'Üy kellufe',
+'revdelete-hid'   => 'Ellkan $1',
+
+# History merging
+'mergehistory-reason' => 'Dungu:',
 
 # Diffs
 'lineno'       => 'Wirin $1:',
@@ -210,11 +216,13 @@ $messages = array(
 
 # Search results
 'viewprevnext'                   => 'Pen ($1) ($2) ($3).',
+'searchmenu-exists'              => "'''Ngey kiñe pakina pingey «[[$1]]» tüfachi wiki mew'''",
+'searchmenu-new'                 => "'''¡Llitun pakina «[[:$1]]» tüfachi wiki mew!'''",
 'searchhelp-url'                 => 'Help:Kellu',
 'searchprofile-articles-tooltip' => 'kintu $1 mew',
 'searchprofile-project-tooltip'  => 'Kintun $1 mew',
 'search-interwiki-more'          => '(Doy)',
-'searchall'                      => 'Fill',
+'searchall'                      => 'kom',
 'powersearch'                    => 'Kintun',
 'powersearch-field'              => 'Kintun',
 
@@ -222,12 +230,21 @@ $messages = array(
 'prefs-edits'            => 'Rakin Wirin:',
 'prefsnologin'           => 'Mülelay Konün',
 'skin-preview'           => 'Pen chum müley',
-'textboxsize'            => 'Wirin',
+'prefs-editing'          => 'Wirin',
 'searchresultshead'      => 'Kintun',
 'timezoneregion-africa'  => 'Afrika',
 'timezoneregion-america' => 'Amerika',
 'timezoneregion-arctic'  => 'Artiku',
+'timezoneregion-asia'    => 'Asia',
 'timezoneregion-europe'  => 'Ewropa',
+'username'               => 'Üy kellufe:',
+'yourrealname'           => 'Tami mupiñ üy *',
+'yourlanguage'           => 'Dungun:',
+'gender-male'            => 'Wentru',
+'gender-female'          => 'Domo',
+
+# User rights
+'userrights-user-editname' => 'Wirin kiñe üy kellufe mew:',
 
 # Groups
 'group'       => 'Kisuwen:',
@@ -252,10 +269,17 @@ $messages = array(
 'rightsnone' => 'chemnorume',
 
 # Associated actions - in the sentence "You do not have permission to X"
-'action-move' => 'Nengümün tüfachi pakina',
+'action-read'          => 'chillkatun tüfachi pakina',
+'action-edit'          => 'wirin tüfachi pakina',
+'action-createpage'    => 'llitun pakina',
+'action-createtalk'    => 'llitun nütramkawe pakina',
+'action-move'          => 'Nengümün tüfachi pakina',
+'action-delete'        => 'Ñamümün tüfachi pakina',
+'action-browsearchive' => 'Kintun ñamün pakina',
+'action-undelete'      => 'Namümlay tüfachi pakina',
 
 # Recent changes
-'rcshowhideminor'                   => '$1 wirin pichi',
+'rcshowhideminor'                   => '$1 pichi wirin',
 'rcshowhidemine'                    => '$1 tañi wirin',
 'hist'                              => 'Püno',
 'hide'                              => 'Ellkan',
@@ -274,8 +298,9 @@ $messages = array(
 'nolicense' => 'Chemnorume dullinnongey',
 
 # Special:ListFiles
-'listfiles_name' => 'Üy',
-'listfiles_user' => 'Kellufe',
+'listfiles_search_for' => 'Kintun üy ad:',
+'listfiles_name'       => 'Üy',
+'listfiles_user'       => 'Kellufe',
 
 # File description page
 'filehist-deleteall' => 'kom ñamümün',
@@ -352,18 +377,19 @@ $messages = array(
 'created'                      => 'Llituy',
 
 # Delete
-'deletepage'     => 'Ñamümün tüfachi pakina',
-'exblank'        => 'pakina wellingey',
-'delete-confirm' => 'Ñamümüngelu "$1"',
-'delete-legend'  => 'Ñamümün',
-'deletedarticle' => '«[[$1]]» Ñamümün',
+'deletepage'            => 'Ñamümün tüfachi pakina',
+'exblank'               => 'pakina wellingey',
+'delete-confirm'        => 'Ñamümüngelu "$1"',
+'delete-legend'         => 'Ñamümün',
+'deletedarticle'        => '«[[$1]]» Ñamümün',
+'deletereasonotherlist' => 'Kake dungu',
 
 # Protect
 'prot_1movedto2'          => '[[$1]] wiñamngey [[$2]] püle',
 'protectexpiry'           => 'Afi:',
 'protect-level-sysop'     => 'Pu ngünefe müṯen',
 'protect-summary-cascade' => 'Trayengko',
-'protect-expiry-options'  => '1 ora:1 hour,1 aṉtü:1 day,1 semana:1 week,2 semanas:2 weeks,1 küyeṉ:1 month,3 küyeṉ:3 months,6 küyeṉ:6 months,1 tripantu:1 year,Rumel:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'  => '1 ora:1 hour,1 aṉtü:1 day,1 semana:1 week,2 semanas:2 weeks,1 küyeṉ:1 month,3 küyeṉ:3 months,6 küyeṉ:6 months,1 tripantu:1 year,Rumel:infinite',
 
 # Restrictions (nouns)
 'restriction-edit'   => 'Pepiwelukay',
@@ -384,6 +410,7 @@ $messages = array(
 'month'       => 'Küyeṉ:',
 'year'        => 'Tripantu:',
 
+'sp-contributions-talk'   => 'Nütramkawe',
 'sp-contributions-submit' => 'Kintun',
 
 # What links here
@@ -391,12 +418,15 @@ $messages = array(
 'whatlinkshere-prev' => '{{PLURAL:$1|Pen chum müley|Pen chum müluey $1}}',
 
 # Block/unblock
-'ipbexpiry'          => 'Afi',
-'ipboptions'         => '2 ora:2 hours,1 aṉtü:1 day,3 aṉtü:3 days,1 semana:1 week,2 semana:2 weeks,1 küyeṉ:1 month,3 küyeṉ:3 months,6 küyeṉ:6 months,1 tripantu:1 year,rumel:infinite', # display1:time1,display2:time2,...
-'ipbotheroption'     => 'Kakelu',
-'ipblocklist-submit' => 'Kintun',
-'expiringblock'      => 'afi $1',
-'proxyblocksuccess'  => 'Dewmangey.',
+'ipbexpiry'                  => 'Afi',
+'ipbreason'                  => 'Dungu:',
+'ipbreasonotherlist'         => 'Kake dungu:',
+'ipboptions'                 => '2 ora:2 hours,1 aṉtü:1 day,3 aṉtü:3 days,1 semana:1 week,2 semana:2 weeks,1 küyeṉ:1 month,3 küyeṉ:3 months,6 küyeṉ:6 months,1 tripantu:1 year,rumel:infinite',
+'ipbotheroption'             => 'Kakelu',
+'ipblocklist-submit'         => 'Kintun',
+'expiringblock'              => 'afi $1',
+'block-log-flags-hiddenname' => 'Üy kellufe ellkan',
+'proxyblocksuccess'          => 'Dewmangey.',
 
 # Move page
 'move-page'               => 'Nengümün $1',
@@ -418,13 +448,14 @@ $messages = array(
 'allmessagesname' => 'Üy',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage'    => 'Tañi pakina',
-'tooltip-pt-mytalk'      => 'Tañi nütramkawe',
+'tooltip-pt-userpage'    => 'Tami pakina',
+'tooltip-pt-mytalk'      => 'Tami nütramkawe',
 'tooltip-pt-logout'      => 'Tripan',
 'tooltip-ca-delete'      => 'Ñamümün tüfachi pakina',
 'tooltip-ca-move'        => 'Nengümün tüfachi pakina',
 'tooltip-search'         => 'Kintun tüfachi wiki mew',
 'tooltip-p-logo'         => 'Wüne pakina',
+'tooltip-n-mainpage'     => 'Tripan Wüne Pakina mew',
 'tooltip-ca-nstab-user'  => 'Pen kellufe pakina',
 'tooltip-ca-nstab-image' => 'Pen pakina ad mew',
 'tooltip-ca-nstab-help'  => 'Pen kellupakina',
@@ -484,7 +515,8 @@ $messages = array(
 'confirm_purge_button' => 'Feley may',
 
 # Multipage image navigation
-'imgmultigo' => 'Amun!',
+'imgmultigo'   => 'Amun!',
+'imgmultigoto' => 'Amun pakina 1$ mew',
 
 # Table pager
 'table_pager_limit_submit' => 'Amun',

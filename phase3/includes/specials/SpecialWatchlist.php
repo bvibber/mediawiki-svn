@@ -214,12 +214,15 @@ function wfSpecialWatchlist( $par ) {
 	if( $andHidePatrolled ) $conds[] = $andHidePatrolled;
 	if( $nameSpaceClause ) $conds[] = $nameSpaceClause;
 
-	if ( $usePage ) {
+	$rollbacker = $wgUser->isAllowed('rollback');
+	if ( $usePage || $rollbacker ) {
 		$tables[] = 'page';
 		$join_conds['page'] = array('LEFT JOIN','rc_cur_id=page_id');
+		if ($rollbacker) 
+			$fields[] = 'page_latest';
 	}
 
-	ChangeTags::modifyDisplayQuery( $tables, $fields, $conds, $join_conds, '' );
+	ChangeTags::modifyDisplayQuery( $tables, $fields, $conds, $join_conds, $options, '' );
 	wfRunHooks('SpecialWatchlistQuery', array(&$conds,&$tables,&$join_conds,&$fields) );
 	
 	$res = $dbr->select( $tables, $fields, $conds, __METHOD__, $options, $join_conds );

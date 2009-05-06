@@ -33,7 +33,7 @@ if ( !defined( 'MW_PHP4' ) ) {
 }
 
 /** MediaWiki version number */
-$wgVersion			= '1.15alpha';
+$wgVersion			= '1.16alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -428,8 +428,6 @@ $wgSharedUploadDBprefix = '';
 $wgCacheSharedUploads = true;
 /** Allow for upload to be copied from an URL. Requires Special:Upload?source=web */
 $wgAllowCopyUploads = false;
-
-$wgCopyUploadTimeout = 30;
 /**
  * Max size for uploads, in bytes.  Currently only works for uploads from URL
  * via CURL (see $wgAllowCopyUploads).  The only way to impose limits on
@@ -472,7 +470,7 @@ $wgHashedSharedUploadDirectory = true;
  *
  * Please specify the namespace, as in the example below.
  */
-$wgRepositoryBaseUrl = "http://commons.wikimedia.org/wiki/Image:";
+$wgRepositoryBaseUrl = "http://commons.wikimedia.org/wiki/File:";
 
 #
 # Email settings
@@ -3354,15 +3352,15 @@ $wgTrustedMediaFormats= array(
 $wgAllowSpecialInclusion = true;
 
 /**
- * Timeout for HTTP requests done via CURL 
+ * Timeout for HTTP requests done via CURL (at script run time) 
  *
  */
-$wgHTTPTimeout = 3; 
+$wgHTTPTimeout = 10; 
 
 /**
- * Timeout for large http file copy over http (default 2 hours) 
+ * Timeout for large http file copy over http (default 20 min) 
  */ 
-$wgHTTPFileTimeout = 60*60*2;
+$wgHTTPFileTimeout = 60*20;
 
 /**
  * Proxy to use for CURL requests.

@@ -1,6 +1,9 @@
 <?php
 /** Chechen (Нохчийн)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -67,10 +70,12 @@ $messages = array(
 'article'   => 'таптар',
 'newwindow' => '(керла кор)',
 'cancel'    => 'Cаца',
-'qbfind'    => 'Лахар',
 'mytalk'    => 'Сан цІера дийцар',
 'anontalk'  => 'ХІар IP-адреси дийцар',
 'and'       => '&#32;а',
+
+# Cologne Blue skin
+'qbfind' => 'Лахар',
 
 'errorpagetitle'    => 'ГІалат',
 'help'              => 'ГIo',
@@ -134,7 +139,6 @@ $messages = array(
 'error' => 'ГІалат',
 
 # Login and logout pages
-'loginpagetitle'     => 'Чу валар',
 'yourname'           => 'Хьан цIе',
 'yourpassword'       => 'Хьан тешаман дош',
 'yourpasswordagain'  => 'Юха язде тешаман дош:',
@@ -149,11 +153,6 @@ $messages = array(
 'nologinlink'        => 'Керл аккаунт кхолла',
 'createaccount'      => 'Керл юзеран регистраци е',
 'gotaccount'         => 'Регистрации йолш вуй хьо? $1.',
-'youremail'          => 'И-пошта:',
-'yourrealname'       => 'Хьан бакъ цІе:',
-'yourlanguage'       => 'Хьан мотт:',
-'yourvariant'        => 'Кепара мотт',
-'prefs-help-email'   => 'И-пошта, сил чIoгI оьшург пункт яц, амма и хилч кхийч юзерашан аьтто хир ду шуц хабари вал.',
 'mailmypassword'     => 'Тешам дош хийца',
 'accountcreated'     => 'Аккаунт кхоллна',
 'accountcreatedtext' => '$1 юзер аккаунт кхоллна.',
@@ -190,10 +189,15 @@ $messages = array(
 'searchhelp-url' => 'Help:ГIo',
 
 # Preferences page
-'mypreferences'   => 'сан настройки',
-'changepassword'  => 'Тешаман дош хийцар хьам',
-'prefs-watchlist' => 'тергалдеш таптарш',
-'textboxsize'     => 'Xийца',
+'mypreferences'    => 'сан настройки',
+'changepassword'   => 'Тешаман дош хийцар хьам',
+'prefs-watchlist'  => 'тергалдеш таптарш',
+'prefs-editing'    => 'Xийца',
+'youremail'        => 'И-пошта:',
+'yourrealname'     => 'Хьан бакъ цІе:',
+'yourlanguage'     => 'Хьан мотт:',
+'yourvariant'      => 'Кепара мотт',
+'prefs-help-email' => 'И-пошта, сил чIoгI оьшург пункт яц, амма и хилч кхийч юзерашан аьтто хир ду шуц хабари вал.',
 
 # User rights
 'editinguser' => "Хийца юзер '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
@@ -269,6 +273,8 @@ $messages = array(
 'mycontris'     => 'Сан болх',
 'month'         => 'За год (и ранее):',
 'year'          => 'За месяц (и ранее):',
+
+'sp-contributions-talk' => 'Дийца',
 
 # What links here
 'whatlinkshere' => 'Линкаш Кхуза',

@@ -287,37 +287,6 @@ span.subpages {
 	margin: 0;
 	padding: 0;
 }
-.success {
-	color: green;
-	font-size: larger;
-}
-.error {
-	color: red;
-	font-size: larger;
-}
-.errorbox, .successbox {
-	font-size: larger;
-	border: 2px solid;
-	padding: .5em 1em;
-	float: left;
-	margin-bottom: 2em;
-	color: #000;
-}
-.errorbox {
-	border-color: red;
-	background-color: #fff2f2;
-}
-.successbox {
-	border-color: green;
-	background-color: #dfd;
-}
-.errorbox h2, .successbox h2 {
-	font-size: 1em;
-	font-weight: bold;
-	display: inline;
-	margin: 0 .5em 0 0;
-	border: none;
-}
 
 .catlinks {
 	border: 1px solid #aaa;
@@ -529,7 +498,8 @@ table.rimage {
 	background: url(external.png) center right no-repeat;
 	padding: 0 13px;
 }
-.rtl #bodyContent a[href ^="http://"] {
+.rtl #bodyContent a.external,
+.rtl #bodyContent a[href ^="gopher://"] {
 	background-image: url(external-rtl.png);
 }
 #bodyContent a[href ^="https://"],
@@ -595,7 +565,8 @@ table.rimage {
 }
 
 /* correction for ltr wikis */
-.ltr #bodyContent a.external {
+.ltr #bodyContent a.external,
+.ltr #bodyContent a.extiw {
 	padding-left: 0;
 }
 
@@ -919,6 +890,47 @@ li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
 	z-index: 3;
 }
 
+/* Override text-transform on languages where capitalization is significant */
+.portlet h5[lang|=bar],
+.portlet h6[lang|=bar],
+#p-personal ul[lang|=bar],
+#p-cactions ul[lang|=bar] li a,
+.portlet h5[lang|=de],
+.portlet h6[lang|=de],
+#p-personal ul[lang|=de],
+#p-cactions ul[lang|=de] li a,
+.portlet h5[lang|=gsw],
+.portlet h6[lang|=gsw],
+#p-personal ul[lang|=gsw],
+#p-cactions ul[lang|=gsw] li a,
+.portlet h5[lang|=ksh],
+.portlet h6[lang|=ksh],
+#p-personal ul[lang|=ksh],
+#p-cactions ul[lang|=ksh] li a,
+.portlet h5[lang|=lb],
+.portlet h6[lang|=lb],
+#p-personal ul[lang|=lb],
+#p-cactions ul[lang|=lb] li a,
+.portlet h5[lang|=nds],
+.portlet h6[lang|=nds],
+#p-personal ul[lang|=nds],
+#p-cactions ul[lang|=nds] li a,
+.portlet h5[lang|=pdc],
+.portlet h6[lang|=pdc],
+#p-personal ul[lang|=pdc],
+#p-cactions ul[lang|=pdc] li a,
+.portlet h5[lang|=pdt],
+.portlet h6[lang|=pdt],
+#p-personal ul[lang|=pdt],
+#p-cactions ul[lang|=pdt] li a
+.portlet h5[lang|=pfl],
+.portlet h6[lang|=pfl],
+#p-personal ul[lang|=pfl],
+#p-cactions ul[lang|=pfl] li a {
+	text-transform: none;
+}
+
+
 /* TODO: #t-iscite is only used by the Cite extension, come up with some
  * system which allows extensions to add to this file on the fly
  */
@@ -953,6 +965,13 @@ li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
 #f-copyrightico {
 	float: left;
 	height: 1%;
+}
+
+.mw-htmlform-submit {
+	font-weight: bold;
+	padding-left: .3em;
+	padding-right: .3em;
+	margin-right: 2em;
 }
 
 /* js pref toc */
@@ -1004,10 +1023,6 @@ li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
 	cursor: default;
 	text-decoration: none;
 }
-#prefcontrol {
-	padding-top: 2em;
-	clear: both;
-}
 #preferences {
 	margin: 0;
 	border: 1px solid #aaa;
@@ -1020,11 +1035,7 @@ li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
 	padding: 0;
 	margin: 0;
 }
-.prefsection fieldset {
-	border: 1px solid #aaa;
-	float: left;
-	margin-right: 2em;
-}
+
 .prefsection legend {
 	font-weight: bold;   
 }
@@ -1034,15 +1045,10 @@ li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
 .mainLegend {
 	display: none;
 }
-div.prefsectiontip {
+td.htmlform-tip {
 	font-size: x-small;
 	padding: .2em 2em;
 	color: #666;
-}
-.btnSavePrefs {
-	font-weight: bold;
-	padding-left: .3em;
-	padding-right: .3em;
 }
 
 .preferences-login {
@@ -1534,23 +1540,6 @@ div.mw-lag-warn-high {
 	text-align: center;
 	vertical-align: middle;
 	font-size: 90%;
-}
-
-/** Special:Search stuff */
-div#mw-search-interwiki-caption {
-	text-align: center;
-	font-weight: bold;
-	font-size: 95%;
-}
-
-.mw-search-interwiki-project {
-	font-size: 97%;
-	text-align: left;
-	padding-left: 0.2em;
-	padding-right: 0.15em;
-	padding-bottom: 0.2em;
-	padding-top: 0.15em;
-	background: #cae8ff;
 }
 
 /* God-damned hack for the crappy layout */

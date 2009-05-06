@@ -44,7 +44,6 @@ class ApiUnblock extends ApiBase {
 	 */
 	public function execute() {
 		global $wgUser;
-		$this->getMain()->requestWriteMode();
 		$params = $this->extractRequestParams();
 
 		if($params['gettoken'])
@@ -72,13 +71,17 @@ class ApiUnblock extends ApiBase {
 		if($retval)
 			$this->dieUsageMsg($retval);
 
-		$res['id'] = $id;
+		$res['id'] = intval($id);
 		$res['user'] = $user;
 		$res['reason'] = $reason;
 		$this->getResult()->addValue(null, $this->getModuleName(), $res);
 	}
 
 	public function mustBePosted() { return true; }
+
+	public function isWriteMode() {
+		return true;
+	}
 
 	public function getAllowedParams() {
 		return array (

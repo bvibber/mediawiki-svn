@@ -206,6 +206,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 				$this->extractRowInfo($row);
 			else
 			{
+				$this->pageMap[$row->page_namespace][$row->page_title] = $row->page_id;
 				if($row->page_is_redirect)
 					$this->redirTitles[] = Title::makeTitle($row->page_namespace, $row->page_title);
 				$resultPageSet->processDbRow($row);
@@ -229,7 +230,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 						$parentID = $this->pageMap[$row->{$this->bl_ns}][$row->{$this->bl_title}];
 					else
 						$parentID = $this->pageMap[NS_IMAGE][$row->{$this->bl_title}];
-						$this->continueStr = $this->getContinueRedirStr($parentID, $row->page_id);
+					$this->continueStr = $this->getContinueRedirStr($parentID, $row->page_id);
 					break;
 				}
 
@@ -292,7 +293,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 	private function extractRowInfo($row) {
 		$this->pageMap[$row->page_namespace][$row->page_title] = $row->page_id;
 		$t = Title::makeTitle($row->page_namespace, $row->page_title);
-		$a = array('pageid' => $row->page_id);
+		$a = array('pageid' => intval($row->page_id));
 		ApiQueryBase::addTitleInfo($a, $t);
 		if($row->page_is_redirect)
 		{
@@ -305,7 +306,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 
 	private function extractRedirRowInfo($row)
 	{
-		$a['pageid'] = $row->page_id;
+		$a['pageid'] = intval($row->page_id);
 		ApiQueryBase::addTitleInfo($a, Title::makeTitle($row->page_namespace, $row->page_title));
 		if($row->page_is_redirect)
 			$a['redirect'] = '';
@@ -408,7 +409,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 
 	public function getParamDescription() {
 		$retval = array (
-			'title' => 'Title to search. If null, titles= parameter will be used instead, but will be obsolete soon.',
+			'title' => 'Title to search.',
 			'continue' => 'When more results are available, use this to continue.',
 			'namespace' => 'The namespace to enumerate.',
 			'filterredir' => 'How to filter for redirects'
@@ -416,7 +417,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		if($this->getModuleName() != 'embeddedin')
 			return array_merge($retval, array(
 				'redirect' => 'If linking page is a redirect, find all pages that link to that redirect as well. Maximum limit is halved.',
-				'limit' => "How many total pages to return. If {$this->bl_code}redirect is enabled, limit applies to each level separately."
+				'limit' => "How many total pages to return. If {$this->bl_code}redirect is enabled, limit applies to each level separately (which means you may get up to 2 * limit results)."
 			));
 		return array_merge($retval, array(
 			'limit' => "How many total pages to return."
@@ -447,8 +448,8 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 				"api.php?action=query&generator=embeddedin&geititle=Template:Stub&prop=info"
 			),
 			'imageusage' => array (
-				"api.php?action=query&list=imageusage&iutitle=Image:Albert%20Einstein%20Head.jpg",
-				"api.php?action=query&generator=imageusage&giutitle=Image:Albert%20Einstein%20Head.jpg&prop=info"
+				"api.php?action=query&list=imageusage&iutitle=File:Albert%20Einstein%20Head.jpg",
+				"api.php?action=query&generator=imageusage&giutitle=File:Albert%20Einstein%20Head.jpg&prop=info"
 			)
 		);
 

@@ -276,15 +276,15 @@ CREATE TABLE oldimage (
   oi_size          INTEGER      NOT NULL,
   oi_width         INTEGER      NOT NULL,
   oi_height        INTEGER      NOT NULL,
-  oi_bits          SMALLINT     NOT NULL,
+  oi_bits          SMALLINT         NULL,
   oi_description   TEXT,
   oi_user          INTEGER          NULL  REFERENCES mwuser(user_id) ON DELETE SET NULL,
   oi_user_text     TEXT         NOT NULL,
-  oi_timestamp     TIMESTAMPTZ  NOT NULL,
+  oi_timestamp     TIMESTAMPTZ      NULL,
   oi_metadata      BYTEA        NOT NULL DEFAULT '',
   oi_media_type    TEXT             NULL,
-  oi_major_mime    TEXT         NOT NULL DEFAULT 'unknown',
-  oi_minor_mime    TEXT         NOT NULL DEFAULT 'unknown',
+  oi_major_mime    TEXT             NULL DEFAULT 'unknown',
+  oi_minor_mime    TEXT             NULL DEFAULT 'unknown',
   oi_deleted       SMALLINT     NOT NULL DEFAULT 0,
   oi_sha1          TEXT         NOT NULL DEFAULT ''
 );
@@ -555,11 +555,11 @@ CREATE UNIQUE INDEX category_title ON category(cat_title);
 CREATE INDEX category_pages ON category(cat_pages);
 
 CREATE TABLE change_tag (
-	ct_rc_id INTEGER NULL,
-	ct_log_id INTEGER NULL,
-	ct_rev_id INTEGER NULL,
-	ct_tag TEXT NOT NULL,
-	ct_params TEXT NULL
+  ct_rc_id   INTEGER      NULL,
+  ct_log_id  INTEGER      NULL,
+  ct_rev_id  INTEGER      NULL,
+  ct_tag     TEXT     NOT NULL,
+  ct_params  TEXT         NULL
 );
 CREATE UNIQUE INDEX change_tag_rc_tag ON change_tag(ct_rc_id,ct_tag);
 CREATE UNIQUE INDEX change_tag_log_tag ON change_tag(ct_log_id,ct_tag);
@@ -567,18 +567,26 @@ CREATE UNIQUE INDEX change_tag_rev_tag ON change_tag(ct_rev_id,ct_tag);
 CREATE INDEX change_tag_tag_id ON change_tag(ct_tag,ct_rc_id,ct_rev_id,ct_log_id);
 
 CREATE TABLE tag_summary (
-	ts_rc_id INTEGER NULL,
-	ts_log_id INTEGER NULL,
-	ts_rev_id INTEGER NULL,
-	ts_tags TEXT NOT NULL
+  ts_rc_id   INTEGER     NULL,
+  ts_log_id  INTEGER     NULL,
+  ts_rev_id  INTEGER     NULL,
+  ts_tags    TEXT    NOT NULL
 );
 CREATE UNIQUE INDEX tag_summary_rc_id ON tag_summary(ts_rc_id);
 CREATE UNIQUE INDEX tag_summary_log_id ON tag_summary(ts_log_id);
 CREATE UNIQUE INDEX tag_summary_rev_id ON tag_summary(ts_rev_id);
 
 CREATE TABLE valid_tag (
-	vt_tag TEXT NOT NULL PRIMARY KEY
+  vt_tag TEXT NOT NULL PRIMARY KEY
 );
+
+CREATE TABLE user_properties(
+  up_user   INTEGER      NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE,
+  up_property TEXT NOT NULL,
+  up_value TEXT
+);
+CREATE UNIQUE INDEX user_properties_user_property on user_properties (up_user,up_property);
+CREATE INDEX user_properties_property on user_properties (up_property);
 
 CREATE TABLE mediawiki_version (
   type         TEXT         NOT NULL,

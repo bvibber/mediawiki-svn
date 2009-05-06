@@ -1,6 +1,9 @@
 <?php
 /** Gothic (Gothic)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -69,18 +72,20 @@ $messages = array(
 'subcategories'         => 'Dalaþkunjos',
 'category-media-header' => 'Medja inn kunja "$1"',
 
-'about'          => 'Iubair',
-'article'        => 'saþssiedo',
-'newwindow'      => '(andhuljiþ inn niuja áugadaúro)',
-'cancel'         => 'Halts',
+'about'         => 'Iubair',
+'article'       => 'saþssiedo',
+'newwindow'     => '(andhuljiþ inn niuja áugadaúro)',
+'cancel'        => 'Halts',
+'moredotdotdot' => 'Máis...',
+'mypage'        => '𐌼𐌴𐌹𐌽 𐍃𐌴𐌹𐌳𐍉',
+'mytalk'        => '𐌼𐌴𐌹𐌽𐌰 𐌼𐌰𐌸𐌻𐌴𐌹',
+'and'           => '&#32;jah',
+
+# Cologne Blue skin
 'qbfind'         => 'Sokeiþ',
 'qbedit'         => 'Máidjan',
 'qbmyoptions'    => 'Meina seidos',
 'qbspecialpages' => '𐌿𐍃𐍃𐌹𐌽𐌳𐍃𐌴𐌹𐌳𐍉𐍃',
-'moredotdotdot'  => 'Máis...',
-'mypage'         => '𐌼𐌴𐌹𐌽 𐍃𐌴𐌹𐌳𐍉',
-'mytalk'         => '𐌼𐌴𐌹𐌽𐌰 𐌼𐌰𐌸𐌻𐌴𐌹',
-'and'            => '&#32;jah',
 
 # Metadata in edit box
 'metadata_help' => 'Ufardata:',
@@ -217,7 +222,7 @@ $messages = array(
 # History pages
 'currentrev'          => 'Nu máideins',
 'revisionasof'        => 'Gamelido us $1',
-'revision-info'       => 'Máideins fram $1 bi $2', # Additionally available: $3: revision id
+'revision-info'       => 'Máideins fram $1 bi $2',
 'previousrevision'    => '←Áiris Máideins',
 'nextrevision'        => 'Iftuma máideins→',
 'currentrevisionlink' => 'Numáideins',
@@ -230,7 +235,7 @@ $messages = array(
 'histlast'            => 'Spedumists',
 
 # Revision feed
-'history-feed-item-nocomment' => '$1 at $2', # user at time
+'history-feed-item-nocomment' => '$1 at $2',
 
 # Diffs
 'history-title' => 'Árismáideins af "$1"',
@@ -247,7 +252,7 @@ $messages = array(
 # Preferences page
 'preferences'       => 'Meinos brukjamaideineis',
 'mypreferences'     => '𐌼𐌴𐌹𐌽𐍉𐍃 𐌱𐍂𐌿𐌺𐌾𐌰',
-'skin'              => 'Seidofill',
+'prefs-skin'        => 'Seidofill',
 'skin-preview'      => 'Faúrsaiƕa',
 'saveprefs'         => 'Melja',
 'searchresultshead' => 'Sokeiþ',
@@ -410,6 +415,7 @@ $messages = array(
 
 'sp-contributions-newbies-sub' => 'Faúr niujis niutandis',
 'sp-contributions-blocklog'    => 'Logboka af afdraúsjan',
+'sp-contributions-talk'        => 'Maþleiseido',
 
 # What links here
 'whatlinkshere'       => '𐍈𐌰𐍂𐌾𐌹𐍃 𐍃𐌴𐌹𐌳𐍉𐌽𐌰 𐌷𐌻𐌰𐌲𐌺𐌾𐌰𐌽𐌳 𐌷𐌹𐌳𐍂𐌴',

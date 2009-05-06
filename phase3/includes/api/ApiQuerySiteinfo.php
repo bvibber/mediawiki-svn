@@ -99,37 +99,44 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	}
 
 	protected function appendGeneralInfo( $property ) {
-		global $wgSitename, $wgVersion, $wgCapitalLinks, $wgRightsCode, $wgRightsText, $wgContLang;
-		global $wgLanguageCode, $IP, $wgEnableWriteAPI, $wgLang, $wgLocaltimezone, $wgLocalTZoffset;
+		global $wgContLang;
+		global $wgLang;
 
 		$data = array();
 		$mainPage = Title :: newFromText(wfMsgForContent('mainpage'));
 		$data['mainpage'] = $mainPage->getPrefixedText();
 		$data['base'] = $mainPage->getFullUrl();
-		$data['sitename'] = $wgSitename;
-		$data['generator'] = "MediaWiki $wgVersion";
+		$data['sitename'] = $GLOBALS['wgSitename'];
+		$data['generator'] = "MediaWiki {$GLOBALS['wgVersion']}";
+		$data['phpversion'] = phpversion();
+		$data['phpsapi'] = php_sapi_name();
+		$data['dbtype'] = $GLOBALS['wgDBtype'];
+		$data['dbversion'] = $this->getDB()->getServerVersion();
 
-		$svn = SpecialVersion::getSvnRevision( $IP );
+		$svn = SpecialVersion::getSvnRevision( $GLOBALS['IP'] );
 		if( $svn )
 			$data['rev'] = $svn;
 
-		$data['case'] = $wgCapitalLinks ? 'first-letter' : 'case-sensitive'; // 'case-insensitive' option is reserved for future
+		// 'case-insensitive' option is reserved for future
+		$data['case'] = $GLOBALS['wgCapitalLinks'] ? 'first-letter' : 'case-sensitive'; 
 
-		if( isset( $wgRightsCode ) )
-			$data['rightscode'] = $wgRightsCode;
-		$data['rights'] = $wgRightsText;
-		$data['lang'] = $wgLanguageCode;
+		if( isset( $GLOBALS['wgRightsCode'] ) )
+			$data['rightscode'] = $GLOBALS['wgRightsCode'];
+		$data['rights'] = $GLOBALS['wgRightsText'];
+		$data['lang'] = $GLOBALS['wgLanguageCode'];
 		if( $wgContLang->isRTL() ) 
 			$data['rtl'] = '';
 		$data['fallback8bitEncoding'] = $wgLang->fallback8bitEncoding();
 		
-		if( wfReadOnly() )
+		if( wfReadOnly() ) {
 			$data['readonly'] = '';
-		if( $wgEnableWriteAPI )
+			$data['readonlyreason'] = wfReadOnlyReason();
+		}
+		if( $GLOBALS['wgEnableWriteAPI'] )
 			$data['writeapi'] = '';
 
-		$tz = $wgLocaltimezone;
-		$offset = $wgLocalTZoffset;
+		$tz = $GLOBALS['wgLocaltimezone'];
+		$offset = $GLOBALS['wgLocalTZoffset'];
 		if( is_null( $tz ) ) {
 			$tz = 'UTC';
 			$offset = 0;
@@ -137,7 +144,13 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			$offset = 0;
 		}
 		$data['timezone'] = $tz;
-		$data['timeoffset'] = $offset;
+		$data['timeoffset'] = intval($offset);
+		$data['articlepath'] = $GLOBALS['wgArticlePath'];
+		$data['scriptpath'] = $GLOBALS['wgScriptPath'];
+		$data['script'] = $GLOBALS['wgScript'];
+		$data['variantarticlepath'] = $GLOBALS['wgVariantArticlePath'];
+		$data['server'] = $GLOBALS['wgServer'];
+		$data['wikiid'] = wfWikiID();
 
 		return $this->getResult()->addValue( 'query', $property, $data );
 	}
@@ -148,7 +161,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		foreach( $wgContLang->getFormattedNamespaces() as $ns => $title )
 		{
 			$data[$ns] = array(
-				'id' => $ns
+				'id' => intval($ns)
 			);
 			ApiResult :: setContent( $data[$ns], $title );
 			$canonical = MWNamespace::getCanonicalName( $ns );
@@ -176,7 +189,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				continue;
 			}
 			$item = array(
-				'id' => $ns
+				'id' => intval($ns)
 			);
 			ApiResult :: setContent( $item, strtr( $title, '_', ' ' ) );
 			$data[] = $item;
@@ -272,7 +285,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			list( $host, $lag ) = wfGetLB()->getMaxLag();
 			$data[] = array(
 				'host' => $wgShowHostnames ? $host : '',
-				'lag' => $lag
+				'lag' => intval( $lag )
 			);
 		}
 
@@ -282,10 +295,13 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	}
 
 	protected function appendStatistics( $property ) {
+		global $wgDisableCounters;
 		$data = array();
 		$data['pages'] = intval( SiteStats::pages() );
 		$data['articles'] = intval( SiteStats::articles() );
-		$data['views'] = intval( SiteStats::views() );
+		if ( !$wgDisableCounters ) {
+			$data['views'] = intval( SiteStats::views() );
+		}
 		$data['edits'] = intval( SiteStats::edits() );
 		$data['images'] = intval( SiteStats::images() );
 		$data['users'] = intval( SiteStats::users() );

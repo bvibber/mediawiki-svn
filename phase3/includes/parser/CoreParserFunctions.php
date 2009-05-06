@@ -48,7 +48,7 @@ class CoreParserFunctions {
 		$parser->setFunctionHook( 'pagesincategory',  array( __CLASS__, 'pagesincategory'  ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'pagesize',         array( __CLASS__, 'pagesize'         ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'protectionlevel',  array( __CLASS__, 'protectionlevel'  ), SFH_NO_HASH );
-		$parser->setFunctionHook( 'namespace',        array( __CLASS__, 'namespace'        ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'namespace',        array( __CLASS__, 'mwnamespace'      ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'namespacee',       array( __CLASS__, 'namespacee'       ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'talkspace',        array( __CLASS__, 'talkspace'        ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'talkspacee',       array( __CLASS__, 'talkspacee'       ), SFH_NO_HASH );
@@ -66,7 +66,16 @@ class CoreParserFunctions {
 		$parser->setFunctionHook( 'talkpagenamee',    array( __CLASS__, 'talkpagenamee'    ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'subjectpagename',  array( __CLASS__, 'subjectpagename'  ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'subjectpagenamee', array( __CLASS__, 'subjectpagenamee' ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionid',       array( __CLASS__, 'revisionid'       ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisiontimestamp',array( __CLASS__, 'revisiontimestamp'), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionday',      array( __CLASS__, 'revisionday'      ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionday2',     array( __CLASS__, 'revisionday2'     ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionmonth',    array( __CLASS__, 'revisionmonth'    ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionyear',     array( __CLASS__, 'revisionyear'     ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'revisionuser',     array( __CLASS__, 'revisionuser'     ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'tag',              array( __CLASS__, 'tagObj'           ), SFH_OBJECT_ARGS );
+		$parser->setFunctionHook( 'formatdate',		  array( __CLASS__, 'formatDate'	   ) );
+		$parser->setFunctionHook( 'groupconvert', 	  array( __CLASS__, 'groupconvert'	   ), SFH_NO_HASH );
 
 		if ( $wgAllowDisplayTitle ) {
 			$parser->setFunctionHook( 'displaytitle', array( __CLASS__, 'displaytitle' ), SFH_NO_HASH );
@@ -87,7 +96,23 @@ class CoreParserFunctions {
 			return array( 'found' => false );
 		}
 	}
-
+	
+	static function formatDate( $parser, $date, $defaultPref = null ) {
+		$df = DateFormatter::getInstance();
+		
+		$date = trim($date);
+		
+		$pref = $parser->mOptions->getDateFormat();
+		
+		// Specify a different default date format other than the the normal default
+		// iff the user has 'default' for their setting		
+		if ($pref == 'default' && $defaultPref)
+			$pref = $defaultPref;
+		
+		$date = $df->reformat( $pref, $date, array('match-whole') );
+		return $date;
+	}
+	
 	static function ns( $parser, $part1 = '' ) {
 		global $wgContLang;
 		if ( intval( $part1 ) || $part1 == "0" ) {
@@ -180,6 +205,12 @@ class CoreParserFunctions {
 
 		// default
 		$gender = User::getDefaultOption( 'gender' );
+		
+		// allow prefix.
+		$title = Title::newFromText( $user );
+		
+		if (is_object( $title ) && $title->getNamespace() == NS_USER)
+			$user = $title->getText();
 
 		// check parameter, or use $wgUser if in interface message
 		$user = User::newFromName( $user );
@@ -207,15 +238,25 @@ class CoreParserFunctions {
 	 */
 	static function displaytitle( $parser, $text = '' ) {
 		global $wgRestrictDisplayTitle;
-		$text = trim( Sanitizer::decodeCharReferences( $text ) );
+		
+		#list of disallowed tags for DISPLAYTITLE
+		#these will be escaped even though they are allowed in normal wiki text
+		$bad = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'blockquote', 'ol', 'ul', 'li',
+			'table', 'tr', 'th', 'td', 'dl', 'dd', 'caption', 'p', 'ruby', 'rb', 'rt', 'rp' );
+		
+		#only requested titles that normalize to the actual title are allowed through
+		#mimic the escaping process that occurs in OutputPage::setPageTitle
+		$text = Sanitizer::normalizeCharReferences( Sanitizer::removeHTMLtags( $text, null, array(), array(), $bad ) );
+		$title = Title::newFromText( Sanitizer::stripAllTags( $text ) );
 
-		if ( !$wgRestrictDisplayTitle ) {
+		if( !$wgRestrictDisplayTitle ) {
 			$parser->mOutput->setDisplayTitle( $text );
 		} else {
-			$title = Title::newFromText( $text );
-			if( $title instanceof Title && $title->getFragment() == '' && $title->equals( $parser->mTitle ) )
+			if ( $title instanceof Title && $title->getFragment() == '' && $title->equals( $parser->mTitle ) ) {
 				$parser->mOutput->setDisplayTitle( $text );
+			}
 		}
+
 		return '';
 	}
 
@@ -271,11 +312,13 @@ class CoreParserFunctions {
 	} 
 
 	
-	/*
-	* Given a title, return the namespace name that would be given by the
-	* corresponding magic word 
-	*/
-	static function namespace( $parser, $title = null ) {
+	/**
+	 * Given a title, return the namespace name that would be given by the
+	 * corresponding magic word
+	 * Note: function name changed to "mwnamespace" rather than "namespace"
+	 * to not break PHP 5.3
+	 */
+	static function mwnamespace( $parser, $title = null ) {
 		$t = Title::newFromText( $title );
 		if ( is_null($t) )
 			return '';
@@ -386,6 +429,90 @@ class CoreParserFunctions {
 		if ( is_null($t) )
 			return '';
 		return $t->getSubjectPage()->getPrefixedUrl();
+	}
+	/*
+	 * Functions to get revision informations, corresponding to the magic words
+	 * of the same names
+	 */
+	static function revisionid( $parser, $title = null ) {
+		static $cache = array ();
+		$t = Title::newFromText( $title );
+		if ( is_null( $t ) )
+			return '';
+		if ( $t->equals( $parser->getTitle() ) ) {
+			// Let the edit saving system know we should parse the page
+			// *after* a revision ID has been assigned.
+			$parser->mOutput->setFlag( 'vary-revision' );
+			wfDebug( __METHOD__ . ": {{REVISIONID}} used, setting vary-revision...\n" );
+			return $parser->getRevisionId();
+		}
+		if ( isset( $cache[$t->getPrefixedText()] ) )
+			return $cache[$t->getPrefixedText()];
+		elseif ( $parser->incrementExpensiveFunctionCount() ) {
+			$a = new Article( $t );
+			return $cache[$t->getPrefixedText()] = $a->getRevIdFetched();
+		}
+		return '';
+	}
+	static function revisiontimestamp( $parser, $title = null ) {
+		static $cache = array ();
+		$t = Title::newFromText( $title );
+		if ( is_null( $t ) )
+			return '';
+		if ( $t->equals( $parser->getTitle() ) ) {
+			// Let the edit saving system know we should parse the page
+			// *after* a revision ID has been assigned. This is for null edits.
+			$parser->mOutput->setFlag( 'vary-revision' );
+			wfDebug( __METHOD__ . ": {{REVISIONTIMESTAMP}} or related parser function used, setting vary-revision...\n" );
+			return $parser->getRevisionTimestamp();
+		}
+		if ( isset( $cache[$t->getPrefixedText()] ) )
+			return $cache[$t->getPrefixedText()];
+		elseif ( $parser->incrementExpensiveFunctionCount() ) {
+			$a = new Article( $t );
+			return $cache[$t->getPrefixedText()] = $a->getTimestamp();
+		}
+		return '';
+	}
+	static function revisionday( $parser, $title = null ) {
+		$timestamp = self::revisiontimestamp( $parser, $title );
+		if ( $timestamp == '' ) return '';
+		return intval( substr( $timestamp, 6, 2 ) );
+	}
+	static function revisionday2( $parser, $title = null ) {
+		$timestamp = self::revisiontimestamp( $parser, $title );
+		if ( $timestamp == '' ) return '';
+		return substr( $timestamp, 6, 2 );
+	}
+	static function revisionmonth( $parser, $title = null ) {
+		$timestamp = self::revisiontimestamp( $parser, $title );
+		if ( $timestamp == '' ) return '';
+		return intval( substr( $timestamp, 4, 2 ) );
+	}
+	static function revisionyear( $parser, $title = null ) {
+		$timestamp = self::revisiontimestamp( $parser, $title );
+		if ( $timestamp == '' ) return '';
+		return substr( $timestamp, 0, 4 );
+	}
+	static function revisionuser( $parser, $title = null ) {
+		static $cache = array();
+		$t = Title::newFromText( $title );
+		if ( is_null( $t ) )
+			return '';
+		if ( $t->equals( $parser->getTitle() ) ) {
+			// Let the edit saving system know we should parse the page
+			// *after* a revision ID has been assigned. This is for null edits.
+			$parser->mOutput->setFlag( 'vary-revision' );
+			wfDebug( __METHOD__ . ": {{REVISIONUSER}} used, setting vary-revision...\n" );
+			return $parser->getRevisionUser();
+		}
+		if ( isset( $cache[$t->getPrefixedText()] ) )
+			return $cache[$t->getPrefixedText()];
+		elseif ( $parser->incrementExpensiveFunctionCount() ) {
+			$a = new Article( $t );
+			return $cache[$t->getPrefixedText()] = $a->getUserText();
+		}
+		return '';
 	}
 	
 	/**
@@ -590,5 +717,13 @@ class CoreParserFunctions {
 			'close' => "</$tagName>",
 		);
 		return $parser->extensionSubstitution( $params, $frame );
+	}
+	
+	/**
+	 * magic word call for a group convert from LanguageConverter.
+	 */
+	public static function groupconvert( $parser, $group ) {
+		global $wgContLang;
+		return $wgContLang->groupConvert( $group );
 	}
 }

@@ -230,7 +230,7 @@ class HttpRequest{
 		}
 	 }
 	 private function doCurlReq(){
-	 	global $wgHTTPFileTimeout, $wgHTTPProxy, $wgTitle;
+	 	global $wgHTTPFileTimeout, $wgHTTPTimeout, $wgHTTPProxy, $wgTitle;
 	 	
 	 	$status = Status::newGood();	 	 	
 		$c = curl_init( $this->url );			
@@ -240,10 +240,7 @@ class HttpRequest{
 			curl_setopt( $c, CURLOPT_PROXY, 'localhost:80' );
 		} else if ($wgHTTPProxy) {
 			curl_setopt($c, CURLOPT_PROXY, $wgHTTPProxy);
-		}
-		
-		curl_setopt( $c, CURLOPT_TIMEOUT, $wgHTTPFileTimeout );			
-			
+		}									
 		
 		curl_setopt( $c, CURLOPT_USERAGENT, Http::userAgent() );
 		
@@ -271,6 +268,11 @@ class HttpRequest{
 				$status = $cwrite->status;	
 			}
 			curl_setopt( $c, CURLOPT_WRITEFUNCTION, array($cwrite, 'callbackWriteBody') );
+			//set to the file time out:
+			curl_setopt( $c, CURLOPT_TIMEOUT, $wgHTTPFileTimeout );
+		}else{
+			//set to script time timeout
+			curl_setopt( $c, CURLOPT_TIMEOUT, $wgHTTPTimeout );
 		}
 
 		//start output grabber: 

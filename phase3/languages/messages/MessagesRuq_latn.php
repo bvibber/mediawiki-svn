@@ -1,6 +1,9 @@
 <?php
 /** Megleno-Romanian (Latin) (Vlăheşte (Latin))
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -275,6 +278,8 @@ $3',
 'mycontris'     => 'Mes kontribuţi',
 'contribsub2'   => 'Pentru $1 ($2)',
 'uctop'         => '(susverf)',
+
+'sp-contributions-talk' => 'Diskuţu',
 
 # What links here
 'whatlinkshere'       => 'Legǎtul a ce pažu',

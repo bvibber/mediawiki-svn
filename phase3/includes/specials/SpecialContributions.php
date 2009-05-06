@@ -39,7 +39,7 @@ class SpecialContributions extends SpecialPage {
 			return;
 		}
 
-		$this->opts['limit'] = $wgRequest->getInt( 'limit', 50 );
+		$this->opts['limit'] = $wgRequest->getInt( 'limit', $wgUser->getOption('rclimit') );
 		$this->opts['target'] = $target;
 
 		$nt = Title::makeTitleSafe( NS_USER, $target );
@@ -168,7 +168,7 @@ class SpecialContributions extends SpecialPage {
 		$talk = $nt->getTalkPage();
 		if( $talk ) {
 			# Talk page link
-			$tools[] = $sk->makeLinkObj( $talk, wfMsgHtml( 'talkpagelinktext' ) );
+			$tools[] = $sk->makeLinkObj( $talk, wfMsgHtml( 'sp-contributions-talk' ) );
 			if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && IP::isIPAddress( $nt->getText() ) ) ) {
 				# Block link
 				if( $wgUser->isAllowed( 'block' ) )
@@ -179,15 +179,24 @@ class SpecialContributions extends SpecialPage {
 					wfMsgHtml( 'sp-contributions-blocklog' ), 'type=block&page=' . $nt->getPrefixedUrl() );
 			}
 			# Other logs link
-			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), wfMsgHtml( 'log' ), 
-				'user=' . $nt->getPartialUrl()	);
+			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), wfMsg( 'sp-contributions-logs' ), 
+				'user=' . $nt->getPartialUrl() );
 
 			# Add link to deleted user contributions for priviledged users
 			if( $wgUser->isAllowed( 'deletedhistory' ) ) {
-					$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'DeletedContributions', 
-					$nt->getDBkey() ), wfMsgHtml( 'deletedcontributions' ) );
+				$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'DeletedContributions', 
+					$nt->getDBkey() ), wfMsgHtml( 'sp-contributions-deleted' ) );
 			}
-	
+
+			# Add a link to change user rights for privileged users
+			$userrightsPage = new UserrightsPage();
+			if( 0 !== $id && $userrightsPage->userCanChangeRights( User::newFromId( $id ) ) ) {
+				$tools[] = $sk->makeKnownLinkObj(
+					SpecialPage::getTitleFor( 'Userrights', $nt->getDBkey() ),
+					wfMsgHtml( 'sp-contributions-userrights' )
+				);
+			}
+
 			wfRunHooks( 'ContributionsToolLinks', array( $id, $nt, &$tools ) );
 	
 			$links = implode( ' | ', $tools );
@@ -209,9 +218,9 @@ class SpecialContributions extends SpecialPage {
 	 * @param $this->opts Array: the options to be included.
 	 */
 	protected function getForm() {
-		global $wgScript, $wgTitle;
+		global $wgScript;
 	
-		$this->opts['title'] = $wgTitle->getPrefixedText();
+		$this->opts['title'] = SpecialPage::getTitleFor( 'Contributions' )->getPrefixedText();
 		if( !isset( $this->opts['target'] ) ) {
 			$this->opts['target'] = '';
 		} else {
@@ -255,7 +264,7 @@ class SpecialContributions extends SpecialPage {
 			Xml::element( 'legend', array(), wfMsg( 'sp-contributions-search' ) ) .
 			Xml::radioLabel( wfMsgExt( 'sp-contributions-newbies', array( 'parseinline' ) ), 
 				'contribs', 'newbie' , 'newbie', $this->opts['contribs'] == 'newbie' ? true : false ) . '<br />' .
-			Xml::radioLabel( wfMsgExt( 'sp-contributions-username', array( 'parseinline' ) ), 
+			Xml::radioLabel( wfMsgExt( 'sp-contributions-username', array( 'parsemag' ) ), 
 				'contribs' , 'user', 'user', $this->opts['contribs'] == 'user' ? true : false ) . ' ' .
 			Xml::input( 'target', 20, $this->opts['target']) . ' '.
 			'<span style="white-space: nowrap">' .
@@ -399,9 +408,14 @@ class ContribsPager extends ReverseChronologicalPager {
 	}
 
 	function getQueryInfo() {
+		global $wgUser;
 		list( $tables, $index, $userCond, $join_cond ) = $this->getUserCond();
 		
 		$conds = array_merge( $userCond, $this->getNamespaceCond() );
+		// Paranoia: avoid brute force searches (bug 17342)
+		if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
+			$conds[] = 'rev_deleted & ' . Revision::DELETED_USER . ' = 0';
+		}
 		$join_cond['page'] = array( 'INNER JOIN', 'page_id=rev_page' );
 		
 		$queryInfo = array(
@@ -416,7 +430,12 @@ class ContribsPager extends ReverseChronologicalPager {
 			'join_conds' => $join_cond
 		);
 		
-		ChangeTags::modifyDisplayQuery( $queryInfo['tables'], $queryInfo['fields'], $queryInfo['conds'], $queryInfo['join_conds'], $this->tagFilter );
+		ChangeTags::modifyDisplayQuery( $queryInfo['tables'],
+										$queryInfo['fields'],
+										$queryInfo['conds'],
+										$queryInfo['join_conds'],
+										$queryInfo['options'],
+										$this->tagFilter );
 		
 		wfRunHooks( 'ContribsPager::getQueryInfo', array( &$this, &$queryInfo ) );
 		return $queryInfo;
@@ -472,7 +491,7 @@ class ContribsPager extends ReverseChronologicalPager {
 	 * @todo This would probably look a lot nicer in a table.
 	 */
 	function formatRow( $row ) {
-		global $wgLang, $wgUser, $wgContLang;
+		global $wgUser, $wgLang, $wgContLang;
 		wfProfileIn( __METHOD__ );
 
 		$sk = $this->getSkin();
@@ -531,8 +550,23 @@ class ContribsPager extends ReverseChronologicalPager {
 		} else {
 			$mflag = '';
 		}
+		
+		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+			// If revision was hidden from sysops
+			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
+				$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
+					'(' . $this->message['rev-delundel'] . ')' ) . ' ';
+			// Otherwise, show the link...
+			} else {
+				$query = array( 'target' => $page->getPrefixedDbkey(), 'oldid' => $rev->getId() );
+				$del = $this->mSkin->revDeleteLink( $query,
+					$rev->isDeleted( Revision::DELETED_RESTRICTED ) ) . ' ';
+			}
+		} else {
+			$del = '';
+		}
 
-		$ret = "{$d} {$histlink} {$difftext} {$nflag}{$mflag} {$link}{$userlink} {$comment} {$topmarktext}";
+		$ret = "{$del}{$d} {$histlink} {$difftext} {$nflag}{$mflag} {$link}{$userlink} {$comment} {$topmarktext}";
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$ret .= ' ' . wfMsgHtml( 'deletedrev' );
 		}

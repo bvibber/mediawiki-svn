@@ -1,6 +1,9 @@
 <?php
 /** Megleno-Romanian (Cyrillic) (Vlăheşte (Cyrillic))
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -275,6 +278,8 @@ $3',
 'mycontris'     => 'Мес контрибући',
 'contribsub2'   => 'пентру $1 ($2)',
 'uctop'         => '(сусверф)',
+
+'sp-contributions-talk' => 'дискућу',
 
 # What links here
 'whatlinkshere'       => 'Легајтул а це пажу',

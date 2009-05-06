@@ -201,7 +201,8 @@ class LogPage {
 				} else {
 					$details = '';
 					array_unshift( $params, $titleLink );
-					if ( $key == 'block/block' || $key == 'suppress/block' || $key == 'block/reblock' ) {
+					// User suppression
+					if ( preg_match( '/^(block|suppress)\/(block|reblock)$/', $key ) ) {
 						if ( $skin ) {
 							$params[1] = '<span title="' . htmlspecialchars( $params[1] ). '">' . 
 								$wgLang->translateBlockExpiry( $params[1] ) . '</span>';
@@ -210,6 +211,7 @@ class LogPage {
 						}
 						$params[2] = isset( $params[2] ) ? 
 							self::formatBlockFlags( $params[2], is_null( $skin ) ) : '';
+					// Page protections
 					} else if ( $type == 'protect' && count($params) == 3 ) {
 						$details .= " {$params[1]}"; // restrictions and expiries
 						if( $params[2] ) {
@@ -219,6 +221,7 @@ class LogPage {
 								$details .= ' ['.wfMsgForContent('protect-summary-cascade').']';
 							}
 						}
+					// Page moves
 					} else if ( $type == 'move' && count( $params ) == 3 ) {
 						if( $params[2] ) {
 							if ( $skin ) {
@@ -227,6 +230,18 @@ class LogPage {
 								$details .= ' [' . wfMsgForContent( 'move-redirect-suppressed' ) . ']';
 							}
 						}
+					// Revision deletion
+					} else if ( preg_match( '/^(delete|suppress)\/revision$/', $key ) && count( $params ) == 5 ) {
+						$count = substr_count( $params[2], ',' ) + 1; // revisions
+						$ofield = intval( substr( $params[3], 7 ) ); // <ofield=x>
+						$nfield = intval( substr( $params[4], 7 ) ); // <nfield=x>
+						$details .= ': '.RevisionDeleter::getLogMessage( $count, $nfield, $ofield, false );
+					// Log deletion
+					} else if ( preg_match( '/^(delete|suppress)\/event$/', $key ) && count( $params ) == 4 ) {
+						$count = substr_count( $params[1], ',' ) + 1; // log items
+						$ofield = intval( substr( $params[2], 7 ) ); // <ofield=x>
+						$nfield = intval( substr( $params[3], 7 ) ); // <nfield=x>
+						$details .= ': '.RevisionDeleter::getLogMessage( $count, $nfield, $ofield, true );
 					}
 					$rv = wfMsgReal( $wgLogActions[$key], $params, true, !$skin ) . $details;
 				}
@@ -241,6 +256,17 @@ class LogPage {
 				$rv = "$action";
 			}
 		}
+		
+		// For the perplexed, this feature was added in r7855 by Erik.
+		//  The feature was added because we liked adding [[$1]] in our log entries
+		//  but the log entries are parsed as Wikitext on RecentChanges but as HTML
+		//  on Special:Log. The hack is essentially that [[$1]] represented a link
+		//  to the title in question. The first parameter to the HTML version (Special:Log)
+		//  is that link in HTML form, and so this just gets rid of the ugly [[]].
+		//  However, this is a horrible hack and it doesn't work like you expect if, say,
+		//  you want to link to something OTHER than the title of the log entry.
+		//  The real problem, which Erik was trying to fix (and it sort-of works now) is
+		//  that the same messages are being treated as both wikitext *and* HTML.
 		if( $filterWikilinks ) {
 			$rv = str_replace( "[[", "", $rv );
 			$rv = str_replace( "]]", "", $rv );
@@ -363,11 +389,13 @@ class LogPage {
 	 * @return string
 	 */
 	public static function formatBlockFlags( $flags, $forContent = false ) {
+		global $wgLang;
+
 		$flags = explode( ',', trim( $flags ) );
 		if( count( $flags ) > 0 ) {
 			for( $i = 0; $i < count( $flags ); $i++ )
 				$flags[$i] = self::formatBlockFlag( $flags[$i], $forContent );
-			return '(' . implode( ', ', $flags ) . ')';
+			return '(' . $wgLang->commaList( $flags ) . ')';
 		} else {
 			return '';
 		}

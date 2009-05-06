@@ -1,6 +1,9 @@
 <?php
 /** Лакку (Лакку)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -41,7 +44,9 @@ $linkTrail = '/^([a-zабвгдеёжзийклмнопрстуфхцчшщъы�
 
 $messages = array(
 'article' => 'Тарих',
-'qbedit'  => 'Дакьин дуван',
+
+# Cologne Blue skin
+'qbedit' => 'Дакьин дуван',
 
 'history'          => 'Макьала',
 'history_short'    => 'Макьала',
@@ -77,5 +82,7 @@ $messages = array(
 
 # Special:Log
 'specialloguserlabel' => 'Гьурттучув:',
+
+'sp-contributions-talk' => 'Ихтилат',
 
 );

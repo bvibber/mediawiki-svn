@@ -43,8 +43,6 @@ class ApiEditPage extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
-		$this->getMain()->requestWriteMode();
-
 		$params = $this->extractRequestParams();
 		if(is_null($params['title']))
 			$this->dieUsageMsg(array('missingparam', 'title'));
@@ -60,6 +58,9 @@ class ApiEditPage extends ApiBase {
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
 			$this->dieUsageMsg(array('invalidtitle', $params['title']));
+		// Some functions depend on $wgTitle == $ep->mTitle
+		global $wgTitle;
+		$wgTitle = $titleObj;
 
 		if($params['createonly'] && $titleObj->exists())
 			$this->dieUsageMsg(array('createonly-exists'));
@@ -77,7 +78,14 @@ class ApiEditPage extends ApiBase {
 		$toMD5 = $params['text'];
 		if(!is_null($params['appendtext']) || !is_null($params['prependtext']))
 		{
-			$content = $articleObj->getContent();
+			// For non-existent pages, Article::getContent()
+			// returns an interface message rather than ''
+			// We do want getContent()'s behavior for non-existent
+			// MediaWiki: pages, though
+			if($articleObj->getID() == 0 && $titleObj->getNamespace() != NS_MEDIAWIKI)
+				$content = '';
+			else
+				$content = $articleObj->getContent();
 			$params['text'] = $params['prependtext'] . $content . $params['appendtext'];
 			$toMD5 = $params['prependtext'] . $params['appendtext'];
 		}
@@ -192,10 +200,6 @@ class ApiEditPage extends ApiBase {
 		# Do the actual save
 		$oldRevId = $articleObj->getRevIdFetched();
 		$result = null;
-		# *Something* is setting $wgTitle to a title corresponding to "Msg",
-		# but that breaks API mode detection through is_null($wgTitle)
-		global $wgTitle;
-		$wgTitle = null;
 		# Fake $wgRequest for some hooks inside EditPage
 		# FIXME: This interface SUCKS
 		$oldRequest = $wgRequest;
@@ -249,7 +253,7 @@ class ApiEditPage extends ApiBase {
 				$r['new'] = '';
 			case EditPage::AS_SUCCESS_UPDATE:
 				$r['result'] = "Success";
-				$r['pageid'] = $titleObj->getArticleID();
+				$r['pageid'] = intval($titleObj->getArticleID());
 				$r['title'] = $titleObj->getPrefixedText();
 				# HACK: We create a new Article object here because getRevIdFetched()
 				# refuses to be run twice, and because Title::getLatestRevId()
@@ -261,8 +265,10 @@ class ApiEditPage extends ApiBase {
 					$r['nochange'] = '';
 				else
 				{
-					$r['oldrevid'] = $oldRevId;
-					$r['newrevid'] = $newRevId;
+					$r['oldrevid'] = intval($oldRevId);
+					$r['newrevid'] = intval($newRevId);
+					$r['newtimestamp'] = wfTimestamp(TS_ISO_8601,
+						$newArticle->getTimestamp());
 				}
 				break;
 			default:
@@ -272,6 +278,10 @@ class ApiEditPage extends ApiBase {
 	}
 
 	public function mustBePosted() {
+		return true;
+	}
+
+	public function isWriteMode() {
 		return true;
 	}
 

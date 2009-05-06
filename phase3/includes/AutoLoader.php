@@ -4,14 +4,6 @@
 
 ini_set('unserialize_callback_func', '__autoload' );
 
-
-#Add the local PEAR dir to the include path (for any PEAR style class includes)
-global $IP;
-ini_set( 'include_path', 
-	"$IP/includes/PEAR" .
-	PATH_SEPARATOR .
-	ini_get( 'include_path' ) );
-
 # Locations of core classes
 # Extension classes are specified with $wgAutoloadClasses
 # This array is a global instead of a static member of AutoLoader to work around a bug in APC
@@ -301,6 +293,7 @@ $wgAutoloadLocalClasses = array(
 	'ApiRollback' => 'includes/api/ApiRollback.php',
 	'ApiUnblock' => 'includes/api/ApiUnblock.php',
 	'ApiUndelete' => 'includes/api/ApiUndelete.php',
+	'ApiUserrights' => 'includes/api/ApiUserrights.php',
 	'ApiUpload' => 'includes/api/ApiUpload.php',
 	'ApiWatch' => 'includes/api/ApiWatch.php',
 	'Services_JSON' => 'includes/api/ApiFormatJson_json.php',

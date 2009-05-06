@@ -1,6 +1,9 @@
 <?php
 /** Tachelhit (Tašlḥiyt)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -81,16 +84,19 @@ $messages = array(
 'category_header' => 'tiwriqin ɣ-omggrd "$1"',
 'subcategories'   => 'imggrad-mzin',
 
-'cancel'         => 'qn',
+'cancel'        => 'qn',
+'moredotdotdot' => 'uggar...',
+'mypage'        => 'tawriqt niw',
+'mytalk'        => 'assays ino',
+'and'           => '&#32;z',
+
+# Cologne Blue skin
 'qbfind'         => 'siggl',
 'qbedit'         => 'bddl',
 'qbpageoptions'  => 'tawriqt ad',
 'qbmyoptions'    => 'tiwriqin niw',
 'qbspecialpages' => 'tiwriqin tuzliyin',
-'moredotdotdot'  => 'uggar...',
-'mypage'         => 'tawriqt niw',
-'mytalk'         => 'assays ino',
-'and'            => '&#32;z',
+'faq'            => 'isqsitn li bahra itЗawadn',
 
 'tagline'          => 'mn {{SITENAME}}',
 'help'             => 'lmɜiwna',
@@ -120,7 +126,6 @@ $messages = array(
 'aboutpage'            => "Project:f'",
 'disclaimers'          => 'igh ortlla lmsoliya',
 'disclaimerpage'       => 'Project:ortlla lmsoliya iɛomman',
-'faq'                  => 'isqsitn li bahra itЗawadn',
 'mainpage'             => 'tawriqt tamzwarut',
 'mainpage-description' => 'tawriqt tamzwarut',
 'privacy'              => "siassa n' lkhossossia",
@@ -142,21 +147,16 @@ $messages = array(
 'nstab-mediawiki' => 'tabrat',
 'nstab-category'  => 'amgrd',
 
-# General errors
-'nodb' => 'ornzdar annaf database $1',
-
 # Login and logout pages
 'welcomecreation'         => '== brrk darnɣ, $1! ==
 
 lcont nk ati styaqyad. ador tot atbadlt {{SITENAME}} lmЗlomat nk.',
-'loginpagetitle'          => 'ikchim o-msxdam',
 'yourname'                => 'smiyt o-msxdam:',
 'yourpassword'            => 'awal iḥdan:',
 'yourpasswordagain'       => 'Зawd ara awal iḥdan:',
 'nav-login-createaccount' => 'kchem / qiyd amskhdam amaynu',
 'userlogin'               => 'kchem / qiyd amskhdam amaynu',
 'userlogout'              => 'foɣ',
-'yourlanguage'            => 'tutlayt:',
 'loginlanguagelabel'      => 'tutlayt: $1',
 
 # Edit pages
@@ -171,9 +171,9 @@ ikhssak ola kiyi ador tnqilt ɣtamani yadni.
 'powersearch' => 'amsigl itqdmn',
 
 # Preferences page
-'timezonetext' => '¹lfrq nswayЗ gr loqt n ɣilli ɣ tllit d loqt n serveur (UTC).',
 'localtime'    => 'loqt n ɣilli ɣtllit',
 'servertime'   => 'loqt n serveur',
+'yourlanguage' => 'tutlayt:',
 
 # Upload
 'upload' => 'sΥlid afaylu',
@@ -190,6 +190,8 @@ ikhssak ola kiyi ador tnqilt ɣtamani yadni.
 
 # Contributions
 'mycontris' => 'tikkin ino',
+
+'sp-contributions-talk' => 'assays',
 
 # Block/unblock
 'contribslink' => 'tikkin',

@@ -1,6 +1,9 @@
 <?php
 /** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -116,7 +119,7 @@ $messages = array(
 'category-media-header'          => '«$1» төркемендәге файллар',
 'category-empty'                 => "''Бу төркем әле буш.''",
 'hidden-categories'              => '{{PLURAL:$1|Яшерен төркем|Яшерен төркемнәр}}',
-'hidden-category-category'       => 'Яшерен төркемнәр', # Name of the category where hidden categories will be listed
+'hidden-category-category'       => 'Яшерен төркемнәр',
 'category-subcat-count'          => '{{PLURAL:$2|Бу төркемдә киләчәк төркемчә генә бар|$2 төркемчәдән {{PLURAL:$1|$1 төркемчә күрсәтелгән}}.}}',
 'category-subcat-count-limited'  => 'Бу төркемдә {{PLURAL:$1|$1 төркемчә}} бар.',
 'category-article-count'         => '{{PLURAL:$2|Бу төркемдә бер бит кенә бар.|Бу төркемнең $2 төркеменнән {{PLURAL:$1|$1 бите күрсәтелгән}}.}}',
@@ -133,10 +136,18 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki турында еш бирелгән сораулар һәм җаваплар];
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki'нең яңа версияләре турында хәбәрләр җибәреп чыгу].",
 
-'about'          => 'Тасвир',
-'article'        => 'Эчтәлек бите',
-'newwindow'      => '(яңа тәрәзәдә ачыла)',
-'cancel'         => 'Үткәрмәү',
+'about'         => 'Тасвир',
+'article'       => 'Эчтәлек бите',
+'newwindow'     => '(яңа тәрәзәдә ачыла)',
+'cancel'        => 'Үткәрмәү',
+'moredotdotdot' => 'Дәвам…',
+'mypage'        => 'Минем битем',
+'mytalk'        => 'Фикер алышу битем',
+'anontalk'      => 'Бу IP-адрес өчен фикер алышу',
+'navigation'    => 'Навигация',
+'and'           => '&#32;һәм',
+
+# Cologne Blue skin
 'qbfind'         => 'Эзләү',
 'qbbrowse'       => 'Күзәтү',
 'qbedit'         => 'Үзгәртү',
@@ -144,12 +155,8 @@ $messages = array(
 'qbpageinfo'     => 'Бит турындагы мәгълүматлар',
 'qbmyoptions'    => 'Битләрем',
 'qbspecialpages' => 'Махсус битләр',
-'moredotdotdot'  => 'Дәвам…',
-'mypage'         => 'Минем битем',
-'mytalk'         => 'Фикер алышу битем',
-'anontalk'       => 'Бу IP-адрес өчен фикер алышу',
-'navigation'     => 'Навигация',
-'and'            => '&#32;һәм',
+'faq'            => 'ЕБС (FAQ)',
+'faqpage'        => 'Project:ЕБС',
 
 # Metadata in edit box
 'metadata_help' => 'Мета-мәгълүматлар:',
@@ -202,7 +209,7 @@ $messages = array(
 'otherlanguages'    => 'Башка телләрендә',
 'redirectedfrom'    => '($1 битеннән юнәлгән)',
 'redirectpagesub'   => 'Юнәлеш бите',
-'lastmodifiedat'    => 'Бу битне соңгы үзгәртмә: $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'Бу битне соңгы үзгәртмә: $2, $1.',
 'viewcount'         => 'Бу биткә $1 {{PLURAL:$1|тапкыр}} мөрәҗәгать ителгән.',
 'protectedpage'     => 'Якланган бит',
 'jumpto'            => 'Күчү:',
@@ -221,8 +228,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Җаваплылыктан баш тарту',
 'edithelp'             => 'Үзгәртү ярдәме',
 'edithelppage'         => 'Help:Үзгәртү',
-'faq'                  => 'ЕБС (FAQ)',
-'faqpage'              => 'Project:ЕБС',
 'helppage'             => 'Help:Эчтәлек',
 'mainpage'             => 'Төп бит',
 'mainpage-description' => 'Төп бит',
@@ -297,10 +302,6 @@ MySQL <tt>«$3: $4»</tt> хатаны күрсәткән.',
 <blockquote><tt>$1</tt></blockquote>
 <tt>«$2»</tt> функциядән.
 MySQL <tt>«$3: $4»</tt> хатаны күрсәткән.',
-'noconnect'            => 'Гафу итегез, хәзер викинең техник авырлыклары бар һәм мәгълүматлар базасының серверы белән тоташып булмый.<br />
-$1',
-'nodb'                 => '$1 мәгълүмат базасын сайлап булмый.',
-'cachederror'          => 'Аста соралган битнең кештә сакланган копиясе күрсәтелгән; бәлки, ул искергән.',
 'laggedslavemode'      => 'Игътибар: бәлки, биттә соңгы яңартмалары юк.',
 'readonly'             => 'Мәгълүматлар базасына язу йомылган',
 'enterlockreason'      => 'Йому сәбәбен һәм мөддәтен күрсәтегез.',
@@ -354,7 +355,6 @@ $2',
 Андый сәбәп күрсәтелгән: ''$2''.",
 
 # Login and logout pages
-'logouttitle'                => 'Чыгарга',
 'logouttext'                 => "'''Сез хәзер чыккансыз.'''
 
 Сез проект аноним кебек куллана аласыз, яки Сез шул кулланучы да я башка кулланучы кебек керә аласыз.
@@ -362,7 +362,6 @@ $2',
 'welcomecreation'            => '== Рәхим итегез, $1! ==
 Сез теркәлгәнсез.
 Сайт персональ көйләргә онытмагыз.',
-'loginpagetitle'             => 'Кулланучының теркәү исеме',
 'yourname'                   => 'Кулланучы исеме:',
 'yourpassword'               => 'Серсүз:',
 'yourpasswordagain'          => 'Серсүзне кабат кертү:',
@@ -383,19 +382,7 @@ $2',
 'badretype'                  => 'Кертелгән серсүзләр бер үк түгел.',
 'userexists'                 => 'Кертелгән исем файдалый инде.
 Зинһар, башка исем сайлагыз.',
-'youremail'                  => 'Электрон почта:',
-'username'                   => 'Теркәү исеме:',
-'uid'                        => 'Кулланучының идентификаторы:',
-'yourrealname'               => 'Чын исем:',
-'yourlanguage'               => 'Тел:',
-'yournick'                   => 'Имза өчен тахалус:',
-'badsig'                     => 'Имза дөрес түгел. HTML-теглар тикшерегез.',
-'badsiglength'               => 'Имза өчен тахалус бигрәк озын.
-Ул $1 {{PLURAL:$1|хәрефтән}} күбрәк түгел булырга тиеш.',
-'email'                      => 'Электрон почта',
-'prefs-help-realname'        => 'Чын исемегез (кирәкми): аны күрсәтсәгез, ул битне үзгәртүче күрсәтү өчен файдалаячак.',
 'loginerror'                 => 'Керү хатасы',
-'prefs-help-email-required'  => 'Электрон почта адресы кирәк.',
 'loginsuccesstitle'          => 'Керү уңышлы үтте',
 'loginsuccess'               => "'''Сез {{SITENAME}} проектына $1 исеме белән кергәнсез.'''",
 'nosuchuser'                 => '$1 исемле кулланучы барлыкта юк.<br />
@@ -439,16 +426,15 @@ $2',
 'loginlanguagelabel'         => 'Тел: $1',
 
 # Password reset dialog
-'resetpass'               => 'Хисап язмасының серсүзе бетерү',
-'resetpass_announce'      => 'Сез электрон почта белән вакытлы бирелгән серсүз белән кергәнсез. Системага керү төгәлләп, сез яңа серсүз төзергә тиеш.',
-'resetpass_text'          => '<!-- Монда текст өстәгез -->',
-'resetpass_header'        => 'Серсүзне ташлатырга',
-'oldpassword'             => 'Иске серсүз:',
-'newpassword'             => 'Яңа серсүз:',
-'retypenew'               => 'Яңа серсүзне кабатлагыз:',
-'resetpass_submit'        => 'Серсүз төзү дә керү',
-'resetpass_bad_temporary' => 'Вакытлы серсүз дөрес түгел. Бәлки, сез инде серсүзне алмаштырган идегез, яки тагын бер тапкыр вакытлы серсүз сорарга сынагыз.',
-'resetpass_forbidden'     => 'Бу вики-системада серсүзләрне алмаштырып булмый.',
+'resetpass'           => 'Хисап язмасының серсүзе бетерү',
+'resetpass_announce'  => 'Сез электрон почта белән вакытлы бирелгән серсүз белән кергәнсез. Системага керү төгәлләп, сез яңа серсүз төзергә тиеш.',
+'resetpass_text'      => '<!-- Монда текст өстәгез -->',
+'resetpass_header'    => 'Серсүзне ташлатырга',
+'oldpassword'         => 'Иске серсүз:',
+'newpassword'         => 'Яңа серсүз:',
+'retypenew'           => 'Яңа серсүзне кабатлагыз:',
+'resetpass_submit'    => 'Серсүз төзү дә керү',
+'resetpass_forbidden' => 'Бу вики-системада серсүзләрне алмаштырып булмый.',
 
 # Edit page toolbar
 'bold_sample'     => 'Калын язылышы',
@@ -535,7 +521,7 @@ $2',
 'viewpagelogs'           => 'Бу бит өчен журналларны карарга',
 'currentrev'             => 'Агымдагы юрама',
 'revisionasof'           => 'Юрама $1',
-'revision-info'          => 'Юрама: $1; $2', # Additionally available: $3: revision id
+'revision-info'          => 'Юрама: $1; $2',
 'previousrevision'       => '← Алдагы төзәтмәләр',
 'nextrevision'           => 'Чираттагы төзәтмәләр →',
 'currentrevisionlink'    => 'Агымдагы юрама',
@@ -576,34 +562,48 @@ $2',
 'powersearch'         => 'Өстәмә эзләү',
 'powersearch-legend'  => 'Өстәмә эзләү',
 
+# Quickbar
+'qbsettings'      => 'Күчешләр аслыгы',
+'qbsettings-none' => 'Күрсәтмәскә',
+
 # Preferences page
-'preferences'           => 'Көйләнмәләр',
-'mypreferences'         => 'Көйләнмәләрем',
-'prefs-edits'           => 'Үзгәртүләр исәбе:',
-'prefsnologin'          => 'Кермәгәнсез',
-'prefsnologintext'      => 'Кулланучы көйләнмәләрене үзгәртү өчен, сез [[Special:UserLogin|керергә]] тиешсез.',
-'qbsettings'            => 'Күчешләр аслыгы',
-'qbsettings-none'       => 'Күрсәтмәскә',
-'changepassword'        => 'Серсүзне алыштырырга',
-'skin'                  => 'Күренеш',
-'skin-preview'          => 'Алдан карау',
-'math'                  => 'Формулалар',
-'dateformat'            => 'Датаның форматы',
-'datetime'              => 'Дата һәм вакыт',
-'prefs-personal'        => 'Шәхси мәгълүматлар',
-'prefs-rc'              => 'Баягы төзәтмәләр',
-'prefs-watchlist'       => 'Күзәтү исемлеге',
-'prefs-watchlist-days'  => 'Күзәтү исемлегендә ничә көн буена үзгәртүләрне күрсәтергә:',
-'prefs-watchlist-edits' => 'Яхшыртырган исемлегендә төзәтмәләрнең иң югары исәбе:',
-'prefs-misc'            => 'Башка көйләнмәләр',
-'saveprefs'             => 'Саклау',
-'resetprefs'            => 'Сакланмаган төзәтмәләрне бетерү',
-'textboxsize'           => 'Үзгәртү',
-'rows'                  => 'Юллар:',
-'columns'               => 'Баганалар:',
-'servertime'            => 'Серверның вакыты',
-'default'               => 'килешү буенча',
-'files'                 => 'Файллар',
+'preferences'               => 'Көйләнмәләр',
+'mypreferences'             => 'Көйләнмәләрем',
+'prefs-edits'               => 'Үзгәртүләр исәбе:',
+'prefsnologin'              => 'Кермәгәнсез',
+'prefsnologintext'          => 'Кулланучы көйләнмәләрене үзгәртү өчен, сез [[Special:UserLogin|керергә]] тиешсез.',
+'changepassword'            => 'Серсүзне алыштырырга',
+'prefs-skin'                => 'Күренеш',
+'skin-preview'              => 'Алдан карау',
+'prefs-math'                => 'Формулалар',
+'dateformat'                => 'Датаның форматы',
+'prefs-datetime'            => 'Дата һәм вакыт',
+'prefs-personal'            => 'Шәхси мәгълүматлар',
+'prefs-rc'                  => 'Баягы төзәтмәләр',
+'prefs-watchlist'           => 'Күзәтү исемлеге',
+'prefs-watchlist-days'      => 'Күзәтү исемлегендә ничә көн буена үзгәртүләрне күрсәтергә:',
+'prefs-watchlist-edits'     => 'Яхшыртырган исемлегендә төзәтмәләрнең иң югары исәбе:',
+'prefs-misc'                => 'Башка көйләнмәләр',
+'saveprefs'                 => 'Саклау',
+'resetprefs'                => 'Сакланмаган төзәтмәләрне бетерү',
+'prefs-editing'             => 'Үзгәртү',
+'rows'                      => 'Юллар:',
+'columns'                   => 'Баганалар:',
+'servertime'                => 'Серверның вакыты',
+'default'                   => 'килешү буенча',
+'prefs-files'               => 'Файллар',
+'youremail'                 => 'Электрон почта:',
+'username'                  => 'Теркәү исеме:',
+'uid'                       => 'Кулланучының идентификаторы:',
+'yourrealname'              => 'Чын исем:',
+'yourlanguage'              => 'Тел:',
+'yournick'                  => 'Имза өчен тахалус:',
+'badsig'                    => 'Имза дөрес түгел. HTML-теглар тикшерегез.',
+'badsiglength'              => 'Имза өчен тахалус бигрәк озын.
+Ул $1 {{PLURAL:$1|хәрефтән}} күбрәк түгел булырга тиеш.',
+'email'                     => 'Электрон почта',
+'prefs-help-realname'       => 'Чын исемегез (кирәкми): аны күрсәтсәгез, ул битне үзгәртүче күрсәтү өчен файдалаячак.',
+'prefs-help-email-required' => 'Электрон почта адресы кирәк.',
 
 # User rights
 'userrights-groupsmember' => 'Әгъза:',
@@ -854,7 +854,7 @@ $2',
 'protect-expiring'            => '$1 үтә (UTC)',
 'protect-cascade'             => 'Бу биткә кергән битләрне якларга (каскадлы яклау)',
 'protect-cantedit'            => 'Сез бу битнең яклау дәрәҗәсене үзгәрә алмыйсыз, чөнки сездә аны үзгәртергә рөхсәтегез юк.',
-'protect-expiry-options'      => '15 минут:15 minutes,2 сәгать:2 hours,6 сәгать:6 hours,12 сәгать:12 hours,1 көн:1 day,3 көн:3 days,1 атна:1 week,2 атна:2 weeks,1 ай:1 month,3 ай:3 months,6 ай:6 months,1 ел:1 year,вакытсыз:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '15 минут:15 minutes,2 сәгать:2 hours,6 сәгать:6 hours,12 сәгать:12 hours,1 көн:1 day,3 көн:3 days,1 атна:1 week,2 атна:2 weeks,1 ай:1 month,3 ай:3 months,6 ай:6 months,1 ел:1 year,вакытсыз:infinite',
 'restriction-type'            => 'Рөхсәт:',
 'restriction-level'           => 'Мөмкинлек дәрәҗәсе:',
 'minimum-size'                => 'Иң кечкенә зурлык',
@@ -896,6 +896,7 @@ $2',
 
 'sp-contributions-newbies-sub' => 'Яңа хисап язмалары өчен',
 'sp-contributions-blocklog'    => 'Кысу журналы',
+'sp-contributions-talk'        => 'Фикер алышу',
 'sp-contributions-username'    => 'Кулланучының IP адресы яки исеме:',
 'sp-contributions-submit'      => 'Эзләргә',
 
@@ -912,7 +913,7 @@ $2',
 
 # Block/unblock
 'blockip'      => 'Кулланучыны кысарга',
-'ipboptions'   => '15 минут:15 minutes,2 сәгать:2 hours,6 сәгать:6 hours,12 сәгать:12 hours,1 көн:1 day,3 көн:3 days,1 атна:1 week,2 атна:2 weeks,1 ай:1 month,3 ай:3 months,6 ай:6 months,1 ел:1 year,вакытсыз:infinite', # display1:time1,display2:time2,...
+'ipboptions'   => '15 минут:15 minutes,2 сәгать:2 hours,6 сәгать:6 hours,12 сәгать:12 hours,1 көн:1 day,3 көн:3 days,1 атна:1 week,2 атна:2 weeks,1 ай:1 month,3 ай:3 months,6 ай:6 months,1 ел:1 year,вакытсыз:infinite',
 'ipblocklist'  => 'Кысылган IP-адреслар һәм кулланучы исемләр исемлеге',
 'blocklink'    => 'кысарга',
 'unblocklink'  => 'кысмаска',
@@ -925,7 +926,7 @@ $2',
 'move-watch'     => 'Бу битне күзәтергә',
 'movepagebtn'    => 'Битне күчерергә',
 'pagemovedsub'   => 'Бит күчерергән',
-'movepage-moved' => "<big>'''«$1» бит «$2» биткә күчкән'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved' => "<big>'''«$1» бит «$2» биткә күчкән'''</big>",
 'movedto'        => 'күчерергән:',
 'movetalk'       => 'Бәйләнешле фикер алышу битне күчерергә',
 '1movedto2'      => '«[[$1]]» бите «[[$2]]» биткә күчерергән',
@@ -1027,7 +1028,7 @@ $2',
 'watchlisttools-edit' => 'Күзәтү исемлегене карау һәм үзгәртү',
 
 # Special:Version
-'version' => 'Юрама', # Not used as normal message but as header for the special page itself
+'version' => 'Юрама',
 
 # Special:SpecialPages
 'specialpages' => 'Махсус битләр',

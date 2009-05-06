@@ -697,10 +697,13 @@ class Article {
 		$user = $this->getUser();
 		$pageId = $this->getId();
 
+		$hideBit = Revision::DELETED_USER; // username hidden?
+
 		$sql = "SELECT {$userTable}.*, MAX(rev_timestamp) as timestamp
 			FROM $revTable LEFT JOIN $userTable ON rev_user = user_id
 			WHERE rev_page = $pageId
 			AND rev_user != $user
+			AND rev_deleted & $hideBit = 0
 			GROUP BY rev_user, rev_user_text, user_real_name
 			ORDER BY timestamp DESC";
 
@@ -724,21 +727,28 @@ class Article {
 		global $wgUseTrackbacks, $wgNamespaceRobotPolicies, $wgArticleRobotPolicies;
 		global $wgDefaultRobotPolicy;
 
+		# Let the parser know if this is the printable version
+		if( $wgOut->isPrintable() ) {
+			$wgOut->parserOptions()->setIsPrintable( true );
+		}
+		
 		wfProfileIn( __METHOD__ );
 
 		# Get variables from query string
 		$oldid = $this->getOldID();
 
-		# Try file cache
+		# Try client and file cache
 		if( $oldid === 0 && $this->checkTouched() ) {
 			global $wgUseETag;
 			if( $wgUseETag ) {
 				$parserCache = ParserCache::singleton();
-				$wgOut->setETag( $parserCache->getETag($this,$wgUser) );
+				$wgOut->setETag( $parserCache->getETag($this, $wgOut->parserOptions()) );
 			}
+			# Is is client cached?
 			if( $wgOut->checkLastModified( $this->getTouched() ) ) {
 				wfProfileOut( __METHOD__ );
 				return;
+			# Try file cache
 			} else if( $this->tryFileCache() ) {
 				# tell wgOut that output is taken care of
 				$wgOut->disable();
@@ -782,10 +792,10 @@ class Article {
 
 		# Allow admins to see deleted content if explicitly requested
 		$delId = $diff ? $diff : $oldid;
-		$unhide = $wgRequest->getInt('unhide') == 1 && $wgUser->matchEditToken( $wgRequest->getVal('token'), $delId );
+		$unhide = $wgRequest->getInt('unhide') == 1
+			&& $wgUser->matchEditToken( $wgRequest->getVal('token'), $delId );
 		# If we got diff and oldid in the query, we want to see a
 		# diff page instead of the article.
-
 		if( !is_null( $diff ) ) {
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 
@@ -855,9 +865,17 @@ class Article {
 			}
 		}
 
+		# Allow a specific header on talk pages, like [[MediaWiki:Talkpagetext]]
+		if( $this->mTitle->isTalkPage() ) {
+			$msg = wfMsgNoTrans( 'talkpageheader' );
+			if ( $msg !== '-' && !wfEmptyMsg( 'talkpageheader', $msg ) ) {
+				$wgOut->wrapWikiMsg( "<div class=\"mw-talkpageheader\">\n$1</div>", array( 'talkpageheader' ) );
+			}
+		}
+
 		$outputDone = false;
 		wfRunHooks( 'ArticleViewHeader', array( &$this, &$outputDone, &$pcache ) );
-		if( $pcache && $wgOut->tryParserCache( $this, $wgUser ) ) {
+		if( $pcache && $wgOut->tryParserCache( $this ) ) {
 			// Ensure that UI elements requiring revision ID have
 			// the correct version information.
 			$wgOut->setRevisionId( $this->mLatest );
@@ -865,9 +883,9 @@ class Article {
 		}
 		# Fetch content and check for errors
 		if( !$outputDone ) {
-			# If the article does not exist and was deleted, show the log
+			# If the article does not exist and was deleted/moved, show the log
 			if( $this->getID() == 0 ) {
-				$this->showDeletionLog();
+				$this->showLogs();
 			}
 			$text = $this->getContent();
 			// For now, check also for ID until getContent actually returns
@@ -919,26 +937,49 @@ class Article {
 				if( is_null( $this->mRevision ) ) {
 					// FIXME: This would be a nice place to load the 'no such page' text.
 				} else {
-					$this->setOldSubtitle( isset($this->mOldId) ? $this->mOldId : $oldid );
+					$this->setOldSubtitle( $oldid );
 					# Allow admins to see deleted content if explicitly requested
 					if( $this->mRevision->isDeleted( Revision::DELETED_TEXT ) ) {
-						if( !$unhide || !$this->mRevision->userCan(Revision::DELETED_TEXT) ) {
-							$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n", 'rev-deleted-text-permission' );
+						// If the user is not allowed to see it...
+						if( !$this->mRevision->userCan(Revision::DELETED_TEXT) ) {
+							$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n",
+								'rev-deleted-text-permission' );
 							$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 							wfProfileOut( __METHOD__ );
 							return;
+						// If the user needs to confirm that they want to see it...
+						} else if( !$unhide ) {
+							# Give explanation and add a link to view the revision...
+							$link = $this->mTitle->getFullUrl( "oldid={$oldid}".
+								'&unhide=1&token='.urlencode( $wgUser->editToken($oldid) ) );
+							$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n",
+								array('rev-deleted-text-unhide',$link) );
+							$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+							wfProfileOut( __METHOD__ );
+							return;
+						// We are allowed to see...
 						} else {
-							$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n", 'rev-deleted-text-view' );
-							// and we are allowed to see...
+							$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n",
+								'rev-deleted-text-view' );
 						}
+					}
+					// Is this the current revision and otherwise cacheable? Try the parser cache...
+					if( $oldid === $this->getLatest() && $this->useParserCache( false )
+						&& $wgOut->tryParserCache( $this ) )
+					{
+						$outputDone = true;
 					}
 				}
 			}
 
+			// Ensure that UI elements requiring revision ID have
+			// the correct version information.
 			$wgOut->setRevisionId( $this->getRevIdFetched() );
 
-			 // Pages containing custom CSS or JavaScript get special treatment
-			if( $this->mTitle->isCssOrJsPage() || $this->mTitle->isCssJsSubpage() ) {
+			if( $outputDone ) {
+				// do nothing...
+			// Pages containing custom CSS or JavaScript get special treatment
+			} else if( $this->mTitle->isCssOrJsPage() || $this->mTitle->isCssJsSubpage() ) {
 				$wgOut->addHTML( wfMsgExt( 'clearyourcache', 'parse' ) );
 				// Give hooks a chance to customise the output
 				if( wfRunHooks( 'ShowRawCssJs', array( $this->mContent, $this->mTitle, $wgOut ) ) ) {
@@ -1021,14 +1062,14 @@ class Article {
 		wfProfileOut( __METHOD__ );
 	}
 	
-	protected function showDeletionLog() {
+	protected function showLogs() {
 		global $wgUser, $wgOut;
 		$loglist = new LogEventsList( $wgUser->getSkin(), $wgOut );
-		$pager = new LogPager( $loglist, 'delete', false, $this->mTitle->getPrefixedText() );
+		$pager = new LogPager( $loglist, array('move', 'delete'), false, $this->mTitle->getPrefixedText() );
 		if( $pager->getNumRows() > 0 ) {
 			$pager->mLimit = 10;
 			$wgOut->addHTML( '<div class="mw-warning-with-logexcerpt">' );
-			$wgOut->addWikiMsg( 'deleted-notice' );
+			$wgOut->addWikiMsg( 'moveddeleted-notice' );
 			$wgOut->addHTML(
 				$loglist->beginLogEventsList() .
 				$pager->getBody() .
@@ -1037,9 +1078,9 @@ class Article {
 			if( $pager->getNumRows() > 10 ) {
 				$wgOut->addHTML( $wgUser->getSkin()->link(
 					SpecialPage::getTitleFor( 'Log' ),
-					wfMsgHtml( 'deletelog-fulllog' ),
+					wfMsgHtml( 'log-fulllog' ),
 					array(),
-					array( 'type' => 'delete', 'page' => $this->mTitle->getPrefixedText() ) 
+					array( 'page' => $this->mTitle->getPrefixedText() ) 
 				) );
 			}
 			$wgOut->addHTML( '</div>' );
@@ -1133,7 +1174,7 @@ class Article {
 	}
 
 	public function deletetrackback() {
-		global $wgUser, $wgRequest, $wgOut, $wgTitle;
+		global $wgUser, $wgRequest, $wgOut;
 		if( !$wgUser->matchEditToken($wgRequest->getVal('token')) ) {
 			$wgOut->addWikiMsg( 'sessionfailure' );
 			return;
@@ -1639,7 +1680,6 @@ class Article {
 					$dbw->rollback();
 				} else {
 					global $wgUseRCPatrol;
-					wfRunHooks( 'NewRevisionFromEditComplete', array($this, $revision, $baseRevId, $user) );
 					# Update recentchanges
 					if( !( $flags & EDIT_SUPPRESS_RC ) ) {
 						# Mark as patrolled if the user can do so
@@ -1654,6 +1694,8 @@ class Article {
 							PatrolLog::record( $rc, true );
 						}
 					}
+					# Notify extensions of a new edit
+					wfRunHooks( 'NewRevisionFromEditComplete', array(&$this, $revision, $baseRevId, $user) );
 					$user->incEditCount();
 					$dbw->commit();
 				}
@@ -1720,7 +1762,6 @@ class Article {
 			# Update the page record with revision data
 			$this->updateRevisionOn( $dbw, $revision, 0 );
 
-			wfRunHooks( 'NewRevisionFromEditComplete', array($this, $revision, false, $user) );
 			# Update recentchanges
 			if( !( $flags & EDIT_SUPPRESS_RC ) ) {
 				global $wgUseRCPatrol, $wgUseNPPatrol;
@@ -1734,6 +1775,8 @@ class Article {
 					PatrolLog::record( $rc, true );
 				}
 			}
+			# Notify extensions of a new page edit
+			wfRunHooks( 'NewRevisionFromEditComplete', array(&$this, $revision, false, $user) );
 			$user->incEditCount();
 			$dbw->commit();
 
@@ -1756,7 +1799,7 @@ class Article {
 		$status->value['revision'] = $revision;
 
 		wfRunHooks( 'ArticleSaveComplete', array( &$this, &$user, $text, $summary,
-			$flags & EDIT_MINOR, null, null, &$flags, $revision, &$status ) );
+			$flags & EDIT_MINOR, null, null, &$flags, $revision, &$status, $baseRevId ) );
 
 		wfProfileOut( __METHOD__ );
 		return $status;
@@ -1919,6 +1962,16 @@ class Article {
 	 * action=protect handler
 	 */
 	public function protect() {
+		global $wgUser, $wgOut;
+		
+		# Check permissions
+		$permission_errors = $this->mTitle->getUserPermissionsErrors( 'protect', $wgUser );
+
+		if( count( $permission_errors ) > 0 ) {
+			$wgOut->showPermissionsErrorPage( $permission_errors );
+			return;
+		}
+	
 		$form = new ProtectionForm( $this );
 		$form->execute();
 	}
@@ -1943,7 +1996,18 @@ class Article {
 		global $wgUser, $wgRestrictionTypes, $wgContLang;
 
 		$id = $this->mTitle->getArticleID();
-		if( $id <= 0 || wfReadOnly() || !$this->mTitle->userCan('protect') ) {
+		if ( $id <= 0 ) {
+			wfDebug( "updateRestrictions failed: $id <= 0\n" );
+			return false;
+		}
+		
+		if ( wfReadOnly() ) {
+			wfDebug( "updateRestrictions failed: read-only\n" );
+			return false;
+		}
+		
+		if ( !$this->mTitle->userCan( 'protect' ) ) {
+			wfDebug( "updateRestrictions failed: insufficient permissions\n" );
 			return false;
 		}
 
@@ -2014,6 +2078,9 @@ class Article {
 				$encodedExpiry = array();
 				$protect_description = '';
 				foreach( $limit as $action => $restrictions  ) {
+					if ( !isset($expiry[$action]) )
+						$expiry[$action] = 'infinite';
+					
 					$encodedExpiry[$action] = Block::encodeExpiry($expiry[$action], $dbw );
 					if( $restrictions != '' ) {
 						$protect_description .= "[$action=$restrictions] (";
@@ -2130,18 +2197,16 @@ class Article {
 
 		// Find out if there was only one contributor
 		// Only scan the last 20 revisions
-		$limit = 20;
 		$res = $dbw->select( 'revision', 'rev_user_text',
-			array( 'rev_page' => $this->getID() ), __METHOD__,
-			array( 'LIMIT' => $limit )
+			array( 'rev_page' => $this->getID(), 'rev_deleted & '.Revision::DELETED_USER.'=0' ),
+			__METHOD__,
+			array( 'LIMIT' => 20 )
 		);
 		if( $res === false )
 			// This page has no revisions, which is very weird
 			return false;
-		if( $res->numRows() > 1 )
-				$hasHistory = true;
-		else
-				$hasHistory = false;
+			
+		$hasHistory = ( $res->numRows() > 1 );
 		$row = $dbw->fetchObject( $res );
 		$onlyAuthor = $row->rev_user_text;
 		// Try to find a second contributor
@@ -2358,10 +2423,10 @@ class Article {
 		if( $wgUser->isAllowed( 'suppressrevision' ) ) {
 			$suppress = "<tr id=\"wpDeleteSuppressRow\" name=\"wpDeleteSuppressRow\">
 					<td></td>
-					<td class='mw-input'>" .
+					<td class='mw-input'><strong>" .
 						Xml::checkLabel( wfMsg( 'revdelete-suppress' ),
 							'wpSuppress', 'wpSuppress', false, array( 'tabindex' => '4' ) ) .
-					"</td>
+					"</strong></td>
 				</tr>";
 		} else {
 			$suppress = '';
@@ -2576,7 +2641,6 @@ class Article {
 
 		# Clear the cached article id so the interface doesn't act like we exist
 		$this->mTitle->resetArticleID( 0 );
-		$this->mTitle->mArticleID = 0;
 
 		# Log the deletion, if the page was suppressed, log it at Oversight instead
 		$logtype = $suppress ? 'suppress' : 'delete';
@@ -2888,8 +2952,11 @@ class Article {
 
 		# Save it to the parser cache
 		if( $wgEnableParserCache ) {
+			$popts = new ParserOptions;
+			$popts->setTidy( true );
+			$popts->enableLimitReport();
 			$parserCache = ParserCache::singleton();
-			$parserCache->save( $editInfo->output, $this, $wgUser );
+			$parserCache->save( $editInfo->output, $this, $popts );
 		}
 
 		# Update the links tables
@@ -3132,7 +3199,7 @@ class Article {
 		if( !$this->mDataLoaded ) {
 			$this->loadPageData();
 		}
-		return $this->mLatest;
+		return (int)$this->mLatest;
 	}
 
 	/**
@@ -3282,6 +3349,8 @@ class Article {
 			$user = User::newFromName( $title->getText(), false );
 			$user->setNewtalk( false );
 		}
+		# Image redirects
+		RepoGroup::singleton()->getLocalRepo()->invalidateImageRedirect( $title );
 	}
 
 	/**
@@ -3380,7 +3449,7 @@ class Article {
 	 * @param $title Title object
 	 * @return array
 	 */
-	protected function pageCountInfo( $title ) {
+	public function pageCountInfo( $title ) {
 		$id = $title->getArticleId();
 		if( $id == 0 ) {
 			return false;
@@ -3510,7 +3579,7 @@ class Article {
 	 * @param $cache Boolean
 	 */
 	public function outputWikiText( $text, $cache = true ) {
-		global $wgParser, $wgUser, $wgOut, $wgEnableParserCache, $wgUseFileCache;
+		global $wgParser, $wgOut, $wgEnableParserCache, $wgUseFileCache;
 
 		$popts = $wgOut->parserOptions();
 		$popts->setTidy(true);
@@ -3521,7 +3590,7 @@ class Article {
 		$popts->enableLimitReport( false );
 		if( $wgEnableParserCache && $cache && $this && $parserOutput->getCacheTime() != -1 ) {
 			$parserCache = ParserCache::singleton();
-			$parserCache->save( $parserOutput, $this, $wgUser );
+			$parserCache->save( $parserOutput, $this, $popts );
 		}
 		// Make sure file cache is not used on uncacheable content.
 		// Output that has magic words in it can still use the parser cache

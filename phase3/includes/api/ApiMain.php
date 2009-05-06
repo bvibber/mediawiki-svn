@@ -65,10 +65,9 @@ class ApiMain extends ApiBase {
 		'feedwatchlist' => 'ApiFeedWatchlist',
 		'help' => 'ApiHelp',
 		'paraminfo' => 'ApiParamInfo',
-		'purge' => 'ApiPurge',
-	);
 
-	private static $WriteModules = array (
+		// Write modules
+		'purge' => 'ApiPurge',
 		'rollback' => 'ApiRollback',
 		'delete' => 'ApiDelete',
 		'undelete' => 'ApiUndelete',
@@ -82,6 +81,7 @@ class ApiMain extends ApiBase {
 		'watch' => 'ApiWatch',
 		'patrol' => 'ApiPatrol',
 		'import' => 'ApiImport',
+		'userrights' => 'ApiUserrights',
 	);
 
 	/**
@@ -151,20 +151,10 @@ class ApiMain extends ApiBase {
 				wfDebug( "API: stripping user credentials for JSON callback\n" );
 				$wgUser = new User();
 			}
-
-			if (!$wgUser->isAllowed('read')) {
-				self::$Modules = array(
-					'login'  => self::$Modules['login'],
-					'logout' => self::$Modules['logout'],
-					'help'   => self::$Modules['help'],
-					);
-			}
 		}
 
-		global $wgAPIModules, $wgEnableWriteAPI; // extension modules
+		global $wgAPIModules; // extension modules
 		$this->mModules = $wgAPIModules + self :: $Modules;
-		if($wgEnableWriteAPI)
-			$this->mModules += self::$WriteModules;
 
 		$this->mModuleNames = array_keys($this->mModules);
 		$this->mFormats = self :: $Formats;
@@ -199,24 +189,6 @@ class ApiMain extends ApiBase {
 	 */
 	public function getResult() {
 		return $this->mResult;
-	}
-
-	/**
-	 * This method will simply cause an error if the write mode was disabled
-	 * or if the current user doesn't have the right to use it
-	 */
-	public function requestWriteMode() {
-		global $wgUser;
-		if (!$this->mEnableWrite)
-			$this->dieUsage('Editing of this wiki through the API' .
-			' is disabled. Make sure the $wgEnableWriteAPI=true; ' .
-			'statement is included in the wiki\'s ' .
-			'LocalSettings.php file', 'noapiwrite');
-		if (!$wgUser->isAllowed('writeapi'))
-			$this->dieUsage('You\'re not allowed to edit this ' .
-			'wiki through the API', 'writeapidenied');
-		if (wfReadOnly())
-			$this->dieUsageMsg(array('readonlytext'));
 	}
 
 	/**
@@ -340,7 +312,7 @@ class ApiMain extends ApiBase {
 				'info' => $e->getMessage());
 
 				// Only print the help message when this is for the developer, not runtime
-				if ($this->mPrinter->getIsHtml() || $this->mAction == 'help')
+				if ($this->mPrinter->getWantsHelp() || $this->mAction == 'help')
 					ApiResult :: setContent($errMessage, $this->makeHelpMsg());
 
 			} else {
@@ -411,6 +383,18 @@ class ApiMain extends ApiBase {
 			}
 		}
 
+		global $wgUser;
+		if ($module->isReadMode() && !$wgUser->isAllowed('read'))
+			$this->dieUsageMsg(array('readrequired'));
+		if ($module->isWriteMode()) {
+			if (!$this->mEnableWrite)
+				$this->dieUsageMsg(array('writedisabled'));
+			if (!$wgUser->isAllowed('writeapi'))
+				$this->dieUsageMsg(array('writerequired'));
+			if (wfReadOnly())
+				$this->dieUsageMsg(array('readonlytext'));
+		}
+
 		if (!$this->mInternalMode) {
 			// Ignore mustBePosted() for internal calls
 			if($module->mustBePosted() && !$this->mRequest->wasPosted())
@@ -458,6 +442,10 @@ class ApiMain extends ApiBase {
 		$printer->execute();
 		$printer->closePrinter();
 		$printer->profileOut();
+	}
+	
+	public function isReadMode() {
+		return false;
 	}
 
 	/**

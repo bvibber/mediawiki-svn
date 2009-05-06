@@ -1,6 +1,9 @@
 <?php
 /** Cherokee (ᏣᎳᎩ)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -15,11 +18,13 @@ $messages = array(
 'april'    => 'ᏥᎶᏂ',
 'june'     => 'DᎡᎭᎷᏱ',
 
-'about'          => 'ᎬᏩᏚᏫᏛ',
-'article'        => 'ᎤᏓᏡᎬ',
+'about'      => 'ᎬᏩᏚᏫᏛ',
+'article'    => 'ᎤᏓᏡᎬ',
+'navigation' => 'ᎠᏂᎩᏍᏗ ᏥᏳ',
+
+# Cologne Blue skin
 'qbpageinfo'     => 'ᎦᎷᎯᏍᏗ',
 'qbspecialpages' => 'ᎤᏤᎵᏛ',
-'navigation'     => 'ᎠᏂᎩᏍᏗ ᏥᏳ',
 
 'help'             => 'ᎠᎵᏍᏕᎸᏗ',
 'search'           => 'ᎠᏯᏍᏗ',
@@ -74,6 +79,8 @@ $messages = array(
 
 # Delete
 'actioncomplete' => 'ᎠᏍᏆᏙᏅᎯ',
+
+'sp-contributions-talk' => 'ᎧᏃᎮᎸᏗ',
 
 # What links here
 'whatlinkshere' => 'ᎦᏙ ᎤᏍᏗ ᏗᏕᎬᏔᏛ ᎠᎭᏂ',

@@ -34,6 +34,7 @@ class LanguageConverter {
 	var $mFlags;
 	var $mDescCodeSep = ':',$mDescVarSep = ';';
 	var $mUcfirst = false;
+	var $mGroups = array();
 
 	const CACHE_VERSION_KEY = 'VERSION 6';
 
@@ -91,6 +92,7 @@ class LanguageConverter {
 			$this->mManualAddTables[$v] = array();
 			$this->mManualRemoveTables[$v] = array();
 			$this->mNamespaceTables[$v] = array();
+			$this->mFlags[$v] = $v;
 		}
 	}
 
@@ -175,25 +177,21 @@ class LanguageConverter {
 			return $this->mPreferredVariant;
 		}
 
-		# FIXME rewrite code for parsing http header. The current code
-		# is written specific for detecting zh- variants
 		if( !$this->mPreferredVariant ) {
 			// see if some supported language variant is set in the
 			// http header, but we don't set the mPreferredVariant
 			// variable in case this is called before the user's
 			// preference is loaded
-			$pv=$this->mMainLanguageCode;
-			if(array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER)) {
-				$header = str_replace( '_', '-', strtolower($_SERVER["HTTP_ACCEPT_LANGUAGE"]));
-				$zh = strstr($header, $pv.'-');
-				if($zh) {
-					$ary = split("[,;]",$zh);
-					$pv = $ary[0];
+			if( array_key_exists( 'HTTP_ACCEPT_LANGUAGE', $_SERVER ) ) {
+				$acceptLanguage = str_replace( '_', '-', strtolower($_SERVER["HTTP_ACCEPT_LANGUAGE"]));
+				$languages = preg_split('/[,;]/', $acceptLanguage);
+				foreach( $languages as $language ) {
+					if( in_array( $language, $this->mVariants ) ) {
+						return $language;
+						break;
+					}
 				}
 			}
-			// don't try to return bad variant
-			if(in_array( $pv, $this->mVariants ))
-				return $pv;
 		}
 
 		return $this->mMainLanguageCode;
@@ -413,7 +411,7 @@ class LanguageConverter {
 		global $wgDisableLangConversion;
 		/* don't do anything if this is the conversion table */
 		if ( $parser->getTitle()->getNamespace() == NS_MEDIAWIKI &&
-				 strpos($parser->mTitle->getText(), "Conversiontable") !== false ) 
+				 strpos($parser->mTitle->getText(), 'onversiontable') !== false ) 
 		{
 			return $text;
 		}
@@ -489,10 +487,11 @@ class LanguageConverter {
 	 *
 	 * @param string $text text to be converted
 	 * @param bool $isTitle whether this conversion is for the article title
+	 * @param string $variant the variant we convert to
 	 * @return string converted text
 	 * @public
 	 */
-	function convert( $text, $isTitle = false ) {
+	function convert( $text, $isTitle = false, $variant = null ) {
 
 		$mw =& MagicWord::get( 'notitleconvert' );
 		if( $mw->matchAndRemove( $text ) )
@@ -507,7 +506,10 @@ class LanguageConverter {
 		if( $mw->matchStart( $text ) )
 			return $text;
 
-		$plang = $this->getPreferredVariant();
+		if( $variant && in_array( $variant, $this->mVariants ) )
+			$plang = $variant;
+		else
+			$plang = $this->getPreferredVariant();
 
 		// for title convertion
 		if ( $isTitle ) return $this->convertTitle( $text, $plang );
@@ -662,7 +664,7 @@ class LanguageConverter {
 	 * load conversion tables either from the cache or the disk
 	 * @private
 	 */
-	function loadTables($fromcache=true) {
+	function loadTables( $fromcache = true ) {
 		global $wgMemc;
 		if( $this->mTablesLoaded )
 			return;
@@ -680,9 +682,14 @@ class LanguageConverter {
 			// we will first load the default tables
 			// then update them using things in MediaWiki:Zhconversiontable/*
 			$this->loadDefaultTables();
-			foreach($this->mVariants as $var) {
-				$cached = $this->parseCachedTable($var);
-				$this->mTables[$var]->mergeArray($cached);
+			foreach( $this->mVariants as $var ) {
+				$cached = $this->parseCachedTable( $var );
+				// load group convert table, e.g. [[MediaWiki:Groupconversiontable-StarTrek]].
+				foreach( $this->mGroups as $group ) {
+					$cachedgroup = $this->parseCachedTable( $var, '', true, "Groupconversiontable-$group" );
+					$cached = array_merge( $cached, $cachedgroup );
+				}
+				$this->mTables[$var]->mergeArray( $cached );
 			}
 
 			$this->postLoadTables();
@@ -730,24 +737,24 @@ class LanguageConverter {
 	 *	and will be parsed recursively if $recursive=true
 	 *
 	 */
-	function parseCachedTable($code, $subpage='', $recursive=true) {
+	function parseCachedTable($code, $subpage='', $recursive=true, $table='Conversiontable') {
 		global $wgMessageCache;
 		static $parsed = array();
 
 		if(!is_object($wgMessageCache))
 			return array();
 
-		$key = 'Conversiontable/'.$code;
+		$key = "$table/".$code;
 		if($subpage)
 			$key .= '/' . $subpage;
 
 		if(array_key_exists($key, $parsed))
 			return array();
-
+		
 		if ( strpos( $code, '/' ) === false ) {
-			$txt = $wgMessageCache->get( 'Conversiontable', true, $code );
+			$txt = $wgMessageCache->get( $table, true, $code );
 		} else {
-			$title = Title::makeTitleSafe( NS_MEDIAWIKI, "Conversiontable/$code" );
+			$title = Title::makeTitleSafe( NS_MEDIAWIKI, "$table/$code" );
 			if ( $title && $title->exists() ) {
 				$article = new Article( $title );
 				$txt = $article->getContents();
@@ -755,10 +762,9 @@ class LanguageConverter {
 				$txt = '';
 			}
 		}
-
 		// get all subpage links of the form
 		// [[MediaWiki:conversiontable/zh-xx/...|...]]
-		$linkhead = $this->mLangObj->getNsText(NS_MEDIAWIKI) . ':Conversiontable';
+		$linkhead = $this->mLangObj->getNsText(NS_MEDIAWIKI) . ":$table";
 		$subs = explode('[[', $txt);
 		$sublinks = array();
 		foreach( $subs as $sub ) {
@@ -776,7 +782,6 @@ class LanguageConverter {
 				$sublinks[] = $sublink;
 			}
 		}
-
 
 		// parse the mappings in this page
 		$blocks = explode($this->mMarkup['begin'], $txt);
@@ -865,15 +870,29 @@ class LanguageConverter {
 	 * @public
 	 */
  	function armourMath($text){ 
+ 		// we need to convert '-{' and '}-' to '-&#123;' and '&#125;-'
+ 		// to avoid a unwanted '}-' appeared after the math-image.
+ 		$text = strtr( $text, array('-{' => '-&#123;', '}-' => '&#125;-') );
 		$ret = $this->mMarkup['begin'] . 'R|' . $text . $this->mMarkup['end'];
 		return $ret;
+	}
+	
+	/**
+	 * Callback function for magicword 'groupconvert'
+	 *
+	 * @param string $group: the group name called for
+	 * @return blank string
+	 */
+	function groupConvert( $group ) {
+		$this->mGroups[] = $group;
+		return '';
 	}
 }
 
 /**
  * parser for rules of language conversion , parse rules in -{ }- tag
  * @ingroup Language
- * @author  fdcn <fdcn64@gmail.com>
+ * @author fdcn <fdcn64@gmail.com>, PhiLiP <philip.npc@gmail.com>
  */
 class ConverterRule {
 	var $mText; // original text in -{text}-
@@ -935,6 +954,7 @@ class ConverterRule {
 		$flags = array();
 		$markup = $this->mConverter->mMarkup;
 		$validFlags = $this->mConverter->mFlags;
+		$variants = $this->mConverter->mVariants;
 
 		$tt = explode($markup['flagsep'], $text, 2);
 		if(count($tt) == 2) {
@@ -966,14 +986,23 @@ class ConverterRule {
 			if(in_array('D',$flags)) $temp[] = 'D';
 			$flags = $temp;
 		} else {
-			if ( in_array('A',$flags)) {
+			if ( in_array('A',$flags) ) {
 				$flags[]='+';
 				$flags[]='S';
 			}
 			if ( in_array('D',$flags) )
 				$flags=array_diff($flags,array('S'));
+			$flags_temp = array();
+			foreach ($variants as $variant) {
+				// try to find flags like "zh-hans", "zh-hant"
+				// allow syntaxes like "-{zh-hans;zh-hant|XXXX}-"
+				if ( in_array($variant, $flags) )
+					$flags_temp[] = $variant;
+			}
+			if ( count($flags_temp) !== 0 )
+				$flags = $flags_temp;
 		}
-		if ( count($flags)==0 )
+		if ( count($flags) == 0 )
 			$flags = array('S');
 		$this->mRules=$rules;
 		$this->mFlags=$flags;
@@ -989,26 +1018,49 @@ class ConverterRule {
 		$bidtable = array();
 		$unidtable = array();
 		$markup = $this->mConverter->mMarkup;
+		$variants = $this->mConverter->mVariants;
 
-		$choice = explode($markup['varsep'], $rules );
-		foreach($choice as $c) {
-			$v = explode($markup['codesep'], $c);
-			if(count($v) != 2) 
+		// varsep_pattern for preg_split:
+		// text should be splited by ";" only if a valid variant
+		// name exist after the markup, for example:
+		//  -{zh-hans:<span style="font-size:120%;">xxx</span>;zh-hant:<span style="font-size:120%;">yyy</span>;}-
+		// we should split it as:
+		//  array(
+		//        [0] => 'zh-hans:<span style="font-size:120%;">xxx</span>'
+		//        [1] => 'zh-hant:<span style="font-size:120%;">yyy</span>'
+		//        [2] => ''
+		//       )
+		$varsep_pattern = '/' . $markup['varsep'] . '\s*' . '(?=';
+		foreach( $variants as $variant ) {
+			$varsep_pattern .= $variant . '\s*' . $markup['codesep'] . '|'; // zh-hans:xxx;zh-hant:yyy
+			$varsep_pattern .= '[^;]*?' . $markup['unidsep'] . '\s*' . $variant
+							. '\s*' . $markup['codesep'] . '|'; // xxx=>zh-hans:yyy; xxx=>zh-hant:zzz
+		}
+		$varsep_pattern .= '\s*$)/';
+
+		$choice = preg_split($varsep_pattern, $rules);
+
+		foreach( $choice as $c ) {
+			$v  = explode($markup['codesep'], $c, 2);
+			if( count($v) != 2 ) 
 				continue;// syntax error, skip
-			$to=trim($v[1]);
-			$v=trim($v[0]);
-			$u = explode($markup['unidsep'], $v);
-			if(count($u) == 1) {
+			$to = trim($v[1]);
+			$v  = trim($v[0]);
+			$u  = explode($markup['unidsep'], $v);
+			// if $to is empty, strtr() could return a wrong result
+			if( count($u) == 1 && $to && in_array( $v, $variants ) ) {
 				$bidtable[$v] = $to;
 			} else if(count($u) == 2){
-				$from=trim($u[0]);$v=trim($u[1]);
-				if( array_key_exists($v,$unidtable) && !is_array($unidtable[$v]) )
-					$unidtable[$v]=array($from=>$to);
-				else
-					$unidtable[$v][$from]=$to;
+				$from = trim($u[0]);
+				$v    = trim($u[1]);
+				if( array_key_exists( $v, $unidtable ) && !is_array( $unidtable[$v] )
+					&& $to && in_array( $v, $variants ) )
+					$unidtable[$v] = array( $from=>$to );
+				elseif ( $to && in_array( $v, $variants ) )
+					$unidtable[$v][$from] = $to;
 			}
 			// syntax error, pass
-			if (!array_key_exists($v,$this->mConverter->mVariantNames)){
+			if ( !array_key_exists( $v, $this->mConverter->mVariantNames ) ){
 				$bidtable = array();
 				$unidtable = array();
 				break;
@@ -1124,16 +1176,35 @@ class ConverterRule {
 	 * @public
 	 */
 	function parse($variant){
-		if(!$variant) $variant = $this->mConverter->getPreferredVariant();
+		if(!$variant)
+			$variant = $this->mConverter->getPreferredVariant();
 
+		$variants = $this->mConverter->mVariants;
 		$this->parseFlags();
 		$flags = $this->mFlags;
 
-		if( !in_array('R',$flags) || !in_array('N',$flags) ){
-			//FIXME: may cause trouble here...
-			//strip &nbsp; since it interferes with the parsing, plus,
-			//all spaces should be stripped in this tag anyway.
-			$this->mRules = str_replace('&nbsp;', '', $this->mRules);
+		// convert to specified variant
+		// syntax: -{zh-hans;zh-hant[;...]|<text to convert>}-
+		if( count( array_diff( $flags, $variants ) ) == 0 and count( $flags ) != 0 ) {
+			if ( in_array( $variant, $flags ) ) // check if current variant in flags
+				// then convert <text to convert> to current language
+				$this->mRules = $this->mConverter->autoConvert( $this->mRules, $variant );
+			else { // if current variant no in flags,
+				   // then we check its fallback variants.
+				$variantFallbacks = $this->mConverter->getVariantFallbacks($variant);
+				foreach ( $variantFallbacks as $variantFallback ) {
+					// if current variant's fallback exist in flags
+					if ( in_array( $variantFallback, $flags ) ) {
+						// then convert <text to convert> to fallback language
+						$this->mRules = $this->mConverter->autoConvert( $this->mRules, $variantFallback );
+						break;
+					}
+				}
+			}
+			$this->mFlags = $flags = array('R');
+		}
+
+		if( !in_array( 'R', $flags ) || !in_array( 'N', $flags ) ) {
 			// decode => HTML entities modified by Sanitizer::removeHTMLtags 
 			$this->mRules = str_replace('=&gt;','=>',$this->mRules);
 
@@ -1141,7 +1212,7 @@ class ConverterRule {
 		}
 		$rules = $this->mRules;
 
-		if(count($this->mBidtable)==0 && count($this->mUnidtable)==0){
+		if( count( $this->mBidtable ) == 0 && count( $this->mUnidtable ) == 0 ){
 			if(in_array('+',$flags) || in_array('-',$flags))
 				// fill all variants if text in -{A/H/-|text} without rules
 				foreach($this->mConverter->mVariants as $v)

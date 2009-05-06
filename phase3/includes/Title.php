@@ -179,20 +179,15 @@ class Title {
 	/**
 	 * Create a new Title from an article ID
 	 *
-	 * @todo This is inefficiently implemented, the page row is requested
-	 *       but not used for anything else
-	 *
 	 * @param $id \type{\int} the page_id corresponding to the Title to create
 	 * @param $flags \type{\int} use GAID_FOR_UPDATE to use master
 	 * @return \type{Title} the new object, or NULL on an error
 	 */
 	public static function newFromID( $id, $flags = 0 ) {
-		$fname = 'Title::newFromID';
 		$db = ($flags & GAID_FOR_UPDATE) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-		$row = $db->selectRow( 'page', array( 'page_namespace', 'page_title' ),
-			array( 'page_id' => $id ), $fname );
-		if ( $row !== false ) {
-			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+		$row = $db->selectRow( 'page', '*', array( 'page_id' => $id ), __METHOD__ );
+		if( $row !== false ) {
+			$title = Title::newFromRow( $row );
 		} else {
 			$title = NULL;
 		}
@@ -858,6 +853,9 @@ class Title {
 	 * the server unless action=render is used (or the link is external).  If
 	 * there's a fragment but the prefixed text is empty, we just return a link
 	 * to the fragment.
+	 *
+	 * The result obviously should not be URL-escaped, but does need to be
+	 * HTML-escaped if it's being output in HTML.
 	 *
 	 * @param $query \type{\arrayof{\string}} An associative array of key => value pairs for the
 	 *   query string.  Keys and values will be escaped.
@@ -1640,7 +1638,7 @@ class Title {
 			$options['LIMIT'] = $limit;
 		return $this->mSubpages = TitleArray::newFromResult(
 			$dbr->select( 'page',
-				array( 'page_id', 'page_namespace', 'page_title' ),
+				array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect' ),
 				$conds,
 				__METHOD__,
 				$options
@@ -2110,7 +2108,7 @@ class Title {
 		$linkCache = LinkCache::singleton();
 		$linkCache->clearBadLink( $this->getPrefixedDBkey() );
 
-		if ( 0 == $newid ) { $this->mArticleID = -1; }
+		if ( $newid === false ) { $this->mArticleID = -1; }
 		else { $this->mArticleID = $newid; }
 		$this->mRestrictionsLoaded = false;
 		$this->mRestrictions = array();
@@ -2197,9 +2195,6 @@ class Title {
 		#
 		$dbkey = preg_replace( '/[ _]+/', '_', $dbkey );
 		$dbkey = trim( $dbkey, '_' );
-		
-		# Clean up Arabic harakats (bug 16899)
-		$dbkey = preg_replace( '/[\x{064B}-\x{0652}]/Su', '', $dbkey );
 
 		if ( '' == $dbkey ) {
 			return false;
@@ -2618,7 +2613,7 @@ class Title {
 				$nt->getUserPermissionsErrors('edit', $wgUser) );
 		}
 
-		$match = EditPage::matchSpamRegex( $reason );
+		$match = EditPage::matchSummarySpamRegex( $reason );
 		if( $match !== false ) {
 			// This is kind of lame, won't display nice
 			$errors[] = array('spamprotectiontext');
@@ -2665,6 +2660,18 @@ class Title {
 			return $err;
 		}
 
+		// If it is a file, more it first. It is done before all other moving stuff is done because it's hard to revert
+		$dbw = wfGetDB( DB_MASTER );
+		if( $this->getNamespace() == NS_FILE ) {
+			$file = wfLocalFile( $this );
+			if( $file->exists() ) {
+				$status = $file->move( $nt );
+				if( !$status->isOk() ) {
+					return $status->getErrorsArray();
+				}
+			}
+		}
+
 		$pageid = $this->getArticleID();
 		$protected = $this->isProtected();
 		if( $nt->exists() ) {
@@ -2691,7 +2698,6 @@ class Title {
 		// we can't actually distinguish it from a default here, and it'll
 		// be set to the new title even though it really shouldn't.
 		// It'll get corrected on the next edit, but resetting cl_timestamp.
-		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update( 'categorylinks',
 			array(
 				'cl_sortkey' => $nt->getPrefixedText(),
@@ -2760,8 +2766,16 @@ class Title {
 		# Update message cache for interface messages
 		if( $nt->getNamespace() == NS_MEDIAWIKI ) {
 			global $wgMessageCache;
-			$oldarticle = new Article( $this );
-			$wgMessageCache->replace( $this->getDBkey(), $oldarticle->getContent() );
+
+			# @bug 17860: old article can be deleted, if this the case,
+			# delete it from message cache
+			if ( $this->getArticleID() === 0 ) {
+				$wgMessageCache->replace( $this->getDBkey(), false );
+			} else {
+				$oldarticle = new Article( $this );
+				$wgMessageCache->replace( $this->getDBkey(), $oldarticle->getContent() );
+			}
+
 			$newarticle = new Article( $nt );
 			$wgMessageCache->replace( $nt->getDBkey(), $newarticle->getContent() );
 		}
@@ -2866,18 +2880,6 @@ class Title {
 			$redirectSuppressed = true;
 		}
 
-		# Move an image if this is a file
-		if( $this->getNamespace() == NS_FILE ) {
-			$file = wfLocalFile( $this );
-			if( $file->exists() ) {
-				$status = $file->move( $nt );
-				if( !$status->isOk() ) {
-					$dbw->rollback();
-					return $status->getErrorsArray();
-				}
-			}
-		}
-
 		# Log the move
 		$log = new LogPage( 'move' );
 		$log->addEntry( 'move_redir', $this, $reason, array( 1 => $nt->getPrefixedText(), 2 => $redirectSuppressed ) );
@@ -2963,18 +2965,6 @@ class Title {
 			$redirectSuppressed = true;
 		}
 
-		# Move an image if this is a file
-		if( $this->getNamespace() == NS_FILE ) {
-			$file = wfLocalFile( $this );
-			if( $file->exists() ) {
-				$status = $file->move( $nt );
-				if( !$status->isOk() ) {
-					$dbw->rollback();
-					return $status->getErrorsArray();
-				}
-			}
-		}
-
 		# Log the move
 		$log = new LogPage( 'move' );
 		$log->addEntry( 'move', $this, $reason, array( 1 => $nt->getPrefixedText(), 2 => $redirectSuppressed ) );
@@ -2999,7 +2989,7 @@ class Title {
 	 *  arrays (errors) as values, or an error array with numeric indices if no pages were moved
 	 */
 	public function moveSubpages( $nt, $auth = true, $reason = '', $createRedirect = true ) {
-		global $wgUser, $wgMaximumMovedPages;
+		global $wgMaximumMovedPages;
 		// Check permissions
 		if( !$this->userCan( 'move-subpages' ) )
 			return array( 'cant-move-subpages' );
@@ -3316,8 +3306,8 @@ class Title {
 			'rev_page = ' . intval( $this->getArticleId() ) .
 			' AND rev_id > ' . intval( $old ) .
 			' AND rev_id < ' . intval( $new ),
-			__METHOD__,
-			array( 'USE INDEX' => 'PRIMARY' ) );
+			__METHOD__
+		);
 	}
 
 	/**
@@ -3336,7 +3326,7 @@ class Title {
 	/**
 	 * Callback for usort() to do title sorts by (namespace, title)
 	 */
-	static function compare( $a, $b ) {
+	public static function compare( $a, $b ) {
 		if( $a->getNamespace() == $b->getNamespace() ) {
 			return strcmp( $a->getText(), $b->getText() );
 		} else {
@@ -3492,9 +3482,9 @@ class Title {
 	 * @return \type{\string} Trackback URL
 	 */
 	public function trackbackURL() {
-		global $wgScriptPath, $wgServer;
+		global $wgScriptPath, $wgServer, $wgScriptExtension;
 
-		return "$wgServer$wgScriptPath/trackback.php?article="
+		return "$wgServer$wgScriptPath/trackback$wgScriptExtension?article="
 			. htmlspecialchars(urlencode($this->getPrefixedDBkey()));
 	}
 

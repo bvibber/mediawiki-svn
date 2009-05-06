@@ -218,8 +218,15 @@ abstract class ApiBase {
 				);
 			$msg = $lnPrfx . implode($lnPrfx, $msg) . "\n";
 
+			if ($this->isReadMode())
+				$msg .= "\nThis module requires read rights.";
+			if ($this->isWriteMode())
+				$msg .= "\nThis module requires write rights.";
 			if ($this->mustBePosted())
-				$msg .= "\nThis module only accepts POST requests.\n";
+				$msg .= "\nThis module only accepts POST requests.";
+			if ($this->isReadMode() || $this->isWriteMode() ||
+					$this->mustBePosted())
+				$msg .= "\n";
 
 			// Parameters
 			$paramsMsg = $this->makeHelpMsgParameters();
@@ -240,16 +247,16 @@ abstract class ApiBase {
 
 			if ($this->getMain()->getShowVersions()) {
 				$versions = $this->getVersion();
-				$pattern = '(\$.*) ([0-9a-z_]+\.php) (.*\$)';
+				$pattern = '/(\$.*) ([0-9a-z_]+\.php) (.*\$)/i';
 				$replacement = '\\0' . "\n    " . 'http://svn.wikimedia.org/viewvc/mediawiki/trunk/phase3/includes/api/\\2';
 
 				if (is_array($versions)) {
 					foreach ($versions as &$v)
-						$v = eregi_replace($pattern, $replacement, $v);
+						$v = preg_replace($pattern, $replacement, $v);
 					$versions = implode("\n  ", $versions);
 				}
 				else
-					$versions = eregi_replace($pattern, $replacement, $versions);
+					$versions = preg_replace($pattern, $replacement, $versions);
 
 				$msg .= "Version:\n  $versions\n";
 			}
@@ -605,7 +612,7 @@ abstract class ApiBase {
 	* @return mixed (allowMultiple ? an_array_of_values : a_single_value)
 	*/
 	protected function parseMultiValue($valueName, $value, $allowMultiple, $allowedValues) {
-		if( trim($value) === "" )
+		if( trim($value) === "" && $allowMultiple)
 			return array();
 		$sizeLimit = $this->mMainModule->canApiHighLimits() ? self::LIMIT_SML2 : self::LIMIT_SML1;
 		$valuesList = explode('|', $value, $sizeLimit + 1);
@@ -758,12 +765,20 @@ abstract class ApiBase {
 		'markedaspatrollederror-noautopatrol' => array('code' => 'noautopatrol', 'info' => "You don't have permission to patrol your own changes"),
 		'delete-toobig' => array('code' => 'bigdelete', 'info' => "You can't delete this page because it has more than \$1 revisions"),
 		'movenotallowedfile' => array('code' => 'cantmovefile', 'info' => "You don't have permission to move files"),
+		'userrights-no-interwiki' => array('code' => 'nointerwikiuserrights', 'info' => "You don't have permission to change user rights on other wikis"),
+		'userrights-nodatabase' => array('code' => 'nosuchdatabase', 'info' => "Database ``\$1'' does not exist or is not local"),
+		'nouserspecified' => array('code' => 'invaliduser', 'info' => "Invalid username ``\$1''"),
+		'noname' => array('code' => 'invaliduser', 'info' => "Invalid username ``\$1''"),
 
 		// API-specific messages
+		'readrequired' => array('code' => 'readapidenied', 'info' => "You need read permission to use this module"),
+		'writedisabled' => array('code' => 'noapiwrite', 'info' => "Editing of this wiki through the API is disabled. Make sure the \$wgEnableWriteAPI=true; statement is included in the wiki's LocalSettings.php file"),
+		'writerequired' => array('code' => 'writeapidenied', 'info' => "You're not allowed to edit this wiki through the API"),
 		'missingparam' => array('code' => 'no$1', 'info' => "The \$1 parameter must be set"),
 		'invalidtitle' => array('code' => 'invalidtitle', 'info' => "Bad title ``\$1''"),
 		'nosuchpageid' => array('code' => 'nosuchpageid', 'info' => "There is no page with ID \$1"),
 		'nosuchrevid' => array('code' => 'nosuchrevid', 'info' => "There is no revision with ID \$1"),
+		'nosuchuser' => array('code' => 'nosuchuser', 'info' => "User ``\$1'' doesn't exist"),
 		'invaliduser' => array('code' => 'invaliduser', 'info' => "Invalid username ``\$1''"),
 		'invalidexpiry' => array('code' => 'invalidexpiry', 'info' => "Invalid expiry time ``\$1''"),
 		'pastexpiry' => array('code' => 'pastexpiry', 'info' => "Expiry time ``\$1'' is in the past"),
@@ -801,7 +816,7 @@ abstract class ApiBase {
 		'noimageredirect-logged' => array('code' => 'noimageredirect', 'info' => "You don't have permission to create image redirects"),
 		'spamdetected' => array('code' => 'spamdetected', 'info' => "Your edit was refused because it contained a spam fragment: ``\$1''"),
 		'filtered' => array('code' => 'filtered', 'info' => "The filter callback function refused your edit"),
-		'contenttoobig' => array('code' => 'contenttoobig', 'info' => "The content you supplied exceeds the article size limit of \$1 bytes"),
+		'contenttoobig' => array('code' => 'contenttoobig', 'info' => "The content you supplied exceeds the article size limit of \$1 kilobytes"),
 		'noedit-anon' => array('code' => 'noedit-anon', 'info' => "Anonymous users can't edit pages"),
 		'noedit' => array('code' => 'noedit', 'info' => "You don't have permission to edit pages"),
 		'wasdeleted' => array('code' => 'pagedeleted', 'info' => "The page has been deleted since you fetched its timestamp"),
@@ -820,7 +835,7 @@ abstract class ApiBase {
 	 */
 	public function dieUsageMsg($error) {
 		$parsed = $this->parseMsg($error);
-		$this->dieUsage($parsed['code'], $parsed['info']);
+		$this->dieUsage($parsed['info'], $parsed['code']);
 	}
 	
 	/**
@@ -858,10 +873,17 @@ abstract class ApiBase {
 	}
 
 	/**
-	 * Indicates if this module requires edit mode
+	 * Indicates whether this module requires read rights
 	 * @return bool
 	 */
-	public function isEditMode() {
+	public function isReadMode() {
+		return true;
+	}
+	/**
+	 * Indicates whether this module requires write mode
+	 * @return bool
+	 */
+	public function isWriteMode() {
 		return false;
 	}
 

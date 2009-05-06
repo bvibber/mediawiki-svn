@@ -431,6 +431,8 @@ function checkboxClickHandler(e) {
 	}
 	for (var i = start; i <= finish; ++i ) {
 		checkboxes[i].checked = endState;
+		if( i > start && typeof checkboxes[i].onchange == 'function' )
+			checkboxes[i].onchange(); // fire triggers
 	}
 	lastCheckbox = this.index;
 	return true;

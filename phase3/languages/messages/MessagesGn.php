@@ -1,6 +1,9 @@
 <?php
 /** Guarani (Avañe'ẽ)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -98,16 +101,18 @@ $messages = array(
 # Categories related messages
 'pagecategories' => '{{PLURAL:$1|Ñemohenda|Ñemohendakuéra}}',
 
-'about'          => 'Rehegua',
-'article'        => 'Kuatiahai',
-'newwindow'      => "(Ojepe'a peteĩ ovetã pyahu)",
-'cancel'         => 'Mbotove',
+'about'      => 'Rehegua',
+'article'    => 'Kuatiahai',
+'newwindow'  => "(Ojepe'a peteĩ ovetã pyahu)",
+'cancel'     => 'Mbotove',
+'mypage'     => 'Che kuatiarogue',
+'mytalk'     => 'Che myangekõi',
+'navigation' => 'Kundaharã',
+
+# Cologne Blue skin
 'qbfind'         => 'Heka',
 'qbedit'         => 'Jehaijey',
 'qbspecialpages' => 'Kuatiarogue hekochĩchĩva',
-'mypage'         => 'Che kuatiarogue',
-'mytalk'         => 'Che myangekõi',
-'navigation'     => 'Kundaharã',
 
 'tagline'          => '{{SITENAME}}megua',
 'help'             => 'Pytyvõhára',
@@ -133,7 +138,7 @@ $messages = array(
 'viewtalkpage'     => 'Hecha myangekõi',
 'otherlanguages'   => "Ambue ñe'ẽ",
 'redirectedfrom'   => '(Oñembohapejeýva $1)',
-'lastmodifiedat'   => 'Ko kuatiarogue oñemoambuejeýkuri: $2, $1.', # $1 date, $2 time
+'lastmodifiedat'   => 'Ko kuatiarogue oñemoambuejeýkuri: $2, $1.',
 'viewcount'        => 'Esta página ha sido visitada $1 veces.',
 'jumpto'           => 'Kundaharãme jeho',
 'jumptonavigation' => 'kundaharã',
@@ -184,7 +189,6 @@ $messages = array(
 'ns-specialprotected' => 'Las páginas en el espacio de nombres Especial no se pueden editar.',
 
 # Login and logout pages
-'loginpagetitle'          => 'Terañemboguapy/Ke',
 'yourname'                => 'Hero',
 'yourpassword'            => 'Ne remiñemi',
 'yourpasswordagain'       => 'Repita ne remiñemi',
@@ -196,9 +200,6 @@ $messages = array(
 'userlogout'              => 'Sẽ',
 'nologin'                 => "¿Ne'ĩrãpa remohenda nde réra? $1.",
 'nologinlink'             => 'Téra ñemohenda',
-'youremail'               => "Ñe'ẽveve",
-'yourlanguage'            => "Ñe'ẽ:",
-'email'                   => 'Pareha eleytróniko',
 'loginsuccesstitle'       => 'Remoñepyrũ hekopete ne rembiapo',
 'nosuchusershort'         => 'No hay un usuario con el nombre "$1". Compruebe que lo ha escrito correctamente.',
 'mailmypassword'          => "Embou chéve ñe'ẽveve rupive peteĩ temiñemĩ pyahu",
@@ -271,6 +272,9 @@ Aipórõ, eñeha'ãna emboja'o ne rembiapo, vore michĩvévape.'''",
 'mypreferences'     => 'Che mbohoryha',
 'prefs-rc'          => 'Oñemoambue pyahúva',
 'searchresultshead' => 'Jeheka',
+'youremail'         => "Ñe'ẽveve",
+'yourlanguage'      => "Ñe'ẽ:",
+'email'             => 'Pareha eleytróniko',
 
 # User rights
 'userrights-lookup-user'   => 'Configurar grupos de usuarios',
@@ -541,7 +545,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'watchlistedit-raw-removed'   => '$1 páginas han sido borradas:',
 
 # Special:Version
-'version' => "Mba'ereko", # Not used as normal message but as header for the special page itself
+'version' => "Mba'ereko",
 
 # Special:FilePath
 'filepath'        => 'Ruta de archivo',

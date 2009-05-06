@@ -35,7 +35,7 @@ if( function_exists( 'mb_strtoupper' ) ) {
 class FakeConverter {
 	var $mLang;
 	function FakeConverter($langobj) {$this->mLang = $langobj;}
-	function convert($t, $i) {return $t;}
+	function convert($t, $i, $v) {return $t;}
 	function parserConvert($t, $p) {return $t;}
 	function getVariants() { return array( $this->mLang->getCode() ); }
 	function getPreferredVariant() {return $this->mLang->getCode(); }
@@ -46,6 +46,7 @@ class FakeConverter {
 	function convertCategoryKey( $key ) {return $key; }
 	function convertLinkToAllVariants($text){ return array( $this->mLang->getCode() => $text); }
 	function armourMath($text){ return $text; }
+	function groupConvert($group) {return '';}
 }
 
 /**
@@ -1989,7 +1990,19 @@ class Language {
 			$list,
 			wfMsgExt( 'comma-separator', array( 'escapenoentities', 'language' => $this ) ) );
 	}
-	
+
+	/**
+	 * Take a list of strings and build a locale-friendly semicolon-separated
+	 * list, using the local semicolon-separator message.
+	 * @param $list array of strings to put in a semicolon list
+	 * @return string
+	 */
+	function semicolonList( $list ) {
+		return implode(
+			$list,
+			wfMsgExt( 'semicolon-separator', array( 'escapenoentities', 'language' => $this ) ) );
+	}
+
 	/**
 	 * Same as commaList, but separate it with the pipe instead.
 	 * @param $list array of strings to put in a pipe list
@@ -2170,8 +2183,8 @@ class Language {
 	}
 
 	# convert text to different variants of a language.
-	function convert( $text, $isTitle = false) {
-		return $this->mConverter->convert($text, $isTitle);
+	function convert( $text, $isTitle = false, $variant = null ) {
+		return $this->mConverter->convert($text, $isTitle, $variant);
 	}
 
 	# Convert text from within Parser
@@ -2278,6 +2291,16 @@ class Language {
 	function markNoConversion( $text, $noParse=false ) {
 		return $this->mConverter->markNoConversion( $text, $noParse );
 	}
+	
+	/**
+	 * Callback function for magicword 'groupconvert'
+	 *
+	 * @param string $group: the group name called for
+	 * @return blank string
+	 */
+	function groupConvert( $group ) {
+		return $this->mConverter->groupConvert( $group );
+	}
 
 	/**
 	 * A regular expression to match legal word-trailing characters
@@ -2359,6 +2382,8 @@ class Language {
 						return self::$mLocalisationCache[$code]['deps'];
 					}
 				}
+			} else {
+				$cache = false;
 			}
 
 			# Try the global cache

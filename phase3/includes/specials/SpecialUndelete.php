@@ -642,7 +642,7 @@ class UndeleteForm {
 					$this->showList( $result );
 				}
 			} else {
-				$wgOut->addWikiText( wfMsgHtml( 'undelete-header' ) );
+				$wgOut->addWikiMsg( 'undelete-header' );
 			}
 			return;
 		}
@@ -763,7 +763,7 @@ class UndeleteForm {
 					$wgOut->addHTML( '<hr />' );
 				}
 			} else {
-				$wgOut->addHTML( wfMsgHtml( 'undelete-nodiff' ) );
+				$wgOut->addWikiMsg( 'undelete-nodiff' );
 			}
 		}
 
@@ -774,13 +774,16 @@ class UndeleteForm {
 		$t = htmlspecialchars( $wgLang->time( $timestamp, true ) );
 		$user = $skin->revUserTools( $rev );
 
-		$wgOut->addHTML( '<p>' . wfMsgHtml( 'undelete-revision', $link, $time, $user, $d, $t ) . '</p>' );
+		if( $this->mPreview ) {
+			$openDiv = '<div id="mw-undelete-revision" class="mw-warning">';
+		} else {
+			$openDiv = '<div id="mw-undelete-revision">';
+		}
 
+		$wgOut->addHTML( $openDiv . wfMsgWikiHtml( 'undelete-revision', $link, $time, $user, $d, $t ) . '</div>' );
 		wfRunHooks( 'UndeleteShowRevision', array( $this->mTargetObj, $rev ) );
 
 		if( $this->mPreview ) {
-			$wgOut->addHTML( "<hr />\n" );
-
 			//Hide [edit]s
 			$popts = $wgOut->parserOptions();
 			$popts->setEditSection( false );
@@ -830,7 +833,7 @@ class UndeleteForm {
 	 * @return string HTML
 	 */
 	function showDiff( $previousRev, $currentRev ) {
-		global $wgOut, $wgUser;
+		global $wgOut;
 
 		$diffEngine = new DifferenceEngine();
 		$diffEngine->showDiffStyle();
@@ -872,6 +875,22 @@ class UndeleteForm {
 			$targetPage = $rev->getTitle();
 			$targetQuery = 'oldid=' . $rev->getId();
 		}
+		// Add show/hide link if available
+		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+			// If revision was hidden from sysops
+			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
+				$del = ' ' . Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
+					'(' . wfMsgHtml('rev-delundel') . ')' );
+			// Otherwise, show the link...
+			} else {
+				$query = array( 'target' => $this->mTargetObj->getPrefixedDbkey(),
+					'artimestamp' => $rev->getTimestamp() );
+				$del = ' ' . $sk->revDeleteLink( $query,
+					$rev->isDeleted( Revision::DELETED_RESTRICTED ) );
+			}
+		} else {
+			$del = '';
+		}
 		return
 			'<div id="mw-diff-'.$prefix.'title1"><strong>' .
 				$sk->makeLinkObj( $targetPage,
@@ -884,7 +903,7 @@ class UndeleteForm {
 				$sk->revUserTools( $rev ) . '<br/>' .
 			'</div>' .
 			'<div id="mw-diff-'.$prefix.'title3">' .
-				$sk->revComment( $rev ) . '<br/>' .
+				$sk->revComment( $rev ) . $del . '<br/>' .
 			'</div>';
 	}
 
@@ -941,7 +960,7 @@ class UndeleteForm {
 			$wgOut->setPagetitle( wfMsg( 'viewdeletedpage' ) );
 		}
 
-		$wgOut->addWikiText( wfMsgHtml( 'undeletepagetitle', $this->mTargetObj->getPrefixedText()) );
+		$wgOut->addWikiMsg( 'undeletepagetitle', $this->mTargetObj->getPrefixedText() );
 
 		$archive = new PageArchive( $this->mTargetObj );
 		/*
@@ -1139,10 +1158,11 @@ class UndeleteForm {
 		if( $wgUser->isAllowed( 'deleterevision' ) ) {
 			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
 			// If revision was hidden from sysops
-				$revdlink = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.wfMsgHtml('rev-delundel').')' );
+				$revdlink = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
+					'('.wfMsgHtml('rev-delundel').')' );
 			} else {
 				$query = array( 'target' => $this->mTargetObj->getPrefixedUrl(),
-					'artimestamp[]' => $ts
+					'artimestamp' => $ts
 				);
 				$revdlink = $sk->revDeleteLink( $query, $rev->isDeleted( Revision::DELETED_RESTRICTED ) );
 			}

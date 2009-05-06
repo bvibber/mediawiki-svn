@@ -26,9 +26,13 @@ class DeletedContribsPager extends IndexPager {
 	}
 
 	function getQueryInfo() {
+		global $wgUser;
 		list( $index, $userCond ) = $this->getUserCond();
 		$conds = array_merge( $userCond, $this->getNamespaceCond() );
-
+		// Paranoia: avoid brute force searches (bug 17792)
+		if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
+			$conds[] = 'ar_deleted & ' . Revision::DELETED_USER . ' = 0';
+		}
 		return array(
 			'tables' => array( 'archive' ),
 			'fields' => array(
@@ -102,9 +106,8 @@ class DeletedContribsPager extends IndexPager {
 	 * @todo This would probably look a lot nicer in a table.
 	 */
 	function formatRow( $row ) {
+		global $wgUser, $wgLang;
 		wfProfileIn( __METHOD__ );
-
-		global $wgLang, $wgUser;
 
 		$sk = $this->getSkin();
 
@@ -115,7 +118,7 @@ class DeletedContribsPager extends IndexPager {
 				'user_text'  => $row->ar_user_text,
 				'timestamp'  => $row->ar_timestamp,
 				'minor_edit' => $row->ar_minor_edit,
-				'rev_deleted' => $row->ar_deleted,
+				'deleted' => $row->ar_deleted,
 				) );
 
 		$page = Title::makeTitle( $row->ar_namespace, $row->ar_title );
@@ -160,8 +163,23 @@ class DeletedContribsPager extends IndexPager {
 			$mflag = '';
 		}
 
+		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+			// If revision was hidden from sysops
+			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
+				$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
+					'(' . $this->message['rev-delundel'] . ')' ) . ' ';
+			// Otherwise, show the link...
+			} else {
+				$query = array( 'target' => $page->getPrefixedDbkey(),
+					'artimestamp' => $rev->getTimestamp() );
+				$del = $this->mSkin->revDeleteLink( $query,
+					$rev->isDeleted( Revision::DELETED_RESTRICTED ) ) . ' ';
+			}
+		} else {
+			$del = '';
+		}
 
-		$ret = "{$link} ($last) ({$dellog}) ({$reviewlink}) . . {$mflag} {$pagelink} {$comment}";
+		$ret = "{$del}{$link} ({$last}) ({$dellog}) ({$reviewlink}) . . {$mflag} {$pagelink} {$comment}";
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$ret .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
@@ -303,7 +321,7 @@ class DeletedContributionsPage extends SpecialPage {
 			}
 			# Other logs link
 			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ),
-				wfMsgHtml( 'log' ), 'user=' . $nt->getPartialUrl() );
+				wfMsgHtml( 'sp-contributions-logs' ), 'user=' . $nt->getPartialUrl() );
 			# Link to undeleted contributions
 			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $nt->getDBkey() ),
 				wfMsgHtml( 'contributions' ) );
@@ -329,9 +347,9 @@ class DeletedContributionsPage extends SpecialPage {
 	 * @param $options Array: the options to be included.
 	 */
 	function getForm( $options ) {
-		global $wgScript, $wgTitle, $wgRequest;
+		global $wgScript, $wgRequest;
 
-		$options['title'] = $wgTitle->getPrefixedText();
+		$options['title'] = SpecialPage::getTitleFor( 'DeletedContributions' )->getPrefixedText();
 		if ( !isset( $options['target'] ) ) {
 			$options['target'] = '';
 		} else {

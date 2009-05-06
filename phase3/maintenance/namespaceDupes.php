@@ -37,7 +37,7 @@ usage: namespaceDupes.php [--fix] [--suffix=<text>] [--help]
     --prefix=<text> : Do an explicit check for the given title prefix
                       in place of the standard namespace list.
     --verbose       : Display output for checked namespaces without conflicts
-
+    --wiki=<wiki>   : enter the wiki database to edit
 ENDS;
 die;
 }
@@ -115,6 +115,7 @@ class NamespaceConflictChecker {
 	
 	private function getInterwikiList() {
 		$result = $this->db->select( 'interwiki', array( 'iw_prefix' ) );
+		$prefixes = array();
 		while( $row = $this->db->fetchObject( $result ) ) {
 			$prefixes[] = $row->iw_prefix;
 		}

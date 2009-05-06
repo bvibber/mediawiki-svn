@@ -43,12 +43,13 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	private $fld_comment = false, $fld_user = false, $fld_flags = false,
 			$fld_timestamp = false, $fld_title = false, $fld_ids = false,
 			$fld_sizes = false;
-	
+	/**
+	 * Get an array mapping token names to their handler functions.
+	 * The prototype for a token function is func($pageid, $title, $rc)
+	 * it should return a token or false (permission denied)
+	 * @return array(tokenname => function)
+	 */
 	protected function getTokenFunctions() {
-		// tokenname => function
-		// function prototype is func($pageid, $title, $rev)
-		// should return token or false
-
 		// Don't call the hooks twice
 		if(isset($this->tokenFunctions))
 			return $this->tokenFunctions;
@@ -67,7 +68,8 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	public static function getPatrolToken($pageid, $title, $rc)
 	{
 		global $wgUser;
-		if(!$wgUser->useRCPatrol() && !$wgUser->useNPPatrol())
+		if(!$wgUser->useRCPatrol() && (!$wgUser->useNPPatrol() ||
+				 $rc->getAttribute('rc_type') != RC_NEW))
 			return false;
 		
 		// The patrol token is always the same, let's exploit that
@@ -311,7 +313,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$vals['patrolled'] = '';
 			
 		if ($this->fld_loginfo && $row->rc_type == RC_LOG) {
-			$vals['logid'] = $row->rc_logid;
+			$vals['logid'] = intval($row->rc_logid);
 			$vals['logtype'] = $row->rc_log_type;
 			$vals['logaction'] = $row->rc_log_action;
 			ApiQueryLogEvents::addLogParams($this->getResult(),

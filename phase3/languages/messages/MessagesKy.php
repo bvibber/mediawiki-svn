@@ -1,6 +1,9 @@
 <?php
 /** Kirghiz (Кыргызча)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -46,16 +49,18 @@ $messages = array(
 'nov'       => 'Ноя',
 'dec'       => 'Дек',
 
-'about'         => 'Тууралуу',
-'cancel'        => 'Жокко чыгаруу',
+'about'      => 'Тууралуу',
+'cancel'     => 'Жокко чыгаруу',
+'mypage'     => 'Барагым',
+'mytalk'     => 'Маегим',
+'navigation' => 'Багыттоо',
+'and'        => '&#32;жана',
+
+# Cologne Blue skin
 'qbedit'        => 'Оңдоо',
 'qbpageoptions' => 'Бул барак',
 'qbpageinfo'    => 'Контекст',
 'qbmyoptions'   => 'Барактарым',
-'mypage'        => 'Барагым',
-'mytalk'        => 'Маегим',
-'navigation'    => 'Багыттоо',
-'and'           => '&#32;жана',
 
 'errorpagetitle'   => 'Жаңылыш',
 'tagline'          => '{{SITENAME}} дан',
@@ -126,13 +131,6 @@ $messages = array(
 'logout'             => 'Чыгуу',
 'userlogout'         => 'Чыгуу',
 'createaccountmail'  => 'Электрондук дарек боюнча',
-'youremail'          => 'Электрондук почта:',
-'username'           => 'Колдонуучунун аты:',
-'uid'                => 'Колдонуучунун ID си:',
-'yourrealname'       => 'Анык атыңыз:',
-'yourlanguage'       => 'Тил:',
-'yourvariant'        => 'Вариант:',
-'yournick'           => 'Такма атыңыз:',
 'wrongpassword'      => 'Ката сырсөз киргизилди. Кайтадан аракет кылып көрүңүз.',
 'wrongpasswordempty' => 'Сырсөз киргизилген жок. Кайтадан аракет кылып көрүңүз.',
 'mailmypassword'     => 'Сырсөздү электрондук дарегиме жибер',
@@ -167,18 +165,24 @@ $messages = array(
 'powersearch' => 'Издөө',
 
 # Preferences page
-'preferences'        => 'Түзөө',
-'changepassword'     => 'Сырсөздү өзгөртүү',
-'dateformat'         => 'Датанын форматы',
-'datetime'           => 'Дата жана убакыт',
-'math_unknown_error' => 'белгисиз ката',
-'prefs-rc'           => 'Соңку өзгөрүүлөр',
-'prefs-watchlist'    => 'Байкоо тизме',
-'saveprefs'          => 'Сактап кой',
-'textboxsize'        => 'Оңдоо',
-'searchresultshead'  => 'Издөө',
-'localtime'          => 'Жергиликтүү убакыт',
-'files'              => 'Файлдар',
+'preferences'       => 'Түзөө',
+'changepassword'    => 'Сырсөздү өзгөртүү',
+'dateformat'        => 'Датанын форматы',
+'prefs-datetime'    => 'Дата жана убакыт',
+'prefs-rc'          => 'Соңку өзгөрүүлөр',
+'prefs-watchlist'   => 'Байкоо тизме',
+'saveprefs'         => 'Сактап кой',
+'prefs-editing'     => 'Оңдоо',
+'searchresultshead' => 'Издөө',
+'localtime'         => 'Жергиликтүү убакыт',
+'prefs-files'       => 'Файлдар',
+'youremail'         => 'Электрондук почта:',
+'username'          => 'Колдонуучунун аты:',
+'uid'               => 'Колдонуучунун ID си:',
+'yourrealname'      => 'Анык атыңыз:',
+'yourlanguage'      => 'Тил:',
+'yourvariant'       => 'Вариант:',
+'yournick'          => 'Такма атыңыз:',
 
 # Groups
 'group'            => 'Топ:',
@@ -301,6 +305,9 @@ $messages = array(
 # Attribution
 'others' => 'башкалар',
 
+# Math errors
+'math_unknown_error' => 'белгисиз ката',
+
 # Browsing diffs
 'nextdiff' => 'Кийинки айырма →',
 
@@ -327,7 +334,7 @@ $messages = array(
 'confirmemail_loggedin' => 'Электрондук дарегиңиз ырасталды.',
 
 # Special:Version
-'version' => 'Версия', # Not used as normal message but as header for the special page itself
+'version' => 'Версия',
 
 # Special:SpecialPages
 'specialpages' => 'Атайын барактар',

@@ -76,6 +76,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 				$this->dieUsage('user and excludeuser cannot be used together', 'badparams');
 
 		$this->addTables('archive');
+		$this->addWhere('ar_deleted = 0');
 		$this->addFields(array('ar_title', 'ar_namespace', 'ar_timestamp'));
 		if($fld_revid)
 			$this->addFields('ar_rev_id');
@@ -138,16 +139,20 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 				$this->getDB()->addQuotes($params['excludeuser']));
 		}
 		
-		if(!is_null($params['continue']) && $mode == 'all')
+		if(!is_null($params['continue']) && ($mode == 'all' || $mode == 'revs'))
 		{
 			$cont = explode('|', $params['continue']);
-			if(count($cont) != 2)
+			if(count($cont) != 3)
 				$this->dieUsage("Invalid continue param. You should pass the original value returned by the previous query", "badcontinue");
-			$title = $this->getDB()->strencode($this->titleToKey($cont[0]));
-			$ts = $this->getDB()->strencode($cont[1]);
-			$this->addWhere("ar_title > '$title' OR " .
+			$ns = intval($cont[0]);
+			$title = $this->getDB()->strencode($this->titleToKey($cont[1]));
+			$ts = $this->getDB()->strencode($cont[2]);
+			$op = ($params['dir'] == 'newer' ? '>' : '<');
+			$this->addWhere("ar_namespace $op $ns OR " .
+					"(ar_namespace = $ns AND " .
+					"(ar_title $op '$title' OR " .
 					"(ar_title = '$title' AND " .
-					"ar_timestamp >= '$ts')");
+					"ar_timestamp = '$ts')))");
 		}
 
 		$this->addOption('LIMIT', $limit + 1);
@@ -181,9 +186,9 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			if(++$count > $limit)
 			{
 				// We've had enough
-				if($mode == 'all')
-					$this->setContinueEnumParameter('continue', $this->keyToTitle($row->ar_title) . '|' .
-						$row->ar_timestamp);
+				if($mode == 'all' || $mode == 'revs')
+					$this->setContinueEnumParameter('continue', intval($row->ar_namespace) . '|' .
+						$this->keyToTitle($row->ar_title) . '|' . $row->ar_timestamp);
 				else
 					$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->ar_timestamp));
 				break;
@@ -192,7 +197,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			$rev = array();
 			$rev['timestamp'] = wfTimestamp(TS_ISO_8601, $row->ar_timestamp);
 			if($fld_revid)
-				$rev['revid'] = $row->ar_rev_id;
+				$rev['revid'] = intval($row->ar_rev_id);
 			if($fld_user)
 				$rev['user'] = $row->ar_user_text;
 			if($fld_comment)
@@ -210,12 +215,9 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 				$pageID = $newPageID++;
 				$pageMap[$row->ar_namespace][$row->ar_title] = $pageID;
 				$t = Title::makeTitle($row->ar_namespace, $row->ar_title);
-				$a = array(
-					'title' => $t->getPrefixedText(),
-					'ns' => intval($row->ar_namespace),
-					'revisions' => array($rev)
-				);
+				$a['revisions'] = array($rev);
 				$result->setIndexedTagName($a['revisions'], 'rev');
+				ApiQueryBase::addTitleInfo($a, $t);
 				if($fld_token)
 					$a['token'] = $token;
 				$fit = $result->addValue(array('query', $this->getModuleName()), $pageID, $a);
@@ -229,9 +231,9 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			}
 			if(!$fit)
 			{
-				if($mode == 'all')
-					$this->setContinueEnumParameter('continue', $this->keyToTitle($row->ar_title) . '|' .
-						$row->ar_timestamp);
+				if($mode == 'all' || $mode == 'revs')
+					$this->setContinueEnumParameter('continue', intval($row->ar_namespace) . '|' .
+						$this->keyToTitle($row->ar_title) . '|' . $row->ar_timestamp);
 				else
 					$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->ar_timestamp));
 				break;

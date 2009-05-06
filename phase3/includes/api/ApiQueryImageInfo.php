@@ -108,7 +108,6 @@ class ApiQueryImageInfo extends ApiQueryBase {
 	 * @return array Result array
 	 */
 	static function getInfo($file, $prop, $result, $scale = null) {		
-		wfDebug("\n\ngetInfo\n\n");
 		$vals = array();
 		if( isset( $prop['timestamp'] ) )
 			$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $file->getTimestamp());
@@ -128,8 +127,8 @@ class ApiQueryImageInfo extends ApiQueryBase {
 				if( $mto && !$mto->isError() )
 				{
 					$vals['thumburl'] = $mto->getUrl();
-					$vals['thumbwidth'] = $mto->getWidth();
-					$vals['thumbheight'] = $mto->getHeight();
+					$vals['thumbwidth'] = intval( $mto->getWidth() );
+					$vals['thumbheight'] = intval( $mto->getHeight() );
 				}
 			}
 			$vals['url'] = $file->getFullURL();
@@ -141,8 +140,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			$vals['sha1'] = wfBaseConvert( $file->getSha1(), 36, 16, 40 );
 		if( isset( $prop['metadata'] ) ) {
 			$metadata = $file->getMetadata();
-			$vals['metadata'] = $metadata ? unserialize( $metadata ) : null;
-			$result->setIndexedTagName_recursive( $vals['metadata'], 'meta' );
+			$vals['metadata'] = $metadata ? self::processMetaData( unserialize( $metadata ), $result ) : null;
 		}
 		if( isset( $prop['mime'] ) ) 
 			$vals['mime'] = $file->getMimeType();
@@ -151,13 +149,32 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			$vals['archivename'] = $file->getArchiveName();
 			
 		if( isset( $prop['bitdepth'] ) )
-			$vals['bitdepth'] = $file->getBitDepth();
-		
-		wfDebug("\n\done with image getINfo" . print_r($vals) . "\n\n");
+			$vals['bitdepth'] = $file->getBitDepth();				
 		
 		return $vals;
 	}
-
+	public static function processMetaData($metadata, $result)
+	{
+		$retval = array();
+		if ( is_array( $metadata ) ) {
+			foreach($metadata as $key => $value)
+			{
+				$r = array('name' => $key);
+				if(is_array($value))
+					$r['value'] = self::processMetaData($value, $result);
+				else
+					$r['value'] = $value;
+				$retval[] = $r;
+			}
+		}
+		$result->setIndexedTagName($retval, 'metadata');
+		return $retval;
+	}
+	private function getContinueStr($img)
+	{
+		return $img->getOriginalTitle()->getText() .
+			'|' .  $img->getTimestamp();
+	}
 	public function getAllowedParams() {
 		return array (
 			'prop' => array (
@@ -196,7 +213,8 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			'urlheight' => array(
 				ApiBase :: PARAM_TYPE => 'integer',
 				ApiBase :: PARAM_DFLT => -1
-			)
+			),
+			'continue' => null,
 		);
 	}
 
@@ -209,6 +227,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			'urlwidth' => array('If iiprop=url is set, a URL to an image scaled to this width will be returned.',
 					    'Only the current version of the image can be scaled.'),
 			'urlheight' => 'Similar to iiurlwidth. Cannot be used without iiurlwidth',
+			'continue' => 'When more results are available, use this to continue',
 		);
 	}
 
@@ -220,8 +239,8 @@ class ApiQueryImageInfo extends ApiQueryBase {
 
 	protected function getExamples() {
 		return array (
-			'api.php?action=query&titles=Image:Albert%20Einstein%20Head.jpg&prop=imageinfo',
-			'api.php?action=query&titles=Image:Test.jpg&prop=imageinfo&iilimit=50&iiend=20071231235959&iiprop=timestamp|user|url',
+			'api.php?action=query&titles=File:Albert%20Einstein%20Head.jpg&prop=imageinfo',
+			'api.php?action=query&titles=File:Test.jpg&prop=imageinfo&iilimit=50&iiend=20071231235959&iiprop=timestamp|user|url',
 		);
 	}
 

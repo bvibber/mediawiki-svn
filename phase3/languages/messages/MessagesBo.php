@@ -1,6 +1,9 @@
 <?php
 /** Tibetan (བོད་ཡིག)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -75,12 +78,14 @@ $messages = array(
 # Categories related messages
 'subcategories' => 'རིགས་ཕལ་བ།',
 
-'about'          => 'ཨཱབོཨུཏ་',
-'cancel'         => 'དོར་བ།',
+'about'      => 'ཨཱབོཨུཏ་',
+'cancel'     => 'དོར་བ།',
+'mytalk'     => 'ངའི་གླེང་མོལ།',
+'navigation' => 'དཀར་ཆག',
+
+# Cologne Blue skin
 'qbedit'         => 'རྩོམ་སྒྲིག',
 'qbspecialpages' => 'དམིཊ་བསལ་གྱི་བཟོ་བཅོས།',
-'mytalk'         => 'ངའི་གླེང་མོལ།',
-'navigation'     => 'དཀར་ཆག',
 
 'help'             => 'རོགས་རམ།',
 'search'           => 'འཚོལ།',
@@ -132,9 +137,6 @@ $messages = array(
 'nologinlink'        => 'ཐོ་ཞིག་འགོད་པ།',
 'createaccount'      => 'ཐོ་འགོད།',
 'gotaccountlink'     => 'ནང་འཛུལ།',
-'youremail'          => 'དྲ་འཕྲིན། *:',
-'username'           => 'དྲ་མིང་།:',
-'email'              => 'དྲ་འཕྲིན།',
 
 # Edit pages
 'summary'      => 'བསྡུས་དོན།:',
@@ -158,6 +160,9 @@ $messages = array(
 'prefsnologin'      => 'ནང་འཛུལ་བྱས་མེད།',
 'prefs-rc'          => 'ཉེ་བའི་བཟོ་བཅོས།',
 'searchresultshead' => 'འཚོལ།',
+'youremail'         => 'དྲ་འཕྲིན། *:',
+'username'          => 'དྲ་མིང་།:',
+'email'             => 'དྲ་འཕྲིན།',
 
 # Recent changes
 'recentchanges'   => 'ཉེ་བའི་བཟོ་བཅོས།',

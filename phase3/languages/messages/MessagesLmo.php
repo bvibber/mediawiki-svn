@@ -1,6 +1,9 @@
 <?php
 /** Lumbaart (Lumbaart)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -88,13 +91,16 @@ süi titul dai sezziún (JavaScript)',
 'category_header' => 'Vus in de la categuria "$1"',
 'subcategories'   => 'Sót-categurii',
 
-'about'          => 'A pruposit də',
-'newwindow'      => "(sa derviss in un'óltra finèstra)",
-'cancel'         => 'Lassa perd',
+'about'      => 'A pruposit də',
+'newwindow'  => "(sa derviss in un'óltra finèstra)",
+'cancel'     => 'Lassa perd',
+'mytalk'     => 'i mè discüssiun',
+'navigation' => 'Navegá',
+
+# Cologne Blue skin
 'qbedit'         => 'Redatá',
 'qbspecialpages' => 'Pagin specjaal',
-'mytalk'         => 'i mè discüssiun',
-'navigation'     => 'Navegá',
+'faq'            => 'FAQ - Fera Ai Question',
 
 'returnto'         => 'Turna indré a $1.',
 'help'             => 'Pàgin da jütt',
@@ -131,7 +137,6 @@ süi titul dai sezziún (JavaScript)',
 'currentevents-url'    => 'Project:Avenimeent Receent',
 'disclaimers'          => 'Esclüsiun da respunsabilitaa',
 'edithelp'             => 'Jütt',
-'faq'                  => 'FAQ - Fera Ai Question',
 'helppage'             => 'Help:Contegnüü',
 'mainpage'             => 'Pagina principala',
 'mainpage-description' => 'Pagina principala',
@@ -190,13 +195,6 @@ Ul tò permèss d'entrava l è prunt. Dismentéga mia de mudifigá i prefereenz 
 'nologinlink'             => 'Creé un cünt!',
 'createaccount'           => 'Creá un cünt',
 'createaccountmail'       => 'par adressa da cureel (e-mail)',
-'youremail'               => 'E-mail',
-'username'                => 'Nomm registraa:',
-'yourrealname'            => 'Nomm:',
-'yourlanguage'            => 'Lengua:',
-'yournick'                => 'Suranomm:',
-'email'                   => 'Indirizz de pòsta elettrònica.',
-'prefs-help-email'        => 'Courriel (e-mail) al é mia obligatòri, però al permet da va mandar una nœuva ciav se cas che va la desmenteghé. A podé apó scernir da lassar i olt dovracc entrar en contat con violt senza da busogn da svelar la vosta identitaa.',
 'noname'                  => "Vüü avii mía specificaa un nomm d'üsüari valévul.",
 'loginsuccesstitle'       => "La cunessiun l'è scumenzada cun sücess.",
 'loginsuccess'            => 'Te set cuness a {{SITENAME}} cume "$1".',
@@ -267,17 +265,17 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'preferences'        => 'Prefereenz',
 'mypreferences'      => 'i mè prefereenz',
 'changepassword'     => "Mudifega la paròla d'urdin",
-'skin'               => "Aspett de l'interfacia",
-'math'               => 'Matem',
+'prefs-skin'         => "Aspett de l'interfacia",
+'prefs-math'         => 'Matem',
 'dateformat'         => 'Furmaa da la data',
 'datedefault'        => 'Nissüna preferenza',
-'datetime'           => 'Data e urari',
+'prefs-datetime'     => 'Data e urari',
 'prefs-personal'     => 'Carateristich dal druvat',
 'prefs-rc'           => 'Cambiameent reçeent',
 'prefs-misc'         => 'Vari',
 'saveprefs'          => 'Tegn i mudifech',
 'resetprefs'         => 'Trá via i mudifech',
-'textboxsize'        => 'Mudifich',
+'prefs-editing'      => 'Mudifich',
 'rows'               => 'Riich:',
 'columns'            => 'Culònn:',
 'searchresultshead'  => 'Cerca',
@@ -287,14 +285,20 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'recentchangescount' => 'Titui in di "cambiameent reçeent":',
 'savedprefs'         => 'I prefereenz in stai salvaa.',
 'timezonelegend'     => 'Lucalitaa',
-'timezonetext'       => 'I uur da diferenza tra l urari lucaal e chél dal sèrver (UTC).',
 'localtime'          => 'Urari lucaal',
 'timezoneoffset'     => 'Diferenza¹',
 'servertime'         => 'Urari dal sèrver',
 'guesstimezone'      => 'Catá l urari dal sèrver',
 'allowemail'         => 'Permètt ai altar üteent də cuntatamm par email',
 'defaultns'          => 'Tröva sempar in di caamp:',
-'files'              => 'Archivi',
+'prefs-files'        => 'Archivi',
+'youremail'          => 'E-mail',
+'username'           => 'Nomm registraa:',
+'yourrealname'       => 'Nomm:',
+'yourlanguage'       => 'Lengua:',
+'yournick'           => 'Suranomm:',
+'email'              => 'Indirizz de pòsta elettrònica.',
+'prefs-help-email'   => 'Courriel (e-mail) al é mia obligatòri, però al permet da va mandar una nœuva ciav se cas che va la desmenteghé. A podé apó scernir da lassar i olt dovracc entrar en contat con violt senza da busogn da svelar la vosta identitaa.',
 
 # User rights
 'userrights-lookup-user'   => 'Gestione dei gruppi utente',
@@ -498,6 +502,9 @@ L'ültima redatazziún l eva da [[User:$3|$3]] ([[User talk:$3|Discüssiún]])."
 'mycontris'     => 'I mè interveent',
 'uctop'         => '(ültima per la pagina)',
 
+'sp-contributions-deleted' => 'Cuntribüziun scancelaa',
+'sp-contributions-talk'    => 'ciciarada',
+
 # What links here
 'whatlinkshere' => 'Pagin che se culeghen chì',
 
@@ -523,7 +530,7 @@ Cheest-chí al pöö vess un canbi dràstegh e inaspetaa par una pàgina pupüla
 'newtitle'        => 'Titul növ:',
 'move-watch'      => "Gionta quela pagina chì ai paginn che te tegn d'ögg.",
 'pagemovedsub'    => "San Martin l'è bele fat!",
-'movepage-moved'  => "<big>'''\"\$1\" l'è staa muvüü a \"\$2\"'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'  => "<big>'''\"\$1\" l'è staa muvüü a \"\$2\"'''</big>",
 'movedto'         => 'spustaa vers:',
 '1movedto2'       => '[[$1]] spustaa in [[$2]]',
 '1movedto2_redir' => '[[$1]] spustaa in [[$2]] atravèerz re-indirizzameent',
@@ -604,7 +611,7 @@ Te riçevaree un mesacc cun deent un ligamm specjal; ti duvaree clicaa sül liga
 'autosumm-blank' => 'Pagina svujada',
 
 # Special:Version
-'version' => 'Versiun', # Not used as normal message but as header for the special page itself
+'version' => 'Versiun',
 
 # Special:FilePath
 'filepath' => 'Percuurz daj archivi',

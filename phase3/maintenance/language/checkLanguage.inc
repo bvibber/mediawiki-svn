@@ -24,7 +24,7 @@ class CheckLanguageCLI {
 	public function __construct( Array $options ) {
 		if ( isset( $options['help'] ) ) {
 			echo $this->help();
-			exit();
+			exit(1);
 		}
 
 		if ( isset( $options['lang'] ) ) {
@@ -418,7 +418,7 @@ ENDS;
 
 		$tableRows = implode( "\n|-\n", $rows );
 
-		$version = SpecialVersion::getVersion( $IP );
+		$version = SpecialVersion::getVersion( 'nodb' );
 		echo <<<EOL
 '''Check results are for:''' <code>$version</code>
 
@@ -459,7 +459,7 @@ class CheckExtensionsCLI extends CheckLanguageCLI {
 	public function __construct( Array $options, $extension ) {
 		if ( isset( $options['help'] ) ) {
 			echo $this->help();
-			exit();
+			exit(1);
 		}
 
 		if ( isset( $options['lang'] ) ) {

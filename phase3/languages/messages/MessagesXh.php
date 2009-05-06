@@ -1,6 +1,9 @@
 <?php
 /** Xhosa (isiXhosa)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -42,10 +45,12 @@ $messages = array(
 'december-gen'  => 'Eyo Mnga',
 'may'           => 'EkaCanzibe',
 
-'article'        => 'Inqaku',
+'article' => 'Inqaku',
+'mypage'  => 'Inqaku yam',
+'mytalk'  => 'Inthetho yam',
+
+# Cologne Blue skin
 'qbspecialpages' => 'Amaphepha Abalulekileyo',
-'mypage'         => 'Inqaku yam',
-'mytalk'         => 'Inthetho yam',
 
 'help'             => 'Uncedo',
 'search'           => 'Khangela',
@@ -85,7 +90,6 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 'yourpasswordagain'  => 'Faka kwakhona igama elifihlakeleyo:',
 'remembermypassword' => 'Khumbula igama lam elifihlakeleyo kule Khompyutha',
 'createaccount'      => 'Vula I Account',
-'username'           => 'Igama lelungu:',
 'loginlanguagelabel' => 'Ulwimi: $1',
 
 # Edit pages
@@ -102,6 +106,7 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 # Preferences page
 'mypreferences'     => 'Ezithandwa ndim',
 'searchresultshead' => 'Khangela',
+'username'          => 'Igama lelungu:',
 
 # Recent changes
 'recentchanges'   => 'Utshitsho olusandokwenziwa',
@@ -136,6 +141,7 @@ I Account yakhgo ivuliwe, ungalibali ukutshitsha izinto ozithandayo ngo {{SITENA
 'contributions' => 'Imisebenzi ye lungu',
 'mycontris'     => 'Inkxaso yam',
 
+'sp-contributions-talk'   => 'Inthetho',
 'sp-contributions-submit' => 'Khangela',
 
 # Block/unblock

@@ -12,6 +12,7 @@ if ( count( $args ) < 1 ) {
 }
 $tracker = new TrackBlobs( $args );
 $tracker->run();
+echo "All done.\n";
 
 class TrackBlobs {
 	var $clusters, $textClause;
@@ -263,6 +264,10 @@ class TrackBlobs {
 			if ( is_null( $table ) ) {
 				$table = 'blobs';
 			}
+			if ( !$extDB->tableExists( $table ) ) {
+				echo "No blobs table on cluster $cluster\n";
+				continue;
+			}
 			$startId = 0;
 			$batchesDone = 0;
 			$actualBlobs = gmp_init( 0 );
@@ -300,6 +305,7 @@ class TrackBlobs {
 			// Traverse the orphan list
 			$insertBatch = array();
 			$id = 0;
+			$numOrphans = 0;
 			while ( true ) {
 				$id = gmp_scan1( $orphans, $id );
 				if ( $id == -1 ) {
@@ -309,12 +315,18 @@ class TrackBlobs {
 					'bo_cluster' => $cluster,
 					'bo_blob_id' => $id
 				);
-				++$id;
-			}
+				if ( count( $insertBatch ) > $this->batchSize ) {
+					$dbw->insert( 'blob_orphans', $insertBatch, __METHOD__ );
+					$insertBatch = array();
+				}
 
-			// Insert the batch
-			echo "Found " . count( $insertBatch ) . " orphan(s) in $cluster\n";
-			$dbw->insert( 'blob_orphans', $insertBatch, __METHOD__ );
+				++$id;
+				++$numOrphans;
+			}
+			if ( $insertBatch ) {
+				$dbw->insert( 'blob_orphans', $insertBatch, __METHOD__ );
+			}
+			echo "Found $numOrphans orphan(s) in $cluster\n";
 		}
 	}
 }

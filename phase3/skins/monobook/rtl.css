@@ -211,7 +211,6 @@ input#wpSave, input#wpDiff {
 }
 
 #userlogin {
-	float: right;
 	margin: 0 0 1em 3em;
 }
 /* Convenience links to edit block, delete and protect reasons */
@@ -240,6 +239,11 @@ html > body div#bodyContent ul {
 html > body div#bodyContent ul#filetoc {
 	display: block;
 }
+
+/* Special:Allpages styling */
+td.mw-allpages-nav, p.mw-allpages-nav, td.mw-allpages-alphaindexline {
+	text-align: left;
+
 /* Special:Prefixindex styling */
 td#mw-prefixindex-nav-form  {
 	text-align: left;

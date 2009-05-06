@@ -38,7 +38,6 @@ class ApiProtect extends ApiBase {
 
 	public function execute() {
 		global $wgUser, $wgRestrictionTypes, $wgRestrictionLevels;
-		$this->getMain()->requestWriteMode();
 		$params = $this->extractRequestParams();
 
 		$titleObj = NULL;
@@ -59,7 +58,7 @@ class ApiProtect extends ApiBase {
 		$errors = $titleObj->getUserPermissionsErrors('protect', $wgUser);
 		if($errors)
 			// We don't care about multiple errors, just report one of them
-			$this->dieUsageMsg(current($errors));
+			$this->dieUsageMsg(reset($errors));
 
 		$expiry = (array)$params['expiry'];
 		if(count($expiry) != count($params['protections']))
@@ -126,6 +125,10 @@ class ApiProtect extends ApiBase {
 	}
 
 	public function mustBePosted() { return true; }
+
+	public function isWriteMode() {
+		return true;
+	}
 
 	public function getAllowedParams() {
 		return array (

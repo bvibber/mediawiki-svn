@@ -173,7 +173,12 @@ class ForeignAPIRepo extends FileRepo {
 			$status = Http::doDownload( $foreignUrl, 
 				$wgUploadDirectory . '/' . $path . $fileName,
 				Http::SYNC_DOWNLOAD //need to download right away
-			);						
+			);			
+			if( !$status->OK() ){
+				wfDebug( __METHOD__ . " could not write to thumb path: error:" .
+					$status->getWikiText() . "\n" );
+				return $foreignUrl;
+			}
 			# FIXME: Delete old thumbs that aren't being used. Maintenance script?			
 			$wgMemc->set( $key, $localUrl, $this->apiThumbCacheExpiry );
 			wfDebug( __METHOD__ . " got local thumb $localUrl, saving to cache \n" );

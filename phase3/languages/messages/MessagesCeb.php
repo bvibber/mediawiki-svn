@@ -1,6 +1,9 @@
 <?php
 /** Cebuano (Cebuano)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -145,7 +148,7 @@ $messages = array(
 'category-media-header'         => 'Medya sa kategoriyang "$1"',
 'category-empty'                => "''Kini nga kategoriya kasamtangang way sulod nga mga panid ug mga medya.''",
 'hidden-categories'             => '{{PLURAL:$1|Nakatagong kategoriya|Mga nakatagong kategoriya}}',
-'hidden-category-category'      => 'Mga nakatagong kategoriya', # Name of the category where hidden categories will be listed
+'hidden-category-category'      => 'Mga nakatagong kategoriya',
 'category-subcat-count'         => '{{PLURAL:$2|Kini nga kategoriya may usa lamang ka subkategoriya.|Kini nga kategoriya may {{PLURAL:$1|subkategoriya|$1 ka mga subkategorya}}, sa total nga $2.}}',
 'category-subcat-count-limited' => 'Kini nga kategoriya adunay {{PLURAL:$1|ka subkategorya|$1 ka mga subkategoriya}}.',
 'category-article-count'        => '{{PLURAL:$2|Kini nga kategoriya may usa lang ka panid.|Ang kining {{PLURAL:$1|ka panid|$1 ka mga panid}} nahiapil niining kategoryaha, sa $2 nga total.}}',
@@ -159,20 +162,22 @@ $messages = array(
 * [http://www.mediawiki.org/wiki/Manual:FAQ FAQ sa MediaWiki]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce  Mailing list sa mga release sa MediaWiki]',
 
-'about'          => 'Mahitungod',
-'newwindow'      => "(maabli sa laing ''window'')",
-'cancel'         => 'I-way bili',
+'about'         => 'Mahitungod',
+'newwindow'     => "(maabli sa laing ''window'')",
+'cancel'        => 'I-way bili',
+'moredotdotdot' => 'Dugang pa...',
+'mypage'        => 'Akong panid',
+'mytalk'        => 'Akong hisgot',
+'anontalk'      => 'Panghisgot-hisgot alang niining IP',
+'navigation'    => 'Tabok-tabok',
+'and'           => '&#32;ug',
+
+# Cologne Blue skin
 'qbfind'         => 'Pangitaa',
 'qbedit'         => 'Usba',
 'qbpageoptions'  => 'Kini nga panid',
 'qbmyoptions'    => 'Akong mga panid',
 'qbspecialpages' => 'Mga espesyal nga panid',
-'moredotdotdot'  => 'Dugang pa...',
-'mypage'         => 'Akong panid',
-'mytalk'         => 'Akong hisgot',
-'anontalk'       => 'Panghisgot-hisgot alang niining IP',
-'navigation'     => 'Tabok-tabok',
-'and'            => '&#32;ug',
 
 'returnto'          => 'Balik sa $1.',
 'tagline'           => 'Gikan sa {{SITENAME}}',
@@ -217,7 +222,7 @@ $messages = array(
 'otherlanguages'    => 'Sa ubang pinulongan',
 'redirectedfrom'    => '(Naredirek gikan sa $1)',
 'redirectpagesub'   => 'Panid sa redirekta',
-'lastmodifiedat'    => 'Kini nga panid kataposang giusab niadtong $2, $1.', # $1 date, $2 time
+'lastmodifiedat'    => 'Kini nga panid kataposang giusab niadtong $2, $1.',
 'viewcount'         => 'Naablihan na sa {{PLURAL:$1|maka-usa|$1 ka higayon}} ang kining panid.',
 'protectedpage'     => 'Giprotektahang panid',
 'jumpto'            => 'Ambak sa:',
@@ -287,9 +292,6 @@ Ang lista sa mga balidong espesyal nga mga panid makita sa [[Special:SpecialPage
 
 # General errors
 'error'               => 'Sayop',
-'noconnect'           => "Pasayloa, adunay problemang teknikal sa karon ang kini nga wiki, ug dili makakontak sa serber sa ''database''.<br />
-$1",
-'cachederror'         => "Ang mosunod usa ka gi-''cache'' nga kopya sa gihangyong panid, ug mahimong karaan na.",
 'laggedslavemode'     => 'Pahibalo: Mahimong dili mahiapil sa panid ang mga bag-ong kausaban.',
 'readonly'            => 'Gitrangkahan ang database',
 'internalerror'       => 'Internal nga sayop',
@@ -305,11 +307,9 @@ Basin aduna kini usa o daghan pang mga karakter nga dili magamit isip titulo.',
 'ns-specialprotected' => 'Ang mga espesyal nga panid dili mausban.',
 
 # Login and logout pages
-'logouttitle'             => 'Pagbiya sa tiggamit',
 'welcomecreation'         => '== Maayong pag-abot, $1! ==
 Nahimo na ang imong akawnt.
 Ayaw kalimot sa pag-usab sa imong [[Special:Preferences|{{SITENAME}} mga preperensiya]].',
-'loginpagetitle'          => 'Pagdayon sa tiggamit',
 'yourname'                => 'Ngalan sa tiggamit:',
 'remembermypassword'      => 'Hinumdomi ako niini nga kompyuter',
 'login'                   => 'Sulod',
@@ -413,7 +413,7 @@ Ang mga panid sa [[Special:Watchlist|imong gibantayan]] '''nakalugom'''.",
 'filehist-comment'  => 'Komento',
 'imagelinks'        => 'Mga sumpay',
 'linkstoimage'      => 'Ang mosunod nga {{PLURAL:$1|mga panid misumpay|$1 panid misumpay}} niining payl:',
-'sharedupload'      => 'Ang kining payl usa ka shared upload ug mahimong gigamit sa ubang mga proyekto. $2', # $1 is the repo name, $2 is shareduploadwiki(-desc)
+'sharedupload'      => 'Ang kining payl usa ka shared upload ug mahimong gigamit sa ubang mga proyekto.',
 
 # Random page
 'randompage' => 'Bisan unsang panid',
@@ -452,6 +452,8 @@ Ang mga panid sa [[Special:Watchlist|imong gibantayan]] '''nakalugom'''.",
 # Contributions
 'contributions' => 'Mga tampo ning gumagamit',
 'mycontris'     => 'Akong tampo',
+
+'sp-contributions-talk' => 'Hisgot',
 
 # What links here
 'whatlinkshere'       => 'Unsay mga misumpay dinhi',

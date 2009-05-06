@@ -72,6 +72,54 @@ if ( !function_exists( 'mb_strlen' ) ) {
 	}
 }
 
+
+if( !function_exists( 'mb_strpos' ) ) {
+	/**
+	 * Fallback implementation of mb_strpos, hardcoded to UTF-8.
+	 * @param string $haystack
+	 * @param string $needle
+	 * @param string $offset optional start position
+	 * @param string $encoding optional encoding; ignored
+	 * @return int
+	 */
+	function mb_strpos( $haystack, $needle, $offset = 0, $encoding="" ) {
+		$needle = preg_quote( $needle, '/' );
+
+		$ar = array();
+		preg_match( '/'.$needle.'/u', $haystack, $ar, PREG_OFFSET_CAPTURE, $offset );
+
+		if( isset( $ar[0][1] ) ) {
+			return $ar[0][1];
+		} else {
+			return false;
+		}
+	}
+}
+
+if( !function_exists( 'mb_strrpos' ) ) {
+	/**
+	 * Fallback implementation of mb_strrpos, hardcoded to UTF-8.
+	 * @param string $haystack
+	 * @param string $needle
+	 * @param string $offset optional start position
+	 * @param string $encoding optional encoding; ignored
+	 * @return int
+	 */
+	function mb_strrpos( $haystack, $needle, $offset = 0, $encoding = "" ) {
+		$needle = preg_quote( $needle, '/' );
+
+		$ar = array();
+		preg_match_all( '/'.$needle.'/u', $haystack, $ar, PREG_OFFSET_CAPTURE, $offset );
+
+		if( isset( $ar[0] ) && count( $ar[0] ) > 0 && 
+		    isset( $ar[0][count($ar[0])-1][1] ) ) {
+			return $ar[0][count($ar[0])-1][1];
+		} else {
+			return false;
+		} 
+	}
+}
+
 if ( !function_exists( 'array_diff_key' ) ) {
 	/**
 	 * Exists in PHP 5.1.0+
@@ -558,7 +606,7 @@ function wfMsgNoDBForContent( $key ) {
  * @param $forContent Boolean
  * @return String: the requested message.
  */
-function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = true ) {
+function wfMsgReal( $key, $args, $useDB = true, $forContent = false, $transform = true ) {
 	wfProfileIn( __METHOD__ );
 	$message = wfMsgGetKey( $key, $useDB, $forContent, $transform );
 	$message = wfMsgReplaceArgs( $message, $args );
@@ -570,7 +618,7 @@ function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = 
  * This function provides the message source for messages to be edited which are *not* stored in the database.
  * @param $key String:
  */
-function wfMsgWeirdKey ( $key ) {
+function wfMsgWeirdKey( $key ) {
 	$source = wfMsgGetKey( $key, false, true, false );
 	if ( wfEmptyMsg( $key, $source ) )
 		return "";
@@ -875,18 +923,35 @@ function wfHostname() {
  * murky circumstances, which may be triggered in part by stub objects
  * or other fancy talkin'.
  *
- * Will return an empty array if Zend Optimizer is detected, otherwise
- * the output from debug_backtrace() (trimmed).
+ * Will return an empty array if Zend Optimizer is detected or if
+ * debug_backtrace is disabled, otherwise the output from
+ * debug_backtrace() (trimmed).
  *
  * @return array of backtrace information
  */
 function wfDebugBacktrace() {
+	static $disabled = null;
+
 	if( extension_loaded( 'Zend Optimizer' ) ) {
 		wfDebug( "Zend Optimizer detected; skipping debug_backtrace for safety.\n" );
 		return array();
-	} else {
-		return array_slice( debug_backtrace(), 1 );
 	}
+
+	if ( is_null( $disabled ) ) {
+		$disabled = false;
+		$functions = explode( ',', ini_get( 'disable_functions' ) );
+		$functions = array_map( 'trim', $functions );
+		$functions = array_map( 'strtolower', $functions );
+		if ( in_array( 'debug_backtrace', $functions ) ) {
+			wfDebug( "debug_backtrace is in disabled_functions\n" );
+			$disabled = true;
+		}
+	}
+	if ( $disabled ) {
+		return array();
+	}
+
+	return array_slice( debug_backtrace(), 1 );
 }
 
 function wfBacktrace() {
@@ -1165,20 +1230,21 @@ function wfArrayToCGI( $array1, $array2 = NULL )
 			if ( '' != $cgi ) {
 				$cgi .= '&';
 			}
-			if(is_array($value))
-			{
+			if ( is_array( $value ) ) {
 				$firstTime = true;
-				foreach($value as $v)
-				{
-					$cgi .= ($firstTime ? '' : '&') .
+				foreach ( $value as $v ) {
+					$cgi .= ( $firstTime ? '' : '&') .
 						urlencode( $key . '[]' ) . '=' .
 						urlencode( $v );
 					$firstTime = false;
 				}
-			}
-			else
+			} else {
+				if ( is_object( $value ) ) {
+					$value = $value->__toString();
+				}
 				$cgi .= urlencode( $key ) . '=' .
 					urlencode( $value );
+			}
 		}
 	}
 	return $cgi;
@@ -1217,10 +1283,13 @@ function wfCgiToArray( $query ) {
  * have query string parameters already. If so, they will be combined.
  *
  * @param string $url
- * @param string $query
+ * @param mixed $query String or associative array
  * @return string
  */
 function wfAppendQuery( $url, $query ) {
+	if ( is_array( $query ) ) {
+		$query = wfArrayToCGI( $query );
+	}
 	if( $query != '' ) {
 		if( false === strpos( $url, '?' ) ) {
 			$url .= '?';
@@ -1376,6 +1445,10 @@ function wfMerge( $old, $mine, $yours, &$result ){
  * @return string Unified diff of $before and $after
  */
 function wfDiff( $before, $after, $params = '-u' ) {
+	if ($before == $after) {
+		return '';
+	}
+	
 	global $wgDiff;
 
 	# This check may also protect against code injection in
@@ -1890,7 +1963,9 @@ function wfGetCachedNotice( $name ) {
 	}
 
 	wfProfileOut( $fname );
-	return $notice;
+	// Use $wgContLang to get a converted string by language.
+	global $wgContLang;
+	return $wgContLang->convert( $notice );
 }
 
 function wfGetNamespaceNotice() {
@@ -1976,10 +2051,15 @@ function wfTempDir() {
  * 
  * @param string $dir Full path to directory to create
  * @param int $mode Chmod value to use, default is $wgDirectoryMode
+ * @param string $caller Optional caller param for debugging.
  * @return bool
  */
-function wfMkdirParents( $dir, $mode = null ) {
+function wfMkdirParents( $dir, $mode = null, $caller = null ) {
 	global $wgDirectoryMode;
+
+	if ( !is_null( $caller ) ) {
+		wfDebug( "$caller: called wfMkdirParents($dir)" );
+	}
 
 	if( strval( $dir ) === '' || file_exists( $dir ) )
 		return true;
@@ -2650,13 +2730,14 @@ function wfHttpOnlySafe() {
  * Initialise php session
  */
 function wfSetupSession() {
-	global $wgSessionsInMemcached, $wgCookiePath, $wgCookieDomain, $wgCookieSecure, $wgCookieHttpOnly;
+	global $wgSessionsInMemcached, $wgCookiePath, $wgCookieDomain, 
+			$wgCookieSecure, $wgCookieHttpOnly, $wgSessionHandler;
 	if( $wgSessionsInMemcached ) {
 		require_once( 'MemcachedSessions.php' );
-	} elseif( 'files' != ini_get( 'session.save_handler' ) ) {
-		# If it's left on 'user' or another setting from another
-		# application, it will end up failing. Try to recover.
-		ini_set ( 'session.save_handler', 'files' );
+	} elseif( $wgSessionHandler && $wgSessionHandler != ini_get( 'session.save_handler' ) ) {
+		# Only set this if $wgSessionHandler isn't null and session.save_handler
+		# hasn't already been set to the desired value (that causes errors)
+		ini_set ( 'session.save_handler', $wgSessionHandler );
 	}
 	$httpOnlySafe = wfHttpOnlySafe();
 	wfDebugLog( 'cookie',
@@ -3033,4 +3114,26 @@ function wfStripIllegalFilenameChars( $name ) {
 	$name = wfBaseName( $name );
 	$name = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $name );
 	return $name;
+}
+
+/**
+  * Insert array into another array after the specified *KEY*
+  * @param array $array 	The array.
+  * @param array $insert 	The array to insert.
+  * @param mixed $after 	The key to insert after
+  */
+function wfArrayInsertAfter( $array, $insert, $after ) {
+	// Find the offset of the element to insert after.
+	$keys = array_keys($array);
+	$offsetByKey = array_flip( $keys );
+	
+	$offset = $offsetByKey[$after];
+	
+	// Insert at the specified offset
+	$before = array_slice( $array, 0, $offset + 1, true );
+	$after = array_slice( $array, $offset + 1, count($array)-$offset, true );
+	
+	$output = $before + $insert + $after;
+	
+	return $output;
 }

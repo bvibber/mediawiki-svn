@@ -161,7 +161,7 @@ class MWException extends Exception {
 			if( $hookResult = $this->runHooks( get_class( $this ) . "Raw" ) ) {
 				die( $hookResult );
 			}
-			if ( defined( 'MEDIAWIKI_INSTALL' ) ) {
+			if ( defined( 'MEDIAWIKI_INSTALL' ) || $this->htmlBodyOnly() ) {
 				echo $this->getHTML();
 			} else {
 				echo $this->htmlHeader();
@@ -202,12 +202,12 @@ class MWException extends Exception {
 			header( 'Pragma: nocache' );
 		}
 		$title = $this->getPageTitle();
-		echo "<html>
+		return "<html>
 		<head>
 		<title>$title</title>
 		</head>
 		<body>
-		<h1><img src='$wgLogo' style='float:left;margin-right:1em' alt=''>$title</h1>
+		<h1><img src='$wgLogo' style='float:left;margin-right:1em' alt=''/>$title</h1>
 		";
 	}
 
@@ -215,7 +215,14 @@ class MWException extends Exception {
 	 * print the end of the html page if not using $wgOut.
 	 */
 	function htmlFooter() {
-		echo "</body></html>";
+		return "</body></html>";
+	}
+	
+	/**
+	 * headers handled by subclass?
+	 */
+	function htmlBodyOnly() {
+		return false;
 	}
 
 	static function isCommandLine() {
@@ -290,7 +297,7 @@ function wfReportException( Exception $e ) {
 				wfPrintError( $message );
 			} else {
 				echo nl2br( htmlspecialchars( $message ) ). "\n";
-				}
+			}
 		}
 	} else {
 		$message = "Unexpected non-MediaWiki exception encountered, of type \"" . get_class( $e ) . "\"\n" .
@@ -315,8 +322,7 @@ function wfPrintError( $message ) {
 	#      Try to produce meaningful output anyway. Using echo may corrupt output to STDOUT though.
 	if ( defined( 'STDERR' ) ) {
 		fwrite( STDERR, $message );
-	}
-	else {
+	} else {
 		echo( $message );
 	}
 }

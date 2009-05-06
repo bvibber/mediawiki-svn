@@ -67,7 +67,7 @@ class PageHistory {
 	 * @returns nothing
 	 */
 	function history() {
-		global $wgOut, $wgRequest, $wgTitle, $wgScript;
+		global $wgOut, $wgRequest, $wgScript;
 
 		/*
 		 * Allow client caching.
@@ -153,33 +153,48 @@ class PageHistory {
 	 * @return string HTML output
 	 */
 	function beginHistoryList() {
-		global $wgTitle, $wgScript, $wgEnableHtmlDiff;
+		global $wgUser, $wgScript, $wgEnableHtmlDiff;
 		$this->lastdate = '';
 		$s = wfMsgExt( 'histlegend', array( 'parse') );
-		$s .= Xml::openElement( 'form', array( 'action' => $wgScript, 'id' => 'mw-history-compare' ) );
-		$s .= Xml::hidden( 'title', $wgTitle->getPrefixedDbKey() );
+		if( $this->linesonpage > 1 && $wgUser->isAllowed('deleterevision') ) {
+			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
+			$s .= Xml::openElement( 'form',
+				array(
+					'action' => $revdel->getFullUrl(),
+					'method' => 'get', 'id' => 'mw-history-revdeleteform',
+					'style'  => 'visibility:hidden;float:right;'
+				)
+			);
+			$s .= Xml::hidden( 'target', $this->mTitle->getPrefixedDbKey() );
+			$s .= Xml::hidden( 'oldid', '', array('id'=>'revdel-oldid') );
+			$s .= Xml::submitButton( wfMsg( 'showhideselectedversions' ) );
+			$s .= Xml::closeElement( 'form' );
+		}
+		$s .= Xml::openElement( 'form', array( 'action' => $wgScript,
+			'id' => 'mw-history-compare' ) );
+		$s .= Xml::hidden( 'title', $this->mTitle->getPrefixedDbKey() );
 		if( $wgEnableHtmlDiff ) {
 			$s .= $this->submitButton( wfMsg( 'visualcomparison'),
 				array(
-						'name' => 'htmldiff',
-						'class'     => 'historysubmit',
-						'accesskey' => wfMsg( 'accesskey-visualcomparison' ),
-						'title'     => wfMsg( 'tooltip-compareselectedversions' ),
+					'name' => 'htmldiff',
+					'class'     => 'historysubmit',
+					'accesskey' => wfMsg( 'accesskey-visualcomparison' ),
+					'title'     => wfMsg( 'tooltip-compareselectedversions' ),
 				)
 			);
 			$s .= $this->submitButton( wfMsg( 'wikicodecomparison'),
 				array(
-						'class'     => 'historysubmit',
-						'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
-						'title'     => wfMsg( 'tooltip-compareselectedversions' ),
+					'class'     => 'historysubmit',
+					'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
+					'title'     => wfMsg( 'tooltip-compareselectedversions' ),
 				)
 			);
 		} else {
 			$s .= $this->submitButton( wfMsg( 'compareselectedversions'),
 				array(
-						'class'     => 'historysubmit',
-						'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
-						'title'     => wfMsg( 'tooltip-compareselectedversions' ),
+					'class'     => 'historysubmit',
+					'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
+					'title'     => wfMsg( 'tooltip-compareselectedversions' ),
 				)
 			);
 		}
@@ -198,25 +213,25 @@ class PageHistory {
 		if( $wgEnableHtmlDiff ) {
 			$s .= $this->submitButton( wfMsg( 'visualcomparison'),
 				array(
-						'name' => 'htmldiff',
-						'class'     => 'historysubmit',
-						'accesskey' => wfMsg( 'accesskey-visualcomparison' ),
-						'title'     => wfMsg( 'tooltip-compareselectedversions' ),
+					'name' => 'htmldiff',
+					'class'     => 'historysubmit',
+					'accesskey' => wfMsg( 'accesskey-visualcomparison' ),
+					'title'     => wfMsg( 'tooltip-compareselectedversions' ),
 				)
 			);
 			$s .= $this->submitButton( wfMsg( 'wikicodecomparison'),
 				array(
-						'class'     => 'historysubmit',
-						'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
-						'title'     => wfMsg( 'tooltip-compareselectedversions' ),
+					'class'     => 'historysubmit',
+					'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
+					'title'     => wfMsg( 'tooltip-compareselectedversions' ),
 				)
 			);
 		} else {
 			$s .= $this->submitButton( wfMsg( 'compareselectedversions'),
 				array(
-						'class'     => 'historysubmit',
-						'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
-						'title'     => wfMsg( 'tooltip-compareselectedversions' ),
+					'class'     => 'historysubmit',
+					'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
+					'title'     => wfMsg( 'tooltip-compareselectedversions' ),
 				)
 			);
 		}
@@ -252,7 +267,9 @@ class PageHistory {
 	 * @param bool $firstInList Whether this row corresponds to the first displayed on this history page.
 	 * @return string HTML output for the row
 	 */
-	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
+	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false,
+		$latest = false, $firstInList = false )
+	{
 		global $wgUser, $wgLang;
 		$rev = new Revision( $row );
 		$rev->setTitle( $this->mTitle );
@@ -266,17 +283,23 @@ class PageHistory {
 		$s = "($curlink) ($lastlink) $arbitrary";
 
 		if( $wgUser->isAllowed( 'deleterevision' ) ) {
-			if( $firstInList ) {
-				// We don't currently handle well changing the top revision's settings
-				$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.$this->message['rev-delundel'].')' );
-			} else if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
-				// If revision was hidden from sysops
-				$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.$this->message['rev-delundel'].')' );
+			// Hide JS by default for non-JS browsing
+			$hidden = array( 'style' => 'display:none' );
+			// If revision was hidden from sysops
+			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
+				$del = Xml::check( 'deleterevisions', false,
+					$hidden + array('disabled' => 'disabled') );
+				$del .= Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
+					'(' . $this->message['rev-delundel'] . ')' );
+			// Otherwise, show the link...
 			} else {
+				$jsCall = 'updateShowHideForm('.$rev->getId().',this.checked)';
+				$del = Xml::check( 'showhiderevisions', false,
+					$hidden + array('onchange' => $jsCall) );
 				$query = array( 'target' => $this->mTitle->getPrefixedDbkey(),
-					'oldid' => $rev->getId()
-				);
-				$del = $this->mSkin->revDeleteLink( $query, $rev->isDeleted( Revision::DELETED_RESTRICTED ) );
+					'oldid' => $rev->getId() );
+				$del .= $this->mSkin->revDeleteLink( $query,
+					$rev->isDeleted( Revision::DELETED_RESTRICTED ) );
 			}
 			$s .= " $del ";
 		}
@@ -350,10 +373,13 @@ class PageHistory {
 	function revLink( $rev ) {
 		global $wgLang;
 		$date = $wgLang->timeanddate( wfTimestamp(TS_MW, $rev->getTimestamp()), true );
-		if( !$rev->isDeleted( Revision::DELETED_TEXT ) ) {
+		if( $rev->userCan( Revision::DELETED_TEXT ) ) {
 			$link = $this->mSkin->makeKnownLinkObj( $this->mTitle, $date, "oldid=" . $rev->getId() );
 		} else {
-			$link = '<span class="history-deleted">' . $date . '</span>';
+			$link = $date;
+		}
+		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
+			$link = "<span class=\"history-deleted\">$link</span>";
 		}
 		return $link;
 	}
@@ -366,7 +392,7 @@ class PageHistory {
 	 */
 	function curLink( $rev, $latest ) {
 		$cur = $this->message['cur'];
-		if( $latest || $rev->isDeleted( Revision::DELETED_TEXT ) ) {
+		if( $latest || !$rev->userCan( Revision::DELETED_TEXT ) ) {
 			return $cur;
 		} else {
 			return $this->mSkin->makeKnownLinkObj( $this->mTitle, $cur,
@@ -392,7 +418,7 @@ class PageHistory {
 			# Next row probably exists but is unknown, use an oldid=prev link
 			return $this->mSkin->makeKnownLinkObj( $this->mTitle, $last,
 				"diff=" . $prevRev->getId() . "&oldid=prev" );
-		} elseif( $prevRev->isDeleted(Revision::DELETED_TEXT) || $nextRev->isDeleted(Revision::DELETED_TEXT) ) {
+		} elseif( !$prevRev->userCan(Revision::DELETED_TEXT) || !$nextRev->userCan(Revision::DELETED_TEXT) ) {
 			return $last;
 		} else {
 			return $this->mSkin->makeKnownLinkObj( $this->mTitle, $last,
@@ -419,7 +445,7 @@ class PageHistory {
 				$checkmark = array( 'checked' => 'checked' );
 			} else {
 				# Check visibility of old revisions
-				if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
+				if( !$rev->userCan( Revision::DELETED_TEXT ) ) {
 					$radio['disabled'] = 'disabled';
 					$checkmark = array(); // We will check the next possible one
 				} else if( $counter == 2 || !$this->mOldIdChecked ) {
@@ -572,7 +598,12 @@ class PageHistoryPager extends ReverseChronologicalPager {
 			'options' => array( 'USE INDEX' => array('revision' => 'page_timestamp') ),
 			'join_conds' => array( 'tag_summary' => array( 'LEFT JOIN', 'ts_rev_id=rev_id' ) ),
 		);
-		ChangeTags::modifyDisplayQuery( $queryInfo['tables'], $queryInfo['fields'], $queryInfo['conds'], $queryInfo['join_conds'], $this->tagFilter );
+		ChangeTags::modifyDisplayQuery( $queryInfo['tables'],
+										$queryInfo['fields'],
+										$queryInfo['conds'],
+										$queryInfo['join_conds'],
+										$queryInfo['options'],
+										$this->tagFilter );
 		wfRunHooks( 'PageHistoryPager::getQueryInfo', array( &$this, &$queryInfo ) );
 		return $queryInfo;
 	}

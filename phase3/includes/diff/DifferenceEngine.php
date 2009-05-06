@@ -27,6 +27,7 @@ class DifferenceEngine {
 	var $mOldRev, $mNewRev;
 	var $mRevisionsLoaded = false; // Have the revisions been loaded
 	var $mTextLoaded = 0; // How many text blobs have been loaded, 0, 1 or 2?
+	var $mCacheHit = false; // Was the diff fetched from cache?
 	var $htmldiff;
 
 	protected $unhide = false;
@@ -42,7 +43,9 @@ class DifferenceEngine {
 	 * @param $htmldiff boolean If set, output using HTMLDiff instead of raw wikicode diff
 	 * @param $unhide boolean If set, allow viewing deleted revs
 	 */
-	function __construct( $titleObj = null, $old = 0, $new = 0, $rcid = 0, $refreshCache = false , $htmldiff = false, $unhide = false ) {
+	function __construct( $titleObj = null, $old = 0, $new = 0, $rcid = 0,
+		$refreshCache = false, $htmldiff = false, $unhide = false )
+	{
 		$this->mTitle = $titleObj;
 		wfDebug("DifferenceEngine old '$old' new '$new' rcid '$rcid'\n");
 
@@ -52,9 +55,8 @@ class DifferenceEngine {
 			$this->mNewid = intval($old);
 			$this->mOldid = $this->mTitle->getPreviousRevisionID( $this->mNewid );
 		} elseif ( 'next' === $new ) {
-			# Show diff between revision $old and the previous one.
-			# Get previous one from DB.
-			#
+			# Show diff between revision $old and the next one.
+			# Get next one from DB.
 			$this->mOldid = intval($old);
 			$this->mNewid = $this->mTitle->getNextRevisionID( $this->mOldid );
 			if ( false === $this->mNewid ) {
@@ -75,6 +77,18 @@ class DifferenceEngine {
 
 	function getTitle() {
 		return $this->mTitle;
+	}
+	
+	function wasCacheHit() {
+		return $this->mCacheHit;
+	}
+	
+	function getOldid() {
+		return $this->mOldid;
+	}
+	
+	function getNewid() {
+		return $this->mNewid;
 	}
 
 	function showDiffPage( $diffOnly = false ) {
@@ -180,12 +194,12 @@ CONTROL;
 				$db = wfGetDB( DB_SLAVE );
 				$change = RecentChange::newFromConds(
 					array(
-					// Add redundant user,timestamp condition so we can use the existing index
-							'rc_user_text'  => $this->mNewRev->getRawUserText(),
-							'rc_timestamp'  => $db->timestamp( $this->mNewRev->getTimestamp() ),
-							'rc_this_oldid' => $this->mNewid,
-							'rc_last_oldid' => $this->mOldid,
-							'rc_patrolled'  => 0
+					// Redundant user,timestamp condition so we can use the existing index
+						'rc_user_text'  => $this->mNewRev->getRawUserText(),
+						'rc_timestamp'  => $db->timestamp( $this->mNewRev->getTimestamp() ),
+						'rc_this_oldid' => $this->mNewid,
+						'rc_last_oldid' => $this->mOldid,
+						'rc_patrolled'  => 0
 					),
 					__METHOD__
 				);
@@ -271,15 +285,27 @@ CONTROL;
 			'<div id="mw-diff-ntitle3">' . $newminor . $sk->revComment( $this->mNewRev, !$diffOnly, !$this->unhide ).$rdel."</div>" .
 			'<div id="mw-diff-ntitle4">' . $nextlink . $patrol . '</div>';
 
-		# Output the diff if allowed
-		$allowed = $this->mOldRev->userCan(Revision::DELETED_TEXT) && $this->mNewRev->userCan(Revision::DELETED_TEXT);
-		$deleted = $this->mOldRev->isDeleted(Revision::DELETED_TEXT) || $this->mNewRev->isDeleted(Revision::DELETED_TEXT);
+		# Check if this user can see the revisions
+		$allowed = $this->mOldRev->userCan(Revision::DELETED_TEXT)
+			&& $this->mNewRev->userCan(Revision::DELETED_TEXT);
+		$deleted = $this->mOldRev->isDeleted(Revision::DELETED_TEXT)
+			|| $this->mNewRev->isDeleted(Revision::DELETED_TEXT);
+		# Output the diff if allowed...
 		if( $deleted && (!$this->unhide || !$allowed) ) {
 			$this->showDiffStyle();
 			$multi = $this->getMultiNotice();
 			$wgOut->addHTML( $this->addHeader( '', $oldHeader, $newHeader, $multi ) );
-			$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n",
-				array( 'rev-deleted-no-diff' ) );
+			if( !$allowed ) {
+				# Give explanation for why revision is not visible
+				$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n",
+					array( 'rev-deleted-no-diff' ) );
+			} else {
+				# Give explanation and add a link to view the diff...
+				$link = $this->mTitle->getFullUrl( "diff={$this->mNewid}&oldid={$this->mOldid}".
+					'&unhide=1&token='.urlencode( $wgUser->editToken($this->mNewid) ) );
+				$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n",
+					array( 'rev-deleted-unhide-diff', $link ) );
+			}
 		} else if( $wgEnableHtmlDiff && $this->htmldiff ) {
 			$multi = $this->getMultiNotice();
 			$wgOut->addHTML('<div class="diff-switchtype">'.$sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'wikicodecomparison' ),
@@ -356,7 +382,7 @@ CONTROL;
 
 
 	function renderHtmlDiff() {
-		global $wgOut, $wgTitle, $wgParser, $wgDebugComments;
+		global $wgOut, $wgParser, $wgDebugComments;
 		wfProfileIn( __METHOD__ );
 
 		$this->showDiffStyle();
@@ -384,7 +410,7 @@ CONTROL;
 		$oldTidy = $popts->setTidy( true );
 		$popts->setEditSection( false );
 
-		$parserOutput = $wgParser->parse( $this->mOldtext, $wgTitle, $popts, true, true, $wgOut->getRevisionId() );
+		$parserOutput = $wgParser->parse( $this->mOldtext, $this->getTitle(), $popts, true, true, $wgOut->getRevisionId() );
 		$popts->setTidy( $oldTidy );
 
 		//only for new?
@@ -400,7 +426,7 @@ CONTROL;
 		$popts = $wgOut->parserOptions();
 		$oldTidy = $popts->setTidy( true );
 
-		$parserOutput = $wgParser->parse( $this->mNewtext, $wgTitle, $popts, true, true, $wgOut->getRevisionId() );
+		$parserOutput = $wgParser->parse( $this->mNewtext, $this->getTitle(), $popts, true, true, $wgOut->getRevisionId() );
 		$popts->setTidy( $oldTidy );
 
 		$wgOut->addParserOutputNoText( $parserOutput );
@@ -537,10 +563,15 @@ CONTROL;
 	function getDiffBody() {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
+		$this->mCacheHit = true;
 		// Check if the diff should be hidden from this user
+		if ( !$this->loadRevisionData() )
+			return '';
 		if ( $this->mOldRev && !$this->mOldRev->userCan(Revision::DELETED_TEXT) ) {
 			return '';
 		} else if ( $this->mNewRev && !$this->mNewRev->userCan(Revision::DELETED_TEXT) ) {
+			return '';
+		} else if ( $this->mOldRev && $this->mNewRev && $this->mOldRev->getID() == $this->mNewRev->getID() ) {
 			return '';
 		}
 		// Cacheable?
@@ -559,6 +590,7 @@ CONTROL;
 				}
 			} // don't try to load but save the result
 		}
+		$this->mCacheHit = false;
 
 		// Loadtext is permission safe, this just clears out the diff
 		if ( !$this->loadText() ) {
@@ -691,7 +723,7 @@ CONTROL;
 
 	function localiseLineNumbersCb( $matches ) {
 		global $wgLang;
-		return wfMsgExt( 'lineno', array( 'parseinline' ), $wgLang->formatNum( $matches[1] ) );
+		return wfMsgExt( 'lineno', array (), $wgLang->formatNum( $matches[1] ) );
 	}
 
 
@@ -725,17 +757,21 @@ CONTROL;
 	 * Add the header to a diff body
 	 */
 	static function addHeader( $diff, $otitle, $ntitle, $multi = '' ) {
-		$header = "
-		<table class='diff'>
-		<col class='diff-marker' />
-		<col class='diff-content' />
-		<col class='diff-marker' />
-		<col class='diff-content' />
+		$colspan = 1;
+		$header = "<table class='diff'>";
+		if( $diff ) { // Safari/Chrome show broken output if cols not used
+			$header .= "
+			<col class='diff-marker' />
+			<col class='diff-content' />
+			<col class='diff-marker' />
+			<col class='diff-content' />";
+			$colspan = 2;
+		}
+		$header .= "
 		<tr valign='top'>
-		<td colspan='2' class='diff-otitle'>{$otitle}</td>
-		<td colspan='2' class='diff-ntitle'>{$ntitle}</td>
-		</tr>
-		";
+		<td colspan='$colspan' class='diff-otitle'>{$otitle}</td>
+		<td colspan='$colspan' class='diff-ntitle'>{$ntitle}</td>
+		</tr>";
 
 		if ( $multi != '' )
 		$header .= "<tr><td colspan='4' align='center' class='diff-multi'>{$multi}</td></tr>";
@@ -750,6 +786,7 @@ CONTROL;
 		$this->mOldtext = $oldText;
 		$this->mNewtext = $newText;
 		$this->mTextLoaded = 2;
+		$this->mRevisionsLoaded = true;
 	}
 
 	/**
@@ -773,10 +810,10 @@ CONTROL;
 
 		// Load the new revision object
 		$this->mNewRev = $this->mNewid
-		? Revision::newFromId( $this->mNewid )
-		: Revision::newFromTitle( $this->mTitle );
+			? Revision::newFromId( $this->mNewid )
+			: Revision::newFromTitle( $this->mTitle );
 		if( !$this->mNewRev instanceof Revision )
-		return false;
+			return false;
 
 		// Update the new revision ID in case it was 0 (makes life easier doing UI stuff)
 		$this->mNewid = $this->mNewRev->getId();
@@ -794,7 +831,6 @@ CONTROL;
 
 			$this->mNewtitle = "<a href='$newLink'>{$this->mPagetitle}</a>";
 			$this->mNewtitle .= " (<a href='$newEdit'>" . wfMsgHtml( $editable ? 'editold' : 'viewsourceold' ) . "</a>)";
-
 		} else {
 			$newLink = $this->mNewPage->escapeLocalUrl( 'oldid=' . $this->mNewid );
 			$newEdit = $this->mNewPage->escapeLocalUrl( 'action=edit&oldid=' . $this->mNewid );
@@ -803,10 +839,10 @@ CONTROL;
 			$this->mNewtitle = "<a href='$newLink'>{$this->mPagetitle}</a>";
 			$this->mNewtitle .= " (<a href='$newEdit'>" . wfMsgHtml( $editable ? 'editold' : 'viewsourceold' ) . "</a>)";
 		}
-		if ( !$this->mNewRev->userCan(Revision::DELETED_TEXT) ) {
+		if( !$this->mNewRev->userCan(Revision::DELETED_TEXT) ) {
 			$this->mNewtitle = "<span class='history-deleted'>{$this->mPagetitle}</span>";
 		} else if ( $this->mNewRev->isDeleted(Revision::DELETED_TEXT) ) {
-			$this->mNewtitle = '<span class="history-deleted">'.$this->mNewtitle.'</span>';
+			$this->mNewtitle = "<span class='history-deleted'>{$this->mNewtitle}</span>";
 		}
 
 		// Load the old revision object

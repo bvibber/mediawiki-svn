@@ -1,6 +1,9 @@
 <?php
 /** Udmurt (Удмурт)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -38,9 +41,11 @@ $separatorTransformTable = array(',' => ' ', '.' => ',' );
 $messages = array(
 'linkprefix' => '/^(.*?)(„|«)$/sDu',
 
-'article'        => 'Статья',
+'article' => 'Статья',
+'mytalk'  => 'викиавтор сярысь вераськон',
+
+# Cologne Blue skin
 'qbspecialpages' => 'Панельёс',
-'mytalk'         => 'викиавтор сярысь вераськон',
 
 'help'             => 'Валэктонъёс',
 'history'          => 'Бамлэн историез',

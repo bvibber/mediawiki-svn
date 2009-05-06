@@ -6,6 +6,7 @@
  * @ingroup FileRepo
  */
 abstract class FileRepo {
+	const FILES_ONLY = 1;
 	const DELETE_SOURCE = 1;
 	const FIND_PRIVATE = 1;
 	const FIND_IGNORE_REDIRECT = 2;
@@ -517,7 +518,8 @@ abstract class FileRepo {
 	function cleanupDeletedBatch( $storageKeys ) {}
 
 	/**
-	 * Checks if there is a redirect named as $title
+	 * Checks if there is a redirect named as $title. If there is, return the
+	 * title object. If not, return false.
 	 * STUB
 	 *
 	 * @param Title $title Title of image
@@ -528,11 +530,13 @@ abstract class FileRepo {
 
 	/**
 	 * Invalidates image redirect cache related to that image
-	 * STUB
 	 *
 	 * @param Title $title Title of image
-	 */
+	 */	
 	function invalidateImageRedirect( $title ) {
+		global $wgMemc;
+		$memcKey = $this->getMemcKey( "image_redirect:" . md5( $title->getPrefixedDBkey() ) );
+		$wgMemc->delete( $memcKey );
 	}
 	
 	function findBySha1( $hash ) {
@@ -554,4 +558,17 @@ abstract class FileRepo {
 		}
 		return wfMsg( 'shared-repo' ); 
 	}
+	
+	function getSlaveDB() {
+		return wfGetDB( DB_SLAVE );
+	}
+
+	function getMasterDB() {
+		return wfGetDB( DB_MASTER );
+	}
+
+	function getMemcKey( $key ) {
+		return wfWikiID( $this->getSlaveDB() ) . ":{$key}";
+	}
+
 }

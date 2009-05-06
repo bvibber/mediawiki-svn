@@ -55,7 +55,7 @@ class SpecialRecentChanges extends SpecialPage {
 			$this->parseParameters( $parameters, $opts );
 		}
 
-		$opts->validateIntBounds( 'limit', 0, 5000 );
+		$opts->validateIntBounds( 'limit', 0, 500 );
 		return $opts;
 	}
 
@@ -270,6 +270,7 @@ class SpecialRecentChanges extends SpecialPage {
 
 		$tables = array( 'recentchanges' );
 		$join_conds = array();
+		$query_options = array( 'USE INDEX' => array('recentchanges' => 'rc_timestamp') );
 
 		$uid = $wgUser->getId();
 		$dbr = wfGetDB( DB_SLAVE );
@@ -285,19 +286,30 @@ class SpecialRecentChanges extends SpecialPage {
 			$join_conds['watchlist'] = array('LEFT JOIN',
 				"wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace");
 		}
-
+		if ($wgUser->isAllowed("rollback")) {
+			$tables[] = 'page';
+			$join_conds['page'] = array('LEFT JOIN', 'rc_cur_id=page_id');
+		}
 		// Tag stuff.
-		$fields = array(); // Fields are * in this case, so let the function modify an empty array to keep it happy.
-		ChangeTags::modifyDisplayQuery( $tables, $fields, $conds, $join_conds, $opts['tagfilter'] );
+		$fields = array();
+		// Fields are * in this case, so let the function modify an empty array to keep it happy.
+		ChangeTags::modifyDisplayQuery( $tables,
+										$fields,
+										$conds,
+										$join_conds,
+										$query_options,
+										$opts['tagfilter']
+									);
 
 		wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );
 
 		// Is there either one namespace selected or excluded?
+		// Tag filtering also has a better index.
 		// Also, if this is "all" or main namespace, just use timestamp index.
-		if( is_null($namespace) || $invert || $namespace == NS_MAIN ) {
+		if( is_null($namespace) || $invert || $opts['tagfilter'] ) {
 			$res = $dbr->select( $tables, '*', $conds, __METHOD__,
-				array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => $limit,
-					'USE INDEX' => array('recentchanges' => 'rc_timestamp') ),
+				array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => $limit ) +
+				$query_options,
 				$join_conds );
 		// We have a new_namespace_time index! UNION over new=(0,1) and sort result set!
 		} else {
@@ -585,8 +597,12 @@ class SpecialRecentChanges extends SpecialPage {
 		global $wgUser;
 		$sk = $wgUser->getSkin();
 		$params = $override + $options;
-		return $sk->link( $this->getTitle(), htmlspecialchars( $title ),
-			( $active ? array( 'style'=>'font-weight: bold;' ) : array() ), $params, array( 'known' ) );
+		if ( $active ) {
+			return $sk->link( $this->getTitle(), '<strong>' . htmlspecialchars( $title ) . '</strong>',
+							  array(), $params, array( 'known' ) );
+		} else {
+			return $sk->link( $this->getTitle(), htmlspecialchars( $title ), array() , $params, array( 'known' ) );
+		}
 	}
 
 	/**

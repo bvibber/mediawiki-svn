@@ -1,6 +1,9 @@
 <?php
 /** Plautdietsch (Plautdietsch)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -85,22 +88,24 @@ $messages = array(
 'category_header'          => 'Siede in Kategorie "$1"',
 'category-media-header'    => 'Bilda in Kategorie "$1"',
 'hidden-categories'        => "{{PLURAL:$1|Fe'stoakne Kategorie|Fe'stoakne Kategorien}}",
-'hidden-category-category' => "Fe'stoakne Kategorien", # Name of the category where hidden categories will be listed
+'hidden-category-category' => "Fe'stoakne Kategorien",
 
-'about'          => 'Äwa',
-'newwindow'      => '(got in en nie Fensta op)',
-'cancel'         => 'Aufbräakje',
+'about'         => 'Äwa',
+'newwindow'     => '(got in en nie Fensta op)',
+'cancel'        => 'Aufbräakje',
+'moredotdotdot' => 'Mea...',
+'mypage'        => 'Miene Sied',
+'mytalk'        => 'Miene Beredsied',
+'anontalk'      => 'Beredsied fe dise IP',
+'navigation'    => 'Navigatioon',
+'and'           => '&#32;onn',
+
+# Cologne Blue skin
 'qbfind'         => 'finje',
 'qbedit'         => 'Endre',
 'qbpageoptions'  => 'Dise Sied',
 'qbmyoptions'    => 'Miene Siede',
 'qbspecialpages' => "Opp'poate Siede",
-'moredotdotdot'  => 'Mea...',
-'mypage'         => 'Miene Sied',
-'mytalk'         => 'Miene Beredsied',
-'anontalk'       => 'Beredsied fe dise IP',
-'navigation'     => 'Navigatioon',
-'and'            => '&#32;onn',
 
 'errorpagetitle'   => 'Fäla',
 'returnto'         => 'Trigj no $1.',
@@ -144,7 +149,7 @@ $messages = array(
 'otherlanguages'   => 'In aundre Sproake',
 'redirectedfrom'   => '(wieda jeleidt von $1)',
 'redirectpagesub'  => 'Sied tom Wiedaleide',
-'lastmodifiedat'   => "Dise Sied word aum $1, klock $2 daut latzte Mol je'endat.", # $1 date, $2 time
+'lastmodifiedat'   => "Dise Sied word aum $1, klock $2 daut latzte Mol je'endat.",
 'protectedpage'    => 'Sied mett besondrem Schutz',
 'jumpto'           => 'Sprinj no:',
 'jumptonavigation' => 'Navigatioon',
@@ -224,10 +229,6 @@ Daut latzte Opproope vonne Dotebank we:
 <blockquote><tt>$1</tt></blockquote>
 ute Funktioon "<tt>$2</tt>".
 MySQL mald dem Fehla "<tt>$3: $4</tt>".',
-'noconnect'       => 'Sorry! Daut jefft technische Schwierichtjeite, tjeen Kontakt es meajlich mette Dotebank opp <br />
-$1',
-'nodb'            => 'Kunn Dotebank $1 nich utwehle',
-'cachederror'     => 'Waut hia tjemmt es eene Kopie utem Cache en es vleicht nich meea aktuell.',
 'laggedslavemode' => 'Oppjepausst: Dee jewesne Sied es nich onbedinjt dee latzte Versioon.',
 'readonly'        => 'Dotebank es jeschlote',
 'enterlockreason' => 'Nan bitte een Grunt doafea, wurom dee Dotebank jeschlote saul en saj, woolang daut onjefea diere saul',
@@ -252,12 +253,6 @@ $1',
 'badretype'               => 'Dee beid Pauswed stemme nich ewaeen.',
 'userexists'              => 'Dem Bruckanome haft aul wea.
 Bitte nemm eenen aundren.',
-'youremail'               => 'Email:',
-'username'                => 'Bruckanome:',
-'uid'                     => 'Brucka-ID:',
-'prefs-memberingroups'    => 'Mettjliet von {{PLURAL:$1|group|groups}}:',
-'yourrealname'            => 'Ajchta Nome:',
-'yourlanguage'            => 'Sproak:',
 'loginlanguagelabel'      => 'Sproak: $1',
 
 # Edit page toolbar
@@ -290,7 +285,7 @@ Bitte nemm eenen aundren.',
 'page_last'  => 'latste',
 
 # Revision feed
-'history-feed-item-nocomment' => '$1 omm $2', # user at time
+'history-feed-item-nocomment' => '$1 omm $2',
 
 # Diffs
 'lineno'   => 'Lien $1:',
@@ -303,8 +298,14 @@ Bitte nemm eenen aundren.',
 'powersearch'    => 'Bätre Sääk',
 
 # Preferences page
-'preferences'   => 'Ennstalinje',
-'mypreferences' => 'Miene Ennstalinje',
+'preferences'          => 'Ennstalinje',
+'mypreferences'        => 'Miene Ennstalinje',
+'youremail'            => 'Email:',
+'username'             => 'Bruckanome:',
+'uid'                  => 'Brucka-ID:',
+'prefs-memberingroups' => 'Mettjliet von {{PLURAL:$1|group|groups}}:',
+'yourrealname'         => 'Ajchta Nome:',
+'yourlanguage'         => 'Sproak:',
 
 # Recent changes
 'nchanges'        => '$1 {{PLURAL:$1|Endaniss|Endanisse}}',
@@ -408,7 +409,7 @@ Bitte nemm eenen aundren.',
 
 # Protect
 'protectexpiry'          => 'Ütgontiet:',
-'protect-expiry-options' => '2 Stunde:2 hours,1 Dach:1 day,3 Doag:3 days,1 Wäakj:1 week,2 Wäakje:2 weeks,1 Moonat:1 month,3 Moonate:3 months,6 Moonate:6 months,1 Joa:1 year,one Enj:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options' => '2 Stunde:2 hours,1 Dach:1 day,3 Doag:3 days,1 Wäakj:1 week,2 Wäakje:2 weeks,1 Moonat:1 month,3 Moonate:3 months,6 Moonate:6 months,1 Joa:1 year,one Enj:infinite',
 'restriction-type'       => "Er'laubniss:",
 
 # Namespace form on various pages
@@ -420,6 +421,8 @@ Bitte nemm eenen aundren.',
 'uctop'     => '(bowe)',
 'month'     => 'Fonn Moonat (onn ferdäm):',
 'year'      => 'Fonn Joa (onn ferdäm):',
+
+'sp-contributions-talk' => 'Beredsied',
 
 # What links here
 'whatlinkshere'          => 'Links opp dise Sied',
@@ -435,7 +438,7 @@ Bitte nemm eenen aundren.',
 'whatlinkshere-links'    => '← Links',
 
 # Block/unblock
-'ipboptions'       => '2 Stunde:2 hours,1 Dach:1 day,3 Doag:3 days,1 Wäakj:1 week,2 Wäakje:2 weeks,1 Moonat:1 month,3 Moonate:3 months,6 Moonate:6 months,1 Joa:1 year,one Enj:infinite', # display1:time1,display2:time2,...
+'ipboptions'       => '2 Stunde:2 hours,1 Dach:1 day,3 Doag:3 days,1 Wäakj:1 week,2 Wäakje:2 weeks,1 Moonat:1 month,3 Moonate:3 months,6 Moonate:6 months,1 Joa:1 year,one Enj:infinite',
 'blocklink'        => 'blocke',
 'unblocklink'      => 'frie jewe',
 'change-blocklink' => 'Daut Blocke endre',
@@ -550,7 +553,7 @@ Dee Grunt es: "$2"',
 # Attribution
 'anonymous'        => 'Onbekaunda Brucka {{PLURAL:$1|user|users}} von {{SITENAME}}',
 'siteuser'         => '{{SITENAME}}-Brucka $1',
-'lastmodifiedatby' => "Dise Sied word daut latste Mol aum $1, Klock $2 von $3 je'endat.", # $1 date, $2 time, $3 user
+'lastmodifiedatby' => "Dise Sied word daut latste Mol aum $1, Klock $2 von $3 je'endat.",
 'othercontribs'    => 'Oppe Gruntloag vonne Oabeit von $1.',
 'others'           => 'aundre',
 'siteusers'        => '{{SITENAME}}-{{PLURAL:$2|user|users}} $1',

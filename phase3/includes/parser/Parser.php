@@ -886,7 +886,7 @@ class Parser
 
 		$text = $this->doDoubleUnderscore( $text );
 		$text = $this->doHeadings( $text );
-		if($this->mOptions->getUseDynamicDates()) {
+		if( $this->mOptions->getUseDynamicDates() ) {
 			$df = DateFormatter::getInstance();
 			$text = $df->reformat( $this->mOptions->getDateFormat(), $text );
 		}
@@ -896,7 +896,7 @@ class Parser
 
 		# replaceInternalLinks may sometimes leave behind
 		# absolute URLs, which have to be masked to hide them from replaceExternalLinks
-		$text = str_replace($this->mUniqPrefix."NOPARSE", "", $text);
+		$text = str_replace($this->mUniqPrefix.'NOPARSE', '', $text);
 
 		$text = $this->doMagicLinks( $text );
 		$text = $this->formatHeadings( $text, $isMain );
@@ -933,16 +933,16 @@ class Parser
 	}
 
 	function magicLinkCallback( $m ) {
-		if ( isset( $m[1] ) && strval( $m[1] ) !== '' ) {
+		if ( isset( $m[1] ) && $m[1] !== '' ) {
 			# Skip anchor
 			return $m[0];
-		} elseif ( isset( $m[2] ) && strval( $m[2] ) !== '' ) {
+		} elseif ( isset( $m[2] ) && $m[2] !== '' ) {
 			# Skip HTML element
 			return $m[0];
-		} elseif ( isset( $m[3] ) && strval( $m[3] ) !== '' ) {
+		} elseif ( isset( $m[3] ) && $m[3] !== '' ) {
 			# Free external link
 			return $this->makeFreeExternalLink( $m[0] );
-		} elseif ( isset( $m[4] ) && strval( $m[4] ) !== '' ) {
+		} elseif ( isset( $m[4] ) && $m[4] !== '' ) {
 			# RFC or PMID
 			if ( substr( $m[0], 0, 3 ) === 'RFC' ) {
 				$keyword = 'RFC';
@@ -960,7 +960,7 @@ class Parser
 			$sk = $this->mOptions->getSkin();
 			$la = $sk->getExternalLinkAttributes( $url, $keyword.$id );
 			return "<a href=\"{$url}\"{$la}>{$keyword} {$id}</a>";
-		} elseif ( isset( $m[5] ) && strval( $m[5] ) !== '' ) {
+		} elseif ( isset( $m[5] ) && $m[5] !== '' ) {
 			# ISBN
 			$isbn = $m[5];
 			$num = strtr( $isbn, array(
@@ -1603,7 +1603,7 @@ class Parser
 			wfProfileOut( __METHOD__."-misc" );
 			wfProfileIn( __METHOD__."-title" );
 			$nt = Title::newFromText( $this->mStripState->unstripNoWiki($link) );
-			if( !$nt ) {
+			if( $nt === NULL ) {
 				$s .= $prefix . '[[' . $line;
 				wfProfileOut( __METHOD__."-title" );
 				continue;
@@ -1729,6 +1729,7 @@ class Parser
 			# NS_MEDIA is a pseudo-namespace for linking directly to a file
 			# FIXME: Should do batch file existence checks, see comment below
 			if( $ns == NS_MEDIA ) {
+				wfProfileIn( __METHOD__."-media" );
 				# Give extensions a chance to select the file revision for us
 				$skip = $time = false;
 				wfRunHooks( 'BeforeParserMakeImageLinkObj', array( &$this, &$nt, &$skip, &$time ) );
@@ -1740,9 +1741,11 @@ class Parser
 				# Cloak with NOPARSE to avoid replacement in replaceExternalLinks
 				$s .= $prefix . $this->armorLinks( $link ) . $trail;
 				$this->mOutput->addImage( $nt->getDBkey() );
+				wfProfileOut( __METHOD__."-media" );
 				continue;
 			}
 
+			wfProfileIn( __METHOD__."-always_known" );
 			# Some titles, such as valid special pages or files in foreign repos, should
 			# be shown as bluelinks even though they're not included in the page table
 			#
@@ -1755,6 +1758,7 @@ class Parser
 				# Links will be added to the output link list after checking
 				$s .= $holders->makeHolder( $nt, $text, '', $trail, $prefix );
 			}
+			wfProfileOut( __METHOD__."-always_known" );
 		}
 		wfProfileOut( __METHOD__ );
 		return $holders;
@@ -2084,7 +2088,7 @@ class Parser
 						$inBlockElem = true;
 					}
 				} else if ( !$inBlockElem && !$this->mInPre ) {
-					if ( ' ' == $t{0} and ( $this->mLastSection === 'pre' or trim($t) != '' ) ) {
+					if ( ' ' == substr( $t, 0, 1 ) and ( $this->mLastSection === 'pre' or trim($t) != '' ) ) {
 						// pre
 						if ($this->mLastSection !== 'pre') {
 							$paragraphStack = false;
@@ -2446,6 +2450,12 @@ class Parser
 				$this->mOutput->setFlag( 'vary-revision' );
 				wfDebug( __METHOD__ . ": {{REVISIONTIMESTAMP}} used, setting vary-revision...\n" );
 				return $this->getRevisionTimestamp();
+			case 'revisionuser':
+                                // Let the edit saving system know we should parse the page
+                                // *after* a revision ID has been assigned. This is for null edits.
+				$this->mOutput->setFlag( 'vary-revision' );
+				wfDebug( __METHOD__ . ": {{REVISIONUSER}} used, setting vary-revision...\n" );
+				return $this->getRevisionUser();
 			case 'namespace':
 				return str_replace('_',' ',$wgContLang->getNsText( $this->mTitle->getNamespace() ) );
 			case 'namespacee':
@@ -2604,11 +2614,10 @@ class Parser
 	 * @private
 	 */
 	function replaceVariables( $text, $frame = false, $argsOnly = false ) {
-		# Prevent too big inclusions
-		if( strlen( $text ) > $this->mOptions->getMaxIncludeSize() ) {
+		# Is there any text? Also, Prevent too big inclusions!
+		if ( strlen( $text ) < 1 || strlen( $text ) > $this->mOptions->getMaxIncludeSize() ) {
 			return $text;
 		}
-
 		wfProfileIn( __METHOD__ );
 
 		if ( $frame === false ) {
@@ -2684,7 +2693,7 @@ class Parser
 	 * @private
 	 */
 	function braceSubstitution( $piece, $frame ) {
-		global $wgContLang, $wgAllowDisplayTitle, $wgNonincludableNamespaces;
+		global $wgContLang, $wgNonincludableNamespaces;
 		wfProfileIn( __METHOD__ );
 		wfProfileIn( __METHOD__.'-setup' );
 
@@ -2799,6 +2808,8 @@ class Parser
 
 					# Workaround for PHP bug 35229 and similar
 					if ( !is_callable( $callback ) ) {
+						wfProfileOut( __METHOD__ . '-pfunc' );
+						wfProfileOut( __METHOD__ );
 						throw new MWException( "Tag hook for $function is not callable\n" );
 					}
 					$result = call_user_func_array( $callback, $allArgs );
@@ -2843,12 +2854,6 @@ class Parser
 				# Check for language variants if the template is not found
 				if($wgContLang->hasVariants() && $title->getArticleID() == 0){
 					$wgContLang->findVariantLink( $part1, $title, true );
-				}
-				# Do infinite loop check
-				if ( !$frame->loopCheck( $title ) ) {
-					$found = true;
-					$text = '<span class="error">' . wfMsgForContent( 'parser-template-loop-warning', $titleText ) . '</span>';
-					wfDebug( __METHOD__.": template loop broken at '$titleText'\n" );
 				}
 				# Do recursion depth check
 				$limit = $this->mOptions->getMaxTemplateDepth();
@@ -2898,6 +2903,14 @@ class Parser
 					$isChildObj = true;
 				}
 				$found = true;
+			}
+
+			# Do infinite loop check
+			# This has to be done after redirect resolution to avoid infinite loops via redirects
+			if ( !$frame->loopCheck( $title ) ) {
+				$found = true;
+				$text = '<span class="error">' . wfMsgForContent( 'parser-template-loop-warning', $titleText ) . '</span>';
+				wfDebug( __METHOD__.": template loop broken at '$titleText'\n" );
 			}
 			wfProfileOut( __METHOD__ . '-loadtpl' );
 		}
@@ -3296,6 +3309,7 @@ class Parser
 	 * Fills $this->mDoubleUnderscores, returns the modified text
 	 */
 	function doDoubleUnderscore( $text ) {
+		wfProfileIn( __METHOD__ );
 		// The position of __TOC__ needs to be recorded
 		$mw = MagicWord::get( 'toc' );
 		if( $mw->match( $text ) ) {
@@ -3338,7 +3352,7 @@ class Parser
 		} elseif( isset( $this->mDoubleUnderscores['index'] ) ) {
 			$this->mOutput->setIndexPolicy( 'index' );
 		}
-
+		wfProfileOut( __METHOD__ );
 		return $text;
 	}
 
@@ -3357,7 +3371,7 @@ class Parser
 	 * @private
 	 */
 	function formatHeadings( $text, $isMain=true ) {
-		global $wgMaxTocLevel, $wgContLang, $wgEnforceHtmlIds;
+		global $wgMaxTocLevel, $wgContLang, $wgEnforceHtmlIds, $wgSectionContainers;
 
 		$doNumberHeadings = $this->mOptions->getNumberHeadings();
 		$showEditLink = $this->mOptions->getEditSection();
@@ -3368,7 +3382,7 @@ class Parser
 		}
 
 		# Inhibit editsection links if requested in the page
-		if ( isset( $this->mDoubleUnderscores['noeditsection'] ) ) {
+		if ( isset( $this->mDoubleUnderscores['noeditsection'] )  || $this->mOptions->getIsPrintable() ) {
 			$showEditLink = 0;
 		}
 
@@ -3644,6 +3658,10 @@ class Parser
 		$blocks = preg_split( '/<H[1-6].*?' . '>.*?<\/H[1-6]>/i', $text );
 		$i = 0;
 
+		if ( $wgSectionContainers ) {
+			$openDivs = array();
+		}
+		
 		foreach( $blocks as $block ) {
 			if( $showEditLink && $headlineCount > 0 && $i == 0 && $block !== "\n" ) {
 				# This is the [edit] link that appears for the top block of text when
@@ -3657,6 +3675,34 @@ class Parser
 			if( $enoughToc && !$i && $isMain && !$this->mForceTocPosition ) {
 				# Top anchor now in skin
 				$full = $full.$toc;
+			}
+			
+			# wrap each section in a div if $wgSectionContainers is set to true
+			if ( $wgSectionContainers ) {
+		        if( !empty( $head[$i] ) ) { # if there's no next header, then don't try to close out any existing sections here 
+		        	# get the level of the next header section
+					preg_match('/<H([0-6])/i', $head[$i], $hLevelMatches);
+		          	
+					if ( count($hLevelMatches) > 0 ) {
+						$hLevel = $hLevelMatches[1];
+						if ( $i != 0 ) { # we don't have an open div for section 0, so don't try to close it
+							# close any open divs for sections with headers that are <= to the next header level
+							$this->closeSectionContainers( $hLevel, $currentHLevel, $full, $openDivs);
+						}
+						$currentHLevel = $hLevel;
+					}
+				}
+
+				# open the div for the next header, if there is one
+				if ( isset($currentHLevel) && !empty( $head[$i] ) ) {
+					$full .= '<div id="section_' . $i . '_container">';
+					 array_push($openDivs, array($currentHLevel, $i));
+				}
+
+				# if we've outputed the last section of the article, close any open divs that are remaining
+				if ( $i == ( count($blocks) - 1)  && isset($currentHLevel) ) {
+					$this->closeSectionContainers( $hLevel, $currentHLevel, $full, $openDivs);
+				}
 			}
 
 			if( !empty( $head[$i] ) ) {
@@ -3672,18 +3718,41 @@ class Parser
 	}
 
 	/**
+	 * Analyze the header level of the current and next section being parsed to 
+	 * determine if any already parsed sections need to be closed
+	 *
+	 * @param string $hLevel the level of the next header to be parsed
+	 * @param string $currentHLevel the level of the last parsed header
+	 * @param string $full a reference to the string that stores the output of the parser
+	 * @param array $openDivs a reference to the array that stores a list of open section containers
+	 * @return true
+	 */
+	function closeSectionContainers( $hLevel, &$currentHLevel, &$full, &$openDivs) {
+		while ( $hLevel <= $currentHLevel ) {
+			$full .= '</div>';
+			$popped = array_pop($openDivs);
+			if ( count($openDivs) ) {
+				$currentHLevel = $openDivs[count($openDivs) - 1][0];
+			} else {
+				break;
+			}
+	 	} 			
+	 	return true;
+	}
+	
+	/**
 	 * Transform wiki markup when saving a page by doing \r\n -> \n
 	 * conversion, substitting signatures, {{subst:}} templates, etc.
 	 *
 	 * @param string $text the text to transform
 	 * @param Title &$title the Title object for the current article
-	 * @param User &$user the User object describing the current user
+	 * @param User $user the User object describing the current user
 	 * @param ParserOptions $options parsing options
 	 * @param bool $clearState whether to clear the parser state first
 	 * @return string the altered wiki markup
 	 * @public
 	 */
-	function preSaveTransform( $text, &$title, $user, $options, $clearState = true ) {
+	function preSaveTransform( $text, Title $title, $user, $options, $clearState = true ) {
 		$this->mOptions = $options;
 		$this->setTitle( $title );
 		$this->setOutputType( self::OT_WIKI );
@@ -4619,6 +4688,22 @@ class Parser
 			wfProfileOut( __METHOD__ );
 		}
 		return $this->mRevisionTimestamp;
+	}
+
+	/**
+	 * Get the name of the user that edited the last revision
+	 */
+	function getRevisionUser() {
+		// if this template is subst: the revision id will be blank,
+		// so just use the current user's name
+		if( $this->mRevisionId ) {
+			$revision = Revision::newFromId( $this->mRevisionId );
+			$revuser = $revision->getUserText();
+		} else {
+			global $wgUser;
+			$revuser = $wgUser->getName();
+		}
+		return $revuser;
 	}
 
 	/**

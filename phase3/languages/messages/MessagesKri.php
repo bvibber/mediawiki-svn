@@ -1,6 +1,9 @@
 <?php
 /** Krio (Krio)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -68,8 +71,12 @@ $messages = array(
 'category-empty'        => "''Dis katigori-ya noh geht noh pej o midya foh naw.''",
 'hidden-categories'     => '{{PLURAL:$1|Katigori we dehm dohn ayd|Katigori-dehm we dehm dohn ayd}}',
 
-'qbedit' => 'Chenj',
 'mytalk' => 'Mi Tohk',
+
+# Cologne Blue skin
+'qbedit'  => 'Chenj',
+'faq'     => 'Kweshtyohn-dehm we ohlman de aks',
+'faqpage' => 'Project:Kwehstyohn-dehm we ohlman de aks',
 
 'returnto'         => 'Go bak tu $1.',
 'tagline'          => 'Dis kòmòt {{SITENAME}}',
@@ -114,8 +121,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:Disklema fò òltin',
 'edithelp'             => 'Advais foh we yu wan ehdit',
 'edithelppage'         => 'Help:Ehditin',
-'faq'                  => 'Kweshtyohn-dehm we ohlman de aks',
-'faqpage'              => 'Project:Kwehstyohn-dehm we ohlman de aks',
 'helppage'             => 'Help:Kohntehnt-dehm',
 'mainpage'             => 'Men Pej',
 'mainpage-description' => 'Men Pej',
@@ -187,8 +192,6 @@ Luk [[Special:Version|version page]].',
 'badretype'               => 'Di tu paswohd-dehm noh mach.',
 'userexists'              => 'Ohda pohsin dohn tek da yuzanem de.
 Yu go geht foh pik ohda wan.',
-'youremail'               => 'E-mail:',
-'username'                => 'Yuzanem:',
 
 # Edit pages
 'watchthis'                        => 'Wach dis pej-ya',
@@ -202,13 +205,12 @@ So dehm go sev yu IP address na di pej-im chenj istri",
 If yu pres Sev bak, dehm go sev yu chenj lehk so.",
 'missingcommenttext'               => 'Rait yu opinyohn ohnda yah.',
 'permissionserrorstext-withaction' => 'Yu noh go ebul fo $2, bicoh {{PLURAL:$1|reason|reasons}}:',
-'recreate-deleted-warn'            => "'''Ebo!!: Yu de mek bak wan pej we dehm bin dohn ires.'''
+'recreate-moveddeleted-warn'       => "'''Ebo!!: Yu de mek bak wan pej we dehm bin dohn ires.'''
 
 Yu sabi if yu foh wok pan dis pej-ya.
 Di log we dehm kip foh dis pej-in dilishohn de ya:",
-'deleted-notice'                   => 'Dehm dohn ires dis pej-ya.
+'moveddeleted-notice'              => 'Dehm dohn ires dis pej-ya.
 Di log we dehm kip foh dis pej-in dilishohn de ya:',
-'deletelog-fulllog'                => 'Luk di wan-ol lohg',
 'edit-hook-aborted'                => 'Wan Hook dohn pul wetin yu chenj.
 I noh eksplen wetin-mek.',
 'edit-gone-missing'                => 'Wi noh ebul updet dis pej-ya.
@@ -254,6 +256,8 @@ Mehmba se sohmtehm dehm indeks-dehm noh ohp-tu-det {{SITENAME}}.',
 # Preferences page
 'prefsnologin'      => 'Yu noh kam insai di sait yet',
 'searchresultshead' => 'Luk foh am',
+'youremail'         => 'E-mail:',
+'username'          => 'Yuzanem:',
 
 # Upload
 'upload'          => 'Òplod fail',
@@ -322,6 +326,7 @@ Di [[Special:WhatLinksHere/$2|ful list]] de yah.',
 # Undelete
 'undelete-search-submit' => 'Luk foh am',
 
+'sp-contributions-talk'   => 'Tòk',
 'sp-contributions-submit' => 'Luk foh am',
 
 # What links here

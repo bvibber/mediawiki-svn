@@ -26,6 +26,7 @@ class SpecialListGroupRights extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgImplicitGroups, $wgMessageCache;
 		global $wgGroupPermissions, $wgAddGroups, $wgRemoveGroups;
+		global $wgGroupsAddToSelf, $wgGroupsRemoveFromSelf;
 		$wgMessageCache->loadAllMessages();
 
 		$this->setHeaders();
@@ -63,15 +64,21 @@ class SpecialListGroupRights extends SpecialPage {
 				$grouppage = $this->skin->makeLink( $grouppageLocalized, $groupnameLocalized );
 			}
 
-			if ( !in_array( $group, $wgImplicitGroups ) ) {
+			if ( $group === 'user' ) {
+				// Link to Special:listusers for implicit group 'user'
+				$grouplink = '<br />' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Listusers' ), wfMsgHtml( 'listgrouprights-members' ), ''  );
+			} elseif ( !in_array( $group, $wgImplicitGroups ) ) {
 				$grouplink = '<br />' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Listusers' ), wfMsgHtml( 'listgrouprights-members' ), 'group=' . $group );
 			} else {
-				// No link to Special:listusers for implicit groups as they are unlistable
+				// No link to Special:listusers for other implicit groups as they are unlistable
 				$grouplink = '';
 			}
 
 			$addgroups = isset( $wgAddGroups[$group] ) ? $wgAddGroups[$group] : array();
 			$removegroups = isset( $wgRemoveGroups[$group] ) ? $wgRemoveGroups[$group] : array();
+
+			$addgroupsSelf = isset( $wgGroupsAddToSelf[$group] ) ? $wgGroupsAddToSelf[$group] : array();
+			$removegroupsSelf = isset( $wgGroupsRemoveFromSelf[$group] ) ? $wgGroupsRemoveFromSelf[$group] : array();
 
 			$wgOut->addHTML(
 				'<tr>
@@ -79,7 +86,7 @@ class SpecialListGroupRights extends SpecialPage {
 						$grouppage . $grouplink .
 					'</td>
 					<td>' .
-						self::formatPermissions( $permissions, $addgroups, $removegroups ) .
+						self::formatPermissions( $permissions, $addgroups, $removegroups, $addgroupsSelf, $removegroupsSelf ) .
 					'</td>
 				</tr>'
 			);
@@ -95,7 +102,7 @@ class SpecialListGroupRights extends SpecialPage {
 	 * @param $permissions Array of permission => bool (from $wgGroupPermissions items)
 	 * @return string List of all granted permissions, separated by comma separator
 	 */
-	 private static function formatPermissions( $permissions, $add, $remove ) {
+	 private static function formatPermissions( $permissions, $add, $remove, $addSelf, $removeSelf ) {
 	 	global $wgLang;
 		$r = array();
 		foreach( $permissions as $permission => $granted ) {
@@ -117,6 +124,16 @@ class SpecialListGroupRights extends SpecialPage {
 			$r[] = wfMsgExt( 'listgrouprights-removegroup-all', array( 'escape' ) );
 		} else if( is_array( $remove ) && count( $remove ) ) {
 			$r[] = wfMsgExt( 'listgrouprights-removegroup', array( 'parseinline' ), $wgLang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $remove ) ), count( $remove ) );
+		}
+		if( $addSelf === true ){
+			$r[] = wfMsgExt( 'listgrouprights-addgroup-self-all', array( 'escape' ) );
+		} else if( is_array( $addSelf ) && count( $addSelf ) ) {
+			$r[] = wfMsgExt( 'listgrouprights-addgroup-self', array( 'parseinline' ), $wgLang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $addSelf ) ), count( $addSelf ) );
+		}
+		if( $removeSelf === true ){
+			$r[] = wfMsgExt( 'listgrouprights-removegroup-self-all', array( 'escape' ) );
+		} else if( is_array( $removeSelf ) && count( $removeSelf ) ) {
+			$r[] = wfMsgExt( 'listgrouprights-removegroup-self', array( 'parseinline' ), $wgLang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $removeSelf ) ), count( $removeSelf ) );
 		}
 		if( empty( $r ) ) {
 			return '';

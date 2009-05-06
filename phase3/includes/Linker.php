@@ -227,6 +227,13 @@ class Linker {
 		return $ret;
 	}
 
+	/**
+	 * Identical to link(), except $options defaults to 'known'.
+	 */
+	public function linkKnown( $target, $text = null, $customAttribs = array(), $query = array(), $options = 'known' ) {
+		return $this->link( $target, $text, $customAttribs, $query, $options );
+	}
+
 	private function linkUrl( $target, $query, $options ) {
 		wfProfileIn( __METHOD__ );
 		# We don't want to include fragments for broken links, because they
@@ -284,7 +291,10 @@ class Linker {
 		}
 
 		# Get a default title attribute.
-		if( in_array( 'known', $options ) ) {
+		if( $target->getPrefixedText() == '' ) {
+			# A link like [[#Foo]].  This used to mean an empty title
+			# attribute, but that's silly.  Just don't output a title.
+		} elseif( in_array( 'known', $options ) ) {
 			$defaults['title'] = $target->getPrefixedText();
 		} else {
 			$defaults['title'] = wfMsg( 'red-link-title', $target->getPrefixedText() );
@@ -433,7 +443,6 @@ class Linker {
 	 * @param $prefix String: optional prefix. As trail, only before instead of after.
 	 */
 	function makeLinkObj( $nt, $text= '', $query = '', $trail = '', $prefix = '' ) {
-		global $wgUser;
 		wfProfileIn( __METHOD__ );
 
 		$query = wfCgiToArray( $query );
@@ -882,10 +891,13 @@ class Linker {
 			}
 		}
 
-		if( $page ) {
-			$query = $query ? '&page=' . urlencode( $page ) : 'page=' . urlencode( $page );
-		}
+		# ThumbnailImage::toHtml() already adds page= onto the end of DjVu URLs
+		# So we don't need to pass it here in $query. However, the URL for the
+		# zoom icon still needs it, so we make a unique query for it. See bug 14771
 		$url = $title->getLocalURL( $query );
+		if( $page ) { 
+			$url = wfAppendQuery( $url, 'page=' . urlencode( $page ) );
+		}
 
 		$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
 
@@ -1007,21 +1019,36 @@ class Linker {
 		  wfMsg( $key ) );
 	}
 
-	/** @todo document */
+	/**
+	 * Make an external link
+	 * @param String $url URL to link to
+	 * @param String $text text of link
+	 * @param boolean $escape Do we escape the link text?
+	 * @param String $linktype Type of external link. Gets added to the classes
+	 * @param array $attribs Array of extra attributes to <a>
+	 * 
+	 * @TODO! @FIXME! This is a really crappy implementation. $linktype and 
+	 * 'external' are mashed into the class attrib for the link (which is made
+	 * into a string). Then, if we've got additional params in $attribs, we 
+	 * add to it. People using this might want to change the classes (or other
+	 * default link attributes), but passing $attribsText is just messy. Would 
+	 * make a lot more sense to make put the classes into $attribs, let the 
+	 * hook play with them, *then* expand it all at once. 
+	 */
 	function makeExternalLink( $url, $text, $escape = true, $linktype = '', $attribs = array() ) {
 		$attribsText = $this->getExternalLinkAttributes( $url, $text, 'external ' . $linktype );
-		if ( $attribs ) {
-			$attribsText .= Xml::expandAttributes( $attribs );
-		}
 		$url = htmlspecialchars( $url );
 		if( $escape ) {
 			$text = htmlspecialchars( $text );
 		}
 		$link = '';
-		$success = wfRunHooks('LinkerMakeExternalLink', array( &$url, &$text, &$link ) );
+		$success = wfRunHooks('LinkerMakeExternalLink', array( &$url, &$text, &$link, &$attribs, $linktype ) );
 		if(!$success) {
 			wfDebug("Hook LinkerMakeExternalLink changed the output of link with url {$url} and text {$text} to {$link}\n", true);
 			return $link;
+		}
+		if ( $attribs ) {
+			$attribsText .= Xml::expandAttributes( $attribs );
 		}
 		return '<a href="'.$url.'"'.$attribsText.'>'.$text.'</a>';
 	}
@@ -1357,6 +1384,7 @@ class Linker {
 	 * @return string HTML
 	 */
 	function revComment( Revision $rev, $local = false, $isPublic = false ) {
+		if( $rev->getComment() == "" ) return "";
 		if( $rev->isDeleted( Revision::DELETED_COMMENT ) && $isPublic ) {
 			$block = " <span class=\"comment\">" . wfMsgHtml( 'rev-deleted-comment' ) . "</span>";
 		} else if( $rev->userCan( Revision::DELETED_COMMENT ) ) {

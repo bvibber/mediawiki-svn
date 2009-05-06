@@ -100,6 +100,16 @@ abstract class ApiFormatBase extends ApiBase {
 	public function getIsHtml() {
 		return $this->mIsHtml;
 	}
+	
+	/**
+	 * Whether this formatter can format the help message in a nice way.
+	 * By default, this returns the same as getIsHtml().
+	 * When action=help is set explicitly, the help will always be shown 
+	 * @return bool
+	 */
+	public function getWantsHelp() {
+		return $this->getIsHtml();
+	}
 
 	/**
 	 * Initialize the printer function and prepare the output headers, etc.
@@ -219,14 +229,14 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 		// identify URLs
 		$protos = implode("|", $wgUrlProtocols);
 		# This regex hacks around bug 13218 (&quot; included in the URL)
-		$text = preg_replace("#(($protos).*?)(&quot;)?([ \\'\"<\n])#", '<a href="\\1">\\1</a>\\3\\4', $text);
+		$text = preg_replace("#(($protos).*?)(&quot;)?([ \\'\"<>\n]|&lt;|&gt;|&quot;)#", '<a href="\\1">\\1</a>\\3\\4', $text);
 		// identify requests to api.php
 		$text = preg_replace("#api\\.php\\?[^ \\()<\n\t]+#", '<a href="\\0">\\0</a>', $text);
 		if( $this->mHelp ) {
 			// make strings inside * bold
-			$text = ereg_replace("\\*[^<>\n]+\\*", '<b>\\0</b>', $text);
+			$text = preg_replace("#\\*[^<>\n]+\\*#", '<b>\\0</b>', $text);
 			// make strings inside $ italic
-			$text = ereg_replace("\\$[^<>\n]+\\$", '<b><i>\\0</i></b>', $text);
+			$text = preg_replace("#\\$[^<>\n]+\\$#", '<b><i>\\0</i></b>', $text);
 		}
 
 		/* Temporary fix for bad links in help messages. As a special case,

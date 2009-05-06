@@ -67,7 +67,7 @@ class MergehistoryForm {
 	}
 
 	function execute() {
-		global $wgOut, $wgUser;
+		global $wgOut;
 
 		$wgOut->setPagetitle( wfMsgHtml( "mergehistory" ) );
 
@@ -97,7 +97,7 @@ class MergehistoryForm {
 			);
 		}
 		
-		if ( $this->mTargetObj->equals( $this->mDestObj ) ) {
+		if ( $this->mTargetObj && $this->mDestObj && $this->mTargetObj->equals( $this->mDestObj ) ) {
 			$errors[] = wfMsgExt( 'mergehistory-same-destination', array( 'parse' ) );
 		}
 
@@ -165,19 +165,15 @@ class MergehistoryForm {
 			# in a nice little table
 			$table =
 				Xml::openElement( 'fieldset' ) .
+				wfMsgExt( 'mergehistory-merge', array('parseinline'),
+					$this->mTargetObj->getPrefixedText(), $this->mDestObj->getPrefixedText() ) .
 				Xml::openElement( 'table', array( 'id' => 'mw-mergehistory-table' ) ) .
 					"<tr>
 						<td class='mw-label'>" .
-							wfMsgExt( 'mergehistory-merge', array('parseinline'),
-								$this->mTargetObj->getPrefixedText(), $this->mDestObj->getPrefixedText() ) .
-						"</td>
-					</tr>
-					<tr>
-						<td class='mw-label'>" .
-							Xml::label( wfMsg( 'undeletecomment' ), 'wpComment' ) .
+							Xml::label( wfMsg( 'mergehistory-reason' ), 'wpComment' ) .
 						"</td>
 						<td class='mw-input'>" .
-							Xml::input( 'wpComment', 50, $this->mComment ) .
+							Xml::input( 'wpComment', 50, $this->mComment, array('id' => 'wpComment') ) .
 						"</td>
 					</tr>
 					<tr>
@@ -222,7 +218,7 @@ class MergehistoryForm {
 	}
 
 	function formatRevisionRow( $row ) {
-		global $wgUser, $wgLang;
+		global $wgLang;
 
 		$rev = new Revision( $row );
 
@@ -274,7 +270,7 @@ class MergehistoryForm {
 	}
 
 	function merge() {
-		global $wgOut, $wgUser;
+		global $wgOut;
 		# Get the titles directly from the IDs, in case the target page params
 		# were spoofed. The queries are done based on the IDs, so it's best to
 		# keep it consistent...
@@ -438,7 +434,7 @@ class MergeHistoryPager extends ReverseChronologicalPager {
 		return array(
 			'tables' => array('revision','page'),
 			'fields' => array( 'rev_minor_edit', 'rev_timestamp', 'rev_user', 'rev_user_text', 'rev_comment',
-				 'rev_id', 'rev_page', 'rev_text_id', 'rev_len', 'rev_deleted' ),
+				 'rev_id', 'rev_page', 'rev_parent_id', 'rev_text_id', 'rev_len', 'rev_deleted' ),
 			'conds' => $conds
 		);
 	}

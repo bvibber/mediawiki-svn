@@ -2135,7 +2135,7 @@ class Database {
 			wfDebug( "getLag: fake slave lagged {$this->mFakeSlaveLag} seconds\n" );
 			return $this->mFakeSlaveLag;
 		}
-		$res = $this->query( 'SHOW PROCESSLIST' );
+		$res = $this->query( 'SHOW PROCESSLIST', __METHOD__ );
 		# Find slave SQL thread
 		while ( $row = $this->fetchObject( $res ) ) {
 			/* This should work for most situations - when default db 
@@ -2586,12 +2586,29 @@ class DBConnectionError extends DBError {
 
 		$extra = $this->searchForm();
 
-		if($wgUseFileCache) {
-			$cache = $this->fileCachedPage();
-			if ( $cache !== null ) $extra = $cache;
+		if( $wgUseFileCache ) {
+			try {
+				$cache = $this->fileCachedPage();
+				# Cached version on file system?
+				if( $cache !== null ) {
+					# Hack: extend the body for error messages
+					$cache = str_replace( array('</html>','</body>'), '', $cache );
+					# Add cache notice...
+					$cachederror = "This is a cached copy of the requested page, and may not be up to date. ";
+					# Localize it if possible...
+					if( $wgLang instanceof Language ) {
+						$cachederror = htmlspecialchars( $wgLang->getMessage( 'dberr-cachederror' ) );
+					}
+					$warning = "<div style='color:red;font-size:150%;font-weight:bold;'>$cachederror</div>";
+					# Output cached page with notices on bottom and re-close body
+					return "{$cache}{$warning}<hr />$text<hr />$extra</body></html>";
+				}
+			} catch( MWException $e ) {
+				// Do nothing, just use the default page
+			}
 		}
-
-		return $text . '<hr />' . $extra;
+		# Headers needed here - output is just the error message
+		return $this->htmlHeader()."$text<hr />$extra".$this->htmlFooter();
 	}
 
 	function searchForm() {
@@ -2618,7 +2635,7 @@ class DBConnectionError extends DBError {
     <input type="hidden" name="ie" value="$wgInputEncoding" />
     <input type="hidden" name="oe" value="$wgInputEncoding" />
 
-    <img src="http://www.google.com/logos/Logo_40wht.gif" style="float:left; margin-left: 1.5em; margin-right: 1.5em;" />
+    <img src="http://www.google.com/logos/Logo_40wht.gif" alt="" style="float:left; margin-left: 1.5em; margin-right: 1.5em;" />
 
     <input type="text" name="q" size="31" maxlength="255" value="$search" />
     <input type="submit" name="btnG" value="$googlesearch" />
@@ -2633,18 +2650,16 @@ EOT;
 	}
 
 	function fileCachedPage() {
-		global $wgTitle, $title, $wgLang;
-
-		$cachederror = "The following is a cached copy of the requested page, and may not be up to date. ";
+		global $wgTitle, $title, $wgLang, $wgOut;
+		if( $wgOut->isDisabled() ) return; // Done already?
 		$mainpage = 'Main Page';
 		if ( $wgLang instanceof Language ) {
-			$cachederror = htmlspecialchars( $wgLang->getMessage( 'dberr-cachederror' ) );
 			$mainpage    = htmlspecialchars( $wgLang->getMessage( 'mainpage' ) );
 		}
 
-		if($wgTitle) {
+		if( $wgTitle ) {
 			$t =& $wgTitle;
-		} elseif($title) {
+		} elseif( $title ) {
 			$t = Title::newFromURL( $title );
 		} else {
 			$t = Title::newFromText( $mainpage );
@@ -2652,11 +2667,14 @@ EOT;
 
 		$cache = new HTMLFileCache( $t );
 		if( $cache->isFileCached() ) {
-			$warning = "<div style='color:red;font-size:150%;font-weight:bold;'>$cachederror</div>";
-			return $warning . $cache->fetchPageText();
+			return $cache->fetchPageText();
 		} else {
 			return '';
 		}
+	}
+	
+	function htmlBodyOnly() {
+		return true;
 	}
 
 }

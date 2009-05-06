@@ -1,6 +1,9 @@
 <?php
 /** Ewe (Eʋegbe)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -72,16 +75,18 @@ $messages = array(
 'nov'           => 'Ade',
 'dec'           => 'Dzom',
 
-'about'          => 'Ŋutinya',
-'newwindow'      => '(eʋua fesre yeye)',
-'cancel'         => 'Dzudzɔ etɔtrɔ',
+'about'      => 'Ŋutinya',
+'newwindow'  => '(eʋua fesre yeye)',
+'cancel'     => 'Dzudzɔ etɔtrɔ',
+'mypage'     => 'Axa nye',
+'navigation' => 'Mɔtabiala',
+'and'        => '&#32;kpakple',
+
+# Cologne Blue skin
 'qbedit'         => 'Trɔ asi le eŋu',
 'qbpageoptions'  => 'Axa sia',
 'qbmyoptions'    => 'Nyeƒe axawo',
 'qbspecialpages' => 'Axa tɔxewo',
-'mypage'         => 'Axa nye',
-'navigation'     => 'Mɔtabiala',
-'and'            => '&#32;kpakple',
 
 'errorpagetitle'   => 'Vodada',
 'returnto'         => 'Gbugbɔ yi $1.',
@@ -94,8 +99,14 @@ $messages = array(
 'history'          => 'Axa sia ƒe tata xoxoawo',
 'history_short'    => 'Xoxoawo',
 'edit'             => 'Trɔ asi le eŋu',
+'create'           => 'Dze egɔme',
 'editthispage'     => 'Ðɔ axa sia ɖo',
+'create-this-page' => 'Dze axa sia gɔme',
 'delete'           => 'Tutui',
+'deletethispage'   => 'Tutu axa sia',
+'protect'          => 'Dzɔ eŋu',
+'protect_change'   => 'ɖɔlii',
+'protectthispage'  => 'Dzɔ axa sia ŋu',
 'newpage'          => 'Axa yeye',
 'talkpagelinktext' => 'Nyamedzroƒe',
 'specialpage'      => 'Axa Tɔxe',
@@ -130,13 +141,17 @@ $messages = array(
 'youhavenewmessagesmulti' => 'Du yeyewo le asiwo le $1',
 'editsection'             => 'trɔ asi le eŋu',
 'editold'                 => 'trɔ asi le eŋu',
+'editlink'                => 'trɔ asi le eŋu',
+'viewsourcelink'          => 'kpɔ alesi woŋlɔe',
+'toc'                     => 'Emenyawo',
 'showtoc'                 => 'fia',
 'hidetoc'                 => 'ɣla',
+'red-link-title'          => '$1 (womeŋlɔ axa sia haɖeke o)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Axa',
 'nstab-user'      => 'Ezãla axa',
-'nstab-special'   => 'Tɔxe',
+'nstab-special'   => 'Axa tɔxe',
 'nstab-image'     => 'Agbalẽ',
 'nstab-mediawiki' => 'Du',
 
@@ -157,7 +172,6 @@ $messages = array(
 'createaccount'              => 'Ŋlɔ ŋkɔ daɖi',
 'gotaccount'                 => 'Wò ŋlɔ ŋkɔ xoxoa? $1.',
 'gotaccountlink'             => 'Ge ɖe eme',
-'yourlanguage'               => 'Gbe:',
 'loginsuccesstitle'          => 'Wò ge ɖe eme azɔ̃.',
 'loginsuccess'               => "'''Wò le {{SITENAME}} me fifia abe \"\$1\" ene.'''",
 'acct_creation_throttle_hit' => 'Taflatse, wòŋlɔ {{PLURAL:$1|1 ŋkɔ|$1 ŋkɔwo}} xoxo.
@@ -168,20 +182,23 @@ Wòmageteŋu agbugbɔ aŋlɔe o.',
 'sig_tip' => 'Dzesiwò kple gaƒoƒoa',
 
 # Edit pages
+'subject'          => 'Ta nya:',
 'minoredit'        => 'Esia nye tɔtrɔ sue aɖe ko',
 'watchthis'        => 'Le ŋku ɖe axa sia ŋu',
 'savearticle'      => 'Dzra axa sia ɖo',
+'preview'          => 'Kpɔe do ŋgɔ',
 'showpreview'      => 'Fiae do ŋgɔ',
 'showdiff'         => 'Fia tɔtrɔwo',
 'newarticle'       => '(Yeye)',
 'newarticletext'   => "Eva ɖo axa si gɔme womedze haɖeke o. Ne wòadi be yeadze egɔme la, dze nuŋlɔm ɖe go sia me le afi sia ɖome (kpɔ [[{{MediaWiki:Helppage}}|kpekpeɖeŋu nyawo]] na kpekpeɖeŋu bubuwo). Ne wòme ɖoe be yeava afii hafi o la, ekema tia '''megbe''' eye wòa gbugbɔ ayi afisi wòtso va.",
 'previewnote'      => "'''Wole afii fiam do ŋgɔ, wome dzrae ɖo haɖeke o!'''",
 'editing'          => '$1 na etɔtrɔ',
+'editingsection'   => 'Wòle $1 (ƒe akpa aɖe) trɔm',
 'copyrightwarning' => "Taflatse, mítsɔe be nusiwo katã netsɔ kpe ɖe {{SITENAME}} ŋu lii fãa le $2 la nu (kpɔ $1 me nyawo). Ne madze ŋuwò be amebubuwo natrɔ asi le nusiwo newɔ ŋuti o, eye woagbugbɔ dɔsiwo newɔ ama na amebubuwo fãa o la, mega dae ɖe afisia o.<br /> Wòle ŋugbe dom na mí bena wò ŋutɔe ŋlɔ nusiawo, alo etsɔe tso afisi mɔɖeɖe li fãa be amesiame na tsɔ nuwo tso afima fãa. '''MEGA DA NUSIWO ŊU MƆƉEƉE MELI NA O ƉE AFISIA O!'''",
 
 # History pages
 'revisionasof'        => 'Tataa le $1',
-'revision-info'       => 'Tataa le $1 si $2 wɔ', # Additionally available: $3: revision id
+'revision-info'       => 'Tataa le $1 si $2 wɔ',
 'previousrevision'    => '← Tata xoxoa',
 'nextrevision'        => 'Tata yeyea →',
 'currentrevisionlink' => 'Tata susuea',
@@ -193,7 +210,7 @@ Wòmageteŋu agbugbɔ aŋlɔe o.',
 'histlast'            => 'Yeyeɛwu',
 
 # Revision feed
-'history-feed-item-nocomment' => '$1 le $2', # user at time
+'history-feed-item-nocomment' => '$1 le $2',
 'history-feed-empty'          => 'Axa si dim wòle meli o.
 Dewomahĩ, wotutui le wiki sia dzi alo wotrɔ eƒe ŋkɔ.
 Zã [[Special:Search|nuwo didi le wiki sia dzi]] kpɔ na axa yeyeawo.',
@@ -204,15 +221,34 @@ Zã [[Special:Search|nuwo didi le wiki sia dzi]] kpɔ na axa yeyeawo.',
 'lineno'        => 'Fli $1:',
 
 # Search results
+'searchresults'         => 'Nusiwo wòdi',
+'searchresults-title'   => 'Nusiwo wofɔ le "$1" didi me',
+'searchsubtitleinvalid' => "Wòdi '''$1'''",
 'noexactmatch'          => "'''Tanya \"\$1\" mesɔ kple axa aɖeke tɔ o.'''
 Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'noexactmatch-nocreate' => "'''Tanya \"\$1\" mesɔ kple axa aɖeke tɔ o.'''",
+'notitlematches'        => 'Mesɔ axa aɖeke ƒe tanya o',
 'prevn'                 => '$1 do ŋgɔ',
+'nextn'                 => '$1 yometɔwo',
 'viewprevnext'          => 'Kpɔ ($1) ($2) ($3)',
+'searchmenu-exists'     => "'''Axa si ŋkɔ enye \"[[:\$1]]\" le wiki sia dzi'''",
+'searchmenu-new'        => "'''Dze axa \"[[:\$1]]\" sia ŋlɔm ɖe wiki la dzi!'''",
+'search-result-size'    => '$1 ({{PLURAL:$2|nya 1|nya $2}})',
+'showingresultstotal'   => "Wofia {{PLURAL:$4|wò didi '''$1''' tso '''$3''' me|wò didiwo  '''$1 - $2''' tso '''$3''' me}} le afii",
 'powersearch'           => 'Dii',
+'powersearch-field'     => 'Di',
 
 # Preferences page
+'preferences'   => 'Didiwo',
 'mypreferences' => 'Nyeƒe didiwo',
+'skin-preview'  => 'Kpɔe do ŋgɔ',
+'yourlanguage'  => 'Gbe:',
+
+# Groups
+'group-sysop' => 'Dɔdzikpɔlawo',
+
+# Associated actions - in the sentence "You do not have permission to X"
+'action-edit' => 'trɔ asi le axa sia ŋu',
 
 # Recent changes
 'recentchanges'        => 'Tɔtrɔ yeyewo',
@@ -221,6 +257,7 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'rcnotefrom'           => 'Tɔtrɔwo siwo wowɔ tso <b>$2</b> (wofia vaseɖe <b>$1</b>) le afii.',
 'rclistfrom'           => 'Fia tɔtrɔ yeyewo tso $1',
 'rcshowhideminor'      => '$1 tɔtrɔ suewo',
+'rcshowhidebots'       => '$1 bɔtwo',
 'rcshowhideliu'        => '$1 ezãla siwo ŋlɔ ŋkɔ',
 'rcshowhideanons'      => '$1 ŋkɔ maŋlɔlawo',
 'rcshowhidemine'       => '$1 nyeƒe tɔtrɔwo',
@@ -245,6 +282,7 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'filehist-datetime' => 'Ŋkeke/Gaƒoƒo',
 'filehist-user'     => 'Ezãla',
 'linkstoimage'      => 'Axa {{PLURAL:$1|sia|$1 siawo}} ku ɖe agbalẽ sia ŋu.',
+'sharedupload'      => "Agbalɛ̃ sia tso $1 eye dɔ (''alo project'') bubuawo woateŋu azãe fãa.",
 
 # MIME search
 'mimesearch' => 'MIME me didi',
@@ -255,6 +293,9 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 
 # Statistics
 'statistics' => 'Akɔntawo',
+
+'brokenredirects-edit'   => '(trɔ asi le eŋu)',
+'brokenredirects-delete' => '(tutui)',
 
 'fewestrevisions' => 'Axawo siwo womeɖɔɖo zã o',
 
@@ -269,6 +310,13 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'ancientpages'   => 'Axawo si wo do xoxo wu',
 'move'           => 'Ɖɔli eƒe nɔƒe',
 'movethispage'   => 'Ɖɔli axa sia ƒe nɔƒe',
+'pager-newer-n'  => '{{PLURAL:$1|1 yeyea|$1 yeyeawo}}',
+'pager-older-n'  => '{{PLURAL:$1|1 xoxoa|$1 xoxoawo}}',
+
+# Book sources
+'booksources'               => 'Agbalɛ̃wo ƒe tsoƒe',
+'booksources-search-legend' => 'Di agbalẽwo ƒe tsoƒewo',
+'booksources-go'            => 'Yi',
 
 # Special:Log
 'specialloguserlabel'  => 'Ezãla:',
@@ -280,6 +328,7 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'nextpage'       => 'Axa yometɔ ($1)',
 'prevpage'       => 'Axa do ŋgɔ ($1)',
 'allpagesfrom'   => 'Fia axawo tso:',
+'allpagesto'     => 'Fia axawo vaseɖe:',
 'allarticles'    => 'Axawo katã',
 'allinnamespace' => 'Axawo katã ($1 namespace)',
 'allpagessubmit' => 'Yi',
@@ -288,6 +337,7 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'linksearch-ok' => 'Dii',
 
 # Special:Log/newusers
+'newuserlogpage'           => 'Ŋkɔŋlɔla yeyewo ƒe xexlẽme',
 'newuserlog-create-entry'  => 'Nuŋlɔla yeye',
 'newuserlog-create2-entry' => 'woŋlɔ ŋkɔ na $1',
 
@@ -299,12 +349,14 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 
 # Delete
 'deletepage'     => 'Tutu axa sia',
+'actioncomplete' => 'Wowɔe vɔ',
 'deletedarticle' => 'wotutu "[[$1]]"',
 
 # Protect
 'prot_1movedto2'              => '[[$1]] wohee yi [[$2]]',
-'protect-level-autoconfirmed' => 'Xemɔ na ŋkɔmaŋlɔlawo',
-'protect-expiry-options'      => 'gaƒoƒo 2:2 hours,ŋkeke 1:1 day,ŋkeke 3:3 days,kɔsiɖa 1:1 week,kɔsiɖa 2:2 weeks,ɣleti 1:1 month,ɣleti 3:3 months,ɣleti 6:6 months,ƒe 1:1 year,tegbe:infinite', # display1:time1,display2:time2,...
+'protect-default'             => 'Namɔ ezãlawo katã',
+'protect-level-autoconfirmed' => 'Xemɔ na ame yeyewo kple ŋkɔmaŋlɔlawo',
+'protect-expiry-options'      => 'gaƒoƒo 2:2 hours,ŋkeke 1:1 day,ŋkeke 3:3 days,kɔsiɖa 1:1 week,kɔsiɖa 2:2 weeks,ɣleti 1:1 month,ɣleti 3:3 months,ɣleti 6:6 months,ƒe 1:1 year,tegbe:infinite',
 'restriction-type'            => 'Mɔɖeɖe:',
 
 # Undelete
@@ -315,40 +367,50 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'invert' => 'Trɔ tatiawo tu',
 
 # Contributions
-'contributions' => 'Ezãla ƒe nuŋɔŋlɔwo',
-'mycontris'     => 'Nyeƒe nuŋɔŋlɔwo',
-'uctop'         => '(tametɔ)',
-'month'         => 'Tso ɣleti (kple do ŋgɔ):',
-'year'          => 'Tso ƒe (kple do ŋgɔ):',
+'contributions'       => 'Ezãla ƒe nuŋɔŋlɔwo',
+'contributions-title' => '$1 ƒe nuŋɔŋlɔwo',
+'mycontris'           => 'Nyeƒe nuŋɔŋlɔwo',
+'contribsub2'         => 'Na $1 ($2)',
+'uctop'               => '(tametɔ)',
+'month'               => 'Tso ɣleti (kple do ŋgɔ):',
+'year'                => 'Tso ƒe (kple do ŋgɔ):',
 
 'sp-contributions-newbies' => 'Fia ŋkɔŋlɔla yeyewo ƒe ɖɔɖɔɖowo ko.',
+'sp-contributions-talk'    => 'Nyamedzroƒe',
 
 # What links here
 'whatlinkshere'       => 'Nusiwo kaa afii ŋu',
 'whatlinkshere-title' => 'Axawo siwo ku ɖe "$1" ŋu',
+'whatlinkshere-page'  => 'Axa:',
 'linkshere'           => "Axa siwo le afisia ku ɖe '''[[:$1]]''' ŋu:",
 'nolinkshere'         => "Axa aɖeke meku ɖe '''[[:$1]]''' ŋu o.",
 'whatlinkshere-prev'  => '{{PLURAL:$1|do ŋgɔ|$1 do ŋgɔ}}',
 'whatlinkshere-next'  => '{{PLURAL:$1|eyome|$1 eyome}}',
 
 # Block/unblock
-'blockip'            => 'Xe mɔ na ezãla sia',
-'blockip-legend'     => 'Xe mɔ na ezãla sia',
-'ipboptions'         => 'gaƒoƒo 2:2 hours,ŋkeke 1:1 day,ŋkeke 3:3 days,kɔsiɖa 1:1 week,kɔsiɖa 2:2 weeks,ɣleti 1:1 month,ɣleti 3:3 months,ɣleti 6:6 months,ƒe 1:1 year,tegbe:infinite', # display1:time1,display2:time2,...
-'createaccountblock' => 'woxe mɔ na ŋkɔa ŋɔŋlɔ',
-'blocklink'          => 'xemɔ',
-'unblocklink'        => 'ɖe mɔxexe',
+'blockip'                  => 'Xe mɔ na ezãla sia',
+'blockip-legend'           => 'Xe mɔ na ezãla sia',
+'ipboptions'               => 'gaƒoƒo 2:2 hours,ŋkeke 1:1 day,ŋkeke 3:3 days,kɔsiɖa 1:1 week,kɔsiɖa 2:2 weeks,ɣleti 1:1 month,ɣleti 3:3 months,ɣleti 6:6 months,ƒe 1:1 year,tegbe:infinite',
+'createaccountblock'       => 'woxe mɔ na ŋkɔa ŋɔŋlɔ',
+'blocklink'                => 'xemɔ',
+'unblocklink'              => 'ɖe mɔxexe',
+'change-blocklink'         => 'ɖɔli mɔxexe',
+'blocklogentry'            => 'xemɔ na [[$1]] vaseɖe $2 megbe $3',
+'block-log-flags-nocreate' => 'wo xemɔ na ŋkɔ ŋɔŋlɔ',
 
 # Move page
 'move-page-legend' => 'Ɖɔli eƒe nɔƒe',
 'movearticle'      => 'Ɖɔli eƒe nɔƒe:',
 'move-watch'       => 'Le ŋku ɖe axa sia ŋu',
 'movepagebtn'      => 'Ɖɔli eƒe nɔƒe',
-'movepage-moved'   => '<big>\'\'\'Wohe "$1" vayi "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'   => '<big>\'\'\'Wohe "$1" vayi "$2"\'\'\'</big>',
 'articleexists'    => 'Tanya alo ŋkɔ sia nye axa bubu aɖe tɔ xoxo, alo eda se dzi.
 Tia ŋkɔ alo tanya bubu.',
 'movedto'          => 'wohee yi',
 '1movedto2'        => '[[$1]] wohee yi [[$2]]',
+
+# Export
+'export' => 'Ɖo axa siawo ɖa',
 
 # Namespace 8 related
 'allmessages' => 'Gbeƒãɖeɖewo',
@@ -358,20 +420,26 @@ Tia ŋkɔ alo tanya bubu.',
 'tooltip-pt-logout'             => 'Do le eme',
 'tooltip-ca-edit'               => 'Wòateŋu aɖɔ axa sia ɖo.
 Ne ewɔvɔ la, tia "Fiae do ŋgɔ" kpea gbã hafi na dzrae ɖo.',
+'tooltip-ca-addsection'         => 'Dze akpa yeye gɔme',
 'tooltip-ca-viewsource'         => 'Wo dokpɔ ɖe axa sia ŋu.
 Wòateŋu akpɔ alesi woŋlɔe.',
+'tooltip-ca-protect'            => 'Dzɔ axa sia ŋu',
 'tooltip-ca-delete'             => 'Tutu axa sia',
 'tooltip-ca-move'               => 'Ɖɔli axa sia ƒe nɔƒe',
 'tooltip-search'                => 'Dii {{SITENAME}}',
+'tooltip-search-go'             => 'Yi axa si ƒe ŋkɔ enye esia ne woŋlɔe xoxo',
 'tooltip-n-recentchanges'       => 'Tɔtrɔ yeyewo le wiki sia me.',
 'tooltip-n-randompage'          => 'Kpɔ axa ɖesiaɖe ko',
 'tooltip-n-help'                => 'Nuwo srɔ̃ƒe',
 'tooltip-t-whatlinkshere'       => 'Wiki nuŋɔŋlɔwo katã siwo ku ɖe afii ŋuti',
 'tooltip-t-recentchangeslinked' => 'Tɔtrɔ yeyewo le axa siwo ku ɖe axa sia ŋuti',
+'tooltip-t-contributions'       => 'Kpɔ nusiwo amesia ŋlɔ',
 'tooltip-t-upload'              => 'Ɖo nutatawo kple nuƒoƒowo ɖa',
 'tooltip-t-specialpages'        => 'Axa tɔxewo ƒe xexlẽme',
 'tooltip-minoredit'             => 'Esia nye tɔtrɔ sue aɖe ko',
 'tooltip-save'                  => 'Dzra wòƒe tɔtrɔwo ɖo',
+'tooltip-preview'               => 'Kpɔ wò ɖɔɖɔɖowo do ŋgɔ, mía ve nuwo bena na zãe hafi na dzrae ɖo!',
+'tooltip-diff'                  => 'Fia tɔtrɔ siwo newɔ le nuŋɔŋlɔa me',
 
 # Browsing diffs
 'previousdiff' => '← Tata xoxoa',
@@ -389,7 +457,7 @@ Wòateŋu akpɔ alesi woŋlɔe.',
 'monthsall'     => 'wokatã',
 
 # Special:Version
-'version' => 'Tata', # Not used as normal message but as header for the special page itself
+'version' => 'Tata',
 
 # Special:SpecialPages
 'specialpages' => 'Axa tɔxewo',

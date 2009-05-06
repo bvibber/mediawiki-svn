@@ -47,7 +47,12 @@ class ApiFormatJson extends ApiFormatBase {
 	public function getNeedsRawData() {
 		return $this->mIsRaw;
 	}
-
+	
+	public function getWantsHelp() {
+		// Help is always ugly in JSON
+		return false;
+	}
+	
 	public function execute() {
 		$prefix = $suffix = "";
 

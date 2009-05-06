@@ -1,6 +1,9 @@
 <?php
 /** Mazanderani (مَزِروني)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -21,10 +24,12 @@ $defaultUserOptionOverrides = array(
 $fallback = 'fa';
 
 $messages = array(
+'mypage' => 'مه ولگ',
+'mytalk' => 'مه گپ',
+
+# Cologne Blue skin
 'qbedit'         => 'دچی ین',
 'qbspecialpages' => 'شا ولگ ئون',
-'mypage'         => 'مه ولگ',
-'mytalk'         => 'مه گپ',
 
 'search'           => 'چرخه تو',
 'searcharticle'    => 'بور',
@@ -39,7 +44,7 @@ $messages = array(
 'viewtalkpage'     => 'گپ ئون ره نشون هدائن',
 'otherlanguages'   => 'دیگه زیوون ئون',
 'lastmodifiedat'   => 'ای ولگ ره پایانی جور هکاردن ره بنه وخت ره وند بونه:
-$2، $1', # $1 date, $2 time
+$2، $1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'mainpage' => 'گت ولگ',
@@ -66,9 +71,6 @@ $2، $1', # $1 date, $2 time
 'notloggedin'       => 'سیستم ره دله نی یه موئین',
 'createaccount'     => 'ترنه حساب وا هکاردن',
 'createaccountmail' => 'Email ره همرا',
-'youremail'         => 'شه مه Email *',
-'yourrealname'      => 'شیمه راستین ره نوم :',
-'yourlanguage'      => 'زیوون:',
 'nouserspecified'   => 'شما ونه اتا کارور نوم هادی.',
 
 # Edit pages
@@ -81,6 +83,9 @@ $2، $1', # $1 date, $2 time
 
 # Preferences page
 'prefsnologin' => 'سیستم ره ديله نی یه مویین',
+'youremail'    => 'شه مه Email *',
+'yourrealname' => 'شیمه راستین ره نوم :',
+'yourlanguage' => 'زیوون:',
 
 # User rights
 'userrights-user-editname' => 'کارور نوم ره بنویش هاکنین',
@@ -134,6 +139,8 @@ $2، $1', # $1 date, $2 time
 'contributions' => 'کارور ره جور هکارده ئون',
 'mycontris'     => 'مه جور هکاردئون',
 
+'sp-contributions-talk' => 'گپ',
+
 # What links here
 'whatlinkshere' => 'ایجه ره که جه لینک هدائه؟',
 
@@ -142,7 +149,7 @@ $2، $1', # $1 date, $2 time
 'contribslink' => 'جور هکارده ئون',
 
 # Move page
-'movepage-moved'          => "<big>'''ای «$1» ولگ، «$2» ره بورده.'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'          => "<big>'''ای «$1» ولگ، «$2» ره بورده.'''</big>",
 'movetalk'                => '«گپ» ولگ هم، اگه بونه، بوره.',
 'delete_and_move_confirm' => 'اره، پاک هاکن وه ره',
 

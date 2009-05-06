@@ -39,6 +39,36 @@ if (!defined('MEDIAWIKI')) {
 	public function __construct($query, $moduleName) {
 		parent :: __construct($query, $moduleName, 'us');
 	}
+	
+	/**
+	 * Get an array mapping token names to their handler functions.
+	 * The prototype for a token function is func($user)
+	 * it should return a token or false (permission denied)
+	 * @return array(tokenname => function)
+	 */
+	protected function getTokenFunctions() {
+		// Don't call the hooks twice
+		if(isset($this->tokenFunctions))
+			return $this->tokenFunctions;
+
+		// If we're in JSON callback mode, no tokens can be obtained
+		if(!is_null($this->getMain()->getRequest()->getVal('callback')))
+			return array();
+
+		$this->tokenFunctions = array(
+			'userrights' => array( 'ApiQueryUsers', 'getUserrightsToken' ),
+		);
+		wfRunHooks('APIQueryUsersTokens', array(&$this->tokenFunctions));
+		return $this->tokenFunctions;
+	}
+	
+	public static function getUserrightsToken($user)
+	{
+		global $wgUser;
+		// Since the permissions check for userrights is non-trivial,
+		// don't bother with it here
+		return $wgUser->editToken($user->getName());
+	}
 
 	public function execute() {
 		$params = $this->extractRequestParams();
@@ -103,11 +133,9 @@ if (!defined('MEDIAWIKI')) {
 				$name = $user->getName();
 				$data[$name]['name'] = $name;
 				if(isset($this->prop['editcount']))
-					// No proper member function in the User class for this
-					$data[$name]['editcount'] = $r->user_editcount;
+					$data[$name]['editcount'] = intval($user->getEditCount());
 				if(isset($this->prop['registration']))
-					// Nor for this one
-					$data[$name]['registration'] = wfTimestampOrNull(TS_ISO_8601, $r->user_registration);
+					$data[$name]['registration'] = wfTimestampOrNull(TS_ISO_8601, $user->getRegistration());
 				if(isset($this->prop['groups']) && !is_null($r->ug_group))
 					// This row contains only one group, others will be added from other rows
 					$data[$name]['groups'][] = $r->ug_group;
@@ -117,6 +145,20 @@ if (!defined('MEDIAWIKI')) {
 				}
 				if(isset($this->prop['emailable']) && $user->canReceiveEmail())
 					$data[$name]['emailable'] = '';
+				if(isset($this->prop['gender']))
+					$data[$name]['gender'] = $user->getOption( 'gender' );
+				if(!is_null($params['token']))
+				{
+					$tokenFunctions = $this->getTokenFunctions();
+					foreach($params['token'] as $t)
+					{
+						$val = call_user_func($tokenFunctions[$t], $user);
+						if($val === false)
+							$this->setWarning("Action '$t' is not allowed for the current user");
+						else
+							$data[$name][$t . 'token'] = $val;
+					}
+				}
 			}
 		}
 		// Second pass: add result data to $retval
@@ -151,11 +193,16 @@ if (!defined('MEDIAWIKI')) {
 					'editcount',
 					'registration',
 					'emailable',
+					'gender',
 				)
 			),
 			'users' => array(
 				ApiBase :: PARAM_ISMULTI => true
-			)
+			),
+			'token' => array(
+				ApiBase :: PARAM_TYPE => array_keys($this->getTokenFunctions()),
+				ApiBase :: PARAM_ISMULTI => true
+			),
 		);
 	}
 
@@ -168,8 +215,10 @@ if (!defined('MEDIAWIKI')) {
 				'  editcount    - adds the user\'s edit count',
 				'  registration - adds the user\'s registration timestamp',
 				'  emailable    - tags if the user can and wants to receive e-mail through [[Special:Emailuser]]',
+				'  gender       - tags the gender of the user. Returns "male", "female", or "unknown"',
 			),
-			'users' => 'A list of users to obtain the same information for'
+			'users' => 'A list of users to obtain the same information for',
+			'token' => 'Which tokens to obtain for each user',
 		);
 	}
 
@@ -178,7 +227,7 @@ if (!defined('MEDIAWIKI')) {
 	}
 
 	protected function getExamples() {
-		return 'api.php?action=query&list=users&ususers=brion|TimStarling&usprop=groups|editcount';
+		return 'api.php?action=query&list=users&ususers=brion|TimStarling&usprop=groups|editcount|gender';
 	}
 
 	public function getVersion() {

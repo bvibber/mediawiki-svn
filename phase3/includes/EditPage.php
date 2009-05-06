@@ -352,7 +352,7 @@ class EditPage {
 	 * the newly-edited page.
 	 */
 	function edit() {
-		global $wgOut, $wgUser, $wgRequest;
+		global $wgOut, $wgRequest;
 		// Allow extensions to modify/prevent this form or submission
 		if ( !wfRunHooks( 'AlternateEdit', array( &$this ) ) ) {
 			return;
@@ -403,6 +403,11 @@ class EditPage {
 				}
 			}
 		}
+		
+		// If they used redlink=1 and the page exists, redirect to the main article
+		if ( $wgRequest->getBool( 'redlink' ) && $this->mTitle->exists() ) {
+			$wgOut->redirect( $this->mTitle->getFullURL() );
+		}
 
 		wfProfileIn( __METHOD__."-business-end" );
 
@@ -421,7 +426,6 @@ class EditPage {
 
 		# Optional notices on a per-namespace and per-page basis
 		$editnotice_ns   = 'editnotice-'.$this->mTitle->getNamespace();
-		$editnotice_page = $editnotice_ns.'-'.$this->mTitle->getDBkey();
 		if ( !wfEmptyMsg( $editnotice_ns, wfMsgForContent( $editnotice_ns ) ) ) {
 			$wgOut->addWikiText( wfMsgForContent( $editnotice_ns )  );
 		}
@@ -434,8 +438,6 @@ class EditPage {
 					$wgOut->addWikiText( wfMsgForContent( $editnotice_base )  );
 				}
 			}
-		} else if ( !wfEmptyMsg( $editnotice_page, wfMsgForContent( $editnotice_page ) ) ) {
-			$wgOut->addWikiText( wfMsgForContent( $editnotice_page ) );
 		}
 
 		# Attempt submission here.  This will check for edit conflicts,
@@ -705,9 +707,9 @@ class EditPage {
 				$wgOut->wrapWikiMsg( '<div class="mw-newarticletextanon">$1</div>', 'newarticletextanon' );
 			}
 		}
-		# Give a notice if the user is editing a deleted page...
+		# Give a notice if the user is editing a deleted/moved page...
 		if ( !$this->mTitle->exists() ) {
-			$this->showDeletionLog( $wgOut );
+			$this->showLogs( $wgOut );
 		}
 	}
 
@@ -766,7 +768,7 @@ class EditPage {
 		$this->mMetaData = '' ;
 
 		# Check for spam
-		$match = self::matchSpamRegex( $this->summary );
+		$match = self::matchSummarySpamRegex( $this->summary );
 		if ( $match === false ) {
 			$match = self::matchSpamRegex( $this->textbox1 );
 		}
@@ -1063,14 +1065,26 @@ class EditPage {
 	 */
 	public static function matchSpamRegex( $text ) {
 		global $wgSpamRegex;
-		if ( $wgSpamRegex ) {
-			// For back compatibility, $wgSpamRegex may be a single string or an array of regexes.
-			$regexes = (array)$wgSpamRegex;
-			foreach( $regexes as $regex ) {
-				$matches = array();
-				if ( preg_match( $regex, $text, $matches ) ) {
-					return $matches[0];
-				}
+		// For back compatibility, $wgSpamRegex may be a single string or an array of regexes.
+		$regexes = (array)$wgSpamRegex;
+		return self::matchSpamRegexInternal( $text, $regexes );
+	}
+	
+	/**
+	 * Check given input text against $wgSpamRegex, and return the text of the first match.
+	 * @return mixed -- matching string or false
+	 */
+	public static function matchSummarySpamRegex( $text ) {
+		global $wgSummarySpamRegex;
+		$regexes = (array)$wgSummarySpamRegex;
+		return self::matchSpamRegexInternal( $text, $regexes );
+	}
+	
+	protected static function matchSpamRegexInternal( $text, $regexes ) {
+		foreach( $regexes as $regex ) {
+			$matches = array();
+			if( preg_match( $regex, $text, $matches ) ) {
+				return $matches[0];
 			}
 		}
 		return false;
@@ -1149,7 +1163,7 @@ class EditPage {
 		$wgOut->setArticleRelated( true );
 
 		if ( $this->isConflict ) {
-			$wgOut->addWikiMsg( 'explainconflict' );
+			$wgOut->wrapWikiMsg( "<div class='mw-explainconflict'>\n$1</div>", 'explainconflict' );
 
 			$this->textbox2 = $this->textbox1;
 			$this->textbox1 = $this->getContent();
@@ -1349,13 +1363,14 @@ class EditPage {
 		if ( $this->section == 'new' ) {
 			$commentsubject = '';
 			if ( !$wgRequest->getBool( 'nosummary' ) ) {
-				# Add an ID if 'missingsummary' is triggered to allow styling of the summary line
-				$summaryMissedID = $this->missingSummary ? ' mw-summarymissed' : '';
+				# Add a class if 'missingsummary' is triggered to allow styling of the summary line
+				$summaryClass = $this->missingSummary ? 'mw-summarymissed' : 'mw-summary';
 
 				$commentsubject =
 					Xml::tags( 'label', array( 'for' => 'wpSummary' ), $subject );
 				$commentsubject =
-					Xml::tags( 'span', array( 'id' => "wpSummaryLabel$summaryMissedID" ), $commentsubject );
+					Xml::tags( 'span', array( 'class' => $summaryClass, 'id' => "wpSummaryLabel" ),
+						$commentsubject );
 				$commentsubject .= '&nbsp;';
 				$commentsubject .= Xml::input( 'wpSummary',
 									60,
@@ -1374,11 +1389,12 @@ class EditPage {
 		} else {
 			$commentsubject = '';
 
-			# Add an ID if 'missingsummary' is triggered to allow styling of the summary line
-			$summaryMissedID = $this->missingSummary ? ' mw-summarymissed' : '';
+			# Add a class if 'missingsummary' is triggered to allow styling of the summary line
+			$summaryClass = $this->missingSummary ? 'mw-summarymissed' : 'mw-summary';
 
 			$editsummary = Xml::tags( 'label', array( 'for' => 'wpSummary' ), $summary );
-			$editsummary = Xml::tags( 'span', array( 'id' => "wpSummaryLabel$summaryMissedID" ), $editsummary ) . ' ';
+			$editsummary = Xml::tags( 'span',  array( 'class' => $summaryClass, 'id' => "wpSummaryLabel" ),
+					$editsummary ) . ' ';
 
 			$editsummary .= Xml::input( 'wpSummary',
 				60,
@@ -1435,7 +1451,7 @@ class EditPage {
 		if ( $this->wasDeletedSinceLastEdit() ) {
 			if ( 'save' != $this->formtype ) {
 				$wgOut->wrapWikiMsg(
-					'<div class="error mw-deleted-while-editing">$1</div>',
+					"<div class='error mw-deleted-while-editing'>\n$1</div>",
 					'deletedwhileediting' );
 			} else {
 				// Hide the toolbar and edit area, user can click preview to get it back
@@ -1670,7 +1686,7 @@ END
 		$wgOut->addHTML( '</div>' );
 	}
 
-	function getLastDelete() {
+	protected function getLastDelete() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$data = $dbr->selectRow(
 			array( 'logging', 'user' ),
@@ -1682,15 +1698,23 @@ END
 			       'log_title',
 			       'log_comment',
 			       'log_params',
-			       'user_name', ),
+				   'log_deleted',
+			       'user_name' ),
 			array( 'log_namespace' => $this->mTitle->getNamespace(),
 			       'log_title' => $this->mTitle->getDBkey(),
 			       'log_type' => 'delete',
 			       'log_action' => 'delete',
 			       'user_id=log_user' ),
 			__METHOD__,
-			array( 'LIMIT' => 1, 'ORDER BY' => 'log_timestamp DESC' ) );
-
+			array( 'LIMIT' => 1, 'ORDER BY' => 'log_timestamp DESC' )
+		);
+		// Quick paranoid permission checks...
+		if( is_object($data) ) {
+			if( $data->log_deleted & LogPage::DELETED_USER )
+				$data->user_name = wfMsgHtml('rev-deleted-user');
+			if( $data->log_deleted & LogPage::DELETED_COMMENT )
+				$data->log_comment = wfMsgHtml('rev-deleted-comment');
+		}
 		return $data;
 	}
 
@@ -2411,20 +2435,20 @@ END
 	}
 
 	/**
-	 * If there are rows in the deletion log for this page, show them,
+	 * If there are rows in the deletion/move log for this page, show them,
 	 * along with a nice little note for the user
 	 *
 	 * @param OutputPage $out
 	 */
-	protected function showDeletionLog( $out ) {
+	protected function showLogs( $out ) {
 		global $wgUser;
 		$loglist = new LogEventsList( $wgUser->getSkin(), $out );
-		$pager = new LogPager( $loglist, 'delete', false, $this->mTitle->getPrefixedText() );
+		$pager = new LogPager( $loglist, array('move', 'delete'), false, $this->mTitle->getPrefixedText() );
 		$count = $pager->getNumRows();
 		if ( $count > 0 ) {
 			$pager->mLimit = 10;
 			$out->addHTML( '<div class="mw-warning-with-logexcerpt">' );
-			$out->addWikiMsg( 'recreate-deleted-warn' );
+			$out->addWikiMsg( 'recreate-moveddeleted-warn' );
 			$out->addHTML(
 				$loglist->beginLogEventsList() .
 				$pager->getBody() .
@@ -2433,11 +2457,9 @@ END
 			if($count > 10){
 				$out->addHTML( $wgUser->getSkin()->link(
 					SpecialPage::getTitleFor( 'Log' ),
-					wfMsgHtml( 'deletelog-fulllog' ),
+					wfMsgHtml( 'log-fulllog' ),
 					array(),
-					array(
-						'type' => 'delete',
-						'page' => $this->mTitle->getPrefixedText() ) ) );
+					array( 'page' => $this->mTitle->getPrefixedText() ) ) );
 			}
 			$out->addHTML( '</div>' );
 			return true;

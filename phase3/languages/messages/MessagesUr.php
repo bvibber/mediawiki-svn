@@ -1,6 +1,9 @@
 <?php
 /** Urdu (اردو)
  *
+ * See MessagesQqq.php for message documentation incl. usage of parameters
+ * To improve a translation please visit http://translatewiki.net
+ *
  * @ingroup Language
  * @file
  *
@@ -101,6 +104,10 @@ $messages = array(
 'navigation'    => 'رہنمائی',
 'and'           => '&#32;اور',
 
+# Cologne Blue skin
+'faq'     => 'معلوماتِ عامہ',
+'faqpage' => 'Project:معلوماتِ عامہ',
+
 'returnto'          => 'واپس $1۔',
 'tagline'           => '{{SITENAME}} سے',
 'help'              => 'معاونت',
@@ -143,7 +150,7 @@ $messages = array(
 'otherlanguages'    => 'دیگر زبانوں میں',
 'redirectedfrom'    => '($1 سے پلٹایا گیا)',
 'redirectpagesub'   => 'لوٹایا گیا صفحہ',
-'lastmodifiedat'    => 'آخری بار تدوین $2, $1 کو کی گئی۔', # $1 date, $2 time
+'lastmodifiedat'    => 'آخری بار تدوین $2, $1 کو کی گئی۔',
 'viewcount'         => 'اِس صفحہ تک {{PLURAL:$1|ایک‌بار|$1 مرتبہ}} رسائی کی گئی',
 'protectedpage'     => 'محفوظ شدہ صفحہ',
 'jumpto'            => ':چھلانگ بطرف',
@@ -162,8 +169,6 @@ $messages = array(
 'disclaimerpage'       => 'Project:عام اعلان',
 'edithelp'             => 'معاونت براۓ ترمیم',
 'edithelppage'         => 'Help:ترمیم',
-'faq'                  => 'معلوماتِ عامہ',
-'faqpage'              => 'Project:معلوماتِ عامہ',
 'helppage'             => 'Help:فہرست',
 'mainpage'             => 'سرورق',
 'mainpage-description' => 'سرورق',
@@ -184,7 +189,6 @@ $messages = array(
 دیکھئے [[خاص:نسخہ|صفحۂ نسخہ]]',
 
 'ok'                      => 'ٹھیک ہے',
-'pagetitle'               => '$1 - وکیپیڈیا',
 'pagetitle-view-mainpage' => '{{SITENAME}}',
 'retrievedfrom'           => '‘‘$1’’ مستعادہ منجانب',
 'youhavenewmessages'      => 'آپکے لیۓ ایک $1 ہے۔ ($2)',
@@ -204,13 +208,6 @@ $messages = array(
 'thisisdeleted'           => 'دیکھیں یا بحال کریں $1؟',
 'viewdeleted'             => 'دیکھیں $1؟',
 'restorelink'             => '$1 ترامیم ضائع کردی',
-'feedlinks'               => 'Feed:',
-'feed-invalid'            => 'Invalid subscription feed type.',
-'feed-unavailable'        => 'Syndication feeds are not available',
-'site-rss-feed'           => '$1 RSS Feed',
-'site-atom-feed'          => '$1 Atom Feed',
-'page-rss-feed'           => '"$1" RSS Feed',
-'page-atom-feed'          => '"$1" Atom Feed',
 'feed-atom'               => 'ایٹم',
 'feed-rss'                => 'آر ایس ایس',
 'red-link-title'          => '$1 (صفحہ موجود نہیں)',
@@ -251,9 +248,6 @@ MySQL نے خطائی جواب دیا "<tt>$3: $4</tt>".',
 "$1"
 "$2" فعلیت میں سے.
 MySQL نے جوابِ خطاء دیا "$3: $4"',
-'noconnect'            => 'بہ تاسف! ویکی کو چند تکنیکی مشکلات کا سامنا ہے جس کی وجہ سے ڈیٹابیسی معیل کے ساتھ رابطہ نہیں کرسکتا۔ <br />$1',
-'nodb'                 => '$1 ڈیٹابیس منتخب نہ ہوسکا.',
-'cachederror'          => 'نیچے التماس شدہ صفحے کا ایک ابطن‌شدہ نسخہ ہے، اور اِس کے بتاریخی (اپ ٹو ڈیٹ) ہونے میں شک ہے.',
 'laggedslavemode'      => 'انتباہ: ممکن ہے کہ صفحہ میں حالیہ بتاریخہ جات شامل نہ ہوں.
 
 Warning: Page may not contain recent updates.',
@@ -298,13 +292,9 @@ Warning: Page may not contain recent updates.',
 'editinginterface'     => "'''انتباہ:''' آپ ایک ایسا صفحہ تدوین کر رہے ہیں جو مصنع‌لطیف کیلئے سطح‌البینی متن فراہم کرتا ہے۔ اس صفحہ میں کی جانے والی ترمیم، دیگر صارفین کیلئے سطح‌البین کو تبدیل کردے گی۔
 براہِ کرم، ترجمہ کیلئے [http://translatewiki.net/wiki/Main_Page?setlang=en '''بیٹاویکی'''] (میڈیاویکی مقامیانی منصوبہ) استعمال کیجئے.",
 'sqlhidden'            => '(SQL استفسارہ پوشیدہ)',
-'cascadeprotected'     => 'This page has been protected from editing, because it is included in the following {{PLURAL:$1|page, which is|pages, which are}} protected with the "cascading" option turned on:
-$2',
 'namespaceprotected'   => "آپ کو '''$1''' فضائے نام میں صفحات تدوین کرنے کی اِجازت نہیں ہے.",
 'customcssjsprotected' => 'آب کو اِس صفحہ کی تدوین کی اِجازت نہیں ہے، کیونکہ اِس میں دوسرے صارف کی ذاتی ترتیبات موجود ہیں.',
 'ns-specialprotected'  => 'خاص صفحات کی تدوین نہیں کی جاسکتی.',
-'titleprotected'       => 'This title has been protected from creation by [[User:$1|$1]].
-The reason given is "\'\'$2\'\'".',
 
 # Virus scanner
 'virus-badscanner'     => "خراب وضعیت: انجان وائرسی مفراس: ''$1''",
@@ -312,12 +302,10 @@ The reason given is "\'\'$2\'\'".',
 'virus-unknownscanner' => 'انجان ضدوائرس:',
 
 # Login and logout pages
-'logouttitle'                => 'اخراج صارف',
 'logouttext'                 => "'''اب آپ خارج ہوچکے ہیں'''<br />
 آپ خفی الاسم {{SITENAME}}  کا استعمال جاری رکھ سکتے ہیں، یا دوبارہ اسی نام یا مختلف نام سے داخل بھی ہو سکتے ہیں۔  یہ یاد آوری کرلیجیۓ کہ کچھ صفحات ایسے نظر آتے رہیں گے کہ جیسے ابھی آپ خارج نہیں ہوۓ ، جب تک آپ اپنے تفصحہ (براؤزر) کا ابطن (cache) صاف نہ کردیں۔",
 'welcomecreation'            => '== خوش آمدید، $1 ! ==
 آپ کا کھاتہ بنا دیا گیا ہے۔ اپنی ویـکـیـپـیـڈ یـا کی ترجیحات تبدیل کرنا مت بھولیں۔',
-'loginpagetitle'             => 'داخلہ صارف',
 'yourname'                   => 'اسمِ رکنیت',
 'yourpassword'               => 'کلمۂ شناخت',
 'yourpasswordagain'          => 'کلمۂ شناخت دوبارہ لکھیں',
@@ -339,30 +327,7 @@ The reason given is "\'\'$2\'\'".',
 'createaccountmail'          => 'بذریعۂ برقی ڈاک',
 'badretype'                  => 'درج شدہ کلمۂ شناخت اصل سے مطابقت نہیں رکھتا۔',
 'userexists'                 => 'آپ نےجونام درج کیا ہے پہلے سے زیراستعمال ہے۔ مختلف نام استعمال کریں۔',
-'youremail'                  => '٭ برقی خط',
-'username'                   => 'اسم صارف',
-'uid'                        => 'صارف نمبر:',
-'prefs-memberingroups'       => '{{PLURAL:$1|گروہ|گروہوں}} کا رُکن:',
-'yourrealname'               => '* اصلی نام',
-'yourlanguage'               => 'زبان:',
-'yourvariant'                => 'متغیّر:',
-'yournick'                   => 'دستخط',
-'badsig'                     => 'ناقص خام دستخط.
-HTML tags جانچئے.',
-'badsiglength'               => 'آپ کا دستخط کافی طویل ہے.
-یہ $1 {{PLURAL:$1|حرف|حروف}} سے زیادہ نہیں ہونا چاہئے.',
-'yourgender'                 => 'جنس:',
-'gender-unknown'             => 'غیرمختص شدہ',
-'gender-male'                => 'مرد',
-'gender-female'              => 'عورت',
-'prefs-help-gender'          => 'اختیاری: مصنع‌لطیف کی طرف سے صحیح‌الجنس تخاطب کیلئے استعمال ہوتا ہے. یہ معلومات عام ہوگی.',
-'email'                      => 'برقی خط',
-'prefs-help-realname'        => 'حقیقی نام اختیاری ہے. 
-اگر آپ اِسے مہیّا کرتے ہیں، تو اِسے آپ کے کام کیلئے آپ کو انتساب دینے کیلئے استعمال کیا جائے گا.',
 'loginerror'                 => 'داخلے میں غلطی',
-'prefs-help-email'           => 'برقی ڈاک کا پتہ اختیاری ہے، لیکن یہ اُس وقت مفید ثابت ہوسکتا ہے جب آپ اپنا کلمۂ شناخت بھول جائیں. 
-آپ یہ بھی منتخب کرسکتے ہیں کہ دوسرے صارفین، آپ کی شناخت کو افشا کئے بغیر، آپ کے تبادلۂ خیال صفحہ پر آپ سے رابطہ کریں.',
-'prefs-help-email-required'  => 'برقی ڈاک پتہ چاہئے.',
 'nocookiesnew'               => 'کھاتۂ صارف بنادیا گیا ہے، لیکن آپ کا داخلہ نہیں ہوا. 
 صارفین کے داخلہ کیلئے {{SITENAME}} کوکیز استعمال کرتا ہے.
 آپ کے ہاں کوکیز غیر فعال ہیں.
@@ -464,39 +429,130 @@ HTML tags جانچئے.',
 'compareselectedversions' => 'منتخب متـن کا موازنہ',
 
 # Search results
-'searchresults'         => 'تلاش کا نتیجہ',
-'searchresulttext'      => 'ویکیپیڈیا میں تلاش کے بارے میں مزید معلومات کے لیۓ، ویکیپیڈیا میں تلاش کا صفحہ دیکھیۓ۔',
-'searchsubtitle'        => "آپ کی تلاش براۓ '''[[:$1]]'''",
-'searchsubtitleinvalid' => "آپ کی تلاش براۓ '''$1'''",
-'noexactmatch'          => '"$1" کے عنوان سے کوئی صفحہ موجود نہیں۔ آپ اگر چاہیں تو اس نام سے  [[:$1|صفحہ بنا سکتے ہیں]]',
-'prevn'                 => 'پچھلے $1',
-'nextn'                 => 'اگلے $1',
-'viewprevnext'          => 'دیکھیں($1) ($2) ($3)۔',
-'searchhelp-url'        => 'Help:فہرست',
-'powersearch'           => 'تلاش کریں',
+'searchresults'             => 'تلاش کا نتیجہ',
+'searchresulttext'          => 'ویکیپیڈیا میں تلاش کے بارے میں مزید معلومات کے لیۓ، ویکیپیڈیا میں تلاش کا صفحہ دیکھیۓ۔',
+'searchsubtitle'            => "آپ کی تلاش براۓ '''[[:$1]]'''",
+'searchsubtitleinvalid'     => "آپ کی تلاش براۓ '''$1'''",
+'noexactmatch'              => '"$1" کے عنوان سے کوئی صفحہ موجود نہیں۔ آپ اگر چاہیں تو اس نام سے  [[:$1|صفحہ بنا سکتے ہیں]]',
+'prevn'                     => 'پچھلے $1',
+'nextn'                     => 'اگلے $1',
+'viewprevnext'              => 'دیکھیں($1) ($2) ($3)۔',
+'searchhelp-url'            => 'Help:فہرست',
+'search-result-size'        => '$1 ({{PLURAL:$2|1 لفظ|$2 الفاظ}})',
+'search-result-score'       => 'توافق: $1%',
+'search-redirect'           => '(رجوع مکرر $1)',
+'search-section'            => '(حصہ $1)',
+'search-suggest'            => 'کیا آپ کا مطلب تھا: $1',
+'search-interwiki-caption'  => 'ساتھی منصوبے',
+'search-interwiki-default'  => '$1 نتائج:',
+'search-interwiki-more'     => '(مزید)',
+'search-mwsuggest-enabled'  => 'بمع تجاویز',
+'search-mwsuggest-disabled' => 'تجاویز نہیں',
+'search-relatedarticle'     => 'متعلقہ',
+'mwsuggest-disable'         => 'AJAX تجاویز غیرفعال',
+'searchrelated'             => 'متعلقہ',
+'searchall'                 => 'تمام',
+'showingresultstotal'       => "نیچے دکھارہا ہے {{PLURAL:$4|'''$3''' میں سے '''$3''' نتیجہ|'''$3''' میں سے '''$1 - $2''' نتائج}}",
+'search-nonefound'          => 'استفسار کے مطابق نتائج نہیں ملے.',
+'powersearch'               => 'پیشرفتہ تلاش',
+'powersearch-legend'        => 'پیشرفتہ تلاش',
+'powersearch-ns'            => 'جائے نام میں تلاش:',
+'powersearch-redir'         => 'فہرستِ رجوع مکرر',
+'powersearch-field'         => 'تلاش برائے',
+'search-external'           => 'بیرونی تلاش',
+'searchdisabled'            => '{{SITENAME}} تلاش غیرفعال.
+آپ فی الحال گوگل کے ذریعے تلاش کرسکتے ہیں.
+یاد رکھئے کہ اُن کے {{SITENAME}} اشاریے ممکناً پرانے ہوسکتے ہیں.',
+
+# Quickbar
+'qbsettings'      => 'فوری‌بار',
+'qbsettings-none' => 'ہیچ',
 
 # Preferences page
-'preferences'       => 'ترجیحات',
-'mypreferences'     => 'میری ترجیہات',
-'prefsnologin'      => 'نا داخل شدہ حالت',
-'changepassword'    => 'کلمۂ شناخت تبدیل کریں',
-'math'              => 'ریاضی',
-'datetime'          => 'تاریخ و وقت',
-'prefs-rc'          => 'حالیہ تبدیلیاں',
-'prefs-misc'        => 'دیگر',
-'saveprefs'         => 'محفوظ',
-'rows'              => 'قـطاریں:',
-'searchresultshead' => 'تلاش',
-'savedprefs'        => 'آپ کی ترجیہات محفوظ کر لی گئی ہیں۔',
-'timezonelegend'    => 'منطقۂ وقت',
-'localtime'         => 'مقامی وقت',
-'allowemail'        => 'دوسرے صارفین کو برقی خظ لکھنے کا اختیار دیں',
-'default'           => 'طے شدہ',
-'files'             => 'فائلیں',
+'preferences'               => 'ترجیحات',
+'mypreferences'             => 'میری ترجیہات',
+'prefs-edits'               => 'تدوینات کی تعداد:',
+'prefsnologin'              => 'نا داخل شدہ حالت',
+'prefsnologintext'          => 'ترجیحات ترتیب دینے کیلئے <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} داخل نوشتہ]</span> ہونا لازمی ہے.',
+'changepassword'            => 'کلمۂ شناخت تبدیل کریں',
+'prefs-skin'                => 'جِلد',
+'skin-preview'              => 'پیش منظر',
+'prefs-math'                => 'ریاضی',
+'dateformat'                => 'شکلبندِ تاریخ',
+'datedefault'               => 'کوئی ترجیحات نہیں',
+'prefs-datetime'            => 'تاریخ و وقت',
+'prefs-personal'            => 'نمایۂ صارف',
+'prefs-rc'                  => 'حالیہ تبدیلیاں',
+'prefs-watchlist'           => 'زیرِنظر فہرست',
+'prefs-watchlist-days'      => 'زیرِنظر فہرست میں نظر آنے والے ایام:',
+'prefs-watchlist-days-max'  => '(زیادہ سے زیادہ 7 دِن)',
+'prefs-watchlist-edits'     => 'عریض زیرِنظرفہرست میں نظر آنے والی تبدیلیوں کی زیادہ سے زیادہ تعداد:',
+'prefs-watchlist-edits-max' => '(زیادہ سے زیادہ تعداد: 1000)',
+'prefs-misc'                => 'دیگر',
+'prefs-resetpass'           => 'کلمۂ شناخت تبدیل کیجئے',
+'saveprefs'                 => 'محفوظ',
+'resetprefs'                => 'نامحفوظ تبدیلیاں صاف کرو',
+'restoreprefs'              => 'تمام بےنقص ترتیبات بحال کیجئے',
+'prefs-editing'             => 'تدوین',
+'prefs-edit-boxsize'        => 'تدوینی کھڑکی کی جسامت.',
+'rows'                      => 'صفیں:',
+'columns'                   => 'قطاریں:',
+'searchresultshead'         => 'تلاش',
+'recentchangesdays'         => 'حالیہ تبدیلیوں میں دکھائی جانے والے ایّام:',
+'recentchangesdays-max'     => '(زیادہ سے زیادہ $1 {{PLURAL:$1|دن|ایام}})',
+'recentchangescount'        => 'حالیہ تبدیلیاں، تواریخِ صفحہ اور نوشتہ جات میں دکھائی جانے والی ترمیمات کی تعداد:',
+'savedprefs'                => 'آپ کی ترجیحات محفوظ ہوگئیں۔',
+'timezonelegend'            => 'منطقۂ وقت',
+'localtime'                 => 'مقامی وقت:',
+'timezoneselect'            => 'منطقۂ وقت:',
+'timezoneregion-africa'     => 'افریقہ',
+'timezoneregion-america'    => 'امریکہ',
+'timezoneregion-antarctica' => 'انٹارکٹیکا',
+'timezoneregion-arctic'     => 'قطب شمالی',
+'timezoneregion-asia'       => 'ایشیاء',
+'timezoneregion-atlantic'   => 'بحر اوقیانوس',
+'timezoneregion-australia'  => 'آسٹریلیا',
+'timezoneregion-europe'     => 'یورپ',
+'timezoneregion-indian'     => 'بحر ہند',
+'timezoneregion-pacific'    => 'بحر الکاہل',
+'allowemail'                => 'دوسرے صارفین کو برقی خظ لکھنے کا اختیار دیں',
+'prefs-searchoptions'       => 'اختیاراتِ تلاش',
+'prefs-namespaces'          => 'جائے نام',
+'default'                   => 'طے شدہ',
+'prefs-files'               => 'مسلات',
+'prefs-custom-css'          => 'خودساختہ CSS',
+'prefs-custom-js'           => 'خودساختہ JS',
+'youremail'                 => '٭ برقی خط',
+'username'                  => 'اسم صارف',
+'uid'                       => 'صارف نمبر:',
+'prefs-memberingroups'      => '{{PLURAL:$1|گروہ|گروہوں}} کا رُکن:',
+'yourrealname'              => '* اصلی نام',
+'yourlanguage'              => 'زبان:',
+'yourvariant'               => 'متغیّر:',
+'yournick'                  => 'دستخط',
+'badsig'                    => 'ناقص خام دستخط.
+HTML tags جانچئے.',
+'badsiglength'              => 'آپ کا دستخط کافی طویل ہے.
+یہ $1 {{PLURAL:$1|حرف|حروف}} سے زیادہ نہیں ہونا چاہئے.',
+'yourgender'                => 'جنس:',
+'gender-unknown'            => 'غیرمختص شدہ',
+'gender-male'               => 'مرد',
+'gender-female'             => 'عورت',
+'prefs-help-gender'         => 'اختیاری: مصنع‌لطیف کی طرف سے صحیح‌الجنس تخاطب کیلئے استعمال ہوتا ہے. یہ معلومات عام ہوگی.',
+'email'                     => 'برقی خط',
+'prefs-help-realname'       => 'حقیقی نام اختیاری ہے. 
+اگر آپ اِسے مہیّا کرتے ہیں، تو اِسے آپ کے کام کیلئے آپ کو انتساب دینے کیلئے استعمال کیا جائے گا.',
+'prefs-help-email'          => 'برقی ڈاک کا پتہ اختیاری ہے، لیکن یہ اُس وقت مفید ثابت ہوسکتا ہے جب آپ اپنا کلمۂ شناخت بھول جائیں. 
+آپ یہ بھی منتخب کرسکتے ہیں کہ دوسرے صارفین، آپ کی شناخت کو افشا کئے بغیر، آپ کے تبادلۂ خیال صفحہ پر آپ سے رابطہ کریں.',
+'prefs-help-email-required' => 'برقی ڈاک پتہ چاہئے.',
 
 # User rights
-'userrights'               => 'صارف کے حقوق کا انتظام', # Not used as normal message but as header for the special page itself
-'userrights-user-editname' => 'اسمِ رکنیت داخل کریں:',
+'userrights'               => 'حقوقِ صارف کی نظامت',
+'userrights-lookup-user'   => 'گروہائے صارف کا انتظام',
+'userrights-user-editname' => 'کوئی اسم‌صارف داخل کیجئے:',
+'editinguser'              => "تبدیلئ حقوق برائے صارف '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-groupsmember'  => 'رکنِ:',
+'userrights-reason'        => 'وجۂ تبدیلی:',
 
 'group-bot-member' => 'خودکار صارف',
 
@@ -733,7 +789,9 @@ HTML tags جانچئے.',
 'contribsub2'   => 'براۓ $1 ($2)',
 'uctop'         => ' (اوپر)',
 
-'sp-contributions-blocklog' => 'نوشتۂ پابندی',
+'sp-contributions-blocklog'   => 'نوشتۂ پابندی',
+'sp-contributions-talk'       => 'گفتگو',
+'sp-contributions-userrights' => 'صارف کے حقوق کا انتظام',
 
 # What links here
 'whatlinkshere' => 'ادھر کس کا جوڑ ہے',
@@ -794,6 +852,14 @@ HTML tags جانچئے.',
 'anonymous' => '{{SITENAME}} گمنام صارف',
 'others'    => 'دیگر',
 
+# Math errors
+'math_failure'          => 'تجزیہ میں ناکام',
+'math_unknown_error'    => 'نامعلوم غلطی',
+'math_unknown_function' => 'نامعلوم فعل',
+'math_syntax_error'     => 'نحوی غلطی',
+'math_image_error'      => 'PNG; کی تحویل ناکام
+latex، dvips، gs کی صحیح تنصیب کی جانچ کرنے کے بعد دوبارہ تحویل کی کوشش کیجئے.',
+
 # Image deletion
 'deletedrevision' => 'حذف شدہ پرانی ترمیم $1۔',
 
@@ -829,7 +895,7 @@ HTML tags جانچئے.',
 'autosumm-new'     => 'نیا صفحہ: $1',
 
 # Special:Version
-'version' => 'ورژن', # Not used as normal message but as header for the special page itself
+'version' => 'ورژن',
 
 # Special:SpecialPages
 'specialpages' => 'خصوصی صفحات',
