@@ -2321,6 +2321,15 @@ var embedTypes = {
 		this.detect_done=true;
 	},
 	clientSupports: { 'thumbnail' : true },
+	supportedMimeType: function(mimetype) {
+		for (var i = navigator.plugins.length; i-- > 0; ) {
+		    var plugin = navigator.plugins[i];
+		    if (typeof plugin[mimetype] != "undefined")
+		      return true;
+		}
+		return false;
+	},
+
  	detect: function() {
  		js_log("running detect");
         this.players = new mediaPlayers();
@@ -2367,8 +2376,12 @@ var embedTypes = {
 			if( this.safari ){				
 				try{
 					var dummyvid = document.createElement("video");
-					if (dummyvid.canPlayType("video/ogg;codecs=\"theora,vorbis\"") == "probably")
+					if (dummyvid.canPlayType && dummyvid.canPlayType("video/ogg;codecs=\"theora,vorbis\"") == "probably")
 					{
+						this.players.addPlayer( videoElementPlayer );
+					} else if(this.supportedMimeType('video/ogg')) {
+						/* older versions of safari do not support canPlayType,
+						   but xiph qt registers mimetype via quicktime plugin */
 						this.players.addPlayer( videoElementPlayer );
 					} else {
 						//@@todo add some user nagging to install the xiph qt 
