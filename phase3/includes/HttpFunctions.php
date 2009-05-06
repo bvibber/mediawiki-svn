@@ -100,7 +100,6 @@ class Http {
 	 */
 	public static function doSessionIdDownload( $session_id, $upload_session_key ){
 		global $wgUser, $wgEnableWriteAPI;					
-		wfDebug("\n\ndoSessionIdDownload\n\n");
 		//set session to the provided key:
 		session_id($session_id);
 		//start the session					
@@ -128,15 +127,14 @@ class Http {
 		wfDebug("doRequest: " . $sd['url'] . ' tf: ' . $sd['target_file_path'] );
 		$status = $req->doRequest();					
 		
-		if( $status->isOK() ){
-					
-			//start up the session again:			
-			if( session_start() === false){
-				wfDebug( __METHOD__ . ' ERROR:: Could not start session');	
-			}						
-			//re-grab the updated session data: 
-			$sd =& $_SESSION[ 'wsDownload' ][$upload_session_key];										
-		
+	
+		//start up the session again:			
+		if( session_start() === false){
+			wfDebug( __METHOD__ . ' ERROR:: Could not start session');	
+		}	
+		//re-grab the updated session data: 
+		$sd =& $_SESSION[ 'wsDownload' ][$upload_session_key];
+		if( $status->isOK() ){																								
 			//setup the faxRequest
 			$fauxReqData = $sd['mParams'];															
 			$fauxReqData['action'] = 'upload';		
@@ -154,12 +152,14 @@ class Http {
 			ob_start();
 			$printer->execute();
 			$apiUploadResult = ob_get_clean();						
-						
-			wfDebug("\n\n got api result:: $apiUploadResult \n" );
+									
 			//the status updates runner will grab the result form the session: 
-			$sd['apiUploadResult'] = $apiUploadResult;			
-			session_write_close();				
+			$sd['apiUploadResult'] = $apiUploadResult;									
+		}else{
+			//status != OK
+			$sd['apiUploadResult'] = ApiFormatJson::getJsonEncode( array( 'error' => $status->getWikiText() ) );
 		}
+		session_write_close();	
 	}
 	
 	/**
@@ -305,6 +305,7 @@ class HttpRequest{
 		if ( $retcode != 200 ) {
 			wfDebug( __METHOD__ . ": HTTP return code $retcode\n" );
 			$status = Status::newFatal( "HTTP return code $retcode\n" );
+			
 		}
 		# Don't return truncated output
 		$errno = curl_errno( $c );

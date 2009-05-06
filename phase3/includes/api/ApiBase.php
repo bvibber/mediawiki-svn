@@ -147,9 +147,8 @@ abstract class ApiBase {
 	 * Get the result object
 	 * @return ApiResult
 	 */
-	public function getResult() {
-		wfDebug("\n\napiBase:getResult()\n\n");
-		// Main module has getResult() method overriden
+	public function getResult() {		
+		// Main module has getResult() method overridden
 		// Safety - avoid infinite loop:
 		if ($this->isMain())
 			ApiBase :: dieDebug(__METHOD__, 'base method was called on main module. ');
