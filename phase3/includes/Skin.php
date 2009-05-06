@@ -404,6 +404,12 @@ class Skin extends Linker {
 			'wgSeparatorTransformTable' => $compactSeparatorTransTable,
 			'wgDigitTransformTable' => $compactDigitTransTable,
 		);
+		//if on upload page output the extension list & js_upload
+		if( SpecialPage::resolveAlias( $wgTitle->getDBkey() ) ==  "Upload" ){ 
+			global $wgFileExtensions, $wgAjaxUploadInterface;
+			$vars['wgFileExtensions'] 	 = $wgFileExtensions;
+			$vars['wgAjaxUploadInterface'] = $wgAjaxUploadInterface;			
+		}
 		
 		if( $wgUseAjax && $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ){
 			$vars['wgMWSuggestTemplate'] = SearchEngine::getMWSuggestTemplate();

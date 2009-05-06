@@ -41,7 +41,7 @@ class ApiUpload extends ApiBase {
 	public function execute() {
 		global $wgUser;								
 		
-		$this->getMain()->requestWriteMode();
+		$this->getMain()->isWriteMode();
 		$this->mParams = $this->extractRequestParams();
 		$request = $this->getMain()->getRequest();							
 		
