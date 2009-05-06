@@ -118,4 +118,38 @@ public class AnalyzerUtils {
 		return toLowerCase(trim(s));
 	}
 
+	public static CharSequence titleCase(CharSequence s) {
+		if (s.length()==0) return s;
+		
+		if (s.charAt(0)<='Z') return s; //fast check for ascii caps first
+			
+		int ch = Character.codePointAt(s, 0);
+		if (Character.isLowerCase(ch)) {
+			int uch = Character.toUpperCase(ch);
+			if (uch!=ch) {
+				int w = Character.charCount(ch);
+				int len= s.length();
+				
+				char[] uchars = Character.toChars(uch);
+				char[] chars = new char[uchars.length + len - w];
+				System.arraycopy(uchars, 0, chars, 0, uchars.length);
+				
+				if (s instanceof String) {
+					((String)s).getChars(w, len, chars, uchars.length);
+				}
+				else if (s instanceof StringBuilder) {
+					((StringBuilder)s).getChars(w, len, chars, uchars.length);
+				}
+				else {
+					for (int i = 0; i<len-w; i++) {
+						chars[i+uchars.length] = s.charAt(i);
+					}
+				}
+				
+				s = new String(chars);
+			}
+		}
+		
+		return s;
+	}
 }

@@ -25,6 +25,7 @@ public class HasPropertySensor<V> extends AbstractSensor<V> {
 	public HasPropertySensor(V value, String name, NameMatcher matcher) {
 		super(value);
 		this.matcher = matcher;
+		this.name = name;
 	}
 
 	@Override

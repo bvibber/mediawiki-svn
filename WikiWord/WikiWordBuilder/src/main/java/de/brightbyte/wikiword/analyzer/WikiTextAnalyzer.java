@@ -1456,33 +1456,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 		title = AnalyzerUtils.replaceSpaceByUnderscore(title);
 		
-		if (titleCase && forceCase && title.charAt(0)>'Z') { //fast check for ascii caps first
-			int ch = Character.codePointAt(title, 0);
-			if (Character.isLowerCase(ch)) {
-				int uch = Character.toUpperCase(ch);
-				if (uch!=ch) {
-					int w = Character.charCount(ch);
-					int len= title.length();
-					
-					char[] uchars = Character.toChars(uch);
-					char[] chars = new char[uchars.length + len - w];
-					System.arraycopy(uchars, 0, chars, 0, uchars.length);
-					
-					if (title instanceof String) {
-						((String)title).getChars(w, len, chars, uchars.length);
-					}
-					else if (title instanceof StringBuilder) {
-						((StringBuilder)title).getChars(w, len, chars, uchars.length);
-					}
-					else {
-						for (int i = 0; i<len-w; i++) {
-							chars[i+uchars.length] = title.charAt(i);
-						}
-					}
-					
-					title = new String(chars);
-				}
-			}
+		if (titleCase && forceCase) {
+			title = AnalyzerUtils.titleCase(title);
 		}
 		
 		return title;
