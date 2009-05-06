@@ -254,6 +254,14 @@ class SmoothGallery {
 			$output .= ', showInfopane: false';
 		}
 	
+		if ( !$this->argumentArray["slideinfozoneslide"] ) {
+			$output .= ', slideInfoZoneSlide: false';
+		}
+	
+		if ( $this->argumentArray["slideinfozoneopacity"] ) {
+			$output .= ', slideInfoZoneOpacity: ' . $this->argumentArray["slideinfozoneopacity"];
+		}
+	
 		#$output .= ', useHistoryManager: true';
 		#$output .= ', preloader: true';
 		#$output .= ', preloaderImage: true';
@@ -308,5 +316,20 @@ class SmoothGallery {
                 $outputPage->addScript( '<script src="' . $extensionpath . '/scripts/jd.gallery.set.js" type="text/javascript"></script>' );
 
 		return true;
+	}
+
+	static function debug( $debugText, $debugArr = null ) {
+                global $wgSmoothGalleryDebug;
+
+                if ( isset( $debugArr ) ) {
+                        if ( $wgSmoothGalleryDebug > 0 ) {
+                                $text = $debugText . " " . implode( "::", $debugArr );
+                                wfDebugLog( 'sgallery', $text, false );
+                        }
+                } else {
+                        if ( $wgSmoothGalleryDebug > 0 ) {
+                                wfDebugLog( 'sgallery', $debugText, false );
+                        }
+                }
 	}
 }

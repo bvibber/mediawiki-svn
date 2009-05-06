@@ -63,7 +63,19 @@ class SmoothGalleryParser {
 		} else {
 			$this->argumentArray["showinfopane"] = true;
 		}
-	
+
+		if ( isset( $argv["slideinfozoneslide"] ) && $argv["slideinfozoneslide"] == "false" ) {
+			$this->argumentArray["slideinfozoneslide"] = false;
+		} else {
+			$this->argumentArray["slideinfozoneslide"] = true;
+		}
+
+		if ( isset( $argv["slideinfozoneopacity"] ) && is_numeric($argv["slideinfozoneopacity"]) ) {
+			$this->argumentArray["slideinfozoneopacity"] = $argv["slideinfozoneopacity"];
+		} else {
+			$this->argumentArray["slideinfozoneopacity"] = "0.7";
+		}
+
 		if ( isset( $argv["fallback"] ) ) {
 			$this->argumentArray["fallback"] = htmlspecialchars( $argv["fallback"] );
 		} else {
@@ -123,14 +135,15 @@ class SmoothGalleryParser {
 	
 		//We need a parser to pass to the render function, this
 		//seems kinda dirty, but it works on MediaWiki 1.6-1.9...
-		$local_parser = clone $parser;
-		$local_parser_options = new ParserOptions();
-		$local_parser->mOptions = $local_parser_options;
-		$local_parser->Title( $wgTitle );
-		$local_parser->mArgStack = array();
+		#$local_parser = clone $parser;
+		#$local_parser_options = new ParserOptions();
+		#$local_parser->mOptions = $local_parser_options;
+		#$local_parser->Title( $wgTitle );
+		#$local_parser->mArgStack = array();
 	
 		//Expand templates in the input
-		$local_parser->replaceVariables( $input );
+		#$local_parser->replaceVariables( $input );
+		#$input = $parser->recursiveTagParse( $input );
 	
 		//The image array is a delimited list of images (strings)
 		$line_arr = preg_split( "/$wgSmoothGalleryDelimiter/", $input, -1, PREG_SPLIT_NO_EMPTY );
@@ -205,7 +218,7 @@ class SmoothGalleryParser {
 		//Get the image object from the database
 		$img_obj = wfFindFile( $title );
 	
-		if ( !$img_obj->exists() ) {
+		if ( !$img_obj ) {
 			//The user asked for an image that doesn't exist, let's
 			//add this to the list of missing objects
 			$galleryArray["missing_images"][] = htmlspecialchars( $title->getDBkey() );
@@ -237,7 +250,8 @@ class SmoothGalleryParser {
 			//we need to just provide the image
 			$full_thumb = $img_obj->getUrl();
 		}
-	
+
+		$icon_thumb = '';
 		if ( $this->argumentArray["carousel"] ) {
 			//We are going to show a carousel to the user; we need
 			//to make icon thumbnails
