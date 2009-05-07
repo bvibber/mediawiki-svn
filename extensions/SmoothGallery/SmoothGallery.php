@@ -50,6 +50,7 @@ $wgHooks['LanguageGetMagic'][] = 'smoothGalleryLanguageGetMagic';
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['SmoothGallery'] = $dir . 'SmoothGallery.i18n.php';
 $wgAutoloadClasses['SmoothGallery'] = $dir . 'SmoothGalleryClass.php';
+$wgAutoloadClasses['SmoothGalleryParser'] = $dir . 'SmoothGalleryParser.php';
 
 //sane defaults. always initialize to avoid register_globals vulnerabilities
 $wgSmoothGalleryDelimiter = "\n";
@@ -105,8 +106,6 @@ function initSmoothGalleryPF( &$parser ) {
 }
 
 function initSmoothGallery( $input, $argv, &$parser, $calledAsSet=false ) {
-	require_once( 'SmoothGalleryParser.php' );
-
 	$sgParser = new SmoothGalleryParser( $input, $argv, $parser, $calledAsSet );
 	$sgGallery = new SmoothGallery();
 
