@@ -1,4 +1,4 @@
-VERSION		= 1.6
+VERSION		= 1.7
 
 PREFIX		?= /usr/local
 CONFDIR		?= /etc/slayerd
@@ -6,14 +6,21 @@ SBINDIR		?= $(PREFIX)/sbin
 MANDIR		?= $(PREFIX)/share/man/man8
 
 CXX		= g++
-CXXFLAGS	= -O2 -g3 -ggdb
+CXXFLAGS	= -O0 -g3 -ggdb
 CPPFLAGS	= -DETCDIR=\"$(CONFDIR)\" -DPREFIX=\"$(PREFIX)\" -I/usr/local/include
 LDFLAGS		= -L/usr/local/lib
-SRCS		= slayerd.cc process.cc
+SRCS		= slayerd.cc process.cc config.cc util.cc
 OBJS		= $(SRCS:.cc=.o)
+LIBS		=
+
+ifeq ($(shell uname),FreeBSD)
+LIBS += -lkvm
+endif
+
+all: slayerd
 
 slayerd: $(OBJS)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) -o $@ -lboost_filesystem
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) -o $@ -lboost_filesystem $(LIBS)
 
 install: slayerd
 	install -d $(DESTDIR)$(SBINDIR)
@@ -28,7 +35,7 @@ install: slayerd
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -DVERSION=\"$(VERSION)\" -c $<
 
 clean:
-	rm -f slayerd slayerd.o
+	rm -f slayerd *.o
 
 .PHONY: clean install
 .SUFFICES: .cc .o

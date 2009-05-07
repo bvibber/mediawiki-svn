@@ -11,7 +11,9 @@
 #ifndef PROCESS_H
 #define PROCESS_H
 
+#include	<sys/types.h>
 #include	<vector>
+#include	<boost/shared_ptr.hpp>
 
 struct process {
 	typedef boost::shared_ptr<process> pointer;

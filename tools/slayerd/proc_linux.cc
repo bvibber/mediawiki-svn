@@ -71,6 +71,7 @@ process_linux::_read_proc_data(fs::path const &pth)
 	unsigned long _rt_priority, _policy;
 	int _mshare, _mtext, _mlib, _mdata;
 	pid_t _ppid, _pgrp, _sid, _tty, _tpgid, _state, _msize, _nice;
+	int pagesz = sysconf(_SC_PAGE_SIZE);
 
 	{
 		std::ifstream f((pth / "stat").native_file_string().c_str());
@@ -109,6 +110,14 @@ process_linux::_read_proc_data(fs::path const &pth)
 		if (!std::getline(f, _fullcomm))
 			throw std::runtime_error("could not parse cmdline");
 	}
+
+	_mres *= pagesz;
+	/* command is (%s) formatted, strip parentheses. */
+	_comm = _comm.substr(1);
+	_comm.resize(_comm.size() - 1);
+
+	/* arguments are \0 separated, use spaces for display */
+	std::replace(_fullcomm.begin(), _fullcomm.end(), '\0', ' ');
 }
 
 template<typename C>
