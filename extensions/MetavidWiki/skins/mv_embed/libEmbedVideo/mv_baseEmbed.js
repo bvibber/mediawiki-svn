@@ -29,6 +29,7 @@ var default_video_attributes = {
 	"readyState":0,  //http://www.whatwg.org/specs/web-apps/current-work/#readystate
 	"currentTime":0, //current playback position (should be updated by plugin)
 	"duration":null,   //media duration (read from file or the temporal url)
+	"networkState":0,
 
     //custom attributes for mv_embed:
     "play_button":true,    
@@ -1806,6 +1807,10 @@ embedVideo.prototype = {
        	}).unbind( "click" ).click(function(){
        		$j('#' + this_id ).get(0).pause();
        	});
+	},
+	load:function(){
+		//should be done by child (no base way to load assets)
+		js_log('baseEmbed:load call');
 	},
 	/*
 	 * base embed pause

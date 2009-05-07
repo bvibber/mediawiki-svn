@@ -52,6 +52,7 @@ mvPlayList.prototype = {
 	loading_external_data:true, //if we are loading external data (set to loading by default)
 	
 	activeClipList:null,
+	playlist_buffer_time: 20, // how many seconds of future clips we should buffer
 	
 	interface_url:null, //the interface url 
 	tracks:{},
@@ -521,6 +522,46 @@ mvPlayList.prototype = {
 	loadEmbedPlaylist: function(){
 		//js_log('load playlist');
 	},
+	/** mannages the loading of future clips
+	 * called regurally while we are playing clips
+	 * 
+	 * load works like so: 
+	 * if the current clip is full loaded 
+	 * 		load clips untill buffredEndTime < playlist_buffer_time load next
+	 * 
+	 * this won't work so well with time range loading for smil (need to work on that)   
+	 */
+	loadFutureClips:function(){		
+		if( this.cur_clip.embed.bufferedPercent == 1){
+			//set the buffer to the currentTime - duration 
+			var curBuffredTime = this.cur_clip.getDuration() - this.cur_clip.embed.currentTime;		
+			
+			if(curBuffredTime < 0)
+				curBuffredTime = 0;
+				
+			js_log( "curBuffredTime:: " + curBuffredTime );			
+			if( curBuffredTime <  this.playlist_buffer_time ){
+				js_log(" we only have " + curBuffredTime + ' buffed but we need: ' +  this.playlist_buffer_time);
+						
+				for(var inx = this.cur_clip.order + 1; inx < this.default_track.clip.length; inx++ ){
+					var cClip = this.default_track.getClip( inx );					
+				
+					//check if the clip is already loaded (add its duration)  
+					if( cClip.embed.bufferedPercent == 1){
+						curBuffredTime += cClip.embed.getDuration();
+					}								
+					//check if we still have to load a resource:		
+					if( curBuffredTime < this.playlist_buffer_time ){
+						//issue the load request				
+						if( cClip.embed.networkState==0 ){
+							cClip.embed.load();
+						}
+						break; //check back next time
+					}					 															
+				}		
+			}	
+		}
+	},
 	//called to play the next clip if done call onClipDone 
 	playNext: function(){
 		//advance the playhead to the next clip			
@@ -769,7 +810,9 @@ mvPlayList.prototype = {
 			barHtml+='<div class="mv_progress mv_buffer"></div>';
 			
 			barHtml+='</div>';
-			//background:#DDDclip.getColor()
+			
+			//background:#DDD +clip.getColor();
+			
 			$j('#seeker_bar_'+_this.id).append(barHtml);
 																										
 			//js_log('offset:' + cur_pixle +' width:'+pwidth+' add clip'+ clip.id + ' is '+clip.embed.getDuration() +' = ' + perc +' of ' + _this.track_len);
@@ -1353,8 +1396,11 @@ mvPlayList.prototype.monitor = function(){
 		this.setStatus(seconds2npt(this.currentTime) + '/' + seconds2npt(this.getDuration()) );				
 		this.setSliderValue(this.currentTime / this.getDuration());
 	}
-
-	//status updates are handled by children clips ... playlist just manages smil actions
+	//pre-load any future clips:
+	this.loadFutureClips();
+	
+	
+	//status updates are handled by children clips ... playlist mostly manages smil actions
 	this.doSmilActions();	
 	
 	if( ! this.smil_monitorTimerId ){

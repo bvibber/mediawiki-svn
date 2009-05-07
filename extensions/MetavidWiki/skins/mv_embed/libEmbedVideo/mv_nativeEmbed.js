@@ -3,6 +3,7 @@ var nativeEmbed = {
 	instanceOf:'nativeEmbed',
 	canPlayThrough:false,
 	grab_try_count:0,
+	onlyLoadFlag:false,	
     supports: {
     	'play_head':true, 
     	'pause':true,     	
@@ -24,27 +25,36 @@ var nativeEmbed = {
     	// controls=false results in controls being displayed: 
     	//http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-August/016159.html    	
     	js_log("native play url:" + this.getURI( this.seek_time_sec ));
-		return '<video ' +
+		var eb = '<video ' +
 					'id="' + this.pid + '" ' +
 					'style="width:' + this.width+'px;height:' + this.height + 'px;" ' +
 					'width="' + this.width + '" height="'+this.height+'" '+
-				   	'src="' + this.media_element.selected_source.getURI( this.seek_time_sec ) + '" ' +
-				   	'autoplay="true" '+				   	
-				   	'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
+				   	'src="' + this.media_element.selected_source.getURI( this.seek_time_sec ) + '" ';
+				   	
+		if(!this.onlyLoadFlag)
+			eb+=	'autoplay="'+this.autoplay+'" ';
+			
+		//continue with the other attr: 				   	
+		eb+=		'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
 				   	'onloadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' + 
 				   	'loadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' +
 				   	'onprogress="$j(\'#'+this.id+'\').get(0).onprogress( event );return false;" '+
 				   	'onended="$j(\'#'+this.id+'\').get(0).onended();return false;" >' +
 				'</video>';
+		return eb;
 	},
 	//@@todo : loading progress	
 	postEmbedJS:function(){
 		js_log("f:native:postEmbedJS:");		
 		this.getVID();
-		if(typeof this.vid != 'undefined'){
-			js_log("GOT video object sending PLAY()");			
-			this.vid.play();
-			//this.vid.load(); //does not seem to work so well	
+		if(typeof this.vid != 'undefined'){			
+			//always load the media:
+			if( this.onlyLoadFlag ){ 
+				this.vid.load();
+			}else{						 
+				this.vid.play();
+			}
+							
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()',100);		
 		}else{
 			js_log('could not grab vid obj trying again:' + typeof this.vid);
@@ -136,9 +146,17 @@ var nativeEmbed = {
 			this.monitor();
 		}
 	},
-	playMovieAt:function(order){
-		js_log('f:playMovieAt '+order);
-		this.play();
+	load:function(){
+		this.getVID();
+		if( !this.vid ){
+			//no vid loaded
+			js_log('native::load() ... doEmbed');
+			this.onlyLoadFlag = true;
+			this.doEmbedHTML();
+		}else{
+			//won't happen offten
+			this.vid.load();
+		}
 	},
 	// get the embed vlc object 
     getVID : function (){

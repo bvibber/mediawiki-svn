@@ -1,7 +1,7 @@
 <?php
 /*
 mv_embed_iframe.php
-this allows for remote embedding without exposing the hosting site to javascript. 
+this allows for remote embedding without exposing the hosting site to remote javascript. 
 */
 
 mv_embed_iframe();
