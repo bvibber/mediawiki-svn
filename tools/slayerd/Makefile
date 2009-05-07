@@ -4,6 +4,7 @@ PREFIX		?= /usr/local
 CONFDIR		?= /etc/slayerd
 SBINDIR		?= $(PREFIX)/sbin
 MANDIR		?= $(PREFIX)/share/man/man8
+GROUP		?= root
 
 CXX		= g++
 CXXFLAGS	= -O0 -g3 -ggdb
@@ -15,6 +16,7 @@ LIBS		=
 
 ifeq ($(shell uname),FreeBSD)
 LIBS += -lkvm
+GROUP = wheel
 endif
 
 all: slayerd
@@ -26,10 +28,10 @@ install: slayerd
 	install -d $(DESTDIR)$(SBINDIR)
 	install -d $(DESTDIR)$(CONFDIR)
 	install -d $(DESTDIR)$(MANDIR)
-	install -c -s -o root -g root -m 755 slayerd $(DESTDIR)$(SBINDIR)
-	install -c -o root -g root -m 640 slayerd.conf.example $(DESTDIR)$(CONFDIR)
-	install -c -o root -g root -m 640 mailmessage $(DESTDIR)$(CONFDIR)
-	install -c -o root -g root -m 644 slayerd.8 $(DESTDIR)$(MANDIR)
+	install -c -s -o root -g $(GROUP) -m 755 slayerd $(DESTDIR)$(SBINDIR)
+	install -c -o root -g $(GROUP) -m 640 slayerd.conf.example $(DESTDIR)$(CONFDIR)
+	install -c -o root -g $(GROUP) -m 640 mailmessage $(DESTDIR)$(CONFDIR)
+	install -c -o root -g $(GROUP) -m 644 slayerd.8 $(DESTDIR)$(MANDIR)
 
 .cc.o:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -DVERSION=\"$(VERSION)\" -c $<
