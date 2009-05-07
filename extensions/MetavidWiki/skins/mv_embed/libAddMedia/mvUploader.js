@@ -364,8 +364,7 @@ mvBaseUploadInterface.prototype = {
 	},
 	processApiResult: function( apiRes ){	
 		var _this = this;			
-		//check for simple error
-		debugger; 
+		//check for simple error		
 		if( apiRes.error ){
 			_this.updateUploadError( apiRes.error );
 		//check for upload api error: 

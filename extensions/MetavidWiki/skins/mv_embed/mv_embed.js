@@ -345,7 +345,7 @@ var mvJsLoader = {
 	jQueryCheck:function(callback){	
 		var _this = this;
 		_this.doLoad({
-		 	'window.jQuery'		:'jquery/jquery-1.2.6.js'
+		 	'window.jQuery'		:'jquery/jquery-1.3.2.js'
 		},function(){
 			_global['$j'] = jQuery.noConflict();
 			//set up ajax to not send dynamic urls for loading scripts (we control that with the scriptLoader) 

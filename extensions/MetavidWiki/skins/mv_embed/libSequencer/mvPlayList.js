@@ -623,8 +623,8 @@ mvPlayList.prototype = {
 			//@@todo pre-load each clip:
 			//play all active clips (playlist_swap_loader can have more than one clip active) 		
 			$j.each(this.activeClipList.getClipList(), function(inx, clip){ 
-				clip.embed.play();		
-			}); 	
+				clip.embed.play();
+			}); 
 		}else if(this.cur_clip.embed.supports['playlist_driver']){				
 			//js_log('playlist_driver');
 			//embedObject is feed the playlist info directly and manages next/prev
