@@ -122,8 +122,7 @@ var nativeEmbed = {
 		this.onClipDone();
 	},
 	stopMonitor:function(){
-		if( this.monitorTimerId != 0 )
-	    {
+		if( this.monitorTimerId != 0 ) {
 	        clearInterval(this.monitorTimerId);
 	        this.monitorTimerId = 0;
 	    }
