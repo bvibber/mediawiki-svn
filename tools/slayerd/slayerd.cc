@@ -1,4 +1,4 @@
-/* Copyright (c) 2007 River Tarnell <river@attenuate.org>. */
+/* Copyright (c) 2007-2009 River Tarnell <river@loreley.flyingparchment.org.uk>. */
 /*
  * Permission is granted to anyone to use this software for any purpose,
  * including commercial applications, and to alter it and redistribute it
@@ -12,35 +12,37 @@
  * slayerd: monitor user activity and regulate users using too much RAM.
  */
 
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <algorithm>
-#include <stdexcept>
-#include <vector>
-#include <map>
-#include <set>
-#include <cerrno>
-#include <cstring>
+#include	<string>
+#include	<iostream>
+#include	<fstream>
+#include	<algorithm>
+#include	<stdexcept>
+#include	<vector>
+#include	<map>
+#include	<set>
+#include	<cerrno>
+#include	<cstring>
 
-#include <sys/types.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <pwd.h>
-#include <signal.h>
-#include <syslog.h>
+#include	<sys/types.h>
+#include	<sys/mman.h>
+#include	<sys/stat.h>
+#include	<sys/wait.h>
+#include	<unistd.h>
+#include	<pwd.h>
+#include	<signal.h>
+#include	<syslog.h>
 
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/lexical_cast.hpp>
-#include <boost/format.hpp>
+#include	<boost/filesystem/path.hpp>
+#include	<boost/filesystem/operations.hpp>
+#include	<boost/lexical_cast.hpp>
+#include	<boost/format.hpp>
+#include	<boost/shared_ptr.hpp>
+
+#include	"process.h"
 
 namespace fs = boost::filesystem;
 
 namespace {
-	std::string PATH_PROC = "/proc";
 	std::string CONFFILE = "/etc/slayerd/slayerd.conf";
 }
 
@@ -67,116 +69,6 @@ struct config_t {
 	{}
 } config;
 
-struct process {
-	process(fs::path const &pth);
-
-	pid_t _pid;
-	/* short command from /proc/{pid}/stat */
-	std::string _comm;
-	/* fulll command from /proc/{pid}/cmdline */
-	std::string _fullcomm;
-	char _state;
-	pid_t _ppid;
-	pid_t _pgrp;
-	pid_t _sid;
-	int _tty;
-	pid_t _tpgid;
-	unsigned long _flags;
-	unsigned long _minflt;
-	unsigned long _cminflt;
-	unsigned long _majflt;
-	unsigned long _cmajflt;
-	unsigned long _utime;
-	unsigned long _stime;
-	long _cutime;
-	long _cstime;
-	long _priority;
-	long _itrealvalue;
-	long _starttime;
-	unsigned long _vsize;
-	long _rss;
-	unsigned long _rlim;
-	unsigned long _startcode;
-	unsigned long _endcode;
-	unsigned long _stackstart;
-	unsigned long _kstkesp;
-	unsigned long _kstkeip;
-	unsigned long _signal;
-	unsigned long _blocked;
-	unsigned long _sigignore;
-	unsigned long _sigcatch;
-	unsigned long _wchan;
-	unsigned long _nswap;
-	unsigned long _cnswap;
-	int _exit_signal;
-	int _processor;
-	unsigned long _rt_priority;
-	unsigned long _policy;
-	long _nice;
-	uid_t _uid;
-	int _msize;
-	int _mres;
-	int _mshare;
-	int _mtext;
-	int _mlib;
-	int _mdata;
-
-	void _read_proc_data(fs::path const &);
-};
-
-process::process(fs::path const &pth)
-	: _pid(boost::lexical_cast<pid_t>(pth.leaf()))
-{
-	struct stat st;
-	if (::stat(pth.native_directory_string().c_str(), &st) == -1)
-		throw std::runtime_error("could not stat proc dir");
-	_uid = st.st_uid;
-
-	_read_proc_data(pth);
-}
-
-void
-process::_read_proc_data(fs::path const &pth)
-{
-	{
-		std::ifstream f((pth / "stat").native_file_string().c_str());
-
-		if (!f)
-			throw std::runtime_error("could not read line from stat");
-
-		long dummy;
-		if (!(f >> _pid >> _comm >> _state >> _ppid >> _pgrp >> _sid >> _tty >> _tpgid
-			>> _flags >> _minflt >> _cminflt >> _majflt >> _cmajflt >> _utime
-			>> _stime >> _cutime >> _cstime >> _priority >> _nice >> dummy >> _itrealvalue
-			>> _starttime >> _vsize >> _rss >> _rlim >> _startcode >> _endcode
-			>> _stackstart >> _kstkesp >> _kstkeip >> _signal >> _blocked >> _sigignore
-			>> _sigcatch >> _wchan >> _nswap >> _cnswap >> _exit_signal >> _processor
-			>> _rt_priority >> _policy
-		))
-			throw std::runtime_error("could not parse stat line");
-	}
-
-	{
-		std::ifstream f((pth / "statm").native_file_string().c_str());
-
-		if (!f)
-			throw std::runtime_error("could not read line from stat");
-
-		if (!(f >> _msize >> _mres >> _mshare >> _mtext >> _mlib >> _mdata))
-			throw std::runtime_error("could not parse statm line");
-	}
-
-	{
-		std::ifstream f((pth / "cmdline").native_file_string().c_str());
-
-		if (!f)
-			throw std::runtime_error("could not read line from cmdline");
-
-		if (!std::getline(f, _fullcomm))
-			throw std::runtime_error("could not parse cmdline");
-	}
-}
-
 std::string
 username(uid_t uid)
 {
@@ -195,40 +87,12 @@ uid(std::string const &username)
 	return p->pw_uid;
 }
 
-template<typename C>
-struct directory_enumerator {
-	C &list;
-
-	directory_enumerator(C &list) : list(list) {}
-
-	void operator() (fs::path const &pth) const {
-		/*
-		 * Ensure it is actually a pid.
-		 */
-		try {
-			boost::lexical_cast<pid_t>(pth.leaf());
-		} catch (boost::bad_lexical_cast const &) {
-			return;
-		}
-
-		try {
-			list.push_back(process(pth));
-		} catch (...) {}
-	}
-};
-
-template<typename C>
-directory_enumerator<C>
-enumerate_directory(C &list) {
-	return directory_enumerator<C>(list);
-}
-
 struct user {
 	user() : uid(-1), rss(0) {}
 
 	uid_t uid;
-	unsigned long rss;
-	std::vector<process> processes;
+	std::size_t rss;
+	std::vector<process::pointer> processes;
 };
 
 /*
@@ -239,6 +103,13 @@ bool
 field_comparator(S const &a, S const &b)
 {
 	return b.*F < a.*F;
+}
+
+template<typename S, typename T, T (S::*F)(void) const>
+bool
+ptmf_comparator(boost::shared_ptr<S> const &a, boost::shared_ptr<S> const &b)
+{
+	return ((*b).*F)() < ((*a).*F)();
 }
 
 void
@@ -580,22 +451,18 @@ main(int argc, char **argv)
 		% config.delay % (config.limit / 1024 / 1024) % (config.thresh / 1024 / 1024)));
 
 	for (;;) {
-		fs::path proc(PATH_PROC);
-		std::vector<process> processes;
-
-		std::for_each(fs::directory_iterator(proc), fs::directory_iterator(),
-				enumerate_directory(processes));
+		std::vector<process::pointer> processes(enumerate_processes());
 
 		/*
 		 * Aggregate the processes by user.
 		 */
 		std::vector<user> users;
 		for (std::size_t i = 0, end = processes.size(); i < end; ++i) {
-			process &p = processes[i];
+			process::pointer p = processes[i];
 			user *u = 0;
 
 			for (std::size_t ui = 0, uend = users.size(); ui != uend; ++ui)
-				if (users[ui].uid == p._uid) {
+				if (users[ui].uid == p->uid()) {
 					u = &users[ui];
 					break;
 				}
@@ -603,18 +470,18 @@ main(int argc, char **argv)
 			if (u == 0) {
 				std::size_t n = users.size();
 				users.resize(n + 1);
-				users[n].uid = p._uid;
+				users[n].uid = p->uid();
 				u = &users[n];
 			}
 
-			u->rss += p._mres;
+			u->rss += p->rss();
 			u->processes.push_back(p);
 		}
 
 		/*
 		 * Sort user by RSS.
 		 */
-		std::sort(users.begin(), users.end(), field_comparator<user, unsigned long, &user::rss>);
+		std::sort(users.begin(), users.end(), field_comparator<user, std::size_t, &user::rss>);
 
 		for (std::size_t i = 0, end = users.size(); i < end; ++i) {
 			user &u = users[i];
@@ -637,31 +504,32 @@ main(int argc, char **argv)
 						% (bytes / 1024 / 1024)
 						% (config.limit / 1024 / 1024)));
 
-			std::sort(u.processes.begin(), u.processes.end(), field_comparator<process, int, &process::_mres>);
+			std::sort(u.processes.begin(), u.processes.end(), ptmf_comparator<process, std::size_t, &process::rss>);
 
 			while (bytes >= config.thresh && !u.processes.empty()) {
-				process &p = u.processes[0];
+				process::pointer p = u.processes[0];
 
 				/* command is (%s) formatted, strip parentheses. */
-				std::string comm = p._comm.substr(1);
+				std::string comm = p->command().substr(1);
 				comm.resize(comm.size() - 1);
 
 				/* arguments are \0 separated, use spaces for display */
-				std::replace(p._fullcomm.begin(), p._fullcomm.end(), '\0', ' ');
+				std::string cm = p->cmdline();
+				std::replace(cm.begin(), cm.end(), '\0', ' ');
 
 				if (!config.debug)
-					kill(p._pid, SIGKILL);
+					kill(p->pid(), SIGKILL);
 
-				std::size_t thissize = std::size_t(p._mres) * pagesize;
+				std::size_t thissize = std::size_t(p->rss()) * pagesize;
 
 				log(str(boost::format("    killed process \"%s\" (pid %d) using %dM, usage now %dM")
-						% comm % p._pid
+						% comm % p->pid()
 						% (thissize / 1024 / 1024)
 						% ((bytes - thissize) / 1024 / 1024)));
 
 				process_list += str(boost::format("    %s (pid %d), using %d megabyte(s).\n"
-								  "       command: \"%s\"\n")
-						% comm % p._pid % (thissize / 1024 / 1024) % p._fullcomm);
+								  "       command: %s\n")
+						% comm % p->pid() % (thissize / 1024 / 1024) % p->cmdline());
 
 				bytes -= thissize;
 				u.processes.erase(u.processes.begin());

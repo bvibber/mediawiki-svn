@@ -7,13 +7,13 @@ MANDIR		?= $(PREFIX)/share/man/man8
 
 CXX		= g++
 CXXFLAGS	= -O2 -g3 -ggdb
-CPPFLAGS	= -DETCDIR=\"$(CONFDIR)\" -DPREFIX=\"$(PREFIX)\"
-LDFLAGS		=
-SRCS		= slayerd.cc
+CPPFLAGS	= -DETCDIR=\"$(CONFDIR)\" -DPREFIX=\"$(PREFIX)\" -I/usr/local/include
+LDFLAGS		= -L/usr/local/lib
+SRCS		= slayerd.cc process.cc
 OBJS		= $(SRCS:.cc=.o)
 
 slayerd: $(OBJS)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@ -lboost_filesystem
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) -o $@ -lboost_filesystem
 
 install: slayerd
 	install -d $(DESTDIR)$(SBINDIR)
