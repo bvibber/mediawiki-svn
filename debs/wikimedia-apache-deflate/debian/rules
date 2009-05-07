@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+install:
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+	install -Dm 0644 debian/deflate.default debian/wikimedia-apache-deflate/etc/apache2/conf.d/deflate
+
+clean: 
+	dh_clean
+
+build:
+
+binary: binary-indep
+binary-indep: install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb

@@ -1,0 +1,11 @@
+Source: wikimedia-apache-deflate
+Section: unknown
+Priority: optional
+Maintainer: Domas Mituzas <domas@wikimedia.org>
+Standards-Version: 3.6.2
+Build-Depends: debhelper
+
+Package: wikimedia-apache-deflate
+Architecture: all
+Depends: apache2.2-common
+Description: Sets Wikimedia Apaches to compress Javascript and CSS

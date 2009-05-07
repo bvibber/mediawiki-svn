@@ -1,0 +1,5 @@
+wikimedia-apache-deflate (0.1) hardy; urgency=low
+
+  * Deploy deflate configuration
+
+ -- Domas Mituzas <domas@wikimedia.org>  Thu, 07 May 2009 17:46:15 +0300
