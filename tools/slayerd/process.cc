@@ -10,6 +10,8 @@
 # include	"proc_linux.cc"
 #elif defined(__FreeBSD__)
 # include	"proc_freebsd.cc"
+#elif defined(__sun) && defined(__SVR4)
+# include	"proc_solaris.cc"
 #else
 # error dont know how to enumerate processes on this platform
 #endif

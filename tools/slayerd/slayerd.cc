@@ -19,6 +19,8 @@
 #include	<cerrno>
 #include	<cstring>
 #include	<csignal>
+#include	<signal.h>
+#include	<stdio.h>
 #include	<iostream>
 #include	<map>
 #include	<fstream>
@@ -28,6 +30,10 @@
 #include	"process.h"
 #include	"config.h"
 #include	"util.h"
+
+#if defined(__sun) && defined(__SVR4)
+extern "C" int daemon(int, int);
+#endif
 
 namespace {
 	std::string CONFFILE = "/etc/slayerd/slayerd.conf";
@@ -56,13 +62,13 @@ usage(void) {
 ;
 }
 
-void
+extern "C" void
 rmpidfile(void)
 {
 	unlink(config.pidfile.c_str());
 }
 
-void
+extern "C" void
 do_signal(int sig)
 {
 	rmpidfile();
@@ -91,9 +97,9 @@ do_pidfile(void)
 	}
 
 	pf << getpid() << '\n';
-	atexit(rmpidfile);
-	signal(SIGINT, do_signal);
-	signal(SIGTERM, do_signal);
+	std::atexit(rmpidfile);
+	std::signal(SIGINT, do_signal);
+	std::signal(SIGTERM, do_signal);
 	return true;
 }
 
