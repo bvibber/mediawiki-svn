@@ -18,6 +18,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import de.brightbyte.abstraction.BeanPropertyAbstractor;
+import de.brightbyte.application.Arguments;
 import de.brightbyte.data.MultiMap;
 import de.brightbyte.data.ValueSetMultiMap;
 import de.brightbyte.data.filter.Filter;
@@ -878,6 +880,18 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		 */
 		public WikiTextAnalyzer getAnalyzer() {
 			return WikiTextAnalyzer.this;
+		}
+
+		public CharSequence getCleanedText() {
+			return getCleanedText(false);
+		}
+
+		public CharSequence getFlatText() {
+			return getFlatText(false);
+		}
+
+		public CharSequence getPlainText() {
+			return getPlainText(false);
 		}
 	}
 
@@ -1881,16 +1895,27 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		}
 	}
 	
-	public static void main(String[] args) throws InstantiationException, IOException {
-		String lang = args[0];
-		String name = args[1];
-		String file = args[2];
+	public static void main(String[] argv) throws InstantiationException, IOException {
+		Arguments args = new Arguments();
+		args.declare("tweaks", null, true, String.class, "tweak file");
+		
+		args.parse(argv);
+		
+		String lang = args.getParameter(0);
+		String name = args.getParameter(1);
+		String file = args.getParameter(2);
 		
 		String text = IOUtil.slurp(new File(file), "UTF-8");
 		
 		TweakSet tweaks = new TweakSet();
+
+		String tf = args.getStringOption("tweaks", null);
+		if (tf!=null) tweaks.loadTweaks(new File(tf));
 		
-		Corpus corpus = Corpus.forName("TEST", lang, (String[])null);
+		tweaks.setTweaks(System.getProperties(), "wikiword.tweak."); //XXX: doc
+		tweaks.setTweaks(args, "tweak."); //XXX: doc
+		
+		Corpus corpus = Corpus.forName("TEST", lang, tweaks);
 		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus, tweaks);
 		
 		NamespaceSet namespaces = Namespace.getNamespaces(null);
@@ -1900,9 +1925,15 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 		WikiPage page = analyzer.makePage(t.getNamespace(), t.getTarget().toString(), text, true);
 
-		String plain = page.getPlainText(false).toString();
-		System.out.println(plain);
-		System.out.println();
+		for (int i=3; i<args.getParameterCount(); i++) {
+				String attr = args.getParameter(i);
+				System.out.println("==== "+attr+" =====================================");
+			
+				Object v= BeanPropertyAbstractor.instance.getProperty(page, attr);
+				
+				System.out.println(v);
+				System.out.println();
+		}
 	}
 
 }

@@ -30,6 +30,12 @@ public interface WikiPage {
 
 	public CharSequence getPlainText(boolean armored);
 
+	public CharSequence getCleanedText();
+
+	public CharSequence getFlatText();
+
+	public CharSequence getPlainText();
+
 	public CharSequence getFirstParagraph();
 
 	public CharSequence getFirstSentence();
