@@ -38,7 +38,7 @@ $sample_embed[6]['tag'] = '<playlist id="warplaylist" src="' . $plurl . '"/>';
 
 
 // sample smil
-$smilURL = 'sample_wikimedia_remote.smil.xml';
+$smilURL = 'fresh_smil_load.php';
 $sample_embed[8]['tag'] = '<playlist id="smil_pl" src="' . $smilURL . '" />';
 $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/transit.htm">source</a>
 			The first video fades up from green when it starts to play, 

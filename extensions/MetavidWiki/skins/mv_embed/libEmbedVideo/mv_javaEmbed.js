@@ -47,7 +47,7 @@ var javaEmbed = {
 				
 				iframe_src = parseUri(src).protocol + '://'+
 							parseUri(src).authority +
-							mv_media_iframe_path + 'cortado_iframe.php';
+							mv_media_iframe_path +  'cortado_iframe.php';
 				js_log('iframe source: ' + iframe_src);
 				//set the domain of the script: 
 				parent_domain = '&parent_domain=' + doc_host;
@@ -79,7 +79,7 @@ var javaEmbed = {
 			//load directly in the page..
 			// (media must be on the same server or applet must be signed)
 			return ''+
-			'<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="cortado-ovt-stripped_r34336.jar" width="'+this.width+'" height="'+this.height+'">	'+ "\n"+
+			'<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="'+mv_embed_path+'binPlayer/cortado/cortado-wmf-r46643.jar" width="'+this.width+'" height="'+this.height+'">	'+ "\n"+
 				'<param name="url" value="'+this.media_element.selected_source.src+'" /> ' + "\n"+
 				'<param name="local" value="false"/>'+ "\n"+
 				'<param name="keepaspect" value="true" />'+ "\n"+

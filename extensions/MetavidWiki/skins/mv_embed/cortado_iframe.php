@@ -139,7 +139,7 @@ function output_page($params){
 			<OBJECT id="<?php echo  htmlspecialchars( $id ) ?>" 
 		  code="com.fluendo.player.Cortado.class" 
 		  <?php echo $appid ?>
-		  archive="cortado-wmf-r46643.jar" 
+		  archive="binPlayers/cortado/cortado-wmf-r46643.jar" 
 		  width="<?php echo  htmlspecialchars( $width )?>" 
 		  height="<?php echo htmlspecialchars( $height )?>" >
 			<param name="url" value="<?php echo  htmlspecialchars( $media_url )?>" />

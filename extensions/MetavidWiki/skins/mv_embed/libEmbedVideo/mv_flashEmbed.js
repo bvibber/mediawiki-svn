@@ -1565,7 +1565,7 @@ var flashEmbed = {
 	    //'volume_control':true,
 	    'overlay':false,
 	    'fullscreen':false
-    },   
+    },
     getEmbedHTML: function (){
         setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
         return this.wrapEmebedContainer( this.getEmbedObj() );
@@ -1588,7 +1588,7 @@ var flashEmbed = {
     postEmbedJS: function()
     {   
     	var _this = this;
-    	js_log('embedFlow: uri:'+ _this.media_element.selected_source.getURI(this.seek_time_sec) + "\n"+ mv_embed_path + 'flowplayer/flowplayer-3.0.1.swf' ) ;
+    	js_log('embedFlow: uri:'+ _this.media_element.selected_source.getURI(this.seek_time_sec) + "\n"+ mv_embed_path + 'binPlayers/flowplayer/flowplayer-3.0.1.swf' ) ;
     	var flowConfig = { 
 		    clip: { 
 		        url: _this.media_element.selected_source.getURI(this.seek_time_sec), 		         

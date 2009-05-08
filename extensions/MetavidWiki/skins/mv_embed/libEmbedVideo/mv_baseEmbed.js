@@ -473,6 +473,7 @@ mediaSource.prototype =
         switch( no_param_uri.substr(no_param_uri.lastIndexOf('.'),4).toLowerCase() ){
         	case '.flv':return 'video/x-flv';break;
         	case '.ogg': case '.ogv': return 'video/ogg';break;
+        	case '.oga': return 'audio/ogg'; break;
         	case '.anx':return 'video/ogg';break;
 	    }
     }
@@ -2156,14 +2157,21 @@ mediaPlayer.prototype =
 */
 var flowPlayer = new mediaPlayer('flowplayer',['video/x-flv', 'video/h264'],'flash');
 
-var cortadoPlayer = new mediaPlayer('cortado',['video/ogg'],'java');
-var videoElementPlayer = new mediaPlayer('videoElement',['video/ogg'],'native');
-var vlcMozillaPlayer = new mediaPlayer('vlc-mozilla',['video/ogg', 'video/x-flv', 'video/mp4',  'video/h264'],'vlc');
-var vlcActiveXPlayer = new mediaPlayer('vlc-activex',['video/ogg', 'video/x-flv', 'video/mp4',  'video/h264'],'vlc');
+var omtkPlayer = new mediaPlayer('omtkplayer',['audio/ogg'], 'omtk' );
 
+var cortadoPlayer = new mediaPlayer('cortado',['video/ogg', 'audio/ogg'],'java');
+var videoElementPlayer = new mediaPlayer('videoElement',['video/ogg', 'audio/ogg'],'native');
+
+var vlcMineList = ['video/ogg','audio/ogg', 'video/x-flv', 'video/mp4',  'video/h264'];
+var vlcMozillaPlayer = new mediaPlayer('vlc-mozilla',vlcMineList,'vlc');
+var vlcActiveXPlayer = new mediaPlayer('vlc-activex',vlcMineList,'vlc');
+
+//add generic
 var oggPluginPlayer = new mediaPlayer('oggPlugin',['video/ogg'],'generic');
-var quicktimeMozillaPlayer = new mediaPlayer('quicktime-mozilla',['video/ogg'],'quicktime');
-var quicktimeActiveXPlayer = new mediaPlayer('quicktime-activex',['video/ogg'],'quicktime');
+
+//depricate quicktime in favor of safari native 
+//var quicktimeMozillaPlayer = new mediaPlayer('quicktime-mozilla',['video/ogg'],'quicktime');
+//var quicktimeActiveXPlayer = new mediaPlayer('quicktime-activex',['video/ogg'],'quicktime');
 
 var htmlPlayer = new mediaPlayer('html',['text/html', 'image/jpeg', 'image/png', 'image/svg'], 'html');
 
@@ -2193,6 +2201,8 @@ mediaPlayers.prototype =
         
         this.default_players['video/ogg'] = ['native','vlc','java', 'generic'];        
         this.default_players['application/ogg'] = ['native','vlc','java', 'generic'];
+        
+        this.default_players['audio/ogg'] = ['native','vlc', 'omtk', 'java' ];
         
 		this.default_players['video/mp4'] = ['vlc'];
 		
@@ -2370,8 +2380,27 @@ var embedTypes = {
 		 // ActiveX plugins
 		 if(this.msie){
 		 	 // check for flash		 
-		 	  if ( this.testActiveX( 'ShockwaveFlash.ShockwaveFlash'))
-		 	  	this.players.addPlayer(flowPlayer);
+		 	  if ( this.testActiveX( 'ShockwaveFlash.ShockwaveFlash')){
+		 	  	alert('we have flash');
+		 	  	//try to get the flash version for omtk include: 
+		 	  	try {
+					a = new ActiveXObject(SHOCKWAVE_FLASH_AX + ".7");
+					d = a.GetVariable("$version");	// Will crash fp6.0.21/23/29
+					if (d) {
+						d = d.split(" ")[1].split(",");
+						alert(d[0]);
+						//we need flash version 10 or greater:
+						if(parseInt( d[0]) >=10){
+							this.players.addPlayer( omtkPlayer );
+						}
+						
+					}					
+				}catch(e) {}				
+				
+		 	  	//flowplayer has pretty good compatiablity 
+		 	  	// (but if we wanted to be fancy we would check for version of flash and update the mp4/h.264 support
+		 	  	this.players.addPlayer( flowPlayer );		 	  	
+		 	  }
 			 // VLC
 			 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) )
 			 	this.players.addPlayer(vlcActiveXPlayer);
@@ -2379,8 +2408,8 @@ var embedTypes = {
 			 if ( javaEnabled && this.testActiveX( 'JavaWebStart.isInstalled' ) )
 			 	this.players.addPlayer(cortadoPlayer);
 			 // quicktime
-			 if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) )
-			 	this.players.addPlayer(quicktimeActiveXPlayer);			 
+			 //if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) )
+			 //	this.players.addPlayer(quicktimeActiveXPlayer);			 
 		 }				 
 		// <video> element
 		if ( typeof HTMLVideoElement == 'object' // Firefox, Safari
@@ -2433,19 +2462,20 @@ var embedTypes = {
 				}				
 		
 				if ( type == 'application/ogg' ) {
-					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' )
+					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ){
 						this.players.addPlayer(vlcMozillaPlayer, type);
-					else if ( pluginName.indexOf( 'QuickTime' ) > -1 )
-						this.players.addPlayer(quicktimeMozillaPlayer);
-					else
+					//else if ( pluginName.indexOf( 'QuickTime' ) > -1 )
+					//	this.players.addPlayer(quicktimeMozillaPlayer);
+					}else{
 						this.players.addPlayer(oggPluginPlayer);
+					}
 					continue;
 				} else if ( uniqueMimesOnly ) {
 					if ( type == 'application/x-vlc-player' ) {
 						this.players.addPlayer(vlcMozillaPlayer, type);
 						continue;
 					} else if ( type == 'video/quicktime' ) {
-						this.players.addPlayer(quicktimeMozillaPlayer);
+						//this.players.addPlayer(quicktimeMozillaPlayer);
 						continue;
 					}
 				}
@@ -2455,7 +2485,18 @@ var embedTypes = {
 					continue;
 				}*/
 				if(type=='application/x-shockwave-flash'){
-					this.players.addPlayer(flowPlayer);
+					this.players.addPlayer( flowPlayer );
+					
+					//check version to add omtk:
+					var flashDescription = navigator.plugins["Shockwave Flash"].description;
+					var descArray = flashDescription.split(" ");
+					var tempArrayMajor = descArray[2].split(".");
+					var versionMajor = tempArrayMajor[0];
+					
+					if(versionMajor >= 10){
+						this.players.addPlayer( omtkPlayer );
+					}
+					
 					continue;
 				}
 			}
