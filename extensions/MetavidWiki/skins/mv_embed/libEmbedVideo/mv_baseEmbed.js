@@ -1574,10 +1574,9 @@ embedVideo.prototype = {
 		if(typeof this.textInterface == 'undefined' ){
 			//load the default text interface:
 			mvJsLoader.doLoad({
-					'mvTextInterface':'libTimedText/mvTextInterface.js',
-					'$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'
-				}, function(){
-					
+					'mvTextInterface'   : 'libTimedText/mvTextInterface.js',
+					'$j.fn.hoverIntent' : 'jquery/plugins/jquery.hoverIntent.js'
+				}, function(){					
 					_this.textInterface = new mvTextInterface( _this );							
 					//show interface
 					_this.textInterface.show();
@@ -2380,8 +2379,7 @@ var embedTypes = {
 		 // ActiveX plugins
 		 if(this.msie){
 		 	 // check for flash		 
-		 	  if ( this.testActiveX( 'ShockwaveFlash.ShockwaveFlash')){
-		 	  	alert('we have flash');
+		 	  if ( this.testActiveX( 'ShockwaveFlash.ShockwaveFlash')){		 	  	
 		 	  	//try to get the flash version for omtk include: 
 		 	  	try {
 					a = new ActiveXObject(SHOCKWAVE_FLASH_AX + ".7");
@@ -2492,7 +2490,7 @@ var embedTypes = {
 					var descArray = flashDescription.split(" ");
 					var tempArrayMajor = descArray[2].split(".");
 					var versionMajor = tempArrayMajor[0];
-					
+					js_log("version of flash: " + versionMajor);
 					if(versionMajor >= 10){
 						this.players.addPlayer( omtkPlayer );
 					}

@@ -92,6 +92,7 @@ loadGM({
 	"mv_ogg-player-cortado" : "Java Cortado",
 	"mv_ogg-player-flowplayer" : "Flowplayer",
 	"mv_ogg-player-selected" : " (selected)",
+	'mv_ogg-player-omtkplayer': "OMTK Flash Vorbis",
 	"mv_generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://metavid.org/wiki/Client_Playback\">Playback Methods</a> page to download a player<br>",
 			
 	"add_to_end_of_sequence" : "Add to End of Sequence",
@@ -462,19 +463,39 @@ function rewrite_for_oggHanlder( vidIdList ){
 		js_log('looking at vid: ' + i +' ' + vidId);		
 		//grab the thumbnail and src video
 		var pimg = $j('#'+vidId + ' img');
-		var poster = pimg.attr('src');
+		var poster_attr = 'poster = "' + pimg.attr('src') + '" ';
 		var pwidth = pimg.attr('width');
-		var pheight = pimg.attr('height');		
-		//reg videoUrl\":\s*"([^"]*)
+		var pheight = pimg.attr('height');				
+		
+		var type_attr = '';
+		//check for audio
+		if( pwidth=='22' && pheight=='22'){		
+			pwidth='400';
+			pheight='300';
+			type_attr = 'type="audio/ogg"';
+			poster_attr = '';
+		}
+		
+		//parsed values: 		
+		var src = '';
+		var duration = ''; 
 		
 		var re = new RegExp( /videoUrl(&quot;:?\s*)*([^&]*)/ );
-		var src  = re.exec( $j('#'+vidId).html() )[2];
+		src  = re.exec( $j('#'+vidId).html() )[2];
+		
+		var re = new RegExp( /length(&quot;:?\s*)*([^&]*)/ );
+		duration = re.exec( $j('#'+vidId).html() )[2];
+		
 		//replace the top div with mv_embed based player: 
 		var vid_html = '<video id="vid_' + i +'" '+ 
-		 		'src="' + src + '" poster="' + poster + '" style="width:' + pwidth +
-		 			 	'px;height:' + pheight + 'px;"></video>';
+		 		'src="' + src + '" ' +
+		 		poster_attr + ' ' + 
+		 		type_attr + ' ' + 
+		 		'duration="' + duration + '" ' + 
+		 		'style="width:' + pwidth + 'px;height:' + 
+		 			pheight + 'px;"></video>';
 		//js_log("video html: " + vid_html);
-		if( src && poster)	
+		if( src )	
 		 	$j('#'+vidId).html( vid_html );		
 		//rewrite that video id: 
 		rewrite_by_id('vid_' + i);

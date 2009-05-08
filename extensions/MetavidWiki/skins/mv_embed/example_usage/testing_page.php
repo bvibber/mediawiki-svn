@@ -18,7 +18,7 @@ function do_testing_page(){
   <table border="1" cellpadding="6" width="600">
 	    <tr>
 	      <td valign="top">
-	      	<video poster="" src="http://192.168.1.185/wiki/extensions/MetavidWiki/skins/mv_embed/example_usage/Beethoven_Moonlight_1st_movement.ogg" type="audio/ogg"></video>
+	      	<video src="test_audio.oga" type="audio/ogg"></video>
 	      </td>
 	      <td valign="top"><b>Test embed</b><br />
 	      </td>
