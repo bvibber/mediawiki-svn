@@ -9,7 +9,6 @@ import de.brightbyte.wikiword.analyzer.extractor.PagePropertyValueExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterExtractor;
 import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
 import de.brightbyte.wikiword.analyzer.sensor.HasPropertySensor;
-import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
 
 public class WikiConfiguration_dewiki extends WikiConfiguration {

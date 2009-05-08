@@ -18,6 +18,7 @@ import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategorySensor;
+import de.brightbyte.wikiword.analyzer.sensor.HasPropertySensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateSensor;
 import de.brightbyte.wikiword.analyzer.sensor.TitleSensor;
@@ -143,6 +144,9 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 	//private static final String chemFormulaChars = "["+dashChars+"+,\\(\\)"+alphaNumericChars+"]{3,}";
 	private static final String chemSpiderChars = "["+numericChars+"]+";
 	private static final String threeDMetChars = "["+alphaNumericChars+"]{3,}";
+	
+	private static final String dorlandsChars = "["+alphabeticChars+"]+/["+numericChars+"]+";
+	private static final String neuroNamesChars = "["+alphabeticChars+"]+-["+numericChars+"]+";
 	
 	//TODO: exclude "Biography"... 
 	public static final String lifeScienceJournalPattern = "(^|[ _])(Chem[a-z]*|Bio[a-z]*|Gen[eo][a-z]*|Med[a-z]*|Cell[a-z]*|DNA|RNA|Nucleic|EMBO|FEBS|Onco[a-z]*|Blood|Immono[a-z]*|Cancer|Virol[a-z]*|Med[a-z]*|Clin[a-z]*|Lancet|Neuro[a-z]*|Zootaxa|JAMA|FASEB|Bacter[a-z]*|Mutat[a-z]*|Mol[a-z]*|Protein|Dermat[a-z]*|Pathol[a-z]*|Endocr[a-z]*|Microbio[a-z]*)($|[_ ])";
@@ -305,7 +309,28 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 			}
 		};
 		
-		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox", 0, true),
+		TemplateParameterPropertySpec neuroNamesSpec = new AbstractTemplateParameterPropertySpec("NeuroNames") {
+			private Matcher typeValidator = Pattern.compile("["+alphabeticChars+"]+").matcher("");
+			private Matcher numValidator = Pattern.compile("["+numericChars+"]+").matcher("");
+			
+			@Override
+			public CharSequence getPropertyValue(WikiPage page, TemplateExtractor.TemplateData params) {
+				CharSequence type= params.getParameter("BrainInfoType");
+				CharSequence num= params.getParameter("BrainInfoNumber");
+				if (type==null || num==null) return null;
+				if (type.length()==0 || num.length()==0) return null;
+				
+				typeValidator.reset(type);
+				if (!typeValidator.matches()) return null;
+				
+				typeValidator.reset(num);
+				if (!numValidator.matches()) return null;
+				
+				return type+"-"+num;
+			}
+		};
+		
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox|Interventions_infobox", 0, true),
 				makeIdentifierPropertySpec("DiseasesDB", "DiseasesDB", diseasesDbChars),
 				makeIdentifierPropertySpec("ICD10", "ICD10", icd10Chars),
 				makeIdentifierPropertySpec("ICD9", "ICD9", icd9Chars),
@@ -404,6 +429,17 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				makeIdentifierPropertySpec("PDB", "PDB", pdbChars),
 				makeIdentifierPropertySpec("ECnumber", "EC/enzyme", ecEnzymeChars)
 			) );
+		
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Taxobox"),
+				makeNamePropertySpec("name", "Name", false, true),
+				makeNamePropertySpec("regnum", "taxo-regnum", true, true),
+				makeNamePropertySpec("divisio", "taxo-divisio", true, true),
+				makeNamePropertySpec("classis", "taxo-classis", true, true),
+				makeNamePropertySpec("ordo", "taxo-ordo", true, true),
+				makeNamePropertySpec("familia", "taxo-familia", true, true),
+				makeNamePropertySpec("genus", "taxo-genus", true, true),
+				makeNamePropertySpec("species", "taxo-species", true, true)
+		) );
 
 		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Enzyme_(links|references)", 0, true),
 				makeIdentifierPropertySpec("EC_number", "EC/enzyme", ecEnzymeChars)
@@ -418,6 +454,28 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				makeIdentifierPropertySpec("1", "CAS", casChars)
 			) );
 
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Rfam"), 
+				makeIdentifierPropertySpec("id", "RNA family", alphaNumericChars),
+				makeNamePropertySpec("name", "Name", false, true)
+			) );
+
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Rfam_box", 0, true), 
+				makeIdentifierPropertySpec("acc", "RNA family", alphaNumericChars),
+				makeNamePropertySpec("description", "Name", true, true),
+				makeNamePropertySpec("abbreviation", "Name", true, true),
+				makeNamePropertySpec("type", "RNA type", true, true),
+				new DefaultTemplateParameterPropertySpec("journal", "journal")
+					.addNormalizer(punctuationStripPattern, "")
+					.setCondition(lifeScienceJournalPattern, 0, false) 
+			) );
+		
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_chemical_analysis", 0, true), 
+				makeNamePropertySpec("name", "Name", true, true),
+				makeNamePropertySpec("acronym", "Name", true, true),
+				makeNamePropertySpec("classification", "AnalysisClass", true, true),
+				makeNamePropertySpec("analytes", "Analytes", true, true)
+			) );
+		
 		//Stuff from the container field Codes in Protbox:
 		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Protbox.Codes::OMIM"),
 				makeIdentifierPropertySpec("1", "OMIM", omimChars) ) );
@@ -481,21 +539,35 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				makeIdentifierPropertySpec("Mm_RefseqmRNA", "RefSeq", refSeqChars)
 			) );
 		
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_neuron"),
+				makeNamePropertySpec("neuron_name", "Name", false, true),
+				makeNamePropertySpec("function", "Function", false, true),
+				makeNamePropertySpec("GraySubject", "GraySubject", true, true)
+			) );
+		
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_neurotransmitter"),
+				makeNamePropertySpec("name", "Name", false, true),
+				makeNamePropertySpec("abbrev", "Name", false, true)
+			) );
+		
 		//TODO: {{MedlinePlus}}...?
 		
-		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_Anatomy"),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_(Anatomy|Artery|Vein|Bone|Brain|Nerve|Muscle|Embryology|Ligament|Lymph)", 0, true),
+				makeNamePropertySpec("Name", "Name", true, true),
 				makeNamePropertySpec("Latin", "AnatomyLatin", true, true),
 				makeNamePropertySpec("GraySubject", "GraySubject", true, true),
 				makeNamePropertySpec("MeshName", "MeSHName", true, true),
 				makeIdentifierPropertySpec("MeshNumber", "MeSH", meshChars),
-				dorlandsSpec
+				makeNamePropertySpec("DorlandsID", "DorlandsName", true, true),
+				makeIdentifierPropertySpec("Dorlands", "Dorlands", dorlandsChars),
+				dorlandsSpec,
+				neuroNamesSpec
 			) );
 		
 		//FIXME: URLDecode for MeshName, etc!
 
 		//TODO: Infobox_(Artery|Brain|Bone|...)
 		//      GraySubject, MeSH name&number, DorlandsPre/DorlandsSuf (Elsevier )
-		//TODO: NeuroNames
 
 		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("ICSC"),
 				makeIdentifierPropertySpec("1", "ICSC", icscChars)
@@ -510,13 +582,35 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				makeIdentifierPropertySpec("geneid", "_PBB_", pbbChars)
 			) );
 		
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_abortion_method"),
+				makeNamePropertySpec("name", "Name", false, true),
+				makeNamePropertySpec("AKA/Abbreviation", "Name", true, true),
+				makeNamePropertySpec("Abortion_type", "AbortionType", false, true)
+			) );
+		
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_Birth_control"),
+				makeNamePropertySpec("name", "Name", false, true) //not really interesting, just make the concept show up as relevant for LS
+			) );
+		
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_(((Medical)_)?[Pp]erson|Scientist)"),
+				new DefaultTemplateParameterPropertySpec("name", "person-name").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("other_names", "person-name").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("birth_date", "person-birth-date").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("occupation", "person-occupation").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("known_for", "person-known-for").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("nationality", "person-nationality").setStripMarkup(true)
+			) );
+		
 		pageTermExtractors.add( new PagePropertyValueExtractor("IUPAC") ); 
 		pageTermExtractors.add( new PagePropertyValueExtractor("AnatomyLatin") ); 
 		pageTermExtractors.add( new PagePropertyValueExtractor("ProteinSymbol") ); 
+		pageTermExtractors.add( new PagePropertyValueExtractor("ProteinName") ); 
 		pageTermExtractors.add( new PagePropertyValueExtractor("MeSHName") ); 
 		pageTermExtractors.add( new PagePropertyValueExtractor("Name") ); 
 		pageTermExtractors.add( new PagePropertyValueExtractor("Symbol") ); 
-		
+		pageTermExtractors.add( new PagePropertyValueExtractor("DorlandsName") ); 
+		pageTermExtractors.add( new PagePropertyValueExtractor("person-name") ); 
+
 		supplementSensors.add( new TitleSensor<ResourceType>(ResourceType.SUPPLEMENT, Namespace.TEMPLATE, "PBB/\\d+", 0));
 		
 		supplementNameExtractors.add( new PropertyValueExtractor("_PBB_").setPrefix("Template:PBB/") );
@@ -533,14 +627,21 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "EC_\\d+(\\.\\d+)*", 0)); //FIXME: too much meta-stuff!
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "^(Enzyme_links|PBB|Protein|GNF_.*_box)$", 0, null) ); 
 		
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "^Chembox|^NatOrganicBox$|^ICSC$|^Elementbox$", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "^Chembox|^NatOrganicBox$|^ICSC$|^Elementbox|^(Complex_)?Enzymatic_Reaction", 0, null));
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "Chemical_elements"));
 
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "^(Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox)$", 0, null));
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "(_diseases|_disorders)$", 0));
 		
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "^Infobox_(Brain|Nerve|Muscle|Vein|Artery|Bone|Anatomy)$", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "^Infobox_(Brain|Nerve|Muscle|Vein|Artery|Bone|Anatomy|Ligament|Lymph)$", 0, null));
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "_glands$|^SUNYAnatomy|^(BUHistology|AnatomyAtlasesMicroscopic|Gray's|Anatomy-stub)$", 0, null));
+
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.FOOD, "Nutritional_value", 0, null));
+		
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox"));
+		
+		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PERSON, "person-name"));
+		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PERSON, "person-birth-date"));
 		
 		//TODO; LOTS of anatomy navigation boxes
 

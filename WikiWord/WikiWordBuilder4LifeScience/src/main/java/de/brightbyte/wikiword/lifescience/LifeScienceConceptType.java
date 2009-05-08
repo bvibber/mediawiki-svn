@@ -18,6 +18,7 @@ public class LifeScienceConceptType extends ConceptType {
 	public static final ConceptType CHEMICAL;
 	public static final ConceptType PROTEIN;
 	public static final ConceptType ORGAN;
+	public static final ConceptType FOOD;
 
 	/**
 	 * NamespaceSet for the canonical concept types. Loaded from the ConceptTypes.properties 
@@ -37,6 +38,7 @@ public class LifeScienceConceptType extends ConceptType {
 			PROTEIN =  lifeScienceConceptTypes.getType(1006);
 			//GENE =      wikiProConceptTypes.getType(1007);
 			ORGAN =     lifeScienceConceptTypes.getType(1008);
+			FOOD =     lifeScienceConceptTypes.getType(1009);
 		}
 		catch (NumberFormatException ex) {
 			throw new ExceptionInInitializerError(ex);

@@ -9,6 +9,7 @@ import de.brightbyte.wikiword.analyzer.extractor.PagePropertyValueExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterExtractor;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
 import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
+import de.brightbyte.wikiword.analyzer.sensor.HasPropertySensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
 
@@ -28,14 +29,16 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Persondata"),
 				new DefaultTemplateParameterPropertySpec("NAME", "person-sortname").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("NAME", "person-name").setStripMarkup(true),
-				new DefaultTemplateParameterPropertySpec("person-name", "ALTERNATIV NAMENS").setStripMarkup(true)
+				new DefaultTemplateParameterPropertySpec("ALTERNATIV NAMENS", "person-name").setStripMarkup(true)
 						.setSplitPattern(Pattern.compile("\\s[;]\\s")).addNormalizer(Pattern.compile("\\(.*?\\)"),""),
-				new DefaultTemplateParameterPropertySpec("person-occupation", "SHORT DESCRIPTION").setStripMarkup(true),
-				new DefaultTemplateParameterPropertySpec("person-birth-date", "DATE OF BIRTH").setStripMarkup(true),
-				new DefaultTemplateParameterPropertySpec("person-birth-place", "PLACE OF BIRTH").setStripMarkup(true),
-				new DefaultTemplateParameterPropertySpec("person-death-date", "DATE OF DEATH").setStripMarkup(true),
-				new DefaultTemplateParameterPropertySpec("person-death-place", "PLACE OF DEATH").setStripMarkup(true)
+				new DefaultTemplateParameterPropertySpec("SHORT DESCRIPTION", "person-occupation").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("DATE OF BIRTH", "person-birth-date").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("PLACE OF BIRTH", "person-birth-place").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("DATE OF DEATH", "person-death-date").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("PLACE OF DEATH", "person-death-place").setStripMarkup(true)
 			) );
+		
+		Pattern defaultSplitPattern = Pattern.compile("[,;/]\\s+|<br\\s*/?>");
 
 		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_Artist"),
 				new DefaultTemplateParameterPropertySpec("name", "person-name").setStripMarkup(true),
@@ -46,16 +49,48 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new DefaultTemplateParameterPropertySpec("deathdate", "person-death-date").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("deathplace", "person-death-place").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("nationality", "person-nationality").setStripMarkup(true),
-				new DefaultTemplateParameterPropertySpec("field", "artist-group").setStripMarkup(true),
-				new DefaultTemplateParameterPropertySpec("movement", "artist-group").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("field", "artist-group").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
+				new DefaultTemplateParameterPropertySpec("movement", "artist-group").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
 				new DefaultTemplateParameterPropertySpec("training", "artist-training").setStripMarkup(true),
-				new DefaultTemplateParameterPropertySpec("award", "artist-award").setStripMarkup(true)
+				new DefaultTemplateParameterPropertySpec("award", "artist-award").setStripMarkup(true).setSplitPattern(defaultSplitPattern)
+			) );
+
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_(((Medical|Military)_)?[Pp]erson|Actor|Astronaut|Criminal|Engineer|Musical_artist|Philosopher|Pope|ReligiousBio|Scientist)"),
+				new DefaultTemplateParameterPropertySpec("name", "person-name").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("other_names", "person-name").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("birth_date", "person-birth-date").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("birth_place", "person-birth-place").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("death_date", "person-death-date").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("death_place", "person-death-place").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("occupation", "person-occupation").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("known_for", "person-known-for").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("nationality", "person-nationality").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("residence", "person-nationality").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("citizenship", "person-nationality").setStripMarkup(true)
+			) );
+		
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_Medical_Person"),
+				new DefaultTemplateParameterPropertySpec("profession", "person-occupation").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
+				new DefaultTemplateParameterPropertySpec("profession", "expert-group").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
+				new DefaultTemplateParameterPropertySpec("specialism", "expert-group").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
+				new DefaultTemplateParameterPropertySpec("research_field", "expert-group").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
+				new DefaultTemplateParameterPropertySpec("work_institutions", "person-affiliation").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
+				new DefaultTemplateParameterPropertySpec("prizes", "expert-prize").setStripMarkup(true).setSplitPattern(defaultSplitPattern)
+			) );
+
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_Scientist"),
+				new DefaultTemplateParameterPropertySpec("fields", "expert-group").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
+				new DefaultTemplateParameterPropertySpec("alma-mater", "person-education").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
+				new DefaultTemplateParameterPropertySpec("workplaces", "person-affiliation").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
+				new DefaultTemplateParameterPropertySpec("awards", "expert-prize").setStripMarkup(true).setSplitPattern(defaultSplitPattern)
 			) );
 
 		pageTermExtractors.add( new PagePropertyValueExtractor("person-sortname") ); 
 		pageTermExtractors.add( new PagePropertyValueExtractor("person-name") ); 
 
-		conceptTypeSensors.add( new HasTemplateLikeSensor(ConceptType.PERSON, "^(Infobox[ ]Artist)$", 0));
+		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PERSON, "artist-group"));
+		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PERSON, "person-name"));
+		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PERSON, "person-birth-date"));
 	}
 	
 }
