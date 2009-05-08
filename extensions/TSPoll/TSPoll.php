@@ -17,7 +17,7 @@
  * This line must be present before any global variable is referenced.
  */
 
-// Abbrechen des Skriptes, wenn es nicht in Mediawiki eingebunden ist
+// Die the extension, if not MediaWiki is used
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This is an extension to the MediaWiki package and cannot be run standalone.\n" );
 	die( - 1 );
@@ -42,6 +42,7 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 
 $wgExtensionMessagesFiles['TSPoll'] = dirname( __FILE__ ) . '/TSPoll.i18n.php';
 
+//Set function fpr <tspoll ...> and <TSPoll ...> to efTSPollRender
 function efTSPollSetup() {
 	global $wgParser;
 	$wgParser->setHook( 'TSPoll', 'efTSPollRender' );
@@ -49,27 +50,32 @@ function efTSPollSetup() {
 	return true;
 }
 
+//Set function fpr <tspoll ...> and <TSPoll ...> to efTSPollRender
 function efTSPollSetupHook( &$parser ) {
 	$parser->setHook( 'TSPoll', 'efTSPollRender' );
 	$parser->setHook( 'tspoll', 'efTSPollRender' );
 	return true;
 }
 
+// Get the Output of the TSPoll-Skript and return that
 function efTSPollRender( $input, $args, $parser ) {
 
-	if ( isset( $args['id'] ) && $args['id'] != "" ) {
+	// Control if the "id" is set. If not, it output a error
+  if ( isset( $args['id'] ) && $args['id'] != "" ) {
 		$id = wfUrlencode( $args['id'] );
 	} else {
 		wfLoadExtensionMessages( 'TSPoll' );
 		return wfMsg( 'tspoll-id-error' );
 	}
-
+  
+  // Control if "dev" is set. If not, it use the normal skript, else, it use the dev skript
   if ( isset( $args['dev'] ) && $args['dev'] == "1" ) { // If the arrgument dev is given, use the TSPoll-Dev-Version
       $get_server = Http::get( 'http://toolserver.org/~jan/poll/dev/main.php?page=wiki_output&id='.$id );
   } else { // sonst die normale Version verwenden
       $get_server = Http::get( 'http://toolserver.org/~jan/poll/main.php?page=wiki_output&id='.$id );
   }
-
+ 
+  // If $get_server is empty it output a error
 	if ( $get_server != '' ) {
 		return $get_server;
 	}
