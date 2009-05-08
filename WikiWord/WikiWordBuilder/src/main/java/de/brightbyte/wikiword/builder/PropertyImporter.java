@@ -62,6 +62,7 @@ public class PropertyImporter extends ConceptImporter {
 			}
 			
 			cid = storeConcept(rcId, name, ctype);
+			storeSuffixInfo(analyzerPage, rcId, cid, name);
 		} 
 		
 		if (rcType == ResourceType.ARTICLE || rcType == ResourceType.SUPPLEMENT) {
@@ -129,6 +130,8 @@ public class PropertyImporter extends ConceptImporter {
 		super.configure(args);
 		
 		if (args.isSet("attach")) buildConcepts = false;
+		
+		setStoreProperties(true);
 	}
 
 	protected boolean getPurgeData() {

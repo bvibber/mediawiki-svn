@@ -126,6 +126,19 @@ public class ConceptImporter extends AbstractImporter {
 		if (propertyStore!=null && storeProperties) ((IncrementalStoreBuilder)propertyStore).deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
 	}
 	
+	protected void storeSuffixInfo(WikiPage analyzerPage, int rcId, int conceptId, String conceptName) throws PersistenceException {
+		CharSequence sfx = analyzerPage.getTitleSuffix();
+		if (sfx!=null) {
+			String qualifier = analyzer.normalizeTitle(sfx).toString();
+			
+			if (analyzer.useSuffixAsCategory())
+				storeConceptBroader(rcId, conceptId, conceptName, qualifier, ExtractionRule.BROADER_FROM_SUFFIX);
+			
+			if (storeProperties)
+				storeProperty(rcId, conceptId, conceptName, "qualifier", qualifier);
+		}
+	}
+	
 	protected void buildTermsForMissingConcepts() throws PersistenceException {
 		if (!analyzer.isInitialized()) { //XXX: ugly hack!
 			analyzer.initialize(Namespace.canonicalNamespaces, true);
@@ -140,10 +153,7 @@ public class ConceptImporter extends AbstractImporter {
 					WikiPage analyzerPage = analyzer.makePage(0, r.getName(), "", false); //XXX: bypass analyzer page? 
 					storePageTerms(-1, r.getId(), analyzerPage); //FIXME: skip sections, foo#bar is not a good term!
 		
-					if (analyzer.useSuffixAsCategory()) {
-						CharSequence sfx = analyzerPage.getTitleSuffix();
-						if (sfx!=null) storeConceptBroader(-1, r.getId(), r.getName(), analyzer.normalizeTitle(sfx).toString(), ExtractionRule.BROADER_FROM_SUFFIX);
-					}
+					ConceptImporter.this.storeSuffixInfo(analyzerPage, -1, r.getId(), r.getName());
 					
 					//NOTE: covered by DatabaseLocalConceptStoreBuilder.buildSectionBroader
 					//CharSequence pfx = analyzerPage.getTitlePrefix();
@@ -285,10 +295,7 @@ public class ConceptImporter extends AbstractImporter {
 			
 			//XXX: store interwiki-set inline for clustering ?
 			
-			if (analyzer.useSuffixAsCategory()) {
-				CharSequence sfx = analyzerPage.getTitleSuffix();
-				if (sfx!=null) storeConceptBroader(rcId, conceptId, name, analyzer.normalizeTitle(sfx).toString(), ExtractionRule.BROADER_FROM_SUFFIX);
-			}
+			storeSuffixInfo(analyzerPage, rcId, conceptId, name);
 			
 			//NOTE: can't really happen here (only applicable for sections)
 			//CharSequence pfx = analyzerPage.getTitlePrefix();
@@ -566,6 +573,38 @@ public class ConceptImporter extends AbstractImporter {
 		for (CharSequence supp: supplementLinks) {
 			storeConceptAlias(rcId, -1, supp.toString(), cid, name, AliasScope.SUPPLEMENT);
 		}
+	}
+
+	public boolean isStoreDefinitions() {
+		return storeDefinitions;
+	}
+
+	public void setStoreDefinitions(boolean storeDefinitions) {
+		this.storeDefinitions = storeDefinitions;
+	}
+
+	public boolean isStoreFlatText() {
+		return storeFlatText;
+	}
+
+	public void setStoreFlatText(boolean storeFlatText) {
+		this.storeFlatText = storeFlatText;
+	}
+
+	public boolean isStoreProperties() {
+		return storeProperties;
+	}
+
+	public void setStoreProperties(boolean storeProperties) {
+		this.storeProperties = storeProperties;
+	}
+
+	public boolean isStoreRawText() {
+		return storeRawText;
+	}
+
+	public void setStoreRawText(boolean storeRawText) {
+		this.storeRawText = storeRawText;
 	}
 	
 }
