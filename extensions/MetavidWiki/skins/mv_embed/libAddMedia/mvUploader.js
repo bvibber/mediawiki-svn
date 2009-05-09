@@ -429,6 +429,7 @@ mvBaseUploadInterface.prototype = {
 			'<div id="dlbox-overlay" class="dlbox-overlay" style="background:#000;cursor:wait;height:100%;'+
 						'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
 						'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');				
+		$j('#dlbox-centered,#dlbox-overlay').show(); 	
 	}
 	
 }
