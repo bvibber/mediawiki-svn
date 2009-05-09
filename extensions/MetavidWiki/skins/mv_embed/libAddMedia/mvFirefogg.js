@@ -131,8 +131,9 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 						  ext == 'mpeg' || ext == 'mpeg2' || ext == 'mpeg4' ||
 						  ext == 'dv' || ext=='wmv' ){
 					//hide ogg warning
-					$j('#wgfogg_waring_ogg_upload').hide();									
-					sf = sf.replace( ext, 'ogg' );
+					$j('#wgfogg_waring_ogg_upload').hide();			
+					var extreg = new RegExp(ext + '$', 'i');						
+					sf = sf.replace(extreg, 'ogg');
 					$j('#wpDestFile').val( sf );
 				}else{
 					//not video extension error:	
