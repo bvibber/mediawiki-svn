@@ -27,6 +27,7 @@ $wgSuggestCategory          = false;
 $wgSuggestCategoryRecipient = $wgEmergencyContact;
 $wgUseCategoryPage          = false;
 $wgRequireCategory          = false;
+$wgAlwaysShowIntroSection   = false;	
 $wgGenericEditPageWhiteList = array( NS_MAIN );
 $wgAllowSimilarTitles		= true;
 
@@ -343,6 +344,7 @@ function UW_GenericEditPage_renderSectionBox ( $sections ) {
 function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 	global $wgHooks, $wgParser, $wgTitle, $wgRequest, $wgUser, $wgCategoryBox, $wgSectionBox, $wgRequireCategory;
 	global $wgGenericEditPageClass, $wgSwitchMode, $wgGenericEditPageWhiteList, $wgAllowSimilarTitles;
+	global $wgAlwaysShowIntroSection;
 
 	// disable this whole thing on conflict and comment pages
 	if ( $editor->section == "new" || $editor->isConflict )
@@ -441,9 +443,9 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 	 * but not in the page, copy it. otherwise, use the page text (even if empty) */
 	$result[] = ( !empty($layout[0]) && $layout[0]['text'] && !$page[0]['text'] ) ? $layout[0] : $page[0];
 
-	/* only show the un-named section if it is being used. as
-	 * default, do not encourage people to use it by showing it */
-	$result[0]['in-use'] = ( $result[0]['text'] != "" );
+	/* decide whether or not to show the introduction section.
+	 * if configured to do so, it won't appear if there isn't any text in it already */
+	$result[0]['in-use'] = $wgAlwaysShowIntroSection ? true : ( $result[0]['text'] != '' );
 
 	// get sections that are in the layout
 	for ( $i = 2; $i < count ( $layout ); $i++ ) {
