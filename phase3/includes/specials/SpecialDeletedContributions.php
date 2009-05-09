@@ -106,9 +106,8 @@ class DeletedContribsPager extends IndexPager {
 	 * @todo This would probably look a lot nicer in a table.
 	 */
 	function formatRow( $row ) {
+		global $wgUser, $wgLang;
 		wfProfileIn( __METHOD__ );
-
-		global $wgLang, $wgUser;
 
 		$sk = $this->getSkin();
 
@@ -156,7 +155,7 @@ class DeletedContribsPager extends IndexPager {
 				'&timestamp=' . $rev->getTimestamp() );
 		}
 
-		$pagelink = $sk->makeLinkObj( $page );
+		$pagelink = $sk->link( $page );
 
 		if( $rev->isMinor() ) {
 			$mflag = '<span class="minor">' . $this->messages['minoreditletter'] . '</span> ';
@@ -164,8 +163,23 @@ class DeletedContribsPager extends IndexPager {
 			$mflag = '';
 		}
 
+		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+			// If revision was hidden from sysops
+			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
+				$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
+					'(' . $this->message['rev-delundel'] . ')' ) . ' ';
+			// Otherwise, show the link...
+			} else {
+				$query = array( 'target' => $page->getPrefixedDbkey(),
+					'artimestamp' => $rev->getTimestamp() );
+				$del = $this->mSkin->revDeleteLink( $query,
+					$rev->isDeleted( Revision::DELETED_RESTRICTED ) ) . ' ';
+			}
+		} else {
+			$del = '';
+		}
 
-		$ret = "{$link} ($last) ({$dellog}) ({$reviewlink}) . . {$mflag} {$pagelink} {$comment}";
+		$ret = "{$del}{$link} ({$last}) ({$dellog}) ({$reviewlink}) . . {$mflag} {$pagelink} {$comment}";
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$ret .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
@@ -290,12 +304,12 @@ class DeletedContributionsPage extends SpecialPage {
 		if ( 0 == $id ) {
 			$user = $nt->getText();
 		} else {
-			$user = $sk->makeLinkObj( $nt, htmlspecialchars( $nt->getText() ) );
+			$user = $sk->link( $nt, htmlspecialchars( $nt->getText() ) );
 		}
 		$talk = $nt->getTalkPage();
 		if( $talk ) {
 			# Talk page link
-			$tools[] = $sk->makeLinkObj( $talk, wfMsgHtml( 'talkpagelinktext' ) );
+			$tools[] = $sk->link( $talk, wfMsgHtml( 'talkpagelinktext' ) );
 			if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && User::isIP( $nt->getText() ) ) ) {
 				# Block link
 				if( $wgUser->isAllowed( 'block' ) )

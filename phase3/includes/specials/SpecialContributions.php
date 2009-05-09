@@ -148,12 +148,12 @@ class SpecialContributions extends SpecialPage {
 		if( 0 == $id ) {
 			$user = $nt->getText();
 		} else {
-			$user = $sk->makeLinkObj( $nt, htmlspecialchars( $nt->getText() ) );
+			$user = $sk->link( $nt, htmlspecialchars( $nt->getText() ) );
 		}
 		$talk = $nt->getTalkPage();
 		if( $talk ) {
 			# Talk page link
-			$tools[] = $sk->makeLinkObj( $talk, wfMsgHtml( 'sp-contributions-talk' ) );
+			$tools[] = $sk->link( $talk, wfMsgHtml( 'sp-contributions-talk' ) );
 			if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && IP::isIPAddress( $nt->getText() ) ) ) {
 				# Block link
 				if( $wgUser->isAllowed( 'block' ) )
@@ -473,7 +473,7 @@ class ContribsPager extends ReverseChronologicalPager {
 	 * @todo This would probably look a lot nicer in a table.
 	 */
 	function formatRow( $row ) {
-		global $wgLang, $wgUser, $wgContLang;
+		global $wgUser, $wgLang, $wgContLang;
 		wfProfileIn( __METHOD__ );
 
 		$sk = $this->getSkin();
@@ -482,7 +482,12 @@ class ContribsPager extends ReverseChronologicalPager {
 
 		$page = Title::newFromRow( $row );
 		$page->resetArticleId( $row->rev_page ); // use process cache
-		$link = $sk->makeLinkObj( $page, $page->getPrefixedText(), $page->isRedirect() ? 'redirect=no' : '' );
+		$link = $sk->link(
+			$page,
+			$page->getPrefixedText(),
+			array(),
+			$page->isRedirect() ? array( 'redirect' => 'no' ) : array()
+		);
 		# Mark current revisions
 		$difftext = $topmarktext = '';
 		if( $row->rev_id == $row->page_latest ) {
@@ -532,8 +537,23 @@ class ContribsPager extends ReverseChronologicalPager {
 		} else {
 			$mflag = '';
 		}
+		
+		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+			// If revision was hidden from sysops
+			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
+				$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
+					'(' . $this->message['rev-delundel'] . ')' ) . ' ';
+			// Otherwise, show the link...
+			} else {
+				$query = array( 'target' => $page->getPrefixedDbkey(), 'oldid' => $rev->getId() );
+				$del = $this->mSkin->revDeleteLink( $query,
+					$rev->isDeleted( Revision::DELETED_RESTRICTED ) ) . ' ';
+			}
+		} else {
+			$del = '';
+		}
 
-		$ret = "{$d} {$histlink} {$difftext} {$nflag}{$mflag} {$link}{$userlink} {$comment} {$topmarktext}";
+		$ret = "{$del}{$d} {$histlink} {$difftext} {$nflag}{$mflag} {$link}{$userlink} {$comment} {$topmarktext}";
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$ret .= ' ' . wfMsgHtml( 'deletedrev' );
 		}

@@ -288,7 +288,7 @@ class UploadForm {
 	 * @access private
 	 */
 	function processUpload(){
-		global $wgUser, $wgOut, $wgFileExtensions, $wgLang;
+		global $wgOut, $wgFileExtensions, $wgLang;
 	 	$details = null;
 	 	$value = null;
 	 	$value = $this->internalProcessUpload( $details );
@@ -1166,7 +1166,7 @@ wgUploadAutoFill = {$autofill};
 		else {
 			$wgOut->addHTML(
 				"<input tabindex='2' type='text' name='wpDestFile' id='wpDestFile' size='60'
-						value='{$encDestName}' onchange='toggleFilenameFiller()' $destOnkeyup />"
+						value=\"{$encDestName}\" onchange='toggleFilenameFiller()' $destOnkeyup />"
 			);
 		}
 		

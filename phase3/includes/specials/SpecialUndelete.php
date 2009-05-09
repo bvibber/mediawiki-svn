@@ -833,7 +833,7 @@ class UndeleteForm {
 	 * @return string HTML
 	 */
 	function showDiff( $previousRev, $currentRev ) {
-		global $wgOut, $wgUser;
+		global $wgOut;
 
 		$diffEngine = new DifferenceEngine();
 		$diffEngine->showDiffStyle();
@@ -866,28 +866,49 @@ class UndeleteForm {
 		if( $isDeleted ) {
 			/// @fixme $rev->getTitle() is null for deleted revs...?
 			$targetPage = SpecialPage::getTitleFor( 'Undelete' );
-			$targetQuery = 'target=' .
-				$this->mTargetObj->getPrefixedUrl() .
-				'&timestamp=' .
-				wfTimestamp( TS_MW, $rev->getTimestamp() );
+			$targetQuery = array(
+				'target' => $this->mTargetObj->getPrefixedUrl(),
+				'timestamp' => wfTimestamp( TS_MW, $rev->getTimestamp() )
+			);
 		} else {
 			/// @fixme getId() may return non-zero for deleted revs...
 			$targetPage = $rev->getTitle();
-			$targetQuery = 'oldid=' . $rev->getId();
+			$targetQuery = array( 'oldid' => $rev->getId() );
+		}
+		// Add show/hide link if available
+		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+			// If revision was hidden from sysops
+			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
+				$del = ' ' . Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
+					'(' . wfMsgHtml('rev-delundel') . ')' );
+			// Otherwise, show the link...
+			} else {
+				$query = array( 'target' => $this->mTargetObj->getPrefixedDbkey(),
+					'artimestamp' => $rev->getTimestamp() );
+				$del = ' ' . $sk->revDeleteLink( $query,
+					$rev->isDeleted( Revision::DELETED_RESTRICTED ) );
+			}
+		} else {
+			$del = '';
 		}
 		return
 			'<div id="mw-diff-'.$prefix.'title1"><strong>' .
-				$sk->makeLinkObj( $targetPage,
-					wfMsgHtml( 'revisionasof',
-						$wgLang->timeanddate( $rev->getTimestamp(), true ) ),
-					$targetQuery ) .
+				$sk->link(
+					$targetPage,
+					wfMsgHtml(
+						'revisionasof',
+						$wgLang->timeanddate( $rev->getTimestamp(), true )
+					),
+					array(),
+					$targetQuery
+				) .
 				( $isDeleted ? ' ' . wfMsgHtml( 'deletedrev' ) : '' ) .
 			'</strong></div>' .
 			'<div id="mw-diff-'.$prefix.'title2">' .
 				$sk->revUserTools( $rev ) . '<br/>' .
 			'</div>' .
 			'<div id="mw-diff-'.$prefix.'title3">' .
-				$sk->revComment( $rev ) . '<br/>' .
+				$sk->revComment( $rev ) . $del . '<br/>' .
 			'</div>';
 	}
 
