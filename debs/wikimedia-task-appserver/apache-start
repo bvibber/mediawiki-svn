@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+cd /
+apache-sanity-check && sudo /usr/sbin/apache2ctl start

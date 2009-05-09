@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# This is an aggregated version of /home/w/bin/apache-sanity-check,
+# which does not depend on mounted NFS /home.
+
+set -ex
+
+export PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+# FIXME: move this to PyBal runcommand check, and/or replace with Puppet logic.
+VIP="10\\.2\\.1\\.\(1\|21\)"
+if ! /sbin/ip addr | grep -q "$VIP.*lo"; then
+	echo "System failed sanity check: VIP not configured on lo"
+	exit 1
+fi
+
+check-time
+
+# Check for presence of shell commands used by MW
+# We use fixed paths instead of a $PATH search, because that's how they're specified in CommonSettings.php
+shell_cmds="/usr/bin/djvudump /usr/bin/tidy"
+for cmd in $shell_cmds; do
+	if [ ! -x $cmd ]; then
+		echo "$cmd missing"
+		exit 1
+	fi
+done
+
+# Test for LaTeX packages
+tmpdir=/tmp/sanity-check-latex.`date +%s`
+mkdir $tmpdir
+if ! cd $tmpdir; then
+	rm -rf $tmpdir
+	echo "Unable to change to directory /tmp/sanity-check-latex"
+	exit 1
+fi
+echo '
+\nonstopmode
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[dvips,usenames]{color}
+\pagestyle{empty}
+\begin{document}
+\end{document}
+' > test.tex
+latex test.tex > /dev/null
+exit_status=$?
+if [ $exit_status -ne 0 ]; then
+	echo "LaTeX returned exit status $exit_status, may be missing packages"
+	echo "See logs in $tmpdir"
+	exit 1
+fi
+rm -rf $tmpdir
+
+exit 0

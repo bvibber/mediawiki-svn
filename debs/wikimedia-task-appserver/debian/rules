@@ -54,6 +54,10 @@ install: build
 	install -m 0644 php.ini $(DESTDIR)/usr/share/php5/php.ini-dist
 	install -m 0400 sudoers $(DESTDIR)/etc/
 
+	# Install sync/check scripts
+	install -d -m 0755 $(DESTDIR)/usr/bin
+	install -m 0750 sync-common apache-sanity-check apache-start check-time $(DESTDIR)/usr/bin
+
 	install -d -m 0750 $(DESTDIR)/var/lib/pybal-check/.ssh
 	install -m 0640 authorized_keys $(DESTDIR)/var/lib/pybal-check/.ssh/authorized_keys
 

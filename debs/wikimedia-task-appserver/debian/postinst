@@ -35,6 +35,19 @@ checkmount() {
 	}
 }
 
+create_apache_user() {
+        # Create apache user/group with correct uid/gid
+        if ! getent group apache > /dev/null
+        then
+                addgroup --system --gid 48 apache
+        fi
+
+        if ! getent passwd apache > /dev/null
+        then
+                adduser --system --home /var/www --shell /sbin/nologin --no-create-home --uid 48 --gid 48 --disabled-password apache
+        fi
+}
+
 case "$1" in
 	configure)
 	# Add a line to /etc/motd describing the task of this server
@@ -57,18 +70,17 @@ case "$1" in
 		fi
 	fi
 
+	create_apache_user
+
 	chown -R pybal-check:pybal-check /var/lib/pybal-check/.ssh
 
-	checkmount amane:/export/upload /mnt/upload3
-	checkmount amane:/export/math /mnt/math
 	checkmount ms1.wikimedia.org:/export/upload /mnt/upload5
 
 	CLUSTER=$(cat /etc/wikimedia-cluster)
 	if [ $CLUSTER="pmtpa" ]
 	then
-		rsync -a /home/wikipedia/conf/httpd/ /usr/local/apache/conf
+		rsync -a 10.0.5.8::httpdconf/ /usr/local/apache/conf
 
-		PATH=$PATH:/home/wikipedia/bin
 		sync-common
 		apache-start
 	else

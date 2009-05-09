@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+
+$threshold = 0.5;
+$server = 'ntp.pmtpa.wmnet';
+
+$time = `/usr/sbin/ntpdate -q $server`;
+if ( $time =~ /offset ([0-9.-]*) sec/ ) {
+	$offset = $1;
+	if ( abs( $offset ) > $threshold ) {
+		print "Warning: clock offset is $offset seconds\n";
+		exit 1;
+	} else {
+		exit 0;
+	}
+} else {
+	print "Error: unable to contact NTP server\n";
+	exit 2;
+}

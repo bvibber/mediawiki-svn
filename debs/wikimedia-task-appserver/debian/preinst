@@ -14,7 +14,6 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
-
 case "$1" in
 	install)
 		dpkg-divert --package wikimedia-task-appserver --add --rename \
@@ -27,6 +26,7 @@ case "$1" in
 				--divert /etc/sudoers.default /etc/sudoers
 		dpkg-divert --package wikimedia-task-appserver --add --rename \
 				--divert /etc/apache2/envvars.default /etc/apache2/envvars
+
 	
 		# Create user for the PyBal checks
 		adduser --system --home /var/lib/pybal-check --group --disabled-password --shell /bin/sh pybal-check

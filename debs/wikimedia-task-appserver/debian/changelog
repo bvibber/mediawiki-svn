@@ -1,3 +1,11 @@
+wikimedia-task-appserver (1.34) hardy; urgency=low
+
+  * Include local version of sync/sanity check scripts
+  * Remove old amane NFS mounts
+  * No longer depend on wikimedia-nis-client
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat, 25 Apr 2009 15:43:11 +0000
+
 wikimedia-task-appserver (1.33) hardy; urgency=low
 
   * Added /mnt/upload5 to the remove list, removed /mnt/upload4 from the 

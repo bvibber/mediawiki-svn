@@ -29,15 +29,19 @@ removemount() {
 
 case "$1" in
 	purge)
+		# Remove apache user
+		deluser apache || true
+		delgroup apache || true
+
 		# Remove PyBal check user account
 		deluser pybal-check
-	rm -rf /var/lib/pybal-check
+		rm -rf /var/lib/pybal-check
 
-	dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/apache2.conf
-	dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/php5/apache2/php.ini
-	dpkg-divert --package wikimedia-task-appserver --rename --remove /usr/share/php5/php.ini-dist
-	dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/sudoers
-	dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/envvars
+		dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/apache2.conf
+		dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/php5/apache2/php.ini
+		dpkg-divert --package wikimedia-task-appserver --rename --remove /usr/share/php5/php.ini-dist
+		dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/sudoers
+		dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/envvars
 	;;
 	remove)
 		removemount /mnt/upload3
