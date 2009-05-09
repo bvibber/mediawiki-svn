@@ -81,6 +81,11 @@ $aliases['nl'] = array(
 	'EmergencyDeSysop' => array( 'NoodgreepBeheerdersrechtenVerwijderen' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'EmergencyDeSysop' => array( 'Nødrettighetsfjerning' ),
+);
+
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'EmergencyDeSysop' => array( 'DesysopatgeUrgent', 'DesisopatgeUrgent', 'DeSysopatgeUrgent', 'DeSisopatgeUrgent' ),

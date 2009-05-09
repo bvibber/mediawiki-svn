@@ -107,12 +107,15 @@ $messages['arz'] = array(
  */
 $messages['bar'] = array(
 	'multipleupload' => 'Datein aufelådn',
+	'multipleupload-desc' => "Ealaubt s'[[Special:MultipleUpload|Aufelådn vu mearare Datein]] auf oamåi",
 	'multipleupload-ignoreallwarnings' => "'''Ålle Wårnungen''' ignorian und de Datein so speichan.",
 	'multipleupload-saveallfiles' => 'Ålle Datein speichan',
 	'multipleupload-addresswarnings' => "Bittschee, bevoa'st de Datei wieda aufelådst, ålle Wårnungen beårbeitn und ausrama.",
 	'multipleupload-page' => '{{ns:project}}:Löschrichtlinien',
 	'multiupload-fileuploaded' => 'Datei is aufeglådn',
 	'multiupload-toolbox' => 'Mehrare Datein aufelådn',
+	'multiupload-no-files' => "Bittschee mindestns a Datei fia's Aufelådn auswöihn",
+	'multiupload-blank' => 'Ka Datei ausgwöihd',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

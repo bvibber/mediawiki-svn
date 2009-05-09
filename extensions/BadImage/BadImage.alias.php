@@ -92,9 +92,19 @@ $aliases['id'] = array(
 	'Badimages' => array( 'Berkas dilarang' ),
 );
 
+/** Ido (Ido) */
+$aliases['io'] = array(
+	'Badimages' => array( 'MalaImaji' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Badimages' => array( '不良画像', '好ましくない画像' ),
+);
+
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Badimages' => array( 'Onjewönsch Bellder' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

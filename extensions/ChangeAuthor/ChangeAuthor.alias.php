@@ -102,6 +102,11 @@ $aliases['km'] = array(
 	'ChangeAuthor' => array( 'ផ្លាស់ប្ដូរអ្នកនិពន្ធ' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'ChangeAuthor' => array( 'Schriiver ußtuusche' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ChangeAuthor' => array( 'Auteur änneren' ),

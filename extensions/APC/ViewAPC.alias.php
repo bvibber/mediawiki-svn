@@ -89,7 +89,7 @@ $aliases['ia'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'ViewAPC' => array( 'APC情報', 'APC表示' ),
+	'ViewAPC' => array( 'APC情報', 'APC表示', 'ＡＰＣ情報', 'ＡＰＣ表示' ),
 );
 
 /** Korean (한국어) */

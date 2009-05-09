@@ -239,6 +239,13 @@ $messages['mr'] = array(
 	'didyoumean-desc' => 'शीर्षकात "सारखेपणा" असणार्‍या पानांचे दुवे देतो',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'didyoumean-desc' => 'Letak pautan ke laman dengan tajuk "serupa"',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

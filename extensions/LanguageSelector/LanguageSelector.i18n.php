@@ -274,6 +274,15 @@ $messages['fr'] = array(
 	'languageselector-setlang' => 'Définir',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'languageselector' => 'Lengoua',
+	'languageselector-desc' => 'Chouèx de lengoues sur châque pâge, por los visitors avouéc.',
+	'languageselector-setlang' => 'Dèfenir',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño
@@ -537,6 +546,13 @@ $messages['mr'] = array(
 	'languageselector' => 'भाषा',
 	'languageselector-desc' => 'प्रत्येक पानावर भाषा-निवडक (selector), भेट देणार्‍यांसाठी सुद्धा',
 	'languageselector-setlang' => 'सेट (set)',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'languageselector' => 'Bahasa',
 );
 
 /** Maltese (Malti)

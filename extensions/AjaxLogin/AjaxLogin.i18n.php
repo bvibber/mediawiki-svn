@@ -270,6 +270,15 @@ Dir kënnt Är Ännerunge vun dëser Säit verléieren wann Dir elo vun dëser S
 	'ajaxlogin-create' => 'E Benotzerkont uleeën',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'ajaxLogin2' => 'Adakah anda pasti?
+Perubahan yang anda lakukan di laman ini mungkin hilang sekiranya anda tinggalkan laman ini sekarang.',
+	'ajaxlogin-create' => 'Cipta akaun',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

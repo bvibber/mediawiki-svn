@@ -404,6 +404,13 @@ $messages['mr'] = array(
 	'userimages-noimages' => '$1 ने एकही चित्र चढविलेले नाही',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'userimages-caption' => 'Imej dimuat naik oleh $1',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

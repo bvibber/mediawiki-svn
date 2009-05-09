@@ -97,6 +97,11 @@ $aliases['id'] = array(
 	'Contributors' => array( 'Kontributor' ),
 );
 
+/** Ido (Ido) */
+$aliases['io'] = array(
+	'Contributors' => array( 'Kontributanti' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Contributors' => array( '投稿者' ),
@@ -105,6 +110,11 @@ $aliases['ja'] = array(
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Contributors' => array( 'អ្នករួមចំណែក' ),
+);
+
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Contributors' => array( 'Schriiver' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

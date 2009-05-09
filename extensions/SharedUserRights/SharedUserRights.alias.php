@@ -67,6 +67,11 @@ $aliases['ja'] = array(
 	'SharedUserRights' => array( '共有利用者権限', '共有利用者権限管理' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'SharedUserRights' => array( 'Jemeinsam Rääschte för Metmaacher' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'SharedUserRights' => array( 'Gedeelte Benotzerrechter' ),

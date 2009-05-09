@@ -430,6 +430,10 @@ $messages['es'] = array(
 	'createsigndoc-create' => 'Crear',
 	'createsigndoc-error-generic' => 'Error: $1',
 	'createsigndoc-error-pagenoexist' => 'Error: La página [[$1]] no existe.',
+	'createsigndoc-success' => 'Firmado de documento ha sido exitosamente habilitado en [[$1]].
+Puedes [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} probarlo].',
+	'createsigndoc-error-alreadycreated' => 'Firmado de documento "$1" ya existe.
+Esto puede no ser hecho por segunda vez.',
 );
 
 /** Basque (Euskara)

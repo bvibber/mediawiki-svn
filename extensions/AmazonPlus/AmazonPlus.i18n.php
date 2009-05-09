@@ -1110,6 +1110,19 @@ $messages['vi'] = array(
 	'amazonplus-less' => 'ít hơn',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'amazonplus-german' => 'דײַטשיש',
+	'amazonplus-french' => 'פֿראַנצויזיש',
+	'amazonplus-japanese' => 'יאַפאַניש',
+	'amazonplus-new' => 'נײַ',
+	'amazonplus-cp-none' => 'קיין',
+	'amazonplus-more' => 'מער',
+	'amazonplus-less' => 'ווינציגער',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Wrightbus
  */

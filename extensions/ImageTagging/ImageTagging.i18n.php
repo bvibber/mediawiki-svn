@@ -237,12 +237,17 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'imagetagging-desc' => 'Omogućuje korisniku da odabere regione uklopljene slike i poveže ih sa željenom stranicom',
+	'imagetagging-addimagetag' => 'Označi ovu sliku',
 	'imagetagging-article' => 'Stranica:',
 	'imagetagging-imghistory' => 'Historija',
 	'imagetagging-images' => 'slike',
 	'imagetagging-inthisimage' => 'Na ovoj slici: $1',
 	'imagetagging-new' => '<sup><span style="color:red">Novo!</span></sup>',
+	'imagetagging-done-button' => 'Završi označavanje',
+	'imagetagging-tag-button' => 'Označi',
 	'imagetagging-tagcancel-button' => 'Odustani',
+	'imagetagging-addingtag' => 'Dodajem oznaku…',
+	'imagetagging-removingtag' => 'Uklanjam oznaku…',
 	'imagetagging-imagetag-seemoreimages' => 'Vidi više slika od "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Slike od "$1"',
 	'imagetagging-taggedimages-displaying' => 'Prikazane su $1 - $2 od $3 slika iz "$4"',
@@ -1393,6 +1398,7 @@ $messages['sr-ec'] = array(
 	'imagetagging-desc' => 'Омогућава кориснику да изабере регионе једне слике и придружи им чланке',
 	'imagetagging-addimagetag' => 'Тагуј ову слику',
 	'imagetagging-article' => 'Страна:',
+	'imagetagging-articletotag' => 'Чланак за таговање',
 	'imagetagging-canteditothermessage' => 'Не можете да мењате ову страну, због тога што немате потребна права приступа за то или због закључавања стране из других разлога.',
 	'imagetagging-imghistory' => 'Историја',
 	'imagetagging-images' => 'слике',
@@ -1418,6 +1424,8 @@ $messages['sr-ec'] = array(
 	'imagetagging-imagetag-seemoreimages' => 'Види више слика од "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Слике од "$1"',
 	'imagetagging-taggedimages-displaying' => 'Приказ $1 - $2 од $3 слика од "$4"',
+	'tag-logpagename' => 'Историја таговања',
+	'tag-logpagetext' => 'Ово је историја свих додавања и брисања тагова са слика',
 );
 
 /** Seeltersk (Seeltersk)

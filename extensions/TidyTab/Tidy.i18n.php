@@ -163,7 +163,7 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'tidy-desc' => 'Adde un scheda "nettar" o "disnettar" (dependente de $wgUseTidy) in paginas normal permittente ultrapassar le configuration global del nettamento de HTML pro un singule visualisation',
+	'tidy-desc' => 'Adde un scheda "nettar" o "disnettar" (dependente de $wgUseTidy) in paginas normal permittente ignorar le configuration global del nettamento de HTML pro un singule visualisation',
 	'tidy' => 'Nettar',
 	'untidy' => 'Disnettar',
 );

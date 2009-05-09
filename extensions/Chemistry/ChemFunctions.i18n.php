@@ -291,6 +291,8 @@ $messages['es'] = array(
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Componer $MIXCASNameFormula en NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS en la Universidad de Oxford (UK) (no buscable)</a><br />',
 	'chemFunctions_CAS' => 'Número CAS',
+	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECNumber',
 	'chemFunctions_Formula' => 'Fórmula',
 	'chemFunctions_Name' => 'Nombre IUPAC',
 );
@@ -681,9 +683,17 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
+ * @author Zamwan
  */
 $messages['ms'] = array(
+	'chemicalsources' => 'Sumber-sumber kimia',
+	'chemicalsource-desc' => 'Tambah tag <nowiki><chemform></nowiki>, untuk formula kimia',
+	'chemFunctions_ListPage' => 'Sumber-sumber kimia',
+	'chemFunctions_CAS' => 'Nombor CAS',
+	'chemFunctions_ATCCode' => 'Kod ATC',
+	'chemFunctions_ECNumber' => 'Nombor EC',
 	'chemFunctions_Formula' => 'Formula',
+	'chemFunctions_Name' => 'Nama IUPAC',
 );
 
 /** Nahuatl (Nāhuatl)

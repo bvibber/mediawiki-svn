@@ -2470,6 +2470,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'contrib-hist-name' => 'పేరు',
+	'contrib-hist-date' => 'సమయం మరియు తేదీ',
 	'contribstats-day' => 'రోజు',
 	'contribstats-month' => 'నెల',
 	'contribstats-total' => 'మొత్తం (USD)',
@@ -2479,6 +2481,8 @@ $messages['te'] = array(
 	'contribstats-total-ytd' => 'మొత్తం (YTD)',
 	'fundraiserstats-date' => 'తేదీ',
 	'fundraiserstats-total' => 'మొత్తం (USD)',
+	'fundraiserstats-avg' => 'సగటు (USD)',
+	'fundraiserstats-max' => 'గరిష్ఠం (USD)',
 );
 
 /** Tetum (Tetun)

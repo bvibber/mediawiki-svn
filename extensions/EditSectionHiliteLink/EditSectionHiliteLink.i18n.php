@@ -21,11 +21,37 @@ $messages['qqq'] = array(
 	'Editsectionhilitelink-desc' => 'Extension description displayed on [[Special:Version]].',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'Editsectionhilitelink-desc' => 'إظهار القسم المناسب لصفحة عندما تنقل الفأرة فوق وصلة التعديل',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'Editsectionhilitelink-desc' => 'Naglašavanje pogodne sekcije stranice kada prelazite mišem preko linka za uređivanje',
+);
+
+/** German (Deutsch) */
+$messages['de'] = array(
+	'Editsectionhilitelink-desc' => 'Hebt den entsprechenden Abschnitt einer Seite hervor, wenn die Maus über den „Bearbeiten“-Link bewegt wird',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
 	'Editsectionhilitelink-desc' => 'Gódny wurězk boka wuzwignuś, gaž gibaš myšku pśez wobźěłański wótkaz',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'Editsectionhilitelink-desc' => 'Resaltar la sección apropiada de una página cuando pase el mouse por encima del vínculo de edición',
 );
 
 /** French (Français)
@@ -56,6 +82,13 @@ $messages['hsb'] = array(
 	'Editsectionhilitelink-desc' => 'Přihódny wurězk strony wuzběhnyć, hdyž myšku přez wobdźěłanski wotkaz pohibuješ',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'Editsectionhilitelink-desc' => 'Emphasar le section appropriate de un pagina quando tu placia le mouse super le ligamine "modificar"',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -77,6 +110,13 @@ $messages['lb'] = array(
 	'Editsectionhilitelink-desc' => "Den entspriechenden Abschnitt ervierhiewen wann Dir mat der Maus iwwert den 'Änneren'-Link fuert",
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'Editsectionhilitelink-desc' => "Markeer de van toepassing zijde paragraaf bij het selecteren van de verwijzing ''bewerken''",
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -84,10 +124,24 @@ $messages['pt'] = array(
 	'Editsectionhilitelink-desc' => 'Destacar a seção apropriada de um artigo quando você passar o cursor do rato sobre o link "editar"',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'Editsectionhilitelink-desc' => 'Destacar a seção apropriada de um artigo quando você passar o cursor do mouse sobre o link "editar"',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
 	'Editsectionhilitelink-desc' => 'Zvýrazniť príslušnú sekciu článku keď podržíte ukazovateľ myši nad odkazom „upraviť“',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'Editsectionhilitelink-desc' => 'Tô đậm phần trang khi để con trỏ trên liên kết sửa đổi',
 );
 

@@ -87,6 +87,11 @@ $aliases['km'] = array(
 	'CloseWiki' => array( 'បិទវិគី' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'CloseWiki' => array( 'Wiki deeschmaacher' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'CloseWiki' => array( 'Wiki zoumaachen' ),

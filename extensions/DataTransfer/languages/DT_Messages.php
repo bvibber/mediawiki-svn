@@ -242,9 +242,10 @@ $messages['da'] = array(
  * @author Als-Holder
  * @author Krabina
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
-	'dt-desc' => 'Ermöglicht den Import und Export von strukturierten Daten, die in Aufrufen von Vorlagen verwendet werden.',
+	'dt-desc' => 'Ermöglicht den Import und Export von Daten, die in Aufrufen von Vorlagen verwendet werden',
 	'viewxml' => 'XML ansehen',
 	'dt_viewxml_docu' => 'Bitte wähle aus, welche Kategorien und Namensräume im XML-Format angezeigt werden sollen.',
 	'dt_viewxml_categories' => 'Kategorien',
@@ -1271,6 +1272,7 @@ $messages['te'] = array(
 	'dt_viewxml_categories' => 'వర్గాలు',
 	'dt_viewxml_namespaces' => 'పేరుబరులు',
 	'dt_xml_namespace' => 'పేరుబరి',
+	'dt_xml_pages' => 'పేజీలు',
 	'dt_xml_page' => 'పేజీ',
 	'dt_xml_name' => 'పేరు',
 	'dt_xml_title' => 'శీర్షిక',

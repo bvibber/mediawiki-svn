@@ -85,6 +85,11 @@ $aliases['ja'] = array(
 	'Eval' => array( '評価', 'PHPコードとして評価' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Eval' => array( 'Berääschne' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Eval' => array( 'Bewertung' ),

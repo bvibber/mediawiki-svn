@@ -470,8 +470,7 @@ $messages['sv'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Skickar...',
 	'communityvoice-ratings-scale-status-error' => 'Fel i samband med sändning.',
 	'communityvoice-ratings-scale-status-thanks' => 'Tack för rösten!',
-	'communityvoice-ratings-scale-stats' => '
-$ 1 / 5 ($ 2 ((PLURALIS: $ 2 | röst avlagd| röster avlagda)) )',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|röst avlagd|röster avlagda}})',
 	'communityvoice-ratings-error-no-category' => 'Kategoriattribut saknas i värderingstagg.',
 	'communityvoice-ratings-error-no-title' => 'Titelattribut saknas i värderingstagg.',
 );

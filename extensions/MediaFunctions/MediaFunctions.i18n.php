@@ -435,6 +435,15 @@ $messages['sk'] = array(
 	'mediafunctions-not-exist' => '„$1“ neexistuje',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'mediafunctions-desc' => 'Парсер функције за преузимање података о медија фајловима',
+	'mediafunctions-invalid-title' => '"$1" није исправан наслов',
+	'mediafunctions-not-exist' => '"$1" не постоји',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

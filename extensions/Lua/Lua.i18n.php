@@ -180,10 +180,12 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'lua_desc' => 'Extiende el analizador con soporte para bloques empotrados de código [http://www.lua.org/ Lua]',
 	'lua_error' => 'Error en línea $1',
 	'lua_extension_notfound' => 'Extensión Lua no configurada',
 	'lua_interp_notfound' => 'Intérprete Lua no encontrado',
 	'lua_error_internal' => 'Error interno',
+	'lua_overflow_recursion' => 'Límite de recurso alcanzado',
 	'lua_overflow_loc' => 'Límite máximo de líneas de código alcanzada',
 	'lua_overflow_time' => 'Tiempo de ejecución máximo alcanzado',
 );

@@ -77,6 +77,11 @@ $aliases['ja'] = array(
 	'Patroller' => array( 'パトローラー' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Patroller' => array( 'Prööfe', 'Nohloore' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Patroller' => array( 'Naokieken' ),
@@ -85,6 +90,11 @@ $aliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Patroller' => array( 'Controleren' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Patroller' => array( 'Patruljør' ),
 );
 
 /** Sanskrit (संस्कृत) */

@@ -80,6 +80,11 @@ $aliases['nl'] = array(
 	'LogEntry' => array( 'Logboekregel' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'LogEntry' => array( 'Loggelement' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'LogEntry' => array( 'अंकनप्रविष्टि' ),

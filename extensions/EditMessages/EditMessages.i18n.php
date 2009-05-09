@@ -282,6 +282,7 @@ $messages['eo'] = array(
  * @author Jatrobat
  */
 $messages['es'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|edición basada en web]] de un gran número de archivos Messages*.php',
 	'editmessages' => 'Editando mensajes',
 	'editmsg-target' => 'Mensaje objetivo:',
 	'editmsg-search' => 'Buscar',

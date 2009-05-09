@@ -60,6 +60,11 @@ $aliases['ja'] = array(
 	'RandomInCategory' => array( 'カテゴリ中のランダムなページ' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'RandomInCategory' => array( 'Zohfällije Sigg uß en Saachjropp' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'RandomInCategory' => array( 'Zoufälleg Säit aus der Kategorie' ),

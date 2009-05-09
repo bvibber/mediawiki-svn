@@ -74,7 +74,12 @@ $aliases['it'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'ViewXML' => array( 'XML表示' ),
+	'ViewXML' => array( 'XML表示', 'ＸＭＬ表示' ),
+);
+
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'ViewXML' => array( 'XML beloore' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

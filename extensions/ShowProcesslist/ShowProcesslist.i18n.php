@@ -215,6 +215,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'showprocesslist' => 'Mostrar lista de procesos',
+	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Usuario',
 	'showprocesslist-db' => 'Base de datos',
 	'showprocesslist-command' => 'Comando',

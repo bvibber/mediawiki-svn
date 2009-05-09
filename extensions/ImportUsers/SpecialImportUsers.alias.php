@@ -120,6 +120,11 @@ $aliases['km'] = array(
 	'ImportUsers' => array( 'នាំចូលអ្នកប្រើប្រាស់' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'ImportUsers' => array( 'Metmaacher Empoteere' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ImportUsers' => array( 'Benotzer importéieren' ),

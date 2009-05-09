@@ -1118,6 +1118,22 @@ $messages['mr'] = array(
 	'usagestatistics-editpages' => 'एकटा सदस्य $1 पृष्ठ सांख्यिकी',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'usagestatisticsinterval' => 'Selang',
+	'usagestatisticstype' => 'Jenis',
+	'usagestatisticsstart' => 'Tarikh mula',
+	'usagestatisticsend' => 'Tarikh tamat',
+	'usagestatisticssubmit' => 'Jana statistik',
+	'usagestatisticsnostart' => 'Sila tentukan tarikh mula',
+	'usagestatisticsnoend' => 'Sila tentukan tarikh tamat',
+	'usagestatisticsintervalday' => 'Hari',
+	'usagestatisticsintervalweek' => 'Minggu',
+	'usagestatisticsintervalmonth' => 'Bulan',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

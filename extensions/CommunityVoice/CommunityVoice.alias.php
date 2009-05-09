@@ -43,6 +43,11 @@ $aliases['ja'] = array(
 	'CommunityVoice' => array( 'コミュニティー・ボイス', 'コミュニティの声' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'CommunityVoice' => array( 'Metmaacherstemme' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CommunityVoice' => array( 'Gemeenschapsstem' ),

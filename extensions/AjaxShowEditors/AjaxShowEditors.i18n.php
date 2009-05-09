@@ -1089,6 +1089,13 @@ $messages['vo'] = array(
 	'ajax-se-idling' => '(bü $1s)',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'ajax-se-pagedoesnotexist' => 'בלאַט עקזיסטירט נישט',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

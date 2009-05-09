@@ -79,7 +79,7 @@ $aliases['ia'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'Asksql' => array( 'SQLクエリの実行' ),
+	'Asksql' => array( 'SQLクエリの実行', 'ＳＱＬクエリの実行', 'SQL実行', 'ＳＱＬ実行' ),
 );
 
 /** Ripoarisch (Ripoarisch) */

@@ -447,6 +447,14 @@ $messages['mr'] = array(
 	'block_title_error' => 'माफ करा, या पानाचे शीर्षक जतन करायला परवानगी नाही.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'block_title_error_page_title' => 'Tajuk dihalang',
+	'block_title_error' => 'Maaf, tajuk di laman ini tidak dibenarkan untuk disimpan.',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

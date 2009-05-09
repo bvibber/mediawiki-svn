@@ -646,6 +646,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'deletequeue-desc' => 'Kreira [[Special:DeleteQueue|sistem zasnovan na redu za čekanje za upravljanje brisanjem]]',
 	'deletequeue-action-queued' => 'Brisanje',
 	'deletequeue-action' => 'Predloži brisanje',
 	'deletequeue-action-title' => 'Predlaganje brisanja za "$1"',
@@ -658,6 +659,9 @@ $messages['bs'] = array(
 	'deletequeue-nom-alreadyqueued' => 'Ova stranica se već nalazi u redu za brisanje.',
 	'deletequeue-speedy-title' => 'Označi "$1" za brzo brisanje',
 	'deletequeue-prod-title' => 'Predloženo brisanje "$1"',
+	'deletequeue-prod-text' => "Možete koristiti ovaj obrazac za predlaganje stranice \"'''\$1'''\" za brisanje.
+
+Ako, nakon pet dana, niko ne bude imao sugestija za brisanje ove stranice, ona će biti obrisana nakon posljednjeg pregleda od strane administratora.",
 	'deletequeue-delnom-reason' => 'Razlog za nominaciju:',
 	'deletequeue-delnom-otherreason' => 'Ostali razlozi',
 	'deletequeue-delnom-extra' => 'Dodane informacije:',
@@ -665,12 +669,14 @@ $messages['bs'] = array(
 	'deletequeue-log-nominate' => "nominirana stranica [[$1]] za brisanje u redu za čekanje '$2'.",
 	'deletequeue-log-dequeue' => "uklonjena [[$1]] iz reda za brisanje '$2'.",
 	'right-speedy-nominate' => 'Nominiranje stranica za brzo brisanje',
+	'right-speedy-review' => 'Pregled prijedloga za brzo brisanje',
 	'right-prod-nominate' => 'Predlaganje brisanja stranice',
 	'right-deletediscuss-nominate' => 'Započinjanje razgovora o brisanju',
 	'right-deletediscuss-review' => 'Zatvaranje diskusija o brisanju',
 	'deletequeue-queue-speedy' => 'Brzo brisanje',
 	'deletequeue-queue-prod' => 'Predloženo brisanje',
 	'deletequeue-queue-deletediscuss' => 'Brisanje razgovora',
+	'deletequeue-notqueued' => 'Stranica koju ste odabrali trenutno nije u redu za brisanje',
 	'deletequeue-review-action' => 'Akcija koja se preduzima:',
 	'deletequeue-review-delete' => 'Brisanje stranice.',
 	'deletequeue-review-reason' => 'Komentari:',
@@ -681,6 +687,7 @@ $messages['bs'] = array(
 	'deletequeue-review-badaction' => 'Naveli ste nevaljanu akciju',
 	'deletequeue-review-actiondenied' => 'Naveli ste akciju koja je onemogućena na ovoj stranici',
 	'deletequeue-role-nominator' => 'prvobitni predlagač brisanja',
+	'deletequeue-vote-tab' => 'Glasanje o brisanju',
 	'deletequeue-vote-action' => 'Preporuke:',
 	'deletequeue-vote-reason' => 'Komentari:',
 	'deletequeue-vote-submit' => 'Pošalji',
@@ -1158,6 +1165,7 @@ Si, después de cinco días, nadie ha contestado el borrado de esta página, ser
 	'right-prod-review' => 'Revisar propuestas no contestadas de borrado',
 	'right-deletediscuss-nominate' => 'Comenzar discusiones de borrado',
 	'right-deletediscuss-review' => 'Cerrar discusiones de borrado',
+	'right-deletequeue-vote' => 'Apoyar u objetar los borrados',
 	'deletequeue-queue-speedy' => 'Borrado rápido',
 	'deletequeue-queue-prod' => 'Borrado propuesto',
 	'deletequeue-queue-deletediscuss' => 'Discusión de borrado',
@@ -1173,6 +1181,7 @@ Una discusión está en curso en [[$5]], la cual concluirá en ''$2''.",
 	'deletequeue-notqueued' => 'La página que ha seleccionado no está actualmente en espera de borrado',
 	'deletequeue-review-action' => 'Acción a tomar:',
 	'deletequeue-review-delete' => 'Borrar la página.',
+	'deletequeue-review-change' => 'Borrar esta página, pero con una diferente razón.',
 	'deletequeue-review-requeue' => 'Transferir esta página a la siguiente cola:',
 	'deletequeue-review-dequeue' => 'No tomar acción, y remover la página de la cola de borrado.',
 	'deletequeue-review-reason' => 'Comentarios:',
@@ -1194,18 +1203,48 @@ por favor asegúrese que esta página puede ser rápidamente borrada de acuerdo 
 	'deletequeue-reviewprod-text' => "Puedes usar este formulario para revisar la propuesta no contestada para el borrado de \"'''\$1'''\".",
 	'deletequeue-reviewdeletediscuss-tab' => 'Revisar borrado',
 	'deletequeue-reviewdeletediscuss-title' => 'Revisar discusión de borrado para "$1"',
+	'deletequeue-reviewdeletediscuss-text' => "Puedes usar este formulario para revisar la discusión sobre borrado de \"'''\$1'''\".
+
+Una [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] de apoyos y objeciones de este borrado está disponible, y la discusión por si misma puede ser encontrada en [[\$2]].
+Por favor asegúrate que tomas una decisión de acuerdo con el consenso en la discusión.",
 	'deletequeue-review-success' => 'Has revisado exitosamente el borrado de esta página',
 	'deletequeue-review-success-title' => 'Revisión completa',
+	'deletequeue-deletediscuss-discussionpage' => 'Esta es la página de discusión para el borrado de [[$1]].
+Hay actualmente $2 {{PLURAL:$2|usuario|usuarios}} apoyando el borrado, y $3 {{PLURAL:$3|usuario|usuarios}} objetando el borrado.
+Puedes [{{fullurl:$1|action=delvote}} apoyar u objetar] el borrado, o [{{fullurl:$1|action=delviewvotes}} ver todos los apoyos y objeciones].',
 	'deletequeue-discusscreate-summary' => 'creando discusión para el borrado de [[$1]].',
 	'deletequeue-discusscreate-text' => 'Borrado propuesto por las siguientes razones: $2',
 	'deletequeue-role-nominator' => 'nominador original para el borrado',
+	'deletequeue-role-vote-endorse' => 'Apoyante del borrado',
+	'deletequeue-role-vote-object' => 'Objetante del borrado',
+	'deletequeue-vote-tab' => 'Votar en el borrado',
+	'deletequeue-vote-title' => 'Apoyar u objetar el borrado de "$1"',
+	'deletequeue-vote-text' => "Puedes usar este formulario para apoyar u objetar el borrado de \"'''\$1'''\".
+Esta acción reescribirá cualquiera de los apoyos/objeciones que hayas dado al borrado de esta página.
+Puedes [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} ver] los apoyos y objeciones existentes.
+La razón dada en la nominación para el borrado fue ''\$2''.",
+	'deletequeue-vote-legend' => 'Apoyar/objetar el borrado',
 	'deletequeue-vote-action' => 'Recomendación:',
+	'deletequeue-vote-endorse' => 'Apoyar borrado.',
+	'deletequeue-vote-object' => 'Objetar el borrado.',
 	'deletequeue-vote-reason' => 'Comentarios:',
 	'deletequeue-vote-submit' => 'Enviar',
+	'deletequeue-vote-success-endorse' => 'Has apoyado exitosamente el borrado de esta página.',
+	'deletequeue-vote-success-object' => 'Has objetado exitosamente el borrado de esta página.',
 	'deletequeue-vote-requeued' => 'Has objetado exitosamente el borrado de esta página.
 A causa de tu objeción, la página ha sido movida a la cola $1.',
+	'deletequeue-showvotes' => 'Apoyos y objeciones al borrado de "$1"',
+	'deletequeue-showvotes-text' => "Debajo están los apoyos y objeciones hechas al borrado de la página \"'''\$1'''\".
+Puedes [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registrar tu propio apoyo, u objeción] a este borrado.",
+	'deletequeue-showvotes-restrict-endorse' => 'Mostrar apoyos solamente',
 	'deletequeue-showvotes-restrict-object' => 'Mostrar objeciones solamente',
+	'deletequeue-showvotes-restrict-none' => 'Mostrar todos los apoyos y objeciones',
+	'deletequeue-showvotes-vote-endorse' => "'''Apoyado''' borrado en $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''Objetado''' borrado en $1 $2",
+	'deletequeue-showvotes-showingonly-endorse' => 'Mostrando solamente apoyos',
 	'deletequeue-showvotes-showingonly-object' => 'Mostrando sólo objeciones',
+	'deletequeue-showvotes-none' => 'No hay apoyos u objeciones al borrado de esta página.',
+	'deletequeue-showvotes-none-endorse' => 'No hay apoyos al borrado de esta página.',
 	'deletequeue-showvotes-none-object' => 'No hay objeciones al borrado de esta página.',
 	'deletequeue' => 'Cola de borrado',
 	'deletequeue-list-text' => 'Esta página muestra todas la páginas la cuales están en el sistema de borrado.',
@@ -1216,11 +1255,14 @@ A causa de tu objeción, la página ha sido movida a la cola $1.',
 	'deletequeue-list-search' => 'Buscar',
 	'deletequeue-list-anyqueue' => '(cualquiera)',
 	'deletequeue-list-votes' => 'Lista de votos',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|apoyo|apoyos}}, $2 {{PLURAL:$2|objeción|objeciones}}',
 	'deletequeue-list-header-page' => 'Página',
 	'deletequeue-list-header-queue' => 'Cola',
+	'deletequeue-list-header-votes' => 'Apoyos y objeciones',
 	'deletequeue-list-header-expiry' => 'Expirar',
 	'deletequeue-list-header-discusspage' => 'Página de discusión',
 	'deletequeue-list-header-reason' => 'Razón para borrado',
+	'deletequeue-case-votes' => 'Apoyos/objeciones:',
 	'deletequeue-case-details' => 'Detalles básicos',
 	'deletequeue-case-page' => 'Página:',
 	'deletequeue-case-reason' => 'Razón:',
@@ -2158,7 +2200,7 @@ Tu pote [{{fullurl:$1|action=delvote}} declarar te pro o contra] le deletion, o 
 	'deletequeue-vote-tab' => 'Pro/contra deletion',
 	'deletequeue-vote-title' => 'Declarar se pro o contra le deletion de "$1"',
 	'deletequeue-vote-text' => "Tu pote usar iste formulario pro declarar te pro o contra le deletion de \"'''\$1'''\".
-Iste action ultrapassara omne previe declarationes pro/contra que tu ha date a proposito del deletion de iste pagina.
+Iste action ignorara omne previe declarationes pro/contra que tu ha date a proposito del deletion de iste pagina.
 Tu pote [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} vider] le existente declarationes pro e contra.
 Le motivo indicate in le nomination pro deletion esseva ''\$2''.",
 	'deletequeue-vote-legend' => 'Declarar se pro o contra le deletion',
@@ -4160,13 +4202,18 @@ Anledningen som givits för denna radering är ''$1''.",
  */
 $messages['te'] = array(
 	'deletequeue-delnom-otherreason' => 'ఇతర కారణం',
+	'deletequeue-delnom-extra' => 'అదనపు సమాచారం:',
 	'deletequeue-review-reason' => 'వ్యాఖ్యలు:',
 	'deletequeue-review-newreason' => 'కొత్త కారణం:',
 	'deletequeue-review-newextra' => 'అదనపు సమాచారం:',
 	'deletequeue-vote-reason' => 'వ్యాఖ్యలు:',
 	'deletequeue-list-status' => 'స్థితి:',
+	'deletequeue-list-anyqueue' => '(ఏదైనా)',
 	'deletequeue-list-header-page' => 'పేజీ',
 	'deletequeue-list-header-discusspage' => 'చర్చా పేజీ',
+	'deletequeue-case-details' => 'ప్రాధమిక వివరాలు',
+	'deletequeue-case-page' => 'పేజీ:',
+	'deletequeue-case-reason' => 'కారణం:',
 );
 
 /** Tetum (Tetun)

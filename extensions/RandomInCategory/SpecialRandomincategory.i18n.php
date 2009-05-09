@@ -721,6 +721,18 @@ $messages['sk'] = array(
 	'randomincategory-submit' => 'Vykonať',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'randomincategory' => 'Случајна страна из категорије',
+	'randomincategory-desc' => '[[Special:Randomincategory|Специјална страна]] за преузимање случајне стране из категорије',
+	'randomincategory-toolbox' => 'Случајна страна',
+	'randomincategory-nocategory' => 'Категорија $1 не постоји или је празна',
+	'randomincategory-label' => 'Категорија:',
+	'randomincategory-submit' => 'Иди',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

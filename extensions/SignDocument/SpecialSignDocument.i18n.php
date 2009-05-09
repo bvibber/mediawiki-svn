@@ -910,6 +910,8 @@ $messages['es'] = array(
 	'signdocument' => 'Firmar documento',
 	'sign-nodocselected' => 'Por favor seleccione el documento que desea firmar.',
 	'sign-selectdoc' => 'Documento:',
+	'sign-docheader' => '<div class="noarticletext">Por favor usar este formulario para firmar el documento "[[$1]]," mostrado abajo.
+Leer todo el documento completo, y si deseas indicar tu apoyo a él, rellena en los campos requeridos para firmarlo.</div>',
 	'sign-error-nosuchdoc' => 'El documento que ha solicitado ($1) no existe.',
 	'sign-realname' => 'Nombre:',
 	'sign-address' => 'Dirección domiciliaria:',
@@ -987,6 +989,7 @@ $1',
 	'sign-uniquequery-similaraddress' => 'Dirección similar',
 	'sign-uniquequery-similarphone' => 'Teléfono similar',
 	'sign-uniquequery-similaremail' => 'Correo electrónico similar',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] firmó [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Basque (Euskara)

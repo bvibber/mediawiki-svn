@@ -109,7 +109,7 @@ $aliases['it'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'WhatIsMyIP' => array( '自分のIPアドレス' ),
+	'WhatIsMyIP' => array( '自分のIPアドレス', '自分のＩＰアドレス' ),
 );
 
 /** Ripoarisch (Ripoarisch) */

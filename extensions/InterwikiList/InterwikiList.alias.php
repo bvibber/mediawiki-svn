@@ -128,6 +128,11 @@ $aliases['ko'] = array(
 	'InterwikiList' => array( '인터위키목록' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'InterwikiList' => array( 'Engerwiki Leß', 'EngerwikiLeß' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'InterwikiList' => array( 'Interwiki-Lëscht' ),

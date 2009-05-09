@@ -91,6 +91,13 @@ $aliases['km'] = array(
 	'ContributionTotal' => array( 'ការរួមចំណែកសរុប' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'ContributionHistory' => array( 'MetmaacherVerjangeheit' ),
+	'ContributionStatistics' => array( 'MetmaacherStatistike' ),
+	'ContributionTotal' => array( 'MetmaacherZahleKumplät' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ContributionHistory' => array( 'Entwécklung vun de Kontributiounen' ),

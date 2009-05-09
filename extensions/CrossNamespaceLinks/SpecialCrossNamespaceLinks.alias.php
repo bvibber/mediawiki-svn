@@ -97,6 +97,11 @@ $aliases['ja'] = array(
 	'CrossNamespaceLinks' => array( '名前空間をまたぐリンク' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'CrossNamespaceLinks' => array( 'Lengks en ander Appachtemangs' ),
+);
+
 /** Latin (Latina) */
 $aliases['la'] = array(
 	'CrossNamespaceLinks' => array( 'Nexus trans praefixa' ),

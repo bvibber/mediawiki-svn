@@ -82,6 +82,11 @@ $aliases['km'] = array(
 	'CountEdits' => array( 'ការរាប់ចំនួនកំណែប្រែ' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'CountEdits' => array( 'Beijdrääsch zälle' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'CountEdits' => array( 'Ännerungen zielen' ),

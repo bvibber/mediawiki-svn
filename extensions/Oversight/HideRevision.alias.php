@@ -129,6 +129,12 @@ $aliases['ko'] = array(
 	'Oversight' => array( '오버사이트' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'HideRevision' => array( 'Version versteische' ),
+	'Oversight' => array( 'Logbooch vum Versione Vershteische' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'HideRevision' => array( 'Versioun verstoppen' ),

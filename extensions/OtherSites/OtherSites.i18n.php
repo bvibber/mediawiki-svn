@@ -235,6 +235,13 @@ $messages['lb'] = array(
 	'othersites-desc' => 'Réckelt interwiki-Linken déi keng Sproochlinke sinn an hir eege Këscht',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'othersites' => 'Tapak-tapak lain',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

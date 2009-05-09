@@ -317,17 +317,23 @@ $messages['eo'] = array(
  * @author Kobazulo
  */
 $messages['es'] = array(
+	'passwordreset' => 'Restablecimiento de contraseña',
+	'passwordreset-desc' => "[[Special:PasswordReset|Restablecimientos de contraseñas de usuarios wiki]] - requiere privilegios 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nombre de usuario inválido',
 	'passwordreset-emptyusername' => 'Nombre de usuario vacío',
+	'passwordreset-nopassmatch' => 'Contraseñas no coinciden',
 	'passwordreset-badtoken' => 'Ficha de edición inválida',
 	'passwordreset-username' => 'Nombre de usuario:',
 	'passwordreset-newpass' => 'Nueva contraseña:',
 	'passwordreset-confirmpass' => 'Confirmar contraseña:',
 	'passwordreset-submit' => 'Reestablecer contraseña',
+	'passwordreset-success' => 'Contraseña ha sido reestablecida para ID de usuario: $1',
 	'passwordreset-disableuser' => 'Deshabilitar cuenta de usuario?',
+	'passwordreset-disablesuccess' => 'Cuenta de usuario ha sido deshabilitado para ID de usuario: $1',
 	'passwordreset-accountdisabled' => 'Cuenta ha sido deshabilitada',
 	'disabledusers' => 'Usuarios deshabilitados',
 	'disabledusers-summary' => 'Esta es una lista de usuarios que han sido deshabilitados con PasswordReset.',
+	'right-passwordreset' => 'Reestablecer contraseña de un usuario ([[Special:PasswordReset|página especial]])',
 );
 
 /** Basque (Euskara)
@@ -1308,7 +1314,7 @@ $messages['te'] = array(
 	'passwordreset-nopassmatch' => 'సంకేతపదాలు సరిపోలలేదు',
 	'passwordreset-username' => 'వాడుకరిపేరు:',
 	'passwordreset-newpass' => 'కొత్త సంకేతపదం:',
-	'passwordreset-confirmpass' => 'సంకేతపదాన్ని నిర్ధారించండి',
+	'passwordreset-confirmpass' => 'సంకేతపదాన్ని నిర్ధారించండి:',
 	'passwordreset-disableuser' => 'వాడుకరి ఖాతాని అచేతనం చేయాలా?',
 	'passwordreset-disablesuccess' => 'వాడుకరి ఖాతాని అచేతనం చేసారు (user_id: $1)',
 	'passwordreset-accountdisabled' => 'ఖాతాని అచేతనం చేసారు',

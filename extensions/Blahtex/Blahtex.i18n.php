@@ -425,6 +425,8 @@ $messages['bs'] = array(
 	'math_CannotRunLatex' => 'Ne može se pokrenuti latex',
 	'math_CannotWritePngDirectory' => 'Ne može se pisati u izlazni PNG direktorijum',
 	'math_CannotWriteTexFile' => 'Ne može se pisati u tex datoteku',
+	'math_DoubleSubscript' => 'Pronađena dva indeksa pripojena na istu bazu.
+Samo je jedan dozvoljen.',
 	'math_DoubleSuperscript' => 'Pronađena su dva eksponenta na istoj bazi.
 Samo jedan je dopušten.',
 	'math_IllegalCharacter' => 'Nevaljan znak u unosu',
@@ -757,7 +759,10 @@ Sólo se permite uno.',
 	'math_IllegalRedefinition' => 'El comando "$1" ya ha sido definido; usted no puede redefinirlo',
 	'math_InvalidColour' => 'El color "$1" es inválido',
 	'math_LatexFontNotSpecified' => 'Ninguna fuente LaTeX ha sido especificada para "$1"',
+	'math_LatexPackageUnavailable' => 'Incapaz de representar PNG porque el paquete LaTeX "$1" está indisponible',
 	'math_MismatchedBeginAndEnd' => 'Comandos "$1" y "$2" no coinciden',
+	'math_MisplacedLimits' => 'El comando "$1" solo puede aparecer después de un operador matemático.
+Considera usar "\\mathop".',
 	'math_NotEnoughArguments' => 'Insuficientes argumentos fueron dados para "$1"',
 	'math_TooManyMathmlNodes' => 'Hay demasiados nodos en el árbol MathML',
 	'math_TooManyTokens' => 'La entrada es demasiado larga',

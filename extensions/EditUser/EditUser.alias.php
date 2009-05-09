@@ -105,6 +105,11 @@ $aliases['km'] = array(
 	'EditUser' => array( 'កែប្រែអ្នកប្រើប្រាស់' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'EditUser' => array( 'Metmaacher ier Enstellunge Ändere Metmaacher ier Enshtellunge Ändere' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'EditUser' => array( 'Benotzer änneren' ),

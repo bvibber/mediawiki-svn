@@ -47,6 +47,14 @@ $messages['avk'] = array(
 	'whosonline-desc' => 'Nedira va [[Special:WhosOnline|vexala]] dem dogluyayan favesik yo isu yoltiskik',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'whosonline' => 'Wea is online',
+	'whosonline-desc' => 'Zoagt [[Special:WhosOnline|a Listn]] vu de eigloggtn und vu de anonymen Benutza ãu, de momentan online san',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -270,6 +278,14 @@ $messages['ml'] = array(
 $messages['mr'] = array(
 	'whosonline' => 'ऑनलाईन कोण आहे?',
 	'whosonline-desc' => 'दाखवा सध्या ऑनलाईन असलेल्या दाखल झालेल्या सदस्यांची आणि अनामिक नवशागवशांची [[Special:WhosOnline|सूची]] दाखवा',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'whosonline' => 'Siapa di talian',
+	'whosonline-desc' => 'Paparkan [[Special:WhosOnline|senarai]] para pengguna log masuk dan tanpa nama yang berada di talian',
 );
 
 /** Dutch (Nederlands)

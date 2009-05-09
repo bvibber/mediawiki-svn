@@ -315,6 +315,8 @@ $messages['es'] = array(
 	'deletebatch-success-subtitle' => 'Para $1',
 	'deletebatch-omitting-nonexistant' => 'Omitiendo página no existente $1.',
 	'deletebatch-omitting-invalid' => 'Omitiendo página inválida $1.',
+	'deletebatch-file-bad-format' => 'El archivo debería ser texto simple',
+	'deletebatch-file-missing' => 'Incapaz de leer archivo dado',
 	'deletebatch-select-yourself' => 'usted',
 	'deletebatch-no-page' => 'Por favor especifique al menos una página a borrar O escoja un archivo conteniendo una lista de páginas.',
 );

@@ -1213,7 +1213,7 @@ $messages['os'] = array(
 	'bookinfo-result-title' => 'Сæргонд:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-year' => 'Аз:',
-	'bookinfo-purchase' => 'Ацы чиныг алхæнæн ис ам:',
+	'bookinfo-purchase' => 'Ацы чиныг алхæнæн ис ам $1:',
 );
 
 /** Pampanga (Kapampangan)

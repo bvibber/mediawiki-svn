@@ -171,12 +171,19 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'refreshspecial' => 'Osvježenje posebnih stranica',
+	'refreshspecial-desc' => 'Omogućava [[Special:RefreshSpecial|posebnu stranicu za ručno osvježavanje]] posebnih stranica',
+	'refreshspecial-title' => 'Osvježi posebne stranice',
 	'refreshspecial-button' => 'Odabrano osvježavanje',
+	'refreshspecial-fail' => 'Molimo odaberite najmanje jednu posebnu stranicu za osvježavanje.',
 	'refreshspecial-refreshing' => 'osvježavam specijalne stranice',
+	'refreshspecial-choice' => 'osvježavam posebne stranice',
 	'refreshspecial-select-all-pages' => 'Odaberi sve stranice',
 	'refreshspecial-link-back' => 'Idi nazad na posebne stranice',
+	'refreshspecial-none-selected' => 'Niste odabrali nijednu posebnu stranicu. Vraćam na pretpostavljeni odabir.',
 	'refreshspecial-db-error' => 'Neuspjelo: greška baze podataka',
 	'refreshspecial-no-page' => 'Nema takve specijalne stranice',
+	'refreshspecial-reconnected' => 'Ponovno spojeno.',
+	'refreshspecial-reconnecting' => 'Spajanje nije uspjelo, ponovno spajanje za 10 sekundi…',
 );
 
 /** Czech (Česky)
@@ -316,9 +323,11 @@ $messages['es'] = array(
 	'refreshspecial-select-all-pages' => 'Seleccione todas las páginas',
 	'refreshspecial-link-back' => 'Regresar a página especial',
 	'refreshspecial-none-selected' => 'No has seleccionado ninguna pagina especial. Revertiendo a la selección por defecto.',
+	'refreshspecial-db-error' => 'Fracasado: error en base de datos',
 	'refreshspecial-no-page' => 'No tal página especial',
 	'refreshspecial-reconnected' => 'Reconectado.',
 	'refreshspecial-reconnecting' => 'Conexión falló, reconectando en 10 segundos...',
+	'refreshspecial-page-result' => 'obtener $1 {{PLURAL:$1|fila|filas}} en',
 	'right-refreshspecial' => 'Refrescar páginas especiales',
 );
 

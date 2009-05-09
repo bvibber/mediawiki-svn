@@ -72,6 +72,11 @@ $aliases['km'] = array(
 	'AccountManager' => array( 'គ្រប់គ្រង​គណនី' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'AccountManager' => array( 'Metmaachere Verwallde', 'MetmaachereVerwallde' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'AccountManager' => array( 'Gebrukersbeheer' ),

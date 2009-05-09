@@ -386,8 +386,11 @@ $messages['eo'] = array(
  * @author Imre
  */
 $messages['es'] = array(
+	'recordadmin-select' => 'Seleccionar el tipo de registro a gestionar',
+	'recordadmin-recordtype' => 'tipo de registro',
 	'recordadmin-submit' => 'Enviar',
 	'recordadmin-alreadyexist' => 'Perdón, "$1" ya existe!',
+	'recordadmin-createsuccess' => '$1 creado',
 	'recordadmin-createerror' => 'Un error ocurrió cuando se intentaba crear el $1!',
 	'recordadmin-badtitle' => 'Mal título!',
 	'recordadmin-invert' => 'Invertir selección',
@@ -1294,6 +1297,7 @@ $messages['te'] = array(
 	'recordadmin-buttonsave' => 'భద్రపరచు',
 	'recordadmin-viewlink' => 'చూడు',
 	'recordadmin-editlink' => 'మార్చు',
+	'recordadmin-actions' => 'చర్యలు',
 );
 
 /** Thai (ไทย)

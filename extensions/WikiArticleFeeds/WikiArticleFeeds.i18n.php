@@ -44,6 +44,14 @@ $messages['bs'] = array(
 	'wikiarticlefeeds_combined_description' => 'Ovo je kombinirani fid, sadrži stavke iz nekoliko fid izvora.',
 );
 
+/** German (Deutsch)
+ * @author Umherirrender
+ */
+$messages['de'] = array(
+	'wikiarticlefeeds-desc' => 'Erzeugt aus MediaWiki-Seiten Feeds',
+	'wikiarticlefeeds_combined_description' => 'Dies ist ein kombinierter Feed, mit Elementen aus verschiedenen Quellen.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

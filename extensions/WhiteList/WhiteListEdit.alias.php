@@ -95,7 +95,7 @@ $aliases['ia'] = array(
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'WhiteList' => array( 'ホワイトリスト' ),
-	'WhiteListEdit' => array( 'ホワイトリストの編集' ),
+	'WhiteListEdit' => array( 'ホワイトリストの編集', 'ホワイトリスト編集' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
@@ -132,6 +132,12 @@ $aliases['nds-nl'] = array(
 $aliases['nl'] = array(
 	'WhiteList' => array( 'WitteLijst' ),
 	'WhiteListEdit' => array( 'WitteLijstBewerken' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'WhiteList' => array( 'Hvitliste' ),
+	'WhiteListEdit' => array( 'Rediger hvitliste' ),
 );
 
 /** Occitan (Occitan) */

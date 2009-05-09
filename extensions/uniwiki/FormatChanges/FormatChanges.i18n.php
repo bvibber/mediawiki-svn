@@ -475,7 +475,7 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'formatchanges-desc' => 'Dönufomätön padi: [[SPecial:RecentChanges|votükams nulik]]',
+	'formatchanges-desc' => 'Dönufomätön padi: [[Special:RecentChanges|votükams nulik]]',
 	'formatchanges-anonymous' => 'Nennemik',
 	'formatchanges-createdby' => 'Pad: $1 - pejafon fa geban: $2 ($3)',
 	'formatchanges-editedby' => 'Pad: $1 - peredakon fa geban: $2 ($3)',

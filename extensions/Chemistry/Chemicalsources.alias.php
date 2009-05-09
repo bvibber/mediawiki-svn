@@ -67,6 +67,11 @@ $aliases['ja'] = array(
 	'ChemicalSources' => array( '化学関連の検索' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'ChemicalSources' => array( 'Schimisch Quelle' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ChemicalSources' => array( 'Chemisch Quellen' ),

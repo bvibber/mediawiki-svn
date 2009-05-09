@@ -77,7 +77,7 @@ $aliases['it'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'CreatePage' => array( 'ページ作成' ),
+	'CreatePage' => array( 'ページ作成', 'ページの作成' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */

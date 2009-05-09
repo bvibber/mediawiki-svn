@@ -44,6 +44,13 @@ $messages['ast'] = array(
 	'charinsert-desc' => "Permite la creación d'una caxa JavaScript pa [[MediaWiki:Edittools|enxertar carauteres non estándar]]",
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'charinsert-desc' => 'Erlaubt, dass a JavaScript-gsteiate Leistn zum [[MediaWiki:Edittools|Eifüng vu Sondazeichn]] eastöid wiad',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

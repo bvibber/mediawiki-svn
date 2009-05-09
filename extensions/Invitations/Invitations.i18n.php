@@ -701,6 +701,7 @@ $messages['lb'] = array(
 	'invitations-invitedlist-none' => 'Dir gouft net invitéiert fir eng Softwarefonctioun ze benotzen fir déi een invitéiert gëtt.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Eng Invitatioun|$1 Invitatioune}} disponibel)',
 	'invitations-pagetitle' => 'Fonctionnalitéiten op Invitatiouns-Basis',
+	'invitations-uninvitedlist-none' => 'Zu dësem Zäitpunkt gëtt et keng aner Softarefonctiounen déi just fir invitéiert Benotzer disponibel sinn.',
 	'invitations-feature-pagetitle' => 'Gestioun vun der Invitatioun - $1',
 	'invitations-feature-access' => 'Dir kënnt elo <i>$1</i> benotzen.',
 	'invitations-feature-numleft' => 'Dir hutt nach {{PLURAL:$2|eng Invitatioun |<b>$1</b> vun ären $2 Invitatiounen}} iwwreg.',

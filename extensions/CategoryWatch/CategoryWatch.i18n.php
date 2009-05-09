@@ -279,6 +279,7 @@ Die Nochricht mäldet Dir, ass Benutzer $4 am $3 $5.',
  * @author Dsvyas
  */
 $messages['gu'] = array(
+	'categorywatch-desc' => 'ધ્યાનમાં રાખેલી શ્રેણીના સભ્યપદની તબદીલીની જાહેરાતનો સમાવેશ કરી શકાય તે માટે ધ્યાનસુચિના કાર્યક્ફલકને વિસ્તારે છે',
 	'categorywatch-emailsubject' => 'ધ્યાનમાં રાખેલી શ્રેણી "$1"ને લગતી પ્રવૃત્તિ',
 	'categorywatch-catmovein' => '"$1", "$3"થી ખસીને "$2"માં ગયું છે.',
 	'categorywatch-catmoveout' => '"$1" એ "$2"માંથી ખસીને "$3"માં ગયું છે.',

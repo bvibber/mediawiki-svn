@@ -323,6 +323,14 @@ $messages['mn'] = array(
 	'abcdownload' => 'Өөртөө хуулах:',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'abcdesc' => 'Letak tag <tt>&lt;abc&gt;</tt> bagi memformat muzik ABC',
+	'abcdownload' => 'Muat turun:',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -192,6 +192,7 @@ $messages['es'] = array(
 	'security-info' => 'Hay $1 en este artículo',
 	'security-info-toggle' => 'restricciones de seguridad',
 	'security-inforestrict' => '$1 está restringido a $2',
+	'security-desc-LS' => "''(aplica porque esta página está en el '''$2 $1''')''",
 	'security-manygroups' => 'grupos $1 y $2',
 	'security-unchain' => 'modificar acciones individualmente',
 	'security-type-category' => 'categoría',
@@ -574,6 +575,13 @@ $messages['sk'] = array(
 	'security-type-namespace' => 'menný priestor',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'security-type-category' => 'వర్గం',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -613,5 +621,13 @@ $messages['vi'] = array(
 	'security-manygroups' => 'các nhóm $1 và $2',
 	'security-type-category' => 'thể loại',
 	'security-type-namespace' => 'không gian tên',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'security-type-category' => 'קאַטעגאריע',
+	'security-type-namespace' => 'נאָמענטייל',
 );
 

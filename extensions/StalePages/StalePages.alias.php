@@ -49,6 +49,11 @@ $aliases['ja'] = array(
 	'StalePages' => array( '古くなったページ' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'StalePages' => array( 'Ahl Sigge' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'StalePages' => array( "Verouwerde_pagina's" ),

@@ -3007,9 +3007,20 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Emrrans
+ * @author Zamwan
  */
 $messages['ms'] = array(
 	'viewapc' => 'Maklumat APC',
+	'viewapc-apc-version' => 'Versi APC',
+	'viewapc-php-version' => 'Versi PHP',
+	'viewapc-display-info' => 'Nama',
+	'viewapc-ls-header-name' => 'Nama',
+	'viewapc-ls-header-size' => 'Saiz',
+	'viewapc-ls-scope-active' => 'Aktif',
+	'viewapc-ls-scope-deleted' => 'Dihapuskan',
+	'viewapc-ls-sort-size' => 'Saiz',
+	'viewapc-ls-sort-name' => 'Nama',
+	'viewapc-version-info' => 'Maklumat versi',
 );
 
 /** Maltese (Malti)
@@ -5029,6 +5040,13 @@ $messages['vo'] = array(
 	'viewapc-ls-limit-none' => 'Valik',
 	'viewapc-version-info' => 'Nüns tefü fomam',
 	'viewapc-version-failed' => 'No eplöpos ad dagetön fomamanünis.',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'viewapc-ls-limit-none' => 'אלע',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

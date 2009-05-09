@@ -86,6 +86,12 @@ $aliases['km'] = array(
 	'TaskList' => array( 'បញ្ជីភារកិច្ច' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'TaskList' => array( 'Aufjabeless', 'Aufjabeleß' ),
+	'TaskListByProject' => array( 'Aufjabeless pro Projäk', 'Aufjabeleß pro Projäk' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'TaskList' => array( 'Lëscht vun den Aufgaben' ),

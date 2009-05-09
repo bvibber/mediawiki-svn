@@ -53,6 +53,11 @@ $aliases['ja'] = array(
 	'ContributionTracking' => array( '寄付追跡' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'ContributionTracking' => array( 'MetmaacherVerfoljung' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ContributionTracking' => array( 'Donasies_volgen' ),

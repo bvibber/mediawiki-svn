@@ -535,7 +535,7 @@ $messages['et'] = array(
 	'crosswikiunblock-reason' => 'Põhjus:',
 	'crosswikiunblock-submit' => 'Lõpeta kasutaja blokeering',
 	'crosswikiblock-nousername' => 'Ühtegi kasutajanime ei antud',
-	'crosswikiblock-noname' => '"$" ei ole õige kasutajanimi.',
+	'crosswikiblock-noname' => '"$1" ei ole õige kasutajanimi.',
 	'crosswikiblock-nouser' => 'Kasutajat "$3" ei leitud.',
 	'crosswikiblock-noreason' => 'Põhjust ei ole märgitud.',
 	'crosswikiblock-alreadyblocked' => 'Kasutaja $3 on juba blokeeritud.',
@@ -1291,7 +1291,7 @@ Grįžti į:
  * @author Khazar II
  */
 $messages['mdf'] = array(
-	'crosswikiblock-alreadyblocked' => '"$1" сёлкфоль ни',
+	'crosswikiblock-alreadyblocked' => '"$3" сёлкфоль ни',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -1622,7 +1622,7 @@ Tornar cap a :
 $messages['os'] = array(
 	'crosswikiblock-reason' => 'Аххос:',
 	'crosswikiunblock-reason' => 'Аххос:',
-	'crosswikiblock-dbnotfound' => 'Бæрæггæнæнты базæ нæй',
+	'crosswikiblock-dbnotfound' => 'Бæрæггæнæнты $1 базæ нæй',
 );
 
 /** Polish (Polski)
@@ -1958,7 +1958,8 @@ Tourääch tou:
 Tourääch tou:
 * [[Special:CrosswikiBlock|Speerformular]]
 * [[$4]]",
-	'crosswikiunblock-local' => 'Lokoale Speeren wäide uur dit Interface nit unnerstutsed. Benutsje [[{{#special:Ipblocklist}}]].',
+	'crosswikiunblock-local' => 'Lokoale Speeren wäide uur dit Interface nit unnerstutsed.
+Benutsje [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Sundanese (Basa Sunda)

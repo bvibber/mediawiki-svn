@@ -707,6 +707,23 @@ Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise hast 
 	'openid-prefstext' => '[http://openid.net/ OpenID]-Einstellungen',
 	'openid-pref-hide' => 'Verstecke deine <a href="http://openid.net/">OpenID</a> auf deiner Benutzerseite, wenn du dich mit OpenID anmeldest.',
 	'openid-pref-update-userinfo-on-login' => 'Meine Daten anhand des OpenID-Kontos bei jeder Anmeldung aktualisieren',
+	'openidsigninorcreateaccount' => 'Anmelden oder ein neues Benutzerkonto erstellen',
+	'openid-provider-label-openid' => 'Gib deine OpenID-URL an',
+	'openid-provider-label-google' => 'Mit deinem Google-Benutzerkonto anmelden',
+	'openid-provider-label-yahoo' => 'Mit deinem Yahoo-Benutzerkonto anmelden',
+	'openid-provider-label-aol' => 'Gib deinen AOL-Namen an',
+	'openid-provider-label-other-username' => 'Gib deinen „$1“-Benutzernamen an',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'openid-provider-label-openid' => 'Geben Sie Ihre OpenID-URL an',
+	'openid-provider-label-google' => 'Mit Ihrem Google-Benutzerkonto anmelden',
+	'openid-provider-label-yahoo' => 'Mit Ihrem Yahoo-Benutzerkonto anmelden',
+	'openid-provider-label-aol' => 'Geben Sie Ihren AOL-Codenamen an',
+	'openid-provider-label-other-username' => 'Geben Sie Ihren „$1“-Benutzernamen an',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -934,7 +951,7 @@ OpenID te permite ingresar en varios sitios web sin necesidad de usar un passwor
 
 Si ya dispones de una cuenta en {{SITENAME}} puedes [[Special:UserLogin|ingresar]] con tu usuario y password usuales. Para usar OpenID en el futuro, puedes [[Special:OpenIDConvert|convertir tu cuenta a OpenID]] después de haber ingresado.
 
-Hay muchos [[http://openid.net/get proveedores de OpenID]] y quizás ya dispongas de una cuenta OpenID en otro servicio.',
+Hay muchos [http://openid.net/get proveedores de OpenID] y quizás ya dispongas de una cuenta OpenID en otro servicio.',
 	'openidupdateuserinfo' => 'Actualizar mi información personal',
 	'openid-prefstext' => 'Preferencias de [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ocultar su <a href="http://openid.net/">OpenID</a> en su página de usuario, si usted ingresa con OpenID.',

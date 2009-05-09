@@ -75,6 +75,11 @@ $aliases['ja'] = array(
 	'AdvancedRandom' => array( '高度なおまかせ表示' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'AdvancedRandom' => array( 'Besser zohfällejje Sigg' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'AdvancedRandom' => array( 'Zoufall' ),

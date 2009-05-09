@@ -2466,7 +2466,7 @@ $messages['te'] = array(
 	'youtubeauthsub_summary' => 'యూట్యూబులోనికి వీడియోని ఎగుమతిచేస్తున్నాం',
 	'youtubeauthsub_uploading' => 'మీ వీడియో ఎగుమతవుతూండి.
 దయచేసి ఓపిక వహించండి.',
-	'youtubeauthsub_viewpage' => 'లేదా, మీ వీడియోని [[$1|ఇక్కడ]] చూడవచ్చు.',
+	'youtubeauthsub_viewpage' => 'లేదా, [[$1|మీ వీడియో]]ని చూడవచ్చు.',
 	'youtubeauthsub_jserror_nokeywords' => 'దయచేసి 1 లేదా అంతకంటే ఎక్కువ కీపదాలు ఇవ్వండి.',
 	'youtubeauthsub_jserror_notitle' => 'ఈ వీడియోకి ఓ పేరు ఇవ్వండి.',
 	'youtubeauthsub_jserror_nodesc' => 'ఈ వీడియో గురించి వివరణ ఇవ్వండి.',

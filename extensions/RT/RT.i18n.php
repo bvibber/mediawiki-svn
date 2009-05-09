@@ -72,6 +72,26 @@ $messages['be-tarask'] = array(
 	'rt-nomatches' => 'Ня знойдзена супадзеньняў з RT',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'rt-desc' => 'Moderni interfejs za RT (Praćenje zahtjeva)',
+	'rt-inactive' => 'RT proširenje nije aktivno',
+	'rt-badquery' => 'RT proširenje je javilo grešku pri kontaktiranju RT baze podataka',
+	'rt-badlimit' => "Nevaljan LIMIT (l) argument: mora biti broj.
+Pokušali ste: '''$1'''",
+	'rt-badorderby' => "Nevaljan ORDER BY (ob) argument: mora biti standardno polje (vidi dokumentaciju).
+Pokušali ste: '''$1'''",
+	'rt-badstatus' => "Nevaljan status (s) argument: mora biti standardno polje (vidi dokumentaciju).
+Pokušali ste: '''$1'''",
+	'rt-badqueue' => "Nevaljan queue (q) argument: mora biti jednostavna riječ.
+Pokušali ste: '''$1'''",
+	'rt-badowner' => "Nevaljan owner (o) argument: mora biti validno korisničko ime.
+Vi ste pokušali: '''$1'''",
+	'rt-nomatches' => 'Nisu pronađeni odgovarajući RT kuponi',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex

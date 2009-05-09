@@ -177,11 +177,16 @@ Jen paĝoj kiuj ankaŭ bezonas vian helpon: $1.',
  */
 $messages['es'] = array(
 	'editsimilar-desc' => 'Animaa usuarios a editar una página similar después de grabar una página',
+	'editsimilar-thanks' => 'Gracias por tu contribución.
+Verifica estas páginas relacionadas: $1.',
+	'editsimilar-thanks-singleresult' => 'Gracias por tu contribución.
+Verifica esta página relacionada: $1.',
 	'editsimilar-thanks-notsimilar' => 'Gracias por tu contribución.
 Estas páginas podrían también usar tu ayuda: $1.',
 	'editsimilar-thanks-notsimilar-singleresult' => 'Gracias por tu contribución.
 Esta página podría también usar tu ayuda: $1.',
 	'editsimilar-thankyou' => 'Gracias por tu contribución, $1!',
+	'editsimilar-link-disable' => 'configurar preferencias',
 	'tog-edit-similar' => 'Habilitar sugerencias de páginas similares',
 );
 

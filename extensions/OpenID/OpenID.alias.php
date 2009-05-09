@@ -48,10 +48,27 @@ $aliases['ia'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'OpenIDLogin' => array( 'OpenIDログイン' ),
-	'OpenIDFinish' => array( 'OpenID完了' ),
-	'OpenIDConvert' => array( 'OpenID変換' ),
-	'OpenIDServer' => array( 'OpenIDサーバー' ),
+	'OpenIDLogin' => array( 'OpenIDログイン', 'ＯｐｅｎＩＤログイン' ),
+	'OpenIDFinish' => array( 'OpenID完了', 'ＯｐｅｎＩＤ完了' ),
+	'OpenIDConvert' => array( 'OpenID変換', 'ＯｐｅｎＩＤ変換' ),
+	'OpenIDServer' => array( 'OpenIDサーバー', 'ＯｐｅｎＩＤサーバー' ),
+	'OpenIDXRDS' => array( 'ＯｐｅｎＩＤＸＲＤＳ' ),
+);
+
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'OpenIDLogin' => array( 'OpenIDAanmedung' ),
+	'OpenIDFinish' => array( 'OpenIDEngk' ),
+	'OpenIDConvert' => array( 'OpenIDÖmwandele' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'OpenIDLogin' => array( 'OpenID-innlogging' ),
+	'OpenIDFinish' => array( 'OpenID-fullføring' ),
+	'OpenIDConvert' => array( 'OpenID-konvertering' ),
+	'OpenIDServer' => array( 'OpenID-tjener' ),
+	'OpenIDXRDS' => array( 'OpenID-XRDS' ),
 );
 
 /** Sanskrit (संस्कृत) */

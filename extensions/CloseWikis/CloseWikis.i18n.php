@@ -1312,6 +1312,7 @@ $messages['te'] = array(
 	'closewikis-page-close-wiki' => 'వికీ:',
 	'closewikis-page-reopen-wiki' => 'వికీ:',
 	'closewikis-page-reopen-reason' => 'కారణం:',
+	'closewikis-list-header-wiki' => 'వికీ',
 );
 
 /** Tetum (Tetun)

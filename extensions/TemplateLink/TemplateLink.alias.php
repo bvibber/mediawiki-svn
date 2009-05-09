@@ -69,6 +69,11 @@ $aliases['km'] = array(
 	'TemplateLink' => array( 'តំណភ្ជាប់ទំព័រគំរូ' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'TemplateLink' => array( 'Schabloonelengk' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'TemplateLink' => array( 'Schabloune Link' ),

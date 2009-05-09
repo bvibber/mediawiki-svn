@@ -283,7 +283,6 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'dplforum-desc' => 'DPL-alapú fórumkiterjesztés',
-	'dplforum-by' => '',
 	'dplforum-edited' => '- Utolsó szerkesztés',
 	'dplforum-never' => 'soha',
 	'dplforum-toofew' => 'DPL fórum: túl kevés kategória!',

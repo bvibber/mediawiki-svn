@@ -115,7 +115,7 @@ $aliases['id'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'BoardVote' => array( '財団理事選挙' ),
+	'BoardVote' => array( '財団理事選挙', '選挙' ),
 );
 
 /** Korean (한국어) */

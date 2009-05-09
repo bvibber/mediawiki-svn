@@ -82,6 +82,11 @@ $aliases['ja'] = array(
 	'FindSpam' => array( 'スパムを探す' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'FindSpam' => array( 'SPAM fenge' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'FindSpam' => array( 'Spam fannen' ),

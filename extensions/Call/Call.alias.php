@@ -89,7 +89,7 @@ $aliases['ia'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'Call' => array( 'ページ呼び出し' ),
+	'Call' => array( 'ページ呼び出し', 'ページの呼び出し' ),
 );
 
 /** Ripoarisch (Ripoarisch) */

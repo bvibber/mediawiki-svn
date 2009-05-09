@@ -79,6 +79,11 @@ $aliases['ja'] = array(
 	'PurgeCache' => array( 'キャッシュ削除' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'PurgeCache' => array( 'Zwescheschpeischer leddisch' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PurgeCache' => array( 'Cache eidel maachen' ),

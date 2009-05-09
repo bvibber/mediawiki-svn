@@ -96,7 +96,7 @@ $aliases['ia'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'WhosOnline' => array( 'オンラインの利用者' ),
+	'WhosOnline' => array( 'オンラインの利用者', 'オンライン利用者' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
