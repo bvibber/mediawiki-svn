@@ -107,7 +107,7 @@ function mv_do_load_wiz(){
 				r.moveEnd('character', o.value.length)
 				if (r.text == '') return o.value.length
 				return o.value.lastIndexOf(r.text)
-			} else return o.selectionStart
+			} else return o.selectionStart;
 	}
 	var getTextCusorEndPos = function (o){
 		if (o.createTextRange) {
@@ -115,14 +115,14 @@ function mv_do_load_wiz(){
 			r.moveStart('character', -o.value.length);
 			return r.text.length;
 		} else{ 
-			return o.selectionEnd
+			return o.selectionEnd;
 		}
 	}
 	caret_pos.s = getTextCusorStartPos( txtarea );
 	caret_pos.e = getTextCusorEndPos( txtarea );		
 	caret_pos.text = txtarea.value;	
 	//show the loading screen:
-	var elm = document.getElementById('modalbox')
+	var elm = document.getElementById('modalbox');
 	if(elm){
 		//use jquery to re-display the search
 		if( typeof $j != 'undefined'){
