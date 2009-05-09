@@ -11,7 +11,6 @@ import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
 import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
 import de.brightbyte.wikiword.analyzer.sensor.HasPropertySensor;
-import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
 
 public class WikiConfiguration_enwiki extends WikiConfiguration {
@@ -20,6 +19,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		super();
 
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("awd", 1, true), "$1")); //TODO: {{awd|award|year|title|role|name}}
+		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("(Birth|Death)(Date(AndAge)?|_date(_and_age)?)", 1, true), " $1") );
 
 		propertyExtractors.add( new CategoryPatternParameterExtractor("^(\\d+s?)_births$", "$1", 0, "person-birth-date") );
 		propertyExtractors.add( new CategoryPatternParameterExtractor("^(\\d+s?)_deaths$", "$1", 0, "person-death-date") );
@@ -70,15 +70,15 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new DefaultTemplateParameterPropertySpec("citizenship", "person-nationality").setStripMarkup(true)
 			) );
 		
-		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Birth_date"),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Birth_date|BrithDate", 0, true),
 				new DefaultTemplateParameterPropertySpec("1", "person-birth-date").setStripMarkup(true)
 				) );
 		
-		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Death_date"),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Death_date|DeathDate", 0, true),
 				new DefaultTemplateParameterPropertySpec("1", "person-death-date").setStripMarkup(true)
 				) );
 		
-		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Death_date_and_age"),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Death_date_and_age|DeathDateAndAge", 0, true),
 				new DefaultTemplateParameterPropertySpec("1", "person-death-date").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("1", "person-birth-date").setStripMarkup(true)
 				) );
