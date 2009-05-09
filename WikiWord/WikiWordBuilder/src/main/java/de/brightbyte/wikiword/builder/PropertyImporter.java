@@ -66,6 +66,8 @@ public class PropertyImporter extends ConceptImporter {
 		} 
 		
 		if (rcType == ResourceType.ARTICLE || rcType == ResourceType.SUPPLEMENT) {
+			conceptTracker.step();
+
 			MultiMap<String, CharSequence, Set<CharSequence>> properties = analyzerPage.getProperties();
 			for (Map.Entry<String, Set<CharSequence>> e: properties.entrySet()) {
 				String property = e.getKey();

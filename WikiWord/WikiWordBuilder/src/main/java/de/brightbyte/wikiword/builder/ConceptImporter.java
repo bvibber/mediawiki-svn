@@ -31,8 +31,9 @@ public class ConceptImporter extends AbstractImporter {
 	private boolean storeFlatText = true;
 	private boolean storeRawText = true;
 	
-	private Tracker conceptTracker;
-	private Tracker linkTracker;
+	protected Tracker conceptTracker;
+	protected Tracker linkTracker;
+	protected Tracker propertyTracker;
 	
 	protected LocalConceptStoreBuilder store;
 	protected PropertyStoreBuilder propertyStore;
@@ -177,6 +178,7 @@ public class ConceptImporter extends AbstractImporter {
 		super.reset();
 		conceptTracker = new Tracker("concepts");
 		linkTracker = new Tracker("links");
+		propertyTracker = new Tracker("properties");
 	}
 	
 	@Override
@@ -184,9 +186,11 @@ public class ConceptImporter extends AbstractImporter {
 		super.trackerChunk();
 		conceptTracker.chunk();
 		linkTracker.chunk();
+		propertyTracker.chunk();
 		
 		out.info("- "+conceptTracker);
 		out.info("- "+linkTracker);
+		out.info("- "+propertyTracker);
 	}
 	
 	
@@ -194,6 +198,7 @@ public class ConceptImporter extends AbstractImporter {
 		if (checkTerm(rcId, value, "value - SKIPED", cid)) return; 
 		if (checkSmellsLikeWiki(rcId, value, "value - SKIPED", cid)) return;
 		
+		propertyTracker.step();
 		propertyStore.storeProperty(rcId, cid, concept, property, value);
 	}
 
