@@ -8,7 +8,7 @@
  * @ingroup Extensions
  * @author Jan Luca <jan@toolserver.org>
  * @version 0.0
- * @link http://www.mediawiki.org/wiki/User:Jan_Luca/Extension:TSPoll Documentation
+ * @link http://www.mediawiki.org/wiki/User:Jan_Luca/Extension:Poll2 Documentation
  * @license http://creativecommons.org/licenses/by-sa/3.0/ Attribution-Share Alike 3.0 Unported or later
  */
 

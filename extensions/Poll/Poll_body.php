@@ -1,5 +1,5 @@
 <?php
-class MyExtension extends SpecialPage {
+class Poll extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'Poll' );
 		wfLoadExtensionMessages('Poll');
@@ -11,7 +11,8 @@ class MyExtension extends SpecialPage {
 		$this->setHeaders();
  
 		# Get request data from, e.g.
-		$action = $wgRequest->getText('action');
- 
+		$action = htmlentities($wgRequest->getText('action'));
+    $id = htmlentities($wgRequest->getText('id'));
+    
 	}
 }
