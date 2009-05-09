@@ -26,7 +26,7 @@ class UnusedtemplatesPage extends QueryPage {
 					'0 AS value' ),
 			'conds' => array ( 'page_namespace' => NS_TEMPLATE,
 					'tl_from IS NULL',
-					'page_redirect' => 0 ),
+					'page_is_redirect' => 0 ),
 			'join_conds' => array ( 'templatelinks' => array (
 				'LEFT JOIN', array ( 'tl_title = page_title',
 					'tl_namespace = page_namespace' ) ) )

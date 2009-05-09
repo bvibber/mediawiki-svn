@@ -34,7 +34,6 @@ class BrokenRedirectsPage extends PageQueryPage {
 			'conds' => array( 'rd_namespace >= 0',
 					'p2.page_namespace IS NULL'
 			),
-			// TODO test this join
 			'join_conds' => array( 'page AS p1' => array( 'LEFT JOIN', array(
 						'rd_from=p1.page_id',
 					) ),

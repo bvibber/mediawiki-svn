@@ -33,7 +33,8 @@ class WantedTemplatesPage extends WantedQueryPage {
 			'join_conds' => array ( 'page' => array ( 'LEFT JOIN',
 					array ( 'page_namespace = tl_namespace',
 						'page_title = tl_title' ) ) )
-		); 
+		);
+	}
 }
 
 /**

@@ -39,6 +39,20 @@ class UncategorizedImagesPage extends ImageQueryPage {
 				FROM {$page} LEFT JOIN {$categorylinks} ON page_id = cl_from
 				WHERE cl_from IS NULL AND page_namespace = {$ns} AND page_is_redirect = 0";
 	}
+	
+	function getQueryInfo() {
+		return array (
+			'tables' => array( 'page', 'categorylinks' ),
+			'fields' => array( 'page_namespace AS namespace',
+					'page_title AS title',
+					'page_title AS value' ),
+			'conds' => array( 'cl_from IS NULL',
+					'page_namespace' => NS_FILE,
+					'page_is_redirect' => 0 ),
+			'join_conds' => array( 'categorylinks' => array(
+					'LEFT JOIN', 'cl_from=page_id' ) )
+		);
+	}
 
 }
 
