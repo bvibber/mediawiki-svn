@@ -111,7 +111,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		
 		//hide any errors warnings and video select:
 		$j( '#wgfogg_waring_ogg_upload,#wgfogg_waring_bad_extension,#fogg-video-file' ).hide();					
-	},	
+	},
 	select_fogg:function(){			
 		var _this = this;
 		if( _this.fogg.selectVideo() ) {
@@ -175,6 +175,20 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		if( ! _this.api_url )
 			return js_error( 'Error: can\'t autodetect mode without api url' );				
 						
+		//extension should already be ogg but since its user editable,
+		//check again
+		//we are transcoding so we know it will be an ogg
+		//(should not be done for passthrough mode)
+		var sf = _this.formData['wpDestFile'];
+		var ext = '';
+		if(	sf.lastIndexOf('.') != -1){
+			ext = sf.substring( sf.lastIndexOf('.') ).toLowerCase();
+		}
+		if ( ext != '.ogg' && ext != '.ogv' ) {
+			var extreg = new RegExp(ext + '$', 'i');
+			_this.formData['wpDestFile'] = sf.replace(extreg, '.ogg');
+		}
+
 		//add chunk response hook to build the resultURL when uploading chunks		
 		
 		//build the api url: 
