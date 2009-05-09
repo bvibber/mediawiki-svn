@@ -9,6 +9,7 @@ import de.brightbyte.wikiword.analyzer.extractor.PagePropertyValueExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterExtractor;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
 import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
+import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
 import de.brightbyte.wikiword.analyzer.sensor.HasPropertySensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
@@ -55,7 +56,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new DefaultTemplateParameterPropertySpec("award", "artist-award").setStripMarkup(true).setSplitPattern(defaultSplitPattern)
 			) );
 
-		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_(((Medical|Military)_)?[Pp]erson|Actor|Astronaut|Criminal|Engineer|Musical_artist|Philosopher|Pope|ReligiousBio|Scientist)"),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_(((Medical|Military)_)?[Pp]erson|Actor|Astronaut|Criminal|Engineer|Musical_artist|Philosopher|Pope|ReligiousBio|Scientist)", 0, true),
 				new DefaultTemplateParameterPropertySpec("name", "person-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("other_names", "person-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("birth_date", "person-birth-date").setStripMarkup(true),
@@ -68,6 +69,19 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new DefaultTemplateParameterPropertySpec("residence", "person-nationality").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("citizenship", "person-nationality").setStripMarkup(true)
 			) );
+		
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Birth_date"),
+				new DefaultTemplateParameterPropertySpec("1", "person-birth-date").setStripMarkup(true)
+				) );
+		
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Death_date"),
+				new DefaultTemplateParameterPropertySpec("1", "person-death-date").setStripMarkup(true)
+				) );
+		
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Death_date_and_age"),
+				new DefaultTemplateParameterPropertySpec("1", "person-death-date").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("1", "person-birth-date").setStripMarkup(true)
+				) );
 		
 		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_Medical_Person"),
 				new DefaultTemplateParameterPropertySpec("profession", "person-occupation").setStripMarkup(true).setSplitPattern(defaultSplitPattern),

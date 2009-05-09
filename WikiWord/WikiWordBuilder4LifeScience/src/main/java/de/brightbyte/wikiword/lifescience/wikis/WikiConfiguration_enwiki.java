@@ -93,8 +93,8 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 	protected static final String alphaNumericChars = alphabeticChars+numericChars;
 	protected static final String dashChars = "-\u2212\uFE63\u2010-\u2014\uFE58\uFF0D";
 	
-	protected static final Pattern identifierSeparatorPattern = Pattern.compile(",\\p{IsZ}+|[\\p{IsZ};]+", 0);
-	protected static final Pattern nameSeparatorPattern = Pattern.compile(",\\p{IsZ}+|[\r\n;]+", 0);
+	protected static final Pattern identifierSeparatorPattern = Pattern.compile(",\\p{IsZ}+|[\\p{IsZ};]+|<br */?>", 0);
+	protected static final Pattern nameSeparatorPattern = Pattern.compile(",\\p{IsZ}+|[\r\n;]+|<br */?>", 0);
 	protected static final Pattern badStuffStripPattern = Pattern.compile("[\r\n]+", 0);
 	protected static final Pattern spaceStripPattern = Pattern.compile("\\p{IsZ}+", 0);
 	protected static final Pattern iupacCleanupPattern = Pattern.compile("(?<=["+dashChars+numericChars+"]|[0-9][a-z])\\p{IsZ}+", 0);
@@ -109,6 +109,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 	private static final String smilesChars = "["+dashChars+"+="+alphaNumericChars+"/\\\\()@#:\\[\\]>.]+"; //FIXME: not greedy enough
 	private static final String atcChars = "["+upperAlphabeticChars+"]{6,}";
 	private static final String diseasesDbChars = "["+numericChars+"]+";
+	private static final String pagesChars = "["+numericChars+"]+(\\s*["+dashChars+",]\\s*["+numericChars+"]+)*";
 	
 	private static final String icd10Chars = "["+upperAlphabeticChars+"]["+numericChars+"]+(\\.["+numericChars+"]*)?"; //FIXME: ranges!
 	private static final String icd9Chars = "["+numericChars+"]+(\\.["+numericChars+"]*)?"; //FIXME: ranges!
@@ -183,11 +184,12 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 	public WikiConfiguration_enwiki() {
 		super();
 		
-		templateExtractorFactory= new TemplateExtractor.Factory() {
+		templateExtractorFactory= new TemplateExtractor.Factory() { 
 			public TemplateExtractor newTemplateExtractor(Context context, TextArmor armor) {
 				DeepTemplateExtractor extractor = new DeepTemplateExtractor(context, armor);
 				extractor.addContainerField("Protbox", "Codes");
 				extractor.addContainerField("Protbox", "Caption");
+				//FIXME: this needs to accumulate!!!! //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME
 				return extractor;
 			}
 		};
@@ -414,8 +416,6 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				makeNamePropertySpec("Name", "ProteinName", false, true),
 				makeNamePropertySpec("Names", "ProteinName", true, true),
 
-				//FIXME: stuff nested in Codes=
-				
 				//makeIdentifierPropertySpec("Gene", "HGNC", hgncChars),
 				makeIdentifierPropertySpec("HGNCid", "HGNC", hgncChars),
 				makeIdentifierPropertySpec("MGIid", "MGI", hgiChars),
@@ -452,6 +452,11 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 
 		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("CAS_registry"), //XXX: only as identifying element, or also in-context?
 				makeIdentifierPropertySpec("1", "CAS", casChars)
+			) );
+
+		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("MSW3_Groves"), 
+				makeIdentifierPropertySpec("id", "GrovesId", numericChars),
+				makeIdentifierPropertySpec("pages", "GrovesPages", pagesChars)
 			) );
 
 		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Rfam"), 
@@ -592,12 +597,12 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				makeNamePropertySpec("name", "Name", false, true) //not really interesting, just make the concept show up as relevant for LS
 			) );
 		
-		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_(((Medical)_)?[Pp]erson|Scientist)"),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_(((Medical)_)?[Pp]erson|Scientist)", 0, true),
 				new DefaultTemplateParameterPropertySpec("name", "person-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("other_names", "person-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("birth_date", "person-birth-date").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("occupation", "person-occupation").setStripMarkup(true),
-				new DefaultTemplateParameterPropertySpec("known_for", "person-known-for").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("known_for", "person-known-for").setStripMarkup(true).setSplitPattern(nameSeparatorPattern),
 				new DefaultTemplateParameterPropertySpec("nationality", "person-nationality").setStripMarkup(true)
 			) );
 		
@@ -639,6 +644,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.FOOD, "Nutritional_value", 0, null));
 		
 		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox"));
+		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.LIFEFORM, "GrovesId"));
 		
 		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PERSON, "person-name"));
 		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PERSON, "person-birth-date"));
