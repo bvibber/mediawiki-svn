@@ -10,11 +10,10 @@ $aliases = array();
 
 /** English */
 $aliases['en'] = array(
-    'Poll' => array( 'Poll' ),
+	'Poll' => array( 'Poll' ),
 );
 
 /** German(Deutsch) */
 $aliases['de'] = array(
-    'Poll' => array( 'Umfrage' ,'Poll' ),
+	'Poll' => array( 'Umfrage' , 'Poll' ),
 );
-

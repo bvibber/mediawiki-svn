@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation file for TSPoll extension.
+ * Internationalisation file for Poll extension.
  *
  * @file
  * @ingroup Extensions
@@ -8,12 +8,12 @@
 
 $messages = array();
  
-$messages['en'] = array( 
-  'poll' => 'Polls',
-	'poll-desc' => 'Add a [[Special:Poll|specialpage]] to MediaWiki for useing polls in MediaWiki',
+$messages['en'] = array(
+	'poll' => 'Polls',
+	'poll-desc' => 'Add a [[Special:Poll|special page]] for using polls',
 );
 
-$messages['de'] = array( 
-  'poll' => 'Umfragen',
-	'poll-desc' => 'Erstellt eine [[Special:Poll|Spezialsite]], um Umfragen in MedaWiki zu nutzen',
+$messages['de'] = array(
+	'poll' => 'Umfragen',
+	'poll-desc' => 'Erstellt eine [[Special:Poll|Spezialsite]], um Umfragen zu nutzen',
 );

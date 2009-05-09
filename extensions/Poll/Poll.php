@@ -20,22 +20,23 @@
 // Die the extension, if not MediaWiki is used
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This is an extension to the MediaWiki package and cannot be run standalone.\n" );
-	die( - 1 );
+	die( -1 );
 }
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
-	'name'          => 'Poll',
-	'version'       => '0.0',
-	'path'          => __FILE__,
-	'author'        => 'Jan Luca',
-	'url'           => 'http://www.mediawiki.org/wiki/Extension:Poll2',
+	'name'           => 'Poll',
+	'version'        => '0.0.1',
+	'path'           => __FILE__,
+	'author'         => 'Jan Luca',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Poll2',
 	'descriptionmsg' => 'poll-desc'
 );
 
-$dir = dirname(__FILE__) . '/';
- 
+$dir = dirname( __FILE__ ) . '/';
+
 $wgAutoloadClasses['Poll'] = $dir . 'Poll_body.php'; # Tell MediaWiki to load the extension body.
 $wgExtensionMessagesFiles['Poll'] = $dir . 'Poll.i18n.php';
 $wgExtensionAliasesFiles['Poll'] = $dir . 'Poll.alias.php';
 $wgSpecialPages['Poll'] = 'Poll'; # Let MediaWiki know about your new special page.
+// FIXME: add $wgSpecialPageGroups
