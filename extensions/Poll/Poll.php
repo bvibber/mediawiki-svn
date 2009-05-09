@@ -33,6 +33,21 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'poll-desc'
 );
 
+// New right: poll-admin
+$wgGroupPermissions['sysop']['poll-admin'] = true;
+$wgGroupPermissions['*']['poll-admin'] = false;
+$wgAvailableRights[] = 'poll-admin';
+
+// New right: poll-create
+$wgGroupPermissions['autoconfirmed']['poll-create'] = true;
+$wgGroupPermissions['*']['poll-create'] = false;
+$wgAvailableRights[] = 'poll-create';
+
+// New right: poll-create
+$wgGroupPermissions['autoconfirmed']['poll-vote'] = true;
+$wgGroupPermissions['*']['poll-vote'] = false;
+$wgAvailableRights[] = 'poll-vote';
+
 $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['Poll'] = $dir . 'Poll_body.php'; # Tell MediaWiki to load the extension body.
