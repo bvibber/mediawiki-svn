@@ -54,15 +54,16 @@ class PlotterParser {
 			// Parse and sanitize arguments - escape single quotes and backslashes
 			$arguments = explode( ':', $argv["preprocessorarguments"] );
 			foreach ( $arguments as $argument ) {
-				list($argumentkey, $argumentvalue) = explode( '=', $argument );
-				$argumentkey = preg_replace( '/[^A-Z0-9]/i', '', $argumentkey );
-				$argumentvalue = preg_replace( "/\\\\/", '\\\\', $argumentvalue );
-				$argumentvalue = preg_replace( "/'/", "\\'", $argumentvalue );
+				$subargumentarr = explode( ',', $argument );
+				foreach ( $subargumentarr as &$singleargument ) {
+					$singleargument = preg_replace( "/\\\\/", '\\\\', $singleargument );
+					$singleargument = preg_replace( "/'/", "\\'", $singleargument );
 
-				// Fix escaped separators
-				$argumentvalue = preg_replace( "/§UNIQ§/", ":", $argumentvalue );
-				$argumentvalue = preg_replace( "/§UNIQ2§/", ",", $argumentvalue );
-				$this->argumentArray["preprocessorarguments"][$argumentkey] = $argumentvalue;
+					// Fix escaped separators
+					$singleargument = preg_replace( "/§UNIQ§/", ":", $singleargument );
+					$singleargument = preg_replace( "/§UNIQ2§/", ",", $singleargument );
+				}
+				$this->argumentArray["preprocessorarguments"][] = $subargumentarr;
 			}
 				
 		}
@@ -76,15 +77,13 @@ class PlotterParser {
 
 			// Parse and sanitize arguments - escape single quotes and backslashes
 			$arguments = explode( ',', $argv["scriptarguments"] );
-			foreach ( $arguments as &$argument ) {
-				list($argumentkey, $argumentvalue) = explode( '=', $argument );
-				$argumentkey = preg_replace( '/[^A-Z0-9]/i', '', $argumentkey );
-				$argumentvalue = preg_replace( "/\\\\/", '\\\\', $argumentvalue );
-				$argumentvalue = preg_replace( "/'/", "\\'", $argumentvalue );
+			foreach ( $arguments as $argument ) {
+				$argument = preg_replace( "/\\\\/", '\\\\', $argument );
+				$argument = preg_replace( "/'/", "\\'", $argument );
 
 				// Fix escaped separators
-				$argumentvalue = preg_replace( "/§UNIQ§/", ",", $argumentvalue );
-				$this->argumentArray["scriptarguments"][$argumentkey] = $argumentvalue;
+				$argument = preg_replace( "/§UNIQ§/", ",", $argument );
+				$this->argumentArray["scriptarguments"][] = $argument;
 			}
 		}
 		if ( isset( $argv["datasep"] ) ) {
