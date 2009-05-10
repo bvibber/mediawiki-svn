@@ -33,29 +33,30 @@ class AmUserView {
 	function createHeader() {
 		global $wgOut;
 		
-		$wgOut->addHtml( Xml::element( 'form', array(
+		$wgOut->addHtml( Xml::openElement( 'form', array(
 			'action' => $this->title->getLocalUrl( array( 
 				'action' => $this->action,
 				'user' => $this->username,
 			) ),
 			'method' => 'post',
 		) ) . "\n" );
-		$wgOut->addHtml( Xml::element( 'table', array( 
+		$wgOut->addHtml( Xml::openElement( 'table', array( 
 			'class' => "am-{$this->action}"
 		) ) . "\n" );
 	}
 	
 	function makeRow( $prop ) {
-		$label = wfMsg( "am-$prop" );
-		if ( wfEmptyMsg( "am-$prop", $label ) )
-			$label = "am-$prop";
+		$amName = 'am-'.str_replace( ' ', '-', $prop );
+		$label = wfMsg( $amName );
+		if ( wfEmptyMsg( $amName, $label ) )
+			$label = $prop;
 		
 		return ( "\t<tr><td>" . 
-			Xml::label( $label, "am-$prop" ) .
+			Xml::label( $label, $amName ) .
 			"</td><td>" .
-			Xml::input( /* $name */ "am-$prop", /* $size */ false, 
+			Xml::input( /* $name */ $amName, /* $size */ false, 
 				/* $value */ $this->user->get( $prop ),
-				array( 'id' => "am-$prop" ) ) .
+				array( 'id' => $amName ) ) .
 			"</td></tr>\n"
 		);
 	}
@@ -63,7 +64,7 @@ class AmUserView {
 	function createFooter() {
 		global $wgOut;
 		$wgOut->addHtml( "</table>\n" . 
-			Xml::element( 'p', array( 
+			Xml::openElement( 'p', array( 
 				'id' => ''
 			) ) );
 		$wgOut->addHtml( Xml::submitButton( wfMsg( 'am-save-changes' ) ) );

@@ -36,8 +36,11 @@ class NssProperties {
 		return $this->props[$name];
 	}
 	function set( $name, $value ) {
+		if ( $this->props[$name] == $value )
+			return false;
 		$this->changed[] = $name;
 		$this->props[$name] = $value;
+		return true;
 	}
 	
 	function commit() {
@@ -47,12 +50,12 @@ class NssProperties {
 		$insert = array();
 		$timestamp = $dbw->timestamp();
 		
-		foreach ( $this->props as $name => $value ) {
+		foreach ( $this->changed as $name ) {
 			$insert[] = array( 
 				'up_timestamp' => $timestamp,
 				'up_user' => $this->name,
 				'up_name' => $name,
-				'up_value' => $value 
+				'up_value' => $this->props[$name] 
 			);
 		}
 		$dbw->insert( 'user_props', $insert, __METHOD__ );

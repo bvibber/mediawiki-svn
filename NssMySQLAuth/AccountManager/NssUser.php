@@ -36,10 +36,10 @@ class NssUser {
 		if ($this->exists) {
 			// Extract props from row
 			$this->uid = $row->pwd_uid;
-			$this->gid = $row->pwd_home;
+			$this->gid = $row->pwd_gid;
 			$this->home = $row->pwd_home;
 			$this->active = $row->pwd_active;
-			$this->email = $row->pwd_home;
+			$this->email = $row->pwd_email;
 		
 			$this->group = NssGroup::nameFromGid( $this->gid );
 			$this->properties = NssProperties::forUser( $this->name );
@@ -81,10 +81,13 @@ class NssUser {
 				return;
 			case 'home':
 				$this->home = $value;
+				break;
 			case 'active':
 				$this->active = $value;
+				break;
 			case 'email':
 				$this->email = $value;
+				break;
 		}
 		return $this->properties->set( $name, $value );
 	}

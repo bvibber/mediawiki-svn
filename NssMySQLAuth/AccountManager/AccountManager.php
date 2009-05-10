@@ -1,8 +1,8 @@
 <?php
 $dir = dirname( __FILE__ ) . '/';
 
-$wgExtensionMessagesFiles['AccountManager'] = $dir . 'AccountManager.i18n.php';
-$wgExtensionAliasesFiles['AccountManager'] = $dir . 'AccountManager.alias.php';
+$wgExtensionMessagesFiles['accountmanager'] = $dir . 'AccountManager.i18n.php';
+$wgExtensionAliasesFiles['accountmanager'] = $dir . 'AccountManager.alias.php';
 
 $wgAutoloadClasses['NssUser'] = $dir . 'NssUser.php';
 $wgAutoloadClasses['NssGroup'] = $dir . 'NssGroup.php';
