@@ -6,7 +6,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'catfeed-desc' => 'Uses bits from recentchanges feeds.
-Create in-page version, especially useful for Wikinews.',
+Create in-page version, especially useful for Wikinews',
 );
 
 /** Message documentation (Message documentation)

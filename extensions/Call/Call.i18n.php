@@ -10,7 +10,7 @@ $messages = array();
 $messages['en'] = array(
 	'call' => 'Call',
 	'call-desc' => 'Create a hyperlink to a template (or to a normal wiki page) with parameter passing.
-Can be used at the browser’s command line or within wiki text.',
+Can be used at the browser’s command line or within wiki text',
 	'call-text' => 'The Call extension expects a wiki page and optional parameters for that page as an argument.
 
 Example 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
