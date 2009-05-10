@@ -104,6 +104,15 @@ $messages['gsw'] = array(
 	'tspoll-id-error' => 'Kei ID aagee!',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'tspoll-desc' => 'הכללת הסקריפט [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] כתגית HTML',
+	'tspoll-fetch-error' => 'שגיאה באחזור הכתובת!',
+	'tspoll-id-error' => 'לא צוין מספר!',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

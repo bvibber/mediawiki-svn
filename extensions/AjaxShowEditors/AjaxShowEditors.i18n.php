@@ -380,6 +380,18 @@ $messages['gsw'] = array(
 	'ajax-se-usernotfound' => 'Fähler: Benutzer isch nit gfunde wore',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'ajax-se-desc' => 'આ જ પાનાંમા ફેરફાર કરતાં સભ્યો બતાવે છે.',
+	'ajax-se-title' => 'હાલમાં ફેરફાર ચાલુ હોય તે',
+	'ajax-se-idling' => '($1 પહેલાં)',
+	'ajax-se-pagedoesnotexist' => 'પાનું અસ્તિત્વ ધરાવતું નથી.',
+	'ajax-se-userinvalid' => 'ત્રુટિ: સભ્ય અમાન્ય',
+	'ajax-se-usernotfound' => 'ત્રુટિ: સભ્ય મળતા નથી.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

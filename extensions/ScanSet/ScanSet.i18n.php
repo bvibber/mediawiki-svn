@@ -408,18 +408,18 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'scanset-desc' => 'Afiche les émâges numerisâs dês los paramètrâjos CD/DVD d’Andréas Grosz.',
-	'scanset_no_name' => 'Error : vos dête spècefiar un nom por lo scansèt, per ègzemplo &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Error : scansèt envalido ou manquent',
-	'scanset_unrecognised_index_format' => 'Error : format d’endèxe encognu',
-	'scanset_opendir_error' => 'Error : èrror, empossiblo d’uvrir lo rèpèrtouèro $1',
-	'scanset_no_files' => 'Error : lo rèpèrtouèro spècefiâ est vouedo.',
-	'scanset_no_volumes' => 'Error : nion rèpèrtouèro trovâ sur cél disco',
-	'scanset_missing_index_file' => 'Error : fichiér d’endèxe $1 manquent',
-	'scanset_index_file_error' => 'Error : èrror a la legne $1 du fichiér d’endèxe',
-	'scanset_invalid_volume' => 'Error : volumo envalido',
-	'scanset_next' => 'Siuvent &gt;',
-	'scanset_prev' => '&lt; Prècèdent',
+	'scanset-desc' => 'Montre les émâges de pâges numerisâs dês los ensemblos de CD/DVD d’Andréas Grosz.',
+	'scanset_no_name' => 'Èrror : vos dête spècefiar un nom por l’ensemblo de documents numerisâs, per ègzemplo &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Èrror : ensemblo de documents numerisâs envalido ou ben manquent.',
+	'scanset_unrecognised_index_format' => 'Èrror : format d’endèxo encognu.',
+	'scanset_opendir_error' => 'Èrror : empossiblo d’uvrir lo rèpèrtouèro $1.',
+	'scanset_no_files' => 'Èrror : lo rèpèrtouèro spècefiâ contint gins de fichiér.',
+	'scanset_no_volumes' => 'Èrror : rèpèrtouèros de volumo entrovâblos.',
+	'scanset_missing_index_file' => 'Èrror : fichiér d’endèxo $1 entrovâblo.',
+	'scanset_index_file_error' => 'Èrror : format de fichiér d’endèxo fôx a la legne $1.',
+	'scanset_invalid_volume' => 'Èrror : volumo envalido.',
+	'scanset_next' => 'Aprés &gt;',
+	'scanset_prev' => '&lt; Devant',
 );
 
 /** Galician (Galego)

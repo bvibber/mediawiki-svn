@@ -252,12 +252,19 @@ $messages['de'] = array(
 	'dt_viewxml_namespaces' => 'Namensräume',
 	'dt_viewxml_simplifiedformat' => 'Vereinfachtes Format',
 	'dt_xml_namespace' => 'Namensraum',
+	'dt_xml_pages' => 'Seiten',
 	'dt_xml_page' => 'Seite',
+	'dt_xml_template' => 'Vorlage',
 	'dt_xml_field' => 'Feld',
 	'dt_xml_name' => 'Name',
 	'dt_xml_title' => 'Titel',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Freier Text',
+	'importxml' => 'XML importieren',
+	'dt_importxml_selectfile' => 'Bitte die zu importierende XML-Datei auswählen:',
+	'dt_importxml_editsummary' => 'XML-Import',
+	'dt_importxml_importing' => 'Importiere …',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|Seite|Seiten}} werden aus der XML-Datei importiert.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

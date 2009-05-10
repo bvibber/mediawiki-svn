@@ -277,6 +277,13 @@ $messages['gsw'] = array(
 	'contrib-tracking-button' => 'Wyter',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'contrib-tracking-error' => 'ત્રુટિ',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

@@ -419,6 +419,26 @@ $messages['gsw'] = array(
 	'amazonplus-less' => 'weniger',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'amazonplus-nores' => 'ત્રુટિ: કોઇ પરીણામ મળ્યું નહીં',
+	'amazonplus-noidres' => 'ત્રુટિ: પ્રોડક્ટ ID ન મળી!',
+	'amazonplus-fgcerr' => 'ત્રુટિ: એમેઝોન પરથી ડેટા ન મળ્યા!',
+	'amazonplus-slserr' => 'ત્રુટિ: એમેઝોન પરથી મળેલા ડેટાનું અર્થઘટન ન થઇ શક્યું',
+	'amazonplus-used' => 'વપરાયેલ',
+	'amazonplus-german' => 'જર્મન',
+	'amazonplus-french' => 'ફ્રેંચ',
+	'amazonplus-japanese' => 'જાપાનીઝ',
+	'amazonplus-amazon' => 'એમેઝોનની કિંમત',
+	'amazonplus-new' => 'નવું',
+	'amazonplus-none' => 'આ ચીજની કોઇ નકલ વેચાણમાં નથી.',
+	'amazonplus-cp-none' => 'કાંઇ નહી',
+	'amazonplus-more' => 'વધુ',
+	'amazonplus-less' => 'ઓછું',
+);
+
 /** Manx (Gaelg)
  * @author Wrightbus
  */

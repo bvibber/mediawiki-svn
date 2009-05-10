@@ -75,6 +75,13 @@ $messages['gsw'] = array(
 	'Editsectionhilitelink-desc' => 'Zeig dr Abschnitt vun eme Artikel aa, wu derzueghert, wänn Du mit dr Muus iber dr Bearbeitigs-Link fahrsch',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'Editsectionhilitelink-desc' => 'סימון הפרק המתאים של הדף בעת העברת העכבר על גבי קישור העריכה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -259,9 +259,15 @@ $messages['fr'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
-/** Franco-Provençal (Arpetan) */
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
 $messages['frp'] = array(
-	'filelist-image-desc' => 'pâge de l’émâge',
+	'filelist' => 'Lista des fichiérs',
+	'filelist-desc' => '[[Special:Filelist|Pâge spèciâla]] por ènumèrar los fichiérs tèlèchargiês.',
+	'filelist-show-list' => 'Vêre la lista',
+	'filelist-show-gallery' => 'Vêre la galerie',
+	'filelist-image-desc' => 'dèsc',
 );
 
 /** Gan (贛語) */

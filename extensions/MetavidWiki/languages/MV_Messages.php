@@ -602,6 +602,8 @@ $messages['ar'] = array(
 	'cc_pd_title' => 'ملكية عامة',
 	'mv_preview_insert' => 'عاين الإدراج',
 	'mv_cancel_image_insert' => 'ألغِ الإدراج',
+	'mv_edit_properties' => 'عدل الخصائص',
+	'mv_other_properties' => 'خصائص أخرى',
 	'menu_cliplib' => 'أضف موردا',
 	'menu_options' => 'خيارات',
 	'edit_clip' => 'عدل الكليب',
@@ -3673,6 +3675,7 @@ $messages['hr'] = array(
  * @author Yekrats
  */
 $messages['hsb'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video Metadata Editor & Media Search]',
 	'loading_txt' => '<blink>...</blink> so začituje',
 	'loading_plugin' => 'Tykač <blink>...</blink> so začituje',
 	'link_back' => 'Wróćo wotkazać',
@@ -4038,6 +4041,7 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor de metadatos de video & Recerca de multimedia]',
 	'loading_txt' => 'Cargamento in curso<blink>…</blink>',
 	'loading_plugin' => 'Cargamento del plug-in in curso<blink>…</blink>',
 	'select_playback' => 'Definir preferentia de reproduction',
@@ -5223,6 +5227,7 @@ $messages['nds-nl'] = array(
  * @author Tvdm
  */
 $messages['nl'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Videometadataeditor &amp; Mediazoekmachine]',
 	'loading_txt' => 'Bezig met laden <blink>...</blink>',
 	'loading_plugin' => 'Bezig met het laden van de plugin <blink>...</blink>',
 	'select_playback' => 'Weergavevoorkeuren instellen',
@@ -5422,7 +5427,8 @@ Rapporteer dit aan de sitebeheerder.',
 	'ht_en_desc' => 'Engelstalige transcripties.
 Dit type overlay is voor gesproken tekst in een videostream.',
 	'anno_en' => 'Annotaties en categorieën',
-	'anno_en_desc' => "Engelstalige categorisatie en annotatie. Deze overlay is te gebruiken voor het Categoriseren van delen van video's of om annotaties voor niet-gesproken tekst toe te voegen",
+	'anno_en_desc' => "Engelstalige categorisatie en annotatie.
+Deze overlay is te gebruiken voor het categoriseren van delen van video's of om annotaties voor niet-gesproken tekst toe te voegen",
 	'thomas_en' => 'Officiële transcriptie',
 	'thomas_en_desc' => 'Officiële transcriptie',
 	'mvd_default_mismatch' => 'Fout in het instellingenbestand',

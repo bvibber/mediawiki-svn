@@ -134,6 +134,17 @@ Vostede tentou: '''$1'''",
 	'rt-nomatches' => 'Non se atoparon boletos RT que coincidisen',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'rt-desc' => 'ממשק מהודר למעקב הבקשות (RT)',
+	'rt-inactive' => 'הרחבת ה־RT אינה פעילה',
+	'rt-badquery' => 'הרחבת ה־RT נתקלה בשגיאה בעת ההתקשרות עם בסיס הנתונים של RT',
+	'rt-nomatches' => 'לא נמצאו כרטיסיות RT תואמות',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

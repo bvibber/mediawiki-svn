@@ -876,7 +876,7 @@ Vòstre plan amable sistèma de notificacion de %s",
  */
 $messages['pl'] = array(
 	'tasklist' => 'Lista zadań',
-	'tasklist-parser-desc' => 'dodaje funkcję parsera <nowiki>{{#todo:}}</nowiki>, pozwalającą na przydzielanie zadań',
+	'tasklist-parser-desc' => 'Dodaje funkcję parsera <nowiki>{{#todo:}}</nowiki>, pozwalającą na przydzielanie zadań',
 	'tasklist-special-desc' => 'Dodaje stronę specjalną do przeglądania [[Special:TaskList|przydzielonych zadań]]',
 	'tasklistbyproject' => 'Listy zadań według projektu',
 	'tasklistunknownproject' => 'Nieznany projekt',

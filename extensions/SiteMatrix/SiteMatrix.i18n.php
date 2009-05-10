@@ -526,12 +526,15 @@ $messages['frc'] = array(
  */
 $messages['frp'] = array(
 	'sitematrix' => 'Lista des vouiquis de Wikimedia Foundation',
-	'sitematrix-desc' => 'Afiche una [[Special:SiteMatrix|lista de vouiquis de la Wikimedia Foundation]].',
+	'sitematrix-summary' => 'Ceta pâge spèciâla montre tôs los vouiquis de Wikimedia Foundation.',
+	'sitematrix-desc' => 'Montre una [[Special:SiteMatrix|lista des vouiquis de Wikimedia Foundation]].',
 	'sitematrix-language' => 'Lengoua',
 	'sitematrix-project' => 'Nom du projèt, lim entèrprojèt et lim entèrvouiqui',
 	'sitematrix-others' => 'Ôtros projèts de Wikimedia Foundation',
 	'sitematrix-total' => "'''Soma du compto : $1'''",
 	'sitematrix-sitetotal' => 'Soma',
+	'sitematrix-private' => 'privâ',
+	'sitematrix-fishbowl' => 'changements rètrents',
 );
 
 /** Friulian (Furlan)

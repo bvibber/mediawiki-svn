@@ -237,6 +237,13 @@ $messages['lb'] = array(
 	'rightfunctions-ns' => '(vun der Spär vum Nummraum)',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'rightfunctions-local' => '(од локална страница)',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

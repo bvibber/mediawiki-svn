@@ -293,6 +293,18 @@ $messages['lb'] = array(
 	'right-userrights-global' => 'Global Benotzerrechter geréieren',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'globaluserrights' => 'Управување со глобални кориснички права',
+	'gur-desc' => 'Лесна администрација на [[Special:GlobalUserRights|глобални кориснички права]]',
+	'gur-rightslog-name' => 'Дневник на глобални кориснички права',
+	'gur-rightslog-header' => 'Ова е дневник на промени на глобални кориснички права.',
+	'gur-rightslog-entry' => 'променета припадност на глобална група за $1 од $2 во $3',
+	'right-userrights-global' => 'Управување со глобални кориснички права',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

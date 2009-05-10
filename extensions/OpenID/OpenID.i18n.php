@@ -722,7 +722,7 @@ $messages['de-formal'] = array(
 	'openid-provider-label-openid' => 'Geben Sie Ihre OpenID-URL an',
 	'openid-provider-label-google' => 'Mit Ihrem Google-Benutzerkonto anmelden',
 	'openid-provider-label-yahoo' => 'Mit Ihrem Yahoo-Benutzerkonto anmelden',
-	'openid-provider-label-aol' => 'Geben Sie Ihren AOL-Codenamen an',
+	'openid-provider-label-aol' => 'Geben Sie Ihren AOL-Namen an',
 	'openid-provider-label-other-username' => 'Geben Sie Ihren „$1“-Benutzernamen an',
 );
 

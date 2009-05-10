@@ -1921,7 +1921,7 @@ $messages['de'] = array(
 	'configure-setting-wgAjaxLicensePreview' => 'AJAX verwenden, um eine Vorschau der Lizenz bei Uploads anzuzeigen',
 	'configure-setting-wgAllowCopyUploads' => 'Uploads von URLs zulassen',
 	'configure-setting-wgCheckFileExtensions' => 'Dateierweiterungen überprüfen',
-	'configure-setting-wgCopyUploadTimeout' => 'Zeitsperre für das Kopieren von Dateien, beim Hochladen von einer URL auf Special:Upload',
+	'configure-setting-wgCopyUploadTimeout' => 'Zeitüberschreitung beim Kopieren von Dateien (Hochladen von einer URL per Special:Upload)',
 	'configure-setting-wgEnableUploads' => 'Uploads zulassen',
 	'configure-setting-wgFileBlacklist' => 'Nicht zugelassene Dateierweiterungen',
 	'configure-setting-wgFileExtensions' => 'Bevorzugte Dateierweiterungen',
@@ -5494,7 +5494,7 @@ $messages['ja'] = array(
 	'configure-setting-wgValidSkinNames-key' => '内部名',
 	'configure-setting-wgValidSkinNames-value' => '表示名',
 	'configure-setting-wgContentNamespaces' => '実質的な内容またはページを含むとみなす名前空間',
-	'configure-setting-wgExtraNamespaces' => '追加の名前空間',
+	'configure-setting-wgExtraNamespaces' => '名前空間の追加',
 	'configure-setting-wgExtraNamespaces-key' => '名前空間 ID',
 	'configure-setting-wgExtraNamespaces-value' => '名前空間名',
 	'configure-setting-wgMetaNamespace' => 'プロジェクト名前空間の名前',
@@ -6096,6 +6096,7 @@ $messages['nah'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'configure-setting-desc' => 'Beschrijvingen voor MediaWiki-instellingen',
 	'configure-setting-wgSitename' => 'Sitenaam',
 	'configure-setting-wgActionPaths' => "URL's per actie. Stel mooie URL-paden in voor acties anders dan gewone pagina's bekijken",
 	'configure-setting-wgActionPaths-key' => 'Handeling',
@@ -7755,6 +7756,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'configure-setting-desc' => 'Opisy opcji konfiguracyjnych MediaWiki',
 	'configure-setting-wgSitename' => 'Nazwa strony',
 	'configure-setting-wgActionPaths-key' => 'Czynność',
 	'configure-setting-wgCheckDBSchema' => 'Upewnij się, że baza danych jest aktualna dla każdego widoku (przestarzałe)',
