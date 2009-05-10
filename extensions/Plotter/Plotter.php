@@ -30,7 +30,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'     => '0.1a',
 	'author'      => 'Ryan Lane',
 	'description' => 'Allows users to create client side graphs and plots.',
-	'descriptionmsg' => 'plotter-desc',
+	'descriptionmsg' => 'plotters-desc',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Plotter',
 );
 
