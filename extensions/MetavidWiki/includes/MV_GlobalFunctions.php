@@ -320,12 +320,13 @@ function mvSetupExtension() {
 	/***** credits (see "Special:Version")    *****/
 	/**********************************************/
 	$wgExtensionCredits['other'][] = array(
-	    'name' => 'MetaVidWiki',
-	    'author' => 'Michael Dale',
-	    'version' => MV_VERSION,
+		'name' => 'MetaVidWiki',
+		'author' => 'Michael Dale',
+		'version' => MV_VERSION,
 		'url' => 'http://metavid.org/wiki/MetaVidWiki_Software',
 		'description' => 'Video Metadata Editor & Media Search<br />' .
-			'[http://metavid.org/wiki/MetaVidWiki_Software More about MetaVidWiki Software]'
+			'[http://metavid.org/wiki/MetaVidWiki_Software More about MetaVidWiki Software]',
+		'descriptionmsg' => 'mv-desc',
 	);
 }
 # Define a setup function

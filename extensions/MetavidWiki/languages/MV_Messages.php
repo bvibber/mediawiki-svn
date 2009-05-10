@@ -12,6 +12,8 @@ $messages = array();
  */
 $messages['en'] = array(
 
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video Metadata Editor & Media Search]',
+
 	# javascript mappings per file:
 
 	# mv_embed.js
