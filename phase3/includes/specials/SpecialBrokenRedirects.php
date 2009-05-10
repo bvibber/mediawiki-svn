@@ -16,8 +16,10 @@ class BrokenRedirectsPage extends PageQueryPage {
 		return 'BrokenRedirects';
 	}
 
+	// inexpensive?
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
+	function sortDescending() { return false; }
 
 	function getPageHeader() {
 		return wfMsgExt( 'brokenredirectstext', array( 'parse' ) );
@@ -46,8 +48,7 @@ class BrokenRedirectsPage extends PageQueryPage {
 	}
 
 	function getOrderFields() {
-		// FIXME: really?
-		return array ();
+		return array ( 'rd_namespace', 'rd_title', 'rd_from' );
 	}
 
 	function formatResult( $skin, $result ) {

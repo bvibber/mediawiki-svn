@@ -10,6 +10,7 @@
  */
 class UnusedimagesPage extends ImageQueryPage {
 
+	// inexpensive?
 	function isExpensive() { return true; }
 
 	function getName() {

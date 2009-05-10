@@ -162,7 +162,7 @@ abstract class QueryPage {
 	 * don't let it run in miser mode. $wgDisableQueryPages causes all query
 	 * pages to be declared expensive. Some query pages are always expensive.
 	 */
-	function isExpensive( ) {
+	function isExpensive() {
 		global $wgDisableQueryPages;
 		return $wgDisableQueryPages;
 	}

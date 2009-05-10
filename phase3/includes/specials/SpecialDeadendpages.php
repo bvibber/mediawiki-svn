@@ -17,13 +17,14 @@ class DeadendPagesPage extends PageQueryPage {
 		return wfMsgExt( 'deadendpagestext', array( 'parse' ) );
 	}
 
+	// inexpensive?
 	/**
 	 * LEFT JOIN is expensive
 	 *
 	 * @return true
 	 */
 	function isExpensive() {
-		return 1;
+		return true;
 	}
 
 	function isSyndicated() { return false; }
@@ -50,6 +51,15 @@ class DeadendPagesPage extends PageQueryPage {
 					'page_id=pl_from'
 			) ) )
 		);
+	}
+	
+	function getOrderFields() {
+		// For some crazy reason ordering by a constant
+		// causes a filesort
+		if( count( MWNamespace::getContentNamespaces() ) > 1 )
+			return array( 'page_namespace', 'page_title' );
+		else
+			return array( 'page_title' );
 	}
 }
 
