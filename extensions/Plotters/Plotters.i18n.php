@@ -15,7 +15,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	# for Special:Version
-	'plotters-desc'      => 'Lets users use custom javascript in their jsplot tags',
+	'plotters-desc'      => 'Lets users use custom JavaScript in jsplot tags',
 
 	# for Special:Gadgets
 	'plotters'           => 'Plotters',
