@@ -8,7 +8,7 @@
  * @license GNU General Public Licence 2.0 or later
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "not a valid entry point.\n" );
 	die( 1 );
 }
@@ -49,10 +49,10 @@ class SpecialPlotters extends SpecialPage {
 		foreach ( $plotters as $section => $entries ) {
 			if ( $section !== false && $section !== '' ) {
 				$t = Title::makeTitleSafe( NS_MEDIAWIKI, "Plotter-section-$section" );
-				$lnk = $t ? $skin->makeLinkObj( $t, wfMsgHTML("edit"), 'action=edit' ) : htmlspecialchars($section);
+				$lnk = $t ? $skin->makeLinkObj( $t, wfMsgHTML( "edit" ), 'action=edit' ) : htmlspecialchars( $section );
 				$ttext = wfMsgExt( "plotter-section-$section", $msgOpt );
 
-				if( $listOpen ) {
+				if ( $listOpen ) {
 					$wgOut->addHTML( '</ul>' );
 					$listOpen = false;
 				}
@@ -63,17 +63,17 @@ class SpecialPlotters extends SpecialPage {
 				$t = Title::makeTitleSafe( NS_MEDIAWIKI, "Plotter-$pname" );
 				if ( !$t ) continue;
 
-				$lnk = $skin->makeLinkObj( $t, wfMsgHTML("edit"), 'action=edit' );
+				$lnk = $skin->makeLinkObj( $t, wfMsgHTML( "edit" ), 'action=edit' );
 				$ttext = wfMsgExt( "plotter-$pname", $msgOpt );
 
-				if( !$listOpen ) {
+				if ( !$listOpen ) {
 					$listOpen = true;
 					$wgOut->addHTML( '<ul>' );
 				}
 				$wgOut->addHTML( "<li>" );
 				$wgOut->addHTML( "$ttext &nbsp; &nbsp; [$lnk]<br />" );
 
-				$wgOut->addHTML( wfMsgHTML("plotters-uses") . ": " );
+				$wgOut->addHTML( wfMsgHTML( "plotters-uses" ) . ": " );
 
 				$first = true;
 				foreach ( $code as $codePage ) {
@@ -81,17 +81,17 @@ class SpecialPlotters extends SpecialPage {
 					if ( !$t ) continue;
 
 					if ( $first ) $first = false;
-					else $wgOut->addHTML(", ");
+					else $wgOut->addHTML( ", " );
 
 					$lnk = $skin->makeLinkObj( $t, htmlspecialchars( $t->getText() ) );
-					$wgOut->addHTML($lnk);
+					$wgOut->addHTML( $lnk );
 				}
 
 				$wgOut->addHtml( "</li>" );
 			}
 		}
 
-		if( $listOpen ) {
+		if ( $listOpen ) {
 			$wgOut->addHTML( '</ul>' );
 		}
 	}

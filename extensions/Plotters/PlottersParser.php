@@ -9,19 +9,19 @@
  * @license GNU General Public Licence 2.0 or later
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
         echo( "not a valid entry point.\n" );
         die( 1 );
 }
 
 class PlotterParser {
 
-        var $argumentArray;
-        var $dataArray;
+	var $argumentArray;
+	var $dataArray;
 
 	function PlotterParser( $input, $argv, &$parser ) {
-                $this->parseArguments( $argv );
-                $this->parseData( $input, $parser );
+		$this->parseArguments( $argv );
+		$this->parseData( $input, $parser );
 	}
 
 	function getArguments() {
@@ -33,12 +33,12 @@ class PlotterParser {
 	}
 
 	function parseArguments( $argv ) {
-                //Parse arguments, set defaults, and do sanity checks
+		// Parse arguments, set defaults, and do sanity checks
 		$this->argumentArray = array ( "renderer" => "plotkit", "preprocessors" => array(), "preprocessorarguments" => array(),
-						"script" => "", "scriptarguments" => array(), "datasep" => "," );
-                if ( isset( $argv["renderer"] ) ) {
-                        $this->argumentArray["renderer"] = $argv["renderer"];
-                }
+			"script" => "", "scriptarguments" => array(), "datasep" => "," );
+		if ( isset( $argv["renderer"] ) ) {
+			$this->argumentArray["renderer"] = $argv["renderer"];
+		}
 		if ( isset( $argv["preprocessors"] ) ) {
 			// Sanitize scripts - alphanumerics only
 			$this->argumentArray["preprocessors"] = explode( ',', $argv["preprocessors"] );
@@ -65,7 +65,7 @@ class PlotterParser {
 				}
 				$this->argumentArray["preprocessorarguments"][] = $subargumentarr;
 			}
-				
+
 		}
 		if ( isset( $argv["script"] ) ) {
 			// Sanitize scripts - alphanumerics only

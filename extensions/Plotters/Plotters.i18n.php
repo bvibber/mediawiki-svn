@@ -14,10 +14,10 @@ $messages = array();
  * @author Ryan Lane, rlane32+mwext@gmail.com
  */
 $messages['en'] = array(
-	#for Special:Version
-	'plotters-desc'      => 'Lets users use custom javascript in their jsplot tags.',
+	# for Special:Version
+	'plotters-desc'      => 'Lets users use custom javascript in their jsplot tags',
 
-	#for Special:Gadgets
+	# for Special:Gadgets
 	'plotters'           => 'Plotters',
 	'plotters-title'     => 'Plotters',
 	'plotters-pagetext'  => "Below is a list of special plotters users can use in their jsplot tags, as defined by [[MediaWiki:Plotters-definition]].

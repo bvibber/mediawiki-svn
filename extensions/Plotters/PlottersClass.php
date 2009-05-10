@@ -11,28 +11,28 @@
 
 class Plotter {
 
-        var $parser;
-        var $set;
-        var $argumentArray, $dataArray;
-        var $errors;
+	var $parser;
+	var $set;
+	var $argumentArray, $dataArray;
+	var $errors;
 
-        function Plotter( $pParser, &$parser ) {
-                $this->parser = $parser;
-                $this->argumentArray = $pParser->getArguments();
-                $this->dataArray = $pParser->getData();
-        }
+	function Plotter( $pParser, &$parser ) {
+		$this->parser = $parser;
+		$this->argumentArray = $pParser->getArguments();
+		$this->dataArray = $pParser->getData();
+	}
 
-        function hasErrors() {
-                if ( $this->errors == '' ) {
-                        return false;
-                } else {
-                        return true;
-                }
-        }
+	function hasErrors() {
+		if ( $this->errors == '' ) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
-        function getErrors() {
-                return $this->errors;
-        }
+	function getErrors() {
+		return $this->errors;
+	}
 
 	function checkForErrors() {
 		// Check for a script
@@ -66,8 +66,8 @@ class Plotter {
 	}
 
 	function renderPlot() {
-		//TODO: allow user defined height and width
-		//TODO: allow user defined graph id
+		// TODO: allow user defined height and width
+		// TODO: allow user defined graph id
 		return '<div><canvas id="graph" height="300" width="300"></canvas></div>';
 	}
 
@@ -87,7 +87,7 @@ class Plotter {
 
 		// Run preprocessors
 		$output = '<script type="text/javascript">';
-		//TODO: allow user defined graph id
+		// TODO: allow user defined graph id
 		$output .= 'function drawGraph() {';
 		$output .= 'var data = ' . $data . ';';
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
@@ -109,9 +109,9 @@ class Plotter {
 		$output .= " );";
 
 		$output .= "}";
-	
+
 		// Add hook event
-		//TODO: allow user defined graph id
+		// TODO: allow user defined graph id
 		$output .= 'hookEvent("load", drawGraph);';
 		$output .= "</script>";
 
@@ -119,34 +119,34 @@ class Plotter {
 	}
 
 	static function setPlotterHeaders( &$outputPage ) {
-                global $wgPlotterExtensionPath;
+		global $wgPlotterExtensionPath;
 
-                $extensionpath = $wgPlotterExtensionPath;
+		$extensionpath = $wgPlotterExtensionPath;
 
-                //Add mochikit (required by PlotKit)
-                $outputPage->addScript( '<script src="' . $extensionpath . '/mochikit/MochiKit.js" type="text/javascript"></script>' );
+		// Add mochikit (required by PlotKit)
+		$outputPage->addScript( '<script src="' . $extensionpath . '/mochikit/MochiKit.js" type="text/javascript"></script>' );
 
-                //Add PlotKit javascript
-                $outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Base.js" type="text/javascript"></script>' );
-                $outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Layout.js" type="text/javascript"></script>' );
-                $outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Canvas.js" type="text/javascript"></script>' );
-                $outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/SweetCanvas.js" type="text/javascript"></script>' );
+		// Add PlotKit javascript
+		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Base.js" type="text/javascript"></script>' );
+		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Layout.js" type="text/javascript"></script>' );
+		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Canvas.js" type="text/javascript"></script>' );
+		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/SweetCanvas.js" type="text/javascript"></script>' );
 
-                return true;
+		return true;
 	}
 
-        static function debug( $debugText, $debugArr = null ) {
-                global $wgPlotterDebug;
+	static function debug( $debugText, $debugArr = null ) {
+		global $wgPlotterDebug;
 
-                if ( isset( $debugArr ) ) {
-                        if ( $wgPlotterDebug > 0 ) {
-                                $text = $debugText . " " . implode( "::", $debugArr );
-                                wfDebugLog( 'plot', $text, false );
-                        }
-                } else {
-                        if ( $wgPlotterDebug > 0 ) {
-                                wfDebugLog( 'plot', $debugText, false );
-                        }
-                }
-        }
+		if ( isset( $debugArr ) ) {
+			if ( $wgPlotterDebug > 0 ) {
+				$text = $debugText . " " . implode( "::", $debugArr );
+				wfDebugLog( 'plot', $text, false );
+			}
+		} else {
+			if ( $wgPlotterDebug > 0 ) {
+				wfDebugLog( 'plot', $debugText, false );
+			}
+		}
+	}
 }
