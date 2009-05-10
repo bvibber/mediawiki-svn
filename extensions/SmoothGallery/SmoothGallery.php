@@ -26,20 +26,20 @@
 # sgallery Parser Function changes contributed by David Claughton <dave@eclecticdave.com>
 # infopane sliding and opacity patch provided by David Claughton <dave@eclecticdave.com>
 
-if( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) )
 	die( -1 );
 
 /**
  * Add extension information to Special:Version
  */
 $wgExtensionCredits['other'][] = array(
-	'path'        => __FILE__,
-	'name'        => 'SmoothGallery parser extension',
-	'version'     => '1.1d',
-	'author'      => 'Ryan Lane',
-	'description' => 'Allows users to create galleries with images that have been uploaded. Allows most options of SmoothGallery',
+	'path'           => __FILE__,
+	'name'           => 'SmoothGallery parser extension',
+	'version'        => '1.1d',
+	'author'         => 'Ryan Lane',
+	'description'    => 'Allows users to create galleries with images that have been uploaded. Allows most options of SmoothGallery',
 	'descriptionmsg' => 'smoothgallery-desc',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery',
 );
 
 $wgExtensionFunctions[] = "efSmoothGallery";
@@ -47,12 +47,12 @@ $wgExtensionFunctions[] = "efSmoothGallery";
 $wgHooks['OutputPageParserOutput'][] = 'smoothGalleryParserOutput';
 $wgHooks['LanguageGetMagic'][] = 'smoothGalleryLanguageGetMagic';
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['SmoothGallery'] = $dir . 'SmoothGallery.i18n.php';
 $wgAutoloadClasses['SmoothGallery'] = $dir . 'SmoothGalleryClass.php';
 $wgAutoloadClasses['SmoothGalleryParser'] = $dir . 'SmoothGalleryParser.php';
 
-//sane defaults. always initialize to avoid register_globals vulnerabilities
+// sane defaults. always initialize to avoid register_globals vulnerabilities
 $wgSmoothGalleryDelimiter = "\n";
 $wgSmoothGalleryExtensionPath = $wgScriptPath . '/extensions/SmoothGallery';
 $wgSmoothGalleryAllowExternal = false;
@@ -68,9 +68,10 @@ function efSmoothGallery() {
 	$wgParser->setFunctionHook( 'sgallery', 'initSmoothGalleryPF' );
 }
 
+// FIXME: split off to a hook file and use $wgHooks['ParserFirstCallInit'] to init tags
 function initSmoothGalleryPF( &$parser ) {
 	global $wgSmoothGalleryDelimiter;
-	
+
 	$numargs = func_num_args();
 	if ( $numargs < 2 ) {
 		$input = "#SmoothGallery: no arguments specified";
@@ -96,23 +97,23 @@ function initSmoothGalleryPF( &$parser ) {
 		$sKey = trim( $aParam[0] );
 		$sVal = trim( $aParam[1] );
 
-		if ( $sKey != '' ){
+		if ( $sKey != '' ) {
 			$argv[$sKey] = $sVal;
 		}
 	}
 
 	$output = initSmoothGallery( $input, $argv, $parser );
-	return array( $output, 'noparse' => true, 'isHTML' => true);
+	return array( $output, 'noparse' => true, 'isHTML' => true );
 }
 
-function initSmoothGallery( $input, $argv, &$parser, $calledAsSet=false ) {
+function initSmoothGallery( $input, $argv, &$parser, $calledAsSet = false ) {
 	$sgParser = new SmoothGalleryParser( $input, $argv, $parser, $calledAsSet );
 	$sgGallery = new SmoothGallery();
 
 	$sgGallery->setParser( $parser );
 	$sgGallery->setSet( $calledAsSet );
 	$sgGallery->setArguments( $sgParser->getArguments() );
-	$sgGallery->setGalleries( $sgParser->getGalleries() ); 
+	$sgGallery->setGalleries( $sgParser->getGalleries() );
 
 	$sgGallery->checkForErrors();
 	if ( $sgGallery->hasErrors() ) {
@@ -147,6 +148,6 @@ function smoothGalleryParserOutput( &$outputPage, &$parserOutput )  {
  * we are not using this feature
  */
 function smoothGalleryLanguageGetMagic( &$magicWords, $langCode ) {
-	$magicWords['sgallery']  = array(0, 'sgallery');
+	$magicWords['sgallery']  = array( 0, 'sgallery' );
 	return true;
 }

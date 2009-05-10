@@ -395,14 +395,14 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'smoothgallery' => 'វិចិត្រសាលរាបស្មើ',
-	'smoothgallery-desc' => 'អនុញ្ញាត​ឱ្យ​បង្កើត​វិចិត្រសាល​ជាមួយ​រូបភាព​ដែល​បាន​ផ្ទុកឡើង​។ 
+	'smoothgallery-desc' => 'អនុញ្ញាត​ឱ្យ​បង្កើត​វិចិត្រសាល​ជាមួយ​រូបភាព​ដែល​បាន​ផ្ទុកឡើង​។
 
 អនុញ្ញាត​ជម្រើស​ភាគច្រើន​នៃ​វិចិត្រសាលរាបស្មើ​',
 	'smoothgallery-title' => 'វិចិត្រសាលរាបស្មើ',
 	'smoothgallery-smoothgallerytitle' => 'វិចិត្រសាលរាបស្មើ​៖ $1',
 	'smoothgallery-error' => 'កំហុស​វិចិត្រសាលរាបស្មើ​​៖',
 	'smoothgallery-gallery-not-found' => 'មិនមានវិចិត្រសាលដែលត្រូវបានស្នើ​។',
-	'smoothgallery-not-found' => 'មិនមាន​រូបភាព​ត្រូវ​បាន​បន្ថែម​ទៅ​ក្នុង​វិចិត្រសាល​ទេ​។ 
+	'smoothgallery-not-found' => 'មិនមាន​រូបភាព​ត្រូវ​បាន​បន្ថែម​ទៅ​ក្នុង​វិចិត្រសាល​ទេ​។
 
 សូម​បន្ថែម​រូបភាព​យ៉ាងហោច​មួយ​។',
 	'smoothgallery-javascript-disabled' => 'តម្រូវឱ្យមាន Javascript ដើម្បី​មើលបានល្អ​វិចិត្រសាលនេះ​។',
@@ -451,7 +451,7 @@ Setzt w.e.g. mindestens ee Bild derbäi.",
  */
 $messages['mr'] = array(
 	'smoothgallery' => 'मुलायमप्रेक्षा',
-	'smoothgallery-desc' => 'उपयोगकर्त्यांना चढवलेल्या चित्रणांपासून दीर्घा(प्रेक्षा)बनवण्याकरिता अनुमति देते. 
+	'smoothgallery-desc' => 'उपयोगकर्त्यांना चढवलेल्या चित्रणांपासून दीर्घा(प्रेक्षा)बनवण्याकरिता अनुमति देते.
 मुलायमदिर्घा(प्रेक्षा) बनविण्याकरिता सर्वाधिक पर्याय उपलब्ध करून देते.',
 	'smoothgallery-title' => 'मुलायमप्रेक्षा',
 	'smoothgallery-smoothgallerytitle' => 'मुलायमप्रेक्षा $1',
@@ -495,13 +495,13 @@ De volgende {{PLURAL:$2|afbeelding is|afbeeldingen zijn}} niet aangetroffen: $1'
  */
 $messages['nn'] = array(
 	'smoothgallery' => 'Jamnt galleri',
-	'smoothgallery-desc' => 'Lèt brukarar oppretta galleri med bilete som er blitt lasta opp. 
+	'smoothgallery-desc' => 'Lèt brukarar oppretta galleri med bilete som er blitt lasta opp.
 Inneheld dei fleste av SmoothGallery sine valalternativ.',
 	'smoothgallery-title' => 'Jamnt galleri',
 	'smoothgallery-smoothgallerytitle' => 'Jamnt galleri: $1',
 	'smoothgallery-error' => '<b>Feil med jamnt galleri:</b>',
 	'smoothgallery-gallery-not-found' => 'Det etterspurde galleriet finst ikkje.',
-	'smoothgallery-not-found' => 'Ingen bilete blei lagt til i galleriet. 
+	'smoothgallery-not-found' => 'Ingen bilete blei lagt til i galleriet.
 Legg til minst eitt bilete.',
 	'smoothgallery-no-images' => 'Ingen bilete blei funne i dette galleriet.
 Forsikra deg om at {{PLURAL:$3|biletet|bileta}} finst.
@@ -555,7 +555,7 @@ Verificatz que {{PLURAL:$3|l'imatge requerit existís|totes los imatges requerit
  */
 $messages['pl'] = array(
 	'smoothgallery' => 'Płynna galeria',
-	'smoothgallery-desc' => 'Pozwala użytkownikom na tworzenie galerii przesłanych zdjęć. 
+	'smoothgallery-desc' => 'Pozwala użytkownikom na tworzenie galerii przesłanych zdjęć.
 Udostępnia większości opcji SmoothGallery',
 	'smoothgallery-title' => 'Płynna galeria',
 	'smoothgallery-smoothgallerytitle' => 'Płynna galeria: $1',
