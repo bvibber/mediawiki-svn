@@ -38,7 +38,7 @@ class ListredirectsPage extends QueryPage {
 	}
 
 	function getOrderFields() {
-		return array ( 'namespace', 'title' );
+		return array ( 'p1.page_namespace', 'p1.page_title' );
 	}
 
 	function formatResult( $skin, $result ) {
