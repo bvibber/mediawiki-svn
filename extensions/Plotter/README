@@ -16,6 +16,7 @@ You can use these in a parser function like so:
 
 {{#plot:
 |script=<functionname>
+|scriptarguments=arg1,arg2,...
 |data=1,2
 3,4}}
 
