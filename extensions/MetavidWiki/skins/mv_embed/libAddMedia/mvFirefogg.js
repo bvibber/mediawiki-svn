@@ -6,7 +6,8 @@
 var default_firefogg_options = {
 	'upload_done_action':'redirect',
 	'fogg_enabled':false,
-	'api_url':null
+	'api_url':null,
+	'passthrough': false
 }
 var mvFirefogg = function(initObj){
 	return this.init( initObj );
@@ -19,8 +20,12 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		'maxSize': 400, 
 		'videoBitrate': 400,
 		'noUpscaling':true
-	},	
-	
+	},
+	ogg_extensions: ['ogg', 'ogv', 'oga'],
+	video_extensions: ['avi', 'mov', 'mp4', 'mp2', 'mpeg', 'mpeg2', 'mpeg4', 'dv', 'wmv'], 
+	passthrough_extensions: ['png', 'gif', 'jpg', 'jpeg'], //@@todo allow server to set this
+	passthrough: false,
+
 	init: function( iObj ){
 		if(!iObj)
 			iObj = {};
@@ -123,18 +128,19 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				if(	sf.lastIndexOf('.') != -1){
 					ext = sf.substring( sf.lastIndexOf('.')+1 ).toLowerCase();
 				}
-				//set upload warning				
-				if( ext == 'ogg' || ext == 'ogv' ){		
+				//set upload warning
+				if( $j.inArray(ext, _this.ogg_extensions) > -1 ){		
 					$j('#wgfogg_waring_ogg_upload').show();
 					return false;
-				}else if( ext == 'avi' || ext == 'mov' || ext == 'mp4' || ext=='mp2' ||
-						  ext == 'mpeg' || ext == 'mpeg2' || ext == 'mpeg4' ||
-						  ext == 'dv' || ext=='wmv' ){
+				}else if( $j.inArray(ext, _this.video_extensions) > -1 ){
 					//hide ogg warning
 					$j('#wgfogg_waring_ogg_upload').hide();			
 					var extreg = new RegExp(ext + '$', 'i');						
 					sf = sf.replace(extreg, 'ogg');
 					$j('#wpDestFile').val( sf );
+				}else if( $j.inArray(ext, _this.passthrough_extensions) > -1 ){
+					$j('#wpDestFile').val( sf );
+					_this.passthrough = true;
 				}else{
 					//not video extension error:	
 					$j('#wgfogg_waring_bad_extension').show();					
@@ -184,11 +190,10 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		if(	sf.lastIndexOf('.') != -1){
 			ext = sf.substring( sf.lastIndexOf('.') ).toLowerCase();
 		}
-		if ( ext != '.ogg' && ext != '.ogv' ) {
+		if(!_this.passthrough && $j.inArray(ext.substr(1), _this.ogg_extensions) == -1 ){		
 			var extreg = new RegExp(ext + '$', 'i');
 			_this.formData['wpDestFile'] = sf.replace(extreg, '.ogg');
 		}
-
 		//add chunk response hook to build the resultURL when uploading chunks		
 		
 		//build the api url: 
@@ -208,8 +213,11 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		
 		js_log('do fogg upload call: '+ _this.api_url + ' :: ' + JSON.stringify( aReq ) );			
 			
-		
-		_this.fogg.upload( JSON.stringify( _this.encoder_settings ),  _this.api_url ,  JSON.stringify( aReq ) );		
+		var enc_settings = _this.encoder_settings;
+		if( _this.passthrough ){
+		  enc_settings = {'passthrough': true};
+		}
+		_this.fogg.upload( JSON.stringify( enc_settings ),  _this.api_url ,  JSON.stringify( aReq ) );		
 			
 		//update upload status:						
 		_this.doUploadStatus();
