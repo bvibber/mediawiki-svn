@@ -14,7 +14,11 @@ public class HasCategoryLikeSensor<V> extends AbstractSensor<V> {
 	protected NameMatcher matcher; 
 	
 	public HasCategoryLikeSensor(V value, String pattern, int flags) {
-		this(value, new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false));
+		this(value, pattern, flags, false);
+	}
+	
+	public HasCategoryLikeSensor(V value, String pattern, int flags, boolean anchored) {
+		this(value, new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, anchored));
 	}
 	
 	public HasCategoryLikeSensor(V value, NameMatcher matcher) {
