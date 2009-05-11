@@ -90,9 +90,15 @@ class Plotter {
 			}
 		}
 
+		// Prepare labels
+		$output .= "var labels = [];";
+		for ( $i = 0; $i < count( $this->argumentArray["labels"] ); $i++ ) {
+			$output .= "labels[$i] = '" . $this->argumentArray["labels"][$i] . "';";
+		}
+
 		// Run preprocessors
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
-			$output .= 'data = plotter_' . $preprocessor . '_process( data, ';
+			$output .= 'data = plotter_' . $preprocessor . '_process( data, labels, ';
 			foreach ( $this->argumentArray["preprocessorarguments"] as $argument ) {
 				$output .= $argument . ', ';
 			}
@@ -102,7 +108,7 @@ class Plotter {
 		}
 
 		// Run script
-		$output .= 'plotter_' . $this->argumentArray["script"] . '_draw( data, ';
+		$output .= 'plotter_' . $this->argumentArray["script"] . '_draw( data, labels, ';
 		foreach ( $this->argumentArray["scriptarguments"] as $argument ) {
 			$output .= "'" . $argument . "'" . ", ";
 		}

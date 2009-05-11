@@ -7,12 +7,12 @@ Preprocessing scripts, and plotting scripts are available, and the javascript
 function for each should be defined as follows:
 
 /* For preprocessing scripts */
-function plotter_<functionname>_process( $data, $arg1, $arg2, ... ) {
+function plotter_<functionname>_process( data, labels, arg1, arg2, ... ) {
         ...
 }
 
 /* For plotting scripts */
-function plotter_<functionname>_draw( $data, $arg1, $arg2, ... ) {
+function plotter_<functionname>_draw( data, labels, arg1, arg2, ... ) {
         ...
 }
 
@@ -21,8 +21,9 @@ You can use these in a parser function like so:
 {{#plot:
 |script=<functionname>
 |scriptarguments=arg1,arg2,...
+|labels=label1,label2
 |data=1,2
-3,4}}
+2,4}}
 
 Currently, only PlotKit is supported; but other javascript plotting libraries
 will be supported in the future.
