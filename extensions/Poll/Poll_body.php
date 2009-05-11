@@ -22,6 +22,10 @@ class Poll extends SpecialPage {
 		if ( $action == "vote" ) {
 			$this->vote();
 		}
+    
+    if ( $action == "submit" ) {
+      $this->submit();
+    }
 	}
   
   public function create() {
@@ -38,7 +42,18 @@ class Poll extends SpecialPage {
           $wgOut->addWikiMsg( 'poll-create-block-error' );
       }
       else {
-          
+          $wgOut->addHtml( '<form action="index.php?action=submit" method="post">' );
+          $wgOut->addHtml( '<table style="border: 0px;">' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-question' ).':</td><td><input type="text" name="poll_name"></td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 1:</td><td><input type="text" name="poll_alternative_1"></td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 2:</td><td><input type="text" name="poll_alternative_2"></td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 3:</td><td><input type="text" name="poll_alternative_3"></td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 4:</td><td><input type="text" name="poll_alternative_4"></td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 5:</td><td><input type="text" name="poll_alternative_5"></td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 6:</td><td><input type="text" name="poll_alternative_6"></td></tr>' );
+          $wgOut->addHtml( '<tr><td><input type="submit" value="'.wfMsg( 'poll-submit' ).'"></td></tr>' );
+          $wgOut->addHtml( '</table>' );
+          $wgOut->addHtml( '</form>' );
       }
   }
   
@@ -58,5 +73,9 @@ class Poll extends SpecialPage {
       else {
           
       }
+  }
+  
+  public function submit() {
+      global $wgRequest, $wgOut, $wgUser;
   }
 }
