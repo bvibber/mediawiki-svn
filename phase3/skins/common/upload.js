@@ -87,8 +87,7 @@ var wgUploadWarningObj = {
 		var obj = this;
 		var fileName = this.nameToCheck;		
 		sajax_do_call( 'UploadForm::ajaxGetExistsWarning', [this.nameToCheck], 
-			function (result) {
-				
+			function (result) {				
 				obj.processResult(result, fileName)
 			}
 		);
@@ -148,7 +147,9 @@ function fillDestFilename(id) {
 		fname = path.substring(backslash+1, 10000);
 	}
 	//check for the wgFileExtensions and clear if not a valid fname extension
-	if( wgFileExtensions ){		
+	
+	//urls are less likely to have a usefull extension don't include them in the extention check
+	if( wgFileExtensions && id != 'wpUploadFileURL' ){		
 		var found = false;		
 		if( fname.lastIndexOf('.')!=-1 ){		
 			var ext = fname.substr( fname.lastIndexOf('.')+1 );			

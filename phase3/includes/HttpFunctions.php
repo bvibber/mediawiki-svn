@@ -31,10 +31,16 @@ class Http {
 		global $wgPhpCliPath, $wgMaxUploadSize;				
 		//do a quick check to HEAD to insure the file size is not > $wgMaxUploadSize to large no need to download it
 		$head = get_headers($url, 1);
-		if($head['Content-Length'] > $wgMaxUploadSize){
-			return Status::newFatal('requested file length ' . $head['Content-Length'] . ' is greater than $wgMaxUploadSize: ' . $wgMaxUploadSize);	
-		}		
+		
+		//check for redirects:
+		
 		$content_length = (isset($head['Content-Length']))?$head['Content-Length']:null;		
+		if($content_length){
+			if($content_length > $wgMaxUploadSize){				
+				return Status::newFatal('requested file length ' . $content_length . ' is greater than $wgMaxUploadSize: ' . $wgMaxUploadSize);	
+			}		
+		}				
+		
 		//check if we can find phpCliPath (for doing a background shell request to php to do the download: 
 		if( $wgPhpCliPath && wfShellExecEnabled() && $dl_mode == self::ASYNC_DOWNLOAD){		
 			wfDebug("\ASYNC_DOWNLOAD\n");
@@ -100,6 +106,7 @@ class Http {
 	 */
 	public static function doSessionIdDownload( $session_id, $upload_session_key ){
 		global $wgUser, $wgEnableWriteAPI;					
+		wfDebug("\n\ndoSessionIdDownload\n\n");
 		//set session to the provided key:
 		session_id($session_id);
 		//start the session					
@@ -124,23 +131,26 @@ class Http {
 			'upload_session_key' => $upload_session_key			
 		) );	
 		//run the actual request .. (this can take some time) 
-		wfDebug("doRequest: " . $sd['url'] . ' tf: ' . $sd['target_file_path'] );
-		$status = $req->doRequest();					
+		wfDebug("do Request: " . $sd['url'] . ' tf: ' . $sd['target_file_path'] );
+		$status = $req->doRequest();		
+		wfDebug("done with req status is: ". $status->isOK(). ' '.$status->value. "\n");				
 		
-	
-		//start up the session again:			
-		if( session_start() === false){
-			wfDebug( __METHOD__ . ' ERROR:: Could not start session');	
-		}	
-		//re-grab the updated session data: 
-		$sd =& $_SESSION[ 'wsDownload' ][$upload_session_key];
-		if( $status->isOK() ){																								
+		if( $status->isOK() ){
+					
+			//start up the session again:			
+			if( session_start() === false){
+				wfDebug( __METHOD__ . ' ERROR:: Could not start session');	
+			}						
+			//re-grab the updated session data: 
+			$sd =& $_SESSION[ 'wsDownload' ][$upload_session_key];										
+		
 			//setup the faxRequest
 			$fauxReqData = $sd['mParams'];															
 			$fauxReqData['action'] = 'upload';		
 			$fauxReqData['format'] = 'json';
 			$fauxReqData['internalhttpsession'] = $upload_session_key;			
-
+			//evil but no other clean way about it: 
+				
 			$faxReq = new FauxRequest($fauxReqData, true);				
 			$processor = new ApiMain($faxReq, $wgEnableWriteAPI);
 								
@@ -151,15 +161,15 @@ class Http {
 			$printer->initPrinter(false);	
 			ob_start();
 			$printer->execute();
-			$apiUploadResult = ob_get_clean();						
-									
+			$apiUploadResult = ob_get_clean();
+			
+			wfDebug("\n\n got:" . $apiUploadResult." \n");
+						
+			wfDebug("\n\n got api result:: $apiUploadResult \n" );
 			//the status updates runner will grab the result form the session: 
-			$sd['apiUploadResult'] = $apiUploadResult;									
-		}else{
-			//status != OK
-			$sd['apiUploadResult'] = ApiFormatJson::getJsonEncode( array( 'error' => $status->getWikiText() ) );
+			$sd['apiUploadResult'] = $apiUploadResult;			
+			session_write_close();				
 		}
-		session_write_close();	
 	}
 	
 	/**
@@ -230,7 +240,7 @@ class HttpRequest{
 		}
 	 }
 	 private function doCurlReq(){
-	 	global $wgHTTPFileTimeout, $wgHTTPTimeout, $wgHTTPProxy, $wgTitle;
+	 	global $wgHTTPFileTimeout, $wgHTTPProxy, $wgTitle;
 	 	
 	 	$status = Status::newGood();	 	 	
 		$c = curl_init( $this->url );			
@@ -240,7 +250,10 @@ class HttpRequest{
 			curl_setopt( $c, CURLOPT_PROXY, 'localhost:80' );
 		} else if ($wgHTTPProxy) {
 			curl_setopt($c, CURLOPT_PROXY, $wgHTTPProxy);
-		}									
+		}
+		
+		curl_setopt( $c, CURLOPT_TIMEOUT, $wgHTTPFileTimeout );			
+			
 		
 		curl_setopt( $c, CURLOPT_USERAGENT, Http::userAgent() );
 		
@@ -268,11 +281,6 @@ class HttpRequest{
 				$status = $cwrite->status;	
 			}
 			curl_setopt( $c, CURLOPT_WRITEFUNCTION, array($cwrite, 'callbackWriteBody') );
-			//set to the file time out:
-			curl_setopt( $c, CURLOPT_TIMEOUT, $wgHTTPFileTimeout );
-		}else{
-			//set to script time timeout
-			curl_setopt( $c, CURLOPT_TIMEOUT, $wgHTTPTimeout );
 		}
 
 		//start output grabber: 
@@ -307,7 +315,6 @@ class HttpRequest{
 		if ( $retcode != 200 ) {
 			wfDebug( __METHOD__ . ": HTTP return code $retcode\n" );
 			$status = Status::newFatal( "HTTP return code $retcode\n" );
-			
 		}
 		# Don't return truncated output
 		$errno = curl_errno( $c );
