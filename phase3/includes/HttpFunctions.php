@@ -133,17 +133,21 @@ class Http {
 		//run the actual request .. (this can take some time) 
 		wfDebug("do Request: " . $sd['url'] . ' tf: ' . $sd['target_file_path'] );
 		$status = $req->doRequest();		
-		wfDebug("done with req status is: ". $status->isOK(). ' '.$status->value. "\n");				
+		wfDebug("done with req status is: ". $status->isOK(). ' '.$status->getWikiText(). "\n");
+
+		//start up the session again:			
+		if( session_start() === false){
+			wfDebug( __METHOD__ . ' ERROR:: Could not start session');	
+		}			
+		//grab the updated session data pointer 
+		$sd =& $_SESSION[ 'wsDownload' ][$upload_session_key];		
 		
-		if( $status->isOK() ){
-					
-			//start up the session again:			
-			if( session_start() === false){
-				wfDebug( __METHOD__ . ' ERROR:: Could not start session');	
-			}						
-			//re-grab the updated session data: 
-			$sd =& $_SESSION[ 'wsDownload' ][$upload_session_key];										
-		
+		//if error update status: 
+		if( !$status->isOK() ){
+			$sd['error'] = $status->getWikiText();
+		}		
+		//if status oky process upload using fauxReq to api: 
+		if( $status->isOK() ){																					
 			//setup the faxRequest
 			$fauxReqData = $sd['mParams'];															
 			$fauxReqData['action'] = 'upload';		
@@ -161,15 +165,14 @@ class Http {
 			$printer->initPrinter(false);	
 			ob_start();
 			$printer->execute();
-			$apiUploadResult = ob_get_clean();
-			
-			wfDebug("\n\n got:" . $apiUploadResult." \n");
+			$apiUploadResult = ob_get_clean();						
 						
 			wfDebug("\n\n got api result:: $apiUploadResult \n" );
 			//the status updates runner will grab the result form the session: 
-			$sd['apiUploadResult'] = $apiUploadResult;			
-			session_write_close();				
+			$sd['apiUploadResult'] = $apiUploadResult;					
 		}
+		//close the session: 
+		session_write_close();				
 	}
 	
 	/**
