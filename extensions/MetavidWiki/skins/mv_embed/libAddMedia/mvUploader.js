@@ -329,7 +329,7 @@ mvBaseUploadInterface.prototype = {
 					if(typeof JSON == 'undefined'){
 						//we need to load the jQuery json parser: (older browsers don't have JSON.parse 
 						mvJsLoader.doLoad({
-							'$.secureEvalJSON':'jquery/plugins/jquery.json-1.3.js'
+							'$j.secureEvalJSON':'jquery/plugins/jquery.json-1.3.js'
 						},function(){
 							var  apiResult = $j.secureEvalJSON( data.upload['apiUploadResult'] );
 							_this.processApiResult( apiResult );

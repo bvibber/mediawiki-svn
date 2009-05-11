@@ -18,7 +18,7 @@ function do_testing_page(){
   <table border="1" cellpadding="6" width="600">
 	    <tr>
 	      <td valign="top">
-	      	<video src="test_audio.oga" type="audio/ogg"></video>
+	      	<playlist src="fresh_smil_load.php" type="audio/ogg"></playlist>
 	      </td>
 	      <td valign="top"><b>Test embed</b><br />
 	      </td>

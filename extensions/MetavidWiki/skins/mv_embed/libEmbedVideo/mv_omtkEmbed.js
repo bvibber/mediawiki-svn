@@ -7,13 +7,13 @@ var omtkEmbed={
 	getEmbedHTML : function (){			
 		var embed_code =  this.getEmbedObj();	
 		//need omtk to fire an onReady event.
-		setTimeout('$j(\'#' + this.id + '\').get(0).postEmbedJS()', 1000);
+		setTimeout('$j(\'#' + this.id + '\').get(0).postEmbedJS()', 2000);
 		return this.wrapEmebedContainer( embed_code);				
 	},
     getEmbedObj:function(){
-    	var player_path = mv_embed_path + 'binPlayers/omtk-fx/omtkp.swf';
-    	js_log("player path: " + player_path);
+    	var player_path = mv_embed_path + 'binPlayers/omtk-fx/omtkp.swf';    
     	//player_path = 'omtkp.swf';
+    	js_log("player path: " + player_path);
     	return  '<object id="'+this.pid+'" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1" height="1">' +    			
         			'<param name="movie" value="' + player_path +'" />'+"\n"+        			
         			'<!--[if !IE]>-->'+"\n"+

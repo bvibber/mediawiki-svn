@@ -532,7 +532,7 @@ mvPlayList.prototype = {
 	 * this won't work so well with time range loading for smil (need to work on that)   
 	 */
 	loadFutureClips:function(){		
-		if( this.cur_clip.embed.bufferedPercent == 1){
+		/*if( this.cur_clip.embed.bufferedPercent == 1){
 			//set the buffer to the currentTime - duration 
 			var curBuffredTime = this.cur_clip.getDuration() - this.cur_clip.embed.currentTime;		
 			
@@ -543,7 +543,7 @@ mvPlayList.prototype = {
 			if( curBuffredTime <  this.playlist_buffer_time ){
 				js_log(" we only have " + curBuffredTime + ' buffed but we need: ' +  this.playlist_buffer_time);
 						
-				for(var inx = this.cur_clip.order + 1; inx < this.default_track.clip.length; inx++ ){
+				for(var inx = this.cur_clip.order + 1; inx < this.default_track.clips.length; inx++ ){					
 					var cClip = this.default_track.getClip( inx );					
 				
 					//check if the clip is already loaded (add its duration)  
@@ -560,7 +560,7 @@ mvPlayList.prototype = {
 					}					 															
 				}		
 			}	
-		}
+		}*/
 	},
 	//called to play the next clip if done call onClipDone 
 	playNext: function(){
