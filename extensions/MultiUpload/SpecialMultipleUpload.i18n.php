@@ -12,7 +12,7 @@ $messages = array();
  * @author Travis Derouin
  */
 $messages['en'] = array(
-	'multipleupload' => 'Upload files',
+	'multipleupload' => 'Upload multiple files',
 	'multipleupload-desc' => 'Allows users to [[Special:MultipleUpload|upload several files at once]]',
 	'multipleupload-ignoreallwarnings' => "Ignore '''all warnings''' and save the files anyway.",
 	'multipleupload-saveallfiles' => 'Save all files',
@@ -389,11 +389,11 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
- * @author Jack Phoenix
+ * @author Jack Phoenix <jack@countervandalism.net>
  * @author Nike
  */
 $messages['fi'] = array(
-	'multipleupload' => 'Tallenna tiedostoja',
+	'multipleupload' => 'Tallenna useampia tiedostoja',
 	'multipleupload-desc' => 'Käyttäjät voivat [[Special:MultipleUpload|tallentaa monta tiedostoa kerralla]].',
 	'multipleupload-ignoreallwarnings' => "Ohita '''kaikki varoitukset''' ja tallenna tiedostot kaikesta huolimatta.",
 	'multipleupload-saveallfiles' => 'Tallenna kaikki tiedostot',
@@ -408,6 +408,8 @@ Voit antaa vapaaehtoisen '''kohdetiedostonimen''' ja antaa '''yhteenvedon''', jo
 Sopimattomat tiedostot poistetaan välittömästi; katso [[{{MediaWiki:Multipleupload-page}}|tiedostojen poistokäytäntö]].",
 	'multiupload-fileuploaded' => 'Tiedosto tallennettu.',
 	'multiupload-toolbox' => 'Tallenna useampia tiedostoja',
+	'multiupload-no-files' => 'Valitse ainakin yksi tallennettava tiedosto',
+	'multiupload-blank' => 'Yhtään tiedostoa ei ole valittu',
 );
 
 /** French (Français)
