@@ -42,7 +42,7 @@ class Poll extends SpecialPage {
           $wgOut->addWikiMsg( 'poll-create-block-error' );
       }
       else {
-          $wgOut->addHtml( '<form action="index.php?action=submit" method="post">' );
+          $wgOut->addHtml( '<form action="index.php?title=Special:Poll&action=submit" method="post">' );
           $wgOut->addHtml( '<table style="border: 0px;">' );
           $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-question' ).':</td><td><input type="text" name="poll_name"></td></tr>' );
           $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 1:</td><td><input type="text" name="poll_alternative_1"></td></tr>' );
