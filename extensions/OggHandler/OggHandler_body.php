@@ -559,7 +559,7 @@ class OggTransformOutput extends MediaTransformOutput {
 				//$thumbDivAttribs = array( 'style' => 'text-align: right;' );
 			}
 			$msgStartPlayer = wfMsg( 'ogg-play-sound' );
-			$playerHeight = 0;
+			$playerHeight = 35;
 		}
 
 		// Set $thumb to the thumbnail img tag, or the thing that goes where 
