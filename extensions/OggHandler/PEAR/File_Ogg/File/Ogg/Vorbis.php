@@ -148,9 +148,12 @@ class File_Ogg_Vorbis extends File_Ogg_Media
      * @access  private
      * @var     int
      */
-    var $_streamLength;
-    
+    var $_streamLength;        
 
+    /**
+     * the start offset of this stream in seconds
+     */
+    var $_startOffset;
     /**
      * Constructor for accessing a Vorbis logical stream.
      *
@@ -180,10 +183,12 @@ class File_Ogg_Vorbis extends File_Ogg_Media
         $this->_streamLength  = $stream_endLength - $stream_startLength;	   
              
 		//make sure the offset is worth taking into account oggz_chop related hack
-	    if( $startSec > 1)
+	    if( $startSec > 1){
             $this->_streamLength = $endSec - $startSec;
-        else
+            $this->_startOffset = $startSec;
+	    }else{
             $this->_streamLength = $endSec;
+	    }
             
         $this->_avgBitrate      = $this->_streamLength ? ($this->_streamSize * 8) / $this->_streamLength : 0;
     }
@@ -386,7 +391,14 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     {
         return ($this->_streamLength);
     }
-    
+ 	/**
+     * Get the start offset of the stream in seconds
+     * @access public
+     * @return int
+     */
+    function getStartOffset(){
+    	return ($this->_startOffset);
+    }
     /**
      * States whether this logical stream was encoded in mono.
      *

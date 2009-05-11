@@ -43,7 +43,7 @@ $wgExtensionCredits['media'][] = array(
 $wgPlayerStatsCollection=false;
 
 // Location of the FFmpeg binary
-$wgFFmpegLocation = 'ffmpeg';
+$wgFFmpegLocation = '/usr/bin/ffmpeg';
 
 // Filename or URL path to the Cortado Java player applet.
 //
