@@ -436,6 +436,7 @@ $wgAllowCopyUploads = false;
 $wgMaxUploadSize = 1024*1024*100; # 100MB
 
 
+
 /**
  * Point the upload navigation link to an external URL
  * Useful if you want to use a shared repository by default

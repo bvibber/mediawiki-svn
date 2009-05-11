@@ -51,7 +51,7 @@ class UploadFromUrl extends UploadBase {
 	 */
 	function fetchFile( ) {		
 		//entry point for SpecialUplaod 
-		if( stripos($this->mUrl, 'http://') !== 0 && stripos($this->mUrl, 'ftp://') !== 0 ) {
+		if( self::isValidURI($this->mUrl) === false) {
 			return Status::newFatal('upload-proto-error');
 		}
 		//print "fetchFile:: $this->dl_mode";
@@ -69,7 +69,10 @@ class UploadFromUrl extends UploadBase {
 		if( !$request->getVal('wpUploadFileURL') )
 			return false;
 		//check that is a valid url:
+		return self::isValidURI( $request->getVal('wpUploadFileURL') );
+	}
+	static function isValidURI( $uri ){
 		return preg_match('/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/',
-						  $request->getVal('wpUploadFileURL'), $matches);
+						  $uri, $matches);
 	}
 }

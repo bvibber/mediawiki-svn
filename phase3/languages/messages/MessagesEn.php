@@ -1930,6 +1930,11 @@ Please contact an [[Special:ListUsers/sysop|administrator]].',
 'upload-misc-error-text'  => 'An unknown error occurred during the upload.
 Please verify that the URL is valid and accessible and try again.
 If the problem persists, contact an [[Special:ListUsers/sysop|administrator]].',
+'upload-too-many-redirects' => 'The URL contained too many redirects',
+'upload-unknown-size'		=> 'Unknown size',
+
+//idealy we map out all the http errors and translations else just call this with the http resposne:  
+'upload-http-error' => "An http error occured : $1 ",
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Could not reach URL',

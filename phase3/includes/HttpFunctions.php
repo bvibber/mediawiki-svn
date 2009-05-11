@@ -9,8 +9,9 @@ class Http {
 	const SYNC_DOWNLOAD = 1;  //syncronys upload (in a single request) 
 	const ASYNC_DOWNLOAD = 2; //asynchronous upload we should spawn out another process and monitor progress if possible)
 
-	var $body = '';
+	var $body = '';	
 		
+	static $redirectcount=0;
 	/**
 	 * Simple wrapper for Http::request( 'GET' )
 	 */
@@ -27,12 +28,32 @@ class Http {
 		$req = new HttpRequest( $url, $opts );	
 		return $req->doRequest();	
 	}
-	public static function doDownload( $url, $target_file_path , $dl_mode = self::SYNC_DOWNLOAD ){
-		global $wgPhpCliPath, $wgMaxUploadSize;				
-		//do a quick check to HEAD to insure the file size is not > $wgMaxUploadSize to large no need to download it
+	public static function doDownload( $url, $target_file_path , $dl_mode = self::SYNC_DOWNLOAD , $redirectCount=0){
+		global $wgPhpCliPath, $wgMaxUploadSize, $wgMaxRedirects;				
+		//do a quick check to HEAD to insure the file size is not > $wgMaxUploadSize 
 		$head = get_headers($url, 1);
 		
+		//check for non-valid result:
+		 
+		wfDebug("\n head: " . print_r($head, true). "\n");
+		
 		//check for redirects:
+		if( isset( $head['Location'] ) && strrpos($head[0], '302')!==false ){
+			if($redirectCount < $wgMaxRedirects){
+				if( UploadFromUrl::isValidURI( $head['Location'] )){														
+					return self::doDownload ( $head['Location'], $target_file_path , $dl_mode, $redirectCount++);
+				}else{
+					return Status::newFatal('upload-proto-error');			
+				}	
+			}else{
+				return Status::newFatal('upload-too-many-redirects');				
+			}
+		}		
+		//we did not get a 200 ok response: 
+		if( strrpos($head[0], '200 OK') === false){
+			return Status::newFatal( 'upload-http-error', htmlspecialchars($head[0]) );		
+		}
+		
 		
 		$content_length = (isset($head['Content-Length']))?$head['Content-Length']:null;		
 		if($content_length){
@@ -133,18 +154,19 @@ class Http {
 		//run the actual request .. (this can take some time) 
 		wfDebug("do Request: " . $sd['url'] . ' tf: ' . $sd['target_file_path'] );
 		$status = $req->doRequest();		
-		wfDebug("done with req status is: ". $status->isOK(). ' '.$status->getWikiText(). "\n");
+		//wfDebug("done with req status is: ". $status->isOK(). ' '.$status->getWikiText(). "\n");
 
 		//start up the session again:			
 		if( session_start() === false){
 			wfDebug( __METHOD__ . ' ERROR:: Could not start session');	
 		}			
 		//grab the updated session data pointer 
-		$sd =& $_SESSION[ 'wsDownload' ][$upload_session_key];		
-		
+		$sd =& $_SESSION[ 'wsDownload' ][$upload_session_key];				
 		//if error update status: 
 		if( !$status->isOK() ){
-			$sd['error'] = $status->getWikiText();
+			$sd['apiUploadResult']= ApiFormatJson::getJsonEncode( 
+										array( 'error' => $status->getWikiText() )
+									);
 		}		
 		//if status oky process upload using fauxReq to api: 
 		if( $status->isOK() ){																					
