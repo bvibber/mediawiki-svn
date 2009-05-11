@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Internationalisation file for Poll extension.
  *
@@ -10,8 +10,8 @@ $messages = array();
  
 
 $messages['en'] = array(
-  'poll' => 'List of the Polls',
-  'poll-desc' => 'Add a [[Special:Poll|special page]] for using polls',
+	'poll' => 'List of the Polls',
+	'poll-desc' => 'Add a [[Special:Poll|special page]] for using polls',
 	'poll-title-create' => 'Create a new poll',
 	'poll-title-vote' => 'Voting page',
 	'poll-title-score' => 'Score',
@@ -30,11 +30,11 @@ $messages['de'] = array(
 	'poll-title-create' => 'Eine neue Umfrage erstellen',
 	'poll-title-vote' => 'Abstimmen',
 	'poll-title-score' => 'Auswertung',
-	'poll-create-right-error' => 'Leider darfst du keine neue Umfrage erstellen(ben&ouml;tige Gruppenberechttigung: poll-create)',
+	'poll-create-right-error' => 'Leider darfst du keine neue Umfrage erstellen(benötige Gruppenberechttigung: poll-create)',
 	'poll-create-block-error' => 'Leider darfst du keine neue Umfrage erstellen, weil du einen gesperten Benutzer benutzt',
-	'poll-vote-right-error' => 'Leider darfst du nicht abstimmen(ben&ouml;tige Gruppenberechttigung: poll-vote)',
+	'poll-vote-right-error' => 'Leider darfst du nicht abstimmen(benötige Gruppenberechttigung: poll-vote)',
 	'poll-vote-block-error' => 'Leider darfst du nicht abstimmen, weil du einen gesperten Benutzer benutzt',
-	'poll-alternative' => 'Antwortm&ouml;glichkeit',
+	'poll-alternative' => 'Antwortmöglichkeit',
 	'poll-question' => 'Frage',
 	'poll-submit' => 'Absenden',
 );
