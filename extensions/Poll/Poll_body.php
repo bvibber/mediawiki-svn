@@ -42,18 +42,18 @@ class Poll extends SpecialPage {
           $wgOut->addWikiMsg( 'poll-create-block-error' );
       }
       else {
-          $wgOut->addHtml( '<form action="index.php?title=Special:Poll&action=submit" method="post">' );
-          $wgOut->addHtml( '<table style="border: 0px;">' );
-          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-question' ).':</td><td><input type="text" name="poll_name"></td></tr>' );
-          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 1:</td><td><input type="text" name="poll_alternative_1"></td></tr>' );
-          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 2:</td><td><input type="text" name="poll_alternative_2"></td></tr>' );
-          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 3:</td><td><input type="text" name="poll_alternative_3"></td></tr>' );
-          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 4:</td><td><input type="text" name="poll_alternative_4"></td></tr>' );
-          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 5:</td><td><input type="text" name="poll_alternative_5"></td></tr>' );
-          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 6:</td><td><input type="text" name="poll_alternative_6"></td></tr>' );
-          $wgOut->addHtml( '<tr><td><input type="submit" value="'.wfMsg( 'poll-submit' ).'"></td></tr>' );
-          $wgOut->addHtml( '</table>' );
-          $wgOut->addHtml( '</form>' );
+          $wgOut->addHtml( Xml::openElement( 'form', array('method'=> 'post', 'action' => 'index.php?title=Special:Poll&action=submit' ) ) );
+          $wgOut->addHtml( Xml::openElement( 'table', array('method'=> 'post') );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-question' ).':</td><td>'.Xml::input('poll_name').'</td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 1:</td><td>'.Xml::input('poll_alternative_1').'</td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 2:</td><td>'.Xml::input('poll_alternative_2').'</td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 3:</td><td>'.Xml::input('poll_alternative_3').'</td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 4:</td><td>'.Xml::input('poll_alternative_4').'</td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 5:</td><td>'.Xml::input('poll_alternative_5').'</td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 6:</td><td>'.Xml::input('poll_alternative_6').'</td></tr>' );
+          $wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).'</td></tr>' );
+          $wgOut->addHtml( Xml::closeElement( table ) );
+          $wgOut->addHtml( Xml::closeElement( form ) );
       }
   }
   
