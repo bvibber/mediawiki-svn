@@ -486,17 +486,24 @@ function rewrite_for_oggHanlder( vidIdList ){
 		var re = new RegExp( /length(&quot;:?\s*)*([^&]*)/ );
 		duration = re.exec( $j('#'+vidId).html() )[2];
 		
-		//replace the top div with mv_embed based player: 
-		var vid_html = '<video id="vid_' + i +'" '+ 
-		 		'src="' + src + '" ' +
-		 		poster_attr + ' ' + 
-		 		type_attr + ' ' + 
-		 		'duration="' + duration + '" ' + 
-		 		'style="width:' + pwidth + 'px;height:' + 
-		 			pheight + 'px;"></video>';
-		//js_log("video html: " + vid_html);
-		if( src )	
-		 	$j('#'+vidId).html( vid_html );		
+		var re = new RegExp( /offset(&quot;:?\s*)*([^&]*)/ );
+		offset = re.exec( $j('#'+vidId).html() )[2];		
+		var offset_attr = (offset)? 'startOffset="'+ offset + '"': '';
+		
+		if( src ){
+			//replace the top div with mv_embed based player: 
+			var vid_html = '<video id="vid_' + i +'" '+ 
+			 		'src="' + src + '" ' +
+			 		poster_attr + ' ' + 
+			 		type_attr + ' ' + 
+			 		offset_attr + ' ' + 
+			 		'duration="' + duration + '" ' + 
+			 		'style="width:' + pwidth + 'px;height:' + 
+			 			pheight + 'px;"></video>';
+			//js_log("video html: " + vid_html);			
+			 $j('#'+vidId).html( vid_html );
+		}		
+		
 		//rewrite that video id: 
 		rewrite_by_id('vid_' + i);
 	}
@@ -951,7 +958,7 @@ function mv_jsdata_cb(response){
 					xmldata.async="false";
 					xmldata.loadXML(response['pay_load']);
 				}else{ //for others (firefox, safari etc)	
-					try {
+					try{
     					var xmldata = (new DOMParser()).parseFromString(response['pay_load'], "text/xml");		
     				}catch(e) {
   							js_log('XML parse ERROR: ' + e.message);

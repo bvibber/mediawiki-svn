@@ -15,13 +15,14 @@ loadGM( {
 	"wgfogg_waring_ogg_upload": "You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?",
 	"wgfogg_waring_bad_extension" : "You have selected a file with an unsuported extension. <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">More help</a>",
 	"upload-stats-fileprogres": "$1 of $2",
-	"mv_upload_done" 	  : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",	
+	"mv_upload_done" 	  : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",
+	"upload-unknown-size": "Unknown size",	
 	
 	"successfulupload" : 'Successful upload',
 	"uploaderror" : "Upload error",
 	"uploadwarning": "Upload warning",
 	"unknown-error": "Unknown Error",
-	"return-to-form": "Return to form"
+	"return-to-form": "Return to form"	
 	
 });
 
@@ -280,7 +281,7 @@ mvBaseUploadInterface.prototype = {
 			_this.editForm.submit();						
 		}else if( _this.upload_mode == 'api' && $j('#wpSourceTypeURL').get(0).checked){	
 			//if the api is supported.. && source type is http do upload with http status updates
-			_this.doHttpUpload();			
+			_this.doHttpUpload();					
 		}else{
 			js_error( 'Error: unrecongized upload mode: ' + _this.upload_mode );
 		}		
@@ -298,16 +299,22 @@ mvBaseUploadInterface.prototype = {
 			},
 			'url' : _this.api_url 
 		}, function( data ){
-			if( !data.upload.upload_session_key )
-				return js_error('could not start upload api request');
-			
-			//set the session key
-			_this.upload_session_key = data.upload.upload_session_key;
-			js_log("set session key: " + _this.upload_session_key);
-			//do ajax upload status: 
-			_this.doAjaxUploadStatus();	
-									
-		});	
+			//check for error: 
+			if( data.error){
+				_this.updateUploadError( data.error.code );
+				return ;
+			}
+			//check for session key: 
+			if( data.upload && data.upload.upload_session_key ){							
+				//set the session key
+				_this.upload_session_key = data.upload.upload_session_key;
+				js_log("set session key: " + _this.upload_session_key);
+				//do ajax upload status: 
+				_this.doAjaxUploadStatus();
+				return ;	
+			}
+			js_log('could not parse upload api request result');
+		});			
 	},
 	doAjaxUploadStatus:function() {
 		var _this = this;	
@@ -335,7 +342,13 @@ mvBaseUploadInterface.prototype = {
 							_this.processApiResult( apiResult );
 						});
 					}else{
-						var apiResult = JSON.parse ( data.upload['apiUploadResult'] ) ;
+						var apiResult = {};
+						try{
+							apiResult = JSON.parse ( data.upload['apiUploadResult'] ) ;
+						}catch (e){
+							//could not parse api result
+							js_log('errro: could not parse apiUploadResult ')						
+						}
 						_this.processApiResult( apiResult );						
 					}
 					return ;				
@@ -355,7 +368,16 @@ mvBaseUploadInterface.prototype = {
 							]  
 						)
 					);
-				}				
+				}else if( data.upload['loaded'] ){					
+					//for lack of content-length requests: 
+					$j('#upload-stats-fileprogres').html( 
+						gM('upload-stats-fileprogres', [
+							formatSize( data.upload['loaded'] ),
+							gM('upload-unknown-size')
+							]
+						)
+					);
+				}
 				//(we got a result) set it to 100ms + your server update interval (in our case 2s)
 				setTimeout(uploadStatus, 2100); 		
 			});			

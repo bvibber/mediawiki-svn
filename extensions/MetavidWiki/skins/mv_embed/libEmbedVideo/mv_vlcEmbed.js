@@ -190,13 +190,13 @@ var vlcEmbed = {
 			this.seek_time_sec = 0;			
 		}
     	//for now trust the duration from url over vlc input.length
-		if( ! this.media_element.selected_source.end_ntp && this.vlc.input.length>0)
+		if( !this.getDuration() && this.vlc.input.length > 0 )
 		{
 			js_log('setting duration to ' + this.vlc.input.length /1000);
 			this.media_element.selected_source.setDuration( this.vlc.input.length /1000);
 		}
 
-    	this.duration = (this.getDuration())?this.getDuration():this.vlc.input.length /1000;
+    	this.duration = ( this.getDuration() ) ? this.getDuration() : this.vlc.input.length /1000;
     	/*if(this.duration!=this.vlc.input.length /1000){
 	        this.duration = this.vlc.input.length /1000;   
     	}*/     
@@ -211,7 +211,10 @@ var vlcEmbed = {
         	}
         }else{
         	this.currentTime = (this.vlc.input.time/1000) + this.media_element.selected_source.start_offset;       
-        }       	      
+        }
+        //vlc uses original time:        	      
+        if( this.startOffset )
+			this.currentTime = this.currentTime - this.startOffset;
         //updates hanlded by parent monitor and currentTime
    },
    onPause: function(){   		

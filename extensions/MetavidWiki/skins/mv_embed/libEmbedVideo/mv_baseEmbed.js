@@ -31,6 +31,8 @@ var default_video_attributes = {
 	"duration":null,   //media duration (read from file or the temporal url)
 	"networkState":0,
 
+	"startOffset":null, //if serving an ogg_chop segment use this to offset the presentation time 
+
     //custom attributes for mv_embed:
     "play_button":true,    
     "thumbnail":null,
@@ -142,17 +144,10 @@ var ctrlBuilder = {
         	stop:function(e, ui){
         		embedObj.userSlide=false;
         		//stop the monitor timer:         		
-				if( this.monitorTimerId != 0 )
-			    {
-			        clearInterval(this.monitorTimerId);
-			        this.monitorTimerId = 0;
-			    }
-        		
+				embedObj.stopMonitor();        		
         		var perc = (($j('#mv_seeker_slider_'+embedObj.id).get(0).offsetLeft-embedObj.base_seeker_slider_offset)
 						/
-					($j('#mv_seeker_'+embedObj.id).width()-14));   
-					        		
-        		
+					($j('#mv_seeker_'+embedObj.id).width()-14));   					        		        	
         		//set seek time (in case we have to do a url seek)        		
         		embedObj.seek_time_sec = npt2seconds( embedObj.jump_time, true );   
         		js_log('do jump to: '+embedObj.jump_time + ' perc:' +perc + ' sts:' + embedObj.seek_time_sec);        		        		
@@ -822,9 +817,17 @@ embedVideo.prototype = {
 	            this[attr]=default_video_attributes[attr];
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");
 	        }
-	    }		   
-	    if( this.duration!=null && this.duration.split(':').length >= 2)
-	    	this.duration = npt2seconds( this.duration );	    
+	    }
+	    //make sure startOffset is cast as an int		   
+	    if( this.startOffset && this.startOffset.split(':').length >= 2)
+	    	this.startOffset = npt2seconds(this.startOffset);
+	    //make sure offset is in float: 
+	    this.startOffset = parseFloat(this.startOffset);
+	     
+	    if( this.duration && this.duration.split(':').length >= 2)
+	    	this.duration = npt2seconds( this.duration );	 
+	   	//make sure duration is in float:  
+	    this.duration = parseFloat(this.duration);  
 	        	
 	    //if style is set override width and height
 	    var dwh = mv_default_video_size.split('x');
@@ -1942,11 +1945,19 @@ embedVideo.prototype = {
 		
 		//update monitorTimerId to call child monitor
 		if( ! this.monitorTimerId ){
+			//make sure an instance of this.id exists: 
 	    	if( document.getElementById(this.id) ){
 	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
 	    	}
 	    }
 	},		
+	stopMonitor:function(){
+		if( this.monitorTimerId != 0 )
+	    {
+	        clearInterval( this.monitorTimerId );
+	        this.monitorTimerId = 0;
+	    }
+	},
 	updateBufferStatus: function(){	
 		//build the buffer targeet based for playlist vs clip 
 		var buffer_select = (this.pc) ? 
@@ -2385,8 +2396,7 @@ var embedTypes = {
 					a = new ActiveXObject(SHOCKWAVE_FLASH_AX + ".7");
 					d = a.GetVariable("$version");	// Will crash fp6.0.21/23/29
 					if (d) {
-						d = d.split(" ")[1].split(",");
-						alert(d[0]);
+						d = d.split(" ")[1].split(",");						
 						//we need flash version 10 or greater:
 						if(parseInt( d[0]) >=10){
 							this.players.addPlayer( omtkPlayer );

@@ -88,14 +88,15 @@ var nativeEmbed = {
 		if(this.pc){
 			if(this.pc.pp.cur_clip.id != this.pc.id)
 				return true;
-		}			
-		
-		//update duration if not set (for now trust the getDuration more than this.vid.duration		
-		this.duration = ( this.getDuration() ) ?this.getDuration() : this.vid.duration;	
+		}								
 				
-		//update currentTime		
+		//update currentTime				
 		this.currentTime = this.vid.currentTime;		
 		
+		if( this.startOffset && !embedTypes.safari) //safari uses presentation time for currentTime rather than ogg Encoded time
+			this.currentTime = this.currentTime - this.startOffset;
+		
+		//js_log('this.currentTime: ' + this.currentTime );
 		//once currentTime is updated call parent_monitor 
 		this.parent_monitor();												
 	},	
@@ -106,12 +107,9 @@ var nativeEmbed = {
 		js_log('f:oncanplaythrough');
 	},
 	onloadedmetadata: function(){
-		js_log('f:onloadedmetadata get duration: ' +this.vid.duration);
-		//this.
-	},
-	onloadedmetadata: function(){
-		js_log('f:onloadedmetadata metadata ready');
-		//set the clip duration 
+		js_log('f:onloadedmetadata metadata ready (update duration)');		
+		//update duration if not set (for now trust the getDuration more than this.vid.duration		
+		this.duration = ( this.getDuration() ) ?this.getDuration() : this.vid.duration;
 	},
 	onprogress: function(e){		
 		this.bufferedPercent =   e.loaded / e.total;
@@ -120,12 +118,6 @@ var nativeEmbed = {
 	onended:function(){		
 		js_log('native:onended:');
 		this.onClipDone();
-	},
-	stopMonitor:function(){
-		if( this.monitorTimerId != 0 ) {
-	        clearInterval(this.monitorTimerId);
-	        this.monitorTimerId = 0;
-	    }
 	},
 	pause : function(){		
 		this.getVID();
