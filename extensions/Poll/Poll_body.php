@@ -43,7 +43,7 @@ class Poll extends SpecialPage {
       }
       else {
           $wgOut->addHtml( Xml::openElement( 'form', array('method'=> 'post', 'action' => 'index.php?title=Special:Poll&action=submit' ) ) );
-          $wgOut->addHtml( Xml::openElement( 'table', array('method'=> 'post') );
+          $wgOut->addHtml( Xml::openElement( 'table' );
           $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-question' ).':</td><td>'.Xml::input('poll_name').'</td></tr>' );
           $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 1:</td><td>'.Xml::input('poll_alternative_1').'</td></tr>' );
           $wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 2:</td><td>'.Xml::input('poll_alternative_2').'</td></tr>' );
