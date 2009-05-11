@@ -22,6 +22,10 @@ $messages['en'] = array(
 	'poll-alternative' => 'Alternative',
 	'poll-question' => 'Question',
 	'poll-submit' => 'Submit',
+	'right-poll-create' => 'Create Poll',
+	'right-poll-vote' => 'Vote by a Poll',
+	'right-poll-admin' => 'Manage the Polls',
+	'poll-create-fields-error' => 'The fields Question, Alternative 1 and Alternative 2 must be set',
 );
 
 $messages['de'] = array(
@@ -37,4 +41,8 @@ $messages['de'] = array(
 	'poll-alternative' => 'Antwortmöglichkeit',
 	'poll-question' => 'Frage',
 	'poll-submit' => 'Absenden',
+	'right-poll-create' => 'Umfrage erstellen',
+	'right-poll-vote' => 'Bei einer Umfrage abstimmen',
+	'right-poll-admin' => 'Umfragen verwalten',
+	'poll-create-fields-error' => 'Die Felder Frage, Antwortmöglichkeit 1 sowie Antwortmöglichkeit 2 müssen ausgefüllt sein',
 );

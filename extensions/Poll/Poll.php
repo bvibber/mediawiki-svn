@@ -54,4 +54,4 @@ $wgAutoloadClasses['Poll'] = $dir . 'Poll_body.php'; # Tell MediaWiki to load th
 $wgExtensionMessagesFiles['Poll'] = $dir . 'Poll.i18n.php';
 $wgExtensionAliasesFiles['Poll'] = $dir . 'Poll.alias.php';
 $wgSpecialPages['Poll'] = 'Poll'; # Let MediaWiki know about your new special page.
-// FIXME: add $wgSpecialPageGroups
+$wgSpecialPageGroups['Poll'] = 'other';
