@@ -66,9 +66,8 @@ class Plotter {
 	}
 
 	function renderPlot() {
-		// TODO: allow user defined height and width
 		// TODO: allow user defined graph id
-		return '<div><canvas id="graph" height="300" width="300"></canvas></div>';
+		return '<div><canvas id="graph" height="' . $this->argumentArray["height"] . '" width="' . $this->argumentArray["width"] . '"></canvas></div>';
 	}
 
 	function renderFallback() {
@@ -77,19 +76,21 @@ class Plotter {
 	}
 
 	function renderJavascript() {
-		// Prepare data
-		$data = "[";
-		foreach ( $this->dataArray as $line ) {
-			$data .= "[" . implode( $this->argumentArray["datasep"], $line ) . "]" . ", ";
-		}
-		$data = substr( $data, 0, -2 );
-		$data .= "]";
-
-		// Run preprocessors
 		$output = '<script type="text/javascript">';
 		// TODO: allow user defined graph id
 		$output .= 'function drawGraph() {';
-		$output .= 'var data = ' . $data . ';';
+		$output .= 'var data = [];';
+
+		// Prepare data
+		for ( $i = 0; $i < count( $this->dataArray ); $i++ ) {
+			$output .= "data[$i] = [];";
+			$dataline = $this->dataArray[$i];
+			for ( $j = 0; $j < count( $dataline ); $j++ ) {
+				$output .= "data[$i][$j] = '" . $dataline[$j] . "';";
+			}
+		}
+
+		// Run preprocessors
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
 			$output .= 'data = plotter_' . $preprocessor . '_process( data, ';
 			foreach ( $this->argumentArray["preprocessorarguments"] as $argument ) {
@@ -103,7 +104,7 @@ class Plotter {
 		// Run script
 		$output .= 'plotter_' . $this->argumentArray["script"] . '_draw( data, ';
 		foreach ( $this->argumentArray["scriptarguments"] as $argument ) {
-			$output .= $argument . ', ';
+			$output .= "'" . $argument . "'" . ", ";
 		}
 		$output = substr( $output, 0, -2 );
 		$output .= " );";
