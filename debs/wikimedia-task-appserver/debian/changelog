@@ -1,3 +1,11 @@
+wikimedia-task-appserver (1.35) hardy; urgency=low
+
+  * Add missing dependencies on nfs-common and make
+  * Remove symlinks to /home
+  * Create directory /usr/local/apache/common-local/php-1.5 in sync-common
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 11 May 2009 20:45:05 +0000
+
 wikimedia-task-appserver (1.34) hardy; urgency=low
 
   * Include local version of sync/sanity check scripts

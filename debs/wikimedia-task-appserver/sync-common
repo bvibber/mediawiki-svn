@@ -9,7 +9,8 @@ umask 002
 export PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
 # Set ownership
-find /apache/common/php-1.5 -group wikidev -not -perm -020 -perm -200 -exec chmod g+w '{}' ';'
+[ -d /usr/local/apache/common-local/php-1.5 ] || mkdir -p /usr/local/apache/common-local/php-1.5
+find /usr/local/apache/common/php-1.5 -group wikidev -not -perm -020 -perm -200 -exec chmod g+w '{}' ';'
 
 # Compile texvc
 echo -n Compiling texvc... 
