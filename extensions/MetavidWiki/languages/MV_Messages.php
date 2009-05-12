@@ -218,7 +218,7 @@ Please report this to the site administrator.',
 
 	'mv_base_offset_label' => 'base offset',
 	'mv_duration_label' => 'Duration',
-	'mv_file_desc_label' => 'stream desciption messsage',
+	'mv_file_desc_label' => 'stream description messsage',
 	'mv_delete_stream_file' => 'delete stream file reference',
 	'mv_save_changes' => 'Save changes',
 	'mv_file_with_same_desc' => 'Error: stream file with same description key <i>$1</i> already present',
