@@ -97,16 +97,19 @@ PHP_MINFO_FUNCTION(wmerrors)
 	DISPLAY_INI_ENTRIES();
 }
 
-
-
-
+/* error_handling moved in March 2008 on the PHP 5.3 branch */
+#if ZEND_MODULE_API_NO >= 20090115
+#define WM_ERROR_HANDLING EG(error_handling)
+#else
+#define WM_ERROR_HANDLING PG(error_handling)
+#endif
 
 void wmerrors_cb(int type, const char *error_filename, const uint error_lineno, const char *format, va_list args)
 {
 	TSRMLS_FETCH();
 	
 	if ( !WMERRORS_G(enabled)
-			|| (type == E_RECOVERABLE_ERROR && PG(error_handling) == EH_THROW && !EG(exception))
+			|| (type == E_RECOVERABLE_ERROR && WM_ERROR_HANDLING == EH_THROW && !EG(exception))
 			|| (type != E_ERROR && type != E_CORE_ERROR && type != E_COMPILE_ERROR 
 			      && type != E_USER_ERROR && type != E_RECOVERABLE_ERROR)
 			|| strncmp(sapi_module.name, "apache", 6)
