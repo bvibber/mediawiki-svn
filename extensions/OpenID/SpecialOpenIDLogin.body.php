@@ -116,7 +116,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$smallButtonsHTML .= '</div>';
 		}
 
-		$wgOut->addHTML( '<form id="openid_form" action="' . $sk->makeSpecialUrl( 'OpenIDLogin' ) . '" method="POST" onsubmit="openid.update()"">' .
+		$wgOut->addHTML( '<form id="openid_form" action="' . $sk->makeSpecialUrl( 'OpenIDLogin' ) . '" method="POST" onsubmit="openid.update()">' .
 						'<fieldset><legend>' . wfMsg( 'openidsigninorcreateaccount' ) . '</legend>' .
 						$largeButtonsHTML .
 						'<div id="openid_input_area">' .
@@ -218,7 +218,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	function returnTo() {
-		return $_SESSION['openid_consumer_returnto'];
+		return isset( $_SESSION['openid_consumer_returnto'] ) ? $_SESSION['openid_consumer_returnto'] : '';
 	}
 
 	function setReturnTo( $returnto ) {
