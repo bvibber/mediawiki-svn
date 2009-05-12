@@ -362,7 +362,8 @@ public class ConceptImporter extends AbstractImporter {
 							String cat = link.getPage().toString();
 							
 							if (!cat.equals(name) &&  analyzer.mayBeFormOf(link.getLenientPage(), analyzerPage.getTitleBaseName())) {
-								storePageTerms(rcId, analyzer.determineTitleTerms(link.getPage()), conceptId, name, ExtractionRule.TERM_FROM_CAT_NAME);
+								Set<CharSequence> terms = analyzer.determineTitleTerms(link.getPage());
+								storePageTerms(rcId, terms, conceptId, name, ExtractionRule.TERM_FROM_CAT_NAME);
 								
 								//NOTE: the alias is preliminary: if a article with the name of the category 
 								//      exists, the alias will be ignored. See DatabaseLocalConceptBuilder.finishBadLinks

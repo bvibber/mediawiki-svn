@@ -8,8 +8,10 @@ import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
 import de.brightbyte.wikiword.analyzer.WikiPage;
+import de.brightbyte.wikiword.analyzer.extractor.CategoryPatternParameterExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.PagePropertyValueExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.PropertyValueExtractor;
+import de.brightbyte.wikiword.analyzer.extractor.TemplateNamePatternParameterExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.TitlePartExtractor;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
@@ -150,7 +152,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 	private static final String neuroNamesChars = "["+alphabeticChars+"]+-["+numericChars+"]+";
 	
 	//TODO: exclude "Biography"... 
-	public static final String lifeScienceJournalPattern = "(^|[ _])(Chem[a-z]*|Bio[a-z]*|Gen[eo][a-z]*|Med[a-z]*|Cell[a-z]*|DNA|RNA|Nucleic|EMBO|FEBS|Onco[a-z]*|Blood|Immono[a-z]*|Cancer|Virol[a-z]*|Med[a-z]*|Clin[a-z]*|Lancet|Neuro[a-z]*|Zootaxa|JAMA|FASEB|Bacter[a-z]*|Mutat[a-z]*|Mol[a-z]*|Protein|Dermat[a-z]*|Pathol[a-z]*|Endocr[a-z]*|Microbio[a-z]*)($|[_ ])";
+	public static final String lifeScienceJournalPattern = "(^|[ _])(Chem[a-z]*|Biol?[.a-z]*|Gen[eo][a-z]*|Med[a-z]*|Cell[a-z]*|DNA|RNA|Nucleic|EMBO|FEBS|Onco[a-z]*|Blood|Immono[a-z]*|Cancer|Virol[a-z]*|Med[a-z]*|Clin[a-z]*|Lancet|Nature|PLoS|Neuro[a-z]*|Zootaxa|JAMA|FASEB|Bacter[a-z]*|Mutat[a-z]*|Mol[a-z]*|Protein|Dermat[a-z]*|Pathol[a-z]*|Endocr[a-z]*|Microbio[a-z]*)($|[_ ])";
 
 	
 	protected static DefaultTemplateParameterPropertySpec makeNamePropertySpec(String param, String prop, boolean multi, boolean space) {
@@ -605,6 +607,9 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new DefaultTemplateParameterPropertySpec("known_for", "person-known-for").setStripMarkup(true).setSplitPattern(nameSeparatorPattern),
 				new DefaultTemplateParameterPropertySpec("nationality", "person-nationality").setStripMarkup(true)
 			) );
+		
+		propertyExtractors.add(new CategoryPatternParameterExtractor("(_|$)([Ff]oods|[Vv]egetables|[Ff]ruits)", null, 0, "food-group"));
+		propertyExtractors.add(new TemplateNamePatternParameterExtractor("((.+-)?(Med(ical)?|Treatment|Pathology|Anatomy|Antibiotic|Disease)(-.+)?)-stub", "$2", 0, "med-stub-group")); //TODO: no limits to this one
 		
 		pageTermExtractors.add( new PagePropertyValueExtractor("IUPAC") ); 
 		pageTermExtractors.add( new PagePropertyValueExtractor("AnatomyLatin") ); 
