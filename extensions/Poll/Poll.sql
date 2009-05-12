@@ -1,5 +1,5 @@
--- (c) Aaron Schulz, 2007-2009, GPL
--- Table structure for table `Flagged Revisions`
+-- (c) Jan Luca, 2009, GPL
+-- Table structure for table `Poll`
 -- Replace /*$wgDBprefix*/ with the proper prefix
 -- Replace /*$wgDBTableOptions*/ with the correct options
 
