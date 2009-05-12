@@ -125,7 +125,7 @@ class ApiUpload extends ApiBase {
 				
 				$status = $this->mUpload->fetchFile();
 				if( !$status->isOK() ){								
-					return $this->dieUsage( 'fetchfilerror', $status->getWikiText());
+					return $this->dieUsage( 'fetchfileerror', $status->getWikiText());
 				}														
 				//check if we doing a async request set session info and return the upload_session_key)
 				if( $this->mUpload->isAsync() ){
