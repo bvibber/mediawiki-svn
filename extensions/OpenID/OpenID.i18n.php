@@ -92,7 +92,7 @@ To use OpenID in the future, you can [[Special:OpenIDConvert|convert your accoun
 
 There are many [http://openid.net/get/ OpenID providers], and you may already have an OpenID-enabled account on another service.',
 	'openidupdateuserinfo' => 'Update my personal information',
-	'openid-prefs' => 'OpenID',
+	'prefs-openid' => 'OpenID',
 	'openid-prefstext' => '[http://openid.net/ OpenID] preferences',
 	'openid-pref-hide' => 'Hide your OpenID URL on your user page, if you log in with OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Update my information from OpenID persona every time I login',
@@ -119,7 +119,7 @@ $messages['qqq'] = array(
 	'openidlanguage' => '{{Identical|Language}}',
 	'openidchoosepassword' => '{{Identical|Password}}',
 	'openidalreadyloggedin' => '$1 is a user name.',
-	'openid-prefs' => '{{optional}}
+	'prefs-openid' => '{{optional}}
 OpenID preferences tab title',
 	'openid-prefstext' => 'OpenID preferences tab text above the list of preferences',
 	'openid-pref-hide' => 'OpenID preference label (Hide your OpenID URL on your user page, if you log in with OpenID)',
@@ -229,7 +229,7 @@ $messages['ar'] = array(
 
 يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.',
 	'openidupdateuserinfo' => 'تحديث معلوماتي الشخصية',
-	'openid-prefs' => 'هوية مفتوحة',
+	'prefs-openid' => 'هوية مفتوحة',
 	'openid-prefstext' => 'تفضيلات [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'أخف هويتك <a href="http://openid.net/">هويتك المفتوحة</a> على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
 	'openid-pref-update-userinfo-on-login' => 'حدث معلوماتي من شخصية الهوية المفتوحة كل مرة أسجل الدخول',

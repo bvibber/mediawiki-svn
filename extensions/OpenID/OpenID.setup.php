@@ -155,9 +155,6 @@ $wgHooks['PersonalUrls'][] = 'OpenIDHooks::onPersonalUrls';
 $wgHooks['ArticleViewHeader'][] = 'OpenIDHooks::onArticleViewHeader';
 $wgHooks['SpecialPage_initList'][] = 'OpenIDHooks::onSpecialPage_initList';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'OpenIDHooks::onLoadExtensionSchemaUpdates';
-$wgHooks['RenderPreferencesForm'][] = 'OpenIDHooks::onRenderPreferencesForm';
-$wgHooks['InitPreferencesForm'][] = 'OpenIDHooks::onInitPreferencesForm';
-$wgHooks['ResetPreferences'][] = 'OpenIDHooks::onResetPreferences';
-$wgHooks['SavePreferences'][] = 'OpenIDHooks::onSavePreferences';
+$wgHooks['GetPreferences'][] = 'OpenIDHooks::onGetPreferences';
 # FIXME, function does not exist
 # $wgHooks['UserLoginForm'][] = 'OpenIDHooks::onUserLoginForm';
