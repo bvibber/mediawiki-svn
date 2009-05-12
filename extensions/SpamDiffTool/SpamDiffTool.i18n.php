@@ -216,6 +216,13 @@ Kliknite <a href='$1'>ovdje</a> za povratak.",
 	'spamdifftool_submit_buttom' => 'Pošalji',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'spamdifftool_submit_buttom' => 'Envia',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

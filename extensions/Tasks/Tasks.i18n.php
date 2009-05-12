@@ -466,6 +466,14 @@ $messages['bs'] = array(
 	'tasks-pref-showtaskcomments' => 'Uključivanje stranice komentara zadatka.',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'tasks_previous' => 'Anterior',
+	'tasks_next' => 'Següent',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

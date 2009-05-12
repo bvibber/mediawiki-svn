@@ -68,6 +68,13 @@ $messages['bs'] = array(
 	'nstab-comments' => 'Komentari',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'nstab-comments' => 'Comentari',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

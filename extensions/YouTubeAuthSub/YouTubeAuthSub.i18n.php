@@ -336,6 +336,7 @@ Molimo budite strpljivi.',
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
 	'youtubeauthsub' => 'Carregueu vídeo de YouTube',
@@ -347,6 +348,8 @@ $messages['ca'] = array(
 	'youtubeauthsub_username' => "Nom d'usuari de YouTube",
 	'youtubeauthsub_keywords' => 'Descriptors',
 	'youtubeauthsub_category' => 'Categoria',
+	'youtubeauthsub_submit' => 'Trametre',
+	'youtubeauthsub_clickhere' => 'Fes clic aquí per a connectar-te al YouTube',
 );
 
 /** Czech (Česky)

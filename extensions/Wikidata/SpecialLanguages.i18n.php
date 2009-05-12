@@ -1720,6 +1720,7 @@ Molimo kontaktirajte operatora servera ili administratora.',
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Solde
  * @author Toniher
  */
 $wdMessages['ca'] = array(
@@ -1729,8 +1730,12 @@ $wdMessages['ca'] = array(
 	'langman_req_fields' => 'Cal el nom de la llengua i el seu codi ISO 639-3!',
 	'langman_langname' => 'Nom de la llengua:',
 	'langman_iso639-3' => 'Codi ISO 639-3:',
+	'langman_iso639-2' => 'Codi ISO 639-2:',
+	'langman_wikimedia' => 'Codi Wikimedia:',
+	'langman_field_optional' => '(opcional)',
 	'ow_save' => 'Desa',
 	'ow_history' => 'Historial',
+	'ow_transaction_user' => "Nom d'usuari:",
 	'ow_transaction_restore' => 'Restaura',
 	'ow_transaction_remove' => 'Suprimeix',
 	'ow_dm_OK' => "D'acord",
@@ -1738,7 +1743,20 @@ $wdMessages['ca'] = array(
 	'ow_ClassAttributeLevel' => 'Nivell',
 	'ow_ClassAttributeType' => 'Tipus',
 	'ow_Language' => 'Idioma',
+	'ow_OptionAttributeOption' => 'Opció',
 	'ow_OptionAttributeOptions' => 'Opcions',
+	'ow_Label' => 'Etiqueta',
+	'ow_Link' => 'Enllaç',
+	'ow_LinkAttribute' => 'Propietat',
+	'ow_LinkAttributeValues' => 'Enllaços',
+	'ow_User' => 'Usuari',
+	'ow_Property' => 'Propietat',
+	'ow_Value' => 'Valor',
+	'ow_added' => 'Afegit',
+	'ow_removed' => 'Eliminat',
+	'ow_class_attr_type_link' => 'Enllaç',
+	'ow_suggest_previous' => 'Anterior',
+	'ow_suggest_next' => 'Següent',
 );
 
 /** Czech (Česky)

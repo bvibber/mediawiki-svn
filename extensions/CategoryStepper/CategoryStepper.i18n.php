@@ -91,6 +91,14 @@ $messages['bs'] = array(
 	'categorystepper-start' => '(Početak kategorije)',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'categorystepper-end' => '(Fi de categoria)',
+	'categorystepper-start' => '(Inici de categoria)',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

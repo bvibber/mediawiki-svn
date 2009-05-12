@@ -553,6 +553,8 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'languageselector' => 'Bahasa',
+	'languageselector-desc' => 'Pilihan bahasa pada setiap laman, termasuk untuk para pelawat.',
+	'languageselector-setlang' => 'set',
 );
 
 /** Maltese (Malti)

@@ -285,6 +285,13 @@ riddler|Zagonetka',
 	'vote-invalid-choice' => 'Morate odabrati jednu od ponuđenih opcija.',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'vote-submit' => 'Vota',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -74,6 +74,14 @@ $messages['bs'] = array(
 	'catboxattop-categories' => 'Kategorije',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'catboxattop-desc' => "Afegeix una caixa de categoria a dalt a l'esquerra de les pàgines",
+	'catboxattop-categories' => 'Categories',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

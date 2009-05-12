@@ -149,6 +149,15 @@ $messages['ksh'] = array(
 	'tspoll-id-error' => 'Kein Kennung aanjejovve!',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'tspoll-desc' => 'Den [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] als HTML-Tag drasetzen',
+	'tspoll-fetch-error' => 'Feeler bäim Opruffe vun der URL!',
+	'tspoll-id-error' => 'Keng ID gouf uginn!',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -1569,6 +1569,7 @@ Koristite ovo da biste postavili izvorni video koji nije pretvoren u Theora form
 	'cc_pd_title' => 'Javna domena',
 	'unknown_license' => 'Nepoznata licenca',
 	'mv_stream_title' => '$1 $2 do $3',
+	'mv_insert_image_page' => 'Ubaci u stranicu',
 	'mv_preview_insert' => 'Pregled ubacivanja',
 	'mv_cancel_image_insert' => 'Odustani ubacivanje',
 	'sc_audio' => 'Kontrola zvuka',
@@ -1585,6 +1586,7 @@ Koristite ovo da biste postavili izvorni video koji nije pretvoren u Theora form
 	'zoom_in' => 'Približi',
 	'zoom_out' => 'Udalji',
 	'pixle2sec' => 'piksela u sekundi',
+	'rmclip' => 'Ukloni isječak',
 	'metavid' => 'MetaVid stranica',
 	'mv_missing_stream' => 'Nedostaje tok: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki posebne stranice',
@@ -1596,6 +1598,7 @@ Koristite ovo da biste postavili izvorni video koji nije pretvoren u Theora form
 	'mv_path_type_label' => 'tip puta',
 	'mv_duration_label' => 'Trajanje',
 	'mv_media_path' => 'putanja medije',
+	'mv_missing_cat' => 'Nedostaje ime kategorije',
 	'mv_label_stream_type' => 'Vrsta toka',
 	'mv_metavid_file' => 'Postojeća datoteka na serveru',
 	'mv_upload_file' => 'Postavi datoteku',
@@ -1616,6 +1619,7 @@ Koristite ovo da biste postavili izvorni video koji nije pretvoren u Theora form
  * @author Jordi Roqué
  * @author Loupeter
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
 	'mv_duration_label' => 'Durada',
@@ -1628,7 +1632,7 @@ $messages['ca'] = array(
 	'mv_advanced_edit' => 'Edició avançada',
 	'mv_basic_edit' => 'Edició bàsica',
 	'mv_remove_category' => 'Esborrar categoria',
-	'mv_existing_categories' => 'categories:',
+	'mv_existing_categories' => '{{PLURAL:$1|categoria|categories}}:',
 	'mv_add_category' => 'Afegir una categoria',
 	'mv_basic_text_desc' => 'Descripció del text (optativa)',
 	'mv_viewnext' => 'Veure ($1)',
@@ -1688,6 +1692,7 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video-Metadaten-Editor & Medien-Suche]',
 	'loading_txt' => 'Lade <blink>…</blink>',
 	'loading_plugin' => 'Lade Plugin <blink>…</blink>',
 	'select_playback' => 'Wiedergabeoptionen einstellen',
@@ -2225,6 +2230,7 @@ $messages['fi'] = array(
  * @author Zetud
  */
 $messages['fr'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Éditeur de métadonnées vidéo & recherche de médias]',
 	'loading_txt' => 'Chargement en cours <blink>...</blink>',
 	'loading_plugin' => 'Chargement du plugin en cours <blink>...</blink>',
 	'select_playback' => 'Définir les préférences de lecture',
@@ -2614,6 +2620,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor de metadatos de vídeo e procura multimedia]',
 	'loading_txt' => 'Cargando <blink>...</blink>',
 	'loading_plugin' => 'Cargando o complemento <blink>...</blink>',
 	'select_playback' => 'Configurar as preferencias de reprodución',
@@ -2759,7 +2766,7 @@ Seleccione un único fragmento para editalo',
 	'mv_duration_label' => 'Duración',
 	'mv_file_desc_label' => 'mensaxe de descrición do fluxo',
 	'mv_delete_stream_file' => 'borrar a referencia aos ficheiros de fluxo',
-	'mv_save_changes' => 'Gardar Cambios',
+	'mv_save_changes' => 'Gardar os cambios',
 	'mv_file_with_same_desc' => 'Erro: xa hai outro ficheiro de fluxo que presenta a mesma clave de descrición <i>$1</i>',
 	'mv_updated_stream_files' => 'Gravación de ficheiros de fluxo actualizados',
 	'mv_removed_file_stream' => 'Nome do fluxo eliminado: $1',
@@ -2998,6 +3005,7 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video-Metadata-Editor & Media-Search]',
 	'loading_txt' => 'Am Lade <blink>...</blink>',
 	'loading_plugin' => 'Am Plugin lade <blink>...</blink>',
 	'select_playback' => 'Widergab-Yystellig setze',
@@ -3678,22 +3686,37 @@ $messages['hsb'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video Metadata Editor & Media Search]',
 	'loading_txt' => '<blink>...</blink> so začituje',
 	'loading_plugin' => 'Tykač <blink>...</blink> so začituje',
+	'select_playback' => 'Preferency za wothrawanje nastajić',
 	'link_back' => 'Wróćo wotkazać',
+	'error_load_lib' => 'mv_embed: Njemóžno trěbne JavaScritpowe biblioteki začitać.
+Zasunjenje skripta přez DOM njeporadźene.
+Začitanje wospjetować?',
+	'error_swap_vid' => 'Zmylk: mv_embed njemóžeše widejowu tafličku za wužiwarski powjerch mv_embed wuměnić',
 	'download_segment' => 'Wuběr sćahnyć:',
 	'download_full' => 'Dospołnu widejodataju sćahnyć',
 	'download_clip' => 'Klip sćahnyć',
 	'download_text' => 'Tekst sćahnyć (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML):',
 	'clip_linkback' => 'Žórłowa strona klipa',
+	'mv_ogg-player-videoElement' => 'Standardna podpěra za Ogg Video',
 	'mv_ogg-player-oggPlugin' => 'Powšitkowny tykač Ogg',
 	'mv_ogg-player-selected' => '(wubrany)',
+	'mv_generic_missing_plugin' => 'Twój wobhladowak njepodpěruje slědowacy wothrawanski typ: <b>$1</b><br />
+Wopytaj stronu <a href="http://metavid.org/wiki/Client_Playback">Metody wothrawanja</a>, zo by wothrawak sćahnył.<br />',
 	'add_to_end_of_sequence' => 'Kóncej sekwency přidać',
 	'missing_video_stream' => 'Widejodataja za tutón stream pobrachuje',
 	'select_transcript_set' => 'Tekstowe runiny wubrać',
+	'auto_scroll' => 'awtomatiske kulenje',
 	'close' => 'začinić',
 	'improve_transcript' => 'Přepis polěpšić',
 	'next_clip_msg' => 'Dalši klip wothrać',
 	'prev_clip_msg' => 'Předchadny klip wothrać',
 	'current_clip_msg' => 'Tuton klip dale wothrać',
+	'seek_to' => 'Pytać za',
+	'upload-enable-converter' => 'Widejowy konwerter aktiwizować.
+Wužij to, zo by žórłowe widejo nahrał, kotrež hišće njeje do formata Theora skonwertowane.
+(<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">dalše informacije</a>)',
+	'upload-fogg_not_installed' => 'Jeli chceš widejo nahrać, rozwaž instalowanje rozšěrjenja za Firefox <a href="http://firefogg.org">Firefogg</a>.
+(<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">dalše informacije</a>)',
 	'upload-in-progress' => 'Transkodowanje a nahrawanje (njezačiń tute wokno)',
 	'upload-transcoded-status' => 'Transkodowany',
 	'uploaded-status' => 'Nahraty',
@@ -3716,6 +3739,8 @@ $messages['hsb'] = array(
 	'cc_title' => 'Creative Commons',
 	'cc_by_title' => 'Přirjadowanje',
 	'cc_nc_title' => 'Njekomercielny',
+	'cc_nd_title' => 'Žane wotwodźene dźěła',
+	'cc_sa_title' => 'Po jenakich dźělach',
 	'cc_pd_title' => 'Zjawnje wužiwajomny',
 	'unknown_license' => 'Njezanta licenca',
 	'mv_stream_title' => '$1 $2 do $3',
@@ -3725,6 +3750,7 @@ $messages['hsb'] = array(
 	'mv_insert_image_page' => 'Do strony zasunyć',
 	'mv_preview_insert' => 'Přehlad zasunjenja',
 	'mv_cancel_image_insert' => 'Zasunjenje přetorhnyć',
+	'sc_fileopts' => 'Podrobnosće klipa wobdźěłać',
 	'sc_overlays' => 'Naworštowanja',
 	'sc_audio' => 'Awdiowodźenje',
 	'sc_duration' => 'Traće',
@@ -3738,6 +3764,7 @@ $messages['hsb'] = array(
 	'menu_transition' => 'Přechodne efekty',
 	'menu_resource_overview' => 'Resursowy přehlad',
 	'menu_options' => 'Opcije',
+	'loading_timeline' => 'Časowa lajsta so nutř čita <blink>...</blink>',
 	'loading_user_rights' => 'Wužiwarske prawa <blink>...</blink> so začituja',
 	'no_edit_permissions' => 'Nimaš prawa za składowanje změnow na tutej sekwency',
 	'edit_clip' => 'Klip wobdźěłać',
@@ -3750,6 +3777,7 @@ Wšě změny so zhubja.',
 	'cut_clip' => 'Klipy přitřihać',
 	'expand_track' => 'Ćěr pokazać',
 	'colapse_track' => 'Ćěr schować',
+	'play_clip' => 'Wot pozicije wothrawanskeje linije wothrać',
 	'pixle2sec' => 'piksele do sekundow',
 	'rmclip' => 'Klip wotstronić',
 	'clip_in' => 'Klip zasunyć',
@@ -6023,6 +6051,7 @@ $messages['nso'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor de metadonadas vidèo & recèrca de mèdias]',
 	'loading_txt' => 'Cargament en cors <blink>...</blink>',
 	'loading_plugin' => 'Cargament del plugin en cors <blink>...</blink>',
 	'select_playback' => 'Definir las preferéncias de lectura',
@@ -7028,6 +7057,7 @@ $mvMVDTypeDefaultDisp должен быть подмножеством $mvMVDTyp
  * @author Helix84
  */
 $messages['sk'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor metadát videa a vyhľadávač multimédií]',
 	'loading_txt' => 'Načítava sa <blink>...</blink>',
 	'loading_plugin' => 'Načítava sa zásuvný modul <blink>...</blink>',
 	'select_playback' => 'Nastaviť predvoľby prehrávania',

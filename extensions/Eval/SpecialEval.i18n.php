@@ -381,8 +381,14 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Airwolf
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'eval' => 'Oblicz',
+	'eval-desc' => 'Dodaje [[Special:Eval|interfejs]] dla funkcji <code>eval()</code>',
+	'eval_submit' => 'Oblicz',
+	'eval_escape' => 'Wyjście awaryjne',
+	'eval_out' => 'Wynik',
 	'eval_code' => 'Kod',
 );
 

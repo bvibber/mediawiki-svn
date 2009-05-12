@@ -410,12 +410,29 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Aleator
  * @author Loupeter
+ * @author Solde
  */
 $messages['ca'] = array(
+	'contrib-hist-name' => 'Nom',
 	'contrib-hist-date' => 'Data i hora',
+	'contrib-hist-amount' => 'Quantitat',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Total per avui|Totals diaris dels darrers $1 dies}}',
 	'contribstats-monthly-totals' => "{{PLURAL:$1|Total d'aquest mes|Totals mensuals dels darrers $1 mesos}}",
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Total per $1 mes|Totals mensuals per $1 mesos}}',
+	'contribstats-day' => 'Dia',
+	'contribstats-month' => 'Mes',
+	'contribstats-currency' => 'Moneda',
+	'contribstats-amount' => 'Quantitat (USD)',
+	'contribstats-contributions' => 'Contribucions',
+	'contribstats-total' => 'Total (USD)',
+	'contribstats-avg' => 'Mitjana (USD)',
+	'contribstats-max' => 'Màxim (USD)',
+	'contribstats-percentage-ytd' => 'Percentatge (YTD)',
+	'contribstats-total-ytd' => 'Total (YTD)',
+	'contribstats-value-exactly' => 'Exactament $1',
+	'contribstats-value-under' => 'Inferior a $1',
+	'contribstats-value-from' => 'Entre $1 - $2',
+	'contribstats-value-over' => 'Per sobre $1',
 	'fundraiserstats-date' => 'Data',
 );
 

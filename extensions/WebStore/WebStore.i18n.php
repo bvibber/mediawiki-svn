@@ -395,11 +395,13 @@ $1',
  * @author CERminator
  */
 $messages['bs'] = array(
+	'inplace_access_disabled' => 'Pristup na ovaj servis je onemogućen za sve klijente.',
 	'inplace_access_denied' => 'Ova usluga je zabranjena od strane IPa klijenta.',
 	'inplace_scaler_no_temp' => 'Nema valjanog privremenog direktorijuma.
 Postavite varijablu $wgLocalTmpDirectory kao direktorijum za pisanje.',
 	'inplace_scaler_not_enough_params' => 'Nema dovoljno parametara.',
 	'inplace_scaler_invalid_image' => 'Nevaljana slika, nije joj moguće odrediti veličinu.',
+	'webstore_access' => 'Ova usluga je onemogućena od IP klijenta.',
 	'webstore_path_invalid' => 'Naziv datoteke nije valjan.',
 	'webstore_dest_open' => 'Ne može se otvoriti odredišna datoteka "$1".',
 	'webstore_dest_mkdir' => 'Nemoguće napraviti odredišni direktorij "$1".',

@@ -67,6 +67,13 @@ $messages['bs'] = array(
 	'ajax-qp-desc' => 'Dodaje neke AJAX stranice upita poput [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'ajax-qp-desc' => 'Afegeix AJAX a les pàgines de cerca com a [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

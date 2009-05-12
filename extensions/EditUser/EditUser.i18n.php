@@ -189,8 +189,12 @@ $messages['bug'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Solde
  */
 $messages['ca'] = array(
+	'edituser-desc' => 'Permet editar les preferències dels altres usuaris als usuaris privilegiats',
+	'edituser' => "Edita l'usuari",
+	'edituser-logout' => "Desconnecta l'usuari",
 	'edituser-dosearch' => 'Cerca',
 );
 

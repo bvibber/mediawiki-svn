@@ -56,6 +56,13 @@ $messages['bs'] = array(
 	'jskit-desc' => 'Integrira js-kit alate na wiki stranicu',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'jskit-desc' => 'Integra les eines js-kit en una pàgina wiki',
+);
+
 /** German (Deutsch)
  * @author Purodha
  */

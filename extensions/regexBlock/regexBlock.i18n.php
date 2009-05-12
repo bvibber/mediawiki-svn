@@ -369,6 +369,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'regexblock-already-blocked' => '$1 je već blokiran.',
+	'regexblock-block-log' => "Korisničko ime ili IP adresa '''$1''' je blokiran.",
 	'regexblock-block-success' => 'Blokada uspješna',
 	'regexblock-currently-blocked' => 'Trenutno blokirane adrese:',
 	'regexblock-expire-duration' => '1 sat,2 sata,4 sata,6 sati,1 dan,3 dana,1 sedmica,2 sedmice,1 mjesec,3 mjeseca,6 mjeseci,1 godina,neograničeno',
@@ -397,6 +398,7 @@ Moguće da ne postoji takav korisnik.',
 	'regexblock-view-block-by' => 'blokirano od strane:',
 	'regexblock-view-block-unblock' => 'deblokada',
 	'regexblock-view-stats' => 'statistike',
+	'regexblock-view-empty' => 'Spisak blokiranih imena i adresa je prazan.',
 	'regexblock-view-time' => 'u $1',
 	'right-regexblock' => 'Blokiranje korisnika od uređivanja na svim wikijima na wiki farmi',
 );

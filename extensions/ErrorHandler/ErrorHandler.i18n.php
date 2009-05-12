@@ -736,14 +736,28 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'errorhandler-desc' => 'Wyłapywanie błędów MediaWiki',
+	'errorhandler-desc' => 'Wyłapuje błędy w MediaWiki',
 	'errorhandler-errors' => 'Błędy:',
 	'errorhandler-error-fatal' => 'Błąd krytyczny',
 	'errorhandler-error-warning' => 'Ostrzeżenie',
 	'errorhandler-error-parse' => 'Błąd parsera',
+	'errorhandler-error-notice' => 'Wiadomość',
+	'errorhandler-error-deprecated' => 'Niezaakceptowane',
+	'errorhandler-error-core-error' => 'Błąd rdzenia',
+	'errorhandler-error-core-warning' => 'Ostrzeżenie dotyczące rdzenia',
+	'errorhandler-error-compile-error' => 'Błąd kompilacji',
+	'errorhandler-error-compile-warning' => 'Ostrzeżenie w trakcie kompilacji',
 	'errorhandler-error-user-error' => 'Błąd użytkownika',
+	'errorhandler-error-user-warning' => 'Ostrzeżenie użytkownika',
+	'errorhandler-error-user-notice' => 'Wiadomość użytkownika',
+	'errorhandler-error-user-deprecated' => 'Niezaakceptowany użytkownik',
+	'errorhandler-error-strict' => 'Ścisłe normy',
+	'errorhandler-error-recoverable' => 'Wychwytywalny błąd krytyczny',
 	'errorhandler-msg-text' => '$1 : $2 w $3 (linia $4)',
+	'errorhandler-msg-html' => '<b>$1</b> – <i>$2</i> w <b>$3</b> (linia <b>$4</b>)',
+	'errorhandler-trace' => 'śledzenie:',
 	'errorhandler-trace-line' => '$1 (linia $2): $3',
+	'errorhandler-trace-line-internal' => '[funkcja wewnętrzna] – $1',
 );
 
 /** Pashto (پښتو)
@@ -865,7 +879,7 @@ $messages['sk'] = array(
 	'errorhandler-error-warning' => 'Upozornenie',
 	'errorhandler-error-parse' => 'Chyba syntaktickej analýzy',
 	'errorhandler-error-notice' => 'Oznam',
-	'errorhandler-error-deprecated' => 'Zastaralé',
+	'errorhandler-error-deprecated' => 'Zavrhované',
 	'errorhandler-error-core-error' => 'Chyba jadra',
 	'errorhandler-error-core-warning' => 'Upozornenie jadra',
 	'errorhandler-error-compile-error' => 'Chyba kompilácie',
@@ -873,7 +887,7 @@ $messages['sk'] = array(
 	'errorhandler-error-user-error' => 'Chyba používateľa',
 	'errorhandler-error-user-warning' => 'Upozornenie používateľa',
 	'errorhandler-error-user-notice' => 'Oznam používateľa',
-	'errorhandler-error-user-deprecated' => 'Používateľ je zastaralý',
+	'errorhandler-error-user-deprecated' => 'Používateľ je zavrhovaný',
 	'errorhandler-error-strict' => 'Prísne štandardy',
 	'errorhandler-error-recoverable' => 'Osudová chyba, ktorú možno zachytiť',
 	'errorhandler-msg-text' => '$1 : $2 v $3 (riadok $4)',

@@ -66,6 +66,13 @@ $messages['bs'] = array(
 	'woopra-desc' => 'Omogućuje rad [http://www.woopra.com/ Woopra Live Tracking softvera] za Vašu MediaWiki instalaciju',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'woopra-desc' => "Permet a [http://www.woopra.com/ Woopra Live Tracking Software] realitzar treballar per tu en l'instal·lació de MediaWiki",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

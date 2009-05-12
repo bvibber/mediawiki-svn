@@ -172,6 +172,27 @@ $messages['bs'] = array(
 	'amazonplus-less' => 'manje',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'amazonplus-desc' => "Una extensió altament customitzable per a mostrar l'informació d'Amazon",
+	'amazonplus-nores' => "Error: No s'ha trobat cap resultat!",
+	'amazonplus-noidres' => "Errpr: No s'ha pogut trobar un ID de producte!",
+	'amazonplus-fgcerr' => "Error: No s'ha pogut obtenir les dades d'Amazon!",
+	'amazonplus-slserr' => "Error: No s'ha pogut processar la informació d'Amazon!",
+	'amazonplus-used' => 'usat',
+	'amazonplus-german' => 'Alemany',
+	'amazonplus-french' => 'Francès',
+	'amazonplus-japanese' => 'Japonès',
+	'amazonplus-amazon' => "preu d'amazon",
+	'amazonplus-new' => 'nou',
+	'amazonplus-none' => "Cap còpia d'aquest ítem està en venda.",
+	'amazonplus-cp-none' => 'Cap',
+	'amazonplus-more' => 'més',
+	'amazonplus-less' => 'menys',
+);
+
 /** Cebuano (Cebuano)
  * @author Wrightbus
  */
@@ -592,8 +613,10 @@ $messages['ka'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
+	'amazonplus-desc' => 'ផ្នែក​បន្ថែម​ (extension)មួយ​​ដែល​អាច​ប្តូរ​តាម​បំណង​ ដើម្បី​បង្ហាញ​ព័ត៌មាន​អំពី​ Amazon',
 	'amazonplus-nores' => 'កំហុស​៖ គ្មាន​លទ្ធផល​!',
 	'amazonplus-noidres' => 'កំហុស​៖ មិន​អាច​រកឃើញ​ផលិតផល​ដែល​មាន ID!',
 	'amazonplus-fgcerr' => 'កំហុស​៖ មិន​អាច​ទាញយក​ទិន្នន័យ​ពី​អាម៉ាហ្សូន​ទេ​!',

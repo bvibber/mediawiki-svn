@@ -209,6 +209,16 @@ Dodajte jednu koristeći alate u meniju.',
 	'gep-nocategories' => 'Molimo odaberite najmanje jednu kategoriju prije spremanja',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'gep-addcategory' => 'Afegeix una categoria',
+	'gep-addcategorybutton' => 'Afegeix',
+	'gep-suggestcategory' => 'Suggereix una categoria',
+	'gep-suggestcategorybutton' => 'Envia',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

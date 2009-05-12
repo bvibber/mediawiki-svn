@@ -56,6 +56,13 @@ $messages['bs'] = array(
 	'formatsearch-desc' => 'Čisti stranicu pretrage',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'formatsearch-desc' => 'Neteja la pàgina de resultats de la cerca',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

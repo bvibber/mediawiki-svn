@@ -432,6 +432,7 @@ Deu :',
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'securepasswords-desc' => 'Tworzy bezpieczniejszy skrót hasła oraz poprawia jego weryfikację',
 	'securepasswords-valid' => 'Hasło jest nieprawidłowe lub zbyt krótkie.
 Musi ono:',
 	'securepasswords-minlength' => 'składać się z co najmniej $1 {{PLURAL:$1|znaku|znaków}}',

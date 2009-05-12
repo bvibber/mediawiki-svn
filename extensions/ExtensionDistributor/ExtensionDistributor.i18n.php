@@ -300,6 +300,13 @@ Ako imate nekih pitanja oko ovog sistema distribucije proširenja, molimo pogled
 	'extdist-want-more' => 'Nađi slijedeće proširenje',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'extdist-submit-version' => 'Continua',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

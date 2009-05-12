@@ -60,6 +60,13 @@ $messages['bs'] = array(
 	'gnuplot-desc' => 'Dodaje oznaku <code><nowiki><gnuplot></nowiki></code> za upotrebu Gnuplot',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'gnuplot-desc' => "Afegeix l'etiqueta <code><nowiki><gnuplot></nowiki></code> per a usar Gnuplot",
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

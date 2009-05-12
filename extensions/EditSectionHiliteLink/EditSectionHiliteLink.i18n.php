@@ -124,6 +124,20 @@ $messages['nl'] = array(
 	'Editsectionhilitelink-desc' => "Markeer de van toepassing zijde paragraaf bij het selecteren van de verwijzing ''bewerken''",
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'Editsectionhilitelink-desc' => 'Metre en susbrilhança la seccion d’un article quora plaçatz vòstra mirga sul ligam Modificar',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'Editsectionhilitelink-desc' => 'Podświetla odpowiednią sekcję na stronie po przesunięciu kursora myszy nad link edytuj',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

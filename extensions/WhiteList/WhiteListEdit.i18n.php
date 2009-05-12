@@ -535,9 +535,12 @@ Ova stranica se može primijeniti samo na ograničene korisnike",
  * @author Jordi Roqué
  * @author Loupeter
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
+	'whitelisttablemodifyall' => 'Tot',
 	'whitelisttablemodifynone' => 'Cap',
+	'whitelisttablepage' => 'Pàgina wiki',
 	'whitelisttableedit' => 'Edita',
 	'whitelisttablenewdate' => 'Nova data:',
 	'whitelisttablechangedate' => 'Canviar data de venciment',

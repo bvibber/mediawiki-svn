@@ -178,9 +178,17 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Solde
  */
 $messages['ca'] = array(
+	'editmessages-desc' => "[[Special:EditMessages|Web-based editing]] d'una gran quantitat de Missatges*.php fitxers",
+	'editmessages' => 'Edita missatges',
+	'editmsg-target' => 'Missatge objectiu:',
 	'editmsg-search' => 'Cerca',
+	'editmsg-show-list' => 'Es mostren valors pel missatge "$1"',
+	'editmsg-get-patch' => 'Generar un pedaç',
+	'editmsg-new-search' => 'Nova cerca',
+	'editmsg-warning-parse1' => '* El missatge regex no correspon: $1',
 );
 
 /** Chamorro (Chamoru)

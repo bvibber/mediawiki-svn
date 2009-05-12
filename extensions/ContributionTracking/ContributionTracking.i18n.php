@@ -113,6 +113,13 @@ $messages['bs'] = array(
 	'contrib-tracking-button' => 'nastavi',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'contrib-tracking-error' => 'Error',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

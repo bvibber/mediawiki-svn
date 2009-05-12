@@ -38,7 +38,6 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'multipleupload' => '{{Identical|Upload files}}',
 	'multipleupload-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'multipleupload-text' => 'Plural is supported for $1.',
 );
@@ -61,7 +60,7 @@ $messages['gom-latn'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'multipleupload' => 'رفع الملفات',
+	'multipleupload' => 'رفع ملفات متعددة',
 	'multipleupload-desc' => 'يسمح للمستخدمين [[Special:MultipleUpload|برفع عدة ملفات في وقت واحد]]',
 	'multipleupload-ignoreallwarnings' => "تجاهل '''كل التحذيرات''' واحفظ الملفات على أية حال.",
 	'multipleupload-saveallfiles' => 'حفظ كل الملفات',
@@ -169,7 +168,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'multipleupload' => 'Postavljanje datoteka',
+	'multipleupload' => 'Postavljanje više datoteka',
 	'multipleupload-desc' => 'Omogućuje korisnicima [[Special:MultipleUpload|postavljanje nekoliko datoteka odjednom]]',
 	'multipleupload-ignoreallwarnings' => "Zanemari '''sva upozorenja''' i spremi datoteke.",
 	'multipleupload-saveallfiles' => 'Spremi sve datoteke',
@@ -286,7 +285,7 @@ Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupl
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'multipleupload' => 'Dataje nagraś',
+	'multipleupload' => 'Někotare dataje nagraś',
 	'multipleupload-desc' => 'Dowólujo wužywarjam [[Special:MultipleUpload|někotare dataje naraz nagraś]]',
 	'multipleupload-ignoreallwarnings' => "'''Wšykne warnowanja''' ignorěrowaś a weto składowaś",
 	'multipleupload-saveallfiles' => 'Wšykne dataje składowaś',
@@ -346,7 +345,7 @@ Malkonvenaj dosieroj estos tuj forigita. Vidu la [[{{MediaWiki:Multipleupload-pa
  * @author Sanbec
  */
 $messages['es'] = array(
-	'multipleupload' => 'Subir archivos',
+	'multipleupload' => 'Subir múltiples archivos',
 	'multipleupload-desc' => 'Permite [[Special:MultipleUpload|subir varios archivos de una sola vez]] a los usuarios',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todos los avisos''' y guardar los archivos.",
 	'multipleupload-saveallfiles' => 'Guardar todos los archivos',
@@ -389,6 +388,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Jack Phoenix
  * @author Jack Phoenix <jack@countervandalism.net>
  * @author Nike
  */
@@ -413,6 +413,7 @@ Sopimattomat tiedostot poistetaan välittömästi; katso [[{{MediaWiki:Multipleu
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Dereckson
  * @author Grondin
  * @author Guérin Nicolas
@@ -420,7 +421,7 @@ Sopimattomat tiedostot poistetaan välittömästi; katso [[{{MediaWiki:Multipleu
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'multipleupload' => 'Importer (téléverser) des fichiers',
+	'multipleupload' => 'Importer (téléverser) plusieurs fichiers',
 	'multipleupload-desc' => 'Permet aux utilisateurs d’importer (téléverser), [[Special:MultipleUpload|en une seule fois, plusieurs fichiers]]',
 	'multipleupload-ignoreallwarnings' => "Ignorer '''tous les avertissements''' et sauvegarder les fichiers malgré tout.",
 	'multipleupload-saveallfiles' => 'Sauvegarder tous les fichiers',
@@ -452,7 +453,7 @@ $messages['fy'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'multipleupload' => 'Enviar ficheiros',
+	'multipleupload' => 'Cargar todos os ficheiros',
 	'multipleupload-desc' => 'Permítelles aos usuarios [[Special:MultipleUpload|cargar varios ficheiros á vez]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todas as advertencias''' e gardar os ficheiros igual.",
 	'multipleupload-saveallfiles' => 'Gardar todos os ficheiros',
@@ -475,7 +476,7 @@ Os ficheiros inapropiados eliminaranse inmediatamente: vexa a [[{{MediaWiki:Mult
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'multipleupload' => 'Dateie uffelade',
+	'multipleupload' => 'Mehreri Dateie uffelade',
 	'multipleupload-desc' => 'Erlaubt s [[Special:MultipleUpload|Uffelade vu mehrere Dateie]] in einere Aktion',
 	'multipleupload-ignoreallwarnings' => "Ignorier '''alli Warnige''' un spychere di Dateie.",
 	'multipleupload-saveallfiles' => 'Alli Dateie spychere',
@@ -573,7 +574,7 @@ Neprimjerene datoteke će odmah biti obrisane, vidi [[{{MediaWiki:Multipleupload
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'multipleupload' => 'Dataje nahrać',
+	'multipleupload' => 'Wjacore dataje nahrać',
 	'multipleupload-desc' => 'Dowola wužiwarjam [[Special:MultipleUpload|wjacore dataje na jedne dobo nahrać]]',
 	'multipleupload-ignoreallwarnings' => "'''Wšě warnowanja''' ignorować a dataje składować.",
 	'multipleupload-saveallfiles' => 'Wšě dataje składować',
@@ -618,7 +619,7 @@ A nem megfelelő fájlok azonnal törölve lesznek, lásd a [[{{MediaWiki:Multip
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'multipleupload' => 'Cargar files',
+	'multipleupload' => 'Cargar plure files',
 	'multipleupload-desc' => 'Permitte que le usatores [[Special:MultipleUpload|carga plure files simultaneemente]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''tote le advertimentos''' e immagazinar totevia le files.",
 	'multipleupload-saveallfiles' => 'Immagazinar tote le files',
@@ -674,7 +675,7 @@ $messages['io'] = array(
  * @author Stefano-c
  */
 $messages['it'] = array(
-	'multipleupload' => 'Carica file multimediali',
+	'multipleupload' => 'Carica file multipli',
 	'multipleupload-desc' => 'Permetti agli utenti di [[Special:MultipleUpload|caricare più file contemporaneamente]]',
 	'multipleupload-ignoreallwarnings' => "Ignora '''tutti gli avvertimenti''' e salva comunque i file.",
 	'multipleupload-saveallfiles' => 'Salva tutti i file',
@@ -699,7 +700,7 @@ File inappropriati verranno cancellati immediatamente, leggi le [[{{MediaWiki:Mu
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'multipleupload' => 'ファイルをアップロード',
+	'multipleupload' => '複数ファイルをアップロード',
 	'multipleupload-desc' => '利用者が[[Special:MultipleUpload|複数のファイルを一度にアップロード]]できるようにする',
 	'multipleupload-ignoreallwarnings' => "'''すべての警告'''を無視し、ファイルを保存する。",
 	'multipleupload-saveallfiles' => 'すべてのファイルを保存する',
@@ -770,8 +771,8 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'multipleupload' => 'Dateie huhlade',
-	'multipleupload-desc' => 'Määt et müjjelesch, [[Special:MultipleUpload|ettlijje Date op eimol huhzelade]].',
+	'multipleupload' => 'Ättlijje Dateie huhlade',
+	'multipleupload-desc' => 'Määt et müjjelesch, [[Special:MultipleUpload|ättlijje Date op eimol huhzelade]].',
 	'multipleupload-ignoreallwarnings' => "Donn '''alle Warnunge''' övverjonn un hal de Dateie su un esu faß.",
 	'multipleupload-saveallfiles' => 'Alle Dateie afspeichere',
 	'multipleupload-addresswarnings' => 'Bes esu joot un kömmer Desch öm jede Warnung, ih dat De de Dateie norr_en huhlade deis.',
@@ -801,7 +802,7 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'multipleupload' => 'Fichieren eroplueden',
+	'multipleupload' => 'Vill Fichiere mateneeneroplueden',
 	'multipleupload-desc' => 'Erlaabt et [[Special:MultipleUpload|méi Fichieren mateneen eropzelueden]]',
 	'multipleupload-ignoreallwarnings' => "'''All Warnungen''' ignoréieren an d'Ficheren trotzdem späicheren.",
 	'multipleupload-saveallfiles' => "All d'Fichiere späicheren",
@@ -926,7 +927,7 @@ $messages['nah'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'multipleupload' => 'Bestanden uploaden',
+	'multipleupload' => 'Meerdere bestanden uploaden',
 	'multipleupload-desc' => 'Laat gebruikers toe om meerdere bestanden [[Special:MultipleUpload|in één keer te uploaden]]',
 	'multipleupload-ignoreallwarnings' => "'''Alle waarschuwingen''' negeren en de bestanden sowieso uploaden.",
 	'multipleupload-saveallfiles' => 'Alle bestanden opslaan',
@@ -998,7 +999,7 @@ Upassende filer vil bli slettet umiddelbart, se [[{{MediaWiki:Multipleupload-pag
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'multipleupload' => 'Telecargar de fichièrs',
+	'multipleupload' => 'Telecargar mantun fichièr',
 	'multipleupload-desc' => 'Permet als utilizaires d’importar (televersar), [[Special:MultipleUpload|en un sol còp, mantun fichièr]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''totes los avertiments''' e salvar los fichièrs en question.",
 	'multipleupload-saveallfiles' => 'Salvar totes los fichièrs',
@@ -1191,7 +1192,7 @@ $messages['sdc'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'multipleupload' => 'Nahrať súbory',
+	'multipleupload' => 'Nahrať viaceré súbory',
 	'multipleupload-desc' => 'Umožňuje používateľom [[Special:MultipleUpload|nahrať viacero súborov naraz]]',
 	'multipleupload-ignoreallwarnings' => "Ignorovať '''všetky upozornenia''' a napriek nim súbor uložiť.",
 	'multipleupload-saveallfiles' => 'Uložiť všetky súbory',
@@ -1263,7 +1264,7 @@ Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-p
  * @author Najami
  */
 $messages['sv'] = array(
-	'multipleupload' => 'Ladda upp filer',
+	'multipleupload' => 'Ladda upp flera filer',
 	'multipleupload-desc' => 'Gör det möjligt att [[Special:MultipleUpload|ladda upp flera filer på en gång]]',
 	'multipleupload-ignoreallwarnings' => "Ignorera '''alla varningar''' och spara filerna likväl.",
 	'multipleupload-saveallfiles' => 'Spara alla filer',
@@ -1363,7 +1364,7 @@ Kaagad na buburahin ang hindi naaangkop na mga talaksan, tingnan ang [[{{MediaWi
  * @author Mach
  */
 $messages['tr'] = array(
-	'multipleupload' => 'Dosyaları yükle',
+	'multipleupload' => 'Birden fazla dosya yükle',
 	'multipleupload-desc' => 'Kullanıcıların [[Special:MultipleUpload|aynı anda birçok dosya yüklemelerine]] izin verir',
 	'multipleupload-ignoreallwarnings' => "'''Tüm uyarıları''' yoksay ve dosyaları her halükarda yükle.",
 	'multipleupload-saveallfiles' => 'Tüm dosyaları kaydet',

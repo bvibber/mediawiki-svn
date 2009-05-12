@@ -446,6 +446,7 @@ $messages['os'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'searchbox-desc' => 'Pozwala na wstawienie formularza wyszukiwania',
 	'searchbox-search' => 'Szukaj',
 	'searchbox-go' => 'Idź',
 	'searchbox-namespaces' => 'Przestrzenie nazw',
