@@ -20,12 +20,14 @@ import java.util.regex.Pattern;
 
 import de.brightbyte.abstraction.BeanPropertyAbstractor;
 import de.brightbyte.application.Arguments;
+import de.brightbyte.audit.DebugUtil;
 import de.brightbyte.data.MultiMap;
 import de.brightbyte.data.ValueSetMultiMap;
 import de.brightbyte.data.filter.Filter;
 import de.brightbyte.data.filter.Filters;
 import de.brightbyte.data.measure.LevenshteinDistance;
 import de.brightbyte.data.measure.Measure;
+import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.IOUtil;
 import de.brightbyte.net.UrlUtils;
 import de.brightbyte.util.Holder;
@@ -1931,7 +1933,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			
 				Object v= BeanPropertyAbstractor.instance.getProperty(page, attr);
 				
-				System.out.println(v);
+				DebugUtil.dump("", v, ConsoleIO.output);
 				System.out.println();
 		}
 	}
