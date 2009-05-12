@@ -20,7 +20,7 @@ class Poll extends SpecialPage {
 		}
 
 		if ( $action == "vote" ) {
-			$this->vote();
+			$this->vote( $id );
 		}
 
     	if ( $action == "submit" ) {
@@ -57,8 +57,8 @@ class Poll extends SpecialPage {
       }
   }
   
-   public function vote() {
-      global $wgRequest, $wgOut, $wgUser;
+   public function vote( $vid ) {
+      global $wgRequest, $wgOut, $wgUser, $wgTitle;
       
       $wgOut->setPagetitle( wfMsg( 'poll-title-vote' ) );
       
@@ -71,7 +71,31 @@ class Poll extends SpecialPage {
           $wgOut->addWikiMsg( 'poll-vote-block-error' );
       }
       else {
-          
+          $dbr = wfGetDB( DB_SLAVE );
+		  $query = $dbr->select( 'poll', 'question, alternative_1, alternative_2, alternative_3, alternative_4, alternative_5, alternative_6', 'id = ' . $vid);
+		  
+		  while( $row = $dbr->fetchObject( $query ) ) {
+		      $question = $row->question;
+			  $alternative_1 = htmlentities( $row->alternative_1 );
+			  $alternative_2 = htmlentities( $row->alternative_2 );
+			  $alternative_3 = htmlentities( $row->alternative_3 );
+			  $alternative_4 = htmlentities( $row->alternative_4 );
+			  $alternative_5 = htmlentities( $row->alternative_5 );
+			  $alternative_6 = htmlentities( $row->alternative_6 );
+		  }
+		  
+		  $wgOut->addHtml( Xml::openElement( 'form', array('method'=> 'post', 'action' => $wgTitle->getFullURL('action=submit') ) ) );
+          $wgOut->addHtml( Xml::openElement( 'table' ) );
+		  $wgOut->addHtml( '<tr><th>'.$question.'</th></tr>' );
+          $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '1').':</td><td>'.$alternative_1.'</td></tr>' );
+		  $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '2').':</td><td>'.$alternative_2.'</td></tr>' );
+		  if($alternative_3 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '3').':</td><td>'.$alternative_3.'</td></tr>' ) }
+		  if($alternative_4 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '4').':</td><td>'.$alternative_4.'</td></tr>' ) }
+		  if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '5').':</td><td>'.$alternative_5.'</td></tr>' ) }
+		  if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '6').':</td><td>'.$alternative_6.'</td></tr>' ) }
+          $wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'vote').'</td></tr>' );
+          $wgOut->addHtml( Xml::closeElement( 'table' ) );
+          $wgOut->addHtml( Xml::closeElement( 'form' ) );
       }
   }
   
