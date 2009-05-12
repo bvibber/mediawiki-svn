@@ -154,13 +154,17 @@ class OutputPage {
 				'', false
 			)
 		);
+		$class_list = implode(',', $this->mScriptLoaderClassList );			
 			
 	}
-	function addScriptClass( $js_class ){		
-		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses;
+	function addScriptClass( $js_class ){				
+		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses;		
 		if(isset($wgJSAutoloadClasses[ $js_class ] ) || isset( $wgJSAutoloadLocalClasses[$js_class]) ){
-			$this->mScriptLoaderClassList[] = $js_class;
+			if( ! in_array( $js_class, $this->mScriptLoaderClassList ) ){
+				$this->mScriptLoaderClassList[] = $js_class;
+			}
 		}
+		$class_list = implode(',', $this->mScriptLoaderClassList );				
 	}
 	/**
 	 * gets the scriptLoader javascript include 
@@ -170,7 +174,7 @@ class OutputPage {
 		global $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgRequest;
 		
 		$class_list = implode(',', $this->mScriptLoaderClassList );
-		
+				
 		$debug_param = ( $mvgJSDebug ||
 						 $wgRequest->getVal('debug')=='true' ||
 						 $wgRequest->getVal('debug')=='1' ) 
@@ -1045,6 +1049,10 @@ class OutputPage {
 
 		$sk = $wgUser->getSkin();
 
+		//load our required mv_embed and jQuery libs: (maybe make them optional per config)
+		$this->addScriptClass( 'window.jQuery' );
+		$this->addScriptClass( 'mv_embed' );
+		
 		if ( $wgUseAjax ) {
 			$this->addScriptFile( 'ajax.js' );
 

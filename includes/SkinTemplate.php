@@ -117,7 +117,7 @@ class SkinTemplate extends Skin {
 	}
 	/* add specific javascript the base Skin class */
 	function setupSkinUserJs( OutputPage $out ){	
-		global $wgUseSiteJs;	
+		global $wgUseSiteJs;			
 		//use site js: 
 		if( $wgUseSiteJs ) {
 			$jsCache = $this->loggedin ? '&smaxage=0' : '';
@@ -125,9 +125,7 @@ class SkinTemplate extends Skin {
 					"action=raw$jsCache&gen=js&useskin=" .
 						urlencode( $this->getSkinName() ) ) ;									
 			$this->jsvarurl = $siteGenScriptFile;			
-		}
-		//add jQuery for all skins:
-		$out->addScriptClass( 'jquery' );
+		}	
 	}
 
 	/**

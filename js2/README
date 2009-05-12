@@ -1,0 +1,26 @@
+MediaWiki Javascript phase 2
+
+This folder will hold all the "new" jquery based javascript. 
+
+Its in a separate folder for the following reasons:
+
+* It represents a significantly different direction for the javascript organizational structure. 
+* Javascript should not be tied to skins. 
+* We can better manage re-factoring to jQuery based javascript by separating it out into a separate folder.
+* interface skins have to be self contained because they are "embedable" in other contexts. 
+	(we don't want to load the entire mediaWiki css for styling an external embed of our video player)
+	   
+
+== Stand-Alone Library Encapsulation ==
+* We now include a few stand-alone libraries that alter the general flow of javascript in such a way that a separate folder will be helpful. 
+* mwEmbed is a ~stand alone~ platform for embeding mediaWiki api and media functionality into web-pages.
+* Script front-loading is managed by scripts in the mwjs2 folder.  
+
+
+== guide lines for re-factoring your Javascript phase 2 style ==
+* First step is to learn jQuery. :) (it will make your javascript life much easier)
+* If your interface is something that would be useful for external usage. You Should factor it into the 
+	mv_embed set of libraries that way its embeddable into external contexts.   
+
+* If your interface is something mediaWiki specific you should extend and configure mv_embed object calls. 
+* for example see the add_media_wizard.js

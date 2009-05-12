@@ -101,6 +101,7 @@ $wgAutoloadLocalClasses = array(
 	'Interwiki' => 'includes/Interwiki.php',
 	'IP' => 'includes/IP.php',
 	'JSMin' => 'includes/minify/JSMin.php',
+	'jsScriptLoader' => 'js2/mv_embed/jsScriptLoader.php',
 	'Job' => 'includes/JobQueue.php',
 	'License' => 'includes/Licenses.php',
 	'Licenses' => 'includes/Licenses.php',
@@ -549,7 +550,7 @@ $wgAutoloadLocalClasses = array(
 );
 
 //autoloader for javascript files (path is from the mediawiki folder    
-global $wgJSAutoloadLocalClasses, $wgScriptPath; 
+global $wgJSAutoloadLocalClasses; 
 $wgJSAutoloadLocalClasses = array(	
 	'ajax' =>  'skins/common/ajax.js',
     'ajaxwatch' => 'skins/common/ajaxwatch.js',
@@ -560,8 +561,7 @@ $wgJSAutoloadLocalClasses = array(
 	'edit' => 'skins/common/edit.js',
 	'enhancedchanges.js' => 'skins/common/enhancedchanges.js',
 	'history' => 'skins/common/history.js',
-	'IEFixes' => 'skins/common/IEFixes.js',
-	'jquery'	=> 'skins/common/jquery/jquery-1.3.2.js',	
+	'IEFixes' => 'skins/common/IEFixes.js',	
 	'metadata' => 'skins/common/metadata.js',
 	'mwsuggest' => 'skins/common/mwsuggest.js',
 	'prefs' => 'skins/common/prefs.js',
@@ -572,6 +572,9 @@ $wgJSAutoloadLocalClasses = array(
 	'upload' => 'skins/common/upload.js',
 	'wikibits' => 'skins/common/wikibits.js'	
 );
+
+//add the mv_embed set of classes that we want to expose: (could be conditional) 
+require_once("$IP/js2/mv_embed/php/jsAutoloadLocalClasses.php");
 
 class AutoLoader {
 	/**
