@@ -7,7 +7,7 @@
  *
  * @ingroup Extensions
  * @author Jan Luca <jan@toolserver.org>
- * @version 0.0
+ * @version 0.0.1
  * @link http://www.mediawiki.org/wiki/User:Jan_Luca/Extension:Poll2 Documentation
  * @license http://creativecommons.org/licenses/by-sa/3.0/ Attribution-Share Alike 3.0 Unported or later
  */

@@ -1,4 +1,12 @@
 <?php
+/**
+ * Poll_body - Body for the Special Page Special:Poll
+ *
+ * @ingroup Extensions
+ * @author Jan Luca <jan@toolserver.org>
+ * @license http://creativecommons.org/licenses/by-sa/3.0/ Attribution-Share Alike 3.0 Unported or later
+ */
+
 
 class Poll extends SpecialPage {
 	
