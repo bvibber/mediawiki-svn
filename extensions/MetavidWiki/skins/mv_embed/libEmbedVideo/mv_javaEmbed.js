@@ -22,7 +22,8 @@ var javaEmbed = {
     	this.getDuration();
     	//if still unset set to an arbitrary time 60 seconds: 
     	if(!this.duration)this.duration=60;
-		if( mv_java_iframe ){
+
+		/*if( mv_java_iframe &&  parseUri(document.URL).host !=  parseUri(document.URL).host){
 			//make sure iframe and embed path match (java security model)
 			var iframe_src='';
             var src = this.getURI( this.seek_time_sec );
@@ -63,11 +64,11 @@ var javaEmbed = {
 			iframe_src+=parent_domain;
 			
 			//check for the mvMsgFrame
-			/*if($j('#mvMsgFrame').length == 0){
-				js_log('appened mvMsgFrame');
-				//add it to the dom: (sh
-				$j('body').prepend( '<iframe id="mvMsgFrame" width="0" height="0" scrolling=no marginwidth=0 marginheight=0 src="#none"></iframe>' );
-			}*/
+			//if($j('#mvMsgFrame').length == 0){
+			//	js_log('appened mvMsgFrame');
+			//	//add it to the dom: (sh
+			//	$j('body').prepend( '<iframe id="mvMsgFrame" width="0" height="0" scrolling=no marginwidth=0 marginheight=0 src="#none"></iframe>' );
+			//}
 			js_log("about to set iframe source and embed code");
 			this.iframe_src = iframe_src;
 			var embed_code = '<iframe id="iframe_' + this.pid + '" width="'+this.width+'" height="'+this.height+'" '+
@@ -75,11 +76,11 @@ var javaEmbed = {
 	                   'src = "'+ this.iframe_src + '"></iframe>';
 	        js_log('going to embed: ' + embed_code);
 			return embed_code;
-		}else{
+		}else{*/
 			//load directly in the page..
 			// (media must be on the same server or applet must be signed)
 			return ''+
-			'<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="'+mv_embed_path+'binPlayer/cortado/cortado-wmf-r46643.jar" width="'+this.width+'" height="'+this.height+'">	'+ "\n"+
+			'<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="'+mv_embed_path+'binPlayers/cortado/cortado-wmf-r46643.jar" width="'+this.width+'" height="'+this.height+'">	'+ "\n"+
 				'<param name="url" value="'+this.media_element.selected_source.src+'" /> ' + "\n"+
 				'<param name="local" value="false"/>'+ "\n"+
 				'<param name="keepaspect" value="true" />'+ "\n"+
@@ -89,7 +90,29 @@ var javaEmbed = {
 				'<param name="duration" value="'+this.duration+'" />'+"\n"+
 				'<param name="bufferSize" value="200" />'+"\n"+
 			'</applet>';
-		}				
+			
+			
+			// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
+		// Doesn't work in MSIE or Safari/Mac or Opera 9.5
+			/*if ( embedTypes.mozilla ) {
+				var iframe = document.createElement( 'iframe' );
+				iframe.setAttribute( 'width', params.width );
+				iframe.setAttribute( 'height', playerHeight );
+				iframe.setAttribute( 'scrolling', 'no' );
+				iframe.setAttribute( 'frameborder', 0 );
+				iframe.setAttribute( 'marginWidth', 0 );
+				iframe.setAttribute( 'marginHeight', 0 );
+				iframe.setAttribute( 'id', 'cframe_'+ this.id)
+				elt.appendChild( iframe );
+				var newDoc = iframe.contentDocument;
+				newDoc.open();
+				newDoc.write( '<html><body>' + appplet_code + '</body></html>' );
+				newDoc.close(); // spurious error in some versions of FF, no workaround known
+			} else {
+				return appplet_code;
+			}		*/	
+			
+		//}				
     }, 
     postEmbedJS:function(){
     	//reset logged domain error flag:
@@ -98,24 +121,33 @@ var javaEmbed = {
 		this.monitor();
     },
     monitor:function(){
-    	if( this.getJCE() ) {    		
+    	this.getJCE()   
+    	if(this.jce){  		
 	   		try{	   		  	
 	   			//java reads "playtime" not ogg media time.. so add the start_offset or seek_offset 
 	   			//js_log(' ct: ' + this.jce.getPlayPosition() + ' so:' + this.start_offset + ' st:' + this.seek_time_sec);	   			
+	   			if(!this.start_offset)
+	   				this.start_offset = 0;
+	   				
 	    		this.currentTime = (this.seek_time_sec==0)? 
 	    			this.jce.getPlayPosition() + this.start_offset :
 	    			this.jce.getPlayPosition() + this.seek_time_sec ; 	    			
 	    	}catch (e){
 	    		///js_log('could not get time from jPlayer: ' + e);
-	    	}	    		    		    	
-	    }
+	    	}	    		
+	    	if( this.currentTime < 0){
+	    		//probably reached clip end
+	    		this.onClipDone();
+	    	}    		 
+    	}  
 	    //once currentTime is updated call parent_monitor 
 		this.parent_monitor();
     },   
     //get java cortado embed object
     getJCE:function(){    	
-    	if( ! mv_java_iframe ){
-			this.jce = $j('#'+this.pid).get(0);
+    	this.jce = $j('#'+this.pid).get(0);
+    	/*if( ! mv_java_iframe ){
+			
 		}else{
 			if( $j('#iframe_' + this.pid ).length > 0 )
 				try{
@@ -127,8 +159,7 @@ var javaEmbed = {
 				}
 			else
 				return false;
-		}    	
-		return this.jce;
+		}   */ 		
     },
     pause:function(){
     	this.parent_pause();

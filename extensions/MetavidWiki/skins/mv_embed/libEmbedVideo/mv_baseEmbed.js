@@ -1053,7 +1053,6 @@ embedVideo.prototype = {
 			$j('#mv_embedded_player_'+_this.id).html(embed_code);	
 		});
     },
-    /* todo abstract out onClipDone chain of functions and merge with mvTextInterface */
     onClipDone:function(){
     	js_log('base:onClipDone');
     	//stop the clip (load the thumbnail etc) 
@@ -1183,7 +1182,7 @@ embedVideo.prototype = {
     		}
     	}else{
     		js_log('no annotative track found');
-    		$j('#liks_info_'+this.id).html('no metadata found for next, previous links');
+    		$j('#liks_info_'+this.id).html('no metadata found for related links');
     	}
     	//query current request time +|- 60s to get prev next speech links. 
     },

@@ -18,7 +18,7 @@ function do_testing_page(){
   <table border="1" cellpadding="6" width="600">
 	    <tr>
 	      <td valign="top">
-	      	<playlist src="fresh_smil_load.php" type="audio/ogg"></playlist>
+	      	<video src="http://192.168.1.235/wiki/extensions/MetavidWiki/skins/mv_embed/example_usage/sample_eclipse.ogg" poster="sample_eclipse.jpg" duration="7"></video>
 	      </td>
 	      <td valign="top"><b>Test embed</b><br />
 	      </td>

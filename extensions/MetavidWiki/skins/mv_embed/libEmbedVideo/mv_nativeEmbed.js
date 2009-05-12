@@ -97,8 +97,8 @@ var nativeEmbed = {
 			this.currentTime = this.currentTime - this.startOffset;
 		
 		//js_log('this.currentTime: ' + this.currentTime );
-		//once currentTime is updated call parent_monitor 
-		this.parent_monitor();												
+		//once currentTime is updated call parent_monitor
+		this.parent_monitor();					
 	},	
 	/*
 	 * native callbacks for the video tag: 
@@ -107,6 +107,7 @@ var nativeEmbed = {
 		js_log('f:oncanplaythrough');
 	},
 	onloadedmetadata: function(){
+		this.getVID();
 		js_log('f:onloadedmetadata metadata ready (update duration)');		
 		//update duration if not set (for now trust the getDuration more than this.vid.duration		
 		this.duration = ( this.getDuration() ) ?this.getDuration() : this.vid.duration;

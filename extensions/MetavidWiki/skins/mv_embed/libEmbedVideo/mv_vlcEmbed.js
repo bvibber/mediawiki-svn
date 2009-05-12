@@ -194,12 +194,8 @@ var vlcEmbed = {
 		{
 			js_log('setting duration to ' + this.vlc.input.length /1000);
 			this.media_element.selected_source.setDuration( this.vlc.input.length /1000);
+			this.duration = this.vlc.input.length /1000;
 		}
-
-    	this.duration = ( this.getDuration() ) ? this.getDuration() : this.vlc.input.length /1000;
-    	/*if(this.duration!=this.vlc.input.length /1000){
-	        this.duration = this.vlc.input.length /1000;   
-    	}*/     
        	//update the currentTime attribute 
        	 if( this.media_element.selected_source.timeFormat =='anx' ){
         	this.currentTime = this.vlc.input.time/1000;
@@ -212,7 +208,7 @@ var vlcEmbed = {
         }else{
         	this.currentTime = (this.vlc.input.time/1000) + this.media_element.selected_source.start_offset;       
         }
-        //vlc uses original time:        	      
+        //vlc uses original time update startOffset if playing chop stream: 
         if( this.startOffset )
 			this.currentTime = this.currentTime - this.startOffset;
         //updates hanlded by parent monitor and currentTime
