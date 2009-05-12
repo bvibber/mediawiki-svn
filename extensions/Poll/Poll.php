@@ -55,3 +55,15 @@ $wgExtensionMessagesFiles['Poll'] = $dir . 'Poll.i18n.php';
 $wgExtensionAliasesFiles['Poll'] = $dir . 'Poll.alias.php';
 $wgSpecialPages['Poll'] = 'Poll'; # Let MediaWiki know about your new special page.
 $wgSpecialPageGroups['Poll'] = 'other';
+
+# Schema changes
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efPollSchemaUpdates';
+
+function efPollSchemaUpdates() {
+	global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables;
+	$base = dirname(__FILE__);
+	if( $wgDBtype == 'mysql' ) {
+		$wgExtNewTables[] = array( 'poll', "$base/Poll.sql" ); // Initial install tables
+    }
+	return true;
+}
