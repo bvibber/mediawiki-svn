@@ -1,6 +1,6 @@
 #!/bin/sh
 
-repository="http://svn.wikimedia.org/svnroot/mediawiki/trunk/wikiation/wikiation_check_isolation/"
+repository="http://svn.wikimedia.org/svnroot/mediawiki/trunk/testing/exttest/"
 
 cd $DESTINATION_DIR
 if test -n "$REVISION"; then

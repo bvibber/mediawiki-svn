@@ -2,4 +2,4 @@
 
 cd $DESTINATION_DIR
 rm -f test
-rm -rf wikiation_check_isolation
+rm -rf check_isolation

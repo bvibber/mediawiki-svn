@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd $DESTINATION_DIR/wikiation_check_isolation
+cd $DESTINATION_DIR/check_isolation
 if test -n "$REVISION"; then
 	svn update -r $REVISION
 else
