@@ -12,7 +12,7 @@ import logindata
 l=logindata.LoginData(
 		name='6Basic',
 		protocol='http',
-		server='6.wikiation.nl',
+		server='localhost',
 		scriptpath='/revisions/REL1_13_2',
 		version='1.13.2',
 		lang='en',

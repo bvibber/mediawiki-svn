@@ -17,7 +17,7 @@ class Family(family.Family):          # REQUIRED
 	def __init__(self,
 		name='test',
 		protocol='http',
-		server='6.wikiation.nl',
+		server='localhost',
 		scriptpath='/revisions/REL1.13.2',
 		version='1.13.2',
 		lang='nl',

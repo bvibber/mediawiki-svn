@@ -4,7 +4,7 @@
 # Distributed under the terms of the MIT license
 
 
-#Settings file for wikiation_webtest
+#Settings file for exttest
 import os
 
 # path to pywikipedia
@@ -14,9 +14,8 @@ pywikipedia_path=os.path.join(os.path.dirname(__file__),'..','pywikipedia')
 from logindata import LoginData
 
 # How many tests per page should be permitted?
-# (wikiation wants to hardlimit this to 1 only)
 # (0 = infinite)
-tests_per_page=1
+tests_per_page=0
 
 #What is the default category name?
 category_name="Automated tests"
@@ -36,7 +35,7 @@ strip_whitespace=True
 source_login=LoginData(
 	name='test_source',
 	protocol='http',
-	server='6.wikiation.nl',
+	server='localhost',
 	scriptpath='/revisions/REL1_13_2',
 	lang='en',
 	encoding='utf-8',
@@ -48,7 +47,7 @@ source_login=LoginData(
 target_login=LoginData(
 	name='test_target',
 	protocol='http',
-	server='6.wikiation.nl',
+	server='localhost',
 	scriptpath='/revisions/exttest_target',
 	lang='en',
 	encoding='utf-8',
