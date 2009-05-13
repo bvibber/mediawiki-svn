@@ -6,7 +6,7 @@ sys.path.append("../..")
 from naive_installer import Naive_Installer
 
 
-from wikiation_exttest import settings
+from exttest import settings
 
 # settings
 target_wiki='test'

@@ -1,6 +1,6 @@
 # This software, copyright (C) 2008-2009 by Wikiation. 
-# This software is developed by Kim Bruning.
-#
+# Copyright (C) 2009 Kim Bruning
+
 # Distributed under the terms of the MIT license.
 
 import sys, os
@@ -30,7 +30,7 @@ def help(args):
 		print subhelp[args[1]]
 	elif len(args)<=1:
 		print
-		print "wikiation installer, interactive mode"
+		print "installer, interactive mode"
 		print "help: get help"
 		print "quit, exit: quit"
 		print "ls <path>: list information on available versions "
@@ -44,14 +44,14 @@ def help(args):
 		print "TODO: Implement help path , for now, see documentation for info on how to specify <path>"
 		print
 		print "instead of interactive mode, you can also access commands directly from the shell:"
-		print "wikiation_installer command [args]..."
+		print "installer command [args]..."
 	else:
 		print 'no detailed help available'
 
 
 
 def revision():
-	"""obtain revision number for wikiation_installer itself"""
+	"""obtain revision number for installer itself"""
 
 	revision_string=None
 	os.chdir(settings.installerdir)
@@ -71,7 +71,7 @@ def revision():
 def intro():
 	"""a nice banner/intro text for interactive mode"""
 
-	print "=== Wikiation installer (v. "+revision()+") ==="
+	print "=== Installer (v. "+revision()+") ==="
 	print
 	print "(last known safe version: 48528)"
 	print "Interactive mode.",

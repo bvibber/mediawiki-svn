@@ -279,7 +279,7 @@ def uniquesettings(target):
 	uniquesettings=settings.instancesdir+"/"+target+"/InstallerUniqueSettings.php"
 	unique=file(uniquesettings,"w")
 	unique.write('<?php\n')
-	unique.write('$wgSitename = "Wikiation_'+target+'";\n')
+	unique.write('$wgSitename = "'+target+'";\n')
 	unique.write('$wgScriptPath = "'+settings.base_scriptpath+target+'";\n')
 	unique.write('$wgDBname = "'+target+'";\n')
 	unique.write('?>\n')

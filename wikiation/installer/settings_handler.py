@@ -17,6 +17,7 @@ installerdir=os.path.dirname(os.path.abspath(__file__))
 
 # where to find .install directories and the files contained therein
 installfiles=os.path.join(installerdir,'installfiles')
+testfiles=os.path.join(installerdir,'testfiles')
 
 # where do we store the _tagcache file
 tagcache=os.path.join(installerdir,"_tagcache")
@@ -36,12 +37,12 @@ instancesdir='/var/www/revisions'
 base_scriptpath="/revisions/"
 
 # where to install the toolkit
-toolkit_dir='/usr/local/wikiation'
+toolkit_dir='/usr/local/testing'
 
 
-#where wikiation_check_isolation can be found
-isolation_create=toolkit_dir+'/wikiation_check_isolation/create_and_ul.sh'
-isolation_test=toolkit_dir+'/wikiation_check_isolation/dl_and_check.sh'
+#where check_isolation can be found
+isolation_create=toolkit_dir+'/check_isolation/create_and_ul.sh'
+isolation_test=toolkit_dir+'/check_isolation/dl_and_check.sh'
 # run automated tests during installation
 # this is useful if you are in a testing environment.
 # If you are running production, you might want to leave

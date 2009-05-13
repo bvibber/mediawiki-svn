@@ -64,7 +64,7 @@ def ls(args):
 	if len(args)<=1:
 		print \
 """available.mediawiki:		installed.mediawiki:
-available.wikiation_toolkit:	installed.wikiation_toolkit:
+available.toolkit:		installed.toolkit:
 available.scripted:		installed.scripted:	} 
 available.naive:		installed.naive:	} extensions
 available.download:		installer.download:	} 
@@ -80,6 +80,11 @@ def install(args):
 	"""install something"""
 	installers.install(args)
 
+def test(args):
+	"""test something"""
+	installers.test(args)
+
+
 def duplicate(args):
 	"""duplicate an instance"""
 	if len(args)!=3:
@@ -93,7 +98,7 @@ def uninstall(args):
 def update_self(args):
 	"""update self to newest revision, (and switch to interactive mode)"""
 
-	print "This could cause the wikiation_installer to break. Are you sure? Y/N"
+	print "This could cause the installer to break. Are you sure? Y/N"
 	answer=getch()
 	if answer.upper()=="Y":
 		print "Continuing..."
@@ -110,7 +115,7 @@ def update_self(args):
 		print "I'm not sure what to do with "+ (" ".join(args[1:]))
 
 	print "\n\n"
-	print "wikiation_installer update attempted/completed. Restarting"
+	print "installer update attempted/completed. Restarting"
 	print "----------------------------------------------------------"
 	print "\n\n"
 	os.execl("/usr/bin/python","/usr/bin/python",__file__)
@@ -160,7 +165,8 @@ commands={
 	"check_isolation":check_isolation,
 	"update_self":update_self,
 	"update_tags":update_tags,
-	"duplicate":duplicate
+	"duplicate":duplicate,
+	"test":test
 }
 
 # additional help texts for some commands.

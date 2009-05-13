@@ -249,7 +249,7 @@ def _ppath_find(l,keyword):
 		return value
 
 def parse_path(path,defaults=None):
-	ai=None	# available, installed (and now revisions and tags too)
+	ai=None	# available, installed (and now revisions and tags  and test too)
 	system=None	# installation system
 	installer=None	# installer from that installation system
 	in_installer=None # in which instance should we install?
@@ -369,7 +369,7 @@ def get_system(system_name):
 
 # Constants
 
-systems={'wikiation_toolkit':Toolkit_Installer,'scripted': Scripted_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer, 'download':Download_Installer, 'extension':extension_installer2}
+systems={'toolkit':Toolkit_Installer,'scripted': Scripted_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer, 'download':Download_Installer, 'extension':extension_installer2}
 
 
 if __name__=="__main__":
@@ -382,28 +382,28 @@ if __name__=="__main__":
 #	print "ls available"
 #	ls2(["ls","available"])
 #	print
-#	print "ls available/wikiation_toolkit"
-#	ls2(["ls","available/wikiation_toolkit"])
+#	print "ls available/toolkit"
+#	ls2(["ls","available/toolkit"])
 #	print
-#	print "ls installed/wikiation_toolkit"
-#	ls2(["ls","installed/wikiation_toolkit"])
+#	print "ls installed/toolkit"
+#	ls2(["ls","installed/toolkit"])
 #	print
 #	print "get info"
-#	system=get_system("wikiation_toolkit")
+#	system=get_system("toolkit")
 #	system.get_info("pywikipedia")
 #	
 #	print "install"
 #	print "pywiki",repr(system.install("pywikipedia"))
-#	print "exttest", repr(system.install("wikiation_exttest"))
-#	print "isolation", repr(system.install("wikiation_check_isolation"))
+#	print "exttest", repr(system.install("exttest"))
+#	print "isolation", repr(system.install("check_isolation"))
 #	print "ls", os.listdir('..')
 #
 #	print "uninstall"
 #	print "pywiki", repr(system.uninstall("pywikipedia"))
-#	print "exttest", repr(system.uninstall("wikiation_exttest"))
-#	print "isolation", repr(system.uninstall("wikiation_check_isolation"))
+#	print "exttest", repr(system.uninstall("exttest"))
+#	print "isolation", repr(system.uninstall("check_isolation"))
 #
-#	print "wikiation_extension (assumes existing wiki)"
+#	print "extension (assumes existing wiki)"
 #	extension_installer=Scripted_Installer("REL1_13_3")
 #
 #	print " \ uninstall " , repr (extension_installer.uninstall("ImageMap"))
@@ -447,7 +447,7 @@ if __name__=="__main__":
 #	qls('installed.extension:in REL1_13_2')
 #	qls('installed.extension:in FOO')
 #	qls('installed.mediawiki:in FOO')
-#	qls('available.wikiation')
-#	qls('available.wikiation:in BAR as BAZ')
-#	qls('available.wikiation:in BOG as BOT')
-#	qls('available.wikiation:in BOG as BOT murp morp bla bla bla')
+#	qls('available.toolkit')
+#	qls('available.toolkit:in BAR as BAZ')
+#	qls('available.toolkit:in BOG as BOT')
+#	qls('available.toolkit:in BOG as BOT murp morp bla bla bla')

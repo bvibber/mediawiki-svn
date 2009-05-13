@@ -17,7 +17,7 @@ class Installation_System(object):
 		An installation system understands how to install and uninstall
 		'things' (instances). An instance might be a particular wiki
 		(in the case of the mediawiki installer) or a particular extension 
-		in that wiki (extension installer), or perhaps a tool from the wikiation
+		in that wiki (extension installer), or perhaps a tool from the 
 		toolkit. 
 		Next to installing and uninstalling, an installer can also determine
 		the status of an instance (installed or uninstalled), and can provide
@@ -126,7 +126,7 @@ class Installation_System(object):
 	def installdir_name(self, installer_name):
 		"""returns the location of the .install directory for the given installer_name.
 		An installer directory is where we store all the scripts to install one particular
-		extension, tool from the wikiation_toolkit, or etc. """
+		extension, tool from the toolkit, or etc. """
 		return os.path.join(self.subsystemdir, installer_name+".install")
 	
 

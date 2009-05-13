@@ -6,10 +6,10 @@
 import sys,os, os.path
 import settings_handler as settings
 
-#support for wikiation_check_isolation
+#support for check_isolation
 
 def _check_isolation(args):
-	"""wikiation_check_isolation: check diffs now"""
+	"""check_isolation: check diffs now"""
 	difftest=settings.isolation_test
 	command=difftest+" "+" ".join(args)
 	exit_status=os.system(command)>>8
@@ -30,7 +30,7 @@ def check_isolation(args):
 
 
 def difftests(target):
-	"""wikiation_check_isolation: store diffs, ready for testing later"""
+	"""check_isolation: store diffs, ready for testing later"""
 
 	difftest=settings.isolation_create
 	command=difftest+" "+target
