@@ -3,6 +3,8 @@
 cortado_embed.php
 all file checks and conditions should be checked prior to loading this page.
 this page serves as a wrapper for the cortado java applet
+
+@@this may be depreciated in favor of a central hosted java applet
 */
 
 cortado_iframe();

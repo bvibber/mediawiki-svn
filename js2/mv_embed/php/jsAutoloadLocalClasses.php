@@ -1,4 +1,6 @@
 <?php 
+if ( !defined( 'MEDIAWIKI' ) ) die(1);
+
 global $wgJSAutoloadLocalClasses, $wgScriptPath;
 	
 		
