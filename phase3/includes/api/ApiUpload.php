@@ -121,7 +121,7 @@ class ApiUpload extends ApiBase {
 			} elseif( isset( $this->mParams['url'] ) ) {
 														
 				$this->mUpload = new UploadFromUrl();
-				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url']);	
+				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url'], $this->mParam['asyncdownload']);	
 				
 				$status = $this->mUpload->fetchFile();
 				if( !$status->isOK() ){								
@@ -287,6 +287,7 @@ class ApiUpload extends ApiBase {
 			'comment' => array(
 				ApiBase :: PARAM_DFLT => ''
 			),
+			'asyncdownload'=>false, 
 			'watch' => false,
 			'ignorewarnings' => false,			
 			'done'	=> false,
@@ -305,6 +306,8 @@ class ApiUpload extends ApiBase {
 			'url' => 'Url to upload from',
 			'enablechunks' => 'Boolean If we are in chunk mode; accepts many small file POSTs',
 			'comment' => 'Upload comment or initial page text',
+			'asyncdownload' => 'If we should download asyncrously (returns a upload session key to get status updates)'.
+								"\nDefault:false",
 			'watch' => 'Watch the page',
 			'ignorewarnings' => 'Ignore any warnings',					
 			'done'	=> 'When used with "chunks", Is sent to notify the api The last chunk is being uploaded.',

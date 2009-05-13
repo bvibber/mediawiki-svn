@@ -15,10 +15,10 @@ class UploadFromUrl extends UploadBase {
 		return $wgAllowCopyUploads && parent::isEnabled();
 	}	
 	/*entry point for Api upload:: ASYNC_DOWNLOAD (if possible) */
-	function initialize( $name, $url ) {		
-		global $wgTmpDirectory, $wgPhpCliPath;
+	function initialize( $name, $url, $asyncdownload) {		
+		global $wgTmpDirectory, $wgPhpCliPath;		
 		
-		if(!$this->dl_mode &&  $wgPhpCliPath && wfShellExecEnabled() ){
+		if($asyncdownload &&  $wgPhpCliPath && wfShellExecEnabled() ){
 			$this->dl_mode = Http::ASYNC_DOWNLOAD;
 		}else{
 			$this->dl_mode = Http::SYNC_DOWNLOAD;	
