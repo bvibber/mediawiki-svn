@@ -9,6 +9,7 @@ if (!defined('MEDIAWIKI')) die();
 
 // credits
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Admin Links',
 	'version' => '0.1',
 	'author' => 'Yaron Koren',
