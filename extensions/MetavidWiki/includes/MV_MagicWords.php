@@ -70,9 +70,24 @@ class MV_MagicWords {
 			case 'VIDEOBILL':
 				return $this->getBillOut();
 				break;
+			case 'TOTALSTREAMLENGTH':
+				return $this->getTotalLength();
+				break;
 			default:
 				return "error: unknown mvData function: <b>{$this->magicTypeKey}</b> <br>";
 				break;
+		}
+	}
+	function getTotalLength(){
+		$dbr = & wfGetDB( DB_READ );
+		$result =& $dbr->query(' SELECT SUM( `duration` ) as `dur`
+FROM `mv_streams`
+WHERE 1 ');
+		if ( $dbr->numRows( $result ) == 0 ) {
+			return '';
+		} else {
+			$row = $dbr->fetchObject( $result );
+			return seconds2Description	( $row->dur);
 		}
 	}
 	function getBillOut() {
