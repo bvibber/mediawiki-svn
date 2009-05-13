@@ -292,7 +292,7 @@ class Skin extends Linker {
 	}
 
 	function outputPage( OutputPage $out ) {
-		global $wgDebugComments;
+		global $wgDebugComments;		
 		wfProfileIn( __METHOD__ );
 
 		$this->setMembers();
@@ -359,6 +359,7 @@ class Skin extends Linker {
 		global $wgVersion, $wgEnableAPI, $wgEnableWriteAPI;
 		global $wgRestrictionTypes, $wgLivePreview;
 		global $wgMWSuggestTemplate, $wgDBname, $wgEnableMWSuggest;
+	
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = isset( $wgCanonicalNamespaceNames[ $ns ] ) ? $wgCanonicalNamespaceNames[ $ns ] : $wgTitle->getNsText();
@@ -402,14 +403,14 @@ class Skin extends Linker {
 			'wgEnableAPI' => $wgEnableAPI,
 			'wgEnableWriteAPI' => $wgEnableWriteAPI,
 			'wgSeparatorTransformTable' => $compactSeparatorTransTable,
-			'wgDigitTransformTable' => $compactDigitTransTable,
+			'wgDigitTransformTable' => $compactDigitTransTable,			
 		);
-		//if on upload page output the extension list & js_upload
+		//if on upload page output the extension list:
 		if( SpecialPage::resolveAlias( $wgTitle->getDBkey() ) ==  "Upload" ){ 
-			global $wgFileExtensions, $wgAjaxUploadInterface;
-			$vars['wgFileExtensions'] 	 = $wgFileExtensions;
-			$vars['wgAjaxUploadInterface'] = $wgAjaxUploadInterface;			
+			global $wgFileExtensions;
+			$vars['wgFileExtensions'] = $wgFileExtensions;
 		}
+		
 		
 		if( $wgUseAjax && $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ){
 			$vars['wgMWSuggestTemplate'] = SearchEngine::getMWSuggestTemplate();
@@ -502,15 +503,19 @@ class Skin extends Linker {
 	 * top.  For now Monobook.js will be maintained, but it should be consi-
 	 * dered deprecated.
 	 *
+	 * @param force_skin  lets you override the skin name
+	 * 
 	 * @return string
 	 */
-	public function generateUserJs() {
+	public function generateUserJs( $force_skin = false) {
 		global $wgStylePath;
 
 		wfProfileIn( __METHOD__ );
-
+		$skinName = ( $force_skin ) ? $force_skin : $this->getSkinName();
+		
+		
 		$s = "/* generated javascript */\n";
-		$s .= "var skin = '" . Xml::escapeJsString( $this->getSkinName() ) . "';\n";
+		$s .= "var skin = '" . Xml::escapeJsString( $skinName ) . "';\n";
 		$s .= "var stylepath = '" . Xml::escapeJsString( $wgStylePath ) . "';";
 		$s .= "\n\n/* MediaWiki:Common.js */\n";
 		$commonJs = wfMsgForContent( 'common.js' );
@@ -518,10 +523,10 @@ class Skin extends Linker {
 			$s .= $commonJs;
 		}
 
-		$s .= "\n\n/* MediaWiki:".ucfirst( $this->getSkinName() ).".js */\n";
+		$s .= "\n\n/* MediaWiki:".ucfirst( $skinName ).".js */\n";
 		// avoid inclusion of non defined user JavaScript (with custom skins only)
 		// by checking for default message content
-		$msgKey = ucfirst( $this->getSkinName() ).'.js';
+		$msgKey = ucfirst( $skinName ).'.js';
 		$userJS = wfMsgForContent( $msgKey );
 		if ( !wfEmptyMsg( $msgKey, $userJS ) ) {
 			$s .= $userJS;
@@ -591,7 +596,7 @@ END;
 
 		wfProfileIn( __METHOD__ );
 
-		$this->setupSkinUserCss( $out );
+		$this->setupSkinUserCss( $out );				
 
 		$siteargs = array(
 			'action' => 'raw',
@@ -640,8 +645,8 @@ END;
 			# If we're previewing the CSS page, use it
 			if( $this->mTitle->isCssSubpage() && $this->userCanPreview( $action ) ) {
 				$previewCss = $wgRequest->getText( 'wpTextbox1' );
-				// @FIXME: properly escape the cdata!
-				$this->usercss = "/*<![CDATA[*/\n" . $previewCss . "/*]]>*/";
+				// @FIXME: properly escape the cdata!				
+				$this->usercss = "/*<![CDATA[*/\n" . $previewCss . "/*]]>*/";				
 			} else {
 				$out->addStyle( self::makeUrl( $this->userpage . '/' . $this->getSkinName() .'.css',
 					'action=raw&ctype=text/css' ) );
@@ -650,7 +655,29 @@ END;
 
 		wfProfileOut( __METHOD__ );
 	}
+	
+	/**
+	 * @private
+	 */
+	function setupUserJs(  OutputPage $out) {
+		global $wgRequest, $wgJsMimeType, $wgUseSiteJs;
 
+		wfProfileIn( __METHOD__ );		
+					
+		$action = $wgRequest->getVal( 'action', 'view' );
+		if( $out->isUserJsAllowed() && $this->loggedin ) {			
+			if( $this->mTitle->isJsSubpage() and $this->userCanPreview( $action ) ) {
+				# XXX: additional security check/prompt (userCanPreview checks for html token before doing this js output)
+				$this->userjsprev = '/*<![CDATA[*/ ' . $wgRequest->getText( 'wpTextbox1' ) . ' /*]]>*/';
+			} else {																			
+				$this->userjs = self::makeUrl( $this->userpage . '/' . $this->skinname . '.js', 'action=raw&ctype=' . $wgJsMimeType );	
+			}
+		}				
+		//call the skin JS setup		
+		$this->setupSkinUserJs( $out );
+				
+		wfProfileOut( __METHOD__ );
+	}
 	/**
 	 * Add skin specific stylesheets
 	 * @param $out OutputPage

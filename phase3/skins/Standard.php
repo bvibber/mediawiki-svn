@@ -18,19 +18,18 @@ class SkinStandard extends Skin {
 	/**
 	 *
 	 */
-	function getHeadScripts( $allowUserJs ) {
+	function getHeadScripts( $allowUserJs , $out) {
 		global $wgStylePath, $wgJsMimeType, $wgStyleVersion;
 
 		$s = parent::getHeadScripts( $allowUserJs );
-		if ( 3 == $this->qbSetting() ) { # Floating left
-			$s .= "<script language='javascript' type='$wgJsMimeType' " .
-			  "src='{$wgStylePath}/common/sticky.js?$wgStyleVersion'></script>\n";
+		if ( 3 == $this->qbSetting() ) { # Floating left			
+			$out->addScriptFile ( "{$wgStylePath}/common/sticky.js" );
 		}
 		return $s;
 	}
 
 	/**
-	 *
+	 * 
 	 */
 	function setupSkinUserCss( OutputPage $out ){
 		if ( 3 == $this->qbSetting() ) { # Floating left

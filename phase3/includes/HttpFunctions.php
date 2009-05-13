@@ -15,8 +15,8 @@ class Http {
 	/**
 	 * Simple wrapper for Http::request( 'GET' )
 	 */
-	public static function get( $url, $opts = array() ) {
-		$opt['method'] = 'GET';
+	public static function get( $url, $opts = array() ) {		
+		$opt['method'] = 'GET';			
 		$req = new HttpRequest($url, $opts );	
 		return $req->doRequest();	
 	}		
@@ -126,7 +126,7 @@ class Http {
 	 * 			(a given client could have started a few http uploads at once)
 	 */
 	public static function doSessionIdDownload( $session_id, $upload_session_key ){
-		global $wgUser, $wgEnableWriteAPI;					
+		global $wgUser, $wgEnableWriteAPI, $wgAsyncHTTPTimeout;					
 		wfDebug("\n\ndoSessionIdDownload\n\n");
 		//set session to the provided key:
 		session_id($session_id);
@@ -148,8 +148,9 @@ class Http {
 		session_write_close();		
 				
 		$req = new HttpRequest( $sd['url'], array(
-			'target_file_path' => $sd['target_file_path'],			
-			'upload_session_key' => $upload_session_key			
+			'target_file_path' 	=> $sd['target_file_path'],			
+			'upload_session_key'=> $upload_session_key,			
+			'timeout'			=> $wgAsyncHTTPTimeout
 		) );	
 		//run the actual request .. (this can take some time) 
 		wfDebug("do Request: " . $sd['url'] . ' tf: ' . $sd['target_file_path'] );
@@ -243,7 +244,10 @@ class HttpRequest{
 	var $target_file_path;
 	var $upload_session_key;
 	function __construct($url, $opt){
+		global $wgSyncHTTPTimeout;
 		$this->url = $url;
+		//set the timeout to default sync timeout (unless the timeout option is provided)
+		$this->timeout = (isset($opt['timeout']))?$opt['timeout']:$wgSyncHTTPTimeout;		
 		$this->method = (isset($opt['method']))?$opt['method']:'GET';		
 		$this->target_file_path = (isset($opt['target_file_path']))?$opt['target_file_path']:false;
 		$this->upload_session_key = (isset($opt['upload_session_key']))?$opt['upload_session_key']:false;			
@@ -265,7 +269,7 @@ class HttpRequest{
 		}
 	 }
 	 private function doCurlReq(){
-	 	global $wgHTTPFileTimeout, $wgHTTPProxy, $wgTitle;
+	 	global $wgHTTPProxy, $wgTitle;
 	 	
 	 	$status = Status::newGood();	 	 	
 		$c = curl_init( $this->url );			
@@ -277,7 +281,7 @@ class HttpRequest{
 			curl_setopt($c, CURLOPT_PROXY, $wgHTTPProxy);
 		}
 		
-		curl_setopt( $c, CURLOPT_TIMEOUT, $wgHTTPFileTimeout );			
+		curl_setopt( $c, CURLOPT_TIMEOUT, $this->timeout );			
 			
 		
 		curl_setopt( $c, CURLOPT_USERAGENT, Http::userAgent() );

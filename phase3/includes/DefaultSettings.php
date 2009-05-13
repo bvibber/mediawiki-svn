@@ -426,8 +426,12 @@ $wgSharedUploadDBname = false;
 $wgSharedUploadDBprefix = '';
 /** Cache shared metadata in memcached. Don't do this if the commons wiki is in a different memcached domain */
 $wgCacheSharedUploads = true;
-/** Allow for upload to be copied from an URL. Requires Special:Upload?source=web */
-$wgAllowCopyUploads = false;
+/** 
+* Allow for upload to be copied from an URL. Requires Special:Upload?source=web 
+* timeout for Copy Uploads is set by wgAsyncHTTPTimeout & wgSyncHTTPTimeout
+*/
+$wgAllowCopyUploads = false; 
+
 /**
  * Max size for uploads, in bytes.  Currently only works for uploads from URL
  * via CURL (see $wgAllowCopyUploads).  The only way to impose limits on
@@ -736,6 +740,12 @@ $wgParserCacheExpireTime = 86400;
 
 $wgSessionsInMemcached = false;
 
+/** This is used for setting php's session.save_handler. In practice, you will
+ * almost never need to change this ever. Other options might be 'user' or 
+ * 'session_mysql.' Setting to null skips setting this entirely (which might be
+ * useful if you're doing cross-application sessions, see bug 11381) */
+$wgSessionHandler = 'files';
+
 /**@{
  * Memcached-specific settings
  * See docs/memcached.txt
@@ -989,7 +999,7 @@ $wgReadOnly             = null;
 $wgReadOnlyFile         = false; ///< defaults to "{$wgUploadDirectory}/lock_yBgMBwiR";
 
 /**
- * Filename for debug logging. 
+ * Filename for debug logging. See http://www.mediawiki.org/wiki/How_to_debug
  * The debug log file should be not be publicly accessible if it is used, as it
  * may contain private data. 
  */
@@ -1257,10 +1267,10 @@ $wgGroupPermissions['sysop']['movefile']         = true;
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights']  = true;
 $wgGroupPermissions['bureaucrat']['noratelimit'] = true;
-// Permission to change users' passwords
-# $wgGroupPermissions['bureaucrat']['reset-passwords'] = true;
 // Permission to change users' groups assignments across wikis
 #$wgGroupPermissions['bureaucrat']['userrights-interwiki'] = true;
+// Permission to export pages including linked pages regardless of $wgExportMaxLinkDepth
+#$wgGroupPermissions['bureaucrat']['override-export-depth'] = true;
 
 #$wgGroupPermissions['sysop']['deleterevision']  = true;
 // To hide usernames from users and Sysops
@@ -1308,7 +1318,7 @@ $wgGroupsRemoveFromSelf = array();
 /**
  * Set of available actions that can be restricted via action=protect
  * You probably shouldn't change this.
- * Translated trough restriction-* messages.
+ * Translated through restriction-* messages.
  */
 $wgRestrictionTypes = array( 'edit', 'move' );
 
@@ -1471,7 +1481,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '207';
+$wgStyleVersion = '218';
 
 
 # Server-side caching:
@@ -1852,6 +1862,11 @@ $wgShowEXIF = function_exists( 'exif_read_data' );
  * uploads do work.
  */
 $wgRemoteUploads = false;
+
+/**
+ * Disable links to talk pages of anonymous users (IPs) in listings on special
+ * pages like page history, Special:Recentchanges, etc.
+ */
 $wgDisableAnonTalk = false;
 /**
  * Do DELETE/INSERT for link updates instead of incremental
@@ -1886,8 +1901,9 @@ $wgDiff3 = '/usr/bin/diff3';
 $wgDiff = '/usr/bin/diff';
 
 /**
- * Path to php
+ * Path to php-cli for spining up background php proccesses
  */
+$wgPhpCliPath = '/usr/bin/php';
 
 /**
  * We can also compress text stored in the 'text' table. If this is set on, new
@@ -2003,6 +2019,7 @@ $wgMediaHandlers = array(
 	'image/jpeg' => 'BitmapHandler',
 	'image/png' => 'BitmapHandler',
 	'image/gif' => 'BitmapHandler',
+	'image/tiff' => 'TiffHandler',
 	'image/x-ms-bmp' => 'BmpHandler',
 	'image/x-bmp' => 'BmpHandler',
 	'image/svg+xml' => 'SvgHandler', // official
@@ -2460,6 +2477,8 @@ $wgDefaultUserOptions = array(
 	'watchdeletion'           => 0,
 	'noconvertlink'           => 0,
 	'gender'                  => 'unknown',
+	'ccmeonemails'            => 0,
+	'disablemail'			  => 0,
 );
 
 /** Whether or not to allow and use real name fields. Defaults to true. */
@@ -2536,6 +2555,31 @@ $wgSpecialPages = array();
  * Array mapping class names to filenames, for autoloading.
  */
 $wgAutoloadClasses = array();
+
+
+/*
+ * Array mapping javascript class to web path for autoloading js
+ * this var is populated in AutoLoader.php
+ */
+$wgJSAutoloadClasses = array(); 
+
+/*
+ * boolean if the script loader should be used to group all javascript requests.
+ * more about the script loader: http://www.mediawiki.org/wiki/ScriptLoader
+ */
+$wgEnableScriptLoader = false; 
+
+/*
+ * boolean; if relative file paths can be used (in addition to the autoload js classes listed in: $wgJSAutoloadClasses
+ */
+$wgEnableScriptLoaderJsFile = false; 
+
+/*
+ * boolean; if we should minify the output. (note if you send ?debug=true in the page request it will automatically not group and not minify)  
+ */
+$wgEnableScriptMinify = true;
+
+
 
 /**
  * An array of extension types and inside that their names, versions, authors,
@@ -2799,17 +2843,17 @@ $wgLocalTZoffset = null;
 
 
 /**
- * When translating messages with wfMsg(), it is not always clear what should be
- * considered UI messages and what shoud be content messages.
+ * When translating messages with wfMsg(), it is not always clear what should
+ * be considered UI messages and what should be content messages.
  *
- * For example, for regular wikipedia site like en, there should be only one
- * 'mainpage', therefore when getting the link of 'mainpage', we should treate
- * it as content of the site and call wfMsgForContent(), while for rendering the
- * text of the link, we call wfMsg(). The code in default behaves this way.
- * However, sites like common do offer different versions of 'mainpage' and the
- * like for different languages. This array provides a way to override the
- * default behavior. For example, to allow language specific mainpage and
- * community portal, set
+ * For example, for the English Wikipedia, there should be only one 'mainpage',
+ * so when getting the link for 'mainpage', we should treat it as site content
+ * and call wfMsgForContent(), but for rendering the text of the link, we call
+ * wfMsg(). The code behaves this way by default. However, sites like the
+ * Wikimedia Commons do offer different versions of 'mainpage' and the like for
+ * different languages. This array provides a way to override the default
+ * behavior. For example, to allow language-specific main page and community
+ * portal, set
  *
  * $wgForceUIMsgAsContentMsg = array( 'mainpage', 'portal-url' );
  */
@@ -2849,7 +2893,6 @@ $wgLogTypes = array( '',
 	'patrol',
 	'merge',
 	'suppress',
-	'password',
 );
 
 /**
@@ -2857,6 +2900,7 @@ $wgLogTypes = array( '',
  * Users without this will not see it in the option menu and can not view it
  * Restricted logs are not added to recent changes
  * Logs should remain non-transcludable
+ * Format: logtype => permissiontype
  */
 $wgLogRestrictions = array(
 	'suppress' => 'suppressionlog'
@@ -2903,8 +2947,7 @@ $wgLogNames = array(
 	'import'  => 'importlogpage',
 	'patrol'  => 'patrol-log-page',
 	'merge'   => 'mergelog',
-	'suppress' => 'suppressionlog',
-	'password' => 'resetpass-log'
+	'suppress' => 'suppressionlog'
 );
 
 /**
@@ -2925,7 +2968,6 @@ $wgLogHeaders = array(
 	'patrol'  => 'patrol-log-header',
 	'merge'   => 'mergelogpagetext',
 	'suppress' => 'suppressionlogtext',
-	'password' => 'resetpass-logtext',
 );
 
 /**
@@ -2961,7 +3003,6 @@ $wgLogActions = array(
 	'suppress/delete'   => 'suppressedarticle',
 	'suppress/block'	=> 'blocklogentry',
 	'suppress/reblock'  => 'reblock-logentry',
-	'password/reset'    => 'resetpass-logentry'
 );
 
 /**
@@ -3188,7 +3229,7 @@ $wgExemptFromUserRobotsControl = null;
  * Specifies the minimal length of a user password. If set to 0, empty pass-
  * words are allowed.
  */
-$wgMinimalPasswordLength = 0;
+$wgMinimalPasswordLength = 1;
 
 /**
  * Activate external editor interface for files and pages
@@ -3353,15 +3394,15 @@ $wgTrustedMediaFormats= array(
 $wgAllowSpecialInclusion = true;
 
 /**
- * Timeout for HTTP requests done via CURL (at script run time) 
- *
+ * Timeout for HTTP requests done at script execution time
+ * default is (default php.ini script time 30s - 5s for everythign else) 
  */
-$wgHTTPTimeout = 10; 
-
+$wgSyncHTTPTimeout = 25; 
 /**
- * Timeout for large http file copy over http (default 20 min) 
- */ 
-$wgHTTPFileTimeout = 60*20;
+* Timeout for asynchronous http request that run in a backgournd php proccess
+* default set to 20 min 
+*/
+$wgAsyncHTTPTimeout = 60*20;
 
 /**
  * Proxy to use for CURL requests.
@@ -3520,6 +3561,13 @@ $wgDjvuDump = null;
 $wgDjvuRenderer = null;
 
 /**
+ * Path of the djvutxt DJVU text extraction utility
+ * Enable this and $wgDjvuDump to enable text layer extraction from djvu files
+ */
+# $wgDjvuTxt = 'djvutxt';
+$wgDjvuTxt = null;
+
+/**
  * Path of the djvutoxml executable
  * This works like djvudump except much, much slower as of version 3.5.
  *
@@ -3579,6 +3627,12 @@ $wgAPIMaxDBRows = 5000;
  * Don't set this lower than $wgMaxArticleSize*1024
  */
 $wgAPIMaxResultSize = 8388608;
+
+/**
+ * The maximum number of uncached diffs that can be retrieved in one API
+ * request. Set this to 0 to disable API diffs altogether
+ */
+$wgAPIMaxUncachedDiffs = 1;
 
 /**
  * Parser test suite files to be run by parserTests.php when no specific
@@ -3766,3 +3820,34 @@ $wgPreprocessorCacheThreshold = 1000;
  * Has no effect if no tags are defined in valid_tag.
  */
 $wgUseTagFilter = true;
+
+/**
+ * Allow redirection to another page when a user logs in.
+ * To enable, set to a string like 'Main Page'
+ */
+$wgRedirectOnLogin = null;
+
+/**
+ * Characters to prevent during new account creations.
+ * This is used in a regular expression character class during
+ * registration (regex metacharacters like / are escaped).
+ */
+$wgInvalidUsernameCharacters = '@';
+
+/**
+ * Character used as a delimiter when testing for interwiki userrights
+ * (In Special:UserRights, it is possible to modify users on different
+ * databases if the delimiter is used, e.g. Someuser@enwiki).
+ *
+ * It is recommended that you have this delimiter in
+ * $wgInvalidUsernameCharacters above, or you will not be able to
+ * modify the user rights of those users via Special:UserRights
+ */
+$wgUserrightsInterwikiDelimiter = '@';
+
+/**
+ * The $wgSectionContainers variable is used by the parser to determine if it should
+ * wrap each section of an article in a div. It is automatically enabled if the EditSectionHiliteLink
+ * extension is installed.
+ */
+$wgSectionContainers = false;

@@ -88,6 +88,7 @@ $wgAutoloadLocalClasses = array(
 	'HTMLCacheUpdate' => 'includes/HTMLCacheUpdate.php',
 	'HTMLCacheUpdateJob' => 'includes/HTMLCacheUpdate.php',
 	'HTMLFileCache' => 'includes/HTMLFileCache.php',
+	'HTMLForm' => 'includes/HTMLForm.php',
 	'Http' => 'includes/HttpFunctions.php',
 	'IEContentAnalyzer' => 'includes/IEContentAnalyzer.php',
 	'ImageGallery' => 'includes/ImageGallery.php',
@@ -98,6 +99,8 @@ $wgAutoloadLocalClasses = array(
 	'IndexPager' => 'includes/Pager.php',
 	'Interwiki' => 'includes/Interwiki.php',
 	'IP' => 'includes/IP.php',
+	'JSMin' => 'js2/mv_embed/php/JSMin.php',
+	'jsScriptLoader' => 'js2/mv_embed/jsScriptLoader.php',
 	'Job' => 'includes/JobQueue.php',
 	'License' => 'includes/Licenses.php',
 	'Licenses' => 'includes/Licenses.php',
@@ -139,6 +142,7 @@ $wgAutoloadLocalClasses = array(
 	'PatrolLog' => 'includes/PatrolLog.php',
 	'PostgresSearchResult' => 'includes/SearchPostgres.php',
 	'PostgresSearchResultSet' => 'includes/SearchPostgres.php',
+	'Preferences' => 'includes/Preferences.php',
 	'PrefixSearch' => 'includes/PrefixSearch.php',
 	'Profiler' => 'includes/Profiler.php',
 	'ProfilerSimple' => 'includes/ProfilerSimple.php',
@@ -188,6 +192,7 @@ $wgAutoloadLocalClasses = array(
 	'StringUtils' => 'includes/StringUtils.php',
 	'TablePager' => 'includes/Pager.php',
 	'ThumbnailImage' => 'includes/MediaTransformOutput.php',
+	'TiffHandler' => 'includes/media/Tiff.php',
 	'TitleDependency' => 'includes/CacheDependency.php',
 	'Title' => 'includes/Title.php',
 	'TitleArray' => 'includes/TitleArray.php',
@@ -205,6 +210,7 @@ $wgAutoloadLocalClasses = array(
 	'UserArrayFromResult' => 'includes/UserArray.php',
 	'UserMailer' => 'includes/UserMailer.php',
 	'UserRightsProxy' => 'includes/UserRightsProxy.php',
+	'WantedQueryPage' => 'includes/QueryPage.php',
 	'WatchedItem' => 'includes/WatchedItem.php',
 	'WatchlistEditor' => 'includes/WatchlistEditor.php',
 	'WebRequest' => 'includes/WebRequest.php',
@@ -212,6 +218,8 @@ $wgAutoloadLocalClasses = array(
 	'WikiError' => 'includes/WikiError.php',
 	'WikiErrorMsg' => 'includes/WikiError.php',
 	'WikiExporter' => 'includes/Export.php',
+	'WikiMap' => 'includes/WikiMap.php',
+	'WikiReference' => 'includes/WikiReference.php',
 	'WikiXmlError' => 'includes/WikiError.php',
 	'XCacheBagOStuff' => 'includes/BagOStuff.php',
 	'XmlDumpWriter' => 'includes/Export.php',
@@ -487,9 +495,9 @@ $wgAutoloadLocalClasses = array(
 	'PageArchive' => 'includes/specials/SpecialUndelete.php',
 	'SpecialResetpass' => 'includes/specials/SpecialResetpass.php',
 	'PopularPagesPage' => 'includes/specials/SpecialPopularpages.php',
-	'PreferencesForm' => 'includes/specials/SpecialPreferences.php',
+	'PreferencesForm' => 'includes/Preferences.php',
 	'RandomPage' => 'includes/specials/SpecialRandompage.php',
-	'RevisionDeleteForm' => 'includes/specials/SpecialRevisiondelete.php',
+	'SpecialRevisionDelete' => 'includes/specials/SpecialRevisiondelete.php',
 	'RevisionDeleter' => 'includes/specials/SpecialRevisiondelete.php',
 	'ShortPagesPage' => 'includes/specials/SpecialShortpages.php',
 	'SpecialAllpages' => 'includes/specials/SpecialAllpages.php',
@@ -498,6 +506,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialImport' => 'includes/specials/SpecialImport.php',
 	'SpecialListGroupRights' => 'includes/specials/SpecialListgrouprights.php',
 	'SpecialMostlinkedtemplates' => 'includes/specials/SpecialMostlinkedtemplates.php',
+	'SpecialPreferences' => 'includes/specials/SpecialPreferences.php',
 	'SpecialPrefixindex' => 'includes/specials/SpecialPrefixindex.php',
 	'SpecialRandomredirect' => 'includes/specials/SpecialRandomredirect.php',
 	'SpecialRecentchanges' => 'includes/specials/SpecialRecentchanges.php',
@@ -507,6 +516,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialStatistics' => 'includes/specials/SpecialStatistics.php',
 	'SpecialTags' => 'includes/specials/SpecialTags.php',
 	'SpecialVersion' => 'includes/specials/SpecialVersion.php',
+	'SpecialWhatlinkshere' => 'includes/specials/SpecialWhatlinkshere.php',
 	'UncategorizedCategoriesPage' => 'includes/specials/SpecialUncategorizedcategories.php',
 	'UncategorizedPagesPage' => 'includes/specials/SpecialUncategorizedpages.php',
 	'UncategorizedTemplatesPage' => 'includes/specials/SpecialUncategorizedtemplates.php',
@@ -544,6 +554,33 @@ $wgAutoloadLocalClasses = array(
 	'csvStatsOutput' => 'maintenance/language/StatOutputs.php',
 
 );
+
+//autoloader for javascript files (path is from the mediawiki folder    
+global $wgJSAutoloadLocalClasses; 
+$wgJSAutoloadLocalClasses = array(	
+	'ajax' =>  'skins/common/ajax.js',
+    'ajaxwatch' => 'skins/common/ajaxwatch.js',
+    'allmessages' => 'skins/common/allmessages.js',
+	'block' => 'skins/common/block.js',
+	'changepassword' => 'skins/common/changepassword.js',
+	'diff' => 'skins/common/diff.js',
+	'edit' => 'skins/common/edit.js',
+	'enhancedchanges.js' => 'skins/common/enhancedchanges.js',
+	'history' => 'skins/common/history.js',
+	'IEFixes' => 'skins/common/IEFixes.js',	
+	'metadata' => 'skins/common/metadata.js',
+	'mwsuggest' => 'skins/common/mwsuggest.js',
+	'prefs' => 'skins/common/prefs.js',
+	'preview' => 'skins/common/preview.js',
+	'protect' => 'skins/common/protect.js',
+	'rightclickedit' => 'skins/common/rightclickedit.js',
+	'sticky'	=> 'skins/common/sticky.js',
+	'upload' => 'skins/common/upload.js',
+	'wikibits' => 'skins/common/wikibits.js'	
+);
+
+//add the mv_embed set of classes that we want to expose: (could be conditional) 
+require_once("$IP/js2/mv_embed/php/jsAutoloadLocalClasses.php");
 
 class AutoLoader {
 	/**

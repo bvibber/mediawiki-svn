@@ -306,8 +306,7 @@ class ApiUpload extends ApiBase {
 			'url' => 'Url to upload from',
 			'enablechunks' => 'Boolean If we are in chunk mode; accepts many small file POSTs',
 			'comment' => 'Upload comment or initial page text',
-			'asyncdownload' => 'If we should download asyncrously (returns a upload session key to get status updates)'.
-								"\nDefault:false",
+			'asyncdownload' => 'If we should download asyncrously (returns a upload session key to get status updates in subquent calls)',
 			'watch' => 'Watch the page',
 			'ignorewarnings' => 'Ignore any warnings',					
 			'done'	=> 'When used with "chunks", Is sent to notify the api The last chunk is being uploaded.',
