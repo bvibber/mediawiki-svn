@@ -32,9 +32,9 @@ class WikiWebTest:
 	"""
 
 	"""open marker for test sequence , must be long and unique"""
-	open=u"---START of wikiation test sequence---"
+	open=u"---START of test sequence---"
 	"""close marker for  test sequence, must be long and unique"""
-	close=u"---END of wikiation test sequence---"
+	close=u"---END of test sequence---"
 
 
 	def __init__ (self,site):
@@ -440,6 +440,8 @@ def main():
 		testset=runcategoryandreport(source_site, webtest, category_name)
 		allOk=True
 	elif "--test" in sys.argv:
+		target_site=settings.target_login.login()
+		webtest=WikiWebTest(target_site)
 		print webtest.test("{{SERVER}} yet another test","<a something> yet another test")
 		allOk=True
 	elif "--help" in sys.argv:
