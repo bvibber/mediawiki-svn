@@ -1,4 +1,4 @@
-<?
+<?php
 if ( !defined( 'MEDIAWIKI' ) )
 	exit( 1 );
 
