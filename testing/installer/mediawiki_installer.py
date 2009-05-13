@@ -157,7 +157,7 @@ def dbname(installer_name):
 	"""based on the name of the installer/instance, figure out what the name of the
 	database is. Right now we just use the name of the installer as the name of the database,
 	but that might not always work."""
-	return installer_name
+	return settings.dbname_prefix+installer_name
 
 
 #duplicate of get_installed() TODO: Refactor
@@ -281,7 +281,7 @@ def uniquesettings(target):
 	unique.write('<?php\n')
 	unique.write('$wgSitename = "'+target+'";\n')
 	unique.write('$wgScriptPath = "'+settings.base_scriptpath+target+'";\n')
-	unique.write('$wgDBname = "'+target+'";\n')
+	unique.write('$wgDBname = "'+dbname(target)+'";\n')
 	unique.write('?>\n')
 	
 	unique.close()
@@ -317,25 +317,25 @@ def make_admin(target):
 	os.system(command)
 
 def dumpdb(target,outfile):
-	command=settings.mysqldump_command+" "+target+" > "+outfile
+	command=settings.mysqldump_command+" "+dbname(target)+" > "+outfile
 	os.system(command)
 
 def do_sql(target, infile):
 	"""execute an sql file, using mysql"""
 
-	command="< "+infile+" "+settings.mysql_command+" "+target
+	command="< "+infile+" "+settings.mysql_command+" "+dbname(target)
 	os.system(command)
 
 def createdb(target):
 	"""create a database using mysql"""
 
-	command="echo 'CREATE DATABASE "+target+";' | "+settings.mysql_command
+	command="echo 'CREATE DATABASE "+dbname(target)+";' | "+settings.mysql_command
 	os.system(command)
 
 def dropdb(target):
 	"""drop a database using mysql"""
 
-	command="echo 'DROP DATABASE IF EXISTS "+target+";' | "+settings.mysql_command
+	command="echo 'DROP DATABASE IF EXISTS "+dbname(target)+";' | "+settings.mysql_command
 	os.system(command)
 
 def delete(target):

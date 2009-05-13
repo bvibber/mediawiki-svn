@@ -59,6 +59,16 @@ adminuser_password="admin1234"
 mysql_user="root"
 mysql_pass=""
 
+
+#Prefix database names used by the installer with some unique string.
+# This is useful if multiple people on one machine are using the same
+# mysql instance, to prevent collisions. 
+#
+# Note that it might be a bad idea to change this is you still have 
+# old databases around, because the installer won't be able to see them.
+
+dbname_prefix=""
+
 # what mysql commands should be used. (Who us? Use horrible hacks?)
 
 userpart=""
