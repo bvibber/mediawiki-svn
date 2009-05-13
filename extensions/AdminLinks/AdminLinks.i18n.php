@@ -14,7 +14,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'adminlinks' => 'Admin links',
-	'adminlinks_documentation' => '$1 documentation',
+	'adminlinks_documentation' => '$1 documentation', //FIXME: unused message? NB: try to avoid lego
 	'adminlinks_edit' => 'Edit $1',
 	'adminlinks_general' => 'General',
 	'adminlinks_sidebar' => 'sidebar',

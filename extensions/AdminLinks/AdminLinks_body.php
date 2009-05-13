@@ -39,6 +39,8 @@ class AdminLinks extends SpecialPage {
 		$users_section = new ALSection(wfMsg('adminlinks_users'));
 		$main_row = new ALRow('main');
 		$main_row->addItem(ALItem::newFromSpecialPage('Listusers'));
+		//Q: Use SpecialPage::getTitleFor() ?
+		//Q: Special:HelpfulLinks ?
 		$ul = SpecialPage::getPage('Userlogin');
 		$main_row->addItem(AlItem::newFromPage($ul->getTitle(), wfMsg('adminlinks_createuser'), 'type=signup&returnto=Special:HelpfulLinks'));
 		$main_row->addItem(ALItem::newFromSpecialPage('Userrights'));
@@ -268,6 +270,8 @@ class ALItem {
 		$item->label = $page_name;
 		$title = Title::makeTitleSafe(NS_MEDIAWIKI, $page_name);
 		$edit_link = $title->getFullURL('action=edit');
+		//Q: raw html message and parameter?
+		//Q: translators need to know what is $1, and most likely they still have problems translating constructions like "Edit $1"
 		$full_desc = wfMsg('adminlinks_edit', $desc);
 		$item->text = "<a href=\"$edit_link\">$full_desc</a>";
 		return $item;
