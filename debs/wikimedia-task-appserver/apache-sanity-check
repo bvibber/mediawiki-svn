@@ -3,7 +3,7 @@
 # This is an aggregated version of /home/w/bin/apache-sanity-check,
 # which does not depend on mounted NFS /home.
 
-set -ex
+set -e
 
 export PATH=/bin:/usr/bin:/sbin:/usr/sbin
 

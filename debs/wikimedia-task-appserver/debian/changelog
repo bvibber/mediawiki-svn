@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.36) hardy; urgency=low
+
+  * Remove debug output from apache-sanity-check
+
+ -- Mark Bergsma <mark@wikimedia.org>  Wed, 13 May 2009 18:59:19 +0000
+
 wikimedia-task-appserver (1.35) hardy; urgency=low
 
   * Add missing dependencies on nfs-common and make
