@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # compare database description directories created by
 # dump_desc.sh, and write a report to current/
 

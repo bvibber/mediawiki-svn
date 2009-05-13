@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #compare local mediawiki installation with our own copy
 
 # This software, copyright (C) 2008-2009 by Wikiation.

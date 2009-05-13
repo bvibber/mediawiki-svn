@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This software, copyright (C) 2008-2009 by Wikiation.
 # This software is developed by Kim Bruning.
@@ -41,3 +41,5 @@ $ScriptLocation/compare_db.sh
 	echo -e "$RED * $NC MediaWiki Database differences: " 
 	cat $current/dbdiff_report
 }
+
+exit ! ( -s $current/mwdiff_report || -s $current/dbdiff_report )

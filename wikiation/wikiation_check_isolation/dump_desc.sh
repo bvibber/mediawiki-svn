@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # create a directory describing wiki database (for easy diff-ing)
 
 # This software, copyright (C) 2008-2009 by Wikiation.

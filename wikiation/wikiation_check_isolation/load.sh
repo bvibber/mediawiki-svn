@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This software, copyright (C) 2008-2009 by Wikiation.
 # This software is developed by Kim Bruning.
