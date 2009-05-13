@@ -29,9 +29,9 @@ class AdminLinks extends SpecialPage {
 		$main_row = new ALRow('main');
 		$main_row->addItem(ALItem::newFromSpecialPage('Specialpages'));
 		$main_row->addItem(ALItem::newFromSpecialPage('Allmessages'));
-		$main_row->addItem(ALItem::newFromEditLink('Sidebar', wfMsg('adminlinks_sidebar')));
-		$main_row->addItem(ALItem::newFromEditLink('Common.css', wfMsg('adminlinks_cssfile')));
-		$main_row->addItem(ALItem::newFromEditLink('Mainpage', wfMsg('adminlinks_mainpagename')));
+		$main_row->addItem(ALItem::newFromEditLink('Sidebar', wfMsg('adminlinks_editsidebar')));
+		$main_row->addItem(ALItem::newFromEditLink('Common.css', wfMsg('adminlinks_editcss')));
+		$main_row->addItem(ALItem::newFromEditLink('Mainpage', wfMsg('adminlinks_editmainpagename')));
 		$general_section->addRow($main_row);
 		$tree->addSection($general_section);
 
@@ -39,10 +39,9 @@ class AdminLinks extends SpecialPage {
 		$users_section = new ALSection(wfMsg('adminlinks_users'));
 		$main_row = new ALRow('main');
 		$main_row->addItem(ALItem::newFromSpecialPage('Listusers'));
-		//Q: Use SpecialPage::getTitleFor() ?
-		//Q: Special:HelpfulLinks ?
-		$ul = SpecialPage::getPage('Userlogin');
-		$main_row->addItem(AlItem::newFromPage($ul->getTitle(), wfMsg('adminlinks_createuser'), 'type=signup&returnto=Special:HelpfulLinks'));
+		$ul = SpecialPage::getTitleFor('Userlogin');
+		$al = SpecialPage::getTitleFor('AdminLinks');
+		$main_row->addItem(AlItem::newFromPage($ul, wfMsg('adminlinks_createuser'), "type=signup&returnto=$al"));
 		$main_row->addItem(ALItem::newFromSpecialPage('Userrights'));
 		$users_section->addRow($main_row);
 		$tree->addSection($users_section);
@@ -66,7 +65,7 @@ class AdminLinks extends SpecialPage {
 		return $tree;
 	}
 
-	function execute() {
+	function execute($query) {
 		$this->setHeaders();
 		$admin_links_tree = $this->createInitialTree();
 		wfRunHooks( 'AdminLinks', array( &$admin_links_tree ) );
@@ -245,7 +244,7 @@ class ALItem {
 	var $text;
 	var $label;
 
-	function newFromPage($page_name, $desc = null, $params = null) {
+	static function newFromPage($page_name, $desc = null, $params = null) {
 		$item = new ALItem();
 		$item->label = $desc;
 		if ($params != null) {
@@ -256,7 +255,7 @@ class ALItem {
 		return $item;
 	}
 
-	function newFromSpecialPage($page_name) {
+	static function newFromSpecialPage($page_name) {
 		$item = new ALItem();
 		$item->label = $page_name;
 		$page = SpecialPage::getPage($page_name);
@@ -265,19 +264,16 @@ class ALItem {
 		return $item;
 	}
 
-	function newFromEditLink($page_name, $desc) {
+	static function newFromEditLink($page_name, $desc) {
 		$item = new ALItem();
 		$item->label = $page_name;
 		$title = Title::makeTitleSafe(NS_MEDIAWIKI, $page_name);
 		$edit_link = $title->getFullURL('action=edit');
-		//Q: raw html message and parameter?
-		//Q: translators need to know what is $1, and most likely they still have problems translating constructions like "Edit $1"
-		$full_desc = wfMsg('adminlinks_edit', $desc);
-		$item->text = "<a href=\"$edit_link\">$full_desc</a>";
+		$item->text = "<a href=\"$edit_link\">$desc</a>";
 		return $item;
 	}
 
-	function newFromExternalLink($url, $label) {
+	static function newFromExternalLink($url, $label) {
 		$item = new ALItem();
 		$item->label = $label;
 		$item->text = "<a class=\"external text\" rel=\"nofollow\" href=\"$url\">$label</a>";
