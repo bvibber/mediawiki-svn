@@ -15,7 +15,6 @@ $messages = array();
 $messages['en'] = array(
 	'adminlinks' => 'Admin links',
 	'adminlinks-desc' => 'Adds a [[Special:AdminLinks|special page]] that holds helpful links for administrators',
-	'adminlinks_documentation' => '$1 documentation', //FIXME: unused message? NB: try to avoid lego
 	'adminlinks_general' => 'General',
 	'adminlinks_editsidebar' => 'Edit sidebar',
 	'adminlinks_editcss' => 'Edit CSS file',
