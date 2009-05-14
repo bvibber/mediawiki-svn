@@ -380,6 +380,9 @@ class EditPage {
 		}
 
 		$wgOut->addScriptFile( 'edit.js' );
+		
+		$wgOut->addScriptClass( 'editPage' );
+		
 		$permErrors = $this->getEditPermissionErrors();
 		if ( $permErrors ) {
 			wfDebug( __METHOD__.": User can't edit\n" );

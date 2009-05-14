@@ -580,6 +580,7 @@ $wgJSAutoloadLocalClasses = array(
 	
 	//phase 2 javascript: 
 	'uploadPage' => 'js2/uploadPage.js',
+	'editPage'	=>	'js2/editPage.js',
 );
 
 //add the mwEmbed set of classes that we want to expose: (could be conditional) 
