@@ -8,6 +8,7 @@ import subprocess
 from tags import Tags
 
 try:
+	# this won't work if we haven't installed the extension_tester and pywikipedia
 	import wiki_works
 except:
 	pass # we'll deal with this later (in __init__).

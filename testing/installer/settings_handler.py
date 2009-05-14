@@ -37,8 +37,7 @@ instancesdir='/var/www/revisions'
 base_scriptpath="/revisions/"
 
 # where to install the toolkit
-toolkit_dir='/usr/local/testing'
-
+toolkit_dir=os.path.split(installerdir)[0]
 
 #where check_isolation can be found
 isolation_create=toolkit_dir+'/check_isolation/create_and_ul.sh'
