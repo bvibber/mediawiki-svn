@@ -292,7 +292,7 @@ class Skin extends Linker {
 	}
 
 	function outputPage( OutputPage $out ) {
-		global $wgDebugComments;		
+		global $wgDebugComments;
 		wfProfileIn( __METHOD__ );
 
 		$this->setMembers();
@@ -359,7 +359,6 @@ class Skin extends Linker {
 		global $wgVersion, $wgEnableAPI, $wgEnableWriteAPI;
 		global $wgRestrictionTypes, $wgLivePreview;
 		global $wgMWSuggestTemplate, $wgDBname, $wgEnableMWSuggest;
-	
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = isset( $wgCanonicalNamespaceNames[ $ns ] ) ? $wgCanonicalNamespaceNames[ $ns ] : $wgTitle->getNsText();
@@ -403,14 +402,14 @@ class Skin extends Linker {
 			'wgEnableAPI' => $wgEnableAPI,
 			'wgEnableWriteAPI' => $wgEnableWriteAPI,
 			'wgSeparatorTransformTable' => $compactSeparatorTransTable,
-			'wgDigitTransformTable' => $compactDigitTransTable,			
+			'wgDigitTransformTable' => $compactDigitTransTable,
 		);
-		//if on upload page output the extension list:
+		//if on upload page output the extension list & js_upload
 		if( SpecialPage::resolveAlias( $wgTitle->getDBkey() ) ==  "Upload" ){ 
-			global $wgFileExtensions;
-			$vars['wgFileExtensions'] = $wgFileExtensions;
+			global $wgFileExtensions, $wgAjaxUploadInterface;
+			$vars['wgFileExtensions'] 	 = $wgFileExtensions;
+			$vars['wgAjaxUploadInterface'] = $wgAjaxUploadInterface;			
 		}
-		
 		
 		if( $wgUseAjax && $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ){
 			$vars['wgMWSuggestTemplate'] = SearchEngine::getMWSuggestTemplate();
@@ -443,29 +442,29 @@ class Skin extends Linker {
 		return self::makeVariablesScript( $vars );
 	}
 
-	function getHeadScripts( $allowUserJs ) {
+	function getHeadScripts( $allowUserJs, OutputPage $out ) {
 		global $wgStylePath, $wgUser, $wgJsMimeType, $wgStyleVersion;
 
 		$vars = self::makeGlobalVariablesScript( array( 'skinname' => $this->getSkinName() ) );
-
-		$r = array( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/wikibits.js?$wgStyleVersion\"></script>" );
+		
+		//moved wikibits to be called earlier on
+		//		$out->addScriptFile( "{$wgStylePath}/common/wikibits.js" );
+		
 		global $wgUseSiteJs;
 		if( $wgUseSiteJs ) {
-			$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';
-			$r[] = "<script type=\"$wgJsMimeType\" src=\"".
-				htmlspecialchars( self::makeUrl( '-',
+			$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';		
+			$out->addScriptFile( htmlspecialchars( self::makeUrl( '-',
 					"action=raw$jsCache&gen=js&useskin=" .
-					urlencode( $this->getSkinName() ) ) ) .
-				"\"><!-- site js --></script>";
+					urlencode( $this->getSkinName() ) ) ) );
 		}
 		if( $allowUserJs && $wgUser->isLoggedIn() ) {
 			$userpage = $wgUser->getUserPage();
 			$userjs = htmlspecialchars( self::makeUrl(
 				$userpage->getPrefixedText().'/'.$this->getSkinName().'.js',
-				'action=raw&ctype='.$wgJsMimeType ) );
-			$r[] = '<script type="'.$wgJsMimeType.'" src="'.$userjs."\"></script>";
+				'action=raw&ctype='.$wgJsMimeType ) );			
+			$out->addScriptFile( $userjs );
 		}
-		return $vars . "\t\t" . implode ( "\n\t\t", $r );
+		return true;
 	}
 
 	/**
@@ -586,7 +585,28 @@ END;
 		}
 		return $s;
 	}
+	/**
+	 * @private
+	 */
+	function setupUserJs(  OutputPage $out) {
+		global $wgRequest, $wgJsMimeType, $wgUseSiteJs;
 
+		wfProfileIn( __METHOD__ );		
+					
+		$action = $wgRequest->getVal( 'action', 'view' );
+		if( $out->isUserJsAllowed() && $this->loggedin ) {			
+			if( $this->mTitle->isJsSubpage() and $this->userCanPreview( $action ) ) {
+				# XXX: additional security check/prompt (userCanPreview checks for html token before doing this js output)
+				$this->userjsprev = '/*<![CDATA[*/ ' . $wgRequest->getText( 'wpTextbox1' ) . ' /*]]>*/';
+			} else {																			
+				$this->userjs = self::makeUrl( $this->userpage . '/' . $this->skinname . '.js', 'action=raw&ctype=' . $wgJsMimeType );	
+			}
+		}				
+		//call the skin JS setup		
+		$this->setupSkinUserJs( $out );
+				
+		wfProfileOut( __METHOD__ );
+	}
 	/**
 	 * @private
 	 */
@@ -596,7 +616,7 @@ END;
 
 		wfProfileIn( __METHOD__ );
 
-		$this->setupSkinUserCss( $out );				
+		$this->setupSkinUserCss( $out );
 
 		$siteargs = array(
 			'action' => 'raw',
@@ -645,8 +665,8 @@ END;
 			# If we're previewing the CSS page, use it
 			if( $this->mTitle->isCssSubpage() && $this->userCanPreview( $action ) ) {
 				$previewCss = $wgRequest->getText( 'wpTextbox1' );
-				// @FIXME: properly escape the cdata!				
-				$this->usercss = "/*<![CDATA[*/\n" . $previewCss . "/*]]>*/";				
+				// @FIXME: properly escape the cdata!
+				$this->usercss = "/*<![CDATA[*/\n" . $previewCss . "/*]]>*/";
 			} else {
 				$out->addStyle( self::makeUrl( $this->userpage . '/' . $this->getSkinName() .'.css',
 					'action=raw&ctype=text/css' ) );
@@ -655,29 +675,7 @@ END;
 
 		wfProfileOut( __METHOD__ );
 	}
-	
-	/**
-	 * @private
-	 */
-	function setupUserJs(  OutputPage $out) {
-		global $wgRequest, $wgJsMimeType, $wgUseSiteJs;
 
-		wfProfileIn( __METHOD__ );		
-					
-		$action = $wgRequest->getVal( 'action', 'view' );
-		if( $out->isUserJsAllowed() && $this->loggedin ) {			
-			if( $this->mTitle->isJsSubpage() and $this->userCanPreview( $action ) ) {
-				# XXX: additional security check/prompt (userCanPreview checks for html token before doing this js output)
-				$this->userjsprev = '/*<![CDATA[*/ ' . $wgRequest->getText( 'wpTextbox1' ) . ' /*]]>*/';
-			} else {																			
-				$this->userjs = self::makeUrl( $this->userpage . '/' . $this->skinname . '.js', 'action=raw&ctype=' . $wgJsMimeType );	
-			}
-		}				
-		//call the skin JS setup		
-		$this->setupSkinUserJs( $out );
-				
-		wfProfileOut( __METHOD__ );
-	}
 	/**
 	 * Add skin specific stylesheets
 	 * @param $out OutputPage

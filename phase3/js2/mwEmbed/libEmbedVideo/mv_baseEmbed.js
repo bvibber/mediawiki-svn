@@ -2474,7 +2474,7 @@ mediaPlayers.prototype =
     {
         this.preference = new Object();
     	// see if we have a cookie set to a clientSupported type:
-		var cookieVal = getCookie( 'ogg_player_exp' );
+		var cookieVal = $j.cookie( 'ogg_player_exp' );
 		if (cookieVal)
         {
             var pairs = cookieVal.split('&');
@@ -2494,7 +2494,7 @@ mediaPlayers.prototype =
             
         cookieVal=cookieVal.substr(0, cookieVal.length-1);        
 		var week = 7*86400*1000;
-		setCookie( 'ogg_player_exp', cookieVal, week, false, false, false, false );
+		$j.cookie( 'ogg_player_exp', cookieVal, { 'expires':week } );
     }
 };
 

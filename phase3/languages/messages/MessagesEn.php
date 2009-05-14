@@ -1833,6 +1833,24 @@ To include a file in a page, use a link in one of the following forms:
 'uploadlogpage'               => 'Upload log',
 'uploadlogpagetext'           => 'Below is a list of the most recent file uploads.
 See the [[Special:NewFiles|gallery of new files]] for a more visual overview.',
+
+'upload-enable-converter' => 'Enable video converter (to upload source video not yet converted to theora format) <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>',
+'upload-fogg_not_installed' => 'If you want to upload video consider installing <a href=\"http://firefogg.org\">firefogg.org</a>, <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>',
+'upload-transcode-in-progress' => 'Doing Transcode & Upload (do not close this window)',
+'upload-in-progress' => 'Upload in Progress (do not close this window)',
+'upload-transcoded-status' => 'Transcoded',
+'uploaded-status' => 'Uploaded',
+'upload-select-file'=> 'Select File...',	
+'wgfogg_wrong_version'=> 'You have firefogg installed but its outdated, <a href=\"http://firefogg.org\">please upgrade</a> ',
+'wgfogg_waring_ogg_upload'=> 'You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?',
+'wgfogg_waring_bad_extension'=> 'You have selected a file with an unsuported extension. <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">More help</a>',
+'upload-stats-fileprogres' => '$1 of $2',
+
+'mv_upload_done' 	  => 'Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>',
+'upload-unknown-size' => 'Unknown size',	
+'unknown-error' => 'Unknown Error',
+'return-to-form' => 'Return to form',	
+
 'filename'                    => 'Filename',
 'filedesc'                    => 'Summary',
 'fileuploadsummary'           => 'Summary:',

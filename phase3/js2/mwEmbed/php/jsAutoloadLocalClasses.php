@@ -1,10 +1,10 @@
 <?php 
 if ( !defined( 'MEDIAWIKI' ) ) die(1);
 
-global $wgJSAutoloadLocalClasses, $wgScriptPath;
-	
+global $wgJSAutoloadLocalClasses, $wgScriptPath;	
 		
-	$mvjsp = 'js2/mv_embed/';
+	$mvjsp = 'js2/mwEmbed/';
+	
 	//the basis of the loader calls:
 	$wgJSAutoloadLocalClasses['mv_embed']			= $mvjsp . 'mv_embed.js';	
 		
@@ -21,6 +21,8 @@ global $wgJSAutoloadLocalClasses, $wgScriptPath;
 	$wgJSAutoloadLocalClasses['j.ui.draggable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js';	
 	$wgJSAutoloadLocalClasses['j.ui.sortable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.sortable.js';
 	$wgJSAutoloadLocalClasses['j.ui.resizable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.resizable.js';
+	$wgJSAutoloadLocalClasses['j.cookie']			= $mvjsp . 'jquery/jquery.ui-1.7.1/external/jquery.cookie.js';
+	
 	$wgJSAutoloadLocalClasses['j.contextMenu']		= $mvjsp . 'jquery/plugins/jquery.contextMenu.js';
 	$wgJSAutoloadLocalClasses['j.fn.autocomplete']	= $mvjsp . 'jquery/plugins/jquery.autocomplete.js';
 	$wgJSAutoloadLocalClasses['j.fn.hoverIntent']	= $mvjsp . 'jquery/plugins/jquery.hoverIntent.js';

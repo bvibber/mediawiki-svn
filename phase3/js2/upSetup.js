@@ -1,6 +1,7 @@
 // simple script to invoke the upload with config:  
-addOnloadHook( function(){
-	//make sure we have mvFirefogg & mvUploader loaded: 			
+
+mwAddOnloadHook( function(){
+	//make sure we have mvFirefogg & mvUploader loaded:
 	mvJsLoader.doLoad( {
 		'mvFirefogg' : 'libAddMedia/mvFirefogg.js',	
 		'mvUploader' : 'libAddMedia/mvUploader.js'

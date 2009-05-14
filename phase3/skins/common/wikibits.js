@@ -33,9 +33,10 @@ var doneOnloadHook;
 
 if (!window.onloadFuncts) {
 	var onloadFuncts = [];
-}
-
-function addOnloadHook(hookFunct) {
+}	
+	
+//should use mwAddOnloadHook insted
+function addOnloadHook(hookFunct) {	
 	// Allows add-on scripts to add onload functions
 	if(!doneOnloadHook) {
 		onloadFuncts[onloadFuncts.length] = hookFunct;

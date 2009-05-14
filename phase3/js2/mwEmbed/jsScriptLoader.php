@@ -45,7 +45,6 @@ class jsScriptLoader{
 		}		
 		
 		//Build the Output: 
-		
 		//swap in the appropriate language per js_file		
 		foreach($this->jsFileList as $classKey => $file_name){
 			//special case: - title classes:
@@ -80,8 +79,14 @@ class jsScriptLoader{
 				}				
 			}
 			
-			if( trim( $file_name ) != '')
-				$this->jsout .= $this->doProccessJsFile( $file_name ) . "\n";
+			if( trim( $file_name ) != ''){
+				//if in debug add a comment with the file name: 
+				if($this->debug)					
+					$this->jsout .= "\n/**
+* File: $file_name 
+*/\n";					
+				$this->jsout .= ( $this->doProccessJsFile( $file_name ) ). "\n";
+			}
 		}
 		
 		//check if we should minify : 
@@ -96,7 +101,7 @@ class jsScriptLoader{
 													
 		$this->outputjsHeaders();
 		if( $this->error_msg != '')
-			echo 'alert(\'' . str_replace("\n", '\'+"\n"+'."\n'", $this->error_msg ). '\');';
+			echo 'alert(\'ScriptLoader.php ::' . str_replace("\n", '\'+"\n"+'."\n'", $this->error_msg ). '\');';
 			
 		echo trim($this->jsout);
 				

@@ -15,10 +15,11 @@ loadGM( {
 	"wgfogg_waring_ogg_upload": "You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?",
 	"wgfogg_waring_bad_extension" : "You have selected a file with an unsuported extension. <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">More help</a>",
 	"upload-stats-fileprogres": "$1 of $2",
+	
 	"mv_upload_done" 	  : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",
 	"upload-unknown-size": "Unknown size",	
 	
-	"successfulupload" : 'Successful upload',
+	"successfulupload" : "Successful upload",
 	"uploaderror" : "Upload error",
 	"uploadwarning": "Upload warning",
 	"unknown-error": "Unknown Error",

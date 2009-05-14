@@ -99,8 +99,8 @@ $wgAutoloadLocalClasses = array(
 	'IndexPager' => 'includes/Pager.php',
 	'Interwiki' => 'includes/Interwiki.php',
 	'IP' => 'includes/IP.php',
-	'JSMin' => 'js2/mv_embed/php/JSMin.php',
-	'jsScriptLoader' => 'js2/mv_embed/jsScriptLoader.php',
+	'JSMin' => 'js2/mwEmbed/php/minify/JSMin.php',
+	'jsScriptLoader' => 'js2/mwEmbed/jsScriptLoader.php',
 	'Job' => 'includes/JobQueue.php',
 	'License' => 'includes/Licenses.php',
 	'Licenses' => 'includes/Licenses.php',
@@ -576,11 +576,14 @@ $wgJSAutoloadLocalClasses = array(
 	'rightclickedit' => 'skins/common/rightclickedit.js',
 	'sticky'	=> 'skins/common/sticky.js',
 	'upload' => 'skins/common/upload.js',
-	'wikibits' => 'skins/common/wikibits.js'	
+	'wikibits' => 'skins/common/wikibits.js',	
+	
+	//phase 2 javascript: 
+	'upSetup' => 'js2/upSetup.js',
 );
 
-//add the mv_embed set of classes that we want to expose: (could be conditional) 
-require_once("$IP/js2/mv_embed/php/jsAutoloadLocalClasses.php");
+//add the mwEmbed set of classes that we want to expose: (could be conditional) 
+require_once("$IP/js2/mwEmbed/php/jsAutoloadLocalClasses.php");
 
 class AutoLoader {
 	/**

@@ -579,8 +579,8 @@ wgAjaxLicensePreview = {$alp};
 wgUploadAutoFill = {$autofill};
 </script>" );
 		//legacy upload code:
-		$wgOut->addScriptFile( 'upload.js' );
-		$wgOut->addScriptFile( 'edit.js' ); // For <charinsert> support
+		//$wgOut->addScriptFile( 'upload.js' );
+		//$wgOut->addScriptFile( 'edit.js' ); // For <charinsert> support
 		
 		//add javascript phase 2 upload script (will completely replace upload.js shortly)		
 		$wgOut->addScriptClass( 'upSetup' );  

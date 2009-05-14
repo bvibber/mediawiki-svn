@@ -155,6 +155,32 @@ class OutputPage {
 			)
 		);						
 	}
+	/*
+	 * This is the core script that is included on every page 
+	 * (they are requested separately to improve caching across 
+	 *  different page load types (edit, upload, view, etc)
+	 */
+	function addCoreScripts2Top(){
+		global $wgStyleVersion,$wgJSAutoloadLocalClasses, $wgJsMimeType, $wgScriptPath ;
+		//@@todo we should depricate wikibits in favor of mv_embed and native jQuery functions
+		$core_classes = array('window.jQuery', 'mv_embed', 'wikibits');	
+		if( $wgEnableScriptLoader ){
+			$this->mScripts = $this->getScriptLoaderJs( $core_classes ) . $this->mScripts;
+		}else{			
+			$so = '';
+			foreach($core_classes as $s){				
+				if(isset( $wgJSAutoloadLocalClasses[$s] )){					
+						$so.= Xml::element( 'script', array(
+								'type' => $wgJsMimeType,
+								'src' => "{$wgScriptPath}/{$wgJSAutoloadLocalClasses[$s]}?$wgStyleVersion",
+							),
+							'', false
+						);
+				}			
+			}		
+			$this->mScripts =  $so . $this->mScripts;
+		}
+	}
 	function addScriptClass( $js_class ){
 		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgJsMimeType, 
 				$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath;				
@@ -164,7 +190,7 @@ class OutputPage {
 					$this->mScriptLoaderClassList[] = $js_class;
 				}
 			}else{
-				//do a normal load of the scriptLoader:
+				//do a normal load of without the script-loader:
 				$path = $wgScriptPath . '/';
 				$path.= isset($wgJSAutoloadClasses[ $js_class ] )?$wgJSAutoloadClasses[ $js_class ]:
 							$wgJSAutoloadLocalClasses[$js_class];
@@ -180,17 +206,21 @@ class OutputPage {
 			}
 			return true;		
 		}					
-		wfDebug( __METHOD__ . " could not find js_class:" . $js_class );
+		wfDebug( __METHOD__ . " could not find js_class: " . $js_class );
 		return false; //could not find the class
 	}
 	/**
 	 * gets the scriptLoader javascript include 
 	 *
 	 */
-	function getScriptLoaderJs(){
+	function getScriptLoaderJs( $forceClassAry=false ){
 		global $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgRequest;
 		
-		$class_list = implode(',', $this->mScriptLoaderClassList );
+		if(!$forceClassAry){
+			$class_list = implode(',', $this->mScriptLoaderClassList );
+		}else{
+			$class_list = implode(',', $forceClassAry );
+		}
 				
 		$debug_param = ( $mvgJSDebug ||
 						 $wgRequest->getVal('debug')=='true' ||
@@ -201,15 +231,19 @@ class OutputPage {
 		//@@todo we should check the packaged message text in this javascript file for updates and update the $mScriptLoaderURID id (in getJsClassFromPath)  
 
 		//generate the unique request param (combine with the most recent revision id of any wiki page with the $wgStyleVersion var)
-		$urid_param = "&urid={$wgStyleVersion}_{$this->mLatestScriptRevID}";  
+		if( $this->debug ){
+			$urid_param = "&urid=". time();
+		}else{
+			$urid_param = "&urid={$wgStyleVersion}_{$this->mLatestScriptRevID}";
+		}  
 			 		 
 		return Xml::element( 'script', 
 				array(
 					'type' => $wgJsMimeType,
-					'src' => "$wgScriptPath/mvwScriptLoader.php?class={$class_list}{$debug_param}{$urid_param}",
+					'src' => "$wgScriptPath/mwScriptLoader.php?class={$class_list}{$debug_param}{$urid_param}",
 				),
 				'', false
-			);
+		);
 	}
 	function getJsClassFromPath( $path ){
 		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgScriptPath;
@@ -1066,9 +1100,8 @@ class OutputPage {
 
 		$sk = $wgUser->getSkin();
 
-		//load our required mv_embed and jQuery libs: (maybe make them optional per config)
-		$this->addScriptClass( 'window.jQuery' );
-		$this->addScriptClass( 'mv_embed' );
+		//load our required mwEmbed and jQuery libs: (maybe make them optional per config)
+		$this->addCoreScripts2Top();
 		
 		if ( $wgUseAjax ) {
 			$this->addScriptFile( 'ajax.js' );

@@ -16,13 +16,11 @@
  */
 //fix multiple instances of mv_embed (ie include twice from two different servers) 
 var MV_DO_INIT=true;
-if( MV_EMBED_VERSION ){
-	js_log('mv_embed already included do nothing');
+if( MV_EMBED_VERSION ){	
 	MV_DO_INIT=false;	
 }
 //used to grab fresh copies of scripts. (should be changed on commit)  
 var MV_EMBED_VERSION = '1.0r15';
-
 
 /*
  * Configuration variables (can be set from some precceding script) 
@@ -294,15 +292,15 @@ var mvJsLoader = {
 		if( callback ){ 
 			this.callbacks.push(callback);
 		}		
-		if( mvJsLoader.checkLoading() ){
+		if( this.checkLoading() ){
 			 if( this.load_time++ > 3000){ //time out after ~30seconds
 			 	js_error( gM('error_load_lib') +  this.cur_path );
 			 	this.load_error=true;			 	
 			 }else{
-				setTimeout( 'mvJsLoader.doLoad()', 25 );
+				setTimeout( 'mvJsLoader.doLoad()', 10 );
 			 }
-		 }else{
-		 	//js_log('checkLoading passed for:  do run callbacks');
+		}else{
+		 	//js_log('checkLoading passed run callbacks');
 		 	//only do callback if we are in the same instance (weird concurency issue) 		 	
 		 	var cb_count=0;
 		 	for(var i=0; i < this.callbacks.length; i++)
@@ -381,6 +379,7 @@ var mvJsLoader = {
 		_this.jQueryCheck(function(){
 			_this.doLoad({
 				'embedVideo'	  : 'libEmbedVideo/mv_baseEmbed.js',
+				'$j.cookie'		  :	'jquery/jquery.ui-1.7.1/external/jquery.cookie.js',
 				'$j.ui.mouse'	  : 'jquery/jquery.ui-1.7.1/ui/ui.core.js',
 				'$j.ui.droppable' : 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js',
 				'$j.ui.draggable' : 'jquery/jquery.ui-1.7.1/ui/ui.draggable.js'
@@ -394,37 +393,12 @@ var mvJsLoader = {
 	 	this.onReadyEvents.push(fn);
 	},	
 	runQuededFunctions:function(){	 
-		this.doneReadyEvents=true;
-	 	js_log('runQuededFunctions:: onReadyEvents');
+		this.doneReadyEvents=true;			 	
 		 while( this.onReadyEvents.length ){
 			this.onReadyEvents.shift()();
 		}	
 	}	
 }
-
-
-
-
-function getCookie ( cookieName ) {
-	var m = document.cookie.match( cookieName + '=(.*?)(;|$)' );
-	//js_log('getCookie:' + cookieName + ' v:' + (m ? unescape( m[1] ) : false));
-	return m ? unescape( m[1] ) : false;
-}
-
-function setCookie(name, value, expiry, path, domain, secure) {
-	js_log('setCookie:' + name + ' v:' + value);
-   	var expiryDate = false;
-	if ( expiry ) {
-		expiryDate = new Date();
-		expiryDate.setTime( expiryDate.getTime() + expiry );
-	}
-	document.cookie = name + "=" + escape(value) + 
-		(expiryDate ? ("; expires=" + expiryDate.toGMTString()) : "") + 
-		(path ? ("; path=" + path) : "") + 
-		(domain ? ("; domain=" + domain) : "") + 
-		(secure ? "; secure" : "");
-}
-
 //load an external JS (similar to jquery .require plugin)
 //but checks for object availability rather than load state
 
@@ -435,10 +409,10 @@ function setCookie(name, value, expiry, path, domain, secure) {
  * for an example of the problem see:1.1.3 working:http://pastie.caboo.se/92588
  * and >= 1.1.4 not working: http://pastie.caboo.se/92595
  * $j(document).ready( function(){ */
-function init_mv_embed(force){
-	js_log('f:init_mv_embed');
+function mwdomReady(force){
+	js_log('f:mwdomReady:');	
 	if( !force && mv_init_done  ){
-		js_log("mv_init_done do nothing...");
+		js_log("mv_init_done already done do nothing...");
 		return false;
 	}
 	mv_init_done=true;			
@@ -457,16 +431,12 @@ function init_mv_embed(force){
 		});		
 	}else{
 		//if we already have jQuery make sure its loaded into its proper context $j
-		//otherwise it will load if needed. 
-		if( typeof window.jQuery != 'undefined'){
-			mvJsLoader.jQueryCheck(function(){
-				//run any queded global events:
-				mvJsLoader.runQuededFunctions();		
-			});	
-		}else{
-			//run any queded global events:
-			mvJsLoader.runQuededFunctions();						
-		}
+		//otherwise it will load if needed. 	
+		js_log("run jCheck:");
+		mvJsLoader.jQueryCheck(function(){
+			//run any queded global events:			
+			mvJsLoader.runQuededFunctions();		
+		});			
 	}
 }
 /*
@@ -537,10 +507,10 @@ function rewrite_for_oggHanlder( vidIdList ){
  *********************************************/
 // for Mozilla browsers
 if (document.addEventListener ) {
-    document.addEventListener("DOMContentLoaded", function(){init_mv_embed()}, false);
+    document.addEventListener("DOMContentLoaded", function(){mwdomReady()}, false);
 }else{	
 	//backup "onload" method in case on DOMContentLoaded does not exist
-	window.onload = function(){ init_mv_embed() };
+	window.onload = function(){ mwdomReady() };
 }
 
 /* init remote search */
@@ -667,12 +637,12 @@ function npt2seconds( npt_str ){
 
 //addLoadEvent for adding functions to be run when the page DOM is done loading
 //@@todo depricate in favor of: 
-function jAddOnloadHook( func ) {
+function mwAddOnloadHook( func ) {	
 	//if we have already run the dom ready just run the function directly: 
-	if(mvJsLoader.doneReadyEvents){
+	if( mvJsLoader.doneReadyEvents ){
 		func();	
 	}else{
-		mvJsLoader.addLoadEvent(func);		
+		mvJsLoader.addLoadEvent(func);
 	};
 }
 
@@ -877,7 +847,7 @@ function getScriptLoaderPath(){
 	var eurl = getMvEmbedURL();	
 	//script loader by either of its two names
 	var smv = 'jsScriptLoader.php';
-	var smw = 'mvwScriptLoader.php';
+	var smw = 'mwScriptLoader.php';
 	//get just the script loader part of the url: 	
 	if( eurl.indexOf(smv) != -1 ){
 		return eurl.substr(0, (eurl.indexOf(smv) + smv.length));
@@ -896,7 +866,7 @@ function getMvEmbedURL(){
 		var src = js_elements[i].getAttribute("src");		
 		if( src ){			
 			if( src.indexOf('mv_embed.js') !=-1 || (  
-				( src.indexOf('mvwScriptLoader.php') != -1 || src.indexOf('jsScriptLoader.php') != -1 )
+				( src.indexOf('mwScriptLoader.php') != -1 || src.indexOf('jsScriptLoader.php') != -1 )
 					&& src.indexOf('mv_embed') != -1) ){ //(check for class=mv_embed script_loader call)
 				_global['mv_embed_url'] = src;
 				return  src;		
@@ -935,7 +905,7 @@ function getMvEmbedPath(){
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mv_embed.js'));
 	}else{
 		//script load is in the root of mediaWiki so include the default mv_embed extention path (if using the script loader)
-		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mvwScriptLoader.php'))  + mediaWiki_mvEmbed_path ;
+		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mwScriptLoader.php'))  + mediaWiki_mvEmbed_path ;
 	}
 	//absolute the url (if relative) (if we don't have mv_embed path)
 	if( mv_embed_path.indexOf('://') == -1){	
