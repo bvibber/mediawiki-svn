@@ -24,7 +24,7 @@ class Poll extends SpecialPage {
 		$action = htmlentities( $wgRequest->getText( 'action' ) );
 		$id = htmlentities( $wgRequest->getText( 'id' ) );
 		
-		if ( $action == "" ) {
+		if ( $action == "" OR $action="list" ) {
 		    $this->make_list();
 		}
 
@@ -37,7 +37,7 @@ class Poll extends SpecialPage {
 		}
 
     	if ( $action == "submit" ) {
-      		$this->submit( $pid );
+      		$this->submit( $id );
     	}
 	}
 	
@@ -48,12 +48,14 @@ class Poll extends SpecialPage {
 	  $dbr = wfGetDB( DB_SLAVE );
 	  $query = $dbr->select( 'poll', 'question, dis, id' );
 	  
+	  $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=create').'">'.wfMsg( 'poll-create-link' ).'</a>' );
+	  
 	  $wgOut->addWikiMsg( 'poll-list-current' );
 	  $wgOut->addHtml( Xml::openElement( 'table' ) );
 	  $wgOut->addHtml( '<tr><th>'.wfMsg( 'poll-question' ).'</th><th>'.wfMsg( 'poll-dis' ).'</th></tr>' );
 	  
 	  while( $row = $dbr->fetchObject( $query ) ) {
-		  $wgOut->addHtml( '<tr><td><a href='.$wgTitle->getFullURL('action=vote&id='.$row->id).'>'.$row->question.'</a></td>' );
+		  $wgOut->addHtml( '<tr><td><a href="'.$wgTitle->getFullURL('action=vote&id='.$row->id).'">'.$row->question.'</a></td>' );
 		  $wgOut->addHtml( '<td>'.$row->dis.'</td></tr>' );
 	  }
 	  
@@ -166,6 +168,7 @@ class Poll extends SpecialPage {
 			'alternative_6' => $alternative_6, 'creater' => $user, 'dis' => $dis ) );
 			
 			$wgOut->addWikiMsg( 'poll-create-pass' );
+			$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 		  }
 		  else {
 		      $wgOut->addWikiMsg( 'poll-create-fields-error' );
@@ -189,13 +192,20 @@ class Poll extends SpecialPage {
 		  $vote = $_POST['vote'];
 		  $uid = $wgUser->getId();
 		  
-		  $query = $dbr->select( 'poll', 'uid', 'uid = ' . $uid);
-		  $num = mysql_num_rows($query);
+		  $query = $dbr->select( 'poll_answer', 'uid', 'uid = ' . $uid);
+		  $num = 0;
+		  
+		  while( $row = $dbr->fetchObject( $query ) ) {
+		      if($row->uid != "") {
+			      $num++;
+			  }
+		  }
 		  
 		  if( $num == 0 ) {
             $dbw->insert( 'poll_answer', array( 'pid' => $pid, 'uid' => $uid, 'vote' => $vote ) );
 			
 			$wgOut->addWikiMsg( 'poll-vote-pass' );
+			$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 		  }
 		  else {
 		      $wgOut->addWikiMsg( 'poll-vote-already-error' );

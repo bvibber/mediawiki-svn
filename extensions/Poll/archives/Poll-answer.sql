@@ -6,5 +6,5 @@
 CREATE TABLE /*$wgDBprefix*/poll_answer (
 `pid` INT( 10 ) NOT NULL ,
 `uid` INT( 10 ) NOT NULL ,
-`vote` VARCHAR( 255 ) NOT NULL ,
+`vote` VARCHAR( 255 ) NOT NULL
 ) /*$wgDBTableOptions*/;

@@ -32,7 +32,9 @@ $messages['en'] = array(
 	'poll-list-current' => '== Current Polls ==',
 	'poll-create-pass' => 'Poll created!',
 	'poll-vote-pass' => 'Voted!',
-	'poll-vote-already-error' => 'You has already voted!'
+	'poll-vote-already-error' => 'You has already voted!',
+	'poll-create-link' => 'Create a new Poll',
+	'poll-back' => 'Back to Overview!',
 );
 
 /** German (Deutsch)
@@ -59,5 +61,7 @@ $messages['de'] = array(
 	'poll-list-current' => '== Aktuelle Umfragen ==',
 	'poll-create-pass' => 'Umfrage erfolgreich erstellt!',
 	'poll-vote-pass' => 'Erfolgreich abgestimmt!',
-	'poll-vote-already-error' => 'Du hast bereits abgestimmt!'
+	'poll-vote-already-error' => 'Du hast bereits abgestimmt!',
+	'poll-create-link' => 'Eine neue Umfrage erstellen',
+	'poll-back' => 'Zurück zur Übersicht!',
 );
