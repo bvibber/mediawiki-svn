@@ -60,7 +60,7 @@ class Test_System(object):
 
 	def tests_for_entity(self, entity):
 		# TODO we only have one kind of test right right now.
-		return ["WETE"]
+		return ["exttest"]
 
 	def entity_exists(self,entity_name):
 		"""checks to see if a particular installer exists"""
@@ -85,14 +85,14 @@ class Test_System(object):
 			target=self.target
 		if not target:
 			raise Test_Exception("What mediawiki instance would you like to test?")
-		if test=="WETE":
-			self.run_WETE(entity)
+		if test=="exttest":
+			self.run_exttest(entity)
 		elif test=="wikiworks":
 			self.run_wikiworks()
 		else:
 			raise Test_Exception("I don't know of a test called '"+str(test)+"'.")
 
-	def run_WETE(self,target,entity):
+	def run_exttest(self,target,entity):
 		pass
 	
 	def run_wikiworks(self,target):

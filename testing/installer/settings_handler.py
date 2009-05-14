@@ -38,8 +38,11 @@ base_scriptpath="/revisions/"
 
 # where to install the toolkit
 toolkit_dir=os.path.split(installerdir)[0]
+print toolkit_dir
 
 #where check_isolation can be found
+
+print toolkit_dir
 isolation_create=toolkit_dir+'/check_isolation/create_and_ul.sh'
 isolation_test=toolkit_dir+'/check_isolation/dl_and_check.sh'
 # run automated tests during installation

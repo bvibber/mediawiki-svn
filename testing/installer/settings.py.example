@@ -27,14 +27,6 @@ revisionsdir='/home/kim/public_html/revisions'
 # base scriptpath for every installation (ie, where to reach the above over the web)
 base_scriptpath="/~kim/revisions/"
 
-# where to install the toolkit
-toolkit_dir='/home/kim/testing'
-
-
-#where check_isolation can be found
-isolation_create=toolkit_dir+'/check_isolation/create_and_ul.sh'
-isolation_test=toolkit_dir+'/check_isolation/dl_and_check.sh'
-
 # what mysql command should be used. (Who us? Use horrible hacks?)
 
 mysql_command="mysql -uroot"
