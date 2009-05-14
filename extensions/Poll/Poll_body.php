@@ -24,7 +24,7 @@ class Poll extends SpecialPage {
 		$action = htmlentities( $wgRequest->getText( 'action' ) );
 		$id = htmlentities( $wgRequest->getText( 'id' ) );
 		
-		if ( $action == "" OR $action="list" ) {
+		if ( $action == "" OR $action == "list" ) {
 		    $this->make_list();
 		}
 
@@ -72,9 +72,11 @@ class Poll extends SpecialPage {
       $controll_create_blocked = $wgUser->isBlocked();
       if ( $controll_create_right != true ) {
           $wgOut->addWikiMsg( 'poll-create-right-error' );
+		  $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
       }
       elseif ( $controll_create_blocked == true ) {
           $wgOut->addWikiMsg( 'poll-create-block-error' );
+		  $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
       }
       else {
           $wgOut->addHtml( Xml::openElement( 'form', array('method'=> 'post', 'action' => $wgTitle->getFullURL('action=submit') ) ) );
@@ -102,9 +104,11 @@ class Poll extends SpecialPage {
       $controll_vote_blocked = $wgUser->isBlocked();
       if ( $controll_vote_right != true ) {
           $wgOut->addWikiMsg( 'poll-vote-right-error' );
+		  $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
       }
       elseif ( $controll_vote_blocked == true ) {
           $wgOut->addWikiMsg( 'poll-vote-block-error' );
+		  $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
       }
       else {
           $dbr = wfGetDB( DB_SLAVE );
@@ -136,7 +140,7 @@ class Poll extends SpecialPage {
   }
   
   public function submit( $pid ) {
-      global $wgRequest, $wgOut, $wgUser;
+      global $wgRequest, $wgOut, $wgUser, $wgTitle;
 	  
 	  $type = $_POST['type'];
 	  
@@ -145,9 +149,11 @@ class Poll extends SpecialPage {
         $controll_create_blocked = $wgUser->isBlocked();
         if ( $controll_create_right != true ) {
             $wgOut->addWikiMsg( 'poll-create-right-error' );
+			$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
         }
         elseif ( $controll_create_blocked == true ) {
             $wgOut->addWikiMsg( 'poll-create-block-error' );
+			$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
         }
 
 		else {
@@ -172,6 +178,7 @@ class Poll extends SpecialPage {
 		  }
 		  else {
 		      $wgOut->addWikiMsg( 'poll-create-fields-error' );
+			  $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 		  }
 	    }
       }
@@ -181,15 +188,18 @@ class Poll extends SpecialPage {
         $controll_vote_blocked = $wgUser->isBlocked();
         if ( $controll_vote_right != true ) {
             $wgOut->addWikiMsg( 'poll-vote-right-error' );
+			$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
         }
         elseif ( $controll_vote_blocked == true ) {
             $wgOut->addWikiMsg( 'poll-vote-block-error' );
+			$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
         }
 
 		else {
 		  $dbw = wfGetDB( DB_MASTER );
 		  $dbr = wfGetDB( DB_SLAVE );
 		  $vote = $_POST['vote'];
+		  $user = $wgUser->getName();
 		  $uid = $wgUser->getId();
 		  
 		  $query = $dbr->select( 'poll_answer', 'uid', 'uid = ' . $uid);
@@ -202,13 +212,14 @@ class Poll extends SpecialPage {
 		  }
 		  
 		  if( $num == 0 ) {
-            $dbw->insert( 'poll_answer', array( 'pid' => $pid, 'uid' => $uid, 'vote' => $vote ) );
+            $dbw->insert( 'poll_answer', array( 'pid' => $pid, 'uid' => $uid, 'vote' => $vote, 'user' => $user ) );
 			
 			$wgOut->addWikiMsg( 'poll-vote-pass' );
 			$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 		  }
 		  else {
 		      $wgOut->addWikiMsg( 'poll-vote-already-error' );
+			  $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 		  }
 	    }
       }
