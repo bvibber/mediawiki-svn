@@ -78,7 +78,7 @@ class AdminLinks extends SpecialPage {
 	 * among the user's "personal URLs" at the top, if they have
 	 * the 'adminlinks' permission
 	 */
-	function addURLToUserLinks(&$personal_urls, &$title) {
+	public static function addURLToUserLinks(&$personal_urls, &$title) {
 		global $wgUser;
 		// if user is a sysop, add link
 		if ($wgUser->isAllowed('adminlinks')) {
