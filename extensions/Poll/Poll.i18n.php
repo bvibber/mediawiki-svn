@@ -8,7 +8,9 @@
 
 $messages = array();
  
-
+/** English
+ * @author Jan Luca
+ */
 $messages['en'] = array(
 	'poll' => 'List of the Polls',
 	'poll-desc' => 'Add a [[Special:Poll|special page]] for using polls',
@@ -29,8 +31,13 @@ $messages['en'] = array(
 	'poll-dis' => 'Description',
 	'poll-list-current' => '== Current Polls ==',
 	'poll-create-pass' => 'Poll created!',
+	'poll-vote-pass' => 'Voted!',
+	'poll-vote-already-error' => 'You has already voted!'
 );
 
+/** German (Deutsch)
+ * @author Jan Luca
+ */
 $messages['de'] = array(
 	'poll' => 'Liste der Umfragen',
 	'poll-desc' => 'Erstellt eine [[Special:Poll|Spezialsite]], um Umfragen zu nutzen',
@@ -51,4 +58,6 @@ $messages['de'] = array(
 	'poll-dis' => 'Beschreibung',
 	'poll-list-current' => '== Aktuelle Umfragen ==',
 	'poll-create-pass' => 'Umfrage erfolgreich erstellt!',
+	'poll-vote-pass' => 'Erfolgreich abgestimmt!',
+	'poll-vote-already-error' => 'Du hast bereits abgestimmt!'
 );

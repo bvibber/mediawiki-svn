@@ -37,7 +37,7 @@ class Poll extends SpecialPage {
 		}
 
     	if ( $action == "submit" ) {
-      		$this->submit();
+      		$this->submit( $pid );
     	}
 	}
 	
@@ -96,12 +96,12 @@ class Poll extends SpecialPage {
       
       $wgOut->setPagetitle( wfMsg( 'poll-title-vote' ) );
       
-      $controll_create_right = $wgUser->isAllowed( 'poll-vote' );
-      $controll_create_blocked = $wgUser->isBlocked();
-      if ( $controll_create_right != true ) {
+      $controll_vote_right = $wgUser->isAllowed( 'poll-vote' );
+      $controll_vote_blocked = $wgUser->isBlocked();
+      if ( $controll_vote_right != true ) {
           $wgOut->addWikiMsg( 'poll-vote-right-error' );
       }
-      elseif ( $controll_create_blocked == true ) {
+      elseif ( $controll_vote_blocked == true ) {
           $wgOut->addWikiMsg( 'poll-vote-block-error' );
       }
       else {
@@ -118,7 +118,7 @@ class Poll extends SpecialPage {
 			  $alternative_6 = htmlentities( $row->alternative_6 );
 		  }
 		  
-		  $wgOut->addHtml( Xml::openElement( 'form', array('method'=> 'post', 'action' => $wgTitle->getFullURL('action=submit') ) ) );
+		  $wgOut->addHtml( Xml::openElement( 'form', array('method'=> 'post', 'action' => $wgTitle->getFullURL('action=submit&id='.$vid) ) ) );
           $wgOut->addHtml( Xml::openElement( 'table' ) );
 		  $wgOut->addHtml( '<tr><th>'.$question.'</th></tr>' );
           $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '1').' '.$alternative_1.'</td></tr>' );
@@ -133,7 +133,7 @@ class Poll extends SpecialPage {
       }
   }
   
-  public function submit() {
+  public function submit( $pid ) {
       global $wgRequest, $wgOut, $wgUser;
 	  
 	  $type = $_POST['type'];
@@ -170,7 +170,37 @@ class Poll extends SpecialPage {
 		  else {
 		      $wgOut->addWikiMsg( 'poll-create-fields-error' );
 		  }
-	  }
-    }
+	    }
+      }
+	  
+	  if($type == 'vote') {
+	    $controll_vote_right = $wgUser->isAllowed( 'poll-vote' );
+        $controll_vote_blocked = $wgUser->isBlocked();
+        if ( $controll_vote_right != true ) {
+            $wgOut->addWikiMsg( 'poll-vote-right-error' );
+        }
+        elseif ( $controll_vote_blocked == true ) {
+            $wgOut->addWikiMsg( 'poll-vote-block-error' );
+        }
+
+		else {
+		  $dbw = wfGetDB( DB_MASTER );
+		  $dbr = wfGetDB( DB_SLAVE );
+		  $vote = $_POST['vote'];
+		  $uid = $wgUser->getId();
+		  
+		  $query = $dbr->select( 'poll', 'uid', 'uid = ' . $uid);
+		  $num = mysql_num_rows($query);
+		  
+		  if( $num == 0 ) {
+            $dbw->insert( 'poll_answer', array( 'pid' => $pid, 'uid' => $uid, 'vote' => $vote ) );
+			
+			$wgOut->addWikiMsg( 'poll-vote-pass' );
+		  }
+		  else {
+		      $wgOut->addWikiMsg( 'poll-vote-already-error' );
+		  }
+	    }
+      }
   }
 }

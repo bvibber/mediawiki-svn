@@ -63,9 +63,10 @@ function efPollSchemaUpdates() {
 	global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables;
 	$base = dirname(__FILE__);
 	if( $wgDBtype == 'mysql' ) {
-		$wgExtNewTables[] = array( 'poll', "$base/Poll.sql" ); // Initial install tables
+		$wgExtNewTables[] = array( 'poll', "$base/archives/Poll.sql" ); // Initial install tables
 		$wgExtNewFields[] = array( 'poll', 'creater', "$base/archives/patch-creater.sql" ); // Add creater
 		$wgExtNewFields[] = array( 'poll', 'dis', "$base/archives/patch-dis.sql" ); // Add dis
+		$wgExtNewTables[] = array( 'poll_answer', "$base/archives/Poll-answer.sql" ); // Initial answer tables
     }
 	return true;
 }
