@@ -579,7 +579,7 @@ $wgJSAutoloadLocalClasses = array(
 	'wikibits' => 'skins/common/wikibits.js',	
 	
 	//phase 2 javascript: 
-	'upSetup' => 'js2/upSetup.js',
+	'uploadPage' => 'js2/uploadPage.js',
 );
 
 //add the mwEmbed set of classes that we want to expose: (could be conditional) 

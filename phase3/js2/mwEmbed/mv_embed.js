@@ -240,6 +240,7 @@ var mvJsLoader = {
 	 //base lib flags:
 	 onReadyEvents:new Array(),
 	 doneReadyEvents:false,
+	 jQueryCheckFlag:false,
 	 //to keep consistency across threads: 
 	 ptime:0,
 	 ctime:0,	 
@@ -392,12 +393,25 @@ var mvJsLoader = {
 	addLoadEvent:function(fn){
 	 	this.onReadyEvents.push(fn);
 	},	
-	runQuededFunctions:function(){	 
-		this.doneReadyEvents=true;			 	
-		 while( this.onReadyEvents.length ){
+	//checks the jQuery flag (this way when remote embeding we don't load jQuery 
+	// unless mwAddOnloadHook was used or there is video on the page
+	runQuededFunctions:function(){	
+		var _this = this; 
+		this.doneReadyEvents=true;			
+		if(this.jQueryCheckFlag){
+			this.jQueryCheck(function(){
+				_this.runReadyEvents();
+			});
+		}else{ 	
+			this.runReadyEvents();	
+		}
+	},
+	runReadyEvents:function(){
+		while( this.onReadyEvents.length ){
 			this.onReadyEvents.shift()();
-		}	
-	}	
+		}
+	}
+	
 }
 //load an external JS (similar to jquery .require plugin)
 //but checks for object availability rather than load state
@@ -430,14 +444,23 @@ function mwdomReady(force){
 			});					
 		});		
 	}else{
-		//if we already have jQuery make sure its loaded into its proper context $j
-		//otherwise it will load if needed. 	
-		js_log("run jCheck:");
-		mvJsLoader.jQueryCheck(function(){
-			//run any queded global events:			
-			mvJsLoader.runQuededFunctions();		
-		});			
+		//if we already have jQuery make sure its loaded into its proper context $j		
+		//run any queded global events:			
+		mvJsLoader.runQuededFunctions();				
 	}
+}
+//mwAddOnloadHook: ensure jQuery and the DOM are ready:  
+function mwAddOnloadHook( func ) {	
+	//if we have already run the dom ready just run the function directly: 
+	if( mvJsLoader.doneReadyEvents ){
+		//make sure jQuery is there: 
+		mvJsLoader.jQueryCheck(function(){
+			func();
+		});	
+	}else{
+		mvJsLoader.jQueryCheckFlag = true;
+		mvJsLoader.addLoadEvent( func );
+	};
 }
 /*
  * this function allows for targeted rewriting 
@@ -633,17 +656,6 @@ function npt2seconds( npt_str ){
 	times[2] = times[2].replace(/,\s?/,'.');
 	//return seconds float (ie take seconds float value if present):
 	return parseInt(times[0]*3600)+parseInt(times[1]*60)+parseFloat(times[2]);
-}
-
-//addLoadEvent for adding functions to be run when the page DOM is done loading
-//@@todo depricate in favor of: 
-function mwAddOnloadHook( func ) {	
-	//if we have already run the dom ready just run the function directly: 
-	if( mvJsLoader.doneReadyEvents ){
-		func();	
-	}else{
-		mvJsLoader.addLoadEvent(func);
-	};
 }
 
 //does a remote or local api request based on request url 

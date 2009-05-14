@@ -23,7 +23,9 @@ loadGM( {
 	"uploaderror" : "Upload error",
 	"uploadwarning": "Upload warning",
 	"unknown-error": "Unknown Error",
-	"return-to-form": "Return to form"	
+	"return-to-form": "Return to form",
+	
+	"file-exists-duplicate" : "This file is a duplicate of the following file"
 	
 });
 
@@ -133,26 +135,26 @@ mvUploader.prototype = {
 		$j('#mw-upload-table .mw-input').eq(0).html('<div id="wg-base-upload">' + itd_html + '</div>');
 		//add in firefogg control			
 		$j('#wg-base-upload').after('<p id="fogg-enable-item" >' + 
-						'<input style="display:none" id="fogg-video-file" name="fogg-video-file" type="button" value="' + gM('upload-select-file') + '">' +
-						"<span id='wgfogg_not_installed'>" + 
-							gM('upload-fogg_not_installed') +
-						"</span>" +
-						"<span class='error' id='wgfogg_wrong_version'  style='display:none;'><br>" +
-							gM('wgfogg_wrong_version') +
-						"<br>" +
-						"</span>" +
-						"<span class='error' id='wgfogg_waring_ogg_upload' style='display:none;'><br>"+
-							gM('wgfogg_waring_ogg_upload') +
-						"<br>" +
-						"</span>" + 
-						"<span class='error' id='wgfogg_waring_bad_extension' style='display:none;'><br>"+
-							gM('wgfogg_waring_bad_extension') + 						
-						"<br>" +
-						"</span>" +  
-						"<span id='wgfogg_installed' style='display:none' >"+
-							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
-								gM('upload-enable-converter') +
-						'</span><br></p>');					
+			'<input style="display:none" id="fogg-video-file" name="fogg-video-file" type="button" value="' + gM('upload-select-file') + '">' +
+			"<span id='wgfogg_not_installed'>" + 
+				gM('upload-fogg_not_installed') +
+			"</span>" +
+			"<span class='error' id='wgfogg_wrong_version'  style='display:none;'><br>" +
+				gM('wgfogg_wrong_version') +
+			"<br>" +
+			"</span>" +
+			"<span class='error' id='wgfogg_waring_ogg_upload' style='display:none;'><br>"+
+				gM('wgfogg_waring_ogg_upload') +
+			"<br>" +
+			"</span>" + 
+			"<span class='error' id='wgfogg_waring_bad_extension' style='display:none;'><br>"+
+				gM('wgfogg_waring_bad_extension') + 						
+			"<br>" +
+			"</span>" +  
+			"<span id='wgfogg_installed' style='display:none' >"+
+				'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
+					gM('upload-enable-converter') +
+			'</span><br></p>');					
 	}
 }
 /**
@@ -184,7 +186,7 @@ mvBaseUploadInterface.prototype = {
 		}		
 	},
 	setupForm:function(){
-		var _this = this;			
+		var _this = this;
 		//set up the local pointer to the edit form:
 		_this.getEditForm();
 						
@@ -214,8 +216,13 @@ mvBaseUploadInterface.prototype = {
 						_this.formData[ tmpAryData[i]['name'] ] = tmpAryData[i]['value'];
 				}							
 						
-				//display the loader:
-				_this.dispProgressOverlay();								
+				//get a clean loader: 
+				_this.dispProgressOverlay();
+					
+				//update the status to loading (we don't know if we will get status updates or not) 
+				$j('#dlbox-centered').html( '<h5>' + _this.getProgressTitle() + '</h5>' + 
+					mv_get_loading_img( 'left:40%;top:20%')
+				);							
 				
 				//for some unknown reason we have to drop down the #p-search z-index:
 				$j('#p-search').css('z-index', 1);								
@@ -276,10 +283,15 @@ mvBaseUploadInterface.prototype = {
 						
 			//do normal post upload no status indicators (also since its a file I think we have to submit the form)
 			_this.form_post_override = true;
+			
 			//trick the browser into thinking the wpUpload button was pressed (there might be a cleaner way to do this) 
 			$j(_this.editForm).append('<input type="hidden" name="wpUpload" value="' + $j('#wpUpload').val() + '"/>');
+			
+			//@@todo support firefox 3.0 ajax file upload progress
+			//http://igstan.blogspot.com/2009/01/pure-javascript-file-upload.html
+			
 			//do the submit :			
-			_this.editForm.submit();						
+			_this.editForm.submit();
 		}else if( _this.upload_mode == 'api' && $j('#wpSourceTypeURL').get(0).checked){	
 			//if the api is supported.. && source type is http do upload with http status updates
 			_this.doHttpUpload();					
@@ -304,7 +316,16 @@ mvBaseUploadInterface.prototype = {
 			if( data.error){
 				_this.updateUploadError( data.error.code );
 				return ;
-			}
+			}			
+			//check for warning: 
+			if( data.upload.warnings ){
+				if(	data.upload.warnings.duplicate ){
+					_this.updateUploadError( gM('file-exists-duplicate', data.upload.warnings.duplicate[0].title.mTextform ) );
+										
+					//@@todo should use warning and let the user "ignore" 
+					//_this.updateUploadWarning( gM('file-exists-duplicate') );
+				}
+			}			
 			//check for session key: 
 			if( data.upload && data.upload.upload_session_key ){							
 				//set the session key
@@ -319,6 +340,10 @@ mvBaseUploadInterface.prototype = {
 	},
 	doAjaxUploadStatus:function() {
 		var _this = this;	
+		
+		//set up the progress display for status updates: 
+		_this.dispProgressOverlay();
+		
 		var uploadStatus = function(){
 			//do the api request: 
 			do_api_req({
@@ -328,8 +353,7 @@ mvBaseUploadInterface.prototype = {
 					'sessionkey' : _this.upload_session_key
 				},
 				'url' : _this.api_url
-			}, function( data ){				
-					
+			}, function( data ){									
 				//@@check if we are done
 				if( data.upload['apiUploadResult'] ){
 					//update status to 100%
@@ -419,6 +443,9 @@ mvBaseUploadInterface.prototype = {
 			return false;
 		});
 	},
+	updateUploadWarning:function( msg ){
+		
+	},
 	updateUploadDone:function( url ){
 		$j( '#dlbox-centered' ).html( '<h3>' + gM('successfulupload') + '</h3>' +
 			gM( 'mv_upload_done', url) );	
@@ -451,8 +478,7 @@ mvBaseUploadInterface.prototype = {
 			'</div>' +					
 			'<div id="dlbox-overlay" class="dlbox-overlay" style="background:#000;cursor:wait;height:100%;'+
 						'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
-						'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');				
-		$j('#dlbox-centered,#dlbox-overlay').show(); 	
+						'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');		
 	}
 	
 }

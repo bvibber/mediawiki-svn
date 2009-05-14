@@ -38,7 +38,7 @@ var default_remote_search_options = {
 	
 	'caret_pos':null,
 	'local_wiki_api_url':null,
-	'import_url_mode': 'autodetect', //can be 'api', 'form', 'autodetect' or 'none' (none should be used where no remote repositories are enabled) 
+	'import_url_mode': 'autodetect', //can be 'api', 'form', 'autodetect', 'link', or 'none' (none should be used where no remote repositories are enabled) 
 	
 	'target_title':null,
 	
@@ -323,9 +323,11 @@ remoteSearchDriver.prototype = {
 	},
 	//gets the in and out points for insert position or grabs the selected text for search	
 	getTexboxSelection:function(){				
-		if(this.caret_pos.s && this.caret_pos.e &&
-			(this.caret_pos.s != this.caret_pos.e))
-			this.default_query = this.caret_pos.text.substring(this.caret_pos.s, this.caret_pos.e).replace(/ /g, '\xa0') || '\xa0'		
+		if(this.caret_pos){
+			if(this.caret_pos.s && this.caret_pos.e &&
+				(this.caret_pos.s != this.caret_pos.e))
+			this.default_query = this.caret_pos.text.substring(this.caret_pos.s, this.caret_pos.e).replace(/ /g, '\xa0') || '\xa0'
+		}		
 	},
 	//sets up the initial html interface 
 	init_interface_html:function(){

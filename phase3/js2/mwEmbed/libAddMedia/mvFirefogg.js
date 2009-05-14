@@ -94,7 +94,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		this.fogg_enabled=true;
 		
 		//make sure file is "checked"
-		if($j( '#wpSourceTypeFile' ).length != 0)
+		if( $j( '#wpSourceTypeFile' ).length != 0 )
 			$j( '#wpSourceTypeFile' ).get(0).checked = true;		
 		
 		//hide normal file upload stuff

@@ -583,7 +583,7 @@ wgUploadAutoFill = {$autofill};
 		//$wgOut->addScriptFile( 'edit.js' ); // For <charinsert> support
 		
 		//add javascript phase 2 upload script (will completely replace upload.js shortly)		
-		$wgOut->addScriptClass( 'upSetup' );  
+		$wgOut->addScriptClass( 'uploadPage' );  
 		
 
 		if( !wfRunHooks( 'UploadForm:initial', array( &$this ) ) )
@@ -712,34 +712,23 @@ wgUploadAutoFill = {$autofill};
 		$warningChecked = ($this->mIgnoreWarning || $this->mForReUpload) ? 'checked="checked"' : '';
 		
 		// Prepare form for upload or upload/copy
+		//javascript moved from inline calls to setup:
 		if( UploadFromUrl::isEnabled() && $wgUser->isAllowed( 'upload_by_url' ) ) {
 			$filename_form =
-				"<input type='radio' id='wpSourceTypeFile' name='wpSourceType' value='upload' " .
-				   "onchange='toggle_element_activation(\"wpUploadFileURL\",\"wpUploadFile\")' checked='checked' />" .
-				 "<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' " .
-				   "onfocus='" .
-				     "toggle_element_activation(\"wpUploadFileURL\",\"wpUploadFile\");" .
-				     "toggle_element_check(\"wpSourceTypeFile\",\"wpSourceTypeURL\")' " .
-				     "onchange='fillDestFilename(\"wpUploadFile\")' size='60' />" .
+				"<input type='radio' id=\"wpSourceTypeFile\" name='wpSourceType' value='upload' checked='checked' />" .
+				 "<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' size='60' />" .
 				wfMsgHTML( 'upload_source_file' ) . "<br/>" .
-				"<input type='radio' id='wpSourceTypeURL' name='wpSourceType' value='url' " .
-				  "onchange='toggle_element_activation(\"wpUploadFile\",\"wpUploadFileURL\")' />" .
-				"<input tabindex='1' type='text' name='wpUploadFileURL' id='wpUploadFileURL' " .
-				  "onfocus='" .
-				    "toggle_element_activation(\"wpUploadFile\",\"wpUploadFileURL\");" .
-				    "toggle_element_check(\"wpSourceTypeURL\",\"wpSourceTypeFile\")' " .
-				    "onchange='fillDestFilename(\"wpUploadFileURL\")' size='60' />" .
+				"<input type='radio' id='wpSourceTypeURL' name='wpSourceType' value='url' />" .
+				"<input tabindex='1' type='text' name='wpUploadFileURL' id='wpUploadFileURL' size='60' />" .
 				wfMsgHtml( 'upload_source_url' ) ;
 		} else {
 			$filename_form =
-				"<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' " .
-				($this->mDesiredDestName?"":"onchange='fillDestFilename(\"wpUploadFile\")' ") .
-				"size='60' />" .
+				"<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' size='60' />" .
 				"<input type='hidden' name='wpSourceType' value='upload' />" ;
 		}
 		if ( $useAjaxDestCheck ) {
 			$warningRow = "<tr><td colspan='2' id='wpDestFile-warning'>&nbsp;</td></tr>";
-			$destOnkeyup = 'onkeyup="wgUploadWarningObj.keypress();"';
+			$destOnkeyup = '';
 		} else {
 			$warningRow = '';
 			$destOnkeyup = '';
@@ -788,7 +777,7 @@ wgUploadAutoFill = {$autofill};
 		else {
 			$wgOut->addHTML(
 				"<input tabindex='2' type='text' name='wpDestFile' id='wpDestFile' size='60'
-						value=\"{$encDestName}\" onchange='toggleFilenameFiller()' $destOnkeyup />"
+						value=\"{$encDestName}\" $destOnkeyup />"
 			);
 		}
 		
