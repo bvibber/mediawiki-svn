@@ -35,9 +35,9 @@ $wgUploadPath       = "$wgScriptPath/images";
 $wgUploadDirectory  = "$IP/images";
 
 $wgDBserver         = "localhost";
-$wgDBname           = "%(dbname)s";
-$wgDBuser           = "%(dbuser)s";
-$wgDBpassword       = "%(dbpassword)s";
+$wgDBname           = "%(dbName)s";
+$wgDBuser           = "%(dbUser)s";
+$wgDBpassword       = "%(dbPassword)s";
 $wgDBprefix         = "";
 $wgDBtype           = "mysql";
 

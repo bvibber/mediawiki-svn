@@ -1,4 +1,4 @@
 <?php
-$wgDBadminuser           = "%(dbuser)s";
-$wgDBadminpassword       = "%(dbpassword)s";
+$wgDBadminuser           = "%(dbUser)s";
+$wgDBadminpassword       = "%(dbPassword)s";
 ?>
