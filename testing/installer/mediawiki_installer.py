@@ -272,7 +272,7 @@ def localsettings(target):
 	instancedir=settings.instancesdir+"/"+target
 	there=instancedir+"/LocalSettings.php"
 	shutil.copy2(here,there)
-	subdir=os.path.join(settings.revisionsdir,target,"LocalSettings")
+	subdir=os.path.join(settings.instancesdir,target,"LocalSettings")
 	os.mkdir(subdir)
 	
 def uniquesettings(target):

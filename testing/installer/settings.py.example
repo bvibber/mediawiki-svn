@@ -21,11 +21,11 @@ trunkdir="http://svn.wikimedia.org/svnroot/mediawiki/trunk"
 extensionsdir=trunkdir+"/extensions"
 
 # where to install diverse revisions
-revisionsdir='/home/kim/public_html/revisions'
+#revisionsdir='~/public_html/revisions'
 
 
 # base scriptpath for every installation (ie, where to reach the above over the web)
-base_scriptpath="/~kim/revisions/"
+#base_scriptpath="/~kim/revisions/"
 
 # what mysql command should be used. (Who us? Use horrible hacks?)
 

@@ -10,7 +10,7 @@
 # Provides sane defauls and backwards compatibility for
 # settings.py.
 
-import os
+import os, getpass
 
 # "You Are Here"
 installerdir=os.path.dirname(os.path.abspath(__file__))
@@ -30,19 +30,20 @@ extensionssubdir="extensions"
 extensionsdir=trunkdir+"/"+extensionssubdir
 
 # where to install diverse revisions
-instancesdir='/var/www/revisions'
+# (Let's guess we want to use the typical public_html, you'll still need to make 
+# the directory "revisions" though!)
+# override if you want to use someplase else!
+instancesdir=os.path.expanduser('~/public_html/revisions')
 
 
 # base scriptpath for every installation (ie, where to reach the above over the web)
-base_scriptpath="/revisions/"
+base_scriptpath="~"+getpass.getuser()+"/revisions/"
 
 # where to install the toolkit
 toolkit_dir=os.path.split(installerdir)[0]
-print toolkit_dir
 
 #where check_isolation can be found
 
-print toolkit_dir
 isolation_create=toolkit_dir+'/check_isolation/create_and_ul.sh'
 isolation_test=toolkit_dir+'/check_isolation/dl_and_check.sh'
 # run automated tests during installation

@@ -2,10 +2,9 @@
 # This software is developed by Kim Bruning.
 #
 # Distributed under the terms of the MIT license.
-
-# Back end code to deal with paths and to delegate 
-#tasks to relevant installation systems
-
+#
+#Back end code to deal with paths and to delegate 
+#tasks to relevant installation systems"""
 
 import settings_handler as settings
 import os, os.path, shutil
@@ -24,12 +23,15 @@ from extension_installer2 import extension_installer2
 from tags import Tags, TagsException
 
 class Parse_Exception(Exception):
+	"""Exception if something goes wrong while 'parsing' installer pathnames"""
 	pass
 
 class Listing_Exception(Exception):
+	"""Exception if something goes wrong while doing an ls-like operation"""
 	pass
 
 def ls(args):
+	"""list things, what exactly gets listed depends on the path"""
 	if len(args)==0:
 		print "Internal error: args list too short"
 		return
@@ -64,12 +66,14 @@ def ls(args):
 	print installer_util.pretty_list(output)
 
 def ls_available(ppath):
+	"""list things that are available to be installed"""
 	if ppath["system"]==None:
 		return ls_systems()
 	else:
 		return ls_available_in_system(ppath)
 
 def ls_installed(ppath):
+	"""list things that have already been installed"""
 	if ppath["system"]==None:
 		if ppath["installer"]==None:
 			return ls_systems()
@@ -79,16 +83,22 @@ def ls_installed(ppath):
 	return ls_installed_in_system(ppath)
 
 def ls_systems():
+	"""list the available installation systems"""
 	return [item+':' for item in systems.keys()]
 
 
 def ls_available_in_system(ppath):
+	"""list items that are available in a particular installation system
+	for example:  ls available.mediawiki: """
 	system=get_system(ppath["system"])
 	if not system:
 		return
 	return system.get_installers()
 
 def ls_installed_in_system(ppath):
+	"""list items that are already installed a particular installation system
+	for example:  ls installed.mediawiki:  or  ls installed.extension: in my_wiki"""
+
 	system=get_system(ppath["system"])
 	if not system:
 		return
@@ -105,6 +115,10 @@ def ls_installed_in_system(ppath):
 	return installed
 
 def ls_revisions(ppath):
+	"""list revisions of an item that are available in a system
+	eg
+	ls revisions.mediawiki:
+	ls revisions.extension:ImageMap"""
 	if not ppath["system"]:
 		raise Listing_Exception("What system would you like me to list?")
 	
@@ -120,6 +134,13 @@ def ls_revisions(ppath):
 
 
 def ls_tags(ppath):
+	"""list all the svn tags that apply to this item.
+	eg
+	ls tags.mediawiki:
+	ls tags.extension:ImageMap
+	be aware that on svn, the underlying algorithm can be very slow,
+	and may require caching.
+	"""
 
 	system=get_system(ppath["system"])
 	try:
@@ -130,6 +151,7 @@ def ls_tags(ppath):
 	return tags
 
 def info(args):
+	"""print information on a particular item"""
 	if len(args)<1:
 		print "info: Internal error: expected more arguments"
 	
@@ -148,6 +170,7 @@ def info(args):
 	
 
 def duplicate(args):
+	"""duplicate a mediawiki instance"""
 	mw=get_system("mediawiki")
 	try:
 		mw.duplicate(args[1],args[2])
@@ -156,6 +179,7 @@ def duplicate(args):
 
 
 def install(args):
+	"""install something. What gets installed depends on the path"""
 	if len(args)<1:
 		print "install: Internal error: expected more arguments"
 
@@ -192,6 +216,7 @@ def install(args):
 
 
 def uninstall(args):
+	"""uninstall something. What gets uninstalled depends on the path"""
 	if len(args)<1:
 		print "install: Internal error: expected more arguments"
 
@@ -249,6 +274,22 @@ def _ppath_find(l,keyword):
 		return value
 
 def parse_path(path,defaults=None):
+	"""parses a path of the form
+		[ai.][system:]installer [in iii] [as aaa] [revision rrr] [tag ttt] [limit n]
+		
+		where:
+		ai:=<available|installed|revisions|tags>
+		system:=< (see the systems constant, defined near end of file) >
+		installer	is some name of a script to install an item or the item name to be installed (depends on system)
+		in 		where to install things *in* (typically used with the extension installer)
+		as		give something a name or alias    
+					install mediawiki:REL1_13_3 as my_mediawiki_example 
+				creates a new mediawiki instance (release 1.13.3)  with the name my_mediawiki_example
+		revision	use a particular (svn) revision number
+		tag		use a particular (svn) tag
+		limit n		limits output to at most n items (analogous to the sql command of same name) (useful with ls)
+		"""
+
 	ai=None	# available, installed (and now revisions and tags  and test too)
 	system=None	# installation system
 	installer=None	# installer from that installation system
