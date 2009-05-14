@@ -8,8 +8,8 @@ if (!defined('MEDIAWIKI')) {
 
 # Internationalisation file
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['CheckUser'] = $dir . 'CheckUser.i18n.php';
-$wgExtensionAliasesFiles['CheckUser'] = $dir . 'CheckUser.alias.php';
+$wgExtensionMessagesFiles['SpecialCheckUser'] = $dir . 'CheckUser.i18n.php';
+$wgExtensionAliasesFiles['SpecialCheckUser'] = $dir . 'CheckUser.alias.php';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
@@ -45,6 +45,14 @@ $wgHooks['AuthPluginAutoCreate'][] = 'efUpdateAutoCreateData';
 $wgHooks['ParserTestTables'][] = 'efCheckUserParserTestTables';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCheckUserSchemaUpdates';
 $wgHooks['ContributionsToolLinks'][] = 'efLoadCheckUserLink';
+
+# Setup classes
+$wgSpecialPages['CheckUser'] = 'SpecialCheckUser';
+$wgSpecialPageGroups['CheckUser'] = 'users';
+$wgAutoloadClasses['CheckUser'] = dirname(__FILE__) . '/CheckUser_body.php';
+$wgAutoloadClasses['SpecialCheckUser'] = dirname(__FILE__) . '/SpecialCheckUser.php';
+$wgAutoloadClasses['CheckUserApi'] = dirname(__FILE__) . '/CheckUser_api.php';
+$wgAPIModules['checkuser'] = 'CheckUserApi';
 
 /**
  * Hook function for RecentChange_save
@@ -347,10 +355,6 @@ function efCheckUserParserTestTables( &$tables ) {
 	$tables[] = 'cu_changes';
 	return true;
 }
-
-$wgSpecialPages['CheckUser'] = 'CheckUser';
-$wgSpecialPageGroups['CheckUser'] = 'users';
-$wgAutoloadClasses['CheckUser'] = dirname(__FILE__) . '/CheckUser_body.php';
 
 
 function efLoadCheckUserLink( $id, $nt, &$links ) {
