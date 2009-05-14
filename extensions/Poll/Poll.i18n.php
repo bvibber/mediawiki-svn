@@ -26,6 +26,9 @@ $messages['en'] = array(
 	'right-poll-vote' => 'Vote by a Poll',
 	'right-poll-admin' => 'Manage the Polls',
 	'poll-create-fields-error' => 'The fields Question, Alternative 1 and Alternative 2 must be set',
+	'poll-dis' => 'Description',
+	'poll-list-current' => '== Current Polls ==',
+	'poll-create-pass' => 'Poll created!',
 );
 
 $messages['de'] = array(
@@ -45,4 +48,7 @@ $messages['de'] = array(
 	'right-poll-vote' => 'Bei einer Umfrage abstimmen',
 	'right-poll-admin' => 'Umfragen verwalten',
 	'poll-create-fields-error' => 'Die Felder Frage, Antwortmöglichkeit 1 sowie Antwortmöglichkeit 2 müssen ausgefüllt sein',
+	'poll-dis' => 'Beschreibung',
+	'poll-list-current' => '== Aktuelle Umfragen ==',
+	'poll-create-pass' => 'Umfrage erfolgreich erstellt!',
 );
