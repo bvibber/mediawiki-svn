@@ -95,10 +95,11 @@ class Plotter {
 		for ( $i = 0; $i < count( $this->argumentArray["labels"] ); $i++ ) {
 			$output .= "labels[$i] = '" . $this->argumentArray["labels"][$i] . "';";
 		}
+		$output .= "fix_encoding( labels );";
 
 		// Run preprocessors
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
-			$output .= 'data = plotter_' . $preprocessor . '_process( data, labels, ';
+			$output .= 'plotter_' . $preprocessor . '_process( data, labels, ';
 			foreach ( $this->argumentArray["preprocessorarguments"] as $argument ) {
 				$output .= $argument . ', ';
 			}
@@ -126,9 +127,10 @@ class Plotter {
 	}
 
 	static function setPlotterHeaders( &$outputPage ) {
+		global $wgPlotterJavascriptPath;
 		global $wgPlotterExtensionPath;
 
-		$extensionpath = $wgPlotterExtensionPath;
+		$extensionpath = $wgPlotterJavascriptPath;
 
 		// Add mochikit (required by PlotKit)
 		$outputPage->addScript( '<script src="' . $extensionpath . '/mochikit/MochiKit.js" type="text/javascript"></script>' );
@@ -138,6 +140,9 @@ class Plotter {
 		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Layout.js" type="text/javascript"></script>' );
 		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Canvas.js" type="text/javascript"></script>' );
 		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/SweetCanvas.js" type="text/javascript"></script>' );
+
+		// Add javascript to fix encoding
+		$outputPage->addScript( '<script src="' . $wgPlotterExtensionPath . '/libs/fixencoding.js" type="text/javascript"></script>' );
 
 		return true;
 	}

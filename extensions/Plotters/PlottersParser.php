@@ -57,11 +57,10 @@ class PlotterParser {
 			foreach ( $arguments as $argument ) {
 				$subargumentarr = explode( ',', $argument );
 				foreach ( $subargumentarr as &$singleargument ) {
-					$singleargument = htmlentities( $singleargument, ENT_QUOTES );
-
 					// Fix escaped separators
 					$singleargument = preg_replace( "/§UNIQ§/", ":", $singleargument );
 					$singleargument = preg_replace( "/§UNIQ2§/", ",", $singleargument );
+					$singleargument = htmlentities( $singleargument, ENT_QUOTES );
 				}
 				$this->argumentArray["preprocessorarguments"][] = $subargumentarr;
 			}
@@ -78,16 +77,15 @@ class PlotterParser {
 			// Parse and sanitize arguments
 			$arguments = explode( ',', $argv["scriptarguments"] );
 			foreach ( $arguments as $argument ) {
-				$argument = htmlentities( $argument, ENT_QUOTES );
-
 				// Fix escaped separators
 				$argument = preg_replace( "/§UNIQ§/", ",", $argument );
+				$argument = htmlentities( $argument, ENT_QUOTES );
 				$this->argumentArray["scriptarguments"][] = $argument;
 			}
 			Plotter::debug( 'plot script argument values: ', $this->argumentArray["scriptarguments"] );
 		}
 		if ( isset( $argv["datasep"] ) ) {
-			$this->argumentArray["datasep"] = htmlentities( $argv["datasep"], ENT_QUOTES );
+			$this->argumentArray["datasep"] = $argv["datasep"];
 		}
 		if ( isset( $argv["width"] ) ) {
 			$this->argumentArray["width"] = preg_replace( '/[^0-9]/', '', $argv["width"] );
@@ -102,10 +100,9 @@ class PlotterParser {
 			// Parse and sanitize arguments
 			$labels = explode( ',', $argv["labels"] );
 			foreach ( $labels as $label ) {
-				$label = htmlentities( $label, ENT_QUOTES );
-
 				// Fix escaped separators
 				$label = preg_replace( "/§UNIQ§/", ",", $label );
+				$label = htmlentities( $label, ENT_QUOTES );
 				$this->argumentArray["labels"][] = $label;
 			}
 		}
@@ -119,12 +116,11 @@ class PlotterParser {
 		// Parse and sanitize data
 		$lines = preg_split( "/\n/", $input, -1, PREG_SPLIT_NO_EMPTY );
 		foreach ( $lines as $line ) {
-			$values = explode( ',', $line );
+			$values = explode( $sep, $line );
 			foreach ( $values as &$value ) {
-				$value = htmlentities( $value, ENT_QUOTES );
-
 				// Fix escaped separators
-				$value = preg_replace( "/§UNIQ§/", "\\$sep", $value );
+				$value = preg_replace( "/§UNIQ§/", "$sep", $value );
+				$value = htmlentities( $value, ENT_QUOTES );
 			}
 			$this->dataArray[] = $values;
 			Plotter::debug( 'plot data values: ', $values );

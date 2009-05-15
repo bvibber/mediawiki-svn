@@ -50,7 +50,8 @@ $wgSpecialPages['Plotters'] = 'SpecialPlotters';
 $wgSpecialPageGroups['Plotters'] = 'wiki';
 
 // sane defaults. always initialize to avoid register_globals vulnerabilities
-$wgPlotterExtensionPath = $wgScriptPath . '/extensions/Plotter';
+$wgPlotterExtensionPath = $wgScriptPath . '/extensions/Plotters';
+$wgPlotterJavascriptPath = $wgScriptPath . '/extensions/Plotters';
 
 function wfPlottersArticleSaveComplete( &$article, &$wgUser, &$text ) {
 	// update cache if MediaWiki:Plotters-definition was edited
