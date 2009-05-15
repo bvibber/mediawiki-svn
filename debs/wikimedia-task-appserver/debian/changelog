@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.37) hardy; urgency=low
+
+  * Added dependency for xpdf-utils to satisfy pfd extension requirements.
+
+ -- Fred Vassard <fvassard@wikimedia.org>  Fri, 15 May 2009 18:36:14 +0000
+
 wikimedia-task-appserver (1.36) hardy; urgency=low
 
   * Remove debug output from apache-sanity-check
