@@ -11,6 +11,7 @@ if settings.pywikipedia_path not in sys.path:
 cwd=os.getcwd()
 os.chdir(settings.pywikipedia_path)
 import wikipedia, login
+wikipedia.config.retry_on_fail=False
 os.chdir(cwd)
 import base_family
 
