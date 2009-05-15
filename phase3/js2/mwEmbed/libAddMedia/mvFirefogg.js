@@ -146,10 +146,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 					$j('#wgfogg_waring_bad_extension').show();					
 					return false;			
 				}
-			}
-			//run the onClick hanndle: 
-			if( toggleFilenameFiller ) 		
-				toggleFilenameFiller();												
+			}											
 		}
 	},
 	getProgressTitle:function(){

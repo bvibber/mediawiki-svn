@@ -103,7 +103,7 @@ class ApiUpload extends ApiBase {
 		}else if( $this->mParams['sessionkey'] ) {
 			// Stashed upload			
 			$this->mUpload = new UploadFromStash();
-			$this->mUpload->initialize( $this->mParams['sessionkey'] );							
+			$this->mUpload->initialize( $this->mParams['filename'], $_SESSION['wsUploadData'][$this->mParams['sessionkey']] );							
 		}else{
 			// Upload from url or file			
 			// Parameter filename is required

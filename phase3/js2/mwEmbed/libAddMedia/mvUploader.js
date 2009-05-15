@@ -25,8 +25,11 @@ loadGM( {
 	"unknown-error": "Unknown Error",
 	"return-to-form": "Return to form",
 	
-	"file-exists-duplicate" : "This file is a duplicate of the following file"
-	
+	"file-exists-duplicate" : "This file is a duplicate of the following file",
+	"fileexists" : "A file with this name exists already, please check <b><tt>$1</tt></b> if you are not sure if you want to change it.",
+	"fileexists-thumb": "<center><b>Existing file</b></center>",
+	"ignorewarning" : "Ignore warning and save file anyway",
+	"file-thumbnail-no" :  "The filename begins with <b><tt>$1</tt></b>"	
 });
 
 var default_upload_options = {
@@ -155,6 +158,115 @@ mvUploader.prototype = {
 				'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
 					gM('upload-enable-converter') +
 			'</span><br></p>');					
+	},
+	/**
+	 * doDestCheck checks the destination
+	 * @@todo we should be able to configure its "targets" via parent config
+	 */
+	doDestCheck:function(){		
+		var _this = this;
+		$j('#wpDestFile-warning').empty();
+		//show loading
+		$j('#wpDestFile').after('<img id = "mw-spinner-wpDestFile" src ="'+ stylepath + '/common/images/spinner.gif" />');
+		//try and get a thumb of the current file (check its destination)				
+		do_api_req({
+			'data':{ 
+				'titles': 'File:' + $j('#wpDestFile').val(),//@@todo we may need a more clever way to get a the filename
+				'prop':  'imageinfo',
+				'iiprop':'url|mime|size',
+				'iiurlwidth': 150 
+			},
+			'url': _this.api_url
+		},function(data){
+			$j('#mw-spinner-wpDestFile').remove();
+			if(data && data.query && data.query.pages){
+				if( data.query.pages[-1] ){
+					//all good no file there
+				}else{
+					for(var page_id in data.query.pages){
+						if( data.query.normalized){
+							var ntitle = data.query.normalized[0].to;
+						}else{
+							var ntitle = data.query.pages[ page_id ].title;
+						}	
+						var img = data.query.pages[ page_id ].imageinfo[0];								
+						$j('#wpDestFile-warning').html(
+							'<ul>' +
+								'<li>'+
+									gM('fileexists', ntitle) + 
+								'</li>'+
+								'<div class="thumb tright">' +
+									'<div style="width: ' + ( parseInt(img.thumbwidth)+2 ) + 'px;" class="thumbinner">' +
+										'<a title="' + ntitle + '" class="image" href="' + img.descriptionurl + '">' +
+											'<img width="' + img.thumbwidth + '" height="' + img.thumbheight + '" border="0" class="thumbimage" ' +
+											'src="' + img.thumburl + '"' +
+											'	 alt="' + ntitle + '"/>' +
+										'</a>' +
+										'<div class="thumbcaption">' +
+											'<div class="magnify">' +
+												'<a title="' + gM('thumbnail-more') + '" class="internal" ' +
+													'href="' + img.descriptionurl +'"><img width="15" height="11" alt="" ' +
+													'src="' + stylepath +"/>" +
+												'</a>'+
+											'</div>'+
+											gM('fileexists-thumb') +
+										'</div>' +
+									'</div>'+
+								'</div>' +
+							'</ul>'
+						);
+					}
+				}
+			}
+		});			
+	},
+	/**
+	 * doDestinationFill fills in a destination file-name based on a source asset name. 
+	 * @@todo we should be able to configure its "targets" via parent config
+	 */
+	doDestinationFill:function( targetElm ){
+		js_log("doDestinationFill")
+		//remove any previously flagged errors
+		$j('#mw-upload-permitted,#mw-upload-prohibited').hide();					
+		
+		var path = $j(targetElm).val();
+		// Find trailing part
+		var slash = path.lastIndexOf('/');
+		var backslash = path.lastIndexOf('\\');
+		var fname;
+		if (slash == -1 && backslash == -1) {
+			fname = path;
+		} else if (slash > backslash) {
+			fname = path.substring(slash+1, 10000);
+		} else {
+			fname = path.substring(backslash+1, 10000);
+		}		
+		//urls are less likely to have a usefull extension don't include them in the extention check
+		if( wgFileExtensions && $j(targetElm).attr('id') != 'wpUploadFileURL' ){		
+			var found = false;		
+			if( fname.lastIndexOf('.')!=-1 ){		
+				var ext = fname.substr( fname.lastIndexOf('.')+1 );			
+				for(var i=0; i < wgFileExtensions.length; i++){						
+					if(  wgFileExtensions[i].toLowerCase()   ==  ext.toLowerCase() )
+						found = true;
+				}
+			}
+			if(!found){
+				//clear the upload set mw-upload-permitted to error
+				$j(targetElm).val('');
+				$j('#mw-upload-permitted,#mw-upload-prohibited').show().addClass('error');												
+				//clear the wpDestFile as well: 
+				$j('#wpDestFile').val('');								
+				return false;
+			}		
+		}				
+		// Capitalise first letter and replace spaces by underscores
+		fname = fname.charAt(0).toUpperCase().concat(fname.substring(1,10000)).replace(/ /g, '_');	
+		// Output result
+		$j('#wpDestFile').val( fname );
+				
+		//do a destination check 
+		this.doDestCheck();
 	}
 }
 /**
@@ -171,6 +283,7 @@ mvBaseUploadInterface.prototype = {
 	parent_uploader:false,
 	formData:{}, //the form to be submitted
 	upload_mode:'autodetect', 	//can be 'post', 'chunks' or autodetect. (autodetect issues an api call)   
+	warnings_sessionkey:null,
 	chunks_supported:false,
 	form_post_override:false,
 	init: function( iObj ){
@@ -217,12 +330,7 @@ mvBaseUploadInterface.prototype = {
 				}							
 						
 				//get a clean loader: 
-				_this.dispProgressOverlay();
-					
-				//update the status to loading (we don't know if we will get status updates or not) 
-				$j('#dlbox-centered').html( '<h5>' + _this.getProgressTitle() + '</h5>' + 
-					mv_get_loading_img( 'left:40%;top:20%')
-				);							
+				_this.dispProgressOverlay();												
 				
 				//for some unknown reason we have to drop down the #p-search z-index:
 				$j('#p-search').css('z-index', 1);								
@@ -293,6 +401,7 @@ mvBaseUploadInterface.prototype = {
 			//do the submit :			
 			_this.editForm.submit();
 		}else if( _this.upload_mode == 'api' && $j('#wpSourceTypeURL').get(0).checked){	
+			js_log('doHttpUpload (no form submit) ');
 			//if the api is supported.. && source type is http do upload with http status updates
 			_this.doHttpUpload();					
 		}else{
@@ -312,31 +421,23 @@ mvBaseUploadInterface.prototype = {
 			},
 			'url' : _this.api_url 
 		}, function( data ){
-			//check for error: 
-			if( data.error){
-				_this.updateUploadError( data.error.code );
-				return ;
-			}			
-			//check for warning: 
-			if( data.upload.warnings ){
-				if(	data.upload.warnings.duplicate ){
-					_this.updateUploadError( gM('file-exists-duplicate', data.upload.warnings.duplicate[0].title.mTextform ) );
-										
-					//@@todo should use warning and let the user "ignore" 
-					//_this.updateUploadWarning( gM('file-exists-duplicate') );
-				}
-			}			
-			//check for session key: 
-			if( data.upload && data.upload.upload_session_key ){							
-				//set the session key
-				_this.upload_session_key = data.upload.upload_session_key;
-				js_log("set session key: " + _this.upload_session_key);
-				//do ajax upload status: 
-				_this.doAjaxUploadStatus();
-				return ;	
-			}
-			js_log('could not parse upload api request result');
+			_this.processApiResult( data );		
 		});			
+	},
+	doAjaxWarningIgnore:function(){
+		var _this = this;
+		if( !_this.upload_session_key )
+			return js_error('missing upload_session_key (can\'t ignore warnigns');
+		//do the ignore warnings submit to the api: 
+		do_api_req({
+			'data':{
+				'ignorewarnings' : 'true',
+				'sessionkey'	 :!_this.upload_session_key
+			},
+			'url': _this.api_url
+		},function(data){
+			_this.processApiResult(data);
+		});
 	},
 	doAjaxUploadStatus:function() {
 		var _this = this;	
@@ -413,26 +514,87 @@ mvBaseUploadInterface.prototype = {
 		var _this = this;			
 		//check for simple error		
 		if( apiRes.error ){
-			_this.updateUploadError( apiRes.error );
-		//check for upload api error: 
-		}else if( apiRes.upload && apiRes.upload.result == "Failure" ){						
+			if( apiRes.error.code )
+				_this.updateUploadError( apiRes.error.code );				
+			//else just simple msg:  
+			_this.updateUploadError( apiRes.error );		
+			return false; 
+		}
+		//check for upload api error:
+		if( apiRes.upload && apiRes.upload.result == "Failure" ){
+			var error_code = (typeof apiRes.upload.code == 'object')? apiRes.upload.code[0]:apiRes.upload.code;						
 			//error space is too large so we don't front load it
 			//do a remote call to get the error msg: 
-			if( apiRes.upload.code[0]){
-				gMsgLoadRemote(apiRes.upload.code[0], function(){
-					js_log('send msg: ' + gM( apiRes.upload.code[0] ));
-					_this.updateUploadError( gM( apiRes.upload.code[0] ));
-				});
+			if(!error_code || error_code == 'unknown-error'){
+				_this.updateUploadError( gM('unknown-error') );	
 			}else{
-				_this.updateUploadError( gM('unknown-error'));
-			}
-		}else if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){
+				gMsgLoadRemote(error_code, function(){
+					js_log('send msg: ' + gM( error_code ));
+					_this.updateUploadError( gM( error_code ));
+				});
+			}			
+			return false; 
+		}
+		//check for upload_session key for async upload:
+		if( apiRes.upload && apiRes.upload.upload_session_key ){							
+			//set the session key
+			_this.upload_session_key = data.upload.upload_session_key;
+			js_log("set session key: " + _this.upload_session_key);
+			//do ajax upload status: 
+			_this.doAjaxUploadStatus();
+			return true;
+		}		
+		
+		if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){
 			_this.updateUploadDone( apiRes.upload.imageinfo.descriptionurl );
-		}else{			
-			//nothing fits assume unkown error:
-			_this.updateUploadError( gM('unknown-error'));
-		} 		
+			return true;
+		}		
+				
+		//check for upload error: 
+		if( apiRes.upload && apiRes.upload.error){
+			
+		}
+		//check for known warnings: 
+		if( apiRes.upload.warnings ){	
+			var wmsg = '<ul>';
+			for(var wtype in apiRes.upload.warnings){
+				var winfo = apiRes.upload.warnings[wtype]
+				wmsg+='<li>';		
+				switch(wtype){
+					case 'duplicate':
+					case 'exists':
+						wmsg += gM('file-exists-duplicate') +' '+ 
+									'<b>' + winfo[1].title.mTextform + '</b>';									  					
+					break;
+					case 'file-thumbnail-no':
+						wmsg += gM('file-thumbnail-no', winfo);
+					break;
+					default:
+						wmsg += gM('upload-misc-error') + ' ' + wtype;
+					break;
+				}			
+				wmsg+='</li>';														
+			}
+			wmsg+='</ul>';			
+			if( apiRes.upload.warnings.sessionkey)
+			 	_this.warnings_sessionkey = apiRes.upload.warnings.sessionkey;			 	
+			_this.updateUploadWarning( wmsg );
+			return false;
+		}							
+		
+		//nothing fits assume unkown error:
+		js_log('could not parse upload api request result');
+		_this.updateUploadError( gM('unknown-error'));
+		return false; 
+		
 	},
+	updateUploadWarning:function( msg ){
+		$j( '#dlbox-centered' ).html( '<h3>' + gM('uploadwarning') + '</h3>' +
+				msg + '<p>' + 
+				'<a id="mv-ignore-warnings">' + gM('ignorewarning') + '</a>'  
+		);
+		//setup ignore warnings binding and ajax query:
+	},	
 	updateUploadError:function( msg ){
 		$j( '#dlbox-centered' ).html( '<h3>' + gM('uploaderror') + '</h3>' +
 			msg  + '<p>' + 
@@ -442,10 +604,7 @@ mvBaseUploadInterface.prototype = {
 			$j('#dlbox-overlay,#dlbox-centered').hide();
 			return false;
 		});
-	},
-	updateUploadWarning:function( msg ){
-		
-	},
+	},	
 	updateUploadDone:function( url ){
 		$j( '#dlbox-centered' ).html( '<h3>' + gM('successfulupload') + '</h3>' +
 			gM( 'mv_upload_done', url) );	
@@ -479,6 +638,5 @@ mvBaseUploadInterface.prototype = {
 			'<div id="dlbox-overlay" class="dlbox-overlay" style="background:#000;cursor:wait;height:100%;'+
 						'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
 						'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');		
-	}
-	
+	}	
 }
