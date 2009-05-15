@@ -1,6 +1,6 @@
 This extension allows users to create client side graphs (like pie, bar, etc) from data using javascript. The javascript is created by sysops in the MediaWiki namespace. Adding new scripts works like the Gadgets extension (as this extension borrows heavily from Gadgets).
 
-Preprocessing scripts, plotting scripts, and helpers are available, and the javascript function for each should be defined as follows:
+Preprocessing scripts, and plotting scripts are available, and the javascript function for each should be defined as follows:
 
 /* For preprocessing scripts */
 function plotter_<functionname>_process( name, data, labels, arguments ) {
@@ -28,12 +28,6 @@ function plotter_<functionname>_draw( name, data, labels, arguments ) {
     plotter.render();
 }
 
-/* For helpers - this is javascript that is loaded, but not called
-   by the plugin; they are for use in functions called by the plugin */
-function plotter_<functionname>( <anything_you_want> ) {
-    /* ... */
-}
-
 You can use these in a parser function like so:
 
 {{#plot:
@@ -41,7 +35,6 @@ You can use these in a parser function like so:
 |scriptarguments=arg1,arg2,...
 |preprocessors=<preprocessorname1>,<preprocessorname2>,...
 |preprocessorarguments=<preprocessor1argument1>,<preprocessor1argument2>,...:preprocessor2argument1>,<preprocessor2argument2>,...:...,...
-|helpers=<helpername1>,<helpername2>,...
 |labels=label1,label2
 |data=1,2
 2,4}}
@@ -71,6 +64,6 @@ To change the renderer, use the renderer argument. Currently, only PlotKit (rend
 
 The data separator can be changed using the datasep argument; the default is datasep=,
 
-script, preprocessors, helpers, name, and tableclass arguments are alphanumeric only, and are limited to 255 characters per script/preprocessor/etc.
+script, preprocessors, name, and tableclass arguments are alphanumeric only, and are limited to 255 characters per script/preprocessor/etc.
 
 This code is alpha quality right now; many features may not work.

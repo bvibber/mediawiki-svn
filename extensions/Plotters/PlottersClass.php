@@ -52,15 +52,10 @@ class Plotters {
 			$errors .= wfMsg( "plotters-excessively-long-scriptname" ) . "<br />";
 		}
 
-		// Check preprocessors and helpers
+		// Check preprocessors
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
 			if ( strlen( $preprocessor ) > 255 ) {
 				$errors .= wfMsg( "plotters-excessively-long-preprocessorname" ) . "<br />";
-			}
-		}
-		foreach ( $this->argumentArray["helpers"] as $helper ) {
-			if ( strlen( $helper ) > 255 ) {
-				$errors .= wfMsg( "plotters-excessively-long-helpername" ) . "<br />";
 			}
 		}
 
@@ -99,14 +94,10 @@ class Plotters {
 		$renderer = "mplotter-" . $this->argumentArray["renderer"];
 		$this->parser->mOutput->$renderer = true;
 
-		// Add preprocessor and helper tags
+		// Add preprocessor tags
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
 			$preprocessor = "mplotter-" . $preprocessor;
 			$this->parser->mOutput->$preprocessor = true;
-		}
-		foreach ( $this->argumentArray["helpers"] as $helper ) {
-			$helper = "mplotter-" . $helper;
-			$this->parser->mOutput->$helper = true;
 		}
 
 		$script = "mplotter-" . $this->argumentArray["script"];
