@@ -35,6 +35,13 @@ $messages['en'] = array(
 	'poll-vote-already-error' => 'You has already voted!',
 	'poll-create-link' => 'Create a new Poll',
 	'poll-back' => 'Back to Overview!',
+	'poll-change' => 'Change Poll',
+	'poll-delete' => 'Delete Poll',
+	'poll-title-change' => 'Change Poll',
+	'poll-title-delete' => 'Delete Poll',
+	'poll-change-right-error' => 'You must be the creater of the Poll or have the "poll-admin" right to change this Poll',
+	'poll-change-block-error' => 'You are not allowed to change a poll because you use a blocked user',
+	'poll-change-pass' => 'Changed!',
 );
 
 /** German (Deutsch)
@@ -64,4 +71,11 @@ $messages['de'] = array(
 	'poll-vote-already-error' => 'Du hast bereits abgestimmt!',
 	'poll-create-link' => 'Eine neue Umfrage erstellen',
 	'poll-back' => 'Zurück zur Übersicht!',
+	'poll-change' => 'Umfrage ändern',
+	'poll-delete' => 'Umfrage löschen',
+	'poll-title-change' => 'Umfrage ändern',
+	'poll-title-delete' => 'Umfrage löschen',
+	'poll-change-right-error' => 'Du musst der Autor dieser Umfrage sein oder die "poll-admin"-Gruppenberechtigung haben, um diese Umfrage zu ändern',
+	'poll-change-block-error' => 'Leider darfst du keine Umfrage ändern, weil du einen gesperten Benutzer benutzt',
+	'poll-change-pass' => 'Umfrage erfolgreich geändert!',
 );
