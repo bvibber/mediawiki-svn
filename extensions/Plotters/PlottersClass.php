@@ -35,9 +35,25 @@ class Plotter {
 	}
 
 	function checkForErrors() {
+		wfLoadExtensionMessages( 'Plotters' );
+
+		$errors = '';
+
 		// Check for a script
+		if ( $this->argumentArray["script"] == "" ) {
+			$errors .= wfMsg( "plotters-missing-script" ) . "<br />";
+		} else if ( strlen( $this->argumentArray["script"] ) > 255 ) {
+			// Check to ensure scriptname is < 255 characters
+			$errors .= wfMsg( "plotters-excessively-long-scriptname" ) . "<br />";
+		}
 		// Check for data
-		return '';
+		if ( count( $this->dataArray ) == 0 ) {
+			$errors .= wfMsg( "plotters-no-data" ) . "<br />";
+		}
+
+		if ( $errors != '' ) {
+			$this->errors = wfMsg( "plotters-errors" ) . " " . $errors;
+		}
 	}
 
 	function toHTML() {

@@ -109,6 +109,13 @@ class PlotterParser {
 	}
 
 	function parseData( $input, $parser ) {
+		$this->dataArray = array();
+
+		Plotter::debug( 'plot script input: ', $this->argumentArray["scriptarguments"] );
+		if ( trim( $input ) == '' ) {
+			return;
+		}
+
 		// Replace escaped separators
 		$sep = $this->argumentArray["datasep"];
 		$input = preg_replace( "/\\\\$sep/", '§UNIQ§', $input );

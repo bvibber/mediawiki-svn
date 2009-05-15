@@ -23,6 +23,10 @@ $messages['en'] = array(
 	'plotters-pagetext'  => "Below is a list of special plotters users can use in their jsplot tags, as defined by [[MediaWiki:Plotters-definition]].
 This overview provides easy access to the system message pages that define each plotter's description and code.",
 	'plotters-uses'      => 'Uses',
+	'plotters-missing-script'      => 'No script was defined.',
+	'plotters-excessively-long-scriptname'      => 'The script name is too long. Please define a script that is less than 255 characters.',
+	'plotters-no-data'      => 'No data was provided.',
+	'plotters-errors'      => '<b>Plotters error(s):</b>',
 );
 
 /** Arabic (العربية)
