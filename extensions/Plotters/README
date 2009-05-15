@@ -25,7 +25,7 @@ You can use these in a parser function like so:
 |data=1,2
 2,4}}
 
-Currently, only PlotKit is supported; but other javascript plotting libraries
+Currently, only PlotKit, and generic canvas drawing is supported; but other javascript plotting libraries
 will be supported in the future.
 
 This code is very alpha quality right now; many features may not work.

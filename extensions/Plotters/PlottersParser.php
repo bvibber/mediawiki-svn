@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plotter parser. Parses arguments and data for the Plotters extension.
+ * Plotters parser. Parses arguments and data for the Plotters extension.
  *
  * @addtogroup Extensions
  * @author Ryan Lane, rlane32+mwext@gmail.com
@@ -14,12 +14,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
         die( 1 );
 }
 
-class PlotterParser {
+class PlottersParser {
 
 	var $argumentArray;
 	var $dataArray;
 
-	function PlotterParser( $input, $argv, &$parser ) {
+	function PlottersParser( $input, $argv, &$parser ) {
 		$this->parseArguments( $argv );
 		$this->parseData( $input, $parser );
 	}
@@ -82,7 +82,7 @@ class PlotterParser {
 				$argument = htmlentities( $argument, ENT_QUOTES );
 				$this->argumentArray["scriptarguments"][] = $argument;
 			}
-			Plotter::debug( 'plot script argument values: ', $this->argumentArray["scriptarguments"] );
+			Plotters::debug( 'plot script argument values: ', $this->argumentArray["scriptarguments"] );
 		}
 		if ( isset( $argv["datasep"] ) ) {
 			$this->argumentArray["datasep"] = $argv["datasep"];
@@ -111,7 +111,7 @@ class PlotterParser {
 	function parseData( $input, $parser ) {
 		$this->dataArray = array();
 
-		Plotter::debug( 'plot script input: ', $this->argumentArray["scriptarguments"] );
+		Plotters::debug( 'plot script input: ', $this->argumentArray["scriptarguments"] );
 		if ( trim( $input ) == '' ) {
 			return;
 		}
@@ -130,7 +130,7 @@ class PlotterParser {
 				$value = htmlentities( $value, ENT_QUOTES );
 			}
 			$this->dataArray[] = $values;
-			Plotter::debug( 'plot data values: ', $values );
+			Plotters::debug( 'plot data values: ', $values );
 		}
 	}
 }

@@ -9,14 +9,14 @@
  * @license GNU General Public Licence 2.0 or later
  */
 
-class Plotter {
+class Plotters {
 
 	var $parser;
 	var $set;
 	var $argumentArray, $dataArray;
 	var $errors;
 
-	function Plotter( $pParser, &$parser ) {
+	function Plotters( $pParser, &$parser ) {
 		$this->parser = $parser;
 		$this->argumentArray = $pParser->getArguments();
 		$this->dataArray = $pParser->getData();
@@ -72,7 +72,7 @@ class Plotter {
 		$output .= $this->renderJavascript();
 
 		// Add tags to parser
-		$this->parser->mOutput->mPlotterTag = true;
+		$this->parser->mOutput->mPlottersTag = true;
 
 		// Add renderer specific tag
 		$renderer = "mplotter-" . $this->argumentArray["renderer"];
@@ -151,14 +151,14 @@ class Plotter {
 		return $output;
 	}
 
-	static function setPlotterHeaders( &$outputPage, $renderer ) {
-		global $wgPlotterJavascriptPath;
-		global $wgPlotterExtensionPath;
+	static function setPlottersHeaders( &$outputPage, $renderer ) {
+		global $wgPlottersJavascriptPath;
+		global $wgPlottersExtensionPath;
 
-		$extensionpath = $wgPlotterJavascriptPath;
+		$extensionpath = $wgPlottersJavascriptPath;
 
 		// Add javascript to fix encoding
-		$outputPage->addScript( '<script src="' . $wgPlotterExtensionPath . '/libs/fixencoding.js" type="text/javascript"></script>' );
+		$outputPage->addScript( '<script src="' . $wgPlottersExtensionPath . '/libs/fixencoding.js" type="text/javascript"></script>' );
 
 		if ( $renderer == "plotkit" ) {
 			// Add mochikit (required by PlotKit)
@@ -175,15 +175,15 @@ class Plotter {
 	}
 
 	static function debug( $debugText, $debugArr = null ) {
-		global $wgPlotterDebug;
+		global $wgPlottersDebug;
 
 		if ( isset( $debugArr ) ) {
-			if ( $wgPlotterDebug > 0 ) {
+			if ( $wgPlottersDebug > 0 ) {
 				$text = $debugText . " " . implode( "::", $debugArr );
 				wfDebugLog( 'plot', $text, false );
 			}
 		} else {
-			if ( $wgPlotterDebug > 0 ) {
+			if ( $wgPlottersDebug > 0 ) {
 				wfDebugLog( 'plot', $debugText, false );
 			}
 		}

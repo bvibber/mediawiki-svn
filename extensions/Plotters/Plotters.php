@@ -34,24 +34,24 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Plotters',
 );
 
-$wgExtensionFunctions[] = "efPlotter";
+$wgExtensionFunctions[] = "efPlotters";
 
-$wgHooks['OutputPageParserOutput'][] = 'PlotterParserOutput';
-$wgHooks['LanguageGetMagic'][] = 'PlotterLanguageGetMagic';
+$wgHooks['OutputPageParserOutput'][] = 'PlottersParserOutput';
+$wgHooks['LanguageGetMagic'][] = 'PlottersLanguageGetMagic';
 $wgHooks['ArticleSaveComplete'][] = 'wfPlottersArticleSaveComplete';
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Plotters'] = $dir . 'Plotters.i18n.php';
 $wgExtensionAliasesFiles['Plotters'] = $dir . 'Plotters.alias.php';
-$wgAutoloadClasses['Plotter'] = $dir . 'PlottersClass.php';
-$wgAutoloadClasses['PlotterParser'] = $dir . 'PlottersParser.php';
+$wgAutoloadClasses['Plotters'] = $dir . 'PlottersClass.php';
+$wgAutoloadClasses['PlottersParser'] = $dir . 'PlottersParser.php';
 $wgAutoloadClasses['SpecialPlotters'] = $dir . 'SpecialPlotters.php';
 $wgSpecialPages['Plotters'] = 'SpecialPlotters';
 $wgSpecialPageGroups['Plotters'] = 'wiki';
 
 // sane defaults. always initialize to avoid register_globals vulnerabilities
-$wgPlotterExtensionPath = $wgScriptPath . '/extensions/Plotters';
-$wgPlotterJavascriptPath = $wgScriptPath . '/extensions/Plotters';
+$wgPlottersExtensionPath = $wgScriptPath . '/extensions/Plotters';
+$wgPlottersJavascriptPath = $wgScriptPath . '/extensions/Plotters';
 
 function wfPlottersArticleSaveComplete( &$article, &$wgUser, &$text ) {
 	// update cache if MediaWiki:Plotters-definition was edited
@@ -159,19 +159,17 @@ function wfApplyPlotterCode( $code, &$out, &$done ) {
 	}
 }
 
-function efPlotter() {
+function efPlotters() {
 	global $wgParser;
 
-	$wgParser->setHook( 'plot', 'initPlotter' );
-	$wgParser->setFunctionHook( 'plot', 'initPlotterPF' );
+	$wgParser->setHook( 'plot', 'initPlotters' );
+	$wgParser->setFunctionHook( 'plot', 'initPlottersPF' );
 }
 
-function initPlotterPF( &$parser ) {
-	global $wgPlotterDelimiter;
-
+function initPlottersPF( &$parser ) {
 	$numargs = func_num_args();
 	if ( $numargs < 2 ) {
-		$input = "#Plotter: no arguments specified";
+		$input = "#Plotters: no arguments specified";
 		return str_replace( '§', '<', '§pre>§nowiki>' . $input . '§/nowiki>§/pre>' );
 	}
 
@@ -186,7 +184,7 @@ function initPlotterPF( &$parser ) {
 		if ( count( $aParam ) < 2 ) {
 			continue;
 		}
-		Plotter::debug( 'plot tag parameter: ', $aParam );
+		Plotters::debug( 'plot tag parameter: ', $aParam );
 		if ( $aParam[0] == "data" ) {
 			$input = $aParam[1];
 			continue;
@@ -199,13 +197,13 @@ function initPlotterPF( &$parser ) {
 		}
 	}
 
-	$output = initPlotter( $input, $argv, $parser );
+	$output = initPlotters( $input, $argv, $parser );
 	return array( $output, 'noparse' => true, 'isHTML' => true );
 }
 
-function initPlotter( $input, $argv, &$parser ) {
-	$pParser = new PlotterParser( $input, $argv, $parser );
-	$pPlotter = new Plotter( $pParser, $parser );
+function initPlotters( $input, $argv, &$parser ) {
+	$pParser = new PlottersParser( $input, $argv, $parser );
+	$pPlotter = new Plotters( $pParser, $parser );
 
 	$pPlotter->checkForErrors();
 	if ( $pPlotter->hasErrors() ) {
@@ -219,15 +217,15 @@ function initPlotter( $input, $argv, &$parser ) {
  * Hook callback that injects messages and things into the <head> tag
  * Does nothing if $parserOutput->mPlotterTag is not set
  */
-function PlotterParserOutput( &$outputPage, &$parserOutput )  {
-	if ( !empty( $parserOutput->mPlotterTag ) ) {
+function PlottersParserOutput( &$outputPage, &$parserOutput )  {
+	if ( !empty( $parserOutput->mPlottersTag ) ) {
 		// Output required javascript
 		$genericname = "mplotter-generic";
 		$plotkitname = "mplotter-plotkit";
 		if ( !empty( $parserOutput->$genericname ) ) {
-			Plotter::setPlotterHeaders( $outputPage, 'generic' );
+			Plotters::setPlottersHeaders( $outputPage, 'generic' );
 		} else if ( !empty( $parserOutput->$plotkitname ) ) {
-			Plotter::setPlotterHeaders( $outputPage, 'plotkit' );
+			Plotters::setPlottersHeaders( $outputPage, 'plotkit' );
 		}
 
 		// Output user defined javascript
@@ -251,7 +249,7 @@ function PlotterParserOutput( &$outputPage, &$parserOutput )  {
  * We ignore langCode - parser function names can be translated but
  * we are not using this feature
  */
-function PlotterLanguageGetMagic( &$magicWords, $langCode ) {
+function PlottersLanguageGetMagic( &$magicWords, $langCode ) {
 	$magicWords['plot']  = array( 0, 'plot' );
 	return true;
 }
