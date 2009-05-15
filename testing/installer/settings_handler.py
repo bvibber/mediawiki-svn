@@ -37,7 +37,7 @@ instancesdir=os.path.expanduser('~/public_html/revisions')
 
 
 # base scriptpath for every installation (ie, where to reach the above over the web)
-base_scriptpath="~"+getpass.getuser()+"/revisions/"
+base_scriptpath="/~"+getpass.getuser()+"/revisions/"
 
 # where to install the toolkit
 toolkit_dir=os.path.split(installerdir)[0]
