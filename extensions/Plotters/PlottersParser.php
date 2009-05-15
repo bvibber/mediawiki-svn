@@ -36,7 +36,7 @@ class PlottersParser {
 		// Parse arguments, set defaults, and do sanity checks
 		$this->argumentArray = array ( "renderer" => "plotkit", "preprocessors" => array(), "preprocessorarguments" => array(),
 			"script" => "", "scriptarguments" => array(), "datasep" => ",", "width" => "300", "height" => "300", "labels" => array(),
-			"helpers" => array() );
+			"helpers" => array(), "name" => "plot", "tableclass" => "wikitable" );
 		if ( isset( $argv["renderer"] ) ) {
 			//TODO: limit this to supported renderers
 			$this->argumentArray["renderer"] = preg_replace( '/[^A-Z0-9]/i', '', $argv["renderer"] );
@@ -113,6 +113,14 @@ class PlottersParser {
 			foreach ( $this->argumentArray["helpers"] as &$helper ) {
 				$helper = preg_replace( '/[^A-Z0-9]/i', '', $helper );
 			}
+		}
+		if ( isset( $argv["name"] ) ) {
+			// Sanitize names - alphanumerics only
+			$this->argumentArray["name"] = preg_replace( '/[^A-Z0-9]/i', '', $argv["name"] );
+		}
+		if ( isset( $argv["tableclass"] ) ) {
+			// Sanitize tableclass - alphanumerics only
+			$this->argumentArray["tableclass"] = preg_replace( '/[^A-Z0-9]/i', '', $argv["tableclass"] );
 		}
 	}
 

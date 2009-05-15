@@ -51,6 +51,7 @@ class Plotters {
 			// Check to ensure scriptname is < 255 characters
 			$errors .= wfMsg( "plotters-excessively-long-scriptname" ) . "<br />";
 		}
+
 		// Check preprocessors and helpers
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
 			if ( strlen( $preprocessor ) > 255 ) {
@@ -62,6 +63,15 @@ class Plotters {
 				$errors .= wfMsg( "plotters-excessively-long-helpername" ) . "<br />";
 			}
 		}
+
+		if ( strlen( $this->argumentArray["name"] ) > 255 ) {
+				$errors .= wfMsg( "plotters-excessively-long-name" ) . "<br />";
+		}
+
+		if ( strlen( $this->argumentArray["tableclass"] ) > 255 ) {
+				$errors .= wfMsg( "plotters-excessively-long-tableclass" ) . "<br />";
+		}
+
 		// Check for data
 		if ( count( $this->dataArray ) == 0 ) {
 			$errors .= wfMsg( "plotters-no-data" ) . "<br />";
@@ -107,19 +117,40 @@ class Plotters {
 	}
 
 	function renderPlot() {
-		// TODO: allow user defined graph id
-		return '<div><canvas id="graph" height="' . $this->argumentArray["height"] . '" width="' . $this->argumentArray["width"] . '"></canvas></div>';
+		return '<div id="' . $this->argumentArray["name"] . '-div" style="display: none;"><canvas id="' . $this->argumentArray["name"] . '" height="' . $this->argumentArray["height"] . '" width="' . $this->argumentArray["width"] . '"></canvas></div>';
 	}
 
 	function renderFallback() {
 		// Return an html table of the data
-		return '';
+		$output = '<table id="' . $this->argumentArray["name"] . '-fallback" class="' . $this->argumentArray["tableclass"] . '">';
+		if ( count( $this->argumentArray["labels"] ) > 0 ) {
+                        $output .= "<tr>";
+			foreach ( $this->argumentArray["labels"] as $label ) {
+                                $output .= "<th>" . $label . "</th>";
+			}
+                        $output .= "</tr>";
+		}
+                foreach ( $this->dataArray as $dataline ) {
+                        $output .= "<tr>";
+                        foreach ( $dataline as $data ) {
+                                $output .= "<td>" . $data . "</td>";
+                        }
+                        $output .= "</tr>";
+                }
+		$output .= "</table>";
+
+		return $output;
 	}
 
 	function renderJavascript() {
+		$name = $this->argumentArray["name"];
+
 		$output = '<script type="text/javascript">';
-		// TODO: allow user defined graph id
-		$output .= 'function drawGraph() {';
+
+                $output .= 'document.getElementById("' . $this->argumentArray["name"] . '-fallback").style.display = "none";'; // hide fallback table
+                $output .= 'document.getElementById("' . $this->argumentArray["name"] . '-div").style.display = "block";'; // show canvas
+
+		$output .= 'function draw' . $this->argumentArray["name"] . '() {';
 		$output .= 'var data = [];';
 
 		// Prepare data
@@ -140,7 +171,7 @@ class Plotters {
 
 		// Run preprocessors
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
-			$output .= 'plotter_' . $preprocessor . '_process( data, labels, ';
+			$output .= 'plotter_' . $preprocessor . '_process( "' . $name . '", data, labels, ';
 			foreach ( $this->argumentArray["preprocessorarguments"] as $argument ) {
 				$output .= $argument . ', ';
 			}
@@ -150,7 +181,7 @@ class Plotters {
 		}
 
 		// Run script
-		$output .= 'plotter_' . $this->argumentArray["script"] . '_draw( data, labels, ';
+		$output .= 'plotter_' . $this->argumentArray["script"] . '_draw( "' . $name . '", data, labels, ';
 		foreach ( $this->argumentArray["scriptarguments"] as $argument ) {
 			$output .= "'" . $argument . "'" . ", ";
 		}
@@ -160,8 +191,7 @@ class Plotters {
 		$output .= "}";
 
 		// Add hook event
-		// TODO: allow user defined graph id
-		$output .= 'hookEvent("load", drawGraph);';
+		$output .= 'hookEvent("load", draw' . $this->argumentArray["name"] . ');';
 		$output .= "</script>";
 
 		return $output;
