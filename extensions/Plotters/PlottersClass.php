@@ -39,6 +39,11 @@ class Plotter {
 
 		$errors = '';
 
+		// Check for a valid renderer
+		if ( $this->argumentArray["renderer"] != "generic" && $this->argumentArray["renderer"] != "plotkit" ) {
+			$errors .= wfMsg( "plotters-invalid-renderer" ) . "<br />";
+		}
+
 		// Check for a script
 		if ( $this->argumentArray["script"] == "" ) {
 			$errors .= wfMsg( "plotters-missing-script" ) . "<br />";
@@ -68,6 +73,10 @@ class Plotter {
 
 		// Add tags to parser
 		$this->parser->mOutput->mPlotterTag = true;
+
+		// Add renderer specific tag
+		$renderer = "mplotter-" . $this->argumentArray["renderer"];
+		$this->parser->mOutput->$renderer = true;
 
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
 			$preprocessor = "mplotter-" . $preprocessor;
@@ -142,23 +151,25 @@ class Plotter {
 		return $output;
 	}
 
-	static function setPlotterHeaders( &$outputPage ) {
+	static function setPlotterHeaders( &$outputPage, $renderer ) {
 		global $wgPlotterJavascriptPath;
 		global $wgPlotterExtensionPath;
 
 		$extensionpath = $wgPlotterJavascriptPath;
 
-		// Add mochikit (required by PlotKit)
-		$outputPage->addScript( '<script src="' . $extensionpath . '/mochikit/MochiKit.js" type="text/javascript"></script>' );
-
-		// Add PlotKit javascript
-		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Base.js" type="text/javascript"></script>' );
-		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Layout.js" type="text/javascript"></script>' );
-		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Canvas.js" type="text/javascript"></script>' );
-		$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/SweetCanvas.js" type="text/javascript"></script>' );
-
 		// Add javascript to fix encoding
 		$outputPage->addScript( '<script src="' . $wgPlotterExtensionPath . '/libs/fixencoding.js" type="text/javascript"></script>' );
+
+		if ( $renderer == "plotkit" ) {
+			// Add mochikit (required by PlotKit)
+			$outputPage->addScript( '<script src="' . $extensionpath . '/mochikit/MochiKit.js" type="text/javascript"></script>' );
+	
+			// Add PlotKit javascript
+			$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Base.js" type="text/javascript"></script>' );
+			$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Layout.js" type="text/javascript"></script>' );
+			$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Canvas.js" type="text/javascript"></script>' );
+			$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/SweetCanvas.js" type="text/javascript"></script>' );
+		}
 
 		return true;
 	}

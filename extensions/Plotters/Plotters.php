@@ -222,7 +222,13 @@ function initPlotter( $input, $argv, &$parser ) {
 function PlotterParserOutput( &$outputPage, &$parserOutput )  {
 	if ( !empty( $parserOutput->mPlotterTag ) ) {
 		// Output required javascript
-		Plotter::setPlotterHeaders( $outputPage );
+		$genericname = "mplotter-generic";
+		$plotkitname = "mplotter-plotkit";
+		if ( !empty( $parserOutput->$genericname ) ) {
+			Plotter::setPlotterHeaders( $outputPage, 'generic' );
+		} else if ( !empty( $parserOutput->$plotkitname ) ) {
+			Plotter::setPlotterHeaders( $outputPage, 'plotkit' );
+		}
 
 		// Output user defined javascript
 		$plotters = wfLoadPlotters();

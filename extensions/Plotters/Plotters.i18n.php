@@ -26,6 +26,7 @@ This overview provides easy access to the system message pages that define each 
 	'plotters-missing-script'      => 'No script was defined.',
 	'plotters-excessively-long-scriptname'      => 'The script name is too long. Please define a script that is less than 255 characters.',
 	'plotters-no-data'      => 'No data was provided.',
+	'plotters-invalid-renderer'      => 'An invalid renderer was selected.',
 	'plotters-errors'      => '<b>Plotters error(s):</b>',
 );
 
