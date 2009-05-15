@@ -19,6 +19,7 @@ from naive_installer import Naive_Installer
 from installation_system import Installer_Exception
 from download_installer import Download_Installer
 from extension_installer2 import extension_installer2
+from test_system import Test_System,Test_Exception
 
 from tags import Tags, TagsException
 
@@ -180,8 +181,9 @@ def duplicate(args):
 
 def install(args):
 	"""install something. What gets installed depends on the path"""
-	if len(args)<1:
+	if len(args)<2:
 		print "install: Internal error: expected more arguments"
+		return
 
 	ppath=None
 	try:
@@ -214,11 +216,26 @@ def install(args):
 	except Installer_Exception,e:
 		print e.message
 
+def test(args):
+	if len(args)<2:
+		print "test: Internal error: expected more arguments"
+		return
+	target=args[1]
+
+	test_system=Test_System()
+	wiki_works=test_system.run_wikiworks(target)
+	if wiki_works:
+		print "* Wiki is up"
+	else:
+		print "* Wiki is DOWN"
+		print "Test discontinued. "
+		return
 
 def uninstall(args):
 	"""uninstall something. What gets uninstalled depends on the path"""
-	if len(args)<1:
-		print "install: Internal error: expected more arguments"
+	if len(args)<2:
+		print "uninstall: Internal error: expected more arguments"
+		return
 
 	ppath=None
 	try:

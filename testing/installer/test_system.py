@@ -20,36 +20,23 @@ class Test_Exception(Exception):
 	pass
 
 class Test_System(object):
-	"""An Abstract Test System. Don't instantiate this class directly.
-		An installation system understands how to install and uninstall
-		'things' (instances). An instance might be a particular wiki
-		(in the case of the mediawiki installer) or a particular extension 
-		in that wiki (extension installer), or perhaps a tool from the 
-		toolkit. 
-		Next to installing and uninstalling, an installer can also determine
-		the status of an instance (installed or uninstalled), and can provide
-		lists of instances that are available or installed"""
+	"""An Abstract(?) Test System."""
 	system_name=None
 	destination_dir=None
 
 	def __init__(self,target=None):
 		if "wiki_works" not in globals():
 			raise Test_Exception("You need to install pywikipedia and the extension-tester before you can run tests. You can find these fine tools under toolkit:")
-		self.testfilesdir=settings.testfilesdir
+		self.testfiles=settings.testfiles
 		self.destination_dir=None
 		self.target=target
 		self.as_alias=None
 		self.revision=None
 		self.tag=None
-		if instance:
-			self.set_instance(instance)
-
-	def set_instance(self,instance):
-		self.instance=instance	
 
 	def get_entities(self):
 		"""list the extensions we have tests for"""
-		entities=os.listdir(self.testfilesdir)
+		entities=os.listdir(self.testfiles)
 		entities=[]
 		for line in entities:
 			if line.endswith(".test"):
@@ -76,8 +63,7 @@ class Test_System(object):
 		"""returns the location of the .install directory for the given installer_name.
 		An installer directory is where we store all the scripts to install one particular
 		extension, tool from the toolkit, or etc. """
-		return os.path.join(self.testfilesdir, entity_name+".tests")
-
+		return os.path.join(self.testfiles, entity_name+".tests")
 
 	
 	def test (self, entity, test, target=None):
@@ -93,6 +79,7 @@ class Test_System(object):
 			raise Test_Exception("I don't know of a test called '"+str(test)+"'.")
 
 	def run_exttest(self,target,entity):
+		"""XXX TODO """
 		pass
 	
 	def run_wikiworks(self,target):

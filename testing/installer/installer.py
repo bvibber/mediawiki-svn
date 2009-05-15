@@ -54,8 +54,10 @@ def do_command(all_args):
 	all_args[0] is expected to be the command name.
 	"""
 
-	if all_args[0] in commands:
-		commands[all_args[0]](all_args)
+	command=all_args[0]
+
+	if command in commands:
+		commands[command](all_args)
 	else:
 		print "I don't know how to '"+all_args[0]+"'."
 
@@ -83,7 +85,6 @@ def install(args):
 def test(args):
 	"""test something"""
 	installers.test(args)
-
 
 def duplicate(args):
 	"""duplicate an instance"""
