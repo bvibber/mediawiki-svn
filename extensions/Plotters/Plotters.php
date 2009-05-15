@@ -169,7 +169,8 @@ function efPlotters() {
 function initPlottersPF( &$parser ) {
 	$numargs = func_num_args();
 	if ( $numargs < 2 ) {
-		$input = "#Plotters: no arguments specified";
+		wfLoadExtensionMessages( 'Plotters' );
+		$input = wfMsg( "plotters-errors" ) . " " . wfMsg( "plotters-missing-arguments" );
 		return str_replace( '§', '<', '§pre>§nowiki>' . $input . '§/nowiki>§/pre>' );
 	}
 

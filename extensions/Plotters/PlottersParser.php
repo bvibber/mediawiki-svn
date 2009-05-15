@@ -35,7 +35,8 @@ class PlottersParser {
 	function parseArguments( $argv ) {
 		// Parse arguments, set defaults, and do sanity checks
 		$this->argumentArray = array ( "renderer" => "plotkit", "preprocessors" => array(), "preprocessorarguments" => array(),
-			"script" => "", "scriptarguments" => array(), "datasep" => ",", "width" => "300", "height" => "300", "labels" => array() );
+			"script" => "", "scriptarguments" => array(), "datasep" => ",", "width" => "300", "height" => "300", "labels" => array(),
+			"helpers" => array() );
 		if ( isset( $argv["renderer"] ) ) {
 			//TODO: limit this to supported renderers
 			$this->argumentArray["renderer"] = preg_replace( '/[^A-Z0-9]/i', '', $argv["renderer"] );
@@ -104,6 +105,13 @@ class PlottersParser {
 				$label = preg_replace( "/§UNIQ§/", ",", $label );
 				$label = htmlentities( $label, ENT_QUOTES );
 				$this->argumentArray["labels"][] = $label;
+			}
+		}
+		if ( isset( $argv["helpers"] ) ) {
+			// Sanitize scripts - alphanumerics only
+			$this->argumentArray["helpers"] = explode( ',', $argv["helpers"] );
+			foreach ( $this->argumentArray["helpers"] as &$helper ) {
+				$helper = preg_replace( '/[^A-Z0-9]/i', '', $helper );
 			}
 		}
 	}
