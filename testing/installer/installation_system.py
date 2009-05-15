@@ -32,6 +32,7 @@ class Installation_System(object):
 		self.as_alias=None
 		self.revision=None
 		self.tag=None
+		self.language=None
 		if instance:
 			self.set_instance(instance)
 

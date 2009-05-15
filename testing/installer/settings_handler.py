@@ -72,6 +72,11 @@ mysql_pass=""
 
 dbname_prefix=""
 
+
+# default language code for the wiki.
+
+wgLanguageCode="en"
+
 # what mysql commands should be used. (Who us? Use horrible hacks?)
 
 userpart=""

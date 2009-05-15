@@ -86,7 +86,7 @@ class Mediawiki_Installer(Installation_System):
 
 		name=as_alias or self.as_alias or installer_name
 
-		install(installer_name, name, self.revision)
+		install(installer_name, name, self.revision, self.language)
 		return self.is_installed(name)
 
 	#download is unused, but leave for future expansion
@@ -178,7 +178,7 @@ def available():
 
 
 
-def install(target, option_as, revision):
+def install(target, option_as, revision, language=None):
 	"""implement install command. Installs a mediawiki version"""
 	target=clean_target(target)
 	
@@ -210,7 +210,7 @@ def install(target, option_as, revision):
 
 	print "Copying LocalSettings.php,creating unique settings..."
 	localsettings(name)
-	uniquesettings(name)
+	uniquesettings(name,language)
 	print "Copy logo..."
 	logo(name)
 	print "Setting up database..."
@@ -275,13 +275,17 @@ def localsettings(target):
 	subdir=os.path.join(settings.instancesdir,target,"LocalSettings")
 	os.mkdir(subdir)
 	
-def uniquesettings(target):
+def uniquesettings(target,language=None):
+	"""Set up settings that are unique to one particular wiki (in the file InstallerUniqueSettings.php)"""
 	uniquesettings=settings.instancesdir+"/"+target+"/InstallerUniqueSettings.php"
 	unique=file(uniquesettings,"w")
 	unique.write('<?php\n')
 	unique.write('$wgSitename = "'+target+'";\n')
 	unique.write('$wgScriptPath = "'+settings.base_scriptpath+target+'";\n')
 	unique.write('$wgDBname = "'+dbname(target)+'";\n')
+
+	use_language=language or settings.wgLanguageCode
+	unique.write('$wgLanguageCode = "'+use_language+'";\n');
 	unique.write('?>\n')
 	
 	unique.close()

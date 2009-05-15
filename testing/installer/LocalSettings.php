@@ -101,8 +101,6 @@ $wgUseTeX           = false;
 
 $wgLocalInterwiki   = $wgSitename;
 
-$wgLanguageCode = "en";
-
 $wgProxyKey = "eeedfbcf7f4e6238a2db7959e50e5e19d0e0c1a6500dbfaa5d38f6dabe801c76";
 
 ## Default skin: you can change the default skin. Use the internal symbolic

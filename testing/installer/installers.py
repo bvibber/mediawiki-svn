@@ -205,6 +205,8 @@ def install(args):
 		system.revision=ppath["revision"]
 	if ppath["tag"]:
 		system.tag=ppath["tag"]
+	if ppath["language"]:
+		system.language=ppath["language"]
 
 	try:
 		success=system.install(ppath["installer"])
@@ -294,18 +296,18 @@ def parse_path(path,defaults=None):
 	"""parses a path of the form
 		[ai.][system:]installer [in iii] [as aaa] [revision rrr] [tag ttt] [limit n]
 		
-		where:
-		ai:=<available|installed|revisions|tags>
-		system:=< (see the systems constant, defined near end of file) >
-		installer	is some name of a script to install an item or the item name to be installed (depends on system)
-		in 		where to install things *in* (typically used with the extension installer)
-		as		give something a name or alias    
-					install mediawiki:REL1_13_3 as my_mediawiki_example 
-				creates a new mediawiki instance (release 1.13.3)  with the name my_mediawiki_example
-		revision	use a particular (svn) revision number
-		tag		use a particular (svn) tag
-		limit n		limits output to at most n items (analogous to the sql command of same name) (useful with ls)
-		"""
+	where:
+	ai:=<available|installed|revisions|tags>
+	system:=< (see the systems constant, defined near end of file) >
+	installer	is some name of a script to install an item or the item name to be installed (depends on system)
+	in 		where to install things *in* (typically used with the extension installer)
+	as		give something a name or alias    
+				install mediawiki:REL1_13_3 as my_mediawiki_example 
+			creates a new mediawiki instance (release 1.13.3)  with the name my_mediawiki_example
+	revision	use a particular (svn) revision number
+	tag		use a particular (svn) tag
+	limit n		limits output to at most n items (analogous to the sql command of same name) (useful with ls)
+	"""
 
 	ai=None	# available, installed (and now revisions and tags  and test too)
 	system=None	# installation system
@@ -315,6 +317,7 @@ def parse_path(path,defaults=None):
 	revision=None	# revision number, if any
 	tag=None	# tag, if any
 	limit=None	# limit output from list commands to n lines.
+	language=None	# default language code for wikis
 
 	#partial components
 	whence=None	# eg. 'available.mediawiki:'
@@ -364,7 +367,7 @@ def parse_path(path,defaults=None):
 	# right side (inpath)  :_______________
 	if inpath:
 		l=inpath.split()
-		if l[0] not in ['in', 'as', 'revision', 'tag','limit']:
+		if l[0] not in ['in', 'as', 'revision', 'tag','limit','language']:
 			installer=l[0]
 
 		in_installer=_ppath_find(l,"in")
@@ -375,6 +378,7 @@ def parse_path(path,defaults=None):
 			limit=int(_ppath_find(l,'limit'))
 		except Exception:
 			pass
+		language=_ppath_find(l,'language')
 
 	# Ok, we have our basic return value now
 	ppath={
@@ -385,7 +389,8 @@ def parse_path(path,defaults=None):
 		"as_alias":as_alias,
 		"revision":revision,
 		"tag":tag,
-		"limit":limit}
+		"limit":limit,
+		"language":language}
 
 	# maybe we can assume some useful defaults (saves typing)
 	if defaults:
