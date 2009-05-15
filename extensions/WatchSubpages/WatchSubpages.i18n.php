@@ -130,9 +130,11 @@ Kada označujete ili uklanjate više stranica, možete držati tipku ''shift'' d
 
 /** Catalan (Català)
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
 	'watchsubpages' => 'Vigila subpàgines',
+	'watchsubpages-addtitles' => 'Afegeix pàgines',
 );
 
 /** Czech (Česky)

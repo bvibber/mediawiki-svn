@@ -58,6 +58,13 @@ Možete izgubiti promjene koje ste napravili na ovoj stranicu ako sada napustite
 	'ajaxlogin-create' => 'Napravite račun',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'ajaxlogin-create' => 'Crea un compte',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author Tim 'Avatar' Bartel

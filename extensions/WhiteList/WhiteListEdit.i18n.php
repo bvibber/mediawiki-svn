@@ -538,12 +538,14 @@ Ova stranica se može primijeniti samo na ograničene korisnike",
  * @author Solde
  */
 $messages['ca'] = array(
+	'whitelisttablemodify' => 'Modifica',
 	'whitelisttablemodifyall' => 'Tot',
 	'whitelisttablemodifynone' => 'Cap',
 	'whitelisttablepage' => 'Pàgina wiki',
 	'whitelisttableedit' => 'Edita',
 	'whitelisttablenewdate' => 'Nova data:',
 	'whitelisttablechangedate' => 'Canviar data de venciment',
+	'whitelisttableremove' => 'Elimina',
 	'whitelistnewtabledate' => 'Data de venciment:',
 	'whitelistoverviewna' => "* Afegint [[:$1|$1]] a la llista blanca amb accés '''$2''' i '''$3''' data de venciment",
 	'whitelistnever' => 'mai',

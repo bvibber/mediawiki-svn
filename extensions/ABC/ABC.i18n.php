@@ -590,6 +590,15 @@ $messages['vro'] = array(
 	'abcdownload' => 'Laadiq alla',
 );
 
+/** Wu (吴语)
+ * @author Hercule
+ */
+$messages['wuu'] = array(
+	'abcdesc' => '	
+增加了<tt>&lt;abc&gt;</tt>树脂标记美国广播公司的音乐格式',
+	'abcdownload' => '下载:',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

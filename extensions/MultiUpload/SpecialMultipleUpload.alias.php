@@ -80,7 +80,7 @@ $aliases['id'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'MultiUpload' => array( 'マルチアップロード' ),
+	'MultiUpload' => array( 'マルチアップロード', '複数アップロード' ),
 );
 
 /** Korean (한국어) */

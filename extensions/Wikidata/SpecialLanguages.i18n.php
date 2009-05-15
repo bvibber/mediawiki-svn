@@ -1582,6 +1582,7 @@ $wdMessages['bs'] = array(
 	'ow_importtsv_nothing_added_test' => 'Ništa nije dodano (uradili ste probno pokretanje).',
 	'ow_importtsv_results' => '{{PLURAL:$1|Dodana|Dodane|Dodano}} $1 {{PLURAL:$1|definicija|definicije|definicija}} i $2 {{PLURAL:$2|prijevod|prijevoda}}.',
 	'exporttsv' => 'Wikipodaci: Izvoz TSV',
+	'ow_exporttsv_title' => 'Izvoz kolekcije u TSV',
 	'ow_exporttsv_languages' => 'Jezici:',
 	'ow_exporttsv_not_allowed' => 'Nemate dopuštenja da izvršite TSV izvoz.',
 	'ow_exporttsv_export_failed' => 'Izvoz nije uspio',
@@ -1733,18 +1734,29 @@ $wdMessages['ca'] = array(
 	'langman_iso639-2' => 'Codi ISO 639-2:',
 	'langman_wikimedia' => 'Codi Wikimedia:',
 	'langman_field_optional' => '(opcional)',
+	'datasearch_language' => 'Idioma:',
 	'ow_save' => 'Desa',
 	'ow_history' => 'Historial',
 	'ow_transaction_user' => "Nom d'usuari:",
 	'ow_transaction_restore' => 'Restaura',
 	'ow_transaction_remove' => 'Suprimeix',
+	'ow_transaction_summary' => 'Resum',
 	'ow_dm_OK' => "D'acord",
 	'ow_Class' => 'Classe',
 	'ow_ClassAttributeLevel' => 'Nivell',
 	'ow_ClassAttributeType' => 'Tipus',
+	'ow_Definition' => 'Definició',
+	'ow_Expression' => 'Expressió',
 	'ow_Language' => 'Idioma',
 	'ow_OptionAttributeOption' => 'Opció',
 	'ow_OptionAttributeOptions' => 'Opcions',
+	'ow_Relations' => 'Relacions',
+	'ow_Remove' => 'Elimina',
+	'ow_Synonyms' => 'Sinònims',
+	'ow_SynonymsAndTranslations' => 'Sinònims i traduccions',
+	'ow_TranslatedTextAttribute' => 'Propietat',
+	'ow_TranslatedText' => 'Text traduït',
+	'ow_TranslatedTextAttributeValue' => 'Text',
 	'ow_Label' => 'Etiqueta',
 	'ow_Link' => 'Enllaç',
 	'ow_LinkAttribute' => 'Propietat',
@@ -1754,7 +1766,10 @@ $wdMessages['ca'] = array(
 	'ow_Value' => 'Valor',
 	'ow_added' => 'Afegit',
 	'ow_removed' => 'Eliminat',
+	'ow_history_transaction' => 'Transacció:',
 	'ow_class_attr_type_link' => 'Enllaç',
+	'ow_show' => 'Mostra',
+	'ow_create' => 'Crea',
 	'ow_suggest_previous' => 'Anterior',
 	'ow_suggest_next' => 'Següent',
 );
@@ -3839,6 +3854,13 @@ Bitte kontaktier dr Serveradminschtrator.',
 	'right-addlanguage' => 'Sprochyystellige zuefiege un ändere',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$wdMessages['gu'] = array(
+	'ow_transaction_user' => 'સભ્ય નામ:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -5264,6 +5286,7 @@ $wdMessages['kk-tr'] = array(
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $wdMessages['km'] = array(
 	'languages' => 'ទិន្នន័យវិគី៖ អ្នកគ្រប់គ្រង​ភាសា',
@@ -5274,8 +5297,18 @@ $wdMessages['km'] = array(
 	'langman_iso639-2' => 'លេខកូដ ISO 639-2៖',
 	'langman_wikimedia' => 'លេខកូដវិគីមីឌា៖',
 	'langman_addlang' => 'បន្ថែមភាសា',
+	'importlangnames_title' => 'នាំចូល​ឈ្មោះ​ភាសា​',
+	'importlangnames_not_allowed' => 'អ្នក​មិន​មាន​ការ​អនុញាត​ក្នុង​ការ​នាំ​ចូល​ឈ្មោះ​ភាសា​ទេ​។​',
+	'importlangnames_added' => 'ឈ្មោះ​ភាសា​សម្រាប់ ​"$1" បាន​បន្ថែម​។​',
 	'datasearch' => 'Wikidata: ស្វែងរក​ទិន្នន័យ',
 	'datasearch_language' => 'ភាសា៖',
+	'datasearch_found_word' => 'ពាក្យ​ដែល​រក​ឃើញ​',
+	'datasearch_meaning' => 'អត្ថន័យ​',
+	'datasearch_search_text' => 'ស្វែងរក​អត្ថបទ​៖',
+	'datasearch_within_words' => 'រវាង​ពាក្យ​៖',
+	'ow_exporttsv_languages' => 'ភាសា៖',
+	'ow_exporttsv_not_allowed' => 'អ្នក​មិន​មាន​ការអនុញាត​ក្នុង​ការ​នាំ​ចេញ TSV ។',
+	'ow_exporttsv_export_failed' => 'ការនាំចេញ​មិន​បាន​សម្រេច​',
 	'ow_save' => 'រក្សាទុក',
 	'ow_history' => 'ប្រវត្តិ',
 	'ow_noedit_title' => 'មិនអនុញ្ញាត​ឱ្យ​កែប្រែទេ',
@@ -5758,6 +5791,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_transaction_remove' => 'Ewechhuelen',
 	'ow_transaction_operation' => 'Operatioun',
 	'ow_transaction_is_latest' => 'ass dat lescht',
+	'ow_transaction_class_member' => 'Member vun der Klass',
 	'ow_transaction_object' => 'Objet',
 	'ow_transaction_first_dm' => 'Éischt definéiert Bedeitung',
 	'ow_transaction_second_dm' => 'Zweet definéiert Bedeitung',

@@ -639,24 +639,46 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'voctrain_Hello_World' => 'ZDRAVO WIKI!',
 	'voctrain_Permission_Denied' => 'Zabranjen pristup',
 	'voctrain_try_again_' => 'pokušaj ponovno?',
+	'voctrain_Action_unknown' => 'Akcija nepoznata',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Ne znam šta treba uraditi putem '%action'.",
+	'voctrain_User_added' => 'Korisnik dodat',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Zdravo, korisniče %username, dobro došli u omega jezički trener',
 	'voctrain_continue' => 'nastavi',
 	'voctrain_bye' => 'zbogom',
+	'voctrain_Set_up_your_exercise' => 'Postavite Vašu vježbu',
+	'voctrain_Number_of_questions' => 'Broj pitanja',
 	'voctrain_Languages' => 'Jezici',
 	'voctrain_Questions' => 'Pitanja',
+	'voctrain_Answers' => 'Odgovori',
+	'voctrain_start_exercise' => 'započni vježbu',
+	'voctrain_collection' => 'kolekcija',
+	'voctrain_Definition' => 'Definicija',
 	'voctrain_Word' => 'Riječ',
+	'voctrain_Please_type_your_answer_here' => 'Molimo unesite ovdje Vaš odgovor',
 	'voctrain_submit_answer' => 'pošalji odgovor',
 	'voctrain_skip' => 'preskoči',
+	'voctrain_abort_exercise' => 'poništi vježbu',
+	'voctrain_list_answers' => 'ispiši odgovore',
 	'voctrain_Question' => 'Pitanje',
+	'voctrain_Answer' => 'Odgovor',
 	'voctrain_one_of' => 'jedan od',
+	'voctrain_Answer_s_' => 'Odgovor(i)',
+	'voctrain_logout' => 'odjava',
+	'voctrain_Exercise_complete' => 'Vježba završena',
 	'voctrain_Start_a_new_exercise' => 'Započni novu vježbu',
 	'voctrain_User_name' => 'Korisničko ime',
+	'voctrain_Password' => 'Šifra',
 	'voctrain_Login' => 'Prijava',
 	'voctrain_Switch_language' => 'Promijeni jezik',
 	'voctrain_Language' => 'Jezik',
+	'voctrain_Log_in' => 'Prijava',
 	'voctrain_Definitions' => 'Definicije',
+	'voctrain_unhide_words' => 'otkrij riječi',
 	'voctrain_hiding' => 'Sakrivam',
+	'voctrain_other' => 'drugo',
 );
 
 /** Czech (Česky)
@@ -1339,6 +1361,13 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'voctrain_Hello_World' => 'SALI WIKI!',
+);
+
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'voctrain_User_name' => 'સભ્ય નામ',
 );
 
 /** Hakka (Hak-kâ-fa)

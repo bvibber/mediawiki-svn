@@ -147,9 +147,13 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Solde
  * @author Toniher
  */
 $messages['ca'] = array(
+	'lookupuser-realname' => 'Nom real: $1',
+	'lookupuser-registration' => 'Data de registre: $1',
+	'lookupuser-no-registration' => 'no guardat',
 	'lookupuser-info-authenticated' => "Autenticació de l'adreça electrònica: $1",
 	'lookupuser-useroptions' => "Opcions d'usuari:",
 );

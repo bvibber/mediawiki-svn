@@ -186,6 +186,13 @@ $messages['bs'] = array(
 	'refreshspecial-reconnecting' => 'Spajanje nije uspjelo, ponovno spajanje za 10 sekundi…',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'refreshspecial-select-all-pages' => 'Selecciona totes les pàgines',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

@@ -2125,6 +2125,7 @@ $messages['lb'] = array(
 	'sign-email' => 'E-Mail-Adress:',
 	'sign-list-anonymous' => 'Als anonym weisen',
 	'sign-list-hideaddress' => 'Adress net weisen',
+	'sign-list-hideextaddress' => 'Stad, Stat, Postcode oder Land net weisen',
 	'sign-list-hidephone' => "D'Telefeonsnummer net weisen",
 	'sign-list-hidebday' => 'Den Alter net weisen',
 	'sign-list-hideemail' => "D'E-Mailadress net weisen",

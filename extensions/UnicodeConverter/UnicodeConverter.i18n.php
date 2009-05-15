@@ -291,9 +291,11 @@ $messages['jv'] = array(
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
-	'unicodeconverter' => 'ប្រដាប់បម្លែងយូនីកូដ',
+	'unicodeconverter' => 'កម្មវិធី​បម្លែងយូនីកូដ',
+	'unicodeconverter-desc' => 'ឧទាហរណ៍​សាមញ្ញ​មួយ​នៃ​ម៉ូឌុល (module) ទំព័រ​ពិសេស​។ [[Special:UnicodeConverter|ដោយឲ្យ​​ខ្សែរ​អក្សរ​មួយ​ក្នុង​ទម្រង់​​ UTF-8]], វាបម្លែង​ទៅ​ជា​អង្គភាព​ HTML ដែល​ស័ក្ដិ​សម​សម្រាប់​ទំព័រ​បណ្ដាញ​ប្រភេទ ISO 8859-1',
 	'unicodeconverter-ok' => 'យល់ព្រម',
 	'unicodeconverter-oldtext' => 'អត្ថបទដើម៖',
 	'unicodeconverter-newtext' => 'អត្ថបទបម្លែងរួច៖',

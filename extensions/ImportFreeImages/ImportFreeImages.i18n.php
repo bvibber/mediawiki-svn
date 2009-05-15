@@ -151,11 +151,13 @@ Da bi ste to učinili, molimo uzmite API ključ [http://www.flickr.com/services/
 );
 
 /** Catalan (Català)
+ * @author Solde
  * @author Toniher
  */
 $messages['ca'] = array(
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importa-ho',
+	'importfreeimages_next' => 'Següent $1',
 );
 
 /** Czech (Česky)
@@ -240,9 +242,15 @@ Aby to cynił, wobstaraj se pšosym API-kluc wót [http://www.flickr.com/service
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'importfreeimages' => 'Εισαγωγή ελεύθερων εικόνων',
 	'importfreeimages_owner' => 'Δημιουργός',
+	'importfreeimages_importthis' => 'εισάγετε αυτό',
+	'importfreeimages_next' => 'Επόμενα $1',
+	'importfreeimages_promptuserforfilename' => 'Εισάγετε παρακαλώ ένα όνομα αρχείου προορισμό:',
+	'importfreeimages_returntoform' => "Ή κάνετε κλικ <a href='$1'>εδώ</a> για να επιστρέψετε στα αποτελέσματα αναζήτησης",
 );
 
 /** Esperanto (Esperanto)

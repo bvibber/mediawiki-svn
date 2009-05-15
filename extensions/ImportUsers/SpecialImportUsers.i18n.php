@@ -222,14 +222,30 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Aleator
+ * @author Solde
  */
 $messages['ca'] = array(
 	'importusers' => 'Importar usuaris',
 	'importusers-desc' => '[[Special:ImportUsers|Importar usuaris]] en bloc des de fitxer CSV; codificació: UTF-8',
 	'importusers-uploadfile' => 'Carregar fitxer',
 	'importusers-form-caption' => 'Entreu un fitxer CSV (UTF-8)',
-	'importusers-log' => "Registre d'importació",
+	'importusers-form-file' => "Format del fitxer d'usuari (CSV):",
+	'importusers-form-replace-present' => 'Reemplaça els usuaris existents',
+	'importusers-form-button' => 'Importa',
+	'importusers-user-added' => "S'ha afegit l'usuari '''$1'''.",
+	'importusers-user-present-update' => "L'usuari '''$1''' ja existeix actualment.
+Actualitzat.",
+	'importusers-user-present-not-update' => "L'usuari '''$1''' ja existeix actualment.
+No s'ha actualitzat.",
+	'importusers-log' => "Importa el registre d'usuaris",
+	'importusers-log-summary' => 'Resum',
+	'importusers-log-summary-all' => 'Tot',
+	'importusers-log-summary-added' => "S'ha afegit",
+	'importusers-log-summary-updated' => "S'ha actualitzat",
+	'importusers-login-name' => "Nom d'entrada",
 	'importusers-password' => 'contrasenya',
+	'importusers-email' => 'correu electrònic',
+	'importusers-realname' => 'nom real',
 );
 
 /** Chamorro (Chamoru)

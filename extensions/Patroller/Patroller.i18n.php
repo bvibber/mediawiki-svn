@@ -357,6 +357,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'patrol' => 'Revisar ediciones',
+	'patrol-desc' => 'Interface de patrullaje mejorado con comparticion de carga de trabajo',
 	'patrol-endorse' => 'Aprovar',
 	'patrol-revert' => 'Revertir',
 	'patrol-revert-reason' => 'Motivo:',

@@ -185,9 +185,12 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
 	'postcomment_notloggedin' => 'Δεν έχετε συνδεθεί.',
+	'postcomment_leavemessagefor' => 'Αφήστε ένα μήνυμα για $1',
+	'postcomment_invalidrequest' => 'Άκυρο αίτημα.',
 );
 
 /** Esperanto (Esperanto)

@@ -44,6 +44,13 @@ $messages['bs'] = array(
 	'crowdauthentication-desc' => 'Dodatak potvrde za Atlassian Crowd',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'crowdauthentication-desc' => "Connector d'autentificació per l'Atlassian Crowd",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

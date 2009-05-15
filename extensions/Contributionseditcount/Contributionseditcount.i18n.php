@@ -143,12 +143,13 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Cedric31
+ * @author Crochet.david
  * @author Grondin
  * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'contributionseditcount' => 'Cet utilisateur a {{PLURAL:$1|$1 modification|$1 modifications}}.',
+	'contributionseditcount' => 'Cet utilisateur a $1 modification{{PLURAL:$1||s}}.',
 	'contributionseditcount-desc' => 'Affiche un compteur de modifications sur la [[Special:Contributions|page des contributions de l’utilisateur]]',
 );
 

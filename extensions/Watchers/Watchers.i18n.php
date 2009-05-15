@@ -465,9 +465,11 @@ $messages['jv'] = array(
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'watchers' => 'អ្នកតាមដាន',
+	'watchers-desc' => 'បង្ហាញ​ [[Special:Watchers|អ្នក​ប្រើ​ប្រាស់​ទាំង​ឡាយ​ណា​ដែល​មាន​ទំព័រ​នៅ​ក្នុងបញ្ជី​តាម​ដាន​របស់​ពួក​គេ​]]',
 	'watchers_link_title' => 'អ្នកណាកំពុងតាមដាន​ទំព័រនេះ?',
 	'watchers_error_article' => '<b>កំហុស៖</b> ទំព័រមិនមាន ។',
 	'watchers_header' => 'មាន​{{PLURAL:$2|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} កំពុងតាមដាន "$1"',

@@ -871,6 +871,13 @@ Bitte iberprief Dyy Popup-Blocker.',
 	'ct_user_sample' => 'Benutzername',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$wgCustomToolbarMessages['gu'] = array(
+	'ct_user_sample' => 'સભ્ય નામ',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

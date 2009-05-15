@@ -452,6 +452,7 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'block_title_error_page_title' => 'Tajuk dihalang',
+	'block_title_error-desc' => 'Menyediakan langkah asas bagi mengelakkan laman dengan tajuk tertentu daripada disimpan atau dicipta.',
 	'block_title_error' => 'Maaf, tajuk di laman ini tidak dibenarkan untuk disimpan.',
 );
 

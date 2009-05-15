@@ -343,6 +343,13 @@ $messages['gsw'] = array(
 	'nss-db-error' => 'Fähler bim Läsen us dr Authentifizierigs-Datebank',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'am-username' => 'સભ્ય નામ:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

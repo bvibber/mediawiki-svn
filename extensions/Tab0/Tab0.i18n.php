@@ -208,6 +208,13 @@ $messages['lb'] = array(
 	'tab0-desc' => "Setzt den ''Onglet'' ''0'' derbäi, den et erlaabt déi éischt Sectioun vun enger Säit z'änneren",
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'tab0-desc' => "Manampy ny onglet \"0\" manome lalana makany amin'ny pejim-panovàn'ny fizaràna voalohany amin'ilay pejy.",
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

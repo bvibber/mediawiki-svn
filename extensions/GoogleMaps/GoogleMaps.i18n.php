@@ -697,6 +697,7 @@ $wgGoogleMapsMessages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Solde
  * @author Toniher
  */
 $wgGoogleMapsMessages['ca'] = array(
@@ -707,6 +708,7 @@ $wgGoogleMapsMessages['ca'] = array(
 	'gm-remove' => 'eliminar',
 	'gm-caption' => 'Llegenda',
 	'gm-tab-title' => 'T&iacute;tol de tab',
+	'gm-tab' => 'Tab',
 	'gm-start-path' => 'inicia una ruta',
 	'gm-save-point' => 'guarda i tanca',
 	'gm-load-map-from-article' => "Carrega un mapa des de l'article:",
@@ -733,6 +735,7 @@ $wgGoogleMapsMessages['ca'] = array(
 	'gm-small' => 'Petit',
 	'gm-no-zoom-control' => 'Cap',
 	'gm-yes' => 'S&iacute;',
+	'gm-no' => 'No',
 	'gm-search-preface' => 'Fes click sobre el mapa per afegir un punt, o ves a una ciutat, pa&iacute;s, direcci&oacute; o negoci:',
 	'gm-geocode-preface' => 'Fes click sobre el mapa per afegir un punt, o ves a una ciutat, pa&iacute;s, o direcci&oacute;:',
 	'gm-no-search-preface' => 'Fes click sobre el mapa per afegir un punt.',
@@ -744,8 +747,17 @@ $wgGoogleMapsMessages['ca'] = array(
 	'gm-save-path' => 'Guardar',
 	'gm-edit-path' => 'afegir punts',
 	'gm-color-path' => 'canviar el color',
+	'gm-add-fill' => "omple l'àrea",
+	'gm-remove-fill' => 'eliminar-omplir',
+	'gm-fill-color' => 'Omplir el color',
+	'gm-opacity' => 'Opacitat',
+	'gm-line-width' => 'Amplada',
 	'gm-make-map' => 'inserir un mapa',
 	'gm-hide-map' => 'ocultar el mapa',
+	'gm-back' => 'enrerre',
+	'gm-kml-include-link' => 'afegeix al mapa',
+	'gm-kml-loading' => "s'està carregant...",
+	'gm-kml-export' => 'Exportar aquest mapa a KML',
 	'gm-earth' => 'Terra',
 	'gm-moon' => 'Lluna',
 	'gm-mars' => 'Mart',
@@ -3098,8 +3110,10 @@ $wgGoogleMapsMessages['mr'] = array(
 /** Malay (Bahasa Melayu)
  * @author Aviator
  * @author Diagramma Della Verita
+ * @author Zamwan
  */
 $wgGoogleMapsMessages['ms'] = array(
+	'gm-desc' => 'Dengan mudah mencipta peta dengan penanda wiki',
 	'gm-incompatible-browser' => 'Anda memerlukan pelayar web yang serasi untuk melihat peta yang disediakan dalam ruangan ini.',
 	'gm-incompatible-browser-link' => 'Klik di sini untuk melihat senarai pelayar web yang serasi.',
 	'gm-no-editor' => 'Pelayar web anda tidak menyokong ciri pembuatan peta interaktif. Anda boleh mencuba versi terkini bagi [http://www.microsoft.com/ie Internet Explorer] (Windows) atau [http://www.mozilla.org/products/firefox Firefox] (Windows, Mac, dan Linux).',

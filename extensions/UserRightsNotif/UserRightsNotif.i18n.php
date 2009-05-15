@@ -386,6 +386,25 @@ $2',
 	'userrightsnotif-desc' => 'Schickt E-Mail-Benochrichtunge iber Rächtänderige an de Benutzer',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'userrightsnotifysubject' => '$1 પર સમૂહ સદસ્યતામાં પરિવર્તન',
+	'userrightsnotifybody' => 'નમસ્કાર $1.
+
+આપને જાણ કરવામા આવે છે કે આપની $2 પરની સમૂહ સદસ્યતામાં $3 દ્વારા $4 ના ફેરફાર થયેલ છે. 
+
+ઉમેર્યા: $5
+
+હટાવ્યા: $6
+
+સાદર,
+
+$2',
+	'userrightsnotif-desc' => 'હક્કોમાં ફેરફારની સુચના સભ્યોને ઇ-મેઇલથી મોકલો',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

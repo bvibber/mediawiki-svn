@@ -1352,6 +1352,7 @@ Uudempi versio ($2) on saatavilla osoitteesta http://pecl.php.net/package/APC/$2
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  */
@@ -1381,7 +1382,7 @@ APC semble ne pas fonctionner.",
 	'viewapc-filecache-info' => 'Informations du cache des fichiers',
 	'viewapc-usercache-info' => 'Informations du cache utilisateur',
 	'viewapc-cached-files' => 'Fichiers cachés',
-	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|fichier|fichiers}} ($2)',
+	'viewapc-cached-files-d' => '$1 fichier{{PLURAL:$1||s}} ($2)',
 	'viewapc-hits' => 'Succès',
 	'viewapc-misses' => 'Manqués',
 	'viewapc-requests' => 'Taux de requêtes',
@@ -1401,7 +1402,7 @@ APC semble ne pas fonctionner.",
 	'viewapc-memory-hits' => 'Succès : $1 ($2)',
 	'viewapc-memory-miss' => 'Manqués : $1 ($2)',
 	'viewapc-memoryfragmentation' => 'Utilisation détaillée de la mémoire et fragmentation',
-	'viewapc-fragmentation-info' => 'Fragmentation : $1 ($2 sur $3 dans $4 {{PLURAL:$4|fragment|fragments}})',
+	'viewapc-fragmentation-info' => 'Fragmentation : $1 ($2 sur $3 dans $4 fragment{{PLURAL:$4||s}})',
 	'viewapc-fragmentation-none' => 'Fragmentation : aucune fragmentation',
 	'viewapc-display-attribute' => 'Attribut',
 	'viewapc-display-value' => 'Valeur',
@@ -1447,7 +1448,7 @@ APC semble ne pas fonctionner.",
 	'viewapc-ls-sort-deleted' => 'Supprimé',
 	'viewapc-ls-sort-timeout' => 'Expiration',
 	'viewapc-ls-limit-none' => 'Tous',
-	'viewapc-ls-more' => "''Il y a $1 autres {{PLURAL:$1|entrée|entrées}}''",
+	'viewapc-ls-more' => "''Il y a $1 {{PLURAL:$1|autre entrée|autres entrées}}''",
 	'viewapc-ls-nodata' => "''Aucune donnée ne correspond''",
 	'viewapc-delete-ok' => "L'entrée <nowiki>$1</nowiki> du cache est supprimée.",
 	'viewapc-delete-failed' => 'L’entrée <nowiki>$1</nowiki> du cache n’a pas pu être supprimée',

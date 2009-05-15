@@ -1509,6 +1509,7 @@ $messages['bs'] = array(
 	'configure-setting-wgMaxImageArea' => 'Najveće područje za slike u pikselima',
 	'configure-setting-wgMediaHandlers-key' => 'MIME vrsta',
 	'configure-setting-wgThumbLimits' => 'Omogućene veličine smanjenih slika',
+	'configure-setting-wgTrustedMediaFormats' => "Tipovi medije i MIME tipovi koji se smatraju 'sigurnim'",
 	'configure-setting-wgMainCacheType' => 'Tip glavnog sistema keširanja',
 	'configure-setting-wgFileCacheDirectory' => 'Direktorij keša datoteke',
 	'configure-setting-wgUseFileCache' => 'Koristi keš datoteke',
@@ -1538,6 +1539,7 @@ $messages['bs'] = array(
 	'configure-setting-wgLogRestrictions-key' => 'Tipovi zapisnika',
 	'configure-setting-wgLogTypes' => 'Tipovi zapisnika',
 	'configure-setting-wgSortSpecialPages' => 'Sortiranje posebnih stranica na [[Special:SpecialPages]]',
+	'configure-setting-wgSpecialPageGroups' => 'Grupe posebnih stranica',
 	'configure-setting-wgSpecialPageGroups-key' => 'Grupa',
 	'configure-setting-wgAutopromote-value' => 'Uslovi',
 	'configure-setting-wgAccountCreationThrottle' => 'Broj računa koje svaka IP adresa može napraviti',
@@ -1554,8 +1556,12 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Loupeter
+ * @author Solde
  */
 $messages['ca'] = array(
+	'configure-setting-wgActionPaths-key' => 'Acció',
+	'configure-setting-wgExtraLanguageNames-key' => "Codi de l'idioma",
+	'configure-setting-wgExtraLanguageNames-value' => 'Nom',
 	'configure-setting-wgDisableSearchContext' => "S'ha desactivat informació extra per a dates i revisions de pàgines específiques als resultats de la cerca.",
 );
 
@@ -5932,6 +5938,17 @@ $messages['ksh'] = array(
 	'configure-setting-wgCookieDomain' => 'De shpezjäll faßjelaate <i lang="en">domain</i> för de <i lang="en">cookies</i> vum Enlogge',
 	'configure-setting-wgCookieExpiration' => 'De Duur för de <i lang="en">HTTP cookies</i> ze levve',
 	'configure-setting-wgAPIPropModules' => 'Äjänzunge för dat <i lang="en">API</i>-Modul „<code>prop</code>“',
+	'configure-setting-wgLocalMessageCache' => 'Verzeijschneß för dä Zwescheshpeijscher för de Nohreeschte hee',
+	'configure-setting-wgMsgCacheExpiry' => 'Däm Zwescheshpeijscher för de Nohreeschte sing Läävensdooer',
+	'configure-setting-wgCheckSerialized' => 'Donn prööfe, of de seerijaliseete Dateije om aktoälle Shtand sin',
+	'configure-setting-wgLocalMessageCacheSerialized' => 'Donn et sujenannte seerijaliseete Fommaat vun <i lang="en">PHP</i> för der Zwescheshpeijscher hee för de Nohreeschte nämme',
+	'configure-setting-wgMaxMsgCacheEntrySize' => 'De jrüüzte Zahl <i lang="en">bytes</i> em Zwescheshpeijscher för de Nohreeschte',
+	'configure-setting-wgParserCacheType' => 'Däm Paaser sing Zoot Zwescheshpeijscher',
+	'configure-setting-wgEnableParserCache' => 'Zwescheshpeijscher för der Paaser aanschallde',
+	'configure-setting-wgEnableSidebarCache' => 'Donn de Lengks en de <i lang="en">sidebar</i> zwescheshpeijschere',
+	'configure-setting-wgSidebarCacheExpiry' => 'De Läävensduur vum Zwescheshpeijscher för de <i lang="en">sidebar</i>',
+	'configure-setting-wgUseETag' => 'Ene <i lang="en">ETag</i> Kopp_Reih scheke',
+	'configure-setting-wgAlwaysUseTidy' => 'Donn emmer <i lang="en">Tidy</i> nämme',
 	'configure-setting-wgXMLMimeTypes' => '<i lang="en">XML</i> <i lang="en">MIME</i> Zoote, di mer erußfenge kann',
 	'configure-setting-wgPhpCli' => 'Dä Name fun dä ußföhrba Datei met dämm <i lang="en">PHP cli client</i> dren, dä mer fun de Kommando-Reih uß oprööf, öm php/php5 Projramme ußzeföhre. Dä heiß fö jewöönlesch <code>php</code> odder <code>php5</code>.',
 );
@@ -6009,12 +6026,15 @@ $messages['lb'] = array(
 	'configure-setting-wgImportTargetNamespace' => 'Zil-Nummraum fir Interwiki-Importer',
 	'configure-setting-wgLogHeaders' => 'Beschreiwunge vun de Logbicher',
 	'configure-setting-wgLogNames' => 'Nimm vun de Lëschten a Logbicher',
+	'configure-setting-wgLogRestrictions-key' => 'Logbuchtyp',
 	'configure-setting-wgLogTypes' => 'Type vu Logbicher',
 	'configure-setting-wgSortSpecialPages' => 'Spezialsäiten op [[Special:SpecialPages]] sortéieren',
 	'configure-setting-wgSpecialPageGroups' => 'Gruppe vu Spezialsäiten',
 	'configure-setting-wgSpecialPageGroups-key' => 'Grupp',
+	'configure-setting-wgSpecialVersionShowHooks' => 'Den Inhalt vun  $wgHooks op Special:Version weisen',
 	'configure-setting-wgAutopromote-value' => 'Bedingungen',
 	'configure-setting-wgAccountCreationThrottle' => 'Zuel vun de Konten déi all IP-Adress opmaache kann',
+	'configure-setting-wgDisabledActions' => 'Ausgeschalte Säitenaktiounen',
 	'configure-setting-wgNewPasswordExpiry' => "D'Zäit, a Sekonnen, no däer en temporärt Passwuert, dat per Mail gschéckt gouf, ofleeft.",
 	'configure-setting-wgEnableAPI' => 'API aschalten',
 	'configure-setting-wgPasswordSalt' => 'Passwuert verschlësselt (salt)',
@@ -6050,6 +6070,7 @@ $messages['lb'] = array(
 	'configure-setting-wgHitcounterUpdateFreq' => 'Frequenz vun der Aktualisatioun vum Compteur vun de Säitenoffroen',
 	'configure-setting-wgValidSkinNames-key' => 'Interne Numm',
 	'configure-setting-wgValidSkinNames-value' => 'Numm weisen',
+	'configure-setting-wgContentNamespaces' => 'Nummraim op dene richtegen Inhalt oder Säiten gespäichert gëtt',
 	'configure-setting-wgExtraNamespaces' => 'Zusätzlech Nummraim',
 	'configure-setting-wgExtraNamespaces-key' => 'Nummraum-ID',
 	'configure-setting-wgExtraNamespaces-value' => 'Numm vum Nummraum',
@@ -6064,14 +6085,17 @@ $messages['lb'] = array(
 	'configure-setting-wgMinimalPasswordLength' => 'Mindest Längt vun de Passwieder',
 	'configure-setting-wgCompressRevisions' => 'Al Versioune wa méigellch kompriméieren',
 	'configure-setting-wgSecretKey' => 'Geheime Schlëssel',
+	'configure-setting-wgDBmysql4' => 'Verbessert Volltext-Sich benotzen',
 	'configure-setting-wgDBservers' => 'Datebankserveren',
 	'configure-setting-wgAntivirus' => 'Interne Numm vum Virescanner',
+	'configure-setting-wgUseTeX' => 'TeX aschalten',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Nummraum',
 	'configure-setting-wgLocaltimezone' => 'Lokal Zäitzon',
 	'configure-setting-wgUseAjax' => 'AJAX aschalten',
 	'configure-setting-wgRCLinkDays' => 'Limit vun den Deeg déi bäi de rezenten Ännerungen ugewise ginn',
 	'configure-setting-wgBlockAllowsUTEdit' => "Engem gespaarte Benotzer erlaben seng eegen Diskussiounssäit z'änneren",
 	'configure-setting-wgEnotifMinorEdits' => 'E-Mail Noriichten och fir "kleng Ännerungen" (Benotzer-Astellung gëtt gewisen an de Benotzer muss d\'Optioun aktivéieren)',
+	'configure-setting-wgUsersNotifiedOnAllChanges' => 'Benotzernimm deenen eng Noriicht per Mail geschéckt gëtt bäi all Ännerung op engem Wiki',
 );
 
 /** Eastern Mari (Олык Марий)

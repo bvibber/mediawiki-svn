@@ -270,6 +270,13 @@ $4',
 	'todo-form-submit' => 'Pošalji upit',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'todo-item-list' => 'Els teus ítems',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -1556,9 +1563,12 @@ $messages['vi'] = array(
 	'todo-tab' => 'cần làm',
 	'todo-new-queue' => 'mới',
 	'todo-no-item' => 'Không có việc cần làm.',
+	'todo-add-queue' => 'Thêm hàng đợi…',
+	'todo-move-queue' => 'Chuyển qua hàng đợi…',
 	'todo-list-for' => 'Danh sách việc cần làm của $1',
 	'todo-list-change' => 'Thay đổi',
 	'todo-list-cancel' => 'Hủy bỏ',
+	'todo-issue-summary' => 'Tóm lược vấn đề:',
 	'todo-form-details' => 'Chi tiết:',
 );
 

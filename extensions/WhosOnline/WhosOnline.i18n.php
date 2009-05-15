@@ -89,6 +89,14 @@ $messages['bs'] = array(
 	'whosonline-desc' => 'Prikazuje [[Special:WhosOnline|spisak]] prijavljenih korisnika i anonomnih korisnika koji su trenutno na mreži',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'whosonline' => 'Qui està conectat',
+	'whosonline-desc' => "Mostra [[Special:WhosOnline|una llista]] d'usuaris identificats i anònims que hi ha en línia en aquest moment",
+);
+
 /** Danish (Dansk)
  * @author Tomas Jensen
  */

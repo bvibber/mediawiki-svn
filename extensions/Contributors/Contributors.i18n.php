@@ -387,6 +387,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author IAlex
  * @author PieRRoMaN
  * @author Sherbrooke
@@ -401,7 +402,7 @@ $messages['fr'] = array(
 	'contributors-submit' => 'Montrer',
 	'contributors-subtitle' => 'Principaux contributeurs de $1',
 	'contributors-others-long' => 'Il y a {{PLURAL:$1|$1 autre contributeur|$1 autres contributeurs}} pour cette page.',
-	'contributors-others' => 'et {{PLURAL:$1|$1 autre|$1 autres}}',
+	'contributors-others' => 'et $1 autre{{PLURAL:$1||s}}',
 	'contributors-badtitle' => 'Titre incorrect.',
 	'contributors-nosuchpage' => 'La page $1 n’existe pas.',
 );

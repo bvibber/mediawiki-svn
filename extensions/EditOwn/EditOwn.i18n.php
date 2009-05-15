@@ -49,6 +49,13 @@ $messages['bs'] = array(
 	'editown-desc' => 'Korisnici bez prava editall mogu uređivati samo stranice koje su napravili',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'editown-desc' => 'Els usuaris sense els permisos per editar-ho tot només poden editar les pàgines que ha creat',
+);
+
 /** Kashubian (Kaszëbsczi)
  * @author Kaszeba
  */

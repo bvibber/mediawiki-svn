@@ -410,7 +410,7 @@ $messages['fr'] = array(
 	'formbadrecaptcha' => 'Valeur incorrecte pour reCaptcha. Essayez à nouveau',
 	'formbadpagenametext' => 'Les données saisies forment un mauvais nom de page, « $1 ».',
 	'formrequiredfielderror' => '{{PLURAL:$2|Le champ $1 est|Les champs $1 sont}} requis dans ce formulaire.
-Vous devez {{PLURAL:$2|le|les}} remplir.',
+Vous devez le{{PLURAL:$2||s}} remplir.',
 	'formsavesummary' => 'Nouvelle page utilisant [[Special:Form/$1|le formulaire $1]]',
 	'formsaveerror' => 'Une erreur s’est produite pendant la sauvegarde.',
 	'formsaveerrortext' => "Une erreur inconnue s’est produite pendant la sauvegarde de ''$1''.",

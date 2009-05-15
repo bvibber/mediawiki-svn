@@ -177,10 +177,11 @@ $messages['id'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'substall-desc' => '全てのテンプレートをwiki構文に展開する<nowiki><substall></nowiki>タグを作る',
+	'substall-desc' => '全てのテンプレートをウィキ構文に展開する <nowiki><substall></nowiki> タグを作る',
 );
 
 /** Korean (한국어)
@@ -308,6 +309,13 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'substall-desc' => 'Skapar en <nowiki><substall></nowiki>-tagg som expanderar alla mallar till wikisyntax',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'substall-desc' => 'అన్ని మూసలనూ వికీరూపంలోనికి విస్తరించడానికి ఉపయోగపడే <nowiki><substall></nowiki> ట్యాగుని సృష్టిస్తుంది',
 );
 
 /** Tagalog (Tagalog)

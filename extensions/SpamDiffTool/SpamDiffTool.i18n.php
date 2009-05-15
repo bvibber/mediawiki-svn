@@ -730,7 +730,10 @@ dänne drop lijje, wi zem Beispell blogpost.com, geocities.com, un esu.',
  */
 $messages['lb'] = array(
 	'spamdifftool' => 'Gestioun vun der schwaarzer Lëscht vum Spam',
+	'spamdifftool-desc' => "Gëtt d'Méiglechkeet fir aus de Versiounsënnerscheeder nei Elementer op déi schwaarz Lëscht vum Spam derbäizesetzen",
 	'spamdifftool_cantedit' => "Pardon - Dir hutt net déi néideg Rechter fir d'Schwaarz Lëscht vum Spam z'änneren.",
+	'spamdifftool_confirm' => "Konfirméiert daat Dir dës Elementer op déi Schwaarz Lëscht vum Spam derbäisetze wëllt.
+(Klickt <a href='$1' target='new'>hei</a> fir e Problem ze mellen.)",
 	'spamdifftool_summary' => "Op d'schwaarz Lëscht vum Spam derbäisetzen",
 	'spamdifftool_no_urls_detected' => "Et goufe keng URLe fonnt.
 Klickt w.e.g. <a href='$1'>heihi</a> fir zréck.",

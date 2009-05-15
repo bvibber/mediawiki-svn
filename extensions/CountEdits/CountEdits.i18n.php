@@ -421,6 +421,13 @@ $messages['gsw'] = array(
 	'countedits-nocontribs' => 'In {{ns:project}} git s keini Bearbeitige.',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'countedits-username' => 'સભ્ય નામ:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

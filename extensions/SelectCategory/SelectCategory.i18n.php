@@ -90,6 +90,13 @@ $messages['bs'] = array(
 	'selectcategory-subtitle' => 'Pritisnite Shift i mišem odaberite više poredanih stavki, pritisnite Ctrl i mišem odaberite stavke koje nisu poredane.',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'selectcategory-title' => 'Seleccinoa les categories',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Manuel Schneider <manuel.schneider@wikimedia.ch>

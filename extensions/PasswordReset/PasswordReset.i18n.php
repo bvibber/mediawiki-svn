@@ -465,6 +465,13 @@ $messages['gsw'] = array(
 	'right-passwordreset' => 'Passwort vun eme Benutzer zruggsetze ([[Special:PasswordReset|Spezialsyte]])',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'passwordreset-username' => 'સભ્ય નામ:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

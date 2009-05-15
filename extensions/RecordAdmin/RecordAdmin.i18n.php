@@ -222,8 +222,11 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'recordadmin' => 'Zapis administracije',
 	'recordadmin-desc' => '[[Special:RecordAdmin|Posebna stranica]] za traženje i uređivanje zapisa stranica koristeći obrazac',
+	'recordadmin-categoryempty' => 'Trenutno nema nikakvih tipova zapisa. Molimo kategorišite šablone zapisa u [[:$1|$1]].',
 	'recordadmin-select' => 'Odaberite tip zapisa za upravljanje',
+	'recordadmin-createtype' => 'Unesite ime novog tipa zapisa da ga napravite',
 	'recordadmin-recordtype' => 'tip zapisa',
 	'recordadmin-newsearch' => '{{PLURAL:$1|Nova $1 pretraga|Nove $1 pretrage|Novih $1 pretraga}}',
 	'recordadmin-newrecord' => 'Odaberi drugi tip zapisa',
@@ -231,6 +234,7 @@ $messages['bs'] = array(
 	'recordadmin-create' => 'Nađi ili napravi "$1" zapise',
 	'recordadmin-alreadyexist' => 'Žao nam je, "$1" već postoji!',
 	'recordadmin-createsuccess' => '$1 napravljen',
+	'recordadmin-createerror' => 'Desila se greška pri pokušaju pravljenja $1!',
 	'recordadmin-badtitle' => 'Nevaljan naslov!',
 	'recordadmin-recordid' => 'ID zapisa/naziv:',
 	'recordadmin-invert' => 'Obrnuti odabir',
@@ -246,6 +250,7 @@ $messages['bs'] = array(
 	'recordadmin-buttonsave' => 'Sačuvaj',
 	'recordadmin-noform' => 'Ne postoji obrazac koji je pripojen "$1" zapisima!',
 	'recordadmin-createlink' => 'napravi jedan',
+	'recordadmin-newcreated' => 'Nova $1 je napravljena iz javnog obrasca',
 	'recordadmin-summary-typecreated' => 'Novi $1 napravljen',
 	'recordadmin-viewlink' => 'pogledaj',
 	'recordadmin-editlink' => 'uredi',

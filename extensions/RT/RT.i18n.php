@@ -51,6 +51,15 @@ $messages['qqq'] = array(
 * Translate \"arg\" as argument, parameter.",
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'rt-desc' => 'واجهة فاخرة لمتتبع الطلبات',
+	'rt-inactive' => 'امتداد متتبع الطلبات غير مُفعّل',
+	'rt-badquery' => 'واجه امتداد متتبع الطلبات خطأً أثناء التخاطب مع قاعدة بيانات متتبع الطلبات',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

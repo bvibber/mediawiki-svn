@@ -439,6 +439,7 @@ $messages['eo'] = array(
 	'right-povwatch_admin' => 'Administri uzulajn rajtojn por aldoni paĝojn al atentaroj de aliaj uzantoj',
 	'right-povwatch_user' => 'Aldoni paĝojn al atentaroj de aliaj uzantoj',
 	'action-povwatch_admin' => 'administri uzulajn rajtojn por PovWatch',
+	'action-povwatch_user' => 'aldoni ĉi tiun paĝon al la atentaro de alia uzanto',
 );
 
 /** Spanish (Español)

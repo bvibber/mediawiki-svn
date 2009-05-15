@@ -350,6 +350,16 @@ $messages['ca'] = array(
 	'youtubeauthsub_category' => 'Categoria',
 	'youtubeauthsub_submit' => 'Trametre',
 	'youtubeauthsub_clickhere' => 'Fes clic aquí per a connectar-te al YouTube',
+	'youtubeauthsub_uploadbutton' => 'Carrega',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Veure aquest vídeo]',
+	'youtubeauthsub_summary' => "S'està carregant el vídeo de YouTube",
+	'youtubeauthsub_uploading' => "El teu vídeo s'està carregant.
+Si us plau, tingues paciència.",
+	'youtubeauthsub_jserror_nokeywords' => 'Si us plau, introdueixi 1 o més paraules.',
+	'youtubeauthsub_jserror_notitle' => 'Si us plau, introdueixi un títol pel vídeo.',
+	'youtubeauthsub_jserror_nodesc' => 'Si us plau, introdueixi una descripció per al vídeo.',
 );
 
 /** Czech (Česky)

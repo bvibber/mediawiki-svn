@@ -150,6 +150,13 @@ $messages['bs'] = array(
 	'inspectcache-list' => 'Izlistaj',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'inspectcache' => 'Inspecciona la memòria cau',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

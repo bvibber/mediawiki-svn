@@ -188,6 +188,20 @@ Neodgovarajuće datoteke će biti obrisane odmah, pogledajte [[{{MediaWiki:Multi
 	'multiupload-blank' => 'Nijedna datoteka nije odabrana',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'multipleupload' => 'Carrega múltiples fitxers',
+	'multipleupload-desc' => 'Permet als usuaris [[Special:MultipleUpload|carregar diversos fitxers de cop]]',
+	'multipleupload-ignoreallwarnings' => "Ignora '''tots els avisos''' i desa els fitxers igualment.",
+	'multipleupload-saveallfiles' => 'Desa tots els fitxers',
+	'multiupload-fileuploaded' => "S'ha carregat el fitxer.",
+	'multiupload-toolbox' => 'Carrega múltiples fitxers',
+	'multiupload-no-files' => 'Si us plau, seleccioni com a mínim un fitxer per a carregar',
+	'multiupload-blank' => "No s'ha seleccionat cap fitxer",
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */
@@ -307,12 +321,18 @@ Njegóźece se dataje budu se ned lašowaś, glědaj [[{{MediaWiki:Multipleuploa
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
-	'multipleupload' => 'Επιφόρτιση αρχείων',
+	'multipleupload' => 'Επιφόρτιση πολλαπλών αρχείων',
 	'multipleupload-saveallfiles' => 'Αποθηκεύστε όλα τα αρχεία',
+	'multipleupload-page' => '{{ns:project}}:Πολιτική διαγραφής αρχείων',
 	'multiupload-fileuploaded' => 'Το αρχείο ανέβηκε.',
+	'multiupload-toolbox' => 'Επιφόρτιση πολλαπλών αρχείων',
+	'multiupload-no-files' => 'Παρακαλώ επιλέξτε τουλάχιστον ένα αρχείο για επιφόρτωση',
+	'multiupload-blank' => 'Δεν έχετε επιλέξει κάποιο αρχείο',
 );
 
 /** Esperanto (Esperanto)
@@ -1068,9 +1088,10 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
-	'multipleupload' => 'Carregar ficheiros',
+	'multipleupload' => 'Carregar múltiplos ficheiros',
 	'multipleupload-desc' => 'Permite aos utilizadores [[Special:MultipleUpload|carregar vários ficheiros de uma vez]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todos os avisos''' e, mesmo assim, gravar os ficheiros.",
 	'multipleupload-saveallfiles' => 'Gravar todos os ficheiros',
@@ -1439,10 +1460,11 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'multipleupload' => 'Tải tập tin lên',
+	'multipleupload' => 'Tải lên hơn một tập tin',
 	'multipleupload-desc' => 'Cho phép thành viên [[Special:MultipleUpload|tải vài tập tin lên cùng lúc]]',
 	'multipleupload-ignoreallwarnings' => "Bỏ qua '''tất cả các cảnh báo''' là lưu tập tin bằng bất cứ giá nào.",
 	'multipleupload-saveallfiles' => 'Lưu tất cả tập tin',

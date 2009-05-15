@@ -204,7 +204,7 @@ Sen pitää täyttää seuraavat ehdot:',
 $messages['fr'] = array(
 	'securepasswords-desc' => 'Crée des hachages de mots de passe plus sûrs et ajoute un vérificateur de complexité de mots de passe',
 	'securepasswords-valid' => 'Votre mot de passe est invalide ou trop court. Il doit :',
-	'securepasswords-minlength' => 'être long d’au moins $1 {{PLURAL:$1|caractère|caractères}}',
+	'securepasswords-minlength' => 'être long d’au moins $1 caractère{{PLURAL:$1||s}}',
 	'securepasswords-lowercase' => 'contenir au moins 1 lettre minuscule',
 	'securepasswords-uppercase' => 'contenir au moins 1 lettre majuscule',
 	'securepasswords-digit' => 'contenir au moins 1 chiffre',

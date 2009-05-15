@@ -14,3 +14,8 @@ $aliases['en'] = array(
 	'Plotters' => array( 'Plotters' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Plotters' => array( 'プロッター' ),
+);
+

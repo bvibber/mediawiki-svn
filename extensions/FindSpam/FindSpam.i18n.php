@@ -133,6 +133,14 @@ $messages['bs'] = array(
 	'right-findspam' => 'Pretraga za nedavno dodanim spamom',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'findspam-ok' => 'OK',
+	'findspam-notextfound' => "No s'han trobat contribucions",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

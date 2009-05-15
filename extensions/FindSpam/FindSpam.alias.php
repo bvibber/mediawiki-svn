@@ -57,6 +57,11 @@ $aliases['gsw'] = array(
 	'FindSpam' => array( 'Spam finde' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'FindSpam' => array( 'સ્પામશોધો' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'FindSpam' => array( 'Spam namakać' ),

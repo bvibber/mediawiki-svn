@@ -140,6 +140,14 @@ $messages['oc'] = array(
 	'wikiarticlefeeds_combined_description' => "Aquò es un flus combinat que conten d'elements eissits de mantuna font.",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'wikiarticlefeeds-desc' => 'Generuje ze stron MediaWiki dane dla kanałów informacyjnych',
+	'wikiarticlefeeds_combined_description' => 'Ten kanał zbiera informacje z kilku źródeł.',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

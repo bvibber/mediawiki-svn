@@ -1087,6 +1087,7 @@ Sigurnosno upozorenje o nepotpisanom certifikatu se može prikazati.',
  * @author Aleator
  * @author Paucabot
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
 	'boardvote' => "Eleccions al Consell d'Administració de la Fundació Wikimedia",
@@ -1157,6 +1158,7 @@ Votació oberta fins el 22 de juny',
 	'boardvote_edits_many' => 'molts',
 	'group-boardvote' => 'Administradors electorals',
 	'group-boardvote-member' => 'Administrador electoral',
+	'grouppage-boardvote' => '{{ns:project}}:Administració dels vots del Board',
 	'boardvote_blocked' => 'Ho sentim, el vostre compte registrat ha estat blocat. Els usuaris blocats no tenen dret a vot.',
 	'boardvote_bot' => "Teniu l'estatus de bot al vostre wiki. Els comptes amb ús de bot no poden votar.",
 	'boardvote_welcome' => "Benvingut '''$1'''!",

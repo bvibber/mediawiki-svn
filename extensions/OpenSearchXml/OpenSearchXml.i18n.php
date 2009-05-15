@@ -61,6 +61,13 @@ $messages['bs'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML interfejs omogućuje izvoz teksta',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'opensearchxml-desc' => "L'interfície XML d'[http://www.opensearch.org OpenSearch] proporciona per extreure text",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -337,6 +344,13 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML gränssnitt tillhandahålls för textbitar',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'opensearchxml-desc' => 'పాఠ్య సంగ్రహాలని అందించే [http://www.opensearch.org OpenSearch] XML అంతరవర్తి',
 );
 
 /** Tagalog (Tagalog)

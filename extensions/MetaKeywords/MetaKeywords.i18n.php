@@ -221,6 +221,13 @@ $messages['lb'] = array(
 	'metakeywords-desc' => 'Erlaabt d\'Konfiguratioun vun <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> Tagen pro Nummraum',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'metakeywords-desc' => 'Benarkan konfigurasi tag <tt><nowiki><meta "keywords"></nowiki></tt> and <tt><nowiki><meta "description"></nowiki></tt> bagi setiap ruang nama',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

@@ -72,6 +72,13 @@ $messages['bs'] = array(
 	'oai-desc' => 'Omogućuje interfejs [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] repozitorijuma',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] proporciona una interfície de depòsit',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -409,6 +409,7 @@ Postavite varijablu $wgLocalTmpDirectory kao direktorijum za pisanje.',
 	'webstore_src_open' => 'Ne može se otvoriti izvorišna datoteka "$1".',
 	'webstore_src_close' => 'Greška pri zatvaranju datoteke koda "$1".',
 	'webstore_src_delete' => 'Greška pri brisanju datoteke izvora "$1".',
+	'webstore_lock_open' => 'Greška pri otvaranju datoteke ključa "$1".',
 	'webstore_lock_close' => 'Greška pri zatvaranju datoteka ključa "$1".',
 	'webstore_dest_exists' => 'Greška, odredišna datoteka "$1" postoji.',
 	'webstore_temp_close' => 'Greška pri zatvaranju privremene datoteke "$1".',
@@ -418,6 +419,9 @@ Postavite varijablu $wgLocalTmpDirectory kao direktorijum za pisanje.',
 	'webstore_404' => 'Datoteka nije nađena.',
 	'webstore_php_warning' => 'PHP upozorenje: $1',
 	'webstore_metadata_not_found' => 'Datoteka nije nađena: $1',
+	'webstore_invalid_response' => 'Nevaljan odgovor od servera:
+
+$1',
 	'webstore_no_response' => 'Nema odgovora od servera',
 	'webstore_php_error' => 'PHP greške koje su se desile:',
 );

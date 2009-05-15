@@ -195,7 +195,12 @@ $messages['ca'] = array(
 	'edituser-desc' => 'Permet editar les preferències dels altres usuaris als usuaris privilegiats',
 	'edituser' => "Edita l'usuari",
 	'edituser-logout' => "Desconnecta l'usuari",
+	'edituser-username' => 'Nom',
 	'edituser-dosearch' => 'Cerca',
+	'edituser-nouser' => "L'usuari especificat no existeix",
+	'edituser-exempt' => "L'usuari especificat no es pot editar",
+	'right-edituser' => "Edita les preferències d'altres usuaris",
+	'right-edituser-exempt' => "Altres usuaris no poden editar les preferències d'aquest usuari",
 );
 
 /** Chamorro (Chamoru)

@@ -63,6 +63,11 @@ $aliases['gsw'] = array(
 	'EditUser' => array( 'Benutzeryystellige bearbeite' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'EditUser' => array( 'સભ્યફેરફાર' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

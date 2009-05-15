@@ -550,6 +550,22 @@ Postoji mnogo [http://wiki.openid.net/Public_OpenID_providers javnih provajdera 
 	'openid-provider-label-other-username' => 'Unesite Vaše $1 korisničko ime',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'openidserver' => 'Servidor OpenID',
+	'openidxrds' => 'Fitxer Yadis',
+	'openidconvert' => 'Conversor OpenID',
+	'openidoptional' => 'Opcional',
+	'openidrequired' => 'Requerit',
+	'openidnickname' => 'Sobrenom',
+	'openidfullname' => 'Nom complet',
+	'openidemail' => 'Adreça de correu electrònic',
+	'openidlanguage' => 'Idioma',
+	'openidchoosepassword' => 'contrassenya:',
+);
+
 /** Czech (Česky)
  * @author IAlex
  * @author Matěj Grabovský
@@ -814,13 +830,16 @@ Jo wjele [http://openid.net/get/ póbitowarjow OpenID] a snaź maš južo konto 
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'openidoptional' => 'Προαιρετικός',
 	'openidrequired' => 'Απαιτημένος',
 	'openidnickname' => 'Παρωνύμιο',
+	'openidfullname' => 'ονοματεπώνυμο',
 	'openidemail' => 'Διεύθυνση ηλεκτρονικού ταχυδρομείου',
 	'openidlanguage' => 'Γλώσσα',
+	'openidchoosefull' => 'Το πλήρες όνομά σας ($1)',
 	'openidchoosemanual' => 'Ένα όνομα της επιλογής σας:',
 	'openidchoosepassword' => 'κωδικός:',
 );
@@ -1419,7 +1438,7 @@ OpenID מאפשר לכם להיכנס לחשבון במגוון אתרים מב�
 ישנם [http://wiki.openid.net/Public_OpenID_providers ספקי OpenID ציבוריים] רבים, ויתכן שכבר יש לכם חשבון התומך ב־OpenID בשירות אחר.',
 	'openidupdateuserinfo' => 'עדכון המידע האישי שלי',
 	'openid-prefstext' => 'העדפות [http://openid.net/ OpenID]',
-	'openid-pref-hide' => 'הסתרת ה־OpenID מדף המשתמש, במקרה של כניסה לחשבון עם OpenID.',
+	'openid-pref-hide' => 'הסתרת כתובת ה־OpenID בדף המשתמש, במקרה של כניסה לחשבון עם OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'עדכון המידע שלי מכרטיס ה־OpenID עם כל כניסה לחשבון',
 	'openidsigninorcreateaccount' => 'כניסה או יצירת חשבון חדש',
 	'openid-provider-label-openid' => 'הזינו את כתובת ה־OpenID שלכם',

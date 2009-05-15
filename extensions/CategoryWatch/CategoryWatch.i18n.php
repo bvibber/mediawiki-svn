@@ -110,6 +110,17 @@ Ova poruka služi da Vas obavijesti da je dana $3 korisnik $4 $5.',
 	'categorywatch-autocat' => 'Automatski pregledano od strane $1',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'categorywatch-catmovein' => "$1 s'ha mogut a $2 des de $3",
+	'categorywatch-catmoveout' => "$1 s'ha mogut fora de $2 i dins de $3",
+	'categorywatch-catadd' => "$1 s'ha afegit a $2",
+	'categorywatch-catsub' => "$1 s'ha extret de $2",
+	'categorywatch-autocat' => 'Automàticament controlat per $1',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -1516,7 +1516,7 @@ Veuillez vous assurer que vous ayez pris une décision en conformité du consens
 	'deletequeue-review-success' => 'Vous avez revu avec succès la suppression de cette page',
 	'deletequeue-review-success-title' => 'Révision complète',
 	'deletequeue-deletediscuss-discussionpage' => 'Ceci est la page de discussion concernant la suppression de [[$1]].
-Il y a actuellement $2 {{PLURAL:$2|utilisateur|utilisateurs}} en faveur, et $3 {{PLURAL:$3|utilisateur|utilisateurs}} qui y sont opposés.
+Il y a actuellement $2 utilisateur{{PLURAL:$2||s}} en faveur, et $3 utilisateur{{PLURAL:$3||s}} qui y sont opposés.
 Vous pouvez [{{FULLURL:$1|action=delvote}} appuyez ou refuser] la suppression, ou [{{FULLURL:$1|action=delviewvotes}} voir tous les « pour » et les « contre »].',
 	'deletequeue-discusscreate-summary' => 'Création de la discussion concernant la suppression de [[$1]].',
 	'deletequeue-discusscreate-text' => 'Suppression proposée pour la raison suivante : $2',
@@ -1561,7 +1561,7 @@ Vous pouvez enregistrer [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} ici] votre 
 	'deletequeue-list-search' => 'Rechercher',
 	'deletequeue-list-anyqueue' => '(plusieurs)',
 	'deletequeue-list-votes' => 'Liste des votes',
-	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|accord|accords}}, $2 {{PLURAL:$2|refus|refus}}',
+	'deletequeue-list-votecount' => '$1 accord{{PLURAL:$1||s}}, $2 refus{{PLURAL:$2||}}',
 	'deletequeue-list-header-page' => 'Page',
 	'deletequeue-list-header-queue' => 'Queue',
 	'deletequeue-list-header-votes' => 'Accords et refus',

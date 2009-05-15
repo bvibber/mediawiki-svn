@@ -77,6 +77,15 @@ $messages['bs'] = array(
 	'icon-desc' => 'Omogućuje upotrebu slika kao ikona i linkova ikona',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'icon-badimage' => 'Imatge incorrecta',
+	'icon-badwidth' => 'Amplada incorrecta',
+	'icon-desc' => "Et permet usar les imatges com a icones i com a enllaços d'icones",
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

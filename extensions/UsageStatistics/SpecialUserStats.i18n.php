@@ -720,6 +720,35 @@ $messages['gsw'] = array(
 	'usagestatistics-editpages' => 'Individuälli Sytestatischtike fir Benutzer $1',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'specialuserstats' => 'વપરાશના આંકડા',
+	'usagestatistics' => 'વપરાશના આંકડા',
+	'usagestatistics-desc' => 'વ્યક્તિગત સભ્ય અને સમગ્ર વિકિ વપરાશના આંકડાઓ બતાવો',
+	'usagestatisticsfor' => '<h2>[[User:$1|$1]]ના વપરાશના આંકડાઓ</h2>',
+	'usagestatisticsforallusers' => '<h2>બધા સભ્યોના વપરાશના આંકડાઓ</h2>',
+	'usagestatisticsinterval' => 'વિરામ',
+	'usagestatisticstype' => 'પ્રકાર',
+	'usagestatisticsstart' => 'આરંભ તારીખ',
+	'usagestatisticsend' => 'અંતિમ તારીખ',
+	'usagestatisticssubmit' => 'આંકડાઓ દર્શાવો',
+	'usagestatisticsnostart' => 'કૃપયા આરંભ તારીખ જણાવો',
+	'usagestatisticsnoend' => 'કૃપયા અંતિમ તારીખ જણાવો',
+	'usagestatisticsbadstartend' => '<b>અમાન્ય <i>આરંભ</i> અને/અથવા <i>અંતિમ</i> તારીખ!</b>',
+	'usagestatisticsintervalday' => 'દિવસ',
+	'usagestatisticsintervalweek' => 'સપ્તાહ',
+	'usagestatisticsintervalmonth' => 'મહીનો',
+	'usagestatisticsincremental' => 'ચઢતા ક્રમમાં',
+	'usagestatisticsincremental-text' => 'ચઢતા ક્રમમાં',
+	'usagestatisticscumulative' => 'સંચિત ક્રમમાં',
+	'usagestatisticscumulative-text' => 'સંચિત ક્રમમાં',
+	'usagestatisticscalselect' => 'પસંદ કરો',
+	'usagestatistics-editindividual' => 'વ્યક્તિગત સભ્ય $1 સંપાદનના આંકડાઓ',
+	'usagestatistics-editpages' => 'વ્યક્તિગત સભ્ય $1 પાનાઓના આંકડાઓ',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

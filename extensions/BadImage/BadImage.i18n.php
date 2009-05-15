@@ -607,6 +607,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Sherbrooke
@@ -616,7 +617,7 @@ $messages['fr'] = array(
 	'badimages-desc' => 'Augmente la capacité de la liste des images indésirables de MediaWiki',
 	'badimages-add-btn' => 'Ajouter',
 	'badimages-added' => '$1 a été ajoutée à la liste.',
-	'badimages-count' => "Il y a '''$1''' {{PLURAL:$1|image|images}} dans la liste des images indésirables.",
+	'badimages-count' => "Il y a '''$1''' image{{PLURAL:$1||s}} dans la liste des images indésirables.",
 	'badimages-name' => 'Nom :',
 	'badimages-not-added' => 'L’image n’a pas pu être ajoutée.',
 	'badimages-not-removed' => 'L’image n’a pas pu être retirée.',

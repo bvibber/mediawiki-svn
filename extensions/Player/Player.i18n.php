@@ -181,8 +181,10 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
+	'player' => 'Reproductor',
 	'player-goto-page' => 'Pàgina',
 	'player-goto-file' => 'fitxer',
 );

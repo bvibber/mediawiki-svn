@@ -472,6 +472,9 @@ $messages['bs'] = array(
 $messages['ca'] = array(
 	'tasks_previous' => 'Anterior',
 	'tasks_next' => 'Següent',
+	'tasks_status_open' => 'Obre',
+	'tasks_status_assigned' => 'Assignat',
+	'tasks_status_closed' => 'Tancat',
 );
 
 /** Czech (Česky)

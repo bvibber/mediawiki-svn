@@ -195,6 +195,13 @@ $messages['gsw'] = array(
 	'usercontactlink-desc' => 'Macht s megli, Benutzername eifach mit ^^^Benutzer^^^ z vergleiche',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'usercontactlink-baduser' => 'ખોટું સભ્યનામ',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

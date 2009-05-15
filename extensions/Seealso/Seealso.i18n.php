@@ -85,6 +85,13 @@ $messages['bs'] = array(
 	'seealso-desc' => "Lokalizirani 'Također pogledajte' naslovi koristeći oznaku <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'seealso' => 'Vegeu també',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

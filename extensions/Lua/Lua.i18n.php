@@ -110,6 +110,13 @@ $messages['bs'] = array(
 	'lua_overflow_time' => 'Dostignuto maksimalno vrijeme izvršenja',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'lua_error_internal' => 'Error intern',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

@@ -1235,6 +1235,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Gabbe.g
  * @author Lejonel
  * @author M.M.S.
  */
@@ -1246,7 +1247,9 @@ $messages['sv'] = array(
 	'dt_viewxml_namespaces' => 'Namnrymder',
 	'dt_viewxml_simplifiedformat' => 'Förenklat format',
 	'dt_xml_namespace' => 'Namnrymd',
+	'dt_xml_pages' => 'Sidor',
 	'dt_xml_page' => 'Sida',
+	'dt_xml_template' => 'Mall',
 	'dt_xml_field' => 'Fält',
 	'dt_xml_name' => 'Namn',
 	'dt_xml_title' => 'Titel',

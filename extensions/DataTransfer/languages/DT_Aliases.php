@@ -57,6 +57,11 @@ $aliases['gsw'] = array(
 	'ViewXML' => array( 'Lueg XML' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'ViewXML' => array( 'XMLજુઓ' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ViewXML' => array( 'XML megtekintése' ),

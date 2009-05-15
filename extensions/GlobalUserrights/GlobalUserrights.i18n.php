@@ -420,6 +420,18 @@ $messages['sk'] = array(
 	'right-userrights-global' => 'Spravovať oprávnenia globálnych používateľov',
 );
 
+/** Swedish (Svenska)
+ * @author Gabbe.g
+ */
+$messages['sv'] = array(
+	'globaluserrights' => 'Inställningar för globala rättigheter.',
+	'gur-desc' => 'Enkel administration av [[Special:GlobalUserRights|globala användarrättigheter]]',
+	'gur-rightslog-name' => 'Logg för globala rättigheter',
+	'gur-rightslog-header' => 'Logg över ändringar i globala rättigheter.',
+	'gur-rightslog-entry' => 'ändrade globala användarrättigheter för $1 från $2 till $3',
+	'right-userrights-global' => 'Administrera globala användarrättigheter',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
