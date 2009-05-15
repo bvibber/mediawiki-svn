@@ -1,3 +1,9 @@
+wikimedia-task-scaler (1.6) hardy; urgency=low
+
+  * Added dependency for gs in order to satisfy pdf extension requirements.
+
+ -- Fred Vassard <fvassard@wikimedia.org>  Fri, 15 May 2009 18:36:08 -0000
+
 wikimedia-task-scaler (1.5) hardy; urgency=low
 
   * Set fontconfig to ignore bitmap fonts.
