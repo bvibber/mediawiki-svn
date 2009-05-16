@@ -7,8 +7,8 @@
  *
  * @ingroup Extensions
  * @author Jan Luca <jan@toolserver.org>
- * @version 0.0.1
- * @link http://www.mediawiki.org/wiki/User:Jan_Luca/Extension:Poll2 Documentation
+ * @version 1.0 (Beta)
+ * @link http://www.mediawiki.org/wiki/Extension:Poll2 Documentation
  * @license http://creativecommons.org/licenses/by-sa/3.0/ Attribution-Share Alike 3.0 Unported or later
  */
 
@@ -26,7 +26,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Poll',
-	'version'        => '0.0.1',
+	'version'        => '1.0 (Beta)',
 	'path'           => __FILE__,
 	'author'         => 'Jan Luca',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Poll2',
