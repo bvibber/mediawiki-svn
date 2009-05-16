@@ -25,6 +25,9 @@ extensions-dependencies[] = AntiSpoof
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:AbuseFilter
 
+AdminLinks
+url = http://www.mediawiki.org/wiki/Extension:Admin_Links
+
 AdvancedRandom
 file = SpecialAdvancedRandom.php
 
