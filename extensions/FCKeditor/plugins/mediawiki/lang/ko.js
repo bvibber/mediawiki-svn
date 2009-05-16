@@ -1,7 +1,7 @@
 /*
- * mediaWiki FCKeditor plugin
+ * MediaWiki FCKeditor plugin
  *
- * 한국어 language file.
+ * Korean (한국어) language file.
  */
 
 FCKLang.wikiTabEdit						= '편집';

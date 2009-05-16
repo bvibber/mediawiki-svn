@@ -29,17 +29,15 @@ class FCKeditorEditPage extends EditPage {
 	}
 
 	function getPreviewText() {
-		if (!$this->isCssJsSubpage) {
+		if( !$this->isCssJsSubpage ) {
 			wfRunHooks( 'EditPageBeforePreviewText', array( &$this, $this->previewOnOpen() ) );
-			if ($this->previewOnOpen()) {
-				$result = html_entity_decode(parent::getPreviewText());
-			}
-			else {
+			if( $this->previewOnOpen() ) {
+				$result = html_entity_decode( parent::getPreviewText() );
+			} else {
 				$result = parent::getPreviewText();
 			}
 			wfRunHooks( 'EditPagePreviewTextEnd', array( &$this, $this->previewOnOpen() ) );
-		}
-		else {
+		} else {
 			$result = parent::getPreviewText();
 		}
 		return $result;
@@ -47,16 +45,15 @@ class FCKeditorEditPage extends EditPage {
 
 	function getContent( $def_text = '' ) {
 		$t = parent::getContent( $def_text );
-		if(!$this->isConflict) {
+		if( !$this->isConflict ) {
 			return $t;
 		}
 		$options = new FCKeditorParserOptions();
-		$options->setTidy(true);
+		$options->setTidy( true );
 		$parser = new FCKeditorParser();
-		$parser->setOutputType(OT_HTML);
-		$pa = $parser->parse($t, $this->mTitle, $options);
+		$parser->setOutputType( OT_HTML );
+		$pa = $parser->parse( $t, $this->mTitle, $options );
 		return $pa->mText;
-
 	}
 
 	function getWikiContent(){
@@ -70,12 +67,12 @@ class FCKeditorEditPage extends EditPage {
 	 */
 	function showDiff() {
 		global $wgFCKWikiTextBeforeParse;
-		if (isset($wgFCKWikiTextBeforeParse)) {
+		if( isset( $wgFCKWikiTextBeforeParse ) ) {
 			$_textbox1 = $this->textbox1;
 			$this->textbox1 = $wgFCKWikiTextBeforeParse;
 		}
-			$result = parent::showDiff();
-		if (isset($wgFCKWikiTextBeforeParse)) {
+		$result = parent::showDiff();
+		if( isset( $wgFCKWikiTextBeforeParse ) ) {
 			$this->textbox1 = $_textbox1;
 		}
 	}

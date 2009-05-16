@@ -1,7 +1,7 @@
 /*
- * mediaWiki FCKeditor plugin
+ * MediaWiki FCKeditor plugin
  *
- * Polish language file.
+ * Polish (Polski) language file.
  */
 
 FCKLang.wikiTabEdit						= 'Edycja';

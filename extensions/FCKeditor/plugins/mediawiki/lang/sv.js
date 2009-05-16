@@ -1,7 +1,7 @@
 ﻿/*
- * mediaWiki FCKeditor plugin
+ * MediaWiki FCKeditor plugin
  *
- * Swedish language file.
+ * Swedish (Svenska) language file.
  */
 
 FCKLang.wikiTabEdit						= 'Editera';

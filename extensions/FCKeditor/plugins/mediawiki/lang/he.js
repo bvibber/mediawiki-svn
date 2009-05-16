@@ -1,7 +1,7 @@
 /*
- * mediaWiki FCKeditor plugin
+ * MediaWiki FCKeditor plugin
  *
- * Hebrew language file.
+ * Hebrew (עברית) language file.
  */
 
 FCKLang.wikiTabEdit					= 'עריכה';

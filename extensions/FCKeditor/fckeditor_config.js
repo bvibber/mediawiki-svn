@@ -4,7 +4,7 @@
 
 // When using the modified image dialog you must set this variable. It must
 // correspond to $wgScriptPath in LocalSettings.php.
-FCKConfig.mwScriptPath = '' ;
+FCKConfig.mwScriptPath = '';
 
 // Setup the editor toolbar.
 FCKConfig.ToolbarSets['Wiki'] = [
@@ -21,17 +21,18 @@ FCKConfig.ToolbarSets['Wiki'] = [
 	['Link','Unlink','Anchor'],
 //	['TextColor','BGColor'],
 	['FitWindow','-','About']
-] ;
+];
 
 // Load the extension plugins.
-FCKConfig.PluginsPath = FCKConfig.EditorPath + '../plugins/' ;
-FCKConfig.Plugins.Add( 'mediawiki', 'en,he,pl') ;
+FCKConfig.PluginsPath = FCKConfig.EditorPath + '../plugins/';
+// Available translations
+FCKConfig.Plugins.Add( 'mediawiki', 'en,fi,he,ko,pl,sv,zh-tw' );
 
-FCKConfig.ForcePasteAsPlainText = true ;
-FCKConfig.FontFormats	= 'p;h1;h2;h3;h4;h5;h6;pre' ;
+FCKConfig.ForcePasteAsPlainText = true;
+FCKConfig.FontFormats	= 'p;h1;h2;h3;h4;h5;h6;pre';
 
-FCKConfig.AutoDetectLanguage	= true ;
-FCKConfig.DefaultLanguage		= 'en' ;
+FCKConfig.AutoDetectLanguage	= true;
+FCKConfig.DefaultLanguage		= 'en';
 
 FCKConfig.WikiSignature = '--~~~~';
 
@@ -123,4 +124,4 @@ FCKConfig.EditorAreaStyles = '\
 	width: 66px; \
 	height: 15px; \
 } \
-' ;
+';
