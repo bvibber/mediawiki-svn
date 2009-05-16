@@ -12,26 +12,38 @@ $messages = array();
 
 /** English
  * @author Ryan Lane, rlane32+mwext@gmail.com
+ * @author Purodha
  */
 $messages['en'] = array(
 	# for Special:Version
 	'plotters-desc'      => 'Lets users use custom JavaScript in jsplot tags',
 
-	# for Special:Gadgets
+	# for Special:Plotters
 	'plotters'           => 'Plotters',
 	'plotters-title'     => 'Plotters',
 	'plotters-pagetext'  => "Below is a list of special plotters users can use in their jsplot tags, as defined by [[MediaWiki:Plotters-definition]].
 This overview provides easy access to the system message pages that define each plotter's description and code.",
+
+	# for Special:Plotters-definition
 	'plotters-uses'      => 'Uses',
 	'plotters-missing-script'      => 'No script was defined.',
 	'plotters-missing-arguments'      => 'No arguments specified.',
-	'plotters-excessively-long-scriptname'      => 'The script name is too long. Please define a script that is less than 255 characters.',
-	'plotters-excessively-long-preprocessorname'      => 'The preprocessor name is too long. Please define a preprocessor that is less than 255 characters.',
-	'plotters-excessively-long-name'      => 'The plot name is too long. Please define a plot name that is less than 255 characters.',
-	'plotters-excessively-long-tableclass'      => 'The tableclass is too long. Please define a tableclass that is less than 255 characters.',
+	'plotters-excessively-long-scriptname'      => 'The script name is too long. Please define a script, the name of which is 255 characters long at most.',
+	'plotters-excessively-long-preprocessorname'      => 'The preprocessor name is too long. Please define a preprocessor, the name of which is 255 characters long at most.',
+	'plotters-excessively-long-name'      => 'The plot name is too long. Please define a plot name that has 255 characters at most.',
+	'plotters-excessively-long-tableclass'      => 'The tableclass is too long. Please define a tableclass that has 255 characters at most.',
 	'plotters-no-data'      => 'No data was provided.',
 	'plotters-invalid-renderer'      => 'An invalid renderer was selected.',
-	'plotters-errors'      => '<b>Plotters error(s):</b>',
+	'plotters-errors'      => 'Plotters {{PLURAL:$1|error|errors}}:',
+);
+
+/** Message Documentation.
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'plotters-desc'    => 'Short description of the Plotters extension. Used on [[Special:Version]]. Do not translate link targets.',
+	'plotters-errors'  => 'Parameters:
+$1 = number of messages following. Can be used with PLURAL.',
 );
 
 /** Arabic (العربية)

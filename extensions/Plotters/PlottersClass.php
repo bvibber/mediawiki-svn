@@ -38,42 +38,50 @@ class Plotters {
 		wfLoadExtensionMessages( 'Plotters' );
 
 		$errors = '';
+		$errcnt = 0;
 
 		// Check for a valid renderer
 		if ( $this->argumentArray["renderer"] != "generic" && $this->argumentArray["renderer"] != "plotkit" ) {
 			$errors .= wfMsg( "plotters-invalid-renderer" ) . "<br />";
+			$errcnt++;
 		}
 
 		// Check for a script
 		if ( $this->argumentArray["script"] == "" ) {
 			$errors .= wfMsg( "plotters-missing-script" ) . "<br />";
+			$errcnt++;
 		} else if ( strlen( $this->argumentArray["script"] ) > 255 ) {
 			// Check to ensure scriptname is < 255 characters
 			$errors .= wfMsg( "plotters-excessively-long-scriptname" ) . "<br />";
+			$errcnt++;
 		}
 
 		// Check preprocessors
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
 			if ( strlen( $preprocessor ) > 255 ) {
 				$errors .= wfMsg( "plotters-excessively-long-preprocessorname" ) . "<br />";
+				$errcnt++;
 			}
 		}
 
 		if ( strlen( $this->argumentArray["name"] ) > 255 ) {
-				$errors .= wfMsg( "plotters-excessively-long-name" ) . "<br />";
+			$errors .= wfMsg( "plotters-excessively-long-name" ) . "<br />";
+			$errcnt++;
 		}
 
 		if ( strlen( $this->argumentArray["tableclass"] ) > 255 ) {
-				$errors .= wfMsg( "plotters-excessively-long-tableclass" ) . "<br />";
+			$errors .= wfMsg( "plotters-excessively-long-tableclass" ) . "<br />";
+			$errcnt++;
 		}
 
 		// Check for data
 		if ( count( $this->dataArray ) == 0 ) {
 			$errors .= wfMsg( "plotters-no-data" ) . "<br />";
+			$errcnt++;
 		}
 
 		if ( $errors != '' ) {
-			$this->errors = wfMsg( "plotters-errors" ) . " " . $errors;
+			$this->errors = '<b>' . wfMsgExt( 'plotters-errors', array('parse'), $errcnt ) . '</b> ' . $errors;
 		}
 	}
 
