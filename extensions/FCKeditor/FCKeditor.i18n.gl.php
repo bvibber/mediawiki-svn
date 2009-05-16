@@ -19,4 +19,9 @@ $messages = array(
 	'tog-riched_disable_ns_help_talk' => 'Desactivar o editor rico no espazo de nomes "{{ns:Help_talk}}"',
 	'tog-riched_disable_ns_category' => 'Desactivar o editor rico no espazo de nomes "{{ns:Category}}"',
 	'tog-riched_disable_ns_category_talk' => 'Desactivar o editor rico no espazo de nomes "{{ns:Category_talk}}"',
+	'rich_editor_new_window' => 'Abrir editor enriquecido nunha nova ventana',
+	'tog-riched_start_disabled' => 'Comenzar con o editor enriquecido desactivado',
+	'tog-riched_use_popup' => 'Abrir o editor enriquecido nun popup',
+	'tog-riched_use_toggle' => 'Utilizar un selector para cambiar entre wikitext e o editor enriquecido',
+	'tog-riched_toggle_remember_state' => 'Recordar a última selección do editor',
 );

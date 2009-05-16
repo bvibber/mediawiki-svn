@@ -1,6 +1,6 @@
 <?php
 
-class FCKeditorParser extends Parser
+class FCKeditorParser extends FCKeditorParserWrapper
 {
 	public static $fkc_mw_makeImage_options;
 	protected $fck_mw_strtr_span;
@@ -25,19 +25,8 @@ class FCKeditorParser extends Parser
 	"__NOGALLERY__",
 	);
 
-	function __construct() {
-		global $wgParser;
-		parent::Parser();
-
-		foreach ($wgParser->getTags() as $h) {
-			if (!in_array($h, array("pre"))) {
-				$this->setHook($h, array($this, "fck_genericTagHook"));
-			}
-		}
-	}
-
 	/**
-	 * Add special string (that would be changed by Parser) to array and return simple unique string 
+	 * Add special string (that would be changed by Parser) to array and return simple unique string
 	 * that will remain unchanged during whole parsing operation.
 	 * At the end we'll replace all this unique strings with original content
 	 *
@@ -66,7 +55,18 @@ class FCKeditorParser extends Parser
 	function maybeDoSubpageLink($target, &$text) {
 		return $target;
 	}
-	
+
+	/**
+	 * DO NOT Replace special strings like "ISBN xxx" and "RFC xxx" with
+	 * magic external links.
+	 *
+	 * DML
+	 * @private
+	 */
+	function doMagicLinks( $text ) {
+		return $text;
+	}
+
 	/**
 	* Callback function for custom tags: feed, ref, references etc.
 	*
@@ -75,13 +75,13 @@ class FCKeditorParser extends Parser
 	* @return string
 	*/
 	function fck_genericTagHook( $str, $argv, $parser ) {
-		if (in_array($this->fck_mw_taghook, array("ref", "math", "references"))) {
+		if (in_array($this->fck_mw_taghook, array("ref", "math", "references", "source"))) {
 			$class = $this->fck_mw_taghook;
 		}
 		else {
 			$class = "special";
 		}
-		
+
 		if (empty($argv)) {
 			$ret = "<span class=\"fck_mw_".$class."\" _fck_mw_customtag=\"true\" _fck_mw_tagname=\"".$this->fck_mw_taghook."\">";
 		}
@@ -117,7 +117,7 @@ class FCKeditorParser extends Parser
 			$ret = "<span class=\"fck_mw_".$tagName."\" _fck_mw_customtag=\"true\" _fck_mw_tagname=\"".$tagName."\">";
 		}
 		else {
-			$ret = "<span class=\"fck_mw_".$tagName."\" _fck_mw_customtag=\"true\" _fck_mw_tagname=\"".$tagName."\">";
+			$ret = "<span class=\"fck_mw_".$tagName."\" _fck_mw_customtag=\"true\" _fck_mw_tagname=\"".$tagName."\"";
 			foreach ($argv as $key=>$value) {
 				$ret .= " ".$key."=\"".$value."\"";
 			}
@@ -154,7 +154,7 @@ class FCKeditorParser extends Parser
 	 * @private
 	 */
 	function strip( $text, $state, $stripcomments = false , $dontstrip = array () ) {
-		global $wgContLang;
+		global $wgContLang, $wgUseTeX, $wgScriptPath, $wgVersion, $wgHooks, $wgExtensionFunctions;
 
 		wfProfileIn( __METHOD__ );
 		$render = ($this->mOutputType == OT_HTML);
@@ -164,15 +164,18 @@ class FCKeditorParser extends Parser
 		$nowikiItems = array();
 		$generalItems = array();
 
-		$elements = array_merge(
-		array( 'nowiki', 'gallery' ),
-		array_keys( $this->mTagHooks ) );
+		$elements = array_merge( array( 'nowiki', 'gallery', 'math' ), array_keys( $this->mTagHooks ) );
+		if ( (isset($wgHooks['ParserFirstCallInit']) && in_array('efSyntaxHighlight_GeSHiSetup', $wgHooks['ParserFirstCallInit']))
+			|| (isset($wgExtensionFunctions) && in_array('efSyntaxHighlight_GeSHiSetup', $wgExtensionFunctions)) ) {
+			$elements = array_merge( $elements, array( 'source' ) );
+		}
+		if ( (isset($wgHooks['ParserFirstCallInit']) && in_array('wfCite', $wgHooks['ParserFirstCallInit']))
+			|| (isset($wgExtensionFunctions) && in_array('wfCite', $wgExtensionFunctions)) ) {
+			$elements = array_merge( $elements, array( 'ref', 'references' ) );
+		}
 		global $wgRawHtml;
 		if( $wgRawHtml ) {
 			$elements[] = 'html';
-		}
-		if( $this->mOptions->getUseTeX() ) {
-			$elements[] = 'math';
 		}
 
 		# Removing $dontstrip tags from $elements list (currently only 'gallery', fixing bug 2700)
@@ -181,8 +184,14 @@ class FCKeditorParser extends Parser
 			unset ( $elements[$k] );
 		}
 
+		$elements = array_unique($elements);
 		$matches = array();
-		$text = Parser::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+		if (version_compare("1.12", $wgVersion, ">")) {
+			$text = Parser::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+		}
+		else {
+			$text = self::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+		}
 
 		foreach( $matches as $marker => $data ) {
 			list( $element, $content, $params, $tag ) = $data;
@@ -200,17 +209,28 @@ class FCKeditorParser extends Parser
 							$output = "$tag-->";
 						}
 						break;
+					case 'references':
+						$output = $this->fck_wikiTag('references', $content, $params);
+						break;
+					case 'ref':
+						$output = $this->fck_wikiTag('ref', $content, $params);
+						break;
+					case 'source':
+						$output = $this->fck_wikiTag('source', $content, $params);
+						break;
 					case 'html':
 						if( $wgRawHtml ) {
-							$output = $content;
-							break;
+							$output = $this->fck_wikiTag('html', $content, $params);
 						}
-						// Shouldn't happen otherwise. :)
+						break;
 					case 'nowiki':
 						$output = $this->fck_wikiTag('nowiki', $content, $params); //required by FCKeditor
 						break;
 					case 'math':
-						$output = $wgContLang->armourMath( MathRenderer::renderMath( $content ) );
+						if($wgUseTeX){		//normal render
+							$output = $wgContLang->armourMath( MathRenderer::renderMath( $content ) );
+						}else				//show fakeimage
+							$output = '<img _fckfakelement="true" class="FCK__MWMath" _fck_mw_math="'.$content.'" src="'.$wgScriptPath.'/skins/common/images/button_math.png" />';
 						break;
 					case 'gallery':
 						$output = $this->fck_wikiTag('gallery', $content, $params); //required by FCKeditor
@@ -307,7 +327,12 @@ class FCKeditorParser extends Parser
 	}
 
 	function replaceInternalLinks( $text ) {
-		return parent::replaceInternalLinks($text);
+		$text = preg_replace("/\[\[([^|\[\]]*?)\]\]/", "[[$1|RTENOTITLE]]", $text);	//#2223: [[()]]	=>	[[%1|RTENOTITLE]]
+		$text = preg_replace("/\[\[:(.*?)\]\]/", "[[RTECOLON$1]]", $text);	//change ':' => 'RTECOLON' in links
+		$text = parent::replaceInternalLinks($text);
+		$text = preg_replace("/\|RTENOTITLE\]\]/", "]]", $text);				// remove unused RTENOTITLE
+
+		return $text;
 	}
 
 	function makeImage( $nt, $options ) {
@@ -318,10 +343,10 @@ class FCKeditorParser extends Parser
 	/**
 	 * Replace templates with unique text to preserve them from parsing
 	 *
-	 * @todo if {{template}} is inside string that also must be returned unparsed, 
+	 * @todo if {{template}} is inside string that also must be returned unparsed,
 	 * e.g. <noinclude>{{template}}</noinclude>
 	 * {{template}} replaced with Fckmw[n]fckmw which is wrong...
-	 * 
+	 *
 	 * @param string $text
 	 * @return string
 	 */
@@ -374,6 +399,14 @@ class FCKeditorParser extends Parser
 			$strtr_span = array();
 			foreach ($tags as $pos=>$type) {
 				$sum += $type;
+				if (!$pos) {
+					$opened = 0;
+					$closed = 0;
+				}
+				else {
+					$opened = substr_count($text, '[', 0, $pos);			//count [
+					$closed = substr_count($text, ']', 0, $pos);			//count ]
+				}
 				if ($sum == 1 && $lastSum == 0) {
 					$stringToParse .= strtr(substr($text, $startingPos, $pos - $startingPos), $strtr);
 					$startingPos = $pos;
@@ -382,7 +415,11 @@ class FCKeditorParser extends Parser
 					$stringToParse .= 'Fckmw'.$this->fck_mw_strtr_span_counter.'fckmw';
 					$inner = htmlspecialchars(strtr(substr($text, $startingPos, $pos - $startingPos + 19), $strtr));
 					$this->fck_mw_strtr_span['href="Fckmw'.$this->fck_mw_strtr_span_counter.'fckmw"'] = 'href="'.$inner.'"';
-					$this->fck_mw_strtr_span['Fckmw'.$this->fck_mw_strtr_span_counter.'fckmw'] = '<span class="fck_mw_template">'.str_replace(array("\r\n", "\n", "\r"),"fckLR",$inner).'</span>';
+					if($opened <= $closed) {						// {{template}} is NOT in [] or [[]]
+						$this->fck_mw_strtr_span['Fckmw'.$this->fck_mw_strtr_span_counter.'fckmw'] = '<span class="fck_mw_template">'.str_replace(array("\r\n", "\n", "\r"),"fckLR",$inner).'</span>';
+					}else{
+						$this->fck_mw_strtr_span['Fckmw'.$this->fck_mw_strtr_span_counter.'fckmw'] = str_replace(array("\r\n", "\n", "\r"),"fckLR",$inner);
+					}
 					$startingPos = $pos + 19;
 					$this->fck_mw_strtr_span_counter++;
 				}
@@ -444,6 +481,10 @@ class FCKeditorParser extends Parser
 		return strtr( $text, $strtr );
 	}
 
+	function doDoubleUnderscore( $text ) {
+		return $text;
+	}
+
 	function parse( $text, &$title, $options, $linestart = true, $clearState = true, $revid = null ) {
 		$text = preg_replace("/^#REDIRECT/", "<!--FCK_REDIRECT-->", $text);
 		$parserOutput = parent::parse($text, $title, $options, $linestart , $clearState , $revid );
@@ -452,15 +493,31 @@ class FCKeditorParser extends Parser
 		if ($categories) {
 			$appendString = "";
 			foreach ($categories as $cat=>$val) {
-				$appendString .= "<a href=\"Category:" . $cat ."\">Category:" . $cat ."</a> ";
+				$args = '';
+				if( $val == 'RTENOTITLE' ){
+						$args .= '_fcknotitle="true" ';
+					$val = $cat;
+				}
+				if ($val != $title->mTextform) {
+					$appendString .= "<a ".$args."href=\"Category:" . $cat ."\">" . $val ."</a> ";
+				}
+				else {
+					$appendString .= "<a ".$args."href=\"Category:" . $cat ."\">Category:" . $cat ."</a> ";
+				}
 			}
 			$parserOutput->setText($parserOutput->getText() . $appendString);
 		}
 
 		if (!empty($this->fck_mw_strtr_span)) {
-			$parserOutput->setText(strtr($parserOutput->getText(), $this->fck_mw_strtr_span));
+			global $leaveRawTemplates;
+			if (!empty($leaveRawTemplates)) {
+				foreach ($leaveRawTemplates as $l) {
+					$this->fck_mw_strtr_span[$l] = substr($this->fck_mw_strtr_span[$l], 30, -7);
+				}
+			}
+			$text = strtr($parserOutput->getText(), $this->fck_mw_strtr_span);
+			$parserOutput->setText(strtr($text, $this->fck_mw_strtr_span));
 		}
-
 		if (!empty($this->fck_matches)) {
 			$text = $parserOutput->getText() ;
 			foreach ($this->fck_matches as $key => $m) {
@@ -468,7 +525,7 @@ class FCKeditorParser extends Parser
 			}
 			$parserOutput->setText($text);
 		}
-		
+
 		if (!empty($parserOutput->mLanguageLinks)) {
 			foreach ($parserOutput->mLanguageLinks as $l) {
 				$parserOutput->setText($parserOutput->getText() . "\n" . "<a href=\"".$l."\">".$l."</a>") ;

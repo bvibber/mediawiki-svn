@@ -1,7 +1,6 @@
 <?php
 
-class FCKeditorSkin
-{
+class FCKeditorSkin {
 	private $skin;
 
 	/**
@@ -16,15 +15,18 @@ class FCKeditorSkin
 	 * @param boolean $thumb shows image as thumbnail in a frame
 	 * @param string $manual_thumb image name for the manual thumbnail
 	 * @param string $valign vertical alignment: baseline, sub, super, top, text-top, middle, bottom, text-bottom
-	 * @return string     * 
+	 * @return string     *
 	 */
 	function makeImageLinkObj( $nt, $label, $alt, $align = '', $params = array(), $framed = false,
-	$thumb = false, $manual_thumb = '', $valign = '' )
-	{
+	$thumb = false, $manual_thumb = '', $valign = '' ) {
 		$orginal = $nt->getText();
 		$img   = new Image( $nt );
 		$imgName = $img->getName();
 		$found = $img->getURL();
+
+		if (!is_null($alt) && ( $alt == 'RTENOTITLE' ))  {		//2223
+			$alt = '';
+		}
 
 		if ($found) {
 			//trick to get real Url for image:
@@ -103,7 +105,7 @@ class FCKeditorSkin
 	 * @param File $file File object, or false if it doesn't exist
 	 *
 	 * @param array $frameParams Associative array of parameters external to the media handler.
-	 *     Boolean parameters are indicated by presence or absence, the value is arbitrary and 
+	 *     Boolean parameters are indicated by presence or absence, the value is arbitrary and
 	 *     will often be false.
 	 *          thumbnail       If present, downscale and frame
 	 *          manualthumb     Image name to use as a thumbnail, instead of automatic scaling
@@ -113,13 +115,13 @@ class FCKeditorSkin
 	 *          upright_factor  Fudge factor for "upright" tweak (default 0.75)
 	 *          border          If present, show a border around the image
 	 *          align           Horizontal alignment (left, right, center, none)
-	 *          valign          Vertical alignment (baseline, sub, super, top, text-top, middle, 
+	 *          valign          Vertical alignment (baseline, sub, super, top, text-top, middle,
 	 *                          bottom, text-bottom)
 	 *          alt             Alternate text for image (i.e. alt attribute). Plain text.
 	 *          caption         HTML for image caption.
 	 *
-	 * @param array $handlerParams Associative array of media handler parameters, to be passed 
-	 *       to transform(). Typical keys are "width" and "page". 
+	 * @param array $handlerParams Associative array of media handler parameters, to be passed
+	 *       to transform(). Typical keys are "width" and "page".
 	 */
 	function makeImageLink2( Title $nt, $file, $frameParams = array(), $handlerParams = array() ) {
 		$orginal = $nt->getText();
@@ -127,6 +129,9 @@ class FCKeditorSkin
 		$imgName = $img->getName();
 		$found = $img->getURL();
 
+		if (!empty($frameParams['alt']) && $frameParams['alt'] == 'RTENOTITLE' ){	//2223
+			$frameParams['alt'] = '';
+		}
 		if ($found) {
 			$linker = new Linker();
 			$originalLink = $linker->makeImageLink2( $nt, $file, $frameParams, $handlerParams);
@@ -199,7 +204,7 @@ class FCKeditorSkin
 			$class .= ($class?" ":"") . "fck_mw_notfound";
 		}
 
-		if (isset($fp['alt']) && !empty($fp['alt']) && false !== strpos(FCKeditorParser::$fkc_mw_makeImage_options, $fp['alt']) && $fp['alt'] != "Image:" . $orginal) {
+		if (isset($fp['alt']) && !empty($fp['alt']) && $fp['alt'] != "Image:" . $orginal) {
 			$ret .= "alt=\"".htmlspecialchars($fp['alt'])."\" ";
 		}
 		else {
@@ -215,18 +220,60 @@ class FCKeditorSkin
 		return $ret;
 	}
 
-	function makeKnownLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' , $aprops = '', $style = '' )
-	{
+	function makeLinkObj( $nt, $text= '', $query = '', $trail = '', $prefix = '' ) {
+		global $wgUser;
+
+		wfProfileIn( __METHOD__ );
+		if ( $nt->isExternal() ) {
+			$args = '';
+			$u = $nt->getFullURL();
+			$link = $nt->getPrefixedURL();
+			if ( '' == $text ) { $text = $nt->getPrefixedText(); }
+			$style = $this->getInterwikiLinkAttributes( $link, $text, 'extiw' );
+
+			$inside = '';
+			if ( '' != $trail ) {
+				$m = array();
+				if ( preg_match( '/^([a-z]+)(.*)$$/sD', $trail, $m ) ) {
+					$inside = $m[1];
+					$trail = $m[2];
+				}
+			}
+			if( $text == 'RTENOTITLE' ) {	//2223
+				$text = $u = $link;
+				$args .= '_fcknotitle="true" ';
+			}
+			$t = "<a {$args}href=\"{$u}\"{$style}>{$text}{$inside}</a>";
+
+			wfProfileOut( __METHOD__ );
+			return $t;
+		}
+
+		return Linker::makeLinkObj($nt, $text, $query, $trail, $prefix);
+
+	}
+
+	function makeColouredLinkObj( $nt, $colour, $text = '', $query = '', $trail = '', $prefix = '' ) {
+		if($colour != ''){
+			$style = $this->getInternalLinkAttributesObj( $nt, $text, $colour );
+		} else $style = '';
+		return $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix, '', $style );
+	}
+
+	function makeKnownLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' , $aprops = '', $style = '' ) {
 		$fname = 'FCKeditorSkin::makeKnownLinkObj';
 		wfProfileIn( $fname );
 
+		$args = '';
 		if ( !is_object( $nt ) ) {
 			wfProfileOut( $fname );
 			return $text;
 		}
 
 		//$u = $nt->escapeLocalURL( $query );
-		$u = $nt->getFullText();
+	  $u = $nt->getFullText();
+	  //#Updating links tables -> #Updating_links_tables
+	  $u = str_replace("#".$nt->getFragment(), $nt->getFragmentForURL(), $u);
 
 		if ( $nt->getFragment() != '' ) {
 			if( $nt->getPrefixedDbkey() == '' ) {
@@ -235,7 +282,7 @@ class FCKeditorSkin
 					$text = htmlspecialchars( $nt->getFragment() );
 				}
 			}
-			
+
 			/*
 			* See tickets 1386 and 1690 before changing anything
 			*/
@@ -252,23 +299,34 @@ class FCKeditorSkin
 		}
 
 		list( $inside, $trail ) = Linker::splitTrail( $trail );
-		$r = "<a href=\"{$u}\">{$prefix}{$text}{$inside}</a>{$trail}";
+		$title = "{$prefix}{$text}{$inside}";
+
+		$u = preg_replace("/^RTECOLON/", ":", $u);	//change 'RTECOLON' => ':'
+		if( substr($text, 0, 10) == 'RTENOTITLE' ){		//starts with RTENOTITLE
+			$args .= '_fcknotitle="true" ';
+			$title = $u;
+			$trail = substr($text, 10).$trail;
+		}
+
+		$r = "<a {$args}href=\"{$u}\">{$title}</a>{$trail}";
 		wfProfileOut( $fname );
 		return $r;
 	}
 
-	function makeBrokenLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' )
-	{
+	function makeBrokenLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
 		# Fail gracefully
 		if ( ! isset($nt) ) {
 			# throw new MWException();
 			return "<!-- ERROR -->{$prefix}{$text}{$trail}";
 		}
+		$args = '';
 
 		$fname = 'FCKeditorSkin::makeBrokenLinkObj';
 		wfProfileIn( $fname );
 
-		$u = $nt->getFullText();
+	  $u = $nt->getFullText();
+	  //#Updating links tables -> #Updating_links_tables
+	  $u = str_replace("#".$nt->getFragment(), $nt->getFragmentForURL(), $u);
 
 		if ( '' == $text ) {
 			$text = htmlspecialchars( $nt->getPrefixedText() );
@@ -278,10 +336,32 @@ class FCKeditorSkin
 		}
 
 		list( $inside, $trail ) = Linker::splitTrail( $trail );
-		$s = "<a href=\"{$u}\">{$prefix}{$text}{$inside}</a>{$trail}";
+		$title = "{$prefix}{$text}{$inside}";
+
+		$u = preg_replace("/^RTECOLON/", ":", $u);	//change 'RTECOLON' => ':'
+		if( substr($text, 0, 10) == 'RTENOTITLE' ){		//starts with RTENOTITLE
+			$args .= '_fcknotitle="true" ';
+			$title = $u;
+			$trail = substr($text, 10).$trail;
+		}
+		$s = "<a {$args}href=\"{$u}\">{$title}</a>{$trail}";
 
 		wfProfileOut( $fname );
 		return $s;
+	}
+
+	function makeSelfLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
+		$args = '';
+		if ( '' == $text ) {
+			$text = $nt->mDbkeyform;
+		}
+		list( $inside, $trail ) = Linker::splitTrail( $trail );
+		$title = "{$prefix}{$text}";
+		if( $text == 'RTENOTITLE' ){			//2223
+			$args .= '_fcknotitle="true" ';
+			$title = $nt->mDbkeyform;
+		}
+		return "<a {$args}href=\"".$nt->mDbkeyform."\" class=\"selflink\">{$title}</a>{$inside}{$trail}";
 	}
 
 	/**
@@ -299,6 +379,7 @@ class FCKeditorSkin
 			### HOTFIX. Instead of breaking, return empty string.
 			return $text;
 		} else {
+			$args = '';
 			$orginal = $title->getPartialURL();
 			// Mediawiki 1.11
 			if ( function_exists('wfFindFile') ) {
@@ -328,8 +409,13 @@ class FCKeditorSkin
 			if( $text == '' ) {
 				$text = $alt;
 			}
-			$u = htmlspecialchars( $url );
-			return "<a href=\"{$orginal}\" class=\"$class\" _fck_mw_filename=\"{$orginal}\" _fck_mw_type=\"media\" title=\"{$alt}\">{$text}</a>";
+			$orginal = preg_replace("/^RTECOLON/", ":", $orginal);	//change 'RTECOLON' => ':'
+			if( $text == 'RTENOTITLE' ){			//2223
+				$args .= '_fcknotitle="true" ';
+				$text = $orginal;
+				$alt = $orginal;
+			}
+			return "<a href=\"{$orginal}\" class=\"$class\" {$args} _fck_mw_filename=\"{$orginal}\" _fck_mw_type=\"media\" title=\"{$alt}\">{$text}</a>";
 		}
 	}
 
@@ -338,19 +424,23 @@ class FCKeditorSkin
 		if( $escape ) {
 			$text = htmlspecialchars( $text );
 		}
+		$url = preg_replace("/^RTECOLON/", ":", $url);	//change 'RTECOLON' => ':'
 		if ($linktype == 'autonumber') {
 			return '<a href="'.$url.'">[n]</a>';
 		}
-		return '<a href="'.$url.'">'.$text.'</a>';
+		$args = '';
+		if( $text == 'RTENOTITLE' ){								//2223
+			$args .= '_fcknotitle="true" ';
+			$text = $url;
+		}
+		return '<a '.$args.'href="'.$url.'">'.$text.'</a>';
 	}
 
-	function __call( $m, $a)
-	{
+	function __call( $m, $a) {
 		return call_user_func_array( array( $this->skin, $m ), $a );
 	}
 
-	function __construct( &$skin )
-	{
+	function __construct( &$skin ) {
 		$this->skin = $skin;
 	}
 }

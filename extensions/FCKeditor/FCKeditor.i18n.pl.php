@@ -2,6 +2,7 @@
 
 $messages = array(
 'textrichditor' => 'Rich Editor',
+'rich_editor_new_window' => 'Otwórz rich editor w nowym oknie',
 'tog-riched_disable' => 'Wyłącz Rich Editora',
 'tog-riched_disable_ns_main' => 'Wyłącz Rich Editora wewątrz głównej przestrzeni nazw',
 'tog-riched_disable_ns_talk' => 'Wyłącz Rich Editora wewątrz przestrzeni nazw "{{ns:Talk}}"',
@@ -19,4 +20,8 @@ $messages = array(
 'tog-riched_disable_ns_help_talk' => 'Wyłącz Rich Editora wewątrz przestrzeni nazw "{{ns:Help_talk}}"',
 'tog-riched_disable_ns_category' => 'Wyłącz Rich Editora wewątrz przestrzeni nazw "{{ns:Category}}"',
 'tog-riched_disable_ns_category_talk' => 'Wyłącz Rich Editora wewątrz przestrzeni nazw "{{ns:Category_talk}}"',
+'tog-riched_start_disabled' => 'Rich editor domyślnie wyłączony',
+'tog-riched_use_popup' => 'Pozwól otwierać Rich Editor w okienku popup',
+'tog-riched_use_toggle' => 'Pozwól otwierać Rich Editor na żądanie (zastąpi domyślne pole textarea)',
+'tog-riched_toggle_remember_state' => 'Zapamiętuj ostatni stan Rich Editora',
 );

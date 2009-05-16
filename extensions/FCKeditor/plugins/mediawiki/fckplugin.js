@@ -32,36 +32,157 @@
 FCKToolbarItems.RegisterItem( 'Source', new FCKToolbarButton( 'Source', 'Wikitext', null, FCK_TOOLBARITEM_ICONTEXT, true, true, 1 ) ) ;
 
 // Register our toolbar buttons.
-var tbButton = new FCKToolbarButton( 'MW_Template', 'Template', 'Insert/Edit Template' ) ;
+var tbButton = new FCKToolbarButton( 'MW_Template', 'Template',  FCKLang.wikiBtnTemplate || 'Insert/Edit Template') ;
 tbButton.IconPath = FCKConfig.PluginsPath + 'mediawiki/images/tb_icon_template.gif' ;
 FCKToolbarItems.RegisterItem( 'MW_Template', tbButton ) ;
 
-tbButton = new FCKToolbarButton( 'MW_Ref', 'Reference', 'Insert/Edit Reference' ) ;
+//Ref button
+tbButton = new FCKToolbarButton( 'MW_Ref', 'Ref', FCKLang.wikiBtnReference || 'Insert/Edit Reference' ) ;
 tbButton.IconPath = FCKConfig.PluginsPath + 'mediawiki/images/tb_icon_ref.gif' ;
 FCKToolbarItems.RegisterItem( 'MW_Ref', tbButton ) ;
+if ( !FCKConfig.showreferences ) {		//hack to disable MW_Ref  button
+	tbButton.Create = function()		{return 0;}
+	tbButton.Disable  = function()	{return 0;}
+	tbButton.RefreshState  = function()	{return 0;}
+}
 
-tbButton = new FCKToolbarButton( 'MW_Math', 'Formula', 'Insert/Edit Formula' ) ;
+//References button
+var FCKReferences = function( )	{	} ;
+FCKReferences.prototype.GetState = function()	{ return ( FCK.EditMode == FCK_EDITMODE_WYSIWYG ? FCK_TRISTATE_OFF : FCK_TRISTATE_DISABLED) } ;
+FCKCommands.RegisterCommand( 'MW_References', new FCKReferences() ) ;
+tbButton = new FCKToolbarButton( 'MW_References', 'References', FCKLang.wikiBtnReferences || 'Insert <references /> tag', FCK_TOOLBARITEM_ICONTEXT,true, true, 1  );
+tbButton.IconPath = FCKConfig.PluginsPath + 'mediawiki/images/tb_icon_ref.gif' ;
+if ( !FCKConfig.showreferences ) {		//hack to disable MW_References  button
+	tbButton.Create = function()		{return 0;}
+	tbButton.Disable  = function()	{return 0;}
+	tbButton.RefreshState  = function()	{return 0;}
+}
+
+FCKReferences.prototype.Execute = function()
+{
+	if ( FCK.EditMode != FCK_EDITMODE_WYSIWYG )
+		return ;
+
+	FCKUndo.SaveUndoStep() ;
+
+	var e = FCK.EditorDocument.createElement( 'span' ) ;
+	e.setAttribute("_fck_mw_customtag", "true");
+	e.setAttribute("_fck_mw_tagname", "references");
+	e.className = "fck_mw_references";
+
+	oFakeImage = FCK.InsertElement( FCKDocumentProcessor_CreateFakeImage( 'FCK__MWReferences', e ) ) ;
+}
+FCKToolbarItems.RegisterItem( 'MW_References', tbButton ) ;
+
+//Signature button
+var FCKSignature = function( )	{} ;
+FCKSignature.prototype.GetState = function()	{ return ( FCK.EditMode == FCK_EDITMODE_WYSIWYG ? FCK_TRISTATE_OFF : FCK_TRISTATE_DISABLED) } ;
+FCKCommands.RegisterCommand( 'MW_Signature', new FCKSignature() ) ;
+tbButton = new FCKToolbarButton( 'MW_Signature', 'Signature', FCKLang.wikiBtnSignature || 'Insert signature', FCK_TOOLBARITEM_ONLYICON,true, true, 1  );
+tbButton.IconPath = FCKConfig.PluginsPath + 'mediawiki/images/tb_signature.gif' ;
+
+FCKSignature.prototype.Execute = function()
+{
+	if ( FCK.EditMode != FCK_EDITMODE_WYSIWYG )
+		return ;
+
+	FCKUndo.SaveUndoStep() ;
+	var e = FCK.EditorDocument.createElement( 'span' ) ;
+	e.className = "fck_mw_signature";
+
+	oFakeImage = FCK.InsertElement( FCKDocumentProcessor_CreateFakeImage( 'FCK__MWSignature', e ) ) ;
+}
+FCKToolbarItems.RegisterItem( 'MW_Signature', tbButton ) ;
+
+tbButton = new FCKToolbarButton( 'MW_Math', 'Formula', FCKLang.wikiBtnFormula || 'Insert/Edit Formula' ) ;
 tbButton.IconPath = FCKConfig.PluginsPath + 'mediawiki/images/tb_icon_math.gif' ;
 FCKToolbarItems.RegisterItem( 'MW_Math', tbButton ) ;
 
-tbButton = new FCKToolbarButton( 'MW_Special', 'Special Tag', 'Insert/Edit Special Tag' ) ;
+tbButton = new FCKToolbarButton( 'MW_Source', 'Source', FCKLang.wikiBtnSourceCode || 'Insert/Edit Source Code' ) ;
+tbButton.IconPath = FCKConfig.PluginsPath + 'mediawiki/images/tb_icon_source.gif' ;
+FCKToolbarItems.RegisterItem( 'MW_Source', tbButton ) ;
+if ( !FCKConfig.showsource ) {	//hack to disable MW_Source  button
+	tbButton.Create = function()		{return 0;}
+	tbButton.Disable  = function()	{return 0;}
+	tbButton.RefreshState  = function()	{return 0;}
+}
+
+tbButton = new FCKToolbarButton( 'MW_Special', 'Special Tag', FCKLang.wikiBtnSpecial || 'Insert/Edit Special Tag' ) ;
 tbButton.IconPath = FCKConfig.PluginsPath + 'mediawiki/images/tb_icon_special.gif' ;
 FCKToolbarItems.RegisterItem( 'MW_Special', tbButton ) ;
 
+tbButton = new FCKToolbarButton( 'MW_Category', 'Categories', FCKLang.wikiBtnCategories || 'Insert/Edit categories' ) ;
+tbButton.IconPath = FCKConfig.PluginsPath + 'mediawiki/images/tb_icon_category.gif' ;
+FCKToolbarItems.RegisterItem( 'MW_Category', tbButton ) ;
+
 // Override some dialogs.
-FCKCommands.RegisterCommand( 'MW_Template', new FCKDialogCommand( 'MW_Template', 'Template Properties', FCKConfig.PluginsPath + 'mediawiki/dialogs/template.html', 400, 330 ) ) ;
-FCKCommands.RegisterCommand( 'MW_Ref', new FCKDialogCommand( 'MW_Ref', 'Reference Properties', FCKConfig.PluginsPath + 'mediawiki/dialogs/ref.html', 400, 250 ) ) ;
-FCKCommands.RegisterCommand( 'MW_Math', new FCKDialogCommand( 'MW_Math', 'Formula', FCKConfig.PluginsPath + 'mediawiki/dialogs/math.html', 400, 300 ) ) ;
-FCKCommands.RegisterCommand( 'MW_Special', new FCKDialogCommand( 'MW_Special', 'Special Tag Properties', FCKConfig.PluginsPath + 'mediawiki/dialogs/special.html', 400, 330 ) ) ; //YC
+FCKCommands.RegisterCommand( 'MW_Template', new FCKDialogCommand( 'MW_Template', ( FCKLang.wikiCmdTemplate || 'Template Properties' ), FCKConfig.PluginsPath + 'mediawiki/dialogs/template.html', 400, 330 ) ) ;
+FCKCommands.RegisterCommand( 'MW_Ref', new FCKDialogCommand( 'MW_Ref', ( FCKLang.wikiCmdReference || 'Reference Properties' ), FCKConfig.PluginsPath + 'mediawiki/dialogs/ref.html', 400, 250 ) ) ;
+FCKCommands.RegisterCommand( 'MW_Math', new FCKDialogCommand( 'MW_Math', ( FCKLang.wikiCmdFormula || 'Formula' ), FCKConfig.PluginsPath + 'mediawiki/dialogs/math.html', 400, 300 ) ) ;
+FCKCommands.RegisterCommand( 'MW_Special', new FCKDialogCommand( 'MW_Special', ( FCKLang.wikiCmdSpecial || 'Special Tag Properties' ), FCKConfig.PluginsPath + 'mediawiki/dialogs/special.html', 400, 330 ) ) ;
+FCKCommands.RegisterCommand( 'MW_Source', new FCKDialogCommand( 'MW_Source', ( FCKLang.wikiCmdSourceCode || 'Source Code Properties' ), FCKConfig.PluginsPath + 'mediawiki/dialogs/source.html', 720, 380 ) ) ;
 FCKCommands.RegisterCommand( 'Link', new FCKDialogCommand( 'Link', FCKLang.DlgLnkWindowTitle, FCKConfig.PluginsPath + 'mediawiki/dialogs/link.html', 400, 250 ) ) ;
+FCKCommands.RegisterCommand( 'MW_Category', new FCKDialogCommand( 'MW_Category', ( FCKLang.wikiCmdCategories || 'Categories' ), FCKConfig.PluginsPath + 'mediawiki/dialogs/category.html', 400, 500 ) ) ;
 FCKCommands.RegisterCommand( 'Image', new FCKDialogCommand( 'Image', FCKLang.DlgImgTitle, FCKConfig.PluginsPath + 'mediawiki/dialogs/image.html', 450, 300 ) ) ;
 
+FCKToolbarItems.OldGetItem = FCKToolbarItems.GetItem;
+
+FCKToolbarItems.GetItem = function( itemName )
+{
+	var oItem = FCKToolbarItems.LoadedItems[ itemName ] ;
+
+	if ( oItem )
+		return oItem ;
+
+	switch ( itemName )
+	{
+		case 'Bold'			: oItem = new FCKToolbarButton( 'Bold'          , FCKLang.Bold, null, null, true, true, 20 ) ; break ;
+		case 'Italic'		: oItem = new FCKToolbarButton( 'Italic'        , FCKLang.Italic, null, null, true, true, 21 ) ; break ;
+		case 'Underline'	: oItem = new FCKToolbarButton( 'Underline'     , FCKLang.Underline, null, null, true, true, 22 ) ; break ;
+		case 'StrikeThrough': oItem = new FCKToolbarButton( 'StrikeThrough' , FCKLang.StrikeThrough, null, null, true, true, 23 ) ; break ;
+		case 'Link'			: oItem = new FCKToolbarButton( 'Link'          , FCKLang.InsertLinkLbl, FCKLang.InsertLink, null, true, true, 34 ) ; break ;
+
+		default:
+			return FCKToolbarItems.OldGetItem( itemName );
+	}
+
+	FCKToolbarItems.LoadedItems[ itemName ] = oItem ;
+
+	return oItem ;
+}
+
+FCKToolbarButton.prototype.Click = function()
+{
+	var oToolbarButton = this._ToolbarButton || this ;
+
+	// for some buttons, do something else instead...
+	var CMode = false ;
+	if ( oToolbarButton.SourceView && (FCK_EDITMODE_SOURCE == FCK.EditMode) )
+	{
+		if ( !window.parent.popup )
+			var oDoc = window.parent;
+		else
+			var oDoc = window.parent.popup;
+
+		switch (oToolbarButton.CommandName)
+		{
+			case 'Bold' 		: oDoc.FCKeditorInsertTags ('\'\'\'', '\'\'\'', 'Bold text', document) ; CMode = true ; break ;
+			case 'Italic' 		: oDoc.FCKeditorInsertTags ('\'\'', '\'\'', 'Italic text', document) ; CMode = true ; break ;
+			case 'Underline' 	: oDoc.FCKeditorInsertTags ('<u>', '</u>', 'Underlined text', document) ; CMode = true ; break ;
+			case 'StrikeThrough': oDoc.FCKeditorInsertTags ('<strike>', '</strike>', 'Strikethrough text', document) ; CMode = true ; break ;
+			case 'Link' 		: oDoc.FCKeditorInsertTags ('[[', ']]', 'Internal link', document) ; CMode = true ; break ;
+		}
+	}
+
+	if ( !CMode )
+		FCK.ToolbarSet.CurrentInstance.Commands.GetCommand( oToolbarButton.CommandName ).Execute() ;
+}
 
 // MediaWiki Wikitext Data Processor implementation.
 FCK.DataProcessor =
 {
 	_inPre : false,
-	_inLSpace : false,	
+	_inLSpace : false,
 
 	/*
 	 * Returns a string representing the HTML format of "data". The returned
@@ -176,14 +297,14 @@ FCK.DataProcessor =
 				if ( !FCKRegexLib.ElementName.test( sNodeName ) )
 					return ;
 
-				if ( sNodeName == 'br' && ( this._inPre || this._inLSpace ) ) 
+				if ( sNodeName == 'br' && ( this._inPre || this._inLSpace ) )
 				{
 					stringBuilder.push( "\n" ) ;
 					if ( this._inLSpace )
 						stringBuilder.push( " " ) ;
 					return ;
 				}
-					
+
 				// Remove the <br> if it is a bogus node.
 				if ( sNodeName == 'br' && htmlNode.getAttribute( 'type', 2 ) == '_moz' )
 					return ;
@@ -221,8 +342,20 @@ FCK.DataProcessor =
 					if ( basic0 )
 						stringBuilder.push( basic0 ) ;
 
+					var len = stringBuilder.length ;
+
 					if ( !basicElement[2] )
+					{
 						this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
+						// only empty element inside, remove it to avoid quotes
+						if ( ( stringBuilder.length == len || (stringBuilder.length == len + 1 && !stringBuilder[len].length) )
+							&& basicElement[0] && basicElement[0].charAt(0) == "'")
+						{
+							stringBuilder.pop();
+							stringBuilder.pop();
+							return;
+						}
+					}
 
 					if ( basic1 )
 						stringBuilder.push( basic1 ) ;
@@ -251,10 +384,10 @@ FCK.DataProcessor =
 								if ( sLastStr != ";" && sLastStr != ":" && sLastStr != "#" && sLastStr != "*")
  									stringBuilder.push( '\n' + prefix ) ;
 							}
-							
+
 							var parent = htmlNode.parentNode ;
 							var listType = "#" ;
-							
+
 							while ( parent )
 							{
 								if ( parent.nodeName.toLowerCase() == 'ul' )
@@ -272,35 +405,56 @@ FCK.DataProcessor =
 
 								parent = parent.parentNode ;
 							}
-							
+
 							stringBuilder.push( listType ) ;
 							this._AppendChildNodes( htmlNode, stringBuilder, prefix + listType ) ;
-							
+
 							break ;
 
 						case 'a' :
 
+							var pipeline = true;
 							// Get the actual Link href.
 							var href = htmlNode.getAttribute( '_fcksavedurl' ) ;
 							var hrefType		= htmlNode.getAttribute( '_fck_mw_type' ) || '' ;
-							
+
 							if ( href == null )
 								href = htmlNode.getAttribute( 'href' , 2 ) || '' ;
 
 							var isWikiUrl = true ;
-							
+
 							if ( hrefType == "media" )
 								stringBuilder.push( '[[Media:' ) ;
 							else if ( htmlNode.className == "extiw" )
+							{
 								stringBuilder.push( '[[' ) ;
+								var isWikiUrl = true;
+							}
 							else
 							{
 								var isWikiUrl = !( href.StartsWith( 'mailto:' ) || /^\w+:\/\//.test( href ) ) ;
 								stringBuilder.push( isWikiUrl ? '[[' : '[' ) ;
 							}
+							//#2223
+							if (htmlNode.getAttribute( '_fcknotitle' ) && htmlNode.getAttribute( '_fcknotitle' ) == "true")
+							{
+								var testHref = FCKConfig.ProtectedSource.Revert( href, 0 ) ;
+								var testInner = FCKConfig.ProtectedSource.Revert( htmlNode.innerHTML, 0 ) ;
+								if ( href.toLowerCase().StartsWith( 'category:' ) )
+									testInner = 'Category:' + testInner ;
+								if ( testHref.toLowerCase().StartsWith( 'rtecolon' ) )
+									testHref = testHref.replace( /rtecolon/, ":" ) ;
+								testInner = testInner.replace( /&amp;/, "&" ) ;
+								if ( testInner == testHref )
+									pipeline = false ;
+							}
+							if (href.toLowerCase().StartsWith( 'rtecolon' ))		//change 'rtecolon=' => ':' in links
+							{
+								stringBuilder.push(':');
+								href = href.substring(8);
+							}
 							stringBuilder.push( href ) ;
-							//if ( href != htmlNode.innerHTML && htmlNode.innerHTML != '[n]' )
-							if ( htmlNode.innerHTML != '[n]' )
+							if ( pipeline && htmlNode.innerHTML != '[n]' && (!isWikiUrl || href != htmlNode.innerHTML || !href.toLowerCase().StartsWith("category:")))
 							{
 								stringBuilder.push( isWikiUrl? '|' : ' ' ) ;
 								this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
@@ -308,18 +462,18 @@ FCK.DataProcessor =
 							stringBuilder.push( isWikiUrl ? ']]' : ']' ) ;
 
 							break ;
-							
+
 						case 'dl' :
-						
+
 							this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
 							var isFirstLevel = !htmlNode.parentNode.nodeName.IEquals( 'ul', 'ol', 'li', 'dl', 'dd', 'dt' ) ;
 							if ( isFirstLevel && stringBuilder[ stringBuilder.length - 1 ] != "\n" )
 								stringBuilder.push( '\n') ;
-							
+
 							break ;
 
 						case 'dt' :
-						
+
 							if( stringBuilder.length > 1)
 							{
 								var sLastStr = stringBuilder[ stringBuilder.length - 1 ] ;
@@ -328,11 +482,11 @@ FCK.DataProcessor =
 							}
 							stringBuilder.push( ';' ) ;
 							this._AppendChildNodes( htmlNode, stringBuilder, prefix + ";") ;
-							
+
 							break ;
 
 						case 'dd' :
-						
+
 							if( stringBuilder.length > 1)
 							{
 								var sLastStr = stringBuilder[ stringBuilder.length - 1 ] ;
@@ -341,9 +495,9 @@ FCK.DataProcessor =
 							}
 							stringBuilder.push( ':' ) ;
 							this._AppendChildNodes( htmlNode, stringBuilder, prefix + ":" ) ;
-							
+
 							break ;
-							
+
 						case 'table' :
 
 							var attribs = this._GetAttributesStr( htmlNode ) ;
@@ -374,7 +528,7 @@ FCK.DataProcessor =
 									attribs = this._GetAttributesStr( htmlNode.rows[r].cells[c] ) ;
 
 									if ( htmlNode.rows[r].cells[c].tagName.toLowerCase() == "th" )
-										stringBuilder.push( '!' ) ; 
+										stringBuilder.push( '!' ) ;
 									else
 										stringBuilder.push( '|' ) ;
 
@@ -413,9 +567,23 @@ FCK.DataProcessor =
 							var imgLocation	= htmlNode.getAttribute( '_fck_mw_location' ) || '' ;
 							var imgWidth	= htmlNode.getAttribute( '_fck_mw_width' ) || '' ;
 							var imgHeight	= htmlNode.getAttribute( '_fck_mw_height' ) || '' ;
+							var imgStyleWidth	= ( parseInt(htmlNode.style.width) || '' ) + '' ;
+							var imgStyleHeight	= ( parseInt(htmlNode.style.height) || '' ) + '' ;
+							var imgRealWidth	= ( htmlNode.getAttribute( 'width' ) || '' ) + '' ;
+							var imgRealHeight	= ( htmlNode.getAttribute( 'height' ) || '' ) + '' ;
 
-							stringBuilder.push( '[[Image:' )
-							stringBuilder.push( imgName )
+							stringBuilder.push( '[[Image:' ) ;
+							stringBuilder.push( imgName ) ;
+
+							if ( imgStyleWidth.length > 0 )
+								imgWidth = imgStyleWidth ;
+							else if ( imgWidth.length > 0 && imgRealWidth.length > 0 )
+								imgWidth = imgRealWidth ;
+
+							if ( imgStyleHeight.length > 0 )
+								imgHeight = imgStyleHeight ;
+							else if ( imgHeight.length > 0 && imgRealHeight.length > 0 )
+								imgHeight = imgRealHeight ;
 
 							if ( imgType.length > 0 )
 								stringBuilder.push( '|' + imgType ) ;
@@ -436,13 +604,23 @@ FCK.DataProcessor =
 							if ( imgCaption.length > 0 )
 								stringBuilder.push( '|' + imgCaption ) ;
 
-							stringBuilder.push( ']]' )
+							stringBuilder.push( ']]' ) ;
 
 							break ;
 
 						case 'span' :
 							switch ( htmlNode.className )
 							{
+								case 'fck_mw_source' :
+									var refLang = htmlNode.getAttribute( 'lang' ) ;
+
+									stringBuilder.push( '<source' ) ;
+									stringBuilder.push( ' lang="' + refLang + '"' ) ;
+									stringBuilder.push( '>' ) ;
+									stringBuilder.push( FCKTools.HTMLDecode(htmlNode.innerHTML).replace(/fckLR/g,'\r\n') ) ;
+									stringBuilder.push( '</source>' ) ;
+									return ;
+
 								case 'fck_mw_ref' :
 									var refName = htmlNode.getAttribute( 'name' ) ;
 
@@ -465,16 +643,24 @@ FCK.DataProcessor =
 									stringBuilder.push( '<references />' ) ;
 									return ;
 
+								case 'fck_mw_signature' :
+									stringBuilder.push( FCKConfig.WikiSignature ) ;
+									return ;
+
 								case 'fck_mw_template' :
 									stringBuilder.push( FCKTools.HTMLDecode(htmlNode.innerHTML).replace(/fckLR/g,'\r\n') ) ;
 									return ;
-								
+
 								case 'fck_mw_magic' :
 									stringBuilder.push( htmlNode.innerHTML ) ;
 									return ;
 
 								case 'fck_mw_nowiki' :
 									sNodeName = 'nowiki' ;
+									break ;
+
+								case 'fck_mw_html' :
+									sNodeName = 'html' ;
 									break ;
 
 								case 'fck_mw_includeonly' :
@@ -488,10 +674,10 @@ FCK.DataProcessor =
 								case 'fck_mw_gallery' :
 									sNodeName = 'gallery' ;
 									break ;
-									
+
 								case 'fck_mw_onlyinclude' :
 									sNodeName = 'onlyinclude' ;
-									
+
 									break ;
 							}
 
@@ -501,15 +687,26 @@ FCK.DataProcessor =
 
 						case 'pre' :
 							var attribs = this._GetAttributesStr( htmlNode ) ;
-							
+
 							if ( htmlNode.className == "_fck_mw_lspace")
 							{
 								stringBuilder.push( "\n " ) ;
 								this._inLSpace = true ;
 								this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
 								this._inLSpace = false ;
-								if ( !stringBuilder[stringBuilder.length-1].EndsWith("\n") )
-									stringBuilder.push( "\n" ) ;
+								var len = stringBuilder.length ;
+								if ( len>1 ) {
+									var tail = stringBuilder[len-2] + stringBuilder[len-1];
+									if ( len>2 ) {
+										tail = stringBuilder[len-3] + tail ;
+									}
+									if (tail.EndsWith("\n ")) {
+										stringBuilder[len-1] = stringBuilder[len-1].replace(/ $/, "");
+									}
+									else if ( !tail.EndsWith("\n") ) {
+										stringBuilder.push( "\n" ) ;
+									}
+								}
 							}
 							else
 							{
@@ -518,17 +715,21 @@ FCK.DataProcessor =
 
 								if ( attribs.length > 0 )
 									stringBuilder.push( attribs ) ;
+								if(htmlNode.innerHTML == "")
+									stringBuilder.push( ' />' ) ;
+								else
+								{
+									stringBuilder.push( '>' ) ;
+									this._inPre = true ;
+									this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
+									this._inPre = false ;
 
-								stringBuilder.push( '>' ) ;
-								this._inPre = true ;
-								this._AppendChildNodes( htmlNode, stringBuilder, prefix ) ;
-								this._inPre = false ;
-
-								stringBuilder.push( '<\/' ) ;
-								stringBuilder.push( sNodeName ) ;
-								stringBuilder.push( '>' ) ;
+									stringBuilder.push( '<\/' ) ;
+									stringBuilder.push( sNodeName ) ;
+									stringBuilder.push( '>' ) ;
+								}
 							}
-						
+
 							break ;
 						default :
 							var attribs = this._GetAttributesStr( htmlNode ) ;
@@ -554,17 +755,24 @@ FCK.DataProcessor =
 			// Text Node.
 			case 3 :
 
-				var parentIsSpecialTag = htmlNode.parentNode.getAttribute( '_fck_mw_customtag' ) ; 
+				var parentIsSpecialTag = htmlNode.parentNode.getAttribute( '_fck_mw_customtag' ) ;
 				var textValue = htmlNode.nodeValue;
-	
-				if ( !parentIsSpecialTag ) 
+				if ( !parentIsSpecialTag )
 				{
 					if ( FCKBrowserInfo.IsIE && this._inLSpace ) {
-						textValue = textValue.replace(/\r/, "\r ") ;
+						textValue = textValue.replace( /\r/g, "\r " ) ;
+						if (textValue.EndsWith( "\r " )) {
+							textValue = textValue.replace( /\r $/, "\r" );
+						}
 					}
-					
-					textValue = textValue.replace( /[\n\t]/g, ' ' ) ; 
-	
+					if ( !FCKBrowserInfo.IsIE && this._inLSpace ) {
+						textValue = textValue.replace( /\n(?! )/g, "\n " ) ;
+					}
+
+					if (!this._inLSpace && !this._inPre) {
+						textValue = textValue.replace( /[\n\t]/g, ' ' ) ;
+					}
+
 					textValue = FCKTools.HTMLEncode( textValue ) ;
 					textValue = textValue.replace( /\u00A0/g, '&nbsp;' ) ;
 
@@ -582,14 +790,30 @@ FCK.DataProcessor =
 
 					if ( this._inLSpace && textValue.length == 1 && textValue.charCodeAt(0) == 13 )
 						textValue = textValue + " " ;
-					if ( this._IsInsideCell )
+
+					if ( !this._inLSpace && !this._inPre && textValue == " " ) {
+						var len = stringBuilder.length;
+						if (len > 1) {
+							var tail = stringBuilder[len-2] + stringBuilder[len-1];
+							if ( tail.toString().EndsWith( "\n" ) )
+								textValue = "";
+						}
+					}
+
+					if ( this._IsInsideCell ) {
+						var result, linkPattern = new RegExp( "\\[\\[.*?\\]\\]", "g" ) ;
+						while( result = linkPattern.exec( textValue ) ) {
+							textValue = textValue.replace( result, result.toString().replace( /\|/g, "<!--LINK_PIPE-->" ) ) ;
+						}
 						textValue = textValue.replace( /\|/g, '&#124;' ) ;
+						textValue = textValue.replace( /<!--LINK_PIPE-->/g, '|' ) ;
+					}
 				}
-				else 
+				else
 				{
 					textValue = FCKTools.HTMLDecode(textValue).replace(/fckLR/g,'\r\n');
 				}
-				
+
 				stringBuilder.push( textValue ) ;
 				return ;
 
@@ -659,7 +883,13 @@ FCK.DataProcessor =
 				else
 					sAttValue = htmlNode.getAttribute( sAttName, 2 ) ;	// We must use getAttribute to get it exactly as it is defined.
 
-				attStr += ' ' + sAttName + '="' + String(sAttValue).replace( '"', '&quot;' ) + '"' ;
+				// leave templates
+				if ( sAttName.StartsWith( '{{' ) && sAttName.EndsWith( '}}' ) ) {
+					attStr += ' ' + sAttName ;
+				}
+				else {
+					attStr += ' ' + sAttName + '="' + String(sAttValue).replace( '"', '&quot;' ) + '"' ;
+				}
 			}
 		}
 		return attStr ;
@@ -670,42 +900,105 @@ FCK.DataProcessor =
 // switching from Wikitext.
 (function()
 {
+	if (window.parent.showFCKEditor & (2|4))				//if popup or toggle link
+	{
+		var original_ULF = FCK.UpdateLinkedField ;
+		FCK.UpdateLinkedField = function(){
+			if (window.parent.showFCKEditor & 1)			//only if editor is up-to-date
+			{
+				original_ULF.apply();
+			}
+		}
+	}
 	var original = FCK.SwitchEditMode ;
-
+	window.parent.oFCKeditor.ready = true;
 	FCK.SwitchEditMode = function()
 	{
 		var args = arguments ;
-
+		window.parent.oFCKeditor.ready = false;
 		var loadHTMLFromAjax = function( result )
 		{
 			FCK.EditingArea.Textarea.value = result.responseText ;
 			original.apply( FCK, args ) ;
+			window.parent.oFCKeditor.ready = true;
 		}
+		var edittools_markup = parent.document.getElementById ('editpage-specialchars') ;
 
 		if ( FCK.EditMode == FCK_EDITMODE_SOURCE )
 		{
 			// Hide the textarea to avoid seeing the code change.
 			FCK.EditingArea.Textarea.style.visibility = 'hidden' ;
-
 			var loading = document.createElement( 'span' ) ;
-			loading.innerHTML = '&nbsp;Loading Wikitext. Please wait...&nbsp;' ;
+			loading.innerHTML = '&nbsp;'+ (FCKLang.wikiLoadingWikitext || 'Loading Wikitext. Please wait...' )+'&nbsp;';
 			loading.style.position = 'absolute' ;
 			loading.style.left = '5px' ;
 //			loading.style.backgroundColor = '#ff0000' ;
 			FCK.EditingArea.Textarea.parentNode.appendChild( loading, FCK.EditingArea.Textarea ) ;
+			// if we have a standard Edittools div, hide the one containing wikimarkup
+			if (edittools_markup) {
+				edittools_markup.style.display = 'none' ;
+			}
 
 			// Use Ajax to transform the Wikitext to HTML.
-			window.parent.sajax_request_type = 'POST' ;
-			window.parent.sajax_do_call( 'wfSajaxWikiToHTML', [FCK.EditingArea.Textarea.value], loadHTMLFromAjax ) ;
+			if( window.parent.popup ){
+				window.parent.popup.parent.FCK_sajax( 'wfSajaxWikiToHTML', [FCK.EditingArea.Textarea.value], loadHTMLFromAjax ) ;
+			}
+			else{
+				window.parent.FCK_sajax( 'wfSajaxWikiToHTML', [FCK.EditingArea.Textarea.value], loadHTMLFromAjax ) ;
+			}
 		}
-		else
+		else {
 			original.apply( FCK, args ) ;
+			if (edittools_markup) {
+				edittools_markup.style.display = '' ;
+			}
+			window.parent.oFCKeditor.ready = true;
+		}
 	}
 })() ;
 
 // MediaWiki document processor.
 FCKDocumentProcessor.AppendNew().ProcessDocument = function( document )
 {
+	// #1011: change signatures to SPAN elements
+	var aTextNodes = document.getElementsByTagName( '*' ) ;
+	var i = 0 ;
+	var signatureRegExp = new RegExp( FCKConfig.WikiSignature.replace( /([*:.*?();|$])/g, "\\$1" ), "i" );
+	while (element = aTextNodes[i++])
+	{
+		var nodes = element.childNodes ;
+		var j = 0 ;
+		while ( node = nodes[j++] )
+		{
+			if ( node.nodeType == 3 )
+			{//textNode
+				var index = 0 ;
+
+				while ( aSignatures = node.nodeValue.match( signatureRegExp ) )
+				{
+					index = node.nodeValue.indexOf( aSignatures[0] ) ;
+					if ( index != -1 )
+					{
+						var e = FCK.EditorDocument.createElement( 'span' ) ;
+						e.className = "fck_mw_signature";
+						var oFakeImage = FCKDocumentProcessor_CreateFakeImage( 'FCK__MWSignature', e ) ;
+
+						var substr1 = FCK.EditorDocument.createTextNode( node.nodeValue.substring(0, index) ) ;
+						var substr2 = FCK.EditorDocument.createTextNode( node.nodeValue.substring(index + aSignatures[0].length) ) ;
+
+						node.parentNode.insertBefore( substr1, node ) ;
+						node.parentNode.insertBefore( oFakeImage, node ) ;
+						node.parentNode.insertBefore( substr2, node ) ;
+
+						node.parentNode.removeChild( node ) ;
+						if ( node )
+							node.nodeValue = '' ;
+					}
+				}
+			}
+		}
+	}
+
 	// Templates and magic words.
 	var aSpans = document.getElementsByTagName( 'SPAN' ) ;
 
@@ -716,8 +1009,11 @@ FCKDocumentProcessor.AppendNew().ProcessDocument = function( document )
 		var className = null ;
 		switch ( eSpan.className )
 		{
+			case 'fck_mw_source' :
+				className = 'FCK__MWSource' ;
 			case 'fck_mw_ref' :
-				className = 'FCK__MWRef' ;
+				if (className == null)
+					className = 'FCK__MWRef' ;
 			case 'fck_mw_references' :
 				if ( className == null )
 					className = 'FCK__MWReferences' ;
@@ -736,6 +1032,9 @@ FCKDocumentProcessor.AppendNew().ProcessDocument = function( document )
 			case 'fck_mw_nowiki' :
 				if ( className == null )
 					className = 'FCK__MWNowiki' ;
+			case 'fck_mw_html' :
+				if ( className == null )
+					className = 'FCK__MWHtml' ;
 			case 'fck_mw_includeonly' :
 				if ( className == null )
 					className = 'FCK__MWIncludeonly' ;
@@ -748,7 +1047,7 @@ FCKDocumentProcessor.AppendNew().ProcessDocument = function( document )
 			case 'fck_mw_onlyinclude' :
 				if ( className == null )
 					className = 'FCK__MWOnlyinclude' ;
-					
+
 				var oImg = FCKDocumentProcessor_CreateFakeImage( className, eSpan.cloneNode(true) ) ;
 				oImg.setAttribute( '_' + eSpan.className, 'true', 0 ) ;
 
@@ -757,8 +1056,23 @@ FCKDocumentProcessor.AppendNew().ProcessDocument = function( document )
 			break ;
 		}
 	}
-	
-	// Templates and magic words.
+
+	// Math tags without Tex.
+	var aImgs = document.getElementsByTagName( 'IMG' ) ;
+	var eImg ;
+	i = aImgs.length - 1 ;
+	while ( i >= 0 && ( eImg = aImgs[i--] ) )
+	{
+		var className = null ;
+		switch ( eImg.className )
+		{
+			case 'FCK__MWMath' :
+				eImg.src = FCKConfig.PluginsPath + 'mediawiki/images/icon_math.gif' ;
+			break ;
+		}
+	}
+
+	// InterWiki / InterLanguage links
 	var aHrefs = document.getElementsByTagName( 'A' ) ;
 	var a ;
 	var i = aHrefs.length - 1 ;
@@ -766,8 +1080,19 @@ FCKDocumentProcessor.AppendNew().ProcessDocument = function( document )
 	{
 		if (a.className == 'extiw')
 		{
-			 a.href = a.innerHTML = ":" + a.title ;
-			 a.setAttribute( '_fcksavedurl', ":" + a.title ) ;
+			 a.href = a.title ;
+			 a.setAttribute( '_fcksavedurl', a.href ) ;
+		}
+		else
+		{
+			if (a.href.toLowerCase().StartsWith( 'rtecolon' ))
+			{
+				a.href = ":" + a.href.substring(8);
+				if (a.innerHTML.toLowerCase().StartsWith( 'rtecolon' ))
+				{
+					a.innerHTML = a.innerHTML.substring(8);
+				}
+			}
 		}
 	}
 }
@@ -781,27 +1106,37 @@ FCK.ContextMenu.RegisterListener({
 			if ( tag.getAttribute( '_fck_mw_template' ) )
 			{
 				contextMenu.AddSeparator() ;
-				contextMenu.AddItem( 'MW_Template', 'Template Properties' ) ;
+				contextMenu.AddItem( 'MW_Template', FCKLang.wikiMnuTemplate || 'Template Properties' ) ;
 			}
 			if ( tag.getAttribute( '_fck_mw_magic' ) )
 			{
 				contextMenu.AddSeparator() ;
-				contextMenu.AddItem( 'MW_MagicWord', 'Modify Magic Word' ) ;
+				contextMenu.AddItem( 'MW_MagicWord', FCKLang.wikiMnuMagicWord || 'Modify Magic Word' ) ;
 			}
 			if ( tag.getAttribute( '_fck_mw_ref' ) )
 			{
 				contextMenu.AddSeparator() ;
-				contextMenu.AddItem( 'MW_Ref', 'Reference Properties' ) ;
+				contextMenu.AddItem( 'MW_Ref', FCKLang.wikiMnuReference || 'Reference Properties' ) ;
+			}
+			if ( tag.getAttribute( '_fck_mw_html' ) )
+			{
+				contextMenu.AddSeparator() ;
+				contextMenu.AddItem( 'MW_Special', 'Edit HTML code' ) ;
+			}
+			if ( tag.getAttribute( '_fck_mw_source' ) )
+			{
+				contextMenu.AddSeparator() ;
+				contextMenu.AddItem( 'MW_Source', FCKLang.wikiMnuSourceCode || 'Source Code Properties' ) ;
 			}
 			if ( tag.getAttribute( '_fck_mw_math' ) )
 			{
 				contextMenu.AddSeparator() ;
-				contextMenu.AddItem( 'MW_Math', 'Edit Formula' ) ;
+				contextMenu.AddItem( 'MW_Math', FCKLang.wikiMnuFormula || 'Edit Formula' ) ;
 			}
 			if ( tag.getAttribute( '_fck_mw_special' ) || tag.getAttribute( '_fck_mw_nowiki' ) || tag.getAttribute( '_fck_mw_includeonly' ) || tag.getAttribute( '_fck_mw_noinclude' ) || tag.getAttribute( '_fck_mw_onlyinclude' ) || tag.getAttribute( '_fck_mw_gallery' )) //YC
 			{
 				contextMenu.AddSeparator() ;
-				contextMenu.AddItem( 'MW_Special', 'Special Tag Properties' ) ;
+				contextMenu.AddItem( 'MW_Special', FCKLang.wikiMnuSpecial || 'Special Tag Properties' ) ;
 			}
 		}
 	}

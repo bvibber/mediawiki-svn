@@ -1,7 +1,7 @@
 <?php
 
 $messages = array(
-'textrichditor' => 'Rich editor',
+'textrichditor' => 'Rich Editor',
 'tog-riched_disable' => 'Disable rich editor',
 'tog-riched_disable_ns_main' => 'Disable rich editor within the main namespace',
 'tog-riched_disable_ns_talk' => 'Disable rich editor within the "{{ns:Talk}}" namespace',
@@ -19,4 +19,9 @@ $messages = array(
 'tog-riched_disable_ns_help_talk' => 'Disable rich editor within the "{{ns:Help_talk}}" namespace',
 'tog-riched_disable_ns_category' => 'Disable rich editor within the "{{ns:Category}}" namespace',
 'tog-riched_disable_ns_category_talk' => 'Disable rich editor within the "{{ns:Category_talk}}" namespace',
+'rich_editor_new_window' => 'Open Rich editor in new window',
+'tog-riched_start_disabled' => 'Start with rich editor disabled',
+'tog-riched_use_popup' => 'Open rich editor in a popup',
+'tog-riched_use_toggle' => 'Use toggle to switch between wikitext and rich editor (replace textarea with rich editor)',
+'tog-riched_toggle_remember_state' => 'Remember last toggle state',
 );

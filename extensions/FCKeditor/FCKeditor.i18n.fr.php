@@ -19,4 +19,9 @@ $messages = array(
 	'tog-riched_disable_ns_help_talk' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Help_talk}}\'\'.',
 	'tog-riched_disable_ns_category' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Category}}\'\'.',
 	'tog-riched_disable_ns_category_talk' => 'Désactiver \'\'Rich Editor\'\' dans l\'espace de noms \'\'{{ns:Category_talk}}\'\'.',
+	'rich_editor_new_window' => 'Ouvrir "Rich Editor" dans une nouvelle fenêtre',
+	'tog-riched_start_disabled' => 'Démarrer avec le "Rich Editor" désactive',
+	'tog-riched_use_popup' => 'Ouvrir "Rich Editor" dans une popup',
+	'tog-riched_use_toggle' => 'Donner la possibilité de changer entre l\'éditeur original WikiText et "Rich Editor"',
+	'tog-riched_toggle_remember_state' => 'Se souvenir de la dernière selection du éditeur',
 );
