@@ -1,8 +1,10 @@
 #!/bin/sh
-cd ../../installer
 
 revision="48811"
 echo $revision
+
+cd /usr/local/wikiation/installer
+
 
 #CentralAuth and GlobalBlocking fail ... global ?
 
@@ -86,4 +88,11 @@ echo $revision
 ./installer.py install naive:UsernameBlacklist in WMF_testsystem
 ./installer.py install naive:WikimediaMessages in WMF_testsystem
 
+php /var/www/revisions/WMF_testsystem/maintenance/parserTests.php --quiet --quick
+
+cd /usr/local/wikiation/wikiation_exttest
+
+./wikiation_exttest.py --xmlfile ../tests/ImageMap/WETE.xml
+
+cd /usr/local/wikiation/util/environment
 
