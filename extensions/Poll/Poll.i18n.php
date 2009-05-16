@@ -42,6 +42,12 @@ $messages['en'] = array(
 	'poll-change-right-error' => 'You must be the creater of the Poll or have the "poll-admin" right to change this Poll',
 	'poll-change-block-error' => 'You are not allowed to change a poll because you use a blocked user',
 	'poll-change-pass' => 'Changed!',
+	'poll-number-poll' => 'Number of Votes',
+	'poll-title-delete' => 'Delete Poll',
+	'poll-delete-question' => 'Do you really want to delete the Poll "$1"?',
+	'poll-delete-right-error' => 'You must be the creater of the Poll or have the "poll-admin" right to delete this Poll',
+	'poll-delete-block-error' => 'You are not allowed to delete a poll because you use a blocked user',
+	'poll-delete-pass' => 'Deleted!',
 );
 
 /** German (Deutsch)
@@ -78,4 +84,10 @@ $messages['de'] = array(
 	'poll-change-right-error' => 'Du musst der Autor dieser Umfrage sein oder die "poll-admin"-Gruppenberechtigung haben, um diese Umfrage zu ändern',
 	'poll-change-block-error' => 'Leider darfst du keine Umfrage ändern, weil du einen gesperten Benutzer benutzt',
 	'poll-change-pass' => 'Umfrage erfolgreich geändert!',
+	'poll-number-poll' => 'Anzahl der abgegebenen Stimmen',
+	'poll-title-delete' => 'Umfrage löschen',
+	'poll-delete-question' => 'Möchtest du wirklich die Umfrage "$1" löschen?',
+	'poll-delete-right-error' => 'Du musst der Autor dieser Umfrage sein oder die "poll-admin"-Gruppenberechtigung haben, um diese Umfrage zu löschen',
+	'poll-delete-block-error' => 'Leider darfst du keine Umfrage löschen, weil du einen gesperten Benutzer benutzt',
+	'poll-delete-pass' => 'Umfrage erfolgreich gelöscht',
 );
