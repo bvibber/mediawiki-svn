@@ -28,10 +28,14 @@ This overview provides easy access to the system message pages that define each 
 	'plotters-uses'      => 'Uses',
 	'plotters-missing-script'      => 'No script was defined.',
 	'plotters-missing-arguments'      => 'No arguments specified.',
-	'plotters-excessively-long-scriptname'      => 'The script name is too long. Please define a script, the name of which is 255 characters long at most.',
-	'plotters-excessively-long-preprocessorname'      => 'The preprocessor name is too long. Please define a preprocessor, the name of which is 255 characters long at most.',
-	'plotters-excessively-long-name'      => 'The plot name is too long. Please define a plot name that has 255 characters at most.',
-	'plotters-excessively-long-tableclass'      => 'The tableclass is too long. Please define a tableclass that has 255 characters at most.',
+	'plotters-excessively-long-scriptname'      => 'The script name is too long.
+Please define a script, the name of which is 255 characters long at most.',
+	'plotters-excessively-long-preprocessorname'      => 'The preprocessor name is too long.
+Please define a preprocessor, the name of which is 255 characters long at most.',
+	'plotters-excessively-long-name'      => 'The plot name is too long.
+Please define a plot name that has 255 characters at most.',
+	'plotters-excessively-long-tableclass'      => 'The tableclass is too long.
+Please define a tableclass that has 255 characters at most.',
 	'plotters-no-data'      => 'No data was provided.',
 	'plotters-invalid-renderer'      => 'An invalid renderer was selected.',
 	'plotters-errors'      => 'Plotters {{PLURAL:$1|error|errors}}:',
