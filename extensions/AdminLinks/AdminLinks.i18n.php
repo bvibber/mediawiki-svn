@@ -23,7 +23,7 @@ $messages['en'] = array(
 	'adminlinks_createuser' => 'Create a user',
 	'adminlinks_browsesearch' => 'Browsing and searching',
 	'adminlinks_importexport' => 'Importing and exporting',
-	'right-adminlinks' => 'See the link to [[Special:AdminLinks]]',
+	'right-adminlinks' => 'See the link to [[Special:AdminLinks|Admin links]]',
 );
 
 /** Message documentation (Message documentation)
