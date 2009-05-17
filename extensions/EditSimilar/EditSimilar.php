@@ -5,6 +5,7 @@
  * @file
  * @ingroup Extensions
  * @author Bartek Łapiński <bartek@wikia-inc.com>
+ * @author Łukasz Garczewski (TOR) <tor@wikia-inc.com>
  * @copyright Copyright © 2008, Wikia Inc.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
@@ -12,10 +13,9 @@
 if( !defined( 'MEDIAWIKI' ) )
 	die( "This is not a valid entry point.\n" );
 
-global $wgExtensionFunctions;
-
-$dir = dirname(__FILE__);
-$wgExtensionMessagesFiles['EditSimilar'] = $dir . '/EditSimilar.i18n.php';
+// Internationalization file
+$dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles['EditSimilar'] = $dir . 'EditSimilar.i18n.php';
 
 // maximum number of results to choose from
 $wgEditSimilarMaxResultsPool = 50;
@@ -26,13 +26,17 @@ $wgEditSimilarMaxResultsToDisplay = 3;
 // show message per specified number of edits
 $wgEditSimilarCounterValue = 1;
 
-$wgExtensionFunctions[] = 'wfEditSimilarSetup';
+// Hooked functions
+$wgHooks['ArticleSaveComplete'][] = 'wfEditSimilarCheck';
+$wgHooks['OutputPageBeforeHTML'][] = 'wfEditSimilarViewMesg';
+$wgHooks['GetPreferences'][] = 'wfEditSimilarToggle';
 
+// Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'EditSimilar',
-	'version' => '1.17',
-	'author' => array( 'Bartek Łapiński', "Łukasz 'TOR' Garczewski" ),
+	'version' => '1.18',
+	'author' => array( 'Bartek Łapiński', 'Łukasz Garczewski' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:EditSimilar',
 	'description' => 'Encourages users to edit an article similar (by categories) to the one they just had edited.',
 	'descriptionmsg' => 'editsimilar-desc',
@@ -279,20 +283,8 @@ class EditSimilar {
 
 	// message box wrapper
 	static public function showMessage( $text ) {
-		global $wgOut, $wgUser, $wgScript;
-		$wgOut->addHTML( "
-			<style type=\"text/css\">
-				.editsimilar {
-					background-color: #c0fec0;
-					border: solid 1px #006400;
-				}
-
-				.editsimilar_dismiss {
-					float:right;
-					font-size:0.9em;
-				}
-			</style>
-		");
+		global $wgOut, $wgUser, $wgScript, $wgScriptPath;
+		$wgOut->addExtensionStyle( $wgScriptPath . '/extensions/EditSimilar/EditSimilar.css' );
 		if( $wgUser->isLoggedIn() ) {
 			$link = '<div class="editsimilar_dismiss">[<span class="plainlinks"><a href="' . $wgScript .  '?title=Special:Preferences#prefsection-4" id="editsimilar_preferences">' . wfMsg( 'editsimilar-link-disable' ) . '</a></span>]</div><div style="display:block">&nbsp;</div>';
 		} else {
@@ -319,19 +311,9 @@ class EditSimilar {
 	}
 }
 
-function wfEditSimilarSetup() {
-	global $wgHooks, $wgUser;
-	$wgHooks['ArticleSaveComplete'][] = 'wfEditSimilarCheck';
-	$wgHooks['OutputPageBeforeHTML'][] = 'wfEditSimilarViewMesg';
-	if ( $wgUser->isLoggedIn() ) {
-		$wgHooks['getEditingPreferencesCustomHtml'][] = 'wfEditSimilarPrefCustomHtml';
-		$wgHooks['UserToggles'][] = 'wfEditSimilarToggle';
-	}
-}
-
 // check if we had the extension enabled at all and if this is in a content namespace
 function wfEditSimilarCheck( $article ) {
-	global $wgOut, $wgUser, $wgContentNamespaces;
+	global $wgUser, $wgContentNamespaces;
 
 	$namespace = $article->getTitle()->getNamespace();
 	if ( ( 1 == $wgUser->getOption( 'edit-similar', 1 ) ) && ( in_array( $namespace, $wgContentNamespaces ) ) ) {
@@ -381,24 +363,19 @@ function wfEditSimilarViewMesg( &$out ) {
 	return true;
 }
 
-// a customized version of getToggle from SpecialPreferences
-// this one uses getOption with a default - so we can have it checked if unset
-function wfEditSimilarPrefCustomHtml( $prefsForm ) {
+/**
+ * Adds the new toggle to Special:Preferences for enabling EditSimilar extension on a per-user basis
+ *
+ * @param $user User object
+ * @param $preferences Preferences object
+ * @return true
+ */
+function wfEditSimilarToggle( $user, &$preferences ) {
 	wfLoadExtensionMessages( 'EditSimilar' );
-	global $wgOut, $wgUser, $wgLang;
-	$tname = 'edit-similar';
-	$prefsForm->mUsedToggles[$tname] = true;
-	$ttext = $wgLang->getUserToggle( $tname );
-	// the catch lies here
-	$checked = $wgUser->getOption( $tname, 1 ) == 1 ? ' checked="checked"' : '';
-
-	$wgOut->addHTML( "<div class='toggle'><input type='checkbox' value='1' id=\"$tname\" name=\"wpOp$tname\"$checked />" .
-                        " <span class='toggletext'><label for=\"$tname\">$ttext</label></span></div>\n" );
-	return true;
-}
-
-function wfEditSimilarToggle( $toggles ) {
-	wfLoadExtensionMessages( 'EditSimilar' );
-	$toggles['edit-similar'] = 'edit-similar';
+	$preferences['edit-similar'] = array(
+		'type' => 'toggle',
+		'section' => 'editing',
+		'label-message' => 'tog-edit-similar',
+	);
 	return true;
 }
