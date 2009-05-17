@@ -349,8 +349,8 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 			'{' => array(
 				'end'=>'}',
 				'cb' => array(
-					2 => array( 'FCKeditorParser', 'fck_leaveTemplatesAlone' ),
-					3 => array( 'FCKeditorParser', 'fck_leaveTemplatesAlone' ),
+					2 => array( $this, 'fck_leaveTemplatesAlone' ),
+					3 => array( $this, 'fck_leaveTemplatesAlone' ),
 				),
 				'min' => 2,
 				'max' => 3,

@@ -146,7 +146,7 @@ class FCKeditor_MediaWiki {
 		return true;
 	}
 
-	public function onCustomEditor( &$article, &$user ) {
+	public function onCustomEditor( $article, $user ) {
 		global $wgRequest, $mediaWiki;
 
 		$action = $mediaWiki->getVal( 'Action' );
@@ -239,31 +239,31 @@ class FCKeditor_MediaWiki {
 
 		$preferences['riched_disable'] = array(
 			'type' => 'toggle',
-			'section' => 'editing',
+			'section' => 'editing/fckeditor',
 			'label-message' => 'tog-riched_disable',
 		);
 
 		$preferences['riched_start_disabled'] = array(
 			'type' => 'toggle',
-			'section' => 'editing',
+			'section' => 'editing/fckeditor',
 			'label-message' => 'tog-riched_start_disabled',
 		);
 
 		$preferences['riched_use_popup'] = array(
 			'type' => 'toggle',
-			'section' => 'editing',
+			'section' => 'editing/fckeditor',
 			'label-message' => 'tog-riched_use_popup',
 		);
 
 		$preferences['riched_use_toggle'] = array(
 			'type' => 'toggle',
-			'section' => 'editing',
+			'section' => 'editing/fckeditor',
 			'label-message' => 'tog-riched_use_toggle',
 		);
 
 		$preferences['riched_toggle_remember_state'] = array(
 			'type' => 'toggle',
-			'section' => 'editing',
+			'section' => 'editing/fckeditor',
 			'label-message' => 'tog-riched_toggle_remember_state',
 		);
 
@@ -283,7 +283,7 @@ class FCKeditor_MediaWiki {
 		foreach( self::$nsToggles as $newToggle ){
 			$preferences[$newToggle] = array(
 				'type' => 'toggle',
-				'section' => 'editing',
+				'section' => 'editing/fckeditor',
 				'label-message' => 'tog-' . $newToggle
 			);
 		}
