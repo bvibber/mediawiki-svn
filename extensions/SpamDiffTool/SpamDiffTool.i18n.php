@@ -732,6 +732,8 @@ $messages['lb'] = array(
 	'spamdifftool' => 'Gestioun vun der schwaarzer Lëscht vum Spam',
 	'spamdifftool-desc' => "Gëtt d'Méiglechkeet fir aus de Versiounsënnerscheeder nei Elementer op déi schwaarz Lëscht vum Spam derbäizesetzen",
 	'spamdifftool_cantedit' => "Pardon - Dir hutt net déi néideg Rechter fir d'Schwaarz Lëscht vum Spam z'änneren.",
+	'spamdifftool_notext' => "Et gëtt keen Text fir op d'Schwaarz Lëscht vum Spam derbäizesetzen.
+Klickt <a href='$1'>hei</a> fir weiderzefueren.",
 	'spamdifftool_confirm' => "Konfirméiert daat Dir dës Elementer op déi Schwaarz Lëscht vum Spam derbäisetze wëllt.
 (Klickt <a href='$1' target='new'>hei</a> fir e Problem ze mellen.)",
 	'spamdifftool_summary' => "Op d'schwaarz Lëscht vum Spam derbäisetzen",

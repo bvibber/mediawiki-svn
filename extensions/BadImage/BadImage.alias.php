@@ -67,6 +67,11 @@ $aliases['gsw'] = array(
 	'Badimages' => array( 'Bilder wu nit gwinscht sin' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'Badimages' => array( 'ખરાબચિત્ર' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'Badimages' => array( 'תמונות_אסורות' ),

@@ -447,6 +447,14 @@ $messages['pt-br'] = array(
 	'newuseredit-summary' => 'Adicionando uma [[{{int:newusermessage-template}}|mensagem de boas-vindas]] à página de discussão do novo usuário',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'newusermessage-desc' => "Aggiunge 'nu messagge a le utinde nuève jndr'à pàgene de le 'ngazzaminde",
+	'newuseredit-summary' => "Aggiunge [[{{int:newusermessage-template}}|'nu messagge de Bovegne]] a le pàgene de le 'ngazzaminde de l'utinde nuève",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

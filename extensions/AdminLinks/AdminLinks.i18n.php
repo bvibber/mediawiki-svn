@@ -92,7 +92,22 @@ $messages['dsb'] = array(
 	'adminlinks_createuser' => 'Wužywarja napóraś',
 	'adminlinks_browsesearch' => 'Pśeglědowanje a pytanje',
 	'adminlinks_importexport' => 'Importěrowanje a eksportěrowanje',
-	'right-adminlinks' => 'Glědaj wótkaz k [[Special:AdminLinks]]',
+	'right-adminlinks' => 'Glědaj wótkaz k [[Special:AdminLinks|wótkazam za administratorow]]',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'adminlinks' => 'Administrar vínculos',
+	'adminlinks_general' => 'General',
+	'adminlinks_editcss' => 'Editar archivo CSS',
+	'adminlinks_editmainpagename' => 'Editar nombre de página principal',
+	'adminlinks_users' => 'Usuarios',
+	'adminlinks_createuser' => 'Crear un usuario',
+	'adminlinks_browsesearch' => 'Exploración y búsqueda',
+	'adminlinks_importexport' => 'Importación y exportación',
+	'right-adminlinks' => 'Ver el vínculo a [[Special:AdminLinks]]',
 );
 
 /** French (Français)
@@ -143,7 +158,7 @@ $messages['gsw'] = array(
 	'adminlinks_createuser' => 'E Benutzer aalege',
 	'adminlinks_browsesearch' => 'Browse un Sueche',
 	'adminlinks_importexport' => 'Importiere un Exportiere',
-	'right-adminlinks' => 'Lueg s Gleich (Link) zue [[Special:AdminLinks]]',
+	'right-adminlinks' => 'Lueg s Gleich (Link) zue [[Special:AdminLinks|Adminlinks]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -160,7 +175,7 @@ $messages['hsb'] = array(
 	'adminlinks_createuser' => 'Wužiwarja wutworić',
 	'adminlinks_browsesearch' => 'Přehladowanje a pytanje',
 	'adminlinks_importexport' => 'Importowanje a eksportowanje',
-	'right-adminlinks' => 'Hlej wotkaz k [Special:AdminLinks]]',
+	'right-adminlinks' => 'Hlej wotkaz k [[Special:AdminLinks|wotkazam za administratorow]]',
 );
 
 /** Interlingua (Interlingua)
@@ -211,7 +226,7 @@ $messages['ksh'] = array(
 	'adminlinks_createuser' => 'Ene neuje Metmaacher aanlääje',
 	'adminlinks_browsesearch' => 'Bläddere un Söhke',
 	'adminlinks_importexport' => 'Empoteere un Äxpoteere',
-	'right-adminlinks' => 'Loor op dä Lengk op [[{{#special:AdminLinks}}]]',
+	'right-adminlinks' => 'Dä Lengk op de Sigg met [[{{#special:AdminLinks}}|Lengks för Köbeße]] jezeijsch krijje',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -228,7 +243,24 @@ $messages['lb'] = array(
 	'adminlinks_createuser' => 'E Benotzer uleeën',
 	'adminlinks_browsesearch' => 'Bliederen a sichen',
 	'adminlinks_importexport' => 'Importéieren an exportéieren',
-	'right-adminlinks' => 'Kuckt the Link op [[Special:AdminLinks]]',
+	'right-adminlinks' => 'Kuckt the Link op [[Special:AdminLinks|Like fir Administrateuren]]',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'adminlinks' => 'Verwijzingen voor beheerders',
+	'adminlinks-desc' => 'Voegt een [[Special:AdminLinks|speciale pagina]] toe met handige verwijzingen voor beheerders',
+	'adminlinks_general' => 'Algemeen',
+	'adminlinks_editsidebar' => 'Zijbalk bewerken',
+	'adminlinks_editcss' => 'CSS bewerken',
+	'adminlinks_editmainpagename' => 'Naam van de hoofdpagina bewerken',
+	'adminlinks_users' => 'Gebruikers',
+	'adminlinks_createuser' => 'Gebruiker aanmaken',
+	'adminlinks_browsesearch' => 'Bekijken en zoeken',
+	'adminlinks_importexport' => 'Importeren en exporteren',
+	'right-adminlinks' => 'De verwijzing naar [[Special:AdminLinks|verwijzingen voor beheerders]] zien',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

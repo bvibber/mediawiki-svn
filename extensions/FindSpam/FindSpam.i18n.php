@@ -90,8 +90,11 @@ $messages['ast'] = array(
  */
 $messages['bar'] = array(
 	'findspam' => 'Spam findn',
+	'findspam-desc' => 'Eagänzt a [[Special:FindSpam|Spezialseitn]], mid dea ma Spam findn kãu',
 	'findspam-ip' => 'IP-Adress:',
+	'findspam-ok' => 'Passt',
 	'findspam-notextfound' => 'Es han kane Beiträge gfundn woan',
+	'right-findspam' => 'Nåch gråd east eigstöidn Spam suacha',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

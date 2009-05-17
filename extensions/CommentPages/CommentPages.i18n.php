@@ -49,6 +49,7 @@ $messages['avk'] = array(
  * @author Man77
  */
 $messages['bar'] = array(
+	'commentpages-desc' => 'Kommentian vu Seitn im Haupt-Nãmensraum',
 	'nstab-comments' => 'Kommentar',
 );
 

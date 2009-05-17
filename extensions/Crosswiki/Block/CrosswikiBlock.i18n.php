@@ -2109,10 +2109,17 @@ $messages['tg-cyrl'] = array(
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'crosswikiblock' => 'บล็อกผู้ใช้บนวิกิอื่น',
 	'crosswikiblock-expiry' => 'หมดอายุ:',
 	'crosswikiblock-reason' => 'เหตุผล:',
 	'crosswikiblock-submit' => 'บล็อกผู้ใช้รายนี้',
 	'crosswikiunblock-reason' => 'เหตุผล:',
+	'crosswikiunblock-submit' => 'เลิกบล็อกผู้ใช้รายนี้',
+	'crosswikiblock-success' => "ผู้ใช้ '''$3''' ได้ถูกบล็อกแล้ว
+
+กลับไปยัง:
+* [[Special:CrosswikiBlock|ฟอร์มการบล็อก]]
+* [[$4]]",
 );
 
 /** Tagalog (Tagalog)

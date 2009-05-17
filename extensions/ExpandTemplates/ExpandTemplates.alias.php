@@ -85,6 +85,11 @@ $aliases['gsw'] = array(
 	'ExpandTemplates' => array( 'Vorlage expandiere' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'ExpandTemplates' => array( 'શ્રેણીવિસ્તારો' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

@@ -57,6 +57,11 @@ $aliases['gsw'] = array(
 	'CloseWiki' => array( 'Wiki zuemache' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'CloseWiki' => array( 'બંધવિકિ' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'CloseWiki' => array( 'Zatvori_wiki' ),

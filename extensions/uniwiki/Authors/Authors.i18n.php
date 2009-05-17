@@ -446,6 +446,8 @@ $messages['tl'] = array(
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'authors-desc' => 'Sayfalara katkı ve ekler listesi',
+	'authors_authors' => 'Yazarlar',
 	'authors_anonymous' => 'Anonimler',
 );
 

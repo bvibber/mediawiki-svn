@@ -126,15 +126,12 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'categorywatch-desc' => 'Rozšiřuje možnosti seznamu sledovaných stránek na upozornění o změně členství sledovaných kategorií',
-	'categorywatch-emailbody' => 'Dobrá den, $1,
-
-dostali jste tento email, protože sledujete kategorii „$2”.
-Toto je oznámení, že $3 uživatel $4 $5.',
 	'categorywatch-emailsubject' => 'Aktivita týkající se sledování kategorie „$1”',
 	'categorywatch-catmovein' => 'přesunul $1 do kategorie $2 z $3',
 	'categorywatch-catmoveout' => 'přesunul $1 z kategorie $2 do $3',
 	'categorywatch-catadd' => 'přidal $1 do kategorie $2',
 	'categorywatch-catsub' => 'odstranil $1 z kategorie $2',
+	'categorywatch-autocat' => 'Automaticky sledováno uživatelem $1',
 );
 
 /** Welsh (Cymraeg)

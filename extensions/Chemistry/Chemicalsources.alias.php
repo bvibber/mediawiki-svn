@@ -47,6 +47,11 @@ $aliases['gsw'] = array(
 	'ChemicalSources' => array( 'ChemicalSources' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'ChemicalSources' => array( 'રસાયણસ્રોત' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'ChemicalSources' => array( 'Chemiske žórła' ),

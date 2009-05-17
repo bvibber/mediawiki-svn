@@ -87,6 +87,11 @@ $aliases['gsw'] = array(
 	'CategoryIntersection' => array( 'Kategorie-Schnittmängi' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'CategoryIntersection' => array( 'શ્રેણીસંગમ' ),
+);
+
 /** Hindi (हिन्दी) */
 $aliases['hi'] = array(
 	'CategoryIntersection' => array( 'श्रेणी इन्टरसेक्शन' ),

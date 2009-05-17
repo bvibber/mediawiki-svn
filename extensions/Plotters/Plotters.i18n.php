@@ -66,7 +66,9 @@ $messages['be-tarask'] = array(
 	'plotters' => 'Плотэры',
 	'plotters-title' => 'Плотэры',
 	'plotters-missing-script' => 'Скрыпт ня вызначаны.',
+	'plotters-missing-arguments' => 'Аргумэнты не пазначаныя.',
 	'plotters-excessively-long-scriptname' => 'Назва скрыпта занадта доўгая. Калі ласка, вызначце скрыпт, які ўтрымлівае меней 255 сымбаляў.',
+	'plotters-excessively-long-preprocessorname' => 'Назва прэпрацэсара занадта доўгая. Калі ласка, вызначце прэпрацэсар, які ўтрымлівае меней 255 сымбаляў.',
 	'plotters-no-data' => 'Зьвесткі не пададзеныя.',
 	'plotters-invalid-renderer' => 'Выбраны няслушны генэратар выяваў.',
 );
@@ -102,6 +104,9 @@ Toś ten pśeglěd dawa lažki pśistup k bokam systenmowych powěźeńkow, kót
 	'plotters-missing-arguments' => 'Žedne argumenty pódane.',
 	'plotters-excessively-long-scriptname' => 'Mě skripta jo pśedłujke. Pšosym definěruj skript, kótaryž ma mjenjej ako 255 znamuškow.',
 	'plotters-excessively-long-preprocessorname' => 'Mě preprocesora jo pśedłujke. Pšosym definěruj preprocesor, kótaryž ma mjenjej ako 255 znamuškow.',
+	'plotters-excessively-long-name' => 'Mě plota jo pśedłujke.
+Pšosym definěruj plotowe mě, kótarež ma maksimalnje 255 znamuškow.',
+	'plotters-excessively-long-tableclass' => 'Tabelowa klasa jo pśedłujka. Pšosym definěruj tabelowu klasu, kótaraž ma jano 255 znamuškow.',
 	'plotters-no-data' => 'Žedne daty njejsu se pódali.',
 	'plotters-invalid-renderer' => 'Njepłaśiwy kreslak jo se wubrał.',
 	'plotters-errors' => '<b>Ploterowe zmólki:</b>',
@@ -118,10 +123,12 @@ $messages['fr'] = array(
 	'plotters-pagetext' => "Ci-dessou s la liste des traceurs spéciaux que les utilisateurs peuvent utiliser dans leurs balises jsplot, comme définies sur [[MediaWiki:Plotters-definition]].
 Cette vue d'ensemble permet d'accéder facilement aux messages système qui définissent le code et la description de chaque traceur.",
 	'plotters-uses' => 'Utilise',
-	'plotters-missing-script' => 'Aucun script n’a été définie.',
+	'plotters-missing-script' => 'Aucun script n’a été défini.',
 	'plotters-missing-arguments' => "Aucun argument n'a été spécifié.",
 	'plotters-excessively-long-scriptname' => 'Le nom du script est trop long. Veuillez définir un script qui a de moins de 255 caractères.',
 	'plotters-excessively-long-preprocessorname' => 'Le nom du préprocesseur est trop long. Définissez un préprocesseur qui fait moins de 255 caractères.',
+	'plotters-excessively-long-name' => 'Le nom du graphe est trop long. Définissez un nom de graphe qui fait moins de 255 caractères.',
+	'plotters-excessively-long-tableclass' => 'La classe du tableau est trop longue. Définissez une classe de tableau qui fait moins de 255 caractères.',
 	'plotters-no-data' => 'Aucune donnée n’a été fournie.',
 	'plotters-invalid-renderer' => 'Un moteur de rendu invalide a été sélectionné.',
 	'plotters-errors' => '<b>Erreur(s) de traceurs:</b>',
@@ -141,6 +148,8 @@ Esta vista xeral proporciona un acceso doado ás páxinas de mensaxes do sistema
 	'plotters-missing-arguments' => 'Non foi especificado ningún argumento.',
 	'plotters-excessively-long-scriptname' => 'O nome da escritura é moi longo. Por favor, defina unha escritura que sexa inferior a 255 caracteres.',
 	'plotters-excessively-long-preprocessorname' => 'O nome do preprocesador é moi longo. Por favor, defina un preprocesador que sexa inferior a 255 caracteres.',
+	'plotters-excessively-long-name' => 'O nome do plot é moi longo. Por favor, defina un nome que sexa inferior a 255 caracteres.',
+	'plotters-excessively-long-tableclass' => 'A clase de táboa é moi longa. Por favor, defina unha clase de táboa que sexa inferior a 255 caracteres.',
 	'plotters-no-data' => 'Non se proporcionou ningún dato.',
 	'plotters-invalid-renderer' => 'Seleccionouse un renderizador inválido.',
 	'plotters-errors' => '<b>Erro(s) de plotters:</b>',
@@ -157,7 +166,11 @@ $messages['gsw'] = array(
 Die Ibersicht isch e eifach Zuegang zue dr Syschtemnochrichte, wu d Bschrybig un dr Code vu jedem Plotter definiere.',
 	'plotters-uses' => 'Brucht',
 	'plotters-missing-script' => 'Kei Skript isch definiert wore.',
+	'plotters-missing-arguments' => 'Kei Argumänt definiert.',
 	'plotters-excessively-long-scriptname' => 'Dr Skriptname isch z lang. Bitte definier e Skript, wu weniger wie 255 Zeiche het.',
+	'plotters-excessively-long-preprocessorname' => 'Dr Name vum Vorprozessor isch z lang. Bitte definier e Vorprozessorname mit weniger wie 255 Zeiche.',
+	'plotters-excessively-long-name' => 'Dr Plotname isch z lang. Bitte definer e Plotname mit weniger wie 255 Zeiche.',
+	'plotters-excessively-long-tableclass' => 'D Tabälleklasse isch z lang. Bitte definier e Tabälleklasse mit weniger wie 255 Zeiche.',
 	'plotters-no-data' => 'Kei Date botte.',
 	'plotters-invalid-renderer' => 'E nit giltige Renderer isch uusgwehlt wore.',
 	'plotters-errors' => '<b>Plotterfähler:</b>',
@@ -177,6 +190,8 @@ Tutón přehlad dodawa lochki přistup na strony systemowych zdźělenkow, kotre
 	'plotters-missing-arguments' => 'Žane argumenty podate.',
 	'plotters-excessively-long-scriptname' => 'Mjeno skripta je předołhe. Prošu definuj skript, kotryž ma mjenje hač 255 znamješkow.',
 	'plotters-excessively-long-preprocessorname' => 'Mjeno preprocesora je předołhe. Prošu definuj preprocesor, kotryž ma mjenje hač 255 znamješkow.',
+	'plotters-excessively-long-name' => 'Mjeno plota je předołhe. Prošu definuj plotowe mjeno, kotrež ma mjenje hač 255 znamješkow.',
+	'plotters-excessively-long-tableclass' => 'Tabelowa klasa je předołha. Prošu definuj tabelowu klasu, kotraž ma mjenje hač 255 znamješkow.',
 	'plotters-no-data' => 'Žane daty njejsu so podali.',
 	'plotters-invalid-renderer' => 'Njepłaćiwy rysowak je so wubrał.',
 	'plotters-errors' => '<b>Ploterowe zmylki:</b>',
@@ -193,7 +208,9 @@ $messages['ia'] = array(
 Iste summario permitte acceder facilemente al messages de systema que defini le description e codice de cata plotter.',
 	'plotters-uses' => 'Usa',
 	'plotters-missing-script' => 'Nulle script esseva definite.',
+	'plotters-missing-arguments' => 'Nulle parametro specificate.',
 	'plotters-excessively-long-scriptname' => 'Le nomine del script es troppo longe. Per favor defini un script que ha minus de 255 characteres.',
+	'plotters-excessively-long-preprocessorname' => 'Le nomine del preprocessator es troppo longe. Per favor defini un preprocessator que ha minus de 255 characteres.',
 	'plotters-no-data' => ' Nulle dato esseva providite.',
 	'plotters-invalid-renderer' => 'Un renditor invalide esseva seligite.',
 	'plotters-errors' => '<b>Error(es) de plotter:</b>',
@@ -219,7 +236,20 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'plotters-desc' => 'Jitt de Metmaacher selfs zerääsch jemaate JavaSkrepte för se en <code lang="en">jsplot</code>-Befähle ze bruche.',
+	'plotters' => 'Plottere',
+	'plotters-title' => 'Plotter',
+	'plotters-pagetext' => 'Hee dronger es en Leß met beshtemmpte Plotter, di mer em Wiki en <code lang="en">jsplot</code>-Befähle bruche kann. Se sin en dä Sigg <code lang="en">[[MediaWiki:Plotters-definition]]</code> faßjelaat woode. Hee di Övverseesch jitt Der eine eijfache Zohjang op di Sigge, woh dä Plottere ier Eijeschaffte un dänne ier Koodes faßjehallde sin.',
 	'plotters-uses' => 'Bruch',
+	'plotters-missing-script' => 'Kei Skrep faßjelaat.',
+	'plotters-missing-arguments' => 'Kei Parrameetere aanjejovve.',
+	'plotters-excessively-long-scriptname' => 'Dä Name för dat Skrep es ze lang, jivv en Skrep aan, woh dä Name kööter wi 255 Zeijsche eß.',
+	'plotters-excessively-long-preprocessorname' => 'Dä Name för dat Förloufprojramm es ze lang, jivv e Förloufprojramm aan, woh dä Name kööter wi 255 Zeijsche eß.',
+	'plotters-excessively-long-name' => 'Dä Name för di Datteijh met dä Daate för ze plotte es ze lang, jivv ene Name aan, dä kööter wi 255 Zeijsche eß.',
+	'plotters-excessively-long-tableclass' => 'Dä Name för di <i lang="en">CSS</i>-KLaß fö de Tabälle es ze lang, jivv ene Name aan, dä kööter wi 255 Zeijsche eß.',
+	'plotters-no-data' => 'Kei Date aanjejovve.',
+	'plotters-invalid-renderer' => 'En onjöltsch Aanzeijeprojramm wood ußjesohk.',
+	'plotters-errors' => '<b>Plotter Fähler:</b>',
 );
 
 /** Dutch (Nederlands)
@@ -232,6 +262,19 @@ $messages['nl'] = array(
 	'plotters-pagetext' => "Hieronder worden de speciale plotters weergegeven die gebruikt kunnen worden in jsplot-tags, zoals is ingesteld in [[MediaWiki:Plotters-definition]].
 Dit overzicht geeft eenvoudig toegang tot de pagina's met systeemteksten waarin iedere plotter wordt beschreven en de code van de plotter.",
 	'plotters-uses' => 'Gebruikt',
+	'plotters-missing-script' => 'Er is geen script gedefinieerd.',
+	'plotters-missing-arguments' => 'Er zijn geen argumenten opgegeven.',
+	'plotters-excessively-long-scriptname' => 'De scriptnaam is te lang.
+Geef een scriptnaam op die korter is dan 255 karakters.',
+	'plotters-excessively-long-preprocessorname' => 'De preprocessornaam is te lang.
+Geef een preprocessornaam op die korter is dan 255 karakters.',
+	'plotters-excessively-long-name' => 'De plotternaam is te lang.
+Geeft aan plotternaam op die korter is dan 255 karakters.',
+	'plotters-excessively-long-tableclass' => 'De tabelklassenaam is te lang.
+Geef een tabelklassenaam op die korter is dan 255 karakters.',
+	'plotters-no-data' => 'Er zijn geen gegevens ingevoerd.',
+	'plotters-invalid-renderer' => 'Er is een ongeldige renderer geselecteerd.',
+	'plotters-errors' => '<b>Er zijn plotterfouten aangetroffen:</b>',
 );
 
 /** Occitan (Occitan)
@@ -257,7 +300,11 @@ $messages['sk'] = array(
 Tento prehľad poskytuje jednoduchý prístup k stránkam systémových správ, ktoré definujú popis a kód každého plotra.',
 	'plotters-uses' => 'Použitia',
 	'plotters-missing-script' => 'Nebol definovaný žiadny skript.',
+	'plotters-missing-arguments' => 'Neboli zadané argumenty.',
 	'plotters-excessively-long-scriptname' => 'Názov skriptu bol príliš dlhý. Prosím definujte skript, ktorého názov má menej ako 255 znakov.',
+	'plotters-excessively-long-preprocessorname' => 'Názov preprocesora je príliš dlhý. Definujte prosím preprocesor, ktorého názov je kratší ako 255 znakov.',
+	'plotters-excessively-long-name' => 'Názov diagramu je príliš dlhý. Definujte prosím preprocesor, ktorého názov je kratší ako 255 znakov.',
+	'plotters-excessively-long-tableclass' => 'Názov triedy tabuľky je príliš dlhý. Definujte prosím preprocesor, ktorého názov je kratší ako 255 znakov.',
 	'plotters-no-data' => 'Neboli poskytnuté žiadne údaje.',
 	'plotters-invalid-renderer' => 'Bol vybraný neplatný vykresľovač.',
 	'plotters-errors' => '<b>Chyby plotrov:</b>',

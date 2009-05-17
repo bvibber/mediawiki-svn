@@ -2898,6 +2898,7 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-no-results' => 'Pardon, kee Resultat',
 	'gm-searching' => 'Sich ...',
 	'gm-map' => 'Kaart',
+	'gm-note' => 'Opgepasst: vergewëssert Iech datt Dir dat kopéiert wat Dir an d\'Säit (ënnendrënner)späichere wëllt ier Dir op "Kaart lueden", "Späicheren" oder "Kucken ouni ze späicheren" klickt!',
 	'gm-are-you-sure' => 'Sidd Dir sécher?',
 	'gm-clear-all-points' => 'All Punkten ewechhuelen',
 	'gm-refresh-points' => 'Punkten aktualiséieren',

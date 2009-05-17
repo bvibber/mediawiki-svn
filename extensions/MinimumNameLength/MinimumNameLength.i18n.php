@@ -39,6 +39,14 @@ $messages['arz'] = array(
 	'minnamelength-desc' => 'يجبر على طول أدنى لاسم اليوزر',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'minnamelength-error' => "Da Benutzanãm is z'kuaz. D'Mindestläng is $1 Zeichn.",
+	'minnamelength-desc' => 'A Mindestläng vum Benutzanãm eazwinga',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

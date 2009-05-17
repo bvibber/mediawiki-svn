@@ -27,7 +27,7 @@ $aliases['arz'] = array(
 
 /** German (Deutsch) */
 $aliases['de'] = array(
-	'RegexBlock' => array( 'Reguläre Ausrücke Sperrung' ),
+	'RegexBlock' => array( 'Reguläre Ausdrücke-Sperrung' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */

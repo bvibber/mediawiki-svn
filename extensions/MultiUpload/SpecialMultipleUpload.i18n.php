@@ -111,6 +111,13 @@ $messages['bar'] = array(
 	'multipleupload-saveallfiles' => 'Ålle Datein speichan',
 	'multipleupload-addresswarnings' => "Bittschee, bevoa'st de Datei wieda aufelådst, ålle Wårnungen beårbeitn und ausrama.",
 	'multipleupload-page' => '{{ns:project}}:Löschrichtlinien',
+	'multipleupload-text' => "Gleichzeitigs Aufelådn vu mearare Datein.
+
+Klick auf „Browse“ und wöih a jede Datei aus, de'st aufelådn wüist. Du kãnnst gleichzeitig zwischn 1 und 1\$ Datein aufelådn.
+
+Du kãnnst aa an ''Züi-Dateinãm'' voagem und a ''Beschreiwung'' fia deine Datein.
+
+Ned geeignete Datein wean sufuat glöscht, schau da dazua de [[{{MediaWiki:Multipleupload-page}}|Löschrichtlinien]] ãn.",
 	'multiupload-fileuploaded' => 'Datei is aufeglådn',
 	'multiupload-toolbox' => 'Mehrare Datein aufelådn',
 	'multiupload-no-files' => "Bittschee mindestns a Datei fia's Aufelådn auswöihn",
@@ -262,7 +269,7 @@ Upassende filer bliver slettet øjeblikkeligt - se [[{{MediaWiki:Multipleupload-
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'multipleupload' => 'Dateien hochladen',
+	'multipleupload' => 'Mehrere Dateien hochladen',
 	'multipleupload-desc' => 'Erlaubt das [[Special:MultipleUpload|Hochladen mehrerer Dateien]] in einer Aktion',
 	'multipleupload-ignoreallwarnings' => "Ignoriere '''alle Warnungen''' und speichere die Dateien.",
 	'multipleupload-saveallfiles' => 'Alle Dateien speichern',

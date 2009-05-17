@@ -67,6 +67,11 @@ $aliases['gsw'] = array(
 	'Code' => array( 'Quälltäxt' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'Code' => array( 'કોડ' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'Code' => array( 'Kod' ),

@@ -67,6 +67,11 @@ $aliases['gsw'] = array(
 	'ChangeAuthor' => array( 'Autor ändere' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'ChangeAuthor' => array( 'લેખકબદલો' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'ChangeAuthor' => array( 'שינוי_כותב' ),

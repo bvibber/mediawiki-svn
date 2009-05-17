@@ -81,6 +81,11 @@ $aliases['gsw'] = array(
 	'BoardVote' => array( 'Kuratoriumswahl' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'BoardVote' => array( 'બોર્ડમત' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

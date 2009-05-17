@@ -12,3 +12,9 @@ $aliases = array();
 $aliases['en'] = array(
 	'AdminLinks' => array( 'AdminLinks' ),
 );
+
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'AdminLinks' => array( 'Ligamines pro administratores' ),
+);
+

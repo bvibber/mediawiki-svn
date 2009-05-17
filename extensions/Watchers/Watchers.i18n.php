@@ -115,6 +115,20 @@ $messages['avk'] = array(
 	'watchers_less_than_x' => 'Le $1 korik tid suzdas va batu bu.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'watchers' => 'Beobåchta',
+	'watchers-desc' => 'Zoagt, [[Special:Watchers|wiavüi Benutza]] a Seitn auf iara Beobåchtungslistn håm',
+	'watchers_link_title' => 'Wea beobåcht de Seitn?',
+	'watchers_error_article' => "'''Fehla:''' De Seitn gibt's ned.",
+	'watchers_header' => '{{PLURAL:$2|Benutza, dea „$1“ beobåcht|Benutza, de „$1“ beobåchtn}}',
+	'watchers_noone_watches' => 'De Seitn beobåcht neamt.',
+	'watchers_x_or_more' => '$1 oda mea {{PLURAL:$1|Benutza|Benutza}} beobåchtn de Seitn.',
+	'watchers_less_than_x' => 'Weniga wia {{PLURAL:$1|$1 Benutza|$1 Benutza}} beobåchtn de Seitn.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

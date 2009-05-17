@@ -40,6 +40,13 @@ $messages['arz'] = array(
 	'substall-hook' => 'نسخ_الكل',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'substall-desc' => 'Eastöid a &lt;substall&gt;-Tag, damid ålle Voalång auf dea Seitn expandiad wean',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

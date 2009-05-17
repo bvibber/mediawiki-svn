@@ -152,6 +152,13 @@ $messages['pt-br'] = array(
 	'Editsectionhilitelink-desc' => 'Destacar a seção apropriada de um artigo quando você passar o cursor do mouse sobre o link "editar"',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'Editsectionhilitelink-desc' => "Evidenzie 'a seziona appropriate de 'na pàgene quanne tu spuèste 'u mouse da sus a 'nu collegamende cangiate",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

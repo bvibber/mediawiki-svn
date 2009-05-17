@@ -5984,6 +5984,7 @@ $messages['lb'] = array(
 	'configure-setting-wgCleanSignatures' => 'Schablounen an den Ënnerschrëften ersetzen',
 	'configure-setting-wgParserConf' => 'Parserastellungen',
 	'configure-setting-wgDisableLangConversion' => 'Sproochëmwandlung ausschalten',
+	'configure-setting-wgDisableTitleConversion' => 'Ëmwandlung vu Sproochvariante fir Säitentitel ausschalten',
 	'configure-setting-wgInterwikiMagic' => 'Interwiki-Linken an enger spezieller Lëscht weisen',
 	'configure-setting-wgLanguageCode' => 'Sproochcode vum Site',
 	'configure-setting-wgLoginLanguageSelector' => 'Eng Sproochauswiel weisen op de Formulairen vum Aloggen (login) a vum Umellen (registration)',
@@ -6062,6 +6063,7 @@ $messages['lb'] = array(
 	'configure-setting-wgExtensionFunctions' => 'Erweiderungsfunktiounen',
 	'configure-setting-wgHooks' => 'Klameren',
 	'configure-setting-wgSpecialPages' => 'Zousätzlech Spezialsäiten',
+	'configure-setting-wgGroupPermissions-value' => 'Zougewise Rechter',
 	'configure-setting-wgAddGroups' => 'Gruppen déi derbäigesat kënne ginn',
 	'configure-setting-wgAddGroups-value' => 'Gruppen déi derbäigesat kënne ginn',
 	'configure-setting-wgRemoveGroups' => 'Gruppen déi ewech geholl kënne ginn',
@@ -8554,6 +8556,7 @@ $messages['roa-tara'] = array(
 	'configure-setting-wgActionPaths-key' => 'Azione',
 	'configure-setting-wgActionPaths-value' => "URL d'u template",
 	'configure-setting-wgExtraLanguageNames-value' => 'Nome',
+	'configure-setting-wgLogHeaders' => 'Archivije de le descriziune',
 );
 
 /** Russian (Русский)

@@ -6269,6 +6269,10 @@ $messages['roa-tara'] = array(
 	'configure-view-all-versions' => 'Lista comblete de le versiune',
 	'configure-view-not-allowed' => "Tu non ge puè vedè ste 'mbostaziune",
 	'configure-viewconfig-line' => '$1 $2 da $3 $5: $4',
+	'configure-condition-operator-or' => 'Or',
+	'configure-condition-operator-and' => 'And',
+	'configure-condition-operator-xor' => 'Xor',
+	'configure-condition-operator-not' => 'Not',
 );
 
 /** Russian (Русский)

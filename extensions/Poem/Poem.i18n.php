@@ -60,6 +60,13 @@ $messages['ast'] = array(
 	'poem-desc' => 'Añade la etiqueta <tt>&lt;poem&gt;</tt> pal formatu de poemes',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'poem-desc' => "Fügt s'<tt>&lt;poem&gt;</tt>-Tag zum Formatian vu Gedichtln dazua",
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
