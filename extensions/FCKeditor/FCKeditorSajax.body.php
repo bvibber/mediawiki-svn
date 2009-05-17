@@ -198,15 +198,13 @@ function wfSajaxSearchCategoryChildrenFCKeditor( $m_root ){
 	$limit = 50;
 	$ns = NS_CATEGORY;
 	$dbr = wfGetDB( DB_SLAVE );
-	$res = $dbr->select(
-		array( 'categorylinks', 'page' ),
-		array( 'page_title AS title' ),
-		array( 'cl_to LIKE ' . $dbr->escapeLike( $m_root ), "page_namespace = $ns" ),
-		__METHOD__,
-		array(),
-		array( 'page' => array( 'LEFT JOIN', 'cl_from = page_id' ) )
-	);
+	/// @todo FIXME: should use Database class
+	$m_root = str_replace( "'", "\'", $m_root );
+	$sql = "SELECT tmpSelectCatPage.page_title AS title FROM ".$dbr->tableName('categorylinks')." AS tmpSelectCat ".
+			"LEFT JOIN ".$dbr->tableName('page')." AS tmpSelectCatPage ON tmpSelectCat.cl_from = tmpSelectCatPage.page_id ".
+			"WHERE tmpSelectCat.cl_to LIKE '$m_root' AND tmpSelectCatPage.page_namespace = $ns"; 
 
+	$res = $dbr->query( $sql, __METHOD__ );
 	$ret = '';
 	$i = 0;
 	while ( ( $row = $dbr->fetchObject( $res ) ) ) {
