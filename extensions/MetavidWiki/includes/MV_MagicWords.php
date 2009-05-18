@@ -80,14 +80,13 @@ class MV_MagicWords {
 	}
 	function getTotalLength(){
 		$dbr = & wfGetDB( DB_READ );
-		$result =& $dbr->query(' SELECT SUM( `duration` ) as `dur`
-FROM `mv_streams`
-WHERE 1 ');
+		$result =& $dbr->query('SELECT SUM( `duration` ) as `dur`
+FROM `mv_streams` ');		
 		if ( $dbr->numRows( $result ) == 0 ) {
 			return '';
 		} else {
 			$row = $dbr->fetchObject( $result );
-			return seconds2Description	( $row->dur);
+			return trim( seconds2Description	( $row->dur) );
 		}
 	}
 	function getBillOut() {

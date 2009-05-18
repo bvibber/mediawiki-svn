@@ -1,6 +1,6 @@
 //javascript for all pages (adds auto_complete for search, and our linkback logo, and re-writes mvd links)
 _global = this;
-mv_addLoadEvent(mv_setup_allpage);
+mwAddOnloadHook(mv_setup_allpage);
 var mv_setup_allpage_flag=false;
 if( typeof wgServer!='undefined' && typeof  wgScript != 'undefined'){
 	var base_roe_url = wgServer + wgScript + '?title=Special:MvExportStream&feed_format=roe&stream_name=';

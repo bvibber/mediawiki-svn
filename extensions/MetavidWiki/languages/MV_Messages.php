@@ -429,6 +429,7 @@ Jump to stream view: $2',
 
 	'mv_other_options' => 'Other options',
 	'mv_contextmenu_opt' => 'Enable context menus',
+	'mv_days' =>  '$1 {{PLURAL:$1|day|days}} ',
 	'mv_hours' => '$1 {{PLURAL:$1|hour|hours}} ',
 	'mv_hours_singular' => '$1 hour',
 	'mv_minutes' => '$1 {{PLURAL:$1|minute|minutes}}',

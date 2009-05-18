@@ -44,14 +44,15 @@ function enableMetavid() {
 }
 function mvSetupExtension() {
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore,
-	$wgParser, $mvArticlePath, $mvgScriptPath, $wgScriptPath, $wgServer, $wgExtensionFunctions, $markerList,$wgVersion,
+	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions, $markerList,$wgVersion,
 	$wgAjaxExportList, $mvEnableAutoComplete, $mvEnableJSMVDrewrite, 
 	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers, $wgJSAutoloadClasses,
 	$wgAPIModules;
 	
-	//setupMsg
-	mvfInitMessages();
 
+	mvfInitMessages();
+	//add the ALL page header 	
+	mvfAutoAllPageHeader();
 	
 	/********************************
  	* Ajax Hooks 
@@ -97,65 +98,12 @@ function mvSetupExtension() {
 	/**********************************************/
 	/***** register autoLoad javascript Classes:  */
 	/**********************************************/
-	
-	//build a shortcut to the local js extension path from the $mvgScriptPath setting:
-	$mv_jspath =  str_replace($wgScriptPath, '', $mvgScriptPath) . '/skins/';
-	//remove leading slash
-	if($mv_jspath[0]=='/') 
-		$mv_jspath = substr($mv_jspath, 1);
-		
-	$mvjsp = $mv_jspath . 'mv_embed/';
-	//core: 	
-	$wgJSAutoloadClasses['window.jQuery']		= $mvjsp . 'jquery/jquery-1.2.6.js';
-	$wgJSAutoloadClasses['mv_embed']			= $mvjsp . 'mv_embed.js';	
+	$mv_jspath =  $mvgIP . '/skins/';
 	
 	$wgJSAutoloadClasses['mv_allpages']			= $mv_jspath . 'mv_allpages.js';
 	$wgJSAutoloadClasses['mv_search']			= $mv_jspath . 'mv_search.js';
-	$wgJSAutoloadClasses['mv_stream']			= $mv_jspath . 'mv_stream.js';
-	
-	//$wgJSAutoloadClasses['']
-	$wgJSAutoloadClasses['j.ui']				= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.core.js';
-	$wgJSAutoloadClasses['j.ui.droppable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js';	
-	$wgJSAutoloadClasses['j.ui.draggable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js';	
-	$wgJSAutoloadClasses['j.ui.sortable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.sortable.js';
-	$wgJSAutoloadClasses['j.ui.resizable']		= $mvjsp . 'jquery/jquery.ui-1.7.1/ui/ui.resizable.js';
-	$wgJSAutoloadClasses['j.contextMenu']		= $mvjsp . 'jquery/plugins/jquery.contextMenu.js';
-	$wgJSAutoloadClasses['j.fn.autocomplete']	= $mvjsp . 'jquery/plugins/jquery.autocomplete.js';
-	$wgJSAutoloadClasses['j.fn.hoverIntent']	= $mvjsp . 'jquery/plugins/jquery.hoverIntent.js';
-	$wgJSAutoloadClasses['j.Jcrop'] 			= $mvjsp . 'jquery/plugins/Jcrop/js/jquery.Jcrop.js';	
-	$wgJSAutoloadClasses['Date.fromString']  	= $mvjsp . 'jquery/plugins/date.js';
-	$wgJSAutoloadClasses['j.fn.datePicker']		= $mvjsp . 'jquery/plugins/jquery.datePicker.js';
-	
-	//libAddMedia:
-	$wgJSAutoloadClasses['mvFirefogg'] 			= $mvjsp . 'libAddMedia/mvFirefogg.js';
-	$wgJSAutoloadClasses['mvUploader'] 			= $mvjsp . 'libAddMedia/mvUploader.js';
-	$wgJSAutoloadClasses['remoteSearchDriver'] 	= $mvjsp . 'libAddMedia/remoteSearchDriver.js';
-	$wgJSAutoloadClasses['seqRemoteSearchDriver'] = $mvjsp . 'libAddMedia/seqRemoteSearchDriver.js';
-	$wgJSAutoloadClasses['baseRemoteSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/baseRemoteSearch.js';
-	$wgJSAutoloadClasses['mediaWikiSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/mediaWikiSearch.js';
-	$wgJSAutoloadClasses['metavidSearch'] 		= $mvjsp . 'libAddMedia/searchLibs/metavidSearch.js';
-	$wgJSAutoloadClasses['archiveOrgSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/archiveOrgSearch.js';	
-	$wgJSAutoloadClasses['baseRemoteSearch']	= $mvjsp . 'libAddMedia/searchLibs/baseRemoteSearch.js';	
-	
-	//libClipEdit:
-	$wgJSAutoloadClasses['mvClipEdit'] 			= $mvjsp . 'libClipEdit/mvClipEdit.js';
-	
-	//libEmbedObj:
-	$wgJSAutoloadClasses['embedVideo'] 			= $mvjsp . 'libEmbedObj/mv_baseEmbed.js';
-	$wgJSAutoloadClasses['flashEmbed'] 			= $mvjsp . 'libEmbedObj/mv_flashEmbed.js';
-	$wgJSAutoloadClasses['genericEmbed'] 		= $mvjsp . 'libEmbedObj/mv_genericEmbed.js';
-	$wgJSAutoloadClasses['htmlEmbed'] 			= $mvjsp . 'libEmbedObj/mv_htmlEmbed.js';
-	$wgJSAutoloadClasses['javaEmbed'] 			= $mvjsp . 'libEmbedObj/mv_javaEmbed.js';
-	$wgJSAutoloadClasses['nativeEmbed'] 		= $mvjsp . 'libEmbedObj/mv_nativeEmbed.js';
-	$wgJSAutoloadClasses['quicktimeEmbed'] 		= $mvjsp . 'libEmbedObj/mv_quicktimeEmbed.js';	
-	$wgJSAutoloadClasses['vlcEmbed'] 			= $mvjsp . 'libEmbedObj/mv_vlcEmbed.js';	
+	$wgJSAutoloadClasses['mv_stream']			= $mv_jspath . 'mv_stream.js';	
 
-	//libSequencer:
-	$wgJSAutoloadClasses['mvPlayList'] 			= $mvjsp . 'libSequencer/mvPlayList.js';	
-	$wgJSAutoloadClasses['mvSequencer']			= $mvjsp . 'libSequencer/mvSequencer.js';	
-	
-	//libTimedText:
-	$wgJSAutoloadClasses['mvTextInterface']		= $mvjsp . 'libTimedText/mvTextInterface.js';
 			
 	
 	/**********************************************/
@@ -310,8 +258,7 @@ function mvSetupExtension() {
 	 *  API extension (this may be integrated into semantic wiki at some point) 
 	 **************************************/
 	 
-	//add the ALL page header 	
-	mvfAutoAllPageHeader();	
+	
 	
 	
 	// $wgHooks['BeforePageDisplay'][] = 'mvDoSpecialPage';	
@@ -354,8 +301,7 @@ function mvMagicParserFunction_Render( &$parser ) {
 	 * enables linkback and autocomplete for search
 	 */
 function mvfAutoAllPageHeader() {
-	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $mvgJSDebug, $wgEnableScriptLoader, $wgRequest, $wgScriptPath;
-		
+	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $wgTitle, $mvgJSDebug, $wgEnableScriptLoader, $wgRequest;;
 	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
 	$wgJsMimeType = htmlspecialchars( $wgJsMimeType ) ;	
 	//set the unquie request value 
@@ -365,34 +311,10 @@ function mvfAutoAllPageHeader() {
 		//@@todo should read form svn version file info
 		$unique_req_param = MV_VERSION;
 	}
-	
-	//if scriptload is off manually load the requested js: 
-	if( $wgEnableScriptLoader ){
-		/*$debug_param = ( $mvgJSDebug ||
-						 $wgRequest->getVal('debug')=='true' ||
-						 $wgRequest->getVal('debug')=='1' ) 
-			 		 ? '&debug=true' : '';	
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/mvwScriptLoader.php?" . 
-								"class=window.jQuery,j.fn.autocomplete,j.fn.hoverIntent,mv_embed,mv_allpages,mv_search" .
-								'&urid=' .$unique_req_param . $debug_param . "\"></script>"
-	 					);*/
-		$classes = array( 'window.jQuery','j.fn.autocomplete','j.fn.hoverIntent','mv_embed','mv_allpages','mv_search');
-		foreach($classes as $js_class){
-			$wgOut->addScriptClass( $js_class );
-		}					
-	}else{
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.3.2.min.js?{$unique_req_param}\"></script>" );
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js?{$unique_req_param}\"></script>" );
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js?{$unique_req_param}\"></script>" );
+		
+	$wgOut->addScriptFile( "{$mvgScriptPath}/skins/mv_allpages.js" );
+	$wgOut->addScriptFile( "{$mvgScriptPath}/skins/mv_search.js" );	
 			
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js?{$unique_req_param}\"></script>" );
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js?{$unique_req_param}\"></script>" );
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js?{$unique_req_param}\"></script>" );	
-	}
-	
-	//temp for testing: 
-	if( $mvgJSDebug )		
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/add_media_wizard.js?{$unique_req_param}\"></script>" );
 	
 	$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
 	$wgOut->addLink( array(
@@ -407,7 +329,7 @@ function mvfAutoAllPageHeader() {
 function mvAddPerNamespaceJS( &$title ){
 	global $mvgScriptPath, $wgJsMimeType, $wgOut;
 	if( $title->getNamespace() == MV_NS_STREAM )
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_stream.js\" ></script>" );	
+		$wgOut->addScriptFile( "{$mvgScriptPath}/skins/mv_stream.js" );	
 }
 function mvAddGlobalJSVariables( $values ){
 	global $mvGlobalJSVariables;
@@ -689,8 +611,12 @@ function seconds2npt( $seconds, $short = false ) {
 	}
 }
 function seconds2Description( $seconds, $short=false, $singular=false){
-	$dur = time_duration_2array( $seconds );
+	$dur = time_duration_2array( $seconds , array('days'=> '86400', 'hours'=> 3600,'minutes'   => 60,'seconds'   => 1));
 	$o='';
+	if( $dur['days']!=0){
+		$msg = ($singular)?'mv_days_singular':'mv_days';
+		$o.= wfMsg($msg, intval( $dur['days']) );	
+	}
 	if( $dur['hours'] != 0  ){
 		$msg = ($singular)?'mv_hours_singular':'mv_hours';
 		$o.= wfMsg($msg, intval( $dur['hours']) );

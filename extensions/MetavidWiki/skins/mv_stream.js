@@ -49,7 +49,7 @@ gMsg['mv_open_edit'] ='you can only edit one at a time, please save or cancel ot
 
 //@@todo context sensitive init scripts
 //init the interface on page load
-mv_addLoadEvent(mv_load_interface_libs);
+mwAddOnloadHook(mv_load_interface_libs);
 
 function mv_load_interface_libs(){
 	js_log('f:mv_load_interface_libs');
@@ -67,10 +67,8 @@ function mv_load_interface_libs(){
 			'mvClipEdit'		: 'libClipEdit/mvClipEdit.js',
 			'$j.ui.draggable'	: 'jquery/jquery.ui-1.7.1/ui/ui.draggable.js'
 	  	},function(){		  		
-	  		//make sure mv_embed has done video re-write: 			  		
-	  		mv_embed( function(){
-  				mv_stream_interface.init();
-  			});	  				
+	  		//make sure mv_embed has done video re-write: 			  			  		
+  			mv_stream_interface.init();
 	  	});
 	});
 }
