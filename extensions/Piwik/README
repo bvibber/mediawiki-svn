@@ -65,23 +65,23 @@ but ALL steps are necessary:
 
             $wgPiwikCustomJS = "piwik_hosts_alias = ["hostname1.com", "hostname2.com"]; // the current tracked website is added to this array anyway
             piwik_install_tracker = 0;"
-			
+
 * If you want to change piwik_action_name, you can set $wgPiwikActionName
   inside your LocalSettings.php file.
-  
+
 ** In case you want to include the piwik_action_name as, for example,
    "wiki/Title of the page", you can set $wgPiwikUsePageTitle to
    true and set $wgPiwikActionName to "wiki/". The extension will print
-  
+
 			piwik_action_name = 'wiki/Title of the page';
-			
+
 * Since 0.8 (1.0-RC3), you can choose which users can see the special page
   setting the following in LocalSettings.php
-  
+
 			$wgGroupPermissions['usergroup']['viewpiwik'] = true;
-  
+
   Where 'usergroup' is the name of the group. By default, only sysops can
   see the special page. If you want to allow bureaucrats to see the page,
   add that line with 'bureaucrat' where 'usergroup' is. The same is for
   normal users ('user') and anonymous users ('*').
-  
+

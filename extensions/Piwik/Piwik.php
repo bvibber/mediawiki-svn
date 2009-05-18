@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '0.8-piwik0.2.26 (1.0-RC3)',
 	'author'         => 'Isb1009',
 	'description'    => 'Inserts Piwik script into MediaWiki pages for tracking and adds [[Special:Piwik|some stats]]. Based on Google Analytics Integration by Tim Laqua.',
-	'descriptionurl' => 'piwik-desc',
+	'descriptionmsg' => 'piwik-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Piwik_Integration',
 );
 
@@ -42,14 +42,14 @@ function efAddPiwik() {
 	if ( !$wgUser->isAllowed( 'bot' ) || !$wgPiwikIgnoreBots ) {
 		if ( !$wgUser->isAllowed( 'protect' ) || !$wgPiwikIgnoreSysops ) {
 			if ( !empty( $wgPiwikIDSite ) AND !empty( $wgPiwikURL ) ) {
-if ( $wgPiwikUsePageTitle == true ) {
-$wgPiwikPageTitle = $wgTitle->getPrefixedText();
+				if ( $wgPiwikUsePageTitle == true ) {
+					$wgPiwikPageTitle = $wgTitle->getPrefixedText();
 
-$wgPiwikFinalActionName = $wgPiwikActionName;
-$wgPiwikFinalActionName .= $wgPiwikPageTitle;
-} else {
-$wgPiwikFinalActionName = $wgPiwikActionName;
-}
+					$wgPiwikFinalActionName = $wgPiwikActionName;
+					$wgPiwikFinalActionName .= $wgPiwikPageTitle;
+				} else {
+					$wgPiwikFinalActionName = $wgPiwikActionName;
+				}
 				$funcOutput = <<<PIWIK
 <!-- Piwik -->
 <a href="http://piwik.org" title="Web analytics" onclick="window.open(this.href);return(false);">
