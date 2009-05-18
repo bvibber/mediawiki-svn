@@ -3,7 +3,7 @@
 // TODO: Fix core printable stylesheet. Descendant selectors suck.
 
 class OggHandler extends MediaHandler {
-	const OGG_METADATA_VERSION = 1;
+	const OGG_METADATA_VERSION = 2;
 
 	static $magicDone = false;
 
@@ -320,7 +320,7 @@ class OggHandler extends MediaHandler {
 	}
 	function getOffset( $file ){
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$metadata || isset( $metadata['error'] ) ) {
+		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['offset']) ) {
 			return 0;
 		} else {
 			return $metadata['offset'];
