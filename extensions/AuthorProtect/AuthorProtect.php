@@ -29,6 +29,7 @@ $wgHooks['UnknownAction'][] = 'efAuthorProtectForm';
 $wgHooks['userCan'][] = 'efAuthorProtectDelay';
 $wgRestrictionLevels[] = 'author'; //so sysops, etc. using the normal protection interface can protect and unprotect it at the author level
 
+// FIXME: split off into one or more class files to reduce initial loading time
 function efAuthorProtectDelay($title, &$user, $action, $result) {
 	$user->mRights = null;
 	$wgHooks['UserGetRights'][] = 'efAssignAuthor';

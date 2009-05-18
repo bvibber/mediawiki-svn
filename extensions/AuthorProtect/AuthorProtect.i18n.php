@@ -23,6 +23,7 @@ $messages['en'] = array(
 	'authorprotect-failure'    => 'Protection unsuccessful',
 	'protect-level-author'     => 'Protect from non-authors',
 	'restriction-level-author' => 'Author-protected',
+	'right-authorprotect'      => 'Protect authored pages',
 );
 
 /** Message documentation (Message documentation)
