@@ -36,8 +36,10 @@ $4",
 	'todo-new-item'         => 'New item',
 	'todo-issue-summary'    => 'Issue summary:',
 	'todo-form-details'     => 'Details:',
-	'todo-form-email'       => 'To receive notification by e-mail when the item is closed, type your address here:',
+	'todo-form-email'       => 'To receive notification by e-mail when the item is closed, provide your address:',
 	'todo-form-submit'      => 'Submit query',
+	'right-todo'            => 'Have todo list',
+	'right-todosubmit'      => 'Restrict user\'s todo list right',
 );
 
 /** Message documentation (Message documentation)
