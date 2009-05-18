@@ -29,7 +29,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
 }
@@ -38,12 +38,13 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'ProtectSection',
 	'author' => 'ThomasV',
+	'version' => '1.0.1',
 	'description' => 'Allows authorised users to protect parts of a text',
 	'descriptionmsg' => 'protectsection_desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ProtectSection'
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['ProtectSection'] = $dir . 'ProtectSection.i18n.php';
 
 // Two new permissions
@@ -51,39 +52,33 @@ $wgGroupPermissions['sysop']['protectsection']         = true;
 $wgGroupPermissions['bureaucrat']['protectsection']    = true;
 $wgAvailableRights[] = 'protectsection';
 
-$wgExtensionFunctions[] = 'wfProtectSectionSetup';
-
 // Register hooks
 $wgHooks['ParserAfterTidy'][] = 'wfStripProtectTags' ;
 $wgHooks['EditFilter'][] = 'wfCheckProtectSection' ;
-
-function wfProtectSectionSetup() {
-	wfLoadExtensionMessages( 'ProtectSection' );
-}
 
 /**
  * @param &$parser The parser object
  * @param &$text The text being parsed
  * @param &$x Something not used FIXME
  */
-function wfStripProtectTags ( &$parser , &$text) {
+function wfStripProtectTags ( &$parser , &$text ) {
 
 	global $wgUser;
 
-	$tmp = explode("&lt;protect&gt;",$text);
+	$tmp = explode( "&lt;protect&gt;", $text );
 	$sections = array();
-	$sections[] = array_shift($tmp);
-	foreach($tmp as $block){
-		$tmp = explode("&lt;/protect&gt;",$block);
+	$sections[] = array_shift( $tmp );
+	foreach ( $tmp as $block ) {
+		$tmp = explode( "&lt;/protect&gt;", $block );
 		if ( $wgUser->isAllowed( 'protectsection' ) ) {
-			$sections[] = "<span class='protected'>".$tmp[0]."</span>";
-		}else{
-			$sections[] = "<span class='protected'>".preg_replace("/<div class=\"editsection(.*?)<\/div>/i", "", $tmp[0])."</span>";
+			$sections[] = "<span class='protected'>" . $tmp[0] . "</span>";
+		} else {
+			$sections[] = "<span class='protected'>" . preg_replace( "/<div class=\"editsection(.*?)<\/div>/i", "", $tmp[0] ) . "</span>";
 		}
-		array_shift($tmp);
-		$sections[] = implode('',$tmp);
+		array_shift( $tmp );
+		$sections[] = implode( '', $tmp );
 	}
-	$text = implode("",$sections);
+	$text = implode( "", $sections );
 	return true;
 }
 
@@ -96,14 +91,14 @@ function wfStripProtectTags ( &$parser , &$text) {
 function wfCheckProtectSection ( $editpage, $textbox1, $section )  {
 
 	# check for partial protection
-	global $wgUser,$wgParser;
+	global $wgUser, $wgParser;
 
 	if ( !$wgUser->isAllowed( 'protectsection' ) ) {
 		$modifyProtect = false;
-		$text1 = $editpage->mArticle->getContent(true);
+		$text1 = $editpage->mArticle->getContent( true );
 
-		if( $section != '' ) {
-			if( $section == 'new' ) {
+		if ( $section != '' ) {
+			if ( $section == 'new' ) {
 				$text1 = "";
 			} else {
 				$text1 = $wgParser->getSection( $text1, $section );
@@ -115,22 +110,24 @@ function wfCheckProtectSection ( $editpage, $textbox1, $section )  {
 		preg_match_all( "/<protect>(.*?)<\/protect>|<protect>(.*?)$/si", $text1, $list1, PREG_SET_ORDER );
 		preg_match_all( "/<protect>(.*?)<\/protect>|<protect>(.*?)$/si", $text2, $list2, PREG_SET_ORDER );
 
-		if( count($list1) != count($list2)) {
-			$msg = wfMsg( 'protectsection_add_remove');
+		wfLoadExtensionMessages( 'ProtectSection' );
+
+		if ( count( $list1 ) != count( $list2 ) ) {
+			$msg = wfMsg( 'protectsection_add_remove' );
 			$modifyProtect = true;
 		}
-		else for ( $i=0 ; $i < count( $list1 ); $i++ ) {
-			if( $list1[$i][0] != $list2[$i][0]) {
+		else for ( $i = 0 ; $i < count( $list1 ); $i++ ) {
+			if ( $list1[$i][0] != $list2[$i][0] ) {
 				$msg = wfMsg( 'protectsection_modify' );
 				$modifyProtect = true;
 				break;
 			}
 		}
 
-		if( $modifyProtect ) {
+		if ( $modifyProtect ) {
 			global $wgOut;
 			$wgOut->setPageTitle( wfMsg( 'protectsection_forbidden' ) );
-			$wgOut->addWikiText($msg);
+			$wgOut->addWikiText( $msg );
 			return false;
 		}
 	}
