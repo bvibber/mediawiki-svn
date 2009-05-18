@@ -10,6 +10,7 @@ $messages = array();
 
 /** English */
 $messages['en'] = array(
+	'fckeditor-desc' => 'Allow editing using the WYSIWYG editor FCKeditor',
 	'textrichditor' => 'Rich Editor',
 	'prefs-fckeditor' => 'Rich Editor',
 	'tog-riched_disable' => 'Disable rich editor',

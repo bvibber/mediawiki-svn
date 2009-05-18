@@ -69,9 +69,10 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'FCKeditor',
 	'author' => array( 'Frederico Caldeira Knabben', 'Wiktor Walc', 'others', 'Jack Phoenix' ),
-	'version' => '1.0',
+	'version' => '1.0.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FCKeditor_(Official)',
-	'description' => 'FCKeditor extension for editing wiki pages (WYSIWYG editor)'
+	'description' => 'FCKeditor extension for editing wiki pages (WYSIWYG editor)',
+	'descriptionmsg' => 'fckeditor-desc',
 );
 
 // Autoloadable classes
