@@ -15,7 +15,7 @@ require_once( "$IP/extensions/PovWatch/PovWatch.php" );
 </body>
 </html>
 <?php
-	exit(1);
+	exit( 1 );
 endif;
 
 $wgExtensionCredits['specialpage'][] = array(
@@ -37,7 +37,7 @@ $wgGroupPermissions['povwatch'] = array(
 	'povwatch_admin' => true,
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['PovWatch'] = $dir . 'PovWatch.i18n.php';
 $wgExtensionAliasesFiles['PovWatch'] = $dir . 'PovWatch.alias.php';
 $wgAutoloadClasses['SpecialPovWatch'] = $dir . 'PovWatch_body.php';

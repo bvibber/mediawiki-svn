@@ -1,5 +1,5 @@
 <?php
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class SpecialPovWatch extends SpecialPage {
 	public $mPosted, $mTitleText, $mSubscribe, $mUnsubscribe, $mPush;
@@ -9,9 +9,9 @@ class SpecialPovWatch extends SpecialPage {
 		SpecialPage::SpecialPage( 'PovWatch', 'povwatch_user' );
 	}
 
-	#-----------------------------------------------------------------------
+	# -----------------------------------------------------------------------
 	# UI functions
-	#-----------------------------------------------------------------------
+	# -----------------------------------------------------------------------
 
 	function execute( $subpage ) {
 		global $wgRequest, $wgUser, $wgOut;
@@ -223,7 +223,7 @@ EOT
 			$title = Title::makeTitle( $row->pwl_namespace, $row->pwl_title );
 			$titleLink = $skin->makeLinkObj( $title );
 			$user = Title::makeTitleSafe( NS_USER, $row->user_name );
-			$time = $wgLang->timeanddate( wfTimestamp(TS_MW, $row->pwl_timestamp), true );
+			$time = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->pwl_timestamp ), true );
 			$userLink = $skin->makeKnownLinkObj( $user, htmlspecialchars( $row->user_name ) );
 			$comment = $skin->commentBlock( $row->pwl_comment );
 
@@ -264,9 +264,9 @@ EOT
 		);
 	}
 
-	#-------------------------------------------------------------------------
+	# -------------------------------------------------------------------------
 	# Utility functions
-	#-------------------------------------------------------------------------
+	# -------------------------------------------------------------------------
 
 	function message( $message, $arg1 = '', $arg2 = '' ) {
 		return wfMsgNoTrans( 'povwatch_' . $message, $arg1, $arg2 );

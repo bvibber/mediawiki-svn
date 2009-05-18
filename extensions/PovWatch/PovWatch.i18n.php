@@ -1154,7 +1154,7 @@ $messages['ml'] = array(
 	'povwatch_no_subscribers' => 'വരിക്കാര്‍ നിലവിലില്ല.',
 	'povwatch_unsubscribe_intro' => 'താങ്കള്‍ PovWatch-ല്‍ അംഗത്വമെടുത്തിരിക്കുന്നു. അംഗത്വം വിടാന്‍ താഴെയുള്ള ബട്ടണ്‍ ഞെക്കുക.',
 	'povwatch_unsubscribe' => 'അണ്‍‌സബ്‌സ്ക്രൈബ്',
-	'povwatch_subscribe_intro' => 'താങ്കള്‍ PovWatchല്‍ അംഗത്വം എടുത്തിട്ടില്ല. 
+	'povwatch_subscribe_intro' => 'താങ്കള്‍ PovWatchല്‍ അംഗത്വം എടുത്തിട്ടില്ല.
 അംഗത്വം എടുക്കാന്‍ താഴെയുള്ള ബട്ടണ്‍ ഞെക്കുക.',
 	'povwatch_subscribe' => 'സബ്‌സ്ക്രൈബ്',
 	'povwatch_added' => 'ചേര്‍ത്തു',
@@ -1373,10 +1373,10 @@ Ver varsam når du skriv inn tittelen; òg ikkje-eksisterande sider kan verta la
 	'povwatch_comment' => 'Kommentar:',
 	'povwatch_no_log' => 'Det finst ingen element i loggen.',
 	'povwatch_no_subscribers' => 'Det finst ingen abonnentar.',
-	'povwatch_unsubscribe_intro' => 'Du abonnerer på PovWatch. 
+	'povwatch_unsubscribe_intro' => 'Du abonnerer på PovWatch.
 Trykk på knappen nedanfor for å stogga abonnementet.',
 	'povwatch_unsubscribe' => 'Stogg abonnement',
-	'povwatch_subscribe_intro' => 'Du abonnerer ikkje på PovWatch. 
+	'povwatch_subscribe_intro' => 'Du abonnerer ikkje på PovWatch.
 Trykk på knappen nedanfor for å abonnera.',
 	'povwatch_subscribe' => 'Abonner',
 	'povwatch_added' => 'lagt til',
