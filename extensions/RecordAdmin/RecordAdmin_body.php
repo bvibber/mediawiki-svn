@@ -120,8 +120,14 @@ class SpecialRecordAdmin extends SpecialPage {
 						$text = $text ? "{{" . "$type\n$text}}" : "{{" . "$type}}";
 						$success = $article->doEdit( $text, $summary, EDIT_NEW );
 
-						# Report success or error
-						if ( $success ) $wgOut->addHTML( "<div class='successbox'>" . wfMsg( 'recordadmin-createsuccess', $wpTitle ) . "</div>\n" );
+						# Redirect to view the record if successfully updated
+						if ( $success ) {
+							$wgOut->disable();
+							wfResetOutputBuffers();
+							header( "Location: " . $t->getFullUrl() );
+						}
+
+						# Or stay in edit view and report error
 						else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $type ) . "</div>\n" );
 					}
 				} else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-badtitle' ) . "</div>\n" );
@@ -182,8 +188,14 @@ class SpecialRecordAdmin extends SpecialPage {
 				$success = $article->doEdit( $text, $summary, EDIT_UPDATE|$minor );
 				if ($watch) $article->doWatch();
 
-				# Report success or error
-				if ( $success ) $wgOut->addHTML( "<div class='successbox'>" . wfMsg( 'recordadmin-updatesuccess', $type ) . "</div>\n" );
+				# Redirect to view the record if successfully updated
+				if ( $success ) {
+					$wgOut->disable();
+					wfResetOutputBuffers();
+					header( "Location: " . $rtitle->getFullUrl() );
+				}
+
+				# Stay at edit form and render error if not edited successfully
 				else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-updateerror' ) . "</div>\n" );
 				$wgOut->addHTML( "<br /><br /><br /><br />\n" );
 			}
