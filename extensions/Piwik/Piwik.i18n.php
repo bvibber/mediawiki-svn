@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'piwik-lastvisits' => 'Last visits',
 	'piwik-countries'  => 'Countries',
 	'piwik-browsers'   => 'Browsers',
-	'right-viewpiwik'  => 'View [[Special:Piwiki|Piwik statistics]]',
+	'right-viewpiwik'  => 'View [[Special:Piwik|Piwik statistics]]',
 );
 
 /** Message documentation (Message documentation)
