@@ -17,7 +17,7 @@ $messages['en'] = array(
 	'refreshspecial-title' => 'Refresh special pages',
 	'refreshspecial-help' => 'This special page provides means to manually refresh special pages.
 When you have chosen all pages that you want to refresh, click on the "Refresh selected" button below to refresh the selected special pages.
-Warning: the refresh may take a while on larger wikis.',
+\'\'\'Warning:\'\'\' The refresh may take a while on larger wikis.',
 	'refreshspecial-button' => 'Refresh selected',
 	'refreshspecial-fail' => 'Please check at least one special page to refresh.',
 	'refreshspecial-refreshing' => 'refreshing special pages',
@@ -27,7 +27,7 @@ Warning: the refresh may take a while on larger wikis.',
 	'refreshspecial-select-all-pages' => 'Select all pages',
 	'refreshspecial-link-back' => 'Go back to special page',
 	'refreshspecial-none-selected' => 'You have not selected any special pages. Reverting to default selection.',
-	'refreshspecial-db-error' => 'Failed: database error',
+	'refreshspecial-db-error' => 'Failed: Database error',
 	'refreshspecial-no-page' => 'No such special page',
 	'refreshspecial-slave-lagged' => 'Slave lagged, waiting…',
 	'refreshspecial-reconnected' => 'Reconnected.',
