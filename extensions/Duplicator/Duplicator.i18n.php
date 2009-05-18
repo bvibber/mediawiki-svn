@@ -35,6 +35,7 @@ An unknown error occurred.',
 	'duplicator-dest-exists'           => '[[$1]] already exists. Please provide a destination title which does not exist.',
 	'duplicator-toomanyrevisions'      => '[[$1]] has too many ($2) revisions and cannot be copied.
 The current limit is $3.',
+	'right-duplicate' => 'Duplicate pages',
 );
 
 /** Message documentation (Message documentation)
