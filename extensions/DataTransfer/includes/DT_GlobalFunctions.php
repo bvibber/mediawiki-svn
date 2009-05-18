@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('DT_VERSION','0.2');
+define('DT_VERSION','0.2.1');
 
 // constants for special properties
 define('DT_SP_HAS_XML_GROUPING', 1);
@@ -33,6 +33,7 @@ $wgAutoloadClasses['DTImportXML'] = $dtgIP . '/specials/DT_ImportXML.php';
 $wgJobClasses['dtImport'] = 'DTImportJob';
 $wgAutoloadClasses['DTImportJob'] = $dtgIP . '/includes/DT_ImportJob.php';
 $wgAutoloadClasses['DTXMLParser'] = $dtgIP . '/includes/DT_XMLParser.php';
+$wgHooks['AdminLinks'][] = 'dtfAddToAdminLinks';
 
 require_once($dtgIP . '/languages/DT_Language.php');
 $wgExtensionMessagesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Messages.php';
@@ -96,3 +97,15 @@ function dtfInitUserLanguage($langcode) {
 /**********************************************/
 /***** other global helpers               *****/
 /**********************************************/
+
+/**
+ * Add links to the 'AdminLinks' special page, defined by the Admin Links
+ * extension
+ */
+function dtfAddToAdminLinks($admin_links_tree) {
+	$import_export_section = $admin_links_tree->getSection(wfMsg('adminlinks_importexport'));
+	$main_row = $import_export_section->getRow('main');
+	$main_row->addItem(ALItem::newFromSpecialPage('ViewXML'));
+	$main_row->addItem(ALItem::newFromSpecialPage('ImportXML'));
+	return true;
+}
