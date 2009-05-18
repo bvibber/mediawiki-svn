@@ -1,13 +1,32 @@
 <?php
-mv_nomediawiki_config();
+//give us true for mediaWiki
+define( 'MEDIAWIKI', true );
 
-function mv_nomediawiki_config() {
-	global $wgJSAutoloadLocalClasses, $wgScriptPath;
-	$wgJSAutoloadLocalClasses = array();
-	$wgScriptPath = realpath(dirname(__FILE__).'../');
+define('MWEMBED_STANDALONE', true);
+
+//setup the globals: 	(for documentation see: DefaultSettings.php )
+
+$wgJSAutoloadLocalClasses = array();
+
+$IP = realpath(dirname(__FILE__).'/../');
+
+//$mwEmbedDirectory becomes the root $IP
+$mwEmbedDirectory = '';
+
+$wgUseFileCache = true;
+
+$wgEnableScriptLoaderJsFile = false;
+
+$wgEnableScriptLocalization = false;
+
+$wgStyleVersion = '218';
+
+$wgEnableScriptMinify = true;
+
+//get the autoLoadClasses
+require_once( realpath( dirname(__FILE__) ) . '/jsAutoloadLocalClasses.php' );
 	
-	//give us true for mediaWiki
-	define( 'MEDIAWIKI', true );
-}
-?>
+//get the JSmin class:
+require_once( realpath( dirname(__FILE__) ) . '/minify/JSMin.php' );
 
+?>

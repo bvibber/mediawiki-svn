@@ -583,7 +583,9 @@ $wgJSAutoloadLocalClasses = array(
 	'editPage'	=>	'js2/editPage.js',
 );
 
-//add the mwEmbed set of classes that we want to expose: (could be conditional) 
+//add the mwEmbed set of classes that we want to expose: (could be conditional)
+//@@todo move jsAutoloadLocalClasses.php to post Setup so we have $mwEmbedDirectory var
+$mwEmbedDirectory = "js2/mwEmbed/"; 
 require_once("$IP/js2/mwEmbed/php/jsAutoloadLocalClasses.php");
 
 class AutoLoader {

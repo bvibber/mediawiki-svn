@@ -830,7 +830,7 @@ remoteSearchDriver.prototype = {
 				'<h3 id="rsd_resource_title" style="margin:4px;">' + gM('rsd_resource_edit', rObj.title )  +'</h3>'+
 				'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:35px;left:5px;bottom:0px;'+
 					'width:' + (maxWidth + 25) + 'px;" >' +
-						mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
+						mv_get_loading_img('position:absolute;top:30px;left:30px') + 
 				'</div>'+
 				'<div id="clip_edit_ctrl" style="position:absolute;border:solid thin blue;'+
 					'top:35px;left:' + ( maxWidth + 30 ) +'px;bottom:0px;right:0px;padding:5px;overflow:auto;">'+
@@ -1059,7 +1059,7 @@ remoteSearchDriver.prototype = {
 									'<br style="clear both">'+
 									'<strong>Resource Page Description:</strong>'+
 									'<div id="rsd_import_desc" syle="display:inline;">'+
-										mv_get_loading_img('position:absolute;top:5px;left:5px', 'mv_img_loader') +
+										mv_get_loading_img('position:absolute;top:5px;left:5px') +
 									'</div>'+							
 								'</div>'+
 								'<div id="rds_edit_import_container" style="position:absolute;left:50%;' +

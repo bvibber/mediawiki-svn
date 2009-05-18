@@ -3,7 +3,7 @@ presently does hackery to work with Special:Upload page...
 will be replaced with upload API once that is ready
 */
 
-loadGM( { 
+loadGM({ 
 	"upload-enable-converter" : "Enable video converter (to upload source video not yet converted to theora format) <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>",
 	"upload-fogg_not_installed": "If you want to upload video consider installing <a href=\"http://firefogg.org\">firefogg.org</a>, <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>",
 	"upload-transcode-in-progress":"Doing Transcode & Upload (do not close this window)",
@@ -16,7 +16,7 @@ loadGM( {
 	"wgfogg_waring_bad_extension" : "You have selected a file with an unsuported extension. <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">More help</a>",
 	"upload-stats-fileprogres": "$1 of $2",
 	
-	"mv_upload_done" 	  : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",
+	"mv_upload_done" 	  : "Your upload <i>should be</i> accessible <a href=\"$1\">here</a>",
 	"upload-unknown-size": "Unknown size",	
 	
 	"successfulupload" : "Successful upload",
@@ -380,14 +380,14 @@ mvBaseUploadInterface.prototype = {
 		}
 	},
 	doUploadSwitch:function(){		
+		
 		js_log('mvUPload:doUploadSwitch()');
 		var _this = this;			
 		//issue a normal post request 		
 		if( _this.upload_mode == 'post' || $j('#wpSourceTypeFile').get(0).checked ){			
+			js_log('do normal submit form');
 			//update the status
-			$j('#dlbox-centered').html( '<h5>' + _this.getProgressTitle() + '</h5>' + 
-				mv_get_loading_img( 'left:40%;top:20%')
-			);
+			_this.updateEmptyLoadingStatus();		
 						
 			//do normal post upload no status indicators (also since its a file I think we have to submit the form)
 			_this.form_post_override = true;
@@ -400,24 +400,30 @@ mvBaseUploadInterface.prototype = {
 			
 			//do the submit :			
 			_this.editForm.submit();
+			return true;
 		}else if( _this.upload_mode == 'api' && $j('#wpSourceTypeURL').get(0).checked){	
 			js_log('doHttpUpload (no form submit) ');
 			//if the api is supported.. && source type is http do upload with http status updates
-			_this.doHttpUpload();					
+			_this.doHttpUpload();			
 		}else{
 			js_error( 'Error: unrecongized upload mode: ' + _this.upload_mode );
-		}		
+		}				
+		return false;
 	},
 	doHttpUpload:function(){
 		var _this = this;
-		//build the api query:
-		js_log('do doHttpUpload upload!');			
+		//set the http box to loading (in case we don't get an update for some time) 
+		$j('#dlbox-centered').html( '<h5>' + _this.getProgressTitle() + '</h5>' + 
+			mv_get_loading_img( 'left:40%;top:20%')
+		);	
+		//build the api query:	
 		do_api_req({
 			'data':{ 
 				'action'	: 'upload',
 				'url'		: $j('#wpUploadFileURL').val(),
 				'filename'	: $j('#wpDestFile').val(),
 				'comment' 	: $j('#wpUploadDescription').val(),
+				'asyncdownload': 'true'
 			},
 			'url' : _this.api_url 
 		}, function( data ){
@@ -512,47 +518,62 @@ mvBaseUploadInterface.prototype = {
 	},
 	processApiResult: function( apiRes ){	
 		var _this = this;			
-		//check for simple error		
-		if( apiRes.error ){
-			if( apiRes.error.code )
-				_this.updateUploadError( apiRes.error.code );				
-			//else just simple msg:  
-			_this.updateUploadError( apiRes.error );		
-			return false; 
-		}
 		//check for upload api error:
-		if( apiRes.upload && apiRes.upload.result == "Failure" ){
-			var error_code = (typeof apiRes.upload.code == 'object')? apiRes.upload.code[0]:apiRes.upload.code;						
+		// {"upload":{"result":"Failure","error":"unknown-error","code":{"status":5,"filtered":"NGC2207%2BIC2163.jpg"}}}
+		if( apiRes.error || ( apiRes.upload && apiRes.upload.result == "Failure" ) ){
+			
+			//check a few places for the error code: 
+			var error_code=0;
+			if( apiRes.error && apiRes.error.code ){				
+				error_code = apiRes.error.code;
+			}else if( apiRes.upload.code ){
+				if(typeof apiRes.upload.code == 'object'){				
+					if(apiRes.upload.code[0]){
+						error_code = apiRes.upload.code[0];
+					}
+					if(apiRes.upload.code['status']){
+						error_code = apiRes.upload['status'];
+					}
+				}else{
+					apiRes.upload.code;
+				}
+			}	
+			
+			var error_msg = '';		
+			if(typeof apiRes.error == 'string')
+				error_msg = apiRes.error;		
 			//error space is too large so we don't front load it
 			//do a remote call to get the error msg: 
 			if(!error_code || error_code == 'unknown-error'){
-				_this.updateUploadError( gM('unknown-error') );	
+				js_log('Error: apiRes: ' + JSON.stringify( apiRes) );
+				_this.updateUploadError( gM('unknown-error') + '<br>' + error_msg);	
 			}else{
 				gMsgLoadRemote(error_code, function(){
 					js_log('send msg: ' + gM( error_code ));
 					_this.updateUploadError( gM( error_code ));
 				});
-			}			
-			return false; 
+			}				
+			return ;		
 		}
 		//check for upload_session key for async upload:
 		if( apiRes.upload && apiRes.upload.upload_session_key ){							
 			//set the session key
-			_this.upload_session_key = data.upload.upload_session_key;
+			_this.upload_session_key = apiRes.upload.upload_session_key;
 			js_log("set session key: " + _this.upload_session_key);
 			//do ajax upload status: 
-			_this.doAjaxUploadStatus();
-			return true;
+			_this.doAjaxUploadStatus();			
+			return ;
 		}		
 		
 		if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){
 			_this.updateUploadDone( apiRes.upload.imageinfo.descriptionurl );
-			return true;
+			return ;
 		}		
 				
 		//check for upload error: 
 		if( apiRes.upload && apiRes.upload.error){
-			
+			js_log(' apiRes.upload.error: ' +  apiRes.upload.error );
+			return ;
 		}
 		//check for known warnings: 
 		if( apiRes.upload.warnings ){	
@@ -608,6 +629,11 @@ mvBaseUploadInterface.prototype = {
 	updateUploadDone:function( url ){
 		$j( '#dlbox-centered' ).html( '<h3>' + gM('successfulupload') + '</h3>' +
 			gM( 'mv_upload_done', url) );	
+	},
+	updateEmptyLoadingStatus:function(){
+		$j('#dlbox-centered').html( '<h5>' + _this.getProgressTitle() + '</h5>' + 
+			mv_get_loading_img( 'left:40%;top:20%')
+		);
 	},
 	getProgressTitle:function(){
 		return gM('upload-in-progress');

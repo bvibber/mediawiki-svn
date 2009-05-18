@@ -120,12 +120,12 @@ class ApiUpload extends ApiBase {
 				);				
 			} elseif( isset( $this->mParams['url'] ) ) {
 														
-				$this->mUpload = new UploadFromUrl();
-				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url'], $this->mParam['asyncdownload']);	
+				$this->mUpload = new UploadFromUrl();				
+				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url'], $this->mParams['asyncdownload']);	
 				
 				$status = $this->mUpload->fetchFile();
 				if( !$status->isOK() ){								
-					return $this->dieUsage( 'fetchfileerror', $status->getWikiText());
+					return $this->dieUsage( 'fetchfileerror', $status->getWikiText() );
 				}														
 				//check if we doing a async request set session info and return the upload_session_key)
 				if( $this->mUpload->isAsync() ){
@@ -306,7 +306,7 @@ class ApiUpload extends ApiBase {
 			'url' => 'Url to upload from',
 			'enablechunks' => 'Boolean If we are in chunk mode; accepts many small file POSTs',
 			'comment' => 'Upload comment or initial page text',
-			'asyncdownload' => 'If we should download asyncrously (returns a upload session key to get status updates in subquent calls)',
+			'asyncdownload' => 'If we should download the url asyncrously usefull for large http downloads (returns a upload session key to get status updates in subquent calls)',
 			'watch' => 'Watch the page',
 			'ignorewarnings' => 'Ignore any warnings',					
 			'done'	=> 'When used with "chunks", Is sent to notify the api The last chunk is being uploaded.',

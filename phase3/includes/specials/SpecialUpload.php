@@ -571,8 +571,8 @@ class UploadForm extends SpecialPage {
 
 		$adc = wfBoolToStr( $useAjaxDestCheck );
 		$alp = wfBoolToStr( $useAjaxLicensePreview );
-		$autofill = wfBoolToStr( $this->mDesiredDestName == '' );
-
+		$autofill = wfBoolToStr( $this->mDesiredDestName == '' );		
+		
 		$wgOut->addScript( "<script type=\"text/javascript\">
 wgAjaxUploadDestCheck = {$adc};
 wgAjaxLicensePreview = {$alp};

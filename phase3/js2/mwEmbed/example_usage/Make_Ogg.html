@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Firefogg - Make Ogg Video in your Browser</title>
+	<script type="text/javascript" src="../jsScriptLoader.php?class=mv_embed"></script>
+<style type="text/css" media="all">@import "http://www.firefogg.org/css/style.css";</style>
+
+<script type="text/javascript">
+mwAddOnloadHook(function(){
+        $j('.install').hide();        
+        if(!($j.browser.mozilla && $h.browser.version >= '1.9.1')) {
+          $j('#use_firefox').show();
+        }else {
+          if(typeof(Firefogg) != 'undefined' && Firefogg().version >= '0.9.5') {	    
+            $j('#installed').show();
+	    	setupFirefogg();	
+          } else {
+            if(navigator.oscpu && navigator.oscpu.search('Linux') >= 0)
+              $j('#install_linux').show();
+            else if(navigator.oscpu && navigator.oscpu.search('Mac') >= 0)
+              $j('#install_macosx').show();
+            else if(navigator.oscpu && navigator.oscpu.search('Win') >= 0)
+              $j('#install_win32').show();
+          }
+        }            		
+});
+
+//sets up the local settings for the encode (restored from a cookie if you have them)
+function setupSettings( force ){
+	if(!force){
+		if($.cookie('firefogg_settings')){
+			firefogg_settings = JSON.parse( $.cookie('firefogg_settings') );
+		}
+	}
+	for(var i in firefogg_defaults){
+		if( firefogg_defaults[i]['d'] ){
+			firefogg_settings[i] = firefogg_defaults[i]['d'];
+		}
+	}
+	setValuesInHtml();
+}
+function setValuesInHtml(){
+	//set the actual HTML: 
+	$.each(firefogg_settings, function(inx, val){		
+		if($j('#_'+inx).length !=0){
+			$j('#_'+inx).val( val );
+		}
+	})
+}
+function saveSettings(){
+	$.cookie('firefogg_settings', JSON.stringify( firefogg_settings ) );
+}
+
+function setupFirefogg(){
+	//get all the libraries we will need (should be single scriptLoader request 
+	//(unless you loaded mv_embed.js without php in which case lots of js load requests:) 
+	mvJsLoader.doLoad({
+		'mvUploader'		: 	'libAddMedia/mvUploader.js',
+		'mvFirefogg'		: 	'libAddMedia/mvFirefogg.js',
+		'mvAdvFirefogg'		:	'libAddMedia/mvAdvFirefogg.js',
+		'$j.cookie'			:	'jquery/jquery.ui-1.7.1/external/jquery.cookie.js',
+		'$j.ui'				:	'jquery/jquery.ui-1.7.1/ui/ui.core.js',		
+		'$j.ui.accordion'	:	'jquery/jquery.ui-1.7.1/ui/ui.accordion.js',
+		'$j.ui.slider'		:	'jquery/jquery.ui-1.7.1/ui/ui.slider.js';
+	},function(){
+		//do setupSettings: 
+		//for all options see /* iniObj in mvAdvFirefogg.js */
+		mvAdvFirefogg = new mvAdvFirefogg({			
+			//set up the targets: 
+			'btn_select_file'    	: '#select_file',
+			'btn_select_new_file' 	: '#select_new_file',
+			'btn_save_local_file' 	: '#save_local_file',
+			//the control container (where we put all the controls) 
+			'control_container'		: '#control_container'
+		});						
+	);	
+}
+</script>
+</head><body>
+<div id="main">
+  <h1><a href="http://www.firefogg.org/index.html"><img 
+src="http://www.firefogg.org/png/firefogg.png" alt="Firefogg"></a><br>
+Make Ogg Video</h1>
+<br>
+<center>
+<table width="500" border="0"> 
+<tr>
+<td colspan="2">
+	<div id="install_linux" class="install">
+  <a href="linux/Firefogg-0.9.5.xpi">Install Firefogg</a>
+</div>
+<div id="install_macosx" class="install">
+  <a href="macosx/Firefogg-0.9.5.xpi">Install Firefogg</a>
+</div>
+<div id="install_win32" class="install">
+  <a href="win32/Firefogg-0.9.5.xpi">Install Firefogg</a>
+</div>
+<div id="installed" class="install" style="background:#FFF">
+  <a href="http://firefogg.org">Firefogg</a> installed. </a>
+</div>
+<div id="use_firefox" class="install">
+  You need <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a><br>to use this extension.
+</div>
+
+</td>
+</tr>
+<tr>
+<td>
+
+<input style="font-size:150%" id="select_file" type="button" value="Select File" disabled="true">	
+<input style="font-size:150%;display:none" id="save_local_file" type="button" value="Save Ogg File" >
+<input style="font-size:150%;display:none" id="select_new_file" type="button" value="Select New File" >
+
+</td>
+<td id="file_info">
+</td>
+</tr>
+<tr>
+<td colspan="2" style="display:none" id="fogg_control_td" >
+	<div style="height:400px" id="control_container"></div>
+<br><br>
+<span style="font:size:80%">Built using <a href="http://firefogg.org">firefogg</a> & <a href="http://jqueryui.com/">jquery.ui</a> Supports 
+<a href="javascript:(function(){if%20(!/Firefox[\/\s](\d+\.\d+)/.test(navigator.userAgent)){alert('Sorry,%20due%20to%20security%20restrictions,%20this%20tool%20only%20works%20in%20Firefox');%20return%20false;%20};%20if(window.jquitr){%20jquitr.addThemeRoller();%20}%20else{%20jquitr%20=%20{};%20jquitr.s%20=%20document.createElement('script');%20jquitr.s.src%20=%20'http://jqueryui.com/themeroller/developertool/developertool.js.php';%20document.getElementsByTagName('head')[0].appendChild(jquitr.s);}%20})();">custom themes</a>, <b>remix me</b>
+</td>
+</tr>
+</table>
+  <h2></h2>
+</body></html>

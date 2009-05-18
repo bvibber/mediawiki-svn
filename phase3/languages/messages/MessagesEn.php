@@ -1847,7 +1847,7 @@ See the [[Special:NewFiles|gallery of new files]] for a more visual overview.',
 'wgfogg_waring_bad_extension'=> 'You have selected a file with an unsuported extension. <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">More help</a>',
 'upload-stats-fileprogres' => '$1 of $2',
 
-'mv_upload_done' 	  => 'Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>',
+'mv_upload_done' 	  => 'Your upload <i>should be</i> accessible <a href="$1">here</a>',
 'upload-unknown-size' => 'Unknown size',	
 'unknown-error' => 'Unknown Error',
 'return-to-form' => 'Return to form',	

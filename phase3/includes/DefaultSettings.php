@@ -2579,7 +2579,15 @@ $wgEnableScriptLoaderJsFile = false;
  */
 $wgEnableScriptMinify = true;
 
+/*
+ * boolean; if we should enable javascript localization (it loads loadGM json call with mediaWiki msgs)
+ */
+$wgEnableScriptLocalization = true;
 
+/*
+ * path for mwEmbed normally js2/mwEmbed/
+ */
+$mwEmbedDirectory = "js2/mwEmbed/";
 
 /**
  * An array of extension types and inside that their names, versions, authors,

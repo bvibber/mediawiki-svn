@@ -2,18 +2,13 @@
 //This core jsScriptLoader class provides the script loader functionality
 
 //check if we are being invoked in mediaWiki context or stand alone usage:
-if ( !defined( 'MEDIAWIKI' ) ){
-	//make sure we are not in an mediaWiki install (where the only entry point should be the root scriptLoader)
-	if(is_file( dirname(__FILE__) . '../../mvwScriptLoader.php')){
-		die('should use the mediaWiki script loader entry point (not the mv_embed scriptloader)');
-	}		
-	//load config stub
-	require_once( realpath( dirname(__FILE__) ) . 'php/noMediaWikiConfig.php' );
-	//get the autoLoadClasses
-	require_once( realpath( dirname(__FILE__) ) . 'php/jsAutoloadLocalClasses.php' );	
+if ( !defined( 'MEDIAWIKI' ) ){			
+	//load noMediaWiki helper: 
+	require_once( realpath( dirname(__FILE__) ) . '/php/noMediaWikiConfig.php' );
 	
 	//run the main action: 
 	$myScriptLoader = new jsScriptLoader();
+	//preset request values via normal $_GET opperation: 
 	$myScriptLoader->doScriptLoader();
 }
 
@@ -25,13 +20,14 @@ class jsScriptLoader{
 	var $error_msg ='';
 	var $debug = false;
 	var $jsvarurl =false; // if we should include generated js (special class '-') 
+	var $doProcReqFlag =true; 
 	
 	function doScriptLoader(){
 		global 	$wgJSAutoloadClasses,$wgJSAutoloadLocalClasses, $wgEnableScriptLoaderJsFile, $wgRequest, $IP, 
 				$wgEnableScriptMinify, $wgUseFileCache;			
 				
-		//process the request
-		$this->procRequestVars();			
+		//process the request		
+		$this->procRequestVars();				
 				
 		$wgUseFileCache=false;
 		//if cache is on and file is present grab it from there:			
@@ -43,7 +39,10 @@ class jsScriptLoader{
 				$this->sFileCache->loadFromFileCache();
 			}
 		}		
-		
+		//setup script loader header info
+		$this->jsout .= 'var mwSlScript = "'. $_SERVER['SCRIPT_NAME'] . '";' . "\n";
+		$this->jsout .= 'var mwSlGenISODate = "'. date('c') . '";'  ."\n";
+		$this->jsout .= 'var mwSlURID = "' . $this->urid . '";'  ."\n";
 		//Build the Output: 
 		//swap in the appropriate language per js_file		
 		foreach($this->jsFileList as $classKey => $file_name){
@@ -74,7 +73,10 @@ class jsScriptLoader{
 					//its a wikiTitle append the output of the wikitext:										
 					$t =  Title::newFromText ( $title_block );
 					$a =  new Article( $t );
-					$this->jsout .= $a->getContent() .  "\n";
+					//only get content if the page is not empty:
+					if($a->getID() !== 0 ){
+						$this->jsout .= $a->getContent() .  "\n";
+					}					
 					continue;
 				}				
 			}
@@ -87,8 +89,7 @@ class jsScriptLoader{
 */\n";					
 				$this->jsout .= ( $this->doProccessJsFile( $file_name ) ). "\n";
 			}
-		}
-		
+		}		
 		//check if we should minify : 
 		if( $wgEnableScriptMinify && !$this->debug){			
 			//do the minification and output			
@@ -121,15 +122,27 @@ class jsScriptLoader{
 	 * updates the proc Request  
 	 */
 	function procRequestVars(){
-		global $wgRequest, $wgContLanguageCode, $wgEnableScriptMinify, $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses;
-
-		//set debug flag:
-		if( $wgRequest->getVal('debug') || $wgEnableScriptDebug==true )
-			$this->debug = true;
+		global $wgRequest, $wgContLanguageCode, $wgEnableScriptMinify, $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgStyleVersion;
 		
+		//set debug flag: 
+		if( (isset($_GET['debug']) && $_GET['debug']=='true') && (isset($wgEnableScriptDebug) && $wgEnableScriptDebug==true )){
+				$this->debug = true;
+		}		
+		//set the urid: 		
+		if( isset( $_GET['urid'] ) && $_GET['urid'] !=''){
+			$this->urid = htmlspecialchars( $_GET['urid'] );
+		}else{			
+			//just give it the current style sheet id:			
+			//@@todo read the svn version number					
+			$this->urid =  $wgStyleVersion;			
+		}	
+		
+		$reqClassList = false;	
+		if( isset($_GET['class']) && $_GET['class']!=''){
+			$reqClassList = explode( ',', $_GET['class'] );
+		}		
 		//check for the requested classes 
-		if( $wgRequest->getVal('class') ){
-			$reqClassList = explode( ',', $wgRequest->getVal('class') );			
+		if( $reqClassList ){					
 			//clean the class list and populate jsFileList 	
 			foreach( $reqClassList as $reqClass ){
 				if(trim($reqClass) != ''){									
@@ -154,7 +167,7 @@ class jsScriptLoader{
 					}					
 				}
 			}
-		}	
+		}			
 		//check for requested files if enabled: 
 		if( $wgEnableScriptLoaderJsFile ){
 			if( $wgRequest->getVal('files')){
@@ -166,24 +179,18 @@ class jsScriptLoader{
 					//only allow alphanumeric underscores periods and ending with .js
 					$reqFile = ereg_replace("[^A-Za-z0-9_\-\/\.]", "", $reqFile );				
 					if( substr($reqFile, -3) == '.js' ){
-						if( is_file( $IP . $reqFile) && !in_array($reqFile, $jsFileList ) ){
+						//don't add it twice: 
+						if( !in_array($reqFile, $jsFileList )) {
 		 					$this->jsFileList[] = $IP . $reqFile;
 		 					$this->rKey.=$reqFile;
-		 				}else{
-		 					$this->error_msg.= 'Requested File: ' . $reqFile . ' not found' . "\n";
-		 				}						
+		 				}					
+					}else{
+						$this->error_msg.= 'Not valid requsted javascript file' . "\n";
 					}				 				
 				}
 			}
 		}
-		//check for a unique request id (should be tied to the svn version for "fresh" copies of things
-		if( $wgRequest->getVal('urid') ) {
-			$this->urid = $wgRequest->getVal('urid');
-		}else{			
-			//just give it the current version number:
-			global $IP; 
-			$this->urid =  SpecialVersion::getSvnRevision( $IP );
-		}		
+		
 		//add the language code to the rKey:
 		$this->rKey .= '_' . $wgContLanguageCode;
 		
@@ -196,20 +203,28 @@ class jsScriptLoader{
 		}
 	}
 	function doProccessJsFile( $file_name ){
-		//set working directory to root path: 
-		
-		$str = file_get_contents($IP.$file_name);
+		global $IP, $wgEnableScriptLocalization, $IP, $mwEmbedDirectory;			
+				
+		//load the file: 				
+		$str = @file_get_contents("{$IP}/{$file_name}");				
+
+		if($str===false){
+			//@@todo check php error level (don't want to expose paths if errors are hidden) 
+			$this->error_msg.= 'Requested File: ' . htmlspecialchars( $file_name ) . ' could not be read' . "\n";
+			return '';
+		}
 		$this->cur_file = $file_name;
+		
 		//strip out js_log debug lines not much luck with this regExp yet:
 		//if( !$this->debug )
-		//	 $str = preg_replace('/\n\s*js_log\s*\([^\)]([^;]|\n])*;/', "\n", $str);		
-		//die('<pre>'.$str);
+		//	 $str = preg_replace('/\n\s*js_log\s*\([^\)]([^;]|\n])*;/', "\n", $str);
 		
 		// do language swap	
-		$str = preg_replace_callback('/loadGM\s*\(\s*{(.*)}\s*\)\s*/siU',	//@@todo fix: will break down if someone does }) in their msg text 
+		if($wgEnableScriptLocalization)
+			$str = preg_replace_callback('/loadGM\s*\(\s*{(.*)}\s*\)\s*/siU',	//@@todo fix: will break down if someone does }) in their msg text 
 										array($this, 'languageMsgReplace'),
 										$str);																			
-	
+
 		return $str;					
 	}
 	function languageMsgReplace($jvar){

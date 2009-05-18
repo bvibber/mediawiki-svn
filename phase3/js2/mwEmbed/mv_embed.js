@@ -44,6 +44,8 @@ if(!mv_default_video_size)
 
 var mediaWiki_mvEmbed_path = 'js2/mv_embed/';
 
+//
+
 var global_player_list = new Array(); //the global player list per page
 var global_req_cb = new Array(); //the global request callback array
 var _global = this; //global obj
@@ -263,10 +265,9 @@ var mvJsLoader = {
 				callback();
 				return ;
 			}					 						
-	 		//check if we should use the script loader to combine all the requests into one:
-	 		var slpath = getScriptLoaderPath();	 		
-		 	if( slpath ){		
-		 		var class_set = '';
+	 		//check if we should use the script loader to combine all the requests into one:	 		
+		 	if( mwSlScript ){
+				var class_set = '';
 		 	 	var last_class = '';	
 		 	 	var coma = ''; 
 		 	 	for( var i in libs ){
@@ -278,7 +279,7 @@ var mvJsLoader = {
 		 	 		}
 		 	 	}	 
 		 	 	var dbug_attr = (parseUri( getMvEmbedURL() ).queryKey['debug'])?'&debug=true':''; 		 					 	 	 	
-		 	 	this.libs[ last_class ] = slpath + '?class=' + class_set +
+		 	 	this.libs[ last_class ] = mwSlScript + '?class=' + class_set +
 		 	 						'&urid=' + getMvUniqueReqId() + dbug_attr;
 		 	 								
 		 	}else{			 	 		 	 			 		 	 
@@ -450,7 +451,10 @@ function mwdomReady(force){
 	}
 }
 //mwAddOnloadHook: ensure jQuery and the DOM are ready:  
-function mwAddOnloadHook( func ) {	
+function mwAddOnloadHook( func ) {
+	//issue a style sheet request (no load checks on style sheets:
+ 	if(!styleSheetPresent( mv_embed_path + 'skins/'+mv_skin_name+'/styles.css'))
+		loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');		
 	//if we have already run the dom ready just run the function directly: 
 	if( mvJsLoader.doneReadyEvents ){
 		//make sure jQuery is there: 
@@ -854,20 +858,6 @@ function loadExternalCss(url){
    e.type = "text/css";
    e.rel = 'stylesheet';
    document.getElementsByTagName("head")[0].appendChild(e);
-}
-function getScriptLoaderPath(){
-	var eurl = getMvEmbedURL();	
-	//script loader by either of its two names
-	var smv = 'jsScriptLoader.php';
-	var smw = 'mwScriptLoader.php';
-	//get just the script loader part of the url: 	
-	if( eurl.indexOf(smv) != -1 ){
-		return eurl.substr(0, (eurl.indexOf(smv) + smv.length));
-	}else if( eurl.indexOf(smw) != -1 ){
-		return eurl.substr(0, (eurl.indexOf(smw) + smw.length));
-	}else{
-		return false; //could not get script loader location
-	}	
 }
 function getMvEmbedURL(){	
 	if( _global['mv_embed_url'] ) 

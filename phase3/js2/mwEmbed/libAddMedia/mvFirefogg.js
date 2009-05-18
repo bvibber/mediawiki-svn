@@ -2,20 +2,21 @@
 * autodetects: new upload api or old http POST.  
  */
 
-
 var default_firefogg_options = {
 	'upload_done_action':'redirect',
 	'fogg_enabled':false,
 	'api_url':null,
-	'passthrough': false
-}
+	'passthrough': false	
+}	
+
+
 var mvFirefogg = function(initObj){
 	return this.init( initObj );
 }
 mvFirefogg.prototype = { //extends mvBaseUploadInterface
 
 	min_firefogg_version : '0.9.5',
-	fogg_enabled : false, 			//if firefogg is enabled or not. 	
+	fogg_enabled : false, 		//if firefogg is enabled or not. 	
 	encoder_settings:{			//@@todo allow server to set this 
 		'maxSize': 400, 
 		'videoBitrate': 400,
@@ -47,7 +48,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			}
 		}			
 	},
-	setupForm: function(){		
+	setupForm: function(){
 		var _this = this;		
 		//call the parent form setup
 		_this.pe_setupForm();

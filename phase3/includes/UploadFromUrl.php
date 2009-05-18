@@ -16,7 +16,7 @@ class UploadFromUrl extends UploadBase {
 	}	
 	/*entry point for Api upload:: ASYNC_DOWNLOAD (if possible) */
 	function initialize( $name, $url, $asyncdownload = Http::SYNC_DOWNLOAD ) {		
-		global $wgTmpDirectory, $wgPhpCliPath;		
+		global $wgTmpDirectory, $wgPhpCliPath;				
 		
 		if($asyncdownload &&  $wgPhpCliPath && wfShellExecEnabled() ){
 			$this->dl_mode = Http::ASYNC_DOWNLOAD;
