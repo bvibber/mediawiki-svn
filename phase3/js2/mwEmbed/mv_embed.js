@@ -266,7 +266,7 @@ var mvJsLoader = {
 				return ;
 			}					 						
 	 		//check if we should use the script loader to combine all the requests into one:	 		
-		 	if( mwSlScript ){
+		 	if( typeof mwSlScript != 'undefined' ){
 				var class_set = '';
 		 	 	var last_class = '';	
 		 	 	var coma = ''; 
@@ -375,17 +375,18 @@ var mvJsLoader = {
 	embedVideoCheck:function( callback ){
 		var _this = this;
 		//issue a style sheet request (no load checks on style sheets):
-	 	if(!styleSheetPresent( mv_embed_path + 'skins/'+mv_skin_name+'/styles.css'))
-			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
+	 	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
 		//make sure we have jQuery		
 		_this.jQueryCheck(function(){
 			_this.doLoad({
 				'embedVideo'	  : 'libEmbedVideo/mv_baseEmbed.js',
-				'$j.cookie'		  :	'jquery/jquery.ui-1.7.1/external/jquery.cookie.js',
+				'$j.cookie'		  :	'jquery/jquery.ui-1.7.1/external/cookie/jquery.cookie.js',
 				'$j.ui.mouse'	  : 'jquery/jquery.ui-1.7.1/ui/ui.core.js',
 				'$j.ui.droppable' : 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js',
 				'$j.ui.draggable' : 'jquery/jquery.ui-1.7.1/ui/ui.draggable.js'
 				},function(){
+					//set up embedTypes (load from cookie if possible) 		
+					embedTypes.init();
 					js_log('embedVideo libs ready run callback:: ');			
 					callback();							
 				});
@@ -453,8 +454,7 @@ function mwdomReady(force){
 //mwAddOnloadHook: ensure jQuery and the DOM are ready:  
 function mwAddOnloadHook( func ) {
 	//issue a style sheet request (no load checks on style sheets:
- 	if(!styleSheetPresent( mv_embed_path + 'skins/'+mv_skin_name+'/styles.css'))
-		loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');		
+ 	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');		
 	//if we have already run the dom ready just run the function directly: 
 	if( mvJsLoader.doneReadyEvents ){
 		//make sure jQuery is there: 
@@ -545,8 +545,7 @@ function mv_do_remote_search(initObj){
 	js_log(':::::mv_do_remote_search::::');
 	
 	//issue a load skin request: 
-	if(!styleSheetPresent( mv_embed_path + 'skins/'+mv_skin_name+'/styles.css'))
-		loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
+	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
 			
 	//insure we have the basic libs (jquery etc) : 
 	mvJsLoader.jQueryCheck(function(){
@@ -565,8 +564,7 @@ function mv_do_remote_search(initObj){
 function mv_do_sequence(initObj){
 	//debugger;
 	//issue a request to get the css file (if not already included):
-	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css'))
-		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');
+	loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');
 	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
 	mvJsLoader.embedVideoCheck(function(){		
 		//load playlist object and drag,drop,resize,hoverintent,libs
@@ -842,22 +840,24 @@ function styleSheetPresent(url){
     style_elements = document.getElementsByTagName('link');
     if( style_elements.length > 0) {
         for(i = 0; i < style_elements.length; i++) {
-			if(style_elements[i].href==url)
+			if(style_elements[i].href == url)
 				return true;
 		}
     }
     return false;
 }
 function loadExternalCss(url){
-	if( url.indexOf('?') == -1 ){
-		url+='?'+getMvUniqueReqId();
+	if( !styleSheetPresent(url) ){
+		if( url.indexOf('?') == -1 ){
+			url+='?'+getMvUniqueReqId();
+		}
+	   js_log('load css: ' + url);
+	   var e = document.createElement("link");
+	   e.href = url;
+	   e.type = "text/css";
+	   e.rel = 'stylesheet';
+	   document.getElementsByTagName("head")[0].appendChild(e);
 	}
-   js_log('load css: ' + url);
-   var e = document.createElement("link");
-   e.href = url;
-   e.type = "text/css";
-   e.rel = 'stylesheet';
-   document.getElementsByTagName("head")[0].appendChild(e);
 }
 function getMvEmbedURL(){	
 	if( _global['mv_embed_url'] ) 
@@ -883,14 +883,16 @@ function getMvUniqueReqId(){
 	if( _global['urid'] ) 
 		return _global['urid'];		
 	var mv_embed_url = getMvEmbedURL();		
-	//if in debug mode get a fresh unique request key: 
-	if(  parseUri( mv_embed_url ).queryKey['debug'] == 'true'){
-		var d = new Date();
-		return d.getTime()
-	}
 	//if we have a uri retun that: 
 	var urid = parseUri( mv_embed_url).queryKey['urid']
 	if( urid ){
+		_global['urid']	= urid;
+		return urid;
+	}
+	//if in debug mode get a fresh unique request key: 
+	if(  parseUri( mv_embed_url ).queryKey['debug'] == 'true'){
+		var d = new Date();
+		var urid = d.getTime();
 		_global['urid']	= urid;
 		return urid;
 	}

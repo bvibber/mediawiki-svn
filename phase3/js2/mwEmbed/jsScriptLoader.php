@@ -203,7 +203,7 @@ class jsScriptLoader{
 		}
 	}
 	function doProccessJsFile( $file_name ){
-		global $IP, $wgEnableScriptLocalization, $IP, $mwEmbedDirectory;			
+		global $IP, $wgEnableScriptLocalization, $IP;			
 				
 		//load the file: 				
 		$str = @file_get_contents("{$IP}/{$file_name}");				

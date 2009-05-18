@@ -2,7 +2,7 @@ var omtkEmbed={
 	instanceOf:'omtkEmbed',
 	supports: {
 		'pause':true,     
-    	'time_display':true
+    		'time_display':true
 	},
 	getEmbedHTML : function (){			
 		var embed_code =  this.getEmbedObj();	

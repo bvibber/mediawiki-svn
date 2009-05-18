@@ -2472,7 +2472,7 @@ mediaPlayers.prototype =
     },
     loadPreferences : function()
     {
-        this.preference = new Object();
+        this.preference = new Object();                
     	// see if we have a cookie set to a clientSupported type:
 		var cookieVal = $j.cookie( 'ogg_player_exp' );
 		if (cookieVal)
@@ -2683,5 +2683,3 @@ var embedTypes = {
 		 return hasObj;
 	 }	 
 }
-//set up embedTypes		
-embedTypes.init();

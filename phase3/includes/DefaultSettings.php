@@ -2587,7 +2587,15 @@ $wgEnableScriptLocalization = true;
 /*
  * path for mwEmbed normally js2/mwEmbed/
  */
-$mwEmbedDirectory = "js2/mwEmbed/";
+$wgMwEmbedDirectory = "js2/mwEmbed/";
+
+/*
+ * wgDebugJavaScript used to turn on debuging for the javascript script-loader 
+ * & forces fresh copies of javascript if the script loader is offf
+ */
+
+$wgDebugJavaScript = false;
+
 
 /**
  * An array of extension types and inside that their names, versions, authors,

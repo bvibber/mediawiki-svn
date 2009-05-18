@@ -149,7 +149,7 @@ class OutputPage {
 			Xml::element( 'script', 
 				array(
 					'type' => $wgJsMimeType,
-					'src' => "$path?$wgStyleVersion",
+					'src' => "$path?" . $this->getURIDparam(),
 				),
 				'', false
 			)
@@ -172,7 +172,7 @@ class OutputPage {
 				if(isset( $wgJSAutoloadLocalClasses[$s] )){					
 						$so.= Xml::element( 'script', array(
 								'type' => $wgJsMimeType,
-								'src' => "{$wgScriptPath}/{$wgJSAutoloadLocalClasses[$s]}?$wgStyleVersion",
+								'src' => "{$wgScriptPath}/{$wgJSAutoloadLocalClasses[$s]}?" . $this->getURIDparam()
 							),
 							'', false
 						);
@@ -214,7 +214,7 @@ class OutputPage {
 	 *
 	 */
 	function getScriptLoaderJs( $forceClassAry=false ){
-		global $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgRequest;
+		global $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgRequest, $wgDebugJavaScript;
 		
 		if(!$forceClassAry){
 			$class_list = implode(',', $this->mScriptLoaderClassList );
@@ -222,7 +222,7 @@ class OutputPage {
 			$class_list = implode(',', $forceClassAry );
 		}
 				
-		$debug_param = ( $mvgJSDebug ||
+		$debug_param = ( $wgDebugJavaScript ||
 						 $wgRequest->getVal('debug')=='true' ||
 						 $wgRequest->getVal('debug')=='1' ) 
 			 		 ? '&debug=true' : '';	
@@ -231,19 +231,23 @@ class OutputPage {
 		//@@todo we should check the packaged message text in this javascript file for updates and update the $mScriptLoaderURID id (in getJsClassFromPath)  
 
 		//generate the unique request param (combine with the most recent revision id of any wiki page with the $wgStyleVersion var)
-		if( $this->debug ){
-			$urid_param = "&urid=". time();
-		}else{
-			$urid_param = "&urid={$wgStyleVersion}_{$this->mLatestScriptRevID}";
-		}  
+		
 			 		 
 		return Xml::element( 'script', 
 				array(
 					'type' => $wgJsMimeType,
-					'src' => "$wgScriptPath/mwScriptLoader.php?class={$class_list}{$debug_param}{$urid_param}",
+					'src' => "$wgScriptPath/mwScriptLoader.php?class={$class_list}{$debug_param}&".$this->getURIDparam(),
 				),
 				'', false
 		);
+	}
+	function getURIDparam(){
+		global $wgDebugJavaScript,$wgStyleVersion; 
+		if( $wgDebugJavaScript ){
+			return "urid=". time();
+		}else{
+			return "urid={$wgStyleVersion}_{$this->mLatestScriptRevID}";
+		}  
 	}
 	function getJsClassFromPath( $path ){
 		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgScriptPath;

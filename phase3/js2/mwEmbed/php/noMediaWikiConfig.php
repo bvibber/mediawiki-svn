@@ -10,8 +10,8 @@ $wgJSAutoloadLocalClasses = array();
 
 $IP = realpath(dirname(__FILE__).'/../');
 
-//$mwEmbedDirectory becomes the root $IP
-$mwEmbedDirectory = '';
+//$wgMwEmbedDirectory becomes the root $IP
+$wgMwEmbedDirectory = '';
 
 $wgUseFileCache = true;
 
