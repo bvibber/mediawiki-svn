@@ -15,6 +15,7 @@ $messages = array();
 $messages['en'] = array(
 	'adminlinks' => 'Admin links',
 	'adminlinks-desc' => 'Adds a [[Special:AdminLinks|special page]] that holds helpful links for administrators',
+	'adminlinks_documentation' => '$1 documentation', // NOTE: this is not used by the extension itself, but is used by many of the extensions that hook into it
 	'adminlinks_general' => 'General',
 	'adminlinks_editsidebar' => 'Edit sidebar',
 	'adminlinks_editcss' => 'Edit CSS file',
@@ -32,6 +33,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'adminlinks-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate link targets.',
+	'adminlinks_documentation' => 'The label for a link to documentation for a certain extension, whose name is passed in.',
 	'right-adminlinks' => '{{doc-right}}',
 );
 
