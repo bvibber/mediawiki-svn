@@ -95,6 +95,7 @@ class RandomPageInCategory extends SpecialPage {
 			FROM $page $use_index JOIN $categorylinks ON page_id = cl_from
 			WHERE page_is_redirect = 0
 			AND page_random >= $randstr
+            AND page_namespace != 14
 			AND cl_to = $category
 			$extra
 			ORDER BY page_random";
