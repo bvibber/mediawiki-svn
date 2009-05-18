@@ -68,6 +68,7 @@ class SimpleSecurity {
 			if ( empty( $v ) ) $v = ucfirst( $k );
 			$wgRestrictionLevels[] = $k;
 			$wgMessageCache->addMessages( array( "protect-level-$k" => $v ) );
+			$wgMessageCache->addMessages( array( "right-$k" => wfMsg( 'security-restricttogroup', $v ) ) );
 			$wgGroupPermissions[$k][$k] = true;      # members of $k must be allowed to perform $k
 			$wgGroupPermissions['sysop'][$k] = true; # sysops must be allowed to perform $k as well
 		}

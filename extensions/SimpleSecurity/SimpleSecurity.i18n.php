@@ -22,14 +22,15 @@ $messages['en'] = array(
 	'security-info'            => 'There are $1 on this page',
 	'security-info-toggle'     => 'security restrictions',
 	'security-inforestrict'    => '$1 is restricted to $2',
-	'security-desc-LS'         => "''(applies because this page is in the '''$2 $1''')''",
-	'security-desc-PR'         => "''(set from the '''protect tab''')''",
-	#'security-desc-CR'         => "''(this restriction is '''in effect now''')''",
-	'security-infosysops'      => "No restrictions are in effect because you are a member of the '''sysop''' group",
+	'security-desc-LS'         => '(applies because this page is in the "$2 $1")',
+	'security-desc-PR'         => '(set from the "protect" tab)',
+	#'security-desc-CR'         => "(this restriction is in effect now)",
+	'security-infosysops'      => 'No restrictions are in effect because you are a member of the "sysop" group',
 	'security-manygroups'      => 'groups $1 and $2',
 	'security-unchain'         => 'Modify actions individually',
 	'security-type-category'   => 'category',
 	'security-type-namespace'  => 'namespace',
+	'security-restricttogroup' => 'Access content restricted to members of "$1"',
 );
 
 /** Message documentation (Message documentation)
