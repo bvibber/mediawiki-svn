@@ -14,15 +14,15 @@ class BadImageList {
 	public static function check( $name ) {
 		wfProfileIn( __METHOD__ );
 		static $titles = array();
-		if( !isset( $titles[$name] ) ) {
+		if ( !isset( $titles[$name] ) ) {
 			global $wgMemc, $wgBadImageCache;
 			$res = $wgMemc->get( BadImageList::key( $name ) );
-			if( $res && $wgBadImageCache ) {
+			if ( $res && $wgBadImageCache ) {
 				$titles[$name] = $res == 'yes';
 			} else {
 				$titles[$name] = BadImageList::checkReal( $name );
 				BadImageList::cache( $name, $titles[$name] );
-			}			
+			}
 		}
 		wfProfileOut( __METHOD__ );
 		return $titles[$name];
@@ -33,7 +33,7 @@ class BadImageList {
 		$res = $dbr->selectField( 'bad_images', 'COUNT(*)', array( 'bil_name' => $name ), __METHOD__ );
 		return $res > 0;
 	}
-	
+
 	public static function add( $name, $user, $reason ) {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
@@ -42,7 +42,7 @@ class BadImageList {
 		$wgMemc->delete( BadImageList::key( $name ) );
 		wfProfileOut( __METHOD__ );
 	}
-	
+
 	public static function remove( $name ) {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
@@ -56,10 +56,8 @@ class BadImageList {
 		global $wgMemc;
 		$wgMemc->set( BadImageList::key( $name ), $value ? 'yes' : 'no', 900 );
 	}
-	
+
 	private static function key( $name ) {
 		return wfMemcKey( 'badimage', $name );
 	}
-
 }
-

@@ -33,6 +33,7 @@ $messages['en'] = array(
 	'badimages-log-add'        => 'added [[$1]] to the bad image list',
 	'badimages-log-remove'     => 'removed [[$1]] from the bad image list',
 	'badimages-page'           => '{{ns:help}}:Bad image list',
+	'right-badimages'          => 'Update the bad image list',
 );
 
 /** Message documentation (Message documentation)
