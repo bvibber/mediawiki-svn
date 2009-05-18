@@ -328,16 +328,18 @@ mvBaseUploadInterface.prototype = {
 					if( tmpAryData[i]['name'] )
 						_this.formData[ tmpAryData[i]['name'] ] = tmpAryData[i]['value'];
 				}							
-						
-				//get a clean loader: 
-				_this.dispProgressOverlay();												
-				
-				//for some unknown reason we have to drop down the #p-search z-index:
-				$j('#p-search').css('z-index', 1);								
-				
-				//select upload mode: 				
-				_this.detectUploadMode();
-				
+				//put into a try catch so we are sure to return false: 		
+				try{
+					//get a clean loader: 
+					_this.dispProgressOverlay();												
+					
+					//for some unknown reason we have to drop down the #p-search z-index:
+					$j('#p-search').css('z-index', 1);								
+					
+					//select upload mode: 				
+					_this.detectUploadMode();
+				}catch(e){}
+				 
 				//don't submit the form we will do the post in ajax
 				return false;	
 			};							
@@ -422,11 +424,10 @@ mvBaseUploadInterface.prototype = {
 				'action'	: 'upload',
 				'url'		: $j('#wpUploadFileURL').val(),
 				'filename'	: $j('#wpDestFile').val(),
-				'comment' 	: $j('#wpUploadDescription').val(),
-				'asyncdownload': 'true'
+				'comment' 	: $j('#wpUploadDescription').val()				
 			},
 			'url' : _this.api_url 
-		}, function( data ){
+		}, function( data ){			
 			_this.processApiResult( data );		
 		});			
 	},
@@ -518,6 +519,7 @@ mvBaseUploadInterface.prototype = {
 	},
 	processApiResult: function( apiRes ){	
 		var _this = this;			
+
 		//check for upload api error:
 		// {"upload":{"result":"Failure","error":"unknown-error","code":{"status":5,"filtered":"NGC2207%2BIC2163.jpg"}}}
 		if( apiRes.error || ( apiRes.upload && apiRes.upload.result == "Failure" ) ){
@@ -545,28 +547,33 @@ mvBaseUploadInterface.prototype = {
 			//error space is too large so we don't front load it
 			//do a remote call to get the error msg: 
 			if(!error_code || error_code == 'unknown-error'){
-				js_log('Error: apiRes: ' + JSON.stringify( apiRes) );
+				if(typeof JSON != 'undefined'){
+					js_log('Error: apiRes: ' + JSON.stringify( apiRes) );
+				}
 				_this.updateUploadError( gM('unknown-error') + '<br>' + error_msg);	
 			}else{
 				gMsgLoadRemote(error_code, function(){
 					js_log('send msg: ' + gM( error_code ));
 					_this.updateUploadError( gM( error_code ));
 				});
-			}				
+			}		
+			js_log("api.erorr");		
 			return ;		
 		}
 		//check for upload_session key for async upload:
 		if( apiRes.upload && apiRes.upload.upload_session_key ){							
 			//set the session key
 			_this.upload_session_key = apiRes.upload.upload_session_key;
-			js_log("set session key: " + _this.upload_session_key);
+			
 			//do ajax upload status: 
-			_this.doAjaxUploadStatus();			
+			_this.doAjaxUploadStatus();		
+			js_log("set upload_session_key: " + _this.upload_session_key);	
 			return ;
 		}		
 		
 		if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){
 			_this.updateUploadDone( apiRes.upload.imageinfo.descriptionurl );
+			js_log('apiRes.upload.imageinfo:: updateUploadDone');
 			return ;
 		}		
 				
@@ -576,7 +583,8 @@ mvBaseUploadInterface.prototype = {
 			return ;
 		}
 		//check for known warnings: 
-		if( apiRes.upload.warnings ){	
+		if( apiRes.upload.warnings ){
+			//debugger;	
 			var wmsg = '<ul>';
 			for(var wtype in apiRes.upload.warnings){
 				var winfo = apiRes.upload.warnings[wtype]
@@ -584,8 +592,13 @@ mvBaseUploadInterface.prototype = {
 				switch(wtype){
 					case 'duplicate':
 					case 'exists':
-						wmsg += gM('file-exists-duplicate') +' '+ 
-									'<b>' + winfo[1].title.mTextform + '</b>';									  					
+						if(winfo[1] && winfo[1].title && winfo[1].title.mTextform){
+							wmsg += gM('file-exists-duplicate') +' '+ 
+									'<b>' + winfo[1].title.mTextform + '</b>';		
+						}else{
+							//misc error (weird that winfo[1] not present
+							wmsg += gM('upload-misc-error') + ' ' + wtype;
+						}							  					
 					break;
 					case 'file-thumbnail-no':
 						wmsg += gM('file-thumbnail-no', winfo);
@@ -664,5 +677,7 @@ mvBaseUploadInterface.prototype = {
 			'<div id="dlbox-overlay" class="dlbox-overlay" style="background:#000;cursor:wait;height:100%;'+
 						'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
 						'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');		
+		//fade them in:
+		$j('#dlbox-centered,#dlbox-overlay').show();
 	}	
 }
