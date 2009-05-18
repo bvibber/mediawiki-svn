@@ -24,11 +24,9 @@
 
 # make sure that everything that needs to be set/loaded is that way
 $err = '';
-if ( !ini_get( 'allow_url_fopen' ) ) {
-	# we need allow_url_fopen to be on in order for the file_get_contents() call to work on the amazon url
-	if ( ini_set( 'allow_url_fopen', 1 ) === false ) {
-		$err .= "\n<li>allow_url_fopen must be enabled in php.ini</li>";
-	}
+if ( !wfIniGetBool( 'allow_url_fopen' ) && !extension_loaded( 'curl' ) ) {
+	# we need allow_url_fopen or curl to be on in order for the Http::get() call to work on the amazon url
+	$err .= "\n<li>allow_url_fopen or curl must be enabled in php.ini</li>";
 }
 if ( !extension_loaded( 'simplexml' ) ) {
 	# we need the simplexml extension loaded to parse the xml string
@@ -201,8 +199,8 @@ class AmazonPlus {
 			$str .= wfUrlencode( $key ) . '=' . wfUrlencode( $value );
 		}
 
-		$this->response = file_get_contents( $str );
-		if ( $this->response === false ) {
+		$this->response = Http::get( $str );
+		if ( !$this->response ) {
 			return 'amazonplus-fgcerr';
 		}
 
