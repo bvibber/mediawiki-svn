@@ -1,5 +1,5 @@
 <?php
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "Vote extension";
 	exit( 1 );
 }
@@ -13,18 +13,18 @@ if( !defined( 'MEDIAWIKI' ) ) {
  * @author Rob Church <robchur@gmail.com>
  * Please see the LICENCE file for terms of use and redistribution
  */
- 
+
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Vote',
-	'version' => '1.0',
+	'version' => '1.0.1',
 	'author' => 'Rob Church',
 	'description' => 'Provides simple polling capabilities',
 	'descriptionmsg' => 'vote-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Vote',
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Vote'] = $dir . 'Vote.i18n.php';
 $wgExtensionAliasesFiles['Vote'] = $dir . 'Vote.alias.php';
 $wgAutoloadClasses['SpecialVote'] = $dir . 'Vote.page.php';
@@ -50,7 +50,7 @@ $wgHooks['SkinTemplateSetupPageCss'][] = 'efVoteCss';
  */
 function efVoteCss( &$css ) {
 	global $wgTitle;
-	if( $wgTitle->isSpecial( 'Vote' ) ) {
+	if ( $wgTitle->isSpecial( 'Vote' ) ) {
 		$file = dirname( __FILE__ ) . '/Vote.css';
 		$css .= "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
 	}

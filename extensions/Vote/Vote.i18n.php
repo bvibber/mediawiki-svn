@@ -32,6 +32,8 @@ riddler|Riddler",
 	'vote-login'          => 'You must $1 to vote.',
 	'vote-login-link'     => 'log in',
 	'vote-invalid-choice' => 'You must select one of the available options.',
+	'right-vote' => 'Vote',
+	'right-voteadmin' => 'See vote results',
 );
 
 /** Message documentation (Message documentation)

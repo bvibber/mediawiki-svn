@@ -31,18 +31,18 @@ class SpecialVote extends SpecialPage {
 		wfLoadExtensionMessages( 'Vote' );
 		$this->setHeaders();
 		$this->user = $wgUser;
-		if( strtolower( $mode ) == 'results' ) {
-			if( $wgUser->isAllowed( 'voteadmin' ) )
+		if ( strtolower( $mode ) == 'results' ) {
+			if ( $wgUser->isAllowed( 'voteadmin' ) )
 				$this->showResults();
 		} else {
-			if( $wgUser->isAnon() ) {
+			if ( $wgUser->isAnon() ) {
 				$skin = $wgUser->getSkin();
 				$self = SpecialPage::getTitleFor( 'Vote' );
 				$login = SpecialPage::getTitleFor( 'Userlogin' );
 				$link = $skin->makeKnownLinkObj( $login, wfMsgHtml( 'vote-login-link' ), 'returnto=' . $self->getPrefixedUrl() );
 				$wgOut->addHTML( wfMsgWikiHtml( 'vote-login', $link ) );
 				return;
-			} elseif( !$wgUser->isAllowed( 'vote' ) ) {
+			} elseif ( !$wgUser->isAllowed( 'vote' ) ) {
 				$wgOut->permissionRequired( 'vote' );
 				return;
 			} else {
@@ -55,7 +55,7 @@ class SpecialVote extends SpecialPage {
 		global $wgOut, $wgRequest, $wgUser;
 		$self = SpecialPage::getTitleFor( 'Vote' );
 		$token = $wgRequest->getText( 'token' );
-		if( $wgUser->isAllowed( 'voteadmin' ) ) {
+		if ( $wgUser->isAllowed( 'voteadmin' ) ) {
 			$skin = $wgUser->getSkin();
 			$rtitle = Title::makeTitle( NS_SPECIAL, $self->getText() . '/results' );
 			$rlink = $skin->makeKnownLinkObj( $rtitle, wfMsgHtml( 'vote-view-results' ) );
@@ -63,9 +63,9 @@ class SpecialVote extends SpecialPage {
 		}
 		$wgOut->addWikiText( wfMsgNoTrans( 'vote-header' ) );
 		$current = self::getExistingVote( $wgUser );
-		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $token, 'vote' ) ) {
+		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $token, 'vote' ) ) {
 			$vote = strtolower( $wgRequest->getText( 'vote' ) );
-			if( in_array( $vote, array_keys( $this->getChoices() ) ) ) {
+			if ( in_array( $vote, array_keys( $this->getChoices() ) ) ) {
 				self::updateVote( $wgUser, $vote );
 				$wgOut->addHTML( '<p class="mw-votesuccess">' . wfMsgHtml( 'vote-registered' ) . '</p>' );
 			} else {
@@ -73,7 +73,7 @@ class SpecialVote extends SpecialPage {
 				$wgOut->addHTML( $this->makeForm( $current ) );
 			}
 		} else {
-			if( $current !== false ) {
+			if ( $current !== false ) {
 				$wgOut->addWikiText( wfMsgNoTrans( 'vote-current', $this->getChoiceDesc( $current ) ) );
 			}
 			$wgOut->addHTML( $this->makeForm( $current ) );
@@ -100,11 +100,11 @@ class SpecialVote extends SpecialPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		$vote = $dbr->tableName( 'vote' );
 		$res = $dbr->query( "SELECT vote_choice, COUNT(*) as count FROM {$vote} GROUP BY vote_choice ORDER BY count DESC", __METHOD__ );
-		if( $res && $dbr->numRows( $res ) > 0 ) {
+		if ( $res && $dbr->numRows( $res ) > 0 ) {
 			$wgOut->addHTML( '<table class="mw-votedata"><tr>' );
 			$wgOut->addHTML( '<th>' . wfMsgHtml( 'vote-results-choice' ) . '</th>' );
 			$wgOut->addHTML( '<th>' . wfMsgHtml( 'vote-results-count' ) . '</th></tr>' );
-			while( $row = $dbr->fetchObject( $res ) ) {
+			while ( $row = $dbr->fetchObject( $res ) ) {
 				$wgOut->addHTML( '<tr><td>' . htmlspecialchars( $this->getChoiceDesc( $row->vote_choice ) ) . '</td>' );
 				$wgOut->addHTML( '<td>' . $wgLang->formatNum( $row->count ) . '</td></tr>' );
 			}
@@ -116,10 +116,10 @@ class SpecialVote extends SpecialPage {
 
 	private function getChoices() {
 		static $return = false;
-		if( !$return ) {
+		if ( !$return ) {
 			$return = array();
 			$lines = explode( "\n", wfMsgForContent( 'vote-choices' ) );
-			foreach( $lines as $line ) {
+			foreach ( $lines as $line ) {
 				list( $short, $long ) = explode( '|', $line, 2 );
 				$return[ strtolower( $short ) ] = $long;
 			}
@@ -140,7 +140,7 @@ class SpecialVote extends SpecialPage {
 		$form .= '<fieldset><legend>' . wfMsgHtml( 'vote-legend' ) . '</legend>';
 		$form .= '<p>' . Xml::label( wfMsg( 'vote-caption' ), 'vote' ) . '&nbsp;';
 		$form .= Xml::openElement( 'select', array( 'name' => 'vote', 'id' => 'vote' ) );
-		foreach( $this->getChoices() as $short => $desc ) {
+		foreach ( $this->getChoices() as $short => $desc ) {
 			$checked = $short == $current;
 			$form .= self::makeSelectOption( $short, $desc, $checked );
 		}
@@ -153,7 +153,7 @@ class SpecialVote extends SpecialPage {
 	private static function makeSelectOption( $value, $label, $selected = false ) {
 		$attribs = array();
 		$attribs['value'] = $value;
-		if( $selected )
+		if ( $selected )
 			$attribs['selected'] = 'selected';
 		return Xml::openElement( 'option', $attribs ) . htmlspecialchars( $label ) . Xml::closeElement( 'option' );
 	}
