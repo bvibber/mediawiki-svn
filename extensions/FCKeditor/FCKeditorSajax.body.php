@@ -199,10 +199,9 @@ function wfSajaxSearchCategoryChildrenFCKeditor( $m_root ){
 	$ns = NS_CATEGORY;
 	$dbr = wfGetDB( DB_SLAVE );
 	/// @todo FIXME: should use Database class
-	$m_root = str_replace( "'", "\'", $m_root );
 	$sql = "SELECT tmpSelectCatPage.page_title AS title FROM ".$dbr->tableName('categorylinks')." AS tmpSelectCat ".
 			"LEFT JOIN ".$dbr->tableName('page')." AS tmpSelectCatPage ON tmpSelectCat.cl_from = tmpSelectCatPage.page_id ".
-			"WHERE tmpSelectCat.cl_to LIKE '$m_root' AND tmpSelectCatPage.page_namespace = $ns"; 
+			"WHERE tmpSelectCat.cl_to LIKE ".$dbr->addQuotes($m_root)." AND tmpSelectCatPage.page_namespace = $ns"; 
 
 	$res = $dbr->query( $sql, __METHOD__ );
 	$ret = '';
