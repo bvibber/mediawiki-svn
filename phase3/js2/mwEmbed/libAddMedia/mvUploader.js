@@ -424,7 +424,8 @@ mvBaseUploadInterface.prototype = {
 				'action'	: 'upload',
 				'url'		: $j('#wpUploadFileURL').val(),
 				'filename'	: $j('#wpDestFile').val(),
-				'comment' 	: $j('#wpUploadDescription').val()				
+				'comment' 	: $j('#wpUploadDescription').val(),
+				'asyncdownload': true				
 			},
 			'url' : _this.api_url 
 		}, function( data ){			

@@ -4,11 +4,16 @@
     <title>Firefogg - Make Ogg Video in your Browser</title>
 	<script type="text/javascript" src="../jsScriptLoader.php?class=mv_embed"></script>
 <style type="text/css" media="all">@import "http://www.firefogg.org/css/style.css";</style>
-
+<style type="text/css" media="all">
+.install{
+display:none;
+}
+</style>
 <script type="text/javascript">
 mwAddOnloadHook(function(){
+		$j('#check_install').hide();
         $j('.install').hide();        
-        if(!($j.browser.mozilla && $h.browser.version >= '1.9.1')) {
+        if(!($j.browser.mozilla && $j.browser.version >= '1.9.1')) {
           $j('#use_firefox').show();
         }else {
           if(typeof(Firefogg) != 'undefined' && Firefogg().version >= '0.9.5') {	    
@@ -61,7 +66,7 @@ function setupFirefogg(){
 		'$j.cookie'			:	'jquery/jquery.ui-1.7.1/external/jquery.cookie.js',
 		'$j.ui'				:	'jquery/jquery.ui-1.7.1/ui/ui.core.js',		
 		'$j.ui.accordion'	:	'jquery/jquery.ui-1.7.1/ui/ui.accordion.js',
-		'$j.ui.slider'		:	'jquery/jquery.ui-1.7.1/ui/ui.slider.js';
+		'$j.ui.slider'		:	'jquery/jquery.ui-1.7.1/ui/ui.slider.js'
 	},function(){
 		//do setupSettings: 
 		//for all options see /* iniObj in mvAdvFirefogg.js */
@@ -73,7 +78,7 @@ function setupFirefogg(){
 			//the control container (where we put all the controls) 
 			'control_container'		: '#control_container'
 		});						
-	);	
+	});	
 }
 </script>
 </head><body>
@@ -85,7 +90,8 @@ Make Ogg Video</h1>
 <center>
 <table width="500" border="0"> 
 <tr>
-<td colspan="2">
+<td colspan="2" >
+	<div id="check_install"><center>Checking for Firefogg<blink>...</blink></center></div>
 	<div id="install_linux" class="install">
   <a href="linux/Firefogg-0.9.5.xpi">Install Firefogg</a>
 </div>
