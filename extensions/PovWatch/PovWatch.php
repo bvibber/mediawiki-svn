@@ -30,14 +30,11 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $wgAvailableRights[] = 'povwatch_user';
 $wgAvailableRights[] = 'povwatch_admin';
-#$wgAvailableRights[] = 'povwatch_subscriber_list';
 
 $wgGroupPermissions['sysop']['povwatch_user'] = true;
-#$wgGroupPermissions['sysop']['povwatch_subscriber_list'] = true;
 $wgGroupPermissions['povwatch'] = array(
 	'povwatch_user' => true,
 	'povwatch_admin' => true,
-#	'povwatch_subscriber_list' => true,
 );
 
 $dir = dirname(__FILE__) . '/';

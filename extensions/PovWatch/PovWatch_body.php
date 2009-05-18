@@ -34,14 +34,6 @@ class SpecialPovWatch extends SpecialPage {
 		$this->mToken = $wgRequest->getVal( 'token' );
 		$this->mOut =& $wgOut;
 
-		/*if ( $subpage == 'subscribers' ) {
-			if ( $wgUser->isAllowed( 'povwatch_subscriber_list' ) ) {
-				$this->showSubscriberList();
-			} else {
-				$this->error( 'not_allowed_subscribers' );
-			}
-			$this->mOut->returnToMain( false, $this->getTitle() );
-		} else*/
 		if ( $subpage == 'log' ) {
 			$this->showLog();
 		} elseif ( $subpage != '' ) {
