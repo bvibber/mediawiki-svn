@@ -51,7 +51,7 @@ class SimpleSecurity {
 				foreach( $match[1] as $i => $k ) {
 					$v = $match[3][$i];
 					if ( $v ) $wgSecurityExtraGroups[strtolower( $k )] = $v;
-					else $wgSecurityExtraGroups[$k] = '';
+					else $wgSecurityExtraGroups[strtolower( $k )] = '';
 				}
 			}
 		}
