@@ -561,7 +561,7 @@ class UploadForm extends SpecialPage {
 	 * @access private
 	 */
 	function mainUploadForm( $msg='' ) {
-		global $wgOut, $wgUser, $wgLang, $wgMaxUploadSize;
+		global $wgOut, $wgUser, $wgLang, $wgMaxUploadSize, $wgEnableFirefogg;
 		global $wgUseCopyrightUpload, $wgUseAjax, $wgAjaxUploadDestCheck, $wgAjaxLicensePreview;
 		global $wgRequest;
 		global $wgStylePath, $wgStyleVersion;
@@ -571,11 +571,14 @@ class UploadForm extends SpecialPage {
 
 		$adc = wfBoolToStr( $useAjaxDestCheck );
 		$alp = wfBoolToStr( $useAjaxLicensePreview );
-		$autofill = wfBoolToStr( $this->mDesiredDestName == '' );		
+		$uef = wfBoolToStr( $wgEnableFirefogg );
+		$autofill = wfBoolToStr( $this->mDesiredDestName == '' );	
+			
 		
 		$wgOut->addScript( "<script type=\"text/javascript\">
 wgAjaxUploadDestCheck = {$adc};
 wgAjaxLicensePreview = {$alp};
+wgEnableFirefogg = {$uef};
 wgUploadAutoFill = {$autofill};
 </script>" );
 		//legacy upload code:

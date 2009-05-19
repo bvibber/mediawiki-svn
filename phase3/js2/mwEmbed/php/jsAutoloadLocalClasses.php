@@ -51,8 +51,8 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 	
 	//libAddMedia:
 	$wgJSAutoloadLocalClasses['mvFirefogg'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvFirefogg.js';
-	$wgJSAutoloadLocalClasses['mvAdvFirefogg'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvAdvFirefogg.js';
-	$wgJSAutoloadLocalClasses['mvUploader'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvUploader.js';
+	$wgJSAutoloadLocalClasses['mvAdvFirefogg'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvAdvFirefogg.js';	
+	
 	$wgJSAutoloadLocalClasses['remoteSearchDriver'] = $wgMwEmbedDirectory . 'libAddMedia/remoteSearchDriver.js';
 	$wgJSAutoloadLocalClasses['seqRemoteSearchDriver'] = $wgMwEmbedDirectory . 'libAddMedia/seqRemoteSearchDriver.js';
 	$wgJSAutoloadLocalClasses['baseRemoteSearch'] 	= $wgMwEmbedDirectory . 'libAddMedia/searchLibs/baseRemoteSearch.js';

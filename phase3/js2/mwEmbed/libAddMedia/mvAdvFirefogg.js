@@ -4,7 +4,6 @@
 
 //@@todo put all msg text into loadGM json
 
-
 var mvAdvFirefogg = function( initObj ){
 	return this.init( initObj );
 }
@@ -12,23 +11,17 @@ var default_mvAdvFirefogg_config = {
 	//which config groups to include
 	'config_groups' 	: ['preset', 'quality', 'meta', 'advVideo', 'advAudio'],
 	
-	//if you want to load any custom presets to chose from 
+	//if you want to load any custom presets must follow the mvAdvFirefogg.presetConf json outline below
 	'custom_presets'	: {}, 
 	
 	//any firefog config properties that may need to be excluded from options
 	'exclude_settings' : [],
 	
-	//taget buttons: 
-	'btn_select_file'    : '',
-	'btn_select_new_file': '',
-	'btn_save_local_file': '',
-	
 	//the control container (where we put all the controls) 
 	'control_container'	 : ''		
 }
 
-mvAdvFirefogg.prototype = {
-	
+mvAdvFirefogg.prototype = {	
 	//the global groupings and titles for for configuration options : 
 	config_groups :{
 		'preset'     : "Preset: $1",
@@ -216,24 +209,24 @@ mvAdvFirefogg.prototype = {
 			'help'	: "Contact link"
 		}
 	},
-	//inherit mvFirefog (which provides access point to ogg and inherits mvUploader)
-	init:function( initObj ){		 		
+	init:function( initObj ){				
 		//setup a "supported" initObj:
 		for(var i in initObj){
-			if( default_mvAdvFirefogg_config [i] ){
-				this[i] = initObj[i];
+			if( typeof default_mvAdvFirefogg_config [i] != 'undefined' ){
+				this[i] = initObj[i];				
+			}			
+		}
+		//inherit the base mvFirefogg class: 
+		var myFogg = new mvFirefogg( initObj );
+		for(var i in myFogg){
+			if( typeof this[i] != 'undefined'){
+				this[ 'pfogg_' + i ] = mvFogg[i];
+			}else{
+				this[ i ] = mvFogg[i];
 			}
 		}
-		//do inherit myFogg:
-		var myFogg = new mvFirefogg ( {} )
-		for(var i in myFogg){
-			if(this[i])
-				this['parent_'+i] = myFogg[i];
-			else
-				this[i] = myFogg[i];
-		}				
 	},
-	setupForm:function(){
+	setupForm:function(){		
 		//if we have a target control form gennerate the html and setup the bindings
 		if( this.control_container != ''){
 			//gennerate the control html
@@ -423,5 +416,30 @@ mvAdvFirefogg.prototype = {
 			collapsible: true, 
 			active: false
 		});
+	},
+	//sets up the local settings for the encode (restored from a cookie if you have them)
+	setupSettings:function( force ){
+		if(!force){
+			if($.cookie('firefogg_settings')){
+				firefogg_settings = JSON.parse( $.cookie('firefogg_settings') );
+			}
+		}
+		for(var i in firefogg_defaults){
+			if( firefogg_defaults[i]['d'] ){
+				firefogg_settings[i] = firefogg_defaults[i]['d'];
+			}
+		}
+		setValuesInHtml();
+	},
+	setValuesInHtml:function(){
+		//set the actual HTML: 
+		$.each(firefogg_settings, function(inx, val){		
+			if($j('#_'+inx).length !=0){
+				$j('#_'+inx).val( val );
+			}
+		})
+	},
+	saveSettings:function(){
+		$j.cookie('firefogg_settings', JSON.stringify( firefogg_settings ) );
 	}
 }

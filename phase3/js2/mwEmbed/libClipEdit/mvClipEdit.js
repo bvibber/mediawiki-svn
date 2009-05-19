@@ -574,10 +574,11 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 	js_log('add_adjust_hooks: ' + mvd_id );	
 	//if options are unset populate functions:
 	//add mouse over end time frame highlight
-	$j('#mv_end_hr_'+mvd_id).hoverIntent({interval:200,over:function(){
-		//js_log('pre style: ' + $j(this).css('border'));
-		$j(this).css('border','solid red');
- 		do_video_time_update( $j('#mv_end_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
+	$j('#mv_end_hr_'+mvd_id).hoverIntent( { interval : 200, 
+		over:function(){
+			//js_log('pre style: ' + $j(this).css('border'));
+			$j(this).css('border','solid red');
+	 		do_video_time_update( $j('#mv_end_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
 	},out:function(){
 		$j(this).css('border','solid black thin');
 		do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );

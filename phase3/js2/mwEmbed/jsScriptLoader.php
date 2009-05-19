@@ -125,9 +125,10 @@ class jsScriptLoader{
 		global $wgRequest, $wgContLanguageCode, $wgEnableScriptMinify, $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgStyleVersion;
 		
 		//set debug flag: 
-		if( (isset($_GET['debug']) && $_GET['debug']=='true') && (isset($wgEnableScriptDebug) && $wgEnableScriptDebug==true )){
+		if( (isset($_GET['debug']) && $_GET['debug']=='true') || (isset($wgEnableScriptDebug) && $wgEnableScriptDebug==true )){
 				$this->debug = true;
 		}		
+		
 		//set the urid: 		
 		if( isset( $_GET['urid'] ) && $_GET['urid'] !=''){
 			$this->urid = htmlspecialchars( $_GET['urid'] );

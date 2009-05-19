@@ -2,11 +2,54 @@
 * autodetects: new upload api or old http POST.  
  */
 
+loadGM({ 
+	'fogg-select_file'			: 'Select File', 
+	'fogg-select_new_file'		: 'Select New File',
+	'fogg-save_local_file'		: 'Save Ogg',
+	'fogg-check_for_fogg'		: 'Checking for Firefogg <blink>...</blink>',
+	'fogg-installed'			: 'Firefogg is Installed',
+	'fogg-please_install'		: 'You don\'t have firefogg, please <a href="$1">install firefogg</a>',
+	'fogg-use_latest_fox'		: 'You need a <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a> to use Firefogg',
+	'passthrough_mode'			: 'Your selected file is already ogg or not a video file',
+	 
+});
+
+var firefogg_install_links =  {
+	'macosx':	'http://firefogg.org/macosx/Firefogg.xpi',
+	'win32'	:	'http://firefogg.org/win32/Firefogg.xpi',
+	'linux' :	'http://firefogg.org/linux/Firefogg.xpi'
+};
+
 var default_firefogg_options = {
 	'upload_done_action':'redirect',
 	'fogg_enabled':false,
 	'api_url':null,
-	'passthrough': false	
+	'passthrough': false,
+	'encoder_interface': false,
+	
+	//callbacks:
+	'new_source_cb': false, //called on source name update passes along source name
+	
+	//target control container or form (can't be left null)
+	'selector'			: '',
+	
+	'form_rewrite'		: false,//if not rewriting a form we are encoding local. 
+	
+	
+	//taget buttons: 
+	'target_btn_select_file'    : false,
+	'target_btn_select_new_file': false,	
+	'target_input_file_name'	: false,
+	'target_btn_save_local_file': false,	
+	
+	
+	//target install descriptions (visability will be set based ) 
+	'target_check_for_fogg'		: false,
+	'target_installed'	: false,
+	'target_please_install'	: false,
+	'target_use_latest_fox': false,
+	//status: 
+	'target_passthrough_mode':false
 }	
 
 
@@ -15,16 +58,17 @@ var mvFirefogg = function(initObj){
 }
 mvFirefogg.prototype = { //extends mvBaseUploadInterface
 
-	min_firefogg_version : '0.9.5',
+	min_firefogg_version : '0.9.6',
 	fogg_enabled : false, 		//if firefogg is enabled or not. 	
 	encoder_settings:{			//@@todo allow server to set this 
 		'maxSize': 400, 
 		'videoBitrate': 400,
 		'noUpscaling':true
 	},
+	sourceFileInfo:{},
 	ogg_extensions: ['ogg', 'ogv', 'oga'],
-	video_extensions: ['avi', 'mov', 'mp4', 'mp2', 'mpeg', 'mpeg2', 'mpeg4', 'dv', 'wmv'], 
-	passthrough_extensions: ['png', 'gif', 'jpg', 'jpeg'], //@@todo allow server to set this
+	video_extensions: ['avi', 'mov', 'mp4', 'mp2', 'mpeg', 'mpeg2', 'mpeg4', 'dv', 'wmv'],
+	
 	passthrough: false,
 
 	init: function( iObj ){
@@ -46,109 +90,168 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			}else{
 				this[i] =  myBUI[i];
 			}
-		}			
+		}
+		if(!this.selector){
+			js_log('Error: firefogg: missing selector ');
+		}	
 	},
-	setupForm: function(){
+	doRewrite:function( callback ){		
+		//check if we are rewriting an input or a form:
+		if( this.form_rewrite ){
+			this.setupForm();
+		}else{
+			this.doControlHTML();	
+			this.doControlBindings();	
+		}
+		
+		//doRewrite is done: 
+		if(callback)
+			callback();
+	},
+	doControlHTML: function(){
 		var _this = this;		
+		var out = '';		
+		$j.each(default_firefogg_options, function(target, na){
+			if(target.substring(0, 6)=='target'){
+				//check for the target if missing add to the output: 
+				if( _this[target] === false){					
+					if( target.substr(7,3)=='btn'){
+						out+='<input class="' + target + '" type="button" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
+					}else if(target.substr(7,5)=='input'){
+						out+='<input class="' + target + '" type="text" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
+					}else{					
+						out+='<div class="' + target + '">'+ gM('fogg-'+ target.substring(7)) + '</div> ';
+					}
+				}
+				//update the target selector 
+				_this[target] = _this.selector + ' .' + target;
+			}
+		});
+		//output the html
+		$j( this.selector ).html( out ).show();				
+	},
+	doControlBindings: function(){
+		var _this = this;			
+		
+		//hide all targets:
+		var hide_target_list='';
+		var coma='';
+		$j.each(default_firefogg_options, function(target, na){		
+			if(target.substring(0, 6)=='target'){
+				hide_target_list+=coma + _this[target];
+				coma=',';
+			}			
+		});	
+		$j( hide_target_list ).hide();						
+				
+		//hide all but check-for-fogg
+		//check for firefogg
+		if( _this.firefoggCheck() ){
+			//show select file: 
+			$j(this.target_btn_select_file).click(function(){
+				_this.select_fogg();
+			}).show().attr('disabled', false);
+		}else{
+			var os_link = false;
+			if(navigator.oscpu){
+				if(navigator.oscpu.search('Linux') >= 0)
+	            	os_link = firefogg_install_links['linux'];
+	            else if(navigator.oscpu.search('Mac') >= 0)
+	              	os_link = firefogg_install_links['macosx'];
+	            else if(navigator.oscpu.search('Win') >= 0)
+	              	os_link = firefogg_install_links['win32'];
+			}			
+			$j(_this.target_please_install).html( gM('fogg-please_install',os_link )).show();			
+		}
+		//setup the target save local file bindins: 
+		$j( _this.target_btn_save_local_file ).click(function(){
+			//update the output target
+			if(_this.fogg){
+				//if(_this.fogg.saveVideoAs()){
+				_this.doEncode();
+				//}
+			}
+		})
+	},
+	firefoggCheck:function(){
+		var _this = this;			
+		if(typeof(Firefogg) != 'undefined' && Firefogg().version >= '0.9.6'){						
+			_this.fogg = new Firefogg();	
+			return true;
+		}else{						
+			return false;
+		}
+	},
+	//assume input target
+	setupForm: function(){
+		
+		js_log('firefogg::setupForm::');		
 		//call the parent form setup
 		_this.pe_setupForm();
 		
-		//do all firefogg form setup:
-		if(typeof(Firefogg) == 'undefined'){ 
-			$j('#wgfogg_not_installed').show();
-			return false;
-		}
-		//make sure all the error msgs are hidden: 
-		$j('#wgfogg_not_installed,#wgfogg_wrong_version').hide();
-		
-		//show firefogg enabler: 
-		$j('#wgfogg_installed,#wgEnableFirefogg').show();
-		
-		if( $j('#wgEnableFirefogg').length > 0 ){
-			_this.fogg = new Firefogg();	
-			//do the version check:			
-			if( this.fogg.version.replace(/[^0-9]/gi, '') < this.min_firefogg_version.replace(/[^0-9]/gi, '' ) ){
-				//show wrong version error: 
-				$j('#wgfogg_wrong_version').show();
-				//hide the installed parent div: 
-				$j('#wgfogg_installed').hide();
-			}
-			//make sure the checkbox accurately reflects the current state per config:  			
-			$j('#wgEnableFirefogg').get(0).checked = this.fogg_enabled;
-			
-			//setup the click bindding: 
-			$j('#wgEnableFirefogg').click( function(){
-				if( _this.fogg_enabled ){						
-					_this.disable_fogg();			
-				}else{
-					_this.enable_fogg();
-				}
-			});
-		}else{
-			js_log('could not find wgEnableFirefogg');
-		}
-	},
-	enable_fogg:function(){	
-		var _this = this;
-			
-		//enable the FOGG_TOGGLE
-		this.fogg_enabled=true;
-		
-		//make sure file is "checked"
-		if( $j( '#wpSourceTypeFile' ).length != 0 )
-			$j( '#wpSourceTypeFile' ).get(0).checked = true;		
-		
-		//hide normal file upload stuff
-		$j( '#wg-base-upload' ).hide();		
-		//setup the form pointer:
-		_this.getEditForm();		
-			
-		//show fogg & add click binding: 
-		$j( '#fogg-video-file' ).unbind().show().click( function(){
-			_this.select_fogg();
-		});							
-	},
-	disable_fogg:function(){
-		var _this = this;
-		//not enabled: 
-		this.fogg_enabled=false;		
-
-		$j( '#wg-base-upload' ).show();
-		
-		//hide any errors warnings and video select:
-		$j( '#wgfogg_waring_ogg_upload,#wgfogg_waring_bad_extension,#fogg-video-file' ).hide();					
+		//firefogg is always "enabled" with passthrough mode (if not uploading video) 
 	},
 	select_fogg:function(){			
 		var _this = this;
 		if( _this.fogg.selectVideo() ) {
 			
-			//update destination filename:
-			if( _this.fogg.sourceFilename ){				
-				var sf = _this.fogg.sourceFilename;						
-				var ext = '';
-				if(	sf.lastIndexOf('.') != -1){
-					ext = sf.substring( sf.lastIndexOf('.')+1 ).toLowerCase();
+			var videoSelectReady= function(){
+				js_log('videoSelectReady');
+				//if not already hidden hide select file and show "select new": 
+				$j(_this.target_btn_select_file).hide();
+				//show and setup binding for new file: 
+				$j(_this.target_btn_select_new_file).show().click(function(){
+					_this.select_fogg();
+				});
+				//update if we are in passthrough mode or going to encode					
+				if( _this.fogg.sourceInfo && _this.fogg.sourceFilename ){									
+					//update the source status
+					_this.sourceFileInfo = JSON.parse( _this.fogg.sourceInfo) ;
+											
+					//now setup encoder settings based source type:
+					_this.autoEncoderSettings();					
+					
+					//if set to passthough update the interface:
+					if(_this.encoder_settings['passthrough']==true){
+						$j(_this.target_passthrough_mode).show();
+					}else{						
+						//if set to encoder expose the encode button: 
+						if( !_this.form_rewrite ){
+							$j(_this.target_btn_save_local_file).show();
+						}
+					}
+					//~otherwise the encoding will be triggered by the form~
+					
+					//do source name update callback: 					
+					$j(_this.target_input_file_name).val(_this.fogg.sourceFilename).show();
+					
+					if(_this.new_source_cb){
+						new_source_cb( _this.fogg.sourceFilename );
+					}
 				}
-				//set upload warning
-				if( $j.inArray(ext, _this.ogg_extensions) > -1 ){		
-					$j('#wgfogg_waring_ogg_upload').show();
-					return false;
-				}else if( $j.inArray(ext, _this.video_extensions) > -1 ){
-					//hide ogg warning
-					$j('#wgfogg_waring_ogg_upload').hide();			
-					var extreg = new RegExp(ext + '$', 'i');						
-					sf = sf.replace(extreg, 'ogg');
-					$j('#wpDestFile').val( sf );
-				}else if( $j.inArray(ext, _this.passthrough_extensions) > -1 ){
-					$j('#wpDestFile').val( sf );
-					_this.passthrough = true;
-				}else{
-					//not video extension error:	
-					$j('#wgfogg_waring_bad_extension').show();					
-					return false;			
-				}
-			}											
+			}
+			//wait 100ms to get video info: 
+			setTimeout(videoSelectReady, 200);															
 		}
+	},
+	//simple auto encoder settings just enable passthough if file is not video or > 480 pixles tall 
+	autoEncoderSettings:function(){		
+		var _this = this;
+		//grab the extension:
+		var sf = _this.fogg.sourceFilename;						
+		var ext = '';
+		if(	sf.lastIndexOf('.') != -1){
+			ext = sf.substring( sf.lastIndexOf('.')+1 ).toLowerCase();
+		}
+		//ogg video or audio
+		if( $j.inArray(ext, _this.ogg_extensions) > -1 ){		
+			//in the default case passthrough	
+			_this.encoder_settings['passthrough'] = true;
+		}else if( $j.inArray(ext, _this.video_extensions) > -1 ){
+			//we are going to run the encoder			
+		}else{		
+			_this.encoder_settings['passthrough']  = true;
+		}	
 	},
 	getProgressTitle:function(){
 		//return the parent if we don't have fogg turned on: 
@@ -165,7 +268,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		
 		//check what mode to use firefogg in: 
 		if( _this.upload_mode == 'post' ){
-			_this.doEncUpload();
+			_this.doEncode();
 		}else if( _this.upload_mode == 'api' && _this.chunks_supported){ //if api mode and chunks supported do chunkUpload
 			_this.doChunkUpload();
 		}else{
@@ -210,20 +313,19 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			aReq['ignorewarnings'] = _this.formData['wpIgnoreWarning'];
 		
 		js_log('do fogg upload call: '+ _this.api_url + ' :: ' + JSON.stringify( aReq ) );			
-			
-		var enc_settings = _this.encoder_settings;
-		if( _this.passthrough ){
-		  enc_settings = {'passthrough': true};
-		}
-		_this.fogg.upload( JSON.stringify( enc_settings ),  _this.api_url ,  JSON.stringify( aReq ) );		
+					
+		_this.fogg.upload( JSON.stringify( _this.encoder_settings ),  _this.api_url ,  JSON.stringify( aReq ) );		
 			
 		//update upload status:						
 		_this.doUploadStatus();
 	},
-	//doEncUpload first encodes then uploads
-	doEncUpload : function(){	
-		var _this = this;				
+	//doEncode and monitor progress:
+	doEncode : function(){	
+		var _this = this;
+		_this.dispProgressOverlay();				
+		js_log('doEncode: with: ' +  JSON.stringify( _this.encoder_settings ) );
 		_this.fogg.encode( JSON.stringify( _this.encoder_settings ) );		  	
+		
 		
 		 //show transcode status:
 		$j('#up-status-state').html( gM('upload-transcoded-status') );
@@ -238,29 +340,33 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			//loop to get new status if still encoding
 			if( _this.fogg.state == 'encoding' ) {
 				setTimeout(encodingStatus, 500);
-			}else if ( _this.fogg.state == 'encoding done' ) { //encoding done, state can also be 'encoding failed				
-				// ignore warnings & set source type 
-				//_this.formData[ 'wpIgnoreWarning' ]='true';
-				_this.formData[ 'wpSourceType' ]='file';		
-				_this.formData[ 'action' ] = 'submit';
-				
-				//send to the post url: 				
-				//js_log('sending form data to : ' + _this.editForm.action);
-				//for(var fk in _this.formData){
-				//	js_log(fk + ' : ' +  _this.formData[fk]);
-				//}			
-				_this.fogg.post( _this.editForm.action, 'wpUploadFile', JSON.stringify( _this.formData ) );
-				
-				//update upload status:						
-				_this.doUploadStatus();
-				
+			}else if ( _this.fogg.state == 'encoding done' ) { //encoding done, state can also be 'encoding failed																
+				_this.encodeDone();
 			}else if(_this.fogg.state == 'encoding fail'){
 				//@@todo error handling: 
-					alert('encoding failed');
+				js_error('encoding failed');
 			}
 		}
 		encodingStatus();		  			
 	},	
+	encodeDone:function(){
+		var _this = this;
+		js_log('::encodeDone::');
+		//send to the post url: 				
+		if( _this.form_rewrite ){
+			js_log('done with encoding do upload:');					
+			// ignore warnings & set source type 
+			//_this.formData[ 'wpIgnoreWarning' ]='true';
+			_this.formData[ 'wpSourceType' ]= 'file';		
+			_this.formData[ 'action' ] 		= 'submit';
+		
+			_this.fogg.post( _this.editForm.action, 'wpUploadFile', JSON.stringify( _this.formData ) );				
+			//update upload status:						
+			_this.doUploadStatus();
+		}else{
+			js_log('done with encode (no upload cuz we don\'t have a target)');
+		}
+	},
 	doUploadStatus:function() {	
 		var _this = this;
 		$j('#up-status-state').html( gM('uploaded-status')  );

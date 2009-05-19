@@ -248,7 +248,9 @@ var mvJsLoader = {
 	 ctime:0,	 
 	 load_error:false,//load error flag (false by default)
 	 load_time:0,	 
-	 callbacks:new Array(),	 	  	 
+	 callbacks:new Array(),
+	 cur_path: null,
+	 missing_path : null,	 	  	 
 	 doLoad:function(libs, callback){	 	
 	 	this.ctime++;
 	 	if(libs){ //setup this.libs: 	 		 		 	
@@ -295,11 +297,11 @@ var mvJsLoader = {
 			this.callbacks.push(callback);
 		}		
 		if( this.checkLoading() ){
-			 if( this.load_time++ > 3000){ //time out after ~30seconds
-			 	js_error( gM('error_load_lib') +  this.cur_path );
-			 	this.load_error=true;			 	
+			 if( this.load_time++ > 4000){ //time out after ~80seconds
+			 	js_error( gM('error_load_lib') +  this.missing_path );
+			 	this.load_error=true;
 			 }else{
-				setTimeout( 'mvJsLoader.doLoad()', 10 );
+				setTimeout( 'mvJsLoader.doLoad()', 20 );
 			 }
 		}else{
 		 	//js_log('checkLoading passed run callbacks');
@@ -346,6 +348,7 @@ var mvJsLoader = {
 			 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];
 			 eval( 'var ptest = typeof ( '+ cur_path + ' ); ');				 
 			 if( ptest == 'undefined'){				 			
+			 	 this.missing_path = cur_path;
 				 return false;
 			 }			 
 	 	 }
@@ -366,6 +369,8 @@ var mvJsLoader = {
 		  		cache: true
 			});
 			js_log('jquery loaded');
+			//setup mvEmbed jquery bindigns:  
+			mv_jqueryBindings();
 			//run the callback 
 			if(callback){
 				callback();
@@ -541,7 +546,7 @@ if (document.addEventListener ) {
 }
 
 /* init remote search */
-function mv_do_remote_search(initObj){
+function mv_do_remote_search( initObj ){
 	js_log(':::::mv_do_remote_search::::');
 	
 	//issue a load skin request: 
@@ -559,7 +564,64 @@ function mv_do_remote_search(initObj){
 		});
 	});
 }
- 
+
+/*
+ * stores all the mwEmbed jQuery specific bindings 
+ * (setup after jQuery is avaliable)
+ * lets you call rewrites in a jquery "way"
+ *  
+ * @@todo eventually we should refactor mwCode over to jQuery style plugins
+ *   	( but for now mv_embed.js will bridge this gap ) 
+ */  
+function mv_jqueryBindings(){
+	js_log('mv_jqueryBindings');	
+	(function($) {
+		
+		$.fn.firefogg = function( initObj, callback ) {		
+			//set "selector" in the initObj
+		
+			// @@todo should refactor  mvAdvFirefogg as jQuery plugin
+			initObj['selector'] = this.selector;	
+			
+			loadSet = {				
+				'mvBaseUploadInterface'	: 'libAddMedia/mvBaseUploadInterface.js',
+				'mvFirefogg'			: 'libAddMedia/mvFirefogg.js'
+			};
+			
+			//see if we need to load the advanced firefog controls and associated ui components:
+			$j(this.selector).each(function(){				
+				if( this.tagName.toLowerCase() != 'input' ){					
+					initObj.form_rewrite = false;
+					//if not an input tag (we probably want to load the full encoder interface) 
+					if( typeof initObj.encoder_interface == 'undefined' ) 
+						initObj.encoder_interface = true;
+				}
+			});
+			if( initObj.encoder_interface ){
+				//@@todo would be nice to have a "dependency" map we could use/
+				loadSet['mvAdvFirefogg']	= 'libAddMedia/mvAdvFirefogg.js';
+				loadSet['$j.cookie']		= 'jquery/jquery.ui-1.7.1/external/cookie/jquery.cookie.js';
+				loadSet['$j.ui']			= 'jquery/jquery.ui-1.7.1/ui/ui.core.js';
+				loadSet['$j.ui.accordion']	= 'jquery/jquery.ui-1.7.1/ui/ui.accordion.js';
+				loadSet['$j.ui.slider']		= 'jquery/jquery.ui-1.7.1/ui/ui.slider.js';
+			}
+			//make sure we have everything loaded that we need: 
+			mvJsLoader.doLoad( loadSet, function(){			
+				js_log('firefogg libs loaded. target select:' + initObj.selector);
+				//select interface provicer based on if we want to include the encoder interface or not: 
+				if(initObj.encoder_interface){
+					var myFogg = new mvAdvFirefogg( initObj );
+				}else{
+					var myFogg = new mvFirefogg( initObj );
+				}				
+				if(myFogg)
+					myFogg.doRewrite( callback );					
+			});		
+		}
+	
+	})(jQuery);
+}  
+
 /* init the sequencer */
 function mv_do_sequence(initObj){
 	//debugger;

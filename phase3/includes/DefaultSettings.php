@@ -440,6 +440,14 @@ $wgAllowCopyUploads = false;
 $wgMaxUploadSize = 1024*1024*100; # 100MB
 
 
+/**
+* Enable firefogg support 
+* add support for in-browser transcoding to ogg theora
+* add support for chunk uploads for large image files
+* add support for client side hash checks
+*/
+$wgEnableFirefogg = true;
+
 
 /**
  * Point the upload navigation link to an external URL
