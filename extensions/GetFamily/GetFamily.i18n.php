@@ -13,9 +13,9 @@ $messages = array();
  */
 $messages['en'] = array(
 	'getfamily-desc' => 'Generates a family file for pywikipediabot',
-	'getfamily' => 'Get Pywikipediabot Family',
+	'getfamily' => 'Get pywikipediabot family',
 	'getfamily-interwikierror' => 'Error: incorrect interwiki setup, contact your local admin.',
-	'right-getfamily' => 'Create a family file for Pywikipediabot',
+	'right-getfamily' => 'Create a family file for pywikipediabot',
 );
 
 /** Message documentation (Message documentation)
@@ -42,9 +42,9 @@ $messages['be-tarask'] = array(
  */
 $messages['bs'] = array(
 	'getfamily-desc' => 'Generira datoteku porodice za pywikipediabot',
-	'getfamily' => 'Preuzmi Pywikipediabot porodicu',
+	'getfamily' => 'Preuzmi pywikipediabot porodicu',
 	'getfamily-interwikierror' => 'Greška: netačne postavke za interwiki, kontaktirajte Vašeg lokalnog administratora.',
-	'right-getfamily' => 'Pravljenje datoteke porodice za Pywikipediabot',
+	'right-getfamily' => 'Pravljenje datoteke porodice za pywikipediabot',
 );
 
 /** German (Deutsch) */
@@ -67,7 +67,7 @@ $messages['dsb'] = array(
  */
 $messages['fr'] = array(
 	'getfamily-desc' => 'Génère un fichier de famille pour pywikipediabot',
-	'right-getfamily' => 'Créer un fichier de famille pour Pywikipediabot',
+	'right-getfamily' => 'Créer un fichier de famille pour pywikipediabot',
 );
 
 /** Galician (Galego)
@@ -75,9 +75,9 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'getfamily-desc' => 'Xera un ficheiro de familia para pywikipediabot',
-	'getfamily' => 'Obter a familia Pywikipediabot',
+	'getfamily' => 'Obter a familia pywikipediabot',
 	'getfamily-interwikierror' => 'Erro: configuración de interwiki incorrecta, contacte co administrador local.',
-	'right-getfamily' => 'Crear un ficheiro de familia para Pywikipediabot',
+	'right-getfamily' => 'Crear un ficheiro de familia para pywikipediabot',
 );
 
 /** Swiss German (Alemannisch)
@@ -85,9 +85,9 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'getfamily-desc' => 'Generiert e Familiedatei fir dr pywikipediabot',
-	'getfamily' => 'Pywikipediabot-Familie iberchuu',
+	'getfamily' => 'pywikipediabot-Familie iberchuu',
 	'getfamily-interwikierror' => 'Fähler: falsch Interwiki-Setup, nimm Kontakt zue Dyym lokale Ammann.',
-	'right-getfamily' => 'E Familiedatei fir dr Pywikipediabot aalege',
+	'right-getfamily' => 'E Familiedatei fir dr pywikipediabot aalege',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -105,9 +105,9 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'getfamily-desc' => 'Genera un file de familia pro pywikipediabot',
-	'getfamily' => 'Obtener familia Pywikipediabot',
+	'getfamily' => 'Obtener familia pywikipediabot',
 	'getfamily-interwikierror' => 'Error: configuration interwiki incorrecte. Contacta tu admin local.',
-	'right-getfamily' => 'Crear un file de familia pro Pywikipediabot',
+	'right-getfamily' => 'Crear un file de familia pro pywikipediabot',
 );
 
 /** Japanese (日本語)
@@ -135,10 +135,10 @@ $messages['ksh'] = array(
  */
 $messages['nl'] = array(
 	'getfamily-desc' => 'Maakt een familiebestand voor pywikipediabot aan',
-	'getfamily' => 'Pywikipediabot-familie aanmaken',
+	'getfamily' => 'pywikipediabot-familie aanmaken',
 	'getfamily-interwikierror' => 'Fout: onjuiste interwikiinstellingen.
 Neem contact op met uw lokale beheerder.',
-	'right-getfamily' => 'Een familiebestand voor Pywikipediabot maken',
+	'right-getfamily' => 'Een familiebestand voor pywikipediabot maken',
 );
 
 /** Slovak (Slovenčina)
@@ -146,8 +146,8 @@ Neem contact op met uw lokale beheerder.',
  */
 $messages['sk'] = array(
 	'getfamily-desc' => 'Vytvorí súbor rodiny pre pywikipediabot',
-	'getfamily' => 'Získať rodinu Pywikipediabot',
+	'getfamily' => 'Získať rodinu pywikipediabot',
 	'getfamily-interwikierror' => 'Chyba: nesprávne nastavenie interwiki, kontaktujte svojho lokálneho správcu.',
-	'right-getfamily' => 'Vytvoriť súbor rodiny pre Pywikipediabot',
+	'right-getfamily' => 'Vytvoriť súbor rodiny pre pywikipediabot',
 );
 
