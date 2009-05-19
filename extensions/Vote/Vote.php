@@ -17,7 +17,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Vote',
-	'version' => '1.0.1',
+	'version' => '1.0.2',
 	'author' => 'Rob Church',
 	'description' => 'Provides simple polling capabilities',
 	'descriptionmsg' => 'vote-desc',

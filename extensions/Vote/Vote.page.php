@@ -28,7 +28,9 @@ class SpecialVote extends SpecialPage {
 	 */
 	public function execute( $mode ) {
 		global $wgOut, $wgUser;
+
 		wfLoadExtensionMessages( 'Vote' );
+
 		$this->setHeaders();
 		$this->user = $wgUser;
 		if ( strtolower( $mode ) == 'results' ) {
@@ -36,11 +38,12 @@ class SpecialVote extends SpecialPage {
 				$this->showResults();
 		} else {
 			if ( $wgUser->isAnon() ) {
-				$skin = $wgUser->getSkin();
 				$self = SpecialPage::getTitleFor( 'Vote' );
 				$login = SpecialPage::getTitleFor( 'Userlogin' );
-				$link = $skin->makeKnownLinkObj( $login, wfMsgHtml( 'vote-login-link' ), 'returnto=' . $self->getPrefixedUrl() );
-				$wgOut->addHTML( wfMsgWikiHtml( 'vote-login', $link ) );
+				$link = $login->getFullUrl( array( 'returnto', $self->getPrefixedUrl() ) );
+				$wgOut->wrapWikiMsg( "<div class='plainlinks'>$1</div>",
+					array( 'vote-login', $link ) );
+
 				return;
 			} elseif ( !$wgUser->isAllowed( 'vote' ) ) {
 				$wgOut->permissionRequired( 'vote' );
