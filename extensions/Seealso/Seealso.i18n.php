@@ -90,6 +90,7 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'seealso' => 'Vegeu també',
+	'seealso-desc' => "Localitza les capçaleres 'See also' usant l'etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Welsh (Cymraeg)

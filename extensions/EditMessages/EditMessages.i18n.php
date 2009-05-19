@@ -903,6 +903,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'editmessages-desc' => '[[Special:EditMessages|Nettbasert redigering]] av et stort antall Messages*.php-filer',
@@ -915,8 +916,8 @@ $messages['no'] = array(
 	'editmsg-warning-parse1' => '* Regulært uttrykk for beskjednavn passer ikke: $1',
 	'editmsg-warning-parse2' => '* Sitattegn forventet etter pil: $1',
 	'editmsg-warning-parse3' => '* Slutten på verditekst ikke funnet: $1',
-	'editmsg-warning-file' => '* Fillesingsfeil ble funnet for følgende språk: $1',
-	'editmsg-warning-mismatch' => '* Originalteksten hadde ikke den forventede verdien for følgende språk: $1',
+	'editmsg-warning-file' => '* Fillesingsfeil ble funnet for følgende {{PLURAL:$2|språk|språk}}: $1',
+	'editmsg-warning-mismatch' => '* Originalteksten hadde ikke den forventede verdien for følgende {{PLURAL:$2|språk|språk}}: $1',
 	'editmsg-apply-patch' => 'Bruk oppdatering',
 	'editmsg-no-patch' => 'Kunne ikke utføre «patch»-kommando',
 	'editmsg-patch-failed' => 'Oppdatering mislyktes med avslutningsstatus $1',

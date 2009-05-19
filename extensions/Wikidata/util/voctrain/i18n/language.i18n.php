@@ -2209,6 +2209,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'voctrain_Hello_World' => 'HALLO, WIKI!',
@@ -2275,6 +2276,7 @@ $messages['no'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Skjul definisjoner i spørsmålsspråk',
 	'voctrain_hide_words_in_question_language' => 'Skjul ord i spørsmålsspråk',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Skill verdier fra hverandre med komma ved bruk av flere språk.',
+	'voctrain_other' => 'annet',
 );
 
 /** Occitan (Occitan)

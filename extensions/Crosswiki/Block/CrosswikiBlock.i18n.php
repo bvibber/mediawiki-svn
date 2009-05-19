@@ -299,8 +299,11 @@ Nazad na:
 
 /** Catalan (Català)
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
+	'crosswikiblock-reason' => 'Motiu:',
+	'crosswikiunblock-reason' => 'Motiu:',
 	'crosswikiblock-alreadyblocked' => "L'usuari $3 ja està blocat.",
 );
 

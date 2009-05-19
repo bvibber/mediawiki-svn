@@ -484,16 +484,16 @@ Denne meldinga kjem for å gjera deg merksam på at $3 brukar $4 $5.',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'categorywatch-desc' => 'Utvider overvåkningslistens funsjonalitet til å også omfatte innholdet i kategorier',
-	'categorywatch-emailbody' => 'Hei, $1. Du mottar denne beskjeden fordi du overvåker kategorier kategorien «$2».
-Du mottar denne beskjeden fordi $4 $5 $3.',
 	'categorywatch-emailsubject' => 'Aktivitet i den overvåkede kategorien «$1»',
 	'categorywatch-catmovein' => 'flyttet $1 til kategorien $2 fra $3',
 	'categorywatch-catmoveout' => 'flyttet $1 fra kategorien $2 til $3',
 	'categorywatch-catadd' => 'la til $1 i kategori $2',
 	'categorywatch-catsub' => 'fjernet $1 fra kategori $2',
+	'categorywatch-autocat' => 'Automatisk overvåket av $1',
 );
 
 /** Occitan (Occitan)

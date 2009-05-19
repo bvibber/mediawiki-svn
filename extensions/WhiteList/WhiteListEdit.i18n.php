@@ -2031,6 +2031,7 @@ Denne sida kan berre nyttast på avgrensa brukarar.",
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'whitelist-desc' => 'Redigering av tilgangsrettigheter for begrensede brukere',
@@ -2057,6 +2058,8 @@ $messages['no'] = array(
 	'whitelistnewtabledate' => 'Utgangsdato:',
 	'whitelistnewtableedit' => 'Sett til redigering',
 	'whitelistnewtableview' => 'Sett til visning',
+	'whitelistnowhitelistedusers' => 'Det finnes ingen brukere i gruppen «{{MediaWiki:Group-restricted}}».
+Du må [[Special:UserRights|legge brukere til gruppen]] før du kan legge til sider til en brukers hvitliste.',
 	'whitelistnewtableprocess' => 'Prosess',
 	'whitelistnewtablereview' => 'Gå gjennom',
 	'whitelistselectrestricted' => '== ANgi navn på begrenset bruker ==',
@@ -2068,7 +2071,7 @@ $messages['no'] = array(
 	'whitelistoverviewrm' => '* Fjerner tilgang til [[:$1|$1]]',
 	'whitelistoverviewna' => "* Legger til [[:$1|$1]] til hviteliste med tilgang '''$2''' og utløpsdato '''$3'''.",
 	'whitelistrequest' => 'Etterspør tilgang til flere sider',
-	'whitelistrequestmsg' => '$1 har etterspurt tilgang til følgende sider:
+	'whitelistrequestmsg' => '$1 har etterspurt tilgang til følgende {{PLURAL:$3|side|sider}}:
 
 $2',
 	'whitelistrequestconf' => 'Etterspørsel om nye sider har blitt sendt til $1',
@@ -2076,6 +2079,12 @@ $2',
 Denne siden kan kun brukes på begrensede brukere.",
 	'whitelistnever' => 'aldri',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|treff}}',
+	'right-editwhitelist' => 'Endre hvitlisten for eksisterende brukere',
+	'right-restricttowhitelist' => 'Endre og vis sider som bare er på hvitlisten',
+	'action-editwhitelist' => 'endre hvitlisten for eksisterende brukere',
+	'action-restricttowhitelist' => 'endre og vis sider som bare er på hvitlisten',
+	'group-restricted' => 'Begrensede brukere',
+	'group-restricted-member' => 'Begrenset bruker',
 );
 
 /** Occitan (Occitan)

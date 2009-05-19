@@ -239,6 +239,13 @@ $messages['bs'] = array(
 	'right-patroller' => 'Provjera stranica',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'patrol-revert-reason' => 'Motiu:',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

@@ -58,6 +58,13 @@ $messages['bs'] = array(
 	'breadcrumbs-desc' => 'Prikazuje korisničku putanju kroz wiki.',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'breadcrumbs-desc' => 'Mostra el recorregut dels usuaris a través de la wiki.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

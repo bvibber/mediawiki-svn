@@ -420,7 +420,7 @@ $messages['fa'] = array(
  * @author Nike
  */
 $messages['fi'] = array(
-	'multipleupload' => 'Tallenna useampia tiedostoja',
+	'multipleupload' => 'Tallenna useita tiedostoja',
 	'multipleupload-desc' => 'Käyttäjät voivat [[Special:MultipleUpload|tallentaa monta tiedostoa kerralla]].',
 	'multipleupload-ignoreallwarnings' => "Ohita '''kaikki varoitukset''' ja tallenna tiedostot kaikesta huolimatta.",
 	'multipleupload-saveallfiles' => 'Tallenna kaikki tiedostot',
@@ -982,7 +982,7 @@ Zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van bestanden]].
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
-	'multipleupload' => 'Last opp filer',
+	'multipleupload' => 'Last opp fleire filer',
 	'multipleupload-desc' => 'Gjer det mogeleg å [[Special:MultipleUpload|laste opp fleire filer samstundes]]',
 	'multipleupload-ignoreallwarnings' => "Ignorer '''alle åtvaringar''' og lagre filene likevel.",
 	'multipleupload-saveallfiles' => 'Lagre alle filer',
@@ -1003,9 +1003,10 @@ Upassande filer vil bli sletta med ein gong, sjå [[{{MediaWiki:Multipleupload-p
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'multipleupload' => 'Last opp filer',
+	'multipleupload' => 'Last opp flere filer',
 	'multipleupload-desc' => 'Gjør det mulig å [[Special:MultipleUpload|laste opp flere filer på én gang]]',
 	'multipleupload-ignoreallwarnings' => "Ignorer '''alle advarsler''' og lagre filene likevel.",
 	'multipleupload-saveallfiles' => 'Lagre alle filer',
@@ -1020,6 +1021,8 @@ Du kan skrive inn et valgfritt '''målnavn''' og oppgi et '''sammendrag''' for �
 Upassende filer vil bli slettet umiddelbart, se [[{{MediaWiki:Multipleupload-page}}|retningslinjene for filsletting]].",
 	'multiupload-fileuploaded' => 'Fil lastet opp.',
 	'multiupload-toolbox' => 'Last opp flere filer',
+	'multiupload-no-files' => 'Velg minst én fil som skal lastes opp',
+	'multiupload-blank' => 'Ingen fil er valgt',
 );
 
 /** Occitan (Occitan)

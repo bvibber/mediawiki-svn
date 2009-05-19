@@ -139,6 +139,13 @@ $messages['bs'] = array(
 	'nss-db-error' => 'Greška pri čitanju iz autentifikacijske baze podataka',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'am-email' => 'correu electrònic',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

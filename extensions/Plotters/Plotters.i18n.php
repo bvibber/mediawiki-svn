@@ -41,12 +41,12 @@ Please define a tableclass that has 255 characters at most.',
 	'plotters-errors'      => 'Plotters {{PLURAL:$1|error|errors}}:',
 );
 
-/** Message Documentation.
+/** Message documentation (Message documentation)
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'plotters-desc'    => 'Short description of the Plotters extension. Used on [[Special:Version]]. Do not translate link targets.',
-	'plotters-errors'  => 'Parameters:
+	'plotters-desc' => 'Short description of the Plotters extension. Used on [[Special:Version]]. Do not translate link targets.',
+	'plotters-errors' => 'Parameters:
 $1 = number of messages following. Can be used with PLURAL.',
 );
 
@@ -67,8 +67,12 @@ $messages['be-tarask'] = array(
 	'plotters-title' => 'Плотэры',
 	'plotters-missing-script' => 'Скрыпт ня вызначаны.',
 	'plotters-missing-arguments' => 'Аргумэнты не пазначаныя.',
-	'plotters-excessively-long-scriptname' => 'Назва скрыпта занадта доўгая. Калі ласка, вызначце скрыпт, які ўтрымлівае меней 255 сымбаляў.',
-	'plotters-excessively-long-preprocessorname' => 'Назва прэпрацэсара занадта доўгая. Калі ласка, вызначце прэпрацэсар, які ўтрымлівае меней 255 сымбаляў.',
+	'plotters-excessively-long-scriptname' => 'Назва скрыпта занадта доўгая.
+Калі ласка, вызначце скрыпт, назва якога ня больш за 255 сымбаляў.',
+	'plotters-excessively-long-preprocessorname' => 'Назва прэпрацэсара занадта доўгая.
+Калі ласка, вызначце прэпрацэсар, назва якога ня больш за 255 сымбаляў.',
+	'plotters-excessively-long-tableclass' => 'Назва клясы табліцы занадта доўгая.
+Калі ласка, вызначце клясу табліцы, назва якой ня больш за 255 сымбаляў.',
 	'plotters-no-data' => 'Зьвесткі не пададзеныя.',
 	'plotters-invalid-renderer' => 'Выбраны няслушны генэратар выяваў.',
 );
@@ -84,10 +88,17 @@ $messages['bs'] = array(
 Ovaj pregled omogućuje jednostavni pristup na stranice sistemskih poruka koje definiraju svaki opis i kod plotera.',
 	'plotters-uses' => 'Korištenja',
 	'plotters-missing-script' => 'Nije definirana nijedna skirpta.',
+	'plotters-missing-arguments' => 'Nisu navedeni argumenti.',
 	'plotters-excessively-long-scriptname' => 'Naziv skripte je predug. Molimo definirajte naziv skripte koji je manji od 255 znakova.',
+	'plotters-excessively-long-preprocessorname' => 'Naziv preprocesora je predug.
+Molimo definirajte preprocesor, tako da ime ne bude duže od 255 znakova.',
+	'plotters-excessively-long-name' => 'Naziv plota je predug.
+Molimo definirajte naziv plota da ne bude duži od 255 znakova.',
+	'plotters-excessively-long-tableclass' => 'Klasa tabele je preduga.
+Molimo definirajte klasu tabele tako da ima najviše 255 znakova.',
 	'plotters-no-data' => 'Nisu navedeni podaci.',
 	'plotters-invalid-renderer' => 'Odabran je nevaljan renderer.',
-	'plotters-errors' => '<b>Greška(e) plotera:</b>',
+	'plotters-errors' => '{{PLURAL:$1|Greška|Greške}} plotera:',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -109,7 +120,7 @@ Pšosym definěruj plotowe mě, kótarež ma maksimalnje 255 znamuškow.',
 	'plotters-excessively-long-tableclass' => 'Tabelowa klasa jo pśedłujka. Pšosym definěruj tabelowu klasu, kótaraž ma jano 255 znamuškow.',
 	'plotters-no-data' => 'Žedne daty njejsu se pódali.',
 	'plotters-invalid-renderer' => 'Njepłaśiwy kreslak jo se wubrał.',
-	'plotters-errors' => '<b>Ploterowe zmólki:</b>',
+	'plotters-errors' => '{{PLURAL:$1|Ploterowa zmólka|Ploterowej zmólce|Ploterowe zmólki|Ploterowe zmólki}}:',
 );
 
 /** French (Français)
@@ -131,7 +142,7 @@ Cette vue d'ensemble permet d'accéder facilement aux messages système qui déf
 	'plotters-excessively-long-tableclass' => 'La classe du tableau est trop longue. Définissez une classe de tableau qui fait moins de 255 caractères.',
 	'plotters-no-data' => 'Aucune donnée n’a été fournie.',
 	'plotters-invalid-renderer' => 'Un moteur de rendu invalide a été sélectionné.',
-	'plotters-errors' => '<b>Erreur(s) de traceurs:</b>',
+	'plotters-errors' => '{{PLURAL:$1|Erreur|Erreurs}} de traceurs :',
 );
 
 /** Galician (Galego)
@@ -152,7 +163,7 @@ Esta vista xeral proporciona un acceso doado ás páxinas de mensaxes do sistema
 	'plotters-excessively-long-tableclass' => 'A clase de táboa é moi longa. Por favor, defina unha clase de táboa que sexa inferior a 255 caracteres.',
 	'plotters-no-data' => 'Non se proporcionou ningún dato.',
 	'plotters-invalid-renderer' => 'Seleccionouse un renderizador inválido.',
-	'plotters-errors' => '<b>Erro(s) de plotters:</b>',
+	'plotters-errors' => '{{PLURAL:$1|Erro|Erros}} de plotters:',
 );
 
 /** Swiss German (Alemannisch)
@@ -173,7 +184,7 @@ Die Ibersicht isch e eifach Zuegang zue dr Syschtemnochrichte, wu d Bschrybig un
 	'plotters-excessively-long-tableclass' => 'D Tabälleklasse isch z lang. Bitte definier e Tabälleklasse mit weniger wie 255 Zeiche.',
 	'plotters-no-data' => 'Kei Date botte.',
 	'plotters-invalid-renderer' => 'E nit giltige Renderer isch uusgwehlt wore.',
-	'plotters-errors' => '<b>Plotterfähler:</b>',
+	'plotters-errors' => '{{PLURAL:$1|Plotterfähler|Plotterfähler}}:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -194,7 +205,7 @@ Tutón přehlad dodawa lochki přistup na strony systemowych zdźělenkow, kotre
 	'plotters-excessively-long-tableclass' => 'Tabelowa klasa je předołha. Prošu definuj tabelowu klasu, kotraž ma mjenje hač 255 znamješkow.',
 	'plotters-no-data' => 'Žane daty njejsu so podali.',
 	'plotters-invalid-renderer' => 'Njepłaćiwy rysowak je so wubrał.',
-	'plotters-errors' => '<b>Ploterowe zmylki:</b>',
+	'plotters-errors' => '{{PLURAL:$1|Ploterowy zmylk|Ploterowej zmylkaj|Ploterowe zmylki|Ploterowe zmylki}}:',
 );
 
 /** Interlingua (Interlingua)
@@ -211,9 +222,11 @@ Iste summario permitte acceder facilemente al messages de systema que defini le 
 	'plotters-missing-arguments' => 'Nulle parametro specificate.',
 	'plotters-excessively-long-scriptname' => 'Le nomine del script es troppo longe. Per favor defini un script que ha minus de 255 characteres.',
 	'plotters-excessively-long-preprocessorname' => 'Le nomine del preprocessator es troppo longe. Per favor defini un preprocessator que ha minus de 255 characteres.',
+	'plotters-excessively-long-tableclass' => 'Le classe de tabula es troppo longe.
+Per favor defini un classe de tabula que ha 255 characteres al maximo.',
 	'plotters-no-data' => ' Nulle dato esseva providite.',
 	'plotters-invalid-renderer' => 'Un renditor invalide esseva seligite.',
-	'plotters-errors' => '<b>Error(es) de plotter:</b>',
+	'plotters-errors' => '{{PLURAL:$1|Error|Errores}} de plotter:',
 );
 
 /** Japanese (日本語)
@@ -226,10 +239,14 @@ $messages['ja'] = array(
 	'plotters-pagetext' => '以下は利用者が jsplot タグ内で使用できる、[[MediaWiki:Plotters-definition]]で定義された特別なプロッターの一覧です。この一覧から各プロッターの説明およびコードを定義している各システムメッセージのページにアクセスできます。',
 	'plotters-uses' => '使用',
 	'plotters-missing-script' => '定義済みのスクリプトはありません。',
-	'plotters-excessively-long-scriptname' => 'スクリプトの名前が長すぎます。255文字未満に収めてください。',
+	'plotters-missing-arguments' => '引数が指定されていません。',
+	'plotters-excessively-long-scriptname' => 'スクリプトの名前が長すぎます。スクリプト名は255文字以内に収めてください。',
+	'plotters-excessively-long-preprocessorname' => 'プリプロセッサの名前が長すぎます。プリプロセッサ名は255文字以内に収めてください。',
+	'plotters-excessively-long-name' => 'プロットの名前が長すぎます。プロット名は255文字以内に収めてください。',
+	'plotters-excessively-long-tableclass' => 'テーブルのクラスが長すぎます。クラスは255文字以内に収めてください。',
 	'plotters-no-data' => 'データが与えられていません。',
 	'plotters-invalid-renderer' => '無効なレンダラーが選択されました。',
-	'plotters-errors' => '<b>プロッターのエラー:</b>',
+	'plotters-errors' => 'プロッターのエラー:',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -249,7 +266,7 @@ $messages['ksh'] = array(
 	'plotters-excessively-long-tableclass' => 'Dä Name för di <i lang="en">CSS</i>-KLaß fö de Tabälle es ze lang, jivv ene Name aan, dä kööter wi 255 Zeijsche eß.',
 	'plotters-no-data' => 'Kei Date aanjejovve.',
 	'plotters-invalid-renderer' => 'En onjöltsch Aanzeijeprojramm wood ußjesohk.',
-	'plotters-errors' => '<b>Plotter Fähler:</b>',
+	'plotters-errors' => 'Fähler en de <i lang="en">Plotters</i>:',
 );
 
 /** Dutch (Nederlands)
@@ -274,7 +291,7 @@ Geeft aan plotternaam op die korter is dan 255 karakters.',
 Geef een tabelklassenaam op die korter is dan 255 karakters.',
 	'plotters-no-data' => 'Er zijn geen gegevens ingevoerd.',
 	'plotters-invalid-renderer' => 'Er is een ongeldige renderer geselecteerd.',
-	'plotters-errors' => '<b>Er zijn plotterfouten aangetroffen:</b>',
+	'plotters-errors' => 'Er {{PLURAL:$1|is een plotterfout|zijn plotterfouten}} aangetroffen:',
 );
 
 /** Occitan (Occitan)
@@ -307,7 +324,7 @@ Tento prehľad poskytuje jednoduchý prístup k stránkam systémových správ, 
 	'plotters-excessively-long-tableclass' => 'Názov triedy tabuľky je príliš dlhý. Definujte prosím preprocesor, ktorého názov je kratší ako 255 znakov.',
 	'plotters-no-data' => 'Neboli poskytnuté žiadne údaje.',
 	'plotters-invalid-renderer' => 'Bol vybraný neplatný vykresľovač.',
-	'plotters-errors' => '<b>Chyby plotrov:</b>',
+	'plotters-errors' => '<b>{{PLURAL:$1|Chyba|Chyby}} plotrov:</b>',
 );
 
 /** Vietnamese (Tiếng Việt)

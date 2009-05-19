@@ -679,6 +679,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'errorhandler-desc' => 'Feilhåndtering for MediaWiki',
@@ -687,6 +688,7 @@ $messages['no'] = array(
 	'errorhandler-error-warning' => 'Advarsel',
 	'errorhandler-error-parse' => 'Parserfeil',
 	'errorhandler-error-notice' => 'Melding',
+	'errorhandler-error-deprecated' => 'Nedgradert',
 	'errorhandler-error-core-error' => 'Feil i kjernen',
 	'errorhandler-error-core-warning' => 'Kjerne-advarsel',
 	'errorhandler-error-compile-error' => 'Kompileringsfeil',
@@ -694,6 +696,7 @@ $messages['no'] = array(
 	'errorhandler-error-user-error' => 'Brukerfeil',
 	'errorhandler-error-user-warning' => 'Brukeradvarsel',
 	'errorhandler-error-user-notice' => 'Brukermelding',
+	'errorhandler-error-user-deprecated' => 'Brukerdegradert',
 	'errorhandler-error-strict' => 'Strenge standarder',
 	'errorhandler-error-recoverable' => 'Håndterbar alvorlig feil',
 	'errorhandler-msg-text' => '$1: $2 i $3 (rad $4)',

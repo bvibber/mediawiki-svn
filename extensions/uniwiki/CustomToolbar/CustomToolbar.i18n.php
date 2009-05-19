@@ -364,6 +364,13 @@ $wgCustomToolbarMessages['bs'] = array(
 	'ct_user_sample' => 'Korisničko ime',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$wgCustomToolbarMessages['ca'] = array(
+	'ct_submit' => 'Vés-hi!',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

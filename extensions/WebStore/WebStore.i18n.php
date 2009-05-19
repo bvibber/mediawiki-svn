@@ -1556,6 +1556,7 @@ $1',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'inplace_access_disabled' => 'Tilgangen til denne tjenesten har blitt slått av for alle klienter.',
@@ -1567,6 +1568,7 @@ $messages['no'] = array(
 	'inplace_scaler_no_handler' => 'Ingen behandler for endring av denne MIME-typen',
 	'inplace_scaler_no_output' => 'Ingen endringsresultatfil ble produsert.',
 	'inplace_scaler_zero_size' => 'Endringen produserte en tom resultatfil.',
+	'webstore-desc' => 'Internettbasert (ikke-NFS) fillagringsmellomvare',
 	'webstore_access' => 'Tjenesten begrenses av klientens IP.',
 	'webstore_path_invalid' => 'Filnavnet var ugyldig.',
 	'webstore_dest_open' => 'Kunne ikke åpne målfil «$1».',

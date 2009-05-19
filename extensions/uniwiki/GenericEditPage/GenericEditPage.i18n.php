@@ -213,6 +213,7 @@ Dodajte jednu koristeći alate u meniju.',
  * @author Solde
  */
 $messages['ca'] = array(
+	'gep-categories' => 'Categories',
 	'gep-addcategory' => 'Afegeix una categoria',
 	'gep-addcategorybutton' => 'Afegeix',
 	'gep-suggestcategory' => 'Suggereix una categoria',

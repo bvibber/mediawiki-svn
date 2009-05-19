@@ -49,6 +49,7 @@ $messages['qqq'] = array(
 	'badimages-remove' => '{{Identical|Remove}}',
 	'badimages-remove-btn' => '{{Identical|Remove}}',
 	'badimages-log-name' => '{{Identical|Bad image list}}',
+	'right-badimages' => '{{doc-right|badimages}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -344,6 +345,18 @@ $messages['bs'] = array(
 	'badimages-log-add' => 'dodana [[$1]] na spisak loših slika',
 	'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
 	'badimages-page' => '{{ns:help}}:Spisak loših slika',
+	'right-badimages' => 'Ažuriranje spiska loših slika',
+);
+
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'badimages' => "Llista d'imatges dolentes",
+	'badimages-name' => 'Nom:',
+	'badimages-reason' => 'Motiu:',
+	'badimages-remove' => '(elimina)',
+	'badimages-remove-btn' => 'Elimina',
 );
 
 /** Czech (Česky)
@@ -385,6 +398,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'badimages' => 'Liste unerwünschter Bilder',
@@ -407,6 +421,7 @@ $messages['de'] = array(
 	'badimages-log-add' => 'fügte [[$1]] zu der Liste unerwünschter Bilder hinzu',
 	'badimages-log-remove' => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
 	'badimages-page' => '{{ns:help}}:Liste unerwünschter Bilder',
+	'right-badimages' => 'Liste der unerwünschten Bilder aktualisieren',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -441,6 +456,7 @@ $messages['dsb'] = array(
 	'badimages-log-add' => 'jo [[$1]] k lisćinje špatnych wobrazow pśidał',
 	'badimages-log-remove' => 'jo [[$1]] z lisćiny špatnych wobrazow wótwónoźeł.',
 	'badimages-page' => '{{ns:help}}:Lisćina špatnych wobrazow',
+	'right-badimages' => 'Lisćinu njewitanych wobrazow aktualizěrowaś',
 );
 
 /** Greek (Ελληνικά)
@@ -634,6 +650,7 @@ $messages['fr'] = array(
 	'badimages-log-add' => 'a ajouté [[$1]] à la liste des images indésirables',
 	'badimages-log-remove' => 'a retiré [[$1]] de la liste des images indésirables',
 	'badimages-page' => '{{ns:help}}:Liste des images indésirables',
+	'right-badimages' => 'Mise à jour de la liste des mauvaises images',
 );
 
 /** Cajun French (Français cadien)
@@ -727,6 +744,7 @@ $messages['gl'] = array(
 	'badimages-log-add' => 'engadiuse [[$1]] á lista de imaxes con fallas',
 	'badimages-log-remove' => 'eliminouse [[$1]] da lista de imaxes con fallas',
 	'badimages-page' => '{{ns:help}}:Lista de imaxes con fallas',
+	'right-badimages' => 'Actualizar a lista imaxes malas',
 );
 
 /** Gothic
@@ -772,6 +790,7 @@ $messages['gsw'] = array(
 	'badimages-log-add' => 'het [[$1]] in d Lischt vu nit gwinschte Bilder dryygsetzt',
 	'badimages-log-remove' => 'het [[$1]] us dr Lischt vu nit gwinschte Bilder usegnuh',
 	'badimages-page' => '{{ns:help}}:Lischt vu nit gwinschte Bilder',
+	'right-badimages' => 'D Lischt vu dr nit gwinschte Bilder aktualisiere',
 );
 
 /** Manx (Gaelg)
@@ -920,6 +939,7 @@ $messages['hsb'] = array(
 	'badimages-log-add' => 'přida [[$1]] k lisćinje njewitanych wobrazow',
 	'badimages-log-remove' => 'wotstroni [[$1]] z lisćiny njewitanych wobrazow',
 	'badimages-page' => '{{ns:help}}:Lisćina njewitanych wobrazow',
+	'right-badimages' => 'Lisćinu njepožadanych wobrazow aktualizować',
 );
 
 /** Hungarian (Magyar)
@@ -1088,7 +1108,8 @@ $messages['ja'] = array(
 	'badimages-log-header' => 'これは [[{{MediaWiki:Badimages-page}}|{{int:badimages}}]]への変更の記録です。',
 	'badimages-log-add' => '[[$1]] を一覧に追加しました。',
 	'badimages-log-remove' => '[[$1]] を一覧から削除しました。',
-	'badimages-page' => '{{ns:help}}:好ましくない画像の一覧表',
+	'badimages-page' => '{{ns:help}}:好ましくない画像一覧',
+	'right-badimages' => '好ましくない画像一覧を更新する',
 );
 
 /** Javanese (Basa Jawa)
@@ -1199,6 +1220,7 @@ $messages['ksh'] = array(
 	'badimages-log-add' => 'hät [[$1]] en de Leß met verbodde Belder opjenumme',
 	'badimages-log-remove' => 'hät [[$1]] uß de Leß met verbodde Belder jenumme',
 	'badimages-page' => '{{ns:help}}:Leß met verbodde Belder',
+	'right-badimages' => 'De Leß met unjewollte Belder ändere',
 );
 
 /** Kurdish (Kurdî / كوردی)
@@ -1482,6 +1504,7 @@ $messages['nl'] = array(
 	'badimages-log-add' => '[[$1]] is toegevoegd aan de verwijderlijst afbeeldingen',
 	'badimages-log-remove' => '[[$1]] is verwijderd uit de verwijderlijst afbeeldingen',
 	'badimages-page' => '{{ns:help}}:Verwijderlijst afbeeldingen',
+	'right-badimages' => 'Verwijderlijst bestanden bijwerken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1865,6 +1888,7 @@ $messages['sk'] = array(
 	'badimages-log-add' => '[[$1]] pridaný do zoznamu zlých obrázkov',
 	'badimages-log-remove' => '[[$1]] odstránený zo zoznamu zlých obrázkov',
 	'badimages-page' => '{{ns:help}}:Zoznam zlých obrázkov',
+	'right-badimages' => 'Aktualizovať zoznam zlých obrázkov.',
 );
 
 /** Serbian (Српски / Srpski) */

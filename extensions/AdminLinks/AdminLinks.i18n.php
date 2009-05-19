@@ -60,6 +60,7 @@ $messages['ar'] = array(
 $messages['bs'] = array(
 	'adminlinks' => 'Linkovi za admine',
 	'adminlinks-desc' => 'Dodaje [[Special:AdminLinks|posebnu stranicu]] koja sadrži korisne linkove za administratore',
+	'adminlinks_documentation' => '$1 dokumentacija',
 	'adminlinks_general' => 'Općenito',
 	'adminlinks_editsidebar' => 'Uredi bočnu alatnu traku',
 	'adminlinks_editcss' => 'Uređivanje CSS datoteke',
@@ -68,7 +69,14 @@ $messages['bs'] = array(
 	'adminlinks_createuser' => 'Napravi korisnika',
 	'adminlinks_browsesearch' => 'Pregledanje i pretraga',
 	'adminlinks_importexport' => 'Uvoz i izvoz',
-	'right-adminlinks' => 'Pregledavanje linkova u [[Special:AdminLinks]]',
+	'right-adminlinks' => 'Pregledavanje linkova u [[Special:AdminLinks|linkovima administratora]]',
+);
+
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'adminlinks' => "Enllaços d'administració",
 );
 
 /** German (Deutsch)
@@ -76,7 +84,7 @@ $messages['bs'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'adminlinks-desc' => 'Eine [[Special:AdminLinks|Spezialseite]] mit hilfreichen Links für Administratoren wird hinzugefügt',
+	'adminlinks-desc' => 'Ergänzt eine [[Special:AdminLinks|Spezialseite]] mit hilfreichen Links für Administratoren',
 	'adminlinks_general' => 'Allgemein',
 );
 
@@ -86,6 +94,7 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'adminlinks' => 'Wótkaze za administratorow',
 	'adminlinks-desc' => 'Pśidawa [[Special:AdminLinks|specialny bok]] z pomocniwymi wótkazami za administratorow',
+	'adminlinks_documentation' => '$1 dokumentacija',
 	'adminlinks_general' => 'Powšykny',
 	'adminlinks_editsidebar' => 'Bocnu kšomu wobźěłaś',
 	'adminlinks_editcss' => 'Dataju CSS wobźěłaś',
@@ -109,7 +118,7 @@ $messages['es'] = array(
 	'adminlinks_createuser' => 'Crear un usuario',
 	'adminlinks_browsesearch' => 'Exploración y búsqueda',
 	'adminlinks_importexport' => 'Importación y exportación',
-	'right-adminlinks' => 'Ver el vínculo a [[Special:AdminLinks]]',
+	'right-adminlinks' => 'Ver el vínculo a [[Special:AdminLinks|Administrar vínculos]]',
 );
 
 /** French (Français)
@@ -126,7 +135,7 @@ $messages['fr'] = array(
 	'adminlinks_createuser' => 'Créer un utilisateur',
 	'adminlinks_browsesearch' => 'Navigation et recherche',
 	'adminlinks_importexport' => 'Importer et exporter',
-	'right-adminlinks' => 'Voir le lien vers [[Special:AdminLinks]]',
+	'right-adminlinks' => "Voir le lien vers [[Special:AdminLinks|liens d'administration]]",
 );
 
 /** Galician (Galego)
@@ -135,6 +144,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'adminlinks' => 'Ligazóns de administrador',
 	'adminlinks-desc' => 'Engade unha [[Special:AdminLinks|páxina especial]] que contén ligazóns útiles para os administradores',
+	'adminlinks_documentation' => 'Documentación de $1',
 	'adminlinks_general' => 'Xeral',
 	'adminlinks_editsidebar' => 'Editar a barra lateral',
 	'adminlinks_editcss' => 'Editar o ficheiro CSS',
@@ -143,7 +153,7 @@ $messages['gl'] = array(
 	'adminlinks_createuser' => 'Crear un usuario',
 	'adminlinks_browsesearch' => 'Navegación e procura',
 	'adminlinks_importexport' => 'Importación e exportación',
-	'right-adminlinks' => 'Ver a ligazón cara á páxina especial [[Special:AdminLinks]]',
+	'right-adminlinks' => 'Ver a ligazón cara á páxina especial [[Special:AdminLinks|Ligazóns de administrador]]',
 );
 
 /** Swiss German (Alemannisch)
@@ -152,6 +162,7 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'adminlinks' => 'Adminlinks',
 	'adminlinks-desc' => 'Fiegt e [[Special:AdminLinks|Spezialsyte]] yy mit hilfryyche Gleicher (Links) fir Ammanne (Adminischtratore).',
+	'adminlinks_documentation' => '$1 Dokumäntation',
 	'adminlinks_general' => 'Allgmein',
 	'adminlinks_editsidebar' => 'Syteleischte bearbeite',
 	'adminlinks_editcss' => 'CSS-Datei bearbeite',
@@ -169,6 +180,7 @@ $messages['gsw'] = array(
 $messages['hsb'] = array(
 	'adminlinks' => 'Wotkazy za administratorow',
 	'adminlinks-desc' => 'Přidawa [[Special:AdminLinks|specialnu stronu]] z pomocliwymi wotkazami za administratorow',
+	'adminlinks_documentation' => '$1 dokumentacija',
 	'adminlinks_general' => 'Powšitkowny',
 	'adminlinks_editsidebar' => 'Pobóčnu lajstu wobdźěłać',
 	'adminlinks_editcss' => 'Dataju CSS wobdźěłać',
@@ -201,8 +213,9 @@ $messages['ia'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'adminlinks' => '管理者用リンク',
+	'adminlinks' => '管理者用リンク集',
 	'adminlinks-desc' => '管理者に有用なリンクを集めた[[Special:AdminLinks|特別ページ]]を追加する',
+	'adminlinks_documentation' => '$1 の説明書',
 	'adminlinks_general' => '一般',
 	'adminlinks_editsidebar' => 'サイドバーの編集',
 	'adminlinks_editcss' => 'CSSファイルの編集',
@@ -211,7 +224,7 @@ $messages['ja'] = array(
 	'adminlinks_createuser' => '利用者の作成',
 	'adminlinks_browsesearch' => '閲覧と検索',
 	'adminlinks_importexport' => '取り込みと書き出し',
-	'right-adminlinks' => '[[Special:AdminLinks]] へのリンクが表示される',
+	'right-adminlinks' => '[[Special:AdminLinks|管理者用リンク集]]へのリンクが表示される',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -220,6 +233,7 @@ $messages['ja'] = array(
 $messages['ksh'] = array(
 	'adminlinks' => 'Lengks för Wiki-Köbesse',
 	'adminlinks-desc' => 'Deiht en [[Special:AdminLinks|Söndersigg]] en et Wiki met extra Lengks för Wiki-Köbesse.',
+	'adminlinks_documentation' => '$1 Dokkemäntazjuhn',
 	'adminlinks_general' => 'Alljemein',
 	'adminlinks_editsidebar' => '<code lang="en">sidebar</code> Ändere',
 	'adminlinks_editcss' => '<i lang="en">CSS</i>-Datei ändere',
@@ -237,6 +251,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'adminlinks' => 'Linke fir Administrateuren',
 	'adminlinks-desc' => 'Setzt eng [[Special:AdminLinks|Spezialsäit]] derbäi mat nëtzleche Linke fir Administrateuren',
+	'adminlinks_documentation' => '$1 Dokumentatioun',
 	'adminlinks_general' => 'Allgemeng',
 	'adminlinks_editsidebar' => 'Dw säitleche Menu änneren',
 	'adminlinks_editcss' => 'CSS-Fichier änneren',
@@ -254,6 +269,7 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'adminlinks' => 'Verwijzingen voor beheerders',
 	'adminlinks-desc' => 'Voegt een [[Special:AdminLinks|speciale pagina]] toe met handige verwijzingen voor beheerders',
+	'adminlinks_documentation' => 'Documentatie voor $1',
 	'adminlinks_general' => 'Algemeen',
 	'adminlinks_editsidebar' => 'Zijbalk bewerken',
 	'adminlinks_editcss' => 'CSS bewerken',
@@ -269,11 +285,31 @@ $messages['nl'] = array(
  * @author Gunnernett
  */
 $messages['nn'] = array(
+	'adminlinks_documentation' => 'dokumentasjon for $1',
 	'adminlinks_general' => 'Generelt',
+	'adminlinks_editcss' => 'Endre CSS-fila',
 	'adminlinks_editmainpagename' => 'Endre namn på hovudsida',
 	'adminlinks_users' => 'Brukarar',
 	'adminlinks_createuser' => 'Opprett ein brukar',
 	'adminlinks_importexport' => 'Importering og eksportering',
+	'right-adminlinks' => 'Sjå lenka til [[Special:AdminLinks|admin-lenker]]',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'adminlinks' => 'Adminlenker',
+	'adminlinks-desc' => 'Legger til en [[Special:AdminLinks|spesialside]] som inneholder nyttige lenker for administratorer',
+	'adminlinks_documentation' => 'dokumentasjon for $1',
+	'adminlinks_general' => 'Generelt',
+	'adminlinks_editcss' => 'Rediger CSS-filen',
+	'adminlinks_editmainpagename' => 'Endre navnet på hovedsiden',
+	'adminlinks_users' => 'Brukere',
+	'adminlinks_createuser' => 'Opprett en bruker',
+	'adminlinks_browsesearch' => 'Lesing og søking',
+	'adminlinks_importexport' => 'Importering og eksportering',
+	'right-adminlinks' => 'Se lenken til [[Special:AdminLinks|admin-lenker]]',
 );
 
 /** Portuguese (Português)
@@ -299,6 +335,7 @@ $messages['pt'] = array(
 $messages['sk'] = array(
 	'adminlinks' => 'Odkazy správcu',
 	'adminlinks-desc' => 'Pridáva [[Special:AdminLinks|špeciálnu stránku]] s užitočnými odkazmi pre správcov',
+	'adminlinks_documentation' => 'Dokumentácia $1',
 	'adminlinks_general' => 'Všeobecné',
 	'adminlinks_editsidebar' => 'Upraviť bočný panel',
 	'adminlinks_editcss' => 'Upraviť CSS súbor',
@@ -307,7 +344,7 @@ $messages['sk'] = array(
 	'adminlinks_createuser' => 'Vytvoriť používateľa',
 	'adminlinks_browsesearch' => 'Prehliadanie a vyhľadávanie',
 	'adminlinks_importexport' => 'Import a export',
-	'right-adminlinks' => 'Vidieť odkaz na [[Special:AdminLinks]]',
+	'right-adminlinks' => 'Pozri odkaz na [[Special:AdminLinks|Odkazy správcu]]',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -324,6 +361,6 @@ $messages['vi'] = array(
 	'adminlinks_createuser' => 'Mở tài khoản',
 	'adminlinks_browsesearch' => 'Duyệt và tìm kiếm',
 	'adminlinks_importexport' => 'Nhập và xuất',
-	'right-adminlinks' => 'Xem [[Special:AdminLinks]]',
+	'right-adminlinks' => 'Xem [[Special:AdminLinks|các liên kết quản lý]]',
 );
 

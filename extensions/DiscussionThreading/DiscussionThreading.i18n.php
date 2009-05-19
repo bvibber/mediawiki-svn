@@ -75,6 +75,17 @@ $messages['bs'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Započni novu temu',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'discussionthreading-desc' => 'Afegeix fils a les pàgines de discussió',
+	'discussionthreading-replysection' => 'contestar',
+	'discussionthreading-replysectionhint' => 'Respondre a aquest missatge',
+	'discussionthreading-threadnewsection' => 'nou',
+	'discussionthreading-threadnewsectionhint' => 'Comença un nou fil',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -346,8 +357,10 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'discussionthreading-desc' => 'Legg til tråding på diskusjonssider',
 	'discussionthreading-replysection' => 'svar',
 	'discussionthreading-replysectionhint' => 'Svar på denne posten',
 	'discussionthreading-threadnewsection' => 'ny',

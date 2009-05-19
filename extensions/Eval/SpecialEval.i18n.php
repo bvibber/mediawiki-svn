@@ -67,6 +67,18 @@ $messages['bs'] = array(
 	'eval_code' => 'Kod',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => 'Afegeix [[Special:Eval|una interfície]] a la funció <code>eval()</code>',
+	'eval_submit' => 'Evalua',
+	'eval_escape' => "Sortida de l'Escape",
+	'eval_out' => 'Sortida',
+	'eval_code' => 'Codi',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

@@ -1077,6 +1077,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'importusers' => 'Importer brukere',
@@ -1099,6 +1100,7 @@ $messages['no'] = array(
 	'importusers-password' => 'passord',
 	'importusers-email' => 'e-post',
 	'importusers-realname' => 'virkelig navn',
+	'right-import_users' => 'Importerer flere brukere samtidig',
 );
 
 /** Occitan (Occitan)

@@ -148,6 +148,15 @@ $messages['bs'] = array(
 	'backforth-prev' => 'prethodni ($1)',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'backforth-next' => 'Següent ($1)',
+	'backforth-desc' => 'Afegeix les enllaços de paginació "Següent" i "Anterior" al cap d\'amunt de les pàgines',
+	'backforth-prev' => 'Anterior ($1)',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

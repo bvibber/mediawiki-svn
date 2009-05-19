@@ -599,9 +599,11 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Boivie
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'watchers' => 'Overvåkende',
+	'watchers-desc' => 'Viser [[Special:Watchers|hvilke brukere som overvåker en viss side]]',
 	'watchers_link_title' => 'Hvem overvåker denne siden?',
 	'watchers_error_article' => '<b>Feil:</b> Siden finnes ikke.',
 	'watchers_header' => '{{PLURAL:$2|Person|Personer}} som overvåker «$1»',

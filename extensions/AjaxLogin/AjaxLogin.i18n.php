@@ -311,6 +311,18 @@ Du kan missa alle endringane du gjorde på denne sida om du går ut av ho no.',
 	'ajaxlogin-create' => 'Opprett ein konto',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'ajaxlogin-desc' => 'En dynamisk boks som lar brukere logge inn og huske passord',
+	'ajaxLogin1' => 'For å fullføre innloggingen må du skrive inn et nytt passord.
+Dette vil føre deg vekk fra denne redigeringssiden, og du kan miste den nåværende redigeringen.',
+	'ajaxLogin2' => 'Er du sikker?
+Du kan miste alle endringene du gjorde på denne siden om du forlater denne siden nå.',
+	'ajaxlogin-create' => 'Opprett en konto',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

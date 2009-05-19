@@ -1551,6 +1551,7 @@ Om du har spørsmål om dette distribusjonssytemet for utvidingar, gå til [http
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author EivindJ
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'extensiondistributor' => 'Last ned utvidelser til MediaWiki',
@@ -1562,7 +1563,7 @@ $messages['no'] = array(
 	'extdist-choose-extension' => 'Velg hvilken utvidelse du ønsker å laste ned:',
 	'extdist-wc-empty' => 'Mappen med arbeidskopien har ingen distribuerbare utvidelser.',
 	'extdist-submit-extension' => 'Fortsett',
-	'extdist-current-version' => 'Nåværende versjon (trunk)',
+	'extdist-current-version' => 'Utviklingsversjon (trunk)',
 	'extdist-choose-version' => '<big>Du laster ned utvidelsen <b>$1</b>.</big>
 
 Angi hvilken MediaWiki-versjon du bruker.

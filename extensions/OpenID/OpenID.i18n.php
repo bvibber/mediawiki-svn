@@ -552,27 +552,38 @@ Postoji mnogo [http://wiki.openid.net/Public_OpenID_providers javnih provajdera 
 
 /** Catalan (Català)
  * @author Solde
+ * @author Toniher
  */
 $messages['ca'] = array(
+	'openid-desc' => 'Inicieu una sessió al wiki amb un [http://openid.net/ OpenID], i inicieu una sessió a qualsevol lloc web compatible amb OpenID amb el vostre compte wiki',
+	'openidlogin' => 'Inicia una sessió amb OpenID',
+	'openidfinish' => 'Finalitza la sessió amb OpenID',
 	'openidserver' => 'Servidor OpenID',
 	'openidxrds' => 'Fitxer Yadis',
 	'openidconvert' => 'Conversor OpenID',
+	'openiderror' => 'Error de verificació',
 	'openidoptional' => 'Opcional',
 	'openidrequired' => 'Requerit',
 	'openidnickname' => 'Sobrenom',
 	'openidfullname' => 'Nom complet',
 	'openidemail' => 'Adreça de correu electrònic',
 	'openidlanguage' => 'Idioma',
+	'openidchooseinstructions' => 'Tots els usuaris cal que tinguin un sobrenom;
+podeu triar-ne un de les opcions a continuació.',
+	'openidchoosefull' => 'El vostre nom complet ($1)',
+	'openidchooseexisting' => 'Un compte existent en aquest wiki:',
 	'openidchoosepassword' => 'contrassenya:',
+	'openid-provider-label-other-username' => "Introdueixi el seu $1 nom d'usuari",
 );
 
 /** Czech (Česky)
  * @author IAlex
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
-	'openid-desc' => 'Přihlaste se na wiki pomocí [http://openid.net OpenID] a přihlaste se na jiné stránky podporující OpenID pomocí uživatelského účtu wiki',
-	'openidlogin' => 'Přihlásit se pomocí OpenID',
+	'openid-desc' => 'Přihlašování se na wiki pomocí [http://openid.net/ OpenID] a přihlašování se na jiné stránky podporující OpenID pomocí uživatelského účtu z wiki',
+	'openidlogin' => 'Přihlášení pomocí OpenID',
 	'openidfinish' => 'Dokončit přihlášení pomocí OpenID',
 	'openidserver' => 'OpenID server',
 	'openidxrds' => 'Soubor Yadis',
@@ -2579,6 +2590,7 @@ Det er mange [http://wiki.openid.net/Public_OpenID_providers leverandørar av Op
 	'openid-prefstext' => '[http://openid.net/ OpenID] instillingar',
 	'openid-pref-hide' => 'Gøym OpenID på brukarsida di om du loggar inn med ein.',
 	'openid-pref-update-userinfo-on-login' => 'Oppdatér informasjonen min frå OpenID-persona kvar gong eg loggar inn',
+	'openidsigninorcreateaccount' => 'Logg inn eller lag ein ny konto',
 	'openid-provider-label-openid' => 'Skriv inn din OpenID URL',
 	'openid-provider-label-google' => 'Logg inn ved bruk av di Google-konto',
 	'openid-provider-label-yahoo' => 'Logg inn ved å bruka din Yahoo-konto',
@@ -2589,6 +2601,7 @@ Det er mange [http://wiki.openid.net/Public_OpenID_providers leverandørar av Op
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author IAlex
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'openid-desc' => 'Logg inn på wikien med en [http://openid.net/ OpenID] og logg inn på andre sider som bruker OpenID med kontoen herfra',
@@ -2644,17 +2657,24 @@ Om du ønsker å bruke OpenID i framtiden, kan du [[Special:OpenIDConvert|konver
 	'openidautosubmit' => 'Denne siden inneholder et skjema som vil leveres automatisk om du har JavaScript slått på. Om ikke, trykk på «Fortsett».',
 	'openidclientonlytext' => 'Du kan ikke bruke kontoer fra denne wikien som OpenID på en annen side.',
 	'openidloginlabel' => 'OpenID-adresse',
-	'openidlogininstructions' => "{{SITENAME}} støtter [http://openid.net/ OpenID]-standarden for enhetlig innlogging på forskjellige nettsteder. OpenID lar deg logge inn på mange forskjellige nettsider uten å bruke forskjellige passord overalt. (Se [http://no.wikipedia.org/wiki/OpenID Wikipedia-artikkelen om OpenID] for mer informasjon.)
+	'openidlogininstructions' => '{{SITENAME}} støtter [http://openid.net/ OpenID]-standarden for enhetlig innlogging på forskjellige nettsteder.
+OpenID lar deg logge inn på mange forskjellige nettsider uten at du må bruke forskjellige passord på hver.
+(Se [http://nn.wikipedia.org/wiki/OpenID Wikipedia-artikkelen om OpenID] for mer informasjon.)
 
-Om du allerede har en konto på {{SITENAME}}, kan du logge på som vanlig med ditt brukernavn og passord. For å bruke OpenID i framtiden kan du [[Special:OpenIDConvert|konvertere kontoen din til OpenID]] etter at du har logget inn på vanlig vis.
+Om du allerede har en konto på {{SITENAME}}, kan du [[Special:UserLogin|logga på]] som vanlig med brukarnavnet og passordet ditt.
+For å bruke OpenID i fremtiden, kan du [[Special:OpenIDConvert|konvertere kontoen din til OpenID]] etter at du har logget inn på vanlig måte.
 
-Det er mange [http://wiki.openid.net/Public_OpenID_providers leverandører av OpenID], og du kan allerede ha en OpenID-aktivert konto et annet sted.
-
-;Andre wikier :Om du har en konto på en OpenID-aktivert wiki, som [http://wikitravel.org/ Wikitravel], [http://wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] eller [http://kei.ki/ Keiki], kan du logge inn på {{SITENAME}} ved å skrive inn den '''fullstendige adressen''' til din brukerside på den wikien i boksen ovenfor. For eksempel ''<nowiki>http://kei.kei/en/User:Eksempel</nowiki>''.
-;[http://openid.yahoo.com/ Yahoo!] :Om du har en konto hos Yahoo! kan du logge inn på denne siden ved å skrive inn OpenID-en din fra Yahoo i boksen ovenfor. Yahoo!s OpenID-adresser har formen ''<nowiki>https://me.yahoo.com/dittbrukernavn</nowiki>''.
-;[http://dev.aol.com/aol-and-63-million-openids AOL] :Om du har en konto hos [http://aol.com/ AOL], for eksempel en [http://aim.com/ AIM]-konto, kan du logge inn på {{SITENAME}} ved å skrive inn OpenID-en din fra AOL i boksen ovenfor. AOLs OpenID-adresser har formen ''<nowiki>http://openid.aol.com/dittbrukernavn</nowiki>''. Brukernavnet må være i små bokstaver og uten mellomrom.
-;[http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] :Om du har en konto på en av disse tjenestene, skriv inn adressen til bloggen din i boksen ovenfor. For eksempel ''<nowiki>http://dittbrukernavn.blogspot.com/</nowiki>'', ''<nowiki>http://dittbrukernavn.wordpress.com/</nowiki>'', ''<nowiki>http://dittbrukernavn.livejournal.com/</nowiki>'', or ''<nowiki>http://dittbrukernavn.vox.com/</nowiki>''.",
+Det er mange [http://wiki.openid.net/Public_OpenID_providers leverandører av OpenID], og du kan allerede ha en OpenID-aktivert konto et annet sted.',
+	'openidupdateuserinfo' => 'Oppdater min personlige informasjon',
+	'openid-prefstext' => '[http://openid.net/ OpenID] innstillinger',
 	'openid-pref-hide' => 'Skjul OpenID på brukersiden din om du logger inn med en.',
+	'openid-pref-update-userinfo-on-login' => 'Oppdater min informasjon fra OpenID-persona hver gang jeg logger inn',
+	'openidsigninorcreateaccount' => 'Logg inn eller lag en ny konto',
+	'openid-provider-label-openid' => 'Skriv inn din OpenID-nettadresse',
+	'openid-provider-label-google' => 'Logg inn med din Google-konto',
+	'openid-provider-label-yahoo' => 'Logg inn med din Yahoo-konto',
+	'openid-provider-label-aol' => 'Skriv inn ditt AOL-skjermnavn',
+	'openid-provider-label-other-username' => 'Skriv inn ditt $1-brukernavn',
 );
 
 /** Occitan (Occitan)

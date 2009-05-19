@@ -155,6 +155,13 @@ $messages['nn'] = array(
 	'pipeescape-desc' => 'Tolkefunksjon <code>#!</code> som lèt «|»-teiknet vera berre eit «|»-teikn.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'pipeescape-desc' => 'Tolkefunksjonen <code>#!</code> som lar «|»-tegnet bare være et «|»-tegn',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

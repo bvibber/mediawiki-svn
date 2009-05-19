@@ -665,6 +665,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'onlinestatus-desc' => 'Legger til en innstilling for å vise om brukeren er logget på wikien eller ikke',
@@ -679,6 +680,8 @@ $messages['no'] = array(
 	'onlinestatus-toggles-show' => 'Vis innloggingsstatus på brukersiden min',
 	'onlinestatus-toggle-offline' => 'Ikke logget på',
 	'onlinestatus-toggle-online' => 'Logget på',
+	'onlinestatus-pref-onlineonlogin' => 'Endre statusen min til pålogget når jeg logger inn',
+	'onlinestatus-pref-offlineonlogout' => 'Endre statusen min til avlogget når jeg logger ut',
 );
 
 /** Occitan (Occitan)

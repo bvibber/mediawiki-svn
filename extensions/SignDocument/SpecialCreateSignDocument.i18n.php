@@ -1083,6 +1083,7 @@ Du kan [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testa det].',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'createsigndocument' => 'Slå på dokumentsignering',
@@ -1103,8 +1104,10 @@ $messages['no'] = array(
 	'createsigndoc-create' => 'Opprett',
 	'createsigndoc-error-generic' => 'Feil: $1',
 	'createsigndoc-error-pagenoexist' => 'Feil: Siden [[$1]] eksisterer ikke.',
-	'createsigndoc-success' => 'Dokumentsignering har blitt slått på for [[$1]]. For å signere det, besøk [{{fullurl:Special:SignDocument|doc=$2}} denne siden].',
-	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringen «$1» finnes allerede.',
+	'createsigndoc-success' => 'Dokumentsignering har blitt slått på for [[$1]].
+Du kan [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} teste det].',
+	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringen «$1» finnes allerede.
+Dette kan ikke gjøres to ganger.',
 );
 
 /** Occitan (Occitan)

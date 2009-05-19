@@ -642,8 +642,20 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'editsimilar-desc' => 'Khuyến khích người dùng sửa đổi một trang tương tự sau khi đã lưu một trang',
+	'editsimilar-thanks' => 'Cảm ơn vì sự đóng góp của bạn.
+Mời bạn xem qua các trang tương tự: $1.',
+	'editsimilar-thanks-singleresult' => 'Cảm ơn vì sự đóng góp của bạn.
+Mời xem qua trang tương tự sau: $1.',
+	'editsimilar-thanks-notsimilar' => 'Cảm ơn vì sự đóng góp của bạn.
+Bạn cũng có thể giúp đỡ những trang sau: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Cảm ơn vì sự đóng góp của bạn.
+Bạn cũng có thể giúp đỡ trang: $1.',
+	'editsimilar-thankyou' => 'Cảm ơn về sự đóng góp của $1!',
 	'editsimilar-link-disable' => 'tùy chọn',
+	'tog-edit-similar' => 'Kích hoạt đề nghị về trang tương tự',
 );
 

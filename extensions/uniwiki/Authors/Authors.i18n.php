@@ -71,6 +71,15 @@ $messages['bs'] = array(
 	'authors_anonymous' => 'Anonimni',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'authors-desc' => 'Afegeix una llista de contribuïdors a les pàgines',
+	'authors_authors' => 'Autors',
+	'authors_anonymous' => 'Anònims',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -291,6 +300,15 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'authors-desc' => 'Legg til ei lista over forfattarar til sider',
 	'authors_authors' => 'Forfattarar',
+	'authors_anonymous' => 'Anonym',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'authors-desc' => 'Legger til en liste over forfattere til sider',
+	'authors_authors' => 'Forfattere',
 	'authors_anonymous' => 'Anonym',
 );
 

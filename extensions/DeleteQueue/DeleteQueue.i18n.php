@@ -705,11 +705,16 @@ Ako, nakon pet dana, niko ne bude imao sugestija za brisanje ove stranice, ona �
 /** Catalan (Català)
  * @author Loupeter
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
 	'deletequeue-review-reason' => 'Comentaris:',
 	'deletequeue-vote-reason' => 'Comentaris:',
 	'deletequeue-vote-submit' => 'Tramet',
+	'deletequeue-list-search-legend' => 'Cerca pàgines',
+	'deletequeue-list-queue' => 'Cua:',
+	'deletequeue-list-status' => 'Estat:',
+	'deletequeue-case-reason' => 'Motiu:',
 );
 
 /** German (Deutsch)

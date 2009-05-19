@@ -140,6 +140,7 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
+	'findspam-ip' => 'Adreça IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => "No s'han trobat contribucions",
 );
@@ -592,6 +593,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'findspam' => 'Finn forsøpling',
@@ -599,6 +601,7 @@ $messages['no'] = array(
 	'findspam-ip' => 'IP-adresse:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Ingen bidrag funnet',
+	'right-findspam' => 'Søk etter nylig tillagt spam',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

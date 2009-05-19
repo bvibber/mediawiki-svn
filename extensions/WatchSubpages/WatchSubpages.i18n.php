@@ -134,7 +134,14 @@ Kada označujete ili uklanjate više stranica, možete držati tipku ''shift'' d
  */
 $messages['ca'] = array(
 	'watchsubpages' => 'Vigila subpàgines',
+	'watchsubpages-addedtowatchlist' => "El següent s'ha afegit a la teva llista de seguiment.",
 	'watchsubpages-addtitles' => 'Afegeix pàgines',
+	'watchsubpages-addtitlestowatchlist' => 'Afegeix les pàgines a la llista de seguiment',
+	'watchsubpages-desc' => "Afegeix ràpidament [[Special:WatchSubpages|totes les subpàgines]] d'una pàgina a la llista de seguiment",
+	'watchsubpages-form' => 'Seleccioni les pàgines de sota que vol afegir a la llista de seguiment.
+Per afegir una pàgina, marqui la casella de selecció del costat, o cliqui a "Afegir pàgines".
+
+Quan vol marcar o desmarcar múltiples pàgines, mantenir apretada la tecla de majúscules permet seleccionar caselles consecutives clicant cada final del rang a ser marcat.',
 );
 
 /** Czech (Česky)

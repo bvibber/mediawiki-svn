@@ -455,6 +455,20 @@ $messages['nn'] = array(
 	'layouts_tagline' => "Denne sida vart oppretta med utforminga '''$1'''.",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'layouts-desc' => 'Befolker nyopprettede sider med redigerbare «utforminger» for å fremme en fellesstruktur for sider',
+	'layouts_title' => 'Opprett en side',
+	'layouts_chooselayout' => 'Velg et utseende for $1:',
+	'layouts_nolayout' => 'Inget utseende',
+	'layouts_continue' => 'Fortsett',
+	'layouts_choosecategory' => 'Velg en kategori for $1:',
+	'layouts_unknown' => 'Ukjent',
+	'layouts_tagline' => "Denne siden ble opprettet med utseende '''$1'''.",
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

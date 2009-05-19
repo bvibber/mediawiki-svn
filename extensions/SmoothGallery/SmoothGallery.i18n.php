@@ -514,6 +514,7 @@ Lever ein feilrapport.',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'smoothgallery' => 'Mykt galleri',
@@ -523,8 +524,10 @@ $messages['no'] = array(
 	'smoothgallery-error' => '<b>Feil med mykt galleri:</b>',
 	'smoothgallery-gallery-not-found' => 'Det etterspurte galleriet finnes ikke.',
 	'smoothgallery-not-found' => 'Ingen bilder ble lagt til i galleriet. Legg til minst ett bilde.',
-	'smoothgallery-no-images' => 'Ingen bilder ble funnet i dette galleriet. Forsikre deg om at alle bilder finnes. Følgende bilder ble ikke funnet. $1',
-	'smoothgallery-invalid-images' => 'Følgende etterspurte bilder var av en ugyldig type: $1',
+	'smoothgallery-no-images' => 'Ingen bilder ble funnet i dette galleriet.
+Forsikre deg om at {{PLURAL:$3|bildet|bildene}} finnes.
+Følgende {{PLURAL:$2|bilde|bilder}} ble ikke funnet: $1',
+	'smoothgallery-invalid-images' => 'Følgende etterspurte {{PLURAL:$2|bilde|bilder}} var av en ugyldig type: $1',
 	'smoothgallery-unexpected-error' => 'Det var en uventet feil. Lever en feilrapport.',
 	'smoothgallery-javascript-disabled' => 'Javascript er nødvendig for å vise dette galleriet korrekt.',
 );

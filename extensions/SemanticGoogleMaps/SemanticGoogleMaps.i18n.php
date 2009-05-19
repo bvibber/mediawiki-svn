@@ -234,10 +234,12 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Sjekk koordinater',
-	'semanticgooglemaps-desc' => 'Lar brukere legge til Google Maps på wikisider, basert på strukturert data',
+	'semanticgooglemaps-desc' => 'Lar brukere endre og vise semantiske koordinater ved å bruke Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Skriv inn adressen her',
 );
 
 /** Occitan (Occitan)

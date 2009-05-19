@@ -606,10 +606,12 @@ $messages['gsw'] = array(
 );
 
 /** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
  * @author Dsvyas
  */
 $messages['gu'] = array(
 	'sitematrix' => 'વિકિમીડીયા વિકિઓની યાદી',
+	'sitematrix-summary' => 'આ ખાસ પાનું તમામ વિકિમીડિયા વિકિઓની યાદિ દર્શાવે છે.',
 	'sitematrix-desc' => '[[Special:SiteMatrix|વિકિમીડીયા વિકિઓની યાદી]] દર્શાવે છે',
 	'sitematrix-language' => 'ભાષા',
 	'sitematrix-project' => 'પરિયોજનાનું નામ, આંતરપરિયોજનાની કડી અને આંતરવિકિની કડી',

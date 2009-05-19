@@ -995,6 +995,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'passwordreset' => 'Passordresetting',
@@ -1003,9 +1004,9 @@ $messages['no'] = array(
 	'passwordreset-emptyusername' => 'Tomt brukernavn',
 	'passwordreset-nopassmatch' => 'Passordene er ikke de samme',
 	'passwordreset-badtoken' => 'Ugyldig redigeringstegn',
-	'passwordreset-username' => 'Brukernavn',
-	'passwordreset-newpass' => 'Nytt passord',
-	'passwordreset-confirmpass' => 'Bekreft passord',
+	'passwordreset-username' => 'Brukernavn:',
+	'passwordreset-newpass' => 'Nytt passord:',
+	'passwordreset-confirmpass' => 'Bekreft passord:',
 	'passwordreset-submit' => 'Nullstill passord',
 	'passwordreset-success' => 'Passordet for brukeren «$1» har blitt resatt.',
 	'passwordreset-disableuser' => 'Deaktiver kontoen?',

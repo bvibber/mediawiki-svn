@@ -879,6 +879,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'form-desc' => 'Et [[Special:Form|skjema]] for å opprette nye sider',
@@ -897,7 +898,7 @@ $messages['no'] = array(
 	'formbadpagename' => 'Ugyldig sidenavn',
 	'formbadrecaptcha' => 'Gale verdier fro reCaptcha. Prøv igjen.',
 	'formbadpagenametext' => 'Skjemadataene du skrev inn utgjør et ugyldig sidenavn, «$1».',
-	'formrequiredfielderror' => 'Feltet $1 er påkrevd for dette skjemaet. Vennligst fyll det inn.',
+	'formrequiredfielderror' => '{{PLURAL:$2|Feltet $1 er obligatorisk|Feltene $1 er obligatoriske}} for dette skjemaet. Vær vennlig og fyll {{PLURAL:$2|det|dem}} ut.',
 	'formsavesummary' => 'Ny side vha. [[Special:Form/$1|skjemaet $1]]',
 	'formsaveerror' => 'Feil under skjemalagring',
 	'formsaveerrortext' => 'Det var en ukjent feil under lagring av siden ‘$1’.',

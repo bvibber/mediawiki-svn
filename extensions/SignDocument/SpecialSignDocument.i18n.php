@@ -593,8 +593,13 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Solde
  */
 $messages['ca'] = array(
+	'sign-realname' => 'Nom:',
+	'sign-viewfield-realname' => 'Nom',
+	'sign-viewfield-ip' => 'Adreça IP',
+	'sign-viewfield-email' => 'Correu electrònic',
 	'sign-viewfield-options' => 'Opcions',
 	'sign-viewfield-reviewcomment' => 'Comentari',
 	'sign-review-comment' => 'Comentari',

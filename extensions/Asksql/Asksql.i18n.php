@@ -185,6 +185,23 @@ Ovo može dovesti do češćeg ažuriranja na serveru, pa te molimo da ovo funkc
 	'right-asksql' => 'Napravi SQL pretragu/upit.',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'asksql' => 'Consulta SQL',
+	'asksql-desc' => 'Executa consultes SQL a través de la [[Special:Asksql|pàgina especial]]',
+	'asksqltext' => "Useu el formulari inferior per a realitzar consultes directament a la base de dades.
+Useu cometes senzilles ('com aquestes') per a delimitar els textos.
+Això pot carregar considerablement el servidor, per tant, si us plau useu aquesta funció adequadament.",
+	'sqlislogged' => 'Si us plau, observa que totes les consultes estan carregades.',
+	'sqlquery' => 'Introdueix una consulta',
+	'querybtn' => 'Tramet una consulta',
+	'selectonly' => 'Sols estan permeses les consultes només de lectura.',
+	'querysuccessful' => 'Consulta correcta',
+	'right-asksql' => 'Fes consultes SQL',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

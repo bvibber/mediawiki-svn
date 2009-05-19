@@ -34,16 +34,6 @@ Parameters:
 * $1: The user name",
 );
 
-/** Lower Silesian (Schläsch)
- * @author Piotron
- */
-$messages['sli'] = array(
-	'userimages-desc' => 'Arzeige per <code><nowiki><userimage /></nowiki></code> Galeria voo Beldern, de voo dan jeweeliga Nutzern huchgeloada wourda',
-	'userimages-caption' => 'Voo $1 huchgeloadene Belder',
-	'userimages-noname' => 'Ungieltiger Nutzernoame oder Eengoabefeld leer.',
-	'userimages-noimages' => '$1 hoot kääne huchgeloadena Belder.',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido
@@ -445,8 +435,10 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'userimages-desc' => 'Genererer gallerier av brukeropplastede bilder med <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Bilder lastet opp av $1',
 	'userimages-noname' => 'Ugyldig brukernavn, eller intet angitt brukernavn.',
 	'userimages-noimages' => '$1 har ingen bildeopplastinger.',
@@ -557,6 +549,16 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'userimages-noname' => 'Neveljavno ali neznano uporabniško ime.',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'userimages-desc' => 'Arzeige per <code><nowiki><userimage /></nowiki></code> Galeria voo Beldern, de voo dan jeweeliga Nutzern huchgeloada wourda',
+	'userimages-caption' => 'Voo $1 huchgeloadene Belder',
+	'userimages-noname' => 'Ungieltiger Nutzernoame oder Eengoabefeld leer.',
+	'userimages-noimages' => '$1 hoot kääne huchgeloadena Belder.',
 );
 
 /** Albanian (Shqip)

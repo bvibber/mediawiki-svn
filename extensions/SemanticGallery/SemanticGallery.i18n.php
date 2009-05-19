@@ -165,6 +165,13 @@ $messages['nn'] = array(
 	'semanticgallery-desc' => 'Legg til ei galleriutdataformatering på SMW-spørjingar',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'semanticgallery-desc' => 'Legger til en galleriutdataformatering på SMW-spørringer',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

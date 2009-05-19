@@ -699,6 +699,8 @@ $messages['lb'] = array(
 	'invite-logentry' => "huet $1 invitéiert fir d'Functionalitéit <i>$2</i> ze benotzen.",
 	'invitations' => 'Gestioun vun den Invitatioune fir Software-Functionalitéiten',
 	'invitations-desc' => "Erméiglecht d'[[Special:Invitations|Gestioun vun neie Fonctionnalitéiten]] déi op déi Benotzer limitéiert sinn, déi dofir invitéiert ginn",
+	'invitations-invitedlist-description' => 'Dir hutt Zougang zu dëse Software-Fonctiounen déi nëmme fir invitéiert Benotzer zougänglech sinn.
+Fir Invitatioune fir eng bestëmmte fonctioun ze kréien, klickt w.e.g. op de jeweilegen Numm.',
 	'invitations-invitedlist-none' => 'Dir gouft net invitéiert fir eng Softwarefonctioun ze benotzen fir déi een invitéiert gëtt.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Eng Invitatioun|$1 Invitatioune}} disponibel)',
 	'invitations-pagetitle' => 'Fonctionnalitéiten op Invitatiouns-Basis',

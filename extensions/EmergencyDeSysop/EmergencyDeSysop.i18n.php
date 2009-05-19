@@ -105,6 +105,13 @@ $messages['bs'] = array(
 	'right-emergencydesysop' => 'mogućnost da administratori međusobno uklone svoja administratorska prava',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'emergencydesysop-nogroups' => 'Cap',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Metalhead64

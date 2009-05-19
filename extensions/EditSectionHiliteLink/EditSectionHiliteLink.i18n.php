@@ -124,6 +124,13 @@ $messages['nl'] = array(
 	'Editsectionhilitelink-desc' => "Markeer de van toepassing zijde paragraaf bij het selecteren van de verwijzing ''bewerken''",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'Editsectionhilitelink-desc' => 'Uthév den aktuelle delen av ei side når du fører musepeikaren over lenkja til endring',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

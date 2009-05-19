@@ -170,6 +170,13 @@ $messages['nn'] = array(
 	'redirect-desc' => 'Tillèt enkel konfigurering av omdirigeringar ved [[MediaWiki:Redirect-addnewaccount|kontooppretting]] og [[MediaWiki:Redirect-userlogoutcomplete|utlogging]]',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'redirect-desc' => 'Tillater enkel konfigurering av omdirigeringer ved [[MediaWiki:Redirect-addnewaccount|kontooppretting]] og [[MediaWiki:Redirect-userlogoutcomplete|utlogging]]',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

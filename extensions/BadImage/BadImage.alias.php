@@ -104,7 +104,7 @@ $aliases['io'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'Badimages' => array( '不良画像', '好ましくない画像' ),
+	'Badimages' => array( '好ましくない画像', '不良画像' ),
 );
 
 /** Ripoarisch (Ripoarisch) */

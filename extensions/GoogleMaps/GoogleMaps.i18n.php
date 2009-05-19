@@ -705,7 +705,7 @@ $wgGoogleMapsMessages['ca'] = array(
 	'gm-no-editor' => 'Desgraciadament, el teu navegador no suporta la funci&oacute; interactiva de construcci&oacute; de mapes. Prova la darrera versi&oacute; de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac i Linux).',
 	'gm-balloon-title' => 'Títol:',
 	'gm-make-marker' => 'Llegenda (sintaxi wiki OK):',
-	'gm-remove' => 'eliminar',
+	'gm-remove' => 'elimina',
 	'gm-caption' => 'Llegenda',
 	'gm-tab-title' => 'T&iacute;tol de tab',
 	'gm-tab' => 'Tab',

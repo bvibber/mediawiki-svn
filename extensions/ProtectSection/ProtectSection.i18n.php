@@ -23,6 +23,7 @@ $messages['qqq'] = array(
 	'protectsection_desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.
 
 {{Identical|Authorised user}}',
+	'right-protectsection' => '{{doc-right|protectsection}}',
 );
 
 /** Arabic (العربية)
@@ -55,6 +56,7 @@ $messages['avk'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -62,6 +64,7 @@ $messages['be-tarask'] = array(
 	'protectsection_add_remove' => 'Вы спрабуеце дадаць ці выдаліць абароненую сэкцыю',
 	'protectsection_modify' => 'Вы спрабуеце зьмяніць абаронены тэкст',
 	'protectsection_forbidden' => 'Забаронены',
+	'right-protectsection' => 'абарона сэкцый старонак',
 );
 
 /** Bulgarian (Български)
@@ -82,6 +85,7 @@ $messages['bs'] = array(
 	'protectsection_add_remove' => 'Pokušavate da dodate ili uklonite zaštićenu sekciju',
 	'protectsection_modify' => 'Pokušavate da mijenjate zaštićeni tekst',
 	'protectsection_forbidden' => 'Zabranjeno',
+	'right-protectsection' => 'Zaštita sekcija stranice',
 );
 
 /** Catalan (Català)
@@ -102,6 +106,7 @@ $messages['de'] = array(
 	'protectsection_add_remove' => 'Du hast versucht, einen geschützten Abschnitt hinzuzufügen oder zu entfernen.',
 	'protectsection_modify' => 'Du hast versucht, einen geschützten Text zu bearbeiten.',
 	'protectsection_forbidden' => 'Verboten',
+	'right-protectsection' => 'Abschnitte einer Seite schützen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -112,6 +117,7 @@ $messages['dsb'] = array(
 	'protectsection_add_remove' => 'Sy wopytał pśidaś abo wótpóraś šćitany wótrězk',
 	'protectsection_modify' => 'Sy wopytał změniś šćitany tekst.',
 	'protectsection_forbidden' => 'Zakazany',
+	'right-protectsection' => 'Wótrězki boka šćitaś',
 );
 
 /** Esperanto (Esperanto)
@@ -175,6 +181,7 @@ $messages['gl'] = array(
 	'protectsection_add_remove' => 'Tentou engadir ou eliminar unha sección protexida',
 	'protectsection_modify' => 'Tentou modificar un texto protexido',
 	'protectsection_forbidden' => 'Prohibido',
+	'right-protectsection' => 'Protexer seccións de páxinas',
 );
 
 /** Swiss German (Alemannisch)
@@ -185,6 +192,7 @@ $messages['gsw'] = array(
 	'protectsection_add_remove' => 'Du hesch versuecht, e gschitzte Abschnitt zuezfiegen oder usezneh.',
 	'protectsection_modify' => 'Du hesch versuecht, e gschitzte Täxt z bearbeite.',
 	'protectsection_forbidden' => 'Verbotte',
+	'right-protectsection' => 'Abschnitt vun ere Syte schitze',
 );
 
 /** Hebrew (עברית)
@@ -221,6 +229,7 @@ $messages['hsb'] = array(
 	'protectsection_add_remove' => 'Sy spytał škitany wotrězk přidać abo wotstronić.',
 	'protectsection_modify' => 'Sy spytał škitany tekst změnić.',
 	'protectsection_forbidden' => 'Zakazany',
+	'right-protectsection' => 'Wotrězki strony škitać',
 );
 
 /** Hungarian (Magyar)
@@ -241,6 +250,7 @@ $messages['ia'] = array(
 	'protectsection_add_remove' => 'Tu ha tentate adder o remover un section protegite',
 	'protectsection_modify' => 'Tu ha tentate modificar texto protegite',
 	'protectsection_forbidden' => 'Prohibite',
+	'right-protectsection' => 'Proteger sectiones de paginas',
 );
 
 /** Italian (Italiano)
@@ -261,6 +271,7 @@ $messages['ja'] = array(
 	'protectsection_add_remove' => 'あなたは保護されたセクションを追加または除去しようとしました',
 	'protectsection_modify' => 'あなたは保護された文章を変更しようとしました',
 	'protectsection_forbidden' => '禁止されています',
+	'right-protectsection' => 'ページのセクションを保護する',
 );
 
 /** Javanese (Basa Jawa)
@@ -288,6 +299,7 @@ $messages['ksh'] = array(
 	'protectsection_add_remove' => 'Do häß versooht, ene jeschötzde Affschnett dobei ze donn, udder fott ze lohße.',
 	'protectsection_modify' => 'Do häß versooht, ene jeschötzde Täx ze ändere.',
 	'protectsection_forbidden' => 'Verbodde',
+	'right-protectsection' => 'Aandeile en Sigge schötze',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -327,6 +339,7 @@ $messages['nl'] = array(
 	'protectsection_add_remove' => 'U probeerde een beveiligde sectie toe te voegen of te verwijderen',
 	'protectsection_modify' => 'U probeerde beveiligde tekst te bewerken',
 	'protectsection_forbidden' => 'Niet toegestaan',
+	'right-protectsection' => 'Paginasecties beveiligen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -407,6 +420,7 @@ $messages['sk'] = array(
 	'protectsection_add_remove' => 'Pokúsili ste sa pridať alebo odstrániť zamknutú sekciu',
 	'protectsection_modify' => 'Pokúsili ste sa upravovať zamknutý text',
 	'protectsection_forbidden' => 'Zakázané',
+	'right-protectsection' => 'Zamykať sekcie stránky',
 );
 
 /** Seeltersk (Seeltersk)

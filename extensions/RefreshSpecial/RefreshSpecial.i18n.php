@@ -218,8 +218,9 @@ Upozornění: na větších wiki může obnovení chvíli trvat.',
 	'refreshspecial-slave-lagged' => 'Spojení s databázovým slave je pomalé, čeká se…',
 	'refreshspecial-reconnected' => 'Znovu připojený.',
 	'refreshspecial-reconnecting' => 'Spojení selhalo, opětovné připojení za 10 sekund…',
+	'refreshspecial-page-result' => '{{PLURAL:$1|zpracován $1 řádek|zpracovány $1 řádky|zpracováno $1 řádků}} za',
 	'refreshspecial-total-display' => '{{PLURAL:$1|Obnovena $1 stránka|Obnoveny $1 stránky|Obnoveno $1 stránek}}, což činí $2 {{PLURAL:$2|řádek|řádky|řádků}} za čas $3 (celkový čas běhu skriptu je $4)',
-	'right-refreshspecial' => 'Obnovit speciální stránky',
+	'right-refreshspecial' => 'Obnovování speciálních stránek',
 );
 
 /** German (Deutsch)

@@ -1302,6 +1302,7 @@ Om denne feilen held fram med å dukka opp, kan det vera noko gale med databasen
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author EivindJ
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'changeauthor' => 'Endre revisjonens opphavsperson',
@@ -1324,6 +1325,7 @@ $messages['no'] = array(
 	'changeauthor-success' => 'Forespørselen har blitt utført.',
 	'changeauthor-logentry' => 'Endret opphavsperson til $2 av $1 fra $3 til $4',
 	'changeauthor-logpagename' => 'Logg for opphavspersonsendringer',
+	'right-changeauthor' => 'Endre forfatteren av en versjon',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

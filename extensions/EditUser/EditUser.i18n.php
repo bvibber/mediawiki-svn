@@ -805,6 +805,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'edituser-desc' => 'Lar priviligerte brukere redigere andre brukeres innstillinger',
@@ -814,6 +815,8 @@ $messages['no'] = array(
 	'edituser-dosearch' => 'Søk',
 	'edituser-nouser' => 'Den angitte brukeren finnes ikke',
 	'edituser-exempt' => 'Det angitte brukeren kan ikke redigeres',
+	'right-edituser' => 'Rediger innstillingene til andre brukere',
+	'right-edituser-exempt' => 'Andre kan ikke redigere denne brukerens innstillinger',
 );
 
 /** Occitan (Occitan)

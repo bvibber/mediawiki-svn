@@ -48,6 +48,8 @@ Shown in [[Special:Version]].',
 	'vote-submit' => '{{Identical|Vote}}',
 	'vote-results-count' => '{{Identical|Count}}',
 	'vote-login-link' => '{{Identical|Log in}}',
+	'right-vote' => '{{doc-right|vote}}',
+	'right-voteadmin' => '{{doc-right|voteadmin}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -193,6 +195,8 @@ $messages['be-tarask'] = array(
 	'vote-login' => 'Каб галасаваць Вам трэба $1.',
 	'vote-login-link' => 'увайсьці ў сыстэму',
 	'vote-invalid-choice' => 'Вы павінны выбраць адзін з прапанаваных варыянтаў.',
+	'right-vote' => 'удзел ў галасаваньні',
+	'right-voteadmin' => 'прагляд вынікаў галасаваньняў',
 );
 
 /** Bulgarian (Български)
@@ -285,6 +289,8 @@ riddler|Zagonetka',
 	'vote-login' => 'Morate se $1 za glasanje.',
 	'vote-login-link' => 'prijavi se',
 	'vote-invalid-choice' => 'Morate odabrati jednu od ponuđenih opcija.',
+	'right-vote' => 'Glasanje',
+	'right-voteadmin' => 'Pregled rezultata glasanja',
 );
 
 /** Catalan (Català)
@@ -357,6 +363,7 @@ $messages['da'] = array(
  * @author Melancholie
  * @author Metalhead64
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'vote' => 'Wählen',
@@ -378,6 +385,21 @@ riddler|Riddler',
 	'vote-login' => 'Du musst $1, um abstimmen zu können.',
 	'vote-login-link' => 'dich anmelden',
 	'vote-invalid-choice' => 'Du musst eine der möglichen Optionen wählen.',
+	'right-vote' => 'Wählen',
+	'right-voteadmin' => 'Wahlergebnis anschauen',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'vote-header' => "Sie können hier den '''Obersten Oberherrn der Welt''' wählen!",
+	'vote-current' => "Ihre aktuelle Stimme ist für '''$1'''.",
+	'vote-caption' => 'Ihre Stimme:',
+	'vote-registered' => 'Ihre Stimme wurde registriert.',
+	'vote-login' => 'Sie müssen $1, um abstimmen zu können.',
+	'vote-login-link' => 'sich anmelden',
+	'vote-invalid-choice' => 'Sie müssen eine der möglichen Optionen wählen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -403,6 +425,8 @@ riddler|Riddler',
 	'vote-login' => 'Musyš $1, aby wótgłosował.',
 	'vote-login-link' => 'se pśizjawiś',
 	'vote-invalid-choice' => 'Musyš jadnu z k dispoziciji stojecych opcijow wubraś.',
+	'right-vote' => 'Wótgłosowaś',
+	'right-voteadmin' => 'Wuslědki wótgłosowanja pokazaś',
 );
 
 /** Greek (Ελληνικά)
@@ -598,6 +622,7 @@ sphinx|Sphinx',
 	'vote-login' => 'Vous devez $1 pour voter.',
 	'vote-login-link' => 'vous connecter',
 	'vote-invalid-choice' => 'Vous devez choisir une des options disponibles.',
+	'right-voteadmin' => 'Voir les résultats du vote',
 );
 
 /** Irish (Gaeilge)
@@ -632,6 +657,8 @@ riddler|Riddler',
 	'vote-login' => 'Ten que $1 para votar.',
 	'vote-login-link' => 'rexistrarse',
 	'vote-invalid-choice' => 'Ten que escoller unha das opcións dispoñíbeis.',
+	'right-vote' => 'Votar',
+	'right-voteadmin' => 'Ver os resultados dunha votación',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -664,6 +691,8 @@ riddler|Riddler',
 	'vote-login' => 'Du muesch $1 zum abstimme z chenne.',
 	'vote-login-link' => 'Di aamälde',
 	'vote-invalid-choice' => 'Du muesch eini vu dr meglige Optione wähle.',
+	'right-vote' => 'Abstimme',
+	'right-voteadmin' => 'Abstimmigsergebnis aaluege',
 );
 
 /** Hawaiian (Hawai`i)
@@ -735,6 +764,8 @@ $messages['hsb'] = array(
 	'vote-login' => 'Dyrbiš $1, zo by wothłosował.',
 	'vote-login-link' => 'přizjewić',
 	'vote-invalid-choice' => 'Dyrbiš jednu z k dispoziciji stejacych opcijow wubrać.',
+	'right-vote' => 'Wothłosować',
+	'right-voteadmin' => 'Wuslědki wothłosowanja pokazać',
 );
 
 /** Hungarian (Magyar)
@@ -785,6 +816,8 @@ sphinx|Sphinx',
 	'vote-login' => 'Tu debe $1 pro votar.',
 	'vote-login-link' => 'aperir un session',
 	'vote-invalid-choice' => 'Tu debe seliger un del optiones disponibile.',
+	'right-vote' => 'Votar',
+	'right-voteadmin' => 'Vider resultatos de votationes',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -855,6 +888,8 @@ riddler|Riddler',
 	'vote-login' => '投票するには$1しなければなりません。',
 	'vote-login-link' => 'ログイン',
 	'vote-invalid-choice' => 'あなたは選択肢のうち1つを選ばなければなりません。',
+	'right-vote' => '投票する',
+	'right-voteadmin' => '投票結果を見る',
 );
 
 /** Javanese (Basa Jawa)
@@ -951,6 +986,8 @@ Laachsack|Dä Laachsack',
 	'vote-login' => 'Do moß $1, öm afstemme ze künne.',
 	'vote-login-link' => 'enjelogg sin',
 	'vote-invalid-choice' => 'Do moß ein fun de vörhande Müjjeleschkeite ußwähle.',
+	'right-vote' => 'Affstemme',
+	'right-voteadmin' => 'Affstemmunge beloore',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -976,6 +1013,8 @@ riddler|Riddler',
 	'vote-login' => 'Dir musst $1 fir ofzestëmmen.',
 	'vote-login-link' => 'aloggen',
 	'vote-invalid-choice' => 'Dir musst eng vun de Méiglechkeeten auswielen.',
+	'right-vote' => 'Ofstëmmen',
+	'right-voteadmin' => "Kuckt d'Resultater vun de Walen",
 );
 
 /** Lithuanian (Lietuvių)
@@ -1102,6 +1141,8 @@ riddler|Riddler',
 	'vote-login' => 'U moet $1 om te kunnen stemmen.',
 	'vote-login-link' => 'aanmelden',
 	'vote-invalid-choice' => 'U moet een van de beschikbare opties kiezen.',
+	'right-vote' => 'Stemmen',
+	'right-voteadmin' => 'Resultaten van stemmingen bekijken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1133,9 +1174,11 @@ brukar3|Tredje brukernamn',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'vote' => 'Avstemning',
+	'vote-desc' => 'Gir enkle avstemningsmuligheter',
 	'vote-header' => "Du kan stemme på '''(eksempelbruker)''' her!",
 	'vote-current' => "Din nåværende stemme er på '''$1'''.",
 	'vote-legend' => 'Velg hvordan du vil stemme',
@@ -1153,6 +1196,8 @@ bruker3|Tredje brukernavn',
 	'vote-login' => 'Du må $1 for å stemme.',
 	'vote-login-link' => 'logg inn',
 	'vote-invalid-choice' => 'Du må velge en av de tilgjengelige alternativene.',
+	'right-vote' => 'Stem',
+	'right-voteadmin' => 'Se resultater fra avstemningen',
 );
 
 /** Occitan (Occitan)
@@ -1391,6 +1436,8 @@ riddler|Riddler',
 	'vote-login' => 'Aby ste mohli hlasovať, musíte $1.',
 	'vote-login-link' => 'sa prihlásiť',
 	'vote-invalid-choice' => 'Musíte vybrať jednu z dostupných možností.',
+	'right-vote' => 'Hlasovať',
+	'right-voteadmin' => 'Pozrieť výsledky hlasovania',
 );
 
 /** Albanian (Shqip)

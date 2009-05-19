@@ -452,9 +452,16 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Loupeter
+ * @author Solde
  */
 $messages['ca'] = array(
+	'grouppermissions-search' => 'Grup:',
 	'grouppermissions-comment' => 'Comentari:',
+	'grouppermissions-true' => 'Cert',
+	'grouppermissions-false' => 'Fals',
+	'grouppermissions-never' => 'Mai',
+	'grouppermissions-sort-admin' => 'Administració',
+	'grouppermissions-sp-remove' => 'elimina',
 );
 
 /** German (Deutsch)
@@ -1772,6 +1779,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'grouppermissions' => 'Behandle grupperettigheter',
@@ -1812,7 +1820,7 @@ $messages['no'] = array(
 	'grouppermissions-log-name' => 'Logg for endringer i grupperettigheter',
 	'grouppermissions-log-header' => 'Denne siden viser endringer i rettighetene brukergrupper innehar.',
 	'grouppermissions-needjs' => 'Advarsel: JavaScript er slått av i nettleseren din. Noen funksjoner vil ikke fungere.',
-	'grouppermissions-sp-header' => 'Du kan bruke denne siden for å styre hvordan rettigheter sorteres, og legge til nye rettigheter.',
+	'grouppermissions-sp-header' => 'Du kan bruke denne siden til å styre hvordan rettigheter sorteres, og legge til nye rettigheter. Hold musepekeren over en rettighet for å lese dens beskrivelse.',
 	'grouppermissions-sp-sort' => 'Sorter rettigheter',
 	'grouppermissions-sp-save' => 'Lagre',
 	'grouppermissions-sp-success' => 'Rettighetene ble sortert',
@@ -1835,6 +1843,7 @@ $messages['no'] = array(
 	'right-recentchanges' => 'Vise siste endringer',
 	'right-edittalk' => 'Redigere diskusjonssider',
 	'right-edit-new' => 'Redigere sider',
+	'right-readold' => 'Vis innhold fra gamle versjoner og forskjeller',
 );
 
 /** Occitan (Occitan)

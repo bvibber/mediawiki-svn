@@ -291,6 +291,17 @@ Ho lista opp alle sidene i kategorien «$1» i tillegg til eventuelle underkateg
 	'autocreatecategorypages-editor' => 'Automatisk kategorioppretting',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'autocreatecategorypages-desc' => 'Opprett manglende kategorisider automatisk ved lagring',
+	'autocreatecategorypages-stub' => 'Dette er en kategoriside.
+Den lister opp alle sidene i kategorien «$1» i tillegg til eventuelle underkategorier av «$» om de finnes.',
+	'autocreatecategorypages-createdby' => 'Opprettet automatisk av AutoCreateCategoryPages-utvidelsen.',
+	'autocreatecategorypages-editor' => 'Automatisk kategorioppretter',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

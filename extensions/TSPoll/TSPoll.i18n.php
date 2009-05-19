@@ -167,6 +167,15 @@ $messages['nl'] = array(
 	'tspoll-id-error' => 'Er is geen ID opgegeven!',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'tspoll-desc' => 'Inkluder [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] som en HTML-tagg',
+	'tspoll-fetch-error' => 'Feil under henting av nettadressen!',
+	'tspoll-id-error' => 'Ingen ID er gitt!',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

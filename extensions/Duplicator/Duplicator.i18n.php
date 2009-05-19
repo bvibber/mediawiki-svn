@@ -46,6 +46,7 @@ $messages['qqq'] = array(
 	'duplicator-desc' => 'Extension description displayed on [[Special:Version]].',
 	'duplicator-options' => '{{Identical|Options}}',
 	'duplicator-source' => '{{Identical|Source}}',
+	'right-duplicate' => '{{doc-right|duplicate}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -213,6 +214,7 @@ Desila se nepoznata greška.',
 	'duplicator-dest-exists' => '[[$1]] već postoji. Molimo navedite odredišni naslov koji još ne postoji.',
 	'duplicator-toomanyrevisions' => '[[$1]] ima previše ($2) revizija i ne može se kopirati.
 Trenutno ograničenje je $3.',
+	'right-duplicate' => 'Dupliciranje stranica',
 );
 
 /** Catalan (Català)
@@ -254,6 +256,7 @@ $messages['da'] = array(
  * @author Metalhead64
  * @author Purodha
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'duplicator' => 'Seite duplizieren',
@@ -276,6 +279,7 @@ $messages['de'] = array(
 	'duplicator-dest-invalid' => 'Bitte gib eine gültige Ziel-Seite an.',
 	'duplicator-dest-exists' => 'Die Seite [[$1]] existiert bereits. Bitte gib eine nicht existierende Seite an.',
 	'duplicator-toomanyrevisions' => 'Die Seite [[$1]] hat {{PLURAL:$2|eine Version|$2 Versionen}}, und kann daher nicht dupliziert werden. Es können nur Seiten mit {{PLURAL:$3|einer Version|maximal $3 Versionen}} dupliziert werden.',
+	'right-duplicate' => 'Seiten duplizieren',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -304,6 +308,7 @@ Njeznata zmólka jo nastała.',
 	'duplicator-dest-exists' => '[[$1]] južo eksistěrujo. Pšosym pódaj celowy titel, kótaryž hyšći njeeksistěrujo.',
 	'duplicator-toomanyrevisions' => '[[$1]] ma pśewjele ($2) wersijow a njedajo se kopěrowaś.
 Aktualny limit jo $3.',
+	'right-duplicate' => 'Dwójne boki',
 );
 
 /** Greek (Ελληνικά)
@@ -433,6 +438,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  */
@@ -457,6 +463,7 @@ $messages['fr'] = array(
 	'duplicator-dest-invalid' => 'Veuillez donner un nom valide pour la destination.',
 	'duplicator-dest-exists' => '[[$1]] existe déjà. Veuillez donner le nom d’une page qui n’existe pas encore.',
 	'duplicator-toomanyrevisions' => '[[$1]] a trop ($2) de révisions et ne peut pas être copié. La limite actuelle est de $3.',
+	'right-duplicate' => 'Pages en doublon',
 );
 
 /** Western Frisian (Frysk)
@@ -493,6 +500,7 @@ de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
 	'duplicator-dest-invalid' => 'Forneza un título de destino válido.',
 	'duplicator-dest-exists' => '[[$1]] xa existe. Forneza un título de destino que non exista.',
 	'duplicator-toomanyrevisions' => '[[$1]] ten demasiadas ($2) revisións e non se pode copiar. O límite actual é $3.',
+	'right-duplicate' => 'Duplicar páxinas',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -529,6 +537,7 @@ $messages['gsw'] = array(
 	'duplicator-dest-invalid' => 'Bitte gib e giltigi Ziil-Syten aa.',
 	'duplicator-dest-exists' => 'D Syte [[$1]] git s scho. Bitte gib e Ziilsyten aa, wu nonig git.',
 	'duplicator-toomanyrevisions' => 'D Syte [[$1]] het {{PLURAL:$2|e Version|$2 Versione}}, wäge däm cha si nit dupliziert wäre. S chenne nume Syte mit  {{PLURAL:$3|eire Version|hegschtens $3 Versione}} dupliziert wäre.',
+	'right-duplicate' => 'Syte dupliziere',
 );
 
 /** Manx (Gaelg)
@@ -626,6 +635,7 @@ $messages['hsb'] = array(
 	'duplicator-dest-invalid' => 'Prošu podaj płaćiwu cilowu stronu.',
 	'duplicator-dest-exists' => 'Strona [[$1]] hižo eksistuje. Prošu zapodaj cilowy titl kotryž hišće njeeksistuje.',
 	'duplicator-toomanyrevisions' => 'Strona [[$1]] ma přewjele ($2) wersijow a njehodźi so tohodla kopěrować. Kopěrowanje je na strony z maksimalnje $3 wersijemi wobmjezowane.',
+	'right-duplicate' => 'Dwójne strony',
 );
 
 /** Hungarian (Magyar)
@@ -740,29 +750,31 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'duplicator' => 'ページの複製',
-	'duplicator-desc' => '複製ページを全編集履歴とともに作成する',
+	'duplicator-desc' => '全編集履歴をもつ[[Special:Duplicate|ページの複製]]を作成する',
 	'duplicator-toolbox' => 'このページを複製',
 	'duplicator-header' => 'ここではページを複製することができます。履歴を含む同じ内容の複製が新たに作成されます。記事の分割などに利用してください。',
 	'duplicator-options' => '設定',
 	'duplicator-source' => '複製元:',
 	'duplicator-dest' => '複製先:',
-	'duplicator-dotalk' => '可能なら{{int:talk}}も複製する',
+	'duplicator-dotalk' => '可能なら{{int:talk}}ページも複製する',
 	'duplicator-submit' => '複製',
 	'duplicator-summary' => '[[$1]] を複製',
 	'duplicator-success' => "<big>'''[[$1]] を [[$2]] へ複製しました'''</big>",
-	'duplicator-success-revisions' => '$1 版を複製しました。',
+	'duplicator-success-revisions' => '$1 個の版を複製しました。',
 	'duplicator-success-talkcopied' => '{{int:talk}}ページも複製しました。',
-	'duplicator-success-talknotcopied' => '{{int:talk}}は複製できませんでした。',
+	'duplicator-success-talknotcopied' => '{{int:talk}}ページは複製できませんでした。',
 	'duplicator-failed' => '不明なエラーです。このページの複製に失敗しました。',
 	'duplicator-source-invalid' => '複製元に有効なタイトルを指定してください。',
 	'duplicator-source-notexist' => '[[$1]] は既に存在しています。複製元には存在するページを指定してください。',
 	'duplicator-dest-invalid' => '複製先に有効なタイトルを指定してください。',
 	'duplicator-dest-exists' => '[[$1]] は既に存在しています。複製先には存在しないページを指定してください。',
-	'duplicator-toomanyrevisions' => '[[$1]] は版が多すぎるため（$2 版）複製できません。現在の上限は $3 版までです。',
+	'duplicator-toomanyrevisions' => '[[$1]] は版が多すぎるため（$2個）複製できません。現在の上限は$3個までです。',
+	'right-duplicate' => 'ページを複製する',
 );
 
 /** Javanese (Basa Jawa)
@@ -830,6 +842,7 @@ Ene unklohre Fähler es opjetrodde.',
 un dat es ze fill, di künne mer nit verdubbelle.
 Mieh wie {{PLURAL:$3|ein Version|$3 Versione|jaa kei Version}}
 künne mer em Momang nit koppeere.',
+	'right-duplicate' => 'Sigge verdubbelle',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -856,6 +869,7 @@ $messages['lb'] = array(
 	'duplicator-dest-invalid' => 'Gitt w.e.g. eng valabel Zilsäit unn.',
 	'duplicator-dest-exists' => '[[$1]] gëtt et schonn. Gitt w.e.g. eng Zilsäit unn déi et nach net gëtt.',
 	'duplicator-toomanyrevisions' => '[[$1]] huet zevill ($2) Versiounen an et ka keen Doublon dovu gemaach ginn. Déi aktuell Limit vun der Zuel vun de Versiounen ass $3.',
+	'right-duplicate' => 'Säite verduebelen',
 );
 
 /** Malayalam (മലയാളം)
@@ -959,6 +973,7 @@ Geef een pagina op die bestaat.',
 	'duplicator-dest-exists' => '[[$1]] bestaat al.
 Geeft een doelpagina op die niet bestaat.',
 	'duplicator-toomanyrevisions' => '[[$1]] heeft te veel versies ($2) en kan niet gekopieerd worden. De huidige limiet is $3.',
+	'right-duplicate' => "Pagina's kopiëren",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1241,6 +1256,7 @@ $messages['sk'] = array(
 	'duplicator-dest-invalid' => 'Prosím, zadajte platný názov cieľovej stránky.',
 	'duplicator-dest-exists' => '[[$1]] už existuje. Prosím zadajte cieľ, ktorý ešte neexistuje.',
 	'duplicator-toomanyrevisions' => '[[$1]] má príliš veľa ($2) revízií a preto ho nie je možné skopírovať. Aktuálny limit je $3.',
+	'right-duplicate' => 'Duplicitné stránky',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

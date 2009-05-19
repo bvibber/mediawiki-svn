@@ -275,6 +275,14 @@ $messages['nn'] = array(
 	'catboxattop-categories' => 'Kategoriar',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'catboxattop-desc' => 'Legger til en kategoriboks oppe til høyre på sider',
+	'catboxattop-categories' => 'Kategorier',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

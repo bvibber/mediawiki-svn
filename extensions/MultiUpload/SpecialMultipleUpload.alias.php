@@ -65,7 +65,7 @@ $aliases['hr'] = array(
 
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'MultiUpload' => array( 'wjacore dataje nahrać' ),
+	'MultiUpload' => array( 'Wjacore dataje nahrać' ),
 );
 
 /** Interlingua (Interlingua) */

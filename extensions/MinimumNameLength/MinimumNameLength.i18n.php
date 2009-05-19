@@ -82,9 +82,11 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
 	'minnamelength-error' => "El vostre nom d'usuari és massa curt. La longitud mínima és de $1.",
+	'minnamelength-desc' => "Fer complir la longitud mínima del nom d'usuari",
 );
 
 /** Welsh (Cymraeg)

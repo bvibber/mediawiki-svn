@@ -259,6 +259,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 * $3 will be replaced with links to that version
 * $4 is the comment, as provided by the user',
 	'configure-section-email' => '{{Identical|E-mail}}',
+	'configure-section-timezone' => '{{Identical|Time zone}}',
 	'configure-section-html' => '{{optional}}',
 	'configure-section-ajax' => '{{optional}}',
 	'configure-section-namespaces' => '{{Identical|Namespaces}}',
@@ -1002,7 +1003,20 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
+	'configure' => 'Configura la wiki',
 	'configure-desc-group' => 'Grup',
+	'configure-desc-key' => 'Clau',
+	'configure-desc-ns' => 'Espai de noms',
+	'configure-desc-val' => 'Valor',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Extensions',
+	'configure-ext-settings' => 'Paràmetres',
+	'configure-js-search-prompt' => 'Consulta:',
+	'configure-section-email' => 'Correu electrònic',
+	'configure-section-category' => 'Categories',
+	'configure-section-cache' => 'Memòria cau',
+	'configure-section-antivirus' => 'Antivirus',
+	'configure-section-mw-extensions' => 'Extensions MediaWiki',
 );
 
 /** Chamorro (Chamoru)

@@ -213,10 +213,27 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
+	'viewxml' => 'Veure XML',
+	'dt_viewxml_categories' => 'Categories',
+	'dt_viewxml_namespaces' => 'Espai de noms',
+	'dt_viewxml_simplifiedformat' => 'Format simplificat',
+	'dt_xml_namespace' => 'Espai de noms',
+	'dt_xml_pages' => 'Pàgines',
 	'dt_xml_page' => 'Pàgina',
+	'dt_xml_template' => 'Plantilla',
+	'dt_xml_field' => 'Camp',
+	'dt_xml_name' => 'Nom',
 	'dt_xml_title' => 'Títol',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Text lliure',
+	'importxml' => 'Importa XML',
+	'dt_importxml_selectfile' => 'Si us plau, selecciona el fitxer XML per importar:',
+	'dt_importxml_editsummary' => 'Importar XML:',
+	'dt_importxml_importing' => "S'està important...",
+	'dt_importxml_success' => "$1 {{PLURAL:$1|pàgina|pàgines}} s'importaran des del fitxer XML.",
 );
 
 /** Czech (Česky)

@@ -852,6 +852,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'recordadmin-newsearch' => 'Nei $1 sichen',
 	'recordadmin-alreadyexist' => 'Pardon, "$1" gëtt et schonn!',
+	'recordadmin-createsuccess' => '$1 ugeluecht',
 	'recordadmin-badtitle' => 'Schlechten Titel!',
 	'recordadmin-recordid' => 'ID/Numm vun deem wat gespäichert gouf:',
 	'recordadmin-invert' => 'Auswiel ëmdréinen',

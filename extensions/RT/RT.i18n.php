@@ -285,3 +285,24 @@ Skúšali ste: '''$1'''",
 	'rt-nomatches' => 'Neboli nájdené zodpovedajúce požiadavky v RT',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'rt-desc' => 'Giao diện đẹp cho RT (Request Tracker - Yêu cầu Bộ dò)',
+	'rt-inactive' => 'Phần mở rộng RT không được kích hoạt',
+	'rt-badquery' => 'Phần mở rộng RT gặp lỗi khi trao đổi với cơ sở dữ liệu RT',
+	'rt-badlimit' => "Thông số LIMIT (l) sai: phải sử dụng số.
+Bạn đã gọi: '''$1'''",
+	'rt-badorderby' => "Thông số ORDER BY (ob) sai: phải là một trường chuẩn (xem tài liệu đi kèm).
+Bạn đã gọi: '''$1'''",
+	'rt-badstatus' => "Thông số status (s) sai: phải là một trường chuẩn (xem tài liệu đi kèm).
+Bạn đã gọi: '''$1'''",
+	'rt-badqueue' => "Thông số queue (q) sai: phải là từ đơn giản.
+Bạn đã gọi: '''$1'''",
+	'rt-badowner' => "Thông số owner (o) sai: phải là một tên người dùng đã có.
+Bạn đã gọi: '''$1'''",
+	'rt-nomatches' => 'Không tìm thấy thẻ RT nào trùng với tìm kiếm',
+);
+

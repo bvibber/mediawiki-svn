@@ -108,6 +108,13 @@ $messages['bs'] = array(
 	'searchbox-namespaces' => 'Imenski prostori:',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'searchbox-go' => 'Vés-hi',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

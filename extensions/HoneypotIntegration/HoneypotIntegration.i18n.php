@@ -184,6 +184,14 @@ $messages['nn'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Tal på nylege hendingar IP-adressa har sett i verk, ifylgje Project Honey Pot',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'honeypot-desc' => 'Gir integrering for [http://projecthoneypot.org/ Project Honey Pot] på MediaWiki-nettsteder',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Antall nylige hendelser IP-adressa har satt i verk ifølge Project Honey Pot',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

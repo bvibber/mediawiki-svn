@@ -68,6 +68,22 @@ $messages['arz'] = array(
 	'communityvoice-ratings-error-no-title' => 'صفة العنوان مفقودة فى وسم التقييم.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'communityvoice' => 'Голас супольнасьці',
+	'communityvoice-desc' => 'Інструмэнты ўдзелу супольнасьці',
+	'communityvoice-ratings' => 'Рэйтынгі',
+	'communityvoice-ratings-scale-status-sending' => 'Адпраўка...',
+	'communityvoice-ratings-scale-status-error' => 'Памылка адпраўкі!',
+	'communityvoice-ratings-scale-status-thanks' => 'Дзякуй за ўдзел у галасаваньні!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|адданы голас|адданых галасы|адданых галасоў}})',
+	'communityvoice-ratings-error-no-category' => 'У тэге рэйтынга няма атрыбуту катэгорыі.',
+	'communityvoice-ratings-error-no-title' => 'У тэге рэйтынга няма атрыбуту назвы.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -88,6 +104,33 @@ $messages['bs'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|glas dat|glasa data|glasova datih}})',
 	'communityvoice-ratings-error-no-category' => 'U oznaci rejtinga nedostaje atribut kategorije.',
 	'communityvoice-ratings-error-no-title' => 'U oznaci rejtinga nedostaje naslovni atribut.',
+);
+
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'communityvoice' => 'Community Voice',
+	'communityvoice-desc' => 'Eines de participació a Community',
+	'communityvoice-ratings' => 'Evaluacions',
+	'communityvoice-ratings-scale-status-sending' => "S'està enviant...",
+	'communityvoice-ratings-scale-status-error' => "Error quan s'enviava!",
+	'communityvoice-ratings-scale-status-thanks' => 'Gràcies per votar!',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'communityvoice' => 'Hlas komunity',
+	'communityvoice-desc' => 'Nástroje pro zapojení komunity',
+	'communityvoice-ratings' => 'Hodnocení',
+	'communityvoice-ratings-scale-status-sending' => 'Odesílá se…',
+	'communityvoice-ratings-scale-status-error' => 'Chyba při odesílání!',
+	'communityvoice-ratings-scale-status-thanks' => 'Děkujeme za váš hlas!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 (celkem $2 {{PLURAL:$2|hlas|hlasy|hlasů}})',
+	'communityvoice-ratings-error-no-category' => 'Ve značce pro hodnocení chybí kategorie.',
+	'communityvoice-ratings-error-no-title' => 'Ve značce pro hodnocení chybí nadpis.',
 );
 
 /** German (Deutsch)
@@ -318,8 +361,11 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'communityvoice' => 'Stëmm vun der Gemeinschaft',
+	'communityvoice-desc' => "Fonctiounen fir d'Geminschaftsbedeeligung",
 	'communityvoice-ratings' => 'Bewertungen',
 	'communityvoice-ratings-scale-status-sending' => 'Schécken...',
+	'communityvoice-ratings-scale-status-error' => 'Feeler beim Schécken!',
 	'communityvoice-ratings-scale-status-thanks' => "Merci fir d'Ofstëmmen!",
 );
 
@@ -353,6 +399,15 @@ $messages['nn'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|éi røyst avgjeven|$2 røyster avgjevne}})',
 	'communityvoice-ratings-error-no-category' => 'Kategoriattributt manglar i vurderingsmerke.',
 	'communityvoice-ratings-error-no-title' => 'Tittelattributt manglar i vurderingsmerke.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'communityvoice-ratings-scale-status-error' => 'Feil under sending!',
+	'communityvoice-ratings-scale-status-thanks' => 'Takk for at du stemte!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|én stemme|$2 stemmer}} avgitt)',
 );
 
 /** Occitan (Occitan)
@@ -497,6 +552,21 @@ $messages['tl'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|pagbotong|mga pagbotong}} ginawa)',
 	'communityvoice-ratings-error-no-category' => 'Nawawala ang katangian ng kaurian mula sa tatak ng pag-aantas.',
 	'communityvoice-ratings-error-no-title' => 'Nawawala ang katangian ng pamagat mula sa tatak ng pag-aantas.',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'communityvoice' => 'Topluluğun Sesi',
+	'communityvoice-desc' => 'Topluluk katılım araçları',
+	'communityvoice-ratings' => 'Derecelendirmeler',
+	'communityvoice-ratings-scale-status-sending' => 'Gönderiliyor…',
+	'communityvoice-ratings-scale-status-error' => 'Gönderirken hata!',
+	'communityvoice-ratings-scale-status-thanks' => 'Oy verdiğiniz için teşekkürler!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 oy verildi)',
+	'communityvoice-ratings-error-no-category' => 'Derecelendirme etiketinde kategori niteliği eksik.',
+	'communityvoice-ratings-error-no-title' => 'Derecelendirme etiketinde başlık niteliği eksik.',
 );
 
 /** Vietnamese (Tiếng Việt)

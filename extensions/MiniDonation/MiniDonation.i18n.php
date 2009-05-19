@@ -75,6 +75,14 @@ $messages['bs'] = array(
 	'donationform-submit' => 'Donirajte putem PayPal',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'donationform-desc' => 'Afegeixi una etiqueta <tt>&lt;donateform&gt;</tt> per suportar donacions via PayPal',
+	'donationform-submit' => 'Donació via PayPal',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

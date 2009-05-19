@@ -2536,6 +2536,7 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
  * @author Harald Khan
  * @author Jon Harald Søby
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'hiderevision' => 'Fjern revisjoner permanent',
@@ -2544,7 +2545,7 @@ $messages['no'] = array(
 	'group-oversight-member' => 'Revisjonssletter',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
 	'right-oversight' => 'Vise tidligere slettede revisjoner',
-	'right-hiderevision' => 'Se og gjenopprette skjulte siderevisjoner',
+	'right-hiderevision' => 'Gjem versjoner for administratorer',
 	'hiderevision-prompt' => 'Nummer på revisjonen som skal fjernes:',
 	'hiderevision-continue' => 'Fortsett',
 	'hiderevision-text' => "Dette burde '''kun''' brukes i følgende saker:

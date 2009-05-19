@@ -931,6 +931,7 @@ Ikkje vurder ein bidragsytar etter talet på endringar av han/ho.",
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'countedits' => 'Tell redigeringer',
@@ -940,7 +941,7 @@ $messages['no'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Det er ingen bruker ved navnet $1.',
 	'countedits-resultheader' => 'Resultater for $1',
-	'countedits-resulttext' => '$1 har gjort $2 redigeringer',
+	'countedits-resulttext' => '$1 har gjort {{PLURAL:$2|én redigering|$2 redigeringer}}',
 	'countedits-mostactive' => 'Mest aktive bidragsytere',
 	'countedits-nocontribs' => 'Det har ikke vært noen redigeringer på denne wikien.',
 );

@@ -183,6 +183,13 @@ $messages['nn'] = array(
 	'jskit-desc' => 'Integrerer js-kit-verkty på ei wikisida',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'jskit-desc' => 'Integrerer js-kit-verktøy på en wikiside',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

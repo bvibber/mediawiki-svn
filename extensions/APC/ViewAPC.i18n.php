@@ -653,6 +653,7 @@ Novija verzija $2 je dostupna na http://pecl.php.net/package/APC/$2',
 /** Catalan (Català)
  * @author Aleator
  * @author Jordi Roqué
+ * @author Solde
  */
 $messages['ca'] = array(
 	'viewapc-clear-confirm' => 'Voleu esborrar la memòria cau?',
@@ -663,14 +664,18 @@ $messages['ca'] = array(
 	'viewapc-info-runtime' => "Informació de temps d'execució",
 	'viewapc-info-memory' => "Diagrames d'estat de l'ordinador central",
 	'viewapc-fragmentation-none' => 'Fragmentació: no fragmentat',
+	'viewapc-display-value' => 'Valor',
+	'viewapc-display-info' => 'Nom',
 	'viewapc-display-mem_size' => 'Mida',
 	'viewapc-display-too-big' => "''El contingut és massa gran per a mostrar-lo''",
 	'viewapc-ls-options-legend' => 'Opcions',
+	'viewapc-ls-submit' => 'Vés-hi!',
 	'viewapc-ls-header-name' => 'Nom',
 	'viewapc-ls-header-size' => 'Mida',
 	'viewapc-ls-header-accessed' => 'Darrer accés',
 	'viewapc-ls-header-modified' => 'Darrera modificació',
 	'viewapc-ls-sort-size' => 'Mida',
+	'viewapc-ls-sort-name' => 'Nom',
 	'viewapc-ls-nodata' => "''No hi ha dades coincidents''",
 	'viewapc-version-info' => 'Informació de la versió',
 );

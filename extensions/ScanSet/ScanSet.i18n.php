@@ -469,6 +469,18 @@ $messages['gsw'] = array(
 	'scanset_prev' => '← Vorig',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'scanset_unrecognised_index_format' => 'ત્રુટિ:અજ્ઞાત અનુક્રમણિકા સ્વરૂપ',
+	'scanset_opendir_error' => 'ત્રુટિ:નિર્દેશિકા $1 ખોલી શકાતી નથી',
+	'scanset_no_files' => 'ત્રુટિ:નિર્દિષ્ટ નિર્દેશિકામાં કોઇ ફાઇલ ઉપલબ્ધ નથી.',
+	'scanset_missing_index_file' => 'ત્રુટિ:સૂચક ફાઇલ $1 મળતી નથી',
+	'scanset_index_file_error' => 'ત્રુટિ:સૂચક ફાઇલ સ્વરૂપની $1 લીટીમાં ત્રુટિ',
+	'scanset_invalid_volume' => 'ત્રુટિ:અમાન્ય ખંડ (ભાગ)',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

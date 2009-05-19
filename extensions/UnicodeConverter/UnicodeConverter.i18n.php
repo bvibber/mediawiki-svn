@@ -103,6 +103,16 @@ $messages['bs'] = array(
 	'unicodeconverter-newtext' => 'Pretvoreni tekst:',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'unicodeconverter' => 'Conversor unicode',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Text original:',
+	'unicodeconverter-newtext' => 'Text convertit:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -405,9 +405,11 @@ Moguće da ne postoji takav korisnik.',
 
 /** Catalan (Català)
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
 	'regexblock-already-blocked' => '$1 ja està blocat.',
+	'regexblock-form-reason' => 'Motiu:',
 	'regexblock-view-go' => 'Vés-hi',
 );
 

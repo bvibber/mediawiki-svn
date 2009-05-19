@@ -101,6 +101,14 @@ $messages['hsb'] = array(
 	'wikiarticlefeeds_combined_description' => 'To je kombinaciski kanal, kotryž zapiski z wjacorych kanalowych žórłow wobsahuje.',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'wikiarticlefeeds-desc' => 'MediaWiki のページから生成されたフィードを発行する',
+	'wikiarticlefeeds_combined_description' => 'これは合成されたフィードで、いくつかのフィード元からの項目を含んでいます。',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -130,6 +138,14 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'wikiarticlefeeds-desc' => 'Produserer feed generert frå MediaWiki-sider',
 	'wikiarticlefeeds_combined_description' => 'Dette er ein kombinert feed, som inneheld delar frå fleire feed-kjelder.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'wikiarticlefeeds-desc' => 'Produserer mating generert fra MediaWikisider',
+	'wikiarticlefeeds_combined_description' => 'Dette er en kombinert mating som inneholder deler fra flere kilder.',
 );
 
 /** Occitan (Occitan)

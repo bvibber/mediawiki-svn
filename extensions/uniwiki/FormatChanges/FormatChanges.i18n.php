@@ -315,6 +315,16 @@ $messages['nn'] = array(
 	'formatchanges-editedby' => '$1 - endra av $2 $3',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'formatchanges-desc' => 'Omformaterer [[Special:RecentChanges|siste endringer]]',
+	'formatchanges-anonymous' => 'Anonym',
+	'formatchanges-createdby' => '$1 - opprettet av $2 ($3)',
+	'formatchanges-editedby' => '$1 - endret av $2 ($3)',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

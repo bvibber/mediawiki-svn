@@ -73,6 +73,7 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
+	'commentpages-desc' => "Pàgines de comentaris per l'espai de noms principal",
 	'nstab-comments' => 'Comentari',
 );
 

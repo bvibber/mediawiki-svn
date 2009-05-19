@@ -979,6 +979,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'spamregex' => 'SpamRegex',
@@ -990,6 +991,7 @@ $messages['no'] = array(
 	'spamregex-currently-blocked' => "'''Nåværende blokkerte fraser:'''",
 	'spamregex-move' => 'Årsaken du skrev inn inneholdt en blokkert frase.',
 	'spamregex-no-currently-blocked' => "'''Det er ingen blokkerte fraser.'''",
+	'spamregex-log' => "'''$1''' $2 ([{{SERVER}}$3&text=$4 fjern]) lagt til av $5 den $6 klokka $7",
 	'spamregex-page-title-1' => 'Blokker frase ved hjelp av regulære uttrykk',
 	'spamregex-unblock-success' => 'Avblokkering lyktes',
 	'spamregex-unblock-message' => "Frasen '''$1''' er ikke lenger blokkert.",
@@ -1006,6 +1008,7 @@ $messages['no'] = array(
 	'spamregex-block-submit' => 'Blokker&nbsp;denne&nbsp;frasen',
 	'spamregex-text' => '(Tekst)',
 	'spamregex-summary-log' => '(Sammendrag)',
+	'right-spamregex' => 'Blokkér spamfraser gjennom [[Special:SpamRegex]]',
 );
 
 /** Occitan (Occitan)

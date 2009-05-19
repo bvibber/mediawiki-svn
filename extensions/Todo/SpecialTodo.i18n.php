@@ -60,6 +60,8 @@ $messages['qqq'] = array(
 	'todo-list-cancel' => '{{Identical|Cancel}}',
 	'todo-form-details' => '{{Identical|Details}}',
 	'todo-form-submit' => '{{Identical|Submit query}}',
+	'right-todo' => '{{doc-right|todo}}',
+	'right-todosubmit' => '{{doc-right|todosubmit}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -206,6 +208,8 @@ $4',
 	'todo-form-details' => 'Падрабязнасьці:',
 	'todo-form-email' => 'Каб атрымліваць паведамленьні пра выкананьні заданьняў па электроннай пошце, упішыце сюды свой адрас электроннай пошты:',
 	'todo-form-submit' => 'Запытаць',
+	'right-todo' => 'сьпіс заданьняў',
+	'right-todosubmit' => 'абмежаваньне правоў іншых удзельнікаў для сьпісаў заданьняў',
 );
 
 /** Bulgarian (Български)
@@ -270,6 +274,8 @@ $4',
 	'todo-form-details' => 'Detalji:',
 	'todo-form-email' => 'Da bi ste dobili obavještenje putem e-maila kada je stavka zatvorena, unesite Vašu adresu ovdje:',
 	'todo-form-submit' => 'Pošalji upit',
+	'right-todo' => 'Imati spisak zadataka za uraditi',
+	'right-todosubmit' => 'Onemogućiti pravo korisnika na spisak zadataka',
 );
 
 /** Catalan (Català)
@@ -277,6 +283,7 @@ $4',
  */
 $messages['ca'] = array(
 	'todo-item-list' => 'Els teus ítems',
+	'todo-form-submit' => 'Tramet una consulta',
 );
 
 /** Czech (Česky)
@@ -325,6 +332,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'todo' => 'Aufgabenliste',
@@ -356,6 +364,8 @@ $4',
 	'todo-form-details' => 'Details:',
 	'todo-form-email' => 'Gib deine E-Mail-Adresse ein, um eine Benachrichtigung zu erhalten, wenn der Eintrag geschlossen wurde:',
 	'todo-form-submit' => 'Anfrage übergeben',
+	'right-todo' => 'Aufgabenliste haben',
+	'right-todosubmit' => 'Benutzerrechte auf Aufgabenliste beschränken',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -407,6 +417,8 @@ $4',
 	'todo-form-details' => 'Drobnostki:',
 	'todo-form-email' => 'Zapiš swóju e-mailowu adresu, aby dostał powěsć, gaž zapisk se zacynja',
 	'todo-form-submit' => 'Napšašanje wótpósłaś',
+	'right-todo' => 'Lisćina nadawkow',
+	'right-todosubmit' => 'Pšawo wužywarskeje lisćiny nadawkow wobgranicowaś',
 );
 
 /** Greek (Ελληνικά)
@@ -575,6 +587,8 @@ $4',
 	'todo-form-details' => 'Detalles:',
 	'todo-form-email' => 'Para recibir unha notificación por correo electrónico cando o artigo esté pechado, teclee o seu enderezo aquí:',
 	'todo-form-submit' => 'Enviar a consulta',
+	'right-todo' => 'Ter unha lista coas tarefas pendentes por facer',
+	'right-todosubmit' => 'Restrinxir o dereito de usuario de ter unha lista coas tarefas pendentes',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -621,6 +635,8 @@ $4',
 	'todo-form-details' => 'Detail:',
 	'todo-form-email' => 'Gib Dyy E-Mail-Adräss yy go ne Benochrichtigung iberchu, wänn dr Yytrag zuegmacht woren isch:',
 	'todo-form-submit' => 'Aafrog ibergee',
+	'right-todo' => 'Ufgabe-Lischt haa',
+	'right-todosubmit' => 'S Rächt vum e Benutzer yyschränke, e Ufgabe-Lischt z haa',
 );
 
 /** Hebrew (עברית)
@@ -707,6 +723,8 @@ $4',
 	'todo-form-details' => 'Podrobnosće',
 	'todo-form-email' => 'Zo by zdźělenje z e-mejlu dóstał, hdyž so nadawk kónči, zapodaj tu swoju adresu:',
 	'todo-form-submit' => 'Naprašowanje wotesłać',
+	'right-todo' => 'Lisćina nadawkow',
+	'right-todosubmit' => 'Prawo wužiwarskeje lisćiny nadawkow wobmjezować',
 );
 
 /** Hungarian (Magyar)
@@ -749,6 +767,8 @@ $4',
 	'todo-form-details' => 'Detalios:',
 	'todo-form-email' => 'Pro reciper notification per e-mail quando le carga es claudite, entra tu adresse hic:',
 	'todo-form-submit' => 'Submitter requesta',
+	'right-todo' => 'Haber un lista de cosas a facer',
+	'right-todosubmit' => 'Restringer le derectos de usatores al lista de cosas a facer',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -800,6 +820,8 @@ $4',
 	'todo-form-details' => '詳細:',
 	'todo-form-email' => '項目が完了した際に電子メールで通知を希望するなら、あなたのアドレスをここに入力してください:',
 	'todo-form-submit' => '送信',
+	'right-todo' => 'やることリストをもつ',
+	'right-todosubmit' => '利用者のやることリストに関する権限を制限する',
 );
 
 /** Javanese (Basa Jawa)
@@ -853,37 +875,39 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'todo' => 'Opjaveliss',
-	'todo-desc' => 'Ene Zosatz för en persönliche [[Special:Todo|Opjaveliss]] för zem Ußprobeere.',
-	'todo-tab' => 'Opjav',
+	'todo' => 'Aufjabeleß',
+	'todo-desc' => 'Ene Zosatz för en persönliche [[Special:Todo|Aufjabeleß]] för zem Ußprobeere.',
+	'todo-tab' => 'Aufjab',
 	'todo-new-queue' => 'neu',
-	'todo-mail-subject' => 'Erledichte Opjav en däm $1 sing Opjaveliss',
-	'todo-mail-body' => 'Do häs Der en E-Mail jewönsch, wann en Opjav erledich wöhr, die De em $1 en sing Opjaveliss jedonn häs. He is se:
+	'todo-mail-subject' => 'Erledichte Aufjab en {{GENDER:$1|däm $1 sing|däm $1 sing|däm Metmaacher $1 sing|däm $1 sing|dä $1 ier}} Aufjabeleß',
+	'todo-mail-body' => 'Do häs Der en <i lang="en">e-Mail</i> jewönsch, wann en Aufjab erledich wöhr, die De {{GENDER:$1|dem $1 en sing|em $1 en sing|däm Metmaacher $1 en de|däm $1 en sing|dä $1 en ier}} Aufjabeleß jedonn häs. He is se:
 
-De Opjav: $2
+De Aufjab: $2
 Enjedrage: $3
 
 Se wood als erledich makeet mit dä Bemerkung:
 $4
 
 Ene schone Jroß.',
-	'todo-invalid-item' => 'Die Opjav fäält, odder se es kapott',
-	'todo-update-else-item' => 'Enem andere Metmaacher sing Opjave ändere',
-	'todo-unrecognize-type' => 'Di Aat Opjaav kenne mer nit',
-	'todo-user-invalide' => 'Die Opjav es kapott, nit doh, odder dä Medmaacher kann jaa kein Opjave han.',
-	'todo-item-list' => 'Ding Opjave',
-	'todo-no-item' => 'Kein Opjave en de Liss.',
-	'todo-invalid-owner' => 'Dä Medmaacher för die Opjaav is nit müjjelisch',
+	'todo-invalid-item' => 'Die Aufjab fäält, odder se es kapott',
+	'todo-update-else-item' => 'Enem andere Metmaacher sing Aufjabe ändere',
+	'todo-unrecognize-type' => 'Di Aat Aufjab kenne mer nit',
+	'todo-user-invalide' => 'Die Aufjab es kapott, odder se es nit doh, odder dä Medmaacher kann jaa kein Aufjabe han.',
+	'todo-item-list' => 'Ding Aufjabe',
+	'todo-no-item' => 'Kein Aufjabe en de Leß.',
+	'todo-invalid-owner' => 'Dä Medmaacher för di Aufjab is nit müjjelisch',
 	'todo-add-queue' => 'En Schlang dobei donn&nbsp;…',
 	'todo-move-queue' => 'En de Schlang donn&nbsp;…',
-	'todo-list-for' => 'Opjaveliss för $1',
+	'todo-list-for' => '{{GENDER:$1|Dämm $1 sing|Em $1 sing|Däm Metmaacher $1 de|Däm $1 sing|Dä $1 ier}} Aufjabeleß',
 	'todo-list-change' => 'Ändere',
 	'todo-list-cancel' => 'Draanjevve',
-	'todo-new-item' => 'En neu Opjav',
+	'todo-new-item' => 'En neu Aufjab',
 	'todo-issue-summary' => 'Zosammefassung:',
 	'todo-form-details' => 'Einzelheite:',
-	'todo-form-email' => 'Öm en E-Mail ze krijje, wann di Opjav avjeschlosse weed, jiv Ding E-Mai Adress hee en:',
+	'todo-form-email' => 'Öm en <i lang="en">e-mail</i> ze krijje, wann di Aufjab afjeschlosse weed, jif Ding Adress för de <i lang="en">e-mail</i> hee en:',
 	'todo-form-submit' => 'Loß Jonn!',
+	'right-todo' => 'En Aufjabeleß han künne',
+	'right-todosubmit' => 'Anderlücks Rääsch an un op en Aufjabeleß beschrängke',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1037,6 +1061,8 @@ $4',
 	'todo-form-details' => 'Details:',
 	'todo-form-email' => 'Voer hier uw e-mailadres in om een melding te krijgen als dit onderwerp wordt gesloten:',
 	'todo-form-submit' => 'Zoekopdracht uitvoeren',
+	'right-todo' => 'Todo-lijst hebben',
+	'right-todosubmit' => 'Gebruikersrechten op todo-lijst beperken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1360,6 +1386,8 @@ $4',
 	'todo-form-details' => 'Podrobnosti:',
 	'todo-form-email' => 'Dostať upozornenie emailom, keď bude úloha uzatvorená. Napíšte svoju adresu:',
 	'todo-form-submit' => 'Poslať požiadavku',
+	'right-todo' => 'Zoznam čo treba spraviť',
+	'right-todosubmit' => 'Obmedziť právo používateľa na zoznam čo treba spraviť',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

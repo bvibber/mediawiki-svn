@@ -26,6 +26,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'piwik-desc' => 'Short description of the Piwik extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'piwik-countries' => '{{Identical|Country}}',
+	'right-viewpiwik' => '{{doc-right|viewpiwik}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -99,6 +100,7 @@ $messages['bs'] = array(
 	'piwik-lastvisits' => 'Zadnje posjete',
 	'piwik-countries' => 'Države',
 	'piwik-browsers' => 'Preglednici',
+	'right-viewpiwik' => 'Pregledavanje [[Special:Piwik|statistike Piwik]]',
 );
 
 /** Catalan (Català)
@@ -124,6 +126,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'piwik-desc' => 'Fügt ein Piwik-Skript zum Tracking in MediaWiki-Seiten ein und ergänzt eine [[Special:Piwik|Spezialseite]] mit einigen Statistiken',
@@ -131,6 +134,7 @@ $messages['de'] = array(
 	'piwik-lastvisits' => 'Letzte Besuche',
 	'piwik-countries' => 'Länder',
 	'piwik-browsers' => 'Browser',
+	'right-viewpiwik' => '[[Special:Piwik|Piwik-Statistiken]] anschauen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -141,6 +145,7 @@ $messages['dsb'] = array(
 	'piwik-lastvisits' => 'Slědne woglědy',
 	'piwik-countries' => 'Kraje',
 	'piwik-browsers' => 'Wobglědowaki',
+	'right-viewpiwik' => '[[Special:Piwik|Statistiku piwik]] se woglědaś',
 );
 
 /** Greek (Ελληνικά)
@@ -190,6 +195,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -197,6 +203,7 @@ $messages['fr'] = array(
 	'piwik-lastvisits' => 'Dernières visites',
 	'piwik-countries' => 'Pays',
 	'piwik-browsers' => 'Navigateurs',
+	'right-viewpiwik' => 'Voir les [[Special:Piwik|statistiques de Piwik]]',
 );
 
 /** Galician (Galego)
@@ -207,6 +214,7 @@ $messages['gl'] = array(
 	'piwik-lastvisits' => 'Últimas visitas',
 	'piwik-countries' => 'Países',
 	'piwik-browsers' => 'Navegadores',
+	'right-viewpiwik' => 'Ver as [[Special:Piwik|estatísticas de Piwik]]',
 );
 
 /** Swiss German (Alemannisch)
@@ -217,6 +225,7 @@ $messages['gsw'] = array(
 	'piwik-lastvisits' => 'Letschti Bsuech',
 	'piwik-countries' => 'Länder',
 	'piwik-browsers' => 'Browser',
+	'right-viewpiwik' => '[[Special:Piwik|Piwik-Statischtike]] aaluege',
 );
 
 /** Hebrew (עברית)
@@ -238,6 +247,7 @@ $messages['hsb'] = array(
 	'piwik-lastvisits' => 'Poslednje wopyty',
 	'piwik-countries' => 'Kraje',
 	'piwik-browsers' => 'Wobhladowaki',
+	'right-viewpiwik' => '[[Special:Piwik|Statistiku piwik]] sej wobhladać',
 );
 
 /** Hungarian (Magyar)
@@ -259,6 +269,7 @@ $messages['ia'] = array(
 	'piwik-lastvisits' => 'Ultime visitas',
 	'piwik-countries' => 'Paises',
 	'piwik-browsers' => 'Navigatores',
+	'right-viewpiwik' => 'Vider le [[Special:Piwik|statisticas de Piwik]]',
 );
 
 /** Italian (Italiano)
@@ -279,6 +290,7 @@ $messages['ja'] = array(
 	'piwik-lastvisits' => '最新の訪問',
 	'piwik-countries' => '国',
 	'piwik-browsers' => 'ブラウザ',
+	'right-viewpiwik' => '[[Special:Piwik|Piwik 統計]]を見る',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -298,6 +310,7 @@ $messages['ksh'] = array(
 	'piwik-lastvisits' => 'De lëtzte Besooche',
 	'piwik-countries' => 'Ländere',
 	'piwik-browsers' => 'Brauser',
+	'right-viewpiwik' => 'De [[Special:Piwik|Piwik-Shtatistike]] beloore',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -319,6 +332,7 @@ $messages['nl'] = array(
 	'piwik-lastvisits' => 'Meest recente bezoeken',
 	'piwik-countries' => 'Landen',
 	'piwik-browsers' => 'Browsers',
+	'right-viewpiwik' => '[[Special:Piwik|Piwik-statistieken]] bekijken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -414,6 +428,7 @@ $messages['sk'] = array(
 	'piwik-lastvisits' => 'Posledné návštevy',
 	'piwik-countries' => 'Krajiny',
 	'piwik-browsers' => 'Prehliadače',
+	'right-viewpiwik' => 'Zobraziť [[Special:Piwik|štatistiku Piwik]]',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
