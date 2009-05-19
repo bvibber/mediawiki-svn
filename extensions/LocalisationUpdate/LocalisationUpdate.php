@@ -1,11 +1,22 @@
 <?php
+/*
+KNOWN ISSUES:
+- If no cURL is supported anf url_fopen[1] is disabled the 
+  extension will not update
+- Only works with SVN revision 50605 or later of the
+  Mediawiki core
+*/
+
 //Info about me!
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'LocalisationUpdate',
 	'author'         => 'Tom Maaswinkel',
 	'version'        => '0.1',
 	'description'    => 'Extension to keep the localized messages as up to date as possible',
+	'descriptionmsg' => 'localisationupdate-desc',
 );
+
+$wgExtensionMessagesFiles['LocalisationUpdate'] = dirname( __FILE__ ) . '/LocalisationUpdate.i18n.php';
 
 //Use the right hook
 $wgHooks['MessageNotInMwNs'][] = "FindUpdatedMessage";
