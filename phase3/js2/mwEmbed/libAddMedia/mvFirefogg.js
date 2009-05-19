@@ -95,7 +95,13 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			js_log('Error: firefogg: missing selector ');
 		}	
 	},
-	doRewrite:function( callback ){		
+	doRewrite:function( callback ){
+		var _this = this;
+		$j(this.selector).each(function(){				
+			if( this.tagName.toLowerCase() == 'input' ){					
+				_this.form_rewrite = true;					
+			}
+		});		
 		//check if we are rewriting an input or a form:
 		if( this.form_rewrite ){
 			this.setupForm();
@@ -115,13 +121,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			if(target.substring(0, 6)=='target'){
 				//check for the target if missing add to the output: 
 				if( _this[target] === false){					
-					if( target.substr(7,3)=='btn'){
-						out+='<input class="' + target + '" type="button" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
-					}else if(target.substr(7,5)=='input'){
-						out+='<input class="' + target + '" type="text" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
-					}else{					
-						out+='<div class="' + target + '">'+ gM('fogg-'+ target.substring(7)) + '</div> ';
-					}
+					out+= _this.getTargetHtml(target);
 				}
 				//update the target selector 
 				_this[target] = _this.selector + ' .' + target;
@@ -129,6 +129,15 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		});
 		//output the html
 		$j( this.selector ).html( out ).show();				
+	},
+	getTargetHtml:function(target){
+		if( target.substr(7,3)=='btn'){
+			return '<input class="' + target + '" type="button" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
+		}else if(target.substr(7,5)=='input'){
+			return '<input class="' + target + '" type="text" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
+		}else{					
+			return '<div class="' + target + '">'+ gM('fogg-'+ target.substring(7)) + '</div> ';
+		}
 	},
 	doControlBindings: function(){
 		var _this = this;			
@@ -183,13 +192,33 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		}
 	},
 	//assume input target
-	setupForm: function(){
+	setupForm: function(){		
+		js_log('firefogg::setupForm::');
+				
+		//call the parent form setup 
+		this.pe_setupForm();
+		<input type="file" size="60" id="wpUploadFile" name="wpUploadFile" tabindex="1"/>
+		//change the file browser to type text:
+		$j(this.selector).replaceWith('<input type="text" ' +
+											'size="' + $j(this.selector).attr('size') + '" ' +
+											'id="'   + $j(this.selector).attr('id') + '" ' +
+											'name="' + $j(this.selector).attr("name") + '" ' + 
+											'tabindex="' + $j(this.selector).attr('tabindex') + '" '+
+											'class="' + $j(this.selector).attr('class') + '" ' +											 
+										'>');			
 		
-		js_log('firefogg::setupForm::');		
-		//call the parent form setup
-		_this.pe_setupForm();
+		this.target_input_file_name = this.selector;
 		
-		//firefogg is always "enabled" with passthrough mode (if not uploading video) 
+		$j(this.selector).after(
+			this.getTargetHtml('target_btn_select_file') 
+		);
+		//check for the other inline status indicator targets: 
+		
+		//update the bindings: 
+		this.doControlBindings();
+	},
+	getEditForm:function(){
+		return $j(this.selector).parents().find("form").get(0);
 	},
 	select_fogg:function(){			
 		var _this = this;

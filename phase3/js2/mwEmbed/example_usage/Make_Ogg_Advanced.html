@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Firefogg - Make Ogg Video in your Browser</title>
+	<!--  <script type="text/javascript" src="../jsScriptLoader.php?class=mv_embed"></script> -->
+	<script type="text/javascript" src="../mv_embed.js"></script> 
+<style type="text/css" media="all">@import "http://www.firefogg.org/css/style.css";</style>
+<style type="text/css" media="all">
+.install{
+display:none;
+}
+input{
+font-size:150%;
+}
+</style>
+<script type="text/javascript">
+mwAddOnloadHook(function(){
+	$j('#control_container').firefogg({
+			'encoder_interface'	: true,
+			'encode_local' 		: true
+	});	
+});
+</script>
+</head><body>
+<div id="main">
+  <h1><a href="http://www.firefogg.org/index.html"><img 
+src="http://www.firefogg.org/png/firefogg.png" alt="Firefogg"></a><br>
+Make Ogg Video</h1>
+<br><br><br>
+<center>
+	<div style="width:500px">
+		<div style="float:left;height:400px" id="control_container"></div>
+	<br><br>
+	<!-- <span style="font:size:80%">Built using <a href="http://firefogg.org">firefogg</a> & <a href="http://jqueryui.com/">jquery.ui</a> Supports 
+		<a href="javascript:(function(){if%20(!/Firefox[\/\s](\d+\.\d+)/.test(navigator.userAgent)){alert('Sorry,%20due%20to%20security%20restrictions,%20this%20tool%20only%20works%20in%20Firefox');%20return%20false;%20};%20if(window.jquitr){%20jquitr.addThemeRoller();%20}%20else{%20jquitr%20=%20{};%20jquitr.s%20=%20document.createElement('script');%20jquitr.s.src%20=%20'http://jqueryui.com/themeroller/developertool/developertool.js.php';%20document.getElementsByTagName('head')[0].appendChild(jquitr.s);}%20})();">custom themes</a>, <b>remix me</b>
+	</span> -->
+	</div>
+</center>
+</body></html>

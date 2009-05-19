@@ -586,17 +586,8 @@ function mv_jqueryBindings(){
 			loadSet = {				
 				'mvBaseUploadInterface'	: 'libAddMedia/mvBaseUploadInterface.js',
 				'mvFirefogg'			: 'libAddMedia/mvFirefogg.js'
-			};
-			
-			//see if we need to load the advanced firefog controls and associated ui components:
-			$j(this.selector).each(function(){				
-				if( this.tagName.toLowerCase() != 'input' ){					
-					initObj.form_rewrite = false;
-					//if not an input tag (we probably want to load the full encoder interface) 
-					if( typeof initObj.encoder_interface == 'undefined' ) 
-						initObj.encoder_interface = true;
-				}
-			});
+			};			
+			//see if we need to load the advanced firefog controls and associated ui components:			
 			if( initObj.encoder_interface ){
 				//@@todo would be nice to have a "dependency" map we could use/
 				loadSet['mvAdvFirefogg']	= 'libAddMedia/mvAdvFirefogg.js';

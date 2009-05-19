@@ -15,12 +15,18 @@ var mwUploadHelper = {
 				'api_url' : wgServer + wgScriptPath + '/api.php',
 				
 				'new_source_cb' : function( filename ){
-										$j('#wpDestFile').val( filename )
+										$j('#wpDestFile').val( filename );
 										mwUploadHelper.doDestCheck();
-									}
+								}
 			});		
 		}else{
 			//we can try and do basic upload profile support ( http status monitoring, progress box for browsers that support it etc. ) 
+			mvJsLoader.doLoad({
+				'mvBaseUploadInterface': 'libAddMedia/mvBaseUploadInterface.js'
+			},function(){
+				myUp = new mvBaseUploadInterface( { 'api_url' : wgServer + wgScriptPath + '/api.php' } );
+				myUp.setupForm();
+			});
 		}
 		
 		if( wgAjaxUploadDestCheck ){
@@ -47,7 +53,7 @@ var mwUploadHelper = {
 			toggleUpType( this.id == 'wpUploadFile' );	
 		}).change(function(){ //also setup the onChange event binding: 				
 			if ( wgUploadAutoFill ) {
-				mvUp.doDestinationFill( this );		
+				mwUploadHelper.doDestinationFill( this );		
 			}		
 		});			
 	},			

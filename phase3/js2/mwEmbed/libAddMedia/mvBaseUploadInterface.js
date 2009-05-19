@@ -139,8 +139,7 @@ mvBaseUploadInterface.prototype = {
 			_this.doUploadSwitch();
 		}
 	},
-	doUploadSwitch:function(){		
-		
+	doUploadSwitch:function(){				
 		js_log('mvUPload:doUploadSwitch()');
 		var _this = this;			
 		//issue a normal post request 		
