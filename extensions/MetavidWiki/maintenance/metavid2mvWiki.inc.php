@@ -749,7 +749,76 @@ function mvd_consistancy_check(){
 	}		
 }
 function do_bill_insert( $bill_key ) {
+	include_once( 'scrape_and_insert.inc.php' );
+	$mvScrape = new MV_BaseScraper();
+	$myBillScraper = new MV_BillScraper();
+	
+	$congressNum = 111;
+	print "do_bill_insert:: $bill_key\n ";
 	//grab bill list with categories from govtrack
+	$raw_govtrack_bill_data = $mvScrape->doRequest('http://www.govtrack.us/data/us/'.$congressNum.'/bills.index.xml');
+	//turn bill data into an array:
+	preg_match_all("/<bill\s([^>]*)\>\n/sU",$raw_govtrack_bill_data,$nodes);
+	print "found " . count($nodes[1]) . " bills \n";
+	$types = array('type', 'number', 'title', 'official-title', 'status', 'last-action');
+	
+	$billAry = array();	
+	foreach($nodes[1] as $bill_str){
+		$bObj = array();
+		preg_match_all('/([^=]*)="([^"]*)"/', $bill_str, $matches);
+		foreach($matches[1] as $inx => $tkey){
+			if(in_array(trim($tkey), $types)){
+				$bObj[ trim($tkey) ] = $matches[2][$inx];
+			}
+		}
+		//setup some keys: 
+		$bObj['GovTrackID'] = $bObj['type'] . $congressNum . '-' . $bObj['number'];
+		$bObj['ThomasID']	= 'd'.$congressNum.':'.$bObj['type'].$bObj['number'].':';
+		$bObj['OpenCongressBillID']	=$congressNum.'-'.$bObj['type'].$bObj['number'];
+		$bObj['CongressSession'] = $congressNum;
+		$tp = explode(':',	$bObj['title']);
+		$bObj['Bill Key'] = $tp[0];
+		
+		$maplightBillId = get_map_light_bill_id( $bObj );
+		if($maplightBillId===false){
+			print "Could not find maplight id for bill: " . $bObj['type'] . '+' . $bObj['number'] . "\n";
+			$bObj['MapLightBillID'] = false;
+		}else{
+			$bObj['MapLightBillID'] = $maplightBillId;		
+			//now that we do have a maplight key get the interest info:  
+			$bObj['interests'] = $myBillScraper->proccMapLightBillIntrests($maplightBillId);
+		}			
+		$billAry[] = $bObj;
+		//do proccess the bill (insert into the wiki) 
+		$myBillScraper->processBill($bObj['GovTrackID'], $bObj['Bill Key'],$bObj['OpenCongressBillID'], $bObj['MapLightBillID'] );		
+	}		
+	
+}
+function get_map_light_bill_id($bObj){
+	include_once( 'scrape_and_insert.inc.php' );
+	$mvScrape = new MV_BaseScraper();
+	$rawBillPage = $mvScrape->doRequest('http://maplight.org/map/us/bill/search/' . $bObj['type'] . '+' . $bObj['number'] ) ;
+	//get the basic zone:
+	$sb = strpos($rawBillPage, '<h3>Bills numbered');
+	if($sb===false){
+	  return false;
+	}	
+	
+	$se = strpos($rawBillPage, '<h3>Bills matching', $sb);
+	if($se === false){
+		return false;
+	}
+	
+	$target_search_area = substr($rawBillPage, $sb, $se-$sb );
+	//get the matchign area 
+	preg_match_all('/href=\"([^"]*)"[^(]*\(([^t]*)/', $target_search_area, $matches);
+	foreach($matches[2] as $inx => $val){
+		if($val == $bObj['CongressSession'] ){
+			//remove the unused parts of the url
+			return str_replace('/map/us/bill/', '', $matches[1][$inx]);
+		}
+	}
+	return false;	
 }
 function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force = false ) {
 	global $valid_attributes, $states_ary;		
