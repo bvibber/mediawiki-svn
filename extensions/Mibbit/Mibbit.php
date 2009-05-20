@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Mibbit
  *
@@ -15,7 +14,7 @@
  */
 
 // If this is run directly from the web die as this is not a valid entry point.
-if( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
+if ( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 
 // Extension credits.
 $wgExtensionCredits[ 'specialpage' ][] = array(
@@ -25,7 +24,7 @@ $wgExtensionCredits[ 'specialpage' ][] = array(
 	'descriptionmsg' => 'mibbit-desc',
 	'author'         => 'Robert Leverington',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Mibbit',
-	'version'        => '1.3.0',
+	'version'        => '1.3.1',
 );
 
 // Register special page.
