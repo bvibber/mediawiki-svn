@@ -1,0 +1,7 @@
+#!/bin/sh
+
+$MYSQL_COMMAND $DATABASE_NAME < $DESTINATION_DIR/$NAME/uninstall.sql
+
+cd $DESTINATION_DIR
+rm -rf $NAME
+
