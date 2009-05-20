@@ -6,7 +6,7 @@
 *
 * @author Łukasz 'TOR' Garczewski <tor@wikia-inc.com>
 * @author Charles Melbye <charlie@yourwiki.net>
-* @version 0.10
+* @version 0.11
 * @copyright Copyright © 2008 Łukasz 'TOR' Garczewski, Wikia, Inc.
 * @copyright Copyright (C) 2008 YourWiki, Inc.
 * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
@@ -23,7 +23,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'SharedUserRights',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SharedUserRights',
-	'version' => '0.10',
+	'version' => '0.11',
 	'author' => array( "Łukasz 'TOR' Garczewski", 'Charles Melbye' ),
 	'description' => 'Easy global user rights administration',
 	'descriptionmsg' => 'gblrights-desc',
@@ -57,7 +57,7 @@ function efAddSharedUserRights( $user, $groups ) {
 			'sug_group',
 			array ( 'sug_user' => $user->mId ) );
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			if( !in_array( $row->sug_group, $groups ) ) {
+			if ( !in_array( $row->sug_group, $groups ) ) {
 				$groups[] = $row->sug_group;
 			}
 		}
@@ -68,14 +68,14 @@ function efAddSharedUserRights( $user, $groups ) {
 	return $groups;
 }
 
-/**  
+/**
  * Get a shared table name
  */
 function efSharedTable( $table )
 {
         global $wgSharedDB;
 
-        if (!empty( $wgSharedDB )) {
+        if ( !empty( $wgSharedDB ) ) {
                 return "`$wgSharedDB`.`$table`";
         } else {
                 return "`$table`";
