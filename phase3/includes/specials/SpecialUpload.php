@@ -41,7 +41,7 @@ class UploadForm extends SpecialPage {
 	 * Get data POSTed through the form and assign them to the object
 	 * @param $request Data posted.
 	 */
-	function __construct( &$request ) {
+	function __construct( &$request ) {	
 		// Guess the desired name from the filename if not provided
 		$this->mDesiredDestName   = $request->getText( 'wpDestFile' );
 		if( !$this->mDesiredDestName )
@@ -82,8 +82,8 @@ class UploadForm extends SpecialPage {
 	 * @access public
 	 */
 	function execute() {		
-		global $wgUser, $wgOut;
-				
+		global $wgUser, $wgOut;						
+		
 		# Check uploading enabled
 		if( !UploadBase::isEnabled() ) {
 			$wgOut->showErrorPage( 'uploaddisabled', 'uploaddisabledtext' );
@@ -258,10 +258,10 @@ class UploadForm extends SpecialPage {
 		$status = $this->mUpload->fetchFile();
 		if( !$status->isOK() ){			
 			return array( 'status' =>UploadBase::BEFORE_PROCESSING, 'error'=>$status->getWikiText() );
-		}
+		}		
 		
 		// Check whether this is a sane upload
-		$result = $this->mUpload->verifyUpload();
+		$result = $this->mUpload->verifyUpload();		
 		if( $result != UploadBase::OK )
 			return $result;
 

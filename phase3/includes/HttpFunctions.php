@@ -31,11 +31,7 @@ class Http {
 	public static function doDownload( $url, $target_file_path , $dl_mode = self::SYNC_DOWNLOAD , $redirectCount=0){
 		global $wgPhpCliPath, $wgMaxUploadSize, $wgMaxRedirects;				
 		//do a quick check to HEAD to insure the file size is not > $wgMaxUploadSize 
-		$head = get_headers($url, 1);
-		
-		//check for non-valid result:
-		 
-		wfDebug("\n head: " . print_r($head, true). "\n");
+		$head = get_headers($url, 1);		 		
 		
 		//check for redirects:
 		if( isset( $head['Location'] ) && strrpos($head[0], '302')!==false ){

@@ -8,10 +8,9 @@ loadGM({
 	'fogg-save_local_file'		: 'Save Ogg',
 	'fogg-check_for_fogg'		: 'Checking for Firefogg <blink>...</blink>',
 	'fogg-installed'			: 'Firefogg is Installed',
-	'fogg-please_install'		: 'You don\'t have firefogg, please <a href="$1">install firefogg</a>',
+	'fogg-please_install'		: 'You don\'t have firefogg installed, please <a href="$1">install firefogg</a>',
 	'fogg-use_latest_fox'		: 'You need a <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a> to use Firefogg',
-	'passthrough_mode'			: 'Your selected file is already ogg or not a video file',
-	 
+	'passthrough_mode'			: 'Your selected file is already ogg or not a video file',	 
 });
 
 var firefogg_install_links =  {
@@ -132,11 +131,11 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	},
 	getTargetHtml:function(target){
 		if( target.substr(7,3)=='btn'){
-			return '<input class="' + target + '" type="button" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
+			return '<input style="" class="' + target + '" type="button" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
 		}else if(target.substr(7,5)=='input'){
-			return '<input class="' + target + '" type="text" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
+			return '<input style="" class="' + target + '" type="text" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
 		}else{					
-			return '<div class="' + target + '">'+ gM('fogg-'+ target.substring(7)) + '</div> ';
+			return '<div style="" class="' + target + '" >'+ gM('fogg-'+ target.substring(7)) + '</div> ';
 		}
 	},
 	doControlBindings: function(){
@@ -145,21 +144,28 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		//hide all targets:
 		var hide_target_list='';
 		var coma='';
-		$j.each(default_firefogg_options, function(target, na){		
+		$j.each(default_firefogg_options, function(target, na){	
 			if(target.substring(0, 6)=='target'){
 				hide_target_list+=coma + _this[target];
 				coma=',';
 			}			
-		});	
-		$j( hide_target_list ).hide();						
+		});			
+		$j( hide_target_list ).hide();
+		//if rewriting the form lets keep the text input around: 						
+		if(_this.form_rewrite)
+			$j('#target_input_file_name').show();
 				
 		//hide all but check-for-fogg
 		//check for firefogg
 		if( _this.firefoggCheck() ){
 			//show select file: 
-			$j(this.target_btn_select_file).click(function(){
-				_this.select_fogg();
-			}).show().attr('disabled', false);
+			$j(this.target_btn_select_file).unbind(
+				).attr('disabled', false
+				).css({'display':'inline'}
+				).click(function(){									
+					_this.select_fogg();
+				});						
+			
 		}else{
 			var os_link = false;
 			if(navigator.oscpu){
@@ -169,11 +175,11 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	              	os_link = firefogg_install_links['macosx'];
 	            else if(navigator.oscpu.search('Win') >= 0)
 	              	os_link = firefogg_install_links['win32'];
-			}			
-			$j(_this.target_please_install).html( gM('fogg-please_install',os_link )).show();			
+			}												
+			$j(_this.target_please_install).html( gM('fogg-please_install',os_link )).css('padding', '10px').show();			
 		}
 		//setup the target save local file bindins: 
-		$j( _this.target_btn_save_local_file ).click(function(){
+		$j( _this.target_btn_save_local_file ).unbind().click(function(){
 			//update the output target
 			if(_this.fogg){
 				//if(_this.fogg.saveVideoAs()){
@@ -194,26 +200,42 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	//assume input target
 	setupForm: function(){		
 		js_log('firefogg::setupForm::');
-				
-		//call the parent form setup 
-		this.pe_setupForm();
-		<input type="file" size="60" id="wpUploadFile" name="wpUploadFile" tabindex="1"/>
-		//change the file browser to type text:
-		$j(this.selector).replaceWith('<input type="text" ' +
-											'size="' + $j(this.selector).attr('size') + '" ' +
-											'id="'   + $j(this.selector).attr('id') + '" ' +
-											'name="' + $j(this.selector).attr("name") + '" ' + 
-											'tabindex="' + $j(this.selector).attr('tabindex') + '" '+
-											'class="' + $j(this.selector).attr('class') + '" ' +											 
-										'>');			
+		
+		//check if we have firefogg (if not just add a link and stop proccessing) 
+		if( !this.firefoggCheck() ){
+			//add some status indicators if not provided: 
+			if(!this.target_please_install){
+				$j(this.selector).after ( this.getTargetHtml('target_please_install') );
+				//match the first sibling of our input type selector:
+				this.target_please_install = this.selector + ' ~ .target_please_install';
+			}
+			//update download link:
+			this.doControlBindings();
+			return false;
+		}
+		//else do form setup: 
+		this.pe_setupForm();		
+		//change the file browser to type text: (can't directly change input from "file" to "text" so longer way:
+		var inTag = '<input ';
+		$j.each($j(this.selector).get(0).attributes, function(i, attr){
+			var val = attr.value;
+			if( attr.name == 'type')
+				val = 'text';
+			inTag += attr.name + '="' + val + '" ';
+		});
+		if(!$j(this.selector).attr('style'))
+			inTag += 'style="display:inline" ';			
+		inTag+= '>';
+										
+		js_log('set input: ' + inTag);
+		$j(this.selector).replaceWith(inTag);			
 		
 		this.target_input_file_name = this.selector;
 		
 		$j(this.selector).after(
 			this.getTargetHtml('target_btn_select_file') 
 		);
-		//check for the other inline status indicator targets: 
-		
+		//check for the other inline status indicator targets: 		
 		//update the bindings: 
 		this.doControlBindings();
 	},
@@ -228,7 +250,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				js_log('videoSelectReady');
 				//if not already hidden hide select file and show "select new": 
 				$j(_this.target_btn_select_file).hide();
-				//show and setup binding for new file: 
+				//show and setup binding for select new file: 
 				$j(_this.target_btn_select_new_file).show().click(function(){
 					_this.select_fogg();
 				});
@@ -255,12 +277,12 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 					$j(_this.target_input_file_name).val(_this.fogg.sourceFilename).show();
 					
 					if(_this.new_source_cb){
-						new_source_cb( _this.fogg.sourceFilename );
+						_this.new_source_cb( _this.fogg.sourceFilename );
 					}
 				}
 			}
 			//wait 100ms to get video info: 
-			setTimeout(videoSelectReady, 200);															
+			setTimeout(videoSelectReady, 100);															
 		}
 	},
 	//simple auto encoder settings just enable passthough if file is not video or > 480 pixles tall 

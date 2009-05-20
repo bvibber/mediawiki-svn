@@ -1020,9 +1020,7 @@ class OutputPage {
 		if( $this->mDoNothing ){
 			return;
 		}
-
-		wfProfileIn( __METHOD__ );
-
+		wfProfileIn( __METHOD__ );				
 		if ( '' != $this->mRedirect ) {
 			# Standards require redirect URLs to be absolute
 			$this->mRedirect = wfExpandUrl( $this->mRedirect );
@@ -1031,8 +1029,7 @@ class OutputPage {
 					$wgRequest->response()->header("HTTP/1.1 {$this->mRedirectCode} Moved Permanently");
 				}
 				$this->mLastModified = wfTimestamp( TS_RFC2822 );
-			}
-
+			}			
 			$this->sendCacheControl();
 
 			$wgRequest->response()->header("Content-Type: text/html; charset=utf-8");

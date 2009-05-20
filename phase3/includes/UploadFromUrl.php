@@ -15,18 +15,21 @@ class UploadFromUrl extends UploadBase {
 		return $wgAllowCopyUploads && parent::isEnabled();
 	}	
 	/*entry point for Api upload:: ASYNC_DOWNLOAD (if possible) */
-	function initialize( $name, $url, $asyncdownload = Http::SYNC_DOWNLOAD ) {		
+	function initialize( $name, $url, $asyncdownload = false) {		
 		global $wgTmpDirectory, $wgPhpCliPath;				
-		
-		if($asyncdownload &&  $wgPhpCliPath && wfShellExecEnabled() ){
-			$this->dl_mode = Http::ASYNC_DOWNLOAD;
-		}else{
-			$this->dl_mode = Http::SYNC_DOWNLOAD;	
+			
+		//check for $asyncdownload request: 
+		if($asyncdownload !== false){
+			if($wgPhpCliPath && wfShellExecEnabled() ){
+				$this->dl_mode = Http::ASYNC_DOWNLOAD;
+			}else{
+				$this->dl_mode = Http::SYNC_DOWNLOAD;	
+			}
 		}
 		
 		$local_file = tempnam( $wgTmpDirectory, 'WEBUPLOAD' );
 		parent::initialize( $name, $local_file, 0, true );
-		
+				
 		$this->mUrl = trim( $url );		
 	}
 	public function isAsync(){
@@ -34,6 +37,7 @@ class UploadFromUrl extends UploadBase {
 	}
 	/*entry point for SpecialUpload no ASYNC_DOWNLOAD possible: */
 	function initializeFromRequest( &$request ) {		
+
 		//set dl mode if not set:
 		if(!$this->dl_mode)
 			$this->dl_mode = Http::SYNC_DOWNLOAD;	
@@ -49,18 +53,16 @@ class UploadFromUrl extends UploadBase {
 	/**
 	 * Do the real fetching stuff
 	 */
-	function fetchFile( ) {		
+	function fetchFile( ) {			
 		//entry point for SpecialUplaod 
 		if( self::isValidURI($this->mUrl) === false) {
 			return Status::newFatal('upload-proto-error');
-		}
-		//print "fetchFile:: $this->dl_mode";
+		}				
+		//now do the actual download to the target file: 			
+		$status = Http::doDownload ( $this->mUrl, $this->mTempPath, $this->dl_mode );						
 		
-		//now do the actual download to the target file: 	
-		$status = Http::doDownload ( $this->mUrl, $this->mTempPath, $this->dl_mode );	
-					
 		//update the local filesize var: 
-		$this->mFileSize = filesize( $this->mTempPath );
+		$this->mFileSize = filesize( $this->mTempPath );					
 						
 		return $status;					
 	}

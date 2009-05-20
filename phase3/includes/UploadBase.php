@@ -57,12 +57,12 @@ class UploadBase {
 	 * Create a form of UploadBase depending on wpSourceType and initializes it
 	 */
 	static function createFromRequest( &$request, $type = null ) {		
-		$type = $type ? $type : $request->getVal( 'wpSourceType' );		
-	
+		$type = $type ? $type : $request->getVal( 'wpSourceType' );				
+		
 		if( !$type ) 
-			return null;
-			
-		$type = ucfirst($type);	
+			return null;			
+		
+		$type = ucfirst($type);
 		$className = 'UploadFrom'.$type;
 		if( !in_array( $type, self::$uploadHandlers ) )
 			return null;
@@ -70,8 +70,9 @@ class UploadBase {
 		if( !call_user_func( array( $className, 'isEnabled' ) ) )
 			return null;		
 		
+
 		if( !call_user_func( array( $className, 'isValidRequest' ), $request ) )
-			return null;
+			return null;		
 		
 		$handler = new $className;				
 		
@@ -279,7 +280,7 @@ class UploadBase {
 
 		$exists = self::getExistsWarning( $this->mLocalFile );
 		if( $exists !== false )
-			$warning['exists'] = $exists;
+			$warning['exists'] = $exists;			
 		
 		// Check whether this may be a thumbnail
 		if( $exists !== false && $exists[0] != 'thumb' 
@@ -455,16 +456,17 @@ class UploadBase {
 			# Couldn't save the file.
 			return false;
 		}
-		$mTempPath = $status->value;
-
-		$key = $this->getSessionKey ();
+		$mTempPath = $status->value;		
+		session_start();//start up the session (might have been previously closed to prevent php session locking)  
+		$key = $this->getSessionKey ();		
 		$_SESSION['wsUploadData'][$key] = array(
 			'mTempPath'       => $mTempPath,
 			'mFileSize'       => $this->mFileSize,
 			'mSrcName'        => $this->mSrcName,
 			'mFileProps'      => $this->mFileProps,
 			'version'         => self::SESSION_VERSION,
-	   	);
+	   	);	   	   	
+	   	session_write_close();
 		return $key;
 	}
 	//pull session Key gen from stash in cases where we want to start an upload without much information 

@@ -1,6 +1,6 @@
 <?php
 class UploadFromStash extends UploadBase {
-	static function isValidSessionKey( $key, $sessionData ) {		
+	static function isValidSessionKey( $key, $sessionData ) {
 		return !empty( $key ) && 
 			is_array( $sessionData ) && 
 			isset( $sessionData[$key] ) && 
@@ -9,7 +9,7 @@ class UploadFromStash extends UploadBase {
 		;
 	}
 	static function isValidRequest(& $request ) {		
-		$sessionData = $request->getSessionData('wsUploadData');
+		$sessionData = $request->getSessionData('wsUploadData');		
 		return self::isValidSessionKey( 
 			$request->getInt( 'wpSessionKey' ),
 			$sessionData
@@ -30,14 +30,13 @@ class UploadFromStash extends UploadBase {
 
 			$this->mFileProps        = $sessionData['mFileProps'];
 	}
-	function initializeFromRequest( &$request ) {
+	function initializeFromRequest( &$request ) {		
 		$sessionKey = $request->getInt( 'wpSessionKey' );
 		$sessionData = $request->getSessionData('wsUploadData');
 		
 		$desiredDestName = $request->getText( 'wpDestFile' );
 		if( !$desiredDestName )
-			$desiredDestName = $request->getText( 'wpUploadFile' );
-			
+			$desiredDestName = $request->getText( 'wpUploadFile' );		
 		return $this->initialize( $desiredDestName, $sessionData[$sessionKey] );
 	}
 	
