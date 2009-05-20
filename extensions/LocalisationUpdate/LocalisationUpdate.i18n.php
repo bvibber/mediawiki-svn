@@ -1,9 +1,18 @@
 <?php
+/**
+ * Internationalisation file for LocalisationUpdate extension.
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
+/** English
+ * @author Tom Maaswinkel
+ */
 $messages['en'] = array(
-	'localisationupdate-desc' => 'Extension to keep the localized messages as up to date as possible',
+	'localisationupdate-desc' => 'Keeps the localised messages as up to date as possible',
 
 $messages['yue'] = array(
 	'localisationupdate-desc' => '一個擴展將本地化嘅信息保持最新',
