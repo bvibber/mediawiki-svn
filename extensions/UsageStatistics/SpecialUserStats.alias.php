@@ -10,7 +10,7 @@ $aliases = array();
  * @author Paul Grinberg
  */
 $aliases['en'] = array(
-	'SpecialUserStats'          => array( 'UserStats', 'SpecialUserStats' ),
+	'SpecialUserStats' => array( 'UserStats', 'SpecialUserStats' ),
 );
 
 /** Arabic (العربية)

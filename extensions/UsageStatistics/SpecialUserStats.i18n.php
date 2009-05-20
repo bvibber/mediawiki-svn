@@ -31,6 +31,7 @@ $messages['en'] = array(
 	'usagestatisticscalselect'        => 'Select',
 	'usagestatistics-editindividual'  => 'Individual user $1 edits statistics',
 	'usagestatistics-editpages'       => 'Individual user $1 pages statistics',
+	'right-viewsystemstats'           => 'View [[Special:UserStats|wiki usage statistics]]',
 );
 
 /** Message documentation (Message documentation)
