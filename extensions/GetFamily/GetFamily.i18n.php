@@ -62,11 +62,23 @@ $messages['dsb'] = array(
 	'right-getfamily' => 'Swójźbnu dataju za pywikipediabot napóraś',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'getfamily-desc' => 'Genera un archivo de familia para pywikipediabot',
+	'getfamily' => 'Obtener familia pywikipediabot',
+	'getfamily-interwikierror' => 'Error: configuracion interwiki incorrecta, contactar a su administrador local',
+	'right-getfamily' => 'Crear un archivo de familia para pywikipediabot',
+);
+
 /** French (Français)
  * @author Crochet.david
  */
 $messages['fr'] = array(
 	'getfamily-desc' => 'Génère un fichier de famille pour pywikipediabot',
+	'getfamily' => 'Obtenir la famille pywikipediabot',
+	'getfamily-interwikierror' => 'Erreur : Configuration interwiki incorrect, contactez l’administrateur.',
 	'right-getfamily' => 'Créer un fichier de famille pour pywikipediabot',
 );
 

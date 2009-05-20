@@ -498,6 +498,7 @@ $4',
 	'todo-form-details' => 'Detalles:',
 	'todo-form-email' => 'Para recibir notificación por correo electrónico cuando el item está cerrado, escriba su dirección aquí:',
 	'todo-form-submit' => 'enviar pregunta',
+	'right-todo' => 'Tener lista de quehaceres',
 );
 
 /** Basque (Euskara)

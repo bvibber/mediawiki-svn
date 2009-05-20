@@ -7685,7 +7685,7 @@ Jafolös oni u votükolös oni ad gebön veitükumami at.',
 $messages['yi'] = array(
 	'configure-section-search' => 'זוכן',
 	'configure-section-copyright' => 'קאפירעכט',
-	'configure-view' => 'זעט',
+	'configure-view' => 'זען',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -295,6 +295,18 @@ $messages['nn'] = array(
 	'logentry-invalidtoken' => 'Ugyldig token',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'logentry-append' => 'Legg til',
+	'logentry-parserhook-desc' => 'Denne merkelapputvidelsen gir et skjema for å legge til merkelapper før eller etter på loggsider',
+	'logentry-specialpage-desc' => 'Denne merkelapputvidelsen tilbyr utførelse av å legge til merkelapper på loggsider',
+	'logentry' => 'Loggelement',
+	'logentry-invalidpage' => 'Ugyldig side',
+	'logentry-invalidtoken' => 'Ugyldig symbol',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

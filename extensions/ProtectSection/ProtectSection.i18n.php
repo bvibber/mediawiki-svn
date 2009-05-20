@@ -162,6 +162,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author Sherbrooke
  */
@@ -170,6 +171,7 @@ $messages['fr'] = array(
 	'protectsection_add_remove' => "Vous avez tenté d'ajouter ou d'effacer une section protégée.",
 	'protectsection_modify' => 'Vous avez tenté de modifier du texte protégé.',
 	'protectsection_forbidden' => 'Interdit',
+	'right-protectsection' => 'Protéger les sections de page',
 );
 
 /** Galician (Galego)
@@ -354,12 +356,14 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'protectsection_desc' => 'Lar godkjente brukere beskytte deler av en side ved å bruke taggen <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Du prøvde å legge til eller fjerne en beskyttet seksjon',
 	'protectsection_modify' => 'Du prøvde å endre beskyttet tekst',
 	'protectsection_forbidden' => 'Forbudt',
+	'right-protectsection' => 'Beskytt sideseksjoner',
 );
 
 /** Occitan (Occitan)

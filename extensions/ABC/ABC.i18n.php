@@ -308,6 +308,14 @@ $messages['li'] = array(
 	'abcdownload' => 'Downloade:',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'abcdesc' => 'Manampy balizy <tt>&lt;abc&gt;</tt> mba hifôrmaty ny mozika ABC',
+	'abcdownload' => 'Ampidino eto:',
+);
+
 /** Malayalam (മലയാളം)
  * @author Abhishek Jacob
  */

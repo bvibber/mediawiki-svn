@@ -1281,6 +1281,7 @@ $messages['lb'] = array(
 	'badimages-log-add' => "huet [[$1]] op d'Lëscht vun den onerwënschte Biller derbäigesat",
 	'badimages-log-remove' => 'huet [[$1]] vun der Lëscht vun den onerwënschte Biller erofgeholl',
 	'badimages-page' => '{{ns:help}}: Lëscht vun den onerwënschte Biller',
+	'right-badimages' => 'Lëscht vun de schlechte Biller aktualiséieren',
 );
 
 /** Lao (ລາວ)

@@ -1786,7 +1786,7 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'signdocument' => '文書の署名',
+	'signdocument' => '文書署名',
 	'sign-nodocselected' => '署名したい文書を選んでください。',
 	'sign-selectdoc' => '文書:',
 	'sign-docheader' => '<div class="noarticletext">以下の文書「[[$1]]」に署名するにはこのフォームを使います。文書全体を熟読し、その文書に支持を表明すると決めた場合、必須欄を埋めて署名してください。</div>',

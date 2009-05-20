@@ -198,6 +198,7 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'adminlinks' => 'Ligamines pro administratores',
 	'adminlinks-desc' => 'Adde un [[Special:AdminLinks|pagina special]] con ligamines utile pro administratores',
+	'adminlinks_documentation' => 'Documentation de $1',
 	'adminlinks_general' => 'General',
 	'adminlinks_editsidebar' => 'Modificar barra lateral',
 	'adminlinks_editcss' => 'Modificar file CSS',
@@ -206,7 +207,7 @@ $messages['ia'] = array(
 	'adminlinks_createuser' => 'Crear un usator',
 	'adminlinks_browsesearch' => 'Navigation e recerca',
 	'adminlinks_importexport' => 'Importation e exportation',
-	'right-adminlinks' => 'Vider le ligamine verso [[Special:AdminLinks]]',
+	'right-adminlinks' => 'Vider le ligamine verso [[Special:AdminLinks|Ligamines pro administratores]]',
 );
 
 /** Japanese (日本語)
@@ -303,6 +304,7 @@ $messages['no'] = array(
 	'adminlinks-desc' => 'Legger til en [[Special:AdminLinks|spesialside]] som inneholder nyttige lenker for administratorer',
 	'adminlinks_documentation' => 'dokumentasjon for $1',
 	'adminlinks_general' => 'Generelt',
+	'adminlinks_editsidebar' => 'Endre sidespalten',
 	'adminlinks_editcss' => 'Rediger CSS-filen',
 	'adminlinks_editmainpagename' => 'Endre navnet på hovedsiden',
 	'adminlinks_users' => 'Brukere',

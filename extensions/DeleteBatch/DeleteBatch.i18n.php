@@ -847,6 +847,7 @@ Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteår
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'deletebatch' => 'Slett mange sider',
@@ -854,13 +855,13 @@ $messages['no'] = array(
 	'deletebatch-help' => 'Slett en serie av sider. Du kan også utføre en enkel sletting, eller slette sider listet opp i en fil.
 Velg en bruker som skal vises i slettingsloggen.
 En opplastet fil må inneholde navnet på siden, og kan også ha en valgfri slettingsgrunn skilt fra tittelen med «|».',
-	'deletebatch-caption' => 'Sideliste',
+	'deletebatch-caption' => 'Sideliste:',
 	'deletebatch-title' => 'Slett serie',
-	'deletebatch-link-back' => 'Du kan gå tilbake til utvidelsen',
-	'deletebatch-as' => 'Kjør skriptet som',
+	'deletebatch-link-back' => 'Gå tilbake til spesialsiden',
+	'deletebatch-as' => 'Kjør skriptet som:',
 	'deletebatch-both-modes' => 'Velg én side eller en liste over sider.',
 	'deletebatch-or' => '<b>eller</b>',
-	'deletebatch-page' => 'Sider som skal slettes',
+	'deletebatch-page' => 'Sider som skal slettes:',
 	'deletebatch-reason' => 'Slettingsårsak',
 	'deletebatch-processing' => 'sletter sidene $1',
 	'deletebatch-from-file' => 'fra filliste',
@@ -873,6 +874,7 @@ En opplastet fil må inneholde navnet på siden, og kan også ha en valgfri slet
 	'deletebatch-select-script' => 'slett sideskript',
 	'deletebatch-select-yourself' => 'du',
 	'deletebatch-no-page' => 'Vennligst oppgi minst én side å slette eller velg en fil med en liste av sider.',
+	'right-deletebatch' => 'Masseslett sider',
 );
 
 /** Occitan (Occitan)

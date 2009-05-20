@@ -80,6 +80,7 @@ $messages['be-tarask'] = array(
 	'piwik-lastvisits' => 'Апошнія наведваньні',
 	'piwik-countries' => 'Краіны',
 	'piwik-browsers' => 'Браўзэры',
+	'right-viewpiwik' => 'прагляд [[Special:Piwik|статыстыкі Piwik]]',
 );
 
 /** Bulgarian (Български)

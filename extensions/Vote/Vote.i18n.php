@@ -37,6 +37,7 @@ riddler|Riddler",
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Lloffiwr
  * @author Purodha
  * @author Siebrand
  */
@@ -46,6 +47,7 @@ $messages['qqq'] = array(
 Shown in [[Special:Version]].',
 	'vote-submit' => '{{Identical|Vote}}',
 	'vote-results-count' => '{{Identical|Count}}',
+	'vote-login' => '$1 is the link to the log-in page.',
 	'right-vote' => '{{doc-right|vote}}',
 	'right-voteadmin' => '{{doc-right|voteadmin}}',
 );
@@ -172,7 +174,7 @@ $messages['be-tarask'] = array(
 	'vote-results-choice' => 'Выбар',
 	'vote-results-count' => 'Колькасьць',
 	'vote-results-none' => 'Няма галасоў адданых за гэты час.',
-	'vote-login' => 'Каб галасаваць Вам трэба [$1 увайсьці ў сыстэму].',
+	'vote-login' => 'Вам трэба [$1 увайсьці ў сыстэму], каб галасаваць.',
 	'vote-invalid-choice' => 'Вы павінны выбраць адзін з прапанаваных варыянтаў.',
 	'right-vote' => 'удзел ў галасаваньні',
 	'right-voteadmin' => 'прагляд вынікаў галасаваньняў',
@@ -262,7 +264,7 @@ riddler|Zagonetka',
 	'vote-results-choice' => 'Izbor',
 	'vote-results-count' => 'Brojanje',
 	'vote-results-none' => 'Do sada nisu dati glasovi.',
-	'vote-login' => 'Morate se [$1 prijavi se] za glasanje.',
+	'vote-login' => 'Morate se [$1 prijaviti] za glasanje.',
 	'vote-invalid-choice' => 'Morate odabrati jednu od ponuđenih opcija.',
 	'right-vote' => 'Glasanje',
 	'right-voteadmin' => 'Pregled rezultata glasanja',
@@ -457,6 +459,8 @@ adivinador|Adivinador',
 	'vote-results-none' => 'Ningún voto ha sido emitido en este momento.',
 	'vote-login' => 'Usted debe [$1 entrar] votar.',
 	'vote-invalid-choice' => 'Usted debe seleccionar una de las opciones disponibles.',
+	'right-vote' => 'Votar',
+	'right-voteadmin' => 'Ver resultados de votos',
 );
 
 /** Estonian (Eesti)
@@ -577,6 +581,7 @@ sphinx|Sphinx',
 	'vote-results-none' => 'Aucun vote n’a été placé pour le moment.',
 	'vote-login' => 'Vous devez [$1 vous connecter] pour voter.',
 	'vote-invalid-choice' => 'Vous devez choisir une des options disponibles.',
+	'right-vote' => 'Vote',
 	'right-voteadmin' => 'Voir les résultats du vote',
 );
 
@@ -608,7 +613,7 @@ riddler|Riddler',
 	'vote-results-choice' => 'Escolla',
 	'vote-results-count' => 'Reconto',
 	'vote-results-none' => 'Aínda non se rexistrou ningún voto.',
-	'vote-login' => 'Ten que [$1 rexistrarse] para votar.',
+	'vote-login' => 'Debe [$1 acceder ao sistema] para votar.',
 	'vote-invalid-choice' => 'Ten que escoller unha das opcións dispoñíbeis.',
 	'right-vote' => 'Votar',
 	'right-voteadmin' => 'Ver os resultados dunha votación',
@@ -634,7 +639,7 @@ riddler|Riddler',
 	'vote-results-choice' => 'Wahl',
 	'vote-results-count' => 'Aazahl',
 	'vote-results-none' => 'S sin no kei Stimme abgee wore.',
-	'vote-login' => 'Du muesch [$1 Di aamälde] zum abstimme z chenne.',
+	'vote-login' => 'Du muesch [$1 Di aamälde] zum abstimme.',
 	'vote-invalid-choice' => 'Du muesch eini vu dr meglige Optione wähle.',
 	'right-vote' => 'Abstimme',
 	'right-voteadmin' => 'Abstimmigsergebnis aaluege',
@@ -691,7 +696,7 @@ $messages['hsb'] = array(
 	'vote-results-choice' => 'Wólba',
 	'vote-results-count' => 'Ličić',
 	'vote-results-none' => 'Dotal njebu wothłosowane.',
-	'vote-login' => 'Dyrbiš [$1 přizjewić], zo by wothłosował.',
+	'vote-login' => 'Dyrbiš so [$1 přizjewić], zo by wothłosował.',
 	'vote-invalid-choice' => 'Dyrbiš jednu z k dispoziciji stejacych opcijow wubrać.',
 	'right-vote' => 'Wothłosować',
 	'right-voteadmin' => 'Wuslědki wothłosowanja pokazać',
@@ -930,7 +935,7 @@ riddler|Riddler',
 	'vote-results-choice' => 'Wiel',
 	'vote-results-count' => 'Zielen',
 	'vote-results-none' => 'Et goufe bis elo nach keng Stëmmen ofginn.',
-	'vote-login' => 'Dir musst [$1 aloggen] fir ofzestëmmen.',
+	'vote-login' => 'Dir musst [$1 Iech aloggen] fir ofzestëmmen.',
 	'vote-invalid-choice' => 'Dir musst eng vun de Méiglechkeeten auswielen.',
 	'right-vote' => 'Ofstëmmen',
 	'right-voteadmin' => "Kuckt d'Resultater vun de Walen",
@@ -1180,7 +1185,7 @@ Gioanin|Gioanin',
 	'vote-results-choice' => 'Sërnùa',
 	'vote-results-count' => 'Cont',
 	'vote-results-none' => "Al dì d'ancheuj a l'ha anco' pa votà gnun.",
-	'vote-login' => 'Për voté a venta [$1 ch\'a rintra ant ël sistema].',
+	'vote-login' => "Për voté a venta [$1 ch'a rintra ant ël sistema].",
 	'vote-invalid-choice' => "A venta ch'as selession-a un-a dj'opsion disponibij.",
 );
 
@@ -1707,3 +1712,4 @@ riddler|謎人',
 	'vote-login' => '您一定要[$1 登入]先可以投票。',
 	'vote-invalid-choice' => '您一定要在可以選擇的選項中選擇一個。',
 );
+

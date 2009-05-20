@@ -185,6 +185,14 @@ Maak 'n versie binne 'n pagina.
 In 't biezunjer henjig veur Wikinews",
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'catfeed-desc' => "Mampiasa piesy avy amin'ny topa ny fanovàna farany.
+Manome fapitahana ampidirina anaty pejy, ilaina be hoan'ny Wikivao",
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

@@ -934,6 +934,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'closewikis-desc' => 'Tillater stenging av wikier i wikisamlinger',
@@ -952,11 +953,18 @@ $messages['no'] = array(
 	'closewikis-page-err-nowiki' => 'Ugyldig wiki oppgitt',
 	'closewikis-page-err-closed' => 'Wikien er allerede stengt',
 	'closewikis-page-err-opened' => 'Wikien er ikke stengt',
+	'closewikis-list' => 'Liste over stengte wikier',
+	'closewikis-list-intro' => 'Denne listen inneholder wikier som har blitt stengt av forvaltere.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Stengt av',
+	'closewikis-list-header-timestamp' => 'Stengt den',
+	'closewikis-list-header-dispreason' => 'Vist årsak',
 	'closewikis-log' => 'Logg for stenging av wikier',
 	'closewikis-log-header' => 'Her er en logg over alle wikistenginger og -åpninger gjort av forvaltere',
 	'closewikis-log-close' => 'stengte $2',
 	'closewikis-log-reopen' => 'åpnet $2',
 	'right-editclosedwikis' => 'Redigere stengte wikier',
+	'right-closewikis' => 'Steng wikier',
 );
 
 /** Occitan (Occitan)
@@ -1437,5 +1445,14 @@ $messages['vo'] = array(
 	'closewikis-log-reopen' => 'edönumaifükon $2',
 	'right-editclosedwikis' => 'Votükön vükis pefärmüköl',
 	'right-closewikis' => 'Färmükön vükis',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'closewikis-page-close-wiki' => 'וויקי:',
+	'closewikis-page-reopen-wiki' => 'וויקי:',
+	'closewikis-list-header-wiki' => 'וויקי:',
 );
 

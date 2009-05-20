@@ -297,6 +297,18 @@ Dette lèt deg nytta brukarsida di som ein OpenID.',
 	'linkopenid-prefstext-v2url' => 'Tenar-URL for OpenID-versjon 2:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'linkopenid-desc' => 'Gjør det mulig for brukere å lenke kontoen sin til en ekstern OpenID',
+	'linkopenid-prefstext-pre' => 'Om du har en OpenID fra en ekstern leverandør kan du oppgi det her.
+Dette lar deg bruke din brukerside som en OpenID i tillegg.',
+	'linkopenid-prefstext-openid' => 'Din OpenID:',
+	'linkopenid-prefstext-v1url' => 'Tjener-nettadresse for OpenID-versjon 1.1:',
+	'linkopenid-prefstext-v2url' => 'Tjener-nettadresse for OpenID-versjon 2:',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

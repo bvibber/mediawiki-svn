@@ -282,6 +282,13 @@ $messages['li'] = array(
 	'charinsert-desc' => "Maak 't meugelik [[MediaWiki:Edittools|neet-standaard karakters]] in te veure venoet e deilvènster via JavaScript",
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'charinsert-desc' => "Mamela ny manao boaty JavaScript hoan'y [[MediaWiki:Edittools|fampidirana soratra tsy afaka soratana amin'izao]]",
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

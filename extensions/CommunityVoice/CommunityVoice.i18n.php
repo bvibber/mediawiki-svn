@@ -405,6 +405,10 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'communityvoice' => 'Felleskapets stemme',
+	'communityvoice-desc' => 'Redskap for deltagelse i felleskapet',
+	'communityvoice-ratings' => 'Vurderinger',
+	'communityvoice-ratings-scale-status-sending' => 'Sender…',
 	'communityvoice-ratings-scale-status-error' => 'Feil under sending!',
 	'communityvoice-ratings-scale-status-thanks' => 'Takk for at du stemte!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|én stemme|$2 stemmer}} avgitt)',

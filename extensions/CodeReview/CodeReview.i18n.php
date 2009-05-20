@@ -4419,12 +4419,15 @@ $4',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'code' => 'Kodegjennomgang',
+	'code-rev-title' => 'r$1 - Kodegjennomgang',
 	'code-comments' => 'Kommentarer',
-	'code-change-status' => "endret '''statusen''' for denne versjonen",
-	'code-change-tags' => "endret '''taggene''' for denne versjonen",
+	'code-references' => 'Oppfølgende versjoner',
+	'code-change-status' => "endret '''statusen''' for r$1",
+	'code-change-tags' => "endret '''taggene''' for r$1",
 	'code-change-removed' => 'fjernet:',
 	'code-change-added' => 'la til:',
 	'code-prop-changes' => 'Logg for status og tagging',
@@ -4467,6 +4470,7 @@ $messages['no'] = array(
 	'code-rev-modified-r' => 'erstattet',
 	'code-rev-modified-d' => 'slettet',
 	'code-rev-modified-m' => 'endret',
+	'code-rev-imagediff' => 'Bildeendringer',
 	'code-rev-status' => 'Status:',
 	'code-rev-status-set' => 'Endre status',
 	'code-rev-tags' => 'Tagger:',
@@ -4483,6 +4487,7 @@ $messages['no'] = array(
 	'code-status-reverted' => 'tilbakestilt',
 	'code-status-resolved' => 'løst',
 	'code-status-ok' => 'OK',
+	'code-status-verified' => 'verifisert',
 	'code-status-deferred' => 'utsatt',
 	'code-pathsearch-legend' => 'Søk revisjoner i denne repo etter sti',
 	'code-pathsearch-path' => 'Sti:',
@@ -4491,6 +4496,7 @@ $messages['no'] = array(
 	'code-batch-status' => 'Endre status:',
 	'code-batch-tags' => 'Endre merker:',
 	'codereview-batch-title' => 'Endre alle valgte versjoner',
+	'codereview-batch-submit' => 'Send',
 	'code-releasenotes' => 'Versjonsnotater',
 	'code-release-legend' => 'Lag versjonsnotater',
 	'code-release-startrev' => 'Start revisjon:',
@@ -4505,6 +4511,14 @@ Fullstendig URL: $2
 Kommentar:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Påfølgende endringer',
+	'codereview-email-body2' => 'Bruker «$1» gjorde oppfølgende endringer til r$2.
+
+Full nettadresse: $3
+
+Sammendrag:
+
+$4',
 	'repoadmin' => 'Databaseadministrasjon',
 	'repoadmin-new-legend' => 'Lag en ny database',
 	'repoadmin-new-label' => 'Databasenavn',
@@ -4516,6 +4530,7 @@ $4',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'Database [[Special:Code/$1|$1]] har blitt endret.',
 	'right-repoadmin' => 'Håndtere kodedatabaser',
+	'right-codereview-use' => 'Bruk av Special:Code',
 	'right-codereview-add-tag' => 'Legg til nye tagger til versjoner',
 	'right-codereview-remove-tag' => 'Fjern tagger fra versjon',
 	'right-codereview-post-comment' => 'Legge til kommentarer til revisjoner',

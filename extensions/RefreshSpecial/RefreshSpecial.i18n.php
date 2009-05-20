@@ -323,6 +323,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'refreshspecial' => 'Refrescar páginas especiales',
+	'refreshspecial-desc' => 'Permite [[Special:RefreshSpecial|refrescamiento de paginas especiales manualmente]] de paginas especiales',
 	'refreshspecial-title' => 'Refrescar páginas especiales',
 	'refreshspecial-button' => 'Refrescar seleccionados',
 	'refreshspecial-fail' => 'Por favor chequee al menos una página especial a refrescar.',
@@ -747,18 +748,22 @@ Når du har valt kva sider du ønskjer å oppdatera, klikk på 'Oppdater valte' 
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'refreshspecial' => 'Oppdater spesialsider',
 	'refreshspecial-desc' => 'Muliggjør [[Special:RefreshSpecial|manuell oppdatering]] av spesialsider',
 	'refreshspecial-title' => 'Oppdater spesialsider',
-	'refreshspecial-help' => 'Denne spesialsiden gjør at manuel kan oppdatere spesialsider. Når du har valgt hvilke sider du ønsker å oppdatere, klikk på Oppdater for å gjennomføre oppdateringen. Advarsel: Oppdatering kan ta en stund på større wikier.',
+	'refreshspecial-help' => "Denne spesialsiden tilbyr metoder for å manuelt oppdatere spesialsider.
+Når du har valgt alle sidene du vil oppdatere, klikk på «Oppdater valgte»-knappen for å gjennomføre oppdateringen på de valgte spesialsidene.
+'''Advarsel:''' Oppdateringen kan ta en stund på større wikier.",
 	'refreshspecial-button' => 'Oppdater valgte',
 	'refreshspecial-fail' => 'Merk minst én spesialside for oppdatering',
 	'refreshspecial-refreshing' => 'oppdaterer spesialsider',
+	'refreshspecial-skipped' => 'billig, hoppet over',
 	'refreshspecial-choice' => 'oppdaterer spesialsider',
 	'refreshspecial-js-disabled' => "(''Du kan ikke merke alle sider om JavaScript er slått av'')",
-	'refreshspecial-select-all-pages' => 'merk alle sider',
+	'refreshspecial-select-all-pages' => 'Merk alle sider',
 	'refreshspecial-link-back' => 'Tilbake til utvidelsen',
 	'refreshspecial-none-selected' => 'Du har ikke merket noen spesialsider. Tilbakestiller til standardvalg.',
 	'refreshspecial-db-error' => 'Mislyktes: databasefeil',
@@ -766,6 +771,9 @@ $messages['no'] = array(
 	'refreshspecial-slave-lagged' => 'Forsinkelse i slavetjeneren, venter …',
 	'refreshspecial-reconnected' => 'Tilkoblet på nytt.',
 	'refreshspecial-reconnecting' => 'Tilkobling mislyktes, prøver igjen om ti sekunder …',
+	'refreshspecial-page-result' => 'fikk {{PLURAL:$1|én rad|$1 rader}} i',
+	'refreshspecial-total-display' => 'Oppdaterte {{PLURAL:$1|én side|$1 sider}} med totalt {{PLURAL:$2|én rad|$2 rader}} på tiden $3 (total skriptkjøretid er $4)',
+	'right-refreshspecial' => 'Oppdater spesialsider',
 );
 
 /** Occitan (Occitan)

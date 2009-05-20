@@ -232,6 +232,13 @@ $messages['lb'] = array(
 	'didyoumean-desc' => 'Setzt Linken op Säite mat "ähnlechen" Titelen derbäi',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'didyoumean-desc' => 'Manampy rohy anaty pejy « mitovy » lohateny',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

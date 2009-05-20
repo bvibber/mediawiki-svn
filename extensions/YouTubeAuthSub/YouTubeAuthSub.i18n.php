@@ -1449,6 +1449,13 @@ $messages['li'] = array(
 	'youtubeauthsub_uploadbutton' => 'Upload',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'youtubeauthsub_summary' => 'Įkeliamas YouTube video',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
