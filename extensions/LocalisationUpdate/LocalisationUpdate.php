@@ -9,6 +9,7 @@ KNOWN ISSUES:
 
 //Info about me!
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'LocalisationUpdate',
 	'author'         => 'Tom Maaswinkel',
 	'version'        => '0.1',
