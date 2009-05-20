@@ -1,4 +1,2 @@
-- If no cURL is supported and url_fopen[1] is disabled the 
-  extension will not update
 - Only works with SVN revision 50605 or later of the
   MediaWiki core

@@ -1,8 +1,6 @@
 <?php
 /*
 KNOWN ISSUES:
-- If no cURL is supported anf url_fopen[1] is disabled the 
-  extension will not update
 - Only works with SVN revision 50605 or later of the
   Mediawiki core
 */
@@ -201,12 +199,9 @@ function compareFiles($basefile,$comparefile,$verbose,$forbiddenKeys = array(), 
 	$langcode = strtolower($m[1]);
 
 	//use cURL to get the SVN contents
-	if(is_callable("curl_init") && preg_match("/^http/",$basefile)) {
-		$ch = curl_init();
-		curl_setopt($ch,CURLOPT_HEADER,0);
-		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-		curl_setopt($ch,CURLOPT_URL,$basefile);
-		if(!$basefilecontents = curl_exec($ch)) {
+	if(preg_match("/^http/",$basefile)) {
+		$basefilecontents = Http::get($basefile);
+		if(empty($basefilecontents)) {
 			myLog("Can't get the contents of ".$basefile." (curl)");
 			return array();
 		}
@@ -244,12 +239,9 @@ function compareFiles($basefile,$comparefile,$verbose,$forbiddenKeys = array(), 
 	eval($basefilecontents);
 
 	//use cURL to get the contents
-	if(is_callable("curl_init") && preg_match("/^http/",$comparefile)) {
-		$ch = curl_init();
-		curl_setopt($ch,CURLOPT_HEADER,0);
-		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-		curl_setopt($ch,CURLOPT_URL,$comparefile);
-		if(!$comparefilecontents = curl_exec($ch)) {
+	if(preg_match("/^http/",$comparefile)) {
+		$comparefilecontents = Http::get($comparefile);
+		if(empty($comparefilecontents)) {
 			myLog("Can't get the contents of ".$comparefile." (curl)");
 			return array();
 		}
@@ -366,13 +358,9 @@ function compareExtensionFiles($extension,$basefile,$comparefile,$verbose, $alwa
 	$compare_messages = array();
 	$base_messages = array();
 
-	//use cURL to get the file contents
-	if(is_callable("curl_init") && preg_match("/^http/",$basefile)) {
-		$ch = curl_init();
-		curl_setopt($ch,CURLOPT_HEADER,0);
-		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-		curl_setopt($ch,CURLOPT_URL,$basefile);
-		if(!$basefilecontents = curl_exec($ch)) {
+	if(preg_match("/^http/",$basefile)) {
+		$basefilecontents = Http::get($basefile);
+		if(empty($basefilecontents)) {
 			myLog("Can't get the contents of ".$basefile." (curl)");
 			return 0;
 		}
@@ -411,12 +399,9 @@ function compareExtensionFiles($extension,$basefile,$comparefile,$verbose, $alwa
 	eval($basefilecontents);
 
 	//Use cURL when available
-	if(is_callable("curl_init") && preg_match("/^http/",$comparefile)) {
-		$ch = curl_init();
-		curl_setopt($ch,CURLOPT_HEADER,0);
-		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-		curl_setopt($ch,CURLOPT_URL,$comparefile);
-		if(!$comparefilecontents = curl_exec($ch)) {
+	if(preg_match("/^http/",$comparefile)) {
+		$comparefilecontents = Http::get($comparefile);
+		if(empty($comparefilecontents)) {
 			myLog("Can't get the contents of ".$comparefile." (curl)");
 			return 0;
 		}
