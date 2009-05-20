@@ -16,7 +16,6 @@ class SpecialUserOptionStats extends SpecialPage {
 	}
 
 	public $blacklist = array( 'nickname' );
-	
 
 	public function execute( $par ) {
 		global $wgRequest, $wgUser, $wgOut, $wgLang, $wgAutoloadClasses;
@@ -45,9 +44,6 @@ class SpecialUserOptionStats extends SpecialPage {
 			$wgOut->addWikiMsg( 'uos-choose', $wgLang->commaList( $opts ) );
 			return;
 		}
-
-		
-
 
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -118,7 +114,7 @@ class SpecialUserOptionStats extends SpecialPage {
 
 	public function getOptions() {
 		global $wgDefaultUserOptions;
-		
+
 		$opts = array();
 		foreach ( $wgDefaultUserOptions as $k => $v ) $opts[$k] = true;
 
