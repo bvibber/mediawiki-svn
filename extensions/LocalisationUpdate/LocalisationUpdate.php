@@ -28,7 +28,7 @@ function FindUpdatedMessage(&$message,$lckey,$langcode,$isFullKey) {
 
 	// If the key also contains the language code remove the language code from the key
 	if($isFullKey) {
-		$lckey = eregi_replace("/".$langcode,"",$lckey);
+		$lckey = preg_replace("/\/".$langcode."/","",$lckey);
 	}
 
 	//If message is in the cache, don't get an update!
@@ -166,8 +166,8 @@ function updateMediawikiMessages($verbose) {
 //Remove all unneeded content
 function cleanupFile($contents) {
 	//We don't need any PHP tags
-	$contents = eregi_replace("<\?php","",$contents);
-	$contents = eregi_replace("\?>","",$contents);
+	$contents = preg_replace("/<\\?php/","",$contents);
+	$contents = preg_replace("/\?>/","",$contents);
 	$results = array();
 	//And we only want the messages array
 	preg_match("/\\\$messages(.*\s)*?\);/",$contents,$results);
@@ -180,7 +180,7 @@ function cleanupFile($contents) {
 	}
 
 	//Windows vs Unix always stinks when comparing files
-	$contents = eregi_replace("\\\r","",$contents);
+	$contents = preg_replace("/\\\r/","",$contents);
 
 	//return the cleaned up file
 	return $contents;
@@ -219,7 +219,7 @@ function compareFiles($basefile,$comparefile,$verbose,$forbiddenKeys = array(), 
 	$basefilecontents = cleanupFile($basefilecontents);
 
 	//Change the variable name
-	$basefilecontents = eregi_replace("\\\$messages","\$base_messages",$basefilecontents);
+	$basefilecontents = preg_replace("/\\\$messages/","\$base_messages",$basefilecontents);
 
 	$basehash = md5($basefilecontents);
 	//If this is the remote file check if the file has changed since our last update
@@ -256,7 +256,7 @@ function compareFiles($basefile,$comparefile,$verbose,$forbiddenKeys = array(), 
 	$comparefilecontents = cleanupFile($comparefilecontents);
 
 	//rename the array
-	$comparefilecontents = eregi_replace("\\\$messages","\$compare_messages",$comparefilecontents);
+	$comparefilecontents = preg_replace("/\\\$messages/","\$compare_messages",$comparefilecontents);
 
 	$comparehash = md5($comparefilecontents);
 	//If this is the remote file check if the file has changed since our last update
@@ -339,8 +339,8 @@ function saveChanges($changedStrings,$forbiddenKeys,$base_messages,$langcode) {
 
 function cleanupExtensionFile($contents) {
 	//We don't want PHP tags
-	$contents = eregi_replace("<\?php","",$contents);
-	$contents = eregi_replace("\?>","",$contents);
+	$contents = preg_replace("/<\?php/","",$contents);
+	$contents = preg_replace("/\?>/","",$contents);
 	$results = array();
 	//And we only want message arrays
 	preg_match_all("/\\\$messages(.*\s)*?\);/",$contents,$results);
@@ -348,7 +348,7 @@ function cleanupExtensionFile($contents) {
 	$contents = implode("\n\n",$results[0]);
 
 	//And we hate the windows vs linux linebreaks
-	$contents = eregi_replace("\\\r","",$contents);
+	$contents = preg_replace("/\\\r/","",$contents);
 	return $contents;
 }
 
@@ -378,7 +378,7 @@ function compareExtensionFiles($extension,$basefile,$comparefile,$verbose, $alwa
 	$basefilecontents = cleanupExtensionFile($basefilecontents);
 
 	//Rename the arrays
-	$basefilecontents = eregi_replace("\\\$messages","\$base_messages",$basefilecontents);
+	$basefilecontents = preg_replace("/\\\$messages/","\$base_messages",$basefilecontents);
 
 	$basehash = md5($basefilecontents);
 	//If this is the remote file
@@ -416,7 +416,7 @@ function compareExtensionFiles($extension,$basefile,$comparefile,$verbose, $alwa
 	$comparefilecontents = cleanupExtensionFile($comparefilecontents);
 
 	//Rename the array
-	$comparefilecontents = eregi_replace("\\\$messages","\$compare_messages",$comparefilecontents);
+	$comparefilecontents = preg_replace("/\\\$messages/","\$compare_messages",$comparefilecontents);
 	$comparehash = md5($comparefilecontents);
 	if(preg_match("/^http/",$comparefile) && !$alwaysGetResult) {
 		//Check if the remote file has changed
