@@ -85,7 +85,7 @@ The reason given was ''$1''.
 A discussion is ongoing at [[$5]], which will conclude at ''$2''.",
 
 	// Review
-	//Generic
+	// Generic
 	'deletequeue-notqueued' => 'The page you have selected is currently not queued for deletion',
 	'deletequeue-review-action' => "Action to take:",
 	'deletequeue-review-delete' => "Delete the page.",
@@ -103,12 +103,12 @@ A discussion is ongoing at [[$5]], which will conclude at ''$2''.",
 	'deletequeue-review-actiondenied' => 'You specified an action which is disabled for this page',
 	"deletequeue-review-objections" => "'''Warning''': The deletion of this page has [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} objections].
 Please ensure that you have considered these objections before deleting this page.",
-	//Speedy deletion
+	// Speedy deletion
 	'deletequeue-reviewspeedy-tab' => 'Review speedy deletion',
 	'deletequeue-reviewspeedy-title' => 'Review speedy deletion nomination of "$1"',
 	'deletequeue-reviewspeedy-text' => "You can use this form to review the nomination of \"'''$1'''\" for speedy deletion.
 Please ensure that this page can be speedily deleted in accordance with policy.",
-	//Proposed deletion
+	// Proposed deletion
 	'deletequeue-reviewprod-tab' => 'Review proposed deletion',
 	'deletequeue-reviewprod-title' => 'Review proposed deletion of "$1"',
 	'deletequeue-reviewprod-text' => "You can use this form to review the uncontested proposal for the deletion of \"'''$1'''\".",
@@ -183,7 +183,7 @@ You can [{{fullurl:{{FULLPAGENAME}}|action=delvote}} register your own endorseme
 	'deletequeue-list-header-votes' => 'Endorsements and objections',
 	'deletequeue-list-header-expiry' => 'Expiry',
 	'deletequeue-list-header-discusspage' => 'Discussion page',
-	
+
 	// Case view.
 	'deletequeue-case-intro' => "This page lists information on a specific deletion case.",
 	'deletequeue-list-header-reason' => 'Reason for deletion',
@@ -1335,7 +1335,7 @@ $messages['fi'] = array(
 	'deletequeue-action' => 'Ehdota poistoa',
 	'deletequeue-action-title' => 'Ehdota sivun ”$1” poistoa',
 	'deletequeue-permissions-noedit' => 'Sivun poistamiseen vaikuttaminen edellyttää, että pystyt muokkaamaan sivua.',
-	'deletequeue-generic-reasons' => '* Yleiset poistosyyt 
+	'deletequeue-generic-reasons' => '* Yleiset poistosyyt
   ** Häiriköinti
   ** Mainostaminen
   ** Ylläpito
