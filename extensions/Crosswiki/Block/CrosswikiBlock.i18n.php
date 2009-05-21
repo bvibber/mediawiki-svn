@@ -52,6 +52,9 @@ Return to:
 * [[Special:CrosswikiBlock|Block form]]
 * [[$4]]",
 	'crosswikiunblock-local'          => 'Local unblocks are not supported via this interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',
+
+	# Rights
+	'right-crosswikiblock' => 'Block and unblock users on other wikis',
 );
 
 /** Message documentation (Message documentation)
@@ -1483,7 +1486,7 @@ Teruggaan naar:
 $messages['nn'] = array(
 	'crosswikiblock-desc' => 'Gjer det mogleg å blokkera brukarar på andre wikiar ved å nytta ei [[Special:Crosswikiblock|spesialsida]]',
 	'crosswikiblock' => 'Blokker brukar på annan wiki',
-	'crosswikiblock-header' => 'Denne sida gjer at ein kan blokkera brukarar på andre wikiar. 
+	'crosswikiblock-header' => 'Denne sida gjer at ein kan blokkera brukarar på andre wikiar.
 Sjekk at du har løyve til gjera det på denne wikien, og at du følgjer alle retningslinene.',
 	'crosswikiblock-target' => 'IP-adressa eller brukarnamn og målwiki:',
 	'crosswikiblock-expiry' => 'Opphøyrstid:',
