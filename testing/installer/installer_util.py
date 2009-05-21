@@ -152,6 +152,7 @@ def pretty_list(mylist,layout_width=None):
 
 def getTerminalSize():
     """determine the size of the terminal we are running in (where available)"""
+    """ obtained from http://stackoverflow.com/questions/566746/how-to-get-console-window-width-in-python"""
     def ioctl_GWINSZ(fd):
         try:
             import fcntl, termios, struct, os
