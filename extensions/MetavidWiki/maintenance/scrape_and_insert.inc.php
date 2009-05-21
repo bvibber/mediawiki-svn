@@ -607,7 +607,7 @@ class MV_BillScraper extends MV_BaseScraper {
 			return false;
 		}
 	}
-	function processBill( $govTrackBillId, $bill_key, $openCongBillId = false, $mapLightBillId = false, $forceUpdate = false ) {
+	function processBill( $govTrackBillId, $bill_key, $openCongBillId = false, $mapLightBillId = false, $forceUpdate = false , $doIntrestLookup=false) {
 		// get the bill title & its sponsor / co-sponsors:
 		$rawGovTrackPage = $this->doRequest( $this->govTrack_bill_url . $govTrackBillId );
 
@@ -683,6 +683,7 @@ class MV_BillScraper extends MV_BaseScraper {
 				}
 			}
 		}
+		
 		/*****************************
 		 * Process MapLight Info
 		 *****************************/
@@ -695,14 +696,16 @@ class MV_BillScraper extends MV_BaseScraper {
 					$bp .= 'Supporting Interest ' . $i . '=' . $interest['name'] . "|\n";
 					$i++;
 					//process interest
-					$this->procMapLightInterest(	$interest );
+					if($doIntrestLookup)
+						$this->procMapLightInterest(	$interest );
 				}
 				$i = 1;
 				foreach ( $bill_interest['oppose'] as $interest ) {
 					$bp .= 'Opposing Interest ' . $i . '=' . $interest['name'] . "|\n";
 					$i++;
 					//process interest
-					$this->procMapLightInterest(	$interest );
+					if($doIntrestLookup)
+						$this->procMapLightInterest(	$interest );
 				}
 			}
 		}
