@@ -138,6 +138,7 @@ $messages['es'] = array(
 	'protectsection_add_remove' => 'usted trató de agregar o remover una sección de protección',
 	'protectsection_modify' => 'usted trató de modificar un texto protegido',
 	'protectsection_forbidden' => 'Prohibido',
+	'right-protectsection' => 'Proteger secciones de página',
 );
 
 /** Basque (Euskara)
@@ -374,6 +375,7 @@ $messages['oc'] = array(
 	'protectsection_add_remove' => "Avètz ensajat d'ajustar o d'escafar una seccion protegida.",
 	'protectsection_modify' => 'Avètz ensajat de modificar de tèxte protegit.',
 	'protectsection_forbidden' => 'Interdich',
+	'right-protectsection' => 'Protegir las seccions de pagina',
 );
 
 /** Polish (Polski)

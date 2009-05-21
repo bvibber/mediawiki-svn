@@ -376,6 +376,7 @@ Ocurrió un error desconocido.',
 	'duplicator-dest-exists' => '[[$1]] ya existe. Por favor provea un título de destino el cual no exista.',
 	'duplicator-toomanyrevisions' => '[[$1]] tiene demasiadas ($2) revisiones y no puede ser copiada.
 El límite actual es $3.',
+	'right-duplicate' => 'Duplicar páginas',
 );
 
 /** Basque (Euskara)
@@ -463,7 +464,7 @@ $messages['fr'] = array(
 	'duplicator-dest-invalid' => 'Veuillez donner un nom valide pour la destination.',
 	'duplicator-dest-exists' => '[[$1]] existe déjà. Veuillez donner le nom d’une page qui n’existe pas encore.',
 	'duplicator-toomanyrevisions' => '[[$1]] a trop ($2) de révisions et ne peut pas être copié. La limite actuelle est de $3.',
-	'right-duplicate' => 'Pages en doublon',
+	'right-duplicate' => 'dupliquer des pages',
 );
 
 /** Western Frisian (Frysk)
@@ -691,6 +692,7 @@ Un error incognite occurreva.',
 	'duplicator-dest-exists' => '[[$1]] existe ja. Per favor entra un titulo de destination non ancora existente.',
 	'duplicator-toomanyrevisions' => '[[$1]] ha troppo de versiones (i.e. $2) e non pote esser copiate.
 Le limite actual es $3.',
+	'right-duplicate' => 'Duplicar paginas',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1065,6 +1067,7 @@ $messages['oc'] = array(
 	'duplicator-dest-invalid' => 'Donatz un nom valid per la destinacion.',
 	'duplicator-dest-exists' => '[[$1]] existís ja. Donatz lo nom d’un article qu’existís pas encara.',
 	'duplicator-toomanyrevisions' => '[[$1]] a tròp ($2) de revisions e pòt pas èsser copiat. La limita actuala es de $3.',
+	'right-duplicate' => 'duplicar de paginas',
 );
 
 /** Polish (Polski)

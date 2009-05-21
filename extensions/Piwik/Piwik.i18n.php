@@ -169,6 +169,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Castellano
+ * @author Crazymadlover
  * @author Isb1009
  */
 $messages['es'] = array(
@@ -177,6 +178,7 @@ $messages['es'] = array(
 	'piwik-lastvisits' => 'Últimas visitas',
 	'piwik-countries' => 'Países',
 	'piwik-browsers' => 'Navegadores',
+	'right-viewpiwik' => 'Ver [[Special:Piwik|estadísticas Piwik]]',
 );
 
 /** Basque (Euskara)
@@ -319,9 +321,10 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'piwik-desc' => 'Setzt Piwik-Script op MediaWiki Säiten derbäi fir den Tracking ze maachen a setzt [[Special:Piwik|e puer Statistiken]] derbäi',
-	'piwik-lastvisits' => 'Läscht Visiten',
+	'piwik-lastvisits' => 'Lescht Visiten',
 	'piwik-countries' => 'Länner',
 	'piwik-browsers' => 'Browser',
+	'right-viewpiwik' => '[[Special:Piwik|Piwik Statistike]] weisen',
 );
 
 /** Dutch (Nederlands)
@@ -364,6 +367,7 @@ $messages['oc'] = array(
 	'piwik-lastvisits' => 'Darrièras visitas',
 	'piwik-countries' => 'Païses',
 	'piwik-browsers' => 'Navigadors',
+	'right-viewpiwik' => 'Vejatz las [[Special:Piwik|estatisticas de Piwik]]',
 );
 
 /** Polish (Polski)

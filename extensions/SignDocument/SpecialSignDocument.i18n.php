@@ -2118,6 +2118,8 @@ $messages['lb'] = array(
 	'signdocument' => 'Dokument ënnerschreiwen',
 	'sign-nodocselected' => 'Wielt w.e.g dat Dokument aus dat Dir ënenrschreiwe wëllt.',
 	'sign-selectdoc' => 'Dokument:',
+	'sign-docheader' => '<div class="noarticletext">Benotzt w.e.g. dëse Formulair, fir d\'Dokument „[[$1]]“, dat hei ënnedrënner gewisen ass, z\'ënnerschreiwen.
+Liest dat ganzt Dokument duerch a wann Dir dozou Är ënnerstetzung gi wëllt da fëllt déi néideg Felder aus fir et z\'ënnerschreiwen.</div>',
 	'sign-error-nosuchdoc' => 'Dat Dokument, dat Dir ugefrot hutt ($1), gëtt et net.',
 	'sign-realname' => 'Numm:',
 	'sign-address' => 'Adress Strooss:',
@@ -2165,6 +2167,7 @@ $messages['lb'] = array(
 	'sign-viewfield-stricken' => 'Duerchgestrach',
 	'sign-viewfield-reviewedby' => 'Reviseur',
 	'sign-viewfield-reviewcomment' => 'Bemierkung',
+	'sign-detail-uniquequery' => 'Ähnlecht Eenheeten',
 	'sign-detail-strike' => 'Ënnerschreft duerchsträichen',
 	'sign-reviewsig' => 'Ënnerschrëft nokucken',
 	'sign-review-comment' => 'Bemierkung',

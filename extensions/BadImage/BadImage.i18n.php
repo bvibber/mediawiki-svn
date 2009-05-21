@@ -540,6 +540,7 @@ $messages['es'] = array(
 	'badimages-log-add' => '[[$1]] fue añadida satisfactoriamente a la lista de malas imágenes',
 	'badimages-log-remove' => '[[$1]] ha sido removida satisfactoriamente de la lista de malas imágenes',
 	'badimages-page' => '{{ns:help}}:Lista de malas imágenes',
+	'right-badimages' => 'Actualizar la lista de malas imágenes',
 );
 
 /** Basque (Euskara)
@@ -650,7 +651,7 @@ $messages['fr'] = array(
 	'badimages-log-add' => 'a ajouté [[$1]] à la liste des images indésirables',
 	'badimages-log-remove' => 'a retiré [[$1]] de la liste des images indésirables',
 	'badimages-page' => '{{ns:help}}:Liste des images indésirables',
-	'right-badimages' => 'Mise à jour de la liste des mauvaises images',
+	'right-badimages' => 'Modifier la liste des mauvaises images',
 );
 
 /** Cajun French (Français cadien)
@@ -992,6 +993,7 @@ $messages['ia'] = array(
 	'badimages-log-add' => 'addeva [[$1]] al lista de imagines problematic',
 	'badimages-log-remove' => 'removeva [[$1]] del lista de imagines problematic',
 	'badimages-page' => '{{ns:help}}:Lista de imagines problematic',
+	'right-badimages' => 'Actualisar le lista de imagines problematic',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1615,6 +1617,7 @@ $messages['oc'] = array(
 	'badimages-log-add' => 'a apondut [[$1]] a la tièra dels imatges indesirables',
 	'badimages-log-remove' => 'a levat [[$1]] de la lista dels imatges indesirables',
 	'badimages-page' => '{{ns:help}}:Lista dels imatges indesirables',
+	'right-badimages' => 'Modificar la lista dels imatges marrits',
 );
 
 /** Ossetic (Иронау)

@@ -295,6 +295,7 @@ $messages['es'] = array(
 	'chemFunctions_ECNumber' => 'ECNumber',
 	'chemFunctions_Formula' => 'Fórmula',
 	'chemFunctions_Name' => 'Nombre IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: error de entrada!',
 );
 
 /** Estonian (Eesti)

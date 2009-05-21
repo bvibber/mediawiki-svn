@@ -31,15 +31,22 @@ $messages['qqq'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'useroptionstats' => 'Statistike korisničkih opcija',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Posebna stranica]] za izvještaje o korištenju MediaWiki korisničkih opcija',
 	'uos-warn' => 'PHPlot nije instaliran!',
+	'uos-choose' => 'Izaberite jednu od slijedećih korisničkih opcija: $1',
+	'uos-unknown' => '*Pretpostavljeno',
+	'uos-other' => '*Ostalo',
+	'uos-title' => 'Raspored vrijednosti korisničke opcije $1',
 );
 
 /** German (Deutsch)
  * @author Purodha
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'useroptionstats' => 'Statistiken zu Benutzereinstellungen',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|Sonderseite]], um über die Verteilung der Benutzereinstellungen MediaWikis zu berichten',
+	'useroptionstats-desc' => 'Ergänzt eine [[Special:UserOptionStats|Spezialseite]], um über die Verteilung der Benutzereinstellungen des MediaWiki zu berichten',
 	'uos-warn' => 'PHPlot ist nicht installiert!',
 	'uos-choose' => 'Wähle eine der folgenden Einstellungen: $1',
 	'uos-unknown' => '*Standardeinstellung',
@@ -67,15 +74,31 @@ $messages['dsb'] = array(
 	'uos-title' => 'Distribucija gódnotow wužywarskeje opcije $1',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'useroptionstats' => 'Estadísticas de opción de usuario',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Página especial]] para reportes en uso de opción de usuario de Mediawiki',
+	'uos-warn' => 'PHPlot no está instalado',
+	'uos-choose' => 'Escoger una de las siguientes opciones de usuario: $1',
+	'uos-unknown' => '*Por defecto',
+	'uos-other' => '*Otro',
+	'uos-title' => 'Distribución de valores de opción de usuario $1',
+);
+
 /** French (Français)
  * @author Crochet.david
+ * @author IAlex
  */
 $messages['fr'] = array(
 	'useroptionstats' => 'Statistiques des options de l’utilisateur',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Page spéciale]] pour afficher les utilisations des options utilisateur sur MediaWiki',
 	'uos-warn' => 'PHPlot n’est pas installé !',
 	'uos-choose' => 'Choisissez l’une des options utilisateur suivantes : $1',
 	'uos-unknown' => '* Par défaut',
 	'uos-other' => '* Autres',
+	'uos-title' => "Distribution des valeurs de l'option utilisateur $1",
 );
 
 /** Galician (Galego)
@@ -117,6 +140,19 @@ $messages['hsb'] = array(
 	'uos-title' => 'Distribucija hódnotow wužiwarskeje opcije $1',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'useroptionstats' => 'Statisticas de optiones de usator',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Pagina special]] pro reportar le uso de optiones de usator in Mediawiki',
+	'uos-warn' => 'PHPlot non es installate!',
+	'uos-choose' => 'Selige un del sequente optiones de usator: $1',
+	'uos-unknown' => '*Predefinition',
+	'uos-other' => '*Altere',
+	'uos-title' => 'Distribution de valores del option de usator $1',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -141,5 +177,57 @@ $messages['ksh'] = array(
 	'uos-unknown' => '*Shtandadt',
 	'uos-other' => '*Ander',
 	'uos-title' => 'De Verdeijlung vun de Entshellunge vun de Metmaacher ier Ußwahl „$1“',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'useroptionstats' => 'Statistike vun de Benotzerastellungen',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Spezialsäit]], fir de Gebrauch vun de Benotzeroptiounen op MediaWiki unzeweisen',
+	'uos-warn' => 'PHPlot ass net installéiert!',
+	'uos-choose' => 'Wielt eng vun dëse Benotzerastellungen: $1',
+	'uos-unknown' => '*Standardastellung',
+	'uos-other' => '*Anerer',
+	'uos-title' => 'Verdeelung vun de Werter vun der Benotzerastellung $1',
+);
+
+/** Dutch (Nederlands)
+ * @author McDutchie
+ */
+$messages['nl'] = array(
+	'useroptionstats' => 'Statistieken over gebruikersinstellingen',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Speciale pagina]] voor rapportage over het gebruik van gebruikersinstellingen in Mediawiki',
+	'uos-warn' => 'PHPlot is niet geïnstalleerd!',
+	'uos-choose' => 'Kies een van de volgende gebruikersinstellingen: $1',
+	'uos-unknown' => '*Standaardinstelling',
+	'uos-other' => '*Andere',
+	'uos-title' => 'Verdeling van de waarden van de gebruikersinstelling $1',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'useroptionstats' => 'Estatisticas de las opcions de l’utilizaire',
+	'useroptionstats-desc' => "[[Special:UserOptionStats|Pagina especiala]] per afichar las utilizacions de las opcions d'utilizaire sus MediaWiki",
+	'uos-warn' => 'PHPlot es pas installat !',
+	'uos-choose' => "Causissètz una de las opcions d'utilizaire seguentas : $1",
+	'uos-unknown' => '* Per defaut',
+	'uos-other' => '* Autras',
+	'uos-title' => "Distribucion de las valors de l'opcion d'utilizaire $1",
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'useroptionstats' => 'Štatistiky volieb používateľov',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Špeciálna stránka]] na tvorbu správ používania volieb používateľov MediaWiki',
+	'uos-warn' => 'PHPlot nie je nainštalované!',
+	'uos-choose' => 'Vyberte jednu z nasledovných volieb používateľa: $1',
+	'uos-unknown' => '*Predvolené',
+	'uos-other' => '*Iné',
+	'uos-title' => 'Rozdelenie hodnôt používateľskej voľby $1',
 );
 

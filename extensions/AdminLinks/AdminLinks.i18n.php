@@ -84,8 +84,18 @@ $messages['ca'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'adminlinks' => 'Links für Administratoren',
 	'adminlinks-desc' => 'Ergänzt eine [[Special:AdminLinks|Spezialseite]] mit hilfreichen Links für Administratoren',
+	'adminlinks_documentation' => 'Dokumentation von „$1“',
 	'adminlinks_general' => 'Allgemein',
+	'adminlinks_editsidebar' => 'Sidebar bearbeiten',
+	'adminlinks_editcss' => 'CSS-Dateien bearbeiten',
+	'adminlinks_editmainpagename' => 'Name der Hauptseite bearbeiten',
+	'adminlinks_users' => 'Benutzer',
+	'adminlinks_createuser' => 'Benutzer erstellen',
+	'adminlinks_browsesearch' => 'Durchsehen und Suchen',
+	'adminlinks_importexport' => 'Importieren und Exportieren',
+	'right-adminlinks' => 'Link nach [[Special:AdminLinks|Links für Administratoren]] sehen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -127,6 +137,7 @@ $messages['es'] = array(
 $messages['fr'] = array(
 	'adminlinks' => "Liens d'administration",
 	'adminlinks-desc' => 'Ajoute une [[Special:AdminLinks|page spéciale]] qui contient des liens utiles pour les administrateurs',
+	'adminlinks_documentation' => 'documentation de $1',
 	'adminlinks_general' => 'Général',
 	'adminlinks_editsidebar' => 'Modifier la barre latérale',
 	'adminlinks_editcss' => 'Modifier le fichier CSS',
@@ -312,6 +323,24 @@ $messages['no'] = array(
 	'adminlinks_browsesearch' => 'Lesing og søking',
 	'adminlinks_importexport' => 'Importering og eksportering',
 	'right-adminlinks' => 'Se lenken til [[Special:AdminLinks|admin-lenker]]',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'adminlinks' => "Ligams d'administracion",
+	'adminlinks-desc' => 'Apond una [[Special:AdminLinks|pagina especiala]] que conten de ligams utils pels administrators',
+	'adminlinks_documentation' => 'documentacion de $1',
+	'adminlinks_general' => 'General',
+	'adminlinks_editsidebar' => 'Modificar la barra laterala',
+	'adminlinks_editcss' => 'Modificar lo fichièr CSS',
+	'adminlinks_editmainpagename' => "Modificar lo nom de la pagina d'acuèlh",
+	'adminlinks_users' => 'Utilizaires',
+	'adminlinks_createuser' => 'Crear un utilizaire',
+	'adminlinks_browsesearch' => 'Navigacion e recèrca',
+	'adminlinks_importexport' => 'Importar e exportar',
+	'right-adminlinks' => "Vejatz lo ligam cap als [[Special:AdminLinks|ligams d'administracion]]",
 );
 
 /** Portuguese (Português)

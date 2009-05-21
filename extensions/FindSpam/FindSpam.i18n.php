@@ -140,9 +140,12 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
+	'findspam' => 'Troba correu brossa',
+	'findspam-desc' => 'Afegeix una [[Special:FindSpam|pàgina especeial]] que permet afegir el correu brossa afegit recentment',
 	'findspam-ip' => 'Adreça IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => "No s'han trobat contribucions",
+	'right-findspam' => 'Cerca el correu brossa recent',
 );
 
 /** Czech (Česky)

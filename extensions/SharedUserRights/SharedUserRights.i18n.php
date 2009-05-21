@@ -117,6 +117,7 @@ $messages['de'] = array(
 	'gblrights-logpage' => 'Globales Rechte-Logbuch',
 	'gblrights-pagetext' => 'Dieses Logbuch enthält alle Änderungen, die an der globalen Rechtetabelle der Wikifamilie vorgenommen wurden.',
 	'gblrights-rights-entry' => 'änderte die globale Gruppenzugehörigkeit für $1 von $2 auf $3',
+	'right-userrights-shared' => 'Gemeinsame Benutzerrechte verwalten',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -179,6 +180,7 @@ $messages['gl'] = array(
 	'gblrights-logpage' => 'Rexistro de dereitos globais',
 	'gblrights-pagetext' => 'Este é un rexistro de todos os cambios feitos na táboa de dereitos globais da familia wiki',
 	'gblrights-rights-entry' => 'cambiou o grupo global ao que pertence "$1" de $2 a $3',
+	'right-userrights-shared' => 'Xestionar os dereitos de usuario compartidos',
 );
 
 /** Swiss German (Alemannisch)
@@ -285,6 +287,7 @@ $messages['nl'] = array(
 	'gblrights-logpage' => 'Globaal rechtenlogboek',
 	'gblrights-pagetext' => 'Dit is een logboek met alle wijzigingen aan de tabel voor globale rechten van de wikifamilie',
 	'gblrights-rights-entry' => 'heeft globaal groepslidmaatschap voor $1 gewijzigd van $2 naar $3',
+	'right-userrights-shared' => 'Gedeelde gebruikersrechten beheren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

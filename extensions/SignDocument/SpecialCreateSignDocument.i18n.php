@@ -416,6 +416,13 @@ Por testi ĝin, bonvolu eniri [{{SERVER}}{{localurl: Special:SignDocument|doc=$2
  */
 $messages['es'] = array(
 	'createsigndocument' => 'Habilitar firma de documentos',
+	'createsigndoc-head' => "Usar este formulario para crear una página 'Firmar documento' para la página proveída, tal que los usuarios podrán [[Special:SignDocument|firmarla]].
+Por favor especifica el nombre de la página en el cual deseas habilitar el firmado digital, miembros de cuales grupos deberían estar permitidos de firmala, que campos desearías hacer visibles a los usuarios y cuales deberían ser opcionales, una mínima edad a ser requerida a los usuarios para firmar el documento (sin mínimo si fue omitida);
+y un breve texto introductorio que describa el documento y que provea instrucciones a los usuarios.
+<b>No hay actualmente manera de borrar o modificar la página de firma después de que son creados </b> sin acceso directo a la base de datos. 
+Adicionalmente, el texto de la página mostrada en la página de firma será el texto ''actual'' de la página, a pesar de los cambios hechos a esta después de hoy.
+Por favor ser absolutamente positivo que el documento es a un punto de estabilidad para firmado.
+Por favor también asegúrate que especificas todos los campos exactamente como debería ser, ''antes de enviar este formulario''.",
 	'createsigndoc-pagename' => 'Página:',
 	'createsigndoc-allowedgroup' => 'Grupo permitido:',
 	'createsigndoc-email' => 'Dirección de correo electrónico:',

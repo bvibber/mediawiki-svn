@@ -65,6 +65,7 @@ Cumulative statistics means that for each interval the number of edits in that i
 {{Identical|Cumulative}}',
 	'usagestatistics-editindividual' => "Text in usage statistics graph. Parameter $1 can be either 'cumulative' ({{msg|Usagestatisticscumulative-text}}) or 'incremental' ({{msg|Usagestatisticsincremental-text}})",
 	'usagestatistics-editpages' => "Text in usage statistics graph. Parameter $1 can be either 'cumulative' ({{msg|Usagestatisticscumulative-text}}) or 'incremental' ({{msg|Usagestatisticsincremental-text}})",
+	'right-viewsystemstats' => '{{doc-right|viewsystemstats}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -329,6 +330,7 @@ $messages['bs'] = array(
 	'usagestatisticscalselect' => 'odaberi',
 	'usagestatistics-editindividual' => '$1 statistike uređivanja pojedinačnog korisnika',
 	'usagestatistics-editpages' => '$1 statistike stranica pojedinog korisnika',
+	'right-viewsystemstats' => 'Pregledavanje [[Special:UserStats|statistika korištenja wikija]]',
 );
 
 /** Catalan (Català)
@@ -404,6 +406,7 @@ $messages['da'] = array(
  * @author Melancholie
  * @author Purodha
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'specialuserstats' => 'Nutzungs-Statistik',
@@ -429,6 +432,7 @@ $messages['de'] = array(
 	'usagestatisticscalselect' => 'Wähle',
 	'usagestatistics-editindividual' => 'Individuelle Bearbeitungsstatistiken für Benutzer $1',
 	'usagestatistics-editpages' => 'Individuelle Seitenstatistiken für Benutzer $1',
+	'right-viewsystemstats' => '[[Special:UserStats|Benutzer-Nutzungsstatistiken]] sehen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -458,6 +462,7 @@ $messages['dsb'] = array(
 	'usagestatisticscalselect' => 'Wubraś',
 	'usagestatistics-editindividual' => 'Statistika změnow jadnotliwego wužywarja $1',
 	'usagestatistics-editpages' => 'Statistika bokow jadnotliwego wužywarja $1',
+	'right-viewsystemstats' => '[[Special:UserStats|Wikijowu wužywańsku statistiku]] se woglědaś',
 );
 
 /** Greek (Ελληνικά)
@@ -532,6 +537,7 @@ $messages['es'] = array(
 	'usagestatisticscalselect' => 'Seleccionar',
 	'usagestatistics-editindividual' => 'Estadísticas de ediciones de usuario individual $1',
 	'usagestatistics-editpages' => 'Estadísticas de páginas de usuario individual $1',
+	'right-viewsystemstats' => 'Ver [[Special:UserStats|estadísticas de uso del wiki]]',
 );
 
 /** Estonian (Eesti)
@@ -614,6 +620,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author IAlex
  * @author PieRRoMaN
  * @author Sherbrooke
  */
@@ -641,6 +648,7 @@ $messages['fr'] = array(
 	'usagestatisticscalselect' => 'Sélectionner',
 	'usagestatistics-editindividual' => 'Statistiques $1 des modifications par utilisateur',
 	'usagestatistics-editpages' => 'Statistiques $1 des pages par utilisateur',
+	'right-viewsystemstats' => "Voir les [[Special:UserStats|statistiques d'utilisation du wiki]]",
 );
 
 /** Irish (Gaeilge)
@@ -659,19 +667,19 @@ $messages['ga'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'specialuserstats' => 'Estatísticas do Uso',
-	'usagestatistics' => 'Estatísticas do Uso',
+	'specialuserstats' => 'Estatísticas de uso',
+	'usagestatistics' => 'Estatísticas de uso',
 	'usagestatistics-desc' => 'Amosar as estatíticas de uso do usuario individual e mais as do wiki en xeral',
-	'usagestatisticsfor' => '<h2>Estatísticas de uso para [[User:$1|$1]]</h2>',
-	'usagestatisticsforallusers' => '<h2>Estatísticas de uso para todos os usuarios</h2>',
+	'usagestatisticsfor' => '<h2>Estatísticas de uso de "[[User:$1|$1]]"</h2>',
+	'usagestatisticsforallusers' => '<h2>Estatísticas de uso de todos os usuarios</h2>',
 	'usagestatisticsinterval' => 'Intervalo',
 	'usagestatisticstype' => 'Clase',
 	'usagestatisticsstart' => 'Data de comezo',
 	'usagestatisticsend' => 'Data de fin',
-	'usagestatisticssubmit' => 'Xerar Estatísticas',
+	'usagestatisticssubmit' => 'Xerar as estatísticas',
 	'usagestatisticsnostart' => 'Por favor, especifique unha data de comezo',
 	'usagestatisticsnoend' => 'Por favor, especifique unha data de fin',
-	'usagestatisticsbadstartend' => '<b>Malo <i>Comezo</i> e/ou <i>Fin</i> da data!</b>',
+	'usagestatisticsbadstartend' => '<b>Data de <i>comezo</i> e/ou <i>fin</i> errónea!</b>',
 	'usagestatisticsintervalday' => 'Día',
 	'usagestatisticsintervalweek' => 'Semana',
 	'usagestatisticsintervalmonth' => 'Mes',
@@ -682,6 +690,7 @@ $messages['gl'] = array(
 	'usagestatisticscalselect' => 'Seleccionar',
 	'usagestatistics-editindividual' => 'Estatísticas das edicións $1 do usuario',
 	'usagestatistics-editpages' => 'Páxinas das estatísticas $1 do usuario',
+	'right-viewsystemstats' => 'Ver as [[Special:UserStats|estatísticas de uso do wiki]]',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -719,6 +728,7 @@ $messages['gsw'] = array(
 	'usagestatisticscalselect' => 'Wehl',
 	'usagestatistics-editindividual' => 'Individuälli Bearbeitigsstatischtike fir Benutzer $1',
 	'usagestatistics-editpages' => 'Individuälli Sytestatischtike fir Benutzer $1',
+	'right-viewsystemstats' => '[[Special:UserStats|Wiki-Nutzigs-Statischtik]] aaluege',
 );
 
 /** Gujarati (ગુજરાતી)
@@ -846,6 +856,7 @@ $messages['hsb'] = array(
 	'usagestatisticscalselect' => 'Wubrać',
 	'usagestatistics-editindividual' => 'Indiwiduelna statistika změnow wužiwarja $1',
 	'usagestatistics-editpages' => 'Indiwiduelna statistika stronow wužiwarja $1',
+	'right-viewsystemstats' => '[[Special:UserStats|Wikijowu wužiwansku statistiku]] sej wobhladać',
 );
 
 /** Interlingua (Interlingua)
@@ -950,6 +961,7 @@ $messages['ja'] = array(
 	'usagestatisticscalselect' => '選択',
 	'usagestatistics-editindividual' => '利用者の$1編集統計',
 	'usagestatistics-editpages' => '利用者の$1ページ統計',
+	'right-viewsystemstats' => '[[Special:UserStats|ウィキの利用統計]]を見る',
 );
 
 /** Javanese (Basa Jawa)
@@ -1040,6 +1052,7 @@ $messages['ksh'] = array(
 	'usagestatisticscalselect' => 'Ußsöke',
 	'usagestatistics-editindividual' => '$1 Änderungs-Statistike fun enem Metmaacher',
 	'usagestatistics-editpages' => '$1 Sigge-Statistike fun enem Metmaacher',
+	'right-viewsystemstats' => 'Dem [[Special:UserStats|Wiki sing Jebruchs_Shtatistike]] aanloore',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1220,6 +1233,7 @@ $messages['nl'] = array(
 	'usagestatisticscalselect' => 'Selecteren',
 	'usagestatistics-editindividual' => '$1 bewerkingsstatistieken voor enkele gebruiker',
 	'usagestatistics-editpages' => '$1 paginastatistieken voor enkele gebruiker',
+	'right-viewsystemstats' => '[[Special:UserStats|Wikigebruiksstatistieken]] bekijken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1309,6 +1323,7 @@ $messages['oc'] = array(
 	'usagestatisticscalselect' => 'Seleccionar',
 	'usagestatistics-editindividual' => 'Edicions estatisticas $1 per utilizaire',
 	'usagestatistics-editpages' => 'Estatisticas $1 de las paginas per utilizaire individual',
+	'right-viewsystemstats' => "Vejatz las [[Special:UserStats|estatisticas d'utilizacion del wiki]]",
 );
 
 /** Ossetic (Иронау)
@@ -1532,6 +1547,7 @@ $messages['sk'] = array(
 	'usagestatisticscalselect' => 'Vybrať',
 	'usagestatistics-editindividual' => 'Štatistika úprav jednotlivého používateľa $1',
 	'usagestatistics-editpages' => 'Štatistika stránok jednotlivého používateľa $1',
+	'right-viewsystemstats' => 'Zobraziť [[Special:UserStats|štatistiku použitia wiki]]',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

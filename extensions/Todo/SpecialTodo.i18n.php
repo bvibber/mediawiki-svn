@@ -499,6 +499,7 @@ $4',
 	'todo-form-email' => 'Para recibir notificación por correo electrónico cuando el item está cerrado, escriba su dirección aquí:',
 	'todo-form-submit' => 'enviar pregunta',
 	'right-todo' => 'Tener lista de quehaceres',
+	'right-todosubmit' => 'Restringir derecho de lista de quehaceres de usuario',
 );
 
 /** Basque (Euskara)
@@ -518,6 +519,7 @@ $messages['eu'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author IAlex
  * @author McDutchie
  * @author PieRRoMaN
  * @author Urhixidur
@@ -552,6 +554,8 @@ $4',
 	'todo-form-details' => 'Précisions :',
 	'todo-form-email' => 'Pour recevoir un courriel de notification lorsque l’élément sera fermé, inscrivez votre adresse dans le cadre ci-dessous :',
 	'todo-form-submit' => 'Soumettre la requête',
+	'right-todo' => 'Avoir une liste de choses à faire',
+	'right-todosubmit' => 'Restreindre les droits des listes personnelles de choses à faire',
 );
 
 /** Galician (Galego)
@@ -1164,6 +1168,8 @@ $messages['oc'] = array(
 	'todo-form-details' => 'Precisions :',
 	'todo-form-email' => 'Per recebre las notificacions per corrièr electronic un còp l’article clausurat, inscrivètz vòstra adreça dins lo quadre çaijós :',
 	'todo-form-submit' => 'Sometre la requèsta',
+	'right-todo' => 'Aver una lista de causas de far',
+	'right-todosubmit' => 'Restrénher los dreches de las listas personalas de causas de far',
 );
 
 /** Ossetic (Иронау)

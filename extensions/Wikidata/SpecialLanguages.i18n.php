@@ -5547,9 +5547,13 @@ Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es z
 	'ow_uipref_datasets' => 'Standat-Ansich',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Nix ußjewählt',
+	'transaction' => 'Wikidata: Transakßjuhnß_Logbooch',
+	'ow_transaction_from_transaction' => 'Vun Transakßjuhn:',
 	'ow_transaction_count' => 'Aanzahl:',
 	'ow_transaction_user' => 'Metmaacher-Name:',
+	'ow_transaction_show_rollback' => 'De Knöpp zom Retuur maache aanzeije:',
 	'ow_transaction_rollback_button' => 'Lohß Jonn!',
+	'ow_transaction_rollback_header' => 'Retuur maache',
 	'ow_transaction_no_action' => 'Donn nix',
 	'ow_transaction_previous_version' => 'Vörijje Version',
 	'ow_transaction_restore' => 'Wider zerök holle',
@@ -5560,6 +5564,8 @@ Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es z
 	'ow_transaction_first_dm' => 'Eezte faßjelaate un explizeete Bedüggdeniß',
 	'ow_transaction_second_dm' => 'Zweite faßjelaate un explizeete Bedüggdeniß',
 	'ow_transaction_summary' => 'Zosammejefaß, Quelle',
+	'conceptmapping' => 'Wikidata: Konzäp-Zohoodenung',
+	'ow_conceptmapping_title' => 'Konzäp-Zohoodenung',
 	'ow_conceptmapping_help' => '<p>Müjjelesche Akßjuhne: <ul>
 <li><code>&action=insert&<data_context_prefix>=<defined_id>& </code>{{int:ellipsis}} — donn en Afbelldung dobei</li>
 <li><code>&action=get&concept=<concept_id> </code> — liß en Afbelldung zerök</li>
@@ -5682,6 +5688,7 @@ Nomaal sullt me hee nit hen kumme.',
 De Datebangk es nit mieh konsistent.
 Wikidata kunnt kein jöltije Date fenge, di met dä Nommer för en faßjelaate un explizeete Bedüggdeniß zosamme passe däte. Se künnt verloore jejange sin.
 Bes esu joot, un saach dat enem Wiki-Köbes, udder ennem Administrator fun däm Server.',
+	'ow_history_transaction' => 'Transakßjuhn:',
 	'ow_history_show_life_span' => 'Zeisch däm Datesatz sing Levvensduur:',
 	'ow_class_attr_type_dm' => 'Faßjelaate un explizeete Bedüggdeniß',
 	'ow_class_attr_type_xlate' => 'Övversetzbaa Tex',

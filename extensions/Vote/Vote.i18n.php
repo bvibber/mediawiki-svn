@@ -194,8 +194,10 @@ $messages['bg'] = array(
 	'vote-view-results' => 'Преглед на резултатите',
 	'vote-results' => 'Резултати от гласуването',
 	'vote-results-none' => 'Все още никой не е гласувал.',
-	'vote-login' => 'За гласуване е необходимо [$1 влизане] в системата.',
+	'vote-login' => 'За гласуване е необходимо [$1 влизане].',
 	'vote-invalid-choice' => 'Необходимо е да бъде избрана една от наличните възможности.',
+	'right-vote' => 'Гласуване',
+	'right-voteadmin' => 'Преглеждане на резултатите от гласуванията',
 );
 
 /** Bengali (বাংলা)
@@ -396,6 +398,7 @@ riddler|Riddler',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  * @author K sal 15
  */
 $messages['el'] = array(
@@ -412,8 +415,10 @@ $messages['el'] = array(
 	'vote-results-choice' => 'Επιλογή',
 	'vote-results-count' => 'Καταμέτρηση',
 	'vote-results-none' => 'Δεν διεξάγονται ψηφοφορίες αυτήν την περίοδο.',
-	'vote-login' => 'Πρέπει [$1 Εγγραφή] να ψηφίσετε.',
+	'vote-login' => 'Πρέπει [$1 σύνδεση] να ψηφίσετε.',
 	'vote-invalid-choice' => 'Πρέπει να επιλέξετε μια από της διαθέσιμες επιλογές.',
+	'right-vote' => 'Ψηφοφορία',
+	'right-voteadmin' => 'Δείτε τα αποτελέσματα της ψηφοφορίας',
 );
 
 /** Esperanto (Esperanto)
@@ -457,7 +462,7 @@ adivinador|Adivinador',
 	'vote-results-choice' => 'Selección',
 	'vote-results-count' => 'Contar',
 	'vote-results-none' => 'Ningún voto ha sido emitido en este momento.',
-	'vote-login' => 'Usted debe [$1 entrar] votar.',
+	'vote-login' => 'Debes [$1 iniciar sesión] para votar.',
 	'vote-invalid-choice' => 'Usted debe seleccionar una de las opciones disponibles.',
 	'right-vote' => 'Votar',
 	'right-voteadmin' => 'Ver resultados de votos',
@@ -866,6 +871,7 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
@@ -885,7 +891,7 @@ $messages['ko'] = array(
 	'vote-results-choice' => '선택',
 	'vote-results-count' => '합계',
 	'vote-results-none' => '지금은 아무도 투표할 수 없습니다.',
-	'vote-login' => '사용자께서는 투표를 위해 [$1 로그인] 하셔야만 합니다.',
+	'vote-login' => '투표하시려면 [$1 로그인]하셔야만 합니다.',
 	'vote-invalid-choice' => '사용자께서는 유효한 후보 중 하나를 택하셔야만 합니다.',
 );
 
@@ -1128,8 +1134,10 @@ sphinx|Esfinx',
 	'vote-results-choice' => 'Causida',
 	'vote-results-count' => 'Compte',
 	'vote-results-none' => 'Cap de vòte es pas estat efectuat a aqueste moment.',
-	'vote-login' => 'Vos cal vos [$1 vos connectar] per votar.',
+	'vote-login' => 'Vos cal [$1 vos connectar] per votar.',
 	'vote-invalid-choice' => 'Vos cal causir una de las opcions disponiblas.',
+	'right-vote' => 'Vòte',
+	'right-voteadmin' => 'Vejatz los resultats del vòte',
 );
 
 /** Punjabi (ਪੰਜਾਬੀ)

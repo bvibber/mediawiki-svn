@@ -211,9 +211,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author IAlex
  */
 $messages['fr'] = array(
-	'fckeditor-desc' => 'Autoriser la modification en utilisant l’éditeur WYSIWYG FCKeditor',
+	'fckeditor-desc' => 'Permet la modification en utilisant l’éditeur WYSIWYG FCKeditor',
 	'textrichditor' => 'Éditeur enrichi',
 	'prefs-fckeditor' => 'Éditeur enrichi',
 	'tog-riched_disable' => "Désactiver l'éditeur enrichi",
@@ -365,6 +366,30 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'fckeditor-desc' => 'Permitter le modification con le editor WYSIWYG FCKeditor',
+	'textrichditor' => 'Editor typographic',
+	'prefs-fckeditor' => 'Editor typographic',
+	'tog-riched_disable' => 'Disactivar le editor typographic',
+	'tog-riched_disable_ns_main' => 'Disactivar le editor typographic intra le spatio de nomines principal',
+	'tog-riched_disable_ns_talk' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:talk}}"',
+	'tog-riched_disable_ns_user' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:user}}"',
+	'tog-riched_disable_ns_user_talk' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:user_talk}}"',
+	'tog-riched_disable_ns_project' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:project}}"',
+	'tog-riched_disable_ns_project_talk' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:project_talk}}"',
+	'tog-riched_disable_ns_image' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:file}}"',
+	'tog-riched_disable_ns_image_talk' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:file_talk}}"',
+	'tog-riched_disable_ns_mediawiki' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:mediawiki}}"',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:mediawiki_talk}}"',
+	'tog-riched_disable_ns_template' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:template}}"',
+	'tog-riched_disable_ns_template_talk' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:template_talk}}"',
+	'tog-riched_disable_ns_help' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:help}}"',
+	'tog-riched_disable_ns_help_talk' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:help_talk}}"',
+	'tog-riched_disable_ns_category' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:category}}"',
+	'tog-riched_disable_ns_category_talk' => 'Disactivar le editor typographic intra le spatio de nomines "{{ns:category_talk}}"',
+	'rich_editor_new_window' => 'Aperir le editor typographic in un nove fenestra',
+	'tog-riched_start_disabled' => 'Initialmente disactivar le editor typographic',
+	'tog-riched_use_popup' => 'Aperir le editor typographic in un pop-up',
+	'tog-riched_use_toggle' => 'Presentar un button pro cambiar inter wikitexto e editor typographic (in loco del area de texto)',
+	'tog-riched_toggle_remember_state' => 'Memorar le ultime selection de editor',
 );
 
 /** Japanese (日本語)
@@ -456,6 +481,35 @@ $messages['ksh'] = array(
 	'tog-riched_toggle_remember_state' => 'Donn dä letzte Zohschtand vum Ömschallde zwesche däm Wikitäx Beärbeide un däm „<i lang="en">Rich Editor</i>“ faßhallde',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'fckeditor-desc' => 'Erlaabt et de WYSIWYG-Editeur FCKeditor ze benotzen',
+	'textrichditor' => 'Editeur mat erweiderte Fonctiounen',
+	'prefs-fckeditor' => 'Editeur mat erweiderte Fonctiounen',
+	'tog-riched_disable' => 'Editeur mat erweiderte Fonctiounen aschalten',
+	'tog-riched_disable_ns_main' => 'Editeur mat erweiderte Fonctiounen am Haaptnummraum ausschalten',
+	'tog-riched_disable_ns_talk' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:talk}}"  ausschalten',
+	'tog-riched_disable_ns_user' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:user}}"  ausschalten',
+	'tog-riched_disable_ns_user_talk' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:user_talk}}"  ausschalten',
+	'tog-riched_disable_ns_project' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:project}}"  ausschalten',
+	'tog-riched_disable_ns_project_talk' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:prject_talk}}"  ausschalten',
+	'tog-riched_disable_ns_image' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:file}}"  ausschalten',
+	'tog-riched_disable_ns_image_talk' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:file_talk}}"  ausschalten',
+	'tog-riched_disable_ns_mediawiki' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:mediawiki}}"  ausschalten',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:mediawiki_talk}}"  ausschalten',
+	'tog-riched_disable_ns_template' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:template}}"  ausschalten',
+	'tog-riched_disable_ns_template_talk' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:template_talk}}"  ausschalten',
+	'tog-riched_disable_ns_help' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:help}}"  ausschalten',
+	'tog-riched_disable_ns_help_talk' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:help_talk}}"  ausschalten',
+	'tog-riched_disable_ns_category' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:category}}"  ausschalten',
+	'tog-riched_disable_ns_category_talk' => 'Editeur mat erweiderte Fonctiounen am Nummraum "{{ns:category_talk}}"  ausschalten',
+	'rich_editor_new_window' => 'Editeur mat erweiderte Fonctiounen an enger neier Fënster opmaachen',
+	'tog-riched_start_disabled' => 'Editeur mat erweiderte Fonctiounen beim Start ausgeschalt',
+	'tog-riched_use_popup' => 'Editeur mat erweiderte Fonctiounen an engem Popup opmaachen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -515,7 +569,9 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'fckeditor-desc' => 'Permet la modificacion en utilizant l’editor WYSIWYG FCKeditor',
 	'textrichditor' => "''Rich Editor''",
+	'prefs-fckeditor' => 'Editor enriquit',
 	'tog-riched_disable' => "Desactivar ''Rich Editor''",
 	'tog-riched_disable_ns_main' => "Desactivar ''Rich Editor'' dins l'espaci de noms principal.",
 	'tog-riched_disable_ns_talk' => "Desactivar ''Rich Editor'' dins l'espaci de noms ''{{ns:talk}}''.",
@@ -533,6 +589,11 @@ $messages['oc'] = array(
 	'tog-riched_disable_ns_help_talk' => "Desactivar ''Rich Editor'' dins l'espaci de noms ''{{ns:help_talk}}''.",
 	'tog-riched_disable_ns_category' => "Desactivar ''Rich Editor'' dins l'espaci de noms ''{{ns:category}}''.",
 	'tog-riched_disable_ns_category_talk' => "Desactivar ''Rich Editor'' dins l'espaci de noms ''{{ns:category_talk}}''.",
+	'rich_editor_new_window' => "Dobrir l'editor enriquit dins una fenèstra novèla",
+	'tog-riched_start_disabled' => "Amodar amb l'editor enriquit desactivat",
+	'tog-riched_use_popup' => "Dobrir l'editor enriquit dins una popup",
+	'tog-riched_use_toggle' => "Balhar la possibilitat de cambiar entre l'editor original WikiTèxte e l'editor enriquit",
+	'tog-riched_toggle_remember_state' => "Se remembrar de la darrièra seleccion de l'editor",
 );
 
 /** Polish (Polski) */

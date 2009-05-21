@@ -126,9 +126,10 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
+ * @author Harald Khan
  */
 $messages['nn'] = array(
-	'Editsectionhilitelink-desc' => 'Uthév den aktuelle delen av ei side når du fører musepeikaren over lenkja til endring',
+	'Editsectionhilitelink-desc' => 'Uthev den aktuelle delen av ei side når du fører musepeikaren over lenkja til endring',
 );
 
 /** Occitan (Occitan)

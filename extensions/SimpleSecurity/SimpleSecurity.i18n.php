@@ -473,13 +473,14 @@ $messages['oc'] = array(
 	'security-info' => 'I a $1 sus aqueste article',
 	'security-info-toggle' => 'restriccions de seguretat',
 	'security-inforestrict' => '$1 es limitat a $2',
-	'security-desc-LS' => "''(s'aplica perque aqueste article es dins lo '''$2 $1''')''",
-	'security-desc-PR' => "''(definit dempuèi l''''onglet de proteccion''')''",
-	'security-infosysops' => "Cap de restriccion pas en vigor perque sètz un membre del grop '''administrator'''",
+	'security-desc-LS' => "(s'aplica perque aqueste article es dins lo « $1 $2 »)",
+	'security-desc-PR' => "(definit dempuèi l'onglet de proteccion)",
+	'security-infosysops' => 'Cap de restriccion pas en vigor perque sètz un membre del grop « administrator »',
 	'security-manygroups' => 'gropes $1 e $2',
 	'security-unchain' => 'Modificar las accions individualament',
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'espaci de nom',
+	'security-restricttogroup' => 'Accès al contengut reservat als membres de « $1 »',
 );
 
 /** Polish (Polski)

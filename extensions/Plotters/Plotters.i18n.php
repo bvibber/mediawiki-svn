@@ -123,6 +123,17 @@ Pšosym definěruj plotowe mě, kótarež ma maksimalnje 255 znamuškow.',
 	'plotters-errors' => '{{PLURAL:$1|Ploterowa zmólka|Ploterowej zmólce|Ploterowe zmólki|Ploterowe zmólki}}:',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'plotters-desc' => 'Deja a los usuarios usar JavaScript personalizada en etiquetas jsplot',
+	'plotters' => 'Plotters',
+	'plotters-title' => 'Plotters',
+	'plotters-uses' => 'Usos',
+	'plotters-no-data' => 'sin datos proveídos',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -222,6 +233,8 @@ Iste summario permitte acceder facilemente al messages de systema que defini le 
 	'plotters-missing-arguments' => 'Nulle parametro specificate.',
 	'plotters-excessively-long-scriptname' => 'Le nomine del script es troppo longe. Per favor defini un script que ha minus de 255 characteres.',
 	'plotters-excessively-long-preprocessorname' => 'Le nomine del preprocessator es troppo longe. Per favor defini un preprocessator que ha minus de 255 characteres.',
+	'plotters-excessively-long-name' => 'Le nomine del plot es troppo longe.
+Per favor defini un nomine de plot que ha 255 characteres al maximo.',
 	'plotters-excessively-long-tableclass' => 'Le classe de tabula es troppo longe.
 Per favor defini un classe de tabula que ha 255 characteres al maximo.',
 	'plotters-no-data' => ' Nulle dato esseva providite.',
@@ -304,6 +317,19 @@ $messages['oc'] = array(
 	'plotters-pagetext' => "Çaijós la lista dels traçaires especials que los utilizaires pòdon utilizar dins lors balisas jsplot, coma definidas sua [[MediaWiki:Plotters-definition]].
 Aquesta vista d'ensemble permet d'accedir aididament als messatges del sistèma que definisson lo còde e la descripcion de cada traçaire.",
 	'plotters-uses' => 'Utiliza',
+	'plotters-missing-script' => "Cap d'escripte es pas estat definit.",
+	'plotters-missing-arguments' => "Cap d'argument es pas estat especificat.",
+	'plotters-excessively-long-scriptname' => "Lo nom de l'escript es tròp long.
+Definissètz un escript qu'a mens de 255 caractèrs.",
+	'plotters-excessively-long-preprocessorname' => 'Lo nom del preprocessor es tròp long.
+Definissètz un preprocessor que fa mens de 255 caractèrs.',
+	'plotters-excessively-long-name' => 'Lo nom del graf es tròp long.
+Definissètz un nom de graf que fa mens de 255 caractèrs.',
+	'plotters-excessively-long-tableclass' => 'La classa del tablèu es tròp longa.
+Definissètz una classa de tablèu que fa mens de 255 caractèrs.',
+	'plotters-no-data' => 'Cap de donada es pas estada provesida.',
+	'plotters-invalid-renderer' => 'Un motor de rendut invalid es estat seleccionat.',
+	'plotters-errors' => '{{PLURAL:$1|Error|Errors}} de traçadors :',
 );
 
 /** Slovak (Slovenčina)

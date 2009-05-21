@@ -13,3 +13,9 @@ $aliases = array();
 $aliases['en'] = array(
 	'UserOptionStats'          => array( 'UserOptionStats' ),
 );
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'UserOptionStats' => array( '利用者オプション統計' ),
+);
+

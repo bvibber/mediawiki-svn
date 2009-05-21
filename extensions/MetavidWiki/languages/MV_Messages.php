@@ -477,6 +477,7 @@ Jump to stream view: $2',
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author McDutchie
  * @author Purodha
@@ -507,6 +508,7 @@ $messages['qqq'] = array(
 	'mv_edit' => '{{Identical|Edit}}',
 	'mv_history' => '{{Identical|History}}',
 	'mv_remove' => '{{Identical|Remove}}',
+	'mv_existing_categories' => '{{Identical|Category}}',
 	'mv_search_spoken_by' => '{{Identical|Spoken by}}',
 	'mv_search_categories' => '{{Identical|Categories}}',
 	'mv_search_category' => '{{Identical|Category}}',
@@ -4518,11 +4520,26 @@ $messages['ja'] = array(
 	'error_swap_vid' => 'エラー： ビデオタグをmv_embedインターフェイスと交換することができませんでした',
 	'download_segment' => 'ダウンロードの選択:',
 	'download_text' => 'テキストのダウンロード (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML):',
+	'mv_ogg-player-selected' => '(選択済み)',
+	'auto_scroll' => '自動スクロール',
 	'close' => '閉じる',
+	'next_clip_msg' => '次のクリップを再生',
+	'prev_clip_msg' => '前のクリップを再生',
 	'upload-select-file' => 'ファイルの選択…',
+	'mv_media_search' => 'メディア検索',
+	'rsd_box_layout' => 'ボックス・レイアウト',
+	'rsd_list_layout' => 'リスト・レイアウト',
+	'rsd_results_desc' => '結果',
+	'rsd_no_results' => '<b>$1</b> に対する結果はありませんでした',
 	'rsd_results_next' => '次',
+	'rsd_results_prev' => '前',
+	'mv_upload' => 'アップロード',
+	'rsd_layout' => 'レイアウト:',
+	'rsd_resource_edit' => 'リソースを編集: $1',
+	'resource_description_page' => 'リソース解説ページ',
 	'cc_pd_title' => 'パブリックドメイン',
 	'unknown_license' => '不明なライセンス',
+	'mv_resource_page' => 'リソースページ',
 	'menu_options' => 'オプション',
 	'zoom_in' => '拡大',
 	'zoom_out' => '縮小',
@@ -4559,9 +4576,15 @@ $messages['ja'] = array(
 	'mv_adjust_preview_stop' => 'プレビュー停止',
 	'mv_start_desc' => '開始時刻',
 	'mv_end_desc' => '終了時刻',
+	'mv_remove_category' => 'カテゴリ除去',
+	'mv_existing_categories' => 'カテゴリ:',
+	'mv_add_category' => 'カテゴリ追加',
+	'mediasearch' => 'メディア検索',
 	'mv_search_category' => 'カテゴリ',
 	'mv_category' => 'カテゴリ',
 	'mv_export_cmml' => 'CMMLのエクスポート',
+	'mv_prev_cat' => '前のカテゴリ: $1',
+	'mv_next_cat' => '次のカテゴリ: $1',
 );
 
 /** Lojban (Lojban)
@@ -6421,6 +6444,7 @@ Aqueste tipe de presentacion es pel tèxte qu'es parlat amb lo flus vidèo. De l
 	'mv_sequence_edit_visual_editor' => "Bascuolar cap a l'editor visual",
 	'mv_other_options' => 'Autras opcions',
 	'mv_contextmenu_opt' => 'Activar los menuts contextuals',
+	'mv_days' => '$1 {{PLURAL:$1|jorn|jorns}}',
 	'mv_hours' => '$1 {{PLURAL:$1|ora|oras}}',
 	'mv_hours_singular' => '$1 ora',
 	'mv_minutes' => '$1 {{PLURAL:$1|minuta|minutas}}',

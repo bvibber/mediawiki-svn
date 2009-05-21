@@ -298,6 +298,7 @@ $messages['es'] = array(
 	'authorprotect-failure' => 'Protección no exitosa',
 	'protect-level-author' => 'Proteger de no-autores.',
 	'restriction-level-author' => 'Protegido por autor',
+	'right-authorprotect' => 'proteger las páginas con autor',
 );
 
 /** Estonian (Eesti)
@@ -549,6 +550,7 @@ $messages['ia'] = array(
 	'authorprotect-failure' => 'Protection non succedite',
 	'protect-level-author' => 'Proteger contra non-autores',
 	'restriction-level-author' => 'Protegite per le autor',
+	'right-authorprotect' => 'Proteger paginas scribite per autores',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -926,6 +928,7 @@ $messages['oc'] = array(
 	'authorprotect-failure' => 'Fracàs de la proteccion',
 	'protect-level-author' => 'Protegir de non-autors',
 	'restriction-level-author' => 'Autor protegit',
+	'right-authorprotect' => 'Protegir la pagina dels autors',
 );
 
 /** Ossetic (Иронау)

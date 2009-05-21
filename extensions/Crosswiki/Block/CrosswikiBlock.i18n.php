@@ -382,6 +382,7 @@ Zurück zu:
 * [[Special:CrosswikiBlock|Sperrformular]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokale Sperren werden über dieses Formular nicht unterstützt. Bitte benutze [[Special:IPBlockList|{{int:ipblocklist}}]].',
+	'right-crosswikiblock' => 'Benutzer auf anderen Wikis sperren oder entsperren',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -704,6 +705,7 @@ Voltar a:
 * [[Special:CrosswikiBlock|Formulario de bloqueo]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Os desbloqueos locais non están soportados mediante esta interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Bloquear e desbloquear usuarios noutros wikis',
 );
 
 /** Gothic
@@ -1477,6 +1479,7 @@ Teruggaan naar:
 * [[Special:CrosswikiBlock|Blokkeerformulier]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Plaatselijke deblokkades worden niet ondersteund door dit formulier. Gebruik daarvoor [[Special:IPBlockList|{{int:ipblocklist}}]].',
+	'right-crosswikiblock' => "Blokkeren en deblokkeren van van de gebruikers op andere wiki's",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
