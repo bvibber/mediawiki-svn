@@ -8,7 +8,7 @@ loadGM({
 	'fogg-save_local_file'		: 'Save Ogg',
 	'fogg-check_for_fogg'		: 'Checking for Firefogg <blink>...</blink>',
 	'fogg-installed'			: 'Firefogg is Installed',
-	'fogg-please_install'		: 'You don\'t have firefogg installed, please <a href="$1">install firefogg</a>',
+	'fogg-please_install'		: 'You don\'t have firefogg installed, For improved uploads please <a href="$1">install firefogg</a> more <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">about firefogg</a>',
 	'fogg-use_latest_fox'		: 'You need a <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a> to use Firefogg',
 	'passthrough_mode'			: 'Your selected file is already ogg or not a video file',	 
 });
@@ -32,8 +32,8 @@ var default_firefogg_options = {
 	//target control container or form (can't be left null)
 	'selector'			: '',
 	
-	'form_rewrite'		: false,//if not rewriting a form we are encoding local. 
-	
+	//if not rewriting a form we are encoding local.
+	'form_rewrite'		: false, 
 	
 	//taget buttons: 
 	'target_btn_select_file'    : false,
@@ -200,6 +200,11 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	//assume input target
 	setupForm: function(){		
 		js_log('firefogg::setupForm::');
+		//to parent form setup if we want http updates 
+		if( this.form_rewrite ){
+			//do parent form setup: 
+			this.pe_setupForm();		
+		}
 		
 		//check if we have firefogg (if not just add a link and stop proccessing) 
 		if( !this.firefoggCheck() ){
@@ -210,11 +215,10 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				this.target_please_install = this.selector + ' ~ .target_please_install';
 			}
 			//update download link:
-			this.doControlBindings();
-			return false;
+			this.doControlBindings();		
+			return ;
 		}
-		//else do form setup: 
-		this.pe_setupForm();		
+		
 		//change the file browser to type text: (can't directly change input from "file" to "text" so longer way:
 		var inTag = '<input ';
 		$j.each($j(this.selector).get(0).attributes, function(i, attr){
@@ -240,6 +244,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		this.doControlBindings();
 	},
 	getEditForm:function(){
+		js_log('get form: action=' + $j(this.selector).parents().find("form").attr('action'));
 		return $j(this.selector).parents().find("form").get(0);
 	},
 	select_fogg:function(){			

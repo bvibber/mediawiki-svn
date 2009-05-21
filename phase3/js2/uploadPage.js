@@ -11,28 +11,35 @@ var mwUploadHelper = {
 		if( wgEnableFirefogg ){
 			//setup the upload handler to firefogg  (supports our upload proccess) 
 			$j('#wpUploadFile').firefogg({ 
-				//an api url (we won't submit directly to action of the form) if the api supports action=upload: 
+				//an api url (we won't submit directly to action of the form)
 				'api_url' : wgServer + wgScriptPath + '/api.php',
+				'form_rewrite': true,
 				
 				'new_source_cb' : function( filename ){
 										$j('#wpDestFile').val( filename );
 										mwUploadHelper.doDestCheck();
-								}
+					}
 			});		
 		}else{
-			//we can try and do basic upload profile support ( http status monitoring, progress box for browsers that support it etc. ) 
-			mvJsLoader.doLoad({
-				'mvBaseUploadInterface': 'libAddMedia/mvBaseUploadInterface.js'
-			},function(){
-				myUp = new mvBaseUploadInterface( { 'api_url' : wgServer + wgScriptPath + '/api.php' } );
-				myUp.setupForm();
-			});
+			//Add basic upload profile support ( http status monitoring, progress box for browsers that support it etc.) 
+			if($j('#wpUploadFileURL').length != 0){
+				mvJsLoader.doLoad({
+					'mvBaseUploadInterface': 'libAddMedia/mvBaseUploadInterface.js'
+				},function(){				
+					myUp = new mvBaseUploadInterface( { 
+							'api_url'   : wgServer + wgScriptPath + '/api.php',
+							'target_edit_from' : '#mw-upload-form' 
+							} );
+					myUp.setupForm();
+				});				
+			}
 		}
 		
 		if( wgAjaxUploadDestCheck ){
 			//do destination check: 		
 			$j('#wpDestFile').change( mwUploadHelper.doDestCheck );
 		}
+		
 		//check if we have http enabled & setup enable/disable toggle:
 		if($j('#wpUploadFileURL').length != 0){
 			var toggleUpType = function( set ){

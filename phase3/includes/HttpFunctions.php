@@ -9,9 +9,7 @@ class Http {
 	const SYNC_DOWNLOAD = 1;  //syncronys upload (in a single request) 
 	const ASYNC_DOWNLOAD = 2; //asynchronous upload we should spawn out another process and monitor progress if possible)
 
-	var $body = '';	
-		
-	static $redirectcount=0;
+	var $body = '';				
 	/**
 	 * Simple wrapper for Http::request( 'GET' )
 	 */

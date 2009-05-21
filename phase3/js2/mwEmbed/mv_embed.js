@@ -604,9 +604,11 @@ function mv_jqueryBindings(){
 					var myFogg = new mvAdvFirefogg( initObj );
 				}else{
 					var myFogg = new mvFirefogg( initObj );
-				}				
+				}			
+					
 				if(myFogg)
-					myFogg.doRewrite( callback );					
+					myFogg.doRewrite( callback );
+						
 			});		
 		}
 	

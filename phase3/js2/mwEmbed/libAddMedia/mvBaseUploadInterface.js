@@ -32,7 +32,8 @@
  
 var default_bui_options = {
 	'api_url':null,
-	'parent_uploader':null
+	'parent_uploader':null,
+	'edit_from':null
 }
 var mvBaseUploadInterface = function( iObj ){
 	return this.init( iObj );
@@ -56,16 +57,16 @@ mvBaseUploadInterface.prototype = {
 			}
 		}		
 	},
-	setupForm:function(){
+	setupForm:function(){	
 		var _this = this;
 		//set up the local pointer to the edit form:
-		_this.getEditForm();
-						
+		_this.editForm = _this.getEditForm();
+
 		if(_this.editForm){
 			//set up the org_onsubmit if not set: 
 			if( typeof( _this.org_onsubmit ) == 'undefined' )
 				_this.org_onsubmit = _this.editForm.onsubmit;
-						
+			js_log('should overwite onsubmit here::');
 			//have to define the onsubmit function inline or its hard to pass the "_this" instance
 			_this.editForm.onsubmit = function(){								
 				//run the original onsubmit (if not run yet set flag to avoid excessive chaining ) 
@@ -410,7 +411,11 @@ mvBaseUploadInterface.prototype = {
 		return gM('upload-in-progress');
 	},	
 	getEditForm:function(){
-		this.editForm = $j( '#mw-upload-form' ).get(0);
+		if(this.target_edit_from){
+			return $j(this.target_edit_from).get(0);
+		}
+		//just return the first form fond on the page. 
+		return $j('form :first').get(0);
 	},
 	updateProgress:function( perc ){		
 		js_log('updateProgress::' + perc);
