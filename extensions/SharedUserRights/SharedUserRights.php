@@ -6,7 +6,7 @@
 *
 * @author Łukasz 'TOR' Garczewski <tor@wikia-inc.com>
 * @author Charles Melbye <charlie@yourwiki.net>
-* @version 0.11
+* @version 0.12
 * @copyright Copyright © 2008 Łukasz 'TOR' Garczewski, Wikia, Inc.
 * @copyright Copyright (C) 2008 YourWiki, Inc.
 * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
@@ -23,7 +23,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'SharedUserRights',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SharedUserRights',
-	'version' => '0.11',
+	'version' => '0.12',
 	'author' => array( "Łukasz 'TOR' Garczewski", 'Charles Melbye' ),
 	'description' => 'Easy global user rights administration',
 	'descriptionmsg' => 'gblrights-desc',
@@ -31,7 +31,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 
-$wgAvailableRights[] = 'userrights-global';
+$wgAvailableRights[] = 'userrights-shared';
 $wgAutoloadClasses['SharedUserRights'] = $dir . 'SharedUserRights_body.php';
 $wgExtensionMessagesFiles['SharedUserRights'] = $dir . 'SharedUserRights.i18n.php';
 $wgExtensionAliasesFiles['SharedUserRights'] = $dir . 'SharedUserRights.alias.php';
@@ -42,7 +42,6 @@ $wgLogTypes[]                     = 'gblrights';
 $wgLogNames['gblrights']          = 'gblrights-logpage';
 $wgLogHeaders['gblrights']        = 'gblrights-pagetext';
 $wgLogActions['gblrights/rights'] = 'gblrights-rights-entry';
-
 
 // Hooked functions
 $wgHooks['UserEffectiveGroups'][] = 'efAddSharedUserRights';
@@ -73,11 +72,11 @@ function efAddSharedUserRights( $user, $groups ) {
  */
 function efSharedTable( $table )
 {
-        global $wgSharedDB;
+	global $wgSharedDB;
 
-        if ( !empty( $wgSharedDB ) ) {
-                return "`$wgSharedDB`.`$table`";
-        } else {
-                return "`$table`";
-        }
+	if ( !empty( $wgSharedDB ) ) {
+		return "`$wgSharedDB`.`$table`";
+	} else {
+		return "`$table`";
+	}
 }

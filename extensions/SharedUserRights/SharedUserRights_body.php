@@ -26,7 +26,7 @@ class SharedUserRights extends SpecialPage {
 	}
 
 	public function userCanExecute( $user ) {
-		return $user->isAllowed( 'userrights-global' );
+		return $user->isAllowed( 'userrights-shared' );
 	}
 
 	/**
@@ -49,7 +49,7 @@ class SharedUserRights extends SpecialPage {
 		# This might be redundant, but more security is always good. Right?
 		if ( !$this->userCanExecute( $wgUser ) ) {
 			global $wgOut;
-			$wgOut->permissionRequired( 'userrights-global' );
+			$wgOut->permissionRequired( 'userrights-shared' );
 			return;
 		}
 

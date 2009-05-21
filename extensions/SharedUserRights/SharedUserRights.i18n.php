@@ -18,7 +18,7 @@ $messages['en'] = array(
 	'gblrights-logpage' => 'Global Rights Log',
 	'gblrights-pagetext' => 'This is a log of all the changes that are made to the wiki family\'s global rights table',
 	'gblrights-rights-entry' => 'changed global group membership for $1 from $2 to $3',
-	'right-userrights-global' => 'Manage shared user rights',
+	'right-userrights-shared' => 'Manage shared user rights',
 );
 
 /** Message documentation (Message documentation)
