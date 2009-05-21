@@ -754,9 +754,9 @@ function do_bill_insert( $bill_key ) {
 	$myBillScraper = new MV_BillScraper();
 	
 	$congressNum = 111;
-	print "do_bill_insert:: $bill_key\n ";
+	print "do_bill_insert:: $bill_key downloading fresh bills.index.xml....\n ";
 	//grab bill list with categories from govtrack
-	$raw_govtrack_bill_data = $mvScrape->doRequest('http://www.govtrack.us/data/us/'.$congressNum.'/bills.index.xml');
+	$raw_govtrack_bill_data = $mvScrape->doRequest('http://www.govtrack.us/data/us/'.$congressNum.'/bills.index.xml', array(), true);
 	//turn bill data into an array:
 	preg_match_all("/<bill\s([^>]*)\>\n/sU",$raw_govtrack_bill_data,$nodes);
 	print "found " . count($nodes[1]) . " bills \n";
@@ -790,7 +790,8 @@ function do_bill_insert( $bill_key ) {
 		}			
 		$billAry[] = $bObj;
 		//do proccess the bill (insert into the wiki) 
-		$myBillScraper->processBill($bObj['GovTrackID'], $bObj['Bill Key'],$bObj['OpenCongressBillID'], $bObj['MapLightBillID'] );		
+		print "ProccessBill::"
+		$myBillScraper->processBill($bObj['GovTrackID'], $bObj['Bill Key'],$bObj['OpenCongressBillID'], $bObj['MapLightBillID'], false, false);		
 	}		
 	
 }
