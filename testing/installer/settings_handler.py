@@ -60,6 +60,7 @@ adminuser_password="admin1234"
 
 #mysql info
 mysql_user="root"
+mysql_server="localhost"
 mysql_pass=""
 
 
@@ -92,8 +93,11 @@ if mysql_user:
 if mysql_pass:
 	passpart="-p"+mysql_pass
 
+if mysql_server:
+	serverpart="-h"+mysql_server
+
 if not 'mysql_arguments' in globals():
-	mysql_arguments=" "+userpart+" "+passpart
+	mysql_arguments=" "+userpart+" "+passpart+" "+serverpart
 
 if not 'mysql_command' in globals():
 	mysql_command="mysql "+mysql_opts+" "+mysql_arguments

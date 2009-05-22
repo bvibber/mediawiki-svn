@@ -101,6 +101,8 @@ to uninstall things
 
 (incidentally, uninstall myfirstwiki will uninstall all extensions and drop the database automatically)
 
+The installer automatically creates the first user on the wiki with admin and bureaucrat permissions. Username: admin  , pass admin1234   (caps are significant)
+
 And that's basically it!
 
 ==============================

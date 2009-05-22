@@ -1,4 +1,5 @@
-# This software is developed by Kim Bruning.
+# (C) 2008,2009 Wikiation 
+# (C) 2009 Kim Bruning 
 #
 # Distributed under the terms of the MIT license.
 
@@ -283,9 +284,13 @@ def uniquesettings(target,language=None):
 	unique.write('$wgSitename = "'+target+'";\n')
 	unique.write('$wgScriptPath = "'+settings.base_scriptpath+target+'";\n')
 	unique.write('$wgDBname = "'+dbname(target)+'";\n')
+	unique.write('$wgDBserver = "'+settings.mysql_server+'";\n')
+	unique.write('$wgDBuser = "'+settings.mysql_user+'";\n')
+	unique.write('$wgDBpassword = "'+settings.mysql_pass+'";\n')
 
 	use_language=language or settings.wgLanguageCode
 	unique.write('$wgLanguageCode = "'+use_language+'";\n');
+
 	unique.write('?>\n')
 	
 	unique.close()

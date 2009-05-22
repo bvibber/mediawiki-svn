@@ -34,6 +34,7 @@ import os
 
 mysql_user="root"
 mysql_pass=""
+mysql_server="localhost"
 mysql_opts=""
 
 # run automated tests during installation

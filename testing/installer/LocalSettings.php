@@ -61,9 +61,6 @@ $wgEnotifWatchlist = true; # UPO
 $wgEmailAuthentication = true;
 
 $wgDBtype           = "mysql";
-$wgDBserver         = "localhost";
-$wgDBuser           = "root";
-$wgDBpassword       = "";
 
 # MySQL specific settings
 $wgDBprefix         = "";
