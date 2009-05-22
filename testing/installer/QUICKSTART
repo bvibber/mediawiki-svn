@@ -72,6 +72,10 @@ basic commands are:
 	ls
 	install
 	uninstall
+	help
+
+to get a quick reminder of commands available, type:
+	help
 
 to see what you can install:
 -mediawiki revisions
@@ -79,8 +83,15 @@ to see what you can install:
 -extensions
 	ls available.extensions:
 
-to install something:
+to see what is already installed:
+-mediawiki revisions
+	ls installed.mediawiki:
+-extensions
+	ls installed.extensions: in myfirstwiki	
 
+	(where myfirstwiki is the name of an existing wiki, see below)
+
+to install something:
 	install mediawiki:REL1_14_0 as myfirstwiki
 	install extension:ImageMap in myfirstwiki
 
