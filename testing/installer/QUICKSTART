@@ -1,0 +1,75 @@
+Document: (C) 2009 Kim Bruning, released as documentation under MIT license
+
+Quickstart guide:
+
+INSTALLER
+1. svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/testing/
+2. cd testing/installer
+3. copy settings.example to settings.py  and check with settings_handler (if you need to)  ... if you leave out this step, it'll only work in your homedir.
+4. mkdir ~/public_html/revisions   (if you are indeed working in your homedir)
+# installer now works.
+
+TESTING
+5. To get testing working
+./installer.py install toolkit:pywikipedia 
+6. also, in exttest, copy settings.py.example to settings.py, and edit.
+
+testing can still use a lot of coding work.
+
+
+
+
+USING THE INSTALLER:
+To get something installed. There's a REPL (command line) and you can also access the same commands from bash (or some other shell, or popen, or what have you)
+The interface and back end are somewhat separate (installer.py is current interface,  installers.py is the basic back end), so someone might be able to create a GUI or web front end someday soon. :-)
+
+basic commands are:
+ls
+install
+uninstall
+
+to see what you can install:
+-mediawiki revisions
+	ls available.mediawiki:
+-extensions
+	ls available.extensions:
+
+to install something:
+
+	install mediawiki:REL1_14_0 as myfirstwiki
+	install extension:ImageMap in myfirstwiki
+
+to uninstall things
+	uninstall extension:ImageMap in myfirstwiki
+	uninstall myfirstwiki
+
+(incidentally, uninstall myfirstwiki will uninstall all extensions and drop the database automatically)
+
+And that's basically it!
+
+Why is this handy at all?
+
+Well, imagine if you want to install many different wikis with slightly different settings and extensions, so you can test how things interact. (this is a testing environment, after all ;-) ) You can use this tool to script your installation procedure.
+
+It's also fairly handy for maintaining large numbers of wikis in a production environment. Or for maintaining backups of even just a single wiki
+
+if you hadn't uninstalled your first wiki yet:
+
+	duplicate myfirstwiki mysecondwiki
+
+will create a clone of the first wiki, which you can either leave online and allow to grow and change by itself, or you can tar it up and pack it away someplace safe as a backup.
+
+
+
+calling from bash is easy too
+
+	./installer.py install mediawiki:latest as cuttingedgedude
+
+For examples of some ready made scripts, see ../util/environment/
+
+
+
+
+
+
+
