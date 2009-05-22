@@ -20,9 +20,8 @@ import os
 # we could alternately/additionally take a tag version for extensions. (future)
 #extensionsdir=trunkdir+"/extensions"
 
-# where to install diverse revisions
-#revisionsdir='~/public_html/revisions'
-
+# where to install diverse mediawiki instances
+#instances_dir=os.path.expanduser('~/public_html/revisions')
 
 # base scriptpath for every installation (ie, where to reach the above over the web)
 #base_scriptpath="/~kim/revisions/"
