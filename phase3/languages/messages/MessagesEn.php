@@ -1016,7 +1016,7 @@ You may have already successfully changed your password or requested a new tempo
 'media_tip'       => 'File link',
 'sig_tip'         => 'Your signature with timestamp',
 'hr_tip'          => 'Horizontal line (use sparingly)',
-'add_media_wizard'=> 'Run Add Media Wizard',
+'add_media_wizard' => 'Add media wizard',
 
 # Edit pages
 'summary'                          => 'Summary:',
@@ -1835,22 +1835,25 @@ To include a file in a page, use a link in one of the following forms:
 'uploadlogpagetext'           => 'Below is a list of the most recent file uploads.
 See the [[Special:NewFiles|gallery of new files]] for a more visual overview.',
 
-'upload-enable-converter' => 'Enable video converter (to upload source video not yet converted to theora format) <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>',
-'upload-fogg_not_installed' => 'If you want to upload video consider installing <a href=\"http://firefogg.org\">firefogg.org</a>, <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>',
-'upload-transcode-in-progress' => 'Doing Transcode & Upload (do not close this window)',
-'upload-in-progress' => 'Upload in Progress (do not close this window)',
-'upload-transcoded-status' => 'Transcoded',
-'uploaded-status' => 'Uploaded',
-'upload-select-file'=> 'Select File...',	
-'wgfogg_wrong_version'=> 'You have firefogg installed but its outdated, <a href=\"http://firefogg.org\">please upgrade</a> ',
-'wgfogg_waring_ogg_upload'=> 'You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?',
-'wgfogg_waring_bad_extension'=> 'You have selected a file with an unsuported extension. <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">More help</a>',
-'upload-stats-fileprogres' => '$1 of $2',
+'upload-enable-converter'      => 'Enable video converter to upload source video not yet converted to theora format (<a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more information</a>)',
+'upload-fogg_not_installed'    => 'If you want to upload video, consider installing <a href=\"http://firefogg.org\">firefogg.org</a> (<a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more information</a>).',
+'upload-transcode-in-progress' => 'Your browser is now transcoding and uploading (do not close this window)',
+'upload-in-progress'           => 'Upload in progress (do not close this window)',
+'upload-transcoded-status'     => 'Transcoded',
+'uploaded-status'              => 'Uploaded',
+'upload-select-file'           => 'Select file...',
+'wgfogg_wrong_version'         => 'You have Firefogg installed, but it is outdated.
+<a href=\"http://firefogg.org\">Please upgrade</a>.',
+'wgfogg_waring_ogg_upload'     => 'You have selected an ogg file for conversion to ogg.
+This is probably unnessesary.
+Maybe disable the video converter?',
+'wgfogg_waring_bad_extension'  => 'You have selected a file with an unsuported extension (<a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">more information</a>).',
+'upload-stats-fileprogres'     => '$1 of $2',
 
-'mv_upload_done' 	  => 'Your upload <i>should be</i> accessible <a href="$1">here</a>',
-'upload-unknown-size' => 'Unknown size',	
-'unknown-error' => 'Unknown Error',
-'return-to-form' => 'Return to form',	
+'mv_upload_done'      => 'Your upload should be <a href="$1">accessible now</a>',
+'upload-unknown-size' => 'Unknown size',
+'unknown-error'       => 'Unknown error',
+'return-to-form'      => 'Return to the form',
 
 'filename'                    => 'Filename',
 'filedesc'                    => 'Summary',
@@ -1950,10 +1953,10 @@ Please contact an [[Special:ListUsers/sysop|administrator]].',
 Please verify that the URL is valid and accessible and try again.
 If the problem persists, contact an [[Special:ListUsers/sysop|administrator]].',
 'upload-too-many-redirects' => 'The URL contained too many redirects',
-'upload-unknown-size'		=> 'Unknown size',
+'upload-unknown-size'       => 'Unknown size',
 
-//idealy we map out all the http errors and translations else just call this with the http resposne:  
-'upload-http-error' => "An http error occured : $1 ",
+// Idealy we map out all the http errors and translations else just call this with the http resposne:
+'upload-http-error' => "An HTTP error occured: $1",
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Could not reach URL',
@@ -3063,7 +3066,7 @@ You can view its source',
 'tooltip-recreate'                => 'Recreate the page even though it has been deleted',
 'tooltip-upload'                  => 'Start upload',
 'tooltip-rollback'                => '"Rollback" reverts edit(s) to this page of the last contributor in one click',
-'tooltip-undo'                    => '"Undo" reverts this edit and opens the edit form in preview mode. 
+'tooltip-undo'                    => '"Undo" reverts this edit and opens the edit form in preview mode.
 It allows adding a reason in the summary.',
 
 # Stylesheets
