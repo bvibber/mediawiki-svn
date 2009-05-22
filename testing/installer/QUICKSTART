@@ -34,7 +34,7 @@ This system *should* work on most unix-like systems. I've only tested on linuxes
 1. svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/testing/
 2. (optional): configure for use outside your homedir:
 2a. cd testing/installer
-2b. settings.example to settings.py  and check with settings_handler (if you need to)  ... if you leave out this step, it'll only work in your homedir.
+2b. copy settings.example to settings.py  and  edit. Check the settings_handler.py file for clues as to what settings are available. (if you need to)  ... if you leave out this step, it'll only work in your homedir.
 4. mkdir ~/public_html/revisions   (if you are indeed working in your homedir)
 	or at any rate, ensure that the directory you are going to put mediawiki
 	exists, and is accessible to apache
