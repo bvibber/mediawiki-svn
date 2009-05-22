@@ -3,12 +3,34 @@ Document: (C) 2009 Kim Bruning, released as documentation under MIT license
 Quickstart guide:
 
 ============
-Installation
-=============
+0. Contents
+============
+1. Installation
+1.1 installer
+1.2 testing
+
+2. Using the installer
+2.1 In general
+2.2 Basic Commands
+
+3. But what was it for, again?
+3.1 Why we made it.
+3.2 What else can you use it for?
+3.3 Calling from bash, elsewhere
+
+4. What if my mediawiki extension is special
+4.1 What if my extension is not special
+4.2 My extension is still special
+
+
+===============
+1. Installation
+===============
 
 This system *should* work on most unix-like systems. I've only tested on linuxes so far though: ubuntu, gentoo, and debian.
-
-INSTALLER
+-------------
+1.1 INSTALLER
+-------------
 1. svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/testing/
 2. (optional): configure for use outside your homedir:
 2a. cd testing/installer
@@ -19,7 +41,9 @@ INSTALLER
 
 # installer now works.
 
-TESTING
+-----------
+1.2 TESTING
+------------
 5. To get testing working
 ./installer.py install toolkit:pywikipedia 
 6. also, in exttest, copy settings.py.example to settings.py, and edit.
@@ -27,8 +51,12 @@ TESTING
 testing can still use a lot of coding work.
 
 ====================
-USING THE INSTALLER:
+2. USING THE INSTALLER:
 ====================
+
+--------------
+2.1 In general 
+--------------
 
 To get something installed. There's a REPL (command line) and you can also
 access the same commands from bash (or some other shell, or popen, or what have
@@ -37,7 +65,7 @@ interface,  installers.py is the basic back end), so someone might be able to
 create a GUI or web front end someday soon. :-)
 
 --------------
-Basic commands
+2.2 Basic commands
 ---------------
 
 basic commands are:
@@ -64,22 +92,22 @@ to uninstall things
 
 And that's basically it!
 
-============================
-But what was it for, again?
-============================
+==============================
+3. But what was it for, again?
+==============================
 
-------------------
-Why we made it.
-------------------
+-------------------
+3.1 Why we made it.
+--------------------
 Well, imagine if you want to install many different wikis with slightly different settings and extensions, so you can test how things interact. (this is a testing environment, after all ;-) ). We found that setting up tests actually took longer than the actual tests! Hence we made this tool.
 
 For examples of some ready made scripts, for existing environments, see ../util/environment/
 
 Now you too can make a duplicate of the wikipedia setup (dataabase not included, though you could conceivably get one from http://download.wikimedia.org/ ), or start playing with this new faluting semantic mediawiki concept (../util/Referata.sh see also: www.referata.com) , or... etc...
 
----------------------------
-What else can you use it for
-----------------------------
+---------------------------------
+3.2 What else can you use it for?
+---------------------------------
 
 It's also fairly handy for maintaining large numbers of wikis in a production environment. Or for maintaining backups of even just a single wiki
 
@@ -89,9 +117,9 @@ if you hadn't uninstalled your first wiki yet:
 
 will create a clone of the first wiki, which you can either leave online and allow to grow and change by itself, or you can tar it up and pack it away someplace safe as a backup.
 
-----------------------------
-Calling from bash, elsewhere
-----------------------------
+--------------------------------
+3.3 Calling from bash, elsewhere
+--------------------------------
 
 
 calling from bash is easy too
@@ -104,12 +132,12 @@ Once again,
 
 
 ============================================
-What if my mediawiki extension is special?
+4. What if my mediawiki extension is special?
 ============================================
 
------------------------------------
-What if my extension is not special
------------------------------------
+----------------------------------------
+4.1 What if my extension is not special
+----------------------------------------
 if your extension is listed at
 	http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/
 
@@ -119,9 +147,9 @@ if the name of the primary .php script is the same as the extension name
 
 your extension is not special, and the installer will install it automagically.
 
---------------------------------
-My extension is still special
--------------------------------
+---------------------------------
+4.2 My extension is still special
+---------------------------------
 
 No problem. We maintain a list of exceptions in installfiles/extensions
 ImageMap is a plain vanilla extension, and doesn't really need an exception, but we put it there as an example. Copy over ImageMap.install and fill in the different files as you see fit.
