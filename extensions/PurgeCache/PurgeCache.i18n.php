@@ -14,6 +14,7 @@ $messages['en'] = array(
 	'purgecache-warning' => 'This will purge the cache tables.',
 	'purgecache-purged'  => 'The cache has been purged.',
 	'purgecache-button'  => 'Purge',
+	'right-purgecache'   => 'Wipe the OBJECTCACHE table',
 );
 
 /** Message documentation (Message documentation)
