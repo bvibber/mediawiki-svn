@@ -136,8 +136,11 @@ if you hadn't uninstalled your first wiki yet:
 	duplicate myfirstwiki mysecondwiki
 
 Will create a clone of the first wiki, which you can either leave online and
-allow to grow and change by itself, or you can tar it up and pack it away
+allow to grow and change by itself, or you can move it away
 someplace safe as a backup.
+
+(near future: we should also generate tarballs or zips for you to use as backups)
+
 
 --------------------------------
 3.3 Calling from bash, elsewhere
