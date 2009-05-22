@@ -6,10 +6,12 @@
 
 $messages = array();
 $messages['en'] = array(
-	'signaturelogpage'      => 'Signature log',
-	'signature-desc'        => 'Enables document [[Special:SignDocument|signing]]',
-	'signaturelogpagetext'  => 'This is a log of [[Special:SignDocument|all signatures added to documents]].',
-	'signaturelogentry'     => 'signed the document $1',
+	'signaturelogpage'         => 'Signature log',
+	'signature-desc'           => 'Enables document [[Special:SignDocument|signing]]',
+	'signaturelogpagetext'     => 'This is a log of [[Special:SignDocument|all signatures added to documents]].',
+	'signaturelogentry'        => 'signed the document $1',
+	'right-sigadmin'           => 'Administrate document signing',
+	'right-createsigndocument' => 'Create documents that can be signed',
 );
 
 /** Message documentation (Message documentation)

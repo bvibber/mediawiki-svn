@@ -25,8 +25,8 @@ Read through the entire document, and if you wish to indicate your support for i
 	'sign-indicates-req'   => '<small><i><font color="red">*</font> indicates required field.</i></small>',
 	'sign-hide-note'       => '<small><i><font color="red">**</font> Note: Unlisted information will still be visible to moderators.</i></small>',
 	'sign-list-anonymous'  => 'List anonymously',
-	'sign-list-hideaddress'=> 'Do not list address',
-	'sign-list-hideextaddress'=>'Do not list city, state, zip, or country',
+	'sign-list-hideaddress' => 'Do not list address',
+	'sign-list-hideextaddress' => 'Do not list city, state, zip, or country',
 	'sign-list-hidephone'  => 'Do not list phone',
 	'sign-list-hidebday'   => 'Do not list age',
 	'sign-list-hideemail'  => 'Do not list e-mail',
@@ -56,12 +56,12 @@ $1',
 	'sign-viewfield-age'        => 'Age',
 	'sign-viewfield-options'    => 'Options',
 	'sign-viewsigs-intro'       => 'Shown below are the signatures recorded for <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
-	'sign-sigadmin-currentlyopen'=>'Signing is currently enabled for this document.',
+	'sign-sigadmin-currentlyopen' => 'Signing is currently enabled for this document.',
 	'sign-sigadmin-close'       => 'Disable signing',
-	'sign-sigadmin-currentlyclosed'=>'Signing is currently disabled for this document.',
+	'sign-sigadmin-currentlyclosed' => 'Signing is currently disabled for this document.',
 	'sign-sigadmin-open'        => 'Enable signing',
 	'sign-signatures'           => 'Signatures',
-	'sign-sigadmin-closesuccess'=> 'Signing successfully disabled.',
+	'sign-sigadmin-closesuccess' => 'Signing successfully disabled.',
 	'sign-sigadmin-opensuccess' => 'Signing successfully enabled.',
 	'sign-viewsignatures'       => 'view signatures',
 	'sign-closed'               => 'closed',
@@ -90,9 +90,9 @@ $1',
 	'sign-review-comment'          => 'Comment',
 	'sign-submitreview'            => 'Submit review',
 	'sign-uniquequery-similarname' => 'Similar name',
-	'sign-uniquequery-similaraddress'=> 'Similar address',
-	'sign-uniquequery-similarphone'=> 'Similar phone',
-	'sign-uniquequery-similaremail'=> 'Similar email',
+	'sign-uniquequery-similaraddress' => 'Similar address',
+	'sign-uniquequery-similarphone' => 'Similar phone',
+	'sign-uniquequery-similaremail' => 'Similar email',
 	'sign-uniquequery-1signed2'    => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signed [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
@@ -3248,7 +3248,7 @@ $messages['ru'] = array(
 	'sign-list-hideemail' => 'Не включать в список эл. почту',
 	'sign-submit' => 'Подписать документ',
 	'sign-information' => '<div class="noarticletext">Спасибо, что потратили своё время на прочтение этого документа.
-Если вы согласны с ним, пожалуйста, выразите вашу поддержку, заполнив приведённые ниже поля и нажав кнопку «Подписать документ». 
+Если вы согласны с ним, пожалуйста, выразите вашу поддержку, заполнив приведённые ниже поля и нажав кнопку «Подписать документ».
 Пожалуйста, убедитесь, что приводимые вами личные сведения правильны, что указаны способы связи, которыми можено воспользоваться для проверки подлинности.
 Заметьте, что ваш IP-адрес и иная идентификационная информация будет записана с помощью этой формы и использована модераторами для удаления повторных подписей и подтверждения правильности личных сведений.
 Поскольку использование открытых и анонимизирующих прокси препятствует нашей возможности выполнить эту задачу, подписи с таких прокси, скорее всего, будут учитываться.
@@ -3734,7 +3734,7 @@ Pakibasang mabuti ang buong dokumento, at kung ibig mong ipahayag ang pagtangkil
 	'sign-list-hideemail' => 'Huwag itala ang e-liham',
 	'sign-submit' => 'Lagdaan ang kasulatan/dokumento',
 	'sign-information' => '<div class="noarticletext">Salamat sa pagbibigay mo ng panahon upang basahin ang kahabaan ng kasulatang ito.
-Kung pumapayag ka rito, pakipahayag ang iyong pagtangkilik sa pamamagitan ng pagpupuno sa loob ng kinakailangang mga kahanayan sa ibaba at pagpindot sa "Lagdaan ang kasulatan".  
+Kung pumapayag ka rito, pakipahayag ang iyong pagtangkilik sa pamamagitan ng pagpupuno sa loob ng kinakailangang mga kahanayan sa ibaba at pagpindot sa "Lagdaan ang kasulatan".
 Pakitiyak lamang na tama ang iyong pansariling kabatiran at na mayroon nga kaming paraan upang makipagugnayan sa iyo upang mapatunayan ang iyong katauhan.
 Pakitandaan lamang na ang adres ng IP mo at iba pang mapagkikilanlang kabatiran ay itatala sa pamamagitan ng pormularyong ito at gagamitin ng mga tagapamagitan upang maalis ang nagkakadalawang mga lagda at tiyakin ang katumpakan ng iyong pansariling kabatiran.
 Dahil sa nagbibigay ng hangganan sa aming kakayanan ang pagsasagawa ng gawaing ito ang paggamit ng bukas at mga pamalit (\'\'proxy\'\') na pang-hindi nagpapakilala, mas malamang na hindi bibilangin ang mga lagdang nagmumula sa ganyang mga pamalit.
