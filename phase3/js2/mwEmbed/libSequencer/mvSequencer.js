@@ -129,7 +129,7 @@ mvSequencer.prototype = {
 									}, function(){					
 										this_seq.mySearch = new seqRemoteSearchDriver({
 											'p_seq':this_seq,
-											'target_id':'cliplib_ic',
+											'target_container':'#cliplib_ic',
 											'local_wiki_api_url': 	this_seq.getLocalApiUrl(),										
 											'instance_name': this_seq.instance_name + '.mySearch'						
 										 });
@@ -461,7 +461,7 @@ mvSequencer.prototype = {
 		
 		//propagate the edit tokens 
 		//if on an edit page just grab from the form:		
-		this.sequenceEditToken = $j('input[@wpEditToken]').val();
+		this.sequenceEditToken = $j('input[wpEditToken]').val();
 		if(typeof this.sequenceEditToken == 'undefined'){			
 			var reqObj = {
 				'action':'query',

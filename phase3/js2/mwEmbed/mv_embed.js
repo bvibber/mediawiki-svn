@@ -28,6 +28,9 @@ var MV_EMBED_VERSION = '1.0r15';
 //the name of the player skin (default is mvpcf)
 if(!mv_skin_name)
 	var mv_skin_name = 'mvpcf';
+	
+if(!mwjQueryUiSkin)
+	var mwjQueryUiSkin = 'smoothness';
 
 //whether or not to load java from an iframe.
 //note: this is necessary for remote embedding because of java security model)
@@ -59,9 +62,11 @@ var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"str
 if( !mv_embed_path ){
 	var mv_embed_path = getMvEmbedPath();
 }
+jQueryUiVN = 'jquery.ui-1.7.1'; 
 
 
 //setup the skin path: 
+var mv_jquery_skin_path = mv_embed_path + 'jquery/' + jQueryUiVN + '/themes/' + mwjQueryUiSkin + '/';
 var mv_skin_img_path = mv_embed_path + 'skins/' + mv_skin_name + '/images/';
 var mv_default_thumb_url = mv_skin_img_path + 'vid_default_thumb.jpg';
 
@@ -77,9 +82,11 @@ function loadGM( msgSet ){
 
 //all default msg in [English] should be overwritten by the CMS language msg system.
 loadGM({ 
-	"loading_txt":"loading <blink>...</blink>",
-	
+	"loading_txt":"loading <blink>...</blink>",	
+	"loading_title"  : "Loading...",
+		
 	"loading_plugin" : "loading plugin<blink>...</blink>",
+
 	"select_playback" : "Set Playback Preference",
 	"link_back" : "Link Back",
 	"error_load_lib" : "mv_embed: Unable to load required javascript libraries\n insert script via DOM has failed, try reloading?  ",
@@ -385,10 +392,10 @@ var mvJsLoader = {
 		_this.jQueryCheck(function(){
 			_this.doLoad({
 				'embedVideo'	  : 'libEmbedVideo/mv_baseEmbed.js',
-				'$j.cookie'		  :	'jquery/jquery.ui-1.7.1/external/cookie/jquery.cookie.js',
-				'$j.ui.mouse'	  : 'jquery/jquery.ui-1.7.1/ui/ui.core.js',
-				'$j.ui.droppable' : 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js',
-				'$j.ui.draggable' : 'jquery/jquery.ui-1.7.1/ui/ui.draggable.js'
+				'$j.cookie'		  :	'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',
+				'$j.ui.mouse'	  : 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+				'$j.ui.droppable' : 'jquery/' + jQueryUiVN + '/ui/ui.droppable.js',
+				'$j.ui.draggable' : 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js'
 				},function(){
 					//set up embedTypes (load from cookie if possible) 		
 					embedTypes.init();
@@ -467,6 +474,7 @@ function mwAddOnloadHook( func ) {
 			func();
 		});	
 	}else{
+		//if using mwAddOnloadHook we need to get jQuery into place (if its not already included)
 		mvJsLoader.jQueryCheckFlag = true;
 		mvJsLoader.addLoadEvent( func );
 	};
@@ -544,25 +552,22 @@ if (document.addEventListener ) {
 	//backup "onload" method in case on DOMContentLoaded does not exist
 	window.onload = function(){ mwdomReady() };
 }
-
-/* init remote search */
-function mv_do_remote_search( initObj ){
-	js_log(':::::mv_do_remote_search::::');
-	
-	//issue a load skin request: 
-	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
-			
-	//insure we have the basic libs (jquery etc) : 
-	mvJsLoader.jQueryCheck(function(){
-		//load search specifc extra stuff 
-		mvJsLoader.doLoad({
-			'remoteSearchDriver':'libAddMedia/remoteSearchDriver.js'
-		}, function(){
-			initObj['instance_name']= 'rsdMVRS';
-			rsdMVRS = new remoteSearchDriver( initObj );
-			rsdMVRS.doInitDisplay();
-		});
-	});
+/*
+ * should depreciate and use jquery.ui.dialog instead
+ */
+function mv_write_modal(content, speed){
+	$j('#modalbox,#mv_overlay').remove();
+	$j('body').append('<div id="modalbox" style="background:#DDD;border:3px solid #666666;font-size:115%;'+
+				'top:30px;left:20px;right:20px;bottom:30px;position:fixed;z-index:100;">'+			
+				content +			
+			'</div>'+		
+			'<div id="mv_overlay" style="background:#000;cursor:wait;height:100%;left:0;position:fixed;'+
+				'top:0;width:100%;z-index:5;filter:alpha(opacity=60);-moz-opacity: 0.6;'+
+				'opacity: 0.6;"/>');
+	$j('#modalbox,#mv_overlay').show( speed );	
+}
+function mv_remove_modal(speed){
+	$j('#modalbox,#mv_overlay').remove( speed);
 }
 
 /*
@@ -570,40 +575,76 @@ function mv_do_remote_search( initObj ){
  * (setup after jQuery is avaliable)
  * lets you call rewrites in a jquery "way"
  *  
- * @@todo eventually we should refactor mwCode over to jQuery style plugins
- *   	( but for now mv_embed.js will bridge this gap ) 
+ * @@ eventually we should refactor mwCode over to jQuery style plugins
+ *  	and mv_embed.js will just hanndle dependency mapping and loading. 
+ * 	 
  */  
 function mv_jqueryBindings(){
 	js_log('mv_jqueryBindings');	
 	(function($) {
 		
-		$.fn.firefogg = function( initObj, callback ) {		
-			//set "selector" in the initObj
+		$.fn.addMediaWiz = function( iObj ){			
+			//first set the cursor for the button to "loading" 
+			$j(this.selector).css('cursor','wait').attr('title', gM('loading_title'));
+									
+			iObj['target_invocation'] = this.selector;
+			//load the mv_embed_base skin: 
+			var cssReq = new Array( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );
+			
+			//more cache efficent to just load the entire skin (only 25k or so) 
+			//we could group skin requests but would hurt our caching
+			cssReq.push(  mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
+				
+			loadExternalCss( cssReq );																			
+			
+			//load all the req libs: 
+			mvJsLoader.jQueryCheck(function(){
+				//load search specifc extra stuff 
+				mvJsLoader.doLoad({
+					'remoteSearchDriver': 'libAddMedia/remoteSearchDriver.js',
+					'$j.cookie'			: 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',
+					'$j.ui'				: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+					'$j.ui.resizable'	: 'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
+					'$j.ui.draggable'	: 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
+					'$j.ui.dialog'		: 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js',
+					'$j.ui.tabs'		: 'jquery/' + jQueryUiVN + '/ui/ui.tabs.js',
+					'$j.ui.sortable'	: 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js'
+				}, function(){
+					iObj['instance_name']= 'rsdMVRS';
+					_global['rsdMVRS'] = new remoteSearchDriver( iObj );		
+				});
+			});
+		}
+		
+		$.fn.firefogg = function( iObj, callback ) {		
+			//set "selector" in the iObj
 		
 			// @@todo should refactor  mvAdvFirefogg as jQuery plugin
-			initObj['selector'] = this.selector;	
+			iObj['selector'] = this.selector;	
 			
 			loadSet = {				
 				'mvBaseUploadInterface'	: 'libAddMedia/mvBaseUploadInterface.js',
 				'mvFirefogg'			: 'libAddMedia/mvFirefogg.js'
 			};			
 			//see if we need to load the advanced firefog controls and associated ui components:			
-			if( initObj.encoder_interface ){
+			if( iObj.encoder_interface ){
 				//@@todo would be nice to have a "dependency" map we could use/
 				loadSet['mvAdvFirefogg']	= 'libAddMedia/mvAdvFirefogg.js';
-				loadSet['$j.cookie']		= 'jquery/jquery.ui-1.7.1/external/cookie/jquery.cookie.js';
-				loadSet['$j.ui']			= 'jquery/jquery.ui-1.7.1/ui/ui.core.js';
-				loadSet['$j.ui.accordion']	= 'jquery/jquery.ui-1.7.1/ui/ui.accordion.js';
-				loadSet['$j.ui.slider']		= 'jquery/jquery.ui-1.7.1/ui/ui.slider.js';
+				loadSet['$j.cookie']		= 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js';
+				loadSet['$j.ui']			= 'jquery/' + jQueryUiVN + '/ui/ui.core.js';
+				loadSet['$j.ui.accordion']	= 'jquery/' + jQueryUiVN + '/ui/ui.accordion.js';
+				loadSet['$j.ui.slider']		= 'jquery/' + jQueryUiVN + '/ui/ui.slider.js';
+				
+				//load jquery ui css:
 			}
 			//make sure we have everything loaded that we need: 
 			mvJsLoader.doLoad( loadSet, function(){			
-				js_log('firefogg libs loaded. target select:' + initObj.selector);
+				js_log('firefogg libs loaded. target select:' + iObj.selector);
 				//select interface provicer based on if we want to include the encoder interface or not: 
-				if(initObj.encoder_interface){
-					var myFogg = new mvAdvFirefogg( initObj );
+				if(iObj.encoder_interface){
+					var myFogg = new mvAdvFirefogg( iObj );
 				}else{
-					var myFogg = new mvFirefogg( initObj );
+					var myFogg = new mvFirefogg( iObj );
 				}			
 					
 				if(myFogg)
@@ -625,31 +666,26 @@ function mv_do_sequence(initObj){
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
 				'mvPlayList':'libSequencer/mvPlayList.js',
-				'$j.ui'			:'jquery/jquery.ui-1.7.1/ui/ui.core.js',
-				'$j.ui.sortable':'jquery/jquery.ui-1.7.1/ui/ui.sortable.js',
-				'$j.ui.resizable':'jquery/jquery.ui-1.7.1/ui/ui.resizable.js',
-				'$j.contextMenu':'jquery/plugins/jquery.contextMenu.js'
-			},function(){
-				//debugger;
-				//load the sequencer
-				mvJsLoader.doLoad({
-						'mvSequencer':'libSequencer/mvSequencer.js'						
-					},function(){					
-						js_log('calling new mvSequencer');						
-						//init the sequence object (it will take over from there) no more than one mvSeq obj: 
-						if(!_global['mvSeq']){
-							_global['mvSeq'] = new mvSequencer(initObj);
-						}else{
-							js_log('mvSeq already init');
-						}
-					});
+				'$j.ui'			:'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+				'$j.ui.sortable':'jquery/' + jQueryUiVN + '/ui/ui.sortable.js',
+				'$j.ui.resizable':'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
+				'$j.contextMenu':'jquery/plugins/jquery.contextMenu.js',
+				'mvSequencer':'libSequencer/mvSequencer.js'		
+			},function(){					
+				js_log('calling new mvSequencer');						
+				//init the sequence object (it will take over from there) no more than one mvSeq obj: 
+				if(!_global['mvSeq']){
+					_global['mvSeq'] = new mvSequencer(initObj);
+				}else{
+					js_log('mvSeq already init');
+				}
 		});
 	});
 }
 /*
 * utility functions:
 */
-//simple url re-writer for standard temporal and size request urls: 
+//simple url re-writer for rewriting urls (could probably be refactored into an inline regular expresion) 
 function getURLParamReplace( url, opt ){	
 	var pSrc = parseUri( url );	
 	if(pSrc.protocol != '' ){
@@ -665,8 +701,7 @@ function getURLParamReplace( url, opt ){
 			val = opt[ key ];
 		new_url+= amp + key + '=' + val;					
 		amp = '&';    	
-	};
-	
+	};	
 	return new_url;
 }
 /**
@@ -902,10 +937,19 @@ function styleSheetPresent(url){
     return false;
 }
 function loadExternalCss(url){
-	if( !styleSheetPresent(url) ){
-		if( url.indexOf('?') == -1 ){
-			url+='?'+getMvUniqueReqId();
+	//if could have script loader group thes css request 
+	//but debatable it may hurt more than it helps with caching and all
+	if(typeof url =='object'){
+		for(var i in url){			
+			loadExternalCss ( url[i] );
 		}
+		return ;
+	}
+	
+	if( url.indexOf('?') == -1 ){
+		url+='?'+getMvUniqueReqId();
+	}
+	if(!styleSheetPresent(url) ){		
 	   js_log('load css: ' + url);
 	   var e = document.createElement("link");
 	   e.href = url;

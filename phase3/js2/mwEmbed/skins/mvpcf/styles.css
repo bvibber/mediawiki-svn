@@ -484,6 +484,7 @@ div.floatleft, table.floatleft {
 
 #SEQUENCER CSS:
 #resizable css:
+/*
 .ui-resizable-handle { position: absolute; background: #ddd; display: none; }
 .ui-resizable .ui-resizable-handle { display: block }
 .ui-resizable-e { z-index:5; position:absolute; cursor: e-resize;
@@ -503,7 +504,8 @@ div.floatleft, table.floatleft {
 	right:10px;
 	height:19px;  
 }
-
+*/
+/*
 div.rsd_cp_tab_container{
 	display:inline;
 	margin:0;
@@ -544,10 +546,12 @@ div.rsd_selected {
 	z-index:200;
 	overflow:auto;
 }
-#rsd_results {
+*/
+
+/*#rsd_results {
 	border-top:0;
 	border:1px solid #777;
-	position:relative;	
+	/*position:relative;*/	
 	background:#FFF;	
 	left:2px;
 	right:2px;
@@ -555,7 +559,7 @@ div.rsd_selected {
 	overflow:auto;
 	position:absolute;
 	top:75px;
-}
+}*/
 #rsd_resource_edit{
 	z-index:2;
 }

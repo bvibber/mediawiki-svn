@@ -7,7 +7,9 @@
 	metavid 
 	and archive.org
 */
-loadGM( { "mv_media_search" : "Media Search",
+loadGM({ 
+		"add_media_wizard": "Add Media Wizard",
+		"mv_media_search" : "Media Search",
 		"rsd_box_layout" : "Box layout",
 		"rsd_list_layout" : "List Layout",
 		"rsd_results_desc" : "Results ",
@@ -26,13 +28,14 @@ loadGM( { "mv_media_search" : "Media Search",
 		"cc_nd_title": "No Derivative Works",
 		"cc_sa_title": "Share Alike",
 		"cc_pd_title": "Public Domain",
-		"unknown_license": "Unknown License",
+		"unknown_license": "Unknown License",		
 		
 		"no_import_by_url": "This User or Wiki <b>can not</b> import assets from remote URLs. <br> If permissions are set you may have to enable $wgAllowCopyUploads, <a href=\"http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads\">more info</a>"
 });
 var default_remote_search_options = {
 	'profile':'mediawiki_edit',	
-	'target_id':null, //the div that will hold the search interface
+	'target_container':null, //the div that will hold the search interface
+	'target_invocation': null, //the button or link that will invoke the search interface
 	
 	'default_provider_id':'all', //all or one of the content_providers ids
 	
@@ -50,8 +53,7 @@ var default_remote_search_options = {
 	'cFileNS':'File', //what is the cannonical namespace for images 
 					  //@@todo (should get that from the api or inpage vars)
 					  
-	'enable_upload_tab':true, // if we want to enable an uploads tab:  
-	'enable_combined_tab':false
+	'enable_upload_tab':true, // if we want to enable an uploads tab:  	
 }
 
 if(typeof wgServer == 'undefined')
@@ -295,7 +297,8 @@ remoteSearchDriver.prototype = {
 	cUpLoader			: null,
 	cEdit				: null,
 	
-	init : function( initObj ){
+	init: function( initObj ){
+		var _this = this;
 		js_log('remoteSearchDriver:init');
 		for( var i in default_remote_search_options ) {
 			if( initObj[i]){
@@ -315,24 +318,123 @@ remoteSearchDriver.prototype = {
 		}		
 		//overwrite the default query if a text selection was made: 
 		if(this.target_textbox)
-			this.getTexboxSelection();			
+			this.getTexboxSelection();
+			
+		//set up the target invocation: 
+		if($j(this.target_invocation).length==0){
+			js_error("RemoteSearchDriver:: no target invocation provided")
+		}else{
+			$j(this.target_invocation).css('cursor','pointer').attr('title', gM('add_media_wizard')).click(function(){
+				_this.doInitDisplay();
+			});			
+		}			
 	},
 	doInitDisplay:function(){
+		//setup the parent container:
+		this.init_modal();
+		//fill in the html:
 		this.init_interface_html();
+		//bind actions: 
 		this.add_interface_bindings();
 	},
 	//gets the in and out points for insert position or grabs the selected text for search	
-	getTexboxSelection:function(){				
-		if(this.caret_pos){
-			if(this.caret_pos.s && this.caret_pos.e &&
-				(this.caret_pos.s != this.caret_pos.e))
-			this.default_query = this.caret_pos.text.substring(this.caret_pos.s, this.caret_pos.e).replace(/ /g, '\xa0') || '\xa0'
-		}		
+	getTexboxSelection:function(){	
+		//update the caretPos	
+		this.getCaretPos();				
+		
+		//if we have highlighted text use that as the query: (would be fun to add context menu) 
+		if( this.caret_pos.selection )
+			this.default_query = this.caret_pos.selection
+		
 	},
+	getCaretPos:function(){
+		this.caret_pos={};	
+		var txtarea = $j(this.target_textbox).get(0);
+		var getTextCusorStartPos = function (o){		
+			if (o.createTextRange) {
+					var r = document.selection.createRange().duplicate()
+					r.moveEnd('character', o.value.length)
+					if (r.text == '') return o.value.length
+					return o.value.lastIndexOf(r.text)
+				} else return o.selectionStart
+		}
+		var getTextCusorEndPos = function (o){
+			if (o.createTextRange) {
+				var r = document.selection.createRange().duplicate();
+				r.moveStart('character', -o.value.length);
+				return r.text.length;
+			} else{ 
+				return o.selectionEnd
+			}
+		}
+		this.caret_pos.s = getTextCusorStartPos( txtarea );
+		this.caret_pos.e = getTextCusorEndPos( txtarea );		
+		this.caret_pos.text = txtarea.value;	
+		if(this.caret_pos.s && this.caret_pos.e &&
+				(this.caret_pos.s != this.caret_pos.e))
+			this.caret_pos.selection = this.caret_pos.text.substring(this.caret_pos.s, this.caret_pos.e).replace(/ /g, '\xa0') || '\xa0';	
+				
+		//restore text value: (creating textRanges sometimes screws with the text content) 
+		$j(this.target_textbox).val(this.caret_pos.text);
+	},
+	init_modal:function(){
+		var _this = this;
+		//add the parent target_container if not provided or missing 
+		if(!_this.target_container || $j(_this.target_container).length==0){
+			$j('body').append('<div id="rsd_modal_target" title="' + gM('add_media_wizard') + '" ></div>');
+			_this.target_container = '#rsd_modal_target';
+			js_log('appended: #rsd_modal_target' + $j(_this.target_container).attr('id'));
+				js_log('added target id:' + $j(_this.target_container).attr('id'));
+			//get layout 
+			layout = _this.getMaxModalLayout();
+			$j(_this.target_container).dialog({
+				bgiframe: true,
+				autoOpen: true,
+				height: layout.h ,
+				width: layout.w,
+				position: [layout.t,layout.r],
+				modal: true,
+				buttons: {			
+					'Cancel': function() {
+						$j(this).dialog('close');
+					}
+				},
+				close: function() {
+					js_log('closed modal');
+				}			
+			});
+			//for some reaons the width does not "stick on init: 
+			//$j(_this.target_container).dialog('option', 'width', 800);
+			var resizeTimer = false;
+			$j(window).bind('resize', function() {
+				var adjustModal = function(){
+					var layout = _this.getMaxModalLayout();
+					js_log("should adjust: h " + layout.h + ' width:' + layout.w);
+					$j(_this.target_container).dialog('option', 'width', layout.w);
+					$j(_this.target_container).dialog('option', 'height', layout.h);					
+				}
+				if (resizeTimer) clearTimeout(resizeTimer);
+				var resizeTimer = setTimeout(adjustModal, 100);
+			});
+		} 	
+	},
+	getMaxModalLayout:function(border){
+		if(!border)
+			border = 50;	
+		js_log('setting h:' + (parseInt( $j(document).height() ) - parseInt(border*2)) + ' from:' + $j(document).height() );
+		return {  
+			'h': parseInt( $j(document).height() ) - parseInt(border*2),
+			'w': parseInt( $j(document).width() ) - parseInt(border*2),
+			'r': border,
+			't': border
+		}		
+	},	
 	//sets up the initial html interface 
 	init_interface_html:function(){
 		var _this = this;
 		var dq = (this.default_query)? this.default_query : '';
+		js_log('f::init_interface_html');	
+		
 		var out = '<div class="rsd_control_container" style="width:100%">' + 
 					'<form id="rsd_form" action="javascript:return false;" method="GET">'+
 					'<table style="width:100%;background-color:transparent;">' +
@@ -375,12 +477,14 @@ remoteSearchDriver.prototype = {
 			}		 		
 			out+='<div style="clear:both"/><a id="mso_selprovider_close" href="#">'+gM('close')+'</a></div>';
 		out+='</div>';				
+		
 		//close up the control container: 
 		out+='</div>';
+		
 		//search provider tabs based on "checked" and "enabled" and "combined tab"
 		out+='<div id="rsd_results_container"></div>';
 		
-		$j('#'+ this.target_id ).html( out );	
+		$j(this.target_container).html( out );	
 		//draw the tabs: 
 		this.drawTabs();
 		//run the default search: 
@@ -389,7 +493,8 @@ remoteSearchDriver.prototype = {
 	}, 
 	add_interface_bindings:function(){
 		var _this = this;
-		js_log("f:add_interface_bindings:");		
+		js_log("f:add_interface_bindings:");						
+		
 		//setup for this.main_search_options:
 		$j('#mso_cancel').unbind().click(function(){ 
 			_this.closeAll(); 
@@ -419,17 +524,15 @@ remoteSearchDriver.prototype = {
 	},
 	doUploadInteface:function(){	
 		var _this = this;	
-		mv_set_loading('#rsd_results');
+		mv_set_loading('#tab-upload');
 		
-		//load the (firefog enhanced) upload manager:
-		
-		//load the upload.js from mediaWiki:		
+		//todo @this
 		mvJsLoader.doLoad( {'mvUploader': 'libAddMedia/mvClipEdit.js'},function(){				
 			_this.cUpLoader = new mvUploader({
-					'target_div': 'rsd_results',
+					'target_div': '#tab-upload',
 					'upload_done_action:': function( rTitle){
 						//set to loading:
-						mv_set_loading('#rsd_results');
+						mv_set_loading('#tab-upload');
 						//do a direct api query for resource info (to build rObj
 						_this.getResourceFromTitle( rTitle, function(rObj){
 							//call resource Edit: 
@@ -443,44 +546,36 @@ remoteSearchDriver.prototype = {
 	runSearch: function(){			
 		js_log("f:runSearch");
 		//draw_direct_flag
-		var draw_direct_flag = true;			
-		//set loading div: 
-		mv_set_loading('#rsd_results');						
+		var draw_direct_flag = true;						
 				
-		//get a remote search object for each search provider and run the search
+		//set the display item if not already set: 
 		for(var cp_id in  this.content_providers){
-			var cp = this.content_providers[ cp_id ];			
-				
-			//only run the search for default item (unless combined is selected) 
-			if( !cp.d || this.disp_item == 'combined' )
-				continue;			
-			
-			//set display if unset
-			if( !this.disp_item )
-				this.disp_item = cp_id;
-				
-			//check if we need to update: 
-			if( typeof cp.sObj != 'undefined' ){
-				if(cp.sObj.last_query == $j('#rsd_q').val() && cp.sObj.last_offset == cp.offset){
-					js_log('last query is: ' + cp.sObj.last_query + ' matches: ' +  $j('#rsd_q').val() );					
-				}else{
-					js_log('last query is: ' + cp.sObj.last_query + ' not match: ' +  $j('#rsd_q').val() );
-					draw_direct_flag = false;
+			if( this.content_providers[ cp_id ].d ){
+				if (!this.disp_item ){			
+					this.disp_item = cp_id;
+					break;
 				}
+			}
+		}		
+		cp = this.content_providers[this.disp_item];
+		//set the content to loading while we do the search:
+		$j('#tab-' + this.disp_item).html( mv_get_loading_img() ); 
+		
+		//check if we need to update: 
+		if( typeof cp.sObj != 'undefined' ){
+			if(cp.sObj.last_query == $j('#rsd_q').val() && cp.sObj.last_offset == cp.offset){
+				js_log('last query is: ' + cp.sObj.last_query + ' matches: ' +  $j('#rsd_q').val() );					
 			}else{
+				js_log('last query is: ' + cp.sObj.last_query + ' not match: ' +  $j('#rsd_q').val() );
 				draw_direct_flag = false;
 			}
-			if( !draw_direct_flag ){			
-				//make sure the search library is loaded and issue the search request 
-				this.getLibSearchResults( cp );
-			}			
+		}else{
+			draw_direct_flag = false;
 		}
-		
-		//draw the results without running a query
-		if( draw_direct_flag ){
-			js_log('do drawOutputResults direct')
-			this.drawOutputResults();
-		}		
+		if( !draw_direct_flag ){			
+			//make sure the search library is loaded and issue the search request 
+			this.getLibSearchResults( cp );
+		}						
 	},	
 	//issue a api request & cache the result
 	//this check can be avoided by setting the this.import_url_mode = 'api' | 'form' | insted of 'autodetect' or 'none'
@@ -622,44 +717,55 @@ remoteSearchDriver.prototype = {
 	drawTabs: function(){
 		var _this = this;
 		//add the tabs to the rsd_results container: 
-		var o='<div class="rsd_tabs_container" style="position:absolute;top:41px;width:100%;left:12px;height:25px;">';
-		//o+= '<ul class="rsd_cp_tabs" style="margin: 0 0 0 0;position:absolute;top:0px;padding:0;">'; //no idea why margin does not overwrite from the css		
-			//output combined tab:		
-			if(_this.enable_combined_tab)	
-				o+='<div id="rsd_tab_combined" class="rsd_cp_tab"><img src="' + mv_skin_img_path + 'remote_cp/combined_tab.png"></div>';
-						 			 	
+		var o='<div id="rsd_tabs_container" style="width:100%;">';
+		o+= '<ul>'; 				
+			var tabc = '';	 	
 			for(var cp_id in  this.content_providers){
-				var cp = this.content_providers[cp_id];
-				if( cp.enabled && cp.checked){
-					var class_attr = 'class="rsd_cp_tab';
-					//add selected if so:
-					class_attr+= (cp.d)?' rsd_selected"':'"';
-					o+='<div id="rsd_tab_'+cp_id+'" ' + class_attr + '>';
-					if(cp.tab_img === true){
-						o+='<img alt="' + cp.title +'" src="' + mv_skin_img_path + 'remote_cp/' + cp_id + '_tab.png"></div>';
-					}else if(typeof cp.tab_img=='string'){
-						o+='<img alt="' + cp.title +'" src="' + cp.tab_img + '"></li>';
-					}else if(cp.tab_img === false){
-						o+= cp.title;
-					}
-				}
+					var cp = this.content_providers[cp_id];
+					if( cp.enabled && cp.checked){
+						var class_attr = 'class="rsd_cp_tab';
+						//add selected if so:
+						class_attr+= (cp.d)?' rsd_selected"':'"';
+						o+='<li id="rsd_tab_' + cp_id + '" ' + class_attr + '>';
+						o+='<a href="#tab-' + cp_id + '">';
+							if(cp.tab_img === true){
+								o+='<img alt="' + cp.title +'" src="' + mv_skin_img_path + 'remote_cp/' + cp_id + '_tab.png">';				
+							}else{
+								o+= cp.title;
+							}
+						o+='</a>';
+						o+='</li>';
+					}	
+					
+					tabc+='<div id="tab-'+ cp_id +'" class="rsd_results"/>';			
+					
 			}
-		//do an upload tab if enabled: 
-		if( this.enable_upload_tab ){
-			var class_attr = 'class="rsd_cp_tab';
-			class_attr+= ( this.disp_item =='upload' ) ?' rsd_selected"':'"';
-			o+='<div id="rsd_tab_upload" ' + class_attr + '> ' + gM('upload') + '</div>';
-		}
-		//o+='</ul>';		
-		o+='</div>';
-		//outout the resource results holder	
-		o+='<div id="rsd_results" />';				
+			//do an upload tab if enabled: 
+			if( this.enable_upload_tab ){
+				var class_attr = 'class="rsd_cp_tab';
+				class_attr+= ( this.disp_item =='upload' ) ?' rsd_selected"':'"';
+				o+='<li id="rsd_tab_upload" ' + class_attr + '><a href="#tab-upload">' + gM('upload') + '</a></li>';
+				tabc+='<div id="tab-upload" />';			
+			}
+			o+='</ul>';
+			//output the tab content containers: 
+			o+=tabc;
+		o+='</div>'; //close tab container
+		
+		//output the respective results holders			
 		$j('#rsd_results_container').html(o);
 		
-		//setup bindings for tabs: 
-		$j('.rsd_cp_tab').click(function(){
+		//setup bindings for tabs make them sortable: (@@todo remember order)		
+		$j("#rsd_tabs_container").tabs({
+			select: function(event, ui) {
+				js_log($j(this).id);
+			}			
+		//add sorting
+		}).find(".ui-tabs-nav").sortable({axis:'x'});
+		 
+		/*$j('.rsd_cp_tab').click(function(){
 			_this.selectTab( $j(this).attr('id').replace(/rsd_tab_/, '') );
-		});
+		});*/
 		
 		//setup key binding
 		$j().keyup(function(e){	
@@ -709,76 +815,72 @@ remoteSearchDriver.prototype = {
 	drawOutputResults: function(){		
 		js_log('f:drawOutputResults');					
 		var _this = this;			
-		var o='';
-		$j('#rsd_results').empty();
+		var o='';	
+		
+		var cp_id = this.disp_item;
+		var cp = this.content_providers[this.disp_item];
+		
+		//empty the existing results:
+		$j('#tab-' + cp_id).empty();
+		
 		//output the results bar / controls
 		_this.setResultBarControl();
 				
 		var drawResultCount	=0;
 		
-		//output all the results (hide based on tab selection) 
-		for( var cp_id in  this.content_providers ){
-			cp = this.content_providers[ cp_id ];
-			//output results based on display mode & input: 
-			if( typeof cp['sObj'] != 'undefined' ){				
-				$j.each(cp.sObj.resultsObj, function(rInx, rItem){					
-					var disp = ( cp.d ) ? '' : 'display:none;';					
-					
-					if( _this.result_display_mode == 'box' ){
-						o+='<div id="mv_result_' + rInx + '" class="mv_clip_box_result" style="' + disp + 'width:' +
-								_this.thumb_width + 'px;height:'+ (_this.thumb_width-20) +'px;position:relative;">';
-							//check for missing poster types for audio
-							if( rItem.mime=='audio/ogg' && !rItem.poster ){
-								rItem.poster = mv_skin_img_path + 'sound_music_icon-80.png';									
-							}
-							//get a thumb with proper resolution transform if possible: 
-							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + cp_id + '_' + rInx +
-									'" style="width:' + _this.thumb_width + 'px;" src="' + 
-									cp.sObj.getImageTransform( rItem, {'width':_this.thumb_width } ) 
-									+ '">';
-							//add a linkback to resource page in upper right:
-							if( rItem.link ) 
-								o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' +
-									 gM('resource_description_page') + 
-									'" href="' + rItem.link + '"><img src="' + stylepath + 
-									'/common/images/magnify-clip.png"></a>';
-							//add license icons if present				
-							if( rItem.license )	
-								o+= _this.getlicenseImgSet( rItem.license );																													
-						o+='</div>';
-					}else if(_this.result_display_mode == 'list'){
-						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					
-							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + cp_id + '_' + rInx +'" style="float:left;width:' +
-									 _this.thumb_width + 'px; padding:5px;" src="' + 
-									 cp.sObj.getImageTransform( rItem, {'width':_this.thumb_width } )
-									  + '">';			
-							 
-							//add license icons if present				
-							if( rItem.license )	
-								o+= _this.getlicenseImgSet( rItem.license );								
-							
-							o+= rItem.desc ;					
-						o+='<div style="clear:both" />';			
-						o+='</div>';						
-					}
-					
-					if( cp.d )
-						drawResultCount++;			
-				});	
-			}						
-		}				
-		//put in the new output:  
-		$j('#rsd_results').append( o );
+		//output all the results for the current disp_item			
+		if( typeof cp['sObj'] != 'undefined' ){					
+			$j.each(cp.sObj.resultsObj, function(rInx, rItem){														
+				if( _this.result_display_mode == 'box' ){
+					o+='<div id="mv_result_' + rInx + '" class="mv_clip_box_result" style="width:' +
+							_this.thumb_width + 'px;height:'+ (_this.thumb_width-20) +'px;position:relative;">';
+						//check for missing poster types for audio
+						if( rItem.mime=='audio/ogg' && !rItem.poster ){
+							rItem.poster = mv_skin_img_path + 'sound_music_icon-80.png';									
+						}
+						//get a thumb with proper resolution transform if possible: 
+						o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + cp_id + '_' + rInx +
+								'" style="width:' + _this.thumb_width + 'px;" src="' + 
+								cp.sObj.getImageTransform( rItem, {'width':_this.thumb_width } ) 
+								+ '">';
+						//add a linkback to resource page in upper right:
+						if( rItem.link ) 
+							o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' +
+								 gM('resource_description_page') + 
+								'" href="' + rItem.link + '"><img src="' + stylepath + 
+								'/common/images/magnify-clip.png"></a>';
+						//add license icons if present				
+						if( rItem.license )	
+							o+= _this.getlicenseImgSet( rItem.license );																													
+					o+='</div>';
+				}else if(_this.result_display_mode == 'list'){
+					o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="width:90%">';					
+						o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + cp_id + '_' + rInx +'" style="float:left;width:' +
+								 _this.thumb_width + 'px; padding:5px;" src="' + 
+								 cp.sObj.getImageTransform( rItem, {'width':_this.thumb_width } )
+								  + '">';			
+						 
+						//add license icons if present				
+						if( rItem.license )	
+							o+= _this.getlicenseImgSet( rItem.license );								
+						
+						o+= rItem.desc ;					
+					o+='<div style="clear:both" />';			
+					o+='</div>';						
+				}				
+				drawResultCount++;							
+			});			
+			//put in the tab output (plus clear the output) 
+			$j('#tab-' + cp_id).append( o + '<div style="clear:both"/>');							
+		}
 		
 		js_log( ' drawResultCount :: ' + drawResultCount + ' append: ' + $j('#rsd_q').val() );
 		
 		//remove any old search res
 		$j('#rsd_no_search_res').remove();	
 		if( drawResultCount == 0 )
-			$j('#rsd_results').append( '<span style="padding:10px">' + gM( 'rsd_no_results', $j('#rsd_q').val() ) + '</span>');						
+			$j('#tab-' + cp_id).append( '<span style="padding:10px">' + gM( 'rsd_no_results', $j('#rsd_q').val() ) + '</span>');						
 								
-		//remove rss only display class if present
-		$j('#rsd_results .mv_rss_view_only').remove();
 		this.addResultBindings();
 	},
 	addResultBindings:function(){
@@ -825,7 +927,7 @@ remoteSearchDriver.prototype = {
 		//so that transcripts show ontop
 		var overflow_style = ( mediaType =='video' )?'':'overflow:auto;';
 		//append to the top level of model window: 
-		$j( '#'+ _this.target_id ).append('<div id="rsd_resource_edit" '+ 
+		$j( _this.target_container ).append('<div id="rsd_resource_edit" '+ 
 			'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
 				'<h3 id="rsd_resource_title" style="margin:4px;">' + gM('rsd_resource_edit', rObj.title )  +'</h3>'+
 				'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:35px;left:5px;bottom:0px;'+
@@ -838,7 +940,7 @@ remoteSearchDriver.prototype = {
 				'</div>'+
 			'</div>');
 		
-		js_log('did append to: '+ _this.target_id );
+		js_log('did append to: '+ _this.target_container );
 		
 		$j('#rsd_resource_edit').css('opacity',0);
 		
@@ -947,7 +1049,7 @@ remoteSearchDriver.prototype = {
 			// normally this meta should be provided in the search result (but archive.org has a seperate query for more meida meta)
 			rObj.pSobj.getEmbedTimeMeta( rObj, function(){													
 				//make sure we have the embedVideo libs:			 
-				mvJsLoader.embedVideoCheck(function(){
+				mvJsLoader.embedVideoCheck( function(){
 					js_log('append html: ' + rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'}) );
 					$j('#clip_edit_disp').append(
 						rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})
@@ -957,7 +1059,7 @@ remoteSearchDriver.prototype = {
 						//grab any information that we got from the ROE xml or parsed from the media file
 						rObj.pSobj.getEmbedObjParsedInfo( rObj, 'embed_vid' );
 						//add the re-sizable to the doLoad request:				
-						clibs['$j.ui.resizable']   ='jquery/jquery.ui-1.7.1/ui/ui.resizable.js';	
+						clibs['$j.ui.resizable']   ='jquery/' + jQueryUiVN + '/ui/ui.resizable.js';	
 						clibs['$j.fn.hoverIntent'] ='jquery/plugins/jquery.hoverIntent.js';
 						mvJsLoader.doLoad(clibs, function(){	
 							//make sure the rsd_edit_img is hidden: 
@@ -1051,7 +1153,7 @@ remoteSearchDriver.prototype = {
 						
 						$j('#rsd_resource_import').remove();//remove any old resource imports
 						//@@ show user dialog to import the resource
-						$j( '#'+ _this.target_id ).append('<div id="rsd_resource_import" '+ 
+						$j( _this.target_container ).append('<div id="rsd_resource_import" '+ 
 						'style="position:absolute;top:50px;left:50px;right:50px;bottom:50px;background-color:#FFF;border:solid thick red;z-index:3">' +
 							'<h3 style="color:red">Resource: <span style="color:black">' + rObj.title + '</span> needs to be imported</h3>'+
 								'<div id="rsd_preview_import_container" style="position:absolute;width:50%;bottom:0px;left:0px;overflow:auto;top:30px;">' +
@@ -1192,7 +1294,7 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		this.checkImportResource( rObj, function(){		
 			//put another window ontop:
-			$j( '#'+ _this.target_id ).append('<div id="rsd_resource_preview" '+ 
+			$j( _this.target_container ).append('<div id="rsd_resource_preview" '+ 
 					'style="position:absolute;z-index:4;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
 						'<h3>preview insert of resource: ' + rObj.title + '</h3>'+
 						'<div id="rsd_preview_display" style="position:absolute;width:100%;top:30px;bottom:30px;overflow:auto;">' +
@@ -1269,86 +1371,78 @@ remoteSearchDriver.prototype = {
 		if( this.content_providers[this.disp_item] ){
 			var cp = this.content_providers[this.disp_item];
 			about_desc ='<span style="position:relative;top:0px;font-style:italic;">' +
-					' <i> Results From <a href="'+ cp.homepage + '" target="_new" >'+ cp.title +'</a> </i></span>';
+					' <i> Results From <a href="'+ cp.homepage + '" target="_new" >'+ cp.title +'</a> </i></span>';		
+			$j('#tab-'+this.disp_item).append( '<div id="rds_results_bar">'+			 			
+				'<span style="position:relative;top:0px;font-style:italic;">'+
+					gM('rsd_layout')+' '+
+				'</span>'+
+					'<img id="msc_box_layout" ' +
+						'title = "' + gM('rsd_box_layout') + '" '+ 
+						'src = "' +  ( (_this.result_display_mode=='box')?box_dark_url:box_light_url ) + '" ' +			
+						'style="width:20px;height:20px;cursor:pointer;"> ' + 
+					'<img id="msc_list_layout" '+
+						'title = "' + gM('rsd_list_layout') + '" '+
+						'src = "' +  ( (_this.result_display_mode=='list')?list_dark_url:list_light_url ) + '" '+			
+						'style="width:20px;height:20px;cursor:pointer;">'+			
+				'<span id="rsd_paging_ctrl" style="float:right;top:5px;"></span>'+
+				about_desc +
+				'</div>'
+			);
+			//get paging with bindings:
+			this.getPaging('#rsd_paging_ctrl');
+					
+			$j('#msc_box_layout').hover(function(){			
+				$j(this).attr("src", box_dark_url );
+			}, function(){ 
+				$j(this).attr("src",  ( (_this.result_display_mode=='box')?box_dark_url:box_light_url ) );		
+			}).click(function(){	
+				$j(this).attr("src", box_dark_url);
+				$j('#msc_list_layout').attr("src", list_light_url);
+				_this.setDispMode('box');
+			});
+			
+			$j('#msc_list_layout').hover(function(){
+				$j(this).attr("src", list_dark_url);
+			}, function(){
+				$j(this).attr("src", ( (_this.result_display_mode=='list')?list_dark_url:list_light_url ) );		
+			}).click(function(){
+				$j(this).attr("src", list_dark_url);
+				$j('#msc_box_layout').attr("src", box_light_url);
+				_this.setDispMode('list');
+			});
 		}
-		$j('#rsd_results').append( '<div id="rds_results_bar">'+			 			
-			'<span style="position:relative;top:0px;font-style:italic;">'+
-				gM('rsd_layout')+' '+
-			'</span>'+
-				'<img id="msc_box_layout" ' +
-					'title = "' + gM('rsd_box_layout') + '" '+ 
-					'src = "' +  ( (_this.result_display_mode=='box')?box_dark_url:box_light_url ) + '" ' +			
-					'style="width:20px;height:20px;cursor:pointer;"> ' + 
-				'<img id="msc_list_layout" '+
-					'title = "' + gM('rsd_list_layout') + '" '+
-					'src = "' +  ( (_this.result_display_mode=='list')?list_dark_url:list_light_url ) + '" '+			
-					'style="width:20px;height:20px;cursor:pointer;">'+			
-			'<span id="rsd_paging_ctrl" style="position:absolute;right:5px;top:5px;"></span>'+
-			about_desc +
-			'</div>'
-		);
-		//get paging with bindings:
-		this.getPaging('#rsd_paging_ctrl');
-				
-		$j('#msc_box_layout').hover(function(){			
-			$j(this).attr("src", box_dark_url );
-		}, function(){ 
-			$j(this).attr("src",  ( (_this.result_display_mode=='box')?box_dark_url:box_light_url ) );		
-		}).click(function(){	
-			$j(this).attr("src", box_dark_url);
-			$j('#msc_list_layout').attr("src", list_light_url);
-			_this.setDispMode('box');
-		});
-		
-		$j('#msc_list_layout').hover(function(){
-			$j(this).attr("src", list_dark_url);
-		}, function(){
-			$j(this).attr("src", ( (_this.result_display_mode=='list')?list_dark_url:list_light_url ) );		
-		}).click(function(){
-			$j(this).attr("src", list_dark_url);
-			$j('#msc_box_layout').attr("src", box_light_url);
-			_this.setDispMode('list');
-		});
 	},
 	getPaging:function(target){
-		var _this = this;
-		//if more than one repository displayed (disable paging)
-		if(this.disp_item ==  'combined'){
-			$j(target).html('no paging for combined results');
-			return ;
-		}				
-		for(var cp_id in  this.content_providers){			
-			if(this.disp_item == cp_id){			
-				var cp = this.content_providers[ cp_id ];							
-				//js_log('getPaging:'+ cp_id + ' len: ' + cp.sObj.num_results);
-				var to_num = ( cp.limit > cp.sObj.num_results )?
-								(cp.offset + cp.sObj.num_results):
-								(cp.offset + cp.limit);  
-				var out = gM('rsd_results_desc') + ' ' +  (cp.offset+1) + ' to ' + to_num;
-				//check if we have more results (next prev link)
-				if(  cp.offset >=  cp.limit )
-					out+=' <a href="#" id="rsd_pprev">' + gM('rsd_results_prev') + ' ' + cp.limit + '</a>';
-					
-				if( cp.sObj.more_results )					
-					out+=' <a href="#" id="rsd_pnext">' + gM('rsd_results_next') + ' ' + cp.limit + '</a>';
-					
-				$j(target).html(out);
-				//set bindings 
-				$j('#rsd_pnext').click(function(){
-					cp.offset += cp.limit;
-					_this.runSearch();
-				});
-				$j('#rsd_pprev').click(function(){
-					cp.offset -= cp.limit;
-					if(cp.offset<0)
-						cp.offset=0;
-					_this.runSearch();
-				});
-				
-				return;				
-			}
-		}						
+		var _this = this;	
+		var cp_id = this.disp_item;
+		var cp = this.content_providers[ this.disp_item ];							
+		//js_log('getPaging:'+ cp_id + ' len: ' + cp.sObj.num_results);
+		var to_num = ( cp.limit > cp.sObj.num_results )?
+						(cp.offset + cp.sObj.num_results):
+						(cp.offset + cp.limit);  
+		var out = gM('rsd_results_desc') + ' ' +  (cp.offset+1) + ' to ' + to_num;
+		//check if we have more results (next prev link)
+		if(  cp.offset >=  cp.limit )
+			out+=' <a href="#" id="rsd_pprev">' + gM('rsd_results_prev') + ' ' + cp.limit + '</a>';
+			
+		if( cp.sObj.more_results )					
+			out+=' <a href="#" id="rsd_pnext">' + gM('rsd_results_next') + ' ' + cp.limit + '</a>';
+			
+		$j(target).html(out);
+		//set bindings 
+		$j('#rsd_pnext').click(function(){
+			cp.offset += cp.limit;
+			_this.runSearch();
+		});
+		$j('#rsd_pprev').click(function(){
+			cp.offset -= cp.limit;
+			if(cp.offset<0)
+				cp.offset=0;
+			_this.runSearch();
+		});
 		
+		return;									
+
 	},
 	selectTab:function( selected_cp_id ){
 		js_log('select tab: ' + selected_cp_id);
@@ -1356,7 +1450,7 @@ remoteSearchDriver.prototype = {
 		//set display to unselected: 
 		for(var cp_id in  this.content_providers){
 			cp = this.content_providers[ cp_id ];
-			if( (selected_cp_id == 'combined' && cp.checked ) || selected_cp_id == cp_id){
+			if( cp.checked || selected_cp_id == cp_id){
 				cp.d = 1;
 			}else{
 				cp.d = 0;
