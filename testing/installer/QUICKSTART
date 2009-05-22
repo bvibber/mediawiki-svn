@@ -2,6 +2,10 @@ Document: (C) 2009 Kim Bruning, released as documentation under MIT license
 
 Quickstart guide:
 
+============
+Installation
+=============
+
 INSTALLER
 1. svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/testing/
 2. cd testing/installer
@@ -16,17 +20,24 @@ TESTING
 
 testing can still use a lot of coding work.
 
-
-
-
+====================
 USING THE INSTALLER:
-To get something installed. There's a REPL (command line) and you can also access the same commands from bash (or some other shell, or popen, or what have you)
-The interface and back end are somewhat separate (installer.py is current interface,  installers.py is the basic back end), so someone might be able to create a GUI or web front end someday soon. :-)
+====================
+
+To get something installed. There's a REPL (command line) and you can also
+access the same commands from bash (or some other shell, or popen, or what have
+you) The interface and back end are somewhat separate (installer.py is current
+interface,  installers.py is the basic back end), so someone might be able to
+create a GUI or web front end someday soon. :-)
+
+--------------
+Basic commands
+---------------
 
 basic commands are:
-ls
-install
-uninstall
+	ls
+	install
+	uninstall
 
 to see what you can install:
 -mediawiki revisions
@@ -47,9 +58,22 @@ to uninstall things
 
 And that's basically it!
 
-Why is this handy at all?
+===========================
+But what was it for, again?
+============================
 
-Well, imagine if you want to install many different wikis with slightly different settings and extensions, so you can test how things interact. (this is a testing environment, after all ;-) ) You can use this tool to script your installation procedure.
+------------------
+Why we made it.
+------------------
+Well, imagine if you want to install many different wikis with slightly different settings and extensions, so you can test how things interact. (this is a testing environment, after all ;-) ). We found that setting up tests actually took longer than the actual tests! Hence we made this tool.
+
+For examples of some ready made scripts, for existing environments, see ../util/environment/
+
+Now you too can make a duplicate of the wikipedia setup (dataabase not included, though you could conceivably get one from http://download.wikimedia.org/ ), or start playing with this new faluting semantic mediawiki concept (../util/Referata.sh see also: www.referata.com) , or... etc...
+
+---------------------------
+What else can you use it for
+----------------------------
 
 It's also fairly handy for maintaining large numbers of wikis in a production environment. Or for maintaining backups of even just a single wiki
 
@@ -59,17 +83,93 @@ if you hadn't uninstalled your first wiki yet:
 
 will create a clone of the first wiki, which you can either leave online and allow to grow and change by itself, or you can tar it up and pack it away someplace safe as a backup.
 
+----------------------------
+Calling from bash, elsewhere
+----------------------------
 
 
 calling from bash is easy too
 
 	./installer.py install mediawiki:latest as cuttingedgedude
 
-For examples of some ready made scripts, see ../util/environment/
+
+Once again, 
+	example scripts can be found at ../util/environment
 
 
+============================================
+What if my mediawiki extension is special?
+============================================
+
+-----------------------------------
+What if my extension is not special
+-----------------------------------
+if your extension is listed at
+	http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/
+
+if the name of the primary .php script is the same as the extension name
+
+(near future: and if your script can do its setup when /YOURWIKI/maintenance/update.php is called)
+
+your extension is not special, and the installer will install it automagically.
+
+--------------------------------
+My extension is still special
+-------------------------------
+
+No problem. We maintain a list of exceptions in installfiles/extensions
+ImageMap is a plain vanilla extension, and doesn't really need an exception, but we put it there as an example. Copy over ImageMap.install and fill in the different files as you see fit.
+
+FILES
+
+is_installed.sh		checks whether the extension is installed,
+			and echo's "true" if so, or "false" if not. Make
+			as sophisticated as you like.
+
+download.sh		downloads the files for the extension
+
+setup.sh		(not needed for imagemap): Does sundry setup. Put
+			anything here that doesn't go anywhere else.
+
+uninstall.sh		removes the extension cleanly. (no mess left in db)
+
+update.sh		reserved for future expansion (intended to use 
+			svn update)
+
+info			information about the extension, if you'd like
+			to provide some. (can be accessed using the
+			installer "info" command)
 
 
+VARIABLES
+These are environment variables that the installer passes to installation scripts.
 
+    * $DATABASE_NAME - the name of the MySQL database associated with the mediawiki instance you are working with.
+
+          eg: "minuteelectron_test1", "kim_documentationwiki", "MWE_documentation" 
+
+    * $DESTINATION_DIR - the location where you're installing to. (typically the extensions directory of a particular mediawiki instance)
+
+          eg: "/home/gerardm/public_html/revisions/MWE_documenation/extensions", "/home/kim/public_html/revisions/documentationwiki/extensions", "/var/www/localhost/htdocs/revisions/test22/extensions" 
+
+    * $INSTALL_DIR - the .install directory you are working from
+
+          eg:"/home/gerardm/testing/installer/installfiles/extensions/ImageMap.install" 
+
+    * $MYSQL_COMMAND - A mysql command sufficient to give mysql access (ie, on your local system, it might be something like: mysql -u<user_name> -p<password> )
+
+          eg: "mysql -uroot" ; "mysql -uroot -psecret --host=db.remote.net --port=1234" 
+
+    * $NAME - the name of the thing you are installing
+
+          eg: "ImageMap","SemanticMediawiki" 
+
+    * $REVISION - specific (svn) revision if provided (can be blank)
+
+          eg: "48822" 
+
+    * $TAG - specific (svn) tag if provided (can be blank)
+
+          eg: "REL1_12_1", "REL1_14_0" 
 
 
