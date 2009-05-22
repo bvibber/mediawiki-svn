@@ -1,8 +1,11 @@
 #!/bin/sh
+# (c) Gerard Meijssen - MIT licence
+
+cd ../../installer
 
 ./installer.py uninstall mediawiki:SMW_testsystem
 
-Tag=REL1_14_0
+Tag=REL1_15_0RC1
 
 ./installer.py install mediawiki:$Tag as SMW_testsystem
 

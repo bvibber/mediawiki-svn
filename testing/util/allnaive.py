@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# (C) 2009 Kim Bruning. Distributed under the MIT license (see LICENSE file)
+
 import sys
 import os, os.path
 sys.path.append("..")

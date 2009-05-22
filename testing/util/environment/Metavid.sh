@@ -1,7 +1,9 @@
 #!/bin/sh
+# (c) Gerard Meijssen - MIT licence
 
 revision=48811
 
+cd ../../installer
 
 ./installer.py uninstall mediawiki:MetavidWiki
 

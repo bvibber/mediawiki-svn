@@ -1,4 +1,5 @@
 #!/bin/sh
+# (c) Gerard Meijssen - MIT licence
 
 ./installer.py uninstall mediawiki:UW_testsystem
 

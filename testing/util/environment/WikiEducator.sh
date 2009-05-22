@@ -1,4 +1,5 @@
 #!/bin/sh
+# (c) Gerard Meijssen - MIT licence
 
 cd /usr/local/wikiation/installer
 

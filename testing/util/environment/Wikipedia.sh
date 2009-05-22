@@ -2,15 +2,16 @@
 
 revision="48811"
 echo $revision
+# (c) Gerard Meijssen - MIT licence
 
-cd /usr/local/wikiation/installer
+cd ../../installer
 
 
 #CentralAuth and GlobalBlocking fail ... global ?
 
 ./installer.py uninstall mediawiki:WMF_testsystem
 
-./installer.py install mediawiki: revision $revision as WMF_testsystem
+./installer.py install mediawiki: revision 50605 as WMF_testsystem
 
 ./installer.py install naive:CategoryTree revision $revision in WMF_testsystem
 #./installer.py install naive:CentralAuth revision $revision in WMF_testsystem
@@ -92,7 +93,7 @@ php /var/www/revisions/WMF_testsystem/maintenance/parserTests.php --quiet --quic
 
 cd /usr/local/wikiation/wikiation_exttest
 
-./wikiation_exttest.py --xmlfile ../tests/ImageMap/WETE.xml
+./exttest.py --xmlfile testfiles/ImageMap/exttest.xml
 
 cd /usr/local/wikiation/util/environment
 
