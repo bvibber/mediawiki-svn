@@ -34,7 +34,26 @@ This system *should* work on most unix-like systems. I've only tested on linuxes
 1. svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/testing/
 2. (optional): configure for use outside your homedir:
 2a. cd testing/installer
-2b. copy settings.example to settings.py  and  edit. Check the settings_handler.py file for clues as to what settings are available. (if you need to)  ... if you leave out this step, it'll only work in your homedir.
+2b. copy settings.example to settings.py  and  edit. Check the settings_handler.py file for a comprehensive list of settings are availa ... if you leave out this step, it'll only work in your homedir.
+	watch out for the differences between instancesdir and base_scriptpath (it's how apache refers to your directory:
+
+	EXAMPLE 1: (if using  mod_userdir )
+		instancesdir="/home/johndoe/public_html/revisions"
+		base_scriptpath="/~johndoe/revisions"
+	and your browser will access wikis from:
+		http://www.johndoesserver.com/~johndoe/revisions
+	(this is the default)
+	It may help to set  apache's    Options Indexes   for your instancesdir. Else you'll
+	need to directly refer to your a particular wiki as  http://www.johndoesserver.com/~johndoe/revisions/myfirstwiki
+
+	EXAMPLE 2: (A fairly typical apache setup)
+		instancesdir="/var/www/localhost/htdocs/instances"
+		base_scriptpath="/instances"
+	and your browser will access wikis from:
+		http://www.johndoesserver.com/~revisions
+	once again,  Options Indexes is your friend
+	
+
 4. mkdir ~/public_html/revisions   (if you are indeed working in your homedir)
 	or at any rate, ensure that the directory you are going to put mediawiki
 	exists, and is accessible to apache
