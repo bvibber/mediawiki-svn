@@ -1,5 +1,5 @@
 # This software, copyright (C) 2008-2009 by Wikiation. 
-# This software is developed by Kim Bruning.
+# This software (C) 2009 by Kim Bruning
 #
 # Distributed under the terms of the MIT license.
 
@@ -64,7 +64,7 @@ class Download_Installer(Extension_Installer):
 		#print command
 		result=os.system(command)
 		if result!=0:
-			raise Installer_Exception("download failed, return value "+str(result>>8))
+			raise Download_Installer_Exception("download failed, return value "+str(result>>8))
 	
 	def _settings_filepath(self, installer_name):
 		settingsdir=os.path.join(self.destination_dir,"../LocalSettings")
