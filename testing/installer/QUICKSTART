@@ -110,23 +110,34 @@ And that's basically it!
 -------------------
 3.1 Why we made it.
 --------------------
-Well, imagine if you want to install many different wikis with slightly different settings and extensions, so you can test how things interact. (this is a testing environment, after all ;-) ). We found that setting up tests actually took longer than the actual tests! Hence we made this tool.
+
+Well, imagine if you want to install many different wikis with slightly
+different settings and extensions, so you can test how things interact. (this
+is a testing environment, after all ;-) ). We found that setting up tests
+actually took longer than the actual tests! Hence we made this tool.
 
 For examples of some ready made scripts, for existing environments, see ../util/environment/
 
-Now you too can make a duplicate of the wikipedia setup (dataabase not included, though you could conceivably get one from http://download.wikimedia.org/ ), or start playing with this new faluting semantic mediawiki concept (../util/Referata.sh see also: www.referata.com) , or... etc...
+Now you too can make a duplicate of the wikipedia setup (dataabase not
+included, though you could conceivably get one from
+http://download.wikimedia.org/ ), or start playing with this new faluting
+semantic mediawiki concept (../util/Referata.sh see also: www.referata.com) ,
+or... etc...
 
 ---------------------------------
 3.2 What else can you use it for?
 ---------------------------------
 
-It's also fairly handy for maintaining large numbers of wikis in a production environment. Or for maintaining backups of even just a single wiki
+It's also fairly handy for maintaining large numbers of wikis in a production
+environment. Or for maintaining backups of even just a single wiki
 
 if you hadn't uninstalled your first wiki yet:
 
 	duplicate myfirstwiki mysecondwiki
 
-will create a clone of the first wiki, which you can either leave online and allow to grow and change by itself, or you can tar it up and pack it away someplace safe as a backup.
+Will create a clone of the first wiki, which you can either leave online and
+allow to grow and change by itself, or you can tar it up and pack it away
+someplace safe as a backup.
 
 --------------------------------
 3.3 Calling from bash, elsewhere
@@ -163,7 +174,9 @@ your extension is not special, and the installer will install it automagically.
 ---------------------------------
 
 No problem. We maintain a list of exceptions in installfiles/extensions
-ImageMap is a plain vanilla extension, and doesn't really need an exception, but we put it there as an example. Copy over ImageMap.install and fill in the different files as you see fit.
+ImageMap is a plain vanilla extension, and doesn't really need an exception,
+but we put it there as an example. Copy over ImageMap.install and fill in the
+different files as you see fit.
 
 FILES
 
@@ -187,7 +200,9 @@ info			information about the extension, if you'd like
 
 
 VARIABLES
-These are environment variables that the installer passes to installation scripts.
+
+These are environment variables that the installer passes to installation
+scripts.
 
     * $DATABASE_NAME - the name of the MySQL database associated with the mediawiki instance you are working with.
 
