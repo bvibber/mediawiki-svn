@@ -8,17 +8,17 @@
 import os
 
 # "You Are Here"
-installerdir=os.path.dirname(os.path.abspath(__file__))
+#installerdir=os.path.dirname(os.path.abspath(__file__))
 
 # where to find .install directories and the files contained therein
-installfiles=os.path.join(installerdir,'installfiles')
+#installfiles=os.path.join(installerdir,'installfiles')
 
 
 # where to find mediawiki tags and trunk on svn
-tagsdir="http://svn.wikimedia.org/svnroot/mediawiki/tags"
-trunkdir="http://svn.wikimedia.org/svnroot/mediawiki/trunk"
+#tagsdir="http://svn.wikimedia.org/svnroot/mediawiki/tags"
+#trunkdir="http://svn.wikimedia.org/svnroot/mediawiki/trunk"
 # we could alternately/additionally take a tag version for extensions. (future)
-extensionsdir=trunkdir+"/extensions"
+#extensionsdir=trunkdir+"/extensions"
 
 # where to install diverse revisions
 #revisionsdir='~/public_html/revisions'
@@ -29,12 +29,21 @@ extensionsdir=trunkdir+"/extensions"
 
 # what mysql command should be used. (Who us? Use horrible hacks?)
 
-mysql_command="mysql -uroot"
+#mysql_command="mysql -uroot"
+
+# Alternately, provide mysql options:
+
+mysql_user="root"
+mysql_pass=""
+mysql_opts=""
 
 # run automated tests during installation
 # this is useful if you are in a testing environment.
 # If you are running production, you might want to leave
 # this set to False.
-run_automated_tests=False
 
-debug=True
+run_automated_tests=False
+debug=False
+
+
+

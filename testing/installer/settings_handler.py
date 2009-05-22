@@ -1,5 +1,5 @@
-# This software, copyright (C) 2008-2009 by Wikiation. 
-# This software is developed by Kim Bruning.
+# This software, copyright (C) 2008-2009 by Wikiation.  "This software is developed by Kim Bruning."
+# (C) 2009 Kim Bruning, Charles Melbye 
 #
 # Distributed under the terms of the MIT license.
 #
@@ -79,23 +79,28 @@ wgLanguageCode="en"
 
 # what mysql commands should be used. (Who us? Use horrible hacks?)
 
+
 userpart=""
 passpart=""
+mysql_opts=""
+if os.path.exists(os.path.join(installerdir, 'settings.py')):
+       from settings import *
+	
 if mysql_user:
 	userpart="-u"+mysql_user
+
 if mysql_pass:
 	passpart="-p"+mysql_pass
 
-mysql_arguments=" "+userpart+" "+passpart
+if not 'mysql_arguments' in globals():
+	mysql_arguments=" "+userpart+" "+passpart
 
 if not 'mysql_command' in globals():
-	mysql_command="mysql "+mysql_arguments
+	mysql_command="mysql "+mysql_opts+" "+mysql_arguments
 
 if not 'mysqldump_command' in globals():
 	mysqldump_command="mysqldump "+mysql_arguments
 
-if os.path.exists(os.path.join(installerdir, 'settings.py')):
-        from settings import *
 
 #legacy support (rename old variables, etc)
 if 'revisionsdir' in globals():
