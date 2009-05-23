@@ -311,7 +311,6 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect' ) {
 		global $wgParser, $wgTitle;
-print_r($_POST);
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
