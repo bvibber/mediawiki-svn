@@ -51,7 +51,7 @@ $messages['en'] = array(
 	'recordadmin-modified' => 'Modified',
 	'recordadmin-actions' => 'Actions',
 	'recordadmin-select' => 'Select',
-	'recordadmin-needscontent' => 'Add content...',
+	'recordadmin-needscontent' => 'Add content…',
 	'right-recordadmin' => 'Find and edit record pages',
 );
 
