@@ -12,7 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'useroptionstats' => 'User option statistics',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|Special page]] for reporting on Mediawiki user option usage',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Special page]] for reporting on MediaWiki user option usage',
 	'uos-warn' => 'PHPlot is not installed!',
 	'uos-choose' => 'Choose one of the following user options: $1',
 	'uos-unknown' => '*Default',
