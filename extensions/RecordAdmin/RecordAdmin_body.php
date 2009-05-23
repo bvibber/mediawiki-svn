@@ -19,7 +19,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		# todo: should add a hook here for custom default-naming
 		$this->guid = strftime( '%Y%m%d', time() ) . '-' . substr( strtoupper( uniqid('', true) ), -5 );
 		wfLoadExtensionMessages ( 'RecordAdmin' );
-		SpecialPage::SpecialPage( 'RecordAdmin', 'recordadmin' );
+		SpecialPage::SpecialPage( 'RecordAdmin', 'recordadmin', true, false, 'default', true );
 	}
 
 	/**
@@ -309,8 +309,9 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
-	function renderRecords( $records, $cols = false, $sortable = true, $template = false ) {
+	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect' ) {
 		global $wgParser, $wgTitle;
+print_r($_POST);
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
@@ -318,13 +319,14 @@ class SpecialRecordAdmin extends SpecialPage {
 		$sortable = $sortable ? ' sortable' : '';
 		$br       = $sortable ? '<br />' : '';
 
-		# Table header
+		# Table header (col0-3 class atts are for backward compatibility, only use named from now on)
 		$table = "<table class='recordadmin$sortable $type-record'>\n<tr>";
 		$th = array(
-			'title'    => "<th class='col0'>" . wfMsg( 'recordadmin-title', $type ) . "$br</th>",
-			'actions'  => "<th class='col1'>" . wfMsg( 'recordadmin-actions' )      . "$br</th>",
-			'created'  => "<th class='col2'>" . wfMsg( 'recordadmin-created' )      . "$br</th>",
-			'modified' => "<th class='col3'>" . wfMsg( 'recordadmin-modified' )     . "$br</th>"
+			'select'   => "<th class='col-select'>"        . wfMsg( 'recordadmin-select' )       . "$br</th>",
+			'title'    => "<th class='col0 col-title'>"    . wfMsg( 'recordadmin-title', $type ) . "$br</th>",
+			'actions'  => "<th class='col1 col-actions'>"  . wfMsg( 'recordadmin-actions' )      . "$br</th>",
+			'created'  => "<th class='col2 col-created'>"  . wfMsg( 'recordadmin-created' )      . "$br</th>",
+			'modified' => "<th class='col3 col-modified'>" . wfMsg( 'recordadmin-modified' )     . "$br</th>"
 		);
 		foreach ( array_keys( $this->types ) as $col ) {
 			$class = 'col' . preg_replace( '|\W|', '-', $col );
@@ -341,17 +343,18 @@ class SpecialRecordAdmin extends SpecialPage {
 		foreach ( $records as $r ) {
 			
 			# Create special values for this row
-			$tsc = $this->formatDate( $r['created'] );
-			$tsm = $this->formatDate( $r['modified'] );
-			$t   = $r[0];
-			$u   = $t->getLocalURL();
-			$col = $r['title'];
+			$tsc    = $this->formatDate( $r['created'] );
+			$tsm    = $this->formatDate( $r['modified'] );
+			$t      = $r[0];
+			$u      = $t->getLocalURL();
+			$col    = $r['title'];
+			$sel    = "<input type='checkbox' name='{$name}[]' value='$col' checked />";
 			$stripe = $stripe ? '' : ' class="stripe"';
 			$table .= "<tr$stripe>";
 
 			# Render this row
 			if ( $template ) {
-				$text = '{'.'{'."$template|title=$col|created=$tsc|modified=$tsm";
+				$text = '{'.'{'."$template|select=%SELECT%|title=$col|created=$tsc|modified=$tsm";
 				foreach ( array_keys( $this->types ) as $col ) {
 					$v = isset( $r[$col] ) ? $r[$col] : '';
 					$text .= "|$col=$v";
@@ -359,15 +362,17 @@ class SpecialRecordAdmin extends SpecialPage {
 				$text .= '}}';
 				$text = $wgParser->parse( $text, $wgTitle, $wgParser->mOptions, true, false )->getText();
 				$text = preg_replace( "|&lt;(/?td.*?)&gt;|", "<$1>", $text );
+				$text = str_replace( '%SELECT%', $sel, $text );
 				$table .= "$text\n";
 			}
 			else {
 				$row = array(
-					'title'    => "<td class='col0'><a href='$u'>$col</a></td>",
-					'actions'  => "<td class='col1'><a href='" . $special->getLocalURL( "wpType=$type&wpRecord=$col" ) . "'>"
+					'select'   => "<td class='col-select'>$sel</td>\n",
+					'title'    => "<td class='col0 col-title'><a href='$u'>$col</a></td>",
+					'actions'  => "<td class='col1 col-actions'><a href='" . $special->getLocalURL( "wpType=$type&wpRecord=$col" ) . "'>"
 								  . wfMsg( 'recordadmin-editlink' ) . "</a></td>",
-					'created'  => "<td class='col2'>$tsc</td>\n",
-					'modified' => "<td class='col3'>$tsm</td>\n",
+					'created'  => "<td class='col2 col-created'>$tsc</td>\n",
+					'modified' => "<td class='col3 col-modified'>$tsm</td>\n",
 				);
 				foreach ( $cols ? $cols : array_keys( $th ) as $col ) {
 					if ( !isset( $row[$col] ) ) {
@@ -655,6 +660,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$parser->mOutput->mCacheTime = -1;
 		$filter   = array();
 		$title    = '';
+		$name     = 'wpSelect';
 		$invert   = false;
 		$orderby  = 'created desc';
 		$cols     = false;
@@ -665,6 +671,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			if ( preg_match( "/^(.+?)\\s*=\\s*(.+)$/", $arg, $match ) ) {
 				list( , $k, $v ) = $match;
 				if ( $k == 'title' ) $title = $v;
+				elseif ( $k == 'name' )     $name     = $v;
 				elseif ( $k == 'invert' )   $invert   = $v;
 				elseif ( $k == 'orderby' )  $orderby  = $v;
 				elseif ( $k == 'cols' )     $cols     = preg_split( '/\s*,\s*/', $v );
@@ -678,7 +685,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$this->examineForm();
 		$records = $this->getRecords( $type, $filter, $title, $invert, $orderby );
 		if ( $count ) while ( count( $records ) > $count ) array_pop( $records );
-		$table = $this->renderRecords( $records, $cols, $sortable, $template );
+		$table = $this->renderRecords( $records, $cols, $sortable, $template, $name );
 		return array( $table, 'noparse' => true, 'isHTML' => true );
 	}
 
