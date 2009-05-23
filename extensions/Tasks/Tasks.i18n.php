@@ -1804,6 +1804,7 @@ $messages['lb'] = array(
 	'tasks_here' => 'hei',
 	'tasks_returnto' => 'Dir gitt elo virugeleed. Wann Dir net no e puer Sekonnen virugeleed sidd, da clickt $1.',
 	'tasks_see_page_tasks' => '(Aufgabe vun dëser Säit)',
+	'tasks_task_is_assigned' => '(zougedeelt)',
 	'tasks_plain_text_only' => '(nëmmen Text, nëmmen 256 Zeechen)',
 	'tasks_help_page' => 'Aufgaben',
 	'tasks_more_like_it' => 'méi',

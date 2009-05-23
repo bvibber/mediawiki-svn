@@ -776,6 +776,27 @@ $messages['nn'] = array(
 	'amazonplus-less' => 'mindre',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'amazonplus-desc' => 'En utvidelse med store tilpassningsmuligheter for å vise Amazon-informasjon',
+	'amazonplus-nores' => 'Feil: Fant ingen resultater!',
+	'amazonplus-noidres' => 'Feil: Kunne ikke finne en produkt-ID!',
+	'amazonplus-fgcerr' => 'Feil: Kunne ikke hente data fra Amazon!',
+	'amazonplus-slserr' => 'Feil: Kunne ikke analysere data fra Amazon!',
+	'amazonplus-used' => 'brukt',
+	'amazonplus-german' => 'Tysk',
+	'amazonplus-french' => 'Fransk',
+	'amazonplus-japanese' => 'Japansk',
+	'amazonplus-amazon' => 'amazonpris',
+	'amazonplus-new' => 'ny',
+	'amazonplus-none' => 'Ingen kopier av dette produktet er til salgs.',
+	'amazonplus-cp-none' => 'Ingen',
+	'amazonplus-more' => 'mer',
+	'amazonplus-less' => 'mindre',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

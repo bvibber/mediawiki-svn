@@ -384,6 +384,7 @@ $messages['sk'] = array(
 $messages['vi'] = array(
 	'adminlinks' => 'Liên kết quản lý',
 	'adminlinks-desc' => 'Thêm [[Special:AdminLinks|trang đặc biệt]] liệt kê các liên kết có ích cho quản lý viên',
+	'adminlinks_documentation' => 'Tài liệu $1',
 	'adminlinks_general' => 'Tổng quát',
 	'adminlinks_editsidebar' => 'Thanh bên sửa đổi',
 	'adminlinks_editcss' => 'Sửa đổi tập tin CSS',

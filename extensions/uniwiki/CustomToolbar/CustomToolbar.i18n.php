@@ -1440,6 +1440,54 @@ Kontroller innstillingane dine for sprettoppvindaugo.',
 	'ct_user_sample' => 'Brukarnamn',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$wgCustomToolbarMessages['no'] = array(
+	'ct-desc' => 'Legger til en verktøymeny som kan utvides',
+	'ct_bold_sample' => 'Fet tekst',
+	'ct_bold_tip_ins' => 'Sett inn fet tekst',
+	'ct_bold_tip_wrap' => 'Gjør denne teksten fet',
+	'ct_bold_caption' => 'Fet',
+	'ct_italic_sample' => 'Kursiv tekst',
+	'ct_italic_tip_ins' => 'Sett inn kursiv tekst',
+	'ct_italic_tip_wrap' => 'Gjør denne teksten kursiv',
+	'ct_italic_caption' => 'Kursiv',
+	'ct_internal_sample' => 'Sidenavn',
+	'ct_internal_tip_ins' => 'Sett inn en intern lenke',
+	'ct_internal_tip_wrap' => 'Gjør denne teksten til en intern lenke',
+	'ct_internal_caption' => 'Intern lenke',
+	'ct_external_tip_ins' => 'Sett inn en ekstern lenke',
+	'ct_external_tip_wrap' => 'Gjør denne teksten til en ekstern lenke',
+	'ct_external_caption' => 'Ekstern lenke',
+	'ct_image_tip' => 'Sett inn et bilde',
+	'ct_image_caption' => 'Legg til et bilde',
+	'ct_attachment_tip' => 'Sett inn et vedlegg',
+	'ct_attachment_caption' => 'Legg til et vedlegg',
+	'ct_math_sample' => 'Sett in LaTeX-formel her',
+	'ct_math_tip_ins' => 'Sett inn matematisk formel (LaTeX)',
+	'ct_math_tip_wrap' => 'Gjør denne teksten til en matematisk formel (LaTeX)',
+	'ct_math_caption' => 'Formel',
+	'ct_nowiki_sample' => 'Sett inn uformatert tekst her',
+	'ct_nowiki_tip_ins' => 'Ignorer wikiformatering',
+	'ct_nowiki_tip_wrap' => 'Ignorer wikiformatering for denne teksten',
+	'ct_nowiki_caption' => 'Ingen wikitekst',
+	'ct_horizontal_tip' => 'Sett inn en horisantal linje (bruk sparsomt)',
+	'ct_horizontal_caption' => 'Horisontal linje',
+	'ct_upload' => 'Last opp $1',
+	'ct_select' => 'Velg $1 for å laste opp:',
+	'ct_caption' => 'Legg til bildetekst (valgfritt):',
+	'ct_link' => 'Legg til lenkenavn (valgfritt):',
+	'ct_submit' => 'Gå!',
+	'ct_close' => 'Lukk vinduet',
+	'ct_success' => 'Filopplasting vellykket!',
+	'ct_popupblocked' => 'Sprettoppvinduet for opplastingen ble hindret fra å åpne. Vennligst sjekk innstillingene dine for sprettoppvinduer.',
+	'ct_user_user' => 'Bruker',
+	'ct_user_tip' => 'Sett inn en lenke til en brukerside',
+	'ct_user_caption' => 'Brukerlenke',
+	'ct_user_sample' => 'Brukernavn',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

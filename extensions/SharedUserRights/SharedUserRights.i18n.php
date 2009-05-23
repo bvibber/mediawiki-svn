@@ -28,6 +28,7 @@ $messages['qqq'] = array(
 	'gblrights-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
+	'right-userrights-shared' => '{{doc-right|userrights-shared}}',
 );
 
 /** Arabic (العربية)
@@ -63,6 +64,7 @@ $messages['be-tarask'] = array(
 	'gblrights-logpage' => 'Журнал глябальных правоў удзельнікаў',
 	'gblrights-pagetext' => 'Гэта журнал усіх зьменаў, зробленых у глябальных правах у групе праектаў вікі',
 	'gblrights-rights-entry' => 'зьменены ўдзел у глябальных групах для $1 з $2 на $3',
+	'right-userrights-shared' => 'Кіраваньне агульнымі правамі ўдзельніка',
 );
 
 /** Bulgarian (Български)
@@ -84,6 +86,7 @@ $messages['bs'] = array(
 	'gblrights-logpage' => 'Zapisnik globalnih prava',
 	'gblrights-pagetext' => 'Ovo je zapisnik svih izmjena koje su učinjene u tabeli globalnih prava wiki porodice',
 	'gblrights-rights-entry' => 'izmjenjeno članstvo globalne grupe za $1 sa $2 na $3',
+	'right-userrights-shared' => 'Upravljanje dijeljenim korisničkim pravima',
 );
 
 /** Catalan (Català)
@@ -129,6 +132,7 @@ $messages['dsb'] = array(
 	'gblrights-logpage' => 'Protokol globalnych pšawow',
 	'gblrights-pagetext' => 'Toś ten protokol wopśimujo změny, kótarež su se pśewjadli na tabeli globalnych pšawow wikijoweje swójźby',
 	'gblrights-rights-entry' => 'jo globalne kupkowe cłonkojstwo za $1 z $2 do $3 změnił',
+	'right-userrights-shared' => 'Zgromadne wužywarske pšawa zastojaś',
 );
 
 /** Esperanto (Esperanto)
@@ -162,6 +166,7 @@ $messages['fr'] = array(
 	'gblrights-logpage' => 'Journal des droits partagés',
 	'gblrights-pagetext' => 'Voici l’historique de toutes les modifications apportées à la table des droits partagés d’utilisateur pour la famille wiki',
 	'gblrights-rights-entry' => 'a modifié l’appartenance aux groupes globaux pour $1 de $2 à $3',
+	'right-userrights-shared' => "Gérer les droits d'utilisateurs partagés",
 );
 
 /** Irish (Gaeilge)
@@ -192,6 +197,7 @@ $messages['gsw'] = array(
 	'gblrights-logpage' => 'Wältwyt Rächt-Logbuech',
 	'gblrights-pagetext' => 'In däm Logbuech het s alli Änderige, wu an dr wältwyte Rächttabälle vu dr Wikifamilie gmacht wore sin.',
 	'gblrights-rights-entry' => 'het di wältwyt Gruppezuegherigkeit fir $1 vu $2 uf $3 gänderet',
+	'right-userrights-shared' => 'Gmeinsami Benutzerrächt verwalte',
 );
 
 /** Hebrew (עברית)
@@ -215,6 +221,7 @@ $messages['hsb'] = array(
 	'gblrights-logpage' => 'Protokol globalnych prawow',
 	'gblrights-pagetext' => 'Tutón protokol wobsahuje wšě změny, kotrež buchu na tabeli globalnych prawow wikijoweje swójby přewjedźene.',
 	'gblrights-rights-entry' => 'změni globalne skupinski přisłušnosć za $1 z $2 do $3',
+	'right-userrights-shared' => 'Zhromadne wužiwarske prawa zrjadować',
 );
 
 /** Interlingua (Interlingua)
@@ -238,6 +245,7 @@ $messages['ja'] = array(
 	'gblrights-logpage' => 'グローバル権限変更記録',
 	'gblrights-pagetext' => 'これはこのウィキファミリーのグローバル利用者権限テーブルに対するすべての変更の記録です',
 	'gblrights-rights-entry' => '$1 のグローバルグループ所属を $2 から $3 へ変更しました',
+	'right-userrights-shared' => '共有利用者権限を管理する',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -265,6 +273,7 @@ $messages['ksh'] = array(
 	'gblrights-logpage' => 'Logboch met de jemeinsame Rääschte för Metmaacher',
 	'gblrights-pagetext' => 'Hee dat Logbooch zeich de Änderunge aan dä Famillisch vun Wikis iere jemeinsam Rääschte för de Metmaacher.',
 	'gblrights-rights-entry' => 'hät de jemeinsam Rääschte-Jroppe för dä Metmaacher „$1“ fun „$2“ op „$3“ jeändert.',
+	'right-userrights-shared' => 'Jemeinsam Rääschte för Metmaacher verwallde',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -276,6 +285,7 @@ $messages['lb'] = array(
 	'gblrights-logpage' => 'Lëscht vun de globale Rechter',
 	'gblrights-pagetext' => 'Dëst ass e Logbuch vun allen Ännerungen déi un der Tabell vun de globale Rechter vun der Wikifamill gemaach ginn',
 	'gblrights-rights-entry' => 'huet déi global Benotzerrechter vum $1 vun $2 op $3 geännert',
+	'right-userrights-shared' => 'Gedeelte Benotzerrechter geréieren',
 );
 
 /** Dutch (Nederlands)
@@ -310,6 +320,7 @@ $messages['oc'] = array(
 	'gblrights-logpage' => 'Istoric dels dreches globals',
 	'gblrights-pagetext' => "Aquò es l'istoric de totas las modificacion efectuadas dins la taula globala dels dreches d'utilizaire",
 	'gblrights-rights-entry' => "a modificat l'apartenéncia globala als gropes per $1 de $2 a $3",
+	'right-userrights-shared' => "Gerir los dreches d'utilizaires partejats",
 );
 
 /** Polish (Polski)
@@ -363,6 +374,7 @@ $messages['sk'] = array(
 	'gblrights-logpage' => 'Záznam globálnych práv',
 	'gblrights-pagetext' => 'Toto je záznam všetkých zmien v tabuľke globálnych práv tejto rodiny wiki',
 	'gblrights-rights-entry' => 'zmenené globálne členstvo v skupine používateľa $1 z $2 na $3',
+	'right-userrights-shared' => 'Spravovať zdieľané používateľské práva',
 );
 
 /** Telugu (తెలుగు)
@@ -407,5 +419,6 @@ $messages['vi'] = array(
 	'gblrights-logpage' => 'Nhật trình quyền toàn cầu',
 	'gblrights-pagetext' => 'Đây là nhật trình các thay đổi trong bảng quyền toàn cầu của mạng wiki.',
 	'gblrights-rights-entry' => 'đổi nhóm toàn cầu của $1 từ $2 thành $3',
+	'right-userrights-shared' => 'Quản lý các quyền người dùng chung',
 );
 

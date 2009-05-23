@@ -1366,6 +1366,19 @@ $messages['tl'] = array(
 	'right-closewikis' => 'Isara ang mga wiki',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'closewikis-page' => 'Kapat',
+	'closewikis-page-close' => 'Kapat',
+	'closewikis-page-close-wiki' => 'Viki:',
+	'closewikis-page-close-submit' => 'Kapat',
+	'closewikis-page-reopen-wiki' => 'Viki:',
+	'closewikis-page-reopen-reason' => 'Nedeni:',
+	'closewikis-list-header-wiki' => 'Viki',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

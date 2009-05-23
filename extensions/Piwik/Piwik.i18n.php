@@ -351,12 +351,14 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'piwik-desc' => 'Legger til et Piwik-skript for sporing i MediaWiki og viser [[Special:Piwik|litt statistikk]]',
 	'piwik-lastvisits' => 'Siste besøk',
 	'piwik-countries' => 'Land',
 	'piwik-browsers' => 'Nettlesere',
+	'right-viewpiwik' => 'Vis [[Special:Piwik|Piwik-statistikk]]',
 );
 
 /** Occitan (Occitan)
@@ -507,6 +509,7 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -514,6 +517,7 @@ $messages['vi'] = array(
 	'piwik-lastvisits' => 'Lần thăm cuối',
 	'piwik-countries' => 'Quốc gia',
 	'piwik-browsers' => 'Trình duyệt',
+	'right-viewpiwik' => 'Xem [[Special:Piwik|thống kê Piwik]]',
 );
 
 /** Volapük (Volapük)

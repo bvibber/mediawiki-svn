@@ -28,16 +28,6 @@ $messages['qqq'] = array(
 	'languageselector-setlang' => 'Part of the "LanguageSelector" extension. This is the text of a submit button to select your user interface language. Mostly the button  is not shown, but sometimes it appears next to the language selector (a dropdown box like in your [[Special:Preferences|user preferences]]).',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Jonny84
- * @author Piotron
- */
-$messages['sli'] = array(
-	'languageselector' => 'Sproache',
-	'languageselector-desc' => 'Sproachaauswoahl uff jeder Seite, au fier Besucher',
-	'languageselector-setlang' => 'setza',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin
@@ -226,6 +216,16 @@ $messages['es'] = array(
 	'languageselector' => 'Idioma',
 	'languageselector-desc' => 'Selector de idioma en cada página, incluso para visitantes',
 	'languageselector-setlang' => 'selecciona',
+);
+
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'languageselector' => 'Keel',
+	'languageselector-desc' => 'Language selector on every page, also for visitors
+Keele valik kõikidele lehtedele, sama ka külastajatele',
+	'languageselector-setlang' => 'vali',
 );
 
 /** Basque (Euskara)
@@ -746,6 +746,16 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'languageselector' => 'Jezik',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'languageselector' => 'Sproache',
+	'languageselector-desc' => 'Sproachaauswoahl uff jeder Seite, au fier Besucher',
+	'languageselector-setlang' => 'setza',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

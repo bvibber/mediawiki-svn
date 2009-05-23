@@ -115,6 +115,11 @@ $aliases['ja'] = array(
 	'SortPermissions' => array( '権限の分類' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'SortPermissions' => array( 'Rääschte_Zotteere', 'RääschteZotteere', '' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'GroupPermissions' => array( 'Grupperechter' ),

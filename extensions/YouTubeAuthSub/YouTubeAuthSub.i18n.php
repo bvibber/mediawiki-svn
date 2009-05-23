@@ -2685,11 +2685,11 @@ YouTube може знадобитися деякий час, щоб оброби
 	'youtubeauthsub_uploadbutton' => 'Завантажити',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Це відео можна переглянути [http://www.youtube.com/watch?v=$1 тут]',
+[http://www.youtube.com/watch?v=$1 Переглянути відео]',
 	'youtubeauthsub_summary' => 'Завантаження відео YouTube',
 	'youtubeauthsub_uploading' => 'Ваше відео завантажується.
 Будь ласка, зачекайте.',
-	'youtubeauthsub_viewpage' => 'Ви також можете переглянути ваше відео [[$1|тут]].',
+	'youtubeauthsub_viewpage' => 'Ви також можете [[$1|переглянути ваше відео]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Будь ласка, введіть хоча б одне ключове слово.',
 	'youtubeauthsub_jserror_notitle' => 'Будь ласка, введіть назву відео.',
 	'youtubeauthsub_jserror_nodesc' => 'Будь ласка, введіть опис відео.',

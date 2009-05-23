@@ -129,6 +129,13 @@ $messages['es'] = array(
 	'charinsert-desc' => 'Permite la creación de una caja JavaScript para [[MediaWiki:Edittools|insertar caracteres inusuales]]',
 );
 
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'charinsert-desc' => 'Lubab JavaScripti abil teha raami [[MediaWiki:Edittools|erimärkide lisamiseks]]',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

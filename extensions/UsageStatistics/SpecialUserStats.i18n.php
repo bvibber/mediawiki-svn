@@ -225,6 +225,7 @@ $messages['be-tarask'] = array(
 	'usagestatisticscalselect' => 'Выбраць',
 	'usagestatistics-editindividual' => 'Індывідуальная статыстыка рэдагаваньняў удзельніка $1',
 	'usagestatistics-editpages' => 'Індывідуальная статыстыка старонак удзельніка $1',
+	'right-viewsystemstats' => 'Прагляд [[Special:UserStats|звычайнай вікі-статыстыкі]]',
 );
 
 /** Bulgarian (Български)
@@ -1082,6 +1083,7 @@ $messages['lb'] = array(
 	'usagestatisticscalselect' => 'Auswielen',
 	'usagestatistics-editindividual' => 'Individuell $1 Statistiken vun den Ännerunge pro Benotzer',
 	'usagestatistics-editpages' => 'Individuell $1 Statistiken vun de Säite pro Benotzer',
+	'right-viewsystemstats' => '[[Special:UserStats|Wiki Benotzerstatistike]] weisen',
 );
 
 /** Macedonian (Македонски)
@@ -1269,6 +1271,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'specialuserstats' => 'Bruksstatistikk',
@@ -1294,6 +1297,7 @@ $messages['no'] = array(
 	'usagestatisticscalselect' => 'Velg',
 	'usagestatistics-editindividual' => 'Redigeringsstatistikk for $1',
 	'usagestatistics-editpages' => 'Sidestatistikk for $1',
+	'right-viewsystemstats' => 'Vis [[Special:UserStats|wikibrukerstatistikk]]',
 );
 
 /** Occitan (Occitan)
@@ -1740,6 +1744,7 @@ $messages['tr'] = array(
 	'usagestatisticsintervalday' => 'Gün',
 	'usagestatisticsintervalweek' => 'Hafta',
 	'usagestatisticsintervalmonth' => 'Ay',
+	'usagestatisticsincremental' => 'Artımlı',
 );
 
 /** Veps (Vepsan kel')

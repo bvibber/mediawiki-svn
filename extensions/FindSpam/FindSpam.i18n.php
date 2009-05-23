@@ -99,10 +99,15 @@ $messages['bar'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'findspam' => 'Пошук спаму',
+	'findspam-desc' => 'Дадае [[Special:FindSpam|спэцыяльную старонку]] якая дазваляе знайсьці нядаўна даданы спам',
 	'findspam-ip' => 'IP-адрас:',
 	'findspam-ok' => 'Добра',
+	'findspam-notextfound' => 'Ня знойдзены ўнёсак',
+	'right-findspam' => 'Пошук нядаўна даданага спаму',
 );
 
 /** Bulgarian (Български)

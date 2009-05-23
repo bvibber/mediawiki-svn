@@ -89,6 +89,11 @@ $aliases['ja'] = array(
 	'InspectCache' => array( 'キャッシュの点検' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'InspectCache' => array( 'Cache_beloore', 'Cache_Beloore', 'CacheBeloore', '' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'InspectCache' => array( 'Kas_naokieken' ),

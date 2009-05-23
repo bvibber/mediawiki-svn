@@ -65,6 +65,13 @@ $messages['bs'] = array(
 	'googleadsense-desc' => 'Dodaje [http://www.google.com/adsense Google AdSense] u alatnu traku',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'googleadsense-desc' => 'Afegeix [http://www.google.com/Google AdSense] a la barra lateral',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

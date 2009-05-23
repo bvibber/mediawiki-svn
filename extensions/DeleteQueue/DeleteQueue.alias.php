@@ -67,6 +67,11 @@ $aliases['ja'] = array(
 	'DeleteQueue' => array( '削除キュー' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'DeleteQueue' => array( 'Fottschmiißleß' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'DeleteQueue' => array( 'Läschlëscht' ),

@@ -979,6 +979,7 @@ Geeft een doelpagina op die niet bestaat.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
  */
@@ -1005,6 +1006,7 @@ Dette er nyttig for oppdeling av sider, etc.',
 	'duplicator-dest-exists' => '[[$1]] finst allereie. Oppgje ein måltittel som ikkje finst.',
 	'duplicator-toomanyrevisions' => '[[$1]] har for mange ($2) versjonar og kan ikkje bli kopiert.
 Noverande grensa er $3.',
+	'right-duplicate' => 'Ta kopi av sidene',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1443,6 +1445,7 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -1469,6 +1472,7 @@ Có lỗi lạ xảy ra.',
 	'duplicator-dest-exists' => '[[$1]] đã tồn tại. Xin hãy cung cấp một tựa đề đích chưa tồn tại.',
 	'duplicator-toomanyrevisions' => '[[$1]] có quá nhiều ($2) phiên bản và không chép được.
 Giới hạn hiện nay là $3.',
+	'right-duplicate' => 'Sao chép trang',
 );
 
 /** Volapük (Volapük)

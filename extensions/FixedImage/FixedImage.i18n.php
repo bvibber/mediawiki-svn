@@ -60,6 +60,13 @@ $messages['bcc'] = array(
 	'fixedimage-desc' => 'اضافه کتن <tt><nowiki><fundraising></nowiki></tt> برچسپ په یک عکس',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'fixedimage-desc' => 'Дадае тэг <tt><nowiki><fundraising></nowiki></tt> як выяву',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */

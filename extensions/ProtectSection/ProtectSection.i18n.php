@@ -313,6 +313,7 @@ $messages['lb'] = array(
 	'protectsection_add_remove' => 'Dir hutt versicht, e protegéierten Abschnitt derbäizesetzen oder ze läschen.',
 	'protectsection_modify' => "Dir hutt versicht fir protegéierten Text z'änneren.",
 	'protectsection_forbidden' => 'Verbueden',
+	'right-protectsection' => 'Abschnitter vun enger Säit spären',
 );
 
 /** Malayalam (മലയാളം)
@@ -492,6 +493,7 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -499,6 +501,7 @@ $messages['vi'] = array(
 	'protectsection_add_remove' => 'Bạn đng cố thêm hoặc xóa một đề mục bị khóa',
 	'protectsection_modify' => 'Bạn đang cố sửa đổi đoạn văn bản bị khóa',
 	'protectsection_forbidden' => 'Bị cấm',
+	'right-protectsection' => 'Khóa đoạn trang',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

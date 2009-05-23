@@ -73,6 +73,7 @@ $messages['qqq'] = array(
 	'crosswikiunblock-reason' => '{{Identical|Reason}}',
 	'crosswikiblock-notoken' => '{{Identical|Invalid edit token}}',
 	'crosswikiblock-alreadyblocked' => '{{Identical|$1 is already blocked}}',
+	'right-crosswikiblock' => '{{doc-right|crosswikiblock}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -298,6 +299,7 @@ Nazad na:
 * [[Special:CrosswikiBlock|Obrazac za blokiranje]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokalne deblokade nisu podržane putem ovog interfejsa. Koristite [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Blokiranje i deblokiranje korisnika na drugim wikijima',
 );
 
 /** Catalan (Català)
@@ -428,6 +430,7 @@ Slědk k:
 * [[Special:CrosswikiBlock|Blokěrowański formular]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Wótpóranja lokalnych blokěrowanjow njepódpěraju se pśez toś ten interfejs. Wužyj [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Wužywarjow na drugich wikijach blokěrowaś a dowóliś',
 );
 
 /** Greek (Ελληνικά)
@@ -648,6 +651,7 @@ Revenir vers :
 * [[Special:CrosswikiBlock|Le formulaire de blocage]] ;
 * [[$4]].",
 	'crosswikiunblock-local' => 'Les blocages en écriture locaux ne sont pas supportés via cette interface. Utilisez [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => "Bloquer et débloquer des utilisateurs sur d'autres wikis",
 );
 
 /** Western Frisian (Frysk)
@@ -767,6 +771,7 @@ Zrugg zue:
 * [[Special:CrosswikiBlock|Sperrformular]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokali Sperrine wäre iber des Interface nit unterstitzt. Bitte verwänd [[Special:IPBlockList|{{int:ipblocklist}}]].',
+	'right-crosswikiblock' => 'Benutzer uf andere Wikis sperre oder d Sperri ufhebe',
 );
 
 /** Manx (Gaelg)
@@ -914,6 +919,7 @@ Wróćo k:
 * [[Special:CrosswikiBlock|Blokowanski formular]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokalne blokowanja so přez tutón interfejs njepodpěruja. Wužij [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Wužiwarjow na druhich wikijach blokować a dowolić',
 );
 
 /** Interlingua (Interlingua)
@@ -1080,6 +1086,7 @@ $messages['ja'] = array(
 * [[Special:CrosswikiBlock|ブロックフォーム]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'このウィキ限定に限定した、利用者のブロック解除はこのページでは行えません。[[Special:IPBlockList|{{int:ipblocklist}}]]を利用してください。',
+	'right-crosswikiblock' => '他のウィキの利用者をブロックおよびブロック解除する',
 );
 
 /** Javanese (Basa Jawa)
@@ -1222,6 +1229,7 @@ Jangk retuur noh:
 * [[$4]]",
 	'crosswikiunblock-local' => 'Em eije Wiki künne mer hee nix frei jävve.
 Doför jangk noh [[Special:IPBlockList|{{int:ipblocklist}}]].',
+	'right-crosswikiblock' => 'Metmaacher op ander Wikis sperre un widder frei jävve',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1268,6 +1276,7 @@ Zréck op:
 * [[Special:CrosswikiBlock|Spär-Formulaire]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Op dëser Säit kënne lokal Spären net opgehuewe ginn. Benotzt w.e.g. [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => "Benotzer op anere Wikie spären resp. d'Spär ophiewen",
 );
 
 /** Lithuanian (Lietuvių)
@@ -1483,13 +1492,14 @@ Teruggaan naar:
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
 	'crosswikiblock-desc' => 'Gjer det mogleg å blokkera brukarar på andre wikiar ved å nytta ei [[Special:Crosswikiblock|spesialsida]]',
 	'crosswikiblock' => 'Blokker brukar på annan wiki',
-	'crosswikiblock-header' => 'Denne sida gjer at ein kan blokkera brukarar på andre wikiar.
+	'crosswikiblock-header' => 'Denne sida gjer at ein kan blokkera brukarar på andre wikiar. 
 Sjekk at du har løyve til gjera det på denne wikien, og at du følgjer alle retningslinene.',
 	'crosswikiblock-target' => 'IP-adressa eller brukarnamn og målwiki:',
 	'crosswikiblock-expiry' => 'Opphøyrstid:',
@@ -1526,10 +1536,12 @@ Attende til:
 * [[Special:CrosswikiBlock|Blokkeringsskjemaet]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokale avblokkeringar er ikkje støtta av dette grensesnittet. Nytt [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Blokker og avblokker brukarar på andre wikiar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'crosswikiblock-desc' => 'Gjør det mulig å blokkere brukere på andre wikier ved hjelp av en [[Special:Crosswikiblock|spesialside]]',
@@ -1569,6 +1581,7 @@ Tilbake til:
 * [[Special:CrosswikiBlock|Blokkeringsskjemaet]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokale blokkeringer støttes ikke via dette grensesnittet. Bruk [[Special:IPBlockList|{{int:ipblocklist}}]].',
+	'right-crosswikiblock' => 'Blokker og avblokker brukere på andre wikier',
 );
 
 /** Novial (Novial)
@@ -1623,6 +1636,7 @@ Tornar cap a :
 * [[Special:CrosswikiBlock|Lo formulari de blocatge]] ;
 * [[$4]].",
 	'crosswikiunblock-local' => 'Los blocatges en escritura locals son pas suportats via aquesta interfàcia. Utilizatz [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => "Blocar e desblocar d'utilizaires sus d'autres wikis",
 );
 
 /** Ossetic (Иронау)
@@ -1915,6 +1929,7 @@ Vrátiť sa na:
 * [[Special:CrosswikiBlock|Blokovací formulár]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokálne blokovania nie sú týmto rozhraním podporované. Použite [[Special:IPBlockList|{{int:ipblocklist}}]].',
+	'right-crosswikiblock' => 'Blokovať a odblokovať používateľov na iných wiki',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -2273,6 +2288,7 @@ Quay trở về:
 * [[Special:CrosswikiBlock|Mẫu cấm]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Giao diện này không hỗ trợ bỏ cấm tại wiki này. Hãy dùng [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Cấm và bỏ cấm người dùng tại wiki khác',
 );
 
 /** Volapük (Volapük)

@@ -62,6 +62,11 @@ $aliases['ja'] = array(
 	'ImageTagging' => array( '画像のラベル付け', 'ラベル付画像' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'ImageTagging' => array( 'Belder_Makeere', 'BelderMakeere', '' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ImageTagging' => array( 'Ofbeeldingen_annoteren' ),

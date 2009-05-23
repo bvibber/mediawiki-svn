@@ -1214,6 +1214,7 @@ $messages['tr'] = array(
 	'authorprotect-failure' => 'Koruma başarısız',
 	'protect-level-author' => 'Yazar-olmayanlardan koru',
 	'restriction-level-author' => 'Yazar-korumalı',
+	'right-authorprotect' => 'Yazarlı sayfaları koru',
 );
 
 /** Ukrainian (Українська)
@@ -1256,6 +1257,7 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -1272,6 +1274,7 @@ $messages['vi'] = array(
 	'authorprotect-failure' => 'Không khóa được',
 	'protect-level-author' => 'Khóa đối với những người không phải tác giả',
 	'restriction-level-author' => 'Khóa cho mức tác giả',
+	'right-authorprotect' => 'Khóa trang do mình viết',
 );
 
 /** Volapük (Volapük)

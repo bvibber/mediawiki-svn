@@ -2216,6 +2216,7 @@ $messages['tr'] = array(
 	'badimages-log-add' => '[[$1]] kötü resim listesine eklendi',
 	'badimages-log-remove' => '[[$1]] kötü resim listesinden çıkarıldı',
 	'badimages-page' => '{{ns:help}}:Kötü resim listesi',
+	'right-badimages' => 'Kötü resim listesini güncelle',
 );
 
 /** Ukrainian (Українська)
@@ -2245,6 +2246,7 @@ $messages['uk'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -2268,6 +2270,7 @@ $messages['vi'] = array(
 	'badimages-log-add' => 'đã thêm [[$1]] vào danh sách hình phản cảm',
 	'badimages-log-remove' => 'đã loại [[$1]] ra khỏi danh sách hình phản cảm',
 	'badimages-page' => '{{ns:help}}:Danh sách hình phản cảm',
+	'right-badimages' => 'Cập nhật danh sách hình phản cảm',
 );
 
 /** Volapük (Volapük)

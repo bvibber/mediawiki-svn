@@ -61,6 +61,14 @@ $messages['ar'] = array(
 	'tog-riched_disable_ns_category_talk' => 'عطل المحرر المتقدم في نطاق "{{ns:category_talk}}"',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'fckeditor-desc' => 'Дазваляе рэдагаваньне з дапамогай WYSIWYG рэдактара FCKeditor',
+	'textrichditor' => 'Пашыраны рэдактар',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -541,6 +549,13 @@ $messages['nl'] = array(
 	'tog-riched_toggle_remember_state' => 'Laatste status onthouden',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'tog-riched_disable_ns_main' => 'Slå av rik tekstredigering i hovudnamneromet',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -734,6 +749,7 @@ $messages['sv'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'fckeditor-desc' => 'Cho phép sửa đổi dùng bộ soạn thảo WYSIWYG FCKeditor',
 	'textrichditor' => 'Bộ soạn thảo phong phú',
 	'prefs-fckeditor' => 'Bộ soạn thảo phong phú',
 	'tog-riched_disable' => 'Tắt bộ soạn thảo phong phú',

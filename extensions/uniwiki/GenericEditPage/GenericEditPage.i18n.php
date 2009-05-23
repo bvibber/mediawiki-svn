@@ -793,6 +793,28 @@ Legg til nokre med verktya i menyen.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'gep-emailsubject' => '[$1] Kategoriforslag: $2',
+	'gep-emailbody' => 'Brukeren «$1» foreslo kategorien «$2» for siden «$3».',
+	'gep-emailsuccess' => 'Takk for at du foreslo kategorien: $1.',
+	'gep-categories' => 'Kategorier',
+	'gep-addcategory' => 'Legg til en kategori',
+	'gep-addcategorybutton' => 'Legg til',
+	'gep-suggestcategory' => 'Foreslå en kategori',
+	'gep-suggestcategorybutton' => 'Send',
+	'gep-sections' => 'Avsnitt',
+	'gep-sectionnotdisabled' => 'Dette avsnittet kan ikke deaktiveres',
+	'gep-addsection' => 'Legg til et avsnitt',
+	'gep-addsectionbutton' => 'Legg til',
+	'gep-classicmode' => 'Klassisk modus',
+	'gep-nosectioninstructions' => 'Det er ingen avsnitt på denne siden.
+Legg til noen med verktøyene i menyen.',
+	'gep-nocategories' => 'Vennligst velg minst én kategori før du lagrer',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

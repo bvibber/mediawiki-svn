@@ -27,6 +27,19 @@ $messages['qqq'] = array(
 	'useroptionstats-desc' => 'A short description of this extension. Used in [[Special:Version]]. Do not translate link targets.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'useroptionstats' => 'Статыстыка выбару ўдзельніка',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Спэцыяльная старонка]] для стварэньня справаздачы звычайнага выбару ўдзельнікаў Мэдыявікі',
+	'uos-warn' => 'PHPlot не ўсталяваны!',
+	'uos-choose' => 'Выбярыце адну з наступных опцыяў удзельніка: $1',
+	'uos-unknown' => '*Па змаўчаньню',
+	'uos-other' => '*Іншая',
+	'uos-title' => 'Разьмеркаваньне значэньняў выбару удзельнікаў $1',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -205,6 +218,14 @@ $messages['nl'] = array(
 	'uos-title' => 'Verdeling van de waarden van de gebruikersinstelling $1',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'uos-unknown' => '*Standard',
+	'uos-other' => '*Annen',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -229,5 +250,18 @@ $messages['sk'] = array(
 	'uos-unknown' => '*Predvolené',
 	'uos-other' => '*Iné',
 	'uos-title' => 'Rozdelenie hodnôt používateľskej voľby $1',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'useroptionstats' => 'Thống kê tùy chọn người dùng',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Trang đặc biệt]] báo cáo thống kê về tùy chọn cá nhân trong MediaWiki',
+	'uos-warn' => 'Chưa cài đặt PHPlot!',
+	'uos-choose' => 'Hãy chọn một trong những tùy chọn cá nhân sau: $1',
+	'uos-unknown' => '*Mặc định',
+	'uos-other' => '*Khác',
+	'uos-title' => 'Phân phối giá trị tùy chọn cá nhân $1',
 );
 

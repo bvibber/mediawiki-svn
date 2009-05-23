@@ -81,6 +81,13 @@ $messages['bs'] = array(
 	'advancedrandom-desc' => 'Prikazuje slučajnu stranicu na čijoj stranici za razgovor ili linkovima o predmetu stranice, može biti korišteno poput [[Special:AdvancedRandom/Template:Featured/Talk]] za dobivanje slučajnog odabranog članka ili [[Special:AdvancedRandom/Template:GFDL/File]] za dobivanje slučajne GFDL datoteke',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'advancedrandom' => 'Aleatori avançat',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

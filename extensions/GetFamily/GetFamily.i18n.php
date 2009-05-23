@@ -178,3 +178,13 @@ $messages['sk'] = array(
 	'right-getfamily' => 'Vytvoriť súbor rodiny pre pywikipediabot',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'getfamily-desc' => 'Tạo tập tin gia đình cho pywikipediabot',
+	'getfamily' => 'Lấy gia đình pywikipediabot',
+	'getfamily-interwikierror' => 'Lỗi: Cấu hình liên wiki sai; hãy liên lạc quản lý viên địa phương.',
+	'right-getfamily' => 'Tạo tập tin gia đình cho pywikipediabot',
+);
+

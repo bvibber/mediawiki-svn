@@ -518,6 +518,22 @@ Vil du endra denne?',
 	'createpage-badtitle' => '«$1» kan ikkje bli nytta som sidetittel',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'createpage' => 'Opprett en side',
+	'createpage-desc' => 'Legg til en [[Special:CreatePage|spesialside]] for å opprettelse av nye sider',
+	'createpage_submitbutton' => 'Send',
+	'createpage_instructions' => 'Skriv inn tittelen til siden du ønsker å opprette:',
+	'createpage_entertitle' => 'Vennligst skriv inn en tittel for siden din.',
+	'createpage_titleexists' => 'En side med tittelen [[$1]] finnes allerede.
+Vil du redigere den eksisterende siden?',
+	'createpage_tryagain' => 'Nei. Jeg vil opprette en ny side med en annen tittel.',
+	'createpage_editexisting' => 'Ja. Jeg vil bidra til siden som finnes fra før.',
+	'createpage-badtitle' => '«$1» kan ikke brukes som tittel for siden',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
