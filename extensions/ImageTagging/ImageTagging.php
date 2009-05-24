@@ -423,7 +423,7 @@ function wfImageTagPageSetup() {
 		}
 
 		function modifiedImagePageOpenShowImage() {
-			global $wgOut, $wgUser, $wgImageLimits, $wgRequest;
+			global $wgOut, $wgUser, $wgImageLimits, $wgRequest, $wgEnableUploads;
 
 			wfProfileIn( __METHOD__ );
 
@@ -546,11 +546,17 @@ END
 				}
 			} else {
 				# Image does not exist
-
-				$title = Title::makeTitle( NS_SPECIAL, 'Upload' );
-				$link = $sk->makeKnownLinkObj($title, wfMsgHtml('noimage-linktext'),
-					'wpDestFile=' . urlencode( $this->img->getName() ) );
-				$wgOut->addHTML( wfMsgWikiHtml( 'noimage', $link ) );
+				$nofile = wfMsgHtml( 'filepage-nofile' );
+				if ( $wgEnableUploads && $wgUser->isAllowed( 'upload' ) ) {
+					// Only show an upload link if the user can upload
+					$nofile .= ' '.$sk->makeKnownLinkObj(
+						SpecialPage::getTitleFor( 'Upload' ),
+						wfMsgHtml('filepage-nofile-link'),
+						'wpDestFile=' . urlencode( $this->displayImg->getName() )
+					);
+				}
+				$wgOut->setRobotPolicy( 'noindex,nofollow' );
+				$wgOut->addHTML( '<div id="mw-imagepage-nofile">' . $nofile . '</div>' );
 			}
 
 			wfProfileOut( __METHOD__ );
