@@ -617,7 +617,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 					$o .= '<div id="mv_ext_cat_container_' . htmlspecialchars( $mvd_id ) . '"></div>';
 					foreach ( $metaData['categories'] as $cat => $page ) {
 						$catTitle = Title::newFromText( $cat, NS_CATEGORY );
-						$o .= '<span id="ext_cat_' . htmlspecialchars( $i ) . '"><input value="' . $catTitle->getDBKey() . '" type="hidden" style="display:none;" name="ext_cat_' . $i . '" class="mv_ext_cat">' .
+						$o .= '<span id="ext_cat_' . htmlspecialchars( $i ) . '"><input value="' . $catTitle->getDBkey() . '" type="hidden" style="display:none;" name="ext_cat_' . $i . '" class="mv_ext_cat">' .
 							$catTitle->getText() .
 							'<a  href="#" onclick="$j(\'#ext_cat_' . $i . '\').fadeOut(\'fast\').remove();return false;">
 								<img border="0" src="' . $mvgScriptPath . '/skins/images/delete.png">

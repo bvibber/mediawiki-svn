@@ -78,7 +78,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 		// print "EMBED C: $embed_code \n";
 		// $q = 'action='.$this->action;
 		# if ( "no" == $redirect ) { $q .= "&redirect=no"; }
-		// $action = $wgScript.'?title='.$wgTitle->getDBKey() . '/Thanks';
+		// $action = $wgScript.'?title='.$wgTitle->getDBkey() . '/Thanks';
 		$action = $wgTitle->getLocalURL( 'action=submit' );
 		$jsUserHash = sha1( $wgUser->getName() . $wgProxyKey );
 		$enUserHash = Xml::encodeJsVar( $jsUserHash );

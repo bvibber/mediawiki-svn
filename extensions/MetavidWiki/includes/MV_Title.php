@@ -36,11 +36,11 @@
  		if ( is_string( $title ) ) {
  			$title = parent::makeTitle( $ns, $title );
  		}
- 		//print "RAN TITLE: ". $title->getDBKey();
+ 		//print "RAN TITLE: ". $title->getDBkey();
  		$this->inheritTitle( $title ) ;
  		// its just a plain string generate the parse info
- 		$this->wiki_title = $title->getDBKey();
- 		$this->parseTitle( $title->getDBKey() );
+ 		$this->wiki_title = $title->getDBkey();
+ 		$this->parseTitle( $title->getDBkey() );
  		// print "mv_title stream name: " . $this->stream_name. "\n";
  	}
  	function inheritTitle( & $title ) {

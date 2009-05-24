@@ -39,7 +39,7 @@ function EmergencyDeSysopLocalizedPageName(&$specialPageArray, $code) {
 	$text = wfMsg('emergencydesysop');
  
 	$title = Title::newFromText($text);
-	$specialPageArray['emergencydesysop']['emergencydesysop'] = $title->getDBKey();
+	$specialPageArray['emergencydesysop']['emergencydesysop'] = $title->getDBkey();
 	return true;
 }
 
