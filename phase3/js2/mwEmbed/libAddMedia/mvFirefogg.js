@@ -120,7 +120,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			if(target.substring(0, 6)=='target'){
 				//check for the target if missing add to the output: 
 				if( _this[target] === false){					
-					out+= _this.getTargetHtml(target);
+					out+= _this.getTargetHtml(target) + ' ';
 				}
 				//update the target selector 
 				_this[target] = _this.selector + ' .' + target;
@@ -237,7 +237,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		this.target_input_file_name = this.selector;
 		
 		$j(this.selector).after(
-			this.getTargetHtml('target_btn_select_file') 
+			this.getTargetHtml('target_btn_select_file') + ' ' 
 		);
 		//check for the other inline status indicator targets: 		
 		//update the bindings: 

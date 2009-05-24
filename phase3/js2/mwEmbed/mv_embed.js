@@ -617,8 +617,9 @@ function mv_jqueryBindings(){
 		}
 		
 		$.fn.firefogg = function( iObj, callback ) {		
-			//set "selector" in the iObj
-		
+			//add base theme css:
+			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );
+			
 			// @@todo should refactor  mvAdvFirefogg as jQuery plugin
 			iObj['selector'] = this.selector;	
 			
@@ -629,7 +630,7 @@ function mv_jqueryBindings(){
 			//see if we need to load the advanced firefog controls and associated ui components:			
 			if( iObj.encoder_interface ){
 				
-				//grab the css:
+				//grab ui css:
 				loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
 				 
 				//@@todo would be nice to have a "dependency" map we could use/

@@ -4,6 +4,10 @@
 
 //@@todo put all msg text into loadGM json
 
+loadGM({
+	"help-sticky": "Help (Click to Keep Help on Screen)"
+});
+
 var mvAdvFirefogg = function( initObj ){
 	return this.init( initObj );
 }
@@ -17,8 +21,8 @@ var default_mvAdvFirefogg_config = {
 	//any firefog config properties that may need to be excluded from options
 	'exclude_settings' : [],
 	
-	//the control container (where we put all the controls) 
-	'control_container'	 : ''		
+	//the control container (where we put all the controls) 				
+	'target_control_container':''
 }
 
 mvAdvFirefogg.prototype = {	
@@ -103,6 +107,7 @@ mvAdvFirefogg.prototype = {
 		//advanced Video control configs: 
 		'framerate':{
 			't'		: 'Framerate',
+			'd'		: '24',
 			'selectVal'	: ['12', '16', '23:976', '24', '29:97', '30'],
 			'type'	   	: "select",
 			'group'    	: "advVideo",
@@ -232,7 +237,7 @@ mvAdvFirefogg.prototype = {
 		//call base firefogg form setup		
 		basefogg_setupForm();
 		//if we have a target control form gennerate the html and setup the bindings
-		if( this.control_container != ''){
+		if( this.target_control_container != ''){
 			//gennerate the control html
 			this.doControlHTML();
 				
@@ -243,29 +248,58 @@ mvAdvFirefogg.prototype = {
 		
 	},
 	doControlHTML: function(){
-		var out ='';
+	
 		var _this = this;
+		//add base control buttons: 		
+		_this.basefogg_doControlHTML();
+		
+		//build the config group outpouts 
+		var gdout ='';
 		$j.each(this.config_groups, function(group_key, group_desc){
-			out+= '<div> '+
+			gdout+= '<div> '+
 				'<h3><a href="#" id="gd_'+group_key+'" >' + group_desc + '</a></h3>'+
 					'<div>';
 			//output that group control options:
-			out+='<table width="450" ><tr><td width="35%"></td><td width="65%"></td></tr>'; 
+			gdout+='<table width="450" ><tr><td width="35%"></td><td width="65%"></td></tr>'; 
 			//special preset case: 		
 			
 			for(var cK in _this.default_encoder_config){				
 				var cConf = _this.default_encoder_config[cK];
 				if(cConf.group == group_key){
-					out+= _this.proccessCkControlHTML( cK );							
+					gdout+= _this.proccessCkControlHTML( cK );							
 				}
 			}
-			out+='</table>';
-			out+=		'</div>' + 
+			gdout+='</table>';
+			gdout+=		'</div>' + 
 			     '</div>';
 	
-		});	
-		//console.log("out: " + out);
-		$j('#control_container').html( out ); 
+		});
+		var out='';
+		//add the control container:  
+		if(!this.target_control_container){			
+			this.target_control_container = this.selector + ' .control_container';
+			//set the target contorl container to height -50
+			$j(this.selector).append( '<p><div class="control_container">' + gdout + '</div>' ); 
+		}else{
+			$j(this.target_control_container).html( gdout );
+		}		
+	},
+	//custom advanced target rewrites: 
+	getTargetHtml:function(target){
+		if(	target=='target_btn_select_file' || 
+			target=='target_btn_select_new_file'||
+			target=='target_btn_save_local_file'){
+			var icon = (target=='target_btn_save_local_file')?'ui-icon-video':'ui-icon-folder-open';
+			return 	'<a class="ui-state-default ui-corner-all ui-icon_link '+
+						target +'" href="#"><span class="ui-icon ' + icon + '"/>' + 
+						gM( 'fogg-' + target.substring(11)) +
+					'</a>';
+		}else if('target_input_file_name'){
+			return '<input style="" class="text ui-widget-content ui-corner-all ' + target + '" '+
+					'type="text" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
+		}else{
+			return this.basefogg_getTargetHtml(target);
+		}
 	},
 	proccessCkControlHTML:function( cK ){
 		var cConf =  this.default_encoder_config[cK];
@@ -273,17 +307,18 @@ mvAdvFirefogg.prototype = {
 		out+='<tr><td valign="top">'+
 			'<label for="_' + cK + '">' +					
 			 cConf.t + ':' + 
-			 '<span id="help_'+ cK + '" class="ui-icon ui-icon-info" style="float:left"></span>'+
+			 '<span title="' + gM('help-sticky') + '" id="help_'+ cK + '" class="ui-icon ui-icon-info" style="float:left"></span>'+
 			 '</label></td><td>';
 		//check if we have a value for this: 
-		var dv = ( this.local_encoder_config[ cK ] ) ? this.local_encoder_config[ cK ] : '';				
+		var dv = ( this.local_encoder_config[ cK ] ) ? this.local_encoder_config[ cK ] : '';		
 		//switch on the config type
 		switch(	cConf.type ){					
 			case 'string':
 				out+= '<input type="text" id="_' + cK + '" value="' + dv + '" >' ;
 			break;
-			case 'slider':
-				maxdigits =  (Math.round( this.default_encoder_config[ cK ].range.max / 10) +1);
+			case 'slider':	
+				var strMax = this.default_encoder_config[ cK ].range.max + '';			
+				maxdigits = strMax.length +1;
 				out+= '<input type="text" maxlength="'+maxdigits+'" size="' +maxdigits + '" '+		
 					'id="_' + cK + '" style="display:inline;border:0; color:#f6931f; font-weight:bold;" ' + 
 					'value="' + dv + '" >' +								
@@ -321,44 +356,18 @@ mvAdvFirefogg.prototype = {
 		out+='</td></tr><tr><td colspan="2" height="10"></td></tr>';
 		return out;
 	}, 
+	select_fogg:function(){
+		this.basefogg_select_fogg();
+		$j(this.target_control_container).show('slow');
+	},
 	doControlBindings:function(){
-		//bind the select action: 
-		$j( '#select_file' ).click( function(){
-			doSelectFile();		
-			//hide this show the select new button
-			$j(this).hide();
-			$j('#save_file,select_new_file,').show();						
-		}).attr( 'disabled', false );		
-	
-		$j('#select_file_new').click(function(){
-			$j("#dialog").dialog({
-				bgiframe: true,
-				resizable: false,
-				height:140,
-				modal: true,
-				overlay: {
-					backgroundColor: '#000',
-					opacity: 0.5
-				},
-				buttons: {
-					'Delete all items in recycle bin': function() {
-						$j(this).dialog('close');
-					},
-					Cancel: function() {
-						$j(this).dialog('close');
-					}
-				}
-			});
-		});
-		function doSelectFile(){
-			//select the video
-			if( ogg.selectVideo() ) {
-				//enable/show all the options
-				$j('#fogg_control_td').fadeIn("slow");	
-				doControlBindings();					
-			}
-		}
-	
+		var _this = this;
+		_this.basefogg_doControlBindings();
+		//hide the base advanced controls untill a file is selected:
+		$j(this.target_control_container).hide();
+		
+		var helpState = {};
+		//bind control actions
 		for(var cK in this.default_encoder_config){
 			var cConf =  this.default_encoder_config[cK];
 			//set up the help for all types: 
@@ -416,11 +425,18 @@ mvAdvFirefogg.prototype = {
 				break;
 			}
 		}	
-		$j('#control_container').accordion({ 
+		$j(this.target_control_container).accordion({ 
 			header: "h3",
 			collapsible: true, 
-			active: false
+			active: false,
+			fillSpace: true
 		});
+	},
+	/*
+	 * sets up the autoEncoder settings
+	 */	
+	autoEncoderSettings:function(){
+		
 	},
 	//sets up the local settings for the encode (restored from a cookie if you have them)
 	setupSettings:function( force ){

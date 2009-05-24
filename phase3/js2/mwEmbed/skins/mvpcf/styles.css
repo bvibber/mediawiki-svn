@@ -656,3 +656,20 @@ div.rsd_selected {
 	position:absolute;
 	background-image: url('images/loading_bar_ani.gif');
 }
+
+
+
+.ui-icon_link {
+	padding: .4em 1em .4em 20px;
+	text-decoration: none;
+	position: relative;
+}
+.ui-icon_link span.ui-icon {
+	margin: 0 5px 0 0;
+	position: absolute;
+	left: .2em;
+	top: 50%;
+	margin-top: -8px;
+	zoom: 1;
+}
+
