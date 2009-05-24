@@ -24,7 +24,7 @@ $wgExtensionCredits[ 'specialpage' ][] = array(
 	'descriptionmsg' => 'mibbit-desc',
 	'author'         => 'Robert Leverington',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Mibbit',
-	'version'        => '1.3.1',
+	'version'        => '1.4',
 );
 
 // Register special page.
@@ -35,6 +35,7 @@ $wgAutoloadClasses[ 'Mibbit' ] = $dir . 'Mibbit_body.php';
 
 // Extension messages.
 $wgExtensionMessagesFiles[ 'Mibbit' ] =  $dir . 'Mibbit.i18n.php';
+$wgExtensionAliasesFiles[ 'Mibbit' ] =  $dir . 'Mibbit.alias.php';
 
 // Default configuration.
 $wgMibbitServer          = '';
