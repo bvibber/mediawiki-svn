@@ -44,6 +44,7 @@ $messages['arz'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -51,8 +52,8 @@ $messages['be-tarask'] = array(
 	'signature-desc' => 'Уключае [[Special:SignDocument|падпісаньне]] дакумэнта',
 	'signaturelogpagetext' => 'Гэта журнал [[Special:SignDocument|усіх подпісаў, даданых да дакумэнтаў]].',
 	'signaturelogentry' => 'падпісаў дакумэнт $1',
-	'right-sigadmin' => 'Адміністраваньне адпісаньнем дакумэнтаў',
-	'right-createsigndocument' => 'Стварыць дакумэнт, які можа быць падпісаны',
+	'right-sigadmin' => 'кіраваньне падпісаньнем дакумэнтаў',
+	'right-createsigndocument' => 'стварэньне дакумэнтаў, якія могуць быць падпісаныя',
 );
 
 /** Bulgarian (Български)
@@ -96,7 +97,7 @@ $messages['de'] = array(
 	'signaturelogpagetext' => 'Dies ist das [[Special:SignDocument|Unterschrifts-Logbuch für Dokumente]].',
 	'signaturelogentry' => 'hat das Dokument $1 unterschrieben',
 	'right-sigadmin' => 'Das Unterschreiben von Dokumenten verwalten',
-	'right-createsigndocument' => 'unterschreibbare Dokumente anlegen',
+	'right-createsigndocument' => 'Unterschreibbare Dokumente anlegen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -182,6 +183,8 @@ $messages['gl'] = array(
 	'signature-desc' => 'Permite [[Special:SignDocument|a fichaxe]] dun documento',
 	'signaturelogpagetext' => 'Este é un rexistro de [[Special:SignDocument|todas as sinaturas engadidas aos documentos]].',
 	'signaturelogentry' => 'asinou o documento $1',
+	'right-sigadmin' => 'Administrar a sinatura do documento',
+	'right-createsigndocument' => 'Crear documentos que poden ser asinados',
 );
 
 /** Swiss German (Alemannisch)
@@ -227,6 +230,8 @@ $messages['ia'] = array(
 	'signature-desc' => 'Permitte le [[Special:SignDocument|signatura]] de documentos',
 	'signaturelogpagetext' => 'Isto es un registro de [[Special:SignDocument|tote le signaturas addite a documentos]].',
 	'signaturelogentry' => 'signava le documento $1',
+	'right-sigadmin' => 'Administrar le signatura de documentos',
+	'right-createsigndocument' => 'Crear documentos que pote esser signate',
 );
 
 /** Japanese (日本語)
@@ -237,6 +242,8 @@ $messages['ja'] = array(
 	'signature-desc' => '文書に[[Special:SignDocument|署名]]できるようにする',
 	'signaturelogpagetext' => 'これは[[Special:SignDocument|文書に付けられたすべての署名]]の記録です。',
 	'signaturelogentry' => '文書 $1 に署名',
+	'right-sigadmin' => '文書への署名を管理する',
+	'right-createsigndocument' => '署名できる文書を作成する',
 );
 
 /** Javanese (Basa Jawa)
@@ -279,6 +286,8 @@ $messages['lb'] = array(
 	'signature-desc' => "Aktivéiert d'[[Special:SignDocument|ënnerschreiwen]] vun Dokumenten",
 	'signaturelogpagetext' => "Dëst ass d'Lëscht vun [[Special:SignDocument|allen Ënnnerschreften déi op dëst Dokument derbäigesat goufen]].",
 	'signaturelogentry' => "huet d'Dokument $1 ënnerschriwwen",
+	'right-sigadmin' => 'Ënnerschreiwe vun Dokuementer geréieren',
+	'right-createsigndocument' => 'Dokumenter uleeën déi ënnerschriwwe kënne ginn',
 );
 
 /** Malayalam (മലയാളം)
@@ -308,6 +317,8 @@ $messages['nl'] = array(
 	'signature-desc' => 'Maakt het [[Special:SignDocument|ondertekenen]] van documenten mogelijk',
 	'signaturelogpagetext' => 'Dit is een logboek van alle [[Special:SignDocument|ondertekeningen van documenten]].',
 	'signaturelogentry' => 'ondertekende het document $1',
+	'right-sigadmin' => 'Documentondertekening beheren',
+	'right-createsigndocument' => 'Documenten aanmaken die kunnen worden ondertekend',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -338,6 +349,8 @@ $messages['oc'] = array(
 	'signature-desc' => 'Activa la [[Special:SignDocument|signatura]] dels documents',
 	'signaturelogpagetext' => 'Aquò es lo jornal de [[Special:SignDocument|totas las signaturas apondudas als documents]].',
 	'signaturelogentry' => 'a signat lo document $1.',
+	'right-sigadmin' => 'Administrar la signatura de documents',
+	'right-createsigndocument' => 'Crear de documents que pòdon èsser signats',
 );
 
 /** Polish (Polski)

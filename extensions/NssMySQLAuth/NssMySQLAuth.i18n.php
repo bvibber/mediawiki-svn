@@ -557,6 +557,16 @@ $messages['nn'] = array(
 	'nss-db-error' => 'Feil oppstod under lesing av identifiseringsdatabasen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'am-username' => 'brukernavn',
+	'am-email' => 'e-post',
+	'am-active' => 'aktiv',
+	'am-updated' => 'Dine endringer ble lagret',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -170,6 +170,13 @@ $messages['lb'] = array(
 	'newsextension-desc' => 'Weist déi spezifesch rezent Ännerungen op enger wiki-Säit oder als RSS oder Atom Lëscht',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'newsextension-desc' => "Mampiseho ny fanovàna farany manokana eo amin'ny pejy wiki iray na otra ny topa RSS na Atom.",
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

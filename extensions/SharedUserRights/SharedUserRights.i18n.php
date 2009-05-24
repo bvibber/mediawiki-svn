@@ -64,7 +64,7 @@ $messages['be-tarask'] = array(
 	'gblrights-logpage' => 'Журнал глябальных правоў удзельнікаў',
 	'gblrights-pagetext' => 'Гэта журнал усіх зьменаў, зробленых у глябальных правах у групе праектаў вікі',
 	'gblrights-rights-entry' => 'зьменены ўдзел у глябальных групах для $1 з $2 на $3',
-	'right-userrights-shared' => 'Кіраваньне агульнымі правамі ўдзельніка',
+	'right-userrights-shared' => 'кіраваньне агульнымі правамі ўдзельнікаў',
 );
 
 /** Bulgarian (Български)
@@ -203,6 +203,7 @@ $messages['gsw'] = array(
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
+ * @author דניאל ב.
  */
 $messages['he'] = array(
 	'shareduserrights' => 'ניהול הרשאות משתמש משותפות',
@@ -210,6 +211,7 @@ $messages['he'] = array(
 	'gblrights-logpage' => 'יומן ההרשאות הכלליות',
 	'gblrights-pagetext' => 'זהו יומן המציג את כל השינויים שבוצעו לטבלת ההרשאות הכלליות של משפחת הוויקי',
 	'gblrights-rights-entry' => 'שינה את ההרשאות הכלליות של $1 מ־$2 ל־$3',
+	'right-userrights-shared' => 'ניהול הרשאות משתמש משותפות',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -228,11 +230,12 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'shareduserrights' => 'Gestion de derectos commun de usatores',
+	'shareduserrights' => 'Gestion de derectos global de usatores',
 	'gblrights-desc' => 'Gestion facile del [[Special:SharedUserRights|derectos global de usatores]]',
 	'gblrights-logpage' => 'Registro de derectos global',
 	'gblrights-pagetext' => 'Isto es un registro de tote le cambiamentos facite in le tabula de derectos global del familia de wikis',
 	'gblrights-rights-entry' => 'cambiava le membrato de gruppos global pro $1 de $2 a $3',
+	'right-userrights-shared' => 'Gerer derectos global de usatores',
 );
 
 /** Japanese (日本語)

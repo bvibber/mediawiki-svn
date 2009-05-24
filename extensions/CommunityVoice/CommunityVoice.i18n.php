@@ -333,11 +333,13 @@ $messages['ja'] = array(
 );
 
 /** Korean (한국어)
+ * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
 	'communityvoice' => '공동체 알림',
 	'communityvoice-desc' => '공동체 참가 도구',
+	'communityvoice-ratings' => '평가',
 	'communityvoice-ratings-scale-status-error' => '오류를 보냅니다!',
 	'communityvoice-ratings-scale-status-thanks' => '투표에 감사드립니다!',
 );
@@ -362,13 +364,14 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'communityvoice' => 'Stëmm vun der Gemeinschaft',
-	'communityvoice-desc' => "Fonctiounen fir d'Geminschaftsbedeeligung",
+	'communityvoice-desc' => "Fonctioune fir d'Gemeinschaftsbedeelegung",
 	'communityvoice-ratings' => 'Bewertungen',
 	'communityvoice-ratings-scale-status-sending' => 'Schécken...',
 	'communityvoice-ratings-scale-status-error' => 'Feeler beim Schécken!',
 	'communityvoice-ratings-scale-status-thanks' => "Merci fir d'Ofstëmmen!",
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|Stëmm|Stëmmen}} ofginn)',
 	'communityvoice-ratings-error-no-category' => 'Am Bewertungstag feelt den Attribut Kategorie.',
+	'communityvoice-ratings-error-no-title' => 'Den Titel-Attribut feelt am Bewertungs-Tag.',
 );
 
 /** Dutch (Nederlands)
@@ -573,6 +576,21 @@ $messages['tr'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 oy verildi)',
 	'communityvoice-ratings-error-no-category' => 'Derecelendirme etiketinde kategori niteliği eksik.',
 	'communityvoice-ratings-error-no-title' => 'Derecelendirme etiketinde başlık niteliği eksik.',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'communityvoice' => 'Vose de la comunità',
+	'communityvoice-desc' => 'Strumenti de partesipassion de la comunità',
+	'communityvoice-ratings' => 'Valutassioni',
+	'communityvoice-ratings-scale-status-sending' => "So' drio inviar...",
+	'communityvoice-ratings-scale-status-error' => "Eròr durante l'invìo!",
+	'communityvoice-ratings-scale-status-thanks' => 'Grassie de ver votà!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|voto|voti}} espressi)',
+	'communityvoice-ratings-error-no-category' => "In te l'eticheta de valutassion a manca l'atributo de la categoria.",
+	'communityvoice-ratings-error-no-title' => "In te l'eticheta de valutassion a manca l'atributo del titolo.",
 );
 
 /** Vietnamese (Tiếng Việt)

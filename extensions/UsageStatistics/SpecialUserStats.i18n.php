@@ -225,7 +225,7 @@ $messages['be-tarask'] = array(
 	'usagestatisticscalselect' => 'Выбраць',
 	'usagestatistics-editindividual' => 'Індывідуальная статыстыка рэдагаваньняў удзельніка $1',
 	'usagestatistics-editpages' => 'Індывідуальная статыстыка старонак удзельніка $1',
-	'right-viewsystemstats' => 'Прагляд [[Special:UserStats|звычайнай вікі-статыстыкі]]',
+	'right-viewsystemstats' => 'прагляд [[Special:UserStats|статыстыкі выкарыстаньня {{GRAMMAR:родны|{{SITENAME}}}}]]',
 );
 
 /** Bulgarian (Български)
@@ -887,6 +887,7 @@ $messages['ia'] = array(
 	'usagestatisticscalselect' => 'Seliger',
 	'usagestatistics-editindividual' => 'Statisticas $1 super le modificationes del usator individual',
 	'usagestatistics-editpages' => 'Statisticas $1 super le paginas del usator individual',
+	'right-viewsystemstats' => 'Vider [[Special:UserStats|statisticas de uso del wiki]]',
 );
 
 /** Ido (Ido)
@@ -1615,6 +1616,7 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  * @author Sannab
  */
 $messages['sv'] = array(
@@ -1641,6 +1643,7 @@ $messages['sv'] = array(
 	'usagestatisticscalselect' => 'Välj',
 	'usagestatistics-editindividual' => '$1 statistik över antal redigeringar för enskilda användare',
 	'usagestatistics-editpages' => '$1 statistik över antal redigerade sidor för enskilda användare',
+	'right-viewsystemstats' => 'Visa [[Special:UserStats|wikianvändningsstatistik]]',
 );
 
 /** Telugu (తెలుగు)

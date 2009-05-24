@@ -97,6 +97,7 @@ $1',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Siebrand
  */
@@ -117,6 +118,7 @@ $messages['qqq'] = array(
 	'sign-viewfield-agent' => '{{Identical|User agent}}',
 	'sign-viewfield-email' => '{{Identical|E-mail}}',
 	'sign-viewfield-options' => '{{Identical|Options}}',
+	'sign-signatures' => '{{Identical|Signature}}',
 	'sig-private' => '{{Identical|Private}}',
 	'sign-emailto' => '{{optional}}',
 	'sign-viewfield-reviewedby' => '{{Identical|Reviewer}}',

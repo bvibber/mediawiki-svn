@@ -2812,6 +2812,7 @@ Contacta por favor el operador o el administrador del servicio.',
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Silvar
  */
 $wdMessages['et'] = array(
 	'languages' => 'Wikiandmed: keele haldaja',
@@ -2841,6 +2842,7 @@ $wdMessages['et'] = array(
 	'ow_Property' => 'Omand',
 	'ow_Value' => 'Väärtus',
 	'ow_meaningsoftitle' => '"$1" tähendus',
+	'ow_Permission_denied' => '<h2>Õigused puuduvad</h2>',
 );
 
 /** Basque (Euskara)
@@ -5638,6 +5640,7 @@ Don ens noh dä Webaddress loore.',
 	'ow_Synonyms' => 'Wööt met de sellve Bedüggdeniß',
 	'ow_SynonymsAndTranslations' => 'Övversätzunge, un Wööt met de sellve Bedüggdeniß',
 	'ow_Source' => 'Quell',
+	'ow_SourceIdentifier' => 'Kännong udder Bezeijschnong för de Quell',
 	'ow_Text' => 'Tex',
 	'ow_TextAttribute' => 'Eijeschaff',
 	'ow_TextAttributeHeader' => 'Täx-Eijeschaff',
@@ -5647,6 +5650,7 @@ Don ens noh dä Webaddress loore.',
 	'ow_TranslatedText' => 'Övversäzte Tex',
 	'ow_TranslatedTextAttributeValue' => 'Tex',
 	'ow_TranslatedTextAttributeValues' => 'Övvesazbaa Tex',
+	'ow_Label' => 'Bezeijschnong',
 	'ow_Link' => 'Lengk',
 	'ow_LinkAttribute' => 'Eijeschaff',
 	'ow_LinkAttributeValues' => 'Links',
@@ -5683,11 +5687,8 @@ Kein Kopie es jemaat woode.',
 	'ow_no_action_specified' => '<h3>Do es keine Opdraach (<code>action</code>) aanjejovve</h3>
 Velleisch bes De tiräk op di Sigg hee jespronge?
 Nomaal sullt me hee nit hen kumme.',
-	'ow_db_consistency_not_found' => '
-<h2>Fähler</h2>
-De Datebangk es nit mieh konsistent.
-Wikidata kunnt kein jöltije Date fenge, di met dä Nommer för en faßjelaate un explizeete Bedüggdeniß zosamme passe däte. Se künnt verloore jejange sin.
-Bes esu joot, un saach dat enem Wiki-Köbes, udder ennem Administrator fun däm Server.',
+	'ow_db_consistency_not_found' => '<h2>Fähler</h2>
+Wi et ußsüht, es de Datebangk nit mieh konsistent. Wikidata kunnt kein jöltije Date fenge, di met dä Nommer för en faßjelaate un explizeete Bedüggdeniß zosamme passe däte. Se künnt verloore jejange sin. Bes esu joot, un saach dat enem Wiki-Köbes, udder ennem Administrator fun däm ßööver.',
 	'ow_history_transaction' => 'Transakßjuhn:',
 	'ow_history_show_life_span' => 'Zeisch däm Datesatz sing Levvensduur:',
 	'ow_class_attr_type_dm' => 'Faßjelaate un explizeete Bedüggdeniß',
@@ -5882,6 +5883,8 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_copy_successful' => '<h2>Kopie ass gemaach</h2>
 Är Donnéeë schenge kopéiert ginn ze sinn.
 Vergiesst net Iech ze vergewësseren fir sécherzegoen!',
+	'ow_no_action_specified' => '<h3>Et gouf keng Aktioun uginn</h3>
+Vläicht koumt Dir direkt op dës Säit: Normalerweis braucht Dir net hei ze sinn.',
 	'ow_history_transaction' => 'Transaktioun:',
 	'ow_class_attr_type_dm' => 'Definéiert Bedeitung',
 	'ow_class_attr_type_xlate' => 'Text den iwwersat gëtt',
@@ -5963,6 +5966,17 @@ $wdMessages['lt'] = array(
 $wdMessages['mai'] = array(
 	'langman_title' => 'भाषा प्रबंधक',
 	'datasearch' => 'विकी सूचनाकोष: सूचनाकोष ताकू',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$wdMessages['mg'] = array(
+	'langman_iso639-3' => 'Kaody ISO 639-3 :',
+	'langman_iso639-2' => 'kaody ISO 639-2 :',
+	'langman_addlang' => 'Ampio ao ilay fiteny',
+	'datasearch_found_word' => 'hita ilay teny',
+	'datasearch_meaning' => 'dika',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -8002,9 +8016,20 @@ $wdMessages['rif'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $wdMessages['ro'] = array(
+	'langman_langname' => 'Numele limbii:',
+	'langman_iso639-3' => 'Cod ISO 639-3:',
+	'langman_iso639-2' => 'Cod ISO 639-2:',
+	'langman_field_optional' => '(opţional)',
+	'langman_addlang' => 'Adaugă limba',
 	'datasearch' => 'Wikidata: Căutare de date',
+	'datasearch_language' => 'Limbă:',
+	'datasearch_found_word' => 'Cuvânt găsit',
+	'datasearch_meaning' => 'înţeles',
+	'datasearch_ext_identifier' => 'Identificator extern',
+	'datasearch_search_text' => 'Text de căutat:',
 	'ow_save' => 'Salvează',
 	'ow_history' => 'Istoric',
 	'ow_noedit_title' => 'Fără permisiune de modificare',
@@ -8343,6 +8368,7 @@ $wdMessages['ru'] = array(
  * @author OC Ripper
  */
 $wdMessages['sh'] = array(
+	'ow_show' => 'Prikaži',
 	'ow_suggest_previous' => 'Prethodna',
 );
 

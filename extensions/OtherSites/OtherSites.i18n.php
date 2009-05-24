@@ -22,14 +22,6 @@ $messages['qqq'] = array(
 	'othersites-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Piotron
- */
-$messages['sli'] = array(
-	'othersites' => 'andere Seita',
-	'othersites-desc' => 'Verschiebt Interwikilinks ei anne eegene Box, falls se kääne Sproachlinks doarstella',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -115,6 +107,13 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'othersites' => 'Otros sitios',
 	'othersites-desc' => 'Mueve los enlaces interwiki que no sean de idioma a una caja separada',
+);
+
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'othersites' => 'Teised saidid',
 );
 
 /** Basque (Euskara)
@@ -327,6 +326,14 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'othersites' => 'iné stránky',
 	'othersites-desc' => 'Presunie interwiki odkazy okrem odkazov na iné jazyky do ich vlastných portletov.',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'othersites' => 'andere Seita',
+	'othersites-desc' => 'Verschiebt Interwikilinks ei anne eegene Box, falls se kääne Sproachlinks doarstella',
 );
 
 /** Albanian (Shqip)

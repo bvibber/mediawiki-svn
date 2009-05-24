@@ -653,6 +653,14 @@ $messages['lb'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform, Feeler bei der Saisie!',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'chemicalsources' => 'Fototra momba ny Simia',
+	'chemFunctions_ListPage' => 'fototra momba ny simia',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

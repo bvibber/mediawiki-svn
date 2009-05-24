@@ -21,23 +21,27 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'useroptionstats-desc' => 'A short description of this extension. Used in [[Special:Version]]. Do not translate link targets.',
+	'uos-unknown' => '{{Identical|Default}}',
+	'uos-other' => '{{Identical|Other}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'useroptionstats' => 'Статыстыка выбару ўдзельніка',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|Спэцыяльная старонка]] для стварэньня справаздачы звычайнага выбару ўдзельнікаў Мэдыявікі',
+	'useroptionstats' => 'Статыстыка ўстановак ўдзельнікаў',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Спэцыяльная старонка]] для стварэньня справаздачы па выкарыстаньню ўстановак ўдзельнікаў MediaWiki',
 	'uos-warn' => 'PHPlot не ўсталяваны!',
-	'uos-choose' => 'Выбярыце адну з наступных опцыяў удзельніка: $1',
-	'uos-unknown' => '*Па змаўчаньню',
+	'uos-choose' => 'Выберыце адну з наступных установак удзельніка: $1',
+	'uos-unknown' => '*Па змоўчваньні',
 	'uos-other' => '*Іншая',
-	'uos-title' => 'Разьмеркаваньне значэньняў выбару удзельнікаў $1',
+	'uos-title' => 'Разьмеркаваньне значэньняў ўстановак удзельнікаў $1',
 );
 
 /** Bosnian (Bosanski)

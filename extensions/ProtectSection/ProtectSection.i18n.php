@@ -443,12 +443,14 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'protectsection_desc' => 'Tillåter godkända användare att skydda delar av en sida genom att använda taggen <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Du prövade att lägga till eller ta bort en beskyddad sektion',
 	'protectsection_modify' => 'Du prövade att ändra en beskyddad text',
 	'protectsection_forbidden' => 'Förbjudet',
+	'right-protectsection' => 'Skydda sidavsnitt',
 );
 
 /** Telugu (తెలుగు)

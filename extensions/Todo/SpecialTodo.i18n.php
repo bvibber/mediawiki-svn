@@ -1454,6 +1454,7 @@ $4',
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'todo' => 'Uppgiftslista',
@@ -1485,6 +1486,8 @@ $4',
 	'todo-form-details' => 'Detaljer:',
 	'todo-form-email' => 'Skriv in din e-postadress här för att motta meddelanden på e-post när uppgiften är slutförd:',
 	'todo-form-submit' => 'Utför',
+	'right-todo' => 'Ha en att göra-lista',
+	'right-todosubmit' => 'Begränsa användares att göra-listrättigheter',
 );
 
 /** Telugu (తెలుగు)

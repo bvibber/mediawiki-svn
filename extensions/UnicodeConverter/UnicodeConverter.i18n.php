@@ -554,7 +554,11 @@ $messages['tet'] = array(
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'unicodeconverter' => 'ตัวแปลงยูนิโคด',
+	'unicodeconverter-desc' => 'ตัวอย่างอย่างง่ายของโมดูลหน้าพิเศษ [[Special:UnicodeConverter|สายอักขระที่กำหนดเป็น UTF-8]] จะถูกแปลงเป็นเอนทิตี HTML ที่เหมาะสมสำหรับเว็บเพจ ISO 8859-1',
 	'unicodeconverter-ok' => 'ตกลง',
+	'unicodeconverter-oldtext' => 'ข้อความต้นฉบับ:',
+	'unicodeconverter-newtext' => 'ข้อความที่แปลง:',
 );
 
 /** Tagalog (Tagalog)

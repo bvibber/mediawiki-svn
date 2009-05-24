@@ -59,7 +59,7 @@ $messages['be-tarask'] = array(
 	'purgecache-warning' => 'Адбудзецца ачыстка кэш-табліц.',
 	'purgecache-purged' => 'Кэш быў ачышчаны.',
 	'purgecache-button' => 'Ачысьціць',
-	'right-purgecache' => 'Замена табліцы OBJECTCACHE',
+	'right-purgecache' => 'ачыстка табліцы OBJECTCACHE',
 );
 
 /** Bulgarian (Български)
@@ -96,6 +96,7 @@ $messages['ca'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'purgecache' => 'Cache löschen',
@@ -103,6 +104,7 @@ $messages['de'] = array(
 	'purgecache-warning' => 'Dies löscht den Cache.',
 	'purgecache-purged' => 'Der Cache wurde gelöscht.',
 	'purgecache-button' => 'Löschen',
+	'right-purgecache' => 'OBJECTCACHE-Tabelle löschen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -186,6 +188,7 @@ $messages['gl'] = array(
 	'purgecache-warning' => 'Isto purgará a memoria caché das táboas.',
 	'purgecache-purged' => 'A memoria caché foi purgada.',
 	'purgecache-button' => 'Depurar',
+	'right-purgecache' => 'Limpar a táboa OBJECTCACHE',
 );
 
 /** Swiss German (Alemannisch)
@@ -262,6 +265,7 @@ $messages['ia'] = array(
 	'purgecache-warning' => 'Isto face purgar le tabellas de cache.',
 	'purgecache-purged' => 'Le cache ha essite purgate.',
 	'purgecache-button' => 'Purgar',
+	'right-purgecache' => 'Vacuar le tabella OBJECTCACHE',
 );
 
 /** Italian (Italiano)
@@ -281,10 +285,11 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'purgecache' => 'キャッシュを削除',
-	'purgecache-desc' => 'OBJECTCACHEテーブルを消去するための[[Special:PurgeCache|特別ページ]]',
-	'purgecache-warning' => 'これはキャッシュテーブルを掃除するものです。',
+	'purgecache-desc' => 'OBJECTCACHE テーブルを空にするための[[Special:PurgeCache|特別ページ]]',
+	'purgecache-warning' => 'これはキャッシュテーブルを空にします。',
 	'purgecache-purged' => 'キャッシュは削除されました。',
 	'purgecache-button' => 'キャッシュ削除',
+	'right-purgecache' => 'OBJECTCACHE テーブルを空にする',
 );
 
 /** Javanese (Basa Jawa)
@@ -327,6 +332,7 @@ $messages['lb'] = array(
 	'purgecache-warning' => "Hei ginn d'Tafele vum Cache eidelgemaach.",
 	'purgecache-purged' => 'De Cache gouf eidel gemaach.',
 	'purgecache-button' => 'Eidel maachen',
+	'right-purgecache' => 'OBJECTCACHE Tabell eidelmaachen',
 );
 
 /** Marathi (मराठी)
@@ -349,6 +355,7 @@ $messages['nl'] = array(
 	'purgecache-warning' => 'Hiermee worden de cachetabellen geleegd.',
 	'purgecache-purged' => 'De cache is geleegd.',
 	'purgecache-button' => 'Cache legen',
+	'right-purgecache' => 'De OBJECTCACHE-tabel legen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -383,6 +390,7 @@ $messages['oc'] = array(
 	'purgecache-warning' => "Aquò purgarà las taulas de l'amagatal.",
 	'purgecache-purged' => "L'amagatal es estat purgat.",
 	'purgecache-button' => 'Purgar',
+	'right-purgecache' => 'Voidar la taula objectcache',
 );
 
 /** Polish (Polski)
@@ -492,6 +500,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'purgecache' => 'Rensa cachen',
@@ -499,6 +508,7 @@ $messages['sv'] = array(
 	'purgecache-warning' => 'Detta rensar cachetabellerna.',
 	'purgecache-purged' => 'Cachen har rensats.',
 	'purgecache-button' => 'Rensa',
+	'right-purgecache' => 'Rensa OBJECTCACHE-tabellen',
 );
 
 /** Thai (ไทย)

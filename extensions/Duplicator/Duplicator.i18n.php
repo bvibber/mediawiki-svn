@@ -1011,6 +1011,7 @@ Noverande grensa er $3.',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'duplicator' => 'Kopier en side',
@@ -1033,6 +1034,7 @@ $messages['no'] = array(
 	'duplicator-dest-invalid' => 'Angi en gyldig måltittel.',
 	'duplicator-dest-exists' => '[[$1]] finnes allerede. Angi en måltittel som ikke eksisterer.',
 	'duplicator-toomanyrevisions' => '[[$1]] har for mange ($2) revisjoner, og kan ikke kopieres. Nåværende grense er $3.',
+	'right-duplicate' => 'Kopier sidene',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -1321,6 +1323,7 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'duplicator' => 'Duplicera en sida',
@@ -1343,6 +1346,7 @@ $messages['sv'] = array(
 	'duplicator-dest-invalid' => 'Du har inte angivit någon giltig målsida.',
 	'duplicator-dest-exists' => '[[$1]] finns redan. Du måste ange en målsida som inte finns.',
 	'duplicator-toomanyrevisions' => '[[$1]] har för många ($2) versioner, och kan därför inte dupliceras. Gränsen för duplicering är $3 sidversioner.',
+	'right-duplicate' => 'Kopiera sidorna',
 );
 
 /** Telugu (తెలుగు)

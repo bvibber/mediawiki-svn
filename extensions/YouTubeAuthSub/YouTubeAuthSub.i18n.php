@@ -334,6 +334,7 @@ Molimo budite strpljivi.',
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Jordi Roqué
  * @author SMP
  * @author Solde
@@ -350,6 +351,14 @@ $messages['ca'] = array(
 	'youtubeauthsub_category' => 'Categoria',
 	'youtubeauthsub_submit' => 'Trametre',
 	'youtubeauthsub_clickhere' => 'Fes clic aquí per a connectar-te al YouTube',
+	'youtubeauthsub_tokenerror' => "Error en generar la demanda d'autorització, provi de recarregar la pàgina.",
+	'youtubeauthsub_success' => "Enhorabona!
+El vostre video s'ha carregat.
+<a href='http://www.youtube.com/watch?v=$1'>Vegeu el vostre vídeo</a>.
+YouTube pot necessitar algun temps per a processar el vostre vídeo, per la qual cosa pot ser que encara no estigui a punt.
+
+Per incloure el vostre vídeo en una pàgina wiki, afegiu el següent codi en la pàgina:
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_uploadbutton' => 'Carrega',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
@@ -743,6 +752,7 @@ Ole kärsivällinen.',
  * @author Grondin
  * @author IAlex
  * @author Louperivois
+ * @author Mihai
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
@@ -757,7 +767,7 @@ $messages['fr'] = array(
 	'youtubeauthsub_category' => 'Catégorie',
 	'youtubeauthsub_submit' => 'Soumettre',
 	'youtubeauthsub_clickhere' => 'Cliquez ici pour vous connecter sur YouTube',
-	'youtubeauthsub_tokenerror' => 'Erreur lors de la demande d’autorisation, essayez de rafraîchir la page.',
+	'youtubeauthsub_tokenerror' => 'Eroare la generarea autorizării, încearcă din nou.',
 	'youtubeauthsub_success' => "Félicitations !
 Votre vidéo est téléversée.
 <a href='http://www.youtube.com/watch?v=$1'>Visionnez votre vidéo</a>.
@@ -2034,16 +2044,27 @@ Por favor seja paciente.',
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'youtubeauthsub' => 'Încarcă video YouTube',
 	'youtubeauthsub-desc' => 'Permite utilizatorilor să [[Special:YouTubeAuthSub|încarce videoclipuri]] direct la YouTube',
+	'youtubeauthsub_info' => 'Pentru a încărca un video la YouTube, pentru a-l include într-o pagină, completaţi următoarele informaţii:',
 	'youtubeauthsub_title' => 'Titlu',
 	'youtubeauthsub_description' => 'Descriere',
 	'youtubeauthsub_password' => 'Parolă YouTube',
 	'youtubeauthsub_username' => 'Nume de utilizator YouTube',
 	'youtubeauthsub_keywords' => 'Cuvinte cheie',
 	'youtubeauthsub_category' => 'Categorie',
+	'youtubeauthsub_submit' => 'Aplică',
+	'youtubeauthsub_clickhere' => 'Apasă aici pentru a te autentifica la YouTube',
+	'youtubeauthsub_success' => "Felicitări!
+Fişierul video este încărcat.
+<a href='http://www.youtube.com/watch?v=$1'>Vezi fişierul video</a>.
+Uneori YouTube are nevoie de timp pentru a procesa fişierul tău, astfel că acesta poate să nu fie disponibil imediat.
+
+Pentru a include fişierul tău într-o pagină wiki, introdu acest cod:
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Vizualizează acest videoclip]',

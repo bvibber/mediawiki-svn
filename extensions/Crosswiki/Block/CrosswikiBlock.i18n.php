@@ -535,6 +535,7 @@ Retorne a:
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Silvar
  */
 $messages['et'] = array(
 	'crosswikiblock' => 'Blokeeri kasutaja teises wikis',
@@ -542,6 +543,9 @@ $messages['et'] = array(
 	'crosswikiblock-reason' => 'Põhjus:',
 	'crosswikiblock-submit' => 'Blokeeri see kasutaja',
 	'crosswikiblock-anononly' => 'Blokeeri ainult anonüümseid kasutajaid',
+	'crosswikiblock-nocreate' => 'Takista konto loomist',
+	'crosswikiblock-autoblock' => "Blokeeri automaatselt ka selle kasutaja poolt kasutatud IP aadress, ning ka kõik sarnased IP'd millelt võidakse proovida sodida",
+	'crosswikiblock-noemail' => 'Takista kasutaja poolt ka e-maili saatmine',
 	'crosswikiunblock-reason' => 'Põhjus:',
 	'crosswikiunblock-submit' => 'Lõpeta kasutaja blokeering',
 	'crosswikiblock-nousername' => 'Ühtegi kasutajanime ei antud',
@@ -965,6 +969,7 @@ Retornar a:
 * [[Special:CrosswikiBlock|Formulario de blocada]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Le disblocadas local non es supportate via iste interfacie. Usa [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Blocar e disblocar usatores in altere wikis',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1038,6 +1043,7 @@ Torna a:
 * [[Special:CrosswikiBlock|Modulo di blocco]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Gli sblocchi locali non sono supportati da questa interfaccia. Usare [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Blocca e sblocca utenti su altri siti wiki',
 );
 
 /** Japanese (日本語)
@@ -1999,6 +2005,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'crosswikiblock-desc' => 'Gör det möjligt att blockera användare på andra wikier med hjälp av en [[Special:Crosswikiblock|specialsida]]',
@@ -2040,6 +2047,7 @@ Gå tillbaka till:
 * [[Special:CrosswikiBlock|Blockeringsformuläret]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokala blockeringar kan inte tas bort via det här formuläret. Använd [[Special:IPBlockList|{{int:ipblocklist}}]] istället.',
+	'right-crosswikiblock' => 'Blockera och avblockera användare på andra wikier',
 );
 
 /** Silesian (Ślůnski)

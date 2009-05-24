@@ -976,21 +976,29 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'dt-desc' => 'Gjør det mulig å importere og eksportere strukturert data i maloppkallinger',
+	'dt-desc' => 'Gjør det mulig å importere og eksportere data som finnes i maloppkallinger',
 	'viewxml' => 'Se XML',
 	'dt_viewxml_docu' => 'Velg blant følgende kategorier og navnerom for å se dem i XML-format',
 	'dt_viewxml_categories' => 'Kategorier',
 	'dt_viewxml_namespaces' => 'Navnerom',
 	'dt_viewxml_simplifiedformat' => 'Forenklet format',
 	'dt_xml_namespace' => 'Navnerom',
+	'dt_xml_pages' => 'Sider',
 	'dt_xml_page' => 'Side',
+	'dt_xml_template' => 'Mal',
 	'dt_xml_field' => 'Felt',
 	'dt_xml_name' => 'Navn',
 	'dt_xml_title' => 'Tittel',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Fritekst',
+	'importxml' => 'Importer XML',
+	'dt_importxml_selectfile' => 'Vennligst velg XML-filen som skal importeres:',
+	'dt_importxml_editsummary' => 'XML-importering',
+	'dt_importxml_importing' => 'Importerer...',
+	'dt_importxml_success' => '{{PLURAL:$1|Én side|$1 sider}} vil bli importert fra XML-filen.',
 );
 
 /** Occitan (Occitan)

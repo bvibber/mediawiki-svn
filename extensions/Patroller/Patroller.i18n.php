@@ -1571,6 +1571,19 @@ $messages['vo'] = array(
 	'patrol-revert-reason' => 'Kod:',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'patrol' => 'פאטראלירן רעדאקטירונגען',
+	'patrol-skip' => 'איבערהיפן',
+	'patrol-reverting' => 'צוריקשטעלן: $1',
+	'group-patroller' => 'פאטראלירער',
+	'group-patroller-member' => 'פאטראלירער',
+	'grouppage-patroller' => '{{ns:project}}:פאטראלירער',
+	'right-patroller' => 'פאטראלירן בלעטער',
+);
+
 /** Yue (粵語)
  * @author Hillgentleman
  * @author Shinjiman

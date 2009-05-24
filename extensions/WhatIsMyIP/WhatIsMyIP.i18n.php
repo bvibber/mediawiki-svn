@@ -66,7 +66,7 @@ $messages['be-tarask'] = array(
 	'whatismyip' => 'Які мой IP-адрас',
 	'whatismyip-desc' => 'Паказвае цяперашні [[Special:WhatIsMyIP|ІР-адрас удзельніка]]',
 	'whatismyip-out' => 'Ваш ІР-адрас:',
-	'right-whatismyip' => 'Прагляд [[Special:WhatIsMyIP|майго IP-адрасу]]',
+	'right-whatismyip' => 'прагляд [[Special:WhatIsMyIP|уласнага IP-адрасу]]',
 );
 
 /** Bulgarian (Български)
@@ -195,14 +195,15 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jack Phoenix
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'whatismyip' => 'Mikä IP-osoitteeni on',
-	'whatismyip-desc' => 'Näyttää käyttäjän nykyisen IP-osoitteen sivulla [[Special:WhatIsMyIP]]',
+	'whatismyip-desc' => 'Näyttää käyttäjän nykyisen [[Special:WhatIsMyIP|IP-osoitteen]].',
 	'whatismyip-out' => 'IP-osoitteesi:',
-	'right-whatismyip' => 'Katsoa oman IP-osoitteensa sivulla [[Special:WhatIsMyIP]]',
+	'right-whatismyip' => 'Katsoa oman [[Special:WhatIsMyIP|IP-osoitteensa]]',
 );
 
 /** French (Français)
@@ -287,8 +288,9 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'whatismyip' => 'Que es mi adresse IP',
-	'whatismyip-desc' => 'Monstra le adresse IP del usator actual in [[Special:WhatIsMyIP]]',
+	'whatismyip-desc' => 'Monstra le  [[Special:WhatIsMyIP|adresse IP]] del usator actual',
 	'whatismyip-out' => 'Tu adresse IP:',
+	'right-whatismyip' => 'Vider le [[Special:WhatIsMyIP|proprie adresse IP]]',
 );
 
 /** Italian (Italiano)
@@ -406,11 +408,12 @@ $messages['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
  * @author Gunnernett
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'whatismyip' => 'Kva er IP-adressa mi',
-	'whatismyip-desc' => 'Viser noverande brukar si [[Special:WhatIsMyIP|IP addresse]]',
-	'whatismyip-out' => 'Di IP-adresse:',
+	'whatismyip-desc' => 'Viser [[Special:WhatIsMyIP|IP-adressa]] til den noverande brukaren',
+	'whatismyip-out' => 'IP-adressa di:',
 	'right-whatismyip' => 'Syn [[Special:WhatIsMyIP|mi eiga IP-adresse]]',
 );
 

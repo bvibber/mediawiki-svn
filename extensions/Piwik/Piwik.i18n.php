@@ -471,12 +471,14 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Jon Harald Søby
  * @author Lejonel
+ * @author Najami
  */
 $messages['sv'] = array(
 	'piwik-desc' => 'Lägger till Piwik-script för spårning i MediaWiki och visar [[Special:Piwik|lite statistik]]',
 	'piwik-lastvisits' => 'Senaste besök',
 	'piwik-countries' => 'Länder',
 	'piwik-browsers' => 'Webbläsare',
+	'right-viewpiwik' => 'Visa [[Special:Piwik|Piwik-statistik]]',
 );
 
 /** Telugu (తెలుగు)

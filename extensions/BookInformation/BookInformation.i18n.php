@@ -1031,6 +1031,24 @@ $messages['lt'] = array(
 	'bookinfo-purchase' => 'Pirkti šią knygą iš $1',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'bookinfo-header' => 'Antsipirihany momba ny boky',
+	'bookinfo-desc' => "Mameno ny [[Special:Booksources|pejy manokana momba ny foto-boky]] avy amin'ny servisy Internet",
+	'bookinfo-result-title' => 'lohateny:',
+	'bookinfo-result-author' => 'Mpanoratra azy:',
+	'bookinfo-result-publisher' => 'Mpamoaka azy:',
+	'bookinfo-result-year' => 'Taona:',
+	'bookinfo-error-invalidisbn' => 'Tsy izy ny ISBN nampidirinao',
+	'bookinfo-error-nosuchitem' => 'Tsy hita tao io zavatra io na tsy misy',
+	'bookinfo-error-nodriver' => "Tsy afaka mandefa ny rindrankajy momba ny antsipirihan'ny boky",
+	'bookinfo-error-noresponse' => 'Tsy nisy valiny na ela laotra no niandry',
+	'bookinfo-purchase' => "Vidio any amin'ny $1 io boky",
+	'bookinfo-provider' => 'mpanome data : $1',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

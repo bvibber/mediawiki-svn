@@ -2249,12 +2249,13 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Garas
  * @author Hugo.arg
  */
 $messages['lt'] = array(
 	'openiderror' => 'Tikrinimo klaida',
 	'openidnickname' => 'Slapyvardis',
-	'openidfullname' => 'Pilnas vardas',
+	'openidfullname' => 'Visas vardas',
 	'openidemail' => 'El. pašto adresas',
 	'openidlanguage' => 'Kalba',
 	'openidchoosepassword' => 'slaptažodis:',

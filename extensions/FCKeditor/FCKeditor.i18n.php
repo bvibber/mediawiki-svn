@@ -62,11 +62,33 @@ $messages['ar'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'fckeditor-desc' => 'Дазваляе рэдагаваньне з дапамогай WYSIWYG рэдактара FCKeditor',
-	'textrichditor' => 'Пашыраны рэдактар',
+	'textrichditor' => 'Палепшаны рэдактар',
+	'prefs-fckeditor' => 'Палепшаны рэдактар',
+	'tog-riched_disable' => 'Адключыць палепшаны рэдактар',
+	'tog-riched_disable_ns_main' => 'Адключыць палепшаны рэдактар у асноўнай прасторы назваў',
+	'tog-riched_disable_ns_talk' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:Talk}}»',
+	'tog-riched_disable_ns_user' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:User}}»',
+	'tog-riched_disable_ns_user_talk' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:User_talk}}»',
+	'tog-riched_disable_ns_project' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:Project}}»',
+	'tog-riched_disable_ns_project_talk' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:Project_talk}}»',
+	'tog-riched_disable_ns_image' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:file}}»',
+	'tog-riched_disable_ns_image_talk' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:file_talk}}»',
+	'tog-riched_disable_ns_mediawiki' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:mediawiki}}»',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:mediawiki_talk}}»',
+	'tog-riched_disable_ns_template' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:template}}»',
+	'tog-riched_disable_ns_template_talk' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:template_talk}}»',
+	'tog-riched_disable_ns_help' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:help}}»',
+	'tog-riched_disable_ns_help_talk' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:help_talk}}»',
+	'tog-riched_disable_ns_category' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:category}}»',
+	'tog-riched_disable_ns_category_talk' => 'Адключыць палепшаны рэдактар у прасторы назваў «{{ns:category_talk}}»',
+	'rich_editor_new_window' => 'Адчыніць палепшаны рэдактар ў новым акне',
+	'tog-riched_start_disabled' => 'Пачынаць працу з адключаным палепшаным рэдактарам',
+	'tog-riched_use_popup' => 'Адчыніць палепшаны рэдактар ў дадатковым акенцы',
 );
 
 /** Bosnian (Bosanski)

@@ -3042,6 +3042,29 @@ $messages['grc'] = array(
 	'mv_category' => 'κατηγορία',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'rsd_results_next' => 'ἑπομέναι',
+	'rsd_results_prev' => 'προηγουμέναι',
+	'mv_duration_label' => 'Διάρκεια',
+	'mv_upload_file' => 'Ἐπιφορτίζειν ἀρχεῖον',
+	'mv_tool_search' => 'Ζητεῖν',
+	'mv_tool_export' => 'ἐξάγειν',
+	'mv_tool_embed' => 'Ἐμβαπτίζειν',
+	'mv_edit' => 'Μεταγράφειν',
+	'mv_history' => 'Αἱ προτέραι',
+	'mv_remove' => 'ἀφαιρεῖν',
+	'mv_search_categories' => 'Κατηγορίαι',
+	'mv_search_category' => 'Κατηγορία',
+	'mv_search_and' => 'καὶ',
+	'mv_search_or' => 'ἢ',
+	'mv_search_not' => 'οὐ',
+	'mv_category' => 'κατηγορία',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -4894,10 +4917,16 @@ $messages['lb'] = array(
 	'sc_duration' => 'Dauer',
 	'mv_edit_properties' => 'Eegeschaften änneren',
 	'mv_other_properties' => 'Aner Eegeschaften',
+	'menu_transition' => 'Iwwergangseffekter',
 	'menu_options' => 'Optiounen',
+	'loading_timeline' => 'Zäitläischt lueden <blink>...</blink>',
+	'loading_user_rights' => 'Benotzerrechter lueden <blink>...</blink>',
 	'edit_clip' => 'Clip änneren',
 	'edit_save' => 'Ännerunge späicheren',
 	'edit_cancel' => 'Ännerung ofbriechen',
+	'edit_cancel_confirm' => 'Sidd Dir sécher datt Dir Är Ännerung annuléiere wëllt?
+All Ännerunge sinn da verluer',
+	'cut_clip' => 'Clippe schneiden',
 	'rmclip' => 'Clip ewechhuelen',
 	'metavid' => 'Metavid-Säit',
 	'specialpages-group-mv_group' => 'MetaVidWiki Spezialsäiten',

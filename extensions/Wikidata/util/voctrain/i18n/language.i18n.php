@@ -23,6 +23,7 @@ $fallback=array(
 	'el'  => 'en',
 	'eo'  => 'en',
 	'es'  => 'en',
+	'et'  => 'en',
 	'eu'  => 'en',
 	'fi'  => 'en',
 	'fr'  => 'en',
@@ -1020,6 +1021,13 @@ $messages['es'] = array(
 	'voctrain_other' => 'Otro',
 );
 
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'voctrain_User_name' => 'Kasutaja nimi',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
@@ -1297,7 +1305,7 @@ $messages['gl'] = array(
 	'voctrain_Question' => 'Pregunta',
 	'voctrain_The_word_to_translate' => 'A palabra para traducir',
 	'voctrain_Answer' => 'Resposta',
-	'voctrain_one_of' => 'un de',
+	'voctrain_one_of' => 'unha de',
 	'voctrain_list_of_questions_and_answers' => 'lista de preguntas e respostas',
 	'voctrain_Answer_s_' => 'Resposta(s)',
 	'voctrain_logout' => 'saír do sistema',

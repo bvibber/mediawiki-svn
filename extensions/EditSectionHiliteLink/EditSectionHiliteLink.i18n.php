@@ -132,6 +132,13 @@ $messages['nn'] = array(
 	'Editsectionhilitelink-desc' => 'Uthev den aktuelle delen av ei side når du fører musepeikaren over lenkja til endring',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'Editsectionhilitelink-desc' => 'Uthev den aktuelle delen av en side når du fører musepekeren over lenken til endringen',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

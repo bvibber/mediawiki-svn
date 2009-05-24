@@ -411,6 +411,22 @@ Det må:',
 	'securepasswords-word' => 'ikkje vera eit ord',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'securepasswords-desc' => 'Oppretter sikrere passordhasher og legger til en funksjon for sjekking av passordstyrke',
+	'securepasswords-valid' => 'Passordet ditt er ugyldig eller for kort.
+Det må:',
+	'securepasswords-minlength' => 'være minst {{PLURAL:$1|ett tegn|$1 tegn}} langt',
+	'securepasswords-lowercase' => 'inneholde minst én liten bokstav',
+	'securepasswords-uppercase' => 'inneholde minst én stor bokstav',
+	'securepasswords-digit' => 'inneholde minst ett tall',
+	'securepasswords-special' => 'inneholde minst ett spesialtegn (spesialtegnene er: $1)',
+	'securepasswords-username' => 'være forskjellig fra brukernavnet ditt',
+	'securepasswords-word' => 'ikke være et ord',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -2024,6 +2024,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  * @author Sannab
  */
 $messages['sv'] = array(
@@ -2047,6 +2048,7 @@ $messages['sv'] = array(
 	'badimages-log-add' => 'la till [[$1]] till listan över dåliga bilder',
 	'badimages-log-remove' => 'strök [[$1]] från listan över dåliga bilder',
 	'badimages-page' => '{{ns:help}}:Lista över dåliga bilder',
+	'right-badimages' => 'Uppdatera listan över dåliga bilder',
 );
 
 /** Silesian (Ślůnski)

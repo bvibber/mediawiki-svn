@@ -111,6 +111,13 @@ $messages['es'] = array(
 	'didyoumean-desc' => 'Añade enlaces a páginas con títulos «similares»',
 );
 
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'didyoumean-desc' => 'Lisa lingid lehtedele, mis on "sarnase" pealkirjaga',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

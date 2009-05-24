@@ -575,6 +575,13 @@ $messages['li'] = array(
 	'call' => 'Kalle',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'call' => 'Antso',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

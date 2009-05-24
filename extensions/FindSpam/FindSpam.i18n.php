@@ -103,11 +103,11 @@ $messages['bar'] = array(
  */
 $messages['be-tarask'] = array(
 	'findspam' => 'Пошук спаму',
-	'findspam-desc' => 'Дадае [[Special:FindSpam|спэцыяльную старонку]] якая дазваляе знайсьці нядаўна даданы спам',
+	'findspam-desc' => 'Дадае [[Special:FindSpam|спэцыяльную старонку]], якая дазваляе знаходзіць нядаўна дададзены спам',
 	'findspam-ip' => 'IP-адрас:',
 	'findspam-ok' => 'Добра',
-	'findspam-notextfound' => 'Ня знойдзены ўнёсак',
-	'right-findspam' => 'Пошук нядаўна даданага спаму',
+	'findspam-notextfound' => 'Унёсак ня знойдзены',
+	'right-findspam' => 'пошук нядаўна дададзенага спаму',
 );
 
 /** Bulgarian (Български)

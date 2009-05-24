@@ -312,6 +312,13 @@ No juzgue a los contribuyentes por el número de sus ediciones.",
 	'countedits-nocontribs' => 'No ha habido contribuciones a este wiki.',
 );
 
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'countedits-username' => 'Kasutajanimi:',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

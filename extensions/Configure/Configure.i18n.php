@@ -4618,6 +4618,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-throttle-group-ip' => 'Pro IP-Adress',
 	'configure-throttle-group-subnet' => 'Pro C-Klass-Subnet',
 	'configure-throttle-count' => 'Erlaabten Akiounen:',
+	'configure-throttle-period' => 'Zrécksetzungsintervall (Sekonnen):',
 	'configure-throttle-summary' => '$1 Aktiounen a(n) $2 Sekonnen.',
 	'configure-throttle-group' => 'Typ',
 	'configure-throttle-limit' => 'Limit',
@@ -7129,6 +7130,7 @@ $messages['tet'] = array(
  */
 $messages['th'] = array(
 	'configure-js-remove' => 'ลบ',
+	'configure-section-timezone' => 'เขตเวลา',
 	'configure-section-category' => 'หมวดหมู่',
 	'configure-section-search' => 'สืบค้น',
 );

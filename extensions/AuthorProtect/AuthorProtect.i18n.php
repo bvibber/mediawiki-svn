@@ -1130,6 +1130,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'authorprotect' => 'Skydda sidan från andra än författaren',
@@ -1145,6 +1146,7 @@ $messages['sv'] = array(
 	'authorprotect-failure' => 'Beskyddning misslyckades',
 	'protect-level-author' => 'Skydda från andra än författaren',
 	'restriction-level-author' => 'författarskyddad',
+	'right-authorprotect' => 'Skydda författade sidor',
 );
 
 /** Telugu (తెలుగు)

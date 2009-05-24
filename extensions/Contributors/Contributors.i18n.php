@@ -1144,6 +1144,13 @@ $messages['ru'] = array(
 	'contributors-nosuchpage' => 'Страница «$1» не существует.',
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'contributors-submit' => 'Prikaži',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

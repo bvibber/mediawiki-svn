@@ -275,6 +275,13 @@ $messages['lb'] = array(
 	'right-adminlinks' => 'Kuckt the Link op [[Special:AdminLinks|Like fir Administrateuren]]',
 );
 
+/** Lazuri Nena (Lazuri Nena)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'adminlinks_users' => "K'oçepe",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
