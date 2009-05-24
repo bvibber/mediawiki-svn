@@ -88,6 +88,16 @@ def intro():
 	print "help<enter> for help"
 	print "^D, exit<enter> or quit<enter> to quit"
 	print
+	if not db_works():
+		print "WARNING: Mysql settings do not seem to be correct."
+		print "Did you set up mysql correctly in settings.py?"
+
+def db_works():
+	"""check whether our database settings actually work
+	by logging in to mysql with an empty line.
+	returns true if database works,  else returns false."""
+	rv=os.system("echo | "+settings.mysql_command)
+	return not rv
 
 def help_for(something):
 	"""If the user types incorrect input, try to gently correct them"""

@@ -11,6 +11,7 @@ from installation_system import Installation_System, Installer_Exception
 
 from installer_util import *
 from isolation import *
+import installer_util
 
 # this still uses some legacy structured code, wrapped in a class so it can't do
 #too much harm outside this file. Will refactor later when I have more time.
@@ -86,6 +87,9 @@ class Mediawiki_Installer(Installation_System):
 			raise Mediawiki_Installer_Exception("Please specify which mediawiki tag or revision you would like to view")
 
 		name=as_alias or self.as_alias or installer_name
+		
+		if not installer_util.db_works():
+			raise Installer_Exception("Cannot access database. (Is your settings.py correct?)")
 
 		install(installer_name, name, self.revision, self.language)
 		return self.is_installed(name)
@@ -99,7 +103,9 @@ class Mediawiki_Installer(Installation_System):
 		if not self.is_installed(name):
 			print name+" does not appear to be installed"
 			return
-	
+		if not installer_util.db_works():
+			raise Installer_Exception("Cannot access database. (Is your settings.py correct?)")
+
 		uninstall(name)
 		return not self.is_installed(name) 
 	
@@ -129,6 +135,9 @@ class Mediawiki_Installer(Installation_System):
 		src is the instance to duplicate
 		dst is the name to copy to.  
 		"""
+		if not installer_util.db_works():
+			raise Installer_Exception("Cannot access database. (Is your settings.py correct?)")
+
 		if not self.is_installed(src):
 			raise Mediawiki_Installer_Exception(src+" not found.")
 
@@ -260,7 +269,9 @@ def checkout_latest(name, revision):
 def _checkout(command, name):
 	"""perform the actual check out, and rename our checked out data to something more useful"""
 
-	os.system(command)
+	rv=os.system(command)>>8
+	if rv:
+		raise Installer_Exception("Download failed")
 	os.rename('phase3',name)
 
 
@@ -323,29 +334,39 @@ def make_admin(target):
 	#do_sql(target, settings.installerdir+"/user.sql")
 	phpfile=os.path.join(settings.instancesdir,target,"maintenance","createAndPromote.php")
 	command="php "+phpfile+" --bureaucrat "+settings.adminuser_name+" "+settings.adminuser_password
-	os.system(command)
+	rv=os.system(command)>>8
+	if rv:
+		raise Installer_Exception("Failed to create admin user on "+target)
 
 def dumpdb(target,outfile):
 	command=settings.mysqldump_command+" "+dbname(target)+" > "+outfile
-	os.system(command)
+	rv=os.system(command)>>8
+	if rv:
+		raise Installer_Exception("Failed to dump database"+dbname(target))
 
 def do_sql(target, infile):
 	"""execute an sql file, using mysql"""
 
 	command="< "+infile+" "+settings.mysql_command+" "+dbname(target)
-	os.system(command)
+	rv=os.system(command)>>8
+	if rv:
+		raise Installer_Exception("Could not execute  sql file "+infile+" for database "+dbname(target))
 
 def createdb(target):
 	"""create a database using mysql"""
 
 	command="echo 'CREATE DATABASE "+dbname(target)+";' | "+settings.mysql_command
-	os.system(command)
+	rv=os.system(command)>>8
+	if rv:
+		raise Installer_Exception("Could not create database "+dbname(target))
 
 def dropdb(target):
 	"""drop a database using mysql"""
 
 	command="echo 'DROP DATABASE IF EXISTS "+dbname(target)+";' | "+settings.mysql_command
-	os.system(command)
+	rv=os.system(command)>>8
+	if rv:
+		raise Installer_Exception("Could not drop database "+dbname(target))
 
 def delete(target):
 	"""delete target mediawiki installation, assumes we are in the revisions directory"""
