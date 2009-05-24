@@ -26,6 +26,11 @@ Quickstart guide:
 
 6. Full path syntax
 
+7. Common problems
+7.1 Database problems
+7.2 mixing up instances_dir with base_scriptpath
+
+
 ===============
 1. Installation
 ===============
@@ -300,3 +305,52 @@ revision        use a particular (svn) revision number
 tag             use a particular (svn) tag
 limit n         limits output to at most n items (analogous to the sql command of same name) (useful with ls)
 
+
+
+==================
+7. Common problems
+==================
+
+-----------------------------
+7.1 Database problems
+-----------------------------
+
+Symptoms:
+* "WARNING: Mysql settings do not seem to be correct."
+* "Cannot access database. (Is your settings.py correct?)"
+
+Check to make sure your settings.py is set up correctly,
+then try again.
+
+if you get a
+* "Failed to create admin user on ..."
+The database was set up correctly, but for some reason the
+wiki maintenance scripts can't find it.
+
+Check in your mediawiki directory to see if you can locate 
+the problem in LocalSettings.php or InstallerUniqueSettings.php
+, and please report a bug, if
+appropriate.
+
+------------------------------------------------
+7.2 mixing up instances_dir with base_scriptpath
+-------------------------------------------------
+
+Symptom:
+	the installer finishes installing and reports
+	that it has completed successfully, but
+	apache can't find the wiki, or won't run it.
+
+* Apache reports 403 Forbidden:
+	* Add Options indexes  to your apache settings, vhost, or .htaccess file
+	* Make sure the directory you installed the wiki is world readable.
+	* instead of cehcking base_scriptdir, try point your browser at base_scriptdir/<the name of your wiki>
+
+* Apache reports 404:
+	* Are you sure the installer ran ok?
+	* your base_scriptdir is likely set wrong, try place a simple test.html in the directory
+	  you are installing in, and see what happens.
+
+
+* Apache fails to run PHP:
+	* make sure php is properly installed.
