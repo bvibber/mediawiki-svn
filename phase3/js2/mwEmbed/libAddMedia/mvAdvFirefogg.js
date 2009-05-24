@@ -49,9 +49,11 @@ mvAdvFirefogg.prototype = {
 				}		
 		}
 	},	
+	//local instance encoder config (empty by default) 
+	local_encoder_config:{}, 
 	//core firefogg default encoder configuration
 	//see encoder options here: http://www.firefogg.org/dev/index.html
-	encoder_config : {
+	default_encoder_config : {
 		//base quality settings:
 		'videoQuality': { 
 			'd'		: 5,
@@ -220,13 +222,15 @@ mvAdvFirefogg.prototype = {
 		var myFogg = new mvFirefogg( initObj );
 		for(var i in myFogg){
 			if( typeof this[i] != 'undefined'){
-				this[ 'pfogg_' + i ] = mvFogg[i];
+				this[ 'basefogg_' + i ] = myFogg[i];
 			}else{
-				this[ i ] = mvFogg[i];
+				this[ i ] = myFogg[i];
 			}
 		}
 	},
-	setupForm:function(){		
+	setupForm:function(){
+		//call base firefogg form setup		
+		basefogg_setupForm();
 		//if we have a target control form gennerate the html and setup the bindings
 		if( this.control_container != ''){
 			//gennerate the control html
@@ -240,7 +244,8 @@ mvAdvFirefogg.prototype = {
 	},
 	doControlHTML: function(){
 		var out ='';
-		$.each(firefogg_config_groups, function(group_key, group_desc){
+		var _this = this;
+		$j.each(this.config_groups, function(group_key, group_desc){
 			out+= '<div> '+
 				'<h3><a href="#" id="gd_'+group_key+'" >' + group_desc + '</a></h3>'+
 					'<div>';
@@ -248,10 +253,10 @@ mvAdvFirefogg.prototype = {
 			out+='<table width="450" ><tr><td width="35%"></td><td width="65%"></td></tr>'; 
 			//special preset case: 		
 			
-			for(var cK in firefogg_defaults){				
-				var cConf = firefogg_defaults[cK];
+			for(var cK in _this.default_encoder_config){				
+				var cConf = _this.default_encoder_config[cK];
 				if(cConf.group == group_key){
-					out+= proccessCkControlHTML( cK );							
+					out+= _this.proccessCkControlHTML( cK );							
 				}
 			}
 			out+='</table>';
@@ -263,7 +268,7 @@ mvAdvFirefogg.prototype = {
 		$j('#control_container').html( out ); 
 	},
 	proccessCkControlHTML:function( cK ){
-		var cConf =  firefogg_defaults[cK];
+		var cConf =  this.default_encoder_config[cK];
 		var out ='';
 		out+='<tr><td valign="top">'+
 			'<label for="_' + cK + '">' +					
@@ -271,14 +276,14 @@ mvAdvFirefogg.prototype = {
 			 '<span id="help_'+ cK + '" class="ui-icon ui-icon-info" style="float:left"></span>'+
 			 '</label></td><td>';
 		//check if we have a value for this: 
-		var dv = ( firefogg_settings[ cK ] ) ? firefogg_settings[ cK ] : '';				
+		var dv = ( this.local_encoder_config[ cK ] ) ? this.local_encoder_config[ cK ] : '';				
 		//switch on the config type
 		switch(	cConf.type ){					
 			case 'string':
 				out+= '<input type="text" id="_' + cK + '" value="' + dv + '" >' ;
 			break;
 			case 'slider':
-				maxdigits =  (Math.round( firefogg_defaults[ cK ].range.max / 10) +1);
+				maxdigits =  (Math.round( this.default_encoder_config[ cK ].range.max / 10) +1);
 				out+= '<input type="text" maxlength="'+maxdigits+'" size="' +maxdigits + '" '+		
 					'id="_' + cK + '" style="display:inline;border:0; color:#f6931f; font-weight:bold;" ' + 
 					'value="' + dv + '" >' +								
@@ -354,8 +359,8 @@ mvAdvFirefogg.prototype = {
 			}
 		}
 	
-		for(var cK in firefogg_defaults){
-			var cConf =  firefogg_defaults[cK];
+		for(var cK in this.default_encoder_config){
+			var cConf =  this.default_encoder_config[cK];
 			//set up the help for all types: 
 			if(cConf.help){
 				//initial state is hidden: 
@@ -398,8 +403,8 @@ mvAdvFirefogg.prototype = {
 					$j('#slider_' + cK ).slider({
 						range: "min",
 						value: parseInt($j('#_' + cK ).val() ),
-						min: firefogg_defaults[ cK ].range.min,
-						max: firefogg_defaults[ cK ].range.max,
+						min: this.default_encoder_config[ cK ].range.min,
+						max: this.default_encoder_config[ cK ].range.max,
 						slide: function(event, ui) {				
 							var id  = $j(this).attr('id').replace('slider_', '');;
 							$j('#_'+ id).val( ui.value );
@@ -420,26 +425,26 @@ mvAdvFirefogg.prototype = {
 	//sets up the local settings for the encode (restored from a cookie if you have them)
 	setupSettings:function( force ){
 		if(!force){
-			if($.cookie('firefogg_settings')){
-				firefogg_settings = JSON.parse( $.cookie('firefogg_settings') );
+			if($.cookie('this.local_encoder_config')){
+				this.local_encoder_config = JSON.parse( $.cookie('this.local_encoder_config') );
 			}
 		}
-		for(var i in firefogg_defaults){
-			if( firefogg_defaults[i]['d'] ){
-				firefogg_settings[i] = firefogg_defaults[i]['d'];
+		for(var i in this.default_encoder_config){
+			if( this.default_encoder_config[i]['d'] ){
+				this.local_encoder_config[i] = this.default_encoder_config[i]['d'];
 			}
 		}
 		setValuesInHtml();
 	},
 	setValuesInHtml:function(){
 		//set the actual HTML: 
-		$.each(firefogg_settings, function(inx, val){		
+		$.each(this.local_encoder_config, function(inx, val){		
 			if($j('#_'+inx).length !=0){
 				$j('#_'+inx).val( val );
 			}
 		})
 	},
 	saveSettings:function(){
-		$j.cookie('firefogg_settings', JSON.stringify( firefogg_settings ) );
+		$j.cookie('this.local_encoder_config', JSON.stringify( this.local_encoder_config ) );
 	}
 }

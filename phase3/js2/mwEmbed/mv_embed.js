@@ -628,6 +628,10 @@ function mv_jqueryBindings(){
 			};			
 			//see if we need to load the advanced firefog controls and associated ui components:			
 			if( iObj.encoder_interface ){
+				
+				//grab the css:
+				loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
+				 
 				//@@todo would be nice to have a "dependency" map we could use/
 				loadSet['mvAdvFirefogg']	= 'libAddMedia/mvAdvFirefogg.js';
 				loadSet['$j.cookie']		= 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js';
