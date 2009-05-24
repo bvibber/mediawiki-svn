@@ -406,7 +406,7 @@ function wfImageTagPageSetup() {
 				$wgOut->addHTML("<input type='hidden' value='1' id='userLoggedIn'/>");
 
 			if ( $wgUser->isAllowed('edit') &&
-				 $this->mTitle->userCanEdit() &&
+				 $this->mTitle->userCan( 'edit', true ) &&
 				 ( $this->mTitle->isProtected('edit') == false || in_array( 'sysop', $wgUser->getGroups() ) ) )
 				$wgOut->addHTML("<input type='hidden' value='1' id='canEditPage'/>");
 

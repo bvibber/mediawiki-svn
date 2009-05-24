@@ -44,7 +44,7 @@ function wfPostcommentForm() {
 	if (!$wgTitle->isTalkPage() || $action != '')
 		return;
 
-    if (!$wgTitle->userCanEdit()) {
+    if (!$wgTitle->userCan( 'edit', true ) ) {
 		echo  wfMsg('postcomment_discussionprotected');
 		return;
 	}
@@ -184,7 +184,7 @@ function wfSpecialPostcomment( $par )
            return;
         }
 
-	if ( !$t->userCanEdit()) {
+	if ( !$t->userCan( 'edit', true ) ) {
        $wgOut->errorpage( "postcomment", "postcomment_discussionprotected");
 	   return;
 	}
