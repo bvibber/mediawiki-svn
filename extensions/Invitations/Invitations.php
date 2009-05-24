@@ -40,7 +40,7 @@ $wgAutoloadClasses['SpecialInvitations'] = $dir . 'Invitations_page.php';
 $wgAutoloadClasses['Invitations'] = $dir . 'Invitations_obj.php';
 
 $wgExtensionMessagesFiles['Invitations'] = $dir . 'Invitations.i18n.php';
-$wgExtensionAliasesFiles['Invitations'] = $dir . 'Invitations.i18n.alias.php';
+$wgExtensionAliasesFiles['Invitations'] = $dir . 'Invitations.alias.php';
 
 $wgInvitationTypes = array();
 
