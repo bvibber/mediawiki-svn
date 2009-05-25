@@ -14,7 +14,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Author Protect',
 	'author' => 'Ryan Schmidt',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AuthorProtect',
-	'version' => '1.1',
+	'version' => '1.2',
 	'description'    => 'Allows the author of a page to protect it from other users',
 	'descriptionmsg' => 'authorprotect-desc',
 );
@@ -223,7 +223,12 @@ function doProtect( $limit = array(), $reason = '', &$expiry = '' ) {
 
 		$expiry_description = '';
 		if ( $encodedExpiry != 'infinity' ) {
-			$expiry_description = ' (' . wfMsgForContent( 'protect-expiring', $wgContLang->timeanddate( $expiry, false, false ) ).')';
+			$expiry_description = ' (' . wfMsgForContent(
+				'protect-expiring',
+				$wgContLang->timeanddate( $expiry, false, false ),
+				$wgContLang->date( $expiry, false, false ),
+				$wgContLang->time( $expiry, false, false )
+			) . ')';
 		}
 
 		# Prepare a null revision to be added to the history
