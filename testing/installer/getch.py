@@ -1,4 +1,6 @@
 # getch, from http://code.activestate.com/recipes/134892/
+# (C) 2002 Danny Yoo
+# Released under the terms of the MIT license
 # Gets a single character from standard input.  Does not echo to the
 # screen.
 

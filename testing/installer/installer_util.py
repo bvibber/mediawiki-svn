@@ -3,6 +3,9 @@
 
 # Distributed under the terms of the MIT license.
 
+# portions Copyright (C) 2009 Johannes Weiss CC-BY-SA
+
+
 import sys, os
 import settings_handler as settings
 
@@ -163,6 +166,7 @@ def pretty_list(mylist,layout_width=None):
 def getTerminalSize():
     """determine the size of the terminal we are running in (where available)"""
     """ obtained from http://stackoverflow.com/questions/566746/how-to-get-console-window-width-in-python"""
+    """ (Johannes Weiss. CC-WIKI? Seems to be CC-BY-SA)"""
     def ioctl_GWINSZ(fd):
         try:
             import fcntl, termios, struct, os
