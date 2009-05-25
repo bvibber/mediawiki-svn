@@ -56,7 +56,9 @@ install: build
 
 	# Install sync/check scripts
 	install -d -m 0755 $(DESTDIR)/usr/bin
-	install -m 0750 sync-common apache-sanity-check apache-start check-time $(DESTDIR)/usr/bin
+	install -d -m 0755 $(DESTDIR)/usr/sbin
+	install -m 0750 sync-common apache-sanity-check apache-start check-time scap15-1skins scap15-1 $(DESTDIR)/usr/bin
+	install -m 0750 scap15-2 set-group-write2 $(DESTDIR)/usr/sbin
 
 	install -d -m 0750 $(DESTDIR)/var/lib/pybal-check/.ssh
 	install -m 0640 authorized_keys $(DESTDIR)/var/lib/pybal-check/.ssh/authorized_keys

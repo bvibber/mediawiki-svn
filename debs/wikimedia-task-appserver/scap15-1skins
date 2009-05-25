@@ -1,0 +1,5 @@
+#!/bin/sh
+
+rsync -a 10.0.5.8::common/php-1.5/skins/ \
+  /usr/local/apache/common-local/php-1.5/skins \
+   && echo ok || echo failed

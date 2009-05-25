@@ -1,3 +1,11 @@
+wikimedia-task-appserver (1.38) hardy; urgency=low
+
+  * Adapt sudoers file to new, /home-less situation
+  * Add scap scripts
+  * Add script set-group-write2
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 25 May 2009 20:49:05 +0000
+
 wikimedia-task-appserver (1.37) hardy; urgency=low
 
   * Added dependency for xpdf-utils to satisfy pfd extension requirements.

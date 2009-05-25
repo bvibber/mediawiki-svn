@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Compile as regular user
+echo -n Compiling texvc... 
+[ -d /var/tmp/texvc ] || mkdir /var/tmp/texvc
+rsync -r --exclude=.svn/ 10.0.5.8::common/php-1.5/math/ /var/tmp/texvc
+cd /var/tmp/texvc
+make -f Makefile texvc >/dev/null 2>/dev/null && echo ok || echo failed
+
+# Copy and install as root
+sudo /usr/sbin/scap15-2
+
+echo Done
+

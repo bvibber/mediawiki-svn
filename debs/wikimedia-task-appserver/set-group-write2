@@ -1,0 +1,9 @@
+#!/bin/bash
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+target1=/var/tmp/texvc
+target2=/apache/common/php-1.5
+
+find $target1 -group wikidev -not -perm -020 -perm -200 -exec chmod g+w '{}' ';'
+find $target2 -group wikidev -not -perm -020 -perm -200 -exec chmod g+w '{}' ';'
