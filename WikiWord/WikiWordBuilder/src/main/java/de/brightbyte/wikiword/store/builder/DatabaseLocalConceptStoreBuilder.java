@@ -660,21 +660,21 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 	
 	private int deleteAmbiguousAliases(RelationTable aliasTable, String sourceField, String sourceNameField, String targetField, String where) throws PersistenceException {
-		String sql = "CREATE TEMPORARY TABLE bad_alias ( id INT, name varbinary(255), PRIMARY KEY (id, name) )";
+		String sql = "CREATE TEMPORARY TABLE bad_alias ( id INT DEFAULT NULL, name varbinary(255), PRIMARY KEY (id, name) )";
 		executeUpdate("deleteAmbiguousAliases:createTemp", sql);
 		
 		sql = "INSERT IGNORE INTO bad_alias " +
 			" SELECT " + sourceField + ", " + sourceNameField + " " +
 			" FROM " + aliasTable.getSQLName() + " " +
 			(where==null ? "" : " WHERE " + where + " ") +
-			" GROUP BY " + sourceField + ", " + sourceNameField + " " +
+			" GROUP BY " + (idManager!=null ? sourceField  :  sourceNameField ) + " " +
 			" HAVING count(DISTINCT " + targetField + ") > 1";
 		
 		executeUpdate("deleteAmbiguousAliases:fillTemp", sql);
 
 		sql = "DELETE FROM A " +
 			" USING " + aliasTable.getSQLName() + " AS A " +
-			" JOIN bad_alias AS T ON T.id = A." + sourceField + " AND T.name = A." + sourceNameField + " " +
+			" JOIN bad_alias AS T ON " + (idManager!=null ? " T.id = A." + sourceField : " T.name = A." + sourceNameField ) + " " +
 			(where==null ? "" : " WHERE " + where + " ");
 		
 		int n = executeUpdate("deleteAmbiguousAliases:delete", sql);
