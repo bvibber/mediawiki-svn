@@ -272,7 +272,7 @@ var vlcEmbed = {
     },
     pause : function(){
     	this.parent_pause(); //update the inteface if paused via native control
-    	if(this.vlc){
+    	if( this.vlc ){
 			this.vlc.playlist.togglePause();
 		}
     },

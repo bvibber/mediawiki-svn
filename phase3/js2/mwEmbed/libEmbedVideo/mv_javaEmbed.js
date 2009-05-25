@@ -79,22 +79,22 @@ var javaEmbed = {
 		}else{*/
 			//load directly in the page..
 			// (media must be on the same server or applet must be signed)
-			return ''+
+			var appplet_code = ''+
 			'<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="'+mv_embed_path+'binPlayers/cortado/cortado-wmf-r46643.jar" width="'+this.width+'" height="'+this.height+'">	'+ "\n"+
 				'<param name="url" value="'+this.media_element.selected_source.src+'" /> ' + "\n"+
 				'<param name="local" value="false"/>'+ "\n"+
 				'<param name="keepaspect" value="true" />'+ "\n"+
 				'<param name="video" value="true" />'+"\n"+
+				'<param name="showStatus" value="hide" />' + "\n"+
 				'<param name="audio" value="true" />'+"\n"+
 				'<param name="seekable" value="true" />'+"\n"+
 				'<param name="duration" value="'+this.duration+'" />'+"\n"+
 				'<param name="bufferSize" value="200" />'+"\n"+
 			'</applet>';
-			
-			
+						
 			// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
-		// Doesn't work in MSIE or Safari/Mac or Opera 9.5
-			/*if ( embedTypes.mozilla ) {
+			// Doesn't work in MSIE or Safari/Mac or Opera 9.5
+			if ( embedTypes.mozilla ) {
 				var iframe = document.createElement( 'iframe' );
 				iframe.setAttribute( 'width', params.width );
 				iframe.setAttribute( 'height', playerHeight );
@@ -102,7 +102,7 @@ var javaEmbed = {
 				iframe.setAttribute( 'frameborder', 0 );
 				iframe.setAttribute( 'marginWidth', 0 );
 				iframe.setAttribute( 'marginHeight', 0 );
-				iframe.setAttribute( 'id', 'cframe_'+ this.id)
+				iframe.setAttribute( 'id', 'cframe_' + this.id)
 				elt.appendChild( iframe );
 				var newDoc = iframe.contentDocument;
 				newDoc.open();
@@ -110,9 +110,7 @@ var javaEmbed = {
 				newDoc.close(); // spurious error in some versions of FF, no workaround known
 			} else {
 				return appplet_code;
-			}		*/	
-			
-		//}				
+			}
     }, 
     postEmbedJS:function(){
     	//reset logged domain error flag:
@@ -145,7 +143,11 @@ var javaEmbed = {
     },   
     //get java cortado embed object
     getJCE:function(){    	
-    	this.jce = $j('#'+this.pid).get(0);
+    	if ( embedTypes.mozilla ) {
+    		this.jce = window.frames['cframe_' + this.id ].document.getElementById( this.pid );
+    	}else{
+    		this.jce = $j('#'+this.pid).get( 0 );
+    	}
     	/*if( ! mv_java_iframe ){
 			
 		}else{
@@ -161,8 +163,22 @@ var javaEmbed = {
 				return false;
 		}   */ 		
     },
+    doThumbnailHTML:function(){    	
+    	//empty out player html (jquery with java applets does not work) :        	
+    	var pelm = document.getElementById('mv_embedded_player_' + this.id );
+    	pelm.innerHTML = '';    	
+    	this.parent_doThumbnailHTML();
+    },
+    play:function(){
+    	this.getJCE();
+    	this.parent_play();
+    	if( this.jce )
+    		this.jce.doPlay();
+    },
     pause:function(){
+    	this.getJCE();
     	this.parent_pause();
-        this.stop();
+    	if( this.jce )
+    		this.jce.doPause();         
     }
 }

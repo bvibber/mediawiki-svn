@@ -1219,7 +1219,7 @@ embedVideo.prototype = {
     	var _this = this;
     	
     	//if the clip resolution is < 320 don't do fancy onClipDone stuff 
-    	if(this.width<300){
+    	if(this.width < 300){
     		return ;
     	}
     	this.onClipDone_disp=true;
@@ -1426,12 +1426,11 @@ embedVideo.prototype = {
     doThumbnailHTML:function()
     {  	
     	var _this = this;
-    	js_log('f:doThumbnailHTML'+ this.thumbnail_disp);
-        this.closeDisplayedHTML();
-        this.thumbnail_disp = true;
-
-        $j('#mv_embedded_player_'+this.id).html( this.getThumbnailHTML() );
+    	js_log('f:doThumbnailHTML'+ this.thumbnail_disp);    	
+        this.closeDisplayedHTML();       
+        $j( '#mv_embedded_player_' + this.id ).html( this.getThumbnailHTML() );
 		this.paused = true;		
+		this.thumbnail_disp = true;
     },
     refreshControlsHTML:function(){
     	js_log('refreshing controls HTML');
@@ -1815,14 +1814,14 @@ embedVideo.prototype = {
 		 $j('#blackbg_'+sel_id).fadeOut("slow", function(){
 			 $j('#blackbg_'+sel_id).remove();
 		 });
- 		return false;//onclick action return false
+ 		return false; //onclick action return false
 	},
     selectPlaybackMethod:function(){    	
     	//get id (in case where we have a parent container)
         var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
         
         var _this=this;               
-        var out='<span style="color:#FFF;background-color:black;"><blockquote style="background-color:black;">';
+        var out= '<span style="color:#FFF;background-color:black;"><blockquote style="background-color:black;">';
         var _this=this;
         //js_log('selected src'+ _this.media_element.selected_source.url);
 		$j.each( this.media_element.getPlayableSources(), function(source_id, source){     		
@@ -1982,7 +1981,7 @@ embedVideo.prototype = {
 		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;		
 		//js_log('mv_embed:do pause');		
         //(playing) do pause        
-        this.paused=true; 
+        this.paused = true; 
         //update the ctrl "paused state"            	
         $j("#mv_play_pause_button_" + this_id).attr({
         		'class':'play_button'        		
@@ -2006,10 +2005,11 @@ embedVideo.prototype = {
 		}else{
 			this.pause();
 		}	
+		
 		//reset the currentTime: 
 		this.currentTime=0;
 		//check if thumbnail is being displayed in which case do nothing
-		if(this.thumbnail_disp){
+		if( this.thumbnail_disp ){
 			//already in stooped state
 			js_log('already in stopped state');
 		}else{
@@ -2019,6 +2019,7 @@ embedVideo.prototype = {
 			this.setSliderValue(0);
 			this.setStatus( this.getTimeReq() );
 		}
+		
 		//make sure the big playbutton is has click action: 
 		$j('#big_play_link_' + _this.id).unbind('click').click(function(){
 			$j('#' +_this.id).get(0).play();
