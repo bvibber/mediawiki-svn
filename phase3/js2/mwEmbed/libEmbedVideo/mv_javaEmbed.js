@@ -91,7 +91,7 @@ var javaEmbed = {
 				'<param name="duration" value="'+this.duration+'" />'+"\n"+
 				'<param name="bufferSize" value="200" />'+"\n"+
 			'</applet>';
-						
+									
 			// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
 			// Doesn't work in MSIE or Safari/Mac or Opera 9.5
 			if ( embedTypes.mozilla ) {
