@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.13.18',
+	'version' => '0.13.19',
 );
 
 # Configuration part
@@ -215,6 +215,9 @@ $wgHooks['FarmerAdminPermissions'][] = 'efConfigureFarmerAdminPermissions';
 $wgHooks['FarmerAdminSkin'][] = 'efConfigureFarmerAdminSkin';
 $wgHooks['FarmerAdminExtensions'][] = 'efConfigureFarmerAdminExtensions';
 $wgHooks['FarmerManageExtensions'][] = 'efConfigureFarmerManageExtensions';
+
+# For interaction with Admin Links extension
+$wgHooks['AdminLinks'][] = 'efConfigureAddToAdminLinks';
 
 # Handlers
 $wgAutoloadClasses['ConfigureHandler'] = $dir . 'Configure.handler.php';
