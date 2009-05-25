@@ -372,6 +372,11 @@ url = http://www.mediawiki.org/wiki/Extension:ErrorHandler
 ExpandTemplates
 url = http://www.mediawiki.org/wiki/Extension:ExpandTemplates
 
+ExternalData
+url = http://www.mediawiki.org/wiki/Extension:External_Data
+settings[] = edgStringReplacements: array
+array[] = edgStringReplacements: assoc
+
 FileSearch
 
 FindSpam
@@ -563,7 +568,80 @@ file = SpecialRenameuser.php
 url = http://www.mediawiki.org/wiki/Extension:Renameuser
 
 ReplaceText
-url = http://www.mediawiki.org/wiki/Extension:ReplaceText
+url = http://www.mediawiki.org/wiki/Extension:Replace_Text
+
+SemanticDrilldown
+file = includes/SD_Settings.php
+url = http://www.mediawiki.org/wiki/Extension:Semantic_Drilldown
+settings[] = sdgListSeparator: text
+settings[] = sdgNumResultsColumns: int
+settings[] = sdgNumResultsPerPage : int
+settings[] = sdgFiltersSmallestFontSize: int
+settings[] = sdgFiltersLargestFontSize: int
+
+SemanticForms
+file = includes/SF_Settings.php
+url = http://www.mediawiki.org/wiki/Extension:Semantic_Forms
+settings[] = sfgMaxAutocompleteValues: int
+settings[] = sfgRenameEditTabs: bool
+settings[] = sfgListSeparator: text
+settings[] = sfgYUIBase: text
+settings[] = sfg24HourTime: bool
+
+SemanticMediaWiki
+file = includes/SMW_Settings.php
+url = http://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki
+settings[] = smwgQComparators: text
+settings[] = smwgShowFactbox: text
+settings[] = smwgShowFactboxEdit: text
+settings[] = smwgToolboxBrowseLink: bool
+settings[] = smwgInlineErrors: bool
+settings[] = smwgLinksInValues: bool
+settings[] = smwgDefaultNumRecurringEvents: int
+settings[] = smwgMaxNumRecurringEvents: int
+settings[] = smwgBrowseShowInverse: bool
+settings[] = smwgBrowseShowAll: bool
+settings[] = smwgSearchByPropertyFuzzy: bool
+settings[] = smwgTypePagingLimit: int
+settings[] = smwgConceptPagingLimit: int
+settings[] = smwgPropertyPagingLimit: int
+settings[] = smwgQEnabled: bool
+settings[] = smwgQMaxLimit: int
+settings[] = smwgQSubcategoryDepth: int
+settings[] = smwgQSubpropertyDepth: int
+settings[] = smwgQSortingSupport: bool
+settings[] = smwgQRandSortingSupport: bool
+settings[] = smwgQDefaultNamespaces: text
+settings[] = smwgQMaxSize: int
+settings[] = smwgQMaxDepth: int
+settings[] = smwgQFeatures: int
+settings[] = smwgQDefaultLimit: int
+settings[] = smwgQMaxInlineLimit: int
+settings[] = smwgQPrintoutLimit: int
+settings[] = smwgQDefaultLinking: text
+settings[] = smwgQConceptCaching: int
+settings[] = smwgQConceptMaxSize : int
+settings[] = smwgQConceptMaxDepth: int
+settings[] = smwgQConceptFeatures: int
+settings[] = smwgQConceptCacheLifetime: int
+settings[] = smwgResultFormats: array 
+array[] = smwgResultFormats: simple
+settings[] = smwgPDefaultType: text
+settings[] = smwgRSSEnabled: bool
+settings[] = smwgRSSWithPages: bool
+settings[] = smwgAllowRecursiveExport: bool
+settings[] = smwgExportBacklinks: bool
+settings[] = smwgOWLFullExport: bool
+settings[] = smwgEnableUpdateJobs: bool
+settings[] = smwgNamespacesWithSemanticLinks: array
+array[] = smwgNamespacesWithSemanticLinks: ns-text
+settings[] = smwgAdminRefreshStore: bool
+
+SemanticResultFormats
+file = SRF_Settings.php
+url = http://www.mediawiki.org/wiki/Extension:Semantic_Result_Formats
+settings[] = srfgFormats: array
+array[] = srfgFormats: simple
 
 SkinPerNamespace
 settings[] = wgSkinPerNamespace: array
