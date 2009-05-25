@@ -2,6 +2,7 @@ package de.brightbyte.wikiword.integrator;
 
 import java.util.List;
 
+import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.ValueListMultiMap;
 
 public class DefaultFeatureSet extends ValueListMultiMap<String, Object> implements FeatureSet {
@@ -31,4 +32,10 @@ public class DefaultFeatureSet extends ValueListMultiMap<String, Object> impleme
 			
 			return false;
 		}
+		
+		public LabeledVector<Object> getHistogram(String key) {
+			List<Object> list = get(key);
+			return FeatureSets.histogram(list);
+		}
+		
 }

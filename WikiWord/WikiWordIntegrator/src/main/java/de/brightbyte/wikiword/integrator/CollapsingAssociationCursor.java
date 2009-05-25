@@ -11,10 +11,12 @@ public class CollapsingAssociationCursor implements DataCursor<Association> {
 	protected String sourceKeyField;
 	protected String targetKeyField;
 	
-	public CollapsingAssociationCursor(String sourceKeyField, String targetKeyField) {
+	public CollapsingAssociationCursor(DataCursor<Association> cursor,  String sourceKeyField, String targetKeyField) {
+		if (cursor==null) throw new NullPointerException();
 		if (sourceKeyField==null) throw new NullPointerException();
 		if (targetKeyField==null) throw new NullPointerException();
 		
+		this.cursor = cursor;
 		this.sourceKeyField = sourceKeyField;
 		this.targetKeyField = targetKeyField;
 	}

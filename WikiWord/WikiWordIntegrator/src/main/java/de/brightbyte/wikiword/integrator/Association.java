@@ -14,6 +14,10 @@ public class Association {
 			this.properties = properties==null ? new DefaultFeatureSet() : FeatureSets.merge(properties);
 		}
 
+		public Association() {
+			this(new DefaultFeatureSet(), new DefaultFeatureSet());
+		}
+
 		public FeatureSet getProperties() {
 			return properties;
 		}
@@ -67,11 +71,21 @@ public class Association {
 			return true;
 		}
 
-		public static Association merge(Association a, Association b) {
-			FeatureSet src = FeatureSets.merge(a.getSourceItem(), b.getSourceItem());
-			FeatureSet tgt = FeatureSets.merge(a.getTargetItem(), b.getTargetItem());
-			FeatureSet props = FeatureSets.merge(a.getProperties(), b.getProperties());
-			return new Association(src, tgt, props);
+		public static Association merge(Association... assocs) {
+			if (assocs.length==0) return new Association();
+			if (assocs.length==1) return assocs[0];
+			
+			FeatureSet source = new DefaultFeatureSet();
+			FeatureSet target = new DefaultFeatureSet();
+			FeatureSet props = new DefaultFeatureSet();
+			
+			for (int i = 0; i<assocs.length; i++) {
+				source.putAll(assocs[i].getSourceItem());
+				target.putAll(assocs[i].getTargetItem());
+				props.putAll(assocs[i].getProperties());
+			}
+			
+			return new Association(source, target, props);
 		}
 		
 		
