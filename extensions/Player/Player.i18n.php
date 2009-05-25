@@ -307,6 +307,18 @@ $messages['es'] = array(
 	'player-goto-file' => 'archivo',
 );
 
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'player-file' => 'Faili nimi',
+	'player-play' => 'Mängi',
+	'player-not-allowed' => 'mittelubatud vorming',
+	'player-not-found' => 'faili ei leidnud',
+	'player-clicktoplay' => 'Mängi $1',
+	'player-goto-file' => 'fail',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Theklan

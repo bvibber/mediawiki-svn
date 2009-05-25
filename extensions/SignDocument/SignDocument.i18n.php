@@ -74,6 +74,8 @@ $messages['bs'] = array(
 	'signature-desc' => 'Omogućuje [[Special:SignDocument|potpisivanje]] dokumenata',
 	'signaturelogpagetext' => 'Ovo je zapisnik [[Special:SignDocument|svih potpisa dodanih u dokumente]].',
 	'signaturelogentry' => 'potpisan dokument $1',
+	'right-sigadmin' => 'Upravljanje potpisom dokumenata',
+	'right-createsigndocument' => 'Pravljenje dokumenata koji se mogu potpisivati',
 );
 
 /** Catalan (Català)

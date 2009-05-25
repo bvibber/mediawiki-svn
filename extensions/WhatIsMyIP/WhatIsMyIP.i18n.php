@@ -102,8 +102,9 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'whatismyip' => 'Canfod fy nghyfeiriad IP',
-	'whatismyip-desc' => 'Yn dangos cyfeiriad IP y defnyddiwr presennol ar [[Special:WhatIsMyIP]]',
-	'whatismyip-out' => 'Eich IP:',
+	'whatismyip-desc' => 'Yn dangos [[Special:WhatIsMyIP|cyfeiriad IP]] y defnyddiwr presennol',
+	'whatismyip-out' => 'Eich cyfeiriad IP:',
+	'right-whatismyip' => 'Gweld [[Special:WhatIsMyIP|fy nghyfeiriad IP]] fy hunan',
 );
 
 /** German (Deutsch)
@@ -139,12 +140,13 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Dead3y3
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'whatismyip' => 'Ποια είναι η IP μου',
 	'whatismyip-desc' => 'Εμφανίζει την τρέχουσα [[Special:WhatIsMyIP|διεύθυνση IP]] του χρήστη',
 	'whatismyip-out' => 'Η διεύθυνση IP σας:',
-	'right-whatismyip' => 'Άποψη [[Special:WhatIsMyIP|ίδια διεύθυνση IP]]',
+	'right-whatismyip' => 'Εμφάνιση της [[Special:WhatIsMyIP|ίδιας μου της διεύθυνσης IP]]',
 );
 
 /** Esperanto (Esperanto)
@@ -541,11 +543,13 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'whatismyip' => 'Vilken är min IP-adress',
-	'whatismyip-desc' => 'Visar den nuvarande användarens IP-adress på [[Special:WhatIsMyIP]]',
+	'whatismyip-desc' => 'Visar den nuvarande användarens [[Special:WhatIsMyIP|IP-adress]]',
 	'whatismyip-out' => 'Din IP-adress:',
+	'right-whatismyip' => 'Visa [[Special:WhatIsMyIP|min egen IP-adress]]',
 );
 
 /** Silesian (Ślůnski)

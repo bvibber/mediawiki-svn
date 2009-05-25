@@ -43,6 +43,13 @@ $aliases['dsb'] = array(
 	'ContributionTotal' => array( 'Pśinoski dogromady' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'ContributionHistory' => array( 'HistoriqueDesContributions', 'Historique des contribution' ),
+	'ContributionStatistics' => array( 'StatisitquesDesContributions', 'Statistiques des contribution' ),
+	'ContributionTotal' => array( 'ContributionsTotales', 'Contributions totales' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'ContributionHistory' => array( 'Historial das contribucións' ),

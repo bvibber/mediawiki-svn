@@ -57,6 +57,7 @@ $aliases['dsb'] = array(
 /** French (Français) */
 $aliases['fr'] = array(
 	'GroupPermissions' => array( 'Permissions des groupes', 'Permission des groupes' ),
+	'RemoveUnusedGroups' => array( 'RetirerGroupesInutilisés', 'Retirer groupes inutilisés' ),
 	'SortPermissions' => array( 'Trier les permissions' ),
 );
 

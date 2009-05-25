@@ -325,6 +325,8 @@ riddler|The Riddler',
 	'vote-results-none' => 'Nid oes neb wedi pleidleisio eto.',
 	'vote-login' => 'Rhaid [$1 mewngofnodi] i bleidleisio.',
 	'vote-invalid-choice' => "Rhaid dewis un o'r dewisiadau a gynigwyd.",
+	'right-vote' => 'Pleidleisio',
+	'right-voteadmin' => "Gweld canlyniadau'r bleidlais",
 );
 
 /** German (Deutsch)
@@ -400,6 +402,7 @@ riddler|Riddler',
  * @author Consta
  * @author Crazymadlover
  * @author K sal 15
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'vote' => 'Ψηφοφορία',
@@ -415,7 +418,7 @@ $messages['el'] = array(
 	'vote-results-choice' => 'Επιλογή',
 	'vote-results-count' => 'Καταμέτρηση',
 	'vote-results-none' => 'Δεν διεξάγονται ψηφοφορίες αυτήν την περίοδο.',
-	'vote-login' => 'Πρέπει [$1 σύνδεση] να ψηφίσετε.',
+	'vote-login' => 'Πρέπει [$1 να συνδεθείτε] για να ψηφίσετε.',
 	'vote-invalid-choice' => 'Πρέπει να επιλέξετε μια από της διαθέσιμες επιλογές.',
 	'right-vote' => 'Ψηφοφορία',
 	'right-voteadmin' => 'Δείτε τα αποτελέσματα της ψηφοφορίας',
@@ -1449,6 +1452,8 @@ riddler|Gåtan',
 	'vote-results-none' => 'Inga röster har avgivits ännu.',
 	'vote-login' => 'Du måste [$1 logga in] för att rösta.',
 	'vote-invalid-choice' => 'Du måste välja något av de angivna alternativen.',
+	'right-vote' => 'Rösta',
+	'right-voteadmin' => 'Se resultat från omröstningen',
 );
 
 /** Silesian (Ślůnski)

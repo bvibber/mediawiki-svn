@@ -274,9 +274,13 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'rightfunctions-desc' => 'Rettighetsbaserte parserfunksjoner',
+	'rightfunctions-casc' => '(fra etterfølgende kilder)',
+	'rightfunctions-local' => '(fra lokal side)',
+	'rightfunctions-ns' => '(fra navneromsbeskyttelse)',
 );
 
 /** Occitan (Occitan)

@@ -3048,7 +3048,7 @@ $messages['grc'] = array(
  */
 $messages['grc'] = array(
 	'rsd_results_next' => 'ἑπομέναι',
-	'rsd_results_prev' => 'προηγουμέναι',
+	'rsd_results_prev' => 'προηγούμεναι',
 	'mv_duration_label' => 'Διάρκεια',
 	'mv_upload_file' => 'Ἐπιφορτίζειν ἀρχεῖον',
 	'mv_tool_search' => 'Ζητεῖν',

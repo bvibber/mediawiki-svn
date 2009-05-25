@@ -47,6 +47,11 @@ $aliases['es'] = array(
 	'CountEdits' => array( 'Contador_de_Ediciones' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'CountEdits' => array( "CompteurD'Editions", "Compteur d'éditions" ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'CountEdits' => array( 'Contador de edicións' ),

@@ -35,6 +35,13 @@ $messages['bs'] = array(
 	'Editsectionhilitelink-desc' => 'Naglašavanje pogodne sekcije stranice kada prelazite mišem preko linka za uređivanje',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'Editsectionhilitelink-desc' => "Resalta la secció apropiada d'una pàgina quan passeu el ratolí per a sobre l'enllça per a editar",
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'Editsectionhilitelink-desc' => 'Hebt den entsprechenden Abschnitt einer Seite hervor, wenn die Maus über den „Bearbeiten“-Link bewegt wird',

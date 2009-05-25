@@ -21,13 +21,6 @@ $messages['qqq'] = array(
 	'emailaddressimage-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Piotron
- */
-$messages['sli'] = array(
-	'emailaddressimage-desc' => 'Argänzt is <tt>&lt;email&gt;</tt>-Tag, um anne E-Mail-Adresse ols Beld doarzustella',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -54,6 +47,13 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'emailaddressimage-desc' => 'Dodaje oznaku <tt>&lt;email&gt;</tt> za prikaz e-mail adrese u vidu slike',
+);
+
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'emailaddressimage-desc' => 'Afegeix <tt>&lt;correu electrònic&gt;</tt> per a mostar un correu electrònic com a imatge',
 );
 
 /** Czech (Česky)
@@ -320,6 +320,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'emailaddressimage-desc' => 'Pridáva značku <tt>&lt;email&gt;</tt> na zobrazenie emailu vo forme obrázka',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'emailaddressimage-desc' => 'Argänzt is <tt>&lt;email&gt;</tt>-Tag, um anne E-Mail-Adresse ols Beld doarzustella',
 );
 
 /** Albanian (Shqip)

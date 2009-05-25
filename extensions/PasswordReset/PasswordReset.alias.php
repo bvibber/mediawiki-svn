@@ -48,6 +48,11 @@ $aliases['dsb'] = array(
 	'Disabledusers' => array( 'Znjemóžnjone wužywarje' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'PasswordReset' => array( 'RéinitialisationDuMotDePasse', 'Réinitialisation du mot de passe' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'PasswordReset' => array( 'Passwort zrucksetze' ),

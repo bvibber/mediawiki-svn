@@ -219,6 +219,7 @@ Trenutno ograničenje je $3.',
 
 /** Catalan (Català)
  * @author SMP
+ * @author Solde
  * @author Toniher
  */
 $messages['ca'] = array(
@@ -242,6 +243,7 @@ $messages['ca'] = array(
 	'duplicator-dest-invalid' => 'Si us plau, proporcioneu un títol de destinació vàlid.',
 	'duplicator-dest-exists' => '[[$1]] ja existeix. Proporcioneu un títol de destinació que no existeixi.',
 	'duplicator-toomanyrevisions' => "La pàgina [[$1]] té $2 revisions i no pot ser copiada. EL límit màxim d'edicions que es poden copiar és de $3.",
+	'right-duplicate' => 'Pàgines duplicades',
 );
 
 /** Danish (Dansk)

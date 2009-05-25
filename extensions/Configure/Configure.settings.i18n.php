@@ -2667,6 +2667,18 @@ $messages['es'] = array(
 	'configure-setting-wgUsersNotifiedOnAllChanges' => 'Nombres de usuario a quienes se les enviará una notificación por correo electrónico por cada cambio que ocurra en un wiki',
 );
 
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'configure-setting-wgSitename' => 'Saidi nimi',
+	'configure-setting-wgSharedDB' => 'Jagatud andmebaasi nimi',
+	'configure-setting-wgSharedPrefix' => 'Jagatud andmebaasi eesliide',
+	'configure-setting-wgSharedTables' => 'Jagatavad tabelid',
+	'configure-setting-wgAllowImageMoving' => 'Aktiveeri failide ümbernimetamine',
+	'configure-setting-wgDebugLogGroups-value' => 'Fail',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

@@ -769,6 +769,20 @@ Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 	'ogg-desc-link' => 'Sobre este archivo',
 );
 
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'ogg-play' => 'Mängi',
+	'ogg-pause' => 'Paus',
+	'ogg-stop' => 'Peata',
+	'ogg-play-video' => 'Mängi videot',
+	'ogg-play-sound' => 'Mängi heli',
+	'ogg-no-player' => 'Kahjuks, ei paista su süsteemis olevat ühtki ühilduvat multimeedia programmi.
+Palun lae omale tarkvara <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">siit alla</a>.',
+	'ogg-dismiss' => 'Sulge',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Theklan

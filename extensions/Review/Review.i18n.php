@@ -1170,6 +1170,7 @@ $messages['lb'] = array(
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Versioun',
 	'review_version_link' => 'Versioun #$1',
+	'review_statistic_cell' => 'Duerchschnëtt: $1 vun $2<br />($4 {{PLURAL:$4|registréierte|registréiert}} Benotzer, $5 {{PLURAL:$5|anonyme|anonym}} Benotzer)',
 	'review_version_statistic_cell' => '$1 vu(n) $2',
 	'review_user_page_list' => 'De Benotzer huet dës Säiten nogekuckt:',
 	'review_user_details_link' => '(Detailer)',

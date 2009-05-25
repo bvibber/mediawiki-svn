@@ -139,13 +139,12 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'categorywatch-desc' => "Yn hysbysu defnyddwyr sy'n dilyn hynt rhyw gategori bod aelodaeth y categori wedi newid",
-	'categorywatch-emailbody' => 'Cyfarchion $1. Anfonwyd y neges hon atoch am fod y categori "$2" ar eich rhestr gwylio.
-Diben y neges yw eich hysbysu bod y defnyddiwr $4 $5 am $3.',
 	'categorywatch-emailsubject' => 'Symudiadau ar y categori "$1"',
 	'categorywatch-catmovein' => "wedi symud $1 o'r categori $3 ac i'r categori $2",
 	'categorywatch-catmoveout' => "wedi symud $1 o'r categori $2 ac i'r categori $3",
 	'categorywatch-catadd' => "wedi ychwanegu $1 i'r categori $2",
 	'categorywatch-catsub' => "wedi tynnu $1 o'r categori $2",
+	'categorywatch-autocat' => "Yn cael ei wylio'n awtomatig gan $1",
 );
 
 /** German (Deutsch)

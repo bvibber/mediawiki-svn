@@ -82,6 +82,7 @@ $messages['bs'] = array(
 	'purgecache-warning' => 'Ovo će očistiti keš tabele.',
 	'purgecache-purged' => 'Keš je očišćen.',
 	'purgecache-button' => 'Očisti',
+	'right-purgecache' => 'Čišćenje OBJECTCACHE tabele',
 );
 
 /** Catalan (Català)
