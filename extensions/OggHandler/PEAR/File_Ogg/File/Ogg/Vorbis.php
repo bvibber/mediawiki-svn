@@ -178,9 +178,7 @@ class File_Ogg_Vorbis extends File_Ogg_Media
 			
 	    $startSec =  (( '0x' . substr( $this->_firstGranulePos, 0, 8 ) ) * pow(2, 32) 
             + ( '0x' . substr( $this->_firstGranulePos, 8, 8 ) ))
-            / $this->_idHeader['audio_sample_rate'];  
-            
-        $this->_streamLength  = $stream_endLength - $stream_startLength;	   
+            / $this->_idHeader['audio_sample_rate'];                         
              
 		//make sure the offset is worth taking into account oggz_chop related hack
 	    if( $startSec > 1){
