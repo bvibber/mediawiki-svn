@@ -256,12 +256,12 @@ class LocalisationUpdate {
 		$changedStrings = array_diff_assoc( $base_messages, $compare_messages );
 
 		// If we want to save the differences
-		if ( $saveResults === true && !empty($changedStrings)) {
+		if ( $saveResults === true && !empty($changedStrings) && is_array($changeStrings)) {
 			self::myLog( "--Checking languagecode {$langcode}--" );
 			// The save them
 			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode );
 			self::myLog( "{$updates} messages updated for {$langcode}." );
-		} elseif($saveResult === true) {
+		} elseif($saveResults === true) {
 			self::myLog( "--{$langcode} hasn't changed--" );
 		}
 
@@ -442,12 +442,15 @@ class LocalisationUpdate {
 			$changedStrings = array_diff_assoc( $messages, $compare_messages[$language] );
 
 			// If we want to save the changes
-			if ( $saveResults ) {
-				self::myLog( "--Checking languagecode {$language} for extension {$extension}--" );
-				// Do really save the changes
-				$updates += self::saveChanges( $changedStrings, $forbiddenKeys, $messages, $language );
+			if ( $saveResults === true && !empty($changedStrings) && is_array($changeStrings)) {
+				self::myLog( "--Checking languagecode {$langcode}--" );
+				// The save them
+				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode );
+				self::myLog( "{$updates} messages updated for {$langcode}." );
+			} elseif($saveResults === true) {
+				self::myLog( "--{$langcode} hasn't changed--" );
 			}
-		}
+		} 
 
 		// And log some stuff
 		self::myLog( "Updated " . $updates . " messages for the '{$extension}' extension" );
