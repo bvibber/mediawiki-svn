@@ -30,11 +30,11 @@ class DTImportXML extends SpecialPage {
 		}
 
 		if ($wgRequest->getCheck('import_file')) {
-			$text = "<p>" . wfMsg('dt_importxml_importing') . "</p>\n";
+			$text = "<p>" . wfMsg('dt_import_importing') . "</p>\n";
 			$source = ImportStreamSource::newFromUpload( "xml_file" );
 			$text .= self::modifyPages($source);
 		} else {
-			$select_file_label = wfMsg('dt_importxml_selectfile');
+			$select_file_label = wfMsg('dt_import_selectfile', 'XML');
 			$import_button = wfMsg('import-interwiki-submit');
 			$text =<<<END
 	<p>$select_file_label</p>
@@ -57,7 +57,7 @@ END;
 		$job_params = array();
 		global $wgUser;
 		$job_params['user_id'] = $wgUser->getId();
-		$job_params['edit_summary'] = wfMsgForContent('dt_importxml_editsummary');
+		$job_params['edit_summary'] = wfMsgForContent('dt_import_editsummary', 'XML');
 
 		foreach ($xml_parser->mPages as $page) {
 			$title = Title::newFromText($page->getName());
@@ -68,7 +68,7 @@ END;
 		}
 		Job::batchInsert( $jobs );
 		global $wgLang;
-		$text .= wfMsgExt( 'dt_importxml_success', $wgLang->formatNum( count( $jobs ) ) );
+		$text .= wfMsgExt( 'dt_import_success', $wgLang->formatNum( count( $jobs ) ), 'XML' );
 		return $text;
 	}
 }
