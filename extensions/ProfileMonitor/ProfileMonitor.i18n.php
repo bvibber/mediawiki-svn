@@ -139,6 +139,13 @@ $messages['bs'] = array(
 	'profiling-no-data' => 'Nisu pronađeni odgovarajući podaci.',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -237,6 +244,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author McDutchie
  * @author Sherbrooke
@@ -248,7 +256,7 @@ $messages['fr'] = array(
 	'profiling-process' => 'Chaîne de caractères du processus :',
 	'profiling-wildcard' => 'Utiliser un passe-partout',
 	'profiling-ok' => 'Accepter',
-	'profiling-data' => "Données d'évaluation de « $1 »",
+	'profiling-data' => 'Données d’évaluation de « $1 »',
 	'profiling-data-process' => 'Processus',
 	'profiling-data-count' => 'Compter',
 	'profiling-data-time' => 'Durée (totale)',

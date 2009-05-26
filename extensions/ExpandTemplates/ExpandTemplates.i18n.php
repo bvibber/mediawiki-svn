@@ -306,6 +306,7 @@ Ovo se uradi putem poziva relevantnog parserskog nivoa iz same MediaWiki.',
 
 /** Catalan (Català)
  * @author SMP
+ * @author Solde
  * @author Toniher
  */
 $messages['ca'] = array(
@@ -316,7 +317,7 @@ $messages['ca'] = array(
 	'expand_templates_input' => 'El vostre text:',
 	'expand_templates_output' => 'Resultat:',
 	'expand_templates_xml_output' => 'Sortida XML',
-	'expand_templates_ok' => "D'acord",
+	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Elimina els comentaris',
 	'expand_templates_generate_xml' => "Mostra l'arbre XML",
 	'expand_templates_preview' => 'Previsualitza',

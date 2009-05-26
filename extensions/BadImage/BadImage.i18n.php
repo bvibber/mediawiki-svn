@@ -1511,6 +1511,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
  */
@@ -1535,6 +1536,7 @@ $messages['nn'] = array(
 	'badimages-log-add' => 'la til [[$1]] på lista over blokkerte bilete',
 	'badimages-log-remove' => 'fjerna [[$1]] frå lista over blokkerte bilete',
 	'badimages-page' => '{{ns:help}}:Lista over blokkerte bilete',
+	'right-badimages' => 'Oppdater lista over dårlege bilete',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

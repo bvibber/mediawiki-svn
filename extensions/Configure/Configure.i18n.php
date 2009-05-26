@@ -1011,6 +1011,7 @@ $messages['ca'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Extensions',
 	'configure-ext-settings' => 'Paràmetres',
+	'configure-js-remove' => 'Elimina',
 	'configure-js-search-prompt' => 'Consulta:',
 	'configure-section-email' => 'Correu electrònic',
 	'configure-section-category' => 'Categories',
@@ -5416,6 +5417,9 @@ Opprett ho eller endra ho for å nytta denne utvidinga.',
 	'configure-boolop-description-or' => 'Minst éin føresetnad lyt vera sann',
 	'configure-boolop-description-xor' => 'Akkurat éin føresetnad lyt vera sann',
 	'configure-boolop-description-not' => 'Ingen føresetnader treng vera sanne',
+	'configure-farmer-settings' => '[[Special:Configure|Konfigurer denne wikien]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Konfigurer utvidingar for denne wikien]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|List opp tilgjengelege utvidingar for denne wikien]].',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

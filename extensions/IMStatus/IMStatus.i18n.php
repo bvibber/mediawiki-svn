@@ -200,6 +200,19 @@ Id koji trebate da navedete su brojevi i slova između oznaka "$2" i "$3".',
 	'imstatus_yahoo_style' => 'stil dugmeta, od $1 (najmanje) do $2 (najveće), $3 i $4 su za zvučni mail.',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'imstatus_syntax' => 'Sintaxis',
+	'imstatus_default' => 'Per defecte',
+	'imstatus_example' => 'Exemple',
+	'imstatus_possible_val' => 'Possibles valors',
+	'imstatus_max' => 'màx',
+	'imstatus_min' => 'mín',
+	'imstatus_or' => 'o',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

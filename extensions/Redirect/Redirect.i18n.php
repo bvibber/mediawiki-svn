@@ -79,10 +79,11 @@ $messages['fa'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author IAlex
  */
 $messages['fr'] = array(
-	'redirect-desc' => "Permet de configurer facilement des redirections lors d'une [[MediaWiki:Redirect-addnewaccount|création de compte]] et une [[MediaWiki:Redirect-userlogoutcomplete|déconnexion]]",
+	'redirect-desc' => 'Permet de configurer facilement des redirections lors d’une [[MediaWiki:Redirect-addnewaccount|création de compte]] et une [[MediaWiki:Redirect-userlogoutcomplete|déconnexion]]',
 );
 
 /** Galician (Galego)

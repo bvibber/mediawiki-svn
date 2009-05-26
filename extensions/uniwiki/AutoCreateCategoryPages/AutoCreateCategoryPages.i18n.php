@@ -81,6 +81,13 @@ Ona prikazuje sve stranice u kategoriji "$1" kao i sve podkategorije unutar kate
 	'autocreatecategorypages-editor' => 'Automatski kreator kategorija',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'autocreatecategorypages-editor' => 'Creador automàtic de categories',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

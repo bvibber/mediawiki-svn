@@ -218,6 +218,11 @@ $messages['ca'] = array(
 	'gep-addcategorybutton' => 'Afegeix',
 	'gep-suggestcategory' => 'Suggereix una categoria',
 	'gep-suggestcategorybutton' => 'Envia',
+	'gep-sections' => 'Seccions',
+	'gep-addsection' => 'Afegeix una secció',
+	'gep-addsectionbutton' => 'Afegeix',
+	'gep-classicmode' => 'Mode clàssic',
+	'gep-genericmode' => 'Mode genèric',
 );
 
 /** Czech (Česky)

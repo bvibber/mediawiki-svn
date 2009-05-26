@@ -169,7 +169,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'protectsection_desc' => 'Permet aux utilisateurs autorisés de protéger des parties d’une page au moyen de la balise <tt>&lt;protect&gt;</tt>',
-	'protectsection_add_remove' => "Vous avez tenté d'ajouter ou d'effacer une section protégée.",
+	'protectsection_add_remove' => 'Vous avez tenté d’ajouter ou d’effacer une section protégée.',
 	'protectsection_modify' => 'Vous avez tenté de modifier du texte protégé.',
 	'protectsection_forbidden' => 'Interdit',
 	'right-protectsection' => 'Protéger les sections de page',

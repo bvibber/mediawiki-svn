@@ -186,6 +186,7 @@ Ne sudite o korisnicima po njihovom broju izmjena.",
 
 /** Catalan (Català)
  * @author SMP
+ * @author Solde
  * @author Toniher
  */
 $messages['ca'] = array(
@@ -193,7 +194,7 @@ $messages['ca'] = array(
 	'countedits-desc' => "[[Special:CountEdits|Pàgina especial]] que compta les edicions de l'usuari i indica els deu que més en tenen.",
 	'countedits-warning' => "'''Avís:''' No jutgeu un llibre per la seua coberta, ni tampoc un coŀlaborador pel seu nombre d'edicions.",
 	'countedits-username' => "Nom d'usuari:",
-	'countedits-ok' => "D'acord",
+	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'No hi ha cap usuari amb el nom $1.',
 	'countedits-resultheader' => 'Resultats de $1',
 	'countedits-resulttext' => '$1 ha fet {{PLURAL:$2|1 edició|$2 edicions}}',

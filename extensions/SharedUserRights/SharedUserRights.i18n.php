@@ -91,6 +91,7 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
 	'shareduserrights' => "Gestió compartida de drets d'usuari",
@@ -98,6 +99,7 @@ $messages['ca'] = array(
 	'gblrights-logpage' => 'Registre de drets globals',
 	'gblrights-pagetext' => 'Aquest és un registre dels canvis que es fan a la taula de drets globals de la família de wikis',
 	'gblrights-rights-entry' => "s'han canviat els grups globals de $1 des de $2 a $3",
+	'right-userrights-shared' => "Administrar els permisos d'usuari compartits",
 );
 
 /** Czech (Česky)
@@ -157,6 +159,7 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author IAlex
  * @author Verdy p
  */
@@ -166,7 +169,7 @@ $messages['fr'] = array(
 	'gblrights-logpage' => 'Journal des droits partagés',
 	'gblrights-pagetext' => 'Voici l’historique de toutes les modifications apportées à la table des droits partagés d’utilisateur pour la famille wiki',
 	'gblrights-rights-entry' => 'a modifié l’appartenance aux groupes globaux pour $1 de $2 à $3',
-	'right-userrights-shared' => "Gérer les droits d'utilisateurs partagés",
+	'right-userrights-shared' => 'Gérer les droits d’utilisateurs partagés',
 );
 
 /** Irish (Gaeilge)

@@ -304,6 +304,7 @@ Ako imate nekih pitanja oko ovog sistema distribucije proširenja, molimo pogled
  * @author Solde
  */
 $messages['ca'] = array(
+	'extdist-submit-extension' => 'Continua',
 	'extdist-submit-version' => 'Continua',
 );
 

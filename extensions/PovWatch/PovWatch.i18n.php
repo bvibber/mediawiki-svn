@@ -506,6 +506,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author McDutchie
@@ -523,10 +524,10 @@ $messages['fr'] = array(
 	'povwatch_not_subscribed' => 'Vous n’êtes pas inscrit à PovWatch, vous ne pouvez donc pas résilier d’inscription.',
 	'povwatch_unsubscribed' => 'Votre inscription a PovWatch est maintenant résiliée.',
 	'povwatch_invalid_title' => 'Le titre indiqué est invalide.',
-	'povwatch_pushed' => "[[$1]] a été ajoutée à la liste de suivi {{PLURAL:$2|d'un utilisateur|de $2 utilisateurs}}.",
-	'povwatch_intro' => "PovWatch est un service qui permet d'ajouter implicitement les pages controversées dans la liste de suivi des administrateurs qui le souhaitent.
+	'povwatch_pushed' => '[[$1]] a été ajoutée à la liste de suivi {{PLURAL:$2|d’un utilisateur|de $2 utilisateurs}}.',
+	'povwatch_intro' => 'PovWatch est un service qui permet d’ajouter implicitement les pages controversées dans la liste de suivi des administrateurs qui le souhaitent.
 
-Un journal des pages récemment ajoutées à la liste est disponible sur [[Special:PovWatch/log]].",
+Un journal des pages récemment ajoutées à la liste est disponible sur [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'Une [[Special:PovWatch/subscribers|liste des abonnés]] est disponible.',
 	'povwatch_subscriber_list_intro' => '<strong>Liste des abonnés</strong>',
 	'povwatch_not_allowed_subscribers' => 'Vous n’êtes pas autorisé à consulter la liste des utilisateurs inscrits à PovWatch.',
@@ -537,17 +538,17 @@ Inscrivez scrupuleusement le titre : une page inexistante peut être spécifiée
 	'povwatch_title' => 'Titre :',
 	'povwatch_comment' => 'Commentaire pour le journal :',
 	'povwatch_no_log' => 'Il n’existe aucune entrée dans le journal.',
-	'povwatch_no_subscribers' => "Personne n'est abonné.",
+	'povwatch_no_subscribers' => 'Personne n’est abonné.',
 	'povwatch_unsubscribe_intro' => 'Vous êtes abonné à PovWatch.
 Cliquez sur le bouton ci-dessous pour résilier votre abonnement.',
-	'povwatch_unsubscribe' => "Résilier l'abonnement",
+	'povwatch_unsubscribe' => 'Résilier l’abonnement',
 	'povwatch_subscribe_intro' => 'Vous n’êtes pas abonné à PovWatch.
 Cliquez sur le bouton ci-dessous pour vous abonner.',
-	'povwatch_subscribe' => "S'abonner",
+	'povwatch_subscribe' => 'S’abonner',
 	'povwatch_added' => 'ajouté',
 	'right-povwatch_admin' => 'Administrer les droits d’utilisateur pour ajouter des pages à la liste de suivi d’autres utilisateurs.',
-	'right-povwatch_user' => "Ajouter des pages à la liste de suivi d'autres utilisateurs",
-	'action-povwatch_admin' => "administrer les droits d'utilisateur pour PovWatch",
+	'right-povwatch_user' => 'Ajouter des pages à la liste de suivi d’autres utilisateurs',
+	'action-povwatch_admin' => 'administrer les droits d’utilisateur pour PovWatch',
 	'action-povwatch_user' => 'ajouter cette page à la liste de suivi d’un autre utilisateur',
 );
 

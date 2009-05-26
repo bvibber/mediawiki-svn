@@ -337,6 +337,7 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
 	'specialuserstats' => "Estadístiques d'ús",
@@ -362,6 +363,7 @@ $messages['ca'] = array(
 	'usagestatisticscalselect' => 'Selecció',
 	'usagestatistics-editindividual' => "Estadístiques $1 d'edicions de l'usuari",
 	'usagestatistics-editpages' => "Estadístiques $1 de pàgines de l'usuari",
+	'right-viewsystemstats' => "Veure [[Special:UserStats|estadístiques d'ús de la wiki]]",
 );
 
 /** Czech (Česky)
@@ -649,7 +651,7 @@ $messages['fr'] = array(
 	'usagestatisticscalselect' => 'Sélectionner',
 	'usagestatistics-editindividual' => 'Statistiques $1 des modifications par utilisateur',
 	'usagestatistics-editpages' => 'Statistiques $1 des pages par utilisateur',
-	'right-viewsystemstats' => "Voir les [[Special:UserStats|statistiques d'utilisation du wiki]]",
+	'right-viewsystemstats' => 'Voir les [[Special:UserStats|statistiques d’utilisation du wiki]]',
 );
 
 /** Irish (Gaeilge)

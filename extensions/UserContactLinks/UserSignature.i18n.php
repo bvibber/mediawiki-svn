@@ -29,14 +29,6 @@ $messages['rtm'] = array(
 	'usercontactlink-baduser' => 'Seseva',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Jonny84
- */
-$messages['sli'] = array(
-	'usercontactlink-baduser' => 'falscher Benutzername',
-	'usercontactlink-desc' => 'Macht es möglich, Benutzernamen einfach mit ^^^Benutzer^^^ zu verlinken',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -97,6 +89,13 @@ $messages['bn'] = array(
 $messages['bs'] = array(
 	'usercontactlink-baduser' => 'pogrešno korisničko ime',
 	'usercontactlink-desc' => 'Daje mogućnost jednostavnog i konzistentnog dodavanja drugih korisničkih imena koristeći ^^^user^^^ sintaksu',
+);
+
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'usercontactlink-baduser' => "nom d'usuari incorrecte",
 );
 
 /** Czech (Česky)
@@ -403,6 +402,14 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'usercontactlink-baduser' => 'nesprávne meno používateľa',
 	'usercontactlink-desc' => 'Poskytuje možnosť jednoducho a konzistentne pridávať mená ostatných používateľov pomocou syntaxe ^^^používateľ^^^',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'usercontactlink-baduser' => 'falscher Benutzername',
+	'usercontactlink-desc' => 'Macht es möglich, Benutzernamen einfach mit ^^^Benutzer^^^ zu verlinken',
 );
 
 /** Albanian (Shqip)

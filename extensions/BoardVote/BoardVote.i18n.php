@@ -1147,7 +1147,7 @@ Necessiteu un mínim de $1 {{PLURAL:$1|contribució feta|contribucions fetes}} a
 	'boardvote_ua' => 'Agent usuari',
 	'boardvote_listintro' => '<p>Aquí hi ha la llista de tots els vots rebuts. $1 per les dades encriptades.</p>',
 	'boardvote_dumplink' => 'Cliqueu ací',
-	'boardvote_submit' => "D'acord",
+	'boardvote_submit' => 'OK',
 	'boardvote_strike' => 'Anuŀla',
 	'boardvote_unstrike' => 'Recupera',
 	'boardvote_needadmin' => 'Només els administradors electorals poden fer aquesta operació.',

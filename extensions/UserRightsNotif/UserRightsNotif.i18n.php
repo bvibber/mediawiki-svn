@@ -646,6 +646,14 @@ $messages['mr'] = array(
 	'userrightsnotifysubject' => '$1 वरील गट सदस्यत्व बदल',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'userrightsnotifysubject' => "Tibdil fil-grupp ta' sħubija fuq $1",
+	'userrightsnotif-desc' => "Tibgħat nota permezz ta' posta elettronika biex tinforma lill-utenti fuq tibdil tad-drittjiet",
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Tvdm

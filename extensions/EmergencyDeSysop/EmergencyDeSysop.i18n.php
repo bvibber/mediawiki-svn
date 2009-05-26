@@ -182,7 +182,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'emergencydesysop' => 'Supresión de emergencia del privilegio de administrador',
 	'emergencydesysop-desc' => 'Permite a un administrador sacrificar sus propios privilegios para retirar los privilegios de otro administrador',
-	'emergencydesysop-title' => 'Remover acceso de administrador tanto de usuario actual y otro administrador',
+	'emergencydesysop-title' => 'Suprimir el acceso de administrador tanto de usuario actual y otro administrador',
 	'emergencydesysop-otheradmin' => 'Nombre del otro administrador',
 	'emergencydesysop-reason' => 'Razones para remoción',
 	'emergencydesysop-submit' => 'Enviar',
@@ -192,7 +192,7 @@ $messages['es'] = array(
 	'emergencydesysop-done' => 'Acción realizada, ambos, usted y [[$1]] han perdido sus privilegios de administrador.',
 	'emergencydesysop-invalidtarget' => 'El usuario objetivo no existe.',
 	'emergencydesysop-blocked' => 'No puede acceder a esta página mientras esté bloqueado',
-	'emergencydesysop-noright' => 'No tienes suficientes permisos para acceder a esta página',
+	'emergencydesysop-noright' => 'No tiene los permisos necesarios para acceder a esta página',
 	'right-emergencydesysop' => 'Capáz de retirar los privilegios de administrador a otro usuario, perdiendo el suyo propio.',
 );
 

@@ -78,12 +78,13 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author IAlex
  */
 $messages['fr'] = array(
 	'tspoll-desc' => 'Inclut le [http://www.toolserver.org/~jan/poll/index.php Script de sondage du Toolserver] via une balise HTML',
-	'tspoll-fetch-error' => "Erreur lors de la recherche de l'URL !",
-	'tspoll-id-error' => "Aucun ID n'a été donné !",
+	'tspoll-fetch-error' => 'Erreur lors de la recherche de l’URL !',
+	'tspoll-id-error' => 'Aucun ID n’a été donné !',
 );
 
 /** Galician (Galego)

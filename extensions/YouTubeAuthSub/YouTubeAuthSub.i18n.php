@@ -767,7 +767,7 @@ $messages['fr'] = array(
 	'youtubeauthsub_category' => 'Catégorie',
 	'youtubeauthsub_submit' => 'Soumettre',
 	'youtubeauthsub_clickhere' => 'Cliquez ici pour vous connecter sur YouTube',
-	'youtubeauthsub_tokenerror' => 'Eroare la generarea autorizării, încearcă din nou.',
+	'youtubeauthsub_tokenerror' => 'Erreur lors de la demande d’autorisation, essayez de rafraîchir la page.',
 	'youtubeauthsub_success' => "Félicitations !
 Votre vidéo est téléversée.
 <a href='http://www.youtube.com/watch?v=$1'>Visionnez votre vidéo</a>.
@@ -2675,6 +2675,24 @@ Lütfen sabırlı olun.',
 	'youtubeauthsub_jserror_nokeywords' => 'Lütfen 1 veya daha fazla anahtar kelime girin.',
 	'youtubeauthsub_jserror_notitle' => 'Lütfen video için bir başlık girin.',
 	'youtubeauthsub_jserror_nodesc' => 'Lütfen video için bir tanım girin.',
+);
+
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'youtubeauthsub' => 'YouTube سىن يۈكلە',
+	'youtubeauthsub_title' => 'ماۋزۇ',
+	'youtubeauthsub_description' => 'چۈشەندۈرۈش',
+	'youtubeauthsub_password' => 'YouTube ئىم',
+	'youtubeauthsub_username' => 'YouTube ئاتى',
+	'youtubeauthsub_keywords' => 'ھالقىلىق سۆز',
+	'youtubeauthsub_category' => 'تۈر',
+	'youtubeauthsub_submit' => 'تاپشۇر',
+	'youtubeauthsub_clickhere' => 'بۇ جاي چېكىلسە YouTube قا كىرىدۇ',
+	'youtubeauthsub_uploadhere' => 'سىننى بۇ جايدىن يۈكلەڭ:',
+	'youtubeauthsub_uploadbutton' => 'يۈكلە',
+	'youtubeauthsub_summary' => 'YouTube سىن يۈكلەۋاتىدۇ',
 );
 
 /** Ukrainian (Українська)

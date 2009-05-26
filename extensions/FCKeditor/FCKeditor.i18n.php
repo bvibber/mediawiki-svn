@@ -101,6 +101,30 @@ $messages['bs'] = array(
 	'prefs-fckeditor' => 'Vizuelni uređivač',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'textrichditor' => 'Editor enriquit',
+	'prefs-fckeditor' => 'Editor enriquit',
+	'tog-riched_disable' => "Deshabilita l'editor enriquit",
+	'tog-riched_disable_ns_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:talk}}"',
+	'tog-riched_disable_ns_user' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:user}}"',
+	'tog-riched_disable_ns_user_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:user_talk}}"',
+	'tog-riched_disable_ns_project' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:project}}"',
+	'tog-riched_disable_ns_project_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:project_talk}}"',
+	'tog-riched_disable_ns_image' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:file}}"',
+	'tog-riched_disable_ns_image_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:file_talk}}"',
+	'tog-riched_disable_ns_mediawiki' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:mediawiki}}"',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:mediawiki_talk}}"',
+	'tog-riched_disable_ns_template' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:template}}"',
+	'tog-riched_disable_ns_template_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:template_talk}}"',
+	'tog-riched_disable_ns_help' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:help}}"',
+	'tog-riched_disable_ns_help_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:help_talk}}"',
+	'tog-riched_disable_ns_category' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:category}}"',
+	'tog-riched_disable_ns_category_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:category_talk}}"',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */

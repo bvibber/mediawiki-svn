@@ -138,12 +138,13 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author Zetud
  */
 $messages['fr'] = array(
 	'othersites' => 'autres sites',
-	'othersites-desc' => "Déplace les liens interwiki autres que les liens liés à la langue vers leurs propres composants d'interface.",
+	'othersites-desc' => 'Déplace les liens interwiki autres que les liens liés à la langue vers leurs propres composants d’interface.',
 );
 
 /** Galician (Galego)

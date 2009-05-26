@@ -57,6 +57,13 @@ $messages['bs'] = array(
 	'mootools12core-desc' => 'Dodaje [http://mootools.net mootools-1.2-core-yc.js], kompaktni JavaScript framework, za svaku stranicu',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'mootools12core-desc' => 'Afegeix [http://mootools.net mootools-1.2-core-yc.js], un entorn de treball JavaScript compacte a cada pàgina',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

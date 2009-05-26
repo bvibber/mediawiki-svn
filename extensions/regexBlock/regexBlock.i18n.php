@@ -692,7 +692,7 @@ Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, [[$1|
 	'regexblock-form-submit-empty' => 'Indiquez un nom d’utilisateur ou une adresse IP à bloquer.',
 	'regexblock-form-submit-regex' => 'Expression régulière incorrecte.',
 	'regexblock-form-submit-expiry' => 'Précisez une période d’expiration.',
-	'regexblock-match-stats-record' => "$1 a bloqué « $2 » le « $3 » à « $4 », connecté depuis l'adresse « $5 »",
+	'regexblock-match-stats-record' => '$1 a bloqué « $2 » le « $3 » à « $4 », connecté depuis l’adresse « $5 »',
 	'regexblock-nodata-found' => 'Aucune donnée trouvée',
 	'regexblock-stats-title' => 'Statistiques des blocages par expressions régulières',
 	'regexblock-unblock-success' => 'Le déblocage a réussi',

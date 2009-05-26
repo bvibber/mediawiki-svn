@@ -875,6 +875,7 @@ $4',
 
 /** Catalan (Català)
  * @author Loupeter
+ * @author Solde
  */
 $messages['ca'] = array(
 	'code-comments' => 'Comentaris',
@@ -893,9 +894,10 @@ $messages['ca'] = array(
 	'code-rev-modified-a' => 'afegit',
 	'code-rev-modified-d' => 'esborrat',
 	'code-status-new' => 'nou',
-	'code-status-ok' => "d'acord",
+	'code-status-ok' => 'ok',
 	'code-rev-submit' => 'Desar canvis',
 	'repoadmin-new-button' => 'Crear',
+	'repoadmin-edit-button' => 'OK',
 	'specialpages-group-developer' => 'Eines de desenvolupador',
 );
 

@@ -38,6 +38,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'dt-desc' => 'Extension description displayed on [[Special:Version]].',
@@ -64,6 +65,10 @@ Used as XML tag name.',
 Used as XML tag name.',
 	'dt_xml_freetext' => '{{Identical|Free text}}
 Used as XML tag name.',
+	'dt_import_selectfile' => '$1 is the file format: either CSV or XML',
+	'dt_import_editsummary' => '$1 is the file format: either CSV or XML',
+	'dt_import_success' => '* $1 is the number of pages
+* $2 is the file format: either CSV or XML',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)

@@ -119,6 +119,22 @@ Da li želite uređivati postojeću stranicu?',
 	'createpage-badtitle' => '"$1" se ne može koristiti kao naslov stranice',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'createpage' => 'Crea una pàgina',
+	'createpage-desc' => 'Afegeix una [[Special:CreatePage|pàgina especial]] per a crear noves pàgines',
+	'createpage_submitbutton' => 'Envia',
+	'createpage_instructions' => 'Introdueixi el títol de la pàgina que vol crear:',
+	'createpage_entertitle' => 'Si us plau, introdueixi el títol per a la seva pàgina.',
+	'createpage_titleexists' => 'Una pàgina amb el títol [[$1]] ja existeix.
+Vol editar la pàgina ja existent?',
+	'createpage_tryagain' => 'No. Vull crear una pàgina nova amb un títol diferent.',
+	'createpage_editexisting' => 'Sí. Vull contribuïr a la pàgina existent.',
+	'createpage-badtitle' => '"$1" no es pot utilitzar com a títol de la pàgina',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

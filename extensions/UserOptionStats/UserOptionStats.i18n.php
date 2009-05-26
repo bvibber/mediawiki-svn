@@ -115,7 +115,7 @@ $messages['fr'] = array(
 	'uos-choose' => 'Choisissez l’une des options utilisateur suivantes : $1',
 	'uos-unknown' => '* Par défaut',
 	'uos-other' => '* Autres',
-	'uos-title' => "Distribution des valeurs de l'option utilisateur $1",
+	'uos-title' => 'Distribution des valeurs de l’option utilisateur $1',
 );
 
 /** Galician (Galego)
@@ -220,6 +220,19 @@ $messages['nl'] = array(
 	'uos-unknown' => '*Standaardinstelling',
 	'uos-other' => '*Andere',
 	'uos-title' => 'Verdeling van de waarden van de gebruikersinstelling $1',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'useroptionstats' => 'Statistikk for brukarval',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Spesiell side]] for rapportar om bruk av MediaWiki brukarval',
+	'uos-warn' => 'PHPlot er ikkje installert!',
+	'uos-choose' => 'Vel eitt av dei fylgjande brukarvala: $1',
+	'uos-unknown' => '*Standard',
+	'uos-other' => '*Annan',
+	'uos-title' => 'Spreiing i verdiar for brukarval $1',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

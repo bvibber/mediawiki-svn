@@ -368,6 +368,7 @@ $wgCustomToolbarMessages['bs'] = array(
  * @author Solde
  */
 $wgCustomToolbarMessages['ca'] = array(
+	'ct_bold_caption' => 'Negreta',
 	'ct_submit' => 'Vés-hi!',
 );
 

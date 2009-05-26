@@ -538,7 +538,7 @@ Soumis : $3
 Cet élément a été marqué comme terminé, avec le commentaire suivant :
 $4',
 	'todo-invalid-item' => 'Élément manquant ou invalide',
-	'todo-update-else-item' => "Tentative de mise à jour des éléments de quelqu’un d'autre",
+	'todo-update-else-item' => 'Tentative de mise à jour des éléments de quelqu’un d’autre',
 	'todo-unrecognize-type' => 'Type non reconnu',
 	'todo-user-invalide' => 'La chose à faire spécifiée est invalide, manquante, ou l’utilisateur n’a pas de liste de choses à faire.',
 	'todo-item-list' => 'Vos éléments',

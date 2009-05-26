@@ -470,6 +470,7 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
+	'tasks_delete' => 'Elimina',
 	'tasks_previous' => 'Anterior',
 	'tasks_next' => 'Següent',
 	'tasks_status_open' => 'Obre',

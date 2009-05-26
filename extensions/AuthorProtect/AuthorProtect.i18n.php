@@ -182,6 +182,7 @@ $messages['ca'] = array(
 	'authorprotect-failure' => 'Desprotegida!',
 	'protect-level-author' => 'Protecció dels no-autors',
 	'restriction-level-author' => "Restringida a l'autor",
+	'right-authorprotect' => "Pàgines d'autor protegides",
 );
 
 /** Czech (Česky)
@@ -704,6 +705,7 @@ $messages['ko'] = array(
 	'authorprotect-failure' => '성공하지 못한 보호',
 	'protect-level-author' => '저자가 아닌 사람들로부터 보호',
 	'restriction-level-author' => '보호된 저자',
+	'right-authorprotect' => '저자의 페이지를 보호합니다.',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -867,6 +869,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -883,6 +886,7 @@ $messages['nn'] = array(
 	'authorprotect-failure' => 'Kunne ikkje verna sida',
 	'protect-level-author' => 'Vern for andre enn forfattarar',
 	'restriction-level-author' => 'Forfattarverna',
+	'right-authorprotect' => 'Vern forfatta sider',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -121,6 +121,19 @@ $messages['bs'] = array(
 	'layouts_tagline' => "Ova stranica je generisana putem '''$1''' izgleda.",
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'layouts_title' => 'Crea una pàgina',
+	'layouts_chooselayout' => 'Escull un format per a $1:',
+	'layouts_nolayout' => 'Sense format',
+	'layouts_continue' => 'Continua',
+	'layouts_choosecategory' => 'Escull una categoria per a $1:',
+	'layouts_unknown' => 'Desconegut',
+	'layouts_tagline' => "Aquesta pàgina va ser generada pel format '''$1'''.",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

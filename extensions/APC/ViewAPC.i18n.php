@@ -676,6 +676,7 @@ $messages['ca'] = array(
 	'viewapc-ls-header-modified' => 'Darrera modificació',
 	'viewapc-ls-sort-size' => 'Mida',
 	'viewapc-ls-sort-name' => 'Nom',
+	'viewapc-ls-limit-none' => 'Tot',
 	'viewapc-ls-nodata' => "''No hi ha dades coincidents''",
 	'viewapc-version-info' => 'Informació de la versió',
 );

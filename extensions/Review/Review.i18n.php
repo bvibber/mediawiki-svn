@@ -642,22 +642,22 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'review_sidebar_title' => 'Révision',
 	'review-desc' => 'Permet aux utilisateurs de [[Special:Review|valider]] des pages',
-	'review_topics' => "# Liste de sujets pour l'extension « review » de MediaWiki.
+	'review_topics' => '# Liste de sujets pour l’extension « review » de MediaWiki.
 # ....
 # Chaque sujet est défini par une liste de données séparées par « : » (toute autre liste est ignorée).
 # ....
-# Les données dans l'ordre sont :
+# Les données dans l’ordre sont :
 ## identifiant numérique (>0)
 ## nom
 ## étendue (>1)
 ## signification de la plus petite valeur (ex. « mauvais »)
 ## signification de la plus grande valeur (ex. « bon »)
 # ....
-# Par exemple, s'il faut seulement choisir « non » ou « oui », l'étendue vaut 2.
-# Par exemple, s'il faut choisir entre « médiocre », « mauvais », « à améliorer », « bien » ou « très bien », l'étendue vaut 5.
+# Par exemple, s’il faut seulement choisir « non » ou « oui », l’étendue vaut 2.
+# Par exemple, s’il faut choisir entre « médiocre », « mauvais », « à améliorer », « bien » ou « très bien », l’étendue vaut 5.
 # ....
 1:Qualité:5:mauvais:bon
-2:Prêt pour 1.0:2:non:oui",
+2:Prêt pour 1.0:2:non:oui',
 	'review_topic_page' => 'Sujets à révision',
 	'review_sidebar_explanation' => 'La boîte à cocher la plus à gauche toute signifie toujours « sans opinion ».',
 	'review_save' => 'Sauvegarder la révision',
@@ -668,7 +668,7 @@ $messages['fr'] = array(
 	'review_for_page' => 'Révision pour la page « $1 »',
 	'review_for_user' => 'Révision pour contributeur « $1 »',
 	'review_error' => 'Quelque chose cloche.',
-	'review_no_reviews_for_page' => "Il n'y a pas de révisions pour « $1 ».",
+	'review_no_reviews_for_page' => 'Il n’y a pas de révisions pour « $1 ».',
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Révision',
 	'review_version_link' => 'Révision #$1',
@@ -676,7 +676,7 @@ $messages['fr'] = array(
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_version_reviews_link' => '<small>(révisions de version)</small>',
 	'review_concerns_page' => 'Cette révision est à propos de la page « $1 ».',
-	'review_concerns_user' => "C'est à propos des révisions faites par le contributeur « $1 ».",
+	'review_concerns_user' => 'C’est à propos des révisions faites par le contributeur « $1 ».',
 	'review_user_reviews' => '<small>(révisions par ce contributeur)</small>',
 	'review_user_page_list' => 'Le contributeur a révisé les pages suivantes :',
 	'review_user_details_link' => '(détails)',

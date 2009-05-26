@@ -1419,7 +1419,7 @@ Uygun olmayan dosyalar hemen silinecektir, [[{{MediaWiki:Multipleupload-page}}|d
  * @author AS
  */
 $messages['uk'] = array(
-	'multipleupload' => 'Завантаження файлів',
+	'multipleupload' => 'Завантаження багатьох файлів',
 	'multipleupload-desc' => 'Дозволяє користувачам [[Special:MultipleUpload|завантажувати декілька файлів за раз]]',
 	'multipleupload-ignoreallwarnings' => "Ігнорувати '''усі попередження''' і зберігати файли у будь-якому випадку.",
 	'multipleupload-saveallfiles' => 'Зберегти всі файли',

@@ -155,6 +155,7 @@ Da bi ste to učinili, molimo uzmite API ključ [http://www.flickr.com/services/
  * @author Toniher
  */
 $messages['ca'] = array(
+	'importfreeimages' => 'Importa imatges lliures',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importa-ho',
 	'importfreeimages_next' => 'Següent $1',

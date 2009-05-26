@@ -114,6 +114,16 @@ $messages['bs'] = array(
 	'userimages-noimages' => '$1 nije postavljao slike.',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'userimages-desc' => "Genera galeries de les imatges carregades per l'usuari amb <code><nowiki><userimage /></nowiki></code>",
+	'userimages-caption' => 'Imatges carregades per $1',
+	'userimages-noname' => "Nom d'usuari incorrecte o no proporcionat.",
+	'userimages-noimages' => '$1 no ha carregat imatges.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

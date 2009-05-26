@@ -155,6 +155,12 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'inspectcache' => 'Inspecciona la memòria cau',
+	'inspectcache-ok' => 'OK',
+	'inspectcache-general' => 'Memòria cau general',
+	'inspectcache-get' => 'Obté',
+	'inspectcache-delete' => 'Elimina',
+	'inspectcache-deleted' => 'Memòria cau eliminada',
+	'inspectcache-list' => 'Llista',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)

@@ -573,7 +573,7 @@ riddler|Arvuuttaja',
 $messages['fr'] = array(
 	'vote' => 'Vote',
 	'vote-desc' => 'Permet de mettre en place des sondages simplement',
-	'vote-header' => "Vous pouvez voter pour le '''maître de l'Univers''' ici !",
+	'vote-header' => "Vous pouvez voter pour le '''maître de l’Univers''' ici !",
 	'vote-current' => "Votre vote actuel est pour '''$1'''.",
 	'vote-legend' => 'Placer ou modifier un vote',
 	'vote-caption' => 'Votre sélection :',
@@ -1025,6 +1025,27 @@ $messages['ms'] = array(
 	'vote-invalid-choice' => 'Anda mesti memilih salah satu dari pilihan yang ada.',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'vote' => 'Ivvota',
+	'vote-desc' => 'Tipprovdi funzjonalità għal sondaġġi simili',
+	'vote-current' => "Il-vot kurrenti tiegħek hu għal '''$1'''.",
+	'vote-legend' => 'Ibgħat jew emenda l-vot',
+	'vote-caption' => 'L-għażla tiegħek:',
+	'vote-submit' => 'Ivvota',
+	'vote-registered' => 'Il-vot tiegħek ġie rreġistrat.',
+	'vote-view-results' => 'Ara r-riżultati',
+	'vote-results' => 'Riżultati tal-votazzjoni',
+	'vote-results-choice' => 'Għażla',
+	'vote-results-count' => 'Għadd',
+	'vote-results-none' => 'Ma ġie espress l-ebda vot.',
+	'vote-login' => 'Trid [$1 tidħol fil-kont] biex tivvota.',
+	'vote-invalid-choice' => 'Trid tagħżel waħda mill-għażliet disponibbli.',
+	'right-voteadmin' => 'Ara r-riżultati tal-voti',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
@@ -1066,6 +1087,7 @@ riddler|Riddler',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
  */
@@ -1086,8 +1108,10 @@ brukar3|Tredje brukernamn',
 	'vote-results-choice' => 'Val',
 	'vote-results-count' => 'Tal',
 	'vote-results-none' => 'Ingen stemmer er gjeve enno.',
-	'vote-login' => 'Du må [$1 logg inn] for å stemme.',
+	'vote-login' => 'Du må [$1 logga inn] for å stemme.',
 	'vote-invalid-choice' => 'Du må velje eit av dei tilgjengelege alternativa.',
+	'right-vote' => 'Stem',
+	'right-voteadmin' => 'Sjå resultatar frå avrøystinga',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1576,6 +1600,7 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  * @author Aleksandrit
  */
@@ -1596,7 +1621,7 @@ $messages['uk'] = array(
 	'vote-results-choice' => 'Вибір',
 	'vote-results-count' => 'Кількість',
 	'vote-results-none' => 'Нема голосів, відданих за цей час.',
-	'vote-login' => 'Ви повинні [$1 вхід до системи] для голосування.',
+	'vote-login' => 'Щоб проголосувати, ви повинні [$1 ввійти до системи].',
 	'vote-invalid-choice' => 'Ви можете обрати один з доступних варіантів.',
 );
 

@@ -591,7 +591,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'whatismyip' => 'Яка моя IP-адреса',
-	'whatismyip-desc' => 'Показує поточну IP-адресу користувача на [[Special:WhatIsMyIP]]',
+	'whatismyip-desc' => 'Показує поточну [[Special:WhatIsMyIP|IP-адресу]] користувача',
 	'whatismyip-out' => 'Ваша IP-адреса:',
 );
 

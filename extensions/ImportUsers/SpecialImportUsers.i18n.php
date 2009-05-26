@@ -237,6 +237,8 @@ $messages['ca'] = array(
 Actualitzat.",
 	'importusers-user-present-not-update' => "L'usuari '''$1''' ja existeix actualment.
 No s'ha actualitzat.",
+	'importusers-user-invalid-format' => "Les dades d'usuari de la línia #&1 tenen un format invàlid o estan en blanc.
+S'ha omès.",
 	'importusers-log' => "Importa el registre d'usuaris",
 	'importusers-log-summary' => 'Resum',
 	'importusers-log-summary-all' => 'Tot',
@@ -246,6 +248,7 @@ No s'ha actualitzat.",
 	'importusers-password' => 'contrasenya',
 	'importusers-email' => 'correu electrònic',
 	'importusers-realname' => 'nom real',
+	'right-import_users' => 'Importa els usuaris en gran',
 );
 
 /** Chamorro (Chamoru)

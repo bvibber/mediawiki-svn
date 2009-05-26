@@ -57,6 +57,13 @@ $messages['bs'] = array(
 	'csshooks-desc' => 'Dodaje CSS u HTML izlaz stranice za bolje stiliziranje',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'csshooks-desc' => 'Afegeix CSS a les pàgines de sortida per un estil millor',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

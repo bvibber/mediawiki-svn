@@ -89,6 +89,13 @@ $messages['bs'] = array(
 	'interwikilist-prefix' => 'Prefiks međuwikija:',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'interwikilist-filter' => 'Llista de filtres',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
