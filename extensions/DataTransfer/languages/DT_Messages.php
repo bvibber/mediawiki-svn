@@ -27,10 +27,12 @@ $messages['en'] = array(
 	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Free Text',
 	'importxml'                   => 'Import XML',
-	'dt_importxml_selectfile'     => 'Please select the XML file to import:',
-	'dt_importxml_editsummary'    => 'XML import',
-	'dt_importxml_importing'      => 'Importing...',
-	'dt_importxml_success'        => '$1 {{PLURAL:$1|page|pages}} will be imported from the XML file.',
+	'dt_import_selectfile'        => 'Please select the $1 file to import:',
+	'dt_import_editsummary'       => '$1 import',
+	'dt_import_importing'         => 'Importing...',
+	'dt_import_success'           => '$1 {{PLURAL:$1|page|pages}} will be created from the $2 file.',
+	'importcsv'                   => 'Import CSV',
+	'dt_importcsv_badheader'      => "Error: the column $1 header, '$2', must be either '$3', '$4' or of the form 'template_name[field_name]'",
 );
 
 /** Message documentation (Message documentation)
@@ -124,10 +126,10 @@ $messages['ar'] = array(
 	'dt_xml_id' => 'رقم',
 	'dt_xml_freetext' => 'نص حر',
 	'importxml' => 'استيراد XML',
-	'dt_importxml_selectfile' => 'من فضلك اختر ملف XML للاستيراد:',
-	'dt_importxml_editsummary' => 'استيراد XML',
-	'dt_importxml_importing' => 'جاري الاستيراد...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|صفحة|صفحة}} سيتم استيرادها من ملف XML.',
+	'dt_import_selectfile' => 'من فضلك اختر ملف $1 للاستيراد:',
+	'dt_import_editsummary' => 'استيراد $1',
+	'dt_import_importing' => 'جاري الاستيراد...',
+	'dt_import_success' => '$1 {{PLURAL:$1|صفحة|صفحة}} سيتم استيرادها من ملف $2.',
 );
 
 /** Araucanian (Mapudungun)
@@ -204,10 +206,10 @@ $messages['bs'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Slobodni tekst',
 	'importxml' => 'Uvezi XML',
-	'dt_importxml_selectfile' => 'Molimo odaberite XML datoteku za uvoz:',
-	'dt_importxml_editsummary' => 'XML uvoz',
-	'dt_importxml_importing' => 'Uvoz...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|stranica|stranice|stranica}} će biti uvezeno iz XML datoteke.',
+	'dt_import_selectfile' => 'Molimo odaberite $1 datoteku za uvoz:',
+	'dt_import_editsummary' => '$1 uvoz',
+	'dt_import_importing' => 'Uvoz...',
+	'dt_import_success' => '$1 {{PLURAL:$1|stranica|stranice|stranica}} će biti uvezeno iz $2 datoteke.',
 );
 
 /** Catalan (Català)
@@ -230,10 +232,10 @@ $messages['ca'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Text lliure',
 	'importxml' => 'Importa XML',
-	'dt_importxml_selectfile' => 'Si us plau, selecciona el fitxer XML per importar:',
-	'dt_importxml_editsummary' => 'Importar XML:',
-	'dt_importxml_importing' => "S'està important...",
-	'dt_importxml_success' => "$1 {{PLURAL:$1|pàgina|pàgines}} s'importaran des del fitxer XML.",
+	'dt_import_selectfile' => 'Si us plau, selecciona el fitxer $1 per importar:',
+	'dt_import_editsummary' => 'Importar $1:',
+	'dt_import_importing' => "S'està important...",
+	'dt_import_success' => "$1 {{PLURAL:$1|pàgina|pàgines}} s'importaran des del fitxer $2.",
 );
 
 /** Czech (Česky)
@@ -278,10 +280,10 @@ $messages['de'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Freier Text',
 	'importxml' => 'XML importieren',
-	'dt_importxml_selectfile' => 'Bitte die zu importierende XML-Datei auswählen:',
-	'dt_importxml_editsummary' => 'XML-Import',
-	'dt_importxml_importing' => 'Importiere …',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|Seite|Seiten}} werden aus der XML-Datei importiert.',
+	'dt_import_selectfile' => 'Bitte die zu importierende $1-Datei auswählen:',
+	'dt_import_editsummary' => '$1-Import',
+	'dt_import_importing' => 'Importiere …',
+	'dt_import_success' => '$1 {{PLURAL:$1|Seite|Seiten}} werden aus der $2-Datei importiert.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -304,10 +306,10 @@ $messages['dsb'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Lichy tekst',
 	'importxml' => 'XML importěrowaś',
-	'dt_importxml_selectfile' => 'Pšosym wubjeŕ XML-dataju za importěrowanje:',
-	'dt_importxml_editsummary' => 'XML-importěrowanje',
-	'dt_importxml_importing' => 'Importěrujo se...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|bok importěrujo|boka importěrujotej|boki importěruju|bokow importěrujo}} se z XML-dataje.',
+	'dt_import_selectfile' => 'Pšosym wubjeŕ $1-dataju za importěrowanje:',
+	'dt_import_editsummary' => '$1-importěrowanje',
+	'dt_import_importing' => 'Importěrujo se...',
+	'dt_import_success' => '$1 {{PLURAL:$1|bok importěrujo|boka importěrujotej|boki importěruju|bokow importěrujo}} se z $2-dataje.',
 );
 
 /** Greek (Ελληνικά)
@@ -362,9 +364,9 @@ $messages['es'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto libre',
 	'importxml' => 'Importar XML',
-	'dt_importxml_selectfile' => 'Por favor seleccione el archivo XML a importar:',
-	'dt_importxml_importing' => 'Importando...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|página|páginas}} serán importadas del archivo XML.',
+	'dt_import_selectfile' => 'Por favor seleccione el archivo $1 a importar:',
+	'dt_import_importing' => 'Importando...',
+	'dt_import_success' => '$1 {{PLURAL:$1|página|páginas}} serán importadas del archivo $2.',
 );
 
 /** Finnish (Suomi)
@@ -408,10 +410,10 @@ $messages['fr'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texte Libre',
 	'importxml' => 'Import en XML',
-	'dt_importxml_selectfile' => 'Veuillez sélectionner le fichier XML à importer :',
-	'dt_importxml_editsummary' => 'Import XML',
-	'dt_importxml_importing' => 'Import en cours...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|page sera importée|pages seront importées}} depuis le fichier XML.',
+	'dt_import_selectfile' => 'Veuillez sélectionner le fichier $1 à importer :',
+	'dt_import_editsummary' => 'Import $1',
+	'dt_import_importing' => 'Import en cours...',
+	'dt_import_success' => '$1 {{PLURAL:$1|page sera importée|pages seront importées}} depuis le fichier $2.',
 );
 
 /** Western Frisian (Frysk)
@@ -451,10 +453,10 @@ $messages['gl'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto Libre',
 	'importxml' => 'Importar XML',
-	'dt_importxml_selectfile' => 'Por favor, seleccione o ficheiro XML a importar:',
-	'dt_importxml_editsummary' => 'Importación en XML',
-	'dt_importxml_importing' => 'Importando...',
-	'dt_importxml_success' => '{{PLURAL:$1|Unha páxina será importada|$1 páxinas serán importadas}} a partir do ficheiro XML.',
+	'dt_import_selectfile' => 'Por favor, seleccione o ficheiro $1 a importar:',
+	'dt_import_editsummary' => 'Importación en $1',
+	'dt_import_importing' => 'Importando...',
+	'dt_import_success' => '{{PLURAL:$1|Unha páxina será importada|$1 páxinas serán importadas}} a partir do ficheiro $2.',
 );
 
 /** Gothic
@@ -500,10 +502,10 @@ $messages['gsw'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Freje Täxt',
 	'importxml' => 'XML importiere',
-	'dt_importxml_selectfile' => 'Bitte wehl d XML-Datei zum importiere uus:',
-	'dt_importxml_editsummary' => 'XML-Import',
-	'dt_importxml_importing' => 'Am Importiere ...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|Syte|Syte}} wäre vu dr XML-DAtei importiert.',
+	'dt_import_selectfile' => 'Bitte wehl d $1-Datei zum importiere uus:',
+	'dt_import_editsummary' => '$1-Import',
+	'dt_import_importing' => 'Am Importiere ...',
+	'dt_import_success' => '$1 {{PLURAL:$1|Syte|Syte}} wäre vu dr $2-DAtei importiert.',
 );
 
 /** Manx (Gaelg)
@@ -547,10 +549,10 @@ $messages['he'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'טקסט חופשי',
 	'importxml' => 'ייבוא XML',
-	'dt_importxml_selectfile' => 'אנא בחרו את קובץ ה־XML לייבוא:',
-	'dt_importxml_editsummary' => 'ייבוא XML',
-	'dt_importxml_importing' => 'בתהליכי ייבוא...',
-	'dt_importxml_success' => '{{PLURAL:$1|דף אחד ייובא|$1 דפים ייובאו}} מקובץ ה־XML.',
+	'dt_import_selectfile' => 'אנא בחרו את קובץ ה־$1 לייבוא:',
+	'dt_import_editsummary' => 'ייבוא $1',
+	'dt_import_importing' => 'בתהליכי ייבוא...',
+	'dt_import_success' => '{{PLURAL:$1|דף אחד ייובא|$1 דפים ייובאו}} מקובץ ה־$2.',
 );
 
 /** Hindi (हिन्दी)
@@ -601,10 +603,10 @@ $messages['hsb'] = array(
 	'dt_xml_id' => 'Id',
 	'dt_xml_freetext' => 'Swobodny tekst',
 	'importxml' => 'XML importować',
-	'dt_importxml_selectfile' => 'Prošu wubjer XML-dataju za importowanje:',
-	'dt_importxml_editsummary' => 'Importowanje XML',
-	'dt_importxml_importing' => 'Importuje so...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|strona so z XML-dataje importuje|stronje so z XML-dataje importujetej|strony so z XML-dataje importuja|stronow so z XML-dataje importuje}}.',
+	'dt_import_selectfile' => 'Prošu wubjer $1-dataju za importowanje:',
+	'dt_import_editsummary' => 'Importowanje $1',
+	'dt_import_importing' => 'Importuje so...',
+	'dt_import_success' => '$1 {{PLURAL:$1|strona so z $2-dataje importuje|stronje so z $2-dataje importujetej|strony so z $2-dataje importuja|stronow so z $2-dataje importuje}}.',
 );
 
 /** Hungarian (Magyar)
@@ -646,10 +648,10 @@ $messages['ia'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto libere',
 	'importxml' => 'Importar XML',
-	'dt_importxml_selectfile' => 'Per favor selige un file XML a importar:',
-	'dt_importxml_editsummary' => 'Importation de XML',
-	'dt_importxml_importing' => 'Importation in curso…',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|pagina|paginas}} essera importate ex le file XML.',
+	'dt_import_selectfile' => 'Per favor selige un file $1 a importar:',
+	'dt_import_editsummary' => 'Importation de $1',
+	'dt_import_importing' => 'Importation in curso…',
+	'dt_import_success' => '$1 {{PLURAL:$1|pagina|paginas}} essera importate ex le file $2.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -717,10 +719,10 @@ $messages['ja'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => '自由形式テキスト',
 	'importxml' => 'XMLインポート',
-	'dt_importxml_selectfile' => 'インポートする XML ファイルを選択してください:',
-	'dt_importxml_editsummary' => 'XMLのインポート',
-	'dt_importxml_importing' => 'インポート中…',
-	'dt_importxml_success' => 'XML ファイルからは $1個のページがインポートされます。',
+	'dt_import_selectfile' => 'インポートする $1 ファイルを選択してください:',
+	'dt_import_editsummary' => '$1のインポート',
+	'dt_import_importing' => 'インポート中…',
+	'dt_import_success' => '$2 ファイルからは $1個のページがインポートされます。',
 );
 
 /** Javanese (Basa Jawa)
@@ -785,10 +787,10 @@ $messages['ksh'] = array(
 	'dt_xml_id' => 'Kännong',
 	'dt_xml_freetext' => 'Freije Täx',
 	'importxml' => 'XML Empotteere',
-	'dt_importxml_selectfile' => 'Söhk de XML Dattei för zem Empotteere uß:',
-	'dt_importxml_editsummary' => 'uß ene XML Datei empotteet',
-	'dt_importxml_importing' => 'Ben aam Empotteere{{int:Ellipsis}}',
-	'dt_importxml_success' => '{{PLURAL:$1|Ein Sigg|$1 Sigge|Kein einzelne Sigg}} weed_uß dä XML-Dattei empotteet.',
+	'dt_import_selectfile' => 'Söhk de $1 Dattei för zem Empotteere uß:',
+	'dt_import_editsummary' => 'uß ene $1 Datei empotteet',
+	'dt_import_importing' => 'Ben aam Empotteere{{int:Ellipsis}}',
+	'dt_import_success' => '{{PLURAL:$1|Ein Sigg|$1 Sigge|Kein einzelne Sigg}} weed_uß dä $2-Dattei empotteet.',
 );
 
 /** Cornish (Kernewek)
@@ -819,10 +821,10 @@ $messages['lb'] = array(
 	'dt_xml_id' => 'Nummer',
 	'dt_xml_freetext' => 'Fräien Text',
 	'importxml' => 'XML importéieren',
-	'dt_importxml_selectfile' => 'Sicht den XML-Fichier eraus deen importéiert gëtt:',
-	'dt_importxml_editsummary' => 'XML Import',
-	'dt_importxml_importing' => 'Import am gaang ...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|Säit gëtt|Säite ginn}} aus dem XML-Fichier importéiert.',
+	'dt_import_selectfile' => 'Sicht den $1-Fichier eraus deen importéiert gëtt:',
+	'dt_import_editsummary' => '$1 Import',
+	'dt_import_importing' => 'Import am gaang ...',
+	'dt_import_success' => '$1 {{PLURAL:$1|Säit gëtt|Säite ginn}} aus dem $2-Fichier importéiert.',
 );
 
 /** Limburgish (Limburgs)
@@ -941,10 +943,10 @@ $messages['nl'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Vrije tekst',
 	'importxml' => 'XML importeren',
-	'dt_importxml_selectfile' => 'Selecteer het te importeren XML-bestand:',
-	'dt_importxml_editsummary' => 'XML import',
-	'dt_importxml_importing' => 'Bezig met importeren…',
-	'dt_importxml_success' => "Uit het XML-bestand {{PLURAL:$1|wordt één pagina|worden $1 pagina's}} geïmporteerd.",
+	'dt_import_selectfile' => 'Selecteer het te importeren $1-bestand:',
+	'dt_import_editsummary' => '$1 import',
+	'dt_import_importing' => 'Bezig met importeren…',
+	'dt_import_success' => "Uit het $2-bestand {{PLURAL:$1|wordt één pagina|worden $1 pagina's}} geïmporteerd.",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -968,10 +970,10 @@ $messages['nn'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Fritekst',
 	'importxml' => 'Importer XML',
-	'dt_importxml_selectfile' => 'Vel XML-fila som skal verta importert:',
-	'dt_importxml_editsummary' => 'XML-importering',
-	'dt_importxml_importing' => 'Importerer...',
-	'dt_importxml_success' => '{{PLURAL:$1|Éi side vil verta importert|$1 sider vil verta importerte}} frå XML-fila.',
+	'dt_import_selectfile' => 'Vel $1-fila som skal verta importert:',
+	'dt_import_editsummary' => '$1-importering',
+	'dt_import_importing' => 'Importerer...',
+	'dt_import_success' => '{{PLURAL:$1|Éi side vil verta importert|$1 sider vil verta importerte}} frå $2-fila.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -995,10 +997,10 @@ $messages['no'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Fritekst',
 	'importxml' => 'Importer XML',
-	'dt_importxml_selectfile' => 'Vennligst velg XML-filen som skal importeres:',
-	'dt_importxml_editsummary' => 'XML-importering',
-	'dt_importxml_importing' => 'Importerer...',
-	'dt_importxml_success' => '{{PLURAL:$1|Én side|$1 sider}} vil bli importert fra XML-filen.',
+	'dt_import_selectfile' => 'Vennligst velg $1-filen som skal importeres:',
+	'dt_import_editsummary' => '$1-importering',
+	'dt_import_importing' => 'Importerer...',
+	'dt_import_success' => '{{PLURAL:$1|Én side|$1 sider}} vil bli importert fra $2-filen.',
 );
 
 /** Occitan (Occitan)
@@ -1021,10 +1023,10 @@ $messages['oc'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Tèxte Liure',
 	'importxml' => 'Impòrt en XML',
-	'dt_importxml_selectfile' => "Seleccionatz lo fichièr XML d'importar :",
-	'dt_importxml_editsummary' => 'Impòrt XML',
-	'dt_importxml_importing' => 'Impòrt en cors...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|pagina serà importada|paginas seràn importadas}} dempuèi lo fichièr XML.',
+	'dt_import_selectfile' => "Seleccionatz lo fichièr $1 d'importar :",
+	'dt_import_editsummary' => 'Impòrt $1',
+	'dt_import_importing' => 'Impòrt en cors...',
+	'dt_import_success' => '$1 {{PLURAL:$1|pagina serà importada|paginas seràn importadas}} dempuèi lo fichièr $2.',
 );
 
 /** Ossetic (Иронау)
@@ -1097,10 +1099,10 @@ $messages['pt'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto Livre',
 	'importxml' => 'Importar XML',
-	'dt_importxml_selectfile' => 'Por favor, selecione o ficheiro XML a importar:',
-	'dt_importxml_editsummary' => 'Importação de XML',
-	'dt_importxml_importing' => 'Importando...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|página será importada|páginas serão importadas}} do ficheiro XML.',
+	'dt_import_selectfile' => 'Por favor, selecione o ficheiro $1 a importar:',
+	'dt_import_editsummary' => 'Importação de $1',
+	'dt_import_importing' => 'Importando...',
+	'dt_import_success' => '$1 {{PLURAL:$1|página será importada|páginas serão importadas}} do ficheiro $2.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1123,10 +1125,10 @@ $messages['pt-br'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto Livre',
 	'importxml' => 'Importar XML',
-	'dt_importxml_selectfile' => 'Por favor selecione o arquivo XML para importar:',
-	'dt_importxml_editsummary' => 'Importação de XML',
-	'dt_importxml_importing' => 'Importando...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|página será importada|páginas serão importadas}} do arquivo XML.',
+	'dt_import_selectfile' => 'Por favor selecione o arquivo $1 para importar:',
+	'dt_import_editsummary' => 'Importação de $1',
+	'dt_import_importing' => 'Importando...',
+	'dt_import_success' => '$1 {{PLURAL:$1|página será importada|páginas serão importadas}} do arquivo $2.',
 );
 
 /** Romanian (Română)
@@ -1187,7 +1189,7 @@ $messages['ru'] = array(
 	'dt_xml_title' => 'Заголовок',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Свободный текст',
-	'dt_importxml_importing' => 'Импортирование...',
+	'dt_import_importing' => 'Импортирование...',
 );
 
 /** Slovak (Slovenčina)
@@ -1210,10 +1212,10 @@ $messages['sk'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Voľný text',
 	'importxml' => 'Importovať XML',
-	'dt_importxml_selectfile' => 'Prosím, vyberte XML súbor, ktorý chcete importovať:',
-	'dt_importxml_editsummary' => 'Import XML',
-	'dt_importxml_importing' => 'Prebieha import...',
-	'dt_importxml_success' => 'Z XML súboru sa {{PLURAL:$1|importuje $1 stránka|importujú $1 stránky|importuje $1 stránok}}.',
+	'dt_import_selectfile' => 'Prosím, vyberte $1 súbor, ktorý chcete importovať:',
+	'dt_import_editsummary' => 'Import $1',
+	'dt_import_importing' => 'Prebieha import...',
+	'dt_import_success' => 'Z $2 súboru sa {{PLURAL:$1|importuje $1 stránka|importujú $1 stránky|importuje $1 stránok}}.',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -1368,10 +1370,10 @@ $messages['tl'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Malayang Teksto',
 	'importxml' => 'Angkatin ang XML',
-	'dt_importxml_selectfile' => 'Pakipili ang talaksang XML na aangkatin:',
-	'dt_importxml_editsummary' => 'Angkat ng XML',
-	'dt_importxml_importing' => 'Inaangkat...',
-	'dt_importxml_success' => '$1 {{PLURAL:$1|pahina|mga pahina}} ang aangkatin mula sa talaksang XML.',
+	'dt_import_selectfile' => 'Pakipili ang talaksang $1 na aangkatin:',
+	'dt_import_editsummary' => 'Angkat ng $1',
+	'dt_import_importing' => 'Inaangkat...',
+	'dt_import_success' => '$1 {{PLURAL:$1|pahina|mga pahina}} ang aangkatin mula sa talaksang $2.',
 );
 
 /** Turkish (Türkçe)
@@ -1396,10 +1398,10 @@ $messages['tr'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Özgür Metin',
 	'importxml' => 'XML içe aktar',
-	'dt_importxml_selectfile' => 'Lütfen içe aktarmak için XML dosyasını seçin:',
-	'dt_importxml_editsummary' => 'XML içe aktarımı',
-	'dt_importxml_importing' => 'İçe aktarıyor...',
-	'dt_importxml_success' => 'XML dosyasından $1 {{PLURAL:$1|sayfa|sayfa}} içe aktarılacak.',
+	'dt_import_selectfile' => 'Lütfen içe aktarmak için $1 dosyasını seçin:',
+	'dt_import_editsummary' => '$1 içe aktarımı',
+	'dt_import_importing' => 'İçe aktarıyor...',
+	'dt_import_success' => '$2 dosyasından $1 {{PLURAL:$1|sayfa|sayfa}} içe aktarılacak.',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
@@ -1437,10 +1439,10 @@ $messages['vi'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Văn bản Tự do',
 	'importxml' => 'Nhập XML',
-	'dt_importxml_selectfile' => 'Xin hãy chọn tập tin XML để nhập:',
-	'dt_importxml_editsummary' => 'Nhập XML',
-	'dt_importxml_importing' => 'Đang nhập…',
-	'dt_importxml_success' => '$1 trang sẽ được nhập từ tập tin XML.',
+	'dt_import_selectfile' => 'Xin hãy chọn tập tin $1 để nhập:',
+	'dt_import_editsummary' => 'Nhập $1',
+	'dt_import_importing' => 'Đang nhập…',
+	'dt_import_success' => '$1 trang sẽ được nhập từ tập tin $2.',
 );
 
 /** Volapük (Volapük)
@@ -1500,9 +1502,9 @@ $messages['zh-tw'] = array(
 	'dt_xml_title' => '標題(Title)',
 	'dt_xml_freetext' => '隨意文字',
 	'importxml' => '匯入XML',
-	'dt_importxml_selectfile' => '請選取XML檔以供匯入',
-	'dt_importxml_editsummary' => '匯入XML',
-	'dt_importxml_importing' => '匯入中...',
-	'dt_importxml_success' => '將從該XML檔匯入$1{{PLURAL:$1|頁面頁面}}。',
+	'dt_import_selectfile' => '請選取$1檔以供匯入',
+	'dt_import_editsummary' => '匯入$1',
+	'dt_import_importing' => '匯入中...',
+	'dt_import_success' => '將從該$2檔匯入$1{{PLURAL:$1|頁面頁面}}。',
 );
 
