@@ -65,9 +65,9 @@ class DTImportCSV extends SpecialPage {
 		global $wgUser, $wgOut, $wgRequest;
 		$this->setHeaders();
 
-		if ( ! $wgUser->isAllowed('importxml') ) {
+		if ( ! $wgUser->isAllowed('datatransferimport') ) {
 			global $wgOut;
-			$wgOut->permissionRequired('importxml');
+			$wgOut->permissionRequired('datatransferimport');
 			return;
 		}
 
