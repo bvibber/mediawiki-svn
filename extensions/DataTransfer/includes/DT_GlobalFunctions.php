@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('DT_VERSION','0.2.1');
+define('DT_VERSION','0.3');
 
 // constants for special properties
 define('DT_SP_HAS_XML_GROUPING', 1);
@@ -30,6 +30,8 @@ $wgSpecialPages['ViewXML'] = 'DTViewXML';
 $wgAutoloadClasses['DTViewXML'] = $dtgIP . '/specials/DT_ViewXML.php';
 $wgSpecialPages['ImportXML'] = 'DTImportXML';
 $wgAutoloadClasses['DTImportXML'] = $dtgIP . '/specials/DT_ImportXML.php';
+$wgSpecialPages['ImportCSV'] = 'DTImportCSV';
+$wgAutoloadClasses['DTImportCSV'] = $dtgIP . '/specials/DT_ImportCSV.php';
 $wgJobClasses['dtImport'] = 'DTImportJob';
 $wgAutoloadClasses['DTImportJob'] = $dtgIP . '/includes/DT_ImportJob.php';
 $wgAutoloadClasses['DTXMLParser'] = $dtgIP . '/includes/DT_XMLParser.php';
@@ -107,5 +109,6 @@ function dtfAddToAdminLinks($admin_links_tree) {
 	$main_row = $import_export_section->getRow('main');
 	$main_row->addItem(ALItem::newFromSpecialPage('ViewXML'));
 	$main_row->addItem(ALItem::newFromSpecialPage('ImportXML'));
+	$main_row->addItem(ALItem::newFromSpecialPage('ImportCSV'));
 	return true;
 }
