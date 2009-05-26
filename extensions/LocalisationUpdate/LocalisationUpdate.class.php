@@ -256,7 +256,7 @@ class LocalisationUpdate {
 		$changedStrings = array_diff_assoc( $base_messages, $compare_messages );
 
 		// If we want to save the differences
-		if ( $saveResults === true && !empty($changedStrings) && is_array($changeStrings)) {
+		if ( $saveResults === true && !empty($changedStrings) && is_array($changedStrings)) {
 			self::myLog( "--Checking languagecode {$langcode}--" );
 			// The save them
 			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode );
@@ -442,7 +442,7 @@ class LocalisationUpdate {
 			$changedStrings = array_diff_assoc( $messages, $compare_messages[$language] );
 
 			// If we want to save the changes
-			if ( $saveResults === true && !empty($changedStrings) && is_array($changeStrings)) {
+			if ( $saveResults === true && !empty($changedStrings) && is_array($changedStrings)) {
 				self::myLog( "--Checking languagecode {$langcode}--" );
 				// The save them
 				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode );
