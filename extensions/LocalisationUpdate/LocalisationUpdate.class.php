@@ -434,7 +434,7 @@ class LocalisationUpdate {
 			}
 
 
-			if ( empty( $compare_messages[$language] ) ) {
+			if ( empty( $compare_messages[$language] ) || !is_array($compare_messages[$language]) ) {
 				$compare_messages[$language] = array();
 			}
 
