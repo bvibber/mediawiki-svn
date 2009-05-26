@@ -443,12 +443,12 @@ class LocalisationUpdate {
 
 			// If we want to save the changes
 			if ( $saveResults === true && !empty($changedStrings) && is_array($changedStrings)) {
-				self::myLog( "--Checking languagecode {$langcode}--" );
+				self::myLog( "--Checking languagecode {$language}--" );
 				// The save them
-				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode );
-				self::myLog( "{$updates} messages updated for {$langcode}." );
+				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $language );
+				self::myLog( "{$updates} messages updated for {$language}." );
 			} elseif($saveResults === true) {
-				self::myLog( "--{$langcode} hasn't changed--" );
+				self::myLog( "--{$language} hasn't changed--" );
 			}
 		} 
 
