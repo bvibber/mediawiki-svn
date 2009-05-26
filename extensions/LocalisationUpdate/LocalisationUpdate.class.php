@@ -123,6 +123,10 @@ class LocalisationUpdate {
 		$changedCount = 0;
 
 		// For each language
+		if(!is_array($files)) {
+			self::myLog("CRITICAL ERROR: \$files is not an array in file ".(__FILE__)." at line ".(__LINE__));
+			return 0;
+		}
 		sort($files);
 		foreach ( $files as $file ) {
 			$svnfile = $svndir . "/" . $file;
@@ -164,6 +168,7 @@ class LocalisationUpdate {
 	}
 
 	public static function getFileContents( $basefile ) {
+		$basefilecontents = "";
 		// use cURL to get the SVN contents
 		if ( preg_match( "/^http/", $basefile ) ) {
 			$basefilecontents = Http::get( $basefile );
@@ -193,10 +198,7 @@ class LocalisationUpdate {
 		$langcode = strtolower( $m[1] );
 
 		$basefilecontents = self::getFileContents( $basefile );
-		if ( $basefilecontents === false ) return array(); // Failed
-
-		$basehash = "";
-		$comparehash = "";
+		if ( $basefilecontents === false || $basefilecontents === "" ) return array(); // Failed
 
 		// Only get the part we need
 		$basefilecontents = self::cleanupFile( $basefilecontents );
@@ -217,7 +219,7 @@ class LocalisationUpdate {
 		eval( $basefilecontents );
 
 		$comparefilecontents = self::getFileContents( $comparefile );
-		if ( $comparefilecontents === false ) return array(); // Failed
+		if ( $comparefilecontents === false || $comparefilecontents === "" ) return array(); // Failed
 
 		// only get the stuff we need
 		$comparefilecontents = self::cleanupFile( $comparefilecontents );
@@ -254,11 +256,13 @@ class LocalisationUpdate {
 		$changedStrings = array_diff_assoc( $base_messages, $compare_messages );
 
 		// If we want to save the differences
-		if ( $saveResults ) {
+		if ( $saveResults === true && !empty($changedStrings)) {
 			self::myLog( "--Checking languagecode {$langcode}--" );
 			// The save them
 			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode );
 			self::myLog( "{$updates} messages updated for {$langcode}." );
+		} elseif($saveResult === true) {
+			self::myLog( "--{$langcode} hasn't changed--" );
 		}
 
 		return $changedStrings;
@@ -287,6 +291,11 @@ class LocalisationUpdate {
 
 		// Count the updates
 		$updates = 0;
+		if(!is_array($changedStrings)) {
+			self::myLog("CRITICAL ERROR: \$changedStrings is not an array in file ".(__FILE__)." at line ".(__LINE__));
+			return 0;
+		}
+
 		foreach ( $changedStrings as $key => $value ) {
 			// If this message wasn't changed in english
 			if ( !array_key_exists( $key , $forbiddenKeys ) ) {
@@ -326,7 +335,11 @@ class LocalisationUpdate {
 		// And we only want message arrays
 		preg_match_all( "/\\\$messages(.*\s)*?\);/", $contents, $results );
 		// But we want them all in one string
-		$contents = implode( "\n\n", $results[0] );
+		if(!empty($results[0]) && is_array($results[0])) {
+			$contents = implode( "\n\n", $results[0] );
+		} else {
+			$contents = "";
+		}
 
 		// And we hate the windows vs linux linebreaks
 		$contents = preg_replace( "/\\\r/", "", $contents );
@@ -340,10 +353,7 @@ class LocalisationUpdate {
 		$base_messages = array();
 
 		$basefilecontents = self::getFileContents( $basefile );
-		if ( $basefilecontents === false ) return array(); // Failed
-
-		$basehash = "";
-		$comparehash = "";
+		if ( $basefilecontents === false || $basefilecontents === "" ) return array(); // Failed
 
 		// Cleanup the file where needed
 		$basefilecontents = self::cleanupExtensionFile( $basefilecontents );
@@ -365,7 +375,7 @@ class LocalisationUpdate {
 		eval( $basefilecontents );
 
 		$comparefilecontents = self::getFileContents( $comparefile );
-		if ( $comparefilecontents === false ) return array(); // Failed
+		if ( $comparefilecontents === false || $comparefilecontents === "" ) return array(); // Failed
 
 		// Only get what we need
 		$comparefilecontents = self::cleanupExtensionFile( $comparefilecontents );
@@ -392,9 +402,15 @@ class LocalisationUpdate {
 		// Update counter
 		$updates = 0;
 
+		if(!is_array($base_messages))
+			$base_messages = array();
+
 		if ( empty( $base_messages['en'] ) ) {
 			$base_messages['en'] = array();
 		}
+
+		if(!is_array($compare_messages))
+			$compare_messages = array();
 
 		if ( empty( $compare_messages['en'] ) ) {
 			$compare_messages['en'] = array();
