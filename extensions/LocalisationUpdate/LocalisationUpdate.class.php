@@ -445,7 +445,7 @@ class LocalisationUpdate {
 			if ( $saveResults === true && !empty($changedStrings) && is_array($changedStrings)) {
 				self::myLog( "--Checking languagecode {$language}--" );
 				// The save them
-				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $language );
+				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $messages, $language );
 				self::myLog( "{$updates} messages updated for {$language}." );
 			} elseif($saveResults === true) {
 				self::myLog( "--{$language} hasn't changed--" );
