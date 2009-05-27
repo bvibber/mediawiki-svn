@@ -32,7 +32,7 @@ class Call extends SpecialPage
 {
         function Call() {
                 SpecialPage::SpecialPage("Call");
-                self::loadMessages();
+                wfLoadExtensionMessages('Call');
         }
 
         
@@ -138,22 +138,12 @@ class Call extends SpecialPage
 
        		if ($wikitext=='' || $wikitext=='Special:Call' ) {
 				// Called without parameters: dump explanation
-	       		$wgOut->addHTML("The Call extension expects a wiki page and optional parameters for that page as an argument.<br>\n<br>\n"
-	       						."Example 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>\n"
-	       						."Example 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br/>\n"
-	       						."Example 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br/>\n<br/>\n"
-	       						."Example 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br/>\n<br/>"
-	       						."The <i>Call extension</i> will call the given page and pass the parameters.<br>\n"
-	       						."You will see the contents of the called page and its title but its 'type' will be that of a special page,<br>"
-	       						."i.e. such a page cannot be edited.<br>The contents you see may vary depending on the value of the parameters you passed.<br>\n<br>"
-	       						."The <i>Call extension</i> is useful to build interactive applications with MediaWiki.<br>\n"
-	       						."For an example see <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br/>\n"
-	       						."In case of problems you can try <b>Special:Call/DebuG</b>\n");
+	       		$wgOut->addHTML(wfMsg('call-text'));
        		}
        		else if ($debug) {
 				// Called with DebuG target: dump parameter list
 		        $wgOut->addHTML("<pre>\n{{".$wikitext."}}\n</pre>");
-		        if ($saveAsPage!='') $wgOut->addHTML("The output of this call would be saved to a page called ''$saveAsPageLink''.");
+		        if ($saveAsPage!='') $wgOut->addHTML( wfMsg('call-save',$saveAsPageLink) );
        		}
        		else {
 	       		$parm=array();
@@ -175,11 +165,10 @@ class Call extends SpecialPage
 			        if (!($saveAsTitle->exists())) {
 						$article = new Article($saveAsTitle);
 						$article->doEdit( $rawText, $saveAsPage, EDIT_NEW | EDIT_FORCE_BOT );
-				        $wgOut->addHTML($wgOut->parse("The following text has been saved to page <big>[[$saveAsPageLink]]</big>."));
+				        $wgOut->addHTML($wgOut->parse(wfMsg('call-save-success' ,$saveAsPageLink) ) );
 					}
 					else {
-				        $wgOut->addHTML($wgOut->parse("The following text has NOT been saved to page <big>[[$saveAsPageLink]]</big> ".
-				        	"because that page already exists."));
+				        $wgOut->addHTML($wgOut->parse(wfMsg('call-save-failed',$saveAsPageLink) ) );
 			        }
 			        // output the text we produced as a note to the user
 			        if ($link1!='') $wgOut->addHTML($wgOut->parse("[[Special:Call/$link1|$label1]]"));
