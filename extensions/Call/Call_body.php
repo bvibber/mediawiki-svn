@@ -21,30 +21,40 @@
  *				will tale the raw text of "Template:Abc", replace all occurencies of 'foo' by 'bar' and save the result as a normal
  *				article named 'Xyz' in the main namespace.
  *		added a functionality to split wiki tables into calls of a template per row (cmd=convertTableToTemplateCalls)
+ * @version 0.7
+ *      empty parameters are now no longer ignored; so you can replace a symbol by "nothing" when using saveAsPage
+ *      introduced 'link1' and 'link2', label1 and label2
+ *      link replaces ",name," by ",name=value,"
+ *		link2 replaces "name" by "value" and "," by "&"
  */
 
 class Call extends SpecialPage
 {
         function Call() {
                 SpecialPage::SpecialPage("Call");
-                wfLoadExtensionMessages('Call');
+                self::loadMessages();
         }
 
-
+        
 		function execute($par) {
 			global $wgParser;
 		    global $wgOut, $wgRequest, $wgRawHtml, $wgUser;
 		    $oldRawHtml = $wgRawHtml;
 		    $wgRawHtml = false;         // disable raw html if it's enabled as this could be XSS security risk
             $this->setHeaders();
-
+            		 
             global $_REQUEST;
        		$argkeys = array_keys($_REQUEST);
-
+       		
        		// find the position of "title" and count succeeding arguments until we find one that matches
        		// one of the patterns which belong to typical session cookie variables
-       		$argTitle=-1; $argCount=0; $n=0;
+       		// store link info
+       		$argTitle=-1; $argCount=0; $n=0; $link1=''; $link2=''; $label1 = 'link 1'; $label2 = 'link 2';
        		foreach ($argkeys as $argKey) {
+	       		if ($argKey=='link1') $link1=$wgRequest->getText($argKey);
+	       		if ($argKey=='label1') $label1=$wgRequest->getText($argKey);
+	       		if ($argKey=='link2') $link2=$wgRequest->getText($argKey);
+	       		if ($argKey=='label2') $label2=$wgRequest->getText($argKey);
 	       		if ($argKey=='title') $argTitle = $n;
 	       		else if ($argTitle>=0) {
 		       		if (preg_match('/(UserName|UserID|_session|Token)$/',$argKey)) break;
@@ -76,9 +86,13 @@ class Call extends SpecialPage
 	       		if (++$n > $argCount) break;
 	       		$arg = $wgRequest->getText($argKey);
 		       	if ($arg=='') {
+					$link1 = str_replace(",$argKey,",",$argKey=,",$link1);
+					$link2 = str_replace($argKey,"",$link2);
 			       	$arg = str_replace( "_", " ", $argKey );
 					$wikitext .= ( '|' . $arg );
 		       	} else {
+					$link1 = str_replace(",$argKey,",",$argKey=$arg,",$link1);
+					$link2 = str_replace($argKey,str_replace(' ','_',$arg),$link2);
 			       	$arg = str_replace( "_", " ", $arg );
 					$wikitext .= ( '|' . $argKey . '=' . $arg );
 				}
@@ -124,18 +138,29 @@ class Call extends SpecialPage
 
        		if ($wikitext=='' || $wikitext=='Special:Call' ) {
 				// Called without parameters: dump explanation
-	       		$wgOut->addHTML(wfMsg('call-text'));
+	       		$wgOut->addHTML("The Call extension expects a wiki page and optional parameters for that page as an argument.<br>\n<br>\n"
+	       						."Example 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br/>\n"
+	       						."Example 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br/>\n"
+	       						."Example 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br/>\n<br/>\n"
+	       						."Example 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br/>\n<br/>"
+	       						."The <i>Call extension</i> will call the given page and pass the parameters.<br>\n"
+	       						."You will see the contents of the called page and its title but its 'type' will be that of a special page,<br>"
+	       						."i.e. such a page cannot be edited.<br>The contents you see may vary depending on the value of the parameters you passed.<br>\n<br>"
+	       						."The <i>Call extension</i> is useful to build interactive applications with MediaWiki.<br>\n"
+	       						."For an example see <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br/>\n"
+	       						."In case of problems you can try <b>Special:Call/DebuG</b>\n");
        		}
        		else if ($debug) {
 				// Called with DebuG target: dump parameter list
 		        $wgOut->addHTML("<pre>\n{{".$wikitext."}}\n</pre>");
-		        if ($saveAsPage!='') $wgOut->addHTML(wfMsg('call-save',$saveAsPageLink) );
+		        if ($saveAsPage!='') $wgOut->addHTML("The output of this call would be saved to a page called ''$saveAsPageLink''.");
        		}
        		else {
 	       		$parm=array();
 				foreach (split('\|',$wikitext) as $parmArg) {
 					$pp = split('=',$parmArg,2);
 					if (count($pp) == 2) $parm[$pp[0]] = $pp[1];
+					else $parm[$pp[0]] = '';
 				}
 	       		if ($cmd=='convertTableToTemplateCalls') {
 	       			// execute command
@@ -150,12 +175,16 @@ class Call extends SpecialPage
 			        if (!($saveAsTitle->exists())) {
 						$article = new Article($saveAsTitle);
 						$article->doEdit( $rawText, $saveAsPage, EDIT_NEW | EDIT_FORCE_BOT );
-				        $wgOut->addHTML($wgOut->parse(wfMsg('call-save-success' ,$saveAsPageLink) ) );
+				        $wgOut->addHTML($wgOut->parse("The following text has been saved to page <big>[[$saveAsPageLink]]</big>."));
 					}
 					else {
-				        $wgOut->addHTML($wgOut->parse(wfMsg('call-save-failed',$saveAsPageLink) ) );
+				        $wgOut->addHTML($wgOut->parse("The following text has NOT been saved to page <big>[[$saveAsPageLink]]</big> ".
+				        	"because that page already exists."));
 			        }
 			        // output the text we produced as a note to the user
+			        if ($link1!='') $wgOut->addHTML($wgOut->parse("[[Special:Call/$link1|$label1]]"));
+					$link2=str_replace(',','&',$link2);
+   			        if ($link2!='') $wgOut->addHTML($wgOut->parse("[$link2 $label2]"));
 					$wgOut->addHTML("<pre>\n$rawText\n</pre>");
 	       		}
 	       		else {
@@ -221,4 +250,17 @@ class Call extends SpecialPage
 	        }
 	    	return join("\n",$text);
 	    }
+
+        function loadMessages() {
+                static $messagesLoaded = false;
+                global $wgMessageCache;
+                if ( $messagesLoaded ) return true;
+                $messagesLoaded = true;
+
+                require( dirname( __FILE__ ) . '/Call.i18n.php' );
+                foreach ( $allMessages as $lang => $langMessages ) {
+                        $wgMessageCache->addMessages( $langMessages, $lang );
+                }
+                return true;
+        }
 }
