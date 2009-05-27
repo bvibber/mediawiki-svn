@@ -33,6 +33,7 @@ $messages['en'] = array(
 	'dt_import_success'           => '$1 {{PLURAL:$1|page|pages}} will be created from the $2 file.',
 	'importcsv'                   => 'Import CSV',
 	'dt_importcsv_badheader'      => "Error: the column $1 header, '$2', must be either '$3', '$4' or of the form 'template_name[field_name]'",
+	'right-datatransferimport'    => 'Import data',
 );
 
 /** Message documentation (Message documentation)
