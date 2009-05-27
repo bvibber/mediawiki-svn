@@ -168,6 +168,16 @@ $messages['oc'] = array(
 	'right-getfamily' => 'Crear un fichièr de familha per pywikipediabot',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'getfamily-desc' => 'Generuje plik „family” dla pywikipediabot',
+	'getfamily' => 'Pobierz plik „family” dla pywikipediabot',
+	'getfamily-interwikierror' => 'Błąd – nieprawidłowa konfiguracja interwiki, skontaktuj się z lokalnym administratorem.',
+	'right-getfamily' => 'Tworzenie pliku „family” dla pywikipediabot',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

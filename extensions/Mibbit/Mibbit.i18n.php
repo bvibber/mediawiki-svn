@@ -224,10 +224,10 @@ Los usuarios anónimos tienen un nick generado automáticamente, pero puede camb
 $messages['fr'] = array(
 	'mibbit' => 'Clavardage Mibbit',
 	'mibbit-desc' => 'Ajoute une [[Special:Mibbit|page spéciale]] permettant le clavardage en temps réel avec les autres utilisateurs du wiki',
-	'mibbit-header' => "Cette page spéciale vous permet de collaborer en temps réel avec d'autres utilisateurs du wiki.
+	'mibbit-header' => 'Cette page spéciale vous permet de collaborer en temps réel avec d’autres utilisateurs du wiki.
 Pour vous connecter, cliquez simplement sur le bouton « Connect ».
-Si vous êtes enregistré{{GENDER:||e|(e)}}, votre pseudonyme est prédéfini à l'aide de votre nom d'utilisateur.
-Pour les utilisateurs anonymes, un pseudonyme est créé automatiquement, mais celui-ci peut être modifié.",
+Si vous êtes enregistré{{GENDER:||e|(e)}}, votre pseudonyme est prédéfini à l’aide de votre nom d’utilisateur.
+Pour les utilisateurs anonymes, un pseudonyme est créé automatiquement, mais celui-ci peut être modifié.',
 	'right-mibbit' => 'Clavarder avec Mibbit',
 );
 

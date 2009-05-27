@@ -19,3 +19,8 @@ $aliases['ja'] = array(
 	'UserOptionStats' => array( '利用者オプション統計' ),
 );
 
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'UserOptionStats' => array( 'Gebruikersinstellingenstatistieken' ),
+);
+

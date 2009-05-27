@@ -962,6 +962,7 @@ $messages['pl'] = array(
 	'authorprotect-failure' => 'Zabezpieczenie nie powiodło się',
 	'protect-level-author' => 'Zabezpieczenie przed wszystkimi poza autorami',
 	'restriction-level-author' => 'Tylko autorzy',
+	'right-authorprotect' => 'Zabezpieczanie stron autorskich',
 );
 
 /** Pashto (پښتو)

@@ -186,6 +186,18 @@ $messages['el'] = array(
 	'communityvoice-ratings-error-no-title' => 'Ιδιότητα τίτλου λείπει από την ετικέτα αξιολόγησης.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'communityvoice' => 'Komunuma Voĉo',
+	'communityvoice-ratings-scale-status-sending' => 'Sendante...',
+	'communityvoice-ratings-scale-status-error' => 'Eraris sendante!',
+	'communityvoice-ratings-scale-status-thanks' => 'Dankon pro via voĉdono!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|voĉdono sendita|voĉdonoj senditaj}})',
+	'communityvoice-ratings-error-no-category' => 'Kategoria atributo mankas en voĉdona etikedo.',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -407,6 +419,7 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -417,6 +430,8 @@ $messages['no'] = array(
 	'communityvoice-ratings-scale-status-error' => 'Feil under sending!',
 	'communityvoice-ratings-scale-status-thanks' => 'Takk for at du stemte!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|én stemme|$2 stemmer}} avgitt)',
+	'communityvoice-ratings-error-no-category' => 'Kategoriattributt mangler i vurderingsmerke.',
+	'communityvoice-ratings-error-no-title' => 'Tittelattributt mangler i vurderingsmerke.',
 );
 
 /** Occitan (Occitan)

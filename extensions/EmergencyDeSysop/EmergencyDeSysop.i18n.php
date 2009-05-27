@@ -85,6 +85,16 @@ $messages['arz'] = array(
 	'right-emergencydesysop' => 'القدرة على عزل مستخدم آخر، بشكل متبادل',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'emergencydesysop' => 'Тэрміновае пазбаўленьне правоў адміністратара',
+	'emergencydesysop-desc' => 'Дазваляе адміністратару ахвяраваць сваімі правамі для тэрміновага пазбаўленьне правоў іншага адміністратара',
+	'emergencydesysop-title' => 'Пазбаўленьне правоў адміністратара абодвух удзельнікаў і іншага адміністратара',
+	'emergencydesysop-otheradmin' => 'Інша адміністратар які будзе пазбаўлены правоў',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

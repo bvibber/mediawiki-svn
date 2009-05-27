@@ -790,6 +790,15 @@ $messages['tr'] = array(
 	'createpage-badtitle' => '"$1" bir sayfa başlığı olarak kullanılamaz',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'createpage' => 'بەتتىن بىرنى قۇر',
+	'createpage_submitbutton' => 'تاپشۇر',
+	'createpage_instructions' => 'قۇرماقچى بولغان بېتىڭىزنىڭ ماۋزۇسىنى كىرگۈزۈڭ:',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

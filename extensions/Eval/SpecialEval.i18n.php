@@ -47,6 +47,19 @@ $messages['arz'] = array(
 	'eval_code' => 'كود',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'eval' => 'Вылічэньне',
+	'eval-desc' => 'Дадае [[Special:Eval|інтэрфэйс]] для функцыі <code>eval()</code>',
+	'eval_submit' => 'Вылічыць',
+	'eval_escape' => 'Рабіць вынік бясьпечным',
+	'eval_out' => 'Вынік',
+	'eval_code' => 'Код',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

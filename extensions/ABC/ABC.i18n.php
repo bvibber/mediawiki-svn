@@ -558,6 +558,13 @@ $messages['tr'] = array(
 	'abcdownload' => 'İndir:',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'abcdownload' => 'چۈشۈر:',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

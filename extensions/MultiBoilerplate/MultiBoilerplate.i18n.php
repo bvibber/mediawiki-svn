@@ -133,10 +133,11 @@ $messages['eu'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  */
 $messages['fr'] = array(
-	'multiboilerplate-desc' => "Permet de sélectionner une page ou un modèle à incorporer à partir d'une boîte en haut du formulaire d'édition d'une page.",
+	'multiboilerplate-desc' => 'Permet de sélectionner une page ou un modèle à incorporer à partir d’une boîte en haut du formulaire d’édition d’une page.',
 	'multiboilerplate-legend' => 'Sélectionner la page à incorporer',
 	'multiboilerplate-submit' => 'Charger',
 );

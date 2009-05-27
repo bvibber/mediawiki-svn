@@ -336,26 +336,27 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'lookupuser' => "Parcourir les informations de l'usager",
+	'lookupuser' => 'Parcourir les informations de l’usager',
 	'lookupuser-desc' => 'Extrait les informations concernant un utilisateur telles qu’une adresse électronique et le numéro ID',
-	'lookupuser-intro' => "Saisir un nom d'utilisateur pour voir ses préférences",
-	'lookupuser-nonexistent' => "Erreur : l'utilisateur n'existe pas",
-	'lookupuser-authenticated' => "Courriel d'identification : $1",
+	'lookupuser-intro' => 'Saisir un nom d’utilisateur pour voir ses préférences',
+	'lookupuser-nonexistent' => 'Erreur : l’utilisateur n’existe pas',
+	'lookupuser-authenticated' => 'Courriel d’identification : $1',
 	'lookupuser-not-authenticated' => 'pas identifié',
-	'lookupuser-id' => "ID de l'utilisateur : <tt>#$1</tt>",
+	'lookupuser-id' => 'ID de l’utilisateur : <tt>#$1</tt>',
 	'lookupuser-email' => 'Courriel : [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'non fourni',
 	'lookupuser-realname' => 'Nom réel : $1',
-	'lookupuser-registration' => "Date d'enregistrement : $1",
+	'lookupuser-registration' => 'Date d’enregistrement : $1',
 	'lookupuser-no-registration' => 'non enregistré',
-	'lookupuser-touched' => "Enregistrement de l'utilisateur touché pour la dernière fois : $1",
+	'lookupuser-touched' => 'Enregistrement de l’utilisateur touché pour la dernière fois : $1',
 	'lookupuser-info-authenticated' => 'Authentification du courriel : $1',
-	'lookupuser-useroptions' => "Options de l'utilisateur :",
+	'lookupuser-useroptions' => 'Options de l’utilisateur :',
 	'right-lookupuser' => 'Visionner les préférences des utilisateurs',
 );
 

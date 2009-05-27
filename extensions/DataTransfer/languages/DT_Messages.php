@@ -37,6 +37,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  * @author Raymond
@@ -70,6 +71,7 @@ Used as XML tag name.',
 	'dt_import_editsummary' => '$1 is the file format: either CSV or XML',
 	'dt_import_success' => '* $1 is the number of pages
 * $2 is the file format: either CSV or XML',
+	'right-datatransferimport' => '{{doc-right}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -215,7 +217,9 @@ $messages['bs'] = array(
 	'dt_import_selectfile' => 'Molimo odaberite $1 datoteku za uvoz:',
 	'dt_import_editsummary' => '$1 uvoz',
 	'dt_import_importing' => 'Uvoz...',
-	'dt_import_success' => '$1 {{PLURAL:$1|stranica|stranice|stranica}} će biti uvezeno iz $2 datoteke.',
+	'dt_import_success' => '$1 {{PLURAL:$1|stranica|stranice|stranica}} će biti napravljeno iz $2 datoteke.',
+	'importcsv' => 'Uvoz CSV',
+	'dt_importcsv_badheader' => "Greška: zaglavlje $1 kolone, '$2', mora biti ili '$3', '$4' ili od obrasca 'template_name[field_name]'",
 );
 
 /** Catalan (Català)
@@ -224,7 +228,9 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
+	'dt-desc' => 'Permet importar i exportar les dades que contenen les crides de les plantilles',
 	'viewxml' => 'Veure XML',
+	'dt_viewxml_docu' => "Si us plau, selecciona d'entre les següents categories i espais de noms per a veure-ho en format XML.",
 	'dt_viewxml_categories' => 'Categories',
 	'dt_viewxml_namespaces' => 'Espai de noms',
 	'dt_viewxml_simplifiedformat' => 'Format simplificat',
@@ -238,10 +244,12 @@ $messages['ca'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Text lliure',
 	'importxml' => 'Importa XML',
-	'dt_import_selectfile' => 'Si us plau, selecciona el fitxer $1 per importar:',
-	'dt_import_editsummary' => 'Importar $1:',
+	'dt_import_selectfile' => 'Si us plau, selecciona el fitxer $1 per a importar:',
+	'dt_import_editsummary' => 'Importació $1',
 	'dt_import_importing' => "S'està important...",
-	'dt_import_success' => "$1 {{PLURAL:$1|pàgina|pàgines}} s'importaran des del fitxer $2.",
+	'dt_import_success' => '$1 {{PLURAL:$1|pàgina|pàgines}} es crearan des del fitxer $2.',
+	'importcsv' => 'Importa CSV',
+	'dt_importcsv_badheader' => "Error: la capçalera de la columna $1, '$2', ha de ser o bé '$3', '$4' o del formulari 'template_name[field_name]'",
 );
 
 /** Czech (Česky)
@@ -312,10 +320,13 @@ $messages['dsb'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Lichy tekst',
 	'importxml' => 'XML importěrowaś',
-	'dt_import_selectfile' => 'Pšosym wubjeŕ $1-dataju za importěrowanje:',
-	'dt_import_editsummary' => '$1-importěrowanje',
+	'dt_import_selectfile' => 'Pšosym wubjeŕ dataju $1 za importěrowanje:',
+	'dt_import_editsummary' => 'Importěrowanje $1',
 	'dt_import_importing' => 'Importěrujo se...',
-	'dt_import_success' => '$1 {{PLURAL:$1|bok importěrujo|boka importěrujotej|boki importěruju|bokow importěrujo}} se z $2-dataje.',
+	'dt_import_success' => '$1 {{PLURAL:$1|bok twóri|boka twóritej|boki twórje|bokow twóri}} se z dataje $2.',
+	'importcsv' => 'Importěrowanje CSV',
+	'dt_importcsv_badheader' => "Zmólka: głowa słupa $1, '$2', musy pak '$3', '$4' byś pak formu 'mě_pśedłogi[mě_póla]' měś",
+	'right-datatransferimport' => 'Daty importěrowaś',
 );
 
 /** Greek (Ελληνικά)
@@ -372,7 +383,8 @@ $messages['es'] = array(
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor seleccione el archivo $1 a importar:',
 	'dt_import_importing' => 'Importando...',
-	'dt_import_success' => '$1 {{PLURAL:$1|página|páginas}} serán importadas del archivo $2.',
+	'dt_import_success' => '$1 {{PLURAL:$1|página|páginas}} serán creadas del archivo $2.',
+	'importcsv' => 'Importar CSV',
 );
 
 /** Finnish (Suomi)
@@ -417,9 +429,12 @@ $messages['fr'] = array(
 	'dt_xml_freetext' => 'Texte Libre',
 	'importxml' => 'Import en XML',
 	'dt_import_selectfile' => 'Veuillez sélectionner le fichier $1 à importer :',
-	'dt_import_editsummary' => 'Import $1',
+	'dt_import_editsummary' => 'Importation $1',
 	'dt_import_importing' => 'Import en cours...',
-	'dt_import_success' => '$1 {{PLURAL:$1|page sera importée|pages seront importées}} depuis le fichier $2.',
+	'dt_import_success' => '$1 {{PLURAL:$1|page sera crée|pages seront crées}} depuis le fichier $2.',
+	'importcsv' => 'Import CSV',
+	'dt_importcsv_badheader' => 'Erreur : le titre de colonne $1, « $2 », doit être soit « $3 », « $4 » ou de la forme « nom_du_modèle[nom_du_champ] »',
+	'right-datatransferimport' => 'Importer des données',
 );
 
 /** Western Frisian (Frysk)
@@ -462,7 +477,10 @@ $messages['gl'] = array(
 	'dt_import_selectfile' => 'Por favor, seleccione o ficheiro $1 a importar:',
 	'dt_import_editsummary' => 'Importación en $1',
 	'dt_import_importing' => 'Importando...',
-	'dt_import_success' => '{{PLURAL:$1|Unha páxina será importada|$1 páxinas serán importadas}} a partir do ficheiro $2.',
+	'dt_import_success' => '{{PLURAL:$1|Unha páxina será creada|$1 páxinas serán creadas}} a partir do ficheiro $2.',
+	'importcsv' => 'Importación en CSV',
+	'dt_importcsv_badheader' => 'Erro: a cabeceira da columna $1, "$2", debe ser un "$3", "$4" ou do formulario "template_name[field_name]"',
+	'right-datatransferimport' => 'Importar datos',
 );
 
 /** Gothic
@@ -511,7 +529,10 @@ $messages['gsw'] = array(
 	'dt_import_selectfile' => 'Bitte wehl d $1-Datei zum importiere uus:',
 	'dt_import_editsummary' => '$1-Import',
 	'dt_import_importing' => 'Am Importiere ...',
-	'dt_import_success' => '$1 {{PLURAL:$1|Syte|Syte}} wäre vu dr $2-DAtei importiert.',
+	'dt_import_success' => '$1 {{PLURAL:$1|Syte|Syte}} wäre us dr $2-Datei aagleit.',
+	'importcsv' => 'CSV-Datei importiere',
+	'dt_importcsv_badheader' => "Fähler: d Spalte $1 Iberschrift, '$2', muess entwäder '$3', '$4' syy oder us em Format  'template_name[field_name]'",
+	'right-datatransferimport' => 'Date importiere',
 );
 
 /** Manx (Gaelg)
@@ -609,10 +630,13 @@ $messages['hsb'] = array(
 	'dt_xml_id' => 'Id',
 	'dt_xml_freetext' => 'Swobodny tekst',
 	'importxml' => 'XML importować',
-	'dt_import_selectfile' => 'Prošu wubjer $1-dataju za importowanje:',
+	'dt_import_selectfile' => 'Prošu wubjer dataju $1 za importowanje:',
 	'dt_import_editsummary' => 'Importowanje $1',
 	'dt_import_importing' => 'Importuje so...',
-	'dt_import_success' => '$1 {{PLURAL:$1|strona so z $2-dataje importuje|stronje so z $2-dataje importujetej|strony so z $2-dataje importuja|stronow so z $2-dataje importuje}}.',
+	'dt_import_success' => '$1 {{PLURAL:$1|strona so z dataje $2 twori|stronje so z dataje $2 tworitej|strony so z dataje $2 tworja|stronow so z dataje $2 twori}}.',
+	'importcsv' => 'Importowanje CSV',
+	'dt_importcsv_badheader' => "Zmylk: hłowa špalty $1, '$2', dyrbi pak '$3', '$4' być pak formu 'mjeno_předłohi[mjeno_pola]' měć",
+	'right-datatransferimport' => 'Daty importować',
 );
 
 /** Hungarian (Magyar)
@@ -654,10 +678,13 @@ $messages['ia'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto libere',
 	'importxml' => 'Importar XML',
-	'dt_import_selectfile' => 'Per favor selige un file $1 a importar:',
+	'dt_import_selectfile' => 'Per favor selige le file $1 a importar:',
 	'dt_import_editsummary' => 'Importation de $1',
 	'dt_import_importing' => 'Importation in curso…',
-	'dt_import_success' => '$1 {{PLURAL:$1|pagina|paginas}} essera importate ex le file $2.',
+	'dt_import_success' => '$1 {{PLURAL:$1|pagina|paginas}} essera create ex le file $2.',
+	'importcsv' => 'Importar CSV',
+	'dt_importcsv_badheader' => "Error: le capite del columna $1, '$2', debe esser '$3', '$4' o in le forma 'nomine_de_patrono[nomine_de_campo]'",
+	'right-datatransferimport' => 'Importar datos',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -726,9 +753,12 @@ $messages['ja'] = array(
 	'dt_xml_freetext' => '自由形式テキスト',
 	'importxml' => 'XMLインポート',
 	'dt_import_selectfile' => 'インポートする $1 ファイルを選択してください:',
-	'dt_import_editsummary' => '$1のインポート',
+	'dt_import_editsummary' => '$1 のインポート',
 	'dt_import_importing' => 'インポート中…',
 	'dt_import_success' => '$2 ファイルからは $1個のページがインポートされます。',
+	'importcsv' => 'CSVのインポート',
+	'dt_importcsv_badheader' => 'エラー: 列 $1 のヘッダ「$2」は、「$3」もしくは「$4」であるか、または「テンプレート名[フィールド名]」という形式になっていなければなりません。',
+	'right-datatransferimport' => 'データをインポートする',
 );
 
 /** Javanese (Basa Jawa)
@@ -778,8 +808,8 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'dt-desc' => 'Määt et müjjelesch, Date uß Schabloone ier Oproofe ze emporteere un ze exporteere.',
-	'viewxml' => 'XML beloore',
-	'dt_viewxml_docu' => 'Don ußsöke, wat fö_n Saachjruppe un Appachtemangs De em XML Fommaat aanloore wells.',
+	'viewxml' => '<i lang="en">XML</i> beloore',
+	'dt_viewxml_docu' => 'Don ußsöke, wat fö_n Saachjruppe un Appachtemangs De em <i lang="en">XML</i> Fommaat aanloore wells.',
 	'dt_viewxml_categories' => 'Saachjroppe',
 	'dt_viewxml_namespaces' => 'Appachtemangs',
 	'dt_viewxml_simplifiedformat' => 'Em eijfachere Fommaat',
@@ -792,11 +822,14 @@ $messages['ksh'] = array(
 	'dt_xml_title' => 'Tėttel',
 	'dt_xml_id' => 'Kännong',
 	'dt_xml_freetext' => 'Freije Täx',
-	'importxml' => 'XML Empotteere',
-	'dt_import_selectfile' => 'Söhk de $1 Dattei för zem Empotteere uß:',
-	'dt_import_editsummary' => 'uß ene $1 Datei empotteet',
+	'importxml' => '<i lang="en">XML</i> Empotteere',
+	'dt_import_selectfile' => 'Söhk de <i lang="en">$1</i>-Dattei för zem Empotteere uß:',
+	'dt_import_editsummary' => 'uss ene <i lang="en">$1</i>-Datei empotteet',
 	'dt_import_importing' => 'Ben aam Empotteere{{int:Ellipsis}}',
-	'dt_import_success' => '{{PLURAL:$1|Ein Sigg|$1 Sigge|Kein einzelne Sigg}} weed_uß dä $2-Dattei empotteet.',
+	'dt_import_success' => '{{PLURAL:$1|Ein Sigg weed_uß|$1 Sigge weede uß|Kein einzelne Sigg weed_uß}} dä <i lang="en">$2</i>-Dattei empotteet.',
+	'importcsv' => '<i lang="en">CSV</i>-Dattei empoteere',
+	'dt_importcsv_badheader' => 'Fähler: De Shpallde-Övverschreff för $1 es „$2“, mööt ävver „$3“ udder „$4“ sin, udder dat Fommaat „<code>Name_vun_ene_Schablohn[Name_vun_enem_Felldt]</code>“ han.',
+	'right-datatransferimport' => 'Daate empoteere',
 );
 
 /** Cornish (Kernewek)
@@ -827,10 +860,11 @@ $messages['lb'] = array(
 	'dt_xml_id' => 'Nummer',
 	'dt_xml_freetext' => 'Fräien Text',
 	'importxml' => 'XML importéieren',
-	'dt_import_selectfile' => 'Sicht den $1-Fichier eraus deen importéiert gëtt:',
-	'dt_import_editsummary' => '$1 Import',
+	'dt_import_selectfile' => "Sicht de(n) $1-Fichier eraus fir z'importéieren:",
+	'dt_import_editsummary' => '$1 importéieren',
 	'dt_import_importing' => 'Import am gaang ...',
-	'dt_import_success' => '$1 {{PLURAL:$1|Säit gëtt|Säite ginn}} aus dem $2-Fichier importéiert.',
+	'dt_import_success' => '$1 {{PLURAL:$1|Säit gëtt|Säite ginn}} aus dem $2-Fichier ugeluecht.',
+	'importcsv' => 'CSV importéieren',
 );
 
 /** Limburgish (Limburgs)
@@ -949,10 +983,13 @@ $messages['nl'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Vrije tekst',
 	'importxml' => 'XML importeren',
-	'dt_import_selectfile' => 'Selecteer het te importeren $1-bestand:',
-	'dt_import_editsummary' => '$1 import',
+	'dt_import_selectfile' => 'Selecteer het te importeren bestand van het type $1:',
+	'dt_import_editsummary' => '$1-import',
 	'dt_import_importing' => 'Bezig met importeren…',
 	'dt_import_success' => "Uit het $2-bestand {{PLURAL:$1|wordt één pagina|worden $1 pagina's}} geïmporteerd.",
+	'importcsv' => 'CSV importeren',
+	'dt_importcsv_badheader' => 'Fout: De kop van colom $1, "$2", moet ofwel "$3" of "$4" zijn, of in de vorm "sjabloonnaam[veldnaam]" genoteerd worden.',
+	'right-datatransferimport' => 'Gegevens importeren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1030,9 +1067,9 @@ $messages['oc'] = array(
 	'dt_xml_freetext' => 'Tèxte Liure',
 	'importxml' => 'Impòrt en XML',
 	'dt_import_selectfile' => "Seleccionatz lo fichièr $1 d'importar :",
-	'dt_import_editsummary' => 'Impòrt $1',
+	'dt_import_editsummary' => 'Importacion $1',
 	'dt_import_importing' => 'Impòrt en cors...',
-	'dt_import_success' => '$1 {{PLURAL:$1|pagina serà importada|paginas seràn importadas}} dempuèi lo fichièr $2.',
+	'dt_import_success' => '$1 {{PLURAL:$1|pagina serà creada|paginas seràn creadas}} dempuèi lo fichièr $2.',
 );
 
 /** Ossetic (Иронау)
@@ -1222,6 +1259,9 @@ $messages['sk'] = array(
 	'dt_import_editsummary' => 'Import $1',
 	'dt_import_importing' => 'Prebieha import...',
 	'dt_import_success' => 'Z $2 súboru sa {{PLURAL:$1|importuje $1 stránka|importujú $1 stránky|importuje $1 stránok}}.',
+	'importcsv' => 'Import CSV',
+	'dt_importcsv_badheader' => 'Chyba: stĺpec $1 hlavičky, „$2“ musí mať hodnotu buď „$3“, „$4“ alebo byť v tvare „názov_šablóny[názov_poľa]“',
+	'right-datatransferimport' => 'Importovať údaje',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -1512,5 +1552,8 @@ $messages['zh-tw'] = array(
 	'dt_import_editsummary' => '匯入$1',
 	'dt_import_importing' => '匯入中...',
 	'dt_import_success' => '將從該$2檔匯入$1{{PLURAL:$1|頁面頁面}}。',
+	'importcsv' => '匯入CSV檔',
+	'dt_importcsv_badheader' => "錯誤：$1欄位的標題「$2」或必須為「$3」，「$4」或表單「模板名稱[欄位名稱]」<br>
+Error: the column $1 header, '$2', must be either '$3', '$4' or of the form 'template_name[field_name]'",
 );
 

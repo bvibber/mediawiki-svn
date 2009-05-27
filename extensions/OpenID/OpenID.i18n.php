@@ -1157,7 +1157,7 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidconvertsuccess' => 'Converti avec succès vers OpenID',
 	'openidconvertsuccesstext' => 'Vous avez converti avec succès votre OpenID vers $1.',
 	'openidconvertyourstext' => 'C’est déjà votre OpenID.',
-	'openidconvertothertext' => "Ceci est l'OpenID de quelqu'un d'autre.",
+	'openidconvertothertext' => 'Ceci est l’OpenID de quelqu’un d’autre.',
 	'openidalreadyloggedin' => "'''Vous êtes déjà connecté{{GENDER:||e|(e)}}, $1 !'''
 
 Vous vous désirez utiliser votre OpenID pour vous connecter ultérieurement, vous pouvez [[Special:OpenIDConvert|convertir votre compte pour utiliser OpenID]].",
@@ -1167,13 +1167,13 @@ Vous vous désirez utiliser votre OpenID pour vous connecter ultérieurement, vo
 Si tel n’était pas le cas, essayez le bouton « Continuer ».',
 	'openidclientonlytext' => 'Vous ne pouvez utiliser des comptes depuis ce wiki en tant qu’OpenID sur d’autres sites.',
 	'openidloginlabel' => 'Adresse OpenID',
-	'openidlogininstructions' => "{{SITENAME}} supporte le standard [http://openid.net/ OpenID] pour une seule signature entre des sites Internet.
+	'openidlogininstructions' => '{{SITENAME}} supporte le standard [http://openid.net/ OpenID] pour une seule signature entre des sites Internet.
 OpenID vous permet de vous connecter sur plusieurs sites différents sans à avoir à utiliser un mot de passe différent pour chacun d’entre eux.
-(Voyez [http://fr.wikipedia.org/wiki/OpenID l'article de Wikipédia] pour plus d'informations.)
+(Voyez [http://fr.wikipedia.org/wiki/OpenID l’article de Wikipédia] pour plus d’informations.)
 
-Si vous avez déjà un compte sur {{SITENAME}}, vous pouvez vous [[Special:UserLogin|connecter]] avec votre nom d'utilisateur et son mot de pas comme d’habitude. Pour utiliser OpenID, à l’avenir, vous pouvez [[Special:OpenIDConvert|convertir votre compte en OpenID]] après que vous vous soyez connecté normallement.
+Si vous avez déjà un compte sur {{SITENAME}}, vous pouvez vous [[Special:UserLogin|connecter]] avec votre nom d’utilisateur et son mot de pas comme d’habitude. Pour utiliser OpenID, à l’avenir, vous pouvez [[Special:OpenIDConvert|convertir votre compte en OpenID]] après que vous vous soyez connecté normallement.
 
-Il existe plusieurs [http://openid.net/get/ fournisseur d'OpenID], et vous pouvez déjà obtenir un compte OpenID activé sur un autre service.",
+Il existe plusieurs [http://openid.net/get/ fournisseur d’OpenID], et vous pouvez déjà obtenir un compte OpenID activé sur un autre service.',
 	'openidupdateuserinfo' => 'Mettre à jour mes données personnelles',
 	'openid-prefstext' => 'Préférences de [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Cacher votre OpenID sur votre page utilisateur, si vous vous connectez avec OpenID.',
@@ -1183,7 +1183,7 @@ Il existe plusieurs [http://openid.net/get/ fournisseur d'OpenID], et vous pouve
 	'openid-provider-label-google' => 'Vous connecter en utilisant votre compte Google',
 	'openid-provider-label-yahoo' => 'Vous connecter en utilisant votre compte Yahoo',
 	'openid-provider-label-aol' => 'Entrez votre nom AOL',
-	'openid-provider-label-other-username' => "Entrez votre nom d'utilisateur $1",
+	'openid-provider-label-other-username' => 'Entrez votre nom d’utilisateur $1',
 );
 
 /** Irish (Gaeilge)

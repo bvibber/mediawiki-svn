@@ -156,13 +156,14 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'mediafunctions-desc' => 'Fonction parseur pour l’obtention d‘informations concernant les fichiers médias',
-	'mediafunctions-invalid-title' => "« $1 » n'est pas un titre valide.",
-	'mediafunctions-not-exist' => "« $1 » n'existe pas.",
+	'mediafunctions-invalid-title' => '« $1 » n’est pas un titre valide.',
+	'mediafunctions-not-exist' => '« $1 » n’existe pas',
 );
 
 /** Galician (Galego)
@@ -362,6 +363,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'mediafunctions-desc' => 'Funkcje analizatora składni pozyskujące informacje na temat plików multimedialnych',
 	'mediafunctions-invalid-title' => '„$1” nie jest poprawnym tytułem',
 	'mediafunctions-not-exist' => '„$1” nie istnieje',
 );

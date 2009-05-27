@@ -273,16 +273,17 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  */
 $messages['fr'] = array(
 	'accountmanager' => 'Gestionnaire de comptes',
-	'am-username' => "Nom d'utilisateur",
+	'am-username' => 'Nom d’utilisateur',
 	'am-email' => 'Courriel',
 	'am-active' => 'actif',
 	'am-updated' => 'Vos modifications ont été sauvegardées avec succès',
-	'nss-desc' => "Une extension qui permet d'authentifier au moyen d'une base de données libnss-mysql. Contient un [[Special:AccountManager|gestionnaire de comptes]]",
+	'nss-desc' => 'Une extension qui permet d’authentifier au moyen d’une base de données libnss-mysql. Contient un [[Special:AccountManager|gestionnaire de comptes]]',
 	'nss-rights' => 'droits',
 	'nss-save-changes' => 'Sauvegarder les modifications',
 	'nss-create-account-header' => 'Créer un nouveau compte',
@@ -290,7 +291,7 @@ $messages['fr'] = array(
 	'nss-no-mail' => 'Ne pas envoyer de courriel',
 	'nss-welcome-mail' => 'Un compte avec le nom $1 et le mot de passe $2 a été créé pour vous.',
 	'nss-welcome-mail-subject' => 'Création de compte',
-	'nss-db-error' => "Erreur pendant la lecture de la base de données d'authentification",
+	'nss-db-error' => 'Erreur pendant la lecture de la base de données d’authentification',
 );
 
 /** Irish (Gaeilge)

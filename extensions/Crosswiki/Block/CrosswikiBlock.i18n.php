@@ -1701,6 +1701,7 @@ Powrót do:
 * [[Special:CrosswikiBlock|Formularz blokowania]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokalne odblokowywanie nie jest obsługiwane w tym interfejsie. Użyj [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Blokowanie i odblokowywanie użytkowników na innych wiki',
 );
 
 /** Pashto (پښتو)

@@ -59,6 +59,7 @@ $messages['en'] = array(
  * @author CERminator
  * @author EugeneZelenko
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'recordadmin-desc' => 'Short desciption of this extension.
@@ -71,7 +72,7 @@ Do not translate or change tag names, or link anchors.',
 	'recordadmin-buttonreset' => '{{Identical|Reset}}',
 	'recordadmin-edit' => 'Parameters:
 * $1 is record name
-* $2 is the name of a record type',
+* $2 is the name of a record type. What actual values they can have depends on the types of records that have been created, but is usually things like "Issue", "Activity", "Invoice", "Person", etc.',
 	'recordadmin-buttonsave' => '{{Identical|Save}}',
 	'recordadmin-editlink' => '{{Identical|Edit}}',
 );
@@ -402,6 +403,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'recordadmin-select' => 'Seleccionar el tipo de registro a gestionar',
 	'recordadmin-recordtype' => 'tipo de registro',
+	'recordadmin-newrecord' => 'Seleccionar otro tipo de registro',
 	'recordadmin-submit' => 'Enviar',
 	'recordadmin-alreadyexist' => 'Perdón, "$1" ya existe!',
 	'recordadmin-createsuccess' => '$1 creado',
@@ -410,8 +412,9 @@ $messages['es'] = array(
 	'recordadmin-invert' => 'Invertir selección',
 	'recordadmin-buttonsearch' => 'Buscar',
 	'recordadmin-buttoncreate' => 'Crear',
+	'recordadmin-buttonreset' => 'Reestablecer',
 	'recordadmin-searchresult' => 'Resultados de la búsqueda',
-	'recordadmin-edit' => 'Editando $1',
+	'recordadmin-edit' => 'Editando registro $2 "$1"',
 	'recordadmin-typeupdated' => '$1 propiedades actualizadas',
 	'recordadmin-updatesuccess' => '$1 actualizado',
 	'recordadmin-updateerror' => 'Un error ocurrió durante la actualización',
@@ -425,6 +428,7 @@ $messages['es'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Acciones',
 	'recordadmin-needscontent' => 'Agregar contenido...',
+	'right-recordadmin' => 'Encontrar y editar páginas de registro',
 );
 
 /** Estonian (Eesti)
@@ -1015,7 +1019,7 @@ $messages['oc'] = array(
 	'recordadmin-buttonreset' => 'Tornar inicializar',
 	'recordadmin-searchresult' => 'Resultats de la recèrca',
 	'recordadmin-nomatch' => "Cap d'enregistrament correspondent pas trobat !",
-	'recordadmin-edit' => 'Modificar $1',
+	'recordadmin-edit' => 'Modificacion de l’enregistrament $2  « $1 »',
 	'recordadmin-typeupdated' => 'proprietat de $1 mesas a jorn',
 	'recordadmin-updatesuccess' => '$1 mes a jorn amb succès',
 	'recordadmin-updateerror' => 'Una error es estat rencontrada al moment de la mesa a jorn',

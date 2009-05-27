@@ -193,6 +193,13 @@ $messages['oc'] = array(
 	'htmlets-desc' => 'Vos daissa lo ligam HTML abrejat en linha dempuèi los fichièrs utilizant la balisa <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'htmlets-desc' => 'Umożliwia włączanie kodu HTML z plików przy użyciu znacznika <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

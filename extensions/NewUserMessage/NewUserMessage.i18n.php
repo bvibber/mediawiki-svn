@@ -181,11 +181,12 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author Louperivois
  */
 $messages['fr'] = array(
-	'newusermessage-desc' => "Ajoute un message dans la page de discussion d'un nouvel utilisateur",
+	'newusermessage-desc' => 'Ajoute un message dans la page de discussion d’un nouvel utilisateur',
 	'newuseredit-summary' => 'Ajoute [[{{int:newusermessage-template}}|un message de bienvenue]] dans la page de discussion d’un nouvel utilisateur',
 );
 

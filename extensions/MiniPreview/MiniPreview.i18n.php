@@ -209,6 +209,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author McDutchie
  * @author Sherbrooke
@@ -217,15 +218,15 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'minipreview-desc' => 'Affiche un mini-aperçu, à côté d’une image, d’autres médias appartenant aux mêmes catégories ou affichés dans les mêmes pages.',
 	'minipreview-files_in_category' => 'Il y au total {{PLURAL:$1|un fichier|$1 fichiers}} dans cette catégorie.',
-	'minipreview-files_in_gallery' => "Il y a au total {{PLURAL:$1|un fichier|$1 fichiers}} dans cette galerie d'images.",
+	'minipreview-files_in_gallery' => "Il y a au total '''$1''' fichier{{PLURAL:$1||s}} dans cette galerie d’images.",
 	'minipreview-no_more_files_here' => 'Plus aucun fichier dans cette direction.',
 	'minipreview-no_category_gallery' => 'Pas de catégorie ni de galerie !',
-	'minipreview-ignore_categories' => "Ceci est la liste des noms de catégorie ou de préfixes de nom. Ces catégories ne sont pas affichées par MiniPreview. Par exemple, « * PD- » n'affichera pas toutes les catégories dont le nom commence par « PD- », telle que « PD-old ».
+	'minipreview-ignore_categories' => 'Ceci est la liste des noms de catégorie ou de préfixes de nom. Ces catégories ne sont pas affichées par MiniPreview. Par exemple, « * PD- » n’affichera pas toutes les catégories dont le nom commence par « PD- », telle que « PD-old ».
 * GFDL-
 * GFDL
 * CC-
 * PD-
-* Self",
+* Self',
 );
 
 /** Galician (Galego)

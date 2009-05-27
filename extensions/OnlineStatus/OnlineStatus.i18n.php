@@ -326,7 +326,7 @@ $messages['fi'] = array(
  * @author Zetud
  */
 $messages['fr'] = array(
-	'onlinestatus-desc' => "Ajoute une préférence pour montrer si l'utilisateur est présent ou non",
+	'onlinestatus-desc' => 'Ajoute une préférence pour montrer si l’utilisateur est présent ou non',
 	'onlinestatus-js-anon' => 'Erreur : vous devez être connecté pour utiliser cette fonctionnalité',
 	'onlinestatus-js-changed' => 'Votre statut a été changé à « $1 »',
 	'onlinestatus-js-error' => 'Impossible de changer le statut, la valeur « $1 » est invalide',

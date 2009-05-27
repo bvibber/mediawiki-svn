@@ -486,6 +486,13 @@ Eğer bu sayfadan şimdi çıkarsanız sayfaya yaptığınız değişiklikleri k
 	'ajaxlogin-create' => 'Bir hesap oluşturun',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'ajaxlogin-create' => 'ھېساباتتىن بىرنى قۇر',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

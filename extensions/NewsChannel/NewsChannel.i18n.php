@@ -194,12 +194,13 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author Mauro Bornet
  * @author McDutchie
  */
 $messages['fr'] = array(
-	'newschannel' => "Chaîne d'information",
+	'newschannel' => 'Chaîne d’information',
 	'newschannel-desc' => 'Implémente une chaîne de nouvelles comme une [[Special:NewsChannel|page spéciale]] dynamique',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Limite:',

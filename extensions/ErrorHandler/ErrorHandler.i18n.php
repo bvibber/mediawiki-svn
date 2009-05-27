@@ -36,12 +36,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author IAlex
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'errorhandler-desc' => 'Extension description displayed on [[Special:Version]].',
+	'errorhandler-errors' => '{{Identical|Error}}',
 	'errorhandler-msg-text' => '*$1 - error name
 *$2 - error message
 *$3 - filename
@@ -110,6 +112,34 @@ $messages['arz'] = array(
 	'errorhandler-trace' => 'الأثر:',
 	'errorhandler-trace-line' => '$1 (سطر $2): $3',
 	'errorhandler-trace-line-internal' => '[وظيفة داخلية]: $1',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'errorhandler-desc' => 'Апрацоўшчык памылак для MediaWiki',
+	'errorhandler-errors' => 'Памылкі:',
+	'errorhandler-error-fatal' => 'Крытычная памылка',
+	'errorhandler-error-warning' => 'Папярэджаньне',
+	'errorhandler-error-parse' => 'Памылка парсэра',
+	'errorhandler-error-notice' => 'Заўвага',
+	'errorhandler-error-deprecated' => 'Паменшаная',
+	'errorhandler-error-core-error' => 'Памылка ядра',
+	'errorhandler-error-core-warning' => 'Папярэджаньне ядра',
+	'errorhandler-error-compile-error' => 'Памылка кампіляцыі',
+	'errorhandler-error-compile-warning' => 'Кампіляцыйнае папярэджаньне',
+	'errorhandler-error-user-error' => 'Памылка ўдзельніка',
+	'errorhandler-error-user-warning' => 'Папярэджаньне ўдзельніка',
+	'errorhandler-error-user-notice' => 'Паведамленьне ўдзельніка',
+	'errorhandler-error-user-deprecated' => 'Непрыняты ўдзельнік',
+	'errorhandler-error-strict' => 'Жорсткія стандарты',
+	'errorhandler-msg-text' => '$1 : $2 у $3 (радок $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> у <b>$3</b> (радок <b>$4</b>)',
+	'errorhandler-trace' => 'сачэньне:',
+	'errorhandler-trace-line' => '$1 (радок $2): $3',
+	'errorhandler-trace-line-internal' => '[зьнешняя функцыя]: $1',
 );
 
 /** Bulgarian (Български)

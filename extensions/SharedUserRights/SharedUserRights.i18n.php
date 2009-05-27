@@ -334,11 +334,12 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'shareduserrights' => 'Zarządzanie wspólnymi między projektami uprawnieniami użytkownika',
+	'shareduserrights' => 'Zarządzanie wspólnymi między projektami uprawnieniami użytkowników',
 	'gblrights-desc' => 'Łatwe zarządzanie [[Special:SharedUserRights|globalnymi uprawnieniami użytkowników]]',
 	'gblrights-logpage' => 'Rejestr globalnych uprawnień',
 	'gblrights-pagetext' => 'To jest rejestr wszystkich zmian w globalnych uprawnieniach wykonanych dla grupy projektów wiki',
 	'gblrights-rights-entry' => 'zmienił globalną przynależność $1 do grup ($2 → $3)',
+	'right-userrights-shared' => 'Zarządzanie wspólnymi między projektami uprawnieniami użytkowników',
 );
 
 /** Portuguese (Português)

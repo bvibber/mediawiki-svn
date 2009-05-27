@@ -678,6 +678,13 @@ $messages['tr'] = array(
 	'userimages-noimages' => '$1 resmi yüklenemedi.',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'userimages-caption' => 'سۈرەت يۈكلىگۈچى $1',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
