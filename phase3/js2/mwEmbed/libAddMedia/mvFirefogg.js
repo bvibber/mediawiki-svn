@@ -9,7 +9,7 @@ loadGM({
 	'fogg-check_for_fogg'		: 'Checking for Firefogg <blink>...</blink>',
 	'fogg-installed'			: 'Firefogg is Installed',
 	'fogg-please_install'		: 'You don\'t have firefogg installed, For improved uploads please <a href="$1">install firefogg</a> more <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">about firefogg</a>',
-	'fogg-use_latest_fox'		: 'You need a <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a> to use Firefogg',	
+	'fogg-use_latest_fox'		: 'For improved uploads please first install <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a>. <i>then revisit this page to install the <b>firefogg</b> extention</i>',	
 	'fogg-passthrough_mode'		: 'Your selected file is already ogg or not a video file',
 });
 
@@ -42,7 +42,7 @@ var default_firefogg_options = {
 	'target_btn_save_local_file': false,	
 	
 	
-	//target install descriptions (visability will be set based ) 
+	//target install descriptions 
 	'target_check_for_fogg'		: false,
 	'target_installed'	: false,
 	'target_please_install'	: false,
@@ -105,7 +105,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		if( this.form_rewrite ){
 			this.setupForm();
 		}else{
-			this.doControlHTML();	
+			this.doControlHTML(); 	
 			this.doControlBindings();	
 		}
 		
@@ -113,10 +113,10 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		if(callback)
 			callback();
 	},
-	doControlHTML: function(){		
+	doControlHTML: function( ){		
 		var _this = this;		
 		var out = '';		
-		$j.each(default_firefogg_options, function(target, na){
+		$j.each(default_firefogg_options, function(target, na){			
 			if(target.substring(0, 6)=='target'){
 				//check for the target if missing add to the output: 
 				if( _this[target] === false){					
@@ -126,17 +126,14 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				_this[target] = _this.selector + ' .' + target;
 			}
 		});
-		//output the html
-		$j( this.selector ).html( out ).show();				
+		$j( this.selector ).append( out ).show();	
 	},
-	getTargetHtml:function(target){
-		js_log('getTargetHtml:'+ target);
+	getTargetHtml:function(target){				
 		if( target.substr(7,3)=='btn'){
 			return '<input style="" class="' + target + '" type="button" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
 		}else if(target.substr(7,5)=='input'){
 			return '<input style="" class="' + target + '" type="text" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
-		}else{					
-			js_log(" get target: " + target.substring(7));
+		}else{								
 			return '<div style="" class="' + target + '" >'+ gM('fogg-'+ target.substring(7)) + '</div> ';
 		}
 	},
@@ -151,10 +148,11 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				hide_target_list+=coma + _this[target];
 				coma=',';
 			}			
-		});			
+		});		
+		
 		$j( hide_target_list ).hide();		
 		//if rewriting the form lets keep the text input around: 						
-		if(_this.form_rewrite)
+		if( _this.form_rewrite )
 			$j('#target_input_file_name').show();
 				
 		//hide all but check-for-fogg
@@ -171,8 +169,10 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		}else{
 			//first check firefox version: 		
 			if(!($j.browser.mozilla && $j.browser.version >= '1.9.1')) {
-	          $j(_this.target_use_latest_fox).show();
-	          return ;
+				js_log('show use latest::' + _this.target_use_latest_fox);
+				if(_this.target_use_latest_fox)			 
+					$j(_this.target_use_latest_fox).show();
+				return ;
 	        }
 			//if they have the right version of mozilla provide install link: 
 			var os_link = false;
@@ -217,10 +217,13 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		//check if we have firefogg (if not just add a link and stop proccessing) 
 		if( !this.firefoggCheck() ){
 			//add some status indicators if not provided: 
-			if(!this.target_please_install){
-				$j(this.selector).after ( this.getTargetHtml('target_please_install') );
-				//match the first sibling of our input type selector:
+			if(!this.target_please_install){				
+				$j(this.selector).after ( this.getTargetHtml('target_please_install') );								
 				this.target_please_install = this.selector + ' ~ .target_please_install';
+			}
+			if(!this.target_use_latest_fox){		
+				$j(this.selector).after ( this.getTargetHtml('target_use_latest_fox') );	
+				this.target_use_latest_fox = this.selector + ' ~ .target_use_latest_fox';			
 			}
 			//update download link:
 			this.doControlBindings();		
@@ -244,10 +247,9 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		
 		this.target_input_file_name = this.selector;
 		
-		$j(this.selector).after(
-			this.getTargetHtml('target_btn_select_file') + ' ' 
-		);
+		this.doControlHTML();
 		//check for the other inline status indicator targets: 		
+		
 		//update the bindings: 
 		this.doControlBindings();
 	},

@@ -9,16 +9,15 @@ mwAddOnloadHook( function(){
 var mwUploadHelper = {
 	init:function(){
 		if( wgEnableFirefogg ){
-			//setup the upload handler to firefogg  (supports our upload proccess) (will auto-magically work with the http uploads too) 
+			//setup the upload handler to firefogg  (supports our upload proccess) (should work with the http uploads too) 
 			$j('#wpUploadFile').firefogg({ 
 				//an api url (we won't submit directly to action of the form)
 				'api_url' : wgServer + wgScriptPath + '/api.php',
-				'form_rewrite': true,
-				
+				'form_rewrite': true,				
 				'new_source_cb' : function( filename ){
-							$j('#wpDestFile').val( filename );
-							mwUploadHelper.doDestCheck();
-					}
+						$j('#wpDestFile').val( filename );
+						mwUploadHelper.doDestCheck();
+				}
 			});		
 		}else{			
 			//Add basic upload profile support ( http status monitoring, progress box for browsers that support it etc.) 

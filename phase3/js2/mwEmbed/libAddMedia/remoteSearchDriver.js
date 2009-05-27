@@ -409,7 +409,7 @@ remoteSearchDriver.prototype = {
 			$j(window).bind('resize', function() {
 				var adjustModal = function(){
 					var layout = _this.getMaxModalLayout();
-					js_log("should adjust: h " + layout.h + ' width:' + layout.w);
+					//js_log("should adjust: h " + layout.h + ' width:' + layout.w);
 					$j(_this.target_container).dialog('option', 'width', layout.w);
 					$j(_this.target_container).dialog('option', 'height', layout.h);					
 				}
@@ -421,9 +421,9 @@ remoteSearchDriver.prototype = {
 	getMaxModalLayout:function(border){
 		if(!border)
 			border = 50;	
-		js_log('setting h:' + (parseInt( $j(document).height() ) - parseInt(border*2)) + ' from:' + $j(document).height() );
+		//js_log('setting h:' + (parseInt( $j(document).height() ) - parseInt(border*2)) + ' from:' + $j(document).height() );
 		return {  
-			'h': parseInt( $j(document).height() ) - parseInt(border*2),
+			'h': parseInt( $j(document).height() ) - parseInt(border*4),
 			'w': parseInt( $j(document).width() ) - parseInt(border*2),
 			'r': border,
 			't': border

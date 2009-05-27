@@ -66,7 +66,7 @@ mvBaseUploadInterface.prototype = {
 			//set up the org_onsubmit if not set: 
 			if( typeof( _this.org_onsubmit ) == 'undefined' )
 				_this.org_onsubmit = _this.editForm.onsubmit;
-			js_log('should overwite onsubmit here::');
+			
 			//have to define the onsubmit function inline or its hard to pass the "_this" instance
 			_this.editForm.onsubmit = function(){								
 				//run the original onsubmit (if not run yet set flag to avoid excessive chaining ) 

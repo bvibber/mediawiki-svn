@@ -266,7 +266,7 @@ mvAdvFirefogg.prototype = {
 		this.loadEncSettings();
 		
 		//add base control buttons: 		
-		_this.basefogg_doControlHTML();
+		this.basefogg_doControlHTML();
 		
 		//build the config group outpouts 
 		var gdout ='';
@@ -295,7 +295,7 @@ mvAdvFirefogg.prototype = {
 		//add the control container:  
 		if(!this.target_control_container){			
 			this.target_control_container = this.selector + ' .control_container';
-			//set the target contorl container to height -50
+			//set the target contorl container to height
 			$j(this.selector).append( '<p><div class="control_container">' + gdout + '</div>' ); 
 		}else{
 			$j(this.target_control_container).html( gdout );
