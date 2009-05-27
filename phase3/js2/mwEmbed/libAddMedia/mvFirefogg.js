@@ -9,8 +9,8 @@ loadGM({
 	'fogg-check_for_fogg'		: 'Checking for Firefogg <blink>...</blink>',
 	'fogg-installed'			: 'Firefogg is Installed',
 	'fogg-please_install'		: 'You don\'t have firefogg installed, For improved uploads please <a href="$1">install firefogg</a> more <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">about firefogg</a>',
-	'fogg-use_latest_fox'		: 'You need a <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a> to use Firefogg',
-	'passthrough_mode'			: 'Your selected file is already ogg or not a video file',	 
+	'fogg-use_latest_fox'		: 'You need a <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a> to use Firefogg',	
+	'fogg-passthrough_mode'		: 'Your selected file is already ogg or not a video file',
 });
 
 var firefogg_install_links =  {
@@ -57,13 +57,13 @@ var mvFirefogg = function(initObj){
 }
 mvFirefogg.prototype = { //extends mvBaseUploadInterface
 
-	min_firefogg_version : '0.9.6',
+	min_firefogg_version : '0.9.6',	
 	fogg_enabled : false, 		//if firefogg is enabled or not. 	
 	encoder_settings:{			//@@todo allow server to set this 
 		'maxSize': 400, 
 		'videoBitrate': 400,
 		'noUpscaling':true
-	},
+	},	
 	sourceFileInfo:{},
 	ogg_extensions: ['ogg', 'ogv', 'oga'],
 	video_extensions: ['avi', 'mov', 'mp4', 'mp2', 'mpeg', 'mpeg2', 'mpeg4', 'dv', 'wmv'],
@@ -92,7 +92,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		}
 		if(!this.selector){
 			js_log('Error: firefogg: missing selector ');
-		}	
+		}
 	},
 	doRewrite:function( callback ){
 		var _this = this;
@@ -113,7 +113,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		if(callback)
 			callback();
 	},
-	doControlHTML: function(){
+	doControlHTML: function(){		
 		var _this = this;		
 		var out = '';		
 		$j.each(default_firefogg_options, function(target, na){
@@ -130,11 +130,13 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		$j( this.selector ).html( out ).show();				
 	},
 	getTargetHtml:function(target){
+		js_log('getTargetHtml:'+ target);
 		if( target.substr(7,3)=='btn'){
 			return '<input style="" class="' + target + '" type="button" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
 		}else if(target.substr(7,5)=='input'){
 			return '<input style="" class="' + target + '" type="text" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
 		}else{					
+			js_log(" get target: " + target.substring(7));
 			return '<div style="" class="' + target + '" >'+ gM('fogg-'+ target.substring(7)) + '</div> ';
 		}
 	},
@@ -150,7 +152,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				coma=',';
 			}			
 		});			
-		$j( hide_target_list ).hide();
+		$j( hide_target_list ).hide();		
 		//if rewriting the form lets keep the text input around: 						
 		if(_this.form_rewrite)
 			$j('#target_input_file_name').show();
@@ -167,6 +169,12 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				});						
 			
 		}else{
+			//first check firefox version: 		
+			if(!($j.browser.mozilla && $j.browser.version >= '1.9.1')) {
+	          $j(_this.target_use_latest_fox).show();
+	          return ;
+	        }
+			//if they have the right version of mozilla provide install link: 
 			var os_link = false;
 			if(navigator.oscpu){
 				if(navigator.oscpu.search('Linux') >= 0)
@@ -175,7 +183,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	              	os_link = firefogg_install_links['macosx'];
 	            else if(navigator.oscpu.search('Win') >= 0)
 	              	os_link = firefogg_install_links['win32'];
-			}												
+			}														
 			$j(_this.target_please_install).html( gM('fogg-please_install',os_link )).css('padding', '10px').show();			
 		}
 		//setup the target save local file bindins: 
@@ -256,14 +264,18 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				//if not already hidden hide select file and show "select new": 
 				$j(_this.target_btn_select_file).hide();
 				//show and setup binding for select new file: 
-				$j(_this.target_btn_select_new_file).show().click(function(){
+				$j(_this.target_btn_select_new_file).show().unbind().click(function(){
 					_this.select_fogg();
 				});
 				//update if we are in passthrough mode or going to encode					
 				if( _this.fogg.sourceInfo && _this.fogg.sourceFilename ){									
 					//update the source status
-					_this.sourceFileInfo = JSON.parse( _this.fogg.sourceInfo) ;
-											
+					try{
+						_this.sourceFileInfo = JSON.parse( _this.fogg.sourceInfo ) ;
+					}catch (e){
+						js_error('error could not parse fogg sourceInfo');
+					}					
+							
 					//now setup encoder settings based source type:
 					_this.autoEncoderSettings();					
 					
@@ -304,7 +316,8 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			//in the default case passthrough	
 			_this.encoder_settings['passthrough'] = true;
 		}else if( $j.inArray(ext, _this.video_extensions) > -1 ){
-			//we are going to run the encoder			
+			//we are going to run the encoder with default settings. 		
+			_this.encoder_settings['passthrough'] = false;	
 		}else{		
 			_this.encoder_settings['passthrough']  = true;
 		}	
