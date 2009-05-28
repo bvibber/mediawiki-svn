@@ -618,7 +618,7 @@ mvPlayList.prototype = {
 		if(this.cur_clip.embed.supports['playlist_swap_loader']){
 			//where the plugin supports pre_loading future clips and manage that in javascript
 			//pause current clip
-			this.cur_clip.embed.pause;
+			this.cur_clip.embed.pause();
 			//do swap:
 			this.updateCurrentClip(prev_clip);			
 			this.cur_clip.embed.play();			
