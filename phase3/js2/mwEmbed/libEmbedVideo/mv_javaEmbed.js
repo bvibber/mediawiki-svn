@@ -22,66 +22,19 @@ var javaEmbed = {
         this.getDuration();
         //if still unset set to an arbitrary time 60 seconds: 
         if(!this.duration)this.duration=60;
-
-        /*if( mv_java_iframe &&  parseUri(document.URL).host !=  parseUri(document.URL).host){
-            //make sure iframe and embed path match (java security model)
-            var iframe_src='';
-            var src = this.getURI( this.seek_time_sec );
-            //make url absolute: 
-            if(src[0]=='/'){
-                //js_log('java: media relative path from:'+ document.URL);
-                var pURL=parseUri(document.URL);
-                src=  pURL.protocol + '://' + pURL.authority + src;
-            }else if(src.indexOf('://')===-1){
-                //js_log('java: media relative file');
-                var pURL=parseUri(document.URL);
-                src=  pURL.protocol + '://' + pURL.authority + pURL.directory + src;
-            }
-            js_log('java media url: '+ src);
-            var parent_domain='';
-            //set the domain locally and for the script: 
-            var doc_host = parseUri(document.location).host;
-            if( doc_host ){
-                js_log('set parent domain:' + doc_host);
-                //set the parent domain: 
-                document.domain =  doc_host;
-                
-                iframe_src = parseUri(src).protocol + '://'+
-                            parseUri(src).authority +
-                            mv_media_iframe_path +  'cortado_iframe.php';
-                js_log('iframe source: ' + iframe_src);
-                //set the domain of the script: 
-                parent_domain = '&parent_domain=' + doc_host;
-                
-                js_log('parent_domain: ' + parent_domain);
-            }else{
-                iframe_src = mv_embed_path + 'cortado_iframe.php';
-            }
-            //js_log('base iframe src:'+ iframe_src);
-               iframe_src+= "?media_url=" + src.replace('?','%3F').replace('&','%26') + '&id=' + this.pid;
-            iframe_src+= "&width=" + this.width + "&height=" + this.height;
-            iframe_src+= "&duration=" + this.duration;
-            iframe_src+=parent_domain;
-            
-            //check for the mvMsgFrame
-            //if($j('#mvMsgFrame').length == 0){
-            //    js_log('appened mvMsgFrame');
-            //    //add it to the dom: (sh
-            //    $j('body').prepend( '<iframe id="mvMsgFrame" width="0" height="0" scrolling=no marginwidth=0 marginheight=0 src="#none"></iframe>' );
-            //}
-            js_log("about to set iframe source and embed code");
-            this.iframe_src = iframe_src;
-            var embed_code = '<iframe id="iframe_' + this.pid + '" width="'+this.width+'" height="'+this.height+'" '+
-                       'frameborder="0" scrolling="no" marginwidth="0" marginheight="0" ' +
-                       'src = "'+ this.iframe_src + '"></iframe>';
-            js_log('going to embed: ' + embed_code);
-            return embed_code;
-        }else{*/
+        //@@todo we should have src property in our base embed object
+        var mediaSrc = this.media_element.selected_source.getURI( this.seek_time_sec );
+        
+        if(mediaSrc.indexOf('://')!=-1 & parseUri(document.URL).host !=  parseUri(mediaSrc).host){
+            applet_loc  = 'http://xiph.org/cortado.jar';
+        }else{
+            applet_loc = mv_embed_path+'binPlayers/cortado/cortado-wmf-r46643.jar';
+        }
             //load directly in the page..
             // (media must be on the same server or applet must be signed)
             var appplet_code = ''+
-            '<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="'+mv_embed_path+'binPlayers/cortado/cortado-wmf-r46643.jar" width="'+this.width+'" height="'+this.height+'">    '+ "\n"+
-                '<param name="url" value="'+this.media_element.selected_source.src+'" /> ' + "\n"+
+            '<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="'+applet_loc+'" width="'+this.width+'" height="'+this.height+'">    '+ "\n"+
+                '<param name="url" value="' + mediaSrc + '" /> ' + "\n"+
                 '<param name="local" value="false"/>'+ "\n"+
                 '<param name="keepaspect" value="true" />'+ "\n"+
                 '<param name="video" value="true" />'+"\n"+
@@ -90,8 +43,7 @@ var javaEmbed = {
                 '<param name="seekable" value="true" />'+"\n"+
                 '<param name="duration" value="'+this.duration+'" />'+"\n"+
                 '<param name="bufferSize" value="200" />'+"\n"+
-            '</applet>';
-                                    
+            '</applet>';                                    
             // Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
             // Doesn't work in MSIE or Safari/Mac or Opera 9.5
             if ( embedTypes.mozilla ) {
