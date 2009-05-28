@@ -26,7 +26,7 @@ var javaEmbed = {
         var mediaSrc = this.media_element.selected_source.getURI( this.seek_time_sec );
         
         if(mediaSrc.indexOf('://')!=-1 & parseUri(document.URL).host !=  parseUri(mediaSrc).host){
-            applet_loc  = 'http://xiph.org/cortado.jar';
+            applet_loc  = 'http://theora.org/cortado.jar';
         }else{
             applet_loc = mv_embed_path+'binPlayers/cortado/cortado-wmf-r46643.jar';
         }
@@ -73,22 +73,19 @@ var javaEmbed = {
     monitor:function(){
         this.getJCE()   
         if(this.jce){          
-               try{                     
-                   //java reads "playtime" not ogg media time.. so add the start_offset or seek_offset 
-                   //js_log(' ct: ' + this.jce.getPlayPosition() + ' so:' + this.start_offset + ' st:' + this.seek_time_sec);                   
-                   if(!this.start_offset)
-                       this.start_offset = 0;
-                       
-                this.currentTime = (this.seek_time_sec==0)? 
-                    this.jce.getPlayPosition() + this.start_offset :
-                    this.jce.getPlayPosition() + this.seek_time_sec ;                     
+            try{                     
+               //java reads ogg media time.. so no need to add the start or seek offset:
+               //js_log(' ct: ' + this.jce.getPlayPosition() + ' so:' + this.start_offset + ' st:' + this.seek_time_sec);                   
+               if(!this.start_offset)
+                   this.start_offset = 0;                       
+               this.currentTime = this.jce.getPlayPosition();                     
             }catch (e){
                 ///js_log('could not get time from jPlayer: ' + e);
             }                
             if( this.currentTime < 0){
                 //probably reached clip end
                 this.onClipDone();
-            }             
+            }
         }  
         //once currentTime is updated call parent_monitor 
         this.parent_monitor();
