@@ -133,6 +133,13 @@ $messages['avk'] = array(
 	'edituser-exempt' => 'Bazena favesikpata me zo robetar',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'edituser-desc' => 'Дазваляе прывілеяваным удзельнікам рэдагаваць устаноўкі іншых удзельнікаў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

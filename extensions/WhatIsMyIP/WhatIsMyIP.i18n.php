@@ -513,6 +513,16 @@ $messages['ru'] = array(
 	'whatismyip-out' => 'Ваш IP:',
 );
 
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'whatismyip' => 'මාගේ අන්තර්ජාල ලිපිනය කුමක්ද',
+	'whatismyip-desc' => 'වත්මන් පරිශීලකගේ [[Special:WhatIsMyIP|අන්තර්ජාල ලිපිනය]] පෙන්වන්න',
+	'whatismyip-out' => 'ඔබගේ අන්තර්ජාල ලිපිනය:',
+	'right-whatismyip' => '[[Special:WhatIsMyIP|තමාගේ අන්තර්ජාල ලිපිනය]] නරඹන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -1860,6 +1860,20 @@ $2',
 	'whitelistnummatches' => ' - $1 जुळण्या',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'mywhitelistpages' => 'Il-paġni tiegħi',
+	'whitelisttablemodifyall' => 'Kollha',
+	'whitelisttablepage' => 'Paġna wiki',
+	'whitelisttablenewdate' => 'Data ġdida:',
+	'whitelistnewtableprocess' => 'Proċess',
+	'whitelistnever' => 'qatt',
+	'group-restricted' => 'Utenti ristretti',
+	'group-restricted-member' => 'Utent ristrett',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

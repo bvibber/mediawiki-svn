@@ -4469,8 +4469,8 @@ Per favor vide [[{{MediaWiki:Ow editing policy url}}|nostre politica de modifica
 	'ow_transaction_first_dm' => 'Prime significato definite',
 	'ow_transaction_second_dm' => 'Secunde significato definite',
 	'ow_transaction_summary' => 'Summario',
-	'conceptmapping' => 'Wikidatos: Mappamento de conceptos',
-	'ow_conceptmapping_title' => 'Schema conceptual',
+	'conceptmapping' => 'Wikidatos: Correspondentia de conceptos',
+	'ow_conceptmapping_title' => 'Correspondentia de conceptos',
 	'ow_conceptmapping_help' => '<p>actiones possibile: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  inserer un correspondentia</li>
 <li>&action=get&concept=<concept_id>  revider un correspondentia</li>
@@ -4478,15 +4478,15 @@ Per favor vide [[{{MediaWiki:Ow editing policy url}}|nostre politica de modifica
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pro un significato definite in un concepto, retornar tote le alteres</li>
 <li>&action=help  Monstrar adjuta utile.</li>
 </ul></p>',
-	'ow_conceptmapping_uitext' => '<p>Le carta de conceptos te permitte identificar qual significato definite in un collection de datos es identic a significatos definite in altere collectiones de datos.</p>',
+	'ow_conceptmapping_uitext' => '<p>Le correspondentia de conceptos te permitte identificar qual significato definite in un collection de datos es identic a significatos definite in altere collectiones de datos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Le action "$1" non es supportate.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'non entrate',
 	'ow_dm_not_found' => 'non trovate in le base de datos o mal formate',
-	'ow_mapping_successful' => 'Insereva tote le campos marcate con [OK]<br />',
+	'ow_mapping_successful' => 'Ligava tote le campos marcate con [OK]<br />',
 	'ow_mapping_unsuccessful' => 'Debe haber al minus duo significatos definite ante que io pote ligar los.',
 	'ow_will_insert' => 'Inserera lo sequente:',
-	'ow_contents_of_mapping' => 'Correspondentias',
+	'ow_contents_of_mapping' => 'Contento de correspondentia',
 	'ow_available_contexts' => 'Contextos disponibile',
 	'ow_add_concept_link' => 'Adder un ligamine a altere conceptos',
 	'ow_concept_panel' => 'Pannello de conceptos',

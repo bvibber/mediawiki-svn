@@ -129,17 +129,17 @@ $messages['be-tarask'] = array(
 	'errorhandler-error-core-error' => 'Памылка ядра',
 	'errorhandler-error-core-warning' => 'Папярэджаньне ядра',
 	'errorhandler-error-compile-error' => 'Памылка кампіляцыі',
-	'errorhandler-error-compile-warning' => 'Кампіляцыйнае папярэджаньне',
+	'errorhandler-error-compile-warning' => 'Папярэджаньне кампілятара',
 	'errorhandler-error-user-error' => 'Памылка ўдзельніка',
 	'errorhandler-error-user-warning' => 'Папярэджаньне ўдзельніка',
-	'errorhandler-error-user-notice' => 'Паведамленьне ўдзельніка',
+	'errorhandler-error-user-notice' => 'Заўвага ўдзельніка',
 	'errorhandler-error-user-deprecated' => 'Непрыняты ўдзельнік',
 	'errorhandler-error-strict' => 'Жорсткія стандарты',
 	'errorhandler-msg-text' => '$1 : $2 у $3 (радок $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> у <b>$3</b> (радок <b>$4</b>)',
 	'errorhandler-trace' => 'сачэньне:',
 	'errorhandler-trace-line' => '$1 (радок $2): $3',
-	'errorhandler-trace-line-internal' => '[зьнешняя функцыя]: $1',
+	'errorhandler-trace-line-internal' => '[вонкавая функцыя]: $1',
 );
 
 /** Bulgarian (Български)

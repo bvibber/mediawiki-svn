@@ -35,6 +35,13 @@ $messages['arz'] = array(
 	'emailaddressimage-desc' => 'يضيف <tt>&lt;email&gt;</tt> لعرض عنوان بريد إلكترونى كصورة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'emailaddressimage-desc' => 'Дадае <tt>&lt;email&gt;</tt> для паказу адрасу электроннай пошты ў выглядзе выявы',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

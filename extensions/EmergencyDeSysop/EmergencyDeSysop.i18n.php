@@ -86,13 +86,24 @@ $messages['arz'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'emergencydesysop' => 'Тэрміновае пазбаўленьне правоў адміністратара',
 	'emergencydesysop-desc' => 'Дазваляе адміністратару ахвяраваць сваімі правамі для тэрміновага пазбаўленьне правоў іншага адміністратара',
-	'emergencydesysop-title' => 'Пазбаўленьне правоў адміністратара абодвух удзельнікаў і іншага адміністратара',
-	'emergencydesysop-otheradmin' => 'Інша адміністратар які будзе пазбаўлены правоў',
+	'emergencydesysop-title' => 'Пазбаўленьне правоў адміністратара цяперашняга удзельніка і іншага адміністратара',
+	'emergencydesysop-otheradmin' => 'Іншы адміністратар, які будзе пазбаўлены правоў',
+	'emergencydesysop-reason' => 'Прычына пазбаўленьня правоў адміністратара',
+	'emergencydesysop-submit' => 'Пазбавіць правоў адміністратара',
+	'emergencydesysop-incomplete' => 'Усе палі формы павінны быць запоўнены. Калі ласка, паспрабуйце зноў.',
+	'emergencydesysop-notasysop' => 'Пазначаны ўдзельнік не зьяўляецца адміністратарам.',
+	'emergencydesysop-nogroups' => 'Няма',
+	'emergencydesysop-done' => 'Апэрацыя скончаная, Вы і [[$1]] былі пазбаўлены правоў адміністратара.',
+	'emergencydesysop-invalidtarget' => 'Мэтавы ўдзельнік не існуе.',
+	'emergencydesysop-blocked' => 'Вы ня маеце доступу да гэтай старонкі, пакуль Вы заблякаваны',
+	'emergencydesysop-noright' => 'Вы ня маеце адпаведных правоў для доступу да гэтай старонкі',
+	'right-emergencydesysop' => 'магчымасьць пазбаўленьня правоў адміністратара іншых удзельнікаў, коштам уласных правоў',
 );
 
 /** Bosnian (Bosanski)

@@ -1832,6 +1832,13 @@ $messages['lb'] = array(
 	'tasks_logentry' => 'Fir "[[$1]]"',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'tasks_noone' => 'ħadd',
+);
+
 /** Mirandese (Mirandés)
  * @author Malafaya
  */

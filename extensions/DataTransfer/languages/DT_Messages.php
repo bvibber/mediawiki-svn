@@ -220,6 +220,7 @@ $messages['bs'] = array(
 	'dt_import_success' => '$1 {{PLURAL:$1|stranica|stranice|stranica}} će biti napravljeno iz $2 datoteke.',
 	'importcsv' => 'Uvoz CSV',
 	'dt_importcsv_badheader' => "Greška: zaglavlje $1 kolone, '$2', mora biti ili '$3', '$4' ili od obrasca 'template_name[field_name]'",
+	'right-datatransferimport' => 'Uvoz podataka',
 );
 
 /** Catalan (Català)
@@ -298,6 +299,9 @@ $messages['de'] = array(
 	'dt_import_editsummary' => '$1-Import',
 	'dt_import_importing' => 'Importiere …',
 	'dt_import_success' => '$1 {{PLURAL:$1|Seite|Seiten}} werden aus der $2-Datei importiert.',
+	'importcsv' => 'CSV importieren',
+	'dt_importcsv_badheader' => 'Fehler: Der Kopf der Spalte $1, „$2“, muss entweder „$3“, „$4“ oder im Format „Vorlagenname[Feldname]“ sein',
+	'right-datatransferimport' => 'Daten importieren',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -988,7 +992,7 @@ $messages['nl'] = array(
 	'dt_import_importing' => 'Bezig met importeren…',
 	'dt_import_success' => "Uit het $2-bestand {{PLURAL:$1|wordt één pagina|worden $1 pagina's}} geïmporteerd.",
 	'importcsv' => 'CSV importeren',
-	'dt_importcsv_badheader' => 'Fout: De kop van colom $1, "$2", moet ofwel "$3" of "$4" zijn, of in de vorm "sjabloonnaam[veldnaam]" genoteerd worden.',
+	'dt_importcsv_badheader' => 'Fout: De kop van kolom $1, "$2", moet "$3" of "$4" zijn, of in de vorm "sjabloonnaam[veldnaam]" genoteerd worden.',
 	'right-datatransferimport' => 'Gegevens importeren',
 );
 
@@ -1070,6 +1074,9 @@ $messages['oc'] = array(
 	'dt_import_editsummary' => 'Importacion $1',
 	'dt_import_importing' => 'Impòrt en cors...',
 	'dt_import_success' => '$1 {{PLURAL:$1|pagina serà creada|paginas seràn creadas}} dempuèi lo fichièr $2.',
+	'importcsv' => 'Impòrt CSV',
+	'dt_importcsv_badheader' => 'Error : lo títol de colomna $1, « $2 », deu èsser siá « $3 », « $4 » o de la forma « nom_del_modèl[nom_del_camp] »',
+	'right-datatransferimport' => 'Importar de donadas',
 );
 
 /** Ossetic (Иронау)
