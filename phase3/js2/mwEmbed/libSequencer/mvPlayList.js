@@ -803,22 +803,26 @@ mvPlayList.prototype = {
 	},	
 	//ads colors/dividers between tracks
 	colorPlayHead: function(){
-		if( !this.mv_seeker_width)
-			this.mv_seeker_width = $j('#mv_play_head_'+this.id).width();					
+		var _this = this;
+		
+		if( !_this.mv_seeker_width)
+			_this.mv_seeker_width = $j('#mv_play_head_'+_this.id).width();					
 	
-		if( !this.track_len ) 
-			this.track_len = $j('#mv_play_head_'+this.id).css('width').replace(/px/, '');
+		if( !_this.track_len ) 
+			_this.track_len = $j('#mv_play_head_'+_this.id).width();
 			
 		//total duration:		
-		var pl_duration = this.getDuration();
+		var pl_duration = _this.getDuration();
 		
 		var cur_pixle=0;		
 		//set up plObj
-		var _this = this;
+		
 		//js_log("do play head total dur: "+pl_duration );
-		$j.each(this.default_track.clips, function(i, clip){			
-			var perc = ( clip.getDuration() / pl_duration );
+		$j.each(this.default_track.clips, function(i, clip){		
+			//(use getSoloDuration to not include transitions and such) 	
+			var perc = ( clip.getSoloDuration() / pl_duration );
 			var pwidth = Math.round( perc * _this.track_len);
+			js_log('pstatus:c:'+ clip.getDuration() + ' of '+ pl_duration+' %:' + perc + ' width: '+ pwidth + ' of total: ' + _this.track_len);
 			//var pwidth = Math.round( perc  * _this.track_len - (_this.mv_seeker_width*perc) );
 			
 			//add the buffer child indicator: 						

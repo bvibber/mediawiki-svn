@@ -439,7 +439,7 @@ var ctrlBuilder = {
 		'time_display':{
 			'w':80,
 			'o':function(){
-				return '<div id="mv_time_'+ctrlBuilder.id+'" class="time">'+ctrlBuilder.embedObj.getTimeReq()+'</div>'
+				return '<div id="mv_time_'+ctrlBuilder.id+'" class="ui-widget-content time">' + ctrlBuilder.embedObj.getTimeReq() + '</div>';
 			}
 		},
 		'play_head':{

@@ -197,11 +197,11 @@ div.floatleft, table.floatleft {
 	line-height: 32px;
 	height: 29px;
 	overflow: visible;
-	font-size: 11px;
-	width: 80px;
+	font-size: 10.4px;
+	width: 88px;
 	float: right;
 	display: inline;
-	font-family:arial;
+	border:none;
 }
 
 .videoPlayer .play_head{
