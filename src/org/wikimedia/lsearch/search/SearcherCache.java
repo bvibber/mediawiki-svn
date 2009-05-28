@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Set;
 import java.util.Map.Entry;
 
@@ -220,6 +221,10 @@ public class SearcherCache {
 	protected static Set<String> initialWarmup = Collections.synchronizedSet(new HashSet<String>());
 	
 	protected boolean initialDeploymentRunning = false;
+	
+	/** Number of threads to use for initial deployment */
+	protected int initialDeploymentThreads = 1;
+	
 	/**
 	 * If there is a cached local searcher of iid
 	 * 
@@ -452,19 +457,18 @@ public class SearcherCache {
 	 * Initialize all local searcher pools 
 	 */
 	protected class InitialDeploymentThread extends Thread {
-		public void run(){
-			try{
-				initialDeploymentRunning = true;
-				IndexRegistry registry = IndexRegistry.getInstance();
-				// get local search indexes, deploy sorted by name
-				ArrayList<IndexId> mys = new ArrayList<IndexId>();
-				mys.addAll(GlobalConfiguration.getInstance().getMySearch());
-				Collections.sort(mys,new Comparator<IndexId>(){
-					public int compare(IndexId o1, IndexId o2) {
-						return o1.toString().compareTo(o2.toString());
-					}
-				});
-				for(IndexId iid : mys){
+		IndexRegistry registry = null;
+		
+		protected class InitialDeployer extends Thread {
+			ArrayList<IndexId> iids = new ArrayList<IndexId>();
+			
+			protected InitialDeployer(List<IndexId> iids){
+				this.iids.addAll(iids);
+			}
+			
+			public void run(){
+				log.info("Starting initial deployer for "+iids);
+				for(IndexId iid : iids){
 					try {
 						// when searcher is linked into "search" path it's good, initialize it
 						if(!iid.isLogical() && registry.getCurrentSearch(iid) != null){
@@ -480,6 +484,45 @@ public class SearcherCache {
 						log.warn("I/O error warming index for "+iid+" : "+e.getMessage(),e);				
 					}
 				}
+			}
+		}
+		public void run(){
+			try{
+				initialDeploymentRunning = true;
+				registry = IndexRegistry.getInstance();
+				// get local search indexes, deploy sorted by name
+				ArrayList<IndexId> mys = new ArrayList<IndexId>();
+				mys.addAll(GlobalConfiguration.getInstance().getMySearch());
+				Collections.sort(mys,new Comparator<IndexId>(){
+					public int compare(IndexId o1, IndexId o2) {
+						return o1.toString().compareTo(o2.toString());
+					}
+				});
+				int threadNum = initialDeploymentThreads;
+				ArrayList<InitialDeployer> threads = new ArrayList<InitialDeployer>();
+				
+				// divide mys list into chunks and assign them to different worker threads
+				int inc = mys.size() / threadNum + 1;
+				int start = 0;
+				for(int i=0;i<threadNum;i++){
+					threads.add(new InitialDeployer(
+							mys.subList(start, Math.min(start+inc, mys.size()))));
+					start += inc;
+				}
+				
+				// start all threads
+				for(InitialDeployer t : threads)
+					t.start();
+				
+				// wait for all of the threads to finish
+				for(InitialDeployer t : threads)
+					try {
+						t.join();
+					} catch (InterruptedException e) {
+						log.error("Thread "+t+" didn't finish properly", e);
+					}
+				
+				
 			} finally {
 				initialDeploymentRunning = false;
 			}
@@ -560,7 +603,9 @@ public class SearcherCache {
 	}
 	
 	protected SearcherCache(boolean initialize){
-		searchPoolSize = Configuration.open().getInt("SearcherPool","size",1);
+		Configuration config = Configuration.open();
+		searchPoolSize = config.getInt("SearcherPool","size",1);
+		initialDeploymentThreads = config.getInt("SearcherPool", "initThreads",1);
 		if(initialize){
 			initialDeploymentRunning = true;
 			new InitialDeploymentThread().start();
