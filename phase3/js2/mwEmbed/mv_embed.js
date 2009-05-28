@@ -617,6 +617,7 @@ function mv_jqueryBindings(){
         
         $.fn.firefogg = function( iObj, callback ) {        
             //add base theme css:
+            loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
             loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );
             
             // @@todo should refactor  mvAdvFirefogg as jQuery plugin
@@ -627,17 +628,14 @@ function mv_jqueryBindings(){
                 'mvFirefogg'            : 'libAddMedia/mvFirefogg.js'
             };            
             //see if we need to load the advanced firefog controls and associated ui components:            
-            if( iObj.encoder_interface ){
-                
-                //grab ui css:
-                loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
-                 
+            if( iObj.encoder_interface ){                               
+                                 
                 //@@todo would be nice to have a "dependency" map we could use/
                 loadSet['mvAdvFirefogg']    = 'libAddMedia/mvAdvFirefogg.js';
                 loadSet['$j.cookie']        = 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js';
                 loadSet['$j.ui']            = 'jquery/' + jQueryUiVN + '/ui/ui.core.js';
-                loadSet['$j.ui.accordion']    = 'jquery/' + jQueryUiVN + '/ui/ui.accordion.js';
-                loadSet['$j.ui.slider']        = 'jquery/' + jQueryUiVN + '/ui/ui.slider.js';
+                loadSet['$j.ui.accordion']  = 'jquery/' + jQueryUiVN + '/ui/ui.accordion.js';
+                loadSet['$j.ui.slider']     = 'jquery/' + jQueryUiVN + '/ui/ui.slider.js';
                 
                 //load jquery ui css:
             }

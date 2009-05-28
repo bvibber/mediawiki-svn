@@ -167,7 +167,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
                 ).attr('disabled', false
                 ).css({'display':'inline'}
                 ).click(function(){                                    
-                    _this.select_fogg();
+                    _this.selectFogg();
                 });                        
             
         }else{
@@ -191,7 +191,9 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
             $j(_this.target_please_install).html( gM('fogg-please_install',os_link )).css('padding', '10px').show();            
         }
         //setup the target save local file bindins: 
-        $j( _this.target_btn_save_local_file ).unbind().click();
+        $j( _this.target_btn_save_local_file ).unbind().click(function(){
+            _this.saveLocalFogg();
+        });
     },
     firefoggCheck:function(){
         var _this = this;            
@@ -253,8 +255,8 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
     getEditForm:function(){
         js_log('get form: action=' + $j(this.selector).parents().find("form").attr('action'));
         return $j(this.selector).parents().find("form").get(0);
-    },
-    select_fogg:function(){            
+    },   
+    selectFogg:function(){            
         var _this = this;
         if( _this.fogg.selectVideo() ) {                    
             js_log('videoSelectReady');
@@ -262,7 +264,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
             $j(_this.target_btn_select_file).hide();
             //show and setup binding for select new file: 
             $j(_this.target_btn_select_new_file).show().unbind().click(function(){
-                _this.select_fogg();
+                _this.selectFogg();
             });
             //update if we are in passthrough mode or going to encode                    
             if( _this.fogg.sourceInfo && _this.fogg.sourceFilename ){                                    
@@ -297,6 +299,16 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
         }else{
             js_error("Firefogg error selecting file");
         }
+    },
+    saveLocalFogg:function(){
+       //request target location:
+       if(this.fogg){
+           if(!this.fogg.saveVideoAs() )
+               return false;
+           
+           //we have set a target now call the encode: 
+          this.doEncode();           
+       }  
     },
     //simple auto encoder settings just enable passthough if file is not video or > 480 pixles tall 
     autoEncoderSettings:function(){        

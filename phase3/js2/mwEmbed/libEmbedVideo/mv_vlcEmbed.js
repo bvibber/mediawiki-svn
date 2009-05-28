@@ -17,10 +17,7 @@ var vlcEmbed = {
     },
     //init vars: 
     monitorTimerId : 0,
-    prevState : 0,
-    currentTime:0,
-    duration:0,    
-    userSlide:false,    
+    prevState : 0,              
     pejs_count:0, //post embed js count
      
     getEmbedHTML: function(){        
@@ -196,8 +193,8 @@ var vlcEmbed = {
             this.media_element.selected_source.setDuration( this.vlc.input.length /1000);
             this.duration = this.vlc.input.length /1000;
         }
-           //update the currentTime attribute 
-            if( this.media_element.selected_source.timeFormat =='anx' ){
+        //update the currentTime attribute 
+        if( this.media_element.selected_source.timeFormat =='anx' ){
             this.currentTime = this.vlc.input.time/1000;
             //js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration());
             
@@ -217,22 +214,8 @@ var vlcEmbed = {
            this.parent_pause(); //update the inteface if paused via native control
    },
    onStop: function(){    
-           //
-        // disable logging
-        this.vlc.log.verbosity = -1;
-        //document.getElementById("Stop").disabled = true;
-        if(this.controls){
-            this.setSliderValue(0);
-            this.setStatus("-:--:--/-:--:--");
-        }
-        //stop updates: 
-        if( this.monitorTimerId != 0 )
-        {
-            clearInterval(this.monitorTimerId);
-            this.monitorTimerId = 0;
-        }
-        //document.getElementById("PlayOrPause").value = " Play ";
-        //document.getElementById("PlayOrPause").disabled = false;
+       js_log('vlc:onStop:');
+       this.onClipDone();
     },
    /* js hooks/controls */
     play : function(){
@@ -244,7 +227,6 @@ var vlcEmbed = {
             //plugin is already being present send play call: 
             // clear the message log and enable error logging
             if( this.vlc.log ){
-                this.vlc.log.verbosity = 1;
                 this.vlc.log.messages.clear();
             }
             if(this.vlc.playlist)

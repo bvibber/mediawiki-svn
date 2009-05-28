@@ -123,7 +123,7 @@ mvEmbed = {
                     }                                            
                 });
             });
-        }
+        }       
         this.checkClipsReady();
     },
     /*
@@ -439,7 +439,7 @@ var ctrlBuilder = {
         'time_display':{
             'w':84,
             'o':function(){
-                return '<div id="mv_time_'+ctrlBuilder.id+'" class="ui-widget-content time">' + ctrlBuilder.embedObj.getTimeReq() + '</div>';
+                return '<div id="mv_time_'+ctrlBuilder.id+'" class="ui-widget time">' + ctrlBuilder.embedObj.getTimeReq() + '</div>';
             }
         },
         'play_head':{
@@ -1019,7 +1019,7 @@ embedVideo.prototype = {
         for(var attr in default_video_attributes){ //for in loop oky on user object
             if(element.getAttribute(attr)){
                 this[attr]=element.getAttribute(attr);
-                //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+'elm_val:' + element.getAttribute(attr) + "\n (set by elm)");
+                js_log('attr:' + attr + ' val: ' + element.getAttribute(attr) +'(set by elm)');
             }else{
                 this[attr]=default_video_attributes[attr];
                 //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");
@@ -1035,7 +1035,7 @@ embedVideo.prototype = {
             this.duration = npt2seconds( this.duration );     
            //make sure duration is in float:  
         this.duration = parseFloat(this.duration);  
-                
+        js_log("duration is: " +  this.duration);
         //if style is set override width and height
         var dwh = mv_default_video_size.split('x');
         this.width = element.style.width ? element.style.width : dwh[0];
@@ -1068,7 +1068,7 @@ embedVideo.prototype = {
                 js_log('set loading_external_data=false');     
                 _this.loading_external_data=false;                               
                 
-                _this.init_with_sources_loaded();
+                _this.init_with_sources_loaded();                
             });
         }
     },
@@ -1099,7 +1099,7 @@ embedVideo.prototype = {
             js_log('selected ' + this.selected_player.getName());
             js_log("PLAYBACK TYPE: "+this.selected_player.library);
             this.thumbnail_disp = true;        
-            this.inheritEmbedObj();
+            this.inheritEmbedObj();           
         }else{                             
             //no source's playable
             var missing_type ='';
@@ -1115,7 +1115,8 @@ embedVideo.prototype = {
                this.load_error= gM('mv_generic_missing_plugin', missing_type );                                           
         }        
     },
-    inheritEmbedObj:function(){        
+    inheritEmbedObj:function(){      
+        js_log("inheritEmbedObj:duration is: " +  this.duration);  
         //@@note: tricky cuz direct overwrite is not so ideal.. since the extended object is already tied to the dom
         //clear out any non-base embedObj stuff:
         if(this.instanceOf){
@@ -1133,6 +1134,7 @@ embedVideo.prototype = {
         var _this = this;        
         this.selected_player.load( function()
         {
+             js_log("selected_player::load:duration is: " +  _this.duration);  
             //js_log('inheriting '+_this.selected_player.library +'Embed to ' + _this.id + ' ' + $j('#'+_this.id).length);
             //var _this = $j('#'+_this.id).get(0);
             //js_log( 'type of ' + _this.selected_player.library +'Embed + ' +
@@ -1154,7 +1156,7 @@ embedVideo.prototype = {
                 _this.refreshControlsHTML();                                                
             
             //js_log("READY TO PLAY:"+_this.id);            
-            _this.ready_to_play=true;
+            _this.ready_to_play=true;                
             _this.getDuration();
             _this.getHTML();
         });
@@ -1165,7 +1167,7 @@ embedVideo.prototype = {
         if(this.selected_player.id != player.id){
             this.selected_player = player;
             this.inheritEmbedObj();
-        }
+        }            
     },
     getTimeReq:function(){
         //js_log('f:getTimeReq:'+ this.getDurationNTP());
@@ -1178,7 +1180,7 @@ embedVideo.prototype = {
             return default_time_req;        
         return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
     },    
-    getDuration:function(){           
+    getDuration:function(){                
         //update some local pointers for the selected source:        
         if( this.media_element.selected_source.duration &&
             this.media_element.selected_source.duration != 0 )
