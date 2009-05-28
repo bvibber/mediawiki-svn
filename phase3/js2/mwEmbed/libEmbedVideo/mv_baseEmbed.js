@@ -269,9 +269,68 @@ var ctrlBuilder = {
 		$j('#big_play_link_' + embedObj.id).unbind('click').click(function(){
 			$j('#' + embedObj.id).get(0).play();
 		});
-        
+		
+		//captions binding:
+		$j('#timed_text_'  + embedObj.id).unbind('click').click(function(){
+			$j('#' + embedObj.id).get(0).showTextInterface();
+		});
+		
+		//options binding: 
+		$j('#options_button_' + embedObj.id).unbind('click').click(function(){
+			$j('#' +embedObj.id).get(0).doOptionsHTML();
+		});
+				
+		//fullscreen binding: 
+		$j('#fullscreen_'+embedObj.id).unbind('click').click(function(){
+			$j('#' +embedObj.id).get(0).fullscreen();
+		});		
+		
+		//volume binding: 
+		$j('#volume_control_'+embedObj.id).unbind('click').click(function(){
+			$j('#' +embedObj.id).get(0).toggleMute();
+		});
+		
+        js_log(" should add slider binding: " + $j('#mv_play_head_'+embedObj.id).length) ;
+        $j('#mv_play_head_'+embedObj.id).slider({
+        	range: "min",
+			value: 0,
+			min: 0,
+			max: 1000,
+			start: function(event, ui){
+				var id = (embedObj.pc!=null)?embedObj.pc.pp.id:embedObj.id;
+				embedObj.userSlide=true;
+				$j('#big_play_link_'+id).fadeOut('fast');
+				//if playlist always start at 0
+		        embedObj.start_time_sec = (embedObj.instanceOf == 'mvPlayList')?0:
+        						npt2seconds(embedObj.getTimeReq().split('/')[0]);     
+			},
+			slide: function(event, ui) {									
+				var perc = ui.value/1000;															
+							 													
+				embedObj.jump_time = seconds2npt( parseInt( embedObj.getDuration() * perc ) + embedObj.start_time_sec);	
+				//js_log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
+				embedObj.setStatus( gM('seek_to')+' '+embedObj.jump_time );    
+				//update the thumbnail / frame 
+				if(embedObj.isPlaying==false){
+					embedObj.updateThumbPerc( perc );
+				}
+			},
+			change:function(event, ui){
+				//only run the onChange event if done by a user slide: 
+				if(embedObj.userSlide){
+					embedObj.userSlide=false;
+	        		//stop the monitor timer:         		
+					embedObj.stopMonitor();        		
+	        		var perc = ui.value/1000;		  					        		        	
+	        		//set seek time (in case we have to do a url seek)        		
+	        		embedObj.seek_time_sec = npt2seconds( embedObj.jump_time, true );   
+	        		js_log('do jump to: '+embedObj.jump_time + ' perc:' +perc + ' sts:' + embedObj.seek_time_sec);        		        		
+	        		embedObj.doSeek(perc);
+				}
+			}      	
+        });
         //build draggable hook here:        
-	    $j('#mv_seeker_slider_'+embedObj.id).draggable({
+	    /*$j('#mv_seeker_slider_'+embedObj.id).draggable({
         	containment:$j('#seeker_bar_'+embedObj.id),
         	axis:'x',
         	opacity:.6,
@@ -312,26 +371,13 @@ var ctrlBuilder = {
         		js_log('do jump to: '+embedObj.jump_time + ' perc:' +perc + ' sts:' + embedObj.seek_time_sec);        		        		
         		embedObj.doSeek(perc);
         	}
-        });
+        });*/
     },
 	components:{
 		'borders':{
 			'w':8,
 			'o':function(){
-				return	'<span class="border_left">&nbsp;</span>'+
-						'<span class="border_right">&nbsp;</span>';
-			}
-		},
-		'fullscreen':{
-			'w':20,
-			'o':function(){
-				return '<div class="fullscreen"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).fullscreen();"></a></div>'
-			}
-		},
-		'options':{
-			'w':26,
-			'o':function(){
-				return '<div id="options_button_'+ctrlBuilder.id+'" class="options"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).doOptionsHTML();"></a></div>';			 			
+				return	'';
 			}
 		},
 		'mv_embedded_options':{
@@ -360,22 +406,34 @@ var ctrlBuilder = {
 				return o;
 			}
 		},
+		'fullscreen':{
+			'w':20,
+			'o':function(){
+				return '<div id="fullscreen_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-arrow-4-diag"></span></div>'
+			}
+		},
+		'options':{
+			'w':26,
+			'o':function(){
+				return '<div id="options_button_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-wrench"></span></div>';			 			
+			}
+		},
 		'pause':{
 			'w':24,
 			'o':function(){
-				return '<div id="mv_play_pause_button_' + ctrlBuilder.id + '" class="play_button"></div>';
+				return '<div id="mv_play_pause_button_' + ctrlBuilder.id + '" class="ui-state-default ui-corner-all ui-icon_link lButton"><span class="ui-icon ui-icon-play"/></div>';
 			}
 		},
 		'closed_captions':{
 			'w':40,
 			'o':function(){
-				return '<div class="closed_captions"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).showTextInterface();"></a></div>'
+				return '<div id="timed_text_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-comment"></span></div>'
 			}			
 		},
 		'volume_control':{
 			'w':22,
 			'o':function(){
-				return '<div id="volume_icon_'+ctrlBuilder.id+'" class="volume_icon volume_on"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).toggleMute();"></a></div>'
+				return '<div id="volume_control_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-volume-on"></span></div>'
 			}
 		},
 		'time_display':{
@@ -387,16 +445,7 @@ var ctrlBuilder = {
 		'play_head':{
 			'w':0, //special case (takes up remaining space) 
 			'o':function(){
-				return '<div class="seeker" id="mv_seeker_'+ctrlBuilder.id+'" style="width: ' + (ctrlBuilder.avaliable_width - 18) + 'px;">'+           
-                    '		<div id="seeker_bar_'+ctrlBuilder.id+'" class="seeker_bar">'+
-                    '			<div class="seeker_bar_outer"></div>'+
-                    '			<div id="mv_seeker_slider_'+ctrlBuilder.id+'" class="seeker_slider"></div>'+
-                    '			<div class="mv_progress mv_playback"></div>'+
-                    '			<div class="mv_progress mv_buffer"></div>'+
-                    '			<div class="mv_progress mv_highlight"></div>'+
-                    '			<div class="seeker_bar_close"></div>'+
-                    '		</div>'+            
-                    '	</div><!--seeker-->'
+				return '<div class="play_head" id="mv_play_head_'+ctrlBuilder.id+'" style="width: ' + (ctrlBuilder.avaliable_width - 18) + 'px;"></div>';
 			}
 		}	    	                            
 	}    
@@ -592,8 +641,7 @@ mediaSource.prototype =
 	    			this.start_ntp = seconds2npt( mp4URL.queryKey['start'] );
 	    
 	    		if( typeof mp4URL.queryKey['end'] != 'undefined' ){
-	    			this.end_ntp = seconds2npt( mp4URL.queryKey['end'] );
-	    			
+	    			this.end_ntp = seconds2npt( mp4URL.queryKey['end'] );	    			
 	    			//strip the &end param here (as per the mp4 format request (should fix server side)  
 	    			this.src = mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + '?start=' + mp4URL.queryKey['start'];
 	    		}	    			    			    		  	    		
@@ -1346,7 +1394,7 @@ embedVideo.prototype = {
     	//query current request time +|- 60s to get prev next speech links. 
     },
     showNextPrevLinks:function(){
-    	js_log('f:showNextPrevLinks');
+    	//js_log('f:showNextPrevLinks');
     	//int requested links: 
     	var link = {
     		'prev':'',
@@ -1460,7 +1508,7 @@ embedVideo.prototype = {
 	        if(this.controls)
 	        {
 	        	js_log("f:getHTML:AddControls");
-	            html_code +='<div id="mv_embedded_controls_' + this.id + '" class="controls" style="width:' + this.width + 'px">';
+	            html_code +='<div id="mv_embedded_controls_' + this.id + '" class="ui-widget ui-corner-bottom ui-state-default controls" >';
 	            html_code += this.getControlsHTML();       
 	            html_code +='</div>';      
 	            //block out some space by encapulating the top level div 
@@ -1718,11 +1766,10 @@ embedVideo.prototype = {
 		//@@todo support position config
 		var loc = $j(this).position();			
 		if($j('#metaBox_'+this.id).length==0){
-			$j(this).after('<div style="position:absolute;z-index:10;'+
+			$j(this).after('<div class="ui-widget ui-widget-content ui-corner-all" style="position:absolute;z-index:10;'+
 						'top:' + (loc.top) + 'px;' +
 						'left:' + (parseInt( loc.left ) + parseInt(this.width) + 10 )+'px;' +
-						'height:'+ parseInt( this.height )+'px;width:400px;' +
-						'background:white;border:solid black;' +
+						'height:'+ parseInt( this.height )+'px;width:400px;' +						
 						'display:none;" ' +
 						'id="metaBox_' + this.id + '">'+
 							gM('loading_txt') +
@@ -1962,11 +2009,12 @@ embedVideo.prototype = {
 			//the plugin is already being displayed			
 			this.paused=false; //make sure we are not "paused"
 		}				
-       	$j("#mv_play_pause_button_" + this_id).attr({
-       		'class':'pause_button'
-       	}).unbind( "click" ).click(function(){
-       		$j('#' + this_id ).get(0).pause();
-       	});
+		
+       	$j("#mv_play_pause_button_" + this_id + ' span').removeClass('ui-icon-play').addClass('ui-icon-pause');	       	
+	     $j("#mv_play_pause_button_" + this_id).unbind().click(function(){	 	       	
+       			$j('#' + this_id ).get(0).pause();
+      	 	});
+      	 
 	},
 	load:function(){
 		//should be done by child (no base way to load assets)
@@ -1978,16 +2026,15 @@ embedVideo.prototype = {
 	 *  must be overwritten by embed object to support this functionality.
 	 */
 	pause: function(){
-		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;		
+		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;				      		
 		//js_log('mv_embed:do pause');		
         //(playing) do pause        
         this.paused = true; 
         //update the ctrl "paused state"            	
-        $j("#mv_play_pause_button_" + this_id).attr({
-        		'class':'play_button'        		
-        }).unbind( "click" ).click(function(){
-        	$j('#'+this_id).get(0).play();
-        });
+        $j("#mv_play_pause_button_" + this_id + ' span').removeClass('ui-icon-pause').addClass('ui-icon-play');
+	    $j("#mv_play_pause_button_" + this_id).unbind().click(function(){	      	       		
+        		$j('#'+this_id).get(0).play();
+       	 });
 	},	
 	/*
 	 * base embed stop (can be overwritten by the plugin)
@@ -2036,10 +2083,10 @@ embedVideo.prototype = {
 		js_log('f:toggleMute');		
 		if(this.muted){
 			this.muted=false;
-			$j('#volume_icon_'+this_id).removeClass('volume_off').addClass('volume_on');
+			$j('#volume_control_'+this_id + ' span').removeClass('ui-icon-volume-off').addClass('ui-icon-volume-on');
 		}else{
 			this.muted=true;
-			$j('#volume_icon_'+this_id).removeClass('volume_on').addClass('volume_off');
+			$j('#volume_control_'+this_id + ' span').removeClass('ui-icon-volume-on').addClass('ui-icon-volume-off');
 		}
 	},
 	fullscreen:function(){
@@ -2076,7 +2123,8 @@ embedVideo.prototype = {
 	monitor:function(){
 		if( this.currentTime && this.currentTime > 0 && this.duration){
 			if( !this.userSlide ){
-				if( this.start_offset  ){ //if start offset included add that in: 
+				if( this.start_offset  ){ 
+					//if start offset include that calculation 
 					this.setSliderValue( ( this.currentTime - this.start_offset ) / this.duration );			
 					this.setStatus( seconds2npt(this.currentTime) + '/'+ seconds2npt(this.start_offset+this.duration ));		
 				}else{
@@ -2166,7 +2214,11 @@ embedVideo.prototype = {
 		return this.media_element.selected_source.serverSideSeeking;
 	},
 	setSliderValue: function(perc, hide_progress){
+		var this_id = (this.pc)?this.pc.pp.id:this.id;
+		var val = parseInt( perc*1000 ); 
+		$j('#mv_play_head_'+this_id).slider('value', val);
 		
+		/*
 		//js_log('setSliderValue:'+perc+' ct:'+ this.currentTime);
 		var this_id = (this.pc)?this.pc.pp.id:this.id;
 		//alinment offset: 
@@ -2187,7 +2239,7 @@ embedVideo.prototype = {
 			//hide the progress bar
 			$j('#mv_seeker_' + this_id + ' .mv_playback').css("width", "0px");
 		}			
-		
+		*/
 		//js_log('set#mv_seeker_slider_'+this_id + ' perc in: ' + perc + ' * ' + $j('#mv_seeker_'+this_id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
 	},

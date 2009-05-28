@@ -278,7 +278,7 @@ mvAdvFirefogg.prototype = {
 			gdout+='<table width="' + ($j(_this.selector).width()-60) + '" ><tr><td width="35%"></td><td width="65%"></td></tr>';
 			//output the special prset output
 			if(group_key=='preset'){
-				gdout+=_this.proccessPresetControl( cK );
+				gdout += _this.proccessPresetControl();
 			} 			
 			for(var cK in _this.default_encoder_config){				
 				var cConf = _this.default_encoder_config[cK];
@@ -327,7 +327,7 @@ mvAdvFirefogg.prototype = {
 			return this.basefogg_getTargetHtml(target);
 		}
 	},
-	proccessPresetControl:function(){
+	proccessPresetControl:function(){ 
 		var out='';
 		var _this = this;
 		js_log('proccessPresetControl::');		

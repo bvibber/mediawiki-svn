@@ -386,16 +386,16 @@ var mvJsLoader = {
 	},
 	embedVideoCheck:function( callback ){
 		var _this = this;
-		//issue a style sheet request (no load checks on style sheets):
-	 	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
+		//issue a style sheet request get both mv_embed and jquery styles: 
+		loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
+	 	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');	 	
 		//make sure we have jQuery		
 		_this.jQueryCheck(function(){
 			_this.doLoad({
-				'embedVideo'	  : 'libEmbedVideo/mv_baseEmbed.js',
-				'$j.cookie'		  :	'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',
-				'$j.ui.mouse'	  : 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-				'$j.ui.droppable' : 'jquery/' + jQueryUiVN + '/ui/ui.droppable.js',
-				'$j.ui.draggable' : 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js'
+				'embedVideo'	: 'libEmbedVideo/mv_baseEmbed.js',
+				'$j.cookie'		: 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',
+				'$j.ui.mouse'	: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+				'$j.ui.slider'	: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js'
 				},function(){
 					//set up embedTypes (load from cookie if possible) 		
 					embedTypes.init();
@@ -465,8 +465,12 @@ function mwdomReady(force){
 }
 //mwAddOnloadHook: ensure jQuery and the DOM are ready:  
 function mwAddOnloadHook( func ) {
-	//issue a style sheet request (no load checks on style sheets:
- 	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');		
+	//issue a style sheet request (no load checks on style sheets:)
+	
+	//make sure the skin/style sheets are avaliable always: 
+	loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
+ 	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
+ 			
 	//if we have already run the dom ready just run the function directly: 
 	if( mvJsLoader.doneReadyEvents ){
 		//make sure jQuery is there: 
@@ -588,15 +592,10 @@ function mv_jqueryBindings(){
 			$j(this.selector).css('cursor','wait').attr('title', gM('loading_title'));
 									
 			iObj['target_invocation'] = this.selector;
-			//load the mv_embed_base skin: 
-			var cssReq = new Array( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );
 			
-			//more cache efficent to just load the entire skin (only 25k or so) 
-			//we could group skin requests but would hurt our caching
-			cssReq.push(  mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-				
-			loadExternalCss( cssReq );																			
-			
+			//load the mv_embed_base skin: 											
+			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );			
+			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );																								
 			//load all the req libs: 
 			mvJsLoader.jQueryCheck(function(){
 				//load search specifc extra stuff 
@@ -665,13 +664,16 @@ function mv_jqueryBindings(){
 function mv_do_sequence(initObj){
 	//debugger;
 	//issue a request to get the css file (if not already included):
-	loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');
+	loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
+	loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');	
 	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
 	mvJsLoader.embedVideoCheck(function(){		
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
 				'mvPlayList':'libSequencer/mvPlayList.js',
 				'$j.ui'			:'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+				'$j.ui.droppable' : 'jquery/' + jQueryUiVN + '/ui/ui.droppable.js',
+				'$j.ui.draggable' : 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
 				'$j.ui.sortable':'jquery/' + jQueryUiVN + '/ui/ui.sortable.js',
 				'$j.ui.resizable':'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
 				'$j.contextMenu':'jquery/plugins/jquery.contextMenu.js',

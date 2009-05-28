@@ -92,13 +92,16 @@ var nativeEmbed = {
 				
 		//update currentTime				
 		this.currentTime = this.vid.currentTime;		
-		
-		if( this.startOffset && !embedTypes.safari) //safari uses presentation time for currentTime rather than ogg Encoded time
-			this.currentTime = this.currentTime - this.startOffset;
-		
+		//add in the 		
+		if(this.seek_time_sec!=0){
+			this.currentTime+=this.seek_time_sec;
+		}else if(this.start_offset!=0){
+			this.currentTime+=this.start_offset;
+		}	
+		//js_log('currentTime:' + this.currentTime);
 		//js_log('this.currentTime: ' + this.currentTime );
 		//once currentTime is updated call parent_monitor
-		this.parent_monitor();					
+		this.parent_monitor();
 	},	
 	/*
 	 * native callbacks for the video tag: 
@@ -122,8 +125,8 @@ var nativeEmbed = {
 	},
 	pause : function(){		
 		this.getVID();
-		this.parent_pause(); //update interface
-		if(this.vid){
+		this.parent_pause(); //update interface		
+		if(this.vid){			
 			this.vid.pause();
 		}
 		//stop updates: 
@@ -137,6 +140,12 @@ var nativeEmbed = {
 			//re-start the monitor: 
 			this.monitor();
 		}
+	},
+	toggleMute:function(){
+		this.parent_toggleMute();
+		this.getVID();
+		if(this.vid)
+			this.vid.muted = this.muted;
 	},
 	load:function(){
 		this.getVID();

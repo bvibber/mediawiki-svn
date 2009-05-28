@@ -125,11 +125,11 @@ remoteSearchDriver.prototype = {
 			'tab_img': false
 		},		
 		'wiki_commons':{
-			'enabled':1,
-			'checked':1,
-			'd'		:1,
-			'title'	:'Wikipedia Commons',			
-			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
+			'enabled': 1,
+			'checked': 1,
+			'd'		 : 0,
+			'title'	 :'Wikipedia Commons',			
+			'desc'	 : 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
 			'homepage': 'http://commons.wikimedia.org/wiki/Main_Page',		
 			'api_url':'http://commons.wikimedia.org/w/api.php',
@@ -164,7 +164,7 @@ remoteSearchDriver.prototype = {
 		'metavid':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,			
+			'd'		:1,			
 			'title'	:'Metavid.org',
 			'homepage':'http://metavid.org',
 			'desc'	: 'Metavid hosts thousands of hours of US house and senate floor proceedings',
@@ -436,33 +436,14 @@ remoteSearchDriver.prototype = {
 		js_log('f::init_interface_html');	
 		
 		var out = '<div class="rsd_control_container" style="width:100%">' + 
-					'<form id="rsd_form" action="javascript:return false;" method="GET">'+
-					'<table style="width:100%;background-color:transparent;">' +
-						'<tr>'+
-							'<td style="width:120px">'+
-								'<h3>' + gM('mv_media_search') +'</h3>'+
-							'</td>'+
-							'<td style="width:190px">'+
-								'<input type="text" tabindex="1" value="' + dq + '" maxlength="512" id="rsd_q" name="rsd_q" '+ 
-									'size="20" autocomplete="off"/>'+
-							'</td>'+
-							'<td style="width:115px">'+
-								'<input type="submit" value="' + gM('mv_media_search') + '" tabindex="2" '+
-									' id="rms_search_button"/>'+
-							'</td>'+
-							'<td>';
-			//out += '<a href="#" id="mso_selprovider" >Select Providers</a><br>';
-			
-			//if mediawiki_edit don't output cancel button 
-			if( this.profile == 'mediawiki_edit'){
-				out += '<a href="#" id="mso_cancel" >Cancel</a><br>';
-			}
-			out +=			'</td>'+
-						'</tr>'+
-					'</table>'+
+					'<form id="rsd_form" action="javascript:return false;" method="GET">'+											
+						'<input type="text" tabindex="1" value="' + dq + '" maxlength="512" id="rsd_q" name="rsd_q" '+ 
+							'size="20" autocomplete="off"/>'+
+							
+						'<a href="#" id="rms_search_button" class="ui-state-default ui-corner-all" >'+ '<span class="ui-icon-search">' + gM('mv_media_search') + '"/>'+						
 					'</form>';							
 				
-		out+='<div id="rsd_options_bar" style="display:none;width:100%;height:0px;background:#BBB">';
+		/*out+='<div id="rsd_options_bar" style="display:none;width:100%;height:0px;background:#BBB">';
 			//set up the content provider selection div (do this first to get the default cp)
 			out+= '<div id="cps_options">';												
 			for( var cp_id in this.content_providers ){
@@ -476,7 +457,7 @@ remoteSearchDriver.prototype = {
 				out+='</div>';
 			}		 		
 			out+='<div style="clear:both"/><a id="mso_selprovider_close" href="#">'+gM('close')+'</a></div>';
-		out+='</div>';				
+		out+='</div>';*/				
 		
 		//close up the control container: 
 		out+='</div>';
@@ -485,6 +466,16 @@ remoteSearchDriver.prototype = {
 		out+='<div id="rsd_results_container"></div>';
 		
 		$j(this.target_container).html( out );	
+		//add simple styles: 
+		$j('#rms_search_button').hover(
+			function(){
+				$j(this).removeClass('ui-state-default').addClass('ui-state-hover');
+			},
+			function(){
+				$j(this).removeClass('ui-state-hover').addClass('ui-state-default');
+			}
+		);
+		
 		//draw the tabs: 
 		this.drawTabs();
 		//run the default search: 
@@ -557,9 +548,7 @@ remoteSearchDriver.prototype = {
 				}
 			}
 		}		
-		cp = this.content_providers[this.disp_item];
-		//set the content to loading while we do the search:
-		$j('#tab-' + this.disp_item).html( mv_get_loading_img() ); 
+		cp = this.content_providers[this.disp_item];		
 		
 		//check if we need to update: 
 		if( typeof cp.sObj != 'undefined' ){
@@ -573,6 +562,9 @@ remoteSearchDriver.prototype = {
 			draw_direct_flag = false;
 		}
 		if( !draw_direct_flag ){			
+			//set the content to loading while we do the search:
+			$j('#tab-' + this.disp_item).html( mv_get_loading_img() ); 
+		
 			//make sure the search library is loaded and issue the search request 
 			this.getLibSearchResults( cp );
 		}						
@@ -715,19 +707,22 @@ remoteSearchDriver.prototype = {
 		}		 
 	},
 	drawTabs: function(){
-		var _this = this;
+		var _this = this;		
 		//add the tabs to the rsd_results container: 
 		var o='<div id="rsd_tabs_container" style="width:100%;">';
+		var selected_tab = 0;
+		var inx =0;
 		o+= '<ul>'; 				
 			var tabc = '';	 	
 			for(var cp_id in  this.content_providers){
 					var cp = this.content_providers[cp_id];
-					if( cp.enabled && cp.checked){
-						var class_attr = 'class="rsd_cp_tab';
-						//add selected if so:
-						class_attr+= (cp.d)?' rsd_selected"':'"';
-						o+='<li id="rsd_tab_' + cp_id + '" ' + class_attr + '>';
-						o+='<a href="#tab-' + cp_id + '">';
+					if( cp.enabled && cp.checked){						
+						//add selected default if set
+						if( cp.d == 1)	
+							selected_tab=inx;
+											
+						o+='<li class="rsd_cp_tab">';
+						o+='<a id="rsd_tab_' + cp_id + '" href="#tab-' + cp_id + '">';
 							if(cp.tab_img === true){
 								o+='<img alt="' + cp.title +'" src="' + mv_skin_img_path + 'remote_cp/' + cp_id + '_tab.png">';				
 							}else{
@@ -735,16 +730,14 @@ remoteSearchDriver.prototype = {
 							}
 						o+='</a>';
 						o+='</li>';
-					}	
-					
-					tabc+='<div id="tab-'+ cp_id +'" class="rsd_results"/>';			
-					
+						inx++;
+					}						
+					tabc+='<div id="tab-'+ cp_id +'" class="rsd_results"/>';	
+												
 			}
 			//do an upload tab if enabled: 
-			if( this.enable_upload_tab ){
-				var class_attr = 'class="rsd_cp_tab';
-				class_attr+= ( this.disp_item =='upload' ) ?' rsd_selected"':'"';
-				o+='<li id="rsd_tab_upload" ' + class_attr + '><a href="#tab-upload">' + gM('upload') + '</a></li>';
+			if( this.enable_upload_tab ){				
+				o+='<li class="rsd_cp_tab" ><a id="rsd_tab_upload" href="#tab-upload">' + gM('upload') + '</a></li>';
 				tabc+='<div id="tab-upload" />';			
 			}
 			o+='</ul>';
@@ -753,12 +746,13 @@ remoteSearchDriver.prototype = {
 		o+='</div>'; //close tab container
 		
 		//output the respective results holders			
-		$j('#rsd_results_container').html(o);
-		
-		//setup bindings for tabs make them sortable: (@@todo remember order)		
+		$j('#rsd_results_container').html(o);		
+		//setup bindings for tabs make them sortable: (@@todo remember order)
+		js_log('selected tab is: ' + selected_tab);		
 		$j("#rsd_tabs_container").tabs({
-			select: function(event, ui) {
-				js_log($j(this).id);
+			selected:selected_tab,
+			select: function(event, ui) {										
+				_this.selectTab( $j(ui.tab).attr('id').replace('rsd_tab_', '') );
 			}			
 		//add sorting
 		}).find(".ui-tabs-nav").sortable({axis:'x'});
@@ -767,13 +761,13 @@ remoteSearchDriver.prototype = {
 			_this.selectTab( $j(this).attr('id').replace(/rsd_tab_/, '') );
 		});*/
 		
-		//setup key binding
-		$j().keyup(function(e){	
+		//setup key binding (no longer nessesary tabs provide this functionality) 
+		/*$j().keyup(function(e){	
 			js_log('keyup on : ' +e.which );				
 			//if escape pressed clear the interface:
 			if(e.which == 27)
 				_this.closeAll();			
-		});  
+		});*/  
 		
 	},
 	//resource title 		
@@ -1456,8 +1450,6 @@ remoteSearchDriver.prototype = {
 				cp.d = 0;
 			}			
 		}	
-		//redraw tabs
-		this.drawTabs();		
 		if( this.disp_item == 'upload' ){
 			this.doUploadInteface();
 		}else{

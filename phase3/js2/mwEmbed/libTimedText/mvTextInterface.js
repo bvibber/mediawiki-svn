@@ -286,9 +286,10 @@ mvTextInterface.prototype = {
 		var out='';
 		//add in loading icon:
 		var as_checked = (this.autoscroll)?'checked':'';
-		out+= '<div id="tt_mmenu_'+this.pe.id+'" style="background:#AAF;font-size:small;position:absolute;top:0;height:20px;left:0px;right:0px;">' +
-				'<a style="font-color:#000;" title="'+gM('close')+'" href="#" onClick="document.getElementById(\''+this.pe.id+'\').closeTextInterface();return false;">'+
-					'<img border="0" width="16" height="16" src="'+mv_embed_path + 'images/cancel.png"></a> ' +
+		out+= '<div id="tt_mmenu_'+this.pe.id+'" class="ui-widget-header" style="background:#AAF;font-size:small;position:absolute;top:0;height:20px;left:0px;right:0px;">' +
+				'<a class="ui-state-default ui-corner-all ui-icon_link" title="'+gM('close')+'" href="#" onClick="document.getElementById(\''+this.pe.id+'\').closeTextInterface();return false;">'+
+					'<span class="ui-icon ui-icon-circle-close"/>' + 
+					'</a> ' +
 				'<a style="font-color:#000;" title="'+gM('select_transcript_set')+'" href="#"  onClick="document.getElementById(\''+this.pe.id+'\').textInterface.getTsSelect();return false;">'+
 					gM('select_transcript_set')+'</a> | ' +
 				'<input onClick="document.getElementById(\''+this.pe.id+'\').textInterface.setAutoScroll(this.checked);return false;" ' +
