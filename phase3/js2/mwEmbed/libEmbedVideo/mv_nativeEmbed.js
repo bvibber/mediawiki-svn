@@ -73,8 +73,7 @@ var nativeEmbed = {
         if( this.supportsURLTimeEncoding() ){            
             this.parent_doSeek(perc);
         }else if( this.vid.duration ){                    
-            this.vid.currentTime = perc * this.vid.duration;
-            
+            this.vid.currentTime = perc * this.vid.duration;            
         }
     },
     setCurrentTime: function(pos, callback){
@@ -114,9 +113,9 @@ var nativeEmbed = {
         //update currentTime                
         this.currentTime = this.vid.currentTime;        
         //add in the         
-        if(this.seek_time_sec!=0){
+        if(this.seek_time_sec && this.seek_time_sec!=0){
             this.currentTime+=this.seek_time_sec;
-        }else if(this.start_offset!=0){
+        }else if(this.start_offset && this.start_offset!=0){
             this.currentTime+=this.start_offset;
         }    
         //js_log('currentTime:' + this.currentTime);
