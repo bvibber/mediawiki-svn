@@ -783,16 +783,16 @@ mvPlayList.prototype = {
             if (currentOffset + nextTime > pos) {
                 //update the clip relative seek_time_sec
                 clipTime = pos - currentOffset;
-            if (plObj.cur_clip.id != clip.id) {
-                  plObj.updateCurrentClip( clip );
-            }
+                if (plObj.cur_clip.id != clip.id) {
+                    plObj.updateCurrentClip( clip );
+                }
                 plObj.cur_clip.embed.setCurrentTime(clipTime, callback);
-          plObj.currentTime = pos;    
-          plObj.doSmilActions();    
+                plObj.currentTime = pos;
+                plObj.doSmilActions();
                 return '';
             }
             currentOffset += nextTime;
-        }     
+        }
     },
     //gets playlist controls large control height for sporting 
     //next prev button and more status display

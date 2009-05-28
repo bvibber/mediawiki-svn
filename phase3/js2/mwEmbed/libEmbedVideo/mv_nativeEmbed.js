@@ -78,25 +78,24 @@ var nativeEmbed = {
         }
     },
     setCurrentTime: function(pos, callback){
-      var _this = this;
+        var _this = this;
         this.getVID();
         if(!this.vid) {
-          js_log('native:setCurrentTime: load video');
-          this.load();
-        var loaded = function(event) {
-            js_log('native:setCurrentTime (after load): ' + pos + ' :  dur: ' + this.getDuration());
-          _this.vid.currentTime = pos;
-          var once = function(event) { callback(); _this.vid.removeEventListener('seeked', once, false) };
-          _this.vid.addEventListener('seeked', once, false);
-
-          _this.removeEventListener('loadedmetadata', loaded, false);
-        };
-        _this.addEventListener('loadedmetadata', loaded, false);
+            js_log('native:setCurrentTime: load video');
+            this.load();
+            var loaded = function(event) {
+                js_log('native:setCurrentTime (after load): ' + pos + ' :  dur: ' + this.getDuration());
+                _this.vid.currentTime = pos;
+                var once = function(event) { callback(); _this.vid.removeEventListener('seeked', once, false) };
+                _this.vid.addEventListener('seeked', once, false);
+                _this.removeEventListener('loadedmetadata', loaded, false);
+            };
+            _this.addEventListener('loadedmetadata', loaded, false);
         } else {
-          js_log('native:setCurrentTime: ' + pos + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
-        _this.vid.currentTime = pos;
-        var once = function(event) { callback(); _this.vid.removeEventListener('seeked', once, false) };
-        _this.vid.addEventListener('seeked', once, false);
+            js_log('native:setCurrentTime: ' + pos + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
+            _this.vid.currentTime = pos;
+            var once = function(event) { callback(); _this.vid.removeEventListener('seeked', once, false) };
+            _this.vid.addEventListener('seeked', once, false);
         }
     },
     monitor : function(){

@@ -49,7 +49,7 @@ function stopRender() {
 }
 function seek() {
   var seekTo = $j('#pos').val();
-  document.getElementById('render_box').setCurrentTime(seekTo, function() { alert('seeked'); });
+  document.getElementById('render_box').setCurrentTime(seekTo, function() { js_log('seeked'); });
 }
   </script>
 </head>
@@ -60,7 +60,7 @@ function seek() {
 <div id="info" style="position: absolute; top:360px">
     <button onclick="startRender()">Start</button>
     <button onclick="stopRender()">Stop</button>
-    position: <input type="text" id="pos" value="0.0" />
+    position: <input type="text" id="pos" value="6.6" />
     <button onclick="seek()">seek</button>
     <span id="status"></span><br>
 </div>
