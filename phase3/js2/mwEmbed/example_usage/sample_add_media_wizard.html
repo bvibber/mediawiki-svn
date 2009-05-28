@@ -11,31 +11,18 @@
  	<script type="text/javascript" src="../mv_embed.js"></script> 	 	 
  	<script type="text/javascript">
  	mwAddOnloadHook(function(){
- 		$j('#add_media_link').click(function(){
- 			//show/empty modalbox
-			$j('#modalbox,#mv_overlay').remove();
-			$j('body').append(''+		
-					'<div id="modalbox" style="background:#DDD;border:3px solid #666666;font-size:115%;'+
-						'top:30px;left:20px;right:20px;bottom:30px;position:fixed;z-index:100;">'+			
-						'loading external media wizard<blink>...</blink>'+			
-					'</div>'+		
-					'<div id="mv_overlay" style="background:#000;cursor:wait;height:100%;left:0;position:fixed;'+
-						'top:0;width:100%;z-index:5;filter:alpha(opacity=60);-moz-opacity: 0.6;'+
-						'opacity: 0.6;"/>');						
-			//load/configure the mv_embed remote search: 
-			mv_do_remote_search({
-				'target_id':'modalbox',
-				'profile':'mediawiki_edit',
-				'target_textbox': 'inline_append', 				
-				//note selections in the textbox will take over the default query
-				'default_query': 'fish',	
-				'import_url_mode':'link', //don't copy the asset to our local system just link to it			
-				'cpconfig':{},
-				'insertCallback':function(link_data){
-					$j('#inline_append,#code_append').append( link_data );					
-				}
-			});			
- 		});							
+ 		$j('#add_media_link').addMediaWiz( {
+			'profile':'html_edit',			
+			'target_textbox': '#wpTextbox1',		
+			'import_url_mode':'link',	
+			//note selections in the textbox will take over the default query
+			'default_query': 'fish',	
+			//here we can setup the conten provider overides
+			'cpconfig': {},					
+			
+			//the local wiki api url: 
+			'local_wiki_api_url': 'none'
+		});			
 	});	
 	
  	</script> 
@@ -47,7 +34,7 @@
 <table border="1" width="800">
 <tr>
 <td valign="top" width="50%" id="inline_append">Asset Output</td>
-<td  valign="top" width="50%" >Html Output:<textarea cols="60" rows="6" id="code_append" name="wpUploadDescription" tabindex="3"/></textarea></td>
+<td  valign="top" width="50%" >Html Output:<textarea id="wpTextbox1" cols="60" rows="6" id="code_append" name="wpUploadDescription" tabindex="3"/></textarea></td>
 </tr>
 </table>
 </body>

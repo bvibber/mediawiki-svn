@@ -1616,7 +1616,7 @@ var flashEmbed = {
     		flowConfig.screen.opacity = 0.2;    	    	 
     	}    	    	    
     	
-		$f(this.pid,  mv_embed_path + 'flowplayer/flowplayer-3.0.1.swf', flowConfig);    	    	  
+		$f(this.pid,  mv_embed_path + 'binPlayers/flowplayer/flowplayer-3.0.1.swf', flowConfig);    	    	  
 		//get the this.fla value: 		
 		this.getFLA();    	
     	//set up bindings (for when interacting with the swf causes action:  
@@ -1640,8 +1640,7 @@ var flashEmbed = {
             this.fla.play();			
             
             //on a resume make sure volume and opacity are correct 
-            this.restorePlayer(); 
-        				
+            this.restorePlayer();         				
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()', 250);
     	}
     },
@@ -1696,8 +1695,7 @@ var flashEmbed = {
     		if( !this.didDateStartTimeRestore  && this.preview_mode)
     			this.fla.setVolume(0);
     			
-    		if( (d.getTime() - this.dateStartTime) > 6000  && !this.didDateStartTimeRestore){
-    			js_log('more than 6 seconds have passed since first monitor call issue restore');    			
+    		if( (d.getTime() - this.dateStartTime) > 6000  && !this.didDateStartTimeRestore){    			 			
     			this.restorePlayer(); 
     		}
     	}      	    	    
@@ -1784,11 +1782,10 @@ var flashEmbed = {
     	if(this.fla){
     		js_log('f:do restorePlayer');
     		this.fla.setVolume(90); 
-	    	$f().getPlugin('screen').css({'opacity':'1.0'} );  
-	    
+	    	$f().getPlugin('screen').css({'opacity':'1.0'} );
 	    	//set the fallback date restore flag to true:
-	    	this.didDateStartTimeRestore=true;
-	    }
+    		this.didDateStartTimeRestore=true;  	    	    
+	    }    	
     },
     // get the embed fla object 
     getFLA : function (){

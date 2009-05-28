@@ -534,6 +534,9 @@ div.rsd_selected {
 	z-index:2;
 }
 */
+.rsd_cp_tab img{
+	border:0px;
+}
 .rsd_results_container{
 	left:2px;
 	right:2px;

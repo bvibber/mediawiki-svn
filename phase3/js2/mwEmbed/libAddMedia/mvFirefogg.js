@@ -301,7 +301,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				}
 			}
 			//wait 100ms to get video info: 
-			setTimeout(videoSelectReady, 100);															
+			setTimeout(videoSelectReady, 300);															
 		}
 	},
 	//simple auto encoder settings just enable passthough if file is not video or > 480 pixles tall 

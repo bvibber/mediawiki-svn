@@ -440,7 +440,7 @@ remoteSearchDriver.prototype = {
 						'<input type="text" tabindex="1" value="' + dq + '" maxlength="512" id="rsd_q" name="rsd_q" '+ 
 							'size="20" autocomplete="off"/>'+
 							
-						'<a href="#" id="rms_search_button" class="ui-state-default ui-corner-all" >'+ '<span class="ui-icon-search">' + gM('mv_media_search') + '"/>'+						
+						'<a href="#" id="rms_search_button" class="ui-state-default ui-corner-all" >'+ '<span class="ui-icon-search">' + gM('mv_media_search') + '</span></a>'+						
 					'</form>';							
 				
 		/*out+='<div id="rsd_options_bar" style="display:none;width:100%;height:0px;background:#BBB">';
@@ -573,7 +573,7 @@ remoteSearchDriver.prototype = {
 	//this check can be avoided by setting the this.import_url_mode = 'api' | 'form' | insted of 'autodetect' or 'none'
 	checkForCopyURLSupport:function ( callback ){
 		var _this = this;
-		js_log('checkForCopyURLSupport:: ' + wgArticlePath);	
+		//js_log('checkForCopyURLSupport:: ' + wgArticlePath);	
 		if( this.import_url_mode == 'autodetect' ){
 			do_api_req( {
 				'data': { 'action':'paraminfo', 'modules':'upload' },
@@ -841,8 +841,7 @@ remoteSearchDriver.prototype = {
 						if( rItem.link ) 
 							o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' +
 								 gM('resource_description_page') + 
-								'" href="' + rItem.link + '"><img src="' + stylepath + 
-								'/common/images/magnify-clip.png"></a>';
+								'" href="' + rItem.link + '"><img src="http://upload.wikimedia.org/wikipedia/commons/6/6b/Magnify-clip.png"></a>';
 						//add license icons if present				
 						if( rItem.license )	
 							o+= _this.getlicenseImgSet( rItem.license );																													

@@ -467,7 +467,7 @@ mvAdvFirefogg.prototype = {
 				case 'string':
 					//@@check if we have a validate function on the string
 					$j(_this.selector + ' ._'+cK).change(function(){		
-						$j(this).val( _this.updateLocalSetting(
+						$j(this).val( _this.updateLocalValue(
 							_this.getClassId(this), 
 							$j(this).val() ));
 						_this.updatePresetSelection('custom');
@@ -483,10 +483,17 @@ mvAdvFirefogg.prototype = {
 						max: this.default_encoder_config[ cK ].range.max,
 						slide: function(event, ui) {								
 							$j( _this.selector + ' ._' + _this.getClassId(this, 'slider_') ).val( ui.value );
-							//setup special bindings for width / heigh aspect binding: 
-							if(_this.getClassId(this, 'slider_') == 'width'){
-								js_log('widht is: ' + ui.value + ' height should keep aspect: ' );
-								//return false
+							
+							//maintain source video aspect ratio:  
+							if(_this.getClassId(this, 'slider_') == 'width'){																
+								js_log('set width to: '+ ui.value + ' update height: ' + ((_this.sourceFileInfo['height']/_this.sourceFileInfo['width'])* ui.value ) );
+								
+								var hv = parseInt((_this.sourceFileInfo['height']/_this.sourceFileInfo['width'])* ui.value );
+								//update the height value: 								
+								new_hv = _this.updateInterfaceValue('height', hv);
+								//if the new hight value is < that orginal lock the slider: 
+								if(hv > new_hv)
+									return false;																							
 							}
 							if(_this.getClassId(this, 'slider_') == 'height'){
 								js_log('height is: ' + ui.value + ' width should keep aspect: ' );
@@ -496,12 +503,12 @@ mvAdvFirefogg.prototype = {
 						change: function(event, ui){			
 							js_log("id: " + _this.getClassId(this, 'slider_'));				
 							//update the local settings
-							_this.updateLocalSetting( _this.getClassId(this, 'slider_'), ui.value);												
+							_this.updateLocalValue( _this.getClassId(this, 'slider_'), ui.value);												
 						}					
 					})
 					$j( this.selector +' ._' + cK).change(function(){	
 						var scid = _this.getClassId(this);	
-						var valdVal = _this.updateLocalSetting(scid.substr(1),$j(this).val() );		
+						var valdVal = _this.updateLocalValue(scid.substr(1),$j(this).val() );		
 						_this.updatePresetSelection('custom');
 						//(validate user form input) 
 						$j(this).val(valdVal);
@@ -531,8 +538,34 @@ mvAdvFirefogg.prototype = {
 		this.updatePresetDesc(pKey);	
 		//@@todo other updates	
 	},
-	updateLocalSetting:function(confKey, value){
-		js_log("updateLocalSetting: " + confKey + ' : ' + value);		 		
+	/*
+	 * updates the interface 
+	 */
+	updateInterfaceValue:function(confKey, val){
+		var _this = this;
+		//lookup the type
+		if(typeof this.default_encoder_config[confKey] == 'undefined'){
+			js_error('error: missing default key: '+ confKey);
+			return false;
+		}
+			
+		//update the local value (if not already up-to-date
+		if( this.local_settings.pSet['custom']['conf'][confKey] != val ){
+			val = this.updateLocalValue(confKey, val);
+		}
+		//update the text filed:
+		$j(_this.selctor + ' ._'+confKey).val( val );
+		//update the interaface widget:
+		switch(this.default_encoder_config[confKey].type){
+			case 'slider':
+				$j(_this.selctor + ' .slider_' + confKey).slider('option', 
+						'value', $j(_this.selector + ' ._'+ inx).val() );
+			break;
+		}					
+		return val;					
+	},
+	updateLocalValue:function(confKey, value){
+		js_log("updateLocalValue: " + confKey + ' : ' + value);		 		
 		//update the local value (return the value we acutally set)	
 		if(typeof this.default_encoder_config[confKey] != 'undefined'){
 			dec = this.default_encoder_config[confKey];
@@ -548,7 +581,8 @@ mvAdvFirefogg.prototype = {
 			if(dec.type=='int')
 				value = parseInt(value);
 			js_log('update:local_settings:custom:conf:'+ confKey + ' = ' + value); 
-			this.local_settings.pSet['custom']['conf'][confKey] = value;
+			this.local_settings.pSet['custom']['conf'][confKey] = value;						
+			
 			return value;
 		}		
 		return value;
@@ -568,7 +602,7 @@ mvAdvFirefogg.prototype = {
 	autoEncoderSettings:function(){
 		var _this = this;
 		//do the base encoder settings setup: 
-		this.basefogg_autoEncoderSettings();
+		this.basefogg_autoEncoderSettings();		
 		//make sure we are "encoding" if not display not a video file eror:
 		if( this.encoder_settings['passthrough'] ){
 			js_log("in passthrough mode (hide control)");
@@ -598,25 +632,22 @@ mvAdvFirefogg.prototype = {
 					val = (val*2 > this.default_encoder_config[k])?this.default_encoder_config[k]:val*2;
 				break;								
 				case 'width': 
-					k = 'width';					 
+					k = 'width';									
 				break;			
 				case 'height': 
 					k = 'height'; 
 				break;						
 			}			
-			if(k!==false){
+			if( k !== false){
 				//update the value if unset: 
-				_this.updateLocalSetting( k, val);
+				_this.updateLocalValue(k, val);
 				
 				//update the local range:
 				if(this.default_encoder_config[k].range){
 					this.default_encoder_config[k].range.local_max = val;
 				}								
 			}
-		}
-		//update the aspect
-		this.default_encoder_config.aspect.local_aspect = this.getLocalValue('width') / this.getLocalValue('height');
-		
+		}					
 		//set all values to new default ranges & update slider: 
 		$j.each(this.default_encoder_config, function(inx, val){
 			if($j(_this.selector + ' ._'+inx).length!=0){
@@ -624,15 +655,9 @@ mvAdvFirefogg.prototype = {
 					//udate slider range
 					var new_max = (val.range.local_max)?val.range.local_max: val.range.max
 					$j( _this.selector + ' .slider_'+inx).slider('option', 'max', new_max);
-					
-					//if we have a default local value put it into the current range: 
-					if(_this.local_settings.pSet['custom']['conf'][inx]){															
-						//update the input: 			
-						$j(_this.selector + ' ._'+ inx).val( _this.local_settings.pSet['custom']['conf'][inx] );											
-					}
-					//update slider value:			
-					$j(_this.selctor + ' .slider_'+inx).slider('option', 
-						'value', $j(_this.selector + ' ._'+ inx).val() );
+										
+					//update slider/input value:
+					_this.updateInterfaceValue(inx, _this.local_settings.pSet['custom']['conf'][inx]);							
 				}
 			}
 		});

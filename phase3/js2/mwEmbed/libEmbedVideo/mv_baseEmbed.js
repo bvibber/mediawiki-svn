@@ -445,7 +445,7 @@ var ctrlBuilder = {
 		'play_head':{
 			'w':0, //special case (takes up remaining space) 
 			'o':function(){
-				return '<div class="play_head" id="mv_play_head_'+ctrlBuilder.id+'" style="width: ' + (ctrlBuilder.avaliable_width - 18) + 'px;"></div>';
+				return '<div class="play_head" id="mv_play_head_'+ctrlBuilder.id+'" style="width: ' + (ctrlBuilder.avaliable_width - 30) + 'px;"></div>';
 			}
 		}	    	                            
 	}    
