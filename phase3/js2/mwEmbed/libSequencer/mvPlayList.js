@@ -804,10 +804,10 @@ mvPlayList.prototype = {
 	//ads colors/dividers between tracks
 	colorPlayHead: function(){
 		if( !this.mv_seeker_width)
-			this.mv_seeker_width = $j('#mv_seeker_slider_'+this.id).width();					
+			this.mv_seeker_width = $j('#mv_play_head_'+this.id).width();					
 	
 		if( !this.track_len ) 
-			this.track_len = $j('#seeker_bar_'+this.id).css('width').replace(/px/, '');
+			this.track_len = $j('#mv_play_head_'+this.id).css('width').replace(/px/, '');
 			
 		//total duration:		
 		var pl_duration = this.getDuration();
@@ -838,7 +838,7 @@ mvPlayList.prototype = {
 			
 			//background:#DDD +clip.getColor();
 			
-			$j('#seeker_bar_'+_this.id).append(barHtml);
+			$j('#mv_play_head_'+_this.id).append(barHtml);
 																										
 			//js_log('offset:' + cur_pixle +' width:'+pwidth+' add clip'+ clip.id + ' is '+clip.embed.getDuration() +' = ' + perc +' of ' + _this.track_len);
 			cur_pixle+=pwidth;								

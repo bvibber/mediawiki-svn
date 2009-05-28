@@ -21,7 +21,7 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 	$wgJSAutoloadLocalClasses['j.fn.datePicker']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.datePicker.js';
 	
 	//jquery.ui
-	$wgJSAutoloadLocalClasses['j.ui']				= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.core.js';
+	$wgJSAutoloadLocalClasses['j.ui.mouse']				= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.core.js';
 	
 	$wgJSAutoloadLocalClasses['j.effects.blind']	= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/effects.blind.js';
 	$wgJSAutoloadLocalClasses['j.effects.drop']		= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/effects.drop.js';
@@ -65,14 +65,14 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 	$wgJSAutoloadLocalClasses['mvClipEdit'] 		= $wgMwEmbedDirectory . 'libClipEdit/mvClipEdit.js';
 	
 	//libEmbedObj:
-	$wgJSAutoloadLocalClasses['embedVideo'] 		= $wgMwEmbedDirectory . 'libEmbedObj/mv_baseEmbed.js';
-	$wgJSAutoloadLocalClasses['flashEmbed'] 		= $wgMwEmbedDirectory . 'libEmbedObj/mv_flashEmbed.js';
-	$wgJSAutoloadLocalClasses['genericEmbed'] 		= $wgMwEmbedDirectory . 'libEmbedObj/mv_genericEmbed.js';
-	$wgJSAutoloadLocalClasses['htmlEmbed'] 			= $wgMwEmbedDirectory . 'libEmbedObj/mv_htmlEmbed.js';
-	$wgJSAutoloadLocalClasses['javaEmbed'] 			= $wgMwEmbedDirectory . 'libEmbedObj/mv_javaEmbed.js';
-	$wgJSAutoloadLocalClasses['nativeEmbed'] 		= $wgMwEmbedDirectory . 'libEmbedObj/mv_nativeEmbed.js';
-	$wgJSAutoloadLocalClasses['quicktimeEmbed'] 	= $wgMwEmbedDirectory . 'libEmbedObj/mv_quicktimeEmbed.js';	
-	$wgJSAutoloadLocalClasses['vlcEmbed'] 			= $wgMwEmbedDirectory . 'libEmbedObj/mv_vlcEmbed.js';	
+	$wgJSAutoloadLocalClasses['embedVideo'] 		= $wgMwEmbedDirectory . 'libEmbedVideo/mv_baseEmbed.js';
+	$wgJSAutoloadLocalClasses['flashEmbed'] 		= $wgMwEmbedDirectory . 'libEmbedVideo/mv_flashEmbed.js';
+	$wgJSAutoloadLocalClasses['genericEmbed'] 		= $wgMwEmbedDirectory . 'libEmbedVideo/mv_genericEmbed.js';
+	$wgJSAutoloadLocalClasses['htmlEmbed'] 			= $wgMwEmbedDirectory . 'libEmbedVideo/mv_htmlEmbed.js';
+	$wgJSAutoloadLocalClasses['javaEmbed'] 			= $wgMwEmbedDirectory . 'libEmbedVideo/mv_javaEmbed.js';
+	$wgJSAutoloadLocalClasses['nativeEmbed'] 		= $wgMwEmbedDirectory . 'libEmbedVideo/mv_nativeEmbed.js';
+	$wgJSAutoloadLocalClasses['quicktimeEmbed'] 	= $wgMwEmbedDirectory . 'libEmbedVideo/mv_quicktimeEmbed.js';	
+	$wgJSAutoloadLocalClasses['vlcEmbed'] 			= $wgMwEmbedDirectory . 'libEmbedVideo/mv_vlcEmbed.js';	
 
 	//libSequencer:
 	$wgJSAutoloadLocalClasses['mvPlayList'] 		= $wgMwEmbedDirectory . 'libSequencer/mvPlayList.js';	

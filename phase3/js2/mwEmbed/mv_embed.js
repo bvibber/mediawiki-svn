@@ -44,8 +44,9 @@ if(!mv_media_iframe_path)
 //the default height/width of the video (if no style or width attribute provided)
 if(!mv_default_video_size)	
 	var mv_default_video_size = '400x300'; 
-
-var mediaWiki_mvEmbed_path = 'js2/mv_embed/';
+	
+//for when useing mv_embed with script-loader in root mediawiki path
+var mediaWiki_mvEmbed_path = 'js2/mwEmbed/';
 
 //
 
@@ -450,6 +451,7 @@ function mwdomReady(force){
 	if(document.getElementsByTagName("video").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
 		js_log('we have vids to process');		
+					
 		//load libs and proccess: 		    		
 		mvJsLoader.embedVideoCheck(function(){
 			//run any queded global events:
@@ -464,13 +466,11 @@ function mwdomReady(force){
 	}
 }
 //mwAddOnloadHook: ensure jQuery and the DOM are ready:  
-function mwAddOnloadHook( func ) {
-	//issue a style sheet request (no load checks on style sheets:)
-	
-	//make sure the skin/style sheets are avaliable always: 
-	loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
- 	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
- 			
+function mwAddOnloadHook( func ) {			 	
+		//make sure the skin/style sheets are avaliable always: 
+		loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
+	 	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
+	 			
 	//if we have already run the dom ready just run the function directly: 
 	if( mvJsLoader.doneReadyEvents ){
 		//make sure jQuery is there: 
@@ -663,21 +663,22 @@ function mv_jqueryBindings(){
 /* init the sequencer */
 function mv_do_sequence(initObj){
 	//debugger;
-	//issue a request to get the css file (if not already included):
-	loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
+	//issue a request to get the css file (if not already included):	
+	loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
 	loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');	
 	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
 	mvJsLoader.embedVideoCheck(function(){		
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
-				'mvPlayList':'libSequencer/mvPlayList.js',
-				'$j.ui'			:'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-				'$j.ui.droppable' : 'jquery/' + jQueryUiVN + '/ui/ui.droppable.js',
-				'$j.ui.draggable' : 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
-				'$j.ui.sortable':'jquery/' + jQueryUiVN + '/ui/ui.sortable.js',
-				'$j.ui.resizable':'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
-				'$j.contextMenu':'jquery/plugins/jquery.contextMenu.js',
-				'mvSequencer':'libSequencer/mvSequencer.js'		
+				'mvPlayList'		: 'libSequencer/mvPlayList.js',
+				'$j.ui'				: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+				'$j.ui.droppable' 	: 'jquery/' + jQueryUiVN + '/ui/ui.droppable.js',
+				'$j.ui.draggable' 	: 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
+				'$j.ui.sortable'	: 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js',
+				'$j.ui.resizable'	: 'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
+				'$j.ui.slider'		: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js',
+				'$j.contextMenu'	: 'jquery/plugins/jquery.contextMenu.js',
+				'mvSequencer'		: 'libSequencer/mvSequencer.js'		
 			},function(){					
 				js_log('calling new mvSequencer');						
 				//init the sequence object (it will take over from there) no more than one mvSeq obj: 
@@ -1010,13 +1011,14 @@ function getMvUniqueReqId(){
  */
 function getMvEmbedPath(){		
 	var mv_embed_url = getMvEmbedURL();				
-		
 	if( mv_embed_url.indexOf('mv_embed.js') !== -1 ){
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mv_embed.js'));
-	}else{
+	}else if(mv_embed_url.indexOf('mwScriptLoader.php')!==-1){
 		//script load is in the root of mediaWiki so include the default mv_embed extention path (if using the script loader)
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mwScriptLoader.php'))  + mediaWiki_mvEmbed_path ;
-	}
+	}else{
+		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('jsScriptLoader.php'));
+	}	
 	//absolute the url (if relative) (if we don't have mv_embed path)
 	if( mv_embed_path.indexOf('://') == -1){	
 		var pURL = parseUri( document.URL );
