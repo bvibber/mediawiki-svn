@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <title>Video element properties</title>
+ 	  <script type="text/javascript" src="../mv_embed.js"></script> 	
+  <style>
+    #render_box {
+      position:absolute;
+      width:400px;
+      height:300px;
+    }
+    #frame_overlay {
+      position:absolute;
+      width:400px;
+      height:300px;
+      top: 28px;
+      left: 9px;
+    }
+
+  </style>
+  <script>
+var pos = 0;
+var duration = 10;
+var step = 0.04;
+var render = false;
+
+function renderNext() {
+  $j('#pos').val(pos);
+  document.getElementById('render_box').setCurrentTime(pos, function(currentTime) {
+      return function() {
+        //call ogg.addFrame();
+        pos += step;
+        if(render && pos <= duration)
+          renderNext();
+      };
+  }(pos));
+}
+
+function startRender() {
+  if(!render) {
+    duration = document.getElementById('render_box').getDuration();
+    render = true;
+    pos = 0;
+    renderNext();
+  }
+}
+function stopRender() {
+  render = false;
+}
+function seek() {
+  var seekTo = $j('#pos').val();
+  document.getElementById('render_box').setCurrentTime(seekTo, function() { alert('seeked'); });
+}
+  </script>
+</head>
+<body>
+<playlist id="render_box" src="sample_smil.xml" controls="false"></playlist>
+<div id="frame_overlay"></div>
+
+<div id="info" style="position: absolute; top:360px">
+    <button onclick="startRender()">Start</button>
+    <button onclick="stopRender()">Stop</button>
+    position: <input type="text" id="pos" value="0.0" />
+    <button onclick="seek()">seek</button>
+    <span id="status"></span><br>
+</div>
+</body>
+</html>
+

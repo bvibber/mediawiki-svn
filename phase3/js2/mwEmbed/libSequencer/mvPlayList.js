@@ -769,6 +769,31 @@ mvPlayList.prototype = {
 			perc_offset = next_perc_offset;
 		} 	
 	},
+	setCurrentTime: function(pos, callback){
+		js_log('pl:setCurrentTime:' + pos + ' sts:' + this.seek_time_sec );
+		var plObj = this;
+		var prevClip=null;
+		
+		//jump to the clip at pos 
+		var currentOffset = 0;
+		var nextTime = 0;
+		for (var i in plObj.default_track.clips) {
+			var clip = plObj.default_track.clips[i];
+			nextTime = clip.getDuration();
+			if (currentOffset + nextTime > pos) {
+				//update the clip relative seek_time_sec
+				clipTime = pos - currentOffset;
+		    if (plObj.cur_clip.id != clip.id) {
+				  plObj.updateCurrentClip( clip );
+		    }
+				plObj.cur_clip.embed.setCurrentTime(clipTime, callback);
+	      plObj.currentTime = pos;	
+	      plObj.doSmilActions();	
+				return '';
+			}
+			currentOffset += nextTime;
+		} 	
+	},
 	//gets playlist controls large control height for sporting 
 	//next prev button and more status display
 	getControlsHTML:function(){
