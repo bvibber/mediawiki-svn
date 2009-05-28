@@ -88,7 +88,8 @@ var nativeEmbed = {
 	      _this.vid.currentTime = pos;
 	      var once = function(event) { callback(); _this.vid.removeEventListener('seeked', once, false) };
 	      _this.vid.addEventListener('seeked', once, false);
-	      _this.removeEventListener('loadedmetadata', once, false);
+
+	      _this.removeEventListener('loadedmetadata', loaded, false);
 	    };
 	    _this.addEventListener('loadedmetadata', loaded, false);
 		} else {
