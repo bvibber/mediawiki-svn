@@ -173,7 +173,7 @@ class LocalisationUpdate {
 		$basefilecontents = "";
 		// use cURL to get the SVN contents
 		if ( preg_match( "/^http/", $basefile ) ) {
-			while(empty($basefilecontents) && $attempts < $wgLocalisationUpdateRetryAttempts) {
+			while(empty($basefilecontents) && $attempts <= $wgLocalisationUpdateRetryAttempts) {
 				if($attempts > 0)
 					sleep(1);
 				$basefilecontents = Http::get( $basefile );
