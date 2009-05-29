@@ -27,7 +27,10 @@ loadGM( {
     "mv_other_properties":"Other Properties",
     "mv_resource_page":"Resource Page",
     
-    "mv_set_in_out_points": "Set in-out points"
+    "mv_set_in_out_points": "Set in-out points",
+    "mv_start_time": "Start Time",
+    "mv_end_time": "End Time",
+    "mv_preview_inout": "Preview/Play In-out points"
 });
 
 var default_clipedit_values = {
@@ -112,8 +115,9 @@ mvClipEdit.prototype = {
                 var start_ntp = (_this.rObj.embed.start_ntp) ? _this.rObj.embed.start_ntp : seconds2npt( 0 );
                 if(!start_ntp)
                     seconds2npt( 0 );
+                    
                 $j('#sub_cliplib_ic').html(
-                    _this.getSetInOut({
+                    _this.getSetInOutHtml({
                         'start_ntp'    : start_ntp, 
                         'end_ntp'    :     end_ntp
                     })        
@@ -320,17 +324,16 @@ mvClipEdit.prototype = {
         $j('#'+this.control_ct).html('<h3>Edit Video Tools:</h3>');
         if( eb.supportsURLTimeEncoding() ){            
             $j('#'+this.control_ct).append( 
-                _this.getSetInOut({
+                _this.getSetInOutHtml({
                     'start_ntp'    : eb.start_ntp, 
-                    'end_ntp'    : eb.end_ntp        
+                    'end_ntp'    : eb.end_ntp   
                 }) 
             );
             _this.setInOutBindings();            
         }
         $j('#'+this.control_ct).append(    _this.getInsertDescHtml() );
         
-        if( _this.p_rsdObj && _this.p_rsdObj.import_url_mode == 'none'){
-            // in theory this code should never run since we should nto get past the repository checks 
+        if( _this.p_rsdObj && _this.p_rsdObj.import_url_mode == 'none'){            
             $j('#'+this.control_ct).append(     gM('no_import_by_url') + '<br>' +             
                 '<a href="#" class="mv_cancel_img_edit" title="' + gM('mv_cancel_image_insert')+'">' + gM('mv_cancel_image_insert') + '</a> ' );
         }else{                                        
@@ -340,56 +343,70 @@ mvClipEdit.prototype = {
     },
     setInOutBindings:function(){
         var _this = this;
-        //setup bindings for adjust / preview:
-        add_adjust_hooks( 'rsd', function(){
-            //update the resource
-             _this.applyVideoAdj();
-        });             
-        $j('#mv_preview_clip').click(function(){            
+        
+        var start_sec = npt2seconds($j('#'+this.control_ct + ' .startInOut').val() );
+        var end_sec   = npt2seconds($j('#'+this.control_ct + ' .endInOut').val() );
+        
+        //if we don't have 0 as start then assume we are in a range request and give some buffer area:          
+        var min_slider =  (start_sec - 60 < 0 ) ? 0 : start_sec - 60;
+        if(min_slider!=0){
+            var max_slider =  end_sec+60;
+        }else{
+            max_slider = end_sec;
+        }        
+        
+        $j('#'+this.control_ct + ' .inOutSlider').slider({
+            range: true,
+			min: min_slider,
+			max: max_slider,
+			values: [start_sec, end_sec],
+			slide: function(event, ui) {
+				js_log(" vals:"+  seconds2npt( ui.values[0] ) + ' : ' + seconds2npt( ui.values[1]) );
+				$j('#'+_this.control_ct + ' .startInOut').val( seconds2npt( ui.values[0] ) );
+				$j('#'+_this.control_ct + ' .endInOut').val( seconds2npt( ui.values[1] ) );
+			},
+			change:function(event, ui){
+			    do_video_time_update( seconds2npt( ui.values[0]), seconds2npt( ui.values[1] ) );
+			}            
+        });
+        
+        //preview button:
+        $j('#'+this.control_ct + ' .inOutPreviewClip').hover(
+            function(){
+                $j(this).addClass('ui-state-hover');
+            },
+            function(){
+                $j(this).removeClass('ui-state-hover');
+            }
+        ).click(function(){            
             $j('#embed_vid').get(0).stop();
             $j('#embed_vid').get(0).play();
-        });        
+        });      
+        //simple hover: 
+          
     },
-    getSetInOut:function( setInt ){
+    getSetInOutHtml:function( setInt ){
         return '<strong>' + gM('mv_set_in_out_points') + '</strong>'+
             '<table border="0" style="background: transparent; width:94%;height:50px;">'+
                 '<tr>' +
                     '<td style="width:50px">'+
-                        '<span style="font-size: small;" id="track_time_start_rsd">' + setInt.start_ntp +'</span>'+
+                        gM('mv_start_time') + 
+                        '<input class="ui-widget-content ui-corner-all startInOut" size="9" value="' + setInt.start_ntp +'">'+
                     '</td>' +
                     '<td>' +
-                        '<div style="border: 1px solid black; width: 100%; height: 5px; background-color: #888;" '+
-                            'id="container_track_rsd">'+                    
-                            '<div id="resize_rsd" class="ui-resizable ui-draggable">'+                        
-                                '<div class="ui-resizable-w ui-resizable-handle"'+
-                                    ' id="handle1_rsd" unselectable="on"/>'+    
-                                    
-                                '<div class="ui-resizable-e ui-resizable-handle" '+ 
-                                    ' id="handle2_rsd" unselectable="on"/>'+
-                                        
-                                '<div class="ui-dragSpan" id="dragSpan_rsd" style="cursor: move;"/>'+        
-                            '</div>'+
-                        '</div>'+
+                        '<div class="inOutSlider"></div>'+
                     '</td>' +
                     '<td style="width:50px">'+
-                        '<span style="font-size: small;" id="track_time_end_rsd">'+ setInt.end_ntp +'</span>'+
+                        gM('mv_end_time') + 
+                        '<input class="ui-widget-content ui-corner-all endInOut" size="9" value="'+ setInt.end_ntp +'">'+
                     '</td>' +
                 '</tr>' +
             '</table>'+
-            '<span style="float: left;">'+
-                '<label class="mv_css_form" for="mv_start_hr_rsd"><i>Start time:</i></label>'+
-                '<input id="mv_start_hr_rsd" class="mv_adj_hr" name="mv_start_hr_rsd" value="' + setInt.start_ntp + '" maxlength="8" size="8"/>'+
-            '</span>'+
-            '<span style="float: left;">'+
-                '<label for="mv_end_hr_rsd" class="mv_css_form"><i>End time:</i></label>'+
-                '<input name="mv_end_hr_rsd" id="mv_end_hr_rsd" value="' + setInt.end_ntp + '" maxlength="8" size="8" class="mv_adj_hr"/>'+
-            '</span>'+
-            '<div style="clear: both;"/>'+        
-            '<input id="mv_preview_clip" type="button" value="Preview/Play In-out points">';
+            '<a href="#" class="ui-state-default ui-corner-all ui-icon_link inOutPreviewClip"><span class="ui-icon ui-icon-video"></span>'+ gM('mv_preview_inout') +'</a>';                   
     },
     getInsertDescHtml:function(){    
         var o= '<h3>Inline Description</h3>'+                 
-                    '<textarea style="width:375px;" id="mv_inline_img_desc" rows="5" cols="30">';                
+                    '<textarea style="width:95%" id="mv_inline_img_desc" rows="5" cols="30">';                
         if( this.p_rsdObj ){
             //if we have a parent remote search driver let it parse the inline description        
             o+= this.rObj.pSobj.getInlineDescWiki( this.rObj );
@@ -398,11 +415,11 @@ mvClipEdit.prototype = {
         //js_log('getInsertDescHtml: ' + o );
         return o;
     },
-    getInsertAction:function(){
+    getInsertAction:function(){        
         return '<h3>Actions</h3>'+
-                '<input type="button" class="mv_insert_image_page" value="' + gM('mv_insert_image_page') + '"> '+                
-                '<input type="button" style="font-weight:bold" class="mv_preview_insert" value="' + gM('mv_preview_insert')+ '"> '+        
-                '<a href="#" class="mv_cancel_img_edit" title="' + gM('mv_cancel_image_insert')+'">' + gM('mv_cancel_image_insert') + '</a> ';
+                $j.btnHtml( gM('mv_insert_image_page'), 'mv_insert_image_page', 'check' ) + ' ' + 
+                $j.btnHtml( gM('mv_preview_insert'), 'mv_preview_insert', 'refresh') +  ' ' +
+                $j.btnHtml( gM('mv_cancel_image_insert'), 'mv_cancel_img_edit', 'close');
     },
     applyEdit:function(){
         js_log('applyEdit::' + this.media_type);
@@ -414,21 +431,23 @@ mvClipEdit.prototype = {
     },
     applyInsertControlBindings:function(){
         var _this = this;
-        $j('.mv_insert_image_page').click(function(){
+        $j('.mv_insert_image_page').btnBind().click(function(){
             _this.applyEdit();    
             //copy over the desc text to the resource object
             _this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
             _this.p_rsdObj.insertResource( _this.rObj );
         });
-        $j('.mv_preview_insert').click(function(){                    
+        $j('.mv_preview_insert').btnBind().click(function(){                    
             _this.applyEdit();
             //copy over the desc text to the resource object
             _this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
             js_log('going to call previewResource on rObj');
             _this.p_rsdObj.previewResource( _this.rObj );
         });
-        $j('.mv_cancel_img_edit').click( function(){
-            $j('#' + _this.parent_ct).fadeOut("fast");
+        $j('.mv_cancel_img_edit').btnBind().click( function(){
+            $j('#rsd_resource_edit').fadeOut("fast");
+            //restore the title: 
+            $j( _this.p_rsdObj.target_container ).dialog( 'option', 'title', gM('add_media_wizard'));
         });
     },
     setUpImageCtrl:function(){
@@ -502,8 +521,9 @@ mvClipEdit.prototype = {
         $j('#embed_vid').get(0).stop();    
         
         //update video related keys:        
-        this.rObj['start_time'] = $j('#mv_start_hr_rsd').val();
-        this.rObj['end_time']     = $j('#mv_end_hr_rsd').val();        
+        ;
+        this.rObj['start_time'] = $j('#'+this.control_ct + ' .startInOut').val();
+        this.rObj['end_time']   = $j('#'+this.control_ct + ' .endInOut').val() ; 
         
         //do the local video adjust
         if(typeof this.rObj.pSobj['applyVideoAdj'] != 'undefined'){            

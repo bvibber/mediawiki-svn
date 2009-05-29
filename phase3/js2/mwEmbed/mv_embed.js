@@ -666,7 +666,26 @@ function mv_jqueryBindings(){
                 myUp.setupForm();
             });
         }                
-    
+                
+        //shortcut to a themed button:
+        $.btnHtml = function(msg, className, iconId){
+           return '<a href="#" class="ui-state-default ui-corner-all ui-icon_link ' +
+                   className + '"><span class="ui-icon ui-icon-' + iconId + '" />' + 
+                   msg + '</a>';                          
+        }           
+        //shortcut to bind hover state:        
+        $.fn.btnBind = function(){
+            $j(this.selector).hover(
+                function(){
+                    $j(this).addClass('ui-state-hover');
+                },
+                function(){
+                    $j(this).removeClass('ui-state-hover');
+                }
+            )
+            return this;
+        }
+        
     })(jQuery);
 }  
 

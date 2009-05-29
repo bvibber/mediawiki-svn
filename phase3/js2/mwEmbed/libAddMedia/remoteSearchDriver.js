@@ -329,13 +329,19 @@ remoteSearchDriver.prototype = {
             });            
         }            
     },
-    doInitDisplay:function(){
+    doInitDisplay:function(){        
+        var _this = this;                
         //setup the parent container:
         this.init_modal();
         //fill in the html:
         this.init_interface_html();
         //bind actions: 
         this.add_interface_bindings();
+        
+        //update the target bining to just unhide the dialog: 
+         $j(this.target_invocation).unbind().click(function(){
+              $j(_this.target_container).dialog('open');
+         })
     },
     //gets the in and out points for insert position or grabs the selected text for search    
     getTexboxSelection:function(){    
@@ -381,7 +387,7 @@ remoteSearchDriver.prototype = {
         var _this = this;
         //add the parent target_container if not provided or missing 
         if(!_this.target_container || $j(_this.target_container).length==0){
-            $j('body').append('<div id="rsd_modal_target" title="' + gM('add_media_wizard') + '" ></div>');
+            $j('body').append('<div id="rsd_modal_target" style="position:relative" title="' + gM('add_media_wizard') + '" ></div>');
             _this.target_container = '#rsd_modal_target';
             js_log('appended: #rsd_modal_target' + $j(_this.target_container).attr('id'));
                 js_log('added target id:' + $j(_this.target_container).attr('id'));
@@ -415,7 +421,7 @@ remoteSearchDriver.prototype = {
                 if (resizeTimer) clearTimeout(resizeTimer);
                 var resizeTimer = setTimeout(adjustModal, 100);
             });*/
-        }     
+        }
     },
     getMaxModalLayout:function(border){
         if(!border)
@@ -436,9 +442,9 @@ remoteSearchDriver.prototype = {
         
         var out = '<div class="rsd_control_container" style="width:100%">' + 
                     '<form id="rsd_form" action="javascript:return false;" method="GET">'+                                            
-                        '<input type="text" tabindex="1" value="' + dq + '" maxlength="512" id="rsd_q" name="rsd_q" '+ 
-                            'size="20" autocomplete="off"/>'+                        
-                        '<a href="#" id="rms_search_button" class="ui-state-default ui-corner-all ui-icon_link"><span class="ui-icon ui-icon-search"></span>'+ gM('mv_media_search') +'</a>'+                        
+                        '<input class="ui-widget-content ui-corner-all" type="text" tabindex="1" value="' + dq + '" maxlength="512" id="rsd_q" name="rsd_q" '+ 
+                            'size="20" autocomplete="off"/> '+                        
+                        $j.btnHtml( gM('mv_media_search'), 'rms_search_button', 'search') +                                                
                     '</form>';                            
                 
         /*out+='<div id="rsd_options_bar" style="display:none;width:100%;height:0px;background:#BBB">';
@@ -465,14 +471,9 @@ remoteSearchDriver.prototype = {
         
         $j(this.target_container).html( out );    
         //add simple styles: 
-        $j('#rms_search_button').hover(
-            function(){
-                $j(this).addClass('ui-state-hover');
-            },
-            function(){
-                $j(this).removeClass('ui-state-hover');
-            }
-        );
+        $j(this.target_container + ' .rms_search_button').btnBind().click(function(){
+            _this.runSearch();
+        });
         
         //draw the tabs: 
         this.drawTabs();
@@ -919,18 +920,18 @@ remoteSearchDriver.prototype = {
         var overflow_style = ( mediaType =='video' )?'':'overflow:auto;';
         //append to the top level of model window: 
         $j( _this.target_container ).append('<div id="rsd_resource_edit" '+ 
-            'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
-                '<h3 id="rsd_resource_title" style="margin:4px;">' + gM('rsd_resource_edit', rObj.title )  +'</h3>'+
-                '<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:35px;left:5px;bottom:0px;'+
-                    'width:' + (maxWidth + 25) + 'px;" >' +
+            'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +              
+                '<div id="clip_edit_disp" style="position:absolute;' + overflow_style + 'width:100%;height:100%;padding:5px;'+
+                    'width:' + (maxWidth + 10) + 'px;" >' +
                         mv_get_loading_img('position:absolute;top:30px;left:30px') + 
                 '</div>'+
                 '<div id="clip_edit_ctrl" style="position:absolute;border:solid thin blue;'+
-                    'top:35px;left:' + ( maxWidth + 30 ) +'px;bottom:0px;right:0px;padding:5px;overflow:auto;">'+
+                    'left:' + ( maxWidth + 10 ) +'px;top:5px;bottom:0px;right:0px;overflow:auto;padding:5px;">'+
                     mv_get_loading_img() +                      
                 '</div>'+
             '</div>');
-        
+        //update add media wizard title:
+        $j( _this.target_container ).dialog( 'option', 'title', gM('add_media_wizard')+': '+ gM('rsd_resource_edit', rObj.title ) );          
         js_log('did append to: '+ _this.target_container );
         
         $j('#rsd_resource_edit').css('opacity',0);
@@ -1017,7 +1018,7 @@ remoteSearchDriver.prototype = {
         var _this = this;                                     
         var mvClipInit = {
                 'rObj':rObj, //the resource object    
-                'parent_ct':'rsd_resource_edit',
+                'parent_ct':'rsd_modal_target',
                 'clip_disp_ct':'clip_edit_disp',
                 'control_ct': 'clip_edit_ctrl',
                 'media_type': mediaType,
@@ -1052,9 +1053,9 @@ remoteSearchDriver.prototype = {
                         //add the re-sizable to the doLoad request:                
                         clibs['$j.ui.resizable']   ='jquery/' + jQueryUiVN + '/ui/ui.resizable.js';    
                         clibs['$j.fn.hoverIntent'] ='jquery/plugins/jquery.hoverIntent.js';
-                        mvJsLoader.doLoad(clibs, function(){    
+                        mvJsLoader.doLoad(clibs, function(){                                
                             //make sure the rsd_edit_img is hidden: 
-                            $j('#rsd_edit_img').hide();                                                                                    
+                            $j('#rsd_edit_img').remove();                                                                                    
                             //run the image clip tools 
                             _this.cEdit = new mvClipEdit( mvClipInit );
                         });    
@@ -1159,15 +1160,19 @@ remoteSearchDriver.prototype = {
                                     'bottom:0px;top:30px;right:0px;overflow:auto;">'+
                                     '<strong>Local Resource Title:</strong><br>'+
                                     '<input type="text" size="30" value="' + rObj.target_resource_title + '" readonly="true"><br>'+
-                                    '<strong>Edit WikiText Resource Description:</strong>(will be replaced by forms soon)'+                                                                                                    
-                                    '<textarea id="rsd_import_ta" id="mv_img_desc" style="width:90%;" rows="8" cols="50">'+
+                                    '<strong>Edit WikiText Resource Description:</strong>(will be replaced by forms soon)' +                                                                                                    
+                                    '<textarea id="rsd_import_ta" id="mv_img_desc" style="width:90%;" rows="8" cols="50">' +
                                         wt + 
-                                    '</textarea><br>'+
-                                    '<input type="checkbox" value="true" id="wpWatchthis" name="wpWatchthis" tabindex="7"/>'+
-                                    '<label for="wpWatchthis">Watch this page</label><br>'+
-                                    '<input id="rsd_import_apreview" type="button" value="Update Preview"> ' +
-                                    '<input style="font-weight: bold" id="rsd_import_doimport" type="button" value="Do Import Resource"> '+
-                                    '<a id="rsd_import_acancel" href="#">Cancel Import</a>'+                 
+                                    '</textarea><br>' +
+                                    '<input type="checkbox" value="true" id="wpWatchthis" name="wpWatchthis" tabindex="7"/>' +
+                                    '<label for="wpWatchthis">Watch this page</label><br><br><br>' +
+                                    
+                                    $j.btnHtml('Do Import Resource', 'rsd_import_doimport', 'check' ) + ' ' + 
+                                      
+                                    $j.btnHtml('Update Preview', 'rsd_import_apreview', 'refresh' ) + ' ' + 
+                                    
+                                    $j.btnHtml('Cancel Import', 'rsd_import_acancel', 'close' ) + ' ' + 
+                                                                                
                                 '</div>'+
                                 //output the rendered and non-renderd version of description for easy swiching:    
                         '</div>');            
@@ -1176,7 +1181,7 @@ remoteSearchDriver.prototype = {
                             $j('#rsd_import_desc').html(o);
                         });
                         //add bidings:                 
-                        $j('#rsd_import_apreview').click(function(){
+                        $j( _this.target_container + ' .rsd_import_apreview').btnBind().click(function(){
                             /*$j('#rsd_import_desc').show().html(
                                 mv_get_loading_img()
                             );*/
@@ -1186,7 +1191,7 @@ remoteSearchDriver.prototype = {
                                 $j('#rsd_import_desc').html(o);
                             });
                         });
-                        $j('#rsd_import_doimport').click(function(){                            
+                        $j(_this.target_container + ' .rsd_import_doimport').click(function(){                            
                 
                             //get an edittoken: 
                             do_api_req( {
@@ -1271,7 +1276,7 @@ remoteSearchDriver.prototype = {
                                 }
                             );                            
                         });
-                        $j('#rsd_import_acancel').click(function(){
+                        $j( _this.target_container + ' .rsd_import_acancel').click(function(){
                             $j('#rsd_resource_import').fadeOut("fast",function(){
                                 $j(this).remove();
                             });

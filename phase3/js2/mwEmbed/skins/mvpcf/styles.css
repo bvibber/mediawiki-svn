@@ -217,6 +217,12 @@ div.floatleft, table.floatleft {
 	margin-left:-5px;
 	margin-top:1px;
 }
+
+.inOutSlider .ui-slider-handle{
+	width:8px;	
+	cusror: move;
+}
+
 /*
 .videoPlayer .seeker {
 	float: right;
@@ -309,7 +315,7 @@ div.floatleft, table.floatleft {
 	width: 183px;
 	overflow: hidden;
 	position: absolute;
-	z-index: 100;
+	z-index: 9999;
 /*	margin: 0 0 0 230px;*/
 }
 *:first-child+html .videoOptions {margin-top: -20px;}
