@@ -390,8 +390,8 @@ remoteSearchDriver.prototype = {
             $j(_this.target_container).dialog({
                 bgiframe: true,
                 autoOpen: true,
-                height: 640,
-                width: 480,                
+                width: 800,
+                height: 600,                       
                 modal: true,
                 buttons: {            
                     'Cancel': function() {
@@ -437,9 +437,8 @@ remoteSearchDriver.prototype = {
         var out = '<div class="rsd_control_container" style="width:100%">' + 
                     '<form id="rsd_form" action="javascript:return false;" method="GET">'+                                            
                         '<input type="text" tabindex="1" value="' + dq + '" maxlength="512" id="rsd_q" name="rsd_q" '+ 
-                            'size="20" autocomplete="off"/>'+
-                            
-                        '<a href="#" id="rms_search_button" class="ui-state-default ui-corner-all" >'+ '<span class="ui-icon-search">' + gM('mv_media_search') + '</span></a>'+                        
+                            'size="20" autocomplete="off"/>'+                        
+                        '<a href="#" id="rms_search_button" class="ui-state-default ui-corner-all ui-icon_link"><span class="ui-icon ui-icon-search"></span>'+ gM('mv_media_search') +'</a>'+                        
                     '</form>';                            
                 
         /*out+='<div id="rsd_options_bar" style="display:none;width:100%;height:0px;background:#BBB">';
@@ -468,10 +467,10 @@ remoteSearchDriver.prototype = {
         //add simple styles: 
         $j('#rms_search_button').hover(
             function(){
-                $j(this).removeClass('ui-state-default').addClass('ui-state-hover');
+                $j(this).addClass('ui-state-hover');
             },
             function(){
-                $j(this).removeClass('ui-state-hover').addClass('ui-state-default');
+                $j(this).removeClass('ui-state-hover');
             }
         );
         

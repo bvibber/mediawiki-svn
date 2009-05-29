@@ -478,6 +478,10 @@ div.floatleft, table.floatleft {
 	z-index:3;
 }
 
+.rsd_control_container{
+	padding-bottom: 4px;
+}
+
 #SEQUENCER CSS:
 #resizable css:
 /*

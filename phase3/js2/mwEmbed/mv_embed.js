@@ -587,7 +587,7 @@ function mv_jqueryBindings(){
     js_log('mv_jqueryBindings');    
     (function($) {
         
-        $.fn.addMediaWiz = function( iObj ){            
+        $.fn.addMediaWiz = function( iObj, callback ){            
             //first set the cursor for the button to "loading" 
             $j(this.selector).css('cursor','wait').attr('title', gM('loading_title'));
                                     
@@ -610,7 +610,9 @@ function mv_jqueryBindings(){
                     '$j.ui.sortable'       : 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js'
                 }, function(){
                     iObj['instance_name']= 'rsdMVRS';
-                    _global['rsdMVRS'] = new remoteSearchDriver( iObj );        
+                    _global['rsdMVRS'] = new remoteSearchDriver( iObj );       
+                    if(callback)
+                       callback(); 
                 });
             });
         }

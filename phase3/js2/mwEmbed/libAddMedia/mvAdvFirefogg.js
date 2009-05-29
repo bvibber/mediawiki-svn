@@ -616,11 +616,11 @@ mvAdvFirefogg.prototype = {
             value = parseInt(value);
         
         //step value: 
-        if(dec.step){
+        /*if(dec.step){
             if((value % dec.step)!=0){
                 value = value - (value % dec.step);
             }
-        }    
+        }*/   
         
         js_log('update:local_settings:custom:conf:'+ confKey + ' = ' + value); 
         this.local_settings.pSet['custom']['conf'][confKey] = value;                        

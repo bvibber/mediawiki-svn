@@ -285,7 +285,8 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
                 //if set to passthough update the interface:
                 if(_this.encoder_settings['passthrough']==true){
                     $j(_this.target_passthrough_mode).show();
-                }else{                        
+                }else{                    
+                    $j(_this.target_passthrough_mode).hide();    
                     //if set to encoder expose the encode button: 
                     if( !_this.form_rewrite ){
                         $j(_this.target_btn_save_local_file).show();
@@ -324,15 +325,22 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
             ext = sf.substring( sf.lastIndexOf('.')+1 ).toLowerCase();
         }
         //ogg video or audio
-        if( $j.inArray(ext, _this.ogg_extensions) > -1 ){        
-            //in the default case passthrough    
+        var cat =  _this.sourceFileInfo.contentType; 
+                  
+        //set to passthrough by default (images, arbitrary files that we want to send with http chunks) 
+        this.encoder_settings['passthrough'] = false;
+        
+        //see if we have video or audio:  
+        if( _this.sourceFileInfo.contentType.indexOf("video/") != -1 ||
+            _this.sourceFileInfo.contentType.indexOf("audio/") != -1 ){
+             _this.encoder_settings['passthrough'] = false; 
+        }
+                                
+        //see if we have ogg video: 
+        if(_this.sourceFileInfo.contentType.indexOf("video/ogg") != -1 ){
             _this.encoder_settings['passthrough'] = true;
-        }else if( $j.inArray(ext, _this.video_extensions) > -1 ){
-            //we are going to run the encoder with default settings.         
-            _this.encoder_settings['passthrough'] = false;    
-        }else{        
-            _this.encoder_settings['passthrough']  = true;
-        }    
+        }                 
+        js_log('base autoEncoderSettings::' + _this.sourceFileInfo.contentType  + ' passthrough:' + _this.encoder_settings['passthrough']);
     },
     getProgressTitle:function(){
         js_log("fogg:getProgressTitle f:" + this.fogg_enabled  + ' rw:' + this.form_rewrite);
