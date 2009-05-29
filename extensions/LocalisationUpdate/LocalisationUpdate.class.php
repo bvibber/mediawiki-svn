@@ -44,7 +44,7 @@ class LocalisationUpdate {
 		
 		// Update all Extension messages
 		foreach ( $wgExtensionMessagesFiles as $extension => $locFile ) {
-			$result = self::updateExtensionMessages( $locFile, $extension, $verbose );
+			$result += self::updateExtensionMessages( $locFile, $extension, $verbose );
 		}
 
 		// And output the result!
@@ -168,14 +168,21 @@ class LocalisationUpdate {
 	}
 
 	public static function getFileContents( $basefile ) {
+		global $wgLocalisationUpdateRetryAttempts;
+		$attempts = 0;
 		$basefilecontents = "";
 		// use cURL to get the SVN contents
 		if ( preg_match( "/^http/", $basefile ) ) {
-			$basefilecontents = Http::get( $basefile );
-			if ( empty( $basefilecontents ) ) {
-				self::myLog( "Cannot get the contents of " . $basefile . " (curl)" );
-				return false;
+			while(empty($basefilecontents) && $attempts < $wgLocalisationUpdateRetryAttempts) {
+				if($attempts > 0)
+					sleep(1);
+				$basefilecontents = Http::get( $basefile );
+				$attempts++;
 			}
+			if ( empty( $basefilecontents )  ) {
+					self::myLog( "Cannot get the contents of " . $basefile . " (curl)" );
+					return false;
+				}
 		} else {// otherwise try file_get_contents
 			if ( !$basefilecontents = file_get_contents( $basefile ) ) {
 				self::myLog( "Cannot get the contents of " . $basefile );

@@ -22,3 +22,5 @@ $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['LocalisationUpdate'] = $dir . 'LocalisationUpdate.i18n.php';
 $wgAutoloadClasses['LocalisationUpdate'] = $dir . 'LocalisationUpdate.class.php';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'LocalisationUpdate::schemaUpdates';
+
+$wgLocalisationUpdateRetryAttempts = 5;
