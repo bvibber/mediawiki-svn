@@ -1,32 +1,32 @@
-<?php 
+<?php
 if ( !defined( 'MEDIAWIKI' ) ) die(1);
 
-global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;			
-	
+global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
+
 	//the basis of the loader calls:
-	$wgJSAutoloadLocalClasses['mv_embed']			= $wgMwEmbedDirectory . 'mv_embed.js';	
-		
-	//core: 	
+	$wgJSAutoloadLocalClasses['mv_embed']			= $wgMwEmbedDirectory . 'mv_embed.js';
+
+	//core:
 	$wgJSAutoloadLocalClasses['window.jQuery']		= $wgMwEmbedDirectory . 'jquery/jquery-1.3.2.js';
-	
+
 	$wgJSAutoloadLocalClasses['j.secureEvalJSON']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.json-1.3.js';
-	
+
 	$wgJSAutoloadLocalClasses['j.cookie']			= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/external/cookie/jquery.cookie.js';
-	
+
 	$wgJSAutoloadLocalClasses['j.contextMenu']		= $wgMwEmbedDirectory . 'jquery/plugins/jquery.contextMenu.js';
 	$wgJSAutoloadLocalClasses['j.fn.autocomplete']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.autocomplete.js';
 	$wgJSAutoloadLocalClasses['j.fn.hoverIntent']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.hoverIntent.js';
-	$wgJSAutoloadLocalClasses['j.Jcrop'] 			= $wgMwEmbedDirectory . 'jquery/plugins/Jcrop/js/jquery.Jcrop.js';	
+	$wgJSAutoloadLocalClasses['j.Jcrop'] 			= $wgMwEmbedDirectory . 'jquery/plugins/Jcrop/js/jquery.Jcrop.js';
 	$wgJSAutoloadLocalClasses['Date.fromString']  	= $wgMwEmbedDirectory . 'jquery/plugins/date.js';
 	$wgJSAutoloadLocalClasses['j.fn.datePicker']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.datePicker.js';
-	
+
 	//jquery.ui
-	$wgJSAutoloadLocalClasses['j.ui.mouse']				= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.core.js';
-	
+	$wgJSAutoloadLocalClasses['j.ui']				= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.core.js';
+
 	$wgJSAutoloadLocalClasses['j.effects.blind']	= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/effects.blind.js';
 	$wgJSAutoloadLocalClasses['j.effects.drop']		= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/effects.drop.js';
 	$wgJSAutoloadLocalClasses['j.effects.pulsate']	= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/effects.pulsate.js';
-	$wgJSAutoloadLocalClasses['j.effects.transfer']	= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/effects.transfer.js';	
+	$wgJSAutoloadLocalClasses['j.effects.transfer']	= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/effects.transfer.js';
 	$wgJSAutoloadLocalClasses['j.ui.droppable']		= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.droppable.js';
 	$wgJSAutoloadLocalClasses['j.ui.slider']		= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.slider.js';
 	$wgJSAutoloadLocalClasses['j.effects.bounce']	= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/effects.bounce.js';
@@ -47,23 +47,23 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 	$wgJSAutoloadLocalClasses['j.ui.accordion']		= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.accordion.js';
 	$wgJSAutoloadLocalClasses['j.ui.draggable']		= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.draggable.js';
 	$wgJSAutoloadLocalClasses['j.ui.selectable']	= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.selectable.js';
-	
-	
+
+
 	//libAddMedia:
 	$wgJSAutoloadLocalClasses['mvFirefogg'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvFirefogg.js';
-	$wgJSAutoloadLocalClasses['mvAdvFirefogg'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvAdvFirefogg.js';	
-	
+	$wgJSAutoloadLocalClasses['mvAdvFirefogg'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvAdvFirefogg.js';
+
 	$wgJSAutoloadLocalClasses['remoteSearchDriver'] = $wgMwEmbedDirectory . 'libAddMedia/remoteSearchDriver.js';
 	$wgJSAutoloadLocalClasses['seqRemoteSearchDriver'] = $wgMwEmbedDirectory . 'libAddMedia/seqRemoteSearchDriver.js';
 	$wgJSAutoloadLocalClasses['baseRemoteSearch'] 	= $wgMwEmbedDirectory . 'libAddMedia/searchLibs/baseRemoteSearch.js';
 	$wgJSAutoloadLocalClasses['mediaWikiSearch'] 	= $wgMwEmbedDirectory . 'libAddMedia/searchLibs/mediaWikiSearch.js';
 	$wgJSAutoloadLocalClasses['metavidSearch'] 		= $wgMwEmbedDirectory . 'libAddMedia/searchLibs/metavidSearch.js';
-	$wgJSAutoloadLocalClasses['archiveOrgSearch'] 	= $wgMwEmbedDirectory . 'libAddMedia/searchLibs/archiveOrgSearch.js';	
-	$wgJSAutoloadLocalClasses['baseRemoteSearch']	= $wgMwEmbedDirectory . 'libAddMedia/searchLibs/baseRemoteSearch.js';	
-	
+	$wgJSAutoloadLocalClasses['archiveOrgSearch'] 	= $wgMwEmbedDirectory . 'libAddMedia/searchLibs/archiveOrgSearch.js';
+	$wgJSAutoloadLocalClasses['baseRemoteSearch']	= $wgMwEmbedDirectory . 'libAddMedia/searchLibs/baseRemoteSearch.js';
+
 	//libClipEdit:
 	$wgJSAutoloadLocalClasses['mvClipEdit'] 		= $wgMwEmbedDirectory . 'libClipEdit/mvClipEdit.js';
-	
+
 	//libEmbedObj:
 	$wgJSAutoloadLocalClasses['embedVideo'] 		= $wgMwEmbedDirectory . 'libEmbedVideo/mv_baseEmbed.js';
 	$wgJSAutoloadLocalClasses['flashEmbed'] 		= $wgMwEmbedDirectory . 'libEmbedVideo/mv_flashEmbed.js';
@@ -71,13 +71,13 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 	$wgJSAutoloadLocalClasses['htmlEmbed'] 			= $wgMwEmbedDirectory . 'libEmbedVideo/mv_htmlEmbed.js';
 	$wgJSAutoloadLocalClasses['javaEmbed'] 			= $wgMwEmbedDirectory . 'libEmbedVideo/mv_javaEmbed.js';
 	$wgJSAutoloadLocalClasses['nativeEmbed'] 		= $wgMwEmbedDirectory . 'libEmbedVideo/mv_nativeEmbed.js';
-	$wgJSAutoloadLocalClasses['quicktimeEmbed'] 	= $wgMwEmbedDirectory . 'libEmbedVideo/mv_quicktimeEmbed.js';	
-	$wgJSAutoloadLocalClasses['vlcEmbed'] 			= $wgMwEmbedDirectory . 'libEmbedVideo/mv_vlcEmbed.js';	
+	$wgJSAutoloadLocalClasses['quicktimeEmbed'] 	= $wgMwEmbedDirectory . 'libEmbedVideo/mv_quicktimeEmbed.js';
+	$wgJSAutoloadLocalClasses['vlcEmbed'] 			= $wgMwEmbedDirectory . 'libEmbedVideo/mv_vlcEmbed.js';
 
 	//libSequencer:
-	$wgJSAutoloadLocalClasses['mvPlayList'] 		= $wgMwEmbedDirectory . 'libSequencer/mvPlayList.js';	
-	$wgJSAutoloadLocalClasses['mvSequencer']		= $wgMwEmbedDirectory . 'libSequencer/mvSequencer.js';	
-	
+	$wgJSAutoloadLocalClasses['mvPlayList'] 		= $wgMwEmbedDirectory . 'libSequencer/mvPlayList.js';
+	$wgJSAutoloadLocalClasses['mvSequencer']		= $wgMwEmbedDirectory . 'libSequencer/mvSequencer.js';
+
 	//libTimedText:
 	$wgJSAutoloadLocalClasses['mvTextInterface']	= $wgMwEmbedDirectory . 'libTimedText/mvTextInterface.js';
 ?>

@@ -390,9 +390,8 @@ remoteSearchDriver.prototype = {
             $j(_this.target_container).dialog({
                 bgiframe: true,
                 autoOpen: true,
-                height: layout.h ,
-                width: layout.w,
-                position: [layout.t,layout.r],
+                height: 640,
+                width: 480,                
                 modal: true,
                 buttons: {            
                     'Cancel': function() {
@@ -405,7 +404,7 @@ remoteSearchDriver.prototype = {
             });
             //for some reaons the width does not "stick on init: 
             //$j(_this.target_container).dialog('option', 'width', 800);
-            var resizeTimer = false;
+            /*var resizeTimer = false;
             $j(window).bind('resize', function() {
                 var adjustModal = function(){
                     var layout = _this.getMaxModalLayout();
@@ -415,7 +414,7 @@ remoteSearchDriver.prototype = {
                 }
                 if (resizeTimer) clearTimeout(resizeTimer);
                 var resizeTimer = setTimeout(adjustModal, 100);
-            });
+            });*/
         }     
     },
     getMaxModalLayout:function(border){

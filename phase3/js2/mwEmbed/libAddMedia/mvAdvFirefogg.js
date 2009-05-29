@@ -202,7 +202,7 @@ mvAdvFirefogg.prototype = {
         },
         'location':{
             't'    : "Location",
-            'type'    : 'location',
+            'type'    : 'string',
             'group' : 'meta',
             'help'    : "The location of the footage"
         },
@@ -219,9 +219,9 @@ mvAdvFirefogg.prototype = {
             'help'    : "The Copyright of the clip"
         },
         'license':{
-            't'    : "License",
-            'type'    : 'url-license',
-            'group'    : 'meta',
+            't'       : "License",
+            'type'    : 'string',
+            'group'   : 'meta',
             'help'    : "The license of the clip (preferably a creative commons url)"
         },
         'contact':{
@@ -356,8 +356,13 @@ mvAdvFirefogg.prototype = {
         //switch on the config type
         switch(    cConf.type ){                    
             case 'string':
+            case 'date':
             case 'int':
                 out+= '<input type="text" class="_' + cK + ' text ui-widget-content ui-corner-all" value="' + dv + '" >' ;
+            break;
+            case 'boolean':
+                var checked_attr = (dv===true)?' checked="true"':'';
+                out+='<input type="checkbox" class="_'+cK+ ' ui-widget-content ui-corner-all" ' + checked_attr + '>';
             break;
             case 'slider':    
                 var strMax = this.default_encoder_config[ cK ].range.max + '';            
@@ -465,14 +470,30 @@ mvAdvFirefogg.prototype = {
             //setup bindings for change values: (validate input)         
             
             switch(    cConf.type ){    
+                case 'boolean':
+                    $j(_this.selector + ' ._'+cK).click(function(){
+                        _this.updateLocalValue(  _this.getClassId(this), $j(this).is(":checked") );
+                    })
+                break;
+                case 'select':
                 case 'string':
                     //@@check if we have a validate function on the string
-                    $j(_this.selector + ' ._'+cK).change(function(){        
+                    $j(_this.selector + ' ._'+cK).change(function(){                                
                         $j(this).val( _this.updateLocalValue(
                             _this.getClassId(this), 
                             $j(this).val() ));
                         _this.updatePresetSelection('custom');
                     })
+                break;
+                case 'date':
+                    $j(_this.selector + ' ._'+cK).datepicker({
+                			changeMonth: true,
+                			changeYear: true,
+                			dateFormat: 'd MM, yy',   
+                			onSelect: function(dateText) {
+                			    _this.updateInterfaceValue(_this.getClassId(this), dateText);        
+                			}
+                	});                
                 break;
                 case 'slider':                                        
                     $j(this.selector + ' .slider_' + cK ).slider({
@@ -513,13 +534,9 @@ mvAdvFirefogg.prototype = {
                         $j(this).val(valdVal);
                         //update the slider
                         js_log("update: " + _this.selector + ' .slider' + scid);
-                        $j(_this.selector + ' .slider'+ scid).slider('option', 'value', valdVal );
-                        
+                        $j(_this.selector + ' .slider'+ scid).slider('option', 'value', valdVal );                        
                     });                                                                                
-                break
-                case 'select':
-                    
-                break;
+                break        
             }
         }    
         $j(this.target_control_container).accordion({ 
@@ -533,9 +550,21 @@ mvAdvFirefogg.prototype = {
         this.updateValuesInHtml();
     },
     updatePresetSelection:function( pKey ){
-        //update the preset desc
-        this.updatePresetDesc(pKey);    
-        //@@todo other updates    
+        //update the local key:
+        this.local_settings.d = pKey;    
+         //js_log('update preset desc: '+ pKey);
+        var pset_desc = '';
+        if(this.local_settings.pSet[ pKey  ].desc){
+            pset_desc = this.local_settings.pSet[ pKey  ].desc;
+        }else{
+            pset_desc = gM('fogg-preset-'+ pKey);
+        }
+        //update the preset title:        
+        $j( this.selector + ' .gd_preset' ).html( 
+            gM('fogg-cg-preset', pset_desc) 
+        );
+        //update the selector
+        $j(this.selector + ' ._preset_select').val(pKey);
     },
     /*
      * updates the interface 
@@ -569,42 +598,46 @@ mvAdvFirefogg.prototype = {
     },
     updateLocalValue:function(confKey, value){    
         //update the local value (return the value we acutally set)    
-        if(typeof this.default_encoder_config[confKey] != 'undefined'){
-            dec = this.default_encoder_config[confKey];
-            if(dec.range){
-                value = parseInt(value);
-                var min = ( dec.range.local_min) ? dec.range.local_min  :dec.range.min;
-                if(value < min)            
-                    value = min;
-                var max = ( dec.range.local_max) ? dec.range.local_max : dec.range.max
-                if(value > max)
-                    value = max;
-            }            
-            if(dec.type=='int')
-                value = parseInt(value);
-            
-            //step value: 
-            if(dec.step){
-                if((value % dec.step)!=0){
-                    value = value - (value % dec.step);
-                }
-            }    
-            
-            //js_log('update:local_settings:custom:conf:'+ confKey + ' = ' + value); 
-            this.local_settings.pSet['custom']['conf'][confKey] = value;                        
-            
-            return value;
-        }        
-        return value;
+        if(typeof this.default_encoder_config[confKey] == 'undefined'){
+          js_log("Error:could not update conf key:" + confKey)
+          return value;
+        }
+        dec = this.default_encoder_config[confKey];
+        if(dec.range){
+            value = parseInt(value);
+            var min = ( dec.range.local_min) ? dec.range.local_min  :dec.range.min;
+            if(value < min)            
+                value = min;
+            var max = ( dec.range.local_max) ? dec.range.local_max : dec.range.max
+            if(value > max)
+                value = max;
+        }            
+        if(dec.type=='int')
+            value = parseInt(value);
+        
+        //step value: 
+        if(dec.step){
+            if((value % dec.step)!=0){
+                value = value - (value % dec.step);
+            }
+        }    
+        
+        js_log('update:local_settings:custom:conf:'+ confKey + ' = ' + value); 
+        this.local_settings.pSet['custom']['conf'][confKey] = value;                        
+        
+        return value;            
     },    
     getLocalValue:function(confKey){
         return this.local_settings.pSet['custom']['conf'][confKey];
     },
     getClassId:function(elm, rmstr){
         var elmclass = $j(elm).attr("class").split(' ').slice(0,1).toString();
-        if(rmstr)
+        if(rmstr){
             return elmclass.replace( rmstr, '' );
-        return elmclass;
+        }else{
+            //strip leading underscore:
+            return (elmclass[0]=='_')?elmclass.substr(1):elmclass;
+        }        
     },
     /*
      * sets up the autoEncoder settings
@@ -631,31 +664,35 @@ mvAdvFirefogg.prototype = {
         for(var i in this.sourceFileInfo){            
             var val = this.sourceFileInfo[i];
             var k = false;
+            var maxVal= false;
             switch(i){
                 //do nothing with these:                
                 case 'bitrate': 
                     k = 'videoBitrate'; 
-                    val = (val*2 > this.default_encoder_config[k])?this.default_encoder_config[k]:val*2;
+                    maxVal = (val*2 > this.default_encoder_config[k])?this.default_encoder_config[k]:val*2;
                 break;    
                 case 'audio_bitrate': 
                     k = 'audioBitrate'; 
-                    val = (val*2 > this.default_encoder_config[k])?this.default_encoder_config[k]:val*2;
+                    maxVal = (val*2 > this.default_encoder_config[k])?this.default_encoder_config[k]:val*2;
                 break;                                
                 case 'width': 
-                    k = 'width';                                    
+                    k = 'width';
+                    maxVal = val;                                    
                 break;            
                 case 'height': 
-                    k = 'height'; 
+                    k = 'height';
+                    maxVal = val; 
                 break;                        
             }            
             if( k !== false){
                 //update the value if unset: 
-                _this.updateLocalValue(k, val);
-                
-                //update the local range:
+                _this.updateLocalValue(k, val);                                                           
+            }
+            if( maxVal ){
+                 //update the local range:
                 if(this.default_encoder_config[k].range){
-                    this.default_encoder_config[k].range.local_max = val;
-                }                                
+                    this.default_encoder_config[k].range.local_max = maxVal;
+                }    
             }
         }                    
         //set all values to new default ranges & update slider: 
@@ -674,24 +711,17 @@ mvAdvFirefogg.prototype = {
         //update values
         this.updateValuesInHtml();
     },
-    updatePresetDesc:function(pKey){
-        //js_log('update preset desc: '+ pKey);
-        var pset_desc = '';
-        if(this.local_settings.pSet[ pKey  ].desc){
-            pset_desc = this.local_settings.pSet[ pKey  ].desc;
-        }else{
-            pset_desc = gM('fogg-preset-'+ pKey);
-        }
-        //update the preset title:        
-        $j( this.selector + ' .gd_preset' ).html( 
-            gM('fogg-cg-preset', pset_desc) 
-        );
-    },
+    doEncode:function(){
+        //update the encoder settings (from local settings)
+        pKey = this.local_settings.d;        
+        this.encoder_settings = this.local_settings.pSet[ pKey ].conf;        
+        this.basefogg_doEncode();
+    },    
     updateValuesInHtml:function(){
         js_log('updateValuesInHtml::');
         var _this = this;        
         var pKey = this.local_settings.d;        
-        this.updatePresetDesc( pKey );                                
+        this.updatePresetSelection( pKey );                                
                 
         //set the actual HTML & widgets based on any local settings values:        
         $j.each(_this.local_settings.pSet['custom']['conf'], function(inx, val){                        

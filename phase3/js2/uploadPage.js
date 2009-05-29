@@ -22,14 +22,9 @@ var mwUploadHelper = {
         }else{            
             //Add basic upload profile support ( http status monitoring, progress box for browsers that support it etc.) 
             if($j('#wpUploadFileURL').length != 0){
-                mvJsLoader.doLoad({
-                    'mvBaseUploadInterface': 'libAddMedia/mvBaseUploadInterface.js'
-                },function(){                
-                    myUp = new mvBaseUploadInterface( { 
-                            'api_url'   : wgServer + wgScriptPath + '/api.php',
-                            'target_edit_from' : '#mw-upload-form' 
-                            } );
-                    myUp.setupForm();
+                $j('#wpUploadFileURL').baseUploadInterface({ 
+                    'api_url'   : wgServer + wgScriptPath + '/api.php',
+                    'target_edit_from' : '#mw-upload-form' 
                 });                
             }
         }

@@ -3,8 +3,7 @@
  * 
  * this base uploader is optionally extended by firefogg
  */
- 
- loadGM({ 
+loadGM({ 
 	"upload-transcode-in-progress":"Doing Transcode & Upload (do not close this window)",
 	"upload-in-progress": "Upload in Progress (do not close this window)",
 	"upload-transcoded-status": "Transcoded",
@@ -16,6 +15,8 @@
 	"mv_upload_done" 	  : "Your upload <i>should be</i> accessible <a href=\"$1\">here</a>",
 	"upload-unknown-size": "Unknown size",	
 	
+	"mv-canecl-confim"     : "Are you sure you want to cancel?",
+	
 	"successfulupload" : "Successful upload",
 	"uploaderror" : "Upload error",
 	"uploadwarning": "Upload warning",
@@ -26,7 +27,11 @@
 	"fileexists" : "A file with this name exists already, please check <b><tt>$1</tt></b> if you are not sure if you want to change it.",
 	"fileexists-thumb": "<center><b>Existing file</b></center>",
 	"ignorewarning" : "Ignore warning and save file anyway",
-	"file-thumbnail-no" :  "The filename begins with <b><tt>$1</tt></b>"	
+	"file-thumbnail-no" :  "The filename begins with <b><tt>$1</tt></b>",
+	"go-to-resource" : "Go to Resource Page",
+	
+	"cancel-button"  : "Cancel",	
+	"ok-button"      : "OK"
 });
  
  
@@ -146,9 +151,9 @@ mvBaseUploadInterface.prototype = {
 		//issue a normal post request 		
 		if( _this.upload_mode == 'post' || $j('#wpSourceTypeFile').get(0).checked ){			
 			js_log('do normal submit form');
-			//update the status
-			_this.updateEmptyLoadingStatus();		
-						
+			//update the status to loading img: 
+			_this.updateProgressWin(_this.getProgressTitle(), mv_get_loading_img( 'left:40%;top:20%'));		
+							
 			//do normal post upload no status indicators (also since its a file I think we have to submit the form)
 			_this.form_post_override = true;
 			
@@ -305,19 +310,28 @@ mvBaseUploadInterface.prototype = {
 				error_msg = apiRes.error;		
 			//error space is too large so we don't front load it
 			//do a remote call to get the error msg: 
+			var return_to_form_txt = gM('return-to-form');
 			if(!error_code || error_code == 'unknown-error'){
 				if(typeof JSON != 'undefined'){
 					js_log('Error: apiRes: ' + JSON.stringify( apiRes) );
-				}
-				_this.updateUploadError( gM('unknown-error') + '<br>' + error_msg);	
+				}				
+				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg,{ 
+				   return_to_form_txt:function(){
+        		        $(this).dialog('close');
+        		     }  
+				});	
 			}else{
 				gMsgLoadRemote(error_code, function(){
 					js_log('send msg: ' + gM( error_code ));
-					_this.updateUploadError( gM( error_code ));
-				});
-			}		
-			js_log("api.erorr");		
-			return ;		
+					_this.updateProgressWin(  gM('uploaderror'), gM( error_code ),{ 
+				     return_to_form_txt:function(){
+        		            $(this).dialog('close');
+        		      }  
+				   });
+			    });		
+    			js_log("api.erorr");		
+    			return ;	
+			}	
 		}
 		//check for upload_session key for async upload:
 		if( apiRes.upload && apiRes.upload.upload_session_key ){							
@@ -331,8 +345,16 @@ mvBaseUploadInterface.prototype = {
 		}		
 		
 		if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){
-			_this.updateUploadDone( apiRes.upload.imageinfo.descriptionurl );
-			js_log('apiRes.upload.imageinfo:: updateUploadDone');
+		    var go_to_url_txt = gM('go-to-resource');
+		    var url = apiRes.upload.imageinfo.descriptionurl;
+			_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done', apiRes.upload.imageinfo.descriptionurl),
+			{
+			    go_to_url_txt:function(){
+			        document.URL = url;
+			    }
+			}
+			 );
+			js_log('apiRes.upload.imageinfo::'+url);
 			return ;
 		}		
 				
@@ -370,43 +392,43 @@ mvBaseUploadInterface.prototype = {
 			}
 			wmsg+='</ul>';			
 			if( apiRes.upload.warnings.sessionkey)
-			 	_this.warnings_sessionkey = apiRes.upload.warnings.sessionkey;			 	
-			_this.updateUploadWarning( wmsg );
+			 	_this.warnings_sessionkey = apiRes.upload.warnings.sessionkey;
+			var ignore_warning_string = gM('ignorewarning');			 	
+			_this.updateProgressWin(  gM('uploadwarning'),  '<h3>' + gM('uploadwarning') + '</h3>' +msg + '<p>',{
+			         ignore_warning_string: function() { 
+    				                         js_error('todo: ignore warnings action '); 
+                                            }
+                       }
+			          );
 			return false;
 		}							
 		
 		//nothing fits assume unkown error:
 		js_log('could not parse upload api request result');
-		_this.updateUploadError( gM('unknown-error'));
-		return false; 
-		
-	},
-	updateUploadWarning:function( msg ){
-		$j( '#dlbox-centered' ).html( '<h3>' + gM('uploadwarning') + '</h3>' +
-				msg + '<p>' + 
-				'<a id="mv-ignore-warnings">' + gM('ignorewarning') + '</a>'  
-		);
-		//setup ignore warnings binding and ajax query:
-	},	
-	updateUploadError:function( msg ){
-		$j( '#dlbox-centered' ).html( '<h3>' + gM('uploaderror') + '</h3>' +
-			msg  + '<p>' + 
-			'<a id="mv-return-to-form" href="#" >' + gM('return-to-form') + '</a>');	
-		$j('#mv-return-to-form').click(function(){
-			//hide / close up shop
-			$j('#dlbox-overlay,#dlbox-centered').hide();
-			return false;
+		var return_to_form_msg = gM('return-to-form');
+		_this.updateProgressWin( gM('uploaderror'), gM('unknown-error'), {
+		     return_to_form_msg: function(){
+		        $(this).dialog('close');
+		     }  
 		});
-	},	
-	updateUploadDone:function( url ){
-		$j( '#dlbox-centered' ).html( '<h3>' + gM('successfulupload') + '</h3>' +
-			gM( 'mv_upload_done', url) );	
+		return false; 		
 	},
-	updateEmptyLoadingStatus:function(){
-		$j('#dlbox-centered').html( '<h5>' + _this.getProgressTitle() + '</h5>' + 
-			mv_get_loading_img( 'left:40%;top:20%')
-		);
-	},
+	updateProgressWin:function(title_txt, msg, buttons){
+	    var _this = this;
+	     if(!title_txt)
+	       title_txt = _this.getProgressTitle();
+	     if(!msg)
+	       msg = mv_get_loading_img( 'left:40%;top:40px;')
+	     $j('#upProgressDialog').dialog({ title: title_txt });
+	     $j( '#upProgressDialog' ).html( msg );
+	     if(buttons){
+	         $j('#upProgressDialog').dialog('option','buttons', buttons);
+	     }else{	         
+	         //@@todo should convice the jquery ui people to not use object keys as user msg's
+	          eval('var bObj = {\''+ gM('ok-button')+ '\':function(){$j(this).dialog(\'close\');} }'); 
+	          $j('#upProgressDialog').dialog('option','buttons',bObj  );
+	     }	     
+	},		
 	getProgressTitle:function(){
 		return gM('upload-in-progress');
 	},	
@@ -418,31 +440,67 @@ mvBaseUploadInterface.prototype = {
 		return $j('form :first').get(0);
 	},
 	updateProgress:function( perc ){		
-		js_log('updateProgress::' + perc);
-		$j( '#up-progressbar' ).css( 'width', parseInt( perc * 100 ) + '%' );		
+	    //js_log('update progress: ' + perc);
+	    $j('#up-progressbar').progressbar('value', parseInt( perc * 100 ) );	
 		$j( '#up-pstatus' ).html( parseInt( perc * 100 ) + '% - ' );
 	},
 	/*update to jQuery.ui progress display type */
-	dispProgressOverlay:function(){
-		var _this = this;
-		//remove old instance: 
-		$j('#dlbox-centered,#dlbox-overlay').remove(); 	
-		//hard code style (since not always easy to import style sheets)
-		$j('body').append('<div id="dlbox-centered" class="dlbox-centered" style="'+
-				'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
-				'height:300px;padding: 10px;z-index:100;top:100px;bottom:40%;left:20%;" >'+		
-					'<h5>' + _this.getProgressTitle() + '</h5>' +
-					'<div id="up-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
-						'<div id="up-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
-					'</div>' +
-					'<span id="up-pstatus">0% - </span> ' +						 
-					'<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +				
-					'<span id="upload-stats-fileprogres"></span>'+		
-			'</div>' +					
-			'<div id="dlbox-overlay" class="dlbox-overlay" style="background:#000;cursor:wait;height:100%;'+
-						'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
-						'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');		
-		//fade them in:
-		$j('#dlbox-centered,#dlbox-overlay').show();
-	}	
+    dispProgressOverlay:function(){
+      var _this = this;
+	  //remove old instance: 
+      if($j('#upProgressDialog').length!=0){
+         $j('#upProgressDialog').dialog( 'destroy' ).remove();
+      }
+      //re add it: 
+	  $j('body').append('<div id="upProgressDialog" ></div>');
+	    
+      $j('#upProgressDialog').dialog({
+          title:_this.getProgressTitle(), 
+          bgiframe: true,
+		  modal: true,
+		  width:400,
+		  heigh:200,
+		  beforeclose: function(event, ui) {     		      
+		      if( event.button==0 ){    		   
+    		      if( confirm( gM('mv-canecl-confim') )){
+            	    _this.cancel_action();
+                  }
+              }else{
+                 //click on button (dont do close action);
+                 return true; 
+              }
+		  },		  
+		  buttons: _this.cancel_button()      
+      });      
+      $j('#upProgressDialog').html(
+      //set initial content: 
+        '<div id="up-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
+			'<div id="up-progressbar" style="height:15px;"></div>' +
+			'<span id="up-pstatus">0% - </span> ' +						 
+		    '<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +			
+		'</div>' 
+	  )
+      //setup progress bar: 
+       $j('#up-progressbar').progressbar({
+           value:0  
+       })      
+       //just display an empty progress window
+       $j('#upProgressDialog').dialog('open');
+ 
+    },
+    cancel_button:function(){
+       var _this = this;
+       var cancel_txt = gM('cancel-button');
+       //@@todo should convice the jquery ui people to not use object keys as user msg's (or patch and move upstream) 
+       eval('var res = {"' +gM('cancel-button') + '" : function(){  _this.cancel_action(this); } }' );
+       return res;
+    },    
+    cancel_action:function(dlElm){
+        //confirm:    
+        if( confirm( gM('mv-canecl-confim') )){
+            //@@todo (cancel the encode / upload)
+            //$(this).dialog('close');
+            alert('(sorry we do not yet support cancel)');
+        }  
+    }
 }

@@ -1109,8 +1109,7 @@ embedVideo.prototype = {
                 or=' or ';
             }            
             if( this.pc )
-                var missing_type = this.pc.type;                            
-            
+                var missing_type = this.pc.type;                                        
                js_log('no player found for given source type ' + missing_type);
                this.load_error= gM('mv_generic_missing_plugin', missing_type );                                           
         }        

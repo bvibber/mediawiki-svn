@@ -6,11 +6,13 @@ loadGM({
     'fogg-select_file'            : 'Select File', 
     'fogg-select_new_file'        : 'Select New File',
     'fogg-save_local_file'        : 'Save Ogg',
-    'fogg-check_for_fogg'        : 'Checking for Firefogg <blink>...</blink>',
-    'fogg-installed'            : 'Firefogg is Installed',
-    'fogg-please_install'        : 'You don\'t have firefogg installed, For improved uploads please <a href="$1">install firefogg</a> more <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">about firefogg</a>',
-    'fogg-use_latest_fox'        : 'For improved uploads please first install <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a>. <i>then revisit this page to install the <b>firefogg</b> extention</i>',    
-    'fogg-passthrough_mode'        : 'Your selected file is already ogg or not a video file',
+    'fogg-check_for_fogg'         : 'Checking for Firefogg <blink>...</blink>',
+    'fogg-installed'              : 'Firefogg is Installed',
+    'fogg-please_install'         : 'You don\'t have firefogg installed, For improved uploads please <a href="$1">install firefogg</a> more <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">about firefogg</a>',
+    'fogg-use_latest_fox'         : 'For improved uploads please first install <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a>. <i>then revisit this page to install the <b>firefogg</b> extention</i>',    
+    'fogg-passthrough_mode'       : 'Your selected file is already ogg or not a video file',
+    'fogg-transcoding'            : 'Encoding Video to Ogg',
+    'fogg-encoding-done'          : 'Encoding Done'
 });
 
 var firefogg_install_links =  {
@@ -195,10 +197,10 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
             _this.saveLocalFogg();
         });
     },
-    firefoggCheck:function(){
-        var _this = this;            
+    firefoggCheck:function(){                   
         if(typeof(Firefogg) != 'undefined' && Firefogg().version >= '0.9.6'){                        
-            _this.fogg = new Firefogg();    
+           this.fogg = new Firefogg();    
+           this.fogg_enabled = true;
            return true;
         }else{                        
             return false;
@@ -264,6 +266,8 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
             $j(_this.target_btn_select_file).hide();
             //show and setup binding for select new file: 
             $j(_this.target_btn_select_new_file).show().unbind().click(function(){
+                //create new fogg instance:                 
+                _this.fogg = new Firefogg();
                 _this.selectFogg();
             });
             //update if we are in passthrough mode or going to encode                    
@@ -331,10 +335,13 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
         }    
     },
     getProgressTitle:function(){
+        js_log("fogg:getProgressTitle f:" + this.fogg_enabled  + ' rw:' + this.form_rewrite);
         //return the parent if we don't have fogg turned on: 
         if(! this.fogg_enabled )
-            return this.pe_getProgressTitle();
-            
+            return this.pe_getProgressTitle();                   
+        if( !this.form_rewrite )
+          return gM('fogg-transcoding');
+        //else return our upload+transcode msg:                
         return gM('upload-transcode-in-progress');
     },    
     doUploadSwitch:function(){                
@@ -441,7 +448,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
             //update upload status:                        
             _this.doUploadStatus();
         }else{
-            js_log('done with encode (no upload cuz we don\'t have a target)');
+           _this.updateProgressWin(gM('fogg-encoding-done'), gM('fogg-encoding-done'));
         }
     },
     doUploadStatus:function() {    
@@ -484,9 +491,15 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
                        _this.procPageResponse( response_text );
                            
                    }else if( _this.upload_mode == 'api'){                                          
-                       if( _this.fogg.resultUrl ){                       
+                       if( _this.fogg.resultUrl ){        
+                            var go_to_url_txt = gM('go-to-resource');               
                            //should have an json result:
-                           _this.updateUploadDone( _this.fogg.resultUrl );    
+                           _this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done', _this.fogg.resultUrl), 
+                           {
+                			    go_to_url_txt:function(){
+                			        document.URL = _this.fogg.resultUrl;
+                			    }
+                		   });    
                        }else{
                            //done state with error? ..not really possible given how firefogg works
                            js_log(" upload done, in chunks mode, but no resultUrl!");

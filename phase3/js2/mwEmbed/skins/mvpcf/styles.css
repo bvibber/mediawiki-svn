@@ -674,3 +674,6 @@ div.rsd_selected {
 	zoom: 1;
 }
 
+.ui-progressbar-value{
+	background-image: url('images/pbar-ani.gif');
+}

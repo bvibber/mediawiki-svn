@@ -393,9 +393,9 @@ var mvJsLoader = {
         //make sure we have jQuery        
         _this.jQueryCheck(function(){
             _this.doLoad({
-                'embedVideo'    : 'libEmbedVideo/mv_baseEmbed.js',
-                '$j.cookie'        : 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',
-                '$j.ui.mouse'    : 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+                'embedVideo'      : 'libEmbedVideo/mv_baseEmbed.js',
+                '$j.cookie'       : 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',
+                '$j.ui'           : 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
                 '$j.ui.slider'    : 'jquery/' + jQueryUiVN + '/ui/ui.slider.js'
                 },function(){
                     //set up embedTypes (load from cookie if possible)         
@@ -600,14 +600,14 @@ function mv_jqueryBindings(){
             mvJsLoader.jQueryCheck(function(){
                 //load search specifc extra stuff 
                 mvJsLoader.doLoad({
-                    'remoteSearchDriver': 'libAddMedia/remoteSearchDriver.js',
+                    'remoteSearchDriver'   : 'libAddMedia/remoteSearchDriver.js',
                     '$j.cookie'            : 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',
                     '$j.ui'                : 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-                    '$j.ui.resizable'    : 'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
-                    '$j.ui.draggable'    : 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
-                    '$j.ui.dialog'        : 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js',
-                    '$j.ui.tabs'        : 'jquery/' + jQueryUiVN + '/ui/ui.tabs.js',
-                    '$j.ui.sortable'    : 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js'
+                    '$j.ui.resizable'      : 'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
+                    '$j.ui.draggable'      : 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
+                    '$j.ui.dialog'         : 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js',
+                    '$j.ui.tabs'           : 'jquery/' + jQueryUiVN + '/ui/ui.tabs.js',
+                    '$j.ui.sortable'       : 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js'
                 }, function(){
                     iObj['instance_name']= 'rsdMVRS';
                     _global['rsdMVRS'] = new remoteSearchDriver( iObj );        
@@ -618,27 +618,26 @@ function mv_jqueryBindings(){
         $.fn.firefogg = function( iObj, callback ) {        
             //add base theme css:
             loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
-            loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );
-            
+            loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );            
             // @@todo should refactor  mvAdvFirefogg as jQuery plugin
-            iObj['selector'] = this.selector;    
-            
+            iObj['selector'] = this.selector;                
             loadSet = {                
-                'mvBaseUploadInterface'    : 'libAddMedia/mvBaseUploadInterface.js',
-                'mvFirefogg'            : 'libAddMedia/mvFirefogg.js'
-            };            
-            //see if we need to load the advanced firefog controls and associated ui components:            
-            if( iObj.encoder_interface ){                               
-                                 
-                //@@todo would be nice to have a "dependency" map we could use/
+                'mvBaseUploadInterface' : 'libAddMedia/mvBaseUploadInterface.js',
+                'mvFirefogg'            : 'libAddMedia/mvFirefogg.js',
+                '$j.ui'                 : 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+                '$j.ui.progressbar'     : 'jquery/' + jQueryUiVN + '/ui/ui.progressbar.js',
+                '$j.ui.dialog'          : 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js'                                
+            };
+            //load the advanced firefog controls and associated ui components:            
+            if( iObj.encoder_interface ){ 
+                                                              
                 loadSet['mvAdvFirefogg']    = 'libAddMedia/mvAdvFirefogg.js';
-                loadSet['$j.cookie']        = 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js';
-                loadSet['$j.ui']            = 'jquery/' + jQueryUiVN + '/ui/ui.core.js';
+                loadSet['$j.cookie']        = 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js';              
                 loadSet['$j.ui.accordion']  = 'jquery/' + jQueryUiVN + '/ui/ui.accordion.js';
-                loadSet['$j.ui.slider']     = 'jquery/' + jQueryUiVN + '/ui/ui.slider.js';
-                
-                //load jquery ui css:
-            }
+                loadSet['$j.ui.slider']     = 'jquery/' + jQueryUiVN + '/ui/ui.slider.js';       
+                loadSet['$j.ui.datepicker'] =  'jquery/' + jQueryUiVN + '/ui/ui.datepicker.js';
+                          
+            }            
             //make sure we have everything loaded that we need: 
             mvJsLoader.doLoad( loadSet, function(){            
                 js_log('firefogg libs loaded. target select:' + iObj.selector);
@@ -647,13 +646,24 @@ function mv_jqueryBindings(){
                     var myFogg = new mvAdvFirefogg( iObj );
                 }else{
                     var myFogg = new mvFirefogg( iObj );
-                }            
-                    
+                }                               
                 if(myFogg)
                     myFogg.doRewrite( callback );
                         
             });        
         }
+        
+        $.fn.baseUploadInterface = function(iObj){
+            mvJsLoader.doLoad({
+                  'mvBaseUploadInterface' : 'libAddMedia/mvBaseUploadInterface.js',
+                  '$j.ui'                 : 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+                  '$j.ui.progressbar'     : 'jquery/' + jQueryUiVN + '/ui/ui.progressbar.js',
+                  '$j.ui.dialog'          : 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js'    
+            },function(){                
+                myUp = new mvBaseUploadInterface( iObj );
+                myUp.setupForm();
+            });
+        }                
     
     })(jQuery);
 }  
