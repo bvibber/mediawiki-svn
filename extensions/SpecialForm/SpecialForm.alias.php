@@ -109,6 +109,11 @@ $aliases['mk'] = array(
 	'Form' => array( 'Формулар', 'Форма' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'Form' => array( 'Formola' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Form' => array( 'Formelier' ),

@@ -254,9 +254,10 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Meisam
  */
 $messages['fa'] = array(
-	'findspam' => 'کشف هرزنگاری',
+	'findspam' => 'کشف هرزنویسی',
 	'findspam-desc' => 'یک [[Special:FindSpam|صفحهٔ ویژه]] می‌افزاید که امکان کشف هرزنگاری‌های تازه را فراهم می‌کند',
 	'findspam-ip' => 'نشانی اینترنتی:',
 	'findspam-ok' => 'قبول',

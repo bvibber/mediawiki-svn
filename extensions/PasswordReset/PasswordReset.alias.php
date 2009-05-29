@@ -116,6 +116,11 @@ $aliases['mk'] = array(
 	'Disabledusers' => array( 'ОневозможениКорисници' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'PasswordReset' => array( 'PasswordĠdida' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'PasswordReset' => array( 'Niej wachwoord instellen' ),

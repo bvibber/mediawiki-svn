@@ -9846,7 +9846,7 @@ $wdMessages['uk'] = array(
 	'ow_noedit_title' => 'Нема права редагувати',
 	'ow_noedit' => 'Вам не дозволено редагувати сторінки з набору даних "$1".
 Можете глянути [[{{MediaWiki:Ow editing policy url}}|наші правила редагування]].',
-	'ow_uipref_datasets' => 'Звичаєвий вигляд:',
+	'ow_uipref_datasets' => 'Звичайний вигляд:',
 	'ow_uiprefs' => 'Вікідані',
 	'ow_none_selected' => 'Нічого не обрано',
 	'ow_conceptmapping_help' => '<p>можливі дії: <ul>

@@ -134,10 +134,19 @@ $messages['avk'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'edituser-desc' => 'Дазваляе прывілеяваным удзельнікам рэдагаваць устаноўкі іншых удзельнікаў',
+	'edituser' => 'Рэдагаваць удзельніка',
+	'edituser-logout' => 'Вывесьці ўдзельніка з сыстэмы',
+	'edituser-username' => 'Імя ўдзельніка',
+	'edituser-dosearch' => 'Шукаць',
+	'edituser-nouser' => 'Пазначаны ўдзельнік не існуе',
+	'edituser-exempt' => 'Пазначаны ўдзельнік ня можа рэдагавацца',
+	'right-edituser' => 'рэдагаваньне ўстановак іншых удзельнікаў',
+	'right-edituser-exempt' => 'іншыя ня могуць рэдагаваць ўстаноўкі гэтага ўдзельніка',
 );
 
 /** Bulgarian (Български)

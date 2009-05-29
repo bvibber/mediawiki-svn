@@ -48,6 +48,11 @@ $aliases['ksh'] = array(
 	'CommunityVoice' => array( 'Metmaacherstemme' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'CommunityVoice' => array( 'VuċiKomunità', 'VuċiKomunitarja' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CommunityVoice' => array( 'Gemeenschapsstem' ),

@@ -145,6 +145,11 @@ $aliases['mk'] = array(
 	'HideRevision' => array( 'СокријРевизија' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'HideRevision' => array( 'AħbiReviżjoni' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'HideRevision' => array( 'Versie_verbargen' ),

@@ -79,6 +79,11 @@ $aliases['lb'] = array(
 	'TemplateLink' => array( 'Schabloune Link' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'TemplateLink' => array( 'ĦolqaMudell' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'TemplateLink' => array( 'Malverwiezing' ),

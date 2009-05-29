@@ -3645,6 +3645,7 @@ $messages['lb'] = array(
 	'code' => 'Code nokucken',
 	'code-rev-title' => 'r$1 - Versioun vum Code',
 	'code-comments' => 'Bemierkungen',
+	'code-references' => 'Versiounen déi duerno kommen',
 	'code-change-status' => 'huet de "Statut" vun $1 geännert',
 	'code-change-tags' => "huet '''Taggen''' fir $1 geännert",
 	'code-change-removed' => 'ewech geholl:',

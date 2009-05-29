@@ -390,9 +390,10 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author BlueDevil
  * @author Huji
+ * @author Meisam
  */
 $messages['fa'] = array(
-	'spamdifftool_cantedit' => 'متاسفیم؛ شما اجازه ویرایش فهرست سیاه هرزنگاری را ندارید.',
+	'spamdifftool_cantedit' => 'متاسفیم؛ شما اجازه ویرایش فهرست سیاه هرزنویسی را ندارید.',
 );
 
 /** French (Français)

@@ -124,7 +124,7 @@ $aliases['ms'] = array(
 
 /** Maltese (Malti) */
 $aliases['mt'] = array(
-	'CrossNamespaceLinks' => array( 'ĦoloqSpazjiTal-Isem' ),
+	'CrossNamespaceLinks' => array( 'ĦoloqSpazjiTal-Isem', 'ĦoloqSpazjiIsem' ),
 );
 
 /** Low German (Plattdüütsch) */

@@ -75,6 +75,11 @@ $aliases['mk'] = array(
 	'LogEntry' => array( 'ЗаписВоДневник' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'LogEntry' => array( 'DaħlaReġistru' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'LogEntry' => array( 'Logboekregel' ),

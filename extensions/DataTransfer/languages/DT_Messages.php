@@ -41,6 +41,7 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Purodha
  * @author Raymond
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'dt-desc' => 'Extension description displayed on [[Special:Version]].',
@@ -71,6 +72,11 @@ Used as XML tag name.',
 	'dt_import_editsummary' => '$1 is the file format: either CSV or XML',
 	'dt_import_success' => '* $1 is the number of pages
 * $2 is the file format: either CSV or XML',
+	'dt_importcsv_badheader' => 'The text "template_name[field_name]" can be translated.
+*$1 is a colomn number in the first row of the CVS file
+*$2 is the value found for the $1th colomn in the first line of the CSV file
+*$3 is the title label
+*$4 is a free text label',
 	'right-datatransferimport' => '{{doc-right}}',
 );
 

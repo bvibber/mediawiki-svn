@@ -77,6 +77,11 @@ $aliases['lb'] = array(
 	'SharedUserRights' => array( 'Gedeelte Benotzerrechter' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'SharedUserRights' => array( 'DrittjietUtentiMaqsuma' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'SharedUserRights' => array( 'Edelen_gebrukersrechen' ),

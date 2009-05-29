@@ -63,6 +63,13 @@ $messages['arz'] = array(
   #</pre><!-- اترك هذا السطر بمفرده -->',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'editsubpages-desc' => 'Дае магчымасьць адміністратарам з дапамогай [[MediaWiki:Unlockedpages]] дазваляць рэдагаваньне старонак і ўсіх падстаронак для ананімных удзельнікаў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

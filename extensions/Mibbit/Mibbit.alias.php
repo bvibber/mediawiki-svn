@@ -13,3 +13,8 @@ $aliases['en'] = array(
 	'Mibbit' => array( 'Mibbit' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'Mibbit' => array( 'Mibbit' ),
+);
+

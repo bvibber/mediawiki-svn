@@ -23,6 +23,11 @@ $aliases['ja'] = array(
 	'AdminLinks' => array( '管理者用リンク集' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'AdminLinks' => array( 'ĦoloqAmmin' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'AdminLinks' => array( 'Beheerdersverwijzingen' ),

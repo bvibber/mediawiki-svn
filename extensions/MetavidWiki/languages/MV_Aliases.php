@@ -97,7 +97,7 @@ $aliases['lb'] = array(
 
 /** Maltese (Malti) */
 $aliases['mt'] = array(
-	'MediaSearch' => array( 'FittexMidja' ),
+	'MediaSearch' => array( 'FittexMedja' ),
 );
 
 /** Dutch (Nederlands) */

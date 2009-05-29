@@ -97,6 +97,11 @@ $aliases['mk'] = array(
 	'ViewXML' => array( 'ВидиXML' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'ViewXML' => array( 'UriXML' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ViewXML' => array( 'XML_bekieken' ),

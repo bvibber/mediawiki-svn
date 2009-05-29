@@ -221,6 +221,18 @@ $messages['ia'] = array(
 	'right-adminlinks' => 'Vider le ligamine verso [[Special:AdminLinks|Ligamines pro administratores]]',
 );
 
+/** Italian (Italiano)
+ * @author Marco 27
+ */
+$messages['it'] = array(
+	'adminlinks_general' => 'Generale',
+	'adminlinks_editmainpagename' => 'Modifica il nome della pagina principale',
+	'adminlinks_users' => 'Utenti',
+	'adminlinks_createuser' => 'Crea un account',
+	'adminlinks_browsesearch' => 'Visualizza e ricerca',
+	'adminlinks_importexport' => 'Importa ed esporta',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

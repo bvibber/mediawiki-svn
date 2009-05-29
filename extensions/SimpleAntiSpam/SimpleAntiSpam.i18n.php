@@ -224,12 +224,13 @@ Atal hau '''EZ''' bete!",
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Meisam
  */
 $messages['fa'] = array(
 	'simpleantispam' => 'ویرایش شما مکانیسم ضدهرزنگاری را فعال کرد',
 	'simpleantispam-label' => "بررسی ضدهرزنگاری.
 این قسمت را پر '''نکنید'''!",
-	'simpleantispam-desc' => 'یک بررسی ساده برای هرزنگاری/ربات به فرم‌ها اضافه می‌کند',
+	'simpleantispam-desc' => 'یک بررسی ساده برای هرزنویسی/ربات به فرم‌ها اضافه می‌کند',
 );
 
 /** Finnish (Suomi)

@@ -135,6 +135,7 @@ $messages['be-tarask'] = array(
 	'errorhandler-error-user-notice' => 'Заўвага ўдзельніка',
 	'errorhandler-error-user-deprecated' => 'Непрыняты ўдзельнік',
 	'errorhandler-error-strict' => 'Жорсткія стандарты',
+	'errorhandler-error-recoverable' => 'Фатальная памылка, якую можна адсачыць',
 	'errorhandler-msg-text' => '$1 : $2 у $3 (радок $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> у <b>$3</b> (радок <b>$4</b>)',
 	'errorhandler-trace' => 'сачэньне:',
