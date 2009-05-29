@@ -295,11 +295,7 @@ class OnlineStatus {
 		if( $wgUser->isLoggedIn() && $wgUseAjax ){
 			global $wgScriptPath, $wgJsMimeType;
 			$out->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/OnlineStatus/OnlineStatus.js\"></script>" );
-			$out->addLink( array(
-				'rel' => 'stylesheet',
-				'type' => 'text/css',
-				'href' => "{$wgScriptPath}/extensions/OnlineStatus/OnlineStatus.css"
-			) );
+			$out->addExtensionStyle( "{$wgScriptPath}/extensions/OnlineStatus/OnlineStatus.css" );
 		}
 
 		if( !in_array( $wgRequest->getVal( 'action', 'view' ), array( 'view', 'purge' ) ) )
