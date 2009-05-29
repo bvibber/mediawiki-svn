@@ -41,10 +41,10 @@ class LocalisationUpdate {
 
 		// Update all MW core messages
 		$result = self::updateMediawikiMessages( $verbose );
-
+		
 		// Update all Extension messages
 		foreach ( $wgExtensionMessagesFiles as $extension => $locFile ) {
-			$result += self::updateExtensionMessages( $locFile, $extension, $verbose );
+			$result = self::updateExtensionMessages( $locFile, $extension, $verbose );
 		}
 
 		// And output the result!
@@ -353,7 +353,7 @@ class LocalisationUpdate {
 		$base_messages = array();
 
 		$basefilecontents = self::getFileContents( $basefile );
-		if ( $basefilecontents === false || $basefilecontents === "" ) return array(); // Failed
+		if ( $basefilecontents === false || $basefilecontents === "" ) return 0; // Failed
 
 		// Cleanup the file where needed
 		$basefilecontents = self::cleanupExtensionFile( $basefilecontents );
@@ -375,7 +375,7 @@ class LocalisationUpdate {
 		eval( $basefilecontents );
 
 		$comparefilecontents = self::getFileContents( $comparefile );
-		if ( $comparefilecontents === false || $comparefilecontents === "" ) return array(); // Failed
+		if ( $comparefilecontents === false || $comparefilecontents === "" ) return 0; // Failed
 
 		// Only get what we need
 		$comparefilecontents = self::cleanupExtensionFile( $comparefilecontents );
