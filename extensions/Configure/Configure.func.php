@@ -165,12 +165,12 @@ function efConfigureFarmerManageExtensions( $farmer ) {
  * Adds links to Configure's special pages to the Special:AdminLinks page,
  * defined by the Admin Links extension
  */
-function efConfigureAddToAdminLinks( &$admin_links_tree ) {
-	$general_section = $admin_links_tree->getSection(wfMsg('adminlinks_general'));
-	$configure_row = new ALRow('configure');
-	$configure_row->addItem(ALItem::newFromSpecialPage('Configure'));
-	$configure_row->addItem(ALItem::newFromSpecialPage('ViewConfig'));
-	$configure_row->addItem(ALItem::newFromSpecialPage('Extensions'));
-	$general_section->addRow($configure_row);
+function efConfigureAddToAdminLinks( &$adminLinksTree ) {
+	$generalSection = $adminLinksTree->getSection( wfMsg( 'adminlinks_general' ) );
+	$configureRow = new ALRow( 'configure' );
+	$configureRow->addItem( ALItem::newFromSpecialPage( 'Configure' ) );
+	$configureRow->addItem( ALItem::newFromSpecialPage( 'Extensions' ) );
+	$configureRow->addItem( ALItem::newFromSpecialPage( 'ViewConfig' ) );
+	$generalSection->addRow( $configureRow );
 	return true;
 }
