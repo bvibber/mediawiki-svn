@@ -160,6 +160,7 @@ class Plotters {
 				$output .= "data[$i][$j] = '" . $dataline[$j] . "';";
 			}
 		}
+		$output .= "fix_encoding_array( data );";
 
 		// Prepare labels
 		$output .= "var labels = [];";
@@ -167,6 +168,13 @@ class Plotters {
 			$output .= "labels[$i] = '" . $this->argumentArray["labels"][$i] . "';";
 		}
 		$output .= "fix_encoding( labels );";
+
+		// Prepare arguments
+		$output .= "var arguments = [];";
+		for ( $i = 0; $i < count( $this->argumentArray["scriptarguments"] ); $i++ ) {
+			$output .= "arguments[$i] = '" . $this->argumentArray["scriptarguments"][$i] . "';";
+		}
+		$output .= "fix_encoding( arguments );";
 
 		// Run preprocessors
 		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
@@ -180,12 +188,7 @@ class Plotters {
 		}
 
 		// Run script
-		$output .= 'plotter_' . $this->argumentArray["script"] . '_draw( "' . $name . '", data, labels, ';
-		foreach ( $this->argumentArray["scriptarguments"] as $argument ) {
-			$output .= "'" . $argument . "'" . ", ";
-		}
-		$output = substr( $output, 0, -2 );
-		$output .= " );";
+		$output .= 'plotter_' . $this->argumentArray["script"] . '_draw( "' . $name . '", data, labels, arguments );';
 
 		$output .= "}";
 
@@ -200,20 +203,21 @@ class Plotters {
 		global $wgPlottersJavascriptPath;
 		global $wgPlottersExtensionPath;
 
-		$extensionpath = $wgPlottersJavascriptPath;
+		$javascriptpath = $wgPlottersJavascriptPath;
 
 		// Add javascript to fix encoding
 		$outputPage->addScript( '<script src="' . $wgPlottersExtensionPath . '/libs/fixencoding.js" type="text/javascript"></script>' );
+		$outputPage->addScript( '<script src="' . $wgPlottersExtensionPath . '/libs/excanvas.js" type="text/javascript"></script>' );
 
 		if ( $renderer == "plotkit" ) {
 			// Add mochikit (required by PlotKit)
-			$outputPage->addScript( '<script src="' . $extensionpath . '/mochikit/MochiKit.js" type="text/javascript"></script>' );
+			$outputPage->addScript( '<script src="' . $javascriptpath . '/mochikit/MochiKit.js" type="text/javascript"></script>' );
 	
 			// Add PlotKit javascript
-			$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Base.js" type="text/javascript"></script>' );
-			$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Layout.js" type="text/javascript"></script>' );
-			$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/Canvas.js" type="text/javascript"></script>' );
-			$outputPage->addScript( '<script src="' . $extensionpath . '/plotkit/SweetCanvas.js" type="text/javascript"></script>' );
+			$outputPage->addScript( '<script src="' . $javascriptpath . '/plotkit/Base.js" type="text/javascript"></script>' );
+			$outputPage->addScript( '<script src="' . $javascriptpath . '/plotkit/Layout.js" type="text/javascript"></script>' );
+			$outputPage->addScript( '<script src="' . $javascriptpath . '/plotkit/Canvas.js" type="text/javascript"></script>' );
+			$outputPage->addScript( '<script src="' . $javascriptpath . '/plotkit/SweetCanvas.js" type="text/javascript"></script>' );
 		}
 
 		return true;

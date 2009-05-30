@@ -230,3 +230,9 @@ function fix_encoding( data_arr ) {
 		data_arr[i] = html_entity_decode( data_arr[i], 'ENT_QUOTES' );
 	}
 }
+
+function fix_encoding_array( arr ) {
+	for ( var i = 0; i < arr.length; ++i ) {
+		arr[i] = fix_encoding( arr[i] );
+	}
+}
