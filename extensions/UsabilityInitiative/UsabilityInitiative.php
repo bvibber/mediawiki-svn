@@ -20,10 +20,10 @@
 // Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'Usability Initiative',
+	'name' => 'UsabilityInitiative',
 	'author' => 'Trevor Parscal',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'description-msg' => 'usabilityinitiative-desc',
+	'descriptionmsg' => 'usabilityinitiative-desc',
 );
 
 // Shortcut to this extension directory
@@ -41,4 +41,4 @@ $wgHooks['AjaxAddScript'][] = 'UsabilityInitiativeHooks::addJS';
 
 /* Components */
 
-require_once( dirname(__FILE__) . "/Toolbar/Toolbar.php" );
+require_once( "$dir/Toolbar/Toolbar.php" );

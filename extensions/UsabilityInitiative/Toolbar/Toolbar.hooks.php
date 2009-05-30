@@ -15,7 +15,7 @@ class ToolbarHooks {
 	 * Intercept the display of the toolbar, replacing the content of $toolbar
 	 */
 	public static function interceptToolbar(
-		$toolbar
+		&$toolbar
 	) {
 		global $wgUser;
 		
@@ -34,6 +34,7 @@ class ToolbarHooks {
 		$user,
 		$defaultPreferences
 	) {
+		wfLoadExtensionMessages( 'Toolbar' );
 		$defaultPreferences['usebetatoolbar'] =
 		array(
 			'type' => 'toggle',
