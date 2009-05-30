@@ -14,26 +14,21 @@ class ToolbarHooks {
 	 * EditPageBeforeEditToolbar hook
 	 * Intercept the display of the toolbar, replacing the content of $toolbar
 	 */
-	public static function interceptToolbar(
-		&$toolbar
-	) {
+	public static function interceptToolbar( &$toolbar ) {
 		global $wgUser;
-		
-		if ( $wgUser->getOption('usebetatoolbar') ) {
+
+		if ( $wgUser->getOption( 'usebetatoolbar' ) ) {
 			$toolbar = '<div id="editing-toolbar"></div>';
 		}
 		// Continue
 		return true;
 	}
-	
+
 	/**
 	 * GetPreferences hook
 	 * Add toolbar related items to the preferences
 	 */
-	public static function addPreferences(
-		$user,
-		$defaultPreferences
-	) {
+	public static function addPreferences( $user, $defaultPreferences ) {
 		wfLoadExtensionMessages( 'Toolbar' );
 		$defaultPreferences['usebetatoolbar'] =
 		array(
@@ -43,15 +38,12 @@ class ToolbarHooks {
 		);
 		return true;
 	}
-	
-	
+
 	/**
 	 * AjaxAddScript hook
 	 * Add ajax support script
 	 */
-	public static function addJS(
-		$out
-	) {
+	public static function addJS( $out ) {
 		global $wgScriptPath, $wgJsMimeType, $wgToolbarStyleVersion;
 		// Add javascript version variable
 		$out->addInlineScript(
@@ -79,9 +71,7 @@ class ToolbarHooks {
 	 * BeforePageDisplay hook
 	 * Add css style sheet
 	 */
-	public static function addCSS(
-		$out
-	) {
+	public static function addCSS( $out ) {
 		global $wgScriptPath, $wgToolbarStyleVersion;
 		// Add css for various styles
 		$out->addLink(
@@ -96,5 +86,4 @@ class ToolbarHooks {
 		// Continue
 		return true;
 	}
-
 }

@@ -14,5 +14,5 @@ $messages = array();
 $messages['en'] = array(
 	'toolbar' => 'Toolbar',
 	'toolbar-desc' => 'Edit page toolbar with enhanced usability',
-	'toolbar-preference' => 'Enable beta version of new editing toolbar',
+	'toolbar-preference' => 'Enable enhanced editing toolbar',
 );
