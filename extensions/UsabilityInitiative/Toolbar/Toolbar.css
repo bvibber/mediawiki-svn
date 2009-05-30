@@ -1,0 +1,26 @@
+/* CSS StyleSheet for Toolbar extensions */
+
+div#editing-toolbar {
+	width: 100%;
+	height: 32px;
+	background-color: #EEEEEE;
+}
+
+div#editing-toolbar > div.group {
+	float: left;
+	height: 26px;
+	margin: 3px;
+	padding-left: 3px;
+	border-left: solid 1px #DDDDDD;
+}
+div#editing-toolbar > div.group:first-child {
+	border-left: none;
+}
+
+div#editing-toolbar > div.group > div.tool {
+	float: left;
+	height: 22px;
+	width: 22px;
+	margin: 2px;
+	cursor: pointer;
+}
