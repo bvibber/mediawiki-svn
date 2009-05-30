@@ -21,6 +21,14 @@ $dir = dirname( __FILE__ ) . '/';
 // Bump the version number every time you change any of the .css/.js files
 $wgToolbarStyleVersion = 0;
 
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'Toolbar',
+	'author' => 'Trevor Parscal',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
+	'descriptionmsg' => 'toolbar-desc',
+);
+
 // Autoload Classes
 $wgAutoloadClasses['ToolbarHooks'] = $dir . 'Toolbar.hooks.php';
 
