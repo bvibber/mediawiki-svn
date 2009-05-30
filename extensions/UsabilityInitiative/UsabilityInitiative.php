@@ -23,7 +23,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Usability Initiative',
 	'author' => 'Trevor Parscal',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'description-msg' => 'UsabilityInitiative-desc',
+	'description-msg' => 'usabilityinitiative-desc',
 );
 
 // Shortcut to this extension directory
