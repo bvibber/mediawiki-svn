@@ -51,7 +51,7 @@ class ToolbarHooks {
 	public static function addJS(
 		$out
 	) {
-		global $wgScriptPath, $wgJsMimeType, $wgDraftsStyleVersion;
+		global $wgScriptPath, $wgJsMimeType, $wgToolbarStyleVersion;
 		// Add javascript version variable
 		$out->addInlineScript(
 			"var wgToolbarStyleVersion = \"$wgToolbarStyleVersion\";\n"
@@ -81,7 +81,7 @@ class ToolbarHooks {
 	public static function addCSS(
 		$out
 	) {
-		global $wgScriptPath, $wgDraftsStyleVersion;
+		global $wgScriptPath, $wgToolbarStyleVersion;
 		// Add css for various styles
 		$out->addLink(
 			array(
@@ -89,7 +89,7 @@ class ToolbarHooks {
 				'type' => 'text/css',
 				'href' => $wgScriptPath .
 					'/extensions/UsabilityInitiative/Toolbar/Toolbar.css?' .
-					$wgDraftsStyleVersion,
+					$wgToolbarStyleVersion,
 			)
 		);
 		// Continue
