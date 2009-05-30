@@ -307,10 +307,11 @@ class LocalisationUpdate {
 			// If this message wasn't changed in english
 			if ( !array_key_exists( $key , $forbiddenKeys ) ) {
 				// See if we can update the database
+				
 				$values = array( 'lo_value' => $base_messages[$key] );
 				$conds = array( 'lo_language' => $langcode, 'lo_key' => $key );
-				$db->update( 'localisation', $values, $conds, __METHOD__ );
-				if ( $db->affectedRows() == 0 ) { // Otherwise do a new insert
+				$result = $db->select( 'localisation', 'lo_value', $conds, __METHOD__ );
+				if($db->numRows($result) == 0) { 
 					$inserts = array(
 						'lo_value' => $base_messages[$key],
 						'lo_language' => $langcode,
@@ -319,6 +320,11 @@ class LocalisationUpdate {
 					$db->insert( 'localisation', $inserts, __METHOD__ );
 					if ( $db->affectedRows() == 0 ) {
 						throw new MWException( "An error has occured while inserting a new message into the database!" );
+					}
+				} else {
+					$db->update( 'localisation', $values, $conds, __METHOD__ );
+					if ( $db->affectedRows() == 0 ) {
+						throw new MWException( "An error has occured while updateing a message in the database!" );
 					}
 				}
 
