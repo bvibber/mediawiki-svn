@@ -14,9 +14,7 @@ class UsabilityInitiativeHooks {
 	 * AjaxAddScript hook
 	 * Add ajax support script
 	 */
-	public static function addJS(
-		$out
-	) {
+	public static function addJS( $out ) {
 		global $wgScriptPath, $wgJsMimeType;
 		// Add javascript resources to document
 		$out->addScript(

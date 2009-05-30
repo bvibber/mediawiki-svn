@@ -12,8 +12,9 @@
  * require_once( "$IP/extensions/UsabilityInitiative/UsabilityInitiative.php" );
  *
  * @author Trevor Parscal <tparscal@wikimedia.org>
+ * Allow "or a later version" here?
  * @license GPL v2
- * @version 0.1.0
+ * @version 0.1.1
  */
 /* Configuration */
 
@@ -22,6 +23,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'UsabilityInitiative',
 	'author' => 'Trevor Parscal',
+	'version' => '0.1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'usabilityinitiative-desc',
 );
@@ -30,11 +32,8 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname( __FILE__ );
 
 // Autoload Classes
-$wgAutoloadClasses['UsabilityInitiativeHooks'] =
-	"$dir/UsabilityInitiative.hooks.php";
-
-$wgExtensionMessagesFiles['UsabilityInitiative'] =
-	"$dir/UsabilityInitiative.i18n.php";
+$wgAutoloadClasses['UsabilityInitiativeHooks'] = "$dir/UsabilityInitiative.hooks.php";
+$wgExtensionMessagesFiles['UsabilityInitiative'] = "$dir/UsabilityInitiative.i18n.php";
 
 // Register ajax add script hook
 $wgHooks['AjaxAddScript'][] = 'UsabilityInitiativeHooks::addJS';

@@ -11,8 +11,9 @@
  * Usage: This file is included automatically by ../UsabilityInitiative.php
  *
  * @author Trevor Parscal <tparscal@wikimedia.org>
+ * Allow "or a later version" here?
  * @license GPL v2
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 // Shortcut to this extension directory
@@ -25,6 +26,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Toolbar',
 	'author' => 'Trevor Parscal',
+	'version' => '0.1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'toolbar-desc',
 );
