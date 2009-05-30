@@ -47,25 +47,25 @@ class PlottersParser {
 			foreach ( $this->argumentArray["preprocessors"] as &$preprocessor ) {
 				$preprocessor = preg_replace( '/[^A-Z0-9]/i', '', $preprocessor );
 			}
-		}
-		if ( isset( $argv["preprocessorarguments"] ) ) {
-			// Replace escaped separators
-			$argv["preprocessorarguments"] = preg_replace( "/\\\:/", '§UNIQ§', $argv["preprocessorarguments"] );
-			$argv["preprocessorarguments"] = preg_replace( "/\\\,/", '§UNIQ2§', $argv["preprocessorarguments"] );
 
-			// Parse and sanitize arguments
-			$arguments = explode( ':', $argv["preprocessorarguments"] );
-			foreach ( $arguments as $argument ) {
-				$subargumentarr = explode( ',', $argument );
-				foreach ( $subargumentarr as &$singleargument ) {
-					// Fix escaped separators
-					$singleargument = preg_replace( "/§UNIQ§/", ":", $singleargument );
-					$singleargument = preg_replace( "/§UNIQ2§/", ",", $singleargument );
-					$singleargument = htmlentities( $singleargument, ENT_QUOTES );
+			if ( isset( $argv["preprocessorarguments"] ) ) {
+				// Replace escaped separators
+				$argv["preprocessorarguments"] = preg_replace( "/\\\:/", '§UNIQ§', $argv["preprocessorarguments"] );
+				$argv["preprocessorarguments"] = preg_replace( "/\\\,/", '§UNIQ2§', $argv["preprocessorarguments"] );
+	
+				// Parse and sanitize arguments
+				$arguments = explode( ':', $argv["preprocessorarguments"] );
+				foreach ( $arguments as $argument ) {
+					$subargumentarr = explode( ',', $argument );
+					foreach ( $subargumentarr as &$singleargument ) {
+						// Fix escaped separators
+						$singleargument = preg_replace( "/§UNIQ§/", ":", $singleargument );
+						$singleargument = preg_replace( "/§UNIQ2§/", ",", $singleargument );
+						$singleargument = htmlentities( $singleargument, ENT_QUOTES );
+					}
+					$this->argumentArray["preprocessorarguments"][] = $subargumentarr;
 				}
-				$this->argumentArray["preprocessorarguments"][] = $subargumentarr;
 			}
-
 		}
 		if ( isset( $argv["script"] ) ) {
 			// Sanitize scripts - alphanumerics only

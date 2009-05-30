@@ -169,23 +169,31 @@ class Plotters {
 		}
 		$output .= "fix_encoding( labels );";
 
+		$output .= "var preprocessorarguments = [];";
+
+		// Prepare preprocessor arguments
+		for ( $i = 0; $i < count( $this->argumentArray["preprocessorarguments"] ); $i++ ) {
+			$output .= "preprocessorarguments[$i] = [];";
+			$argarr = $this->argumentArray["preprocessorarguments"][$i];
+			for ( $j = 0; $j < count( $argarr ); $j++ ) {
+				$output .= "preprocessorarguments[$i][$j] = '" . $argarr[$j] . "';";
+			}
+		}
+		$output .= "fix_encoding_array( preprocessorarguments );";
+
+		// Run preprocessors
+		for ( $i = 0; $i < count( $this->argumentArray["preprocessors"] ); $i++ ) {
+			$preprocessor = $this->argumentArray["preprocessors"][$i];
+
+			$output .= 'plotter_' . $preprocessor . '_process( "' . $name . '", data, labels, preprocessorarguments[' . $i . '] );';
+		}
+
 		// Prepare arguments
 		$output .= "var arguments = [];";
 		for ( $i = 0; $i < count( $this->argumentArray["scriptarguments"] ); $i++ ) {
 			$output .= "arguments[$i] = '" . $this->argumentArray["scriptarguments"][$i] . "';";
 		}
 		$output .= "fix_encoding( arguments );";
-
-		// Run preprocessors
-		foreach ( $this->argumentArray["preprocessors"] as $preprocessor ) {
-			$output .= 'plotter_' . $preprocessor . '_process( "' . $name . '", data, labels, ';
-			foreach ( $this->argumentArray["preprocessorarguments"] as $argument ) {
-				$output .= $argument . ', ';
-			}
-			// Strip the last ', '
-			$output = substr( $output, 0, -2 );
-			$output .= " );";
-		}
 
 		// Run script
 		$output .= 'plotter_' . $this->argumentArray["script"] . '_draw( "' . $name . '", data, labels, arguments );';
