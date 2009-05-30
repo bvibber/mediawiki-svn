@@ -27,11 +27,14 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Shortcut to this extension directory
-$dir = dirname( __FILE__ ) . '/';
+$dir = dirname( __FILE__ );
 
 // Autoload Classes
 $wgAutoloadClasses['UsabilityInitiativeHooks'] =
-	$dir . 'UsabilityInitiative.hooks.php';
+	"$dir/UsabilityInitiative.hooks.php";
+
+$wgExtensionMessagesFiles['UsabilityInitiative'] =
+	"$dir/UsabilityInitiative.i18n.php";
 
 // Register ajax add script hook
 $wgHooks['AjaxAddScript'][] = 'UsabilityInitiativeHooks::addJS';
