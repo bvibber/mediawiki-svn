@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Plotter parser extension',
-	'version'        => '0.2a',
+	'version'        => '0.3a',
 	'author'         => 'Ryan Lane',
 	'description'    => 'Allows users to create client side graphs and plots',
 	'descriptionmsg' => 'plotters-desc',
