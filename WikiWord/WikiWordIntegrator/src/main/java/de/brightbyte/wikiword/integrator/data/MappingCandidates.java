@@ -1,9 +1,8 @@
-package de.brightbyte.wikiword.integrator.mapping;
+package de.brightbyte.wikiword.integrator.data;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-import de.brightbyte.wikiword.integrator.data.FeatureSet;
 
 public class MappingCandidates {
 		protected FeatureSet subject;

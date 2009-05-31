@@ -4,9 +4,9 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.output.DataOutput;
-import de.brightbyte.wikiword.processor.AbstractProcessor;
+import de.brightbyte.wikiword.processor.AbstractPageProcessor;
 
-public abstract class AbstractExtractor<S extends DataOutput> extends AbstractProcessor implements WikiWordExtractor {
+public abstract class AbstractExtractor<S extends DataOutput> extends AbstractPageProcessor implements WikiWordExtractor {
 	
 	protected S output;
 

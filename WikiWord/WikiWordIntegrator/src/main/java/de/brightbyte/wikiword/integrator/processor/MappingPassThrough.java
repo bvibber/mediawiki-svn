@@ -1,14 +1,15 @@
-package de.brightbyte.wikiword.integrator.mapping;
+package de.brightbyte.wikiword.integrator.processor;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
-import de.brightbyte.wikiword.integrator.store.MappingFeatureStore;
+import de.brightbyte.wikiword.integrator.data.MappingCandidates;
+import de.brightbyte.wikiword.integrator.store.MappingFeatureStoreBuilder;
 
 public class MappingPassThrough implements MappingProcessor {
 
 	public void processMappings(DataCursor<MappingCandidates> cursor,
-			MappingFeatureStore store) throws PersistenceException {
+			MappingFeatureStoreBuilder store) throws PersistenceException {
 		
 		MappingCandidates m;
 		while ((m = cursor.next()) != null ) {

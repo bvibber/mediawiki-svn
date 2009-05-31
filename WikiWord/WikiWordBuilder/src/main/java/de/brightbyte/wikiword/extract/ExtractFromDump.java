@@ -8,7 +8,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.output.DataOutput;
 import de.brightbyte.wikiword.processor.DataSourceDriver;
-import de.brightbyte.wikiword.processor.WikiWordProcessor;
+import de.brightbyte.wikiword.processor.WikiWordPageProcessor;
 import de.brightbyte.wikiword.processor.XmlDumpDriver;
 
 public abstract class ExtractFromDump<S extends DataOutput> extends ExtractorApp<S> {
@@ -56,7 +56,7 @@ public abstract class ExtractFromDump<S extends DataOutput> extends ExtractorApp
 	protected void run() throws Exception {
 
 		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(getCorpus(), tweaks); 
-		WikiWordProcessor processor = newProcessor(analyzer);
+		WikiWordPageProcessor processor = newProcessor(analyzer);
 		processor.setLogOutput(getLogOutput());
 		processor.configure(args);
 		

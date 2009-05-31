@@ -32,6 +32,12 @@
         <version>0.3</version>
         <scope>compile</scope>
       </dependency>
+      <dependency>
+        <groupId>de.wikimedia</groupId>
+        <artifactId>WikiWordBuilder</artifactId>
+        <version>0.3</version>
+        <scope>compile</scope>
+      </dependency>
      <dependency>
        <groupId>junit</groupId>
        <artifactId>junit</artifactId>

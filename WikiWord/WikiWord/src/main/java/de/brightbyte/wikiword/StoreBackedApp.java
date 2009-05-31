@@ -99,7 +99,7 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 	}
 	
 	
-	protected abstract WikiWordStoreFactory<S> createConceptStoreFactory() throws IOException, PersistenceException;
+	protected abstract WikiWordStoreFactory<? extends S> createConceptStoreFactory() throws IOException, PersistenceException;
 
 	protected void openStores() throws PersistenceException {
 		for (WikiWordStore store: stores) {

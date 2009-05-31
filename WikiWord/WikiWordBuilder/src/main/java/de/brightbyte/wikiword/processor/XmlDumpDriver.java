@@ -44,10 +44,10 @@ public class XmlDumpDriver implements DataSourceDriver {
 
 	protected class Sink implements DumpWriter {
 		
-		protected WikiWordProcessor importer;
+		protected WikiWordPageProcessor importer;
 		protected BlockingJobQueue executor = null;
 		
-		public Sink(WikiWordProcessor importer, int queueCapacity) {
+		public Sink(WikiWordPageProcessor importer, int queueCapacity) {
 			this.importer = importer;
 
 			if (queueCapacity > 0) {
@@ -235,7 +235,7 @@ public class XmlDumpDriver implements DataSourceDriver {
 		externalGunzip = tweaks.getTweak("dumpdriver.externalGunzip", null);
 	}
 	
-	public void run(WikiWordProcessor importer) throws IOException, SQLException, InterruptedException, PersistenceException {
+	public void run(WikiWordPageProcessor importer) throws IOException, SQLException, InterruptedException, PersistenceException {
 			DumpWriter sink = new Sink(importer, importQueueCapacity);
 			
 			try {

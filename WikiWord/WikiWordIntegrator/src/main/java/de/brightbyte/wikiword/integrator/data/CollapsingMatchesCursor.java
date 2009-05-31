@@ -5,7 +5,6 @@ import java.util.Collection;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.integrator.mapping.MappingCandidates;
 
 public class CollapsingMatchesCursor implements DataCursor<MappingCandidates> {
 

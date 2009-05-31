@@ -11,7 +11,6 @@ import de.brightbyte.wikiword.integrator.data.CollapsingMatchesCursor;
 import de.brightbyte.wikiword.integrator.data.DefaultFeatureSet;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.FeatureSets;
-import de.brightbyte.wikiword.integrator.mapping.MappingCandidates;
 import junit.framework.TestCase;
 
 public class CollapsingMatchesCursorTest extends TestCase {

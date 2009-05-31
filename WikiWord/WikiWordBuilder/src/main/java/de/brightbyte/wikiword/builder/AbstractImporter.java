@@ -6,11 +6,11 @@ import de.brightbyte.application.Agenda;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.processor.AbstractProcessor;
+import de.brightbyte.wikiword.processor.AbstractPageProcessor;
 import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
-public abstract class AbstractImporter extends AbstractProcessor implements WikiWordImporter {
+public abstract class AbstractImporter extends AbstractPageProcessor implements WikiWordImporter {
 	private WikiWordStoreBuilder store;
 	private int safepointInterval = 30 * 1000;
 	private int safepointTicks = 0;

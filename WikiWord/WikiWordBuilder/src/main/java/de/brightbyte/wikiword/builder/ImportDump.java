@@ -8,7 +8,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.processor.DataSourceDriver;
-import de.brightbyte.wikiword.processor.WikiWordProcessor;
+import de.brightbyte.wikiword.processor.WikiWordPageProcessor;
 import de.brightbyte.wikiword.processor.XmlDumpDriver;
 import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 
@@ -66,7 +66,7 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		*/
 
 		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(getCorpus(), tweaks); 
-		WikiWordProcessor importer = newImporter(analyzer);
+		WikiWordPageProcessor importer = newImporter(analyzer);
 		importer.setLogOutput(getLogOutput());
 		importer.configure(args);
 		

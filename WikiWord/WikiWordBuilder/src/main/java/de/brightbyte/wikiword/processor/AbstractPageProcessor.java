@@ -13,8 +13,6 @@ import de.brightbyte.data.ChunkyBitSet;
 import de.brightbyte.io.LeveledOutput;
 import de.brightbyte.io.LogOutput;
 import de.brightbyte.io.Output;
-import de.brightbyte.job.Progress;
-import de.brightbyte.job.ProgressRateTracker;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.SystemUtils;
 import de.brightbyte.wikiword.NamespaceSet;
@@ -25,69 +23,14 @@ import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiTextSniffer;
 
-public abstract class AbstractProcessor implements WikiWordProcessor {
-	
-	public static class Tracker extends ProgressRateTracker {
-		protected long counter = 0;
-		protected String name;
-		
-		public Tracker(String name) {
-			this.name = name;
-		}
-		
-		public void step() {
-			step(1);
-		}
-		
-		public void step(int c) {
-			counter+= c;
-		}
-		
-		public void chunk() {
-			super.progress(new Progress.Event(Progress.PROGRESS, null, name, 1, position+counter, null));
-			counter = 0;
-		}
-		
-		@Override
-		public String toString() {
-			return MessageFormat.format("{0}: {1,number,0} ({2,number,0.0}/sec, currently {3,number,0.0}/sec)", name, position, getAverageRate(), getCurrentRate());
-		}
-	}
-	
-	public static class MemoryTracker extends ProgressRateTracker {
-		protected long baseline = 0;
-		protected long used = 0;
-		
-		public MemoryTracker() {
-		}
-		
-		public long getUsedMemory() {
-			return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory(); 
-		}
-		
-		public void step() {
-			if (baseline<=0) baseline = getUsedMemory();
-		}
-		
-		public void chunk() {
-			if (baseline<=0) baseline = getUsedMemory();
-			used = getUsedMemory();
-			super.progress(new Progress.Event(Progress.PROGRESS, null, "memory", Runtime.getRuntime().totalMemory()  - baseline, used - baseline, null));
-		}
-		
-		@Override
-		public String toString() {
-			//return MessageFormat.format("{0}: {1,number,0}KB ({2,number,0.0}KB/sec, currently {3,number,0.0}KB/sec)", "memory", position/1024, getAverageRate()/1024, getCurrentRate()/1024);
-			return MessageFormat.format("{0}: {1,number,0}KB (free: {2,number,0}KB; used: {3,number,0}KB;)", "memory", position/1024, Runtime.getRuntime().freeMemory()/1024, used/1024);
-		}
-	}
+public abstract class AbstractPageProcessor implements WikiWordPageProcessor {
 	
 	private int progressInterval = 1000;
 	
 	protected WikiTextAnalyzer analyzer;
 	
-	private Tracker pageTracker;
-	private Tracker bulkTracker;
+	private ImportProgressTracker pageTracker;
+	private ImportProgressTracker bulkTracker;
 	private MemoryTracker memoryTracker;
 	
 	private int progressTicks = 0;
@@ -112,7 +55,7 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 	private Collection<WikiPageFilter> filters;
 	protected String fileecoding = SystemUtils.getPropertySafely("file.encoding", "utf-8");
 
-	public AbstractProcessor(WikiTextAnalyzer analyzer, TweakSet tweaks) {
+	public AbstractPageProcessor(WikiTextAnalyzer analyzer, TweakSet tweaks) {
 		if (analyzer==null) throw new NullPointerException();
 
 		this.analyzer = analyzer;
@@ -152,8 +95,8 @@ public abstract class AbstractProcessor implements WikiWordProcessor {
 	}
 	
 	public void reset() {
-		pageTracker = new Tracker("pages");
-		bulkTracker = new Tracker("chars");
+		pageTracker = new ImportProgressTracker("pages");
+		bulkTracker = new ImportProgressTracker("chars");
 		memoryTracker = new MemoryTracker();
 		progressTicks = 0;
 	}

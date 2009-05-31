@@ -26,7 +26,7 @@ import de.brightbyte.wikiword.NamespaceSet;
  * 
  * @author daniel
  */
-public interface WikiWordProcessor {
+public interface WikiWordPageProcessor {
 
 	/** called before a new inport run. Must reset all internal state, including trackers. **/
 	public void reset();
