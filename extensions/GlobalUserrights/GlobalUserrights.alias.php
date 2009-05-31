@@ -75,7 +75,7 @@ $aliases['ja'] = array(
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'GlobalUserrights' => array( 'Jemeinsam_Metmaacher_Rääschte', 'Jemeinsam_Medmaacher_Rääschte', 'JemeinsamMetmaacherRääschte', 'JemeinsamMedmaacherRääschte', '' ),
+	'GlobalUserrights' => array( 'Jemeinsam_Metmaacher_Rääschte', 'Jemeinsam_Medmaacher_Rääschte', 'JemeinsamMetmaacherRääschte', 'JemeinsamMedmaacherRääschte' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

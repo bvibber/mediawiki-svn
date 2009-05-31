@@ -118,7 +118,7 @@ $aliases['ja'] = array(
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'SortPermissions' => array( 'Rääschte_Zotteere', 'RääschteZotteere', '' ),
+	'SortPermissions' => array( 'Rääschte_Zotteere', 'RääschteZotteere' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

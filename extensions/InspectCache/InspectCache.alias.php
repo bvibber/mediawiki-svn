@@ -91,7 +91,7 @@ $aliases['ja'] = array(
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'InspectCache' => array( 'Cache_beloore', 'Cache_Beloore', 'CacheBeloore', '' ),
+	'InspectCache' => array( 'Cache_beloore', 'Cache_Beloore', 'CacheBeloore' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

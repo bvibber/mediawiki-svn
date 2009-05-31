@@ -64,7 +64,7 @@ $aliases['ja'] = array(
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'ImageTagging' => array( 'Belder_Makeere', 'BelderMakeere', '' ),
+	'ImageTagging' => array( 'Belder_Makeere', 'BelderMakeere' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
