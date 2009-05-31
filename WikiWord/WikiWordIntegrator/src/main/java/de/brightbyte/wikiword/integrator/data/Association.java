@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.integrator;
+package de.brightbyte.wikiword.integrator.data;
 
 public class Association {
 		protected FeatureSet sourceItem;

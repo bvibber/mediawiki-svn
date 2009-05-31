@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.integrator;
+package de.brightbyte.wikiword.integrator.data;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.integrator;
+package de.brightbyte.wikiword.integrator.mapping;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -10,6 +10,8 @@ import de.brightbyte.data.Optimum;
 import de.brightbyte.data.PropertyComparator;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.integrator.data.FeatureSet;
+import de.brightbyte.wikiword.integrator.store.MappingStore;
 
 public class OptimalMappingSelector implements MappingProcessor {
 

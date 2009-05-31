@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.integrator;
+package de.brightbyte.wikiword.integrator.data;
 
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledVector;

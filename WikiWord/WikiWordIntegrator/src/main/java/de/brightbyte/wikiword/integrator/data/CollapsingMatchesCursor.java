@@ -1,10 +1,11 @@
-package de.brightbyte.wikiword.integrator;
+package de.brightbyte.wikiword.integrator.data;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.integrator.mapping.MappingCandidates;
 
 public class CollapsingMatchesCursor implements DataCursor<MappingCandidates> {
 

@@ -1,9 +1,12 @@
-package de.brightbyte.wikiword.integrator;
+package de.brightbyte.wikiword.integrator.data;
 
 import java.util.ArrayList;
 
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledVector;
+import de.brightbyte.wikiword.integrator.data.DefaultFeatureSet;
+import de.brightbyte.wikiword.integrator.data.FeatureSet;
+import de.brightbyte.wikiword.integrator.data.FeatureSets;
 
 import junit.framework.TestCase;
 
