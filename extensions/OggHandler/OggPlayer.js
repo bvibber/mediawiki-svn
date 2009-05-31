@@ -543,14 +543,14 @@ var wgOggPlayer = {
 	'embedVideoElement': function ( elt, params ) {
 		var id = elt.id + "_obj";
 		var html =
-			'<div><video' + 
+			'<div><' + (params.isVideo?'video':'audio') +  
 				' id=' + this.hq( id ) + 
 				' width=' + this.hq( params.width ) + 
-				' height=' + this.hq( params.height ) + 
+				' height=' + this.hq( (params.height>0)?params.height:this.controlsHeightGuess ) + 
 				' src=' + this.hq( params.videoUrl ) +
-				' autoplay="true"';
+				' autoplay';
 		if (!this.safari)
-			html += ' controls="true"';
+			html += ' controls';
 		html += ' ></video></div>';
 		elt.innerHTML = html;
 	},
