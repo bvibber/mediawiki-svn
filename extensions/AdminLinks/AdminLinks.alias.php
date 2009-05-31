@@ -13,6 +13,11 @@ $aliases['en'] = array(
 	'AdminLinks' => array( 'AdminLinks' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'AdminLinks' => array( 'Ylläpitolinkit' ),
+);
+
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
 	'AdminLinks' => array( 'Ligamines pro administratores' ),
