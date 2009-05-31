@@ -9,5 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/BrightByteDB"/>
 	<classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/3.1.11/mysql-connector-java-3.1.11.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/WikiWordBuilder"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
