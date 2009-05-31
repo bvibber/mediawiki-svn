@@ -608,10 +608,12 @@ public class SearcherCache {
 		Configuration config = Configuration.open();
 		searchPoolSize = config.getInt("SearcherPool","size",1);
 		String[] specials = config.getArray("SearcherPool", "special");
-		for(String s : specials){
-			String[] parts = s.split(":");
-			if(parts.length == 2)
-				specialPoolSizes.put( parts[0].trim(), new Integer(parts[1].trim()));
+		if( specials != null){
+			for(String s : specials){
+				String[] parts = s.split(":");
+				if(parts.length == 2)
+					specialPoolSizes.put( parts[0].trim(), new Integer(parts[1].trim()));
+			}
 		}
 		initialDeploymentThreads = config.getInt("SearcherPool", "initThreads",1);
 		if(initialize){
