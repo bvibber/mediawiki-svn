@@ -282,7 +282,7 @@ public class UpdateThread extends Thread {
 				searchpath.mkdir();
 
 			// check if updated index is a valid one (throws an exception on error)
-			SearcherCache.SearcherPool pool = new SearcherCache.SearcherPool(iid,li.path,cache.getSearchPoolSize()); 
+			SearcherCache.SearcherPool pool = new SearcherCache.SearcherPool(iid,li.path,cache.getSearchPoolSize(iid)); 
 			
 			// refresh the symlink
 			FSUtils.delete(iid.getSearchPath());

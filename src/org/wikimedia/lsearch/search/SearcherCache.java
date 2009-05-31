@@ -208,6 +208,8 @@ public class SearcherCache {
 	protected int searchPoolSize;
 	/** Host/iid pairs for which remote pool couldn't be initialized */
 	protected Set<SearchHost> deadPools = Collections.synchronizedSet(new HashSet<SearchHost>());
+	/** special pool sizes */
+	protected Hashtable<String,Integer> specialPoolSizes = new Hashtable<String,Integer>();
 	
 	protected static SearcherCache instance = null;
 	
@@ -567,7 +569,7 @@ public class SearcherCache {
 					throw new IOException(iid+" is not searched by this host.");
 				if(iid.isLogical())
 					throw new IOException(iid+": will not open logical index.");
-				return new SearcherPool(iid,iid.getCanonicalSearchPath(),searchPoolSize);
+				return new SearcherPool(iid,iid.getCanonicalSearchPath(),getSearchPoolSize(iid));
 			} else
 				return localCache.get(iid.toString());
 		}
@@ -605,6 +607,12 @@ public class SearcherCache {
 	protected SearcherCache(boolean initialize){
 		Configuration config = Configuration.open();
 		searchPoolSize = config.getInt("SearcherPool","size",1);
+		String[] specials = config.getArray("SearcherPool", "special");
+		for(String s : specials){
+			String[] parts = s.split(":");
+			if(parts.length == 2)
+				specialPoolSizes.put( parts[0].trim(), new Integer(parts[1].trim()));
+		}
 		initialDeploymentThreads = config.getInt("SearcherPool", "initThreads",1);
 		if(initialize){
 			initialDeploymentRunning = true;
@@ -612,7 +620,10 @@ public class SearcherCache {
 		}
 	}
 	
-	public int getSearchPoolSize() {
+	public int getSearchPoolSize(IndexId iid) {
+		Integer special = specialPoolSizes.get(iid.toString());
+		if(special != null)
+			return special;
 		return searchPoolSize;
 	}
 
