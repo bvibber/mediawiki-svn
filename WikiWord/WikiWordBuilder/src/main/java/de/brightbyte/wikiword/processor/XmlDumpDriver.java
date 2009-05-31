@@ -1,35 +1,27 @@
 package de.brightbyte.wikiword.processor;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InterruptedIOException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.zip.GZIPInputStream;
 
-import org.apache.commons.compress.bzip2.CBZip2InputStream;
 import org.mediawiki.importer.DumpWriter;
 import org.mediawiki.importer.Page;
 import org.mediawiki.importer.Revision;
 import org.mediawiki.importer.Siteinfo;
 import org.mediawiki.importer.XmlDumpReader;
 
-import de.brightbyte.io.IOUtil;
 import de.brightbyte.io.LeveledOutput;
 import de.brightbyte.job.BlockingJobQueue;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.NamespaceSet;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.builder.InputFileHelper;
 
 /**
  * DumpImportDriver implements ImportDriver for reading content from 
@@ -220,8 +212,7 @@ public class XmlDumpDriver implements DataSourceDriver {
 	}
 	
 	private int importQueueCapacity = 0;
-	private String externalBunzip = null;
-	private String externalGunzip = null;
+	private InputFileHelper inputHelper;
 	
 	private void init(LeveledOutput log, TweakSet tweaks) {
 		if (log==null) throw new NullPointerException();
@@ -231,15 +222,17 @@ public class XmlDumpDriver implements DataSourceDriver {
 		this.log = log;
 		
 		importQueueCapacity = tweaks.getTweak("dumpdriver.pageImportQueue", 8);
-		externalBunzip = tweaks.getTweak("dumpdriver.externalBunzip", null);
-		externalGunzip = tweaks.getTweak("dumpdriver.externalGunzip", null);
+		
+		inputHelper = new InputFileHelper(
+				tweaks.getTweak("dumpdriver.externalGunzip", tweaks.getTweak("input.externalGunzip", (String)null)),
+				tweaks.getTweak("dumpdriver.externalBunzip", tweaks.getTweak("input.externalBunzip", (String)null))); 
 	}
 	
 	public void run(WikiWordPageProcessor importer) throws IOException, SQLException, InterruptedException, PersistenceException {
 			DumpWriter sink = new Sink(importer, importQueueCapacity);
 			
 			try {
-				if (in==null) in = openURL(dump);
+				if (in==null) in = inputHelper.openURL(dump);
 				XmlDumpReader reader = new XmlDumpReader(in, sink);
 				
 				reader.readDump();
@@ -252,106 +245,4 @@ public class XmlDumpDriver implements DataSourceDriver {
 				sink.close(); //NOTE: make sure the executor queue is terminated
 			}
 	}
-
-	protected InputStream openURL(URL u) throws IOException {
-		String p = u.getProtocol();
-		
-		if (p.equals("file")) {
-			File f = new File(u.getPath());
-			return openFile(f);
-		}
-		else {
-			URLConnection con = u.openConnection();
-			String mime = con.getContentType();
-			mime = mime.replaceAll(";.*$", "");
-			InputStream in = con.getInputStream();
-			
-			if (mime.equals("application/x-gzip")) { 
-				return  new GZIPInputStream(in); //FIXME: somehow, this doesn't seem to work. or was the external gunzipper the problem? check this!
-			}
-			else if (mime.equals("application/x-bzip2")) { 
-				validateBZ2(in);
-				return new CBZip2InputStream(in);
-			}
-			else if (mime.equals("application/xml")) {
-				return in;
-			}
-			
-			in.close();
-			throw new IOException("MIME type not suitable for a wiki dump: "+mime);
-		}
-	}
-	
-	protected InputStream openFile(File file) throws IOException {
-		String f = file.getAbsolutePath();
-		
-		if (f.equals("-"))
-			return new BufferedInputStream(System.in);
-		
-		InputStream in = new BufferedInputStream(new FileInputStream(file));
-		if (f.endsWith(".gz")) {
-			if (externalGunzip!=null) return openProc(externalGunzip, file);
-			else return new GZIPInputStream(in);
-		}
-		else if (f.endsWith(".bz2")) {
-			if (externalBunzip!=null) {
-				return openProc(externalBunzip, file);
-			}
-			else {
-				validateBZ2(in);
-				return new CBZip2InputStream(in);
-			}
-		}
-		else
-			return in;
-	}
-	
-	protected static void validateBZ2(InputStream in) throws IOException {
-		int first = in.read();
-		int second = in.read();
-		if (first != 'B' || second != 'Z')
-			throw new IOException("Didn't find BZ file signature");
-	}
-	
-	protected static final Pattern commandParamPattern = Pattern.compile("^(.*) +([^/\\\\]+)$");
-	
-	public static InputStream openProc(String command, File f) throws IOException {
-		String[] cmd;
-		
-		Matcher m = commandParamPattern.matcher(command);
-		if (m.matches()) {
-			String[] p = m.group(2).trim().split("\\s+");
-
-			cmd = new String[p.length+2];
-			cmd[0] = m.group(1).trim();
-			System.arraycopy(p, 0, cmd, 1, p.length);
-			
-			cmd[cmd.length-1] = f.getAbsolutePath();
-		}
-		else {
-			cmd = new String[] {
-					command,
-					f.getAbsolutePath()
-			};
-		}
-		
-		Process proc = Runtime.getRuntime().exec(cmd);
-		final InputStream err = proc.getErrorStream();
-		
-		//HACK!
-		Thread slurper = new Thread("stderr slurper for "+proc) {
-			@Override
-			public void run() {
-				try {
-					IOUtil.pump(err, System.err);
-				} catch (IOException e) {
-					e.printStackTrace(System.err);
-				}
-			}
-		};
-		
-		slurper.start();
-		
-		return new BufferedInputStream(proc.getInputStream());
-	}	
 }

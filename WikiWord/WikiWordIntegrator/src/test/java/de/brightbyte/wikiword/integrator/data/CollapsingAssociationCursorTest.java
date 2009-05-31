@@ -3,15 +3,10 @@ package de.brightbyte.wikiword.integrator.data;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import junit.framework.TestCase;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.IteratorCursor;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.integrator.data.Association;
-import de.brightbyte.wikiword.integrator.data.CollapsingAssociationCursor;
-import de.brightbyte.wikiword.integrator.data.DefaultFeatureSet;
-import de.brightbyte.wikiword.integrator.data.FeatureSet;
-
-import junit.framework.TestCase;
 
 public class CollapsingAssociationCursorTest extends TestCase {
 

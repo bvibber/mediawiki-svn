@@ -1,8 +1,5 @@
 package de.brightbyte.wikiword.integrator.data;
 
-import de.brightbyte.wikiword.integrator.data.Association;
-import de.brightbyte.wikiword.integrator.data.DefaultFeatureSet;
-import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import junit.framework.TestCase;
 
 public class AssociationTest extends TestCase {

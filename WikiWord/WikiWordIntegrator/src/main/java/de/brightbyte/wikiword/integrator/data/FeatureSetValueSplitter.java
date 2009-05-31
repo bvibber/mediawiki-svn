@@ -2,11 +2,46 @@ package de.brightbyte.wikiword.integrator.data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 public class FeatureSetValueSplitter implements FeatureSetMangler {
+	
+	public static FeatureSetMultiMangler multi(FeatureSetValueSplitter... splitters) {
+		return new FeatureSetMultiMangler((FeatureSetMangler[])splitters);
+	}
+
+	public static FeatureSetMultiMangler multiFromSplitters(Iterable<FeatureSetValueSplitter> splitters) {
+		FeatureSetMultiMangler m = new FeatureSetMultiMangler();
+		
+		for (FeatureSetValueSplitter s: splitters) {
+			m.addMangler(s);
+		}
+		
+		return m;
+	}
+
+	public static FeatureSetMultiMangler multiFromPatternMap(Map<String, Pattern> splitters) {
+		FeatureSetMultiMangler m = new FeatureSetMultiMangler();
+		
+		for (Map.Entry<String, Pattern>e: splitters.entrySet()) {
+			m.addMangler(new FeatureSetValueSplitter(e.getKey(), e.getValue()));
+		}
+		
+		return m;
+	}
+
+	public static FeatureSetMultiMangler multiFromStringMap(Map<String, String> splitters, int flags) {
+		FeatureSetMultiMangler m = new FeatureSetMultiMangler();
+		
+		for (Map.Entry<String, String>e: splitters.entrySet()) {
+			m.addMangler(new FeatureSetValueSplitter(e.getKey(), e.getValue(), flags));
+		}
+		
+		return m;
+	}
 
 	protected String field;
 	protected Matcher splitter;

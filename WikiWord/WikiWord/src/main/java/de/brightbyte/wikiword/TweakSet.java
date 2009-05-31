@@ -21,7 +21,16 @@ import de.brightbyte.util.SystemUtils;
  */
 public class TweakSet {
 	protected Map<String, Object> parameters = new HashMap<String, Object>();
+	protected TweakSet parent;
 	
+	public TweakSet() {
+		this(null);
+	}
+	
+	public TweakSet(TweakSet parent) {
+		this.parent = parent;
+	}
+
 	public void loadTweaks(File f) throws IOException {
 		setTweaks( SystemUtils.loadProperties(f, null), null );
 	}
@@ -86,7 +95,11 @@ public class TweakSet {
 	
 	@SuppressWarnings("unchecked")
 	public <T>T getTweak(String key, T def) {
-		if (!parameters.containsKey(key)) return def;
-		return (T)parameters.get(key);
+		if (!parameters.containsKey(key)) {
+			if (parent==null) return def;
+			else return parent.getTweak(key, def);
+		} else {
+			return (T)parameters.get(key);
+		}
 	}
 }
