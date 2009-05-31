@@ -1921,7 +1921,7 @@ $messages['tr'] = array(
 	'povwatch_pushed' => '[[$1]] $2 kullanıcının {{PLURAL:$2|izleme listesine|izleme listelerine}} başarıyla itildi.',
 	'povwatch_intro' => 'PovWatch, tartışmalı sayfaların abone olan yöneticilerin izleme listelerine ihtiyaten itilmesine izin veren bir servistir.
 
-Son izleme listesi itmelerinin günlüğü, [[Special:PovWatch/günlük]] sayfasında mevcuttur.',
+Son izleme listesi itmelerinin günlüğü, [[Special:PovWatch/log]] sayfasında mevcuttur.',
 	'povwatch_subscriber_list' => 'Bir [[Special:PovWatch/subscribers|abone listesi]] mevcut.',
 	'povwatch_subscriber_list_intro' => '<strong>Abone listesi</strong>',
 	'povwatch_not_allowed_subscribers' => 'PovWatch abone listesini görmeye izniniz yok.',

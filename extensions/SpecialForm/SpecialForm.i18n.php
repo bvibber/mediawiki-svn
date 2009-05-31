@@ -478,8 +478,8 @@ $messages['gsw'] = array(
 	'formbadpagename' => 'Nit zuelässige Sytename',
 	'formbadrecaptcha' => 'Nit giltigi Wärt fir reCaptcha. Versuech s nomol.',
 	'formbadpagenametext' => 'D Formulardate, wu yygee wore sin, gän e nit zuelässige Sytename: „$1“.',
-	'formrequiredfielderror' => 'S Fäld $1 isch e Pfichtfäld.
-Bitte fill s uus.',
+	'formrequiredfielderror' => '{{PLURAL:$2|S Fäld $1 isch e Pfichtfäld|D Fälder $1 sin Pfichtfälder}}.
+Bitte fill {{PLURAL:$2|s|si}} uus.',
 	'formsavesummary' => 'Neji Syte, wu uf em [[Special:Form/$1|Formular $1]] basiert',
 	'formsaveerror' => 'Fähler bim Spychere vum Formular',
 	'formsaveerrortext' => 'S het e nit bekannte Fähler gee bim Spychere vu dr Syte „$1“.',

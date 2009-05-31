@@ -231,6 +231,13 @@ $messages['es'] = array(
 	'sitenotice-desc' => 'Permite a los usuarios cerrar el mensaje central.',
 );
 
+/** Estonian (Eesti)
+ * @author WikedKentaur
+ */
+$messages['et'] = array(
+	'sitenotice_close' => 'Peida sõnum',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

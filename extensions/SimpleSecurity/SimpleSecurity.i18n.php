@@ -346,6 +346,18 @@ $messages['ia'] = array(
 	'security-restricttogroup' => 'Accesso al contento restringite al membros de "$1"',
 );
 
+/** Italian (Italiano)
+ * @author Marco 27
+ */
+$messages['it'] = array(
+	'security-info' => 'Sono presenti $1 in questa pagina',
+	'security-info-toggle' => 'restrizioni di sicurezza',
+	'security-desc-PR' => '(impostato dalla scheda "proteggi")',
+	'security-infosysops' => 'Non sono applicate restrizioni perché sei un membro del gruppo "sysop"',
+	'security-manygroups' => 'gruppi $1 e $2',
+	'security-type-category' => 'categoria',
+);
+
 /** Japanese (日本語)
  * @author Fievarsty
  * @author Fryed-peach

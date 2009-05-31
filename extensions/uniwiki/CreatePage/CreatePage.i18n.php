@@ -161,6 +161,7 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author Melancholie
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'createpage' => 'Neue Seite erstellen',
@@ -170,9 +171,18 @@ $messages['de'] = array(
 	'createpage_entertitle' => 'Titel für deine Seite.',
 	'createpage_titleexists' => 'Eine Seite mit dem Namen [[$1]] existiert bereits.
 Möchtest Du die existierende Seite bearbeiten?',
-	'createpage_tryagain' => 'Nein - Ich möchte eine neue Seite mit einem anderen Titel anlegen.',
-	'createpage_editexisting' => 'Ja - Ich möchte die existierende Seite bearbeiten.',
+	'createpage_tryagain' => 'Nein – Ich möchte eine neue Seite mit einem anderen Titel anlegen.',
+	'createpage_editexisting' => 'Ja – Ich möchte die existierende Seite bearbeiten.',
 	'createpage-badtitle' => '„$1“ kann nicht als Seitentitel genutzt werden',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'createpage_entertitle' => 'Titel für Ihre Seite.',
+	'createpage_titleexists' => 'Eine Seite mit dem Namen [[$1]] existiert bereits.
+Möchten Sie die existierende Seite bearbeiten?',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -290,10 +300,10 @@ $messages['gl'] = array(
 	'createpage_submitbutton' => 'Enviar',
 	'createpage_instructions' => 'Insira o título da páxina que queira crear:',
 	'createpage_entertitle' => 'Por favor, insira un título para a páxina.',
-	'createpage_titleexists' => 'Unha páxina titulada "[[$1]]" xa existe.
-Quere editar esta páxina?',
+	'createpage_titleexists' => 'Xa existe unha páxina titulada "[[$1]]".
+Quere editar esa páxina?',
 	'createpage_tryagain' => 'Non. Quero crear unha páxina nova cun título distinto.',
-	'createpage_editexisting' => 'Si. Quero contribuír á páxina existente.',
+	'createpage_editexisting' => 'Si. Quero contribuír na páxina existente.',
 	'createpage-badtitle' => '"$1" non pode ser usado como o título dunha páxina',
 );
 

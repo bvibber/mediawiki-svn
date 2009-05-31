@@ -701,7 +701,7 @@ De Akßjuhn en dä Aanzeisch weet jenumme.",
  * @author Robby
  */
 $messages['lb'] = array(
-	'imstatus-desc' => 'Setzt Markéierungen derbäi déi den Online-Status vu verschiddenen Instant Messanger Systemer AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo) weisen',
+	'imstatus-desc' => 'Setzt Markéierungen derbäi déi den Online-Status vu verschiddenen Instant Messanger Systemer (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo) weisen',
 	'imstatus_syntax' => 'Syntax',
 	'imstatus_default' => 'Standard',
 	'imstatus_example' => 'Beispill',

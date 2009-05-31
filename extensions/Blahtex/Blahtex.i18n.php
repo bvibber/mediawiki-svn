@@ -992,7 +992,7 @@ $messages['gl'] = array(
 	'math_MisplacedLimits' => 'O comando "$1" só pode aparecer a continuación dun operador matemático (considere utilizar "\\mathop")',
 	'math_MissingCommandAfterNewcommand' => 'Novo nome de comando desaparecido ou ilegal despois de "\\newcommand" (debe definirse un comando con precisión; este debe comezar cunha barra invertida "\\" e conter só caracteres alfabéticos)',
 	'math_MissingDelimiter' => 'Falta un delimitador a continuación de "$1"',
-	'math_MissingOpenBraceAfter' => 'Falta unha chave de apertura "{" a continuación de "$1"',
+	'math_MissingOpenBraceAfter' => 'Falta unha chave de apertura "{" despois de "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Falta unha chave de peche "{" no final da entrada',
 	'math_MissingOpenBraceBefore' => 'Falta unha chave de apertura "{" antes de "$1"',
 	'math_MissingOrIllegalParameterCount' => 'Falta ou non é válida a contaxe de parámetros na definición de "$1".
@@ -1671,6 +1671,14 @@ $messages['km'] = array(
 	'math_UnavailableSymbolFontCombination' => 'និមិត្តសញ្ញា "$1" មិនមាន ក្នុង ក្រមអក្សរ "$2"',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'math_CannotCreateTexFile' => '텍스트 파일을 만들 수 없습니다.',
+	'math_CannotWriteTexFile' => '텍스트 파일을 쓸 수 없습니다.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -1753,6 +1761,7 @@ $messages['lb'] = array(
 	'math_InvalidColour' => 'D\'Faarw "$1" gëtt et net',
 	'math_MissingOpenBraceAtEnd' => 'Eng "{" feelt um Ënn vun der Saisie',
 	'math_NotEnoughArguments' => 'Dir hutt net genuch Parameter ugi fir "$1"',
+	'math_PngIncompatibleCharacter' => 'E PNG mat dem Zeechen $1 konnt net korrekt generéiert ginn',
 	'math_TooManyTokens' => 'Dat wat Dir aginn hutt ass ze laang',
 	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',
 	'math_UnmatchedOpenBracket' => 'D\'Klammer "[" as net mat der Klammer "]" zougemaach',

@@ -424,7 +424,7 @@ $messages['gsw'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'S git kei Benutzer mit em Name $1.',
 	'countedits-resultheader' => 'Ergebnis fir $1',
-	'countedits-resulttext' => '$1 het $2 Bearbeitige',
+	'countedits-resulttext' => '$1 het $2 {{PLURAL:$2|Bearbeitig|Bearbeitige}}',
 	'countedits-mostactive' => 'Di aktivschte Benutzer',
 	'countedits-nocontribs' => 'In {{ns:project}} git s keini Bearbeitige.',
 );

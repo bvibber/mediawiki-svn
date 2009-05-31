@@ -5564,7 +5564,7 @@ Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es z
 	'ow_transaction_restore' => 'Wider zerök holle',
 	'ow_transaction_remove' => 'Fott nämme',
 	'ow_transaction_is_latest' => 'Es et Letzte',
-	'ow_transaction_class_member' => 'Metjleed en ene Klaß',
+	'ow_transaction_class_member' => 'En dä Klaß',
 	'ow_transaction_object' => 'Objäk',
 	'ow_transaction_first_dm' => 'Eezte faßjelaate un explizeete Bedüggdeniß',
 	'ow_transaction_second_dm' => 'Zweite faßjelaate un explizeete Bedüggdeniß',

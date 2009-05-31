@@ -2899,7 +2899,7 @@ Bitte leg si aa fier configure.sql drin uus oder korrigier ihre Name.',
 	'configure-condition-description-1' => 'Minimal Bearbeitigszellerstand vu $1',
 	'configure-condition-description-2' => 'Minimal Benutzerkontenalter vu $1 {{PLURAL:$1|Sekund|Sekunde}}',
 	'configure-condition-description-3' => 'E-Mail-Adräss bstätigt',
-	'configure-condition-description-4' => 'Mitglid {{PLURAL:$2|vu däre Grupp|vu allene däne Gruppe}}: $1',
+	'configure-condition-description-4' => 'In allen vu dr Gruppe $1',
 	'configure-condition-description-5' => 'IP-Adräss vum Benutzer isch $1',
 	'configure-condition-description-6' => 'IP-Adräss vum Benutzer lyt in dr Range $1',
 	'configure-condition-description-7' => 'Mindeschtalter vum Benutzerkonto vu $1 {{PLURAL:$1|Sekund|Sekunde}} noch dr erschte Bearbeitig',
@@ -4476,9 +4476,9 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-boolop-description-or' => 'Winnischßdens ein Bedengung moß wohr sen',
 	'configure-boolop-description-xor' => 'Jenou ein Bedengung moß wohr sen',
 	'configure-boolop-description-not' => 'Kein Bedengung moß wohr sin',
-	'configure-farmer-settings' => 'De [[special:Configure|Enstellunge för dat Wiki maache]]',
-	'configure-farmer-extensions' => 'De [[special:Extensions|Projramm-Zohsäz för dat Wiki hee enschtälle]]',
-	'configure-farmer-extensions-list' => 'De [[special:Extensions|Projramm-Zohsäz för dat Wiki hee opleßte]]',
+	'configure-farmer-settings' => 'De [[{{#special:Configure}}|Enstellunge för dat Wiki maache]]',
+	'configure-farmer-extensions' => 'De [[{{#special:Extensions}}|Projramm-Zohsäz för dat Wiki hee enschtälle]]',
+	'configure-farmer-extensions-list' => 'De [[{{#special:Extensions}}|Projramm-Zohsäz för dat Wiki hee opleßte]]',
 );
 
 /** Cornish (Kernewek)

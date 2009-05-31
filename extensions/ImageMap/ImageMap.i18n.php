@@ -397,6 +397,22 @@ $messages['es'] = array(
 	'imagemap_poly_odd' => 'Error: se encontró un polígono con un número de coordinates impar en la linea $1',
 );
 
+/** Estonian (Eesti)
+ * @author Silvar
+ */
+$messages['et'] = array(
+	'imagemap_desc' => 'Lubab luua kasutaja-poolt klikitavaid pildi alasid, kasutades märgist <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image' => 'Viga: esimesel real peab määrama pildi',
+	'imagemap_invalid_image' => 'Viga: pilt on vigane või teda ei eksisteeri',
+	'imagemap_no_link' => 'Viga: ei leidnud sobivat linki, rea number $1 lõpust',
+	'imagemap_invalid_title' => 'Viga: Vigane lingi pealkiri, rea number $1 lõpus',
+	'imagemap_missing_coord' => 'Viga: real number $1 on kujundi jaoks vähe kordinaate',
+	'imagemap_unrecognised_shape' => 'Viga: real number $1 on tundmatu kujund, rida peab hakkama ühega neist: default, rect, circle või poly',
+	'imagemap_no_areas' => 'Viga: vähemalt üks ala peaks olema määratud',
+	'imagemap_invalid_coord' => 'Viga: real number $1 on vigane kordinaat see peab olema number',
+	'imagemap_description' => 'Info pildi kohta',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

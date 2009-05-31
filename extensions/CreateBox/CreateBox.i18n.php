@@ -329,6 +329,19 @@ $messages['km'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'createbox-desc' => '페이지를 위한 특별한 입력 상자 만들기',
+	'createbox-create' => '만들다',
+	'createbox-exists' => "죄송합니다, \"'''{{FULLPAGENAME}}'''\"은 이미 있습니다.
+
+사용자께서는 이 페이지를 만들 수 없습니다만, [{{fullurl:{{FULLPAGENAME}}|action=edit}} 그 것을 편집하실수 있고],[{{fullurl:{{FULLPAGENAME}}}}를 읽으실 수 있고], 아래 상자를 사용하는 다른 페이지를 만들 수 있습니다.
+
+<createbox>break=no</createbox>",
+);
+
 /** Krio (Krio)
  * @author Jose77
  */

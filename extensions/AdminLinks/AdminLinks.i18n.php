@@ -225,7 +225,11 @@ $messages['ia'] = array(
  * @author Marco 27
  */
 $messages['it'] = array(
+	'adminlinks' => 'Pannello admin',
+	'adminlinks-desc' => 'Aggiunge una [[Special:AdminLinks|pagina speciale]] che contiene link utili per gli amministratori',
 	'adminlinks_general' => 'Generale',
+	'adminlinks_editsidebar' => 'Modifica sidebar',
+	'adminlinks_editcss' => 'Modifica file CSS',
 	'adminlinks_editmainpagename' => 'Modifica il nome della pagina principale',
 	'adminlinks_users' => 'Utenti',
 	'adminlinks_createuser' => 'Crea un account',

@@ -1192,10 +1192,15 @@ $messages['ko'] = array(
 	'badimages-reason' => '이유:',
 	'badimages-remove' => '(이동)',
 	'badimages-remove-btn' => '제거',
+	'badimages-remove-confirm' => '사용자께서 원하시는 대로 $1이 목록에서 삭제되었는지 다시 한번 확인해 주시길 부탁드립니다:',
 	'badimages-removed' => '$1이 목록으로부터 삭제되었습니다.',
 	'badimages-subheading' => '현재 항목',
+	'badimages-unprivileged' => '(사용자께서는 목록을 변경할 수 있는, 충분한 허가를 받지 못하셨습니다)',
 	'badimages-log-name' => '나쁜 이미지 목록',
+	'badimages-log-add' => '[[$1]]을 나쁜 이미지 목록에 추가했습니다.',
+	'badimages-log-remove' => '[[$1]]을 나쁜 이미지 목록에서 삭제했습니다',
 	'badimages-page' => '{{ns:도움말}}:나쁜 이미지 목록',
+	'right-badimages' => '최신 나쁜 이미지 목록',
 );
 
 /** Ripoarisch (Ripoarisch)

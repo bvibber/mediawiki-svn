@@ -279,7 +279,7 @@ $messages['ksh'] = array(
 	'plotters-excessively-long-tableclass' => 'Dä Name för di <i lang="en">CSS</i>-KLaß fö de Tabälle es ze lang, jivv ene Name aan, dä kööter wi 255 Zeijsche eß.',
 	'plotters-no-data' => 'Kei Date aanjejovve.',
 	'plotters-invalid-renderer' => 'En onjöltsch Aanzeijeprojramm wood ußjesohk.',
-	'plotters-errors' => 'Fähler en de <i lang="en">Plotters</i>:',
+	'plotters-errors' => '{{PLURAL:$1|Eine|$1|Keine}} Fähler en de <i lang="en">Plotters</i>:',
 );
 
 /** Dutch (Nederlands)

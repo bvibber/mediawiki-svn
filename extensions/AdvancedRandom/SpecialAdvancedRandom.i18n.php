@@ -21,10 +21,11 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'advancedrandom' => 'عشوائي متقدم',
-	'advancedrandom-desc' => 'احصل على صفحة عشوائية من نقاش أو صفحة موضوع موصولة لصفحة معطاة، يمكن استخدامها مثل [[Special:AdvancedRandom/Template:Featured/Talk]] للحصول على مقالة مختارة عشوائية أو مثل [[Special:AdvancedRandom/Template:GFDL/Image]] للحصول على ملف عشوائي مرخص برخصة جنو للوثائق الحرة',
+	'advancedrandom-desc' => 'احصل على صفحة عشوائية من نقاش أو صفحة موضوع موصولة لصفحة معطاة، يمكن استخدامها مثل [[Special:AdvancedRandom/Template:Featured/Talk]] للحصول على نقاش مقالة مختارة عشوائي أو مثل [[Special:AdvancedRandom/Template:GFDL/File]] للحصول على ملف عشوائي مرخص برخصة جنو للوثائق الحرة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -191,7 +192,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'advancedrandom' => 'Acceso aleatorio avanzado',
-	'advancedrandom-desc' => 'Obter unha páxina ao chou a partir dunha conversa ou dunha ligazón dunha páxina de asunto á páxina dada. Pode ser usado como [[Special:AdvancedRandom/Template:Featured/Talk]] para obter un artigo destacado ao chou ou como [[Special:AdvancedRandom/Template:GFDL/Image]] para obter un ficeiro GFDL ao chou',
+	'advancedrandom-desc' => 'Obter unha páxina ao chou de calquera espazo de nomes que ligue ela mesma ou a súa conversa cunha páxina dada. Pode usarse [[Special:AdvancedRandom/Template:Featured/Talk]] para obter unha  conversa ao chou dun artigo destacado ou [[Special:AdvancedRandom/Template:GFDL/File]] para obter un ficeiro GFDL ao chou',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -255,7 +256,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'advancedrandom' => 'Accesso aleatori avantiate',
-	'advancedrandom-desc' => 'Obtene un pagina aleatori a partir de un pagina de discussion o ligamines de paginas de subjectos verso un pagina date. Pote esser usate como [[Special:AdvancedRandom/Template:Featured/Talk]] pro obtener un articulo eminente aleatori o como [[Special:AdvancedRandom/Template:GFDL/Image]] pro obtener un file aleatori sub licentia GFDL',
+	'advancedrandom-desc' => 'Obtene un pagina aleatori ab qualcunque spatio de nomines cuje pagina de discussion o de subjecto liga verso un pagina date. Pote esser usate como [[Special:AdvancedRandom/Template:Featured/Talk]] pro obtener le discussion de un articulo eminente aleatori, o como [[Special:AdvancedRandom/Template:GFDL/File]] pro obtener un file aleatori sub licentia GFDL',
 );
 
 /** Italian (Italiano)
@@ -267,11 +268,12 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'advancedrandom' => 'おまかせ表示（ページ指定）',
-	'advancedrandom-desc' => '指定ページにリンクしているノートページおよび主題ページの中からランダムに表示する。例えば [[Special:AdvancedRandom/Template:Featured/Talk]] とすれば秀逸な記事をおまかせ表示、 [[Special:AdvancedRandom/Template:GFDL/Image]] とすればGFDLファイルをおまかせ表示する',
+	'advancedrandom-desc' => '指定ページにリンクしているノートページおよび主題ページの中からランダムに表示する。例えば [[Special:AdvancedRandom/Template:Featured/Talk]] とすれば秀逸な記事をおまかせ表示、 [[Special:AdvancedRandom/Template:GFDL/File]] とすればGFDLファイルをおまかせ表示する',
 );
 
 /** Javanese (Basa Jawa)
@@ -307,7 +309,7 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'advancedrandom' => 'Zofällijje Sigg (Met Extra Müjjeleschkeite )',
-	'advancedrandom-desc' => 'Deit en zosäzlijje Müjjelischkeit för zofällije Sigge en et Wikki, esu dat [[Special:AdvancedRandom/Template:Dach/Atikkel]] ene zofällije DaresAtikkel brenge kann, udder [[Special:AdvancedRandom/Template:GFDL/Beld]] e zofällesch Beld unger de GFDL.',
+	'advancedrandom-desc' => 'Deit en zosäzlijje Müjjelischkeit för zofällije Sigge en et Wikki, esu dat [[{{#special:AdvancedRandom/Template:Dach/Atikkel}}]] ene zofällije DaresAtikkel brenge kann, udder [[{{#special:AdvancedRandom/Template:GFDL/Beld}}]] e zofällesch Beld unger de GFDL.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

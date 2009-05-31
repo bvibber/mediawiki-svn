@@ -223,8 +223,7 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'languageselector' => 'Keel',
-	'languageselector-desc' => 'Language selector on every page, also for visitors
-Keele valik kõikidele lehtedele, sama ka külastajatele',
+	'languageselector-desc' => 'Keele valik kõikidele lehtedele, sama ka külastajatele',
 	'languageselector-setlang' => 'vali',
 );
 

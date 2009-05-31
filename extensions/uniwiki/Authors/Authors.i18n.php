@@ -277,6 +277,15 @@ $messages['mk'] = array(
 	'authors_anonymous' => 'Анонимни',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'authors-desc' => 'Tambah senarai penyumbang ke laman',
+	'authors_authors' => 'Penulis',
+	'authors_anonymous' => 'Tanpa nama',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

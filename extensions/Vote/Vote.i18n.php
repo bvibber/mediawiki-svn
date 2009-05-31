@@ -896,6 +896,8 @@ $messages['ko'] = array(
 	'vote-results-none' => '지금은 아무도 투표할 수 없습니다.',
 	'vote-login' => '투표하시려면 [$1 로그인]하셔야만 합니다.',
 	'vote-invalid-choice' => '사용자께서는 유효한 후보 중 하나를 택하셔야만 합니다.',
+	'right-vote' => '투표',
+	'right-voteadmin' => '투표 결과를 보세요',
 );
 
 /** Ripoarisch (Ripoarisch)

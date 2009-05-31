@@ -190,7 +190,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'i18ntags-desc' => "Zougrëff op d'i18n-Fonctiounen fir d'Formatéieren vun Zuelen, d'Grammatik- an d'Méizuelregelen an allen disponibele Sproochen",
+	'i18ntags-desc' => "Zougrëff op d'i18n-Fonctioune fir d'Formatéiere vun Zuelen, d'Grammatik- an d'Méizuelregelen an allen disponibele Sproochen",
 );
 
 /** Marathi (मराठी)
