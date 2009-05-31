@@ -8,42 +8,37 @@ import de.brightbyte.data.Functor;
 import de.brightbyte.data.NaturalComparator;
 import de.brightbyte.data.Optimum;
 import de.brightbyte.data.PropertyComparator;
-import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 import de.brightbyte.wikiword.integrator.store.MappingFeatureStoreBuilder;
 
-public class OptimalMappingSelector implements MappingProcessor {
+public class OptimalMappingSelector extends ConceptMappingPassThrough {
 
 	protected Optimum<FeatureSet> optimum;
 	
-	public OptimalMappingSelector(String property, Functor<Number, ? extends Collection<Number>> aggregator) {
-		this((Comparator<FeatureSet>)(Object)PropertyComparator.newMultiMapEntryComparator(property, (Comparator<Number>)(Object)NaturalComparator.instance, aggregator, Number.class));
+	public OptimalMappingSelector(MappingFeatureStoreBuilder store, String property, Functor<Number, ? extends Collection<Number>> aggregator) {
+		this(store, (Comparator<FeatureSet>)(Object)PropertyComparator.newMultiMapEntryComparator(property, (Comparator<Number>)(Object)NaturalComparator.instance, aggregator, Number.class));
 	}
 	
-	public OptimalMappingSelector(PropertyAccessor<FeatureSet, Number> accessor) {
-		this(new Optimum<FeatureSet>(accessor));
+	public OptimalMappingSelector(MappingFeatureStoreBuilder store, PropertyAccessor<FeatureSet, Number> accessor) {
+		this(store, new Optimum<FeatureSet>(accessor));
 	}
 	
-	public OptimalMappingSelector(Comparator<FeatureSet> comp) {
-		this(new Optimum<FeatureSet>(comp));
+	public OptimalMappingSelector(MappingFeatureStoreBuilder store, Comparator<FeatureSet> comp) {
+		this(store, new Optimum<FeatureSet>(comp));
 	}
 	
-	public OptimalMappingSelector(Optimum<FeatureSet> optimum) {
+	public OptimalMappingSelector(MappingFeatureStoreBuilder store, Optimum<FeatureSet> optimum) {
+		super(store);
+		
 		if (optimum==null) throw new NullPointerException();
 		this.optimum = optimum;
 	}
 
-	public void processMappings(DataCursor<MappingCandidates> cursor,
-			MappingFeatureStoreBuilder store) throws PersistenceException {
-		
-		MappingCandidates m;
-		while ((m = cursor.next()) != null ) {
+	protected  void processMappingCandidates(MappingCandidates m) throws PersistenceException {
 			FeatureSet f = optimum.apply(m.getCandidates());
-			store.storeMapping(m.getSubject(), f, f);
-		}
-
+			if (f!=null) store.storeMapping(m.getSubject(), f, f);
 	}
 
 }

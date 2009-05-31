@@ -5,6 +5,6 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 import de.brightbyte.wikiword.integrator.store.MappingFeatureStoreBuilder;
 
-public interface MappingProcessor {
-		public void processMappings(DataCursor<MappingCandidates> cursor, MappingFeatureStoreBuilder store) throws PersistenceException;
+public interface ConceptMappingProcessor {
+		public void processMappings(DataCursor<MappingCandidates> cursor) throws PersistenceException;
 }

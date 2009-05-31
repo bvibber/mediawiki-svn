@@ -52,7 +52,7 @@ public class DatabaseForeignPropertyStoreBuilder extends DatabaseWikiWordStoreBu
 	protected DatabaseForeignPropertyStoreBuilder(String table, IntegratorSchema integratorSchema, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
 		super(integratorSchema, tweaks, agenda);
 
-		this.propertyInserter = configureTable(table, 128, 5*32);
+		this.propertyInserter = configureTable(table, 128, 4*32);
 		this.propertyTable =  (RelationTable)propertyInserter.getTable();
 	}	
 	
@@ -66,12 +66,10 @@ public class DatabaseForeignPropertyStoreBuilder extends DatabaseWikiWordStoreBu
 		super.flush();
 	}
 	
-	public void storeProperty(String authority, String extId, int conceptId, String conceptName, String property, String value, String qualifier) throws PersistenceException {
+	public void storeProperty(String authority, String extId, String property, String value, String qualifier) throws PersistenceException {
 		try {
 			propertyInserter.updateString("external_authority", authority);
 			propertyInserter.updateString("external_id", extId);
-			propertyInserter.updateInt("concept", conceptId); 
-			propertyInserter.updateString("concept_name", conceptName);
 			propertyInserter.updateString("property", property);
 			propertyInserter.updateString("value", value);
 			propertyInserter.updateString("qualifier", qualifier);

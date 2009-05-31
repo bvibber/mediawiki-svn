@@ -2,9 +2,12 @@ package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
 
+import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.StoreBackedApp;
 import de.brightbyte.wikiword.builder.ImportApp;
+import de.brightbyte.wikiword.integrator.data.ForeignEntity;
+import de.brightbyte.wikiword.integrator.processor.ForeignPropertyProcessor;
 import de.brightbyte.wikiword.integrator.store.DatabaseForeignPropertyStoreBuilder;
 import de.brightbyte.wikiword.integrator.store.ForeignPropertyStoreBuilder;
 import de.brightbyte.wikiword.model.WikiWordConcept;
@@ -21,6 +24,7 @@ import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 public class LoadForeignProperties extends StoreBackedApp<ForeignPropertyStoreBuilder> {
 
 	protected ForeignPropertyStoreBuilder propertyStore;
+	protected ForeignPropertyProcessor propertyProcessor;
 	
 	public LoadForeignProperties() {
 		super(true, true);
@@ -46,10 +50,20 @@ public class LoadForeignProperties extends StoreBackedApp<ForeignPropertyStoreBu
 	
 	@Override
 	protected void run() throws Exception {
-		section("-- build info --------------------------------------------------");
-		this.infoStore.buildConceptInfo();
+		section("-- fetching properties --------------------------------------------------");
+		DataCursor<ForeignEntity> cursor = openPropertySource();
+		
+		section("-- process properties --------------------------------------------------");
+		this.propertyProcessor.processProperties(cursor);
+		
+		cursor.close();
 	}	
 	
+	protected DataCursor<ForeignEntity> openPropertySource() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public static void main(String[] argv) throws Exception {
 		LoadForeignProperties app = new LoadForeignProperties();
 		app.launch(argv);

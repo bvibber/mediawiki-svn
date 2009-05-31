@@ -14,7 +14,7 @@ import de.brightbyte.util.PersistenceException;
 public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {
 	protected DataCursor<List<String>> source;
 	private String[] fields;
-
+	
 	public TsvFeatureSetCursor(InputStream in, String enc) throws UnsupportedEncodingException {
 		this( new TsvCursor(in, enc) );
 	}
@@ -40,11 +40,12 @@ public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {
 		if (fields==null) throw new NullPointerException();
 		this.fields = fields;
 	}
-
+	
 	public void readFields() throws PersistenceException {
 		List<String> s = source.next();
 		if (s!=null) {
-			fields = (String[]) s.toArray(new String[s.size()]);
+			String[] f = (String[]) s.toArray(new String[s.size()]);
+			setFields(f);
 		}
 	}
 
@@ -65,13 +66,15 @@ public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {
 	protected FeatureSet record(List<String> s) {
 		if (fields==null) throw new IllegalStateException("call setFields() or readFields() first!");
 		
-		FeatureSet m = new DefaultFeatureSet();
+		FeatureSet ft = new DefaultFeatureSet();
 		
 		for (int i=0; i<fields.length; i++) {
-			m.put(fields[i], s.get(i)); 
+			String f = fields[i];
+			String v = s.get(i);
+			ft.put(f, v);
 		}
 
-		return m;
+		return ft;
 	}
 
 	protected void finalize() {
