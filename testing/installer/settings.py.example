@@ -21,7 +21,7 @@ import os
 #extensionsdir=trunkdir+"/extensions"
 
 # where to install diverse mediawiki instances
-#instances_dir=os.path.expanduser('~/public_html/revisions')
+#instancesdir=os.path.expanduser('~/public_html/revisions')
 
 # base scriptpath for every installation (ie, where to reach the above over the web)
 #base_scriptpath="/~kim/revisions/"
