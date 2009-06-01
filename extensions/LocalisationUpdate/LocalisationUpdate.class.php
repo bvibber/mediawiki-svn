@@ -216,7 +216,7 @@ class LocalisationUpdate {
 		$basehash = md5( $basefilecontents );
 		// If this is the remote file check if the file has changed since our last update
 		if ( preg_match( "/^http/", $basefile ) && !$alwaysGetResult ) {
-			if ( !self::updateHash( $basefile, $basehash ) ) {
+			if ( !self::checkHash( $basefile, $basehash ) ) {
 				self::myLog( "Skipping {$langcode} since the remote file hasn't changed since our last update" );
 				return array();
 			}
@@ -237,7 +237,7 @@ class LocalisationUpdate {
 		$comparehash = md5( $comparefilecontents );
 		// If this is the remote file check if the file has changed since our last update
 		if ( preg_match( "/^http/", $comparefile ) && !$alwaysGetResult ) {
-			if ( !self::updateHash( $comparefile, $comparehash ) ) {
+			if ( !self::checkHash( $comparefile, $comparehash ) ) {
 				self::myLog( "Skipping {$langcode} since the remote file has not changed since our last update" );
 				return array();
 			}
@@ -272,22 +272,36 @@ class LocalisationUpdate {
 			self::myLog( "--{$langcode} hasn't changed--" );
 		}
 
+		
+		if ( preg_match( "/^http/", $basefile )) {
+			self::saveHash( $basefile, $basehash );
+		}
+		
+		if ( preg_match( "/^http/", $comparefile )) {
+			self::saveHash( $comparefile, $comparehash );
+		}
+		
 		return $changedStrings;
 	}
 
-	public static function updateHash( $file, $hash ) {
+	public static function checkHash( $file, $hash ) {
 		$db = wfGetDB( DB_MASTER );
 
 		$hashConds = array( 'lfh_file' => $file, 'lfh_hash' => $hash );
 		$result = $db->select( 'localisation_file_hash', '*', $hashConds, __METHOD__ );
 		if ( $db->numRows( $result ) == 0 ) {
-			$conds = array( 'lfh_file' => $file );
-			$db->delete( 'localisation_file_hash', $conds , __METHOD__ );
-			$db->insert( 'localisation_file_hash', $hashConds, __METHOD__ );
 			return true;
 		} else {
 			return false;
 		}
+	}
+	
+	public static function saveHash ($file, $hash) {
+		$db = wfGetDB ( DB_MASTER );
+		$hashConds = array( 'lfh_file' => $file, 'lfh_hash' => $hash );
+		$conds = array( 'lfh_file' => $file );
+		$db->delete( 'localisation_file_hash', $conds , __METHOD__ );
+		$db->insert( 'localisation_file_hash', $hashConds, __METHOD__ );
 	}
 
 	public static function saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode ) {
@@ -310,21 +324,25 @@ class LocalisationUpdate {
 				
 				$values = array( 'lo_value' => $base_messages[$key] );
 				$conds = array( 'lo_language' => $langcode, 'lo_key' => $key );
-				$result = $db->select( 'localisation', 'lo_value', $conds, __METHOD__ );
+				$result = $db->select( 'localisation', 'lo_value', $conds );
+				$dbObject = $db->fetchObject($result);
+				if($db->numRows($result) != 0 && $dbObject->lo_value === $base_messages[$key])
+					continue;
+				
 				if($db->numRows($result) == 0) { 
 					$inserts = array(
 						'lo_value' => $base_messages[$key],
 						'lo_language' => $langcode,
 						'lo_key' => $key
 					);
-					$db->insert( 'localisation', $inserts, __METHOD__ );
+					$db->insert( 'localisation', $inserts );
 					if ( $db->affectedRows() == 0 ) {
 						throw new MWException( "An error has occured while inserting a new message into the database!" );
 					}
 				} else {
-					$db->update( 'localisation', $values, $conds, __METHOD__ );
+					$db->update( 'localisation', $values, $conds );
 					if ( $db->affectedRows() == 0 ) {
-						throw new MWException( "An error has occured while updateing a message in the database!" );
+						throw new MWException( "An error has occured while updating a message in the database!" );
 					}
 				}
 
@@ -378,7 +396,7 @@ class LocalisationUpdate {
 		// If this is the remote file
 		if ( preg_match( "/^http/", $basefile ) && !$alwaysGetResult ) {
 			// Check if the hash has changed
-			if ( !self::updateHash( $basefile, $basehash ) ) {
+			if ( !self::checkHash( $basefile, $basehash ) ) {
 				self::myLog( "Skipping {$extension} since the remote file has not changed since our last update" );
 				return 0;
 			}
@@ -398,7 +416,7 @@ class LocalisationUpdate {
 		$comparehash = md5( $comparefilecontents );
 		if ( preg_match( "/^http/", $comparefile ) && !$alwaysGetResult ) {
 			// Check if the remote file has changed
-			if ( !self::updateHash( $comparefile, $comparehash ) ) {
+			if ( !self::checkHash( $comparefile, $comparehash ) ) {
 				self::myLog( "Skipping {$extension} since the remote file has not changed since our last update" );
 				return 0;
 			}
@@ -468,6 +486,14 @@ class LocalisationUpdate {
 		// And log some stuff
 		self::myLog( "Updated " . $updates . " messages for the '{$extension}' extension" );
 
+		if ( preg_match( "/^http/", $basefile )) {
+			self::saveHash( $basefile, $basehash );
+		}
+		
+		if ( preg_match( "/^http/", $comparefile )) {
+			self::saveHash( $comparefile, $comparehash );
+		}
+		
 		return $updates;
 	}
 
