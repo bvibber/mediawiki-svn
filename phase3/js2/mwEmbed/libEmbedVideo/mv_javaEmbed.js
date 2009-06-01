@@ -90,6 +90,21 @@ var javaEmbed = {
         //once currentTime is updated call parent_monitor 
         this.parent_monitor();
     },   
+    doSeek:function(perc){     
+        this.getJCE();           
+        js_log('java:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );        
+        
+        if(!this.jce)
+            return this.parent_doSeek(perc);
+            
+        if( this.supportsURLTimeEncoding() ){            
+            this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );                        
+            this.jce.setParam('url', this.getURI( this.seek_time_sec ))
+            this.jce.restart();
+        }else if( this.vid.duration ){                    
+            this.jce.currentTime = perc * this.vid.duration;            
+        }
+    },
     //get java cortado embed object
     getJCE:function(){        
         if ( embedTypes.mozilla ) {
