@@ -254,10 +254,10 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'configure-js-remove' => '{{Identical|Delete}}',
 	'configure-no-directory' => '* $1 is the directory in the file-system',
 	'configure-old-not-available' => '* $1 is the 14 char timestamp of the version',
-	'configure-old-summary' => '* $1 is the time and date of the version
-* $2 is the user who made the version
-* $3 will be replaced with links to that version
-* $4 is the comment, as provided by the user',
+	'configure-old-summary' => '* $1 is a link to the page, the time and date of the version is the link anchor
+* $2 is an internal or external link the user who made the version with the user name as the link anchor, or empty, or a text identifying the user without a link
+* $3 is a link to the diff page of this version and the version preceeding it, or empty
+* $4 is the comment, as provided by the user, which may be empty',
 	'configure-section-email' => '{{Identical|E-mail}}',
 	'configure-section-timezone' => '{{Identical|Time zone}}',
 	'configure-section-html' => '{{optional}}',
