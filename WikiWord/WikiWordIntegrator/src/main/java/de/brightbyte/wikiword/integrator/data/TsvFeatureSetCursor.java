@@ -9,6 +9,7 @@ import java.util.List;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.io.LineCursor;
 import de.brightbyte.io.TsvCursor;
+import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.util.PersistenceException;
 
 public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {
@@ -29,6 +30,10 @@ public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {
 
 	public TsvFeatureSetCursor(LineCursor lines) {
 		this(new TsvCursor(lines));
+	}
+
+	public TsvFeatureSetCursor(LineCursor lines, CsvLineChunker chunker) {
+		this(new TsvCursor(lines, chunker));
 	}
 
 	public TsvFeatureSetCursor(DataCursor<List<String>> source) {
