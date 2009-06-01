@@ -26,8 +26,8 @@ Suggested configure line for minimal functionality:
 
 ./configure --disable-demuxers --disable-muxers --disable-decoders --disable-encoders \
   --disable-ffserver --disable-ffplay --enable-encoder=mjpeg --enable-muxer=mjpeg \
-  --enable-decoder=theora --enable-demuxer=ogg --disable-network \
-  --build-suffix=-still
+  --enable-decoder=theora --enable-demuxer=ogg --disable-network --disable-devices \ 
+  --disable-parsers --enable-parser=vp3 --build-suffix=-still
 
 Set the FFmpeg binary location with:
 
