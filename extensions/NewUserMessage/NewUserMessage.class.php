@@ -53,7 +53,13 @@ class NewUserMessage {
 			$dbw->begin();
 			$good = true;
 
-			$text = "{{{$templateTitleText}|$name|$realName}}";
+			// Add (any) content to [[MediaWiki:Newusermessage-substitute]] to substitute the welcome template.
+			$substitute = wfMsgForContent( 'newusermessage-substitute' );
+			if ( $substitute ) {
+				$text = "{{subst:{$templateTitleText}|$name|$realName}}";
+			} else {
+				$text = "{{{$templateTitleText}|$name|$realName}}";
+			}
 			$signatures = wfMsgForContent( 'newusermessage-signatures' );
 			if ( !wfEmptyMsg( 'newusermessage-signatures', $signatures ) ) {
 				$pattern = '/^\* ?(.*?)$/m';

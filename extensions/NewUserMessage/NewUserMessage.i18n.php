@@ -13,8 +13,9 @@ $messages = array();
 $messages['en'] = array(
 	'newusermessage-desc' => "Adds a message to newly created user's talk pages",
 	'newuseredit-summary' => 'Adding [[{{int:newusermessage-template}}|welcome message]] to new user\'s talk page',
-	'newusermessage-template' => 'Template:Welcome', // The title of the message template
-	'newusermessage-editor' => 'New user message', // The username used for the edit
+	'newusermessage-template' => 'Template:Welcome', # The title of the message template
+	'newusermessage-editor' => 'New user message', # The username used for the edit
+	'newusermessage-substitute' => '', # do not translate or duplicate this message to other languages
 );
 
 /** Message documentation (Message documentation)
