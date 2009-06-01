@@ -130,9 +130,10 @@ $wgLogo="$wgScriptPath/Logo.png";
 # load Localsettings specific to particular modules
 
 $additional_settings=glob("$IP/LocalSettings/*.php");
-foreach ($additional_settings as $file) {
-	require_once($file);
+if ($additional_settings) {
+	foreach ($additional_settings as $file) {
+		require_once($file);
+	}
 }
-
 
 ?>
