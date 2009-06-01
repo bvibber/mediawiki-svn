@@ -542,8 +542,9 @@ var wgOggPlayer = {
 
 	'embedVideoElement': function ( elt, params ) {
 		var id = elt.id + "_obj";
+		var mtag = (params.isVideo?'video':'audio');
 		var html =
-			'<div><' + (params.isVideo?'video':'audio') +  
+			'<div><' + mtag +  
 				' id=' + this.hq( id ) + 
 				' width=' + this.hq( params.width ) + 
 				' height=' + this.hq( (params.height>0)?params.height:this.controlsHeightGuess ) + 
@@ -551,7 +552,7 @@ var wgOggPlayer = {
 				' autoplay';
 		if (!this.safari)
 			html += ' controls';
-		html += ' ></video></div>';
+		html += ' ></' + mtag + '></div>';
 		elt.innerHTML = html;
 	},
 
