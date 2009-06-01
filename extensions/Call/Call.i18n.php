@@ -708,13 +708,17 @@ Om du har noen problemer kan du prøve <b>Special:Call/DebuG</b>.',
 $messages['oc'] = array(
 	'call' => 'Ampèl',
 	'call-desc' => 'Crèa un ligam ipertèxte cap a un modèl o un article wiki normals tot i passant de paramètres. Pòt èsser utilizada en linha de comanda dempuèi un navigador o a travèrs un tèxte wiki.',
-	'call-text' => "L’extension Ampèl a besonh d’una pagina wiki e de paramètres facultatius per aquesta darrièra.<br /><br />
+	'call-text' => "L’extension Ampèl a besonh d’una pagina wiki e dels paramètres facultatius per aquesta darrièra coma argumen.<br /><br />
 Exemple 1: &nbsp; <tt>[[Special:Call/Mon modèl,parm1=value1]]</tt><br />
-Exemple 2: &nbsp; <tt>[[Special:Call/Discussion:Ma discussion,parm1=value1]]</tt><br />
-Exemple 3: &nbsp; <tt>[[Special:Call/:Ma pagina,parm1=value1,parm2=value2]]</tt><br /><br />
-Exemple 4 (Adreça per navigador) : &nbsp; <tt>http://mondomeni/monwiki/index.php?Special:Call/:Ma_Pagina,parm1=value1</tt><br /><br />
+Exemple 2: &nbsp; <tt>[[Special:Call/Discussion:Ma discussion,parm1=valor1]]</tt><br />
+Exemple 3: &nbsp; <tt>[[Special:Call/:Ma pagina,parm1=valor1,parm2=valor2]]</tt><br /><br />
+Exemple 4 (Adreça per navigador) : &nbsp; <tt>http://mondomeni/monwiki/index.php?Special:Call/:Ma_Pagina,param1=valor1</tt>
+L’extension <i>Ampèl</i> apelarà la pagina indicada en i passant los paramètres.<br />
+Veiretz las entresenhas d'aquesta pagina, son títol, mas son « tipe » serà lo d’una pagina especiala que poirà pas èsser editada.<br />Las entresenhas que veiretz variaràn en foncion dels paramètres qu'auretz indicats.
 
-L’extension <i>Ampèl</i> apelarà la pagina indicada en i passant los paramètres.<br />Veiretz las entresenhas d'aquesta pagina, son títol, mas son « tipe » serà lo d’una pagina especiala mas poirà pas èsser editada.<br />Las entresenhas que veiretz variaràn en foncion dels paramètres qu'auretz indicats.<br />Aquesta extension es fòrt practica per crear d'aplicacions interactivas amb MediaWiki.<br />A títol d’exemple, vejatz <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br />En cas de problèmas, podètz ensajar <b>Special:Call/DebuG</b>",
+Aquesta extension es fòrt practica per crear d'aplicacions interactivas amb MediaWiki.<br />
+A títol d’exemple, vejatz <a href='http://semeb.com/dpldemo/Template:Catlist'>l'interfàcia DPL</a>...<br />
+En cas de problèmas, podètz ensajar <b>Special:Call/DebuG</b>",
 	'call-save' => "Çò qu'es indicat per aqueste ampèl poiriá èsser salvat cap a una pagina intitolada ''$1''.",
 	'call-save-success' => 'Lo tèxte seguent es estat salvat cap a la pagina <big>[[$1]]</big> .',
 	'call-save-failed' => 'Lo tèxte seguent a pas pogut èsser salvat cap a la pagina <big>[[$1]]</big> perque aquesta pagina existís ja.',

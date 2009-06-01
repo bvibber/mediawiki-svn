@@ -772,11 +772,11 @@ Wenn nach fünf Tagen niemand Einspruch gegen die Löschung eingelegt hat, wird 
 Der angegebene Grund lautet ''$1''.",
 	'deletequeue-page-prod' => "Diese Seite wurde zur Löschung vorgeschlagen.
 Der angegebene Grund lautet ''$1''.
-Wenn hiergegen bis zum ''$2'' kein Widerspruch eingelegt wird, wird diese Seite gelöscht werden.
+Wenn hiergegen bis zum ''$3, $4 Uhr'' kein Widerspruch eingelegt wird, wird diese Seite gelöscht werden.
 Du kannst gegen diesen Löschantrag [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Widerspruch einlegen].",
 	'deletequeue-page-deletediscuss' => "Diese Seite wurde zur Löschung vorgeschlagen und hiergegen wurde Widerspruch eingelegt.
 Der angegebene Grund lautet ''$1''.
-Die [[$5|Löschdiskussion]] läuft noch bis zum ''$2''.",
+Die [[$5|Löschdiskussion]] läuft noch bis zum ''$3, $4 Uhr''.",
 	'deletequeue-notqueued' => 'Die von dir ausgewählte Seite ist momentan in keiner Lösch-Warteschlange',
 	'deletequeue-review-action' => 'Auszuführende Aktion:',
 	'deletequeue-review-delete' => 'Seite löschen.',

@@ -477,7 +477,7 @@ Bitte melde dich mit einem anderen Benutzernamen an oder [[$1|nimm Kontakt mit u
 	'regexblock-form-submit-empty' => 'Einen Benutzernamen oder eine IP-Adresse für die Sperrung angeben.',
 	'regexblock-form-submit-regex' => 'Ungültiger regulärer Ausdruck.',
 	'regexblock-form-submit-expiry' => 'Bitte wähle einen Verfallszeitraum.',
-	'regexblock-match-stats-record' => '$1 sperrte „$2“ auf „$3“ um „$4“, eingeloggt von Adresse „$5“',
+	'regexblock-match-stats-record' => '$1 sperrte „$2“ auf „$3“ am $6 um $7 Uhr, angemeldet von Adresse „$5“',
 	'regexblock-nodata-found' => 'Keine Daten gefunden',
 	'regexblock-stats-title' => 'Regex-Sperrstatistiken',
 	'regexblock-unblock-success' => 'Entsperrung erfolgreich',
@@ -499,7 +499,7 @@ Vermutlich gibt es keinen solchen Benutzer.',
 	'regexblock-view-block-unblock' => 'entsperren',
 	'regexblock-view-stats' => 'Statistiken',
 	'regexblock-view-empty' => 'Die Liste der gesperrten Namen und Adressen ist leer.',
-	'regexblock-view-time' => 'am $1',
+	'regexblock-view-time' => 'am $2, $3 Uhr',
 	'right-regexblock' => 'Entzieht Benutzern das Recht auf allen Wikis der Wiki-Farm Bearbeitungen zu tätigen',
 );
 

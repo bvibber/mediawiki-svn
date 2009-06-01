@@ -347,7 +347,7 @@ $messages['ksh'] = array(
 	'whatismyip' => 'Ming <code lang="en">IP-</code>Addräß',
 	'whatismyip-desc' => 'Zëijsch däm Medmaacher sing jraad aktive <code lang="en">IP-</code>Addräß op [[Special:WhatIsMyIP|{{int:whatismyip}}]] aan.',
 	'whatismyip-out' => 'Ding <code lang="en">IP-</code>Addräß eß',
-	'right-whatismyip' => 'De eije <code lang="en">IP-</code>Addräß op [[{{#special:WhatIsMyIP}}]] aanzeije',
+	'right-whatismyip' => 'De eije <code lang="en">IP-</code>Addräß op [[Special:WhatIsMyIP|{{#special:WhatIsMyIP}}]] aanzeije',
 );
 
 /** Latin (Latina)
@@ -589,10 +589,11 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
-	'whatismyip-out' => "Sizin IP'niz:",
+	'whatismyip-out' => 'IP adresiniz:',
 );
 
 /** Ukrainian (Українська)

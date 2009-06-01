@@ -588,7 +588,7 @@ $messages['tr'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Gönderiliyor…',
 	'communityvoice-ratings-scale-status-error' => 'Gönderirken hata!',
 	'communityvoice-ratings-scale-status-thanks' => 'Oy verdiğiniz için teşekkürler!',
-	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 oy verildi)',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|oy|oy}} verildi)',
 	'communityvoice-ratings-error-no-category' => 'Derecelendirme etiketinde kategori niteliği eksik.',
 	'communityvoice-ratings-error-no-title' => 'Derecelendirme etiketinde başlık niteliği eksik.',
 );

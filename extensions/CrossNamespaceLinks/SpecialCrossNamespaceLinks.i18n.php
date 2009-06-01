@@ -533,6 +533,7 @@ $messages['kn'] = array(
 
 /** Korean (한국어)
  * @author Ficell
+ * @author Kwj2772
  * @author ToePeu
  */
 $messages['ko'] = array(
@@ -540,7 +541,7 @@ $messages['ko'] = array(
 	'crossnamespacelinks-desc' => '{{SITENAME}}에 있으면 안되는 [[Special:CrossNamespaceLinks|이름공간을 넘나드는 문서 목록]]',
 	'crossnamespacelinks-summary' => '주 이름공간에서 {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} 외의 다른 이름공간을 가리키는 문서의 목록입니다.
 이렇게 다른 이름공간을 가리키는 것은 권장하지 않습니다.',
-	'crossnamespacelinkstext' => '$1: $3 이름공간을 가리키는 $2개의 링크',
+	'crossnamespacelinkstext' => '$1: $3 이름공간을 가리키는 $2개의 {{PLURAL:$2|링크|링크}}',
 );
 
 /** Ripoarisch (Ripoarisch)

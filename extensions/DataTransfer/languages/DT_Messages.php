@@ -875,6 +875,7 @@ $messages['lb'] = array(
 	'dt_import_importing' => 'Import am gaang ...',
 	'dt_import_success' => '$1 {{PLURAL:$1|Säit gëtt|Säite ginn}} aus dem $2-Fichier ugeluecht.',
 	'importcsv' => 'CSV importéieren',
+	'right-datatransferimport' => 'Donnéeën importéieren',
 );
 
 /** Limburgish (Limburgs)
@@ -1460,7 +1461,7 @@ $messages['tr'] = array(
 	'dt_import_selectfile' => 'Lütfen içe aktarmak için $1 dosyasını seçin:',
 	'dt_import_editsummary' => '$1 içe aktarımı',
 	'dt_import_importing' => 'İçe aktarıyor...',
-	'dt_import_success' => '$2 dosyasından $1 {{PLURAL:$1|sayfa|sayfa}} içe aktarılacak.',
+	'dt_import_success' => '$2 dosyasından $1 {{PLURAL:$1|sayfa|sayfa}} oluşturulacak.',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

@@ -384,7 +384,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'advancedrandom' => 'Accès aleatòri avançat',
-	'advancedrandom-desc' => "Obten una pagina a l'azard a partir d’una discussion o d’un ligam d’un subjècte cap a una pagina donada. Pòt èsser utilizada coma [[Special:AdvancedRandom/Template:Featured/Talk]] per obténer un article determinat a l' azard o coma [[Special:AdvancedRandom/Template:GFDL/Image]] per obténer un fichièr jos licéncia GFDL",
+	'advancedrandom-desc' => "Obten una pagina a l'azard un espaci de noms quin que siá, que liga, ela o sa pagina de discussion, cap a una pagina donada. Pòt èsser utilizat coma [[Special:AdvancedRandom/Template:Featured/Talk]] per obténer aleatòriament la pagina de discussion d'un article de qualitat, o coma [[Special:AdvancedRandom/Template:GFDL/File]] per obténer un fichièr jos licéncia de documentacion liura GNU (GFDL)",
 );
 
 /** Polish (Polski)
@@ -528,7 +528,7 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'advancedrandom' => 'Gelişmiş rassal',
-	'advancedrandom-desc' => 'Tartışma ya da konu sayfası verilen bir sayfaya bağlantı veren birinden bir rasgele sayfa al, rasgele bir kaliteli madde almak için [[Special:AdvancedRandom/Template:Featured/Talk]] gibi ya da rasgele bir GÖBL resmi almak için [[Special:AdvancedRandom/Template:GFDL/Image]] gibi kullanılabilir',
+	'advancedrandom-desc' => 'Tartışma ya da konu sayfası verilen bir sayfaya bağlantı veren birinden bir rasgele sayfa al, rasgele bir kaliteli madde almak için [[Special:AdvancedRandom/Template:Featured/Talk]] gibi ya da rasgele bir GÖBL resmi almak için [[Special:AdvancedRandom/Template:GFDL/File]] gibi kullanılabilir',
 );
 
 /** Ukrainian (Українська)
