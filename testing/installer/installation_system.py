@@ -36,6 +36,19 @@ class Installation_System(object):
 		if instance:
 			self.set_instance(instance)
 
+	def instancedir(self):
+		if self.instance:
+			return os.path.join(settings.instancesdir,self.instance)
+		else:
+			return None
+
+	def dbname(self):
+		"""find and return an appropriate database name"""
+		return settings.dbname_prefix+self.instance
+
+	def mysql_allsettings(self):
+		return settings.mysql_command+" "+self.dbname()
+	
 	def set_instance(self,instance):
 		self.instance=instance	
 
@@ -160,6 +173,9 @@ class Installation_System(object):
 		env["REVISION"]=self.revision or ''
 		env["TAG"]=self.tag or ''
 		env["MYSQL_COMMAND"]=settings.mysql_command
+		env["MYSQL_ALLSETTINGS"]=self.mysql_allsettings()
+		env["DBNAME"]=self.dbname()
+		env["INSTANCEDIR"]=self.instancedir()
 
 		if isinstance(task,str):
 			task2=[task]
