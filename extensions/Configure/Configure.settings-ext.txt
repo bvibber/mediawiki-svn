@@ -373,9 +373,9 @@ ExpandTemplates
 url = http://www.mediawiki.org/wiki/Extension:ExpandTemplates
 
 ExternalData
-url = http://www.mediawiki.org/wiki/Extension:External_Data
 settings[] = edgStringReplacements: array
 array[] = edgStringReplacements: assoc
+url = http://www.mediawiki.org/wiki/Extension:External_Data
 
 FileSearch
 
@@ -572,25 +572,24 @@ url = http://www.mediawiki.org/wiki/Extension:Replace_Text
 
 SemanticDrilldown
 file = includes/SD_Settings.php
-url = http://www.mediawiki.org/wiki/Extension:Semantic_Drilldown
 settings[] = sdgListSeparator: text
 settings[] = sdgNumResultsColumns: int
 settings[] = sdgNumResultsPerPage : int
 settings[] = sdgFiltersSmallestFontSize: int
 settings[] = sdgFiltersLargestFontSize: int
+url = http://www.mediawiki.org/wiki/Extension:Semantic_Drilldown
 
 SemanticForms
 file = includes/SF_Settings.php
-url = http://www.mediawiki.org/wiki/Extension:Semantic_Forms
 settings[] = sfgMaxAutocompleteValues: int
 settings[] = sfgRenameEditTabs: bool
 settings[] = sfgListSeparator: text
 settings[] = sfgYUIBase: text
 settings[] = sfg24HourTime: bool
+url = http://www.mediawiki.org/wiki/Extension:Semantic_Forms
 
 SemanticMediaWiki
 file = includes/SMW_Settings.php
-url = http://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki
 settings[] = smwgQComparators: text
 settings[] = smwgShowFactbox: text
 settings[] = smwgShowFactboxEdit: text
@@ -625,7 +624,6 @@ settings[] = smwgQConceptMaxDepth: int
 settings[] = smwgQConceptFeatures: int
 settings[] = smwgQConceptCacheLifetime: int
 settings[] = smwgResultFormats: array 
-array[] = smwgResultFormats: simple
 settings[] = smwgPDefaultType: text
 settings[] = smwgRSSEnabled: bool
 settings[] = smwgRSSWithPages: bool
@@ -634,14 +632,16 @@ settings[] = smwgExportBacklinks: bool
 settings[] = smwgOWLFullExport: bool
 settings[] = smwgEnableUpdateJobs: bool
 settings[] = smwgNamespacesWithSemanticLinks: array
-array[] = smwgNamespacesWithSemanticLinks: ns-text
 settings[] = smwgAdminRefreshStore: bool
+array[] = smwgResultFormats: simple
+array[] = smwgNamespacesWithSemanticLinks: ns-text
+url = http://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki
 
 SemanticResultFormats
 file = SRF_Settings.php
-url = http://www.mediawiki.org/wiki/Extension:Semantic_Result_Formats
 settings[] = srfgFormats: array
 array[] = srfgFormats: simple
+url = http://www.mediawiki.org/wiki/Extension:Semantic_Result_Formats
 
 SkinPerNamespace
 settings[] = wgSkinPerNamespace: array
