@@ -175,19 +175,26 @@ class SpecialViewConfig extends ConfigurationPage {
 		$hasSelf = in_array( $this->mWiki, $wikis );
 
 		extract( $this->formatConf );
-		$time = $wgLang->timeAndDate( $ts );
+		$datim = $wgLang->timeAndDate( $ts );
+		$date = $wgLang->date( $ts );
+		$time = $wgLang->time( $ts );
 
 		## Make user link...
 		$userLink = '';
+		$user = '';
 		if (!$arr['user_wiki'] && !$arr['user_name'] ) {
 			$userLink = ''; # Nothing...
+			$user = ''; # Nothing...
 		} elseif ( $arr['user_wiki'] == wfWikiId() ) {
 			$userLink = $skin->link( Title::makeTitle( NS_USER, $arr['user_name'] ), $arr['user_name'] );
+			$user = $arr['user_name'];
 		} elseif ( class_exists( 'WikiMap' ) && ($wiki = WikiMap::getWiki( $arr['user_wiki'] ) ) ) {
 			$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$arr['user_name'] ), $arr['user_name'].'@'.$arr['user_wiki'] );
+			$user = ''; # Nothing...
 		} else {
 			## Last-ditch
 			$userLink = $arr['user_name'].'@'.$arr['user_wiki'];
+			$user = ''; # Nothing...
 		}
 
 		$actions = array();
@@ -263,7 +270,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		$comment = $arr['reason'] ? $skin->commentBlock( $arr['reason'] ) : '';
 
 		$action = $wgLang->commaList( $actions );
-		return Xml::tags( 'li', null, wfMsgExt( 'configure-viewconfig-line', array( 'parseinline', 'replaceafter' ), array( $buttons, $time, $userLink, $action, $comment ) ) )."\n";
+		return Xml::tags( 'li', null, wfMsgExt( 'configure-viewconfig-line', array( 'parseinline', 'replaceafter' ), array( $buttons, $datim, $userLink, $action, $comment, $date, $time, $user ) ) )."\n";
 	}
 
 	/**

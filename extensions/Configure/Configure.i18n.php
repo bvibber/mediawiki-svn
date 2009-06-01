@@ -279,11 +279,14 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'configure-transwiki-not-in-range' => '* $1 is the wiki, as given by the user
 * $2 is the list of allowed wikis
 * $3 is the number of items in $2',
-	'configure-viewconfig-line' => '* $1 will be replaced with two radio buttons, as in history pages
+	'configure-viewconfig-line' => '* $1 may be two radio buttons, as in history pages, or empty
 * $2 is the time and date of the version
-* $3 is the user who made the version
-* $4 will be replaced with links to that version
-* $5 is the comment, as provided by the user',
+* $3 is a link to the user who made the version, or a text, or empty
+* $4 will be replaced with zero to several links to that version
+* $5 is the comment, as provided by the user, which may be empty
+* $6 is the date of the version
+* $7 is the time of the version
+* $8 is the name of the user who made version, or empty',
 	'extensions' => 'Name of special page displayed in [[Special:SpecialPages]].',
 	'right-configure' => '{{doc-right}}',
 	'right-configure-all' => '{{doc-right}}',
