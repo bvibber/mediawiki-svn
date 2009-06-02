@@ -282,6 +282,13 @@ $messages['sk'] = array(
 	'uos-title' => 'Rozdelenie hodnôt používateľskej voľby $1',
 );
 
+/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+ * @author Ерней
+ */
+$messages['tt-cyrl'] = array(
+	'uos-unknown' => '*Килешү буенча',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

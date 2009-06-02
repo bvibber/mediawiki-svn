@@ -223,6 +223,7 @@ Please create it or change it to use this extension.',
  * @author Meno25
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'configure' => 'Name of special page displayed in [[Special:SpecialPages]].',
@@ -1535,7 +1536,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-view-all-versions' => 'Volle Versionsliste',
 	'configure-view-default' => 'Standardeinstellungen',
 	'configure-view-not-allowed' => 'Es ist dir nicht gestattet diese Einstellung einzusehen',
-	'configure-viewconfig-line' => '$1 $2 von $3 $5: $4',
+	'configure-viewconfig-line' => '$1 $6, $7 Uhr von $3 $5: $4',
 	'extensions' => 'Erweiterungen konfigurieren',
 	'right-configure' => 'Wiki einrichten',
 	'right-configure-all' => 'Alle Einstellungen im Wiki vornehmen',
@@ -4478,9 +4479,9 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-boolop-description-or' => 'Winnischßdens ein Bedengung moß wohr sen',
 	'configure-boolop-description-xor' => 'Jenou ein Bedengung moß wohr sen',
 	'configure-boolop-description-not' => 'Kein Bedengung moß wohr sin',
-	'configure-farmer-settings' => 'De [[{{#special:Configure}}|Enstellunge för dat Wiki maache]]',
-	'configure-farmer-extensions' => 'De [[{{#special:Extensions}}|Projramm-Zohsäz för dat Wiki hee enschtälle]]',
-	'configure-farmer-extensions-list' => 'De [[{{#special:Extensions}}|Projramm-Zohsäz för dat Wiki hee opleßte]]',
+	'configure-farmer-settings' => 'De [[Special:Configure|Enstellunge för dat Wiki maache]]',
+	'configure-farmer-extensions' => 'De [[Special:Extensions|Projramm-Zohsäz för dat Wiki hee enschtälle]]',
+	'configure-farmer-extensions-list' => 'De [[Special:Extensions|Projramm-Zohsäz för dat Wiki hee opleßte]]',
 );
 
 /** Cornish (Kernewek)
@@ -5171,7 +5172,7 @@ Er wordt een voorvertoning weergegeven als u het veld verlaat.',
 	'configure-select-wiki-view-specific' => 'Specifieke wiki:',
 	'configure-select-wiki-submit' => 'Selecteren',
 	'configure-setting-not-available' => 'Deze instelling is niet beschikbaar in deze versie van MediaWiki',
-	'configure-transwiki-not-in-range' => 'De opgegeven wiki ($1) is geen toegelaten waarde ($2).',
+	'configure-transwiki-not-in-range' => 'De opgegeven wiki ($1) is geen toegelaten {{PLURAL:$1|waarde}}: ($2).',
 	'configure-view' => 'Bekijken',
 	'configure-view-all-versions' => 'Volledige lijst van versies',
 	'configure-view-default' => 'Standaardinstellingen',

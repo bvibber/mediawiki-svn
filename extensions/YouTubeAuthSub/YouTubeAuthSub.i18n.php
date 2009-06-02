@@ -2155,6 +2155,15 @@ YouTube, возможно, будет некоторое время обраба
 	'youtubeauthsub_jserror_nodesc' => 'Пожалуйста, введите описание видео.',
 );
 
+/** Sardinian (Sardu)
+ * @author Marzedu
+ */
+$messages['sc'] = array(
+	'youtubeauthsub_title' => 'Tìtulu',
+	'youtubeauthsub_password' => 'Password de YouTube',
+	'youtubeauthsub_username' => 'Nòmene usuàriu de YouTube',
+);
+
 /** Sicilian (Sicilianu)
  * @author Santu
  */

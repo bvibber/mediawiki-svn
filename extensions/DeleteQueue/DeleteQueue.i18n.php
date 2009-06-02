@@ -597,6 +597,13 @@ $messages['as'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'deletequeue-delnom-otherreason' => 'Іншая прычына',
+	'deletequeue-delnom-extra' => 'Дадатковая інфармацыя:',
+	'deletequeue-review-delete' => 'Выдаліць старонку.',
+	'deletequeue-review-reason' => 'Камэнтары:',
+	'deletequeue-review-newreason' => 'Новая прычына:',
+	'deletequeue-review-newextra' => 'Дадатковая інфармацыя:',
+	'deletequeue-vote-reason' => 'Камэнтары:',
 	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-list-header-page' => 'Старонка',
 	'deletequeue-case-page' => 'Старонка:',

@@ -129,6 +129,14 @@ $messages['arz'] = array(
 	'right-deletebatch' => 'حذف باتش الصفحات',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'deletebatch-caption' => 'Сьпіс старонак:',
+	'deletebatch-reason' => 'Прычына выдаленьня',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -659,7 +667,7 @@ $messages['ja'] = array(
 	'deletebatch-or' => '<b>または</b>',
 	'deletebatch-page' => '削除するページ:',
 	'deletebatch-reason' => '削除の理由',
-	'deletebatch-processing' => '$1ページを削除する',
+	'deletebatch-processing' => '$1ページを削除しています',
 	'deletebatch-from-file' => 'ファイルリストから',
 	'deletebatch-from-form' => 'フォームから',
 	'deletebatch-success-subtitle' => '$1',

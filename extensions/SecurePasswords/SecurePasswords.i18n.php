@@ -611,7 +611,7 @@ $messages['vi'] = array(
 	'securepasswords-desc' => 'Tạo ra những bảng băm mật khẩu an toàn hơn và bổ sung một bộ kiểm tra độ mạnh mật khẩu',
 	'securepasswords-valid' => 'Mật khẩu của bạn không hợp lệ hay ngắn quá.
 Nó phải:',
-	'securepasswords-minlength' => 'dài đến $1 ký tự trở lên',
+	'securepasswords-minlength' => 'tối thiểu là $1 {{PLURAL:$1|ký tự|ký tự}}',
 	'securepasswords-lowercase' => 'có ít nhất một chữ nhỏ',
 	'securepasswords-uppercase' => 'có ít nhất một chữ hoa',
 	'securepasswords-digit' => 'có ít nhất một chữ số',

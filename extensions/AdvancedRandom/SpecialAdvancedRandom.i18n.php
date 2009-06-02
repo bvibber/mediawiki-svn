@@ -309,7 +309,7 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'advancedrandom' => 'Zofällijje Sigg (Met Extra Müjjeleschkeite )',
-	'advancedrandom-desc' => 'Deit en zosäzlijje Müjjelischkeit för zofällije Sigge en et Wikki, esu dat [[{{#special:AdvancedRandom/Template:Dach/Atikkel}}]] ene zofällije DaresAtikkel brenge kann, udder [[{{#special:AdvancedRandom/Template:GFDL/Beld}}]] e zofällesch Beld unger de GFDL.',
+	'advancedrandom-desc' => 'Deit en zosäzlijje Müjjelischkeit för zofällije Sigge en et Wikki, esu dat [[Special:AdvancedRandom/Template:Dach/Atikkel|{{#special:AdvancedRandom}}/Template:Dach/Atikkel]] ene zofällije DaresAtikkel brenge kann, udder [[Special:AdvancedRandom/Template:GFDL/Beld|{{#special:AdvancedRandom}}/Template:GFDL/Beld]] e zofällesch Beld unger de GFDL.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -544,7 +544,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'advancedrandom' => 'Ngẫu nhiên nâng cao',
-	'advancedrandom-desc' => 'Lấy một trang ngẫu nhiên từ liên kết của trang thảo luận hoặc trang chính cho trước, có thể được dùng theo dạng [[Special:AdvancedRandom/Template:Featured/Talk]] để lấy một bài viết chọn lọc ngẫu nhiên hoặc như [[Special:AdvancedRandom/Template:GFDL/Image]] để lấy một tập tin GFDL ngẫu nhiên',
+	'advancedrandom-desc' => 'Lấy một trang ngẫu nhiên từ một không gian tên, trang thảo luận hoặc trang chủ đề bất kỳ có liên kết đến trang chỉ định. Có thể được dùng như [[Special:AdvancedRandom/Template:Featured/Talk]] để lấy một thảo luận của bài viết chọn lọc ngẫu nhiên, hoặc như [[Special:AdvancedRandom/Template:GFDL/File]] để lấy một tập tin GFDL ngẫu nhiên',
 );
 
 /** Yue (粵語)

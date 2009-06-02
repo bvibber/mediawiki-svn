@@ -558,6 +558,15 @@ $messages['ch'] = array(
 	'whitelisttableedit' => 'Tulaika',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author رزگار
+ */
+$messages['ckb-arab'] = array(
+	'mywhitelistpages' => 'پەڕەکانی من',
+	'whitelisttablemodifyall' => 'هه‌مو',
+	'whitelisttableedit' => 'گۆڕانکاری',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -14,6 +14,11 @@ $aliases['en'] = array(
 	'UserOptionStats'          => array( 'UserOptionStats' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'UserOptionStats' => array( 'إحصاءات_خيارات_المستخدم' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'UserOptionStats' => array( '利用者オプション統計' ),

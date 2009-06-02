@@ -619,7 +619,7 @@ $messages['vi'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Đang gửi…',
 	'communityvoice-ratings-scale-status-error' => 'Có lỗi khi gửi!',
 	'communityvoice-ratings-scale-status-thanks' => 'Cảm ơn bạn vì đã bỏ phiếu!',
-	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 lá phiếu)',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|lá phiếu|lá phiếu}})',
 	'communityvoice-ratings-error-no-category' => 'Thiếu thuộc tính thể loại trong thẻ xếp hạng.',
 	'communityvoice-ratings-error-no-title' => 'Thiếu thuộc tính tiêu đề trong thẻ xếp hạng.',
 );

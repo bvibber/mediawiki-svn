@@ -594,13 +594,12 @@ Stu mèssagge avène mannete pe notificà a te ca \'u $3 l\'utende $4 $5.',
  */
 $messages['ru'] = array(
 	'categorywatch-desc' => 'Расширяет функциональность списка наблюдения возможностью уведомлений об изменениях в страницах, входящих в некоторую категорию',
-	'categorywatch-emailbody' => 'Привет $1, вы получили это сообщение, потому что следите за категорией «$2»
-Это сообщение уведомляет вас о том, что $3 участник $4 $5.',
 	'categorywatch-emailsubject' => 'Изменения, затрагивающие наблюдаемую категорию «$1»',
 	'categorywatch-catmovein' => 'перенёс $1 в категорию $2 из $3',
 	'categorywatch-catmoveout' => 'перенёс $1 из категории $2 в $3',
 	'categorywatch-catadd' => 'добавил $1 в категорию $2',
 	'categorywatch-catsub' => 'удалил $1 из категории $2',
+	'categorywatch-autocat' => 'Автоматически наблюдается $1',
 );
 
 /** Yakut (Саха тыла)

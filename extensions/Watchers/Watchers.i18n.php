@@ -141,7 +141,7 @@ $messages['be-tarask'] = array(
 	'watchers_error_article' => "'''Памылка:''' старонка не існуе.",
 	'watchers_header' => '{{PLURAL:$2|Удзельнік, які назірае|Удзельнікі, які назіраюць}} за старонкай «$1»',
 	'watchers_noone_watches' => 'Ніхто не назірае за гэтай старонкай.',
-	'watchers_x_or_more' => 'За гэтай старонкай назірае $1 ці болей удзельнікаў.',
+	'watchers_x_or_more' => 'За гэтай старонкай {{PLURAL:$1|назірае|назіраюць|назіраюць}} $1 ці болей удзельнікаў.',
 	'watchers_less_than_x' => 'За гэтай старонкай назірае меней $1 {{PLURAL:$1|удзельніка|удзельнікаў|удзельнікаў}}.',
 );
 
@@ -827,6 +827,7 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'watchers' => 'Người theo dõi',
@@ -835,8 +836,8 @@ $messages['vi'] = array(
 	'watchers_error_article' => "'''Lỗi:''' Trang không tồn tại.",
 	'watchers_header' => '{{PLURAL:$2|Người|Những người}} đang theo dõi “$1”',
 	'watchers_noone_watches' => 'Không ai theo dõi trang này.',
-	'watchers_x_or_more' => '$1 người trở lên có trang này trong danh sách theo dõi của họ.',
-	'watchers_less_than_x' => 'Ít hơn $1 người có trang này trong danh sách theo dõi của họ.',
+	'watchers_x_or_more' => '$1 {{PLURAL:$1|người|người}} trở lên có trang này trong danh sách theo dõi của họ.',
+	'watchers_less_than_x' => 'Ít hơn $1 {{PLURAL:$1|người|người}} có trang này trong danh sách theo dõi của họ.',
 );
 
 /** Volapük (Volapük)

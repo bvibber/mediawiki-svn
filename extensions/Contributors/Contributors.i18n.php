@@ -1379,6 +1379,7 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'contributors' => 'Những người đóng góp',
@@ -1388,8 +1389,8 @@ $messages['vi'] = array(
 	'contributors-target' => 'Tên trang:',
 	'contributors-submit' => 'Liệt kê',
 	'contributors-subtitle' => 'Những người đóng góp chính của $1',
-	'contributors-others-long' => 'Cũng có $1 người thêm đóng góp vào trang này.',
-	'contributors-others' => 'vào $1 người khác',
+	'contributors-others-long' => 'Cũng có {{PLURAL:$1|một người khác|$1 người khác}} đóng góp vào trang này.',
+	'contributors-others' => 'và {{PLURAL:$1|một người khác|$1 người khác}}',
 	'contributors-badtitle' => 'Tên trang không hợp lệ.',
 	'contributors-nosuchpage' => 'Trang $1 không tồn tại.',
 );

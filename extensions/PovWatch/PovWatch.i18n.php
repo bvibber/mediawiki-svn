@@ -1706,6 +1706,13 @@ $messages['sah'] = array(
 	'action-povwatch_user' => 'бу сирэйи атын кыттааччы кэтээһинигэр киллэр',
 );
 
+/** Sardinian (Sardu)
+ * @author Marzedu
+ */
+$messages['sc'] = array(
+	'povwatch_title' => 'Tìtulu:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -2019,7 +2026,7 @@ $messages['vi'] = array(
 	'povwatch_not_subscribed' => 'Bạn chưa đăng ký vào PovWatch, do đó bạn không thể bỏ đăng ký.',
 	'povwatch_unsubscribed' => 'Hiện bạn đã bỏ đăng ký khỏi PovWatch',
 	'povwatch_invalid_title' => 'Tựa đề chỉ định không hợp lệ',
-	'povwatch_pushed' => '[[$1]] đã được đẩy thành công vào $2 danh sách theo dõi thành viên',
+	'povwatch_pushed' => '[[$1]] đã được đẩy thành công vào $2 {{PLURAL:$2|danh sách|danh sách}} theo dõi của thành viên',
 	'povwatch_intro' => 'PovWatch là dịch vụ cho phép các trang có tranh cãi được đẩy vào danh sách theo dõi của những bảo quản viên đã đăng ký.
 
 Một nhật trình các lần đẩy vào danh sách theo dõi gần đây có tại [[Special:PovWatch/log]].',

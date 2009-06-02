@@ -408,7 +408,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'scanset-desc' => 'Montre les émâges de pâges numerisâs dês los ensemblos de CD/DVD d’Andréas Grosz.',
+	'scanset-desc' => 'Montre les émâges de pâges numerisâs dês los ensemblos de CD/DVD a Andréas Grosz.',
 	'scanset_no_name' => 'Èrror : vos dête spècefiar un nom por l’ensemblo de documents numerisâs, per ègzemplo &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Èrror : ensemblo de documents numerisâs envalido ou ben manquent.',
 	'scanset_unrecognised_index_format' => 'Èrror : format d’endèxo encognu.',

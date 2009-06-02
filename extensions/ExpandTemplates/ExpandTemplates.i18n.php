@@ -1509,6 +1509,13 @@ $messages['sah'] = array(
 	'expand_templates_preview' => 'Инники көрүү',
 );
 
+/** Sardinian (Sardu)
+ * @author Marzedu
+ */
+$messages['sc'] = array(
+	'expand_templates_preview' => 'Antiprima',
+);
+
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
  */

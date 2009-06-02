@@ -1131,6 +1131,13 @@ Ang id na dapat mong ibigay ay ang mga bilang at mga titik na nasa pagitan ng "$
 	'imstatus_yahoo_style' => 'estilo ng pindutan, mula $1 (pinakamaliit) hanggang $2 (pinakamalaki), para sa "liham na may tinig" (\'\'voicemail\'\') ang $3 at $4.',
 );
 
+/** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
+ * @author Ерней
+ */
+$messages['tt-cyrl'] = array(
+	'imstatus_default' => 'Килешү буенча',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

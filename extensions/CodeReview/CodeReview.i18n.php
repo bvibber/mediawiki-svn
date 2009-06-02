@@ -1493,6 +1493,7 @@ Plena URL-o: $2
 Komento:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Postatentaj ŝanĝoj',
 	'repoadmin' => 'Administrado de Kodujo',
 	'repoadmin-new-legend' => 'Krei novan kodujon',
 	'repoadmin-new-label' => 'Nomo de dosierujo:',
@@ -3629,7 +3630,7 @@ $4',
 	'repoadmin-edit-button' => 'Loß Jonn!',
 	'repoadmin-edit-sucess' => 'Dat Repositorijum „[[Special:Code/$1|$1]]“ woht verändert.',
 	'right-repoadmin' => 'Repositorije verwallde',
-	'right-codereview-use' => '[[{{#special:Code}}]] bruche',
+	'right-codereview-use' => '[[Special:Code|{{#special:Code}}]] bruche',
 	'right-codereview-add-tag' => 'Makeerunge för Projramm-Versione verjäve',
 	'right-codereview-remove-tag' => 'Makeerunge vun Projramm-Versione fott nämme',
 	'right-codereview-post-comment' => 'Eije Kommentaare för Projramm-Versione veröffentlesche',

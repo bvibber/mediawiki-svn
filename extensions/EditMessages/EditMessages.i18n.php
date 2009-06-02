@@ -132,6 +132,9 @@ $messages['as'] = array(
  */
 $messages['be-tarask'] = array(
 	'editmessages-desc' => '[[Special:EditMessages|Рэдагаваньне праз Ўэб]] вялікай колькасьці файлаў Messages*.php',
+	'editmessages' => 'Рэдагаваньне паведамленьняў',
+	'editmsg-target' => 'Мэтавае паведамленьне:',
+	'editmsg-search' => 'Пошук',
 );
 
 /** Bulgarian (Български)

@@ -509,8 +509,9 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'whatismyip' => 'Какой у меня IP',
-	'whatismyip-desc' => 'Показывает текущий IP-адрес пользователя на странице [[Special:WhatIsMyIP]]',
-	'whatismyip-out' => 'Ваш IP:',
+	'whatismyip-desc' => 'Показывает текущий [[Special:WhatIsMyIP|IP-адрес]] участника',
+	'whatismyip-out' => 'Ваш IP-адрес:',
+	'right-whatismyip' => 'просмотр [[Special:WhatIsMyIP|собственного IP-адреса]]',
 );
 
 /** Sinhala (සිංහල)

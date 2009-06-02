@@ -13,6 +13,11 @@ $aliases['en'] = array(
 	'AdminLinks' => array( 'AdminLinks' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'AdminLinks' => array( 'وصلات_الإدارة' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'AdminLinks' => array( 'Ylläpitolinkit' ),
