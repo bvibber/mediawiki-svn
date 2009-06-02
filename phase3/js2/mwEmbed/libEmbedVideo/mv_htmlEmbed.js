@@ -70,7 +70,7 @@ var htmlEmbed ={
             library:"html"
         },
         selected_source:{
-            serverSideSeeking:false
+            URLTimeEncoding:false
         },
         timedTextSources:function(){
             return false;

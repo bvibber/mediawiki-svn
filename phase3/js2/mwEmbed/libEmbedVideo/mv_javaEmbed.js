@@ -1,3 +1,8 @@
+window.cortadoDomainLocations = {
+    'upload.wikimedia.org'  :   'http://upload.wikimedia.org/jars/cortado.jar',
+    'tinyvid.tv'            :   'http://tinyvid.tv/static/cortado.jar'
+} 
+
 var javaEmbed = {
     instanceOf:'javaEmbed',
     iframe_src:'',
@@ -26,14 +31,18 @@ var javaEmbed = {
         var mediaSrc = this.media_element.selected_source.getURI( this.seek_time_sec );
         
         if(mediaSrc.indexOf('://')!=-1 & parseUri(document.URL).host !=  parseUri(mediaSrc).host){
-            applet_loc  = 'http://theora.org/cortado.jar';
+            if(window.cortadoDomainLocations[parseUri(mediaSrc).host]){
+               applet_loc =  window.cortadoDomainLocations[parseUri(mediaSrc).host];
+            }else{
+                applet_loc  = 'http://theora.org/cortado.jar';
+            }
         }else{
             applet_loc = mv_embed_path+'binPlayers/cortado/cortado-wmf-r46643.jar';
         }
             //load directly in the page..
             // (media must be on the same server or applet must be signed)
             var appplet_code = ''+
-            '<applet id="'+this.pid+'" code="com.fluendo.player.Cortado.class" archive="'+applet_loc+'" width="'+this.width+'" height="'+this.height+'">    '+ "\n"+
+            '<applet id="' + this.pid + '" code="com.fluendo.player.Cortado.class" archive="' + applet_loc + '" width="' + this.width + '" height="' + this.height + '">    '+ "\n"+
                 '<param name="url" value="' + mediaSrc + '" /> ' + "\n"+
                 '<param name="local" value="false"/>'+ "\n"+
                 '<param name="keepaspect" value="true" />'+ "\n"+
@@ -41,7 +50,7 @@ var javaEmbed = {
                 '<param name="showStatus" value="hide" />' + "\n"+
                 '<param name="audio" value="true" />'+"\n"+
                 '<param name="seekable" value="true" />'+"\n"+
-                '<param name="duration" value="'+this.duration+'" />'+"\n"+
+                '<param name="duration" value="' + this.duration + '" />'+"\n"+
                 '<param name="bufferSize" value="200" />'+"\n"+
             '</applet>';                                    
             // Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
@@ -78,7 +87,7 @@ var javaEmbed = {
                //js_log(' ct: ' + this.jce.getPlayPosition() + ' so:' + this.start_offset + ' st:' + this.seek_time_sec);                   
                if(!this.start_offset)
                    this.start_offset = 0;                       
-               this.currentTime = this.jce.getPlayPosition();                     
+               this.currentTime = this.jce.getPlayPosition();                       
             }catch (e){
                 ///js_log('could not get time from jPlayer: ' + e);
             }                
@@ -90,19 +99,24 @@ var javaEmbed = {
         //once currentTime is updated call parent_monitor 
         this.parent_monitor();
     },   
+   /* 
+    * (local cortado seek does not seem to work very well)  
+    */
     doSeek:function(perc){     
-        this.getJCE();           
-        js_log('java:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );        
-        
-        if(!this.jce)
-            return this.parent_doSeek(perc);
-            
-        if( this.supportsURLTimeEncoding() ){            
-            this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );                        
-            this.jce.setParam('url', this.getURI( this.seek_time_sec ))
-            this.jce.restart();
-        }else if( this.vid.duration ){                    
-            this.jce.currentTime = perc * this.vid.duration;            
+        this.getJCE();
+        if(this.jce){           
+            js_log('java:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );        
+                  
+            if( this.supportsURLTimeEncoding() ){         
+                this.parent_doSeek(perc);   
+                //this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );                        
+               // this.jce.setParam('url', this.getURI( this.seek_time_sec ))
+                //this.jce.restart();
+            }else{             
+                //do a (genneraly broken) local seek:   
+                js_log("cortado javascript seems to always fail ... but here we go... doSeek(" + perc * this.getDuration() );     
+                this.jce.doSeek( perc * this.getDuration()  );            
+            }
         }
     },
     //get java cortado embed object

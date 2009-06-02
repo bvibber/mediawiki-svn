@@ -41,8 +41,19 @@ var default_video_attributes = {
     "download_link":true,
     "type":null     //the content type of the media 
 };
-
-
+/*
+ * the base source attibute checks
+ */
+var mv_default_source_attr= new Array(
+    'id',
+    'src',
+    'title',
+    'URLTimeEncoding', //boolean if we support temporal url requests on the source media
+    'start',
+    'end',    
+    'default',
+    'lang'
+);
 /*
 * Converts all occurrences of <video> tag into video object
 */
@@ -462,16 +473,7 @@ function mediaSource(element)
     this.init(element);
 }
 
-var mv_default_source_attr= new Array(
-    'id',
-    'src',
-    'title',
-    'timeFormat',
-    'start',
-    'end',    
-    'default',
-    'lang'
-);
+
 mediaSource.prototype =
 {
     /** MIME type of the source. */
@@ -483,7 +485,7 @@ mediaSource.prototype =
     /** True if the source has been marked as the default. */
     marked_default:false,
     /** True if the source supports url specification of offset and duration */
-    serverSideSeeking:false,
+    URLTimeEncoding:false,
     /** Start offset of the requested segment */
     start_offset:null,
     /** Duration of the requested segment (0 if not known) */
@@ -503,12 +505,12 @@ mediaSource.prototype =
         if ( element.tagName.toLowerCase() == 'video')
             this.marked_default = true;        
         
-        //set default timeFormat if we have a time  url:
+        //set default URLTimeEncoding if we have a time  url:
         //not ideal way to discover if content is on an oggz_chop server. 
         //should check some other way. 
         var pUrl = parseUri ( this.src );
         if(typeof pUrl['queryKey']['t'] != 'undefined'){
-            this['timeFormat']='anx';
+            this['URLTimeEncoding']=true;
         }        
                     
         for(var i=0; i < mv_default_source_attr.length; i++){ //for in loop oky on object
@@ -544,28 +546,19 @@ mediaSource.prototype =
         //js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp + ' from org: ' + this.start_ntp+ '/'+this.end_ntp);
         //js_log("pre uri:" + this.src);
         //if we have time we can use:
-        if( this.serverSideSeeking ){
+        if( this.URLTimeEncoding ){
             //make sure its a valid start time / end time (else set default) 
             if( !npt2seconds(start_ntp) ) 
                 start_ntp = this.start_ntp;
                 
             if( !npt2seconds(end_ntp) )
                 end_ntp = this.end_ntp;
-                
-            if( this.timeFormat == 'anx' ){
-                this.src = getURLParamReplace(this.src, { 't': start_ntp +'/'+end_ntp } );
-            }else if ( this.timeFormat =='mp4'){
-                var mp4URL =  parseUri( this.src );
-                this.src =  mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + 
-                            '?start=' + ( npt2seconds( start_ntp ) ) +
-                            '&end=' + ( npt2seconds( end_ntp ) );
-            }    
+                           
+            this.src = getURLParamReplace(this.src, { 't': start_ntp +'/'+end_ntp } );           
             
             //update the duration
             this.parseURLDuration();
-        }        
-        //this.setDuration( )
-          //js_log("post uri:" + this.src);
+        }         
     },
     setDuration:function (duration)
     {
@@ -588,20 +581,11 @@ mediaSource.prototype =
         @type String
     */
     getURI : function( seek_time_sec )
-    {        
-        //js_log("f:getURI: tf:" + this.timeFormat +' uri_enc:'+this.serverSideSeeking);
-        if( !seek_time_sec || !this.serverSideSeeking ){            
+    {                
+        if( !seek_time_sec || !this.URLTimeEncoding ){            
                return this.src;                          
-        }
-           if( this.timeFormat == 'anx' ){
-               var new_url = getURLParamReplace(this.src,  { 't': seconds2npt( seek_time_sec )+'/'+ this.end_ntp } );
-           }else if(this.timeFormat=='mp4'){
-               var mp4URL =  parseUri( this.src );
-            var new_url = mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + '?start='
-                             + ( seek_time_sec + parseInt(mp4URL.queryKey['start']) );               
-           }
-           //js_log('getURI seek url:'+ new_url);
-           return new_url;
+        }         
+       return getURLParamReplace(this.src,  { 't': seconds2npt( seek_time_sec )+'/'+ this.end_ntp } );    ;
     },
     /** Title accessor function.
         @return the title of the source.
@@ -625,36 +609,20 @@ mediaSource.prototype =
      * supports media_url?t=ntp_start/ntp_end url request format
      */
     parseURLDuration : function(){              
-        //check if we have a timeFormat: 
-        if( this.timeFormat ){
-            if( this.timeFormat == 'anx' ){
-                var annoURL = parseUri( this.src );
-                if( annoURL.queryKey['t'] ){
-                    var times = annoURL.queryKey['t'].split('/');
-                    this.start_ntp = times[0];
-                    this.end_ntp = times[1];
-                }
-            }
-            if( this.timeFormat == 'mp4' ){
-                var mp4URL =  parseUri( this.src );                
-                if( typeof mp4URL.queryKey['start'] != 'undefined' )                 
-                    this.start_ntp = seconds2npt( mp4URL.queryKey['start'] );
-        
-                if( typeof mp4URL.queryKey['end'] != 'undefined' ){
-                    this.end_ntp = seconds2npt( mp4URL.queryKey['end'] );                    
-                    //strip the &end param here (as per the mp4 format request (should fix server side)  
-                    this.src = mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + '?start=' + mp4URL.queryKey['start'];
-                }                                                                  
-            }
-            this.serverSideSeeking = true;
+        //check if we have a URLTimeEncoding: 
+        if( this.URLTimeEncoding ){          
+            var annoURL = parseUri( this.src );
+            if( annoURL.queryKey['t'] ){
+                var times = annoURL.queryKey['t'].split('/');
+                this.start_ntp = times[0];
+                this.end_ntp = times[1];
+            }            
             this.start_offset = npt2seconds( this.start_ntp );
             this.duration = npt2seconds( this.end_ntp ) - this.start_offset;
-        } //time format               
-        
-        if( !this.serverSideSeeking ){ 
+        }else{                              
              //else normal media request (can't predict the duration without the plugin reading it)
-             this.duration = null;
-                this.start_offset = 0;
+            this.duration = null;
+            this.start_offset = 0;
             this.start_ntp = seconds2npt(this.start_offset);            
         }
         //js_log('f:parseURLDuration() for:' + this.src  + ' d:' + this.duration);
@@ -1558,7 +1526,7 @@ embedVideo.prototype = {
         //reset slider
         this.setSliderValue(0);
         //reset seek_offset:
-        if(this.media_element.selected_source.serverSideSeeking)
+        if(this.media_element.selected_source.URLTimeEncoding )
             this.seek_time_sec=0;
         else
             this.seek_time_sec=npt2seconds(start_ntp);
@@ -2212,7 +2180,7 @@ embedVideo.prototype = {
     },
     supportsURLTimeEncoding: function(){
         //do head request if on the same domain
-        return this.media_element.selected_source.serverSideSeeking;
+        return this.media_element.selected_source.URLTimeEncoding;
     },
     setSliderValue: function(perc, hide_progress){
         var this_id = (this.pc)?this.pc.pp.id:this.id;
