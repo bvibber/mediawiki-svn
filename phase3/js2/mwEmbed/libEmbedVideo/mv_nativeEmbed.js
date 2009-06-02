@@ -4,6 +4,7 @@ var nativeEmbed = {
     canPlayThrough:false,
     grab_try_count:0,
     onlyLoadFlag:false,    
+    urlAppend:'',
     supports: {
         'play_head':true, 
         'pause':true,         
@@ -29,7 +30,7 @@ var nativeEmbed = {
                     'id="' + this.pid + '" ' +
                     'style="width:' + this.width+'px;height:' + this.height + 'px;" ' +
                     'width="' + this.width + '" height="'+this.height+'" '+
-                       'src="' + this.media_element.selected_source.getURI( this.seek_time_sec ) + '" ';
+                       'src="' + this.getSrc() + '" ';
                        
         if(!this.onlyLoadFlag)
             eb+=    'autoplay="'+this.autoplay+'" ';
@@ -67,14 +68,15 @@ var nativeEmbed = {
         }
     },    
     doSeek:function(perc){                
-        js_log('native:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
-        
+        js_log('native:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );        
         //@@todo check if the clip is loaded here (if so we can do a local seek)
-        if( this.supportsURLTimeEncoding() ){            
+        if( this.supportsURLTimeEncoding() || !this.vid){            
             this.parent_doSeek(perc);
-        }else if( this.vid.duration ){                    
-            this.vid.currentTime = perc * this.vid.duration;            
-        }
+        }else if(this.vid.duration ){       
+            this.seek_time_sec=0;             
+            this.vid.currentTime = perc * this.vid.duration;
+            this.parent_monitor();            
+        }                  
     },
     setCurrentTime: function(pos, callback){
         var _this = this;
@@ -123,6 +125,12 @@ var nativeEmbed = {
         //once currentTime is updated call parent_monitor
         this.parent_monitor();
     },    
+    getSrc:function(){
+        var src = this.parent_getSrc();
+        if(  this.urlAppend != '')
+            return src + ( (src.indexOf('?')==-1)?'?':'&') + this.urlAppend;
+        return src;
+    },
     /*
      * native callbacks for the video tag: 
      */
@@ -139,10 +147,23 @@ var nativeEmbed = {
         this.bufferedPercent =   e.loaded / e.total;
         //js_log("onprogress:" +e.loaded + ' / ' +  (e.total) + ' = ' + this.bufferedPercent);
     },
-    onended:function(){        
-        js_log('native:onended:');
-        this.onClipDone();
-    },
+    onended:function(){      
+        var _this = this     
+        this.getVID();     
+        js_log('native:onended:' + this.vid.currentTime + ' real dur:' +  this.getDuration() );
+        //if we just started (under 1 second played) & duration is much longer.. don't run onClipDone just yet . (bug in firefox native sending onended event early) 
+        if(this.vid.currentTime  < 1 && this.getDuration() > 1 && this.grab_try_count < 5){            
+            js_log('native on ended called with time:' + this.vid.currentTime + ' of total real dur: ' +  this.getDuration() + ' attempting to reload src...');
+            var doRetry = function(){
+                _this.urlAppend = 'retry_src=' + _this.grab_try_count; 
+                _this.doEmbedHTML();
+                _this.grab_try_count++;
+            }
+            setTimeout(doRetry, 100);            
+        }else{
+            this.onClipDone();
+        }
+    },    
     pause : function(){        
         this.getVID();
         this.parent_pause(); //update interface        

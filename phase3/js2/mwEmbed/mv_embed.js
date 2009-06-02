@@ -30,7 +30,7 @@ if(!mv_skin_name)
     var mv_skin_name = 'mvpcf';
     
 if(!mwjQueryUiSkin)
-    var mwjQueryUiSkin = 'smoothness';
+    var mwjQueryUiSkin = 'redmond';
 
 //whether or not to load java from an iframe.
 //note: this is necessary for remote embedding because of java security model)

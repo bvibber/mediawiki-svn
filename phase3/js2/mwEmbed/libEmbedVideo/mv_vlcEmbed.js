@@ -81,16 +81,20 @@ var vlcEmbed = {
             }    
         }
     },   
-    /* //disable local seeking (while we don't know what we have avaliable)
-    doSeek : function(value){
-        if( this.vlc ) {
-            if( (this.vlc.input.state == 3) && (this.vlc.input.position != value) )
+    //disable local seeking (while we don't know what we have avaliable)
+    doSeek : function(perc){
+        if( this.supportsURLTimeEncoding() ){
+            this.parent_doSeek();
+        }else if( this.vlc ) {
+            js_log("do vlc http seek to: " + perc)
+            if( (this.vlc.input.state == 3) && (this.vlc.input.position != perc) )
             {
-                this.vlc.input.position = value;
+                this.vlc.input.position = perc;
                 this.setStatus( 'seeking...' );           
             }                
         }
-    },*/
+        this.parent_monitor();
+    },
     playMovieAt: function (order){
         //@@todo add clips to playlist after (order) and then play
         this.play();

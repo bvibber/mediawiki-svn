@@ -9,7 +9,7 @@ loadGM({
     'fogg-check_for_fogg'         : 'Checking for Firefogg <blink>...</blink>',
     'fogg-installed'              : 'Firefogg is Installed',
     'fogg-please_install'         : 'You don\'t have firefogg installed, For improved uploads please <a href="$1">install firefogg</a> more <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">about firefogg</a>',
-    'fogg-use_latest_fox'         : 'For improved uploads please first install <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a>. <i>then revisit this page to install the <b>firefogg</b> extention</i>',    
+    'fogg-use_latest_fox'         : 'Please first install <a href="http://www.mozilla.com/en-US/firefox/all-beta.html">Firefox 3.5</a>. <i>then revisit this page to install the <b>firefogg</b> extention</i>',    
     'fogg-passthrough_mode'       : 'Your selected file is already ogg or not a video file',
     'fogg-transcoding'            : 'Encoding Video to Ogg',
     'fogg-encoding-done'          : 'Encoding Done'

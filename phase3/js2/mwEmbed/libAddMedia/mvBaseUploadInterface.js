@@ -150,7 +150,7 @@ mvBaseUploadInterface.prototype = {
 		js_log('mvUPload:doUploadSwitch():' + _this.upload_mode);		
 		//issue a normal post request 		
 		if( _this.upload_mode == 'post' || //we don't support the upload api
-			(_this.upload_mode=='api' && $j('#wpSourceTypeFile').length ==0) // web form uplaod 			
+			(_this.upload_mode=='api' &&  ( $j('#wpSourceTypeFile').length ==  0 || $j('#wpSourceTypeFile').get(0).checked ) ) // web form uplaod even though we support api			
 		){			
 			js_log('do ormal submit form');
 			//update the status to 100% progress bar: 

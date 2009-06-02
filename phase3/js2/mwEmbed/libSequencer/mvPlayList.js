@@ -836,7 +836,7 @@ mvPlayList.prototype = {
             barHtml+= 'filter:alpha(opacity=40);'+
                     '-moz-opacity:.40;">';    
             
-            barHtml+='<div class="mv_progress mv_buffer"></div>';
+            barHtml+='<div class="ui-state-highlight mv_buffer"></div>';
             
             barHtml+='</div>';
             

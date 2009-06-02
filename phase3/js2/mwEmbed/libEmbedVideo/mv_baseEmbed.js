@@ -340,6 +340,13 @@ var ctrlBuilder = {
                 }
             }          
         });
+        //up the z-index of the default status indicator: 
+        $j('#mv_play_head_'+embedObj.id + ' .ui-slider-range').addClass('ui-corner-all').css('z-index', 2);
+        //extended class list for jQuery ui themeing (we can probably refactor this with custom buffering highliter) 
+        $j('#mv_play_head_'+embedObj.id).append('<div class="ui-slider-range ui-slider-range-min ui-widget-header ' +
+                'ui-state-highlight ui-corner-all '+
+                'mv_buffer" style="width:0px;height:100%;z-index:1;top:0px" />');
+        
         //build draggable hook here:        
         /*$j('#mv_seeker_slider_'+embedObj.id).draggable({
             containment:$j('#seeker_bar_'+embedObj.id),
@@ -1989,6 +1996,9 @@ embedVideo.prototype = {
         //should be done by child (no base way to load assets)
         js_log('baseEmbed:load call');
     },
+    getSrc:function(){
+       return this.media_element.selected_source.getURI( this.seek_time_sec );
+    }, 
     /*
      * base embed pause
      *     there is no general way to pause the video
@@ -2134,11 +2144,12 @@ embedVideo.prototype = {
             this.monitorTimerId = 0;
         }
     },
-    updateBufferStatus: function(){    
+    updateBufferStatus: function(){
+            
         //build the buffer targeet based for playlist vs clip 
         var buffer_select = (this.pc) ? 
             '#cl_status_' + this.id + ' .mv_buffer': 
-            '#mv_seeker_' + this.id + ' .mv_buffer';
+            '#mv_play_head_' + this.id + ' .mv_buffer';
             
         //update the buffer progress bar (if available )
         if( this.bufferedPercent != 0 ){

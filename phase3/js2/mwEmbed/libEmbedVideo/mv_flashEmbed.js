@@ -1723,7 +1723,7 @@ var flashEmbed = {
             this.bufferedPercent = flash_state.bufferEnd / this.getDuration();                                    
         }               
         //set the current Time (based on timeFormat)        
-        if( this.media_element.selected_source.timeFormat =='anx' ){
+        if( this.supportsURLTimeEncoding() ){
             this.currentTime = flash_state.time;              
             //js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration()); 
         }else{
@@ -1760,12 +1760,12 @@ var flashEmbed = {
         
         //checks to see if we reached the end of playback:                
         if(this.duration && this.startedTimedPlayback && 
-            (     this.currentTime > (npt2seconds(this.end_ntp)+1) 
+            (     this.currentTime > (npt2seconds(this.end_ntp)+2) 
                 || 
                 ( this.currentTime > (npt2seconds(this.end_ntp)-1) 
                     && this.prevTime == this.currentTime) )
             ){                            
-            js_log('prbally reached end of stream: '+this.currentTime);
+            js_log('prbally reached end of stream: '+ seconds2npt( this.currentTime) );
             this.onClipDone();                  
         }        
         
