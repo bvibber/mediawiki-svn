@@ -190,7 +190,7 @@ Select a single clip to edit it',
 	'ao_file_Ogg_Video'	=> 'Archive.org - Ogg video', # only translate this message to other languages if you have to change it
 
 	'mv_error_stream_missing' => '<span class="error">Error: There is no video file associated with this stream.</span><br />
-Please report this to the site administrator.',
+Please report this to the [[{{MediaWiki:Grouppage-sysop}}|site administrator]].',
 
 	'mv_stream_added' => 'You have added the stream $1',
 
