@@ -69,7 +69,7 @@ mvAdvFirefogg.prototype = {
             'range'     : {'min':0,'max':10},
             'type'         : 'slider',
             'group'        : 'quality',
-            'help'         : "Used to set the <i>Visual Quality</i> of the encoded video."
+            'help'         : "Used to set the <i>Visual Quality</i> of the encoded video. (not used if you set bitrate in advanced controls below)"
         },
         'audioQuality': {
             'd'            : 1,
@@ -77,7 +77,7 @@ mvAdvFirefogg.prototype = {
             'range'     : {'min':-1,'max':10},
             'type'      : 'slider',
             'group'     : 'quality',
-            'help'      : "Used to set the <i>Acoustic Quality</i> of the encoded audio."
+            'help'      : "Used to set the <i>Acoustic Quality</i> of the encoded audio. (not used if you set bitrate in advanced controls below)"
         },
         'videoCodec':{
             'd'            : "theora",
@@ -434,35 +434,35 @@ mvAdvFirefogg.prototype = {
                 $j( this.selector + ' .helpRow_' + cK).hide();        
                 $j(this.selector + ' .help_' + cK).click(function(){                    
                     //get the ckId (assume its the last class)
-                    var cK = $j(this).attr("class").split(' ').slice(-1).replace('help_', '');
+                    var cK = _this.getClassId(this, 'help_'); 
                                     
                     if(helpState[cK]){
-                        $j(this.selector + ' .helpRow_' + cK).hide('slow');
+                        $j(_this.selector + ' .helpRow_' + cK).hide('slow');
                         helpState[cK] = false;
                     }else{                            
-                        $j( this.selector + ' .helpRow_' + cK).show('slow');
+                        $j(_this.selector + ' .helpRow_' + cK).show('slow');
                         helpState[cK] = true;
                     }                    
                     return false;        
-                }).hover(function(){
-                    //get the ckId (assume its the last class)
-                    var cK = _this.getClassId(this, 'help_');
-                    
-                    $j( this.selector + ' .helpRow_' + cK).show('slow');
+                }).hover(
+                    function(){                      
+                        //get the ckId (assume its the last class)
+                        var cK = _this.getClassId(this, 'help_');                            
+                        $j( _this.selector + ' .helpRow_' + cK).show('slow');
                     },function(){
-                        var cK = $j(this).attr("id").replace('help_','');
+                        var cK = _this.getClassId(this, 'help_'); 
                         if(!helpState[cK])                        
-                            $j( this.selector + ' .helpRow_' + cK).hide('slow')
-                        
+                            $j( _this.selector + ' .helpRow_' + cK).hide('slow')                        
                     }
                 );
-                $j( this.selector + ' .helpClose_' + cK).click(function(){
+                $j( _this.selector + ' .helpClose_' + cK).click(function(){
+                    js_log("close help: " +cK);               
                     //get the ckId (assume its the last class)
-                    var cK = _this.getClassId(this, 'help_');
-                    $j(this.selector + ' .helpRow_' + cK).hide('slow');            
+                    var cK = _this.getClassId(this, 'helpClose_');
+                    $j(_this.selector + ' .helpRow_' + cK).hide('slow');            
                     helpState[cK] = false;    
                     return false;
-                });
+                }).css('cursor', 'pointer');
             }else{
                 $j(this.selector + ' .help_' + cK).hide();
             }
