@@ -152,13 +152,11 @@ class Poll extends SpecialPage {
 			if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '6').' '.$alternative_6.'</td></tr>' ); }
 			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'vote').'</td><td><a href="'.$wgTitle->getFullURL( 'action=score&id='.$vid ).'">'.wfMsg( 'poll-title-score' ).'</a></td></tr>' );
 			$wgOut->addHtml( '<tr><td>' );
-			// FIXME: hardcoded text (in German)
-			$wgOut->addWikiText( '<small>erstellt von [[Benutzer:'.$creater.']]</small>' );
+			$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created' ).''.$creater.']]</small>' );
 			$wgOut->addHtml( '</td></tr>' );
 			$wgOut->addHtml( Xml::closeElement( 'table' ) );
 			if( ($poll_admin == true) OR ($creater == $user) ) {
-				// FIXME: hardcoded text
-				$wgOut->addHtml( 'Administration: <a href="'.$wgTitle->getFullURL('action=change&id='.$vid).'">'.wfMsg('poll-change').'</a> · <a href="'.$wgTitle->getFullURL('action=delete&id='.$vid).'">'.wfMsg('poll-delete').'</a>' );
+				$wgOut->addHtml( wfMsg('poll-administration').' <a href="'.$wgTitle->getFullURL('action=change&id='.$vid).'">'.wfMsg('poll-change').'</a> · <a href="'.$wgTitle->getFullURL('action=delete&id='.$vid).'">'.wfMsg('poll-delete').'</a>' );
 			}
 			$wgOut->addHtml( Xml::closeElement( 'form' ) );
 		}
@@ -206,8 +204,7 @@ class Poll extends SpecialPage {
 		if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_5.'</td><td>'.$query_num_5.'</td></tr>' ); }
 		if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_6.'</td><td>'.$query_num_6.'</td></tr>' ); }
 		$wgOut->addHtml( '<tr><td>' );
-		// FIXME: hardcoded text (in German)
-		$wgOut->addWikiText( '<small>erstellt von [[Benutzer:'.$creater.']]</small>' );
+		$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created' ).''.$creater.']]</small>' );
 		$wgOut->addHtml( '</td></tr>' );
 		$wgOut->addHtml( Xml::closeElement( 'table' ) );
 		$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
@@ -303,8 +300,7 @@ class Poll extends SpecialPage {
 				$alternative_4 = ($_POST['poll_alternative_4'] != "")? $_POST['poll_alternative_4'] : "";
 				$alternative_5 = ($_POST['poll_alternative_5'] != "")? $_POST['poll_alternative_5'] : "";
 				$alternative_6 = ($_POST['poll_alternative_6'] != "")? $_POST['poll_alternative_6'] : "";
-				// FIXME: hardcoded text (in German)
-				$dis = ($_POST['dis'] != "")? $_POST['dis'] : "Keine Beschreibung vorhanden!";
+				$dis = ($_POST['dis'] != "")? $_POST['dis'] : wfMsg('poll-no-dis');
 				$user = $wgUser->getName();
 
 				if($question != "" && $alternative_1 != "" && $alternative_2 != "") {
@@ -400,8 +396,7 @@ class Poll extends SpecialPage {
 				$alternative_4 = ($_POST['poll_alternative_4'] != "")? $_POST['poll_alternative_4'] : "";
 				$alternative_5 = ($_POST['poll_alternative_5'] != "")? $_POST['poll_alternative_5'] : "";
 				$alternative_6 = ($_POST['poll_alternative_6'] != "")? $_POST['poll_alternative_6'] : "";
-				// FIXME: hardcoded text (in German)
-				$dis = ($_POST['dis'] != "")? $_POST['dis'] : "Keine Beschreibung vorhanden!";
+				$dis = ($_POST['dis'] != "")? $_POST['dis'] : wfMsg('poll-no-dis');
 				$user = $wgUser->getName();
 
 				$dbw->update( 'poll', array( 'question' => $question, 'alternative_1' => $alternative_1, 'alternative_2' => $alternative_2,
@@ -449,7 +444,6 @@ class Poll extends SpecialPage {
 					$dbw->delete( 'poll_answer', array( 'uid' => $pid ) );
 
 					$log = new LogPage( "poll" );
-					//$title = "Delete Poll";
 					$title = $wgTitle;
 					$log->addEntry( "poll", $title, wfMsg( 'poll-log-delete', "[[User:".htmlentities( $user, ENT_QUOTES, 'UTF-8' )."]]", htmlentities( $question, ENT_QUOTES, 'UTF-8' ) ) );
 

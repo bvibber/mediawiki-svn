@@ -48,13 +48,16 @@ $messages['en'] = array(
 	'poll-delete-right-error' => 'You must be the creater of the Poll or have the "poll-admin" right to delete this Poll',
 	'poll-delete-block-error' => 'You are not allowed to delete a poll because you use a blocked user',
 	'poll-delete-pass' => 'Deleted!',
-	'poll-delete-cancel' => 'Do not delete the poll (checkbox not set)',
+	'poll-delete-cancel' => 'Poll wasn\'t deleted (checkbox not set)',
 	'poll-logpage' => 'Poll log',
 	'poll-logpagetext' => 'This is a log of changes to polls.',
 	'poll-log-create' => '$1 created poll "$2"',
 	'poll-log-change' => '$1 changed poll "$2"',
 	'poll-log-delete' => '$1 deleted poll "$2"',
 	'poll-logentry' => 'Polls changed',
+	'poll-score-created' => 'created from [[User:',
+	'poll-administration' => 'Administration:',
+	'poll-no-dis' => 'No Description!',
 );
 
 /** German (Deutsch)
@@ -104,4 +107,7 @@ $messages['de'] = array(
 	'poll-log-change' => '$1 hat "$2" geändert!',
 	'poll-log-delete' => '$1 hat "$2" gelöscht!',
 	'poll-logentry' => 'Änderung an den Umfragen wurde vorgenommen',
+	'poll-score-created' => 'erstellt von [[Benutzer:',
+	'poll-administration' => 'Administration:',
+	'poll-no-dis' => 'Keine Beschreibung vorhanden!',
 );
