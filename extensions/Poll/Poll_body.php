@@ -274,7 +274,7 @@ class Poll extends SpecialPage {
   }
   
   public function submit( $pid ) {
-      global $wgRequest, $wgOut, $wgUser, $wgTitle;
+      global $wgRequest, $wgOut, $wgUser, $wgTitle; 
 	  
 	  $type = $_POST['type'];
 	  
@@ -306,6 +306,10 @@ class Poll extends SpecialPage {
             $dbw->insert( 'poll', array( 'question' => $question, 'alternative_1' => $alternative_1, 'alternative_2' => $alternative_2,
 			'alternative_3' => $alternative_3, 'alternative_4' => $alternative_4, 'alternative_5' => $alternative_5,
 			'alternative_6' => $alternative_6, 'creater' => $user, 'dis' => $dis ) );
+			
+			$log = new LogPage( "poll" );
+			$title = $wgTitle;
+			$log->addEntry( "poll", $title, wfMsg( 'poll-log-create', "[[Benutzer:".htmlentities( $user, ENT_QUOTES, 'UTF-8' )."]]", htmlentities( $question, ENT_QUOTES, 'UTF-8' ) ) );
 			
 			$wgOut->addWikiMsg( 'poll-create-pass' );
 			$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
@@ -369,15 +373,20 @@ class Poll extends SpecialPage {
 	  
 		$controll_change_right = $wgUser->isAllowed( 'poll-admin' );
         $controll_change_blocked = $wgUser->isBlocked();
-        if ( ($controll_change_right != true) OR ($creater == $user) ) {
-            $wgOut->addWikiMsg( 'poll-change-right-error' );
+		
+		 $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
+        
+		if ( ( $creater != $user ) AND ( $controll_change_right == false ) ) {
+			$wgOut->addWikiMsg( 'poll-change-right-error' );
 		    $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
-        }
-        elseif ( $controll_change_blocked == true ) {
+		}
+		
+        if ( isset($controll_delete_blocked) AND ( $controll_change_blocked == true ) ) {
             $wgOut->addWikiMsg( 'poll-change-block-error' );
 		    $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
         }
-        else {
+		
+        if ( ( ( $creater == $user ) OR ( $controll_change_right == true ) ) AND ( $controll_change_blocked != true ) )  {
 		  $dbw = wfGetDB( DB_MASTER );
 		  $question = $_POST['question'];
 		  $alternative_1 = $_POST['poll_alternative_1'];
@@ -393,6 +402,10 @@ class Poll extends SpecialPage {
 			'alternative_3' => $alternative_3, 'alternative_4' => $alternative_4, 'alternative_5' => $alternative_5,
 			'alternative_6' => $alternative_6, 'creater' => $user, 'dis' => $dis ), array( 'id' => $pid ) );
 			
+		  $log = new LogPage( "poll" );
+		  $title = $wgTitle;
+		  $log->addEntry( "poll", $title, wfMsg( 'poll-log-change', "[[Benutzer:".htmlentities( $user, ENT_QUOTES, 'UTF-8' )."]]", htmlentities( $question, ENT_QUOTES, 'UTF-8' ) ) );
+			
 		  $wgOut->addWikiMsg( 'poll-change-pass' );
 		  $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 	    }
@@ -400,35 +413,47 @@ class Poll extends SpecialPage {
 	  
 	  if($type == 'delete') {
 	    $dbr = wfGetDB( DB_SLAVE );
-	    $query = $dbr->select( 'poll', 'creater', array( 'id' => $pid ) );
+	    $query = $dbr->select( 'poll', 'creater, question', array( 'id' => $pid ) );
         $user = $wgUser->getName();
 	  
 	    while( $row = $dbr->fetchObject( $query ) ) {
 	        $creater = htmlentities( $row->creater );
+			$question = $row->question;
 	    } 
 	  
-        $controll_delete_right = $wgUser->isAllowed( 'poll-admin' );
-		
-		$wgOut->addHtml( $controll_delete_right );
-		
+        $controll_delete_right = $wgUser->isAllowed( 'poll-admin' );		
         $controll_delete_blocked = $wgUser->isBlocked();
-        if ( ($controll_delete_right != true) OR ($creater == $user) ) {
-            $wgOut->addWikiMsg( 'poll-delete-right-error' );
+		
+        if ( ( $creater != $user ) AND ( $controll_delete_right == false ) ) {
+			$wgOut->addWikiMsg( 'poll-delete-right-error' );
 		    $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
-        }
-        elseif ( $controll_delete_blocked == true ) {
+		}
+		
+        if ( isset($controll_delete_blocked) AND ( $controll_delete_blocked == true ) ) {
             $wgOut->addWikiMsg( 'poll-delete-block-error' );
 		    $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
         }
-        else {
+		
+        if ( ( ( $creater == $user ) OR ( $controll_delete_right == true ) ) AND ( $controll_delete_blocked != true ) )  {
+		 if( isset($_POST['controll_delete']) AND $_POST['controll_delete'] == 1 ) {
 		  $dbw = wfGetDB( DB_MASTER );
 		  $user = $wgUser->getName();
 		  
 		  $dbw->delete( 'poll', array( 'id' => $pid ) );
 		  $dbw->delete( 'poll_answer', array( 'uid' => $pid ) );
+		  
+		  $log = new LogPage( "poll" );
+		  //$title = "Delete Poll";
+		  $title = $wgTitle;
+		  $log->addEntry( "poll", $title, wfMsg( 'poll-log-delete', "[[Benutzer:".htmlentities( $user, ENT_QUOTES, 'UTF-8' )."]]", htmlentities( $question, ENT_QUOTES, 'UTF-8' ) ) );
 			
 		  $wgOut->addWikiMsg( 'poll-delete-pass' );
 		  $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
+		 }
+		 else {
+		  $wgOut->addWikiMsg( 'poll-delete-cancel' );
+		  $wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
+		 }
 	    }
       }
 	  

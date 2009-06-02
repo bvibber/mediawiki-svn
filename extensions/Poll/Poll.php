@@ -56,6 +56,13 @@ $wgExtensionAliasesFiles['Poll'] = $dir . 'Poll.alias.php';
 $wgSpecialPages['Poll'] = 'Poll'; # Let MediaWiki know about your new special page.
 $wgSpecialPageGroups['Poll'] = 'other';
 
+# Log
+$wgLogTypes[] = 'poll';
+$wgLogNames['poll'] = 'poll-logpage';
+$wgLogHeaders['poll'] = 'poll-logpagetext';
+$wgLogActions['poll/poll'] = 'poll-logentry';
+
+
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPollSchemaUpdates';
 
@@ -67,7 +74,7 @@ function efPollSchemaUpdates() {
 		$wgExtNewFields[] = array( 'poll', 'creater', "$base/archives/patch-creater.sql" ); // Add creater
 		$wgExtNewFields[] = array( 'poll', 'dis', "$base/archives/patch-dis.sql" ); // Add dis
 		$wgExtNewTables[] = array( 'poll_answer', "$base/archives/Poll-answer.sql" ); // Initial answer tables
-		$wgExtNewFields[] = array( 'poll_answer', 'user', "$base/archives/patch-user.sql" ); // Add dis
+		$wgExtNewFields[] = array( 'poll_answer', 'user', "$base/archives/patch-user.sql" ); // Add user
     }
 	return true;
 }

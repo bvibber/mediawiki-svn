@@ -48,6 +48,13 @@ $messages['en'] = array(
 	'poll-delete-right-error' => 'You must be the creater of the Poll or have the "poll-admin" right to delete this Poll',
 	'poll-delete-block-error' => 'You are not allowed to delete a poll because you use a blocked user',
 	'poll-delete-pass' => 'Deleted!',
+	'poll-delete-cancel' => 'Poll don\'t delete(Checkbox don\'t set)!',
+	'poll-logpage' => 'Poll-Log',
+	'poll-logpagetext' => 'This is a log of changes to Polls.',
+	'poll-log-create' => '$1 created "$2"!',
+	'poll-log-change' => '$1 changed "$2"!',
+	'poll-log-delete' => '$1 deleted "$2"!',
+	'poll-logentry' => 'Polls changed',
 );
 
 /** German (Deutsch)
@@ -90,4 +97,11 @@ $messages['de'] = array(
 	'poll-delete-right-error' => 'Du musst der Autor dieser Umfrage sein oder die "poll-admin"-Gruppenberechtigung haben, um diese Umfrage zu löschen',
 	'poll-delete-block-error' => 'Leider darfst du keine Umfrage löschen, weil du einen gesperten Benutzer benutzt',
 	'poll-delete-pass' => 'Umfrage erfolgreich gelöscht',
+	'poll-delete-cancel' => 'Umfrage wurde nicht gelöscht(Häckchen nicht gesetzt)!',
+	'poll-logpage' => 'Umfrage-Logbuch',
+	'poll-logpagetext' => 'Dieses Logbuch zeigt Änderungen an den Umfragen.',
+	'poll-log-create' => '$1 hat "$2" erstellt!',
+	'poll-log-change' => '$1 hat "$2" geändert!',
+	'poll-log-delete' => '$1 hat "$2" gelöscht!',
+	'poll-logentry' => 'Änderung an den Umfragen wurde vorgenommen',
 );
