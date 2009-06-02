@@ -538,7 +538,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		 	return "[[Mentions Bill:={$matches[0]}]]";
 		 }
 	}
-	/* converts c-span bill_id to gov_track bill id */ 
+	/* converts c-span bill_id to gov_track bill id */
 	function get_and_process_billid( $bill_key, $stream_date = '', $session = '' ) {
 		global $MvBillTypes;
 		// add a space to bill key after $bill_type key
@@ -571,6 +571,8 @@ class MV_BillScraper extends MV_BaseScraper {
 		if ( trim( $bill_key ) == '' )return false;
 		// attempt to ascertain maplight bill id:
 		$mapLightBillId = $this->getMAPLightBillId( $bill_key, $session );
+        //fix strange govTrackBillID bug:
+        $govTrackBillId = str_replace('Res.', '', $govTrackBillId);
 
 		print "GOT bill id: $govTrackBillId from $bill_key\n";
 		print "GOT openCon id: $openCongBillId from $bill_key\n";
@@ -616,9 +618,9 @@ class MV_BillScraper extends MV_BaseScraper {
 		 *****************************/
 		print "gov_track id: " . $govTrackBillId . " from: " . $this->govTrack_bill_url . $govTrackBillId . "\n";
 
-		// get title:		
+		// get title:
 		$patern= '/<title>(.*)<\/title>/';
-		preg_match($patern, $rawGovTrackPage, $title_match );		
+		preg_match($patern, $rawGovTrackPage, $title_match );
 		if ( isset( $title_match[1] ) ) {
 			//strip govtrack.us
 			$title_match[1] = str_replace( '(GovTrack.us)', '', $title_match[1]);
@@ -627,7 +629,7 @@ class MV_BillScraper extends MV_BaseScraper {
 				return false;
 			}
 			$title_short  = str_replace( array( '_', '...', ' [110th]', ' [109th]', ' [108th]', ' [107th]' ), array( ' ', '', '', '', '', '' ), $title_match[1] );
-			
+
 			$this->cur_bill_short_title = $title_short;
 			// set the desc if present:
 			preg_match( '/<meta name="description" content="([^">]*)"/', $rawGovTrackPage, $desc_match );
@@ -636,7 +638,7 @@ class MV_BillScraper extends MV_BaseScraper {
 			}else{
 				die('could not find title desc: ' . $title_desc);
 			}
-			
+
 			$this->bill_titles[$bill_key] = $title_short;
 		} else {
 			print $this->govTrack_bill_url . $govTrackBillId . "\n" . $patern . "\n" . $rawGovTrackPage;
@@ -644,10 +646,10 @@ class MV_BillScraper extends MV_BaseScraper {
 		}
 
 		// print "raw govtrack:\n $rawGovTrackPage";
-		// get the $thomas_match		
+		// get the $thomas_match
 		preg_match( '/thomas\.loc\.gov\/cgi-bin\/bdquery\/z\?([^\"]*)/', $rawGovTrackPage, $thomas_match );
 		// get introduced: //strange .* does not seem to work :(
-		preg_match( '/Introduced<\/nobr>[^>]*>[^>]*>[^>]*>([^<]*)/', $rawGovTrackPage, $date_intro_match );	
+		preg_match( '/Introduced<\/nobr>[^>]*>[^>]*>[^>]*>([^<]*)/', $rawGovTrackPage, $date_intro_match );
 		// get sponsor govtrack_id:
 		preg_match( '/usbill:sponsor[^<]*<a href="person.xpd\?id=([^"]*)/i', $rawGovTrackPage, $sponsor_match );
 		// lookup govtrack_id
@@ -683,7 +685,7 @@ class MV_BillScraper extends MV_BaseScraper {
 				}
 			}
 		}
-		
+
 		/*****************************
 		 * Process MapLight Info
 		 *****************************/
@@ -710,7 +712,7 @@ class MV_BillScraper extends MV_BaseScraper {
 			}
 		}
 		$bp .= "}}\n";
-		
+
 		// print 'page : '.$title_short.' ' . $bp . "\n";
 		// incorporated into the template:
 		// $body.="\n\n".'Source: [[Data Source Name:=GovTrack]] [[Data Source URL:='.$this->govTrack_bill_url . $govTrackBillId.']]';
@@ -749,9 +751,9 @@ class MV_BillScraper extends MV_BaseScraper {
 		// a href="\/map\/us\/interest\/([^"]*) class="interest"
 		// class="organizations"\sid="for
 		// preg_match_all('/class="organizations"\sid="for.*<ul class="industries list-clear">()*/',$bill_page, $matches);
-		print "\n". $bill_url."\n";		
-		preg_match_all( '/href\=\"\/map\/us\/interest\/([^"]*)[^>]*>([^<]*)/', $bill_page, $matches, PREG_OFFSET_CAPTURE );		
-		
+		print "\n". $bill_url."\n";
+		preg_match_all( '/href\=\"\/map\/us\/interest\/([^"]*)[^>]*>([^<]*)/', $bill_page, $matches, PREG_OFFSET_CAPTURE );
+
 		$aginst_pos = strpos( $bill_page, 'id="against"' );
 		// return empty arrays if we don't have info to give back:'
 		if ( $aginst_pos === false )return $ret_ary;
@@ -763,7 +765,7 @@ class MV_BillScraper extends MV_BaseScraper {
 			} else {
 				$ret_ary['oppose'][] = array( 'key' => $intrest[0], 'name' => htmlspecialchars_decode( $matches[2][$inx][0] ) );
 			}
-		}		
+		}
 		return $ret_ary;
 	}
 	function get_bill_name_from_mapLight_id( $mapBillId, $doLookup = true ) {
@@ -820,7 +822,7 @@ class MV_BillScraper extends MV_BaseScraper {
 	function get_wiki_name_from_maplightid( $mapID ) {
 		if ( !isset( $this->mapLight_cache[$mapID] ) ) {
 			//$sql = 'SELECT * FROM `smw_attributes` WHERE `attribute_title` = \'MAPLight_Person_ID\'';
-			
+
 			$query_string= "[[MAPLight Person ID::{$mapID}]]";
 			$params=array('format' => 'broadtable',
 	    				  'offset' => 0,
@@ -829,16 +831,16 @@ class MV_BillScraper extends MV_BaseScraper {
 			$queryobj = SMWQueryProcessor::createQuery($query_string, $params, false, '', array());
 			$queryobj->querymode = SMWQuery::MODE_INSTANCES;
 			$res = smwfGetStore()->getQueryResult($queryobj);
-			
+
 			for($i=0;$i< $res->getCount();$i++){
 				$v =  $res->getNext();
-				$v = current(current($v)->getContent());				
+				$v = current(current($v)->getContent());
 				$this->mapLight_cache[$mapID] = $v->getXSDValue();
-			}						
+			}
 		}
 		if ( !isset( $this->mapLight_cache[$mapID] ) ) {
 			$wgTitle = Title::newFromText( 'CongressVid:Missing_People' );
-			print "{$query_string} No $mapID found\n";			
+			print "{$query_string} No $mapID found\n";
 			// append_to_wiki_page($wgTitle, "Missing MapLight person: [http://maplight.org/map/us/legislator/$mapID $mapID]");
 			return false;
 		}
@@ -849,14 +851,14 @@ class MV_BillScraper extends MV_BaseScraper {
 
 class MV_ArchiveOrgScrape extends MV_BaseScraper {
 	function getFileList( $stream_name ) {
-		//get the latest archive.org page: 
+		//get the latest archive.org page:
 		$raw_page = $this->doRequest( 'http://www.archive.org/details/mv_' . $stream_name, array(), $get_fresh=true );
 		if($raw_page=='')
 			return false;
 		//print "Raw page: $raw_page";
-		
+
 		preg_match_all( '/href="(\/download\/mv_[^"]*)">([^<]*)<\/a>([^<]*)/', $raw_page, $matches );
-		
+
 		$files = array();
 		if ( isset( $matches[1] ) ) {
 			foreach ( $matches as $inx => $set ) {
@@ -871,7 +873,7 @@ class MV_ArchiveOrgScrape extends MV_BaseScraper {
 			foreach( $orgFiles as $file ){
 				if( !isset($dupCheck[ $file[1] ] )){
 					$files[] = $file;
-					$dupCheck[ $file[1] ] = true; 
+					$dupCheck[ $file[1] ] = true;
 				}
 			}
 		} else {
@@ -897,7 +899,7 @@ class MV_BaseScraper {
 		$res = $dbr->select( 'mv_url_cache', '*', array( 'url' => $url ), 'MV_BaseScraper::doRequest' );
 		// @@todo check date for expiration
 		if ( $res->numRows() == 0 || $get_fresh) {
-			echo "do web request: " . $url . "\n";			
+			echo "do web request: " . $url . "\n";
 			// get the content:
 			$page = file_get_contents( $url );
 			if ( $page === false ) {
@@ -906,7 +908,7 @@ class MV_BaseScraper {
 				if($try_count >= $this->number_of_tries){
 					die( "could not get url after $this->number_of_tries \n\n");
 					return '';
-				}				
+				}
 				$try_count++;
 				return $this->doRequest( $url, $post_vars, $get_fresh, $try_count );
 			}
