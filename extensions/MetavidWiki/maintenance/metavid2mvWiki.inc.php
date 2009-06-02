@@ -790,7 +790,7 @@ function do_bill_insert( $bill_key ) {
 		}			
 		$billAry[] = $bObj;
 		//do proccess the bill (insert into the wiki) 
-		print "ProccessBill::"
+		print "ProccessBill::"; 
 		$myBillScraper->processBill($bObj['GovTrackID'], $bObj['Bill Key'],$bObj['OpenCongressBillID'], $bObj['MapLightBillID'], false, false);		
 	}		
 	
