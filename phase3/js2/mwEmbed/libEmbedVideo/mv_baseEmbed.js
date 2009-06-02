@@ -341,11 +341,10 @@ var ctrlBuilder = {
             }          
         });
         //up the z-index of the default status indicator: 
+        $j('#mv_play_head_'+embedObj.id + ' .ui-slider-handle').css('z-index', 4);
         $j('#mv_play_head_'+embedObj.id + ' .ui-slider-range').addClass('ui-corner-all').css('z-index', 2);
         //extended class list for jQuery ui themeing (we can probably refactor this with custom buffering highliter) 
-        $j('#mv_play_head_'+embedObj.id).append('<div class="ui-slider-range ui-slider-range-min ui-widget-header ' +
-                'ui-state-highlight ui-corner-all '+
-                'mv_buffer" style="width:0px;height:100%;z-index:1;top:0px" />');
+        $j('#mv_play_head_'+embedObj.id).append( ctrlBuilder.getMvBufferHtml() );
         
         //build draggable hook here:        
         /*$j('#mv_seeker_slider_'+embedObj.id).draggable({
@@ -390,6 +389,11 @@ var ctrlBuilder = {
                 embedObj.doSeek(perc);
             }
         });*/
+    },
+    getMvBufferHtml:function(){
+        return '<div class="ui-slider-range ui-slider-range-min ui-widget-header ' +
+                'ui-state-highlight ui-corner-all '+
+                'mv_buffer" style="width:0px;height:100%;z-index:1;top:0px" />';
     },
     components:{
         'borders':{

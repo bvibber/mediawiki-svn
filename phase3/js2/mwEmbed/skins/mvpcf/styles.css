@@ -479,7 +479,7 @@ div.floatleft, table.floatleft {
 }
 .cl_status{
 	position:absolute; 
-	height:12px;
+	bottom:0px;
 	top:0px;
 	z-index:3;
 }

@@ -224,7 +224,7 @@ $wgFileStore['deleted']['hash'] = 3;         ///< 3-level subdirectory split
  *                      equivalent to the corresponding member of $wgDBservers
  *    tablePrefix       Table prefix, the foreign wiki's $wgDBprefix
  *    hasSharedCache    True if the wiki's shared cache is accessible via the local $wgMemc
- * 
+ *
  * ForeignAPIRepo:
  *    apibase              Use for the foreign API's URL
  *    apiThumbCacheExpiry  How long to locally cache thumbs for
@@ -426,11 +426,11 @@ $wgSharedUploadDBname = false;
 $wgSharedUploadDBprefix = '';
 /** Cache shared metadata in memcached. Don't do this if the commons wiki is in a different memcached domain */
 $wgCacheSharedUploads = true;
-/** 
-* Allow for upload to be copied from an URL. Requires Special:Upload?source=web 
+/**
+* Allow for upload to be copied from an URL. Requires Special:Upload?source=web
 * timeout for Copy Uploads is set by wgAsyncHTTPTimeout & wgSyncHTTPTimeout
 */
-$wgAllowCopyUploads = false; 
+$wgAllowCopyUploads = false;
 
 /**
  * Max size for uploads, in bytes.  Currently only works for uploads from URL
@@ -441,13 +441,20 @@ $wgMaxUploadSize = 1024*1024*100; # 100MB
 
 
 /**
-* Enable firefogg support 
+* Enable firefogg support
 * add support for in-browser transcoding to ogg theora
 * add support for chunk uploads for large image files
 * add support for client side hash checks
 */
 $wgEnableFirefogg = true;
 
+
+/**
+ * enable oggz_chop support
+ * if enabled the mv_embed player will use temporal urls
+ * for helping with seeking with some plugin types
+ */
+$wgEnableTemporalOggUrls = false;
 
 /**
  * Point the upload navigation link to an external URL
@@ -749,7 +756,7 @@ $wgParserCacheExpireTime = 86400;
 $wgSessionsInMemcached = false;
 
 /** This is used for setting php's session.save_handler. In practice, you will
- * almost never need to change this ever. Other options might be 'user' or 
+ * almost never need to change this ever. Other options might be 'user' or
  * 'session_mysql.' Setting to null skips setting this entirely (which might be
  * useful if you're doing cross-application sessions, see bug 11381) */
 $wgSessionHandler = 'files';
@@ -803,7 +810,7 @@ $wgEditEncoding   = '';
 
 /**
  * Locale for LC_CTYPE, to work around http://bugs.php.net/bug.php?id=45132
- * For Unix-like operating systems, set this to to a locale that has a UTF-8 
+ * For Unix-like operating systems, set this to to a locale that has a UTF-8
  * character set. Only the character set is relevant.
  */
 $wgShellLocale = 'en_US.utf8';
@@ -990,11 +997,11 @@ $wgExtraSubtitle	= '';
 $wgSiteSupportPage	= ''; # A page where you users can receive donations
 
 /**
- * Set this to a string to put the wiki into read-only mode. The text will be 
- * used as an explanation to users. 
+ * Set this to a string to put the wiki into read-only mode. The text will be
+ * used as an explanation to users.
  *
- * This prevents most write operations via the web interface. Cache updates may 
- * still be possible. To prevent database writes completely, use the read_only 
+ * This prevents most write operations via the web interface. Cache updates may
+ * still be possible. To prevent database writes completely, use the read_only
  * option in MySQL.
  */
 $wgReadOnly             = null;
@@ -1009,7 +1016,7 @@ $wgReadOnlyFile         = false; ///< defaults to "{$wgUploadDirectory}/lock_yBg
 /**
  * Filename for debug logging. See http://www.mediawiki.org/wiki/How_to_debug
  * The debug log file should be not be publicly accessible if it is used, as it
- * may contain private data. 
+ * may contain private data.
  */
 $wgDebugLogFile         = '';
 
@@ -1019,14 +1026,14 @@ $wgDebugLogFile         = '';
 $wgDebugLogPrefix       = '';
 
 /**
- * If true, instead of redirecting, show a page with a link to the redirect 
+ * If true, instead of redirecting, show a page with a link to the redirect
  * destination. This allows for the inspection of PHP error messages, and easy
  * resubmission of form data. For developer use only.
  */
 $wgDebugRedirects		= false;
 
 /**
- * If true, log debugging data from action=raw. 
+ * If true, log debugging data from action=raw.
  * This is normally false to avoid overlapping debug entries due to gen=css and
  * gen=js requests.
  */
@@ -1037,7 +1044,7 @@ $wgDebugRawPage         = false;
  *
  * This may occasionally be useful when supporting a non-technical end-user. It's
  * more secure than exposing the debug log file to the web, since the output only
- * contains private data for the current user. But it's not ideal for development 
+ * contains private data for the current user. But it's not ideal for development
  * use since data is lost on fatal errors and redirects.
  */
 $wgDebugComments        = false;
@@ -1108,7 +1115,7 @@ $wgUseCategoryBrowser   = false;
  * same options.
  *
  * This can provide a significant speedup for medium to large pages,
- * so you probably want to keep it on. Extensions that conflict with the 
+ * so you probably want to keep it on. Extensions that conflict with the
  * parser cache should disable the cache on a per-page basis instead.
  */
 $wgEnableParserCache = true;
@@ -1307,7 +1314,7 @@ $wgImplicitGroups = array( '*', 'user', 'autoconfirmed' );
  * are allowed to add or revoke.
  *
  * Setting the list of groups to add or revoke to true is equivalent to "any group".
- * 
+ *
  * For example, to allow sysops to add themselves to the "bot" group:
  *
  *    $wgGroupsAddToSelf = array( 'sysop' => array( 'bot' ) );
@@ -1318,7 +1325,7 @@ $wgImplicitGroups = array( '*', 'user', 'autoconfirmed' );
  *
  * This allows users in the '*' group (i.e. any user) to remove themselves from
  * any group that they happen to be in.
- * 
+ *
  */
 $wgGroupsAddToSelf = array();
 $wgGroupsRemoveFromSelf = array();
@@ -1712,7 +1719,7 @@ $wgAllowExternalImagesFrom = '';
  * Or false to disable it
  */
 $wgEnableImageWhitelist = true;
- 
+
 /** Allows to move images and other media files */
 $wgAllowImageMoving = true;
 
@@ -1994,12 +2001,12 @@ $wgNamespacesToBeSearchedDefault = array(
 /**
  * Additional namespaces to those in $wgNamespacesToBeSearchedDefault that
  * will be added to default search for "project" page inclusive searches
- * 
+ *
  * Same format as $wgNamespacesToBeSearchedDefault
- */  
+ */
 $wgNamespacesToBeSearchedProject = array(
 	NS_USER           => true,
-	NS_PROJECT        => true,	
+	NS_PROJECT        => true,
 	NS_HELP           => true,
 	NS_CATEGORY       => true,
 );
@@ -2056,8 +2063,8 @@ $wgSharpenParameter = '0x0.4';
 /** Reduction in linear dimensions below which sharpening will be enabled */
 $wgSharpenReductionThreshold = 0.85;
 
-/** 
- * Temporary directory used for ImageMagick. The directory must exist. Leave 
+/**
+ * Temporary directory used for ImageMagick. The directory must exist. Leave
  * this set to false to let ImageMagick decide for itself.
  */
 $wgImageMagickTempDir = false;
@@ -2188,19 +2195,19 @@ $wgRC2UDPPort = false;
 /**
  * Prefix to prepend to each UDP packet.
  * This can be used to identify the wiki. A script is available called
- * mxircecho.py which listens on a UDP port, and uses a prefix ending in a 
+ * mxircecho.py which listens on a UDP port, and uses a prefix ending in a
  * tab to identify the IRC channel to send the log line to.
  */
 $wgRC2UDPPrefix = '';
 
 /**
- * If this is set to true, $wgLocalInterwiki will be prepended to links in the 
+ * If this is set to true, $wgLocalInterwiki will be prepended to links in the
  * IRC feed. If this is set to a string, that string will be used as the prefix.
  */
 $wgRC2UDPInterwikiPrefix = false;
 
 /**
- * Set to true to omit "bot" edits (by users with the bot permission) from the 
+ * Set to true to omit "bot" edits (by users with the bot permission) from the
  * UDP feed.
  */
 $wgRC2UDPOmitBots = false;
@@ -2569,21 +2576,21 @@ $wgAutoloadClasses = array();
  * Array mapping javascript class to web path for autoloading js
  * this var is populated in AutoLoader.php
  */
-$wgJSAutoloadClasses = array(); 
+$wgJSAutoloadClasses = array();
 
 /*
  * boolean if the script loader should be used to group all javascript requests.
  * more about the script loader: http://www.mediawiki.org/wiki/ScriptLoader
  */
-$wgEnableScriptLoader = false; 
+$wgEnableScriptLoader = false;
 
 /*
  * boolean; if relative file paths can be used (in addition to the autoload js classes listed in: $wgJSAutoloadClasses
  */
-$wgEnableScriptLoaderJsFile = false; 
+$wgEnableScriptLoaderJsFile = false;
 
 /*
- * boolean; if we should minify the output. (note if you send ?debug=true in the page request it will automatically not group and not minify)  
+ * boolean; if we should minify the output. (note if you send ?debug=true in the page request it will automatically not group and not minify)
  */
 $wgEnableScriptMinify = true;
 
@@ -2598,7 +2605,7 @@ $wgEnableScriptLocalization = true;
 $wgMwEmbedDirectory = "js2/mwEmbed/";
 
 /*
- * wgDebugJavaScript used to turn on debuging for the javascript script-loader 
+ * wgDebugJavaScript used to turn on debuging for the javascript script-loader
  * & forces fresh copies of javascript if the script loader is offf
  */
 
@@ -2935,7 +2942,7 @@ $wgLogRestrictions = array(
  *
  * This is associative array of log type => boolean "hide by default"
  *
- * See $wgLogTypes for a list of available log types. 
+ * See $wgLogTypes for a list of available log types.
  *
  * For example:
  *   $wgFilterLogTypes => array(
@@ -2944,7 +2951,7 @@ $wgLogRestrictions = array(
  *   );
  *
  * Will display show/hide links for the move and import logs. Move logs will be
- * hidden by default unless the link is clicked. Import logs will be shown by 
+ * hidden by default unless the link is clicked. Import logs will be shown by
  * default, and hidden when the link is clicked.
  *
  * A message of the form log-show-hide-<type> should be added, and will be used
@@ -3419,12 +3426,12 @@ $wgAllowSpecialInclusion = true;
 
 /**
  * Timeout for HTTP requests done at script execution time
- * default is (default php.ini script time 30s - 5s for everythign else) 
+ * default is (default php.ini script time 30s - 5s for everythign else)
  */
-$wgSyncHTTPTimeout = 25; 
+$wgSyncHTTPTimeout = 25;
 /**
 * Timeout for asynchronous http request that run in a backgournd php proccess
-* default set to 20 min 
+* default set to 20 min
 */
 $wgAsyncHTTPTimeout = 60*20;
 
@@ -3495,7 +3502,7 @@ $wgAjaxWatch = true;
 $wgAjaxUploadDestCheck = true;
 
 /**
- * Enable AJAX upload interface (need for large http uploads & to display progress on uploads for browsers that support it) 
+ * Enable AJAX upload interface (need for large http uploads & to display progress on uploads for browsers that support it)
  */
 $wgAjaxUploadInterface = true;
 
@@ -3566,7 +3573,7 @@ $wgPhpCli = 'php';
 
 /**
  * the full path to shell out to php scripts:
- */ 
+ */
 $wgPhpCliPath = '/usr/bin/php';
 
 /**
@@ -3764,7 +3771,7 @@ $wgMaximumMovedPages = 100;
 
 /**
  * Fix double redirects after a page move.
- * Tends to conflict with page move vandalism, use only on a private wiki. 
+ * Tends to conflict with page move vandalism, use only on a private wiki.
  */
 $wgFixDoubleRedirects = false;
 
@@ -3786,7 +3793,7 @@ $wgMaxRedirects = 1;
  * other namespaces cannot be invalidated by this variable.
  */
 $wgInvalidRedirectTargets = array( 'Filepath', 'Mypage', 'Mytalk' );
- 
+
 /**
  * Array of namespaces to generate a sitemap for when the
  * maintenance/generateSitemap.php script is run, or false if one is to be ge-

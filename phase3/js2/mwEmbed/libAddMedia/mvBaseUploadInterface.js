@@ -477,7 +477,7 @@ mvBaseUploadInterface.prototype = {
       });      
       $j('#upProgressDialog').html(
       //set initial content: 
-        '<div id="up-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
+        '<div id="up-pbar-container" style="width:90%;height:15px;" >' +
 			'<div id="up-progressbar" style="height:15px;"></div>' +
 			'<div id="up-status-container">'+
 			'<span id="up-pstatus">0% - </span> ' +						 
