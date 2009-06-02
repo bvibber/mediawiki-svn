@@ -62,7 +62,6 @@ $wgLogNames['poll'] = 'poll-logpage';
 $wgLogHeaders['poll'] = 'poll-logpagetext';
 $wgLogActions['poll/poll'] = 'poll-logentry';
 
-
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efPollSchemaUpdates';
 
@@ -75,6 +74,6 @@ function efPollSchemaUpdates() {
 		$wgExtNewFields[] = array( 'poll', 'dis', "$base/archives/patch-dis.sql" ); // Add dis
 		$wgExtNewTables[] = array( 'poll_answer', "$base/archives/Poll-answer.sql" ); // Initial answer tables
 		$wgExtNewFields[] = array( 'poll_answer', 'user', "$base/archives/patch-user.sql" ); // Add user
-    }
+	}
 	return true;
 }

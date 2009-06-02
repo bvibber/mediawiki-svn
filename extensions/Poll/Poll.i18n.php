@@ -48,12 +48,12 @@ $messages['en'] = array(
 	'poll-delete-right-error' => 'You must be the creater of the Poll or have the "poll-admin" right to delete this Poll',
 	'poll-delete-block-error' => 'You are not allowed to delete a poll because you use a blocked user',
 	'poll-delete-pass' => 'Deleted!',
-	'poll-delete-cancel' => 'Poll don\'t delete(Checkbox don\'t set)!',
-	'poll-logpage' => 'Poll-Log',
-	'poll-logpagetext' => 'This is a log of changes to Polls.',
-	'poll-log-create' => '$1 created "$2"!',
-	'poll-log-change' => '$1 changed "$2"!',
-	'poll-log-delete' => '$1 deleted "$2"!',
+	'poll-delete-cancel' => 'Do not delete the poll (checkbox not set)',
+	'poll-logpage' => 'Poll log',
+	'poll-logpagetext' => 'This is a log of changes to polls.',
+	'poll-log-create' => '$1 created poll "$2"',
+	'poll-log-change' => '$1 changed poll "$2"',
+	'poll-log-delete' => '$1 deleted poll "$2"',
 	'poll-logentry' => 'Polls changed',
 );
 
