@@ -8,6 +8,7 @@ mwAddOnloadHook( function(){
 //set up the upoload form bindings once all dom manipluation is done
 var mwUploadHelper = {
     init:function(){
+    	var _this = this;
         if( wgEnableFirefogg ){
             //setup the upload handler to firefogg  (supports our upload proccess) (should work with the http uploads too) 
             $j('#wpUploadFile').firefogg({ 
@@ -35,29 +36,34 @@ var mwUploadHelper = {
         }
         
         //check if we have http enabled & setup enable/disable toggle:
-        if($j('#wpUploadFileURL').length != 0){
-            var toggleUpType = function( set ){
-                $j('#wpSourceTypeFile').get(0).checked = set;
-                $j('#wpUploadFile').get(0).disabled = !set;
-                
-                $j('#wpSourceTypeURL').get(0).checked = !set;
-                $j('#wpUploadFileURL').get(0).disabled =  set;
-            }        
+        if($j('#wpUploadFileURL').length != 0){                 
             //set the initial toggleUpType        
-            toggleUpType(true);    
+            _this.toggleUpType(true);    
             
             $j("input[name='wpSourceType']").click(function(){            
-                toggleUpType( this.id == 'wpSourceTypeFile' );
-            });    
-        }
+                _this.toggleUpType( this.id == 'wpSourceTypeFile' );
+            });            
+        }      
         $j('#wpUploadFile,#wpUploadFileURL').focus(function(){        
-            toggleUpType( this.id == 'wpUploadFile' );    
+        	_this.toggleUpType( this.id == 'wpUploadFile' );    
         }).change(function(){ //also setup the onChange event binding:                 
             if ( wgUploadAutoFill ) {
                 mwUploadHelper.doDestinationFill( this );        
             }        
-        });            
-    },            
+        });               
+    },
+    /**
+     * toggleUpType sets the upload radio buttons
+     * 
+     * boolean set 
+     */            
+    toggleUpType:function( set ){
+	    $j('#wpSourceTypeFile').attr('checked', set);
+	    $j('#wpUploadFile').attr('disabled', !set);
+	    
+	    $j('#wpSourceTypeURL').attr('checked', !set);
+	    $j('#wpUploadFileURL').attr('disabled', set);
+    },   
     /**
      * doDestCheck checks the destination
      * @@todo we should be able to configure its "targets" via parent config

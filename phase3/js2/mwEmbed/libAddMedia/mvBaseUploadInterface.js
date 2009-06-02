@@ -145,15 +145,18 @@ mvBaseUploadInterface.prototype = {
 			_this.doUploadSwitch();
 		}
 	},
-	doUploadSwitch:function(){				
-		js_log('mvUPload:doUploadSwitch()');
+	doUploadSwitch:function(){		
 		var _this = this;			
+		js_log('mvUPload:doUploadSwitch():' + _this.upload_mode);		
 		//issue a normal post request 		
-		if( _this.upload_mode == 'post' || $j('#wpSourceTypeFile').get(0).checked ){			
-			js_log('do normal submit form');
-			//update the status to loading img: 
-			_this.updateProgressWin(_this.getProgressTitle(), mv_get_loading_img( 'left:40%;top:20%'));		
+		if( _this.upload_mode == 'post' || //we don't support the upload api
+			(_this.upload_mode=='api' && $j('#wpSourceTypeFile').length ==0) // web form uplaod 			
+		){			
+			js_log('do ormal submit form');
+			//update the status to 100% progress bar: 
+			$j( '#up-progressbar' ).progressbar('value', parseInt( 100 ) );		
 							
+			$j('#up-status-container').html( gM('upload-in-progress') );
 			//do normal post upload no status indicators (also since its a file I think we have to submit the form)
 			_this.form_post_override = true;
 			
@@ -441,7 +444,7 @@ mvBaseUploadInterface.prototype = {
 	},
 	updateProgress:function( perc ){		
 	    //js_log('update progress: ' + perc);
-	    $j('#up-progressbar').progressbar('value', parseInt( perc * 100 ) );	
+	    $j( '#up-progressbar' ).progressbar('value', parseInt( perc * 100 ) );	
 		$j( '#up-pstatus' ).html( parseInt( perc * 100 ) + '% - ' );
 	},
 	/*update to jQuery.ui progress display type */
@@ -476,8 +479,10 @@ mvBaseUploadInterface.prototype = {
       //set initial content: 
         '<div id="up-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
 			'<div id="up-progressbar" style="height:15px;"></div>' +
+			'<div id="up-status-container">'+
 			'<span id="up-pstatus">0% - </span> ' +						 
-		    '<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +			
+		    '<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +
+		    '</div>'+		
 		'</div>' 
 	  )
       //setup progress bar: 
