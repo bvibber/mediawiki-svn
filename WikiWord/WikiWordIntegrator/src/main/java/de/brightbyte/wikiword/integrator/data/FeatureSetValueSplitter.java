@@ -1,10 +1,13 @@
 package de.brightbyte.wikiword.integrator.data;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import de.brightbyte.text.Chunker;
+import de.brightbyte.text.RegularExpressionChunker;
 
 
 public class FeatureSetValueSplitter implements FeatureSetMangler {
@@ -44,15 +47,19 @@ public class FeatureSetValueSplitter implements FeatureSetMangler {
 	}
 
 	protected String field;
-	protected Matcher splitter;
+	protected Chunker chunker;
 	
 	public FeatureSetValueSplitter(String field, String regex, int flags) {
 		this(field, Pattern.compile(regex, flags));
 	}
 	
-	public FeatureSetValueSplitter(String field, Pattern splitter) {
+	public FeatureSetValueSplitter(String field, Pattern pattern) {
+		this(field, new RegularExpressionChunker(pattern));
+	}
+
+	public FeatureSetValueSplitter(String field, Chunker chunker) {
 		this.field = field;
-		this.splitter = splitter.matcher("");
+		this.chunker = chunker;
 	}
 
 	@Override
@@ -60,7 +67,7 @@ public class FeatureSetValueSplitter implements FeatureSetMangler {
 		final int PRIME = 31;
 		int result = 1;
 		result = PRIME * result + ((field == null) ? 0 : field.hashCode());
-		result = PRIME * result + ((splitter == null) ? 0 : splitter.pattern().hashCode());
+		result = PRIME * result + ((chunker == null) ? 0 : chunker.hashCode());
 		return result;
 	}
 
@@ -78,10 +85,10 @@ public class FeatureSetValueSplitter implements FeatureSetMangler {
 				return false;
 		} else if (!field.equals(other.field))
 			return false;
-		if (splitter == null) {
-			if (other.splitter != null)
+		if (chunker == null) {
+			if (other.chunker != null)
 				return false;
-		} else if (!splitter.pattern().equals(other.splitter.pattern()))
+		} else if (!chunker.equals(chunker))
 			return false;
 		return true;
 	}
@@ -95,24 +102,24 @@ public class FeatureSetValueSplitter implements FeatureSetMangler {
 		int c = 0;
 		for (Object obj: v) {
 			String s = obj.toString();
-			splitter.reset(s);
 			
-			int i = 0;
-			while (splitter.find()) {
-				if (w==null) {
-					w = new ArrayList<Object>(v.size()*2);
-					if (c>0) w.addAll(v.subList(0, c));
-				}
-				
-				String t = s.substring(i, splitter.start());
-				if (t.length()>0) w.add(t);
-				
-				i = splitter.end();
-			}
-			
-			if (i<s.length() && w!=null) {
-				String t = s.substring(i);
-				if (t.length()>0) w.add(t);
+			try {
+				Iterable<String> vv = chunker.chunk(s);
+
+				//TODO: detecting trivial items might speed things up.
+				//if (w!=null || vv.size()!=1 || !vv.get(0).equals(s)) {
+					if (w==null) {
+						w = new ArrayList<Object>(v.size()*2);
+						if (c>0) w.addAll(v.subList(0, c));
+					}
+					
+					for (String a: vv)
+							w.add(a);
+				//}
+			} catch (ParseException e) {
+				//split failed, so keep value as-is
+				//XXX: somehow report?
+				if (w!=null) w.add(s);
 			}
 			
 			c++;
