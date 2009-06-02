@@ -17,9 +17,7 @@ class SiteMatrix {
 		global $wgSiteMatrixFile, $wgSiteMatrixSites;
 		global $wgLocalDatabases, $IP, $wgConf;
 
-		if( file_exists( "$IP/InitialiseSettings.php" ) ) {
-			require_once "$IP/InitialiseSettings.php";
-		}
+		$wgConf->loadFullData();
 
 		if( file_exists( $wgSiteMatrixFile ) ){
 			$this->langlist = array_map( 'trim', file( $wgSiteMatrixFile ) );
