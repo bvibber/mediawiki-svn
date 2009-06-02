@@ -545,7 +545,7 @@ mvClipEdit.prototype = {
                     '<div id="mv_crop_img" style="position:absolute;'+
                         'top:-' + _this.rObj.crop.y +'px;'+
                         'left:-' + _this.rObj.crop.x + 'px;">'+
-                        '<img src="' + _this.rObj.url + '">'+
+                        '<img src="' + _this.rObj.src + '">'+
                     '</div>'+
                 '</div>'                        
             );

@@ -41,7 +41,9 @@ var default_remote_search_options = {
     
     'caret_pos':null,
     'local_wiki_api_url':null,
-    'import_url_mode': 'autodetect', //can be 'api', 'form', 'autodetect', 'link', or 'none' (none should be used where no remote repositories are enabled) 
+    
+    //can be 'api', 'form', 'autodetect', 'link', or 'none' (none should be used where no remote repositories are enabled (only local wiki/uploads)
+    'import_url_mode': 'autodetect',  
     
     'target_title':null,
     
@@ -572,7 +574,7 @@ remoteSearchDriver.prototype = {
     //this check can be avoided by setting the this.import_url_mode = 'api' | 'form' | insted of 'autodetect' or 'none'
     checkForCopyURLSupport:function ( callback ){
         var _this = this;
-        //js_log('checkForCopyURLSupport:: ' + wgArticlePath);    
+        js_log('checkForCopyURLSupport:: ');    
         if( this.import_url_mode == 'autodetect' ){
             do_api_req( {
                 'data': { 'action':'paraminfo', 'modules':'upload' },
@@ -593,11 +595,14 @@ remoteSearchDriver.prototype = {
                             }else{
                                 _this.import_url_mode = 'none';                            
                             }
+                            js_log('import mode: ' + _this.import_url_mode);
                             callback();
                         },
                         error: function(){
                             js_log('error in getting Special:Upload page');
                             _this.import_url_mode = 'none';
+                            
+                            js_log('import mode: ' + _this.import_url_mode);
                             callback();
                         }
                     });
@@ -610,9 +615,11 @@ remoteSearchDriver.prototype = {
                             _this.checkForCopyURLPermission(function( canCopyUrl ){
                                 if(canCopyUrl){
                                     _this.import_url_mode = 'api';
+                                    js_log('import mode: ' + _this.import_url_mode);
                                     callback();                                
                                 }else{
                                     _this.import_url_mode = 'none';
+                                    js_log('import mode: ' + _this.import_url_mode);
                                     callback();
                                 }
                             });    
@@ -622,6 +629,7 @@ remoteSearchDriver.prototype = {
                 }    
             });            
         }else{
+        	js_log('import mode: ' + _this.import_url_mode);
             callback();
         }
     },
@@ -1169,7 +1177,7 @@ remoteSearchDriver.prototype = {
                                     
                                     $j.btnHtml('Do Import Resource', 'rsd_import_doimport', 'check' ) + ' ' + 
                                       
-                                    $j.btnHtml('Update Preview', 'rsd_import_apreview', 'refresh' ) + ' ' + 
+                                    $j.btnHtml('Update Preview', 'rsd_import_apreview', 'refresh' ) + ' <br><br><br>' + 
                                     
                                     $j.btnHtml('Cancel Import', 'rsd_import_acancel', 'close' ) + ' ' + 
                                                                                 
@@ -1192,89 +1200,12 @@ remoteSearchDriver.prototype = {
                             });
                         });
                         $j(_this.target_container + ' .rsd_import_doimport').click(function(){                            
-                
-                            //get an edittoken: 
-                            do_api_req( {
-                                'data':    {    'action':'query',
-                                            'prop':'info',
-                                            'intoken':'edit',
-                                            'titles': rObj.titleKey 
-                                        },
-                                'url':_this.local_wiki_api_url
-                                }, function(data){
-                                    //could recheck if it has been created in the mean time
-                                    if( data.query.pages[-1] ){                                 
-                                        var editToken = data.query.pages[-1]['edittoken'];
-                                        if(!editToken){
-                                            //@@todo give an ajax login or be more friendly in some way:  
-                                            js_error("You don't have permission to upload (are you logged in?)");
-                                            //remove top level: 
-                                            $j('#modalbox').fadeOut("normal",function(){
-                                                $j(this).remove();
-                                                $j('#mv_overlay').remove();
-                                            });
-                                        }else{                                
-                                            //not sure if we can do remote url uploads (so just do a local post) 
-                                            js_log('got token for new page:' +editToken);                                            
-                                            var postVars = {
-                                                'wpSourceType'        :'web',
-                                                'wpUploadFileURL'    : rObj.src,
-                                                'wpDestFile'        : rObj.target_resource_title,
-                                                'wpUploadDescription': $j('#rsd_import_ta').val(),
-                                                'wpWatchthis'        :  $j('#wpWatchthis').val(),        
-                                                'wpUpload'            : 'Upload file'                                                                                                                                                                    
-                                            }
-                                            //set to uploading:                                                                                             
-                                            $j('#rsd_resource_import').append('<div id="rsd_import_progress"'+                                        
-                                                'style="position:absolute;top:0px;'+
-                                                    'left:0px;width:100%;height:100%;'+                                            
-                                                    'z-index:5;background:#FFF;overflow:auto;">'+
-                                                        '<div style="position:absolute;left:30%;right:30%"><h3>Importing Asset</h3><br>' + 
-                                                            mv_get_loading_img('','mv_loading_bar_img') + 
-                                                        '</div>'+                    
-                                                '</div>'                                                                                
-                                            );                                
-                                            $j.post(wgArticlePath.replace(/\$1/,'Special:Upload'),
-                                                postVars,
-                                                function(data){                                            
-                                                    //@@todo this will be replaced once we add upload image support to the api. 
-                                                    
-                                                    //very basic test to see if we got passed to the image page:
-                                                    //@@todo more normalization stuff
-                                                    var sstring ='var wgPageName = "' + _this.cFileNS + ':' + rObj.target_resource_title.replace(/ /g,'_') +'"';
-                                                    if(data.indexOf( sstring ) !=-1){
-                                                        js_log('found: ' + sstring);    
-                                                        $j('#rsd_resource_import').remove();                                            
-                                                        cir_callback( rObj );
-                                                    }else{                                                        
-                                                        js_log("Error or warning: (did not find: \"" + sstring + ' in output' );
-                                                        pos_etitle = '<h1 class="firstHeading">';
-                                                        var error_txt = form_txt = '';                                                                                                                                                                                                            
-                                                        var res = grabWikiFormError( data );
-                                                        
-                                                        if( res.error_txt )
-                                                            error_txt = res.error_txt;
-                                                                
-                                                        if( res.form_txt )
-                                                            form_txt = res.form_txt;
-                                                            
-                                                        js_log( 'error text is: ' + error_txt );        
-                                                        $j( '#rsd_resource_import' ).html( '<h3>Error</h3>' + error_txt + '<br>' + form_txt +
-                                                                '<br>'+
-                                                            '<a href="#" id="rsd_import_error" >Cancel import</a>'    
-                                                        );
-                                                        //set up cancel action: 
-                                                        $j('#rsd_import_error').click(function(){
-                                                            $j('#rsd_resource_import').remove();
-                                                        });
-                                                    }
-                                                        
-                                                }
-                                            );
-                                        }                                
-                                    }
-                                }
-                            );                            
+                			//check import mode:
+                			if(_this.import_url_mode=='form'){
+                				_this.doImportSpecialPage();
+                			}else{
+                				_this.doImportAPI();
+                			}                                                    
                         });
                         $j( _this.target_container + ' .rsd_import_acancel').click(function(){
                             $j('#rsd_resource_import').fadeOut("fast",function(){
@@ -1285,6 +1216,93 @@ remoteSearchDriver.prototype = {
                 }
             );                                                    
         }
+    },
+    doImportAPI:function(){
+    	
+    },
+    doImportSpecialPage:function(){
+    	 //get an edittoken: 
+        do_api_req( {
+            'data':    {    'action':'query',
+                        'prop':'info',
+                        'intoken':'edit',
+                        'titles': rObj.titleKey 
+                    },
+            'url':_this.local_wiki_api_url
+            }, function(data){
+                //could recheck if it has been created in the mean time
+                if( data.query.pages[-1] ){                                 
+                    var editToken = data.query.pages[-1]['edittoken'];
+                    if(!editToken){
+                        //@@todo give an ajax login or be more friendly in some way:  
+                        js_error("You don't have permission to upload (are you logged in?)");
+                        //remove top level: 
+                        $j('#modalbox').fadeOut("normal",function(){
+                            $j(this).remove();
+                            $j('#mv_overlay').remove();
+                        });
+                    }else{                                
+                        //not sure if we can do remote url uploads (so just do a local post) 
+                        js_log('got token for new page:' +editToken);                                            
+                        var postVars = {
+                            'wpSourceType'        :'web',
+                            'wpUploadFileURL'    : rObj.src,
+                            'wpDestFile'        : rObj.target_resource_title,
+                            'wpUploadDescription': $j('#rsd_import_ta').val(),
+                            'wpWatchthis'        :  $j('#wpWatchthis').val(),        
+                            'wpUpload'            : 'Upload file'                                                                                                                                                                    
+                        }
+                        //set to uploading:                                                                                             
+                        $j('#rsd_resource_import').append('<div id="rsd_import_progress"'+                                        
+                            'style="position:absolute;top:0px;'+
+                                'left:0px;width:100%;height:100%;'+                                            
+                                'z-index:5;background:#FFF;overflow:auto;">'+
+                                    '<div style="position:absolute;left:30%;right:30%"><h3>Importing Asset</h3><br>' + 
+                                        mv_get_loading_img('','mv_loading_bar_img') + 
+                                    '</div>'+                    
+                            '</div>'                                                                                
+                        );                                
+                        $j.post(wgArticlePath.replace(/\$1/,'Special:Upload'),
+                            postVars,
+                            function(data){                                            
+                                //@@todo this will be replaced once we add upload image support to the api. 
+                                
+                                //very basic test to see if we got passed to the image page:
+                                //@@todo more normalization stuff
+                                var sstring ='var wgPageName = "' + _this.cFileNS + ':' + rObj.target_resource_title.replace(/ /g,'_') +'"';
+                                if(data.indexOf( sstring ) !=-1){
+                                    js_log('found: ' + sstring);    
+                                    $j('#rsd_resource_import').remove();                                            
+                                    cir_callback( rObj );
+                                }else{                                                        
+                                    js_log("Error or warning: (did not find: \"" + sstring + ' in output' );
+                                    pos_etitle = '<h1 class="firstHeading">';
+                                    var error_txt = form_txt = '';                                                                                                                                                                                                            
+                                    var res = grabWikiFormError( data );
+                                    
+                                    if( res.error_txt )
+                                        error_txt = res.error_txt;
+                                            
+                                    if( res.form_txt )
+                                        form_txt = res.form_txt;
+                                        
+                                    js_log( 'error text is: ' + error_txt );        
+                                    $j( '#rsd_resource_import' ).html( '<h3>Error</h3>' + error_txt + '<br>' + form_txt +
+                                            '<br>'+
+                                        '<a href="#" id="rsd_import_error" >Cancel import</a>'    
+                                    );
+                                    //set up cancel action: 
+                                    $j('#rsd_import_error').click(function(){
+                                        $j('#rsd_resource_import').remove();
+                                    });
+                                }
+                                    
+                            }
+                        );
+                    }                                
+                }
+            }
+        );   
     },
     previewResource:function( rObj ){
         var _this = this;
