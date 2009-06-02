@@ -285,8 +285,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 * $4 will be replaced with zero to several links to that version
 * $5 is the comment, as provided by the user, which may be empty
 * $6 is the date of the version
-* $7 is the time of the version
-* $8 is the name of the user who made version, or empty',
+* $7 is the time of the version',
 	'extensions' => 'Name of special page displayed in [[Special:SpecialPages]].',
 	'right-configure' => '{{doc-right}}',
 	'right-configure-all' => '{{doc-right}}',
