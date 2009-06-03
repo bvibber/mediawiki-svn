@@ -473,6 +473,11 @@ Jump to stream view: $2',
 
 	# msg for bots and maintance
 	'mv_protect_source_material' => 'Original source material protected from edits'
+
+	# Rights related messages
+	'right-mv_delete_mvd'  => 'Delete MetaVid metadata',
+	'action-mv_delete_mvd' => 'delete this MetaVid metadata segment',
+	'right-mv_edit_stream' => 'Edit stream files',
 );
 
 /** Message documentation (Message documentation)
