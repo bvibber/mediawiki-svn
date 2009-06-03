@@ -114,12 +114,7 @@ var nativeEmbed = {
                 
         //update currentTime                
         this.currentTime = this.vid.currentTime;        
-        //add in the         
-        if(this.seek_time_sec && this.seek_time_sec!=0){
-            this.currentTime+=this.seek_time_sec;
-        }else if(this.start_offset && this.start_offset!=0){
-            this.currentTime+=this.start_offset;
-        }    
+        this.addPresTimeOffset();
         //js_log('currentTime:' + this.currentTime);
         //js_log('this.currentTime: ' + this.currentTime );
         //once currentTime is updated call parent_monitor

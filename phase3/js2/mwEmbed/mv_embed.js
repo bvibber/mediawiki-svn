@@ -739,6 +739,13 @@ function getURLParamReplace( url, opt ){
         new_url+= amp + key + '=' + val;                    
         amp = '&';        
     };    
+    //add any vars that did were not originally there: 
+    for(var i in opt){
+        if(!pSrc.queryKey[i]){
+          new_url+=amp + i + '=' + opt[i];
+          amp = '&'; 
+        }
+    }         
     return new_url;
 }
 /**

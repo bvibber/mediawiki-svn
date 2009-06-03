@@ -17,7 +17,7 @@ loadGM({
 	
 	"mv-canecl-confim"     : "Are you sure you want to cancel?",
 	
-	"successfulupload" : "Successful upload",
+	"successfulupload" : "Successful Upload",
 	"uploaderror" : "Upload error",
 	"uploadwarning": "Upload warning",
 	"unknown-error": "Unknown Error",
@@ -178,21 +178,24 @@ mvBaseUploadInterface.prototype = {
 		}				
 		return false;
 	},
-	doHttpUpload:function(){
+	doHttpUpload:function( opt ){
 		var _this = this;
 		//set the http box to loading (in case we don't get an update for some time) 
 		$j('#dlbox-centered').html( '<h5>' + _this.getProgressTitle() + '</h5>' + 
 			mv_get_loading_img( 'left:40%;top:20%')
 		);	
-		//build the api query:	
+		var req = {
+		       'action'	    : 'upload',
+			   'url'		: $j('#wpUploadFileURL').val(),
+			   'filename'	: $j('#wpDestFile').val(),
+			   'comment' 	: $j('#wpUploadDescription').val(),
+			   'asyncdownload': true	
+		}
+		for(var i in opt){		    
+		  req[i]= opt[i];
+		}				
 		do_api_req({
-			'data':{ 
-				'action'	: 'upload',
-				'url'		: $j('#wpUploadFileURL').val(),
-				'filename'	: $j('#wpDestFile').val(),
-				'comment' 	: $j('#wpUploadDescription').val(),
-				'asyncdownload': true				
-			},
+			'data': req,
 			'url' : _this.api_url 
 		}, function( data ){			
 			_this.processApiResult( data );		
@@ -312,25 +315,24 @@ mvBaseUploadInterface.prototype = {
 			if(typeof apiRes.error == 'string')
 				error_msg = apiRes.error;		
 			//error space is too large so we don't front load it
-			//do a remote call to get the error msg: 
-			var return_to_form_txt = gM('return-to-form');
+			//do a remote call to get the error msg: 		
 			if(!error_code || error_code == 'unknown-error'){
 				if(typeof JSON != 'undefined'){
 					js_log('Error: apiRes: ' + JSON.stringify( apiRes) );
-				}				
-				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg,{ 
-				   return_to_form_txt:function(){
+				}		
+				var bObj = {};
+				bObj[ gM('return-to-form') ] = 	function(){
         		        $(this).dialog('close');
-        		     }  
-				});	
+        		 };  	
+				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg, bObj);	
 			}else{
 				gMsgLoadRemote(error_code, function(){
 					js_log('send msg: ' + gM( error_code ));
-					_this.updateProgressWin(  gM('uploaderror'), gM( error_code ),{ 
-				     return_to_form_txt:function(){
+					var bObj = {};
+				    bObj[gM('return-to-form')] = function(){
         		            $(this).dialog('close');
-        		      }  
-				   });
+        		    };
+					_this.updateProgressWin(  gM('uploaderror'), gM( error_code ),bObj);
 			    });		
     			js_log("api.erorr");		
     			return ;	
@@ -347,16 +349,13 @@ mvBaseUploadInterface.prototype = {
 			return ;
 		}		
 		
-		if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){
-		    var go_to_url_txt = gM('go-to-resource');
+		if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){				    
 		    var url = apiRes.upload.imageinfo.descriptionurl;
-			_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done', apiRes.upload.imageinfo.descriptionurl),
-			{
-			    go_to_url_txt:function(){
-			        document.URL = url;
-			    }
-			}
-			 );
+		    var bObj = {};
+		    bObj[ gM('go-to-resource') ] = function(){
+			        window.location = url;
+			};
+			_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done'), bObj);
 			js_log('apiRes.upload.imageinfo::'+url);
 			return ;
 		}		
@@ -396,24 +395,22 @@ mvBaseUploadInterface.prototype = {
 			wmsg+='</ul>';			
 			if( apiRes.upload.warnings.sessionkey)
 			 	_this.warnings_sessionkey = apiRes.upload.warnings.sessionkey;
-			var ignore_warning_string = gM('ignorewarning');			 	
-			_this.updateProgressWin(  gM('uploadwarning'),  '<h3>' + gM('uploadwarning') + '</h3>' +msg + '<p>',{
-			         ignore_warning_string: function() { 
+			var bObj = {};
+			bObj[ gM('ignorewarning') ] =  	function() { 
     				                         js_error('todo: ignore warnings action '); 
-                                            }
-                       }
-			          );
+                                            };
+			_this.updateProgressWin(  gM('uploadwarning'),  '<h3>' + gM('uploadwarning') + '</h3>' +msg + '<p>',bObj);
 			return false;
 		}							
 		
 		//nothing fits assume unkown error:
 		js_log('could not parse upload api request result');
 		var return_to_form_msg = gM('return-to-form');
-		_this.updateProgressWin( gM('uploaderror'), gM('unknown-error'), {
-		     return_to_form_msg: function(){
+		var bObj = {};
+		bObj[ gM('return-to-form')] =  function(){
 		        $(this).dialog('close');
-		     }  
-		});
+		     };  
+		_this.updateProgressWin( gM('uploaderror'), gM('unknown-error'),bObj);
 		return false; 		
 	},
 	updateProgressWin:function(title_txt, msg, buttons){
@@ -421,10 +418,10 @@ mvBaseUploadInterface.prototype = {
 	     if(!title_txt)
 	       title_txt = _this.getProgressTitle();
 	     if(!msg)
-	       msg = mv_get_loading_img( 'left:40%;top:40px;')
-	     $j('#upProgressDialog').dialog({ title: title_txt });
+	       msg = mv_get_loading_img( 'left:40%;top:40px;');
+	     $j( '#upProgressDialog' ).dialog('option', 'title',  title_txt );
 	     $j( '#upProgressDialog' ).html( msg );
-	     if(buttons){
+	     if(buttons){	       
 	         $j('#upProgressDialog').dialog('option','buttons', buttons);
 	     }else{	         
 	         //@@todo should convice the jquery ui people to not use object keys as user msg's
@@ -486,9 +483,9 @@ mvBaseUploadInterface.prototype = {
 		'</div>' 
 	  )
       //setup progress bar: 
-       $j('#up-progressbar').progressbar({
-           value:0  
-       })      
+       $j('#up-progressbar').progressbar({ 
+           value:0 
+       });      
        //just display an empty progress window
        $j('#upProgressDialog').dialog('open');
  

@@ -330,6 +330,7 @@ var ctrlBuilder = {
                 //only run the onChange event if done by a user slide: 
                 if(embedObj.userSlide){
                     embedObj.userSlide=false;
+                    embedObj.seeking=true;
                     //stop the monitor timer:                 
                     embedObj.stopMonitor();                
                     var perc = ui.value/1000;                                                          
@@ -346,49 +347,6 @@ var ctrlBuilder = {
         //extended class list for jQuery ui themeing (we can probably refactor this with custom buffering highliter) 
         $j('#mv_play_head_'+embedObj.id).append( ctrlBuilder.getMvBufferHtml() );
         
-        //build draggable hook here:        
-        /*$j('#mv_seeker_slider_'+embedObj.id).draggable({
-            containment:$j('#seeker_bar_'+embedObj.id),
-            axis:'x',
-            opacity:.6,
-            start:function(e, ui){
-                var id = (embedObj.pc!=null)?embedObj.pc.pp.id:embedObj.id;
-                embedObj.userSlide=true;
-                js_log("started dragging set userSlide" + embedObj.userSlide)
-                var options = ui.options;      
-                //remove "play button"       
-                $j('#big_play_link_'+id).fadeOut('fast');
-                 //if playlist always start at 0
-                embedObj.start_time_sec = (embedObj.instanceOf == 'mvPlayList')?0:
-                                npt2seconds(embedObj.getTimeReq().split('/')[0]);       
-            },
-            drag:function(e, ui){
-                //@@todo get the -14 number from the skin somehow
-                var perc = (($j('#mv_seeker_slider_'+embedObj.id).get(0).offsetLeft-embedObj.base_seeker_slider_offset)
-                        /
-                    ($j('#mv_seeker_'+embedObj.id).width()-14));                                                               
-                                                                                         
-                embedObj.jump_time = seconds2npt( parseInt( embedObj.getDuration() * perc ) + embedObj.start_time_sec);    
-                //js_log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
-                embedObj.setStatus( gM('seek_to')+' '+embedObj.jump_time );    
-                //update the thumbnail / frame 
-                if(embedObj.isPlaying==false){
-                    embedObj.updateThumbPerc( perc );
-                }                    
-            },
-            stop:function(e, ui){
-                embedObj.userSlide=false;
-                //stop the monitor timer:                 
-                embedObj.stopMonitor();                
-                var perc = (($j('#mv_seeker_slider_'+embedObj.id).get(0).offsetLeft-embedObj.base_seeker_slider_offset)
-                        /
-                    ($j('#mv_seeker_'+embedObj.id).width()-14));                                                   
-                //set seek time (in case we have to do a url seek)                
-                embedObj.seek_time_sec = npt2seconds( embedObj.jump_time, true );   
-                js_log('do jump to: '+embedObj.jump_time + ' perc:' +perc + ' sts:' + embedObj.seek_time_sec);                                
-                embedObj.doSeek(perc);
-            }
-        });*/
     },
     getMvBufferHtml:function(){
         return '<div class="ui-slider-range ui-slider-range-min ui-widget-header ' +
@@ -564,8 +522,8 @@ mediaSource.prototype =
                 
             if( !npt2seconds(end_ntp) )
                 end_ntp = this.end_ntp;
-                           
-            this.src = getURLParamReplace(this.src, { 't': start_ntp +'/'+end_ntp } );           
+                                          
+            this.src = getURLParamReplace(this.src, { 't': start_ntp + end_ntp } );           
             
             //update the duration
             this.parseURLDuration();
@@ -593,10 +551,15 @@ mediaSource.prototype =
     */
     getURI : function( seek_time_sec )
     {                
-        if( !seek_time_sec || !this.URLTimeEncoding ){            
+       if( !seek_time_sec || !this.URLTimeEncoding ){            
                return this.src;                          
-        }         
-       return getURLParamReplace(this.src,  { 't': seconds2npt( seek_time_sec )+'/'+ this.end_ntp } );    ;
+       }                
+       if(!this.end_ntp){
+          var endvar = '';
+       }else{
+          var endvar = '/'+ this.end_ntp;
+       }        
+       return getURLParamReplace(this.src,  { 't': seconds2npt( seek_time_sec )+endvar } );    ;
     },
     /** Title accessor function.
         @return the title of the source.
@@ -943,8 +906,7 @@ var embedVideo = function(element) {
 embedVideo.prototype = {
     /** The mediaElement object containing all mediaSource objects */
     media_element:null,
-    preview_mode:false,
-    slider:null,        
+    preview_mode:false,           
     ready_to_play:false, //should use html5 ready state
     load_error:false, //used to set error in case of error
     loading_external_data:false,
@@ -957,10 +919,12 @@ embedVideo.prototype = {
     seek_time_sec:0,
     base_seeker_slider_offset:null,
     onClipDone_disp:false,
-    supports:{},
+    supports:{},    
     //for seek thumb updates:
     cur_thumb_seek_time:0,
     thumb_seek_interval:null,
+    
+    seeking:false,
     //set the buffered percent:    
     bufferedPercent:0,    
     //utility functions for property values:
@@ -1203,7 +1167,6 @@ embedVideo.prototype = {
     doSeek : function( perc ){
         js_log('f:baseEmbed:doSeek:' + perc + ' to st:' + this.seek_time_sec );
         if( this.supportsURLTimeEncoding() ){
-            js_log('Seeking to ' + this.seek_time_sec + ' (local copy of clip not loaded at' + perc + '%)');
             
             //make sure this.seek_time_sec is up-to-date:
             this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );
@@ -1216,6 +1179,14 @@ embedVideo.prototype = {
         //do play in 100ms (give things time to clear) 
         setTimeout('$j(\'#' + this.id + '\').get(0).play()',100);
     },    
+    addPresTimeOffset:function(){
+       //add in the offset:        
+       if(this.seek_time_sec && this.seek_time_sec!=0){
+            this.currentTime+=this.seek_time_sec;
+       }else if(this.start_offset && this.start_offset!=0){
+           this.currentTime+=this.start_offset;
+       }    
+    },
     doEmbedHTML:function()
     {
         js_log('f:doEmbedHTML');
@@ -1244,6 +1215,8 @@ embedVideo.prototype = {
         js_log('base:onClipDone');
         //stop the clip (load the thumbnail etc) 
         this.stop();
+        this.seek_time_sec = 0;
+        this.setSliderValue(0);
         var _this = this;
         
         //if the clip resolution is < 320 don't do fancy onClipDone stuff 
@@ -1988,12 +1961,13 @@ embedVideo.prototype = {
         }else{
             //the plugin is already being displayed            
             this.paused=false; //make sure we are not "paused"
+            this.seeking=false;
         }                
         
-           $j("#mv_play_pause_button_" + this_id + ' span').removeClass('ui-icon-play').addClass('ui-icon-pause');               
+         $j("#mv_play_pause_button_" + this_id + ' span').removeClass('ui-icon-play').addClass('ui-icon-pause');               
          $j("#mv_play_pause_button_" + this_id).unbind().click(function(){                    
-                   $j('#' + this_id ).get(0).pause();
-               });
+           $j('#' + this_id ).get(0).pause();
+       });
            
     },
     load:function(){

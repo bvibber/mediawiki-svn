@@ -84,17 +84,17 @@ var javaEmbed = {
         if(this.jce){          
             try{                     
                //java reads ogg media time.. so no need to add the start or seek offset:
-               //js_log(' ct: ' + this.jce.getPlayPosition() + ' so:' + this.start_offset + ' st:' + this.seek_time_sec);                   
-               if(!this.start_offset)
-                   this.start_offset = 0;                       
-               this.currentTime = this.jce.getPlayPosition();                       
+               //js_log(' ct: ' + this.jce.getPlayPosition() );                                                   
+               this.currentTime = this.jce.getPlayPosition();            
+               this.addPresTimeOffset();
+               
+               if( this.jce.getPlayPosition() < 0){                 
+                    //probably reached clip end 
+                    this.onClipDone();
+               }                          
             }catch (e){
-                ///js_log('could not get time from jPlayer: ' + e);
-            }                
-            if( this.currentTime < 0){
-                //probably reached clip end
-                this.onClipDone();
-            }
+               js_log('could not get time from jPlayer: ' + e);
+            }                            
         }  
         //once currentTime is updated call parent_monitor 
         this.parent_monitor();
@@ -102,22 +102,22 @@ var javaEmbed = {
    /* 
     * (local cortado seek does not seem to work very well)  
     */
-    doSeek:function(perc){     
-        this.getJCE();
-        if(this.jce){           
-            js_log('java:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );        
-                  
-            if( this.supportsURLTimeEncoding() ){         
-                this.parent_doSeek(perc);   
-                //this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );                        
-               // this.jce.setParam('url', this.getURI( this.seek_time_sec ))
-                //this.jce.restart();
-            }else{             
-                //do a (genneraly broken) local seek:   
-                js_log("cortado javascript seems to always fail ... but here we go... doSeek(" + perc * this.getDuration() );     
-                this.jce.doSeek( perc * this.getDuration()  );            
-            }
-        }
+    doSeek:function(perc){         
+        js_log('java:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );        
+              
+        if( this.supportsURLTimeEncoding() ){         
+            this.parent_doSeek(perc);   
+            //this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );                        
+           // this.jce.setParam('url', this.getURI( this.seek_time_sec ))
+            //this.jce.restart();
+        }else{
+            this.getJCE();
+            if(this.jce){                     
+               //do a (genneraly broken) local seek:   
+               js_log("cortado javascript seems to always fail ... but here we go... doSeek(" + perc * this.getDuration() );     
+               this.jce.doSeek( perc * this.getDuration()  );
+            }            
+        }        
     },
     //get java cortado embed object
     getJCE:function(){        

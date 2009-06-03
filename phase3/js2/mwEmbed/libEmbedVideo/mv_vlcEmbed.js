@@ -56,8 +56,8 @@ var vlcEmbed = {
             this.vlc.style.height=this.height;       
             this.vlc.playlist.items.clear();
             //@@todo if client supports seeking no need to send seek_offset to URI
-            js_log('vlc play::' + this.media_element.selected_source.getURI( this.seek_time_sec ));              
-            var itemId = this.vlc.playlist.add( this.media_element.selected_source.getURI( this.seek_time_sec ) );
+            js_log('vlc play::' + this.getSrc() );              
+            var itemId = this.vlc.playlist.add( this.getSrc() );
             if( itemId != -1 ){
                 //play
                 this.vlc.playlist.playItem(itemId);
@@ -84,8 +84,9 @@ var vlcEmbed = {
     //disable local seeking (while we don't know what we have avaliable)
     doSeek : function(perc){
         if( this.supportsURLTimeEncoding() ){
-            this.parent_doSeek();
+            this.parent_doSeek(perc);
         }else if( this.vlc ) {
+            this.seeking=true;
             js_log("do vlc http seek to: " + perc)
             if( (this.vlc.input.state == 3) && (this.vlc.input.position != perc) )
             {
@@ -130,8 +131,6 @@ var vlcEmbed = {
                 {
                     // current media has stopped 
                     this.onStop();
-                    //assume we reached the end: (since it was not a js call to stop) 
-                       this.onClipDone();
                 }
                 else if( newState == 1 )
                 {
@@ -182,14 +181,8 @@ var vlcEmbed = {
         this.onPlaying();        
     },
     liveFeedRoll: 0,
-    onPlaying: function(){
-        if(this.seek_time_sec != 0 && !this.supportsURLTimeEncoding() )
-        {                
-            js_log('Seeking to ' + this.seek_time_sec);
-            this.vlc.input.time = this.seek_time_sec * 1000;
-            this.vlc.input.rate=1.0;
-            this.seek_time_sec = 0;            
-        }
+    onPlaying: function(){        
+        this.seeking=false;
         //for now trust the duration from url over vlc input.length
         if( !this.getDuration() && this.vlc.input.length > 0 )
         {
@@ -219,7 +212,8 @@ var vlcEmbed = {
    },
    onStop: function(){    
        js_log('vlc:onStop:');
-       this.onClipDone();
+       if(!this.seeking)
+          this.onClipDone();
     },
    /* js hooks/controls */
     play : function(){
@@ -244,7 +238,8 @@ var vlcEmbed = {
         js_log(this.vlc);
         if(typeof this.vlc != 'undefined' ){
             if(typeof this.vlc.playlist != 'undefined'){
-                this.vlc.playlist.stop();
+                //dont' stop (issues all the plugin-stop actions) 
+                //this.vlc.playlist.stop();
                 if( this.monitorTimerId != 0 )
                 {
                     clearInterval(this.monitorTimerId);

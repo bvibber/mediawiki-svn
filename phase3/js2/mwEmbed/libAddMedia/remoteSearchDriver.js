@@ -21,6 +21,7 @@ loadGM({
         "rsd_layout" : "Layout:",
         "rsd_resource_edit" : "Edit Resource: $1",
         "resource_description_page": "Resource Description Page",
+        "rsd_local_resource_title": "Local Resource Title",
         
         "cc_title": "Creative Commons",
         "cc_by_title": "Attribution",
@@ -518,7 +519,7 @@ remoteSearchDriver.prototype = {
         var _this = this;    
         mv_set_loading('#tab-upload');
         
-        //todo @this
+        //todo include firefogg support: 
         mvJsLoader.doLoad( {'mvUploader': 'libAddMedia/mvClipEdit.js'},function(){                
             _this.cUpLoader = new mvUploader({
                     'target_div': '#tab-upload',
@@ -1153,8 +1154,9 @@ remoteSearchDriver.prototype = {
                         
                         $j('#rsd_resource_import').remove();//remove any old resource imports
                         //@@ show user dialog to import the resource
-                        $j( _this.target_container ).append('<div id="rsd_resource_import" '+ 
-                        'style="position:absolute;top:50px;left:50px;right:50px;bottom:50px;background-color:#FFF;border:solid thick red;z-index:3">' +
+                        $j( _this.target_container ).append('<div id="rsd_resource_import" '+
+                        'class="ui-state-highlight ui-widget-content ui-state-error" ' +  
+                        'style="position:absolute;top:50px;left:50px;right:50px;bottom:50px;z-index:5">' +
                             '<h3 style="color:red">Resource: <span style="color:black">' + rObj.title + '</span> needs to be imported</h3>'+
                                 '<div id="rsd_preview_import_container" style="position:absolute;width:50%;bottom:0px;left:0px;overflow:auto;top:30px;">' +
                                     rObj.pSobj.getEmbedHTML( rObj, {'max_height':'200','only_poster':true} )+ //get embedHTML with small thumb: 
@@ -1202,10 +1204,12 @@ remoteSearchDriver.prototype = {
                         $j(_this.target_container + ' .rsd_import_doimport').click(function(){                            
                 			//check import mode:
                 			if(_this.import_url_mode=='form'){
-                				_this.doImportSpecialPage();
+                				_this.doImportSpecialPage( rObj );
+                			}else if( _this.import_url_mode=='api'){
+                				_this.doImportAPI( rObj );
                 			}else{
-                				_this.doImportAPI();
-                			}                                                    
+                			    js_log("Error: import mode is not form or API (can not copy asset)");
+                			}             
                         });
                         $j( _this.target_container + ' .rsd_import_acancel').click(function(){
                             $j('#rsd_resource_import').fadeOut("fast",function(){
@@ -1217,10 +1221,28 @@ remoteSearchDriver.prototype = {
             );                                                    
         }
     },
-    doImportAPI:function(){
-    	
+    doImportAPI:function(rObj, cir_callback){
+        var _this = this;
+        
+        mvJsLoader.doLoad( {
+            'mvBaseUploadInterface': 'libAddMedia/mvBaseUploadInterface.js'
+        },function(){      
+        	//initicate a download similar to url copy:
+        	myUp = new mvBaseUploadInterface({
+        	    'api_url' : _this.local_wiki_api_url 
+        	});
+        	myUp.doHttpUpload({
+        	    'url'       : rObj.src,
+        	    'filename'  : rObj.target_resource_title,
+        	    'comment'   : $j('#rsd_import_ta').val()
+        	});
+        });    	        	
     },
-    doImportSpecialPage:function(){
+    /**
+     * doImportSpecialPage
+     * can be depricated once we support upload api support is widespred. 
+     */
+    doImportSpecialPage:function(rObj, cir_callback){
     	 //get an edittoken: 
         do_api_req( {
             'data':    {    'action':'query',
@@ -1246,10 +1268,10 @@ remoteSearchDriver.prototype = {
                         js_log('got token for new page:' +editToken);                                            
                         var postVars = {
                             'wpSourceType'        :'web',
-                            'wpUploadFileURL'    : rObj.src,
-                            'wpDestFile'        : rObj.target_resource_title,
-                            'wpUploadDescription': $j('#rsd_import_ta').val(),
-                            'wpWatchthis'        :  $j('#wpWatchthis').val(),        
+                            'wpUploadFileURL'     : rObj.src,
+                            'wpDestFile'          : rObj.target_resource_title,
+                            'wpUploadDescription' : $j('#rsd_import_ta').val(),
+                            'wpWatchthis'         : $j('#wpWatchthis').val(),        
                             'wpUpload'            : 'Upload file'                                                                                                                                                                    
                         }
                         //set to uploading:                                                                                             
