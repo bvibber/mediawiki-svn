@@ -22,70 +22,53 @@ class SmoothGalleryParser {
 
 	function parseArguments( $argv ) {
 		// Parse arguments, set defaults, and do sanity checks
+		$this->argumentArray = array( "height" => "300px", "width" => "400px", "carousel" => true, "timed" => false,
+						"delay" => "9000", "showarrows" => true, "showinfopane" => true,
+						"slideinfozoneslide" => true, "slideinfozoneopacity" => "0.7", "fallback" => "gallery",
+						"nolink" => false );
+						
 		if ( isset( $argv["height"] ) && is_numeric( $argv["height"] ) ) {
 			$this->argumentArray["height"] = $argv["height"] . "px";
-		} else {
-			$this->argumentArray["height"] = "300px";
 		}
 
 		if ( isset( $argv["width"] ) && is_numeric( $argv["width"] ) ) {
 			$this->argumentArray["width"] = $argv["width"] . "px";
-		} else {
-			$this->argumentArray["width"] = "400px";
 		}
 
 		if ( isset( $argv["showcarousel"] ) && $argv["showcarousel"] == "false" ) {
 			$this->argumentArray["carousel"] = false;
-		} else {
-			$this->argumentArray["carousel"] = true;
 		}
 
 		if ( isset( $argv["timed"] ) && $argv["timed"] == "true" ) {
 			$this->argumentArray["timed"] = true;
-		} else {
-			$this->argumentArray["timed"] = false;
 		}
 
 		if ( isset( $argv["delay"] ) && is_numeric( $argv["delay"] ) ) {
 			$this->argumentArray["delay"] = $argv["delay"];
-		} else {
-			$this->argumentArray["delay"] = "9000";
 		}
 
 		if ( isset( $argv["showarrows"] ) && $argv["showarrows"] == "false" ) {
 			$this->argumentArray["showarrows"] = false;
-		} else {
-			$this->argumentArray["showarrows"] = true;
 		}
 
 		if ( isset( $argv["showinfopane"] ) && $argv["showinfopane"] == "false" ) {
 			$this->argumentArray["showinfopane"] = false;
-		} else {
-			$this->argumentArray["showinfopane"] = true;
 		}
 
 		if ( isset( $argv["slideinfozoneslide"] ) && $argv["slideinfozoneslide"] == "false" ) {
 			$this->argumentArray["slideinfozoneslide"] = false;
-		} else {
-			$this->argumentArray["slideinfozoneslide"] = true;
 		}
 
 		if ( isset( $argv["slideinfozoneopacity"] ) && is_numeric( $argv["slideinfozoneopacity"] ) ) {
 			$this->argumentArray["slideinfozoneopacity"] = $argv["slideinfozoneopacity"];
-		} else {
-			$this->argumentArray["slideinfozoneopacity"] = "0.7";
 		}
 
 		if ( isset( $argv["fallback"] ) ) {
 			$this->argumentArray["fallback"] = htmlspecialchars( $argv["fallback"] );
-		} else {
-			$this->argumentArray["fallback"] = "gallery";
 		}
 
 		if ( isset( $argv["nolink"] ) && $argv["nolink"] == "true" ) {
 			$this->argumentArray["nolink"] = true;
-		} else {
-			$this->argumentArray["nolink"] = false;
 		}
 	}
 
@@ -143,10 +126,12 @@ class SmoothGalleryParser {
 			$img_arr = explode( "|", $line, 2 );
 			$img = $img_arr[0];
 			if ( count( $img_arr ) > 1 ) {
+				SmoothGallery::debug( 'sgallery line has description: ' . $img_arr[1] );
 				$img_desc = $img_arr[1];
 			} else {
 				$img_desc = '';
 			}
+			SmoothGallery::debug( 'sgallery line as img_arr: ', $img_arr );
 
 			if ( $wgSmoothGalleryAllowExternal &&
 			     ( ( strlen( $img ) >= 7 && substr( $img, 0, 7 ) == "http://" ) ||
@@ -178,20 +163,13 @@ class SmoothGalleryParser {
 			$ns = $title->getNamespace();
 
 			if ( $ns == NS_IMAGE ) {
-				if ( $img_desc != '' ) {
-					$galleryArray = $this->parseImage( $title, $parser, $galleryArray, true );
-					if ( isset( $galleryArray["descriptions"]["$title"] ) ) {
-						$galleryArray["descriptions"]["$title"] = $img_desc;
-					}
-				} else {
-					$galleryArray = $this->parseImage( $title, $parser, $galleryArray );
-				}
+				$galleryArray = $this->parseImage( $title, $parser, $galleryArray, $img_desc );
 			} else if ( $ns == NS_CATEGORY ) {
 				// list images in category
 				$cat_images = $this->smoothGalleryImagesByCat( $title );
 				if ( $cat_images ) {
 					foreach ( $cat_images as $title ) {
-						$galleryArray = $this->parseImage( $title, $parser, $galleryArray );
+						$galleryArray = $this->parseImage( $title, $parser, $galleryArray, '' );
 					}
 				}
 			}
@@ -200,7 +178,7 @@ class SmoothGalleryParser {
 		return $galleryArray;
 	}
 
-	function parseImage( $title, $parser, $galleryArray, $getDescription = false ) {
+	function parseImage( $title, $parser, $galleryArray, $description ) {
 		global $wgUser;
 		global $wgSmoothGalleryThumbHeight, $wgSmoothGalleryThumbWidth;
 
@@ -258,27 +236,25 @@ class SmoothGalleryParser {
 			}
 		}
 
-		$fulldesc = '';
-
 		if ( $this->argumentArray["showinfopane"] ) {
-			if ( $getDescription ) {
+			if ( $description == '' ) {
 				// Load the image page from the database with the provided title from
 				// the image object
 				$db = wfGetDB( DB_SLAVE );
 				$img_rev = Revision::loadFromTitle( $db, $title );
 
 				// Get the text from the image page's description
-				$fulldesc = $img_rev->getText();
+				$description = $img_rev->getText();
 			}
 
 			// convert wikitext to HTML
 			// TODO: find out why this doesn't work with special pages
 			if ( $parser ) {
-				$pout = $parser->recursiveTagParse( $fulldesc, $title, $parser->mOptions, true );
-				$fulldesc =  strip_tags( $pout );
+				$pout = $parser->recursiveTagParse( $description, $title, $parser->mOptions, true );
+				$description =  strip_tags( $pout );
 				# $fulldesc =  strip_tags( $pout->getText() );
 			} else { // fall back to HTML-escaping
-				$fulldesc = htmlspecialchars( $fulldesc );
+				$description = htmlspecialchars( $description );
 			}
 		}
 
@@ -289,7 +265,7 @@ class SmoothGalleryParser {
 
 		# We need the following for the image's div
 		$imageArray["heading"] = $skin->makeKnownLinkObj( $img_obj->getTitle(), $img_obj->getName() );
-		$imageArray["description"] = $fulldesc;
+		$imageArray["description"] = $description;
 		$imageArray["full_url"] = $title->getFullURL();
 		$imageArray["view_url"] = $img_obj->getViewURL();
 		$imageArray["full_thumb_url"] = $full_thumb;

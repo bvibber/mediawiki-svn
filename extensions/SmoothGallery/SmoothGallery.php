@@ -35,7 +35,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SmoothGallery parser extension',
-	'version'        => '1.1d',
+	'version'        => '1.1e',
 	'author'         => 'Ryan Lane',
 	'description'    => 'Allows users to create galleries with images that have been uploaded. Allows most options of SmoothGallery',
 	'descriptionmsg' => 'smoothgallery-desc',
