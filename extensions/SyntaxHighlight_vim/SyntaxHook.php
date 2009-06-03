@@ -33,12 +33,7 @@ function wfSyntaxHook() {
 
 		public function hook( $in, array $argv ) {
 			$in = ltrim( $in, "\n" );
-
-			$format = $colorscheme = null;
-			if( isset( $argv['lang'] ) )        { $format      = $argv['lang']; }
-			if( isset( $argv['colorscheme'] ) ) { $colorscheme = $argv['colorscheme']; }
-
-			$syntax = new Syntax( $in, $format, $colorscheme );
+			$syntax = new Syntax( $in );
 
 			return $syntax->getOut();
 		}
