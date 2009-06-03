@@ -47,7 +47,7 @@ $wdMessages['en'] = array(
 	'ow_importtsv_title1'					=> 'Import TSV',
 	'ow_importtsv_title2'					=> 'Import definitions and translations',
 	'ow_importtsv_header'					=> '<p>Import definitions and translations from a tab delimited text file that you may have exported from OpenOffice.org, Excel or other spreadsheet software.</p>
-<p>The format of the file must be the same as the files exported on the [[Special:ExportTSV]] page. If you\'ve changed the column names, the import will fail. If you\'ve changed the id or the defining expression of any defined meaning, that line will be ignored. If you\'ve added columns, they must be in the form \'definitions_iso\' or \'translations_iso\', where iso is an ISO 639-3 language code.</p>
+<p>The format of the file must be the same as the files exported on the [[Special:ExportTSV|ExportTSV]] page. If you\'ve changed the column names, the import will fail. If you\'ve changed the id or the defining expression of any defined meaning, that line will be ignored. If you\'ve added columns, they must be in the form \'definitions_iso\' or \'translations_iso\', where iso is an ISO 639-3 language code.</p>
 <p>If the \'test run\' box is checked, any actions that would be taken are reported, but no changes are actually made. You are encouraged to do a test run before you do an actual import.</p>',
 	'ow_importtsv_not_allowed'				=> 'You do not have permission to do a TSV import.',
 	'ow_importtsv_importing'				=> 'Importing TSV data',
