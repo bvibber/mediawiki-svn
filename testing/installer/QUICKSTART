@@ -27,8 +27,10 @@ Quickstart guide:
 6. Full path syntax
 
 7. Common problems
+7.0 After solving a problem
 7.1 Database problems
 7.2 mixing up instances_dir with base_scriptpath
+
 
 
 ===============
@@ -59,10 +61,9 @@ This system *should* work on most unix-like systems. I've only tested on linuxes
 		base_scriptpath="/instances"
 	and your browser will access wikis from:
 		http://www.johndoesserver.com/~revisions
-	once again,  Options Indexes is your friend
-	
+	once again,  Options Indexes is your friend	
 
-4. mkdir ~/public_html/revisions   (if you are indeed working in your homedir)
+3. mkdir ~/public_html/revisions   (if you are indeed working in your homedir)
 	or at any rate, ensure that the directory you are going to put mediawiki
 	exists, and is accessible to apache
 
@@ -71,9 +72,9 @@ This system *should* work on most unix-like systems. I've only tested on linuxes
 -----------
 1.2 TESTING
 ------------
-5. To get testing working
+4. To get testing working
 ./installer.py install toolkit:pywikipedia 
-6. also, in exttest, copy settings.py.example to settings.py, and edit.
+5. also, in exttest, copy settings.py.example to settings.py, and edit.
 
 testing can still use a lot of coding work.
 
@@ -311,6 +312,17 @@ limit n         limits output to at most n items (analogous to the sql command o
 7. Common problems
 ==================
 
+----------------------------
+7.0 After solving a problem
+----------------------------
+
+If you solved a problem with the installer itself while
+installing, the install will likely not have gone off
+well.
+
+Uninstall the mediawiki instance you were working on,
+and take it from the top.
+
 -----------------------------
 7.1 Database problems
 -----------------------------
@@ -320,7 +332,7 @@ Symptoms:
 * "Cannot access database. (Is your settings.py correct?)"
 
 Check to make sure your settings.py is set up correctly,
-then try again.
+then try again. (Are your database username and password correct?)
 
 if you get a
 * "Failed to create admin user on ..."

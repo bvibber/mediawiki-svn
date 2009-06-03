@@ -29,6 +29,9 @@ trunkdir="http://svn.wikimedia.org/svnroot/mediawiki/trunk"
 extensionssubdir="extensions"
 extensionsdir=trunkdir+"/"+extensionssubdir
 
+#how to call php
+phpcommand="php"
+
 # where to install diverse revisions
 # (Let's guess we want to use the typical public_html, you'll still need to make 
 # the directory "revisions" though!)

@@ -199,6 +199,22 @@ def isanint(value):
 		return False
 	return True
 
+def sqldotphp(instancedir,sqlfilename):
+	"""use the maintenance/sql.php included with a particular mediawiki instance to run a sql file. instancedir is the directory containing the mediawiki instance (eg. /home/pete/public_html/revisions/petesfirstwiki) , sqlfilename is the name of the file to run. """
+	if not os.path.exists(sqlfilename):
+		raise Exception("File '"+sqlfilename+"' not found.")
+	sqldotphp=os.path.join(instancedir,"maintenance","sql.php")
+	if not os.path.exists(sqldotphp):
+		raise Exception("sql.php file not found at "+sqldotphp+"'.")
+	
+	command=settings.phpcommand+" "+sqldotphp+" "+sqlfilename
+	rv=os.system(command)>>8
+	if rv:
+		raise Exception("Failed to execute "+command)
+
+	
+
+
 if __name__=="__main__":
 	print "some tests for the utils module"
 	

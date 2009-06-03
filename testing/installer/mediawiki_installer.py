@@ -163,6 +163,7 @@ class Mediawiki_Installer(Installation_System):
 
 
 #TODO: use this method everywhere a database name is requested
+# REFACTOR: dbname now in installation_system.py 
 def dbname(installer_name):
 	"""based on the name of the installer/instance, figure out what the name of the
 	database is. Right now we just use the name of the installer as the name of the database,
