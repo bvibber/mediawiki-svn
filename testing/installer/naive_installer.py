@@ -50,7 +50,7 @@ class Naive_Installer(Download_Installer):
 		schema_path=os.path.join(destination_dir, installer_name, "schema.sql")
 		if os.path.exists(schema_path):
 			try:
-				installer_util.sqldotphp(self.instancedir,schema_path)
+				installer_util.sqldotphp(self.instancedir(),schema_path)
 			except Exception,e:
 				raise Naive_Installer_Exception("_setup_schema: While installing, I found a schema.sql and tried to use it, but there was some issue with it.\n",e)
 
