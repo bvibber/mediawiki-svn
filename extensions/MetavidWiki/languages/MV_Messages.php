@@ -472,7 +472,7 @@ Jump to stream view: $2',
 	'mv_mang_layers_title' => 'Manage the layer display set for the current stream',
 
 	# msg for bots and maintance
-	'mv_protect_source_material' => 'Original source material protected from edits'
+	'mv_protect_source_material' => 'Original source material protected from edits',
 
 	# Rights related messages
 	'right-mv_delete_mvd'  => 'Delete MetaVid metadata',
