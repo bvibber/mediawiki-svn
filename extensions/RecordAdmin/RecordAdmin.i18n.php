@@ -51,7 +51,7 @@ $messages['en'] = array(
 	'recordadmin-modified' => 'Modified',
 	'recordadmin-actions' => 'Actions',
 	'recordadmin-select' => 'Select',
-	'recordadmin-needscontent' => 'Add content…',
+	'recordadmin-needscontent' => 'Add content...',
 	'right-recordadmin' => 'Find and edit record pages',
 );
 
@@ -202,7 +202,7 @@ $messages['be-tarask'] = array(
 	'recordadmin-created' => 'Створаны',
 	'recordadmin-modified' => 'Абноўлены',
 	'recordadmin-actions' => 'Дзеяньні',
-	'recordadmin-needscontent' => 'Дадаць зьмест…',
+	'recordadmin-needscontent' => 'Дадаць зьмест...',
 	'right-recordadmin' => 'пошук і рэдагаваньне старонак запісаў',
 );
 
@@ -309,7 +309,7 @@ $messages['de'] = array(
 	'recordadmin-created' => 'Erstellt',
 	'recordadmin-modified' => 'Modifiziert',
 	'recordadmin-actions' => 'Aktionen',
-	'recordadmin-needscontent' => 'Inhalt hinzufügen …',
+	'recordadmin-needscontent' => 'Inhalt hinzufügen ...',
 	'right-recordadmin' => 'Finde und Editiere Aufzeichnungsseiten',
 );
 
@@ -732,7 +732,7 @@ $messages['ia'] = array(
 	'recordadmin-created' => 'Create',
 	'recordadmin-modified' => 'Modificate',
 	'recordadmin-actions' => 'Actiones',
-	'recordadmin-needscontent' => 'Adder contento…',
+	'recordadmin-needscontent' => 'Adder contento...',
 	'right-recordadmin' => 'Cercar e modificar paginas de datos',
 );
 
@@ -850,7 +850,7 @@ $messages['ksh'] = array(
 	'recordadmin-created' => 'Neu aanjelaat',
 	'recordadmin-modified' => 'Jeändert',
 	'recordadmin-actions' => 'Axjohne',
-	'recordadmin-needscontent' => 'Enhalld dobei donn&nbsp;…',
+	'recordadmin-needscontent' => 'Enhalld dobei donn&nbsp;...',
 	'right-recordadmin' => 'Datesätz fenge un ändere',
 );
 
@@ -879,7 +879,7 @@ $messages['lb'] = array(
 	'recordadmin-created' => 'Ugeluecht',
 	'recordadmin-modified' => 'Geännert',
 	'recordadmin-actions' => 'Aktiounen',
-	'recordadmin-needscontent' => 'Inhalt derbäisetzen …',
+	'recordadmin-needscontent' => 'Inhalt derbäisetzen ...',
 );
 
 /** Limburgish (Limburgs)
@@ -946,7 +946,7 @@ Categoriseer de gegevenssjablonen [[:$1|$1]].',
 	'recordadmin-created' => 'Aangemaakt',
 	'recordadmin-modified' => 'Gewijzigd',
 	'recordadmin-actions' => 'Acties',
-	'recordadmin-needscontent' => 'Inhoud toevoegen…',
+	'recordadmin-needscontent' => 'Inhoud toevoegen...',
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
 );
 
@@ -1419,7 +1419,7 @@ $messages['vi'] = array(
 	'recordadmin-viewlink' => 'xem',
 	'recordadmin-editlink' => 'sửa đổi',
 	'recordadmin-actions' => 'Tác động',
-	'recordadmin-needscontent' => 'Thêm nội dung…',
+	'recordadmin-needscontent' => 'Thêm nội dung...',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -236,7 +236,7 @@ $messages['cs'] = array(
 	'imstatus_gtalk_height' => 'výška okraje v pixelech',
 	'imstatus_gtalk_width' => 'šířka okraje v pixelech',
 	'imstatus_icq_id' => 'váš ICQ identifikátor',
-	'imstatus_icq_style' => 'číslo v rozsahu 0-26 (ano, je dostupných 27 stylů…).',
+	'imstatus_icq_style' => 'číslo v rozsahu 0-26 (ano, je dostupných 27 stylů...).',
 	'imstatus_live_code' => 'váš identifikátor na webu Live Messenger',
 	'imstatus_live_get_code' => 'váš identifikátor na webu Live Messenger: <strong>toto není vaše emailová adresa</strong>, musíte si ji vytvořit <a href="$1">ve svých nastaveních Live Messenger</a>.
 Indentifikítor, který musíte zadat, jsou písmena a číslice mezi $2 a $3.',
@@ -269,7 +269,7 @@ $messages['de'] = array(
 	'imstatus_gtalk_height' => 'Höhe der Box in Pixel.',
 	'imstatus_gtalk_width' => 'Breite der Box in Pixel.',
 	'imstatus_icq_id' => 'deine ICQ-UIN',
-	'imstatus_icq_style' => 'eine Zahl zwischen 0 und 26 (ja, es gibt 27 verschiedene Stile …).',
+	'imstatus_icq_style' => 'eine Zahl zwischen 0 und 26 (ja, es gibt 27 verschiedene Stile ...).',
 	'imstatus_live_code' => 'deine Live Messenger Website-ID',
 	'imstatus_live_get_code' => 'deine Live Messenger Website-ID: <strong>Das ist nicht deine E-Mail-Adresse</strong>.
 Du musst dir eine in den <a href="$1">Live Messenger Optionen</a> erstellen.
@@ -499,7 +499,7 @@ $messages['gsw'] = array(
 	'imstatus_gtalk_height' => 'Hechi vum Chaschte Pixel.',
 	'imstatus_gtalk_width' => 'Breiti vum Chaschte in Pixel.',
 	'imstatus_icq_id' => 'Dyy ICQ-UIN',
-	'imstatus_icq_style' => 'e Zahl zwische 0 un 26 (jo, s git 27 verschideni Stil …).',
+	'imstatus_icq_style' => 'e Zahl zwische 0 un 26 (jo, s git 27 verschideni Stil ...).',
 	'imstatus_live_code' => 'Dyy Live Messenger Website-ID',
 	'imstatus_live_get_code' => 'Dyy Live Messenger Website-ID: <strong>Des isch nit Dyy E-Mail-Adräss</strong>.
 Du muesch Di eini in dr <a href="$1">Live Messenger Optione</a> aalege.
@@ -633,7 +633,7 @@ $messages['ja'] = array(
 	'imstatus_gtalk_height' => 'ボックスの高さ（ピクセル単位）',
 	'imstatus_gtalk_width' => 'ボックスの幅（ピクセル単位）',
 	'imstatus_icq_id' => 'あなたのICQ ID',
-	'imstatus_icq_style' => '0から26の範囲の数（つまり、27の有効なスタイルが存在します…）',
+	'imstatus_icq_style' => '0から26の範囲の数（つまり、27の有効なスタイルが存在します...）',
 	'imstatus_live_code' => 'あなたのLive MessengerウェブサイトのID',
 	'imstatus_live_get_code' => 'あなたのLiveメッセンジャー・ウェブサイトのID: <strong>これは、あなたのeメールアドレスではなく</strong>、 <a href="$1">あなたのLiveメッセンジャーのオプション</a>で取得する必要があります。
 必要とされるIDは、"$2"と"$3"の間の文字と数字からなります。',
@@ -1170,7 +1170,7 @@ $messages['vi'] = array(
 	'imstatus_gtalk_height' => 'chiều cao của hộp (pixel).',
 	'imstatus_gtalk_width' => 'chiều ngang của hộp (pixel).',
 	'imstatus_icq_id' => 'ID của bạn trên ICQ',
-	'imstatus_icq_style' => 'số trong dãy từ 0 đến 26 (có 27 kiểu chứ…).',
+	'imstatus_icq_style' => 'số trong dãy từ 0 đến 26 (có 27 kiểu chứ...).',
 	'imstatus_live_code' => 'ID website của bạn trên Live Messenger',
 	'imstatus_live_get_code' => 'ID website của bạn trên Live Messenger: <strong>đây không phải là địa chỉ thư điện tử của bạn</strong>! Bạn cần phải tạo ra ID ở trang <a href="$1">tùy chọn Live Messenger</a>. Bạn cần cho vào ID có các số và chữ từ “$2” đến “$3”.',
 	'imstatus_skype_nbstyle' => 'Chú ý: Nếu bạn chọn cùng kiểu cùng tác động, tác động của kiểu được chọn sẽ được sử dụng, thay vì tác động được chọn.',
@@ -1219,7 +1219,7 @@ $messages['zh-hans'] = array(
 	'imstatus_gtalk_height' => '箱体的高度，单位为pixel。',
 	'imstatus_gtalk_width' => '箱体的宽度，单位为pixel。',
 	'imstatus_icq_id' => '您的ICQ ID',
-	'imstatus_icq_style' => '范围从0到26（没错，一共有27种样式可供选择……）。',
+	'imstatus_icq_style' => '范围从0到26（没错，一共有27种样式可供选择...…）。',
 	'imstatus_live_code' => '您的Live Messenger网站ID',
 	'imstatus_live_get_code' => '您的Live Messenger网站ID：<strong>并不是您的电子邮件地址</strong>，您需要在<a href="$1">您的live messenger选项
 </a>中生成。
