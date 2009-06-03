@@ -24,3 +24,16 @@ div#editing-toolbar > div.group > div.tool {
 	margin: 2px;
 	cursor: pointer;
 }
+
+div#editing-toolbar > div.group > div.tool > div.tooltip {
+	display: none;
+	position: absolute;
+	padding-top: 0.125em;
+	padding-bottom: 0.125em;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+	margin-top: 22px;
+	margin-left: 4px;
+	border: solid 1px #FFFFAA;
+	background-color: #FFFFDD;
+}
