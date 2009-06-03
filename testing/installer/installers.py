@@ -43,7 +43,7 @@ def ls(args):
 	try:
 		ppath=parse_path(" ".join(args[1:]))
 	except Parse_Exception,e:
-		print e.message
+		print str(e)
 		return
 
 	try:
@@ -56,7 +56,7 @@ def ls(args):
 		elif ppath['ai']=='installed' or ppath['ai']==None: # XXX hardcoded default
 			output=ls_installed(ppath)
 	except Listing_Exception,e:
-		print e.message
+		print str(e)
 		return
 	
 	if output==None:
@@ -110,7 +110,7 @@ def ls_installed_in_system(ppath):
 	try:
 		installed=system.get_installed()
 	except Installer_Exception,e:
-		print e.message
+		print str(e)
 		return 
 
 	return installed
@@ -129,7 +129,7 @@ def ls_revisions(ppath):
 	try:
 		revisions=system.get_revisions(ppath["installer"])
 	except Installer_Exception, e:
-		raise Listing_Exception(e.message)
+		raise Listing_Exception(str(e))
 
 	return revisions
 
@@ -147,7 +147,7 @@ def ls_tags(ppath):
 	try:
 		tags=system.get_tags(ppath["installer"])
 	except TagsException, e:
-		raise Listing_Exception(e.message)
+		raise Listing_Exception(str(e))
 	
 	return tags
 
@@ -160,7 +160,7 @@ def info(args):
 	try:
 		ppath=parse_path(" ".join(args[1:]),defaults={'ai':'available'})
 	except Parse_Exception,e:
-		print e.message
+		print str(e)
 		return
 
 	if not ppath["ai"]:
@@ -176,7 +176,7 @@ def duplicate(args):
 	try:
 		mw.duplicate(args[1],args[2])
 	except Mediawiki_Installer_Exception,e:
-		print e.message
+		print str(e)
 
 
 def install(args):
@@ -189,7 +189,7 @@ def install(args):
 	try:
 		ppath=parse_path(" ".join(args[1:]), defaults={'ai':'available','system':'mediawiki'})
 	except Parse_Exception,e:
-		print e.message
+		print str(e)
 		return
 
 	if ppath["ai"]=="installed":
@@ -216,7 +216,7 @@ def install(args):
 			print "Install failed."
 
 	except Installer_Exception,e:
-		print e.message
+		print str(e)
 
 def test(args):
 	if len(args)<2:
@@ -243,7 +243,7 @@ def uninstall(args):
 	try:
 		ppath=parse_path(" ".join(args[1:]),defaults={'ai':'installed','system':'mediawiki'})
 	except Parse_Exception,e:
-		print e.message
+		print str(e)
 		return
 
 	if ppath["ai"]=="available":
@@ -262,7 +262,7 @@ def uninstall(args):
 		else:
 			print "Uninstall failed."
 	except Installer_Exception,e:
-		print e.message
+		print str(e)
 		return 
 
 
