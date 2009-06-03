@@ -55,9 +55,18 @@ class Naive_Installer(Download_Installer):
 				raise Naive_Installer_Exception("_setup_schema: While installing, I found a schema.sql and tried to use it, but there was some issue with it.\n",e)
 
 	def _setup_update(self):
+
+		return	# XXX This method is a work in progress. I don't want to hold up users,
+			# so I'll upload to svn like this
 		if not self.instancedir():
 			raise Naive_Installer_Exception("_setup_update:Internal Error: Could not determine instancedir")
-		command=settings.phpcommand+os.path.join(self.instancedir,maintenance,"update.php")
+
+		update_script=os.path.join(self.instancedir(),"maintenance","update.php")
+
+		if not os.path.exists(update_script):
+			raise Naive_Installer_Exception("_setup_update:While installing, could not find update.php at: "+command)
+
+		command=settings.phpcommand+" "+update_script
 		rv=os.system(command)>>8
 		if rv:
 			raise Naive_Installer_Exception("_setup_update:While installing, I tried to run the instance's maintenance/update.php, but some issue occurred.")
