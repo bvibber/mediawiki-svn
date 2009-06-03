@@ -291,9 +291,9 @@ class DeleteBatchForm {
 			return;
 		}
 		if( $this->mPage ) {
-			$wgOut->setSubTitle( wfMsg( 'deletebatch-processing', wfMsg('deletebatch-from-form') ) );
+			$wgOut->setSubTitle( wfMsg( 'deletebatch-processing-from-form') );
 		} else {
-			$wgOut->setSubTitle( wfMsg( 'deletebatch-processing', wfMsg('deletebatch-from-file') ) );
+			$wgOut->setSubTitle( wfMsg( 'deletebatch-processing-from-file') );
 		}
 		$this->deleteBatch( $this->mUser, $this->mPage, $this->mFileTemp );
 	}
