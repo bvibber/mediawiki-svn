@@ -88,7 +88,8 @@ var javaEmbed = {
 			   this.currentTime = this.jce.getPlayPosition();			
 			   this.addPresTimeOffset();
 			   
-			   if( this.jce.getPlayPosition() < 0){				 
+			   if( this.jce.getPlayPosition() < 0){
+			   		js_log('pp:'+this.jce.getPlayPosition());				 
 					//probably reached clip end 
 					this.onClipDone();
 			   }						  

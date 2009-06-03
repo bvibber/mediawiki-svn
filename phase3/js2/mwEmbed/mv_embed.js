@@ -368,8 +368,9 @@ var mvJsLoader = {
 	 */
 	jQueryCheck:function(callback){	
 		var _this = this;
+		//load jquery
 		_this.doLoad({
-			 'window.jQuery'		:'jquery/jquery-1.3.2.js'
+			 'window.jQuery'	:'jquery/jquery-1.3.2.js'			 
 		},function(){
 			_global['$j'] = jQuery.noConflict();
 			//set up ajax to not send dynamic urls for loading scripts (we control that with the scriptLoader) 
@@ -389,19 +390,36 @@ var mvJsLoader = {
 		var _this = this;
 		//issue a style sheet request get both mv_embed and jquery styles: 
 		loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-		 loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');		 
-		//make sure we have jQuery		
+		loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
+				 
+		//make sure we have jQuery
 		_this.jQueryCheck(function(){
-			_this.doLoad({
-				'embedVideo'	  : 'libEmbedVideo/mv_baseEmbed.js',
-				'$j.ui'		   : 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-				'$j.cookie'	   : 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',				
-				'$j.ui.slider'	: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js'
-				},function(){
-					//set up embedTypes (load from cookie if possible)		 
-					embedTypes.init();
-					js_log('embedVideo libs ready run callback:: ');			
-					callback();							
+			baseReq = {
+				'$j.ui'		   	: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+				'embedVideo'    : 'libEmbedVideo/mv_baseEmbed.js',				
+				'$j.cookie'	    : 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js'																
+			};			
+			//IE loads things out of order running j.slider before j.ui is ready
+			//load ui depenent scripts in a second request:
+			if($j.browser.msie){
+				secReq = {
+					'$j.ui.slider'	: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js'	
+				}
+			}else{
+				secReq = false;
+				baseReq['$j.ui.slider'] =  'jquery/' + jQueryUiVN + '/ui/ui.slider.js';
+			}		 				
+			_this.doLoad(baseReq,function(){	
+					if(!secReq){
+						embedTypes.init();					
+						callback();												
+					}else{			
+						//else IE load in stage: 
+						_this.doLoad(secReq,function(){			 
+							embedTypes.init();										
+							callback();	
+						});	
+					}		
 				});
 		});
 	},	
@@ -1100,7 +1118,7 @@ function js_log(string){
 	 /*
 	  * IE and non-firebug debug:
 	  */
-	 /*var log_elm = document.getElementById('mv_js_log');
+	 var log_elm = document.getElementById('mv_js_log');
 	 if(!log_elm){
 		 document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + 
 					 '<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:10px;">'+
@@ -1111,7 +1129,7 @@ function js_log(string){
 	 }
 	 if(log_elm){
 		 log_elm.value+=string+"\n";
-	 }*/
+	 }
   }
   return false;
 }
