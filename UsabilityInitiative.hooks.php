@@ -16,19 +16,24 @@ class UsabilityInitiativeHooks {
 	 */
 	public static function addJS( $out ) {
 		global $wgScriptPath, $wgJsMimeType;
-		// Add javascript resources to document
-		$out->addScript(
-			Xml::element(
-				'script',
-				array(
-					'type' => $wgJsMimeType,
-					'src' => $wgScriptPath .
-						'/extensions/UsabilityInitiative/Resources/jquery.js'
-				),
-				'',
-				false
-			)
+		$scripts = array(
+			'/extensions/UsabilityInitiative/Resources/jquery.js',
+			'/extensions/UsabilityInitiative/Resources/jquery.textSelection.js',
 		);
+		foreach ( $scripts as $script ) {
+			// Add javascript resources to document
+			$out->addScript(
+				Xml::element(
+					'script',
+					array(
+						'type' => $wgJsMimeType, 
+						'src' => $wgScriptPath . $script
+					),
+					'',
+					false
+				)
+			);
+		}
 		// Continue
 		return true;
 	}
