@@ -159,7 +159,7 @@
 			$stream_name = MV_Stream::getStreamNameFromId( $mvd->stream_id );
 			
 			$lTitle = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
-			$loginLink = $sk->makeLinkObj( $lTitle, wfMsg( 'login' ), 'returnto=' . MWNamespace::getCanonicalName( MV_NS_STREAM ) . ':' . $stream_name );
+			$loginLink = $lTitle->getFullURL('returnto=' . MWNamespace::getCanonicalName( MV_NS_STREAM ) . ':' . $stream_name );			
 								
 			$wgOut->addHTML( wfMsg( 'mv_user_cant_edit', $loginLink, $cancel ) );
 			$wgOut->readOnlyPage(  $this->mArticle->getContent(), true, $permErrors );
