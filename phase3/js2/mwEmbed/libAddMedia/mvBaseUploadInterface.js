@@ -15,7 +15,7 @@ loadGM({
 	"mv_upload_done" 	  : "Your upload <i>should be</i> accessible <a href=\"$1\">here</a>",
 	"upload-unknown-size": "Unknown size",	
 	
-	"mv-canecl-confim"     : "Are you sure you want to cancel?",
+	"mv-canecl-confim"	 : "Are you sure you want to cancel?",
 	
 	"successfulupload" : "Successful Upload",
 	"uploaderror" : "Upload error",
@@ -31,7 +31,7 @@ loadGM({
 	"go-to-resource" : "Go to Resource Page",
 	
 	"cancel-button"  : "Cancel",	
-	"ok-button"      : "OK"
+	"ok-button"	  : "OK"
 });
  
  
@@ -186,13 +186,13 @@ mvBaseUploadInterface.prototype = {
 			mv_get_loading_img( 'left:40%;top:20%')
 		);	
 		var req = {
-		       'action'	    : 'upload',
+			   'action'		: 'upload',
 			   'url'		: $j('#wpUploadFileURL').val(),
 			   'filename'	: $j('#wpDestFile').val(),
 			   'comment' 	: $j('#wpUploadDescription').val(),
 			   'asyncdownload': true	
 		}
-		for(var i in opt){		    
+		for(var i in opt){			
 		  req[i]= opt[i];
 		}				
 		do_api_req({
@@ -273,8 +273,8 @@ mvBaseUploadInterface.prototype = {
 						)
 					);
 				}else if( data.upload['loaded'] ){		
-				    _this.updateProgress( 1 );		
-				    js_log('just have loaded (no cotent length: ' + data.upload['loaded']);
+					_this.updateProgress( 1 );		
+					js_log('just have loaded (no cotent length: ' + data.upload['loaded']);
 					//for lack of content-length requests: 
 					$j('#up-status-container').html( 
 						gM('upload-stats-fileprogres', [
@@ -292,7 +292,7 @@ mvBaseUploadInterface.prototype = {
 	},
 	processApiResult: function( apiRes ){	
 		var _this = this;			
-        js_log('processApiResult::');
+		js_log('processApiResult::');
 		//check for upload api error:
 		// {"upload":{"result":"Failure","error":"unknown-error","code":{"status":5,"filtered":"NGC2207%2BIC2163.jpg"}}}
 		if( apiRes.error || ( apiRes.upload && apiRes.upload.result == "Failure" ) ){
@@ -325,20 +325,20 @@ mvBaseUploadInterface.prototype = {
 				}		
 				var bObj = {};
 				bObj[ gM('return-to-form') ] = 	function(){
-        		        $(this).dialog('close');
-        		 };  	
+						$(this).dialog('close');
+				 };  	
 				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg, bObj);	
 			}else{
 				gMsgLoadRemote(error_code, function(){
 					js_log('send msg: ' + gM( error_code ));
 					var bObj = {};
-				    bObj[gM('return-to-form')] = function(){
-        		            $(this).dialog('close');
-        		    };
+					bObj[gM('return-to-form')] = function(){
+							$(this).dialog('close');
+					};
 					_this.updateProgressWin(  gM('uploaderror'), gM( error_code ),bObj);
-			    });		
-    			js_log("api.erorr");		
-    			return ;	
+				});		
+				js_log("api.erorr");		
+				return ;	
 			}	
 		}
 		//check for upload_session key for async upload:
@@ -353,21 +353,21 @@ mvBaseUploadInterface.prototype = {
 		}		
 		
 		if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){	
-		    var url = apiRes.upload.imageinfo.descriptionurl;
-		    //check done action: 
-		    if(_this.done_upload_cb){
-		        //close up shop: 
-		        $j('#upProgressDialog').dialog('close');	
-		        //call the callback: 	        
-		        _this.done_upload_cb( url );
-		    }else{		   
-    		    var bObj = {};
-    		    bObj[ gM('go-to-resource') ] = function(){
-    			        window.location = url;
-    			};
-    			_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done'), bObj);
-    			js_log('apiRes.upload.imageinfo::'+url);
-		    }
+			var url = apiRes.upload.imageinfo.descriptionurl;
+			//check done action: 
+			if(_this.done_upload_cb){
+				//close up shop: 
+				$j('#upProgressDialog').dialog('close');	
+				//call the callback: 			
+				_this.done_upload_cb( url );
+			}else{		   
+				var bObj = {};
+				bObj[ gM('go-to-resource') ] = function(){
+						window.location = url;
+				};
+				_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done'), bObj);
+				js_log('apiRes.upload.imageinfo::'+url);
+			}
 			return ;
 		}		
 				
@@ -408,8 +408,8 @@ mvBaseUploadInterface.prototype = {
 			 	_this.warnings_sessionkey = apiRes.upload.warnings.sessionkey;
 			var bObj = {};
 			bObj[ gM('ignorewarning') ] =  	function() { 
-    				                         js_error('todo: ignore warnings action '); 
-                                            };
+											 js_error('todo: ignore warnings action '); 
+											};
 			_this.updateProgressWin(  gM('uploadwarning'),  '<h3>' + gM('uploadwarning') + '</h3>' +msg + '<p>',bObj);
 			return false;
 		}							
@@ -419,29 +419,29 @@ mvBaseUploadInterface.prototype = {
 		var return_to_form_msg = gM('return-to-form');
 		var bObj = {};
 		bObj[ gM('return-to-form')] =  function(){
-		        $(this).dialog('close');
-		     };  
+				$(this).dialog('close');
+			 };  
 		_this.updateProgressWin( gM('uploaderror'), gM('unknown-error'),bObj);
 		return false; 		
 	},
 	updateProgressWin:function(title_txt, msg, buttons){
-	    var _this = this;
-	     if(!title_txt)
-	       title_txt = _this.getProgressTitle();
-	     if(!msg)
-	       msg = mv_get_loading_img( 'left:40%;top:40px;');
-	     $j( '#upProgressDialog' ).dialog('option', 'title',  title_txt );
-	     $j( '#upProgressDialog' ).html( msg );
-	     if(buttons){	       
-	         $j('#upProgressDialog').dialog('option','buttons', buttons);
-	     }else{	         
-	         //@@todo should convice the jquery ui people to not use object keys as user msg's
-	         var bObj = {};
-	          bObj[ gM('ok-button') ] =  function(){
-	              $j(this).dialog('close');
-	          }; 
-	          $j('#upProgressDialog').dialog('option','buttons', bObj);
-	     }	     
+		var _this = this;
+		 if(!title_txt)
+		   title_txt = _this.getProgressTitle();
+		 if(!msg)
+		   msg = mv_get_loading_img( 'left:40%;top:40px;');
+		 $j( '#upProgressDialog' ).dialog('option', 'title',  title_txt );
+		 $j( '#upProgressDialog' ).html( msg );
+		 if(buttons){		   
+			 $j('#upProgressDialog').dialog('option','buttons', buttons);
+		 }else{			 
+			 //@@todo should convice the jquery ui people to not use object keys as user msg's
+			 var bObj = {};
+			  bObj[ gM('ok-button') ] =  function(){
+				  $j(this).dialog('close');
+			  }; 
+			  $j('#upProgressDialog').dialog('option','buttons', bObj);
+		 }		 
 	},		
 	getProgressTitle:function(){
 		return gM('upload-in-progress');
@@ -454,69 +454,69 @@ mvBaseUploadInterface.prototype = {
 		return $j('form :first').get(0);
 	},
 	updateProgress:function( perc ){		
-	    //js_log('update progress: ' + perc);
-	    $j( '#up-progressbar' ).progressbar('value', parseInt( perc * 100 ) );	
+		//js_log('update progress: ' + perc);
+		$j( '#up-progressbar' ).progressbar('value', parseInt( perc * 100 ) );	
 		$j( '#up-pstatus' ).html( parseInt( perc * 100 ) + '% - ' );
 	},
 	/*update to jQuery.ui progress display type */
-    dispProgressOverlay:function(){
-      var _this = this;
+	dispProgressOverlay:function(){
+	  var _this = this;
 	  //remove old instance: 
-      if($j('#upProgressDialog').length!=0){
-         $j('#upProgressDialog').dialog( 'destroy' ).remove();
-      }
-      //re add it: 
+	  if($j('#upProgressDialog').length!=0){
+		 $j('#upProgressDialog').dialog( 'destroy' ).remove();
+	  }
+	  //re add it: 
 	  $j('body').append('<div id="upProgressDialog" ></div>');
-	    
-      $j('#upProgressDialog').dialog({
-          title:_this.getProgressTitle(), 
-          bgiframe: true,
+		
+	  $j('#upProgressDialog').dialog({
+		  title:_this.getProgressTitle(), 
+		  bgiframe: true,
 		  modal: true,
 		  width:400,
 		  heigh:200,
-		  beforeclose: function(event, ui) {     		      
-		      if( event.button==0 ){    		   
-    		      if( confirm( gM('mv-canecl-confim') )){
-            	    _this.cancel_action();
-                  }
-              }else{
-                 //click on button (dont do close action);
-                 return true; 
-              }
+		  beforeclose: function(event, ui) {	 			  
+			  if( event.button==0 ){			   
+				  if( confirm( gM('mv-canecl-confim') )){
+					_this.cancel_action();
+				  }
+			  }else{
+				 //click on button (dont do close action);
+				 return true; 
+			  }
 		  },		  
-		  buttons: _this.cancel_button()      
-      });      
-      $j('#upProgressDialog').html(
-      //set initial content: 
-        '<div id="up-pbar-container" style="width:90%;height:15px;" >' +
+		  buttons: _this.cancel_button()	  
+	  });	  
+	  $j('#upProgressDialog').html(
+	  //set initial content: 
+		'<div id="up-pbar-container" style="width:90%;height:15px;" >' +
 			'<div id="up-progressbar" style="height:15px;"></div>' +
 			'<div id="up-status-container">'+
-    			'<span id="up-pstatus">0% - </span> ' +						 
-    		    '<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +
-		    '</div>'+		
+				'<span id="up-pstatus">0% - </span> ' +						 
+				'<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +
+			'</div>'+		
 		'</div>' 
 	  )
-      //setup progress bar: 
-       $j('#up-progressbar').progressbar({ 
-           value:0 
-       });      
-       //just display an empty progress window
-       $j('#upProgressDialog').dialog('open');
+	  //setup progress bar: 
+	   $j('#up-progressbar').progressbar({ 
+		   value:0 
+	   });	  
+	   //just display an empty progress window
+	   $j('#upProgressDialog').dialog('open');
  
-    },
-    cancel_button:function(){
-       var _this = this;
-       var cancel_txt = gM('cancel-button');
-       //@@todo should convice the jquery ui people to not use object keys as user msg's (or patch and move upstream) 
-       eval('var res = {"' +gM('cancel-button') + '" : function(){  _this.cancel_action(this); } }' );
-       return res;
-    },    
-    cancel_action:function(dlElm){
-        //confirm:    
-        if( confirm( gM('mv-canecl-confim') )){
-            //@@todo (cancel the encode / upload)
-            //$(this).dialog('close');
-            alert('(sorry we do not yet support cancel)');
-        }  
-    }
+	},
+	cancel_button:function(){
+	   var _this = this;
+	   var cancel_txt = gM('cancel-button');
+	   //@@todo should convice the jquery ui people to not use object keys as user msg's (or patch and move upstream) 
+	   eval('var res = {"' +gM('cancel-button') + '" : function(){  _this.cancel_action(this); } }' );
+	   return res;
+	},	
+	cancel_action:function(dlElm){
+		//confirm:	
+		if( confirm( gM('mv-canecl-confim') )){
+			//@@todo (cancel the encode / upload)
+			//$(this).dialog('close');
+			alert('(sorry we do not yet support cancel)');
+		}  
+	}
 }

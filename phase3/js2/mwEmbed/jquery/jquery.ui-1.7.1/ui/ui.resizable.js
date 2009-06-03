@@ -249,8 +249,8 @@ $.widget("ui.resizable", $.extend({}, $.ui.mouse, {
 		//Aspect Ratio
 		this.aspectRatio = (typeof o.aspectRatio == 'number') ? o.aspectRatio : ((this.originalSize.width / this.originalSize.height) || 1);
 
-	    var cursor = $('.ui-resizable-' + this.axis).css('cursor');
-	    $('body').css('cursor', cursor == 'auto' ? this.axis + '-resize' : cursor);
+		var cursor = $('.ui-resizable-' + this.axis).css('cursor');
+		$('body').css('cursor', cursor == 'auto' ? this.axis + '-resize' : cursor);
 
 		el.addClass("ui-resizable-resizing");
 		this._propagate("start", event);
@@ -700,7 +700,7 @@ $.ui.plugin.add("resizable", "containment", {
 					hoset = Math.abs( (self._helper ? self.offset.top - cop.top : (self.offset.top - co.top)) + self.sizeDiff.height );
 
 		var isParent = self.containerElement.get(0) == self.element.parent().get(0),
-		    isOffsetRelative = /relative|absolute/.test(self.containerElement.css('position'));
+			isOffsetRelative = /relative|absolute/.test(self.containerElement.css('position'));
 
 		if(isParent && isOffsetRelative) woset -= self.parentData.left;
 

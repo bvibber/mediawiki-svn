@@ -6,11 +6,11 @@
 
 Pixastic.Actions.brightness = {
 
-    process : function(params) {
+	process : function(params) {
 
-        var brightness = parseInt(params.options.brightness,10) || 0;
-        var contrast = parseFloat(params.options.contrast)||0;
-        var legacy = !!(params.options.legacy);
+		var brightness = parseInt(params.options.brightness,10) || 0;
+		var contrast = parseFloat(params.options.contrast)||0;
+		var legacy = !!(params.options.legacy);
 
 		if (legacy) {
 			brightness = Math.min(150,Math.max(-150,brightness));

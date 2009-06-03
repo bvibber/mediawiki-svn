@@ -156,7 +156,7 @@ function output_page($params){
 				<?
 			 } ?>
 			<param name="showStatus" value="hide" />
-		    <param name="autoPlay" value="true" />
+			<param name="autoPlay" value="true" />
 			<param name="BufferSize" value="8192" />
 			<param name="BufferHigh" value="30" />
 			<param name="BufferLow" value="5" />
@@ -174,43 +174,43 @@ function output_page($params){
 javascript envoked version:
 	function doPlayer(){
 			jPlayer = document.createElement('OBJECT');
-		    jPlayer.setAttribute('classid', 'java:com.fluendo.player.Cortado.class');
-		    jPlayer.type = 'application/x-java-applet';
-		    jPlayer.setAttribute('archive', this.CortadoLocation);
-		    jPlayer.id = '<?php echo  htmlspecialchars( $id ) ?>';
-		    jPlayer.width = '<?php echo  htmlspecialchars( $width )?>';
-		    jPlayer.height = '<?php echo  htmlspecialchars( $height )?>';
+			jPlayer.setAttribute('classid', 'java:com.fluendo.player.Cortado.class');
+			jPlayer.type = 'application/x-java-applet';
+			jPlayer.setAttribute('archive', this.CortadoLocation);
+			jPlayer.id = '<?php echo  htmlspecialchars( $id ) ?>';
+			jPlayer.width = '<?php echo  htmlspecialchars( $width )?>';
+			jPlayer.height = '<?php echo  htmlspecialchars( $height )?>';
 		
-		    var params = {
-		      'code': 'com.fluendo.player.Cortado',
-		      'archive': 'cortado-wmf-r46643.jar',
-		      'url': '<?php echo  htmlspecialchars( $media_url )?>',
-		      'local': 'false',
-		      'keepAspect': 'true',
-		      'video': '<?php echo  htmlspecialchars( $video )?>',
-		      'audio': '<?php echo  htmlspecialchars( $audio )?>',
-		      'seekable': 'false',
-		      'showStatus': 'hide',
-		      'autoPlay': 'true',
-		      'bufferSize': '8192',
-		      'BufferHigh':'30',
+			var params = {
+			  'code': 'com.fluendo.player.Cortado',
+			  'archive': 'cortado-wmf-r46643.jar',
+			  'url': '<?php echo  htmlspecialchars( $media_url )?>',
+			  'local': 'false',
+			  'keepAspect': 'true',
+			  'video': '<?php echo  htmlspecialchars( $video )?>',
+			  'audio': '<?php echo  htmlspecialchars( $audio )?>',
+			  'seekable': 'false',
+			  'showStatus': 'hide',
+			  'autoPlay': 'true',
+			  'bufferSize': '8192',
+			  'BufferHigh':'30',
 			  'BufferLow' : '5',
-			     <? if($duration!=0){
+				 <? if($duration!=0){
 					?>
 					'duration':'<?php echo  htmlspecialchars( $duration )?>',
 					<?
 				 } ?>
-		      'debug': 0
-		    }
-		    for(name in params){
-		      var p = document.createElement('param');
-		      p.name = name;
-		      p.value = params[name];
-		      jPlayer.appendChild(p);
-		    }
-		    var pHolder = document.getElementById('jPlayer');
-		    if(pHolder)
-		    	pHolder.appendChild( jPlayer );
+			  'debug': 0
+			}
+			for(name in params){
+			  var p = document.createElement('param');
+			  p.name = name;
+			  p.value = params[name];
+			  jPlayer.appendChild(p);
+			}
+			var pHolder = document.getElementById('jPlayer');
+			if(pHolder)
+				pHolder.appendChild( jPlayer );
 		}
 		doPlayer();		
 //then in the page: 

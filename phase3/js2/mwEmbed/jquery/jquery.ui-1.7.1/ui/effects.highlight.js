@@ -8,40 +8,40 @@
  * http://docs.jquery.com/UI/Effects/Highlight
  *
  * Depends:
- *    effects.core.js
+ *	effects.core.js
  */
 (function($) {
 
 $.effects.highlight = function(o) {
 
-    return this.queue(function() {
+	return this.queue(function() {
 
-        // Create element
-        var el = $(this), props = ['backgroundImage','backgroundColor','opacity'];
+		// Create element
+		var el = $(this), props = ['backgroundImage','backgroundColor','opacity'];
 
-        // Set options
-        var mode = $.effects.setMode(el, o.options.mode || 'show'); // Set Mode
-        var color = o.options.color || "#ffff99"; // Default highlight color
-        var oldColor = el.css("backgroundColor");
+		// Set options
+		var mode = $.effects.setMode(el, o.options.mode || 'show'); // Set Mode
+		var color = o.options.color || "#ffff99"; // Default highlight color
+		var oldColor = el.css("backgroundColor");
 
-        // Adjust
-        $.effects.save(el, props); el.show(); // Save & Show
-        el.css({backgroundImage: 'none', backgroundColor: color}); // Shift
+		// Adjust
+		$.effects.save(el, props); el.show(); // Save & Show
+		el.css({backgroundImage: 'none', backgroundColor: color}); // Shift
 
-        // Animation
-        var animation = {backgroundColor: oldColor };
-        if (mode == "hide") animation['opacity'] = 0;
+		// Animation
+		var animation = {backgroundColor: oldColor };
+		if (mode == "hide") animation['opacity'] = 0;
 
-        // Animate
-        el.animate(animation, { queue: false, duration: o.duration, easing: o.options.easing, complete: function() {
-            if(mode == "hide") el.hide();
-            $.effects.restore(el, props);
-        if (mode == "show" && $.browser.msie) this.style.removeAttribute('filter');
-            if(o.callback) o.callback.apply(this, arguments);
-            el.dequeue();
-        }});
+		// Animate
+		el.animate(animation, { queue: false, duration: o.duration, easing: o.options.easing, complete: function() {
+			if(mode == "hide") el.hide();
+			$.effects.restore(el, props);
+		if (mode == "show" && $.browser.msie) this.style.removeAttribute('filter');
+			if(o.callback) o.callback.apply(this, arguments);
+			el.dequeue();
+		}});
 
-    });
+	});
 
 };
 

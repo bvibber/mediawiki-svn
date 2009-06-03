@@ -12,7 +12,7 @@
 ;(function($) {
 
 $.fn.extend({
-    simulate: function(type, options) {
+	simulate: function(type, options) {
 		return this.each(function() {
 			var opt = $.extend({}, $.simulate.defaults, options || {});
 			new $.simulate(this, type, opt);

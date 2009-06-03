@@ -35,14 +35,14 @@
  * @param Map settings Optional settings to configure the iframe.
  * @option String|Number top The iframe must be offset to the top
  * 		by the width of the top border. This should be a negative 
- *      number representing the border-top-width. If a number is 
+ *	  number representing the border-top-width. If a number is 
  * 		is used here, pixels will be assumed. Otherwise, be sure
  *		to specify a unit. An expression could also be used. 
  * 		By default the value is "auto" which will use an expression 
  * 		to get the border-top-width if it is in pixels.
  * @option String|Number left The iframe must be offset to the left
  * 		by the width of the left border. This should be a negative 
- *      number representing the border-left-width. If a number is 
+ *	  number representing the border-left-width. If a number is 
  * 		is used here, pixels will be assumed. Otherwise, be sure
  *		to specify a unit. An expression could also be used. 
  * 		By default the value is "auto" which will use an expression 
@@ -73,7 +73,7 @@ $.fn.bgIframe = $.fn.bgiframe = function(s) {
 	// This is only for IE6
 	if ( $.browser.msie && /6.0/.test(navigator.userAgent) ) {
 		s = $.extend({
-			top     : 'auto', // auto == .currentStyle.borderTopWidth
+			top	 : 'auto', // auto == .currentStyle.borderTopWidth
 			left    : 'auto', // auto == .currentStyle.borderLeftWidth
 			width   : 'auto', // auto == offsetWidth
 			height  : 'auto', // auto == offsetHeight

@@ -135,7 +135,7 @@
 	
 	// generates an unique id
    function makeId() {
-      return "_" + ("" + Math.random()).substring(2, 10);   
+	  return "_" + ("" + Math.random()).substring(2, 10);   
    }
 	
 //}}}	
@@ -406,33 +406,33 @@
 			
 			
 			// internal method not meant to be used by clients
-         _fireEvent: function(evt, arg) {
+		 _fireEvent: function(evt, arg) {
 
 				
-            // update plugins properties & methods
-            if (evt == 'onUpdate') {
-               var json = arg || player._api().fp_getPlugin(name); 
+			// update plugins properties & methods
+			if (evt == 'onUpdate') {
+			   var json = arg || player._api().fp_getPlugin(name); 
 					if (!json) { return;	}					
 					
-               extend(self, json);
-               delete self.methods;
+			   extend(self, json);
+			   delete self.methods;
 					
-               if (!hasMethods) {
-                  each(json.methods, function() {
-                     var method = "" + this;       
+			   if (!hasMethods) {
+				  each(json.methods, function() {
+					 var method = "" + this;	   
 							
-                     self[method] = function() {
-                        var a = [].slice.call(arguments);
-                        var ret = player._api().fp_invoke(name, method, a); 
-                        return ret == 'undefined' ? self : ret;
-                     };
-                  });
-                  hasMethods = true;         
-               }
-            }
-            
-            // plugin callbacks
-            var fn = listeners[evt];
+					 self[method] = function() {
+						var a = [].slice.call(arguments);
+						var ret = player._api().fp_invoke(name, method, a); 
+						return ret == 'undefined' ? self : ret;
+					 };
+				  });
+				  hasMethods = true;		 
+			   }
+			}
+			
+			// plugin callbacks
+			var fn = listeners[evt];
 
 				if (fn) {
 					
@@ -442,8 +442,8 @@
 					if (evt.substring(0, 1) == "_") {
 						delete listeners[evt];  
 					} 
-            }         
-         } 					
+			}		 
+		 } 					
 			
 		});
 
@@ -525,8 +525,8 @@ function Player(wrapper, params, conf) {
 		
 		unload: function() {  
 			
-         if (api && html.replace(/\s/g, '') !== '' && !api.fp_isFullscreen() && 
-            self._fireEvent("onBeforeUnload") !== false) { 
+		 if (api && html.replace(/\s/g, '') !== '' && !api.fp_isFullscreen() && 
+			self._fireEvent("onBeforeUnload") !== false) { 
 				api.fp_close();
 				wrapper.innerHTML = html; 
 				self._fireEvent("onUnload");
@@ -552,19 +552,19 @@ function Player(wrapper, params, conf) {
 			return playlist; 
 		},
 		
-      getPlugin: function(name) {  
-         var plugin = plugins[name];
-         
+	  getPlugin: function(name) {  
+		 var plugin = plugins[name];
+		 
 			// create plugin if nessessary
-         if (!plugin && self.isLoaded()) {
+		 if (!plugin && self.isLoaded()) {
 				var json = self._api().fp_getPlugin(name);
 				if (json) {
 					plugin = new Plugin(name, json, self);
 					plugins[name] = plugin;  						
 				} 
-         }        
-         return plugin; 
-      },
+		 }		
+		 return plugin; 
+	  },
 		
 		getScreen: function() { 
 			return self.getPlugin("screen");
@@ -720,12 +720,12 @@ function Player(wrapper, params, conf) {
 			commonClip._fireEvent("onLoad");  
 		}
 		
-      if (evt == 'onContextMenu') {
-         each(conf.contextMenu[arg0], function(key, fn)  {
-            fn.call(self);
-         });
-         return;
-      }
+	  if (evt == 'onContextMenu') {
+		 each(conf.contextMenu[arg0], function(key, fn)  {
+			fn.call(self);
+		 });
+		 return;
+	  }
 
 		if (evt == 'onPluginEvent') {
 			var name = arg0.name || arg0;
@@ -800,7 +800,7 @@ function Player(wrapper, params, conf) {
 		// flashembed parameters
 		if (typeof params == 'string') {
 			params = {src: params};	
-		}    
+		}	
 		
 		// playerId	
 		playerId = wrapper.id || "fp" + makeId();
