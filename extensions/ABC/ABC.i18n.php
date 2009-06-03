@@ -205,6 +205,14 @@ $messages['gsw'] = array(
 	'abcdownload' => 'Abelade:',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'abcdesc' => 'Cur y lipaid <tt>&lt;abc&gt;</tt> rish dys kiaull ABC y chummey',
+	'abcdownload' => 'Laadey neose:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

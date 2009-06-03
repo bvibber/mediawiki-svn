@@ -618,6 +618,8 @@ $messages['gu'] = array(
 	'sitematrix-others' => 'વિકિમીડીયાની અન્ય પરિયોજનાઓ',
 	'sitematrix-total' => "'''કુલ સંખ્યા: $1'''",
 	'sitematrix-sitetotal' => 'કુલ',
+	'sitematrix-private' => 'અંગત',
+	'sitematrix-fishbowl' => 'સંપાદન પ્રતિબંધિત',
 );
 
 /** Manx (Gaelg)

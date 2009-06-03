@@ -135,6 +135,14 @@ $messages['gsw'] = array(
 	'purge-desc' => 'Ergänzt e „Lääre“-Ryter fir alli normale Syten fir e schnälli Cache-Leschig und umgoht d Lääre-Priefig fir anonymi Benutzer',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'purge' => 'વિરેચન',
+	'purge-desc' => 'તમામ સામાન્ય પાનાઓ પર ’વિરેચન’ ટેબ ઉમેરો, અને નનામા યોગદાનકર્તા માટે સંગ્રહનાં ઝડપી વિરેચન માટે વિરેચન ચકાસણી ટાળો',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

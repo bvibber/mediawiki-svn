@@ -184,6 +184,14 @@ $messages['gsw'] = array(
 	'nstab-comments' => 'Kommentar',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'commentpages-desc' => 'મુખ્ય નામાવકાશ માટે ટિપ્પ્ણી પાનાં',
+	'nstab-comments' => 'ટીકા',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

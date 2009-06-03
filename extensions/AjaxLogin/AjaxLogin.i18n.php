@@ -62,6 +62,8 @@ Možete izgubiti promjene koje ste napravili na ovoj stranicu ako sada napustite
  * @author Solde
  */
 $messages['ca'] = array(
+	'ajaxLogin2' => 'Està segur?
+Pot perdre els seus canvis en aqueeta pàgina si en surt ara.',
 	'ajaxlogin-create' => 'Crea un compte',
 );
 

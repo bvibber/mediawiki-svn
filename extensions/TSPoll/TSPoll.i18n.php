@@ -213,6 +213,15 @@ $messages['pt-br'] = array(
 	'tspoll-id-error' => 'Não foi dado um ID!',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'tspoll-desc' => 'Добавляет [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] как HTML-тег',
+	'tspoll-fetch-error' => 'Ошибка при обращении к URL!',
+	'tspoll-id-error' => 'Не указан ID!',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

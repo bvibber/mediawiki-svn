@@ -457,7 +457,7 @@ $wdMessages['ar'] = array(
 	'ow_importtsv_title1' => 'استيراد تي إس في',
 	'ow_importtsv_title2' => 'استيراد التعريفات والترجمات',
 	'ow_importtsv_header' => "<p>استورد التعريفات والترجمات من ملف نص محدد بألسنة ربما تكون صدرته من OpenOffice.org، إكسل أو برنامج صحائف آخر.</p>
-<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة في صفحة ExportTSV. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف  لأي معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
+<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة في صفحة [[Special:ExportTSV|ExportTSV]]. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف  لأي معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
 <p>لو أن صندوق 'تشغيل تجربة' معلم، فأي أفعال ستتخذ سيتم إبلاغها، لكن لا تغييرات سيتم عملها فعلا. أنت مشجع على عمل تشغيل تجربة قبل عمل استيراد فعلي.</p>",
 	'ow_importtsv_not_allowed' => 'أنت لا تمتلك السماح لعمل استيراد TSV.',
 	'ow_importtsv_importing' => 'استيراد بيانات TSV',
@@ -690,7 +690,7 @@ $wdMessages['arz'] = array(
 	'ow_importtsv_title1' => 'استيراد تى إس فى',
 	'ow_importtsv_title2' => 'استيراد التعريفات والترجمات',
 	'ow_importtsv_header' => "<p>استورد التعريفات والترجمات من ملف نص محدد بألسنة ربما تكون صدرته من OpenOffice.org، إكسل أو برنامج صحائف آخر.</p>
-<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة فى صفحة ExportTSV. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف  لأى معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
+<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة فى صفحة [[Special:ExportTSV|ExportTSV]]. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف  لأى معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
 <p>لو أن صندوق 'تشغيل تجربة' معلم، فأى أفعال ستتخذ سيتم إبلاغها، لكن لا تغييرات سيتم عملها فعلا. أنت مشجع على عمل تشغيل تجربة قبل عمل استيراد فعلى.</p>",
 	'ow_importtsv_not_allowed' => 'أنت لا تمتلك السماح لعمل استيراد TSV.',
 	'ow_importtsv_importing' => 'استيراد بيانات TSV',
@@ -1035,7 +1035,7 @@ $wdMessages['be-tarask'] = array(
 	'ow_importtsv_title1' => 'Імпартаваць TSV',
 	'ow_importtsv_title2' => 'Імпартаваць вызначэньні і пераклады',
 	'ow_importtsv_header' => "<p>Імпарт вызначэньняў і перакладаў з тэкставых файлаў, якія ўтрымліваюць зьвесткі падзеленыя знакамі табуляцыі, якія Вы можаце экспартаваць з OpenOffice.org, Excel ці іншага праграмнага забесьпячэньня, якое апрацоўвае табліцы.</p>
-<p>Фармат файла павінен быць аднолькавы з файламі экспартаванымі са старонкі ExportTSV. Калі Вы зьмянілі назвы слупкоў, імпарт не атрымаецца. Калі Вы зьмянілі ідэнтыфікатар альбо вызначальны выраз, гэты радок будзе праігнараваны. Калі Вы будзеце дадаваць слупкі, яны павінны быць у форме 'definitions_iso' ці 'translations_iso', дзе iso адпавядае моўнаму коду ISO 639-3.</p>
+<p>Фармат файла павінен быць аднолькавы з файламі экспартаванымі са старонкі [[Special:ExportTSV|ExportTSV]]. Калі Вы зьмянілі назвы слупкоў, імпарт не атрымаецца. Калі Вы зьмянілі ідэнтыфікатар альбо вызначальны выраз, гэты радок будзе праігнараваны. Калі Вы будзеце дадаваць слупкі, яны павінны быць у форме 'definitions_iso' ці 'translations_iso', дзе iso адпавядае моўнаму коду ISO 639-3.</p>
 <p>Калі будзе пазначана праверка 'тэставы запуск', усе дзеяньні будуць зьдзейсьнены і будуць выданы справаздачы, але сапраўдных дзеяньняў не адбудзецца. Вам лепей будзе запусьціць праверку перад самім імпартам.</p>",
 	'ow_importtsv_not_allowed' => 'Вы ня маеце правоў на імпартаваньне TSV.',
 	'ow_importtsv_importing' => 'Імпартаваньне зьвестак TSV',
@@ -1364,7 +1364,7 @@ $wdMessages['br'] = array(
 	'ow_importtsv_title1' => 'Enporzhiañ roadennoù er furmad TSV',
 	'ow_importtsv_title2' => 'Enporzhiañ an termenadurioù hag an troidigezhioù',
 	'ow_importtsv_header' => "<p>Enporzhiañ a ra termenadurioù ha troidigezhioù adal ur restr taolennataet a c'hall bezañ bet ezporzhiet ganeoc'h eus OpenOffice.org, Excel pe ur meziant bennak all.</p>
-<p>Ret eo da furmad ar restr bezañ an hevelep hini hag hini ar restroù ezporzhiet adal ar bajenn ExportTSV. M'hoc'h eus kemmet anv ar bannoù e c'hwito an ezporzhiaden. M'hoc'h eus kemmet an anaouder pe an troiennoù dermeniñ pe sterioù termenet ne vo ket kemeret al linennoù-se e kont. M'hoc'h eus ouzhpennet bannoù e rankont bezañ er furmad 'definitions_iso' pe 'translations_iso', e-lec'h m'eo iso ur c'hod yezh ISO 639-3.</p>
+<p>Ret eo da furmad ar restr bezañ an hevelep hini hag hini ar restroù ezporzhiet adal ar bajenn [[Special:ExportTSV|ExportTSV]]. M'hoc'h eus kemmet anv ar bannoù e c'hwito an ezporzhiaden. M'hoc'h eus kemmet an anaouder pe an troiennoù dermeniñ pe sterioù termenet ne vo ket kemeret al linennoù-se e kont. M'hoc'h eus ouzhpennet bannoù e rankont bezañ er furmad 'definitions_iso' pe 'translations_iso', e-lec'h m'eo iso ur c'hod yezh ISO 639-3.</p>
 <p>M'eo asket al log 'test enporzhiañ', e vo enrollet kement tra a vo graet met ne vo ket degaset kemmoù e gwirionez. Broudet oc'h da gas da benn un test enporzhiañ a-raok enporzhiañ da vat.</p>",
 	'ow_importtsv_not_allowed' => "N'oc'h ket aotreet da enporzhiañ roadennoù er furmad TSV.",
 	'ow_importtsv_importing' => "Oc'h enporzhiañ roadennoù TSV",
@@ -1957,7 +1957,7 @@ $wdMessages['de'] = array(
 	'ow_importtsv_title1' => 'TSV importieren',
 	'ow_importtsv_title2' => 'Definitionen und Übersetzungen importieren',
 	'ow_importtsv_header' => '<p>Definitionen und Übersetzungen aus einer Textdatei, die Tabulatoren als Trenner verwendet, importieren. Diese Datei kann aus OpenOffice.org, Excel oder einem anderen Tabellenkalkulationsprogramm exportiert sein.</p>
-<p>Das Format der Datei muss mit dem Format der Dateien übereinstimmen, die auf der ExportTSV-Seite exportiert werden können. Wenn du die Spaltennamen geändert hast, wird der Import fehlschlagen. Wenn du die ID oder den bestimmenden Ausdruck einer festgelegten Bedeutung geändert hast, wird diese Zeile ignoriert werden. Wenn du Spalten hinzugefügt hast, müssen diese „definitions_iso“ oder „translations_iso“ heißen, wobei „iso“ ein ISO 693-3-Sprachcode ist.</p>
+<p>Das Format der Datei muss mit dem Format der Dateien übereinstimmen, die auf der [[Special:ExportTSV|ExportTSV]]-Seite exportiert werden können. Wenn du die Spaltennamen geändert hast, wird der Import fehlschlagen. Wenn du die ID oder den bestimmenden Ausdruck einer festgelegten Bedeutung geändert hast, wird diese Zeile ignoriert werden. Wenn du Spalten hinzugefügt hast, müssen diese „definitions_iso“ oder „translations_iso“ heißen, wobei „iso“ ein ISO 693-3-Sprachcode ist.</p>
 <p>Wenn das „Testlauf“-Häkchen gesetzt ist, werden alle Änderungen, die vorgenommen werden würden, gemeldet, aber keine Änderungen wirklich durchgeführt. Es wird empfohlen, vor dem eigentlichen Import einen Testlauf durchzuführen.</p>',
 	'ow_importtsv_not_allowed' => 'Du hast nicht die Berechtigung, einen TSV-Import durchzuführen.',
 	'ow_importtsv_importing' => 'Importiere TSV-Daten',
@@ -2148,7 +2148,7 @@ $wdMessages['de-formal'] = array(
 	'langman_not_allowed' => 'Sie haben nicht die Berechtigung die Spracheneinstellungen zu ändern.',
 	'importlangnames_not_allowed' => 'Sie haben keine Berechtigung um Sprachennamen zu importieren.',
 	'ow_importtsv_header' => '<p>Definitionen und Übersetzungen aus einer Textdatei, die Tabulatoren als Trenner verwendet, importieren. Diese Datei kann aus OpenOffice.org, Excel oder einem anderen Tabellenkalkulationsprogramm exportiert sein.</p>
-<p>Das Format der Datei muss mit dem Format der Dateien übereinstimmen, die auf der ExportTSV-Seite exportiert werden können. Wenn Sie die Spaltennamen geändert haben, wird der Import fehlschlagen. Wenn Sie die ID oder den bestimmenden Ausdruck einer festgelegten Bedeutung geändert haben, wird diese Zeile ignoriert werden. Wenn Sie Spalten hinzugefügt haben, müssen diese „definitions_iso“ oder „translations_iso“ heißen, wobei „iso“ ein ISO 693-3-Sprachcode ist.</p>
+<p>Das Format der Datei muss mit dem Format der Dateien übereinstimmen, die auf der [[Special:ExportTSV|ExportTSV]]-Seite exportiert werden können. Wenn Sie die Spaltennamen geändert haben, wird der Import fehlschlagen. Wenn Sie die ID oder den bestimmenden Ausdruck einer festgelegten Bedeutung geändert haben, wird diese Zeile ignoriert werden. Wenn Sie Spalten hinzugefügt haben, müssen diese „definitions_iso“ oder „translations_iso“ heißen, wobei „iso“ ein ISO 693-3-Sprachcode ist.</p>
 <p>Wenn das „Testlauf“-Häkchen gesetzt ist, werden alle Änderungen, die vorgenommen werden würden, gemeldet, aber keine Änderungen wirklich durchgeführt. Es wird empfohlen, vor dem eigentlichen Import einen Testlauf durchzuführen.</p>',
 	'ow_importtsv_not_allowed' => 'Sie haben nicht die Berechtigung, einen TSV-Import durchzuführen.',
 	'ow_exporttsv_header' => '<p>Eine Sammlung in eine Textdatei exportieren, die Tabulatoren als Trenner verwendet. Diese kann in OpenOffice.org, Excel oder andere Tabellenkalkulationsprogramme importiert werden.<br />
@@ -2629,7 +2629,7 @@ $wdMessages['es'] = array(
 	'ow_importtsv_title1' => 'Importar TSV',
 	'ow_importtsv_title2' => 'Importar definiciones y traducciones',
 	'ow_importtsv_header' => "<p>Importar definiciones y traducciones de un archivo de texto de pestaña delimitada que puedes haber exportado de OpenOffice.org, Excel u otro software de hoja de cálculo.</p>
-<p>El formato del archivo debe ser el mismo que los archivos exportados en la página ExportTSV. Si has cambiado los nombres de columnas, la importación fallará. Si has cambiado el id o la expresión definida de cualquier significado definido, esta línea será ignorada. Si has agregado columnas, deben estar en la forma 'definitions_iso' o 'translations_iso', donde iso es un código de lenguaje ISO 639-3.</p>
+<p>El formato del archivo debe ser el mismo que los archivos exportados en la página [[Special:ExportTSV|ExportTSV]]. Si has cambiado los nombres de columnas, la importación fallará. Si has cambiado el id o la expresión definida de cualquier significado definido, esta línea será ignorada. Si has agregado columnas, deben estar en la forma 'definitions_iso' o 'translations_iso', donde iso es un código de lenguaje ISO 639-3.</p>
 <p>Si la tabla 'test run' está verificada, cualquier acción que estuviera tomada están reportadas. Se le anima a hacer una prueba de ejecución antes que hagas una importación real.</p>",
 	'ow_importtsv_not_allowed' => 'No tiene permiso para hacer una importación TSV',
 	'ow_importtsv_importing' => 'Importando datos TSV',
@@ -3136,7 +3136,7 @@ $wdMessages['fr'] = array(
 	'ow_importtsv_title1' => 'Importer des données au format TSV',
 	'ow_importtsv_title2' => 'Importer les définitions et les traductions',
 	'ow_importtsv_header' => '<p>Importe des définitions et traductions depuis un fichier, délimité par des tabulations, qui peuvent être exportées depuis OpenOffice.org, Excel ou un autre logiciel.</p>
-<p>Le format du fichier doit être le même que les fichiers exportés depuis la page ExportTSV. L’import échouera si vous avez changé le nom des colonnes. Si vous avez modifié l’identificateur ou l’expression de définition ou un sens défini, la ligne sera ignorée. Si vous avez ajouté des colonnes, elles doivent être au format « definitions_<i>iso</i> » ou « translations_<i>iso</i> », où <i>iso</i> est un code de langue ISO 639_3.</p>
+<p>Le format du fichier doit être le même que les fichiers exportés depuis la page [[Special:ExportTSV|ExportTSV]]. L’import échouera si vous avez changé le nom des colonnes. Si vous avez modifié l’identificateur ou l’expression de définition ou un sens défini, la ligne sera ignorée. Si vous avez ajouté des colonnes, elles doivent être au format « definitions_<i>iso</i> » ou « translations_<i>iso</i> », où <i>iso</i> est un code de langue ISO 639_3.</p>
 <p>Si la case « Test d’importation » est cochée, les actions qui seraient normalement prises seront rapportées, mais aucune modification ne sera effective. Vous êtes encouragé{{GENDER:||e|(e)}} à effectuer un test avant l’importation réelle.</p>',
 	'ow_importtsv_not_allowed' => 'Vous n’avez pas la permission d’effectuer une importation de données au format TSV.',
 	'ow_importtsv_importing' => 'Données TSV en cours d’importation',
@@ -3680,7 +3680,7 @@ $wdMessages['gsw'] = array(
 	'ow_importtsv_title1' => 'TSV importiere',
 	'ow_importtsv_title2' => 'Definitione un Ibersetzige importiere',
 	'ow_importtsv_header' => "<p>Importier Definitione un Ibersetzige us ere uf ei Regischtercharte begränzti Täxt-Datei, wu Du us OpenOffice.org, Excel oder eme andre Tabällekalkulationsprogramm exportiert hesch.</p>
-<p>Die Datei muess s glyych Format haa wie d Dateie, wu uf dr ExportTSV-Syte exportiert wäre. Wänn Du dr Spaltename gänderet hesch, goht dr Import nit. Wänn Du d ID oder d definiert Expression vu irgedere definierte Bedytig gänderet hesch, wird die Reihe ignoriert. Wänn Du Spalte dezugfiegt hesch, mien si d Form 'definitions_iso' oder 'translations_iso' haa, dodebyy isch „iso“ e ISO-639_3 Sprochcode.</p>
+<p>Die Datei muess s glyych Format haa wie d Dateie, wu uf dr [[Special:ExportTSV|ExportTSV]]-Syte exportiert wäre. Wänn Du dr Spaltename gänderet hesch, goht dr Import nit. Wänn Du d ID oder d definiert Expression vu irgedere definierte Bedytig gänderet hesch, wird die Reihe ignoriert. Wänn Du Spalte dezugfiegt hesch, mien si d Form 'definitions_iso' oder 'translations_iso' haa, dodebyy isch „iso“ e ISO-639_3 Sprochcode.</p>
 <p>Wänn du s 'Tescht'-Chäschtli priefsch, wäre alli Aktione aazeigt, wu tete durgfiert wäre, aber s wäre kei aktuälli Änderige gmacht. Am beschte machsch e Tescht, voreb Du e aktuälle Import durfiersch.</p>",
 	'ow_importtsv_not_allowed' => 'Du derfsch kei TSV nit importiere',
 	'ow_importtsv_importing' => 'TSV-Date importiere',
@@ -4132,7 +4132,7 @@ $wdMessages['hsb'] = array(
 	'ow_importtsv_title1' => 'TSV importować',
 	'ow_importtsv_title2' => 'Definicije a přełožki importować',
 	'ow_importtsv_header' => "<p>Importuj definicije a přełožki z tekstoweje dataje z polami wotdźělenymi přez tabulator, kotruž sy z OpenOffice.org, Excel abo někajkeje druheje tabeloweje softwary eksportował.</p>
-<p>Format dataje dyrbi samsne być kaž tón datajow, kotrež buchu na stronu ExportTSV eksportowane. Jeli sy mjena špaltow změnił, import so njeporadźi. Jeli sy ID abo definowacy wuraz definowaneho woznama změnił, budźe so tuta linka ignorować. Jeli sy špalty přidał, dyrbja w formje 'definitions_iso' abo 'translations_iso' być, hdźež iso je rěčny kod ISO 639-3.</p><p>Jeli kašćik 'testowy běh' je markěrowany, budu se akcije, kotrež bychu so wuwjedli, zdźělić, ale změny so njepřewjedu. Ty měł testowy běh přewjesć, prjedy hač import přewjedźeš.",
+<p>Format dataje dyrbi samsne być kaž tón datajow, kotrež buchu na stronu [[Special:ExportTSV|ExportTSV]] eksportowane. Jeli sy mjena špaltow změnił, import so njeporadźi. Jeli sy ID abo definowacy wuraz definowaneho woznama změnił, budźe so tuta linka ignorować. Jeli sy špalty přidał, dyrbja w formje 'definitions_iso' abo 'translations_iso' być, hdźež iso je rěčny kod ISO 639-3.</p><p>Jeli kašćik 'testowy běh' je markěrowany, budu se akcije, kotrež bychu so wuwjedli, zdźělić, ale změny so njepřewjedu. Ty měł testowy běh přewjesć, prjedy hač import přewjedźeš.",
 	'ow_importtsv_not_allowed' => 'Nimaš prawo TSV importować.',
 	'ow_importtsv_importing' => 'TSV-daty so importuja',
 	'ow_importtsv_import_failed' => 'Importowanje je so njeporadźiło',
@@ -4415,7 +4415,7 @@ $wdMessages['ia'] = array(
 	'ow_importtsv_title1' => 'Importar TSV',
 	'ow_importtsv_title2' => 'Importar definitiones e traductiones',
 	'ow_importtsv_header' => "<p>Isto es pro importar definitiones e traductiones ab un file de texto delimitate con tabulationes. Un tal file pote esser producite per OpenOffice.org, Excel o altere software a folio de calculo.</p>
-<p>Le formato del file debe esser le mesme que le files producite con le pagina ExportTSV. Si tu ha cambiate le nomines del columnas, le importation non succedera. Si tu ha cambiate le ID o le expression definitor de alcun significato definite, le linea in question essera ignorate. Si tu ha addite columnas, illos debe esser in le forma 'definitions_<i>iso</i>' o 'translations_<i>iso</i>', ubi <i>iso</i> es un codice de lingua ISO 639-3.</p>
+<p>Le formato del file debe esser le mesme que le files producite con le pagina [[Special:ExportTSV|ExportTSV]]. Si tu ha cambiate le nomines del columnas, le importation non succedera. Si tu ha cambiate le ID o le expression definitor de alcun significato definite, le linea in question essera ignorate. Si tu ha addite columnas, illos debe esser in le forma 'definitions_<i>iso</i>' o 'translations_<i>iso</i>', ubi <i>iso</i> es un codice de lingua ISO 639-3.</p>
 <p>Si le quadrato 'Test de importation' es marcate, omne actiones que esserea interprendite es reportate, ma nulle cambio es de facto effectuate. Es recommendate que tu face un test de importation ante le importation real.</p>",
 	'ow_importtsv_not_allowed' => 'Tu non ha le permission de facer un importation TSV.',
 	'ow_importtsv_importing' => 'Importation de datos TSV in curso',
@@ -5491,7 +5491,7 @@ $wdMessages['krj'] = array(
  */
 $wdMessages['ksh'] = array(
 	'languages' => 'Sproche verwallde för Wikidata.',
-	'langman-desc' => 'Donn de Enstellunge för Shprooche dobei, udder ömmoodelle, met [[{{#special:Languages}}]].',
+	'langman-desc' => 'Donn de Enstellunge för Shprooche dobei, udder ömmoodelle, met [[Special:Languages|{{#special:Languages}}]].',
 	'langman_title' => 'Sproche-Verwaldung',
 	'langman_not_allowed' => 'Do häs kei Rääsch, de Enstellunge för de Shprooche ze ändere.',
 	'langman_header' => 'Jif dä Kood för di Shprooch en, un dä Änglesche Name do dronger:',
@@ -5521,8 +5521,8 @@ $wdMessages['ksh'] = array(
 	'ow_importtsv_title1' => 'En Datei uß Reije met Wääte met Tabulatore dozwesche empoteere',
 	'ow_importtsv_title2' => 'Donn Bedüggdeniße un Övversäzonge empoteere',
 	'ow_importtsv_header' => "<p>Donn Bedüggdeniße un Övversäzonge empoteere vun ene Dattei, woh Reihe met Täxshtöcksche met Tabbulatohre dozwesche dren sin. Esu en Dattei kritt mer zom Beispell pä Äxpoot uß OpenOffice, Excel un ander Tabelleprojramme.</p>
-<p>Dat Fommaat vun dä Dattei moß et sellve sin, wi dat, wat mer met dä Sigg [[{{#special:ExportTSV}}]] kritt. Wann de Shpallde ier Övverschreffte ömjemoodelt sen, jeiht dat Empoteere donevve. Wann de Nommer odder dä Tex för en Bedüggdeniß verändert sen, för en beshtemmpte faßjelaate un explizeete Bedüggdeniß, dann jeiht dä ier Reih bemm Empoteere verschött. Wann Shpallde dobei jekumme sen, dann möße se en Övverschreff han, di entweder wi <code lang=\"en\">definitions_''iso''</code> udder wi <code lang=\"en\">translations_''iso''</code> ußsüüht, woh <code lang=\"en\">''iso''</code> e Shprooche-Köözel noh de ISO 639-3 es.</p>
-<p>Wan dat Käßje „{{int:ow_importtsv_test_run}}“ e Höhksche hät, dann kriß ene Bereesch övver all dat, wat passeere däht, ävver nix weet wörklesch en de Datebangk jedonn. Donn ene Versochslouf maache, ih dat De dä reschtijje Empoot määß.</p>",
+<p>Dat Fommaat vun dä Dattei moß et sellve sin, wi dat, wat mer met dä Sigg [[Special:ExportTSV|{{#special:ExportTSV}}]] kritt. Wann de Shpallde ier Övverschreffte ömjemoodelt sen, jeiht dat Empoteere donevve. Wann de Nommer odder dä Tex för en Bedüggdeniß verändert sen, för en beshtemmpte faßjelaate un explizeete Bedüggdeniß, dann jeiht dä ier Reih bemm Empoteere verschött. Wann Shpallde dobei jekumme sen, dann möße se en Övverschreff han, di entweder wi <code lang=\"en\">definitions_''iso''</code> udder wi <code lang=\"en\">translations_''iso''</code> ußsüüht, woh <code lang=\"en\">''iso''</code> e Shprooche-Köözel noh de ISO 639-3 es.</p>
+<p>Wan dat Käßje „{{int:ow_importtsv_test_run}}“ e Höhksche hät, dann kriß ene Bereesch övver all dat, wat passeere däht, ävver nix weet wörklesch en de Datebangk jedonn. Mer roode: Donn ene Versochslouf maache, ih dat De dä reschtijje Empoot määß.</p>",
 	'ow_importtsv_not_allowed' => 'Do häs nit dat Rääsch, en Datei uß Reije met Wääte met Tabulatore dozwesche ze empoteere.',
 	'ow_importtsv_importing' => 'Ben en Datei uß Reije met Wääte met Tabulatore dozwesche am empoteere',
 	'ow_importtsv_import_failed' => 'Et Empoteere es donävve jejange',
@@ -5549,7 +5549,7 @@ $wdMessages['ksh'] = array(
 	'ow_noedit_title' => 'De darfs hee nit ändere',
 	'ow_noedit' => 'Do häs kei Jenehmijung, öm em Date-Knubbel „$1“ jet ze ändere.
 Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es zom Ändere]] beloore.',
-	'ow_uipref_datasets' => 'Standat-Ansich',
+	'ow_uipref_datasets' => 'Shtandat-Ansich:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Nix ußjewählt',
 	'transaction' => 'Wikidata: Transakßjuhnß_Logbooch',
@@ -6349,7 +6349,7 @@ $wdMessages['nl'] = array(
 	'ow_importtsv_title1' => 'TSV importeren',
 	'ow_importtsv_title2' => 'Definities en vertalingen importeren',
 	'ow_importtsv_header' => "<p>Definities en vertalingen importeren van een door tabs gescheiden tekstbestand dat geëxporteerd kan zijn door OpenOffice.org, Excel of andere spreadsheetsoftware.</p>
-<p>Het formaat van het bestand moet hetzelfde zijn als de bestanden die geëxporteerd zijn op de ExportTSV-pagina. Indien u de kolomnamen gewijzigd heeft, mislukt het importeren. Indien u de ID of de gedefinieerde expressie van een gedefinieerde betekenis gewijzigd heeft, wordt die regel genegeerd. Indien u kolommen toegevoegd heeft, moeten deze voorkomen in het formulier 'definitions_iso' of 'translations_iso' waarin iso een ISO 639-3-taalcode is.</p>
+<p>Het formaat van het bestand moet hetzelfde zijn als de bestanden die geëxporteerd zijn op de [[Special:ExportTSV|ExportTSV]]-pagina. Indien u de kolomnamen gewijzigd heeft, mislukt het importeren. Indien u de ID of de gedefinieerde expressie van een gedefinieerde betekenis gewijzigd heeft, wordt die regel genegeerd. Indien u kolommen toegevoegd heeft, moeten deze voorkomen in het formulier 'definitions_iso' of 'translations_iso' waarin iso een ISO 639-3-taalcode is.</p>
 <p>Indien het vinkvakje 'Testen zonder wijzigingen door te voeren' aangevinkt is, worden genomen acties gerapporteerd, maar worden er geen blijvende wijzigingen gemaakt. U wordt aangeraden om een test uit te voeren voordat u werkelijk gaat importeren.</p>",
 	'ow_importtsv_not_allowed' => 'U hebt geen rechten om een tsv te importeren.',
 	'ow_importtsv_importing' => 'Bezig met het importeren van TGV-gegevens',
@@ -6575,7 +6575,7 @@ $wdMessages['nn'] = array(
 	'ow_importtsv_title1' => 'Importer TSV',
 	'ow_importtsv_title2' => 'Importer definisjonar og omsetjingar',
 	'ow_importtsv_header' => "<p>Importer definisjonar og omsetjingar frå ei tabulatordelt tekstfil som du kan til dømes ha eksportert frå OpenOffice.org, Excel eller andre rekneark.</p>
-<p>Filformatet på fila må vera det same som filer eksportert frå sida ExportTSV. Om du har endra kolonnenamna vil importen slå feil. Om du har endra id eller det definerande uttrykket for ei definert setning, vil denne linja verta ignorert. Om du har lagt til kolonner, må dei vera på forma 'definitions_iso' eller 'translations_iso', der iso er ein ISO 639-3 språkkode.</p>
+<p>Filformatet på fila må vera det same som filer eksportert frå sida [[Special:ExportTSV|ExportTSV]]. Om du har endra kolonnenamna vil importen slå feil. Om du har endra id eller det definerande uttrykket for ei definert setning, vil denne linja verta ignorert. Om du har lagt til kolonner, må dei vera på forma 'definitions_iso' eller 'translations_iso', der iso er ein ISO 639-3 språkkode.</p>
 <p>Om boksen 'test run' er kryssa av, vil alle handlingar verta rapportert og testa, men ingen endringar vert gjort i røynda. Du vert oppmoda til å gjera ein slik test før du gjer ein endeleg importering.</p>",
 	'ow_importtsv_not_allowed' => 'Du har ikkje løyve til å gjera ei TSV-importering.',
 	'ow_importtsv_importing' => 'Importerer TSV-data',
@@ -6793,7 +6793,7 @@ $wdMessages['no'] = array(
 	'ow_importtsv_title1' => 'Importer TSV',
 	'ow_importtsv_title2' => 'Importer definisjoner og oversettelser',
 	'ow_importtsv_header' => "<p>Importer definisjoner og oversettelser fra en tabulatordelt tekstfil som du kan ha eksportert fra OpenOffice.org, Excel eller andre regneark.</p>
-<p>Filformatet på filen må være det samme som filer eksportert fra siden ExportTSV. Om du har endret kolonnenavnene vil importen feile. Om du har endret id eller det definerende uttrykket for en definert setning, vil denne linja bli ignorert. Om du har lagt til kolonner, må de være på formen 'definitions_iso' eller 'translations_iso', der iso er en ISO 639-3 språkkode.</p>
+<p>Filformatet på filen må være det samme som filer eksportert fra siden [[Special:ExportTSV|ExportTSV]]. Om du har endret kolonnenavnene vil importen feile. Om du har endret id eller det definerende uttrykket for en definert setning, vil denne linja bli ignorert. Om du har lagt til kolonner, må de være på formen 'definitions_iso' eller 'translations_iso', der iso er en ISO 639-3 språkkode.</p>
 <p>Om boksen 'test run' er krysset av, vil alle handlinger bli rapportert og testet, men ingen endringer blir faktisk gjort. Du blir oppfordret til å gjøre en slik test før du gjør den endelige importeringen.</p>",
 	'ow_importtsv_not_allowed' => 'Du har ikke rettigheter til å utføre en TSV-importering.',
 	'ow_importtsv_importing' => 'Importer TSV-data',
@@ -7029,7 +7029,7 @@ $wdMessages['oc'] = array(
 	'ow_importtsv_title1' => 'Importar TSV',
 	'ow_importtsv_title2' => 'Importar las definicions e las traduccions',
 	'ow_importtsv_header' => "<p>Importar de definicions e de traduccions dempuèi un fichièr delimitat per de tabulacions que pòt èsser exportat dempuèi OpenOffice.org, Excel o un autre logicia. </p>
-<p>Lo format del fichièr deu èsser lo meteis que los fichièrs exportats dempuèi la pagina ExportTSV. S'avètz cambiat lo nom de las colomnas, l'impòrt va fracassar. S'avètz modificat l'ID o l'expression de definicion o un sens definit, la linha serà ignorada. S'avètz apondut de colomnas, devon èsser dins lo format « definitions_iso » o « translations_iso », ont iso es un còde de lenga ISO-639_3.</p>
+<p>Lo format del fichièr deu èsser lo meteis que los fichièrs exportats dempuèi la pagina [[Special:ExportTSV|ExportTSV]]. S'avètz cambiat lo nom de las colomnas, l'impòrt va fracassar. S'avètz modificat l'ID o l'expression de definicion o un sens definit, la linha serà ignorada. S'avètz apondut de colomnas, devon èsser dins lo format « definitions_iso » o « translations_iso », ont iso es un còde de lenga ISO-639_3.</p>
 <p>Se la casa « Tèst d'importacion » es marcada, las accions seràn raportadas, mas cap de modificacion serà pas efectuada. Sètz encoratjat(ada) a far un tèst abans l'impòrt vertadièr.</p>",
 	'ow_importtsv_not_allowed' => "Avètz pas la permission d'efectuar un impòrt TSV.",
 	'ow_importtsv_importing' => "Donadas TSV en cors d'importacion",
@@ -7591,7 +7591,7 @@ $wdMessages['pt'] = array(
 	'ow_importtsv_title1' => 'Importar TSV',
 	'ow_importtsv_title2' => 'Importar definições e traduções',
 	'ow_importtsv_header' => "<p>Importe definições e traduções de uma ficheiro de texto delimitado por tab que poderá ter exportado do OpenOffice.org, Excel ou outro software de folha de cálculo.</p>
-<p>O formato do ficheiro deverá ser o mesmo que o dos ficheiros exportados na página ExportTSV. Se alterou os nomes das colunas, a importação falhará. Se alterou o id or a expressão definidora de qualquer significado definido, essa linha será ignorada. Se adicionou colunas, estas deverão estar como 'definitions_iso' ou 'translations_iso', onde iso é um código de língua ISO 639-3.</p>
+<p>O formato do ficheiro deverá ser o mesmo que o dos ficheiros exportados na página [[Special:ExportTSV|ExportTSV]]. Se alterou os nomes das colunas, a importação falhará. Se alterou o id or a expressão definidora de qualquer significado definido, essa linha será ignorada. Se adicionou colunas, estas deverão estar como 'definitions_iso' ou 'translations_iso', onde iso é um código de língua ISO 639-3.</p>
 <p>Se a caixa 'Testar execução' estiver seleccionada, quaisquer acções que fossem executadas são reportadas, mas nenhuma modificação é efectivamente feita. Você é encorajado a fazer um teste de execução antes de uma importação efectiva.</p>",
 	'ow_importtsv_not_allowed' => 'Você não tem permissão para fazer uma importação de TSV.',
 	'ow_importtsv_importing' => 'A importar dados TSV',
@@ -7816,7 +7816,7 @@ $wdMessages['pt-br'] = array(
 	'ow_importtsv_title1' => 'Importar TSV',
 	'ow_importtsv_title2' => 'Importar definições e traduções',
 	'ow_importtsv_header' => "<p>Importe definições e traduções de uma arquivo de texto delimitado por tabulações que você pode ter exportado do OpenOffice.org, Excel ou outro software de planilhas.</p>
-<p>O formato do arquivo deverá ser o mesmo que o dos arquivos exportados na página ExportTSV. Se alterou os nomes das colunas, a importação falhará. Se alterou o id or a expressão definidora de qualquer significado definido, essa linha será ignorada. Se adicionou colunas, estas deverão estar na forma 'definitions_iso' ou 'translations_iso', onde iso é um código de língua ISO 639-3.</p>
+<p>O formato do arquivo deverá ser o mesmo que o dos arquivos exportados na página [[Special:ExportTSV|ExportTSV]]. Se alterou os nomes das colunas, a importação falhará. Se alterou o id or a expressão definidora de qualquer significado definido, essa linha será ignorada. Se adicionou colunas, estas deverão estar na forma 'definitions_iso' ou 'translations_iso', onde iso é um código de língua ISO 639-3.</p>
 <p>Se a caixa 'Testar execução' estiver selecionada, quaisquer ações que fossem executadas são reportadas, mas nenhuma modificação é efetivamente realizada. Você é encorajado a fazer um teste de execução antes de uma importação efetiva.</p>",
 	'ow_importtsv_not_allowed' => 'Você não tem permissão para fazer uma importação de TSV.',
 	'ow_importtsv_importing' => 'Importando dados TSV',
@@ -8188,7 +8188,7 @@ $wdMessages['ru'] = array(
 	'ow_importtsv_title1' => 'Импорт TSV',
 	'ow_importtsv_title2' => 'Импорт определений и переводов',
 	'ow_importtsv_header' => '<p>Импорт определений и переводов из файла, содержащего значения разделёнными запятыми, который может быть получен из OpenOffice.org, Excel или иной программы работы с электронными таблицами.</p>
-<p>Формат файла должен совпадать с форматом экспорта страницы ExportTSV. Импорт не пройдёт, если вы измените название колонок. Если вы измените идентификатор или определяющее выражение любого определяющего значения, то строка с изменением будет проигнорирована. Если вы добавляете колонки, то они должны быть в виде «definitions_iso» или «translations_iso», где вместо «iso» должен быть код языкаISO 639-3.</p>
+<p>Формат файла должен совпадать с форматом экспорта страницы [[Special:ExportTSV|ExportTSV]]. Импорт не пройдёт, если вы измените название колонок. Если вы измените идентификатор или определяющее выражение любого определяющего значения, то строка с изменением будет проигнорирована. Если вы добавляете колонки, то они должны быть в виде «definitions_iso» или «translations_iso», где вместо «iso» должен быть код языкаISO 639-3.</p>
 <p>Если стоит отметка «пробный запуск», то несмотря на сообщения, никаких действий в действительности произведено не будет. Рекомендует сделать пробный запуск перед настоящим импортированием.</p>',
 	'ow_importtsv_not_allowed' => 'У вас нет разрешения производить TSV-импорт.',
 	'ow_importtsv_importing' => 'Импортирование TSV-данных',
@@ -8413,7 +8413,7 @@ $wdMessages['sk'] = array(
 	'ow_importtsv_title1' => 'Importovať TSV',
 	'ow_importtsv_title2' => 'Importovať definície a preklady',
 	'ow_importtsv_header' => '<p>Importovať definície a preklady z textového súboru s poľami oddelenými tabulátormi, ktorý je možné exportovať z OpenOffice.org, Excelu či iného tabuľkového kalkulátora.</p>
-<p>Formát súboru musí byť rovnaký ako súbory exportované stránkou ExportTSV. Ak zmeníte názvy stĺpcov, import zlyhá. Ak zmeníte ID alebo definujúci výraz ktoréhokoľvek Definovaného významu, daný riadok bude ignorovaný. Ak pridáte stĺpce, musia byť v tvare „definitions_iso“ alebo „translations_iso“, kde iso je ISO-639_3 jazykový kód.</p>
+<p>Formát súboru musí byť rovnaký ako súbory exportované stránkou [[Special:ExportTSV|ExportTSV]]. Ak zmeníte názvy stĺpcov, import zlyhá. Ak zmeníte ID alebo definujúci výraz ktoréhokoľvek Definovaného významu, daný riadok bude ignorovaný. Ak pridáte stĺpce, musia byť v tvare „definitions_iso“ alebo „translations_iso“, kde iso je ISO-639_3 jazykový kód.</p>
 <p>Ak je začiarknuté pole „Simulácia“,  oznámia sa všetky operácie, ktoré by sa vykonali, ale žiadne zmeny sa v skutočnosti nevykonajú. Odporúča sa pred samotným importom vykonať simuláciu.</p>',
 	'ow_importtsv_not_allowed' => 'Nemáte oprávnenie vykonať import TSV.',
 	'ow_importtsv_importing' => 'Importujú sa údaje TSV',
@@ -9564,7 +9564,7 @@ $wdMessages['tl'] = array(
 	'ow_importtsv_title1' => 'Angkatin ang TSV',
 	'ow_importtsv_title2' => 'Angkatin ang mga kahulugan at mga salinwika',
 	'ow_importtsv_header' => "<p>Umangkat ng mga kahulugan at mga salinwika mula sa isang teksto ng talaksang hinangganan ng panglaylay/tab na maaaring iniluwas mo mula sa OpenOffice.org, Excel o iba pang sopwer na may \"nakalatag na pilas\" (''spreadsheet'').</p>
-<p>Ang anyo/pormat ng talaksan ay dapat na katulad ng sa mga talaksang iniluwas sa ibabaw ng pahinang ExportTSV. Kung binago mo ang mga pangalan ng pababang hanay, mabibigo ang pag-aangkat. Kung binago mo ang id o ang pagsasaad na nagbibigay ng kahulugan sa anumang nilarawang kahulugan, hindi papansinin ang guhit na iyan. Kung nagdagdag ka ng pababang mga hanay, dapat silang nasa anyong 'definitions_iso' o 'translations_iso', kung saan ang iso ay isang kodigo ng wika ng ISO 639-3.</p>
+<p>Ang anyo/pormat ng talaksan ay dapat na katulad ng sa mga talaksang iniluwas sa ibabaw ng pahinang [[Special:ExportTSV|ExportTSV]]. Kung binago mo ang mga pangalan ng pababang hanay, mabibigo ang pag-aangkat. Kung binago mo ang id o ang pagsasaad na nagbibigay ng kahulugan sa anumang nilarawang kahulugan, hindi papansinin ang guhit na iyan. Kung nagdagdag ka ng pababang mga hanay, dapat silang nasa anyong 'definitions_iso' o 'translations_iso', kung saan ang iso ay isang kodigo ng wika ng ISO 639-3.</p>
 <p>Kung may tsek ang kahong 'pagpapatakbong sinusubok', iuulat ang alin mang mga galaw na isasagawa, subalit wala talagang ginagawang mga pagbabago.  Hinihikayat kang magsagawa muna ng isang pagpapatakbong sinusubok bago ka magsakatapuran ng isang tunay na pag-aangkat.</p>",
 	'ow_importtsv_not_allowed' => 'Wala kang pahintulot na gumawa ng isang pag-angkat ng isang TSV.',
 	'ow_importtsv_importing' => 'Inaangkat ang dato ng TSV',

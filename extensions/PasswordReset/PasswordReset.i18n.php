@@ -476,7 +476,7 @@ $messages['gu'] = array(
  * @author MacTire02
  */
 $messages['gv'] = array(
-	'passwordreset-username' => "Dt'ennym ymmydeyr",
+	'passwordreset-username' => "Dt'ennym ymmydeyr:",
 );
 
 /** Hakka (Hak-kâ-fa)

@@ -171,6 +171,14 @@ $messages['gsw'] = array(
 	'contributionseditcount-desc' => 'Zeigt e Byytragszeller uf dr [[Special:Contributions|Byytragssyte vum Benutzer]] aa',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'contributionseditcount' => 'આ સભ્યએ $1 સંપાદન કરેલ છે.',
+	'contributionseditcount-desc' => '[[Special:Contributions|સભ્યનું યોગદાનનાં પાના]] પર સંપાદન સંખ્યા દર્શાવો',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

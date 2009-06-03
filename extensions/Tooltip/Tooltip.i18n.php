@@ -137,6 +137,13 @@ $messages['gsw'] = array(
 	'tooltip-desc' => 'Ergänzt d <tt><nowiki><tooltip></nowiki></tt>- un <tt><nowiki>{{#tooltip:}}</nowiki></tt>-Tag',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'tooltip-desc' => '<tt><nowiki><સાધનસૂચન></nowiki></tt> અને <tt><nowiki>{{#સાધનસૂચન:}}</nowiki></tt> ટેગ ઉમેરો',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

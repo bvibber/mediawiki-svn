@@ -162,7 +162,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'refreshspecial-select-all-pages' => ' избиране на всички страници',
+	'refreshspecial-select-all-pages' => 'Избиране на всички страници',
 	'refreshspecial-no-page' => 'Няма такава специална страница',
 );
 

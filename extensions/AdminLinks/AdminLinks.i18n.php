@@ -77,6 +77,17 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'adminlinks' => "Enllaços d'administració",
+	'adminlinks-desc' => 'Afegeix una [[Special:AdminLinks|pàgina especial]] que manté enllaços útils per als administradors',
+	'adminlinks_documentation' => 'documentació $1',
+	'adminlinks_general' => 'General',
+	'adminlinks_editsidebar' => 'Edita la barra lateral',
+	'adminlinks_editcss' => 'Edita el fitxer CSS',
+	'adminlinks_editmainpagename' => 'Edita el nom de la pàgina principal',
+	'adminlinks_users' => 'Usuaris',
+	'adminlinks_createuser' => 'Crea un usuari',
+	'adminlinks_browsesearch' => "S'està navegant i buscant",
+	'adminlinks_importexport' => "S'està important i exportant",
+	'right-adminlinks' => "Vegi l'enllaç a [[Special:AdminLinks|Enllaços d'administrador]]",
 );
 
 /** German (Deutsch)
@@ -185,6 +196,24 @@ $messages['gsw'] = array(
 	'right-adminlinks' => 'Lueg s Gleich (Link) zue [[Special:AdminLinks|Adminlinks]]',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'adminlinks' => 'Kianglaghyn reirey',
+	'adminlinks-desc' => 'Cur [[Special:AdminLinks|duillag er lheh]] rish as ee goaill kianglaghyn coonee da reireyderyn stiagh',
+	'adminlinks_documentation' => 'Docamadys $1',
+	'adminlinks_general' => 'Cadjin',
+	'adminlinks_editsidebar' => 'Reaghey yn çheu-vaidjey',
+	'adminlinks_editcss' => 'Reaghey yn coadan CSS',
+	'adminlinks_editmainpagename' => 'Reaghey ennym ny preeu-duillag',
+	'adminlinks_users' => 'Ymmydeyryn',
+	'adminlinks_createuser' => 'Croo ymmydeyr',
+	'adminlinks_browsesearch' => 'Femblal as ronsaghey',
+	'adminlinks_importexport' => 'Ymmyrkey stiagh as assphurtal',
+	'right-adminlinks' => 'Jeeagh er y chiangley dys [[Special:AdminLinks|kianglaghyn reirey]]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -270,7 +299,7 @@ $messages['ksh'] = array(
 	'adminlinks_createuser' => 'Ene neuje Metmaacher aanlääje',
 	'adminlinks_browsesearch' => 'Bläddere un Söhke',
 	'adminlinks_importexport' => 'Empoteere un Äxpoteere',
-	'right-adminlinks' => 'Dä Lengk op de Sigg met [[{{#special:AdminLinks}}|Lengks för Köbeße]] jezeijsch krijje',
+	'right-adminlinks' => 'Dä Lengk op de Sigg met [[Special:AdminLinks|Lengks för Köbeße]] jezeijsch krijje',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

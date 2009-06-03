@@ -214,6 +214,14 @@ $messages['gsw'] = array(
 	'newuseredit-summary' => 'Begrießt e neije Benutzer uf syynere Diskussionssyte mit ere [[{{int:newusermessage-template}}|Willkummensnochricht]]',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'newusermessage-desc' => 'નવા સભ્યનાં ચર્ચાનાં પાનાઓ પર સંદેશ ઉમેરો',
+	'newuseredit-summary' => 'નવા સભ્યનાં ચર્ચાનાં પાના પર [[{{int:newusermessage-template}}|સ્વાગત સંદેશ]] ઉમેરો',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

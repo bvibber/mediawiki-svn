@@ -547,7 +547,7 @@ $messages['gsw'] = array(
  * @author MacTire02
  */
 $messages['gv'] = array(
-	'duplicator-options' => 'Reihghyn',
+	'duplicator-options' => 'Reihyn',
 	'duplicator-source' => 'Bun:',
 );
 

@@ -229,6 +229,19 @@ Du chasch die Syte nit aalege, aber Du chasch si [{{fullurl:{{FULLPAGENAME}}|act
 <createbox>break=no</createbox>",
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'createbox-desc' => 'પાનું બનાવવા માટેનું વિશેષ આગતચોકઠું',
+	'createbox-create' => 'બનાવો',
+	'createbox-exists' => "માફ કરો,\"'''{{FULLPAGENAME}}'''\" પહેલેથી અસ્તિત્વમાં છે.
+
+તમે આ પાનું બનાવી શકતા નથી, પરંતુ તમે [{{fullurl:{{FULLPAGENAME}}|action=edit}} સંપાદિત] કરી શકો છો,[{{fullurl:{{FULLPAGENAME}}}} વાંચી શકો છો], અથવા નિચેનાં ચોકઠાનો ઉપયોગ કરી અલગ પાનું બનાવી શકો છો.
+
+<createbox>break=no</createbox>",
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

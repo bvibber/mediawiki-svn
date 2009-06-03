@@ -761,6 +761,7 @@ $messages['gu'] = array(
 	'usagestatisticscalselect' => 'પસંદ કરો',
 	'usagestatistics-editindividual' => 'વ્યક્તિગત સભ્ય $1 સંપાદનના આંકડાઓ',
 	'usagestatistics-editpages' => 'વ્યક્તિગત સભ્ય $1 પાનાઓના આંકડાઓ',
+	'right-viewsystemstats' => 'જુઓ [[Special:UserStats|વિકિ વપરાશના આંકડા]]',
 );
 
 /** Hebrew (עברית)
@@ -1527,6 +1528,7 @@ $messages['ru'] = array(
 	'usagestatisticscalselect' => 'Выбрать',
 	'usagestatistics-editindividual' => 'Статистика $1 для индивидуальных правок',
 	'usagestatistics-editpages' => 'Статистика $1 для страниц участника',
+	'right-viewsystemstats' => 'просмотр [[Special:UserStats|статистики использования вики]]',
 );
 
 /** Slovak (Slovenčina)

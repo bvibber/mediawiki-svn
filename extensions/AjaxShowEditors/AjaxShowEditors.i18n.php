@@ -381,11 +381,13 @@ $messages['gsw'] = array(
 );
 
 /** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
  * @author Dineshjk
  */
 $messages['gu'] = array(
 	'ajax-se-desc' => 'આ જ પાનાંમા ફેરફાર કરતાં સભ્યો બતાવે છે.',
 	'ajax-se-title' => 'હાલમાં ફેરફાર ચાલુ હોય તે',
+	'ajax-se-pending' => 'અપૂર્ણ તાજું... (આ ચોકઠા પર ક્લિક કરો અથવા સંપાદન શરૂ કરો)',
 	'ajax-se-idling' => '($1 પહેલાં)',
 	'ajax-se-pagedoesnotexist' => 'પાનું અસ્તિત્વ ધરાવતું નથી.',
 	'ajax-se-userinvalid' => 'ત્રુટિ: સભ્ય અમાન્ય',

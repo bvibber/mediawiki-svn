@@ -844,9 +844,21 @@ $messages['tg-cyrl'] = array(
 
 /** Thai (ไทย)
  * @author Ans
+ * @author Manop
  */
 $messages['th'] = array(
 	'postcomment_desc' => 'ให้ผู้ใช้สามารถแสดงความเห็นลงในหน้าอภิปรายได้โดยตรง',
+	'postcomment_discussionprotected' => 'หน้าอภิปรายนี้ถูกป้องกันห้ามเขียนเพิ่มเติม',
+	'postcomment_notloggedin' => 'คุณไม่ได้ล็อกอิน',
+	'postcomment_youareloggedinas' => 'ขณะนี้คุณล็อกอินภายใต้ชื่อ $1',
+	'postcomment_addcommentdiscussionpage' => 'เพิ่มความเห็นของคุณในหน้าอภิปรายนี้',
+	'postcomment_leavemessagefor' => 'ทิ้งข้อความให้ $1',
+	'postcomment_post' => 'ส่งข้อความ',
+	'postcomment_on' => 'เมื่อ',
+	'postcomment_said' => 'กล่าวว่า',
+	'postcomment_invalidrequest' => 'การทำงานไม่ถูกต้อง',
+	'postcomment_replyto' => 'ตอบกลับ $1',
+	'postcomment_nopostingtoadd' => 'ข้อความไม่ถูกเขียน',
 );
 
 /** Tagalog (Tagalog)

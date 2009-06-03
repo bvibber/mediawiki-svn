@@ -163,6 +163,14 @@ $messages['gsw'] = array(
 	'othersites-desc' => 'Verschiebt Interwikigleicher in e eigene Chaschte, wänn si kei Sprochgleicher sin',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'othersites' => 'અન્ય સાઇટો',
+	'othersites-desc' => 'પોતાનાં પોર્ટલેટમાં ભાષાકડીઓ સિવાયની અન્ય આંતરવિકિ કડીઓ ખસેડો',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

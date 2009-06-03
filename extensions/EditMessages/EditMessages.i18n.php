@@ -441,9 +441,11 @@ $messages['gsw'] = array(
 );
 
 /** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
  * @author Dineshjk
  */
 $messages['gu'] = array(
+	'editmessages-desc' => 'બહુસંખ્યક સંદેશાઓ*.php ફાઇલોનું [[Special:EditMessages|વેબ આધારિત સંપાદન]]',
 	'editmessages' => 'સંદેશમા ફેરફાર કરો.',
 	'editmsg-target' => 'લક્ષ્ય સંદેશ:',
 	'editmsg-search' => 'શોધ',

@@ -199,6 +199,7 @@ $messages['gsw'] = array(
  */
 $messages['gu'] = array(
 	'usercontactlink-baduser' => 'ખોટું સભ્યનામ',
+	'usercontactlink-desc' => '‌‌‍^^^સભ્ય^^^ વાક્ય રચના વાપરી અને સહેલાઇ અને સંગતતાથી અન્ય સભ્યનામો ઉમેરવાની ક્ષમતા પ્રદાન કરે છે',
 );
 
 /** Hebrew (עברית)

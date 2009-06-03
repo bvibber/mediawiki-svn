@@ -359,7 +359,7 @@ $messages['bg'] = array(
 	'regexblock-view-block-infinite' => 'перманентно блокиране',
 	'regexblock-view-block-by' => 'блокиран от',
 	'regexblock-view-block-unblock' => 'отблокиране',
-	'regexblock-view-stats' => '(статистика)',
+	'regexblock-view-stats' => 'статистики',
 	'regexblock-view-empty' => 'Списъкът на блокирани имена и адреси е празен.',
 	'regexblock-view-time' => 'на $1',
 );

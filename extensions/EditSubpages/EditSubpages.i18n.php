@@ -188,15 +188,15 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'editsubpages-desc' => 'Permite aos administradores desprotexer unha páxina e todas as subpáxinas que esta contén para que os usuarios anónimos editen via [[MediaWiki:Unlockedpages]]',
-	'unlockedpages' => ' #<!-- deixe esta liña como está --><pre>
+	'editsubpages-desc' => 'Permite aos administradores desprotexer unha páxina e todas as subpáxinas desta para os usuarios anónimos editando mediante [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => '  #<!-- deixe esta liña como está --><pre>
 # Poña as páxinas que desexe desprotexer embaixo usando
-# * nomedapáxina
-# As páxinas desprotexidas deben comezar cun # para que sexan contabilizadas,
+# * Nomedapáxina
+# As páxinas desprotexidas deben comezar cun asterisco (*) para que sexan contabilizadas,
 # o resto consideranrase comentarios
-# Nomesdapáxina serán [[ligazóns]] e son sensibles á causa
+# Os nomes das páxinas serán [[ligazóns]] e distinguen entre maiúsculas e minúsculas
 # Tamén, as páxinas de conversa serán desprotexidas automaticamente coa páxina
-# Véxase http://www.mediawiki.org/wiki/Extension:EditSubpages para máis información
+# Véxase http://www.mediawiki.org/wiki/Extension:EditSubpages para obter máis información
   #</pre><!-- deixe esta liña como está -->',
 );
 

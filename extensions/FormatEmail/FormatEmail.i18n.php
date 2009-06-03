@@ -23,13 +23,6 @@ $messages['qqq'] = array(
 	'email-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Jonny84
- */
-$messages['sli'] = array(
-	'email-desc' => 'Erlaubt Benutzern persönliche Kopf- und Fusszeilen ei der E-Mail Funktion zu verwenden',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -234,6 +227,16 @@ $messages['gsw'] = array(
 	'email-desc' => 'Erlaubt Benutzer persenligi Chopf- un Fuesszyylete in dr E-Mail Funktion z verwände',
 	'email_footer' => '----------------------------------------------------------------------------
 Die E-Mail isch Dir vu $1 iber s {{SITENAME}}-E-Mail-Syschtem zuegschickt wore.
+
+$2',
+);
+
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'email-desc' => 'સભ્યનાં ઇ-મેઇલમાં મથાળું અને પાદટિપની રીત ઉમેરવાની છુટ',
+	'email_footer' => 'આ ઇ-મેઇલ તમને {{SITENAME}} ઇ-મેઇલ તંત્ર મારફત $1 દ્વારા મોકલાયો છે.
 
 $2',
 );
@@ -539,6 +542,13 @@ $messages['sk'] = array(
 Tento email vám poslal $1 pomocou emailového systému {{GRAMMAR:genitív|{{SITENAME}}}}.
 
 $2',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'email-desc' => 'Erlaubt Benutzern persönliche Kopf- und Fusszeilen ei der E-Mail Funktion zu verwenden',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

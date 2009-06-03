@@ -441,11 +441,13 @@ $messages['gsw'] = array(
 );
 
 /** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
  * @author Dineshjk
  */
 $messages['gu'] = array(
+	'amazonplus-desc' => 'એમેઝોન માહિતી દર્શાવવા માટે ઉચ્ચ અનુકૂલન વિસ્તાર',
 	'amazonplus-nores' => 'ત્રુટિ: કોઇ પરીણામ મળ્યું નહીં',
-	'amazonplus-noidres' => 'ત્રુટિ: પ્રોડક્ટ ID ન મળી!',
+	'amazonplus-noidres' => 'ત્રુટિ: ઉત્પાદન ઓળખ મળતી નથી!',
 	'amazonplus-fgcerr' => 'ત્રુટિ: એમેઝોન પરથી ડેટા ન મળ્યા!',
 	'amazonplus-slserr' => 'ત્રુટિ: એમેઝોન પરથી મળેલા ડેટાનું અર્થઘટન ન થઇ શક્યું',
 	'amazonplus-used' => 'વપરાયેલ',

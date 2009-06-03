@@ -58,6 +58,14 @@ $messages['ar'] = array(
 	'searchbox-namespaces' => 'النطاقات:',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'searchbox-search' => 'ܒܨܝ',
+	'searchbox-go' => 'ܙܠ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

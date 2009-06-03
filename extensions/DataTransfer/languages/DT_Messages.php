@@ -37,6 +37,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
@@ -49,7 +50,7 @@ $messages['qqq'] = array(
 	'dt_viewxml_namespaces' => '{{Identical|Namespaces}}',
 	'dt_xml_namespace' => '{{Identical|Namespace}}
 Used as XML tag name.',
-	'dt_xml_pages' => '{{Identical|Page}}
+	'dt_xml_pages' => '{{Identical|Pages}}
 
 Used as XML tag name.',
 	'dt_xml_page' => '{{Identical|Page}}
@@ -179,6 +180,7 @@ $messages['be-tarask'] = array(
 	'dt_viewxml_categories' => 'Катэгорыі',
 	'dt_viewxml_namespaces' => 'Прасторы назваў',
 	'dt_xml_namespace' => 'Прастора назваў',
+	'dt_xml_pages' => 'Старонкі',
 	'dt_xml_page' => 'Старонка',
 	'dt_xml_title' => 'Назва',
 );
