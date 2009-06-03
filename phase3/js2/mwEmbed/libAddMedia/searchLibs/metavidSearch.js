@@ -61,7 +61,10 @@ metavidSearch.prototype = {
                 
                 //transform the title into a wiki_safe title:             
                 //rObj['titleKey'] = proe.queryKey['stream_name'] + '_' + rObj['start_time'].replace(/:/g,'.') + '_' + rObj['end_time'].replace(/:/g,'.') + '.ogg';
-                rObj['titleKey'] =     _this.getTitleKey( rObj );            
+                rObj['titleKey'] =     _this.getTitleKey( rObj );
+                
+                //default width of metavid clips:     
+                rObj['target_width'] = 400;       
             }            
             //done loading: 
             _this.loading=0;

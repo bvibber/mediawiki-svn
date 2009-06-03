@@ -493,6 +493,7 @@ function rewrite_by_id( vid_id, ready_callback ){
          mv_video_embed(ready_callback, vid_id ); 
     });
 }
+//depricated in favor of updates to oggHanlder
 function rewrite_for_oggHanlder( vidIdList ){        
     for(var i = 0; i < vidIdList.length ; i++){        
         var vidId = vidIdList[i];

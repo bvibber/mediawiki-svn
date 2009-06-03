@@ -22,6 +22,7 @@ loadGM({
         "rsd_resource_edit" : "Edit Resource: $1",
         "resource_description_page": "Resource Description Page",
         "rsd_local_resource_title": "Local Resource Title",
+        "rsd_do_insert": "Do Insert",
         
         "cc_title": "Creative Commons",
         "cc_by_title": "Attribution",
@@ -310,6 +311,10 @@ remoteSearchDriver.prototype = {
                 this[ i ] = default_remote_search_options[i]; 
             }            
         }        
+        //update the base text: 
+        if(_this.target_textbox)
+           _this.getTexboxSelection();
+                    
         //set up the content provider config: 
         if(this.cpconfig){
             for(var cpc in cpconfig){
@@ -318,11 +323,7 @@ remoteSearchDriver.prototype = {
                         this.content_providers[ cpc ][ cinx ] = this.cpconfig[cpc][ cinx];                    
                 }
             }
-        }        
-        //overwrite the default query if a text selection was made: 
-        if(this.target_textbox)
-            this.getTexboxSelection();
-            
+        }                         
         //set up the target invocation: 
         if($j(this.target_invocation).length==0){
             js_error("RemoteSearchDriver:: no target invocation provided")
@@ -343,6 +344,10 @@ remoteSearchDriver.prototype = {
         
         //update the target bining to just unhide the dialog: 
          $j(this.target_invocation).unbind().click(function(){
+              //update the base text: 
+              if(_this.target_textbox)
+                    _this.getTexboxSelection();
+                    
               $j(_this.target_container).dialog('open');
          })
     },
@@ -351,7 +356,7 @@ remoteSearchDriver.prototype = {
         //update the caretPos    
         this.getCaretPos();                
         
-        //if we have highlighted text use that as the query: (would be fun to add context menu) 
+        //if we have highlighted text use that as the query: (would be fun to add context menu once we have rich editor in-place) 
         if( this.caret_pos.selection )
             this.default_query = this.caret_pos.selection
         
@@ -381,8 +386,9 @@ remoteSearchDriver.prototype = {
         this.caret_pos.text = txtarea.value;    
         if(this.caret_pos.s && this.caret_pos.e &&
                 (this.caret_pos.s != this.caret_pos.e))
-            this.caret_pos.selection = this.caret_pos.text.substring(this.caret_pos.s, this.caret_pos.e).replace(/ /g, '\xa0') || '\xa0';    
+            this.caret_pos.selection = this.caret_pos.text.substring(this.caret_pos.s, this.caret_pos.e).replace(/ /g, '\xa0') || '\xa0';
                 
+        js_log('got caret_pos:' + this.caret_pos.s);                
         //restore text value: (creating textRanges sometimes screws with the text content) 
         $j(this.target_textbox).val(this.caret_pos.text);
     },
@@ -488,11 +494,7 @@ remoteSearchDriver.prototype = {
         var _this = this;
         js_log("f:add_interface_bindings:");                        
         
-        //setup for this.main_search_options:
-        $j('#mso_cancel').unbind().click(function(){ 
-            _this.closeAll(); 
-        });
-        
+
         $j('#mso_selprovider,#mso_selprovider_close').unbind().click(function(){
             if($j('#rsd_options_bar:hidden').length !=0 ){
                 $j('#rsd_options_bar').animate({
@@ -1204,9 +1206,9 @@ remoteSearchDriver.prototype = {
                         $j(_this.target_container + ' .rsd_import_doimport').click(function(){                            
                 			//check import mode:
                 			if(_this.import_url_mode=='form'){
-                				_this.doImportSpecialPage( rObj );
+                				_this.doImportSpecialPage( rObj, cir_callback );
                 			}else if( _this.import_url_mode=='api'){
-                				_this.doImportAPI( rObj );
+                				_this.doImportAPI( rObj , cir_callback);
                 			}else{
                 			    js_log("Error: import mode is not form or API (can not copy asset)");
                 			}             
@@ -1223,13 +1225,22 @@ remoteSearchDriver.prototype = {
     },
     doImportAPI:function(rObj, cir_callback){
         var _this = this;
-        
+        //baseUploadInterface
         mvJsLoader.doLoad( {
-            'mvBaseUploadInterface': 'libAddMedia/mvBaseUploadInterface.js'
+            'mvBaseUploadInterface': 'libAddMedia/mvBaseUploadInterface.js',            
+            '$j.ui.progressbar'     : 'jquery/' + jQueryUiVN + '/ui/ui.progressbar.js'                
         },function(){      
         	//initicate a download similar to url copy:
         	myUp = new mvBaseUploadInterface({
-        	    'api_url' : _this.local_wiki_api_url 
+        	    'api_url' : _this.local_wiki_api_url,
+        	    'done_upload_cb':function(){
+        	       //we have finished the upload:
+        	       
+        	       //close up the rsd_resource_import
+        	       $j('#rsd_resource_import').remove();
+        	       //run the parent callback: 
+        	       cir_callback();  
+        	    } 
         	});
         	myUp.doHttpUpload({
         	    'url'       : rObj.src,
@@ -1337,7 +1348,7 @@ remoteSearchDriver.prototype = {
                             mv_get_loading_img('top:30px;left:30px') + 
                         '</div>' +
                         '<div id="rsd_preview_control" style="position:absolute;width:60%;left:40%;bottom:0px;height:30px;">' +
-                            '<input type="button" id="preview_do_insert" value="Do Insert">' +
+                            $j.btnHtml( gM('rsd_do_insert'), 'preview_do_insert', 'check') + ' ' +                             
                             '<a href="#" id="preview_close">Do More Modification</a>' +
                         '</div>' +
                     '</div>');                        
@@ -1347,10 +1358,12 @@ remoteSearchDriver.prototype = {
             _this.getParsedWikiText(_this.preview_wtext, _this.target_title,
                 function(phtml){
                     $j('#rsd_preview_display').html( phtml );
+                    //update the display of video tag items (if any) 
+                    mwdomReady(true);
                 }
             );            
             //add bindings: 
-            $j('#preview_do_insert').click(function(){
+            $j( _this.target_container + ' .preview_do_insert').btnBind().click(function(){
                 _this.insertResource( rObj );
             });
             $j('#preview_close').click(function(){
@@ -1361,11 +1374,15 @@ remoteSearchDriver.prototype = {
     updatePreviewText:function( rObj ){
         var _this = this;        
         //insert at start if textInput cursor has not been set (ie == length) 
-        if( _this.caret_pos.text.length == _this.caret_pos.s)
-            _this.caret_pos.s=0;
-        _this.preview_wtext = _this.caret_pos.text.substring(0, _this.caret_pos.s) + 
-                                rObj.pSobj.getEmbedWikiText( rObj ) + 
-                               _this.caret_pos.text.substring( _this.caret_pos.s );
+        if( _this.caret_pos){
+            if( _this.caret_pos.text.length == _this.caret_pos.s)
+                _this.caret_pos.s=0;
+            _this.preview_wtext = _this.caret_pos.text.substring(0, _this.caret_pos.s) + 
+                                    rObj.pSobj.getEmbedWikiText( rObj ) + 
+                                   _this.caret_pos.text.substring( _this.caret_pos.s );
+        }else{
+           _this.preview_wtext =  $j(_this.target_textbox).val() +  rObj.pSobj.getEmbedWikiText( rObj );
+        }         
         //check for missing </refrences>
         if( _this.preview_wtext.indexOf('<references/>') ==-1 &&  _this.preview_wtext.indexOf('<ref>') != -1 )
              _this.preview_wtext =  _this.preview_wtext + '<references/>';
@@ -1384,17 +1401,19 @@ remoteSearchDriver.prototype = {
     insertResource:function( rObj){        
         js_log('insertResource: ' + rObj.title);
         var _this = this
+        //dobule check that the resource is present: 
         this.checkImportResource( rObj, function(){
             _this.updatePreviewText( rObj );
-            $j('#'+_this.target_textbox).val( _this.preview_wtext );
+            js_log('should update textbox: ' +  _this.preview_wtext );
+            $j(_this.target_textbox).val( _this.preview_wtext );
             _this.closeAll();
         });            
     },
-    closeAll:function( rObj ){
-        $j('#modalbox').fadeOut("normal",function(){
-                $j(this).remove();
-                $j('#mv_overlay').remove();
-        });
+    closeAll:function(){
+         js_log("close all");
+         $j('#rsd_resource_preview').remove();
+         $j('#rsd_resource_edit').remove();
+         $j(this.target_container).dialog('close');
     },
     setResultBarControl:function( ){
         var _this = this;

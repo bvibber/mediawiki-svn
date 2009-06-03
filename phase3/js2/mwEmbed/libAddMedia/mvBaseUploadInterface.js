@@ -38,7 +38,8 @@ loadGM({
 var default_bui_options = {
 	'api_url':null,
 	'parent_uploader':null,
-	'edit_from':null
+	'edit_from':null,
+	'done_upload_cb': null
 }
 var mvBaseUploadInterface = function( iObj ){
 	return this.init( iObj );
@@ -264,16 +265,18 @@ mvBaseUploadInterface.prototype = {
 					//update the status:
 					_this.updateProgress( perc );
 					//special case update the file progress where we have data size: 
-					$j('#upload-stats-fileprogres').html( 
+					$j('#up-status-container').html( 
 						gM('upload-stats-fileprogres', [ 
 							formatSize( data.upload['loaded'] ), 
 							formatSize( data.upload['content_length'] )
 							]  
 						)
 					);
-				}else if( data.upload['loaded'] ){					
+				}else if( data.upload['loaded'] ){		
+				    _this.updateProgress( 1 );		
+				    js_log('just have loaded (no cotent length: ' + data.upload['loaded']);
 					//for lack of content-length requests: 
-					$j('#upload-stats-fileprogres').html( 
+					$j('#up-status-container').html( 
 						gM('upload-stats-fileprogres', [
 							formatSize( data.upload['loaded'] ),
 							gM('upload-unknown-size')
@@ -289,7 +292,7 @@ mvBaseUploadInterface.prototype = {
 	},
 	processApiResult: function( apiRes ){	
 		var _this = this;			
-
+        js_log('processApiResult::');
 		//check for upload api error:
 		// {"upload":{"result":"Failure","error":"unknown-error","code":{"status":5,"filtered":"NGC2207%2BIC2163.jpg"}}}
 		if( apiRes.error || ( apiRes.upload && apiRes.upload.result == "Failure" ) ){
@@ -349,14 +352,22 @@ mvBaseUploadInterface.prototype = {
 			return ;
 		}		
 		
-		if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){				    
+		if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){	
 		    var url = apiRes.upload.imageinfo.descriptionurl;
-		    var bObj = {};
-		    bObj[ gM('go-to-resource') ] = function(){
-			        window.location = url;
-			};
-			_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done'), bObj);
-			js_log('apiRes.upload.imageinfo::'+url);
+		    //check done action: 
+		    if(_this.done_upload_cb){
+		        //close up shop: 
+		        $j('#upProgressDialog').dialog('close');	
+		        //call the callback: 	        
+		        _this.done_upload_cb( url );
+		    }else{		   
+    		    var bObj = {};
+    		    bObj[ gM('go-to-resource') ] = function(){
+    			        window.location = url;
+    			};
+    			_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done'), bObj);
+    			js_log('apiRes.upload.imageinfo::'+url);
+		    }
 			return ;
 		}		
 				
@@ -425,8 +436,11 @@ mvBaseUploadInterface.prototype = {
 	         $j('#upProgressDialog').dialog('option','buttons', buttons);
 	     }else{	         
 	         //@@todo should convice the jquery ui people to not use object keys as user msg's
-	          eval('var bObj = {\''+ gM('ok-button')+ '\':function(){$j(this).dialog(\'close\');} }'); 
-	          $j('#upProgressDialog').dialog('option','buttons',bObj  );
+	         var bObj = {};
+	          bObj[ gM('ok-button') ] =  function(){
+	              $j(this).dialog('close');
+	          }; 
+	          $j('#upProgressDialog').dialog('option','buttons', bObj);
 	     }	     
 	},		
 	getProgressTitle:function(){
@@ -477,8 +491,8 @@ mvBaseUploadInterface.prototype = {
         '<div id="up-pbar-container" style="width:90%;height:15px;" >' +
 			'<div id="up-progressbar" style="height:15px;"></div>' +
 			'<div id="up-status-container">'+
-			'<span id="up-pstatus">0% - </span> ' +						 
-		    '<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +
+    			'<span id="up-pstatus">0% - </span> ' +						 
+    		    '<span id="up-status-state">' + gM('uploaded-status') + '</span> ' +
 		    '</div>'+		
 		'</div>' 
 	  )
