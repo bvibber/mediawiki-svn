@@ -20,7 +20,7 @@ if( MV_EMBED_VERSION ){
 	MV_DO_INIT=false;	
 }
 //used to grab fresh copies of scripts. (should be changed on commit)  
-var MV_EMBED_VERSION = '1.0r15';
+var MV_EMBED_VERSION = '1.0r16';
 
 /*
  * Configuration variables (can be set from some precceding script) 
@@ -388,6 +388,7 @@ var mvJsLoader = {
 	},
 	embedVideoCheck:function( callback ){
 		var _this = this;
+		js_log('embedVideoCheck:');
 		//issue a style sheet request get both mv_embed and jquery styles: 
 		loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
 		loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
@@ -398,28 +399,22 @@ var mvJsLoader = {
 				'$j.ui'		   	: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
 				'embedVideo'    : 'libEmbedVideo/mv_baseEmbed.js',				
 				'$j.cookie'	    : 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js'																
-			};			
+			};		
+			var secReq = {};	
 			//IE loads things out of order running j.slider before j.ui is ready
 			//load ui depenent scripts in a second request:
 			if($j.browser.msie){
 				secReq = {
 					'$j.ui.slider'	: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js'	
 				}
-			}else{
-				secReq = false;
+			}else{				
 				baseReq['$j.ui.slider'] =  'jquery/' + jQueryUiVN + '/ui/ui.slider.js';
 			}		 				
-			_this.doLoad(baseReq,function(){	
-					if(!secReq){
-						embedTypes.init();					
-						callback();												
-					}else{			
-						//else IE load in stage: 
-						_this.doLoad(secReq,function(){			 
-							embedTypes.init();										
-							callback();	
-						});	
-					}		
+			_this.doLoad(baseReq,function(){						
+					_this.doLoad(secReq,function(){			 
+						embedTypes.init();										
+						callback();	
+					});			
 				});
 		});
 	},	
@@ -467,9 +462,9 @@ function mwdomReady(force){
 	
 	//check if this page does have video or playlist
 	if(document.getElementsByTagName("video").length!=0 ||
+	   document.getElementsByTagName("audio").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
-		js_log('we have vids to process');		
-					
+		js_log('we have things to rewrite');					
 		//load libs and proccess:					 
 		mvJsLoader.embedVideoCheck(function(){
 			//run any queded global events:
@@ -636,7 +631,8 @@ function mv_jqueryBindings(){
 			});
 		}
 		
-		$.fn.firefogg = function( iObj, callback ) {		
+		$.fn.firefogg = function( iObj, callback ) {
+				
 			//add base theme css:
 			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
 			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );			
@@ -645,32 +641,46 @@ function mv_jqueryBindings(){
 			loadSet = {				
 				'mvBaseUploadInterface' : 'libAddMedia/mvBaseUploadInterface.js',
 				'mvFirefogg'			: 'libAddMedia/mvFirefogg.js',
-				'$j.ui'				 : 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-				'$j.ui.progressbar'	 : 'jquery/' + jQueryUiVN + '/ui/ui.progressbar.js',
-				'$j.ui.dialog'		  : 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js'								
-			};
-			//load the advanced firefog controls and associated ui components:			
-			if( iObj.encoder_interface ){ 
-															  
-				loadSet['mvAdvFirefogg']	= 'libAddMedia/mvAdvFirefogg.js';
-				loadSet['$j.cookie']		= 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js';			  
-				loadSet['$j.ui.accordion']  = 'jquery/' + jQueryUiVN + '/ui/ui.accordion.js';
-				loadSet['$j.ui.slider']	 = 'jquery/' + jQueryUiVN + '/ui/ui.slider.js';	   
-				loadSet['$j.ui.datepicker'] =  'jquery/' + jQueryUiVN + '/ui/ui.datepicker.js';
-						  
+				'$j.ui'				    : 'jquery/' + jQueryUiVN + '/ui/ui.core.js'										
+			};	
+			var encoderInterfaceLoadSet = {
+					'mvAdvFirefogg'		: 'libAddMedia/mvAdvFirefogg.js',
+					'$j.cookie'			: 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',			  
+					'$j.ui.accordion'   : 'jquery/' + jQueryUiVN + '/ui/ui.accordion.js',
+					'$j.ui.slider'	 	: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js',	   
+					'$j.ui.datepicker'  : 'jquery/' + jQueryUiVN + '/ui/ui.datepicker.js'
+			}
+			var secondLoadSet = {};	
+			//IE* ~sometimes~ executes things out of order on DOM inserted scripts
+			//*(kind of pointless anyway since ie does not support firefogg 
+			// but if you want firefog dirven "is not supported" msg here you go ;)
+			if($.browser.msie){
+				secondLoadSet = {
+					'$j.ui.progressbar'	    : 'jquery/' + jQueryUiVN + '/ui/ui.progressbar.js',
+					'$j.ui.dialog'		    : 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js'		
+				}
+				for(var i in encoderInterfaceLoadSet)
+					secondLoadSet[i] = encoderInterfaceLoadSet[i];
+			}else{
+				loadSet['$j.ui.progressbar']='jquery/' + jQueryUiVN + '/ui/ui.progressbar.js';
+				loadSet['$j.ui.dialog']		='jquery/' + jQueryUiVN + '/ui/ui.dialog.js';
+				for(var i in encoderInterfaceLoadSet)
+					loadSet[i] = encoderInterfaceLoadSet[i];
 			}			
 			//make sure we have everything loaded that we need: 
-			mvJsLoader.doLoad( loadSet, function(){			
-				js_log('firefogg libs loaded. target select:' + iObj.selector);
-				//select interface provicer based on if we want to include the encoder interface or not: 
-				if(iObj.encoder_interface){
-					var myFogg = new mvAdvFirefogg( iObj );
-				}else{
-					var myFogg = new mvFirefogg( iObj );
-				}							   
-				if(myFogg)
-					myFogg.doRewrite( callback );
-						
+			mvJsLoader.doLoad( loadSet, function(){	
+				mvJsLoader.doLoad( secondLoadSet, function(){		
+				if(secondLoadSet)
+					js_log('firefogg libs loaded. target select:' + iObj.selector);
+					//select interface provicer based on if we want to include the encoder interface or not: 
+					if(iObj.encoder_interface){
+						var myFogg = new mvAdvFirefogg( iObj );
+					}else{
+						var myFogg = new mvFirefogg( iObj );
+					}							   
+					if(myFogg)
+						myFogg.doRewrite( callback );
+				});	
 			});		
 		}
 		
@@ -1118,7 +1128,7 @@ function js_log(string){
 	 /*
 	  * IE and non-firebug debug:
 	  */
-	 var log_elm = document.getElementById('mv_js_log');
+	 /*var log_elm = document.getElementById('mv_js_log');
 	 if(!log_elm){
 		 document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + 
 					 '<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:10px;">'+
@@ -1126,10 +1136,10 @@ function js_log(string){
 					 '</div>';
 				  
 		 var log_elm = document.getElementById('mv_js_log');
-	 }
+	 }	 
 	 if(log_elm){
 		 log_elm.value+=string+"\n";
-	 }
+	 }*/
   }
   return false;
 }

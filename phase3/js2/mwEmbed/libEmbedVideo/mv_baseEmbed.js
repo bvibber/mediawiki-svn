@@ -49,6 +49,8 @@ var mv_default_source_attr= new Array(
 	'src',
 	'title',
 	'URLTimeEncoding', //boolean if we support temporal url requests on the source media
+	'startOffset',
+	'duration',
 	'start',
 	'end',	
 	'default',
@@ -72,44 +74,51 @@ mvEmbed = {
 		
 		var loadPlaylistLib=false;
 		//set up the jQuery selector:				 
+		
+		var eAction = function(this_elm){
+			js_log( "Do SWAP: " + $j(this_elm).attr("id") + ' tag: '+ this_elm.tagName.toLowerCase() );
+					
+			if( $j(this_elm).attr("id") == '' ){
+				$j(this_elm).attr("id", 'v'+ global_player_list.length);
+			}			
+			//stre a global reference to the id	
+		   global_player_list.push( $j(this_elm).attr("id") );
+		   //if video doSwap
+		   switch( this_elm.tagName.toLowerCase()){
+			   case 'video':
+				   var videoInterface = new embedVideo(this_elm);	 
+				mvEmbed.swapEmbedVideoElement( this_elm, videoInterface );
+			   break;
+			   case 'audio':
+				   var videoInterface = new embedVideo(this_elm);	 
+				   videoInterface.type ='audio';
+				mvEmbed.swapEmbedVideoElement( this_elm, videoInterface );
+			   break;
+			   case 'playlist':
+				   loadPlaylistLib=true;
+			   break;
+		   }		
+		}
+		
 		if( force_id == null && force_id != '' ){
-			var j_selector = 'video,audio,playlist';
+			var j_selector = 'video,audio,playlist';			   	
 		}else{
 			var j_selector = '#'+force_id;
 		}
-		
-		js_log('SELECTOR: '+ j_selector);
-		
 		//process selected elements: 
-		$j(j_selector).each(function(){
-			js_log( "Do SWAP: " + $j(this).attr("id") + ' tag: '+ this.tagName.toLowerCase() );
-					
-			if( $j(this).attr("id") == '' ){
-				$j(this).attr("id", 'v'+ global_player_list.length);
-			}			
-			//stre a global reference to the id	
-			   global_player_list.push( $j(this).attr("id") );
-			//add loading: (pre-loading div)		 
-			/*$j(this).after('<div id="pre_loading_div_'+elm_id + '">'+
-					   gM('loading_txt')+'</div>' );
-			   */ 
-			   
-			   //if video doSwap
-			   switch( this.tagName.toLowerCase()){
-				   case 'video':
-					   var videoInterface = new embedVideo(this);	 
-					mvEmbed.swapEmbedVideoElement( this, videoInterface );
-				   break;
-				   case 'audio':
-					   var videoInterface = new embedVideo(this);	 
-					   videoInterface.type ='audio';
-					mvEmbed.swapEmbedVideoElement( this, videoInterface );
-				   break;
-				   case 'playlist':
-					   loadPlaylistLib=true;
-				   break;
-			   }		
-		});	
+		//ie8 does not play well with the jQuery video,audio,playlist selector use native: 
+		if($j.browser.msie = true && $j.browser.version >= 8){
+			jtags = j_selector.split(',');				
+			for(var i=0;i<jtags.length;i++){
+				$j( document.getElementsByTagName( jtags[i] )).each(function(){
+					eAction(this);
+				});
+			}				
+		}else{			
+			$j( j_selector ).each(function(){
+				eAction(this);
+			});	
+		}				
 		if(loadPlaylistLib){		
 			mvJsLoader.doLoad({ 'mvPlayList' : 'libSequencer/mvPlayList.js' },function(){
 				$j('playlist').each(function(){		
@@ -202,7 +211,7 @@ mvEmbed = {
 		if( is_ready ){
 			mvEmbed.allClipsReady = true;
 			// run queued functions 
-			js_log('run queded functions:');
+			js_log('run queded functions:' + mvEmbed.flist[0]);
 			while (mvEmbed.flist.length){
 				mvEmbed.flist.shift()();
 			}
@@ -272,32 +281,32 @@ var ctrlBuilder = {
 		//		'start sec: '+embedObj.start_time_sec + ' base offset: '+embedObj.base_seeker_slider_offset);
 		
 		//add play hook: 
-		$j('#mv_play_pause_button_' + embedObj.id).unbind( "click" ).click(function(){
+		$j('#mv_play_pause_button_' + embedObj.id).unbind().btnBind().click(function(){
 			$j('#' + embedObj.id).get(0).play();
 		});		
 		
 		//big_play_link_ play binding: 
-		$j('#big_play_link_' + embedObj.id).unbind('click').click(function(){
+		$j('#big_play_link_' + embedObj.id).unbind().click(function(){
 			$j('#' + embedObj.id).get(0).play();
 		});
 		
 		//captions binding:
-		$j('#timed_text_'  + embedObj.id).unbind('click').click(function(){
+		$j('#timed_text_'  + embedObj.id).unbind().btnBind().click(function(){
 			$j('#' + embedObj.id).get(0).showTextInterface();
 		});
 		
 		//options binding: 
-		$j('#options_button_' + embedObj.id).unbind('click').click(function(){
+		$j('#options_button_' + embedObj.id).unbind().btnBind().click(function(){
 			$j('#' +embedObj.id).get(0).doOptionsHTML();
 		});
 				
 		//fullscreen binding: 
-		$j('#fullscreen_'+embedObj.id).unbind('click').click(function(){
+		$j('#fullscreen_'+embedObj.id).unbind().btnBind().click(function(){
 			$j('#' +embedObj.id).get(0).fullscreen();
 		});		
 		
 		//volume binding: 
-		$j('#volume_control_'+embedObj.id).unbind('click').click(function(){
+		$j('#volume_control_'+embedObj.id).unbind().btnBind().click(function(){
 			$j('#' +embedObj.id).get(0).toggleMute();
 		});
 		
@@ -590,13 +599,23 @@ mediaSource.prototype =
 				var times = annoURL.queryKey['t'].split('/');
 				this.start_ntp = times[0];
 				this.end_ntp = times[1];
-			}			
-			this.start_offset = npt2seconds( this.start_ntp );
-			this.duration = npt2seconds( this.end_ntp ) - this.start_offset;
+				this.start_offset = npt2seconds( this.start_ntp );
+				this.duration = npt2seconds( this.end_ntp ) - this.start_offset;
+			}else{
+				//look for this info as attributes
+				if(this.startOffset){
+					this.start_offset = this.startOffset;
+					this.start_ntp = seconds2npt( this.startOffset);					
+				} 
+				if(this.duration){
+					this.end_ntp = seconds2npt( parseInt(this.duration) + parseInt(this.start_offset) );
+				}
+			}						
 		}else{							  
 			 //else normal media request (can't predict the duration without the plugin reading it)
 			this.duration = null;
 			this.start_offset = 0;
+			this.startOffset = 0;
 			this.start_ntp = seconds2npt(this.start_offset);			
 		}
 		//js_log('f:parseURLDuration() for:' + this.src  + ' d:' + this.duration);
@@ -1965,7 +1984,7 @@ embedVideo.prototype = {
 		}				
 		
 		 $j("#mv_play_pause_button_" + this_id + ' span').removeClass('ui-icon-play').addClass('ui-icon-pause');			   
-		 $j("#mv_play_pause_button_" + this_id).unbind().click(function(){					
+		 $j("#mv_play_pause_button_" + this_id).unbind().btnBind().click(function(){					
 		   $j('#' + this_id ).get(0).pause();
 	   });
 		   
@@ -1989,7 +2008,7 @@ embedVideo.prototype = {
 		this.paused = true; 
 		//update the ctrl "paused state"				
 		$j("#mv_play_pause_button_" + this_id + ' span').removeClass('ui-icon-pause').addClass('ui-icon-play');
-		$j("#mv_play_pause_button_" + this_id).unbind().click(function(){							 
+		$j("#mv_play_pause_button_" + this_id).unbind().btnBind().click(function(){							 
 				$j('#'+this_id).get(0).play();
 			});
 	},	

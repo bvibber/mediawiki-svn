@@ -190,22 +190,9 @@ var vlcEmbed = {
 			this.media_element.selected_source.setDuration( this.vlc.input.length /1000);
 			this.duration = this.vlc.input.length /1000;
 		}
-		//update the currentTime attribute 
-		if( this.media_element.selected_source.timeFormat =='anx' ){
-			this.currentTime = this.vlc.input.time/1000;
-			//js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration());
-			
-			//if we are way out of range... add offset (hack)
-			if(  ( this.currentTime + 10 ) < npt2seconds( this.start_ntp) ){
-				this.currentTime = (this.vlc.input.time/1000) + this.media_element.selected_source.start_offset;
-			}
-		}else{
-			this.currentTime = (this.vlc.input.time/1000) + this.media_element.selected_source.start_offset;	   
-		}
-		//vlc uses original time update startOffset if playing chop stream: 
-		if( this.startOffset )
-			this.currentTime = this.currentTime - this.startOffset;
-		//updates hanlded by parent monitor and currentTime
+		this.currentTime = this.vlc.input.time/1000;
+		if(this.startOffset)
+			this.currentTime = this.currentTime - this.startOffset;		
    },
    onPause: function(){		   
 		   this.parent_pause(); //update the inteface if paused via native control

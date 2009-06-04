@@ -32,12 +32,13 @@ var javaEmbed = {
 		
 		if(mediaSrc.indexOf('://')!=-1 & parseUri(document.URL).host !=  parseUri(mediaSrc).host){
 			if(window.cortadoDomainLocations[parseUri(mediaSrc).host]){
-			   applet_loc =  window.cortadoDomainLocations[parseUri(mediaSrc).host];
+				applet_loc =  window.cortadoDomainLocations[parseUri(mediaSrc).host];
 			}else{
 				applet_loc  = 'http://theora.org/cortado.jar';
 			}
 		}else{
-			applet_loc = mv_embed_path+'binPlayers/cortado/cortado-wmf-r46643.jar';
+			//should be identical to cortado.jar
+			applet_loc = mv_embed_path+'binPlayers/cortado/cortado.jar';
 		}
 			//load directly in the page..
 			// (media must be on the same server or applet must be signed)
@@ -84,10 +85,11 @@ var javaEmbed = {
 		if(this.jce){		  
 			try{					 
 			   //java reads ogg media time.. so no need to add the start or seek offset:
-			   //js_log(' ct: ' + this.jce.getPlayPosition() );												   
-			   this.currentTime = this.jce.getPlayPosition();			
-			   this.addPresTimeOffset();
-			   
+			   //js_log(' ct: ' + this.jce.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
+			   this.currentTime = this.jce.getPlayPosition();	
+			   if(this.startOffset && ! this.supportsURLTimeEncoding()){	
+			   		this.currentTime = 	 this.currentTime - this.startOffset;
+			   }			   			  
 			   if( this.jce.getPlayPosition() < 0){
 			   		js_log('pp:'+this.jce.getPlayPosition());				 
 					//probably reached clip end 

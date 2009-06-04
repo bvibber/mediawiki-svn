@@ -59,7 +59,7 @@ var mvFirefogg = function(initObj){
 }
 mvFirefogg.prototype = { //extends mvBaseUploadInterface
 
-	min_firefogg_version : '0.9.6',	
+	min_firefogg_version : '0.9.8',	
 	fogg_enabled : false,		 //if firefogg is enabled or not.	 
 	encoder_settings:{			//@@todo allow server to set this 
 		'maxSize': 400, 
