@@ -418,7 +418,7 @@ mvClipEdit.prototype = {
 	getInsertAction:function(){		
 		return '<h3>Actions</h3>'+
 				$j.btnHtml( gM('mv_insert_image_page'), 'mv_insert_image_page', 'check' ) + ' ' + 
-				$j.btnHtml( gM('mv_preview_insert'), 'mv_preview_insert', 'refresh') +  ' ' +
+				$j.btnHtml( gM('mv_preview_insert'), 'mv_preview_insert', 'refresh') + '<div style="clear:both;height:20px;"/>' +
 				$j.btnHtml( gM('mv_cancel_image_insert'), 'mv_cancel_img_edit', 'close');
 	},
 	applyEdit:function(){

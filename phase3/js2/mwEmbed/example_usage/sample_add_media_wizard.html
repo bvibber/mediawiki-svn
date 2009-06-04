@@ -5,16 +5,20 @@
 	<title>sample mv embed</title>
 	<style type="text/css">
 		body{
-		font-size:80%;
+			font-size:80%;
+		}
+		img  {
+			border:medium none;
 		}
 	</style>
- 	<script type="text/javascript" src="../mv_embed.js"></script> 	 	 
+ 	<script type="text/javascript" src="../mv_embed.js?debug=true"></script> 	 	 
  	<script type="text/javascript">
  	mwAddOnloadHook(function(){
  		$j('#add_media_link').addMediaWiz( {
 			'profile':'html_edit',			
-			'target_textbox': '#wpTextbox1',		
-			'import_url_mode':'link',	
+			'target_textbox': '#wpTextbox1',
+			'target_render_area':'#inline_append',			
+			'import_url_mode':'remote_html_embed',	
 			//note selections in the textbox will take over the default query
 			'default_query': 'fish',	
 			//here we can setup the conten provider overides
@@ -34,7 +38,7 @@
 <table border="1" width="800">
 <tr>
 <td valign="top" width="50%" id="inline_append">Asset Output</td>
-<td  valign="top" width="50%" >Html Output:<textarea id="wpTextbox1" cols="60" rows="6" id="code_append" name="wpUploadDescription" tabindex="3"/></textarea></td>
+<td  valign="top" width="50%" >Html Output:<textarea id="wpTextbox1" cols="60" rows="6" id="code_append" name="wpTextbox1" tabindex="3"/></textarea></td>
 </tr>
 </table>
 </body>

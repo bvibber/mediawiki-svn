@@ -164,4 +164,4 @@ var javaEmbed = {
 		if( this.jce )
 			this.jce.doPause();		 
 	}
-}
+};

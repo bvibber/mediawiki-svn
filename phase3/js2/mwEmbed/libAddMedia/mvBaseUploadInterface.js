@@ -519,4 +519,4 @@ mvBaseUploadInterface.prototype = {
 			alert('(sorry we do not yet support cancel)');
 		}  
 	}
-}
+};

@@ -752,4 +752,4 @@ mvAdvFirefogg.prototype = {
 	saveEncSettings:function(){
 		$j.cookie('fogg_settings', JSON.stringify( this.local_settings ) );
 	}
-}
+};

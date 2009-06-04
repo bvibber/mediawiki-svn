@@ -266,5 +266,5 @@ var vlcEmbed = {
 	getVLC : function(){
 		this.vlc = this.getPluginEmbed();		   
 	}
-}
+};
 

@@ -160,4 +160,4 @@ mediaWikiUploadHelper.prototype = {
             '</span><br></p>');                    
     },
 
-}
+};

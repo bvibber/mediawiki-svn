@@ -2706,7 +2706,7 @@ var embedTypes = {
 		//this.clientSupports['quicktime-mozilla'] = false;
 		//this.clientSupports['quicktime-activex'] = false;
 		//js_log(this.clientSupports);
-	 },
+	},
 	testActiveX : function ( name ) {
 		 var hasObj = true;
 		 try {
@@ -2716,5 +2716,5 @@ var embedTypes = {
 			 hasObj = false;
 		 }
 		 return hasObj;
-	 }	 
-}
+	}	 
+};

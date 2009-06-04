@@ -1827,4 +1827,4 @@ var flashEmbed = {
 			this.parent_onClipDone();
 		}
 	}
-}
+};

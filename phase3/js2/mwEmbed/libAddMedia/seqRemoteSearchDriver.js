@@ -59,4 +59,4 @@ seqRemoteSearchDriver.prototype = {
 		//pass along for now: 
 		this.parent_resourceEdit(rObj, rsdElement);
 	}
-}
+};

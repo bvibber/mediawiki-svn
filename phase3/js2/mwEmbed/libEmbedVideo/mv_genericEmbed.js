@@ -14,4 +14,4 @@ var genericEmbed={
 				  'width="'+this.width+'" height="'+this.height+'" ' +
 				  'data="' + this.getURI( this.seek_time_sec ) + '"></object>';
 	}
-}
+};

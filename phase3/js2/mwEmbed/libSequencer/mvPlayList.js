@@ -2138,4 +2138,4 @@ String.prototype.htmlEntities = function(){
 	newString = newString.replace (myRegExp, '&' + entities[i] + ';');
   }
   return newString;
-}
+};

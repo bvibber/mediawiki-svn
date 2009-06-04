@@ -1,3 +1,11 @@
+
+loadGM({
+    "select_transcript_set" : "Select Layers",
+	"auto_scroll" : "auto scroll",
+	"close" : "close",
+	"improve_transcript" : "Improve",
+})
+
 // text interface object (for inline display captions) 
 var mvTextInterface = function( parentEmbed ){
 	return this.init( parentEmbed );
@@ -173,6 +181,7 @@ mvTextInterface.prototype = {
 				this.getMenu() +
 				this.getBody() 
 			);
+			this.doMenuBindings();
 		}						
 	},
 	show:function(){
@@ -192,9 +201,9 @@ mvTextInterface.prototype = {
 	},
 	getBody:function(){
 		return '<div id="mmbody_'+this.pe.id+'" ' +
-				'style="position:absolute;top:20px;left:0px;' +
+				'style="position:absolute;top:30px;left:0px;' +
 				'right:0px;bottom:0px;' +
-				'height:'+(this.pe.height-20)+
+				'height:'+(this.pe.height-30)+
 				'px;overflow:auto;"><span style="display:none;" id="mv_txt_load_' + this.pe.id + '">'+
 					gM('loading_txt')+'</span>' +
 				'</div>';
@@ -202,7 +211,7 @@ mvTextInterface.prototype = {
 	getTsSelect:function(){
 		var _this = this;
 		js_log('getTsSelect');		
-		var selHTML = '<div id="mvtsel_' + this.pe.id + '" style="position:absolute;background:#FFF;top:20px;left:0px;right:0px;bottom:0px;overflow:auto;">';
+		var selHTML = '<div id="mvtsel_' + this.pe.id + '" style="position:absolute;background:#FFF;top:30px;left:0px;right:0px;bottom:0px;overflow:auto;">';
 		selHTML+='<b>' + gM('select_transcript_set') + '</b><ul>';
 		//debugger;
 		for(var i in _this.availableTracks){ //for in loop ok on object			
@@ -286,20 +295,28 @@ mvTextInterface.prototype = {
 		var out='';
 		//add in loading icon:
 		var as_checked = (this.autoscroll)?'checked':'';
-		out+= '<div id="tt_mmenu_'+this.pe.id+'" class="ui-widget-header" style="background:#AAF;font-size:small;position:absolute;top:0;height:20px;left:0px;right:0px;">' +
-				'<a class="ui-state-default ui-corner-all ui-icon_link" title="'+gM('close')+'" href="#" onClick="document.getElementById(\''+this.pe.id+'\').closeTextInterface();return false;">'+
-					'<span class="ui-icon ui-icon-circle-close"/>' + 
-					'</a> ' +
-				'<a style="font-color:#000;" title="'+gM('select_transcript_set')+'" href="#"  onClick="document.getElementById(\''+this.pe.id+'\').textInterface.getTsSelect();return false;">'+
-					gM('select_transcript_set')+'</a> | ' +
-				'<input onClick="document.getElementById(\''+this.pe.id+'\').textInterface.setAutoScroll(this.checked);return false;" ' +
-				'type="checkbox" '+as_checked +'>'+gM('auto_scroll');
+		out+= '<div id="tt_mmenu_'+this.pe.id+'" class="ui-widget-header" style="font-size:.6em;position:absolute;top:0;height:30px;left:0px;right:0px;">' +		       
+				$j.btnHtml(gM('select_transcript_set'), 'tt-select', 'shuffle'); 								
 		if(this.pe.media_element.linkback){
-			out+=' | <a style="font-color:#000;" title="'+gM('improve_transcript')+'" href="'+this.pe.media_element.linkback+'" target="_new">'+
-				gM('improve_transcript')+'</a> ';
+			out+=' ' + $j.btnHtml(gM('improve_transcript'), 'tt-improve', 'document', {href:this.pe.media_element.linkback, target:'_new'});			
 		}
-		out+='</div>';
+		out+='<input onClick="document.getElementById(\''+this.pe.id+'\').textInterface.setAutoScroll(this.checked);return false;" ' +
+				'type="checkbox" '+as_checked +'>'+gM('auto_scroll') + ' ' + 
+              $j.btnHtml(gM('close'), 'tt-close', 'circle-close', {'style':'float:right;'}); 				
+		out+='</div>';		
 		return out;
+	},
+	doMenuBindings:function(){
+	    var _this = this;
+	    var mt = '#tt_mmenu_'+ _this.pe.id;
+	    $j(mt + ' .tt-close').unbind().btnBind().click(function(){
+	       $j( '#' + _this.pe.id).get(0).closeTextInterface();  
+	    });
+	    $j(mt + ' .tt-select').unbind().btnBind().click(function(){
+	       $j( '#' +  _this.pe.id).get(0).textInterface.getTsSelect();
+	    });
+	    //use hard-coded link: 
+	    $j(mt + ' .tt-improve').btnBind();
 	}
 }
 
@@ -439,4 +456,4 @@ timedTextSRT = {
 			 }
 		}	
 	}	
-}
+};

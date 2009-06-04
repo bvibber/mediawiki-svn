@@ -185,7 +185,7 @@ baseRemoteSearch.prototype = {
 	getEmbedTimeMeta:function(rObj, callback){
 		callback();
 	},
-	getEmbedWikiText:function(rObj){
+	getEmbedWikiCode:function(rObj){	    
 		var layout = ( rObj.layout)? rObj.layout:"right"
 		var o= '[[' + this.rsd.cFileNS + ':' + rObj.target_resource_title + '|thumb|'+layout;
 			

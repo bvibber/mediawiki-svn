@@ -243,12 +243,12 @@ mediaWikiSearch.prototype = {
 		//@@todo parse wiki Template return object with properties and values
 	},
 	//returns the inline wikitext for insertion (template based crops for now) 
-	getEmbedWikiText: function( rObj ){		
+	getEmbedWikiCode: function( rObj ){		
 			//set default layout to right justified
 			var layout = ( rObj.layout)? rObj.layout:"right"
 			//if crop is null do base output: 
 			if( rObj.crop == null)
-				return this.parent_getEmbedWikiText( rObj );											
+				return this.parent_getEmbedWikiCode( rObj );											
 			//using the preview crop template: http://en.wikipedia.org/wiki/Template:Preview_Crop
 			//@@todo should be replaced with server side cropping 
 			return '{{Preview Crop ' + "\n" +

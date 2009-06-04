@@ -42,12 +42,13 @@ var default_remote_search_options = {
 	'caret_pos':null,
 	'local_wiki_api_url':null,
 
-	//can be 'api', 'form', 'autodetect', 'link', or 'none' (none should be used where no remote repositories are enabled (only local wiki/uploads)
+	//can be 'api', 'form', 'autodetect', 'remote_html_embed'
 	'import_url_mode': 'autodetect', 
 
 	'target_title':null,
 
 	'target_textbox':null,
+	'target_render_area': null, //where output render should go:  
 	'instance_name': null, //a globally accessible callback instance name
 	'default_query':null, //default search query
 	//specific to sequence profile
@@ -1092,9 +1093,10 @@ remoteSearchDriver.prototype = {
 		rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');				
 		
 		//check if local repository
-		if( this.checkRepoLocal( cp ) ){
+		//or if import mode if just "linking" 		
+		if( this.checkRepoLocal( cp ) || this.import_url_mode == 'remote_html_embed'){
 			//local repo jump directly to check Import Resource callback:
-			 cir_callback( rObj );
+			 cir_callback( rObj );	    		    
 		}else{										
 			//not a local domain update target resource name with the prefix:
 			rObj.target_resource_title = cp.resource_prefix +rObj.target_resource_title; 
@@ -1174,7 +1176,7 @@ remoteSearchDriver.prototype = {
 								
 									$j.btnHtml('Do Import Resource', 'rsd_import_doimport', 'check' ) + ' ' +
 									 
-									$j.btnHtml('Update Preview', 'rsd_import_apreview', 'refresh' ) + ' <br><br><br>' +
+									$j.btnHtml('Update Preview', 'rsd_import_apreview', 'refresh' ) + '<div style="clear:both;height:20px;"/>' +
 								
 									$j.btnHtml('Cancel Import', 'rsd_import_acancel', 'close' ) + ' ' +
 																			
@@ -1365,16 +1367,23 @@ remoteSearchDriver.prototype = {
 		});
 	},
 	updatePreviewText:function( rObj ){
-		var _this = this;	
+		var _this = this;
+			
+		if(_this.import_url_mode=='remote_html_embed'){
+            _this.cur_embed_code = rObj.pSobj.getEmbedHTML(rObj);
+		}else{
+            _this.cur_embed_code = rObj.pSobj.getEmbedWikiCode( rObj );
+        }
+		
 		//insert at start if textInput cursor has not been set (ie == length)
-		if( _this.caret_pos){
+		if( _this.caret_pos &&  _this.caret_pos.text){
 			if( _this.caret_pos.text.length == _this.caret_pos.s)
 				_this.caret_pos.s=0;
 			_this.preview_wtext = _this.caret_pos.text.substring(0, _this.caret_pos.s) +
-									rObj.pSobj.getEmbedWikiText( rObj ) +
+									_this.cur_embed_code +
 								   _this.caret_pos.text.substring( _this.caret_pos.s );
 		}else{
-		   _this.preview_wtext =  $j(_this.target_textbox).val() +  rObj.pSobj.getEmbedWikiText( rObj );
+		   _this.preview_wtext =  $j(_this.target_textbox).val() +  _this.cur_embed_code;
 		}		
 		//check for missing </refrences>
 		if( _this.preview_wtext.indexOf('<references/>') ==-1 &&  _this.preview_wtext.indexOf('<ref>') != -1 )
@@ -1396,10 +1405,18 @@ remoteSearchDriver.prototype = {
 		var _this = this
 		//dobule check that the resource is present:
 		this.checkImportResource( rObj, function(){
-			_this.updatePreviewText( rObj );
-			js_log('should update textbox: ' +  _this.preview_wtext );
+			_this.updatePreviewText( rObj );						
 			$j(_this.target_textbox).val( _this.preview_wtext );
-			_this.closeAll();
+			
+			//also update the render area: 
+			if(_this.target_render_area && _this.cur_embed_code){			
+			     //output with some padding: 
+			     $j(_this.target_render_area).append( _this.cur_embed_code + '<div style="clear:both;height:10px">')
+			     //update if its 
+			     mv_video_embed(function(){
+			         _this.closeAll();
+			     });
+			}						
 		});		
 	},
 	closeAll:function(){
@@ -1517,4 +1534,4 @@ remoteSearchDriver.prototype = {
 		//run /update search display:
 		this.drawOutputResults();
 	}
-}
+};

@@ -1431,4 +1431,4 @@ mvSeqPlayList.prototype = {
 				
 		this.setupClipDisplay();
 	}
-}
+};

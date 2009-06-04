@@ -664,7 +664,7 @@ div.rsd_selected {
 .ui-icon_link {
 	padding: .4em 1em .4em 20px;
 	text-decoration: none;
-	position: relative;
+	position: relative;	
 }
 .ui-icon_link span.ui-icon {
 	margin: 0 5px 0 0;

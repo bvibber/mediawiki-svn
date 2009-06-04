@@ -117,12 +117,7 @@ loadGM({
 			
 	"add_to_end_of_sequence" : "Add to End of Sequence",
 	
-	"missing_video_stream" : "The video file for this stream is missing",
-	
-	"select_transcript_set" : "Select Text Layers",
-	"auto_scroll" : "auto scroll",
-	"close" : "close",
-	"improve_transcript" : "Improve Transcript",
+	"missing_video_stream" : "The video file for this stream is missing",	
 	
 	"next_clip_msg" : "Play Next Clip",
 	"prev_clip_msg" : "Play Previous Clip",
@@ -659,7 +654,7 @@ function mv_jqueryBindings(){
 			var secondLoadSet = {};	
 			//IE* ~sometimes~ executes things out of order on DOM inserted scripts
 			//*(kind of pointless anyway since IE does not support firefogg 
-			// but if you want firefog to drive the "its not supported" msg here you go ;)
+			// but if you want firefog to drive the "is not supported" msg here you go ;)
 			if($.browser.msie){
 				secondLoadSet = {
 					'$j.ui.progressbar'	    : 'jquery/' + jQueryUiVN + '/ui/ui.progressbar.js',
@@ -703,8 +698,13 @@ function mv_jqueryBindings(){
 		}				
 				
 		//shortcut to a themed button:
-		$.btnHtml = function(msg, className, iconId){
-		   return '<a href="#" class="ui-state-default ui-corner-all ui-icon_link ' +
+		$.btnHtml = function(msg, className, iconId, opt){
+		   if(!opt)
+		      opt = {};
+		   var href = (opt.href)?opt.href:'#';
+		   var target_attr = (opt.target)?' target="' + opt.target + '" ':''; 
+		   var style_attr = (opt.style)?' style="'+opt.style +'" ':'';    
+		   return '<a href="' + href + '" ' + target_attr + style_attr +' class="ui-state-default ui-corner-all ui-icon_link ' +
 				   className + '"><span class="ui-icon ui-icon-' + iconId + '" />' + 
 				   msg + '</a>';						  
 		}		   
