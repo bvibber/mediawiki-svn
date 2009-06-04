@@ -1,10 +1,10 @@
-/* JavaScript for Toolbar extension */
+/* JavaScript for EditToolbar extension */
 
 /**
- * Prototype for global toolbar object
+ * Prototype for global editToolbar object
  * @param {String} toolbarSelector jQuery compatible selector of toolbar div
  */
-function EditingToolbar( toolbarSelector ) {
+function EditToolbar( toolbarSelector ) {
 	
 	/* Private Members */
 	
@@ -14,8 +14,8 @@ function EditingToolbar( toolbarSelector ) {
 	var toolbarDiv = null;
 	// Sections (main and subs), groups and buttons
 	var tools = { main: {}, subs: {} };
-	// Path to images (THIS WILL HAVE TO CHANGE WHEN YOU MOVE THIS INTO CORE)
-	var path = wgScriptPath + '/extensions/UsabilityInitiative/Toolbar/images/';
+	// Internationalized user interface messages
+	var messages = {};
 	
 	/* Functions */
 	
@@ -23,6 +23,9 @@ function EditingToolbar( toolbarSelector ) {
 	 * Initializes the toolbar user interface
 	 */
 	this.initialize = function() {
+		// Path to images (THIS WILL HAVE TO CHANGE IF YOU MOVE THIS INTO CORE)
+		var imagePath = wgScriptPath +
+			'/extensions/UsabilityInitiative/EditToolbar/images/';
 		// Gets object handle for container
 		toolbarDiv = $( toolbarSelector );
 		// Checks if the toolbar div existed
@@ -34,17 +37,18 @@ function EditingToolbar( toolbarSelector ) {
 				// Appends group to toolbar
 				groupDiv.appendTo( toolbarDiv );
 				for ( tool in tools.main[group] ) {
-					// Creates tool button
-					var toolDiv = $( '<div class="tool"></div>' );
-					// Appends button to group
-					toolDiv.appendTo( groupDiv );
-					// Customizes button image
-					toolDiv.css(
-						'background-image',
-						'url(' + path + tools.main[group][tool].icon + ')'
-					);
+					// Creates tool
+					var toolImg = $( '<img />' );
+					// Appends tool to group
+					toolImg.appendTo( groupDiv );
+					// Customizes the tool
+					toolImg.attr({
+						src: imagePath + tools.main[group][tool].icon,
+						alt: messages[group + '-' + tool],
+						title: messages[group + '-' + tool]
+					});
 					// Sets button action
-					toolDiv.click( tools.main[group][tool].action );
+					toolImg.click( tools.main[group][tool].action );
 				}
 			}
 		}
@@ -74,6 +78,37 @@ function EditingToolbar( toolbarSelector ) {
 	}
 	
 	/**
+	 * Sets several user interface messages
+	 * @param {Object} messageList List of key/value pairs of messages
+	 */
+	this.setMessages = function( messageList ) {
+		for ( messageItem in messageList ) {
+			messages[messageItem] = messageList[messageItem];
+		}
+	}
+	
+	/**
+	 * Sets a user interface message
+	 * @param {String} key Key of message
+	 * @param {String} value Value of message
+	 */
+	this.setMessage = function( key, value ) {
+		messages[key] = value;
+	}
+	
+	/**
+	 * Gets a user interface message
+	 * @param {String} key Key of message
+	 */
+	this.getMessage = function( key ) {
+		if ( key in messages ) {
+			return messages[key];
+		} else {
+			return key;
+		}
+	}
+	
+	/**
 	 * Performs the action associated with a tool
 	 * @param {String} section ID of section of tool to use
 	 * @param {String} group ID of group of tool to use
@@ -89,11 +124,11 @@ function EditingToolbar( toolbarSelector ) {
 }
 
 // Creates global toolbar object
-var editingToolbar = new EditingToolbar( '#editing-toolbar' );
+var editToolbar = new EditToolbar( '#edittoolbar' );
 // Executes function when document is ready
 $( document ).ready( function() {
-	// Initializes editing toolbar
-	editingToolbar.initialize();
+	// Initializes edit toolbar
+	editToolbar.initialize();
 });
 
 /**
@@ -101,61 +136,73 @@ $( document ).ready( function() {
  * or restructured at some point.
  */
 // Adds tools to toolbar
-editingToolbar.addTool(
+editToolbar.addTool(
 	'main', 'format', 'bold',
 	{
 		icon: 'format-bold.png',
 		action: function() {
 			$( '#wpTextbox1' ).encapsulateSelection(
-				"'''", null, 'Bold text'
+				"'''", null, editToolbar.getMessage( 'format-bold-example' )
 			);
 			return false;
 		}
 	}
 );
-editingToolbar.addTool(
+editToolbar.addTool(
 	'main', 'format', 'italic',
 	{
 		icon: 'format-italic.png',
 		action: function() {
 			$( '#wpTextbox1' ).encapsulateSelection(
-				"''", null, 'Italic text'
+				"''", null, editToolbar.getMessage( 'format-italic-example' )
 			);
 			return false;
 		}
 	}
 );
-editingToolbar.addTool(
-	'main', 'insert', 'link',
+editToolbar.addTool(
+	'main', 'insert', 'ilink',
 	{
-		icon: 'insert-link.png',
+		icon: 'insert-ilink.png',
 		action: function() {
 			$( '#wpTextbox1' ).encapsulateSelection(
-				'[[', ']]', 'Internal link'
+				'[[', ']]', editToolbar.getMessage( 'insert-ilink-example' )
 			);
 			return false;
 		}
 	}
 );
-editingToolbar.addTool(
+editToolbar.addTool(
+	'main', 'insert', 'xlink',
+	{
+		icon: 'insert-xlink.png',
+		action: function() {
+			$( '#wpTextbox1' ).encapsulateSelection(
+				'[', ']', editToolbar.getMessage( 'insert-xlink-example' )
+			);
+			return false;
+		}
+	}
+);
+editToolbar.addTool(
 	'main', 'insert', 'image',
 	{
 		icon: 'insert-image.png',
 		action: function() {
 			$( '#wpTextbox1' ).encapsulateSelection(
-				'[[File:', ']]', 'Image name'
+				'[[File:', ']]', editToolbar.getMessage( 'insert-image-example' )
 			);
 			return false;
 		}
 	}
 );
-editingToolbar.addTool(
+editToolbar.addTool(
 	'main', 'insert', 'reference',
 	{
 		icon: 'insert-reference.png',
 		action: function() {
 			$( '#wpTextbox1' ).encapsulateSelection(
-				'<ref>', '</ref>', 'Reference content'
+				'<ref>', '</ref>', editToolbar.getMessage( 'insert-reference-example' )
 			);
 			return false;
 		}

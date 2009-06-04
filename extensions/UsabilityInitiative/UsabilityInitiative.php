@@ -40,4 +40,4 @@ $wgHooks['AjaxAddScript'][] = 'UsabilityInitiativeHooks::addJS';
 
 /* Components */
 
-require_once( "$dir/Toolbar/Toolbar.php" );
+require_once( "$dir/EditToolbar/EditToolbar.php" );

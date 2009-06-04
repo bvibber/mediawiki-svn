@@ -1,11 +1,11 @@
 <?php
 /**
- * Usability Initiative Toolbar extension
+ * Usability Initiative EditToolbar extension
  *
  * @file
  * @ingroup Extensions
  *
- * This file contains the include file for the Toolbar portion of the
+ * This file contains the include file for the EditToolbar portion of the
  * UsabilityInitiative extension of MediaWiki.
  *
  * Usage: This file is included automatically by ../UsabilityInitiative.php
@@ -19,32 +19,33 @@
 // Shortcut to this extension directory
 $dir = dirname( __FILE__ ) . '/';
 
-// Bump the version number every time you change any of the .css/.js files
-$wgToolbarStyleVersion = 0;
-
+// Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'Toolbar',
+	'name' => 'EditToolbar',
 	'author' => 'Trevor Parscal',
 	'version' => '0.1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'toolbar-desc',
 );
 
+// Bump the version number every time you change any of the .css/.js files
+$wgEditToolbarStyleVersion = 0;
+
 // Autoload Classes
-$wgAutoloadClasses['ToolbarHooks'] = $dir . 'Toolbar.hooks.php';
+$wgAutoloadClasses['EditToolbarHooks'] = $dir . 'EditToolbar.hooks.php';
 
 // Internationalization
-$wgExtensionMessagesFiles['Toolbar'] = $dir . 'Toolbar.i18n.php';
+$wgExtensionMessagesFiles['EditToolbar'] = $dir . 'EditToolbar.i18n.php';
 
 // Register toolbar interception
-$wgHooks['EditPageBeforeEditToolbar'][] = 'ToolbarHooks::interceptToolbar';
+$wgHooks['EditPageBeforeEditToolbar'][] = 'EditToolbarHooks::intercept';
 
 // Register preferences customization
-$wgHooks['GetPreferences'][] = 'ToolbarHooks::addPreferences';
+$wgHooks['GetPreferences'][] = 'EditToolbarHooks::addPreferences';
 
 // Register ajax add script hook
-$wgHooks['AjaxAddScript'][] = 'ToolbarHooks::addJS';
+$wgHooks['AjaxAddScript'][] = 'EditToolbarHooks::addJS';
 
 // Register css add script hook
-$wgHooks['BeforePageDisplay'][] = 'ToolbarHooks::addCSS';
+$wgHooks['BeforePageDisplay'][] = 'EditToolbarHooks::addCSS';
