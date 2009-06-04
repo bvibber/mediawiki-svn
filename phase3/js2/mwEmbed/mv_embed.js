@@ -59,6 +59,7 @@ var global_cb_count =0;
 /*parseUri class parses URIs:*/
 var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
 
+
 //get mv_embed location if it has not been set
 if( !mv_embed_path ){
 	var mv_embed_path = getMvEmbedPath();
@@ -112,7 +113,7 @@ loadGM({
 	"mv_ogg-player-flowplayer" : "Flowplayer",
 	"mv_ogg-player-selected" : " (selected)",
 	"mv_ogg-player-omtkplayer" : "OMTK Flash Vorbis",
-	"mv_generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://metavid.org/wiki/Client_Playback\">Playback Methods</a> page to download a player<br>",
+	"mv_generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://commons.wikimedia.org/wiki/Commons:Media_help\">Playback Methods</a> page to download a player<br>",
 			
 	"add_to_end_of_sequence" : "Add to End of Sequence",
 	
@@ -404,9 +405,13 @@ var mvJsLoader = {
 			var secReq = {};	
 			//IE loads things out of order running j.slider before j.ui is ready
 			//load ui depenent scripts in a second request:
-			if($j.browser.msie){
+			if($j.browser.msie){				
 				secReq = {
 					'$j.ui.slider'	: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js'	
+				}				
+				//ie6 yay!
+				if($j.browser.version <= 6){
+					secReq[ '$j.fn.pngFix' ] = 'jquery/plugins/jquery.pngFix.js';
 				}
 			}else{				
 				baseReq['$j.ui.slider'] =  'jquery/' + jQueryUiVN + '/ui/ui.slider.js';

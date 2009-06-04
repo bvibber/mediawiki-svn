@@ -297,8 +297,7 @@ div.floatleft, table.floatleft {
 .mvttseek{
 	cursor:pointer;
 }
-.large_play_button {
-	background: url(images/player_big_play_button.png) 0 0 no-repeat;
+.large_play_button {	
 	display:block;
 	width: 130px;
 	height: 96px;

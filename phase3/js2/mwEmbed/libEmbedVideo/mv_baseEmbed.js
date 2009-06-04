@@ -107,7 +107,7 @@ mvEmbed = {
 		}
 		//process selected elements: 
 		//ie8 does not play well with the jQuery video,audio,playlist selector use native: 
-		if($j.browser.msie = true && $j.browser.version >= 8){
+		if($j.browser.msie && $j.browser.version >= 8){
 			jtags = j_selector.split(',');				
 			for(var i=0;i<jtags.length;i++){
 				$j( document.getElementsByTagName( jtags[i] )).each(function(){
@@ -288,7 +288,12 @@ var ctrlBuilder = {
 		//big_play_link_ play binding: 
 		$j('#big_play_link_' + embedObj.id).unbind().click(function(){
 			$j('#' + embedObj.id).get(0).play();
-		});
+		});		
+		
+		if( $j.browser.msie  &&  $j.browser.version <= 6){			
+			$j('#big_play_link_' + embedObj.id).pngFix();
+		}
+		
 		
 		//captions binding:
 		$j('#timed_text_'  + embedObj.id).unbind().btnBind().click(function(){
@@ -1073,7 +1078,7 @@ embedVideo.prototype = {
 			if( this.pc )
 				var missing_type = this.pc.type;										
 			   js_log('no player found for given source type ' + missing_type);
-			   this.load_error= gM('mv_generic_missing_plugin', missing_type );										   
+			   this.load_error= this.getPluginMissingHTML(missing_type);										   
 		}		
 	},
 	inheritEmbedObj:function(){	  
@@ -1505,13 +1510,15 @@ embedVideo.prototype = {
 	/*
 	* get missing plugin html (check for user included code)
 	*/
-	getPluginMissingHTML : function(){
+	getPluginMissingHTML : function(missing_type){
 		//keep the box width hight:
 		var out = '<div style="width:'+this.width+'px;height:'+this.height+'px">';
 		if(this.user_missing_plugin_html){
 		  out+= this.user_missing_plugin_html;
 		}else{
-		  out+= gM('generic_missing_plugin') + ' or <a title="'+gM('download_clip')+'" href="'+this.src +'">'+gM('download_clip')+'</a>';
+		  if(!missing_type)
+		  	missing_type='';
+		  out+= gM('mv_generic_missing_plugin', missing_type) + ' or <a title="'+gM('download_clip')+'" href="'+this.src +'">'+gM('download_clip')+'</a>';
 		}
 		return out + '</div>';
 	},
@@ -1685,7 +1692,9 @@ embedVideo.prototype = {
 		if(!id)id=this.id;
 		return '<div id="big_play_link_'+id+'" class="large_play_button" '+
 			'style="left:'+((this.playerPixelWidth()-130)/2)+'px;'+
-			'top:'+((this.playerPixelHeight()-96)/2)+'px;"></div>';
+			'top:' + ((this.playerPixelHeight()-96)/2) + 'px;">'+
+			'<img src="' + mv_skin_img_path + 'player_big_play_button.png">'+
+			'</div>';
 	},
 	doLinkBack:function(){
 		if(this.roe && this.media_element.addedROEData==false){
@@ -2557,27 +2566,21 @@ var embedTypes = {
 		 js_log("running detect");
 		this.players = new mediaPlayers();
 		//every browser supports html rendering:
-		this.players.addPlayer( htmlPlayer );
-		 // First some browser detection
-		 this.msie = ( navigator.appName == "Microsoft Internet Explorer" );
-		 this.msie6 = ( navigator.userAgent.indexOf("MSIE 6")===false);
-		 this.opera = ( navigator.appName == 'Opera' );
-		 this.safari = ( navigator.vendor && navigator.vendor.substr( 0, 5 ) == 'Apple' );
-		
+		this.players.addPlayer( htmlPlayer );			
 		 // In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
 		 // search navigator.mimeTypes to see if it's installed
 		 var javaEnabled = navigator.javaEnabled();
 		 // In Opera, navigator.javaEnabled() is all there is
-		 var invisibleJava = this.opera;
+		 var invisibleJava = $j.browser.opera;
 		 // Some browsers filter out duplicate mime types, hiding some plugins
-		 var uniqueMimesOnly = this.opera || this.safari;
+		 var uniqueMimesOnly = $j.browser.opera || $j.browser.safari;
 		 // Opera will switch off javaEnabled in preferences if java can't be found.
 		 // And it doesn't register an application/x-java-applet mime type like Mozilla does.
 		 if ( invisibleJava && javaEnabled )
 			 this.players.addPlayer( cortadoPlayer );
 		
 		 // ActiveX plugins
-		 if(this.msie){
+		 if($j.browser.msie){
 			  // check for flash		 
 			   if ( this.testActiveX( 'ShockwaveFlash.ShockwaveFlash')){				   
 				   //try to get the flash version for omtk include: 

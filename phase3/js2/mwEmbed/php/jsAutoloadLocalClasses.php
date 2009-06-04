@@ -14,12 +14,14 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 	$wgJSAutoloadLocalClasses['j.cookie']			= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/external/cookie/jquery.cookie.js';
 
 	$wgJSAutoloadLocalClasses['j.contextMenu']		= $wgMwEmbedDirectory . 'jquery/plugins/jquery.contextMenu.js';
+	$wgJSAutoloadLocalClasses['j.fn.pngFix']		= $wgMwEmbedDirectory . 'jquery/plugins/jquery.pngFix.js';
+	
 	$wgJSAutoloadLocalClasses['j.fn.autocomplete']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.autocomplete.js';
 	$wgJSAutoloadLocalClasses['j.fn.hoverIntent']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.hoverIntent.js';
 	$wgJSAutoloadLocalClasses['j.Jcrop'] 			= $wgMwEmbedDirectory . 'jquery/plugins/Jcrop/js/jquery.Jcrop.js';
 	$wgJSAutoloadLocalClasses['Date.fromString']  	= $wgMwEmbedDirectory . 'jquery/plugins/date.js';
 	$wgJSAutoloadLocalClasses['j.fn.datePicker']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.datePicker.js';
-
+		
 	//jquery.ui
 	$wgJSAutoloadLocalClasses['j.ui']				= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.core.js';
 
