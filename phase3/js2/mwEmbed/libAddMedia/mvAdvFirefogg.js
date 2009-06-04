@@ -122,7 +122,7 @@ mvAdvFirefogg.prototype = {
 		'framerate':{
 			't'			: 'Framerate',
 			'd'			: '24',
-			'selectVal'	: ['12', '16', '23:976', '24', '29:97', '30'],
+			'selectVal'	: ['12', '16', {'24000:1001':'23.97'}, '24', '25', {'30000:1001':'29.97'}, '30'],
 			'type'		   : "select",
 			'group'		: "advVideo",
 			'help'		   : "The video Framerate. More about <a target=\"_new\" href=\"http://en.wikipedia.org/wiki/Frame_rate\">Framerate</a>"
