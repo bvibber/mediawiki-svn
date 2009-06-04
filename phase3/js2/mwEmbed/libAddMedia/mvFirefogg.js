@@ -98,11 +98,9 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	},
 	doRewrite:function( callback ){
 		var _this = this;
-		$j(this.selector).each(function(){				
-			if( this.tagName.toLowerCase() == 'input' ){					
-				_this.form_rewrite = true;					
-			}
-		});		
+		if($j(this.selector).get(0).tagName == 'input' ){					
+			_this.form_rewrite = true;					
+		}		
 		//check if we are rewriting an input or a form:
 		if( this.form_rewrite ){
 			this.setupForm();
@@ -123,14 +121,14 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				//check for the target if missing add to the output: 
 				if( _this[target] === false){					
 					out+= _this.getTargetHtml(target) + ' ';
-				}
-				//update the target selector 
-				_this[target] = _this.selector + ' .' + target;
+					//update the target selector 
+				    _this[target] = _this.selector + ' .' + target;
+				}											
 			}
-		});
-		$j( this.selector ).append( out ).hide();	
+		});		
+		$j( this.selector ).append( out ).hide();
 	},
-	getTargetHtml:function(target){				
+	getTargetHtml:function(target){					    
 		if( target.substr(7,3)=='btn'){
 			return '<input style="" class="' + target + '" type="button" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
 		}else if(target.substr(7,5)=='input'){
@@ -159,7 +157,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		
 		//if rewriting the form lets keep the text input around:						 
 		if( _this.form_rewrite )
-			$j('#target_input_file_name').show();
+			$j(this.target_input_file_name).show();
 				
 		//hide all but check-for-fogg
 		//check for firefogg
@@ -170,7 +168,11 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				).css({'display':'inline'}
 				).click(function(){									
 					_this.selectFogg();
-				});						
+				});				
+		    //also setup the text file display on Click to select file:  
+		    $j(this.target_input_file_name).unbind().attr('readonly', 'readonly').click(function(){
+		        _this.selectFogg();
+		    })		
 			
 		}else{
 			//first check firefox version:		 
@@ -241,12 +243,14 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		});
 		if(!$j(this.selector).attr('style'))
 			inTag += 'style="display:inline" ';			
-		inTag+= '>';
+		inTag+= '/><span id="' + $j(this.selector).attr('name') + '_fogg-control"></span>';
 										
 		js_log('set input: ' + inTag);
 		$j(this.selector).replaceWith(inTag);			
 		
-		this.target_input_file_name = this.selector;
+		this.target_input_file_name = 'input[name=' + $j(this.selector).attr('name') + ']';
+		//update the selector to the control target: 
+		this.selector = '#' + $j(this.selector).attr('name') +  "_fogg-control";
 		
 		this.doControlHTML();
 		//check for the other inline status indicator targets:		 
@@ -294,15 +298,21 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				}
 				//~otherwise the encoding will be triggered by the form~
 				
-				//do source name update callback:					 
+				//do source name update callback:	
+				js_log(" should update: " + _this.target_input_file_name + ' to: ' + _this.fogg.sourceFilename );				 
 				$j(_this.target_input_file_name).val(_this.fogg.sourceFilename).show();
 				
-				if(_this.new_source_cb){
-					_this.new_source_cb( _this.fogg.sourceFilename );
+				if(_this.new_source_cb){			
+				    var oggExt = (_this.isSourceAudio())?'oga':'ogg';
+                    oggExt = (_this.isSourceVideo())?'ogv':oggExt;
+				    oggName = _this.fogg.sourceFilename.substr(0,
+				                  _this.fogg.sourceFilename.lastIndexOf('.'));
+				         
+					_this.new_source_cb( _this.fogg.sourceFilename , oggName +'.'+ oggExt);
 					}
 			}													
 		}else{
-			js_error("Firefogg error selecting file");
+			//js_error("Firefogg error selecting file");
 		}
 	},
 	saveLocalFogg:function(){
@@ -323,24 +333,31 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		var ext = '';
 		if(	sf.lastIndexOf('.') != -1){
 			ext = sf.substring( sf.lastIndexOf('.')+1 ).toLowerCase();
-		}
-		//ogg video or audio
-		var cat =  _this.sourceFileInfo.contentType; 
+		}	
 				  
 		//set to passthrough by default (images, arbitrary files that we want to send with http chunks) 
 		this.encoder_settings['passthrough'] = false;
 		
 		//see if we have video or audio:  
-		if( _this.sourceFileInfo.contentType.indexOf("video/") != -1 ||
-			_this.sourceFileInfo.contentType.indexOf("audio/") != -1 ){
+		if(  _this.isSourceAudio() || _this.isSourceVideo() ){
 			 _this.encoder_settings['passthrough'] = false; 
 		}
-								
-		//see if we have ogg video: 
-		if(_this.sourceFileInfo.contentType.indexOf("video/ogg") != -1 ){
+							
+		//special case see if we already have ogg video: 
+		if( _this.isOggFormat() ){
 			_this.encoder_settings['passthrough'] = true;
-		}				 
+		}		
+				 
 		js_log('base autoEncoderSettings::' + _this.sourceFileInfo.contentType  + ' passthrough:' + _this.encoder_settings['passthrough']);
+	},
+	isSourceAudio:function(){
+	   return (this.sourceFileInfo.contentType.indexOf("audio/") != -1);
+	},
+	isSourceVideo:function(){
+	    return (this.sourceFileInfo.contentType.indexOf("video/") != -1);
+	},
+	isOggFormat:function(){
+	   return ( this.sourceFileInfo.contentType.indexOf("video/ogg") != -1); 
 	},
 	getProgressTitle:function(){
 		js_log("fogg:getProgressTitle f:" + this.fogg_enabled  + ' rw:' + this.form_rewrite);
@@ -505,7 +522,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 						   _this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done', _this.fogg.resultUrl), 
 						   {
 								go_to_url_txt:function(){
-									document.URL = _this.fogg.resultUrl;
+									window.location = _this.fogg.resultUrl;
 								}
 						   });	
 					   }else{
@@ -520,8 +537,21 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	   }
 	   uploadStatus();
 	},	
-	/*
-	procPageResponse should be faded out soon.. its all very fragile to read the html output and guess at stuff*/
+	cancel_action:function( dlElm ){
+	  js_log('firefogg:cancel')
+	  	if( confirm( gM('mv-canecl-confim') )){
+	  	    if(navigator.oscpu && navigator.oscpu.search('Win') >= 0){
+	  	         alert( 'sorry we do not yet support cancel on windows' );
+	  	    }else{
+	  	        this.fogg.cancel();
+	  	        $j(dlElm).dialog('close');
+	  	    }
+	  	}  
+	},
+	/**
+	* procPageResponse should be faded out in favor of the upload api soon.. 
+	* its all very fragile to read the html output and guess at stuff
+	*/
 	procPageResponse:function( result_page ){
 		js_log('f:procPageResponse');
 		var sstring = 'var wgTitle = "' + this.formData['wpDestFile'].replace('_',' ');		

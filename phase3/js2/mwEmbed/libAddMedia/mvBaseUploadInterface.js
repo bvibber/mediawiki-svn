@@ -515,7 +515,7 @@ mvBaseUploadInterface.prototype = {
 		//confirm:	
 		if( confirm( gM('mv-canecl-confim') )){
 			//@@todo (cancel the encode / upload)
-			//$(this).dialog('close');
+			//$j(dlElm).dialog('close');
 			alert('(sorry we do not yet support cancel)');
 		}  
 	}

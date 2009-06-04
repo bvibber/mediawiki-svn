@@ -658,8 +658,8 @@ function mv_jqueryBindings(){
 			}
 			var secondLoadSet = {};	
 			//IE* ~sometimes~ executes things out of order on DOM inserted scripts
-			//*(kind of pointless anyway since ie does not support firefogg 
-			// but if you want firefog dirven "is not supported" msg here you go ;)
+			//*(kind of pointless anyway since IE does not support firefogg 
+			// but if you want firefog to drive the "its not supported" msg here you go ;)
 			if($.browser.msie){
 				secondLoadSet = {
 					'$j.ui.progressbar'	    : 'jquery/' + jQueryUiVN + '/ui/ui.progressbar.js',

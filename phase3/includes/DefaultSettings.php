@@ -2579,8 +2579,11 @@ $wgAutoloadClasses = array();
 $wgJSAutoloadClasses = array();
 
 /*
- * boolean if the script loader should be used to group all javascript requests.
+ * boolean; if the script loader should be used to group all javascript requests.
  * more about the script loader: http://www.mediawiki.org/wiki/ScriptLoader
+ *
+ * (its recommended you DO NOT enable the script loader without also enabling $wgUseFileCache
+ * (or have mediaWiki behind a proxy) otherwise all new js requests will result in script server js processing.
  */
 $wgEnableScriptLoader = false;
 

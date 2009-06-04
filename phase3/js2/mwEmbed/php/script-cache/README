@@ -1,0 +1,5 @@
+This folder holds cached versions of grouped script requests.
+Be sure to enable write access by your web-server to this directory. 
+  
+You can specify a different directory by updating the $wgFileCacheDirectory variable in noMediaWikiConfig.php
+

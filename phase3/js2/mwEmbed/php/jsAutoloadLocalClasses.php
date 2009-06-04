@@ -15,13 +15,13 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 
 	$wgJSAutoloadLocalClasses['j.contextMenu']		= $wgMwEmbedDirectory . 'jquery/plugins/jquery.contextMenu.js';
 	$wgJSAutoloadLocalClasses['j.fn.pngFix']		= $wgMwEmbedDirectory . 'jquery/plugins/jquery.pngFix.js';
-	
+
 	$wgJSAutoloadLocalClasses['j.fn.autocomplete']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.autocomplete.js';
 	$wgJSAutoloadLocalClasses['j.fn.hoverIntent']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.hoverIntent.js';
 	$wgJSAutoloadLocalClasses['j.Jcrop'] 			= $wgMwEmbedDirectory . 'jquery/plugins/Jcrop/js/jquery.Jcrop.js';
 	$wgJSAutoloadLocalClasses['Date.fromString']  	= $wgMwEmbedDirectory . 'jquery/plugins/date.js';
 	$wgJSAutoloadLocalClasses['j.fn.datePicker']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.datePicker.js';
-		
+
 	//jquery.ui
 	$wgJSAutoloadLocalClasses['j.ui']				= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.core.js';
 
@@ -50,10 +50,11 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 	$wgJSAutoloadLocalClasses['j.ui.draggable']		= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.draggable.js';
 	$wgJSAutoloadLocalClasses['j.ui.selectable']	= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.selectable.js';
 
-
 	//libAddMedia:
 	$wgJSAutoloadLocalClasses['mvFirefogg'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvFirefogg.js';
 	$wgJSAutoloadLocalClasses['mvAdvFirefogg'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvAdvFirefogg.js';
+
+    $wgJSAutoloadLocalClasses['mvBaseUploadInterface'] = $wgMwEmbedDirectory . 'libAddMedia/mvBaseUploadInterface.js';
 
 	$wgJSAutoloadLocalClasses['remoteSearchDriver'] = $wgMwEmbedDirectory . 'libAddMedia/remoteSearchDriver.js';
 	$wgJSAutoloadLocalClasses['seqRemoteSearchDriver'] = $wgMwEmbedDirectory . 'libAddMedia/seqRemoteSearchDriver.js';
