@@ -96,6 +96,7 @@ loadGM({
 	
 	"download_segment" : "Download Selection:",
 	"download_full" : "Download Full Video File:",
+	"download_right_click": "To download right click and select <i>save target as</i>",
 	"download_clip" : "Download the Clip",
 	"download_text" : "Download Text (<a style=\"color:white\" title=\"cmml\" href=\"http://wiki.xiph.org/index.php/CMML\">cmml</a> xml):",
 	

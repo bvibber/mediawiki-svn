@@ -1949,8 +1949,9 @@ embedVideo.prototype = {
 				dl_list+=dl_line;
 			}
 		});
+		out+= gM('download_right_click') + '<br>';
 		if(dl_list!='')
-			out+='</blockquote>'+gM('download_full')+'<blockquote style="background:#000">' + dl_list + '</blockquote>';
+			out+='</blockquote>'+gM('download_full') + '<blockquote style="background:#000">' + dl_list + '</blockquote>';
 		if(dl_txt_list!='')
 			out+='</blockquote>'+gM('download_text')+'<blockquote style="background:#000">' + dl_txt_list +'</blockquote></span>';
 		   return out;
