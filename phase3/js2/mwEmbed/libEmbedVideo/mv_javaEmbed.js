@@ -16,8 +16,9 @@ var javaEmbed = {
 		'volume_control':false
 	},
 	getEmbedHTML : function (){
+		//big delay on embed html cuz its just for status updates and ie6 is crazy. 
 		if(this.controls)
-			setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
+			setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 500);
 		//set a default duration of 30 seconds: cortao should detect duration.
 		return this.wrapEmebedContainer( this.getEmbedObj() );
 	},
@@ -52,8 +53,9 @@ var javaEmbed = {
 				'<param name="audio" value="true" />'+"\n"+
 				'<param name="seekable" value="true" />'+"\n"+
 				'<param name="duration" value="' + this.duration + '" />'+"\n"+
-				'<param name="bufferSize" value="200" />'+"\n"+
-			'</applet>';									
+				'<param name="bufferSize" value="4096" />'+"\n"+
+			'</applet>';								
+									
 			// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
 			// Doesn't work in MSIE or Safari/Mac or Opera 9.5
 			if ( embedTypes.mozilla ) {
@@ -82,7 +84,7 @@ var javaEmbed = {
 	},
 	monitor:function(){
 		this.getJCE()   
-		if(this.jce){		  
+		if(this.jce && this.jce.getPlayPosition){		  
 			try{					 
 			   //java reads ogg media time.. so no need to add the start or seek offset:
 			   //js_log(' ct: ' + this.jce.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
