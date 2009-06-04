@@ -1722,16 +1722,17 @@ embedVideo.prototype = {
 			o+='<a class="email" href="'+this.linkback+'">Share Clip via Link</a> '+
 			'<p>or</p> ';
 		}
-		o+='<span style="color:#FFF;font-size:14px;">Embed Clip in Blog or Site</span><br>'+
-			'<span style="color:#FFF;font-size:12px;"><a style="color:red" href="http://metavid.org/wiki/Security_Notes_on_Remote_Embedding">'+
-				'Read This</a> before embeding.</span>'+
-			'<div class="embed_code"> '+
-				'<textarea onClick="this.select();" id="embedding_user_html_'+this.id+'" name="embed">' +
-					embed_code+
-				'</textarea> '+
-				'<button onClick="$j(\'#'+this.id+'\').get(0).copyText(); return false;" class="copy_to_clipboard">Copy to Clipboard</button> '+
-			'</div> '+
-		'</div>';
+		o+='<div>' +
+				'<span style="color:#FFF;font-size:14px;">Embed Clip in Blog or Site</span><br>'+
+				'<span style="color:#FFF;font-size:12px;"><a style="color:red" href="http://metavid.org/wiki/Security_Notes_on_Remote_Embedding">'+
+					'Read This</a> before embeding.</span>'+
+				'<div class="embed_code"> '+
+					'<textarea onClick="this.select();" id="embedding_user_html_'+this.id+'" name="embed">' +
+						embed_code+
+					'</textarea> '+
+					'<button onClick="$j(\'#'+this.id+'\').get(0).copyText(); return false;" class="copy_to_clipboard">Copy to Clipboard</button> '+
+				'</div> '+
+			'</div>';
 		this.displayHTML(o);
 	},
 	copyText:function(){
@@ -1787,7 +1788,7 @@ embedVideo.prototype = {
 	},
 	/** Generic function to display custom HTML inside the mv_embed element.
 		The code should call the closeDisplayedHTML function to close the
-		display of the custom HTML and restore the regular mv_embed display.
+		display of the custom HTML and restore the regular mv_embed display.		
 		@param {String} HTML code for the selection list.
 	*/
 	displayHTML:function(html_code)
@@ -1816,7 +1817,6 @@ embedVideo.prototype = {
 		//fade in a black bg div ontop of everything
 		 var div_code = '<div id="blackbg_'+sel_id+'" class="videoComplete" ' +
 			 'style="height:'+parseInt(height)+'px;width:'+parseInt(width)+'px;">'+
-//					'<span class="displayHTML" id="con_vl_'+this.id+'" style="position:absolute;top:20px;left:20px;color:white;">' +
 			  '<div class="videoOptionsComplete">'+
 			//@@TODO: this style should go to .css
 			'<span style="float:right;margin-right:10px">' +			
@@ -1825,7 +1825,6 @@ embedVideo.prototype = {
 			'<div id="mv_disp_inner_'+sel_id+'" style="padding-top:10px;">'+
 				 html_code 
 			   +'</div>'+
-//				close_link+'</span>'+
 			   '</div></div>';
 		$j('#'+sel_id).prepend(div_code);
 		if (fade_in)
@@ -1942,11 +1941,12 @@ embedVideo.prototype = {
 		}	   
 	},
 	getShowVideoDownload:function(){ 
-		var out='<b style="color:white;">'+gM('download_segment')+'</b><br>';
-		out+='<span style="color:white"><blockquote style="background:#000">';
+		var out='<div style="color:white">' +
+				'<b style="color:white;">'+gM('download_segment')+'</b><br>';
+		out+='<blockquote style="background:#000">'+
+				gM('download_right_click') + '</blockquote><br>';
 		var dl_list='';
-		var dl_txt_list='';
-		
+		var dl_txt_list='';		
 		$j.each(this.media_element.getSources(), function(index, source){
 			var dl_line = '<li>' + '<a style="color:white" href="' + source.getURI() +'"> '
 				+ source.getTitle()+'</a> '+ '</li>'+"\n";			
@@ -1957,13 +1957,14 @@ embedVideo.prototype = {
 			}else{
 				dl_list+=dl_line;
 			}
-		});
-		out+= gM('download_right_click') + '<br>';
+		});		
+		
 		if(dl_list!='')
-			out+='</blockquote>'+gM('download_full') + '<blockquote style="background:#000">' + dl_list + '</blockquote>';
+			out+=gM('download_full') + '<blockquote style="background:#000">' + dl_list + '</blockquote>';
 		if(dl_txt_list!='')
-			out+='</blockquote>'+gM('download_text')+'<blockquote style="background:#000">' + dl_txt_list +'</blockquote></span>';
-		   return out;
+			out+=gM('download_text')+'<blockquote style="background:#000">' + dl_txt_list +'</blockquote>';
+		out+='</div>';
+		return out;
 	},
 	/*
 	*  base embed controls
