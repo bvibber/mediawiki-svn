@@ -55,7 +55,7 @@ $messages['en'] = array(
 	'poll-log-change' => '$1 changed poll "$2"',
 	'poll-log-delete' => '$1 deleted poll "$2"',
 	'poll-logentry' => 'Polls changed',
-	'poll-score-created' => 'created from [[User:',
+	'poll-score-created' => 'created from [[User:$1]]',
 	'poll-administration' => 'Administration:',
 	'poll-no-dis' => 'No Description!',
 );
@@ -107,7 +107,7 @@ $messages['de'] = array(
 	'poll-log-change' => '$1 hat "$2" geändert!',
 	'poll-log-delete' => '$1 hat "$2" gelöscht!',
 	'poll-logentry' => 'Änderung an den Umfragen wurde vorgenommen',
-	'poll-score-created' => 'erstellt von [[Benutzer:',
+	'poll-score-created' => 'erstellt von [[Benutzer:$1]]',
 	'poll-administration' => 'Administration:',
 	'poll-no-dis' => 'Keine Beschreibung vorhanden!',
 );

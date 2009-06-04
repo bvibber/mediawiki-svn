@@ -152,7 +152,7 @@ class Poll extends SpecialPage {
 			if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '6').' '.$alternative_6.'</td></tr>' ); }
 			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'vote').'</td><td><a href="'.$wgTitle->getFullURL( 'action=score&id='.$vid ).'">'.wfMsg( 'poll-title-score' ).'</a></td></tr>' );
 			$wgOut->addHtml( '<tr><td>' );
-			$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created' ).''.$creater.']]</small>' );
+			$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created', $creater ).'</small>' );
 			$wgOut->addHtml( '</td></tr>' );
 			$wgOut->addHtml( Xml::closeElement( 'table' ) );
 			if( ($poll_admin == true) OR ($creater == $user) ) {
@@ -204,7 +204,7 @@ class Poll extends SpecialPage {
 		if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_5.'</td><td>'.$query_num_5.'</td></tr>' ); }
 		if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_6.'</td><td>'.$query_num_6.'</td></tr>' ); }
 		$wgOut->addHtml( '<tr><td>' );
-		$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created' ).''.$creater.']]</small>' );
+		$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created', $creater ).'</small>' );
 		$wgOut->addHtml( '</td></tr>' );
 		$wgOut->addHtml( Xml::closeElement( 'table' ) );
 		$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
