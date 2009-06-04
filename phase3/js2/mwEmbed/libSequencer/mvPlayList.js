@@ -381,10 +381,8 @@ mvPlayList.prototype = {
 		//add the playlist controls:						
 		$j('#dc_'+plObj.id).append(
 			'<div class="videoPlayer" style="position:absolute;top:'+(plObj.height+plObj.pl_layout.title_bar_height+4)+'px">' +
-				'<div id="mv_embedded_controls_'+plObj.id+'" ' +
-					'style="postion:relative;top:'+(plObj.height+plObj.pl_layout.title_bar_height)+'px;' +
-						'width:' + ( plObj.width + 2 ) + 'px" ' +
-					'class="controls">' + 
+				'<div id="mv_embedded_controls_'+plObj.id+'" class="ui-widget ui-corner-bottom ui-state-default controls" '+
+					'style="width:' + plObj.width + 'px" >' + 
 					 plObj.getControlsHTML() +
 				'</div>'+
 			'</div>'
