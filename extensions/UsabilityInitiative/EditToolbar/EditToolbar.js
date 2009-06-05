@@ -134,6 +134,21 @@ function gM( key, args ) {
 				};
 				// Loops over each tool
 				for ( tool in section.groups[group] ) {
+					// Filters are jQuery selectors which must select 1 or more
+					// elements for this tool to apear. This is especailly
+					// useful for restricting some tools to certain namespaces
+					if ( 'filters' in section.groups[group][tool] ) {
+						var filters = section.groups[group][tool].filters;
+						var skip = false;
+						for ( filter in filters ) {
+							if ( $( filters[filter] ).size() == 0 ) {
+								skip = true;
+							}
+						}
+						if ( skip ) {
+							continue;
+						}
+					}
 					// Creates context for use in action
 					var context = { 'tool': section.groups[group][tool], 'textbox': textbox };
 					// Creates the label of the tool
@@ -303,6 +318,7 @@ var editToolbarConfiguration = {
 				},
 				'reference': {
 					labelMsg: 'edittoolbar-insert-reference',
+					filters: [ 'body.ns-subject' ],
 					type: 'button',
 					icon: 'insert-reference.png',
 					action: {
@@ -311,6 +327,18 @@ var editToolbarConfiguration = {
 							pre: "<ref>",
 							periMsg: 'edittoolbar-insert-reference-example',
 							post: "</ref>"
+						}
+					}
+				},
+				'signature': {
+					labelMsg: 'edittoolbar-insert-signature',
+					filters: [ 'body.ns-talk' ],
+					type: 'button',
+					icon: 'insert-signature.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							post: "--~~~~",
 						}
 					}
 				}
