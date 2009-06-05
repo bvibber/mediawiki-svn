@@ -66,6 +66,16 @@ class PlottersParser {
 					$this->argumentArray["preprocessorarguments"][] = $subargumentarr;
 				}
 			}
+
+			// If there are less preprocessorarguments than preprocessors, we want to ensure that we
+			// have enough arrays, as later code will expect an array to exist for each preprocessor
+			$preproccount = count( $this->argumentArray["preprocessors"] );
+			$preprocargcount = count( $this->argumentArray["preprocessorarguments"] );
+			if ( $preproccount > $preprocargcount ) {
+				for ( $i = $preprocargcount; $i < $preproccount; $i++ ) {
+					$this->argumentArray["preprocessorarguments"][] = array();
+				}
+			}
 		}
 		if ( isset( $argv["script"] ) ) {
 			// Sanitize scripts - alphanumerics only

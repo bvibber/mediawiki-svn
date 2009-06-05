@@ -233,6 +233,6 @@ function fix_encoding( data_arr ) {
 
 function fix_encoding_array( arr ) {
 	for ( var i = 0; i < arr.length; ++i ) {
-		arr[i] = fix_encoding( arr[i] );
+		fix_encoding( arr[i] );
 	}
 }
