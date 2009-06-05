@@ -118,7 +118,7 @@ class EditToolbarHooks {
 					'type' => $wgJsMimeType,
 					'src' => $wgScriptPath .
 						'/extensions/UsabilityInitiative/EditToolbar/EditToolbar.js?' .
-						$wgToolbarStyleVersion
+						$wgEditToolbarStyleVersion
 				),
 				'',
 				false
