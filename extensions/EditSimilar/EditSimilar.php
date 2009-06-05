@@ -10,7 +10,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-if( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) )
 	die( "This is not a valid entry point.\n" );
 
 // Internationalization file
@@ -35,12 +35,14 @@ $wgHooks['GetPreferences'][] = 'wfEditSimilarToggle';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'EditSimilar',
-	'version' => '1.18',
+	'version' => '1.19',
 	'author' => array( 'Bartek Łapiński', 'Łukasz Garczewski' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:EditSimilar',
-	'description' => 'Encourages users to edit an article similar (by categories) to the one they just had edited.',
+	'description' => 'Encourages users to edit a page similar (by categories) to the one they just had edited.',
 	'descriptionmsg' => 'editsimilar-desc',
 );
+
+// FIXME: split off into a separate class file. Saves time and resources on init.
 
 /*
 	How this extension works:
@@ -86,13 +88,13 @@ class EditSimilar {
 	// fetch categories marked as 'stub categories'
 	function getStubCategories() {
 		$stub_categories = wfMsgForContent( 'EditSimilar-Categories' );
-		if ( ('&lt;EditSimilar-Categories&gt;' == $stub_categories) || ('' == $stub_categories) || ('-' == $stub_categories) ) {
+		if ( ( '&lt;EditSimilar-Categories&gt;' == $stub_categories ) || ( '' == $stub_categories ) || ( '-' == $stub_categories ) ) {
 			return false;
 		} else {
 			$lines = preg_split( "/\*/", $stub_categories );
 			$normalised_lines = array();
 			array_shift( $lines );
-			foreach( $lines as $line ) {
+			foreach ( $lines as $line ) {
 				$normalised_lines[] = str_replace( ' ', '_', trim( $line ) );
 			}
 			return $normalised_lines;
@@ -103,7 +105,7 @@ class EditSimilar {
 	function getSimilarArticles() {
 		global $wgUser, $wgEditSimilarMaxResultsToDisplay;
 
-		if( empty( $this->mAttentionMarkers ) || !$this->mAttentionMarkers ) {
+		if ( empty( $this->mAttentionMarkers ) || !$this->mAttentionMarkers ) {
 			return false;
 		}
 		$text = '';
@@ -112,23 +114,23 @@ class EditSimilar {
 
 		while ( ( count( $articles ) < $wgEditSimilarMaxResultsToDisplay ) && ( $x < count( $this->mAttentionMarkers ) ) ) {
 			$articles = array_merge( $articles, $this->getResults( $this->mAttentionMarkers[$x] ) );
-			if( !empty( $articles ) ) {
+			if ( !empty( $articles ) ) {
 				$articles = array_unique( $articles );
 			}
 			$x++;
 		}
 
-		if( empty( $articles ) ) {
+		if ( empty( $articles ) ) {
 			$articles = $this->getAdditionalCheck();
 			// second check to make sure we have anything to display
-			if( empty( $articles ) ) {
+			if ( empty( $articles ) ) {
 				return false;
 			}
 			$articles = array_unique( $articles );
 			$this->mSimilarArticles = false;
 		}
 
-		if( 1 == count( $articles ) ) { // in this case, array_rand returns a single element, not an array
+		if ( 1 == count( $articles ) ) { // in this case, array_rand returns a single element, not an array
 			$rand_articles = array( 0 );
 		} else {
 			$rand_articles = array_rand( $articles, min( $wgEditSimilarMaxResultsToDisplay, count( $articles ) ) );
@@ -137,17 +139,17 @@ class EditSimilar {
 		$skinname = get_class( $sk );
 		$skinname = strtolower( substr( $skinname, 4 ) );
 		$real_rand_values = array();
-		if( empty( $rand_articles ) ) {
+		if ( empty( $rand_articles ) ) {
 			return false;
 		}
 
 		$translated_titles = array();
-		foreach( $rand_articles as $r_key => $rand_article_key ) {
+		foreach ( $rand_articles as $r_key => $rand_article_key ) {
 			$translated_titles[] = $articles [$rand_article_key];
 		}
 		$translated_titles = $this->idsToTitles( $translated_titles );
 
-		foreach( $translated_titles as $link_title ) {
+		foreach ( $translated_titles as $link_title ) {
 			$article_link = $sk->makeKnownLinkObj( $link_title );
 			$real_rand_values[] = $article_link;
 		}
@@ -158,7 +160,7 @@ class EditSimilar {
 	// extract all categories our base article is in
 	function getBaseCategories() {
 		global $wgEditSimilarMaxResultsToDisplay;
-		if( empty( $this->mAttentionMarkers ) || !$this->mAttentionMarkers ) {
+		if ( empty( $this->mAttentionMarkers ) || !$this->mAttentionMarkers ) {
 			return false;
 		}
 
@@ -174,13 +176,13 @@ class EditSimilar {
 				'USE_INDEX' => 'cl_from'
 			)
 		);
-		while( $x = $dbr->fetchObject( $res ) ) {
-			if( !in_array( $x->cl_to, $this->mAttentionMarkers ) ) {
+		while ( $x = $dbr->fetchObject( $res ) ) {
+			if ( !in_array( $x->cl_to, $this->mAttentionMarkers ) ) {
 				$result_array [] = $x->cl_to;
 			}
 		}
 
-		if( !empty( $result_array ) ) {
+		if ( !empty( $result_array ) ) {
 			return $result_array;
 		} else {
 			return false;
@@ -199,7 +201,7 @@ class EditSimilar {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$fixed_names = array();
-		foreach( $this->mAttentionMarkers as $category ) {
+		foreach ( $this->mAttentionMarkers as $category ) {
 			$fixed_names[] = $dbr->addQuotes( $category );
 		}
 		$stringed_names = implode( ",", $fixed_names );
@@ -212,8 +214,8 @@ class EditSimilar {
 		);
 
 		$result_array = array();
-		while( $x = $dbr->fetchObject( $res ) ) {
-			if( $this->mBaseArticle != $x->cl_from ) {
+		while ( $x = $dbr->fetchObject( $res ) ) {
+			if ( $this->mBaseArticle != $x->cl_from ) {
 				$result_array[] = $x->cl_from;
 			}
 		}
@@ -237,7 +239,7 @@ class EditSimilar {
 		$result_array = array();
 
 		// so for now, to speed things up, just discard results from other namespaces (and subpages)
-		while( ( $x = $dbr->fetchObject( $res ) )
+		while ( ( $x = $dbr->fetchObject( $res ) )
 			&& ( in_array( $x->page_namespace, $wgContentNamespaces ) )
 			&& false === strpos( $x->page_title, "/" ) ) {
 				$result_array[] = Title::makeTitle( $x->page_namespace, $x->page_title );
@@ -253,26 +255,26 @@ class EditSimilar {
 		$title = Title::makeTitle( NS_CATEGORY, $marker_category );
 		$result_array = array();
 
-		if( empty( $this->mBaseCategories ) ) {
+		if ( empty( $this->mBaseCategories ) ) {
 			return $result_array;
 		}
 
 		$query = "SELECT c1.cl_from
 				FROM {$dbr->tableName( 'categorylinks' )} AS c1, {$dbr->tableName( 'categorylinks' )} AS c2
 				WHERE c1.cl_from = c2.cl_from
-				AND c1.cl_to = " .$dbr->addQuotes( $title->getDBkey() )  . "
+				AND c1.cl_to = " . $dbr->addQuotes( $title->getDBkey() )  . "
 				AND c2.cl_to IN (";
 
 		$fixed_names = array();
-		foreach( $this->mBaseCategories as $category ) {
+		foreach ( $this->mBaseCategories as $category ) {
 			$fixed_names[] = $dbr->addQuotes( $category );
 		}
 		$stringed_names = implode( ",", $fixed_names );
 		$query .= $stringed_names . ")";
 
 		$res = $dbr->query( $query, __METHOD__ );
-		while( $x = $dbr->fetchObject( $res ) ) {
-			if( $this->mBaseArticle != $x->cl_from ) {
+		while ( $x = $dbr->fetchObject( $res ) ) {
+			if ( $this->mBaseArticle != $x->cl_from ) {
 				$result_array[] = $x->cl_from;
 			}
 		}
@@ -285,7 +287,7 @@ class EditSimilar {
 	static public function showMessage( $text ) {
 		global $wgOut, $wgUser, $wgScript, $wgScriptPath;
 		$wgOut->addExtensionStyle( $wgScriptPath . '/extensions/EditSimilar/EditSimilar.css' );
-		if( $wgUser->isLoggedIn() ) {
+		if ( $wgUser->isLoggedIn() ) {
 			$link = '<div class="editsimilar_dismiss">[<span class="plainlinks"><a href="' . $wgScript .  '?title=Special:Preferences#prefsection-4" id="editsimilar_preferences">' . wfMsg( 'editsimilar-link-disable' ) . '</a></span>]</div><div style="display:block">&nbsp;</div>';
 		} else {
 			$link = '';
@@ -296,9 +298,9 @@ class EditSimilar {
 	// this is for determining whether to display the message or not
 	static public function checkCounter() {
 		global $wgEditSimilarCounterValue;
-		if( isset( $_SESSION['ES_counter'] ) ) {
+		if ( isset( $_SESSION['ES_counter'] ) ) {
 			$_SESSION['ES_counter']--;
-			if( $_SESSION['ES_counter'] > 0 ) {
+			if ( $_SESSION['ES_counter'] > 0 ) {
 				return false;
 			} else {
 				$_SESSION['ES_counter'] = $wgEditSimilarCounterValue;
@@ -322,38 +324,45 @@ function wfEditSimilarCheck( $article ) {
 	return true;
 }
 
-//view message depending on settings and the relevancy of the results
+// view message depending on settings and the relevancy of the results
 function wfEditSimilarViewMesg( &$out ) {
 	global $wgTitle, $wgUser, $wgEditSimilarAlwaysShowThanks;
+
 	wfLoadExtensionMessages( 'EditSimilar' );
+
 	if ( !empty( $_SESSION['ES_saved'] ) && ( 1 == $wgUser->getOption( 'edit-similar', 1 ) ) && $out->isArticle() ) {
-		if( EditSimilar::checkCounter() ) {
+		if ( EditSimilar::checkCounter() ) {
 			$message_text = '';
 			$article_title = $wgTitle->getText();
 			// here we'll populate the similar articles and links
 			$SInstance = new EditSimilar( $wgTitle->getArticleId(), 'category' );
 			$similarities = $SInstance->getSimilarArticles();
-			if( !empty( $similarities ) ) {
-				if( $SInstance->mSimilarArticles ) {
-					if( count( $similarities ) > 1 ) {
-						$message_text = wfMsg( 'editsimilar-thanks', implode( ", ", $similarities ) );
-					} else {
-						$message_text = wfMsg( 'editsimilar-thanks-singleresult', implode( ", ", $similarities ) );
-					}
+
+			if ( !empty( $similarities ) ) {
+				global $wgLang;
+
+				if ( $SInstance->mSimilarArticles ) {
+					$message_text = wfMsgExt(
+						'editsimilar-thanks',
+						array( 'parsemag' ),
+						$wgLang->listToText( $similarities ),
+						count( $similarities )
+					);
 				} else { // the articles we found were rather just articles needing attention
-					if( count( $similarities ) > 1 ) {
-						$message_text = wfMsg( 'editsimilar-thanks-notsimilar', implode( ", ", $similarities ) );
-					} else {
-						$message_text = wfMsg( 'editsimilar-thanks-notsimilar-singleresult', implode( ", ", $similarities ) );
-					}
+					$message_text = wfMsgExt(
+						'editsimilar-thanks-notsimilar',
+						array( 'parsemag' ),
+						$wgLang->listToText( $similarities ),
+						count( $similarities )
+					);
 				}
 			} else {
-				if( $wgUser->isLoggedIn() && !empty( $wgEditSimilarAlwaysShowThanks ) ) {
+				if ( $wgUser->isLoggedIn() && !empty( $wgEditSimilarAlwaysShowThanks ) ) {
 					$message_text = wfMsg( 'editsimilar-thankyou', $wgUser->getName() );
 				}
 			}
 
-			if( '' != $message_text ) {
+			if ( '' != $message_text ) {
 				EditSimilar::showMessage( $message_text, $article_title );
 			}
 		}
@@ -372,6 +381,7 @@ function wfEditSimilarViewMesg( &$out ) {
  */
 function wfEditSimilarToggle( $user, &$preferences ) {
 	wfLoadExtensionMessages( 'EditSimilar' );
+
 	$preferences['edit-similar'] = array(
 		'type' => 'toggle',
 		'section' => 'editing',
