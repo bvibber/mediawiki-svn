@@ -63,7 +63,7 @@ $wgWebStoreSettings = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['WebStore'] = $dir . 'WebStore.i18n.php';
-$wgAutoloadClasses['WebStoreClient'] = $dir . 'WebStoreClient.php';
+#$wgAutoloadClasses['WebStoreClient'] = $dir . 'WebStoreClient.php';
 $wgAutoloadClasses['WebStoreCommon'] = $dir . 'WebStoreCommon.php';
 $wgAutoloadClasses['WebStorePostFile'] = $dir . 'WebStorePostFile.php';
 
