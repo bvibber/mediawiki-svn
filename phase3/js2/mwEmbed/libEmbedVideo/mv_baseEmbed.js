@@ -1,6 +1,46 @@
 /*  the base video control JSON object with default attributes
 *	for supported attribute details see README
 */
+
+loadGM({
+	"loading_plugin" : "loading plugin<blink>...</blink>",
+
+	"select_playback" : "Set Playback Preference",
+	"link_back" : "Link Back",
+	"error_load_lib" : "mv_embed: Unable to load required javascript libraries\n insert script via DOM has failed, try reloading?  ",
+					 
+	"error_swap_vid" : "Error:mv_embed was unable to swap the video tag for the mv_embed interface",
+	
+	"add_to_end_of_sequence" : "Add to End of Sequence",
+	
+	"missing_video_stream" : "The video file for this stream is missing",	
+	
+	"next_clip_msg" : "Play Next Clip",
+	"prev_clip_msg" : "Play Previous Clip",
+	"current_clip_msg" : "Continue Playing this Clip",	
+	"seek_to" : "Seek to",
+	
+	"download_segment" : "Download Selection:",
+	"download_full" : "Download Full Video File:",
+	"download_right_click": "To download right click and select <i>save target as</i>",
+	"download_clip" : "Download the Clip",
+	"download_text" : "Download Text (<a style=\"color:white\" title=\"cmml\" href=\"http://wiki.xiph.org/index.php/CMML\">cmml</a> xml):",
+	
+	"clip_linkback" : "Clip Source Page",
+	
+	"mv_ogg-player-vlc-mozilla" : "VLC Plugin",
+	"mv_ogg-player-videoElement" : "Native Ogg Video Support",
+	"mv_ogg-player-vlc-activex" : "VLC ActiveX",	
+	"mv_ogg-player-oggPlugin" : "Generic Ogg Plugin",
+	"mv_ogg-player-quicktime-mozilla" : "Quicktime Plugin",
+	"mv_ogg-player-quicktime-activex" : "Quicktime ActiveX",
+	"mv_ogg-player-cortado" : "Java Cortado",
+	"mv_ogg-player-flowplayer" : "Flowplayer",
+	"mv_ogg-player-selected" : " (selected)",
+	"mv_ogg-player-omtkplayer" : "OMTK Flash Vorbis",
+	"mv_generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://commons.wikimedia.org/wiki/Commons:Media_help\">Playback Methods</a> page to download a player<br>"	
+});
+
 var default_video_attributes = {
 	"id":null,
 	"class":null,

@@ -170,8 +170,8 @@ mvAdvFirefogg.prototype = {
 			'type'		: 'select',
 			'selectVal'	: [{'22050':'22 kHz'}, {'44100':'44 khz'}, {'48000':'48 khz'}],
 			'formatSelect'	: function(val){
-						return (Math.round(val/100)*10) + ' Hz';
-					},
+        						return (Math.round(val/100)*10) + ' Hz';
+        					},
 			'help'		: "set output samplerate (in Hz)."
 		},
 		'noaudio':{

@@ -85,44 +85,7 @@ function loadGM( msgSet ){
 //all default msg in [English] should be overwritten by the CMS language msg system.
 loadGM({ 
 	"loading_txt":"loading <blink>...</blink>",	
-	"loading_title"  : "Loading...",
-		
-	"loading_plugin" : "loading plugin<blink>...</blink>",
-
-	"select_playback" : "Set Playback Preference",
-	"link_back" : "Link Back",
-	"error_load_lib" : "mv_embed: Unable to load required javascript libraries\n insert script via DOM has failed, try reloading?  ",
-					 
-	"error_swap_vid" : "Error:mv_embed was unable to swap the video tag for the mv_embed interface",
-	
-	"download_segment" : "Download Selection:",
-	"download_full" : "Download Full Video File:",
-	"download_right_click": "To download right click and select <i>save target as</i>",
-	"download_clip" : "Download the Clip",
-	"download_text" : "Download Text (<a style=\"color:white\" title=\"cmml\" href=\"http://wiki.xiph.org/index.php/CMML\">cmml</a> xml):",
-	
-	"clip_linkback" : "Clip Source Page",
-	
-	"mv_ogg-player-vlc-mozilla" : "VLC Plugin",
-	"mv_ogg-player-videoElement" : "Native Ogg Video Support",
-	"mv_ogg-player-vlc-activex" : "VLC ActiveX",	
-	"mv_ogg-player-oggPlugin" : "Generic Ogg Plugin",
-	"mv_ogg-player-quicktime-mozilla" : "Quicktime Plugin",
-	"mv_ogg-player-quicktime-activex" : "Quicktime ActiveX",
-	"mv_ogg-player-cortado" : "Java Cortado",
-	"mv_ogg-player-flowplayer" : "Flowplayer",
-	"mv_ogg-player-selected" : " (selected)",
-	"mv_ogg-player-omtkplayer" : "OMTK Flash Vorbis",
-	"mv_generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://commons.wikimedia.org/wiki/Commons:Media_help\">Playback Methods</a> page to download a player<br>",
-			
-	"add_to_end_of_sequence" : "Add to End of Sequence",
-	
-	"missing_video_stream" : "The video file for this stream is missing",	
-	
-	"next_clip_msg" : "Play Next Clip",
-	"prev_clip_msg" : "Play Previous Clip",
-	"current_clip_msg" : "Continue Playing this Clip",	
-	"seek_to" : "Seek to",
+	"loading_title"  : "Loading...",					
 	
 	"size-gigabytes" : "$1 GB",
 	"size-megabytes" : "$1 MB",
@@ -142,8 +105,8 @@ function gM( key , args ) {
 		ms = gMsg[ key ];
 		if(typeof args == 'object' || typeof args == 'array'){				 
 			 for(var v in args){
-				 var rep = '\$'+ ( parseInt(v) + 1 );
-				 //msg test replace arguments start at 1 insted of zero: 
+			 	//msg test replace arguments start at 1 insted of zero: 
+				 var rep = '\$'+ ( parseInt(v) + 1 );				 
 				 ms = ms.replace( rep, args[v]);
 			 }			 
 		}else if(typeof args =='string' || typeof args =='number'){
@@ -268,7 +231,7 @@ var mvJsLoader = {
 				}		
 			 }
 			 if( all_libs_loaded ){
-				 js_log('all libs already loaded skipping...' + libs);
+				js_log('all libs already loaded skipping...' + libs);
 				callback();
 				return ;
 			}											 
@@ -285,7 +248,13 @@ var mvJsLoader = {
 						  coma=',';
 					  }
 				  }	 
-				  var dbug_attr = (parseUri( getMvEmbedURL() ).queryKey['debug'])?'&debug=true':'';											 
+				  var puri = parseUri( getMvEmbedURL() );
+				  
+				  if(puri.host != parseUri( document.URL).host){
+				  	mwSlScript =  puri.protocol + '://' + puri.authority + mwSlScript;
+				  }
+				  
+				  var dbug_attr = (puri.queryKey['debug'])?'&debug=true':'';							  
 				  this.libs[ last_class ] = mwSlScript + '?class=' + class_set +
 									  '&urid=' + getMvUniqueReqId() + dbug_attr;
 											  
@@ -987,7 +956,7 @@ function mv_jsdata_cb(response){
 }
 //load external js via dom injection
 function loadExternalJs( url ){
-	   js_log('load js: '+ url);
+	  js_log('load js: '+ url);
 	//if(window['$j']) //use jquery call:	
 	   /*$j.ajax({
 			type: "GET",
@@ -1088,7 +1057,7 @@ function getMvEmbedPath(){
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mwScriptLoader.php'))  + mediaWiki_mvEmbed_path ;
 	}else{
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('jsScriptLoader.php'));
-	}	
+	}		
 	//absolute the url (if relative) (if we don't have mv_embed path)
 	if( mv_embed_path.indexOf('://') == -1){	
 		var pURL = parseUri( document.URL );
@@ -1100,7 +1069,7 @@ function getMvEmbedPath(){
 				mv_embed_path = pURL.protocol + '://' + pURL.authority + pURL.directory + mv_embed_path;
 			}
 		}		
-	}
+	}	
 	return mv_embed_path;
 }
 

@@ -456,6 +456,7 @@ mvPlayList.prototype = {
 		this.doSmilActions( single_line = true );	
 	},
 	updateBaseStatus:function(){
+		var _this = this;
 		js_log('f:updateBaseStatus');
 		$j('#ptitle_'+this.id).html(''+
 			'<b>' + this.title + '</b> '+				
@@ -465,11 +466,13 @@ mvPlayList.prototype = {
 		//only show the inline edit button if mediaWiki write API is enabled:
 		
 		//should probably be based on if we have a provider api url
-		if( typeof wgEnableWriteAPI != 'undefined'){		
-			$j('#ptitle_'+this.id).append(
-				$j.btnHtml('edit', 'edit_'+this.id, 'pencil', {'style':'float:right;font-size:x-small;height:15px;'} )
-			);
-			//do binding: 
+		if( typeof wgEnableWriteAPI != 'undefined'){
+			$j( $j.btnHtml('edit', 'editBtn_'+this.id, 'pencil', 
+				{'style':'float:right;font-size:x-small;height:10px;margin-bottom:0;padding-bottom:7px;padding-top:0;'} )
+    			).click(function(){	
+    					_this.doEditor();
+    			}).appendTo('#ptitle_'+this.id);	
+    		$j('.editBtn_'+this.id).btnBind();		
 		}
 		//render out the dividers on the timeline: 
 		this.colorPlayHead();		
