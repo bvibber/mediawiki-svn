@@ -584,15 +584,16 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Gunnernett
  */
 $messages['nn'] = array(
 	'watchers' => 'Overvakarar',
 	'watchers-desc' => 'Viser [[Special:Watchers|kva brukarar som overvaker ei viss side]]',
 	'watchers_link_title' => 'Kven overvaker denne sida?',
 	'watchers_error_article' => '<b>Feil:</b> Sida finst ikkje.',
-	'watchers_header' => 'Brukarar som overvaker «$1»',
+	'watchers_header' => '{{PLURAL:$2|Brukar|Brukarar}} som overvakar «$1»',
 	'watchers_noone_watches' => 'Ingen overvaker denne sida.',
-	'watchers_x_or_more' => '$1 eller fleire personer overvaker denne sida.',
+	'watchers_x_or_more' => '$1 eller fleire {{PLURAL:$1|brukarar|brukarar}} overvakar denne sida.',
 	'watchers_less_than_x' => 'Mindre enn $1 {{PLURAL:$1|brukarar|brukar}} overvaker denne sida.',
 );
 

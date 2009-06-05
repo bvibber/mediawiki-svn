@@ -33,6 +33,11 @@ $aliases['ja'] = array(
 	'AdminLinks' => array( '管理者用リンク集' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'AdminLinks' => array( 'Lengks_för_Wiki_Köbesse' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'AdminLinks' => array( 'ĦoloqAmmin' ),

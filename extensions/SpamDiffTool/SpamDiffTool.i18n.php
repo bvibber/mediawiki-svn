@@ -1067,6 +1067,13 @@ Fà click <a href='$1'>ccà</a> pi turnari arredi.",
 	'spamdifftool_submit_buttom' => 'Manna',
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'spamdifftool_submit_buttom' => 'Unesi',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

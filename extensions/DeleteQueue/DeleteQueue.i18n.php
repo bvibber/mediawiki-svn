@@ -603,11 +603,17 @@ $messages['be-tarask'] = array(
 	'deletequeue-review-reason' => 'Камэнтары:',
 	'deletequeue-review-newreason' => 'Новая прычына:',
 	'deletequeue-review-newextra' => 'Дадатковая інфармацыя:',
+	'deletequeue-vote-action' => 'Рэкамэндацыя:',
 	'deletequeue-vote-reason' => 'Камэнтары:',
+	'deletequeue' => 'Чарга выдаленьняў',
+	'deletequeue-list-queue' => 'Чарга:',
 	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-list-header-page' => 'Старонка',
+	'deletequeue-list-header-queue' => 'Чарга',
+	'deletequeue-list-header-reason' => 'Прычына выдаленьня',
 	'deletequeue-case-page' => 'Старонка:',
 	'deletequeue-case-reason' => 'Прычына:',
+	'deletequeue-case-expiry' => 'Тэрмін:',
 );
 
 /** Bulgarian (Български)
@@ -3913,6 +3919,7 @@ $messages['ru'] = array(
  */
 $messages['sh'] = array(
 	'deletequeue-delnom-otherreason' => 'Ostali razlog/zi',
+	'deletequeue-vote-submit' => 'Unesi',
 );
 
 /** Slovak (Slovenčina)

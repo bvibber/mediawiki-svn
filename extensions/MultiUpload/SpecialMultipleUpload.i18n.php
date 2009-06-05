@@ -1162,10 +1162,11 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'multipleupload' => 'Загрузка файлов',
+	'multipleupload' => 'Загрузка нескольких файлов',
 	'multipleupload-desc' => 'Позволяет участникам [[Special:MultipleUpload|загружать несколько файлов за раз]]',
 	'multipleupload-ignoreallwarnings' => "Игнорировать '''все предупреждения''' и сохранять файлы в любом случае.",
 	'multipleupload-saveallfiles' => 'Сохранить все файлы',
@@ -1180,6 +1181,8 @@ $messages['ru'] = array(
 Неподходящие файлы будут удалены немедленно, см. [[{{MediaWiki:Multipleupload-page}}|правила удаления файлов]].',
 	'multiupload-fileuploaded' => 'Файл загружен.',
 	'multiupload-toolbox' => 'Загрузка нескольких файлов',
+	'multiupload-no-files' => 'Пожалуйста, выберите по крайней мере один файл для загрузки',
+	'multiupload-blank' => 'Нет выбранных файлов',
 );
 
 /** Sardinian (Sardu)

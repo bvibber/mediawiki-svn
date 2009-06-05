@@ -703,6 +703,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -711,6 +712,7 @@ $messages['ru'] = array(
 	'findspam-ip' => 'IP-адрес:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Не найдено вклада',
+	'right-findspam' => 'поиск недавно добавленного спама',
 );
 
 /** Sardinian (Sardu)

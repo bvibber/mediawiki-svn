@@ -561,6 +561,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author IAlex
  * @author McDutchie
@@ -712,6 +713,7 @@ Do not translate rel="nofollow".',
 	'configure-setting-wgMaxRedirectLinksRetrieved' => '{{config-wg|MaxRedirectLinksRetrieved}}',
 	'configure-setting-wgSortSpecialPages' => '{{config-wg|SortSpecialPages}}',
 	'configure-setting-wgSpecialPageGroups' => '{{config-wg|SpecialPageGroups}}',
+	'configure-setting-wgSpecialPageGroups-key' => '{{Identical|Group}}',
 	'configure-setting-wgSpecialVersionShowHooks' => '{{config-wg|SpecialVersionShowHooks}}',
 	'configure-setting-wgUseNPPatrol' => '{{config-wg|UseNPPatrol}}',
 	'configure-setting-wgAutopromote' => '{{config-wg|Autopromote}}',
@@ -1425,6 +1427,10 @@ $messages['bar'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'configure-setting-wgVersion' => 'Вэрсія MediaWiki',
+	'configure-setting-wgSpecialPageGroups-key' => 'Група',
+	'configure-setting-wgAutopromote-value' => 'Умовы',
+	'configure-setting-wgDebugLogGroups-value' => 'Файл',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Прастора назваў',
 );
 
@@ -3912,7 +3918,7 @@ $messages['gl'] = array(
 	'configure-setting-wgParserCacheType' => 'Tipo da caché do analizador',
 	'configure-setting-wgEnableParserCache' => 'Activar a caché do analizador',
 	'configure-setting-wgEnableSidebarCache' => 'Ligazóns á caché da barra lateral',
-	'configure-setting-wgRenderHashAppend' => 'Salto hash adicional do analizador e das chaves da caché e mais do "sitenotice"',
+	'configure-setting-wgRenderHashAppend' => 'Salto hash adicional do analizador e das chaves da caché e mais do aviso do sitio (sitenotice)',
 	'configure-setting-wgSidebarCacheExpiry' => 'Caducidade da caché da barra lateral',
 	'configure-setting-wgUseETag' => 'Enviar cabeceiras "ETag"',
 	'configure-setting-wgAlwaysUseTidy' => 'Usar sempre "Tidy"',
@@ -5122,7 +5128,7 @@ $messages['ia'] = array(
 	'configure-setting-wgParserCacheType' => 'Typo de cache del analysator syntactic',
 	'configure-setting-wgEnableParserCache' => 'Activar le cache del analysator syntactic',
 	'configure-setting-wgEnableSidebarCache' => 'Mitter in cache le ligamines del barra lateral',
-	'configure-setting-wgRenderHashAppend' => 'Adder "sal" al hash del renditor',
+	'configure-setting-wgRenderHashAppend' => 'Adjunger "sal" al numeros-clave del cache del analysator syntactic e del cache de notitias de sito',
 	'configure-setting-wgSidebarCacheExpiry' => 'Expiration del cache del barra lateral',
 	'configure-setting-wgUseETag' => 'Inviar capites ETag',
 	'configure-setting-wgAlwaysUseTidy' => 'Sempre usar Tidy',
@@ -5181,7 +5187,7 @@ $messages['ia'] = array(
 	'configure-setting-wgSharedUploadPath' => 'Cammino complete in le servitor web verso ubi se trova le files commun',
 	'configure-setting-wgUseSharedUploads' => 'Usar un deposito de files commun',
 	'configure-setting-wgAppleTouchIcon' => 'Icone de marcapaginas pro Apple Touch',
-	'configure-setting-wgArticlePath' => 'Cammino de base pro le articulos',
+	'configure-setting-wgArticlePath' => 'URL de base pro le ligamines interne intra MediaWIki',
 	'configure-setting-wgDirectoryMode' => 'Permissiones de accesso pro nove directorios',
 	'configure-setting-wgDiff' => 'Cammino verso le utilitate GNU diff',
 	'configure-setting-wgDiff3' => 'Cammino verso le utilitate GNU diff3',
@@ -6027,7 +6033,7 @@ jesaz wääde',
 	'configure-setting-wgSMTP' => 'ßööver för dat <i lang="en">SMTP</i>',
 	'configure-setting-wgUserEmailUseReplyTo' => 'Donn <code>Reply-To:</code> nämme, un nit <code>From:</code>',
 	'configure-setting-wgColorErrors' => 'Kommandos ier Ußjabe un Nohreeschte en bungk aanzeije',
-	'configure-setting-wgDebugComments' => 'Donn Aandeijle vun de Lögbööscher als <i lang="en">HTML</i>-Kommentaa en de Sigge ongerbränge.',
+	'configure-setting-wgDebugComments' => 'Donn Aandeijle vun de Lögbööscher als <i lang="en">HTML</i>-Kommentaa en de Sigge ongerbränge',
 	'configure-setting-wgDebugDumpSql' => 'Donn <i lang="en">SQL</i>-Froore met ußjävve beim Fähler-Söke',
 	'configure-setting-wgDebugLogFile' => 'De Log-Datei för et Fähler-Söke',
 	'configure-setting-wgDebugLogGroups' => 'Dateije för beschtemmpte Jroppe uß de Logbööscher',
@@ -8459,6 +8465,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author IAlex
+ * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */

@@ -121,6 +121,20 @@ $messages['avk'] = array(
 	'countedits-mostactive' => 'Tel lowebesikeem',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'countedits' => 'Beitrågszähla',
+	'countedits-desc' => '[[Special:CountEdits|Spezialseitn]], de Benutzabeiträg zöihd und a Top-10-Listn eastöid',
+	'countedits-username' => 'Benutzanãm:',
+	'countedits-ok' => 'OK',
+	'countedits-nosuchuser' => "An Benutza mi'm Nãm $1 gibt's ned.",
+	'countedits-resultheader' => 'Eagebnis fia $1',
+	'countedits-resulttext' => '$1 håd $2 {{PLURAL:$2|Beåaweitung|Beåaweitungen}}',
+	'countedits-mostactive' => 'De aktivstn Benutza',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

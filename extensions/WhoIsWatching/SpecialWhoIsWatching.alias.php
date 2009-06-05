@@ -97,7 +97,7 @@ $aliases['km'] = array(
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'WhoIsWatching' => array( 'Wä paß op op' ),
+	'WhoIsWatching' => array( 'Wä paß op op', 'WäPassOpOp', 'WäPaßOpOp' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

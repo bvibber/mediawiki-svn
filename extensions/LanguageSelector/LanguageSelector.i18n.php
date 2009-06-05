@@ -124,6 +124,15 @@ $messages['ca'] = array(
 	'languageselector-setlang' => 'selecciona',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author رزگار
+ */
+$messages['ckb-arab'] = array(
+	'languageselector' => 'زمان',
+	'languageselector-desc' => 'هەڵبژیری زمان لە ھەمو پەرەکان ,هەروەھا بۆ بینەران',
+	'languageselector-setlang' => 'داینێ',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

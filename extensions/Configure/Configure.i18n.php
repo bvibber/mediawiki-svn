@@ -5426,6 +5426,7 @@ Opprett ho eller endra ho for å nytta denne utvidinga.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
  * @author Jon Harald Søby
  * @author Laaknor
  * @author Nghtwlkr
@@ -5605,7 +5606,7 @@ Opprett den eller endre den for å bruke denne utvidelsen.',
 	'configure-condition-description-4' => 'I alle gruppene $1',
 	'configure-condition-description-5' => 'Brukerens IP-adresse er $1',
 	'configure-condition-description-6' => 'Brukerens IP-adresse er i intervallet $1',
-	'configure-condition-description-7' => 'Kontoalder på minst {{ett sekund|$1 sekund}} etter første redigering',
+	'configure-condition-description-7' => 'Kontoalder på minst {{PLURAL:$1| ett sekund|$1 sekunder}} etter første redigering',
 	'configure-boolop-description-and' => 'Alle betingelsene må være sanne',
 	'configure-boolop-description-or' => 'Minst én betingelse må være sann',
 	'configure-boolop-description-xor' => 'Akkurat én betingelse må være sann',

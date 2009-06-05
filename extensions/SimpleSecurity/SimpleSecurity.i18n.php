@@ -518,6 +518,7 @@ $messages['pl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  * @author Waldir
  */
@@ -530,9 +531,9 @@ $messages['pt'] = array(
 	'security-info' => 'Há $1 nesta página',
 	'security-info-toggle' => 'restrições de segurança',
 	'security-inforestrict' => '$1 está limitado a $2',
-	'security-desc-LS' => "''(aplica-se porque esta página está no '''$2 $1''')''",
-	'security-desc-PR' => "''(definido a partir da '''aba proteger''')''",
-	'security-infosysops' => "Nenhuma restrição está em vigor, porque você é um membro do grupo '''sysop'''",
+	'security-desc-LS' => '(aplica-se porque esta página está no "$2 $1")',
+	'security-desc-PR' => '(definido a partir da "aba proteger")',
+	'security-infosysops' => 'Nenhuma restrição está em vigor, porque você é um membro do grupo "sysop"',
 	'security-manygroups' => 'grupos $1 e $2',
 	'security-unchain' => 'Modificar ações individualmente',
 	'security-type-category' => 'categoria',

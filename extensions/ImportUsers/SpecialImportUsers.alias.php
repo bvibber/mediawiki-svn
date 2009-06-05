@@ -122,7 +122,7 @@ $aliases['km'] = array(
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'ImportUsers' => array( 'Metmaacher Empoteere' ),
+	'ImportUsers' => array( 'Metmaacher_Empoteere', 'MetmaacherEmpoteere', 'Medmaacher_Empoteere', 'MedmaacherEmpoteere' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

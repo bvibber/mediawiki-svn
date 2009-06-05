@@ -372,6 +372,7 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -380,6 +381,7 @@ $messages['no'] = array(
 	'purgecache-warning' => 'Dette vil slette mellomlagertabellene.',
 	'purgecache-purged' => 'Mellomlageret har blitt slettet.',
 	'purgecache-button' => 'Slett',
+	'right-purgecache' => 'Rens OBJECTCACHE-tabellen',
 );
 
 /** Occitan (Occitan)

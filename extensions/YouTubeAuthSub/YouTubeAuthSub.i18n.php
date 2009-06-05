@@ -2201,6 +2201,13 @@ Hà aviri pacenzia.',
 	'youtubeauthsub_jserror_nodesc' => 'Nzirisci na spiecazzioni pô vìdiu.',
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'youtubeauthsub_submit' => 'Unesi',
+);
+
 /** Sinhala (සිංහල)
  * @author Asiri wiki
  */

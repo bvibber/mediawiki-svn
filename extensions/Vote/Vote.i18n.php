@@ -109,6 +109,8 @@ $messages['ar'] = array(
 	'vote-results-none' => 'لا أصوات تم وضعها في هذا الوقت.',
 	'vote-login' => 'يجب عليك [$1 دخول] لكي تصوت.',
 	'vote-invalid-choice' => 'يجب عليك اختيار واحد من الخيارات المتاحة.',
+	'right-vote' => 'تصويت',
+	'right-voteadmin' => 'مشاهدة نتائج التصويتات',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1271,6 +1273,8 @@ riddler|Enigmático',
 	'vote-results-none' => 'De momento ainda não foram submetidos votos.',
 	'vote-login' => 'Terá de [$1 autenticar-se] para votar.',
 	'vote-invalid-choice' => 'Deverá seleccionar uma das opções disponíveis.',
+	'right-vote' => 'Votar',
+	'right-voteadmin' => 'Ver resultados da votação',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

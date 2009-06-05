@@ -178,6 +178,13 @@ $messages['pl'] = array(
 	'right-getfamily' => 'Tworzenie pliku „family” dla pywikipediabot',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'getfamily-interwikierror' => 'Erro: configuração de interwikis incorrecta. Contacte o administrador.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -46,6 +46,14 @@ $messages['ast'] = array(
 	'absenteelandlord-desc' => 'Autobloquea la base de datos wiki si los alministradores tán toos inactivos dalgún tiempu',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'absenteelandlord-reason' => 'De Datnbank is automatisch gspead woan, weu ka Administrator aktiv is.',
+	'absenteelandlord-desc' => "Automatische Sperre vu da Datnbank, wãnn d'Administratoan fia a gwisse Zeid inaktiv han",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  * @author Red Winged Duck

@@ -161,6 +161,13 @@ $messages['ca'] = array(
 	'importfreeimages_next' => 'Següent $1',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author رزگار
+ */
+$messages['ckb-arab'] = array(
+	'importfreeimages_owner' => 'نوسه‌ر',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

@@ -711,9 +711,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'fckeditor-desc' => 'Permitir edição através do editor WYSIWYG, FCKeditor',
 	'textrichditor' => 'Editor Rico',
 	'tog-riched_disable' => 'Desactivar editor rico',
 	'tog-riched_disable_ns_main' => 'Desactivar editor rico no espaço nominal principal',

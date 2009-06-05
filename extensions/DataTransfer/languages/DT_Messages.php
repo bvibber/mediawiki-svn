@@ -177,11 +177,16 @@ $messages['arz'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'viewxml' => 'Паказаць XML',
 	'dt_viewxml_categories' => 'Катэгорыі',
 	'dt_viewxml_namespaces' => 'Прасторы назваў',
+	'dt_viewxml_simplifiedformat' => 'Спрошчаны фармат',
 	'dt_xml_namespace' => 'Прастора назваў',
 	'dt_xml_pages' => 'Старонкі',
 	'dt_xml_page' => 'Старонка',
+	'dt_xml_template' => 'Шаблён',
+	'dt_xml_field' => 'Поле',
+	'dt_xml_name' => 'Назва',
 	'dt_xml_title' => 'Назва',
 );
 
@@ -1161,7 +1166,9 @@ $messages['pt'] = array(
 	'dt_import_selectfile' => 'Por favor, selecione o ficheiro $1 a importar:',
 	'dt_import_editsummary' => 'Importação de $1',
 	'dt_import_importing' => 'Importando...',
-	'dt_import_success' => '$1 {{PLURAL:$1|página será importada|páginas serão importadas}} do ficheiro $2.',
+	'dt_import_success' => '{{PLURAL:$1|A página será importada|As páginas serão importadas}} a partir do ficheiro $2.',
+	'importcsv' => 'Importar CSV',
+	'right-datatransferimport' => 'Importar dados',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1505,6 +1512,9 @@ $messages['vi'] = array(
 	'dt_import_editsummary' => 'Nhập $1',
 	'dt_import_importing' => 'Đang nhập…',
 	'dt_import_success' => '$1 trang sẽ được nhập từ tập tin $2.',
+	'importcsv' => 'Nhập CSV',
+	'dt_importcsv_badheader' => 'Lỗi: tên của cột $1, “$2”, phải là “$3” hay “$4”, hoặc phải theo hình dạng “tên_tiêu_bản[tên_trường]”',
+	'right-datatransferimport' => 'Nhập dữ liệu',
 );
 
 /** Volapük (Volapük)

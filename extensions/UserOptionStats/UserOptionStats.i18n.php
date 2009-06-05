@@ -249,11 +249,17 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'useroptionstats' => 'Statistikk for brukervalg',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Spesialside]] for rapporter om bruk av MediaWiki brukervalg',
+	'uos-warn' => 'PHPlot er ikke installert!',
+	'uos-choose' => 'Velg et av de følgende brukervalgene: $1',
 	'uos-unknown' => '*Standard',
 	'uos-other' => '*Annen',
+	'uos-title' => 'Fordeling av verdier for brukervalg $1',
 );
 
 /** Occitan (Occitan)
@@ -269,14 +275,24 @@ $messages['oc'] = array(
 	'uos-title' => "Distribucion de las valors de l'opcion d'utilizaire $1",
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'useroptionstats' => 'Estatísticas de opções de usuário',
+	'uos-warn' => 'PHPlot não está instalado!',
+	'uos-choose' => 'Escolha uma das seguintes opções de usuário: $1',
+);
+
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'useroptionstats' => 'Статистика настроек участников',
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Служебная страница]] отчетности по использованию участниками настроек MediaWiki',
 	'uos-warn' => 'PHPlot не установлен!',
-	'uos-choose' => 'Выберите одну из следующих пользовательских настроек: $ 1',
+	'uos-choose' => 'Выберите одну из следующих пользовательских настроек: $1',
 	'uos-unknown' => '* По умолчанию',
 	'uos-other' => '* Другие',
 	'uos-title' => 'Распределение значений пользовательской настройки $1',

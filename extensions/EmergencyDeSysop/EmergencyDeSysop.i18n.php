@@ -496,6 +496,26 @@ $messages['nn'] = array(
 	'right-emergencydesysop' => 'Kan avsetja seg sjølv og ein annan administrator',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
+ */
+$messages['no'] = array(
+	'emergencydesysop' => 'Kriseavsetting av administrator',
+	'emergencydesysop-desc' => 'Lar en administrator ofre egne privilegier for å avsette en annen administrator.',
+	'emergencydesysop-title' => 'Fjern administratorrettighetene til både gjeldende bruker og en annen administrator.',
+	'emergencydesysop-otheradmin' => 'Andre administratorer som skal avsettes',
+	'emergencydesysop-reason' => 'Grunn for avsetting',
+	'emergencydesysop-submit' => 'Utfør',
+	'emergencydesysop-incomplete' => 'Alle skjemafeltene er påkrevd, vennligst prøv igjen.',
+	'emergencydesysop-notasysop' => 'Målbrukeren er ikke en administrator.',
+	'emergencydesysop-nogroups' => 'Ingen',
+	'emergencydesysop-done' => 'Handling utført, både du og [[$1]] har blitt avsatt som administratorer.',
+	'emergencydesysop-invalidtarget' => 'Målbrukeren eksisterer ikke.',
+	'emergencydesysop-blocked' => 'Du kan ikke se denne siden når du er blokkert',
+	'emergencydesysop-noright' => 'Du har ikke de påkrevde rettighetene til å se denne siden',
+	'right-emergencydesysop' => 'Mulighet til å avsette seg selv og en annen administrator',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

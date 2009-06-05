@@ -597,9 +597,8 @@ Le file cargate debe continer in cata linea un nomine de pagina e un motivo facu
 	'deletebatch-or' => '<b>o</b>',
 	'deletebatch-page' => 'Paginas a deler:',
 	'deletebatch-reason' => 'Motivo pro deletion',
-	'deletebatch-processing' => 'deletion del paginas $1',
-	'deletebatch-from-file' => 'a partir del lista in un file',
-	'deletebatch-from-form' => 'a partir del formulario',
+	'deletebatch-processing-from-file' => 'deletion de paginas ex un lista de files',
+	'deletebatch-processing-from-form' => 'deletion de paginas ex formulario',
 	'deletebatch-success-subtitle' => 'pro $1',
 	'deletebatch-omitting-nonexistant' => 'Omission del pagina non existente "$1".',
 	'deletebatch-omitting-invalid' => 'Omission del pagina invalide "$1".',
@@ -814,6 +813,7 @@ Het bestand dat u uploadt moet op iedere regel een paginanaam en een reden bevat
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -830,9 +830,8 @@ Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteår
 	'deletebatch-or' => '<b>eller</b>',
 	'deletebatch-page' => 'Sider som skal bli sletta:',
 	'deletebatch-reason' => 'Sletteårsak',
-	'deletebatch-processing' => 'slettar sidene $1',
-	'deletebatch-from-file' => 'frå fillista',
-	'deletebatch-from-form' => 'frå skjema',
+	'deletebatch-processing-from-file' => 'slettar sider frå lista over filer',
+	'deletebatch-processing-from-form' => 'slettar sider frå skjemaet',
 	'deletebatch-success-subtitle' => 'for $1',
 	'deletebatch-omitting-nonexistant' => 'Tek ikkje med sida $1 som ikkje finst.',
 	'deletebatch-omitting-invalid' => 'Tek ikkje med den ugyldige sida $1.',

@@ -340,6 +340,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -347,6 +348,7 @@ $messages['nn'] = array(
 	'piwik-lastvisits' => 'Siste vitjingar',
 	'piwik-countries' => 'Land',
 	'piwik-browsers' => 'Nettlesarar',
+	'right-viewpiwik' => 'Vis [[Special:Piwik|Piwik-statistikk]]',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

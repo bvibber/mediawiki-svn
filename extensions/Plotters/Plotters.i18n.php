@@ -332,6 +332,14 @@ Definissètz una classa de tablèu que fa mens de 255 caractèrs.',
 	'plotters-errors' => '{{PLURAL:$1|Error|Errors}} de traçadors :',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'plotters-uses' => 'Usos',
+	'plotters-no-data' => 'Não foram providenciados dados.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

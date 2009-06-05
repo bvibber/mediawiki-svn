@@ -239,10 +239,13 @@ U hebt het volgende geprobeerd: '''$1'''",
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Waldir
  */
 $messages['pt'] = array(
 	'rt-inactive' => 'A extensão RT não está ativa',
+	'rt-badquery' => 'A extensão RT encontrou um erro ao comunicar-se com a base de dados RT',
+	'rt-nomatches' => 'Não foram encontrados bilhetes RT correspondentes',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

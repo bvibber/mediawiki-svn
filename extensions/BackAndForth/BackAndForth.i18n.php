@@ -96,6 +96,15 @@ $messages['avk'] = array(
 	'backforth-prev' => 'Abdif ($1)',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'backforth-next' => "d'nextn ($1)",
+	'backforth-desc' => 'Eagänzt alfabetische „nexte“- und „voarige“-Navigazionslinks am Seitnkopf.',
+	'backforth-prev' => 'voarige ($1)',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

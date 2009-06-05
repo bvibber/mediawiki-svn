@@ -2053,6 +2053,7 @@ Denne sida kan berre nyttast på avgrensa brukarar.",
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
@@ -2108,6 +2109,8 @@ Denne siden kan kun brukes på begrensede brukere.",
 	'action-restricttowhitelist' => 'endre og vis sider som bare er på hvitlisten',
 	'group-restricted' => 'Begrensede brukere',
 	'group-restricted-member' => 'Begrenset bruker',
+	'group-manager' => 'Håndterere',
+	'group-manager-member' => 'Håndterer',
 );
 
 /** Occitan (Occitan)

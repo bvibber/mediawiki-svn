@@ -1545,6 +1545,7 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -1568,6 +1569,7 @@ $messages['no'] = array(
 	'badimages-log-add' => 'la til [[$1]] på lista over blokkerte bilder',
 	'badimages-log-remove' => 'fjernet [[$1]] fra lista over blokkerte bilder',
 	'badimages-page' => 'Help:Liste over dårlige bilder',
+	'right-badimages' => 'Oppdater lista over dårlige bilder',
 );
 
 /** Novial (Novial)

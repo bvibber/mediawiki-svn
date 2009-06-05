@@ -209,6 +209,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'crosswikiblock-reason' => 'Прычына:',
+	'crosswikiblock-submit' => 'Заблякаваць гэтага удзельніка',
 	'crosswikiunblock-reason' => 'Прычына:',
 );
 

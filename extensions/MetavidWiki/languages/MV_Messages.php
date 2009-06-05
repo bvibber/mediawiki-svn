@@ -1288,7 +1288,7 @@ $messages['be-tarask'] = array(
 	'mv_missing_stream_text' => 'Струмень, які Вы запыталі <b>$1</b>, не даступны. <br />
 Вы можаце праверыць <a href="$2">сьпіс струменяў</a><br />
 Альбо можаце <a href="$3">дадаць струмень</a>.',
-	'mv_user_cant_edit' => 'Вы можаце [$1 Log in] для рэдагаваньня, $2',
+	'mv_user_cant_edit' => 'Вы можаце [$1 ўвайсьці ў сыстэму] для рэдагаваньня, $2',
 	'mv_add_stream_file' => 'Дадаць струмянёвы файл',
 	'mv_media_path' => 'шлях да мэдыя',
 	'mv_file_list' => 'Струмянёвыя файлы',
@@ -2655,7 +2655,7 @@ Ou bien être autorisé à <a href="$3">Ajouter le flux</a>',
 	'mv_protect_source_material' => 'Original protégé en écriture',
 	'right-mv_delete_mvd' => 'Supprimer les métadonnées MetaVid',
 	'action-mv_delete_mvd' => 'supprimer ce segment des métadonnées MetaVid',
-	'right-mv_edit_stream' => 'Modifier les flux des fichiers',
+	'right-mv_edit_stream' => 'Modifier les fichiers de flux',
 );
 
 /** Western Frisian (Frysk)
@@ -2842,7 +2842,7 @@ Por favor, comuníquello a un [[{{MediaWiki:Grouppage-sysop}}|administrador do s
 	'mv_missing_stream_text' => 'O fluxo que solicitou, <b>$1</b>, non está dispoñible.<br />
 Pode que queira comprobar a <a href="$2">lista de fluxos</a>.<br />
 Ou quizais queira <a href="$3">engadir o fluxo</a>.',
-	'mv_user_cant_edit' => 'Precisará [$1 Log in] para editar, $2',
+	'mv_user_cant_edit' => 'Precisará [$1 acceder ao sistema] para editar, $2',
 	'mv_add_stream_file' => 'Engadir un ficheiro de fluxo',
 	'mv_media_path' => 'ruta multimedia',
 	'mv_file_list' => 'Ficheiros de fluxo',
@@ -3255,7 +3255,7 @@ Bitte schryb des  Probläm im [[{{MediaWiki:Grouppage-sysop}}|Sytenadminischtrat
 	'mv_missing_stream_text' => 'Dr Stream <b>$1</b>, wu Du aagforderet hesch, isch nit verfiegbar.<br />
 Lueg in d <a href="$2">Streamlischt</a><br />
 oder <a href="$3">fieg dr Stream dezue</a>.',
-	'mv_user_cant_edit' => 'Du chenntsch Di [$1 Log in] zum Bearbeite, $2',
+	'mv_user_cant_edit' => 'S cha syy, ass Du di [$1 aamälde] muesch zum Bearbeite, $2',
 	'mv_add_stream_file' => 'Stream-Datei yyfiege',
 	'mv_media_path' => 'Dateipfad',
 	'mv_file_list' => 'Stream-Dateie',
@@ -4330,7 +4330,7 @@ Per favor reporta isto al [[{{MediaWiki:Grouppage-sysop}}|administrator del sito
 	'mv_missing_stream_text' => 'Le fluxo <b>$1</b> que tu requestava non es disponibile.<br />
 Es consiliate consultar le <a href="$2">lista de fluxos</a>,<br />
 o alternativemente <a href="$3">adder le fluxo</a>.',
-	'mv_user_cant_edit' => 'Es possibile que tu debe [$1 Log in] pro poter facer modificationes ($2)',
+	'mv_user_cant_edit' => 'Es possibile que tu debe [$1 aperir un session] pro poter facer modificationes ($2)',
 	'mv_add_stream_file' => 'Adder un file de fluxo',
 	'mv_media_path' => 'cammino del multimedia',
 	'mv_file_list' => 'Files de fluxo',
@@ -4531,6 +4531,9 @@ Saltar verso le vista del fluxo: $2',
 	'mv_mang_layers' => 'Gerer stratos',
 	'mv_mang_layers_title' => 'Gerer le conjuncto de stratos visualisate pro le fluxo actual',
 	'mv_protect_source_material' => 'Le material de fonte original ha essite protegite contra modificationes',
+	'right-mv_delete_mvd' => 'Deler metadatos MetaVid',
+	'action-mv_delete_mvd' => 'deler iste segmento de metadatos MetaVid',
+	'right-mv_edit_stream' => 'Modificar files de fluxo',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -4880,28 +4883,43 @@ $messages['ksh'] = array(
 	'error_load_lib' => '<i lang="en">mv_embed:</i> Kann de nüdejje JavaSkrepp Projrammbiplijoteek nit lade. Dat Skrepp övver <i lang="en">DOM</i> en de Web-Sigg enzefööje hät nit jeflupp. Noch ens versöke, dat Skrepp ze laade?',
 	'download_segment' => 'Ußwahl för erunger ze laade:',
 	'download_full' => 'Donn dä janze Viddejo erunge laade:',
+	'download_text' => 'Tex erungerlaade (<i lang="en"><a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML</i>):',
 	'mv_ogg-player-videoElement' => 'Et ennjeboute Projramm för <i lang="en">Ogg</i> Viddejos afzeshpelle',
 	'mv_ogg-player-oggPlugin' => 'Dat shtandatmääßijje Zohsazprojramm för <i lang="en">Ogg</i> Viddejos afzeshpelle',
 	'mv_ogg-player-selected' => '(ußjesöök)',
+	'missing_video_stream' => ' De Viddejo-Dattei för he dä 
+stream
+is nit doh',
 	'select_transcript_set' => 'Donn de Nivvohs vum Täx ußwähle',
 	'auto_scroll' => 'automattesch wigger_Rolle',
 	'close' => 'zoh maache',
 	'seek_to' => 'Söhk bes',
+	'upload-enable-converter' => 'Donn dä Ömwandler för em Viddejo sing Fommaat aanschallde. Donn dat hee bruche, öm ene Viddejo huhzelaade, dä noch nit em <i lang="en">Theora</i>-Fommaat es. (Doh drövver jidd et noch <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">mieh Ennformazjuhne</a>)',
+	'upload-fogg_not_installed' => 'Wann de Viddejos huhlaade wells, dann övverlääsch_ens, dä <i lang="en"><a href="http://firefogg.org">Firefogg</a></i> ze enshtalleere. (Doh drövver jidd et noch <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">mieh Ennformazjuhne</a>)',
 	'uploaded-status' => 'Huhjelaade',
 	'upload-select-file' => 'Donn en Dattei ußwähle{{int:ellipsis}}',
 	'wgfogg_wrong_version' => 'Do häs <i lang="en">Firefogg</i> enshtalleet, ävver dat is zoh ahl un deihd et nit mieh. Donn et <a href="http://firefogg.org/">op der neuste Shtand bränge</a>.',
 	'wgfogg_waring_ogg_upload' => 'Do häss en <code>.ogg</code> Dattei ußjesooht för se noh <i lang="en">Ogg</i> ömzewandelle. Dat es wall jaa nit nüüdesch. Wells De dä Viddejo_Ömwandler nit ußschallde?',
 	'wgfogg_waring_bad_extension' => 'Do häss en Dattei ußjesooht, för dä ier Engk fum Datteiname mer keine Ömwandler han. Et jitt dohzoh <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">mieh Hülp</a>.',
 	'mv_media_search' => 'Meedijje Söhke',
+	'rsd_box_layout' => 'Als ene Kaßte',
+	'rsd_list_layout' => 'Als en Leß',
 	'rsd_results_next' => 'näx',
 	'rsd_results_prev' => 'vörijje',
 	'mv_upload' => 'Huh laade',
+	'cc_title' => '<i lang="en">Creative Commons</i>',
+	'cc_nc_title' => 'Nit för jeschäfflesch ze bruche',
+	'cc_nd_title' => 'Nit för zem Ändere udder Övverärbeide',
+	'cc_pd_title' => '„Jemeinfrei“ (<i lang="en">public domain</i>)',
 	'unknown_license' => 'En onbikannte Lizänz',
 	'mv_stream_title' => '$1 (vun $2 beß $3)',
 	'mv_insert_image_page' => 'En en Sigg ennfööje',
 	'mv_preview_insert' => 'Vör_Aansich för et Ennfööje',
 	'sc_duration' => 'Duur',
 	'mv_template_properties' => 'Eijescahffte vun en Schabloon',
+	'mv_custom_title' => 'Eije Tittel',
+	'mv_edit_properties' => 'Eijeschaffte ändere',
+	'mv_other_properties' => 'Ander Eijeschaffte',
 	'menu_clipedit' => 'Donn de ußjewählte 
 Ressource
 ändere',
@@ -4919,6 +4937,7 @@ sequence
 afzeseschere.',
 	'edit_save' => 'De Änderunge afseschere',
 	'edit_cancel' => 'Mem Ändere ophüüre',
+	'pixle2sec' => 'Pixelle en Sekunde',
 	'metavid' => 'Metavid Sigg',
 	'specialpages-group-mv_group' => 'MetaVidWiki Söndersigge',
 	'mv_warning_wiki' => '<i>Opjepaß: <i lang="en">MetaVid</i> Viddejo Protokolle [[Help:FAQ#How_accurate_is_the_information.3F|künne unjenou sin]], donn uns hellfe, [[Help:Participation#Improving_Archive_Accuracy|noch e besser Aschiif opzeboue]]</i>',
@@ -4936,6 +4955,9 @@ afzeseschere.',
 	'mv_delete_stream_file' => 'Verwieß op de Strom-Dattei fottschmiiße',
 	'mv_save_changes' => 'Änderunge faßhallde',
 	'mv_file_with_same_desc' => 'Fähler: Mer han ald en Shtrom-Dattei met dämsellve Beschrievungsschlössel: <i>$1</i>',
+	'add_stream_permission' => ' Der fähld et Rääsch, ene neue
+<i lang="en">stream</i>
+dobei ze donn',
 	'edit_stream_missing' => '!!FIZZY!!Dä Name för dä Date-Schtrom es nit aanjejovve',
 	'mv_missing_req_time' => '!!FIZZY!!De Zick för de Aanforderung es nit aanjejovve',
 	'mv_missing_cat' => 'Dä Name för die Saachjrupp es nit aanjejovve',
@@ -4946,6 +4968,8 @@ afzeseschere.',
 	'mv_external_file' => 'En Dattei ußerhallef',
 	'mv_tool_search' => 'Sööke',
 	'mv_search_transcripts_for' => 'Söhk en de Viddejos noh $1 (donn dä Kaßte verschteische)',
+	'mv_tool_export' => 'Expotteere',
+	'mv_results_found' => 'Jefonge Viddejo-Daate <b>$1</b> beß <b>$2</b> vun <b>$3</b>',
 	'mv_click_to_edit' => 'Klecke zum Ändere',
 	'anno_en_desc' => 'Englesch katejoriseere un Aanmerkunge maache.
 Hemet kanns De Stöckscher uß em Viddeo en Kattejorije donn un
@@ -4969,10 +4993,12 @@ Enfommazjuhne als Aanmerkunge dobei don, die nit jekallt sin.',
 	'mv_start_desc' => 'Aanfangszick',
 	'mv_end_desc' => 'Zick vum Engk',
 	'mv_of' => '&#32;vun&#32;',
+	'mv_edit_metadata' => 'Metta_Daate ändere',
 	'mv_remove_category' => 'Saachjrupp fottnämme',
 	'mv_existing_categories' => '{{PLURAL:$1|{{ns:category}}|{{int:categories}}|{{int:categories}}}}:',
 	'mv_viewnext' => 'Zeish ($1)',
 	'mv_viewprevnext' => 'Zeish ($1) ($2)',
+	'mv_search_match' => 'Noh Tex söhke',
 	'mv_search_spoken_by' => 'Jeshproche vum',
 	'mv_search_categories' => 'Saachjruppe',
 	'mv_search_bills' => 'Projrammleßte',
@@ -4983,6 +5009,8 @@ Enfommazjuhne als Aanmerkunge dobei don, die nit jekallt sin.',
 	'mv_search_and' => ', un',
 	'mv_search_or' => 'odder',
 	'mv_search_not' => 'nit',
+	'mv_search_date_range' => 'Ene Berett vun Datte',
+	'mv_date_range' => 'ene Berett vun Datte',
 	'mv_date_last_week' => 'Lez Woch',
 	'mv_category_results' => 'Jefonge Saachjroppe',
 	'mv_people_results' => 'Jefonge Lück',
@@ -4996,6 +5024,7 @@ Enfommazjuhne als Aanmerkunge dobei don, die nit jekallt sin.',
 	'mv_category' => 'Saachjrupp',
 	'mv_search_no_results' => 'Kei Meedije jefonge',
 	'mv_media_matches' => 'Jefonge Meedije',
+	'mv_play_inline' => '<i lang="en">inline</i> afshpelle',
 	'mv_view_wiki_page' => 'Sigg em Wiki aanloore',
 	'mv_sequence_add_manual' => 'Övver der Name dobei donn',
 	'mv_sequence_add_search' => 'Dobei donn övver et Söhke',
@@ -5015,6 +5044,10 @@ dobei donn',
 	'mv_seconds_singular' => '$1 Sekunde',
 	'mv_stream_length' => 'Dämm Viddejo sing jesampte Duuer:',
 	'mv_export_cmml' => '<code lang="en">CMML</code> äxpoteere',
+	'mv_edit_time' => 'De Zick ändere',
+	'mv_embed_options' => 'Ußwahle för enzebenge',
+	'mv_tool_missing' => 'dat jewönschte Werkzüch jidd et jaa nit',
+	'mv_bad_tool_request' => 'Dat es en kapodde Aanjab för enem Werkzüch singe Nahme. Dä Enndraach sullt esu sußsinn: <code>Wärkzüch-Nahme|Nahme-zom-Aanzeije</code>',
 	'mv_prev_speech' => 'De vörijje Redd: $1',
 	'mv_next_speech' => 'De nähkste Redd: $1',
 	'mv_prev_bill' => 'De vörijje Projrammleß: $1',
@@ -5023,7 +5056,14 @@ dobei donn',
 	'mv_next_cat' => 'Näx Saachjrupp: $1',
 	'mv_new_anno_en' => 'En neu Makeerung udder Aanmerkung',
 	'mv_mang_layers' => 'Nivvohs verwallde',
+	'mv_mang_layers_title' => ' Enshtellunge för de Nivoh-Aanzeije em aktoälle
+
+stream
+
+verwallde',
 	'mv_protect_source_material' => 'Ojinaal Quell - dat Matrijaal es för em Verändere jeschöz!',
+	'right-mv_delete_mvd' => 'Donn de <i lang="en">MetaVid</i> Mettadaate fott schmiiße',
+	'action-mv_delete_mvd' => 'donn dat Schtök us de  <i lang="en">MetaVid</i> Mettadaate fott schmiiße',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -6783,6 +6823,9 @@ $messages['pt'] = array(
 	'prev_clip_msg' => 'Reproduzir o vídeo anterior',
 	'current_clip_msg' => 'Continuar a reproduzir este vídeo',
 	'seek_to' => 'Ir para',
+	'upload-enable-converter' => 'Habilitar conversor de vídeo.
+Use para carregar fonte de vídeo ainda não convertida para o formato Theora.
+(<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">mais informação</a>)',
 	'upload-in-progress' => 'Convertendo e carregando (não feche esta janela)',
 	'upload-transcoded-status' => 'Convertido',
 	'uploaded-status' => 'Carregado',
@@ -6872,7 +6915,7 @@ Todas as mudanças serão perdidas.',
 	'mv_missing_stream_text' => 'A stream que você requisitou, <b>$1</b>, não está disponível.<br />
 Você pode consultar a <a href="$2">Lista de streams</a><br />
 Ou você pode <a href="$3">Adicionar a stream</a>.',
-	'mv_user_cant_edit' => 'Poderá ter que [$1 Log in] para editar, $2',
+	'mv_user_cant_edit' => 'Poderá ter que [$1 se logar] para editar, $2',
 	'mv_add_stream_file' => 'Adicionar ficheiro de stream',
 	'mv_media_path' => 'caminho da media',
 	'mv_file_list' => 'Ficheiros de stream',
@@ -7472,7 +7515,7 @@ prehliadanie/úprava pre bežného používateľa na stránke $1',
 	'mv_missing_stream_text' => 'Stream, ktorý ste žiadali <b>$1</b> nie je dostupný.<br />
 Možno sa budete chcieť pozrieť do <a href="$2">Zoznamu streamov</a><br />
 Alebo môžete <a href="$3">Pridať stream</a>.',
-	'mv_user_cant_edit' => 'Možno sa budete musieť [$1 Log in], aby ste mohli upravovať; $2',
+	'mv_user_cant_edit' => 'Možno sa budete musieť [$1 prihlásiť], aby ste mohli upravovať; $2',
 	'mv_add_stream_file' => 'Pridať súbor streamu',
 	'mv_media_path' => 'cesta k multimédiu',
 	'mv_file_list' => 'Súbory streamu',
@@ -8574,7 +8617,7 @@ $messages['vi'] = array(
 	'mv_ogg_low_quality' => 'Xem trực tiếp được trên web - Ogg Theora 300 kbit/s',
 	'mv_ogg_high_quality' => 'Chất lượng cao - Ogg Theora 900 kbit/s',
 	'mv_archive_org_link' => 'Liên kết đến bản gốc mpeg2 ở Archive.org',
-	'mv_error_stream_missing' => '<span class="error">Lỗi: Không có tập tin video này gắn với luồng này.</span><br />Xin hãy báo điều này cho quản trị trang.',
+	'mv_error_stream_missing' => '<span class="error">Lỗi: Không có tập tin video này gắn với luồng này.</span><br />Xin hãy báo điều này cho [[{{MediaWiki:Grouppage-sysop}}|quản trị viên của trang]].',
 	'mv_stream_added' => 'Bạn đã thêm luồng $1',
 	'mv_stream_meta' => 'Trang luồng',
 	'mv_add_stream' => 'Thêm luồng Metavid',
@@ -8605,7 +8648,7 @@ $messages['vi'] = array(
 	'mv_missing_stream_text' => 'Luồng mà bạn yêu cầu <b>$1</b> không tồn tại.<br />
 Bạn có thể muốn kiểm tra <a href="$2">Danh sách luồng</a><br />
 Hoặc bạn có thể muốn <a href="$3">Thêm luồng</a>.',
-	'mv_user_cant_edit' => 'Bạn có thể cần phải [$1 Log in] để sửa đổi, $2',
+	'mv_user_cant_edit' => 'Bạn có thể cần phải [$1 đăng nhập] để sửa đổi, $2',
 	'mv_add_stream_file' => 'Thêm tập tin luồng',
 	'mv_media_path' => 'đường dẫn phương tiện',
 	'mv_file_list' => 'Tập tin luồng',

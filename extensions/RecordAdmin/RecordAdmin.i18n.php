@@ -1209,6 +1209,7 @@ $messages['ru'] = array(
  * @author OC Ripper
  */
 $messages['sh'] = array(
+	'recordadmin-submit' => 'Unesi',
 	'recordadmin-invert' => 'Sve osim odabranog',
 );
 
@@ -1414,12 +1415,12 @@ $messages['vi'] = array(
 	'recordadmin-buttoncreate' => 'Tạo',
 	'recordadmin-buttonreset' => 'Mặc định lại',
 	'recordadmin-searchresult' => 'Kết quả tìm kiếm',
-	'recordadmin-edit' => 'Sửa đổi “$1”',
+	'recordadmin-edit' => 'Sửa đổi hồ sơ $2 “$1”',
 	'recordadmin-buttonsave' => 'Lưu',
 	'recordadmin-viewlink' => 'xem',
 	'recordadmin-editlink' => 'sửa đổi',
 	'recordadmin-actions' => 'Tác động',
-	'recordadmin-needscontent' => 'Thêm nội dung...',
+	'recordadmin-needscontent' => 'Thêm nội dung…',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -398,6 +398,7 @@ $messages['pt'] = array(
 	'protectsection_add_remove' => 'Você tentou adicionar ou remover uma secção protegida',
 	'protectsection_modify' => 'Você tentou modificar texto protegido',
 	'protectsection_forbidden' => 'Proibido',
+	'right-protectsection' => 'Proteger secções da página',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

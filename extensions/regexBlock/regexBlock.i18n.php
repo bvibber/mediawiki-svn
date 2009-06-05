@@ -1687,6 +1687,7 @@ Truleg finst det ingen brukar med dette namnet.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -1696,13 +1697,14 @@ $messages['no'] = array(
 	'regexblock-block-success' => 'Blokkering lyktes',
 	'regexblock-currently-blocked' => 'Nåværende blokkerte adresser:',
 	'regexblock-desc' => 'Utvidelse som brukes for å blokkere brukernavn og IP-adresser ved hjelp av regulære uttrykk. Inneholder både blokkeringsmekanismen og en [[Special:Regexblock|spesialside]] for å legge til og endre blokkeringer',
+	'regexblock-expire-duration' => 'én time,2 timer,fire timer,seks timer,én dag,tre dager,én uke,to uker,én måned,tre måneder,seks måneder, ett år, uendelig',
 	'regexblock-page-title' => 'Tittelblokkering ved hjelp av regulære uttrykk',
 	'regexblockstats' => 'Regex-blokkeringsstatistikk',
 	'regexblock-help' => "Bruk skjemaet nedenfor for å blokkere visse IP-adresser eller brukernavn fra å redigere. Dette burde gjøres kun for å forhindre hærverk, og i følge med retningslinjene. ''Denne siden vil la deg blokkere også ikke-eksisterende brukere, og vil også blokkere brukere med navn som ligner det som blir gitt. F.eks. vil «Test» blokkeres sammen med «Test 2» osv. Du kan også blokkere fulle IP-adresser, hvilket betyr at ingen som logger på via disse kan redigere sider. Merk delvise IP-adresser vil behandles som brukernavn under blokkering. Om ingen begrunnelse oppgis vil en standardbegrunnelse bli brukt.''",
 	'regexblock-page-title-1' => 'Blokker adresse ved hjelp av regulære uttrykk',
-	'regexblock-reason-ip' => 'Denne IP-adressen er hindret fra å redigere på grunn av hærverk eller annen forstyrrelse av deg eller noen andre som bruker samme IP-adresse. Om du mener dette er en feil, vennligst $1',
-	'regexblock-reason-name' => 'Dette brukernavnet er hindret fra å redigere på grunn av hærverk eller annen forstyrrelse. Om du mener dette er en feil, vennligst $1',
-	'regexblock-reason-regex' => 'Dette brukernavnet er forhindret fra redigering på grunn av hærverk eller annen forstyrrelse av en bruker med lignende navn. Vennligst opprett et annet brukernavn eller $1 om problemet.',
+	'regexblock-reason-ip' => 'Denne IP-adressen er hindret fra å redigere på grunn av hærverk eller annen forstyrrelse av deg eller noen andre som bruker samme IP-adresse. Om du mener dette er en feil, vennligst [[$1|kontakt oss]]',
+	'regexblock-reason-name' => 'Dette brukernavnet er hindret fra å redigere på grunn av hærverk eller annen forstyrrelse. Om du mener dette er en feil, vennligst [[$1|kontakt oss]]',
+	'regexblock-reason-regex' => 'Dette brukernavnet er forhindret fra redigering på grunn av hærverk eller annen forstyrrelse av en bruker med lignende navn. Vennligst opprett et annet brukernavn eller [[$1|kontakt oss]] om problemet.',
 	'regexblock-form-username' => 'IP-adresse eller brukernavn:',
 	'regexblock-form-reason' => 'Årsak:',
 	'regexblock-form-expiry' => 'Varighet:',
@@ -1712,10 +1714,13 @@ $messages['no'] = array(
 	'regexblock-form-submit-empty' => 'Angi et brukernavn eller en IP-adresse å blokkere.',
 	'regexblock-form-submit-regex' => 'Ugyldig regulært uttrykk',
 	'regexblock-form-submit-expiry' => 'Angi en utløpstid.',
+	'regexblock-match-stats-record' => "$1 blokkerte '$2' på '$3' den '$4',fra IP-adressen '$5'",
+	'regexblock-nodata-found' => 'Ingen data funnet',
 	'regexblock-stats-title' => 'Statistikk for blokkering med regulære uttrykk',
 	'regexblock-unblock-success' => 'Avblokkering lyktes',
 	'regexblock-unblock-log' => "Brukernavnet eller IP-adressen '''$1''' er blitt avblokkert",
 	'regexblock-unblock-error' => 'Feil under avblokkering av $1. Det er trolig ingen brukere med det navnet.',
+	'regexblock-regex-filter' => ' eller regex-verdi:',
 	'regexblock-view-blocked' => 'Vis de blokkerte etter:',
 	'regexblock-view-all' => 'Alle',
 	'regexblock-view-go' => '{{int:Go}}',
@@ -1726,11 +1731,12 @@ $messages['no'] = array(
 	'regexblock-view-reason-default' => 'generisk grunn',
 	'regexblock-view-block-infinite' => 'permanent blokkering',
 	'regexblock-view-block-expired' => 'UTGIKK',
-	'regexblock-view-block-by' => 'blokkert av',
+	'regexblock-view-block-by' => 'blokkert av:',
 	'regexblock-view-block-unblock' => 'avblokker',
-	'regexblock-view-stats' => '(statistikk)',
+	'regexblock-view-stats' => 'statistikk',
 	'regexblock-view-empty' => 'listen over blokkerte navn og adresser er tom.',
 	'regexblock-view-time' => '$1',
+	'right-regexblock' => 'Blokker brukere fra å endre på alle wikier på wiki-farmen',
 );
 
 /** Novial (Novial)

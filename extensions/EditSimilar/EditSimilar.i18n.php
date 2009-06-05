@@ -68,6 +68,19 @@ $messages['arz'] = array(
 	'tog-edit-similar' => 'تفعيل اقتراحات الصفحات المشابهة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'editsimilar-desc' => 'Заахвочвае ўдзельнікаў рэдагаваць падобныя старонкі пасьля запісу старонкі',
+	'editsimilar-thanks' => 'Дзякуй за Ваш унёсак.
+Праверце гэтыя зьвязаныя старонкі: $1.',
+	'editsimilar-thanks-notsimilar' => 'Дзякуй за Ваш унёсак.
+Гэтыя старонкі таксама могуць патрабаваць Вашай дапамогі: $1.',
+	'editsimilar-thankyou' => 'Дзякуй за Ваш унёсак, $1!',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -115,9 +128,9 @@ Diese Seiten könnten dir auch hilfreich sein: $1.',
 $messages['dsb'] = array(
 	'editsimilar-desc' => 'Pózbuźujo wužywarjow pó składowanju boka pódobny bok wobźěłaś',
 	'editsimilar-thanks' => 'Źěkujomy se za twój pśinosk.
-Woglědaj se toś te pódobne boki: $1.',
+Woglědaj se {{PLURAL:$2|toś ten bok|toś tej boka|toś te pódobne boki|toś te boki}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Źěkujomy se za twój pśinosk.
-Toś te boki by teke twóju pomoc trjebali: $1.',
+{{PLURAL:$2|Toś ten bok by mógł|Toś tej boka by mógłej|Toś te boki by mógli|Toś te  boki by mógli}} teke twóju pomoc wužywaś: $1.',
 	'editsimilar-thankyou' => 'Źěkujomy se za twój pśinosk, $1!',
 	'editsimilar-link-disable' => 'preference nastajiś',
 	'tog-edit-similar' => 'Naraźenja za pódobne boki zmóžniś',
@@ -180,9 +193,9 @@ Nämä sivut voisivat myös kaivata apuasi: $1.',
 $messages['fr'] = array(
 	'editsimilar-desc' => 'Encourage les utilisateurs à modifier les pages similaires après avoir publié une page',
 	'editsimilar-thanks' => 'Merci pour votre contribution.
-Vérifiez ces pages apparentées : $1.',
+Vérifiez {{PLURAL:$2|cette page apparentée|ces pages apparentées}} : $1.',
 	'editsimilar-thanks-notsimilar' => 'Merci pour votre contribution.
-Ces pages devraient avoir, aussi, besoin de votre aide : $1.',
+{{PLURAL:$2|Cette page devrait|Ces pages devraient}} avoir, aussi, besoin de votre aide : $1.',
 	'editsimilar-thankyou' => 'Merci pour votre contribution, $1 !',
 	'editsimilar-link-disable' => 'paramétrer les préférences',
 	'tog-edit-similar' => 'Activer les suggestions des pages similaires',
@@ -194,9 +207,9 @@ Ces pages devraient avoir, aussi, besoin de votre aide : $1.',
 $messages['gl'] = array(
 	'editsimilar-desc' => 'Anima aos usuarios a editar páxinas similares despois de gardar unha páxina',
 	'editsimilar-thanks' => 'Grazas pola súa contribución.
-Comprobe estas páxinas relacionadas: $1.',
+Comprobe {{PLURAL:$2|esta páxina relacionada|estas páxinas relacionadas}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Grazas pola súa contribución.
-Estas páxinas poden precisar tamén da súa axuda: $1.',
+{{PLURAL:$2|Esta páxina pode|Estas páxinas poden}} precisar tamén da súa axuda: $1.',
 	'editsimilar-thankyou' => 'Grazas pola súa contribución, $1!',
 	'editsimilar-link-disable' => 'fixar as preferencias',
 	'tog-edit-similar' => 'Permitir suxestións de páxinas similares',
@@ -244,9 +257,9 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'editsimilar-desc' => 'Pozbudźuješ wužiwarjow po składowanju strony podobnu stronu wobdźěłać',
 	'editsimilar-thanks' => 'Dźakujemy so za twój přinošk.
-Wobhladaj sej tute přiwuzne strony: $1',
+Wobhladaj sej {{PLURAL:$2|tutu přiwuznu stronu|tutej přiwuznej stronje|tute přiwuzne strony|tute přiwuzne strony}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Dźakujemy so za twój přinošk.
-Tute strony bychu tež twoju pomoc trjebali: $1.',
+{{PLURAL:$2|Tuta strona móhła|Tutej stronje móhłoj|Tute strony móhli|Tute strony móhli}} tež twoju pomoc wužiwać: $1.',
 	'editsimilar-thankyou' => 'Dźakujemy so za twój přinošk, $1!',
 	'editsimilar-link-disable' => 'Preferency nastajić',
 	'tog-edit-similar' => 'Namjety za podobne strony zmóžnić',
@@ -299,7 +312,7 @@ Anche queste pagine potrebbero usufruire del tuo aiuto: $1.',
  */
 $messages['ja'] = array(
 	'editsimilar-desc' => '利用者がページを保存した後に、類似のページを編集するよう勧める',
-	'editsimilar-thanks' => '投稿ありがとうございます。関連するこれらのページにも目を通してみてください: $1。',
+	'editsimilar-thanks' => '投稿ありがとうございます。関連する{{PLURAL:$2|この|これらの}}ページにも目を通してみてください: $1',
 	'editsimilar-thanks-notsimilar' => '投稿ありがとうございます。これらのページにもあなたの助けが活かせるかもしれません: $1。',
 	'editsimilar-thankyou' => '$1さん、投稿ありがとうございます!',
 	'editsimilar-link-disable' => '設定する',
@@ -348,9 +361,9 @@ Dës Säite kéinten och vun ärer Hellëf profitéieren: $1',
 $messages['nl'] = array(
 	'editsimilar-desc' => "Moedigt gebruikers aan om gelijksoortige pagina's te bewerken na het opslaan van een pagina",
 	'editsimilar-thanks' => "Dank u wel voor uw bijdrage.
-Deze pagina's kunnen uw hulp ook gebruiken: $1.",
+{{PLURAL:$2|De gerelateerde pagina $1 kan|De gerelateerde pagina's $1 kunnen}} uw hulp ook gebruiken.",
 	'editsimilar-thanks-notsimilar' => "Dank u wel voor uw bijdrage.
-Deze pagina's kunnen uw hulp ook gebruiken: $1.",
+{{PLURAL:$2|De pagina $1 kan|De pagina's $1 kunnen}} uw hulp ook gebruiken.",
 	'editsimilar-thankyou' => 'Dank u wel voor uw bijdrage, $1!',
 	'editsimilar-link-disable' => 'voorkeuren instellen',
 	'tog-edit-similar' => 'Gelijksoortige paginasuggesties inschakelen',
@@ -471,9 +484,9 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'editsimilar-desc' => 'Posmeľuje používateľov upravovať podobné stránky po uložení.',
 	'editsimilar-thanks' => 'Ďakujeme za váš príspevok.
-Pozrite sa na tieto súvisiace stránky: $1.',
+Pozrite sa na {{PLURAL:$2|túto súvisiacu stránku|tieto súvisiace stránky}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Ďakujeme za váš príspevok.
-Týmto stránkam by sa tiež hodilo, keby ste sa na ne pozreli: $1.',
+{{PLURAL:$2|Tejto stránke|Týmto stránkam}} by sa tiež hodilo, keby ste sa na {{PLURAL:$2|ňu|ne}} pozreli: $1.',
 	'editsimilar-thankyou' => 'Ďakujeme za váš príspevok, $1!',
 	'editsimilar-link-disable' => 'nastaviť voľby',
 	'tog-edit-similar' => 'Zapnúť návrhy podobných stránok',
@@ -500,7 +513,7 @@ $messages['tl'] = array(
 	'editsimilar-desc' => 'Humihimok sa mga tagagamit na bumago ng isang katulad na pahina pagkaraan magsagip ng isang pahina',
 	'editsimilar-thanks' => 'Salamat sa iyong ambag.
 Suriin ang kaugnay na mga pahinang ito: $1.',
-	'editsimilar-thanks-notsimilar' => 'Salamat sa iyong ambag.
+	'editsimilar-thanks-notsimilar' => 'Salamat sa iyong ambag. 
 Mapapakinabangan din ng mga pahinang ito ang tulong mo: $1.',
 	'editsimilar-thankyou' => 'Salamat sa iyong ambag, $1!',
 	'editsimilar-link-disable' => 'itakda ang mga kagustuhan',
@@ -528,3 +541,4 @@ Bạn cũng có thể giúp đỡ những trang sau: $1.',
 	'editsimilar-link-disable' => 'tùy chọn',
 	'tog-edit-similar' => 'Kích hoạt đề nghị về trang tương tự',
 );
+

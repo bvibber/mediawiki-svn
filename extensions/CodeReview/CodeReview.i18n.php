@@ -5488,6 +5488,13 @@ $4',
 	'specialpages-group-developer' => 'Stigghi dû sviluppaturi',
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'codereview-batch-submit' => 'Unesi',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Mormegil

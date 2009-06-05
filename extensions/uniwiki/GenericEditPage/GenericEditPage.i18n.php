@@ -799,11 +799,14 @@ Legg til nokre med verktya i menyen.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'gep-desc' => 'Supplementerer endringssiden for å bli mer brukervennlig',
 	'gep-emailsubject' => '[$1] Kategoriforslag: $2',
 	'gep-emailbody' => 'Brukeren «$1» foreslo kategorien «$2» for siden «$3».',
+	'gep-emailfailure' => 'Beklager, forslaget ditt kunne ikke bli behandlet.',
 	'gep-emailsuccess' => 'Takk for at du foreslo kategorien: $1.',
 	'gep-categories' => 'Kategorier',
 	'gep-addcategory' => 'Legg til en kategori',
@@ -815,6 +818,7 @@ $messages['no'] = array(
 	'gep-addsection' => 'Legg til et avsnitt',
 	'gep-addsectionbutton' => 'Legg til',
 	'gep-classicmode' => 'Klassisk modus',
+	'gep-genericmode' => 'Omfattende modus',
 	'gep-nosectioninstructions' => 'Det er ingen avsnitt på denne siden.
 Legg til noen med verktøyene i menyen.',
 	'gep-nocategories' => 'Vennligst velg minst én kategori før du lagrer',
