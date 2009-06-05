@@ -22,25 +22,18 @@ $wgHooks['LanguageGetMagic'][] = 'efStockChartsMagic';
 
 $wgExtensionCredits['parserhook'][] = array(
     'name' => 'StockCharts',
+	'path' => __FILE__,
     'author' => 'Brendan Meutzner, Anton Zolotkov, Roger Fong',
     'description' => 'Adds <nowiki><stockchart ticker="AAPL"/></nowiki> tag for an interactive financial stock chart.',
     'url' => 'http://www.mediawiki.org/wiki/Extension:StockCharts',
 );
 
 # Internationalisation file
-require_once( 'StockCharts.i18n.php' );
+$wgExtensionMessagesFiles['StockCharts'] =  dirname( __FILE__ ) . '/StockCharts.i18n.php';
 
 $wgAutoloadClasses['StockCharts'] = dirname( __FILE__ ) . '/StockCharts_body.php';
 
-
-
 function efStockCharts() {
-	# Add messages
-	global $wgMessageCache, $wgStockChartsMessages;
-	foreach( $wgStockChartsMessages as $language => $messages ) {
-		$wgMessageCache->addMessages( $messages, $language );
-	}
-
 	global $wgParser;
 	$wgParser->setHook('stockchart', array('StockCharts', 'renderTagExtension')); // hook for <stockchart ../>
 	$wgParser->setFunctionHook('stockchart', array('StockCharts', 'renderParserFunction')); // hook for {{#stockchart ..}}
@@ -50,6 +43,3 @@ function efStockChartsMagic( &$magicWords, $langCode ) {
 	$magicWords['stockchart'] = array( 0, 'stockchart' );
 	return true;
 }
-
-
-?>

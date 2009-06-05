@@ -102,6 +102,7 @@ class StockCharts {
 
 		// ticker is a required param
 		if( !$ticker ) {
+			wfLoadExtensionMessages( 'StockCharts' );
 			$error = '<span style="color: red; font-weight: bold;">' . wfMsg('stockchart_missingticker') . '</span>';
 			return false;
 		}
@@ -171,6 +172,3 @@ class StockCharts {
 		return $embedCode;
 	}
 }
-
-
-?>
