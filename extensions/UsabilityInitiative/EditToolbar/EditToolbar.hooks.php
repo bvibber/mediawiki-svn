@@ -19,12 +19,13 @@ class EditToolbarHooks {
 		
 		// Internationalization
 		wfLoadExtensionMessages( 'EditToolbar' );
-		
-		// Replaces toolbar with new toolbar container
-		if ( $wgUser->getOption( 'usebetatoolbar' ) ) {
-			$toolbar = '<div id="edittoolbar"></div>';
+		// Checks if the user has not opted to use this toolbar
+		if ( !$wgUser->getOption( 'usebetatoolbar' ) ) {
+			// Exists the function without doing anything
+			return true;
 		}
-		
+		// Adds toolbar container
+		$toolbar = '<div id="edittoolbar"></div>';
 		// List of messages to be sent to the client for use in the toolbar
 		$messages = array(
 			/* Sections */
@@ -46,6 +47,7 @@ class EditToolbarHooks {
 			'edittoolbar-insert-file-example',
 			'edittoolbar-insert-reference',
 			'edittoolbar-insert-reference-example',
+			'edittoolbar-insert-signature',
 			/* Formatting Section */
 			'edittoolbar-format-ulist',
 			'edittoolbar-format-ulist-example',
