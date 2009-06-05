@@ -52,6 +52,9 @@ $wgSpecialPageGroups['Plotters'] = 'wiki';
 // sane defaults. always initialize to avoid register_globals vulnerabilities
 $wgPlottersExtensionPath = $wgScriptPath . '/extensions/Plotters';
 $wgPlottersJavascriptPath = $wgScriptPath . '/extensions/Plotters';
+$wgPlottersRendererFiles = array( "plotkit" => array( "/mochikit/MochiKit.js", "/plotkit/Base.js", "/plotkit/Layout.js",
+							"/plotkit/Canvas.js", "/plotkit/SweetCanvas.js" )
+				);
 
 function wfPlottersArticleSaveComplete( &$article, &$wgUser, &$text ) {
 	// update cache if MediaWiki:Plotters-definition was edited

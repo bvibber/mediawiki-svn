@@ -210,6 +210,7 @@ class Plotters {
 	static function setPlottersHeaders( &$outputPage, $renderer ) {
 		global $wgPlottersJavascriptPath;
 		global $wgPlottersExtensionPath;
+		global $wgPlottersRendererFiles;
 
 		$javascriptpath = $wgPlottersJavascriptPath;
 
@@ -217,15 +218,10 @@ class Plotters {
 		$outputPage->addScript( '<script src="' . $wgPlottersExtensionPath . '/libs/fixencoding.js" type="text/javascript"></script>' );
 		$outputPage->addScript( '<script src="' . $wgPlottersExtensionPath . '/libs/excanvas.js" type="text/javascript"></script>' );
 
-		if ( $renderer == "plotkit" ) {
-			// Add mochikit (required by PlotKit)
-			$outputPage->addScript( '<script src="' . $javascriptpath . '/mochikit/MochiKit.js" type="text/javascript"></script>' );
-	
-			// Add PlotKit javascript
-			$outputPage->addScript( '<script src="' . $javascriptpath . '/plotkit/Base.js" type="text/javascript"></script>' );
-			$outputPage->addScript( '<script src="' . $javascriptpath . '/plotkit/Layout.js" type="text/javascript"></script>' );
-			$outputPage->addScript( '<script src="' . $javascriptpath . '/plotkit/Canvas.js" type="text/javascript"></script>' );
-			$outputPage->addScript( '<script src="' . $javascriptpath . '/plotkit/SweetCanvas.js" type="text/javascript"></script>' );
+		if ( isset( $wgPlottersRendererFiles[$renderer] ) ) {
+			foreach ( $wgPlottersRendererFiles[$renderer] as $jsfile ) {
+				$outputPage->addScript( '<script src="' . $javascriptpath . $jsfile . '" type="text/javascript"></script>' );
+			}
 		}
 
 		return true;

@@ -34,7 +34,7 @@ class PlottersParser {
 
 	function parseArguments( $argv ) {
 		// Parse arguments, set defaults, and do sanity checks
-		$this->argumentArray = array ( "renderer" => "plotkit", "preprocessors" => array(), "preprocessorarguments" => array(),
+		$this->argumentArray = array ( "renderer" => "generic", "preprocessors" => array(), "preprocessorarguments" => array(),
 			"script" => "", "scriptarguments" => array(), "datasep" => ",", "width" => "300", "height" => "300", "labels" => array(),
 			"name" => "plot", "tableclass" => "wikitable" );
 		if ( isset( $argv["renderer"] ) ) {
