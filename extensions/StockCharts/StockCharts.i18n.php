@@ -8,6 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'stockchart_missingticker' => 'To embed a stock chart, you need to at least specify a ticker, like this: &lt;stockchart ticker="AAPL"/&gt;',
+	'stockcharts-desc' => 'Adds <nowiki><stockchart ticker="AAPL"/></nowiki> tag for an interactive financial stock chart',
+	'stockcharts-missingticker' => 'To embed a stock chart, you need to at least specify a ticker.
+Use: &lt;stockchart ticker="AAPL"/&gt;',
 );
-

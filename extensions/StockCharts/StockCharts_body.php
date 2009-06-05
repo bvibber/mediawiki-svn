@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'MEDIAWIKI' ) )
-    die();
+	die();
 
 /**
  * Class for rendering stock charts via an extension function or parser function.
@@ -12,7 +12,7 @@ class StockCharts {
 	static $minWidth      = 170;
 	static $minHeight     = 170;
 
-	public static function renderTagExtension( $source, $args=array(), $parser=null ) {
+	public static function renderTagExtension( $source, $args = array(), $parser = null ) {
 		list( $ticker, $width, $height, $chartTitle, $range, $extraArgs ) =
 			self::getParams( $args );
 
@@ -48,9 +48,9 @@ class StockCharts {
 		array_shift( $args );
 
 		$result = array();
-		foreach( $args as $index => $param ) {
-			$parts = explode('=', $param, 2);
-			if( count($parts) < 2 ) {
+		foreach ( $args as $index => $param ) {
+			$parts = explode( '=', $param, 2 );
+			if ( count( $parts ) < 2 ) {
 				continue;
 			}
 
@@ -58,7 +58,7 @@ class StockCharts {
 			$value = $parts[1];
 
 			// strip leading/trailing quotes
-			if( preg_match('/^("|\')(.*)(\1)$/s', $value, $matches)) {
+			if ( preg_match( '/^("|\')(.*)(\1)$/s', $value, $matches ) ) {
 				$value = $matches[2];
 			}
 
@@ -101,19 +101,19 @@ class StockCharts {
 	protected static function validateParams( &$ticker, &$width, &$height, &$chartTitle, $range, &$error ) {
 
 		// ticker is a required param
-		if( !$ticker ) {
+		if ( !$ticker ) {
 			wfLoadExtensionMessages( 'StockCharts' );
-			$error = '<span style="color: red; font-weight: bold;">' . wfMsg('stockchart_missingticker') . '</span>';
+			$error = '<span style="color: red; font-weight: bold;">' . wfMsg( 'stockcharts-missingticker' ) . '</span>';
 			return false;
 		}
 
 		// set default values
-		if( !$width || !is_numeric( $width ) || $width < self::$minWidth ) {
-			$width = self::$defaultWidth; 
+		if ( !$width || !is_numeric( $width ) || $width < self::$minWidth ) {
+			$width = self::$defaultWidth;
 		}
 
-		if( !$height || !is_numeric( $height ) || $height < self::$minHeight ) {
-			$height = self::$defaultHeight; 
+		if ( !$height || !is_numeric( $height ) || $height < self::$minHeight ) {
+			$height = self::$defaultHeight;
 		}
 
 		return true;
@@ -124,11 +124,11 @@ class StockCharts {
 	 * @param $args Assoc array of input params
 	 * @return html to render
 	 */
-	protected static function renderStockChart( $ticker, $width=0, $height=0, $chartTitle='', $range='', $extraArgs=array() ) {
+	protected static function renderStockChart( $ticker, $width = 0, $height = 0, $chartTitle = '', $range = '', $extraArgs = array() ) {
 		global $wgSitename;
 
 		$success = self::validateParams( $ticker, $width, $height, $chartTitle, $range, $error );
-		if( !$success ) {
+		if ( !$success ) {
 			return $error;
 		}
 
@@ -137,19 +137,19 @@ class StockCharts {
 
 		// if there is a specified chart title, set up the optional tickerAlias param
 		$tickerAlias = '';
-		if( $chartTitle ) {
-			$tickerAlias = ',"tickerAlias":"' . urlencode($chartTitle) . '"';
+		if ( $chartTitle ) {
+			$tickerAlias = ',"tickerAlias":"' . urlencode( $chartTitle ) . '"';
 		}
 
 		// we'll pass through any extra args
 		$extra = '';
-		if( count($extraArgs) > 0 ) {
-			foreach( $extraArgs as $key => $value ) {
-				$extra .= ',"' . urlencode($key) . '":"' . urlencode($value) . '"';
+		if ( count( $extraArgs ) > 0 ) {
+			foreach ( $extraArgs as $key => $value ) {
+				$extra .= ',"' . urlencode( $key ) . '":"' . urlencode( $value ) . '"';
 			}
 		}
 
-		$embedCode = '<script src="http://charts.wikinvest.com/wikinvest/wikichart/javascript/scripts.php?partner=' . urlencode($wgSitename) . '&chartType=mwExtension" type="text/javascript"></script>' .
+		$embedCode = '<script src="http://charts.wikinvest.com/wikinvest/wikichart/javascript/scripts.php?partner=' . urlencode( $wgSitename ) . '&chartType=mwExtension" type="text/javascript"></script>' .
 			'<div id="wikichartContainer_' . $chartId . '">' .
 			'<div id="wikichartContainer_' . $chartId . '_noFlash" style="width: $WIDTHpx; display:none;">' .
 			'<a href="http://get.adobe.com/flashplayer/">' .
@@ -164,10 +164,10 @@ class StockCharts {
 			'</script>';
 
 		// replace args
-		$embedCode = str_replace('$TICKER', $ticker, $embedCode);
-		$embedCode = str_replace('$WIDTH',  $width,  $embedCode);
-		$embedCode = str_replace('$HEIGHT', $height, $embedCode);
-		$embedCode = str_replace('$RANGE',  $range,  $embedCode);
+		$embedCode = str_replace( '$TICKER', $ticker, $embedCode );
+		$embedCode = str_replace( '$WIDTH',  $width,  $embedCode );
+		$embedCode = str_replace( '$HEIGHT', $height, $embedCode );
+		$embedCode = str_replace( '$RANGE',  $range,  $embedCode );
 
 		return $embedCode;
 	}
