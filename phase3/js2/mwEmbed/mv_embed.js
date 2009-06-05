@@ -632,7 +632,8 @@ function mv_jqueryBindings(){
         	});
 		}
 		$.fn.firefogg = function( iObj, callback ) {
-				
+			if(!iObj)
+				iObj={};
 			//add base theme css:
 			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
 			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );			

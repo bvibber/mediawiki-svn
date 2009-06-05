@@ -39,15 +39,17 @@ var default_bui_options = {
 	'api_url':null,
 	'parent_uploader':null,
 	'edit_from':null,
-	'done_upload_cb': null
+	'done_upload_cb': null,
+	
+	//upload_mode can be 'post', 'chunks' or autodetect. (autodetect issues an api call)
+	'upload_mode':'autodetect'
 }
 var mvBaseUploadInterface = function( iObj ){
 	return this.init( iObj );
 }
 mvBaseUploadInterface.prototype = {
 	parent_uploader:false,
-	formData:{}, //the form to be submitted
-	upload_mode:'autodetect', 	//can be 'post', 'chunks' or autodetect. (autodetect issues an api call)   
+	formData:{}, //the form to be submitted	   
 	warnings_sessionkey:null,
 	chunks_supported:false,
 	form_post_override:false,
@@ -112,10 +114,10 @@ mvBaseUploadInterface.prototype = {
 					
 	},	
 	detectUploadMode:function( callback ){
-		var _this = this;
-		js_log('detectUploadMode::' + _this.upload_mode + ' api:' + _this.api_url);
+		var _this = this;	
 		//check the upload mode: 
 		if( _this.upload_mode == 'autodetect' ){
+			js_log('detectUploadMode::' + _this.upload_mode + ' api:' + _this.api_url);
 			if( ! _this.api_url )
 				return js_error( 'Error: can\'t autodetect mode without api url' );
 			do_api_req( {

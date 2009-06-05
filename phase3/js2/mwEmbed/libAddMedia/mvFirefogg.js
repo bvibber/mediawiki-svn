@@ -75,6 +75,11 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	init: function( iObj ){
 		if(!iObj)
 			iObj = {};
+			
+		//if we have no api_url set upload to "post" 
+		if(!iObj.api_url)
+			iObj.upload_mode = 'post'; 
+			
 		//inherit iObj properties:
 		for(var i in default_firefogg_options){
 			if(iObj[i]){
@@ -83,6 +88,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				this[i] = default_firefogg_options[i];
 			}
 		}
+		
 		var myBUI = new mvBaseUploadInterface( iObj );
 		//standard extends code: 
 		for(var i in myBUI){			
@@ -98,9 +104,13 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	},
 	doRewrite:function( callback ){
 		var _this = this;
-		if($j(this.selector).get(0).tagName == 'input' ){					
-			_this.form_rewrite = true;					
-		}		
+		js_log('sel len: ' + this.selector + '::' + $j(this.selector).length + ' tag:'+ $j(this.selector).get(0).tagName);
+		if( $j(this.selector).length >=0 ){
+			
+			if( $j(this.selector).get(0).tagName.toLowerCase() == 'input' ){					
+				_this.form_rewrite = true;							
+			}		
+		}
 		//check if we are rewriting an input or a form:
 		if( this.form_rewrite ){
 			this.setupForm();
@@ -386,10 +396,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	},
 	//doChunkUpload does both uploading and encoding at the same time and uploads one meg chunks as they are ready
 	doChunkUpload : function(){
-		var _this = this;				
-		
-		if( ! _this.api_url )
-			return js_error( 'Error: can\'t autodetect mode without api url' );				
+		var _this = this;						
 						
 		//extension should already be ogg but since its user editable,
 		//check again
@@ -463,7 +470,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		js_log('::encodeDone::');
 		//send to the post url:				 
 		if( _this.form_rewrite ){
-			js_log('done with encoding do upload:');					
+			js_log('done with encoding do upload:' + _this.editForm.action);					
 			// ignore warnings & set source type 
 			//_this.formData[ 'wpIgnoreWarning' ]='true';
 			_this.formData[ 'wpSourceType' ]= 'file';		
@@ -482,7 +489,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		
 		_this.oldResponseText = '';
 		//setup a local function for timed callback:				 
-		var uploadStatus = function(){
+		var uploadStatus = function(){			
 			//get the response text: 
 			var response_text =  _this.fogg.responseText;
 			if( !response_text){
@@ -495,10 +502,9 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			}
 					   
 			if( _this.oldResponseText != response_text){																											  
-				js_log('new result text:' + response_text);
+				js_log('new result text:' + response_text + ' state:' + _this.fogg.state);
 				_this.oldResponseText = response_text;				
-				//try and pare the response see if we need to take action:
-				   
+				//try and pare the response see if we need to take action:				   
 			}		
 			//update progress bar
 			_this.updateProgress( _this.fogg.progress() );
@@ -511,11 +517,10 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			else if( _this.fogg.state == 'upload done' ||  _this.fogg.state == 'done' ) {	
 				   js_log( 'firefogg:upload done: ');																														   
 				   //if in "post" upload mode read the html response (should be depricated): 
-				   if( _this.upload_mode == 'post' ) {					   
-					   //js_log( 'done upload response is: ' + cat["responseText"] );
-					   _this.procPageResponse( response_text );
-						   
-				   }else if( _this.upload_mode == 'api'){										  
+				   	if( _this.upload_mode == 'post' && _this.api_url ) {					   
+					   js_log( 'done upload response is: ' + cat["responseText"] );
+					   _this.procPageResponse( response_text );						   
+				   	}else if( _this.upload_mode == 'api'){										  
 					   if( _this.fogg.resultUrl ){		
 							var go_to_url_txt = gM('go-to-resource');			   
 						   //should have an json result:
@@ -555,15 +560,20 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	procPageResponse:function( result_page ){
 		js_log('f:procPageResponse');
 		var sstring = 'var wgTitle = "' + this.formData['wpDestFile'].replace('_',' ');		
-		var result_txt = gM('mv_upload_done', 
-							wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) );						
+		
+		if(wgArticlePath){
+			var result_txt = gM('mv_upload_done', wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) );
+		}else{
+			result_txt = 'File has uploaded but api "done" url was provided. Check the log for result page output';
+		}		
+		
 		//set the error text in case we dont' get far along in processing the response 
-		$j( '#dlbox-centered' ).html( gM('mv_upload_completed') + result_txt );
+		updateProgressWin( gM('mv_upload_completed'), result_txt );
 												
 		if( result_page && result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
 			js_log( 'upload done got redirect found: ' + sstring + ' r:' + _this.upload_done_action );										
 			if( _this.upload_done_action == 'redirect' ){
-			$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + result_txt + '<br>' + form_txt);
+				$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + result_txt + '<br>' + form_txt);
 				window.location = wgArticlePath.replace( /\$1/, 'File:' + formData['wpDestFile'] );
 			}else{
 				//check if the add_done_action is a callback:
