@@ -68,8 +68,8 @@ if(typeof stylepath == 'undefined')
 /*
 *	base remoteSearch Driver interface
 */
-var remoteSearchDriver = function(initObj){
-	return this.init( initObj );
+var remoteSearchDriver = function(iObj){
+	return this.init( iObj );
 }
 remoteSearchDriver.prototype = {
 	results_cleared:false,
@@ -296,12 +296,12 @@ remoteSearchDriver.prototype = {
 	cUpLoader			: null,
 	cEdit				: null,
 
-	init: function( initObj ){
+	init: function( iObj ){
 		var _this = this;
 		js_log('remoteSearchDriver:init');
 		for( var i in default_remote_search_options ) {
-			if( initObj[i]){
-				this[ i ] = initObj[i];
+			if( iObj[i]){
+				this[ i ] = iObj[i];
 			}else{
 				this[ i ] = default_remote_search_options[i];
 			}		
@@ -1096,7 +1096,7 @@ remoteSearchDriver.prototype = {
 		//or if import mode if just "linking" 		
 		if( this.checkRepoLocal( cp ) || this.import_url_mode == 'remote_html_embed'){
 			//local repo jump directly to check Import Resource callback:
-			 cir_callback( rObj );	    		    
+			 cir_callback( rObj );
 		}else{										
 			//not a local domain update target resource name with the prefix:
 			rObj.target_resource_title = cp.resource_prefix +rObj.target_resource_title; 
@@ -1370,10 +1370,10 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 			
 		if(_this.import_url_mode=='remote_html_embed'){
-            _this.cur_embed_code = rObj.pSobj.getEmbedHTML(rObj);
+			_this.cur_embed_code = rObj.pSobj.getEmbedHTML(rObj);
 		}else{
-            _this.cur_embed_code = rObj.pSobj.getEmbedWikiCode( rObj );
-        }
+			_this.cur_embed_code = rObj.pSobj.getEmbedWikiCode( rObj );
+		}
 		
 		//insert at start if textInput cursor has not been set (ie == length)
 		if( _this.caret_pos &&  _this.caret_pos.text){
@@ -1410,12 +1410,12 @@ remoteSearchDriver.prototype = {
 			
 			//also update the render area: 
 			if(_this.target_render_area && _this.cur_embed_code){			
-			     //output with some padding: 
-			     $j(_this.target_render_area).append( _this.cur_embed_code + '<div style="clear:both;height:10px">')
-			     //update if its 
-			     mv_video_embed(function(){
-			         _this.closeAll();
-			     });
+				 //output with some padding: 
+				 $j(_this.target_render_area).append( _this.cur_embed_code + '<div style="clear:both;height:10px">')
+				 //update if its 
+				 mv_video_embed(function(){
+					 _this.closeAll();
+				 });
 			}						
 		});		
 	},

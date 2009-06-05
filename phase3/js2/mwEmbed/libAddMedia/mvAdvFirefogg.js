@@ -1,5 +1,5 @@
 /*
-* Adds advanced firefogg support (let you control and structure advanced controls over many aspects of video editing)  
+* Adds advanced firefogg support (let you control and structure advanced controls over many aspects of video encoding)  
 */
 
 //@@todo put all msg text into loadGM json
@@ -15,8 +15,8 @@ loadGM({
 	
 });
 
-var mvAdvFirefogg = function( initObj ){
-	return this.init( initObj );
+var mvAdvFirefogg = function( iObj ){
+	return this.init( iObj );
 }
 var default_mvAdvFirefogg_config = {
 	//which config groups to include
@@ -231,15 +231,15 @@ mvAdvFirefogg.prototype = {
 			'help'	: "Contact link"
 		}
 	},
-	init:function( initObj ){				
-		//setup a "supported" initObj:
-		for(var i in initObj){
+	init:function( iObj ){				
+		//setup a "supported" iObj:
+		for(var i in iObj){
 			if( typeof default_mvAdvFirefogg_config [i] != 'undefined' ){
-				this[i] = initObj[i];				
+				this[i] = iObj[i];				
 			}			
 		}
 		//inherit the base mvFirefogg class: 
-		var myFogg = new mvFirefogg( initObj );
+		var myFogg = new mvFirefogg( iObj );
 		for(var i in myFogg){
 			if( typeof this[i] != 'undefined'){
 				this[ 'basefogg_' + i ] = myFogg[i];

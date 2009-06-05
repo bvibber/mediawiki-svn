@@ -1,10 +1,10 @@
-var mediaWikiSearch = function( initObj ) {		
-	return this.init( initObj );
+var mediaWikiSearch = function( iObj ) {		
+	return this.init( iObj );
 };
 mediaWikiSearch.prototype = {
-	init:function( initObj ){
+	init:function( iObj ){
 		//init base class and inherit: 
-		var baseSearch = new baseRemoteSearch( initObj );
+		var baseSearch = new baseRemoteSearch( iObj );
 		for(var i in baseSearch){
 			if(typeof this[i] =='undefined'){
 				this[i] = baseSearch[i];

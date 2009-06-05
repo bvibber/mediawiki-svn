@@ -1,12 +1,13 @@
 /*the sequence remote search driver
 	 extends the base remote search driver with sequence specific stuff.		 could seperate this out into seperate lib.
 */
-var seqRemoteSearchDriver = function(initObj){
-	return this.init( initObj )
+var seqRemoteSearchDriver = function(iObj){
+	return this.init( iObj )
 }
 seqRemoteSearchDriver.prototype = {
-	init:function( initObj ){
-		//inherit the remoteSearchDriver properties:n		var tmpRSD = new remoteSearchDriver( initObj );
+	init:function( iObj ){
+		//inherit the remoteSearchDriver properties:n		
+		var tmpRSD = new remoteSearchDriver( iObj );
 		for(var i in tmpRSD){
 			if(this[i]){
 				this['parent_'+i] = tmpRSD[i];
@@ -27,7 +28,7 @@ seqRemoteSearchDriver.prototype = {
 		var clip_key ='';
 		
 		//@@todo support multiple target tracks
-		$j('.mv_clip_box_result').draggable({
+		$j( '.mv_clip_box_result' ).draggable({
 			start:function(){
 				source_pos = $j(this).offset();
 				js_log("update pos of: #clone_" + this.id + ' to l:' +source_pos.left  + ' t:' + source_pos.top ); 

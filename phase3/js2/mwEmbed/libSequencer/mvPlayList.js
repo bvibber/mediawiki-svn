@@ -129,10 +129,9 @@ mvPlayList.prototype = {
 		debugger;
 		*/		
 		//load sequencer: 
-		mv_do_sequence({
-				"sequence_container_id":'modalbox', 
-				"mv_pl_src":this.src						
-			});
+		$j("#modalbox").sequencer({				
+			"mv_pl_src":this.src						
+		});
 					
 	},
 	selectPlaybackMethod:function(){
@@ -387,10 +386,11 @@ mvPlayList.prototype = {
 				'</div>'+
 			'</div>'
 		);
+		
 		//add the play button:						
-		  $j('#dc_'+plObj.id).append(
-			  this.cur_clip.embed.getPlayButton()
-		  );
+		$j('#dc_'+plObj.id).append(
+			this.cur_clip.embed.getPlayButton()
+        );
 		//once the controls are in the DOM add hooks: 
 		ctrlBuilder.addControlHooks(this);
 		
@@ -463,11 +463,13 @@ mvPlayList.prototype = {
 			seconds2npt( this.getDuration() ) + '</i>');
 			
 		//only show the inline edit button if mediaWiki write API is enabled:
+		
+		//should probably be based on if we have a provider api url
 		if( typeof wgEnableWriteAPI != 'undefined'){		
 			$j('#ptitle_'+this.id).append(
-				'<a href="#" onclick="$j(\'#'+this.id+'\').get(0).doEditor();"'+ 
-				'style="position:absolute;top:0px;right:0px">edit</a>'
+				$j.btnHtml('edit', 'edit_'+this.id, 'pencil', {'style':'float:right;font-size:x-small;height:15px;'} )
 			);
+			//do binding: 
 		}
 		//render out the dividers on the timeline: 
 		this.colorPlayHead();		
@@ -2017,8 +2019,8 @@ activeClipList.prototype = {
 		return this.clipList;
 	}	
 }
- var trackObj = function( initObj ){
-	 return this.init( initObj );
+ var trackObj = function( iObj ){
+	 return this.init( iObj );
  }
  var supported_track_attr =
 trackObj.prototype = {
@@ -2030,16 +2032,16 @@ trackObj.prototype = {
 		'desc:'		
 	 ),					
 	disp_mode:'timeline_thumb',
-	init : function(initObj){
-		if(!initObj)
-			initObj={};
+	init : function(iObj){
+		if(!iObj)
+			iObj={};
 		//make sure clips is new: 
 		this.clips = new Array();
 				
 		var _this = this;
 		$j.each(this.supported_attributes, function(i, attr){
-			if(initObj[attr])
-				_this[attr] = initObj[attr];
+			if(iObj[attr])
+				_this[attr] = iObj[attr];
 		});			
 	},
 	//returns the values of supported_attributes: 

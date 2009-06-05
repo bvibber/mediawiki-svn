@@ -20,8 +20,8 @@ var rsd_default_rss_item_mapping = {
 	'category'  : '.media:category@label|url'
 }
 
-var baseRemoteSearch = function(initObj) {
-	return this.init(initObj);
+var baseRemoteSearch = function(iObj) {
+	return this.init(iObj);
 };
 baseRemoteSearch.prototype = {
 	
@@ -37,10 +37,10 @@ baseRemoteSearch.prototype = {
 	num_results		:0,	
 	
 	//init the object: 
-	init: function( initObj ){		
+	init: function( iObj ){		
 		js_log('mvBaseRemoteSearch:init');
-		for(var i in initObj){
-			this[i] = initObj[i];
+		for(var i in iObj){
+			this[i] = iObj[i];
 		}
 		return this;
 	},	

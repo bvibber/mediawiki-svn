@@ -615,14 +615,14 @@ function mv_jqueryBindings(){
 			mvJsLoader.jQueryCheck(function(){
 				//load search specifc extra stuff 
 				mvJsLoader.doLoad({
-					'remoteSearchDriver'   : 'libAddMedia/remoteSearchDriver.js',
-					'$j.cookie'			: 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',
-					'$j.ui'				: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-					'$j.ui.resizable'	  : 'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
-					'$j.ui.draggable'	  : 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
-					'$j.ui.dialog'		 : 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js',
-					'$j.ui.tabs'		   : 'jquery/' + jQueryUiVN + '/ui/ui.tabs.js',
-					'$j.ui.sortable'	   : 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js'
+					'remoteSearchDriver'	: 'libAddMedia/remoteSearchDriver.js',
+					'$j.cookie'				: 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',
+					'$j.ui'					: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+					'$j.ui.resizable'		: 'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
+					'$j.ui.draggable'		: 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
+					'$j.ui.dialog'			: 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js',
+					'$j.ui.tabs'			: 'jquery/' + jQueryUiVN + '/ui/ui.tabs.js',
+					'$j.ui.sortable'		: 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js'
 				}, function(){
 					iObj['instance_name']= 'rsdMVRS';
 					_global['rsdMVRS'] = new remoteSearchDriver( iObj );	   
@@ -631,7 +631,37 @@ function mv_jqueryBindings(){
 				});
 			});
 		}
-		
+		$.fn.sequencer = function( iObj, callback){
+			//debugger;
+			iObj['target_sequence_container'] = this.selector;
+        	//issue a request to get the css file (if not already included):	
+        	loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
+        	loadExternalCss( mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');	
+        	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
+        	mvJsLoader.embedVideoCheck(function(){		
+        		//load playlist object and drag,drop,resize,hoverintent,libs
+        		mvJsLoader.doLoad({
+        				'mvPlayList'		: 'libSequencer/mvPlayList.js',
+        				'$j.ui'				: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
+        				'$j.ui.droppable'	: 'jquery/' + jQueryUiVN + '/ui/ui.droppable.js',
+        				'$j.ui.draggable'	: 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
+        				'$j.ui.sortable'	: 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js',
+        				'$j.ui.resizable'	: 'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
+        				'$j.ui.slider'		: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js',
+        				'$j.ui.tabs'		: 'jquery/' + jQueryUiVN + '/ui/ui.tabs.js',
+        				'$j.contextMenu'	: 'jquery/plugins/jquery.contextMenu.js',
+        				'mvSequencer'		: 'libSequencer/mvSequencer.js'		
+        			},function(){					
+        				js_log('calling new mvSequencer');						
+        				//init the sequence object (it will take over from there) no more than one mvSeq obj for now: 
+        				if(!_global['mvSeq']){
+        					_global['mvSeq'] = new mvSequencer(iObj);
+        				}else{
+        					js_log('mvSeq already init');
+        				}
+        		});
+        	});
+		}
 		$.fn.firefogg = function( iObj, callback ) {
 				
 			//add base theme css:
@@ -723,37 +753,6 @@ function mv_jqueryBindings(){
 		
 	})(jQuery);
 }  
-
-/* init the sequencer */
-function mv_do_sequence(initObj){
-	//debugger;
-	//issue a request to get the css file (if not already included):	
-	loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
-	loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');	
-	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
-	mvJsLoader.embedVideoCheck(function(){		
-		//load playlist object and drag,drop,resize,hoverintent,libs
-		mvJsLoader.doLoad({
-				'mvPlayList'		: 'libSequencer/mvPlayList.js',
-				'$j.ui'				: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-				'$j.ui.droppable'	 : 'jquery/' + jQueryUiVN + '/ui/ui.droppable.js',
-				'$j.ui.draggable'	 : 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
-				'$j.ui.sortable'	: 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js',
-				'$j.ui.resizable'	: 'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
-				'$j.ui.slider'		: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js',
-				'$j.contextMenu'	: 'jquery/plugins/jquery.contextMenu.js',
-				'mvSequencer'		: 'libSequencer/mvSequencer.js'		
-			},function(){					
-				js_log('calling new mvSequencer');						
-				//init the sequence object (it will take over from there) no more than one mvSeq obj: 
-				if(!_global['mvSeq']){
-					_global['mvSeq'] = new mvSequencer(initObj);
-				}else{
-					js_log('mvSeq already init');
-				}
-		});
-	});
-}
 /*
 * utility functions:
 */

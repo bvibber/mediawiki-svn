@@ -2,16 +2,16 @@
 //more about solr here: 
 //http://lucene.apache.org/solr/
 
-var archiveOrgSearch = function ( initObj){
-	return this.init( initObj );
+var archiveOrgSearch = function ( iObj){
+	return this.init( iObj );
 }
 archiveOrgSearch.prototype = {
 	//archive.org constants: 
 	dnUrl:'http://www.archive.org/download/',
 	dtUrl:'http://www.archive.org/details/',
-	init:function( initObj ){
+	init:function( iObj ){
 		//init base class and inherit: 
-		var baseSearch = new baseRemoteSearch( initObj );
+		var baseSearch = new baseRemoteSearch( iObj );
 		for(var i in baseSearch){
 			if(typeof this[i] =='undefined'){
 				this[i] = baseSearch[i];

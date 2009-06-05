@@ -47,8 +47,8 @@ var default_clipedit_values = {
 	'profile': 'inpage' //the given profile either "inpage" or "sequence"
 						//timeline invokes the timeline editor (letting you set keyframes)
 }
-var mvClipEdit = function(initObj) {		
-	return this.init(initObj);
+var mvClipEdit = function(iObj) {		
+	return this.init(iObj);
 };
 mvClipEdit.prototype = {
 	
@@ -56,11 +56,11 @@ mvClipEdit.prototype = {
 	crop: null, //the crop values
 	base_img_src:null,
 	
-	init:function( initObj){
+	init:function( iObj){
 		//init object: 
 		for(var i in default_clipedit_values){
-			if( initObj[i] ){   
-				this[i] = initObj[i];
+			if( iObj[i] ){   
+				this[i] = iObj[i];
 			}
 		}
 

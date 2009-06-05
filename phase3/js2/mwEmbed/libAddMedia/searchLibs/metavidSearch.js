@@ -4,17 +4,17 @@
 loadGM( {
 	"mv_stream_title" : "$1 $2 to $3"
 });
-var metavidSearch = function(initObj) {
-	return this.init(initObj);
+var metavidSearch = function(iObj) {
+	return this.init(iObj);
 };
 metavidSearch.prototype = {
 	reqObj:{  //set up the default request paramaters
 		'order':'recent',
 		'feed_format':'rss'		
 	},
-	init:function( initObj ){
+	init:function( iObj ){
 		//init base class and inherit: 
-		var baseSearch = new baseRemoteSearch( initObj );
+		var baseSearch = new baseRemoteSearch( iObj );
 		for(var i in baseSearch){
 			if(typeof this[i] =='undefined'){
 				this[i] = baseSearch[i];

@@ -15,7 +15,7 @@ var mwUploadHelper = {
 				//an api url (we won't submit directly to action of the form)
 				'api_url' : wgServer + wgScriptPath + '/api.php',
 				'form_rewrite': true,				
-				'new_source_cb' : function( orgFilename, oggName ){    				    
+				'new_source_cb' : function( orgFilename, oggName ){						
 						$j('#wpDestFile').val( oggName );
 						mwUploadHelper.doDestCheck();
 				}

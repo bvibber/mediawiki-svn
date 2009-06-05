@@ -7,7 +7,9 @@
  * @author Michael Dale
  * @email dale@ucsc.edu
  * @url http://metavid.org
- *
+ * 
+ * @further developed in open source collaboration with kaltura. 
+ * more info at http://kaltura.com
  * 
  * mv_sequencer.js 
  *	 is a basic embeddeble sequencer. 
@@ -62,7 +64,14 @@ loadGM( {
 var sequencerDefaultValues = {
 	
 	instance_name:'mvSeq', //for now only one instance by name mvSeq is allowed	
-	sequence_container_id:'null',//text value (so that its a valid property) 
+	
+	target_sequence_container:null,//text value (so that its a valid property) 
+	target_form_text: null,
+	
+	//what is our save mode:
+	// can save to 'api' url or 'form' 	
+	saveMode : 'api',
+	
 	video_container_id:'mv_video_container',
 	
 	video_width : 400,
@@ -91,7 +100,9 @@ var sequencerDefaultValues = {
 	//stores the clipboard edit token (if user has rights to edit their User page) 
 	clipboardEditToken:null,
 	//stores the sequence edit token (if user has rights to edit the current sequence)	
-	sequenceEditToken:null, 
+	sequenceEditToken:null, 		
+		
+	
 	
 	//Msg are all the language specific values ... 
 	// (@@todo overwrite by msg values preloaded in the page)	
@@ -105,8 +116,8 @@ var sequencerDefaultValues = {
 	//trackObj used to payload playlist Track Object (when inline not present) 
 	tracks:{}
 }
-var mvSequencer = function(initObj) {		
-	return this.init(initObj);
+var mvSequencer = function(iObj) {		
+	return this.init(iObj);
 };
 //set up the mvSequencer object
 mvSequencer.prototype = {
@@ -176,53 +187,53 @@ mvSequencer.prototype = {
 	key_ctrl_down:false,
 	inputFocus:false,
 	
-	init:function( initObj ){	
+	init:function( iObj ){	
 		//set up pointer to this_seq for current scope:		 
 		var this_seq = this;
 		//set the default values:
 		for(var i in sequencerDefaultValues){
 			this[ i ] = sequencerDefaultValues[i];
 		}
-		for(var i in initObj){
-			//js_log('on '+ i + ' :' + initObj[i]);
-			if(sequencerDefaultValues[i]){ //make sure its a valid property
-				this[i] = initObj[i];
+		for(var i in iObj){
+			//js_log('on '+ i + ' :' + iObj[i]);
+			if(typeof sequencerDefaultValues[i] != 'undefined'){ //make sure its a valid property
+				this[i] = iObj[i];
 			}
 		}
-		if(this.sequence_container_id==null){
-			js_log('Error: no sequence_container_id');
+		if(!this.target_sequence_container){
+			js_log('Error: no target_sequence_container');
 			return false;
 		}
 			
 		//check for sequence_container
-		if(this.sequence_container_id=='null'){
-			js_log("Error: missing sequence_container_id");
+		if(this.target_sequence_container=='null'){
+			js_log("Error: missing target_sequence_container");
 			return false;
 		}
 		
-		//$j('#'+this.sequence_container_id).css('position', 'relative');
-		this['base_width']  = $j('#'+this.sequence_container_id).width();
-		this['base_height'] = $j('#'+this.sequence_container_id).height();
+		//$j(this.target_sequence_container).css('position', 'relative');
+		this['base_width']  = $j(this.target_sequence_container).width();
+		this['base_height'] = $j(this.target_sequence_container).height();
 				
 		
 		//add the container divs (with basic layout ~universal~ 
-		$j('#'+this.sequence_container_id).html(''+
+		$j(this.target_sequence_container).html(''+
 			'<div id="'+this.video_container_id+'" style="position:absolute;right:0px;top:0px;' +
 				'width:'+this.video_width+'px;height:'+this.video_height+'px;border:solid thin blue;background:#FFF;font-color:black;"/>'+
 			'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
-				'left:0px;right:'+(this.video_width+10)+'px;top:0px;height:'+(this.video_height+28)+'px;border:solid thin black;"/>'+
+				'left:0px;right:'+(this.video_width+15)+'px;top:0px;height:'+(this.video_height+23)+'px;"/>'+
 			'<div id="'+this.timeline_id+'" style="position:absolute;' + 
 				'left:0px;right:0px;top:'+(this.video_height+10)+'px;bottom:25px;overflow:auto;">'+
 					gM('loading_timeline')+ '</div>'+
-			'<div id="' + this.sequence_container_id + '_status" style="position:absolute;left:0px;width:300px;"></div>'+
-			'<div id="' + this.sequence_container_id + '_save_cancel" style="position:absolute;'+
+			'<div id="' + this.target_sequence_container + '_status" style="position:absolute;left:0px;width:300px;"></div>'+
+			'<div id="' + this.target_sequence_container + '_save_cancel" style="position:absolute;'+
 				'right:0px;bottom:0px;height:25px;overflow:hidden;">'+					
 					gM('loading_user_rights') +
 			'</div>'
 		);
 		
-		js_log('set: '+this.sequence_container_id + ' html to:'+ "\n"+
-			$j('#'+this.sequence_container_id).html()
+		js_log('set: '+this.target_sequence_container + ' html to:'+ "\n"+
+			$j(this.target_sequence_container).html()
 		);		
 		//first check if we got a cloned PL object:
 		//(when the editor is invoked with the plalylist already on the page) 
@@ -258,7 +269,7 @@ mvSequencer.prototype = {
 				'solid gray;font-size:1.2em;" ">' +
 					gM('edit_cancel') + '</a> ';
 		if( this.sequenceEditToken ){
-			$j('#'+this.sequence_container_id+'_save_cancel').html( cancel_button + 
+			$j(this.target_sequence_container+'_save_cancel').html( cancel_button + 
 				'<a style="border:solid gray;font-size:1.2em;" href="#" onClick="'+this.instance_name+'.getSeqOutputJSON()">'+
 					'Preview Json Output'+
 				'</a>' +
@@ -266,7 +277,7 @@ mvSequencer.prototype = {
 					'Preview XML Output (will be save shortly) ' + 
 				'</a>'); 
 		}else{
-			$j('#'+this.sequence_container_id+'_save_cancel').html( cancel_button + gM('no_edit_permissions') );
+			$j(this.target_sequence_container+'_save_cancel').html( cancel_button + gM('no_edit_permissions') );
 		}
 		//assing bindings
 		$j('#mv_cancel_seq_button').unbind().click(function(){
@@ -462,7 +473,7 @@ mvSequencer.prototype = {
 		//propagate the edit tokens 
 		//if on an edit page just grab from the form:		
 		this.sequenceEditToken = $j('input[wpEditToken]').val();
-		if(typeof this.sequenceEditToken == 'undefined'){			
+		if(typeof this.sequenceEditToken == 'undefined' && this.getLocalApiUrl()!=null){			
 			var reqObj = {
 				'action':'query',
 				'prop':'info',
@@ -523,31 +534,46 @@ mvSequencer.prototype = {
 		}
 		
 		
-		//render the menu: 
-		var menu_html = '<ul id="seq_menu">';
+		//render the menu tabs:: 		
 		var item_containers ='';
-	
-		$j.each(this.menu_items, function(inx, menu_item){
-			var disp_style = (menu_item.d)?'inline':'none';
-			var sel_class = (menu_item.d)?'class="mv_selected_item"':''; 
-			menu_html+='<li '+sel_class+' id="mv_menu_item_'+inx+'">' + gM('menu_' + inx ) +'</li>';						
-			item_containers += '<div class="seq_control_container" id="' + inx + 
-				'_ic" style="display:' + disp_style +';">'													
-				item_containers += (menu_item.html) ? menu_item.html : '<h3>' + gM('menu_'+inx) + '</h3>';
-				item_containers +='</div>';
-		});
-		menu_html+='</ul>';
-				
-		item_containers+='<div class="seq_control_container" id="welcome_ic">' + gM('mv_welcome_to_sequencer') + '</div>';
+		var inx = 0;
+		var selected_tab = 0;		
+		var tabc ='';
+		var o='<div id="seq_menu" style="width:100%;height:100%">';
+		o+='<ul>';			
+		$j.each(this.menu_items, function(tab_id, menu_item){
+			if(menu_item.d)
+				selected_tab=inx;
+						
+			o+='<li>' + 
+				'<a id="mv_menu_item_'+tab_id+'" href="#tab-ic-' + tab_id + '">'+gM('menu_' + tab_id )+
+			'</li>';						
 			
-		$j('#'+this.sequence_tools_id).html( menu_html + item_containers );
+			tabc += '<div id="tab-ic-' + tab_id + '" >';													
+				tabc += (menu_item.html) ? menu_item.html : '<h3>' + gM('menu_'+tab_id) + '</h3>';
+			tabc +='</div>';
+				
+			inx++;
+		});
+		o+='</ul>';
+		o+=tabc;	
+			
+		$j('#'+this.sequence_tools_id).html( o );
+		
+		$j("#seq_menu").tabs({
+			selected:selected_tab,
+			select: function(event, ui) {									
+				this_seq.disp( $j(ui.tab).attr('id').replace('mv_menu_item_', '') );
+			}		
+		//add sorting
+		}).find(".ui-tabs-nav").sortable({axis:'x'});
 		
 		//add binding for menu
-		$j('#seq_menu li').click(function(){
+		/*$j('#seq_menu li').click(function(){
 			$j('#seq_menu li').removeClass('mv_selected_item');
 			$j(this).addClass('mv_selected_item');
 			this_seq.disp( $j(this).attr('id').replace('mv_menu_item_','') );
-		});
+		});*/
 		
 		//load init content into containers 
 		this.setupMenuItems();	
@@ -1332,10 +1358,10 @@ mvSequencer.prototype = {
 			//remove the old one if its still there		
 			$j('#'+this.timeline_id +'_pl_control').remove();
 			//render out a playlist clip wide and all the way to the right (only playhead and play button) (outside of timeline)
-			$j('#'+this.sequence_container_id).append('<div id="'+ this.timeline_id +'_pl_control"'+
+			$j(this.target_sequence_container).append('<div id="'+ this.timeline_id +'_pl_control"'+
 				' style="position:absolute;top:' + (this.plObj.height) +'px;'+
 				'right:1px;width:'+this.plObj.width+'px;height:'+this.plObj.org_control_height+'" '+
-				'class="videoPlayer"><div class="controls">'+
+				'class="videoPlayer"><div class="ui-widget ui-corner-bottom ui-state-default controls">'+
 						 this.plObj.getControlsHTML() +
 					 '</div>'+
 				'</div>');		

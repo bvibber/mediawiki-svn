@@ -38,8 +38,8 @@ var default_upload_options = {
     'api_url':false
 }
 
-var mediaWikiUploadHelper = function(initObj){
-    return this.init( initObj );
+var mediaWikiUploadHelper = function(iObj){
+    return this.init( iObj );
 }
 mediaWikiUploadHelper.prototype = {
     init:function( iObj ){

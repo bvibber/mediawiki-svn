@@ -54,8 +54,8 @@ var default_firefogg_options = {
 }	
 
 
-var mvFirefogg = function(initObj){
-	return this.init( initObj );
+var mvFirefogg = function(iObj){
+	return this.init( iObj );
 }
 mvFirefogg.prototype = { //extends mvBaseUploadInterface
 
