@@ -33,8 +33,9 @@ $messages['en'] = array(
 	'edittoolbar-insert-file' => 'Embedded file',
 	'edittoolbar-insert-file-pre' => '$1File:',
 	'edittoolbar-insert-file-example' => 'Example.jpg',
-	'edittoolbar-insert-reference' => 'Insert a reference',
+	'edittoolbar-insert-reference' => 'Reference',
 	'edittoolbar-insert-reference-example' => 'Insert footnote text here',
+	'edittoolbar-insert-signature' => 'Signature and timestamp',
 	/* Formatting Section */
 	'edittoolbar-format-ulist' => 'Bulleted list',
 	'edittoolbar-format-ulist-example' => 'Bulleted list item',
