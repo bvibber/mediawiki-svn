@@ -2,26 +2,65 @@
 
 div#edittoolbar {
 	width: 100%;
-	height: 32px;
 	background-color: #EEEEEE;
 }
-
-div#edittoolbar > div.group {
+div#edittoolbar div.tabs,
+div#edittoolbar div.group {
 	float: left;
 	height: 26px;
 	margin: 3px;
 	padding-left: 3px;
 	border-left: solid 1px #DDDDDD;
 }
-div#edittoolbar > div.group:first-child {
+div#edittoolbar div.group:first-child {
 	border-left: none;
 }
-
-div#edittoolbar > div.group > img {
+div#edittoolbar div.sections {
+	float: left;
+	width: 100%;
+	clear: both;
+}
+div#edittoolbar div.sections > div.section {
+	display: none;
+	float: left;
+	width: 100%;
+	border-top: solid 1px #DDDDDD;
+}
+div#edittoolbar div.group > img {
 	float: left;
 	border: 0px;
 	height: 22px;
 	width: 22px;
 	margin: 2px;
 	cursor: pointer;
+}
+div#edittoolbar div.group > select {
+	float: left;
+	margin: 2px;
+	height: 22px;
+	cursor: pointer;
+}
+div#edittoolbar div.tabs > div.tab {
+	float: left;
+	line-height: 26px;
+}
+div#edittoolbar div.tabs > div.tab > a,
+div#edittoolbar div.tabs > div.tab > a:visited {
+	padding-left: 18px;
+	padding-right: 12px;
+	display: block;
+	height: 26px;
+	cursor: pointer;
+	color: #00528C;
+	background-image: url(images/arrow-right.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+div#edittoolbar div.tabs > div.tab > a.current,
+div#edittoolbar div.tabs > div.tab > a.current:visited {
+	color: #333333;
+	background-image: url(images/arrow-down.png);
+}
+div#edittoolbar div.tabs > div.tab > a.current:hover {
+	text-decoration: none;
 }

@@ -24,43 +24,67 @@ class EditToolbarHooks {
 		if ( $wgUser->getOption( 'usebetatoolbar' ) ) {
 			$toolbar = '<div id="edittoolbar"></div>';
 		}
+		
 		// List of messages to be sent to the client for use in the toolbar
-		// all of which will get a prefix of "toolbar"
 		$messages = array(
-			'format-bold',
-			'format-bold-example',
-			'format-italic',
-			'format-italic-example',
-			'insert-ilink',
-			'insert-ilink-example',
-			'insert-xlink',
-			'insert-xlink-example',
-			'insert-image',
-			'insert-image-example',
-			'insert-reference',
-			'insert-reference-example',
+			/* Sections */
+			'edittoolbar-section-format',
+			'edittoolbar-section-insert',
+			'edittoolbar-section-characters',
+			'edittoolbar-section-help',
+			/* Main Section */
+			'edittoolbar-format-bold',
+			'edittoolbar-format-bold-example',
+			'edittoolbar-format-italic',
+			'edittoolbar-format-italic-example',
+			'edittoolbar-insert-ilink',
+			'edittoolbar-insert-ilink-example',
+			'edittoolbar-insert-xlink',
+			'edittoolbar-insert-xlink-example',
+			'edittoolbar-insert-file',
+			'edittoolbar-insert-file-pre',
+			'edittoolbar-insert-file-example',
+			'edittoolbar-insert-reference',
+			'edittoolbar-insert-reference-example',
+			/* Formatting Section */
+			'edittoolbar-format-ulist',
+			'edittoolbar-format-ulist-example',
+			'edittoolbar-format-olist',
+			'edittoolbar-format-olist-example',
+			'edittoolbar-format-heading',
+			'edittoolbar-format-heading-1',
+			'edittoolbar-format-heading-2',
+			'edittoolbar-format-heading-3',
+			'edittoolbar-format-heading-4',
+			'edittoolbar-format-heading-5',
+			'edittoolbar-format-heading-example',
+			'edittoolbar-format-superscript',
+			'edittoolbar-format-superscript-example',
+			'edittoolbar-format-subscript',
+			'edittoolbar-format-subscript-example',
+			'edittoolbar-format-big',
+			'edittoolbar-format-big-example',
+			'edittoolbar-format-small',
+			'edittoolbar-format-small-example',
 		);
 		// Transforms messages into javascript object members
 		foreach ( $messages as $i => $message ) {
-			$escapedMessageValue = Xml::escapeJsString(
-				wfMsg( 'edittoolbar-' . $message )
-			);
+			$escapedMessageValue = Xml::escapeJsString( wfMsg( $message ) );
 			$escapedMessageKey = Xml::escapeJsString( $message );
 			$messages[$i] = "'{$escapedMessageKey}':'{$escapedMessageValue}'";
 		}
 		// Converts array of object members to a comma delimited list
 		$messagesList = implode( ',', $messages );
 		// Encapsulates list in javascript code to set them durring load
-		$messagesJs = "editToolbar.setMessages({{$messagesList}});";
+		$messagesJs = "loadGM({{$messagesList}});";
 		// Appends javascript message setting code
 		$toolbar .= Xml::element(
 			'script', array( 'type' => $wgJsMimeType ), $messagesJs
 		);
-		
 		// Continue
 		return true;
 	}
-
+	
 	/**
 	 * GetPreferences hook
 	 * Add toolbar related items to the preferences

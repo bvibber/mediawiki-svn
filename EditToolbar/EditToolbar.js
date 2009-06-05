@@ -1,210 +1,471 @@
 /* JavaScript for EditToolbar extension */
 
 /**
- * Prototype for global editToolbar object
- * @param {String} toolbarSelector jQuery compatible selector of toolbar div
+ * This is designed to be directly compatible with (and is essentially taken
+ * directly from) the mv_embed code for bringing internationalized messages into
+ * the JavaScript space. As such, if we get to the point of merging that stuff
+ * into the main branch this code will be uneeded and probably cause issues.
  */
-function EditToolbar( toolbarSelector ) {
-	
-	/* Private Members */
-	
-	// Reference to object's self
-	var self = this;
-	// Reference to DIV container object (set on initialize)
-	var toolbarDiv = null;
-	// Sections (main and subs), groups and buttons
-	var tools = { main: {}, subs: {} };
-	// Internationalized user interface messages
-	var messages = {};
-	
-	/* Functions */
-	
-	/**
-	 * Initializes the toolbar user interface
-	 */
-	this.initialize = function() {
-		// Path to images (THIS WILL HAVE TO CHANGE IF YOU MOVE THIS INTO CORE)
-		var imagePath = wgScriptPath +
-			'/extensions/UsabilityInitiative/EditToolbar/images/';
-		// Gets object handle for container
-		toolbarDiv = $( toolbarSelector );
-		// Checks if the toolbar div existed
-		if ( toolbarDiv ) {
+// Creates global message object if not already in existence
+if ( !gMsg ) var gMsg = {};
+/**
+ * Caches a list of messages for later retieval
+ * @param {Object} msgSet Hash of key:value pairs of messages to cache
+ */
+function loadGM( msgSet ){
+	for ( var i in msgSet ){
+		gMsg[ i ] = msgSet[i];
+	}
+}
+/**
+ * Retieves a message from the global message cache, performing on-the-fly
+ * replacements using MediaWiki message syntax ($1, $2, etc.)
+ * @param {String} key Name of message as it is in MediaWiki
+ * @param {Array} args Array of replacment arguments
+ */
+function gM( key, args ) {
+	var ms = '';	
+	if ( key in gMsg ) {
+		ms = gMsg[ key ];
+		if ( typeof args == 'object' || typeof args == 'array' ) {				 
+			for ( var v in args ){
+				var rep = '\$'+ ( parseInt(v) + 1 );
+				ms = ms.replace( rep, args[v]);
+			}			 
+		} else if ( typeof args =='string' || typeof args =='number' ) {
+			ms = ms.replace( /\$1/, args );
+		}
+		return ms;
+	} else {
+		return '[' + key + ']';
+	}
+}
+/**
+ * This is the toolbar plugin, which can be used like
+ * $( 'div#edittoolbar' ).toolbar( '#wpTextbox1', tools );
+ * Where tools is an array of objects which describe each tool (see below for
+ * specific examples) (THIS NEEDS BETTER DOCUMENTATION WHEN I HAVE TIME)
+ */
+(function($){
+	$.fn.extend({
+		/**
+		 * 
+		 * @param {Object} textbox
+		 * @param {Object} tools
+		 */
+		toolbar: function( textbox, tools ) {
+			return this.each(function() {
+				// Checks if main section is in the structure
+				if ( 'main' in tools ) {
+					// Adds main section to toolbar
+					$(this).addToolbarSection( tools.main, textbox );
+				}
+				// Appends additional section tabs
+				var tabDiv = $( '<div />' )
+					.attr( 'class', 'tabs' )
+					.appendTo( $(this) );
+				// Appends additional section
+				var sectionsDiv = $( '<div />' )
+					.attr( 'class', 'sections' )
+					.appendTo( $(this) );
+				// Appends float-clearing div
+				$(this).append( $( '<div style="clear:both"></div>' ) );
+				// Loops over each section
+				for ( section in tools ) {
+					// Skips over main (was handled as special case already)
+					if ( section == 'main' ) {
+						continue;
+					}
+					// Appends section content
+					var sectionDiv = $( '<div />')
+						.attr( { 'class': 'section', 'id': $(this).attr( 'id' ) + '-section-' + section } )
+						.appendTo( sectionsDiv );
+					// Appends toolbar to section div
+					sectionDiv.addToolbarSection( tools[section], textbox )
+					// Appends section tab
+					tabDiv.append(
+						$( '<div />' )
+							.attr( 'class', 'tab' )
+							.append(
+								$( '<a />' )
+									.text( tools[section].label || gM( tools[section].labelMsg ) )
+									.attr( { 'href': '#', 'rel': section } )
+									.data( 'sectionDiv', sectionDiv )
+									.click( function() {
+										$(this).blur();
+										var show = ( $(this).data( 'sectionDiv' ).css( 'display' ) == 'none' );
+										$(this).data( 'sectionDiv' ).parent().children().hide();
+										$(this).parent().parent().find( 'a' ).removeClass( 'current' );
+										if ( show ) {
+											$(this).data( 'sectionDiv' ).show();
+											$(this).addClass( 'current' );
+										}
+										return false;
+									})
+							)
+					);
+				}
+			});
+		},
+		/**
+		 * Adds a toolbar section to a containing div
+		 * @param {Object} section Section data to build toolbar from
+		 */
+		addToolbarSection: function( section, textbox ) {
+			// Path to images (THIS WILL HAVE TO CHANGE IF YOU MOVE THIS INTO CORE)
+			var imagePath = wgScriptPath +
+				'/extensions/UsabilityInitiative/EditToolbar/images/';
+			// Check for groups
+			if ( !( 'groups' in section ) ) {
+				return;
+			}
 			// Loops over each main group
-			for ( group in tools.main ) {
-				// Creates tool group
-				var groupDiv = $( '<div class="group"></div>' );
-				// Appends group to toolbar
-				groupDiv.appendTo( toolbarDiv );
-				for ( tool in tools.main[group] ) {
-					// Creates tool
-					var toolImg = $( '<img />' );
-					// Appends tool to group
-					toolImg.appendTo( groupDiv );
-					// Customizes the tool
-					toolImg.attr({
-						src: imagePath + tools.main[group][tool].icon,
-						alt: messages[group + '-' + tool],
-						title: messages[group + '-' + tool]
-					});
-					// Sets button action
-					toolImg.click( tools.main[group][tool].action );
+			for ( group in section.groups ) {
+				// Appends group
+				var groupDiv = $( '<div />' )
+						.attr( 'class', 'group' )
+						.appendTo( $(this) );
+				// Creates generic action
+				var action = function() {
+					$(this).useTool(
+						$(this).data( 'context' ).tool,
+						$(this).data( 'context' ).textbox
+					);
+				};
+				// Loops over each tool
+				for ( tool in section.groups[group] ) {
+					// Creates context for use in action
+					var context = { 'tool': section.groups[group][tool], 'textbox': textbox };
+					// Creates the label of the tool
+					var label = ( section.groups[group][tool].label || gM( section.groups[group][tool].labelMsg ) );
+					switch ( section.groups[group][tool].type ) {
+						case 'button':
+							// Appends button
+							groupDiv.append(
+								$( '<img />' )
+								.attr( {
+									src: imagePath + section.groups[group][tool].icon,
+									alt: label,
+									title: label
+								} )
+								.data( 'context', context )
+								.click( action )
+							);
+						break;
+						case 'select':
+							// Appends select
+							var selectDiv = $( '<select />' )
+								.data( 'context', context )
+								.change( action )
+								.append(
+									$( '<option />' ) .text( label )
+								)
+								.appendTo( groupDiv );
+							// Appends options
+							for ( item in section.groups[group][tool].list ) {
+								selectDiv.append(
+									$( '<option/>' )
+										.text( ( section.groups[group][tool].list[item].label || gM( section.groups[group][tool].list[item].labelMsg ) ) )
+										.attr( 'value', item )
+								);
+							}
+						break;
+						default: break;
+					}
+				}
+			}
+		},
+		/**
+		 * Performs action on a textbox using a tool
+		 * @param {Object} tool
+		 * @param {Object} textbox
+		 */
+		useTool: function( tool, textbox ) {
+			function performAction( action, textbox ) {
+				switch ( action.type) {
+					case 'encapsulate':
+						var parts = { 'pre': '', 'peri': '', 'post': '' };
+						for ( part in parts ) {
+							if ( part + 'Msg' in action.options ) {
+								parts[part] = gM( action.options[part + 'Msg'], ( action.options[part] || null ) );
+							} else {
+								parts[part] = ( action.options[part] || '' )
+							}
+						}
+						textbox.encapsulateSelection( parts.pre, parts.peri, parts.post );
+					break;
+					default: break;
+				}
+			}
+			switch ( tool.type ) {
+				case 'button':
+					performAction( tool.action, textbox );
+				break;
+				case 'select':
+					if ( $(this).val() in tool.list ) {
+						performAction( tool.list[$(this).val()].action, textbox );
+					}
+					$(this).find(":selected").attr( 'selected', false );
+					$(this).find(":first").attr( 'selected', true );
+				break;
+				default: break;
+			}
+		}
+	});
+})(jQuery);
+/**
+ * This initializes an edit toolbar on div#edittoolbar and connects it to
+ * textarea#wpTextbox1 - which needs to be done after the document is loaded.
+ */
+$( document ).ready( function() {
+	$( 'div#edittoolbar' ).toolbar( $( 'textarea#wpTextbox1' ), editToolbarConfiguration );
+});
+/**
+ * This enormous structure is what makes the toolbar what it is. Customization
+ * of this structure prior to the document being ready and thus executing the
+ * initialization procedure for the toolbar will result in a custom toolbar.
+ */
+var editToolbarConfiguration = {
+	// Main section
+	'main': {
+		groups: {
+			'format': {
+				'bold': {
+					labelMsg: 'edittoolbar-format-bold',
+					type: 'button',
+					icon: 'format-bold.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "'''",
+							periMsg: 'edittoolbar-format-bold-example',
+							post: "'''"
+						}
+					}
+				},
+				'italic': {
+					section: 'main',
+					group: 'format',
+					id: 'italic',
+					labelMsg: 'edittoolbar-format-italic',
+					type: 'button',
+					icon: 'format-italic.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "''",
+							periMsg: 'edittoolbar-format-italic-example',
+							post: "''"
+						}
+					}
+				}
+			},
+			'insert': {
+				'xlink': {
+					labelMsg: 'edittoolbar-insert-xlink',
+					type: 'button',
+					icon: 'insert-xlink.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "[",
+							periMsg: 'edittoolbar-insert-xlink-example',
+							post: "]"
+						}
+					}
+				},
+				'ilink': {
+					labelMsg: 'edittoolbar-insert-ilink',
+					type: 'button',
+					icon: 'insert-ilink.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "[[",
+							periMsg: 'edittoolbar-insert-ilink-example',
+							post: "]]"
+						}
+					}
+				},
+				'file': {
+					labelMsg: 'edittoolbar-insert-file',
+					type: 'button',
+					icon: 'insert-file.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "[[",
+							preMsg: 'edittoolbar-insert-file-pre',
+							periMsg: 'edittoolbar-insert-file-example',
+							post: "]]"
+						}
+					}
+				},
+				'reference': {
+					labelMsg: 'edittoolbar-insert-reference',
+					type: 'button',
+					icon: 'insert-reference.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "<ref>",
+							periMsg: 'edittoolbar-insert-reference-example',
+							post: "</ref>"
+						}
+					}
+				}
+			}
+		}
+	},
+	// Format section
+	'format': {
+		labelMsg: 'edittoolbar-section-format',
+		groups: {
+			'list': {
+				'ulist': {
+					labelMsg: 'edittoolbar-format-ulist',
+					type: 'button',
+					icon: 'format-ulist.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "* ",
+							periMsg: 'edittoolbar-format-ulist-example',
+							post: ""
+						}
+					}
+				},
+				'olist': {
+					labelMsg: 'edittoolbar-format-olist',
+					type: 'button',
+					icon: 'format-olist.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "# ",
+							periMsg: 'edittoolbar-format-olist-example',
+							post: ""
+						}
+					}
+				}
+			},
+			'heading': {
+				'heading': {
+					labelMsg: 'edittoolbar-format-heading',
+					type: 'select',
+					list: {
+						'heading-1' : {
+							labelMsg: 'edittoolbar-format-heading-1',
+							action: {
+								type: 'encapsulate',
+								options: {
+									pre: "=",
+									periMsg: 'edittoolbar-format-heading-example',
+									post: "="
+								}
+							}
+						},
+						'heading-2' : {
+							labelMsg: 'edittoolbar-format-heading-2',
+							action: {
+								type: 'encapsulate',
+								options: {
+									pre: "==",
+									periMsg: 'edittoolbar-format-heading-example',
+									post: "=="
+								}
+							}
+						},
+						'heading-3' : {
+							labelMsg: 'edittoolbar-format-heading-3',
+							action: {
+								type: 'encapsulate',
+								options: {
+									pre: "===",
+									periMsg: 'edittoolbar-format-heading-example',
+									post: "==="
+								}
+							}
+						},
+						'heading-4' : {
+							labelMsg: 'edittoolbar-format-heading-4',
+							action: {
+								type: 'encapsulate',
+								options: {
+									pre: "====",
+									periMsg: 'edittoolbar-format-heading-example',
+									post: "===="
+								}
+							}
+						},
+						'heading-5' : {
+							labelMsg: 'edittoolbar-format-heading-5',
+							action: {
+								type: 'encapsulate',
+								options: {
+									pre: "=====",
+									periMsg: 'edittoolbar-format-heading-example',
+									post: "====="
+								}
+							}
+						}
+					}
+				}
+			},
+			'size': {
+				'superscript': {
+					labelMsg: 'edittoolbar-format-superscript',
+					type: 'button',
+					icon: 'format-superscript.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "<super>",
+							periMsg: 'edittoolbar-format-superscript-example',
+							post: "</super>"
+						}
+					}
+				},
+				'subscript': {
+					labelMsg: 'edittoolbar-format-subscript',
+					type: 'button',
+					icon: 'format-subscript.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "<sub>",
+							periMsg: 'edittoolbar-format-subscript-example',
+							post: "</sub>"
+						}
+					}
+				},
+				'big': {
+					labelMsg: 'edittoolbar-format-big',
+					type: 'button',
+					icon: 'format-big.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "<big>",
+							periMsg: 'edittoolbar-format-big-example',
+							post: "</big>"
+						}
+					}
+				},
+				'small': {
+					labelMsg: 'edittoolbar-format-small',
+					type: 'button',
+					icon: 'format-small.png',
+					action: {
+						type: 'encapsulate',
+						options: {
+							pre: "<small>",
+							periMsg: 'edittoolbar-format-small-example',
+							post: "</small>"
+						}
+					}
 				}
 			}
 		}
 	}
-	
-	/**
-	 * Adds a tool to the toolbar
-	 * @param {String} section ID of section to add tool to
-	 * @param {String} group ID of group to add tool to
-	 * @param {String} tool ID of tool to add
-	 * @param {Object} configuration Object of configuration for tool
-	 */
-	this.addTool = function( section, group, tool, configuration ) {
-		// Checks if the section is valid
-		if ( section in tools ) {
-			// Checks if the group doesn't exist in the section
-			if ( !( group in tools[section] ) ) {
-				// Adds the group to the section 
-				tools[section][group] = {};
-			}
-			// Checks if the tool doesn't exist in the group
-			if ( !( tool in tools[section][group] ) ) {
-				// Adds tool and configuration to group
-				tools[section][group][tool] = configuration;
-			}
-		}
-	}
-	
-	/**
-	 * Sets several user interface messages
-	 * @param {Object} messageList List of key/value pairs of messages
-	 */
-	this.setMessages = function( messageList ) {
-		for ( messageItem in messageList ) {
-			messages[messageItem] = messageList[messageItem];
-		}
-	}
-	
-	/**
-	 * Sets a user interface message
-	 * @param {String} key Key of message
-	 * @param {String} value Value of message
-	 */
-	this.setMessage = function( key, value ) {
-		messages[key] = value;
-	}
-	
-	/**
-	 * Gets a user interface message
-	 * @param {String} key Key of message
-	 */
-	this.getMessage = function( key ) {
-		if ( key in messages ) {
-			return messages[key];
-		} else {
-			return key;
-		}
-	}
-	
-	/**
-	 * Performs the action associated with a tool
-	 * @param {String} section ID of section of tool to use
-	 * @param {String} group ID of group of tool to use
-	 * @param {String} tool ID of tool to use
-	 */
-	this.useTool = function( section, group, tool ) {
-		// Checks if the tool exists
-		if ( tool in tools[section][group] ) {
-			// Adds tool and configuration to group
-			tools[section][group][tool].action();
-		}
-	}
-}
-
-// Creates global toolbar object
-var editToolbar = new EditToolbar( '#edittoolbar' );
-// Executes function when document is ready
-$( document ).ready( function() {
-	// Initializes edit toolbar
-	editToolbar.initialize();
-});
-
-/**
- * This is a problem for internationalization - so clearly this will be moved
- * or restructured at some point.
- */
-// Adds tools to toolbar
-editToolbar.addTool(
-	'main', 'format', 'bold',
-	{
-		icon: 'format-bold.png',
-		action: function() {
-			$( '#wpTextbox1' ).encapsulateSelection(
-				"'''", null, editToolbar.getMessage( 'format-bold-example' )
-			);
-			return false;
-		}
-	}
-);
-editToolbar.addTool(
-	'main', 'format', 'italic',
-	{
-		icon: 'format-italic.png',
-		action: function() {
-			$( '#wpTextbox1' ).encapsulateSelection(
-				"''", null, editToolbar.getMessage( 'format-italic-example' )
-			);
-			return false;
-		}
-	}
-);
-editToolbar.addTool(
-	'main', 'insert', 'ilink',
-	{
-		icon: 'insert-ilink.png',
-		action: function() {
-			$( '#wpTextbox1' ).encapsulateSelection(
-				'[[', ']]', editToolbar.getMessage( 'insert-ilink-example' )
-			);
-			return false;
-		}
-	}
-);
-editToolbar.addTool(
-	'main', 'insert', 'xlink',
-	{
-		icon: 'insert-xlink.png',
-		action: function() {
-			$( '#wpTextbox1' ).encapsulateSelection(
-				'[', ']', editToolbar.getMessage( 'insert-xlink-example' )
-			);
-			return false;
-		}
-	}
-);
-editToolbar.addTool(
-	'main', 'insert', 'image',
-	{
-		icon: 'insert-image.png',
-		action: function() {
-			$( '#wpTextbox1' ).encapsulateSelection(
-				'[[File:', ']]', editToolbar.getMessage( 'insert-image-example' )
-			);
-			return false;
-		}
-	}
-);
-editToolbar.addTool(
-	'main', 'insert', 'reference',
-	{
-		icon: 'insert-reference.png',
-		action: function() {
-			$( '#wpTextbox1' ).encapsulateSelection(
-				'<ref>', '</ref>', editToolbar.getMessage( 'insert-reference-example' )
-			);
-			return false;
-		}
-	}
-);
+};
