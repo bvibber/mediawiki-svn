@@ -162,11 +162,11 @@ function gM( key, args ) {
 								)
 								.appendTo( groupDiv );
 							// Appends options
-							for ( item in section.groups[group][tool].list ) {
+							for ( option in section.groups[group][tool].list ) {
 								selectDiv.append(
 									$( '<option/>' )
-										.text( ( section.groups[group][tool].list[item].label || gM( section.groups[group][tool].list[item].labelMsg ) ) )
-										.attr( 'value', item )
+										.text( ( section.groups[group][tool].list[option].label || gM( section.groups[group][tool].list[option].labelMsg ) ) )
+										.attr( 'value', option )
 								);
 							}
 						break;
