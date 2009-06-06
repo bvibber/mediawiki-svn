@@ -338,7 +338,7 @@ var editToolbarConfiguration = {
 					action: {
 						type: 'encapsulate',
 						options: {
-							post: "--~~~~",
+							post: "--~~~~"
 						}
 					}
 				}
