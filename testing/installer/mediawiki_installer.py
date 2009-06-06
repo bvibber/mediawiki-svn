@@ -149,8 +149,9 @@ class Mediawiki_Installer(Installation_System):
 		dbtmp=os.path.join(dstpath,"installerdbtmp.sql")
 		print "Copying instance files..."
 		shutil.copytree(srcpath,dstpath,symlinks=True)
-		print "updating unique settings"
-		uniquesettings(dst)
+		print "updating unique settings and adminsettings"
+		uniquesettings(dst, self.language)
+		adminsettings(dst)
 		print "Copying instance database..."
 		dumpdb(src,dbtmp)
 		dropdb(dst)
@@ -219,9 +220,10 @@ def install(target, option_as, revision, language=None):
 	else:
 		checkout(target+"/", name, revision)
 
-	print "Copying LocalSettings.php,creating unique settings..."
+	print "Copying LocalSettings.php,creating unique settings, db-admin settings"
 	localsettings(name)
 	uniquesettings(name,language)
+	adminsettings(name)
 	print "Copy logo..."
 	logo(name)
 	print "Setting up database..."
@@ -306,6 +308,18 @@ def uniquesettings(target,language=None):
 	unique.write('?>\n')
 	
 	unique.close()
+
+def adminsettings(target):
+	"""Set up settings that are unique to one particular wiki (in the file InstallerUniqueSettings.php)"""
+	adminsettings=settings.instancesdir+"/"+target+"/AdminSettings.php"
+	admin=file(adminsettings,"w")
+	admin.write('<?php\n')
+	admin.write('$wgDBadminuser = "'+settings.mysql_user+'";\n')
+	admin.write('$wgDBadminpassword = "'+settings.mysql_pass+'";\n')
+	admin.write('$wgEnableProfileInfo = false;\n')
+	admin.write('?>\n')
+	
+	admin.close()
 	
 
 def logo(target):
