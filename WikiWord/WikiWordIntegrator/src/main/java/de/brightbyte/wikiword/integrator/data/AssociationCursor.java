@@ -1,5 +1,7 @@
 package de.brightbyte.wikiword.integrator.data;
 
+import java.util.Arrays;
+
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 
@@ -7,11 +9,15 @@ public class AssociationCursor implements DataCursor<Association> {
 
 	private DataCursor<FeatureSet> source;
 
-	protected String[] sourceFields;
-	protected String[] targetFields;
-	protected String[] propertyFields;
+	protected Iterable<String> sourceFields;
+	protected Iterable<String> targetFields;
+	protected Iterable<String> propertyFields;
 	
 	public AssociationCursor(DataCursor<FeatureSet> source, String[] sourceFields, String[] targetFields, String[] propertyFields) {
+		this(source, Arrays.asList(sourceFields), Arrays.asList(targetFields), Arrays.asList(propertyFields));
+	}
+	
+	public AssociationCursor(DataCursor<FeatureSet> source, Iterable<String> sourceFields, Iterable<String> targetFields, Iterable<String> propertyFields) {
 		this.sourceFields = sourceFields;
 		this.targetFields = targetFields;
 		this.propertyFields = propertyFields;
@@ -32,11 +38,12 @@ public class AssociationCursor implements DataCursor<Association> {
 		return new Association(source, target, props);
 	}
 	
-	protected FeatureSet newFeatureSet(FeatureSet row, String[] fields) {
+	protected FeatureSet newFeatureSet(FeatureSet row, Iterable<String> fields) {
 		FeatureSet m = new DefaultFeatureSet();
 		
-		for (int i=0; i<fields.length; i++) {
-			m.putAll(fields[i], row.get(i)); 
+		int i = 0;
+		for (String f: fields) {
+			m.putAll(f, row.get(i++)); 
 		}
 		
 		return m;

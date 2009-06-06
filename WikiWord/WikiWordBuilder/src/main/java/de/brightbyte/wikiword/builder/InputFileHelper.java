@@ -32,7 +32,7 @@ public class InputFileHelper {
 		externalBunzip = bz2;
 	}
 	
-	protected static final Pattern extensionPattern = Pattern.compile("\\.([^./\\]+)(\\.gz|\\.bz2)$", Pattern.CASE_INSENSITIVE);
+	protected static final Pattern extensionPattern = Pattern.compile("\\.([^./\\\\]+)(\\.gz|\\.bz2)$", Pattern.CASE_INSENSITIVE);
 	
 	public String getFormat(String n) {
 		Matcher m = extensionPattern.matcher(n);
@@ -41,17 +41,48 @@ public class InputFileHelper {
 		else return m.group(1).toLowerCase();
 	}
 	
-	public InputStream open(String n) throws IOException {
-		if (n.equals("-")) return  new BufferedInputStream(System.in);
+	public URL getBaseURL(String n) {
+		if (n.equals("-")) n = new File(".").getAbsolutePath();
 		
 		try {
 			URL u = new URL(n);
+			return u;
+		} catch (MalformedURLException e) {
+			//ignore and continue
+		}
+		
+		try {
+			File f = new File(n);
+			return f.toURI().toURL();
+		} catch (MalformedURLException e) {
+			throw new IllegalArgumentException("failed to convert file name to URL: "+n);
+		}
+	}	
+	
+	public InputStream open(String n) throws IOException {
+		return open(null, n);
+	}
+	
+	public InputStream open(URL base, String n) throws IOException {
+		if (n.equals("-")) return  new BufferedInputStream(System.in);
+		
+		try {
+			URL u = base == null || base.getProtocol().equals("file") ? new URL(n) : new URL(base, n);
 			return openURL(u);
 		} catch (MalformedURLException e) {
 			//ignore and continue
 		}
 		
-		File f = new File(n);
+		File f;
+		
+		if (base!=null && base.getProtocol().equals("file")) {
+			File b = new File(base.getPath());
+			if (b.isFile()) b = b.getParentFile();
+			f = new File(b, n);
+		} else { 
+			f = new File(n);
+		}
+		
 		return openFile(f);
 	}
 	
@@ -155,6 +186,6 @@ public class InputFileHelper {
 		slurper.start();
 		
 		return new BufferedInputStream(proc.getInputStream());
-	}	
+	}
 
 }

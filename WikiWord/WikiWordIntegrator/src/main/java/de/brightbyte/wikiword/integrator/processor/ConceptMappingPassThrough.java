@@ -3,12 +3,12 @@ package de.brightbyte.wikiword.integrator.processor;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
-import de.brightbyte.wikiword.integrator.store.MappingFeatureStoreBuilder;
+import de.brightbyte.wikiword.integrator.store.AssociationFeatureStoreBuilder;
 
 public class ConceptMappingPassThrough extends AbstractConceptMappingProcessor {
-	protected MappingFeatureStoreBuilder store;
+	protected AssociationFeatureStoreBuilder store;
 	
-	public ConceptMappingPassThrough(MappingFeatureStoreBuilder store) {
+	public ConceptMappingPassThrough(AssociationFeatureStoreBuilder store) {
 		if (store==null) throw new NullPointerException();
 		this.store = store;
 	}

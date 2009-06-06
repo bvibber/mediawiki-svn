@@ -36,6 +36,16 @@ public class FeatureSetValueSplitter implements FeatureSetMangler {
 		return m;
 	}
 
+	public static FeatureSetMultiMangler multiFromChunkerMap(Map<String, Chunker> splitters) {
+		FeatureSetMultiMangler m = new FeatureSetMultiMangler();
+		
+		for (Map.Entry<String, Chunker>e: splitters.entrySet()) {
+			m.addMangler(new FeatureSetValueSplitter(e.getKey(), e.getValue()));
+		}
+		
+		return m;
+	}
+
 	public static FeatureSetMultiMangler multiFromStringMap(Map<String, String> splitters, int flags) {
 		FeatureSetMultiMangler m = new FeatureSetMultiMangler();
 		

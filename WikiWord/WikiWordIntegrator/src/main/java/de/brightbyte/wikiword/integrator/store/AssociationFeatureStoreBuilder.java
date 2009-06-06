@@ -5,6 +5,6 @@ import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.store.WikiWordConceptStoreBase;
 import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
-public interface MappingFeatureStoreBuilder extends WikiWordStoreBuilder, WikiWordConceptStoreBase {
-		public void storeMapping(FeatureSet source, FeatureSet target, FeatureSet props) throws PersistenceException;
+public interface AssociationFeatureStoreBuilder extends WikiWordStoreBuilder, WikiWordConceptStoreBase {
+		public void storeMapping(FeatureSet foreign, FeatureSet concept, FeatureSet props) throws PersistenceException;
 }

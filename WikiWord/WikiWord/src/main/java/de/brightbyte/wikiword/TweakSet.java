@@ -21,14 +21,17 @@ import de.brightbyte.util.SystemUtils;
  */
 public class TweakSet {
 	protected Map<String, Object> parameters = new HashMap<String, Object>();
-	protected TweakSet parent;
+	
+	private TweakSet parent;
+	private String prefix;
 	
 	public TweakSet() {
-		this(null);
+		this(null, null);
 	}
 	
-	public TweakSet(TweakSet parent) {
+	public TweakSet(String prefix, TweakSet parent) {
 		this.parent = parent;
+		this.prefix = prefix;
 	}
 
 	public void loadTweaks(File f) throws IOException {
@@ -97,9 +100,10 @@ public class TweakSet {
 	public <T>T getTweak(String key, T def) {
 		if (!parameters.containsKey(key)) {
 			if (parent==null) return def;
-			else return parent.getTweak(key, def);
+			else return parent.getTweak(prefix==null ? key : prefix + key, def);
 		} else {
 			return (T)parameters.get(key);
 		}
 	}
+	
 }

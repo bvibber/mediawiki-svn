@@ -11,25 +11,25 @@ import de.brightbyte.data.PropertyComparator;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
-import de.brightbyte.wikiword.integrator.store.MappingFeatureStoreBuilder;
+import de.brightbyte.wikiword.integrator.store.AssociationFeatureStoreBuilder;
 
 public class OptimalMappingSelector extends ConceptMappingPassThrough {
 
 	protected Optimum<FeatureSet> optimum;
 	
-	public OptimalMappingSelector(MappingFeatureStoreBuilder store, String property, Functor<Number, ? extends Collection<Number>> aggregator) {
+	public OptimalMappingSelector(AssociationFeatureStoreBuilder store, String property, Functor<Number, ? extends Collection<Number>> aggregator) {
 		this(store, (Comparator<FeatureSet>)(Object)PropertyComparator.newMultiMapEntryComparator(property, (Comparator<Number>)(Object)NaturalComparator.instance, aggregator, Number.class));
 	}
 	
-	public OptimalMappingSelector(MappingFeatureStoreBuilder store, PropertyAccessor<FeatureSet, Number> accessor) {
+	public OptimalMappingSelector(AssociationFeatureStoreBuilder store, PropertyAccessor<FeatureSet, Number> accessor) {
 		this(store, new Optimum<FeatureSet>(accessor));
 	}
 	
-	public OptimalMappingSelector(MappingFeatureStoreBuilder store, Comparator<FeatureSet> comp) {
+	public OptimalMappingSelector(AssociationFeatureStoreBuilder store, Comparator<FeatureSet> comp) {
 		this(store, new Optimum<FeatureSet>(comp));
 	}
 	
-	public OptimalMappingSelector(MappingFeatureStoreBuilder store, Optimum<FeatureSet> optimum) {
+	public OptimalMappingSelector(AssociationFeatureStoreBuilder store, Optimum<FeatureSet> optimum) {
 		super(store);
 		
 		if (optimum==null) throw new NullPointerException();
