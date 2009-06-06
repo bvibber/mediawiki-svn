@@ -489,6 +489,11 @@ url = http://mediawiki.org/wiki/Extension:SpecialInterwiki
 InterwikiList
 url = http://mediawiki.org/wiki/Extension:InterwikiList
 
+LocalisationUpdate
+settings[] = wgLocalisationUpdateRetryAttempts: true
+schema = true
+url = http://www.mediawiki.org/wiki/Extension:LocalisationUpdate
+
 Maintenance
 url = http://www.mediawiki.org/wiki/Extension:Maintenance
 
