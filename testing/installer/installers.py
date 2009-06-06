@@ -19,6 +19,7 @@ from naive_installer import Naive_Installer
 from installation_system import Installer_Exception
 from download_installer import Download_Installer
 from extension_installer2 import extension_installer2
+from intelligent_installer import intelligent_installer
 from test_system import Test_System,Test_Exception
 
 from tags import Tags, TagsException
@@ -79,7 +80,7 @@ def ls_installed(ppath):
 		if ppath["installer"]==None:
 			return ls_systems()
 		else:
-			ppath["system"]="mediawiki"	# XXX hardcoded default
+			ppath["system"]="intelligent"	# XXX hardcoded default
 
 	return ls_installed_in_system(ppath)
 
@@ -218,7 +219,7 @@ def install(args):
 
 	ppath=None
 	try:
-		ppath=parse_path(" ".join(args[1:]), defaults={'ai':'available','system':'mediawiki'})
+		ppath=parse_path(" ".join(args[1:]), defaults={'ai':'available','system':'intelligent'})
 	except Parse_Exception,e:
 		print str(e)
 		return
@@ -272,7 +273,7 @@ def uninstall(args):
 
 	ppath=None
 	try:
-		ppath=parse_path(" ".join(args[1:]),defaults={'ai':'installed','system':'mediawiki'})
+		ppath=parse_path(" ".join(args[1:]),defaults={'ai':'installed','system':'intelligent'})
 	except Parse_Exception,e:
 		print str(e)
 		return
@@ -463,7 +464,7 @@ def get_system(system_name):
 
 # Constants
 
-systems={'toolkit':Toolkit_Installer,'scripted': Scripted_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer, 'download':Download_Installer, 'extension':extension_installer2}
+systems={'toolkit':Toolkit_Installer,'scripted': Scripted_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer, 'download':Download_Installer, 'extension':extension_installer2, 'intelligent':intelligent_installer}
 
 
 if __name__=="__main__":

@@ -43,7 +43,8 @@ def help(args):
 		print "check_isolation <instance name>: shows all changes made to mediawiki or database since it was installed."
 		print "update_self: updates the installer and restarts in interactive mode" 
 		print "update_tags: manually force an update of the tag cache (do this from time to time, if you're referring to things by tag)"
-		print "duplicate <source_instance> <destination_instance>  make a duplicate mediawiki instance, with copies of configuration, database, and extensions"
+		print "duplicate <source_instance> <destination_instance>  [language <language_code>] make a duplicate mediawiki instance, with copies of configuration, database, and extensions"
+		print "maintenance_update <instance>	run maintenance/update_settings.php on an instance to update the database. (run this after you are done installing,updating, and making changes to extensions)"
 		print "TODO: Implement help path , for now, see documentation for info on how to specify <path>"
 		print
 		print "instead of interactive mode, you can also access commands directly from the shell:"

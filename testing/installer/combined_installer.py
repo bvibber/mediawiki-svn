@@ -177,6 +177,8 @@ class Combined_Installer(Installation_System):
 		we also set the same attribute locally.
 		Be careful when reading back!"""
 		self.__dict__[name]=value
+		if name=="systemlist":	# prevent infinite recursion
+			return
 		if self.systemlist:
 			for system in self.systemlist:
 				system.__setattr__(name,value)
