@@ -21,6 +21,7 @@ public class FeatureSetValueSplitterTest extends TestCase {
 		exp.put("name", "D");
 		exp.put("name", "E");
 		exp.put("name", "F");
+		exp.put("name", "");
 		exp.put("name", "G");
 		exp.put("foo", "A,B,C");
 		

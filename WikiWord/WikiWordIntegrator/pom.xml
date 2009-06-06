@@ -50,13 +50,6 @@
        <version>2.4.4</version>
        <scope>test</scope>
      </dependency> 
-        <dependency>
-          <groupId>ardverk</groupId>
-          <artifactId>patricia-trie</artifactId>
-          <version>0.1</version>
-          <scope>system</scope>
-          <systemPath>${basedir}/lib/patricia-trie-0.1.jar</systemPath>
-       </dependency>
     </dependencies>
     
   <build>
