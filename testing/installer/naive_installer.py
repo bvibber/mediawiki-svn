@@ -44,7 +44,6 @@ class Naive_Installer(Download_Installer):
 
 	def _setup(self, installer_name, destination_dir):
 		self._setup_schema(installer_name, destination_dir)
-		self._setup_update()
 
 	def _setup_schema(self, installer_name, destination_dir):
 		schema_path=os.path.join(destination_dir, installer_name, "schema.sql")
@@ -53,23 +52,6 @@ class Naive_Installer(Download_Installer):
 				installer_util.sqldotphp(self.instancedir(),schema_path)
 			except Exception,e:
 				raise Naive_Installer_Exception("_setup_schema: While installing, I found a schema.sql and tried to use it, but there was some issue with it.\n",e)
-
-	def _setup_update(self):
-
-		return	# XXX This method is a work in progress. I don't want to hold up users,
-			# so I'll upload to svn like this
-		if not self.instancedir():
-			raise Naive_Installer_Exception("_setup_update:Internal Error: Could not determine instancedir")
-
-		update_script=os.path.join(self.instancedir(),"maintenance","update.php")
-
-		if not os.path.exists(update_script):
-			raise Naive_Installer_Exception("_setup_update:While installing, could not find update.php at: "+command)
-
-		command=settings.phpcommand+" "+update_script
-		rv=os.system(command)>>8
-		if rv:
-			raise Naive_Installer_Exception("_setup_update:While installing, I tried to run the instance's maintenance/update.php, but some issue occurred.")
 
 	def _uninstall(self, installer_name, destination_dir):
 		"""perform uninstallation of things that need uninstalling, in the case of the naive installer, we uninstall"""

@@ -14,7 +14,7 @@ import installer_util
 #from installation_system import Installation_System
 from toolkit_installer import Toolkit_Installer
 from scripted_installer import Scripted_Installer
-from mediawiki_installer import Mediawiki_Installer
+from mediawiki_installer import Mediawiki_Installer, Mediawiki_Installer_Exception
 from naive_installer import Naive_Installer
 from installation_system import Installer_Exception
 from download_installer import Download_Installer
@@ -173,8 +173,39 @@ def info(args):
 def duplicate(args):
 	"""duplicate a mediawiki instance"""
 	mw=get_system("mediawiki")
+
+	if len(args)>3 and args[3]=="language":
+		if len(args)==5:
+			mw.language=args[4]
+		else:
+			print "which language did you mean?"
 	try:
 		mw.duplicate(args[1],args[2])
+	except Mediawiki_Installer_Exception,e:
+		print str(e)
+
+def maintenance_update(args):
+	"""run maintenance/update.php, which allows any standard scripts to
+	install themselves further."""
+	mw=get_system("mediawiki")
+	try:
+		ppath=parse_path(" ".join(args[1:]),defaults={'ai':'installed'})
+	except Parse_Exception,e:
+		print str(e)
+		return
+	instance=ppath["installer"]
+	if not instance:
+		print "I can't figure out what mediawiki instance you would like to perform maintenance_update on. Please mention it explicitly. Syntax: maintenance_update <instance_name>"
+		return
+	
+	if not mw.is_installed(instance):
+		print "The mediawiki instance '"+instance+"' does not appear to be installed. Perhaps you misspelled the name?"
+		return
+
+	mw.set_instance(instance)
+	
+	try:
+		mw.maintenance_update()
 	except Mediawiki_Installer_Exception,e:
 		print str(e)
 

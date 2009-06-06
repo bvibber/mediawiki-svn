@@ -88,13 +88,17 @@ def test(args):
 
 def duplicate(args):
 	"""duplicate an instance"""
-	if len(args)!=3:
-		print "syntax:\n duplicate source_instance destination_instance"
+	if len(args)<3:
+		print "syntax:\n duplicate <source_instance> <destination_instance> [language <language_code>]"
 	installers.duplicate(args)
 
 def uninstall(args):
 	"""uninstall something"""
 	installers.uninstall(args)
+
+def maintenance_update(args):
+	"""run maintenance/update.php"""
+	installers.maintenance_update(args)
 
 def update_self(args):
 	"""update self to newest revision, (and switch to interactive mode)"""
@@ -167,7 +171,8 @@ commands={
 	"update_self":update_self,
 	"update_tags":update_tags,
 	"duplicate":duplicate,
-	"test":test
+	"test":test,
+	"maintenance_update":maintenance_update
 }
 
 # additional help texts for some commands.

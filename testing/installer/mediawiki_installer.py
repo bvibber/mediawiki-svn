@@ -161,6 +161,21 @@ class Mediawiki_Installer(Installation_System):
 		os.unlink(dbtmp)
 		print "done."
 		
+	def maintenance_update(self):
+		"""run maintenance/update.php to deal with any installed extensions""" 
+		if not self.instancedir():
+			raise Mediawiki_Installer_Exception("setup_update:Internal Error: Could not determine instancedir")
+
+		update_script=os.path.join(self.instancedir(),"maintenance","update.php")
+
+		if not os.path.exists(update_script):
+			raise Mediawiki_Installer_Exception("setup_update:While installing, could not find update.php at: "+command)
+
+		command=settings.phpcommand+" "+update_script
+		rv=os.system(command)>>8
+		if rv:
+			raise Mediawiki_Installer_Exception("setup_update:While installing, I tried to run the instance's maintenance/update.php, but some issue occurred.")
+
 
 
 #TODO: use this method everywhere a database name is requested
