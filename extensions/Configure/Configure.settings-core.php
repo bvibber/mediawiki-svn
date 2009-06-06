@@ -1098,23 +1098,4 @@ $notEditableSettings = array(
 /**
  * Array of settings depending of the Core version
  */
-$settingsVersion = array(
-	'wgNewPasswordExpiry' => array( array( '1.15alpha', '>=' ) ),
-	'wgMaxRedirects' => array( array( '1.15alpha', '>=' ) ),
-	'wgInvalidRedirectTargets' => array( array( '1.15alpha', '>=' ) ),
-	'wgNoFollowDomainExceptions' => array( array( '1.15alpha', '>=' ) ),
-	'wgUseTwoButtonsSearchForm' => array( array( '1.15alpha', '>=' ) ),
-	'wgAPIMaxResultSize' => array( array( '1.15alpha', '>=' ) ),
-	'wgShowDebug' => array( array( '1.15alpha', '>=' ) ),
-	'wgPreprocessorCacheThreshold' => array( array( '1.15alpha', '>=' ) ),
-	'wgExportMaxLinkDepth' => array( array( '1.15alpha', '>=' ) ),
-	'wgUseTagFilter' => array( array( '1.15alpha', '>=' ) ),
-	'wgSummarySpamRegex' => array( array( '1.15alpha', '>=' ) ),
-	'wgAPIMaxUncachedDiffs' => array( array( '1.15alpha', '>=' ) ),
-	'wgTiffThumbnailType' => array( array( '1.15alpha', '>=' ) ),
-	'wgExportFromNamespaces' => array( array( '1.15alpha', '>=' ) ),
-	'wgUseImageResize' => array( array( '1.15alpha', '>=' ) ),
-	'wgCopyUploadTimeout' => array( array( '1.15alpha', '>=' ) ),
-	'wgInvalidUsernameCharacters' => array( array( '1.15alpha', '>=' ) ),
-	'wgUserrightsInterwikiDelimiter' => array( array( '1.15alpha', '>=' ) ),
-);
+$settingsVersion = array();
