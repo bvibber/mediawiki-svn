@@ -12,9 +12,12 @@ public class ForeignEntityCursor implements DataCursor<ForeignEntity> {
 	protected String nameField;
 
 	public ForeignEntityCursor(DataCursor<FeatureSet> source, String authorityId, String idField, String nameField) {
-		if (authorityId==null) throw new NullPointerException();
 		if (idField==null) throw new NullPointerException();
+		if (authorityId==null) throw new NullPointerException();
+		if (source==null) throw new NullPointerException();
+		if (nameField==null) nameField = idField;
 		
+		this.source = source;
 		this.authorityId = authorityId;
 		this.idField = idField;
 		this.nameField = nameField;

@@ -25,6 +25,7 @@ import de.brightbyte.wikiword.integrator.data.ForeignEntityCursor;
 import de.brightbyte.wikiword.integrator.data.MangelingFeatureSetCursor;
 import de.brightbyte.wikiword.integrator.data.ResultSetFeatureSetCursor;
 import de.brightbyte.wikiword.integrator.data.TsvFeatureSetCursor;
+import de.brightbyte.wikiword.integrator.processor.ForeignPropertyPassThrough;
 import de.brightbyte.wikiword.integrator.processor.ForeignPropertyProcessor;
 import de.brightbyte.wikiword.integrator.store.DatabaseForeignPropertyStoreBuilder;
 import de.brightbyte.wikiword.integrator.store.ForeignPropertyStoreBuilder;
@@ -37,24 +38,38 @@ import de.brightbyte.wikiword.store.WikiWordStoreFactory;
  */
 public class LoadForeignProperties extends StoreBackedApp<ForeignPropertyStoreBuilder> {
 
-	protected ForeignPropertyStoreBuilder propertyStore;
+	//protected ForeignPropertyStoreBuilder propertyStore;
 	protected ForeignPropertyProcessor propertyProcessor;
 	protected InputFileHelper inputHelper;
+	private ForeignEntityStoreDescriptor sourceDescriptor;
 	
 	public LoadForeignProperties() {
 		super(true, true);
 	}
 	
+	protected InputFileHelper getInputHelper() {
+		if (inputHelper==null)  {
+			inputHelper = new InputFileHelper(tweaks);
+		} 
+		return inputHelper;
+	}
+
 	@Override
 	protected WikiWordStoreFactory<? extends ForeignPropertyStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
 		return new DatabaseForeignPropertyStoreBuilder.Factory(getTargetTableName(), getConfiguredDataset(), getConfiguredDataSource(), tweaks);
 	}
 
-	protected String getTargetTableName() {
-		return args.getParameterCount() > 2 ? args.getParameter(2) : "foreign_property";
+	protected String getTargetTableName() throws IOException {
+		if (args.getParameterCount() > 2) return args.getParameter(2);
+		
+		String authority = getSourceDescriptor().getAuthorityName();
+		authority = authority.replaceAll("[^\\w\\d]", "_").toLowerCase();
+		
+		return authority+"_property";
 	}
 
 	protected String getSourceDescriptionFileName() {
+		if (args.getParameterCount() < 2) throw new IllegalArgumentException("missing second parameter (descripion file name)");
 		return args.getParameter(1);
 	}
 
@@ -73,13 +88,17 @@ public class LoadForeignProperties extends StoreBackedApp<ForeignPropertyStoreBu
 		DataCursor<ForeignEntity> cursor = openPropertySource();
 		
 		section("-- process properties --------------------------------------------------");
-		this.propertyProcessor.processProperties(cursor);
+		this.conceptStore.prepareImport();
 		
+		this.propertyProcessor = new ForeignPropertyPassThrough(conceptStore); //FIXME
+		this.propertyProcessor.processProperties(cursor);
 		cursor.close();
+
+		this.conceptStore.finalizeImport();
 	}	
 	
 	protected DataCursor<ForeignEntity> openPropertySource() throws IOException, SQLException, PersistenceException {
-		ForeignEntityStoreDescriptor sourceDescriptor = loadSourceDescriptor();
+		ForeignEntityStoreDescriptor sourceDescriptor = getSourceDescriptor();
 		
 		String enc = sourceDescriptor.getDataEncoding();
 		String sql = sourceDescriptor.getSqlQuery();
@@ -87,8 +106,8 @@ public class LoadForeignProperties extends StoreBackedApp<ForeignPropertyStoreBu
 		
 		if (sql==null) {
 				String n = sourceDescriptor.getSourceFileName();
-				String format = inputHelper.getFormat(n);
-				in =  inputHelper.open(n);
+				String format = getInputHelper().getFormat(n); //FIXME: explicit format!
+				in =  getInputHelper().open(sourceDescriptor.getBaseURL(), n);
 				
 				if (format!=null && format.equals("sql")) {
 					sql = IOUtil.slurp(in, enc);
@@ -129,15 +148,21 @@ public class LoadForeignProperties extends StoreBackedApp<ForeignPropertyStoreBu
 		return new ForeignEntityCursor(fsc, sourceDescriptor.getAuthorityName(), sourceDescriptor.getConceptIdField(), sourceDescriptor.getConceptNameField());
 	}
 
-	protected ForeignEntityStoreDescriptor loadSourceDescriptor() throws IOException {
-		ForeignEntityStoreDescriptor descriptor = new ForeignEntityStoreDescriptor();
+	protected ForeignEntityStoreDescriptor getSourceDescriptor() throws IOException {
+		if (sourceDescriptor!=null) return sourceDescriptor;
+		
+		sourceDescriptor = new ForeignEntityStoreDescriptor(tweaks);
 		
 		String n = getSourceDescriptionFileName();
-		InputStream in = inputHelper.open(n);
-		descriptor.loadTweaks(in);
+		InputStream in = getInputHelper().open(n);
+		sourceDescriptor.setBaseURL(getInputHelper().getBaseURL(n));
+		sourceDescriptor.loadTweaks(in);
 		in.close();
 		
-		return descriptor;
+		sourceDescriptor.setTweaks(System.getProperties(), "wikiword.source."); //XXX: doc
+		sourceDescriptor.setTweaks(args, "source."); //XXX: doc
+		
+		return sourceDescriptor;
 	}
 
 	@SuppressWarnings("unchecked")

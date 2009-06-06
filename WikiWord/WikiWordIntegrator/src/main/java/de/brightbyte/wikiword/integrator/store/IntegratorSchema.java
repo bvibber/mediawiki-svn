@@ -32,7 +32,7 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 		
 		table.addField( new DatabaseField(this, "property", getTextType(255), null, true, KeyType.INDEX) );
 		table.addField( new DatabaseField(this, "value", getTextType(255), null, true, null) );
-		table.addField( new DatabaseField(this, "qualifier", getTextType(64), null, true, null) );
+		table.addField( new DatabaseField(this, "qualifier", getTextType(64), null, false, null) );
 
 		table.addKey( new DatabaseKey(this, KeyType.INDEX, "property_value", new String[] {"property", "value"}) );
 		table.addKey( new DatabaseKey(this, KeyType.INDEX, "external_property", new String[] {"external_authority", "external_id", "property"}) );

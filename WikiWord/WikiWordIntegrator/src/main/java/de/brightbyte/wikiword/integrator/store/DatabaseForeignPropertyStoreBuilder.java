@@ -52,6 +52,8 @@ public class DatabaseForeignPropertyStoreBuilder extends DatabaseWikiWordStoreBu
 	protected DatabaseForeignPropertyStoreBuilder(String table, IntegratorSchema integratorSchema, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
 		super(integratorSchema, tweaks, agenda);
 
+		integratorSchema.newForeignPropertyTable(table); 
+		
 		this.propertyInserter = configureTable(table, 128, 4*32);
 		this.propertyTable =  (RelationTable)propertyInserter.getTable();
 	}	
@@ -99,4 +101,9 @@ public class DatabaseForeignPropertyStoreBuilder extends DatabaseWikiWordStoreBu
 		}
 	}
 	*/
+	
+	public void prepareImport() throws PersistenceException {
+		createTables(true);
+	}
+
 }

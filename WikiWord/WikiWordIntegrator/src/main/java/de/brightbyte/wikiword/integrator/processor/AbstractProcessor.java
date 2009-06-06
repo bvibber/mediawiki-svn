@@ -40,7 +40,7 @@ public abstract class AbstractProcessor<E> {
 	}
 	
 	public void reset() {
-		itemTracker = new ImportProgressTracker("pages");
+		itemTracker = new ImportProgressTracker("items");
 		progressTicks = 0;
 	}
 	
@@ -58,6 +58,7 @@ public abstract class AbstractProcessor<E> {
 	}
 	
 	public void tracerStep() {
+		itemTracker.step();
 		progressTicks++;
 		if (progressTicks>progressInterval) {
 			trackerChunk();
