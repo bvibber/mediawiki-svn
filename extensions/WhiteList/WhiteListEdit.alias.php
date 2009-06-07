@@ -122,6 +122,12 @@ $aliases['mk'] = array(
 	'WhiteListEdit' => array( 'УредиБелаЛиста' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'WhiteList' => array( 'श्वेतसुची' ),
+	'WhiteListEdit' => array( 'श्वेतसुचीसंपादन' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'WhiteList' => array( 'Witte_lieste' ),

@@ -153,7 +153,16 @@ $messages['de'] = array(
 	'emergencydesysop-invalidtarget' => 'Der gewählte Benutzer existiert nicht.',
 	'emergencydesysop-blocked' => 'Du kannst nicht auf diese Seite zugreifen, während du gesperrt bist',
 	'emergencydesysop-noright' => 'Du hast keine ausreichenden Berechtigungen für diese Seite',
-	'right-emergencydesysop' => 'Das Recht zur Degradierung eines anderen Administrator auf Gegenseitigkeit',
+	'right-emergencydesysop' => 'Degradierung eines anderen Administrator auf Gegenseitigkeit',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'emergencydesysop-done' => 'Aktion erfolgreich. Sie und [[$1]] wurden degradiert.',
+	'emergencydesysop-blocked' => 'Sie können nicht auf diese Seite zugreifen, während Sie gesperrt sind',
+	'emergencydesysop-noright' => 'Sie haben keine ausreichenden Berechtigungen für diese Seite',
 );
 
 /** Lower Sorbian (Dolnoserbski)

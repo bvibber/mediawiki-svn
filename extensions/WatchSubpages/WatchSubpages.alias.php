@@ -104,6 +104,11 @@ $aliases['lb'] = array(
 	'WatchSubpages' => array( 'Ënnersäiten iwwerwaachen' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'WatchSubpages' => array( 'उपपृष्ठेबघा' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'WatchSubpages' => array( "Subpagina's_op_volglieste" ),

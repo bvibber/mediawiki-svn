@@ -724,6 +724,13 @@ $messages['ro'] = array(
 	'profiling-ok' => 'OK',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

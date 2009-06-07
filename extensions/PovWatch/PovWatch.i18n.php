@@ -1613,17 +1613,23 @@ Clique no botão abaixo para inscrever-se.',
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'povwatch_invalid_title' => 'Titlul specificat este incorect',
+	'povwatch_subscriber_list_intro' => '<strong>Lista abonaţilor</strong>',
 	'povwatch_unknown_subpage' => 'Subpagină necunoscută.',
 	'povwatch_title' => 'Titlu:',
+	'povwatch_subscribe' => 'Subscriere',
+	'povwatch_added' => 'adăugat',
 );
 
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'povwatch_push' => 'Cazze',
+	'povwatch_title' => 'Titele:',
 	'povwatch_added' => 'aggiunde',
 );
 

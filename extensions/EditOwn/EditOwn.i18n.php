@@ -42,6 +42,13 @@ $messages['arz'] = array(
 	'editown-desc' => 'المستخدمون بدون الصلاحية editall يمكنهم تعديل الصفحات التى قاموا بإنشائها فقط',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'editown-desc' => 'Удзельнікі без правоў рэдагаваньня могуць рэдагаваць толькі старонкі якія яны самі стварылі',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -5077,6 +5077,7 @@ $4',
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'code-comments' => 'Comentarii',
@@ -5087,8 +5088,16 @@ $messages['ro'] = array(
 	'code-rev-author' => 'Autor:',
 	'code-rev-date' => 'Dată:',
 	'code-rev-message' => 'Comentariu:',
+	'code-rev-comment-submit' => 'Trimite comentariu',
 	'code-rev-comment-preview' => 'Previzualizare',
+	'code-rev-diff' => 'Diferenţă',
+	'code-rev-diff-link' => 'dif',
+	'code-rev-purge-link' => 'curăţă',
+	'code-status-new' => 'nou',
 	'code-status-ok' => 'ok',
+	'code-pathsearch-path' => 'Cale:',
+	'code-rev-submit' => 'Salvează schimbări',
+	'codereview-batch-submit' => 'Trimite',
 	'repoadmin-new-button' => 'Creează',
 	'repoadmin-edit-button' => 'OK',
 );

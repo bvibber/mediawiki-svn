@@ -24,6 +24,11 @@ $aliases['ja'] = array(
 	'UserOptionStats' => array( '利用者オプション統計' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'UserOptionStats' => array( 'सदस्यपर्यायसांख्यिकी' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'UserOptionStats' => array( 'Gebruikersinstellingenstatistieken' ),

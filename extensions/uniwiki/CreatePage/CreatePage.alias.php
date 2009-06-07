@@ -100,6 +100,11 @@ $aliases['mk'] = array(
 	'CreatePage' => array( 'КреирајСтраница' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'CreatePage' => array( 'पृष्ठनिर्मिसी' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'CreatePage' => array( 'OħloqPaġna' ),

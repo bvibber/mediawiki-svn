@@ -21,6 +21,15 @@ $messages['qqq'] = array(
 	'stockcharts-missingticker' => '{{doc-important|Do not translate or change "<nowiki>&amp;lt;stockchart ticker="AAPL"/&amp;gt;</nowiki>"}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'stockcharts-desc' => 'Дадае тэг <nowiki><stockchart ticker="AAPL"/></nowiki> для інтэрактыўнай фінансавай біржавой табліцы',
+	'stockcharts-missingticker' => 'Для ўстаўкі біржавой табліцы, Вам неабходна хаця б пазначыць тыкер.
+Карыстайцеся: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -37,6 +46,15 @@ $messages['dsb'] = array(
 	'stockcharts-desc' => 'Pśidawa toflicku <nowiki><stockchart ticker="AAPL"/></nowiki> za interaktiwny financielny akcijowy diagram',
 	'stockcharts-missingticker' => 'Aby akcijowy diagram zasajźił, musyš nanejmjenjej ticker pódaś.
 Wužyj: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'stockcharts-desc' => 'Ajoute la balise <nowiki><stockchart ticker="AAPL"/></nowiki> pour des tableaux de titres financiers interactifs',
+	'stockcharts-missingticker' => 'Pour ajouter un tableau de titres, vous devez au moins spécifier un ticker.
+Utilisation : &lt;stockchart ticker="AAPL"/&gt;',
 );
 
 /** Galician (Galego)
@@ -90,6 +108,15 @@ $messages['nl'] = array(
 	'stockcharts-desc' => 'Voegt de tag <nowiki><stockchart ticker="AAPL"/></nowiki> toe voor een interactieve aandelengrafiek',
 	'stockcharts-missingticker' => 'Om een aandelengrafiek toe te voegen, moet u ten minste een ticker aangeven.
 Doe dit als volgt: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'stockcharts-desc' => 'Apond la balisa <nowiki><stockchart ticker="AAPL"/></nowiki> per de tablèus de títols financièrs interactius',
+	'stockcharts-missingticker' => 'Per apondre un tablèu de títols, vos cal al mens especificar un ticker.
+Utilizacion : &lt;stockchart ticker="AAPL"/&gt;',
 );
 
 /** Slovak (Slovenčina)

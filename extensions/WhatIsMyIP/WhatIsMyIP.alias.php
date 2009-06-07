@@ -127,6 +127,11 @@ $aliases['mk'] = array(
 	'WhatIsMyIP' => array( 'КојаЕМојатаIP' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'WhatIsMyIP' => array( 'माझाअंकपत्ताकाय' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'WhatIsMyIP' => array( 'Wat_is_mien_IP-adres' ),

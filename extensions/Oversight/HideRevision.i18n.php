@@ -2853,8 +2853,12 @@ $messages['rmy'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
+	'hiderevision-link' => 'Contribuţii ascunse ale utilizatorului',
+	'hiderevision-noreason' => 'Trebuie să descrii motivul ştergerii.',
+	'hiderevision-status' => 'Revizia $1: $2',
 	'oversight-view' => 'detalii',
 );
 

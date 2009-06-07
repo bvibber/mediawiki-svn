@@ -837,6 +837,7 @@ Ehkä sinun piti käyttää komentoa ”$2”?',
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author Sherbrooke
  * @author Urhixidur
@@ -872,9 +873,9 @@ $messages['fr'] = array(
 	'math_MisplacedLimits' => "La commande « $1 » doit apparaître après un opérateur lorsqu'en mode math (suggestion : essayez « mathop »).",
 	'math_MissingCommandAfterNewcommand' => 'Un nouveau nom de commande est manquant ou fautif après « \\newcommand » (il doit y avoir précisément une commande définie, elle doit commencer par « \\ » et ne contenir que des caractères alphabétiques).',
 	'math_MissingDelimiter' => 'Un délimiteur manque après « $1 ».',
-	'math_MissingOpenBraceAfter' => 'La balise « { » manque après « $1 »',
-	'math_MissingOpenBraceAtEnd' => 'La balise « { » manque à la fin de la saisie.',
-	'math_MissingOpenBraceBefore' => 'La balise « { » manque avant « $1 »',
+	'math_MissingOpenBraceAfter' => 'Balise « { » manquante après « $1 »',
+	'math_MissingOpenBraceAtEnd' => 'Balise « { » manquante à la fin de la saisie.',
+	'math_MissingOpenBraceBefore' => 'Balise « { » manquante avant « $1 »',
 	'math_MissingOrIllegalParameterCount' => 'Décompte de paramètre manquant ou fautif dans la définition de « $1 » (doit être un seul chiffre compris entre 1 et 9 inclusivement)',
 	'math_MissingOrIllegalParameterIndex' => 'Index de paramètre manquant ou fautif dans la définition de « $1 »',
 	'math_NonAsciiInMathMode' => 'Les caractères hors ASCII peuvent seulement être utilisés en mode texte (essayez de mettre les caractères problématiques dans « \\text{...} »).',

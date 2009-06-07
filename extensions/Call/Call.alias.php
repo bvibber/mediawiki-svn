@@ -107,6 +107,11 @@ $aliases['mk'] = array(
 	'Call' => array( 'Повик' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'Call' => array( 'कॉल' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Call' => array( 'Anroepen' ),

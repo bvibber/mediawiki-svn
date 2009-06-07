@@ -54,6 +54,11 @@ $aliases['ksh'] = array(
 	'StalePages' => array( 'Ahl Sigge' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'StalePages' => array( 'शीळेपान' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'StalePages' => array( "Verouwerde_pagina's" ),

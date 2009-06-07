@@ -110,6 +110,11 @@ $aliases['mk'] = array(
 	'WhoIsWatching' => array( 'КојНабљудува' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'WhoIsWatching' => array( 'कोणकोणबघतय' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'WhoIsWatching' => array( 'Wee_volg' ),

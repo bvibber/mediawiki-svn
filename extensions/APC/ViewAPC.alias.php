@@ -107,6 +107,11 @@ $aliases['lb'] = array(
 	'ViewAPC' => array( 'APC weisen' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'ViewAPC' => array( 'APCपहा' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ViewAPC' => array( 'APC_bekieken' ),

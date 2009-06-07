@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'Editsectionhilitelink-desc' => 'إظهار القسم المناسب لصفحة عندما تنقل الفأرة فوق وصلة التعديل',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'Editsectionhilitelink-desc' => 'Выдзяленьне адпаведнай сэкцыі старонкі, калі Вы пераносіце курсор мышкі на спасылку рэдагаваньня',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -1489,6 +1489,9 @@ $mvMVDTypeDefaultDisp павінна быць падмноствам $mvMVDTypeA
 	'mv_mang_layers' => 'Кіраваньне слаямі',
 	'mv_mang_layers_title' => 'Кіраваньне ўстаноўкамі адлюстраваньня слаёў для цяперашняга струменя',
 	'mv_protect_source_material' => 'Арыгінальны крынічны матэрыял абаронены ад рэдагаваньняў',
+	'right-mv_delete_mvd' => 'Выдаліць мэтазьвесткі MetaVid',
+	'action-mv_delete_mvd' => 'выдаліць гэты сэгмэнт зьвестак MetaVid',
+	'right-mv_edit_stream' => 'Рэдагаваць паточныя файлы',
 );
 
 /** Bulgarian (Български)
@@ -6506,7 +6509,7 @@ Reportatz aquò sul [[{{MediaWiki:Grouppage-sysop}}|sit d\'aministracion]].',
 	'mv_updated_stream_files' => 'Mesa a jorn dels enregistraments dels fichièrs de flus',
 	'mv_removed_file_stream' => 'Fichièr de flus levat : $1',
 	'mv_missing_stream_text' => 'Lo flus <b>$1</b> qu\'avètz demandat es pas disponible.<br />Vos es permes de consultar la <a href="$2">Lista dels fluses</a><br />O alara vos cal èsser autorizat a <a href="$3">Apondre lo flus</a>',
-	'mv_user_cant_edit' => 'Podètz aver [$1 Log in] per modificar, $2',
+	'mv_user_cant_edit' => 'Podètz aver de [$1 vos connectar] per modificar, $2',
 	'mv_add_stream_file' => 'Apondre un fichièr de flus',
 	'mv_media_path' => 'camin del mèdia',
 	'mv_file_list' => 'Fichièrs de fluses',
@@ -6702,6 +6705,9 @@ Aqueste tipe de presentacion es pel tèxte qu'es parlat amb lo flus vidèo. De l
 	'mv_mang_layers' => 'Administra los jaces',
 	'mv_mang_layers_title' => "Gerís los paramètres d'afichatge de la jaça pel flus corrent",
 	'mv_protect_source_material' => 'Original protegit en escritura',
+	'right-mv_delete_mvd' => 'Suprimir las metadonadas MetaVid',
+	'action-mv_delete_mvd' => 'suprimir aqueste segment de las metadonadas MetaVid',
+	'right-mv_edit_stream' => 'Modificar los fichièrs de flus',
 );
 
 /** Oriya (ଓଡ଼ିଆ)

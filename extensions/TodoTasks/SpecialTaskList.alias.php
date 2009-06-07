@@ -104,6 +104,12 @@ $aliases['mk'] = array(
 	'TaskListByProject' => array( 'ЛистаНаЗадачиПоПроекти' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'TaskList' => array( 'कार्यसुची' ),
+	'TaskListByProject' => array( 'प्रकल्पान्वयेकार्यसुची' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'TaskList' => array( 'Takenlieste' ),

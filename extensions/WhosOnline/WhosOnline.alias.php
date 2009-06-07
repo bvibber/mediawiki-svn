@@ -119,6 +119,11 @@ $aliases['mk'] = array(
 	'WhosOnline' => array( 'КојЕОнлајн' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'WhosOnline' => array( 'कोणकोणआलंय' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'WhosOnline' => array( 'Wee_is_anwezig' ),

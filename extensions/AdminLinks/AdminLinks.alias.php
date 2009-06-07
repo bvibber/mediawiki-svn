@@ -38,6 +38,11 @@ $aliases['ksh'] = array(
 	'AdminLinks' => array( 'Lengks_för_Wiki_Köbesse' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'AdminLinks' => array( 'प्रचालकदुवे' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'AdminLinks' => array( 'ĦoloqAmmin' ),

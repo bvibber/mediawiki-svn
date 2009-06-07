@@ -117,6 +117,11 @@ $aliases['mk'] = array(
 	'SpecialUserStats' => array( 'СтатистикиЗаКорисник', 'СпецијалниСтатистикиЗаКорисник' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'SpecialUserStats' => array( 'सदस्यसांख्य्की', 'विशेषसदस्यसांख्य्की' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'SpecialUserStats' => array( 'Gebrukersgegevens' ),

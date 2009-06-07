@@ -696,6 +696,14 @@ $messages['ro'] = array(
 	'randomincategory-label' => 'Categorie:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'randomincategory-label' => 'Categorije:',
+	'randomincategory-submit' => 'Veje',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -4091,11 +4091,24 @@ O versiune mai nouă $2 este disponibilă la http://pecl.php.net/package/APC/$2'
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'viewapc-memory-free' => 'Libbere: $1 ($2)',
+	'viewapc-memory-used' => 'Ausate: $1 ($2)',
+	'viewapc-display-attribute' => 'Attribbute',
+	'viewapc-display-value' => 'Valore',
+	'viewapc-display-filename' => "Nome d'u file",
+	'viewapc-display-info' => 'Nome',
+	'viewapc-display-type' => 'Tipe',
+	'viewapc-display-mtime' => 'Cangiate',
+	'viewapc-display-creation_time' => 'Ccrejate',
+	'viewapc-display-deletion_time' => 'Scangellate',
 	'viewapc-display-mem_size' => 'Dimenzione',
 	'viewapc-ls-submit' => 'Veje!',
+	'viewapc-ls-header-name' => 'Nome',
 	'viewapc-ls-header-modified' => 'Urteme cangiamende',
 	'viewapc-ls-header-created' => 'Ccrejete',
 	'viewapc-ls-header-deleted' => 'Scangellete',
+	'viewapc-ls-sort-size' => 'Dimenzione',
+	'viewapc-ls-sort-name' => 'Nome',
 	'viewapc-ls-limit-none' => 'Tutte',
 );
 

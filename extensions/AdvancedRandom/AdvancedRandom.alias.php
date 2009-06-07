@@ -85,6 +85,11 @@ $aliases['lb'] = array(
 	'AdvancedRandom' => array( 'Zoufall' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'AdvancedRandom' => array( 'प्रगताविशीष्ट' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'AdvancedRandom' => array( 'Uut-ebreid_willekeurig' ),

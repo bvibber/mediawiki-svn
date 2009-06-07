@@ -65,9 +65,19 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'editsubpages-desc' => 'Дае магчымасьць адміністратарам з дапамогай [[MediaWiki:Unlockedpages]] дазваляць рэдагаваньне старонак і ўсіх падстаронак для ананімных удзельнікаў',
+	'unlockedpages' => '  #<!-- leave this line alone --><pre>
+# Устаўце ніжэй старонкі, якія Вы жадаеце разблякаваць
+# * Назва старонкі
+# Сьпіс старонак для разблякаваньня павінен пачынацца з маркера,
+# усё астатняе будзе лічыцца камэнтаром
+# Назвы старонак могуць быць аформленыя як [[спасылкі]] і чульлівыя да рэгістру
+# Адпаведна, старонкі абмеркаваньняў будуць аўтаматычна разблякаваны разам са старонкамі
+# Дадатковую інфармацыю глядзіце http://www.mediawiki.org/wiki/Extension:EditSubpages
+  #</pre><!-- leave this line alone -->',
 );
 
 /** Bulgarian (Български)
@@ -427,7 +437,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'editsubpages-desc' => 'Permet als administrators de desvarrolhar una pagina e totas sas sospaginas per las modificacions anonimas gràcia a [[MediaWiki:Unlockedpages]]',
-	'unlockedpages' => ' #<!-- Daissatz aquesta linha tala coma es --><pre>
+	'unlockedpages' => '  #<!-- Daissatz aquesta linha tala coma es --><pre>
 # Indicatz, çaijós, las paginas que desiratz desvarrolhar en utilizant
 # * Nomdelapagina
 # Las paginas desvarrolhadas devon començar per una piuse per èsser presas en compte,
@@ -492,11 +502,11 @@ $messages['pt-br'] = array(
 $messages['roa-tara'] = array(
 	'editsubpages-desc' => "Permette a le sysop de sbloccà 'na pàgene e tutte le sottopàggene de quedda pàgene pe 'nu camngiamende anonime ausanne [[MediaWiki:Unlockedpages|sbluecche le pàggene]]",
 	'unlockedpages' => "  #<!-- Lasse sta linea sole --><pre>
-# Mitte le vôsce ca tu vuè ccu sbluecche sotte ausanne
+# Mitte le vôsce ca tu vuè ccu sbluécche sotte ausanne
 # * Nome d'a pàgene
 # Le vôsce sbloccate onne accumenzà cu 'nu punde pe essere cundate,
-# tutte odre cose sonde conziderate commende
-# Le nome de le pàggene ponne essere [[collegate]] e so senzibbile a le maiuscole/minuscole
+# tutte l'otre cose sonde conziderate commende
+# Le nome de le pàggene ponne essere [[links|collegate]] e so senzibbile a le maiuscole/minuscole
 # Pure le pàggene de le 'ngazzaminde avènene automaticamende sbloccate cu 'a vôscia prengepàle
 # Vide http://www.mediawiki.org/wiki/Extension:EditSubpages pe maggiore 'mbormaziune
   #</pre><!-- Lasse sta linea sole -->",

@@ -354,6 +354,18 @@ $messages['mk'] = array(
 	'unicodeconverter-newtext' => 'Конвертиран текст:',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'unicodeconverter' => 'यूनिकोड रूपांतरकार',
+	'unicodeconverter-desc' => 'एका विशेष पान विभागातील सोपे उदाहरण.
+[[Special:UnicodeConverter|UTF-8 मध्ये सूत्र दिले आहे]],ते त्याला ISO 8859-1 संकेतस्थळास सुयोग्य HTML पद्धतीने अभिव्यक्त करते',
+	'unicodeconverter-ok' => 'ठिक आहे',
+	'unicodeconverter-oldtext' => 'मूळ मजकूर:',
+	'unicodeconverter-newtext' => 'बदललेला मजकूर:',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

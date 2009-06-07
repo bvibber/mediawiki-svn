@@ -135,6 +135,17 @@ $messages['be-tarask'] = array(
 	'editmessages' => 'Рэдагаваньне паведамленьняў',
 	'editmsg-target' => 'Мэтавае паведамленьне:',
 	'editmsg-search' => 'Пошук',
+	'editmsg-show-list' => 'Адлюстраваньне значэньняў для паведамленьня з назвай «$1»',
+	'editmsg-get-patch' => 'Стварыць патч',
+	'editmsg-new-search' => 'Новы пошук',
+	'editmsg-warning-parse1' => '* Назва паведамленьня не пасуе для рэгулярнага выразу: $1',
+	'editmsg-warning-parse3' => '* Ня знойдзены канчатак радка: $1',
+	'editmsg-warning-file' => '* Памылка чытаньня {{PLURAL:$2|файла для наступнай мовы|файлаў для наступных моваў|файлаў для наступных моваў}}: $1',
+	'editmsg-warning-mismatch' => '* Арыгінальны тэкст мя мае чаканага значэньня для {{PLURAL:$2|мовы|моваў|моваў}}: $1',
+	'editmsg-apply-patch' => 'Ужыць файл',
+	'editmsg-no-patch' => 'Немажліа выканаць каманду «patch»',
+	'editmsg-patch-failed' => 'Статус выхаду патча памылковы $1',
+	'editmsg-patch-success' => 'Патч усталяваны.',
 );
 
 /** Bulgarian (Български)

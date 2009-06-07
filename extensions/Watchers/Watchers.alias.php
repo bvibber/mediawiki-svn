@@ -113,6 +113,11 @@ $aliases['mk'] = array(
 	'Watchers' => array( 'Набљудувачи' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'Watchers' => array( 'प्रेक्षक' ),
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

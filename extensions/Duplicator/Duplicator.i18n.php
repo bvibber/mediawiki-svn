@@ -136,9 +136,21 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'duplicator' => 'Капіраваць старонку',
+	'duplicator-desc' => 'Стварае незалежныя [[Special:Duplicate|копіі старонак]] з поўнай гісторыяй зьменаў',
+	'duplicator-toolbox' => 'Капіраваць гэту старонку',
+	'duplicator-header' => 'Гэта старонка дазваляе скончыць капіраваньне старонкі, стварыць незалежную копію ўсёй гісторыі.
+Гэта карысна для разгалінаваньня старонкі, і г.д.',
+	'duplicator-options' => 'Устаноўкі',
 	'duplicator-source' => 'Крыніца:',
+	'duplicator-dest' => 'Куды:',
+	'duplicator-dotalk' => 'Капіраваць старонку абмеркаваньня (калі мажліва)',
+	'duplicator-submit' => 'Капіраваць',
+	'duplicator-summary' => 'Скапіравана з [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] была скапіравана ў [[$2]].'''</big>",
 );
 
 /** Bulgarian (Български)

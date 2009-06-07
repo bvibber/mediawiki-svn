@@ -501,8 +501,9 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'whatismyip' => "Qual è l'IP mije",
-	'whatismyip-desc' => "Fà vedè l'IP de le utinde de mo sus 'a [[Special:WhatIsMyIP]]",
-	'whatismyip-out' => "L'IP tue:",
+	'whatismyip-desc' => "Fà vedè [[Special:WhatIsMyIP|l'IP]] de le utende de mo",
+	'whatismyip-out' => "L'indirizze IP tue:",
+	'right-whatismyip' => "Vide [[Special:WhatIsMyIP| l'indirizze IP tue]]",
 );
 
 /** Russian (Русский)

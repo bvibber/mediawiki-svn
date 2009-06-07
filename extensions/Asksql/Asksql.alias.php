@@ -92,6 +92,11 @@ $aliases['lb'] = array(
 	'Asksql' => array( 'SQL-Ufroen' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'Asksql' => array( 'sqlविचारा' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Asksql' => array( 'SQL-zeukopdrach' ),

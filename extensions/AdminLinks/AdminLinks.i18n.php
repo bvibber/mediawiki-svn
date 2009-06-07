@@ -416,6 +416,13 @@ $messages['pt'] = array(
 	'right-adminlinks' => 'Ver o link para [[Special:AdminLinks]]',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'adminlinks_users' => 'Utinde',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

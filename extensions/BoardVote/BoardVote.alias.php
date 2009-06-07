@@ -138,6 +138,11 @@ $aliases['lb'] = array(
 	'BoardVote' => array( 'Wiel fir de Verwaltungsrot' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'BoardVote' => array( 'कार्यकारिणीमत' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'BoardVote' => array( 'Undi Lembaga' ),

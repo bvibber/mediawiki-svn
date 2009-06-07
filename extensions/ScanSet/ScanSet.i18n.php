@@ -1012,6 +1012,14 @@ $messages['pt-br'] = array(
 	'scanset_prev' => '&lt; Anterior',
 );
 
+/** Romanian (Română)
+ * @author Mihai
+ */
+$messages['ro'] = array(
+	'scanset_next' => 'Următor &gt;',
+	'scanset_prev' => '&lt; Anterior',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

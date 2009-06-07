@@ -109,6 +109,11 @@ $aliases['mk'] = array(
 	'Form' => array( 'Формулар', 'Форма' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'Form' => array( 'छापीलनमूना' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'Form' => array( 'Formola' ),

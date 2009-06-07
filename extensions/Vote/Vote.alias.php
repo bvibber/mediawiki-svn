@@ -134,6 +134,11 @@ $aliases['mk'] = array(
 	'Vote' => array( 'Гласање' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'Vote' => array( 'मत' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'Vote' => array( 'Vot' ),

@@ -713,6 +713,7 @@ Exemple 1: &nbsp; <tt>[[Special:Call/Mon modèl,parm1=value1]]</tt><br />
 Exemple 2: &nbsp; <tt>[[Special:Call/Discussion:Ma discussion,parm1=valor1]]</tt><br />
 Exemple 3: &nbsp; <tt>[[Special:Call/:Ma pagina,parm1=valor1,parm2=valor2]]</tt><br /><br />
 Exemple 4 (Adreça per navigador) : &nbsp; <tt>http://mondomeni/monwiki/index.php?Special:Call/:Ma_Pagina,param1=valor1</tt>
+
 L’extension <i>Ampèl</i> apelarà la pagina indicada en i passant los paramètres.<br />
 Veiretz las entresenhas d'aquesta pagina, son títol, mas son « tipe » serà lo d’una pagina especiala que poirà pas èsser editada.<br />Las entresenhas que veiretz variaràn en foncion dels paramètres qu'auretz indicats.
 

@@ -122,6 +122,11 @@ $aliases['mk'] = array(
 	'Badimages' => array( 'ЛошаСлика', 'ЛошиСлики' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'Badimages' => array( 'वाईटचित्रे' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'Badimages' => array( 'StampiĦżiena' ),

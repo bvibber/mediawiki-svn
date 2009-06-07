@@ -79,6 +79,11 @@ $aliases['lb'] = array(
 	'TemplateLink' => array( 'Schabloune Link' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'TemplateLink' => array( 'साचादुवा' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'TemplateLink' => array( 'ĦolqaMudell' ),
