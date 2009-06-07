@@ -62,6 +62,7 @@ if ( isset( $options['ext'] ) ) {
 		'wgTitle', 'wgArticle', 'wgContLang', 'wgLang', 'wgOut', 'wgParser', 'wgMessageCache',
 		# Extensions
 		'wgAbuseFilterStyleVersion',
+		'wgAdminLinksIP',
 		'wgCategoryTreeUseCategoryTable', 'wgCategoryTreeVersion',
 		'wgCheckUserStyleVersion',
 		'wgCaptcha', 'wgConfirmEditIP',
@@ -72,7 +73,7 @@ if ( isset( $options['ext'] ) ) {
 		'wgErrorHandlerErrors', 'wgErrorHandlerOutputDone',
 		'wgFlaggedRevStyleVersion',
 		'wgOggScriptVersion',
-		'wgExtParserFunctions',
+		'wgPFHookStub',
 		'wgUserBoardScripts', 'wgUserProfileDirectory', 'wgUserProfileScripts', 'wgUserRelationshipScripts',
 		'wgTimelineSettings',
 		'wgTitleBlacklist',
