@@ -18,6 +18,7 @@ settings[] = wgAbuseFilterUDPPort: int
 settings[] = wgAbuseFilterUDPPrefix: text
 settings[] = wgAbuseFilterCentralDB: text
 settings[] = wgAbuseFilterIsCentral: bool
+settings[] = wgAbuseFilterBlockDuration: text
 array[] = wgAbuseFilterAvailableActions: simple
 array[] = wgAbuseFilterRestrictedActions: simple
 empty[] = wgAbuseFilterCentralDB: null
@@ -179,7 +180,10 @@ CharInsert
 url = http://www.mediawiki.org/wiki/Extension:CharInsert
 
 CheckUser
-settings[] = wgCheckUserLog: text, wgCUDMaxAge: int, wgCheckUserMaxBlocks: int
+settings[] = wgCheckUserLog: text
+settings[] = wgCUDMaxAge: int
+settings[] = wgCheckUserMaxBlocks: int
+settings[] = wgCheckUserForceSummary: bool
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:CheckUser
 
@@ -550,6 +554,8 @@ schema = true
 url = http://www.mediawiki.org/wiki/Extension:Oversight
 
 ParserFunctions
+settings[] = wgPFEnableStringFunctions: bool
+settings[] = wgPFStringLengthLimit: int
 url = http://www.mediawiki.org/wiki/Extension:ParserFunctions
 
 PasswordReset
@@ -672,6 +678,7 @@ settings[] = wgStalePagesDays: int
 url = http://www.mediawiki.org/wiki/Extension:Stale_Pages
 
 SyntaxHighlight_GeSHi
+settings[] = wgSyntaxHighlightDefaultLang: text
 url = http://www.mediawiki.org/wiki/Extension:SyntaxHighlight_GeSHi
 
 Timeline
@@ -697,6 +704,7 @@ array[] = wgTorIPs: simple
 url = http://www.mediawiki.org/wiki/Extension:TorBlock
 
 Translate
+settings[] = wgEnablePageTranslation: bool, wgPageTranslationNamespace: int
 settings[] = wgTranslateExtensionDirectory: text, wgTranslateLanguageFallbacks: array
 settings[] = wgTranslateFuzzyBotName: text, wgTranslateCssLocation: text
 settings[] = wgTranslateCssLocation: text, wgTranslateDocumentationLanguageCode: text
@@ -705,12 +713,11 @@ settings[] = wgTranslateMessageNamespaces: array, wgTranslateAC: array
 settings[] = wgTranslateGroupStructure: array, wgTranslateAddMWExtensionGroups: bool
 settings[] = wgTranslateEC: array, wgTranslateCC: array, wgTranslateTasks: array
 settings[] = wgTranslatePHPlot: text, wgTranslatePHPlotFont: text
-settings[] = wgTranslateTagTranslationLocation: array
 array[] = wgTranslateLanguageFallbacks: assoc, wgTranslateBlacklist: array
 array[] = wgTranslateMessageNamespaces: ns-simple, wgTranslateAuthorBlacklist: array
 array[] = wgTranslateAC: assoc, wgTranslateGroupStructure: array
 array[] = wgTranslateEC: simple, wgTranslateCC: assoc
-array[] = wgTranslateTasks: assoc, wgTranslateTagTranslationLocation: simple
+array[] = wgTranslateTasks: assoc
 url = http://www.mediawiki.org/wiki/Extension:Translate
 
 UW Authors
