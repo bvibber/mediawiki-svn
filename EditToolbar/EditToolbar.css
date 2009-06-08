@@ -1,7 +1,16 @@
 /* CSS StyleSheet for Toolbar extensions */
 
+/* MEDIAWIKI DEPENDENT ID */
+textarea#wpTextbox1 {
+	border: solid silver 1px;
+}
+/* ... */
 div#edittoolbar {
 	width: 100%;
+	padding: 0.1em;
+	border: solid silver 1px;
+	border-bottom-width: 0;
+	margin-bottom: -1px;
 	background-color: #EEEEEE;
 }
 div#edittoolbar div.tabs,
@@ -64,7 +73,7 @@ div#edittoolbar div.group > img {
 	border: 0px;
 	height: 22px;
 	width: 22px;
-	margin: 2px;
+	padding: 2px;
 	cursor: pointer;
 }
 body.rtl div#edittoolbar div.group > img {
