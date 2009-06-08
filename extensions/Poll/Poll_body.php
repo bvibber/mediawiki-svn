@@ -436,7 +436,7 @@ class Poll extends SpecialPage {
 			}
 
 			if ( ( ( $creater == $user ) OR ( $controll_delete_right == true ) ) AND ( $controll_delete_blocked != true ) )  {
-				if( isset($wgRequest->getVal('controll_delete')) AND $wgRequest->getVal('controll_delete') === 1 ) {
+				if( $wgRequest->getCheck('controll_delete') AND $wgRequest->getVal('controll_delete') === 1 ) {
 					$dbw = wfGetDB( DB_MASTER );
 					$user = $wgUser->getName();
 
