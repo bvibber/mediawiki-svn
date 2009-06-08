@@ -196,7 +196,7 @@ class WWUtils {
 	return $this->query($sql);
     }
 
-    function getLocalConcepts($id)
+    function getLocalConcepts($id) {
 	$rs = $this->queryLocalConcepts($id);
 	$list = WWUtils::slurpAssoc($rs, "lang", "local_concept_name");
 	mysql_free_result($rs);
@@ -345,7 +345,7 @@ class WWUtils {
 	return $this->queryWiki($lang, $sql);
     }
 
-    function getImagesOnPage($lang, $ns, $title, $commonsOnly = false)
+    function getImagesOnPage($lang, $ns, $title, $commonsOnly = false) {
 	$rs = $this->queryImagesOnPage($lang, $ns, $title, $commonsOnly);
 	$list = WWUtils::slurpList($rs, "name");
 	mysql_free_result($rs);
@@ -376,7 +376,7 @@ class WWUtils {
 	return $this->queryWiki($lang, $sql);
     }
 
-    function getImagesOnPageTemplates($lang, $ns, $title, $commonsOnly = false)
+    function getImagesOnPageTemplates($lang, $ns, $title, $commonsOnly = false) {
 	$rs = $this->queryImagesOnPageTemplates($lang, $ns, $title, $commonsOnly);
 	$list = WWUtils::slurpList($rs, "name");
 	mysql_free_result($rs);
@@ -397,7 +397,7 @@ class WWUtils {
 	return $this->queryWiki($lang, $sql);
     }
 
-    function getImagesInCategory($lang, $title)
+    function getImagesInCategory($lang, $title) {
 	$rs = $this->queryImagesOnPage($lang, $title);
 	$list = WWUtils::slurpList($rs, "name");
 	mysql_free_result($rs);
