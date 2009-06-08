@@ -485,7 +485,12 @@ var editToolbarConfiguration = {
 								post: "</small>"
 							}
 						}
-					},
+					}
+				}
+			},
+			'baseline': {
+				labelMsg: 'edittoolbar-group-format-baseline',
+				tools: {
 					'superscript': {
 						labelMsg: 'edittoolbar-tool-format-superscript',
 						type: 'button',

@@ -76,6 +76,7 @@ class EditToolbarHooks {
 			'edittoolbar-tool-format-big-example',
 			'edittoolbar-tool-format-small',
 			'edittoolbar-tool-format-small-example',
+			'edittoolbar-group-format-baseline',
 			'edittoolbar-tool-format-superscript',
 			'edittoolbar-tool-format-superscript-example',
 			'edittoolbar-tool-format-subscript',
