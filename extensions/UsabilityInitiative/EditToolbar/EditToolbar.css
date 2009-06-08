@@ -43,6 +43,19 @@ div#edittoolbar div.sections > div.section {
 body.rtl div#edittoolbar div.sections > div.section {
 	float: right;
 }
+div#edittoolbar div.group > div.label {
+	float: left;
+	border: 0px;
+	height: 22px;
+	line-height: 22px;
+	margin: 2px;
+	margin-left: 5px;
+	margin-right: 5px;
+	color: #666666;
+}
+body.rtl div#edittoolbar div.group > div.label {
+	float: right;
+}
 div#edittoolbar div.group > img {
 	float: left;
 	border: 0px;

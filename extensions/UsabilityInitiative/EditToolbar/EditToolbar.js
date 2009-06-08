@@ -125,6 +125,14 @@ function gM( key, args ) {
 				var groupDiv = $( '<div />' )
 						.attr( 'class', 'group' )
 						.appendTo( $(this) );
+				// Checks if a there's a label for this group
+				if ( 'label' in section.groups[group] ) {
+					groupDiv.append(
+						$( '<div />' )
+							.attr( 'class', 'label' )
+							.text( ( section.groups[group].label || gM( section.groups[group].labelMsg ) ) )
+					)
+				}
 				// Creates generic action
 				var action = function() {
 					$(this).useTool(
@@ -133,12 +141,12 @@ function gM( key, args ) {
 					);
 				};
 				// Loops over each tool
-				for ( tool in section.groups[group] ) {
+				for ( tool in section.groups[group].tools ) {
 					// Filters are jQuery selectors which must select 1 or more
 					// elements for this tool to apear. This is especailly
 					// useful for restricting some tools to certain namespaces
-					if ( 'filters' in section.groups[group][tool] ) {
-						var filters = section.groups[group][tool].filters;
+					if ( 'filters' in section.groups[group].tools[tool] ) {
+						var filters = section.groups[group].tools[tool].filters;
 						var skip = false;
 						for ( filter in filters ) {
 							if ( $( filters[filter] ).size() == 0 ) {
@@ -150,16 +158,16 @@ function gM( key, args ) {
 						}
 					}
 					// Creates context for use in action
-					var context = { 'tool': section.groups[group][tool], 'textbox': textbox };
+					var context = { 'tool': section.groups[group].tools[tool], 'textbox': textbox };
 					// Creates the label of the tool
-					var label = ( section.groups[group][tool].label || gM( section.groups[group][tool].labelMsg ) );
-					switch ( section.groups[group][tool].type ) {
+					var label = ( section.groups[group].tools[tool].label || gM( section.groups[group].tools[tool].labelMsg ) );
+					switch ( section.groups[group].tools[tool].type ) {
 						case 'button':
 							// Appends button
 							groupDiv.append(
 								$( '<img />' )
 								.attr( {
-									src: imagePath + section.groups[group][tool].icon,
+									src: imagePath + section.groups[group].tools[tool].icon,
 									alt: label,
 									title: label
 								} )
@@ -177,10 +185,10 @@ function gM( key, args ) {
 								)
 								.appendTo( groupDiv );
 							// Appends options
-							for ( option in section.groups[group][tool].list ) {
+							for ( option in section.groups[group].tools[tool].list ) {
 								selectDiv.append(
 									$( '<option/>' )
-										.text( ( section.groups[group][tool].list[option].label || gM( section.groups[group][tool].list[option].labelMsg ) ) )
+										.text( ( section.groups[group].tools[tool].list[option].label || gM( section.groups[group].tools[tool].list[option].labelMsg ) ) )
 										.attr( 'value', option )
 								);
 							}
@@ -245,103 +253,107 @@ var editToolbarConfiguration = {
 	'main': {
 		groups: {
 			'format': {
-				'bold': {
-					labelMsg: 'edittoolbar-format-bold',
-					type: 'button',
-					icon: 'format-bold.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "'''",
-							periMsg: 'edittoolbar-format-bold-example',
-							post: "'''"
+				tools: {
+					'bold': {
+						labelMsg: 'edittoolbar-format-bold',
+						type: 'button',
+						icon: 'format-bold.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "'''",
+								periMsg: 'edittoolbar-format-bold-example',
+								post: "'''"
+							}
 						}
-					}
-				},
-				'italic': {
-					section: 'main',
-					group: 'format',
-					id: 'italic',
-					labelMsg: 'edittoolbar-format-italic',
-					type: 'button',
-					icon: 'format-italic.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "''",
-							periMsg: 'edittoolbar-format-italic-example',
-							post: "''"
+					},
+					'italic': {
+						section: 'main',
+						group: 'format',
+						id: 'italic',
+						labelMsg: 'edittoolbar-format-italic',
+						type: 'button',
+						icon: 'format-italic.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "''",
+								periMsg: 'edittoolbar-format-italic-example',
+								post: "''"
+							}
 						}
 					}
 				}
 			},
 			'insert': {
-				'xlink': {
-					labelMsg: 'edittoolbar-insert-xlink',
-					type: 'button',
-					icon: 'insert-xlink.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "[",
-							periMsg: 'edittoolbar-insert-xlink-example',
-							post: "]"
+				tools: {
+					'xlink': {
+						labelMsg: 'edittoolbar-insert-xlink',
+						type: 'button',
+						icon: 'insert-xlink.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "[",
+								periMsg: 'edittoolbar-insert-xlink-example',
+								post: "]"
+							}
+						}
+					},
+					'ilink': {
+						labelMsg: 'edittoolbar-insert-ilink',
+						type: 'button',
+						icon: 'insert-ilink.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "[[",
+								periMsg: 'edittoolbar-insert-ilink-example',
+								post: "]]"
+							}
+						}
+					},
+					'file': {
+						labelMsg: 'edittoolbar-insert-file',
+						type: 'button',
+						icon: 'insert-file.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "[[",
+								preMsg: 'edittoolbar-insert-file-pre',
+								periMsg: 'edittoolbar-insert-file-example',
+								post: "]]"
+							}
+						}
+					},
+					'reference': {
+						labelMsg: 'edittoolbar-insert-reference',
+						filters: [ 'body.ns-subject' ],
+						type: 'button',
+						icon: 'insert-reference.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<ref>",
+								periMsg: 'edittoolbar-insert-reference-example',
+								post: "</ref>"
+							}
+						}
+					},
+					'signature': {
+						labelMsg: 'edittoolbar-insert-signature',
+						filters: [ 'body.ns-talk' ],
+						type: 'button',
+						icon: 'insert-signature.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								post: "--~~~~"
+							}
 						}
 					}
 				},
-				'ilink': {
-					labelMsg: 'edittoolbar-insert-ilink',
-					type: 'button',
-					icon: 'insert-ilink.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "[[",
-							periMsg: 'edittoolbar-insert-ilink-example',
-							post: "]]"
-						}
-					}
-				},
-				'file': {
-					labelMsg: 'edittoolbar-insert-file',
-					type: 'button',
-					icon: 'insert-file.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "[[",
-							preMsg: 'edittoolbar-insert-file-pre',
-							periMsg: 'edittoolbar-insert-file-example',
-							post: "]]"
-						}
-					}
-				},
-				'reference': {
-					labelMsg: 'edittoolbar-insert-reference',
-					filters: [ 'body.ns-subject' ],
-					type: 'button',
-					icon: 'insert-reference.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "<ref>",
-							periMsg: 'edittoolbar-insert-reference-example',
-							post: "</ref>"
-						}
-					}
-				},
-				'signature': {
-					labelMsg: 'edittoolbar-insert-signature',
-					filters: [ 'body.ns-talk' ],
-					type: 'button',
-					icon: 'insert-signature.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							post: "--~~~~"
-						}
-					}
-				}
 			}
 		}
 	},
@@ -349,147 +361,155 @@ var editToolbarConfiguration = {
 	'format': {
 		labelMsg: 'edittoolbar-section-format',
 		groups: {
-			'list': {
-				'ulist': {
-					labelMsg: 'edittoolbar-format-ulist',
-					type: 'button',
-					icon: 'format-ulist.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "* ",
-							periMsg: 'edittoolbar-format-ulist-example',
-							post: ""
-						}
-					}
-				},
-				'olist': {
-					labelMsg: 'edittoolbar-format-olist',
-					type: 'button',
-					icon: 'format-olist.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "# ",
-							periMsg: 'edittoolbar-format-olist-example',
-							post: ""
+			'heading': {
+				tools: {
+					'heading': {
+						labelMsg: 'edittoolbar-format-heading',
+						type: 'select',
+						list: {
+							'heading-1' : {
+								labelMsg: 'edittoolbar-format-heading-1',
+								action: {
+									type: 'encapsulate',
+									options: {
+										pre: "=",
+										periMsg: 'edittoolbar-format-heading-example',
+										post: "="
+									}
+								}
+							},
+							'heading-2' : {
+								labelMsg: 'edittoolbar-format-heading-2',
+								action: {
+									type: 'encapsulate',
+									options: {
+										pre: "==",
+										periMsg: 'edittoolbar-format-heading-example',
+										post: "=="
+									}
+								}
+							},
+							'heading-3' : {
+								labelMsg: 'edittoolbar-format-heading-3',
+								action: {
+									type: 'encapsulate',
+									options: {
+										pre: "===",
+										periMsg: 'edittoolbar-format-heading-example',
+										post: "==="
+									}
+								}
+							},
+							'heading-4' : {
+								labelMsg: 'edittoolbar-format-heading-4',
+								action: {
+									type: 'encapsulate',
+									options: {
+										pre: "====",
+										periMsg: 'edittoolbar-format-heading-example',
+										post: "===="
+									}
+								}
+							},
+							'heading-5' : {
+								labelMsg: 'edittoolbar-format-heading-5',
+								action: {
+									type: 'encapsulate',
+									options: {
+										pre: "=====",
+										periMsg: 'edittoolbar-format-heading-example',
+										post: "====="
+									}
+								}
+							}
 						}
 					}
 				}
 			},
-			'heading': {
-				'heading': {
-					labelMsg: 'edittoolbar-format-heading',
-					type: 'select',
-					list: {
-						'heading-1' : {
-							labelMsg: 'edittoolbar-format-heading-1',
-							action: {
-								type: 'encapsulate',
-								options: {
-									pre: "=",
-									periMsg: 'edittoolbar-format-heading-example',
-									post: "="
-								}
+			'list': {
+				label: 'List',
+				tools: {
+					'ulist': {
+						labelMsg: 'edittoolbar-format-ulist',
+						type: 'button',
+						icon: 'format-ulist.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "* ",
+								periMsg: 'edittoolbar-format-ulist-example',
+								post: ""
 							}
-						},
-						'heading-2' : {
-							labelMsg: 'edittoolbar-format-heading-2',
-							action: {
-								type: 'encapsulate',
-								options: {
-									pre: "==",
-									periMsg: 'edittoolbar-format-heading-example',
-									post: "=="
-								}
-							}
-						},
-						'heading-3' : {
-							labelMsg: 'edittoolbar-format-heading-3',
-							action: {
-								type: 'encapsulate',
-								options: {
-									pre: "===",
-									periMsg: 'edittoolbar-format-heading-example',
-									post: "==="
-								}
-							}
-						},
-						'heading-4' : {
-							labelMsg: 'edittoolbar-format-heading-4',
-							action: {
-								type: 'encapsulate',
-								options: {
-									pre: "====",
-									periMsg: 'edittoolbar-format-heading-example',
-									post: "===="
-								}
-							}
-						},
-						'heading-5' : {
-							labelMsg: 'edittoolbar-format-heading-5',
-							action: {
-								type: 'encapsulate',
-								options: {
-									pre: "=====",
-									periMsg: 'edittoolbar-format-heading-example',
-									post: "====="
-								}
+						}
+					},
+					'olist': {
+						labelMsg: 'edittoolbar-format-olist',
+						type: 'button',
+						icon: 'format-olist.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "# ",
+								periMsg: 'edittoolbar-format-olist-example',
+								post: ""
 							}
 						}
 					}
 				}
 			},
 			'size': {
-				'superscript': {
-					labelMsg: 'edittoolbar-format-superscript',
-					type: 'button',
-					icon: 'format-superscript.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "<super>",
-							periMsg: 'edittoolbar-format-superscript-example',
-							post: "</super>"
+				label: 'Size',
+				tools: {
+					'big': {
+						labelMsg: 'edittoolbar-format-big',
+						type: 'button',
+						icon: 'format-big.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<big>",
+								periMsg: 'edittoolbar-format-big-example',
+								post: "</big>"
+							}
 						}
-					}
-				},
-				'subscript': {
-					labelMsg: 'edittoolbar-format-subscript',
-					type: 'button',
-					icon: 'format-subscript.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "<sub>",
-							periMsg: 'edittoolbar-format-subscript-example',
-							post: "</sub>"
+					},
+					'small': {
+						labelMsg: 'edittoolbar-format-small',
+						type: 'button',
+						icon: 'format-small.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<small>",
+								periMsg: 'edittoolbar-format-small-example',
+								post: "</small>"
+							}
 						}
-					}
-				},
-				'big': {
-					labelMsg: 'edittoolbar-format-big',
-					type: 'button',
-					icon: 'format-big.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "<big>",
-							periMsg: 'edittoolbar-format-big-example',
-							post: "</big>"
+					},
+					'superscript': {
+						labelMsg: 'edittoolbar-format-superscript',
+						type: 'button',
+						icon: 'format-superscript.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<super>",
+								periMsg: 'edittoolbar-format-superscript-example',
+								post: "</super>"
+							}
 						}
-					}
-				},
-				'small': {
-					labelMsg: 'edittoolbar-format-small',
-					type: 'button',
-					icon: 'format-small.png',
-					action: {
-						type: 'encapsulate',
-						options: {
-							pre: "<small>",
-							periMsg: 'edittoolbar-format-small-example',
-							post: "</small>"
+					},
+					'subscript': {
+						labelMsg: 'edittoolbar-format-subscript',
+						type: 'button',
+						icon: 'format-subscript.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<sub>",
+								periMsg: 'edittoolbar-format-subscript-example',
+								post: "</sub>"
+							}
 						}
 					}
 				}
