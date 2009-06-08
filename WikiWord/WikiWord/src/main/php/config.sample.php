@@ -11,7 +11,7 @@ $wwThesaurusDataset = "thesaurus";
 
 #error_reporting(E_ALL);
 
-$wwThumbSite = 90;
+$wwThumbSitze = 90;
 $wwThumbnailURL = "http://toolserver.org/tsthumb/tsthumb?f={name}&domain=commons.wikimedia.org&w={width}&h={height}";
 $wwImagePageURL = "http://commons.wikimedia.org/wiki/File:{name}";
 

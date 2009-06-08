@@ -13,7 +13,26 @@ function printLocalConceptList($lang, $concepts) {
     <ul class="terselist">
       <?php
 	foreach ($concepts as $c) {
+	    ?><li><?php
 	    printLocalConceptLink($lang, $c);
+	    ?></li><?php
+	}
+      ?>
+    </ul>
+    <?php
+}
+
+function printConceptImageList($id) {
+    global $utils, $wwThumbSize;
+    $images = $utils->getImagesAbout($id);
+
+    ?>
+    <ul class="terselist">
+      <?php
+	foreach ($images as $img) {
+	  ?><li><?php
+	  print $utils->getThumbnailHTML($img);
+	  ?></li><?php
 	}
       ?>
     </ul>
@@ -120,7 +139,7 @@ function normalizeConceptRow($lang, $row) {
 }
 
 function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
-    global $wwSelf;
+    global $wwSelf, $images;
 
     $a_row = normalizeConceptRow($a_lang, $a_row);
     $b_row = normalizeConceptRow($b_lang, $b_row);
@@ -214,6 +233,16 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <?php } ?>
     </tr>
     <?php } ?>
+
+    <?php if ($images) { ?>
+    <tr class="row_details row_images">
+      <td></td>
+      <td class="cell_label">Images:</td>
+      <td class="cell_broader" colspan="<?php $b_row ? 5 : 2 ?>">
+      <?php printConceptImageList($a_reference_id); ?>
+      </td>
+    </tr>
+    <?php } ?>
     <?php
     if (isset($a_weight) && $a_weight && $a_weight<2 && $pos>=3) return false;
     else return true;
@@ -223,6 +252,7 @@ $concept = @$_REQUEST['id'];
 $term = @$_REQUEST['term'];
 $lang = @$_REQUEST['lang'];
 $tolang = @$_REQUEST['tolang'];
+$images = @$_REQUEST['images'];
 
 if (!isset($_REQUEST['translate'])) $tolang = NULL;
 if ($lang == $tolang) $tolang = NULL;
@@ -310,6 +340,10 @@ if (!$error) {
 	  </td>
 	  <td>
 	    <input type="submit" name="go" value="go"/>
+	  </td>
+	  <td>
+	    <label for="images">Images: </label>
+	    <input type="checkbox" name="images" value="Images" <?php $images ? "checked=\"checked\"" : ""?>/>
 	  </td>
 	</tr>
 	<tr>
