@@ -574,7 +574,9 @@ mvClipEdit.prototype = {
 		if(typeof $j.Jcrop == 'undefined'){
 			loadExternalCss( mv_embed_path + 'jquery/plugins/Jcrop/css/jquery.Jcrop.css');
 			//load the jcrop library if needed:
-			mvJsLoader.doLoad({'$j.Jcrop':'jquery/plugins/Jcrop/js/jquery.Jcrop.js'},function(){
+			mvJsLoader.doLoad([
+				'$j.Jcrop'
+			],function(){
 				doEnableCrop();
 			});			
 		}else{

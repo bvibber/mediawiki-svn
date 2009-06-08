@@ -135,16 +135,17 @@ mvSequencer.prototype = {
 			'html': gM('loading_txt'),			
 			'js':function( this_seq ){				
 				//load the search interface with sequence tool targets		 
-				mvJsLoader.doLoad(	{	'remoteSearchDriver':'libAddMedia/remoteSearchDriver.js',
-										'seqRemoteSearchDriver':'libAddMedia/seqRemoteSearchDriver.js'
-									}, function(){					
-										this_seq.mySearch = new seqRemoteSearchDriver({
-											'p_seq':this_seq,
-											'target_container':'#cliplib_ic',
-											'local_wiki_api_url':	 this_seq.getLocalApiUrl(),										
-											'instance_name': this_seq.instance_name + '.mySearch'						
-										 });
-										 this_seq.mySearch.doInitDisplay();
+				mvJsLoader.doLoad( [
+					'remoteSearchDriver',
+					'seqRemoteSearchDriver'
+				], function(){					
+					this_seq.mySearch = new seqRemoteSearchDriver({
+						'p_seq':this_seq,
+						'target_container':'#cliplib_ic',
+						'local_wiki_api_url':	 this_seq.getLocalApiUrl(),										
+						'instance_name': this_seq.instance_name + '.mySearch'						
+					 });
+					 this_seq.mySearch.doInitDisplay();
 				});
 			}
 		},
@@ -721,7 +722,9 @@ mvSequencer.prototype = {
 		
 		mv_get_loading_img( '#clipedit_ic' );
 		//load the clipEdit library if not already loaded:
-		mvJsLoader.doLoad( {'mvClipEdit' : 'libClipEdit/mvClipEdit.js' }, function(){
+		mvJsLoader.doLoad( [
+			'mvClipEdit'
+		], function(){
 			//setup the cliploader
 			this_seq.myClipEditor = new mvClipEdit({
 				'rObj' : cObj,

@@ -58,9 +58,9 @@ mediaWikiUploadHelper.prototype = {
         this.on_upload_page = ( wgPageName== "Special:Upload")?true:false;                    
         js_log('f:mvUploader: onuppage:' + this.on_upload_page);
         //grab firefogg.js: 
-        mvJsLoader.doLoad({
-                'mvFirefogg' : 'libAddMedia/mvFirefogg.js'
-            },function(){
+        mvJsLoader.doLoad([
+                'mvFirefogg'
+            ],function(){
                 //if we are not on the upload page grab the upload html via ajax:
                 //@@todo refactor with         
                 if( !_this.on_upload_page){                    

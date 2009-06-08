@@ -302,7 +302,7 @@ mvTextInterface.prototype = {
 		}
 		out+='<input onClick="document.getElementById(\''+this.pe.id+'\').textInterface.setAutoScroll(this.checked);return false;" ' +
 				'type="checkbox" '+as_checked +'>'+gM('auto_scroll') + ' ' + 
-              $j.btnHtml(gM('close'), 'tt-close', 'circle-close', {'style':'float:right;'}); 				
+              $j.btnHtml(gM('close'), 'tt-close', 'circle-close'); 				
 		out+='</div>';		
 		return out;
 	},

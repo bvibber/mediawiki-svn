@@ -94,6 +94,132 @@ loadGM({
 	
 });
 
+/** 
+ * AutoLoader paths (this should mirror the file: jsAutoloadLocalClasses.php ) 
+ * any file _not_ listed here won't be auto-loadable 
+ * @path the path to the file (or set of files) with ending slash
+ * @gClasses the set of classes 
+ * 		if an array $j.className become jquery.className.js
+ * 		if an asssociative objec then key => value paris are used
+ */
+if(typeof mvClassPaths == 'undefined')
+	mvClassPaths = {};
+	
+function lcPaths( path, gClasses , opt){	
+	if(!opt)
+		opt = {};
+	if(typeof opt['j_replace'] == 'undefined')
+		opt['j_replace'] = 'jquery.';	
+	if(!path)
+		path = '';	
+	for(var i in gClasses){
+		//check if its an array:
+		if( gClasses.length ){		
+			//setup normal replacement of j with jquery			
+			var jsName = ( gClasses[i].substr(0,3) == '$j.' ) ? opt['j_replace'] + gClasses[i].substr(3) : gClasses[i];							
+			mvClassPaths[ gClasses[i] ] = path + jsName + '.js';
+		}else{
+			mvClassPaths[i] = path + gClasses[ i ];
+		}
+	}
+	var cat = mvClassPaths;	
+}
+function mvGetClassPath(k){	
+	var cat  = mvClassPaths;
+	if( mvClassPaths[k] ){
+		js_log('got classpath:' + k +  ' : '+ mvClassPaths[k]);
+		return mvClassPaths[k];
+	}else{
+		return js_error('could not find path for requested class ' + k );
+	}
+}
+//core and (non-standard named files relative to class the init):
+lcPaths('',{
+	'mv_embed'			: 'mv_embed.js',
+	'window.jQuery'		: 'jquery/jquery-1.3.2.js',	
+	'$j.fn.pngFix'		: 'jquery.pngFix.js',
+	'$j.fn.autocomplete': 'jquery/plugins/jquery.autocomplete.js',
+	'$j.fn.hoverIntent'	: 'jquery/plugins/jquery.hoverIntent.js',
+	'$j.fn.datePicker'	: 'jquery/plugins/jquery.datePicker.js',
+	'$j.ui'				: 'jquery/jquery.ui-1.7.1/ui/ui.core.js'
+});	
+//query plugins
+lcPaths( 'jquery/plugins/', [
+	'$j.secureEvalJSON',	
+	'$j.cookie',
+	'$j.contextMenu',	
+	'$j.Jcrop'		
+]);
+//jquery ui
+lcPaths('jquery/jquery.ui-1.7.1/ui/', [	
+	'$j.effects.blind',
+	'$j.effects.drop',
+	'$j.effects.pulsate',
+	'$j.effects.transfer',
+	'$j.ui.droppable',
+	'$j.ui.slider',
+	'$j.effects.bounce',
+	'$j.effects.explode',
+	'$j.effects.scale',
+	'$j.ui.datepicker',
+	'$j.ui.progressbar',
+	'$j.ui.sortable',
+	'$j.effects.clip',
+	'$j.effects.fold',
+	'$j.effects.shake',
+	'$j.ui.dialog',
+	'$j.ui.resizable',
+	'$j.ui.tabs',
+	'$j.effects.core',
+	'$j.effects.highlight',
+	'$j.effects.slide',
+	'$j.ui.accordion',
+	'$j.ui.draggable',
+	'$j.ui.selectable',
+], 
+{'j_replace':''});
+
+lcPaths('libAddMedia/', [
+	'mvFirefogg',
+	'mvAdvFirefogg',
+    'mvBaseUploadInterface',
+	'remoteSearchDriver',
+	'seqRemoteSearchDriver',
+]);
+//search libs: 
+lcPaths('libAddMedia/searchLibs/', [
+	'baseRemoteSearch',
+	'mediaWikiSearch',
+	'metavidSearch',
+	'archiveOrgSearch',
+	'baseRemoteSearch'
+]);			
+//libclip edit
+lcPaths( 'libClipEdit/', [
+	'mvClipEdit'	
+])	
+//libEmbedObj:
+lcPaths( 'libEmbedVideo/', [
+	'embedVideo',
+	'flashEmbed',
+	'genericEmbed',
+	'htmlEmbed',
+	'javaEmbed',
+	'nativeEmbed',
+	'quicktimeEmbed',
+	'vlcEmbed'
+])
+//libSequencer:	
+lcPaths( 'libSequencer/', [
+	'mvPlayList',
+	'mvSequencer'
+])
+//libTimedText:
+lcPaths( 'libTimedText/', [
+	'mvTextInterface'
+]);
+
+
 /**
  * Language Functions:
  * 
@@ -205,8 +331,8 @@ function mv_set_loading(target, load_id){
   * mvJsLoader class handles initialization and js file loads 
   */
 var mvJsLoader = {
-	 libreq:{},
-	 libs:{},
+	 libreq : {},
+	 libs : {},
 	 //base lib flags:
 	 onReadyEvents:new Array(),
 	 doneReadyEvents:false,
@@ -214,24 +340,24 @@ var mvJsLoader = {
 	 //to keep consistency across threads: 
 	 ptime:0,
 	 ctime:0,	 
-	 load_error:false,//load error flag (false by default)
+	 load_error:false, //load error flag (false by default)
 	 load_time:0,	 
 	 callbacks:new Array(),
 	 cur_path: null,
 	 missing_path : null,				
-	 doLoad:function(libs, callback){		 
+	 doLoad:function(loadLibs, callback){		 
 		 this.ctime++;
-		 if(libs){ //setup this.libs:							
+		 if( loadLibs && loadLibs.length!=0 ){ //setup this.libs:							
 			 //first check if we already have this lib loaded
 			 var all_libs_loaded=true;
-			 for(var i in libs){
+			 for(var i=0; i< loadLibs.length; i++){
 				 //check if the lib is already loaded: 
-				if( ! this.checkObjPath( i ) ){
+				if( ! this.checkObjPath( loadLibs[i] ) ){
 					all_libs_loaded=false;							
 				}		
 			 }
 			 if( all_libs_loaded ){
-				js_log('all libs already loaded skipping...' + libs);
+				js_log('all libs already loaded skipping... load req');
 				callback();
 				return ;
 			}											 
@@ -240,18 +366,18 @@ var mvJsLoader = {
 				var class_set = '';
 				  var last_class = '';	
 				  var coma = ''; 
-				  for( var i in libs ){
+				  for(var i=0; i< loadLibs.length; i++){
+				  	  var curLib = loadLibs[i];
 					  //only add if not included yet: 
-					  if( ! this.checkObjPath( i ) ){
-						  class_set+=coma + i ;				  
-						  last_class=i;
+					  if( ! this.checkObjPath( curLib ) ){
+						  class_set+=coma + curLib ;				  
+						  last_class=curLib;
 						  coma=',';
 					  }
 				  }	 
-				  var puri = parseUri( getMvEmbedURL() );
-				  
-				  if(puri.host != parseUri( document.URL).host){
-				  	mwSlScript =  puri.protocol + '://' + puri.authority + mwSlScript;
+				  var puri = parseUri( getMvEmbedURL() );	
+				  if( (getMvEmbedURL().indexOf('://')!=-1) && puri.host != parseUri( document.URL).host){
+					mwSlScript =  puri.protocol + '://' + puri.authority + mwSlScript;
 				  }
 				  
 				  var dbug_attr = (puri.queryKey['debug'])?'&debug=true':'';							  
@@ -260,10 +386,12 @@ var mvJsLoader = {
 											  
 			 }else{														   
 				//do many requests:
-				 for(var i in libs){ //for in loop oky on object
-					 // do a direct load of the file (pass along unique id from request or mv_embed Version ) 
-					 var qmark = (libs[i].indexOf('?')!==true)?'?':'&';
-					 this.libs[i] =  mv_embed_path + libs[i] + qmark + 'urid='+ getMvUniqueReqId(); 
+				for(var i=0; i< loadLibs.length; i++){
+				     var curLib = loadLibs[i];
+				     var libLoc = mvGetClassPath(curLib);
+					 // do a direct load of the file (pass along unique request id from request or mv_embed Version ) 
+					 var qmark = (libLoc.indexOf('?')!==true)?'?':'&';
+					 this.libs[curLib] =  mv_embed_path + libLoc + qmark + 'urid='+ getMvUniqueReqId(); 
 				 }					 
 			}
 		}
@@ -271,7 +399,7 @@ var mvJsLoader = {
 			this.callbacks.push(callback);
 		}		
 		if( this.checkLoading() ){
-			 if( this.load_time++ > 4000){ //time out after ~80seconds
+			 if( this.load_time++ > 1000){ //time out after ~80seconds
 				 js_error( gM('error_load_lib') +  this.missing_path );
 				 this.load_error=true;
 			 }else{
@@ -332,12 +460,15 @@ var mvJsLoader = {
 	/**
 	 * checks for jQuery and adds the $j noConflict var
 	 */
-	jQueryCheck:function(callback){	
+	jQueryCheck:function(callback){
+		//skip stuff if $j is already loaded:	
+		if(_global['$j'] && callback)
+			callback();		
 		var _this = this;
 		//load jquery
-		_this.doLoad({
-			 'window.jQuery'	:'jquery/jquery-1.3.2.js'			 
-		},function(){
+		_this.doLoad([
+			 'window.jQuery'			 
+		],function(){
 			_global['$j'] = jQuery.noConflict();
 			//set up ajax to not send dynamic urls for loading scripts (we control that with the scriptLoader) 
 			$j.ajaxSetup({		  
@@ -346,7 +477,7 @@ var mvJsLoader = {
 			js_log('jquery loaded');
 			//setup mvEmbed jquery bindigns:  
 			mv_jqueryBindings();
-			//run the callback 
+			//run the callback 			
 			if(callback){
 				callback();
 			}
@@ -361,24 +492,22 @@ var mvJsLoader = {
 				 
 		//make sure we have jQuery
 		_this.jQueryCheck(function(){
-			baseReq = {
-				'$j.ui'		   	: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-				'embedVideo'    : 'libEmbedVideo/mv_baseEmbed.js',				
-				'$j.cookie'	    : 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js'																
-			};		
-			var secReq = {};	
+			baseReq = [
+				'$j.ui', 
+				'embedVideo',   				
+				'$j.cookie'	   																
+			];		
+			var secReq = new Array();	
 			//IE loads things out of order running j.slider before j.ui is ready
 			//load ui depenent scripts in a second request:
 			if($j.browser.msie){				
-				secReq = {
-					'$j.ui.slider'	: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js'	
-				}				
+				secReq.push( '$j.ui.slider' );
 				//ie6 yay!
 				if($j.browser.version <= 6){
-					secReq[ '$j.fn.pngFix' ] = 'jquery/plugins/jquery.pngFix.js';
+					secReq.push( '$j.fn.pngFix' );
 				}
 			}else{				
-				baseReq['$j.ui.slider'] =  'jquery/' + jQueryUiVN + '/ui/ui.slider.js';
+				baseReq.push('$j.ui.slider');
 			}		 				
 			_this.doLoad(baseReq,function(){						
 					_this.doLoad(secReq,function(){			 
@@ -393,11 +522,11 @@ var mvJsLoader = {
 	},	
 	//checks the jQuery flag (this way when remote embeding we don't load jQuery 
 	// unless mwAddOnloadHook was used or there is video on the page
-	runQuededFunctions:function(){	
+	runQuededFunctions:function(){			
 		var _this = this; 
 		this.doneReadyEvents=true;			
 		if(this.jQueryCheckFlag){
-			this.jQueryCheck(function(){
+			this.jQueryCheck(function(){				
 				_this.runReadyEvents();
 			});
 		}else{	 
@@ -405,6 +534,7 @@ var mvJsLoader = {
 		}
 	},
 	runReadyEvents:function(){
+		js_log("runReadyEvents");
 		while( this.onReadyEvents.length ){
 			this.onReadyEvents.shift()();
 		}
@@ -450,9 +580,9 @@ function mwdomReady(force){
 }
 //mwAddOnloadHook: ensure jQuery and the DOM are ready:  
 function mwAddOnloadHook( func ) {				 
-		//make sure the skin/style sheets are avaliable always: 
-		loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
-		 loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
+	//make sure the skin/style sheets are avaliable always: 
+	loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );
+	loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
 				 
 	//if we have already run the dom ready just run the function directly: 
 	if( mvJsLoader.doneReadyEvents ){
@@ -583,16 +713,16 @@ function mv_jqueryBindings(){
 			//load all the req libs: 
 			mvJsLoader.jQueryCheck(function(){
 				//load search specifc extra stuff 
-				mvJsLoader.doLoad({
-					'remoteSearchDriver'	: 'libAddMedia/remoteSearchDriver.js',
-					'$j.cookie'				: 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',
-					'$j.ui'					: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-					'$j.ui.resizable'		: 'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
-					'$j.ui.draggable'		: 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
-					'$j.ui.dialog'			: 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js',
-					'$j.ui.tabs'			: 'jquery/' + jQueryUiVN + '/ui/ui.tabs.js',
-					'$j.ui.sortable'		: 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js'
-				}, function(){
+				mvJsLoader.doLoad([
+					'remoteSearchDriver',
+					'$j.cookie',
+					'$j.ui',
+					'$j.ui.resizable',
+					'$j.ui.draggable',
+					'$j.ui.dialog',
+					'$j.ui.tabs',
+					'$j.ui.sortable'
+				], function(){
 					iObj['instance_name']= 'rsdMVRS';
 					_global['rsdMVRS'] = new remoteSearchDriver( iObj );	   
 					if(callback)
@@ -609,18 +739,18 @@ function mv_jqueryBindings(){
         	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
         	mvJsLoader.embedVideoCheck(function(){		
         		//load playlist object and drag,drop,resize,hoverintent,libs
-        		mvJsLoader.doLoad({
-        				'mvPlayList'		: 'libSequencer/mvPlayList.js',
-        				'$j.ui'				: 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-        				'$j.ui.droppable'	: 'jquery/' + jQueryUiVN + '/ui/ui.droppable.js',
-        				'$j.ui.draggable'	: 'jquery/' + jQueryUiVN + '/ui/ui.draggable.js',
-        				'$j.ui.sortable'	: 'jquery/' + jQueryUiVN + '/ui/ui.sortable.js',
-        				'$j.ui.resizable'	: 'jquery/' + jQueryUiVN + '/ui/ui.resizable.js',
-        				'$j.ui.slider'		: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js',
-        				'$j.ui.tabs'		: 'jquery/' + jQueryUiVN + '/ui/ui.tabs.js',
-        				'$j.contextMenu'	: 'jquery/plugins/jquery.contextMenu.js',
-        				'mvSequencer'		: 'libSequencer/mvSequencer.js'		
-        			},function(){					
+        		mvJsLoader.doLoad([
+        				'mvPlayList',
+        				'$j.ui',
+        				'$j.ui.droppable',
+        				'$j.ui.draggable',
+        				'$j.ui.sortable',
+        				'$j.ui.resizable',
+        				'$j.ui.slider',
+        				'$j.ui.tabs',
+        				'$j.contextMenu',
+        				'mvSequencer'		
+        			],function(){					
         				js_log('calling new mvSequencer');						
         				//init the sequence object (it will take over from there) no more than one mvSeq obj for now: 
         				if(!_global['mvSeq']){
@@ -639,34 +769,34 @@ function mv_jqueryBindings(){
 			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );			
 			// @@todo should refactor  mvAdvFirefogg as jQuery plugin
 			iObj['selector'] = this.selector;				
-			loadSet = {				
-				'mvBaseUploadInterface' : 'libAddMedia/mvBaseUploadInterface.js',
-				'mvFirefogg'			: 'libAddMedia/mvFirefogg.js',
-				'$j.ui'				    : 'jquery/' + jQueryUiVN + '/ui/ui.core.js'										
-			};	
-			var encoderInterfaceLoadSet = {
-					'mvAdvFirefogg'		: 'libAddMedia/mvAdvFirefogg.js',
-					'$j.cookie'			: 'jquery/' + jQueryUiVN + '/external/cookie/jquery.cookie.js',			  
-					'$j.ui.accordion'   : 'jquery/' + jQueryUiVN + '/ui/ui.accordion.js',
-					'$j.ui.slider'	 	: 'jquery/' + jQueryUiVN + '/ui/ui.slider.js',	   
-					'$j.ui.datepicker'  : 'jquery/' + jQueryUiVN + '/ui/ui.datepicker.js'
-			}
-			var secondLoadSet = {};	
+			loadSet = [				
+				'mvBaseUploadInterface',
+				'mvFirefogg',
+				'$j.ui'										
+			];	
+			var eiLoadSet = [
+					'mvAdvFirefogg',
+					'$j.cookie',			  
+					'$j.ui.accordion',
+					'$j.ui.slider',	   
+					'$j.ui.datepicker'
+			]
+			var secondLoadSet = [];	
 			//IE* ~sometimes~ executes things out of order on DOM inserted scripts
 			//*(kind of pointless anyway since IE does not support firefogg 
 			// but if you want firefog to drive the "is not supported" msg here you go ;)
 			if($.browser.msie){
-				secondLoadSet = {
-					'$j.ui.progressbar'	    : 'jquery/' + jQueryUiVN + '/ui/ui.progressbar.js',
-					'$j.ui.dialog'		    : 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js'		
-				}
-				for(var i in encoderInterfaceLoadSet)
-					secondLoadSet[i] = encoderInterfaceLoadSet[i];
+				secondLoadSet = [
+					'$j.ui.progressbar',
+					'$j.ui.dialog'		
+				]
+				for(var i=0;i < eiLoadSet.length; i++)
+					secondLoadSet[i] = eiLoadSet[i];
 			}else{
-				loadSet['$j.ui.progressbar']='jquery/' + jQueryUiVN + '/ui/ui.progressbar.js';
-				loadSet['$j.ui.dialog']		='jquery/' + jQueryUiVN + '/ui/ui.dialog.js';
-				for(var i in encoderInterfaceLoadSet)
-					loadSet[i] = encoderInterfaceLoadSet[i];
+				loadSet.push( '$j.ui.progressbar' );
+				loadSet.push( '$j.ui.dialog' );
+				for(var i=0;i < eiLoadSet.length; i++)
+					loadSet.push( eiLoadSet[i] );
 			}			
 			//make sure we have everything loaded that we need: 
 			mvJsLoader.doLoad( loadSet, function(){	
@@ -686,12 +816,12 @@ function mv_jqueryBindings(){
 		}
 		
 		$.fn.baseUploadInterface = function(iObj){
-			mvJsLoader.doLoad({
-				  'mvBaseUploadInterface' : 'libAddMedia/mvBaseUploadInterface.js',
-				  '$j.ui'				 : 'jquery/' + jQueryUiVN + '/ui/ui.core.js',
-				  '$j.ui.progressbar'	 : 'jquery/' + jQueryUiVN + '/ui/ui.progressbar.js',
-				  '$j.ui.dialog'		  : 'jquery/' + jQueryUiVN + '/ui/ui.dialog.js'	
-			},function(){				
+			mvJsLoader.doLoad([
+				  'mvBaseUploadInterface',
+				  '$j.ui',
+				  '$j.ui.progressbar',
+				  '$j.ui.dialog'	
+			],function(){				
 				myUp = new mvBaseUploadInterface( iObj );
 				myUp.setupForm();
 			});
@@ -1016,7 +1146,7 @@ function getMvEmbedURL(){
 		if( src ){			
 			if( src.indexOf('mv_embed.js') !=-1 || (  
 				( src.indexOf('mwScriptLoader.php') != -1 || src.indexOf('jsScriptLoader.php') != -1 )
-					&& src.indexOf('mv_embed') != -1) ){ //(check for class=mv_embed script_loader call)
+					&& src.indexOf('mv_embed') != -1) ){ //(check for class=mv_embed script_loader call)												
 				_global['mv_embed_url'] = src;
 				return  src;		
 			}

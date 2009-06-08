@@ -160,15 +160,17 @@ mvEmbed = {
 			});	
 		}				
 		if(loadPlaylistLib){		
-			mvJsLoader.doLoad({ 'mvPlayList' : 'libSequencer/mvPlayList.js' },function(){
+			mvJsLoader.doLoad([ 
+				'mvPlayList' 
+			], function(){
 				$j('playlist').each(function(){		
 					//check if we are in sequence mode load sequence libs (if not already loaded)								 
 					if( $j(this).attr('sequencer')=="true" ){
 						var pl_element = this;
 						//load the mv_sequencer and the json util lib:
-						mvJsLoader.doLoad({
-								'mvSeqPlayList':'libSequencer/mvSequencer.js'							
-							},function(){
+						mvJsLoader.doLoad([
+								'mvSeqPlayList'
+							],function(){
 								var seqObj = new mvSeqPlayList( pl_element );
 								mvEmbed.swapEmbedVideoElement( pl_element, seqObj );																					
 							}
@@ -251,8 +253,8 @@ mvEmbed = {
 		if( is_ready ){
 			mvEmbed.allClipsReady = true;
 			// run queued functions 
-			js_log('run queded functions:' + mvEmbed.flist[0]);
-			while (mvEmbed.flist.length){
+			//js_log('run queded functions:' + mvEmbed.flist[0]);
+			while (mvEmbed.flist.length){				
 				mvEmbed.flist.shift()();
 			}
 		}else{				 
@@ -270,8 +272,8 @@ var ctrlBuilder = {
 	supports:{
 		  'options':true,				 
 		  'borders':true			   
-	   },
-	getControls:function(embedObj){	
+	},
+	getControls:function( embedObj ){	
 		js_log('f:controlsBuilder');		
 		this.id = (embedObj.pc)?embedObj.pc.pp.id:embedObj.id;
 		this.avaliable_width=embedObj.playerPixelWidth();
@@ -962,7 +964,6 @@ mediaElement.prototype =
 	@param element <video> tag used for initialization.
 	@constructor
 */
-
 var embedVideo = function(element) {
 	return this.init(element);
 };
@@ -1802,10 +1803,10 @@ embedVideo.prototype = {
 		//check if textObj present:
 		if(typeof this.textInterface == 'undefined' ){
 			//load the default text interface:
-			mvJsLoader.doLoad({
-					'mvTextInterface'   : 'libTimedText/mvTextInterface.js',
-					'$j.fn.hoverIntent' : 'jquery/plugins/jquery.hoverIntent.js'
-				}, function(){					
+			mvJsLoader.doLoad([
+					'mvTextInterface', 
+					'$j.fn.hoverIntent'
+				], function(){					
 					_this.textInterface = new mvTextInterface( _this );							
 					//show interface
 					_this.textInterface.show();
@@ -2325,7 +2326,6 @@ embedVideo.prototype = {
 
 
 
-
 /**
   * mediaPlayer represents a media player plugin.
   * @param {String} id id used for the plugin.
@@ -2381,10 +2381,11 @@ mediaPlayer.prototype =
 					_this.loading_callbacks[i]();	
 				_this.loading_callbacks = null;
 			});*/
-			
-			eval('var lib = {"'+this.library+'Embed":\'libEmbedVideo/mv_'+this.library+'Embed.js\'}');
+									
 			js_log('DO LOAD: '+this.library); 
-			mvJsLoader.doLoad(lib,function(){
+			mvJsLoader.doLoad([ 
+				this.library+'Embed' 
+			],function(){
 				//js_log( 'type of lib: ' + eval( 'typeof ' + this.library + 'Embed' ) );
 				//js_log(_this.id + ' plugin loaded');
 				_this.loaded = true;

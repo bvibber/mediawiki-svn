@@ -516,8 +516,10 @@ remoteSearchDriver.prototype = {
 		mv_set_loading('#tab-upload');
 	
 		//todo include firefogg support:
-		mvJsLoader.doLoad( {'mvUploader': 'libAddMedia/mvClipEdit.js'},function(){			
-			_this.cUpLoader = new mvUploader({
+		mvJsLoader.doLoad( [
+				'mvUploader'
+			],function(){			
+				_this.cUpLoader = new mvUploader({
 					'target_div': '#tab-upload',
 					'upload_done_action:': function( rTitle){
 						//set to loading:
@@ -528,8 +530,7 @@ remoteSearchDriver.prototype = {
 							_this.resourceEdit( rObj );
 						});
 					}											
-				}
-			);
+			});
 		}); 
 	},
 	runSearch: function(){		
@@ -674,8 +675,7 @@ remoteSearchDriver.prototype = {
 			return false;
 		}
 		//set up the library req:
-		var libReq = {'baseRemoteSearch' : 'libAddMedia/searchLibs/baseRemoteSearch.js'};
-		libReq[ cp.lib +'Search' ] = 'libAddMedia/searchLibs/' +cp.lib + 'Search.js' ;	
+		var libReq = ['baseRemoteSearch',  cp.lib +'Search' ];		
 		mvJsLoader.doLoad( libReq, function(){	
 			//else we need to run the search:
 			var iObj = {'cp':cp, 'rsd':_this};		
@@ -1029,14 +1029,14 @@ remoteSearchDriver.prototype = {
 				'media_type': mediaType,
 				'p_rsdObj': _this					
 		};	
-		var clibs = {'mvClipEdit':'libClipEdit/mvClipEdit.js'};
+		var clibs = ['mvClipEdit'];
 		if( mediaType == 'image'){
 			//load the crop library:
 			//loadLibs['$j.Jcrop']='jquery/plugins/Jcrop/js/jquery.Jcrop.js';
 			//@@todo integrate css calls into mvJsLoader or move jcrop css
 			//loadExternalCss( mv_embed_path + 'jquery/plugins/Jcrop/css/jquery.Jcrop.css');
 			//display the mvClipEdit obj once we are done loading:
-			mvJsLoader.doLoad( clibs,function(){			
+			mvJsLoader.doLoad( clibs, function(){			
 				//run the image clip tools
 				_this.cEdit = new mvClipEdit( mvClipInit );
 			});			
@@ -1056,8 +1056,8 @@ remoteSearchDriver.prototype = {
 						//grab any information that we got from the ROE xml or parsed from the media file
 						rObj.pSobj.getEmbedObjParsedInfo( rObj, 'embed_vid' );
 						//add the re-sizable to the doLoad request:			
-						clibs['$j.ui.resizable']   ='jquery/' + jQueryUiVN + '/ui/ui.resizable.js';
-						clibs['$j.fn.hoverIntent'] ='jquery/plugins/jquery.hoverIntent.js';
+						clibs.push( '$j.ui.resizable');
+						clibs.push( '$j.fn.hoverIntent');
 						mvJsLoader.doLoad(clibs, function(){							
 							//make sure the rsd_edit_img is hidden:
 							$j('#rsd_edit_img').remove();																				
