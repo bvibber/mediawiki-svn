@@ -376,6 +376,16 @@ timedTextCMML = {
 		//:: Load transcript range ::  
 		
 		var pcurl =  parseUri( _this.getSRC() );
+		//check for urls without time keys: 
+		if( typeof pcurl.queryKey['t'] == 'undefined'){
+			//in which case just get the full time req: 
+			do_request( this.getSRC(), function(data){													
+				_this.doParse( data );		
+				_this.loaded=true;	
+				callback();
+			});
+			return ;
+		}
 		var req_time = pcurl.queryKey['t'].split('/');
 		req_time[0]=npt2seconds(req_time[0]);
 		req_time[1]=npt2seconds(req_time[1]);
@@ -384,7 +394,7 @@ timedTextCMML = {
 			req_time[1] = req_time[0]+_this.request_length;
 		}
 		//set up request url:
-		url = pcurl.protocol+'://'+pcurl.authority+pcurl.path+'?';
+		url = pcurl.protocol + '://' + pcurl.authority + pcurl.path +'?';
 		$j.each(pcurl.queryKey, function(key, val){						
 			if( key != 't'){
 				url+=key+'='+val+'&';

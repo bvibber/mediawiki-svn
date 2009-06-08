@@ -498,9 +498,9 @@ var mvJsLoader = {
 				'$j.cookie'	   																
 			];		
 			var secReq = new Array();	
-			//IE loads things out of order running j.slider before j.ui is ready
+			//IE & safari appear to load things out of order running j.slider before j.ui is ready
 			//load ui depenent scripts in a second request:
-			if($j.browser.msie){				
+			if($j.browser.msie || $j.browser.safari){				
 				secReq.push( '$j.ui.slider' );
 				//ie6 yay!
 				if($j.browser.version <= 6){
@@ -737,20 +737,31 @@ function mv_jqueryBindings(){
         	loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
         	loadExternalCss( mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');	
         	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
-        	mvJsLoader.embedVideoCheck(function(){		
-        		//load playlist object and drag,drop,resize,hoverintent,libs
-        		mvJsLoader.doLoad([
+        	mvJsLoader.embedVideoCheck(function(){	
+        		var firstLoadSet =[
         				'mvPlayList',
-        				'$j.ui',
+        				'$j.ui',  
+        				'$j.contextMenu',
+        				'mvSequencer'		
+        		];
+        		var secondLoadSet =[];
+        		var uiDepLibs = ['$j.ui.dialog',
         				'$j.ui.droppable',
-        				'$j.ui.draggable',
+        				'$j.ui.draggable',        				
         				'$j.ui.sortable',
         				'$j.ui.resizable',
         				'$j.ui.slider',
-        				'$j.ui.tabs',
-        				'$j.contextMenu',
-        				'mvSequencer'		
-        			],function(){					
+        				'$j.ui.tabs'];
+        		if($j.browser.msie || $j.browser.safari){        				
+        			for(var i=0;i<uiDepLibs.length;i++)
+        				secondLoadSet.push( uiDepLibs[i]);
+        		}else{
+        			for(var i=0;i<uiDepLibs.length;i++)
+        				firstLoadSet.push( uiDepLibs[i]);
+        		}
+        		//load playlist object and drag,drop,resize,hoverintent,libs
+        		mvJsLoader.doLoad(firstLoadSet,function(){			
+        			mvJsLoader.doLoad(secondLoadSet,function(){	
         				js_log('calling new mvSequencer');						
         				//init the sequence object (it will take over from there) no more than one mvSeq obj for now: 
         				if(!_global['mvSeq']){
@@ -758,6 +769,7 @@ function mv_jqueryBindings(){
         				}else{
         					js_log('mvSeq already init');
         				}
+        			});
         		});
         	});
 		}
@@ -785,7 +797,7 @@ function mv_jqueryBindings(){
 			//IE* ~sometimes~ executes things out of order on DOM inserted scripts
 			//*(kind of pointless anyway since IE does not support firefogg 
 			// but if you want firefog to drive the "is not supported" msg here you go ;)
-			if($.browser.msie){
+			if($.browser.msie ||  $j.browser.safari){
 				secondLoadSet = [
 					'$j.ui.progressbar',
 					'$j.ui.dialog'		

@@ -581,12 +581,9 @@ mvClipEdit.prototype = {
 			});			
 		}else{
 			doEnableCrop();
-		}
-		
+		}		
 	}
 }
-
-
 
 // mv_lock_vid_updates defined in mv_stream.js (we need to do some more refactoring )
 if(typeof mv_lock_vid_updates == 'undefined')

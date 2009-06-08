@@ -468,7 +468,7 @@ mvPlayList.prototype = {
 		//should probably be based on if we have a provider api url
 		if( typeof wgEnableWriteAPI != 'undefined'){
 			$j( $j.btnHtml('edit', 'editBtn_'+this.id, 'pencil', 
-				{'style':'float:right;font-size:x-small;height:10px;margin-bottom:0;padding-bottom:7px;padding-top:0;'} )
+				{'style':'position:absolute;right:0;;font-size:x-small;height:10px;margin-bottom:0;padding-bottom:7px;padding-top:0;'} )
     			).click(function(){	
     					_this.doEditor();
     			}).appendTo('#ptitle_'+this.id);	

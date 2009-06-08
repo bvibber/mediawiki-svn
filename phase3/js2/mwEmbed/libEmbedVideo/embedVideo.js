@@ -2223,7 +2223,7 @@ embedVideo.prototype = {
 		if (window.document[this.pid]){
 			return window.document[this.pid];
 		}
-		if (embedTypes.msie){
+		if ($j.browser.msie){
 			return document.getElementById(this.pid );
 		}else{
 			 if (document.embeds && document.embeds[this.pid])
@@ -2658,7 +2658,7 @@ var embedTypes = {
 				|| typeof HTMLVideoElement == 'function' ) // Opera
 		{
 			//do another test for safari: 
-			if( this.safari ){				
+			if( $j.browser.safari ){				
 				try{
 					var dummyvid = document.createElement("video");
 					if (dummyvid.canPlayType && dummyvid.canPlayType("video/ogg;codecs=\"theora,vorbis\"") == "probably")

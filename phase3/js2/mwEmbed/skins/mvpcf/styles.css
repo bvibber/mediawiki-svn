@@ -79,8 +79,7 @@ div.floatleft, table.floatleft {
 
 .videoPlayer
 {
-	color: #474747;
-	background: white;
+	color: #474747;	
 }
 
 .videoPlayer a:link {color: #2060c1; text-decoration: underline;}
