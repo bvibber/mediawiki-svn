@@ -50,11 +50,14 @@ div#edittoolbar div.group > div.label {
 	line-height: 22px;
 	margin: 2px;
 	margin-left: 5px;
-	margin-right: 5px;
-	color: #666666;
+	margin-right: 8px;
+	color: #777777;
+	cursor: default;
 }
 body.rtl div#edittoolbar div.group > div.label {
 	float: right;
+	margin-left: 8px;
+	margin-right: 5px;
 }
 div#edittoolbar div.group > img {
 	float: left;
