@@ -32,6 +32,14 @@ $wgExtensionCredits['other'][] = array(
 // Bump the version number every time you change any of the .css/.js files
 $wgEditToolbarStyleVersion = 0;
 
+// Set this to true to simply override the stock toolbar for everyone
+$wgEditToolbarGlobalEnable = false;
+
+// Set this to true to add a preference to the editing section of preferences
+// which enables and disables this toolbar (if $wgEditToolbarGlobalEnable, this
+// will not do anything)
+$wgEditToolbarUserEnable = true;
+
 // Autoload Classes
 $wgAutoloadClasses['EditToolbarHooks'] = $dir . 'EditToolbar.hooks.php';
 

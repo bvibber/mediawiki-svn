@@ -16,14 +16,28 @@ class EditToolbarHooks {
 	 */
 	public static function intercept( &$toolbar ) {
 		global $wgUser, $wgOut, $wgJsMimeType;
+		global $wgEditToolbarGlobalEnable, $wgEditToolbarUserEnable;
 		
-		// Internationalization
-		wfLoadExtensionMessages( 'EditToolbar' );
-		// Checks if the user has not opted to use this toolbar
-		if ( !$wgUser->getOption( 'usebetatoolbar' ) ) {
-			// Exists the function without doing anything
+		// Checks if...
+		if (
+			// The following is NOT true
+			!(
+				// Toolbar is globablly enabled
+				$wgEditToolbarGlobalEnable ||
+				// Or...
+				(
+					// Toolbar is per-user enablable
+					$wgEditToolbarUserEnable &&
+					// And this user has enabled it
+					$wgUser->getOption( 'usebetatoolbar' ) 
+				)
+			)
+		) {
+			// Returns without using the toolbar
 			return true;
 		}
+		// Internationalization
+		wfLoadExtensionMessages( 'EditToolbar' );
 		// Adds toolbar container
 		$toolbar = '<div id="edittoolbar"></div>';
 		// List of messages to be sent to the client for use in the toolbar
@@ -92,13 +106,25 @@ class EditToolbarHooks {
 	 * Add toolbar related items to the preferences
 	 */
 	public static function addPreferences( $user, $defaultPreferences ) {
-		wfLoadExtensionMessages( 'EditToolbar' );
-		$defaultPreferences['usebetatoolbar'] =
-		array(
-			'type' => 'toggle',
-			'label-message' => 'edittoolbar-preference',
-			'section' => 'editing/advancedediting',
-		);
+		global $wgEditToolbarGlobalEnable, $wgEditToolbarUserEnable;
+		
+		// Checks if...
+		if (
+			// Toolbar is NOT globablly enabled
+			!$wgEditToolbarGlobalEnable &&
+			// And Toolbar is per-user enablable
+			$wgEditToolbarUserEnable
+		) {
+			// Internationalization
+			wfLoadExtensionMessages( 'EditToolbar' );
+			// Adds preference for opting in
+			$defaultPreferences['usebetatoolbar'] =
+			array(
+				'type' => 'toggle',
+				'label-message' => 'edittoolbar-preference',
+				'section' => 'editing/advancedediting',
+			);
+		}
 		return true;
 	}
 	
