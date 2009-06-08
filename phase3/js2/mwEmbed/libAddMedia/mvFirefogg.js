@@ -481,7 +481,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			js_log('done with encoding do upload:' + _this.editForm.action);					
 			// ignore warnings & set source type 
 			//_this.formData[ 'wpIgnoreWarning' ]='true';
-			_this.formData[ 'wpSourceType' ]= 'file';		
+			_this.formData[ 'wpSourceType' ] = 'file';		
 			_this.formData[ 'action' ]		 = 'submit';
 		
 			_this.fogg.post( _this.editForm.action, 'wpUploadFile', JSON.stringify( _this.formData ) );				

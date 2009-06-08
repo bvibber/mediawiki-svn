@@ -139,12 +139,7 @@ mvSequencer.prototype = {
 					'remoteSearchDriver',
 					'seqRemoteSearchDriver'
 				], function(){					
-					this_seq.mySearch = new seqRemoteSearchDriver({
-						'p_seq':this_seq,
-						'target_container':'#cliplib_ic',
-						'local_wiki_api_url':	 this_seq.getLocalApiUrl(),										
-						'instance_name': this_seq.instance_name + '.mySearch'						
-					 });
+					this_seq.mySearch = new seqRemoteSearchDriver(this_seq);
 					 this_seq.mySearch.doInitDisplay();
 				});
 			}
@@ -550,7 +545,7 @@ mvSequencer.prototype = {
 				'<a id="mv_menu_item_'+tab_id+'" href="#tab-ic-' + tab_id + '">'+gM('menu_' + tab_id )+
 			'</li>';						
 			
-			tabc += '<div id="tab-ic-' + tab_id + '" >';													
+			tabc += '<div id="tab-ic-' + tab_id + '" style="overflow:auto;" >';													
 				tabc += (menu_item.html) ? menu_item.html : '<h3>' + gM('menu_'+tab_id) + '</h3>';
 			tabc +='</div>';
 				

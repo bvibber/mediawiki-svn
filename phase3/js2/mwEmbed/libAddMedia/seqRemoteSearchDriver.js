@@ -5,7 +5,14 @@ var seqRemoteSearchDriver = function(iObj){
 	return this.init( iObj )
 }
 seqRemoteSearchDriver.prototype = {
-	init:function( iObj ){
+	init:function( this_seq ){
+		//setup remote search driver with a seq parent: 
+		this.pSeq = this_seq;
+		var iObj = {			
+			'target_container':'#tab-ic-cliplib',
+			'local_wiki_api_url':	 this_seq.getLocalApiUrl(),										
+			'instance_name': this_seq.instance_name + '.mySearch'						
+		}
 		//inherit the remoteSearchDriver properties:n		
 		var tmpRSD = new remoteSearchDriver( iObj );
 		for(var i in tmpRSD){
@@ -46,7 +53,7 @@ seqRemoteSearchDriver.prototype = {
 				return $j('#clone_'+this.id).get(0);
 			},
 			drag:function(e, ui){
-				insert_key = _this.p_seq.clipDragUpdate(ui, this);		
+				insert_key = _this.pSeq.clipDragUpdate(ui, this);		
 			},
 			//do contain: 
 			containment:'#container_track_0',
