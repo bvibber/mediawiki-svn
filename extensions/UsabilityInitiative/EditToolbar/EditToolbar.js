@@ -126,11 +126,11 @@ function gM( key, args ) {
 						.attr( 'class', 'group' )
 						.appendTo( $(this) );
 				// Checks if a there's a label for this group
-				if ( 'label' in section.groups[group] ) {
+				if ( 'label' in section.groups[group] || 'labelMsg' in section.groups[group] ) {
 					groupDiv.append(
 						$( '<div />' )
 							.attr( 'class', 'label' )
-							.text( ( section.groups[group].label || gM( section.groups[group].labelMsg ) ) )
+							.text( section.groups[group].label || gM( section.groups[group].labelMsg ) )
 					)
 				}
 				// Creates generic action
@@ -255,14 +255,14 @@ var editToolbarConfiguration = {
 			'format': {
 				tools: {
 					'bold': {
-						labelMsg: 'edittoolbar-format-bold',
+						labelMsg: 'edittoolbar-tool-format-bold',
 						type: 'button',
 						icon: 'format-bold.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "'''",
-								periMsg: 'edittoolbar-format-bold-example',
+								periMsg: 'edittoolbar-tool-format-bold-example',
 								post: "'''"
 							}
 						}
@@ -271,14 +271,14 @@ var editToolbarConfiguration = {
 						section: 'main',
 						group: 'format',
 						id: 'italic',
-						labelMsg: 'edittoolbar-format-italic',
+						labelMsg: 'edittoolbar-tool-format-italic',
 						type: 'button',
 						icon: 'format-italic.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "''",
-								periMsg: 'edittoolbar-format-italic-example',
+								periMsg: 'edittoolbar-tool-format-italic-example',
 								post: "''"
 							}
 						}
@@ -288,47 +288,47 @@ var editToolbarConfiguration = {
 			'insert': {
 				tools: {
 					'xlink': {
-						labelMsg: 'edittoolbar-insert-xlink',
+						labelMsg: 'edittoolbar-tool-insert-xlink',
 						type: 'button',
 						icon: 'insert-xlink.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "[",
-								periMsg: 'edittoolbar-insert-xlink-example',
+								periMsg: 'edittoolbar-tool-insert-xlink-example',
 								post: "]"
 							}
 						}
 					},
 					'ilink': {
-						labelMsg: 'edittoolbar-insert-ilink',
+						labelMsg: 'edittoolbar-tool-insert-ilink',
 						type: 'button',
 						icon: 'insert-ilink.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "[[",
-								periMsg: 'edittoolbar-insert-ilink-example',
+								periMsg: 'edittoolbar-tool-insert-ilink-example',
 								post: "]]"
 							}
 						}
 					},
 					'file': {
-						labelMsg: 'edittoolbar-insert-file',
+						labelMsg: 'edittoolbar-tool-insert-file',
 						type: 'button',
 						icon: 'insert-file.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "[[",
-								preMsg: 'edittoolbar-insert-file-pre',
-								periMsg: 'edittoolbar-insert-file-example',
+								preMsg: 'edittoolbar-tool-insert-file-pre',
+								periMsg: 'edittoolbar-tool-insert-file-example',
 								post: "]]"
 							}
 						}
 					},
 					'reference': {
-						labelMsg: 'edittoolbar-insert-reference',
+						labelMsg: 'edittoolbar-tool-insert-reference',
 						filters: [ 'body.ns-subject' ],
 						type: 'button',
 						icon: 'insert-reference.png',
@@ -336,13 +336,13 @@ var editToolbarConfiguration = {
 							type: 'encapsulate',
 							options: {
 								pre: "<ref>",
-								periMsg: 'edittoolbar-insert-reference-example',
+								periMsg: 'edittoolbar-tool-insert-reference-example',
 								post: "</ref>"
 							}
 						}
 					},
 					'signature': {
-						labelMsg: 'edittoolbar-insert-signature',
+						labelMsg: 'edittoolbar-tool-insert-signature',
 						filters: [ 'body.ns-talk' ],
 						type: 'button',
 						icon: 'insert-signature.png',
@@ -364,60 +364,60 @@ var editToolbarConfiguration = {
 			'heading': {
 				tools: {
 					'heading': {
-						labelMsg: 'edittoolbar-format-heading',
+						labelMsg: 'edittoolbar-tool-format-heading',
 						type: 'select',
 						list: {
 							'heading-1' : {
-								labelMsg: 'edittoolbar-format-heading-1',
+								labelMsg: 'edittoolbar-tool-format-heading-1',
 								action: {
 									type: 'encapsulate',
 									options: {
 										pre: "=",
-										periMsg: 'edittoolbar-format-heading-example',
+										periMsg: 'edittoolbar-tool-format-heading-example',
 										post: "="
 									}
 								}
 							},
 							'heading-2' : {
-								labelMsg: 'edittoolbar-format-heading-2',
+								labelMsg: 'edittoolbar-tool-format-heading-2',
 								action: {
 									type: 'encapsulate',
 									options: {
 										pre: "==",
-										periMsg: 'edittoolbar-format-heading-example',
+										periMsg: 'edittoolbar-tool-format-heading-example',
 										post: "=="
 									}
 								}
 							},
 							'heading-3' : {
-								labelMsg: 'edittoolbar-format-heading-3',
+								labelMsg: 'edittoolbar-tool-format-heading-3',
 								action: {
 									type: 'encapsulate',
 									options: {
 										pre: "===",
-										periMsg: 'edittoolbar-format-heading-example',
+										periMsg: 'edittoolbar-tool-format-heading-example',
 										post: "==="
 									}
 								}
 							},
 							'heading-4' : {
-								labelMsg: 'edittoolbar-format-heading-4',
+								labelMsg: 'edittoolbar-tool-format-heading-4',
 								action: {
 									type: 'encapsulate',
 									options: {
 										pre: "====",
-										periMsg: 'edittoolbar-format-heading-example',
+										periMsg: 'edittoolbar-tool-format-heading-example',
 										post: "===="
 									}
 								}
 							},
 							'heading-5' : {
-								labelMsg: 'edittoolbar-format-heading-5',
+								labelMsg: 'edittoolbar-tool-format-heading-5',
 								action: {
 									type: 'encapsulate',
 									options: {
 										pre: "=====",
-										periMsg: 'edittoolbar-format-heading-example',
+										periMsg: 'edittoolbar-tool-format-heading-example',
 										post: "====="
 									}
 								}
@@ -427,30 +427,30 @@ var editToolbarConfiguration = {
 				}
 			},
 			'list': {
-				label: 'List',
+				labelMsg: 'edittoolbar-group-format-list',
 				tools: {
 					'ulist': {
-						labelMsg: 'edittoolbar-format-ulist',
+						labelMsg: 'edittoolbar-tool-format-ulist',
 						type: 'button',
 						icon: 'format-ulist.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "* ",
-								periMsg: 'edittoolbar-format-ulist-example',
+								periMsg: 'edittoolbar-tool-format-ulist-example',
 								post: ""
 							}
 						}
 					},
 					'olist': {
-						labelMsg: 'edittoolbar-format-olist',
+						labelMsg: 'edittoolbar-tool-format-olist',
 						type: 'button',
 						icon: 'format-olist.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "# ",
-								periMsg: 'edittoolbar-format-olist-example',
+								periMsg: 'edittoolbar-tool-format-olist-example',
 								post: ""
 							}
 						}
@@ -458,56 +458,56 @@ var editToolbarConfiguration = {
 				}
 			},
 			'size': {
-				label: 'Size',
+				labelMsg: 'edittoolbar-group-format-size',
 				tools: {
 					'big': {
-						labelMsg: 'edittoolbar-format-big',
+						labelMsg: 'edittoolbar-tool-format-big',
 						type: 'button',
 						icon: 'format-big.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<big>",
-								periMsg: 'edittoolbar-format-big-example',
+								periMsg: 'edittoolbar-tool-format-big-example',
 								post: "</big>"
 							}
 						}
 					},
 					'small': {
-						labelMsg: 'edittoolbar-format-small',
+						labelMsg: 'edittoolbar-tool-format-small',
 						type: 'button',
 						icon: 'format-small.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<small>",
-								periMsg: 'edittoolbar-format-small-example',
+								periMsg: 'edittoolbar-tool-format-small-example',
 								post: "</small>"
 							}
 						}
 					},
 					'superscript': {
-						labelMsg: 'edittoolbar-format-superscript',
+						labelMsg: 'edittoolbar-tool-format-superscript',
 						type: 'button',
 						icon: 'format-superscript.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<super>",
-								periMsg: 'edittoolbar-format-superscript-example',
+								periMsg: 'edittoolbar-tool-format-superscript-example',
 								post: "</super>"
 							}
 						}
 					},
 					'subscript': {
-						labelMsg: 'edittoolbar-format-subscript',
+						labelMsg: 'edittoolbar-tool-format-subscript',
 						type: 'button',
 						icon: 'format-subscript.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<sub>",
-								periMsg: 'edittoolbar-format-subscript-example',
+								periMsg: 'edittoolbar-tool-format-subscript-example',
 								post: "</sub>"
 							}
 						}
