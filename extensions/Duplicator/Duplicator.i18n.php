@@ -46,6 +46,10 @@ $messages['qqq'] = array(
 	'duplicator-desc' => 'Extension description displayed on [[Special:Version]].',
 	'duplicator-options' => '{{Identical|Options}}',
 	'duplicator-source' => '{{Identical|Source}}',
+	'duplicator-toomanyrevisions' => 'This message supports the use of PLURAL.	
+* $1: source page name
+* $2: number of actual revisions
+* $3: current revision limit.',
 	'right-duplicate' => '{{doc-right|duplicate}}',
 );
 
