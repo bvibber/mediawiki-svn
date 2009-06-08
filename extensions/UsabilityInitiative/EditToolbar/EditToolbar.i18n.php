@@ -49,6 +49,7 @@ $messages['en'] = array(
 	'edittoolbar-tool-format-big-example' => 'Big text',
 	'edittoolbar-tool-format-small' => 'Small',
 	'edittoolbar-tool-format-small-example' => 'Small text',
+	'edittoolbar-group-format-baseline' => 'Baseline',
 	'edittoolbar-tool-format-superscript' => 'Superscript',
 	'edittoolbar-tool-format-superscript-example' => 'Superscript text',
 	'edittoolbar-tool-format-subscript' => 'Subscript',
