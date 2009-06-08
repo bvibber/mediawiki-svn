@@ -15,16 +15,32 @@ div#edittoolbar div.group {
 div#edittoolbar div.group:first-child {
 	border-left: none;
 }
+body.rtl div#edittoolbar div.group {
+	float: left;
+	padding-left: 0;
+	padding-right: 3px;
+	border-left: none;
+	border-right: solid 1px #DDDDDD;
+}
+body.rtl div.group:first-child {
+	border-right: none;
+}
 div#edittoolbar div.sections {
 	float: left;
 	width: 100%;
 	clear: both;
+}
+body.rtl div#edittoolbar div.sections {
+	float: right;
 }
 div#edittoolbar div.sections > div.section {
 	display: none;
 	float: left;
 	width: 100%;
 	border-top: solid 1px #DDDDDD;
+}
+body.rtl div#edittoolbar div.sections > div.section {
+	float: right;
 }
 div#edittoolbar div.group > img {
 	float: left;
@@ -34,15 +50,24 @@ div#edittoolbar div.group > img {
 	margin: 2px;
 	cursor: pointer;
 }
+body.rtl div#edittoolbar div.group > img {
+	float: right;
+}
 div#edittoolbar div.group > select {
 	float: left;
 	margin: 2px;
 	height: 22px;
 	cursor: pointer;
 }
+body.rtl div#edittoolbar div.group > select {
+	float: right;
+}
 div#edittoolbar div.tabs > div.tab {
 	float: left;
 	line-height: 26px;
+}
+body.rtl div#edittoolbar div.tabs > div.tab {
+	float: right;
 }
 div#edittoolbar div.tabs > div.tab > a,
 div#edittoolbar div.tabs > div.tab > a:visited {
@@ -55,6 +80,12 @@ div#edittoolbar div.tabs > div.tab > a:visited {
 	background-image: url(images/arrow-right.png);
 	background-position: left center;
 	background-repeat: no-repeat;
+}
+body.rtl div#edittoolbar div.tabs > div.tab > a,
+body.rtl div#edittoolbar div.tabs > div.tab > a:visited {
+	padding-left: 12px;
+	padding-right: 18px;
+	background-position: right center;
 }
 div#edittoolbar div.tabs > div.tab > a.current,
 div#edittoolbar div.tabs > div.tab > a.current:visited {
