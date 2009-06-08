@@ -13,8 +13,18 @@
 class WithoutInterwikiPage extends PageQueryPage {
 	private $prefix = '';
 
-	function getName() {
-		return 'Withoutinterwiki';
+	function __construct() {
+		SpecialPage::__construct( 'Withoutinterwiki' );
+	}
+	
+	function execute( $par ) {
+		global $wgRequest, $wgContLang, $wgCapitalLinks;
+		$prefix = $wgRequest->getVal( 'prefix', $par );
+		if( $wgCapitalLinks ) {
+			$prefix = $wgContLang->ucfirst( $prefix );
+		}
+		$this->prefix = $prefix;
+		parent::execute( $par );
 	}
 
 	function getPageHeader() {
@@ -77,18 +87,8 @@ class WithoutInterwikiPage extends PageQueryPage {
 	function setPrefix( $prefix = '' ) {
 		$this->prefix = $prefix;
 	}
-
-}
-
-function wfSpecialWithoutinterwiki() {
-	global $wgRequest, $wgContLang, $wgCapitalLinks;
-	list( $limit, $offset ) = wfCheckLimits();
-	if( $wgCapitalLinks ) {
-		$prefix = $wgContLang->ucfirst( $wgRequest->getVal( 'prefix' ) );
-	} else {
-		$prefix = $wgRequest->getVal( 'prefix' );
+	
+	function linkParameters() {
+		return array( 'prefix' => $this->prefix );
 	}
-	$wip = new WithoutInterwikiPage();
-	$wip->setPrefix( $prefix );
-	$wip->doQuery( $offset, $limit );
 }

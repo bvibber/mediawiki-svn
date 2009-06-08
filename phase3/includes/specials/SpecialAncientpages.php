@@ -10,8 +10,8 @@
  */
 class AncientPagesPage extends QueryPage {
 
-	function getName() {
-		return "Ancientpages";
+	function __construct() {
+		SpecialPage::__construct( 'Ancientpages' );
 	}
 
 	function isExpensive() {
@@ -48,12 +48,4 @@ class AncientPagesPage extends QueryPage {
 		$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $wgContLang->convert( $title->getPrefixedText() ) ) );
 		return wfSpecialList( $link, $d );
 	}
-}
-
-function wfSpecialAncientpages() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$app = new AncientPagesPage();
-
-	$app->doQuery( $offset, $limit );
 }

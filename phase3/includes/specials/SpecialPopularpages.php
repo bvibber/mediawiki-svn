@@ -1,17 +1,12 @@
 <?php
 /**
- * @file
- * @ingroup SpecialPage
- */
-
-/**
  * implements Special:Popularpages
  * @ingroup SpecialPage
  */
 class PopularPagesPage extends QueryPage {
 
-	function getName() {
-		return "Popularpages";
+	function __construct() {
+		SpecialPage::__construct( 'Popularpages' );
 	}
 
 	function isExpensive() {
@@ -38,15 +33,4 @@ class PopularPagesPage extends QueryPage {
 			$wgLang->formatNum( $result->value ) );
 		return wfSpecialList($link, $nv);
 	}
-}
-
-/**
- * Constructor
- */
-function wfSpecialPopularpages() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$ppp = new PopularPagesPage();
-
-	return $ppp->doQuery( $offset, $limit );
 }

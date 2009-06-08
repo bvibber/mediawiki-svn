@@ -14,7 +14,10 @@
  */
 class MostimagesPage extends ImageQueryPage {
 
-	function getName() { return 'Mostimages'; }
+	function __construct() {
+		SpecialPage::__construct( 'Mostimages' );
+	}
+	
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 
@@ -35,15 +38,4 @@ class MostimagesPage extends ImageQueryPage {
 			$wgLang->formatNum( $row->value ) ) . '<br />';
 	}
 
-}
-
-/**
- * Constructor
- */
-function wfSpecialMostimages() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$wpp = new MostimagesPage();
-
-	$wpp->doQuery( $offset, $limit );
 }

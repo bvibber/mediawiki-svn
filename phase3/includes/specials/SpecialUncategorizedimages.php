@@ -13,8 +13,8 @@
 // FIXME: Use an instance of UncategorizedPagesPage or something
 class UncategorizedImagesPage extends ImageQueryPage {
 
-	function getName() {
-		return 'Uncategorizedimages';
+	function __construct() {
+		SpecialPage::__construct( 'Uncategorizedimages' );
 	}
 
 	function sortDescending() {
@@ -44,10 +44,4 @@ class UncategorizedImagesPage extends ImageQueryPage {
 		);
 	}
 
-}
-
-function wfSpecialUncategorizedimages() {
-	$uip = new UncategorizedImagesPage();
-	list( $limit, $offset ) = wfCheckLimits();
-	return $uip->doQuery( $offset, $limit );
 }

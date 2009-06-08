@@ -18,7 +18,10 @@
  */
 class MostlinkedPage extends QueryPage {
 
-	function getName() { return 'Mostlinked'; }
+	function __construct() {
+		SpecialPage::__construct( 'Mostlinked' );
+	}
+	
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 
@@ -82,15 +85,4 @@ class MostlinkedPage extends QueryPage {
 				$wgLang->formatNum( $result->value ) ), $skin );
 		return wfSpecialList( $link, $wlh );
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialMostlinked() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$wpp = new MostlinkedPage();
-
-	$wpp->doQuery( $offset, $limit );
 }

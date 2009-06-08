@@ -28,7 +28,7 @@ $wgQueryPages = array(
 	array( 'MostcategoriesPage',            'Mostcategories'                ),
 	array( 'MostimagesPage',                'Mostimages'                    ),
 	array( 'MostlinkedCategoriesPage',      'Mostlinkedcategories'          ),
-	array( 'SpecialMostlinkedtemplates',	'Mostlinkedtemplates'			),
+	array( 'MostlinkedTemplatesPage',	'Mostlinkedtemplates'			),
 	array( 'MostlinkedPage',                'Mostlinked'                    ),
 	array( 'MostrevisionsPage',             'Mostrevisions'                 ),
 	array( 'FewestrevisionsPage',           'Fewestrevisions'               ),
@@ -88,15 +88,6 @@ abstract class QueryPage extends SpecialPage {
 	 */
 	function setListoutput( $bool ) {
 		$this->listoutput = $bool;
-	}
-
-	/**
-	 * Return title object representing this page
-	 *
-	 * @return Title
-	 */
-	function getTitle() {
-		return SpecialPage::getTitleFor( $this->getName() );
 	}
 
 	/**
@@ -367,7 +358,8 @@ abstract class QueryPage extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgOut, $wgLang;
 		
-		list( $this->limit, $this->offset ) = wfCheckLimits();
+		if( $this->limit == 0 && $this->offset == 0 )
+			list( $this->limit, $this->offset ) = wfCheckLimits();
 		$sname = $this->getName();
 		$fname = get_class( $this ) . '::doQuery';
 		$dbr = wfGetDB( DB_SLAVE );

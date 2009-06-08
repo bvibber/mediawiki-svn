@@ -9,8 +9,8 @@
  */
 class DisambiguationsPage extends PageQueryPage {
 
-	function getName() {
-		return 'Disambiguations';
+	function __construct() {
+		SpecialPage::__construct( 'Disambiguations' );
 	}
 
 	function isExpensive() { return true; }
@@ -76,7 +76,7 @@ class DisambiguationsPage extends PageQueryPage {
 	}
 
 	function getOrderFields() {
-		return array('tl_namespace', 'tl_title', 'value');
+		return array( 'tl_namespace', 'tl_title', 'value' );
 	}
 	
 	function sortDescending() {
@@ -111,15 +111,4 @@ class DisambiguationsPage extends PageQueryPage {
 
 		return "$from $edit $arr $to";
 	}
-}
-
-/**
- * Constructor
- */
-function wfSpecialDisambiguations() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$sd = new DisambiguationsPage();
-
-	return $sd->doQuery( $offset, $limit );
 }

@@ -11,40 +11,19 @@
  * @ingroup SpecialPage
  * @author Rob Church <robchur@gmail.com>
  */
-class SpecialMostlinkedtemplates extends QueryPage {
-
-	/**
-	 * Name of the report
-	 *
-	 * @return string
-	 */
-	public function getName() {
-		return 'Mostlinkedtemplates';
+class MostlinkedTemplatesPage extends QueryPage {
+	public function __construct() {
+		SpecialPage::__construct( 'Mostlinkedtemplates' );
 	}
 
-	/**
-	 * Is this report expensive, i.e should it be cached?
-	 *
-	 * @return bool
-	 */
 	public function isExpensive() {
 		return true;
 	}
 
-	/**
-	 * Is there a feed available?
-	 *
-	 * @return bool
-	 */
 	public function isSyndicated() {
 		return false;
 	}
 
-	/**
-	 * Sort the results in descending order?
-	 *
-	 * @return bool
-	 */
 	public function sortDescending() {
 		return true;
 	}
@@ -76,13 +55,6 @@ class SpecialMostlinkedtemplates extends QueryPage {
 			$db->dataSeek( $res, 0 );
 	}
 
-	/**
-	 * Format a result row
-	 *
-	 * @param Skin $skin Skin to use for UI elements
-	 * @param object $result Result row
-	 * @return string
-	 */
 	public function formatResult( $skin, $result ) {
 		$title = Title::makeTitle( $result->namespace, $result->title );
 
@@ -108,15 +80,4 @@ class SpecialMostlinkedtemplates extends QueryPage {
 		$wgLang->formatNum( $result->value ) );
 		return $skin->link( $wlh, $label, array(), array( 'target' => $title->getPrefixedText() ) );
 	}
-}
-
-/**
- * Execution function
- *
- * @param mixed $par Parameters passed to the page
- */
-function wfSpecialMostlinkedtemplates( $par = false ) {
-	list( $limit, $offset ) = wfCheckLimits();
-	$mlt = new SpecialMostlinkedtemplates();
-	$mlt->doQuery( $offset, $limit );
 }

@@ -12,8 +12,8 @@ class UnusedCategoriesPage extends QueryPage {
 	// inexpensive?
 	function isExpensive() { return true; }
 
-	function getName() {
-		return 'Unusedcategories';
+	function __construct() {
+		SpecialPage::__construct( 'Unusedcategories' );
 	}
 
 	function getPageHeader() {
@@ -38,11 +38,4 @@ class UnusedCategoriesPage extends QueryPage {
 		$title = Title::makeTitle( NS_CATEGORY, $result->title );
 		return $skin->makeKnownLinkObj( $title, $title->getText() );
 	}
-}
-
-/** constructor */
-function wfSpecialUnusedCategories() {
-	list( $limit, $offset ) = wfCheckLimits();
-	$uc = new UnusedCategoriesPage();
-	return $uc->doQuery( $offset, $limit );
 }

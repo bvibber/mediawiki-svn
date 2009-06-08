@@ -15,7 +15,10 @@
  */
 class MostlinkedCategoriesPage extends QueryPage {
 
-	function getName() { return 'Mostlinkedcategories'; }
+	function __construct() {
+		SpecialPage::__construct( 'Mostlinkedcategories' );
+	}
+	
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 
@@ -58,15 +61,4 @@ class MostlinkedCategoriesPage extends QueryPage {
 			$wgLang->formatNum( $result->value ) );
 		return wfSpecialList($plink, $nlinks);
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialMostlinkedCategories() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$wpp = new MostlinkedCategoriesPage();
-
-	$wpp->doQuery( $offset, $limit );
 }

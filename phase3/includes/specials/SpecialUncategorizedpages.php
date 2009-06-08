@@ -12,8 +12,8 @@
 class UncategorizedPagesPage extends PageQueryPage {
 	var $requestedNamespace = false;
 
-	function getName() {
-		return "Uncategorizedpages";
+	function __construct() {
+		SpecialPage::__construct( 'Uncategorizedpages' );
 	}
 
 	function sortDescending() {
@@ -49,15 +49,4 @@ class UncategorizedPagesPage extends PageQueryPage {
 			return array( 'page_namespace', 'page_title' );
 		return array( 'page_title' );
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialUncategorizedpages() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$lpp = new UncategorizedPagesPage();
-
-	return $lpp->doQuery( $offset, $limit );
 }
