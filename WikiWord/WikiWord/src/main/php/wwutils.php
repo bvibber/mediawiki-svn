@@ -1,14 +1,70 @@
 <?php
 
+if (!defined('NS_IMAGE'))
+    define('NS_IMAGE', 6);
+
+class ImageCollection {
+
+    function __construct() {
+	$this->images = array();
+    }
+
+    static function compareRecords($a, $b) {
+	return $b['score'] - $a['score']; //NOTE: descending
+    }
+
+    function size() {
+	return count($this->images);
+    }
+
+    function listImages($max) {
+	uasort($this->images, "Imagecollection::compareRecords");
+
+	if ($max) return array_slice($this->images, 0, $max);
+	else return $this->images;
+    }
+
+    function addImage($image, $key, $usage = "page", $weight = 1) {
+	if (!isset($this->images[$image])) {
+	    $rec = array(
+		"name" => $image,
+		"score" => 0
+	    );
+	}
+
+	$rec = $this->images[$image];
+
+	if (!isset($rec[$usage])) $rec[$usage] = array();
+	$rec[$usage][] = $key;
+	$rec["score"] += $weight;
+
+	$this->images[$image] = $rec;
+	return $rec['score'];
+    }
+
+    function addImages($images, $key, $usage = "page", $weight = 1) {
+	foreach ($images as $image) {
+	    $this->addImage($image, $key, $usage, $weight);
+	}
+    }
+
+}
+
 class WWUtils {
     var $debug = false;
     var $db = NULL;
+    var $wikidbs = array();
+
+    var $dbuser;
+    var $dbpassword;
 
     function connect($server, $user, $password, $database) {
 	$db = mysql_connect($server, $user, $password) or die("Connection Failure to Database: " . mysql_error());
 	mysql_select_db($database, $db) or die ("Database not found: " . mysql_error());
 	mysql_query("SET NAMES UTF8;", $db) or die ("Database not found: " . mysql_error());
 
+	$this->dbuser = $user;
+	$this->dbpassword = $password;
 	$this->db = $db;
 
 	return $db;
@@ -36,9 +92,85 @@ class WWUtils {
 	return $result;
     }
 
+    function getWikiTableName($lang) {
+	global $wwWikitableNamePattern;
+	if ($wwWikitableNamePattern) return str_replace('{name}', $lang, $wwWikitableNamePattern);
+	else return "";
+    }
+
+    function quote($s) {
+	return '"' . $this->quote($s) . '"';
+    }
+
+    function getWikiInfo($lang) {
+	global $wwWikiInfoTable;
+
+	$dbname = "{$lang}wiki_p";
+	$sql = "select * from $wwWikiInfoTable ";
+	$sql .= " where dbname = " . $this->quote($lang);
+
+	$rs = $this->query($sql);
+	$info = mysql_fetch_assoc($rs);
+	mysql_free_result($rs);
+
+	return $rs;
+    }
+
+    function getWikiConnection($lang) {
+	if (isset($this->wikidbs[$lang])) return $this->wikidbs[$lang];
+
+	$info = $this->getWikiInfo($lang);
+	if (!$info) $db = false;
+	else {
+	    $db = mysql_connect($info['server'], $this->dbuser, $this->dbpassword) or die("Connection Failure to Database: " . mysql_error());
+	    mysql_select_db($info['database'], $db) or die ("Database not found: " . mysql_error());
+	    mysql_query("SET NAMES UTF8;", $db) or die ("Database not found: " . mysql_error());
+	}
+
+	$this->wikidbs[$lang] = $db;
+	return $db;
+    }
+
+    function queryWiki($lang, $sql) {
+	$db = $this->getWikiConnection($lang);
+	if (!$db) return false;
+
+	return $this->query($sql, $db);
+    }
+
     function close() {
 	if ($this->db) mysql_close($this->db);
 	$this->db = NULL;
+
+	foreach ($this->wikidbs as $name => $db) {
+	    if ($db) mysql_close($db);
+	}
+
+	$this->wikidbs = array();
+    }
+
+    static function slurpList($rs, $field) {
+	if (is_string($rs)) $rs = $this->query($rs);
+
+	$list = array();
+	while ($row = mysql_fetch_assoc($rs)) {
+	    $list[] = $row[$field];
+	}
+
+	return $list;
+    }
+
+    static function slurpAssoc($rs, $keyField, $valueField) {
+	if (is_string($rs)) $rs = $this->query($rs);
+
+	$list = array();
+	while ($row = mysql_fetch_assoc($rs)) {
+	    $key = $row[$keyField];
+	    $value = $row[$valueField];
+	    $list[$key] = $value;
+	}
+
+	return $list;
     }
 
     function queryConceptsForTerm($lang, $term) {
@@ -54,6 +186,21 @@ class WWUtils {
 	      . " LIMIT 100";
 
 	return $this->query($sql);
+    }
+
+    function queryLocalConcepts($id) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+	$sql = "SELECT O.lang, O.local_concept_name from {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ";
+	$sql .= " WHERE O.global_concept = " . (int)$id;
+
+	return $this->query($sql);
+    }
+
+    function getLocalConcepts($id)
+	$rs = $this->queryLocalConcepts($id);
+	$list = WWUtils::slurpAssoc($rs, "lang", "local_concept_name");
+	mysql_free_result($rs);
+	return $list;
     }
 
     function queryLocalConceptInfo($lang, $id) {
@@ -175,5 +322,176 @@ class WWUtils {
 	mysql_free_result($res);
 
 	return $names;
+    }
+
+    function queryImagesOnPage($lang, $ns, $title, $commonsOnly = false) {
+	global $wwTablePrefix, $wwThesaurusDataset, $wwCommonsTablePrefix;
+
+	if ($lang == "commons") $commonsOnly = false;
+
+	$imagelinks_table = $this->getWikiTableName($lang, "imagelinks");
+	$page_table = $this->getWikiTableName($lang, "page");
+	$image_table = $this->getWikiTableName($lang, "image");
+
+	$sql = "SELECT I.il_to as name FROM $imagelinks_table as I ";
+	$sql .= " JOIN $page_table as P on P.page_id = I.il_from ";
+	if ($commonsOnly) $sql .= " LEFT JOIN $image_table as R on R.img_name = I.il_to ";
+	if ($commonsOnly) $sql .= " JOIN {$wwCommonsTablePrefix}_image as C on C.img_name = I.il_to ";
+
+	$sql .= " WHERE P.page_namespace = " . (int)$namespace;
+	$sql .= " AND P.page_title = " . $this->quote($title);
+	if ($commmonsOnly) $sql .= " AND R.img_name IS NULL";
+
+	return $this->queryWiki($lang, $sql);
+    }
+
+    function getImagesOnPage($lang, $ns, $title, $commonsOnly = false)
+	$rs = $this->queryImagesOnPage($lang, $ns, $title, $commonsOnly);
+	$list = WWUtils::slurpList($rs, "name");
+	mysql_free_result($rs);
+	return $list;
+    }
+
+    function queryImagesOnPageTemplates($lang, $ns, $title, $commonsOnly = false) {
+	global $wwTablePrefix, $wwThesaurusDataset, $wwCommonsTablePrefix;
+
+	if ($lang == "commons") $commonsOnly = false;
+
+	$imagelinks_table = $this->getWikiTableName($lang, "imagelinks");
+	$page_table = $this->getWikiTableName($lang, "page");
+	$image_table = $this->getWikiTableName($lang, "image");
+	$templatelinks_table = $this->getWikiTableName($lang, "templatelinks");
+
+	$sql = "SELECT I.il_to as name FROM $imagelinks_table as I ";
+	$sql .= " JOIN $page_table as TP on TP.page_id = I.il_from ";
+	$sql .= " JOIN $templatelinks_table as T on T.tl_namespace = TP.page_namespace AND T.tl_title = TP.page_title ";
+	$sql .= " JOIN $page_table as P on P.page_id = T.tl_from ";
+	if ($commonsOnly) $sql .= " LEFT JOIN $image as R on R.img_name = I.il_to ";
+	if ($commonsOnly) $sql .= " JOIN {$wwCommonsTablePrefix}_image as C on C.img_name = I.il_to ";
+
+	$sql .= " WHERE P.page_namespace = " . (int)$namespace;
+	$sql .= " AND P.page_title = " . $this->quote($title);
+	if ($commmonsOnly) $sql .= " AND R.img_name IS NULL";
+
+	return $this->queryWiki($lang, $sql);
+    }
+
+    function getImagesOnPageTemplates($lang, $ns, $title, $commonsOnly = false)
+	$rs = $this->queryImagesOnPageTemplates($lang, $ns, $title, $commonsOnly);
+	$list = WWUtils::slurpList($rs, "name");
+	mysql_free_result($rs);
+	return $list;
+    }
+
+    function queryImagesInCategory($lang, $title) {
+	global $wwTablePrefix, $wwThesaurusDataset, $wwCommonsTablePrefix;
+	$categorylinks_table = $this->getWikiTableName($lang, "categorylinks");
+	$page_table = $this->getWikiTableName($lang, "page");
+
+	$sql = "SELECT P.page_title as name FROM $page_table as P ";
+	$sql .= " JOIN $categorylinks_table as C on C.from = P.page_id ";
+
+	$sql .= " WHERE C.cl_to = " . $this->quote($title);
+	$sql .= " AND P.pange_namespace = " . NS_IMAGE;
+
+	return $this->queryWiki($lang, $sql);
+    }
+
+    function getImagesInCategory($lang, $title)
+	$rs = $this->queryImagesOnPage($lang, $title);
+	$list = WWUtils::slurpList($rs, "name");
+	mysql_free_result($rs);
+	return $list;
+    }
+
+    function getRelevantImagesOnPage($lang, $ns, $title, $commonsOnly = false) {
+	$img = $this->getImagesOnPage($lang, 0, $title, true);
+	$timg = $this->getImagesOnPageTemplates($lang, 0, $title, true);
+	$img = array_diff($img, $timg);
+	return $img;
+    }
+
+    function getImagesAbout($id, $max = 0) {
+	global $wwFakeCommonsConcepts;
+
+	$concepts = $this->getLocalConcepts($id);
+
+	if ($wwFakeCommonsConcepts && isset($concepts['en'])) {
+	    $concepts['commons'] = @$concepts['en'];
+	}
+
+	$images = new ImageCollection();
+	
+	foreach ($concepts as $lang => $title) {
+	    if ($lang == "commons") continue;
+
+	    $img = $this->getRelevantImagesOnPage($lang, 0, $title, true); //FIXME: resource mapping
+	    $images->addImages($images, $lang . ":" . $title, "article", 1);
+	}
+
+	if ($max && $images->size()>$max) 
+	    return $images->listImages($max);
+
+	if (isset($conceps['commons'])) {
+	    $title = $conceps['commons'];
+
+	    $img = $this->getRelevantImagesOnPage("commmons", 0, $title, false); //FIXME: resource mapping
+	    $images->addImages($images, "commons:" . $title, "gallery", 0.8);
+
+	    if ($max && $images->size()>$max) 
+		return $images->listImages($max);
+
+	    $img = $this->getImagesInCategory("commmons", $title); //FIXME: resource mapping
+	    $images->addImages($images, "commons:" . $title, "category", 0.5);
+	}
+
+	return $images->listImages($max);
+    }
+
+    function getThumbnailURL($image, $w = 120, $h = NULL) {
+	global $wwThumbnailerURL;
+
+	if (is_array($image)) $image = $image['name'];
+
+	$u = $wwThumbnailerURL;
+	$u = str_replace("{name}", urlencode($image), $u);
+	$u = str_replace("{width}", !$width ? "" : urlencode($width), $u);
+	$u = str_replace("{height}", !$height ? "" : urlencode($height), $u);
+
+	return $u;
+    }
+
+    function getImagePageURL($image) {
+	global $wwImagePageURL;
+
+	if (is_array($image)) $image = $image['name'];
+
+	$u = $wwImagePageURL;
+	$u = str_replace("{name}", urlencode($image), $u);
+
+	return $u;
+    }
+
+    function getThumbnailHTML($image, $w = 120, $h = NULL) {
+	$thumb = $this->getThumbnailURL();
+	$page = $this->getImagePageURL();
+
+	if (is_array($image)) {
+	    $title = @$image['title'];
+	    $name = @$image['name'];
+	} else {
+	    $name = $image;
+	}
+
+	if (!@$title) $title = $name;
+
+	$html= "<img src=\"" . htmlspecialchars($thumb) . "\" alt=\"" . htmlspecialchars($title) . "\"/>";
+	$html= "<a href=\"" . htmlspecialchars($page) . "\" title=\"" . htmlspecialchars($title) . "\">$html</a>";
+
+	if (is_array($image)) {
+	    $html .= "<!-- " . htmlspecialchars( str_replace("--", "~~", var_export( $image, true ) ) ) . " -->";
+	}
+
+	return $html;
     }
 }
