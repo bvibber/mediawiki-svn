@@ -16,7 +16,7 @@ div#edittoolbar div.group:first-child {
 	border-left: none;
 }
 body.rtl div#edittoolbar div.group {
-	float: left;
+	float: right;
 	padding-left: 0;
 	padding-right: 3px;
 	border-left: none;
