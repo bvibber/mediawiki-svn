@@ -103,6 +103,7 @@ class Poll extends SpecialPage {
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 5:</td><td>'.Xml::input('poll_alternative_5').'</td></tr>' );
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 6:</td><td>'.Xml::input('poll_alternative_6').'</td></tr>' );
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-dis' ).':</td><td>'.Xml::textarea('dis', '').'</td></tr>' );
+			$wgOut->addHtml( '<tr><td>'.Xml::check('allow_more').' 6:</td><td>'.wfMsg( 'poll-create-allow-more' ).'</td></tr>' );
 			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'create').'</td></tr>' );
 			$wgOut->addHtml( Xml::closeElement( 'table' ) );
 			$wgOut->addHtml( Xml::closeElement( 'form' ) );
@@ -195,8 +196,7 @@ class Poll extends SpecialPage {
 		$query_num_6 = $dbr->numRows( $query_6 );
 
 		$wgOut->addHtml( Xml::openElement( 'table' ) );
-		$wgOut->addHtml( '<tr><th><center>'.$question.'</center></th></tr>' );
-		//$wgOut->addHtml( '<tr><td><b>'.wfMsg( 'poll-alternative' ).'</b></td><td><b>'.wfMsg( 'poll-number-poll' ).'</td></tr>' );
+		$wgOut->addHtml( '<tr><th><center>'.$question.'</center></th></tr>' );;
 		$wgOut->addHtml( '<tr><td>'.$alternative_1.'</td><td>'.$query_num_1.'</td></tr>' );
 		$wgOut->addHtml( '<tr><td>'.$alternative_2.'</td><td>'.$query_num_2.'</td></tr>' );
 		if($alternative_3 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_3.'</td><td>'.$query_num_3.'</td></tr>' ); }
@@ -277,7 +277,7 @@ class Poll extends SpecialPage {
 	public function submit( $pid ) {
 		global $wgRequest, $wgOut, $wgUser, $wgTitle;
 
-		$type = $_POST['type'];
+		$type = $wgRequest->getVal('type');
 
 		if($type == 'create') {
 			$controll_create_right = $wgUser->isAllowed( 'poll-create' );
@@ -293,14 +293,14 @@ class Poll extends SpecialPage {
 
 			else {
 				$dbw = wfGetDB( DB_MASTER );
-				$question = $_POST['question'];
-				$alternative_1 = $_POST['poll_alternative_1'];
-				$alternative_2 = $_POST['poll_alternative_2'];
-				$alternative_3 = ($_POST['poll_alternative_3'] != "")? $_POST['poll_alternative_3'] : "";
-				$alternative_4 = ($_POST['poll_alternative_4'] != "")? $_POST['poll_alternative_4'] : "";
-				$alternative_5 = ($_POST['poll_alternative_5'] != "")? $_POST['poll_alternative_5'] : "";
-				$alternative_6 = ($_POST['poll_alternative_6'] != "")? $_POST['poll_alternative_6'] : "";
-				$dis = ($_POST['dis'] != "")? $_POST['dis'] : wfMsg('poll-no-dis');
+				$question = $wgRequest->getVal('question');
+				$alternative_1 = $wgRequest->getVal('poll_alternative_1');
+				$alternative_2 = $wgRequest->getVal('poll_alternative_2');
+				$alternative_3 = ($wgRequest->getVal('poll_alternative_3') != "")? $wgRequest->getVal('poll_alternative_3') : "";
+				$alternative_4 = ($wgRequest->getVal('poll_alternative_4') != "")? $wgRequest->getVal('poll_alternative_4') : "";
+				$alternative_5 = ($wgRequest->getVal('poll_alternative_5') != "")? $wgRequest->getVal('poll_alternative_5') : "";
+				$alternative_6 = ($wgRequest->getVal('poll_alternative_6') != "")? $wgRequest->getVal('poll_alternative_6') : "";
+				$dis = ($wgRequest->getVal('dis') != "")? $wgRequest->getVal( 'dis' ) : wfMsg('poll-no-dis');
 				$user = $wgUser->getName();
 
 				if($question != "" && $alternative_1 != "" && $alternative_2 != "") {
@@ -337,7 +337,7 @@ class Poll extends SpecialPage {
 			else {
 				$dbw = wfGetDB( DB_MASTER );
 				$dbr = wfGetDB( DB_SLAVE );
-				$vote = $_POST['vote'];
+				$vote = $wgRequest->getVal('vote');
 				$user = $wgUser->getName();
 				$uid = $wgUser->getId();
 
@@ -382,21 +382,21 @@ class Poll extends SpecialPage {
 				$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 			}
 
-			if ( isset($controll_delete_blocked) AND ( $controll_change_blocked == true ) ) {
+			if ( $controll_change_blocked == true ) {
 				$wgOut->addWikiMsg( 'poll-change-block-error' );
 				$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 			}
 
 			if ( ( ( $creater == $user ) OR ( $controll_change_right == true ) ) AND ( $controll_change_blocked != true ) )  {
 				$dbw = wfGetDB( DB_MASTER );
-				$question = $_POST['question'];
-				$alternative_1 = $_POST['poll_alternative_1'];
-				$alternative_2 = $_POST['poll_alternative_2'];
-				$alternative_3 = ($_POST['poll_alternative_3'] != "")? $_POST['poll_alternative_3'] : "";
-				$alternative_4 = ($_POST['poll_alternative_4'] != "")? $_POST['poll_alternative_4'] : "";
-				$alternative_5 = ($_POST['poll_alternative_5'] != "")? $_POST['poll_alternative_5'] : "";
-				$alternative_6 = ($_POST['poll_alternative_6'] != "")? $_POST['poll_alternative_6'] : "";
-				$dis = ($_POST['dis'] != "")? $_POST['dis'] : wfMsg('poll-no-dis');
+				$question = $wgRequest->getVal('question');
+				$alternative_1 = $wgRequest->getVal('poll_alternative_1');
+				$alternative_2 = $wgRequest->getVal('poll_alternative_2');
+				$alternative_3 = ($wgRequest->getVal('poll_alternative_3') != "")? $wgRequest->getVal('poll_alternative_3') : "";
+				$alternative_4 = ($wgRequest->getVal('poll_alternative_4') != "")? $wgRequest->getVal('poll_alternative_4') : "";
+				$alternative_5 = ($wgRequest->getVal('poll_alternative_5') != "")? $wgRequest->getVal('poll_alternative_5') : "";
+				$alternative_6 = ($wgRequest->getVal('poll_alternative_6') != "")? $wgRequest->getVal('poll_alternative_6') : "";
+				$dis = ($wgRequest->getVal('dis') != "")? $wgRequest->getVal('dis') : wfMsg('poll-no-dis');
 				$user = $wgUser->getName();
 
 				$dbw->update( 'poll', array( 'question' => $question, 'alternative_1' => $alternative_1, 'alternative_2' => $alternative_2,
@@ -430,13 +430,13 @@ class Poll extends SpecialPage {
 				$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 			}
 
-			if ( isset($controll_delete_blocked) AND ( $controll_delete_blocked == true ) ) {
+			if ( $controll_delete_blocked == true ) {
 				$wgOut->addWikiMsg( 'poll-delete-block-error' );
 				$wgOut->addHtml( '<a href="'.$wgTitle->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 			}
 
 			if ( ( ( $creater == $user ) OR ( $controll_delete_right == true ) ) AND ( $controll_delete_blocked != true ) )  {
-				if( isset($_POST['controll_delete']) AND $_POST['controll_delete'] == 1 ) {
+				if( isset($wgRequest->getVal('controll_delete')) AND $wgRequest->getVal('controll_delete') === 1 ) {
 					$dbw = wfGetDB( DB_MASTER );
 					$user = $wgUser->getName();
 
