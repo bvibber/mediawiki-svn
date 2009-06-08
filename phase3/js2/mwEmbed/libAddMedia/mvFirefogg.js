@@ -8,7 +8,8 @@ loadGM({
 	"fogg-save_local_file"		: "Save Ogg",
 	"fogg-check_for_fogg"		: "Checking for Firefogg <blink>...</blink>",
 	"fogg-installed"			: "Firefogg is Installed",
-	"fogg-please_install"		: "You don't have firefogg installed, For improved uploads please <a href=\"$1\">install firefogg</a> more <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">about firefogg</a>",
+	"fogg-for_improved_uplods"	: "For Improved uploads: ",
+	"fogg-please_install"		: "<a href=\"$1\">Install Firefogg</a>. More <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">about firefogg</a>",	
 	"fogg-use_latest_fox"		: "Please first install <a href=\"http://www.mozilla.com/en-US/firefox/all-beta.html\">Firefox 3.5</a>. <i>then revisit this page to install the <b>firefogg</b> extention</i>",	
 	"fogg-passthrough_mode"	    : "Your selected file is already ogg or not a video file",
 	"fogg-transcoding"			: "Encoding Video to Ogg",
@@ -108,7 +109,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		if( $j(this.selector).length >=0 ){
 			
 			if( $j(this.selector).get(0).tagName.toLowerCase() == 'input' ){					
-				_this.form_rewrite = true;							
+				_this.form_rewrite = true;										
 			}		
 		}
 		//check if we are rewriting an input or a form:
@@ -158,20 +159,20 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				hide_target_list+=coma + _this[target];
 				coma=',';
 			}			
-		});		
-		
-		$j( hide_target_list ).hide();		
-		
+		});				
+		$j( hide_target_list ).hide();				
 		//now that the proper set of items has been hiiden show: 
 		$j( this.selector ).show();
-		
-		//if rewriting the form lets keep the text input around:						 
-		if( _this.form_rewrite )
-			$j(this.target_input_file_name).show();
+			
 				
 		//hide all but check-for-fogg
 		//check for firefogg
 		if( _this.firefoggCheck() ){
+			
+			//if rewriting the form lets keep the text input around:						 
+			if( _this.form_rewrite )
+				$j(this.target_input_file_name).show();
+			
 			//show select file: 
 			$j(this.target_btn_select_file).unbind(
 				).attr('disabled', false
@@ -188,8 +189,12 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			//first check firefox version:		 
 			if(!($j.browser.mozilla && $j.browser.version >= '1.9.1')) {
 				js_log('show use latest::' + _this.target_use_latest_fox);
-				if(_this.target_use_latest_fox)			 
+				if(_this.target_use_latest_fox){
+					if(_this.form_rewrite)
+						$j(_this.target_use_latest_fox).prepend( gM('fogg-for_improved_uplods') );
+							 
 					$j(_this.target_use_latest_fox).show();
+				}
 				return ;
 			}
 			//if they have the right version of mozilla provide install link: 
@@ -201,8 +206,10 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 					  os_link = firefogg_install_links['macosx'];
 				else if(navigator.oscpu.search('Win') >= 0)
 					  os_link = firefogg_install_links['win32'];
-			}														
-			$j(_this.target_please_install).html( gM('fogg-please_install',os_link )).css('padding', '10px').show();			
+			}											
+			//if rewriting form use upload msg text
+			var upMsg = (_this.form_rewrite) ? gM('fogg-for_improved_uplods') : '';			
+			$j(_this.target_please_install).html( upMsg + gM('fogg-please_install',os_link )).css('padding', '10px').show();			
 		}
 		//setup the target save local file bindins: 
 		$j( _this.target_btn_save_local_file ).unbind().click(function(){
@@ -252,7 +259,8 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			inTag += attr.name + '="' + val + '" ';
 		});
 		if(!$j(this.selector).attr('style'))
-			inTag += 'style="display:inline" ';			
+			inTag += 'style="display:inline" ';
+			
 		inTag+= '/><span id="' + $j(this.selector).attr('name') + '_fogg-control"></span>';
 										
 		js_log('set input: ' + inTag);
