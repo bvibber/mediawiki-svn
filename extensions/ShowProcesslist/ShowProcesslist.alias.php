@@ -94,6 +94,11 @@ $aliases['lb'] = array(
 	'ShowProcesslist' => array( "Weis d'Lëscht vun den Prozessen" ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'ShowProcesslist' => array( 'प्रक्रीयासूचीदाखवा' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ShowProcesslist' => array( 'Preceslieste_weergeven' ),

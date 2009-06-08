@@ -699,7 +699,7 @@ $messages['fr'] = array(
 	'extdist-current-version' => 'Version de développement (trunk)',
 	'extdist-choose-version' => '<big>Vous êtes en train de télécharger l’extension <b>$1</b>.</big>
 
-Sélectionnez votre version MediaWiki.
+Sélectionnez votre version de MediaWiki.
 
 La plupart des extensions tourne sur différentes versions de MediaWiki. Aussi, si votre version n’est pas présente ici, ou si vous avez besoin des dernières fonctionnalités de l’extension, essayez d’utiliser la version courante.',
 	'extdist-no-versions' => "L’extension sélectionnée ($1) n'est disponible dans aucune version !",
@@ -726,7 +726,7 @@ Sous Windows, vous pouvez utiliser [http://www.7-zip.org/ 7-zip] pour extraire l
 
 Si votre wiki est hébergé sur un serveur distant, extrayez les fichiers dans un répertoire temporaire de votre ordinateur local, puis téléversez-les '''tous''' dans le répertoire extensions du serveur.
 
-Notez que quelques extensions nécessitent un fichier nommé <tt>ExtensionFunctions.php<tt> stocké dans le répertoire <tt>extensions</tt>, lui-même situé dans le répertoire ''parent'' du répertoire particulier pour cette extension. L’image de telles extensions contient ce fichier dans l’archive tar, il sera extrait sous <tt>./ExtensionFunctions.php</tt>. N’omettez pas de le téléverser aussi sur votre serveur distant.
+Notez que quelques extensions nécessitent un fichier nommé <tt>ExtensionFunctions.php</tt> stocké dans le répertoire <tt>extensions</tt>, lui-même situé dans le répertoire ''parent'' du répertoire particulier pour cette extension. L’image de telles extensions contient ce fichier dans l’archive tar, il sera extrait sous <tt>./ExtensionFunctions.php</tt>. N’omettez pas de le téléverser aussi sur votre serveur distant.
 
 Une fois les fichiers extraits et installés, il vous faudra enregistrer l’extension dans <tt>LocalSettings.php</tt>. La documentation de l’extension devrait contenir un guide d’installation expliquant comment procéder.
 

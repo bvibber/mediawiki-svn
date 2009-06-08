@@ -371,6 +371,38 @@ Si us plau, tingues paciència.",
 	'youtubeauthsub_jserror_nodesc' => 'Si us plau, introdueixi una descripció per al vídeo.',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'youtubeauthsub' => 'بارکردنی ڤیدیۆ لە یووتیوب',
+	'youtubeauthsub_info' => 'بۆ بارکردنی ڤیدیۆیەک بۆ سەر یووتیوب کە لە لاپەرەیەکدا پیشان بدرێت، ئەو زانیاریانەی خوارەوە پڕ کەوە:',
+	'youtubeauthsub_title' => 'سەردێڕ',
+	'youtubeauthsub_description' => 'پێناسە',
+	'youtubeauthsub_password' => 'وشەی‌نهێنی یووتیوب',
+	'youtubeauthsub_username' => 'ناوی بەکارهێنەری یووتیوب',
+	'youtubeauthsub_keywords' => 'گرنگ‌وشەکان',
+	'youtubeauthsub_category' => 'هاوپۆلەکان',
+	'youtubeauthsub_submit' => 'ناردن',
+	'youtubeauthsub_clickhere' => 'ئێرە کرتە بکە بۆ چوونەژوورەوەی یووتیوب',
+	'youtubeauthsub_success' => "پیرۆزبایی !
+ڤیدیۆکەت بارکرا.
+<a href='http://www.youtube.com/watch?v=$1'>ڤیدیۆکەت ببینە</a>.
+لەوانەیە یووتیوب هێندێ کاتی پێویست بێت بۆ هەڵسەنگاندنی ڤیدیۆکەت، لەبەر ئەوە، لەوانەی هێشتا ڤیدیۆکەت ئامادە نەبێت.
+
+بۆ ئەوەی ئەم ڤیدیۆیە لە لاپەڕەیەک لە ویکی‌دا دابنێی، ئەم دەقە لەو لاپەڕەدا دابنێ:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'بۆ بارکردنی ڤیدیۆ، پێویستە لە پێش‌دا لە یووتیوب بڕۆیتەژوورەوە.',
+	'youtubeauthsub_uploadhere' => 'ڤیدیۆکەت لێراوە بار بکە:',
+	'youtubeauthsub_uploadbutton' => 'بارکردن',
+	'youtubeauthsub_summary' => 'بارکردنی ڤیدیۆی یووتیوب',
+	'youtubeauthsub_uploading' => 'ڤیدیۆکەت بارکرا.
+تکایە چاوەڕوان بە.',
+	'youtubeauthsub_jserror_nokeywords' => 'تکایە یەک یا زیاتر گرنگ‌وشە بنووسە.',
+	'youtubeauthsub_jserror_notitle' => 'تکایە سەردێڕێک بۆ ڤیدیۆکە بنووسە.',
+	'youtubeauthsub_jserror_nodesc' => 'تکایە پێناسەیەک بۆ بۆ ڤیدیۆکە بنووسە.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

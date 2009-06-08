@@ -97,8 +97,14 @@ $messages['be-tarask'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'fckeditor-desc' => 'Omogućava uređivanje koristeći WYSIWYG uređivač FCKeditor',
 	'textrichditor' => 'Vizuelni uređivač',
 	'prefs-fckeditor' => 'Vizuelni uređivač',
+	'tog-riched_disable_ns_main' => 'Onemogući vizuelni uređivač u glavnom imenskom prostoru',
+	'tog-riched_disable_ns_category_talk' => 'Onemogući vizuelni uređivač u imenskom prostoru "{{ns:category_talk}}"',
+	'rich_editor_new_window' => 'Otvori vizuelni uređivač u novom prozoru',
+	'tog-riched_start_disabled' => 'Započni sa onemogućenim vizuelnim uređivačem',
+	'tog-riched_use_popup' => 'Otvori vizuelni uređivač kao popup',
 );
 
 /** Catalan (Català)

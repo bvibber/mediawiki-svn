@@ -76,6 +76,11 @@ $aliases['lb'] = array(
 	'EmergencyDeSysop' => array( 'Noutprozedur fir Administrateurrechter ewechzehuelen' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'EmergencyDeSysop' => array( 'तातडीनेप्रचालकरद्दीकरण' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'EmergencyDeSysop' => array( 'Noodgreep_beheerdersrechen_ontnemen' ),

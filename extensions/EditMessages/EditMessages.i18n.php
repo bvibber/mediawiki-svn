@@ -128,6 +128,7 @@ $messages['as'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -135,16 +136,16 @@ $messages['be-tarask'] = array(
 	'editmessages' => 'Рэдагаваньне паведамленьняў',
 	'editmsg-target' => 'Мэтавае паведамленьне:',
 	'editmsg-search' => 'Пошук',
-	'editmsg-show-list' => 'Адлюстраваньне значэньняў для паведамленьня з назвай «$1»',
+	'editmsg-show-list' => 'Паказ значэньняў для паведамленьня з назвай «$1»',
 	'editmsg-get-patch' => 'Стварыць патч',
 	'editmsg-new-search' => 'Новы пошук',
-	'editmsg-warning-parse1' => '* Назва паведамленьня не пасуе для рэгулярнага выразу: $1',
-	'editmsg-warning-parse3' => '* Ня знойдзены канчатак радка: $1',
-	'editmsg-warning-file' => '* Памылка чытаньня {{PLURAL:$2|файла для наступнай мовы|файлаў для наступных моваў|файлаў для наступных моваў}}: $1',
-	'editmsg-warning-mismatch' => '* Арыгінальны тэкст мя мае чаканага значэньня для {{PLURAL:$2|мовы|моваў|моваў}}: $1',
+	'editmsg-warning-parse1' => '* Назва паведамленьня не адпавядае рэгулярнаму выразу: $1',
+	'editmsg-warning-parse3' => '* Ня знойдзены канчатак радку: $1',
+	'editmsg-warning-file' => '* Памылка чытаньня {{PLURAL:$2|файла для наступнай мовы|файлаў для наступных моваў}}: $1',
+	'editmsg-warning-mismatch' => '* Арыгінальны тэкст ня мае чаканага значэньня для {{PLURAL:$2|мовы|моваў}}: $1',
 	'editmsg-apply-patch' => 'Ужыць файл',
-	'editmsg-no-patch' => 'Немажліа выканаць каманду «patch»',
-	'editmsg-patch-failed' => 'Статус выхаду патча памылковы $1',
+	'editmsg-no-patch' => 'Немагчыма выканаць каманду «patch»',
+	'editmsg-patch-failed' => 'Каманду «patch» вярнула код памылкі $1',
 	'editmsg-patch-success' => 'Патч усталяваны.',
 );
 
@@ -1058,12 +1059,25 @@ $messages['rif'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Modificare prin internet]] a unui număr mare de fişiere Messages*.php',
 	'editmessages' => 'Modifică mesajele',
 	'editmsg-target' => 'Mesaj ţintă:',
 	'editmsg-search' => 'Caută',
+	'editmsg-show-list' => 'Arată valorile pentru numele de mesaj "$1"',
+	'editmsg-get-patch' => 'Creează un patch',
 	'editmsg-new-search' => 'Căutare nouă',
+	'editmsg-warning-parse1' => '* Expresia curentă a numelor de mesaj nedetectată: $1',
+	'editmsg-warning-parse2' => '* Caracter de citare aşteptat după săgeată: $1',
+	'editmsg-warning-parse3' => '* Sfârşitul şirului de caractere nu a fost găsit: $1',
+	'editmsg-warning-file' => '* Au fost întâlnite erori la citirea fişierului pentru {{PLURAL:$2|limbă următoarea|următoarele limbi}}: $1',
+	'editmsg-warning-mismatch' => '* Textul original nu are valoarea aşteptată pentru următoarea {{PLURAL:$2|limbă următoarea|următoarele limbi}}: $1',
+	'editmsg-apply-patch' => 'Aplică patch-ul',
+	'editmsg-no-patch' => 'Imposibil de executat comanda "patch"',
+	'editmsg-patch-failed' => 'Eşec al patch-ului cu eroarea la ieşire $1',
+	'editmsg-patch-success' => 'Patch aplicat cu succes.',
 );
 
 /** Russian (Русский)

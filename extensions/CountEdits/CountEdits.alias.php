@@ -102,6 +102,11 @@ $aliases['mk'] = array(
 	'CountEdits' => array( 'БројНаУредувања' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'CountEdits' => array( 'संपादनमोजणी' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'CountEdits' => array( 'Bewarkingen_tellen' ),

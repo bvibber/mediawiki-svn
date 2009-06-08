@@ -162,6 +162,11 @@ $aliases['mk'] = array(
 	'ExpandTemplates' => array( 'ПрошириШаблони' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'ExpandTemplates' => array( 'साचेविस्तारकरा' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'ExpandTemplates' => array( 'Kembangkan templat' ),

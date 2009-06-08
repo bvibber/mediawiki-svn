@@ -69,7 +69,7 @@ $aliases['gsw'] = array(
 
 /** Gujarati (ગુજરાતી) */
 $aliases['gu'] = array(
-	'Code' => array( 'કોડ' ),
+	'Code' => array( 'સંજ્ઞા', 'સંજ્ઞાપરીક્ષણ' ),
 );
 
 /** Croatian (Hrvatski) */

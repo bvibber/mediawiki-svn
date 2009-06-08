@@ -84,6 +84,11 @@ $aliases['gsw'] = array(
 	'Vote' => array( 'Abstimme' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'Vote' => array( 'મત' ),
+);
+
 /** Hawaiian (Hawai`i) */
 $aliases['haw'] = array(
 	'Vote' => array( 'Koho' ),

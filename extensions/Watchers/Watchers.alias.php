@@ -68,6 +68,11 @@ $aliases['gsw'] = array(
 	'Watchers' => array( 'Beobachter' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'Watchers' => array( 'દર્શકો' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'Watchers' => array( 'עוקבים' ),

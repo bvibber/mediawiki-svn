@@ -343,6 +343,7 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'purge' => 'sdevache',
+	'purge-desc' => "Aggiunge 'na tabelle de pulizzie sus a tutte le pàggene normale e zumbe 'u condrolle de pulizzie pe l'utinde anonime accussì se pò sdevacà cchiù velocemende 'a cache",
 );
 
 /** Russian (Русский)

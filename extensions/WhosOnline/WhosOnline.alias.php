@@ -114,6 +114,11 @@ $aliases['lb'] = array(
 	'WhosOnline' => array( 'Wien ass online' ),
 );
 
+/** Lithuanian (Lietuvių) */
+$aliases['lt'] = array(
+	'WhosOnline' => array( 'Kas prisijungę' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'WhosOnline' => array( 'КојЕОнлајн' ),

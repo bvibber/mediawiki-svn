@@ -83,6 +83,11 @@ $aliases['lb'] = array(
 	'GlobalUserrights' => array( 'Global Benotzerrechter' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'GlobalUserrights' => array( 'Globle_gebrukersrechen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'GlobalUserrights' => array( 'GlobaleGebruikersrechten' ),

@@ -29,6 +29,11 @@ $aliases['mr'] = array(
 	'UserOptionStats' => array( 'सदस्यपर्यायसांख्यिकी' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'UserOptionStats' => array( 'Gebrukersinstellingenstaotestieken' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'UserOptionStats' => array( 'Gebruikersinstellingenstatistieken' ),

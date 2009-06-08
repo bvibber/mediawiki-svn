@@ -447,6 +447,7 @@ $messages['roa-tara'] = array(
 	'purgecache-warning' => "Quiste adda sdevacà le taggelle d'a cache.",
 	'purgecache-purged' => "'A cache ha state sdevachete",
 	'purgecache-button' => 'Sdevache',
+	'right-purgecache' => "Sdevaghe 'a tabelle OBJECTCACHE",
 );
 
 /** Russian (Русский)

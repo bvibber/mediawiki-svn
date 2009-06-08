@@ -77,6 +77,11 @@ $aliases['lb'] = array(
 	'SharedUserRights' => array( 'Gedeelte Benotzerrechter' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'SharedUserRights' => array( 'सार्वत्रिकसदस्यअधिकार' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'SharedUserRights' => array( 'DrittjietUtentiMaqsuma' ),
@@ -84,7 +89,7 @@ $aliases['mt'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'SharedUserRights' => array( 'Edelen_gebrukersrechen' ),
+	'SharedUserRights' => array( 'Edeelde_gebrukersrechen' ),
 );
 
 /** Dutch (Nederlands) */

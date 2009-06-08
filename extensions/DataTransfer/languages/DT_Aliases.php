@@ -97,6 +97,11 @@ $aliases['mk'] = array(
 	'ViewXML' => array( 'ВидиXML' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'ViewXML' => array( 'XMLपहा' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'ViewXML' => array( 'UriXML' ),

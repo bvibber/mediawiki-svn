@@ -388,6 +388,13 @@ $messages['ro'] = array(
 	'usercontactlink-baduser' => 'nume de utilizator incorect',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'usercontactlink-baduser' => 'Nome utende sbagliate',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

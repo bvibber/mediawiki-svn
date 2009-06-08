@@ -457,6 +457,14 @@ $messages['pt-br'] = array(
 	'newuseredit-summary' => 'Adicionando uma [[{{int:newusermessage-template}}|mensagem de boas-vindas]] à página de discussão do novo usuário',
 );
 
+/** Romanian (Română)
+ * @author Mihai
+ */
+$messages['ro'] = array(
+	'newusermessage-desc' => 'Adaugă un mesaj în paginile de discuţie ale utilizatorilor nou înregistraţi',
+	'newuseredit-summary' => 'Adaugă [[{{int:newusermessage-template}}|un mesaj de bun venit]] în paginile de discuţie ale utilizatorilor noi',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

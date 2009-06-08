@@ -117,6 +117,11 @@ $aliases['mk'] = array(
 	'CrossNamespaceLinks' => array( 'МеѓуИменскиВрски' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'CrossNamespaceLinks' => array( 'आंतरनाम्विशवदुवे' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'CrossNamespaceLinks' => array( 'Pautan silang ruang nama' ),

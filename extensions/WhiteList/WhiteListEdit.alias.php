@@ -80,6 +80,12 @@ $aliases['gsw'] = array(
 	'WhiteListEdit' => array( 'Wyssi Lischte bearbeite' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'WhiteList' => array( 'શ્વેતયાદી' ),
+	'WhiteListEdit' => array( 'શ્વેતયાદી સંપાદન' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'WhiteList' => array( 'Běła lisćina' ),

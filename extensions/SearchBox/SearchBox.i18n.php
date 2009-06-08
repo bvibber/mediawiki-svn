@@ -254,6 +254,16 @@ $messages['gsw'] = array(
 	'searchbox-namespaces' => 'Namensryym:',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'searchbox-desc' => 'શોધ રૂપે સમાવેશ કરવાની અનુમતિ આપો',
+	'searchbox-search' => 'શોધો',
+	'searchbox-go' => 'જાઓ',
+	'searchbox-namespaces' => 'નામાવકાશ:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  */

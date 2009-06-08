@@ -395,6 +395,8 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'selectcategory-title' => 'Selezione le categorije',
+	'selectcategory-desc' => "Permette a l'utende de selezionà da le categorije già esistende quanne cange 'na pàgene",
+	'selectcategory-subtitle' => "Cazze 'u SHIFT e 'u mouse pe scacchià cchiù categorije une attaccate a l'otre, cazze 'u CTRL e 'u mouse pe scacchià cchiù categorije ca non ge vonne une rete a l'otre.",
 );
 
 /** Russian (Русский)

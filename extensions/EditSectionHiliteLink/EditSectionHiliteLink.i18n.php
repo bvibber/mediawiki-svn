@@ -29,10 +29,11 @@ $messages['ar'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'Editsectionhilitelink-desc' => 'Выдзяленьне адпаведнай сэкцыі старонкі, калі Вы пераносіце курсор мышкі на спасылку рэдагаваньня',
+	'Editsectionhilitelink-desc' => 'Пазначэньне адпаведнай сэкцыі старонкі, калі Вы наводзіце курсор мышкі на спасылку рэдагаваньня',
 );
 
 /** Bosnian (Bosanski)

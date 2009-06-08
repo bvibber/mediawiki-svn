@@ -106,6 +106,11 @@ $aliases['lb'] = array(
 	'DeleteBatch' => array( 'Läsch-Batch' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'DeleteBatch' => array( 'बॅचवगळा' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'DeleteBatch' => array( 'Paginareeks_vortdoon' ),

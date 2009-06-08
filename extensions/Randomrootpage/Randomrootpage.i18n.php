@@ -244,6 +244,14 @@ $messages['pt-br'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Página especial]] que busca uma página raiz aleatória',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'randomrootpage' => 'Pàgene prengepàle a uecchije',
+	'randomrootpage-desc' => "[[Special:Randomrootpage|Pàgena speciale]] ca pigghije 'na pàgena a uecchije",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

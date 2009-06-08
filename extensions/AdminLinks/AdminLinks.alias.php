@@ -48,6 +48,11 @@ $aliases['mt'] = array(
 	'AdminLinks' => array( 'ĦoloqAmmin' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'AdminLinks' => array( 'Beheerdersverwiezingen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'AdminLinks' => array( 'Beheerdersverwijzingen' ),

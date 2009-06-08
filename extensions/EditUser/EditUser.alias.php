@@ -120,6 +120,11 @@ $aliases['lb'] = array(
 	'EditUser' => array( 'Benotzer änneren' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'EditUser' => array( 'संपादनसदस्य' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'EditUser' => array( 'Jumlah pengguna' ),

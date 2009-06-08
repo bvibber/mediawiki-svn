@@ -69,6 +69,11 @@ $aliases['gsw'] = array(
 	'WatchSubpages' => array( 'Untersyte beobachte' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'WatchSubpages' => array( 'ઉપપાનાઓ જુઓ' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'WatchSubpages' => array( 'Prati_podstranice' ),

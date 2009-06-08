@@ -897,10 +897,32 @@ Aviso: a atualização pode demorar um tempo considerável em wikis grandes.',
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
+	'refreshspecial' => 'Actualizează paginile speciale',
+	'refreshspecial-desc' => 'Permite [[Special:RefreshSpecial|actualizarea manuală]] a paginilor speciale',
+	'refreshspecial-title' => 'Actualizează paginile speciale',
+	'refreshspecial-help' => "Această pagină specială furnizează mijloacele pentru a actualiza manual paginile speciale.
+După ce aţi ales toate paginile pe care doriţi să le reîmprospătaţi, faceţi clic pe \"Actualizează marcările\" butonul de mai jos pentru a actualiza pagini speciale marcate.
+'''Atenţie:''' Actualizarea poate dura un timp mai îndelungat în wiki-urile mari.",
+	'refreshspecial-button' => 'Actualizează ce e marcat',
+	'refreshspecial-fail' => 'Te rog marchează cel puţin o pagină specială care să fie actualizată',
+	'refreshspecial-refreshing' => 'se actualizează paginile speciale',
+	'refreshspecial-skipped' => 'superficial, omis',
+	'refreshspecial-choice' => 'se actualizează paginile speciale',
+	'refreshspecial-js-disabled' => '(<i>Nu poţi selecta toate paginile dacă JavaScript is dezactivat</i>)',
+	'refreshspecial-select-all-pages' => 'Marchează toate paginile',
+	'refreshspecial-link-back' => 'Înapoi la pagina specială',
+	'refreshspecial-none-selected' => 'Nu ai selectat nicio pagină specială. Vor fi readuse marcările implicite.',
 	'refreshspecial-db-error' => 'Eşuat: eroare la baza de date',
+	'refreshspecial-no-page' => 'Nu există o astfel de pagină specială',
+	'refreshspecial-slave-lagged' => 'Întârziere la serverul secundar, aştept ...',
 	'refreshspecial-reconnected' => 'Reconectat.',
+	'refreshspecial-reconnecting' => 'Eroare la conectare, reconectare în 10 secunde ...',
+	'refreshspecial-page-result' => '$1 {{PLURAL:$1|rând obţinut|rânduri obţinute}} în',
+	'refreshspecial-total-display' => 'Actualizat $1 {{PLURAL:$1|pagină|pagini}} însumând $2 {{PLURAL:$2|rând|rânduri}} în timpul de $3 (timpul complet de rulare a script-ului este de $4)',
+	'right-refreshspecial' => 'Actualizez paginile speciale',
 );
 
 /** Russian (Русский)

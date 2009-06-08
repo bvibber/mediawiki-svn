@@ -1576,6 +1576,7 @@ $wdMessages['bs'] = array(
 	'ow_importtsv_import_failed' => 'Uvoz nije uspjeo.',
 	'ow_importtsv_file' => 'TSV datoteka:',
 	'ow_importtsv_test_run' => 'Probno pokretanje:',
+	'ow_importtsv_not_utf8' => '<p>Izgleda da ovo nije UTF-8 datoteka. Datoteka <i>mora</i> biti kodirana po UTF-8. Provjerite da li Vaš program sprema i izvozi pravilno datoteku.</p>',
 	'ow_importtsv_not_tsv' => '<p>Ovo ne izgleda kao valjana TSV datoteka.</p>',
 	'ow_importtsv_test_run_title' => 'Probno pokretanje uvoza TSV podataka',
 	'ow_importtsv_nothing_added' => 'Ništa nije dodano.',
@@ -1644,6 +1645,7 @@ Molimo provjerite web adresu.',
 	'ow_ClassMembership' => 'Članstvo klase',
 	'ow_Collection' => 'Zbirka',
 	'ow_Collection_colon' => 'Kolekcija:',
+	'ow_CollectionMember' => 'Član kolekcije',
 	'ow_CollectionMembership' => 'Članstvo u zbirci',
 	'ow_Definition' => 'Definicija',
 	'ow_DefinedMeaning' => 'Određeno značenje',
@@ -1707,8 +1709,10 @@ Moguće je su izgubljeni.
 Molimo kontaktirajte operatora servera ili administratora.',
 	'ow_history_transaction' => 'Transakcija:',
 	'ow_class_attr_type_dm' => 'Definisano značenje',
+	'ow_class_attr_type_xlate' => 'Tekst koji se može prevoditi',
 	'ow_class_attr_type_plain' => 'Obični tekst',
 	'ow_class_attr_type_link' => 'Link',
+	'ow_class_attr_type_option' => 'Spisak opcija',
 	'ow_needs_xlation_title' => 'Izrazi koji trebaju prijevod',
 	'ow_needs_xlation_source_lang' => 'Izvorni jezik:',
 	'ow_needs_xlation_dest_lang' => 'Odredišni jezik:',
@@ -1777,6 +1781,22 @@ $wdMessages['ca'] = array(
 	'ow_create' => 'Crea',
 	'ow_suggest_previous' => 'Anterior',
 	'ow_suggest_next' => 'Següent',
+);
+
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$wdMessages['ckb-arab'] = array(
+	'langman-desc' => 'به [[Special:Languages]] زمان زیاد بکە و هەڵبژاردەکانی بگۆڕە ‌',
+	'langman_title' => 'جێبەجێکەری زمان',
+	'langman_header' => 'لەم ژێرەدا کۆدی زمان و ناوەکەی بە ئینگلیزی بنووسە:',
+	'langman_req_fields' => 'هەردوو ناوی زمان و کۆدی ISO 639-3 پێویستن!',
+	'langman_langname' => 'ناوی زمان:',
+	'langman_iso639-3' => 'کۆدی ISO 639-3:',
+	'langman_iso639-2' => 'کۆدی ISO 639-2:',
+	'langman_addlang' => 'زمان زیاد بکە',
+	'importlangnames_not_allowed' => 'ڕێگەت پێ‌نەدراوە بۆ گۆڕانی هەڵبژاردەکانی زمان.',
+	'datasearch_language' => 'زمان:',
 );
 
 /** Czech (Česky)

@@ -79,7 +79,7 @@ $messages['be-tarask'] = array(
 	'editsimilar-thanks-notsimilar' => 'Дзякуй за Ваш унёсак.
 {{PLURAL:$2|Гэтая старонка таксама можа|Гэтыя старонкі таксама могуць}} патрабаваць Вашай дапамогі: $1.',
 	'editsimilar-thankyou' => 'Дзякуй за Ваш унёсак, $1!',
-	'editsimilar-link-disable' => 'ўсталяваць устаноўкі',
+	'editsimilar-link-disable' => 'зьмяніць устаноўкі',
 	'tog-edit-similar' => 'Уключыць прапановы падобных старонак',
 );
 
@@ -100,9 +100,9 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'editsimilar-desc' => 'Ohrabruje korisnike za uređuju slične stranice nakon spremanja stranice',
 	'editsimilar-thanks' => 'Hvala Vam za Vaš doprinos.
-Pogledajte ove povezane stranice: $1.',
+Pogledajte {{PLURAL:$2|ovu povezanu stranicu|ove povezane stranice}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Hvala Vam za Vaš doprinos.
-Ove stranice Vam također mogu pomoći: $1.',
+{{PLURAL:$2|Ova stranica|Ove stranice}} Vam također {{PLURAL:$2|može|mogu}} pomoći: $1.',
 	'editsimilar-thankyou' => 'Korisniče $1, hvala Vam za Vaš doprinos!',
 	'editsimilar-link-disable' => 'postavi postavke',
 	'tog-edit-similar' => 'Omogući sugestije za slične stranice',
@@ -175,9 +175,9 @@ Jen paĝoj kiuj ankaŭ bezonas vian helpon: $1.',
 $messages['es'] = array(
 	'editsimilar-desc' => 'Animaa usuarios a editar una página similar después de grabar una página',
 	'editsimilar-thanks' => 'Gracias por tu contribución.
-Verifica estas páginas relacionadas: $1.',
+Verifica {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Gracias por tu contribución.
-Estas páginas podrían también usar tu ayuda: $1.',
+{{PLURAL:$2|Esta página|Estas páginas}} podrían también usar tu ayuda: $1.',
 	'editsimilar-thankyou' => 'Gracias por tu contribución, $1!',
 	'editsimilar-link-disable' => 'configurar preferencias',
 	'tog-edit-similar' => 'Habilitar sugerencias de páginas similares',
@@ -299,9 +299,9 @@ Ezeknél a lapoknál is segítségedet vehetjük: $1.',
 $messages['ia'] = array(
 	'editsimilar-desc' => 'Incoragia le usatores a modificar un pagina similar post haber publicate un pagina',
 	'editsimilar-thanks' => 'Gratias pro tu contribution.
-Examina iste paginas connexe: $1.',
+Examina iste {{PLURAL:$2|pagina|paginas}} connexe: $1.',
 	'editsimilar-thanks-notsimilar' => 'Gratias pro tu contribution.
-Etiam iste paginas poterea haber beneficio de tu adjuta: $1.',
+Etiam iste {{PLURAL:$2|pagina|paginas}} poterea haber beneficio de tu adjuta: $1.',
 	'editsimilar-thankyou' => 'Gratias pro tu contribution, $1!',
 	'editsimilar-link-disable' => 'definir preferentias',
 	'tog-edit-similar' => 'Activar le suggestiones de paginas similar',
@@ -347,10 +347,10 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'editsimilar-desc' => 'Schläät de Metmaacher vör, en äänlijje Sigg ze beärrbeide, nohdämm se en Sigg afjespeischert han.',
-	'editsimilar-thanks' => 'Danke för Dinge Beidraach.
-Donn och ens op hee di Sigge loore: $1.',
-	'editsimilar-thanks-notsimilar' => 'Danke för Dinge Beidraach.
-Hee di Sigge künnte och joot fö Desch sin: $1.',
+	'editsimilar-thanks' => 'Mer bedanke uns för Dinge Beidraach.
+Donn och ens op hee di ählijje {{PLURAL:$2|Sigg|Sigge|Sigge}} loore: $1.',
+	'editsimilar-thanks-notsimilar' => 'Merçi för Dinge Beidraach!
+Hee di {{PLURAL:$2|Sigg künnt|Sigge künnte|Sigge künnte}} och joot för Desch sin: $1.',
 	'editsimilar-thankyou' => 'Danke för Dinge Beidraach, $1.',
 	'editsimilar-link-disable' => 'Enstellunge maache',
 	'tog-edit-similar' => 'Vörschlääsch för äänlijje Sigge aanschallde',

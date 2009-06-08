@@ -595,8 +595,12 @@ $messages['as'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'deletequeue-action-queued' => 'Выдаленьне',
+	'deletequeue-action' => 'Прапанаваць выдаленьне',
+	'deletequeue-action-title' => 'Прапанаваць выдаленьне «$1»',
 	'deletequeue-delnom-otherreason' => 'Іншая прычына',
 	'deletequeue-delnom-extra' => 'Дадатковая інфармацыя:',
 	'deletequeue-review-delete' => 'Выдаліць старонку.',
@@ -610,6 +614,7 @@ $messages['be-tarask'] = array(
 	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-list-header-page' => 'Старонка',
 	'deletequeue-list-header-queue' => 'Чарга',
+	'deletequeue-list-header-discusspage' => 'Старонка абмеркаваньня',
 	'deletequeue-list-header-reason' => 'Прычына выдаленьня',
 	'deletequeue-case-page' => 'Старонка:',
 	'deletequeue-case-reason' => 'Прычына:',

@@ -60,9 +60,15 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'dplforum-desc' => 'Пашырэньне форуму заснаванае на DPL',
+	'dplforum-by' => 'ад $1',
+	'dplforum-edited' => '- Апошняе рэдагаваньне',
 	'dplforum-never' => 'Ніколі',
+	'dplforum-toofew' => 'Форум DPL: Занадта мала катэгорыяў!',
+	'dplforum-toomany' => 'Форум DPL: Зашмат катэгорыяў!',
 );
 
 /** Bulgarian (Български)

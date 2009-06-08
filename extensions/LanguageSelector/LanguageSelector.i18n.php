@@ -287,7 +287,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'languageselector' => 'Lengoua',
-	'languageselector-desc' => 'Chouèx de lengoues sur châque pâge, por los visitors avouéc.',
+	'languageselector-desc' => 'Chouèx de lengoua sur châque pâge, por los visitors avouéc.',
 	'languageselector-setlang' => 'Dèfenir',
 );
 

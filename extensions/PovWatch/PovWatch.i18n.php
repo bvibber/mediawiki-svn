@@ -424,6 +424,8 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_no_session' => 'Eraro: Ne eblis enigi formularon pro perdo de seancaj datenoj.',
+	'povwatch_already_subscribed' => 'Vi jam abonis PovWatch-on.',
+	'povwatch_subscribed' => 'Vi nun abonas PovWatch-on.',
 	'povwatch_invalid_title' => 'La enigita titolo estis nevalida',
 	'povwatch_pushed' => '[[$1]] estis sukcese pelita al $2 {{PLURAL:$2|uzula atentaro|uzulaj atentaroj}}',
 	'povwatch_subscriber_list_intro' => '<strong>Listo de abonantoj</strong>',
@@ -1135,6 +1137,14 @@ $messages['li'] = array(
 	'right-povwatch_user' => "Pagina's toevoege aan de volglies van anger gebroekers",
 	'action-povwatch_admin' => 'rechte te behere veur PovWatch',
 	'action-povwatch_user' => 'deze pagina toe te voege aan de volglies van een andere gebroeker',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'povwatch_title' => 'Pavadinimas:',
+	'povwatch_added' => 'pridėta',
 );
 
 /** Malayalam (മലയാളം)

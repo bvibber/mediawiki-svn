@@ -83,7 +83,7 @@ $aliases['gsw'] = array(
 
 /** Gujarati (ગુજરાતી) */
 $aliases['gu'] = array(
-	'BoardVote' => array( 'બોર્ડમત' ),
+	'BoardVote' => array( 'સમિતિમત' ),
 );
 
 /** Hebrew (עברית)

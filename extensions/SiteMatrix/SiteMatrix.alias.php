@@ -142,6 +142,11 @@ $aliases['mk'] = array(
 	'SiteMatrix' => array( 'ВикимедијаВикија', 'МатрицаНаВикија' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'SiteMatrix' => array( 'साईटढाचा', 'विकिमीडियाविकिज' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'SiteMatrix' => array( 'Wiki Wikimedia' ),

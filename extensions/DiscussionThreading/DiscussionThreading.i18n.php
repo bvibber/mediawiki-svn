@@ -57,6 +57,18 @@ $messages['arz'] = array(
 	'discussionthreading-threadnewsectionhint' => 'بدء مجموعة رسائل جديدة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'discussionthreading-desc' => 'Даданьне галінаў у старонкі абмеркаваньня',
+	'discussionthreading-replysection' => 'адказ',
+	'discussionthreading-replysectionhint' => 'Адказаць на гэта паведамленьне',
+	'discussionthreading-threadnewsection' => 'новае',
+	'discussionthreading-threadnewsectionhint' => 'Пачаць новую галіну',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

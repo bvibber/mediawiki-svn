@@ -516,6 +516,11 @@ Utilizadores anônimos recebem um apelido gerado aleatoriamente, mas este pode s
  */
 $messages['roa-tara'] = array(
 	'mibbit' => 'Chat mibbit',
+	'mibbit-desc' => "Aggiunde 'na [[Special:Mibbit|pàgena speciale]] ausate pe ciattà cu l'otre utinde de Uicchi",
+	'mibbit-header' => "Sta pàgena speciale te permette de collabborà in timbe reale cu l'otre utinde de Uicchi.
+Pe te connettere avaste ca cazze 'u buttone \"Connette\" (Connect).
+Ce tu si collegate cu 'u nome tue allora già iesse scritte.
+A l'utinde anonime ne avène date une a uecchije, ma lore 'u ponne cangià.",
 	'right-mibbit' => "Permitte de ausà 'a chat Mibbit",
 );
 

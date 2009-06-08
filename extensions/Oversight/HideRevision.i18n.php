@@ -1097,37 +1097,48 @@ Annulez d’abord cette modification en rétablissant la version précédente.',
  */
 $messages['frp'] = array(
 	'hiderevision' => 'Cachiér por de bon les vèrsions',
-	'hiderevision-desc' => 'Mâsque les modificacions endividuèles de tôs los utilisators por des rêsons lègâles, etc.',
+	'hiderevision-desc' => 'Cache los changements particuliérs de tôs los utilisators por des rêsons lègâles, etc.',
+	'group-oversight' => 'Supèrvisors',
+	'group-oversight-member' => 'Supèrvisor',
+	'grouppage-oversight' => '{{ns:project}}:Supèrvisor',
+	'right-oversight' => 'Vêre les vèrsions cachiês dês devant',
+	'right-hiderevision' => 'Cachiér des vèrsions ux administrators',
 	'hiderevision-prompt' => 'Numerô de vèrsion a suprimar :',
 	'hiderevision-continue' => 'Continuar',
-	'hiderevision-text' => "Ceta fonccionalitât dêt étre utilisâ '''ren que''' por los câs siuvents :
+	'hiderevision-text' => "Ceta fonccionalitât dêt étre utilisâ '''ren que''' dens cetos câs :
 * Enformacions a sè que vont pas avouéc :
-*: ''Adrèce a sè et numerô de tèlèfone, numerô de sècuritât sociâla, etc...''
+*: ''adrèce et numerô de tèlèfono, numerô de sècuritât sociâla, ...''
 
-'''L’abus de ceta fonccionalitât arat coment consèquence la pèrta de celos privilèjos.'''
+'''L’abus de ceta fonccionalitât porterat a consèquence la pèrta de celos privilèjos.'''
 
-Los articllos èfaciês sont pas més visiblos dens ceti sistèmo, mas celes suprèssions sont jornalisâs et pôvont étre rèstorâs manuèlament per un administrator èyent l’accès drêt sur la bâsa de balyês se vos éd fêt una èrror.",
-	'hiderevision-reason' => 'Rêson (serat enregistrâ sèparament) :',
-	'hiderevision-submit' => 'Cachiér ceta balyê de maniére durâbla',
+Les vèrsions suprimâs sont pas més visibles dens ceti seto, mas celes suprèssions sont enregistrâs et pôvont étre refêtes a la man per un administrator de la bâsa de balyês se vos éd fêt una èrror.",
+	'hiderevision-reason' => 'Rêson (serat enregistrâ châcuna a pârt) :',
+	'hiderevision-submit' => 'Cachiér ceta vèrsion por de bon',
 	'hiderevision-tab' => 'Cachiér la vèrsion',
-	'hiderevision-norevisions' => 'Niona vèrsion endicâ a suprimar.',
-	'hiderevision-noreason' => 'Vos dête endicar la rêson prècisa de ceta suprèssion.',
+	'hiderevision-link' => 'Contribucions cachiês a l’utilisator',
+	'hiderevision-norevisions' => 'Niona vèrsion spècefiâ a suprimar.',
+	'hiderevision-noreason' => 'Vos dête balyér la rêson cllâra de ceta suprèssion.',
 	'hiderevision-status' => 'Vèrsion $1 : $2',
 	'hiderevision-success' => 'Arch·ivâ et suprimâ avouéc reusséta.',
 	'hiderevision-error-missing' => 'Pas trovâ dens la bâsa de balyês.',
-	'hiderevision-error-current' => 'Pôt pas suprimar la dèrriére vèrsion dens una pâge. Féte una anulacion d’èdicion dês devant.',
-	'hiderevision-error-delete' => 'Pôt pas étre arch·ivâ ; la pâge arêt-el étâ suprimâ ?',
+	'hiderevision-error-current' => 'Pôt pas suprimar lo dèrriér changement d’una pâge.
+Anulâd d’abôrd cél changement en rètabléssent la vèrsion devant.',
+	'hiderevision-error-delete' => 'Pôt pas étre arch·ivâ ; la pâge arêt-el étâ suprimâ dês devant ?',
 	'hiderevision-archive-status' => 'Vèrsion suprimâ de $1 : $2',
-	'oversight-nodiff' => 'Empossiblo de dècelar des changements tant que sè trove gins de vèrsion prècèdenta por la pâge. Les rêsons pôvont étre les siuventes :
+	'oversight-nodiff' => 'Empossiblo de dècelar des changements tant que sè trove gins de vèrsion devant por la pâge. Les rêsons pôvont étre cetes :
 *La pâge at étâ suprimâ.
 *La vèrsion cachiê ére la tota premiére de la pâge.',
-	'oversight-log-hiderev' => 'at suprimâ una èdicion de $1',
-	'oversight' => 'Survelyér',
+	'oversight-log-hiderev' => 'at suprimâ una vèrsion de $1',
+	'oversight' => 'Supèrvision',
 	'oversight-view' => 'dètalys',
-	'oversight-difference' => '(Difèrence per rapôrt a la vèrsion prècèdenta)',
-	'oversight-prev' => 'Dèrriére vèrsion prècèdenta',
+	'oversight-difference' => '(Difèrence per rapôrt a la vèrsion devant)',
+	'oversight-prev' => 'Dèrriére vèrsion devant',
 	'oversight-hidden' => 'Vèrsion cachiê',
-	'oversight-header' => 'Ce-desot, figure la lista de les vèrsions cachiês de maniére durâbla u publico. La publecacion de ceta enformacion pôt avêr coment consèquence la pèrta des privilèjos de survelyence.',
+	'oversight-header' => 'Vê-que la lista de les vèrsions cachiês por de bon u publico.
+La publecacion de ceta enformacion pôt portar a consèquence la pèrta des privilèjos de Supèrvision.',
+	'oversight-legend' => 'Jornal de les rechèrches de les vèrsions cachiês',
+	'oversight-oversighter' => 'Supèrvisor :',
+	'oversight-offender' => 'Difamator :',
 );
 
 /** Friulian (Furlan)

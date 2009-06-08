@@ -1040,7 +1040,9 @@ $messages['lt'] = array(
 	'sitematrix-language' => 'Kalba',
 	'sitematrix-project' => 'Projekto pavadinimas, interprojektinė nuoroda ir interwiki nuoroda.',
 	'sitematrix-others' => 'Kiti Vikimedijos projektai',
+	'sitematrix-total' => "'''Viso: $1'''",
 	'sitematrix-sitetotal' => 'Viso',
+	'sitematrix-private' => 'privatus',
 );
 
 /** Latvian (Latviešu)

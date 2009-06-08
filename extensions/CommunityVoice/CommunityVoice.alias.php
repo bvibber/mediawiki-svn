@@ -53,6 +53,11 @@ $aliases['mt'] = array(
 	'CommunityVoice' => array( 'VuċiKomunità', 'VuċiKomunitarja' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'CommunityVoice' => array( 'Gemeenschapsstemme' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CommunityVoice' => array( 'Gemeenschapsstem' ),

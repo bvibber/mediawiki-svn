@@ -95,7 +95,7 @@ $aliases['lb'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'MultiUpload' => array( 'Meerdere_bestanden_toevoegen' ),
+	'MultiUpload' => array( 'Meerdere_bestanen_toevoegen' ),
 );
 
 /** Dutch (Nederlands) */

@@ -1200,14 +1200,22 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
+	'imagemap_desc' => 'Permite realizarea unei imagini hartă, cu ajutorul etichetei <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'Eroare: trebuie specificată o imagine pe prima linie',
 	'imagemap_invalid_image' => 'Eroare: imaginea este incorectă sau nu există',
+	'imagemap_bad_image' => 'Eroare: imaginea este pe o listă neagră pentru această pagină',
 	'imagemap_no_link' => 'Eroare: nu a fost găsită nici o legătură validă la sfârşitul liniei $1',
+	'imagemap_invalid_title' => 'Eroare: titlu invalid în legătură în linia $1',
 	'imagemap_missing_coord' => 'Eroare: coordonate insuficiente pentru forma de la linia $1',
+	'imagemap_unrecognised_shape' => 'Eroare: formă nerecunoscută în linia $1, fiecare linie trebuie să înceapă cu unul din parametrii: default, rect, circle or poly',
+	'imagemap_no_areas' => 'Eroare: cel puţin o arie trebuie specificată',
 	'imagemap_invalid_coord' => 'Eroare: coordonată incorectă la linia $1, trebuie să fie număr',
+	'imagemap_invalid_desc' => 'Eroare: parametru "desc" invalid, trebuie să fie unul din următorii: <tt>$1</tt>',
 	'imagemap_description' => 'Despre această imagine',
+	'imagemap_poly_odd' => 'Eroare: a fost găsit un poligon cu un număr impar de coordonate în linia $1',
 );
 
 /** Tarandíne (Tarandíne)

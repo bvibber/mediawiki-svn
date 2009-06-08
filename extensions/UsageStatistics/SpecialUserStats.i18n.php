@@ -1496,6 +1496,7 @@ $messages['roa-tara'] = array(
 	'usagestatisticscalselect' => 'Selezzione',
 	'usagestatistics-editindividual' => "Statisteche sus a le cangiaminde de l'utende $1",
 	'usagestatistics-editpages' => "Statisteche sus a le pàggene de l'utende $1",
+	'right-viewsystemstats' => 'Vide le [[Special:UserStats|statisteche de utilizze de Uicchi]]',
 );
 
 /** Russian (Русский)

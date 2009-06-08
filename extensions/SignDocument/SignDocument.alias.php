@@ -80,6 +80,12 @@ $aliases['lb'] = array(
 	'CreateSignDocument' => array( 'Dokument ënnerschreiwen erméiglechen' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'SignDocument' => array( 'सहीदस्त' ),
+	'CreateSignDocument' => array( 'दस्तसहीनर्मितीकरा' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'SignDocument' => array( 'Dokement_ondertekenen' ),

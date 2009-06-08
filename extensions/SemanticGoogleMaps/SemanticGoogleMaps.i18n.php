@@ -284,6 +284,8 @@ $messages['pt-br'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Ingroce le coordinate',
+	'semanticgooglemaps-desc' => "Permette a l'utinde de cangià e visualizzà le date de le coordinate semandfiche  ausanne '''Google Maps'''",
 	'semanticgooglemaps-enteraddresshere' => "Scaffe l'indirizze aqquà",
 );
 

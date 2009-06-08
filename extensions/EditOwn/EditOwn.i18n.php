@@ -43,10 +43,11 @@ $messages['arz'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'editown-desc' => 'Удзельнікі без правоў рэдагаваньня могуць рэдагаваць толькі старонкі якія яны самі стварылі',
+	'editown-desc' => 'Удзельнікі без правоў рэдагаваньня могуць рэдагаваць толькі старонкі, якія яны самі стварылі',
 );
 
 /** Bosnian (Bosanski)

@@ -22,12 +22,13 @@ $messages['qqq'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'stockcharts-desc' => 'Дадае тэг <nowiki><stockchart ticker="AAPL"/></nowiki> для інтэрактыўнай фінансавай біржавой табліцы',
-	'stockcharts-missingticker' => 'Для ўстаўкі біржавой табліцы, Вам неабходна хаця б пазначыць тыкер.
-Карыстайцеся: &lt;stockchart ticker="AAPL"/&gt;',
+	'stockcharts-desc' => 'Дадае тэг <nowiki><stockchart ticker="AAPL"/></nowiki> для інтэрактыўнай фінансавай інфармацыі',
+	'stockcharts-missingticker' => 'Для ўсьтаўкі інтэрактыўнай фінансавай інфармацыі, Вам неабходна хаця б пазначыць назву.
+Напрыклад: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
 /** Bosnian (Bosanski)
@@ -93,6 +94,14 @@ $messages['ia'] = array(
 Usa: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'stockcharts-desc' => '双方向金融株式チャートのための<nowiki><stockchart ticker="AAPL"/></nowiki>タグを追加する',
+	'stockcharts-missingticker' => '株式チャートを埋め込むためには、最低でもチッカーを指定する必要があります。以下を使用してください: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -117,6 +126,15 @@ $messages['oc'] = array(
 	'stockcharts-desc' => 'Apond la balisa <nowiki><stockchart ticker="AAPL"/></nowiki> per de tablèus de títols financièrs interactius',
 	'stockcharts-missingticker' => 'Per apondre un tablèu de títols, vos cal al mens especificar un ticker.
 Utilizacion : &lt;stockchart ticker="AAPL"/&gt;',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'stockcharts-desc' => "Aggiunge 'u tag <nowiki><stockchart ticker=\"AAPL\"/></nowiki> pe 'nu grafiche de l'aziune finanziarie inderattive",
+	'stockcharts-missingticker' => 'Pe scaffà \'nu grafeche de aziune, tu è abbesogne almene de specificà \'nu ticker.
+Ause: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
 /** Slovak (Slovenčina)

@@ -58,6 +58,11 @@ $aliases['ksh'] = array(
 	'ContributionTracking' => array( 'MetmaacherVerfoljung' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'ContributionTracking' => array( 'योगदानमागमूस' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ContributionTracking' => array( 'Donasies_volgen' ),

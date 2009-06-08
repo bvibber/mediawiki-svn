@@ -55,6 +55,11 @@ $aliases['lb'] = array(
 	'RegexBlock' => array( 'Regex Spär' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'RegexBlock' => array( 'Regexblokkering' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'RegexBlock' => array( 'RegexBlokkade' ),

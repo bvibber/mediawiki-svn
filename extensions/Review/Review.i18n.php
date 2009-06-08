@@ -352,6 +352,7 @@ $messages['bs'] = array(
 	'review_topic_page' => 'Teme pregleda',
 	'review_sidebar_explanation' => "Krajnji lijevi potvrdni okvir uvijek znači 'bez mišljenja'.",
 	'review_your_review' => 'Vaša provjera ove stranice/revizije:',
+	'review_page_link' => 'statistike provjere',
 	'review_for_page' => 'Pregled za stranicu "$1"',
 	'review_for_user' => 'Provjera za korisnika "$1"',
 	'review_error' => 'Nešto nije u redu!',

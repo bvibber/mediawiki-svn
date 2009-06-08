@@ -1567,6 +1567,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Kaganer
  * @author Александр Сигачёв
  */
@@ -1589,8 +1590,9 @@ $messages['ru'] = array(
 	'changeauthor-weirderror' => 'Произошла очень странная ошибка. Пожалуйста, повторите ваш запрос. Если ошибка снова возникнет, то вероятно это означает, что база данных испорчена.',
 	'changeauthor-invalidform' => 'Пожалуйста, используйте форму на [[Special:ChangeAuthor|служебной странице]], а не какую-либо другую.',
 	'changeauthor-success' => 'Запрос успешно обработан.',
-	'changeauthor-logentry' => 'Изменён автор $2 $1 с $3 на $4',
+	'changeauthor-logentry' => 'изменил автора $2 $1 с $3 на $4',
 	'changeauthor-logpagename' => 'Журнал изменения авторов',
+	'right-changeauthor' => 'изменение автора правки',
 );
 
 /** Slovak (Slovenčina)

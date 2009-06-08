@@ -119,6 +119,13 @@ $aliases['mk'] = array(
 	'ContributionTotal' => array( 'ВкупноПридонеси' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'ContributionHistory' => array( 'योगदानइतिहास' ),
+	'ContributionStatistics' => array( 'योगदानसांख्यिकी' ),
+	'ContributionTotal' => array( 'योगदानसारे' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'ContributionHistory' => array( 'KronoloġijaKontribuzzjoni' ),

@@ -102,6 +102,11 @@ $aliases['mk'] = array(
 	'FindSpam' => array( 'НајдиСпем' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'FindSpam' => array( 'स्पॅमशोधा' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'FindSpam' => array( 'FittexSpam' ),

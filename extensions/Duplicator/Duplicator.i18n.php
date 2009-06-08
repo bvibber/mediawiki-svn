@@ -143,18 +143,30 @@ $messages['bcl'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'duplicator' => 'Капіраваць старонку',
+	'duplicator' => 'Капіяваць старонку',
 	'duplicator-desc' => 'Стварае незалежныя [[Special:Duplicate|копіі старонак]] з поўнай гісторыяй зьменаў',
-	'duplicator-toolbox' => 'Капіраваць гэту старонку',
-	'duplicator-header' => 'Гэта старонка дазваляе скончыць капіраваньне старонкі, стварыць незалежную копію ўсёй гісторыі.
+	'duplicator-toolbox' => 'Капіяваць гэтую старонку',
+	'duplicator-header' => 'Гэтая старонка дазваляе скончыць капіяваньне старонкі і стварыць незалежную копію ўсёй гісторыі.
 Гэта карысна для разгалінаваньня старонкі, і г.д.',
 	'duplicator-options' => 'Устаноўкі',
 	'duplicator-source' => 'Крыніца:',
-	'duplicator-dest' => 'Куды:',
-	'duplicator-dotalk' => 'Капіраваць старонку абмеркаваньня (калі мажліва)',
-	'duplicator-submit' => 'Капіраваць',
-	'duplicator-summary' => 'Скапіравана з [[$1]]',
-	'duplicator-success' => "<big>'''[[$1]] была скапіравана ў [[$2]].'''</big>",
+	'duplicator-dest' => 'Мэтавая старонка:',
+	'duplicator-dotalk' => 'Капіяваць старонку абмеркаваньня (калі магчыма)',
+	'duplicator-submit' => 'Капіяваць',
+	'duplicator-summary' => 'Копія [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] была скапіяваная ў [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|рэдагаваньне было скапіяванае|рэдагаваньні былі скапіяваныя|рэдагаваньняў былі скапіяваныя}}.',
+	'duplicator-success-talkcopied' => 'Старонка абмеркаваньня была таксама скапіяваная.',
+	'duplicator-success-talknotcopied' => 'Старонка абмеркаваньня не магла быць скапіяваная.',
+	'duplicator-failed' => 'Старонка ня можа быць скапіяваная.
+Невядомая памылка.',
+	'duplicator-source-invalid' => 'Калі ласка, увядзіце слушную назву крыніцы.',
+	'duplicator-source-notexist' => 'Старонка [[$1]] не існуе. Калі ласка, увядзіце назву старонкі, якая існуе.',
+	'duplicator-dest-invalid' => 'Калі ласка, увядзіце слушную назву мэтавай старонкі.',
+	'duplicator-dest-exists' => '[[$1]] ужо існуе. Калі ласка, увядзіце назву старонкі, якой яшчэ няма.',
+	'duplicator-toomanyrevisions' => 'Старонка [[$1]] мае зашмат зьменаў ($2) і ня можа быць скапіяваная.
+Цяперашняе абмежаваньне — $3.',
+	'right-duplicate' => 'капіяваньне старонак',
 );
 
 /** Bulgarian (Български)
@@ -992,7 +1004,8 @@ Geef een pagina op die bestaat.',
 	'duplicator-dest-invalid' => 'Geef een geldige doelpagina op.',
 	'duplicator-dest-exists' => '[[$1]] bestaat al.
 Geeft een doelpagina op die niet bestaat.',
-	'duplicator-toomanyrevisions' => '[[$1]] heeft te veel versies ($2) en kan niet gekopieerd worden. De huidige limiet is $3.',
+	'duplicator-toomanyrevisions' => '[[$1]] heeft $2 versies en kan niet gekopieerd worden.
+De huidige limiet is $3.',
 	'right-duplicate' => "Pagina's kopiëren",
 );
 

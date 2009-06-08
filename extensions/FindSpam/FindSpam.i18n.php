@@ -257,7 +257,7 @@ $messages['eu'] = array(
  * @author Meisam
  */
 $messages['fa'] = array(
-	'findspam' => 'کشف هرزنویسی',
+	'findspam' => 'کشف هرزنگاری',
 	'findspam-desc' => 'یک [[Special:FindSpam|صفحهٔ ویژه]] می‌افزاید که امکان کشف هرزنگاری‌های تازه را فراهم می‌کند',
 	'findspam-ip' => 'نشانی اینترنتی:',
 	'findspam-ok' => 'قبول',

@@ -127,6 +127,11 @@ $aliases['mk'] = array(
 	'Contributors' => array( 'Придонесувачи' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'Contributors' => array( 'योगदानकर्ते' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'Contributors' => array( 'Kontributuri' ),

@@ -73,10 +73,10 @@ $messages['be-tarask'] = array(
 # Устаўце ніжэй старонкі, якія Вы жадаеце разблякаваць
 # * Назва старонкі
 # Сьпіс старонак для разблякаваньня павінен пачынацца з маркера,
-# усё астатняе будзе лічыцца камэнтаром
-# Назвы старонак могуць быць аформленыя як [[спасылкі]] і чульлівыя да рэгістру
-# Адпаведна, старонкі абмеркаваньняў будуць аўтаматычна разблякаваны разам са старонкамі
-# Дадатковую інфармацыю глядзіце http://www.mediawiki.org/wiki/Extension:EditSubpages
+# усё астатняе будзе лічыцца камэнтарам
+# Назвы старонак могуць быць аформленыя як [[спасылкі]] і ўлічваюць рэгістар
+# Адпаведна, старонкі абмеркаваньняў будуць аўтаматычна разблякаваныя разам са старонкамі
+# Дадатковую інфармацыю глядзіце на http://www.mediawiki.org/wiki/Extension:EditSubpages
   #</pre><!-- leave this line alone -->',
 );
 
@@ -148,7 +148,7 @@ $messages['el'] = array(
  */
 $messages['es'] = array(
 	'editsubpages-desc' => 'Permita a los administradores desbloquear una página y sus subpáginas para edición anónima a través de [[MediaWiki:Unlockedpages]]',
-	'unlockedpages' => '#<!-- Deje esta línea como está --><pre>
+	'unlockedpages' => '  #<!-- Deje esta línea como está --><pre>
 # Coloque páginas que deseas desbloquear debajo usando
 # * Nombre de página
 # Páginas desbloqueadas deben comenzar con una bala para ser contadas,

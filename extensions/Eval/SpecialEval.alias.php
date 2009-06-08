@@ -95,6 +95,11 @@ $aliases['lb'] = array(
 	'Eval' => array( 'Bewertung' ),
 );
 
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'Eval' => array( 'ईव्हाल' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'Eval' => array( 'Eval' ),
