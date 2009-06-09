@@ -11,23 +11,11 @@
  * Usage: This file is included automatically by ../UsabilityInitiative.php
  *
  * @author Trevor Parscal <tparscal@wikimedia.org>
- * Allow "or a later version" here?
- * @license GPL v2
+ * @license GPL v2 or later
  * @version 0.1.1
  */
 
-// Shortcut to this extension directory
-$dir = dirname( __FILE__ ) . '/';
-
-// Credits
-$wgExtensionCredits['other'][] = array(
-	'path' => __FILE__,
-	'name' => 'EditToolbar',
-	'author' => 'Trevor Parscal',
-	'version' => '0.1.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'descriptionmsg' => 'toolbar-desc',
-);
+/* Configuration */
 
 // Bump the version number every time you change any of the .css/.js files
 $wgEditToolbarStyleVersion = 1;
@@ -40,20 +28,29 @@ $wgEditToolbarGlobalEnable = false;
 // will not do anything)
 $wgEditToolbarUserEnable = true;
 
-// Autoload Classes
-$wgAutoloadClasses['EditToolbarHooks'] = $dir . 'EditToolbar.hooks.php';
+/* Setup */
 
-// Internationalization
-$wgExtensionMessagesFiles['EditToolbar'] = $dir . 'EditToolbar.i18n.php';
+// Credits
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'EditToolbar',
+	'author' => 'Trevor Parscal',
+	'version' => '0.1.1',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
+	'descriptionmsg' => 'toolbar-desc',
+);
 
-// Register toolbar interception
+// Adds Autoload Classes
+$wgAutoloadClasses['EditToolbarHooks'] =
+	dirname( __FILE__ ) . '/EditToolbar.hooks.php';
+
+// Adds Internationalized Messages
+$wgExtensionMessagesFiles['EditToolbar'] =
+	dirname( __FILE__ ) . '/EditToolbar.i18n.php';
+
+// Registers Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'EditToolbarHooks::intercept';
-
-// Register preferences customization
 $wgHooks['GetPreferences'][] = 'EditToolbarHooks::addPreferences';
 
-// Register ajax add script hook
-$wgHooks['AjaxAddScript'][] = 'EditToolbarHooks::addJS';
-
-// Register css add script hook
-$wgHooks['BeforePageDisplay'][] = 'EditToolbarHooks::addCSS';
+// Registers Hooks
+$wgHooks['AjaxAddScript'][] = 'EditToolbarHooks::initialize';
