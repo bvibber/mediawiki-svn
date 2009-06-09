@@ -20,6 +20,7 @@ class UsabilityInitiativeHooks {
 			'/extensions/UsabilityInitiative/Resources/jquery.js',
 			'/extensions/UsabilityInitiative/Resources/jquery.textSelection.js',
 			'/extensions/UsabilityInitiative/Resources/jquery.cookie.js',
+			'/extensions/UsabilityInitiative/Resources/messages.js',
 		);
 		foreach ( $scripts as $script ) {
 			// Add javascript resources to document
