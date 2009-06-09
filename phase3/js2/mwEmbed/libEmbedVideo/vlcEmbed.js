@@ -189,9 +189,7 @@ var vlcEmbed = {
 			js_log('setting duration to ' + this.vlc.input.length /1000);			
 			this.duration = this.vlc.input.length /1000;
 		}
-		this.currentTime = this.vlc.input.time/1000;
-		if(this.startOffset)
-			this.currentTime = this.currentTime - this.startOffset;		
+		this.currentTime = this.vlc.input.time/1000;		
    },
    onPause: function(){		   
 		this.parent_pause(); //update the inteface if paused via native control

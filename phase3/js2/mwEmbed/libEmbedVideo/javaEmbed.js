@@ -89,9 +89,8 @@ var javaEmbed = {
 			   //java reads ogg media time.. so no need to add the start or seek offset:
 			   //js_log(' ct: ' + this.jce.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
 			   this.currentTime = this.jce.getPlayPosition();	
-			   if(this.startOffset && ! this.supportsURLTimeEncoding()){	
-			   		this.currentTime = 	 this.currentTime - this.startOffset;
-			   }			   			  
+			   
+			   
 			   if( this.jce.getPlayPosition() < 0){
 			   		js_log('pp:'+this.jce.getPlayPosition());				 
 					//probably reached clip end 

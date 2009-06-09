@@ -1224,8 +1224,7 @@ embedVideo.prototype = {
 	},
 	//do seek function (should be overwritten by implementing embedLibs)
 	// first check if seek can be done on locally downloaded content. 
-	doSeek : function( perc ){
-		alert('f:baseEmbed:doSeek:' + perc + ' to st:' + this.seek_time_sec  + ' sf:' + this.start_ntp);
+	doSeek : function( perc ){		
 		if( this.supportsURLTimeEncoding() ){
 			
 			//make sure this.seek_time_sec is up-to-date:
