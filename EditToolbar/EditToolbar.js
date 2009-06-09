@@ -532,5 +532,45 @@ var editToolbarConfiguration = {
 				}
 			}
 		}
+	},
+	// Insert section
+	'insert': {
+		labelMsg: 'edittoolbar-section-insert',
+		groups: {
+			'media': {
+				labelMsg: 'edittoolbar-group-insert-media',
+				tools: {
+					'gallery': {
+						labelMsg: 'edittoolbar-tool-insert-gallery',
+						type: 'button',
+						icon: 'insert-gallery.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<gallery>\n",
+								periMsg: 'edittoolbar-tool-insert-gallery-example',
+								post: "\n</gallery>",
+							}
+						}
+					}
+				}
+			},
+			'other': {
+				tools: {
+					'newline': {
+						labelMsg: 'edittoolbar-tool-insert-newline',
+						type: 'button',
+						icon: 'insert-newline.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<br />\n",
+							}
+						}
+					}
+				}
+			}
+		}
+		
 	}
 };

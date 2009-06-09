@@ -83,6 +83,10 @@ class EditToolbarHooks {
 			'edittoolbar-tool-format-subscript-example',
 			/* Insert Section */
 			'edittoolbar-section-insert',
+			'edittoolbar-group-insert-media',
+			'edittoolbar-tool-insert-gallery',
+			'edittoolbar-tool-insert-gallery-example',
+			'edittoolbar-tool-insert-newline',
 			/* Special Characters Section */
 			'edittoolbar-section-characters',
 			/* Help Section */
