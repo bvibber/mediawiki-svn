@@ -498,9 +498,9 @@ var editToolbarConfiguration = {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "<super>",
+								pre: "<sup>",
 								periMsg: 'edittoolbar-tool-format-superscript-example',
-								post: "</super>"
+								post: "</sup>"
 							}
 						}
 					},
