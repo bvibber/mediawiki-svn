@@ -56,6 +56,10 @@ $messages['en'] = array(
 	'edittoolbar-tool-format-subscript-example' => 'Subscript text',
 	/* Insert Section */
 	'edittoolbar-section-insert' => 'Insert',
+	'edittoolbar-group-insert-media' => 'Media',
+	'edittoolbar-tool-insert-gallery' => 'Picture gallery',
+	'edittoolbar-tool-insert-gallery-example' => "Image:Example.jpg|Caption1\nImage:Example.jpg|Caption2",
+	'edittoolbar-tool-insert-newline' => 'New line',
 	/* Special Characters Section */
 	'edittoolbar-section-characters' => 'Special Characters',
 	/* Help Section */
