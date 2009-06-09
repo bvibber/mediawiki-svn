@@ -81,29 +81,40 @@ function gM( key, args ) {
 						.attr( { 'class': 'section', 'id': $(this).attr( 'id' ) + '-section-' + section } )
 						.appendTo( sectionsDiv );
 					// Appends toolbar to section div
-					sectionDiv.addToolbarSection( tools[section], textbox )
+					sectionDiv.addToolbarSection( tools[section], textbox );
+					// Add hidden form field used for show/hide persistency
+					if( $( '#ET' + section ).length == 0 )
+						textbox.parent( 'form' ).append(
+							$( '<input />' )
+								.attr( { 'type': 'hidden',
+									'id': 'ET' + section,
+									'name': 'ET' + section } )
+								.val( tools[section].showInitially )
+						);
+					var showHideLink = $( '<a />' )
+						.text( tools[section].label || gM( tools[section].labelMsg ) )
+						.attr( { 'href': '#', 'rel': section } )
+						.data( 'sectionDiv', sectionDiv )
+						.click( function() {
+							$(this).blur();
+							var show = ( $(this).data( 'sectionDiv' ).css( 'display' ) == 'none' );
+							$(this).data( 'sectionDiv' ).parent().children().hide();
+							$(this).parent().parent().find( 'a' ).removeClass( 'current' );
+							if ( show ) {
+								$(this).data( 'sectionDiv' ).show();
+								$(this).addClass( 'current' );
+							}
+							$( '#ET' + section ).val( ( show ? '1' : '0' ) );
+							return false;
+						});
 					// Appends section tab
 					tabDiv.append(
 						$( '<div />' )
 							.attr( 'class', 'tab' )
-							.append(
-								$( '<a />' )
-									.text( tools[section].label || gM( tools[section].labelMsg ) )
-									.attr( { 'href': '#', 'rel': section } )
-									.data( 'sectionDiv', sectionDiv )
-									.click( function() {
-										$(this).blur();
-										var show = ( $(this).data( 'sectionDiv' ).css( 'display' ) == 'none' );
-										$(this).data( 'sectionDiv' ).parent().children().hide();
-										$(this).parent().parent().find( 'a' ).removeClass( 'current' );
-										if ( show ) {
-											$(this).data( 'sectionDiv' ).show();
-											$(this).addClass( 'current' );
-										}
-										return false;
-									})
-							)
+							.append( showHideLink )
 					);
+					if( $( '#ET' + section ).val() != '0' )
+						showHideLink.click();
 				}
 			});
 		},
@@ -359,6 +370,7 @@ var editToolbarConfiguration = {
 	},
 	// Format section
 	'format': {
+		showInitially: '0',
 		labelMsg: 'edittoolbar-section-format',
 		groups: {
 			'heading': {
