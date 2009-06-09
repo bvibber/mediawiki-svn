@@ -28,16 +28,14 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'usabilityinitiative-desc',
 );
 
-// Shortcut to this extension directory
-$dir = dirname( __FILE__ );
-
 // Autoload Classes
-$wgAutoloadClasses['UsabilityInitiativeHooks'] = "$dir/UsabilityInitiative.hooks.php";
-$wgExtensionMessagesFiles['UsabilityInitiative'] = "$dir/UsabilityInitiative.i18n.php";
+$wgAutoloadClasses['UsabilityInitiativeHooks'] = dirname(__FILE__) . "/UsabilityInitiative.hooks.php";
+$wgExtensionMessagesFiles['UsabilityInitiative'] = dirname(__FILE__) . "/UsabilityInitiative.i18n.php";
 
 // Register ajax add script hook
 $wgHooks['AjaxAddScript'][] = 'UsabilityInitiativeHooks::addJS';
 
 /* Components */
 
-require_once( "$dir/EditToolbar/EditToolbar.php" );
+require_once( dirname(__FILE__) . "/EditToolbar/EditToolbar.php" );
+require_once( dirname(__FILE__) . "/EditWarning/EditWarning.php" );
