@@ -125,7 +125,10 @@ mvSequencer.prototype = {
 	menu_items : {
 		'clipedit':{
 			'd':0,			
-			'html':' ',
+			'html':'',
+			'js': function(this_seq){				
+				this_seq.doEditSelectedClip();
+			},
 			'click_js':function( this_seq ){
 				this_seq.doEditSelectedClip();
 			}
@@ -139,8 +142,8 @@ mvSequencer.prototype = {
 					'remoteSearchDriver',
 					'seqRemoteSearchDriver'
 				], function(){					
-					this_seq.mySearch = new seqRemoteSearchDriver(this_seq);
-					 this_seq.mySearch.doInitDisplay();
+					 this_seq.mySearch = new seqRemoteSearchDriver(this_seq);
+					 this_seq.mySearch.doInitDisplay();					 
 				});
 			}
 		},
@@ -228,9 +231,9 @@ mvSequencer.prototype = {
 			'</div>'
 		);
 		
-		js_log('set: '+this.target_sequence_container + ' html to:'+ "\n"+
+		/*js_log('set: '+this.target_sequence_container + ' html to:'+ "\n"+
 			$j(this.target_sequence_container).html()
-		);		
+		);*/		
 		//first check if we got a cloned PL object:
 		//(when the editor is invoked with the plalylist already on the page) 
 		//@@NOT WORKING... (need a better "clone" function) 
@@ -306,11 +309,7 @@ mvSequencer.prototype = {
 	},
 	//setup the menu items:	 
 	setupMenuItems:function(){	
-		js_log('loadInitMenuItems');
-		if( !this.plObj.interface_url ){
-			js_log( 'Error:missing interface_url, can not load item' );
-			return false;
-		}			
+		js_log('loadInitMenuItems');		
 		var this_seq = this;
 		//do all the menu_items setup:	 @@we could defer this to once the menu item is requested
 		for( var i in this.menu_items ){	
@@ -542,13 +541,12 @@ mvSequencer.prototype = {
 				selected_tab=inx;
 						
 			o+='<li>' + 
-				'<a id="mv_menu_item_'+tab_id+'" href="#tab-ic-' + tab_id + '">'+gM('menu_' + tab_id )+
+				'<a id="mv_menu_item_'+tab_id+'" href="#' + tab_id + '_ic">'+gM('menu_' + tab_id )+
 			'</li>';						
 			
-			tabc += '<div id="tab-ic-' + tab_id + '" style="overflow:auto;" >';													
+			tabc += '<div id="' + tab_id + '_ic" style="overflow:auto;height:272px;" >';													
 				tabc += (menu_item.html) ? menu_item.html : '<h3>' + gM('menu_'+tab_id) + '</h3>';
-			tabc +='</div>';
-				
+			tabc +='</div>';				
 			inx++;
 		});
 		o+='</ul>';
@@ -562,22 +560,15 @@ mvSequencer.prototype = {
 				this_seq.disp( $j(ui.tab).attr('id').replace('mv_menu_item_', '') );
 			}		
 		//add sorting
-		}).find(".ui-tabs-nav").sortable({axis:'x'});
-		
-		//add binding for menu
-		/*$j('#seq_menu li').click(function(){
-			$j('#seq_menu li').removeClass('mv_selected_item');
-			$j(this).addClass('mv_selected_item');
-			this_seq.disp( $j(this).attr('id').replace('mv_menu_item_','') );
-		});*/
-		
-		//load init content into containers 
-		this.setupMenuItems();	
+		}).find(".ui-tabs-nav").sortable({ axis : 'x' });
+					
 		
 		//render the timeline					
 		this.renderTimeLine();			
 		this.do_refresh_timeline();
-				
+		
+		//load init content into containers 
+		this.setupMenuItems();		
 		
 		this.doFocusBindings();		
 		
@@ -691,22 +682,22 @@ mvSequencer.prototype = {
 		this.doEditClip( cObj );
 	},
 	doEditSelectedClip:function(){	
+		js_log("f:doEditSelectedClip:");
 		var this_seq = this;	 
-		//and only one clip selected
-		if(this_seq.menu_items['clipedit'].d ){
-			var num_sel = $j('.mv_selected_clip').length
-			if( num_sel == 1){
-				$j('.mv_selected_clip').each(function(){
-					this_seq.doEditClip( this_seq.getClipFromSeqID( $j(this).parent().attr('id') ) );
-				}); 
-			}else if( num_sel === 0){
-				//no clip selected warning: 
-				$j('#clipedit_ic').html( gM('no_selected_resource') );
-			}else if( num_sel > 1){
-				//multiple clip selected warning: 
-				$j('#clipedit_ic').html( gM('error_edit_multiple') );
-			}
+		//and only one clip selected		
+		var num_sel = $j('.mv_selected_clip').length
+		if( num_sel == 1){
+			$j('.mv_selected_clip').each(function(){
+				this_seq.doEditClip( this_seq.getClipFromSeqID( $j(this).parent().attr('id') ) );
+			}); 
+		}else if( num_sel === 0){
+			//no clip selected warning: 
+			$j('#clipedit_ic').html( gM('no_selected_resource') );
+		}else if( num_sel > 1){
+			//multiple clip selected warning: 
+			$j('#clipedit_ic').html( gM('error_edit_multiple') );
 		}
+		
 	},
 	//updates the clip details div if edit resource is set
 	doEditClip:function( cObj){

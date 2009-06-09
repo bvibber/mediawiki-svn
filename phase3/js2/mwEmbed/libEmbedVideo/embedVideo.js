@@ -1027,7 +1027,7 @@ embedVideo.prototype = {
 		for(var attr in default_video_attributes){ //for in loop oky on user object
 			if(element.getAttribute(attr)){
 				this[attr]=element.getAttribute(attr);
-				js_log('attr:' + attr + ' val: ' + element.getAttribute(attr) +'(set by elm)');
+				//js_log('attr:' + attr + ' val: ' + element.getAttribute(attr) +'(set by elm)');
 			}else{
 				this[attr]=default_video_attributes[attr];
 				//js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");
@@ -2360,44 +2360,18 @@ mediaPlayer.prototype =
 	{
 		return gM('mv_ogg-player-' + this.id);
 	},
-	load : function(callback)
-	{
-		if(this.loaded)
-		{
-			js_log('plugin loaded, scheduling immediate processing');
+	load : function(callback){
+		var libName = this.library+'Embed';
+		if( mvJsLoader.checkObjPath( libName ) ){
+			js_log('plugin loaded, do callback:');
 			callback();
-		}
-		else
-		{
-			var _this = this;
-			var plugin_path = mv_embed_path + 'libEmbedVideo/mv_'+this.library+'Embed.js';	
-			//add the callback: 
-			this.loading_callbacks.push(callback);									
-			//jQuery based get script does not work so well. 
-			/*$j.getScript(plugin_path, function(){				
-				js_log(_this.id + ' plugin loaded');
-				_this.loaded = true;
-				for(var i in _this.loading_callbacks)
-					_this.loading_callbacks[i]();	
-				_this.loading_callbacks = null;
-			});*/
-									
-			js_log('DO LOAD: '+this.library); 
+		}else{
+			var _this = this;											
+			//jQuery based get script does not work so well. 							
 			mvJsLoader.doLoad([ 
-				this.library+'Embed' 
+				libName
 			],function(){
-				//js_log( 'type of lib: ' + eval( 'typeof ' + this.library + 'Embed' ) );
-				//js_log(_this.id + ' plugin loaded');
-				_this.loaded = true;
-				//make sure we have not already cleared the callbacks:		 
-				if( _this.loading_callbacks != null){		 
-					for(var i=0; i < _this.loading_callbacks.length; i++ ){
-						if(_this.loading_callbacks[i])
-							_this.loading_callbacks[i]();	
-					}
-				}
-				_this.loading_callbacks = null;
-								
+				callback();							
 			});
 		}
 	}	
@@ -2734,11 +2708,10 @@ var embedTypes = {
 					var descArray = flashDescription.split(" ");
 					var tempArrayMajor = descArray[2].split(".");
 					var versionMajor = tempArrayMajor[0];
-					js_log("version of flash: " + versionMajor);
+					//js_log("version of flash: " + versionMajor);
 					if(versionMajor >= 10){
 						this.players.addPlayer( omtkPlayer );
-					}
-					
+					}					
 					continue;
 				}
 			}

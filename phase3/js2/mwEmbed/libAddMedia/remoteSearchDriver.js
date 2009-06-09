@@ -42,7 +42,7 @@ var default_remote_search_options = {
 	'caret_pos':null,
 	'local_wiki_api_url':null,
 
-	//can be 'api', 'form', 'autodetect', 'remote_html_embed'
+	//can be 'api', 'form', 'autodetect', 'remote_link'
 	'import_url_mode': 'autodetect', 
 
 	'target_title':null,
@@ -388,6 +388,7 @@ remoteSearchDriver.prototype = {
 		$j(this.target_textbox).val(this.caret_pos.text);
 	},
 	init_modal:function(){
+		js_log("init_modal");
 		var _this = this;
 		//add the parent target_container if not provided or missing
 		if(!_this.target_container || $j(_this.target_container).length==0){
@@ -440,39 +441,24 @@ remoteSearchDriver.prototype = {
 	},
 	//sets up the initial html interface
 	init_interface_html:function(){
+		js_log('init_interface_html');
 		var _this = this;
 		var dq = (this.default_query)? this.default_query : '';
 		js_log('f::init_interface_html');
 	
-		var out = '<div class="rsd_control_container" style="width:100%">' +
+		var o = '<div class="rsd_control_container" style="width:100%">' +
 					'<form id="rsd_form" action="javascript:return false;" method="GET">'+										
 						'<input class="ui-widget-content ui-corner-all" type="text" tabindex="1" value="' + dq + '" maxlength="512" id="rsd_q" name="rsd_q" '+
 							'size="20" autocomplete="off"/> '+					
 						$j.btnHtml( gM('mv_media_search'), 'rms_search_button', 'search') +											
-					'</form>';						
-			
-		/*out+='<div id="rsd_options_bar" style="display:none;width:100%;height:0px;background:#BBB">';
-			//set up the content provider selection div (do this first to get the default cp)
-			out+= '<div id="cps_options">';											
-			for( var cp_id in this.content_providers ){
-				var cp = this.content_providers[cp_id];				
-				var checked_attr = ( cp.checked ) ? 'checked':'';					 
-				out+='<div  title="' + cp.title + '" '+
-						' style="float:left;cursor:pointer;">'+
-						'<input class="mv_cps_input" type="checkbox" name="mv_cps" '+ checked_attr+'>';
-				out+= '<img alt="'+cp.title+'" src="' + mv_skin_img_path + 'remote_cp/' + cp_id + '_tab.png">';				
-				out+='</div>';
-			}				
-			out+='<div style="clear:both"/><a id="mso_selprovider_close" href="#">'+gM('close')+'</a></div>';
-		out+='</div>';*/			
-	
+					'</form>';											
 		//close up the control container:
-		out+='</div>';
+		o+='</div>';
 	
 		//search provider tabs based on "checked" and "enabled" and "combined tab"
-		out+='<div id="rsd_results_container"></div>';
-	
-		$j(this.target_container).html( out );
+		o+='<div id="rsd_results_container"></div>';
+		js_log('should set: ' + this.target_container + ' to: ' + o);
+		$j(this.target_container).html( o );
 		//add simple styles:
 		$j(this.target_container + ' .rms_search_button').btnBind().click(function(){
 			_this.runSearch();
@@ -573,6 +559,17 @@ remoteSearchDriver.prototype = {
 	checkForCopyURLSupport:function ( callback ){
 		var _this = this;
 		js_log('checkForCopyURLSupport:: ');
+		//see if we already have the import mode: 
+		if( this.import_url_mode != 'autodetect'){
+			js_log('import mode: ' + _this.import_url_mode);
+			callback();
+		}
+		//if we don't have the local wiki api defined we can't auto-detect use "link"
+		if(!_this.local_wiki_api_url){
+			js_log('import mode: remote link (no import_wiki_api_url)');
+			_this.import_url_mode = 'remote_link';	
+			callback();
+		}
 		if( this.import_url_mode == 'autodetect' ){
 			do_api_req( {
 				'data': { 'action':'paraminfo', 'modules':'upload' },
@@ -626,9 +623,6 @@ remoteSearchDriver.prototype = {
 					}			
 				}
 			});		
-		}else{
-			js_log('import mode: ' + _this.import_url_mode);
-			callback();
 		}
 	},
 	/*
@@ -1094,7 +1088,7 @@ remoteSearchDriver.prototype = {
 		
 		//check if local repository
 		//or if import mode if just "linking" 		
-		if( this.checkRepoLocal( cp ) || this.import_url_mode == 'remote_html_embed'){
+		if( this.checkRepoLocal( cp ) || this.import_url_mode == 'remote_link'){
 			//local repo jump directly to check Import Resource callback:
 			 cir_callback( rObj );
 		}else{										
@@ -1369,7 +1363,7 @@ remoteSearchDriver.prototype = {
 	updatePreviewText:function( rObj ){
 		var _this = this;
 			
-		if(_this.import_url_mode=='remote_html_embed'){
+		if(_this.import_url_mode=='remote_link'){
 			_this.cur_embed_code = rObj.pSobj.getEmbedHTML(rObj);
 		}else{
 			_this.cur_embed_code = rObj.pSobj.getEmbedWikiCode( rObj );

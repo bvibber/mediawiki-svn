@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>Simple SMIL example</title>
- 	<script type="text/javascript" src="../mv_embed.js"></script>
+ 	<script type="text/javascript" src="../mv_embed.js?debug=true"></script>
  	<script type="text/javascript">
  		mwAddOnloadHook(function(){
  			$j('#seqcontainer').sequencer({
@@ -11,10 +11,23 @@
         	});
  		});
  	</script>
+<style>
+	body {
+		font: x-small sans-serif;
+		background: #f9f9f9 url(headbg.jpg) 0 0 no-repeat;
+		color: black;
+		margin: 0;
+		padding: 0;
+	}
+	img {
+			border:medium none;
+		}
+</style>
+ 	
 </head>
 <body>
 <h3> Simple SMIL example</h3>
-	<div id="seqcontainer" style="position:absolute;top:50px;bottom:10px;left:10px;right:10px;border:solid thin black">
+	<div id="seqcontainer" style="position:absolute;top:50px;bottom:10px;left:10px;right:10px;">
 		Loading sequence editor <blink>...</blink>
 	</div>
 	

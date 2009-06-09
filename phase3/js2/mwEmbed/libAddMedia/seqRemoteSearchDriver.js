@@ -6,13 +6,14 @@ var seqRemoteSearchDriver = function(iObj){
 }
 seqRemoteSearchDriver.prototype = {
 	init:function( this_seq ){
+		js_log("init:seqRemoteSearchDriver");
 		//setup remote search driver with a seq parent: 
 		this.pSeq = this_seq;
 		var iObj = {			
-			'target_container':'#tab-ic-cliplib',
-			'local_wiki_api_url':	 this_seq.getLocalApiUrl(),										
-			'instance_name': this_seq.instance_name + '.mySearch'						
-		}
+			'target_container'	: '#cliplib_ic',
+			'local_wiki_api_url': this_seq.getLocalApiUrl(),										
+			'instance_name'		: this_seq.instance_name + '.mySearch'						
+		}		
 		//inherit the remoteSearchDriver properties:n		
 		var tmpRSD = new remoteSearchDriver( iObj );
 		for(var i in tmpRSD){
