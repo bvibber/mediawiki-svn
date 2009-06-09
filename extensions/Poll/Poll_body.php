@@ -103,9 +103,9 @@ class Poll extends SpecialPage {
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 5:</td><td>'.Xml::input('poll_alternative_5').'</td></tr>' );
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 6:</td><td>'.Xml::input('poll_alternative_6').'</td></tr>' );
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-dis' ).':</td><td>'.Xml::textarea('dis', '').'</td></tr>' );
-			$wgOut->addHtml( '<tr><td>'.Xml::check('allow_more').' 6:</td><td>'.wfMsg( 'poll-create-allow-more' ).'</td></tr>' );
-			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'create').'</td></tr>' );
 			$wgOut->addHtml( Xml::closeElement( 'table' ) );
+			$wgOut->addHtml( Xml::check('allow_more').' '.wfMsg( 'poll-create-allow-more' ).'<br />' );
+			$wgOut->addHtml( Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'create') );
 			$wgOut->addHtml( Xml::closeElement( 'form' ) );
 		}
 	}
@@ -127,7 +127,7 @@ class Poll extends SpecialPage {
 		}
 		else {
 			$dbr = wfGetDB( DB_SLAVE );
-			$query = $dbr->select( 'poll', 'question, alternative_1, alternative_2, alternative_3, alternative_4, alternative_5, alternative_6, creater', array( 'id' => $vid ) );
+			$query = $dbr->select( 'poll', 'question, alternative_1, alternative_2, alternative_3, alternative_4, alternative_5, alternative_6, creater, multi', array( 'id' => $vid ) );
 			$poll_admin = $wgUser->isAllowed( 'poll-admin' );
 			$user = $wgUser->getName();
 
@@ -140,18 +140,29 @@ class Poll extends SpecialPage {
 				$alternative_5 = htmlentities( $row->alternative_5, ENT_QUOTES, 'UTF-8'  );
 				$alternative_6 = htmlentities( $row->alternative_6, ENT_QUOTES, 'UTF-8'  );
 				$creater = htmlentities( $row->creater, ENT_QUOTES, 'UTF-8'  );
+				$multi = $row->multi;
 			}
 
 			$wgOut->addHtml( Xml::openElement( 'form', array('method'=> 'post', 'action' => $wgTitle->getFullURL('action=submit&id='.$vid) ) ) );
 			$wgOut->addHtml( Xml::openElement( 'table' ) );
 			$wgOut->addHtml( '<tr><th>'.$question.'</th></tr>' );
-			$wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '1').' '.$alternative_1.'</td></tr>' );
-			$wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '2').' '.$alternative_2.'</td></tr>' );
-			if($alternative_3 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '3').' '.$alternative_3.'</td></tr>' ); }
-			if($alternative_4 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '4').' '.$alternative_4.'</td></tr>' ); }
-			if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '5').' '.$alternative_5.'</td></tr>' ); }
-			if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '6').' '.$alternative_6.'</td></tr>' ); }
-			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'vote').'</td><td><a href="'.$wgTitle->getFullURL( 'action=score&id='.$vid ).'">'.wfMsg( 'poll-title-score' ).'</a></td></tr>' );
+			if( $multi != 1 ) {
+				$wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '1').' '.$alternative_1.'</td></tr>' );
+				$wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '2').' '.$alternative_2.'</td></tr>' );
+				if($alternative_3 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '3').' '.$alternative_3.'</td></tr>' ); }
+				if($alternative_4 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '4').' '.$alternative_4.'</td></tr>' ); }
+				if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '5').' '.$alternative_5.'</td></tr>' ); }
+				if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '6').' '.$alternative_6.'</td></tr>' ); }
+			}
+			if( $multi == 1 ) {
+				$wgOut->addHtml( '<tr><td>'.Xml::check('vote_1').' '.$alternative_1.'</td></tr>' );
+				$wgOut->addHtml( '<tr><td>'.Xml::check('vote_2').' '.$alternative_2.'</td></tr>' );
+				if($alternative_3 != "") { $wgOut->addHtml( '<tr><td>'.Xml::check('vote_3').' '.$alternative_3.'</td></tr>' ); }
+				if($alternative_4 != "") { $wgOut->addHtml( '<tr><td>'.Xml::check('vote_4').' '.$alternative_4.'</td></tr>' ); }
+				if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.Xml::check('vote_5').' '.$alternative_5.'</td></tr>' ); }
+				if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::check('vote_6').' '.$alternative_6.'</td></tr>' ); }			
+			}
+			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'vote').''.Xml::hidden('multi', $multi).'</td><td><a href="'.$wgTitle->getFullURL( 'action=score&id='.$vid ).'">'.wfMsg( 'poll-title-score' ).'</a></td></tr>' );
 			$wgOut->addHtml( '<tr><td>' );
 			$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created', $creater ).'</small>' );
 			$wgOut->addHtml( '</td></tr>' );
@@ -169,13 +180,7 @@ class Poll extends SpecialPage {
 		$wgOut->setPagetitle( wfMsg( 'poll-title-score' ) );
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$query = $dbr->select( 'poll', 'question, alternative_1, alternative_2, alternative_3, alternative_4, alternative_5, alternative_6, creater', array( 'id' => $sid ) );
-		$query_1 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '1', 'uid' => $sid ) );
-		$query_2 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '2', 'uid' => $sid ) );
-		$query_3 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '3', 'uid' => $sid ) );
-		$query_4 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '4', 'uid' => $sid ) );
-		$query_5 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '5', 'uid' => $sid ) );
-		$query_6 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '6', 'uid' => $sid ) );
+		$query = $dbr->select( 'poll', 'question, alternative_1, alternative_2, alternative_3, alternative_4, alternative_5, alternative_6, creater, multi', array( 'id' => $sid ) );
 
 		while( $row = $dbr->fetchObject( $query ) ) {
 			$question = htmlentities( $row->question, ENT_QUOTES, 'UTF-8' );
@@ -186,14 +191,46 @@ class Poll extends SpecialPage {
 			$alternative_5 = htmlentities( $row->alternative_5, ENT_QUOTES, 'UTF-8'  );
 			$alternative_6 = htmlentities( $row->alternative_6, ENT_QUOTES, 'UTF-8'  );
 			$creater = htmlentities( $row->creater, ENT_QUOTES, 'UTF-8'  );
+			$multi = $row->multi;
 		}
+		
+		if($multi != 1) {
+			$query_1 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '1', 'pid' => $sid ) );
+			$query_2 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '2', 'pid' => $sid ) );
+			$query_3 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '3', 'pid' => $sid ) );
+			$query_4 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '4', 'pid' => $sid ) );
+			$query_5 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '5', 'pid' => $sid ) );
+			$query_6 = $dbr->select( 'poll_answer', 'uid', array( 'vote' => '6', 'pid' => $sid ) );
 
-		$query_num_1 = $dbr->numRows( $query_1 );
-		$query_num_2 = $dbr->numRows( $query_2 );
-		$query_num_3 = $dbr->numRows( $query_3 );
-		$query_num_4 = $dbr->numRows( $query_4 );
-		$query_num_5 = $dbr->numRows( $query_5 );
-		$query_num_6 = $dbr->numRows( $query_6 );
+			$query_num_1 = $dbr->numRows( $query_1 );
+			$query_num_2 = $dbr->numRows( $query_2 );
+			$query_num_3 = $dbr->numRows( $query_3 );
+			$query_num_4 = $dbr->numRows( $query_4 );
+			$query_num_5 = $dbr->numRows( $query_5 );
+			$query_num_6 = $dbr->numRows( $query_6 );
+		}
+		
+		if($multi == 1) {
+			$query_num_1 = 0;
+			$query_num_2 = 0;
+			$query_num_3 = 0;
+			$query_num_4 = 0;
+			$query_num_5 = 0;
+			$query_num_6 = 0;
+			
+			$query_multi = $dbr->select( 'poll_answer', 'vote', array( 'pid' => $sid ) );
+			while( $row = $dbr->fetchObject( $query_multi ) ) {
+				$vote = $row->vote;
+				$vote = explode("|", $vote);
+				
+				if($vote[0] == "1") { $query_num_1++; }
+				if($vote[1] == "1") { $query_num_2++; }
+				if($vote[2] == "1") { $query_num_3++; }
+				if($vote[3] == "1") { $query_num_4++; }
+				if($vote[4] == "1") { $query_num_5++; }
+				if($vote[5] == "1") { $query_num_6++; }
+			}
+		}
 
 		$wgOut->addHtml( Xml::openElement( 'table' ) );
 		$wgOut->addHtml( '<tr><th><center>'.$question.'</center></th></tr>' );;
@@ -301,12 +338,13 @@ class Poll extends SpecialPage {
 				$alternative_5 = ($wgRequest->getVal('poll_alternative_5') != "")? $wgRequest->getVal('poll_alternative_5') : "";
 				$alternative_6 = ($wgRequest->getVal('poll_alternative_6') != "")? $wgRequest->getVal('poll_alternative_6') : "";
 				$dis = ($wgRequest->getVal('dis') != "")? $wgRequest->getVal( 'dis' ) : wfMsg('poll-no-dis');
+				$multi = ($wgRequest->getVal( 'allow_more' ) == 1)? 1 : 0;
 				$user = $wgUser->getName();
 
 				if($question != "" && $alternative_1 != "" && $alternative_2 != "") {
 					$dbw->insert( 'poll', array( 'question' => $question, 'alternative_1' => $alternative_1, 'alternative_2' => $alternative_2,
 					'alternative_3' => $alternative_3, 'alternative_4' => $alternative_4, 'alternative_5' => $alternative_5,
-					'alternative_6' => $alternative_6, 'creater' => $user, 'dis' => $dis ) );
+					'alternative_6' => $alternative_6, 'creater' => $user, 'dis' => $dis, 'multi' => $multi ) );
 
 					$log = new LogPage( "poll" );
 					$title = $wgTitle;
@@ -337,17 +375,31 @@ class Poll extends SpecialPage {
 			else {
 				$dbw = wfGetDB( DB_MASTER );
 				$dbr = wfGetDB( DB_SLAVE );
-				$vote = $wgRequest->getVal('vote');
+				$multi = $wgRequest->getVal('multi');
 				$user = $wgUser->getName();
 				$uid = $wgUser->getId();
 
-				$query = $dbr->select( 'poll_answer', 'uid', array( 'uid' => $uid ));
-				$num = 0;
-
-				while( $row = $dbr->fetchObject( $query ) ) {
-					if($row->uid != "") {
-						$num++;
-					}
+				$query = $dbr->select( 'poll_answer', 'uid', array( 'uid' => $uid, 'pid' => $pid ));
+				$num = $dbr->numRows( $query );;
+				
+				if($multi != 1) {
+					$vote = $wgRequest->getVal('vote');
+				}				
+				if($multi == 1) {
+					$vote_1 = $wgRequest->getVal('vote_1');
+					$vote_2 = $wgRequest->getVal('vote_2');
+					$vote_3 = $wgRequest->getVal('vote_3');
+					$vote_4 = $wgRequest->getVal('vote_4');
+					$vote_5 = $wgRequest->getVal('vote_5');
+					$vote_6 = $wgRequest->getVal('vote_6');
+					
+					$vote = "";
+					$vote .= ($vote_1 == 1)? "1|" : "0|";
+					$vote .= ($vote_2 == 1)? "1|" : "0|";
+					$vote .= ($vote_3 == 1)? "1|" : "0|";
+					$vote .= ($vote_4 == 1)? "1|" : "0|";
+					$vote .= ($vote_5 == 1)? "1|" : "0|";
+					$vote .= ($vote_6 == 1)? "1" : "0";
 				}
 
 				if( $num == 0 ) {
@@ -436,7 +488,7 @@ class Poll extends SpecialPage {
 			}
 
 			if ( ( ( $creater == $user ) OR ( $controll_delete_right == true ) ) AND ( $controll_delete_blocked != true ) )  {
-				if( $wgRequest->getCheck('controll_delete') AND $wgRequest->getVal('controll_delete') === 1 ) {
+				if( $wgRequest->getCheck('controll_delete') AND $wgRequest->getVal('controll_delete') == 1 ) {
 					$dbw = wfGetDB( DB_MASTER );
 					$user = $wgUser->getName();
 

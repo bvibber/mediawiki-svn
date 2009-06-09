@@ -58,6 +58,7 @@ $messages['en'] = array(
 	'poll-score-created' => 'created from [[User:$1]]',
 	'poll-administration' => 'Administration:',
 	'poll-no-dis' => 'No Description!',
+	'poll-create-allow-more' => 'Allow Multi-Vote',
 );
 
 /** German (Deutsch)
@@ -110,4 +111,5 @@ $messages['de'] = array(
 	'poll-score-created' => 'erstellt von [[Benutzer:$1]]',
 	'poll-administration' => 'Administration:',
 	'poll-no-dis' => 'Keine Beschreibung vorhanden!',
+	'poll-create-allow-more' => 'Mehfachabstimmung erlaubt',
 );
