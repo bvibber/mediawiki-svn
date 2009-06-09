@@ -16,9 +16,10 @@
  * @license GPL v2
  * @version 0.1.1
  */
-/* Configuration */
 
-// Credits
+/* Setup */
+
+// Sets Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'UsabilityInitiative',
@@ -28,14 +29,18 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'usabilityinitiative-desc',
 );
 
-// Autoload Classes
-$wgAutoloadClasses['UsabilityInitiativeHooks'] = dirname(__FILE__) . "/UsabilityInitiative.hooks.php";
-$wgExtensionMessagesFiles['UsabilityInitiative'] = dirname(__FILE__) . "/UsabilityInitiative.i18n.php";
+// Adds Autoload Classes
+$wgAutoloadClasses['UsabilityInitiativeHooks'] =
+	dirname( __FILE__ ) . "/UsabilityInitiative.hooks.php";
 
-// Register ajax add script hook
-$wgHooks['AjaxAddScript'][] = 'UsabilityInitiativeHooks::addJS';
+// Adds Internationalized Messages
+$wgExtensionMessagesFiles['UsabilityInitiative'] =
+	dirname( __FILE__ ) . "/UsabilityInitiative.i18n.php";
 
-/* Components */
+// Includes sub-extensions
+require_once( dirname( __FILE__ ) . "/EditToolbar/EditToolbar.php" );
+require_once( dirname( __FILE__ ) . "/EditWarning/EditWarning.php" );
 
-require_once( dirname(__FILE__) . "/EditToolbar/EditToolbar.php" );
-require_once( dirname(__FILE__) . "/EditWarning/EditWarning.php" );
+// Registers Hooks
+$wgHooks['AjaxAddScript'][] = 'UsabilityInitiativeHooks::addJs';
+$wgHooks['BeforePageDisplay'][] = 'UsabilityInitiativeHooks::addCss';

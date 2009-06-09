@@ -7,31 +7,26 @@
  */
 
 class EditWarningHooks {
+	
+	/* Static Functions */
+	
 	/**
 	 * AjaxAddScript hook
-	 * Add ajax support script
+	 * Initializes the component
 	 */
-	public static function addJS( $out ) {
-		global $wgScriptPath, $wgJsMimeType, $wgEditWarningStyleVersion;
-		// Add javascript resources to document
-		$out->addScript(
-			Xml::element(
-				'script',
-				array(
-					'type' => $wgJsMimeType,
-					'src' => $wgScriptPath .
-						'/extensions/UsabilityInitiative/EditWarning/EditWarning.js?' .
-						$wgEditWarningStyleVersion
-				),
-				'',
-				false
-			)
+	public static function initialize() {
+		global $wgEditWarningStyleVersion;
+		
+		// Adds script to document
+		UsabilityInitiativeHooks::addScript(
+			'EditWarning/EditWarning.js', $wgEditWarningStyleVersion
 		);
+		// Internationalization
 		wfLoadExtensionMessages( 'EditWarning' );
-		$key = Xml::escapeJsString( 'editwarning-warning' );
-		$value = Xml::escapeJsString( wfMsg( 'editwarning-warning' ) );
-		$messagesList = "'$key': '$value'";
-		$out->addInlineScript("loadGM({{$messagesList}});");
+		// Adds messages to page
+		UsabilityInitiativeHooks::addMessages(
+			array( 'editwarning-warning' )
+		);
 		// Continue
 		return true;
 	}

@@ -15,8 +15,12 @@
  * @version 0.1.1
  */
 
-// Shortcut to this extension directory
-$dir = dirname( __FILE__ ) . '/';
+/* Configuration */
+
+// Bump the version number every time you change any of the .css/.js files
+$wgEditWarningStyleVersion = 1;
+
+/* Setup */
 
 // Credits
 $wgExtensionCredits['other'][] = array(
@@ -28,14 +32,13 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'editwarning-desc',
 );
 
-// Bump the version number every time you change any of the .css/.js files
-$wgEditWarningStyleVersion = 0;
+// Adds Autoload Classes
+$wgAutoloadClasses['EditWarningHooks'] =
+	dirname( __FILE__ ) . '/EditWarning.hooks.php';
 
-// Autoload Classes
-$wgAutoloadClasses['EditWarningHooks'] = $dir . 'EditWarning.hooks.php';
+// Adds Internationalized Messages
+$wgExtensionMessagesFiles['EditWarning'] =
+	dirname( __FILE__ ) . '/EditWarning.i18n.php';
 
-// Internationalization
-$wgExtensionMessagesFiles['EditWarning'] = $dir . 'EditWarning.i18n.php';
-
-// Register ajax add script hook
-$wgHooks['AjaxAddScript'][] = 'EditWarningHooks::addJS';
+// Registers Hooks
+$wgHooks['AjaxAddScript'][] = 'EditWarningHooks::initialize';
