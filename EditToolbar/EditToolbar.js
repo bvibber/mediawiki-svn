@@ -70,6 +70,8 @@ function gM( key, args ) {
 					.appendTo( $(this) );
 				// Appends float-clearing div
 				$(this).append( $( '<div style="clear:both"></div>' ) );
+				// Cookie name for storing section state
+				var sectionCookie = 'edittoolbar-' + $(this).attr( 'id' ) + '-section';
 				// Loops over each section
 				for ( section in tools ) {
 					// Skips over main (was handled as special case already)
@@ -80,41 +82,42 @@ function gM( key, args ) {
 					var sectionDiv = $( '<div />')
 						.attr( { 'class': 'section', 'id': $(this).attr( 'id' ) + '-section-' + section } )
 						.appendTo( sectionsDiv );
+					// Respects state
+					var current = false;
+					if ( $.cookie( sectionCookie ) == sectionDiv.attr( 'id' ) ) {
+						sectionDiv.attr( 'style', 'display:block' );
+						current = true;
+					}
 					// Appends toolbar to section div
 					sectionDiv.addToolbarSection( tools[section], textbox );
-					// Add hidden form field used for show/hide persistency
-					if( $( '#ET' + section ).length == 0 )
-						textbox.parent( 'form' ).append(
-							$( '<input />' )
-								.attr( { 'type': 'hidden',
-									'id': 'ET' + section,
-									'name': 'ET' + section } )
-								.val( tools[section].showInitially )
-						);
-					var showHideLink = $( '<a />' )
-						.text( tools[section].label || gM( tools[section].labelMsg ) )
-						.attr( { 'href': '#', 'rel': section } )
-						.data( 'sectionDiv', sectionDiv )
-						.click( function() {
-							$(this).blur();
-							var show = ( $(this).data( 'sectionDiv' ).css( 'display' ) == 'none' );
-							$(this).data( 'sectionDiv' ).parent().children().hide();
-							$(this).parent().parent().find( 'a' ).removeClass( 'current' );
-							if ( show ) {
-								$(this).data( 'sectionDiv' ).show();
-								$(this).addClass( 'current' );
-							}
-							$( '#ET' + section ).val( ( show ? '1' : '0' ) );
-							return false;
-						});
 					// Appends section tab
 					tabDiv.append(
 						$( '<div />' )
 							.attr( 'class', 'tab' )
-							.append( showHideLink )
+							.append(
+								$( '<a />' )
+									.text( tools[section].label || gM( tools[section].labelMsg ) )
+									.attr( { 'href': '#', 'rel': section, 'class': current ? 'current' : null } )
+									.data( 'sectionDiv', sectionDiv )
+									.data( 'sectionCookie', sectionCookie )
+									.click( function() {
+										$(this).blur();
+										var show = ( $(this).data( 'sectionDiv' ).css( 'display' ) == 'none' );
+										$(this).data( 'sectionDiv' ).parent().children().hide();
+										$(this).parent().parent().find( 'a' ).removeClass( 'current' );
+										if ( show ) {
+											$(this).data( 'sectionDiv' ).show();
+											$(this).addClass( 'current' );
+										}
+										// Sets or deletes cookie when sections are shown or hidden
+										$.cookie(
+											$(this).data( 'sectionCookie' ),
+											show ? $(this).data( 'sectionDiv' ).attr( 'id' ) : null
+										);
+										return false;
+									})
+							)
 					);
-					if( $( '#ET' + section ).val() != '0' )
-						showHideLink.click();
 				}
 			});
 		},
@@ -370,7 +373,6 @@ var editToolbarConfiguration = {
 	},
 	// Format section
 	'format': {
-		showInitially: '0',
 		labelMsg: 'edittoolbar-section-format',
 		groups: {
 			'heading': {
@@ -535,7 +537,6 @@ var editToolbarConfiguration = {
 	},
 	// Insert section
 	'insert': {
-		showInitially: '0',
 		labelMsg: 'edittoolbar-section-insert',
 		groups: {
 			'media': {
