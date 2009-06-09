@@ -102,14 +102,6 @@ class EditToolbarHooks {
 		$messagesList = implode( ',', $messages );
 		// Encapsulates list in javascript code to set them durring load
 		$messagesJs = "loadGM({{$messagesList}});";
-		
-		// Ensure persistency of tabs' show/hide status between submits
-		$persistentTabs = array( 'format' );
-		$tabsJs = "";
-		foreach( $persistentTabs as $tab )
-			if( $wgRequest->wasPosted() && $wgRequest->getInt( "ET$tab" ) == 1 )
-				$tabsJs .= "editToolbarConfiguration['$tab'].showInitially = '1';";
-		
 		// Appends javascript message setting code
 		$toolbar .= Xml::element(
 			'script', array( 'type' => $wgJsMimeType ), $messagesJs . $tabsJs
