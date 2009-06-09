@@ -48,8 +48,6 @@ if(!mv_default_video_size)
 //for when useing mv_embed with script-loader in root mediawiki path
 var mediaWiki_mvEmbed_path = 'js2/mwEmbed/';
 
-//
-
 var global_player_list = new Array(); //the global player list per page
 var global_req_cb = new Array(); //the global request callback array
 var _global = this; //global obj
@@ -725,7 +723,7 @@ function mv_jqueryBindings(){
 				], function(){
 					iObj['instance_name']= 'rsdMVRS';
 					_global['rsdMVRS'] = new remoteSearchDriver( iObj );	   
-					if(callback)
+					if( callback )
 					   callback(); 
 				});
 			});

@@ -25,7 +25,7 @@ var nativeEmbed = {
 		//we want to let mv_embed handle the controls so notice the absence of control attribute
 		// controls=false results in controls being displayed: 
 		//http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-August/016159.html		
-		js_log("native play url:" + this.getURI( this.seek_time_sec ));
+		js_log("native play url:" + this.getSrc() + ' start_offset: '+ this.start_ntp + ' end: ' + this.end_ntp);
 		var eb = '<video ' +
 					'id="' + this.pid + '" ' +
 					'style="width:' + this.width+'px;height:' + this.height + 'px;" ' +
@@ -33,7 +33,7 @@ var nativeEmbed = {
 					   'src="' + this.getSrc() + '" ';
 					   
 		if(!this.onlyLoadFlag)
-			eb+=	'autoplay="'+this.autoplay+'" ';
+			eb+='autoplay="true" ';
 			
 		//continue with the other attr:						
 		eb+=		'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
@@ -68,15 +68,24 @@ var nativeEmbed = {
 		}
 	},	
 	doSeek:function(perc){				
-		js_log('native:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );		
+		//js_log('native:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );		
 		//@@todo check if the clip is loaded here (if so we can do a local seek)
 		if( this.supportsURLTimeEncoding() || !this.vid){			
-			this.parent_doSeek(perc);
+			//make sure we could not do a local seek instead:
+			if( perc < this.bufferedPercent ){
+				js_log("do local seek " + perc + ' is already buffered < ' + this.bufferedPercent);
+				this.doNativeSeek(perc);
+			}else{
+				this.parent_doSeek(perc);
+			}			
 		}else if(this.vid.duration ){	   
-			this.seek_time_sec=0;			 
-			this.vid.currentTime = perc * this.vid.duration;
-			this.parent_monitor();			
+			this.doNativeSeek(perc);	
 		}				  
+	},
+	doNativeSeek:function(perc){
+		this.seek_time_sec=0;			 
+		this.vid.currentTime = perc * this.vid.duration;
+		this.parent_monitor();	
 	},
 	setCurrentTime: function(pos, callback){
 		var _this = this;
@@ -136,7 +145,10 @@ var nativeEmbed = {
 		this.getVID();
 		js_log('f:onloadedmetadata metadata ready (update duration)');		
 		//update duration if not set (for now trust the getDuration more than this.vid.duration		
-		this.duration = ( this.getDuration() ) ?this.getDuration() : this.vid.duration;
+		if( this.getDuration()==0  ){
+			js_log('updaed duration via native video duration: '+ this.vid.duration)
+			this.duration = this.vid.duration;
+		}
 	},
 	onprogress: function(e){		
 		this.bufferedPercent =   e.loaded / e.total;

@@ -29,7 +29,7 @@ var javaEmbed = {
 		//if still unset set to an arbitrary time 60 seconds: 
 		if(!this.duration)this.duration=60;
 		//@@todo we should have src property in our base embed object
-		var mediaSrc = this.media_element.selected_source.getURI( this.seek_time_sec );
+		var mediaSrc = this.getSrc();
 		
 		if(mediaSrc.indexOf('://')!=-1 & parseUri(document.URL).host !=  parseUri(mediaSrc).host){
 			if(window.cortadoDomainLocations[parseUri(mediaSrc).host]){

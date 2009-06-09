@@ -90,7 +90,7 @@ var mv_default_source_attr= new Array(
 	'title',
 	'URLTimeEncoding', //boolean if we support temporal url requests on the source media
 	'startOffset',
-	'duration',
+	'durationHint',
 	'start',
 	'end',	
 	'default',
@@ -536,15 +536,17 @@ mediaSource.prototype =
 		var pUrl = parseUri ( this.src );
 		if(typeof pUrl['queryKey']['t'] != 'undefined'){
 			this['URLTimeEncoding']=true;
-		}		
-					
-		for(var i=0; i < mv_default_source_attr.length; i++){ //for in loop oky on object
-			var attr = mv_default_source_attr[ i ];
+		}				
+		for(var i=0; i < mv_default_source_attr.length; i++){ //array loop:
+			var attr = mv_default_source_attr[ i ];			
 			if( $j(element).attr( attr ) ) {
 				this[ attr ] =  $j(element).attr( attr );
 			}
-		}
-				
+		}				
+		//update duration from hit if present: 
+		if(this.durationHint)
+			this.duration = this.durationHint;
+			
 		if ( $j(element).attr('type'))
 			this.mime_type = $j(element).attr('type');
 		else if ($j(element).attr('content-type'))
@@ -656,15 +658,11 @@ mediaSource.prototype =
 				} 
 				if(this.duration){
 					this.end_ntp = seconds2npt( parseInt(this.duration) + parseInt(this.start_offset) );
-				}
+				}				
 			}						
-		}else{							  
-			 //else normal media request (can't predict the duration without the plugin reading it)
-			this.duration = null;
-			this.start_offset = 0;
-			this.startOffset = 0;
-			this.start_ntp = seconds2npt(this.start_offset);			
 		}
+		//else nothing to parse just keep whatever info we already have
+		
 		//js_log('f:parseURLDuration() for:' + this.src  + ' d:' + this.duration);
 	},
 	/** Attempts to detect the type of a media file based on the URI.
@@ -1187,22 +1185,19 @@ embedVideo.prototype = {
 			return default_time_req;		
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
 	},	
-	getDuration:function(){				
-		//update some local pointers for the selected source:		
-		if( this.media_element.selected_source.duration &&
-			this.media_element.selected_source.duration != 0 )
-		{						  
-			this.duration = this.media_element.selected_source.duration;						
-			this.start_offset = this.media_element.selected_source.start_offset;
-			this.start_ntp = this.media_element.selected_source.start_ntp;
-			this.end_ntp = this.media_element.selected_source.end_ntp;		 
-		}else{			
-			//update start end_ntp if duration !=0 (set from plugin) 
-			if(this.duration && this.duration !=0){
-				this.start_ntp = '0:0:0';
-				this.end_ntp = seconds2npt( this.duration );
-			}			
-		}		
+	getDuration:function(){							
+		//update some local pointers for the selected source:										 
+		this.duration = this.media_element.selected_source.duration;						
+		this.start_offset = this.media_element.selected_source.start_offset;
+		this.start_ntp = this.media_element.selected_source.start_ntp;
+		this.end_ntp = this.media_element.selected_source.end_ntp;		 			
+		
+		//update start end_ntp if duration !=0 (set from plugin) 
+		if(!this.start_ntp)
+			this.start_ntp = '0:0:0';
+		if(!this.end_ntp && this.duration)
+			this.end_ntp = seconds2npt( this.duration );
+						
 		//return the duration
 		return this.duration;
 	},
@@ -1230,7 +1225,7 @@ embedVideo.prototype = {
 	//do seek function (should be overwritten by implementing embedLibs)
 	// first check if seek can be done on locally downloaded content. 
 	doSeek : function( perc ){
-		js_log('f:baseEmbed:doSeek:' + perc + ' to st:' + this.seek_time_sec );
+		alert('f:baseEmbed:doSeek:' + perc + ' to st:' + this.seek_time_sec  + ' sf:' + this.start_ntp);
 		if( this.supportsURLTimeEncoding() ){
 			
 			//make sure this.seek_time_sec is up-to-date:
@@ -1248,9 +1243,9 @@ embedVideo.prototype = {
 	   //add in the offset:		
 	   if(this.seek_time_sec && this.seek_time_sec!=0){
 			this.currentTime+=this.seek_time_sec;
-	   }else if(this.start_offset && this.start_offset!=0){
-		   this.currentTime+=this.start_offset;
-	   }	
+	   }else if(this.start_offset && this.start_offset!=0){	   
+		   this.currentTime = parseFloat(this.currentTime) + parseFloat(this.start_offset);			 
+	   }		   
 	},
 	doEmbedHTML:function()
 	{
@@ -2154,7 +2149,7 @@ embedVideo.prototype = {
 				if( this.start_offset  ){ 
 					//if start offset include that calculation 
 					this.setSliderValue( ( this.currentTime - this.start_offset ) / this.duration );			
-					this.setStatus( seconds2npt(this.currentTime) + '/'+ seconds2npt(this.start_offset+this.duration ));		
+					this.setStatus( seconds2npt(this.currentTime) + '/'+ seconds2npt(parseFloat(this.start_offset)+parseFloat(this.duration) ));		
 				}else{
 					this.setSliderValue( this.currentTime / this.duration );
 					this.setStatus( seconds2npt(this.currentTime) + '/' + seconds2npt(this.duration ));

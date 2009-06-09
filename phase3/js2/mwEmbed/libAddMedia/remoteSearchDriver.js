@@ -82,6 +82,11 @@ remoteSearchDriver.prototype = {
 			'title': 'Advanced Options'
 		}	
 	},	
+	/*
+	 * sets the default display item:
+	 * can be any content_providers key or 'all'
+	 */
+	disp_item : 'metavid',
 	/** the default content providers list. 
 	 *
 	 * (should be note that special tabs like "upload" and "combined" don't go into the content proviers list:
@@ -114,8 +119,7 @@ remoteSearchDriver.prototype = {
 		*/				 
 		'this_wiki':{
 			'enabled': 0,
-			'checked': 0,
-			'd'		 : 0,
+			'checked': 0,			
 			'title'	 : 'This Wiki',
 			'desc'	 : '(should be updated with the proper text) maybe import from some config value',
 			'api_url':  wgServer + wgScriptPath + '/api.php',
@@ -125,8 +129,7 @@ remoteSearchDriver.prototype = {
 		},	
 		'wiki_commons':{
 			'enabled': 1,
-			'checked': 1,
-			'd'		 : 0,
+			'checked': 1,			
 			'title'	 :'Wikipedia Commons',		
 			'desc'	 : 'Wikimedia Commons is a media file repository making available public domain '+
 					 'and freely-licensed educational media content (images, sound and video clips) to all.',
@@ -149,7 +152,6 @@ remoteSearchDriver.prototype = {
 		'archive_org':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,
 			'title' : 'Archive.org',
 			'desc'	: 'The Internet Archive, a digital library of cultural artifacts',
 			'homepage':'http://www.archive.org/about/about.php',
@@ -163,7 +165,6 @@ remoteSearchDriver.prototype = {
 		'metavid':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,		
 			'title'	:'Metavid.org',
 			'homepage':'http://metavid.org',
 			'desc'	: 'Metavid hosts thousands of hours of US house and senate floor proceedings',
@@ -281,9 +282,9 @@ remoteSearchDriver.prototype = {
 		}
 		//could not find it return unknown_license
 		return {
-			'title'	 : gM('unknown_license'),
+			'title'	 	: gM('unknown_license'),
 			'img_html'	: '<span>' + gM('unknown_license') + '</span>',		
-			'lurl'		 : license_url
+			'lurl'		: license_url
 		};
 	},
 	//some default layout values:	
@@ -298,7 +299,7 @@ remoteSearchDriver.prototype = {
 
 	init: function( iObj ){
 		var _this = this;
-		js_log('remoteSearchDriver:init');
+		js_log('remoteSearchDriver:init');		
 		for( var i in default_remote_search_options ) {
 			if( iObj[i]){
 				this[ i ] = iObj[i];
@@ -318,7 +319,8 @@ remoteSearchDriver.prototype = {
 						this.content_providers[ cpc ][ cinx ] = this.cpconfig[cpc][ cinx];				
 				}
 			}
-		}						
+		}
+								
 		//set up the target invocation:
 		if( $j(this.target_invocation).length==0 ){
 			js_error("RemoteSearchDriver:: no target invocation provided")
@@ -326,7 +328,7 @@ remoteSearchDriver.prototype = {
 			$j(this.target_invocation).css('cursor','pointer').attr('title', gM('add_media_wizard')).click(function(){
 				_this.doInitDisplay();
 			});		
-		}		
+		}								
 	},
 	doInitDisplay:function(){	
 		var _this = this;			
@@ -344,7 +346,7 @@ remoteSearchDriver.prototype = {
 					_this.getTexboxSelection();
 				
 			  $j(_this.target_container).dialog('open');
-		 })
+		 });	
 	},
 	//gets the in and out points for insert position or grabs the selected text for search
 	getTexboxSelection:function(){
@@ -520,19 +522,10 @@ remoteSearchDriver.prototype = {
 		}); 
 	},
 	runSearch: function(){		
-		js_log("f:runSearch");
+		js_log("f:runSearch::" + this.disp_item);
 		//draw_direct_flag
 		var draw_direct_flag = true;					
-			
-		//set the display item if not already set:
-		for(var cp_id in  this.content_providers){
-			if( this.content_providers[ cp_id ].d ){
-				if (!this.disp_item ){		
-					this.disp_item = cp_id;
-					break;
-				}
-			}
-		}	
+					
 		cp = this.content_providers[this.disp_item];	
 	
 		//check if we need to update:
@@ -660,7 +653,7 @@ remoteSearchDriver.prototype = {
 			});
 			return false;
 		}else if( !this.checkRepoLocal( cp ) && this.import_url_mode == 'none'){
-			if(  this.disp_item == 'combined'){
+			if(  this.disp_item == 'combined' ){
 				//combined results are harder to error handle just ignore that repo
 				cp.sObj.loading = false;
 			}else{
@@ -668,9 +661,12 @@ remoteSearchDriver.prototype = {
 			}
 			return false;
 		}
-		//set up the library req:
-		var libReq = ['baseRemoteSearch',  cp.lib +'Search' ];		
-		mvJsLoader.doLoad( libReq, function(){	
+		//set up the library req:		
+		mvJsLoader.doLoad( [
+			'baseRemoteSearch',  
+			cp.lib +'Search' 
+		], function(){
+			js_log("loaded .. disp is: " + _this.disp_item);	
 			//else we need to run the search:
 			var iObj = {'cp':cp, 'rsd':_this};		
 			eval('cp.sObj = new '+cp.lib+'Search( iObj );');
@@ -683,24 +679,30 @@ remoteSearchDriver.prototype = {
 					
 			//do search	
 			cp.sObj.getSearchResults();
+			js_log('rand getSearchResults on cp disp is: '+ _this.disp_item);
 			_this.checkResultsDone();			
 		});
 	},
+	/* check for all the results to finish */
 	checkResultsDone: function(){
+		js_log( "checkResultsDone:entry: " + rsdMVRS.disp_item + ' not: ' + this.disp_item);
+		
 		var _this = this;
-		var loading_done = true;
+		var loading_done = true;				
+		
 		for(var cp_id in  this.content_providers){
-			cp = this.content_providers[ cp_id ];
+			var cp = this.content_providers[ cp_id ];
 			if(typeof cp['sObj'] != 'undefined'){
 				if( cp.sObj.loading )
 					loading_done=false;
 			}
-		}
-	
-		if( loading_done ){
-			js_log("checkResultsDone: load done");
+		}		
+		if( loading_done ){			
 			this.drawOutputResults();
-		}else{		
+		}else{
+			js_log("before setTimeout: " + rsdMVRS.disp_item);
+			//make sure the instance name is up-to-date refrence to _this;
+			eval( _this.instance_name + ' = _this');		
 			setTimeout( _this.instance_name + '.checkResultsDone()', 30);
 		}		
 	},
@@ -716,7 +718,7 @@ remoteSearchDriver.prototype = {
 					var cp = this.content_providers[cp_id];
 					if( cp.enabled && cp.checked){					
 						//add selected default if set
-						if( cp.d == 1)
+						if( this.disp_item == cp_id)
 							selected_tab=inx;
 										
 						o+='<li class="rsd_cp_tab">';
@@ -805,13 +807,13 @@ remoteSearchDriver.prototype = {
 		return false;
 	},
 	drawOutputResults: function(){	
-		js_log('f:drawOutputResults');				
+		js_log('f:drawOutputResults::' + this.disp_item);				
 		var _this = this;		
 		var o='';
 	
 		var cp_id = this.disp_item;
 		var cp = this.content_providers[this.disp_item];
-	
+		
 		//empty the existing results:
 		$j('#tab-' + cp_id).empty();
 	
@@ -849,8 +851,7 @@ remoteSearchDriver.prototype = {
 						o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + cp_id + '_' + rInx +'" style="float:left;width:' +
 								 _this.thumb_width + 'px; padding:5px;" src="' +
 								 cp.sObj.getImageTransform( rItem, {'width':_this.thumb_width } )
-								  + '">';		
-						
+								  + '">';								
 						//add license icons if present			
 						if( rItem.license )
 							o+= _this.getlicenseImgSet( rItem.license );							
@@ -861,6 +862,7 @@ remoteSearchDriver.prototype = {
 				}			
 				drawResultCount++;						
 			});		
+			js_log('append to: ' + '#tab-' + cp_id);
 			//put in the tab output (plus clear the output)
 			$j('#tab-' + cp_id).append( o + '<div style="clear:both"/>');						
 		}
@@ -1505,16 +1507,7 @@ remoteSearchDriver.prototype = {
 	},
 	selectTab:function( selected_cp_id ){
 		js_log('select tab: ' + selected_cp_id);
-		this.disp_item = selected_cp_id;				
-		//set display to unselected:
-		for(var cp_id in  this.content_providers){
-			cp = this.content_providers[ cp_id ];
-			if( cp.checked || selected_cp_id == cp_id){
-				cp.d = 1;
-			}else{
-				cp.d = 0;
-			}		
-		}
+		this.disp_item = selected_cp_id;						
 		if( this.disp_item == 'upload' ){
 			this.doUploadInteface();
 		}else{

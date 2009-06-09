@@ -186,8 +186,7 @@ var vlcEmbed = {
 		//for now trust the duration from url over vlc input.length
 		if( !this.getDuration() && this.vlc.input.length > 0 )
 		{
-			js_log('setting duration to ' + this.vlc.input.length /1000);
-			this.media_element.selected_source.setDuration( this.vlc.input.length /1000);
+			js_log('setting duration to ' + this.vlc.input.length /1000);			
 			this.duration = this.vlc.input.length /1000;
 		}
 		this.currentTime = this.vlc.input.time/1000;
@@ -195,7 +194,7 @@ var vlcEmbed = {
 			this.currentTime = this.currentTime - this.startOffset;		
    },
    onPause: function(){		   
-		   this.parent_pause(); //update the inteface if paused via native control
+		this.parent_pause(); //update the inteface if paused via native control
    },
    onStop: function(){	
 	   js_log('vlc:onStop:');

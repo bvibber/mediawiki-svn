@@ -85,7 +85,7 @@ lastY=10;YOffset=0;staticYOffset=10;refreshMS=25;
 // Netscape 4.x browser resize fix
 	function MM_reloadPage(init) {
   	if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
-    	document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; top.onresize=MM_reloadPage; }}
+		document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; top.onresize=MM_reloadPage; }}
   	else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) {location.reload();}}
 
 // Create browser-independent layer and browser objects

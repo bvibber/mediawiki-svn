@@ -1570,17 +1570,13 @@ var flashEmbed = {
 		setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
 		return this.wrapEmebedContainer( this.getEmbedObj() );
 	},
-	getEmbedObj:function(){
-		/*return	 '<a href="' + this.media_element.selected_source.getURI(this.seek_time_sec) +'" '+
-					'style="display:block;width:' + this.width + 'px;height:' + this.height + 'px" '+  
-					   'id="' + this.pid + '"> rewrite me'+  
-				'</a>';*/
+	getEmbedObj:function(){	
 		//give the embed element a unique pid (work around for flowplayer persistence)
 		if( this.old_pid!=0 ){
 			this.pid = this.pid +'_'+ this.old_pid;
 		}				
 		return '<a  '+
-					'href="'+ this.media_element.selected_source.getURI( this.seek_time_sec ) + '" '+  
+					'href="'+ this.getSrc() + '" '+  
 					'style="display:block;width:' + parseInt(this.width) + 'px;height:' + parseInt(this.height) + 'px" '+  
 					'id="'+this.pid+'">'+ 
 				'</a>';
@@ -1588,10 +1584,10 @@ var flashEmbed = {
 	postEmbedJS: function()
 	{   
 		var _this = this;
-		js_log('embedFlow: uri:'+ _this.media_element.selected_source.getURI(this.seek_time_sec) + "\n"+ mv_embed_path + 'binPlayers/flowplayer/flowplayer-3.0.1.swf' ) ;
+		js_log('embedFlow: uri:'+ this.getSrc() + "\n"+ mv_embed_path + 'binPlayers/flowplayer/flowplayer-3.0.1.swf' ) ;
 		var flowConfig = { 
 			clip: { 
-				url: _this.media_element.selected_source.getURI(this.seek_time_sec),				  
+				url: this.getSrc(),				  
 				// when this is false playback does not start until play button is pressed 
 				autoPlay: true
 			},
