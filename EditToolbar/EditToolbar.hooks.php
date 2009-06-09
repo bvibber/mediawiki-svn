@@ -15,7 +15,7 @@ class EditToolbarHooks {
 	 * Intercept the display of the toolbar, replacing the content of $toolbar
 	 */
 	public static function intercept( &$toolbar ) {
-		global $wgUser, $wgOut, $wgJsMimeType;
+		global $wgUser, $wgOut, $wgJsMimeType, $wgRequest;
 		global $wgEditToolbarGlobalEnable, $wgEditToolbarUserEnable;
 		
 		// Checks if...
@@ -98,9 +98,17 @@ class EditToolbarHooks {
 		$messagesList = implode( ',', $messages );
 		// Encapsulates list in javascript code to set them durring load
 		$messagesJs = "loadGM({{$messagesList}});";
+		
+		// Ensure persistency of tabs' show/hide status between submits
+		$persistentTabs = array( 'format' );
+		$tabsJs = "";
+		foreach( $persistentTabs as $tab )
+			if( $wgRequest->wasPosted() && $wgRequest->getInt( "ET$tab" ) == 1 )
+				$tabsJs .= "editToolbarConfiguration['$tab'].showInitially = '1';";
+		
 		// Appends javascript message setting code
 		$toolbar .= Xml::element(
-			'script', array( 'type' => $wgJsMimeType ), $messagesJs
+			'script', array( 'type' => $wgJsMimeType ), $messagesJs . $tabsJs
 		);
 		// Continue
 		return true;
