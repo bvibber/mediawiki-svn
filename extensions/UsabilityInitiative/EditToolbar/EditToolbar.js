@@ -535,6 +535,7 @@ var editToolbarConfiguration = {
 	},
 	// Insert section
 	'insert': {
+		showInitially: '0',
 		labelMsg: 'edittoolbar-section-insert',
 		groups: {
 			'media': {
