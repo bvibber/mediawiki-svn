@@ -100,7 +100,11 @@ END;
 	static function getCSVData($csv_file, &$pages) {
 		$table = array();
 		while ($line = fgetcsv($csv_file)) {
-			array_push($table, $line);
+			// fix values in case the file wasn't UTF-8 encoded -
+			// hopefully the UTF-8 value will work across all
+			// database encodings
+			$encoded_line = array_map('utf8_encode', $line);
+			array_push($table, $encoded_line);
 		}
 		fclose($csv_file);
 		// check header line to make sure every term is in the
