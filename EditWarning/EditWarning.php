@@ -18,7 +18,7 @@
 /* Configuration */
 
 // Bump the version number every time you change any of the .css/.js files
-$wgEditWarningStyleVersion = 1;
+$wgEditWarningStyleVersion = 2;
 
 /* Setup */
 
