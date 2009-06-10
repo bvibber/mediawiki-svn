@@ -106,6 +106,7 @@ div#edittoolbar div.index > div {
 div#edittoolbar div.index > div.current {
 	background-color: white;
 	color: #333333;
+	cursor: default;
 }
 div#edittoolbar div.pages {
 	float: right;
