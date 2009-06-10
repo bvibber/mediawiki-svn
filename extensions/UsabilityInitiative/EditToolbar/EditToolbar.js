@@ -225,7 +225,7 @@
 								// Appends table to page
 								var contentTable = $( '<table />' )
 									.attr( {
-										'cellpadding': '5',
+										'cellpadding': '0',
 										'cellspacing': '0',
 										'border': '0',
 										'width': '100%'
@@ -245,7 +245,10 @@
 									for ( cell in section.pages[page].rows[row] ) {
 										contentRow.append(
 											$( '<td />' )
-												.attr( 'class', cell )
+												.attr( {
+													'class': cell,
+													'valign': 'top'
+												} )
 												.append(
 													$( '<span>' + msg( section.pages[page].rows[row][cell], 'content' ) + '</span>' )
 												)
@@ -696,17 +699,17 @@ var editToolbarConfiguration = {
 						'result': { contentMsg: 'edittoolbar-help-content-heading2-result' }
 					},
 					{
-						'description': { contentMsg: 'edittoolbar-help-content-heading2-description' },
+						'description': { contentMsg: 'edittoolbar-help-content-heading3-description' },
 						'syntax': { contentMsg: 'edittoolbar-help-content-heading3-syntax' },
 						'result': { contentMsg: 'edittoolbar-help-content-heading3-result' }
 					},
 					{
-						'description': { contentMsg: 'edittoolbar-help-content-heading2-description' },
+						'description': { contentMsg: 'edittoolbar-help-content-heading4-description' },
 						'syntax': { contentMsg: 'edittoolbar-help-content-heading4-syntax' },
 						'result': { contentMsg: 'edittoolbar-help-content-heading4-result' }
 					},
 					{
-						'description': { contentMsg: 'edittoolbar-help-content-heading2-description' },
+						'description': { contentMsg: 'edittoolbar-help-content-heading5-description' },
 						'syntax': { contentMsg: 'edittoolbar-help-content-heading5-syntax' },
 						'result': { contentMsg: 'edittoolbar-help-content-heading5-result' }
 					}
@@ -767,6 +770,11 @@ var editToolbarConfiguration = {
 						'description': { contentMsg: 'edittoolbar-help-content-rereference-description' },
 						'syntax': { contentMsg: 'edittoolbar-help-content-rereference-syntax' },
 						'result': { contentMsg: 'edittoolbar-help-content-rereference-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-showreferences-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-showreferences-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-showreferences-result' }
 					}
 				]
 			},
