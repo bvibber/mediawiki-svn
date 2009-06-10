@@ -100,7 +100,7 @@ div#edittoolbar div.index {
 }
 div#edittoolbar div.index > div {
 	padding: 4px;
-	padding-left: 18px;
+	padding-left: 6px;
 	cursor: pointer;
 	color: #00528C;
 }
@@ -108,9 +108,6 @@ div#edittoolbar div.index > div.current {
 	background-color: white;
 	color: #333333;
 	cursor: default;
-	background-image: url(images/arrow-right.png);
-	background-position: left center;
-	background-repeat: no-repeat;
 }
 div#edittoolbar div.index > div:first-child {
 	border-top: none;
