@@ -743,13 +743,15 @@ function mv_jqueryBindings(){
         				'mvSequencer'		
         		];
         		var secondLoadSet =[];
-        		var uiDepLibs = ['$j.ui.dialog',
+        		var uiDepLibs = [
+        				'$j.ui.dialog',
         				'$j.ui.droppable',
         				'$j.ui.draggable',        				
         				'$j.ui.sortable',
         				'$j.ui.resizable',
         				'$j.ui.slider',
-        				'$j.ui.tabs'];
+        				'$j.ui.tabs'
+        			];
         		if($j.browser.msie || $j.browser.safari){        				
         			for(var i=0;i<uiDepLibs.length;i++)
         				secondLoadSet.push( uiDepLibs[i]);

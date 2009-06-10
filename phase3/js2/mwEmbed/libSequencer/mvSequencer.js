@@ -331,7 +331,7 @@ mvSequencer.prototype = {
 			var tLibSet = mvTransLib['type'][ i ];
 			for(var j in tLibSet){			
 				trans_name=base_trans_name+'_'+j;
-				js_log('tname: ' + trans_name);
+				js_log('adding tname: ' + trans_name);
 				o+='<img style="float:left;padding:10px;" '+
 					'src="'+mv_embed_path +'/skins/'+mv_skin_name+'/transition_images/'+ trans_name + '.png">';		
 			}

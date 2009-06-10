@@ -116,21 +116,35 @@ mvPlayList.prototype = {
 	//pulls up the video editor inline
 	doEditor:function(){
 		//black out the page: 
-		$j('body').append('<div id="modalbox" class="modal_editor">' + '<div id="mv_overlay"/> ');
-						
-		$j('#modalbox').html('loading editor<blink>...</blink>');
-		var _this=this;
-		js_log("calling sequence with url:" + _this.src);
+		//$j('body').append('<div id="ui-widget-overlay"/> <div id="modalbox" class="ui-widget ui-widget-content ui-corner-all modal_editor">' );
 		
-		//clone the playlist (to make for easy cancel) 
+		$j('body').append('<div id="sequencer_target" style="position:aboslute;top:10px;left:10px;right:10px;bottom:10px" title="' + gM('loading_title') + '" ></div>');			
+		$j('#sequencer_target').dialog({
+				bgiframe: true,
+				autoOpen: true,			
+				modal: true,
+				buttons: {		
+					'Cancel': function() {
+						$j(this).dialog('close');
+					}
+				},
+		}).css({
+			'width':'auto',
+			'height':'auto',
+			'top'	: '10px',
+			'left'	: '10px',
+			'right' : '10px',
+			'bottom': '10px'
+		});
+		//@@todo clone the playlist (for faster startup)
 		/*var this_plObj_Clone = $j('#'+this.id).get(0).cloneNode(true);
-		this_plObj_Clone.sequencer=true;
-		this_plObj_Clone.id= 'seq_plobj';
-		debugger;
+			this_plObj_Clone.sequencer=true;
+			this_plObj_Clone.id= 'seq_plobj';
+			debugger;
 		*/		
 		//load sequencer: 
-		$j("#modalbox").sequencer({				
-			"mv_pl_src":this.src						
+		$j("#sequencer_target").sequencer({				
+			"mv_pl_src" : this.src						
 		});
 					
 	},

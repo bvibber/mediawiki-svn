@@ -25,7 +25,7 @@ loadGM( {
 	"mv_custom_title":"Custom Title",
 	"mv_edit_properties":"Edit Properties",
 	"mv_other_properties":"Other Properties",
-	"mv_resource_page":"Resource Page",
+	"mv_resource_page" : "Resource Page:",
 	
 	"mv_set_in_out_points": "Set in-out points",
 	"mv_start_time": "Start Time",
@@ -100,7 +100,9 @@ mvClipEdit.prototype = {
 			'media':['image','template'],
 			'doEdit':function(target, _this ){
 				//do clock mouse scroll duration editor
-				$j(target).html('cur dur: ' + _this.rObj.dur );
+				$j(target).html(
+					_this.getInput		
+				);
 			}			
 		},
 		'inoutpoints':{

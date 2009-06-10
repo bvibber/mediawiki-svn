@@ -10,14 +10,13 @@
 }
 
 .modal_editor {
-	background:#AAA none repeat scroll 0 0;
-	border:3px solid #666666;
-	left:2px;
-	top:2px;
-	right:2px;
-	position:fixed;
-	width:99%;
-	height:99%;	
+	/*background:#AAA none repeat scroll 0 0;
+	border:3px solid #666666;*/
+	left:10px;
+	top:10px;
+	right:10px;
+	bottom:10px;
+	position:fixed;		
 	z-index:100;
 }
 .mv_track {
