@@ -40,7 +40,9 @@ function wfContributionseditcount() {
 			global $wgOut, $wgLang;
 			if ( $uid != 0 )
 				wfLoadExtensionMessages( 'Contributionseditcount' );
-				$wgOut->addWikiText( wfMsg( 'contributionseditcount', $wgLang->formatNum( User::edits( $uid ) ) ) );
+				$wgOut->addWikiText( wfMsgExt( 'contributionseditcount', array(),
+						$wgLang->formatNum( User::edits( $uid ) ),
+						User::whoIs( $uid ) ) );
 			return true;
 		}
 	}
