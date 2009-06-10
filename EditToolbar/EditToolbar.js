@@ -263,7 +263,7 @@
 									switch( chars[char].type ) {
 										case 'break':
 											pageDiv.append( $( '<br />' ) );
-											break;
+										break;
 										case 'link':
 											var context = {
 												'tool' : chars[char],
@@ -278,6 +278,7 @@
 												.click( function() { return false; } )
 											);
 											pageDiv.append( '&nbsp;' );
+										break;
 									}
 								}
 							break;
@@ -717,14 +718,14 @@ var editToolbarConfiguration = {
 				],
 				rows: [
 					{
-						'description': { contentMsg: 'edittoolbar-help-content-bold-description' },
-						'syntax': { contentMsg: 'edittoolbar-help-content-bold-syntax' },
-						'result': { contentMsg: 'edittoolbar-help-content-bold-result' }
-					},
-					{
 						'description': { contentMsg: 'edittoolbar-help-content-italic-description' },
 						'syntax': { contentMsg: 'edittoolbar-help-content-italic-syntax' },
 						'result': { contentMsg: 'edittoolbar-help-content-italic-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-bold-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-bold-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-bold-result' }
 					},
 					{
 						'description': { contentMsg: 'edittoolbar-help-content-bolditalic-description' },

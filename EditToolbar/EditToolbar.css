@@ -94,7 +94,7 @@ body.rtl div#edittoolbar div.group > select {
 }
 div#edittoolbar div.index {
 	float: left;
-	width: 15%;
+	width: 20%;
 	height: 125px;
 	overflow: auto;
 }
@@ -114,7 +114,7 @@ div#edittoolbar div.index > div:first-child {
 }
 div#edittoolbar div.pages {
 	float: right;
-	width: 85%;
+	width: 80%;
 	height: 125px;
 	overflow: auto;
 	background-color: #FAFAFA;
