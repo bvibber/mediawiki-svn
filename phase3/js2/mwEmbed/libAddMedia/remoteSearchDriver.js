@@ -1214,10 +1214,10 @@ remoteSearchDriver.prototype = {
 	doImportAPI:function(rObj, cir_callback){
 		var _this = this;
 		//baseUploadInterface
-		mvJsLoader.doLoad( {
-			'mvBaseUploadInterface': 'libAddMedia/mvBaseUploadInterface.js',		
-			'$j.ui.progressbar'	 : 'jquery/' + jQueryUiVN + '/ui/ui.progressbar.js'			
-		},function(){	 
+		mvJsLoader.doLoad([
+			'mvBaseUploadInterface',		
+			'$j.ui.progressbar'	
+		],function(){	 
 			//initicate a download similar to url copy:
 			myUp = new mvBaseUploadInterface({
 				'api_url' : _this.local_wiki_api_url,
@@ -1401,15 +1401,14 @@ remoteSearchDriver.prototype = {
 			_this.updatePreviewText( rObj );						
 			$j(_this.target_textbox).val( _this.preview_wtext );
 			
-			//also update the render area: 
+			//update the render area (if present)  
 			if(_this.target_render_area && _this.cur_embed_code){			
 				 //output with some padding: 
 				 $j(_this.target_render_area).append( _this.cur_embed_code + '<div style="clear:both;height:10px">')
 				 //update if its 
-				 mv_video_embed(function(){
-					 _this.closeAll();
-				 });
+				 mv_video_embed();				 
 			}						
+			_this.closeAll();
 		});		
 	},
 	closeAll:function(){

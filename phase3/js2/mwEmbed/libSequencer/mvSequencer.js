@@ -9,7 +9,7 @@
  * @url http://metavid.org
  * 
  * @further developed in open source collaboration with kaltura. 
- * more info at http://kaltura.com
+ * more info at http://kaltura.com & http://kaltura.org
  * 
  * mv_sequencer.js 
  *	 is a basic embeddeble sequencer. 

@@ -108,9 +108,7 @@ mvEmbed = {
 		if(swap_done_callback)
 			mvEmbed.flist.push( swap_done_callback );
 		//get mv_embed location if it has not been set
-		js_log('mv_embed ' + MV_EMBED_VERSION);
-		
-		this.swap_done_callback = swap_done_callback;
+		js_log('mv_embed ' + MV_EMBED_VERSION);				
 		
 		var loadPlaylistLib=false;
 		//set up the jQuery selector:				 
@@ -126,13 +124,13 @@ mvEmbed = {
 		   //if video doSwap
 		   switch( this_elm.tagName.toLowerCase()){
 			   case 'video':
-				   var videoInterface = new embedVideo(this_elm);	 
-				mvEmbed.swapEmbedVideoElement( this_elm, videoInterface );
+				    var videoInterface = new embedVideo(this_elm);	 
+					mvEmbed.swapEmbedVideoElement( this_elm, videoInterface );
 			   break;
 			   case 'audio':
 				   var videoInterface = new embedVideo(this_elm);	 
 				   videoInterface.type ='audio';
-				mvEmbed.swapEmbedVideoElement( this_elm, videoInterface );
+				   mvEmbed.swapEmbedVideoElement( this_elm, videoInterface );
 			   break;
 			   case 'playlist':
 				   loadPlaylistLib=true;
@@ -149,7 +147,7 @@ mvEmbed = {
 		//ie8 does not play well with the jQuery video,audio,playlist selector use native: 
 		if($j.browser.msie && $j.browser.version >= 8){
 			jtags = j_selector.split(',');				
-			for(var i=0;i<jtags.length;i++){
+			for(var i=0;i<jtags.length;i++){				
 				$j( document.getElementsByTagName( jtags[i] )).each(function(){
 					eAction(this);
 				});
@@ -239,6 +237,7 @@ mvEmbed = {
 	},
 	//this should not be needed.
 	checkClipsReady : function(){
+		js_log('checkClipsReady');
 		var is_ready=true;	  
 		  for(var i=0; i < global_player_list.length; i++){
 			  if( $j('#'+global_player_list[i]).length !=0){
@@ -254,12 +253,15 @@ mvEmbed = {
 			mvEmbed.allClipsReady = true;
 			// run queued functions 
 			//js_log('run queded functions:' + mvEmbed.flist[0]);
-			while (mvEmbed.flist.length){				
-				mvEmbed.flist.shift()();
-			}
+			mvEmbed.runFlist();
 		}else{				 
 			 setTimeout( 'mvEmbed.checkClipsReady()', 25 );
 		 }			  
+	},
+	runFlist:function(){
+		while (this.flist.length){				
+			this.flist.shift()();
+		}
 	}
 }
 
