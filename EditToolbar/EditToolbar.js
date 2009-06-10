@@ -271,7 +271,7 @@
 											};
 											pageDiv.append( $( '<a />' )
 												.attr( chars[char].attrs )
-												.attr( { 'href': '#', 'rel': char } )
+												.attr( { 'href': '#' } )
 												.text( chars[char].text )
 												.data( 'context', context)
 												.click( action )
