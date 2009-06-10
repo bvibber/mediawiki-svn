@@ -83,4 +83,64 @@ $messages['en'] = array(
 	'edittoolbar-help-content-bolditalic-description' => "Makes text bold &amp; italic",
 	'edittoolbar-help-content-bolditalic-syntax' => "'''Bold &amp; italic text'''",
 	'edittoolbar-help-content-bolditalic-result' => "<strong><em>Bold &amp; italic text</em></strong>",
+	
+	'edittoolbar-help-content-ilink-description' => "Internal link",
+	'edittoolbar-help-content-ilink-syntax' => "[[Page title|Link label]]",
+	'edittoolbar-help-content-ilink-result' => "",
+	
+	'edittoolbar-help-content-xlink-description' => "External link",
+	'edittoolbar-help-content-xlink-syntax' => "[http://www.domain.com Link label]",
+	'edittoolbar-help-content-xlink-result' => "",
+	
+	'edittoolbar-help-content-heading1-description' => "1st level heading",
+	'edittoolbar-help-content-heading1-syntax' => "= Heading text =",
+	'edittoolbar-help-content-heading1-result' => "",
+	
+	'edittoolbar-help-content-heading2-description' => "2nd level heading",
+	'edittoolbar-help-content-heading2-syntax' => "== Heading text ==",
+	'edittoolbar-help-content-heading2-result' => "",
+	
+	'edittoolbar-help-content-heading3-description' => "3rd level heading",
+	'edittoolbar-help-content-heading3-syntax' => "=== Heading text ===",
+	'edittoolbar-help-content-heading3-result' => "",
+	
+	'edittoolbar-help-content-heading4-description' => "4th level heading",
+	'edittoolbar-help-content-heading4-syntax' => "==== Heading text ====",
+	'edittoolbar-help-content-heading4-result' => "",
+	
+	'edittoolbar-help-content-heading5-description' => "5th level heading",
+	'edittoolbar-help-content-heading5-syntax' => "===== Heading text =====",
+	'edittoolbar-help-content-heading5-result' => "",
+	
+	'edittoolbar-help-content-ulist-description' => "Bulleted list",
+	'edittoolbar-help-content-ulist-syntax' => "* List item",
+	'edittoolbar-help-content-ulist-result' => "",
+	
+	'edittoolbar-help-content-olist-description' => "Numbered list",
+	'edittoolbar-help-content-olist-syntax' => "# List item",
+	'edittoolbar-help-content-olist-result' => "",
+	
+	'edittoolbar-help-content-file-description' => "Embedded file",
+	'edittoolbar-help-content-file-syntax' => "[[File:File name]]",
+	'edittoolbar-help-content-file-result' => "",
+	
+	'edittoolbar-help-content-reference-description' => "Reference",
+	'edittoolbar-help-content-reference-syntax' => "&lt;ref name=\"test\"&gt;Reference content&lt;/ref&gt;",
+	'edittoolbar-help-content-reference-result' => "",
+	
+	'edittoolbar-help-content-rereference-description' => "Additional use of reference",
+	'edittoolbar-help-content-rereference-syntax' => "&lt;ref name=\"test\" /&gt;",
+	'edittoolbar-help-content-rereference-result' => "",
+	
+	'edittoolbar-help-content-signaturetimestamp-description' => "Signature with timestamp",
+	'edittoolbar-help-content-signaturetimestamp-syntax' => "~~~~",
+	'edittoolbar-help-content-signaturetimestamp-result' => "",
+	
+	'edittoolbar-help-content-signature-description' => "Signature",
+	'edittoolbar-help-content-signature-syntax' => "~~~",
+	'edittoolbar-help-content-signature-result' => "",
+	
+	'edittoolbar-help-content-indent-description' => "Indent",
+	'edittoolbar-help-content-indent-syntax' => ":Indented text",
+	'edittoolbar-help-content-indent-result' => ""
 );

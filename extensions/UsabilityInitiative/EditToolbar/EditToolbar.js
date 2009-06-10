@@ -658,32 +658,143 @@ var editToolbarConfiguration = {
 			'link': {
 				labelMsg: 'edittoolbar-help-page-link',
 				layout: 'table',
-				content: 'internal and external'
+				headings: [
+					{ contentMsg: 'edittoolbar-help-heading-description' },
+					{ contentMsg: 'edittoolbar-help-heading-syntax' },
+					{ contentMsg: 'edittoolbar-help-heading-result' }
+				],
+				rows: [
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-ilink-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-ilink-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-ilink-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-xlink-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-xlink-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-xlink-result' }
+					}
+				]
 			},
 			'heading': {
 				labelMsg: 'edittoolbar-help-page-heading',
 				layout: 'table',
-				content: 'heading levels 1 - 5'
+				headings: [
+					{ contentMsg: 'edittoolbar-help-heading-description' },
+					{ contentMsg: 'edittoolbar-help-heading-syntax' },
+					{ contentMsg: 'edittoolbar-help-heading-result' }
+				],
+				rows: [
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-heading1-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-heading1-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-heading1-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-heading2-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-heading2-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-heading2-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-heading2-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-heading3-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-heading3-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-heading2-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-heading4-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-heading4-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-heading2-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-heading5-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-heading5-result' }
+					}
+				]
 			},
 			'list': {
 				labelMsg: 'edittoolbar-help-page-list',
 				layout: 'table',
-				content: 'ordered and unordered'
+				headings: [
+					{ contentMsg: 'edittoolbar-help-heading-description' },
+					{ contentMsg: 'edittoolbar-help-heading-syntax' },
+					{ contentMsg: 'edittoolbar-help-heading-result' }
+				],
+				rows: [
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-ulist-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-ulist-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-ulist-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-olist-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-olist-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-olist-result' }
+					}
+				]
 			},
 			'file': {
 				labelMsg: 'edittoolbar-help-page-file',
 				layout: 'table',
-				content: 'file with some parameters'
+				headings: [
+					{ contentMsg: 'edittoolbar-help-heading-description' },
+					{ contentMsg: 'edittoolbar-help-heading-syntax' },
+					{ contentMsg: 'edittoolbar-help-heading-result' }
+				],
+				rows: [
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-file-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-file-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-file-result' }
+					}
+				]
 			},
 			'reference': {
 				labelMsg: 'edittoolbar-help-page-reference',
 				layout: 'table',
-				content: 'ref use and reuse'
+				headings: [
+					{ contentMsg: 'edittoolbar-help-heading-description' },
+					{ contentMsg: 'edittoolbar-help-heading-syntax' },
+					{ contentMsg: 'edittoolbar-help-heading-result' }
+				],
+				rows: [
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-reference-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-reference-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-reference-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-rereference-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-rereference-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-rereference-result' }
+					}
+				]
 			},
 			'discussion': {
 				labelMsg: 'edittoolbar-help-page-discussion',
 				layout: 'table',
-				content: 'signature with and without timestamp and indent'
+				headings: [
+					{ contentMsg: 'edittoolbar-help-heading-description' },
+					{ contentMsg: 'edittoolbar-help-heading-syntax' },
+					{ contentMsg: 'edittoolbar-help-heading-result' }
+				],
+				rows: [
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-signaturetimestamp-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-signaturetimestamp-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-signaturetimestamp-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-signature-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-signature-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-signature-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-indent-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-indent-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-indent-result' }
+					}
+				]
 			}
 		}
 	}
