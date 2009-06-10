@@ -92,6 +92,50 @@ div#edittoolbar div.group > select {
 body.rtl div#edittoolbar div.group > select {
 	float: right;
 }
+div#edittoolbar div.index {
+	float: left;
+	width: 20%;
+	height: 150px;
+	overflow: auto;
+}
+div#edittoolbar div.index > div {
+	padding: 9px;
+	cursor: pointer;
+	color: #00528C;
+}
+div#edittoolbar div.index > div.current {
+	background-color: white;
+	color: #333333;
+}
+div#edittoolbar div.pages {
+	float: right;
+	width: 80%;
+	height: 150px;
+	overflow: auto;
+	background-color: white;
+}
+div#edittoolbar div.pages > div.page {
+	display: none;
+}
+div#edittoolbar div.pages > div.page:first-child {
+	display: block;
+}
+div#edittoolbar div.pages > div.page > table {
+	padding: 4px;
+}
+div#edittoolbar div.pages > div.page > table th {
+	color: #999999;
+	border-bottom: solid 1px #DDDDDD;
+}
+div#edittoolbar div.pages > div.page > table th,
+div#edittoolbar div.pages > div.page > table td {
+	text-align: left;
+	padding: 5px;
+	margin: 0px;
+}
+div#edittoolbar div.pages > div.page > table td.syntax {
+	font-family: monospace;
+}
 div#edittoolbar div.tabs > div.tab {
 	float: left;
 	line-height: 26px;
