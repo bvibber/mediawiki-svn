@@ -7,29 +7,44 @@
  * @version $Id: Widgets.php 15 2008-06-25 21:22:40Z sergey.chernyshev $
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+    echo "This file is not a valid entry point.";
+    exit( 1 );
+}
+
 $wgExtensionCredits['parserhook'][] = array(
         'name' => 'Widgets',
         'description' => 'Allows wiki administrators to add free-form widgets to wiki by just editing pages within Widget namespace. Originally developed for [http://www.ardorado.com Ardorado.com]',
-	'version' => '0.8.5',
+	'version' => '0.8.6',
         'author' => '[http://www.sergeychernyshev.com Sergey Chernyshev] (for [http://www.semanticcommunities.com Semantic Communities LLC.])',
         'url' => 'http://www.mediawiki.org/wiki/Extension:Widgets'
 );
 
-// Initialize Smarty
+/**
+ * Set this to the index of the Widget namespace
+ */
+if ( !defined( 'NS_WIDGET' ) ) {
+   define( 'NS_WIDGET', 274 );
+}
+if ( !defined( 'NS_WIDGET_TALK' ) ) {
+   define( 'NS_WIDGET_TALK', NS_WIDGET + 1 );
+} elseif ( NS_WIDGET_TALK != NS_WIDGET + 1 ) {
+   throw new MWException( 'Configuration error. Do not define NS_WIDGET_TALK, it is automatically set based on NS_WIDGET.' );
+}
 
-require "$IP/extensions/Widgets/smarty/Smarty.class.php";
+// Initialize Smarty
+require dirname(__FILE__)."/smarty/Smarty.class.php";
 
 // Parser function registration
-$wgExtensionFunctions[] = 'widgetParserFunctions';
+$wgExtensionFunctions[] = 'widgetNamespacesInit';
 $wgHooks['LanguageGetMagic'][] = 'widgetLanguageGetMagic';
+$wgHooks['ParserFirstCallInit'][] = 'widgetParserFunctions';
 
-// Init Widget namespaces
-widgetNamespacesInit();
-
-function widgetParserFunctions()
+function widgetParserFunctions( &$parser )
 {
-    global $wgParser;
-    $wgParser->setFunctionHook('widget', 'renderWidget');
+    $parser->setFunctionHook('widget', 'renderWidget');
+
+    return true;
 }
 
 function widgetLanguageGetMagic( &$magicWords, $langCode = "en" )
@@ -162,15 +177,8 @@ function renderWidget (&$parser, $widgetName)
 }
 
 function widgetNamespacesInit() {
-	global $widgetNamespaceIndex, $wgExtraNamespaces, $wgNamespacesWithSubpages,
+	global $wgExtraNamespaces, $wgNamespacesWithSubpages,
 			$wgGroupPermissions, $wgNamespaceProtection;
-
-	if (!isset($widgetNamespaceIndex)) {
-		$widgetNamespaceIndex = 274;
-	}
-
-	define('NS_WIDGET',       $widgetNamespaceIndex);
-	define('NS_WIDGET_TALK',  $widgetNamespaceIndex+1);
 
 	// Register namespace identifiers
 	if (!is_array($wgExtraNamespaces)) { $wgExtraNamespaces=array(); }
