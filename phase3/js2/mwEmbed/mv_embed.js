@@ -116,7 +116,8 @@ function lcPaths( path, gClasses , opt){
 			//setup normal replacement of j with jquery			
 			var jsName = ( gClasses[i].substr(0,3) == '$j.' ) ? opt['j_replace'] + gClasses[i].substr(3) : gClasses[i];							
 			mvClassPaths[ gClasses[i] ] = path + jsName + '.js';
-		}else{
+		}else{ 
+			//assume object with key:path:
 			mvClassPaths[i] = path + gClasses[ i ];
 		}
 	}
@@ -135,7 +136,7 @@ function mvGetClassPath(k){
 lcPaths('',{
 	'mv_embed'			: 'mv_embed.js',
 	'window.jQuery'		: 'jquery/jquery-1.3.2.js',	
-	'$j.fn.pngFix'		: 'jquery.pngFix.js',
+	'$j.fn.pngFix'		: 'jquery/plugins/jquery.pngFix.js',
 	'$j.fn.autocomplete': 'jquery/plugins/jquery.autocomplete.js',
 	'$j.fn.hoverIntent'	: 'jquery/plugins/jquery.hoverIntent.js',
 	'$j.fn.datePicker'	: 'jquery/plugins/jquery.datePicker.js',
@@ -176,7 +177,7 @@ lcPaths('jquery/jquery.ui-1.7.1/ui/', [
 	'$j.ui.selectable',
 ], 
 {'j_replace':''});
-
+//add mediaLibs
 lcPaths('libAddMedia/', [
 	'mvFirefogg',
 	'mvAdvFirefogg',
@@ -196,7 +197,7 @@ lcPaths('libAddMedia/searchLibs/', [
 lcPaths( 'libClipEdit/', [
 	'mvClipEdit'	
 ])	
-//libEmbedObj:
+//libEmbedObj (we could load all these clasess in embedVideo):
 lcPaths( 'libEmbedVideo/', [
 	'embedVideo',
 	'flashEmbed',
@@ -427,6 +428,27 @@ var mvJsLoader = {
 			 }			 
 		 }
 		 this.ptime=this.ctime;		
+	 },	 
+	 doLoadDepMode:function(loadChain, callback){
+	 	//firefox executes js ~in-order of it being included~ so just directly issue request:
+	 	if( $j.browser.firefox ){
+	 		var loadSet = [];
+	 		for(var i=0; i< loadChain.length;i++){
+	 			for(var j=0;j<loadChain[i].length;j++){
+	 				loadSet.push(loadChain[i][j]);
+	 			}
+	 		}
+	 		doLoad(loadSet, callback);
+	 	}else{
+	 		//safair and IE tend to execute out of order so load with dependenciy checks
+		 	mvJsLoader.doLoad(loadChain.shift(),function(){
+		 		if(loadChain.length!=0){
+		 			mvJsLoader.doLoadDepMode(loadChain, callback);
+		 		}else{
+		 			callback();
+		 		}
+		 	});	 
+	 	}	
 	 },
 	 checkLoading:function(){		  
 		  var loading=0;
@@ -490,29 +512,22 @@ var mvJsLoader = {
 				 
 		//make sure we have jQuery
 		_this.jQueryCheck(function(){
-			baseReq = [
+			var depReq = new Array();
+			depReq.push( [
 				'$j.ui', 
 				'embedVideo',   				
 				'$j.cookie'	   																
-			];		
-			var secReq = new Array();	
-			//IE & safari appear to load things out of order running j.slider before j.ui is ready
-			//load ui depenent scripts in a second request:
-			if($j.browser.msie || $j.browser.safari){				
-				secReq.push( '$j.ui.slider' );
-				//ie6 yay!
-				if($j.browser.version <= 6){
-					secReq.push( '$j.fn.pngFix' );
-				}
-			}else{				
-				baseReq.push('$j.ui.slider');
-			}		 				
-			_this.doLoad(baseReq,function(){						
-					_this.doLoad(secReq,function(){			 
-						embedTypes.init();										
-						callback();	
-					});			
-				});
+			], [
+				'$j.ui.slider'
+			]);				
+			//add png fix if needed:
+			if($j.browser.msie || $j.browser.version < 7)								
+				depReq[0].push( '$j.fn.pngFix' );
+							 			
+			_this.doLoadDepMode(depReq,function(){												 
+				embedTypes.init();										
+				callback();	
+			});
 		});
 	},	
 	addLoadEvent:function(fn){
@@ -710,22 +725,24 @@ function mv_jqueryBindings(){
 			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );																								
 			//load all the req libs: 
 			mvJsLoader.jQueryCheck(function(){
-				//load search specifc extra stuff 
-				mvJsLoader.doLoad([
-					'remoteSearchDriver',
-					'$j.cookie',
-					'$j.ui',
-					'$j.ui.resizable',
-					'$j.ui.draggable',
-					'$j.ui.dialog',
-					'$j.ui.tabs',
-					'$j.ui.sortable'
+				//load with staged dependeinces (for ie and safari that don't execute in order) 
+				mvJsLoader.doLoadDepMode([
+					['remoteSearchDriver',
+						'$j.cookie',
+						'$j.ui'
+					],[				
+						'$j.ui.resizable',
+						'$j.ui.draggable',
+						'$j.ui.dialog',
+						'$j.ui.tabs',
+						'$j.ui.sortable'
+					]
 				], function(){
 					iObj['instance_name']= 'rsdMVRS';
 					_global['rsdMVRS'] = new remoteSearchDriver( iObj );	   
 					if( callback )
 					   callback(); 
-				});
+				}); 			
 			});
 		}
 		$.fn.sequencer = function( iObj, callback){
@@ -735,15 +752,16 @@ function mv_jqueryBindings(){
         	loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
         	loadExternalCss( mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');	
         	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
-        	mvJsLoader.embedVideoCheck(function(){	
-        		var firstLoadSet =[
+        	mvJsLoader.embedVideoCheck(function(){	        		       		
+        		//load playlist object and then jquery ui stuff:
+        		mvJsLoader.doLoadDepMode([
+	        		[
         				'mvPlayList',
         				'$j.ui',  
         				'$j.contextMenu',
         				'mvSequencer'		
-        		];
-        		var secondLoadSet =[];
-        		var uiDepLibs = [
+	        		],
+	        		[
         				'$j.ui.dialog',
         				'$j.ui.droppable',
         				'$j.ui.draggable',        				
@@ -751,25 +769,15 @@ function mv_jqueryBindings(){
         				'$j.ui.resizable',
         				'$j.ui.slider',
         				'$j.ui.tabs'
-        			];
-        		if($j.browser.msie || $j.browser.safari){        				
-        			for(var i=0;i<uiDepLibs.length;i++)
-        				secondLoadSet.push( uiDepLibs[i]);
-        		}else{
-        			for(var i=0;i<uiDepLibs.length;i++)
-        				firstLoadSet.push( uiDepLibs[i]);
-        		}
-        		//load playlist object and drag,drop,resize,hoverintent,libs
-        		mvJsLoader.doLoad(firstLoadSet,function(){			
-        			mvJsLoader.doLoad(secondLoadSet,function(){	
-        				js_log('calling new mvSequencer');						
-        				//init the sequence object (it will take over from there) no more than one mvSeq obj for now: 
-        				if(!_global['mvSeq']){
-        					_global['mvSeq'] = new mvSequencer(iObj);
-        				}else{
-        					js_log('mvSeq already init');
-        				}
-        			});
+        			]
+        		], function(){			        			
+    				js_log('calling new mvSequencer');						
+    				//init the sequence object (it will take over from there) no more than one mvSeq obj for now: 
+    				if(!_global['mvSeq']){
+    					_global['mvSeq'] = new mvSequencer(iObj);
+    				}else{
+    					js_log('mvSeq already init');
+    				}
         		});
         	});
 		}
@@ -781,39 +789,28 @@ function mv_jqueryBindings(){
 			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );			
 			// @@todo should refactor  mvAdvFirefogg as jQuery plugin
 			iObj['selector'] = this.selector;				
-			loadSet = [				
-				'mvBaseUploadInterface',
-				'mvFirefogg',
-				'$j.ui'										
-			];	
-			var eiLoadSet = [
-					'mvAdvFirefogg',
-					'$j.cookie',			  
-					'$j.ui.accordion',
-					'$j.ui.slider',	   
-					'$j.ui.datepicker'
-			]
-			var secondLoadSet = [];	
-			//IE* ~sometimes~ executes things out of order on DOM inserted scripts
-			//*(kind of pointless anyway since IE does not support firefogg 
-			// but if you want firefog to drive the "is not supported" msg here you go ;)
-			if($.browser.msie ||  $j.browser.safari){
-				secondLoadSet = [
+			var loadSet = [
+				[				
+					'mvBaseUploadInterface',
+					'mvFirefogg',
+					'$j.ui'										
+				],
+				[
 					'$j.ui.progressbar',
-					'$j.ui.dialog'		
+					'$j.ui.dialog'
 				]
-				for(var i=0;i < eiLoadSet.length; i++)
-					secondLoadSet[i] = eiLoadSet[i];
-			}else{
-				loadSet.push( '$j.ui.progressbar' );
-				loadSet.push( '$j.ui.dialog' );
-				for(var i=0;i < eiLoadSet.length; i++)
-					loadSet.push( eiLoadSet[i] );
-			}			
+			];	
+			if( iObj.encoder_interface ){
+				loadSet.push([
+						'mvAdvFirefogg',
+						'$j.cookie',			  
+						'$j.ui.accordion',
+						'$j.ui.slider',	   
+						'$j.ui.datepicker'
+				]);
+			}		
 			//make sure we have everything loaded that we need: 
-			mvJsLoader.doLoad( loadSet, function(){	
-				mvJsLoader.doLoad( secondLoadSet, function(){		
-				if(secondLoadSet)
+			mvJsLoader.doLoadDepMode( loadSet, function(){										
 					js_log('firefogg libs loaded. target select:' + iObj.selector);
 					//select interface provicer based on if we want to include the encoder interface or not: 
 					if(iObj.encoder_interface){
@@ -823,7 +820,6 @@ function mv_jqueryBindings(){
 					}							   
 					if(myFogg)
 						myFogg.doRewrite( callback );
-				});	
 			});		
 		}
 		

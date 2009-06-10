@@ -128,7 +128,7 @@ mvPlayList.prototype = {
 						$j(this).dialog('close');
 					}
 				},
-		}).css({
+		}).parent('.ui-dialog').css({
 			'width':'auto',
 			'height':'auto',
 			'top'	: '10px',

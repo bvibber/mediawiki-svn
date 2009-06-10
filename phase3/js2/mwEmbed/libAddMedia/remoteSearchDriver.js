@@ -34,7 +34,11 @@ loadGM({
 	"no_import_by_url": "This User or Wiki <b>can not</b> import assets from remote URLs. <br> If permissions are set you may have to enable $wgAllowCopyUploads, <a href=\"http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads\">more info</a>"
 });
 var default_remote_search_options = {
-	'profile':'mediawiki_edit',	'target_container':null, //the div that will hold the search interface
+	'profile':'mediawiki_edit',
+	'target_container':null, //the div that will hold the search interface
+	//if using a modeal dialog (instead of target_container) how close to the edge of the window should we go:   	 
+	'modal_edge_padding':'20px',
+	
 	'target_invocation': null, //the button or link that will invoke the search interface
 
 	'default_provider_id':'all', //all or one of the content_providers ids
@@ -56,7 +60,8 @@ var default_remote_search_options = {
 	'cFileNS':'File', //what is the cannonical namespace for images
 					  //@@todo (should get that from the api or inpage vars)
 					 
-	'enable_upload_tab':true, // if we want to enable an uploads tab:	 
+	'enable_upload_tab':true, // if we want to enable an uploads tab:
+	
 }
 if(typeof wgServer == 'undefined')
 	wgServer = '';
@@ -296,6 +301,7 @@ remoteSearchDriver.prototype = {
 
 	cUpLoader			: null,
 	cEdit				: null,
+	dmodalCss			: null,
 
 	init: function( iObj ){
 		var _this = this;
@@ -320,7 +326,17 @@ remoteSearchDriver.prototype = {
 				}
 			}
 		}
-								
+		//set up the default model config: 
+		this.dmodalCss = {
+			'width':'auto',
+			'height':'auto',
+			'top'	: this.modal_edge_padding,
+			'left'	: this.modal_edge_padding,
+			'right' : this.modal_edge_padding,
+			'bottom': this.modal_edge_padding
+		}
+		
+		
 		//set up the target invocation:
 		if( $j(this.target_invocation).length==0 ){
 			js_error("RemoteSearchDriver:: no target invocation provided")
@@ -345,7 +361,7 @@ remoteSearchDriver.prototype = {
 			  if(_this.target_textbox)
 					_this.getTexboxSelection();
 				
-			  $j(_this.target_container).dialog('open');
+			  $j(_this.target_container).dialog('open').parent('.ui-dialog').css( _this.dmodalCss );
 		 });	
 	},
 	//gets the in and out points for insert position or grabs the selected text for search
@@ -402,9 +418,7 @@ remoteSearchDriver.prototype = {
 			layout = _this.getMaxModalLayout();
 			$j(_this.target_container).dialog({
 				bgiframe: true,
-				autoOpen: true,
-				width: 800,
-				height: 600,					  
+				autoOpen: true,		  
 				modal: true,
 				buttons: {		
 					'Cancel': function() {
@@ -414,9 +428,27 @@ remoteSearchDriver.prototype = {
 				close: function() {
 					js_log('closed modal');
 				}		
+			}).parent('.ui-dialog').css( _this.dmodalCss )
+			//@@bind on resize to disable css dialog to update dmodelCss 
+			.bind('resizestart', function(event, ui) {
+				 _this.dmodalCss = {};
+				 $j(this).css({});
+			})
+			//bind on drag to remove preset style as well
+			.bind('dragstart', function(event, ui) {
+				 _this.dmodalCss = {};
+				 $j(this).css({});			
+			})
+			//update the child position: (some of this should be pushed up-stream via dialog config options 
+			.children('.ui-dialog-buttonpane').css({
+				'position':'abolute',
+				'left':'0px',
+				'right':'0px',
+				'bottom':'0px'
 			});
-			//for some reaons the width does not "stick on init:
-			//$j(_this.target_container).dialog('option', 'width', 800);
+			
+			
+			
 			/*var resizeTimer = false;
 			$j(window).bind('resize', function() {
 				var adjustModal = function(){
@@ -502,9 +534,10 @@ remoteSearchDriver.prototype = {
 	doUploadInteface:function(){
 		var _this = this;
 		mv_set_loading('#tab-upload');
+		$j('#tab-upload').html('upload interface goes here ;)');
 	
 		//todo include firefogg support:
-		mvJsLoader.doLoad( [
+		/*mvJsLoader.doLoad( [
 				'mvUploader'
 			],function(){			
 				_this.cUpLoader = new mvUploader({
@@ -519,13 +552,16 @@ remoteSearchDriver.prototype = {
 						});
 					}											
 			});
-		}); 
+		}); */
 	},
 	runSearch: function(){		
 		js_log("f:runSearch::" + this.disp_item);
 		//draw_direct_flag
 		var draw_direct_flag = true;					
-					
+		if(!this.content_providers[this.disp_item])	{
+			js_log("can't run search for:" + this.disp_item);
+			return false;
+		}			
 		cp = this.content_providers[this.disp_item];	
 	
 		//check if we need to update:

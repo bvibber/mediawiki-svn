@@ -10,7 +10,7 @@ var vlcEmbed = {
 		'stop':true, 
 		'fullscreen':true, 
 		'time_display':true, 
-		'volume_control':false,
+		'volume_control':true,
 		
 		'playlist_driver':true, //if the object supports playlist functions
 		'overlay':false
@@ -241,6 +241,12 @@ var vlcEmbed = {
 			this.vlc.playlist.togglePause();
 		}
 	},
+	toggleMute:function(){
+		this.parent_toggleMute();
+		this.getVLC();
+		if(this.vlc)
+			this.vlc.audio.toggleMute();
+    },	
 	fullscreen : function(){
 		if(this.vlc){
 			if(this.vlc.video)
