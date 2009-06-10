@@ -96,6 +96,13 @@
 			function msg( object, property ) {
 				return object[property] || gM( object[property + 'Msg'] );
 			}
+			// Creates generic action
+			var action = function() {
+				$(this).useTool(
+					$(this).data( 'context' ).tool,
+					$(this).data( 'context' ).textbox
+				);
+			};
 			switch ( section.type ) {
 				case 'toolbar':
 					// Check for groups
@@ -116,13 +123,6 @@
 									.text( msg( section.groups[group], 'label' ) )
 							)
 						}
-						// Creates generic action
-						var action = function() {
-							$(this).useTool(
-								$(this).data( 'context' ).tool,
-								$(this).data( 'context' ).textbox
-							);
-						};
 						// Loops over each tool
 						for ( tool in section.groups[group].tools ) {
 							// Filters are jQuery selectors which must select 1 or more
@@ -256,6 +256,31 @@
 									}
 								}
 							break;
+							case 'specialchar':
+								// Appends special character adders
+								var chars = section.pages[page].chars;
+								for ( char in chars ) {
+									switch( chars[char].type ) {
+										case 'break':
+											pageDiv.append( $( '<br />' ) );
+											break;
+										case 'link':
+											var context = {
+												'tool' : chars[char],
+												'textbox': textbox
+											};
+											pageDiv.append( $( '<a />' )
+												.attr( chars[char].attrs )
+												.attr( { 'href': '#', 'rel': char } )
+												.text( chars[char].text )
+												.data( 'context', context)
+												.click( action )
+												.click( function() { return false; } )
+											);
+											pageDiv.append( '&nbsp;' );
+									}
+								}
+							break;
 							default: break;
 						}
 					}
@@ -287,6 +312,7 @@
 			}
 			switch ( tool.type ) {
 				case 'button':
+				case 'link':
 					performAction( tool.action, textbox );
 				break;
 				case 'select':
@@ -298,6 +324,55 @@
 				break;
 				default: break;
 			}
+		},
+		
+		/**
+		 * Converts a charinsert array like the one used on dewiki to
+		 * the format expected in editToolbarConfiguration
+		 */
+		parseCharinsert: function( charinsert ) {
+			var retval = {};
+			for( page in charinsert ) {
+				var chars = [], attrs = {};
+				var i = 0;
+				for( line in charinsert[page] ) {
+					if( !( charinsert[page][line] instanceof Array ) ) {
+						attrs = charinsert[page][line];
+						continue;
+					}
+					for( chr in charinsert[page][line] ) {
+						 var tool = {
+						 	type: 'link',
+						 	attrs: attrs,
+						 	text: '',
+						 	action: {
+						 		type: 'encapsulate',
+						 		options: {
+						 			pre: '',
+						 			post: ''
+						 		}
+						 	}
+						 };
+						 if( charinsert[page][line][chr] instanceof Array ) {
+						 	tool.action.options.pre = charinsert[page][line][chr][0];
+						 	tool.action.options.post = charinsert[page][line][chr][1];
+						 	//tool.text = charinsert[page][line][chr][0] + charinsert[page][line][chr][1];
+						 } else {
+						 	tool.action.options.pre = charinsert[page][line][chr];
+						 	//tool.text = charinsert[page][line][chr];
+						 }
+						tool.text = tool.action.options.pre + tool.action.options.post;
+						chars[i++] = tool;
+					}
+					chars[i++] = { type: 'break' };
+				}
+				retval[page] = {
+					label: page,
+					layout: 'specialchar',
+					chars: chars
+				};
+			}
+			return retval;
 		}
 	});
 })(jQuery);
@@ -805,5 +880,11 @@ var editToolbarConfiguration = {
 				]
 			}
 		}
+	},
+	'specialchars': {
+		label: 'Special characters',
+		labelMsg: 'edittoolbar-section-specialchars',
+		type: 'booklet',
+		pages: {} // Set by the document.ready handler
 	}
 };
