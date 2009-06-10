@@ -91,6 +91,25 @@ class EditToolbarHooks {
 				'edittoolbar-section-characters',
 				/* Help Section */
 				'edittoolbar-section-help',
+				'edittoolbar-help-heading-description',
+				'edittoolbar-help-heading-syntax',
+				'edittoolbar-help-heading-result',
+				'edittoolbar-help-page-format',
+				'edittoolbar-help-page-link',
+				'edittoolbar-help-page-heading',
+				'edittoolbar-help-page-list',
+				'edittoolbar-help-page-file',
+				'edittoolbar-help-page-reference',
+				'edittoolbar-help-page-discussion',
+				'edittoolbar-help-content-bold-description',
+				'edittoolbar-help-content-bold-syntax',
+				'edittoolbar-help-content-bold-result',
+				'edittoolbar-help-content-italic-description',
+				'edittoolbar-help-content-italic-syntax',
+				'edittoolbar-help-content-italic-result',
+				'edittoolbar-help-content-bolditalic-description',
+				'edittoolbar-help-content-bolditalic-syntax',
+				'edittoolbar-help-content-bolditalic-result',
 			)
 		);
 		// Continue

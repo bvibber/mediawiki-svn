@@ -84,92 +84,176 @@
 		/**
 		 * Adds a toolbar section to a containing div
 		 * @param {Object} section Section data to build toolbar from
+		 * @param {Object} textbox
 		 */
 		addToolbarSection: function( section, textbox ) {
 			// Path to images (THIS WILL HAVE TO CHANGE IF YOU MOVE THIS INTO CORE)
 			var imagePath = wgScriptPath +
 				'/extensions/UsabilityInitiative/EditToolbar/images/';
-			// Check for groups
-			if ( !( 'groups' in section ) ) {
-				return;
+			function msgSet( object, property ) {
+				return property in object || property + 'Msg' in object;
 			}
-			// Loops over each main group
-			for ( group in section.groups ) {
-				// Appends group
-				var groupDiv = $( '<div />' )
-						.attr( 'class', 'group' )
-						.appendTo( $(this) );
-				// Checks if a there's a label for this group
-				if ( 'label' in section.groups[group] || 'labelMsg' in section.groups[group] ) {
-					groupDiv.append(
-						$( '<div />' )
-							.attr( 'class', 'label' )
-							.text( section.groups[group].label || gM( section.groups[group].labelMsg ) )
-					)
-				}
-				// Creates generic action
-				var action = function() {
-					$(this).useTool(
-						$(this).data( 'context' ).tool,
-						$(this).data( 'context' ).textbox
-					);
-				};
-				// Loops over each tool
-				for ( tool in section.groups[group].tools ) {
-					// Filters are jQuery selectors which must select 1 or more
-					// elements for this tool to apear. This is especailly
-					// useful for restricting some tools to certain namespaces
-					if ( 'filters' in section.groups[group].tools[tool] ) {
-						var filters = section.groups[group].tools[tool].filters;
-						var skip = false;
-						for ( filter in filters ) {
-							if ( $( filters[filter] ).size() == 0 ) {
-								skip = true;
-							}
-						}
-						if ( skip ) {
-							continue;
-						}
+			function msg( object, property ) {
+				return object[property] || gM( object[property + 'Msg'] );
+			}
+			switch ( section.type ) {
+				case 'toolbar':
+					// Check for groups
+					if ( !( 'groups' in section ) ) {
+						return;
 					}
-					// Creates context for use in action
-					var context = { 'tool': section.groups[group].tools[tool], 'textbox': textbox };
-					// Creates the label of the tool
-					var label = ( section.groups[group].tools[tool].label || gM( section.groups[group].tools[tool].labelMsg ) );
-					switch ( section.groups[group].tools[tool].type ) {
-						case 'button':
-							// Appends button
+					// Loops over each group
+					for ( group in section.groups ) {
+						// Appends group
+						var groupDiv = $( '<div />' )
+							.attr( 'class', 'group' )
+							.appendTo( $(this) );
+						// Checks if there's a label for this group
+						if ( msgSet( section.groups[group], 'label' ) ) {
 							groupDiv.append(
-								$( '<img />' )
-								.attr( {
-									src: imagePath + section.groups[group].tools[tool].icon,
-									alt: label,
-									title: label
-								} )
-								.data( 'context', context )
-								.click( action )
+								$( '<div />' )
+									.attr( 'class', 'label' )
+									.text( msg( section.groups[group], 'label' ) )
+							)
+						}
+						// Creates generic action
+						var action = function() {
+							$(this).useTool(
+								$(this).data( 'context' ).tool,
+								$(this).data( 'context' ).textbox
 							);
-						break;
-						case 'select':
-							// Appends select
-							var selectDiv = $( '<select />' )
-								.data( 'context', context )
-								.change( action )
-								.append(
-									$( '<option />' ) .text( label )
-								)
-								.appendTo( groupDiv );
-							// Appends options
-							for ( option in section.groups[group].tools[tool].list ) {
-								selectDiv.append(
-									$( '<option/>' )
-										.text( ( section.groups[group].tools[tool].list[option].label || gM( section.groups[group].tools[tool].list[option].labelMsg ) ) )
-										.attr( 'value', option )
-								);
+						};
+						// Loops over each tool
+						for ( tool in section.groups[group].tools ) {
+							// Filters are jQuery selectors which must select 1 or more
+							// elements for this tool to apear. This is especailly
+							// useful for restricting some tools to certain namespaces
+							if ( 'filters' in section.groups[group].tools[tool] ) {
+								var filters = section.groups[group].tools[tool].filters;
+								var skip = false;
+								for ( filter in filters ) {
+									if ( $( filters[filter] ).size() == 0 ) {
+										skip = true;
+									}
+								}
+								if ( skip ) {
+									continue;
+								}
 							}
-						break;
-						default: break;
+							// Creates context for use in action
+							var context = { 'tool': section.groups[group].tools[tool], 'textbox': textbox };
+							// Creates the label of the tool
+							var label = msg( section.groups[group].tools[tool], 'label' );
+							switch ( section.groups[group].tools[tool].type ) {
+								case 'button':
+									// Appends button
+									groupDiv.append(
+										$( '<img />' )
+										.attr( {
+											src: imagePath + section.groups[group].tools[tool].icon,
+											alt: label,
+											title: label
+										} )
+										.data( 'context', context )
+										.click( action )
+									);
+								break;
+								case 'select':
+									// Appends select
+									var selectDiv = $( '<select />' )
+										.data( 'context', context )
+										.change( action )
+										.append(
+											$( '<option />' ) .text( label )
+										)
+										.appendTo( groupDiv );
+									// Appends options
+									for ( option in section.groups[group].tools[tool].list ) {
+										selectDiv.append(
+											$( '<option/>' )
+												.text( msg( section.groups[group].tools[tool].list[option], 'label' ) )
+												.attr( 'value', option )
+										);
+									}
+								break;
+								default: break;
+							}
+						}
 					}
-				}
+				break;
+				case 'booklet':
+					// Check for pages
+					if ( !( 'pages' in section ) ) {
+						return;
+					}
+					// Appends index
+					var indexDiv = $( '<div />' )
+						.attr( 'class', 'index' )
+						.appendTo( $(this) );
+					// THIS SHOULD BE REPLACED WITH SOMETHING THAT USES A COOKIE
+					// TO DETECT THE STATE OF THE LAST VIEW
+					var first = true;
+					// Loops over each page
+					for ( page in section.pages ) {
+						// Appends index entry
+						indexDiv.append(
+							$( '<div />' )
+								.attr( 'class', first ? 'current' : null )
+								.text( msg( section.pages[page], 'label' ) )
+								.click( function() {
+									// switch the current item and visible page
+								} )
+						);
+						first = false;
+					}
+					var pagesDiv = $( '<div />' )
+						.attr( 'class', 'pages' )
+						.appendTo( $(this) );
+					// Loops over each page
+					for ( page in section.pages ) {
+						// Appends page
+						var pageDiv = $( '<div />' )
+							.attr( 'class', 'page' )
+							.appendTo( pagesDiv );
+						// Checks if there's content for this page
+						switch ( section.pages[page].layout ) {
+							case 'table':
+								// Appends table to page
+								var contentTable = $( '<table />' )
+									.attr( {
+										'cellpadding': '5',
+										'cellspacing': '0',
+										'border': '0',
+										'width': '100%'
+									} )
+									.appendTo( pageDiv );
+								// Appends headings to table
+								for ( heading in section.pages[page].headings ) {
+									contentTable.append(
+										$( '<th />' )
+											.text( msg( section.pages[page].headings[heading], 'content' ) )
+									);
+								}
+								// Appends rows to table
+								for ( row in section.pages[page].rows ) {
+									var contentRow = $( '<tr />' )
+										.appendTo( contentTable );
+									for ( cell in section.pages[page].rows[row] ) {
+										contentRow.append(
+											$( '<td />' )
+												.attr( 'class', cell )
+												.append(
+													$( '<span>' + msg( section.pages[page].rows[row][cell], 'content' ) + '</span>' )
+												)
+										);
+									}
+								}
+							break;
+							default: break;
+						}
+					}
+				break;
+				default: break;
 			}
 		},
 		/**
@@ -225,6 +309,7 @@ $( document ).ready( function() {
 var editToolbarConfiguration = {
 	// Main section
 	'main': {
+		type: 'toolbar',
 		groups: {
 			'format': {
 				tools: {
@@ -334,6 +419,7 @@ var editToolbarConfiguration = {
 	// Format section
 	'format': {
 		labelMsg: 'edittoolbar-section-format',
+		type: 'toolbar',
 		groups: {
 			'heading': {
 				tools: {
@@ -498,6 +584,7 @@ var editToolbarConfiguration = {
 	// Insert section
 	'insert': {
 		labelMsg: 'edittoolbar-section-insert',
+		type: 'toolbar',
 		groups: {
 			'media': {
 				labelMsg: 'edittoolbar-group-insert-media',
@@ -533,6 +620,67 @@ var editToolbarConfiguration = {
 				}
 			}
 		}
-		
+	},
+	'help': {
+		labelMsg: 'edittoolbar-section-help',
+		type: 'booklet',
+		pages: {
+			'format': {
+				labelMsg: 'edittoolbar-help-page-format',
+				layout: 'table',
+				headings: [
+					{ contentMsg: 'edittoolbar-help-heading-description' },
+					{ contentMsg: 'edittoolbar-help-heading-syntax' },
+					{ contentMsg: 'edittoolbar-help-heading-result' }
+				],
+				rows: [
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-bold-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-bold-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-bold-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-italic-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-italic-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-italic-result' }
+					},
+					{
+						'description': { contentMsg: 'edittoolbar-help-content-bolditalic-description' },
+						'syntax': { contentMsg: 'edittoolbar-help-content-bolditalic-syntax' },
+						'result': { contentMsg: 'edittoolbar-help-content-bolditalic-result' }
+					}
+				]
+			},
+			'link': {
+				labelMsg: 'edittoolbar-help-page-link',
+				layout: 'table',
+				content: 'internal and external'
+			},
+			'heading': {
+				labelMsg: 'edittoolbar-help-page-heading',
+				layout: 'table',
+				content: 'heading levels 1 - 5'
+			},
+			'list': {
+				labelMsg: 'edittoolbar-help-page-list',
+				layout: 'table',
+				content: 'ordered and unordered'
+			},
+			'file': {
+				labelMsg: 'edittoolbar-help-page-file',
+				layout: 'table',
+				content: 'file with some parameters'
+			},
+			'reference': {
+				labelMsg: 'edittoolbar-help-page-reference',
+				layout: 'table',
+				content: 'ref use and reuse'
+			},
+			'discussion': {
+				labelMsg: 'edittoolbar-help-page-discussion',
+				layout: 'table',
+				content: 'signature with and without timestamp and indent'
+			}
+		}
 	}
 };
