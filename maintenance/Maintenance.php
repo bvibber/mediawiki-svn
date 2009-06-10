@@ -83,10 +83,9 @@ abstract class Maintenance {
 	 *
 	 * @param $name String The name of the param (help, version, etc)
 	 * @param $description String The description of the param to show on --help
-	 * @param $isFlag boolean Whether the param is a flag (like --help) or needs
-	 *                        a value (like --dbuser=someuser)
+	 * @param $required boolean Is the param required?
 	 */
-	protected function addParam( $name, $description, $isFlag = false, $required = true ) {
+	protected function addParam( $name, $description, $required = false ) {
 		$this->mParams[ $name ] = array( 'desc' => $description, 'require' => $required );
 	}
 
@@ -142,10 +141,9 @@ abstract class Maintenance {
 	 * Add the default parameters to the scripts
 	 */
 	private function addDefaultParams() {
-		$this->addParam( 'help', "Display this help message", true );
-		$this->addParam( 'quiet', "Whether to supress non-error output", true );
+		$this->addParam( 'help', "Display this help message" );
+		$this->addParam( 'quiet', "Whether to supress non-error output" );
 		$this->addParam( 'conf', "Location of LocalSettings.php, if not default" );
-		$this->addParam( 'aconf', "Same, but for AdminSettings.php" );
 		$this->addParam( 'wiki', "For specifying the wiki ID" );
 		if( $this->needsDB() ) {
 			$this->addParam( 'dbuser', "The DB user to use for this script" );
@@ -304,8 +302,6 @@ abstract class Maintenance {
 		$this->mOptions = $options;
 		$this->mArgs = $args;
 	}
-
-	private function validateParam( 
 	
 	/**
 	 * Maybe show the help.
@@ -328,8 +324,9 @@ abstract class Maintenance {
 	 * Handle some last-minute setup here.
 	 */
 	private function finalSetup() {
-		global $wgCommandLineMode, $wgUseNormalUser, $wgShowSQLErrors, $wgTitle, $wgProfiling, $IP;
-		global $wgDBadminuser, $wgDBadminpassword, $wgDBuser, $wgDBpassword, $wgDBservers, $wgLBFactoryConf;
+		global $wgCommandLineMode, $wgUseNormalUser, $wgShowSQLErrors;
+		global $wgTitle, $wgProfiling, $IP, $wgDBadminuser, $wgDBadminpassword;
+		global $wgDBuser, $wgDBpassword, $wgDBservers, $wgLBFactoryConf;
 		
 		# Turn off output buffering again, it might have been turned on in the settings files
 		if( ob_get_level() ) {
@@ -337,7 +334,13 @@ abstract class Maintenance {
 		}
 		# Same with these
 		$wgCommandLineMode = true;
-	
+
+		# If these were passed, use them
+		if( $this->mDbUser )
+			$wgDBadminuser = $this->mDbUser;
+		if( $this->mDbPass )
+			$wgDBadminpass = $this->mDbPass;
+
 		if ( empty( $wgUseNormalUser ) && isset( $wgDBadminuser ) ) {
 			$wgDBuser = $wgDBadminuser;
 			$wgDBpassword = $wgDBadminpassword;
@@ -370,7 +373,90 @@ abstract class Maintenance {
 	}
 	
 	private function loadWikimediaSettings() {
+		global $wgWikiFarm, $cluster, $IP, $wgNoDBParam, $wgUseNormalUser;
+
+		$wgWikiFarm = true;
+		$cluster = 'pmtpa';
+		require_once( "$IP/includes/AutoLoader.php" );
+		require_once( "$IP/includes/SiteConfiguration.php" );
+	
+		# Get $wgConf
+		require( "$IP/wgConf.php" );
+	
+		if ( empty( $wgNoDBParam ) ) {
+			# Check if we were passed a db name
+			if ( isset( $this->mOptions['wiki'] ) ) {
+				$db = $this->mOptions['wiki'];
+			} else {
+				$db = array_shift( $this->mArgs );
+			}
+			list( $site, $lang ) = $wgConf->siteFromDB( $db );
+	
+			# If not, work out the language and site the old way
+			if ( is_null( $site ) || is_null( $lang ) ) {
+				if ( !$db ) {
+					$lang = 'aa';
+				} else {
+					$lang = $db;
+				}
+				if ( isset( $this->mArgs[0] ) ) {
+					$site = array_shift( $this->mArgs );
+				} else {
+					$site = 'wikipedia';
+				}
+			}
+		} else {
+			$lang = 'aa';
+			$site = 'wikipedia';
+		}
+	
+		# This is for the IRC scripts, which now run as the apache user
+		# The apache user doesn't have access to the wikiadmin_pass command
+		if ( $_ENV['USER'] == 'apache' ) {
+		#if ( posix_geteuid() == 48 ) {
+			$wgUseNormalUser = true;
+		}
+	
+		putenv( 'wikilang='.$lang);
+	
+		$DP = $IP;
+		ini_set( 'include_path', ".:$IP:$IP/includes:$IP/languages:$IP/maintenance" );
+	
+		if ( $lang == 'test' && $site == 'wikipedia' ) {
+			define( 'TESTWIKI', 1 );
+		}
+	
+		#require_once( $IP.'/includes/ProfilerStub.php' );
+		require( $IP.'/includes/Defines.php' );
+		require( $IP.'/CommonSettings.php' );
 	}
+
 	private function loadSettings() {
+		global $wgWikiFarm, $wgCommandLineMode, $IP, $DP;
+
+		$wgWikiFarm = false;
+		if ( isset( $this->mOptions['conf'] ) ) {
+			$settingsFile = $this->mOptions['conf'];
+		} else {
+			$settingsFile = "$IP/LocalSettings.php";
+		}
+		if ( isset( $this->mOptions['wiki'] ) ) {
+			$bits = explode( '-', $this->mOptions['wiki'] );
+			if ( count( $bits ) == 1 ) {
+				$bits[] = '';
+			}
+			define( 'MW_DB', $bits[0] );
+			define( 'MW_PREFIX', $bits[1] );
+		}
+	
+		if ( ! is_readable( $settingsFile ) ) {
+			$this->error( "A copy of your installation's LocalSettings.php\n" .
+			  			"must exist and be readable in the source directory.\n", true );
+		}
+		$wgCommandLineMode = true;
+		$DP = $IP;
+		require_once( "$IP/includes/AutoLoader.php" );
+		require_once( "$IP/includes/Defines.php" );
+		require_once( $settingsFile );
 	}
 }
