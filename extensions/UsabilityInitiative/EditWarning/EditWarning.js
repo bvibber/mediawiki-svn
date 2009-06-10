@@ -12,5 +12,7 @@ $( document ).ready( function() {
 				}
 			}
 		);
-	}
-);
+	$( 'form' ).submit( function() {
+		window.onbeforeunload = function () {};
+	});
+});
