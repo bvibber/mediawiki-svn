@@ -94,8 +94,8 @@ body.rtl div#edittoolbar div.group > select {
 }
 div#edittoolbar div.index {
 	float: left;
-	width: 20%;
-	height: 175px;
+	width: 15%;
+	height: 125px;
 	overflow: auto;
 }
 div#edittoolbar div.index > div {
@@ -105,7 +105,7 @@ div#edittoolbar div.index > div {
 	color: #00528C;
 }
 div#edittoolbar div.index > div.current {
-	background-color: white;
+	background-color: #FAFAFA;
 	color: #333333;
 	cursor: default;
 }
@@ -114,10 +114,10 @@ div#edittoolbar div.index > div:first-child {
 }
 div#edittoolbar div.pages {
 	float: right;
-	width: 80%;
-	height: 175px;
+	width: 85%;
+	height: 125px;
 	overflow: auto;
-	background-color: white;
+	background-color: #FAFAFA;
 }
 div#edittoolbar div.pages > div.page {
 	display: none;
@@ -149,8 +149,12 @@ div#edittoolbar div.pages > div.page > table td {
 div#edittoolbar div.pages > div.page > table td.syntax {
 	font-family: monospace;
 }
-div#edittoolbar-section-help div.page > table td {
-	width: 33%;
+div#edittoolbar-section-help div.page > table td.syntax,
+div#edittoolbar-section-help div.page > table td.result {
+	width: 40%;
+}
+div#edittoolbar-section-help div.page > table td.description {
+	width: 20%;
 }
 div#edittoolbar div.tabs > div.tab {
 	float: left;
