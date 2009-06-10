@@ -258,27 +258,32 @@
 									}
 								}
 							break;
-							case 'specialchar':
+							case 'characters':
 								// Appends special character adders
 								for ( character in section.pages[page].characters ) {
 									switch( section.pages[page].characters[character].type ) {
 										case 'break':
-											pageDiv.append( $( '<br />' ) );
+										/*
+											pageDiv.append(
+												$( '<div />' )
+													.css( 'clear', 'both' )
+											);
+										*/
 										break;
 										case 'link':
 											var context = {
 												'tool' : section.pages[page].characters[character],
 												'textbox': textbox
 											};
-											pageDiv.append( $( '<a />' )
-												.attr( section.pages[page].characters[character].attrs )
-												.attr( { 'href': '#' } )
-												.text( section.pages[page].characters[character].text )
-												.data( 'context', context)
-												.click( action )
-												.click( function() { return false; } )
+											pageDiv.append(
+												$( '<a />' )
+													.attr( section.pages[page].characters[character].attributes )
+													.attr( { 'href': '#' } )
+													.text( section.pages[page].characters[character].text )
+													.data( 'context', context)
+													.click( action )
+													.click( function() { return false; } )
 											);
-											pageDiv.append( '&nbsp;' );
 										break;
 									}
 								}
@@ -335,17 +340,17 @@
 		parseCharinsert: function( charinsert ) {
 			var retval = {};
 			for( page in charinsert ) {
-				var characters = [], attrs = {};
+				var characters = [], attributes = {};
 				var i = 0;
 				for( line in charinsert[page] ) {
 					if( !( charinsert[page][line] instanceof Array ) ) {
-						attrs = charinsert[page][line];
+						attributes = charinsert[page][line];
 						continue;
 					}
-					for( chr in charinsert[page][line] ) {
+					for( character in charinsert[page][line] ) {
 						 var tool = {
 						 	type: 'link',
-						 	attrs: attrs,
+						 	attributes: attributes,
 						 	text: '',
 						 	action: {
 						 		type: 'encapsulate',
@@ -355,13 +360,13 @@
 						 		}
 						 	}
 						 };
-						 if( charinsert[page][line][chr] instanceof Array ) {
-						 	tool.action.options.pre = charinsert[page][line][chr][0];
-						 	tool.action.options.post = charinsert[page][line][chr][1];
-						 	//tool.text = charinsert[page][line][chr][0] + charinsert[page][line][chr][1];
+						 if( charinsert[page][line][character] instanceof Array ) {
+						 	tool.action.options.pre = charinsert[page][line][character][0];
+						 	tool.action.options.post = charinsert[page][line][character][1];
+						 	//tool.text = charinsert[page][line][chr][0] + charinsert[page][line][character][1];
 						 } else {
-						 	tool.action.options.pre = charinsert[page][line][chr];
-						 	//tool.text = charinsert[page][line][chr];
+						 	tool.action.options.pre = charinsert[page][line][character];
+						 	//tool.text = charinsert[page][line][character];
 						 }
 						tool.text = tool.action.options.pre + tool.action.options.post;
 						characters[i++] = tool;
@@ -370,7 +375,7 @@
 				}
 				retval[page] = {
 					label: page,
-					layout: 'specialchar',
+					layout: 'characters',
 					characters: characters
 				};
 			}
