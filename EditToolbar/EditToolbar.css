@@ -95,11 +95,12 @@ body.rtl div#edittoolbar div.group > select {
 div#edittoolbar div.index {
 	float: left;
 	width: 20%;
-	height: 150px;
+	height: 175px;
 	overflow: auto;
 }
 div#edittoolbar div.index > div {
-	padding: 9px;
+	padding: 4px;
+	padding-left: 18px;
 	cursor: pointer;
 	color: #00528C;
 }
@@ -107,11 +108,17 @@ div#edittoolbar div.index > div.current {
 	background-color: white;
 	color: #333333;
 	cursor: default;
+	background-image: url(images/arrow-right.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+div#edittoolbar div.index > div:first-child {
+	border-top: none;
 }
 div#edittoolbar div.pages {
 	float: right;
 	width: 80%;
-	height: 150px;
+	height: 175px;
 	overflow: auto;
 	background-color: white;
 }
@@ -122,11 +129,19 @@ div#edittoolbar div.pages > div.page:first-child {
 	display: block;
 }
 div#edittoolbar div.pages > div.page > table {
-	padding: 4px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background: none;
 }
 div#edittoolbar div.pages > div.page > table th {
 	color: #999999;
-	border-bottom: solid 1px #DDDDDD;
+}
+div#edittoolbar div.pages > div.page > table td {
+	color: black;
+	border-top: solid 1px #EEEEEE;
+}
+div#edittoolbar div.pages > div.page > table tr:first-child > td {
+	border-top: solid 1px #DDDDDD;
 }
 div#edittoolbar div.pages > div.page > table th,
 div#edittoolbar div.pages > div.page > table td {
@@ -136,6 +151,9 @@ div#edittoolbar div.pages > div.page > table td {
 }
 div#edittoolbar div.pages > div.page > table td.syntax {
 	font-family: monospace;
+}
+div#edittoolbar-section-help div.page > table td {
+	width: 33%;
 }
 div#edittoolbar div.tabs > div.tab {
 	float: left;
