@@ -80,6 +80,7 @@ var htmlEmbed ={
 		return true;
 	},
 	renderTimelineThumbnail:function( options ){
+		js_log("HTMLembed req w, height: " + options.width + ' ' + options.height);
 		//generate a scaled down version _that_ we can clone if nessisary  
 		//add a not vissiable container to the body:		
 		var do_refresh = (typeof options['refresh'] != 'undefined')?true:false;
@@ -88,16 +89,18 @@ var htmlEmbed ={
 		if( $j('#' + thumb_render_id ).length == 0  ||  do_refresh ){
 			//set the font scale down percentage: (kind of arbitrary) 
 			var scale_perc = options.width / this.pc.pp.width;
-			//js_log('scale_perc:'+options.width + ' / '+ $j(this).width()+ ' = '+scale_perc );			
+			js_log('scale_perc:'+options.width + ' / '+ $j(this).width()+ ' = '+scale_perc );			
 			//min scale font percent of 70 (overflow is hidden) 
-			var font_perc  = ( Math.round( scale_perc*100 ) < 80 )?80:Math.round( scale_perc*100 );		 
-			var thumb_class = (typeof options['thumb_class'] !='undefined')? options['thumb_class'] : '';
-			
+			var font_perc  = ( Math.round( scale_perc*100 ) < 80 ) ? 80 : Math.round( scale_perc*100 );		 
+			var thumb_class = (typeof options['thumb_class'] !='undefined')? options['thumb_class'] : '';			
 			$j('body').append( '<div id="' + thumb_render_id + '" style="display:none">'+
 									'<div class="' + thumb_class + '" '+ 
 									'style="width:'+options.width+'px;height:'+options.height+'px;" >'+										
-											this.getThumbnailHTML() + 
-									'</div>'+
+											this.getThumbnailHTML({
+												'width':  options.width,
+												'height': options.height
+											}) + 
+									'</div>' +
 								'</div>' 
 							  );
 			//scale down the fonts:		
@@ -112,7 +115,7 @@ var htmlEmbed ={
 			$j('#' + thumb_render_id + ' img').filter('[width]').each(function(){								
 				$j(this).attr({ 
 						'width': Math.round( $j(this).attr('width') * scale_perc ),
-						 'height': Math.round( $j(this).attr('height') * scale_perc )
+						'height': Math.round( $j(this).attr('height') * scale_perc )
 					 } 
 				);				
 			});
@@ -133,11 +136,16 @@ var htmlEmbed ={
 		//wrap output in videoPlayer_ div:
 		$j(this).html('<div id="videoPlayer_'+ this.id+'">'+this.getThumbnailHTML()+'</div>');
 	},
-	getThumbnailHTML:function(){
+	getThumbnailHTML:function( opt ){
 		var out='';
+		if(!opt)
+			opt = {};			
+		var height = (opt.height)?opt.height:this.pc.pp.height;
+		var width = (opt.width)?opt.width: this.pc.pp.width;	
+		js_log('1req '+ opt.height + ' but got: ' + height);	
 		if( this.pc.type =='image/jpeg'){
 			js_log('should put src: '+this.pc.src);
-			out = '<img width="'+this.pc.pp.width+'" height="'+this.pc.pp.height+'" src="'+this.pc.src+'">';
+			out = '<img style="width:'+width+'px;height:'+height+'px" src="'+this.pc.src+'">';
 		}else{
 			out = this.pc.wholeText;
 		}
@@ -167,8 +175,7 @@ var htmlEmbed ={
 	//@@todo we can "start loading images" if we want
 	on_dom_swap:function(){
 		this.loading_external_data=false
-		this.ready_to_play=true;		
-		debugger;
+		this.ready_to_play=true;				
 		return ;		
 	}	
 };

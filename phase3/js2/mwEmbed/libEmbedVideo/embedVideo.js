@@ -1579,13 +1579,13 @@ embedVideo.prototype = {
 	//@@todo overwite by embed library if we can render frames natavily 
 	renderTimelineThumbnail:function( options ){
 		var my_thumb_src = this.media_element.getThumbnailURL();
-		
+		//check if our thumbnail has a time attribute: 
 		if( my_thumb_src.indexOf('t=') !== -1){
 			var time_ntp =  seconds2npt ( options.time + parseInt(this.start_offset) );
 			my_thumb_src = getURLParamReplace( my_thumb_src, { 't':time_ntp, 'size': options.size } );
 		}
-		var thumb_class = (typeof options['thumb_class'] !='undefined')? options['thumb_class'] : '';
-		return '<div class="' + thumb_class + '" src="' + my_thumb_src +'" '+
+		var thumb_class = (typeof options['thumb_class'] != 'undefined' ) ? options['thumb_class'] : '';
+		return '<div class="ui-corner-all ' + thumb_class + '" src="' + my_thumb_src + '" '+
 				'style="height:' + options.height + 'px;' +
 				'width:' + options.width + 'px" >' + 
 					 '<img src="' + my_thumb_src +'" '+

@@ -98,15 +98,15 @@ mvClipEdit.prototype = {
 		'duration':{
 			d:1,
 			'media':['image','template'],
-			'doEdit':function( _this ){
+			'doEdit':function(target, _this ){
 				//do clock mouse scroll duration editor
-				$j('#sub_cliplib_ic').html('cur dur: ' + _this.rObj.dur );
+				$j(target).html('cur dur: ' + _this.rObj.dur );
 			}			
 		},
 		'inoutpoints':{
 			'd':1,
 			'media':['video'],
-			'doEdit':function( _this ){								
+			'doEdit':function(target, _this ){								
 				//do clock mouse scroll duration editor
 				var end_ntp = ( _this.rObj.embed.end_ntp) ? _this.rObj.embed.end_ntp : _this.rObj.embed.getDuration();
 				if(!end_ntp)
@@ -116,7 +116,7 @@ mvClipEdit.prototype = {
 				if(!start_ntp)
 					seconds2npt( 0 );
 					
-				$j('#sub_cliplib_ic').html(
+				$j(target).html(
 					_this.getSetInOutHtml({
 						'start_ntp'	: start_ntp, 
 						'end_ntp'	:	 end_ntp
@@ -128,7 +128,7 @@ mvClipEdit.prototype = {
 		'fileopts':{
 			'd':0,
 			'media':['image','video','template'],
-			'doEdit':function( _this ){		
+			'doEdit':function(target, _this ){		
 				var doEditHtml = function(){
 					//add html for rObj resource:
 					var o=	'<table>' +
@@ -173,14 +173,14 @@ mvClipEdit.prototype = {
 								'<td>' + 
 									gM('mv_resource_page') + 
 								'</td>' +
-								'<td><a href="' + wgArticlePath.replace(/\$1/, _this.rObj.uri ) +
+								'<td><a href="' + wgArticlePath.replace(/\$1/, _this.rObj.uri ) +'" '+
 									' target="new">'+
 										_this.rObj.uri + '</a>'+
 								'</td>'+
 							'</tr>';
 					o+='</table>'; 
 					
-					$j('#sub_cliplib_ic').html ( o );
+					$j(target).html ( o );
 					//add update bindings	
 							
 					//update doFocusBindings
@@ -247,25 +247,25 @@ mvClipEdit.prototype = {
 		'panzoom':{
 			'd':0,
 			'media':['image','video'],
-			'doEdit':function( _this ){
+			'doEdit':function(target, _this ){
 				//do clock mouse scroll duration editor
-				$j('#sub_cliplib_ic').html('<h3>Set Position</h3><h3>Set Zoom</h3><h3>Set Crop</h3><h3>Set Aspect</h3>');
+				$j(target).html('<h3>Set Position</h3><h3>Set Zoom</h3><h3>Set Crop</h3><h3>Set Aspect</h3>');
 			}	
 		},				
 		'overlays':{
 			'd':0,
 			'media':['image','video'],
-			'doEdit':function( _this ){
+			'doEdit':function(target, _this ){
 				//do clock mouse scroll duration editor
-				$j('#sub_cliplib_ic').html('<h3>Current Overlays:</h3>Add,Remove,Modify');
+				$j(target).html('<h3>Current Overlays:</h3>Add,Remove,Modify');
 			}	
 		},
 		'audio':{
 			'd':0,
 			'media':['image','video', 'template'],
-			'doEdit':function( _this ){
+			'doEdit':function(target, _this ){
 				//do clock mouse scroll duration editor
-				$j('#sub_cliplib_ic').html('<h3>Audio Volume:</h3>');
+				$j(target).html('<h3>Audio Volume:</h3>');
 			}	
 		}		
 	},	
@@ -273,8 +273,11 @@ mvClipEdit.prototype = {
 		var _this = this;
 		//add in subMenus if set
 		//check for submenu and add to item container		
-		var o='';								
-		o+= '<ul id="mv_submenu_clipedit" class="mv_submenu">';		 
+		var o='';		
+		var tabc ='';					
+		o+= '<div id="mv_submenu_clipedit">';
+		o+='<ul>';		 
+		var selected_tab = 0;
 		$j.each(this.edit_types, function(sInx, editType){			
 			//check if the given editType is valid for our given media type
 			var include = false;
@@ -282,22 +285,28 @@ mvClipEdit.prototype = {
 				if( editType.media[i] == _this.media_type)
 					include = true; 
 			}
-			if(include){
-				var sub_sel_class = (editType.d == 1)?'class="mv_sub_selected"':'';							 
-				o+= '<li ' + sub_sel_class + ' id="mv_smi_' + sInx + '">' + 
-					gM('sc_' + sInx ) + '</li>';
+			if(include){				
+				o+=	'<li>'+ 
+						'<a id="mv_smi_'+sInx+'" href="#sc_' + sInx + '">' + gM('sc_' + sInx ) + '</a>'+
+					'</li>';															
+				tabc += '<div id="sc_' + sInx + '" style="overflow:auto;" ></div>';																									
 			}	 
 		});
-		o+= '</ul>';
-		//add sub menu container with menu html: 
-		o+= '<div id="sub_cliplib_ic" class="submenu_container"></div>';	
-		$j('#'+this.control_ct).html( o ) ;	
+		o+= '</ul>' + tabc;
+		o+= '</div>';
+		//add sub menu container with menu html: 		
+		$j('#'+this.control_ct).html( o ) ;			
 		//set up bindings:	 
-		for( var i in this.edit_types){
-			$j('#mv_smi_'+ i).click( function(){				
-				_this.doDisplayEdit( $j(this).attr("id").replace('mv_smi_','')  );
-			});
-		}
+		$j('#mv_submenu_clipedit').tabs({
+			select: function(event, ui) {									
+				_this.doDisplayEdit( $j(ui.tab).attr('id').replace('mv_smi_', '') );
+			}		
+		//add sorting
+		}).addClass('ui-tabs-vertical ui-helper-clearfix');
+		//close left: 
+		$j("#mv_submenu_clipedit li").removeClass('ui-corner-top').addClass('ui-corner-left');		
+		//update the default edit display: 
+		_this.doDisplayEdit();
 	},
 	doDisplayEdit:function( edit_type ){
 		if(!edit_type)
@@ -305,15 +314,11 @@ mvClipEdit.prototype = {
 				if(this.edit_types[i].d == 1)
 					edit_type = i;
 			}
-		js_log('doDisplayEdit: ' + edit_type );
-		//remove from all
-		$j('#mv_submenu_clipedit li').removeClass('mv_sub_selected');
-		//add selected class:
-		$j('#mv_smi_' + edit_type).addClass('mv_sub_selected');		
+		js_log('doDisplayEdit: ' + edit_type );			
 		
 		//do edit interface for that edit type: 
 		if( this.edit_types[ edit_type ].doEdit )
-			this.edit_types[ edit_type ].doEdit( this );
+			this.edit_types[ edit_type ].doEdit( '#sc_'+edit_type, this );
 	},
 	setUpVideoCtrl:function(){
 		js_log('setUpVideoCtrl:f');

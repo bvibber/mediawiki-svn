@@ -221,8 +221,8 @@ mvSequencer.prototype = {
 				'width:'+this.video_width+'px;height:'+this.video_height+'px;border:solid thin blue;background:#FFF;font-color:black;"/>'+
 			'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
 				'left:0px;right:'+(this.video_width+15)+'px;top:0px;height:'+(this.video_height+23)+'px;"/>'+
-			'<div id="'+this.timeline_id+'" style="position:absolute;' + 
-				'left:0px;right:0px;top:'+(this.video_height+10)+'px;bottom:25px;overflow:auto;">'+
+			'<div id="'+this.timeline_id+'" class="ui-widget ui-widget-content ui-corner-all" style="position:absolute;' + 
+				'left:0px;right:0px;top:'+(this.video_height+34)+'px;bottom:25px;overflow:auto;">'+
 					gM('loading_timeline')+ '</div>'+
 			'<div id="' + this.target_sequence_container + '_status" style="position:absolute;left:0px;width:300px;"></div>'+
 			'<div id="' + this.target_sequence_container + '_save_cancel" style="position:absolute;'+
@@ -402,7 +402,7 @@ mvSequencer.prototype = {
 				$j('#'+this.timeline_id+'_tracks').append(
 					'<div id="container_track_'+i+'" style="top:'+top_pos+'px;height:'+(track_height+2)+'px;left:0px;right:0px;" class="container_track" />'
 				);		
-				top_pos+=track_height+20;		
+				top_pos+=track_height+20;
 			}		
 		}
 		if( this.timeline_mode=='storyboard'){
@@ -541,7 +541,7 @@ mvSequencer.prototype = {
 				selected_tab=inx;
 						
 			o+='<li>' + 
-				'<a id="mv_menu_item_'+tab_id+'" href="#' + tab_id + '_ic">'+gM('menu_' + tab_id )+
+				'<a id="mv_menu_item_'+tab_id+'" href="#' + tab_id + '_ic">'+gM('menu_' + tab_id ) + '</a>' +
 			'</li>';						
 			
 			tabc += '<div id="' + tab_id + '_ic" style="overflow:auto;height:272px;" >';													
@@ -957,8 +957,8 @@ mvSequencer.prototype = {
 										'height:' + (this.track_clipThumb_height+30) + 'px;' +																				
 										'width:'+(container_width)+'px;" >';																
 						track_html+=clip.embed.renderTimelineThumbnail({
-										'width':frame_width,
-										'thumb_class':'mv_clip_thumb',
+										'width' : frame_width,
+										'thumb_class' : 'mv_clip_thumb',
 										'height':this.track_clipThumb_height,
 										'time':0
 									});			
@@ -1254,7 +1254,7 @@ mvSequencer.prototype = {
 		//js_log("pinit: "+ pint+ ' < '+clip.width_px+' ++'+frame_width);
 		for(var p=pint;p<clip.width_px;p+=frame_width){								
 			var clip_time = (p==0)?0:Math.round(p*this.timeline_scale);
-			js_log('rendering clip frames: p:' +p+' '+ (p*this.timeline_scale)+' ' + clip_time);
+			js_log('rendering clip frames: p:' +p+' pts:'+ (p*this.timeline_scale)+' time:' + clip_time + ' height:'+this.track_thumb_height);
 			clip_frames_html+=clip.embed.renderTimelineThumbnail({
 				'width':  frame_width,
 				'thumb_class':'mv_tl_thumb',
@@ -1323,12 +1323,27 @@ mvSequencer.prototype = {
 	render_playheadhead_seeker:function(){		 
 		//render out time stamps and time "jump" links 
 		//first get total width
-		if(this.timeline_mode=='time'){
-			//hide the old control if present	
-			$j('#'+this.timeline_id + '_pl_control').remove();
-			//set width based on pixle to time and current length:
-			pixle_length = Math.round(	this.timeline_duration / this.timeline_scale);
-			$j('#'+this.timeline_id+'_head_jump').width(pixle_length);
+		
+		//remove the old one if its still there		
+		$j('#'+this.timeline_id +'_pl_control').remove();
+		js_log('output controls to: ' + this.target_sequence_container);
+		//render out a playlist clip wide and all the way to the right (only playhead and play button) (outside of timeline)
+		$j(this.target_sequence_container).append('<div id="'+ this.timeline_id +'_pl_control"'+
+			' style="position:absolute;top:' + (this.plObj.height) +'px;'+
+			'right:1px;width:'+this.plObj.width+'px;height:'+this.plObj.org_control_height+'" '+
+			'class="videoPlayer"><div class="ui-widget ui-corner-bottom ui-state-default controls">'+
+					 this.plObj.getControlsHTML() +
+				 '</div>'+
+			'</div>');		
+		//update time and render out clip dividers .. should be used to show load progress
+		this.plObj.updateBaseStatus();
+		
+		//once the controls are in the DOM add hooks: 
+		ctrlBuilder.addControlHooks(this.plObj);
+		
+		//render out the "jump" div	
+		if(this.timeline_mode=='time'){						
+			/*$j('#'+this.timeline_id+'_head_jump').width(pixle_length);
 			//output times every 50pixles 
 			var out='';
 			//output time-desc every 50pixles and jump links every 10 pixles
@@ -1340,26 +1355,9 @@ mvSequencer.prototype = {
 					out+='<span style="position:absolute;left:'+i+'px;">|'+seconds2npt(Math.round(i*this.timeline_scale))+'</span>';						
 				n++;
 				if(n==10)n=0;
-			}	
-			$j('#'+this.timeline_id+'_head_jump').html(out);
-		}
-		if(this.timeline_mode=='storyboard'){
-			//remove the old one if its still there		
-			$j('#'+this.timeline_id +'_pl_control').remove();
-			//render out a playlist clip wide and all the way to the right (only playhead and play button) (outside of timeline)
-			$j(this.target_sequence_container).append('<div id="'+ this.timeline_id +'_pl_control"'+
-				' style="position:absolute;top:' + (this.plObj.height) +'px;'+
-				'right:1px;width:'+this.plObj.width+'px;height:'+this.plObj.org_control_height+'" '+
-				'class="videoPlayer"><div class="ui-widget ui-corner-bottom ui-state-default controls">'+
-						 this.plObj.getControlsHTML() +
-					 '</div>'+
-				'</div>');		
-			//update time and render out clip dividers .. should be used to show load progress
-			this.plObj.updateBaseStatus();
+			}*/	
 			
-			//once the controls are in the DOM add hooks: 
-			ctrlBuilder.addControlHooks(this.plObj);
-		}
+		}		
 	},
 	jt:function( jh_time ){
 		js_log('jt:' + jh_time);

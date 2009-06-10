@@ -684,9 +684,7 @@ remoteSearchDriver.prototype = {
 		});
 	},
 	/* check for all the results to finish */
-	checkResultsDone: function(){
-		js_log( "checkResultsDone:entry: " + rsdMVRS.disp_item + ' not: ' + this.disp_item);
-		
+	checkResultsDone: function(){		
 		var _this = this;
 		var loading_done = true;				
 		
@@ -699,10 +697,9 @@ remoteSearchDriver.prototype = {
 		}		
 		if( loading_done ){			
 			this.drawOutputResults();
-		}else{
-			js_log("before setTimeout: " + rsdMVRS.disp_item);
+		}else{			
 			//make sure the instance name is up-to-date refrence to _this;
-			eval( _this.instance_name + ' = _this');		
+			eval( _this.instance_name + ' = _this');
 			setTimeout( _this.instance_name + '.checkResultsDone()', 30);
 		}		
 	},

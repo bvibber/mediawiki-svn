@@ -736,11 +736,13 @@ mvPlayList.prototype = {
 			}
 		});		
 		//set the current clip to the first clip: 
-		this.cur_clip = this.start_clip;
-		//display the first clip thumb: 
-		this.cur_clip.embed.stop();
-		//make sure the current clip is vissable:
-		$j('#clipDesc_'+this.cur_clip.id).show();
+		if(this.start_clip){
+			this.cur_clip = this.start_clip;		
+			//display the first clip thumb: 
+			this.cur_clip.embed.stop();
+			//make sure the current clip is vissable:
+			$j('#clipDesc_'+this.cur_clip.id).show();
+		}
 		//reset the currentTime: 
 		this.currentTime = 0;
 		//FIXME still some issues with "stoping" and reseting the playlist	

@@ -171,22 +171,23 @@
 	right:0px;
 }
 .submenu_container{
-	top:25px;
+/*	top:25px;
 	left:10px;
 	right:0px;
 	overflow:auto;
 	position:absolute;
 	broder: solid thin gray;
+*/
 }
 .mv_submenu{	
 	/*position:absolute;*/
-	left:0px;
+	/*left:0px;
 	top:0px;
 	margin:2px;
 	list-style-type:none; 
 	bottom:0px;	
 	border:none;
-	padding:0px;
+	padding:0px;*/
 }
 .mv_submenu li{
 	border:solid thin gray;
