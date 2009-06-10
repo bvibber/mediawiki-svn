@@ -60,6 +60,7 @@
 									.attr( { 'href': '#', 'rel': section, 'class': current ? 'current' : null } )
 									.data( 'sectionDiv', sectionDiv )
 									.data( 'sectionCookie', sectionCookie )
+									.data( 'textbox', textbox )
 									.click( function() {
 										$(this).blur();
 										var show = ( $(this).data( 'sectionDiv' ).css( 'display' ) == 'none' );
@@ -74,6 +75,7 @@
 											$(this).data( 'sectionCookie' ),
 											show ? $(this).data( 'sectionDiv' ).attr( 'id' ) : null
 										);
+										$(this).data( 'textbox' ).focus();
 										return false;
 									})
 							)
