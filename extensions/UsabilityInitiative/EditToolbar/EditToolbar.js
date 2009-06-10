@@ -258,21 +258,20 @@
 							break;
 							case 'specialchar':
 								// Appends special character adders
-								var chars = section.pages[page].chars;
-								for ( char in chars ) {
-									switch( chars[char].type ) {
+								for ( character in section.pages[page].characters ) {
+									switch( section.pages[page].characters[character].type ) {
 										case 'break':
 											pageDiv.append( $( '<br />' ) );
 										break;
 										case 'link':
 											var context = {
-												'tool' : chars[char],
+												'tool' : section.pages[page].characters[character],
 												'textbox': textbox
 											};
 											pageDiv.append( $( '<a />' )
-												.attr( chars[char].attrs )
+												.attr( section.pages[page].characters[character].attrs )
 												.attr( { 'href': '#' } )
-												.text( chars[char].text )
+												.text( section.pages[page].characters[character].text )
 												.data( 'context', context)
 												.click( action )
 												.click( function() { return false; } )
@@ -334,7 +333,7 @@
 		parseCharinsert: function( charinsert ) {
 			var retval = {};
 			for( page in charinsert ) {
-				var chars = [], attrs = {};
+				var characters = [], attrs = {};
 				var i = 0;
 				for( line in charinsert[page] ) {
 					if( !( charinsert[page][line] instanceof Array ) ) {
@@ -363,14 +362,14 @@
 						 	//tool.text = charinsert[page][line][chr];
 						 }
 						tool.text = tool.action.options.pre + tool.action.options.post;
-						chars[i++] = tool;
+						characters[i++] = tool;
 					}
-					chars[i++] = { type: 'break' };
+					characters[i++] = { type: 'break' };
 				}
 				retval[page] = {
 					label: page,
 					layout: 'specialchar',
-					chars: chars
+					characters: characters
 				};
 			}
 			return retval;
@@ -495,7 +494,7 @@ var editToolbarConfiguration = {
 							}
 						}
 					}
-				},
+				}
 			}
 		}
 	},
@@ -681,7 +680,7 @@ var editToolbarConfiguration = {
 							options: {
 								pre: "<gallery>\n",
 								periMsg: 'edittoolbar-tool-insert-gallery-example',
-								post: "\n</gallery>",
+								post: "\n</gallery>"
 							}
 						}
 					}
@@ -696,13 +695,18 @@ var editToolbarConfiguration = {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "<br />\n",
+								pre: "<br />\n"
 							}
 						}
 					}
 				}
 			}
 		}
+	},
+	'characters': {
+		labelMsg: 'edittoolbar-section-characters',
+		type: 'booklet',
+		pages: {} // Set by the document.ready handler
 	},
 	'help': {
 		labelMsg: 'edittoolbar-section-help',
@@ -881,11 +885,5 @@ var editToolbarConfiguration = {
 				]
 			}
 		}
-	},
-	'specialchars': {
-		label: 'Special characters',
-		labelMsg: 'edittoolbar-section-specialchars',
-		type: 'booklet',
-		pages: {} // Set by the document.ready handler
 	}
 };
