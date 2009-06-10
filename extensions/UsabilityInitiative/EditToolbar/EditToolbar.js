@@ -200,8 +200,12 @@
 							$( '<div />' )
 								.attr( 'class', first ? 'current' : null )
 								.text( msg( section.pages[page], 'label' ) )
+								.data( 'page', page )
 								.click( function() {
-									// switch the current item and visible page
+									$(this).parent().parent().find( 'div.pages > div.page' ).hide();
+									$(this).parent().find( 'div' ).removeClass( 'current' );
+									$(this).parent().parent().find( 'div.pages > div.page-' + $(this).data( 'page' ) ).show();
+									$(this).addClass( 'current' );
 								} )
 						);
 						first = false;
@@ -213,7 +217,7 @@
 					for ( page in section.pages ) {
 						// Appends page
 						var pageDiv = $( '<div />' )
-							.attr( 'class', 'page' )
+							.attr( 'class', 'page page-' + page )
 							.appendTo( pagesDiv );
 						// Checks if there's content for this page
 						switch ( section.pages[page].layout ) {
