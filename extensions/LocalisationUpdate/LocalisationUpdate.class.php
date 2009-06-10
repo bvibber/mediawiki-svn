@@ -173,16 +173,16 @@ class LocalisationUpdate {
 		$basefilecontents = "";
 		// use cURL to get the SVN contents
 		if ( preg_match( "/^http/", $basefile ) ) {
-			while(empty($basefilecontents) && $attempts <= $wgLocalisationUpdateRetryAttempts) {
+			while( !$basefilecontents && $attempts <= $wgLocalisationUpdateRetryAttempts) {
 				if($attempts > 0)
 					sleep(1);
 				$basefilecontents = Http::get( $basefile );
 				$attempts++;
 			}
-			if ( empty( $basefilecontents )  ) {
+			if ( !$basefilecontents ) {
 					self::myLog( "Cannot get the contents of " . $basefile . " (curl)" );
 					return false;
-				}
+			}
 		} else {// otherwise try file_get_contents
 			if ( !$basefilecontents = file_get_contents( $basefile ) ) {
 				self::myLog( "Cannot get the contents of " . $basefile );
