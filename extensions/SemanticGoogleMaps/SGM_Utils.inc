@@ -21,6 +21,9 @@ class SGMUtils {
 		if (!$wgGoogleMapsOnThisPage) {$wgGoogleMapsOnThisPage = 0;}
 		$wgGoogleMapsOnThisPage++;
 
+		$coordinates = str_replace('″', '"', $coordinates);
+		$coordinates = str_replace('′', "'", $coordinates);
+
 		list($lat, $lon) = SGMUtils::getLatLon($coordinates);
 
 		$output =<<<END
@@ -44,20 +47,20 @@ END;
 		return array(null, null);
 	}
 
-	function degree2Decimal($deg_coord="") {
-		$dpos=strpos($deg_coord,'°');
-		$mpos=strpos($deg_coord,'.');
-		$spos=strpos($deg_coord,'"');
-		$mlen=(($mpos-$dpos)-1);
-		$slen=(($spos-$mpos)-1);
-		$direction=substr(strrev($deg_coord),0,1);
-		$degrees=substr($deg_coord,0,$dpos);
-		$minutes=substr($deg_coord,$dpos+1,$mlen);
-		$seconds=substr($deg_coord,$mpos+1,$slen);
-		$seconds=($seconds/60);
-		$minutes=($minutes+$seconds);
-		$minutes=($minutes/60);
-		$decimal=($degrees+$minutes);
+	function degree2Decimal($deg_coord = "") {
+		$dpos = mb_strpos($deg_coord, '°');
+		$mpos = mb_strpos($deg_coord, '.');
+		$spos = mb_strpos($deg_coord, '"');
+		$mlen = ($mpos - $dpos) - 1;
+		$slen = ($spos - $mpos) - 1;
+		$direction = substr(strrev($deg_coord), 0, 1);
+		$degrees = mb_substr($deg_coord, 0,$dpos);
+		$minutes = mb_substr($deg_coord, $dpos + 1, $mlen);
+		$seconds = mb_substr($deg_coord, $mpos + 1, $slen);
+		$seconds = $seconds / 60;
+		$minutes = $minutes + $seconds;
+		$minutes = $minutes / 60;
+		$decimal = $degrees + $minutes;
 		//South latitudes and West longitudes need to return a negative result
 		if (($direction=="S") or ($direction=="W")) {
 			$decimal *= -1;
