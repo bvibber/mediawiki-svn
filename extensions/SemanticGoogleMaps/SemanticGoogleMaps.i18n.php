@@ -289,6 +289,15 @@ $messages['roa-tara'] = array(
 	'semanticgooglemaps-enteraddresshere' => "Scaffe l'indirizze aqquà",
 );
 
+/** Russian (Русский)
+ * @author Eugene Mednikov
+ */
+$messages['ru'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Найти координаты',
+	'semanticgooglemaps-desc'              => 'Позволяет редактировать и показывать семантические координатные данные с помощью Google Maps',
+	'semanticgooglemaps-enteraddresshere'  => 'Введите адрес',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
