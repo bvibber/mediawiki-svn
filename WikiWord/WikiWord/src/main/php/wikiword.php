@@ -31,7 +31,7 @@ function printConceptImageList($id) {
       <?php
 	foreach ($images as $img) {
 	  ?><li><?php
-	  print $utils->getThumbnailHTML($img);
+	  print $utils->getThumbnailHTML($img, $wwThumbSize, $wwThumbSize);
 	  ?></li><?php
 	}
       ?>
@@ -343,7 +343,7 @@ if (!$error) {
 	  </td>
 	  <td>
 	    <label for="images">Images: </label>
-	    <input type="checkbox" name="images" value="Images" <?php $images ? "checked=\"checked\"" : ""?>/>
+	    <input type="checkbox" name="images" value="Images" <?php print $images ? " checked=\"checked\"" : ""?>/>
 	  </td>
 	</tr>
 	<tr>

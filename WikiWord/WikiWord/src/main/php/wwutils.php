@@ -135,7 +135,7 @@ class WWUtils {
 	} else {
 	    $db = mysql_connect($info['server'], $this->dbuser, $this->dbpassword) or die("Connection Failure to Database: " . mysql_error());
 	    mysql_select_db($info['dbname'], $db) or die ("Database not found: " . mysql_error());
-	    mysql_query("SET NAMES UTF8;", $db) or die ("Database not found: " . mysql_error());
+	    mysql_query("SET NAMES Latin1;", $db) or die ("Database not found: " . mysql_error());
 	}
 
 	$this->wikidbs[$lang] = $db;
@@ -461,12 +461,14 @@ class WWUtils {
 	return $images->listImages($max);
     }
 
-    function getThumbnailURL($image, $w = 120, $h = NULL) {
-	global $wwThumbnailerURL;
+    function getThumbnailURL($image, $width = 120, $height = NULL) {
+	global $wwThumbnailURL;
 
 	if (is_array($image)) $image = $image['name'];
 
-	$u = $wwThumbnailerURL;
+	if (!$height) $height = $width;
+
+	$u = $wwThumbnailURL;
 	$u = str_replace("{name}", urlencode($image), $u);
 	$u = str_replace("{width}", !$width ? "" : urlencode($width), $u);
 	$u = str_replace("{height}", !$height ? "" : urlencode($height), $u);
@@ -486,8 +488,8 @@ class WWUtils {
     }
 
     function getThumbnailHTML($image, $w = 120, $h = NULL) {
-	$thumb = $this->getThumbnailURL();
-	$page = $this->getImagePageURL();
+	$thumb = $this->getThumbnailURL($image, $w, $h);
+	$page = $this->getImagePageURL($image);
 
 	if (is_array($image)) {
 	    $title = @$image['title'];
@@ -498,7 +500,7 @@ class WWUtils {
 
 	if (!@$title) $title = $name;
 
-	$html= "<img src=\"" . htmlspecialchars($thumb) . "\" alt=\"" . htmlspecialchars($title) . "\"/>";
+	$html= "<img src=\"" . htmlspecialchars($thumb) . "\" alt=\"" . htmlspecialchars($title) . "\" border=\"0\"/>";
 	$html= "<a href=\"" . htmlspecialchars($page) . "\" title=\"" . htmlspecialchars($title) . "\">$html</a>";
 
 	if (is_array($image)) {
