@@ -646,6 +646,7 @@ settings[] = smwgNamespacesWithSemanticLinks: array
 settings[] = smwgAdminRefreshStore: bool
 array[] = smwgResultFormats: simple
 array[] = smwgNamespacesWithSemanticLinks: ns-text
+schema = true
 url = http://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki
 
 SemanticResultFormats
