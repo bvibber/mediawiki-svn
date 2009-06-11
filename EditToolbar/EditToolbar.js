@@ -260,6 +260,10 @@
 							break;
 							case 'characters':
 								// Appends special character adders
+								var charsDiv = $( '<div />' )
+									.attr( section.pages[page].attributes )
+									.css( section.pages[page].styles )
+									.appendTo( pageDiv );
 								for ( character in section.pages[page].characters ) {
 									switch( section.pages[page].characters[character].type ) {
 										case 'break':
@@ -275,10 +279,9 @@
 												'tool' : section.pages[page].characters[character],
 												'textbox': textbox
 											};
-											pageDiv.append(
+											charsDiv.append(
 												$( '<a />' )
-													.attr( section.pages[page].characters[character].attributes )
-													.attr( { 'href': '#' } )
+													.attr( 'href', '#' )
 													.text( section.pages[page].characters[character].text )
 													.data( 'context', context)
 													.click( action )
@@ -340,17 +343,25 @@
 		parseCharinsert: function( charinsert ) {
 			var retval = {};
 			for( page in charinsert ) {
-				var characters = [], attributes = {};
+				var characters = [], attributes = {}, styles = {};
 				var i = 0;
 				for( line in charinsert[page] ) {
 					if( !( charinsert[page][line] instanceof Array ) ) {
-						attributes = charinsert[page][line];
+						for( attr in charinsert[page][line] ) {
+							switch( attr ) {
+								case 'class':
+								case 'lang':
+									attributes[attr] = charinsert[page][line][attr];
+								break;
+								default:
+									styles[attr] = charinsert[page][line][attr];
+							}
+						}
 						continue;
 					}
 					for( character in charinsert[page][line] ) {
 						 var tool = {
 						 	type: 'link',
-						 	attributes: attributes,
 						 	text: '',
 						 	action: {
 						 		type: 'encapsulate',
@@ -376,6 +387,8 @@
 				retval[page] = {
 					label: page,
 					layout: 'characters',
+					attributes: attributes,
+					styles: styles,
 					characters: characters
 				};
 			}

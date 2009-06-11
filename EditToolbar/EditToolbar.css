@@ -156,7 +156,7 @@ div#edittoolbar-section-help div.page > table td.result {
 div#edittoolbar-section-help div.page > table td.description {
 	width: 20%;
 }
-div#edittoolbar-section-characters div.page > a {
+div#edittoolbar-section-characters div.page > div > a {
 	border: solid 1px #DDDDDD;
 	padding: 5px;
 	padding-left: 8px;
@@ -169,12 +169,16 @@ div#edittoolbar-section-characters div.page > a {
 	color: black;
 	text-decoration: none;
 }
-div#edittoolbar-section-characters div.page > a:hover {
+div#edittoolbar-section-characters div.page > div.rtl > a {
+	direction: rtl;
+	float: right;
+}
+div#edittoolbar-section-characters div.page > div > a:hover {
 	background-color: white;
 	text-decoration: none;
 	border-color: #a8d7f9;
 }
-div#edittoolbar-section-characters div.page > div.character {
+div#edittoolbar-section-characters div.page > div > div.character {
 }
 div#edittoolbar div.tabs > div.tab {
 	float: left;
