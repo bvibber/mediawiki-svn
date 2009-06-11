@@ -22,12 +22,14 @@ function printLocalConceptList($lang, $concepts) {
     <?php
 }
 
-function printConceptImageList($id) {
+function printConceptImageList($id, $class = "terselist") {
     global $utils, $wwThumbSize, $wwMaxPreviewImages;
-    $images = $utils->getImagesAbout($id, $wwMaxPreviewImages);
+
+    if (is_array($id)) $images = $id; #XXX: HACK
+    else $images = $utils->getImagesAbout($id, $wwMaxPreviewImages);
 
     ?>
-    <ul class="terselist">
+    <ul class="<?php print $class; ?>">
       <?php
 	foreach ($images as $img) {
 	  ?><li><?php
@@ -124,6 +126,7 @@ function normalizeConceptRow($lang, $row) {
     $row['wu'] = "http://$lang.wikipedia.org/wiki/" . urlencode($row['concept_name']); 
     #$row['cu'] = "$wwSelf?id=" . urlencode($row['concept']) . "&lang=" . urlencode($lang); 
     $row['cu'] = "$wwSelf?id=" . urlencode($row['reference_id']) . "&lang=" . urlencode($lang); 
+    $row['gu'] = "$wwSelf?id=" . urlencode($row['reference_id']) . "&images=g"; 
 
     if (!isset($row['weight']) || !$row['weight']) { 
       $row['wclass'] = "unknown";
@@ -153,11 +156,13 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <td colspan="3" class="cell_name  <?php print "weight_$a_wclass"; ?>">
 	<a href="<?php print htmlspecialchars($a_wu); ?>"><?php print htmlspecialchars($a_concept_name); ?></a>
 	<span class="conceptref">(#<a href="<?php print htmlspecialchars($a_cu); ?>"><?php print htmlspecialchars($a_reference_id); ?></a>)</span>
+	<span class="galleryref">(<a href="<?php print htmlspecialchars($a_gu); ?>"><?php print htmlspecialchars("gallery"); ?></a>)</span>
       </td>
       <?php if ($b_row) { ?>
       <td colspan="3" class="cell_name  <?php print "weight_$b_wclass"; ?>">
 	<a href="<?php print htmlspecialchars($b_wu); ?>"><?php print htmlspecialchars($b_concept_name); ?></a>
 	<span class="conceptref">(#<a href="<?php print htmlspecialchars($b_cu); ?>"><?php print htmlspecialchars($b_reference_id); ?></a>)</span>
+	<span class="galleryref">(<a href="<?php print htmlspecialchars($a_gu); ?>"><?php print htmlspecialchars("gallery"); ?></a>)</span>
       </td>
       <?php } ?>
     </tr>
@@ -274,6 +279,7 @@ if (@$_REQUEST['debug']) $utils->debug = true;
 $limit = 20;
 
 $result = NULL;
+$gallery = NULL;
 
 if (!$error) {
   try {
@@ -281,6 +287,8 @@ if (!$error) {
 	  $result = $utils->queryConceptInfo($concept, $lang);
       } else if ($lang && $term) {
 	  $result = $utils->queryConceptsForTerm($lang, $term, $limit);
+      } else if ($concept && $images) {
+	  $gallery = $utils->getImagesAbout($concept);
       }
   } catch (Exception $e) {
       $error = $e->getMessage();
@@ -317,6 +325,8 @@ if (!$error) {
 	.terselist li { display: inline; }
 	.terselist li:before { content:" - " }
 	.terselist li:first-child:before { content:"" }
+
+	.gallery li { display: inline; padding:0.5ex; margin:0.5ex; }
     </style>
 </head>
 <body>
@@ -411,6 +421,24 @@ if ($result) {
 <?php
 }
 ?>
+
+<?php
+if ($gallery) {
+    $title = "Gallery #$concept";
+?>    
+    <h2><?php print htmlspecialchars($title); ?></h2>
+    <div  border="0" class="results">
+    <?php 
+      printConceptImageList($gallery, "gallery");
+    ?>
+    </div>
+
+    <p>Found <?php print count($gallery); ?> images.</p>
+
+<?php
+}
+?>
+
 
 <p class="footer">
 The WikiWord Navigator is part of the <a href="http://wikimedia.de">Wikimedia</a> project <a href="http://brightbyte.de/page/WikiWord">WikiWord</a>
