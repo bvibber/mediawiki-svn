@@ -40,12 +40,11 @@ class DemoMaint extends Maintenance {
   }
 
   protected function execute() {
-    
   }
 }
 
-$m = new DemoMaint();
-$m->go();
+$maintClass = "DemoMaint";
+require_once( "doMaintenance.php" );
 
 ==END==
 

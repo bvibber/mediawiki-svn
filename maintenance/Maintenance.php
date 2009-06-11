@@ -45,39 +45,6 @@ abstract class Maintenance {
 	abstract protected function execute();
 
 	/**
-	 * Our public interface for doing everything. We'll run some sanity
-	 * checks and then call the script's execute() method.
-	 */
-	public function go() {
-		// Basic stuff to make sure we can go
-		$this->sanityChecks();
-
-		// Begin setting up the environment for script execution
-		$this->setupEnvironment();
-
-		// Get all of the arguments
-		$this->loadArgs();
-
-		// Show the help and die if we can
-		$this->maybeHelp();
-
-		// Load settings, using wikimedia-mode if needed
-		if( file_exists( dirname(__FILE__).'/wikimedia-mode' ) ) {
-			# TODO FIXME! Wikimedia-specific stuff needs to go away to an ext
-			# Maybe a hook?
-			$this->loadWikimediaSettings();
-		} else {
-			$this->loadSettings();
-		}
-
-		// Final setup
-		$this->finalSetup();
-
-		// Execute the actual script
-		$this->execute();
-	}
-
-	/**
 	 * Add a parameter to the script. Will be displayed on --help
 	 * with the associated description
 	 *
@@ -154,7 +121,9 @@ abstract class Maintenance {
 	/**
 	 * Do some sanity checking
 	 */
-	private function sanityChecks() {
+	public function setup() {
+		global $IP, $wgCommandLineMode, $wgUseNormalUser, $wgRequestTime;
+
 		# Abort if called from a web server
 		if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
 			$this->error( "This script must be run from the command line\n", true );
@@ -190,13 +159,6 @@ abstract class Maintenance {
 
 		# Set the memory limit
 		ini_set( 'memory_limit', -1 );
-	}
-
-	/**
-	 * Setup the maintenance envinronment
-	 */
-	private function setupEnvironment() {
-		global $IP, $wgCommandLineMode, $wgUseNormalUser, $wgRequestTime;
 
 		$wgRequestTime = microtime(true);
 
@@ -207,14 +169,7 @@ abstract class Maintenance {
 		$IP = strval( getenv('MW_INSTALL_PATH') ) !== ''
 			? getenv('MW_INSTALL_PATH')
 			: realpath( dirname( __FILE__ ) . '/..' );
-
-		# Setup the profiler
-		if ( file_exists( "$IP/StartProfiler.php" ) ) {
-			require_once( "$IP/StartProfiler.php" );
-		} else {
-			require_once( "$IP/includes/ProfilerStub.php" );
-		}
-
+		
 		$wgCommandLineMode = true;
 		# Turn off output buffering if it's on
 		@ob_end_flush();
@@ -222,6 +177,9 @@ abstract class Maintenance {
 		if (!isset( $wgUseNormalUser ) ) {
 			$wgUseNormalUser = false;
 		}
+		
+		$this->loadArgs();
+		$this->maybeHelp();
 	}
 
 	/**
@@ -363,26 +321,17 @@ abstract class Maintenance {
 		}
 	
 		$wgShowSQLErrors = true;
-	
-		require_once( "$IP/includes/Setup.php" );
-		require_once( "$IP/install-utils.inc" );
-		$wgTitle = null; # Much much faster startup than creating a title object
 		@set_time_limit(0);
 	
 		$wgProfiling = false; // only for Profiler.php mode; avoids OOM errors
 	}
 	
-	private function loadWikimediaSettings() {
-		global $wgWikiFarm, $cluster, $IP, $wgNoDBParam, $wgUseNormalUser;
+	/**
+	 * Do setup specific to WMF
+	 */
+	public function loadWikimediaSettings() {
+		global $IP, $wgNoDBParam, $wgUseNormalUser, $wgConf;
 
-		$wgWikiFarm = true;
-		$cluster = 'pmtpa';
-		require_once( "$IP/includes/AutoLoader.php" );
-		require_once( "$IP/includes/SiteConfiguration.php" );
-	
-		# Get $wgConf
-		require( "$IP/wgConf.php" );
-	
 		if ( empty( $wgNoDBParam ) ) {
 			# Check if we were passed a db name
 			if ( isset( $this->mOptions['wiki'] ) ) {
@@ -425,13 +374,13 @@ abstract class Maintenance {
 		if ( $lang == 'test' && $site == 'wikipedia' ) {
 			define( 'TESTWIKI', 1 );
 		}
-	
-		#require_once( $IP.'/includes/ProfilerStub.php' );
-		require( $IP.'/includes/Defines.php' );
-		require( $IP.'/CommonSettings.php' );
 	}
 
-	private function loadSettings() {
+	/**
+	 * Generic setup for most installs. Returns the location of LocalSettings
+	 * @return String
+	 */
+	public function loadSettings() {
 		global $wgWikiFarm, $wgCommandLineMode, $IP, $DP;
 
 		$wgWikiFarm = false;
@@ -455,8 +404,7 @@ abstract class Maintenance {
 		}
 		$wgCommandLineMode = true;
 		$DP = $IP;
-		require_once( "$IP/includes/AutoLoader.php" );
-		require_once( "$IP/includes/Defines.php" );
-		require_once( $settingsFile );
+		$this->finalSetup();
+		return $settingsFile;
 	}
 }
