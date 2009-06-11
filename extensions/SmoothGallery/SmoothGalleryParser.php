@@ -237,14 +237,9 @@ class SmoothGalleryParser {
 		}
 
 		if ( $this->argumentArray["showinfopane"] ) {
-			if ( $description == '' ) {
-				// Load the image page from the database with the provided title from
-				// the image object
-				$db = wfGetDB( DB_SLAVE );
-				$img_rev = Revision::loadFromTitle( $db, $title );
-
-				// Get the text from the image page's description
-				$description = $img_rev->getText();
+			if ( $description == '' && $img_obj->getDescriptionText() ) {
+				// Get the text from the image page's description, if it exists
+				$description = $img_obj->getDescriptionText();
 			}
 
 			// convert wikitext to HTML
