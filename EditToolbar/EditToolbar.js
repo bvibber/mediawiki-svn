@@ -681,6 +681,20 @@ var editToolbarConfiguration = {
 			'media': {
 				labelMsg: 'edittoolbar-group-insert-media',
 				tools: {
+					'file': {
+						labelMsg: 'edittoolbar-tool-insert-file',
+						type: 'button',
+						icon: 'insert-file.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "[[",
+								preMsg: 'edittoolbar-tool-insert-file-pre',
+								periMsg: 'edittoolbar-tool-insert-file-example',
+								post: "]]"
+							}
+						}
+					},
 					'gallery': {
 						labelMsg: 'edittoolbar-tool-insert-gallery',
 						type: 'button',
@@ -696,7 +710,8 @@ var editToolbarConfiguration = {
 					}
 				}
 			},
-			'other': {
+			'whitespace': {
+				labelMsg: 'edittoolbar-group-insert-whitespace',
 				tools: {
 					'newline': {
 						labelMsg: 'edittoolbar-tool-insert-newline',
