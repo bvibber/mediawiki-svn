@@ -103,7 +103,7 @@ div#edittoolbar div.index > div {
 	padding: 4px;
 	padding-left: 6px;
 	cursor: pointer;
-	color: #00528C;
+	color: #0645ad;
 }
 div#edittoolbar div.index > div.current {
 	background-color: #FAFAFA;
@@ -195,7 +195,7 @@ div#edittoolbar div.tabs > div.tab > a:visited {
 	display: block;
 	height: 26px;
 	cursor: pointer;
-	color: #00528C;
+	color: #0645ad;
 	background-image: url(images/arrow-right.png);
 	background-position: left center;
 	background-repeat: no-repeat;
