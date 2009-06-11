@@ -117,9 +117,10 @@ mvPlayList.prototype = {
 	doEditor:function(){
 		//black out the page: 
 		//$j('body').append('<div id="ui-widget-overlay"/> <div id="modalbox" class="ui-widget ui-widget-content ui-corner-all modal_editor">' );
-		
-		$j('body').append('<div id="sequencer_target" style="position:aboslute;top:10px;left:10px;right:10px;bottom:10px" title="' + gM('loading_title') + '" ></div>');			
-		$j('#sequencer_target').dialog({
+		$j('body').append('<div class="ui-widget-overlay" style="width: 100%; height: 100%px; z-index: 10;"></div>');
+		$j('body').append('<div id="sequencer_target" style="z-index:11;position:fixed;top:10px;left:10px;right:10px;bottom:10px;" ' +
+				'class="ui-widget ui-widget-content ui-corner-all"></div>');			
+		/*$j('#sequencer_target').dialog({
 				bgiframe: true,
 				autoOpen: true,			
 				modal: true,
@@ -128,6 +129,9 @@ mvPlayList.prototype = {
 						$j(this).dialog('close');
 					}
 				},
+		}).css({
+			"position":"relative",	
+			"height": "90%"		
 		}).parent('.ui-dialog').css({
 			'width':'auto',
 			'height':'auto',
@@ -135,7 +139,7 @@ mvPlayList.prototype = {
 			'left'	: '10px',
 			'right' : '10px',
 			'bottom': '10px'
-		});
+		});*/
 		//@@todo clone the playlist (for faster startup)
 		/*var this_plObj_Clone = $j('#'+this.id).get(0).cloneNode(true);
 			this_plObj_Clone.sequencer=true;
@@ -484,7 +488,8 @@ mvPlayList.prototype = {
 			$j( $j.btnHtml('edit', 'editBtn_'+this.id, 'pencil', 
 				{'style':'position:absolute;right:0;;font-size:x-small;height:10px;margin-bottom:0;padding-bottom:7px;padding-top:0;'} )
     			).click(function(){	
-    					_this.doEditor();
+					_this.doEditor();
+					return false;
     			}).appendTo('#ptitle_'+this.id);	
     		$j('.editBtn_'+this.id).btnBind();		
 		}
@@ -1683,18 +1688,24 @@ var smilPlaylist ={
 		js_log('f:doParse smilPlaylist');
 		//@@todo get/parse meta that we are intersted in: 
 		var meta_tags = this.data.getElementsByTagName('meta');
-		var metaNames = new Array('title','interface_url', 'linkback', 'mTitle', 'mTalk'); 
+		var metaNames = {
+			'title':'',
+			'interface_url':"", 
+			'linkback':"",
+			 'mTitle':"", 
+			 'mTalk':"", 
+			 'mTouchedTime':""
+		}; 
 		$j.each(meta_tags, function(i,meta_elm){
 			//js_log( "on META tag: "+ $j(meta_elm).attr('name') );
-			for(var i in metaNames){
-				var _name = metaNames[i];
-				if( $j(meta_elm).attr('name') && $j(meta_elm).attr('content') ){
-					if( $j(meta_elm).attr('name')== _name ){
-						_this[ _name ] = $j(meta_elm).attr('content');
-						js_log('set :' + _name + ' to ' +  _this[ _name ]);	
-					}
-				}
-			}
+			if( $j(meta_elm).attr('name') in metaNames){
+				_this[ $j(meta_elm).attr('name') ] = $j(meta_elm).attr('content');
+			}			
+			//special check for wikiDesc
+			if(  $j(meta_elm).attr('name') == 'wikiDesc'){
+				if(meta_elm.firstChild)
+					_this.wikiDesc  = meta_elm.firstChild.nodeValue;
+			}			
 		});	
 		//add transition objects: 
 		var transition_tags = this.data.getElementsByTagName('transition');	
@@ -1720,13 +1731,14 @@ var smilPlaylist ={
 					}
 				}
 			});
-		});
+		});	
 		js_log("done proc seq tags");		
 		return true;
 	},
 	tryAddMedia:function(mediaElement, order, track_id){	
 		js_log('SMIL:tryAddMedia:' + mediaElement);
 		//set up basic mvSMILClip send it the mediaElemnt & mvClip init: 
+		var clipObj = {};
 		var clipObj = new mvSMILClip(mediaElement, 
 					{
 						"id":'p_' + this.id + '_c_' + order,
@@ -1774,7 +1786,8 @@ mvSMILClip.prototype = {
 	instanceOf:'mvSMILClip',	
 	params : {}, //support param as child of ref clips per SMIL spec  
 	init:function(sClipElm, mvClipInit){
-		_this = this;						
+		_this = this;			
+		this.params	= {};		
 		//make new mvCLip with ClipInit vals  
 		var myMvClip = new mvClip( mvClipInit );
 		
@@ -1828,16 +1841,14 @@ mvSMILClip.prototype = {
 		//if unset type and we have innerHTML assume text/html type		
 		if( !this.type  && this.wholeText ){			
 			this.type = 'text/html';
-		}					 
-		
+		}				
 		//also grab andy child param elements if present: 
-		if( sClipElm.getElementsByTagName('param')[0] ){			
+		if( sClipElm.getElementsByTagName('param')[0] ){					
 			for(var i=0; i< sClipElm.getElementsByTagName('param').length; i++){
 				this.params[ sClipElm.getElementsByTagName('param')[i].getAttribute("name") ] = 
 						 sClipElm.getElementsByTagName('param')[i].firstChild.nodeValue;
 			}			
-		}
-			
+		}			
 		return this;		
 	},
 	//returns the values of supported_attributes: 
@@ -2004,7 +2015,13 @@ transitionObj.prototype = {
  * (probably have to use a Time object to fully support the smil spec
  */
 function smilParseTime(time_str){
-	return parseInt(time_str.replace('s', ''));
+	//first check for hh:mm:ss time: 
+	if(time_str.split(':').length == 3){
+		return npt2seconds(time_str);
+	}else{
+		//assume 34s secconds representation 
+		return parseInt(time_str.replace('s', ''));
+	}
 }
 //stores a list pointers to active clips (maybe this should just be a property of clips (but results in lots of seeks) 
 var activeClipList = function(){

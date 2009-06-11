@@ -512,14 +512,16 @@ var mvJsLoader = {
 				 
 		//make sure we have jQuery
 		_this.jQueryCheck(function(){
-			var depReq = new Array();
-			depReq.push( [
-				'$j.ui', 
-				'embedVideo',   				
-				'$j.cookie'	   																
-			], [
-				'$j.ui.slider'
-			]);				
+			var depReq = [
+				[
+					'$j.ui', 
+					'embedVideo',   				
+					'$j.cookie'	   																
+				], 
+				[
+					'$j.ui.slider'
+				]
+			];				
 			//add png fix if needed:
 			if($j.browser.msie || $j.browser.version < 7)								
 				depReq[0].push( '$j.fn.pngFix' );
@@ -764,7 +766,8 @@ function mv_jqueryBindings(){
 	        		[
         				'$j.ui.dialog',
         				'$j.ui.droppable',
-        				'$j.ui.draggable',        				
+        				'$j.ui.draggable',    
+        				'$j.ui.progressbar',    				
         				'$j.ui.sortable',
         				'$j.ui.resizable',
         				'$j.ui.slider',

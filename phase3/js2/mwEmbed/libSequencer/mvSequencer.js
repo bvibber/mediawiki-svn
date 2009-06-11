@@ -33,6 +33,8 @@ loadGM( {
 	
 	"edit_clip" : "Edit Clip",
 	"edit_save" : "Save Changes",
+	"saving_wait": "Save in Progress (please wait)",
+	"save_done"	:	"Save Done",
 	"edit_cancel" : "Cancel Edit",
 	"edit_cancel_confirm" : "Are you sure you want to cancel your edit. Changes will be lost",
 			
@@ -100,7 +102,9 @@ var sequencerDefaultValues = {
 	//stores the clipboard edit token (if user has rights to edit their User page) 
 	clipboardEditToken:null,
 	//stores the sequence edit token (if user has rights to edit the current sequence)	
-	sequenceEditToken:null, 		
+	sequenceEditToken:null,
+	//the time the sequence was last touched (grabbed at time of startup)	
+	sequenceTouchedTime:null, 		
 		
 	
 	
@@ -222,11 +226,11 @@ mvSequencer.prototype = {
 			'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
 				'left:0px;right:'+(this.video_width+15)+'px;top:0px;height:'+(this.video_height+23)+'px;"/>'+
 			'<div id="'+this.timeline_id+'" class="ui-widget ui-widget-content ui-corner-all" style="position:absolute;' + 
-				'left:0px;right:0px;top:'+(this.video_height+34)+'px;bottom:25px;overflow:auto;">'+
+				'left:0px;right:0px;top:'+(this.video_height+34)+'px;bottom:35px;overflow:auto;">'+
 					gM('loading_timeline')+ '</div>'+
-			'<div id="' + this.target_sequence_container + '_status" style="position:absolute;left:0px;width:300px;"></div>'+
-			'<div id="' + this.target_sequence_container + '_save_cancel" style="position:absolute;'+
-				'right:0px;bottom:0px;height:25px;overflow:hidden;">'+					
+			'<div class="seq_status" style="position:absolute;left:0px;width:300px;"></div>'+
+			'<div class="seq_save_cancel" style="position:absolute;'+
+				'left:5px;bottom:0px;height:25px;">'+					
 					gM('loading_user_rights') +
 			'</div>'
 		);
@@ -262,24 +266,18 @@ mvSequencer.prototype = {
 		rewrite_by_id( this.plObj_id );	
 		setTimeout(this.instance_name +'.checkReadyPlObj()', 25);		
 	},
-	updateSeqSaveButtons:function(){	
+	updateSeqSaveButtons:function(){		
 		var _this = this;	
-		var cancel_button = '<a id="mv_cancel_seq_button" href="#" style="border:' +
-				'solid gray;font-size:1.2em;" ">' +
-					gM('edit_cancel') + '</a> ';
 		if( this.sequenceEditToken ){
-			$j(this.target_sequence_container+'_save_cancel').html( cancel_button + 
-				'<a style="border:solid gray;font-size:1.2em;" href="#" onClick="'+this.instance_name+'.getSeqOutputJSON()">'+
-					'Preview Json Output'+
-				'</a>' +
-				'<a style="border:solid gray;font-size:1.2em;" href="#" onClick="'+this.instance_name+'.getSeqOutputHLRDXML()">'+
-					'Preview XML Output (will be save shortly) ' + 
-				'</a>'); 
+			$j(this.target_sequence_container+' .seq_save_cancel').html( 
+				$j.btnHtml( gM('edit_cancel'), 'seq_edit_cancel', 'close') + ' ' + 
+				$j.btnHtml( gM('edit_save'), 'seq_edit_save', 'close') 
+			); 			
 		}else{
-			$j(this.target_sequence_container+'_save_cancel').html( cancel_button + gM('no_edit_permissions') );
+			$j(this.target_sequence_container+' .seq_save_cancel').html( cancel_button + gM('no_edit_permissions') );
 		}
 		//assing bindings
-		$j('#mv_cancel_seq_button').unbind().click(function(){
+		$j(this.target_sequence_container +' .seq_edit_cancel').unbind().click(function(){
 			var x = window.confirm( gM('edit_cancel_confirm') );
 			if( x ){
 				_this.closeModEditor();
@@ -287,6 +285,59 @@ mvSequencer.prototype = {
 				//close request canceled. 
 			}
 		});
+		$j(this.target_sequence_container +' .seq_edit_save').unbind().click(function(){
+			//pop up progress dialog ~requesting edit line summary~
+			//remove any other save dialog 
+			$j('#seq_save_dialog').remove();
+			$j('body').append('<div id="seq_save_dialog" title="'+ gM('edit_save') +'">' +
+						'<span class="mw-summary">'+
+							'<label for="seq_save_summary">Edit summary: </label>' +
+						'</span>'+
+						'<input id="seq_save_summary" tabindex="1" maxlength="200" value="" size="30" name="seq_save_summary"/>'+							
+					'</div>');
+			//dialog: 
+			$j('#seq_save_dialog').dialog({
+				bgiframe: true,
+				autoOpen: true,		  
+				modal: true,
+				buttons:{
+					"Save":function(){
+						var saveReq = {
+							'action'	: 'edit',
+							'title'		: _this.plObj.mTitle,
+							//the text is the sequence XML + the description
+							'text'		: _this.getSeqOutputHLRDXML() + "\n" + 
+										  _this.plObj.wikiDesc,
+							'token'		: _this.sequenceEditToken,
+							'summary'	: $j('#seq_save_summary').val()
+						};		
+						//change to progress bar and save: 	
+						$j('#seq_save_dialog').html('<div class="progress" /><br>' +
+							gM('saving_wait')
+						)					
+						$j('#seq_save_dialog .progress').progressbar({
+							value: 100
+						});
+						//run the Seq Save Request: 									
+						do_api_req( {
+							'data': saveReq,
+							'url' : _this.getLocalApiUrl()
+						},function(data){							
+							$j('#seq_save_dialog').html( gM('save_done') );
+							$j('#seq_save_dialog').dialog('option', 
+								'buttons', { 
+									"Ok": function() { 
+										$j(this).dialog("close"); 
+									} 
+							});
+						});
+					},
+					"Cancel":function(){
+						$j(this).dialog('close');
+					}
+				}
+			});
+		})
 	},
 	//display a menu item (hide the rest) 
 	disp:function( item ){
@@ -453,10 +504,9 @@ mvSequencer.prototype = {
 		return this.plObj.interface_url; 
 	},
 	plReadyInit:function(){
-		var this_seq = this;
-		//debugger;
+		var _this = this;		
 		js_log('plReadyInit');		
-		js_log( this.plObj );
+		js_log( this.plObj );				
 		//give the playlist a pointer to its parent seq: 
 		this.plObj['seqObj'] = this;
 							
@@ -468,33 +518,34 @@ mvSequencer.prototype = {
 		//propagate the edit tokens 
 		//if on an edit page just grab from the form:		
 		this.sequenceEditToken = $j('input[wpEditToken]').val();
-		if(typeof this.sequenceEditToken == 'undefined' && this.getLocalApiUrl()!=null){			
+		
+		if(typeof this.sequenceEditToken == 'undefined' && this.getLocalApiUrl()!=null){					
 			var reqObj = {
 				'action':'query',
 				'prop':'info',
 				'intoken':'edit',
-				'titles': this_seq.plObj.mTitle
-			};
-			
+				'titles': _this.plObj.mTitle
+			};			
 			do_api_req( {
 				'data': reqObj,
-				'url' : this_seq.getLocalApiUrl()
+				'url' : _this.getLocalApiUrl()
 				},function(data){
+					var cat = data;							
 					for(var i in data.query.pages){ 
 						if(data.query.pages[i]['edittoken'])
-							this_seq.sequenceEditToken = data.query.pages[i]['edittoken'];
+							_this.sequenceEditToken = data.query.pages[i]['edittoken'];								
 					}
-					this_seq.updateSeqSaveButtons();
+					_this.updateSeqSaveButtons();
 				}
 			);
-			reqObj['titles']=this_seq.plObj.mTalk;
+			reqObj['titles']=_this.plObj.mTalk;
 			do_api_req( {
 				'data': reqObj,
-				'url' : this_seq.getLocalApiUrl()
+				'url' : _this.getLocalApiUrl()
 				}, function( data ){
 					for(var j in data.query.pages){
 						if(data.query.pages[j]['edittoken'])
-							this_seq.clipboardEditToken = data.query.pages[j]['edittoken'];
+							_this.clipboardEditToken = data.query.pages[j]['edittoken'];
 					}
 				}
 			);
@@ -557,7 +608,7 @@ mvSequencer.prototype = {
 		$j("#seq_menu").tabs({
 			selected:selected_tab,
 			select: function(event, ui) {									
-				this_seq.disp( $j(ui.tab).attr('id').replace('mv_menu_item_', '') );
+				_this.disp( $j(ui.tab).attr('id').replace('mv_menu_item_', '') );
 			}		
 		//add sorting
 		}).find(".ui-tabs-nav").sortable({ axis : 'x' });
@@ -576,34 +627,34 @@ mvSequencer.prototype = {
 		$j().keydown(function(e){
 			js_log('pushed down on:' + e.which);			
 			if( e.which == 16 )
-				this_seq.key_shift_down = true;
+				_this.key_shift_down = true;
 						
 			if( e.which == 17)
 				this_seq.key_ctrl_down = true;
 				
-			if( (e.which == 67 && this_seq.key_ctrl_down) && !this_seq.inputFocus)
-				this_seq.copySelectedClips();
+			if( (e.which == 67 && this_seq.key_ctrl_down) && !_this.inputFocus)
+				_this.copySelectedClips();
 				
-			if( (e.which == 88 && this_seq.key_ctrl_down) && !this_seq.inputFocus)
-				this_seq.cutSelectedClips();
+			if( (e.which == 88 && this_seq.key_ctrl_down) && !_this.inputFocus)
+				_this.cutSelectedClips();
 			
 			//paste cips on v + ctrl while not focused on a text area: 
-			if( (e.which == 86 && this_seq.key_ctrl_down) && !this_seq.inputFocus)				
-				this_seq.pasteClipBoardClips();
+			if( (e.which == 86 && this_seq.key_ctrl_down) && !_this.inputFocus)				
+				_this.pasteClipBoardClips();
 				
 		});
 		$j().keyup(function(e){			
 			js_log('key up on ' + e.which);			
 			//user let go of "shift" turn off multi-select
 			if( e.which == 16 )
-				this_seq.key_shift_down = false;
+				_this.key_shift_down = false;
 				
 			if( e.which == 17)
-				this_seq.key_ctrl_down = false;							
+				_this.key_ctrl_down = false;							
 			
 			//backspace or delete key while not focused on a text area: 
 			if( (e.which == 8 || e.which == 46) && !this_seq.inputFocus)								
-				this_seq.removeSelectedClips();					
+				_this.removeSelectedClips();					
 		});
 	},
 	//check all nodes for focus 
@@ -632,13 +683,13 @@ mvSequencer.prototype = {
 	getSeqOutputJSON:function(){
 		js_log('json output:');
 	},
-	getSeqOutputHLRDXML:function(){
+	getSeqOutputHLRDXML:function(){		
 		var o='<sequence_hlrd>' +"\n";
-		o+="\t<head>";		
+		o+="\t<head>\n";		
 		//get transitions 
 		for(var i in this.plObj.transitions){
 			var tObj = this.plObj.transitions[i].getAttributeObj();
-			o+="\t<transition ";
+			o+="\t\t<transition ";
 			for(var j in tObj){
 				o+=' '+j+'="' + tObj[j] + '"\n\t\t';
 			}
@@ -663,19 +714,22 @@ mvSequencer.prototype = {
 					var cAttr = curClip.getAttributeObj();
 					for(var j in  cAttr){
 						var val =  (j=='transIn' || j=='transOut') ? cAttr[j].id : cAttr[j];													
-						o+=' '+j+'="' + val + '"\n\t\t\t';
-					}
-				o+="/>\n" //close the clip
+						o+=j+'="' + val + '"\n\t\t';
+					}					
+				o+=">\n" //close the clip				
+				for(var pName in curClip.params){
+					var pVal = curClip.params[pName];
+					o+="\t\t\t" + '<param name="'+ pName + '">' + pVal + '</param>' + "\n";
+				} 
+				o+="\t\t</ref>\n";
 			}
-			o+="\n</seq>n";
+			o+="\n</seq>\n";
 		}
 		o+="\t</body>\n";		
 		//close the tag
-		o+='</sequence_hlrd>';	
+		o+='</sequence_hlrd>';		
 		
-		alert('f:getSeqOutputHLRDXML'+ o);
-		
-		return false;	
+		return o;		
 	},		
 	editClip:function(track_inx, clip_inx){
 		var cObj = this.plObj.tracks[ track_inx ].clips[ clip_inx ];
@@ -788,7 +842,7 @@ mvSequencer.prototype = {
 		if(remove_clip_ary.length !=0 )
 			this.removeClips(remove_clip_ary);
 			
-		//doEdit selected clips (updated selecte resource)	 
+		//doEdit selected clips (updated selected resource)	 
 		this.doEditSelectedClip();		
 	},
 	//add a single or set of clips
@@ -1381,7 +1435,14 @@ mvSequencer.prototype = {
 		this.do_refresh_timeline();
 		js_log('zoom out: '+this.timeline_scale);
 	},
-	do_refresh_timeline:function(){	
+	do_refresh_timeline:function( preserve_selection ){
+		//@@todo should "lock" interface while refreshing timeline
+		var pSelClips = [];
+		if(preserve_selection){
+			$j('.mv_selected_clip').each(function(){				
+				pSelClips.push( $j(this).parent().attr('id') );
+			});
+		}
 		//regen duration 
 		this.plObj.getDuration( true );
 		//refresh player:		 
@@ -1390,6 +1451,12 @@ mvSequencer.prototype = {
 		this.render_playheadhead_seeker();
 		this.render_tracks();
 		this.jt(this.playline_time);
+				
+		if(preserve_selection){
+			for(var i=0;i < pSelClips.length; i++){
+				$j('#' + pSelClips[i] + ' .mv_clip_thumb').addClass('mv_selected_clip');				
+			}
+		}
 	}
 		
 }
@@ -1411,7 +1478,7 @@ mvSeqPlayList.prototype = {
 		this.org_control_height = this.pl_layout.control_height;		
 		//do specific mods:(controls and title are managed by the sequencer)  
 		this.pl_layout.title_bar_height=0;
-		this.pl_layout.control_height=0;
+		this.pl_layout.control_height=0;				
 	},	
 	setSliderValue:function( perc ){
 		//get the track_clipThumb_height from parent mvSequencer	

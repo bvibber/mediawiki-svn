@@ -95,18 +95,28 @@ mvClipEdit.prototype = {
 	//maybe we should refactor these into their own classes  
 	//more refactor each media type should be its own class inheriting the shared baseEditType object
 	edit_types:{		
-		'duration':{
-			d:1,
+		'duration':{			
 			'media':['image','template'],
 			'doEdit':function(target, _this ){
+				//(_this is a smilClip instance)
 				//do clock mouse scroll duration editor
-				$j(target).html(
-					_this.getInput		
-				);
+				$j(target).html(									
+						'<label for="ce_dur">Duration: </label>' +						
+						'<input name="ce_dur" tabindex="1" maxlength="11" value="'+
+							seconds2npt( _this.rObj.getDuration() )+
+							'" size="10"/>'+							
+					'</div>'	
+				).children("input[name='ce_dur']").change(function(){
+					 js_log("update duration:" + $j(this).val() );
+					 //update the parent sequence object: 
+					 _this.rObj.dur = smilParseTime( $j(this).val() );
+					 //update the playlist: 
+					 _this.p_seqObj.do_refresh_timeline( true );					 
+				});
+				
 			}			
 		},
 		'inoutpoints':{
-			'd':1,
 			'media':['video'],
 			'doEdit':function(target, _this ){								
 				//do clock mouse scroll duration editor
@@ -121,14 +131,13 @@ mvClipEdit.prototype = {
 				$j(target).html(
 					_this.getSetInOutHtml({
 						'start_ntp'	: start_ntp, 
-						'end_ntp'	:	 end_ntp
+						'end_ntp'	: end_ntp
 					})		
 				);
 				_this.setInOutBindings();
 			}		
 		},
 		'fileopts':{
-			'd':0,
 			'media':['image','video','template'],
 			'doEdit':function(target, _this ){		
 				var doEditHtml = function(){
@@ -159,7 +168,7 @@ mvClipEdit.prototype = {
 								'<td>' + 
 									_this.rObj.tVars[i] + 
 								'</td>' +
-								'<td><input type="text" size="15" maxwidth="255" value="';
+								'<td><input name="'+_this.rObj.tVars[i]+'" class="ic_tparam" type="text" size="15" maxwidth="255" value="';
 							if(_this.rObj.params[ _this.rObj.tVars[i] ]){
 								o+= _this.rObj.params[ _this.rObj.tVars[i] ];
 							}
@@ -184,6 +193,9 @@ mvClipEdit.prototype = {
 					
 					$j(target).html ( o );
 					//add update bindings	
+					$j(target + ' .ic_tparam').change(function(){
+						js_log("updated tparam" + $j(this).attr("name"));
+					})
 							
 					//update doFocusBindings
 					if( _this.p_seqObj )
@@ -242,20 +254,16 @@ mvClipEdit.prototype = {
 				}else{
 					doEditHtml();
 				}
-				
-				
 			}		
 		},
-		'panzoom':{
-			'd':0,
+		'panzoom':{			
 			'media':['image','video'],
 			'doEdit':function(target, _this ){
 				//do clock mouse scroll duration editor
 				$j(target).html('<h3>Set Position</h3><h3>Set Zoom</h3><h3>Set Crop</h3><h3>Set Aspect</h3>');
 			}	
 		},				
-		'overlays':{
-			'd':0,
+		'overlays':{			
 			'media':['image','video'],
 			'doEdit':function(target, _this ){
 				//do clock mouse scroll duration editor
@@ -263,7 +271,6 @@ mvClipEdit.prototype = {
 			}	
 		},
 		'audio':{
-			'd':0,
 			'media':['image','video', 'template'],
 			'doEdit':function(target, _this ){
 				//do clock mouse scroll duration editor
@@ -279,13 +286,16 @@ mvClipEdit.prototype = {
 		var tabc ='';					
 		o+= '<div id="mv_submenu_clipedit">';
 		o+='<ul>';		 
-		var selected_tab = 0;
+		var first_tab = false;
 		$j.each(this.edit_types, function(sInx, editType){			
 			//check if the given editType is valid for our given media type
 			var include = false;
 			for(var i =0; i < editType.media.length;i++){
-				if( editType.media[i] == _this.media_type)
+				if( editType.media[i] == _this.media_type){
 					include = true; 
+					if(!first_tab)
+						first_tab = sInx;
+				}
 			}
 			if(include){				
 				o+=	'<li>'+ 
@@ -300,22 +310,19 @@ mvClipEdit.prototype = {
 		$j('#'+this.control_ct).html( o ) ;			
 		//set up bindings:	 
 		$j('#mv_submenu_clipedit').tabs({
+			selected: 0,
 			select: function(event, ui) {									
 				_this.doDisplayEdit( $j(ui.tab).attr('id').replace('mv_smi_', '') );
-			}		
-		//add sorting
+			}				
 		}).addClass('ui-tabs-vertical ui-helper-clearfix');
 		//close left: 
 		$j("#mv_submenu_clipedit li").removeClass('ui-corner-top').addClass('ui-corner-left');		
 		//update the default edit display: 
-		_this.doDisplayEdit();
+		_this.doDisplayEdit( first_tab );
 	},
 	doDisplayEdit:function( edit_type ){
 		if(!edit_type)
-			for(var i in this.edit_types){
-				if(this.edit_types[i].d == 1)
-					edit_type = i;
-			}
+			return false;
 		js_log('doDisplayEdit: ' + edit_type );			
 		
 		//do edit interface for that edit type: 

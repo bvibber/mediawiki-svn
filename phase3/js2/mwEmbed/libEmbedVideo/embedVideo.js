@@ -201,7 +201,7 @@ mvEmbed = {
 		$j(embed_video).css({
 			'width':videoInterface.width,
 			'height':videoInterface.height
-		});
+		}).html( mv_get_loading_img() );		
 		//inherit the video interface
 		for(var method in videoInterface){ //for in loop oky in Element context	
 			if(method!='readyState'){ //readyState crashes IE
@@ -225,9 +225,7 @@ mvEmbed = {
 		//now swap out the video element for the embed_video obj:	  
 		  $j(video_element).after(embed_video).remove();	
 		  //js_log('did swap');		  
-		  $j('#'+embed_video.id).get(0).on_dom_swap();
-		  //remove loading: 
-		  $j('#pre_loading_div_'+embed_video.id).remove();
+		  $j('#'+embed_video.id).get(0).on_dom_swap();		  
 		// now that "embed_video" is stable, do more initialization (if we are ready)
 		if($j('#'+embed_video.id).get(0).loading_external_data==false && 
 			   $j('#'+embed_video.id).get(0).init_with_sources_loadedDone==false){
@@ -235,7 +233,7 @@ mvEmbed = {
 			$j('#'+embed_video.id).get(0).init_with_sources_loaded();
 		}   
 		js_log('done with child: ' + embed_video.id + ' len:' + global_player_list.length);
-		 return true;
+		return true;
 	},
 	//this should not be needed.
 	checkClipsReady : function(){

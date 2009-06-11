@@ -30,8 +30,8 @@ loadGM({
 	"cc_nd_title": "No Derivative Works",
 	"cc_sa_title": "Share Alike",
 	"cc_pd_title": "Public Domain",
-	"unknown_license": "Unknown License",		
-	"no_import_by_url": "This User or Wiki <b>can not</b> import assets from remote URLs. <br> If permissions are set you may have to enable $wgAllowCopyUploads, <a href=\"http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads\">more info</a>"
+	"unknown_license": "Unknown License",	
+	"no_import_by_url": "This User or Wiki <b>can not</b> import assets from remote URLs. <br><br> Do you need to Login? <br><br>If permissions are set you may have to enable $wgAllowCopyUploads, <a href=\"http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads\">more info</a>"
 });
 var default_remote_search_options = {
 	'profile':'mediawiki_edit',
@@ -301,7 +301,7 @@ remoteSearchDriver.prototype = {
 
 	cUpLoader			: null,
 	cEdit				: null,
-	dmodalCss			: null,
+	dmodalCss			: {},
 
 	init: function( iObj ){
 		var _this = this;
@@ -414,8 +414,8 @@ remoteSearchDriver.prototype = {
 			_this.target_container = '#rsd_modal_target';
 			js_log('appended: #rsd_modal_target' + $j(_this.target_container).attr('id'));
 				js_log('added target id:' + $j(_this.target_container).attr('id'));
-			//get layout
-			layout = _this.getMaxModalLayout();
+			//get layout			
+			//layout = _this.getMaxModalLayout();
 			$j(_this.target_container).dialog({
 				bgiframe: true,
 				autoOpen: true,		  
@@ -428,7 +428,7 @@ remoteSearchDriver.prototype = {
 				close: function() {
 					js_log('closed modal');
 				}		
-			}).parent('.ui-dialog').css( _this.dmodalCss )
+			}).css({'height':'100%'}).parent('.ui-dialog').css( _this.dmodalCss )
 			//@@bind on resize to disable css dialog to update dmodelCss 
 			.bind('resizestart', function(event, ui) {
 				 _this.dmodalCss = {};
@@ -438,15 +438,15 @@ remoteSearchDriver.prototype = {
 			.bind('dragstart', function(event, ui) {
 				 _this.dmodalCss = {};
 				 $j(this).css({});			
-			})
+			});
 			//update the child position: (some of this should be pushed up-stream via dialog config options 
-			.children('.ui-dialog-buttonpane').css({
-				'position':'abolute',
+			$j(_this.target_container +'~ .ui-dialog-buttonpane').css({		
+				'position':'absolute',		
 				'left':'0px',
 				'right':'0px',
 				'bottom':'0px'
 			});
-			
+			js_log('done setup of target_container: '+ $j(_this.target_container +'~ .ui-dialog-buttonpane').length);
 			
 			
 			/*var resizeTimer = false;
@@ -692,8 +692,8 @@ remoteSearchDriver.prototype = {
 			if(  this.disp_item == 'combined' ){
 				//combined results are harder to error handle just ignore that repo
 				cp.sObj.loading = false;
-			}else{
-				$j('#rsd_results').html( '<div style="padding:10px">'+ gM('no_import_by_url') +'</div>');
+			}else{			
+				$j('#tab-' + this.disp_item).html( '<div style="padding:10px">'+ gM('no_import_by_url') +'</div>');			
 			}
 			return false;
 		}
