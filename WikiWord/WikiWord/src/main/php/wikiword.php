@@ -23,8 +23,8 @@ function printLocalConceptList($lang, $concepts) {
 }
 
 function printConceptImageList($id) {
-    global $utils, $wwThumbSize;
-    $images = $utils->getImagesAbout($id);
+    global $utils, $wwThumbSize, $wwMaxPreviewImages;
+    $images = $utils->getImagesAbout($id, $wwMaxPreviewImages);
 
     ?>
     <ul class="terselist">

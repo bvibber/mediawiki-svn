@@ -30,9 +30,9 @@ class ImageCollection {
 		"name" => $image,
 		"score" => 0
 	    );
+	} else {
+	  $rec = $this->images[$image];
 	}
-
-	$rec = $this->images[$image];
 
 	if (!isset($rec[$usage])) $rec[$usage] = array();
 	$rec[$usage][] = $key;
@@ -74,7 +74,7 @@ class WWUtils {
 	if ($db == NULL && isset($this)) $db = $this->db;
 
 	if ($this->debug) {
-	    print htmlspecialchars($sql);
+	    print "\n<br/>" .  htmlspecialchars($sql) . "<br/>\n";
 	}
 
 	if (!$db) {
@@ -92,38 +92,49 @@ class WWUtils {
 	return $result;
     }
 
-    function getWikiTableName($lang) {
+    function getWikiTableName($lang, $table) {
 	global $wwWikitableNamePattern;
-	if ($wwWikitableNamePattern) return str_replace('{name}', $lang, $wwWikitableNamePattern);
-	else return "";
+
+	if ($wwWikitableNamePattern) {
+	    return str_replace(array('{lang}', '{name}'), array($lang, $table), $wwWikitableNamePattern);
+	}
+
+	return $table;
     }
 
     function quote($s) {
-	return '"' . $this->quote($s) . '"';
+	return '"' . mysql_real_escape_string($s) . '"';
     }
 
     function getWikiInfo($lang) {
-	global $wwWikiInfoTable;
+	global $wwWikiInfoTable, $wwWikiDbName, $wwWikiServerName;
+
+	$db = str_replace('{lang}', $lang, $wwWikiDbName);
 
 	$dbname = "{$lang}wiki_p";
 	$sql = "select * from $wwWikiInfoTable ";
-	$sql .= " where dbname = " . $this->quote($lang);
+	$sql .= " where dbname = " . $this->quote("$db");
 
 	$rs = $this->query($sql);
 	$info = mysql_fetch_assoc($rs);
 	mysql_free_result($rs);
 
-	return $rs;
+	if (!$info) $info = false;
+	else $info['server'] = str_replace('{num}', $info['server'], $wwWikiServerName);
+
+	return $info;
     }
 
     function getWikiConnection($lang) {
 	if (isset($this->wikidbs[$lang])) return $this->wikidbs[$lang];
 
 	$info = $this->getWikiInfo($lang);
-	if (!$info) $db = false;
-	else {
+
+	if (!$info) {
+		$db = false;
+	} else {
 	    $db = mysql_connect($info['server'], $this->dbuser, $this->dbpassword) or die("Connection Failure to Database: " . mysql_error());
-	    mysql_select_db($info['database'], $db) or die ("Database not found: " . mysql_error());
+	    mysql_select_db($info['dbname'], $db) or die ("Database not found: " . mysql_error());
 	    mysql_query("SET NAMES UTF8;", $db) or die ("Database not found: " . mysql_error());
 	}
 
@@ -336,19 +347,21 @@ class WWUtils {
 	$sql = "SELECT I.il_to as name FROM $imagelinks_table as I ";
 	$sql .= " JOIN $page_table as P on P.page_id = I.il_from ";
 	if ($commonsOnly) $sql .= " LEFT JOIN $image_table as R on R.img_name = I.il_to ";
-	if ($commonsOnly) $sql .= " JOIN {$wwCommonsTablePrefix}_image as C on C.img_name = I.il_to ";
-
-	$sql .= " WHERE P.page_namespace = " . (int)$namespace;
+	if ($commonsOnly) $sql .= " JOIN {$wwCommonsTablePrefix}image as C on C.img_name = I.il_to ";
+	
+	$sql .= " WHERE P.page_namespace = " . (int)$ns;
 	$sql .= " AND P.page_title = " . $this->quote($title);
-	if ($commmonsOnly) $sql .= " AND R.img_name IS NULL";
+	if ($commonsOnly) $sql .= " AND R.img_name IS NULL";
 
 	return $this->queryWiki($lang, $sql);
     }
 
     function getImagesOnPage($lang, $ns, $title, $commonsOnly = false) {
 	$rs = $this->queryImagesOnPage($lang, $ns, $title, $commonsOnly);
+
 	$list = WWUtils::slurpList($rs, "name");
 	mysql_free_result($rs);
+
 	return $list;
     }
 
@@ -366,12 +379,12 @@ class WWUtils {
 	$sql .= " JOIN $page_table as TP on TP.page_id = I.il_from ";
 	$sql .= " JOIN $templatelinks_table as T on T.tl_namespace = TP.page_namespace AND T.tl_title = TP.page_title ";
 	$sql .= " JOIN $page_table as P on P.page_id = T.tl_from ";
-	if ($commonsOnly) $sql .= " LEFT JOIN $image as R on R.img_name = I.il_to ";
-	if ($commonsOnly) $sql .= " JOIN {$wwCommonsTablePrefix}_image as C on C.img_name = I.il_to ";
+	if ($commonsOnly) $sql .= " LEFT JOIN $image_table as R on R.img_name = I.il_to ";
+	if ($commonsOnly) $sql .= " JOIN {$wwCommonsTablePrefix}image as C on C.img_name = I.il_to ";
 
-	$sql .= " WHERE P.page_namespace = " . (int)$namespace;
+	$sql .= " WHERE P.page_namespace = " . (int)$ns;
 	$sql .= " AND P.page_title = " . $this->quote($title);
-	if ($commmonsOnly) $sql .= " AND R.img_name IS NULL";
+	if ($commonsOnly) $sql .= " AND R.img_name IS NULL";
 
 	return $this->queryWiki($lang, $sql);
     }
@@ -426,7 +439,7 @@ class WWUtils {
 	    if ($lang == "commons") continue;
 
 	    $img = $this->getRelevantImagesOnPage($lang, 0, $title, true); //FIXME: resource mapping
-	    $images->addImages($images, $lang . ":" . $title, "article", 1);
+	    $images->addImages($img, $lang . ":" . $title, "article", 1);
 	}
 
 	if ($max && $images->size()>$max) 
@@ -436,13 +449,13 @@ class WWUtils {
 	    $title = $conceps['commons'];
 
 	    $img = $this->getRelevantImagesOnPage("commmons", 0, $title, false); //FIXME: resource mapping
-	    $images->addImages($images, "commons:" . $title, "gallery", 0.8);
+	    $images->addImages($img, "commons:" . $title, "gallery", 0.8);
 
 	    if ($max && $images->size()>$max) 
 		return $images->listImages($max);
 
 	    $img = $this->getImagesInCategory("commmons", $title); //FIXME: resource mapping
-	    $images->addImages($images, "commons:" . $title, "category", 0.5);
+	    $images->addImages($img, "commons:" . $title, "category", 0.5);
 	}
 
 	return $images->listImages($max);
