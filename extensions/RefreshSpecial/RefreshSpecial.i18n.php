@@ -425,7 +425,7 @@ Aviso: o refrescado pode levar uns intres nos wikis grandes.',
 	'refreshspecial-none-selected' => 'Non seleccionou ningunha páxina especial. Revertendo á selección por defecto.',
 	'refreshspecial-db-error' => 'Fallou: erro da base de datos',
 	'refreshspecial-no-page' => 'Non existe tal páxina especial',
-	'refreshspecial-slave-lagged' => 'Intervalo de retraso, agardando...',
+	'refreshspecial-slave-lagged' => 'Intervalo de atraso, agardando...',
 	'refreshspecial-reconnected' => 'Reconectado.',
 	'refreshspecial-reconnecting' => 'Fallou a conexión, reconectando en 10 segundos...',
 	'refreshspecial-page-result' => '{{PLURAL:$1|Obtívose unha liña|Obtivéronse $1 liñas}} en',
@@ -904,9 +904,9 @@ $messages['ro'] = array(
 	'refreshspecial-desc' => 'Permite [[Special:RefreshSpecial|actualizarea manuală]] a paginilor speciale',
 	'refreshspecial-title' => 'Actualizează paginile speciale',
 	'refreshspecial-help' => "Această pagină specială furnizează mijloacele pentru a actualiza manual paginile speciale.
-După ce aţi ales toate paginile pe care doriţi să le reîmprospătaţi, faceţi clic pe \"Actualizează marcările\" butonul de mai jos pentru a actualiza pagini speciale marcate.
+După ce aţi ales toate paginile pe care doriţi să le reîmprospătaţi, faceţi clic pe butonul de mai jos, \"Actualizează marcările\", pentru a actualiza paginile speciale marcate.
 '''Atenţie:''' Actualizarea poate dura un timp mai îndelungat în wiki-urile mari.",
-	'refreshspecial-button' => 'Actualizează ce e marcat',
+	'refreshspecial-button' => 'Actualizează marcările',
 	'refreshspecial-fail' => 'Te rog marchează cel puţin o pagină specială care să fie actualizată',
 	'refreshspecial-refreshing' => 'se actualizează paginile speciale',
 	'refreshspecial-skipped' => 'superficial, omis',
@@ -921,7 +921,7 @@ După ce aţi ales toate paginile pe care doriţi să le reîmprospătaţi, face
 	'refreshspecial-reconnected' => 'Reconectat.',
 	'refreshspecial-reconnecting' => 'Eroare la conectare, reconectare în 10 secunde ...',
 	'refreshspecial-page-result' => '$1 {{PLURAL:$1|rând obţinut|rânduri obţinute}} în',
-	'refreshspecial-total-display' => 'Actualizat $1 {{PLURAL:$1|pagină|pagini}} însumând $2 {{PLURAL:$2|rând|rânduri}} în timpul de $3 (timpul complet de rulare a script-ului este de $4)',
+	'refreshspecial-total-display' => 'Au fost actualizate $1 {{PLURAL:$1|pagină|pagini}} însumând $2 {{PLURAL:$2|rând|rânduri}} în timpul de $3 (timpul complet de rulare a script-ului a fost de $4)',
 	'right-refreshspecial' => 'Actualizez paginile speciale',
 );
 
@@ -931,7 +931,9 @@ După ce aţi ales toate paginile pe care doriţi să le reîmprospătaţi, face
  */
 $messages['ru'] = array(
 	'refreshspecial' => 'Обновить служебные страницы',
-	'refreshspecial-select-all-pages' => ' выбрать все страницы',
+	'refreshspecial-select-all-pages' => 'Выбрать все страницы',
+	'refreshspecial-link-back' => 'Вернуться к служебной странице',
+	'refreshspecial-db-error' => 'Неудачно: Ошибка базы данных',
 	'refreshspecial-no-page' => 'Нет такой служебной страницы',
 	'right-refreshspecial' => 'обновление служебных страниц',
 );

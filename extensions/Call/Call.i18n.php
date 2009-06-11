@@ -682,17 +682,19 @@ Om du har problem, kan du prøva <b>Special:Call/DebuG</b>.',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'call' => 'Kall opp',
 	'call-desc' => 'Gir mulighet til å skape linker til maler (eller vanlige wikisider) med angitte parametre. Lenkene kan brukes i nettleserens adressefelt eller i wikitekst.',
 	'call-text' => 'Utvidelsen Kall opp (Call) forventer seg at en wikiside og valgfrie parametere for den siden angis som et argument.<br /><br />
-Eksempel 1: &nbsp; <tt>[[Special:Call/Min mal,parm1=verdi1]]</tt><br />
-Eksempel 2: &nbsp; <tt>[[Special:Call/Talk:Min diskusjonsside,parm1=verdi1]]</tt><br /><br />
-Eksempel 3: &nbsp; <tt>[[Special:Call/:Min side,parm1=verdi1,parm2=verdi2]]</tt><br /><br />
-Eksempel 4 (URL for adressefeltet): &nbsp; <tt>http://mittdomene/minwiki/index.php?Special:Call/:Min_side,parm1=verdi1</tt><br /><br />
+Eksempel 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+Eksempel 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br /><br />
+Eksempel 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
+Eksempel 4 (URL for adressefeltet): &nbsp; <tt>http://mittdomene/minwiki/index.php?Special:Call/:My Page,parm1=value1</tt><br /><br />
 
-<i>Kall opp</i>-tillegget anroper den angitte siden og sender med parameterne.<br />Du kommer til å se den anropte sidens innhold og tittel, men siden som vises er en spesialside og kan derfor ikke redigeres.<br />
+<i>Kall opp</i>-tillegget anroper den angitte siden og sender med parameterne.<br />
+Du kommer til å se den anropte sidens innhold og tittel, men siden som vises er en spesialside og kan derfor ikke redigeres.<br />
 Innholdet som vises kan variere avhengig av verdiene til de parameterne som sendes med.<br /><br />
 Tillegget <i>Kall opp</i> kan brukes for å skape interaktive applikasjoner med MediaWiki.<br />
 Se for eksempel <a href="http://semeb.com/dpldemo/Template:Catlist">grensesnittet for DPL</a><br />

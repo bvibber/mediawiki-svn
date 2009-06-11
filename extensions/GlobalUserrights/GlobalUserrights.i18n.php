@@ -409,6 +409,18 @@ $messages['roa-tara'] = array(
 	'right-userrights-global' => "Gestisce le deritte de l'utinde globale",
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'globaluserrights' => 'Управление глобальными правами участников',
+	'gur-desc' => 'Простое администрирование [[Special:GlobalUserRights|глобальных прав участников]]',
+	'gur-rightslog-name' => 'Журнал глобальных прав',
+	'gur-rightslog-header' => 'Это журнал изменений глобальных прав.',
+	'gur-rightslog-entry' => 'изменил глобальное членство в группах для $1 с $2 на $3',
+	'right-userrights-global' => 'управление глобальными правами участников',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

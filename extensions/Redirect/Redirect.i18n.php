@@ -206,6 +206,13 @@ $messages['roa-tara'] = array(
 	'redirect-desc' => "Permitte 'a configurazione facile de le redireziunaminde sus a [[MediaWiki:Redirect-addnewaccount|ccreazione d'u cunde utende]] e [[MediaWiki:Redirect-userlogoutcomplete|ìsse fore]]",
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'redirect-desc' => 'Позволяет простую настройку перенаправлений на [[MediaWiki:Redirect-addnewaccount|создание учётных записей]] и [[MediaWiki:Redirect-userlogoutcomplete|завершение сеанса]]',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

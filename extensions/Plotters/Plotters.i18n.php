@@ -340,6 +340,17 @@ $messages['pt'] = array(
 	'plotters-no-data' => 'Não foram providenciados dados.',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'plotters' => 'Плоттеры',
+	'plotters-title' => 'Плоттеры',
+	'plotters-uses' => 'Использования',
+	'plotters-missing-script' => 'Нет определённых скриптов',
+	'plotters-missing-arguments' => 'Нет указанных аргументов.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

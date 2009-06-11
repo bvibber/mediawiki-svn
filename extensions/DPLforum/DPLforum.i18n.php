@@ -155,9 +155,11 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'dplforum-by' => 'από $1',
+	'dplforum-edited' => '- Τελευταία επεξεργασμένη',
 	'dplforum-never' => 'Ποτέ',
 );
 

@@ -257,9 +257,9 @@ Lueg au {{PLURAL:$2|die ähnlig Syte|die ähnlige Syte}} aa: $1.',
 $messages['he'] = array(
 	'editsimilar-desc' => 'עידוד המשתמשים לערוך דפים דומים לאחר שמירת דף',
 	'editsimilar-thanks' => 'תודה על תרומתכם.
-אנא עיינו בדפים קשורים אלו: $1.',
-	'editsimilar-thanks-notsimilar' => 'תודה לכם על תרומתכם.
-ייתכן שדפים אלו זקוקים לעזרתכם גם כן: $1.',
+אנא עיינו ב{{PLURAL:$2|דף הקשור הבא|דפים הקשורים הבאים}}: $1.',
+	'editsimilar-thanks-notsimilar' => 'תודה על תרומתכם.
+ייתכן ש{{PLURAL:$2|דף זה זקוק|דפים אלו זקוקים}} לעזרתכם גם כן: $1.',
 	'editsimilar-thankyou' => 'תודה לך על תרומתך, $1!',
 	'editsimilar-link-disable' => 'הגדרת העדפות',
 	'tog-edit-similar' => 'הצגת הצעות בנוגע לדפים דומים',
@@ -489,8 +489,9 @@ Vizitaţi şi paginile conexe: $1.',
  */
 $messages['ru'] = array(
 	'editsimilar-thanks' => 'Спасибо за ваш вклад.
-Проверьте эти связанные страницы: $1.',
+Проверьте {{PLURAL:$2|эту связанную страницу|эти связанные страницы}}: $1.',
 	'editsimilar-thankyou' => 'Спасибо за ваш вклад, $1!',
+	'editsimilar-link-disable' => 'установить настройки',
 );
 
 /** Slovak (Slovenčina)

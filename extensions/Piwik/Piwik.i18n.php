@@ -240,6 +240,7 @@ $messages['he'] = array(
 	'piwik-lastvisits' => 'ביקורים אחרונים',
 	'piwik-countries' => 'ארצות',
 	'piwik-browsers' => 'דפדפנים',
+	'right-viewpiwik' => 'צפיה ב[[Special:Piwik|סטטיסטיקה של Piwik]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -426,6 +427,7 @@ $messages['ro'] = array(
  * @author Ferrer
  */
 $messages['ru'] = array(
+	'piwik-lastvisits' => 'Последние посещения',
 	'piwik-browsers' => 'Браузеры',
 );
 

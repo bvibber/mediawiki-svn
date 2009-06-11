@@ -321,10 +321,14 @@ $messages['pt-br'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'rightfunctions-desc' => 'Функции парсера на основе разрешений',
+	'rightfunctions-casc' => '(для каскадных источников)',
+	'rightfunctions-local' => '(для локальной страницы)',
+	'rightfunctions-ns' => '(для защиты пространства имён)',
 );
 
 /** Slovak (Slovenčina)

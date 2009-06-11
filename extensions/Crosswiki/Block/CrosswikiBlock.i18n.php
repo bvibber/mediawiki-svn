@@ -839,6 +839,7 @@ $messages['he'] = array(
 * [[Special:CrosswikiBlock|טופס החסימה]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'שחרור חסימות מקומיות אינו נתמך דרך ממשק זה. השתמשו ב[[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'חסימה ושחרור משתמשים באתרי ויקי אחרים',
 );
 
 /** Hindi (हिन्दी)
@@ -1843,6 +1844,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1885,6 +1887,7 @@ $messages['ru'] = array(
 * [[Special:CrosswikiBlock|форма блокировки]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Локальные блокировки не поддерживаются с помощью этого интерфейса. Используйте [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'блокировка и разблокировка участников в других вики',
 );
 
 /** Sassaresu (Sassaresu)

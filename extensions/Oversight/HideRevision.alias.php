@@ -65,7 +65,7 @@ $aliases['fi'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'HideRevision' => array( 'Masquer révision', 'MasquerRevision' ),
+	'HideRevision' => array( 'Masquer révision' ),
 	'Oversight' => array( 'Superviser', 'Superviseur', 'Supervision' ),
 );
 

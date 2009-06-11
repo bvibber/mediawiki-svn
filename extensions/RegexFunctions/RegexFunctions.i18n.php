@@ -249,6 +249,13 @@ $messages['roa-tara'] = array(
 	'regexfunctions-desc' => "Funziune d'u 'nderprete de le espressiune regolere",
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'regexfunctions-desc' => 'Функции парсера с регулярными выражениями',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

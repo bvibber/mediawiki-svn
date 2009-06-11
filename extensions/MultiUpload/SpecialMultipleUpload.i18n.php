@@ -535,7 +535,7 @@ $messages['haw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'multipleupload' => 'העלאת קבצים',
+	'multipleupload' => 'העלאת מספר קבצים',
 	'multipleupload-desc' => 'אפשרות של [[Special:MultipleUpload|העלאת מספר קבצים בבת אחת]]',
 	'multipleupload-ignoreallwarnings' => "התעלמות מ'''כל האזהרות''' ושמירת הקבצים בכל זאת.",
 	'multipleupload-saveallfiles' => 'שמירת כל הקבצים',
@@ -1518,9 +1518,23 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Tomchiukc
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'multipleupload' => '上載多個檔案',
+	'multipleupload-desc' => '允許用戶在[[Special:MultipleUpload|同一時間上載多個檔案]]',
+	'multipleupload-ignoreallwarnings' => "忽略'''所有警告'''並繼續儲存檔案。",
 	'multipleupload-saveallfiles' => '儲存所有檔案',
+	'multipleupload-addresswarnings' => '在從新上載檔案前，請先回應所有警告。',
+	'multipleupload-page' => '{{ns:project}}:檔案刪除政策',
+	'multipleupload-text' => "你可以在這裡上載多個檔案。
+
+點選「瀏覽…」並選擇你要上載的檔案。
+你可以選擇在同一時間上載一個到 $1 個檔案。
+
+你亦可為要上載的檔案重定一個 '''目標檔名''' ，並為每個檔案提供 '''總結''' ，用以描述各檔。
+
+所有不合適的檔案都會被立即刪除，詳見[[{{MediaWiki:Multipleupload-page}}|檔案刪除政策]]。",
 );
 

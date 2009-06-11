@@ -793,6 +793,7 @@ $messages['he'] = array(
 	'usagestatisticscalselect' => 'בחירה',
 	'usagestatistics-editindividual' => 'סטטיסטיקת עריכות של המשתמש היחיד $1',
 	'usagestatistics-editpages' => 'סטטיסטיקות הדפים של המשתמש היחיד $1',
+	'right-viewsystemstats' => 'צפייה ב[[Special:UserStats|סטטיסטיקת השימוש בוויקי]]',
 );
 
 /** Hindi (हिन्दी)

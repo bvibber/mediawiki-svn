@@ -393,6 +393,7 @@ $messages['pt-br'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Kaganer
  * @author Александр Сигачёв
  */
@@ -401,6 +402,8 @@ $messages['ru'] = array(
 	'signature-desc' => 'Позволяет [[Special:SignDocument|подписывать]] документы',
 	'signaturelogpagetext' => 'Это журнал [[Special:SignDocument|всех подписей, добавленных к документам]].',
 	'signaturelogentry' => 'подписал документ $1',
+	'right-sigadmin' => 'администрирование подписей документов',
+	'right-createsigndocument' => 'создание документов, которые могут быть подписаны',
 );
 
 /** Slovak (Slovenčina)

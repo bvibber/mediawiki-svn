@@ -3133,6 +3133,12 @@ OpenID позволяет вам заходить на различные веб
 	'openid-prefstext' => 'Параметры [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Скрывать ваш OpenID на вашей странице участника, если вы вошли с помощью OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Обновлять информацию обо мне через OpenID каждый раз, когда я представляюсь системе',
+	'openidsigninorcreateaccount' => 'Представиться системе или создать новую учётную запись',
+	'openid-provider-label-openid' => 'Введите URL вашего OpenID',
+	'openid-provider-label-google' => 'Представиться, используя учётную запись Google',
+	'openid-provider-label-yahoo' => 'Представиться, используя учётную запись Yahoo',
+	'openid-provider-label-aol' => 'Введите ваше имя в AOL',
+	'openid-provider-label-other-username' => 'Введите ваше имя участника $1',
 );
 
 /** Sicilian (Sicilianu)

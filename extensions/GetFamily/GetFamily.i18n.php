@@ -107,6 +107,17 @@ $messages['gsw'] = array(
 	'right-getfamily' => 'E Familiedatei fir dr pywikipediabot aalege',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'getfamily-desc' => 'מחולל קובץ משפחה עבור pywikipediabot',
+	'getfamily' => 'קבלת קובץ משפחה של pywikipediabot',
+	'getfamily-interwikierror' => 'שגיאה: הגדרת בינוויקי שגויה, אנא צרו קשר עם מנהל האתר.',
+	'right-getfamily' => 'יצירת קובץ משפחה עבור pywikipediabot',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -158,6 +169,16 @@ Neem contact op met uw lokale beheerder.',
 	'right-getfamily' => 'Een familiebestand voor pywikipediabot maken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'getfamily-desc' => 'Set opp ei familiefil for pywikipediabot',
+	'getfamily' => 'Få pywikipediabot familie',
+	'getfamily-interwikierror' => 'Feil: ikkje rett oppsett av interwiki, kontakt ein lokal adminstrator.',
+	'right-getfamily' => 'Opprett ei familie for pywikipediabot',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -183,6 +204,16 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'getfamily-interwikierror' => 'Erro: configuração de interwikis incorrecta. Contacte o administrador.',
+);
+
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'getfamily-desc' => 'Создание файла family для pywikipediabot',
+	'getfamily' => 'Получить pywikipediabot family',
+	'getfamily-interwikierror' => 'Ошибка: неправильно установлены интервики, свяжитесь с ваши локальным администратором.',
+	'right-getfamily' => 'создание файла familiy для pywikipediabot',
 );
 
 /** Slovak (Slovenčina)

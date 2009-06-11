@@ -150,6 +150,13 @@ $messages['gl'] = array(
 	'stringfunctions-desc' => 'Realza a análise con funcións de cordas',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'stringfunctions-desc' => 'Ἐνισχύει τὸν λεξιαναλυτὴν μετὰ συναρτήσεων ὀρμαθῶν',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -365,5 +372,12 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'stringfunctions-desc' => 'Bổ sung các hàm chuỗi trong bộ phân tích',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Tomchiukc
+ */
+$messages['zh-hant'] = array(
+	'stringfunctions-desc' => '利用字串函數來增強parser',
 );
 

@@ -249,11 +249,13 @@ $messages['gsw'] = array(
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'whatismyip' => 'כתובת ה־IP שלי',
-	'whatismyip-desc' => 'הצגת כתובת ה־IP הנוכחית של המשתמש בדף [[Special:WhatIsMyIP]]',
-	'whatismyip-out' => 'כתובת ה־IP שלך:',
+	'whatismyip-desc' => 'הצגת [[Special:WhatIsMyIP|כתובת ה־IP]] הנוכחית של המשתמש',
+	'whatismyip-out' => 'כתובת ה־IP שלכם:',
+	'right-whatismyip' => 'צפייה ב[[Special:WhatIsMyIP|כתובת ה־IP העצמית]]',
 );
 
 /** Croatian (Hrvatski)

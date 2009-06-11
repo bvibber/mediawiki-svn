@@ -957,6 +957,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -967,6 +968,8 @@ $messages['ru'] = array(
 	'edituser-dosearch' => 'Найти',
 	'edituser-nouser' => 'Указанный участник не существует',
 	'edituser-exempt' => 'Указанный участник не может быть отредактирован',
+	'right-edituser' => 'редактирование настроек других участников',
+	'right-edituser-exempt' => 'другие не могут редактировать настройки этого участника',
 );
 
 /** Sinhala (සිංහල)

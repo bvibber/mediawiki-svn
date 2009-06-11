@@ -291,11 +291,12 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Eugene Mednikov
+ * @author Ferrer
  */
 $messages['ru'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Найти координаты',
-	'semanticgooglemaps-desc'              => 'Позволяет редактировать и показывать семантические координатные данные с помощью Google Maps',
-	'semanticgooglemaps-enteraddresshere'  => 'Введите адрес',
+	'semanticgooglemaps-desc' => 'Позволяет редактировать и показывать семантические координатные данные с помощью Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Введите адрес здесь',
 );
 
 /** Slovak (Slovenčina)

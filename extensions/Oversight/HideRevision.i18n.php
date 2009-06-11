@@ -1039,6 +1039,7 @@ $messages['fo'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Elfix
  * @author Grondin
  * @author IAlex
  * @author Meithal
@@ -1050,10 +1051,10 @@ $messages['fo'] = array(
 $messages['fr'] = array(
 	'hiderevision' => 'Cacher définitivement les révisions',
 	'hiderevision-desc' => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
-	'group-oversight' => 'Superviseurs',
-	'group-oversight-member' => 'Superviseur',
-	'grouppage-oversight' => '{{ns:project}}:Superviseur',
-	'right-oversight' => 'Voir les versions cachées par supervision',
+	'group-oversight' => 'Oversighters',
+	'group-oversight-member' => 'oversight',
+	'grouppage-oversight' => '{{ns:project}}:Oversight',
+	'right-oversight' => 'Voir les versions cachées par oversight',
 	'right-hiderevision' => 'Masquer des révisions aux administrateurs',
 	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
 	'hiderevision-continue' => 'Continuer',
@@ -1081,14 +1082,14 @@ Annulez d’abord cette modification en rétablissant la version précédente.',
 *La page a été supprimée,
 *La révision cachée était la toute première de la page',
 	'oversight-log-hiderev' => 'a supprimé une édition de $1',
-	'oversight' => 'Supervision',
+	'oversight' => 'Oversight',
 	'oversight-view' => 'détails',
 	'oversight-difference' => '(Différence par rapport à la révision précédente)',
 	'oversight-prev' => 'Dernière révision précédente',
 	'oversight-hidden' => 'Révision cachée',
 	'oversight-header' => 'Ci-dessous figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges de {{MediaWiki:Oversight}}.',
 	'oversight-legend' => 'Journal des recherches des versions cachées',
-	'oversight-oversighter' => 'Superviseur :',
+	'oversight-oversighter' => 'Oversighter :',
 	'oversight-offender' => 'Diffamateur :',
 );
 
@@ -2867,9 +2868,19 @@ $messages['rmy'] = array(
  * @author Mihai
  */
 $messages['ro'] = array(
+	'hiderevision-reason' => 'Motiv (va fi înregistrat separat):',
+	'hiderevision-submit' => 'Ascunde permanent această revizie',
+	'hiderevision-tab' => 'Ascunde revizia',
 	'hiderevision-link' => 'Contribuţii ascunse ale utilizatorului',
+	'hiderevision-norevisions' => 'Nicio revizie specificată pentru ştergere.',
 	'hiderevision-noreason' => 'Trebuie să descrii motivul ştergerii.',
 	'hiderevision-status' => 'Revizia $1: $2',
+	'hiderevision-success' => 'Arhivat şi şters cu succes.',
+	'hiderevision-error-missing' => 'Nu a fost găsit în baza de date.',
+	'hiderevision-error-current' => 'Nu poate fi ştearsă ultima modificare adusă unei pagini.
+Anuleaz-o pe aceasta şi revino la cea precedentă mai întâi.',
+	'hiderevision-error-delete' => 'Nu a putut fi arhivat; a fost deja şters?',
+	'hiderevision-archive-status' => 'Ştergerea reviziei din $1: $2',
 	'oversight-view' => 'detalii',
 );
 

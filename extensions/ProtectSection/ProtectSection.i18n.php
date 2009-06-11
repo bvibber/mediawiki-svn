@@ -412,12 +412,15 @@ $messages['pt-br'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'protectsection_desc' => 'Позволяет авторизованным участникам защищать часть страницы, используя тег <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Вы пытаетесь добавить или удалить защищённый раздел',
 	'protectsection_modify' => 'Вы пытаетесь изменить защищённый текст',
 	'protectsection_forbidden' => 'Запрещённый',
+	'right-protectsection' => 'защита разделов страницы',
 );
 
 /** Slovak (Slovenčina)

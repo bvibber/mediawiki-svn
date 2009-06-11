@@ -1570,7 +1570,7 @@ $messages['fy'] = array(
 $messages['gl'] = array(
 	'viewapc' => 'Información ACP',
 	'viewapc-desc' => '[[Special:ViewAPC|Ver e xestionar a caché APC]] con MediaWiki',
-	'right-apc' => 'Usar todas as características en [[Special:ViewAPC|ViewAPC]]',
+	'right-apc' => 'Usar todas as características de [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'A información da memoria caché non está dispoñible.
 Parece que APC non funciona.',
 	'viewapc-clear-confirm' => 'Desexa borrar a memoria caché?',
@@ -2438,7 +2438,7 @@ APC non sembra essere in esecuzione.",
 $messages['ja'] = array(
 	'viewapc' => 'APC情報',
 	'viewapc-desc' => 'MediaWiki で[[Special:ViewAPC|APCキャッシュを表示および管理する]]',
-	'right-apc' => '[[Special:ViewAPC|ViewAPC]]の全機能の使用',
+	'right-apc' => '[[Special:ViewAPC|APC情報]]の全機能の使用',
 	'viewapc-apc-not-available' => 'キャッシュ情報は利用できません。APCが動作していないようです。',
 	'viewapc-clear-confirm' => 'キャッシュをクリアしたいのですか?',
 	'viewapc-clear-user-cache' => 'ユーザーキャッシュをクリアする',
@@ -2828,7 +2828,7 @@ En neuer Version ($2) steiht ald parat op http://pecl.php.net/package/APC/$2',
 $messages['lb'] = array(
 	'viewapc' => 'Informatiounen iwwer APC',
 	'viewapc-desc' => '[[Special:ViewAPC|Den APC-Cache]] mat MediaWiki kucken a geréieren',
-	'right-apc' => 'Benotz all Fonctionalitéite vu [[Special:ViewAPC|ViewAPC]]',
+	'right-apc' => 'Benotzt all Fonctionalitéite vu [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-clear-confirm' => 'Wëllt Dir de Cache eidel maachen?',
 	'viewapc-clear-user-cache' => 'Benotzer Cache eidel maachen',
 	'viewapc-mode-stats' => "D'Statistike vum Server weisen",

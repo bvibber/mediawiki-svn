@@ -454,6 +454,7 @@ $messages['he'] = array(
 	'authorprotect-failure' => 'הפעלת ההגנה נכשלה',
 	'protect-level-author' => 'הגנה מפני לא־יוצרים',
 	'restriction-level-author' => 'מוגן ליוצר',
+	'right-authorprotect' => 'הגנה על דפים שנכתבו על ידי אותו המשתמש',
 );
 
 /** Hindi (हिन्दी)
@@ -1037,8 +1038,9 @@ $messages['ro'] = array(
 	'authorprotect-intro' => 'Utilizaţi acest formular pentru a proteja această pagină de non-autori',
 	'authorprotect-success' => 'Protejare cu succes!',
 	'authorprotect-failure' => 'Protejare fără succes',
-	'protect-level-author' => 'Potejează de non-autori',
-	'restriction-level-author' => 'Protejat de autor',
+	'protect-level-author' => 'Protejare de non-autori',
+	'restriction-level-author' => 'Autor-protejat',
+	'right-authorprotect' => 'Protejare pagini de autor',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1049,6 +1051,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1065,6 +1068,7 @@ $messages['ru'] = array(
 	'authorprotect-failure' => 'Установить защиту не удалось',
 	'protect-level-author' => 'Защита от не-авторов',
 	'restriction-level-author' => 'Авторская защита',
+	'right-authorprotect' => 'защита авторских страниц',
 );
 
 /** Slovak (Slovenčina)

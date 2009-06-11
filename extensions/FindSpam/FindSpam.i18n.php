@@ -199,10 +199,15 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'findspam' => 'Εντοπισμός spam',
+	'findspam-desc' => 'Προσθέτει μία [[Special:FindSpam|ειδική σελίδα]] που βοηθάει στην αναζήτηση πρόσφατα προστεθειμένου spam',
 	'findspam-ip' => 'Διεύθυνση IP:',
 	'findspam-ok' => 'Εντάξει',
+	'findspam-notextfound' => 'Καμία συνεισφορά δε βρέθηκε',
+	'right-findspam' => 'Αναζήτηση για πρόσφατα προστεθειμένο spam',
 );
 
 /** Esperanto (Esperanto)

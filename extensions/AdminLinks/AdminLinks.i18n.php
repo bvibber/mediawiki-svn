@@ -423,6 +423,25 @@ $messages['roa-tara'] = array(
 	'adminlinks_users' => 'Utinde',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'adminlinks' => 'Ссылки для администраторов',
+	'adminlinks-desc' => 'Добавляет [[Special:AdminLinks|служебную страницу]], содержащую полезные ссылки для администраторов',
+	'adminlinks_documentation' => 'документация $1',
+	'adminlinks_general' => 'Общие',
+	'adminlinks_editsidebar' => 'Править боковую панель',
+	'adminlinks_editcss' => 'Править файл CSS',
+	'adminlinks_editmainpagename' => 'Править имя заглавной страницы',
+	'adminlinks_users' => 'Участники',
+	'adminlinks_createuser' => 'Создать учётную запись',
+	'adminlinks_browsesearch' => 'Обзор и поиск',
+	'adminlinks_importexport' => 'Импорт и экспорт',
+	'right-adminlinks' => 'видеть [[Special:AdminLinks|ссылки для администраторов]]',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

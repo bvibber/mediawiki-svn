@@ -1192,17 +1192,40 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  * @author Rubin
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'recordadmin' => 'Администрирование записей',
+	'recordadmin-desc' => '[[Special:RecordAdmin|Служебная страница]] для поиска и правки страниц записей, используя форму',
+	'recordadmin-select' => 'Выбрать',
+	'recordadmin-createtype' => 'Введите название нового типа записи для создания',
+	'recordadmin-recordtype' => 'тип записи',
+	'recordadmin-newsearch' => 'Новый поиск $1',
+	'recordadmin-newrecord' => 'Выберите другой тип записи',
 	'recordadmin-submit' => 'Отправить',
+	'recordadmin-create' => 'Найти или создать запись «$1»',
+	'recordadmin-alreadyexist' => 'Извините, «$1» уже существует !',
+	'recordadmin-createsuccess' => '$1 создано',
+	'recordadmin-badtitle' => 'Неправильный заголовок!',
+	'recordadmin-recordid' => 'ID/имя записи:',
 	'recordadmin-buttonsearch' => 'Найти',
 	'recordadmin-buttoncreate' => 'Создать',
+	'recordadmin-buttonreset' => 'Сбросить',
+	'recordadmin-searchresult' => 'Результаты поиска',
+	'recordadmin-edit' => 'Редактировать $2 запись «$1»',
+	'recordadmin-updatesuccess' => '$1 обновлено',
 	'recordadmin-buttonsave' => 'Сохранить',
+	'recordadmin-createlink' => 'создать один',
 	'recordadmin-viewlink' => 'просмотр',
 	'recordadmin-editlink' => 'править',
+	'recordadmin-created' => 'Создано',
+	'recordadmin-modified' => 'Изменено',
+	'recordadmin-actions' => 'Действия',
+	'recordadmin-needscontent' => 'Добавить содержимое...',
+	'right-recordadmin' => 'поиск и редактирование страниц записей',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

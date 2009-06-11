@@ -518,10 +518,15 @@ Adda essere:",
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'securepasswords-desc' => 'Создаёт защищённые хеши паролей и добавляет проверку силы пароля',
+	'securepasswords-lowercase' => 'содержит минимум 1 строчную букву',
+	'securepasswords-uppercase' => 'содержит минимум 1 прописную букву',
 	'securepasswords-username' => 'будет отличаться от вашего имени участника',
+	'securepasswords-word' => 'не слово',
 );
 
 /** Slovak (Slovenčina)

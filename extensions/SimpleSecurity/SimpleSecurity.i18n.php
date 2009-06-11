@@ -562,6 +562,7 @@ $messages['pt-br'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -573,13 +574,14 @@ $messages['ru'] = array(
 	'security-info' => 'Для этой страницы существуют $1',
 	'security-info-toggle' => 'ограничения, связанные с безопасностью',
 	'security-inforestrict' => '$1 запрещён для $2',
-	'security-desc-LS' => "''(применено, так как эта страница находится в '''$1 $2''')''",
-	'security-desc-PR' => "''(установлено через '''вкладку защиты''')''",
-	'security-infosysops' => "Ограничения не действуют, так как вы являетесь членом группы '''sysop'''",
+	'security-desc-LS' => '(применено, так как эта страница находится в «$2 $1»)',
+	'security-desc-PR' => '(установлено через вкладку «защитить»)',
+	'security-infosysops' => 'Ограничения не действуют, так как вы являетесь членом группы «sysop»',
 	'security-manygroups' => 'групп $1 и $2',
 	'security-unchain' => 'Изменить действия в индивидуальном порядке',
 	'security-type-category' => 'категории',
 	'security-type-namespace' => 'пространстве имён',
+	'security-restricttogroup' => 'Доступ к содержимому ограничен членами «$1»',
 );
 
 /** Slovak (Slovenčina)

@@ -187,6 +187,7 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author Borislav
  * @author DCLXVI
  * @author Spiritia
  */
@@ -205,8 +206,8 @@ $messages['bg'] = array(
 * Виж беседата',
 	'patrol-another' => 'Показване на други евентуални редакции.',
 	'patrol-resume' => 'Натиснете тук за продължаване.',
-	'group-patroller' => 'Патрулиращи',
-	'group-patroller-member' => 'Патрулиращ',
+	'group-patroller' => 'Патрульори',
+	'group-patroller-member' => 'Патрульор',
 	'grouppage-patroller' => '{{ns:project}}:Патрулиращи',
 );
 
@@ -1515,10 +1516,33 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Suelnur
  */
 $messages['tr'] = array(
+	'patrol' => 'Değişiklikleri gözle',
+	'patrol-desc' => 'Geliştirilmiş devriye arayüzü, işyükü paylaşımı ile',
+	'patrol-endorse' => 'Teyit et',
+	'patrol-revert' => 'Geri al',
 	'patrol-revert-reason' => 'Neden:',
+	'patrol-skip' => 'Atla',
+	'patrol-reverting' => 'Geri alınıyor: $1',
+	'patrol-nonefound' => 'Gözlenebilecek uygun değişiklik bulunamadı.',
+	'patrol-endorsed-ok' => 'Değişiklik gözlenmiş olarak işaretlendi.',
+	'patrol-endorsed-failed' => 'Değişiklik gözlenmiş olarak işaretlenemedi.',
+	'patrol-reverted-ok' => 'Değişiklik geri alındı.',
+	'patrol-reverted-failed' => 'Değişiklik geri alınamadı.',
+	'patrol-skipped-ok' => 'Değişiklik görmezden geliniyor.',
+	'patrol-reasons' => '* Basit vandallık
+* Acemi testi
+* Tartışma sayfasına bakın',
+	'patrol-another' => 'Varsa, başka bir değişikliği göster.',
+	'patrol-stopped' => 'Başka bir değişikliği gözlememeyi seçtiniz. $1',
+	'patrol-resume' => 'Devam etmek için buraya tıklayın.',
+	'group-patroller' => 'Devriyeciler',
+	'group-patroller-member' => 'devriyeci',
+	'grouppage-patroller' => '{{ns:project}}:Devriyeci',
+	'right-patroller' => 'Sayfaları gözle',
 );
 
 /** Ukrainian (Українська)

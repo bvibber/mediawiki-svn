@@ -1300,6 +1300,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Kaganer
  * @author Александр Сигачёв
  */
@@ -1315,7 +1316,7 @@ $messages['ru'] = array(
 	'importusers-user-present-update' => "Участник '''$1''' уже существует. Обновлён.",
 	'importusers-user-present-not-update' => "Участник '''$1''' уже существует. Не обновлён.",
 	'importusers-user-invalid-format' => 'Данные участника в строке #$1 имеют неправильный формат или пусты. Пропущен.',
-	'importusers-log' => 'Журнал импорта',
+	'importusers-log' => 'Журнал импорта участников',
 	'importusers-log-summary' => 'Итого',
 	'importusers-log-summary-all' => 'Всего',
 	'importusers-log-summary-added' => 'Добавлено',

@@ -1236,11 +1236,12 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'dt-desc' => 'Позволяет импортировать и экспортировать структурированные данные, содержащиеся в вызовах шаблонов',
+	'dt-desc' => 'Позволяет импортировать и экспортировать данные, содержащиеся в вызовах шаблонов',
 	'viewxml' => 'Просмотр XML',
 	'dt_viewxml_docu' => 'Пожалуйста, выберите категории и пространства имён для просмотра в формате XML.',
 	'dt_viewxml_categories' => 'Категории',
@@ -1255,7 +1256,13 @@ $messages['ru'] = array(
 	'dt_xml_title' => 'Заголовок',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Свободный текст',
+	'importxml' => 'Импорт XML',
+	'dt_import_selectfile' => 'Пожалуйста, выберите файл $1 для импорта:',
+	'dt_import_editsummary' => 'импорт $1',
 	'dt_import_importing' => 'Импортирование...',
+	'dt_import_success' => '$1 {{PLURAL:$1|страница была|страницы были|страниц были}} созданы из файла $2.',
+	'importcsv' => 'Импорт CSV',
+	'right-datatransferimport' => 'импорт информации',
 );
 
 /** Slovak (Slovenčina)

@@ -337,7 +337,7 @@ Njeznata zmólka jo nastała.',
 	'duplicator-dest-invalid' => 'Pšosym pódaj płaśiwy celowy titel.',
 	'duplicator-dest-exists' => '[[$1]] južo eksistěrujo. Pšosym pódaj celowy titel, kótaryž hyšći njeeksistěrujo.',
 	'duplicator-toomanyrevisions' => '[[$1]] ma pśewjele ($2) wersijow a njedajo se kopěrowaś.
-Aktualny limit jo $3.',
+Aktualny limit {{PLURAL:$3|jo 1 wersija|stej $3 wersiji|su $3 wersije|jo $3 wersijow}}.',
 	'right-duplicate' => 'Dwójne boki',
 );
 
@@ -614,6 +614,7 @@ $messages['he'] = array(
 	'duplicator-dest-exists' => '[[$1]] כבר קיים. אנא ספקו כותרת יעד תקינה שאינה קיימת.',
 	'duplicator-toomanyrevisions' => 'לדף [[$1]] יש גרסאות רבות מדי ($2) ולכן לא ניתן להעתיקו.
 המגבלה הנוכחית הינה $3.',
+	'right-duplicate' => 'שכפול דפים',
 );
 
 /** Hindi (हिन्दी)
@@ -665,7 +666,7 @@ $messages['hsb'] = array(
 	'duplicator-source-notexist' => 'Strona [[$1]] njeeksistuje. Prošu zapodaj eksistowacu stronu.',
 	'duplicator-dest-invalid' => 'Prošu podaj płaćiwu cilowu stronu.',
 	'duplicator-dest-exists' => 'Strona [[$1]] hižo eksistuje. Prošu zapodaj cilowy titl kotryž hišće njeeksistuje.',
-	'duplicator-toomanyrevisions' => 'Strona [[$1]] ma přewjele ($2) wersijow a njehodźi so tohodla kopěrować. Kopěrowanje je na strony z maksimalnje $3 wersijemi wobmjezowane.',
+	'duplicator-toomanyrevisions' => 'Strona [[$1]] ma přewjele ($2) wersijow a njehodźi so kopěrować. Aktualny limit {{PLURAL:$3|je 1 wersija|stej $3 wersiji|su $3|je $3 wersijow}}.',
 	'right-duplicate' => 'Dwójne strony',
 );
 
@@ -1244,6 +1245,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Kaganer
  * @author Александр Сигачёв
  */
@@ -1268,6 +1270,7 @@ $messages['ru'] = array(
 	'duplicator-dest-invalid' => 'Пожалуйста введите корректное название страницы-назначения.',
 	'duplicator-dest-exists' => 'Страница «[[$1]]» уже существует. Пожалуйста, введите название несуществующей страницы-назначения.',
 	'duplicator-toomanyrevisions' => 'Страница «[[$1]]» имеет слишком много ($2) изменений. Текущим ограничением является $3.',
+	'right-duplicate' => 'копирование страниц',
 );
 
 /** Slovak (Slovenčina)

@@ -200,7 +200,7 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'advancedrandom' => 'Προοδευμένη τυχοῦσα',
-	'advancedrandom-desc' => 'Ἐπικτῆσαι τυχαίαν δέλτον τινὰ ἐκκινούμενος ἐκ μίας διαλέξεως ἢ συνδέσμῶν τινῶν δέλτου ἐγχειρήματός τινος πρὸς μίαν δεδομένην δέλτον. Ἔξεστί σοι χρῆσαι ταύτην ὡς [[Special:AdvancedRandom/Template:Featured/Talk]] ἵνα λάβῃς ἐξαἰρετον δέλτον τινὰ ἢ ὡς [[Special:AdvancedRandom/Template:GFDL/Image]] ἵνα λάβῃς τυχαῖον ἀρχεῖον GFDL (ἔχον Ἄδειαν Ἐλευθέρας Τεκμηριώσεως GNU) τί.',
+	'advancedrandom-desc' => 'Ἐπικτῆσαι τυχαίαν δέλτον τινὰ ἐκκινούμενος ἐκ μίας διαλέξεως ἢ συνδέσμῶν τινῶν δέλτου ἐγχειρήματός τινος πρὸς μίαν δεδομένην δέλτον. Ἔξεστί σοι χρῆσαι ταύτην ὡς [[Special:AdvancedRandom/Template:Featured/Talk]] ἵνα λάβῃς ἐξαἰρετον δέλτον τινὰ ἢ ὡς [[Special:AdvancedRandom/Template:GFDL/File]] ἵνα λάβῃς τυχαῖον τι ἀρχεῖον GFDL (ἔχον Ἄδειαν Ἐλευθέρας Τεκμηριώσεως GNU).',
 );
 
 /** Swiss German (Alemannisch)
@@ -373,10 +373,11 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author EivindJ
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'advancedrandom' => 'Avansert tilfeldig side',
-	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en angitt side, kan for eksempel brukes med [[Special:AdvancedRandom/Template:Utmerket artikkel/Diskusjon]] for å få en tilfeldig utmerket artikkel, eller som [[Special:AdvancedRandom/Template:GFDL/Bilde]] for å få en tilfeldig GFDL-fil.',
+	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en angitt side, kan for eksempel brukes med [[Special:AdvancedRandom/Template:Featured/Talk]] for å få en tilfeldig utmerket artikkel, eller som [[Special:AdvancedRandom/Template:GFDL/File]] for å få en tilfeldig GFDL-fil.',
 );
 
 /** Occitan (Occitan)
@@ -424,7 +425,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'advancedrandom' => 'Întâmplător avansat',
-	'advancedrandom-desc' => 'Alege o pagină aleatoriu a cărei discuţie sau al cărei subiect duce la o pagină dată, poate fi folosită ca [[Special:AdvancedRandom/Template:Featured/Talk]] pentru a obţine aleatoriu un articol de calitate sau ca [[Special:AdvancedRandom/Template:GFDL/Image]] pentru a obţine un aleatoriu un fişier GFDL',
+	'advancedrandom-desc' => 'Alege aleatoriu o pagină a cărei discuţie sau al cărei subiect duce la o pagină dată. Poate fi folosită ca [[Special:AdvancedRandom/Template:Featured/Talk]] pentru a obţine aleatoriu un articol de calitate sau ca [[Special:AdvancedRandom/Template:GFDL/File]] pentru a obţine un fişier GFDL aleatoriu.',
 );
 
 /** Tarandíne (Tarandíne)
@@ -437,11 +438,12 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ahonc
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'advancedrandom' => 'Продвинутая случайная',
-	'advancedrandom-desc' => 'Выдаёт случайную страницу, с подстраницы или страницы обсуждения которой есть ссылка на указанную страницу. Может использоваться по примеру [[Special:AdvancedRandom/Template:Featured/Talk]], чтобы получить случайную избранную статью, или [[Special:AdvancedRandom/Template:GFDL/Image]], чтобы получить случайный GFDL-файл.',
+	'advancedrandom-desc' => 'Выдаёт случайную страницу, с подстраницы или страницы обсуждения которой есть ссылка на указанную страницу. Может использоваться по примеру [[Special:AdvancedRandom/Template:Featured/Talk]], чтобы получить случайную избранную статью, или [[Special:AdvancedRandom/Template:GFDL/File]], чтобы получить случайный GFDL-файл.',
 );
 
 /** Sicilian (Sicilianu)

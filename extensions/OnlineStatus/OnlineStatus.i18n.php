@@ -787,6 +787,9 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'onlinestatus-desc' => 'Добавляет настройку, определяющую присутствие участника на сайте в данный момент',
+	'onlinestatus-js-anon' => 'Ошибка. Вы должны представиться системе для использования этой возможности.',
+	'onlinestatus-js-changed' => 'Ваш статус был изменён на «$1»',
+	'onlinestatus-js-error' => 'Невозможно изменить статус, значение «$1» является неверным',
 	'onlinestatus-subtitle-offline' => 'Этого участника сейчас нет на сайте',
 	'onlinestatus-subtitle-online' => 'Этот участник сейчас на сайте',
 	'onlinestatus-tab' => 'Статус',
@@ -795,6 +798,8 @@ $messages['ru'] = array(
 	'onlinestatus-toggles-show' => 'Показывать присутствие на сайте на моей странице учасника',
 	'onlinestatus-toggle-offline' => 'Нет на сайте',
 	'onlinestatus-toggle-online' => 'На сайте',
+	'onlinestatus-pref-onlineonlogin' => 'Изменить мой статус на «online» при входе в систему',
+	'onlinestatus-pref-offlineonlogout' => 'Изменить мой статус на «offline» при завершении сеанса',
 );
 
 /** Slovak (Slovenčina)

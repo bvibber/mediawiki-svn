@@ -1219,3 +1219,22 @@ Ad dunön osi, dagetolös kiki-API [http://www.flickr.com/services/api/misc.api_
 	'importfreeimages_returntoform' => "U välolös <a href='$1'>is</a> me mugaparat ad geikön lü sukaseks olik",
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Tomchiukc
+ */
+$messages['zh-hant'] = array(
+	'importfreeimages' => '匯入自由版權影像',
+	'importfreeimages-desc' => '為從[http://www.flickr.com flickr][[Special:ImportFreeImages|匯入有合適版權的相片]]提供方法',
+	'importfreeimages_description' => '這頁面讓你可以從flickr找尋合適版權的相片，並匯入到你的圍紀內。',
+	'importfreeimages_noapikey' => '你還未設定你的Flickr API Key。
+請到[http://www.flickr.com/services/api/misc.api_keys.html 這裡]取得Flickr Key，並在 ImportFreeImages.php 設定 wgFlickrAPIKey 值。',
+	'importfreeimages_nophotosfound' => '沒有相片符合你提出的「$1」搜尋要求，請再試。',
+	'importfreeimages_invalidurl' => '「$1」這個URL裡的並不是正確的Flickr影像。',
+	'importfreeimages_owner' => '作者',
+	'importfreeimages_importthis' => '匯入這個',
+	'importfreeimages_next' => '下一個 $1',
+	'importfreeimages_filefromflickr' => '在 flickr 由用戶 $1 拍攝的 <b>[$2]</b>。原來的URL',
+	'importfreeimages_promptuserforfilename' => '請輸入目標檔名：',
+	'importfreeimages_returntoform' => "又或，點選<a href='$1'>這裡</a>回到你的搜尋結果",
+);
+

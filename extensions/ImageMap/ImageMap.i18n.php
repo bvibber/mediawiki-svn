@@ -495,17 +495,19 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'imagemap_desc' => 'Pèrmèt una mapa émâge clianta a étre clicâ en utilisent la balisa <tt><nowiki><imagemap></nowiki></tt>.',
-	'imagemap_no_image' => 'Error : vos dête spècefiar una émâge dens la premiére legne',
-	'imagemap_invalid_image' => 'Error : l’émâge est envalida ou ègziste pas',
-	'imagemap_no_link' => 'Error : nion lim valido at étâ trovâ a la fin de la legne $1',
-	'imagemap_invalid_title' => 'Error : titro envalido dens lo lim a la legne $1',
-	'imagemap_missing_coord' => 'Error : pas prod de coordonâs por la fôrma a la legne $1',
-	'imagemap_unrecognised_shape' => 'Error : fôrma pas recognua a la legne $1, châque legne dêt comenciér avouéc yon des mots siuvents : default, rect, circle ou ben poly',
-	'imagemap_no_areas' => 'Error : u muens yona spèceficacion de surface dêt étre balyê',
-	'imagemap_invalid_coord' => 'Error : coordonâ envalida a la legne $1, dêt étre un nombro',
-	'imagemap_invalid_desc' => 'Error : paramètre « dèsc » envalido, los paramètres possiblos sont : <tt>$1</tt>',
+	'imagemap_desc' => 'Pèrmèt les mapes émâges cliantes clicâbles, grâce a la balisa <tt><nowiki><imagemap></nowiki></tt>.',
+	'imagemap_no_image' => 'Èrror : vos dête spècefiar una émâge dens la premiére legne',
+	'imagemap_invalid_image' => 'Èrror : l’émâge est envalida ou ben ègziste pas',
+	'imagemap_bad_image' => 'Èrror : l’émâge est en lista nêre sur ceta pâge',
+	'imagemap_no_link' => 'Èrror : nion lim valido at étâ trovâ a la fin de la legne $1',
+	'imagemap_invalid_title' => 'Èrror : titro envalido dens lo lim a la legne $1',
+	'imagemap_missing_coord' => 'Èrror : pas prod de coordonâs por la fôrma a la legne $1',
+	'imagemap_unrecognised_shape' => 'Èrror : fôrma pas recognua a la legne $1, châque legne dêt comenciér per yon de cetos mots : default, rect, circle ou ben poly',
+	'imagemap_no_areas' => 'Èrror : u muens yona spèceficacion de zona dêt étre balyê',
+	'imagemap_invalid_coord' => 'Èrror : coordonâ envalida a la legne $1, dêt étre un nombro',
+	'imagemap_invalid_desc' => 'Èrror : paramètre « dèsc » envalido, los paramètres possiblos sont : <tt>$1</tt>',
 	'imagemap_description' => 'A propôs de ceta émâge',
+	'imagemap_poly_odd' => 'Èrror : trovâ un poligono avouéc un nombro mâl-par de coordonâs a la legne $1',
 );
 
 /** Galician (Galego)
@@ -1593,11 +1595,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
+ * @author Tomchiukc
  */
 $messages['zh-hant'] = array(
 	'imagemap_desc' => '容許客戶端可以使用<tt><nowiki><imagemap></nowiki></tt>標籤整可點擊圖像地圖',
 	'imagemap_no_image' => '&lt;imagemap&gt;: 必須要在第一行指定一幅圖像',
 	'imagemap_invalid_image' => '&lt;imagemap&gt;: 圖像不正確或者不存在',
+	'imagemap_bad_image' => '錯誤: 影像已被本頁列入黑名單內',
 	'imagemap_no_link' => '&lt;imagemap&gt;: 在第$1行結尾中找不到一個正式的連結',
 	'imagemap_invalid_title' => '&lt;imagemap&gt;: 在第$1行中的標題連結不正確',
 	'imagemap_missing_coord' => '&lt;imagemap&gt;: 在第$1行中未有足夠的座標組成一個形狀',

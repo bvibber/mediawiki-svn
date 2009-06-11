@@ -238,10 +238,14 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'lookupuser' => 'Αναζήτηση πληροφοριών για τον χρήστη',
 	'lookupuser-nonexistent' => 'Σφάλμα: Ο Χρήστης δεν υπάρχει',
 	'lookupuser-not-authenticated' => 'μη επικυρωμένος',
+	'lookupuser-id' => 'Ταυτότητα χρήστη: <tt>#$1</tt>',
 	'lookupuser-email' => 'Ηλεκτρονικό μήνυμα: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'μη διαθέσιμο',
 	'lookupuser-realname' => 'Πραγματικό όνομα: $1',
+	'lookupuser-no-registration' => 'μη καταγεγραμμένο',
 	'lookupuser-useroptions' => 'Επιλογές χρήστη:',
 );
 

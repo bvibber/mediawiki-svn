@@ -523,10 +523,12 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  * @author Rubin
  */
 $messages['ru'] = array(
+	'searchbox-desc' => 'Позволяет включение поисковых форм',
 	'searchbox-search' => 'Поиск',
 	'searchbox-go' => 'Перейти',
 	'searchbox-namespaces' => 'Пространства имён:',

@@ -76,6 +76,14 @@ $messages['gsw'] = array(
 Verwänd: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'stockcharts-missingticker' => 'כדי לכלול בדף את גרף המניה, עליכם לציין לפחות את הסימול.
+השתמשו בקוד: &lt;stockchart ticker="TEVA"/&gt;',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -144,5 +152,14 @@ $messages['sk'] = array(
 	'stockcharts-desc' => 'Pridáva značku <nowiki><stockchart ticker="AAPL"/></nowiki> pre interaktívny graf finančnej burzy',
 	'stockcharts-missingticker' => 'Na vloženie grafu burzy musíte uviesť aspoň atribút ticker.
 Použite: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'stockcharts-desc' => 'Thêm thẻ <nowiki><stockchart ticker="AAPL"/></nowiki> để trình bày bảng giá chứng khoán tương tác',
+	'stockcharts-missingticker' => 'Để nhúng bảng giá chứng khoán, bạn cần phải định rõ ít nhất một mã chứng khoán.
+Hãy sử dụng: &lt;stockchart ticker="AAPL"/&gt;',
 );
 

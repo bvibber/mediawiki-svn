@@ -451,6 +451,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -459,6 +460,7 @@ $messages['ru'] = array(
 	'purgecache-warning' => 'Будет произведена очистка кэш-таблиц.',
 	'purgecache-purged' => 'Кэш был очищен.',
 	'purgecache-button' => 'Очистить',
+	'right-purgecache' => 'очистка таблицы OBJECTCACHE',
 );
 
 /** Slovak (Slovenčina)

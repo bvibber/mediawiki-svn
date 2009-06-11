@@ -535,6 +535,13 @@ $messages['vo'] = array(
 	'seealso' => 'Logolös i',
 );
 
+/** Kalmyk (Хальмг)
+ * @author Huuchin
+ */
+$messages['xal'] = array(
+	'seealso' => 'Дәкәд хәләтн',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Wmr89502270

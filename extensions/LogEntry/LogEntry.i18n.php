@@ -348,6 +348,7 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'logentry-append' => 'Добавить',
+	'logentry' => 'ЗаписьЖурнала',
 	'logentry-invalidpage' => 'Неправильная страница',
 	'logentry-invalidtoken' => 'Неправильный токен',
 );

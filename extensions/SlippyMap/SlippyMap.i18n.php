@@ -1013,6 +1013,7 @@ $messages['ro'] = array(
 $messages['ru'] = array(
 	'slippymap_maperror' => 'Ошибка карты:',
 	'slippymap_button_code' => 'Получить викикод',
+	'slippymap_resetview' => 'Сбросить просмотр',
 );
 
 /** Slovak (Slovenčina)

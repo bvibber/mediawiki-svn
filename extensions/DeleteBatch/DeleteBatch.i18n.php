@@ -494,9 +494,8 @@ $messages['he'] = array(
 	'deletebatch-or' => '<b>או</b>',
 	'deletebatch-page' => 'דפים למחיקה:',
 	'deletebatch-reason' => 'סיבה למחיקה',
-	'deletebatch-processing' => 'מחיקת דפים $1',
-	'deletebatch-from-file' => 'מרשימת בקובץ',
-	'deletebatch-from-form' => 'מתוך טופס',
+	'deletebatch-processing-from-file' => 'מחיקת דפים מרשימת הקבצים',
+	'deletebatch-processing-from-form' => 'מחיקת דפים מטופס',
 	'deletebatch-success-subtitle' => 'עבור $1',
 	'deletebatch-omitting-nonexistant' => 'השמטת דף שאינו קיים $1.',
 	'deletebatch-omitting-invalid' => 'השמטת דף בלתי תקין $1.',
@@ -1040,18 +1039,24 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'deletebatch-caption' => 'Список страниц',
+	'deletebatch' => 'Удаление набора страниц',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Удаление набора страниц]]',
+	'deletebatch-caption' => 'Список страниц:',
+	'deletebatch-title' => 'Удаление набора',
+	'deletebatch-link-back' => 'Вернуться к служебной странице',
 	'deletebatch-as' => 'Запустить скрипт как:',
 	'deletebatch-both-modes' => 'Пожалуйста, выберите одну страницу или список страниц.',
 	'deletebatch-or' => '<b>или</b>',
 	'deletebatch-page' => 'Страницы к удалению:',
 	'deletebatch-reason' => 'Причина удаления',
-	'deletebatch-from-file' => 'из списка файлов',
+	'deletebatch-processing-from-file' => 'удаление страниц из списка в файле',
+	'deletebatch-processing-from-form' => 'удаление страниц из веб-формы',
 	'deletebatch-success-subtitle' => 'для $1',
 	'deletebatch-omitting-nonexistant' => 'За исключением несуществующей страницы $1.',
 	'deletebatch-omitting-invalid' => 'За исключением ошибочной страницы $1.',
 	'deletebatch-select-script' => 'скрипт удаления страниц',
 	'deletebatch-select-yourself' => 'вы',
+	'right-deletebatch' => 'удаление набора страниц',
 );
 
 /** Slovak (Slovenčina)

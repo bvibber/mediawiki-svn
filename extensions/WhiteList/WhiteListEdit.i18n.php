@@ -1758,6 +1758,7 @@ Dir musst [[Special:UserRights|Benotzer an de Grupp derbäisetzen]] ier Dir Säi
 	'whitelistnewtablereview' => 'Nokucken',
 	'whitelistselectrestricted' => '== Limitéierte Benotzernumm wielen ==',
 	'whitelistpagelist' => 'Säite vu(n) {{SITENAME}} fir $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Et gesäit aus wéi wann d'[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Erweiderung:Benotzerstatistiken], eng Viraussetzung fir dës Erweiderung, net richteg instqaléiert ass!</font>",
 	'whitelistoverview' => '== Iwwersiicht vun den Ännerunge vun $1 ==',
 	'whitelistoverviewcd' => "* Datum vun '''$1''' ännere fir [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Autorisatioun vum '''$1''' op [[:$2|$2]] astellen",

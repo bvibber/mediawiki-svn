@@ -347,10 +347,13 @@ Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  */
 $messages['ru'] = array(
 	'linkopenid-prefstext-openid' => 'Ваш OpenID:',
+	'linkopenid-prefstext-v1url' => 'URL сервера для OpenID версии 1.1:',
+	'linkopenid-prefstext-v2url' => 'URL сервера для OpenID версии 2:',
 );
 
 /** Slovak (Slovenčina)

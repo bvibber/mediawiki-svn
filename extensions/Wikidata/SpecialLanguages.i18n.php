@@ -1703,6 +1703,8 @@ Vaši podaci su uspješno kopirani.
 Ne zaboravite da to još jednom provjerite!',
 	'ow_copy_unsuccessful' => '<h3>Kopiranje neuspješno</h3>
 Operacija kopiranja nije izvedena.',
+	'ow_no_action_specified' => '<h3>Nijedna akcija nije određena</h3>
+Možda ste na ovu stranicu došli direktno? Normalno ne bi trebali biti ovdje.',
 	'ow_db_consistency_not_found' => '<h2>Greška</h2>
 Desila se greška u samoj bazi podataka, wikidata ne može naći valjane podatke koji su povezani sa ovim naznačenim ID značenjem.
 Moguće je su izgubljeni.
@@ -5911,6 +5913,7 @@ Vergiesst net Iech ze vergewësseren fir sécherzegoen!',
 	'ow_no_action_specified' => '<h3>Et gouf keng Aktioun uginn</h3>
 Vläicht koumt Dir direkt op dës Säit: Normalerweis braucht Dir net hei ze sinn.',
 	'ow_history_transaction' => 'Transaktioun:',
+	'ow_history_show_life_span' => 'Liewensdauer weisen:',
 	'ow_class_attr_type_dm' => 'Definéiert Bedeitung',
 	'ow_class_attr_type_xlate' => 'Text den iwwersat gëtt',
 	'ow_class_attr_type_plain' => 'Kloertext',

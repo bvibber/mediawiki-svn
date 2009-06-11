@@ -693,12 +693,15 @@ $messages['ru'] = array(
 	'accountmanager' => 'Управление учётными записями',
 	'am-username' => 'имя участника',
 	'am-email' => 'электронная почта',
+	'am-active' => 'активный',
 	'nss-rights' => 'права',
 	'nss-save-changes' => 'Сохранить изменения',
 	'nss-create-account-header' => 'Создать новую учётную запись',
 	'nss-create-account' => 'Создание учётной записи',
+	'nss-no-mail' => 'Не отправлять электронную почту',
 	'nss-welcome-mail' => 'Для вас создана учётная запись с именем $1 и паролем $2.',
 	'nss-welcome-mail-subject' => 'Создание учётной записи',
+	'nss-db-error' => 'Ошибка чтения базы данных аутентификации',
 );
 
 /** Slovak (Slovenčina)

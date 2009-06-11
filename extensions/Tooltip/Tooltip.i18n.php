@@ -130,6 +130,13 @@ $messages['gl'] = array(
 	'tooltip-desc' => 'Engade a etiqueta <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'tooltip-desc' => 'Προσθέτει τὰς πινακίδας <tt><nowiki><tooltip></nowiki></tt> καὶ <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

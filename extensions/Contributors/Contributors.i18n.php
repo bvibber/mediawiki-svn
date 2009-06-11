@@ -135,6 +135,7 @@ $messages['bcl'] = array(
 $messages['be-tarask'] = array(
 	'contributors-target' => 'Назва:',
 	'contributors-badtitle' => 'Няслушная назва.',
+	'contributors-nosuchpage' => 'Старонка $1 не існуе.',
 );
 
 /** Bulgarian (Български)

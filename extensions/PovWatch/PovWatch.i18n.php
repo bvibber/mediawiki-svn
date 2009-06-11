@@ -1630,6 +1630,10 @@ $messages['ro'] = array(
 	'povwatch_subscriber_list_intro' => '<strong>Lista abonaţilor</strong>',
 	'povwatch_unknown_subpage' => 'Subpagină necunoscută.',
 	'povwatch_title' => 'Titlu:',
+	'povwatch_comment' => 'Comentariu pentru jurnal:',
+	'povwatch_no_log' => 'Nu există intrări în jurnal.',
+	'povwatch_no_subscribers' => 'Nu există abonaţi.',
+	'povwatch_unsubscribe' => 'Dezabonare',
 	'povwatch_subscribe' => 'Subscriere',
 	'povwatch_added' => 'adăugat',
 );

@@ -853,6 +853,7 @@ $messages['he'] = array(
 	'badimages-log-add' => 'הוסיף את [[$1]] לרשימת התמונות האסורות',
 	'badimages-log-remove' => 'הסיר את [[$1]] מרשימת התמונות האסורות',
 	'badimages-page' => '{{ns:help}}:רשימת תמונות אסורות',
+	'right-badimages' => 'עדכון רשימת התמונות האסורות',
 );
 
 /** Hindi (हिन्दी)
@@ -1770,10 +1771,14 @@ $messages['rm'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
+	'badimages' => 'Listă de imagini indezirabile',
+	'badimages-desc' => 'Extinde capacitatea listei imaginilor indezirabile ale MediaWiki',
 	'badimages-add-btn' => 'Adaugă',
 	'badimages-added' => '$1 a fost adăugat în listă.',
+	'badimages-count' => "Există '''$1''' {{PLURAL:$1|imagine|imagini}} în lista imaginilor indezirabile.",
 	'badimages-name' => 'Nume:',
 	'badimages-not-added' => 'Imaginea nu a putut fi adăugată.',
 	'badimages-not-removed' => 'Imaginea nu a putut fi ştearsă.',
@@ -1784,6 +1789,12 @@ $messages['ro'] = array(
 	'badimages-removed' => '$1 a fost şters din listă.',
 	'badimages-subheading' => 'Elemente curente',
 	'badimages-unprivileged' => '(Nu aveţi drepturi suficiente pentru modificarea listei)',
+	'badimages-log-name' => 'Lista imaginilor indezirabile',
+	'badimages-log-header' => 'Acesta este jurnalul schimbărilor efectuate asupra [[{{MediaWiki:Badimages-page}}|listei imaginilor indezirabile]].',
+	'badimages-log-add' => '[[$1]] a fost adăugat la lista de imagini indezirabile',
+	'badimages-log-remove' => '[[$1]] a fost eliminat din lista de imagini indezirabile',
+	'badimages-page' => '{{ns:help}}:Lista imaginilor indezirabile',
+	'right-badimages' => 'Actualizează lista imaginilor indezirabile',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1806,6 +1817,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ahonc
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1829,6 +1841,7 @@ $messages['ru'] = array(
 	'badimages-log-add' => ' [[$1]] добавлено в список нежелательных изображений',
 	'badimages-log-remove' => '[[$1]] удалено из списка нежелательных изображений',
 	'badimages-page' => '{{ns:help}}:Список нежелательных изображений',
+	'right-badimages' => 'изменение чёрного списка изображений',
 );
 
 /** Yakut (Саха тыла)

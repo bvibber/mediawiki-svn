@@ -428,7 +428,7 @@ $messages['nl'] = array(
 Klik op de knop "Connect" om te beginnen.
 Als u aangemeld bent bij de wiki is uw gebruikersnaam ingevuld.
 Anonieme gebruikers krijgen automatisch een gebruikersnaam toegewezen die te wijzigen is.',
-	'right-mibbit' => 'Mag Mibbit-chat gebruiken',
+	'right-mibbit' => 'Mibbit-chat gebruiken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

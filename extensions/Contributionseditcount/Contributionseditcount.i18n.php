@@ -16,6 +16,9 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
+	'contributionseditcount' => 'Parameters:
+* $1 is a number of edits, can be used with PLURAL
+* $2 is a user name to be used with GENDER',
 	'contributionseditcount-desc' => 'Short description of the Contributionseditcount extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
@@ -99,6 +102,14 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'contributionseditcount' => 'Toś ten wužywaŕ ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
 	'contributionseditcount-desc' => 'Zwobraznujo licak změnow na [[Special:Contributions|boku wužywarskich pśinoskow]]',
+);
+
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'contributionseditcount' => 'Nuŋlɔ̃la sia wɔ tɔtrɔ $1.',
+	'contributionseditcount-desc' => 'Efiaa tɔtrɔwo ƒe xexlẽme le [[Special:Contributions|nuŋlɔ̃laa ƒe nuŋɔ̃lɔ̃woxa dzi]]',
 );
 
 /** Greek (Ελληνικά)
@@ -208,7 +219,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'contributionseditcount' => 'Wužiwar ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
+	'contributionseditcount' => 'Tutón wužiwar ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
 	'contributionseditcount-desc' => 'Zwobraznja ličbnik změnow na [[Special:Contributions|stronje přinoškow wužiwarja]]',
 );
 
@@ -294,7 +305,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'contributionseditcount' => 'Dä Metmaacher hät $1 Änderunge jemaat.',
+	'contributionseditcount' => '{{GENDER:$2|Dä|Dat|Dä Metmaacher|Dat|Sei}} hät {{PLURAL:$1|ein Änderung|$1 Änderunge|kein Änderunge}} jemaat.',
 	'contributionseditcount-desc' => 'Don däm sing Aanzahl Änderunge aam Wiki op de [[Special:Contributions|Sigg met enem Metmaacher sing Beidräsch]] aanzeije.',
 );
 
