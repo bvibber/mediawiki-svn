@@ -31,7 +31,8 @@ $wgHooks['EditPage::showEditForm:fields'][] = 'HoneypotIntegration::onShowEditFo
 $wgHooks['GetUserPermissionsErrorsExpensive'][] =
 	'HoneypotIntegration::onGetUserPermissionsErrorsExpensive';
 
-$wgHoneypotURLs = array( 'http://www.google.com' );
+$wgHoneypotURLSource = '';
+
 $wgHoneypotTemplates = array(
 	'<a href="honeypoturl"><!-- randomtext --></a>',
 );
@@ -40,6 +41,3 @@ $wgHoneypotAutoLoad = false;
 
 $wgHoneypotDataFile = false;
 
-if ( !extension_loaded( 'fss' ) ) {
-	die( "FastStringSearch is required for Project Honeypot Integration" );
-}

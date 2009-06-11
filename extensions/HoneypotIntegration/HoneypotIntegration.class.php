@@ -33,12 +33,41 @@ class HoneypotIntegration {
 		$out->addHTML( self::generateHoneypotLink( $randomText ) );
 		return 1;
 	}
+	
+	public static function getHoneypotURLs() {
+		$key = wfMemcKey( 'honeypot-integration-urls' );
+		
+		global $wgMemc;
+		$urls = $wgMemc->get( $key );
+		
+		if ( is_array($urls) ) {
+			return $urls;
+		}
+		
+		global $wgHoneypotAutoLoad;
+		if (!$wgHoneypotAutoLoad)
+			return array( 'http://www.google.com' ); // Dummy URL
+			
+		global $wgHoneypotURLSource;
+		// Curl opt is a hack because the honeypot folks don't seem to have a valid
+		//  certificate.
+		$data = Http::get( $wgHoneypotURLSource, 'default',
+						array( CURLOPT_SSL_VERIFYHOST => 1 ) );
+		
+		$urls = explode( "\n", $data );
+		
+		$wgMemc->set( $key, $urls, 86400 );
+		
+		return $urls;
+	}
 
 	public static function generateHoneypotLink( $randomText = null ) {
-		global $wgHoneypotURLs, $wgHoneypotTemplates;
+		global $wgHoneypotTemplates;
+		
+		$urls = self::getHoneypotURLs();
 
-		$index = rand( 0, count( $wgHoneypotURLs ) - 1 );
-		$url = $wgHoneypotURLs[$index];
+		$index = rand( 0, count( $urls ) - 1 );
+		$url = $urls[$index];
 		$index = rand( 0, count( $wgHoneypotTemplates ) - 1 );
 		$template = $wgHoneypotTemplates[$index];
 
@@ -59,9 +88,8 @@ class HoneypotIntegration {
 	public static function isIPListed( $ip ) {
 		$subnet = substr( IP::toHex( $ip ), 0, -6 );
 		$subnet_ips = self::getHoneypotIPs( $subnet );
-		
-		$fss = fss_prep_search( "[$ip]" );
-		return false !== fss_exec_search( $fss, $subnet_ips );
+
+		return !empty($subnet_ips[$ip]);
 	}
 	
 	// Gets data from memcached
@@ -124,6 +152,7 @@ class HoneypotIntegration {
 		
 		global $wgMemc;
 		foreach ( $ips as $subnet => $ipData ) {
+			wfDebugLog( 'HoneypotDebug', "Inserting data for subnet $subnet" );
 			$wgMemc->set( wfMemcKey( 'honeypot-data', $subnet ), $data[$subnet], 86400 );
 			$wgMemc->set( wfMemcKey( 'honeypot-ips', $subnet ), $ips[$subnet], 86400 );
 		}
@@ -139,6 +168,8 @@ class HoneypotIntegration {
 		$save_data = array();
 		$ips = array();
 		
+		$count = 0;
+		
 		while ( !feof($fh) ) {
 			$line = trim( fgets( $fh ) );
 			$data = preg_split( '/\s/', $line, 3 );
@@ -147,12 +178,18 @@ class HoneypotIntegration {
 				$subnet = substr( IP::toHex( $data[0] ), 0, -6 );
 				
 				if ( !isset($ips[$subnet]) )
-					$ips[$subnet] = '';
+					$ips[$subnet] = array();
 				if ( !isset( $save_data[$subnet] ) )
 					$save_data[$subnet] = array();
 				
 				$save_data[$subnet][$data[0]] = $data;
-				$ips[$subnet] .= '['.$data[0]."]\n";
+				$ips[$subnet][$data[0]] = true;
+				
+				$count++;
+				
+				if ( $count % 100 == 0) {
+					wfDebugLog( 'HoneypotDebug', "Done $count IPs -- $data[0]" );
+				}
 			}
 		}
 		
