@@ -209,4 +209,19 @@ class HoneypotIntegration {
 		}
 		return true;
 	}
+	
+	public static function onRecentChangeSave( $rc ) {
+		$ip = wfGetIP();
+		if ( self::isIPListed( $ip ) ) {
+			$user = $rc->getAttribute( 'rc_user_text' );
+			$revid = $rc->getAttribute( 'rc_this_oldid' );
+			$logid = $rc->getAttribute( 'rc_logid' );
+			$rcid = $rc->getAttribute( 'rc_id' );
+			
+			wfDebugLog( 'HoneypotHit', "$ip is listed in honeypot data. ".
+						"$user made RCID $rcid REVID $revid LOGID $logid." );
+		}
+		
+		return true;
+	}
 }

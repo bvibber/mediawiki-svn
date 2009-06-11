@@ -28,8 +28,9 @@ $wgAutoloadClasses[ 'HoneypotIntegration' ] = "$dir/HoneypotIntegration.class.ph
 #$wgHooks['AbuseFilter-filterAction'][] = 'HoneypotIntegration::onAbuseFilterFilterAction';
 #$wgHooks['AbuseFilter-builder'][] = 'HoneypotIntegration::onAbuseFilterBuilder';
 $wgHooks['EditPage::showEditForm:fields'][] = 'HoneypotIntegration::onShowEditForm';
-$wgHooks['GetUserPermissionsErrorsExpensive'][] =
-	'HoneypotIntegration::onGetUserPermissionsErrorsExpensive';
+// $wgHooks['GetUserPermissionsErrorsExpensive'][] =
+// 	'HoneypotIntegration::onGetUserPermissionsErrorsExpensive';
+$wgHooks['RecentChange_save'][] = 'HoneypotIntegration::onRecentChangeSave';
 
 $wgHoneypotURLSource = '';
 
