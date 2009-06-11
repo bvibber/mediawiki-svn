@@ -51,6 +51,3 @@ $wgExtensionMessagesFiles['EditToolbar'] =
 // Registers Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'EditToolbarHooks::intercept';
 $wgHooks['GetPreferences'][] = 'EditToolbarHooks::addPreferences';
-
-// Registers Hooks
-$wgHooks['AjaxAddScript'][] = 'EditToolbarHooks::initialize';
