@@ -25,7 +25,7 @@ $wgExtensionMessagesFiles['Contributionseditcount'] = dirname( __FILE__ ) . '/Co
 $wgHooks['SpecialContributionsBeforeMainOutput'][] = 'wfContributionseditcount';
 
 function wfContributionseditcount( $uid ) {
-	if ( $uid != 0 )
+	if ( $uid != 0 ) {
 		global $wgOut, $wgLang;
 		wfLoadExtensionMessages( 'Contributionseditcount' );
 		$wgOut->addWikiText( wfMsgExt( 'contributionseditcount', array( 'parsemag' ),
