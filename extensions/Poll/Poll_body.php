@@ -84,6 +84,7 @@ class Poll extends SpecialPage {
 		}
 		else {
 			$wgOut->addHtml( Xml::openElement( 'form', array('method'=> 'post', 'action' => $this->getTitle()->getFullURL('action=submit') ) ) );
+
 			$wgOut->addHtml( Xml::openElement( 'table' ) );
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-question' ).':</td><td>'.Xml::input('question').'</td></tr>' );
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 1:</td><td>'.Xml::input('poll_alternative_1').'</td></tr>' );
@@ -124,7 +125,6 @@ class Poll extends SpecialPage {
 				$creater = htmlentities( $row->creater, ENT_QUOTES, 'UTF-8'  );
 				$multi = $row->multi;
 			}
-
 			$wgOut->addHtml( Xml::openElement( 'form', array('method'=> 'post', 'action' => $this->getTitle()->getFullURL('action=submit&id='.$vid) ) ) );
 			$wgOut->addHtml( Xml::openElement( 'table' ) );
 			$wgOut->addHtml( '<tr><th>'.$question.'</th></tr>' );
@@ -373,7 +373,9 @@ class Poll extends SpecialPage {
 					$wgOut->addHtml( '<a href="'.$this->getTitle()->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 				}
 				else {
-					$wgOut->addWikiMsg( 'poll-vote-already-error' );
+					$dbw->update( 'poll_answer', array( 'vote' => $vote ), array( 'uid' => $uid, 'pid' => $pid ) );
+					
+					$wgOut->addWikiMsg( 'poll-vote-changed' );
 					$wgOut->addHtml( '<a href="'.$this->getTitle()->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 				}
 			}
