@@ -95,6 +95,7 @@ class EditToolbarHooks {
 				'edittoolbar-group-insert-media',
 				'edittoolbar-tool-insert-gallery',
 				'edittoolbar-tool-insert-gallery-example',
+				'edittoolbar-group-insert-whitespace',
 				'edittoolbar-tool-insert-newline',
 				/* Special Characters Section */
 				'edittoolbar-section-characters',

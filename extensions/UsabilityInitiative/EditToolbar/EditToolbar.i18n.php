@@ -58,7 +58,8 @@ $messages['en'] = array(
 	'edittoolbar-section-insert' => 'Insert',
 	'edittoolbar-group-insert-media' => 'Media',
 	'edittoolbar-tool-insert-gallery' => 'Picture gallery',
-	'edittoolbar-tool-insert-gallery-example' => "File:Example.jpg|Caption1\File:Example.jpg|Caption2",
+	'edittoolbar-tool-insert-gallery-example' => "File:Example.jpg|Caption1\nFile:Example.jpg|Caption2",
+	'edittoolbar-group-insert-whitespace' => 'Whitespace',
 	'edittoolbar-tool-insert-newline' => 'New line',
 	/* Special Characters Section */
 	'edittoolbar-section-characters' => 'Special Characters',
