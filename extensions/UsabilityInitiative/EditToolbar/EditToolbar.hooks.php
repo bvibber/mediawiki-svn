@@ -37,6 +37,15 @@ class EditToolbarHooks {
 		}
 		// Replaces stock toolbar with new toolbar container
 		$toolbar = '<div id="edittoolbar"></div>';
+		
+		// Add JS and CSS
+		global $wgEditToolbarStyleVersion;
+		UsabilityInitiativeHooks::addScript(
+			'EditToolbar/EditToolbar.js', $wgEditToolbarStyleVersion
+		);
+		UsabilityInitiativeHooks::addStyle(
+			'EditToolbar/EditToolbar.css', $wgEditToolbarStyleVersion
+		);
 		// Internationalization
 		wfLoadExtensionMessages( 'EditToolbar' );
 		// Adds messages to page
@@ -188,25 +197,6 @@ class EditToolbarHooks {
 				'section' => 'editing/advancedediting',
 			);
 		}
-		return true;
-	}
-	
-	/**
-	 * AjaxAddScript hook
-	 * Initializes the component
-	 */
-	public static function initialize() {
-		global $wgEditToolbarStyleVersion;
-		
-		// Add script to document
-		UsabilityInitiativeHooks::addScript(
-			'EditToolbar/EditToolbar.js', $wgEditToolbarStyleVersion
-		);
-		// Add style to document
-		UsabilityInitiativeHooks::addStyle(
-			'EditToolbar/EditToolbar.css', $wgEditToolbarStyleVersion
-		);
-		// Continue
 		return true;
 	}
 }
