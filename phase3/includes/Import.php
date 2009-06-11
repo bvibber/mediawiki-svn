@@ -90,15 +90,15 @@ class WikiRevision {
 	function setSize( $size ) {
 		$this->size = intval( $size );
 	}
-	
+
 	function setType( $type ) {
 		$this->type = $type;
 	}
-	
+
 	function setAction( $action ) {
 		$this->action = $action;
 	}
-	
+
 	function setParams( $params ) {
 		$this->params = $params;
 	}
@@ -142,15 +142,15 @@ class WikiRevision {
 	function getSize() {
 		return $this->size;
 	}
-	
+
 	function getType() {
 		return $this->type;
 	}
-	
+
 	function getAction() {
 		return $this->action;
 	}
-	
+
 	function getParams() {
 		return $this->params;
 	}
@@ -209,7 +209,7 @@ class WikiRevision {
 			) );
 		$revId = $revision->insertOn( $dbw );
 		$changed = $article->updateIfNewerOn( $dbw, $revision );
-		
+
 		# To be on the safe side...
 		$tempTitle = $GLOBALS['wgTitle'];
 		$GLOBALS['wgTitle'] = $this->title;
@@ -237,12 +237,12 @@ class WikiRevision {
 
 		return true;
 	}
-	
+
 	function importLogItem() {
 		$dbw = wfGetDB( DB_MASTER );
 		# FIXME: this will not record autoblocks
 		if( !$this->getTitle() ) {
-			wfDebug( __METHOD__ . ": skipping invalid {$this->type}/{$this->action} log time, timestamp " . 
+			wfDebug( __METHOD__ . ": skipping invalid {$this->type}/{$this->action} log time, timestamp " .
 				$this->timestamp . "\n" );
 			return;
 		}
@@ -261,7 +261,7 @@ class WikiRevision {
 		);
 		// FIXME: this could fail slightly for multiple matches :P
 		if( $prior ) {
-			wfDebug( __METHOD__ . ": skipping existing item for Log:{$this->type}/{$this->action}, timestamp " . 
+			wfDebug( __METHOD__ . ": skipping existing item for Log:{$this->type}/{$this->action}, timestamp " .
 				$this->timestamp . "\n" );
 			return false;
 		}
@@ -355,7 +355,7 @@ class WikiRevision {
 		// @fixme!
 		$src = $this->getSrc();
 		$status = Http::get( $src );
-		if( !$status->isOK() ){		
+		if( !$status->isOK() ){
 			if( !$data ) {
 				wfDebug( "IMPORT: couldn't fetch source $src\n" );
 				fclose( $f );
@@ -415,7 +415,7 @@ class WikiImporter {
 		       return($name);
                 }
 	}
-   
+
 	# --------------
 
 	function doImport() {
@@ -516,7 +516,7 @@ class WikiImporter {
 		$this->mUploadCallback = $callback;
 		return $previous;
 	}
-	
+
 	/**
 	 * Sets the action to perform as each log item reached.
 	 * @param $callback callback
@@ -552,7 +552,7 @@ class WikiImporter {
 		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->deadlockLoop( array( $revision, 'importOldRevision' ) );
 	}
-	
+
 	/**
 	 * Default per-revision callback, performs the import.
 	 * @param $revision WikiRevision
@@ -892,7 +892,7 @@ class WikiImporter {
 			}
 		}
 	}
-	
+
 	function in_logitem( $parser, $name, $attribs ) {
 	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "in_logitem $name" );
@@ -1105,8 +1105,7 @@ class ImportStreamSource {
 		# quicker and sorts out user-agent problems which might
 		# otherwise prevent importing from large sites, such
 		# as the Wikimedia cluster, etc.
-		$req = new HttpRequest( $url, array( 'method' => $method ) );
-		$data = $req->doRequest();
+		$data = Http::request( $url, array( 'method' => $method ) );
 		if( $data !== false ) {
 			$file = tmpfile();
 			fwrite( $file, $data );
