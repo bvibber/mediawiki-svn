@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Abstract maintenance class for quickly writing and churning out
  * maintenance scripts with minimal effort. All that _must_ be defined
@@ -14,6 +13,9 @@ abstract class Maintenance {
 
 	// This is the desired params
 	protected $mParams = array();
+	
+	// Array of desired args
+	protected $mArgList = array();
 
 	// This is the list of options that were actually passed
 	protected $mOptions = array();
@@ -54,6 +56,15 @@ abstract class Maintenance {
 	 */
 	protected function addParam( $name, $description, $required = false ) {
 		$this->mParams[ $name ] = array( 'desc' => $description, 'require' => $required );
+	}
+	
+	/**
+	 * Add some args that are needed. Used in formatting help
+	 */
+	protected function addArgs( $args ) {
+		foreach( $args as $arg ) {
+			$this->mArgList[] = $arg;
+		}
 	}
 
 	/**
@@ -97,7 +108,8 @@ abstract class Maintenance {
 
 	/**
 	 * Does the script need DB access? Specifically, we mean admin access to
-	 * the DB. Override this and return true, if needed
+	 * the DB. Override this and return true,
+	 * if needed
 	 * @return boolean
 	 */
 	protected function needsDB() {
@@ -265,16 +277,18 @@ abstract class Maintenance {
 	 * Maybe show the help.
 	 */
 	private function maybeHelp() {
-		if( isset( $this->mOptions['help'] ) ) {
+		if( isset( $this->mOptions['help'] ) || in_array( 'help', $this->mArgs ) ) {
 			$this->mQuiet = false;
 			if( $this->mDescription ) {
 				$this->output( $this->mDescription . "\n" );
 			}
 			$this->output( "\nUsage: php " . $this->mSelf . " [--" . 
-							implode( array_keys( $this->mParams ), "|--" ) . "]\n" );
-			foreach( $params as $par => $desc ) {
-				$this->output( "\t$par : $desc\n" );
+							implode( array_keys( $this->mParams ), "|--" ) . "] <" . 
+							implode( $this->mArgList, "> <" ) . ">\n" );
+			foreach( $this->mParams as $par => $info ) {
+				$this->output( "\t$par : " . $info['desc'] . "\n" );
 			}
+			die(1);
 		}
 	}
 	

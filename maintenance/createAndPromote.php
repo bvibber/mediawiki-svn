@@ -8,61 +8,50 @@
  * @author Rob Church <robchur@gmail.com>
  */
 
-$options = array( 'help', 'bureaucrat' );
-require_once( 'commandLine.inc' );
+require_once( "Maintenance.php" );
 
-if( isset( $options['help'] ) ) {
-	showHelp();
-	exit( 1 );
+class CreateAndPromote extends Maintenance {
+
+	public function __construct() {
+		parent::__construct();
+		$this->mDescription = "Create a new user account with administrator rights";
+		$this->addParam( "bureaucrat", "Grant the account bureaucrat rights" );
+		$this->addArgs( array( "username", "password" ) );
+	}
+
+	public function execute() {
+		if( count( $this->mArgs ) < 2 ) {
+			$this->error( "Please provide a username and password for the new account.\n", true );
+		}
+		$username = $this->mArgs[0];
+		$password = $this->mArgs[1];
+		
+		$this->output( wfWikiID() . ": Creating and promoting User:{$username}..." );
+		
+		$user = User::newFromName( $username );
+		if( !is_object( $user ) ) {
+			$this->error( "invalid username.\n", true );
+		} elseif( 0 != $user->idForName() ) {
+			$this->error( "account exists.\n", true );
+		}
+	
+		# Insert the account into the database
+		$user->addToDatabase();
+		$user->setPassword( $password );
+		$user->saveSettings();
+	
+		# Promote user
+		$user->addGroup( 'sysop' );
+		if( isset( $this->mOptions['bureaucrat'] ) )
+			$user->addGroup( 'bureaucrat' );
+	
+		# Increment site_stats.ss_users
+		$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
+		$ssu->doUpdate();
+	
+		$this->output( "done.\n" );
+	}
 }
 
-if( count( $args ) < 2 ) {
-	echo( "Please provide a username and password for the new account.\n" );
-	die( 1 );
-}
-
-$username = $args[0];
-$password = $args[1];
-
-echo( wfWikiID() . ": Creating and promoting User:{$username}..." );
-
-# Validate username and check it doesn't exist
-$user = User::newFromName( $username );
-if( !is_object( $user ) ) {
-	echo( "invalid username.\n" );
-	die( 1 );
-} elseif( 0 != $user->idForName() ) {
-	echo( "account exists.\n" );
-	die( 1 );
-}
-
-# Insert the account into the database
-$user->addToDatabase();
-$user->setPassword( $password );
-$user->saveSettings();
-
-# Promote user
-$user->addGroup( 'sysop' );
-if( isset( $option['bureaucrat'] ) )
-	$user->addGroup( 'bureaucrat' );
-
-# Increment site_stats.ss_users
-$ssu = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
-$ssu->doUpdate();
-
-echo( "done.\n" );
-
-function showHelp() {
-	echo( <<<EOT
-Create a new user account with administrator rights
-
-USAGE: php createAndPromote.php [--bureaucrat|--help] <username> <password>
-
-	--bureaucrat
-		Grant the account bureaucrat rights
-	--help
-		Show this help information
-
-EOT
-	);
-}
+$maintClass = "CreateAndPromote";
+require_once( "doMaintenance.php" );
