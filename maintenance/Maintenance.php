@@ -53,9 +53,10 @@ abstract class Maintenance {
 	 * @param $name String The name of the param (help, version, etc)
 	 * @param $description String The description of the param to show on --help
 	 * @param $required boolean Is the param required?
+	 * @param $withArg Boolean Is an argument required with this option?
 	 */
-	protected function addParam( $name, $description, $required = false ) {
-		$this->mParams[ $name ] = array( 'desc' => $description, 'require' => $required );
+	protected function addParam( $name, $description, $required = false, $withArg = false ) {
+		$this->mParams[ $name ] = array( 'desc' => $description, 'require' => $required, 'withArg' => $withArg );
 	}
 	
 	/**
@@ -122,11 +123,11 @@ abstract class Maintenance {
 	private function addDefaultParams() {
 		$this->addParam( 'help', "Display this help message" );
 		$this->addParam( 'quiet', "Whether to supress non-error output" );
-		$this->addParam( 'conf', "Location of LocalSettings.php, if not default" );
-		$this->addParam( 'wiki', "For specifying the wiki ID" );
+		$this->addParam( 'conf', "Location of LocalSettings.php, if not default", false, true );
+		$this->addParam( 'wiki', "For specifying the wiki ID", false, true );
 		if( $this->needsDB() ) {
-			$this->addParam( 'dbuser', "The DB user to use for this script" );
-			$this->addParam( 'dbpass', "The password to use for this script" );
+			$this->addParam( 'dbuser', "The DB user to use for this script", false, true );
+			$this->addParam( 'dbpass', "The password to use for this script", false, true );
 		}
 	}
 
@@ -219,7 +220,7 @@ abstract class Maintenance {
 			} elseif ( substr( $arg, 0, 2 ) == '--' ) {
 				# Long options
 				$option = substr( $arg, 2 );
-				if ( isset( $this->mParams[$option] ) ) {
+				if ( isset( $this->mParams[$option] ) && $this->mParams[$option]['withArg'] ) {
 					$param = next( $argv );
 					if ( $param === false ) {
 						$this->error( "$arg needs a value after it\n", true );
@@ -239,7 +240,7 @@ abstract class Maintenance {
 				# Short options
 				for ( $p=1; $p<strlen( $arg ); $p++ ) {
 					$option = $arg{$p};
-					if ( isset( $this->mParams[$option] ) ) {
+					if ( isset( $this->mParams[$option]['withArg'] ) ) {
 						$param = next( $argv );
 						if ( $param === false ) {
 							$this->error( "$arg needs a value after it\n", true );
@@ -264,7 +265,7 @@ abstract class Maintenance {
 
 		# Check to make sure we've got all the required ones
 		foreach( $this->mParams as $opt => $info ) {
-			if( $info['required'] && !isset( $this->mOptions[$opt] ) ) {
+			if( $info['require'] && !isset( $this->mOptions[$opt] ) ) {
 				$this->error( "Param $opt required.\n", true );
 			}
 		}
@@ -288,7 +289,7 @@ abstract class Maintenance {
 			foreach( $this->mParams as $par => $info ) {
 				$this->output( "\t$par : " . $info['desc'] . "\n" );
 			}
-			die(1);
+			die( 1 );
 		}
 	}
 	
@@ -335,7 +336,7 @@ abstract class Maintenance {
 		}
 	
 		$wgShowSQLErrors = true;
-		@set_time_limit(0);
+		@set_time_limit( 0 );
 	
 		$wgProfiling = false; // only for Profiler.php mode; avoids OOM errors
 	}
@@ -380,7 +381,7 @@ abstract class Maintenance {
 			$wgUseNormalUser = true;
 		}
 	
-		putenv( 'wikilang='.$lang);
+		putenv( 'wikilang=' . $lang );
 	
 		$DP = $IP;
 		ini_set( 'include_path', ".:$IP:$IP/includes:$IP/languages:$IP/maintenance" );
