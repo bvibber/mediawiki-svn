@@ -266,14 +266,6 @@
 									.appendTo( pageDiv );
 								for ( character in section.pages[page].characters ) {
 									switch( section.pages[page].characters[character].type ) {
-										case 'break':
-										/*
-											pageDiv.append(
-												$( '<div />' )
-													.css( 'clear', 'both' )
-											);
-										*/
-										break;
 										case 'link':
 											var context = {
 												'tool' : section.pages[page].characters[character],
@@ -282,7 +274,7 @@
 											charsDiv.append(
 												$( '<a />' )
 													.attr( 'href', '#' )
-													.text( section.pages[page].characters[character].text )
+													.text( section.pages[page].characters[character].label )
 													.data( 'context', context)
 													.click( action )
 													.click( function() { return false; } )
@@ -363,7 +355,7 @@
 					for( character in charinsert[page][line] ) {
 						 var tool = {
 						 	type: 'link',
-						 	text: '',
+						 	label: '',
 						 	action: {
 						 		type: 'encapsulate',
 						 		options: {
@@ -378,10 +370,9 @@
 						 } else {
 						 	tool.action.options.pre = charinsert[page][line][character];
 						 }
-						tool.text = tool.action.options.pre + tool.action.options.post;
+						tool.label = tool.action.options.pre + tool.action.options.post;
 						characters[i++] = tool;
 					}
-					characters[i++] = { type: 'break' };
 				}
 				retval[pageKey] = {
 					label: page,

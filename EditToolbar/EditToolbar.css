@@ -9,13 +9,13 @@ form#editform {
 textarea#wpTextbox1 {
 	border: solid silver 1px;
 	padding: 0;
-	margin-top: -2px;
+	margin: 0;
 }
 /* ... */
 div#edittoolbar {
 	border: solid silver 1px;
 	border-bottom-width: 0;
-	background-color: #EEEEEE;
+	background-color: #F3F3F3;
 }
 div#edittoolbar div.tabs,
 div#edittoolbar div.group {
@@ -91,6 +91,7 @@ div#edittoolbar div.group > select {
 }
 body.rtl div#edittoolbar div.group > select {
 	float: right;
+	font-size: 0.9em;
 }
 div#edittoolbar div.index {
 	float: left;
