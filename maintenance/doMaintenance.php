@@ -7,6 +7,11 @@
  * we'll kinda fake it, and do the requires() inline. <3 PHP
  */
 
+if( !isset( $maintClass ) || !class_exists( $maintClass ) ) {
+	echo "\$maintClass is not set or is set to a non-existent class.";
+	die();
+}
+
 // Get an object to start us off
 $maintenance = new $maintClass();
 
@@ -44,4 +49,8 @@ require_once( "$IP/install-utils.inc" );
 
 $wgTitle = null; # Much much faster startup than creating a title object
 
-$maintenance->execute();
+try {
+	$maintenance->execute();
+} catch( MWException $mwe ) {
+	echo( $mwe->getText() );
+}

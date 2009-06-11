@@ -44,7 +44,7 @@ class DemoMaint extends Maintenance {
 }
 
 $maintClass = "DemoMaint";
-require_once( "doMaintenance.php" );
+require_once( DO_MAINTENANCE );
 
 ==END==
 

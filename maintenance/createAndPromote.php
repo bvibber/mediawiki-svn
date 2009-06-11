@@ -34,15 +34,21 @@ class CreateAndPromote extends Maintenance {
 		} elseif( 0 != $user->idForName() ) {
 			$this->error( "account exists.\n", true );
 		}
-	
+
+		# Try to set the password
+		try {
+			$user->setPassword( $password );
+		} catch( PasswordError $pwe ) {
+			$this->error( $pwe->getText(), true );
+		}
+
 		# Insert the account into the database
 		$user->addToDatabase();
-		$user->setPassword( $password );
 		$user->saveSettings();
 	
 		# Promote user
 		$user->addGroup( 'sysop' );
-		if( isset( $this->mOptions['bureaucrat'] ) )
+		if( $this->hasOption( 'bureaucrat' ) )
 			$user->addGroup( 'bureaucrat' );
 	
 		# Increment site_stats.ss_users
@@ -54,4 +60,4 @@ class CreateAndPromote extends Maintenance {
 }
 
 $maintClass = "CreateAndPromote";
-require_once( "doMaintenance.php" );
+require_once( DO_MAINTENANCE );

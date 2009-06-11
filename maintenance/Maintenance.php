@@ -1,4 +1,7 @@
 <?php
+// Define this so scripts can easily find doMaintenance.php
+define( 'DO_MAINTENANCE', dirname(__FILE__) . '/doMaintenance.php' );
+
 /**
  * Abstract maintenance class for quickly writing and churning out
  * maintenance scripts with minimal effort. All that _must_ be defined
@@ -12,13 +15,13 @@
 abstract class Maintenance {
 
 	// This is the desired params
-	protected $mParams = array();
+	private $mParams = array();
 	
 	// Array of desired args
-	protected $mArgList = array();
+	private $mArgList = array();
 
 	// This is the list of options that were actually passed
-	protected $mOptions = array();
+	private $mOptions = array();
 
 	// This is the list of arguments that were actually passed
 	protected $mArgs = array();
@@ -57,6 +60,25 @@ abstract class Maintenance {
 	 */
 	protected function addParam( $name, $description, $required = false, $withArg = false ) {
 		$this->mParams[ $name ] = array( 'desc' => $description, 'require' => $required, 'withArg' => $withArg );
+	}
+	
+	/**
+	 * Checks to see if a particular param exists.
+	 * @param $name String The name of the param
+	 * @return boolean
+	 */
+	protected function hasOption( $name ) {
+		return isset( $this->mOptions[ $name ] );
+	}
+	
+	/**
+	 * Get an option, or return the default
+	 * @param $name String The name of the param
+	 * @param $default mixed Anything you want, default null
+	 * @return mixed
+	 */
+	protected function getOption( $name, $default = null ) {
+		return $this->hasOption($name) ? $this->mOptions[$name] : $default;
 	}
 	
 	/**
@@ -265,7 +287,7 @@ abstract class Maintenance {
 
 		# Check to make sure we've got all the required ones
 		foreach( $this->mParams as $opt => $info ) {
-			if( $info['require'] && !isset( $this->mOptions[$opt] ) ) {
+			if( $info['require'] && !$this->hasOption($opt) ) {
 				$this->error( "Param $opt required.\n", true );
 			}
 		}
@@ -273,12 +295,12 @@ abstract class Maintenance {
 		$this->mOptions = $options;
 		$this->mArgs = $args;
 	}
-	
+
 	/**
 	 * Maybe show the help.
 	 */
 	private function maybeHelp() {
-		if( isset( $this->mOptions['help'] ) || in_array( 'help', $this->mArgs ) ) {
+		if( $this->hasOption('help') || in_array( 'help', $this->mArgs ) ) {
 			$this->mQuiet = false;
 			if( $this->mDescription ) {
 				$this->output( $this->mDescription . "\n" );
