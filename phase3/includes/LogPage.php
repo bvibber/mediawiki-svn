@@ -91,7 +91,7 @@ class LogPage {
 				$this->type, $this->action, $this->target, $this->comment, $this->params, $newId );
 			$rc->notifyRC2UDP();
 		}
-		return true;
+		return $newId;
 	}
 
 	/**
@@ -173,7 +173,7 @@ class LogPage {
 		}
 		if( isset( $wgLogActions[$key] ) ) {
 			if( is_null( $title ) ) {
-				$rv = wfMsg( $wgLogActions[$key] );
+				$rv = wfMsgHtml( $wgLogActions[$key] );
 			} else {
 				$titleLink = self::getTitleLink( $type, $skin, $title, $params );
 				if( $key == 'rights/rights' ) {
@@ -194,9 +194,9 @@ class LogPage {
 				}
 				if( count( $params ) == 0 ) {
 					if ( $skin ) {
-						$rv = wfMsg( $wgLogActions[$key], $titleLink );
+						$rv = wfMsgHtml( $wgLogActions[$key], $titleLink );
 					} else {
-						$rv = wfMsgForContent( $wgLogActions[$key], $titleLink );
+						$rv = wfMsgExt( $wgLogActions[$key], array( 'parsemag', 'escape', 'replaceafter', 'content' ), $titleLink );
 					}
 				} else {
 					$details = '';
@@ -243,7 +243,11 @@ class LogPage {
 						$nfield = intval( substr( $params[3], 7 ) ); // <nfield=x>
 						$details .= ': '.RevisionDeleter::getLogMessage( $count, $nfield, $ofield, true );
 					}
-					$rv = wfMsgReal( $wgLogActions[$key], $params, true, !$skin ) . $details;
+					if ( $skin ) {
+						$rv = wfMsgHtml( $wgLogActions[$key], $params ) . $details;
+					} else {
+						$rv = wfMsgExt( $wgLogActions[$key], array( 'parsemag', 'escape', 'replaceafter', 'content' ), $params ) . $details;
+					}
 				}
 			}
 		} else {
@@ -281,14 +285,21 @@ class LogPage {
 		}
 		switch( $type ) {
 			case 'move':
-				$titleLink = $skin->makeLinkObj( $title, 
-					htmlspecialchars( $title->getPrefixedText() ), 'redirect=no' );
+				$titleLink = $skin->link(
+					$title, 
+					htmlspecialchars( $title->getPrefixedText() ),
+					array(),
+					array( 'redirect' => 'no' )
+				);
 				$targetTitle = Title::newFromText( $params[0] );
 				if ( !$targetTitle ) {
 					# Workaround for broken database
 					$params[0] = htmlspecialchars( $params[0] );
 				} else {
-					$params[0] = $skin->makeLinkObj( $targetTitle, htmlspecialchars( $params[0] ) );
+					$params[0] = $skin->link(
+						$targetTitle,
+						htmlspecialchars( $params[0] )
+					);
 				}
 				break;
 			case 'block':
@@ -304,24 +315,32 @@ class LogPage {
 				break;
 			case 'rights':
 				$text = $wgContLang->ucfirst( $title->getText() );
-				$titleLink = $skin->makeLinkObj( Title::makeTitle( NS_USER, $text ) );
+				$titleLink = $skin->link( Title::makeTitle( NS_USER, $text ) );
 				break;
 			case 'merge':
-				$titleLink = $skin->makeLinkObj( $title, $title->getPrefixedText(), 'redirect=no' );
-				$params[0] = $skin->makeLinkObj( Title::newFromText( $params[0] ), htmlspecialchars( $params[0] ) );
+				$titleLink = $skin->link(
+					$title,
+					$title->getPrefixedText(),
+					array(),
+					array( 'redirect' => 'no' )
+				);
+				$params[0] = $skin->link(
+					Title::newFromText( $params[0] ),
+					htmlspecialchars( $params[0] )
+				);
 				$params[1] = $wgLang->timeanddate( $params[1] );
 				break;
 			default:
 				if( $title->getNamespace() == NS_SPECIAL ) {
-					list( $name, $par ) = SpecialPage::resolveAliasWithSubpage( $title->getDBKey() );
+					list( $name, $par ) = SpecialPage::resolveAliasWithSubpage( $title->getDBkey() );
 					# Use the language name for log titles, rather than Log/X
 					if( $name == 'Log' ) {
-						$titleLink = '('.$skin->makeLinkObj( $title, LogPage::logName( $par ) ).')';
+						$titleLink = '('.$skin->link( $title, LogPage::logName( $par ) ).')';
 					} else {
-						$titleLink = $skin->makeLinkObj( $title );
+						$titleLink = $skin->link( $title );
 					}
 				} else {
-					$titleLink = $skin->makeLinkObj( $title );
+					$titleLink = $skin->link( $title );
 				}
 		}
 		return $titleLink;
@@ -357,6 +376,22 @@ class LogPage {
 		$this->actionText = LogPage::actionText( $this->type, $action, $target, NULL, $params );
 
 		return $this->saveContent();
+	}
+	
+	/**
+	 * Add relations to log_search table
+	 * @static
+	 */
+	public function addRelations( $field, $values, $logid ) {
+		if( !strlen($field) || empty($values) )
+			return false; // nothing
+		$data = array();
+		foreach( $values as $value ) {
+			$data[] = array('ls_field' => $field,'ls_value' => $value,'ls_log_id' => $logid);
+		}
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->insert( 'log_search', $data, __METHOD__, 'IGNORE' );
+		return true;
 	}
 
 	/**

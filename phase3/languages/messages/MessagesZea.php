@@ -24,11 +24,9 @@ $fallback = 'nl';
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Speciaol',
-	NS_MAIN             => '',
 	NS_TALK             => 'Overleg',
 	NS_USER             => 'Gebruker',
 	NS_USER_TALK        => 'Overleg_gebruker',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'Overleg_$1',
 	NS_FILE             => 'Plaetje',
 	NS_FILE_TALK        => 'Overleg_plaetje',
@@ -663,7 +661,6 @@ De deur $3 opeheven reeën is ''$2''",
 'page_last'           => 'lèste',
 'histlegend'          => "Selectie voe diff: sillecteer de te verheliek'n versies en toets ENTER of de knoppe onderan.<br />
 Verklaerieng afkortiengen: (udig) = verschil mie udihe versie, (vorihe) = verschil mie voorhaende versie, k = kleine wiezigieng",
-'deletedrev'          => '[verwiederd]',
 'histfirst'           => 'Oussen',
 'histlast'            => 'Nieuwsen',
 'historysize'         => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -775,7 +772,7 @@ Zurg da je bie deêze wiezigieng de heschiedenisdeurloôpendeid van de pagina be
 'textmatches'           => 'Overeênkomst mie inoud',
 'notextmatches'         => "Hin pagina's evon'n",
 'prevn'                 => 'vorrege $1',
-'nextn'                 => 'volhende $1',
+'nextn'                 => 'volhende {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'Bekiek ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Inoud',
 'search-result-size'    => '$1 ({{PLURAL:$2|1 woôrd|$2 woôrn}})',
@@ -813,7 +810,6 @@ De hehevens over {{SITENAME}} zien meuhlijk nie bie'ewerkt.",
 'prefs-skin'                => 'Vurmhevieng',
 'skin-preview'              => 'Voevertoônienge',
 'prefs-math'                => 'Formules',
-'dateformat'                => 'Datumopmaek',
 'datedefault'               => 'Hin vòkeur',
 'prefs-datetime'            => 'Daotum en tied',
 'prefs-personal'            => 'Gebrukersprofiel',
@@ -933,6 +929,8 @@ Een nie anekruusd vienkvakje beteêken da de gebruker hin lid is van de hroep.",
 
 # Recent changes linked
 'recentchangeslinked'          => 'Gerelateerde bewerkiengen',
+'recentchangeslinked-feed'     => 'Gerelateerde bewerkiengen',
+'recentchangeslinked-toolbox'  => 'Gerelateerde bewerkiengen',
 'recentchangeslinked-title'    => 'Wiezigiengen verwant an "$1"',
 'recentchangeslinked-noresult' => "Der zien hin bewerkiengen in de heheven periode ewist op de pagina's die an vanaf ier elienkt worn.",
 'recentchangeslinked-page'     => 'Paginanaem:',
@@ -975,6 +973,9 @@ De lèste lienk is bedoeld voe mediabestan'n die an hin plaetje zien.",
 'minlength1'                 => "Bestandsnaem'n mott'n minstes eên letter bevatt'n.",
 'badfilename'                => 'Bestandsnaem is veranderd nae "$1".',
 'watchthisupload'            => 'Volg deêze bladzie',
+
+# File description page
+'file-anchor-link' => 'Bestand',
 
 # Random page
 'randompage' => 'Bladzie op goed geluk',

@@ -280,7 +280,9 @@ $messages = array(
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked' => 'Máideinlieks',
+'recentchangeslinked'         => 'Máideinlieks',
+'recentchangeslinked-feed'    => 'Máideinlieks',
+'recentchangeslinked-toolbox' => 'Máideinlieks',
 
 # Upload
 'upload'          => '𐌿𐍃𐌷𐌻𐌰𐌸𐌰𐌹𐌸 𐍆𐌴𐌹𐌻𐌰𐌽𐍃',
@@ -294,6 +296,7 @@ $messages = array(
 'listfiles' => 'Feilans tala',
 
 # File description page
+'file-anchor-link'    => 'Feilans',
 'filehist'            => 'Feilans áiris',
 'filehist-current'    => 'nu',
 'filehist-datetime'   => 'Ƕeila',

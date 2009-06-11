@@ -619,7 +619,6 @@ $3 nuruodīta prīžastis īr ''$2''",
 Žīmiejimā: (dab) = palīginims so vielibiausė versėjė,
 (pask) = palīginims so priš ta bovosia versėjė, S = mažos pataisims.",
 'history-fieldset-title' => 'Naršītė istuorėjuo',
-'deletedrev'             => '[ėštrinta]',
 'histfirst'              => 'Seniausė',
 'histlast'               => 'Vielibė̅jė',
 'historysize'            => '($1 {{PLURAL:$1|baits|baitā|baitu}})',
@@ -682,8 +681,8 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'notitlematches'                   => 'Juokiū pavadinėma atitikmenū',
 'textmatches'                      => 'Poslapė torėnė atėtikmenīs',
 'notextmatches'                    => 'Juokiū poslapė teksta atitikmenū',
-'prevn'                            => 'onkstesnius $1',
-'nextn'                            => 'paskesnius $1',
+'prevn'                            => 'onkstesnius {{PLURAL:$1|$1}}',
+'nextn'                            => 'paskesnius {{PLURAL:$1|$1}}',
 'viewprevnext'                     => 'Veizėtė ($1) ($2) ($3).',
 'searchmenu-legend'                => 'Paėiškuos nustatīmā',
 'searchmenu-exists'                => "'''Poslapis pavadėnts „[[$1]]“ šėtuo wiki'''",
@@ -739,7 +738,6 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'prefs-skin'                => 'Ėšruoda',
 'skin-preview'              => 'Parveiza',
 'prefs-math'                => 'Matematėka',
-'dateformat'                => 'Datuos fuormats',
 'datedefault'               => 'Juokė pasėrėnkėma',
 'prefs-datetime'            => 'Data ė čiesos',
 'prefs-personal'            => 'Nauduotuojė pruopilis',
@@ -769,7 +767,6 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'savedprefs'                => 'Nostatīmā siekmėngā ėšsauguotė.',
 'timezonelegend'            => 'Čiesa zuona',
 'localtime'                 => 'Vėitinis čiesos:',
-'timezoneselect'            => 'Čiesa jousta:',
 'timezoneuseserverdefault'  => 'Nauduotė palē nutīliejėma ėš serverė',
 'timezoneuseoffset'         => 'Kėta (patikslėntė skėrtoma)',
 'timezoneoffset'            => 'Skėrtoms¹:',
@@ -888,6 +885,8 @@ Ana gal sodarītė ne daugiau kāp $1 {{PLURAL:$1|sėmbuolis|sėmbuolē|sėmbuol
 
 # Recent changes linked
 'recentchangeslinked'          => 'Sosėjėn pakeitėmā',
+'recentchangeslinked-feed'     => 'Sosėjėn pakeitėmā',
+'recentchangeslinked-toolbox'  => 'Sosėjėn pakeitėmā',
 'recentchangeslinked-title'    => 'So $1 sosėje pakeitimā',
 'recentchangeslinked-noresult' => 'Nier juokiū pakeitėmu sosėitous poslapious douto čieso.',
 'recentchangeslinked-summary'  => "Šėtom specēliajam poslapi ruodomė vielībė̅jė pakeitėmā poslapiūs, i katrūs īr nuruodoma. Poslapē ėš Tamstas [[Special:Watchlist|keravuojamu sāraša]] īr '''pastuorėntė'''.",
@@ -984,6 +983,7 @@ Paspaude ont štolpelė ontraštės pakeisėt ėšruokavėma.',
 'listfiles_count'       => 'Versėjės',
 
 # File description page
+'file-anchor-link'          => 'Fails',
 'filehist'                  => 'Abruozdielė istuorėjė',
 'filehist-help'             => 'Paspauskėt ont datas/čiesa, ka paveizietomėt faila tuoki, kokis ons bova tū čiesu.',
 'filehist-deleteall'        => 'trintė vėsus',
@@ -1001,8 +1001,6 @@ Paspaude ont štolpelė ontraštės pakeisėt ėšruokavėma.',
 'linkstoimage'              => '{{PLURAL:$1|Šėts poslapis|Šėtė poslapē}} nuruod i šėta faila:',
 'nolinkstoimage'            => 'I faila neruod anėjuoks poslapis.',
 'sharedupload'              => 'Tas fails īr ėš $1 ė gal būtė nauduojams kėtūs pruojektūs.',
-'noimage'                   => 'Nier faila so šėtokio pavadėnėmo. Tamsta galėt $1.',
-'noimage-linktext'          => 'ikeltė ana',
 'uploadnewversion-linktext' => 'Ikeltė nauja faila versėje',
 
 # File reversion
@@ -1488,7 +1486,7 @@ onkstiau ožbluokoutam IP adresō a nauduotuojō.',
 'ipblocklist-submit'          => 'Ėiškuotė',
 'blocklistline'               => '$1, $2 ožblokava $3 ($4)',
 'infiniteblock'               => 'neribuotā',
-'expiringblock'               => 'beng galiuotė $1',
+'expiringblock'               => 'beng galiuotė $1 $2',
 'anononlyblock'               => 'vėn anuonėmā',
 'noautoblockblock'            => 'autuomatinis blokavėms ėšjongts',
 'createaccountblock'          => 'paskīrū korėms oždrausts īr',
@@ -1750,6 +1748,7 @@ Vėsas kėtas nūoruodas tuo patiuo eilotie īr laikomas ėšėmtim, tas rēšk 
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

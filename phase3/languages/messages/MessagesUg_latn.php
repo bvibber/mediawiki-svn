@@ -8,6 +8,7 @@
  * @file
  *
  * @author Jose77
+ * @author M.erdem
  * @author לערי ריינהארט
  */
 
@@ -15,11 +16,13 @@ $rtl = true;
 
 $messages = array(
 # Dates
-'sunday'    => 'Yakshanbe',
-'tuesday'   => 'Seyshanbe',
-'wednesday' => 'Qarshenbe',
-'thursday'  => 'Payshanbe',
-'saturday'  => 'Shanba',
+'sunday'    => 'Yekshenbe',
+'monday'    => 'Düshenbe',
+'tuesday'   => 'Seyshenbe',
+'wednesday' => 'Charshenbe',
+'thursday'  => 'Peyshenbe',
+'friday'    => 'Jüme',
+'saturday'  => 'Shenbe',
 'january'   => 'Yanwar',
 'february'  => 'Féwral',
 'march'     => 'Mart',
@@ -94,8 +97,8 @@ $messages = array(
 'newarticle'   => '(Yéngi)',
 
 # Search results
-'prevn'       => 'aldinqi $1',
-'nextn'       => 'kéyinki $1',
+'prevn'       => 'aldinqi {{PLURAL:$1|$1}}',
+'nextn'       => 'kéyinki {{PLURAL:$1|$1}}',
 'powersearch' => 'Izdash',
 
 # Preferences page
@@ -111,8 +114,10 @@ $messages = array(
 'recentchanges' => 'Yéngi özgirish',
 
 # Recent changes linked
-'recentchangeslinked'      => 'Yéqinqi özgirishler',
-'recentchangeslinked-page' => 'Betning ismi:',
+'recentchangeslinked'         => 'Yéqinqi özgirishler',
+'recentchangeslinked-feed'    => 'Yéqinqi özgirishler',
+'recentchangeslinked-toolbox' => 'Yéqinqi özgirishler',
+'recentchangeslinked-page'    => 'Betning ismi:',
 
 # Upload
 'upload'          => 'Yéngi höjjet kirgüzush',

@@ -15,22 +15,22 @@
  */
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Μέσον',
-	NS_SPECIAL        => 'Ειδικόν',
-	NS_TALK           => 'Καλάτσεμαν',
-	NS_USER           => 'Χρήστες',
-	NS_USER_TALK      => 'Καλάτσεμαν_χρήστε',
-	NS_PROJECT_TALK   => '$1_καλάτσεμαν',
-	NS_FILE           => 'Εικόναν',
-	NS_FILE_TALK      => 'Καλάτσεμαν_εικόνας',
-	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'MediaWiki_talk',
-	NS_TEMPLATE       => 'Πρότυπον',
-	NS_TEMPLATE_TALK  => 'Καλάτσεμαν_πρότυπι',
-	NS_HELP           => 'Βοήθειαν',
-	NS_HELP_TALK      => 'Καλάτσεμαν_βοήθειας',
-	NS_CATEGORY       => 'Κατηγορίαν',
-	NS_CATEGORY_TALK  => 'Καλάτσεμαν_κατηγορίας',
+	NS_MEDIA            => 'Μέσον',
+	NS_SPECIAL          => 'Ειδικόν',
+	NS_TALK             => 'Καλάτσεμαν',
+	NS_USER             => 'Χρήστες',
+	NS_USER_TALK        => 'Καλάτσεμαν_χρήστε',
+	NS_PROJECT_TALK     => '$1_καλάτσεμαν',
+	NS_FILE             => 'Εικόναν',
+	NS_FILE_TALK        => 'Καλάτσεμαν_εικόνας',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
+	NS_TEMPLATE         => 'Πρότυπον',
+	NS_TEMPLATE_TALK    => 'Καλάτσεμαν_πρότυπι',
+	NS_HELP             => 'Βοήθειαν',
+	NS_HELP_TALK        => 'Καλάτσεμαν_βοήθειας',
+	NS_CATEGORY         => 'Κατηγορίαν',
+	NS_CATEGORY_TALK    => 'Καλάτσεμαν_κατηγορίας',
 );
 
 $datePreferences = array(
@@ -505,7 +505,6 @@ $messages = array(
 Πληροφορία: (ατωριζνόν) = διαφοράς με τ\' ατωριζνόν τη μορφήν,
 (υστερνόν) = διαφοράς με τ\' υστερνόν τη μορφήν, μ = μικρά διαφοράς.',
 'history-fieldset-title' => 'Εύρον σο ιστορικόν',
-'deletedrev'             => '[εσβήεν]',
 'histfirst'              => "Ασ' όλεα παλαιόν",
 'histlast'               => "Ασ' όλεα καινούρ'",
 'historyempty'           => '(εύκαιρον)',
@@ -541,7 +540,7 @@ $messages = array(
 'diff-width'              => 'πλάτος',
 'diff-height'             => 'ύψος',
 'diff-td'                 => "'''κελλίον'''",
-'diff-dt'                 => "εις '''όρον ορισμού'''",
+'diff-dt'                 => "'''όρον ορισμού'''",
 'diff-strike'             => "'''εγκάρσιον σβήσεμαν'''",
 
 # Search results
@@ -555,8 +554,8 @@ $messages = array(
 'noexactmatch-nocreate'     => "''''Κ έχ' σελίδαν με τ'όνομαν \"\$1\".'''",
 'notitlematches'            => "Κανέναν όνομαν σελίδας 'κ ταιριάζ",
 'notextmatches'             => "Κανέναν γράψιμον 'κ ταιριάζ",
-'prevn'                     => '$1 προηγουμένων',
-'nextn'                     => '$1 επομένων',
+'prevn'                     => '{{PLURAL:$1|$1}} προηγουμένων',
+'nextn'                     => '{{PLURAL:$1|$1}} επομένων',
 'viewprevnext'              => 'Τέρεν ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:Περιεχόμενα',
 'searchprofile-images'      => 'Αρχεία',
@@ -586,7 +585,6 @@ $messages = array(
 'prefs-skin'                => 'Όψην',
 'skin-preview'              => 'Πρώτον τέρεμαν',
 'prefs-math'                => 'Απόδοσην μαθηματικίων',
-'dateformat'                => 'Μορφή ημερομηνίας',
 'prefs-datetime'            => 'Ημερομηνίαν και ώραν',
 'prefs-rc'                  => 'Υστερνά αλλαγάς',
 'prefs-misc'                => 'Διαφ',
@@ -613,6 +611,7 @@ $messages = array(
 'prefs-help-realname'       => "'Κ επρέπ' να βάλετεν το τεσέτερον το πραματικόν τ' όνεμαν.
 Άμα αν εβάλετεν ατό, αμπορεί πα ν' αναγνωρίζκεται το τεσέτερον η δουλείαν.",
 'prefs-help-email-required' => 'Χρειάσκεται το ηλεκτρονικόν η διεύθυνση.',
+'prefs-diffs'               => 'Διαφοράς',
 
 # User rights
 'userrights-groupsmember' => 'Μέλος τη:',
@@ -688,6 +687,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'Σχετικά αλλαγάς',
+'recentchangeslinked-feed'     => 'Σχετικά αλλαγάς',
+'recentchangeslinked-toolbox'  => 'Σχετικά αλλαγάς',
 'recentchangeslinked-title'    => 'Αλλαγάς τη "$1"',
 'recentchangeslinked-noresult' => "Σ' αβούτα τα σελίδας 'κ εγένταν αλλαγάς.",
 'recentchangeslinked-summary'  => "Αβούτος εν κατάλογον με τ' υστερνά τ' αλλαγάς σελιδίων με σύνδεσμον ασ' έναν συγκεκριμένον σελίδαν (για σε σελίδας συγκεκριμένου κατηγορίας).
@@ -727,6 +728,7 @@ $messages = array(
 'listfiles_description' => 'Σχόλιον',
 
 # File description page
+'file-anchor-link'          => 'Εικόνα',
 'filehist'                  => "Ιστορικόν τ' αρχείου",
 'filehist-help'             => "Εφτάτε κλικ σ' έναν ημερομηνίαν/ώραν απάν αέτς για να τερείτε πως έτον τ' αρχείον σ' εκείνεν την ώραν.",
 'filehist-current'          => 'υστερινά',
@@ -741,9 +743,7 @@ $messages = array(
 'imagelinks'                => 'Συνδέσμ αρχείων',
 'linkstoimage'              => "Ατά τα {{PLURAL:$1|σελίδαν δεκνίζ'|$1 σελίδας δεκνίζ'νε}} σην εικόναν:",
 'nolinkstoimage'            => "'Κ εχ σελίδας ντο δεκνίζνε σ' αβούτεν εικόναν.",
-'sharedupload'              => "Αούτον τ' αρχείον εφορτώθεν ασό $1 για κοινόν κουλάνεμαν κι επορεί να χρησιμοπισκάται και σ' άλλα έργα.",
-'noimage'                   => "Αρχείον με αΐκον όνεμαν 'κ έχ', άμα επορείς να $1.",
-'noimage-linktext'          => "σκώσ' έναν",
+'sharedupload'              => "Αούτον τ' αρχείον εφορτώθεν ασό $1 για κοινόν κουλάνεμαν κι επορεί να χρησιμοποισκάται και σ' άλλα έργα.",
 'uploadnewversion-linktext' => "Σκώσ' καινούραιον έκδοσην τ' αρχείου",
 
 # File deletion
@@ -808,7 +808,7 @@ $messages = array(
 'longpages'               => 'Τρανά σελίδας',
 'deadendpages'            => 'Αδιέξοδα σελίδας',
 'protectedpages'          => 'Ασπαλιγμένα σελίδας',
-'listusers'               => 'Κατάλογον χρήστιων',
+'listusers'               => 'Κατάλογον χρηστίων',
 'newpages'                => 'Καινούρεα σελίδας',
 'newpages-username'       => 'Όνεμα χρήστε:',
 'ancientpages'            => 'Ασ’ όλιον παλαιά σελίδας',
@@ -1139,7 +1139,7 @@ $messages = array(
 'tooltip-compareselectedversions' => "Τερέστε τα διαφοράς τ' εκδωσίων τη σελίδας",
 'tooltip-watch'                   => 'Βαλέστεν την σελίδαν σην λίσταν ωριαγματί νεσουν',
 'tooltip-rollback'                => "Μ'έναν κλικ σην \"αναστροφήν\" θα χάται τ' υστερνόν η αλλαγή σ'αούτον τη σελίδαν.",
-'tooltip-undo'                    => 'Με την "Αναίρεση" χάται αούτον η αλλαγή και ανοίγ\' η φόρμα αλλαγματί άμον πρώτον τέρεμαν. Επιτρέπ\' την προστήκην αιτίας σην περίληψην.',
+'tooltip-undo'                    => 'Με την "Αναίρεση" χάται αούτον η αλλαγή και ανοίγ\' η φόρμα αλλαγματί άμον πρώτον τέρεμαν. Επιτρέπ\' την προσθήκην αιτίας ση περίληψην.',
 
 # Attribution
 'others' => "άλλ'",
@@ -1193,6 +1193,7 @@ $messages = array(
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength",
 
 # EXIF tags

@@ -612,7 +612,6 @@ La razón dá pol $3 es ''$2''",
 'page_first'          => 'primel',
 'page_last'           => 'úrtimu',
 'histlegend'          => 'Leyenda: (ati) = deferéncias cola velsión atual, (anter) = deferéncias cola velsión anteriol, C = eición chiquenina',
-'deletedrev'          => '[esborrau]',
 'histfirst'           => 'Mas recienti',
 'histlast'            => 'Mas antigu',
 'historysize'         => '({{PLURAL:$1|1 byte|$1 byts}})',
@@ -720,8 +719,8 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.",
 'notitlematches'            => 'Nu ai artículus llamaus asina',
 'textmatches'               => 'Conciéncias con el testu el artículu',
 'notextmatches'             => 'Nu desistin conciéncias con el testu el artículu',
-'prevn'                     => '$1 anterioris',
-'nextn'                     => '$1 siguientis',
+'prevn'                     => '{{PLURAL:$1|$1 anterioris}}',
+'nextn'                     => '{{PLURAL:$1|$1 siguientis}}',
 'viewprevnext'              => 'Vel ($1) ($2) ($3).',
 'searchhelp-url'            => 'Help:Continius',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 letra|$2 letras}})',
@@ -766,7 +765,6 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.",
 'prefs-skin'                => 'Aparéncia',
 'skin-preview'              => 'Previsoreal',
 'prefs-math'                => 'Hórmulas',
-'dateformat'                => 'Hormatu e fecha',
 'datedefault'               => 'Sin preferéncias',
 'prefs-datetime'            => 'Fecha i ora',
 'prefs-personal'            => 'Datus el usuáriu',
@@ -913,6 +911,8 @@ Ebi tenel menus de $1 {{PLURAL:$1|caratel|carateris}}.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Chambus relacionaus',
+'recentchangeslinked-feed'     => 'Chambus relacionaus',
+'recentchangeslinked-toolbox'  => 'Chambus relacionaus',
 'recentchangeslinked-title'    => 'Chambus relacionaus con "$1"',
 'recentchangeslinked-noresult' => 'Nu ai chambus enas páhinas atihás nel períu lihiu.',
 'recentchangeslinked-summary'  => "Nesta páhina especial ai una lista colos úrtimus chambus en páhinas qu'están atihás dendi una páhina concreta (u en miembrus de una detelminá categoria).
@@ -1026,6 +1026,7 @@ Pursa nel entítulu la coluna pa chambal el ordin.',
 'listfiles_description' => 'Descrición',
 
 # File description page
+'file-anchor-link'          => 'Archivu',
 'filehist'                  => 'Estorial el archivu',
 'filehist-help'             => 'Pursa nuna fecha/ora pa vel cumu era el archivu nesi momentu.',
 'filehist-deleteall'        => 'esborral tós',
@@ -1043,8 +1044,6 @@ Pursa nel entítulu la coluna pa chambal el ordin.',
 'linkstoimage'              => '{{PLURAL:$1|El siguienti artículu atiha|Los siguientis $1 artículus atihan}} a esti archivu:',
 'nolinkstoimage'            => 'Nu ai denguna páhina qu´atihi a esti archivu.',
 'sharedupload'              => 'Esti archivu está compartiu i puei gastalsi dendi otrus proyeutus.',
-'noimage'                   => 'Nu desisti dengún archivu llamau asina, pueis $1.',
-'noimage-linktext'          => 'empuntalu',
 'uploadnewversion-linktext' => 'Empuntal una nueva velsión d´esti archivu',
 
 # File reversion
@@ -1551,7 +1550,7 @@ Escrebi una razón concreta embahu (pol sabulugal, almientandu páhinas qu'aigan
 'ipblocklist-submit'          => 'Landeal',
 'blocklistline'               => '$1, $2 ataruga a $3 ($4)',
 'infiniteblock'               => 'enfinitu',
-'expiringblock'               => 'acabiha $1',
+'expiringblock'               => 'acabiha $1 $2',
 'anononlyblock'               => 'solu anón.',
 'noautoblockblock'            => 'autu-tarugu esativau',
 'createaccountblock'          => 'criaeru e páhinas atarugau',
@@ -1901,6 +1900,7 @@ Cualisquiel otru atihu ena mesma línia se consierará ececión, p.s. páhinas o
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

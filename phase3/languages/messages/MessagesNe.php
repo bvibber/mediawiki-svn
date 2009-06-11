@@ -248,7 +248,7 @@ $messages = array(
 # Search results
 'notitlematches' => 'कुनैपनि पृष्ठको शिर्षक संग मिल्दैन',
 'notextmatches'  => 'अक्षरस् पेज भेटिएन',
-'nextn'          => 'अर्को $1',
+'nextn'          => 'अर्को {{PLURAL:$1|$1}}',
 
 # Preferences page
 'preferences'           => 'रोजाईहरू',
@@ -289,7 +289,9 @@ $messages = array(
 'rc_categories_any' => 'कुनै',
 
 # Recent changes linked
-'recentchangeslinked' => 'संबन्धित परिवर्तनहरु',
+'recentchangeslinked'         => 'संबन्धित परिवर्तनहरु',
+'recentchangeslinked-feed'    => 'संबन्धित परिवर्तनहरु',
+'recentchangeslinked-toolbox' => 'संबन्धित परिवर्तनहरु',
 
 # Upload
 'upload'            => 'फाइल अपलोड',
@@ -311,8 +313,8 @@ $messages = array(
 'listfiles_description' => 'वर्णन',
 
 # File description page
+'file-anchor-link' => 'फाईल',
 'nolinkstoimage'   => 'यो फाईलसंग लिंकभएको कुनै पृष्ठ छैन.',
-'noimage-linktext' => 'अपलोड गर्नुहोस्',
 
 # MIME search
 'download' => 'डाउनलोड',

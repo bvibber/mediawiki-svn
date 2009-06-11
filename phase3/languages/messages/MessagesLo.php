@@ -488,8 +488,8 @@ $messages = array(
 'searchresulttext'          => 'ສຳຫຼັບ ຂໍ້ມູນເພີ່ມເຕີມ ກ່ຽວກັບ ການຊອກຫາ ຢູ່ {{SITENAME}}, ກະລຸນາເບິ່ງ [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'            => "ທ່ານ ຊອກຫາ '''[[:$1]]'''",
 'noexactmatch'              => "'''ຍັງບໍ່ມີໜ້າ ຊື່ວ່າ  \"\$1\".''' ທ່ານ ສາມາດ [[:\$1|ສ້າງໜ້ານີ້ໄດ້]].",
-'prevn'                     => '$1 ກ່ອນໜ້າ',
-'nextn'                     => '$1 ຕໍ່ໄປ',
+'prevn'                     => '{{PLURAL:$1|$1}} ກ່ອນໜ້າ',
+'nextn'                     => '{{PLURAL:$1|$1}} ຕໍ່ໄປ',
 'viewprevnext'              => 'ເບິ່ງ ($1) ($2) ($3).',
 'searchhelp-url'            => 'Help:ເນື້ອໃນ',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 ຄຳ|$2 ຄຳ}})',
@@ -516,7 +516,6 @@ $messages = array(
 'prefs-skin'            => 'ລວດລາຍ',
 'skin-preview'          => 'ລອງເບິ່ງ',
 'prefs-math'            => 'ຄະນິດສາດ',
-'dateformat'            => 'ແບບວັນເດືອນປີ',
 'datedefault'           => 'ແນວໃດກໍ່ໄດ້',
 'prefs-datetime'        => 'ວັນ ແລະ ເວລາ',
 'prefs-personal'        => 'ຂໍ້ມູນຫຼັກຜູ້ໃຊ້',
@@ -578,6 +577,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'ການດັດແກ້ທີ່ກ່ຽວຂ້ອງ',
+'recentchangeslinked-feed'     => 'ການດັດແກ້ທີ່ກ່ຽວຂ້ອງ',
+'recentchangeslinked-toolbox'  => 'ການດັດແກ້ທີ່ກ່ຽວຂ້ອງ',
 'recentchangeslinked-title'    => 'ການປ່ຽນແປງກ່ຽວຂ້ອງກັບ "$1"',
 'recentchangeslinked-noresult' => 'ບໍ່ມີການປ່ຽນແປງຢູ່ໜ້າລິ້ງຄ໌ໃນໄລຍະດັ່ງກ່າວ.',
 
@@ -596,6 +597,7 @@ $messages = array(
 'listfiles' => 'ລາຍຊື່ໄຟລ໌',
 
 # File description page
+'file-anchor-link'    => 'ໄຟລ໌',
 'filehist'            => 'ປະຫວັດໄຟລ໌',
 'filehist-current'    => 'ປະຈຸບັນ',
 'filehist-datetime'   => 'ວັນເວລາ',
@@ -607,8 +609,6 @@ $messages = array(
 'linkstoimage'        => 'ລິ້ງຄ໌ຕໍ່ໄປນີ້ເຊື່ອມຕໍ່ຫາໄຟລ໌:',
 'nolinkstoimage'      => 'ບໍ່ມີໜ້າໃດ ລິ້ງຄ໌ ຫາ ໄຟລ໌ນີ້.',
 'sharedupload'        => 'ໄຟລ໌ນີ້ແມ່ນການອັບໂຫຼດຣ່ວມ ແລະ ອາດຖືກໃຊ້ໂດຍໂຄງການອື່ນໆ.',
-'noimage'             => 'ຍັງບໍ່ມີ ໄຟລ໌ຊື່ນີ້ ເທື່ອ, ທ່ານ ສາມາດ  $1.',
-'noimage-linktext'    => 'ອັບໂຫຼດມັນ',
 
 # List redirects
 'listredirects' => 'ລາຍການການໂອນໜ້າ',

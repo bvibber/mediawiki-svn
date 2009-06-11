@@ -17,24 +17,22 @@
  */
 
 $namespaceNames = array(
-	NS_MEDIA          => "Медиа",
-	NS_SPECIAL        => "Вижа",
-	NS_MAIN           => "",
-	NS_TALK           => "Баҳс",
-	NS_USER           => "Корбар",
-	NS_USER_TALK      => "Баҳси_корбар",
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => "Баҳси_$1",
-	NS_FILE           => "Акс",
-	NS_FILE_TALK      => "Баҳси_акс",
-	NS_MEDIAWIKI      => "Медиавики",
-	NS_MEDIAWIKI_TALK => "Баҳси_медиавики",
-	NS_TEMPLATE       => "Шаблон",
-	NS_TEMPLATE_TALK  => "Баҳси_шаблон",
-	NS_HELP           => "Роҳнамо",
-	NS_HELP_TALK      => "Баҳси_роҳнамо",
-	NS_CATEGORY       => "Гурӯҳ",
-	NS_CATEGORY_TALK  => "Баҳси_гурӯҳ",
+	NS_MEDIA            => 'Медиа',
+	NS_SPECIAL          => 'Вижа',
+	NS_TALK             => 'Баҳс',
+	NS_USER             => 'Корбар',
+	NS_USER_TALK        => 'Баҳси_корбар',
+	NS_PROJECT_TALK     => 'Баҳси_$1',
+	NS_FILE             => 'Акс',
+	NS_FILE_TALK        => 'Баҳси_акс',
+	NS_MEDIAWIKI        => 'Медиавики',
+	NS_MEDIAWIKI_TALK   => 'Баҳси_медиавики',
+	NS_TEMPLATE         => 'Шаблон',
+	NS_TEMPLATE_TALK    => 'Баҳси_шаблон',
+	NS_HELP             => 'Роҳнамо',
+	NS_HELP_TALK        => 'Баҳси_роҳнамо',
+	NS_CATEGORY         => 'Гурӯҳ',
+	NS_CATEGORY_TALK    => 'Баҳси_гурӯҳ',
 );
 
 $datePreferences = array(
@@ -674,7 +672,6 @@ $messages = array(
 Шарҳ: (феълӣ) тафовут бо нусхаи феълӣ
 (қаблӣ) = тафовут бо нусхаи феълӣ, ҷузъ = вироиши ҷузъӣ',
 'history-fieldset-title' => 'Мурури таърих',
-'deletedrev'             => '[ҳазфшуда]',
 'histfirst'              => 'Аввалин',
 'histlast'               => 'Охирин',
 'historysize'            => '({{PLURAL:$1|1 байт|$1 байт}})',
@@ -796,8 +793,8 @@ $messages = array(
 'notitlematches'                   => 'Унвонҳои ҳеҷ мақолае рост намеояд',
 'textmatches'                      => 'Матни мақола татбиқ мекунад',
 'notextmatches'                    => 'Матни ҳеҷ мақолае рост намеояд',
-'prevn'                            => 'қаблӣ $1',
-'nextn'                            => 'баъдӣ $1',
+'prevn'                            => 'қаблӣ {{PLURAL:$1|$1}}',
+'nextn'                            => 'баъдӣ {{PLURAL:$1|$1}}',
 'viewprevnext'                     => 'Намоиш ($1) ($2) ($3)',
 'searchmenu-legend'                => 'Гузинаҳои ҷустуҷӯ',
 'searchmenu-new'                   => "'''Эҷоди саҳифаи \"[[:\$1]]\" дар ин вики!'''",
@@ -854,7 +851,6 @@ $messages = array(
 'prefs-skin'                => 'Пӯст',
 'skin-preview'              => 'Пешнамоиш',
 'prefs-math'                => 'Риёзиёт',
-'dateformat'                => 'Қолаби сана',
 'datedefault'               => 'Бе тарҷиҳ',
 'prefs-datetime'            => 'Сана ва вақт',
 'prefs-personal'            => 'Додаҳои корбар',
@@ -1024,6 +1020,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'Таъғироти монандӣ',
+'recentchangeslinked-feed'     => 'Таъғироти монандӣ',
+'recentchangeslinked-toolbox'  => 'Таъғироти монандӣ',
 'recentchangeslinked-title'    => 'Тағйирҳои алоқаманд ба "$1"',
 'recentchangeslinked-noresult' => 'Дар давоми замони додашуда тағйире дар саҳифаҳои пайваста рух надодааст.',
 'recentchangeslinked-summary'  => "Ин феҳристи тағйироти охир барои саҳифаҳои пайваста аз саҳифаи мушаххасшуда мебошад (ё ба аъзоёни гурӯҳи мушаххасшуда). 
@@ -1137,6 +1135,7 @@ $messages = array(
 'listfiles_description' => 'Тавсифот',
 
 # File description page
+'file-anchor-link'          => 'файл',
 'filehist'                  => 'Таърихи файл',
 'filehist-help'             => 'Рӯи таърихҳо клик кунед то нусхаи марбути парвандаро бубинед.',
 'filehist-deleteall'        => 'ҳазфи ҳама',
@@ -1152,8 +1151,6 @@ $messages = array(
 'linkstoimage'              => '{{PLURAL:$1|Саҳифаҳои|$1 Саҳифаи}} зерин ба ин акс пайванданд:',
 'nolinkstoimage'            => 'Ҳеҷ саҳифае ба ин акс пайванд надорад.',
 'sharedupload'              => 'Ин парванда бо таври умумӣ бор карда шудааст ва шояд аз тарафи дигар лоиҳаҳо мавриди истифода бошад.',
-'noimage'                   => 'Ҳеҷ парвандае бо ин ном мавҷуд нест, шумо метавонед $1.',
-'noimage-linktext'          => 'онро бор кунед',
 'uploadnewversion-linktext' => 'Бор кардани нусхаи ҷадидӣ ин парванда',
 
 # File reversion
@@ -1680,7 +1677,7 @@ $1',
 'ipblocklist-submit'          => 'Ҷустуҷӯ',
 'blocklistline'               => '$1, $2 ро баст $3 ($4)',
 'infiniteblock'               => 'бе поён',
-'expiringblock'               => '$1 ба поён мерасад',
+'expiringblock'               => '$1 $2 ба поён мерасад',
 'anononlyblock'               => 'фақат корбарони гумном',
 'noautoblockblock'            => 'бастани худкор ғайрифаъол аст',
 'createaccountblock'          => 'имкони эҷоди ҳисоб баста шудааст',
@@ -2047,6 +2044,7 @@ $1',
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

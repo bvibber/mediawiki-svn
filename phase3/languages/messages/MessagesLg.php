@@ -302,8 +302,8 @@ oba ku gano agali ku lupapula luno.<br />
 
 # Search results
 'noexactmatch'   => "'''Tewali lupapula lwa \"\$1\".''' Ob'oyagala, [[:\$1|olupapula olwo gwe osobola okulukolawo]].",
-'prevn'          => '$1 ezikulembedde zino',
-'nextn'          => '$1 eziddako',
+'prevn'          => '{{PLURAL:$1|$1}} ezikulembedde zino',
+'nextn'          => '{{PLURAL:$1|$1}} eziddako',
 'viewprevnext'   => 'Laga ($1) ($2) ($3).',
 'searchhelp-url' => 'Help:Endagiriro',
 'powersearch'    => 'Noonya',
@@ -344,6 +344,8 @@ olwa 'yogera nange' nga ggwe tewetaaze kulaga bikufaako.",
 
 # Recent changes linked
 'recentchangeslinked'          => 'Ebikyusiddwa ebyekuusa ku lupapula luno',
+'recentchangeslinked-feed'     => 'Ebikyusiddwa ebyekuusa ku lupapula luno',
+'recentchangeslinked-toolbox'  => 'Ebikyusiddwa ebyekuusa ku lupapula luno',
 'recentchangeslinked-title'    => 'Enkyukakyuka ezikwatagana ne "$1"',
 'recentchangeslinked-noresult' => 'Empapula eziriko enyunzi tewali lukyuse mu kiseera kino.',
 'recentchangeslinked-summary'  => "Olulpapula olw'enjawulo luno luliko olukalala lw'ebikyuse ku mpapula eziriko enyunzi ezigguka ku lw'obadde otunuulira. Ebiwandikidwa mu '''nukuta enziggumivu''' biri ku mpapula z'ogoberera.",
@@ -356,6 +358,7 @@ olwa 'yogera nange' nga ggwe tewetaaze kulaga bikufaako.",
 'listfiles_user' => 'Memba',
 
 # File description page
+'file-anchor-link'    => 'Fayiro',
 'filehist'            => 'Ebyafaayo ebya fayiro eno',
 'filehist-help'       => "Bw'onyiga ku nnaku n'essaawa, ojjakulaba fayiro nga bwe yali efaanana ku kiseera ekyo.",
 'filehist-datetime'   => "Ennaku n'obudde",
@@ -555,6 +558,7 @@ Bw\'oba oyagala okulekerawo okulugoberera, nyiga ku kigambo "Suula" awo ku bbali
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength",
 
 # External editor support

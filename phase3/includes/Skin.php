@@ -62,7 +62,7 @@ class Skin extends Linker {
 		}
 		return $wgValidSkinNames;
 	}
-	
+
 	/**
 	 * Fetch the list of usable skins in regards to $wgSkipSkins.
 	 * Useful for Special:Preferences and other places where you
@@ -277,7 +277,7 @@ class Skin extends Linker {
 		$this->userpage = $wgUser->getUserPage()->getPrefixedText();
 		$this->usercss = false;
 	}
-	
+
 	/**
 	 * Set the title
 	 * @param Title $t The title to use
@@ -285,7 +285,7 @@ class Skin extends Linker {
 	public function setTitle( $t ) {
 		$this->mTitle = $t;
 	}
-	
+
 	/** Get the title */
 	public function getTitle() {
 		return $this->mTitle;
@@ -319,7 +319,7 @@ class Skin extends Linker {
 		$out->out( $out->mBodytext . "\n" );
 
 		$out->out( $this->afterContent() );
-		
+
 		$out->out( $afterContent );
 
 		$out->out( $this->bottomScripts() );
@@ -404,13 +404,17 @@ class Skin extends Linker {
 			'wgSeparatorTransformTable' => $compactSeparatorTransTable,
 			'wgDigitTransformTable' => $compactDigitTransTable,
 		);
+		if ( !( $wgContLang->hasVariants() ) ) {
+			unset( $vars['wgUserVariant'] );
+		}
+
 		//if on upload page output the extension list & js_upload
-		if( SpecialPage::resolveAlias( $wgTitle->getDBkey() ) ==  "Upload" ){ 
+		if( SpecialPage::resolveAlias( $wgTitle->getDBkey() ) ==  "Upload" ){
 			global $wgFileExtensions, $wgAjaxUploadInterface;
 			$vars['wgFileExtensions'] 	 = $wgFileExtensions;
-			$vars['wgAjaxUploadInterface'] = $wgAjaxUploadInterface;			
+			$vars['wgAjaxUploadInterface'] = $wgAjaxUploadInterface;
 		}
-		
+
 		if( $wgUseAjax && $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ){
 			$vars['wgMWSuggestTemplate'] = SearchEngine::getMWSuggestTemplate();
 			$vars['wgDBname'] = $wgDBname;
@@ -446,13 +450,13 @@ class Skin extends Linker {
 		global $wgStylePath, $wgUser, $wgJsMimeType, $wgStyleVersion;
 
 		$vars = self::makeGlobalVariablesScript( array( 'skinname' => $this->getSkinName() ) );
-		
+
 		//moved wikibits to be called earlier on
 		//		$out->addScriptFile( "{$wgStylePath}/common/wikibits.js" );
-		
+
 		global $wgUseSiteJs;
 		if( $wgUseSiteJs ) {
-			$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';		
+			$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';
 			$out->addScriptFile( htmlspecialchars( self::makeUrl( '-',
 					"action=raw$jsCache&gen=js&useskin=" .
 					urlencode( $this->getSkinName() ) ) ) );
@@ -461,7 +465,7 @@ class Skin extends Linker {
 			$userpage = $wgUser->getUserPage();
 			$userjs = htmlspecialchars( self::makeUrl(
 				$userpage->getPrefixedText().'/'.$this->getSkinName().'.js',
-				'action=raw&ctype='.$wgJsMimeType ) );			
+				'action=raw&ctype='.$wgJsMimeType ) );
 			$out->addScriptFile( $userjs );
 		}
 		return true;
@@ -503,7 +507,7 @@ class Skin extends Linker {
 	 * dered deprecated.
 	 *
 	 * @param force_skin  lets you override the skin name
-	 * 
+	 *
 	 * @return string
 	 */
 	public function generateUserJs( $force_skin = false) {
@@ -511,8 +515,8 @@ class Skin extends Linker {
 
 		wfProfileIn( __METHOD__ );
 		$skinName = ( $force_skin ) ? $force_skin : $this->getSkinName();
-		
-		
+
+
 		$s = "/* generated javascript */\n";
 		$s .= "var skin = '" . Xml::escapeJsString( $skinName ) . "';\n";
 		$s .= "var stylepath = '" . Xml::escapeJsString( $wgStylePath ) . "';";
@@ -545,7 +549,7 @@ class Skin extends Linker {
 		wfProfileOut( __METHOD__ );
 		return $s;
 	}
-	
+
 	/**
 	 * Split for easier subclassing in SkinSimple, SkinStandard and SkinCologneBlue
 	 */
@@ -591,20 +595,20 @@ END;
 	function setupUserJs(  OutputPage $out) {
 		global $wgRequest, $wgJsMimeType, $wgUseSiteJs;
 
-		wfProfileIn( __METHOD__ );		
-					
+		wfProfileIn( __METHOD__ );
+
 		$action = $wgRequest->getVal( 'action', 'view' );
-		if( $out->isUserJsAllowed() && $this->loggedin ) {			
+		if( $out->isUserJsAllowed() && $this->loggedin ) {
 			if( $this->mTitle->isJsSubpage() and $this->userCanPreview( $action ) ) {
 				# XXX: additional security check/prompt (userCanPreview checks for html token before doing this js output)
 				$this->userjsprev = '/*<![CDATA[*/ ' . $wgRequest->getText( 'wpTextbox1' ) . ' /*]]>*/';
-			} else {																			
-				$this->userjs = self::makeUrl( $this->userpage . '/' . $this->skinname . '.js', 'action=raw&ctype=' . $wgJsMimeType );	
+			} else {
+				$this->userjs = self::makeUrl( $this->userpage . '/' . $this->skinname . '.js', 'action=raw&ctype=' . $wgJsMimeType );
 			}
-		}				
-		//call the skin JS setup		
+		}
+		//call the skin JS setup
 		$this->setupSkinUserJs( $out );
-				
+
 		wfProfileOut( __METHOD__ );
 	}
 	/**
@@ -710,7 +714,7 @@ END;
 			' skin-'. Sanitizer::escapeClass( $this->getSkinName() );
 		return $a;
 	}
-	
+
 	function getPageClasses( $title ) {
 		$numeric = 'ns-'.$title->getNamespace();
 		if( $title->getNamespace() == NS_SPECIAL ) {
@@ -1343,7 +1347,7 @@ END;
 					$element[] = $this->emailUserLink();
 				}
 			}
-			
+
 			$s = implode( $element, $sep );
 
 			if ( $this->mTitle->getArticleId() ) {

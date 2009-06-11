@@ -154,9 +154,8 @@ $messages = array(
 'yourdiff'           => 'Айырмалар',
 
 # History pages
-'next'       => 'кийинки',
-'last'       => 'соңку',
-'deletedrev' => '[өчүрүлдү]',
+'next' => 'кийинки',
+'last' => 'соңку',
 
 # Diffs
 'difference' => '(Оңдоолордун айырмасы)',
@@ -167,7 +166,6 @@ $messages = array(
 # Preferences page
 'preferences'       => 'Түзөө',
 'changepassword'    => 'Сырсөздү өзгөртүү',
-'dateformat'        => 'Датанын форматы',
 'prefs-datetime'    => 'Дата жана убакыт',
 'prefs-rc'          => 'Соңку өзгөрүүлөр',
 'prefs-watchlist'   => 'Байкоо тизме',
@@ -197,7 +195,9 @@ $messages = array(
 'newpageletter' => 'Ж',
 
 # Recent changes linked
-'recentchangeslinked' => 'Тиешелүү өзгөрүүлөр',
+'recentchangeslinked'         => 'Тиешелүү өзгөрүүлөр',
+'recentchangeslinked-feed'    => 'Тиешелүү өзгөрүүлөр',
+'recentchangeslinked-toolbox' => 'Тиешелүү өзгөрүүлөр',
 
 # Upload
 'upload'            => 'Файл жүктөө',
@@ -213,7 +213,8 @@ $messages = array(
 'listfiles' => 'Файлдар тизмеси',
 
 # File description page
-'imagelinks' => 'Шилтемелер',
+'file-anchor-link' => 'Файл',
+'imagelinks'       => 'Шилтемелер',
 
 # Unused templates
 'unusedtemplates'    => 'Колдонулбаган нускалар',

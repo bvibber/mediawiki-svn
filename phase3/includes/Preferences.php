@@ -11,8 +11,8 @@ class Preferences {
 		if (self::$defaultPreferences)
 			return self::$defaultPreferences;
 	
-		global $wgLang, $wgRCMaxAge;
-		
+		global $wgRCMaxAge;
+
 		$defaultPreferences = array();
 
 		self::profilePreferences( $user, $defaultPreferences );
@@ -26,16 +26,25 @@ class Preferences {
 		self::watchlistPreferences( $user, $defaultPreferences );
 		self::searchPreferences( $user, $defaultPreferences );
 		self::miscPreferences( $user, $defaultPreferences );
-				
+
 		wfRunHooks( 'GetPreferences', array( $user, &$defaultPreferences ) );
-				
+
+		## Remove preferences that wikis don't want to use
+		global $wgHiddenPrefs;
+		foreach ( $wgHiddenPrefs as $pref ) {
+			if ( isset( $defaultPreferences[$pref] ) ) {
+				unset( $defaultPreferences[ $pref ] );
+			}
+		}
+
 		## Prod in defaults from the user
 		global $wgDefaultUserOptions;
 		foreach( $defaultPreferences as $name => &$info ) {
 			$prefFromUser = self::getOptionFromUser( $name, $info, $user );
 			$field = HTMLForm::loadInputFromParameters( $info ); // For validation
-			$globalDefault = isset($wgDefaultUserOptions[$name])
-								? $wgDefaultUserOptions[$name]
+			$defaultOptions = User::getDefaultOptions();
+			$globalDefault = isset($defaultOptions[$name])
+								? $defaultOptions[$name]
 								: null;
 			
 			// If it validates, set it as the default
@@ -43,10 +52,12 @@ class Preferences {
 				// Already set, no problem
 				continue;
 			} elseif ( !is_null( $prefFromUser ) && // Make sure we're not just pulling nothing
-					$field->validate( $prefFromUser, $user->mOptions ) ) {
+					$field->validate( $prefFromUser, $user->mOptions ) === true ) {
 				$info['default'] = $prefFromUser;
-			} elseif( $field->validate( $globalDefault, $user->mOptions ) ) {
+			} elseif( $field->validate( $globalDefault, $user->mOptions ) === true ) {
 				$info['default'] = $globalDefault;
+			} else {
+				throw new MWException( "Global default $globalDefault is invalid for field $name" );
 			}
 		}
 		
@@ -138,19 +149,16 @@ class Preferences {
 		}
 				
 		// Actually changeable stuff
-		global $wgAllowRealName, $wgAuth;
-		if ($wgAllowRealName) {
-			$defaultPreferences['realname'] =
-					array(
-						'type' => $wgAuth->allowRealNameChange() ? 'text' : 'info',
-						'default' => $user->getRealName(),
-						'section' => 'personal/info',
-						'label-message' => 'yourrealname',
-						'help-message' => 'prefs-help-realname',
-					);
-		}
-		
-		
+		global $wgAuth;
+		$defaultPreferences['realname'] =
+				array(
+					'type' => $wgAuth->allowRealNameChange() ? 'text' : 'info',
+					'default' => $user->getRealName(),
+					'section' => 'personal/info',
+					'label-message' => 'yourrealname',
+					'help-message' => 'prefs-help-realname',
+				);
+
 		$defaultPreferences['gender'] =
 				array(
 					'type' => 'select',
@@ -166,7 +174,7 @@ class Preferences {
 
 		if ($wgAuth->allowPasswordChange()) {
 			global $wgUser; // For skin.
-			$link = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'ResetPass' ),
+			$link = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Resetpass' ),
 				wfMsgHtml( 'prefs-resetpass' ), array() ,
 				array('returnto' => SpecialPage::getTitleFor( 'Preferences') ) );
 				
@@ -296,19 +304,24 @@ class Preferences {
 					$time = $wgLang->timeAndDate( $user->getEmailAuthenticationTimestamp(), true );
 					$d = $wgLang->date( $user->getEmailAuthenticationTimestamp(), true );
 					$t = $wgLang->time( $user->getEmailAuthenticationTimestamp(), true );
-					$emailauthenticated = wfMsg('emailauthenticated', $time, $d, $t ).'<br />';
+					$emailauthenticated = htmlspecialchars(wfMsg('emailauthenticated', $time, $d, $t )).'<br />';
 					$disableEmailPrefs = false;
 				} else {
 					$disableEmailPrefs = true;
 					global $wgUser; // wgUser is okay here, it's for display
 					$skin = $wgUser->getSkin();
-					$emailauthenticated = wfMsg('emailnotauthenticated').'<br />' .
-						$skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Confirmemail' ),
-							wfMsg( 'emailconfirmlink' ) ) . '<br />';
+					$emailauthenticated = wfMsgHtml('emailnotauthenticated').'<br />' .
+						$skin->link(
+							SpecialPage::getTitleFor( 'Confirmemail' ),
+							wfMsg( 'emailconfirmlink' ),
+							array(),
+							array(),
+							array( 'known', 'noclasses' )
+						) . '<br />';
 				}
 			} else {
 				$disableEmailPrefs = true;
-				$emailauthenticated = wfMsg( 'noemailprefs' );
+				$emailauthenticated = wfMsgHtml( 'noemailprefs' );
 			}
 			
 			$defaultPreferences['emailauthentication'] =
@@ -374,27 +387,24 @@ class Preferences {
 	
 	static function skinPreferences( $user, &$defaultPreferences ) {
 		## Skin #####################################
-		global $wgAllowUserSkin, $wgLang;
-		
-		if ($wgAllowUserSkin) {
-			$defaultPreferences['skin'] =
-					array(
-						'type' => 'radio',
-						'options' => self::generateSkinOptions( $user ),
-						'label' => '&nbsp;',
-						'section' => 'rendering/skin',
-					);
-		}
+		$defaultPreferences['skin'] =
+				array(
+					'type' => 'radio',
+					'options' => self::generateSkinOptions( $user ),
+					'label' => '&nbsp;',
+					'section' => 'rendering/skin',
+				);
 		
 		$selectedSkin = $user->getOption( 'skin' );
 		if ( in_array( $selectedSkin, array( 'cologneblue', 'standard' ) ) ) {
+			global $wgLang;
 			$settings = array_flip($wgLang->getQuickbarSettings());
 			
 			$defaultPreferences['quickbar'] =
 				array(
 					'type' => 'radio',
 					'options' => $settings,
-					'section' => 'skin',
+					'section' => 'rendering/skin',
 					'label-message' => 'qbsettings',
 				);
 		}
@@ -408,7 +418,7 @@ class Preferences {
 					array(
 						'type' => 'radio',
 						'options' =>
-							array_flip( array_map( 'wfMsg', $wgLang->getMathNames() ) ),
+							array_flip( array_map( 'wfMsgHtml', $wgLang->getMathNames() ) ),
 						'label' => '&nbsp;',
 						'section' => 'rendering/math',
 					);
@@ -443,8 +453,8 @@ class Preferences {
 					array(
 						'type' => 'radio',
 						'options' => $dateOptions,
-						'label-message' => 'dateformat',
-						'section' => 'datetime',
+						'label' => '&nbsp;',
+						'section' => 'datetime/dateformat',
 					);
 		}
 		
@@ -460,7 +470,7 @@ class Preferences {
 					'raw' => 1,
 					'label-message' => 'servertime',
 					'default' => $nowserver,
-					'section' => 'datetime',
+					'section' => 'datetime/timeoffset',
 				);
 				
 		$defaultPreferences['nowlocal'] =
@@ -469,7 +479,7 @@ class Preferences {
 					'raw' => 1,
 					'label-message' => 'localtime',
 					'default' => $nowlocal,
-					'section' => 'datetime',
+					'section' => 'datetime/timeoffset',
 				);
 		
 		// Grab existing pref.
@@ -488,7 +498,7 @@ class Preferences {
 					'label-message' => 'timezonelegend',
 					'options' => self::getTimezoneOptions(),
 					'default' => $tzSetting,
-					'section' => 'datetime',
+					'section' => 'datetime/timeoffset',
 				);
 	}
 	
@@ -503,7 +513,7 @@ class Preferences {
 						wfMsg( 'underline-default' ) => 2,
 					),
 					'label-message' => 'tog-underline',
-					'section' => 'rendering',
+					'section' => 'rendering/advancedrendering',
 				);
 				
 		$stubThresholdValues = array( 0, 50, 100, 500, 1000, 2000, 5000, 10000 );
@@ -515,55 +525,57 @@ class Preferences {
 		$defaultPreferences['stubthreshold'] =
 				array(
 					'type' => 'selectorother',
-					'section' => 'rendering',
+					'section' => 'rendering/advancedrendering',
 					'options' => $stubThresholdOptions,
 					'label' => wfMsg('stub-threshold'), // Raw HTML message. Yay?
 				);
 		$defaultPreferences['highlightbroken'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'rendering',
+					'section' => 'rendering/advancedrendering',
 					'label' => wfMsg('tog-highlightbroken'), // Raw HTML
 				);
 		$defaultPreferences['showtoc'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'rendering',
+					'section' => 'rendering/advancedrendering',
 					'label-message' => 'tog-showtoc',
 				);
 		$defaultPreferences['nocache'] =
 				array(
 					'type' => 'toggle',
 					'label-message' => 'tog-nocache',
-					'section' => 'rendering',
+					'section' => 'rendering/advancedrendering',
 				);
 		$defaultPreferences['showhiddencats'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'rendering',
+					'section' => 'rendering/advancedrendering',
 					'label-message' => 'tog-showhiddencats'
 				);
 		$defaultPreferences['showjumplinks'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'rendering',
+					'section' => 'rendering/advancedrendering',
 					'label-message' => 'tog-showjumplinks',
 				);
 		$defaultPreferences['justify'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'rendering',
+					'section' => 'rendering/advancedrendering',
 					'label-message' => 'tog-justify',
 				);
 		$defaultPreferences['numberheadings'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'rendering',
+					'section' => 'rendering/advancedrendering',
 					'label-message' => 'tog-numberheadings',
 				);
 	}
 	
 	static function editingPreferences( $user, &$defaultPreferences ) {
+		global $wgUseExternalEditor;
+
 		## Editing #####################################
 		$defaultPreferences['cols'] =
 				array(
@@ -584,73 +596,77 @@ class Preferences {
 		$defaultPreferences['previewontop'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'editing',
+					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-previewontop',
 				);
 		$defaultPreferences['previewonfirst'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'editing',
+					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-previewonfirst',
 				);
 		$defaultPreferences['editsection'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'editing',
+					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-editsection',
 				);
 		$defaultPreferences['editsectiononrightclick'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'editing',
+					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-editsectiononrightclick',
 				);
 		$defaultPreferences['editondblclick'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'editing',
+					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-editondblclick',
 				);
 		$defaultPreferences['editwidth'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'editing',
+					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-editwidth',
 				);
 		$defaultPreferences['showtoolbar'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'editing',
+					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-showtoolbar',
 				);
 		$defaultPreferences['minordefault'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'editing',
+					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-minordefault',
 				);
-		$defaultPreferences['externaleditor'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'editing',
-					'label-message' => 'tog-externaleditor',
-				);
-		$defaultPreferences['externaldiff'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'editing',
-					'label-message' => 'tog-externaldiff',
-				);
+
+		if ( $wgUseExternalEditor ) {
+			$defaultPreferences['externaleditor'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'editing/advancedediting',
+						'label-message' => 'tog-externaleditor',
+					);
+			$defaultPreferences['externaldiff'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'editing/advancedediting',
+						'label-message' => 'tog-externaldiff',
+					);
+		}
+
 		$defaultPreferences['forceeditsummary'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'editing',
+					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-forceeditsummary',
 				);
 		$defaultPreferences['uselivepreview'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'editing',
+					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-uselivepreview',
 				);
 	}
@@ -662,7 +678,7 @@ class Preferences {
 				array(
 					'type' => 'int',
 					'label-message' => 'recentchangesdays',
-					'section' => 'rc',
+					'section' => 'rc/display',
 					'min' => 1,
 					'max' => ceil($wgRCMaxAge / (3600*24)),
 				);
@@ -670,19 +686,20 @@ class Preferences {
 				array(
 					'type' => 'int',
 					'label-message' => 'recentchangescount',
-					'section' => 'rc',
+					'help-message' => 'prefs-help-recentchangescount',
+					'section' => 'rc/display',
 				);
 		$defaultPreferences['usenewrc'] =
 				array(
 					'type' => 'toggle',
 					'label-message' => 'tog-usenewrc',
-					'section' => 'rc',
+					'section' => 'rc/advancedrc',
 				);
 		$defaultPreferences['hideminor'] =
 				array(
 					'type' => 'toggle',
 					'label-message' => 'tog-hideminor',
-					'section' => 'rc',
+					'section' => 'rc/advancedrc',
 				);
 				
 		global $wgUseRCPatrol;
@@ -690,13 +707,13 @@ class Preferences {
 			$defaultPreferences['hidepatrolled'] =
 					array(
 						'type' => 'toggle',
-						'section' => 'rc',
+						'section' => 'rc/advancedrc',
 						'label-message' => 'tog-hidepatrolled',
 					);
 			$defaultPreferences['newpageshidepatrolled'] =
 					array(
 						'type' => 'toggle',
-						'section' => 'rc',
+						'section' => 'rc/advancedrc',
 						'label-message' => 'tog-newpageshidepatrolled',
 					);
 		}
@@ -706,7 +723,7 @@ class Preferences {
 			$defaultPreferences['shownumberswatching'] =
 					array(
 						'type' => 'toggle',
-						'section' => 'rc',
+						'section' => 'rc/advancedrc',
 						'label-message' => 'tog-shownumberswatching',
 					);
 		}
@@ -715,56 +732,56 @@ class Preferences {
 	static function watchlistPreferences( $user, &$defaultPreferences ) {
 		global $wgUseRCPatrol;
 		## Watchlist #####################################
+		$defaultPreferences['watchlistdays'] =
+				array(
+					'type' => 'int',
+					'min' => 0,
+					'max' => 7,
+					'section' => 'watchlist/display',
+					'label-message' => 'prefs-watchlist-days',
+				);
 		$defaultPreferences['wllimit'] =
 				array(
 					'type' => 'int',
 					'min' => 0,
 					'max' => 1000,
 					'label-message' => 'prefs-watchlist-edits',
-					'section' => 'watchlist'
-				);
-		$defaultPreferences['watchlistdays'] =
-				array(
-					'type' => 'int',
-					'min' => 0,
-					'max' => 7,
-					'section' => 'watchlist',
-					'label-message' => 'prefs-watchlist-days',
+					'section' => 'watchlist/display'
 				);
 		$defaultPreferences['extendwatchlist'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'watchlist',
+					'section' => 'watchlist/advancedwatchlist',
 					'label-message' => 'tog-extendwatchlist',
 				);
 		$defaultPreferences['watchlisthideminor'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'watchlist',
+					'section' => 'watchlist/advancedwatchlist',
 					'label-message' => 'tog-watchlisthideminor',
 				);
 		$defaultPreferences['watchlisthidebots'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'watchlist',
+					'section' => 'watchlist/advancedwatchlist',
 					'label-message' => 'tog-watchlisthidebots',
 				);
 		$defaultPreferences['watchlisthideown'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'watchlist',
+					'section' => 'watchlist/advancedwatchlist',
 					'label-message' => 'tog-watchlisthideown',
 				);
 		$defaultPreferences['watchlisthideanons'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'watchlist',
+					'section' => 'watchlist/advancedwatchlist',
 					'label-message' => 'tog-watchlisthideanons',
 				);
 		$defaultPreferences['watchlisthideliu'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'watchlist',
+					'section' => 'watchlist/advancedwatchlist',
 					'label-message' => 'tog-watchlisthideliu',
 				);
 		
@@ -772,7 +789,7 @@ class Preferences {
 			$defaultPreferences['watchlisthidepatrolled'] =
 					array(
 						'type' => 'toggle',
-						'section' => 'watchlist',
+						'section' => 'watchlist/advancedwatchlist',
 						'label-message' => 'tog-watchlisthidepatrolled',
 					);
 		}
@@ -790,7 +807,7 @@ class Preferences {
 			if ( $user->isAllowed( $action ) ) {
 				$defaultPreferences[$pref] = array(
 					'type' => 'toggle',
-					'section' => 'watchlist',
+					'section' => 'watchlist/advancedwatchlist',
 					'label-message' => "tog-$pref",
 				);
 			}
@@ -805,21 +822,21 @@ class Preferences {
 				array(
 					'type' => 'int',
 					'label-message' => 'resultsperpage',
-					'section' => 'searchoptions',
+					'section' => 'searchoptions/display',
 					'min' => 0,
 				);
 		$defaultPreferences['contextlines'] =
 				array(
 					'type' => 'int',
 					'label-message' => 'contextlines',
-					'section' => 'searchoptions',
+					'section' => 'searchoptions/display',
 					'min' => 0,
 				);
 		$defaultPreferences['contextchars'] =
 				array(
 					'type' => 'int',
 					'label-message' => 'contextchars',
-					'section' => 'searchoptions',
+					'section' => 'searchoptions/display',
 					'min' => 0,
 				);		
 		global $wgEnableMWSuggest;
@@ -828,9 +845,16 @@ class Preferences {
 					array(
 						'type' => 'toggle',
 						'label-message' => 'mwsuggest-disable',
-						'section' => 'searchoptions',
+						'section' => 'searchoptions/display',
 					);
-		}		
+		}
+		
+		$defaultPreferences['searcheverything'] =
+				array(
+					'type' => 'toggle',
+					'label-message' => 'searcheverything-enable',
+					'section' => 'searchoptions/advancedsearchoptions',
+				);
 		
 		// Searchable namespaces back-compat with old format
 		$searchableNamespaces = SearchEngine::searchableNamespaces();
@@ -842,6 +866,7 @@ class Preferences {
 			
 			if (!$displayNs) $displayNs = wfMsg( 'blanknamespace' );
 			
+			$displayNs = htmlspecialchars( $displayNs );
 			$nsOptions[$displayNs] = $ns;
 		}
 		
@@ -850,9 +875,12 @@ class Preferences {
 					'type' => 'multiselect',
 					'label-message' => 'defaultns',
 					'options' => $nsOptions,
-					'section' => 'searchoptions',
+					'section' => 'searchoptions/advancedsearchoptions',
 					'prefix' => 'searchNs',
 				);
+		
+
+		
 	}
 	
 	static function miscPreferences( $user, &$defaultPreferences ) {
@@ -860,15 +888,29 @@ class Preferences {
 		$defaultPreferences['diffonly'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'misc',
+					'section' => 'misc/diffs',
 					'label-message' => 'tog-diffonly',
 				);
 		$defaultPreferences['norollbackdiff'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'misc',
+					'section' => 'misc/diffs',
 					'label-message' => 'tog-norollbackdiff',
 				);
+				
+		// Stuff from Language::getExtraUserToggles()
+		global $wgContLang;
+		
+		$toggles = $wgContLang->getExtraUserToggles();
+		
+		foreach( $toggles as $toggle ) {
+			$defaultPreferences[$toggle] =
+				array(
+					'type' => 'toggle',
+					'section' => 'personal/i18n',
+					'label-message' => "tog-$toggle",
+				);
+		}
 	}
 	
 	static function generateSkinOptions( $user ) {
@@ -876,7 +918,7 @@ class Preferences {
 		$ret = array();
 		
 		$mptitle = Title::newMainPage();
-		$previewtext = wfMsg( 'skin-preview' );
+		$previewtext = wfMsgHtml( 'skin-preview' );
 		# Only show members of Skin::getSkinNames() rather than
 		# $skinNames (skins is all skin names from Language.php)
 		$validSkinNames = Skin::getUsableSkins();
@@ -886,7 +928,7 @@ class Preferences {
 			$msgName = "skinname-{$skinkey}";
 			$localisedSkinName = wfMsg( $msgName );
 			if ( !wfEmptyMsg( $msgName, $localisedSkinName ) )  {
-				$skinname = $localisedSkinName;
+				$skinname = htmlspecialchars($localisedSkinName);
 			}
 		}
 		asort($validSkinNames);
@@ -899,16 +941,16 @@ class Preferences {
 			global $wgAllowUserCss, $wgAllowUserJs;
 			if( $wgAllowUserCss ) {
 				$cssPage = Title::makeTitleSafe( NS_USER, $user->getName().'/'.$skinkey.'.css' );
-				$customCSS = $sk->makeLinkObj( $cssPage, wfMsgExt('prefs-custom-css', array() ) );
+				$customCSS = $sk->link( $cssPage, wfMsgHtml( 'prefs-custom-css' ) );
 				$extraLinks .= " ($customCSS)";
 			}
 			if( $wgAllowUserJs ) {
 				$jsPage = Title::makeTitleSafe( NS_USER, $user->getName().'/'.$skinkey.'.js' );
-				$customJS = $sk->makeLinkObj( $jsPage, wfMsgHtml('prefs-custom-js') );
+				$customJS = $sk->link( $jsPage, wfMsgHtml( 'prefs-custom-js' ) );
 				$extraLinks .= " ($customJS)";
 			}
 			if( $skinkey == $wgDefaultSkin )
-				$sn .= ' (' . wfMsg( 'default' ) . ')';
+				$sn .= ' (' . wfMsgHtml( 'default' ) . ')';
 			$display = "$sn $previewlink{$extraLinks}";
 			$ret[$display] = $skinkey;
 		}
@@ -927,9 +969,9 @@ class Preferences {
 			$epoch = '20010115161234'; # Wikipedia day
 			foreach( $dateopts as $key ) {
 				if( $key == 'default' ) {
-					$formatted = wfMsg( 'datedefault' );
+					$formatted = wfMsgHtml( 'datedefault' );
 				} else {
-					$formatted = $wgLang->timeanddate( $epoch, false, $key );
+					$formatted = htmlspecialchars($wgLang->timeanddate( $epoch, false, $key ));
 				}
 				$ret[$formatted] = $key;
 			}
@@ -993,9 +1035,7 @@ class Preferences {
 	}
 	
 	static function validateEmail( $email, $alldata ) {
-		global $wgUser; // To check
-		
-		if ( $email && !$wgUser->isValidEmailAddr( $email ) ) {
+		if ( $email && !User::isValidEmailAddr( $email ) ) {
 			return wfMsgExt( 'invalidemailaddress', 'parseinline' );
 		}
 		
@@ -1146,8 +1186,8 @@ class Preferences {
 		}
 		
 		// Fortunately, the realname field is MUCH simpler
-		global $wgAllowRealName;
-		if ($wgAllowRealName) {
+		global $wgHiddenPrefs;
+		if ( !in_array( 'realname', $wgHiddenPrefs ) ) {
 			$realName = $formData['realname'];
 			$wgUser->setRealName( $realName );
 		}
@@ -1218,7 +1258,7 @@ class PreferencesForm extends HTMLForm {
 		$sk = $wgUser->getSkin();
 		$t = SpecialPage::getTitleFor( 'Preferences', 'reset' );
 		
-		$html .= "\n" . $sk->link( $t, wfMsg( 'restoreprefs' ) );
+		$html .= "\n" . $sk->link( $t, wfMsgHtml( 'restoreprefs' ) );
 		
 		$html = Xml::tags( 'div', array( 'class' => 'mw-prefs-buttons' ), $html );
 		

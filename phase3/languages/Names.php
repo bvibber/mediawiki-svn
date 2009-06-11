@@ -67,7 +67,7 @@
 	'cs' => 'Česky',	# Czech
 	'csb' => 'Kaszëbsczi',	# Cassubian
 	'cu' => 'Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ', 	# Old Church Slavonic (ancient language)
-	'cv' => 'Чăвашла',	# Chuvash
+	'cv' => 'Чӑвашла',	# Chuvash
 	'cy' => 'Cymraeg',		# Welsh
 	'da' => 'Dansk',		# Danish
 	'de' => 'Deutsch',		# German ("Du")
@@ -210,7 +210,7 @@
 	'mt' => 'Malti',	# Maltese
 	'mus' => 'Mvskoke',	# Muskogee/Creek
 	'mwl' => 'Mirandés',	# Mirandese
-	'my' => 'Myanmasa',		# Burmese
+	'my' => 'မြန်မာဘာသာ',		# Burmese
 	'myv' => 'Эрзянь',         # Erzya
 	'mzn' => 'مَزِروني',		# Mazanderani
 	'na' => 'Dorerin Naoero',		# Nauruan
@@ -283,6 +283,7 @@
 	'simple' => 'Simple English',	# Simple English
 	'sk' => 'Slovenčina',	# Slovak
 	'sl' => 'Slovenščina',	# Slovenian
+	'sli' => 'Schläsch',	# Lower Selisian
 	'sm' => 'Gagana Samoa',	# Samoan
 	'sma' => 'Åarjelsaemien',	# Southern Sami
 	'sn' => 'chiShona',		# Shona
@@ -328,7 +329,7 @@
 	'tzm' => 'ⵜⴰⵎⴰⵣⵉⵖⵜ',	# (Central Morocco) Tamazight
 	'udm' => 'Удмурт',	# Udmurt
 	'ug' => 'Uyghurche‎ / ئۇيغۇرچە',	# Uyghur (multiple scripts - defaults to Latin)
-	#'ug-arab' => 'ئۇيغۇرچە', # Uyghur (Arabic script). Disabled until sufficient localisation can be committed
+	'ug-arab' => 'ئۇيغۇرچە', # Uyghur (Arabic script)
 	'ug-latn' => 'Uyghurche‎', # Uyghur (Latin script - default)
 	'uk' => 'Українська',	# Ukrainian
 	'ur' => 'اردو',	# Urdu
@@ -351,7 +352,7 @@
 	'yi' => 'ייִדיש',	# Yiddish
 	'yo' => 'Yorùbá',	# Yoruba
 	'yue' => '粵語', 	# Cantonese -- (bug 8217) yue instead of zh-yue, http://www.sil.org/iso639-3/codes.asp?order=639_3&letter=y
-	'za' => 'Sawcuengh',	# Zhuang
+	'za' => 'Vahcuengh',	# Zhuang
 	'zea' => 'Zeêuws',	# Zeeuws/Zeaws
 	'zh' => '中文',						# (Zhōng Wén) - Chinese
 	'zh-classical' => '文言',			# Classical Chinese/Literary Chinese -- (see bug 8217)

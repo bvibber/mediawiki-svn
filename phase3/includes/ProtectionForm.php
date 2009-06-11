@@ -192,11 +192,11 @@ class ProtectionForm {
 				$titles .= '* [[:' . $title->getPrefixedText() . "]]\n";
 			}
 
-			$wgOut->wrapWikiMsg( "$1\n$titles", array( 'protect-cascadeon', count($cascadeSources) ) );
+			$wgOut->wrapWikiMsg( "<div id=\"mw-protect-cascadeon\">\n$1\n" . $titles . "</div>", array( 'protect-cascadeon', count($cascadeSources) ) );
 		}
 
 		$sk = $wgUser->getSkin();
-		$titleLink = $sk->makeLinkObj( $this->mTitle );
+		$titleLink = $sk->link( $this->mTitle );
 		$wgOut->setPageTitle( wfMsg( 'protect-title', $this->mTitle->getPrefixedText() ) );
 		$wgOut->setSubtitle( wfMsg( 'protect-backlink', $titleLink ) );
 
@@ -447,8 +447,13 @@ class ProtectionForm {
 		$out .= Xml::closeElement( 'fieldset' );
 
 		if ( $wgUser->isAllowed( 'editinterface' ) ) {
-			$linkTitle = Title::makeTitleSafe( NS_MEDIAWIKI, 'protect-dropdown' );
-			$link = $wgUser->getSkin()->Link ( $linkTitle, wfMsgHtml( 'protect-edit-reasonlist' ) );
+			$title = Title::makeTitle( NS_MEDIAWIKI, 'Protect-dropdown' );
+			$link = $wgUser->getSkin()->link(
+				$title,
+				wfMsgHtml( 'protect-edit-reasonlist' ),
+				array(),
+				array( 'action' => 'edit' )
+			);
 			$out .= '<p class="mw-protect-editreasons">' . $link . '</p>';
 		}
 

@@ -500,7 +500,7 @@ class MessageCache {
 	 *                         functionality), or if it is a true boolean then
 	 *                         use the wikis content language (also as a
 	 *                         fallback).
-	 * @param bool $isFullKey Specifies whether $key is a two part key "lang/msg".
+	 * @param bool $isFullKey Specifies whether $key is a two part key "msg/lang".
 	 */
 	function get( $key, $useDB = true, $langcode = true, $isFullKey = false ) {
 		global $wgContLanguageCode, $wgContLang;
@@ -522,11 +522,13 @@ class MessageCache {
 		# Try the MediaWiki namespace
 		if( !$this->mDisable && $useDB ) {
 			$title = $wgContLang->ucfirst( $lckey );
-			if(!$isFullKey && ($langcode != $wgContLanguageCode) ) {
+			if(!$isFullKey && ( $langcode != $wgContLanguageCode ) ) {
 				$title .= '/' . $langcode;
 			}
 			$message = $this->getMsgFromNamespace( $title, $langcode );
 		}
+		if( $message === false )
+			wfRunHooks( 'MessageNotInMwNs', array( &$message, $lckey, $langcode, $isFullKey ) );
 
 		# Try the extension array
 		if ( $message === false && isset( $this->mExtensionMessages[$langcode][$lckey] ) ) {
@@ -573,6 +575,16 @@ class MessageCache {
 		if( $message === false ) {
 			return '&lt;' . htmlspecialchars($key) . '&gt;';
 		}
+
+		# Fix whitespace
+		$message = strtr( $message, 
+			array(
+				# Fix for trailing whitespace, removed by textarea
+				'&#32;' => ' ',
+				# Fix for NBSP, converted to space by firefox
+				'&nbsp;' => "\xc2\xa0",
+			) );
+
 		return $message;
 	}
 
@@ -787,7 +799,7 @@ class MessageCache {
 		# Some extensions will load their messages when you load their class file
 		wfLoadAllExtensions();
 		# Others will respond to this hook
-		wfRunHooks( 'LoadAllMessages' );
+		wfRunHooks( 'LoadAllMessages', array( $this ) );
 		# Some register their messages in $wgExtensionMessagesFiles
 		foreach ( $wgExtensionMessagesFiles as $name => $file ) {
 			wfLoadExtensionMessages( $name, $lang );

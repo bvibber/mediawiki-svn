@@ -202,7 +202,6 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 # History pages
 'currentrev'  => 'Ultima revisione',
 'page_first'  => 'prima',
-'deletedrev'  => '[supprimatu]',
 'histfirst'   => 'Prima',
 'histlast'    => 'Ultima',
 'historysize' => '({{PLURAL:$1|1 ottettu|$1 ottetti}})',
@@ -268,7 +267,9 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'show'            => 'mustrà',
 
 # Recent changes linked
-'recentchangeslinked' => 'Cambiamenti assuciati',
+'recentchangeslinked'         => 'Cambiamenti assuciati',
+'recentchangeslinked-feed'    => 'Cambiamenti assuciati',
+'recentchangeslinked-toolbox' => 'Cambiamenti assuciati',
 
 # Upload
 'upload'     => 'Incaricà un schedariu',
@@ -285,10 +286,10 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'listfiles_user' => 'Utilizatore',
 
 # File description page
+'file-anchor-link' => 'Schedariu',
 'filehist'         => "Cronolugia di l'imagine",
 'filehist-user'    => 'Utilizatore',
 'imagelinks'       => 'Ligami',
-'noimage-linktext' => 'incaricà lu',
 
 # Unused templates
 'unusedtemplateswlh' => 'altri ligami',

@@ -536,8 +536,8 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 'searchsubtitle'        => "Ti t'è çercoö '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Ti t'è çercoö '''$1'''",
 'noexactmatch'          => "'''No gh'è nisciûnn-a paggina c'a se ciamme \"\$1\".''' O se pêu [[:\$1|creâla òua]].",
-'prevn'                 => 'Preçedenti $1',
-'nextn'                 => 'Proscima $1',
+'prevn'                 => 'Preçedenti {{PLURAL:$1|$1}}',
+'nextn'                 => 'Proscima {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'Veddi ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Contegnûi',
 'powersearch'           => 'Çerca',
@@ -547,7 +547,6 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 'mypreferences'       => 'Mæ preferense',
 'changepassword'      => 'Cangiâ a pòula segretta',
 'skin-preview'        => 'Anteprimma',
-'dateformat'          => 'Formato da a data',
 'prefs-datetime'      => 'Data e oùa',
 'saveprefs'           => 'Sarva',
 'prefs-editing'       => 'Cangia',
@@ -600,6 +599,8 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 
 # Recent changes linked
 'recentchangeslinked'          => 'Cangiamenti correlæ',
+'recentchangeslinked-feed'     => 'Cangiamenti correlæ',
+'recentchangeslinked-toolbox'  => 'Cangiamenti correlæ',
 'recentchangeslinked-title'    => 'Modiffiche correlæ a "$1"',
 'recentchangeslinked-noresult' => 'Nisciûn cangiamento a-e paggine collegæ into periodo speçificòu.',
 'recentchangeslinked-summary'  => "'Sta paggina a fa vedde e modiffiche ciû reçenti a-e paggine in collegamento.
@@ -635,6 +636,7 @@ E paggine in osservassion son dipinte in '''grascietto'''.",
 'listfiles_date'       => 'Dæta',
 
 # File description page
+'file-anchor-link'          => 'Archivvio',
 'filehist'                  => "Cronologîa de l'archivvio",
 'filehist-help'             => "Sciacca inscie 'n grûppo data/ôa pe vedde l'archivvio comme o se presentâva into momento indicòu.",
 'filehist-current'          => 'Corrente',
@@ -647,8 +649,6 @@ E paggine in osservassion son dipinte in '''grascietto'''.",
 'linkstoimage'              => "Queste son e pagine che appóntan a st'archivio",
 'nolinkstoimage'            => "No gh'è nisciûnn-a paggina collegâa con 'st'archivvio.",
 'sharedupload'              => "'St'archivvio o l'è condiviso; sajeiva a dî c'o pêu ese dêuviòu da ciû progetti wiki.",
-'noimage'                   => "No gh'è nisciûn archivvio con quello nomme, o se pêu $1.",
-'noimage-linktext'          => 'Caregâlo òua',
 'uploadnewversion-linktext' => "Carega 'na nêuva verscion de 'st'archivvio chì",
 
 # File deletion
@@ -1066,6 +1066,7 @@ L'ingançi succescivi, inscia mæxima riga, van conscideræ comme eccescioîn (p
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength",
 
 # EXIF tags

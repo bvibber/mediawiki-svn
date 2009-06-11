@@ -46,6 +46,7 @@ class ApiParamInfo extends ApiBase {
 		if(is_array($params['modules']))
 		{
 			$modArr = $this->getMain()->getModules();
+			$r['modules'] = array();
 			foreach($params['modules'] as $m)
 			{
 				if(!isset($modArr[$m]))
@@ -63,6 +64,7 @@ class ApiParamInfo extends ApiBase {
 		if(is_array($params['querymodules']))
 		{
 			$qmodArr = $queryObj->getModules();
+			$r['querymodules'] = array();
 			foreach($params['querymodules'] as $qm)
 			{
 				if(!isset($qmodArr[$qm]))
@@ -91,7 +93,8 @@ class ApiParamInfo extends ApiBase {
 	{
 		$result = $this->getResult();
 		$retval['classname'] = get_class($obj);
-		$retval['description'] = (is_array($obj->getDescription()) ? implode("\n", $obj->getDescription()) : $obj->getDescription());
+		$retval['description'] = implode("\n", (array)$obj->getDescription());
+		$retval['version'] = implode("\n", (array)$obj->getVersion());
 		$retval['prefix'] = $obj->getModulePrefix();
 		if($obj->isReadMode())
 			$retval['readrights'] = '';
@@ -99,6 +102,8 @@ class ApiParamInfo extends ApiBase {
 			$retval['writerights'] = '';
 		if($obj->mustBePosted())
 			$retval['mustbeposted'] = '';
+		if($obj instanceof ApiQueryGeneratorBase)
+			$retval['generator'] = '';
 		$allowedParams = $obj->getFinalParams();
 		if(!is_array($allowedParams))
 			return $retval;
@@ -107,6 +112,8 @@ class ApiParamInfo extends ApiBase {
 		foreach($allowedParams as $n => $p)
 		{
 			$a = array('name' => $n);
+			if(isset($paramDesc[$n]))
+				$a['description'] = implode("\n", (array)$paramDesc[$n]);
 			if(!is_array($p))
 			{
 				if(is_bool($p))
@@ -114,8 +121,16 @@ class ApiParamInfo extends ApiBase {
 					$a['type'] = 'bool';
 					$a['default'] = ($p ? 'true' : 'false');
 				}
-				if(is_string($p))
-					$a['default'] = $p;
+				else if(is_string($p) || is_null($p))
+				{
+					$a['type'] = 'string';
+					$a['default'] = strval($p);
+				}
+				else if(is_int($p))
+				{
+					$a['type'] = 'integer';
+					$a['default'] = intval($p);
+				}
 				$retval['parameters'][] = $a;
 				continue;
 			}
@@ -145,8 +160,6 @@ class ApiParamInfo extends ApiBase {
 				$a['highmax'] = $p[ApiBase::PARAM_MAX2];
 			if(isset($p[ApiBase::PARAM_MIN]))
 				$a['min'] = $p[ApiBase::PARAM_MIN];
-			if(isset($paramDesc[$n]))
-				$a['description'] = (is_array($paramDesc[$n]) ? implode("\n", $paramDesc[$n]) : $paramDesc[$n]);
 			$retval['parameters'][] = $a;
 		}
 		$result->setIndexedTagName($retval['parameters'], 'param');

@@ -89,8 +89,15 @@ class OutputPage {
 		array_push( $this->mMetatags, array( $name, $val ) );
 	}
 
-	function addKeyword( $text ) { array_push( $this->mKeywords, $text ); }
-	function addScript( $script ) { $this->mScripts .= "\t\t".$script; }
+	function addKeyword( $text ) {
+		if( is_array( $text )) {
+			$this->mKeywords = array_merge( $this->mKeywords, $text );
+		}
+		else {
+			array_push( $this->mKeywords, $text );
+		}
+	}
+	function addScript( $script ) { $this->mScripts .= "\t\t" . $script . "\n"; }
 	
 	function addExtensionStyle( $url ) {
 		$linkarr = array( 'rel' => 'stylesheet', 'href' => $url, 'type' => 'text/css' );
@@ -266,7 +273,7 @@ class OutputPage {
 	 */
 	function addInlineScript( $script ) {
 		global $wgJsMimeType;
-		$this->mScripts .= "<script type=\"$wgJsMimeType\">/*<![CDATA[*/\n$script\n/*]]>*/</script>";
+		$this->mScripts .= "\t\t<script type=\"$wgJsMimeType\">/*<![CDATA[*/\n\t\t$script\n\t\t/*]]>*/</script>\n";
 	}
 
 	function getScript() {
@@ -609,7 +616,7 @@ class OutputPage {
 					if ( array_key_exists( $category, $categories ) )
 						continue;
 				$text = $wgContLang->convertHtml( $title->getText() );
-				$this->mCategoryLinks[$type][] = $sk->makeLinkObj( $title, $text );
+				$this->mCategoryLinks[$type][] = $sk->link( $title, $text );
 			}
 		}
 	}
@@ -1398,7 +1405,13 @@ class OutputPage {
 		$this->setArticleFlag( false );
 
 		$loginTitle = SpecialPage::getTitleFor( 'Userlogin' );
-		$loginLink = $skin->makeKnownLinkObj( $loginTitle, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $this->getTitle()->getPrefixedUrl() );
+		$loginLink = $skin->link(
+			$loginTitle,
+			wfMsgHtml( 'loginreqlink' ),
+			array(),
+			array( 'returnto' => $this->getTitle()->getPrefixedUrl() ),
+			array( 'known', 'noclasses' )
+		);
 		$this->addHTML( wfMsgWikiHtml( 'loginreqpagetext', $loginLink ) );
 		$this->addHTML( "\n<!--" . $this->getTitle()->getPrefixedUrl() . "-->" );
 
@@ -1423,7 +1436,7 @@ class OutputPage {
 			$text = wfMsgNoTrans( 'permissionserrorstext', count($errors)). "\n\n";
 		} else {
 			global $wgLang;
-			$action_desc = wfMsg( "action-$action" );
+			$action_desc = wfMsgNoTrans( "action-$action" );
 			$text = wfMsgNoTrans( 'permissionserrorstext-withaction', count($errors), $action_desc ) . "\n\n";
 		}
 
@@ -1438,7 +1451,7 @@ class OutputPage {
 			}
 			$text .= '</ul>';
 		} else {
-			$text .= '<div class="permissions-errors">' . call_user_func_array( 'wfMsgNoTrans', reset( $errors ) ) . '</div>';
+			$text .= "<div class=\"permissions-errors\">\n" . call_user_func_array( 'wfMsgNoTrans', reset( $errors ) ) . "\n</div>";
 		}
 
 		return $text;
@@ -1480,7 +1493,18 @@ class OutputPage {
 			// Permissions error
 			if( $source ) {
 				$this->setPageTitle( wfMsg( 'viewsource' ) );
-				$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $this->getTitle() ) ) );
+				$this->setSubtitle(
+					wfMsg(
+						'viewsourcefor',
+						$skin->link(
+							$this->getTitle(),
+							null,
+							array(),
+							array(),
+							array( 'known', 'noclasses' )
+						)
+					)
+				);
 			} else {
 				$this->setPageTitle( wfMsg( 'badaccess' ) );
 			}
@@ -1595,7 +1619,7 @@ class OutputPage {
 	public function addReturnTo( $title ) {
 		global $wgUser;
 		$this->addLink( array( 'rel' => 'next', 'href' => $title->getFullUrl() ) );
-		$link = wfMsg( 'returnto', $wgUser->getSkin()->makeLinkObj( $title ) );
+		$link = wfMsgHtml( 'returnto', $wgUser->getSkin()->link( $title ) );
 		$this->addHTML( "<p>{$link}</p>\n" );
 	}
 
@@ -1630,13 +1654,23 @@ class OutputPage {
 	}
 
 	/**
-	 * This function takes the title (first item of mGoodLinks), categories, existing and broken links for the page
+	 * This function takes the title (first item of mGoodLinks), categories,
+	 * existing and broken links for the page
 	 * and uses the first 10 of them for META keywords
 	 *
 	 * @param ParserOutput &$parserOutput
 	 */
 	private function addKeywords( &$parserOutput ) {
-		$this->addKeyword( $this->getTitle()->getPrefixedText() );
+		global $wgContLang;
+		// Get an array of keywords if there are more than one
+		// variant of the site language
+		$text = $wgContLang->autoConvertToAllVariants( $this->getTitle()->getPrefixedText());
+		// array_values: We needn't to merge variant's code name
+		// into $this->mKeywords;
+		// array_unique: We should insert a keyword just for once
+		if( is_array( $text ))
+			$text = array_unique( array_values( $text ));
+		$this->addKeyword( $text );
 		$count = 1;
 		$links2d =& $parserOutput->getLinks();
 		if ( !is_array( $links2d ) ) {
@@ -1644,6 +1678,9 @@ class OutputPage {
 		}
 		foreach ( $links2d as $dbkeys ) {
 			foreach( $dbkeys as $dbkey => $unused ) {
+				$dbkey = $wgContLang->autoConvertToAllVariants( $dbkey );
+				if( is_array( $dbkey ))
+					$dbkey = array_unique( array_values( $dbkey ));
 				$this->addKeyword( $dbkey );
 				if ( ++$count > 10 ) {
 					break 2;
@@ -2031,7 +2068,7 @@ class OutputPage {
 	 *
 	 * In the $wrap, $1 is replaced with the first message, $2 with the second, and so
 	 * on. The subsequent arguments may either be strings, in which case they are the
-	 * message names, or an arrays, in which case the first element is the message name,
+	 * message names, or arrays, in which case the first element is the message name,
 	 * and subsequent elements are the parameters to that message.
 	 *
 	 * The special named parameter 'options' in a message specification array is passed

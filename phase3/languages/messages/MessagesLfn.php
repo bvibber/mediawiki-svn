@@ -457,8 +457,8 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 # Search results
 'searchresults'             => 'Resultas de xerca',
 'noexactmatch'              => "'''Es no paje clamada \"\$1\".''' Tu pote [[:\$1|crea esta paje]].",
-'prevn'                     => '$1 presedente',
-'nextn'                     => '$1 seguente',
+'prevn'                     => '{{PLURAL:$1|$1}} presedente',
+'nextn'                     => '{{PLURAL:$1|$1}} seguente',
 'viewprevnext'              => 'Vide ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:Contenis',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 parola|$2 parolas}})',
@@ -552,6 +552,8 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 
 # Recent changes linked
 'recentchangeslinked'          => 'Cambias relateda',
+'recentchangeslinked-feed'     => 'Cambias relateda',
+'recentchangeslinked-toolbox'  => 'Cambias relateda',
 'recentchangeslinked-title'    => 'Cambias relatada a "$1"',
 'recentchangeslinked-noresult' => 'No cambias de pajes liada entre esta periodo.',
 'recentchangeslinked-summary'  => "Esta lista conteni la cambias plu resente de la pajes liada a otra (o de la membros de un categoria).
@@ -573,6 +575,7 @@ Pajes a [[Special:Watchlist|tu lista de pajes oservada]] es en leteras '''forte'
 'listfiles_name' => 'Nom',
 
 # File description page
+'file-anchor-link'          => 'Fix',
 'filehist'                  => 'Istoria de fix',
 'filehist-help'             => 'Clica a un data/tempo per vide la fix como el ia aperi alora.',
 'filehist-current'          => 'aora',
@@ -585,8 +588,6 @@ Pajes a [[Special:Watchlist|tu lista de pajes oservada]] es en leteras '''forte'
 'linkstoimage'              => 'Esta {{PLURAL:$1|paje|pajes}} lia a esta fix:',
 'nolinkstoimage'            => 'Es no pajes ce lia a esta fix.',
 'sharedupload'              => 'Esta fix es parte de $1 e pote es usada par otra projetas.',
-'noimage'                   => 'Es no fix con esta nom, ma tu pote $1.',
-'noimage-linktext'          => 'envia un',
 'uploadnewversion-linktext' => 'Envia un varia nova de esta fix',
 
 # MIME search
@@ -950,6 +951,7 @@ Si la fix ia es cambiada de se stato orijinal, alga detalias pote no es clara en
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

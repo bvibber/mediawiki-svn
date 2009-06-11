@@ -220,22 +220,34 @@ Grund für die Sperre: $1",
 'recreate-moveddeleted-warn'       => "'''Achtung: Sie erstellen eine Seite, die bereits früher gelöscht wurde.'''
 
 Bitte prüfen Sie sorgfältig, ob die erneute Seitenerstellung den Richtlinien entspricht.
-Zu Ihrer Information folgt das Lösch-Logbuch mit der Begründung für die vorhergehende Löschung:",
+Zu Ihrer Information folgt das Lösch- und Verschiebungs-Logbuch mit der Begründung für die vorhergehende Löschung:",
 'edit-no-change'                   => 'Ihre Bearbeitung wurde ignoriert, da keine Änderung an dem Text vorgenomme wurde.',
 
 # Revision deletion
-'rev-deleted-text-unhide' => "Diese Version wurde '''gelöscht'''.
+'rev-deleted-text-unhide'     => "Diese Version wurde '''gelöscht'''.
 Details stehen im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].
 Einem Administrator können Sie [$1 diesen Link zur Version] nennen.",
-'rev-deleted-text-view'   => "Diese Version wurde '''gelöscht'''.
+'rev-deleted-text-view'       => "Diese Version wurde '''gelöscht'''.
 Als Administrator können Sie sie weiterhin einsehen.
 Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].",
-'rev-deleted-no-diff'     => "Sie können diesen Unterschied nicht betrachten, da eine der Versionen '''gelöscht''' wurde.
+'rev-deleted-no-diff'         => "Sie können diesen Unterschied nicht betrachten, da eine der Versionen '''gelöscht''' wurde.
 Details stehen im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].",
-'rev-deleted-unhide-diff' => "Eine der Versionen dieses Unterschieds wurde '''gelöscht'''.
+'rev-deleted-unhide-diff'     => "Eine der Versionen dieses Unterschieds wurde '''gelöscht'''.
 Details stehen im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].
 Einem Administrator können Sie [$1 diesen Link zum Versionsunterschied] nennen.",
-'revdelete-nooldid-text'  => 'Sie haben entweder keine Version angegeben, auf die diese Aktion ausgeführt werden soll, die gewählte Version ist nicht vorhanden oder Sie versuchen, die aktuelle Version zu entfernen.',
+'revdelete-nooldid-text'      => 'Sie haben entweder keine Version angegeben, auf die diese Aktion ausgeführt werden soll, die gewählte Version ist nicht vorhanden oder Sie versuchen, die aktuelle Version zu entfernen.',
+'revdelete-show-file-confirm' => 'Sind Sie sicher, dass Sie die gelöschte Version der Datei „<nowiki>$1</nowiki>“ vom $2 um $3 Uhr ansehen wollen?',
+'revdelete-text'              => "'''Gelöschte Versionen und Aktionen verbleiben in der Versionsgeschichte und den Logbüchern, jedoch sind Teile davon für die Öffentlichkeit unzugänglich.'''
+
+Andere Administratoren auf {{SITENAME}} haben Zugriff auf den versteckten Inhalt und können ihn mit der gleichen Seite wiederherstellen, sofern nicht zusätzliche Einschränkungen bestehen.
+Bitte bestätigen Sie, dass Sie beabsichtigen, dies zu tun, die Konsequenzen verstehen und es in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]] tuen.",
+'revdelete-show-no-access'    => 'Fehler beim Anzeigen des Eintrags vom $1, $2 Uhr: Dieser Eintrag wurde als „eingeschränkt“ markiert.
+Sie haben darauf keinen Zugriff.',
+'revdelete-modify-no-access'  => 'Fehler beim Bearbeiten des Eintrags vom $1, $2 Uhr: Dieser Eintrag wurde als „eingeschränkt“ markiert.
+Sie haben darauf keinen Zugriff.',
+'revdelete-concurrent-change' => 'Fehler beim Bearbeiten des Eintrags vom $1, $2 Uhr: Es scheint, als ob der Status von jemandem geändert wurde, bevor Sie vorhatten, ihn zu bearbeiten.
+Bitte prüfen Sie die Logbücher.',
+'revdelete-only-restricted'   => 'Sie können keine Einträge vor Administratoren unterdrücken, ohne dass Sie auch eine der anderen Unterdrückungsoptionen ausgewählt haben.',
 
 # History merging
 'mergehistory-header' => 'Mit dieser Spezialseite können Sie die Versionsgeschichte einer Ursprungsseite mit der Versionsgeschichte einer Zielseite vereinen.
@@ -257,6 +269,8 @@ Wenn Sie sich mit dem Thema auskennen, können Sie selbst die [[:$1|die Seite ve
 # Preferences page
 'prefsnologintext'          => 'Sie müssen <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} angemeldet]</span> sein, um Ihre Einstellungen ändern zu können.',
 'savedprefs'                => 'Ihre Einstellungen wurden gespeichert.',
+'prefs-reset-intro'         => 'Sie können diese Seite verwenden, um die Einstellungen auf die Standards zurückzusetzen.
+Dies kann nicht mehr rückgängig gemacht werden.',
 'prefs-help-realname'       => 'Optional. Ihr echter Name wird Ihren Beiträgen zugeordnet.',
 'prefs-help-email'          => 'Die Angabe einer E-Mail ist optional, ermöglicht aber die Zusendung eines Ersatzpasswortes, wenn Sie Ihr Passwort vergessen haben.
 Mit anderen Benutzer können Sie auch über die Benutzerdiskussionsseiten Kontakt aufnehmen, ohne dass Sie Ihre Identität offenlegen müssen.',
@@ -342,8 +356,8 @@ Wenn das Problem weiter besteht, informieren Sie einen [[Special:ListUsers/sysop
 'upload_source_file' => ' (eine Datei auf Ihrem Computer)',
 
 # File description page
-'filehist-help' => 'Klicken Sie auf einen Zeitpunkt, um diese Version zu laden.',
-'noimage'       => 'Eine Datei mit diesem Namen existiert nicht, Sie können sie jedoch $1.',
+'filehist-help'        => 'Klicken Sie auf einen Zeitpunkt, um diese Version zu laden.',
+'filepage-nofile-link' => 'Es existiert keine Datei mit diesem Namen, aber Sie können [$1 diese Datei hochladen].',
 
 # File reversion
 'filerevert-intro' => "Sie setzen die Datei '''[[Media:$1|$1]]''' auf die [$4 Version vom $2, $3 Uhr] zurück.",
@@ -527,7 +541,7 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'confirmemail_noemail'    => 'Sie haben keine gültige E-Mail-Adresse in Ihren [[Special:Preferences|persönlichen Einstellungen]] eingetragen.',
 'confirmemail_text'       => '{{SITENAME}} erfordert, dass Sie Ihre E-Mail-Adresse bestätigen (authentifizieren), bevor Sie die erweiterten E-Mail-Funktionen benutzen können. Klicken Sie bitte auf die unten stehende, mit „Bestätigungscode zuschicken“ beschriftete Schaltfläche, damit eine automatisch erstellte E-Mail an die angegebene Adresse geschickt wird. Diese E-Mail enthält eine Web-Adresse mit einem Bestätigungscode. Indem Sie diese Webseite in Ihrem Webbrowser öffnen, bestätigen Sie, dass die angegebene E-Mail-Adresse korrekt und gültig ist.',
 'confirmemail_pending'    => 'Es wurde Ihnen bereits ein Bestätigungscode per E-Mail zugeschickt.
-Wenn Sie Ihr Benutzerkonto erst vor kurzem erstellt haben, warte Sie bitte noch ein paar Minuten auf die E-Mail, bevor Sie einen neuen Code anfordern.',
+Wenn Sie Ihr Benutzerkonto erst vor kurzem erstellt haben, warten Sie bitte noch ein paar Minuten auf die E-Mail, bevor Sie einen neuen Code anfordern.',
 'confirmemail_oncreate'   => 'Ein Bestätigungs-Code wurde an Ihre E-Mail-Adresse gesandt. Dieser Code wird für die Anmeldung nicht benötigt, jedoch wird er zur Aktivierung der E-Mail-Funktionen innerhalb des Wikis gebraucht.',
 'confirmemail_sendfailed' => '{{SITENAME}} konnte die Bestätigungs-E-Mail nicht an Sie versenden.
 Bitte prüfen Sie die E-Mail-Adresse auf ungültige Zeichen.
@@ -535,7 +549,7 @@ Bitte prüfen Sie die E-Mail-Adresse auf ungültige Zeichen.
 Rückmeldung des Mailservers: $1',
 'confirmemail_invalid'    => 'Ungültiger Bestätigungscode. Möglicherweise ist der Bestätigungszeitraum verstrichen. Versuchen Sie bitte, die Bestätigung zu wiederholen.',
 'confirmemail_needlogin'  => 'Sie müssen sich $1, um Ihre E-Mail-Adresse zu bestätigen.',
-'confirmemail_success'    => 'Ihre E-Mail-Adresse wurde erfolgreich bestätigt. Sie können sich jetzt einloggen.',
+'confirmemail_success'    => 'Ihre E-Mail-Adresse wurde erfolgreich bestätigt. Sie können sich jetzt [[Special:UserLogin|anmelden]].',
 'confirmemail_loggedin'   => 'Ihre E-Mail-Adresse wurde erfolgreich bestätigt.',
 'confirmemail_error'      => 'Es gab einen Fehler bei der Bestätigung Ihrer E-Mail-Adresse.',
 'confirmemail_body'       => 'Hallo,
@@ -553,7 +567,7 @@ Wenn Sie das genannte Benutzerkonto *nicht* registriert haben, folgen Sie diesem
 
 $5
 
-Dieser Bestätigungscode ist gültig bis $4.',
+Dieser Bestätigungscode ist gültig bis $6, $7 Uhr.',
 
 # Delete conflict
 'deletedwhileediting' => 'Achtung: Diese Seite wurde gelöscht, nachdem Sie angefangen haben sie zu bearbeiten!

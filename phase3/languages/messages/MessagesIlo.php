@@ -547,7 +547,6 @@ Ti inted a rason ni $3 ket ''$2''",
 Legend: (agdama) = paggidiatan iti agdama a version,
 (naudi) = naggidiatan iti sarsarunuen a version, M = minor nga edit.',
 'history-fieldset-title' => 'Palabsan ti pakasaritaan',
-'deletedrev'             => '[naikkaten]',
 'histfirst'              => 'Kaunaan',
 'histlast'               => 'Kaudian',
 'historysize'            => '({{PLURAL:$1|1 a byte|$1 a bytes}})',
@@ -626,8 +625,8 @@ Legend: (agdama) = paggidiatan iti agdama a version,
 Mabalinmo a [[:\$1|partuaten daytoy a panid]].",
 'noexactmatch-nocreate'     => "'''Awan panid nga addaan titulo a \"\$1\".'''",
 'notextmatches'             => 'Awan ti page text matches',
-'prevn'                     => 'napalabas $1',
-'nextn'                     => 'sumaruno $1',
+'prevn'                     => 'napalabas {{PLURAL:$1|$1}}',
+'nextn'                     => 'sumaruno {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'Kitaen ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:Dagiti Linaon',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 a balikas|$2 a balbalikas}})',
@@ -670,7 +669,6 @@ Mabalinmo a [[:\$1|partuaten daytoy a panid]].",
 'prefs-skin'                => 'Kudil',
 'skin-preview'              => 'I-preview',
 'prefs-math'                => 'Math',
-'dateformat'                => 'Format ti petsa',
 'datedefault'               => 'Awanan preferencia',
 'prefs-datetime'            => 'Petsa ken oras',
 'prefs-personal'            => 'Profile ti agar-aramat',
@@ -792,6 +790,8 @@ Ngem no kayatmo nga ited, maaramat daytoy kas pammadayaw ken pangpatalged iti ob
 
 # Recent changes linked
 'recentchangeslinked'          => 'Mainaig a balbaliw',
+'recentchangeslinked-feed'     => 'Mainaig a balbaliw',
+'recentchangeslinked-toolbox'  => 'Mainaig a balbaliw',
 'recentchangeslinked-title'    => 'Panangbalbaliw a mainaig iti "$1"',
 'recentchangeslinked-noresult' => 'Awan panamalbaliw kadagiti naisilpo a pampanid kabayatan ti naited a panawen.',
 'recentchangeslinked-summary'  => "Listaan daytoy dagiti kaudian a naaramid a panangbalbaliw kadagiti pampanid a nakasilpo manipud iti maysa a napili a panid (wenno kadagiti kameng ti maysa a napili a categoria).
@@ -864,6 +864,7 @@ Dagiti panid iti [[Special:Watchlist|listaan ti bambantayam]] ket '''naipuskol''
 'listfiles_description' => 'Deskripsion',
 
 # File description page
+'file-anchor-link'          => 'File',
 'filehist'                  => 'Pakasaritaan ti file',
 'filehist-help'             => 'Mangiklikka iti maysa a petsa/oras tapno makitam ti file iti kasisigudna a langa iti dayta nga oras.',
 'filehist-deleteall'        => 'ikkaten amin',
@@ -882,8 +883,6 @@ Dagiti panid iti [[Special:Watchlist|listaan ti bambantayam]] ket '''naipuskol''
 'redirectstofile'           => 'Dagiti sumaganad a files ket ag-redirect iti daytoy a file:',
 'duplicatesoffile'          => 'Dagiti sumaganad a files ket duplikado daytoy a file:',
 'sharedupload'              => 'Daytoy a file ket pagraranudan nga upload ket mabalin nga aramaten ti sabsabali pay a projectos.',
-'noimage'                   => 'Awan ti file iti kasta a nagan, mabalinmo ti $1.',
-'noimage-linktext'          => 'ipanen',
 'uploadnewversion-linktext' => 'Mangipan iti kabarbaro a version daytoy a file',
 
 # File reversion
@@ -1269,7 +1268,7 @@ Binsiren ti [[Special:Log/delete|log ti naik-ikkat]] para iti rekord dagiti naud
 'ipblocklist-submit'          => 'Agbirok',
 'blocklistline'               => 'Ni $1, $2 sinerraanna ni $3 ($4)',
 'infiniteblock'               => "inggana't inggana",
-'expiringblock'               => 'agpaso into no $1',
+'expiringblock'               => 'agpaso into no $1 $2',
 'anononlyblock'               => 'anon. laeng',
 'createaccountblock'          => 'napengdan ti pannakapartuat ti account',
 'emailblock'                  => 'naserraan ti email',
@@ -1529,6 +1528,7 @@ ODagiti dadduma ket sigud a nakalemmeng.
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

@@ -166,7 +166,7 @@ class MonoBookTemplate extends QuickTemplate {
 	<div id="p-cactions" class="portlet">
 		<h5><?php $this->msg('views') ?></h5>
 		<div class="pBody">
-			<ul <?php echo $this->langAttributes() ?>>
+			<ul <?php $this->html('userlangattributes') ?>>
 	<?php		foreach($this->data['content_actions'] as $key => $tab) {
 					echo '
 				 <li id="' . Sanitizer::escapeId( "ca-$key" ) . '"';
@@ -194,7 +194,7 @@ class MonoBookTemplate extends QuickTemplate {
 	<div class="portlet" id="p-personal">
 		<h5><?php $this->msg('personaltools') ?></h5>
 		<div class="pBody">
-			<ul <?php echo $this->langAttributes() ?>>
+			<ul <?php $this->html('userlangattributes') ?>>
 <?php 			foreach($this->data['personal_urls'] as $key => $item) { ?>
 				<li id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"<?php
 					if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
@@ -283,7 +283,7 @@ class MonoBookTemplate extends QuickTemplate {
 		global $wgUseTwoButtonsSearchForm;
 ?>
 	<div id="p-search" class="portlet">
-		<h5 <?php echo $this->langAttributes() ?>><label for="searchInput"><?php $this->msg('search') ?></label></h5>
+		<h5 <?php $this->html('userlangattributes') ?>><label for="searchInput"><?php $this->msg('search') ?></label></h5>
 		<div id="searchBody" class="pBody">
 			<form action="<?php $this->text('wgScript') ?>" id="searchform"><div>
 				<input type='hidden' name="title" value="<?php $this->text('searchtitle') ?>"/>
@@ -305,7 +305,7 @@ class MonoBookTemplate extends QuickTemplate {
 	function toolbox() {
 ?>
 	<div class="portlet" id="p-tb">
-		<h5 <?php echo $this->langAttributes() ?>><?php $this->msg('toolbox') ?></h5>
+		<h5 <?php $this->html('userlangattributes')?>><?php $this->msg('toolbox') ?></h5>
 		<div class="pBody">
 			<ul>
 <?php
@@ -317,7 +317,7 @@ class MonoBookTemplate extends QuickTemplate {
 			if( $this->data['nav_urls']['recentchangeslinked'] ) { ?>
 				<li id="t-recentchangeslinked"><a href="<?php
 				echo htmlspecialchars($this->data['nav_urls']['recentchangeslinked']['href'])
-				?>"<?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>><?php $this->msg('recentchangeslinked') ?></a></li>
+				?>"<?php echo $this->skin->tooltipAndAccesskey('t-recentchangeslinked') ?>><?php $this->msg('recentchangeslinked-toolbox') ?></a></li>
 <?php 		}
 		}
 		if(isset($this->data['nav_urls']['trackbacklink'])) { ?>
@@ -366,7 +366,7 @@ class MonoBookTemplate extends QuickTemplate {
 		if( $this->data['language_urls'] ) {
 ?>
 	<div id="p-lang" class="portlet">
-		<h5 <?php echo $this->langAttributes() ?>><?php $this->msg('otherlanguages') ?></h5>
+		<h5 <?php $this->html('userlangattributes') ?>><?php $this->msg('otherlanguages') ?></h5>
 		<div class="pBody">
 			<ul>
 <?php		foreach($this->data['language_urls'] as $langlink) { ?>
@@ -384,7 +384,7 @@ class MonoBookTemplate extends QuickTemplate {
 	function customBox( $bar, $cont ) {
 ?>
 	<div class='generated-sidebar portlet' id='<?php echo Sanitizer::escapeId( "p-$bar" ) ?>'<?php echo $this->skin->tooltip('p-'.$bar) ?>>
-		<h5 <?php echo $this->langAttributes() ?>><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo htmlspecialchars($bar); else echo htmlspecialchars($out); ?></h5>
+		<h5 <?php $this->html('userlangattributes') ?>><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo htmlspecialchars($bar); else echo htmlspecialchars($out); ?></h5>
 		<div class='pBody'>
 <?php   if ( is_array( $cont ) ) { ?>
 			<ul>
@@ -402,11 +402,6 @@ class MonoBookTemplate extends QuickTemplate {
 		</div>
 	</div>
 <?php
-	}
-
-	private function langAttributes() {
-		$languageCode = $this->data['userlang'];
-		return 'lang="' . $languageCode . '" xml:lang="' . $languageCode . '"';
 	}
 } // end of class
 

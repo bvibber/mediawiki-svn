@@ -14,26 +14,23 @@
  */
 
 $namespaceNames = array(
-	NS_MEDIA            => 'Медиа', //Media
-	NS_SPECIAL          => 'Тускай', //Special
-	NS_MAIN	            => '',
-	NS_TALK	            => 'Чугаа', //Talk
-	NS_USER             => 'Aжыглакчы', //User
-	NS_USER_TALK        => 'Aжыглакчы_чугаа', //User_talk
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK     => '$1_чугаа', //_talk
-	NS_FILE             => 'Чурук', //Image
-	NS_FILE_TALK        => 'Чурук_чугаа', //Image_talk
-	NS_MEDIAWIKI        => 'МедиаВики', //MediaWiki
-	NS_MEDIAWIKI_TALK   => 'МедиаВики_чугаа', //MediaWiki_talk
-	NS_TEMPLATE         => 'Хээ', //Template
-	NS_TEMPLATE_TALK    => 'Хээ_чугаа', //Template_talk
-	NS_HELP             => 'Дуза', //Help
-	NS_HELP_TALK        => 'Дуза_чугаа', //Help_talk
-	NS_CATEGORY         => 'Бөлүк', //Category
-	NS_CATEGORY_TALK    => 'Бөлүк_чугаа', //Category_talk
+	NS_MEDIA            => 'Медиа',
+	NS_SPECIAL          => 'Тускай',
+	NS_TALK             => 'Чугаа',
+	NS_USER             => 'Aжыглакчы',
+	NS_USER_TALK        => 'Aжыглакчы_чугаа',
+	NS_PROJECT_TALK     => '$1_чугаа',
+	NS_FILE             => 'Чурук',
+	NS_FILE_TALK        => 'Чурук_чугаа',
+	NS_MEDIAWIKI        => 'МедиаВики',
+	NS_MEDIAWIKI_TALK   => 'МедиаВики_чугаа',
+	NS_TEMPLATE         => 'Хээ',
+	NS_TEMPLATE_TALK    => 'Хээ_чугаа',
+	NS_HELP             => 'Дуза',
+	NS_HELP_TALK        => 'Дуза_чугаа',
+	NS_CATEGORY         => 'Бөлүк',
+	NS_CATEGORY_TALK    => 'Бөлүк_чугаа',
 );
-
 
 $bookstoreList = array(
 	'ОЗОН' => 'http://www.ozon.ru/?context=advsearch_book&isbn=$1',
@@ -309,7 +306,6 @@ $messages = array(
 'last'                => 'бурунгу',
 'page_first'          => 'бирги',
 'page_last'           => 'сөөлгү',
-'deletedrev'          => '[ап каан]',
 'histfirst'           => 'Эң эрте',
 'histlast'            => 'Эң дээм чаагы',
 'historysize'         => '($1 байт)',
@@ -334,8 +330,8 @@ $messages = array(
 
 # Search results
 'searchresults'  => 'Түңнелдер',
-'prevn'          => 'бүрүнгү $1',
-'nextn'          => 'соонда $1',
+'prevn'          => 'бүрүнгү {{PLURAL:$1|$1}}',
+'nextn'          => 'соонда {{PLURAL:$1|$1}}',
 'viewprevnext'   => '($1) ($2) ($3) көөр',
 'searchhelp-url' => 'Help:Допчузу',
 'powersearch'    => 'Дилээр',
@@ -415,6 +411,7 @@ $messages = array(
 'listfiles_description' => 'Тодарадып бижээни',
 
 # File description page
+'file-anchor-link'   => 'Файл',
 'filehist'           => 'Файлдың төөгүзү',
 'filehist-deleteall' => 'шуптуну ап каар',
 'filehist-deleteone' => 'мону ап каар',
@@ -424,7 +421,6 @@ $messages = array(
 'filehist-filesize'  => 'Файл хемчээли',
 'filehist-comment'   => 'Комментарий',
 'imagelinks'         => 'Холбаалар',
-'noimage-linktext'   => 'Ону киирер',
 
 # File reversion
 'filerevert-comment' => 'Комментарий:',

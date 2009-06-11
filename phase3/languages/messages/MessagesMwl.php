@@ -497,7 +497,6 @@ Ambaixo stá l registro de las eileminaçones pa refréncia.',
 Legenda: (atu) = defrénças de la berson atual,
 (red) = defrénça de la redadeira berson, m = eidiçon pequerrixa',
 'history-fieldset-title' => 'Nabegar pul stórico',
-'deletedrev'             => '[apagada]',
 'histfirst'              => 'Mais antigas',
 'histlast'               => 'Redadeiras',
 
@@ -543,8 +542,8 @@ Tu puodes [[:\$1|criar esta páigina]].",
 'noexactmatch-nocreate'     => "'''Nun hai nanhua páigina chamada \"\$1\".'''",
 'notitlematches'            => 'Nanhun títalo de páigina bate cierto cula percura',
 'notextmatches'             => 'Nun fui possible achar, ne l cuntenido de las páiginas, la palabra percurada',
-'prevn'                     => 'anteriores $1',
-'nextn'                     => 'próssimos $1',
+'prevn'                     => 'anteriores {{PLURAL:$1|$1}}',
+'nextn'                     => 'próssimos {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'Ber ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:Conteúdos',
 'searchprofile-images'      => 'Fexeiros',
@@ -574,7 +573,6 @@ Tu puodes [[:\$1|criar esta páigina]].",
 'prefs-skin'                => 'Maçcarilha',
 'skin-preview'              => 'Amostrar',
 'prefs-math'                => 'Matemática',
-'dateformat'                => 'Formato de la data',
 'prefs-datetime'            => 'Data i hora',
 'prefs-personal'            => 'Calantriç',
 'prefs-rc'                  => 'Redadeiras alteraçones',
@@ -663,6 +661,8 @@ Causo l çponiblizes, este será outelizado pa te dar crédito pul tou trabalho.
 
 # Recent changes linked
 'recentchangeslinked'          => 'Alterações relacionadas',
+'recentchangeslinked-feed'     => 'Alterações relacionadas',
+'recentchangeslinked-toolbox'  => 'Alterações relacionadas',
 'recentchangeslinked-title'    => 'Alteraçones que ténen a ber cun "$1"',
 'recentchangeslinked-noresult' => 'Nun houbo alteraçones an páiginas relacionadas ne l anterbalo de tiempo.',
 'recentchangeslinked-summary'  => "Esta páigina special amostra las redadeiras alteraçones de páiginas que téngan ua lhigaçon a outra (ó de nembros dua catadorie specificada).
@@ -695,6 +695,7 @@ Páiginas que steian ne ls [[Special:Watchlist|tous begiados]] son amostradas an
 'listfiles_description' => 'Çcriçon',
 
 # File description page
+'file-anchor-link'          => 'Fexeiro',
 'filehist'                  => 'Stórico de l fexeiro',
 'filehist-help'             => 'Clique an ua data/hora para ber l fexeiro tal cumo el staba naquel sfergante.',
 'filehist-current'          => 'atual',
@@ -709,8 +710,6 @@ Páiginas que steian ne ls [[Special:Watchlist|tous begiados]] son amostradas an
 'linkstoimage'              => '{{PLURAL:$1|Esta páigina lhigan|Estas $1 páiginas lhigan}} este fexeiro:',
 'nolinkstoimage'            => 'Nanhua páigina apunta pa este fexeiro.',
 'sharedupload'              => 'Este fexeiro ye de $1 i puode ser outelizado por outros porjetos.',
-'noimage'                   => 'Nun eisiste nanhun fexeiro cun este nome, mas puodes $1',
-'noimage-linktext'          => 'carga un',
 'uploadnewversion-linktext' => 'Cargar ua nuoba berson deste fexeiro',
 
 # File reversion
@@ -1087,6 +1086,7 @@ Causo l fexeiro tenga sido demudado a partir de l sou stado oureginal, alguns de
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

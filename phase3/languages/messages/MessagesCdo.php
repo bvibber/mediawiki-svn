@@ -358,8 +358,8 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'searchsubtitle'        => "Nṳ̄ sìng-tō̤ '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Nṳ̄ sìng-tō̤ '''$1'''",
 'noexactmatch'          => "'''Tō̤ mâ̤ diŏh dū-dū siŏh-iông gì miàng \"\$1\".''' Nṳ̄ â̤-sāi [[:\$1|cê-gă siā]].",
-'prevn'                 => 'sèng $1 hâung',
-'nextn'                 => 'â $1 hâung',
+'prevn'                 => 'sèng {{PLURAL:$1|$1}} hâung',
+'nextn'                 => 'â {{PLURAL:$1|$1}} hâung',
 'viewprevnext'          => 'Káng ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Mŭk-liŏh',
 'showingresults'        => "Hiēng-sê téng #<b>$2</b> kăi-sṳ̄ gì {{PLURAL:$1|'''1'''|'''$1'''}} bĭk giék-guō.",
@@ -372,7 +372,6 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'changepassword'     => 'Gāi-biéng mĭk-mā',
 'prefs-skin'         => 'Puòi-hŭ',
 'prefs-math'         => 'Só-hŏk',
-'dateformat'         => 'Nĭk-gĭ gáh-sék',
 'datedefault'        => 'Mò̤ siék-diâng',
 'prefs-datetime'     => 'Nĭk-gĭ gâe̤ng sì-găng',
 'prefs-personal'     => 'Ê̤ṳng-hô cṳ̆-lâiu',
@@ -433,7 +432,9 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'boteditletter'     => '^',
 
 # Recent changes linked
-'recentchangeslinked' => 'Siŏng-guăng gì gāi-biéng',
+'recentchangeslinked'         => 'Siŏng-guăng gì gāi-biéng',
+'recentchangeslinked-feed'    => 'Siŏng-guăng gì gāi-biéng',
+'recentchangeslinked-toolbox' => 'Siŏng-guăng gì gāi-biéng',
 
 # Upload
 'upload'            => 'Siông-duòng ùng-giông',
@@ -472,10 +473,10 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'listfiles_size' => 'Chióh-cháung',
 
 # File description page
+'file-anchor-link'          => 'Ùng-giông',
 'imagelinks'                => 'Lièng-giék',
 'linkstoimage'              => 'Â-dā̤ gì hiĕk-miêng lièng gáu ciā ùng-giông:',
 'nolinkstoimage'            => 'Mò̤ hiĕk-miêng lièng gáu ciā ùng-giông.',
-'noimage-linktext'          => 'siông-diòng ĭ',
 'uploadnewversion-linktext' => 'Siông-duòng ciā ùng-giông gì sĭng bēng-buōng',
 
 # MIME search

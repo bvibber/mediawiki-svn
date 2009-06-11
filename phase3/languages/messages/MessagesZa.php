@@ -1,5 +1,5 @@
 <?php
-/** Zhuang (Sawcuengh)
+/** Zhuang (Vahcuengh)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Biŋhai
  * @author Hakka
  */
 
@@ -37,20 +38,30 @@ $messages = array(
 'september-gen' => 'Nin Gouj',
 'sep'           => 'Nin Gouj',
 
+'about'      => 'Gvendaengz',
+'article'    => 'Banjbienj',
 'cancel'     => 'Fwtqfex',
 'mytalk'     => 'Gaeq gou gangj',
 'navigation' => 'Dazzaeuh',
 
 # Cologne Blue skin
+'qbfind'         => 'Ra',
+'qbedit'         => 'Gaij',
 'qbspecialpages' => 'Doenghmae daegxsei',
 
 'help'             => 'Caeuq',
 'search'           => 'Cwmh',
 'searchbutton'     => 'Cwmh',
-'searcharticle'    => 'Bei',
+'go'               => 'Bae',
+'searcharticle'    => 'Bae',
+'history'          => 'Lizsij',
 'history_short'    => 'Doenghmatq',
 'permalink'        => 'Gaeq-lamh kaemdaengz',
+'edit'             => 'gaij',
+'delete'           => 'Duz',
 'protect'          => 'Hahdiuz',
+'newpage'          => 'Bienj moq',
+'talkpagelinktext' => 'Daujlun',
 'talk'             => 'Kwng',
 'toolbox'          => 'Loengx hong',
 'jumptonavigation' => 'Dazzaeuh',
@@ -58,10 +69,15 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'edithelp'             => 'Caeuq mungz san-zonz',
-'mainpage'             => 'Mae meh',
+'mainpage'             => 'Mbaw meh',
 'mainpage-description' => 'Mae meh',
 
 'youhavenewmessages' => 'Mungz meiz $1（$2）。',
+'editsection'        => 'gaij',
+'editold'            => 'gaij',
+'editlink'           => 'gaij',
+'editsectionhint'    => 'Gaij duenh:$1',
+'hidetoc'            => 'cangz',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main' => 'Faenzueng',
@@ -72,6 +88,7 @@ $messages = array(
 
 # Login and logout pages
 'yourname'    => 'Ciu bouxdeiz:',
+'login'       => 'Dwnghluz',
 'notloggedin' => 'Maengx laezhaej',
 
 # Edit pages
@@ -83,8 +100,12 @@ $messages = array(
 'showdiff'           => 'Okqhaej gaeqgaei',
 'whitelistedittitle' => 'Laezdiuz haeuj aiq naej san-zonz',
 
+# Diffs
+'editundo' => 'siu',
+
 # Search results
-'powersearch' => 'Cwmh',
+'search-interwiki-more' => '（more）',
+'powersearch'           => 'Cwmh',
 
 # Preferences page
 'mypreferences'     => 'Doenghgaeq gou hae',
@@ -94,20 +115,35 @@ $messages = array(
 
 # Recent changes
 'recentchanges' => 'Gaeqgaij suijnej',
+'diff'          => 'Faenbied',
 
 # Upload
-'uploadnologin'     => 'Maengx laezhaej',
 'filedesc'          => 'Saegmangj',
 'fileuploadsummary' => 'Saegmangj:',
 'watchthisupload'   => 'Demq mae-nej',
+
+# Special:ListFiles
+'listfiles_user' => 'Bouxyungh',
+
+# File description page
+'filehist-user' => 'Bouxsawjyungh',
 
 # Random page
 'randompage' => 'Mae zaihzex',
 
 # Miscellaneous special pages
 'newpages-username' => 'Ciu bouxdeiz:',
-'move'              => 'Caen',
+'move'              => 'Daen',
 'movethispage'      => 'Caen mae nej',
+
+# Book sources
+'booksources-go' => 'Bae',
+
+# Special:Log
+'log' => 'Ngoenzceiq',
+
+# Special:AllPages
+'allpagessubmit' => 'Bae',
 
 # Watchlist
 'watchlist'     => 'Gaeq gou demq',
@@ -116,11 +152,18 @@ $messages = array(
 'watch'         => 'Demq',
 'watchthispage' => 'Demq mae-nej',
 
+# Displayed when you click the "watch" button and it is in the process of watching
+'watching'   => 'Bawxndu……',
+'unwatching' => 'Souma bawxndu……',
+
 # Protect
 'prot_1movedto2' => '[[$1]] caen bei [[$2]]',
 
 # Restrictions (nouns)
 'restriction-move' => 'Caen',
+
+# Namespace form on various pages
+'blanknamespace' => '（Cujyau）',
 
 # Contributions
 'contributions' => 'Gaeq bouxdeiz haej',
@@ -137,7 +180,6 @@ $messages = array(
 # Move page
 'move-page-legend' => 'Caen doengh mae',
 'movearticle'      => 'Caen doengh mae:',
-'movenologin'      => 'Maengx laezhaej',
 'move-watch'       => 'Demq mae-nej',
 'movepagebtn'      => 'Caen doengh mae',
 'movedto'          => 'Caen bei',
@@ -159,5 +201,8 @@ $messages = array(
 
 # Special:SpecialPages
 'specialpages' => 'Doenghmae daegxsei',
+
+# Special:Tags
+'tags-edit' => 'gaij',
 
 );

@@ -83,6 +83,9 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				case 'rightsinfo':
 					$fit = $this->appendRightsInfo( $p );
 					break;
+				case 'languages':
+					$fit = $this->appendLanguages( $p );
+					break;
 				default :
 					ApiBase :: dieDebug( __METHOD__, "Unknown prop=$p" );
 			}
@@ -171,6 +174,9 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			
 			if( $canonical ) 
 				$data[$ns]['canonical'] = strtr($canonical, '_', ' ');
+			
+			if( MWNamespace::isContent( $ns ) )
+				$data[$ns]['content'] = '';
 		}
 
 		$this->getResult()->setIndexedTagName( $data, 'ns' );
@@ -386,6 +392,17 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
+	public function appendLanguages( $property ) {
+		$data = array();
+		foreach( Language::getLanguageNames() as $code => $name ) {
+			$lang = array( 'code' => $code );
+			ApiResult::setContent( $lang, $name );
+			$data[] = $lang;
+		}
+		$this->getResult()->setIndexedTagName( $data, 'lang' );
+		return $this->getResult()->addValue( 'query', $property, $data );
+	}
+
 
 	public function getAllowedParams() {
 		return array(
@@ -405,6 +422,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 					'extensions',
 					'fileextensions',
 					'rightsinfo',
+					'languages',
 				)
 			),
 			'filteriw' => array(
@@ -433,6 +451,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				' extensions   - Returns extensions installed on the wiki',
 				' fileextensions - Returns list of file extensions allowed to be uploaded',
 				' rightsinfo   - Returns wiki rights (license) information if available',
+				' languages    - Returns a list of languages MediaWiki supports',
 			),
 			'filteriw' =>  'Return only local or only nonlocal entries of the interwiki map',
 			'showalldb' => 'List all database servers, not just the one lagging the most',

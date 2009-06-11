@@ -18,11 +18,9 @@
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Specjalnô',
-	NS_MAIN             => '',
 	NS_TALK             => 'Diskùsëjô',
 	NS_USER             => 'Brëkòwnik',
 	NS_USER_TALK        => 'Diskùsëjô_brëkòwnika',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'Diskùsëjô_$1',
 	NS_FILE             => 'Òbrôzk',
 	NS_FILE_TALK        => 'Diskùsëjô_òbrôzków',
@@ -33,7 +31,7 @@ $namespaceNames = array(
 	NS_HELP             => 'Pòmòc',
 	NS_HELP_TALK        => 'Diskùsëjô_Pòmòcë',
 	NS_CATEGORY         => 'Kategòrëjô',
-	NS_CATEGORY_TALK    => 'Diskùsëjô_Kategòrëji'
+	NS_CATEGORY_TALK    => 'Diskùsëjô_Kategòrëji',
 );
 
 $messages = array(
@@ -489,8 +487,8 @@ Administrator, chtëren jã zablokòwôł, pòdôł przëczënã: $1",
 'searchsubtitle'            => 'Skùtczi szëkbë za \'\'\'[[:$1]]\'\'\' ([[Special:Prefixindex/$1|starnë naczënającé sã òd "$1"]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|starnë, chtërné lënkùją do "$1"]])',
 'noexactmatch'              => "'''Nie dô starnë z dokładno taczim titlã \"\$1\"'''. Mòżesz [[:\$1|zrobic ną starnã]].",
 'notitlematches'            => 'Ni nalazłé w titlach',
-'prevn'                     => 'wczasniészé $1',
-'nextn'                     => 'nôslédné $1',
+'prevn'                     => 'wczasniészé {{PLURAL:$1|$1}}',
+'nextn'                     => 'nôslédné {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'Òbaczë ($1) ($2) ($3).',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 słowò|$2 słowa|$2 słów}})',
 'search-section'            => '(dzél $1)',
@@ -516,7 +514,6 @@ Administrator, chtëren jã zablokòwôł, pòdôł przëczënã: $1",
 'prefs-skin'            => 'Wëzdrzatk',
 'skin-preview'          => 'Pòdzérk',
 'prefs-math'            => 'Matematika',
-'dateformat'            => 'Fòrmat datumù',
 'datedefault'           => 'Felëje preferencëji',
 'prefs-datetime'        => 'Datum ë czas',
 'prefs-personal'        => 'Pòdôwczi brëkòwnika',
@@ -600,6 +597,8 @@ Mòżesz zezwòlëc jinszim brëkòwniką na łączbã z Tobą przez Twòją sta
 
 # Recent changes linked
 'recentchangeslinked'          => 'Zmianë w dolënkòwónëch',
+'recentchangeslinked-feed'     => 'Zmianë w dolënkòwónëch',
+'recentchangeslinked-toolbox'  => 'Zmianë w dolënkòwónëch',
 'recentchangeslinked-title'    => 'Zjinaczi w lënkòwónëch z "$1"',
 'recentchangeslinked-backlink' => '← $1',
 'recentchangeslinked-summary'  => "Niżi nachôdô sã lësta slédnëch zjinaków na lënkòwónëch starnach z pòdóny starnë (abò we wszëtczich starnach przënôleżącëch do pòdóny kategòrëji).
@@ -639,6 +638,7 @@ Abë dodac lopk do starnë, ùżëjë ùniższegò lënka wedle nôslédnëch m�
 'listfiles_user' => 'Brëkòwnik',
 
 # File description page
+'file-anchor-link'          => 'Òbrôzk',
 'filehist'                  => 'Historëjô lopka',
 'filehist-current'          => 'aktualny',
 'filehist-datetime'         => 'Datum/Czas',

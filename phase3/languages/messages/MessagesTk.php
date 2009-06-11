@@ -579,7 +579,6 @@ Ol eýýäm bar.',
 Kesgitleme: ('''häzirki''') = häzirki wersiýa bilen aradaky tapawut,
 ('''öňündäki''') = öň ýanyndaky wersiýa bilen aradaky tapawut, '''uj''' = Ujypsyzja özgerdiş.",
 'history-fieldset-title' => 'Geçmişe göz aýla',
-'deletedrev'             => '[öçürildi]',
 'histfirst'              => 'Iň irki',
 'histlast'               => 'Ýaňy-ýakyndaky',
 'historysize'            => '({{PLURAL:$1|1 baýt|$1 baýt}})',
@@ -644,8 +643,8 @@ Kesgitleme: ('''häzirki''') = häzirki wersiýa bilen aradaky tapawut,
 'noexactmatch-nocreate'     => "'''\"\$1\" atly hiç hili sahypa ýok.'''",
 'notitlematches'            => 'Şeýle atly sahypa gabat gelmedi',
 'notextmatches'             => 'Hiç bir sahypada tapylmady',
-'prevn'                     => 'öňki $1',
-'nextn'                     => 'indiki $1',
+'prevn'                     => 'öňki {{PLURAL:$1|$1}}',
+'nextn'                     => 'indiki {{PLURAL:$1|$1}}',
 'prevn-title'               => 'Öňki $1 {{PLURAL:$1|netije|netije}}',
 'nextn-title'               => 'Indiki $1 {{PLURAL:$1|netije|netije}}',
 'shown-title'               => 'Sahypa başyna $1 {{PLURAL:$1|netije|netije}} görkez',
@@ -678,7 +677,6 @@ Gözlegiňiziň başyna '''all:''' pristawkasyny goşup tutuş mazmuny (şol san
 'changepassword'            => 'Paroly üýtget',
 'skin-preview'              => 'Deslapky syn',
 'prefs-math'                => 'Matematiki formulalar',
-'dateformat'                => 'Sene formaty',
 'prefs-datetime'            => 'Sene we wagt',
 'prefs-personal'            => 'Ulanyjy maglumatlary',
 'prefs-rc'                  => 'Soňky üýtgeşmeler',
@@ -802,6 +800,8 @@ $1 {{PLURAL:$1|simwoldan|simwoldan}} köp bolmaly däl.',
 
 # Recent changes linked
 'recentchangeslinked'         => 'Degişli üýtgeşmeler',
+'recentchangeslinked-feed'    => 'Degişli üýtgeşmeler',
+'recentchangeslinked-toolbox' => 'Degişli üýtgeşmeler',
 'recentchangeslinked-title'   => '"$1" bilen baglanyşykly üýtgeşmeler',
 'recentchangeslinked-summary' => "Aşakdaky sanaw, görkezilen sahypa (ýa-da görkezilen kategoriýanyň agzalaryna) çykgyt berýän sahypalarda edilen üýtgeşmeleriň sanawydyr.
 [[Special:Watchlist|Gözegçilik sanawyňyzdaky]] sahypalar '''goýy''' ýazgy bilen görkezilýär.",
@@ -831,6 +831,7 @@ $1 {{PLURAL:$1|simwoldan|simwoldan}} köp bolmaly däl.',
 'listfiles_count'       => 'Wersiýalar',
 
 # File description page
+'file-anchor-link'          => 'Faýl',
 'filehist'                  => 'Faýlyň geçmişi',
 'filehist-help'             => 'Faýlyň geçmişini görmek üçin Sene/Wagt bölümündäki senelere tyklaň.',
 'filehist-deleteall'        => 'ählisini öçür',
@@ -1190,6 +1191,7 @@ Ondan soňraky çykgyt(lar) kadadan çykma hökmünde kabul edilýär, meselem: 
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

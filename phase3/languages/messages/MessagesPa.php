@@ -15,24 +15,22 @@
  */
 
 $namespaceNames = array(
-	NS_MEDIA          => 'ਮੀਡੀਆ',
-	NS_SPECIAL        => 'ਖਾਸ',
-	NS_MAIN           => '',
-	NS_TALK           => 'ਚਰਚਾ',
-	NS_USER           => 'ਮੈਂਬਰ',
-	NS_USER_TALK      => 'ਮੈਂਬਰ_ਚਰਚਾ',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => '$1_ਚਰਚਾ',
-	NS_FILE           => 'ਤਸਵੀਰ',
-	NS_FILE_TALK      => 'ਤਸਵੀਰ_ਚਰਚਾ',
-	NS_MEDIAWIKI      => 'ਮੀਡੀਆਵਿਕਿ',
-	NS_MEDIAWIKI_TALK => 'ਮੀਡੀਆਵਿਕਿ_ਚਰਚਾ',
-	NS_TEMPLATE       => 'ਨਮੂਨਾ',
-	NS_TEMPLATE_TALK  => 'ਨਮੂਨਾ_ਚਰਚਾ',
-	NS_HELP           => 'ਮਦਦ',
-	NS_HELP_TALK      => 'ਮਦਦ_ਚਰਚਾ',
-	NS_CATEGORY       => 'ਸ਼੍ਰੇਣੀ',
-	NS_CATEGORY_TALK  => 'ਸ਼੍ਰੇਣੀ_ਚਰਚਾ'
+	NS_MEDIA            => 'ਮੀਡੀਆ',
+	NS_SPECIAL          => 'ਖਾਸ',
+	NS_TALK             => 'ਚਰਚਾ',
+	NS_USER             => 'ਮੈਂਬਰ',
+	NS_USER_TALK        => 'ਮੈਂਬਰ_ਚਰਚਾ',
+	NS_PROJECT_TALK     => '$1_ਚਰਚਾ',
+	NS_FILE             => 'ਤਸਵੀਰ',
+	NS_FILE_TALK        => 'ਤਸਵੀਰ_ਚਰਚਾ',
+	NS_MEDIAWIKI        => 'ਮੀਡੀਆਵਿਕਿ',
+	NS_MEDIAWIKI_TALK   => 'ਮੀਡੀਆਵਿਕਿ_ਚਰਚਾ',
+	NS_TEMPLATE         => 'ਨਮੂਨਾ',
+	NS_TEMPLATE_TALK    => 'ਨਮੂਨਾ_ਚਰਚਾ',
+	NS_HELP             => 'ਮਦਦ',
+	NS_HELP_TALK        => 'ਮਦਦ_ਚਰਚਾ',
+	NS_CATEGORY         => 'ਸ਼੍ਰੇਣੀ',
+	NS_CATEGORY_TALK    => 'ਸ਼੍ਰੇਣੀ_ਚਰਚਾ',
 );
 
 $digitTransformTable = array(
@@ -56,9 +54,15 @@ $messages = array(
 'tog-showtoolbar'        => 'ਐਡਿਟ ਟੂਲਬਾਰ ਵੇਖੋ (JavaScript)',
 'tog-showtoc'            => 'ਟੇਬਲ ਆਫ਼ ਕੰਨਟੈੱਟ ਵੇਖਾਓ (for pages with more than 3 headings)',
 'tog-rememberpassword'   => 'ਇਹ ਕੰਪਿਊਟਰ ਲਈ ਮੇਰਾ ਲਾਗਇਨ ਯਾਦ ਰੱਖੋ',
-'tog-editwidth'          => 'ਐਡਿਟ ਬਾਕਸ ਪੇਜ ਦੀ ਪੂਰੀ ਚੌੜਾਈ ਵਿੱਚ ਕਰੋ',
+'tog-editwidth'          => 'ਐਡਿਟ ਬਾਕਸ ਨਾਲ ਪੂਰੇ ਸਕਰੀਨ ਨੂੰ ਭਰਨ ਲਈ ਇਸ ਦੀ ਚੌੜਾਈ ਵਧਾਓ',
+'tog-watchcreations'     => 'ਮੇਰੇ ਦੁਆਰਾ ਬਣਾਏ ਗਏ ਨਵੇਂ ਪੇਜ ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚ ਪਾਓ',
+'tog-watchdefault'       => 'ਜੋ ਪੇਜ ਮੈਂ ਸੋਧਦਾ ਹਾਂ ਓਹ ਪੇਜ ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚ ਪਾਓ',
+'tog-watchmoves'         => 'ਮੇਰੇ ਦੁਆਰਾ ਮੁਵ ਕਿਤੇ ਪੇਜ ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚ ਪਾਓ',
+'tog-watchdeletion'      => 'ਮੇਰੇ ਦੁਆਰਾ ਹਟਾਏ ਗਏ ਪੇਜ ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚ ਪਾਓ',
 'tog-previewontop'       => 'ਐਡਿਟ ਬਕਸੇ ਤੋਂ ਪਹਿਲਾਂ ਝਲਕ ਵੇਖਾਓ',
 'tog-previewonfirst'     => 'ਪਹਿਲੇ ਐਡਿਟ ਉੱਤੇ ਝਲਕ ਵੇਖਾਓ',
+'tog-watchlisthideown'   => 'ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚੋਂ ਮੇਰੀਆਂ ਸੋਧਾਂ ਹਟਾਓ',
+'tog-watchlisthidebots'  => 'ਮੇਰੀ ਵਾਚ-ਲਿਸਟ ਵਿੱਚੋਂ ਰੋਬਾਟ ਦਿਆਂ ਸੋਧਾਂ ਹਟਾਓ',
 'tog-watchlisthideminor' => 'ਛੋਟੇ ਸੋਧ ਵਾਚ-ਲਿਸਟ ਤੋਂ ਓਹਲੇ ਰੱਖੋ',
 
 'underline-always'  => 'ਹਮੇਸ਼ਾਂ',
@@ -185,7 +189,7 @@ $messages = array(
 'toolbox'           => 'ਟੂਲਬਾਕਸ',
 'userpage'          => 'ਯੂਜ਼ਰ ਪੇਜ ਵੇਖੋ',
 'projectpage'       => 'ਪਰੋਜੈਕਟ ਪੇਜ ਵੇਖੋ',
-'imagepage'         => 'ਚਿੱਤਰ ਪੇਜ ਵੇਖੋ',
+'imagepage'         => 'ਫਾਇਲ ਪੇਜ ਵੇਖੋ',
 'mediawikipage'     => 'ਸੁਨੇਹਾ ਪੇਜ ਵੇਖੋ',
 'templatepage'      => 'ਟੈਪਲੇਟ ਪੇਜ ਵੇਖੋ',
 'viewhelppage'      => 'ਮੱਦਦ ਪੇਜ ਵੇਖੋ',
@@ -233,6 +237,7 @@ $messages = array(
 'youhavenewmessagesmulti' => 'ਤੁਹਾਨੂੰ ਨਵੇਂ ਸੁਨੇਹੇ $1 ਉੱਤੇ ਹਨ',
 'editsection'             => 'ਸੋਧ',
 'editold'                 => 'ਸੋਧ',
+'editlink'                => 'ਸੋਧ',
 'editsectionhint'         => 'ਸ਼ੈਕਸ਼ਨ ਸੋਧ: $1',
 'toc'                     => 'ਸਮਗੱਰੀ',
 'showtoc'                 => 'ਵੇਖਾਓ',
@@ -240,7 +245,7 @@ $messages = array(
 'thisisdeleted'           => 'ਵੇਖੋ ਜਾਂ $1 ਰੀਸਟੋਰ?',
 'viewdeleted'             => '$1 ਵੇਖਣਾ?',
 'feedlinks'               => 'ਫੀਡ:',
-'red-link-title'          => '$1 (ਹੁਣ ਤਕ ਨਹੀਂ ਲਿਖਿਆ ਗਿਆ)',
+'red-link-title'          => '$1 (ਇਸ ਨਾਂ ਦਾ ਪੇਜ ਨਹੀਂ ਹੈ)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'ਲੇਖ',
@@ -420,7 +425,6 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'last'                => 'ਆਖਰੀ',
 'page_first'          => 'ਪਹਿਲਾਂ',
 'page_last'           => 'ਆਖਰੀ',
-'deletedrev'          => '[ਹਟਾਇਆ]',
 'histfirst'           => 'ਸਭ ਤੋਂ ਪਹਿਲਾਂ',
 'histlast'            => 'ਸਭ ਤੋਂ ਨਵਾਂ',
 'historysize'         => '($1 ਬਾਈਟ)',
@@ -462,8 +466,8 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'notitlematches'        => 'ਕੋਈ ਪੇਜ ਟਾਇਟਲ ਨਹੀਂ ਮਿਲਦਾ',
 'textmatches'           => 'ਪੇਜ ਟੈਕਸਟ ਮਿਲਦਾ',
 'notextmatches'         => 'ਕੋਈ ਪੇਜ ਟੈਕਸਟ ਨਹੀਂ ਮਿਲਦਾ',
-'prevn'                 => 'ਪਿੱਛੇ $1',
-'nextn'                 => 'ਅੱਗੇ $1',
+'prevn'                 => 'ਪਿੱਛੇ {{PLURAL:$1|$1}}',
+'nextn'                 => 'ਅੱਗੇ {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'ਵੇਖੋ ($1) ($2) ($3)',
 'searchhelp-url'        => 'Help:ਸਮੱਗਰੀ',
 'searchall'             => 'ਸਭ',
@@ -483,7 +487,6 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'prefs-skin'          => 'ਸਕਿਨ',
 'skin-preview'        => 'ਝਲਕ',
 'prefs-math'          => 'ਗਣਿਤ',
-'dateformat'          => 'ਮਿਤੀ ਫਾਰਮੈਟ',
 'datedefault'         => 'ਕੋਈ ਪਸੰਦ ਨਹੀਂ',
 'prefs-datetime'      => 'ਮਿਤੀ ਅਤੇ ਸਮਾਂ',
 'prefs-personal'      => 'ਯੂਜ਼ਰ ਪਰੋਫਾਇਲ',
@@ -547,7 +550,9 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'rc_categories_any' => 'ਕੋਈ ਵੀ',
 
 # Recent changes linked
-'recentchangeslinked' => 'ਸਬੰਧਿਤ ਬਦਲਾਅ',
+'recentchangeslinked'         => 'ਸਬੰਧਿਤ ਬਦਲਾਅ',
+'recentchangeslinked-feed'    => 'ਸਬੰਧਿਤ ਬਦਲਾਅ',
+'recentchangeslinked-toolbox' => 'ਸਬੰਧਿਤ ਬਦਲਾਅ',
 
 # Upload
 'upload'               => 'ਫਾਇਲ ਅੱਪਲੋਡ ਕਰੋ',
@@ -583,7 +588,7 @@ to upload files.',
 'uploaddisabled'       => 'ਅੱਪਲੋਡ ਆਯੋਗ ਹੈ',
 'uploadvirus'          => 'ਇਹ ਫਾਇਲ ਵਿੱਚ ਵਾਇਰਸ ਹੈ! ਵੇਰਵੇ ਲਈ ਵੇਖੋ: $1',
 'sourcefilename'       => 'ਸੋਰਸ ਫਾਇਲ ਨਾਂ:',
-'watchthisupload'      => 'ਇਹ ਪੇਜ ਵਾਚ ਕਰੋ',
+'watchthisupload'      => 'ਇਸ ਫਾਇਲ ਨੂੰ ਵਾਚ ਕਰੋ',
 
 'upload-file-error' => 'ਅੰਦਰੂਨੀ ਗਲਤੀ',
 'upload-misc-error' => 'ਅਣਜਾਣ ਅੱਪਲੋਡ ਗਲਤੀ',
@@ -606,6 +611,7 @@ to upload files.',
 'listfiles_description' => 'ਵੇਰਵਾ',
 
 # File description page
+'file-anchor-link'          => 'ਫਾਇਲ',
 'filehist'                  => 'ਫਾਇਲ ਅਤੀਤ',
 'filehist-deleteall'        => 'ਸਭ ਹਟਾਓ',
 'filehist-deleteone'        => 'ਇਹ ਹਟਾਓ',
@@ -617,7 +623,6 @@ to upload files.',
 'filehist-filesize'         => 'ਫਾਇਲ ਆਕਾਰ',
 'filehist-comment'          => 'ਟਿੱਪਣੀ',
 'imagelinks'                => 'ਲਿੰਕ',
-'noimage-linktext'          => 'ਇਹ ਅੱਪਲੋਡ',
 'uploadnewversion-linktext' => 'ਇਸ ਫਾਇਲ ਦਾ ਇੱਕ ਨਵਾਂ ਵਰਜਨ ਅੱਪਲੋਡ ਕਰੋ',
 
 # File reversion
@@ -797,11 +802,12 @@ to upload files.',
 'ipblocklist-submit'   => 'ਖੋਜ',
 'blocklistline'        => '$1, $2 ਬਲਾਕ $3 ($4)',
 'infiniteblock'        => 'ਬੇਅੰਤ',
-'expiringblock'        => '$1 ਮਿਆਦ ਖਤਮ',
+'expiringblock'        => '$1 $2 ਮਿਆਦ ਖਤਮ',
 'anononlyblock'        => 'anon. ਹੀ',
 'emailblock'           => 'ਈਮੇਲ ਬਲਾਕ ਹੈ',
 'blocklink'            => 'ਬਲਾਕ',
 'unblocklink'          => 'ਅਣ-ਬਲਾਕ',
+'contribslink'         => 'ਯੋਗਦਾਨ',
 'proxyblocksuccess'    => 'ਪੂਰਾ ਹੋਇਆ',
 
 # Developer tools
@@ -851,8 +857,8 @@ to upload files.',
 'import-logentry-upload-detail' => '$1 ਰੀਵਿਜ਼ਨ',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage'        => 'ਮੇਰਾ ਯੂਜ਼ਰ ਪੇਜ',
-'tooltip-pt-mytalk'          => 'ਮੇਰਾ ਗੱਲਬਾਤ ਪੇਜ',
+'tooltip-pt-userpage'        => 'ਤੁਹਾਡਾ ਯੂਜ਼ਰ ਪੇਜ',
+'tooltip-pt-mytalk'          => 'ਤੁਹਾਡਾ ਚਰਚਾ ਪੇਜ',
 'tooltip-pt-preferences'     => 'ਮੇਰੀ ਪਸੰਧ',
 'tooltip-pt-mycontris'       => 'ਮੇਰੇ ਯੋਗਦਾਨ ਦੀ ਲਿਸਟ',
 'tooltip-pt-logout'          => 'ਲਾਗ ਆਉਟ',
@@ -1009,8 +1015,8 @@ to upload files.',
 'table_pager_empty'        => 'ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ',
 
 # Auto-summaries
-'autosumm-blank' => 'ਪੇਜ ਤੋਂ ਸਭ ਸਮੱਗਰੀ ਹਟਾਓ',
-'autosumm-new'   => 'ਨਵਾਂ ਪੇਜ: $1',
+'autosumm-blank' => 'ਪੇਜ ਨੂੰ ਖਾਲੀ ਕਰ ਦਿੱਤਾ',
+'autosumm-new'   => '$1 ਨਾਲ ਪੇਜ ਬਣਾਇਆ',
 
 # Live preview
 'livepreview-loading' => 'ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…',

@@ -144,8 +144,13 @@ class CategoryViewer {
 	function addSubcategory( $title, $sortkey, $pageLength ) {
 		global $wgContLang;
 		// Subcategory; strip the 'Category' namespace from the link text.
-		$this->children[] = $this->getSkin()->makeKnownLinkObj(
-			$title, $wgContLang->convertHtml( $title->getText() ) );
+		$this->children[] = $this->getSkin()->link(
+			$title,
+			$wgContLang->convertHtml( $title->getText() ),
+			array(),
+			array(),
+			array( 'known', 'noclasses' )
+		);
 
 		$this->children_start_char[] = $this->getSubcategorySortChar( $title, $sortkey );
 	}
@@ -189,9 +194,16 @@ class CategoryViewer {
 	 */
 	function addPage( $title, $sortkey, $pageLength, $isRedirect = false ) {
 		global $wgContLang;
-		$titletext = $wgContLang->convertHtml( $title->getPrefixedText(), true );
+		$titletext = $wgContLang->convertHtml( $title->getPrefixedText() );
 		$this->articles[] = $isRedirect
-			? '<span class="redirect-in-category">' . $this->getSkin()->makeKnownLinkObj( $title, $titletext ) . '</span>'
+			? '<span class="redirect-in-category">' .
+				$this->getSkin()->link(
+					$title,
+					$titletext,
+					array(),
+					array(),
+					array( 'known', 'noclasses' )
+				) . '</span>'
 			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title, $titletext );
 		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
 	}
@@ -452,13 +464,23 @@ class CategoryViewer {
 
 		$prevLink = wfMsgExt( 'prevn', array( 'escape', 'parsemag' ), $limitText );
 		if( $first != '' ) {
-			$prevLink = $sk->makeLinkObj( $title, $prevLink,
-				wfArrayToCGI( $query + array( 'until' => $first ) ) );
+			$query['until'] = $first;
+			$prevLink = $sk->link(
+				$title,
+				$prevLink,
+				array(),
+				$query
+			);
 		}
 		$nextLink = wfMsgExt( 'nextn', array( 'escape', 'parsemag' ), $limitText );
 		if( $last != '' ) {
-			$nextLink = $sk->makeLinkObj( $title, $nextLink,
-				wfArrayToCGI( $query + array( 'from' => $last ) ) );
+			$query['from'] = $last;
+			$nextLink = $sk->link(
+				$title,
+				$nextLink,
+				array(),
+				$query
+			);
 		}
 
 		return "($prevLink) ($nextLink)";

@@ -294,8 +294,9 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'username', $wgUser->isAnon() ? NULL : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage );
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href'] );
-		$tpl->set( 'userlang', $wgLang->getCode() );				
-		
+		$tpl->set( 'userlang', $wgLang->getCode() );
+		$tpl->set( 'userlangattributes', 'lang="' . $wgLang->getCode() . '" xml:lang="' . $wgLang->getCode() . '"' );
+		$tpl->set( 'pagecss', $this->setupPageCss() );
 		$tpl->setRef( 'usercss', $this->usercss );
 		$tpl->setRef( 'userjs', $this->userjs );
 		$tpl->setRef( 'userjsprev', $this->userjsprev );	

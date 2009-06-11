@@ -366,8 +366,8 @@ $messages = array(
 'notitlematches'    => 'Bô sio-tùi ê ia̍h-piau-tê',
 'textmatches'       => 'Lōe-iông ū-tùi ê bûn-chiuⁿ',
 'notextmatches'     => 'Bô sio-tùi ê bûn-chiuⁿ lōe-iông',
-'prevn'             => 'chêng $1 hāng',
-'nextn'             => 'āu $1 hāng',
+'prevn'             => 'chêng {{PLURAL:$1|$1}} hāng',
+'nextn'             => 'āu {{PLURAL:$1|$1}} hāng',
 'viewprevnext'      => 'Khoàⁿ ($1) ($2) ($3)',
 'searchhelp-url'    => 'Help:Bo̍k-lio̍k',
 'showingresults'    => 'Ē-kha tùi #<b>$2</b> khai-sí hián-sī <b>$1</b> hāng kiat-kó.',
@@ -386,7 +386,6 @@ $messages = array(
 'prefs-skin'            => 'Phôe',
 'skin-preview'          => 'Chhì khoàⁿ',
 'prefs-math'            => 'Sò·-ha̍k ê rendering',
-'dateformat'            => 'Ji̍t-kî keh-sek',
 'datedefault'           => 'Chhìn-chhái',
 'prefs-datetime'        => 'Ji̍t-kî kap sî-kan',
 'prefs-personal'        => 'Iōng-chiá chu-liāu',
@@ -442,6 +441,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'Siong-koan ê kái-piàn',
+'recentchangeslinked-feed'     => 'Siong-koan ê kái-piàn',
+'recentchangeslinked-toolbox'  => 'Siong-koan ê kái-piàn',
 'recentchangeslinked-noresult' => 'Lí chí-tēng ê tiâu-kiaⁿ lāi-té chhōe bô jīn-hô kái-piàn.',
 
 # Upload
@@ -479,11 +480,10 @@ $messages = array(
 'listfiles_description' => 'Soat-bêng',
 
 # File description page
+'file-anchor-link' => 'Tóng-àn',
 'imagelinks'       => 'Iáⁿ-siōng liân-kiat',
 'linkstoimage'     => 'Í-hā ê ia̍h liân kàu chit ê iáⁿ-siōng:',
 'nolinkstoimage'   => 'Bô poàⁿ ia̍h liân kàu chit tiuⁿ iáⁿ-siōng.',
-'noimage'          => 'Hō chit ê miâ ê tóng-àn bô tè chhoē. Lí ē-sái $1.',
-'noimage-linktext' => 'kā thoân chiūⁿ bāng',
 
 # MIME search
 'mimesearch' => 'MIME chhiau-chhoē',

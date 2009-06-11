@@ -19,11 +19,9 @@ $fallback = 'it';
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Special',
-	NS_MAIN             => '',
 	NS_TALK             => 'Discussion',
 	NS_USER             => 'Utent',
 	NS_USER_TALK        => 'Ciaciarade',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'Discussion_ant_sla_$1',
 	NS_FILE             => 'Figura',
 	NS_FILE_TALK        => 'Discussion_dla_figura',
@@ -34,7 +32,7 @@ $namespaceNames = array(
 	NS_HELP             => 'Agiut',
 	NS_HELP_TALK        => 'Discussion_ant_sl\'agiut',
 	NS_CATEGORY         => 'Categorìa',
-	NS_CATEGORY_TALK    => 'Discussion_ant_sla_categorìa'
+	NS_CATEGORY_TALK    => 'Discussion_ant_sla_categorìa',
 );
 
 $messages = array(
@@ -633,7 +631,6 @@ La rason butà da $3 për ël blocagi a l'é staita: ''$2''",
 'histlegend'          => 'Confront antra version diferente: che as selession-a le casele dle version che a veul e peui che a sgnaca ël boton për anandié ël process.<br />
 Legenda: (cor) = diferense con la version corenta,
 (prim) = diferense con la version prima, M = modìfica cita',
-'deletedrev'          => '[scancelà]',
 'histfirst'           => 'Prima',
 'histlast'            => 'Ùltima',
 'historysize'         => '({{PLURAL:$1|1|$1}} byte)',
@@ -731,8 +728,8 @@ Ch'a varda mach che a-i ven-a nen fòra rabel ant la continuità stòrica.",
 'notitlematches'        => "La vos che a l'ha ciamà a l'é pa trovasse antrames aj tìtoj dj'articol",
 'textmatches'           => "Ant ël test ëd j'artìcoj",
 'notextmatches'         => "La vos che a l'ha ciamà a l'é pa trovasse antrames aj test dj'articol",
-'prevn'                 => 'ij $1 prima',
-'nextn'                 => 'ij $1 peuj',
+'prevn'                 => 'ij {{PLURAL:$1|$1}} prima',
+'nextn'                 => 'ij {{PLURAL:$1|$1}} peuj',
 'viewprevnext'          => 'Che a varda ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Agiut',
 'search-result-size'    => '$1 ({{PLURAL:$2|un|$2}} mòt)',
@@ -768,7 +765,6 @@ për podej specifiché ij sò gust.',
 'prefs-skin'                => 'Facia',
 'skin-preview'              => 'Preuva',
 'prefs-math'                => 'Fòrmule ëd matemàtica',
-'dateformat'                => 'Forma dla data',
 'datedefault'               => "franch l'istess",
 'prefs-datetime'            => 'Data e ora',
 'prefs-personal'            => "Profil dl'utent",
@@ -880,6 +876,8 @@ për podej specifiché ij sò gust.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Modìfiche colegà',
+'recentchangeslinked-feed'     => 'Modìfiche colegà',
+'recentchangeslinked-toolbox'  => 'Modìfiche colegà',
 'recentchangeslinked-title'    => 'Modìfiche ch\'a-i intro con "$1"',
 'recentchangeslinked-noresult' => "Ant ël moment dont ës parla a-i é pa staie gnun-a modìfica a le pàgine con dj'anliure ch'a men-o ambelessì.",
 'recentchangeslinked-summary'  => "Sta pàgina special-sì a la smon j'ùltime modìfiche a le pàgine ch'a son colegà për anliura a costa. Le pàgine che chiel/chila as ten sot euj a resto marcà an '''grassèt'''.",
@@ -1026,6 +1024,7 @@ Ch'a-i bata 'n colp col rat ansima a j'antestassion dle colòne për cangé órd
 'listfiles_description' => 'Descrission',
 
 # File description page
+'file-anchor-link'          => 'Figura',
 'filehist'                  => "Stòria dl'archivi",
 'filehist-help'             => "Ch'a-i daga un colp col rat ant sna cobia data/ora për ës-ciairé coma restèissa l'archivi ant col moment-là.",
 'filehist-deleteall'        => 'dëscancelé tut',
@@ -1041,8 +1040,6 @@ Ch'a-i bata 'n colp col rat ansima a j'antestassion dle colòne për cangé órd
 'linkstoimage'              => "Le pàgine sì sota a l'han andrinta dj'anliure a sta figura-sì:",
 'nolinkstoimage'            => "Pa gnun-a pàgina che a l'abia n'anliura a sta figura-sì.",
 'sharedupload'              => "St'archivi-sì a l'é stait carià an comun; donca a peul esse dovrà antra vàire proget wiki diferent.",
-'noimage'                   => 'A-i é pa gnun archivi che as ciama parej, a peul $1.',
-'noimage-linktext'          => 'carijlo',
 'uploadnewversion-linktext' => "Carié na version neuva dë st'archivi-sì",
 
 # File reversion
@@ -1552,7 +1549,7 @@ Che a varda la [[Special:IPBlockList|lista dj\'IP blocà]].',
 'ipblocklist-submit'          => 'Arsërca',
 'blocklistline'               => "$1, $2 a l'ha blocà $3 ($4)",
 'infiniteblock'               => 'për sempe',
-'expiringblock'               => 'fin-a al $1',
+'expiringblock'               => 'fin-a al $1 $2',
 'anononlyblock'               => "mach j'utent anònim",
 'noautoblockblock'            => 'blòch automàtich nen ativ',
 'createaccountblock'          => 'creassion dij cont blocà',
@@ -1929,6 +1926,7 @@ J'anliure ch'a-i ven-o dapress, ant sla midema riga, as conto për ecession (vis
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength",
 
 # EXIF tags

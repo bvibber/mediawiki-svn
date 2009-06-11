@@ -92,8 +92,8 @@ $messages = array(
 'historysize' => '($1 ባይታት)',
 
 # Search results
-'prevn'       => 'ናይ ቀደም $1',
-'nextn'       => 'ዝቕጽል $1',
+'prevn'       => 'ናይ ቀደም {{PLURAL:$1|$1}}',
+'nextn'       => 'ዝቕጽል {{PLURAL:$1|$1}}',
 'powersearch' => 'ድሉይ',
 
 # Preferences page
@@ -125,6 +125,9 @@ $messages = array(
 'listfiles'      => 'ምስልታት',
 'listfiles_name' => 'ሽም',
 'listfiles_user' => 'ኣባል',
+
+# File description page
+'file-anchor-link' => 'ምስሊ',
 
 # Miscellaneous special pages
 'nbytes'            => '$1 {{PLURAL:$1|ባይት|ባይታት}}',

@@ -529,7 +529,6 @@ Tông-tsûng pûn $3 fûng-só ke ngièn-yîn he ''$2''",
 'page_first'          => 'Chui-chhièn',
 'page_last'           => 'Chui-heu',
 'histlegend'          => 'Chhâ-phe̍t sién-chet: phêu-ki yeu pí-káu pán-pún ke tân-sién on-néu pin tiám-kit tí-phu ke on-néu chin-hàng pí-káu.<br /> Sot-mìn: (Tông-chhièn) chṳ́-chit lâu tông-chhièn pán-pún pí-káu, (Siên-chhièn) chṳ́-chit lâu chhièn yit-ke siû-thin pán-pún pí-káu, séu = séu siû-kói.',
-'deletedrev'          => '[yí-kîn chhù-thet]',
 'histfirst'           => 'Chui-chó pán-pún',
 'histlast'            => 'Chui-sîn pán-pún',
 'historysize'         => '($1-vi kûng-chû)',
@@ -616,8 +615,8 @@ Tông-tsûng pûn $3 fûng-só ke ngièn-yîn he ''$2''",
 'notitlematches'        => 'Mò-yû chhìm-cháu to phit-phi vùn-chông thì-muk',
 'textmatches'           => 'Vùn-chông nui-yùng fù-ha̍p',
 'notextmatches'         => 'Mò-yû vùn-chông nui-yùng phit-phi',
-'prevn'                 => 'Chhièn $1-ke',
-'nextn'                 => 'hâ $1-ke',
+'prevn'                 => 'Chhièn {{PLURAL:$1|$1}}-ke',
+'nextn'                 => 'hâ {{PLURAL:$1|$1}}-ke',
 'viewprevnext'          => 'Kiám-sṳ ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Pông-chhu',
 'showingresults'        => "Ha-mien hién-sṳ chhiùng thi-'''$2'''-thiàu khôi-sṳ́ ke '''$1'''-thiàu kiet-kó:",
@@ -643,7 +642,6 @@ Tông-tsûng pûn $3 fûng-só ke ngièn-yîn he ''$2''",
 'prefs-skin'            => 'Mien-pán',
 'skin-preview'          => 'Yi-ko',
 'prefs-math'            => 'Sṳ-ho̍k kûng-sṳt',
-'dateformat'            => 'Ngit-khì kak-sṳt',
 'datedefault'           => 'Yi-sat-chhṳ̍t',
 'prefs-datetime'        => 'Ngit-khì khi̍p sṳ̀-kiên',
 'prefs-personal'        => 'Yung-fu chṳ̂-liau',
@@ -747,6 +745,8 @@ Tshòng-tón pit-sî chhai $1-ke sṳ-ngièn yî-ha.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Lièn-chhut kiên-kói',
+'recentchangeslinked-feed'     => 'Lièn-chhut kiên-kói',
+'recentchangeslinked-toolbox'  => 'Lièn-chhut kiên-kói',
 'recentchangeslinked-noresult' => 'Chhai liá yit-thon sṳ̀-kiên chûng lièn-kiet ke hong-mien pin-mò kiên-kói.',
 'recentchangeslinked-summary'  => "Liá-ke thi̍t-sû hong-mien lie̍t-sṳ lièn-chhut hong-mien chui-khiûn ke kiên-kói. Chhai kam-sṳ lie̍t-péu chûng ke hong-mien chhiu-voi yî '''chhû-thí''' péu-sṳ.",
 
@@ -835,13 +835,12 @@ Kó-yèn ngì yû liá-ke thù-hìn ke vàn-cháng thai-séu.",
 'listfiles_description' => 'Mèu-sut',
 
 # File description page
+'file-anchor-link'          => 'Tóng-on',
 'filehist-deleteone'        => 'chhù-thet',
 'imagelinks'                => 'Lièn-kiet',
 'linkstoimage'              => 'Yî-ha vùn-chông lièn-chiap to pún tóng-on:',
 'nolinkstoimage'            => 'Mò-yû vùn-chông lièn-chiap to pún tóng-on.',
 'sharedupload'              => 'Ke tóng-on he yit-ke khiung-hióng song-chhòn, khó-nèn chhai khì-thâ hong-muk chûng pûn-ngìn yin-yung.',
-'noimage'                   => 'Put chhùn-chhai chhṳ́ miàng-chhṳ̂n ke tóng-on, ngì khó-yî $1.',
-'noimage-linktext'          => 'song-chhòn kì',
 'uploadnewversion-linktext' => 'Song-chhòn tóng-on ke sîn pán-pún',
 
 # File deletion
@@ -1221,7 +1220,7 @@ Chhiáng chhâm-kháu [[Special:Log/delete|chhù-hi ngit-ki]] lòi chhà-chhut c
 'ipblocklist-submit'          => 'Chhìm-cháu',
 'blocklistline'               => '$1，$2 kim-fûng $3 ($4)',
 'infiniteblock'               => 'yún-kiú',
-'expiringblock'               => '$1 to-khì',
+'expiringblock'               => '$1 $2 to-khì',
 'anononlyblock'               => 'Han-chṳ ngia̍k-miàng yung-fu.',
 'noautoblockblock'            => 'Kim-yung chhṳ-thung chhà-fûng',
 'createaccountblock'          => 'Kim-chṳ́ chhóng-kien chong-ho',
@@ -1544,6 +1543,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

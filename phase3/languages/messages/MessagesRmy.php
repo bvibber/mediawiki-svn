@@ -14,24 +14,22 @@
 $fallback = 'ro';
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Mediya',
-	NS_SPECIAL        => 'Uzalutno',
-	NS_MAIN           => '',
-	NS_TALK           => 'Vakyarimata',
-	NS_USER           => 'Jeno',
-	NS_USER_TALK      => 'Jeno_vakyarimata',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => '{{grammar:genitive-pl|$1}}_vakyarimata',
-	NS_FILE           => 'Chitro',
-	NS_FILE_TALK      => 'Chitro_vakyarimata',
-	NS_MEDIAWIKI      => 'MediyaViki',
-	NS_MEDIAWIKI_TALK => 'MediyaViki_vakyarimata',
-	NS_TEMPLATE       => 'Sikavno',
-	NS_TEMPLATE_TALK  => 'Sikavno_vakyarimata',
-	NS_HELP           => 'Zhutipen',
-	NS_HELP_TALK      => 'Zhutipen_vakyarimata',
-	NS_CATEGORY       => 'Shopni',
-	NS_CATEGORY_TALK  => 'Shopni_vakyarimata'
+	NS_MEDIA            => 'Mediya',
+	NS_SPECIAL          => 'Uzalutno',
+	NS_TALK             => 'Vakyarimata',
+	NS_USER             => 'Jeno',
+	NS_USER_TALK        => 'Jeno_vakyarimata',
+	NS_PROJECT_TALK     => '{{grammar:genitive-pl|$1}}_vakyarimata',
+	NS_FILE             => 'Chitro',
+	NS_FILE_TALK        => 'Chitro_vakyarimata',
+	NS_MEDIAWIKI        => 'MediyaViki',
+	NS_MEDIAWIKI_TALK   => 'MediyaViki_vakyarimata',
+	NS_TEMPLATE         => 'Sikavno',
+	NS_TEMPLATE_TALK    => 'Sikavno_vakyarimata',
+	NS_HELP             => 'Zhutipen',
+	NS_HELP_TALK        => 'Zhutipen_vakyarimata',
+	NS_CATEGORY         => 'Shopni',
+	NS_CATEGORY_TALK    => 'Shopni_vakyarimata',
 );
 
 $messages = array(
@@ -248,7 +246,6 @@ Kana avilyan kathe doshatar, ja palpale.',
 'last'             => 'purani',
 'histlegend'       => 'Xalyaripen: (akanutni) = ververimata mamui i akanutni versiya,
 (purani) = ververimata mamui i puraneder versiya, T = tikno editisaripen',
-'deletedrev'       => '[khoslo]',
 'histfirst'        => 'O mai purano',
 'histlast'         => 'O mai nevo',
 
@@ -259,8 +256,8 @@ Kana avilyan kathe doshatar, ja palpale.',
 'compareselectedversions' => 'Dikh ververimata mashkar alosarde versiye',
 
 # Search results
-'prevn'             => 'mai neve $1',
-'nextn'             => 'mai purane $1',
+'prevn'             => 'mai neve {{PLURAL:$1|$1}}',
+'nextn'             => 'mai purane {{PLURAL:$1|$1}}',
 'viewprevnext'      => 'Dikh ($1) ($2) ($3).',
 'searchhelp-url'    => 'Help:Zhutipen',
 'showingresults'    => 'Tele si <b>$1</b> rezultaturya shirdindoi le ginestar <b>$2</b>.',
@@ -272,7 +269,6 @@ Kana avilyan kathe doshatar, ja palpale.',
 'changepassword' => 'Paruv o nakhavipnasko lav',
 'prefs-skin'     => 'Dikhimos',
 'prefs-math'     => 'Matematika',
-'dateformat'     => 'Datengi forma',
 'datedefault'    => 'Ni ekh kamipen',
 'prefs-datetime' => 'Dives thai chaso',
 'prefs-rc'       => 'Neve paruvimata',
@@ -334,7 +330,9 @@ Kana avilyan kathe doshatar, ja palpale.',
 'rc_categories_any'                 => 'Savegodi',
 
 # Recent changes linked
-'recentchangeslinked' => 'Pashvipnaske paruvimata',
+'recentchangeslinked'         => 'Pashvipnaske paruvimata',
+'recentchangeslinked-feed'    => 'Pashvipnaske paruvimata',
+'recentchangeslinked-toolbox' => 'Pashvipnaske paruvimata',
 
 # Upload
 'upload'      => 'Bichhal file',
@@ -348,7 +346,8 @@ Kana avilyan kathe doshatar, ja palpale.',
 'listfiles' => 'Patrinipen le chitrengo',
 
 # File description page
-'imagelinks' => 'Chitroske phandimata',
+'file-anchor-link' => 'Chitro',
+'imagelinks'       => 'Chitroske phandimata',
 
 # Unused templates
 'unusedtemplates'    => 'Bilabyarde sikavne',

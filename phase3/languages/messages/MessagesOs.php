@@ -15,13 +15,11 @@
 $fallback = 'ru';
 
 $namespaceNames = array(
-	NS_MEDIA            => 'Media', //чтоб не писать "Мультимедия"
+	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Сæрмагонд',
-	NS_MAIN             => '',
 	NS_TALK             => 'Дискусси',
 	NS_USER             => 'Архайæг',
 	NS_USER_TALK        => 'Архайæджы_дискусси',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'Дискусси_$1',
 	NS_FILE             => 'Ныв',
 	NS_FILE_TALK        => 'Нывы_тыххæй_дискусси',
@@ -36,9 +34,9 @@ $namespaceNames = array(
 );
 
 $magicWords = array(
-	'redirect'              => array( '0', '#РАРВЫСТ', '#перенаправление', '#перенаправление', '#перенапр', '#REDIRECT' ),
-	'img_right'             => array( '1', 'рахиз', 'справа', 'right' ),
-	'img_left'              => array( '1', 'галиу', 'слева', 'left' ),
+	'redirect'              => array( '0', '#РАРВЫСТ', '#перенаправление', '#перенаправление', '#перенапр', '#перенаправление', '#перенапр', '#REDIRECT' ),
+	'img_right'             => array( '1', 'рахиз', 'справа', 'справа', 'right' ),
+	'img_left'              => array( '1', 'галиу', 'слева', 'слева', 'left' ),
 );
 
 $linkTrail = '/^((?:[a-z]|а|æ|б|в|г|д|е|ё|ж|з|и|й|к|л|м|н|о|п|р|с|т|у|ф|х|ц|ч|ш|щ|ъ|ы|ь|э|ю|я|“|»)+)(.*)$/sDu';
@@ -381,7 +379,6 @@ $messages = array(
 'page_last'              => 'фæстаг',
 'histlegend'             => 'Куыд æй æмбарын: (нырыккон) = нырыккон версийæ хъауджыдæрдзинад, (раздæры) = раздæры версийæ хъауджыдæрдзинад, Ч = чысыл ивддзинад.',
 'history-fieldset-title' => 'Истори фен',
-'deletedrev'             => '[аппæрст]',
 'histfirst'              => 'раздæр',
 'histlast'               => 'фæстæдæр',
 'historyempty'           => '(афтид)',
@@ -417,8 +414,8 @@ $messages = array(
 'titlematches'              => 'Статьяты сæргæндты æмцаутæ',
 'notitlematches'            => 'Фæрсты сæргæндты нæй',
 'textmatches'               => 'Статьяты æмцаутæ',
-'prevn'                     => '$1 фæстæмæ',
-'nextn'                     => '$1 размæ',
+'prevn'                     => '{{PLURAL:$1|$1}} фæстæмæ',
+'nextn'                     => '{{PLURAL:$1|$1}} размæ',
 'viewprevnext'              => 'Фен ($1) ($2) ($3)',
 'search-result-size'        => '$1 ({{PLURAL:$2|$2 дзырд|$2 дзырды}})',
 'search-redirect'           => '(рарвыст ардыгæй: $1)',
@@ -453,7 +450,6 @@ $messages = array(
 'rows'                      => 'Рæнхътæ:',
 'timezonelegend'            => 'Сахаты таг',
 'localtime'                 => 'Бынæттон рæстæг:',
-'timezoneselect'            => 'Сахатон таг:',
 'timezoneoffset'            => 'Хъауджыдæрдзинад',
 'timezoneregion-africa'     => 'Африкæ',
 'timezoneregion-america'    => 'Америкæ',
@@ -537,7 +533,9 @@ $3',
 'rc-enhanced-hide'   => 'Лыстæгдзинæдтæ бамбæхс',
 
 # Recent changes linked
-'recentchangeslinked' => 'Баст ивддзинæдтæ',
+'recentchangeslinked'         => 'Баст ивддзинæдтæ',
+'recentchangeslinked-feed'    => 'Баст ивддзинæдтæ',
+'recentchangeslinked-toolbox' => 'Баст ивддзинæдтæ',
 
 # Upload
 'upload'           => 'Ног файл сæвæр',
@@ -558,6 +556,7 @@ $3',
 'listfiles' => 'Нывты номхыгъд',
 
 # File description page
+'file-anchor-link'  => 'Ныв',
 'filehist'          => 'Файлы истори',
 'filehist-current'  => 'нырыккон',
 'filehist-datetime' => 'Датæ/рæстæг',

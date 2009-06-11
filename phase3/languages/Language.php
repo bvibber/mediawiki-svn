@@ -35,7 +35,8 @@ if( function_exists( 'mb_strtoupper' ) ) {
 class FakeConverter {
 	var $mLang;
 	function FakeConverter($langobj) {$this->mLang = $langobj;}
-	function convert($t, $i, $v) {return $t;}
+	function autoConvertToAllVariants($text) {return $text;}
+	function convert($t, $i) {return $t;}
 	function parserConvert($t, $p) {return $t;}
 	function getVariants() { return array( $this->mLang->getCode() ); }
 	function getPreferredVariant() {return $this->mLang->getCode(); }
@@ -46,7 +47,6 @@ class FakeConverter {
 	function convertCategoryKey( $key ) {return $key; }
 	function convertLinkToAllVariants($text){ return array( $this->mLang->getCode() => $text); }
 	function armourMath($text){ return $text; }
-	function groupConvert($group) {return '';}
 }
 
 /**
@@ -567,6 +567,11 @@ class Language {
 	 *
 	 *    xkY  Y (full year) in Thai solar calendar. Months and days are
 	 *                       identical to the Gregorian calendar
+	 *    xoY  Y (full year) in Minguo calendar or Juche year.
+	 *                       Months and days are identical to the
+	 *                       Gregorian calendar
+	 *    xtY  Y (full year) in Japanese nengo. Months and days are
+	 *                       identical to the Gregorian calendar
 	 *
 	 * Characters enclosed in double quotes will be considered literal (with
 	 * the quotes themselves removed). Unmatched quotes will be considered
@@ -598,6 +603,8 @@ class Language {
 		$hebrew = false;
 		$hijri = false;
 		$thai = false;
+		$minguo = false;
+		$tenno = false;
 		for ( $p = 0; $p < strlen( $format ); $p++ ) {
 			$num = false;
 			$code = $format[$p];
@@ -605,7 +612,7 @@ class Language {
 				$code .= $format[++$p];
 			}
 
-			if ( ( $code === 'xi' || $code == 'xj' || $code == 'xk' || $code == 'xm' ) && $p < strlen( $format ) - 1 ) {
+			if ( ( $code === 'xi' || $code == 'xj' || $code == 'xk' || $code == 'xm' || $code == 'xo' || $code == 'xt' ) && $p < strlen( $format ) - 1 ) {
 				$code .= $format[++$p];
 			}
 
@@ -749,8 +756,16 @@ class Language {
 					$num = $hebrew[0];
 					break;
 				case 'xkY':
-					if ( !$thai ) $thai = self::tsToThai( $ts );
+					if ( !$thai ) $thai = self::tsToYear( $ts, 'thai' );
 					$num = $thai[0];
+					break;
+				case 'xoY':
+					if ( !$minguo ) $minguo = self::tsToYear( $ts, 'minguo' );
+					$num = $minguo[0];
+					break;
+				case 'xtY':
+					if ( !$tenno ) $tenno = self::tsToYear( $ts, 'tenno' );
+					$num = $tenno[0];
 					break;
 				case 'y':
 					$num = substr( $ts, 2, 2 );
@@ -1113,25 +1128,71 @@ class Language {
 	}
 
 	/**
-	 * Algorithm to convert Gregorian dates to Thai solar dates.
+	 * Algorithm to convert Gregorian dates to Thai solar dates,
+	 * Minguo dates or Minguo dates.
 	 *
 	 * Link: http://en.wikipedia.org/wiki/Thai_solar_calendar
+	 *       http://en.wikipedia.org/wiki/Minguo_calendar
+	 *       http://en.wikipedia.org/wiki/Japanese_era_name
 	 *
-	 * @param $ts String: 14-character timestamp
+	 * @param $ts String: 14-character timestamp, calender name
 	 * @return array converted year, month, day
 	 */
-	private static function tsToThai( $ts ) {
+	private static function tsToYear( $ts, $cName ) {
 		$gy = substr( $ts, 0, 4 );
 		$gm = substr( $ts, 4, 2 );
 		$gd = substr( $ts, 6, 2 );
 
-		# Add 543 years to the Gregorian calendar
-		# Months and days are identical
-		$gy_thai = $gy + 543;
+		if (!strcmp($cName,'thai')) {
+			# Thai solar dates
+			# Add 543 years to the Gregorian calendar
+			# Months and days are identical
+			$gy_offset = $gy + 543;
+		} else if ((!strcmp($cName,'minguo')) || !strcmp($cName,'juche')) {
+			# Minguo dates
+			# Deduct 1911 years from the Gregorian calendar
+			# Months and days are identical
+			$gy_offset = $gy - 1911;
+		} else if (!strcmp($cName,'tenno')) {
+			# Nengō dates up to Meiji period
+			# Deduct years from the Gregorian calendar
+			# depending on the nengo periods
+			# Months and days are identical
+			if (($gy < 1912) || (($gy == 1912) && ($gm < 7)) || (($gy == 1912) && ($gm == 7) && ($gd < 31))) {
+				# Meiji period
+				$gy_gannen = $gy - 1868 + 1;
+				$gy_offset = $gy_gannen;
+				if ($gy_gannen == 1)
+					$gy_offset = '元';
+				$gy_offset = '明治'.$gy_offset;
+			} else if ((($gy == 1912) && ($gm == 7) && ($gd == 31)) || (($gy == 1912) && ($gm >= 8)) || (($gy > 1912) && ($gy < 1926)) || (($gy == 1926) && ($gm < 12)) || (($gy == 1926) && ($gm == 12) && ($gd < 26))) {
+				# Taishō period
+				$gy_gannen = $gy - 1912 + 1;
+				$gy_offset = $gy_gannen;
+				if ($gy_gannen == 1)
+					$gy_offset = '元';
+				$gy_offset = '大正'.$gy_offset;
+			} else if ((($gy == 1926) && ($gm == 12) && ($gd >= 26)) || (($gy > 1926) && ($gy < 1989)) || (($gy == 1989) && ($gm == 1) && ($gd < 8))) {
+				# Shōwa period
+				$gy_gannen = $gy - 1926 + 1;
+				$gy_offset = $gy_gannen;
+				if ($gy_gannen == 1)
+					$gy_offset = '元';
+				$gy_offset = '昭和'.$gy_offset;
+			} else {
+				# Heisei period
+				$gy_gannen = $gy - 1989 + 1;
+				$gy_offset = $gy_gannen;
+				if ($gy_gannen == 1)
+					$gy_offset = '元';
+				$gy_offset = '平成'.$gy_offset;
+			}
+		} else {
+			$gy_offset = $gy;
+		}
 
-		return array( $gy_thai, $gm, $gd );
+		return array( $gy_offset, $gm, $gd );
 	}
-
 
 	/**
 	 * Roman number formatting up to 3000
@@ -1988,7 +2049,7 @@ class Language {
 	function commaList( $list ) {
 		return implode(
 			$list,
-			wfMsgExt( 'comma-separator', array( 'escapenoentities', 'language' => $this ) ) );
+			wfMsgExt( 'comma-separator', array( 'parsemag', 'escapenoentities', 'language' => $this ) ) );
 	}
 
 	/**
@@ -2000,7 +2061,7 @@ class Language {
 	function semicolonList( $list ) {
 		return implode(
 			$list,
-			wfMsgExt( 'semicolon-separator', array( 'escapenoentities', 'language' => $this ) ) );
+			wfMsgExt( 'semicolon-separator', array( 'parsemag', 'escapenoentities', 'language' => $this ) ) );
 	}
 
 	/**
@@ -2182,9 +2243,14 @@ class Language {
 		return $text;
 	}
 
+	# convert text to all supported variants
+	function autoConvertToAllVariants($text) {
+		return $this->mConverter->autoConvertToAllVariants($text);
+	}
+
 	# convert text to different variants of a language.
-	function convert( $text, $isTitle = false, $variant = null ) {
-		return $this->mConverter->convert($text, $isTitle, $variant);
+	function convert( $text, $isTitle = false) {
+		return $this->mConverter->convert($text, $isTitle);
 	}
 
 	# Convert text from within Parser
@@ -2290,16 +2356,6 @@ class Language {
 	 */
 	function markNoConversion( $text, $noParse=false ) {
 		return $this->mConverter->markNoConversion( $text, $noParse );
-	}
-	
-	/**
-	 * Callback function for magicword 'groupconvert'
-	 *
-	 * @param string $group: the group name called for
-	 * @return blank string
-	 */
-	function groupConvert( $group ) {
-		return $this->mConverter->groupConvert( $group );
 	}
 
 	/**

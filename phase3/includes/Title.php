@@ -152,6 +152,14 @@ class Title {
 	}
 
 	/**
+	 * THIS IS NOT THE FUNCTION YOU WANT. Use Title::newFromText().
+	 *
+	 * Example of wrong and broken code:
+	 * $title = Title::newFromURL( $wgRequest->getVal( 'title' ) );
+	 *
+	 * Example of right code:
+	 * $title = Title::newFromText( $wgRequest->getVal( 'title' ) );
+	 *
 	 * Create a new Title from URL-encoded text. Ensures that
 	 * the given title's length does not exceed the maximum.
 	 * @param $url \type{\string} the title, as might be taken from a URL
@@ -449,7 +457,7 @@ class Title {
 		return trim( $t );
 	}
 
-	/*
+	/**
 	 * Make a prefixed DB key from a DB key and a namespace index
 	 * @param $ns \type{\int} numerical representation of the namespace
 	 * @param $title \type{\string} the DB key form the title
@@ -465,18 +473,6 @@ class Title {
 			$name .= '#' . $fragment;
 		}
 		return $name;
-	}
-
-	/**
-	 * Returns the URL associated with an interwiki prefix
-	 * @param $key \type{\string} the interwiki prefix (e.g. "MeatBall")
-	 * @return \type{\string} the associated URL, containing "$1", 
-	 * 	which should be replaced by an article title
-	 * @static (arguably)
-	 * @deprecated See Interwiki class
-	 */
-	public function getInterwikiLink( $key )  {
-		return Interwiki::fetch( $key )->getURL( );
 	}
 
 	/**
@@ -1183,7 +1179,14 @@ class Title {
 			
 			if( !$user->isAllowed( 'move' ) ) {
 				// User can't move anything
-				$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
+				global $wgGroupPermissions;
+				if( $user->isAnon() && ( $wgGroupPermissions['user']['move']
+				|| $wgGroupPermissions['autoconfirmed']['move'] ) ) {
+					// custom message if logged-in users without any special rights can move
+					$errors[] = array ( 'movenologintext' );
+				} else {
+					$errors[] = array ('movenotallowed');
+				}
 			}
 		} elseif ( $action == 'create' ) {
 			if( ( $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
@@ -1194,7 +1197,7 @@ class Title {
 		} elseif( $action == 'move-target' ) {
 			if( !$user->isAllowed( 'move' ) ) {
 				// User can't move anything
-				$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
+				$errors[] = array ('movenotallowed');
 			} elseif( !$user->isAllowed( 'move-rootuserpages' )
 				&& $this->getNamespace() == NS_USER && !$this->isSubpage() )
 			{
@@ -1461,33 +1464,6 @@ class Title {
 		$dbw->delete( 'protected_titles',
 			array( 'pt_namespace' => $this->getNamespace(), 'pt_title' => $this->getDBkey() ), 
 			__METHOD__ );
-	}
-
-	/**
-	 * Can $wgUser edit this page?
-	 * @return \type{\bool} TRUE or FALSE
-	 * @deprecated use userCan('edit')
-	 */
-	public function userCanEdit( $doExpensiveQueries = true ) {
-		return $this->userCan( 'edit', $doExpensiveQueries );
-	}
-
-	/**
-	 * Can $wgUser create this page?
-	 * @return \type{\bool} TRUE or FALSE
-	 * @deprecated use userCan('create')
-	 */
-	public function userCanCreate( $doExpensiveQueries = true ) {
-		return $this->userCan( 'create', $doExpensiveQueries );
-	}
-
-	/**
-	 * Can $wgUser move this page?
-	 * @return \type{\bool} TRUE or FALSE
-	 * @deprecated use userCan('move')
-	 */
-	public function userCanMove( $doExpensiveQueries = true ) {
-		return $this->userCan( 'move', $doExpensiveQueries );
 	}
 
 	/**
@@ -2599,7 +2575,7 @@ class Title {
 				if( $nt->getText() != wfStripIllegalFilenameChars( $nt->getText() ) ) {
 					$errors[] = array('imageinvalidfilename');
 				}
-				if( !File::checkExtensionCompatibility( $file, $nt->getDBKey() ) ) {
+				if( !File::checkExtensionCompatibility( $file, $nt->getDBkey() ) ) {
 					$errors[] = array('imagetypemismatch');
 				}
 			}
@@ -3018,8 +2994,8 @@ class Title {
 				// don't move it twice
 				continue;
 			$newPageName = preg_replace(
-					'#^'.preg_quote( $this->getDBKey(), '#' ).'#',
-					$nt->getDBKey(), $oldSubpage->getDBKey() );
+					'#^'.preg_quote( $this->getDBkey(), '#' ).'#',
+					$nt->getDBkey(), $oldSubpage->getDBkey() );
 			if( $oldSubpage->isTalkPage() ) {
 				$newNs = $nt->getTalkPage()->getNamespace();
 			} else {
@@ -3381,7 +3357,7 @@ class Title {
 		case NS_FILE:
 			return wfFindFile( $this );  // file exists, possibly in a foreign repo
 		case NS_SPECIAL:
-			return SpecialPage::exists( $this->getDBKey() );  // valid special page
+			return SpecialPage::exists( $this->getDBkey() );  // valid special page
 		case NS_MAIN:
 			return $this->mDbkeyform == '';  // selflink, possibly with fragment
 		case NS_MEDIAWIKI:

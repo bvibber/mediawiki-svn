@@ -455,8 +455,8 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 
 # Search results
 'noexactmatch'   => "'''{{SITENAME}} har engen ertikel ve dette nav.''' Du ken [[:$1|åprette en ertikel ve dette nav]].",
-'prevn'          => 'førge $1',
-'nextn'          => 'nægste $1',
+'prevn'          => 'førge {{PLURAL:$1|$1}}',
+'nextn'          => 'nægste {{PLURAL:$1|$1}}',
 'viewprevnext'   => 'Ves ($1) ($2) ($3)',
 'searchhelp-url' => 'Help:Hjælpførside',
 'searchall'      => 'ål',
@@ -499,6 +499,8 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 
 # Recent changes linked
 'recentchangeslinked'          => 'Relaterede ændrenger',
+'recentchangeslinked-feed'     => 'Relaterede ændrenger',
+'recentchangeslinked-toolbox'  => 'Relaterede ændrenger',
 'recentchangeslinked-title'    => 'Ændrenger der vegånde til "$1"',
 'recentchangeslinked-noresult' => 'I det udvalgte tidsrum blev der ekke føretaget ændrenger på siderne der henveses til.',
 'recentchangeslinked-summary'  => "Denne sonstside beser de seneste ændrenger på de sider der henveses til. Sider på din åvervågnengsliste er vest ve '''fed''' skreft.",
@@ -513,6 +515,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'listfiles' => 'Billetliste',
 
 # File description page
+'file-anchor-link'          => 'Billet',
 'filehist'                  => 'Billetskigt',
 'filehist-help'             => "Klik på'n dato/tid før at se den hersenenge åf gøret.",
 'filehist-current'          => 'nuværende',
@@ -525,8 +528,6 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'linkstoimage'              => 'De følgende sider henveser til dette billet:',
 'nolinkstoimage'            => 'Der er engen sider der henveser til dette billet.',
 'sharedupload'              => 'Denne gøret er en fælles læĝenge og ken bruges åf andre projekter.',
-'noimage'                   => 'Der er engen gøret ve dette nav, du ken $1',
-'noimage-linktext'          => 'læĝge den åp',
 'uploadnewversion-linktext' => 'Læĝ en ny hersenenge åf denne gøret åp',
 
 # MIME search
@@ -851,6 +852,7 @@ Kun endholtet åf æ liste (lenjer startende ve *) bliver brugt. Den første hen
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

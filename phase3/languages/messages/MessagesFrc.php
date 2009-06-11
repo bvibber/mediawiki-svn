@@ -52,7 +52,6 @@ $messages = array(
 'tog-watchlisthideown'        => 'Cacher mes changements dans la liste des pages guettées',
 'tog-watchlisthidebots'       => 'Cacher les changements faits par les bots dans la liste des pages guettées',
 'tog-watchlisthideminor'      => 'Cacher les petits changements dans la liste des pages guettées',
-'tog-nolangconversion'        => 'Arrêter le changement des différences de langue',
 'tog-ccmeonemails'            => "Envoyer une copie des e-mails que j'envoye aux autres useurs",
 'tog-diffonly'                => 'Couper la page sous les diffs',
 
@@ -543,7 +542,6 @@ Les notes d'ôtage pour cette page sont données ici pour vous aider:",
 'page_last'           => 'dernier',
 'histlegend'          => 'Choisir une version: Marquez les ronds pour les versions que vous voulez comparer et cliquez "enter" ou le bouton en bas.<br />
 Clé: (cour.) = différence avec la version courante, (dernier) = différence avec la version avant, m = petit changement.',
-'deletedrev'          => '[ôté]',
 'histfirst'           => 'Premiers changements',
 'histlast'            => 'Derniers changements',
 'historyempty'        => '(vide)',
@@ -616,6 +614,9 @@ Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir
 
 # User rights
 'editinguser' => "Changement de '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+
+# File description page
+'file-anchor-link' => 'Dossier',
 
 # Miscellaneous special pages
 'move'         => 'Renommer',

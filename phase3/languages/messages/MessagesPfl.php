@@ -279,8 +279,8 @@ Du kannscht awwer [[:\$1|die Said aaleche]].",
 'noexactmatch-nocreate'     => "'''S gebbt ke Said, wu \"\$1\" hääßt.'''",
 'notitlematches'            => 'Ken Sairetitel gfunne',
 'notextmatches'             => 'Ken Iwwerainstimmunge mit Inhalte',
-'prevn'                     => 'voriche $1',
-'nextn'                     => 'negschte $1',
+'prevn'                     => 'voriche {{PLURAL:$1|$1}}',
+'nextn'                     => 'negschte {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'Gugg ($1) ($2) ($3)',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 Word|$2 Wärder}})',
 'search-redirect'           => '(Wairerlaitung $1)',
@@ -350,6 +350,8 @@ Du kannscht awwer [[:\$1|die Said aaleche]].",
 
 # Recent changes linked
 'recentchangeslinked'         => 'Was on verlinkde Seide gemacht worre isch',
+'recentchangeslinked-feed'    => 'Was on verlinkde Seide gemacht worre isch',
+'recentchangeslinked-toolbox' => 'Was on verlinkde Seide gemacht worre isch',
 'recentchangeslinked-title'   => 'Ännerunge an Saire, wu „$1“ druf verlinkt',
 'recentchangeslinked-summary' => "Des isch e Lischt vun Ännerunge, wu erscht gmacht worre sin an Saire, die wu vun ere bstimmte Said verlinkt sin (orrer die wu zu ere bstimmte Kategorie ghere).
 Saire uff [[Special:Watchlist|Dainer Beowachdungslischt]] sin '''fett'''.",
@@ -365,6 +367,7 @@ Saire uff [[Special:Watchlist|Dainer Beowachdungslischt]] sin '''fett'''.",
 'uploadedimage' => 'hot "[[$1]]" hochglare',
 
 # File description page
+'file-anchor-link'          => 'Datei',
 'filehist'                  => 'Dateigschicht',
 'filehist-help'             => 'Drick uff e Zaidpunkt zum aazääche, wie s dort ausgsähne hot.',
 'filehist-current'          => 'aktuell',
@@ -691,6 +694,7 @@ Annere Metadate sinn standardmäßig versteckelt.
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

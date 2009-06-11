@@ -39,7 +39,7 @@ class LogEventsList {
 		// Precache various messages
 		if( !isset( $this->message ) ) {
 			$messages = array( 'revertmerge', 'protect_change', 'unblocklink', 'change-blocklink',
-				'revertmove', 'undeletelink', 'revdel-restore', 'rev-delundel', 'hist', 'diff',
+				'revertmove', 'undeletelink', 'undeleteviewlink', 'revdel-restore', 'rev-delundel', 'hist', 'diff',
 				'pipe-separator' );
 			foreach( $messages as $msg ) {
 				$this->message[$msg] = wfMsgExt( $msg, array( 'escapenoentities' ) );
@@ -108,10 +108,22 @@ class LogEventsList {
 		$links = array();
 		$hiddens = ''; // keep track for "go" button
 		foreach( $filter as $type => $val ) {
+			// Should the below assignment be outside the foreach?
+			// Then it would have to be copied. Not certain what is more expensive.
+			$query = $this->getDefaultQuery();
+			$queryKey = "hide_{$type}_log";
+			$query[$queryKey] = $hideVal;
+
 			$hideVal = 1 - intval($val);
-			$link = $this->skin->makeKnownLinkObj( $wgTitle, $messages[$hideVal],
-				wfArrayToCGI( array( "hide_{$type}_log" => $hideVal ), $this->getDefaultQuery() )
+
+			$link = $this->skin->link(
+				$wgTitle,
+				$messages[$hideVal],
+				array(),
+				$query,
+				array( 'known', 'noclasses' )
 			);
+
 			$links[$type] = wfMsgHtml( "log-show-hide-{$type}", $link );
 			$hiddens .= Xml::hidden( "hide_{$type}_log", $val ) . "\n";
 		}
@@ -242,29 +254,55 @@ class LogEventsList {
 		} else if( self::typeAction($row,'move','move','move') && !empty($paramArray[0]) ) {
 			$destTitle = Title::newFromText( $paramArray[0] );
 			if( $destTitle ) {
-				$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
+				$revert = '(' . $this->skin->link(
+					SpecialPage::getTitleFor( 'Movepage' ),
 					$this->message['revertmove'],
-					'wpOldTitle=' . urlencode( $destTitle->getPrefixedDBkey() ) .
-					'&wpNewTitle=' . urlencode( $title->getPrefixedDBkey() ) .
-					'&wpReason=' . urlencode( wfMsgForContent( 'revertmove' ) ) .
-					'&wpMovetalk=0' ) . ')';
+					array(),
+					array(
+						'wpOldTitle' => $destTitle->getPrefixedDBkey(),
+						'wpNewTitle' => $title->getPrefixedDBkey(),
+						'wpReason' => wfMsgForContent( 'revertmove' ),
+						'wpMovetalk' => 0
+					),
+					array( 'known', 'noclasses' )
+				) . ')';
 			}
 		// Show undelete link
-		} else if( self::typeAction($row,array('delete','suppress'),'delete','delete') ) {
-			$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete' ),
-				$this->message['undeletelink'], 'target='. urlencode( $title->getPrefixedDBkey() ) ) . ')';
+		} else if( self::typeAction($row,array('delete','suppress'),'delete','deletedhistory') ) {
+			if( !$wgUser->isAllowed( 'undelete' ) ) {
+				$viewdeleted = $this->message['undeleteviewlink'];
+			} else {
+				$viewdeleted = $this->message['undeletelink'];
+			}
+
+			$revert = '(' . $this->skin->link(
+				SpecialPage::getTitleFor( 'Undelete' ),
+				$viewdeleted,
+				array(),
+				array( 'target' => $title->getPrefixedDBkey() ),
+				array( 'known', 'noclasses' )
+			 ) . ')';
 		// Show unblock/change block link
 		} else if( self::typeAction($row,array('block','suppress'),array('block','reblock'),'block') ) {
 			$revert = '(' .
-				$this->skin->link( SpecialPage::getTitleFor( 'Ipblocklist' ),
+				$this->skin->link(
+					SpecialPage::getTitleFor( 'Ipblocklist' ),
 					$this->message['unblocklink'],
 					array(),
-					array( 'action' => 'unblock', 'ip' => $row->log_title ),
-					'known' ) 
-				. $this->message['pipe-separator'] .
-				$this->skin->link( SpecialPage::getTitleFor( 'Blockip', $row->log_title ), 
+					array(
+						'action' => 'unblock',
+						'ip' => $row->log_title
+					),
+					'known'
+				) .
+				$this->message['pipe-separator'] .
+				$this->skin->link(
+					SpecialPage::getTitleFor( 'Blockip', $row->log_title ),
 					$this->message['change-blocklink'],
-					array(), array(), 'known' ) .
+					array(),
+					array(),
+					'known'
+				) .
 				')';
 		// Show change protection link
 		} else if( self::typeAction( $row, 'protect', array( 'modify', 'protect', 'unprotect' ) ) ) {
@@ -272,7 +310,11 @@ class LogEventsList {
 				$this->skin->link( $title,
 					$this->message['hist'],
 					array(),
-					array( 'action' => 'history', 'offset' => $row->log_timestamp ) );
+					array(
+						'action' => 'history',
+						'offset' => $row->log_timestamp
+					)
+				);
 			if( $wgUser->isAllowed( 'protect' ) ) {
 				$revert .= $this->message['pipe-separator'] .
 					$this->skin->link( $title,
@@ -285,28 +327,52 @@ class LogEventsList {
 		// Show unmerge link
 		} else if( self::typeAction($row,'merge','merge','mergehistory') ) {
 			$merge = SpecialPage::getTitleFor( 'Mergehistory' );
-			$revert = '(' .  $this->skin->makeKnownLinkObj( $merge, $this->message['revertmerge'],
-				wfArrayToCGI( array('target' => $paramArray[0], 'dest' => $title->getPrefixedDBkey(), 
-					'mergepoint' => $paramArray[1] ) ) ) . ')';
+			$revert = '(' .  $this->skin->link(
+				$merge,
+				$this->message['revertmerge'],
+				array(),
+				array(
+					'target' => $paramArray[0],
+					'dest' => $title->getPrefixedDBkey(), 
+					'mergepoint' => $paramArray[1]
+				),
+				array( 'known', 'noclasses' )
+			) . ')';
 		// If an edit was hidden from a page give a review link to the history
 		} else if( self::typeAction($row,array('delete','suppress'),'revision','deleterevision') ) {
 			if( count($paramArray) >= 2 ) {
 				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 				// Different revision types use different URL params...
 				$key = $paramArray[0];
-				// $paramArray[1] is a CVS of the IDs
+				// $paramArray[1] is a CSV of the IDs
 				$Ids = explode( ',', $paramArray[1] );
-				$query = urlencode($paramArray[1]);
+				$query = $paramArray[1];
 				$revert = array();
 				// Diff link for single rev deletions
-				if( $key === 'oldid' && count($Ids) == 1 ) {
-					$token = urlencode( $wgUser->editToken( intval($Ids[0]) ) );
-					$revert[] = $this->skin->makeKnownLinkObj( $title, $this->message['diff'], 
-						'diff='.intval($Ids[0])."&unhide=1&token=$token" );
+				if( ( $key === 'oldid' || $key == 'revision' ) && count($Ids) == 1 ) {
+					$revert[] = $this->skin->link(
+						$title,
+						$this->message['diff'], 
+						array(),
+						array(
+							'diff' => intval( $Ids[0] ),
+							'unhide' => 1
+						),
+						array( 'known', 'noclasses' )
+					);
 				}
 				// View/modify link...
-				$revert[] = $this->skin->makeKnownLinkObj( $revdel, $this->message['revdel-restore'],
-					'target='.$title->getPrefixedUrl()."&$key=$query" );
+				$revert[] = $this->skin->link(
+					$revdel,
+					$this->message['revdel-restore'],
+					array(),
+					array(
+						'target' => $title->getPrefixedUrl(),
+						'type' => $key,
+						'ids' => $query
+					),
+					array( 'known', 'noclasses' )
+				);
 				// Pipe links
 				$revert = '(' . implode(' | ',$revert) . ')';
 			}
@@ -314,12 +380,21 @@ class LogEventsList {
 		} else if( self::typeAction($row,array('delete','suppress'),'event','deleterevision') ) {
 			if( count($paramArray) >= 1 ) {
 				$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
-				// $paramArray[1] is a CVS of the IDs
+				// $paramArray[1] is a CSV of the IDs
 				$Ids = explode( ',', $paramArray[0] );
-				$query = urlencode($paramArray[0]);
+				$query = $paramArray[0];
 				// Link to each hidden object ID, $paramArray[1] is the url param
-				$revert = '(' . $this->skin->makeKnownLinkObj( $revdel, $this->message['revdel-restore'], 
-					'target='.$title->getPrefixedUrl()."&logid=$query" ) . ')';
+				$revert = '(' . $this->skin->link(
+					$revdel,
+					$this->message['revdel-restore'], 
+					array(),
+					array(
+						'target' => $title->getPrefixedUrl(),
+						'type' => 'logging',
+						'ids' => $query
+					),
+					array( 'known', 'noclasses' )
+				) . ')';
 			}
 		// Self-created users
 		} else if( self::typeAction($row,'newusers','create2') ) {
@@ -355,6 +430,8 @@ class LogEventsList {
 			$revert = '<span class="mw-logevent-actionlink">' . $revert . '</span>';
 		}
 
+		$time = htmlspecialchars( $time );
+
 		return Xml::tags( 'li', array( "class" => implode( ' ', $classes ) ),
 			$del . $time . ' ' . $userLink . ' ' . $action . ' ' . $comment . ' ' . $revert . " $tagDisplay" ) . "\n";
 	}
@@ -364,7 +441,6 @@ class LogEventsList {
 	 * @return string
 	 */
 	private function getShowHideLinks( $row ) {
-		$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 		// If event was hidden from sysops
 		if( !self::userCan( $row, LogPage::DELETED_RESTRICTED ) ) {
 			$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ),
@@ -374,8 +450,11 @@ class LogEventsList {
 		} else {
 			$target = SpecialPage::getTitleFor( 'Log', $row->log_type );
 			$page = Title::makeTitle( $row->log_namespace, $row->log_title );
-			$query = array( 'target' => $target->getPrefixedDBkey(),
-				'logid' => $row->log_id, 'page' => $page->getPrefixedDBkey() );
+			$query = array( 
+				'target' => $target->getPrefixedDBkey(),
+				'type' => 'logging',
+				'ids' => $row->log_id, 
+			);
 			$del = $this->skin->revDeleteLink( $query,
 				self::isDeleted( $row, LogPage::DELETED_RESTRICTED ) );
 		}
@@ -651,24 +730,38 @@ class LogPager extends ReverseChronologicalPager {
 	}
 
 	public function getQueryInfo() {
+		$tables = array( 'logging', 'user' );
 		$this->mConds[] = 'user_id = log_user';
+		$groupBy = false;
+		# Add log_search table if there are conditions on it
+		if( array_key_exists('ls_field',$this->mConds) ) {
+			$tables[] = 'log_search';
+			$index = array( 'log_search' => 'ls_field_val', 'logging' => 'PRIMARY' );
+			$groupBy = 'ls_log_id';
 		# Don't use the wrong logging index
-		if( $this->title || $this->pattern || $this->user ) {
-			$index = array( 'USE INDEX' => array( 'logging' => array('page_time','user_time') ) );
+		} else if( $this->title || $this->pattern || $this->user ) {
+			$index = array( 'logging' => array('page_time','user_time') );
 		} else if( $this->types ) {
-			$index = array( 'USE INDEX' => array( 'logging' => 'type_time' ) );
+			$index = array( 'logging' => 'type_time' );
 		} else {
-			$index = array( 'USE INDEX' => array( 'logging' => 'times' ) );
+			$index = array( 'logging' => 'times' );
 		}
+		$options = array( 'USE INDEX' => $index );
+		# Don't show duplicate rows when using log_search
+		if( $groupBy ) $options['GROUP BY'] = $groupBy;
 		$info = array(
-			'tables' => array( 'logging', 'user' ),
-			'fields' => array( 'log_type', 'log_action', 'log_user', 'log_namespace', 'log_title', 'log_params',
-				'log_comment', 'log_id', 'log_deleted', 'log_timestamp', 'user_name', 'user_editcount' ),
-			'conds' => $this->mConds,
-			'options' => $index,
-			'join_conds' => array( 'user' => array( 'INNER JOIN', 'user_id=log_user' ) ),
+			'tables'     => $tables,
+			'fields'     => array( 'log_type', 'log_action', 'log_user', 'log_namespace',
+				'log_title', 'log_params', 'log_comment', 'log_id', 'log_deleted',
+				'log_timestamp', 'user_name', 'user_editcount' ),
+			'conds'      => $this->mConds,
+			'options'    => $options,
+			'join_conds' => array( 
+				'user' => array( 'INNER JOIN', 'user_id=log_user' ),
+				'log_search' => array( 'INNER JOIN', 'ls_log_id=log_id' )
+			)
 		);
-
+		# Add ChangeTags filter query
 		ChangeTags::modifyDisplayQuery( $info['tables'], $info['fields'], $info['conds'],
 			$info['join_conds'], $info['options'], $this->mTagFilter );
 
@@ -729,14 +822,10 @@ class LogPager extends ReverseChronologicalPager {
 	}
 
 	public function doQuery() {
-		// Work around MySQL optimizer bug
-		if ( in_array( get_class( $this->mDb ), array( 'Database', 'DatabaseMysql' ) ) ) {
-			$this->mDb->query( 'SET SQL_BIG_SELECTS=1' );
-			parent::doQuery();
-			$this->mDb->query( 'SET SQL_BIG_SELECTS=0' );
-		} else {
-			parent::doQuery();
-		}
+		// Workaround MySQL optimizer bug
+		$this->mDb->setBigSelects();
+		parent::doQuery();
+		$this->mDb->setBigSelects( 'default' );
 	}
 }
 

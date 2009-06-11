@@ -248,8 +248,8 @@ Ma dh'fhoilleachas tu rudeigin an seo, bidh tu a' dearbhadh gun do sgrìobh thu 
 'noexactmatch-nocreate' => "'''Chan eil duilleag ann leis an ainm “$1”.'''",
 'notitlematches'        => "Chan eil tiotal duilleig a' samhlachadh",
 'notextmatches'         => "Chan eil teacsa duilleig a' samhlachadh",
-'prevn'                 => '$1 mu dheireadh',
-'nextn'                 => 'an ath $1',
+'prevn'                 => '{{PLURAL:$1|$1}} mu dheireadh',
+'nextn'                 => 'an ath {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'Seall ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Cuideachadh',
 'showingresults'        => "A' nochdadh $1 {{PLURAL:$1|thoradh|toradh|toraidhean|toradh}} gu h-ìosal a' tòiseachadh le #'''$2'''.",
@@ -262,7 +262,6 @@ Ma dh'fhoilleachas tu rudeigin an seo, bidh tu a' dearbhadh gun do sgrìobh thu 
 'changepassword' => 'Atharraich facal-faire',
 'prefs-skin'     => 'Bian',
 'skin-preview'   => 'Roi-shealladh',
-'dateformat'     => 'Cruth nan ceann-latha',
 'prefs-personal' => "Dàta a' chleachdair",
 'saveprefs'      => 'Sàbhail roghainnean',
 'resetprefs'     => 'Ath-shuidhich taghaidhean',
@@ -299,8 +298,10 @@ Ma dh'fhoilleachas tu rudeigin an seo, bidh tu a' dearbhadh gun do sgrìobh thu 
 'boteditletter'     => 'r',
 
 # Recent changes linked
-'recentchangeslinked'      => 'Mùthaidhean buntainneach',
-'recentchangeslinked-page' => 'Ainm na duilleige:',
+'recentchangeslinked'         => 'Mùthaidhean buntainneach',
+'recentchangeslinked-feed'    => 'Mùthaidhean buntainneach',
+'recentchangeslinked-toolbox' => 'Mùthaidhean buntainneach',
+'recentchangeslinked-page'    => 'Ainm na duilleige:',
 
 # Upload
 'upload'        => 'Cuir ri fhaidhle',
@@ -316,7 +317,8 @@ Ma dh'fhoilleachas tu rudeigin an seo, bidh tu a' dearbhadh gun do sgrìobh thu 
 'listfiles' => 'Liosta nan ìomhaigh',
 
 # File description page
-'filehist-user' => 'Neach-cleachdaidh',
+'file-anchor-link' => 'Ìomhaigh',
+'filehist-user'    => 'Neach-cleachdaidh',
 
 # Random page
 'randompage' => 'Duilleag thuairmeach',

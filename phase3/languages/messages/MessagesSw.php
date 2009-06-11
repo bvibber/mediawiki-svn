@@ -548,8 +548,8 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'searchsubtitleinvalid'        => "Ulitafuta '''$1'''",
 'noexactmatch'                 => "'''Hakuna ukurasa wenye jina \"\$1\".''' Unaweza [[:\$1|kuanza ukurasa huu]].",
 'notitlematches'               => 'Jina hili la ukurasa halikupatikana',
-'prevn'                        => '$1 iliyotangulia',
-'nextn'                        => '$1 ijayo',
+'prevn'                        => '{{PLURAL:$1|$1}} iliyotangulia',
+'nextn'                        => '{{PLURAL:$1|$1}} ijayo',
 'viewprevnext'                 => 'Tazama ($1) ($2) ($3)',
 'searchmenu-legend'            => 'Hitiari za kutafuta',
 'searchhelp-url'               => 'Help:Yaliyomo',
@@ -584,7 +584,6 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'columns'                   => 'Safu:',
 'searchresultshead'         => 'Kutafuta',
 'timezonelegend'            => 'Ukanda saa',
-'timezoneselect'            => 'Ukanda saa:',
 'timezoneregion-africa'     => 'Afrika',
 'timezoneregion-america'    => 'Marekani',
 'timezoneregion-antarctica' => 'Antaktika',
@@ -634,6 +633,7 @@ Pia unaweza kuchagua kuacha watumiaji wengine kuwasiliana nao kwa kutumia ukuras
 'nchanges'                       => '{{PLURAL:$1|badiliko|mabadiliko}} $1',
 'recentchanges'                  => 'Mabadiliko ya karibuni',
 'recentchanges-legend'           => "Machaguo ya 'mabadaliko ya karibuni'",
+'recentchangestext'              => 'Orodha ya mabadilisho yaliyofanywa katika {{SITENAME}} siku zilizopita.',
 'recentchanges-feed-description' => 'Tumia tawanyiko hili kufuatilia mabadiliko yote ya hivi karibuni katika Wiki.',
 'rcnote'                         => "Yanayofuata ni {{PLURAL:$1|badiliko '''1'''|mabadiliko '''$1''' ya mwisho}} kutoka katika {{PLURAL:$2|siku iliyopita|siku '''$2''' zilizopita}}, hadi $5, $4.",
 'rcnotefrom'                     => "Hapo chini yaonekana mabadiliko tangu '''$2''' (tunaonyesha hadi '''$1''').",
@@ -656,6 +656,8 @@ Pia unaweza kuchagua kuacha watumiaji wengine kuwasiliana nao kwa kutumia ukuras
 
 # Recent changes linked
 'recentchangeslinked'          => 'Mabadiliko husika',
+'recentchangeslinked-feed'     => 'Mabadiliko husika',
+'recentchangeslinked-toolbox'  => 'Mabadiliko husika',
 'recentchangeslinked-title'    => 'Mabadiliko kuhusiana na "$1"',
 'recentchangeslinked-noresult' => 'Hakuna mabadiliko kwenye kurasa zilizounganishwa wakati wa muda huo.',
 'recentchangeslinked-summary'  => "Ukurasa maalum huu unaorodhesha mabadiliko ya hivi karibuni katika kurasa zinazoungwa (au katika jamii fulani).  Kurasa katika [[Special:Watchlist|maangalizi yako]] ni za '''koze'''.",
@@ -676,6 +678,7 @@ Pia unaweza kuchagua kuacha watumiaji wengine kuwasiliana nao kwa kutumia ukuras
 'listfiles' => 'Orodha ya mafaili',
 
 # File description page
+'file-anchor-link'          => 'Faili',
 'filehist'                  => 'Historia ya faili',
 'filehist-help'             => 'Bonyeza tarehe/saa kuona faili kama ilivyoonekana wakati huo.',
 'filehist-current'          => 'sasa hivi',
@@ -688,8 +691,6 @@ Pia unaweza kuchagua kuacha watumiaji wengine kuwasiliana nao kwa kutumia ukuras
 'linkstoimage'              => '{{PLURAL:$1|Ukurasa huu|Kurasa hizi $1}} zimeunganishwa na faili hili:',
 'nolinkstoimage'            => 'Hakuna kurasa zozote zilizounganishwa na faili hii.',
 'sharedupload'              => 'Faili hili linatoka $1 na linaweza kushirikiwa na miradi mingine.',
-'noimage'                   => 'Hakuna faili yenye jina hili, $1 kama unayo.',
-'noimage-linktext'          => 'pakia faili',
 'uploadnewversion-linktext' => 'Pakia toleo jipya la faili hii',
 
 # File deletion
@@ -1073,6 +1074,7 @@ likifupishwa. Nyuga zingine zitafichwa kama chaguo-msingi.
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags
@@ -1143,5 +1145,8 @@ Kodi hizi za uthibitisho zitaishia mnamo $4.',
 
 # Special:Tags
 'tags-edit' => 'hariri',
+
+# HTML forms
+'htmlform-selectorother-other' => 'Nyingine',
 
 );

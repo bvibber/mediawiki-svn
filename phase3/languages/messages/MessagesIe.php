@@ -10,10 +10,14 @@
  * @author Jmb
  * @author Malafaya
  * @author Remember the dot
+ * @author Valodnieks
  * @author לערי ריינהארט
  */
 
 $messages = array(
+'underline-always' => 'Sempre',
+'underline-never'  => 'Nequande',
+
 # Dates
 'sunday'        => 'soledí',
 'monday'        => 'lunedí',
@@ -247,7 +251,9 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'minoreditletter'   => 'm',
 
 # Recent changes linked
-'recentchangeslinked' => 'Relatet modificationes',
+'recentchangeslinked'         => 'Relatet modificationes',
+'recentchangeslinked-feed'    => 'Relatet modificationes',
+'recentchangeslinked-toolbox' => 'Relatet modificationes',
 
 # Upload
 'upload'    => 'Cargar file',

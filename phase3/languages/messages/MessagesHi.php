@@ -8,6 +8,7 @@
  * @file
  *
  * @author Aksi great
+ * @author Dineshjk
  * @author Kaustubh
  * @author Shyam
  * @author Sunil Mohan
@@ -274,7 +275,7 @@ $messages = array(
 
 'badaccess'        => 'अनुमति त्रुटि',
 'badaccess-group0' => 'जिस क्रिया का अनुरोध आपने किया है उसे संचालित करने की अनुमति आपको नही है।',
-'badaccess-groups' => '$1 ग्रुपोंमेंसे एक ग्रुपमें शामिल सदस्य ही इस प्रकार की क्रियाएं कर सकतें हैं ।',
+'badaccess-groups' => 'आपने जो क्रिया करने की कोशिश की है वह {{PLURAL:$2|समुह|में से एक समुह}}के सदस्य ही कर शकते है ।',
 
 'versionrequired'     => 'मीडीयाविकिका $1 अवतरण ज़रूरी हैं ।',
 'versionrequiredtext' => 'यह पन्ना इस्तेमाल करने के लिये मीडियाविकीका $1 अवतरण ज़रूरी हैं । देखें [[Special:Version|अवतरण सूची]] ।',
@@ -689,7 +690,6 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 'histlegend'          => 'फर्क चयन: फर्क देखनेके लिये पुराने अवतरणोंके आगे दिये गये रेडियो बॉक्सपर क्लीक करें तथा एन्टर करें अथवा नीचे दिये हुए बटनपर क्लीक करें<br />
 लिजेंड: (चालू) = सद्य अवतरणके बीचमें फर्क,
 (आखिरी) = पिछले अवतरणके बीचमें फर्क, छो = छोटा बदलाव ।',
-'deletedrev'          => '[हटाया गया]',
 'histfirst'           => 'सबसे पुराना',
 'histlast'            => 'नवीनतम',
 'historysize'         => '({{PLURAL:$1|1 बाईट|$1 बाईट}})',
@@ -801,8 +801,8 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 'notitlematches'            => 'कोईभी लेख का शीर्षक मिलता नहीं',
 'textmatches'               => 'लेख का पाठ मिलता हैं',
 'notextmatches'             => 'लेख का पाठ मिलता नहीं',
-'prevn'                     => 'पिछले $1',
-'nextn'                     => 'अगले $1',
+'prevn'                     => 'पिछले {{PLURAL:$1|$1}}',
+'nextn'                     => 'अगले {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'देख़ें ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:सहायता',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 शब्द|$2 शब्द}})',
@@ -851,7 +851,6 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 'prefs-skin'                => 'त्वचा',
 'skin-preview'              => 'झलक',
 'prefs-math'                => 'गणित',
-'dateformat'                => 'दिनांक प्रारूप',
 'datedefault'               => 'खा़स पसंद नहीं',
 'prefs-datetime'            => 'दिनांक तथा समय',
 'prefs-personal'            => 'सदस्य व्यक्तिरेखा',
@@ -1032,6 +1031,8 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 
 # Recent changes linked
 'recentchangeslinked'          => 'पन्ने से जुडे बदलाव',
+'recentchangeslinked-feed'     => 'पन्ने से जुडे बदलाव',
+'recentchangeslinked-toolbox'  => 'पन्ने से जुडे बदलाव',
 'recentchangeslinked-title'    => '"$1" में हुए बदलाव',
 'recentchangeslinked-noresult' => 'जुडे हुए पन्नोंमें दिये हुए अवसरमें कोई भी बदलाव नहीं हुए हैं ।',
 'recentchangeslinked-summary'  => "यह पृष्ठ एक विशेष पृष्ठ से जुड़े हुए पन्नोंके (या एक विशिष्ट श्रेणीमें होनेवाले पन्नोंके) बदलाव दर्शाता हैं। 
@@ -1178,6 +1179,7 @@ PICT # misc.
 'listfiles_description' => 'ज़ानकारी',
 
 # File description page
+'file-anchor-link'          => 'चित्र',
 'filehist'                  => 'फ़ाईलका इतिहास',
 'filehist-help'             => 'फ़ाईलका पुराना अवतरण देखनेके लिये दिनांक/समय पर क्लीक करें।',
 'filehist-deleteall'        => 'सभी हटायें',
@@ -1196,8 +1198,6 @@ PICT # misc.
 'redirectstofile'           => 'नीचे दी हुई फ़ाइलें इस फ़ाईलको अनुप्रेषितें हैं:',
 'duplicatesoffile'          => 'निम्नलिखित फ़ाइलें इस फ़ाइलकी कापीयाँ हैं:',
 'sharedupload'              => 'यह फ़ाईल दुसरेभी प्रोजेक्ट्समें इस्तेमाल की हुई होनेकी आशंका है ।',
-'noimage'                   => 'इस नामसे कोई भी फ़ाईल नहीं है, आप $1 कर सकते हैं ।',
-'noimage-linktext'          => 'चढाईयें',
 'uploadnewversion-linktext' => 'इस फ़ाईलका नया अवतरण अपलोड करें',
 
 # File reversion
@@ -1220,7 +1220,8 @@ PICT # misc.
 'filedelete-success'          => "'''$1''' को हटा दिया गया हैं।",
 'filedelete-success-old'      => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' के [$3, $2 के अवतरण] हटा दिये गयें हैं।</span>',
 'filedelete-nofile'           => "'''$1''' {{SITENAME}} पर अस्तित्वमें नहीं हैं।",
-'filedelete-nofile-old'       => "दिये हुए विशेशता से मेल खाने वालें '''$1''' के अवतरण नहीं हैं।",
+'filedelete-nofile-old'       => "
+'''$1'''का आपने बताये हुए विशिष्ट खासियतवाले संग्रहित संस्करण का अस्तित्व नहीं है।",
 'filedelete-otherreason'      => 'अन्य/दूसरा कारण:',
 'filedelete-reason-otherlist' => 'अन्य कारण',
 'filedelete-reason-dropdown'  => '*हटाने के साधारण कारण
@@ -1744,7 +1745,7 @@ $1',
 'ipblocklist-submit'          => 'खोज',
 'blocklistline'               => '$1, $2 ने $3 को बदलाव करने से रोक दिया है (यह रोक $4 तक मान्य है)',
 'infiniteblock'               => 'इनफाईनाईट',
-'expiringblock'               => 'समाप्ति $1',
+'expiringblock'               => 'समाप्ति $1 $2',
 'anononlyblock'               => 'केवल अनाम सदस्य',
 'noautoblockblock'            => 'स्वयंचलित ब्लॉक रद्द किये हैं',
 'createaccountblock'          => 'खाते निर्माण को रोक दिया हैं',
@@ -2131,6 +2132,7 @@ $1',
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

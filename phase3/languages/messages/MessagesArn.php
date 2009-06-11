@@ -190,7 +190,6 @@ $messages = array(
 # History pages
 'page_first'             => 'wünen',
 'history-fieldset-title' => 'Kintun pünon mew',
-'deletedrev'             => '[ñamümüngelu]',
 'historyempty'           => '(welli)',
 
 # Revision feed
@@ -424,7 +423,7 @@ $messages = array(
 'ipboptions'                 => '2 ora:2 hours,1 aṉtü:1 day,3 aṉtü:3 days,1 semana:1 week,2 semana:2 weeks,1 küyeṉ:1 month,3 küyeṉ:3 months,6 küyeṉ:6 months,1 tripantu:1 year,rumel:infinite',
 'ipbotheroption'             => 'Kakelu',
 'ipblocklist-submit'         => 'Kintun',
-'expiringblock'              => 'afi $1',
+'expiringblock'              => 'afi $1 $2',
 'block-log-flags-hiddenname' => 'Üy kellufe ellkan',
 'proxyblocksuccess'          => 'Dewmangey.',
 

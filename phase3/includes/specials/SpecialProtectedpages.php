@@ -65,7 +65,7 @@ class ProtectedPagesForm {
 			$skin = $wgUser->getSkin();
 
 		$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
-		$link = $skin->makeLinkObj( $title );
+		$link = $skin->link( $title );
 
 		$description_items = array ();
 
@@ -86,7 +86,7 @@ class ProtectedPagesForm {
 			$expiry_description = wfMsg( 'protect-expiring' , $wgLang->timeanddate( $expiry ) , 
 				$wgLang->date( $expiry ) , $wgLang->time( $expiry ) );
 
-			$description_items[] = $expiry_description;
+			$description_items[] = htmlspecialchars($expiry_description);
 		}
 
 		if(!is_null($size = $row->page_len)) {
@@ -95,12 +95,23 @@ class ProtectedPagesForm {
 
 		# Show a link to the change protection form for allowed users otherwise a link to the protection log
 		if( $wgUser->isAllowed( 'protect' ) ) {
-			$changeProtection = ' (' . $skin->makeKnownLinkObj( $title, wfMsgHtml( 'protect_change' ),
-				'action=unprotect' ) . ')';
+			$changeProtection = ' (' . $skin->linkKnown(
+				$title,
+				wfMsgHtml( 'protect_change' ),
+				array(),
+				array( 'action' => 'unprotect' )
+			) . ')';
 		} else {
 			$ltitle = SpecialPage::getTitleFor( 'Log' );
-			$changeProtection = ' (' . $skin->makeKnownLinkObj( $ltitle, wfMsgHtml( 'protectlogpage' ), 
-				'type=protect&page=' . $title->getPrefixedUrl() ) . ')';
+			$changeProtection = ' (' . $skin->linkKnown(
+				$ltitle,
+				wfMsgHtml( 'protectlogpage' ),
+				array(),
+				array(
+					'type' => 'protect',
+					'page' => $title->getPrefixedUrl()
+				)
+			) . ')';
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -223,6 +234,7 @@ class ProtectedPagesForm {
 
 		// First pass to load the log names
 		foreach( $wgRestrictionLevels as $type ) {
+			// Messages used can be 'restriction-level-sysop' and 'restriction-level-autoconfirmed'
 			if( $type !='' && $type !='*') {
 				$text = wfMsg("restriction-level-$type");
 				$m[$text] = $type;

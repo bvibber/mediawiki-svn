@@ -17,11 +17,9 @@
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Uslig',
-	NS_MAIN             => '',
 	NS_TALK             => 'Mmeslay',
 	NS_USER             => 'Amseqdac',
 	NS_USER_TALK        => 'Amyannan_umsqedac',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'Amyannan_n_$1',
 	NS_FILE             => 'Tugna',
 	NS_FILE_TALK        => 'Amyannan_n_tugna',
@@ -32,7 +30,7 @@ $namespaceNames = array(
 	NS_HELP             => 'Tallat',
 	NS_HELP_TALK        => 'Amyannan_n_tallat',
 	NS_CATEGORY         => 'Taggayt',
-	NS_CATEGORY_TALK    => 'Amyannan_n_taggayt'
+	NS_CATEGORY_TALK    => 'Amyannan_n_taggayt',
 );
 
 $namespaceAliases = array(
@@ -552,7 +550,6 @@ Tzemreḍ a d-uɣaleḍ u tbeddleḍ asebter i yellan, neɣ ad [[Special:UserLog
 'histlegend'          => 'Axtiri n umgerrad: rcem tankulin akken ad teẓreḍ imgerraden ger tisiwal u wekki ɣef enter/entrée neɣ ɣef taqeffalt deg ukessar.<br />
 Tabadut: (tura) = amgirred akk d tasiwelt n tura,
 (amgirred) = amgirred akk d tasiwelt ssabeq, M = abeddel afessas.',
-'deletedrev'          => '[yettumḥa]',
 'histfirst'           => 'Tikkin timezwura',
 'histlast'            => 'Tikkin tineggura',
 'historysize'         => '($1 bytes/octets)',
@@ -618,8 +615,8 @@ Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a 
 'notitlematches'        => 'Ulac ayen yecban azwel n umegrad',
 'textmatches'           => 'Ayen yecban azwel n usebter',
 'notextmatches'         => 'ulac ayen yecban azwel n usebter',
-'prevn'                 => '$1 ssabeq',
-'nextn'                 => '$1 ameḍfir',
+'prevn'                 => '{{PLURAL:$1|$1}} ssabeq',
+'nextn'                 => '{{PLURAL:$1|$1}} ameḍfir',
 'viewprevnext'          => 'Ẓer ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Agbur',
 'showingresults'        => "Tamuli n {{PLURAL:$1|'''Yiwen''' wegmud|'''$1''' n yigmad}} seg  #'''$2'''.",
@@ -648,7 +645,6 @@ i yesɛan akk awalen i banen-d).",
 'prefs-skin'            => 'Aglim',
 'skin-preview'          => 'Pre-timeẓriwt',
 'prefs-math'            => 'Tusnakt',
-'dateformat'            => 'talɣa n uzemz',
 'datedefault'           => 'Ur sɛiɣ ara asemyifi',
 'prefs-datetime'        => 'Azemz d ukud',
 'prefs-personal'        => 'Profile n wemseqdac',
@@ -738,6 +734,8 @@ i yesɛan akk awalen i banen-d).",
 
 # Recent changes linked
 'recentchangeslinked'          => 'Ibeddlen imaynuten n isebtar myezdin',
+'recentchangeslinked-feed'     => 'Ibeddlen imaynuten n isebtar myezdin',
+'recentchangeslinked-toolbox'  => 'Ibeddlen imaynuten n isebtar myezdin',
 'recentchangeslinked-noresult' => 'Ulac abeddel deg isebtar myezdin deg tawala i textareḍ.',
 
 # Upload
@@ -829,14 +827,13 @@ Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.
 'listfiles_description' => 'Aglam',
 
 # File description page
+'file-anchor-link'          => 'Afaylu',
 'filehist-current'          => 'Lux a',
 'filehist-user'             => 'Amseqdac',
 'imagelinks'                => 'Izdayen',
 'linkstoimage'              => 'isebtar-agi sɛan azday ar afaylu-agi',
 'nolinkstoimage'            => 'Ulaḥedd seg isebtar sɛan azday ar afaylu-agi.',
 'sharedupload'              => 'Afaylu-yagi yettuseqdac sɣur wiki tiyaḍ.',
-'noimage'                   => 'Afaylu s yisem-agi ulac-it, tzemreḍ ad $1.',
-'noimage-linktext'          => 't-tazneḍ',
 'uploadnewversion-linktext' => 'tazneḍ tasiwelt tamaynut n ufaylu-yagi',
 
 # MIME search

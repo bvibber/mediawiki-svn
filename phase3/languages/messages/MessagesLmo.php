@@ -255,8 +255,8 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'noexactmatch'          => "'''La pagina \"\$1\" la esista no.''' L'è pussibil [[:\$1|creala adèss]].",
 'noexactmatch-nocreate' => "'''La pagina cun el titul \"\$1\" la esista no.'''",
 'toomanymatches'        => "Gh'è tropi curispundens. Mudifichè la richiesta.",
-'prevn'                 => 'preçedeent $1',
-'nextn'                 => 'pròssim $1',
+'prevn'                 => 'preçedeent {{PLURAL:$1|$1}}',
+'nextn'                 => 'pròssim {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'Vidé ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Contegnüü',
 'powersearch'           => 'Truvá',
@@ -267,7 +267,6 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'changepassword'     => "Mudifega la paròla d'urdin",
 'prefs-skin'         => "Aspett de l'interfacia",
 'prefs-math'         => 'Matem',
-'dateformat'         => 'Furmaa da la data',
 'datedefault'        => 'Nissüna preferenza',
 'prefs-datetime'     => 'Data e urari',
 'prefs-personal'     => 'Carateristich dal druvat',
@@ -339,7 +338,9 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'show'              => 'Famm vedè',
 
 # Recent changes linked
-'recentchangeslinked' => 'Cambiament culegaa',
+'recentchangeslinked'         => 'Cambiament culegaa',
+'recentchangeslinked-feed'    => 'Cambiament culegaa',
+'recentchangeslinked-toolbox' => 'Cambiament culegaa',
 
 # Upload
 'upload'            => 'Carga sü un file',

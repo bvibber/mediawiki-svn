@@ -329,7 +329,7 @@ MySQL nagbalik hin sayop nga "$3: $4".',
 
 # Search results
 'prevn'          => 'naha-una nga $1',
-'nextn'          => 'sunod nga $1',
+'nextn'          => 'sunod nga {{PLURAL:$1|$1}}',
 'viewprevnext'   => 'Kitaa an ($1) ($2) ($3)',
 'searchhelp-url' => 'Help:Sulod',
 'powersearch'    => 'Bilnga',
@@ -351,7 +351,9 @@ MySQL nagbalik hin sayop nga "$3: $4".',
 'newpageletter'   => 'B',
 
 # Recent changes linked
-'recentchangeslinked' => 'Mga may kalabotan nga binag-o',
+'recentchangeslinked'         => 'Mga may kalabotan nga binag-o',
+'recentchangeslinked-feed'    => 'Mga may kalabotan nga binag-o',
+'recentchangeslinked-toolbox' => 'Mga may kalabotan nga binag-o',
 
 # Upload
 'upload'    => 'Pagkarga hin file',
@@ -362,6 +364,7 @@ MySQL nagbalik hin sayop nga "$3: $4".',
 'listfiles_name' => 'Ngaran',
 
 # File description page
+'file-anchor-link'        => 'Fayl',
 'filehist-datetime'       => 'Pitsa/Oras',
 'imagelinks'              => 'Mga sumpay',
 'linkstoimage'            => 'Nasumpay hini nga fayl an mga nasunod nga mga pakli:',

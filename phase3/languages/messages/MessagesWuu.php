@@ -337,7 +337,6 @@ $messages = array(
 'cur'          => '当前',
 'last'         => '上个',
 'histlegend'   => '选择比较版本：标记要比较个两只版本，回车或者揿页面底里个揿钮。<br /> 图例：(当前) = 搭当前版本有啥两样， (上个) = 搭上个版本有啥两样，小 = 小改动。',
-'deletedrev'   => '[已删]',
 'histfirst'    => '顶早',
 'histlast'     => '顶晏',
 'historyempty' => '（空）',
@@ -360,9 +359,10 @@ $messages = array(
 'searchsubtitleinvalid'     => "倷搜寻 '''$1'''",
 'noexactmatch'              => "''呒拨叫\"\$1\"个页面啘。''' 倷可以[[:\$1|建立俚]]。",
 'prevn'                     => '上个 $1',
-'nextn'                     => '下个 $1',
+'nextn'                     => '下个 {{PLURAL:$1|$1}}',
 'viewprevnext'              => '查看 ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:目录',
+'search-result-size'        => '$1（$2字）',
 'search-mwsuggest-enabled'  => '与建议',
 'search-mwsuggest-disabled' => ' 没有建议',
 'powersearch'               => '高级搜索',
@@ -447,7 +447,9 @@ $messages = array(
 'newsectionsummary' => '/* $1 */ 新段落',
 
 # Recent changes linked
-'recentchangeslinked' => '搭界个改动',
+'recentchangeslinked'         => '搭界个改动',
+'recentchangeslinked-feed'    => '搭界个改动',
+'recentchangeslinked-toolbox' => '搭界个改动',
 
 # Upload
 'upload'            => '上载文物',
@@ -491,6 +493,7 @@ $messages = array(
 'listfiles_description' => '描述',
 
 # File description page
+'file-anchor-link'          => '文物',
 'filehist'                  => '文物历史',
 'filehist-deleteall'        => '全删',
 'filehist-deleteone'        => '删',
@@ -498,8 +501,6 @@ $messages = array(
 'filehist-user'             => '用户',
 'imagelinks'                => '链接',
 'nolinkstoimage'            => '呒拨页面链接到该只文件。',
-'noimage'                   => '呒拨叫该个名字个文件，倷可以$1。',
-'noimage-linktext'          => '上载俚',
 'uploadnewversion-linktext' => '上载该文件个新版',
 
 # File reversion
@@ -741,6 +742,7 @@ $messages = array(
 'tooltip-ca-delete'          => '删脱该只页面',
 'tooltip-ca-move'            => '移动该只页面',
 'tooltip-search'             => '搜寻{{SITENAME}}',
+'tooltip-search-go'          => '转到页本确切名称，如果存在',
 'tooltip-p-logo'             => '封面',
 'tooltip-n-mainpage'         => '进入封面',
 'tooltip-n-portal'           => '关于本计划，可以做什么，应该如何做',
@@ -779,6 +781,13 @@ $messages = array(
 'newimages'    => '新文件陈列室',
 'showhidebots' => '（$1机器人）',
 'ilsubmit'     => '搜寻',
+
+# Bad image list
+'bad_image_list' => '格式如下：
+
+只列出项目（线开始* ）的审议。
+第一个环节上线必须是一个链接到一个坏文件。
+其后的任何链接在同一行被认为是例外情况，即网页的文件，则可能会发生内部。',
 
 /*
 Short names for language variants used for language conversion links.
@@ -828,6 +837,9 @@ Variants for Chinese language
 
 # action=purge
 'confirm_purge_button' => '确定',
+
+# Separators for various lists, etc.
+'comma-separator' => '、',
 
 # Multipage image navigation
 'imgmultipageprev' => '← 上一页',

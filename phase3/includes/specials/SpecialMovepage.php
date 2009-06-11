@@ -91,7 +91,7 @@ class MovePageForm {
 
 		$skin = $wgUser->getSkin();
 
-		$oldTitleLink = $skin->makeLinkObj( $this->oldTitle );
+		$oldTitleLink = $skin->link( $this->oldTitle );
 
 		$wgOut->setPagetitle( wfMsg( 'move-page', $this->oldTitle->getPrefixedText() ) );
 		$wgOut->setSubtitle( wfMsg( 'move-page-backlink', $oldTitleLink ) );
@@ -164,6 +164,22 @@ class MovePageForm {
 			} else {
 				$wgOut->wrapWikiMsg( '<p><strong class="error">$1</strong></p>', $err );
 			}
+		}
+
+		if ( $this->oldTitle->isProtected( 'move' ) ) {
+			# Is the title semi-protected?
+			if ( $this->oldTitle->isSemiProtected( 'move' ) ) {
+				$noticeMsg = 'semiprotectedpagemovewarning';
+				$classes[] = 'mw-textarea-sprotected';
+			} else {
+				# Then it must be protected based on static groups (regular)
+				$noticeMsg = 'protectedpagemovewarning';
+				$classes[] = 'mw-textarea-protected';
+			}
+			$wgOut->addHTML( "<div class='mw-warning-with-logexcerpt'>\n" );
+			$wgOut->addWikiMsg( $noticeMsg );
+			LogEventsList::showLogExtract( $wgOut, 'protect', $this->oldTitle->getPrefixedText(), '', 1 );
+			$wgOut->addHTML( "</div>\n" );
 		}
 
 		$wgOut->addHTML(
@@ -406,7 +422,7 @@ class MovePageForm {
 		} elseif( $this->moveTalk ) {
 			$conds = array(
 				'page_namespace' => $ot->getTalkPage()->getNamespace(),
-				'page_title' => $ot->getDBKey()
+				'page_title' => $ot->getDBkey()
 			);
 		} else {
 			# Skip the query
@@ -434,9 +450,9 @@ class MovePageForm {
 			}
 
 			$newPageName = preg_replace(
-				'#^'.preg_quote( $ot->getDBKey(), '#' ).'#',
-				$nt->getDBKey(),
-				$oldSubpage->getDBKey()
+				'#^'.preg_quote( $ot->getDBkey(), '#' ).'#',
+				$nt->getDBkey(),
+				$oldSubpage->getDBkey()
 			);
 			if( $oldSubpage->isTalkPage() ) {
 				$newNs = $nt->getTalkPage()->getNamespace();
@@ -447,7 +463,7 @@ class MovePageForm {
 			# be longer than 255 characters.
 			$newSubpage = Title::makeTitleSafe( $newNs, $newPageName );
 			if( !$newSubpage ) {
-				$oldLink = $skin->makeKnownLinkObj( $oldSubpage );
+				$oldLink = $skin->linkKnown( $oldSubpage );
 				$extraOutput []= wfMsgHtml( 'movepage-page-unmoved', $oldLink,
 					htmlspecialchars(Title::makeName( $newNs, $newPageName )));
 				continue;
@@ -455,7 +471,7 @@ class MovePageForm {
 
 			# This was copy-pasted from Renameuser, bleh.
 			if ( $newSubpage->exists() && !$oldSubpage->isValidMoveTarget( $newSubpage ) ) {
-				$link = $skin->makeKnownLinkObj( $newSubpage );
+				$link = $skin->linkKnown( $newSubpage );
 				$extraOutput []= wfMsgHtml( 'movepage-page-exists', $link );
 			} else {
 				$success = $oldSubpage->moveTo( $newSubpage, true, $this->reason, $createRedirect );
@@ -463,12 +479,17 @@ class MovePageForm {
 					if ( $this->fixRedirects ) {
 						DoubleRedirectJob::fixRedirects( 'move', $oldSubpage, $newSubpage );
 					}
-					$oldLink = $skin->makeKnownLinkObj( $oldSubpage, '', 'redirect=no' );
-					$newLink = $skin->makeKnownLinkObj( $newSubpage );
+					$oldLink = $skin->linkKnown(
+						$oldSubpage,
+						null,
+						array(),
+						array( 'redirect' => 'no' )
+					);
+					$newLink = $skin->linkKnown( $newSubpage );
 					$extraOutput []= wfMsgHtml( 'movepage-page-moved', $oldLink, $newLink );
 				} else {
-					$oldLink = $skin->makeKnownLinkObj( $oldSubpage );
-					$newLink = $skin->makeLinkObj( $newSubpage );
+					$oldLink = $skin->linkKnown( $oldSubpage );
+					$newLink = $skin->link( $newSubpage );
 					$extraOutput []= wfMsgHtml( 'movepage-page-unmoved', $oldLink, $newLink );
 				}
 			}

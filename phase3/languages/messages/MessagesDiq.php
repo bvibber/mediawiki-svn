@@ -421,8 +421,8 @@ Tı şeno/eşkeno [[:\$1|ena name dı nuşte bınusi]].",
 'noexactmatch-nocreate'     => "'''Ena name \"\$1\" dı pele çino.'''",
 'notitlematches'            => 'Titleyê pele match nıken',
 'notextmatches'             => 'Yew pelga bile match nıkeno',
-'prevn'                     => '$1 verên',
-'nextn'                     => '$1 peyên',
+'prevn'                     => '{{PLURAL:$1|$1}} verên',
+'nextn'                     => '{{PLURAL:$1|$1}} peyên',
 'viewprevnext'              => '($1) ($2) ($3) bıvênên',
 'searchhelp-url'            => 'Help:Tedeestey',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 çekuye|$2 çekuy}})',
@@ -504,6 +504,8 @@ If you choose to provide it, this will be used for giving you attribution for yo
 
 # Recent changes linked
 'recentchangeslinked'         => 'Ney sero vurnayışi',
+'recentchangeslinked-feed'    => 'Ney sero vurnayışi',
+'recentchangeslinked-toolbox' => 'Ney sero vurnayışi',
 'recentchangeslinked-title'   => 'vurnayışan ser "$1"',
 'recentchangeslinked-summary' => 'Ena liste dı vurnayışê peniyan ser peleyan esta ki ena peleyan gırediyaya yew specifik pele (ya zi yew specifik kategori). Peleyan ki zerre [[Special:Watchlist|your watchlist]] dı qalın herf dı nusiyeyo.',
 'recentchangeslinked-page'    => 'Nameyê pele:',
@@ -525,6 +527,7 @@ If you choose to provide it, this will be used for giving you attribution for yo
 'listfiles_user' => 'Karber',
 
 # File description page
+'file-anchor-link'          => 'Dosya',
 'filehist'                  => 'Tarixê dosya',
 'filehist-help'             => 'Klik bık ser yew tarih u aye tarih dı versionê dosya bıvin.',
 'filehist-current'          => 'nıkayên',
@@ -537,7 +540,6 @@ If you choose to provide it, this will be used for giving you attribution for yo
 'imagelinks'                => 'Gıreyê dosya',
 'linkstoimage'              => 'Ena {{PLURAL:$1|pelge şın|$1 pelgayan şın}} ena dosya:',
 'sharedupload'              => 'Ena dosya $1 ra u belki projeyê binan dı hewitiyeno.',
-'noimage-linktext'          => 'Bar ke',
 'uploadnewversion-linktext' => 'Versiyonê newiyerê ena dosya bar ke',
 
 # File deletion
@@ -863,12 +865,13 @@ Eg ena dosya, kondisyonê orcinali ra bıvuriya, belki detayanê hemi nıeseno.'
 'metadata-collapse' => 'extended details bınım',
 'metadata-fields'   => 'Ke tabloyê metadatayi nıeseno, ma EXIF metadata (eno mesaj dı) zerri pele resimi ri ken de. 
 Ma aya bini numnen.
-*kar
-*model
-*seatzemanoricinal
-*demoexposuri
-*famar
-*focaldergi',
+* make
+* model
+* datetimeoriginal
+* exposuretime
+* fnumber
+* isospeedratings
+* focallength',
 
 'exif-gaincontrol-0' => 'çino',
 

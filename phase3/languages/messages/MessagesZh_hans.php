@@ -1,5 +1,5 @@
 <?php
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文(简化字)‬)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -23,11 +23,9 @@ $fallback8bitEncoding = 'windows-936';
 $namespaceNames = array(
 	NS_MEDIA            => '媒体',
 	NS_SPECIAL          => '特殊',
-	NS_MAIN             => '',
 	NS_TALK             => '讨论',
 	NS_USER             => '用户',
 	NS_USER_TALK        => '用户讨论',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1讨论',
 	NS_FILE             => '文件',
 	NS_FILE_TALK        => '文件讨论',
@@ -38,7 +36,7 @@ $namespaceNames = array(
 	NS_HELP             => '帮助',
 	NS_HELP_TALK        => '帮助讨论',
 	NS_CATEGORY         => '分类',
-	NS_CATEGORY_TALK    => '分类讨论'
+	NS_CATEGORY_TALK    => '分类讨论',
 );
 
 $namespaceAliases = array(
@@ -161,7 +159,6 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( '搜索网页链接' ),
 	'DeletedContributions'      => array( '已删除的用户贡献' ),
 	'Tags'                      => array( '标签' ),
-	'Createpage'                => array( '创建页面' ),
 );
 
 $extraUserToggles = array(
@@ -361,6 +358,7 @@ $messages = array(
 'permalink'         => '永久链接',
 'print'             => '打印',
 'edit'              => '编辑',
+'view'              => '阅读',
 'create'            => '创建',
 'editthispage'      => '编辑此页',
 'create-this-page'  => '创建此页',
@@ -577,12 +575,12 @@ $2',
 'loginerror'                 => '登录错误',
 'nocookiesnew'               => '已成功创建新账户！侦测到您已关闭Cookies，请开启它并登录。',
 'nocookieslogin'             => '本站利用Cookies进行用户登录，侦测到您已关闭Cookies，请开启它并重新登录。',
-'noname'                     => '你没有输入有效的用户名。',
+'noname'                     => '{{GENDER:你|妳|你}}没有输入有效的用户名。',
 'loginsuccesstitle'          => '登录成功',
-'loginsuccess'               => '你现在以"$1"的身份登录{{SITENAME}}。',
+'loginsuccess'               => '{{GENDER:你|妳|你}}现在以"$1"的身份登录{{SITENAME}}。',
 'nosuchuser'                 => '找不到用户"$1"。检查您的拼写，或者[[Special:UserLogin/signup|建立一个新账户]]。',
 'nosuchusershort'            => '没有一个名为“<nowiki>$1</nowiki>”的用户。请检查您输入的文字是否有错误。',
-'nouserspecified'            => '你需要指定一个用户名。',
+'nouserspecified'            => '{{GENDER:你|妳|你}}需要指定一个用户名。',
 'wrongpassword'              => '您输入的密码错误，请再试一次。',
 'wrongpasswordempty'         => '您没有输入密码，请重试！',
 'passwordtooshort'           => '您的密码不正确或太短，不能少于$1个字元，而且必须跟用户名不同。',
@@ -602,7 +600,7 @@ $2',
 'eauthentsent'               => '一封确认信已经发送到推荐的地址。在发送其它邮件到此账户前，您必须首先依照这封信中的指导确认这个电子邮箱真实有效。',
 'throttled-mailpassword'     => '密码提醒已在最近$1小时内发送。为了安全起见，在每$1小时内只能发送一个密码提醒。',
 'mailerror'                  => '发送邮件错误：$1',
-'acct_creation_throttle_hit' => '抱歉！您已经创建了$1个账号。你不能再创建了。',
+'acct_creation_throttle_hit' => '抱歉！您已经创建了$1个账号。{{GENDER:你|妳|你}}不能再创建了。',
 'emailauthenticated'         => '您的电子邮箱地址已经于$2 $3确认有效。',
 'emailnotauthenticated'      => '您的邮箱地址<strong>还没被认证</strong>。以下功能将不会发送任何邮件。',
 'noemailprefs'               => '指定一个电子邮箱地址以使用此功能',
@@ -671,7 +669,7 @@ $2',
 'summary-preview'                  => '摘要预览：',
 'subject-preview'                  => '标题预览：',
 'blockedtitle'                     => '用户被查封',
-'blockedtext'                      => "<big>你的用户名或IP地址已经被$1查封。</big>
+'blockedtext'                      => "<big>{{GENDER:你|妳|你}}的用户名或IP地址已经被$1查封。</big>
 
 这次查封是由$1所封的。当中的原因是''$2''。
 
@@ -679,11 +677,11 @@ $2',
 * 这次查封到期的时间是：$6
 * 对于被查封者：$7
 
-你可以联络$1或者其他的[[{{MediaWiki:Grouppage-sysop}}|管理员]]，讨论这次查封。
-除非你已经在你的[[Special:Preferences|帐号参数设置]]中设置了一个有效的电子邮件地址，否则你是不能使用「电邮这位用户」的功能。当设置定了一个有效的电子邮件地址后，这个功能是不会封锁的。
+{{GENDER:你|妳|你}}可以联络$1或者其他的[[{{MediaWiki:Grouppage-sysop}}|管理员]]，讨论这次查封。
+除非{{GENDER:你|妳|你}}已经在{{GENDER:你|妳|你}}的[[Special:Preferences|帐号参数设置]]中设置了一个有效的电子邮件地址，否则{{GENDER:你|妳|你}}是不能使用「电邮这位用户」的功能。当设置定了一个有效的电子邮件地址后，这个功能是不会封锁的。
 
-你的IP地址是$3，而该查封ID是 #$5。 请在你的查询中注明以上所有的资料。",
-'autoblockedtext'                  => "你的IP地址已经被自动查封，由于先前的另一位用户被$1所查封。
+{{GENDER:你|妳|你}}的IP地址是$3，而该查封ID是 #$5。 请在{{GENDER:你|妳|你}}的查询中注明以上所有的资料。",
+'autoblockedtext'                  => "{{GENDER:你|妳|你}}的IP地址已经被自动查封，由于先前的另一位用户被$1所查封。
 而查封的原因是：
 
 :''$2''
@@ -692,19 +690,19 @@ $2',
 * 这次查封的到期时间是：$6
 * 对于被查封者：$7
 
-你可以联络$1或者其他的[[{{MediaWiki:Grouppage-sysop}}|管理员]]，讨论这次查封。
+{{GENDER:你|妳|你}}可以联络$1或者其他的[[{{MediaWiki:Grouppage-sysop}}|管理员]]，讨论这次查封。
 
-除非你已经在你的[[Special:Preferences|帐号参数设置]]中设置了一个有效的电子邮件地址，否则你是不能使用「电邮这位用户」的功能。当设置定了一个有效的电子邮件地址后，这个功能是不会封锁的。
+除非{{GENDER:你|妳|你}}已经在{{GENDER:你|妳|你}}的[[Special:Preferences|帐号参数设置]]中设置了一个有效的电子邮件地址，否则{{GENDER:你|妳|你}}是不能使用「电邮这位用户」的功能。当设置定了一个有效的电子邮件地址后，这个功能是不会封锁的。
 
-您现时正在使用的 IP 地址是 $3，查封ID是 #$5。 請在你的查詢中註明以上所有的資料。",
+您现时正在使用的 IP 地址是 $3，查封ID是 #$5。 請在{{GENDER:你|妳|你}}的查詢中註明以上所有的資料。",
 'blockednoreason'                  => '无给出原因',
 'blockedoriginalsource'            => "以下是'''$1'''的源码:",
-'blockededitsource'                => "你对'''$1'''进行'''编辑'''的文字如下:",
+'blockededitsource'                => "{{GENDER:你|妳|你}}对'''$1'''进行'''编辑'''的文字如下:",
 'whitelistedittitle'               => '登录后才可编辑',
 'whitelistedittext'                => '您必须先$1才可编辑页面。',
 'confirmedittext'                  => '在编辑此页之前您必须确认您的邮箱地址。请通过[[Special:Preferences|参数设置]]设置并验证您的邮箱地址。',
 'nosuchsectiontitle'               => '没有这个段落',
-'nosuchsectiontext'                => '您尝试编辑的段落并不存在。在这里是无第$1个段落，所以是没有一个地方去存贮你的编辑。',
+'nosuchsectiontext'                => '您尝试编辑的段落并不存在。在这里是无第$1个段落，所以是没有一个地方去存贮{{GENDER:你|妳|你}}的编辑。',
 'loginreqtitle'                    => '需要登录',
 'loginreqlink'                     => '登录',
 'loginreqpagetext'                 => '您必须$1才能查看其它页面。',
@@ -731,9 +729,9 @@ $2',
 'updated'                          => '(已更新)',
 'note'                             => "'''注意：'''",
 'previewnote'                      => "'''请记住这只是预览。'''内容还未保存！",
-'previewconflict'                  => '这个预览显示了上面文字编辑区中的内容。它将在你选择保存后出现。',
-'session_fail_preview'             => "'''抱歉！我们不能处理你在进程数据丢失时的编辑。'''请重试！如果再次失败，请[[Special:UserLogout|登出]]后重新登陆。",
-'session_fail_preview_html'        => "'''抱歉！我们不能处理你在进程数据丢失时的编辑。'''
+'previewconflict'                  => '这个预览显示了上面文字编辑区中的内容。它将在{{GENDER:你|妳|你}}选择保存后出现。',
+'session_fail_preview'             => "'''抱歉！我们不能处理{{GENDER:你|妳|你}}在进程数据丢失时的编辑。'''请重试！如果再次失败，请[[Special:UserLogout|登出]]后重新登陆。",
+'session_fail_preview_html'        => "'''抱歉！我们不能处理{{GENDER:你|妳|你}}在进程数据丢失时的编辑。'''
 
 ''由于{{SITENAME}}允许使用原始的 HTML，为了防范 JavaScript 攻击，预览已被隐藏。''
 
@@ -744,16 +742,16 @@ $2',
 'editingsection'                   => '正在编辑$1 (段落)',
 'editingcomment'                   => '正在编辑$1 (评论)',
 'editconflict'                     => '编辑冲突：$1',
-'explainconflict'                  => '有人在你开始编辑后更改了页面。
+'explainconflict'                  => '有人在{{GENDER:你|妳|你}}开始编辑后更改了页面。
 上面的文字框内显示的是目前本页的内容。
-你所做的修改显示在下面的文字框中。
-你应当将你所做的修改加入现有的内容中。
-<b>只有</b>在上面文字框中的内容会在你点击"保存页面"后被保存。<br />',
+{{GENDER:你|妳|你}}所做的修改显示在下面的文字框中。
+{{GENDER:你|妳|你}}应当将{{GENDER:你|妳|你}}所做的修改加入现有的内容中。
+<b>只有</b>在上面文字框中的内容会在{{GENDER:你|妳|你}}点击"保存页面"后被保存。<br />',
 'yourtext'                         => '您的文字',
 'storedversion'                    => '已保存修订版本',
 'nonunicodebrowser'                => "'''警告：您的浏览器不兼容Unicode编码。'''这里有一个工作区将使您能安全地编辑页面：非ASCII字符将以十六进制编码方式出现在编辑框中。",
-'editingold'                       => "'''警告：你正在编辑的是本页的旧版本。'''
-如果你保存它的话，在本版本之后的任何修改都会丢失。",
+'editingold'                       => "'''警告：{{GENDER:你|妳|你}}正在编辑的是本页的旧版本。'''
+如果{{GENDER:你|妳|你}}保存它的话，在本版本之后的任何修改都会丢失。",
 'yourdiff'                         => '差异',
 'copyrightwarning'                 => "请注意您对{{SITENAME}}的所有贡献都被认为是在$2下发布，请查看在$1的细节。
 如果您不希望您的文字被任意修改和再散布，请不要提交。<br />
@@ -782,14 +780,14 @@ $2',
 'hiddencategories'                 => '这个页面是属于$1个隐藏分类的成员：',
 'edittools'                        => '<!-- 此处的文本将被显示在以下编辑和上传表单中。 -->',
 'nocreatetitle'                    => '创建页面受限',
-'nocreatetext'                     => '{{SITENAME}}限制了创建新页面的功能。你可以返回并编辑已有的页面，或者[[Special:UserLogin|登录或创建新账户]]。',
+'nocreatetext'                     => '{{SITENAME}}限制了创建新页面的功能。{{GENDER:你|妳|你}}可以返回并编辑已有的页面，或者[[Special:UserLogin|登录或创建新账户]]。',
 'nocreate-loggedin'                => '您并无权限去创建新页面。',
 'permissionserrors'                => '权限错误',
 'permissionserrorstext'            => '根据以下的{{PLURAL:$1|原因|原因}}，您并无权限去做以下的动作：',
 'permissionserrorstext-withaction' => '根据以下的{{PLURAL:$1|原因|原因}}，您无权限进行$2操作：',
-'recreate-moveddeleted-warn'       => "'''警告: 你现在重新创建一个先前曾经删除过的页面。'''
+'recreate-moveddeleted-warn'       => "'''警告: {{GENDER:你|妳|你}}现在重新创建一个先前曾经删除过的页面。'''
 
-你应该要考虑一下继续编辑这一个页面是否合适。
+{{GENDER:你|妳|你}}应该要考虑一下继续编辑这一个页面是否合适。
 为方便起见，这一个页面的删除记录已经在下面提供:",
 'moveddeleted-notice'              => '这个页面已经删除。
 这个页面的删除日志已在下面提供以便参考。',
@@ -847,7 +845,6 @@ $2',
 'histlegend'             => "差异选择：标记要比较修订版本的单选按钮并点击底部的按钮进行比较。<br />
 说明：'''({{int:cur}})''' 指与当前修订版本比较，'''({{int:last}})''' 指与前一个修订版本比较，'''{{int:minoreditletter}}''' = 小修改。",
 'history-fieldset-title' => '浏览历史',
-'deletedrev'             => '[已删除]',
 'histfirst'              => '最早版本',
 'histlast'               => '最新版本',
 'historysize'            => '（$1字节）',
@@ -861,68 +858,79 @@ $2',
 尝试[[Special:Search|搜索本站]]获得相关的新建页面。',
 
 # Revision deletion
-'rev-deleted-comment'            => '(注释已移除)',
-'rev-deleted-user'               => '(用户名已移除)',
-'rev-deleted-event'              => '(日志动作已移除)',
-'rev-deleted-text-permission'    => "该页面修订已经被'''删除'''。
+'rev-deleted-comment'         => '(注释已移除)',
+'rev-deleted-user'            => '(用户名已移除)',
+'rev-deleted-event'           => '(日志动作已移除)',
+'rev-deleted-text-permission' => "该页面修订已经被'''删除'''。
 在[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 删除日志]中您可能会查看到详细的信息。",
-'rev-deleted-text-unhide'        => "该页面修订已经被'''删除'''。
+'rev-deleted-text-unhide'     => "该页面修订已经被'''删除'''。
 在[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 删除日志]中您可能会查看到详细的信息。
 作为管理员，如果您想继续的话，您可以仍然[$1 去查看这次修订]。",
-'rev-deleted-text-view'          => "该页面修订已经被'''删除'''。作为管理员，您可以查看它；
+'rev-deleted-text-view'       => "该页面修订已经被'''删除'''。作为管理员，您可以查看它；
 在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 删除日志]中您可能会查看到详细的信息。",
-'rev-deleted-no-diff'            => "因为其中一次修订'''删除'''，您不可以查看这个差异。
+'rev-deleted-no-diff'         => "因为其中一次修订'''删除'''，您不可以查看这个差异。
 在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 删除日志]中可能有更多的信息。",
-'rev-deleted-unhide-diff'        => "该页面的其中一次修订已经被'''删除'''。
+'rev-deleted-unhide-diff'     => "该页面的其中一次修订已经被'''删除'''。
 在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 删除日志]中可能有更多的信息。
 作为管理员，如果您想继续的话，您可以仍然[$1 去查看这次修订]。",
-'rev-delundel'                   => '显示/隐藏',
-'revisiondelete'                 => '删除/恢复删除修订',
-'revdelete-nooldid-title'        => '无效的目标修订',
-'revdelete-nooldid-text'         => '您尚未指定一个目标修订去进行这个功能、
+'rev-delundel'                => '显示/隐藏',
+'revisiondelete'              => '删除/恢复删除修订',
+'revdelete-nooldid-title'     => '无效的目标修订',
+'revdelete-nooldid-text'      => '您尚未指定一个目标修订去进行这个功能、
 所指定的修订不存在，或者您尝试去隐藏现时的修订。',
-'revdelete-nologtype-title'      => '没有给出日志类型',
-'revdelete-nologtype-text'       => '您尚未指定一种日志类型去做这个动作。',
-'revdelete-toomanytargets-title' => '过多的目标',
-'revdelete-toomanytargets-text'  => '您指定了过多的目标去做这个动作。',
-'revdelete-nologid-title'        => '无效的日志项目',
-'revdelete-nologid-text'         => '您尚未指定一个目标日志项目去进行这个动作或指定的项目不存在。',
-'revdelete-selected'             => "'''选取'''$1'''的$2次修订：'''",
-'logdelete-selected'             => "'''选取'''$1'''的日志项目：'''",
-'revdelete-text'                 => "'''删除的修订仍将显示在页面历史中, 但它们的文本内容已不能被公众访问。'''
+'revdelete-nologtype-title'   => '没有给出日志类型',
+'revdelete-nologtype-text'    => '您尚未指定一种日志类型去做这个动作。',
+'revdelete-nologid-title'     => '无效的日志项目',
+'revdelete-nologid-text'      => '您尚未指定一个目标日志项目去进行这个动作或指定的项目不存在。',
+'revdelete-no-file'           => '指定的檔案不存在。',
+'revdelete-show-file-confirm' => '你是否真的是想去查看於$2 $3刪除 "$1" 的檔案修訂？',
+'revdelete-show-file-submit'  => '是',
+'revdelete-selected'          => "'''选取'''$1'''的$2次修订：'''",
+'logdelete-selected'          => "'''选取'''$1'''的日志项目：'''",
+'revdelete-text'              => "'''删除的修订仍将显示在页面历史中, 但它们的文本内容已不能被公众访问。'''
 在{{SITENAME}}的其他管理员将仍能访问隐藏的内容并通过与此相同的界面恢复删除，除非站点工作者进行了一些附加的限制。
 请确认您肯定去做的话，您就要明白到后果，以及这个程序符合[[{{MediaWiki:Policy-url}}|政策]]。",
-'revdelete-suppress-text'        => "'''只有'''出现以下的情况下才应阻止访问：
+'revdelete-suppress-text'     => "'''只有'''出现以下的情况下才应阻止访问：
 * 不合适的个人信息
 *: ''家庭地址、电话号码、身份证号码等。''",
-'revdelete-legend'               => '设置可见性之限制',
-'revdelete-hide-text'            => '隐藏修订文本',
-'revdelete-hide-name'            => '隐藏动作和目标',
-'revdelete-hide-comment'         => '隐藏编辑说明',
-'revdelete-hide-user'            => '隐藏编辑者的用户名/IP',
-'revdelete-hide-restricted'      => '同时阻止操作员与其他用户查看数据',
-'revdelete-suppress'             => '同时阻止操作员与其他用户查看数据',
-'revdelete-hide-image'           => '隐藏文件内容',
-'revdelete-unsuppress'           => '在已恢复的修订中移除限制',
-'revdelete-log'                  => '日志注释：',
-'revdelete-submit'               => '应用于选中的修订',
-'revdelete-logentry'             => '[[$1]]的修订可见性已更改',
-'logdelete-logentry'             => '[[$1]]的事件可见性已更改',
-'revdelete-success'              => "'''修订的可见性已经成功设置。'''",
-'revdelete-failure'              => "'''修订的可见性无法设置。'''",
-'logdelete-success'              => "'''事件的可见性已经成功设置。'''",
-'revdel-restore'                 => '更改可见性',
-'pagehist'                       => '页面历史',
-'deletedhist'                    => '已删除之历史',
-'revdelete-content'              => '内容',
-'revdelete-summary'              => '编辑摘要',
-'revdelete-uname'                => '用户名',
-'revdelete-restricted'           => '已应用限制至操作员',
-'revdelete-unrestricted'         => '已移除对于操作员的限制',
-'revdelete-hid'                  => '隐藏 $1',
-'revdelete-unhid'                => '不隐藏 $1',
-'revdelete-log-message'          => '$1的$2次修订',
-'logdelete-log-message'          => '$1的$2项事件',
+'revdelete-legend'            => '设置可见性之限制',
+'revdelete-hide-text'         => '隐藏修订文本',
+'revdelete-hide-name'         => '隐藏动作和目标',
+'revdelete-hide-comment'      => '隐藏编辑说明',
+'revdelete-hide-user'         => '隐藏编辑者的用户名/IP',
+'revdelete-hide-restricted'   => '同时阻止操作员与其他用户查看数据',
+'revdelete-suppress'          => '同时阻止操作员与其他用户查看数据',
+'revdelete-hide-image'        => '隐藏文件内容',
+'revdelete-unsuppress'        => '在已恢复的修订中移除限制',
+'revdelete-log'               => '日志注释：',
+'revdelete-submit'            => '应用于选中的修订',
+'revdelete-logentry'          => '[[$1]]的修订可见性已更改',
+'logdelete-logentry'          => '[[$1]]的事件可见性已更改',
+'revdelete-success'           => "'''修订的可见性已经成功设置。'''",
+'revdelete-failure'           => "'''修订的可见性无法设置：'''
+$1",
+'logdelete-success'           => "'''事件的可见性已经成功设置。'''",
+'logdelete-failure'           => "'''事件的可见性无法设置：'''
+$1",
+'revdel-restore'              => '更改可见性',
+'pagehist'                    => '页面历史',
+'deletedhist'                 => '已删除之历史',
+'revdelete-content'           => '内容',
+'revdelete-summary'           => '编辑摘要',
+'revdelete-uname'             => '用户名',
+'revdelete-restricted'        => '已应用限制至操作员',
+'revdelete-unrestricted'      => '已移除对于操作员的限制',
+'revdelete-hid'               => '隐藏 $1',
+'revdelete-unhid'             => '不隐藏 $1',
+'revdelete-log-message'       => '$1的$2次修订',
+'logdelete-log-message'       => '$1的$2项事件',
+'revdelete-hide-current'      => '正在隐藏于$1 $2之项目错误：这个是现时的修订，不可以隐藏。',
+'revdelete-show-no-access'    => '正在显示于$1 $2之项目错误：这个项目已经标示为"已限制"，您对它并无通行权。',
+'revdelete-modify-no-access'  => '正在更改于$1 $2之项目错误：这个项目已经标示为"已限制"，您对它并无通行权。',
+'revdelete-modify-missing'    => '正在更改项目ID $1错误：它在资料库中遗失！',
+'revdelete-no-change'         => '警告：于$1 $2之项目已经请求了可见性的设置。',
+'revdelete-concurrent-change' => '正在更改于$1 $2之项目错误：当我们尝试更改它的设置时，已经被另一些人更改过。请检查纪录。',
+'revdelete-only-restricted'   => '您不可以废止管理员可以看见的项目，而不选另外其中一个废止选项。',
 
 # Suppression log
 'suppressionlog'     => '阻止日志',
@@ -1036,7 +1044,7 @@ $2',
 'textmatches'                      => '页面内容相符',
 'notextmatches'                    => '没有页面内容匹配',
 'prevn'                            => '前$1个',
-'nextn'                            => '后$1个',
+'nextn'                            => '后{{PLURAL:$1|$1}}个',
 'prevn-title'                      => '前$1项结果',
 'nextn-title'                      => '后$1项结果',
 'shown-title'                      => '每页显示$1项结果',
@@ -1046,8 +1054,8 @@ $2',
 'searchmenu-new'                   => "'''在这个wiki上新建这个页面\"[[:\$1]]\"！'''",
 'searchhelp-url'                   => 'Help:目录',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|去浏览以此为首的页面]]',
-'searchprofile-articles'           => '条目',
-'searchprofile-project'            => '帮助',
+'searchprofile-articles'           => '内容页面',
+'searchprofile-project'            => '帮助和计划页面',
 'searchprofile-images'             => '多媒体',
 'searchprofile-everything'         => '全部',
 'searchprofile-advanced'           => '高级',
@@ -1068,6 +1076,7 @@ $2',
 'search-mwsuggest-disabled'        => '无建议',
 'search-relatedarticle'            => '相关',
 'mwsuggest-disable'                => '禁用AJAX建议',
+'searcheverything-enable'          => '在所有名字空间中搜寻',
 'searchrelated'                    => '相关',
 'searchall'                        => '所有',
 'showingresults'                   => '下面显示从第<b>$2</b>条开始的<b>$1</b>条结果：',
@@ -1081,6 +1090,9 @@ $2',
 'powersearch-ns'                   => '在以下的名字空间中搜索：',
 'powersearch-redir'                => '重定向列表',
 'powersearch-field'                => '搜索',
+'powersearch-togglelabel'          => '核取：',
+'powersearch-toggleall'            => '所有',
+'powersearch-togglenone'           => '无',
 'search-external'                  => '外部搜索',
 'searchdisabled'                   => '{{SITENAME}}的搜索已被禁用。您可以暂时使用Google进行搜索，须注意他们索引的{{SITENAME}}内容可能会过时。',
 
@@ -1093,99 +1105,107 @@ $2',
 'qbsettings-floatingright' => '右侧漂移',
 
 # Preferences page
-'preferences'               => '参数设置',
-'mypreferences'             => '我的参数设置',
-'prefs-edits'               => '编辑数量：',
-'prefsnologin'              => '尚未登录',
-'prefsnologintext'          => '您必须先<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} 登录]</span>才能设置个人参数。',
-'changepassword'            => '更改密码',
-'prefs-skin'                => '皮肤',
-'skin-preview'              => '预览',
-'prefs-math'                => '数学公式',
-'dateformat'                => '日期格式',
-'datedefault'               => '默认值',
-'prefs-datetime'            => '日期和时间',
-'prefs-personal'            => '用户资料',
-'prefs-rc'                  => '最近更改',
-'prefs-watchlist'           => '监视列表',
-'prefs-watchlist-days'      => '监视列表中显示记录的天数：',
-'prefs-watchlist-days-max'  => '（最多7天）',
-'prefs-watchlist-edits'     => '在增强的监视列表中显示最多更改次数：',
-'prefs-watchlist-edits-max' => '（最多数量：1000）',
-'prefs-misc'                => '杂项',
-'prefs-resetpass'           => '更改密码',
-'prefs-email'               => '邮箱选项',
-'prefs-rendering'           => '外观',
-'saveprefs'                 => '保存',
-'resetprefs'                => '清除未保存的更改',
-'restoreprefs'              => '恢复所有默认设置',
-'prefs-editing'             => '编辑',
-'prefs-edit-boxsize'        => '编辑框尺寸',
-'rows'                      => '行：',
-'columns'                   => '列：',
-'searchresultshead'         => '搜索',
-'resultsperpage'            => '每页显示链接数',
-'contextlines'              => '每链显示行数：',
-'contextchars'              => '每行显示字数：',
-'stub-threshold'            => '<a href="#" class="stub">短页面链接</a>格式门槛值（字节）：',
-'recentchangesdays'         => '最近更改中的显示日数：',
-'recentchangesdays-max'     => '(最大 $1 日)',
-'recentchangescount'        => '最近更改、页面历史及日志页面中的默认编辑数：',
-'savedprefs'                => '您的个人参数设置已经保存。',
-'timezonelegend'            => '时区',
-'localtime'                 => '当地时间：',
-'timezoneselect'            => '时区：',
-'timezoneuseserverdefault'  => '使用服务器默认值',
-'timezoneuseoffset'         => '其它 (指定偏移)',
-'timezoneoffset'            => '时差¹：',
-'servertime'                => '服务器时间：',
-'guesstimezone'             => '从浏览器填写',
-'timezoneregion-africa'     => '非洲',
-'timezoneregion-america'    => '美洲',
-'timezoneregion-antarctica' => '南极洲',
-'timezoneregion-arctic'     => '北极',
-'timezoneregion-asia'       => '亚洲',
-'timezoneregion-atlantic'   => '大西洋',
-'timezoneregion-australia'  => '澳大利亚',
-'timezoneregion-europe'     => '欧洲',
-'timezoneregion-indian'     => '印度洋',
-'timezoneregion-pacific'    => '太平洋',
-'allowemail'                => '接受来自其他用户的邮件',
-'prefs-searchoptions'       => '搜索选项',
-'prefs-namespaces'          => '名字空间',
-'defaultns'                 => '默认搜索的名字空间',
-'default'                   => '默认',
-'prefs-files'               => '文件',
-'prefs-custom-css'          => '自定义CSS',
-'prefs-custom-js'           => '自定义JS',
-'prefs-reset-intro'         => '您可以利用这个页面去重设您的参数设置到网站默认值。这个动作无法复原。',
-'prefs-emailconfirm-label'  => '电子邮件确认：',
-'prefs-textboxsize'         => '编辑框大小',
-'youremail'                 => '电子邮件：',
-'username'                  => '用户名：',
-'uid'                       => '用户ID：',
-'prefs-memberingroups'      => '{{PLURAL:$1|一|多}}组的成员：',
-'prefs-registration'        => '注册时间：',
-'yourrealname'              => '真实姓名：',
-'yourlanguage'              => '界面语言：',
-'yourvariant'               => '字体变换：',
-'yournick'                  => '签名：',
-'badsig'                    => '错误的原始签名。检查一下HTML标签。',
-'badsiglength'              => '签名过长。
+'preferences'                   => '参数设置',
+'mypreferences'                 => '我的参数设置',
+'prefs-edits'                   => '编辑数量：',
+'prefsnologin'                  => '尚未登录',
+'prefsnologintext'              => '您必须先<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} 登录]</span>才能设置个人参数。',
+'changepassword'                => '更改密码',
+'prefs-skin'                    => '皮肤',
+'skin-preview'                  => '预览',
+'prefs-math'                    => '数学公式',
+'datedefault'                   => '默认值',
+'prefs-datetime'                => '日期和时间',
+'prefs-personal'                => '用户资料',
+'prefs-rc'                      => '最近更改',
+'prefs-watchlist'               => '监视列表',
+'prefs-watchlist-days'          => '监视列表中显示记录的天数：',
+'prefs-watchlist-days-max'      => '（最多7天）',
+'prefs-watchlist-edits'         => '在增强的监视列表中显示最多更改次数：',
+'prefs-watchlist-edits-max'     => '（最多数量：1000）',
+'prefs-misc'                    => '杂项',
+'prefs-resetpass'               => '更改密码',
+'prefs-email'                   => '邮箱选项',
+'prefs-rendering'               => '外观',
+'saveprefs'                     => '保存',
+'resetprefs'                    => '清除未保存的更改',
+'restoreprefs'                  => '恢复所有默认设置',
+'prefs-editing'                 => '编辑',
+'prefs-edit-boxsize'            => '编辑框尺寸',
+'rows'                          => '行：',
+'columns'                       => '列：',
+'searchresultshead'             => '搜索',
+'resultsperpage'                => '每页显示链接数',
+'contextlines'                  => '每链显示行数：',
+'contextchars'                  => '每行显示字数：',
+'stub-threshold'                => '<a href="#" class="stub">短页面链接</a>格式门槛值（字节）：',
+'recentchangesdays'             => '最近更改中的显示日数：',
+'recentchangesdays-max'         => '(最大 $1 日)',
+'recentchangescount'            => '最近更改、页面历史及日志页面中的默认编辑数：',
+'prefs-help-recentchangescount' => '这个包括最近更改、页面历史以及日志。',
+'savedprefs'                    => '您的个人参数设置已经保存。',
+'timezonelegend'                => '时区：',
+'localtime'                     => '当地时间：',
+'timezoneuseserverdefault'      => '使用服务器默认值',
+'timezoneuseoffset'             => '其它 (指定偏移)',
+'timezoneoffset'                => '时差¹：',
+'servertime'                    => '服务器时间：',
+'guesstimezone'                 => '从浏览器填写',
+'timezoneregion-africa'         => '非洲',
+'timezoneregion-america'        => '美洲',
+'timezoneregion-antarctica'     => '南极洲',
+'timezoneregion-arctic'         => '北极',
+'timezoneregion-asia'           => '亚洲',
+'timezoneregion-atlantic'       => '大西洋',
+'timezoneregion-australia'      => '澳大利亚',
+'timezoneregion-europe'         => '欧洲',
+'timezoneregion-indian'         => '印度洋',
+'timezoneregion-pacific'        => '太平洋',
+'allowemail'                    => '接受来自其他用户的邮件',
+'prefs-searchoptions'           => '搜索选项',
+'prefs-namespaces'              => '名字空间',
+'defaultns'                     => '否则在这些名字空间搜索：',
+'default'                       => '默认',
+'prefs-files'                   => '文件',
+'prefs-custom-css'              => '自定义CSS',
+'prefs-custom-js'               => '自定义JS',
+'prefs-reset-intro'             => '您可以利用这个页面去重设您的参数设置到网站默认值。这个动作无法复原。',
+'prefs-emailconfirm-label'      => '电子邮件确认：',
+'prefs-textboxsize'             => '编辑框大小',
+'youremail'                     => '电子邮件：',
+'username'                      => '用户名：',
+'uid'                           => '用户ID：',
+'prefs-memberingroups'          => '{{PLURAL:$1|一|多}}组的成员：',
+'prefs-registration'            => '注册时间：',
+'yourrealname'                  => '真实姓名：',
+'yourlanguage'                  => '界面语言：',
+'yourvariant'                   => '字体变换：',
+'yournick'                      => '签名：',
+'badsig'                        => '错误的原始签名。检查一下HTML标签。',
+'badsiglength'                  => '签名过长。
 它的长度不可超过$1个字符。',
-'yourgender'                => '性别：',
-'gender-unknown'            => '未指定',
-'gender-male'               => '男',
-'gender-female'             => '女',
-'prefs-help-gender'         => '可选：用以软件中的性别指定。此项资料将会被公开。',
-'email'                     => '电子邮箱',
-'prefs-help-realname'       => '真实姓名是可选的。
+'yourgender'                    => '性别：',
+'gender-unknown'                => '未指定',
+'gender-male'                   => '男',
+'gender-female'                 => '女',
+'prefs-help-gender'             => '可选：用以软件中的性别指定。此项资料将会被公开。',
+'email'                         => '电子邮箱',
+'prefs-help-realname'           => '真实姓名是可选的。
 如果您选择提供它，那它便用以对您的贡献署名。',
-'prefs-help-email'          => '电子邮件是可选的，但当您忘记您的个密码时可以将新密码寄回给您。您亦可以在您没有公开自己的用户身份时通过您的用户页或用户讨论页与您联系。',
-'prefs-help-email-required' => '需要电子邮件地址。',
-'prefs-info'                => '基本资料',
-'prefs-i18n'                => '国际化',
-'prefs-signature'           => '签名',
+'prefs-help-email'              => '电子邮件是可选的，但当您忘记您的个密码时可以将新密码寄回给您。您亦可以在您没有公开自己的用户身份时通过您的用户页或用户讨论页与您联系。',
+'prefs-help-email-required'     => '需要电子邮件地址。',
+'prefs-info'                    => '基本资料',
+'prefs-i18n'                    => '国际化',
+'prefs-signature'               => '签名',
+'prefs-dateformat'              => '日期格式',
+'prefs-timeoffset'              => '时间偏移',
+'prefs-advancedediting'         => '高级选项',
+'prefs-advancedrc'              => '高级选项',
+'prefs-advancedrendering'       => '高级选项',
+'prefs-advancedsearchoptions'   => '高级选项',
+'prefs-advancedwatchlist'       => '高级选项',
+'prefs-display'                 => '显示选项',
+'prefs-diffs'                   => '差异',
 
 # User rights
 'userrights'                  => '用户权限管理',
@@ -1248,7 +1268,7 @@ $2',
 'right-reupload'              => '覆盖现有的文件',
 'right-reupload-own'          => '覆盖由同一位上传的文件',
 'right-reupload-shared'       => '于本地无视共用媒体文件库上的文件',
-'right-upload_by_url'         => '由URL地址上传一个文件',
+'right-upload_by_url'         => '由一个URL上传文件',
 'right-purge'                 => '不需要确认之下清除网站快取',
 'right-autoconfirmed'         => '编辑半保护页面',
 'right-bot'                   => '视为一个自动程序',
@@ -1309,7 +1329,7 @@ $2',
 'action-upload'               => '上传这个文件',
 'action-reupload'             => '覆盖这个现有的文件',
 'action-reupload-shared'      => '覆盖在共用文件库上的文件',
-'action-upload_by_url'        => '由一个URL地址中上传文件',
+'action-upload_by_url'        => '由一个URL中上传文件',
 'action-writeapi'             => '用来写API',
 'action-delete'               => '删除这个页面',
 'action-deleterevision'       => '删除这次修订',
@@ -1363,6 +1383,8 @@ $2',
 
 # Recent changes linked
 'recentchangeslinked'          => '链出更改',
+'recentchangeslinked-feed'     => '链出更改',
+'recentchangeslinked-toolbox'  => '链出更改',
 'recentchangeslinked-title'    => '对于“$1”有关的链出更改',
 'recentchangeslinked-noresult' => '在这一段时间中链接的页面并无更改。',
 'recentchangeslinked-summary'  => "这一个特殊页面列示''由''所给出的一个页面之链接到页面的最近更改（或者是对于指定分类的成员）。
@@ -1429,10 +1451,10 @@ $2',
 'fileexists-thumbnail-yes'    => "此文件可能是另一幅图像的缩小版本''（缩略图）''。请仔细检查该文件'''<tt>$1</tt>'''。<br />
 如果被检查文件与原始大小的图像是同一幅图像，您无需上传多余的缩略图。",
 'file-thumbnail-no'           => "文件名以'''<tt>$1</tt>'''开头。它可能是另一幅图像的缩小版本''（缩略图）''。
-如果你有该图像完整分辨率的版本，请上传该完整版本。否则请修改文件名。",
+如果{{GENDER:你|妳|你}}有该图像完整分辨率的版本，请上传该完整版本。否则请修改文件名。",
 'fileexists-forbidden'        => '已存在相同名称的文件，且不能覆盖；请返回并用一个新的名称来上传此文件。[[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => '在共享文件库中已存在此名称的文件。
-如果你仍然想去上传它的话，请返回并用一个新的名称来上传此文件。[[File:$1|thumb|center|$1]]',
+如果{{GENDER:你|妳|你}}仍然想去上传它的话，请返回并用一个新的名称来上传此文件。[[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => '这个文件与以下{{PLURAL:$1|一|多}}个文件重复：',
 'file-deleted-duplicate'      => '一个相同名称的文件 ([[$1]]) 在先前删除过。您应该在重新上传之前检查一下该文件之删除纪录。',
 'successfulupload'            => '上传成功',
@@ -1491,6 +1513,7 @@ $2',
 'listfiles_count'       => '版本',
 
 # File description page
+'file-anchor-link'          => '文件',
 'filehist'                  => '文件历史',
 'filehist-help'             => '点击日期／时间以查看当时出现过的文件。',
 'filehist-deleteall'        => '删除全部',
@@ -1505,6 +1528,7 @@ $2',
 'filehist-dimensions'       => '维度',
 'filehist-filesize'         => '文件大小',
 'filehist-comment'          => '注解',
+'filehist-missing'          => '文件遗失',
 'imagelinks'                => '文件链接',
 'linkstoimage'              => '以下的$1个页面链接到本文件：',
 'linkstoimage-more'         => '多于$1个页面连接到这个文件。
@@ -1519,8 +1543,8 @@ $2',
 请参阅在[$2 文件描述页面]以了解其相关信息。',
 'sharedupload-desc-here'    => '该文件来自于$1，它可能在其它计划项目中被应用。
 它在[$2 文件描述页面]那边上的描述于下面显示。',
-'noimage'                   => '不存在此名称的文件，但您可以$1。',
-'noimage-linktext'          => '上传一个',
+'filepage-nofile'           => '不存在此名称的文件。',
+'filepage-nofile-link'      => '不存在此名称的文件，但您可以[$1 上传它]。',
 'uploadnewversion-linktext' => '上传该文件的新版本',
 'shared-repo-from'          => '出自$1',
 'shared-repo'               => '一个共用文件库',
@@ -1539,7 +1563,7 @@ $2',
 'filedelete'                  => '删除$1',
 'filedelete-legend'           => '删除文件',
 'filedelete-intro'            => "您现正删除文件'''[[Media:$1|$1]]'''。",
-'filedelete-intro-old'        => "你现正删除'''[[Media:$1|$1]]'''于[$4 $2 $3]的版本。",
+'filedelete-intro-old'        => "{{GENDER:你|妳|你}}现正删除'''[[Media:$1|$1]]'''于[$4 $2 $3]的版本。",
 'filedelete-comment'          => '删除理由：',
 'filedelete-submit'           => '删除',
 'filedelete-success'          => "'''$1'''已经删除。",
@@ -1825,7 +1849,7 @@ Template:消除歧義',
 'watchnochange'        => '在显示的时间段内您所监视的页面没有更改。',
 'watchlist-details'    => '不包含讨论页，有 $1 页在您的监视列表上。',
 'wlheader-enotif'      => '* 已经启动电子邮件通知功能。',
-'wlheader-showupdated' => "* 在你上次查看后有被修改过的页面会显示为'''粗体'''",
+'wlheader-showupdated' => "* 在{{GENDER:你|妳|你}}上次查看后有被修改过的页面会显示为'''粗体'''",
 'watchmethod-recent'   => '检查被监视页面的最近编辑',
 'watchmethod-list'     => '查看监视页中的最新修改',
 'watchlistcontains'    => '您的监视列表包含$1个页面。',
@@ -1936,7 +1960,7 @@ $NEWPAGE
 'protect_expiry_invalid'      => '输入的终止时间无效。',
 'protect_expiry_old'          => '终止时间已过去。',
 'protect-unchain'             => '移动权限解锁',
-'protect-text'                => '你可以在这里浏览和修改对页面<strong><nowiki>$1</nowiki></strong>的保护级别。',
+'protect-text'                => '{{GENDER:你|妳|你}}可以在这里浏览和修改对页面<strong><nowiki>$1</nowiki></strong>的保护级别。',
 'protect-locked-blocked'      => '您不能在被查封时更改保护级别。
 以下是<strong>$1</strong>现时的保护级别：',
 'protect-locked-dblock'       => '在数据库被锁定时无法更改保护级别。
@@ -2001,6 +2025,7 @@ $NEWPAGE
 'undelete-nodiff'              => '找不到先前的修订版本。',
 'undeletebtn'                  => '恢复',
 'undeletelink'                 => '查看／恢复',
+'undeleteviewlink'             => '查看',
 'undeletereset'                => '重设',
 'undeleteinvert'               => '反向选择',
 'undeletecomment'              => '评论：',
@@ -2131,7 +2156,7 @@ $1',
 'ipblocklist-submit'              => '搜索',
 'blocklistline'                   => '$1，$2禁封$3 ($4)',
 'infiniteblock'                   => '永久',
-'expiringblock'                   => '$1 到期',
+'expiringblock'                   => '$1 $2 到期',
 'anononlyblock'                   => '仅限匿名用户',
 'noautoblockblock'                => '禁用自动查封',
 'createaccountblock'              => '禁止创建账户',
@@ -2273,16 +2298,18 @@ $1已经被封锁。您是否想更改这个设置？',
 'imageinvalidfilename'         => '目标文件名称无效',
 'fix-double-redirects'         => '更新所有指向原始标题的重定向',
 'move-leave-redirect'          => '保留重定向',
+'protectedpagemovewarning'     => "'''警告：'''这个页面已经被锁上，只有拥有管理员权限的用户才可以移动它。",
+'semiprotectedpagemovewarning' => "'''注意：'''这个页面已经被锁上，只有已经注册的用户才可以移动它。",
 
 # Export
 'export'            => '导出页面',
 'exporttext'        => '您可以将特定页面或一组页面的文本以及编辑历史以 XML 格式导出；这样可以将有关页面通过“[[Special:Import|导入页面]]”页面导入到另一个运行 MediaWiki 的网站。
 
 要导出页面，请在下面的文本框中输入页面标题，每行一个标题，
-并选择你是否需要导出带有页面历史的以前的修订本，
+并选择{{GENDER:你|妳|你}}是否需要导出带有页面历史的以前的修订本，
 或是只选择导出带有最后一次编辑信息的当前修订版本。
 
-此外你还可以利用链接导出文件，例如你可以使用[[{{#Special:Export}}/{{MediaWiki:Mainpage}}]]导出“[[{{MediaWiki:Mainpage}}]]”页面。',
+此外{{GENDER:你|妳|你}}还可以利用链接导出文件，例如{{GENDER:你|妳|你}}可以使用[[{{#Special:Export}}/{{MediaWiki:Mainpage}}]]导出“[[{{MediaWiki:Mainpage}}]]”页面。',
 'exportcuronly'     => '仅包含当前的修订，而不是全部的历史。',
 'exportnohistory'   => "----
 '''注意：''' 由于性能原因，从此表单导出页面的全部历史已被禁用。",
@@ -2376,9 +2403,9 @@ $1已经被封锁。您是否想更改这个设置？',
 'tooltip-pt-anonlogin'            => '我们鼓励您登录，但这并不是强制性的',
 'tooltip-pt-logout'               => '退出',
 'tooltip-ca-talk'                 => '关于页面正文的讨论',
-'tooltip-ca-edit'                 => '你可编辑此页，请在保存前先预览一下。',
+'tooltip-ca-edit'                 => '{{GENDER:你|妳|你}}可编辑此页，请在保存前先预览一下。',
 'tooltip-ca-addsection'           => '开始一个新小节',
-'tooltip-ca-viewsource'           => '该页面已被保护。你可以查看该页源码。',
+'tooltip-ca-viewsource'           => '该页面已被保护。{{GENDER:你|妳|你}}可以查看该页源码。',
 'tooltip-ca-history'              => '此页面的早前修订版本',
 'tooltip-ca-protect'              => '保护此页',
 'tooltip-ca-delete'               => '删除此页',
@@ -2437,6 +2464,7 @@ $1已经被封锁。您是否想更改这个设置？',
 'chick.css'       => '/* 此处的 CSS 将影响使用 Chick 皮肤的用户 */',
 'simple.css'      => '/* 此处的 CSS 将影响使用 Simple 皮肤的用户 */',
 'modern.css'      => '/* 此处的 CSS 将影响使用 Modern 皮肤的用户 */',
+'vector.css'      => '/* 此处的 CSS 将影响使用 Vector 皮肤的用户 */',
 'print.css'       => '/* 此处的 CSS 将影响打印输出 */',
 'handheld.css'    => '/* 此处的 CSS 将影响在 $wgHandheldStyle 设置手提装置面板 */',
 
@@ -2450,6 +2478,7 @@ $1已经被封锁。您是否想更改这个设置？',
 'chick.js'       => '/* 此处的JavaScript将加载于使用Chick皮肤的用户 */',
 'simple.js'      => '/* 此处的JavaScript将加载于使用Simple皮肤的用户 */',
 'modern.js'      => '/* 此处的JavaScript将加载于使用Modern皮肤的用户 */',
+'vector.js'      => '/* 此处的JavaScript将加载于使用Vector皮肤的用户 */',
 
 # Metadata
 'nodublincore'      => 'Dublin Core RDF 元数据在该服务器不可用。',
@@ -2516,13 +2545,13 @@ $1已经被封锁。您是否想更改这个设置？',
 'rcpatroldisabled'                    => '最新更改检查被关闭',
 'rcpatroldisabledtext'                => '最新更改检查的功能目前已关闭。',
 'markedaspatrollederror'              => '不能标志为已检查',
-'markedaspatrollederrortext'          => '你需要指定某个版本才能标志为已检查。',
-'markedaspatrollederror-noautopatrol' => '您无法将你自己所作的更改标记为已检查。',
+'markedaspatrollederrortext'          => '{{GENDER:你|妳|你}}需要指定某个版本才能标志为已检查。',
+'markedaspatrollederror-noautopatrol' => '您无法将{{GENDER:你|妳|你}}自己所作的更改标记为已检查。',
 
 # Patrol log
 'patrol-log-page'      => '巡查日志',
-'patrol-log-header'    => '这个是已经巡查过的日志。',
-'patrol-log-line'      => '$2的版本$1已被标记为已检查的$3',
+'patrol-log-header'    => '这是已巡查的修订版本的日志。',
+'patrol-log-line'      => '$2的版本$1已被标记为已巡查$3',
 'patrol-log-auto'      => '（自动）',
 'patrol-log-diff'      => '修订 $1',
 'log-show-hide-patrol' => '$1巡查纪录',
@@ -2603,6 +2632,7 @@ Variants for Chinese language
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags
@@ -2853,10 +2883,6 @@ Variants for Chinese language
 'exif-gpslongitude-e' => '东经',
 'exif-gpslongitude-w' => '西经',
 
-# Pseudotags used for GPSAltitudeRef
-'exif-gpsaltitude-0' => '海拔以上米数',
-'exif-gpsaltitude-1' => '海拔以下米数',
-
 'exif-gpsstatus-a' => '测量过程',
 'exif-gpsstatus-v' => '互动测量',
 
@@ -2867,11 +2893,6 @@ Variants for Chinese language
 'exif-gpsspeed-k' => '公里每小时',
 'exif-gpsspeed-m' => '英里每小时',
 'exif-gpsspeed-n' => '海里每小时(节)',
-
-# Pseudotags used for GPSDestDistanceRef
-'exif-gpsdestdistance-k' => '公里',
-'exif-gpsdestdistance-m' => '英里',
-'exif-gpsdestdistance-n' => '海里',
 
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
 'exif-gpsdirection-t' => '真方位',
@@ -2906,7 +2927,7 @@ Variants for Chinese language
 'confirmemail_needlogin'   => '您需要$1以确认您的邮箱地址。',
 'confirmemail_success'     => '您的邮箱已经被确认。您现在可以[[Special:UserLogin|登录]]并使用此网站了。',
 'confirmemail_loggedin'    => '您的邮箱地址现在已被确认。',
-'confirmemail_error'       => '你的确认过程发生错误。',
+'confirmemail_error'       => '{{GENDER:你|妳|你}}的确认过程发生错误。',
 'confirmemail_subject'     => '{{SITENAME}}邮箱地址确认',
 'confirmemail_body'        => '来自IP地址$1的用户（可能是您）在{{SITENAME}}上创建了账户“$2”，并提交了您的电子邮箱地址。
 
@@ -2938,14 +2959,19 @@ $1',
 
 # Delete conflict
 'deletedwhileediting' => "'''警告'''：此页在您开始编辑之后已经被删除！",
-'confirmrecreate'     => '在您编辑这个页面后，用户[[User:$1|$1]]([[User talk:$1|对话]])以下列原因删除了这个页面：$2。
-请确认在您重新创建页面前三思。',
+'confirmrecreate'     => "在您开始编辑这个页面后，用户[[User:$1|$1]] ([[User talk:$1|对话]])以下列原因删除了这个页面：
+: ''$2''
+请确认在您重新创建页面前三思。",
 'recreate'            => '重建',
 
 # action=purge
 'confirm_purge_button' => '确定',
 'confirm-purge-top'    => '要清除此页面的缓存吗?',
 'confirm-purge-bottom' => '清理一页将会清除快取以及强迫显示最现时之修订版本。',
+
+# Separators for various lists, etc.
+'comma-separator' => '、',
+'word-separator'  => '',
 
 # Multipage image navigation
 'imgmultipageprev' => '← 上一页',
@@ -2993,7 +3019,7 @@ $1',
 'watchlistedit-normal-done'    => '$1个标题已经从您的监视列表中移除：',
 'watchlistedit-raw-title'      => '编辑原始监视列表',
 'watchlistedit-raw-legend'     => '编辑原始监视列表',
-'watchlistedit-raw-explain'    => '您的监视列表中的标题在下面显示，同时亦都可以通过编辑这个表去加入以及移除标题；一行一个标题。当完成以后，点击更新监视列表。你亦都可以去用[[Special:Watchlist/edit|标准编辑器]]。',
+'watchlistedit-raw-explain'    => '您的监视列表中的标题在下面显示，同时亦都可以通过编辑这个表去加入以及移除标题；一行一个标题。当完成以后，点击更新监视列表。{{GENDER:你|妳|你}}亦都可以去用[[Special:Watchlist/edit|标准编辑器]]。',
 'watchlistedit-raw-titles'     => '标题：',
 'watchlistedit-raw-submit'     => '更新监视列表',
 'watchlistedit-raw-done'       => '您的监视列表已经更新。',

@@ -613,7 +613,6 @@ $messages = array(
 লিজেণ্ড: (বর্তমান) = বর্তমানৰ সংকলনৰ লগত পার্থক্য,
 (অন্তিম) = আগৰ সংকলনৰ লগত পার্থক্য, M = অগুৰুত্বপুর্ণ সম্পাদনা।',
 'history-fieldset-title' => 'ইতিহাসত অনুসন্ধান কৰক',
-'deletedrev'             => '[বিলোপন কৰা হল]',
 'histfirst'              => 'আটাইতকৈ পূৰণি',
 'histlast'               => 'শেহতীয়া',
 'historyempty'           => '(খালী)',
@@ -644,8 +643,8 @@ $messages = array(
 'notitlematches'        => 'এটাও পৃষ্ঠাৰ শিৰোণামা মিলা নাই',
 'textmatches'           => 'লিখনীৰ পাঠ্য মিলিছে',
 'notextmatches'         => 'এটাও লিখনীৰ পাঠ্য মিলা নাই',
-'prevn'                 => 'পুর্ববর্তি $1',
-'nextn'                 => 'পৰৱর্তি $1',
+'prevn'                 => 'পুর্ববর্তি {{PLURAL:$1|$1}}',
+'nextn'                 => 'পৰৱর্তি {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'চাওক ($1) ($2) ($3)',
 'searchhelp-url'        => 'Help:সুচী',
 'search-interwiki-more' => '(আৰু)',
@@ -678,7 +677,6 @@ $messages = array(
 'prefs-skin'                => 'আৱৰন',
 'skin-preview'              => 'খচৰা',
 'prefs-math'                => 'গণিত',
-'dateformat'                => 'তাৰিখৰ সজ্জা',
 'datedefault'               => 'বিশেষ পচন্দ নাই',
 'prefs-datetime'            => 'তাৰিখ আৰু সময়',
 'prefs-personal'            => 'সদস্যৰ বিৱৰণ',
@@ -765,6 +763,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'প্রাসংগিক সম্পাদনানমূহ',
+'recentchangeslinked-feed'     => 'প্রাসংগিক সম্পাদনানমূহ',
+'recentchangeslinked-toolbox'  => 'প্রাসংগিক সম্পাদনানমূহ',
 'recentchangeslinked-title'    => '"$1"ৰ লগত জৰিত সাল-সলনি',
 'recentchangeslinked-noresult' => 'দিয়া সময়ৰ ভিতৰত সংযোজিত পৃষ্ঠা সমূহত সাল-সলনি হোৱা নাই |',
 
@@ -778,6 +778,7 @@ $messages = array(
 'listfiles' => 'ফাইলৰ তালিকা',
 
 # File description page
+'file-anchor-link'          => 'চিত্র',
 'filehist'                  => 'ফাইলৰ ইতিবৃত্ত',
 'filehist-help'             => 'ফাইলৰ আগৰ অৱ্স্থা চাবলৈ সেই তাৰিখ/সময়ত টিপা মাৰক|',
 'filehist-current'          => 'বর্তমান',
@@ -790,8 +791,6 @@ $messages = array(
 'linkstoimage'              => 'তলত দিয়া পৃষ্ঠাবোৰ এই চিত্র খনৰ লগত জৰিত :{{PLURAL:$1|page links|$1 pages link}}',
 'nolinkstoimage'            => 'এই চিত্রখনলৈ কোনো পৃষ্ঠা সংযোজিত নহয়',
 'sharedupload'              => 'এই ফাইলতো অন্যান্য বিষয়তো ব্যৱহাৰ হব পাৰে|',
-'noimage'                   => 'এই নামৰ কোনো ফাইল নাই, আপুনি $1 কৰিব পাৰে ।',
-'noimage-linktext'          => 'বোজাই কৰক',
 'uploadnewversion-linktext' => 'এই ফাইলতোৰ নতুন সংশোধন এটা বোজাই কৰক',
 
 # List redirects
@@ -1068,6 +1067,7 @@ $messages = array(
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

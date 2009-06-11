@@ -762,7 +762,6 @@ Lu mutivu è ''$2''",
 'page_last'              => 'ùrtima',
 'histlegend'             => "Cunfrontu tra virsioni: silizziunari li caselli currispunnenti ê virsioni addisiati e prèmiri Mannu o lu pulsanti a basciu.<br /> Liggenna: (curr) = diffirenzi cu la virsioni attuali, (pric) = diffirenzi cu la virsioni pricidenti, '''m''' = canciamentu nicu",
 'history-fieldset-title' => 'Scurri ntâ crunuluggìa',
-'deletedrev'             => '[cancillata]',
 'histfirst'              => 'Prima',
 'histlast'               => 'Ùrtima',
 'historysize'            => '({{PLURAL:$1|1 byte|$1 byte}})',
@@ -925,8 +924,8 @@ S'havi accirtari ca la cuntinuità storica di la pàggina nun veni altirata.",
 'notitlematches'                   => 'Nudda currispunnenza ntê tìtuli dî pàggini',
 'textmatches'                      => "Ntô testu di l'artìculi",
 'notextmatches'                    => 'Nudda currispunnenza ntô testu dî pàggini',
-'prevn'                            => 'li pricidenti $1',
-'nextn'                            => 'li pròssimi $1',
+'prevn'                            => 'li pricidenti {{PLURAL:$1|$1}}',
+'nextn'                            => 'li pròssimi {{PLURAL:$1|$1}}',
 'viewprevnext'                     => 'Talìa ($1) ($2) ($3).',
 'searchmenu-legend'                => 'Opzioni di circata',
 'searchmenu-exists'                => "* Pàggina '''[[$1]]'''",
@@ -988,7 +987,6 @@ S'havi accirtari ca la cuntinuità storica di la pàggina nun veni altirata.",
 'prefs-skin'                => 'Aspettu',
 'skin-preview'              => 'Antiprima',
 'prefs-math'                => 'Fòrmuli',
-'dateformat'                => 'Furmatu dâ data',
 'datedefault'               => 'Nudda prifirenza',
 'prefs-datetime'            => 'Data e ura',
 'prefs-personal'            => 'Prufilu utenti',
@@ -1018,7 +1016,6 @@ S'havi accirtari ca la cuntinuità storica di la pàggina nun veni altirata.",
 'savedprefs'                => 'Li tò prifirenzi foru sarvati.',
 'timezonelegend'            => 'Zona oraria',
 'localtime'                 => 'Uràriu lucali',
-'timezoneselect'            => 'Time zone:',
 'timezoneuseserverdefault'  => 'Usa uràriu dû server',
 'timezoneuseoffset'         => 'Àutru (spicificari diffirenza)',
 'timezoneoffset'            => 'Uri di diffirenza¹',
@@ -1219,6 +1216,8 @@ S'havi accirtari ca la cuntinuità storica di la pàggina nun veni altirata.",
 
 # Recent changes linked
 'recentchangeslinked'          => 'Canciamenti culligati',
+'recentchangeslinked-feed'     => 'Canciamenti culligati',
+'recentchangeslinked-toolbox'  => 'Canciamenti culligati',
 'recentchangeslinked-title'    => 'Canciamenti culligati a "$1"',
 'recentchangeslinked-noresult' => 'Nuddu canciamentu ê pàggini culligati ntô pirìudu spicificatu.',
 'recentchangeslinked-summary'  => "Chista pàggina spiciali ammustra li canciamenti cchiù ricenti ê pàggini culligati a chidda spicificata. Li pàggini taliati ni la tou [[Special:Watchlist|lista taliata]] sunu evidenziati 'n '''grassettu'''.",
@@ -1353,6 +1352,7 @@ Pi canciari l'urdinamentu, fari clic supra a la ntistazzioni dâ culonna scigghi
 'listfiles_count'       => 'Virsioni',
 
 # File description page
+'file-anchor-link'          => 'Mmàggini',
 'filehist'                  => 'Crunuluggìa dô file',
 'filehist-help'             => 'Fari clic supra nu gruppu data/ura pi vìdiri lu file comu si prisintava ntô mumentu nnicatu.',
 'filehist-deleteall'        => 'cancilla tuttu',
@@ -1377,8 +1377,6 @@ Di sècutu sunnu alincati sulu {{PLURAL:$1|la prima pàggina ca punta|li primi $
 'redirectstofile'           => '{{PLURAL:$1|Chistu|Chisti $1}} file {{PLURAL:$1|è|sunnu}} nu redirect a stu file:',
 'duplicatesoffile'          => '{{PLURAL:$1|Chistu|Chisti $1}} file {{PLURAL:$1|è nu dupppiuni|sunnu duppiuni}} di stu file ([[Special:FileDuplicateSearch/$2|cchiù dittagli]]):',
 'sharedupload'              => 'Stu file veni di $1 e pò èssiri utilizzatu di àutri pruggetti wiki.',
-'noimage'                   => 'Un file cu stu nomu nun esisti, ma è pussìbbili, voi $1 tu?',
-'noimage-linktext'          => 'carricàrilu ora',
 'uploadnewversion-linktext' => 'Càrrica na virsioni nova di stu file',
 
 # File reversion
@@ -1957,7 +1955,7 @@ Pi maggiuri nfurmazzioni, talìa la [[Special:IPBlockList|lista di l'IP bluccati
 'ipblocklist-submit'              => 'Ricerca',
 'blocklistline'                   => '$1, $2 hà bluccatu $3 ($4)',
 'infiniteblock'                   => 'nfinitu',
-'expiringblock'                   => 'scadenza: $1',
+'expiringblock'                   => 'scadenza: $1 $2',
 'anononlyblock'                   => 'sulu anònimi',
 'noautoblockblock'                => 'bloccu automàticu disabbilitatu',
 'createaccountblock'              => 'criazzioni account bluccata',
@@ -2371,6 +2369,7 @@ Li lijami succissivi, supra la stissa riga, sunnu cunzidirati comu eccizzioni (p
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength",
 
 # EXIF tags

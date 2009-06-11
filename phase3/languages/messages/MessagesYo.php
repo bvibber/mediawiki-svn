@@ -463,7 +463,6 @@ Bákannà ẹ tún ṣèlérí fún wa wípé ẹ̀yin lẹkọ́ fúnra arayín
 'page_first'             => 'àkọ́kọ́',
 'page_last'              => 'tógbẹ̀yìn',
 'history-fieldset-title' => 'Ìtàn Ìṣíwò',
-'deletedrev'             => '[tiparẹ́]',
 'histfirst'              => 'Pípẹ́jùlọ',
 'histlast'               => 'Tuntunjùlọ',
 'historyempty'           => '(òfo)',
@@ -497,7 +496,7 @@ Bákannà ẹ tún ṣèlérí fún wa wípé ẹ̀yin lẹkọ́ fúnra arayín
 Ẹ le [[:\$1|ṣ'èdá ojúewé yìí]].",
 'noexactmatch-nocreate'     => "'''Kò sí ojúewé pẹ̀lú àkọlé \"\$1\".'''",
 'prevn'                     => 'titẹ́lẹ̀ $1',
-'nextn'                     => 'tókàn $1',
+'nextn'                     => 'tókàn {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'Ẹ wo ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:Àwon ohunnú',
 'search-result-size'        => '$1 ({{PLURAL:$2|ọ̀rọ̀ 1|àwọn ọ̀rọ̀ $2}})',
@@ -522,7 +521,6 @@ Bákannà ẹ tún ṣèlérí fún wa wípé ẹ̀yin lẹkọ́ fúnra arayín
 'prefsnologintext'          => 'Ẹ gbọ́dọ̀ <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} wọlé]</span> láti to àwọn ìfẹ́ràn oníṣe.',
 'changepassword'            => 'Ìyípadà ọ̀rọ̀ìpamọ́',
 'prefs-skin'                => 'Skin (Àwọ̀)',
-'dateformat'                => 'Ìṣájúètò ọjọ́',
 'datedefault'               => 'Kò sí ìfẹ́ràn',
 'prefs-datetime'            => 'Ọjọ́ àti àkókò',
 'prefs-personal'            => 'Ọ̀rọ̀ nípa oníṣe',
@@ -591,6 +589,8 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Àtúnṣe tó báramu',
+'recentchangeslinked-feed'     => 'Àtúnṣe tó báramu',
+'recentchangeslinked-toolbox'  => 'Àtúnṣe tó báramu',
 'recentchangeslinked-title'    => 'Àtúnṣe tó báramu mọ́ "$1"',
 'recentchangeslinked-noresult' => 'Kò sí ìyàtọ̀ nínú àwọn ojúewé ìjápọ̀ láàrin ìgbà tí ẹ sọ.',
 'recentchangeslinked-summary'  => "Àkójọ àwọn àtúnṣe tí a sẹ̀sẹ̀ ṣe sí àwọn ojúewé tó jápọ̀ wá láti ojúewé pàtó kan (tàbí sí ìkan nìnú ẹ̀ka pàtó kan).
@@ -620,6 +620,7 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'listfiles_user' => 'Oníṣe',
 
 # File description page
+'file-anchor-link'          => 'Faili',
 'filehist'                  => 'Ìtàn faili',
 'filehist-help'             => 'Ẹ kan ọjọ́/àsìkò kan láti wo faili òún bó ṣe hàn ní ìgbà na.',
 'filehist-current'          => 'lọ́wọ́',
@@ -632,8 +633,6 @@ Tí ẹ bá fisílẹ̀ a ó lòó láti tóka iṣẹ́ yín fún yín.',
 'linkstoimage'              => '{{PLURAL:$1|Ojúewé yí|$1 Àwọn ojúewé yí}} jápọ̀ mọ́ àpò yí:',
 'nolinkstoimage'            => 'Kò sí ojúewé tó jápọ̀ mọ́ faili yìí.',
 'sharedupload'              => 'Faili yìí jẹ́ ìrùsókè láti $1 à ṣì le pin pẹ̀lú àwọn iṣẹ́owọ́ mìíràn tí wọ́n n lòó.',
-'noimage'                   => 'Kò sí faili tí únjẹ́ báun, sùgbọ́n ẹ le ẹ̀ $1.',
-'noimage-linktext'          => 'Ìrùsókè ẹyọkan',
 'uploadnewversion-linktext' => 'Ẹ ṣe ìrùsókè àtúnṣe tuntun faili yìí',
 
 # File deletion

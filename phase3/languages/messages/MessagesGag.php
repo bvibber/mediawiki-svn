@@ -453,7 +453,6 @@ Sayfanın silmää jurnalı raatlık için yazılêr burada:",
 'histlegend'          => "Fark seçimi: 2 versiyanın angısını isteersiniz karşılaştırmaa, önündeki kutucaa tuşlayıp, enter'a basın yaki tuşlayın butona angısı sayfanın en altında bulunêr.<br />
 Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 (ilerki) = bir ilerki versiyalan aradaki fark, K = küçük diişmäk",
-'deletedrev'          => '[silindi]',
 'histfirst'           => 'En eski',
 'histlast'            => 'En eni',
 'historysize'         => '({{PLURAL:$1|1 bayt|$1 bayt}})',
@@ -483,8 +482,8 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 
 # Search results
 'noexactmatch'   => " Başlaa bu olan bir yazı bulunamadı. Bu yazını var nicä [[:$1|'''siz çeketmää''']].",
-'prevn'          => 'ilerki $1',
-'nextn'          => 'geeriki $1',
+'prevn'          => 'ilerki {{PLURAL:$1|$1}}',
+'nextn'          => 'geeriki {{PLURAL:$1|$1}}',
 'viewprevnext'   => '($1) ($2) ($3).',
 'searchhelp-url' => 'Help:İçindekilär',
 'powersearch'    => 'Ara',
@@ -537,6 +536,8 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 
 # Recent changes linked
 'recentchangeslinked'          => 'İlgili diişilmäklär',
+'recentchangeslinked-feed'     => 'İlgili diişilmäklär',
+'recentchangeslinked-toolbox'  => 'İlgili diişilmäklär',
 'recentchangeslinked-title'    => '"$1" ilgili diişmäklär',
 'recentchangeslinked-noresult' => 'Baalantılı sayfalarda verilmiş devirde diişmäk olmadı.',
 'recentchangeslinked-summary'  => "Bu maasus sayfa baalantılı sayfalardaki diişmäkleri sayêr. Sizin bakmaa listasındaki sayfalar verildi '''kalın''' bukvalarnan.",
@@ -551,6 +552,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'listfiles' => 'Pätret listası',
 
 # File description page
+'file-anchor-link'          => 'Fayl',
 'filehist'                  => 'Fayl istoriyası',
 'filehist-help'             => 'Fayl istoriyasın görmää deyni Gün/Zaman bölümündeki dataları tıklayınız.',
 'filehist-current'          => 'Şindiki',
@@ -563,8 +565,6 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'linkstoimage'              => 'Bu fayla baalantısı olan sayfalar:',
 'nolinkstoimage'            => 'Yok sayfalar ani bu fayla baalı.',
 'sharedupload'              => 'Bu fayl üklendi ortak kullanmak erinä hem var nicä kullanılsın übür proektlärdä.',
-'noimage'                   => 'Bu adda fayl yok. Siz $1.',
-'noimage-linktext'          => 'var nicä üklemää',
 'uploadnewversion-linktext' => 'Eni fayl ükle',
 
 # MIME search
@@ -879,6 +879,7 @@ Sadä listadaki êlementlarä (* nışannan çekedän liniyalar) bakılacêk. Li
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

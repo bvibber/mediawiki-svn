@@ -618,7 +618,6 @@ The grund for this, given by $3 is ''$2''",
 'page_first'          => 'first',
 'page_last'           => 'hindermaist',
 'histlegend'          => 'Diff selection: mairk the radio boxes o the versions tae compare an press enter or the button at the bottom.<br /> Legend: (cur) = difference frae current version, (last) = difference frae foregaun version, s = smaa edit.',
-'deletedrev'          => '[delete]',
 'histfirst'           => 'Foremaist',
 'histlast'            => 'Hindermaist',
 'historysize'         => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -633,18 +632,17 @@ It micht hae been deletit frae the wiki, or the name micht hae been chynged.
 Try [[Special:Search|rakin on the wiki]] for new pages ye micht be interestit in.',
 
 # Revision deletion
-'rev-deleted-comment'            => '(jottin removit)',
-'rev-deleted-user'               => '(uisername removit)',
-'rev-deleted-event'              => '(entry removit)',
-'rev-deleted-text-permission'    => 'This page revision haes been removit frae the public archives.
+'rev-deleted-comment'         => '(jottin removit)',
+'rev-deleted-user'            => '(uisername removit)',
+'rev-deleted-event'           => '(entry removit)',
+'rev-deleted-text-permission' => 'This page revision haes been removit frae the public archives.
 There micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].',
-'rev-deleted-text-view'          => 'This page revision haes been removit frae the public archives.
+'rev-deleted-text-view'       => 'This page revision haes been removit frae the public archives.
 Acause yer an admeenistrator on this site, ye can leuk at it;
 there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].',
-'rev-delundel'                   => 'shaw/scug',
-'revisiondelete'                 => 'Delete/undelete revisions',
-'revdelete-nooldid-title'        => 'Nae target revision',
-'revdelete-toomanytargets-title' => 'Ower mony targets',
+'rev-delundel'                => 'shaw/scug',
+'revisiondelete'              => 'Delete/undelete revisions',
+'revdelete-nooldid-title'     => 'Nae target revision',
 
 # Diffs
 'difference'              => '(Difference atween revisions)',
@@ -659,8 +657,8 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'titlematches'             => 'Airticle teitle matches',
 'notitlematches'           => 'Nae page teitle matches',
 'notextmatches'            => 'Nae page text matches',
-'prevn'                    => 'foregaun $1',
-'nextn'                    => 'neist $1',
+'prevn'                    => 'foregaun {{PLURAL:$1|$1}}',
+'nextn'                    => 'neist {{PLURAL:$1|$1}}',
 'searchhelp-url'           => 'Help:Contents',
 'search-mwsuggest-enabled' => 'wi suggestions',
 'searchall'                => 'aw',
@@ -732,7 +730,9 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'rc_categories_any'                 => 'Ony',
 
 # Recent changes linked
-'recentchangeslinked' => 'Relatit chynges',
+'recentchangeslinked'         => 'Relatit chynges',
+'recentchangeslinked-feed'    => 'Relatit chynges',
+'recentchangeslinked-toolbox' => 'Relatit chynges',
 
 # Upload
 'upload'                      => 'Uplaid file',
@@ -779,10 +779,10 @@ Tae pit the eimage intae a page, uise an airtin i the form
 'listfiles' => 'Eimage leet',
 
 # File description page
-'imagelinks'     => 'Eimage airtins',
-'linkstoimage'   => 'The follaein $1 pages airts tae this image:',
-'nolinkstoimage' => "The'r nae pages airts tae this eimage.",
-'noimage'        => 'Nae file wi this name exists, ye can [$1 uplaid it]',
+'file-anchor-link' => 'Eimage',
+'imagelinks'       => 'Eimage airtins',
+'linkstoimage'     => 'The follaein $1 pages airts tae this image:',
+'nolinkstoimage'   => "The'r nae pages airts tae this eimage.",
 
 # MIME search
 'download' => 'dounlaid',

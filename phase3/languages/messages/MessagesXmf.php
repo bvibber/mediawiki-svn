@@ -313,7 +313,7 @@ $messages = array(
 # Search results
 'noexactmatch'   => "'''ხასილა თე სახელით \"\$1\" ვაარსეენს.''' თქვა შეილებნა [[:\$1|თე გვერდიშ ღოლამა]].",
 'prevn'          => 'წოხლენ $1',
-'nextn'          => 'უკულ $1',
+'nextn'          => 'უკულ {{PLURAL:$1|$1}}',
 'viewprevnext'   => 'ქოძირ  ($1) ($2) ($3).',
 'searchhelp-url' => 'Help:მოხვარა',
 'powersearch'    => 'გორუა',
@@ -353,6 +353,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'აკოხვალამირ თირაფეფ',
+'recentchangeslinked-feed'     => 'აკოხვალამირ თირაფეფ',
+'recentchangeslinked-toolbox'  => 'აკოხვალამირ თირაფეფ',
 'recentchangeslinked-title'    => '"$1"-წკუმა მებუნაფილ თირაფეფი',
 'recentchangeslinked-noresult' => 'წურაფილ პერიოდს თირაფეფ აკოხვალამირ ხასილეფს ვა ჸოფერენ.',
 
@@ -367,6 +369,7 @@ $messages = array(
 'listfiles_name' => 'სახელ',
 
 # File description page
+'file-anchor-link'    => 'ფაილი',
 'filehist'            => 'ფაილიშ ისტორია',
 'filehist-help'       => 'ქოგეუნჭირით ბორჯის, ნამდა ქოძირათ ფაილი თეშ, მუჭოთ თინა თიწკუმა კილეძირედუ.',
 'filehist-current'    => 'მიმალ',
@@ -379,7 +382,6 @@ $messages = array(
 'linkstoimage'        => 'გეჸვენჯი {{PLURAL:$1|ხასილა|ხასილეფ}} მორცხუ თე ფაილს',
 'nolinkstoimage'      => 'ვა რე თე ფაილწკუმა მერსხილ ხასილეფ.',
 'sharedupload'        => 'თენა ფაილ გეთებულ რე საართო სარგებლობაშოთ დო შილებე თიში გიმორინაფა შხვა პროექტეფს.',
-'noimage'             => 'ფაილ თე სახელით ვაარსეენც, თქვან შეგილებუნთ $1.',
 
 # MIME search
 'mimesearch' => 'MIME გორუა',

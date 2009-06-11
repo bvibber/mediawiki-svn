@@ -20,11 +20,9 @@ $fallback = 'id';
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Astamiwa',
-	NS_MAIN             => '',
 	NS_TALK             => 'Dhiskusi',
 	NS_USER             => 'Panganggo',
 	NS_USER_TALK        => 'Dhiskusi_Panganggo',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'Dhiskusi_$1',
 	NS_FILE             => 'Gambar',
 	NS_FILE_TALK        => 'Dhiskusi_Gambar',
@@ -35,7 +33,7 @@ $namespaceNames = array(
 	NS_HELP             => 'Pitulung',
 	NS_HELP_TALK        => 'Dhiskusi_Pitulung',
 	NS_CATEGORY         => 'Kategori',
-	NS_CATEGORY_TALK    => 'Dhiskusi_Kategori'
+	NS_CATEGORY_TALK    => 'Dhiskusi_Kategori',
 );
 
 $namespaceAliases = array(
@@ -668,7 +666,6 @@ Alesané miturut $3 yaiku ''$2''",
 'page_last'              => 'pungkasan',
 'histlegend'             => "Pilihen rong tombol radhio banjur pencèten tombol ''bandhingna'' kanggo mbandhingaké versi. Klik sawijining tanggal kanggo ndeleng versi kaca ing tanggal iku.<br />(skr) = prabédan karo vèrsi saiki, (akir) = prabédan karo vèrsi sadurungé, '''s''' = suntingan sithik, '''b''' = suntingan bot, → = suntingan bagian, ← = ringkesan otomatis",
 'history-fieldset-title' => 'Njlajah sajarah vèrsi sadhurungé',
-'deletedrev'             => '[dibusak]',
 'histfirst'              => 'Suwé dhéwé',
 'histlast'               => 'Anyar dhéwé',
 'historysize'            => '($1 {{PLURAL:$1|bita|bita}})',
@@ -835,8 +832,8 @@ Gunakna tombol radio kanggo nggabungaké révisi-révisi sing digawé sadurungé
 'notitlematches'                   => 'Ora ana irah-irahan artikel sing cocog',
 'textmatches'                      => 'Tèks artikel sing cocog',
 'notextmatches'                    => 'Ora ana tèks kaca sing cocog',
-'prevn'                            => '$1 sadurungé',
-'nextn'                            => '$1 sabanjuré',
+'prevn'                            => '{{PLURAL:$1|$1}} sadurungé',
+'nextn'                            => '{{PLURAL:$1|$1}} sabanjuré',
 'viewprevnext'                     => 'Deleng ($1) ($2) ($3)',
 'searchmenu-legend'                => 'Pilihan panggolèkan',
 'searchmenu-exists'                => "'''Ana kaca kanthi jeneng \"[[\$1]]\" ing wiki iki'''",
@@ -898,7 +895,6 @@ Gunakna tombol radio kanggo nggabungaké révisi-révisi sing digawé sadurungé
 'prefs-skin'                => 'Kulit',
 'skin-preview'              => 'Pratilik',
 'prefs-math'                => 'Matématika',
-'dateformat'                => 'Format tanggal',
 'datedefault'               => 'Ora ana préferènsi',
 'prefs-datetime'            => 'Tanggal lan wektu',
 'prefs-personal'            => 'Profil panganggo',
@@ -1123,6 +1119,8 @@ Panjenengan uga bisa milih supaya wong liya ngubungi panjenengan liwat jeneng pa
 
 # Recent changes linked
 'recentchangeslinked'          => 'Pranala Pilihan',
+'recentchangeslinked-feed'     => 'Pranala Pilihan',
+'recentchangeslinked-toolbox'  => 'Pranala Pilihan',
 'recentchangeslinked-title'    => 'Owah-owahan sing ana gandhèngané karo "$1"',
 'recentchangeslinked-noresult' => 'Ora ana owah-owahan ing kaca-kaca kagandhèng iki salawasé periode sing wis ditemtokaké.',
 'recentchangeslinked-summary'  => "Kaca astaméwa (kaca kusus) iki mènèhi daftar owah-owahan pungkasan ing kaca-kaca sing kagandhèng (utawa anggota sawijining kateogri). Kaca sing [[Special:Watchlist|panjenengan awasi]] ditandhani '''kandel'''.",
@@ -1250,6 +1248,7 @@ Klik sirahé kolom kanggo ngowahi urutan.',
 'listfiles_description' => 'Dèskripsi',
 
 # File description page
+'file-anchor-link'          => 'Gambar',
 'filehist'                  => 'Sajarah berkas',
 'filehist-help'             => 'Klik ing tanggal/wektu kanggo deleng berkas iki ing wektu iku.',
 'filehist-deleteall'        => 'busaken kabèh',
@@ -1274,8 +1273,6 @@ Dhaftar ing ngisor nuduhaké {{PLURAL:$1|kaca pisanan kanthi pranala langsung|$1
 'redirectstofile'           => '{{PLURAL:$1|berkas kaalihaké|$1 berkas-berkas kaalihaké}} menyang berkas iki:',
 'duplicatesoffile'          => 'Ing ngisor iki {{PLURAL:$1|berkas arupa duplikat|$1 berkas-berkas arupa duplikat}} saka berkas iki:',
 'sharedupload'              => 'Berkas iki saka $1 lan bisa digunakaké déning proyèk-proyèk liya.',
-'noimage'                   => 'Ora ana berkas mawa jeneng iku, nanging panjenengan bisa $1.',
-'noimage-linktext'          => 'ngunggahaké sawiji',
 'uploadnewversion-linktext' => 'Unggahna vèrsi sing luwih anyar tinimbang gambar iki',
 
 # File reversion
@@ -1841,7 +1838,7 @@ Lebokna alesan panjenengan ing ngisor iki (contoné njupuk conto kaca sing wis t
 'ipboptions'                      => '2 jam:2 hours,1 dina:1 day,3 dina:3 days,1 minggu:1 week,2 minggu:2 weeks,1 sasi:1 month,3 sasi:3 months,6 sasi:6 months,1 taun:1 year,tanpa wates:infinite',
 'ipbotheroption'                  => 'liyané',
 'ipbotherreason'                  => 'Alesan liya/tambahan',
-'ipbhidename'                     => 'Delikna jeneng panganggo utawa alamat IP saka log pamblokiran, daftar blokir aktif, sarta daftar panganggo',
+'ipbhidename'                     => 'Delikna jeneng panganggo saka suntingan lan dhaptar',
 'ipbwatchuser'                    => 'Ngawasi kaca panganggo lan kaca-kaca dhiskusi panganggo iki',
 'ipballowusertalk'                => 'Idinaké panganggo iki nyunting kaca wicarané dhéwé nalika diblokir',
 'ipb-change-block'                => 'Blokir manèh panganggo kanthi sèting iki',
@@ -1868,7 +1865,7 @@ Lebokna alesan panjenengan ing ngisor iki (contoné njupuk conto kaca sing wis t
 'ipblocklist-submit'              => 'Golèk',
 'blocklistline'                   => '$1, $2 mblokir $3 ($4)',
 'infiniteblock'                   => 'salawasé',
-'expiringblock'                   => 'kadaluwarsa $1',
+'expiringblock'                   => 'kadaluwarsa $1 $2',
 'anononlyblock'                   => 'namung anon',
 'noautoblockblock'                => 'pamblokiran otomatis dipatèni',
 'createaccountblock'              => 'ndamelipun akun dipunblokir',
@@ -2262,7 +2259,8 @@ Pranala-pranala sabanjuré ing baris sing padha dianggep minangka ''pengecualian
 * model
 * datetimeoriginal
 * exposuretime
-* fnumber',
+* fnumber
+* isospeedratings',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Jembar',

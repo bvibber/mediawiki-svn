@@ -835,7 +835,6 @@ Ang dahilang ibinigay ni $3 ay ''$2''",
 Mga daglat: (kas) = pagkakaiba sa kasalukuyang bersyon,
 (huli) = pagkakaiba sa naunang bersyon, m = maliit na pagbabago.",
 'history-fieldset-title' => 'Tumingin-tingin sa kasaysayan',
-'deletedrev'             => '[binura]',
 'histfirst'              => 'Pinakasinauna',
 'histlast'               => 'Pinakakamakailan',
 'historysize'            => "({{PLURAL:$1|1 byte|$1 mga ''byte''}})",
@@ -850,69 +849,67 @@ Nabura ito mula sa wiki, o napalitan ng pangalan.
 Subukang [[Special:Search|hanapin sa wiki]] para sa mga kaugnay na mga bagong pahina.',
 
 # Revision deletion
-'rev-deleted-comment'            => '(tinanggal ang kumento/puna)',
-'rev-deleted-user'               => '(tinanggal ang pangalan ng tagagamit)',
-'rev-deleted-event'              => '(tinanggal ang galaw sa talaan)',
-'rev-deleted-text-permission'    => "'''Binura''' ang pagbabago ng pahinang ito.
+'rev-deleted-comment'         => '(tinanggal ang kumento/puna)',
+'rev-deleted-user'            => '(tinanggal ang pangalan ng tagagamit)',
+'rev-deleted-event'           => '(tinanggal ang galaw sa talaan)',
+'rev-deleted-text-permission' => "'''Binura''' ang pagbabago ng pahinang ito.
 Maaaring may mga detalye sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].",
-'rev-deleted-text-unhide'        => "'''Binura''' ang pagbabago ng pahinang ito.
+'rev-deleted-text-unhide'     => "'''Binura''' ang pagbabago ng pahinang ito.
 Maaaring may mga detalye sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].
 Bilang isang tagapangasiwa, maaari mo pa ring [$1 tingnan ang pagbabagong ito] kung nais mong magpatuloy.",
-'rev-deleted-text-view'          => "'''Binura''' ang pagbabago ng pahinang ito.
+'rev-deleted-text-view'       => "'''Binura''' ang pagbabago ng pahinang ito.
 Bilang isang tagapangasiwa, maaari mo itong makita;
 maaaring may mga detalye sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].",
-'rev-deleted-no-diff'            => "Hindi mo maaaring makita ang pagkakaibang ito dahil '''binura''' ang isa sa mga pagbabago.  Maaaring may mga detalye mula sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].",
-'rev-deleted-unhide-diff'        => "'''Binura''' ang isa sa mga pagbababago ng pagkakaibang ito.
+'rev-deleted-no-diff'         => "Hindi mo maaaring makita ang pagkakaibang ito dahil '''binura''' ang isa sa mga pagbabago.  Maaaring may mga detalye mula sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].",
+'rev-deleted-unhide-diff'     => "'''Binura''' ang isa sa mga pagbababago ng pagkakaibang ito.
 Maaaring may mga detalye sa loob ng [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} talaan ng pagbura].
 Bilang isang tagapangasiwa, maaari mo pa ring [$1 tingnan ang pagkakaiba] kung nais mong magpatuloy.",
-'rev-delundel'                   => 'ipakita/itago',
-'revisiondelete'                 => 'Burahin/ibalik ang mga pagbabago',
-'revdelete-nooldid-title'        => 'Hindi tanggap na puntiryang pagbabago',
-'revdelete-nooldid-text'         => 'Hindi ka nagbigay ng pupuntahang pagbabago o mga pagbabago para magampanan ang paraan na ito.',
-'revdelete-nologtype-title'      => 'Walang uri ng tala/pagtatalang ibinigay',
-'revdelete-nologtype-text'       => 'Hindi ka tumukoy ng isang uri ng talang pagsasagawaan ng galaw na ito.',
-'revdelete-toomanytargets-title' => 'Napakaraming mga puntirya',
-'revdelete-toomanytargets-text'  => 'Napakarami mong tinukoy na mga uri ng mga puntirya na pagsasagawaan ng galaw na ito.',
-'revdelete-nologid-title'        => 'Hindi tanggap na entrada/ipinasok sa tala.',
-'revdelete-nologid-text'         => 'Hindi ka tumukoy ng isang pinupuntiryang kaganapang pangtala upang maisagawa ang tungkuling ito o hindi umiiral ang tinukoy na entrada/ipinasok.',
-'revdelete-selected'             => "{{PLURAL:$2|Piniling|Mga piniling}} pagbabago ng '''$1:'''",
-'logdelete-selected'             => '{{PLURAL:$1|Piniling tala ng pangyayari|Piniling tala ng mga pangyayari}}:',
-'revdelete-text'                 => "'''Makikita pa rin ang mga binurang pagbabago at mga kaganapan sa pahina ng kasaysayan at mga talaan, ngunit hindi mapupuntahan ng madla ang mga bahagi ng kanilang nilalaman.
+'rev-delundel'                => 'ipakita/itago',
+'revisiondelete'              => 'Burahin/ibalik ang mga pagbabago',
+'revdelete-nooldid-title'     => 'Hindi tanggap na puntiryang pagbabago',
+'revdelete-nooldid-text'      => 'Hindi ka nagbigay ng pupuntahang pagbabago o mga pagbabago para magampanan ang paraan na ito.',
+'revdelete-nologtype-title'   => 'Walang uri ng tala/pagtatalang ibinigay',
+'revdelete-nologtype-text'    => 'Hindi ka tumukoy ng isang uri ng talang pagsasagawaan ng galaw na ito.',
+'revdelete-nologid-title'     => 'Hindi tanggap na entrada/ipinasok sa tala.',
+'revdelete-nologid-text'      => 'Hindi ka tumukoy ng isang pinupuntiryang kaganapang pangtala upang maisagawa ang tungkuling ito o hindi umiiral ang tinukoy na entrada/ipinasok.',
+'revdelete-selected'          => "{{PLURAL:$2|Piniling|Mga piniling}} pagbabago ng '''$1:'''",
+'logdelete-selected'          => '{{PLURAL:$1|Piniling tala ng pangyayari|Piniling tala ng mga pangyayari}}:',
+'revdelete-text'              => "'''Makikita pa rin ang mga binurang pagbabago at mga kaganapan sa pahina ng kasaysayan at mga talaan, ngunit hindi mapupuntahan ng madla ang mga bahagi ng kanilang nilalaman.
 
 Makikita pa rin ng iba pang mga tagapangasiwang nasa {{SITENAME}} ang mga tinagong nilalaman
 at maaaring ibalik ito mula sa pagkakabura sa pamamagitan ng kaparehong ugnayang-hangganan, maliban na lamang kung may itinakdang karagdagang mga restriksyon.
 Pakitiyak kung ito ang nais mong gawin, na nauunawaan mo ang mga kahihinatnan, at ginagawa mo ito alinsunod sa [[{{MediaWiki:Policy-url}}|patakaran]].",
-'revdelete-suppress-text'        => "Ang paglilingid ay dapat na gamitin '''lamang''' para sa sumusunod na mga pagkakataon:
+'revdelete-suppress-text'     => "Ang paglilingid ay dapat na gamitin '''lamang''' para sa sumusunod na mga pagkakataon:
 * Hindi naaangkop na kabatirang pansarili
 *: ''mga adres ng tahanan at bilang na pangtelepono, mga bilang na pangseguridad na sosyal, atbp.''",
-'revdelete-legend'               => 'Itakda ang mga kaantasan ng pagpapakita',
-'revdelete-hide-text'            => 'Itago ang teksto ng pagbabago',
-'revdelete-hide-name'            => 'Itago ang galaw at puntirya',
-'revdelete-hide-comment'         => 'Itago ang kumento sa pagbabago',
-'revdelete-hide-user'            => 'Itago ang pangalang pantagagamit/IP ng patnugot',
-'revdelete-hide-restricted'      => 'Ilingid ang dato mula sa mga tagapangasiwa at maging sa mga iba pa',
-'revdelete-suppress'             => 'Supilin ang datos mula sa mga tagapangasiwa gayon din sa iba',
-'revdelete-hide-image'           => 'Itago ang nilalaman ng talaksan',
-'revdelete-unsuppress'           => 'Tanggalin ang mga pagbabawal sa naibalik na mga pagbabago',
-'revdelete-log'                  => 'Itala ang puna/kumento:',
-'revdelete-submit'               => 'Pairalin para sa napiling pagbabago',
-'revdelete-logentry'             => 'binago ang antas ng pagpapakita ng pagbabago kay [[$1]]',
-'logdelete-logentry'             => 'binago ang antas ng pagpapakita ng kaganapan kay [[$1]]',
-'revdelete-success'              => "'''Matagumpay na naitakda ang kaantasan ng pagpapakita ng pagbabago.'''",
-'revdelete-failure'              => "'''Hindi maitakda ang kaantasan ng pagpapakita ng rebisyon.'''",
-'logdelete-success'              => "'''Matagumpay na naitakda ang kaantasan ng pagpapakita ng tala.'''",
-'revdel-restore'                 => 'Baguhin ang kaantasan ng pagpapakita',
-'pagehist'                       => 'Kasaysayan ng pahina',
-'deletedhist'                    => 'Naburang kasaysayan',
-'revdelete-content'              => 'nilalaman',
-'revdelete-summary'              => 'buod ng pagbabago',
-'revdelete-uname'                => 'pangalang pantagagamit',
-'revdelete-restricted'           => 'nilapat na mga paghihigpit sa mga tagapangasiwa',
-'revdelete-unrestricted'         => 'tinanggal ang mga pagbabawal para sa mga tagapangasiwa',
-'revdelete-hid'                  => 'itinago $1',
-'revdelete-unhid'                => 'pinalitaw $1',
-'revdelete-log-message'          => '$1 para sa $2 {{PLURAL:$2|pagbabago|mga pagbabago}}',
-'logdelete-log-message'          => '$1 para sa $2 {{PLURAL:$2|kaganapan|mga kaganapan}}',
+'revdelete-legend'            => 'Itakda ang mga kaantasan ng pagpapakita',
+'revdelete-hide-text'         => 'Itago ang teksto ng pagbabago',
+'revdelete-hide-name'         => 'Itago ang galaw at puntirya',
+'revdelete-hide-comment'      => 'Itago ang kumento sa pagbabago',
+'revdelete-hide-user'         => 'Itago ang pangalang pantagagamit/IP ng patnugot',
+'revdelete-hide-restricted'   => 'Ilingid ang dato mula sa mga tagapangasiwa at maging sa mga iba pa',
+'revdelete-suppress'          => 'Supilin ang datos mula sa mga tagapangasiwa gayon din sa iba',
+'revdelete-hide-image'        => 'Itago ang nilalaman ng talaksan',
+'revdelete-unsuppress'        => 'Tanggalin ang mga pagbabawal sa naibalik na mga pagbabago',
+'revdelete-log'               => 'Itala ang puna/kumento:',
+'revdelete-submit'            => 'Pairalin para sa napiling pagbabago',
+'revdelete-logentry'          => 'binago ang antas ng pagpapakita ng pagbabago kay [[$1]]',
+'logdelete-logentry'          => 'binago ang antas ng pagpapakita ng kaganapan kay [[$1]]',
+'revdelete-success'           => "'''Matagumpay na naitakda ang kaantasan ng pagpapakita ng pagbabago.'''",
+'revdelete-failure'           => "'''Hindi maitakda ang kaantasan ng pagpapakita ng rebisyon.'''",
+'logdelete-success'           => "'''Matagumpay na naitakda ang kaantasan ng pagpapakita ng tala.'''",
+'revdel-restore'              => 'Baguhin ang kaantasan ng pagpapakita',
+'pagehist'                    => 'Kasaysayan ng pahina',
+'deletedhist'                 => 'Naburang kasaysayan',
+'revdelete-content'           => 'nilalaman',
+'revdelete-summary'           => 'buod ng pagbabago',
+'revdelete-uname'             => 'pangalang pantagagamit',
+'revdelete-restricted'        => 'nilapat na mga paghihigpit sa mga tagapangasiwa',
+'revdelete-unrestricted'      => 'tinanggal ang mga pagbabawal para sa mga tagapangasiwa',
+'revdelete-hid'               => 'itinago $1',
+'revdelete-unhid'             => 'pinalitaw $1',
+'revdelete-log-message'       => '$1 para sa $2 {{PLURAL:$2|pagbabago|mga pagbabago}}',
+'logdelete-log-message'       => '$1 para sa $2 {{PLURAL:$2|kaganapan|mga kaganapan}}',
 
 # Suppression log
 'suppressionlog'     => 'Tala ng pagpipigil',
@@ -1026,8 +1023,8 @@ Maaari mong [[:\$1|likhain ang pahinang ito]].",
 'notitlematches'                   => 'Walang tumutugmang pamagat ng pahina',
 'textmatches'                      => 'Tumutugma ang teksto ng pahina',
 'notextmatches'                    => 'Walang katugmang pahina ng teksto',
-'prevn'                            => 'nauna $1',
-'nextn'                            => 'kasunod $1',
+'prevn'                            => 'nauna {{PLURAL:$1|$1}}',
+'nextn'                            => 'kasunod {{PLURAL:$1|$1}}',
 'prevn-title'                      => 'Nakaraang $1 {{PLURAL:$1|resulta|mga resulta}}',
 'nextn-title'                      => 'Susunod na $1 {{PLURAL:$1|resulta|mga resulta}}',
 'shown-title'                      => 'Ipakita ang $1 {{PLURAL:$1|resulta|mga resulta}} na para sa bawat isang pahina',
@@ -1093,7 +1090,6 @@ Subuking lagyan ng unlapi/paunang ''all:'' upang hanapin ang lahat ng mga nialal
 'prefs-skin'                => 'Pabalat',
 'skin-preview'              => 'Unang tingin',
 'prefs-math'                => 'Matematika',
-'dateformat'                => 'Anyo ng petsa',
 'datedefault'               => 'Walang kagustuhan',
 'prefs-datetime'            => 'Petsa at oras',
 'prefs-personal'            => 'Sanligang pangkatangian ng tagagamit',
@@ -1123,7 +1119,6 @@ Subuking lagyan ng unlapi/paunang ''all:'' upang hanapin ang lahat ng mga nialal
 'savedprefs'                => 'Nasagip na ang mga kagustuhan mo.',
 'timezonelegend'            => 'Sona ng oras',
 'localtime'                 => 'Katutubong oras:',
-'timezoneselect'            => 'Sona ng oras:',
 'timezoneuseserverdefault'  => 'Gamitin ang itinakda ng serbidor',
 'timezoneuseoffset'         => "Iba pa (tukuyin ang pambawi o ''offset'')",
 'timezoneoffset'            => "Pambawi/pambalanse (''offset'')¹:",
@@ -1347,6 +1342,8 @@ Mapipili mo ring payagan ang ibang tagagamit na makapagugnayan sa iyo sa pamamag
 
 # Recent changes linked
 'recentchangeslinked'          => 'Kaugnay na mga pagbabago',
+'recentchangeslinked-feed'     => 'Kaugnay na mga pagbabago',
+'recentchangeslinked-toolbox'  => 'Kaugnay na mga pagbabago',
 'recentchangeslinked-title'    => 'Mga pagbabagong kaugnay ng "$1"',
 'recentchangeslinked-noresult' => 'Walang mga pagbabago sa mga pahinang nakakawing sa ibinigay na kapanahunan.',
 'recentchangeslinked-summary'  => "Nililista ng natatanging pahina na ito ang huling mga pagbabago na nakaugnay. Naka '''matapang na teksto''' ang iyong mga binabantayan.",
@@ -1482,6 +1479,7 @@ Mababago ang pagkakapangkat-pangkat sa pamamagitan ng pagpindot sa isang paulo n
 'listfiles_count'       => 'Mga bersyon',
 
 # File description page
+'file-anchor-link'          => 'Talaksan',
 'filehist'                  => 'Kasaysayan ng talaksan',
 'filehist-help'             => 'Pindutin ang isang petsa/oras para makita ang anyo ng talaksan noong panahong iyon.',
 'filehist-deleteall'        => 'burahin lahat',
@@ -1510,8 +1508,6 @@ Mayroong makukuhang [[Special:WhatLinksHere/$2|buong talaan]].',
 Pakitingnan ang [$2 pahina ng paglalarawan ng talaksan] para sa iba pang kabatiran.',
 'sharedupload-desc-here'    => 'Ang talaksang ito ay nagmula sa $1 at maaaring gamitin sa ibang mga proyekto.
 Ang paglalarawang nasa ibabaw ng [$2 pahina ng paglalarawan ng talaksan] nito doon ay ipinapakita sa ibaba.',
-'noimage'                   => 'Walang talaksan na may ganitong pangalan, subalit maaari kang $1.',
-'noimage-linktext'          => 'magkarga ng isa',
 'uploadnewversion-linktext' => 'Magkarga ng isang bagong bersyon ng talaksang ito',
 'shared-repo-from'          => 'mula sa $1',
 'shared-repo'               => 'isang pinagsasaluhang repositoryo',
@@ -2121,7 +2117,7 @@ Tingnan ang [[Special:IPBlockList|talaan ng mga hinadlangang IP]] upang makita a
 'ipblocklist-submit'              => 'Hanapin',
 'blocklistline'                   => '$1, $2 hinarang si $3 (magtatapos sa $4)',
 'infiniteblock'                   => 'walang katapusan',
-'expiringblock'                   => 'Magtatapos sa $1',
+'expiringblock'                   => 'Magtatapos sa $1 $2',
 'anononlyblock'                   => 'di kilala lamang',
 'noautoblockblock'                => 'hindi gumagana ang awtomatikong pagharang',
 'createaccountblock'              => 'Hinarang ang paglikha ng akawnt',
@@ -2578,12 +2574,13 @@ Kapag nabago ang talaksan mula sa anyong orihinal nito, may ilang detalyeng hind
 'metadata-collapse' => 'Itago ang karugtong na mga detalye',
 'metadata-fields'   => 'Ang mga pook ng metadatang EXIF na nakatala sa mensaheng ito ay masasama sa ipinapakitang pahina ng larawan kapag tumiklop ang tabla ng metadata.
 Nakatakdang itago ang iba pa.
-* kayarian
-* modelo
-* petsaorasorihinal
-* lantadoras
-* pbilang
-* pokalhaba',
+* make
+* model
+* datetimeoriginal
+* exposuretime
+* fnumber
+* isospeedratings
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Lapad',

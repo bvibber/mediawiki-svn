@@ -117,7 +117,7 @@ class UsersPager extends AlphabeticPager {
 		global $wgLang;
 
 		$userPage = Title::makeTitle( NS_USER, $row->user_name );
-		$name = $this->getSkin()->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
+		$name = $this->getSkin()->link( $userPage, htmlspecialchars( $userPage->getText() ) );
 
 		if( $row->numgroups > 1 || ( $this->requestedGroup && $row->numgroups == 1 ) ) {
 			$list = array();
@@ -135,7 +135,7 @@ class UsersPager extends AlphabeticPager {
 		global $wgEdititis;
 		if ( $wgEdititis ) {
 			$editCount = $wgLang->formatNum( $row->edits );
-			$edits = ' [' . wfMsgExt( 'usereditcount', 'parsemag', $editCount ) . ']';
+			$edits = ' [' . wfMsgExt( 'usereditcount', array( 'parsemag', 'escape' ), $editCount ) . ']';
 		} else {
 			$edits = '';
 		}
@@ -145,7 +145,8 @@ class UsersPager extends AlphabeticPager {
 		if( $row->creation ) {
 			$d = $wgLang->date( wfTimestamp( TS_MW, $row->creation ), true );
 			$t = $wgLang->time( wfTimestamp( TS_MW, $row->creation ), true );
-			$created = ' (' . wfMsgHtml( 'usercreated', $d, $t ) . ')';
+			$created = ' (' . wfMsg( 'usercreated', $d, $t ) . ')';
+			$created = htmlspecialchars( $created );
 		}
 
 		wfRunHooks( 'SpecialListusersFormatRow', array( &$item, $row ) );
@@ -251,7 +252,7 @@ class UsersPager extends AlphabeticPager {
 	protected static function buildGroupLink( $group ) {
 		static $cache = array();
 		if( !isset( $cache[$group] ) )
-			$cache[$group] = User::makeGroupLinkHtml( $group, User::getGroupMember( $group ) );
+			$cache[$group] = User::makeGroupLinkHtml( $group, htmlspecialchars( User::getGroupMember( $group ) ) );
 		return $cache[$group];
 	}
 }

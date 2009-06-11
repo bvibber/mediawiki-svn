@@ -532,7 +532,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 					   if( _this.fogg.resultUrl ){	
 					   		var buttons ={}; 
 					   		buttons[gM('go-to-resource')] =  function(){
-									window.location = _this.fogg.resultUrl;
+								window.location = _this.fogg.resultUrl;
 							}
 							var go_to_url_txt = gM('go-to-resource');			   
 						   //should have an json result:
@@ -544,7 +544,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				   }													
 			}else{  
 				//upload error: 
-				alert('firefogg upload error: ' + _this.fogg.state );		
+				js_log('Error:firefogg upload error: ' + _this.fogg.state );		
 		   }
 	   }
 	   uploadStatus();

@@ -84,7 +84,7 @@ $magicWords = array(
 	'forcetoc'              => array( '0', '__نيوليکداره__', '__FORCETOC__' ),
 	'toc'                   => array( '0', '__نيوليک__', '__TOC__' ),
 	'noeditsection'         => array( '0', '__بی‌برخې__', '__NOEDITSECTION__' ),
-	'currentmonth'          => array( '1', 'روانه_مياشت', 'CURRENTMONTH' ),
+	'currentmonth'          => array( '1', 'روانه_مياشت', 'CURRENTMONTH', 'CURRENTMONTH2' ),
 	'currentmonthname'      => array( '1', 'دروانې_مياشت_نوم', 'CURRENTMONTHNAME' ),
 	'currentmonthabbrev'    => array( '1', 'دروانې_مياشت_لنډون', 'CURRENTMONTHABBREV' ),
 	'currentday'            => array( '1', 'نن', 'CURRENTDAY' ),
@@ -93,7 +93,7 @@ $magicWords = array(
 	'currentyear'           => array( '1', 'سږکال', 'CURRENTYEAR' ),
 	'currenttime'           => array( '1', 'داوخت', 'CURRENTTIME' ),
 	'currenthour'           => array( '1', 'دم_ګړۍ', 'CURRENTHOUR' ),
-	'localmonth'            => array( '1', 'سيمه_يزه_مياشت', 'LOCALMONTH' ),
+	'localmonth'            => array( '1', 'سيمه_يزه_مياشت', 'LOCALMONTH', 'LOCALMONTH2' ),
 	'localmonthname'        => array( '1', 'دسيمه_يزې_مياشت_نوم', 'LOCALMONTHNAME' ),
 	'localmonthabbrev'      => array( '1', 'دسيمه_يزې_مياشت_لنډون', 'LOCALMONTHABBREV' ),
 	'localday'              => array( '1', 'سيمه_يزه_ورځ', 'LOCALDAY' ),
@@ -610,7 +610,6 @@ $messages = array(
 'histlegend'          => 'د توپير ټاکنه: د هرې هغې بڼې پرتلنه چې تاسو غواړۍ نو د هماغې بڼې چوکاټک په نښه کړی او بيا په لاندينۍ تڼۍ وټوکۍ.<br />
 لنډيز: (اوس) = د اوسنۍ بڼې سره توپير،
 (وروست) = د وروستۍ بڼې سره توپير، و = وړه سمونه.',
-'deletedrev'          => '[ړنګ شو]',
 'histfirst'           => 'پخواني',
 'histlast'            => 'تازه',
 'historysize'         => '({{PLURAL:$1|1 بايټ|$1 بايټونه}})',
@@ -640,8 +639,8 @@ $messages = array(
 'searchsubtitleinvalid'     => "تاسو د '''$1''' لپاره لټون کړی",
 'noexactmatch'              => "'''تر اوسه پورې د \"\$1\" په نوم هېڅ کوم مخ نشته.''' تاسو کولای شی چې [[:\$1|همدا مخ جوړ کړی]].",
 'noexactmatch-nocreate'     => "'''د \"\$1\" په سرليک هېڅ کوم مخ نشته.'''",
-'prevn'                     => 'تېر $1',
-'nextn'                     => 'راتلونکي $1',
+'prevn'                     => 'تېر {{PLURAL:$1|$1}}',
+'nextn'                     => 'راتلونکي {{PLURAL:$1|$1}}',
 'viewprevnext'              => '($1) ($2) ($3) ښکاره کول',
 'searchhelp-url'            => 'Help:لړليک',
 'searchprofile-images'      => 'دوتنې',
@@ -673,7 +672,6 @@ $messages = array(
 'prefs-skin'                => 'بڼه',
 'skin-preview'              => 'مخکتنه',
 'prefs-math'                => 'شمېرپوهنه',
-'dateformat'                => 'د نېټې بڼه',
 'datedefault'               => 'هېڅ نه ټاکل',
 'prefs-datetime'            => 'نېټه او وخت',
 'prefs-personal'            => 'د کارونکي پېژنليک',
@@ -691,7 +689,6 @@ $messages = array(
 'savedprefs'                => 'ستاسو غوره توبونه خوندي شوه.',
 'timezonelegend'            => 'د وخت سيمه',
 'localtime'                 => 'سيمه ايز وخت:',
-'timezoneselect'            => 'د وخت سيمه:',
 'servertime'                => 'د پالنګر وخت:',
 'allowemail'                => 'د نورو کارونکو لخوا د برېښليک رالېږل چارن کړه',
 'prefs-namespaces'          => 'نوم-تشيالونه',
@@ -776,6 +773,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'اړونده بدلونونه',
+'recentchangeslinked-feed'     => 'اړونده بدلونونه',
+'recentchangeslinked-toolbox'  => 'اړونده بدلونونه',
 'recentchangeslinked-title'    => '"$1" ته اړونده بدلونونه',
 'recentchangeslinked-noresult' => 'په دې موده، په تړل شويو مخونو کې هېڅ کوم بدلونونه نه دي راپېښ شوي.',
 'recentchangeslinked-summary'  => "دا د هغه بدلونونو لړليک دی چې وروستۍ ځل په تړن لرونکيو مخونو کې د يوه ځانګړي مخ (او يا هم د يوې ځانګړې وېشنيزې غړو) نه رامېنځ ته شوي.
@@ -838,6 +837,7 @@ $messages = array(
 'listfiles_description' => 'څرګندونه',
 
 # File description page
+'file-anchor-link'          => 'دوتنه',
 'filehist'                  => 'د دوتنې پېښليک',
 'filehist-help'             => 'په يوې نېټې/يوه وخت وټوکۍ چې د هماغه وخت او نېټې دوتنه چې په هماغه وخت کې څنګه ښکارېده هماغسې درښکاره شي.',
 'filehist-deleteall'        => 'ټول ړنګول',
@@ -854,8 +854,6 @@ $messages = array(
 'nolinkstoimage'            => 'داسې هېڅ کوم مخ نه شته چې د دغې دوتنې سره تړنې ولري.',
 'duplicatesoffile'          => 'دا لاندينۍ {{PLURAL:$1| دوتنه د همدې دوتنې غبرګونې لمېسه ده|$1 دوتنې د همدې دوتنې غبرګونې لمېسې دي}}:',
 'sharedupload'              => 'دا دوتنه د $1 لخوا نه ده او کېدای شي چې نورې پروژې به يې هم کاروي.',
-'noimage'                   => 'په دې نوم هېڅ کومه دوتنه نه شته، خو تاسو کولای شی چې $1.',
-'noimage-linktext'          => 'يوه دوتنه پورته کول',
 'uploadnewversion-linktext' => 'د همدغې دوتنې نوې بڼه پورته کول',
 
 # File reversion
@@ -1394,12 +1392,13 @@ $messages = array(
 'metadata-expand'   => 'غځېدلی تفصيل ښکاره کړی',
 'metadata-collapse' => 'غځېدلی تفصيل پټ کړی',
 'metadata-fields'   => 'د EXIF ميټاډاټا ډګرونه چې لړليک يې په همدې پيغام کې په لاندې توګه راغلی د انځوريز مخ په ښکارېدنه کې به هغه وخت ورګډ شي کله چې د مېټاډاټا چوکاټ پرانيستل کېږي.
-* جوړول
-* ماډل
-* آرنۍ وخت او نېټه
+* make
+* model
+* datetimeoriginal
 * exposuretime
-* fشمېره
-* فوکل واټن',
+* fnumber
+* isospeedratings
+* focallength',
 
 # EXIF tags
 'exif-datetime'         => 'د دوتنې د بدلون وخت او نېټه',

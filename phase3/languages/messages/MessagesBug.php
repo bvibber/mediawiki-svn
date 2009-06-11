@@ -213,7 +213,6 @@ $messages = array(
 'previousrevision'    => '←Revisi riolo',
 'currentrevisionlink' => 'Revisi tannapa',
 'page_first'          => 'séuwani',
-'deletedrev'          => '[ripeddé]',
 'histfirst'           => 'Poŋ loa',
 'histlast'            => 'Poŋ nappa',
 'historysize'         => '($1 {{PLURAL:$1|bita|bita}})',
@@ -306,7 +305,9 @@ $messages = array(
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked' => 'Pappakapinra terkait',
+'recentchangeslinked'         => 'Pappakapinra terkait',
+'recentchangeslinked-feed'    => 'Pappakapinra terkait',
+'recentchangeslinked-toolbox' => 'Pappakapinra terkait',
 
 # Upload
 'upload'    => 'Lureng berkas',
@@ -316,6 +317,7 @@ $messages = array(
 'listfiles_name' => 'Aseŋ',
 
 # File description page
+'file-anchor-link'    => 'Rapang',
 'filehist-user'       => 'Papaké',
 'filehist-dimensions' => 'Dimensi',
 'imagelinks'          => 'Liŋke',

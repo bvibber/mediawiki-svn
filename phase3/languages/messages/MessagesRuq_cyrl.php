@@ -219,12 +219,15 @@ $3',
 'boteditletter'   => 'б',
 
 # Recent changes linked
-'recentchangeslinked' => 'Модификајри корелате',
+'recentchangeslinked'         => 'Модификајри корелате',
+'recentchangeslinked-feed'    => 'Модификајри корелате',
+'recentchangeslinked-toolbox' => 'Модификајри корелате',
 
 # Upload
 'upload' => 'тримиће фиширул',
 
 # File description page
+'file-anchor-link'    => 'фиширул',
 'filehist'            => 'Хисториа фиширулу',
 'filehist-current'    => 'куренту',
 'filehist-datetime'   => 'Дата/Темп',

@@ -197,7 +197,6 @@ $messages = array(
 'cur'                 => 'sika',
 'next'                => 'bolɛngɛli',
 'last'                => 'ya nsúka',
-'deletedrev'          => '[elímwísámí]',
 
 # Revision deletion
 'rev-delundel' => 'komɔ́nisa/kobomba',
@@ -208,15 +207,14 @@ $messages = array(
 'editundo'      => 'kozóngela',
 
 # Search results
-'prevn'        => '$1 ya libosó',
-'nextn'        => 'bolɛngɛli $1',
+'prevn'        => '{{PLURAL:$1|$1}} ya libosó',
+'nextn'        => 'bolɛngɛli {{PLURAL:$1|$1}}',
 'viewprevnext' => 'Komɔ́na ($1) ($2) ($3)',
 'powersearch'  => 'Boluki',
 
 # Preferences page
 'preferences'       => 'Malúli',
 'mypreferences'     => 'Malúli ma ngáí',
-'dateformat'        => 'bokomi ya mokɔlɔ',
 'prefs-datetime'    => 'Mokɔlɔ mpé ntángo',
 'prefs-rc'          => 'Mbóngwana ya nsúka',
 'saveprefs'         => 'kobómbisa',
@@ -249,7 +247,9 @@ $messages = array(
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked' => 'Bolandi ekangisi',
+'recentchangeslinked'         => 'Bolandi ekangisi',
+'recentchangeslinked-feed'    => 'Bolandi ekangisi',
+'recentchangeslinked-toolbox' => 'Bolandi ekangisi',
 
 # Upload
 'upload'    => 'Kokumbisa (elilingi)',
@@ -260,7 +260,8 @@ $messages = array(
 'listfiles_date' => 'Mokɔlɔ',
 
 # File description page
-'filehist' => 'Mokóló ya kásá',
+'file-anchor-link' => 'Elilingi',
+'filehist'         => 'Mokóló ya kásá',
 
 # File deletion
 'filedelete-submit' => 'Kolímwisa',

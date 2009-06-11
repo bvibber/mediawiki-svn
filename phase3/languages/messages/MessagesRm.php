@@ -460,7 +460,6 @@ En il ''log da stidar'' che suonda pos ti guardar daco che la pagina è vegnida 
 * (davosa) = differenza cun la versiun precedenta
 * M = Midà be bagatellas',
 'history-fieldset-title' => 'tschertgar en la cronica',
-'deletedrev'             => '[stidà]',
 'histfirst'              => 'pli veglia',
 'histlast'               => 'pli nova',
 'historyempty'           => '(vid)',
@@ -486,8 +485,8 @@ En il ''log da stidar'' che suonda pos ti guardar daco che la pagina è vegnida 
 'searchresults'             => 'Resultats da tschertga',
 'searchresults-title'       => 'Resultats da tschertga per "$1"',
 'searchsubtitle'            => 'Ti has tschertgà \'\'\'[[:$1]]\'\'\' ([[Special:Prefixindex/$1|tut las paginas che entschevan cun "$1"]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|colliaziuns a "$1"]])',
-'prevn'                     => 'davos $1',
-'nextn'                     => 'proxims $1',
+'prevn'                     => 'davos {{PLURAL:$1|$1}}',
+'nextn'                     => 'proxims {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'Mussar ($1) ($2) ($3).',
 'searchhelp-url'            => 'Help:Cuntegn',
 'search-result-size'        => '$1 ({{PLURAL:$2|in pled|$2 pleds}})',
@@ -505,7 +504,6 @@ En il ''log da stidar'' che suonda pos ti guardar daco che la pagina è vegnida 
 'prefsnologintext'          => 'Ti stos esser <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} annunzià]</span> per midar tias preferenzas.',
 'changepassword'            => 'Midar pled-clav',
 'skin-preview'              => 'Prevista',
-'dateformat'                => 'format da las datas',
 'datedefault'               => 'Nagina preferenza',
 'prefs-datetime'            => 'Data e temp',
 'prefs-personal'            => 'datas dal utilisader',
@@ -591,6 +589,8 @@ En il ''log da stidar'' che suonda pos ti guardar daco che la pagina è vegnida 
 
 # Recent changes linked
 'recentchangeslinked'          => 'midadas sin paginas cun links',
+'recentchangeslinked-feed'     => 'midadas sin paginas cun links',
+'recentchangeslinked-toolbox'  => 'midadas sin paginas cun links',
 'recentchangeslinked-title'    => 'Midadas en artitgels ch\'èn colliads cun "$1"',
 'recentchangeslinked-noresult' => 'Naginas midadas sin artitgels collads durant la perioda endatada.',
 'recentchangeslinked-summary'  => "Quest è ina glista da las midadas ch'èn vegnidas fatgas da curt en artitgels ch'èn colliads cun ina pagina specifica (ni en commembers d'ina categoria specifica). 
@@ -623,6 +623,7 @@ Per integrar il maletg/purtret en tes artitgel sas ti per exempel duvrar in dals
 'listfiles' => 'Glista dals maletgs',
 
 # File description page
+'file-anchor-link'          => 'Datoteca',
 'filehist'                  => 'Istorgia da las versiuns',
 'filehist-help'             => 'Clicca sin ina data/temps per vesair la versiun da lura.',
 'filehist-current'          => 'actual',
@@ -635,8 +636,6 @@ Per integrar il maletg/purtret en tes artitgel sas ti per exempel duvrar in dals
 'linkstoimage'              => '{{PLURAL:$1|La suandanta pagina è colliada|Las suandantas $1 paginas èn colliadas}} cun questa datoteca:',
 'nolinkstoimage'            => 'Naginas paginas mussan sin questa datoteca.',
 'sharedupload'              => 'Quai è ina datoteca partida e vegn eventualmain utilisada dad auters projects.',
-'noimage'                   => "Ina datoteca cun quest num n'exista betg, ti pos dentant $1.",
-'noimage-linktext'          => 'chargiar sin in',
 'uploadnewversion-linktext' => 'Chargiar si ina nova versiun da questa datoteca',
 
 # MIME search
@@ -1068,6 +1067,7 @@ Sche la datoteca è vegnida midada dal status original èn tscherts detagls even
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

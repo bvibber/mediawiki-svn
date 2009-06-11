@@ -1793,6 +1793,7 @@ class Parser
 	function makeKnownLinkHolder( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
 		list( $inside, $trail ) = Linker::splitTrail( $trail );
 		$sk = $this->mOptions->getSkin();
+		// FIXME: use link() instead of deprecated makeKnownLinkObj()
 		$link = $sk->makeKnownLinkObj( $nt, $text, $query, $inside, $prefix );
 		return $this->armorLinks( $link ) . $trail;
 	}
@@ -2341,6 +2342,7 @@ class Parser
 		wfSuppressWarnings(); // E_STRICT system time bitching
 		$localTimestamp = date( 'YmdHis', $ts );
 		$localMonth = date( 'm', $ts );
+		$localMonth1 = date( 'n', $ts );
 		$localMonthName = date( 'n', $ts );
 		$localDay = date( 'j', $ts );
 		$localDay2 = date( 'd', $ts );
@@ -2356,6 +2358,8 @@ class Parser
 		switch ( $index ) {
 			case 'currentmonth':
 				return $this->mVarCache[$index] = $wgContLang->formatNum( gmdate( 'm', $ts ) );
+			case 'currentmonth1':
+				return $this->mVarCache[$index] = $wgContLang->formatNum( gmdate( 'n', $ts ) );
 			case 'currentmonthname':
 				return $this->mVarCache[$index] = $wgContLang->getMonthName( gmdate( 'n', $ts ) );
 			case 'currentmonthnamegen':
@@ -2368,6 +2372,8 @@ class Parser
 				return $this->mVarCache[$index] = $wgContLang->formatNum( gmdate( 'd', $ts ) );
 			case 'localmonth':
 				return $this->mVarCache[$index] = $wgContLang->formatNum( $localMonth );
+			case 'localmonth1':
+				return $this->mVarCache[$index] = $wgContLang->formatNum( $localMonth1 );
 			case 'localmonthname':
 				return $this->mVarCache[$index] = $wgContLang->getMonthName( $localMonthName );
 			case 'localmonthnamegen':
@@ -3371,7 +3377,7 @@ class Parser
 	 * @private
 	 */
 	function formatHeadings( $text, $isMain=true ) {
-		global $wgMaxTocLevel, $wgContLang, $wgEnforceHtmlIds, $wgSectionContainers;
+		global $wgMaxTocLevel, $wgContLang, $wgEnforceHtmlIds;
 
 		$doNumberHeadings = $this->mOptions->getNumberHeadings();
 		$showEditLink = $this->mOptions->getEditSection();
@@ -3472,23 +3478,19 @@ class Parser
 				elseif ( $level < $prevlevel && $toclevel > 1 ) {
 					# Decrease TOC level, find level to jump to
 
-					if ( $toclevel == 2 && $level <= $levelCount[1] ) {
-						# Can only go down to level 1
-						$toclevel = 1;
-					} else {
-						for ($i = $toclevel; $i > 0; $i--) {
-							if ( $levelCount[$i] == $level ) {
-								# Found last matching level
-								$toclevel = $i;
-								break;
-							}
-							elseif ( $levelCount[$i] < $level ) {
-								# Found first matching level below current level
-								$toclevel = $i + 1;
-								break;
-							}
+					for ($i = $toclevel; $i > 0; $i--) {
+						if ( $levelCount[$i] == $level ) {
+							# Found last matching level
+							$toclevel = $i;
+							break;
+						}
+						elseif ( $levelCount[$i] < $level ) {
+							# Found first matching level below current level
+							$toclevel = $i + 1;
+							break;
 						}
 					}
+					if( $i == 0 ) $toclevel = 1;
 					if( $toclevel<$wgMaxTocLevel ) {
 						if($prevtoclevel < $wgMaxTocLevel) {
 							# Unindent only if the previous toc level was shown :p
@@ -3542,6 +3544,7 @@ class Parser
 
 			# For the anchor, strip out HTML-y stuff period
 			$safeHeadline = preg_replace( '/<.*?'.'>/', '', $safeHeadline );
+			$safeHeadline = preg_replace( '/[ _]+/', ' ', $safeHeadline );
 			$safeHeadline = trim( $safeHeadline );
 
 			# Save headline for section edit hint before it's escaped
@@ -3657,10 +3660,6 @@ class Parser
 
 		$blocks = preg_split( '/<H[1-6].*?' . '>.*?<\/H[1-6]>/i', $text );
 		$i = 0;
-
-		if ( $wgSectionContainers ) {
-			$openDivs = array();
-		}
 		
 		foreach( $blocks as $block ) {
 			if( $showEditLink && $headlineCount > 0 && $i == 0 && $block !== "\n" ) {
@@ -3676,34 +3675,6 @@ class Parser
 				# Top anchor now in skin
 				$full = $full.$toc;
 			}
-			
-			# wrap each section in a div if $wgSectionContainers is set to true
-			if ( $wgSectionContainers ) {
-		        if( !empty( $head[$i] ) ) { # if there's no next header, then don't try to close out any existing sections here 
-		        	# get the level of the next header section
-					preg_match('/<H([0-6])/i', $head[$i], $hLevelMatches);
-		          	
-					if ( count($hLevelMatches) > 0 ) {
-						$hLevel = $hLevelMatches[1];
-						if ( $i != 0 ) { # we don't have an open div for section 0, so don't try to close it
-							# close any open divs for sections with headers that are <= to the next header level
-							$this->closeSectionContainers( $hLevel, $currentHLevel, $full, $openDivs);
-						}
-						$currentHLevel = $hLevel;
-					}
-				}
-
-				# open the div for the next header, if there is one
-				if ( isset($currentHLevel) && !empty( $head[$i] ) ) {
-					$full .= '<div id="section_' . $i . '_container">';
-					 array_push($openDivs, array($currentHLevel, $i));
-				}
-
-				# if we've outputed the last section of the article, close any open divs that are remaining
-				if ( $i == ( count($blocks) - 1)  && isset($currentHLevel) ) {
-					$this->closeSectionContainers( $hLevel, $currentHLevel, $full, $openDivs);
-				}
-			}
 
 			if( !empty( $head[$i] ) ) {
 				$full .= $head[$i];
@@ -3715,29 +3686,6 @@ class Parser
 		} else {
 			return $full;
 		}
-	}
-
-	/**
-	 * Analyze the header level of the current and next section being parsed to 
-	 * determine if any already parsed sections need to be closed
-	 *
-	 * @param string $hLevel the level of the next header to be parsed
-	 * @param string $currentHLevel the level of the last parsed header
-	 * @param string $full a reference to the string that stores the output of the parser
-	 * @param array $openDivs a reference to the array that stores a list of open section containers
-	 * @return true
-	 */
-	function closeSectionContainers( $hLevel, &$currentHLevel, &$full, &$openDivs) {
-		while ( $hLevel <= $currentHLevel ) {
-			$full .= '</div>';
-			$popped = array_pop($openDivs);
-			if ( count($openDivs) ) {
-				$currentHLevel = $openDivs[count($openDivs) - 1][0];
-			} else {
-				break;
-			}
-	 	} 			
-	 	return true;
 	}
 	
 	/**
@@ -4123,6 +4071,7 @@ class Parser
 	}
 
 	/**
+	 * FIXME: update documentation. makeLinkObj() is deprecated.
 	 * Replace <!--LINK--> link placeholders with actual links, in the buffer
 	 * Placeholders created in Skin::makeLinkObj()
 	 * Returns an array of link CSS classes, indexed by PDBK.

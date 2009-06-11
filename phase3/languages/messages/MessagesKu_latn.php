@@ -15,11 +15,9 @@
 $namespaceNames = array(
 	NS_MEDIA            => 'Medya',
 	NS_SPECIAL          => 'Taybet',
-	NS_MAIN             => '',
 	NS_TALK             => 'Nîqaş',
 	NS_USER             => 'Bikarhêner',
 	NS_USER_TALK        => 'Bikarhêner_nîqaş',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_nîqaş',
 	NS_FILE             => 'Wêne',
 	NS_FILE_TALK        => 'Wêne_nîqaş',
@@ -30,7 +28,7 @@ $namespaceNames = array(
 	NS_HELP             => 'Alîkarî',
 	NS_HELP_TALK        => 'Alîkarî_nîqaş',
 	NS_CATEGORY         => 'Kategorî',
-	NS_CATEGORY_TALK    => 'Kategorî_nîqaş'
+	NS_CATEGORY_TALK    => 'Kategorî_nîqaş',
 );
 
 $messages = array(
@@ -605,7 +603,6 @@ Sedemê qedexekirinê ji $3 ev e: ''$2''",
 'page_last'           => 'paşîn',
 'histlegend'          => 'Legend: (ferq) = cudayî nav vê û versiyon a niha,
 (berê) = cudayî nav vê û yê berê vê, B = guhêrka biçûk',
-'deletedrev'          => '[jêbir]',
 'histfirst'           => 'Kevintirîn',
 'histlast'            => 'Nûtirîn',
 'historysize'         => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -667,8 +664,8 @@ Sedemê qedexekirinê ji $3 ev e: ''$2''",
 'notitlematches'                 => 'Di nav sernivîsan de nehat dîtin.',
 'textmatches'                    => 'Dîtinên di nivîsara rûpelan de',
 'notextmatches'                  => 'Di nivîsarê de nehat dîtin.',
-'prevn'                          => '$1 paş',
-'nextn'                          => '$1 pêş',
+'prevn'                          => '{{PLURAL:$1|$1}} paş',
+'nextn'                          => '{{PLURAL:$1|$1}} pêş',
 'viewprevnext'                   => '($1) ($2) ($3).',
 'searchhelp-url'                 => 'Help:Alîkarî',
 'searchprofile-articles-tooltip' => 'Di $1 da lêbigere',
@@ -695,7 +692,6 @@ Sedemê qedexekirinê ji $3 ev e: ''$2''",
 'prefs-skin'                => 'Pêste',
 'skin-preview'              => 'Pêşdîtin',
 'prefs-math'                => 'TeX',
-'dateformat'                => 'Formata rojê',
 'datedefault'               => 'Tercih tune ne',
 'prefs-datetime'            => 'Dem û rêkewt',
 'prefs-personal'            => 'Agahiyên bikarhênerê/î',
@@ -821,6 +817,8 @@ Sedemê qedexekirinê ji $3 ev e: ''$2''",
 
 # Recent changes linked
 'recentchangeslinked'         => 'Guherandinên peywend',
+'recentchangeslinked-feed'    => 'Guherandinên peywend',
+'recentchangeslinked-toolbox' => 'Guherandinên peywend',
 'recentchangeslinked-summary' => "Ev rûpela taybetî guherandinên dawî ji rûpelên lînkkirî nîşandide. Ew rûpel yê di lîsteya te ya şopandinê da ne bi nivîsa '''estûr''' tên nîşandan.",
 
 # Upload
@@ -901,6 +899,7 @@ Zanibe, ku ev barkirina kê were qebûlkirin ya na.
 'listfiles_description' => 'Wesif',
 
 # File description page
+'file-anchor-link'          => 'Wêne',
 'filehist'                  => 'Dîroka datayê',
 'filehist-help'             => 'Li demekê xe ji bo dîtina verzyona wê demê',
 'filehist-deleteall'        => 'giştika jêbibe',
@@ -915,8 +914,6 @@ Zanibe, ku ev barkirina kê were qebûlkirin ya na.
 'imagelinks'                => 'Lînkên vî wêneyî',
 'linkstoimage'              => 'Di van rûpelan de lînkek ji vî wêneyî re heye:',
 'nolinkstoimage'            => 'Rûpelekî ku ji vî wêneyî re girêdankê çêdike nîne.',
-'noimage'                   => 'Medyayek bi vê navî tune, lê tu kanî $1',
-'noimage-linktext'          => 'wê barbike',
 'uploadnewversion-linktext' => 'Versyonekî nû yê vê datayê barbike',
 
 # File reversion
@@ -1333,7 +1330,7 @@ Sedemekê binivîse!',
 'ipblocklist-submit'          => 'Lêbigere',
 'blocklistline'               => '$1, $2 $3 asteng kir ($4)',
 'infiniteblock'               => 'ji her demê ra',
-'expiringblock'               => 'heta $1',
+'expiringblock'               => 'heta $1 $2',
 'anononlyblock'               => 'bes kesên netên zanîn',
 'noautoblockblock'            => 'astengkirina otomatîk hatîye temirandin',
 'createaccountblock'          => "çêkirina account'an hatîye qedexekirin",

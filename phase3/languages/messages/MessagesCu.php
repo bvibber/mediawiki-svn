@@ -346,8 +346,10 @@ $messages = array(
 'boteditletter'   => 'а҃ѵ',
 
 # Recent changes linked
-'recentchangeslinked'      => 'съвѧ́ꙁанꙑ страни́цѧ',
-'recentchangeslinked-page' => 'страни́цѧ и́мѧ :',
+'recentchangeslinked'         => 'съвѧ́ꙁанꙑ страни́цѧ',
+'recentchangeslinked-feed'    => 'съвѧ́ꙁанꙑ страни́цѧ',
+'recentchangeslinked-toolbox' => 'съвѧ́ꙁанꙑ страни́цѧ',
+'recentchangeslinked-page'    => 'страни́цѧ и́мѧ :',
 
 # Upload
 'upload'            => 'положє́ниѥ дѣ́ла',
@@ -369,6 +371,7 @@ $messages = array(
 'listfiles_size' => 'мѣ́ра',
 
 # File description page
+'file-anchor-link'   => 'ви́дъ',
 'filehist-deleteone' => 'поничьжє́ниѥ',
 'filehist-current'   => 'нꙑнѣщьн҄ь о́браꙁъ',
 'filehist-user'      => 'по́льꙃєватєл҄ь',

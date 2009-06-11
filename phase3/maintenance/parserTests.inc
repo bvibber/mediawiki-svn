@@ -26,7 +26,7 @@
 
 /** */
 $options = array( 'quick', 'color', 'quiet', 'help', 'show-output', 'record' );
-$optionsWithArgs = array( 'regex', 'seed' );
+$optionsWithArgs = array( 'regex', 'seed', 'setversion' );
 
 require_once( 'commandLine.inc' );
 require_once( "$IP/maintenance/parserTestsParserHook.php" );
@@ -1031,6 +1031,7 @@ class ParserTest {
 	 */
 	private function requireHook( $name ) {
 		global $wgParser;
+		$wgParser->firstCallInit( ); //make sure hooks are loaded.
 		if( isset( $wgParser->mTagHooks[$name] ) ) {
 			$this->hooks[$name] = $wgParser->mTagHooks[$name];
 		} else {
@@ -1046,6 +1047,7 @@ class ParserTest {
 	 */
 	private function requireFunctionHook( $name ) {
 		global $wgParser;
+		$wgParser->firstCallInit( ); //make sure hooks are loaded.
 		if( isset( $wgParser->mFunctionHooks[$name] ) ) {
 			$this->functionHooks[$name] = $wgParser->mFunctionHooks[$name];
 		} else {
@@ -1395,7 +1397,7 @@ class DbTestRecorder extends DbTestPreviewer  {
 	 * and all that fun stuff
 	 */
 	function start() {
-		global $wgDBtype, $wgDBprefix;
+		global $wgDBtype, $wgDBprefix, $options;
 		$this->db->begin();
 
 		if( ! $this->db->tableExists( 'testrun' ) 
@@ -1414,7 +1416,8 @@ class DbTestRecorder extends DbTestPreviewer  {
 		$this->db->insert( 'testrun',
 			array(
 				'tr_date'        => $this->db->timestamp(),
-				'tr_mw_version'  => SpecialVersion::getVersion(),
+				'tr_mw_version'  => isset( $options['setversion'] ) ?
+					$options['setversion'] : SpecialVersion::getVersion(),
 				'tr_php_version' => phpversion(),
 				'tr_db_version'  => $this->db->getServerVersion(),
 				'tr_uname'       => php_uname()

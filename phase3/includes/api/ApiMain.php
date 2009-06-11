@@ -192,6 +192,12 @@ class ApiMain extends ApiBase {
 	}
 
 	/**
+	 * Only kept for backwards compatibility
+	 * @deprecated Use isWriteMode() instead
+	 */
+	public function requestWriteMode() {}
+
+	/**
 	 * Set how long the response should be cached.
 	 */
 	public function setCacheMaxAge($maxage) {
@@ -654,7 +660,6 @@ class ApiMain extends ApiBase {
 		$vers[] = ApiBase :: getBaseVersion();
 		$vers[] = ApiFormatBase :: getBaseVersion();
 		$vers[] = ApiQueryBase :: getBaseVersion();
-		$vers[] = ApiFormatFeedWrapper :: getVersion(); // not accessible with format=xxx
 		return $vers;
 	}
 

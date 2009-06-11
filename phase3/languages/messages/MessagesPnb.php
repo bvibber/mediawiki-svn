@@ -418,7 +418,6 @@ $messages = array(
 لیجنڈ: (موجودہ) = موجودہ تبدیلی نال مقابلہ، 
 (آخری) = پچھلی تبدیلی توں فرق، M = تھوڑی تبدیلی',
 'history-fieldset-title' => 'ریکارڈ ویکھو',
-'deletedrev'             => '[مٹایا جا چکیا اے]',
 'histfirst'              => 'سب توں پہلا',
 'histlast'               => 'سب توں نواں',
 'historyempty'           => '(خالی)',
@@ -469,8 +468,8 @@ $messages = array(
 'noexactmatch-nocreate'     => "'''\"\$1\" ناں دا کوئی صفحہ نئیں اے۔'''",
 'notitlematches'            => 'اے لفظ کسی صفحے دے ناں چ نئیں اے۔',
 'notextmatches'             => 'کوئی صفح نئیں لبیا',
-'prevn'                     => 'پہلا $1',
-'nextn'                     => 'اگلا $1',
+'prevn'                     => 'پہلا {{PLURAL:$1|$1}}',
+'nextn'                     => 'اگلا {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'ویکھو ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:فہرست',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 لفظ|$2 الفاظ}})',
@@ -517,7 +516,6 @@ $messages = array(
 'searchresultshead'         => 'کھوج',
 'timezonelegend'            => 'ویلے دا علاقہ',
 'localtime'                 => 'مقامی ویلا:',
-'timezoneselect'            => 'ویلیاں دے علاقے:',
 'prefs-files'               => 'فائلاں',
 'youremail'                 => 'ای میل:',
 'username'                  => 'ورتن آلے دا ناں:',
@@ -611,6 +609,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'ملدیاں جلدیاں تبدیلیاں',
+'recentchangeslinked-feed'     => 'ملدیاں جلدیاں تبدیلیاں',
+'recentchangeslinked-toolbox'  => 'ملدیاں جلدیاں تبدیلیاں',
 'recentchangeslinked-title'    => '"$1" نال تعلق آلیاں تبدیلیاں',
 'recentchangeslinked-noresult' => 'جڑیاں صفحیاں چ دتے ہوۓ ویلے چ کوئی تبدیلیاں نہیں۔',
 'recentchangeslinked-summary'  => "اے اوناں تبدیلیاں دی لسٹ اے جیڑیاں تھوڑا چر پہلاں بنائیاں گئیاں اوناں صفحیاں تے جیڑے خاص صفحے تے جڑدے نے یا کسی خاص کیٹاگری دے ممبراں نوں۔<br />
@@ -664,6 +664,7 @@ $messages = array(
 'listfiles_description' => 'تفصیل',
 
 # File description page
+'file-anchor-link'          => 'فائل',
 'filehist'                  => 'پچھلی حالت',
 'filehist-help'             => 'فائل نو اس ویلے دی حالت وچ ویکھن واسطے تاریخ/ویلے تے کلک کرو۔',
 'filehist-deleteall'        => 'سب نوں مٹاؤ',
@@ -681,8 +682,6 @@ $messages = array(
 'linkstoimage'              => 'تھلے دتے گۓ {{PLURAL:$1|$1 صفحے}} اس فائل نال جڑدے نے',
 'nolinkstoimage'            => 'اس فائل نال جڑیا کوئی صفحہ نہیں۔',
 'sharedupload'              => 'اے فائل $1 مشترکہ اپلوڈ اے تے اے دوجے منصوبے وی استعمال کر سکدے نے۔',
-'noimage'                   => 'اس ناں دی کوئی فائل نہيں، مگر تسی $1 بنا سکدے او۔',
-'noimage-linktext'          => 'اک چڑھاؤ',
 'uploadnewversion-linktext' => 'اس فائل دا نوا ورژن چھڑھاؤ',
 
 # File reversion
@@ -1200,6 +1199,7 @@ $messages = array(
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

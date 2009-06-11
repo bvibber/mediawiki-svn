@@ -11,8 +11,23 @@
  * @author לערי ריינהארט
  */
 
+$namespaceNames = array(
+	NS_USER             => 'Korisnik',
+	NS_USER_TALK        => 'Razgovor_sa_korisnikom',
+	NS_FILE             => 'Datoteka',
+	NS_FILE_TALK        => 'Razgovor_o_datoteci',
+	NS_TEMPLATE         => 'Šablon',
+	NS_TEMPLATE_TALK    => 'Razgovor_o_šablonu',
+	NS_CATEGORY         => 'Kategorija',
+	NS_CATEGORY_TALK    => 'Razgovor_o_kategoriji',
+);
+
 $messages = array(
 # User preference toggles
+'tog-underline'        => 'Podvuci linkove:',
+'tog-highlightbroken'  => 'Formatiraj pokvarene linkove <a href="" class="new">ovako</a> (alternativa: ovako<a href="" class="internal">?</a>)',
+'tog-justify'          => 'Uravnaj pasuse',
+'tog-hideminor'        => 'Sakrij manje izmjene u spisku nedavnih izmjena',
 'tog-rememberpassword' => 'Upamti moju lozinku na ovom kompjuteru za buduće posjete',
 
 # Dates
@@ -119,6 +134,8 @@ $messages = array(
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'     => 'Stranica',
 'nstab-special'  => 'Posebna stranica',
+'nstab-image'    => 'Datoteka',
+'nstab-template' => 'Šablon',
 'nstab-category' => 'Kategorija',
 
 # General errors
@@ -195,6 +212,8 @@ Vaše izmjene još uvijek nisu snimljene!",
 Ukoliko ne želite da vaše pisanje bude nemilosrdno uređivano i redistribuirano po tuđoj volji, onda ga nemojte ovdje objavljivati.<br />
 Također obećavate kako ste ga napisali sami ili kopirali iz izvora u javnoj domeni ili sličnog slobodnog izvora.
 '''NEMOJTE SLATI RAD ZAŠTIĆEN AUTORSKIM PRAVIMA BEZ DOZVOLE!'''",
+'templatesused'                    => 'Šabloni korišteni na ovoj stranici:',
+'templatesusedpreview'             => 'Šabloni korišteni u ovom pretpregledu:',
 'template-protected'               => '(zaštićeno)',
 'template-semiprotected'           => '(polu-zaštićeno)',
 'hiddencategories'                 => 'Ova stranica pripada {{PLURAL:$1|1 skrivenoj kategoriji|$1 skrivenim kategorijama}}:',
@@ -243,9 +262,10 @@ Možete [[:\$1|stvoriti ovu stranicu]].",
 'noexactmatch-nocreate'     => "'''Ne postoji stranica sa naslovom \"\$1\".'''",
 'notitlematches'            => 'Nijedan naslov stranice ne odgovara',
 'notextmatches'             => 'Tekst stranice ne odgovara',
-'prevn'                     => 'prethodna $1',
-'nextn'                     => 'sljedećih $1',
+'prevn'                     => 'prethodna {{PLURAL:$1|$1}}',
+'nextn'                     => 'sljedećih {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'Pogledaj ($1) ($2) ($3)',
+'search-result-size'        => '$1 ({{PLURAL:$2|1 riječ|$2 riječi}})',
 'search-redirect'           => '(preusmjeravanje $1)',
 'search-section'            => '(sekcija $1)',
 'search-suggest'            => 'Da li ste mislili: $1',
@@ -300,6 +320,8 @@ Pokušajte u svoju pretragu staviti ''all:'' da se pretražuje cjelokupan sadrž
 
 # Recent changes linked
 'recentchangeslinked'         => 'Srodne izmjene',
+'recentchangeslinked-feed'    => 'Srodne izmjene',
+'recentchangeslinked-toolbox' => 'Srodne izmjene',
 'recentchangeslinked-title'   => 'Srodne promjene sa "$1"',
 'recentchangeslinked-summary' => "Ova posebna stranica prikazuje promjene na povezanim stranicama. 
 Stranice koje su na vašem [[Special:Watchlist|spisku praćenja]] su '''podebljane'''.",
@@ -307,19 +329,26 @@ Stranice koje su na vašem [[Special:Watchlist|spisku praćenja]] su '''podeblja
 'recentchangeslinked-to'      => 'Pokaži promjene stranica koji su povezane sa datom stranicom',
 
 # Upload
+'upload'          => 'Postavi datoteku',
+'uploadbtn'       => 'Postavi datoteku',
 'uploadlogpage'   => 'Registar postavljanja',
 'uploadedimage'   => 'postavljeno "[[$1]]"',
 'watchthisupload' => 'Prati ovu stranicu',
 
 # File description page
+'file-anchor-link'          => 'Datoteka',
+'filehist'                  => 'Historija datoteke',
 'filehist-help'             => 'Kliknite na datum/vrijeme da vidite kako je tada izgledala datoteka/fajl.',
 'filehist-revert'           => 'vrati',
 'filehist-current'          => 'trenutno',
 'filehist-datetime'         => 'Datum/Vrijeme',
 'filehist-thumb'            => 'Smanjeni pregled',
+'filehist-thumbtext'        => 'Smanjeni pregled verzije na dan $1',
 'filehist-user'             => 'Korisnik',
 'filehist-dimensions'       => 'Dimenzije',
 'filehist-comment'          => 'Komentar',
+'imagelinks'                => 'Linkovi datoteke',
+'linkstoimage'              => '{{PLURAL:$1|Sljedeća stranica koristi|Sljedećih $1 stranica koriste}} ovu sliku:',
 'sharedupload'              => 'Ova datoteka/fajl je sa $1 i mogu je koristiti ostali projekti.',
 'uploadnewversion-linktext' => 'Postavite novu verziju ove datoteke/fajla',
 
@@ -332,18 +361,37 @@ Stranice koje su na vašem [[Special:Watchlist|spisku praćenja]] su '''podeblja
 'filedelete-otherreason'      => 'Ostali/dodatni razlog/zi:',
 'filedelete-reason-otherlist' => 'Ostali razlog/zi',
 
+# Random page
+'randompage'         => 'Slučajna stranica',
+'randompage-nopages' => 'Nema stranica u imenskom prostoru "$1".',
+
+# Random redirect
+'randomredirect'         => 'Slučajno preusmjerenje',
+'randomredirect-nopages' => 'Nema preusmjerenja u imenskom prostoru "$1".',
+
 # Statistics
 'statistics' => 'Statistike',
 
+'withoutinterwiki'         => 'Stranice bez linkova na drugim jezicima',
+'withoutinterwiki-summary' => 'Sljedeće stranice nisu povezane sa verzijama na drugim jezicima.',
+'withoutinterwiki-legend'  => 'Prefiks',
+'withoutinterwiki-submit'  => 'Prikaži',
+
 # Miscellaneous special pages
-'nbytes'        => '$1 {{PLURAL:$1|bajt|bajtova}}',
-'nmembers'      => '$1 {{PLURAL:$1|član|članova}}',
-'prefixindex'   => 'Sve stranice sa prefiksom',
-'newpages'      => 'Nove stranice',
-'move'          => 'Premjesti',
-'movethispage'  => 'Premjesti ovu stranicu',
-'pager-newer-n' => '{{PLURAL:$1|novija 1|novije $1}}',
-'pager-older-n' => '{{PLURAL:$1|starija 1|starije $1}}',
+'nbytes'               => '$1 {{PLURAL:$1|bajt|bajtova}}',
+'nmembers'             => '$1 {{PLURAL:$1|član|članova}}',
+'mostlinked'           => 'Stranice sa najviše linkova',
+'mostlinkedcategories' => 'Kategorije sa najviše linkova',
+'mostlinkedtemplates'  => 'Šabloni sa najviše linkova',
+'mostcategories'       => 'Stranice sa najviše kategorija',
+'mostimages'           => 'Datoteke sa najviše linkova',
+'mostrevisions'        => 'Stranice sa najviše izmjena',
+'prefixindex'          => 'Sve stranice sa prefiksom',
+'newpages'             => 'Nove stranice',
+'move'                 => 'Premjesti',
+'movethispage'         => 'Premjesti ovu stranicu',
+'pager-newer-n'        => '{{PLURAL:$1|novija 1|novije $1}}',
+'pager-older-n'        => '{{PLURAL:$1|starija 1|starije $1}}',
 
 # Book sources
 'booksources'               => 'Književni izvori',
@@ -365,6 +413,9 @@ Stranice koje su na vašem [[Special:Watchlist|spisku praćenja]] su '''podeblja
 
 # Special:LinkSearch
 'linksearch' => 'Vanjski/spoljašni linkovi',
+
+# Special:ListUsers
+'listusers-submit' => 'Pokaži',
 
 # Special:Log/newusers
 'newuserlogpage'          => 'Registar novih korisnika',
@@ -446,6 +497,8 @@ Možete promijeniti stepen zaštite ove stranice, ali to neće uticati na prenos
 'restriction-move' => 'Premjesti',
 
 # Undelete
+'undelete'         => 'Pregledaj izbrisane stranice',
+'viewdeletedpage'  => 'Pregledaj izbrisane stranice',
 'undeletelink'     => 'pogledaj/vrati',
 'undeleteinvert'   => 'Sve osim odabranog',
 'undeletedarticle' => 'vraćen "[[$1]]"',
@@ -476,6 +529,7 @@ Možete promijeniti stepen zaštite ove stranice, ali to neće uticati na prenos
 'whatlinkshere-page'       => 'Stranica:',
 'linkshere'                => "Sljedeće stranice vode na '''[[:$1]]''':",
 'isredirect'               => 'preusmjeri stranicu',
+'isimage'                  => 'link datoteke',
 'whatlinkshere-prev'       => '{{PLURAL:$1|prethodni|prethodna|prethodnih}} $1',
 'whatlinkshere-next'       => '{{PLURAL:$1|sljedeći|sljedeća|sljedećih}} $1',
 'whatlinkshere-links'      => '← linkovi',
@@ -542,6 +596,56 @@ Molimo Vas da izaberete drugo ime.',
 # Thumbnails
 'thumbnail-more' => 'Uvećaj',
 
+# Special:Import
+'import'                     => 'Uvoz stranica',
+'importinterwiki'            => 'Transwiki uvoz',
+'import-interwiki-text'      => 'Izaberi wiki i naslov stranice za uvoz.
+Datumi revizije i imena urednika će biti sačuvana.
+Sve akcije vezane uz transwiki uvoz su zabilježene u [[Special:Log/import|registru uvoza]].',
+'import-interwiki-source'    => 'Izvorna wiki/stranica:',
+'import-interwiki-history'   => 'Kopiraj sve verzije historije za ovu stranicu',
+'import-interwiki-templates' => 'Uključi sve šablone',
+'import-interwiki-submit'    => 'Uvoz',
+'import-interwiki-namespace' => 'Odredišni imenski prostor:',
+'import-upload-filename'     => 'Naziv datoteke:',
+'import-comment'             => 'Komentar:',
+'importtext'                 => 'Molimo vas da izvezete datoteku iz izvornog wikija koristeći [[Special:Export|utility za izvoz]].
+Snimite je na vašem kompjuteru i pošaljite ovdje.',
+'importstart'                => 'Uvoženje stranica…',
+'import-revision-count'      => '$1 {{PLURAL:$1|revizija|revizije|revizija}}',
+'importnopages'              => 'Nema stranica za uvoz.',
+'importfailed'               => 'Uvoz nije uspio: <nowiki>$1</nowiki>',
+'importunknownsource'        => 'Nepoznat izvorni tip uvoza',
+'importcantopen'             => 'Ne može se otvoriti uvozna datoteka',
+'importbadinterwiki'         => 'Loš interwiki link',
+'importnotext'               => 'Prazan ili nepostojeći tekst',
+'importsuccess'              => 'Uvoz dovršen!',
+'importhistoryconflict'      => 'Postoji konfliktna historija revizija (moguće je da je ova stranica ranije uvezena)',
+'importnosources'            => 'Nisu definirani izvori za transwiki uvoz i neposredna postavljanja historije su onemogućena.',
+'importnofile'               => 'Uvozna datoteka nije postavljena.',
+'importuploaderrorsize'      => 'Postavljanje uvozne datoteke nije uspjelo.
+Datoteka je veća od dozvoljene veličine za postavljanje.',
+'importuploaderrorpartial'   => 'Postavljanje uvozne datoteke nije uspjelo.
+Datoteka je samo djelomično postavljena.',
+'importuploaderrortemp'      => 'Postavljanje uvozne datoteke nije uspjelo.
+Nedostaje privremeni folder.',
+'import-parse-failure'       => 'Greška pri parsiranju XML uvoza',
+'import-noarticle'           => 'Nema stranice za uvoz!',
+'import-nonewrevisions'      => 'Sve revizije su prethodno uvežene.',
+'xml-error-string'           => '$1 na liniji $2, kolona $3 (bajt $4): $5',
+'import-upload'              => 'Postavljanje XML podataka',
+'import-token-mismatch'      => 'Izgubljeni podaci sesije.
+Molimo pokušajte ponovno.',
+'import-invalid-interwiki'   => 'Ne može se uvesti iz navedenog wikija.',
+
+# Import log
+'importlogpage'                    => 'Registar uvoza',
+'importlogpagetext'                => 'Administrativni uvozi stranica s historijom izmjena sa drugih wikija.',
+'import-logentry-upload'           => 'uvezen/a [[$1]] postavljanjem datoteke',
+'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|revizija|revizije|revizija}}',
+'import-logentry-interwiki'        => 'uveženo ("transwikied") $1',
+'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|revizija|revizije|revizija}} sa $2',
+
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'Vaša korisnička stranica',
 'tooltip-pt-mytalk'               => 'Vaša stranica za razgovor',
@@ -577,6 +681,7 @@ Možete vidjeti njen izvor',
 'tooltip-feed-atom'               => 'Atom feed za ovu stranicu',
 'tooltip-t-contributions'         => 'Pogledajte listu doprinosa ovog korisnika',
 'tooltip-t-emailuser'             => 'Pošaljite e-mail ovom korisniku',
+'tooltip-t-upload'                => 'Postavi datoteke',
 'tooltip-t-specialpages'          => 'Popis svih posebnih stranica',
 'tooltip-t-print'                 => 'Verzija ove stranice za štampanje',
 'tooltip-t-permalink'             => 'Stalni link ove verzije stranice',
@@ -608,6 +713,7 @@ Dozvoljava unošenje razloga za to u sažetku.',
 'show-big-image-thumb' => '<small>Veličina ovog prikaza: $1 × $2 piksela</small>',
 
 # Special:NewFiles
+'newimages'    => 'Galerija novih slika',
 'showhidebots' => '($1 botove)',
 
 # Bad image list
@@ -628,6 +734,7 @@ Svi drugi linkovi u istoj liniji se smatraju izuzecima, npr. kod stranica gdje s
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength",
 
 # External editor support
@@ -645,6 +752,44 @@ Svi drugi linkovi u istoj liniji se smatraju izuzecima, npr. kod stranica gdje s
 'watchlisttools-raw'  => 'Uredi grubu listu praćenja',
 
 # Special:SpecialPages
-'specialpages' => 'Posebne stranice',
+'specialpages'                   => 'Posebne stranice',
+'specialpages-note'              => '----
+* Normalne posebne stranice.
+* <strong class="mw-specialpagerestricted">Zaštićene posebne stranice.</strong>',
+'specialpages-group-maintenance' => 'Izvještaji za održavanje',
+'specialpages-group-other'       => 'Ostale posebne stranice',
+'specialpages-group-login'       => 'Prijava / Otvaranje računa',
+'specialpages-group-changes'     => 'Nedavne izmjene i registri',
+'specialpages-group-media'       => 'Mediji i postavljanje datoteka',
+'specialpages-group-users'       => 'Korisnici i korisnička prava',
+'specialpages-group-highuse'     => 'Često korištene stranice',
+'specialpages-group-pages'       => 'Spiskovi stranica',
+'specialpages-group-pagetools'   => 'Alati za stranice',
+'specialpages-group-wiki'        => 'Wiki podaci i alati',
+'specialpages-group-redirects'   => 'Preusmjeravanje posebnih stranica',
+'specialpages-group-spam'        => 'Spam alati',
+
+# Special:BlankPage
+'blankpage'              => 'Prazna stranica',
+'intentionallyblankpage' => 'Ova je stranica namjerno ostavljena praznom.',
+
+# Database error messages
+'dberr-header'      => 'Ovaj wiki ima problem',
+'dberr-problems'    => 'Žao nam je! Ova stranica ima tehničke poteškoće.',
+'dberr-again'       => 'Pokušajte pričekati nekoliko minuta i ponovno učitati.',
+'dberr-info'        => '(Ne može se spojiti server baze podataka: $1)',
+'dberr-usegoogle'   => 'U međuvremenu pokušajte pretraživati preko Googlea.',
+'dberr-outofdate'   => 'Uzmite u obzir da njihovi indeksi našeg sadržaja ne moraju uvijek biti ažurni.',
+'dberr-cachederror' => 'Sljedeći tekst je keširana kopija tražene stranice i možda nije potpuno ažurirana.',
+
+# HTML forms
+'htmlform-invalid-input'       => 'Postoje određeni problemi sa Vašim unosom',
+'htmlform-select-badoption'    => 'Vrijednost koju ste unijeli nije valjana opcija.',
+'htmlform-int-invalid'         => 'Vrijednost koju ste unijeli nije cijeli broj.',
+'htmlform-int-toolow'          => 'Vrijednost koju ste unijeli je ispod minimuma od $1',
+'htmlform-int-toohigh'         => 'Vrijednost koju ste unijeli je iznad maksimuma od $1',
+'htmlform-submit'              => 'Unesi',
+'htmlform-reset'               => 'Vrati izmjene',
+'htmlform-selectorother-other' => 'Ostalo',
 
 );

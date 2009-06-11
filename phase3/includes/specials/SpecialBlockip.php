@@ -61,7 +61,10 @@ class IPBlockForm {
 		$this->BlockAnonOnly = $wgRequest->getBool( 'wpAnonOnly', $byDefault );
 		$this->BlockCreateAccount = $wgRequest->getBool( 'wpCreateAccount', $byDefault );
 		$this->BlockEnableAutoblock = $wgRequest->getBool( 'wpEnableAutoblock', $byDefault );
-		$this->BlockEmail = $wgRequest->getBool( 'wpEmailBan', false );
+		$this->BlockEmail = false;
+		if( self::canBlockEmail( $wgUser ) ) {
+			$this->BlockEmail = $wgRequest->getBool( 'wpEmailBan', false );
+		}
 		$this->BlockWatchUser = $wgRequest->getBool( 'wpWatchUser', false );
 		# Re-check user's rights to hide names, very serious, defaults to 0
 		$this->BlockHideName = ( $wgRequest->getBool( 'wpHideName', 0 ) && $wgUser->isAllowed( 'hideuser' ) ) ? 1 : 0;
@@ -230,8 +233,7 @@ class IPBlockForm {
 			</tr>"
 		);
 
-		global $wgSysopEmailBans, $wgBlockAllowsUTEdit;
-		if( $wgSysopEmailBans && $wgUser->isAllowed( 'blockemail' ) ) {
+		if( self::canBlockEmail( $wgUser ) ) {
 			$wgOut->addHTML("
 				<tr id='wpEnableEmailBan'>
 					<td>&nbsp;</td>
@@ -269,6 +271,9 @@ class IPBlockForm {
 				</td>
 			</tr>"
 		);
+		
+		# Can we explicitly disallow the use of user_talk?
+		global $wgBlockAllowsUTEdit;
 		if( $wgBlockAllowsUTEdit ){
 			$wgOut->addHTML("
 				<tr id='wpAllowUsertalkRow'>
@@ -307,6 +312,16 @@ class IPBlockForm {
 		} elseif( preg_match( '/^\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}/', $this->BlockAddress ) ) {
 			$this->showLogFragment( $wgOut, Title::makeTitle( NS_USER, $this->BlockAddress ) );
 		}
+	}
+	
+	/**
+	 * Can we do an email block?
+	 * @param User $user The sysop wanting to make a block
+	 * @return boolean
+	 */
+	public static function canBlockEmail( $user ) {
+		global $wgEnableUserEmail, $wgSysopEmailBans;
+		return ($wgEnableUserEmail && $wgSysopEmailBans && $user->isAllowed( 'blockemail' ));
 	}
 
 	/**
@@ -452,7 +467,7 @@ class IPBlockForm {
 
 			# Set *_deleted fields if requested
 			if( $this->BlockHideName ) {
-				self::suppressUserName( $this->BlockAddress, $userId, $reasonstr );
+				self::suppressUserName( $this->BlockAddress, $userId );
 			}
 
 			# Only show watch link when this is no range block
@@ -482,20 +497,7 @@ class IPBlockForm {
 		}
 	}
 	
-	public static function suppressUserName( $name, $userId, $reason = '' ) {
-		$user = User::newFromName( $name, false );
-		# Delete the user pages that exists
-		$title = $user->getUserPage();
-		if( ($id = $title->getArticleID(GAID_FOR_UPDATE)) ) {
-			$article = new Article( $title );
-			$article->doDeleteArticle( $reason, true /*suppress*/, $id );
-		}
-		# Delete the user talk pages that exists
-		$title = $user->getTalkPage();
-		if( $id = $title->getArticleID(GAID_FOR_UPDATE) ) {
-			$article = new Article( $title );
-			$article->doDeleteArticle( $reason, true /*suppress*/, $id );
-		}
+	public static function suppressUserName( $name, $userId ) {
 		$op = '|'; // bitwise OR
 		return self::setUsernameBitfields( $name, $userId, $op );
 	}
@@ -512,7 +514,7 @@ class IPBlockForm {
 		$delAction = LogPage::DELETED_ACTION | Revision::DELETED_RESTRICTED;
 		# Normalize user name
 		$userTitle = Title::makeTitleSafe( NS_USER, $name );
-		$userDbKey = $userTitle->getDBKey();
+		$userDbKey = $userTitle->getDBkey();
 		# To suppress, we OR the current bitfields with Revision::DELETED_USER
 		# to put a 1 in the username *_deleted bit. To unsuppress we AND the
 		# current bitfields with the inverse of Revision::DELETED_USER. The
@@ -634,7 +636,13 @@ class IPBlockForm {
 			$links[] = $this->getContribsLink( $skin );
 		$links[] = $this->getUnblockLink( $skin );
 		$links[] = $this->getBlockListLink( $skin );
-		$links[] = $skin->makeLink ( 'MediaWiki:Ipbreason-dropdown', wfMsgHtml( 'ipb-edit-dropdown' ) );
+		$title = Title::makeTitle( NS_MEDIAWIKI, 'Ipbreason-dropdown' );
+		$links[] = $skin->link(
+			$title,
+			wfMsgHtml( 'ipb-edit-dropdown' ),
+			array(),
+			array( 'action' => 'edit' )
+		);
 		return '<p class="mw-ipb-conveniencelinks">' . $wgLang->pipeList( $links ) . '</p>';
 	}
 	
@@ -660,13 +668,21 @@ class IPBlockForm {
 	 */
 	private function getUnblockLink( $skin ) {
 		$list = SpecialPage::getTitleFor( 'Ipblocklist' );
+		$query = array( 'action' => 'unblock' );
+
 		if( $this->BlockAddress ) {
 			$addr = htmlspecialchars( strtr( $this->BlockAddress, '_', ' ' ) );
-			return $skin->makeKnownLinkObj( $list, wfMsgHtml( 'ipb-unblock-addr', $addr ),
-				'action=unblock&ip=' . urlencode( $this->BlockAddress ) );
+			$message = wfMsgHtml( 'ipb-unblock-addr', $addr );
+			$query['ip'] = $this->BlockAddress;
 		} else {
-			return $skin->makeKnownLinkObj( $list, wfMsgHtml( 'ipb-unblock' ),	'action=unblock' );
+			$message = wfMsgHtml( 'ipb-unblock' );
 		}
+		return $skin->linkKnown(
+			$list,
+			$message,
+			array(),
+			$query
+		);
 	}
 
 	/**
@@ -677,13 +693,22 @@ class IPBlockForm {
 	 */
 	private function getBlockListLink( $skin ) {
 		$list = SpecialPage::getTitleFor( 'Ipblocklist' );
+		$query = array();
+
 		if( $this->BlockAddress ) {
 			$addr = htmlspecialchars( strtr( $this->BlockAddress, '_', ' ' ) );
-			return $skin->makeKnownLinkObj( $list, wfMsgHtml( 'ipb-blocklist-addr', $addr ),
-				'ip=' . urlencode( $this->BlockAddress ) );
+			$message = wfMsgHtml( 'ipb-blocklist-addr', $addr );
+			$query['ip'] = $this->BlockAddress;
 		} else {
-			return $skin->makeKnownLinkObj( $list, wfMsgHtml( 'ipb-blocklist' ) );
+			$message = wfMsgHtml( 'ipb-blocklist' );
 		}
+
+		return $skin->linkKnown(
+			$list,
+			$message,
+			array(),
+			$query
+		);
 	}
 	
 	/**

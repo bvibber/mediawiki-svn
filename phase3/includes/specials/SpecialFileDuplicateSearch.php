@@ -51,9 +51,12 @@ class FileDuplicateSearchPage extends QueryPage {
 
 		$nt = Title::makeTitle( NS_FILE, $result->title );
 		$text = $wgContLang->convert( $nt->getText() );
-		$plink = $skin->makeLink( $nt->getPrefixedText(), $text );
+		$plink = $skin->link(
+			Title::newFromText( $nt->getPrefixedText() ),
+			$text
+		);
 
-		$user = $skin->makeLinkObj( Title::makeTitle( NS_USER, $result->img_user_text ), $result->img_user_text );
+		$user = $skin->link( Title::makeTitle( NS_USER, $result->img_user_text ), $result->img_user_text );
 		$time = $wgLang->timeanddate( $result->img_timestamp );
 
 		return "$plink . . $user . . $time";
@@ -73,7 +76,7 @@ function wfSpecialFileDuplicateSearch( $par = null ) {
 	if( $title && $title->getText() != '' ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$image = $dbr->tableName( 'image' );
-		$encFilename = $dbr->addQuotes( htmlspecialchars( $title->getDBKey() ) );
+		$encFilename = $dbr->addQuotes( htmlspecialchars( $title->getDBkey() ) );
 		$sql = "SELECT img_sha1 from $image where img_name = $encFilename";
 		$res = $dbr->query( $sql );
 		$row = $dbr->fetchRow( $res );

@@ -649,7 +649,6 @@ Skuli: ''$2''",
 'histlegend'             => 'Wybůr růžńic do porůwnańo: postow kropki we boksach a naćiś enter abo knefel na dole.<br />
 Legynda: (bjež.) - růžńice s wersyjům bježůncům, (popř.) - růžńice s wersyjům popředzajůncům, d - drobne zmjany',
 'history-fieldset-title' => 'Přeglůndej historyjo',
-'deletedrev'             => '[wyćepano]',
 'histfirst'              => 'uod počůnku',
 'histlast'               => 'uod uostatka',
 'historysize'            => '({{PLURAL:$1|1 bajt|$1 bajty|$1 bajtůw}})',
@@ -806,9 +805,7 @@ Inkśi admińistratoři {{GRAMMAR:D.lp|{{SITENAME}}}} dali bydům mjeć dostymp 
 'searchresults'                    => 'Wyńiki šnupańo',
 'searchresults-title'              => 'Wyniki sznupańo za „$1”',
 'searchresulttext'                 => 'Coby dowjydźeć śe wjyncyj uo šnupańu w {{GRAMMAR:D.lp|{{SITENAME}}}}, uobezdřij [[{{MediaWiki:Helppage}}|{{int:help}}]].',
-'searchsubtitle'                   => 'Wyńiki šnupańo za "[[:$1]]"
-([[Special:Prefixindex/$1|zajty kere začynajům śe uod „$1”]] |
-[[Special:WhatLinksHere/$1|zajty kere sům adresowane do „$1”]])',
+'searchsubtitle'                   => 'Wyńiki šnupańo za "[[:$1]]" ([[Special:Prefixindex/$1|zajty kere začynajům śe uod „$1”]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|zajty kere sům adresowane do „$1”]])',
 'searchsubtitleinvalid'            => 'Lo zapytańo "$1"',
 'noexactmatch'                     => "'''Ńy mo sam zajtůw nazwanych \"\$1\".'''
 Možeš [[:\$1|tako utwořyć]], abo sprůbować pounygo šnupańo.",
@@ -818,8 +815,8 @@ Možeš [[:\$1|tako utwořyć]], abo sprůbować pounygo šnupańo.",
 'notitlematches'                   => 'Ńy znejdźono we titlach',
 'textmatches'                      => 'Znejdźono na zajtach:',
 'notextmatches'                    => 'Ńy znejdźono we tekście zajtůw',
-'prevn'                            => 'popředńe $1',
-'nextn'                            => 'nastympne $1',
+'prevn'                            => 'popředńe {{PLURAL:$1|$1}}',
+'nextn'                            => 'nastympne {{PLURAL:$1|$1}}',
 'viewprevnext'                     => 'Uobezdřij ($1) ($2) ($3)',
 'searchmenu-legend'                => 'Uopcyje sznupańo',
 'searchmenu-exists'                => "'''Ńy ma zajty uo mjańy \"[[:\$1]]\" na tyj wiki'''",
@@ -881,7 +878,6 @@ Možeš [[:\$1|tako utwořyć]], abo sprůbować pounygo šnupańo.",
 'prefs-skin'                => 'Skůrka',
 'skin-preview'              => 'podglůnd',
 'prefs-math'                => 'Wzory',
-'dateformat'                => 'Format daty',
 'datedefault'               => 'Důmyślny',
 'prefs-datetime'            => 'Data a czas',
 'prefs-personal'            => 'Dane užytkowńika',
@@ -910,7 +906,6 @@ Možeš [[:\$1|tako utwořyć]], abo sprůbować pounygo šnupańo.",
 'savedprefs'                => 'Twoje štalowańo we preferyncyjach zostouy naškryflane.',
 'timezonelegend'            => 'Strefa časowo',
 'localtime'                 => 'Lokalny czas:',
-'timezoneselect'            => 'Sztrefa czasowo:',
 'timezoneuseserverdefault'  => 'Użyj domyślnygo czasu serwera',
 'timezoneuseoffset'         => 'Inkszo (uokryśl różnica czasu)',
 'timezoneoffset'            => 'Dyferencyjo ¹:',
@@ -1108,6 +1103,8 @@ Možeš [[:\$1|tako utwořyć]], abo sprůbować pounygo šnupańo.",
 
 # Recent changes linked
 'recentchangeslinked'          => 'Pomjyńańa we adresowanych',
+'recentchangeslinked-feed'     => 'Pomjyńańa we adresowanych',
+'recentchangeslinked-toolbox'  => 'Pomjyńańa we adresowanych',
 'recentchangeslinked-title'    => 'Pomjyńyńo w adrésowanych s "$1"',
 'recentchangeslinked-noresult' => 'Nikt nic niy pomjyńoł w dolinkowanych bez čas uo kery žeś pytou.',
 'recentchangeslinked-summary'  => "To je ekstra zajta, na kerej možeš uobočyć zmjany w artiklach adresowanych do podanyj zajty.
@@ -1228,6 +1225,7 @@ Rejer wyćepań tygo plika je podany půńižej, cobyś miou wygoda:",
 'listfiles_description' => 'Uopis',
 
 # File description page
+'file-anchor-link'          => 'Plik',
 'filehist'                  => 'Gyszichta pliku',
 'filehist-help'             => 'Klikńij na data/čas, coby uobejřeć plik taki jak wtedy wyglůndou.',
 'filehist-deleteall'        => 'wyćep wszyske',
@@ -1252,8 +1250,6 @@ Dostympno je tyž [[Special:WhatLinksHere/$2|pouno lista]].',
 'redirectstofile'           => '{{PLURAL:$1|Nastympujůncy plik překerowuje|Nastympujůnce pliki překerowujům}} ku tymu plikowi:',
 'duplicatesoffile'          => '{{PLURAL:$1|Nastympujůncy plik je kopjům|Nastympujůnce pliki sům kopjůma}} tygo plika:',
 'sharedupload'              => 'Tyn plik je wćepńynty na wspůlny serwer a inksze projekty tyż můgům go używać.',
-'noimage'                   => 'Ńy mo sam plika uo takym mjańe, nale mogesz go sam $1.',
-'noimage-linktext'          => 'wćepńij plik',
 'uploadnewversion-linktext' => 'Wćepńij nowšo wersyjo tygo plika',
 
 # File reversion
@@ -2260,6 +2256,7 @@ Nostympne linki w lińii uwažůmy za wyjůntki, to sům nazwy zajtůw, kaj plik
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

@@ -1169,15 +1169,8 @@ class User {
 	 */
 	public function isPingLimitable() {
 		global $wgRateLimitsExcludedGroups;
-		global $wgRateLimitsExcludedIPs;
 		if( array_intersect( $this->getEffectiveGroups(), $wgRateLimitsExcludedGroups ) ) {
 			// Deprecated, but kept for backwards-compatibility config
-			return false;
-		}
-		if( in_array( wfGetIP(), $wgRateLimitsExcludedIPs ) ) {
-			// No other good way currently to disable rate limits
-			// for specific IPs. :P
-			// But this is a crappy hack and should die.
 			return false;
 		}
 		return !$this->isAllowed('noratelimit');
@@ -2149,16 +2142,18 @@ class User {
 	 * @todo FIXME : need to check the old failback system [AV]
 	 */
 	function &getSkin( $t = null ) {
-		global $wgRequest, $wgAllowUserSkin, $wgDefaultSkin;
 		if ( ! isset( $this->mSkin ) ) {
 			wfProfileIn( __METHOD__ );
 
-			if( $wgAllowUserSkin ) {
+			global $wgHiddenPrefs;
+			if( !in_array( 'skin', $wgHiddenPrefs ) ) {
 				# get the user skin
+				global $wgRequest;
 				$userSkin = $this->getOption( 'skin' );
 				$userSkin = $wgRequest->getVal('useskin', $userSkin);
 			} else {
 				# if we're not allowing users to override, then use the default
+				global $wgDefaultSkin;
 				$userSkin = $wgDefaultSkin;
 			}
 			
@@ -2484,7 +2479,7 @@ class User {
 			'user_email' => $user->mEmail,
 			'user_email_authenticated' => $dbw->timestampOrNull( $user->mEmailAuthenticated ),
 			'user_real_name' => $user->mRealName,
-			'user_options' => $user->encodeOptions(),
+			'user_options' => '',
 			'user_token' => $user->mToken,
 			'user_registration' => $dbw->timestamp( $user->mRegistration ),
 			'user_editcount' => 0,
@@ -2845,7 +2840,9 @@ class User {
 				$this->getName(),
 				$url,
 				$wgLang->timeanddate( $expiration, false ),
-				$invalidateURL ) );
+				$invalidateURL,
+				$wgLang->date( $expiration, false ),
+				$wgLang->time( $expiration, false ) ) );
 	}
 
 	/**
@@ -3205,7 +3202,7 @@ class User {
 		if( $title ) {
 			global $wgUser;
 			$sk = $wgUser->getSkin();
-			return $sk->makeLinkObj( $title, htmlspecialchars( $text ) );
+			return $sk->link( $title, htmlspecialchars( $text ) );
 		} else {
 			return $text;
 		}

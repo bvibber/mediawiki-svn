@@ -3188,6 +3188,24 @@ Image with empty link parameter
 </p>
 !! end
 
+!! test
+Image with link parameter (wiki target) and unnamed parameter
+!! input
+[[Image:foobar.jpg|link=Target page|Title]]
+!! result
+<p><a href="/wiki/Target_page" title="Title"><img alt="Title" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" /></a>
+</p>
+!! end
+
+!! test
+Image with link parameter (URL target) and unnamed parameter
+!! input
+[[Image:foobar.jpg|link=http://example.com/|Title]]
+!! result
+<p><a href="http://example.com/" title="Title"><img alt="Title" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" /></a>
+</p>
+!! end
+
 
 
 !! test
@@ -7288,6 +7306,17 @@ Spacing of numbers in formatted dates
 {{#formatdate:January 15}}
 !! result
 <p><span class="mw-formatted-date" title="01-15">January 15</span>
+</p>
+!! end
+
+!! test
+Spacing of numbers in formatted dates (linked)
+!! config
+wgUseDynamicDates=true
+!! input
+[[January 15]]
+!! result
+<p><span class="mw-formatted-date" title="01-15"><a href="/index.php?title=January_15&amp;action=edit&amp;redlink=1" class="new" title="January 15 (page does not exist)">January 15</a></span>
 </p>
 !! end
 

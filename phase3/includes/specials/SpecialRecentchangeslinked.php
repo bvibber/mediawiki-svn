@@ -35,7 +35,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$feed = new ChangesFeed( $feedFormat, false );
 		$feedObj = $feed->getFeedObject(
 			wfMsgForContent( 'recentchangeslinked-title', $this->mTargetTitle->getPrefixedText() ),
-			wfMsgForContent( 'recentchangeslinked' )
+			wfMsgForContent( 'recentchangeslinked-feed' )
 		);
 		return array( $feed, $feedObj );
 	}
@@ -155,9 +155,10 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$sql = $subsql[0];
 		else {
 			// need to resort and relimit after union
-			$sql = "(" . implode( ") UNION (", $subsql ) . ") ORDER BY rc_timestamp DESC LIMIT {$limit}";
+			$sql = $dbr->unionQueries($subsql, false).' ORDER BY rc_timestamp DESC';
+			$sql = $dbr->limitResult($sql, $limit, false);
 		}
-
+		
 		$res = $dbr->query( $sql, __METHOD__ );
 
 		if( $res->numRows() == 0 )
@@ -170,7 +171,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$opts->consumeValues( array( 'showlinkedto', 'target' ) );
 		$extraOpts = array();
 		$extraOpts['namespace'] = $this->namespaceFilterForm( $opts );
-		$extraOpts['target'] = array( wfMsg( 'recentchangeslinked-page' ),
+		$extraOpts['target'] = array( wfMsgHtml( 'recentchangeslinked-page' ),
 			Xml::input( 'target', 40, str_replace('_',' ',$opts['target']) ) .
 			Xml::check( 'showlinkedto', $opts['showlinkedto'], array('id' => 'showlinkedto') ) . ' ' .
 			Xml::label( wfMsg("recentchangeslinked-to"), 'showlinkedto' ) );

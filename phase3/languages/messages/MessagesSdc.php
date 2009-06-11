@@ -694,7 +694,6 @@ La rasgioni frunidda da $3 è ''$2''",
 'histlegend'          => "Cunfrontu i li versioni: isciubarà li caselli curripundenti a li versioni disizaddi e incalchà Inviu o lu buttoni in giossu.
 
 Ippiegazioni: (curr) = diffarènzi cu la versioni currenti, (priz) = diffarènzi cu la versioni prizzidenti, '''m''' = mudìfigga minori, '''b''' = mudìfigga d'un bot, '''N''' = pàgina noba",
-'deletedrev'          => '[canzilladda]',
 'histfirst'           => 'Primma',
 'histlast'            => 'Ulthima',
 'historysize'         => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -783,8 +782,8 @@ Cunsulthà lu [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rigisthru d
 'notitlematches'        => 'Nisciuna curripundènzia i lu tìturi di li pàgini',
 'textmatches'           => 'Curripundènzi i lu teshu di li pàgini',
 'notextmatches'         => 'Nisciuna curripundènzia i lu teshu di li pàgini',
-'prevn'                 => 'prizzidenti $1',
-'nextn'                 => 'sighenti $1',
+'prevn'                 => 'prizzidenti {{PLURAL:$1|$1}}',
+'nextn'                 => 'sighenti {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'Vèdi ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Indizi',
 'searchrelated'         => 'curriraddi',
@@ -815,7 +814,6 @@ Cunsulthà lu [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rigisthru d
 'prefs-skin'                => 'Aipettu gràficu',
 'skin-preview'              => 'antiprimma',
 'prefs-math'                => 'Fòimmuri matemàtigghi',
-'dateformat'                => 'Fuimmaddu di la data',
 'datedefault'               => 'Nisciuna prifirènzia',
 'prefs-datetime'            => 'Data e ora',
 'prefs-personal'            => 'Profiru utenti',
@@ -933,6 +931,8 @@ Cunsulthà lu [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rigisthru d
 
 # Recent changes linked
 'recentchangeslinked'          => 'Mudìfigghi curriraddi',
+'recentchangeslinked-feed'     => 'Mudìfigghi curriraddi',
+'recentchangeslinked-toolbox'  => 'Mudìfigghi curriraddi',
 'recentchangeslinked-title'    => 'Mudìfigghi curriraddi a "$1"',
 'recentchangeslinked-noresult' => "Nisciuna mudìfigga a li pàgini curriraddi i' lu perìodu sciubaraddu.",
 'recentchangeslinked-summary'  => "Chistha pàgina ippiziari musthra li mudìfigghi più rizzenti a li pàgini curriraddi a chidda sciubaradda (o a li membri di un'ippizzifica categuria). Li [[Special:Watchlist|pàgini abbaidaddi]] so evidenziaddi in '''grasseddu'''.",
@@ -1040,6 +1040,7 @@ Pa piazeri verifigga si vói carriggà avveru chisthu file; inogghi v'è lu rigi
 'listfiles_description' => 'Deschrizioni',
 
 # File description page
+'file-anchor-link'          => 'Immàgina',
 'filehist'                  => 'Cronologia di lu file',
 'filehist-help'             => "Fà clic i' un gruppu data/ora pa vidé lu file cumenti era i' lu mamentu indicaddu.",
 'filehist-deleteall'        => 'canzella tuttu',
@@ -1055,8 +1056,6 @@ Pa piazeri verifigga si vói carriggà avveru chisthu file; inogghi v'è lu rigi
 'linkstoimage'              => "{{PLURAL:$1|La sighenti pàgina pùnta|Li sighenti $1 pàgini pùntani}} a l'immàgina:",
 'nolinkstoimage'            => "Nisciuna pàgina cunteni cullegamenti a l'immàgina.",
 'sharedupload'              => 'Chisthu file è unu carriggamentu cundibisu; pó assé dunca utirizaddu da più prugetti wiki.',
-'noimage'                   => "Un file cun chisth'innòmmu nò isisthi, vói $1 tu?",
-'noimage-linktext'          => 'carriggalu abà',
 'uploadnewversion-linktext' => 'Carrigga una nóba versioni di chistu file',
 
 # File reversion
@@ -1497,7 +1496,7 @@ $1",
 'ipblocklist-submit'          => 'Zercha',
 'blocklistline'               => '$1, $2 à broccaddu $3 ($4)',
 'infiniteblock'               => 'chena ischadènzia',
-'expiringblock'               => "finz'a lu $1",
+'expiringblock'               => "finz'a lu $1 $2",
 'anononlyblock'               => 'soru anònimi',
 'noautoblockblock'            => 'chena broccu otomàtiggu',
 'createaccountblock'          => 'criazioni registhrazioni broccadda',
@@ -1839,6 +1838,7 @@ So cunsidaraddi soru l'erenchi puntaddi (righi ch'ischumenzani cu' lu caràtteri
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength",
 
 # EXIF tags

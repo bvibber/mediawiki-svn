@@ -335,8 +335,8 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:UserLogin|logge s�
 'searchresulttext' => 'Ihke jeenjebe bïevnesh bïjre ohtsedh {{SITENAME}}, vuejnedh [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'   => "Dov ohtsedh ihke '''[[:$1]]'''",
 'noexactmatch'     => "'''Dïhte gååvnese ijje bielie meatan nommej \"\$1\".''' Dov dorje [[:\$1|skaepede dïhte bielie]].",
-'prevn'            => 'övtebe $1',
-'nextn'            => 'minngeben $1',
+'prevn'            => 'övtebe {{PLURAL:$1|$1}}',
+'nextn'            => 'minngeben {{PLURAL:$1|$1}}',
 'viewprevnext'     => 'Vuesehth ($1) ($2) ($3)',
 'searchhelp-url'   => 'Help:Sisvege',
 'powersearch'      => 'Ohtsedh',
@@ -399,6 +399,8 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:UserLogin|logge s�
 
 # Recent changes linked
 'recentchangeslinked'          => 'Värrhtoedimmieh nille krïense bielieh',
+'recentchangeslinked-feed'     => 'Värrhtoedimmieh nille krïense bielieh',
+'recentchangeslinked-toolbox'  => 'Värrhtoedimmieh nille krïense bielieh',
 'recentchangeslinked-title'    => 'Värrhtoedimmie laktaseaddji gåajkoe "$1"',
 'recentchangeslinked-noresult' => 'Ijje kïrense bielieh värrhtoedimmie nuelesne dïhte veeljeme tïjje-boelhke.',
 'recentchangeslinked-summary'  => "Dïhte joekoelaakan bielie lästoe dah minngemes värrhtoedimmieh nille bielieh goh lea lïenghke. Bielieh nille dov sïektjedhlästoe lea '''buajtehks'''.",
@@ -428,6 +430,7 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:UserLogin|logge s�
 'listfiles_size'       => 'Stoerre',
 
 # File description page
+'file-anchor-link'          => 'Baalka',
 'filehist'                  => 'Baalka histovrije',
 'filehist-help'             => 'Diedtedh nille biejjie ihke vuajna man baalkan lij bealese dïhte tïjje.',
 'filehist-current'          => 'daaletje',
@@ -440,8 +443,6 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:UserLogin|logge s�
 'linkstoimage'              => 'Tjuovvovasj bielieh lïenghkeh gåajkoe dïhte baalka:',
 'nolinkstoimage'            => 'Dïhte lea ijje bielieh goh nuhtjie dïhte baalka.',
 'sharedupload'              => 'Dïhte baalka lea sadde goh juaka jih dorje sjädta nuhtjie dejstie jeatjebh prosjekte.',
-'noimage'                   => 'Ijje baalka meatan dïhte nomme gååvnese, dov dorje $1.',
-'noimage-linktext'          => 'sadde dïhte',
 'uploadnewversion-linktext' => 'Sadde orre låhkoe dejstie dïhte baalka',
 
 # MIME search
@@ -806,6 +807,7 @@ Jeatjebh dajveh lea gaptjedh goh sïejhme, bine vuesehte gåessie taabelle stoer
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

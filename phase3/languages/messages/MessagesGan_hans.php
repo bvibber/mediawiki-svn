@@ -23,7 +23,7 @@ $namespaceNames = array(
 	NS_MEDIAWIKI_TALK   => 'MediaWiki谈詑',
 	NS_TEMPLATE_TALK    => '模板谈詑',
 	NS_HELP_TALK        => '帮助谈詑',
-	NS_CATEGORY_TALK    => '分类谈詑'
+	NS_CATEGORY_TALK    => '分类谈詑',
 );
 
 $messages = array(
@@ -588,7 +588,6 @@ $2',
 'page_last'           => '最晏',
 'histlegend'          => '差异选择: 标到伓同版本𠮶单选键，接到按吖督上𠮶键比较下。<br />
 说明: (眼下) 指同目前版本𠮶比较，(之前) 指同之前修改版本𠮶比较，细 = 细修改。',
-'deletedrev'          => '[拖删除]',
 'histfirst'           => '最早版本',
 'histlast'            => '最晏版本',
 'historysize'         => '({{PLURAL:$1|1 字节|$1 字节}})',
@@ -671,8 +670,8 @@ $2',
 'notitlematches'        => '冇页面同文章标题符合',
 'textmatches'           => '页面内容符合',
 'notextmatches'         => '冇页面内容符合',
-'prevn'                 => '前$1只',
-'nextn'                 => '后$1只',
+'prevn'                 => '前{{PLURAL:$1|$1}}只',
+'nextn'                 => '后{{PLURAL:$1|$1}}只',
 'viewprevnext'          => '眵吖($1) ($2) ($3)',
 'searchhelp-url'        => 'Help:说明',
 'showingresults'        => '底下从第<b>$2</b>条显示起先𠮶<b>$1</b>条结果:',
@@ -699,7 +698,6 @@ $2',
 'prefs-skin'                => '皮',
 'skin-preview'              => '（预览）',
 'prefs-math'                => '数学公式',
-'dateformat'                => '日期格式',
 'datedefault'               => '默认项目',
 'prefs-datetime'            => '日期同到时间',
 'prefs-personal'            => '用户介绍',
@@ -810,6 +808,8 @@ $2',
 
 # Recent changes linked
 'recentchangeslinked'          => '链接页𠮶更改',
+'recentchangeslinked-feed'     => '链接页𠮶更改',
+'recentchangeslinked-toolbox'  => '链接页𠮶更改',
 'recentchangeslinked-title'    => '链接页𠮶改动到 "$1"',
 'recentchangeslinked-noresult' => '个段时间𠮶链接页冇更改。',
 'recentchangeslinked-summary'  => "个只特殊页列出个页连出去页面𠮶最晏改动（或系某只分类𠮶页面）。
@@ -910,6 +910,7 @@ $2',
 'listfiles_description' => '简话',
 
 # File description page
+'file-anchor-link'          => '文件',
 'filehist'                  => '档案历史',
 'filehist-help'             => '按到日期／时间去眵吖许时间有过𠮶档案。',
 'filehist-deleteall'        => '全部删掉',
@@ -925,8 +926,6 @@ $2',
 'linkstoimage'              => '底下𠮶页面链接到个只档案:',
 'nolinkstoimage'            => '冇页面链接到个只档案。',
 'sharedupload'              => '个只档案系只共用𠮶上传，佢可以应用到别𠮶项目。',
-'noimage'                   => '同名𠮶档案伓存在，倷可以$1。',
-'noimage-linktext'          => '上传佢',
 'uploadnewversion-linktext' => '上传个只档案𠮶新版本',
 
 # File reversion
@@ -1375,7 +1374,7 @@ $NEWPAGE
 'ipblocklist-submit'          => '寻',
 'blocklistline'               => '$1，$2封到$3 ($4)',
 'infiniteblock'               => '伓限期',
-'expiringblock'               => '$1到期',
+'expiringblock'               => '$1 $2到期',
 'anononlyblock'               => '单限制匿名用户',
 'noautoblockblock'            => '停用自动封锁',
 'createaccountblock'          => '禁止新开帐户',
@@ -1730,6 +1729,7 @@ $1',
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags
@@ -2042,6 +2042,9 @@ $1',
 # action=purge
 'confirm_purge_button' => '做得',
 'confirm-purge-top'    => '想清卟个页𠮶缓存?',
+
+# Separators for various lists, etc.
+'comma-separator' => '、',
 
 # Multipage image navigation
 'imgmultipageprev' => '← 上页',

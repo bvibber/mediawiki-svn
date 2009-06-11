@@ -105,7 +105,7 @@ $specialPageAliases = array(
 
 $magicWords = array(
 	'redirect'              => array( '0', '#چوريو', '#REDIRECT' ),
-	'localmonth'            => array( '1', 'مقاميمهينو', 'LOCALMONTH' ),
+	'localmonth'            => array( '1', 'مقاميمهينو', 'LOCALMONTH', 'LOCALMONTH2' ),
 	'localmonthname'        => array( '1', 'مقاميمهينونالو', 'LOCALMONTHNAME' ),
 	'localday'              => array( '1', 'مقاميڏينهن', 'LOCALDAY' ),
 	'localday2'             => array( '1', 'مقاميڏينهن2', 'LOCALDAY2' ),
@@ -516,8 +516,8 @@ $messages = array(
 # Search results
 'noexactmatch'      => "'''\"\$1\" جي عنوان سان ڪو به صفحو ناهي.'''
 توهان [[:\$1|اهو صفحو سرجيو]].",
-'prevn'             => 'پويان $1',
-'nextn'             => 'اڳيان $1',
+'prevn'             => 'پويان {{PLURAL:$1|$1}}',
+'nextn'             => 'اڳيان {{PLURAL:$1|$1}}',
 'viewprevnext'      => 'ڏسو ($1) ($2) ($3)',
 'searchhelp-url'    => 'Help:فهرست',
 'powersearch'       => 'نفيس ڳولا',
@@ -576,6 +576,8 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'لاڳاپيل تبديليون',
+'recentchangeslinked-feed'     => 'لاڳاپيل تبديليون',
+'recentchangeslinked-toolbox'  => 'لاڳاپيل تبديليون',
 'recentchangeslinked-title'    => '"$1" سان لاڳاپيل تبديليون',
 'recentchangeslinked-noresult' => 'ڄاڻايل مدي دوران ڳنڍيل صفحن ۾ ڪا به تبديلي ناهي ٿي.',
 
@@ -589,6 +591,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'listfiles' => 'فائيل فهرست',
 
 # File description page
+'file-anchor-link'          => 'فائيل',
 'filehist'                  => 'فائيل جي سوانح',
 'filehist-help'             => 'ڪنهن به تاريخ/وقت تي ڪلڪ ڪري ڏسندا ته تڏڻي اهو فائيل ڪيئن هو.',
 'filehist-current'          => 'هاڻوڪو',
@@ -601,8 +604,6 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'linkstoimage'              => 'هن فائيل سان {{PLURAL:$1|هيٺيون صفحو ڳنڍيل آهي |$1 هيٺيان صفحا ڳنڍيل آهن}}:',
 'nolinkstoimage'            => 'هن فائيل سان ڪو به صفحو ڳنڍيل ناهي.',
 'sharedupload'              => 'هيءَ هڪ شراڪتي چاڙهه آهي، تنهنڪري ان کي ٻيون رٿائون به استعمال ڪري سگھن ٿيون.',
-'noimage'                   => 'ان نالي سان ڪو به فائيل وجود نٿو رکي، جي چاهيو ته $1.',
-'noimage-linktext'          => 'اهو چاڙهيو',
 'uploadnewversion-linktext' => 'هن فائيل جو نئون پرت چاڙهيو',
 
 # MIME search

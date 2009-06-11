@@ -112,7 +112,7 @@ class Article {
 			array(
 				'rd_from' => $this->getID(),
 				'rd_namespace' => $retval->getNamespace(),
-				'rd_title' => $retval->getDBKey()
+				'rd_title' => $retval->getDBkey()
 			),
 			__METHOD__
 		);
@@ -707,8 +707,8 @@ class Article {
 			GROUP BY rev_user, rev_user_text, user_real_name
 			ORDER BY timestamp DESC";
 
-		if($limit > 0) { $sql .= ' LIMIT '.$limit; }
-		if($offset > 0) { $sql .= ' OFFSET '.$offset; }
+		if($limit > 0)
+			$sql = $dbr->limitResult($sql, $limit, $offset);
 
 		$sql .= ' '. $this->getSelectOptions();
 
@@ -792,8 +792,7 @@ class Article {
 
 		# Allow admins to see deleted content if explicitly requested
 		$delId = $diff ? $diff : $oldid;
-		$unhide = $wgRequest->getInt('unhide') == 1
-			&& $wgUser->matchEditToken( $wgRequest->getVal('token'), $delId );
+		$unhide = $wgRequest->getInt('unhide') == 1;
 		# If we got diff and oldid in the query, we want to see a
 		# diff page instead of the article.
 		if( !is_null( $diff ) ) {
@@ -837,7 +836,13 @@ class Article {
 			// This is an internally redirected page view.
 			// We'll need a backlink to the source page for navigation.
 			if( wfRunHooks( 'ArticleViewRedirect', array( &$this ) ) ) {
-				$redir = $sk->makeKnownLinkObj( $this->mRedirectedFrom, '', 'redirect=no' );
+				$redir = $sk->link(
+					$this->mRedirectedFrom,
+					null,
+					array(),
+					array( 'redirect' => 'no' ),
+					array( 'known', 'noclasses' )
+				);
 				$s = wfMsgExt( 'redirectedfrom', array( 'parseinline', 'replaceafter' ), $redir );
 				$wgOut->setSubtitle( $s );
 
@@ -950,8 +955,7 @@ class Article {
 						// If the user needs to confirm that they want to see it...
 						} else if( !$unhide ) {
 							# Give explanation and add a link to view the revision...
-							$link = $this->mTitle->getFullUrl( "oldid={$oldid}".
-								'&unhide=1&token='.urlencode( $wgUser->editToken($oldid) ) );
+							$link = $this->mTitle->getFullUrl( "oldid={$oldid}&unhide=1" );
 							$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n",
 								array('rev-deleted-text-unhide',$link) );
 							$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
@@ -1042,15 +1046,24 @@ class Article {
 
 		# If we have been passed an &rcid= parameter, we want to give the user a
 		# chance to mark this new article as patrolled.
-		if( !empty($rcid) && $this->mTitle->exists() && $this->mTitle->quickUserCan('patrol') ) {
+		if( !empty( $rcid ) && $this->mTitle->exists() && $this->mTitle->quickUserCan( 'patrol' ) ) {
 			$wgOut->addHTML(
 				"<div class='patrollink'>" .
-					wfMsgHtml( 'markaspatrolledlink',
-					$sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml('markaspatrolledtext'),
-						"action=markpatrolled&rcid=$rcid" )
-			 		) .
+					wfMsgHtml(
+						'markaspatrolledlink',
+						$sk->link(
+							$this->mTitle,
+							wfMsgHtml( 'markaspatrolledtext' ),
+							array(),
+							array(
+								'action' => 'markpatrolled',
+								'rcid' => $rcid
+							),
+							array( 'known', 'noclasses' )
+						)
+					) .
 				'</div>'
-			 );
+			);
 		}
 
 		# Trackbacks
@@ -1125,18 +1138,30 @@ class Article {
 		// the loop prepends the arrow image before the link, so the first case needs to be outside
 		$title = array_shift( $target );
 		if( $forceKnown ) {
-			$link = $sk->makeKnownLinkObj( $title, htmlspecialchars( $title->getFullText() ) );
+			$link = $sk->link(
+				$title,
+				htmlspecialchars( $title->getFullText() ),
+				array(),
+				array(),
+				array( 'known', 'noclasses' )
+			);
 		} else {
-			$link = $sk->makeLinkObj( $title, htmlspecialchars( $title->getFullText() ) );
+			$link = $sk->link( $title, htmlspecialchars( $title->getFullText() ) );
 		}
 		// automatically append redirect=no to each link, since most of them are redirect pages themselves
 		foreach( $target as $rt ) {
 			if( $forceKnown ) {
 				$link .= '<img src="'.$imageUrl2.'" alt="'.$alt2.' " />'
-					. $sk->makeKnownLinkObj( $rt, htmlspecialchars( $rt->getFullText() ) );
+					. $sk->link(
+						$rt,
+						htmlspecialchars( $rt->getFullText() ),
+						array(),
+						array(),
+						array( 'known', 'noclasses' )
+					);
 			} else {
 				$link .= '<img src="'.$imageUrl2.'" alt="'.$alt2.' " />'
-					. $sk->makeLinkObj( $rt, htmlspecialchars( $rt->getFullText() ) );
+					. $sk->link( $rt, htmlspecialchars( $rt->getFullText() ) );
 			}
 		}
 		return '<img src="'.$imageUrl.'" alt="#REDIRECT " />' .
@@ -1448,10 +1473,10 @@ class Article {
 	}
 
 	/**
-	 * @deprecated use Article::doEdit()
+	 * This function is not deprecated until somebody fixes the core not to use
+	 * it. Nevertheless, use Article::doEdit() instead.
 	 */
 	function insertNewArticle( $text, $summary, $isminor, $watchthis, $suppressRC=false, $comment=false, $bot=false ) {
-		wfDeprecated( __METHOD__ );
 		$flags = EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $isminor ? EDIT_MINOR : 0 ) |
 			( $suppressRC ? EDIT_SUPPRESS_RC : 0 ) |
@@ -1962,16 +1987,6 @@ class Article {
 	 * action=protect handler
 	 */
 	public function protect() {
-		global $wgUser, $wgOut;
-		
-		# Check permissions
-		$permission_errors = $this->mTitle->getUserPermissionsErrors( 'protect', $wgUser );
-
-		if( count( $permission_errors ) > 0 ) {
-			$wgOut->showPermissionsErrorPage( $permission_errors );
-			return;
-		}
-	
 		$form = new ProtectionForm( $this );
 		$form->execute();
 	}
@@ -2416,7 +2431,14 @@ class Article {
 
 		wfDebug( "Article::confirmDelete\n" );
 
-		$wgOut->setSubtitle( wfMsgHtml( 'delete-backlink', $wgUser->getSkin()->makeKnownLinkObj( $this->mTitle ) ) );
+		$deleteBackLink = $wgUser->getSkin()->link(
+			$this->mTitle,
+			null,
+			array(),
+			array(),
+			array( 'known', 'noclasses' )
+		);
+		$wgOut->setSubtitle( wfMsgHtml( 'delete-backlink', $deleteBackLink ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->addWikiMsg( 'confirmdeletetext' );
 
@@ -2479,7 +2501,13 @@ class Article {
 
 			if( $wgUser->isAllowed( 'editinterface' ) ) {
 				$skin = $wgUser->getSkin();
-				$link = $skin->makeLink ( 'MediaWiki:Deletereason-dropdown', wfMsgHtml( 'delete-edit-reasonlist' ) );
+				$title = Title::makeTitle( NS_MEDIAWIKI, 'Deletereason-dropdown' );
+				$link = $skin->link(
+					$title,
+					wfMsgHtml( 'delete-edit-reasonlist' ),
+					array(),
+					array( 'action' => 'edit' )
+				);
 				$form .= '<p class="mw-delete-editreasons">' . $link . '</p>';
 			}
 
@@ -2629,7 +2657,7 @@ class Article {
 			$dbw->delete( 'recentchanges',
 				array( 'rc_type != '.RC_LOG, 
 					'rc_namespace' => $this->mTitle->getNamespace(),
-					'rc_title' => $this->mTitle->getDBKey() ),
+					'rc_title' => $this->mTitle->getDBkey() ),
 				__METHOD__ );
 			$dbw->delete( 'recentchanges',
 				array( 'rc_type != '.RC_LOG, 'rc_cur_id' => $id ),
@@ -3055,26 +3083,79 @@ class Article {
 
 		$current = ( $oldid == $this->mLatest );
 		$td = $wgLang->timeanddate( $this->mTimestamp, true );
+		$tddate = $wgLang->time( $this->mTimestamp, true );
+		$tdtime = $wgLang->time( $this->mTimestamp, true );
 		$sk = $wgUser->getSkin();
 		$lnk = $current
 			? wfMsgHtml( 'currentrevisionlink' )
-			: $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'currentrevisionlink' ) );
+			: $sk->link(
+				$this->mTitle,
+				wfMsgHtml( 'currentrevisionlink' ),
+				array(),
+				array(),
+				array( 'known', 'noclasses' )
+			);
 		$curdiff = $current
 			? wfMsgHtml( 'diff' )
-			: $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'diff' ), 'diff=cur&oldid='.$oldid );
+			: $sk->link(
+				$this->mTitle,
+				wfMsgHtml( 'diff' ),
+				array(),
+				array(
+					'diff' => 'cur',
+					'oldid' => $oldid
+				),
+				array( 'known', 'noclasses' )
+			);
 		$prev = $this->mTitle->getPreviousRevisionID( $oldid ) ;
 		$prevlink = $prev
-			? $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'previousrevision' ), 'direction=prev&oldid='.$oldid )
+			? $sk->link(
+				$this->mTitle,
+				wfMsgHtml( 'previousrevision' ),
+				array(),
+				array(
+					'direction' => 'prev',
+					'oldid' => $oldid
+				),
+				array( 'known', 'noclasses' )
+			)
 			: wfMsgHtml( 'previousrevision' );
 		$prevdiff = $prev
-			? $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'diff' ), 'diff=prev&oldid='.$oldid )
+			? $sk->link(
+				$this->mTitle,
+				wfMsgHtml( 'diff' ),
+				array(),
+				array(
+					'diff' => 'prev',
+					'oldid' => $oldid
+				),
+				array( 'known', 'noclasses' )
+			)
 			: wfMsgHtml( 'diff' );
 		$nextlink = $current
 			? wfMsgHtml( 'nextrevision' )
-			: $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'nextrevision' ), 'direction=next&oldid='.$oldid );
+			: $sk->link(
+				$this->mTitle,
+				wfMsgHtml( 'nextrevision' ),
+				array(),
+				array(
+					'direction' => 'next',
+					'oldid' => $oldid
+				),
+				array( 'known', 'noclasses' )
+			);
 		$nextdiff = $current
 			? wfMsgHtml( 'diff' )
-			: $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'diff' ), 'diff=next&oldid='.$oldid );
+			: $sk->link(
+				$this->mTitle,
+				wfMsgHtml( 'diff' ),
+				array(),
+				array(
+					'diff' => 'next',
+					'oldid' => $oldid
+				),
+				array( 'known', 'noclasses' )
+			);
 
 		$cdel='';
 		if( $wgUser->isAllowed( 'deleterevision' ) ) {
@@ -3086,10 +3167,17 @@ class Article {
 			// If revision was hidden from sysops
 				$cdel = wfMsgHtml( 'rev-delundel' );
 			} else {
-				$cdel = $sk->makeKnownLinkObj( $revdel,
+				$cdel = $sk->link(
+					$revdel,
 					wfMsgHtml('rev-delundel'),
-					'target=' . urlencode( $this->mTitle->getPrefixedDbkey() ) .
-					'&oldid=' . urlencode( $oldid ) );
+					array(),
+					array(
+						'type' => 'revision',
+						'target' => urlencode( $this->mTitle->getPrefixedDbkey() ),
+						'ids' => urlencode( $oldid )
+					),
+					array( 'known', 'noclasses' )
+				);
 				// Bolden oversighted content
 				if( $revision->isDeleted( Revision::DELETED_RESTRICTED ) )
 					$cdel = "<strong>$cdel</strong>";
@@ -3105,11 +3193,19 @@ class Article {
 			? 'revision-info-current'
 			: 'revision-info';
 
-		$r = "\n\t\t\t\t<div id=\"mw-{$infomsg}\">" . wfMsgExt( $infomsg, array( 'parseinline', 'replaceafter' ), 
-			$td, $userlinks, $revision->getID() ) . "</div>\n" .
-
-		     "\n\t\t\t\t<div id=\"mw-revision-nav\">" . $cdel . wfMsgExt( 'revision-nav', array( 'escapenoentities', 'parsemag', 'replaceafter' ),
-		     	$prevdiff, $prevlink, $lnk, $curdiff, $nextlink, $nextdiff ) . "</div>\n\t\t\t";
+		$r = "\n\t\t\t\t<div id=\"mw-{$infomsg}\">" .
+			wfMsgExt(
+				$infomsg,
+				array( 'parseinline', 'replaceafter' ), 
+				$td,
+				$userlinks,
+				$revision->getID(),
+				$tddate,
+				$tdtime
+			) .
+			"</div>\n" .
+			"\n\t\t\t\t<div id=\"mw-revision-nav\">" . $cdel . wfMsgExt( 'revision-nav', array( 'escapenoentities', 'parsemag', 'replaceafter' ),
+			$prevdiff, $prevlink, $lnk, $curdiff, $nextlink, $nextdiff ) . "</div>\n\t\t\t";
 		$wgOut->setSubtitle( $r );
 	}
 
@@ -3627,7 +3723,6 @@ class Article {
 			$poTemplates = array();
 			foreach ( $parserOutput->getTemplates() as $ns => $templates ) {
 				foreach ( $templates as $dbk => $id ) {
-					$key = $row->tl_namespace . ':'. $row->tl_title;
 					$poTemplates["$ns:$dbk"] = true;
 				}
 			}

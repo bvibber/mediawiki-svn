@@ -663,7 +663,6 @@ Bazeyena lazava ke $3 tir ''$2''.",
 'histlegend'             => 'Pebusiki : (noel-) = amiduca gu noelaf siatos ,
 (iron-) = amiduca gu abdif siatos, <b>m</b> = betamaks',
 'history-fieldset-title' => 'Izvotexulera',
-'deletedrev'             => '[sulayan]',
 'histfirst'              => 'Tel losavsaf',
 'histlast'               => 'Ironokaf',
 'historysize'            => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -764,8 +763,8 @@ Ta ropasusu warzafu bu yo va [[Special:Search|aneyara ko wiki]] yawal.',
 'notitlematches'                 => 'Mek telizvergumvelt ruldas va erune',
 'textmatches'                    => 'Vadjesaceem ko krenteem',
 'notextmatches'                  => 'Mek krentvergumvelt ruldas va erune',
-'prevn'                          => '$1 abduef',
-'nextn'                          => '$1 radimef',
+'prevn'                          => '{{PLURAL:$1|$1}} abduef',
+'nextn'                          => '{{PLURAL:$1|$1}} radimef',
 'viewprevnext'                   => 'Va ($1) ik ($2) ik ($3) disukel.',
 'searchhelp-url'                 => 'Help:Pomara',
 'searchprofile-images'           => 'Iyeltak',
@@ -818,7 +817,6 @@ Kan ''all:'' laganeyal ta varafa exulera (gon keyaksexo is teza ikz-), oke wetce
 'prefs-skin'                => 'Laviuca',
 'skin-preview'              => 'Abdiwira',
 'prefs-math'                => 'Rendu des maths',
-'dateformat'                => 'Evlabreviz',
 'datedefault'               => 'Megelukon',
 'prefs-datetime'            => 'Evla is bartiv',
 'prefs-personal'            => 'Ilkagiveem',
@@ -846,7 +844,6 @@ Kan ''all:'' laganeyal ta varafa exulera (gon keyaksexo is teza ikz-), oke wetce
 'savedprefs'                => 'Lodamaceem su zo giwar.',
 'timezonelegend'            => 'Bartivxo',
 'localtime'                 => 'Lizukaf bartiv :',
-'timezoneselect'            => 'Bartivxo :',
 'timezoneoffset'            => 'Bartivferenuca :',
 'servertime'                => 'Bartiv ke zanisiko :',
 'guesstimezone'             => 'Favera va voda ke exulesiki',
@@ -1012,6 +1009,8 @@ Gotir le $1 {{PLURAL:$1|staa|staa}}.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Gluyasikisuzdara',
+'recentchangeslinked-feed'     => 'Gluyasikisuzdara',
+'recentchangeslinked-toolbox'  => 'Gluyasikisuzdara',
 'recentchangeslinked-title'    => 'Betakseem skedas va "$1"',
 'recentchangeslinked-noresult' => 'Meka betara va gluyasikikirafu bu remi bata rekola.',
 'recentchangeslinked-summary'  => "Batu aptafu bu va ironokaf betakseem va gluyasikikirafu bu vexalar.
@@ -1122,6 +1121,7 @@ Sulara \"log\" va batu bu krafiason batlize zo nedir :",
 'listfiles_count'       => 'Siatos',
 
 # File description page
+'file-anchor-link'          => 'Ewava',
 'filehist'                  => 'Iyeltakizvot',
 'filehist-help'             => 'Ta da va iyeltak wil dum in batoulon awir va evla/bartiv vulegal !',
 'filehist-deleteall'        => 'Sulara va kotcoba',
@@ -1142,8 +1142,6 @@ Sulara \"log\" va batu bu krafiason batlize zo nedir :",
 'redirectstofile'           => 'Vlevef {{PLURAL:$1|graskan iyeltak|$1 graskan iyeltak}} va bat iyeltak :',
 'duplicatesoffile'          => 'Bat {{PLURAL:$1|iyeltak tir|$1 iyeltak tid}} jontolaca ke bat iyeltak ([[Special:FileDuplicateSearch/$2|lo pinta]]) :',
 'sharedupload'              => 'Bat iyeltak tir ke $1 ise gan ar abdumimaks zo rofaver.',
-'noimage'                   => 'Mek iyeltak dem bat yolt tir voxe rotil va $1.',
-'noimage-linktext'          => 'kalvajara',
 'uploadnewversion-linktext' => 'Kalvajara va warzaf siatos ke bat iyeltak',
 
 # File reversion
@@ -1653,7 +1651,7 @@ male abdion elekayane IP mane.',
 'ipblocklist-submit'       => 'Aneyara',
 'blocklistline'            => '$1 (tenuwer ba $4): $2 va $3 al elekar',
 'infiniteblock'            => 'parmaf',
-'expiringblock'            => 'tenuwer ba $1',
+'expiringblock'            => 'tenuwer ba $1 $2',
 'anononlyblock'            => 'anton yoltiskik',
 'noautoblockblock'         => "gritegirayan 'autoblock'",
 'createaccountblock'       => 'pataredura zo elekar',
@@ -2000,6 +1998,7 @@ Kotari milconhafi gluyasiki roklon zo krafiar.',
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

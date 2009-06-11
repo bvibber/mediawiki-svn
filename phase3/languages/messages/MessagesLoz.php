@@ -469,8 +469,8 @@ Informasi: (bye) = petuho a nca selt,
 'notitlematches'        => 'Ni sebu di petulo ekali',
 'textmatches'           => 'Selt di petulo ekali',
 'notextmatches'         => 'Ni selt di petulo ekali',
-'prevn'                 => 'kona $1',
-'nextn'                 => 'lila $1',
+'prevn'                 => 'kona {{PLURAL:$1|$1}}',
+'nextn'                 => 'lila {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'Kamukile ($1) ($2) ($3)',
 'searchhelp-url'        => 'Help:Buinaneli di petulo',
 'searchall'             => 'xete',
@@ -489,7 +489,6 @@ Informasi: (bye) = petuho a nca selt,
 'prefs-skin'                => 'PendiBe',
 'skin-preview'              => 'PendiBe',
 'prefs-math'                => 'Mat',
-'dateformat'                => 'Data apukisize',
 'datedefault'               => 'Ni di petohoni di sebelu',
 'prefs-datetime'            => 'Data',
 'prefs-rc'                  => 'Petuho nca',
@@ -552,6 +551,8 @@ Informasi: (bye) = petuho a nca selt,
 
 # Recent changes linked
 'recentchangeslinked'          => 'Petuho adusi',
+'recentchangeslinked-feed'     => 'Petuho adusi',
+'recentchangeslinked-toolbox'  => 'Petuho adusi',
 'recentchangeslinked-title'    => 'Petuho dadusi di "$1"',
 'recentchangeslinked-noresult' => "Ni petuhoni kwa ling'ki petulo kwa bye datum.",
 'recentchangeslinked-summary'  => "Bye petulo zwenti kamukile lapu-kona petuho di petulo sa ling'ki. Petulo di zwa mukoloko di kentezi sa '''ombelu'''.",
@@ -586,6 +587,7 @@ di uplodezi media.',
 'listfiles_user' => 'Sebelu',
 
 # File description page
+'file-anchor-link'          => 'Imegi',
 'filehist'                  => 'Imegi bundau',
 'filehist-help'             => 'Tampa datum/taimi di kamukile imegi a sa kwa bye datum.',
 'filehist-current'          => 'bye',
@@ -598,8 +600,6 @@ di uplodezi media.',
 'linkstoimage'              => "Bye petulo sa ling'ki di bye media:",
 'nolinkstoimage'            => "No petulo ling'ki a imegi.",
 'sharedupload'              => 'Imegi sa uplodezi kwa wiki dy apukolobili sa e sa kubi xetewi proyeti.',
-'noimage'                   => 'Ni media bye sebu sa, a sa $1.',
-'noimage-linktext'          => 'a uplodezi',
 'uploadnewversion-linktext' => 'Uplodezi nca selt di bye media',
 
 # File reversion
@@ -1046,6 +1046,7 @@ Xete ling'ki kwa lina sa konsidisize desepo. Petulo dimedi inlinenikusize.",
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

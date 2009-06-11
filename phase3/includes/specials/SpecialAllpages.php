@@ -14,7 +14,7 @@ class SpecialAllpages extends IncludableSpecialPage {
 	/**
 	 * Maximum number of pages to show on single index subpage.
 	 */
-	protected $maxLineCount = 200;
+	protected $maxLineCount = 100;
 
 	/**
 	 * Maximum number of chars to show for an entry.
@@ -48,7 +48,8 @@ class SpecialAllpages extends IncludableSpecialPage {
 
 		$namespaces = $wgContLang->getNamespaces();
 
-		$wgOut->setPagetitle( ( $namespace > 0 && in_array( $namespace, array_keys( $namespaces) ) )  ?
+		$wgOut->setPagetitle( 
+			( $namespace > 0 && in_array( $namespace, array_keys( $namespaces) ) ) ?
 			wfMsg( 'allinnamespace', str_replace( '_', ' ', $namespaces[$namespace] ) ) :
 			wfMsg( 'allarticles' )
 		);
@@ -69,45 +70,45 @@ class SpecialAllpages extends IncludableSpecialPage {
 	 * @param string $to dbKey we are ending listing at.
 	 */
 	function namespaceForm( $namespace = NS_MAIN, $from = '', $to = '' ) {
-	    global $wgScript;
-	    $t = $this->getTitle();
-
-	    $out  = Xml::openElement( 'div', array( 'class' => 'namespaceoptions' ) );
-	    $out .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
-	    $out .= Xml::hidden( 'title', $t->getPrefixedText() );
-	    $out .= Xml::openElement( 'fieldset' );
-	    $out .= Xml::element( 'legend', null, wfMsg( 'allpages' ) );
-	    $out .= Xml::openElement( 'table', array( 'id' => 'nsselect', 'class' => 'allpages' ) );
-	    $out .= "<tr>
-	            <td class='mw-label'>" .
-	                Xml::label( wfMsg( 'allpagesfrom' ), 'nsfrom' ) .
-	            "</td>
-	            <td class='mw-input'>" .
-	                Xml::input( 'from', 30, str_replace('_',' ',$from), array( 'id' => 'nsfrom' ) ) .
-	            "</td>
-	        </tr>
-	        <tr>
-	            <td class='mw-label'>" .
-	                Xml::label( wfMsg( 'allpagesto' ), 'nsto' ) .
-	            "</td>
-	            <td class='mw-input'>" .
-	                Xml::input( 'to', 30, str_replace('_',' ',$to), array( 'id' => 'nsto' ) ) .
-	            "</td>
-	        </tr>
-	        <tr>
-	            <td class='mw-label'>" .
-	                Xml::label( wfMsg( 'namespace' ), 'namespace' ) .
-	            "</td>
-	            <td class='mw-input'>" .
-	                Xml::namespaceSelector( $namespace, null ) . ' ' .
-	                Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
-	            "</td>
-	            </tr>";
-	    $out .= Xml::closeElement( 'table' );
-	    $out .= Xml::closeElement( 'fieldset' );
-	    $out .= Xml::closeElement( 'form' );
-	    $out .= Xml::closeElement( 'div' );
-	    return $out;
+		global $wgScript;
+		$t = $this->getTitle();
+	
+		$out  = Xml::openElement( 'div', array( 'class' => 'namespaceoptions' ) );
+		$out .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
+		$out .= Xml::hidden( 'title', $t->getPrefixedText() );
+		$out .= Xml::openElement( 'fieldset' );
+		$out .= Xml::element( 'legend', null, wfMsg( 'allpages' ) );
+		$out .= Xml::openElement( 'table', array( 'id' => 'nsselect', 'class' => 'allpages' ) );
+		$out .= "<tr>
+	<td class='mw-label'>" .
+			Xml::label( wfMsg( 'allpagesfrom' ), 'nsfrom' ) .
+			"	</td>
+	<td class='mw-input'>" .
+			Xml::input( 'from', 30, str_replace('_',' ',$from), array( 'id' => 'nsfrom' ) ) .
+			"	</td>
+</tr>
+<tr>
+	<td class='mw-label'>" .
+			Xml::label( wfMsg( 'allpagesto' ), 'nsto' ) .
+			"	</td>
+			<td class='mw-input'>" .
+			Xml::input( 'to', 30, str_replace('_',' ',$to), array( 'id' => 'nsto' ) ) .
+			"		</td>
+</tr>
+<tr>
+	<td class='mw-label'>" .
+			Xml::label( wfMsg( 'namespace' ), 'namespace' ) .
+			"	</td>
+			<td class='mw-input'>" .
+			Xml::namespaceSelector( $namespace, null ) . ' ' .
+			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
+			"	</td>
+</tr>";
+		$out .= Xml::closeElement( 'table' );
+		$out .= Xml::closeElement( 'fieldset' );
+		$out .= Xml::closeElement( 'form' );
+		$out .= Xml::closeElement( 'div' );
+		return $out;
 	}
 
 	/**
@@ -125,8 +126,8 @@ class SpecialAllpages extends IncludableSpecialPage {
 
 		$from = Title::makeTitleSafe( $namespace, $from );
 		$to = Title::makeTitleSafe( $namespace, $to );
-		$from = ( $from && $from->isLocal() ) ? $from->getDBKey() : null;
-		$to = ( $to && $to->isLocal() ) ? $to->getDBKey() : null;
+		$from = ( $from && $from->isLocal() ) ? $from->getDBkey() : null;
+		$to = ( $to && $to->isLocal() ) ? $to->getDBkey() : null;
 
 		if( isset($from) )
 			$where[] = 'page_title >= '.$dbr->addQuotes( $from );
@@ -189,7 +190,7 @@ class SpecialAllpages extends IncludableSpecialPage {
 		// Instead, display the first section directly.
 		if( count( $lines ) <= 2 ) {
 			if( !empty($lines) ) {
-				$this->showChunk( $namespace, $lines[0], $lines[count($lines)-1] );
+				$this->showChunk( $namespace, $from, $to );
 			} else {
 				$wgOut->addHTML( $this->namespaceForm( $namespace, $from, $to ) );
 			}
@@ -306,7 +307,7 @@ class SpecialAllpages extends IncludableSpecialPage {
 					$t = Title::makeTitle( $s->page_namespace, $s->page_title );
 					if( $t ) {
 						$link = ( $s->page_is_redirect ? '<div class="allpagesredirect">' : '' ) .
-							$sk->makeKnownLinkObj( $t, htmlspecialchars( $t->getText() ), false, false ) .
+							$sk->linkKnown( $t, htmlspecialchars( $t->getText() ) ) .
 							($s->page_is_redirect ? '</div>' : '' );
 					} else {
 						$link = '[[' . htmlspecialchars( $s->page_title ) . ']]';
@@ -343,7 +344,9 @@ class SpecialAllpages extends IncludableSpecialPage {
 					'page_title',
 					array( 'page_namespace' => $namespace, 'page_title < '.$dbr->addQuotes($from) ),
 					__METHOD__,
-					array( 'ORDER BY' => 'page_title DESC', 'LIMIT' => $this->maxPerPage, 'OFFSET' => ($this->maxPerPage - 1 ) )
+					array( 'ORDER BY' => 'page_title DESC', 
+						'LIMIT' => $this->maxPerPage, 'OFFSET' => ($this->maxPerPage - 1 )
+					)
 				);
 
 				# Get first title of previous complete chunk
@@ -381,20 +384,34 @@ class SpecialAllpages extends IncludableSpecialPage {
 
 			# Do we put a previous link ?
 			if( isset( $prevTitle ) &&  $pt = $prevTitle->getText() ) {
-				$q = 'from=' . $prevTitle->getPartialUrl()
-					. ( $namespace ? '&namespace=' . $namespace : '' );
-				$prevLink = $sk->makeKnownLinkObj( $self,
-					wfMsgHTML( 'prevpage', htmlspecialchars( $pt ) ), $q );
+				$query = array( 'from' => $prevTitle->getPartialUrl() );
+
+				if( $namespace )
+					$query['namespace'] = $namespace;
+
+				$prevLink = $sk->linkKnown(
+					$self,
+					wfMsgHTML( 'prevpage', htmlspecialchars( $pt ) ),
+					array(),
+					$query
+				);
 				$out2 = $wgLang->pipeList( array( $out2, $prevLink ) );
 			}
 
 			if( $n == $this->maxPerPage && $s = $res->fetchObject() ) {
 				# $s is the first link of the next chunk
 				$t = Title::MakeTitle($namespace, $s->page_title);
-				$q = 'from=' . $t->getPartialUrl()
-					. ( $namespace ? '&namespace=' . $namespace : '' );
-				$nextLink = $sk->makeKnownLinkObj( $self,
-					wfMsgHtml( 'nextpage', htmlspecialchars( $t->getText() ) ), $q );
+				$query = array( 'from' => $t->getPartialUrl() );
+
+				if( $namespace )
+					$query['namespace'] = $namespace;
+
+				$nextLink = $sk->linkKnown(
+					$self,
+					wfMsgHtml( 'nextpage', htmlspecialchars( $t->getText() ) ),
+					array(),
+					$query
+				);
 				$out2 = $wgLang->pipeList( array( $out2, $nextLink ) );
 			}
 			$out2 .= "</td></tr></table>";

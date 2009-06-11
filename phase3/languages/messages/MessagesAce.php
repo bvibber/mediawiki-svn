@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Abi Azkia
  * @author Andri.h
  * @author Meno25
  * @author Si Gam Acèh
@@ -15,6 +16,13 @@
 $fallback = 'id';
 
 $messages = array(
+# User preference toggles
+'tog-watchlisthideown'   => 'Peusöm nyang lôn andam nibak dapeuta keunalön',
+'tog-watchlisthidebots'  => 'Peusöm nyang teu andam nibak sagoö nyang bak dapeuta keunalön',
+'tog-watchlisthideminor' => 'Peusöm Andam Bacut bak dapeuta keunalön',
+'tog-watchlisthideliu'   => 'Peusöm andam nyang nguy nyang tamöng nibak dapeuta keunalön',
+'tog-watchlisthideanons' => 'Peusöm andam nyang nguy hana taturi nibak dapeuta keunalön',
+
 # Dates
 'sun'           => 'Aleu',
 'mon'           => 'Seun',
@@ -259,6 +267,8 @@ Alamat IP Droëneuh nakeuh $3, ngön ID neutheun nakeuh $5. Tulông peuseureuta 
 'newarticle'                       => '(Barô)',
 'newarticletext'                   => "Droëneuh   ka neuseutot u ôn nyang goh na. Keu peugöt ôn nyan, neukeutik asoë ôn di  kutak di yup nyoë (ngiëng [[{{MediaWiki:Helppage}}|ôn bantu]] keu beurita leubèh lanjut). Meunyo Droëneuh  hana neusaja ka trôk keunoë, teugon '''back''' nyang na bak layeuë.",
 'noarticletext'                    => 'Hana naseukah jinoë lam ôn nyoë. Ji Droëneuh jeuët [[Special:Search/{{PAGENAME}}|neumita keu nan ôn nyoë]] bak ôn-ôn la’én atawa [{{fullurl:{{FULLPAGENAME}}|action=edit}} andam ôn nyoë].',
+'updated'                          => '(Seubarô)',
+'note'                             => "'''Ceunatat:'''",
 'previewnote'                      => "'''Beuneuingat meunyo nyoë goh lom neukeubah!'''",
 'editing'                          => 'Andam $1',
 'editingsection'                   => 'Andam $1 (bideuëng)',
@@ -324,8 +334,8 @@ Nyoë pat nakeuh log seunampôh nibak ôn nyoë:",
 'noexactmatch-nocreate'     => "'''Hana ôn ngön nan \"\$1\".'''",
 'notitlematches'            => 'Hana nan ôn nyang pah',
 'notextmatches'             => 'Hana naseukah ôn nyang pah',
-'prevn'                     => '$1 sigohlomjih',
-'nextn'                     => '$1 lheuëh nyan',
+'prevn'                     => '{{PLURAL:$1|$1}} sigohlomjih',
+'nextn'                     => '{{PLURAL:$1|$1}} lheuëh nyan',
 'viewprevnext'              => 'Eu ($1)($2)($3)',
 'searchhelp-url'            => 'Help:Asoë',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 kata|$2 kata}})',
@@ -390,6 +400,8 @@ Meunyo neupasoë, euntreuk nan Droëneuh nyan geupeuleumah mangat jitupeuë soë
 
 # Recent changes linked
 'recentchangeslinked'          => 'Seundi meuhubông',
+'recentchangeslinked-feed'     => 'Seundi meuhubông',
+'recentchangeslinked-toolbox'  => 'Seundi meuhubông',
 'recentchangeslinked-title'    => 'Neu’ubah nyang meuhubông ngön $1',
 'recentchangeslinked-noresult' => 'Hana neu’ubah bak ôn-ôn meuhubông silawét masa nyang ka geupeuteuntèë.',
 'recentchangeslinked-summary'  => "Ôn husôh nyoë geupeuleumah dapeuta neu’ubah keuneulheuëh bak ôn ôn meuhubông. Ôn nyang neukalön geubri tanda ngön '''citak teubay'''.",
@@ -406,6 +418,7 @@ Meunyo neupasoë, euntreuk nan Droëneuh nyan geupeuleumah mangat jitupeuë soë
 'listfiles' => 'Dapeuta beureukah',
 
 # File description page
+'file-anchor-link'          => 'Beureukah',
 'filehist'                  => 'Riwayat beureukah',
 'filehist-help'             => 'Teugon bak tanggay/watèë keu eu beureukah nyoë ‘oh watèë nyan.',
 'filehist-current'          => 'jinoë hat',
@@ -420,8 +433,6 @@ Meunyo neupasoë, euntreuk nan Droëneuh nyan geupeuleumah mangat jitupeuë soë
 'linkstoimage'              => 'Ôn di yup nyoë na {{PLURAL:$1|hubông|$1 hubông}} u beureukah nyoë:',
 'nolinkstoimage'            => 'Hana ôn nyang na hubông u beureukah nyoë.',
 'sharedupload'              => 'Beureukah nyoë dari $1 ngön kadang geunguy lé buët-buët la’én.',
-'noimage'                   => 'Hana beureukah ngön nan nyan, Droëneuh jeuët $1.',
-'noimage-linktext'          => 'peutamong beureukah',
 'uploadnewversion-linktext' => 'Peulöt seunalén nyang leubèh barô nibak beureukah nyoë.',
 
 # MIME search
@@ -767,6 +778,7 @@ Hubông-hubông lheuëh nyan bak baréh nyang saban geukira sibagoë keucuali, n
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

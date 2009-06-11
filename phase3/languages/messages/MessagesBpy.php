@@ -27,24 +27,22 @@ $digitTransformTable = array(
 );
 
 $namespaceNames = array(
-	NS_MEDIA          => 'মিডিয়া',
-	NS_SPECIAL        => 'বিশেষ',
-	NS_MAIN           => '',
-	NS_TALK           => 'য়্যারী',
-	NS_USER           => 'আতাকুরা',
-	NS_USER_TALK      => 'আতাকুরার_য়্যারী',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => '$1_য়্যারী',
-	NS_FILE           => 'ছবি',
-	NS_FILE_TALK      => 'ছবি_য়্যারী',
-	NS_MEDIAWIKI      => 'মিডিয়াউইকি',
-	NS_MEDIAWIKI_TALK => 'মিডিয়াউইকির_য়্যারী',
-	NS_TEMPLATE       => 'মডেল',
-	NS_TEMPLATE_TALK  => 'মডেলর_য়্যারী',
-	NS_HELP           => 'পাংলাক',
-	NS_HELP_TALK      => 'পাংলাকর_য়্যারী',
-	NS_CATEGORY       => 'থাক',
-	NS_CATEGORY_TALK  => 'থাকর_য়্যারী',
+	NS_MEDIA            => 'মিডিয়া',
+	NS_SPECIAL          => 'বিশেষ',
+	NS_TALK             => 'য়্যারী',
+	NS_USER             => 'আতাকুরা',
+	NS_USER_TALK        => 'আতাকুরার_য়্যারী',
+	NS_PROJECT_TALK     => '$1_য়্যারী',
+	NS_FILE             => 'ছবি',
+	NS_FILE_TALK        => 'ছবি_য়্যারী',
+	NS_MEDIAWIKI        => 'মিডিয়াউইকি',
+	NS_MEDIAWIKI_TALK   => 'মিডিয়াউইকির_য়্যারী',
+	NS_TEMPLATE         => 'মডেল',
+	NS_TEMPLATE_TALK    => 'মডেলর_য়্যারী',
+	NS_HELP             => 'পাংলাক',
+	NS_HELP_TALK        => 'পাংলাকর_য়্যারী',
+	NS_CATEGORY         => 'থাক',
+	NS_CATEGORY_TALK    => 'থাকর_য়্যারী',
 );
 
 $messages = array(
@@ -466,8 +464,8 @@ $messages = array(
 # Search results
 'noexactmatch'   => "'''\"\$1\" চিংনাঙর কোন পাতা নেই।'''
 তি [[:\$1|পাতা এহান হঙকরে পারর]]।",
-'prevn'          => 'পিসেদে $1',
-'nextn'          => 'থাংনাত $1',
+'prevn'          => 'পিসেদে {{PLURAL:$1|$1}}',
+'nextn'          => 'থাংনাত {{PLURAL:$1|$1}}',
 'viewprevnext'   => 'চা ($1) ($2) ($3)',
 'searchhelp-url' => 'Help:পাংলাক',
 'powersearch'    => 'এডভান্স বিসারানি',
@@ -517,6 +515,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'সাকেই আসে পতা',
+'recentchangeslinked-feed'     => 'সাকেই আসে পতা',
+'recentchangeslinked-toolbox'  => 'সাকেই আসে পতা',
 'recentchangeslinked-title'    => 'পতানিহান "$1"র লগে সর্ম্পক আসে',
 'recentchangeslinked-noresult' => 'দেনা অসে খেন্তামর ভিতরে পতাসিতা নেই।',
 'recentchangeslinked-summary'  => "লেপকরা পাতা আহান (অথবা লেপকরা বিষয়শ্রেণী)ত্ত তিলসে এরে পাতা এহানর হাদি এহান পতাসি অহানর লাতঙ দেনা অইল। তর [[Special:Watchlist|তর চালাতঙ]]এ থসি পাতাহানি '''গাঢ়''' করিয়া দেহাদেনা অসে।",
@@ -534,6 +534,7 @@ $messages = array(
 'listfiles' => 'ছবির তালিকা',
 
 # File description page
+'file-anchor-link'          => 'ফাইল',
 'filehist'                  => 'ফাইলর ইতিহাস',
 'filehist-help'             => 'দিন/সময়-র গজে যাতিলে ঔ খেন্তাম পেয়া হঙিসে ফাইলগ চ পারতেই।',
 'filehist-current'          => 'এপাগা',
@@ -546,8 +547,6 @@ $messages = array(
 'linkstoimage'              => 'এরে ফাইলর লগে {{PLURAL:$1|পাতার মিলাপ|$1 পাতাহানির মিলাপ}} আসে:',
 'nolinkstoimage'            => 'ফাইল এগর লগে মিলাপ অসে অসাদে কোন পাতা নেই।',
 'sharedupload'              => 'ফাইল এগ শেয়ার আপলোডে আসে, মনে অর আর আর প্রকল্পউ আতিতারা।',
-'noimage'                   => 'এরে নাঙর কোন ফাইল নেই, তি পারর $1।',
-'noimage-linktext'          => 'আপলোড কর',
 'uploadnewversion-linktext' => 'এরে ফাইল এগর নুৱা সংস্করনহান আপলোড কর',
 
 # MIME search
@@ -885,6 +884,7 @@ $messages = array(
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

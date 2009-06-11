@@ -292,8 +292,8 @@ Bitte nemm eenen aundren.',
 'editundo' => 'trigjsate',
 
 # Search results
-'prevn'          => '$1 ferhäa',
-'nextn'          => 'näakjste $1',
+'prevn'          => '{{PLURAL:$1|$1}} ferhäa',
+'nextn'          => 'näakjste {{PLURAL:$1|$1}}',
 'searchhelp-url' => 'Help:Enhault',
 'powersearch'    => 'Bätre Sääk',
 
@@ -324,6 +324,8 @@ Bitte nemm eenen aundren.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Endarunge aun velinkte Siede',
+'recentchangeslinked-feed'     => 'Endarunge aun velinkte Siede',
+'recentchangeslinked-toolbox'  => 'Endarunge aun velinkte Siede',
 'recentchangeslinked-title'    => 'Endarunge aun Siede, woone von "$1" velinkt send',
 'recentchangeslinked-backlink' => '← $1',
 'recentchangeslinked-noresult' => 'Em utjesochten Tietrum es aun dee velinkte Siede nuscht aundasch jemoakt worde.',
@@ -345,6 +347,7 @@ Bitte nemm eenen aundren.',
 'listfiles_user' => 'Brucker',
 
 # File description page
+'file-anchor-link'    => 'Datei',
 'filehist-datetime'   => 'Tiet',
 'filehist-user'       => 'Brucker',
 'filehist-dimensions' => 'Moten',

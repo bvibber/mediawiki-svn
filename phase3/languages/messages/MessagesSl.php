@@ -709,7 +709,6 @@ Razlog, ki ga je podal $3, je ''$2''.",
 Napotek: (tren) = primerjava s trenutno redakcijo,
 (prej) = primerjava s prejšnjo redakcijo, <b>m</b> = manjše urejanje',
 'history-fieldset-title' => 'Zgodovina poizvedovanj',
-'deletedrev'             => '[izbrisano]',
 'histfirst'              => 'Najstarejše',
 'histlast'               => 'Najnovejše',
 'historyempty'           => '(prazno)',
@@ -816,7 +815,6 @@ Prosimo, potrdite, da ste s tem seznanjeni, da razumete posledice dejanja in da 
 'prefs-skin'                => 'Koža',
 'skin-preview'              => 'Predogled',
 'prefs-math'                => 'Prikaz matematičnega besedila',
-'dateformat'                => 'Zapis datuma',
 'datedefault'               => 'Kakor koli',
 'prefs-datetime'            => 'Datum in čas',
 'prefs-personal'            => 'Podatki o uporabniku',
@@ -963,7 +961,7 @@ Poleg tega vpisan e-poštni naslov omogoča drugim, da vam lahko pošiljajo elek
 'rcshowhideanons'                   => '$1 brezimne uporabnike',
 'rcshowhidepatr'                    => '$1 pregledana urejanja',
 'rcshowhidemine'                    => '$1 moja urejanja',
-'rclinks'                           => 'Prikaži {{PLURAL:$1|zadnjo|zadnji|zadnje|zadnjih|zadnjih}} $1 {{PLURAL:$1|spremembo|spremembi|spremembe|sprememb|sprememb}} v {{PLURAL:$2|zadnjem $2 dnevu|zadnjih $2 dneh|zadnjih $2 dneh|zadnjih $2 dneh|zadnjih $2 dneh}};<br />$3',
+'rclinks'                           => 'Prikaži zadnji $1 spremembi v zadnjih $2 dneh;<br />$3',
 'diff'                              => 'prim',
 'hist'                              => 'zgod',
 'hide'                              => 'skrij',
@@ -979,9 +977,11 @@ Poleg tega vpisan e-poštni naslov omogoča drugim, da vam lahko pošiljajo elek
 'rc-enhanced-hide'                  => 'Skrij podrobnosti',
 
 # Recent changes linked
-'recentchangeslinked'       => 'Sorodne spremembe',
-'recentchangeslinked-title' => 'Spremembe, povezane z "$1"',
-'recentchangeslinked-page'  => 'Ime strani:',
+'recentchangeslinked'         => 'Sorodne spremembe',
+'recentchangeslinked-feed'    => 'Sorodne spremembe',
+'recentchangeslinked-toolbox' => 'Sorodne spremembe',
+'recentchangeslinked-title'   => 'Spremembe, povezane z "$1"',
+'recentchangeslinked-page'    => 'Ime strani:',
 
 # Upload
 'upload'                      => 'Naloži datoteko',
@@ -1094,6 +1094,7 @@ PICT # mešano
 'listfiles_count'       => 'Različice',
 
 # File description page
+'file-anchor-link'          => 'Datoteka',
 'filehist'                  => 'Zgodovina datoteke',
 'filehist-help'             => 'Klikni na datum in čas za ogled datoteke, ki je bila takrat naložena.',
 'filehist-deleteall'        => 'izbriši vse',
@@ -1112,8 +1113,6 @@ PICT # mešano
 'nolinkstoimage'            => 'Z datoteko se ne povezuje nobena stran.',
 'redirectstofile'           => 'Na to datoteko {{PLURAL:$1|preusmerja naslednja datoteka|preusmerjata naslednji datoteki|preusmerjajo naslednje $1 datoteke|preusmerja naslednjih $1 datotek|preusmerja naslednjih $1 datotek}}:',
 'sharedupload'              => 'Datoteka je del $1 in se s tega mesta lahko uporabi tudi v drugih projektih.',
-'noimage'                   => 'Datoteka s tem imenom ne obstaja; lahko jo $1.',
-'noimage-linktext'          => 'naložite',
 'uploadnewversion-linktext' => 'Naložite novo različico datoteke',
 'shared-repo-from'          => 'iz $1',
 
@@ -1588,7 +1587,7 @@ Nedavna brisanja in obnove so zapisani v [[Special:Log/delete|dnevniku brisanja]
 'ipbenableautoblock'          => 'Avtomatično blokiraj zadnji IP naslov tega uporabnika in vse naslednje naslove, ki jih bodo hoteli uporabiti',
 'ipbsubmit'                   => 'Blokiraj naslov',
 'ipbother'                    => 'Drugačen čas',
-'ipboptions'                  => 'nedoločen čas:infinite,15 minut:15 minutes,1 uro:1 hour,3 ure:3 hours,1 dan:1 day,2 dni:2 days,3 dni:3 days,1 teden:1 week,2 tedna:2 weeks,1 mesec:1 month,3 mesece:3 months,6 mesecev:6 months,1 leto:1 year,neomejeno dolgo:infinite',
+'ipboptions'                  => '2 ure:2 hours,1 dan:1 day,3 dni:3 days,1 teden:1 week,2 tedna:2 weeks,1 mesec:1 month,3 mesece:3 months,6 mesecev:6 months,1 leto:1 year,neomejeno dolgo:infinite',
 'ipbotheroption'              => 'drugo',
 'ipbotherreason'              => 'Drug/dodaten razlog:',
 'badipaddress'                => 'Neveljaven IP-naslov ali uporabniško ime.',
@@ -1602,7 +1601,7 @@ Preglejte [[Special:IPBlockList|seznam blokiranih IP-naslovov]].',
 'ipblocklist-submit'          => 'Išči',
 'blocklistline'               => '$1, $2 je blokiral(-a) $3 ($4)',
 'infiniteblock'               => 'neomejen čas',
-'expiringblock'               => 'preteče: $1',
+'expiringblock'               => 'preteče: $1 $2',
 'anononlyblock'               => 'samo brezim.',
 'noautoblockblock'            => 'Avtomatska blokada je onemogočena',
 'createaccountblock'          => 'ustvarjanje računov onemogočeno',
@@ -1923,7 +1922,8 @@ $1',
 * model
 * datetimeoriginal
 * exposuretime 
-* fnumber 
+* fnumber
+* isospeedratings 
 * focallength',
 
 # EXIF tags

@@ -88,6 +88,7 @@ class RandomPage extends SpecialPage {
 		$redirect = $this->isRedirect() ? 1 : 0;
 
 		$extra = $wgExtraRandompageSQL ? "AND ($wgExtraRandompageSQL)" : "";
+		$extra .= $this->addExtraSQL() ? "AND (".$this-addExtraSQL().")" : "";
 		$sql = "SELECT page_title, page_namespace
 			FROM $page $use_index
 			WHERE page_namespace IN ( $ns )
@@ -99,5 +100,11 @@ class RandomPage extends SpecialPage {
 		$sql = $dbr->limitResult( $sql, 1, 0 );
 		$res = $dbr->query( $sql, __METHOD__ );
 		return $dbr->fetchObject( $res );
+	}
+
+	// an alternative to $wgExtraRandompageSQL so extensions
+	// can add their own SQL by overriding this function
+	public function addExtraSQL() {
+		return '';
 	}
 }

@@ -443,13 +443,16 @@ Ju lutem kërkoni {{SITENAME}}-n para se me krijue një artikull të ri se munet
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked'       => 'Ndryshimet fqinje',
-'recentchangeslinked-title' => 'Ndryshimet në lidhje me "$1"',
+'recentchangeslinked'         => 'Ndryshimet fqinje',
+'recentchangeslinked-feed'    => 'Ndryshimet fqinje',
+'recentchangeslinked-toolbox' => 'Ndryshimet fqinje',
+'recentchangeslinked-title'   => 'Ndryshimet në lidhje me "$1"',
 
 # Upload
 'upload' => 'Ngarkoni skeda',
 
 # File description page
+'file-anchor-link'    => 'Figura',
 'filehist'            => 'Historiku i dosjes',
 'filehist-datetime'   => 'Data/Ora',
 'filehist-user'       => 'Përdoruesi',

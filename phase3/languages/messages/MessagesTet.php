@@ -11,22 +11,22 @@
  */
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Media',
-	NS_SPECIAL        => 'Espesiál',
-	NS_TALK           => 'Diskusaun',
-	NS_USER           => 'Uza-na\'in',
-	NS_USER_TALK      => 'Diskusaun_Uza-na\'in',
-	NS_PROJECT_TALK   => 'Diskusaun_$1',
-	NS_FILE           => 'Imajen',
-	NS_FILE_TALK      => 'Diskusaun_Imajen',
-	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'Diskusaun_MediaWiki',
-	NS_TEMPLATE       => 'Template',
-	NS_TEMPLATE_TALK  => 'Diskusaun_Template',
-	NS_HELP           => 'Ajuda',
-	NS_HELP_TALK      => 'Diskusaun_Ajuda',
-	NS_CATEGORY       => 'Kategoria',
-	NS_CATEGORY_TALK  => 'Diskusaun_Kategoria',
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Espesiál',
+	NS_TALK             => 'Diskusaun',
+	NS_USER             => 'Uza-na\'in',
+	NS_USER_TALK        => 'Diskusaun_Uza-na\'in',
+	NS_PROJECT_TALK     => 'Diskusaun_$1',
+	NS_FILE             => 'Imajen',
+	NS_FILE_TALK        => 'Diskusaun_Imajen',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Diskusaun_MediaWiki',
+	NS_TEMPLATE         => 'Template',
+	NS_TEMPLATE_TALK    => 'Diskusaun_Template',
+	NS_HELP             => 'Ajuda',
+	NS_HELP_TALK        => 'Diskusaun_Ajuda',
+	NS_CATEGORY         => 'Kategoria',
+	NS_CATEGORY_TALK    => 'Diskusaun_Kategoria',
 );
 
 $namespaceAliases = array(
@@ -374,8 +374,8 @@ Check your spelling, ka [[Special:UserLogin/signup|kria konta foun]].',
 
 # Search results
 'noexactmatch'       => "'''Pájina ''$1'' la iha.''' Ó bele [[:$1|kria pájina ne'e]].",
-'prevn'              => 'molok $1',
-'nextn'              => 'oinmai $1',
+'prevn'              => 'molok {{PLURAL:$1|$1}}',
+'nextn'              => 'oinmai {{PLURAL:$1|$1}}',
 'viewprevnext'       => 'Haree ($1) ($2) ($3)',
 'search-result-size' => '$1 ({{PLURAL:$2|liafuan ida|liafuan $2}})',
 'searchall'          => 'hotu',
@@ -385,7 +385,6 @@ Check your spelling, ka [[Special:UserLogin/signup|kria konta foun]].',
 # Preferences page
 'preferences'               => 'Preferénsia',
 'mypreferences'             => "Ha'u-nia preferénsia",
-'dateformat'                => 'Formatu tempu nian',
 'prefs-rc'                  => 'Mudansa foufoun sira',
 'prefs-watchlist'           => 'Lista hateke',
 'prefs-editing'             => 'Edita',
@@ -476,8 +475,10 @@ Check your spelling, ka [[Special:UserLogin/signup|kria konta foun]].',
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked'       => 'Muda sira',
-'recentchangeslinked-title' => 'Mudansa iha pájina sira-ne\'ebé iha ligasaun husi "$1"',
+'recentchangeslinked'         => 'Muda sira',
+'recentchangeslinked-feed'    => 'Muda sira',
+'recentchangeslinked-toolbox' => 'Muda sira',
+'recentchangeslinked-title'   => 'Mudansa iha pájina sira-ne\'ebé iha ligasaun husi "$1"',
 
 # Upload
 'upload'          => 'Tau iha arkivu laran',

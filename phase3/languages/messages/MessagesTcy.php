@@ -429,8 +429,8 @@ $messages = array(
 'noexactmatch-nocreate'     => "'''\"\$1\" ಪುದರ್ದ ವಾ ಪುಟೊಲಾ ಇಜ್ಜಿ.'''",
 'notitlematches'            => 'ವಾ ಪುಟೊತ ಶಿರ್ಷಿಕೆಲಾ ಹೊಂದಿಕೆ ಆವೊಂದಿಜ್ಜಿ',
 'notextmatches'             => 'ವಾ ಪುಟೊತ ಪಠ್ಯೊಡುಲಾ ಹೋಲಿಕೆ ಇಜ್ಜಿ',
-'prevn'                     => 'ದುಂಬುದ $1',
-'nextn'                     => 'ಬೊಕ್ಕದ $1',
+'prevn'                     => 'ದುಂಬುದ {{PLURAL:$1|$1}}',
+'nextn'                     => 'ಬೊಕ್ಕದ {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'ತೂಲೆ ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:ಪರಿವಿಡಿ',
 'search-result-size'        => '$1 ({{PLURAL:$2|೧ ಪದ|$2 ಪದೊಲು}})',
@@ -488,6 +488,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'ಸಂಬಂಧ ಉಪ್ಪುನಂಚಿನ ಬದಲಾವಣೆಲು',
+'recentchangeslinked-feed'     => 'ಸಂಬಂಧ ಉಪ್ಪುನಂಚಿನ ಬದಲಾವಣೆಲು',
+'recentchangeslinked-toolbox'  => 'ಸಂಬಂಧ ಉಪ್ಪುನಂಚಿನ ಬದಲಾವಣೆಲು',
 'recentchangeslinked-title'    => '"$1" ಪುಟೊಟು ಆತಿನ ಬದಲಾವಣೆಲು',
 'recentchangeslinked-noresult' => 'ಕೊರ್ತಿನ ಸಮಯೊಡು ಲಿಂಕ್ ಉಪ್ಪುನ ಪುಟೊಲೆಡ್ ಓವುಲಾ ಬದಲಾವಣೆಲು ಆತಿಜಿ.',
 'recentchangeslinked-summary'  => "ಒಂಜಿ ನಿರ್ದಿಷ್ಟ ಪುಟೊರ್ದು (ಅತ್ತ್’ನ್ಡ ನಿರ್ದಿಷ್ಟ ವರ್ಗೊಗು ಸೇರ್ದಿನ ಪುಟೊಲೆರ್ದ್) ಸಂಪರ್ಕ ಉಪ್ಪುನ ಪುಟೊಲೆಡ್ ಇಂಚಿಪ ಮಲ್ತಿನಂಚಿನ ಬದಲಾವಣೆಲೆನ್ ತಿರ್ತ್ ಪಟ್ಟಿ ಮಲ್ಪೆರಾತ್’ನ್ಡ್. 
@@ -501,6 +503,7 @@ $messages = array(
 'uploadedimage' => '"[[$1]]" ಅಪ್ಲೋಡ್ ಆಂಡ್',
 
 # File description page
+'file-anchor-link'    => 'ಫೈಲ್',
 'filehist'            => 'ಫೈಲ್’ದ ಇತಿಹಾಸ',
 'filehist-help'       => 'ಫೈಲ್ ಆ ದಿನೊಟು ಎಂಚ ಇತ್ತ್’ನ್ಡ್’ನ್ದ್ ತೂಯೆರೆ ಆ ದಿನ/ಪೊರ್ತುದ ಮಿತ್ತ್ ಕ್ಲಿಕ್ ಮಲ್ಪುಲೆ.',
 'filehist-current'    => 'ಪ್ರಸಕ್ತ',
@@ -736,6 +739,7 @@ $messages = array(
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

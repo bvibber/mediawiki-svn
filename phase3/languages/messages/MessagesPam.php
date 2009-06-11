@@ -639,7 +639,6 @@ Ini ing sangkan a binie nang $3: ''$2''",
 'histlegend'          => 'Aliwang pamamili: markan la reng radio box da reng bersion a pikumpara at timid me ing enter o ing boton king lalam.<br />
 Kabaldugan: (ngeni)=pamiyaliwa king salukuyan a bersion (bersion ngeni),
 (tauli)=pamiyaliwa ketang sadyang (tauling) bersion, M = malating edit.',
-'deletedrev'          => '[milako]',
 'histfirst'           => 'Minunang dili',
 'histlast'            => 'Pekabayu',
 'historysize'         => '({{PLURAL:$1|1 a byte|byte}})',
@@ -754,8 +753,8 @@ Malyari meng [[:\$1|lalangan ing bulung a iti]].",
 'notitlematches'            => 'Ala yang kapareu kareng bansag da ring bulung (page title)',
 'textmatches'               => 'Deng kapareu na king kasulatan (text) da reng bulung',
 'notextmatches'             => 'Alang tinud/pareu kareng bansag bulung (no page title matches)',
-'prevn'                     => 'minunang $1',
-'nextn'                     => 'tutuking $1',
+'prevn'                     => 'minunang {{PLURAL:$1|$1}}',
+'nextn'                     => 'tutuking {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'Lon ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:Kalamnan',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 a kataya|$2 kataya}})',
@@ -800,7 +799,6 @@ Pakitandanan mung maliaring e no makapanaun deng karelang index king kalamnan ni
 'changepassword'            => 'Alilan ya ing password',
 'prefs-skin'                => 'Balat',
 'skin-preview'              => 'I-preview',
-'dateformat'                => 'Ayus ning petsa',
 'datedefault'               => 'Alang mepili',
 'prefs-datetime'            => 'Petsa ampong oras',
 'prefs-personal'            => 'Impormasiun tungkul king talagamit (user profile)',
@@ -974,6 +972,8 @@ Nung ibie me, magamit ya bang kilalanan ing kekang ambag.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Miyalilan a makaugne',
+'recentchangeslinked-feed'     => 'Miyalilan a makaugne',
+'recentchangeslinked-toolbox'  => 'Miyalilan a makaugne',
 'recentchangeslinked-title'    => 'Deng miyalilan a maki kaugnayan king "$1"',
 'recentchangeslinked-noresult' => 'Alang miyalilan kareng bulung a pakasuglung ketang mebanggit a panaun.',
 'recentchangeslinked-summary'  => "Makalista la king bulung a iti deng tauling mengayalilan kareng 
@@ -1105,6 +1105,7 @@ Miyalilan ing pamanayus nung i-click ya ing pamagat ning kolum (column header).'
 'listfiles_description' => 'Pamilarawan (description)',
 
 # File description page
+'file-anchor-link'          => 'Simpan (File)',
 'filehist'                  => 'Amlat ning simpan (File history)',
 'filehist-help'             => 'Mag-click kang petsa/oras ba meng akit ing itsura ning simpan aniang panaun a ita.',
 'filehist-deleteall'        => 'buran ing eganagana',
@@ -1120,8 +1121,6 @@ Miyalilan ing pamanayus nung i-click ya ing pamagat ning kolum (column header).'
 'linkstoimage'              => 'Makasuglung la king simpan a reti deng makatuking bulung:',
 'nolinkstoimage'            => 'Alang bulung a pakasuglung king simpan (file) a ini.',
 'sharedupload'              => 'Abe-abe yang milulan (shared upload) ya ing simpan a ini, at mapalyaring gagamitan de murin deng aliwang proyektu.',
-'noimage'                   => 'Alang simpan a anti kaniyan lagyu; malyari kang $1.',
-'noimage-linktext'          => 'ilulan ya',
 'uploadnewversion-linktext' => 'Maglulan bayung bersion na niting simpan',
 
 # File reversion
@@ -1645,7 +1644,7 @@ mu nung sanu retang bulung a sinira da).',
 'ipblocklist-submit'          => 'Manintun',
 'blocklistline'               => '$1, $2 mesabat $3 ($4)',
 'infiniteblock'               => 'alang kapupusan',
-'expiringblock'               => 'mayari ya keng $1',
+'expiringblock'               => 'mayari ya keng $1 $2',
 'anononlyblock'               => 'anon. bukud tangi',
 'noautoblockblock'            => 'makapatda ing tambing a pamaniabat (autoblock disabled)',
 'createaccountblock'          => 'makasabat ing pamaglalang account',
@@ -2025,6 +2024,7 @@ Detang aliwa tambing (by default) lang makasalikut.
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

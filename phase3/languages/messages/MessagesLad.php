@@ -272,12 +272,15 @@ $messages = array(
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked' => 'Trocamientos conectados',
+'recentchangeslinked'         => 'Trocamientos conectados',
+'recentchangeslinked-feed'    => 'Trocamientos conectados',
+'recentchangeslinked-toolbox' => 'Trocamientos conectados',
 
 # Upload
 'upload' => 'Cargar un dosyé',
 
 # File description page
+'file-anchor-link'  => 'Archivo',
 'filehist'          => 'Istoria del dosyé',
 'filehist-datetime' => 'Data/Hora',
 'imagelinks'        => 'Linkes',

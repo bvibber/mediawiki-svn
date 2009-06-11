@@ -123,38 +123,52 @@ class AuthPlugin {
 	}
 
 	/**
+	 * Allow a property change? Properties are the same as preferences
+	 * and use the same keys. 'Realname' 'Emailaddress' and 'Nickname'
+	 * all reference this.
+	 *
+	 * @return bool
+	 */
+	public function allowPropChange( $prop = '' ) {
+		return true;
+	}
+
+	/**
+	 * Can users change their Real Name?
+	 * @deprecated Use allowPropChange()
+	 * @return bool
+	 */
+	public function allowRealNameChange() {
+		wfDeprecated( __METHOD__ );
+		return $this->allowPropChange( 'realname' );
+	}
+
+	/**
+	 * Can users change their email address?
+	 * @deprecated Use allowPropChange()
+	 * @return bool
+	 */
+	public function allowEmailChange() {
+		wfDeprecated( __METHOD__ );
+		return $this->allowPropChange( 'emailaddress' );
+	}
+
+	/**
+	 * Can users change their Nickname?
+	 * @deprecated Use allowPropChange()
+	 * @return bool
+	 */
+	public function allowNickChange() {
+		wfDeprecated( __METHOD__ );
+		return $this->allowPropChange( 'nickname' );
+	}
+
+	/**
 	 * Can users change their passwords?
 	 *
 	 * @return bool
 	 */
 	public function allowPasswordChange() {
-		return true;
-	}
-	
-	/**
-	 * Can users change their Real Name?
-	 *
-	 * @return bool
-	 */
-	public function allowRealNameChange() {
-		return true;
-	}
-
-	/**
-	 * Can users change their email address?
-	 *
-	 * @return bool
-	 */
-	public function allowEmailChange() {
-		return true;
-	}
-
-	/**
-	 * Can users change their Nickname?
-	 *
-	 * @return bool
-	 */
-	public function allowNickChange() {
 		return true;
 	}
 

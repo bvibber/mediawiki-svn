@@ -16,7 +16,7 @@ function wfSpecialCategories( $par=null ) {
 	$cap->doQuery();
 	$wgOut->addHTML(
 		XML::openElement( 'div', array('class' => 'mw-spcontent') ) .
-		wfMsgExt( 'categoriespagetext', array( 'parse' ) ) .
+		wfMsgExt( 'categoriespagetext', array( 'parse' ), $cap->getNumRows() ) .
 		$cap->getStartForm( $from ) .
 		$cap->getNavigationBar() .
 		'<ul>' . $cap->getBody() . '</ul>' .
@@ -90,7 +90,7 @@ class CategoryPager extends AlphabeticPager {
 	function formatRow($result) {
 		global $wgLang;
 		$title = Title::makeTitle( NS_CATEGORY, $result->cat_title );
-		$titleText = $this->getSkin()->makeLinkObj( $title, htmlspecialchars( $title->getText() ) );
+		$titleText = $this->getSkin()->link( $title, htmlspecialchars( $title->getText() ) );
 		$count = wfMsgExt( 'nmembers', array( 'parsemag', 'escape' ),
 				$wgLang->formatNum( $result->cat_pages ) );
 		return Xml::tags('li', null, "$titleText ($count)" ) . "\n";

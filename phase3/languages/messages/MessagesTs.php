@@ -292,7 +292,9 @@ U hi tshembisa nakambe leswaku hi wena mutsari wa leswi nyikeriwaka laha, kumbe 
 'show'          => 'Komba',
 
 # Recent changes linked
-'recentchangeslinked' => 'Kuncica loku yelanaka',
+'recentchangeslinked'         => 'Kuncica loku yelanaka',
+'recentchangeslinked-feed'    => 'Kuncica loku yelanaka',
+'recentchangeslinked-toolbox' => 'Kuncica loku yelanaka',
 
 # Upload
 'upload' => 'Khandziyisa fayili',
@@ -304,6 +306,7 @@ U hi tshembisa nakambe leswaku hi wena mutsari wa leswi nyikeriwaka laha, kumbe 
 'listfiles_name' => 'vito',
 
 # File description page
+'file-anchor-link'   => 'Fayili',
 'filehist-deleteall' => 'sula hinkwaswo',
 'filehist-deleteone' => 'Dlaya',
 'filehist-revert'    => 'thlerisela',

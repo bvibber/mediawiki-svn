@@ -14,13 +14,10 @@
 $fallback = 'es';
 
 $namespaceNames = array(
-	# NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Mba\'echĩchĩ',
-	NS_MAIN             => '',
 	NS_TALK             => 'Myangekõi',
 	NS_USER             => 'Puruhára',
 	NS_USER_TALK        => 'Puruhára_myangekõi',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_myangekõi',
 	NS_FILE             => 'Ta\'ãnga',
 	NS_FILE_TALK        => 'Ta\'ãnga_myangekõi',
@@ -31,7 +28,7 @@ $namespaceNames = array(
 	NS_HELP             => 'Pytyvõ',
 	NS_HELP_TALK        => 'Pytyvõ_myangekõi',
 	NS_CATEGORY         => 'Ñemohenda',
-	NS_CATEGORY_TALK    => 'Ñemohenda_myangekõi'
+	NS_CATEGORY_TALK    => 'Ñemohenda_myangekõi',
 );
 
 $messages = array(
@@ -244,7 +241,6 @@ Aipórõ, eñeha'ãna emboja'o ne rembiapo, vore michĩvévape.'''",
 # History pages
 'cur'         => "ko'ag̃agua",
 'last'        => 'ipaha',
-'deletedrev'  => '[oñembogue]',
 'historysize' => '($1 bytes)',
 
 # Revision deletion
@@ -261,7 +257,7 @@ Aipórõ, eñeha'ãna emboja'o ne rembiapo, vore michĩvévape.'''",
 'searchresults'     => 'Ojejuhúva jeheka',
 'searchsubtitle'    => "Nde reporandúkuri: '''[[:$1]]-re'''",
 'noexactmatch'      => "'''Ndaipóri kuatiarogue hérava: \"\$1\".''' Ikatu ndetevoi [[:\$1|rehai]].",
-'prevn'             => '$1 mboyvegua',
+'prevn'             => '{{PLURAL:$1|$1}} mboyvegua',
 'viewprevnext'      => 'Hecha ($1) ($2) ($3).',
 'showingresults'    => "Abajo se muestran hasta '''$1''' resultados empezando por el nº '''$2'''.",
 'showingresultsnum' => "Abajo se muestran los '''$3''' resultados empezando por el nº '''$2'''.",
@@ -320,6 +316,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'listfiles_user' => 'Puruhára',
 
 # File description page
+'file-anchor-link'  => 'Ñongatupy',
 'filehist-revert'   => 'embojevy',
 'filehist-current'  => "ko'ag̃agua",
 'filehist-datetime' => 'Ára/Aravo',

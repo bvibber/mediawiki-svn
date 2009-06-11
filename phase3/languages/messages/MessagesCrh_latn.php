@@ -17,24 +17,22 @@ $fallback8bitEncoding = 'windows-1254';
 $separatorTransformTable = array(','     => '.', '.'     => ',' );
 
 $namespaceNames = array(
-    NS_MEDIA                     => 'Media',
-    NS_SPECIAL                   => 'Mahsus',
-    NS_MAIN                      => '',
-    NS_TALK                      => 'Muzakere',
-    NS_USER                      => 'Qullanıcı',
-    NS_USER_TALK                 => 'Qullanıcı_muzakeresi',
-    # NS_PROJECT set by $wgMetaNamespace
-    NS_PROJECT_TALK              => '$1_muzakeresi',
-    NS_FILE                      => 'Resim',
-    NS_FILE_TALK                 => 'Resim_muzakeresi',
-    NS_MEDIAWIKI                 => 'MediaViki',
-    NS_MEDIAWIKI_TALK            => 'MediaViki_muzakeresi',
-    NS_TEMPLATE                  => 'Şablon',
-    NS_TEMPLATE_TALK             => 'Şablon_muzakeresi',
-    NS_HELP                      => 'Yardım',
-    NS_HELP_TALK                 => 'Yardım_muzakeresi',
-    NS_CATEGORY                  => 'Kategoriya',
-    NS_CATEGORY_TALK             => 'Kategoriya_muzakeresi',
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Mahsus',
+	NS_TALK             => 'Muzakere',
+	NS_USER             => 'Qullanıcı',
+	NS_USER_TALK        => 'Qullanıcı_muzakeresi',
+	NS_PROJECT_TALK     => '$1_muzakeresi',
+	NS_FILE             => 'Resim',
+	NS_FILE_TALK        => 'Resim_muzakeresi',
+	NS_MEDIAWIKI        => 'MediaViki',
+	NS_MEDIAWIKI_TALK   => 'MediaViki_muzakeresi',
+	NS_TEMPLATE         => 'Şablon',
+	NS_TEMPLATE_TALK    => 'Şablon_muzakeresi',
+	NS_HELP             => 'Yardım',
+	NS_HELP_TALK        => 'Yardım_muzakeresi',
+	NS_CATEGORY         => 'Kategoriya',
+	NS_CATEGORY_TALK    => 'Kategoriya_muzakeresi',
 );
 
 # Aliases to cyril namespaces
@@ -722,7 +720,6 @@ $3 mına böyle bir sebep belgiledi: ''$2''",
 'histlegend'             => "(farq) = al-azırki versiya ile aradaki farq,
 (soñki) = evelki versiya ile aradaki farq, '''k''' = kiçik deñişiklik",
 'history-fieldset-title' => 'Keçmişke baq',
-'deletedrev'             => '[yoq etildi]',
 'histfirst'              => 'Eñ eski',
 'histlast'               => 'Eñ yañı',
 'historysize'            => '({{PLURAL:$1|1 bayt|$1 bayt}})',
@@ -767,8 +764,8 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'notitlematches'            => 'İç bir serlevada tapılamadı',
 'textmatches'               => 'Saife metni bir kele',
 'notextmatches'             => 'İç bir saifede tapılamadı',
-'prevn'                     => 'evelki $1',
-'nextn'                     => 'soñraki $1',
+'prevn'                     => 'evelki {{PLURAL:$1|$1}}',
+'nextn'                     => 'soñraki {{PLURAL:$1|$1}}',
 'viewprevnext'              => '($1) ($2) ($3).',
 'searchhelp-url'            => 'Help:Münderice',
 'search-result-size'        => '$1 ($2 söz)',
@@ -805,7 +802,6 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'prefs-skin'                => 'Resimleme',
 'skin-preview'              => 'Baqıp çıquv',
 'prefs-math'                => 'Riyaziy (matematik) işaretler',
-'dateformat'                => 'Tarih kösterimi',
 'datedefault'               => 'Standart',
 'prefs-datetime'            => 'Tarih ve saat',
 'prefs-personal'            => 'Qullanıcı malümatı',
@@ -917,6 +913,8 @@ Em de bu vikideki saifeñizden diger qullanıcılarğa siznen bağlanmağa imkâ
 
 # Recent changes linked
 'recentchangeslinked'          => 'Bağlı deñişiklikler',
+'recentchangeslinked-feed'     => 'Bağlı deñişiklikler',
+'recentchangeslinked-toolbox'  => 'Bağlı deñişiklikler',
 'recentchangeslinked-title'    => '"$1" ile bağlı deñişiklikler',
 'recentchangeslinked-noresult' => 'Saylanğan vaqıtta bağlı saifelerde iç deñişiklik yoq edi.',
 'recentchangeslinked-summary'  => "Bu mahsus saifede bağlı saifelerde soñki yapqan deñişiklikler cedveli mevcut. [[Special:Watchlist|Közetüv cedveliñiz]]deki saifeler '''qalın''' olaraq kösterile.",
@@ -1038,6 +1036,7 @@ Sutun serlevasına bir basuv sortirlemeniñ tertibini deñiştirir.',
 'listfiles_description' => 'Tasvir',
 
 # File description page
+'file-anchor-link'          => 'Fayl',
 'filehist'                  => 'Faylnıñ keçmişi',
 'filehist-help'             => 'Faylnıñ kerekli anki alını körmek içün tarihqa/saatqa basıñız.',
 'filehist-deleteall'        => 'episini yoq et',
@@ -1053,8 +1052,6 @@ Sutun serlevasına bir basuv sortirlemeniñ tertibini deñiştirir.',
 'linkstoimage'              => 'Bu faylğa bağlantı olğan $1 saife:',
 'nolinkstoimage'            => 'Bu faylğa bağlanğan saife yoq.',
 'sharedupload'              => 'Bu fayl $1 saytına yüklengen ve diger proyektlerde de qullanılıp оla.',
-'noimage'                   => 'Bu isimde fayl yoq, amma siz $1.',
-'noimage-linktext'          => 'оnı yüklep olasıñız',
 'uploadnewversion-linktext' => 'Faylnıñ yañısını yükleñiz',
 
 # File reversion
@@ -1430,7 +1427,7 @@ Bu saifeniñ qorçalav seviyesini deñiştirip olasıñız, amma kaskadlı qorç
 'ipblocklist'             => 'Blok etilgen qullanıcılar ve IP adresleri',
 'blocklistline'           => '$1, $2 blok etti: $3 ($4)',
 'infiniteblock'           => 'müddetsiz',
-'expiringblock'           => '$1 tarihında bitecek',
+'expiringblock'           => '$1 $2 tarihında bitecek',
 'blocklink'               => 'ban et',
 'unblocklink'             => 'ban etüvni çıqar',
 'contribslink'            => 'İsseler',
@@ -1692,6 +1689,7 @@ Er satır * işaretinen başlamalı. Satırnıñ birinci bağlantısı qоşmağ
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

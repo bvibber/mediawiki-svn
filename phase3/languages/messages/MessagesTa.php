@@ -8,6 +8,7 @@
  * @file
  *
  * @author Mayooranathan
+ * @author Naveen
  * @author Sundar
  * @author Trengarasu
  * @author Ulmo
@@ -663,7 +664,6 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 குறியீட்டு விளக்கம்: (நடப்பு) = நடைமுறையிலுள்ள பதிப்புடனான வேறுபாடு,
 (கடைசி) = முந்திய பதிப்புடனான வேறுபாடு, சி = சிறு தொகுப்பு',
 'history-fieldset-title' => 'வரலாற்றில் தேடவும்',
-'deletedrev'             => '[நீக்கப்பட்டது]',
 'histfirst'              => 'மிகமுந்திய',
 'histlast'               => 'மிகப்பிந்திய',
 'historysize'            => '({{PLURAL:$1|1 பைட்டு|$1 பைட்டுகள்}})',
@@ -793,8 +793,8 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'notitlematches'                   => 'ஒரு கட்டுரைத் தலைப்பும் பொருந்தவில்லை',
 'textmatches'                      => 'கட்டுரை உரை பொருந்துகிறது',
 'notextmatches'                    => 'கட்டுரை உரை எதுவும் பொருந்தவில்லை',
-'prevn'                            => 'முன் $1',
-'nextn'                            => 'அடுத்த $1',
+'prevn'                            => 'முன் {{PLURAL:$1|$1}}',
+'nextn'                            => 'அடுத்த {{PLURAL:$1|$1}}',
 'prevn-title'                      => 'முன்னைய $1 {{PLURAL:$1|முடிவு|முடிவுகள்}}',
 'viewprevnext'                     => '($1) ($2) ($3) பக்கங்களைப் பார்.',
 'searchmenu-legend'                => 'தேடல் விருப்பு',
@@ -852,7 +852,6 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'prefs-skin'                => 'தோல்',
 'skin-preview'              => 'முன்தோற்றம்',
 'prefs-math'                => 'கணிதம்',
-'dateformat'                => 'நாள் வடிவம்',
 'datedefault'               => 'விருப்பத்தேர்வுகள் இல்லை',
 'prefs-datetime'            => 'நாள் நேரம்',
 'prefs-personal'            => 'பயனர் தரவு',
@@ -879,7 +878,6 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'savedprefs'                => 'உங்கள் விருப்பத்தேர்வுகள் சேமிக்கப்பட்டுள்ளன.',
 'timezonelegend'            => 'நேர வலயம்',
 'localtime'                 => 'உள்ளூர் நேரம்:',
-'timezoneselect'            => 'நேர வலயம்:',
 'timezoneoffset'            => 'நேர இடைவெளி¹:',
 'servertime'                => 'வழங்கன் நேரம்:',
 'guesstimezone'             => 'உலாவியிலிருந்து நிரப்பு',
@@ -1010,6 +1008,8 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'action-movefile'      => 'இந்தக் கோப்பை நகர்த்தவும்',
 'action-upload'        => 'இந்தக் கோப்பைப் பதிவிறக்கவும்',
 'action-delete'        => 'இந்தப் பக்கத்தை நீக்கவும்',
+'action-browsearchive' => 'அழிக்கப்பட்ட  பக்கங்களை தேடு',
+'action-undelete'      => 'அழித்த பக்கத்தை மறுபடியும் கொண்டு வா',
 
 # Recent changes
 'nchanges'                          => '{{PLURAL:$1|ஒரு மாற்றம்|$1 மாற்றங்கள்}}',
@@ -1040,6 +1040,8 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 
 # Recent changes linked
 'recentchangeslinked'          => 'தொடர்பான மாற்றங்கள்',
+'recentchangeslinked-feed'     => 'தொடர்பான மாற்றங்கள்',
+'recentchangeslinked-toolbox'  => 'தொடர்பான மாற்றங்கள்',
 'recentchangeslinked-title'    => '"$1" பக்கத்துடன் தொடர்புடைய மாற்றங்கள்',
 'recentchangeslinked-noresult' => 'குறித்த நேரத்தில் இப்பக்கத்துடன் இணைக்கப்பட்ட பக்கங்களில் மாற்றங்கள் ஏதுமில்லை.',
 'recentchangeslinked-summary'  => "இணைக்கப்பட்டப் பக்கங்களுக்கு (அல்லது பகுப்பொன்றின் அங்கத்தர்வர்களுக்கு) செய்யபட்ட அண்மைய மாற்றங்களை இச்சிறப்புப் பக்கம் பட்டியலிடுகிறது. [[Special:Watchlist|உங்கள் கவணிப்புப் பட்டியலில்]] உள்ளப் பக்கங்கள் '''தடித்த எழுத்துக்களில்''' உள்ளன.",
@@ -1151,6 +1153,7 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 'listfiles_description' => 'விளக்கம்',
 
 # File description page
+'file-anchor-link'          => 'கோப்பு',
 'filehist'                  => 'கோப்பு வரலாறு',
 'filehist-help'             => 'குறித்த நேரத்தில் இருந்த படிமத்தைப் பார்க்க அந்நேரத்தின் மீது சொடுகவும்.',
 'filehist-deleteall'        => 'சகலதையும் நீக்கு',
@@ -1167,8 +1170,6 @@ $1 பயனரையோ அல்லது வேறு [[{{MediaWiki:Grouppage
 இப் படிமத்துக்கு இணைக்கபட்டுள்ளது(ளன):',
 'nolinkstoimage'            => 'இப் படிமத்துக்கு இணைக்கப்பட்டுள்ள பக்கங்கள் எதுவும் இல்லை.',
 'sharedupload'              => 'இக்கோப்பு ஒரு பகிரப்பட்ட பதிவேற்றமாகும். ஏனைய திட்டங்களிலும் பயன்படுத்தப்படலாம்.',
-'noimage'                   => 'இப்பெயருடைய கோப்பு எதுவும் இல்லை, ஆனால் நீங்கள் அதை $1.',
-'noimage-linktext'          => 'ஒன்றை பதிவேற்றம் செய்',
 'uploadnewversion-linktext' => 'இப்படிமத்தின் புதிய பதிப்பை பதிவேற்று',
 
 # File reversion
@@ -2028,6 +2029,7 @@ $1',
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

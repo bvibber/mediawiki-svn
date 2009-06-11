@@ -18,24 +18,22 @@ $fallback = 'it';
 
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Media',
-	NS_SPECIAL        => 'Speciâl',
-	NS_MAIN           => '',
-	NS_TALK           => 'Discussion',
-	NS_USER           => 'Utent',
-	NS_USER_TALK      => 'Discussion_utent',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => 'Discussion_$1',
-	NS_FILE           => 'Figure',
-	NS_FILE_TALK      => 'Discussion_figure',
-	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'Discussion_MediaWiki',
-	NS_TEMPLATE       => 'Model',
-	NS_TEMPLATE_TALK  => 'Discussion_model',
-	NS_HELP	          => 'Jutori',
-	NS_HELP_TALK      => 'Discussion_jutori',
-	NS_CATEGORY       => 'Categorie',
-	NS_CATEGORY_TALK  => 'Discussion_categorie'
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Speciâl',
+	NS_TALK             => 'Discussion',
+	NS_USER             => 'Utent',
+	NS_USER_TALK        => 'Discussion_utent',
+	NS_PROJECT_TALK     => 'Discussion_$1',
+	NS_FILE             => 'Figure',
+	NS_FILE_TALK        => 'Discussion_figure',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Discussion_MediaWiki',
+	NS_TEMPLATE         => 'Model',
+	NS_TEMPLATE_TALK    => 'Discussion_model',
+	NS_HELP             => 'Jutori',
+	NS_HELP_TALK        => 'Discussion_jutori',
+	NS_CATEGORY         => 'Categorie',
+	NS_CATEGORY_TALK    => 'Discussion_categorie',
 );
 
 $specialPageAliases = array(
@@ -566,7 +564,6 @@ Il regjistri di eliminazion pe pagjine al ven mostrât ca sot par informazion.',
 
 Leiende: (cur) = difarencis cun la version atuâl, (prec) = difarencis cun la version precedente, '''p''' = piçul cambiament",
 'history-fieldset-title' => 'Sgarfe tal storic',
-'deletedrev'             => '[eliminade]',
 'histfirst'              => 'Prime',
 'histlast'               => 'Ultime',
 'historysize'            => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -603,8 +600,8 @@ Leiende: (cur) = difarencis cun la version atuâl, (prec) = difarencis cun la ve
 'notitlematches'                 => 'Nissune corispondence tai titui des pagjinis',
 'textmatches'                    => 'Corispondencis tal test des pagjinis',
 'notextmatches'                  => 'Nissune corispondence tal test des pagjinis',
-'prevn'                          => 'precedents $1',
-'nextn'                          => 'prossims $1',
+'prevn'                          => 'precedents {{PLURAL:$1|$1}}',
+'nextn'                          => 'prossims {{PLURAL:$1|$1}}',
 'viewprevnext'                   => 'Cjale ($1) ($2) ($3).',
 'searchmenu-legend'              => 'Opzions de ricercje',
 'searchmenu-exists'              => "'''E je une pagjine di non \"[[:\$1]]\" su cheste wiki'''",
@@ -660,7 +657,6 @@ Leiende: (cur) = difarencis cun la version atuâl, (prec) = difarencis cun la ve
 'prefs-skin'                => 'Mascare',
 'skin-preview'              => 'Anteprime',
 'prefs-math'                => 'Matematiche',
-'dateformat'                => 'Formât de date',
 'datedefault'               => 'Nissune preference',
 'prefs-datetime'            => 'Date e ore',
 'prefs-personal'            => 'Dâts utents',
@@ -690,7 +686,6 @@ Leiende: (cur) = difarencis cun la version atuâl, (prec) = difarencis cun la ve
 'savedprefs'                => 'Lis preferencis a son stadis salvadis',
 'timezonelegend'            => 'Fûs orari',
 'localtime'                 => 'Ore locâl:',
-'timezoneselect'            => 'Fûs orari:',
 'timezoneuseserverdefault'  => 'Dopre la ore dal servidôr',
 'timezoneuseoffset'         => 'Altri (inserìs la difarence)',
 'timezoneoffset'            => 'Difarence¹:',
@@ -769,6 +764,8 @@ Leiende: (cur) = difarencis cun la version atuâl, (prec) = difarencis cun la ve
 
 # Recent changes linked
 'recentchangeslinked'          => 'Cambiaments leâts',
+'recentchangeslinked-feed'     => 'Cambiaments leâts',
+'recentchangeslinked-toolbox'  => 'Cambiaments leâts',
 'recentchangeslinked-title'    => 'Cambiaments leâts a "$1"',
 'recentchangeslinked-noresult' => 'Nissun cambiament aes pagjinis leadis tal periodi specificât.',
 'recentchangeslinked-summary'  => "Cheste pagjine speciâl e mostre i cambiaments plui recents aes pagjinis leadis a chê specificade (o leadis ai elements intune categorie specificade). Lis [[Special:Watchlist|pagjinis tignudis di voli]] a son mostradis in '''gruessut'''.",
@@ -822,6 +819,7 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'listfiles_count'       => 'Versions',
 
 # File description page
+'file-anchor-link'          => 'Figure',
 'filehist'                  => 'Storic dal file',
 'filehist-help'             => 'Frache suntune date/ore par viodi il file cemût che al jere in chel moment.',
 'filehist-current'          => 'corint',
@@ -836,8 +834,6 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'linkstoimage'              => '{{PLURAL:$1|La pagjine ca sot e je leade|Lis $1 pagjinis ca sot a son leadis}} a cheste figure:',
 'nolinkstoimage'            => 'No son pagjinis leadis a chest file.',
 'sharedupload'              => 'Chest file al è condivîs e al pues jessi doprât di altris progjets.',
-'noimage'                   => 'Nol esist un file cun chest non, ma tu puedis $1 tu.',
-'noimage-linktext'          => 'cjamâlu sù',
 'uploadnewversion-linktext' => 'Cjame sù une gnove version di chest file',
 
 # File deletion
@@ -1383,6 +1379,7 @@ Se il file al è stât cambiât rispiet al so stât origjinâl, cualchi informaz
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

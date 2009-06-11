@@ -1285,15 +1285,18 @@ class EditPage {
 			$wgOut->addHTML( "</div>\n" );
 		}
 
-		$q = 'action='.$this->action;
-		#if ( "no" == $redirect ) { $q .= "&redirect=no"; }
-		$action = $wgTitle->escapeLocalURL( $q );
+		$action = $wgTitle->escapeLocalURL( array( 'action' => $this->action ) );
 
-		$summary = wfMsg( 'summary' );
-		$subject = wfMsg( 'subject' );
+		$summary = wfMsgExt( 'summary', 'parseinline' );
+		$subject = wfMsgExt( 'subject', 'parseinline' );
 
-		$cancel = $sk->makeKnownLink( $wgTitle->getPrefixedText(),
-				wfMsgExt('cancel', array('parseinline')) );
+		$cancel = $sk->link(
+			$wgTitle->getPrefixedText(),
+			wfMsgExt( 'cancel', array( 'parseinline' ) ),
+			array(),
+			array(),
+			array( 'known', 'noclasses' )
+		);
 		$separator = wfMsgExt( 'pipe-separator' , 'escapenoentities' );
 		$edithelpurl = Skin::makeInternalOrExternalUrl( wfMsgForContent( 'edithelppage' ));
 		$edithelp = '<a target="helpwindow" href="'.$edithelpurl.'">'.
@@ -1387,7 +1390,8 @@ class EditPage {
 			$editsummary = "<div class='editOptions'>\n";
 			global $wgParser;
 			$formattedSummary = wfMsgForContent( 'newsectionsummary', $wgParser->stripSectionName( $this->summary ) );
-			$subjectpreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">". wfMsg('subject-preview') . $sk->commentBlock( $formattedSummary, $this->mTitle, true )."</div>\n" : '';
+			$subjectpreview = $summarytext && $this->preview ?
+				"<div class=\"mw-summary-preview\">". wfMsgExt('subject-preview', 'parseinline') . $sk->commentBlock( $formattedSummary, $this->mTitle, true )."</div>\n" : '';
 			$summarypreview = '';
 		} else {
 			$commentsubject = '';
@@ -1417,7 +1421,7 @@ class EditPage {
 				$summarypreview =
 					Xml::tags( 'div',
 						array( 'class' => 'mw-summary-preview' ),
-						wfMsg( 'summary-preview' ) .
+						wfMsgExt( 'summary-preview', 'parseinline' ) .
 							$sk->commentBlock( $this->summary, $this->mTitle )
 					);
 			}
@@ -1676,7 +1680,11 @@ END
 	function doLivePreviewScript() {
 		global $wgOut, $wgTitle;
 		$wgOut->addScriptFile( 'preview.js' );
-		$liveAction = $wgTitle->getLocalUrl( "action={$this->action}&wpPreview=true&live=true" );
+		$liveAction = $wgTitle->getLocalUrl( array(
+			'action' => $this->action,
+			'wpPreview' => 'true',
+			'live' => 'true'
+		) );
 		return "return !lpDoPreview(" .
 			"editform.wpTextbox1.value," .
 			'"' . $liveAction . '"' . ")";
@@ -1800,11 +1808,15 @@ END
 			}
 		}
 
-		$previewhead = '<h2>' . htmlspecialchars( wfMsg( 'preview' ) ) . "</h2>\n" .
-			"<div class='previewnote'>" . $wgOut->parse( $note ) . "</div>\n";
-		if ( $this->isConflict ) {
-			$previewhead .='<h2>' . htmlspecialchars( wfMsg( 'previewconflict' ) ) . "</h2>\n";
+		if( $this->isConflict ) {
+			$conflict = '<h2 id="mw-previewconflict">' . htmlspecialchars( wfMsg( 'previewconflict' ) ) . "</h2>\n";
+		} else {
+			$conflict = '<hr />';
 		}
+
+		$previewhead = "<div class='previewnote'>\n" .
+			'<h2 id="mw-previewheader">' . htmlspecialchars( wfMsg( 'preview' ) ) . "</h2>" .
+			$wgOut->parse( $note ) . $conflict . "</div>\n";
 
 		wfProfileOut( __METHOD__ );
 		return $previewhead . $previewHTML;
@@ -1862,7 +1874,13 @@ END
 		$skin = $wgUser->getSkin();
 
 		$loginTitle = SpecialPage::getTitleFor( 'Userlogin' );
-		$loginLink = $skin->makeKnownLinkObj( $loginTitle, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $wgTitle->getPrefixedUrl() );
+		$loginLink = $skin->link(
+			$loginTitle,
+			wfMsgHtml( 'loginreqlink' ),
+			array(),
+			array( 'returnto' => $wgTitle->getPrefixedUrl() ),
+			array( 'known', 'noclasses' )
+		);
 
 		$wgOut->setPageTitle( wfMsg( 'whitelistedittitle' ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
@@ -2132,6 +2150,9 @@ END
 
 		$toolbar.="/*]]>*/\n</script>";
 		$toolbar.="\n</div>";
+		
+		wfRunHooks( 'EditPageBeforeEditToolbar', array( &$toolbar ) );
+		
 		return $toolbar;
 	}
 
@@ -2446,7 +2467,8 @@ END
 	protected function showLogs( $out ) {
 		global $wgUser;
 		$loglist = new LogEventsList( $wgUser->getSkin(), $out );
-		$pager = new LogPager( $loglist, array('move', 'delete'), false, $this->mTitle->getPrefixedText() );
+		$pager = new LogPager( $loglist, array('move', 'delete'), false,
+			$this->mTitle->getPrefixedText(), '', array('log_action'=>'delete') );
 		$count = $pager->getNumRows();
 		if ( $count > 0 ) {
 			$pager->mLimit = 10;

@@ -177,7 +177,7 @@ class SpecialRecentChanges extends SpecialPage {
 	public function checkLastModified( $feedFormat ) {
 		global $wgUseRCPatrol, $wgOut;
 		$dbr = wfGetDB( DB_SLAVE );
-		$lastmod = $dbr->selectField( 'recentchanges', 'MAX(rc_timestamp)', false, __FUNCTION__ );
+		$lastmod = $dbr->selectField( 'recentchanges', 'MAX(rc_timestamp)', false, __METHOD__ );
 		if( $feedFormat || !$wgUseRCPatrol ) {
 			if( $lastmod && $wgOut->checkLastModified( $lastmod ) ) {
 				# Client cache fresh and headers sent, nothing more to do.
@@ -328,7 +328,8 @@ class SpecialRecentChanges extends SpecialPage {
 					'USE INDEX' =>  array('recentchanges' => 'new_name_timestamp') ),
 				$join_conds );
 			# Join the two fast queries, and sort the result set
-			$sql = "($sqlNew) UNION ($sqlOld) ORDER BY rc_timestamp DESC LIMIT $limit";
+			$sql = $dbr->unionQueries(array($sqlNew, $sqlOld), false).' ORDER BY rc_timestamp DESC';
+			$sql = $dbr->limitResult($sql, $limit, false);
 			$res = $dbr->query( $sql, __METHOD__ );
 		}
 
@@ -622,7 +623,9 @@ class SpecialRecentChanges extends SpecialPage {
 		if( $options['from'] ) {
 			$note .= wfMsgExt( 'rcnotefrom', array( 'parseinline' ),
 				$wgLang->formatNum( $options['limit'] ),
-				$wgLang->timeanddate( $options['from'], true ) ) . '<br />';
+				$wgLang->timeanddate( $options['from'], true ),
+				$wgLang->date( $options['from'], true ),
+				$wgLang->time( $options['from'], true ) ) . '<br />';
 		}
 
 		# Sort data for display and make sure it's unique after we've added user data.

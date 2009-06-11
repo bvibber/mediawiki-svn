@@ -300,7 +300,7 @@ $messages = array(
 'template-protected'               => '(тӧрлаташ чарыме)',
 'template-semiprotected'           => '(верын аралыме)',
 'hiddencategories'                 => 'Тиде лаштык $1 {{PLURAL:$1|шылтыме категорийыш|шылтыме категорийыш}} лектеш:',
-'permissionserrorstext-withaction' => "Тыйын '''$2''' кертмешет шагал. Амалже:",
+'permissionserrorstext-withaction' => "Тыйын '''$2''' кертмешет шагал. Тиде {{PLURAL:$1|амал ден|амал дене}}:",
 'moveddeleted-notice'              => 'Тиде лаштык шӧрымӧ лийын.
 Тиде лаштыклан шӧрымӧ нерген журнал ӱлнӧ ончыктымо.',
 
@@ -346,8 +346,8 @@ $messages = array(
 'noexactmatch-nocreate'     => "'''\"\$1\" лӱман лаштык уке.'''",
 'notitlematches'            => 'Лаштык-влакын лӱмыштышт икгайлык уке',
 'notextmatches'             => 'Лаштык-влакыште икгайлык возымо уке',
-'prevn'                     => 'кодшо $1',
-'nextn'                     => 'весе $1',
+'prevn'                     => 'кодшо {{PLURAL:$1|$1}}',
+'nextn'                     => 'весе {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'Ончал ($1) ($2) ($3)',
 'search-result-size'        => '$1 ({{PLURAL:$2|$2 мут|$2 мут-влак}})',
 'search-redirect'           => '($1 вес вере колтымаш)',
@@ -436,6 +436,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'Ваш кылдалтше тӧрлатымаш-влак',
+'recentchangeslinked-feed'     => 'Ваш кылдалтше тӧрлатымаш-влак',
+'recentchangeslinked-toolbox'  => 'Ваш кылдалтше тӧрлатымаш-влак',
 'recentchangeslinked-title'    => '"$1" лаштыклан кылдалтше тӧрлатымаш-влак',
 'recentchangeslinked-noresult' => 'Ончыктымо пагытыште кылдалтше лаштыклаште вашталтыш лийын огыл.',
 'recentchangeslinked-summary'  => "Тиде шукертсе огыл тӧрлымӧ лаштык-влакын, кудыжо палемдыме лаштык дене кылдалтыныт (ала пелемдыме категорийыш пурат) лӱмерже.
@@ -457,6 +459,7 @@ $messages = array(
 'listfiles_user' => 'Пайдаланыше',
 
 # File description page
+'file-anchor-link'          => 'Файл',
 'filehist'                  => 'Файлын историй',
 'filehist-help'             => 'Файл ончыч могай ыле манын ончалнет гын, кече/жапым темдал.',
 'filehist-deleteone'        => 'шӧраш',
@@ -592,7 +595,7 @@ $messages = array(
 'protect-text'                => "Тыште тый '''<nowiki>$1</nowiki>''' лаштыкын шыгыремдымашыжым ончалаш да тӧрлаташ кертат.",
 'protect-locked-access'       => "Тыйын лаштыкын шыгыремдымашыжым тӧрлаш кертмешет шагал.
 Ӱлнӧ '''$1''' лаштыкын кызытсе настройкыже-влак.",
-'protect-cascadeon'           => 'Тиде лаштыкым кылдалтше аралтышан лаштыкыш пурымыжылан кӧра кызыт аралыме. Тый тиде лаштыкын шыгыремдымашыжым тӧрлатен кертат, тидын годым кылдалтше аралтыш огеш вашталт.',
+'protect-cascadeon'           => 'Тиде лаштыкым кыдалтше аралтышан {{PLURAL:$1|лаштыкыш, куштыжо|лаштык-влакыш, куштыжо}} пурымылан кӧра кызыт аралыме. Тый тиде лаштыкын шыгыремдымашыжым тӧрлатен кертат, тидын годым кылдалтше аралтыш огеш вашталт.',
 'protect-default'             => 'Чыла пайдаланыше лан йӧным пуаш',
 'protect-fallback'            => '«$1» кертеж кӱлеш',
 'protect-level-autoconfirmed' => 'Регистрацийым эртыдыме да у пайдаланыше-влак деч петыраш',
@@ -806,6 +809,7 @@ $messages = array(
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

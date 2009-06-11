@@ -138,13 +138,16 @@ $messages = array(
 'boteditletter'   => 'b',
 
 # Recent changes linked
-'recentchangeslinked' => 'Allannguutit naleqqiussat',
+'recentchangeslinked'         => 'Allannguutit naleqqiussat',
+'recentchangeslinked-feed'    => 'Allannguutit naleqqiussat',
+'recentchangeslinked-toolbox' => 'Allannguutit naleqqiussat',
 
 # Upload
 'upload' => 'Læg en fil op',
 
 # File description page
-'filehist-user' => 'Pineqartoq',
+'file-anchor-link' => 'Assiliaq',
+'filehist-user'    => 'Pineqartoq',
 
 # MIME search
 'mimesearch' => 'MIME ujaarlerit',

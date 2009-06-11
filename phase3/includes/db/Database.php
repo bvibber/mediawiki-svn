@@ -39,6 +39,7 @@ class Database {
 	protected $mErrorCount = 0;
 	protected $mLBInfo = array();
 	protected $mFakeSlaveLag = null, $mFakeMaster = false;
+	protected $mDefaultBigSelects = null;
 
 #------------------------------------------------------------------------------
 # Accessors
@@ -1829,6 +1830,19 @@ class Database {
 	}
 
 	/**
+	 * Construct a UNION query
+	 * This is used for providing overload point for other DB abstractions
+	 * not compatible with the MySQL syntax.
+	 * @param $sqls Array: SQL statements to combine
+	 * @param $all Boolean: use UNION ALL
+	 * @return String: SQL fragment
+	 */
+	function unionQueries($sqls, $all) {
+		$glue = $all ? ') UNION ALL (' : ') UNION (';
+		return '('.implode( $glue, $sqls ) . ')';
+	}
+
+	/**
 	 * Returns an SQL expression for a simple conditional.
 	 * Uses IF on MySQL.
 	 *
@@ -2380,6 +2394,29 @@ class Database {
 	public function getSearchEngine() {
 		return "SearchMySQL";
 	}
+
+	/**
+	 * Allow or deny "big selects" for this session only. This is done by setting 
+	 * the sql_big_selects session variable.
+	 *
+	 * This is a MySQL-specific feature. 
+	 *
+	 * @param mixed $value true for allow, false for deny, or "default" to restore the initial value
+	 */
+	public function setBigSelects( $value = true ) {
+		if ( $value === 'default' ) {
+			if ( $this->mDefaultBigSelects === null ) {
+				# Function hasn't been called before so it must already be set to the default
+				return;
+			} else {
+				$value = $this->mDefaultBigSelects;
+			}
+		} elseif ( $this->mDefaultBigSelects === null ) {
+			$this->mDefaultBigSelects = (bool)$this->selectField( false, '@@sql_big_selects' );
+		}
+		$encValue = $value ? '1' : '0';
+		$this->query( "SET sql_big_selects=$encValue", __METHOD__ );
+	}
 }
 
 /**
@@ -2764,7 +2801,7 @@ class ResultWrapper implements Iterator {
 	 * Get the number of rows in a result object
 	 */
 	function numRows() {
-		return $this->db->numRows( $this->result );
+		return $this->db->numRows( $this );
 	}
 
 	/**
@@ -2777,7 +2814,7 @@ class ResultWrapper implements Iterator {
 	 * @throws DBUnexpectedError Thrown if the database returns an error
 	 */
 	function fetchObject() {
-		return $this->db->fetchObject( $this->result );
+		return $this->db->fetchObject( $this );
 	}
 
 	/**
@@ -2789,14 +2826,14 @@ class ResultWrapper implements Iterator {
 	 * @throws DBUnexpectedError Thrown if the database returns an error
 	 */
 	function fetchRow() {
-		return $this->db->fetchRow( $this->result );
+		return $this->db->fetchRow( $this );
 	}
 
 	/**
 	 * Free a result object
 	 */
 	function free() {
-		$this->db->freeResult( $this->result );
+		$this->db->freeResult( $this );
 		unset( $this->result );
 		unset( $this->db );
 	}
@@ -2806,7 +2843,7 @@ class ResultWrapper implements Iterator {
 	 * See mysql_data_seek()
 	 */
 	function seek( $row ) {
-		$this->db->dataSeek( $this->result, $row );
+		$this->db->dataSeek( $this, $row );
 	}
 
 	/*********************
@@ -2817,7 +2854,7 @@ class ResultWrapper implements Iterator {
 
 	function rewind() {
 		if ($this->numRows()) {
-			$this->db->dataSeek($this->result, 0);
+			$this->db->dataSeek($this, 0);
 		}
 		$this->pos = 0;
 		$this->currentRow = null;

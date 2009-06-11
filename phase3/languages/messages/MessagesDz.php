@@ -310,8 +310,8 @@ $messages = array(
 # Search results
 'noexactmatch'   => "'''མགོ་མིང་ \"\$1\" ཅན་མའི་ཤོག་ལེབ་མེད།'''
 ཁྱོད་ཀྱིས་ [[:\$1|ཤོག་ལེབ་འདི་ གསརཔ་བཟོ་ཚུགས།]]",
-'prevn'          => 'ཧེ་མའི་ $1',
-'nextn'          => 'ཤུལ་མའི་ $1',
+'prevn'          => 'ཧེ་མའི་ {{PLURAL:$1|$1}}',
+'nextn'          => 'ཤུལ་མའི་ {{PLURAL:$1|$1}}',
 'viewprevnext'   => '($1) ($2) ($3) སྟོན།',
 'searchhelp-url' => 'Help:ནང་དོན།',
 'powersearch'    => 'མཐོ་རིམ་ཅན་གྱི་འཚོལ་ཞིབ།',
@@ -351,6 +351,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'འབྲེལ་བ་ཅན་གྱི་བསྒྱུར་བཅོས།',
+'recentchangeslinked-feed'     => 'འབྲེལ་བ་ཅན་གྱི་བསྒྱུར་བཅོས།',
+'recentchangeslinked-toolbox'  => 'འབྲེལ་བ་ཅན་གྱི་བསྒྱུར་བཅོས།',
 'recentchangeslinked-title'    => '"$1" དང་འབྲེལ་བ་ཡོད་པའི་བསྒྱུར་བཅོས་ཚུ།',
 'recentchangeslinked-noresult' => 'དུས་བཀོད་ཀྱི་སྐབས་ལུ་ འབྲེལ་མཐུད་ཅན་གྱི་ཤོག་ལེབ་ལུ་བསྒྱུར་བཅོས་མེད།',
 'recentchangeslinked-summary'  => "དམིགས་བསལ་ཤོག་ལེབ་འདི་གིས་ འབྲེལ་མཐུད་ཅན་གྱི་ཤོག་ལེབ་གུ་ མཇུག་ཀྱི་བསྒྱུར་བཅོས་ཚུ་ ཐོ་བཀོད་འབདཝ་ཨིན།
@@ -366,6 +368,7 @@ $messages = array(
 'listfiles' => 'ཡིག་སྣོད་ཐོ་ཡིག།',
 
 # File description page
+'file-anchor-link'          => 'ཡིག་སྣོད།',
 'filehist'                  => 'ཡིག་སྣོད་སྤྱོད་ཤུལ།',
 'filehist-help'             => 'ཡིག་སྣོད་འདི་ དེ་བསྒང་སྟོན་དོ་བཟུམ་སྦེ་ བལྟ་ནི་གི་དོན་ལུ་ ཚེས་གྲངས་/ཆུ་ཚོད་གུ་ ཨེབ་གཏང་འབད།',
 'filehist-current'          => 'ད་ལྟོ།',
@@ -378,8 +381,6 @@ $messages = array(
 'linkstoimage'              => 'འོག་གི་ཤོག་ལེབ་ཚུ་ ཡིག་སྣོད་འདི་དང་འབྲེལ་བ་འདུག:',
 'nolinkstoimage'            => 'ཡིག་སྣོད་དེ་དང་འབྲེལ་བ་ཡོད་པའི་ཤོག་ལེབ་མིན་འདུག།',
 'sharedupload'              => 'ཡིག་སྣོད་འདི་རུབ་སྤྱོད་ཅན་གྱི་སྐྱེལ་བཙུགས་ཅིག་ཨིནམ་ལས་ ལས་འགུལ་གཞན་ཚུ་གིས་ལག་ལེན་འཐབ་འོང་།',
-'noimage'                   => 'དེ་བཟུམ་གྱི་པར་སྣོད་མིན་འདུག་  ཁྱོད་ཀྱིས་ $1',
-'noimage-linktext'          => 'དེ་ སྐྱེལ་བཙུགས་འབད།',
 'uploadnewversion-linktext' => 'ཡིག་སྣོད་དེ་གི་ཐོ་རིམ་གསརཔ་ཅིག་ སྐྱེལ་བཙུགས་འབད།',
 
 # MIME search
@@ -688,6 +689,7 @@ $messages = array(
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

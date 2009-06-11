@@ -373,8 +373,8 @@ Nagatimaan ka usab nga ikaw mismo ang nagsulat niini, o gikopya nimo kini gikan 
 # Search results
 'noexactmatch'   => "'''Walay panid nga ginganla'g \"\$1\".'''
 Mahimo mong [[:\$1|isulat kini nga panid]].",
-'prevn'          => 'miaging $1',
-'nextn'          => 'sunod $1',
+'prevn'          => 'miaging {{PLURAL:$1|$1}}',
+'nextn'          => 'sunod {{PLURAL:$1|$1}}',
 'viewprevnext'   => 'Tan-awa sa ($1) ($2) ($3)',
 'searchhelp-url' => 'Help:Mga sulod',
 'powersearch'    => 'Abansadong pagpangita',
@@ -397,6 +397,8 @@ Mahimo mong [[:\$1|isulat kini nga panid]].",
 
 # Recent changes linked
 'recentchangeslinked'         => 'Mga may kalabotang kausaban',
+'recentchangeslinked-feed'    => 'Mga may kalabotang kausaban',
+'recentchangeslinked-toolbox' => 'Mga may kalabotang kausaban',
 'recentchangeslinked-title'   => 'Mga pag-usab nga may kalabotan sa "$1"',
 'recentchangeslinked-summary' => "Kini ang talaan sa mga bag-ong kausaban sa mga panid nga misumpay sa espesipikong panid (o sa mga sakop sa espesipikong kategoriya).
 Ang mga panid sa [[Special:Watchlist|imong gibantayan]] '''nakalugom'''.",
@@ -405,6 +407,7 @@ Ang mga panid sa [[Special:Watchlist|imong gibantayan]] '''nakalugom'''.",
 'upload' => 'Pagsumiter og payl',
 
 # File description page
+'file-anchor-link'  => 'Payl',
 'filehist'          => 'Kaagi sa payl',
 'filehist-help'     => 'I-klik ang petsa/oras aron makit-an ang hulagway sa payl niadtong panahona.',
 'filehist-current'  => 'kasamtangan',

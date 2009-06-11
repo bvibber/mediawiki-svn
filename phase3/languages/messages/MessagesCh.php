@@ -544,7 +544,6 @@ Nina'i i rasion ''$2'' as $3",
 'histlegend'          => "Seleksion ni diferensia: ayek i kahon rediu siha ni tinilaika ni para un akompara ya yemme' \"enter\" pat i batunes gi sanpapa'.<br />
 Leyendu: (på'go) = i diferensia yan i rebision på'go,
 (halacha) = i diferensia yan i tinilaika ma'pos, M = dikike' na tinilaika.",
-'deletedrev'          => '[mafunas]',
 'histfirst'           => 'I mas bihu',
 'histlast'            => 'I mas nuebu',
 'historysize'         => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -647,8 +646,8 @@ Siña un [[:\$1|fa'tinas i påhina]].",
 'notitlematches'            => "Tåya' titulon påhina siha ni manaya",
 'textmatches'               => "Tinige' påhina siha ni manaya",
 'notextmatches'             => "Tåya' na tinige' påhina siha ni manaya",
-'prevn'                     => "$1 ni manmå'pos",
-'nextn'                     => "$1 ni manmamaila'",
+'prevn'                     => "{{PLURAL:$1|$1}} ni manmå'pos",
+'nextn'                     => "{{PLURAL:$1|$1}} ni manmamaila'",
 'viewprevnext'              => 'Atan i ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:Guinaha',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 na palabra|$2 na palabra siha}})',
@@ -696,7 +695,6 @@ Fanapunta na fana'an ti gus nuebu i listan-ñiha i guinahan {{SITENAME}}.",
 'prefs-skin'                => 'Låssas',
 'skin-preview'              => "Na'annok",
 'prefs-math'                => 'Math',
-'dateformat'                => 'Plantiyas fecha',
 'datedefault'               => "Tåya' prifirensia",
 'prefs-datetime'            => 'Fecha yan ora',
 'prefs-personal'            => "Botta muna'sesetbi",
@@ -778,6 +776,8 @@ Yanggen un decidi mamo'lu, ma'usa ha' sempre para muna'i hao ni kreditu ni che'c
 
 # Recent changes linked
 'recentchangeslinked'          => 'Umachetton na tinilaika siha',
+'recentchangeslinked-feed'     => 'Umachetton na tinilaika siha',
+'recentchangeslinked-toolbox'  => 'Umachetton na tinilaika siha',
 'recentchangeslinked-title'    => 'Tinilaika pumarehu yan "$1"',
 'recentchangeslinked-noresult' => "Tåya' na tinilaika siha ni maninachetton na påhina gi tiempon ma'ayek.",
 'recentchangeslinked-summary'  => "Lista este ni tinilaika siha gi halacha ginen un påhina ma'ayek (pat ni miembro siha ginen un katigoria ma'ayek).
@@ -794,6 +794,7 @@ Yanggen un decidi mamo'lu, ma'usa ha' sempre para muna'i hao ni kreditu ni che'c
 'listfiles' => 'Listan atkibu',
 
 # File description page
+'file-anchor-link'          => 'Atkibu',
 'filehist'                  => 'Historian atkibu',
 'filehist-help'             => "Yemme' i fecha/ora para un li'e' i atkibu annai annok guihi na momentu.",
 'filehist-current'          => "pa'go",
@@ -806,8 +807,6 @@ Yanggen un decidi mamo'lu, ma'usa ha' sempre para muna'i hao ni kreditu ni che'c
 'linkstoimage'              => 'Umachetton i sigiente {{PLURAL:$1|na påhina|$1 na påhina siha}} yan este na atkibu:',
 'nolinkstoimage'            => "Tåya' na påhina siha umachetton yan este na atkibu.",
 'sharedupload'              => "Ma'apatte este na atkibu ya buente ha' ma'usa gi otru proyektu siha.",
-'noimage'                   => "Tåya' atkibu mafa'na'an enao, siña un $1.",
-'noimage-linktext'          => "na'kåtga hulu'",
 'uploadnewversion-linktext' => "Na'kåtga hulu' un tinilaikan atkibu mas nuebu",
 
 # MIME search

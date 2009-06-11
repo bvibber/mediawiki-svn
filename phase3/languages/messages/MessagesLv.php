@@ -22,11 +22,9 @@
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Special',
-	NS_MAIN             => '',
 	NS_TALK             => 'Diskusija',
 	NS_USER             => 'Lietotājs',
 	NS_USER_TALK        => 'Lietotāja_diskusija',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '{{grammar:ģenitīvs|$1}}_diskusija',
 	NS_FILE             => 'Attēls',
 	NS_FILE_TALK        => 'Attēla_diskusija',
@@ -629,7 +627,6 @@ Apzīmējumi:
 "ar iepriekšējo" = salīdzināt ar iepriekšējo versiju,
 m = maznozīmīgs labojums.',
 'history-fieldset-title' => 'Meklēt hronoloģijā',
-'deletedrev'             => '[izdzēsta]',
 'histfirst'              => 'Senākās',
 'histlast'               => 'Jaunākās',
 'historysize'            => '({{PLURAL:$1|1 baits|$1 baiti}})',
@@ -676,8 +673,8 @@ Mēģiniet [[Special:Search|meklēt]], lai atrastu saistītas lapas!',
 'notitlematches'           => 'Neviena rezultāta, meklējot lapas virsrakstā',
 'textmatches'              => 'Rezultāti lapu tekstos',
 'notextmatches'            => 'Neviena rezultāta, meklējot lapas tekstā',
-'prevn'                    => 'iepriekšējās $1',
-'nextn'                    => 'nākamās $1',
+'prevn'                    => 'iepriekšējās {{PLURAL:$1|$1}}',
+'nextn'                    => 'nākamās {{PLURAL:$1|$1}}',
 'viewprevnext'             => 'Skatīt ($1) ($2) ($3 vienā lapā).',
 'searchhelp-url'           => 'Help:Saturs',
 'search-result-size'       => '$1 ({{PLURAL:$2|1 vārds|$2 vārdi}})',
@@ -711,7 +708,6 @@ Pagaidām vari meklēt, izmantojot Google vai Yahoo.
 'prefs-skin'                => 'Apdare',
 'skin-preview'              => 'Priekšskats',
 'prefs-math'                => 'Formulas',
-'dateformat'                => 'Datuma formāts',
 'datedefault'               => 'Vienalga',
 'prefs-datetime'            => 'Datums un laiks',
 'prefs-personal'            => 'Lietotāja dati',
@@ -861,6 +857,8 @@ Ja tu izvēlies to norādīt, šo lietos lai identificētu tavu darbu (ieguldīj
 
 # Recent changes linked
 'recentchangeslinked'          => 'Saistītās izmaiņas',
+'recentchangeslinked-feed'     => 'Saistītās izmaiņas',
+'recentchangeslinked-toolbox'  => 'Saistītās izmaiņas',
 'recentchangeslinked-title'    => 'Izmaiņas, kas saistītas ar "$1"',
 'recentchangeslinked-noresult' => 'Norādītajā laika periodā saistītajās lapās izmaiņu nebija.',
 'recentchangeslinked-summary'  => "Šiet ir nesen izdarītās izmaiņas lapās, uz kurām ir saites no norādītās lapas (vai norādītajā kategorijā ietilpstošās lapas).
@@ -971,6 +969,7 @@ Uzklikšķinot uz kādas kolonnas virsraksta, var sakārtot pēc kāda cita para
 'listfiles_description' => 'Apraksts',
 
 # File description page
+'file-anchor-link'          => 'Attēls',
 'filehist'                  => 'Faila hronoloģija',
 'filehist-help'             => 'Uzklikšķini uz datums/laiks kolonnā esošās saites, lai apskatītos, kā šis fails izskatījās tad.',
 'filehist-deleteall'        => 'dzēst visus',
@@ -987,8 +986,6 @@ Uzklikšķinot uz kādas kolonnas virsraksta, var sakārtot pēc kāda cita para
 'linkstoimage'              => '{{PLURAL:$1|Šajā lapā ir saite|Šajās $1 lapās ir saites}} uz šo failu:',
 'nolinkstoimage'            => 'Nevienā lapā nav norāžu uz šo attēlu.',
 'sharedupload'              => 'Šis fails ir augšupielādēts koplietojams citos projektos.',
-'noimage'                   => 'Ar šādu nosaukumu nav neviena faila, bet tu vari [$1].',
-'noimage-linktext'          => 'augšuplādēt to',
 'uploadnewversion-linktext' => 'Augšupielādēt jaunu šī faila versiju',
 
 # File reversion
@@ -1449,7 +1446,7 @@ Visus blokus var apskatīties [[Special:IPBlockList|IP bloku sarakstā]].',
 'ipblocklist'              => 'Bloķētās IP adreses un lietotājvārdi',
 'ipblocklist-username'     => 'Lietotāja vārds vai IP adrese:',
 'blocklistline'            => '$1 $2 bloķēja $3 (termiņš $4)',
-'expiringblock'            => 'beidzas $1',
+'expiringblock'            => 'beidzas $1 $2',
 'blocklink'                => 'bloķēt',
 'unblocklink'              => 'atbloķēt',
 'contribslink'             => 'devums',
@@ -1692,6 +1689,7 @@ Pārējie lauki, pēc noklusējuma, būs paslēpti.
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

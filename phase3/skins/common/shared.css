@@ -123,6 +123,7 @@ div.searchresult {
 .mw-search-results li {
 	padding-bottom: 1em;
 	list-style:none;
+	list-style-image:none;
 }
 .mw-search-results li a {
 	font-size: 108%;
@@ -165,6 +166,10 @@ div#mw-search-interwiki {
 	margin-top: 2ex;
 }
 
+.rtl div#mw-search-interwiki {
+	float: left;
+}
+
 div#mw-search-interwiki li {
 	font-size: 95%;
 }
@@ -172,6 +177,10 @@ div#mw-search-interwiki li {
 .mw-search-interwiki-more {
 	float: right;
 	font-size: 90%;
+}
+
+.rtl .mw-search-interwiki-more {
+	float: left;
 }
 
 div#mw-search-interwiki-caption {
@@ -191,6 +200,9 @@ div#mw-search-interwiki-caption {
 	border-top:1px solid #BBBBBB;
 }
 
+.rtl .mw-search-interwiki-project {
+	text-align: right;
+}
 
 span.searchalttitle {
 	font-size: 95%;
@@ -210,6 +222,23 @@ div.searchdidyoumean em {
 
 .searchmatch {
 	font-weight: bold;
+}
+
+
+/*
+ * Advanced PowerSearch box
+ */
+
+td#mw-search-togglebox {
+        text-align: right;
+}
+
+table#mw-search-powertable {
+	width:100%;
+}
+
+form#powersearch {
+	clear: both;
 }
 
 
@@ -297,6 +326,11 @@ td.os-suggest-result-hl {
 #pagehistory li.selected {
     background-color: #f9f9f9;
     border: 1px dashed #aaa;
+}
+
+/* Special:Contributions styling */
+.mw-uctop {
+	font-weight: bold;
 }
 
 /*
@@ -459,4 +493,8 @@ table.wikitable {
 	display: inline;
 	margin: 0 .5em 0 0;
 	border: none;
+}
+
+.visualClear {
+	clear: both;
 }

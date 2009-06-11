@@ -1,5 +1,5 @@
 <?php
-/** Burmese (Myanmasa)
+/** Burmese (မြန်မာဘာသာ)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -230,7 +230,9 @@ $messages = array(
 'boteditletter'   => 'ဆ',
 
 # Recent changes linked
-'recentchangeslinked' => 'ဆက်​ဆပ်​သော​အ​ပြောင်း​အ​လဲ​များ​',
+'recentchangeslinked'         => 'ဆက်​ဆပ်​သော​အ​ပြောင်း​အ​လဲ​များ​',
+'recentchangeslinked-feed'    => 'ဆက်​ဆပ်​သော​အ​ပြောင်း​အ​လဲ​များ​',
+'recentchangeslinked-toolbox' => 'ဆက်​ဆပ်​သော​အ​ပြောင်း​အ​လဲ​များ​',
 
 # Upload
 'upload'            => 'ဖိုင်​တင်​ရန်​',
@@ -247,6 +249,7 @@ $messages = array(
 'listfiles_date' => 'နေ့စွဲ',
 
 # File description page
+'file-anchor-link'   => 'ဖိုင်',
 'filehist'           => 'ဖိုင်မှတ်တမ်း',
 'filehist-deleteall' => 'အားလုံးဖျက်',
 'filehist-deleteone' => 'ဖျက်',
@@ -338,7 +341,7 @@ $messages = array(
 'ipboptions'         => '၂ နာရီ:2 hours,၁ နေ့:1 day,၃ နေ့:3 days,၁ ပတ်:1 week,၂ ပတ်:2 weeks,၁ လ:1 month,၃ လ:3 months,၆ လ:6 months,၁ နှစ်:1 year,အနန္တ:infinite',
 'ipbotheroption'     => 'အခြား',
 'ipblocklist-submit' => 'ရှာ​ဖွေ​ရန်​',
-'expiringblock'      => '$1 ဆုံးမည်',
+'expiringblock'      => '$1 $2 ဆုံးမည်',
 
 # Move page
 'move-page-legend' => 'စာ​မျက်​နှာ​အား​ရွေ့​ပြောင်း​ပါ​',

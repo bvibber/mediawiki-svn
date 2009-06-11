@@ -15,24 +15,22 @@
 $fallback = 'fr';
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Medya',
-	NS_SPECIAL        => 'Espesyal',
-	NS_MAIN           => '',
-	NS_TALK           => 'Diskite',
-	NS_USER           => 'Itilizatè',
-	NS_USER_TALK      => 'Diskisyon_Itilizatè',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => 'Diskisyon_$1',
-	NS_FILE           => 'Imaj',
-	NS_FILE_TALK      => 'Diskisyon_Imaj',
-	NS_MEDIAWIKI      => 'MedyaWiki',
-	NS_MEDIAWIKI_TALK => 'Diskisyon_MedyaWiki',
-	NS_TEMPLATE       => 'Modèl',
-	NS_TEMPLATE_TALK  => 'Diskisyon_Modèl',
-	NS_HELP           => 'Èd',
-	NS_HELP_TALK      => 'Diskisyon_Èd',
-	NS_CATEGORY       => 'Kategori',
-	NS_CATEGORY_TALK  => 'Diskisyon_Kategori'
+	NS_MEDIA            => 'Medya',
+	NS_SPECIAL          => 'Espesyal',
+	NS_TALK             => 'Diskite',
+	NS_USER             => 'Itilizatè',
+	NS_USER_TALK        => 'Diskisyon_Itilizatè',
+	NS_PROJECT_TALK     => 'Diskisyon_$1',
+	NS_FILE             => 'Imaj',
+	NS_FILE_TALK        => 'Diskisyon_Imaj',
+	NS_MEDIAWIKI        => 'MedyaWiki',
+	NS_MEDIAWIKI_TALK   => 'Diskisyon_MedyaWiki',
+	NS_TEMPLATE         => 'Modèl',
+	NS_TEMPLATE_TALK    => 'Diskisyon_Modèl',
+	NS_HELP             => 'Èd',
+	NS_HELP_TALK        => 'Diskisyon_Èd',
+	NS_CATEGORY         => 'Kategori',
+	NS_CATEGORY_TALK    => 'Diskisyon_Kategori',
 );
 
 $specialPageAliases = array(
@@ -130,7 +128,8 @@ $messages = array(
 'tog-highlightbroken'         => 'Afiche <a href="" class="new">nan koulè wouj</a> lyen yo ki ap mene nan paj ki pa egziste (oubyen : tankou <a href="" class="internal">?</a>)',
 'tog-justify'                 => 'Aliyen paragraf yo',
 'tog-hideminor'               => 'Kache tout modifikasyon resan yo ki pa enpòtan',
-'tog-extendwatchlist'         => 'Itilize lis swivi ki miyò a',
+'tog-hidepatrolled'           => 'Kache modifikasyon yo ki fèk fèt pou moun ki ap veye yo',
+'tog-extendwatchlist'         => 'Etann lis swivi pou ou kapab wè tout chanjman yo, pa sèlman sa ki fèk fèt yo',
 'tog-usenewrc'                => 'Itilize lis swivi ki miyò a (JavaScript)',
 'tog-numberheadings'          => 'Nimewote otomatiman tit yo',
 'tog-showtoolbar'             => 'Montre panèl meni modifikasyon an',
@@ -139,7 +138,7 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Pemèt edite yon seksyon pa klike a dwat tit seksyon an (JavaScrip)',
 'tog-showtoc'                 => 'Montre tab de matyè yo (pou tout paj ki gen plis ke twa tit)',
 'tog-rememberpassword'        => 'Sonje login mwen nan òdinatè sa',
-'tog-editwidth'               => 'Lajè bwat edite-a plen',
+'tog-editwidth'               => 'Montre fenèt pou modifikasyon yo nan mitan paj lan',
 'tog-watchcreations'          => 'Ajoute paj yo ke mwen ap kreye nan lis swivi mwen.',
 'tog-watchdefault'            => 'Mete paj mwen edite yo nan lis veye m',
 'tog-watchmoves'              => 'Mete paj mwen deplase nan lis veye m',
@@ -717,7 +716,6 @@ Sistèm an ap montre, anba paj sa, jounal tout vèsyon paj an ki efase pou sèvi
 'page_last'              => 'dènye',
 'histlegend'             => 'Lejand : ({{MediaWiki:Cur}}) = diferans ak vèsyon kounye a, ({{MediaWiki:Last}}) = diferans ak vèsyon anvan, <b>m</b> = modifikasyon ki pa enpòtan',
 'history-fieldset-title' => 'Navige nan istorik paj sa',
-'deletedrev'             => '[efase]',
 'histfirst'              => 'Premye kontribisyon yo',
 'histlast'               => 'Dènye kontribisyon yo',
 'historysize'            => '({{PLURAL:$1|$1 okte|$1 okte yo}})',
@@ -779,8 +777,8 @@ Sistèm an ap montre, anba paj sa, jounal tout vèsyon paj an ki efase pou sèvi
 'noexactmatch-nocreate'     => "'''Pa genyen pyès paj ki rele « $1 ».'''",
 'notitlematches'            => 'Pa gen paj nan sistèm ki genyen tit ou bay nan rechèch ou an.',
 'notextmatches'             => 'Pa genyen pyès tèks nan paj yo ki ap koresponn ak rechèch ou fè a',
-'prevn'                     => '$1 anvan yo',
-'nextn'                     => '$1 swivan yo',
+'prevn'                     => '{{PLURAL:$1|$1}} anvan yo',
+'nextn'                     => '{{PLURAL:$1|$1}} swivan yo',
 'viewprevnext'              => 'Wè ($1) ($2) ($3).',
 'searchhelp-url'            => 'Help:Èd',
 'search-result-size'        => '$1 ({{PLURAL:$2| mo|$2 mo yo}})',
@@ -858,6 +856,8 @@ Eseye pou wè si ak prefiks ''all:'' pou chache nan tout kontni a (anndann nou a
 
 # Recent changes linked
 'recentchangeslinked'          => 'Swivi pou lyen yo',
+'recentchangeslinked-feed'     => 'Swivi pou lyen yo',
+'recentchangeslinked-toolbox'  => 'Swivi pou lyen yo',
 'recentchangeslinked-title'    => 'Chanjman ki an relasyon ak "$1"',
 'recentchangeslinked-noresult' => 'Pa genyen pyès chanjman nan paj sa yo pou peryòd ou chwazi an.e.',
 'recentchangeslinked-summary'  => "Paj espesyal sa a ap montre dènye chanjman nan paj ki genyen lyen sou yo. Paj yo ki nan [[Special:Watchlist|lis swivi]] ou an ap ekri '''fonse'''",
@@ -874,6 +874,7 @@ Eseye pou wè si ak prefiks ''all:'' pou chache nan tout kontni a (anndann nou a
 'listfiles' => 'Lis fichye yo',
 
 # File description page
+'file-anchor-link'          => 'Fichye',
 'filehist'                  => 'Istorik fichye a',
 'filehist-help'             => 'Klike anlè yon dat epi yon lè pou fichye a jan li te ye nan moman sa a.',
 'filehist-current'          => 'Kounye a',
@@ -887,9 +888,7 @@ Eseye pou wè si ak prefiks ''all:'' pou chache nan tout kontni a (anndann nou a
 'imagelinks'                => 'Lyen nan paj an',
 'linkstoimage'              => '{{PLURAL:$1|Paj ki ap swiv an|Paj yo ki ap swiv}} genyen imaj sa a :',
 'nolinkstoimage'            => 'Pyès paj pa genyen imaj sa a.',
-'sharedupload'              => 'Fichye sa a pataje, li sòti de $1 e li kapab itilize pa lòt pwojè yo.',
-'noimage'                   => 'Pa genyen pyès fichye ki genyen non sa a, men ou mèt $1.',
-'noimage-linktext'          => 'chaje yonn',
+'sharedupload'              => 'Fichye sa a kapab pataje, li sòti depi $1 e li kapab itilize pa lòt pwojè yo.',
 'uploadnewversion-linktext' => 'Kopye yon nouvo vèsyon pou fichye sa a',
 
 # MIME search
@@ -1250,6 +1249,7 @@ Nenpòt lòt lyen nan menm lign nan konsidere kòm yon eksèpsyon, i.e. paj kote
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

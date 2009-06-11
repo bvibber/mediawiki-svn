@@ -403,8 +403,8 @@ $1',
 # Search results
 'noexactmatch'   => "'''صفحه ای باای عنوان نه  \"\$1\".'''
 ایسا ترین [[:\$1| ای صفحه را ایجاد کنین]].",
-'prevn'          => 'قبلی $1',
-'nextn'          => 'بعدی $1',
+'prevn'          => 'قبلی {{PLURAL:$1|$1}}',
+'nextn'          => 'بعدی {{PLURAL:$1|$1}}',
 'viewprevnext'   => 'مشاهده ($1) ($2) ($3)',
 'searchhelp-url' => 'Help:محتوا',
 'powersearch'    => 'جستجوی کاملتر',
@@ -444,6 +444,8 @@ $1',
 
 # Recent changes linked
 'recentchangeslinked'          => 'تغییرات مرتبط',
+'recentchangeslinked-feed'     => 'تغییرات مرتبط',
+'recentchangeslinked-toolbox'  => 'تغییرات مرتبط',
 'recentchangeslinked-title'    => 'تغییرهای مرتبط با $1',
 'recentchangeslinked-noresult' => 'در دوره زمانی داده‌شده تغییری در صفحه‌های لینک داده رخ نداده‌',
 'recentchangeslinked-summary'  => " ای صفحه خاص تغییرات اخیر در صفحه‌های لینک داده شده به این صفحه را نشو اده.
@@ -459,6 +461,7 @@ $1',
 'listfiles' => 'لیست فایل',
 
 # File description page
+'file-anchor-link'          => 'فایل',
 'filehist'                  => 'گزارش تاریخی فایل',
 'filehist-help'             => 'رو تاریخ‌ها کلیک کنید تا نسخه مرتبط را ببینین.',
 'filehist-current'          => 'جاری',
@@ -471,8 +474,6 @@ $1',
 'linkstoimage'              => 'ذیل الذکر {{PLURAL:$1|لینکهای صفحه|$1 لینک صفحات}} به ای فایل:',
 'nolinkstoimage'            => 'هیچ صفحه ای نه که لینک وابیده بوه به ای فایل',
 'sharedupload'              => 'ای فایل یک آپلود اشتراکی هده و ممکنه زه طریق  پروژه‌های دیگه  هم قابل دسترسی بوه',
-'noimage'                   => 'هیچ فایلی با ای نام موجود نه اما ترین $1.',
-'noimage-linktext'          => 'آپلود کنین',
 'uploadnewversion-linktext' => 'آپلود کردن یه نسخه تازه زه ای فایل',
 
 # MIME search
@@ -806,6 +807,7 @@ $2',
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

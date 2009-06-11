@@ -9,6 +9,7 @@
  *
  * @author Ahonc
  * @author Aleator
+ * @author AlexSm
  * @author AnakngAraw
  * @author Ans
  * @author Aotake
@@ -44,6 +45,7 @@
  * @author McDutchie
  * @author Meno25
  * @author MichaelFrey
+ * @author Mihai
  * @author Mormegil
  * @author Mpradeep
  * @author Najami
@@ -69,6 +71,7 @@
  * @author Srhat
  * @author Tgr
  * @author UV
+ * @author Umherirrender
  * @author Urhixidur
  * @author Verdy p
  * @author Vinhtantran
@@ -83,7 +86,8 @@ $messages = array(
 'tog-highlightbroken'         => "[[Special:Preferences]], tab 'Misc'. Offers user a choice how format internal links to non-existing pages. As red links or with a trailing question mark.",
 'tog-justify'                 => "[[Special:Preferences]], tab 'Misc'. Offers user a choice to justify paragraphs or not.",
 'tog-hideminor'               => "[[Special:Preferences]], tab 'Recent changes'. Offers user to hide minor edits in recent changes or not.",
-'tog-hidepatrolled'           => 'Option in Recent changes tab of [[Special:Preferences]]',
+'tog-hidepatrolled'           => 'Option in Recent changes tab of [[Special:Preferences]] (if [[mw:Manual:$wgUseRCPatrol|$wgUseRCPatrol]] is enabled)',
+'tog-newpageshidepatrolled'   => 'Toggle in [[Special:Preferences]], section "Recent changes" (if [[mw:Manual:$wgUseRCPatrol|$wgUseRCPatrol]] is enabled)',
 'tog-extendwatchlist'         => "[[Special:Preferences]], tab 'Watchlist'. Offers user to show all applicable changes in watchlist (by default only the last change to a page on the watchlist is shown).",
 'tog-usenewrc'                => "[[Special:Preferences]], tab 'Recent changes'. Offers user to use alternative reprsentation of [[Special:RecentChanges]].",
 'tog-numberheadings'          => "[[Special:Preferences]], tab 'Misc'. Offers numbered headings on content pages to user.",
@@ -280,6 +284,7 @@ See also [[MediaWiki:Helppage/{{SUBPAGENAME}}|{{int:helppage}}]] and [[MediaWiki
 'edit'             => 'The text of the tab going to the edit form. When the page is protected, you will see "[[MediaWiki:Viewsource/{{SUBPAGENAME}}|{{int:viewsource}}]]". Should be in the infinitive mood.
 
 {{Identical|Edit}}',
+'view'             => 'Tab label in the Vector skin (verb). See for example http://translatewiki.net/w/i.php?title=Main_Page&useskin=vector',
 'create'           => 'The text on the tab for to the edit form on unexisting pages.
 
 {{Identical|Create}}',
@@ -308,7 +313,7 @@ See also [[MediaWiki:Helppage/{{SUBPAGENAME}}|{{int:helppage}}]] and [[MediaWiki
 'toolbox'          => 'The title of the toolbox below the search menu.',
 'otherlanguages'   => 'This message is shown under the toolbox. It is used if there are interwiki links added to the page, like <tt><nowiki>[[</nowiki>en:Interwiki article]]</tt>.',
 'redirectedfrom'   => 'The text displayed when a certain page is redirected to another page. Variable <tt>$1</tt> contains the name of the page user came from.',
-'redirectpagesub'  => 'Displayed under the page title of a page which is a redirect to another page, see [{{fullurl:Betawiki:Translators|redirect=no}} Betawiki:Translators] for example.
+'redirectpagesub'  => 'Displayed under the page title of a page which is a redirect to another page, see [{{fullurl:Project:Translators|redirect=no}} Project:Translators] for example.
 
 {{Identical|Redirect page}}',
 'lastmodifiedat'   => 'This message is shown below each page, in the footer with the logos and links.
@@ -356,7 +361,7 @@ See also [[MediaWiki:Lastmodifiedatby/{{SUBPAGENAME}}]].',
 'policy-url'           => 'Description: The URL of the project page describing the policies of the wiki. This is shown below every page (the left link).
 {{doc-important|Do not change "Project:" part.}}',
 'portal'               => "Display name for the 'Community portal', shown in the sidebar menu of all pages. The target page is meant to be a portal for users where useful links are to be found about the wiki's operation.",
-'portal-url'           => 'Description: The URL of the community portal. This is shown in the sidebar by default (removed on Betawiki).
+'portal-url'           => 'Description: The URL of the community portal. This is shown in the sidebar by default (removed on translatewiki.net).
 {{doc-important|Do not change "Project:" part.}}',
 'privacy'              => 'Used as page name and link at the bottom of each wiki page. The page contains a legal notice providing information about the use of personal information by the website owner.of the site. Example: [[Privacy policy]].',
 'privacypage'          => 'Used as page for that contains the privacy policy. Used at the bottom of every page on the wiki. Example: [[{{MediaWiki:Privacypage}}|{{MediaWiki:Privacy}}]].
@@ -446,16 +451,17 @@ HTML markup cannot be used.",
 
 # Main script and global functions
 'nosuchspecialpage' => 'The title of the error you get when trying to open a special page which does not exist. The text of the warning is the message {{msg-mw|nospecialpagetext}}. Example: [[Special:Nosuchpage]]',
-'nospecialpagetext' => 'The text of the error you get when trying to open a special page which does not exist.
-The title of the warning is the message {{msg-mw|nosuchspecialpage}}. <code><nowiki>[[Special:SpecialPages|{{int:specialpages}}]]</nowiki></code> should remain untranslated. Example: [[Special:Nosuchpage]]',
+'nospecialpagetext' => 'This error is shown when trying to open a special page which does not exist, e.g. [[Special:Nosuchpage]].
+* The title of this error is the message {{msg-mw|nosuchspecialpage}}. 
+* Link <code><nowiki>[[Special:SpecialPages|{{int:specialpages}}]]</nowiki></code> should remain untranslated.',
 
 # General errors
 'error'                => '{{Identical|Error}}',
 'enterlockreason'      => 'For developers when locking the database',
 'missing-article'      => "This message is shown when a revision does not exist, either as permalink or as diff. Examples:
 
-# [http://translatewiki.net/w/i.php?title=Betawiki:News&oldid=9999999 Permalink with invalid revision#]
-# [http://translatewiki.net/w/i.php?title=Betawiki:News&diff=426850&oldid=99999999 Diff with invalid revision#]
+# [http://translatewiki.net/w/i.php?title=Project:News&oldid=9999999 Permalink with invalid revision#]
+# [http://translatewiki.net/w/i.php?title=Project:News&diff=426850&oldid=99999999 Diff with invalid revision#]
 
 '''Parameters'''
 * $1: Pagename
@@ -572,6 +578,7 @@ $1 is the minimum number of characters in the password.',
 'oldpassword'               => "Used on the 'User profile' tab of 'my preferences'. This is the text next to an entry box for the old password in the 'change password' section.",
 'newpassword'               => '{{Identical|New password}}',
 'retypenew'                 => "Appears on the 'User profile' tab of the 'Preferences' special page in the 'Change password' section. It appears next to the text box for entering the new password a second time.",
+'resetpass_submit'          => 'Submit button on [[Special:Resetpass]]',
 'resetpass-submit-loggedin' => 'Button on [[Special:ResetPass]] to submit new password.',
 'resetpass-wrong-oldpass'   => 'Error message shown on [[Special:Resetpass]] when the old password is not valid.',
 'resetpass-temp-password'   => 'The label of the input box for the temporary password (received by e-mail) on the form displayed after logging in with a temporary password.',
@@ -643,13 +650,14 @@ Parameters:
 * <tt>$7</tt> is the intended target of the block (what the blocking user specified in the blocking form)
 * <tt>$8</tt> is the timestamp when the block started',
 'blockednoreason'                  => '{{Identical|No reason given}}',
-'whitelistedittext'                => '* $1: link to Special:UserLogin with {{msg|loginreqlink}} as link description',
+'whitelistedittext'                => '* $1 is a link to [[Special:UserLogin]] with {{msg-mw|loginreqlink}} as link description',
 'nosuchsectiontext'                => 'This message is displayed when a user tries to edit a section that does not exist. 
 
 Parameter $1 is the content of section parameter in the URL (for example 1234 in the URL http://translatewiki.net/w/i.php?title=Sandbox&action=edit&section=1234)',
-'loginreqlink'                     => 'Take a look on inflection. Used as parameter in {{msg|loginreqpagetext}} and {{msg|whitelistedittext}}.
+'loginreqlink'                     => 'Take a look on inflection. Used as parameter in {{msg-mw|loginreqpagetext}}, {{msg-mw|whitelistedittext}}, {{msg-mw|watchlistanontext‎}} and {{msg-mw|Confirmemail needlogin}}.
 
 {{Identical|Log in}}',
+'loginreqpagetext'                 => '* $1 is a link to [[Special:UserLogin]] with {{msg-mw|loginreqlink}} as link description',
 'accmailtitle'                     => 'Page title when temporary password was sent to a user via email.',
 'accmailtext'                      => "The message shown when a temporary password has been sent to the user's email address.
 
@@ -701,13 +709,21 @@ Please report at [[Support]] if you are unable to properly translate this messag
 # History pages
 'viewpagelogs'           => 'Link displayed in history of pages',
 'currentrev'             => '{{Identical|Current revision}}',
-'currentrev-asof'        => 'The text appears at the right side when comparing 2 different edits of the same page. For example: [http://translatewiki.net/w/i.php?title=FreeCol%3AIntegerAboveZero%2Fca&diff=788645&oldid=788644]',
-'revisionasof'           => "Used on a difference page when comparing different versions of a page or when viewing an non-current version of a page. \$1 is the date/time at which the revision was created. Example: \"''Revision as of 14:44, 24 January 2008''\".",
+'currentrev-asof'        => 'Used on a difference page when comparing the current versions of a page with each other. See {{msg-mw|Revisionasof}} for the message for non-current version.
+* $1 is a date and time
+* $2 is a date (optional)
+* $3 is a time (optional)',
+'revisionasof'           => 'Used on a difference page when comparing different versions of a page or when viewing an non-current version of a page. See {{msg-mw|Currentrev-asof}} for the message for the current version.
+* $1 is the date/time at which the revision was created. Example: "\'\'Revision as of 14:44, 24 January 2008\'\'".
+* $2 is the date at which the revision was created.
+* $3 is the time at which the revision was created.',
 'revision-info'          => 'Appears just below the page title when an old version of the page is being viewed.
 
-* $1 indicates the time of that revision and 
-* $2 the author of the revision
-* (optional) $3 is the revision ID',
+* $1: date and time of revision
+* $2: author of revision
+* (optional) $3: revision ID
+* (optional) $4: date of revision
+* (optional) $5: time of revision',
 'currentrevisionlink'    => '{{Identical|Current revision}}',
 'cur'                    => 'Link in page history',
 'next'                   => 'Link in page history
@@ -722,9 +738,6 @@ Please report at [[Support]] if you are unable to properly translate this messag
 {{Identical|Last}}",
 'histlegend'             => 'Text in history page. Refers to {{msg-mw|cur}}, {{msg-mw|last}}, and {{msg-mw|minoreditletter}}.',
 'history-fieldset-title' => 'Fieldset label in the edit history pages.',
-'deletedrev'             => 'When comparing deleted revisions for sysops
-
-{{Identical|Deleted}}',
 'histfirst'              => 'Used in page history.',
 'histlast'               => 'Used in page history.',
 'historyempty'           => 'Text in page history for empty page revisions
@@ -733,75 +746,101 @@ Please report at [[Support]] if you are unable to properly translate this messag
 
 # Revision feed
 'history-feed-item-nocomment' => "Title for each revision when viewing the RSS/Atom feed for a page history:
-
-'''$1''' - user name
-
-'''$2''' - date/time",
+* '''$1''' - user name,
+* '''$2''' - date/time,
+* '''$3''' - date,
+* '''$4''' - time.",
 
 # Revision deletion
-'rev-delundel'              => 'Link in page history for oversight',
-'revisiondelete'            => '{{RevisionDelete}}
+'rev-delundel'                => 'Link in page history for oversight',
+'revisiondelete'              => '{{RevisionDelete}}
 It is the page title of [[Special:RevisionDelete]].',
-'revdelete-nooldid-title'   => '{{RevisionDelete}}',
-'revdelete-nooldid-text'    => '{{RevisionDelete}}',
-'revdelete-selected'        => '{{RevisionDelete}}',
-'logdelete-selected'        => '{{RevisionDelete}}',
-'revdelete-text'            => '{{RevisionDelete}}
+'revdelete-nooldid-title'     => '{{RevisionDelete}}',
+'revdelete-nooldid-text'      => '{{RevisionDelete}}',
+'revdelete-show-file-confirm' => 'A confirmation message shown on Special:Revisiondelete when the request does not contain a valid token (e.g. when a user clicks a link received in mail).
+
+* <code>$1</code> is a file name
+* <code>$2</code> is a date
+* <code>$3</code> is a time
+
+{{identical|Are you sure you want to view the deleted revision of the file...}}',
+'revdelete-show-file-submit'  => 'Reply to {{msg-mw|Revdelete-show-file-confirm}}.
+
+{{Identical|Yes}}',
+'revdelete-selected'          => '{{RevisionDelete}}',
+'logdelete-selected'          => '{{RevisionDelete}}',
+'revdelete-text'              => '{{RevisionDelete}}
 This is the introduction explaining the feature.',
-'revdelete-legend'          => '{{RevisionDelete}}',
-'revdelete-hide-text'       => 'Option for oversight',
-'revdelete-hide-name'       => 'Option for oversight',
-'revdelete-hide-comment'    => 'Option for oversight',
-'revdelete-hide-user'       => 'Option for oversight',
-'revdelete-hide-restricted' => 'Option for oversight.',
-'revdelete-suppress'        => 'Option for oversight',
-'revdelete-hide-image'      => 'Option for <del>oversight</del> [[:mw:RevisionDelete|RevisionDelete]] feature.',
-'revdelete-unsuppress'      => '{{RevisionDelete}}',
-'revdelete-log'             => 'Log comment text for oversight
+'revdelete-legend'            => '{{RevisionDelete}}',
+'revdelete-hide-text'         => 'Option for oversight',
+'revdelete-hide-name'         => 'Option for oversight',
+'revdelete-hide-comment'      => 'Option for oversight',
+'revdelete-hide-user'         => 'Option for oversight',
+'revdelete-hide-restricted'   => 'Option for oversight.',
+'revdelete-suppress'          => 'Option for oversight',
+'revdelete-hide-image'        => 'Option for <del>oversight</del> [[:mw:RevisionDelete|RevisionDelete]] feature.',
+'revdelete-unsuppress'        => '{{RevisionDelete}}',
+'revdelete-log'               => 'Log comment text for oversight
 
 {{Identical|Log comment}}',
-'revdelete-submit'          => '{{RevisionDelete}}
+'revdelete-submit'            => '{{RevisionDelete}}
 This is the submit button on [[Special:RevisionDelete]].',
-'revdelete-logentry'        => '{{RevisionDelete}}
+'revdelete-logentry'          => '{{RevisionDelete}}
 This is the message for the log entry in [[Special:Log/delete]] when changing visibility restrictions for page revisions. It is followed by the message {{msg|revdelete-log-message}} in brackets.
 
 The parameter $1 is the page name.
 
 The name of the user doing this task appears before this message.',
-'logdelete-logentry'        => '{{RevisionDelete}}
+'logdelete-logentry'          => '{{RevisionDelete}}
 This is the message for the log entry in [[Special:Log/delete]] when changing visibility restrictions for log events. It is followed by the message {{msg|logdelete-log-message}} in brackets.
 
 The parameter $1 is the log name in brackets.
 
 The name of the user who did this task appears before this message.',
-'revdelete-success'         => '{{RevisionDelete}}',
-'logdelete-success'         => '{{RevisionDelete}}',
-'revdel-restore'            => '{{RevisionDelete}}',
-'revdelete-content'         => 'This message is used as parameter $1 in {{msg|revdelete-hid}} and {{msg|revdelete-unhid}} when hiding or unhiding the content of a revision or event.',
-'revdelete-summary'         => 'This message is used as parameter $1 in {{msg|revdelete-hid}} and {{msg|revdelete-unhid}} when hiding or unhiding the edit summary of a revision or event.',
-'revdelete-uname'           => 'This message is used as parameter $1 in {{msg|revdelete-hid}} and {{msg|revdelete-unhid}} when hiding or unhiding the username for a revision or event.
+'revdelete-success'           => '{{RevisionDelete}}',
+'logdelete-success'           => '{{RevisionDelete}}',
+'revdel-restore'              => '{{RevisionDelete}}',
+'revdelete-content'           => 'This message is used as parameter $1 in {{msg|revdelete-hid}} and {{msg|revdelete-unhid}} when hiding or unhiding the content of a revision or event.',
+'revdelete-summary'           => 'This message is used as parameter $1 in {{msg|revdelete-hid}} and {{msg|revdelete-unhid}} when hiding or unhiding the edit summary of a revision or event.',
+'revdelete-uname'             => 'This message is used as parameter $1 in {{msg|revdelete-hid}} and {{msg|revdelete-unhid}} when hiding or unhiding the username for a revision or event.
 
 {{Identical|Username}}',
-'revdelete-restricted'      => 'This message is used as parameter $1 in {{msg|revdelete-log-message}} when setting visibility restrictions for administrators.',
-'revdelete-unrestricted'    => 'This message is used as parameter $1 in {{msg|revdelete-log-message}} when removing visibility restrictions for administrators.',
-'revdelete-hid'             => 'This message is used as parameter $1 in {{msg|revdelete-log-message}} when hiding revisions, and {{msg|logdelete-log-message}} when hiding information in the log entry about hiding revisions.
+'revdelete-restricted'        => 'This message is used as parameter $1 in {{msg|revdelete-log-message}} when setting visibility restrictions for administrators.',
+'revdelete-unrestricted'      => 'This message is used as parameter $1 in {{msg|revdelete-log-message}} when removing visibility restrictions for administrators.',
+'revdelete-hid'               => 'This message is used as parameter $1 in {{msg|revdelete-log-message}} when hiding revisions, and {{msg|logdelete-log-message}} when hiding information in the log entry about hiding revisions.
 
 Parameter $1 is either {{msg|revdelete-content}} (when hiding the page content), {{msg|revdelete-summary}} (when hiding the edit summary), {{msg|revdelete-uname}} (when hiding the user name), or a combination of these three messages.',
-'revdelete-unhid'           => 'This message is used as parameter $1 in {{msg|revdelete-log-message}} when unhiding revisions, and {{msg|logdelete-log-message}} when unhiding information in the log entry about unhiding revisions.
+'revdelete-unhid'             => 'This message is used as parameter $1 in {{msg|revdelete-log-message}} when unhiding revisions, and {{msg|logdelete-log-message}} when unhiding information in the log entry about unhiding revisions.
 
 Parameter $1 is either {{msg|revdelete-content}} (when unhiding the page content), {{msg|revdelete-summary}} (when unhiding the edit summary), {{msg|revdelete-uname}} (when unhiding the user name), or a combination of these three messages.',
-'revdelete-log-message'     => 'This log message is used together with {{msg|revdelete-logentry}} in the deletion or suppression logs when changing visibility restrictions for page revisions.
+'revdelete-log-message'       => 'This log message is used together with {{msg|revdelete-logentry}} in the deletion or suppression logs when changing visibility restrictions for page revisions.
 
 *Parameter $1 is either {{msg|revdelete-hid}} (when hiding data), {{msg|revdelete-unhid}} (when unhiding data), {{msg|revdelete-restricted}} (when applying restrictions for sysops),  {{msg|revdelete-unrestricted}} (when removing restrictions for sysops), or a combination of those messages.
 *Parameter $2 is the number of revisions for which the restrictions are changed.
 
-Please note that the parameters in a log entry will appear in the log only in the default language of the wiki. View [[Special:Log]] for examples on Betawiki with English default language.',
-'logdelete-log-message'     => 'This log message appears in brackets after the message {{msg|logdelete-logentry}} in the deletion or suppression logs when changing the visibility of a log entry for events. For a brief description of the process of changing the visibility of events and their log entries see this [http://www.mediawiki.org/wiki/RevisionDelete mediawiki explanation]. 
+Please note that the parameters in a log entry will appear in the log only in the default language of the wiki. View [[Special:Log]] for examples on translatewiki.net with English default language.',
+'logdelete-log-message'       => 'This log message appears in brackets after the message {{msg|logdelete-logentry}} in the deletion or suppression logs when changing the visibility of a log entry for events. For a brief description of the process of changing the visibility of events and their log entries see this [http://www.mediawiki.org/wiki/RevisionDelete mediawiki explanation]. 
 
 *Parameter $1 is either {{msg|revdelete-hid}} (when hiding data), {{msg|revdelete-unhid}} (when unhiding data), {{msg|revdelete-restricted}} (when applying restrictions for sysops),  {{msg|revdelete-unrestricted}} (when removing restrictions for sysops), or a combination of those messages.
 *Parameter $2 is the number of events for which the restrictions are changed.
 
-Please note that the parameters in a log entry will appear in the log only in the default language of the wiki. View [[Special:Log]] for examples on Betawiki with English default language.',
+Please note that the parameters in a log entry will appear in the log only in the default language of the wiki. View [[Special:Log]] for examples on translatewiki.net with English default language.',
+'revdelete-hide-current'      => 'Parameters:
+* $1 is a date
+* $2 is a time',
+'revdelete-show-no-access'    => 'Parameters:
+* $1 is a date
+* $2 is a time',
+'revdelete-modify-no-access'  => 'Parameters:
+* $1 is a date
+* $2 is a time',
+'revdelete-modify-missing'    => '* $1 is a revision ID',
+'revdelete-no-change'         => 'Parameters:
+* $1 is a date
+* $2 is a time',
+'revdelete-concurrent-change' => 'Parameters:
+* $1 is a date
+* $2 is a time',
 
 # Suppression log
 'suppressionlog'     => 'Title of the suppression log. Shown in the drop down menu at [[Special:log]] and as header of [[Special:log/suppress]].',
@@ -857,7 +896,7 @@ Used in the final position of a {{msg-mw|comma-separator}} separated list headed
 'notextmatches'                  => 'Error message when there are no results',
 'prevn'                          => "This is part of the navigation message on the top and bottom of Special pages (lists of things in alphabetical order, i.e. the '[[Special:Categories]]' page), where it is used as the first argument of {{msg-mw|Viewprevnext}}.
 It is also used by Category pages (which do ''not'' use {{msg-mw|Viewprevnext}}).
-$1 is the number of items shown per page. It is not used when $1 is zero; not sure what happens when $1 is one.
+{{PLURAL:$1|$1}} is the number of items shown per page. It is not used when {{PLURAL:$1|$1}} is zero; not sure what happens when {{PLURAL:$1|$1}} is one.
 [[Special:WhatLinksHere|Whatlinkshere]] pages use {{msg-mw|Whatlinkshere-prev}} instead (still as an argument to {{msg-mw|Viewprevnext}}).
 
 {{Identical|Previous}}",
@@ -878,10 +917,10 @@ Viewprevnext is sometimes preceded by the {{msg-mw|Showingresults}} or {{msg-mw|
 'searchhelp-url'                 => '{{Identical|HelpContent}}
 Description: The URL of the search help page.
 {{doc-important|Do not change "Help:" part.}}',
-'searchprofile-articles'         => 'A quick link in the advanced search box on [[Special:Search]]. Clicking on this link starts a search in the content pages of the wiki.',
-'searchprofile-project'          => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.
+'searchprofile-articles'         => 'A quick link in the advanced search box on [[Special:Search]]. Clicking on this link starts a search in the content pages of the wiki.
 
-{{Identical|Help}}',
+{{Identical|Content page}}',
+'searchprofile-project'          => 'An option in the [[Special:Search]] page.',
 'searchprofile-images'           => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
 'searchprofile-everything'       => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
 'searchprofile-advanced'         => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
@@ -898,6 +937,7 @@ $1 is the relevance of this result in per cent.
 'search-redirect'                => "$1 is a link to the redirect to the page (so, $1 is the page that the search result is redirected '''from''').",
 'search-interwiki-default'       => '* $1 is the hostname of the remote wiki from where the additional results listed below are returned',
 'search-relatedarticle'          => '{{Identical|Related}}',
+'searcheverything-enable'        => 'Used in [[Special:Preferences]], tab “Search”.',
 'searchrelated'                  => '{{Identical|Related}}',
 'searchall'                      => '{{Identical|All}}',
 'showingresults'                 => "This message is used on some special pages such as 'Wanted categories'. $1 is the total number of results in the batch shown and $2 is the number of the first item listed.",
@@ -919,6 +959,11 @@ $1 is the relevance of this result in per cent.
 'powersearch-ns'                 => 'Used in the extended search form at [[Special:Search]]',
 'powersearch-redir'              => 'Used in the extended search form at [[Special:Search]]',
 'powersearch-field'              => 'Used in the extended search form at [[Special:Search]]',
+'powersearch-togglelabel'        => 'Used in [http://translatewiki.net/w/i.php?title=Special:Search&advanced=1 Advanced search]. Synomym: "select" as verb.',
+'powersearch-toggleall'          => '"All" refers to namespaces. It is used in Advanced search: http://translatewiki.net/w/i.php?title=Special:Search&advanced=1
+{{Identical|All}}',
+'powersearch-togglenone'         => '"None" refers to namespaces. It is used in Advanced search: http://translatewiki.net/w/i.php?title=Special:Search&advanced=1
+{{Identical|None}}',
 'search-external'                => 'Legend of the fieldset for the input form when the internal search is disabled. Inside the fieldset [[MediaWiki:Searchdisabled]] and [[MediaWiki:Googlesearch]] is shown.',
 'searchdisabled'                 => 'Shown on [[Special:Search]] when the internal search is disabled.',
 
@@ -927,78 +972,99 @@ $1 is the relevance of this result in per cent.
 'qbsettings-none' => '{{Identical|None}}',
 
 # Preferences page
-'preferences'               => '{{Identical|Preferences}}',
-'mypreferences'             => '{{Identical|My preferences}}',
-'prefs-edits'               => 'In user preferences.',
-'prefsnologin'              => '{{Identical|Not logged in}}',
-'changepassword'            => "Section heading on [[Special:Preferences]], tab 'User profile'.",
-'prefs-skin'                => 'Used in user preferences.',
-'skin-preview'              => 'The link beside each skin name in [[Special:Preferences|your user preferences]], tab "skin".
+'preferences'                   => '{{Identical|Preferences}}',
+'mypreferences'                 => '{{Identical|My preferences}}',
+'prefs-edits'                   => 'In user preferences.',
+'prefsnologin'                  => '{{Identical|Not logged in}}',
+'changepassword'                => "Section heading on [[Special:Preferences]], tab 'User profile'.",
+'prefs-skin'                    => 'Used in user preferences.',
+'skin-preview'                  => 'The link beside each skin name in [[Special:Preferences|your user preferences]], tab "skin".
 
 {{Identical|Preview}}',
-'prefs-math'                => 'Used in user preferences.',
-'prefs-datetime'            => '{{Identical|Date}}',
-'prefs-personal'            => 'Title of a tab in [[Special:Preferences]].',
-'prefs-rc'                  => 'Used in user preferences.
+'prefs-math'                    => 'Used in user preferences.',
+'prefs-datetime'                => '{{Identical|Date}}',
+'prefs-personal'                => 'Title of a tab in [[Special:Preferences]].',
+'prefs-rc'                      => 'Used in user preferences.
 
 {{Identical|Recent changes}}',
-'prefs-watchlist'           => 'Used in user preferences.',
-'prefs-watchlist-days'      => 'Used in [[Special:Preferences]], tab "Watchlist".',
-'prefs-watchlist-days-max'  => 'Shown as hint in [[Special:Preferences]], tab "Watchlist"',
-'prefs-watchlist-edits'     => 'Used in [[Special:Preferences]], tab "Watchlist".',
-'prefs-watchlist-edits-max' => 'Shown as hint in [[Special:Preferences]], tab "Watchlist"',
-'prefs-misc'                => 'Used in user preferences.',
-'prefs-resetpass'           => 'Button on user data tab in user preferences. When you click the button you go to the special page [[Special:ResetPass]].',
-'prefs-rendering'           => 'Title of tab in [[Special:Preferences]].',
-'saveprefs'                 => 'Button for saving changes in the preferences page.
+'prefs-watchlist'               => 'Used in user preferences.',
+'prefs-watchlist-days'          => 'Used in [[Special:Preferences]], tab "Watchlist".',
+'prefs-watchlist-days-max'      => 'Shown as hint in [[Special:Preferences]], tab "Watchlist"',
+'prefs-watchlist-edits'         => 'Used in [[Special:Preferences]], tab "Watchlist".',
+'prefs-watchlist-edits-max'     => 'Shown as hint in [[Special:Preferences]], tab "Watchlist"',
+'prefs-misc'                    => 'Used in user preferences.',
+'prefs-resetpass'               => 'Button on user data tab in user preferences. When you click the button you go to the special page [[Special:ResetPass]].',
+'prefs-rendering'               => 'Title of tab in [[Special:Preferences]].',
+'saveprefs'                     => 'Button for saving changes in the preferences page.
 
 {{Identical|Save}}',
-'resetprefs'                => 'Button for resetting changes in the preferences page.',
-'restoreprefs'              => 'Used in [[Special:Preferences]]',
-'prefs-editing'             => 'Title of a tab in [[Special:Preferences]].',
-'rows'                      => 'Used on [[Special:Preferences]], "Editing" section in the "Size of editing window" fieldset',
-'columns'                   => 'Used on [[Special:Preferences]], "Editing" section in the "Size of editing window" fieldset',
-'searchresultshead'         => 'This is the label of the tab in [[Special:Preferences|my preferences]] which contains options for searching the wiki.
+'resetprefs'                    => 'Button for resetting changes in the preferences page.',
+'restoreprefs'                  => 'Used in [[Special:Preferences]]',
+'prefs-editing'                 => 'Title of a tab in [[Special:Preferences]].',
+'rows'                          => 'Used on [[Special:Preferences]], "Editing" section in the "Size of editing window" fieldset',
+'columns'                       => 'Used on [[Special:Preferences]], "Editing" section in the "Size of editing window" fieldset',
+'searchresultshead'             => 'This is the label of the tab in [[Special:Preferences|my preferences]] which contains options for searching the wiki.
 
 {{Identical|Search}}',
-'contextchars'              => 'Used in Preferences/Search tab',
-'stub-threshold'            => 'Used in [[Special:Preferences]], tab "Misc".',
-'recentchangesdays'         => 'Used in [[Special:Preferences]], tab "Recent changes".',
-'recentchangesdays-max'     => 'Shown as hint in [[Special:Preferences]], tab "Recent changes"',
-'recentchangescount'        => 'Used in [[Special:Preferences]], tab "Recent changes".',
-'savedprefs'                => 'This message appears after saving changes to your user preferences.',
-'timezoneoffset'            => "Text next to input box in [[Special:Preferences]], tab 'date and time', section 'timezone'.",
-'allowemail'                => 'Used in [[Special:Preferences]] > {{int:prefs-personal}} > {{int:email}}.',
-'prefs-searchoptions'       => '{{Identical|Search options}}',
-'prefs-namespaces'          => "{{Identical|Namespaces}}
+'contextchars'                  => 'Used in Preferences/Search tab',
+'stub-threshold'                => 'Used in [[Special:Preferences]], tab "Misc".',
+'recentchangesdays'             => 'Used in [[Special:Preferences]], tab "Recent changes".',
+'recentchangesdays-max'         => 'Shown as hint in [[Special:Preferences]], tab "Recent changes"',
+'recentchangescount'            => 'Used in [[Special:Preferences]], tab "Recent changes".',
+'prefs-help-recentchangescount' => 'Used in [[Special:Preferences]], tab "Recent changes".',
+'savedprefs'                    => 'This message appears after saving changes to your user preferences.',
+'timezonelegend'                => '{{Identical|Time zone}}',
+'timezoneoffset'                => "Text next to input box in [[Special:Preferences]], tab 'date and time', section 'timezone'.",
+'allowemail'                    => 'Used in [[Special:Preferences]] > {{int:prefs-personal}} > {{int:email}}.',
+'prefs-searchoptions'           => '{{Identical|Search options}}',
+'prefs-namespaces'              => "{{Identical|Namespaces}}
 Shown as legend of the second fieldset of the tab 'Search' in [[Special:Preferences]]",
-'defaultns'                 => 'Used in [[Special:Preferences]], tab "Search".',
-'default'                   => '{{Identical|Default}}',
-'prefs-files'               => 'Title of a tab in [[Special:Preferences]].',
-'prefs-custom-css'          => 'visible on [[Special:Preferences]] -[Skins].',
-'prefs-reset-intro'         => 'Used in [[Special:Preferences/reset]].',
-'prefs-emailconfirm-label'  => 'Used in [[Special:Preferences]].',
-'youremail'                 => '{{Identical|E-mail}}',
-'username'                  => '{{Identical|Username}}',
-'uid'                       => '{{Identical|User ID}}',
-'prefs-memberingroups'      => 'This message is shown on [[Special:Preferences]], first tab, where it is follwed by a colon.',
-'prefs-registration'        => 'Used in [[Special:Preferences]].',
-'yourrealname'              => 'Used in [[Special:Preferences]], first tab.
+'defaultns'                     => 'Used in [[Special:Preferences]], tab "Search".',
+'default'                       => '{{Identical|Default}}',
+'prefs-files'                   => 'Title of a tab in [[Special:Preferences]].',
+'prefs-custom-css'              => 'visible on [[Special:Preferences]] -[Skins].',
+'prefs-reset-intro'             => 'Used in [[Special:Preferences/reset]].',
+'prefs-emailconfirm-label'      => 'Used in [[Special:Preferences]].',
+'youremail'                     => '{{Identical|E-mail}}',
+'username'                      => '{{Identical|Username}}',
+'uid'                           => '{{Identical|User ID}}',
+'prefs-memberingroups'          => 'This message is shown on [[Special:Preferences]], first tab, where it is follwed by a colon.',
+'prefs-registration'            => 'Used in [[Special:Preferences]].',
+'yourrealname'                  => 'Used in [[Special:Preferences]], first tab.
 {{Identical|Real name}}',
-'yourlanguage'              => 'Used in [[Special:Preferences]], first tab.
+'yourlanguage'                  => 'Used in [[Special:Preferences]], first tab.
 {{Identical|Language}}',
-'yourvariant'               => 'Used in [[Special:Preferences]], first tab, when the wiki content language has variants only.
+'yourvariant'                   => 'Used in [[Special:Preferences]], first tab, when the wiki content language has variants only.
 {{optional}}',
-'yournick'                  => 'Used in [[Special:Preferences]], first tab.',
-'badsig'                    => 'Error message displayed when entering invalid signature in user preferences',
-'badsiglength'              => 'Warning message that is displayed on [[Special:Preferences]] when trying to save a signature that is too long. Parameter $1 is the maximum number of characters that is allowed in a signature (multi-byte characters are counted as one character).',
-'yourgender'                => 'Used in [[Special:Preferences]], first tab.',
-'gender-unknown'            => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name is not to be made public, or cannot be determined, or matches none of the other choices preset in the select.',
-'gender-male'               => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name should be "male" for those languages having a "normal" male grammatical gender.',
-'gender-female'             => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name should be "female" for those languages having a "normal" female grammatical gender.',
-'email'                     => '{{Identical|E-mail}}',
-'prefs-help-realname'       => 'In user preferences.',
-'prefs-help-email'          => 'Shown as explanation text on [[Special:Preferences]].',
+'yournick'                      => 'Used in [[Special:Preferences]], first tab.
+
+{{Identical|Signature}}',
+'badsig'                        => 'Error message displayed when entering invalid signature in user preferences',
+'badsiglength'                  => 'Warning message that is displayed on [[Special:Preferences]] when trying to save a signature that is too long. Parameter $1 is the maximum number of characters that is allowed in a signature (multi-byte characters are counted as one character).',
+'yourgender'                    => 'Used in [[Special:Preferences]], first tab.',
+'gender-unknown'                => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name is not to be made public, or cannot be determined, or matches none of the other choices preset in the select.',
+'gender-male'                   => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name should be "male" for those languages having a "normal" male grammatical gender.',
+'gender-female'                 => 'Used in [[Special:Preferences]], first tab, as one of the selectable options of the {{msg-mw|gender}} prompt. Choosing it indicates that the grammatical gender of the user name should be "female" for those languages having a "normal" female grammatical gender.',
+'email'                         => '{{Identical|E-mail}}',
+'prefs-help-realname'           => 'In user preferences.',
+'prefs-help-email'              => 'Shown as explanation text on [[Special:Preferences]].',
+'prefs-signature'               => '{{Identical|Signature}}',
+'prefs-dateformat'              => 'Used in [[Special:Preferences]], tab "Date and time".',
+'prefs-timeoffset'              => 'Used in [[Special:Preferences]], tab "Date and time".',
+'prefs-advancedediting'         => 'Used in [[Special:Preferences]], tab "Editing".
+{{Identical|Advanced options}}',
+'prefs-advancedrc'              => 'Used in [[Special:Preferences]], tab "Recent changes".
+{{Identical|Advanced options}}',
+'prefs-advancedrendering'       => 'Used in [[Special:Preferences]], tab "Appearence".
+{{Identical|Advanced options}}',
+'prefs-advancedsearchoptions'   => 'Used in [[Special:Preferences]], tab "Search options".
+{{Identical|Advanced options}}',
+'prefs-advancedwatchlist'       => 'Used in [[Special:Preferences]], tab "Watchlist".
+{{Identical|Advanced options}}',
+'prefs-display'                 => '"Display" is a noun that specifies the kind of "options". So translate as "options about display", not as "display the options".
+
+Used in [[Special:Preferences]], tab "Recent changes".',
+'prefs-diffs'                   => 'Used in [[Special:Preferences]], tab "Misc".',
 
 # User rights
 'userrights'                     => 'Page title of [[Special:UserRights]].',
@@ -1189,7 +1255,7 @@ This action allows editing of all of the "user rights", not just the rights of t
 'rcnote'               => 'Used on [[Special:RecentChanges]].
 * $1 is the number of changes shown,
 * $2 is the number of days for which the changes are shown,
-* $3 is a datetime (deprecated),
+* $3 is a date and time (deprecated),
 * $4 is a date alone,
 * $5 is a time alone.
 
@@ -1197,8 +1263,10 @@ This action allows editing of all of the "user rights", not just the rights of t
 'rcnotefrom'           => 'This message is displayed at [[Special:RecentChanges]] when viewing recentchanges from some specific time.
 
 Parameter $1 is the maximum number of changes that are displayed.
-Parameter $2 is a date and time.',
-'rclistfrom'           => 'Used on [[Special:RecentChanges]]. Parameter $1 is a date.',
+Parameter $2 is a date and time.
+Parameter $3 is a date.
+Parameter $4 is a time.',
+'rclistfrom'           => 'Used on [[Special:RecentChanges]]. Parameter $1 is a link to the revision of a specific date and time. The date and the time are the link description.',
 'rcshowhideminor'      => 'Option text in [[Special:RecentChanges]]',
 'rcshowhidebots'       => "Option text in [[Special:RecentChanges]]. $1 is the 'show/hide' command, with the text taken from either [[Mediawiki:Show]] or [[Mediawiki:Hide]].
 
@@ -1228,6 +1296,8 @@ Does not work under $wgMiserMode ([[mwr:48986|r48986]]).',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Title of [[Special:RecentChangesLinked]] and display name of page on [[Special:SpecialPages]].',
+'recentchangeslinked-feed'     => 'Title of [[Special:RecentChangesLinked]] and display name of page on [[Special:SpecialPages]].',
+'recentchangeslinked-toolbox'  => 'Title of [[Special:RecentChangesLinked]] and display name of page on [[Special:SpecialPages]].',
 'recentchangeslinked-title'    => 'Message used as title and page header on [[Special:RecentChangesLinked]] (needs an argument like "/Main Page"). Related changes are all recent change to pages that are linked from \'\'this page\'\'. "$1" is the name of the page for which related changes as show.',
 'recentchangeslinked-backlink' => '{{optional}}',
 'recentchangeslinked-summary'  => 'Summary of [[Special:RecentChangesLinked]].',
@@ -1268,8 +1338,8 @@ Does not work under $wgMiserMode ([[mwr:48986|r48986]]).',
 'file-thumbnail-no'           => 'Error message at [[Special:Upload]]',
 'fileexists-shared-forbidden' => 'Error message at [[Special:Upload]]',
 'savefile'                    => 'When uploading a file',
-'uploadedimage'               => 'This is the text of an entry in the [[Special:Log|upload log]] (and Recent Changes), after hour (and date, only in the Upload log) and sysop name. $1 is the name of the file uploaded.',
-'overwroteimage'              => 'This is the text of an entry in the [[Special:Log|upload log]] (and Recent Changes), after hour (and date, only in the Upload log) and sysop name. $1 is the name of the file uploaded.',
+'uploadedimage'               => 'This is the text of an entry in the [[Special:Log|upload log]] (and Recent Changes), after hour (and date, only in the Upload log) and user name. $1 is the name of the file uploaded.',
+'overwroteimage'              => 'This is the text of an entry in the [[Special:Log|upload log]] (and Recent Changes), after hour (and date, only in the Upload log) and user name. $1 is the name of the file uploaded.',
 'uploaddisabled'              => 'Title of the Special:Upload page when upload is disabled.',
 'uploaddisabledtext'          => 'This message can have parameter $1, which contains the name of the target file. See r22243 and [https://bugzilla.wikimedia.org/show_bug.cgi?id=8818 bug 8818].',
 'php-uploaddisabledtext'      => 'This means that file uploading is disabled in PHP, not upload of PHP-files.',
@@ -1308,6 +1378,7 @@ Parameter $1 is a link to the deletion log, with the text in {{msg|deletionlog}}
 'listfiles_count'       => 'One of the table column headers in [[Special:Listfiles]] denoting the amount of saved versions of that file.',
 
 # File description page
+'file-anchor-link'        => '{{Identical|File}}',
 'filehist'                => 'Text shown on a media description page. Heads the section where the different versions of the file are displayed.',
 'filehist-help'           => 'In file description page',
 'filehist-deleteall'      => 'Link in image description page for admins.',
@@ -1325,7 +1396,10 @@ Parameter $1 is a link to the deletion log, with the text in {{msg|deletionlog}}
 'filehist-thumb'          => 'Shown in the file history list of a file desription page.
 
 Example: [[:Image:Addon-icn.png]]',
-'filehist-thumbtext'      => "Shown in the file history list of a file description page. '''$1''' is a time followed by a date, e.g. ''10:23, 18 april 2007''.
+'filehist-thumbtext'      => "Shown in the file history list of a file description page.
+* '''$1''' is a time followed by a date, e.g. ''10:23, 18 april 2007''.
+* '''$2''' is the date,
+* '''$3''' is the time.
 
 Example: [[wikipedia:Image:Madeleine close2.jpg]]",
 'filehist-nothumb'        => 'Shown if no thumbnail is available in the file history list of a file desription page.
@@ -1361,8 +1435,10 @@ Example: [[:Image:Addon-icn.png]]',
 {{doc-important|Do not customise this message. Just translate it.|Customisation should be done by local wikis.}}',
 'sharedupload-desc-there' => ':See also: {{msg-mw|Sharedupload}}',
 'sharedupload-desc-here'  => ':See also: {{msg-mw|Sharedupload}}',
-'noimage'                 => 'In image description page when there is no file by that name.  The variable $1 comes from {{msg|noimage-linktext}}, which is only substituted in this message.',
-'noimage-linktext'        => 'This message is used as a variable in {{msg|noimage}}, and will not be used anywhere else.',
+'filepage-nofile'         => 'This message only appears, if the user cannot upload files, or file uploads are disabled. (Otherwise, see {{msg-mw|Filepage-nofile-link}})',
+'filepage-nofile-link'    => 'This message only appears, if the user can upload files, and file uploads are enabled. (Otherwise, see {{msg-mw|Filepage-nofile}})
+
+$1 - URL of upload page for this file.',
 'shared-repo-from'        => 'This message is shown on an image description page when a duplicate of the image exists on a shared repository such as Wikimedia Commons.
 
 Example: http://test.wikipedia.org/wiki/File:Wiki.png#filelinks
@@ -1700,6 +1776,7 @@ Special:EmailUser appears when you click on the link "E-mail this user" in the s
 *$1: Username of current user
 {{Identical|For $1}}',
 'nowatchlist'          => 'Displayed when there is no pages in the watchlist.',
+'watchlistanontext'    => '* $1 is a link to [[Special:UserLogin]] with {{msg-mw|loginreqlink}} as link description',
 'watchnologin'         => '{{Identical|Not logged in}}',
 'addedwatch'           => 'Page title displayed when clicking on {{msg|watch}} tab (only when not using the AJAX feauture which allows watching a page without reloading the page or such). See also {{msg|addedwatchtext}}.',
 'addedwatchtext'       => 'Explanation shown when clicking on the {{msg|watch}} tab. See also {{msg|addedwatch}}.',
@@ -1799,11 +1876,10 @@ Shown as subtitle of the protection form. $1 is the title of the page to be (un)
 'protect-default'           => '{{Identical|Default}}',
 'protect-fallback'          => 'This message is used as an option in the protection form on wikis were extra protection levels have been configured.',
 'protect-summary-cascade'   => 'Used in edit summary when cascade protecting a page.',
-'protect-expiring'          => 'Used in page history, and in [[Special:Protectedtitles]], [[Special:Protectedpages]].
-
-$1 = date and time,
-$2 = date,
-$3 = time.
+'protect-expiring'          => 'Used in page history, and in [[Special:Protectedtitles]], [[Special:Protectedpages]], and extension FlaggedRevs.
+* $1 is a date and time
+* $2 is a date (optional)
+* $3 is a time (optional)
 
 {{Identical|Expires $1 (UTC)}}',
 'protect-cascade'           => 'See [[meta:Protect]] for more information.',
@@ -1873,6 +1949,7 @@ $3 = time.
 'undeletelink'               => 'Display name of link to undelete a page used on [[Special:Log/delete]]
 
 {{Identical|Restore}}',
+'undeleteviewlink'           => 'First part of {{msg-mw|undeletelink}}',
 'undeletereset'              => 'Shown on [[Special:Undelete]] as button caption.
 {{Identical|Reset}}',
 'undeleteinvert'             => '{{Identical|Invert selection}}',
@@ -1881,12 +1958,14 @@ $3 = time.
 'undelete-show-file-confirm' => 'A confirmation message shown on Special:Undelete when the request does not contain a valid token (e.g. when a user clicks a link received in mail).
 * <code>$1</code> is the name of the file being undeleted.
 * <code>$2</code> is the date of the displayed revision.
-* <code>$3</code> is the time of the displayed revision.',
+* <code>$3</code> is the time of the displayed revision.
+
+{{identical|Are you sure you want to view the deleted revision of the file...}}',
 'undelete-show-file-submit'  => '{{Identical|Yes}}',
 
 # Namespace form on various pages
 'namespace'      => '{{Identical|Namespace}}',
-'invert'         => 'Displayed in [[Special:RecentChanges]].
+'invert'         => 'Displayed in [[Special:RecentChanges|RecentChanges]], [[Special:RecentChangesLinked|RecentChangesLinked]] and [[Special:Watchlist|Watchlist]]
 
 {{Identical|Invert selection}}',
 'blanknamespace' => 'Name for main namespace (blank namespace) in drop-down menus at [[Special:RecentChanges]] and other special pages.',
@@ -1918,7 +1997,7 @@ $3 = time.
 'nolinkshere'              => 'This appears on Whatlinkshere pages which are empty.
 
 Parameter $1 is a page title.',
-'isredirect'               => 'Displayed in Special:WhatLinksHere (see [{{fullurl:Special:WhatLinksHere/Betawiki:Translator|hidelinks=1}} Special:WhatLinksHere/Betawiki:Translator] for example).
+'isredirect'               => 'Displayed in Special:WhatLinksHere (see [{{fullurl:Special:WhatLinksHere/Project:Translator|hidelinks=1}} Special:WhatLinksHere/Project:Translator] for example).
 
 {{Identical|Redirect page}}',
 'istemplate'               => 'Means that a page (a template, specifically) is used as <code><nowiki>{{Page name}}</nowiki></code>.
@@ -1926,10 +2005,14 @@ Displayed in Special:WhatLinksHere (see [[Special:WhatLinksHere/Template:New por
 'isimage'                  => 'This message is displayed on [[Special:WhatLinksHere]] for images. It means that the image is used on the page (as opposed to just being linked to like an non-image page).',
 'whatlinkshere-prev'       => 'This is part of the navigation message on the top and bottom of Whatlinkshere pages, where it is used as the first argument of {{msg-mw|Viewprevnext}}.
 $1 is the number of items shown per page. It is not used when $1 is zero; not sure what happens when $1 is one.
-Special pages use {{msg-mw|Prevn}} instead (still as an argument to {{msg-mw|Viewprevnext}}).',
+Special pages use {{msg-mw|Prevn}} instead (still as an argument to {{msg-mw|Viewprevnext}}).
+
+{{Identical|Previous}}',
 'whatlinkshere-next'       => 'This is part of the navigation message on the top and bottom of Whatlinkshere pages, where it is used as the second argument of {{msg-mw|Viewprevnext}}.
 $1 is the number of items shown per page. It is not used when $1 is zero; not sure what happens when $1 is one.
-Special pages use {{msg-mw|Nextn}} instead (still as an argument to {{msg-mw|Viewprevnext}}).',
+Special pages use {{msg-mw|Nextn}} instead (still as an argument to {{msg-mw|Viewprevnext}}).
+
+{{Identical|Next}}',
 'whatlinkshere-links'      => 'Used on [[Special:WhatLinksHere]]. It is a link to the WhatLinksHere page of that page.
 
 Example line:
@@ -2050,51 +2133,54 @@ See also {{msg-mw|Blocklistline}}.',
 'lockfilenotwritable' => "'No longer needed' on wikipedia.",
 
 # Move page
-'move-page'               => 'Header of the special page to move pages. $1 is the name of the page to be moved.',
-'move-page-backlink'      => '{{optional|Translate it only if you have to change it, i.e. for RTL wikis}}
+'move-page'                    => 'Header of the special page to move pages. $1 is the name of the page to be moved.',
+'move-page-backlink'           => '{{optional|Translate it only if you have to change it, i.e. for RTL wikis}}
 
 Shown as subtitle of [[Special:MovePage/testpage]]. $1 is the title of the page to be moved.',
-'move-page-legend'        => 'Legend of the fieldset around the input form of [[Special:MovePage/testpage]].
+'move-page-legend'             => 'Legend of the fieldset around the input form of [[Special:MovePage/testpage]].
 
 {{Identical|Move page}}',
-'movepagetext'            => 'Introduction shown when moving a page ([[Special:MovePage]]).',
-'movepagetalktext'        => "Text on the special 'Move page'. This text only appears if the talk page is not empty.",
-'movearticle'             => 'The text before the name of the page that you are moving.
+'movepagetext'                 => 'Introduction shown when moving a page ([[Special:MovePage]]).',
+'movepagetalktext'             => "Text on the special 'Move page'. This text only appears if the talk page is not empty.",
+'movearticle'                  => 'The text before the name of the page that you are moving.
 
 {{Identical|Move page}}',
-'movenologin'             => '{{Identical|Not logged in}}',
-'movenologintext'         => "Text of message on special page 'Permissions Errors', which appears when somebody tries to move a page without being logged in.",
-'newtitle'                => 'Used in the special page "[[Special:MovePage]]". The text for the inputbox to give the new page title.',
-'move-watch'              => 'The text of the checkbox to watch the page you are moving.
+'movenologin'                  => '{{Identical|Not logged in}}',
+'movenologintext'              => "Text of message on special page 'Permissions Errors', which appears when somebody tries to move a page without being logged in.",
+'newtitle'                     => 'Used in the special page "[[Special:MovePage]]". The text for the inputbox to give the new page title.',
+'move-watch'                   => 'The text of the checkbox to watch the page you are moving.
 
 {{Identical|Watch this page}}',
-'movepagebtn'             => "Button label on the special 'Move page'.
+'movepagebtn'                  => "Button label on the special 'Move page'.
 
 {{Identical|Move page}}",
-'pagemovedsub'            => 'Message displayed as aheader of the body, after succesfully moving a page from source to target name.',
-'movepage-moved'          => 'Message displayed after succesfully moving a page from source to target name.
+'pagemovedsub'                 => 'Message displayed as aheader of the body, after succesfully moving a page from source to target name.',
+'movepage-moved'               => 'Message displayed after succesfully moving a page from source to target name.
 * $1 is the source page as a link with display name
 * $2 is the target page as a link with display name
 * $3 (optional) is the source page name without a link
 * $4 (optional) is the target page name without a link',
-'movetalk'                => 'The text of the checkbox to watch the associated talk page to the page you are moving. This only appears when the talk page is not empty.',
-'move-subpages'           => 'The text of an option on the special page [[Special:MovePage|MovePage]]. If this option is ticked, any subpages will be moved with the main page to a new title.',
-'move-talk-subpages'      => 'The text of an option on the special page [[Special:MovePage|MovePage]]. If this option is ticked, any subpages will be moved with the talk page to a new title.',
-'1movedto2'               => "This is ''logentry'' message. $1 is the original page name, $2 is the destination page name.",
-'1movedto2_redir'         => "This is ''logentry'' message. $1 is the original page name, $2 is the destination page name.",
-'movelogpage'             => 'Title of [[Special:Log/move]]. Used as heading on that page, and in the dropdown menu on log pages.',
-'movelogpagetext'         => "Text on the special page 'Move log'.",
-'movesubpage'             => "This is a page header.
+'movepage-moved-noredirect'    => 'The message is shown after pagemove if checkbox "{{int:move-leave-redirect}}" was unselected before moving.',
+'movetalk'                     => 'The text of the checkbox to watch the associated talk page to the page you are moving. This only appears when the talk page is not empty.',
+'move-subpages'                => 'The text of an option on the special page [[Special:MovePage|MovePage]]. If this option is ticked, any subpages will be moved with the main page to a new title.',
+'move-talk-subpages'           => 'The text of an option on the special page [[Special:MovePage|MovePage]]. If this option is ticked, any subpages will be moved with the talk page to a new title.',
+'1movedto2'                    => "This is ''logentry'' message. $1 is the original page name, $2 is the destination page name.",
+'1movedto2_redir'              => "This is ''logentry'' message. $1 is the original page name, $2 is the destination page name.",
+'movelogpage'                  => 'Title of [[Special:Log/move]]. Used as heading on that page, and in the dropdown menu on log pages.',
+'movelogpagetext'              => "Text on the special page 'Move log'.",
+'movesubpage'                  => "This is a page header.
 Parameters:
 *'''$1''' = number of subpages
 <!--{{Note|Plural is supported if you need it, the number of subpages is available in <code>$1</code>.}}-->",
-'movereason'              => 'Used in [[Special:MovePage]]. The text for the inputbox to give a reason for the page move.
+'movereason'                   => 'Used in [[Special:MovePage]]. The text for the inputbox to give a reason for the page move.
 
 {{Identical|Reason}}',
-'revertmove'              => '{{Identical|Revert}}',
-'delete_and_move_text'    => 'Used when moving a page, but the destination page already exists and needs deletion. This message is to confirm that you really want to delete the page. See also {{msg|delete and move confirm}}.',
-'delete_and_move_confirm' => 'Used when moving a page, but the destination page already exists and needs deletion. This message is for a checkbox to confirm that you really want to delete the page. See also {{msg|delete and move text}}.',
-'fix-double-redirects'    => 'This is a checkbox in [[Special:MovePage]] which allows to move all redirects from the old title to the new title.',
+'revertmove'                   => '{{Identical|Revert}}',
+'delete_and_move_text'         => 'Used when moving a page, but the destination page already exists and needs deletion. This message is to confirm that you really want to delete the page. See also {{msg|delete and move confirm}}.',
+'delete_and_move_confirm'      => 'Used when moving a page, but the destination page already exists and needs deletion. This message is for a checkbox to confirm that you really want to delete the page. See also {{msg|delete and move text}}.',
+'fix-double-redirects'         => 'This is a checkbox in [[Special:MovePage]] which allows to move all redirects from the old title to the new title.',
+'protectedpagemovewarning'     => 'Related message: [[MediaWiki:protectedpagewarning/{{#titleparts:{{PAGENAME}}|1|2}}]]',
+'semiprotectedpagemovewarning' => 'Related message: [[MediaWiki:Semiprotectedpagewarning/{{#titleparts:{{PAGENAME}}|1|2}}]]',
 
 # Export
 'export'           => 'Page title of [[Special:Export]], a page where a user can export pages from a wiki to a file.',
@@ -2147,6 +2233,7 @@ Import failed: XML import parse failure at line 1, col 1 (byte 3; "- <mediawiki 
 Related messages: {{msg|right-importupload|pl=yes}} (the user right for this).',
 
 # Import log
+'importlogpage'          => '',
 'importlogpagetext'      => 'This text appears at the top of the [http://translatewiki.net/w/i.php?title=Special%3ALog&type=import&user=&page=&year=&month=-1 import log] special page.',
 'import-logentry-upload' => 'This is the text of an entry in the Import log (and Recent Changes), after hour (and date, only in the Import log) and sysop name:
 * $1 is the name of the imported file',
@@ -2222,11 +2309,11 @@ If the length of the translated message is over 60 characters (including spaces)
 'monobook.js' => 'JS for users using Monobook skin.',
 
 # Attribution
-'anonymous'        => 'This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on Betawiki).
+'anonymous'        => 'This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on translatewiki.net).
 This message appears at the very end of the list of names in the message [[MediaWiki:Othercontribs/{{SUBPAGENAME}}|othercontribs]]. If there are no anonymous users in the credits list then this message does not appear at all.
 
 * $1 is the number of anonymous users in the message',
-'siteuser'         => "This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on Betawiki). 
+'siteuser'         => "This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on translatewiki.net). 
 
 This message is the variable $3 in the message {{msg-mw|lastmodifiedatby}}. This message only appears if the user has not entered his 'real name' in his preferences. The variable $1 in this message is a user name.
 
@@ -2238,12 +2325,12 @@ See also {{msg-mw|Siteusers}}.",
 * $4: username in plain text. Can be used for GENDER
 
 See also [[MediaWiki:Lastmodifiedat/{{SUBPAGENAME}}]].",
-'othercontribs'    => 'This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on Betawiki - to use type <nowiki>&action=credits</nowiki> at the end of any URL in the address bar).
+'othercontribs'    => 'This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on translatewiki.net - to use type <nowiki>&action=credits</nowiki> at the end of any URL in the address bar).
 * $1: the list of author(s) of the revisions preceding the current revision. It appears after the message [[Mediawiki:lastmodifiedatby/{{SUBPAGENAME}}]]. If there are no previous authors this message does not appear at all. If needed the messages [[Mediawiki:siteusers/{{SUBPAGENAME}}]], [[Mediawiki:anonymous/{{SUBPAGENAME}}]] and [[Mediawiki:and/{{SUBPAGENAME}}]] are part of the list of names.',
-'others'           => 'The following explanation is guesswork. This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on Betawiki - to use type <nowiki>&action=credits</nowiki> at the end of any URL in the address bar). 
+'others'           => 'The following explanation is guesswork. This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on translatewiki.net - to use type <nowiki>&action=credits</nowiki> at the end of any URL in the address bar). 
 
 The message appears at the end of the list of credits given in the message [[Mediawiki:Othercontribs/{{SUBPAGENAME}}]] if the number of contributors is above a certain level.',
-'siteusers'        => 'This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on Betawiki).
+'siteusers'        => 'This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}). Note that this action is disabled by default (currently enabled on translatewiki.net).
 It should be in a form that fits with [[MediaWiki:Othercontribs/{{SUBPAGENAME}}|othercontribs]].
 
 * $1 is a list of user names (example: "\'\'Jim, Janet, Jane, Joe\'\'") where the user has not put his \'real name\' in his preferences.
@@ -2252,8 +2339,8 @@ It should be in a form that fits with [[MediaWiki:Othercontribs/{{SUBPAGENAME}}|
 If there is more than one user in the list then the message {{msg-mw|and}} appears before the last name. If $2 is NIL then this message does not appear at all.
 
 See also {{msg-mw|Siteuser}}.',
-'creditspage'      => "This message is the ''contentSub'' (the grey subtitle) shown when viewing credits of a page (example: {{fullurl:Betawiki:News|action=credits}}). Note that the credits action is disabled by default (currently enabled on Betawiki).",
-'nocredits'        => 'This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}) but when there are no credits available. Note that the credits action is disabled by default (currently enabled on Betawiki).',
+'creditspage'      => "This message is the ''contentSub'' (the grey subtitle) shown when viewing credits of a page (example: {{fullurl:Project:News|action=credits}}). Note that the credits action is disabled by default (currently enabled on translatewiki.net).",
+'nocredits'        => 'This message is shown when viewing the credits of a page (example: {{fullurl:Main Page|action=credits}}) but when there are no credits available. Note that the credits action is disabled by default (currently enabled on translatewiki.net).',
 
 # Spam protection
 'spam_reverting' => '{{Identical|Revert}}',
@@ -2299,6 +2386,7 @@ The message appears after the name of the patroller.',
 'visual-comparison' => '{{Identical|Visual comparison}}',
 
 # Media information
+'mediawarning'         => 'Shows up on file description pages if the file type is not listed in [[mw:Manual:$wgTrustedMediaFormats|Manual:$wgTrustedMediaFormats]].',
 'imagemaxsize'         => 'This is used in Special:Preferences, under Files.',
 'widthheight'          => '{{optional}}',
 'widthheightpage'      => 'This message is used on image pages in the dimensions column in the file history section for images  with more than one page. Parameter $1 is the image width (in pixels), parameter $2 is the image height, and parameter $3 is the number of pages.',
@@ -2675,14 +2763,17 @@ Please leave the link http://www.mediawiki.org/wiki/Manual:External_editors exac
 {{Identical|All}}',
 
 # E-mail address confirmation
-'confirmemail_needlogin'   => 'Used on [[Special:ConfirmEmail]] when you are logged out. Parameter $1 is a link to the log in form.',
+'confirmemail_needlogin'   => 'Used on [[Special:ConfirmEmail]] when you are logged out.
+* $1 is a link to [[Special:UserLogin]] with {{msg-mw|loginreqlink}} as link description',
 'confirmemail_body'        => 'This message is sent as an e-mail to users when they add or change their e-mail adress in [[Special:Preferences]].
 
 *$1 is the IP adress of the user that changed the e-mail adress
 *$2 is the name of the user
 *$3 is a URL to [[Special:ConfirmEmail]]
-*$4 is a time and date 
-*$5 is a URL to [[Special:InvalidateEmail]]',
+*$4 is a time and date (duplicated by $6 and $7)
+*$5 is a URL to [[Special:InvalidateEmail]]
+*$6 is a date 
+*$7 is a time',
 'confirmemail_invalidated' => 'This is the text of the special page [[Special:InvalidateEmail|InvalidateEmail]] (with the title in [[Mediawiki:Invalidateemail]]) where user goes if he chooses the cancel e-mail confirmation link from the confirmation e-mail.',
 'invalidateemail'          => "This is the '''name of the special page''' where user goes if he chooses the cancel e-mail confirmation link from the confirmation e-mail.",
 
@@ -2939,6 +3030,10 @@ Used on [[Special:Tags]]. Verb. Used as display text on a link to create/edit a 
 # HTML forms
 'htmlform-submit'              => '{{Identical|Submit}}',
 'htmlform-reset'               => '{{Identical|Undo}}',
-'htmlform-selectorother-other' => '{{Identical|Other}}',
+'htmlform-selectorother-other' => 'Used in drop-down boxes in [[Special:Preferences]] as follows:
+* selection of timezone (date and time tab)
+* stub threshold (appearance tab)
+
+{{Identical|Other}}',
 
 );

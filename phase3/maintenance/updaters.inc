@@ -38,6 +38,7 @@ $wgUpdates = array(
 		array( 'add_table', 'categorylinks',                     'patch-categorylinks.sql' ),
 		// do_linkscc_1_3_update obsolete
 		array( 'do_old_links_update' ),
+		array( 'fix_ancient_imagelinks' ),
 		array( 'add_field', 'recentchanges', 'rc_ip',            'patch-rc_ip.sql' ),
 		
 		// 1.4
@@ -143,7 +144,6 @@ $wgUpdates = array(
 		array( 'check_bin', 'protected_titles', 'pt_title',      'patch-pt_title-encoding.sql', ),
 		array( 'maybe_do_profiling_memory_update' ),
 		array( 'do_filearchive_indices_update' ),
-		array( 'update_password_format' ),
 		
 		// 1.14
 		array( 'add_field', 'site_stats',     'ss_active_users',  'patch-ss_active_users.sql' ),
@@ -156,6 +156,8 @@ $wgUpdates = array(
 		array( 'add_table', 'tag_summary',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'valid_tag',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'user_properties',		   'patch-user_properties.sql' ),
+		array( 'add_table', 'log_search',		   	   'patch-log_search.sql' ),
+		array( 'do_log_search_population' ),
 	),
 
 	'sqlite' => array(
@@ -170,6 +172,9 @@ $wgUpdates = array(
 		array( 'add_table', 'tag_summary',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'valid_tag',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'user_properties',		   'patch-user_properties.sql' ),
+		array( 'add_table', 'log_search',		   	   'patch-log_search.sql' ),
+		array( 'do_log_search_population' ),
+		array( 'add_field', 'redirect',	'rd_interwiki', 'patch-rd_interwiki.sql' ),
 	),
 );
 
@@ -257,41 +262,6 @@ function add_index( $table, $index, $patch, $fullpath=false ) {
 			dbsource( archive($patch), $wgDatabase );
 		}
 		wfOut( "ok\n" );
-	}
-}
-
-function do_revision_updates() {
-	global $wgSoftwareRevision;
-	if ( $wgSoftwareRevision < 1001 ) {
-		update_passwords();
-	}
-}
-
-function update_passwords() {
-	wfDebugDieBacktrace( "This function needs to be updated or removed.\n" );
-
-	global $wgDatabase;
-	$fname = "Update script: update_passwords()";
-	wfOut( "\nIt appears that you need to update the user passwords in your\n" .
-	  "database. If you have already done this (if you've run this update\n" .
-	  "script once before, for example), doing so again will make all your\n" .
-	  "user accounts inaccessible, so be sure you only do this once.\n" .
-	  "Update user passwords? (yes/no)" );
-
-	$resp = readconsole();
-    if ( ! ( "Y" == $resp{0} || "y" == $resp{0} ) ) { return; }
-
-	$sql = "SELECT user_id,user_password FROM user";
-	$source = $wgDatabase->query( $sql, $fname );
-
-	while ( $row = $wgDatabase->fetchObject( $source ) ) {
-		$id = $row->user_id;
-		$oldpass = $row->user_password;
-		$newpass = md5( "{$id}-{$oldpass}" );
-
-		$sql = "UPDATE user SET user_password='{$newpass}' " .
-		  "WHERE user_id={$id}";
-		$wgDatabase->query( $sql, $fname );
 	}
 }
 
@@ -783,6 +753,19 @@ function do_old_links_update() {
 	}
 }
 
+function fix_ancient_imagelinks() {
+	global $wgDatabase;
+	$info = $wgDatabase->fieldInfo( 'imagelinks', 'il_from' );
+	if ( $info && $info->type() === 'string' ) {
+		wfOut( "Fixing ancient broken imagelinks table.\n" );
+		wfOut( "NOTE: you will have to run maintenance/refreshLinks.php after this.\n" );
+		dbsource( archive( 'patch-fix-il_from.sql' ) );
+		wfOut( "ok\n" );
+	} else {
+		wfOut( "...il_from OK\n" );
+	}
+}
+
 function do_user_unique_update() {
 	global $wgDatabase;
 	$duper = new UserDupes( $wgDatabase );
@@ -1244,29 +1227,6 @@ function do_populate_parent_id() {
 	populate_rev_parent_id( $wgDatabase );
 }
 
-function update_password_format() {
-	if ( update_row_exists( 'password format' ) ) {
-		wfOut( "...password hash format already changed\n" );
-		return;
-	}
-
-	wfOut( "Updating password hash format..." );
-
-	global $wgDatabase, $wgPasswordSalt;
-	$user = $wgDatabase->tableName( 'user' );
-	if ( $wgPasswordSalt ) {
-		$sql = "UPDATE $user SET user_password=CONCAT(':B:', user_id, ':', user_password) " .
-			"WHERE user_password NOT LIKE ':%'";
-	} else {
-		$sql = "UPDATE $user SET user_password=CONCAT(':A:', user_password) " .
-			"WHERE user_password NOT LIKE ':%'";
-	}
-	$wgDatabase->query( $sql, __METHOD__ );
-	$wgDatabase->insert( 'updatelog', array( 'ul_key' => 'password format' ), __METHOD__ );
-
-	wfOut( "done\n" );
-}
-
 function sqlite_initial_indexes() {
 	global $wgDatabase;
 	if ( update_row_exists( 'initial_indexes' ) ) {
@@ -1288,6 +1248,21 @@ function do_unique_pl_tl_il() {
 		dbsource( archive( 'patch-pl-tl-il-unique.sql' ), $wgDatabase );
 		wfOut( "ok\n" );
 	}
+}
+
+function do_log_search_population() {
+	global $wgDatabase;
+	if( update_row_exists( 'populate log_search' ) ) {
+		wfOut( "...log_search table already populated.\n" );
+		return;
+	}
+	require_once( 'populateLogSearch.inc' );
+	wfOut(
+"Populating log_search table, printing progress markers. For large\n" .
+"databases, you may want to hit Ctrl-C and do this manually with\n" .
+"maintenance/populateLogSearch.php.\n" );
+	migrate_log_params( $wgDatabase );
+	wfOut( "Done populating log_search table.\n" );
 }
 
 /***********************************************************************
@@ -1506,6 +1481,7 @@ function do_postgres_updates() {
 		array('tag_summary',       'patch-change_tag.sql'),
 		array('valid_tag',         'patch-change_tag.sql'),
 		array('user_properties',   'patch-user_properties.sql'),
+		array('log_search',        'patch-log_search.sql'),
 	);
 
 	$newcols = array(

@@ -331,7 +331,6 @@ Hadii aad keydisid, waxaa dhumidoona caddadyadii kan ka dambeeyey.'''",
 'last'                => 'Ugu dambeeyo',
 'page_first'          => 'Ugu horeeyo',
 'page_last'           => 'ugu dambeeyo',
-'deletedrev'          => "[la'tirtiray]",
 
 # Revision feed
 'history-feed-title' => 'Taariikhda caddadyaasha',
@@ -346,8 +345,8 @@ Iskuday in aad [[Special:Search|karaadiso wikigan]] beyjaj laxiira oo cusub.',
 'searchresults'         => 'Natiijooyinkii ka soo baxay raadinta',
 'searchsubtitle'        => "Waxaad raadisay '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Waxaad raadisay '''$1'''",
-'prevn'                 => 'Ka horeeya $1',
-'nextn'                 => 'Ku xiga $1',
+'prevn'                 => 'Ka horeeya {{PLURAL:$1|$1}}',
+'nextn'                 => 'Ku xiga {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'Fiiri ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Caawinaad',
 'powersearch'           => 'Raadi',
@@ -413,7 +412,8 @@ Waa in aysan ka badanin $1 {{PLURAL:$1|eray|erayo}}.',
 'watchthisupload' => 'Boggaan waardiyey',
 
 # File description page
-'nolinkstoimage' => "Ma'ay jiraan beyjaj ku xiran faylkaan.",
+'file-anchor-link' => 'Fayl',
+'nolinkstoimage'   => "Ma'ay jiraan beyjaj ku xiran faylkaan.",
 
 # File deletion
 'filedelete'         => 'Tirtir $1',
@@ -588,6 +588,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-ca-delete'          => 'Bogaan tirtir',
 'tooltip-ca-undelete'        => "Sooceli qoraaladii lagu sameeyay boggaan intii aanan la'tirtirin ka hor",
 'tooltip-ca-move'            => 'Wareeji boggaan',
+'tooltip-search'             => 'Raadi{{SITENAME}}',
 'tooltip-p-logo'             => 'Bogga Hore',
 'tooltip-n-mainpage'         => 'Soo booqo bogga hore',
 'tooltip-n-portal'           => 'Faahfaahinta mashruuca, waxaad ku caawinkartid, xageed ka helikartaa waxaad u baahantahay',

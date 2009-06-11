@@ -756,12 +756,12 @@ function wfMsgExt( $key, $options ) {
 	foreach( $options as $arrayKey => $option ) {
 		if( !preg_match( '/^[0-9]+|language$/', $arrayKey ) ) {
 			# An unknown index, neither numeric nor "language"
-			trigger_error( "wfMsgExt called with incorrect parameter key $arrayKey", E_USER_WARNING );
+			wfWarn( "wfMsgExt called with incorrect parameter key $arrayKey", 1, E_USER_WARNING );
 		} elseif( preg_match( '/^[0-9]+$/', $arrayKey ) && !in_array( $option,
 		array( 'parse', 'parseinline', 'escape', 'escapenoentities',
 		'replaceafter', 'parsemag', 'content' ) ) ) {
 			# A numeric index with unknown value
-			trigger_error( "wfMsgExt called with incorrect parameter $option", E_USER_WARNING );
+			wfWarn( "wfMsgExt called with incorrect parameter $option", 1, E_USER_WARNING );
 		}
 	}
 
@@ -1031,9 +1031,10 @@ function wfShowingResultsNum( $offset, $limit, $num ) {
 function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 	global $wgLang;
 	$fmtLimit = $wgLang->formatNum( $limit );
+	// FIXME: Why on earth this needs one message for the text and another one for tooltip??
 	# Get prev/next link display text
-	$prev = wfMsgHtml( 'prevn', $fmtLimit );
-	$next = wfMsgHtml( 'nextn', $fmtLimit );
+	$prev =  wfMsgExt( 'prevn', array('parsemag','escape'), $fmtLimit );
+	$next =  wfMsgExt( 'nextn', array('parsemag','escape'), $fmtLimit );
 	# Get prev/next link title text
 	$pTitle = wfMsgExt( 'prevn-title', array('parsemag','escape'), $fmtLimit );
 	$nTitle = wfMsgExt( 'nextn-title', array('parsemag','escape'), $fmtLimit );
@@ -1077,7 +1078,7 @@ function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 		wfNumLink( $offset, 250, $title, $query ),
 		wfNumLink( $offset, 500, $title, $query )
 	) );
-	return wfMsg( 'viewprevnext', $plink, $nlink, $nums );
+	return wfMsgHtml( 'viewprevnext', $plink, $nlink, $nums );
 }
 
 /**
@@ -1830,8 +1831,8 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 	} elseif (preg_match('/^\d{1,13}$/D',$ts)) {
 		# TS_UNIX
 		$uts = $ts;
-	} elseif (preg_match('/^\d{1,2}-...-\d\d(?:\d\d)? \d\d\.\d\d\.\d\d/', $ts)) {
-		# TS_ORACLE
+	} elseif (preg_match('/^\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2}.\d{6}$/', $ts)) {
+		# TS_ORACLE // session altered to DD-MM-YYYY HH24:MI:SS.FF6
 		$uts = strtotime(preg_replace('/(\d\d)\.(\d\d)\.(\d\d)(\.(\d+))?/', "$1:$2:$3",
 				str_replace("+00:00", "UTC", $ts)));
 	} elseif (preg_match('/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.*\d*)?Z$/', $ts, $da)) {
@@ -1868,7 +1869,8 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 		case TS_RFC2822:
 			return gmdate( 'D, d M Y H:i:s', $uts ) . ' GMT';
 		case TS_ORACLE:
-			return gmdate( 'd-M-y h.i.s A', $uts) . ' +00:00';
+			return gmdate( 'd-m-Y H:i:s.000000', $uts);
+			//return gmdate( 'd-M-y h.i.s A', $uts) . ' +00:00';
 		case TS_POSTGRES:
 			return gmdate( 'Y-m-d H:i:s', $uts) . ' GMT';
 		case TS_DB2:
@@ -1963,9 +1965,7 @@ function wfGetCachedNotice( $name ) {
 	}
 
 	wfProfileOut( $fname );
-	// Use $wgContLang to get a converted string by language.
-	global $wgContLang;
-	return $wgContLang->convert( $notice );
+	return $notice;
 }
 
 function wfGetNamespaceNotice() {
@@ -2063,6 +2063,8 @@ function wfMkdirParents( $dir, $mode = null, $caller = null ) {
 
 	if( strval( $dir ) === '' || file_exists( $dir ) )
 		return true;
+
+	$dir = str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, $dir );
 
 	if ( is_null( $mode ) )
 		$mode = $wgDirectoryMode;
@@ -3024,19 +3026,19 @@ function wfMaxlagError( $host, $lag, $maxLag ) {
 }
 
 /**
- * Throws an E_USER_NOTICE saying that $function is deprecated
+ * Throws a warning that $function is deprecated
  * @param string $function
  * @return null
  */
 function wfDeprecated( $function ) {
-	global $wgDebugLogFile;
-	if ( !$wgDebugLogFile ) {
-		return;
-	}
+	wfWarn( "Use of $function is deprecated.", 2 );
+}
+
+function wfWarn( $msg, $callerOffset = 1, $level = E_USER_NOTICE ) {
 	$callers = wfDebugBacktrace();
-	if( isset( $callers[2] ) ){
-		$callerfunc = $callers[2];
-		$callerfile = $callers[1];
+	if( isset( $callers[$callerOffset+1] ) ){
+		$callerfunc = $callers[$callerOffset+1];
+		$callerfile = $callers[$callerOffset];
 		if( isset( $callerfile['file'] ) && isset( $callerfile['line'] ) ){
 			$file = $callerfile['file'] . ' at line ' . $callerfile['line'];
 		} else {
@@ -3046,11 +3048,15 @@ function wfDeprecated( $function ) {
 		if( isset( $callerfunc['class'] ) )
 			$func .= $callerfunc['class'] . '::';
 		$func .= @$callerfunc['function'];
-		$msg = "Use of $function is deprecated. Called from $func in $file";
-	} else {
-		$msg = "Use of $function is deprecated.";
+		$msg .= " [Called from $func in $file]";
 	}
-	wfDebug( "$msg\n" );
+
+	global $wgDevelopmentWarnings;
+	if ( $wgDevelopmentWarnings ) {
+		trigger_error( $msg, $level );
+	} else {
+		wfDebug( "$msg\n" );
+	}
 }
 
 /**
@@ -3097,6 +3103,24 @@ function wfOut( $s ) {
 	flush();
 }
 
+/**
+ * Count down from $n to zero on the terminal, with a one-second pause 
+ * between showing each number. For use in command-line scripts.
+ */
+function wfCountDown( $n ) {
+	for ( $i = $n; $i >= 0; $i-- ) {
+		if ( $i != $n ) {
+			echo str_repeat( "\x08", strlen( $i + 1 ) );
+		} 
+		echo $i;
+		flush();
+		if ( $i ) {
+			sleep( 1 );
+		}
+	}
+	echo "\n";
+}
+
 /** Generate a random 32-character hexadecimal token.
  * @param mixed $salt Some sort of salt, if necessary, to add to random characters before hashing.
  */
@@ -3136,4 +3160,18 @@ function wfArrayInsertAfter( $array, $insert, $after ) {
 	$output = $before + $insert + $after;
 	
 	return $output;
+}
+
+/* Recursively converts the parameter (an object) to an array with the same data */
+function wfObjectToArray( $object, $recursive = true ) {
+	$array = array();
+	foreach ( get_object_vars($object) as $key => $value ) {
+		if ( is_object($value) && $recursive ) {
+			$value = wfObjectToArray( $value );
+		}
+		
+		$array[$key] = $value;
+	}
+	
+	return $array;
 }

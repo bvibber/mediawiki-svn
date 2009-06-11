@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Chrisportelli
  * @author MF-Warburg
  * @author Malafaya
  * @author Nov ialiste
@@ -102,7 +103,7 @@ $messages = array(
 'printableversion' => 'Printindi versione',
 'permalink'        => 'Permananti linke',
 'print'            => 'Printa',
-'edit'             => 'Modifika',
+'edit'             => 'Immodifika',
 'editthispage'     => 'Modifika disi pagine',
 'delete'           => 'Ekarta',
 'deletethispage'   => 'Ekarta disi pagine',
@@ -226,8 +227,8 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'searchresulttext'      => 'Por plu multi informatione pri sercho {{SITENAME}}, vida [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "Vu serchad '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Vu serchad '''$1'''",
-'prevn'                 => 'lasti $1',
-'nextn'                 => 'sekuenti $1',
+'prevn'                 => 'lasti {{PLURAL:$1|$1}}',
+'nextn'                 => 'sekuenti {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'Vida ($1) ($2) ($3).',
 'searchhelp-url'        => 'Help:Kontenaje',
 'search-result-size'    => '$1 ({{PLURAL:$2|1 vorde|$2 vordes}})',
@@ -259,7 +260,9 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'newpageletter'   => 'N',
 
 # Recent changes linked
-'recentchangeslinked' => 'Afini chanjos',
+'recentchangeslinked'         => 'Afini chanjos',
+'recentchangeslinked-feed'    => 'Afini chanjos',
+'recentchangeslinked-toolbox' => 'Afini chanjos',
 
 # Upload
 'upload'            => 'Enporta',
@@ -282,8 +285,9 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 # Random page
 'randompage' => 'Arbitriari pagine',
 
-'brokenredirects'     => 'Rupteti ri-adresos',
-'brokenredirectstext' => 'Li sekuenti ri-adresos linka a non-existanti pagines:',
+'brokenredirects'      => 'Rupteti ri-adresos',
+'brokenredirectstext'  => 'Li sekuenti ri-adresos linka a non-existanti pagines:',
+'brokenredirects-edit' => '(editja)',
 
 'fewestrevisions' => 'Artikles kun minim multi revisiones',
 

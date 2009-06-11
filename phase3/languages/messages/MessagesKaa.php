@@ -743,7 +743,6 @@ $3 keltirilgen sebebi: ''$2''",
 Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 (aqır.) = aldıng'ı nusqasi menen parqı, k = kishi o'zgeris",
 'history-fieldset-title' => 'Tariyxınan izlew',
-'deletedrev'             => "[o'shirilgen]",
 'histfirst'              => "En' aldıng'ısı",
 'histlast'               => "En' aqırg'ısı",
 'historysize'            => '({{PLURAL:$1|1 bayt|$1 bayt}})',
@@ -891,8 +890,8 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'notitlematches'                   => 'Hesh qanday bet ataması tuwra kelmedi',
 'textmatches'                      => "Bet tekstinin' tuwra kelgenleri",
 'notextmatches'                    => 'Hesh qanday bet teksti tuwra kelmedi',
-'prevn'                            => "aldıng'ı $1",
-'nextn'                            => 'keyingi $1',
+'prevn'                            => "aldıng'ı {{PLURAL:$1|$1}}",
+'nextn'                            => 'keyingi {{PLURAL:$1|$1}}',
 'viewprevnext'                     => "Ko'riw: ($1) ($2) ($3)",
 'searchmenu-legend'                => 'İzlew sazlawları',
 'searchmenu-exists'                => "'''Bul wikide \"[[:\$1]]\" atamalı bet bar'''",
@@ -954,7 +953,6 @@ Barlıq mag'lıwmat tu'rin (sonın' ishinde sa'wbet betlerdi, shablonlardı h.t.
 'prefs-skin'                => "Sırtqı ko'rinis",
 'skin-preview'              => 'Korip al',
 'prefs-math'                => 'Formulalar',
-'dateformat'                => "Sa'ne formatı",
 'datedefault'               => 'Hesh sazlawlarsız',
 'prefs-datetime'            => "Sa'ne ha'm waqıt",
 'prefs-personal'            => 'Paydalanıwshı profaylı',
@@ -979,7 +977,6 @@ Barlıq mag'lıwmat tu'rin (sonın' ishinde sa'wbet betlerdi, shablonlardı h.t.
 'savedprefs'                => "Sizin' sazlawların'ız saqlandı.",
 'timezonelegend'            => 'Waqıt zonası',
 'localtime'                 => 'Jergilikli waqıt:',
-'timezoneselect'            => 'Waqıt zonası:',
 'timezoneuseserverdefault'  => "Serverdin' baslang'ısh sazlawların qollanıw",
 'timezoneuseoffset'         => "Basqa (o'zgeristi ko'rsetin')",
 'timezoneoffset'            => "Saat o'zgerisi¹:",
@@ -1232,6 +1229,7 @@ Siz ja'ne de basqa paydalanıwshılarg'a siz benen (adresin'izdi bilmegen halda)
 'listfiles_description' => 'Kommentariy',
 
 # File description page
+'file-anchor-link'          => 'Fayl beti',
 'filehist'                  => 'Fayl tariyxı',
 'filehist-help'             => "Aldın usı fayl qanday ko'riniste bolg'anın ko'riw ushin ku'n-ay/waqıt degendi basın'.",
 'filehist-deleteall'        => "ha'mmesin o'shir",
@@ -1250,8 +1248,6 @@ Siz ja'ne de basqa paydalanıwshılarg'a siz benen (adresin'izdi bilmegen halda)
 'linkstoimage'              => "To'mendegi {{PLURAL:$1|bet|$1 bet}} bul faylg'a siltelgen:",
 'nolinkstoimage'            => "Bul faylg'a hesh bir bet siltelmegen.",
 'sharedupload'              => '$1 ortalıq faylı basqa proektlerde paydalanılsa boladı.',
-'noimage'                   => "Bunday atlı fayl joq, biraq sizde $1 mu'mkinshiligi bar.",
-'noimage-linktext'          => 'usını aploud qılıw',
 'uploadnewversion-linktext' => "Bul fayldın' jan'a nusqasın aploud qılıw",
 
 # File reversion
@@ -1681,7 +1677,7 @@ Basqa bloklawlar ushın [[Special:IPBlockList|IP bloklaw dizimin]] ko'rip shıg'
 'ipblocklist-submit'          => 'İzle',
 'blocklistline'               => '$1, $2 waqıtında $3 blokladı ($4)',
 'infiniteblock'               => 'sheksiz',
-'expiringblock'               => "Ku'shin joytıw waqtı: $1",
+'expiringblock'               => "Ku'shin joytıw waqtı: $1 $2",
 'anononlyblock'               => 'tek anon.',
 'noautoblockblock'            => "avtoqulplaw o'shirilgen",
 'createaccountblock'          => "Akkaunt jaratıw qadag'alang'an",
@@ -1932,6 +1928,7 @@ Eger fayl jaratılg'anınan keyin o'zgertilgen bolsa, geybir parametrleri o'zger
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength",
 
 # EXIF tags

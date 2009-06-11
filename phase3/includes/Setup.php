@@ -201,6 +201,16 @@ $wgContLanguageCode = $wgLanguageCode;
 # If file cache or squid cache is on, just disable this (DWIMD).
 if( $wgUseFileCache || $wgUseSquid ) $wgShowIPinHeader = false;
 
+# $wgAllowRealName and $wgAllowUserSkin were removed in 1.16
+# in favor of $wgHiddenPrefs, handle b/c here
+if( !$wgAllowRealName ) {
+	$wgHiddenPrefs[] = 'realname';
+}
+
+if( !$wgAllowUserSkin ) {
+	$wgHiddenPrefs[] = 'skin';
+}
+
 wfProfileOut( $fname.'-misc1' );
 wfProfileIn( $fname.'-memcached' );
 
@@ -259,6 +269,7 @@ $wgRequest->interpolateTitle();
 
 $wgUser = new StubUser;
 $wgLang = new StubUserLang;
+$wgVariant = new StubUserVariant;
 $wgOut = new StubObject( 'wgOut', 'OutputPage' );
 $wgParser = new StubObject( 'wgParser', $wgParserConf['class'], array( $wgParserConf ) );
 

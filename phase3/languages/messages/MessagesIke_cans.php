@@ -200,7 +200,7 @@ $messages = array(
 'diff-multi'    => '({{PLURAL:$1|ᐊᑕᐅᓯᖅ ᑭᒻᒥᐅᕗᖅ ᑎᑎᕋᖅᑕᐅᒋᐊᕐᖓᕈᑦ|$1 ᑭᒻᒥᐅᕗᖅ ᑎᑎᕋᖅᑕᐅᒋᐊᕐᖓᕈᑦ}} ᐊᔪᖅᑐᖅ ᐅᕝᕙ.)',
 
 # Search results
-'nextn'       => 'ᑕᒡᒐ $1',
+'nextn'       => 'ᑕᒡᒐ {{PLURAL:$1|$1}}',
 'powersearch' => 'ᕿᓐᓇᕆᒃᓴᕐᓂᖅ',
 
 # Preferences page
@@ -226,6 +226,8 @@ $messages = array(
 
 # Recent changes linked
 'recentchangeslinked'          => 'ᐊᓯᐊᙳᑐᖅ ᒥᑦᓵᓯᔪᖅ',
+'recentchangeslinked-feed'     => 'ᐊᓯᐊᙳᑐᖅ ᒥᑦᓵᓯᔪᖅ',
+'recentchangeslinked-toolbox'  => 'ᐊᓯᐊᙳᑐᖅ ᒥᑦᓵᓯᔪᖅ',
 'recentchangeslinked-noresult' => '0 ᐊᓯᐊᙳᑐᖅ ᐃᑦᓯᕕᒻᒥᐅᓯᖅᐹ ᒪᑉᐱᑕᖅ ᑕᑯᕙᓪᓚᑐᖅ ᓱᓪᓗᒃ ᑕᒪᑐᒪᓂ ᑐᒥᑯ',
 
 # Upload
@@ -234,6 +236,9 @@ $messages = array(
 'filedesc'          => 'ᐱᓕᕆᐊᒃᓴᑦ ᐱᕕᒡᔪᐊᖑᓂᖏᑦ',
 'fileuploadsummary' => 'ᓱᕕᑦ:',
 'watchthisupload'   => 'ᐅᕝᕙ',
+
+# File description page
+'file-anchor-link' => 'ᐊᒋᐅᑦ',
 
 # List redirects
 'listredirects' => 'ᓂᐱ ᖃᓂᖓᓂ ᑲᒪᒋᔭᖅ ᐋᓯᑦ ᓇᑭᑦ',

@@ -38,6 +38,9 @@ class SearchOracle extends SearchEngine {
 	 * @return OracleSearchResultSet
 	 */
 	function searchText( $term ) {
+		if ($term == '')
+			return new OracleSearchResultSet(false, '');
+		
 		$resultSet = $this->db->resultObject($this->db->query($this->getQuery($this->filter($term), true)));
 		return new OracleSearchResultSet($resultSet, $this->searchTerms);
 	}
@@ -49,6 +52,9 @@ class SearchOracle extends SearchEngine {
 	 * @return ORacleSearchResultSet
 	 */
 	function searchTitle($term) {
+		if ($term == '')
+			return new OracleSearchResultSet(false, '');
+		
 		$resultSet = $this->db->resultObject($this->db->query($this->getQuery($this->filter($term), false)));
 		return new MySQLSearchResultSet($resultSet, $this->searchTerms);
 	}
@@ -153,7 +159,17 @@ class SearchOracle extends SearchEngine {
 		if (preg_match_all('/([-+<>~]?)(([' . $lc . ']+)(\*?)|"[^"]*")/',
 			  $filteredText, $m, PREG_SET_ORDER)) {
 			foreach($m as $terms) {
-				$q[] = $terms[1] . $wgContLang->stripForSearch($terms[2]);
+				
+				// Search terms in all variant forms, only
+				// apply on wiki with LanguageConverter
+				$temp_terms = $wgContLang->autoConvertToAllVariants( $terms[2] );
+				if( is_array( $temp_terms )) {
+					$temp_terms = array_unique( array_values( $temp_terms ));
+					foreach( $temp_terms as $t )
+						$q[] = $terms[1] . $wgContLang->stripForSearch( $t );
+				}
+				else
+					$q[] = $terms[1] . $wgContLang->stripForSearch( $terms[2] );
 
 				if (!empty($terms[3])) {
 					$regexp = preg_quote( $terms[3], '/' );
@@ -214,6 +230,7 @@ class SearchOracle extends SearchEngine {
  * @ingroup Search
  */
 class OracleSearchResultSet extends SearchResultSet {
+
 	function __construct($resultSet, $terms) {
 		$this->mResultSet = $resultSet;
 		$this->mTerms = $terms;
@@ -224,10 +241,16 @@ class OracleSearchResultSet extends SearchResultSet {
 	}
 
 	function numRows() {
-		return $this->mResultSet->numRows();
+		if ($this->mResultSet === false )
+			return 0;
+		else
+			return $this->mResultSet->numRows();
 	}
 
 	function next() {
+		if ($this->mResultSet === false )
+			return false;
+
 		$row = $this->mResultSet->fetchObject();
 		if ($row === false)
 			return false;

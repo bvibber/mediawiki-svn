@@ -87,6 +87,12 @@ $ourdb['ibm_db2']['compile']    = 'ibm_db2';
 $ourdb['ibm_db2']['bgcolor']    = '#ffeba1';
 $ourdb['ibm_db2']['rootuser']   = 'db2admin';
 
+$ourdb['oracle']['fullname']   = 'Oracle';
+$ourdb['oracle']['havedriver'] = 0;
+$ourdb['oracle']['compile']    = 'oci8';
+$ourdb['oracle']['bgcolor']    = '#ffeba1';
+$ourdb['oracle']['rootuser']   = '';
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
@@ -652,6 +658,11 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	$conf->DBmwschema   = importPost( "DBmwschema",  "mediawiki" );
 	$conf->DBcataloged  = importPost( "DBcataloged",  "cataloged" );
 
+	// Oracle specific
+	$conf->DBprefix_ora     = importPost( "DBprefix_ora" );
+	$conf->DBdefTS_ora     = importPost( "DBdefTS_ora", "USERS" );
+	$conf->DBtempTS_ora     = importPost( "DBtempTS_ora", "TEMP" );
+
 	$conf->ShellLocale = getShellLocale( $conf->LanguageCode );
 
 /* Check for validity */
@@ -676,6 +687,9 @@ if( !preg_match( '/^[A-Za-z_0-9]*$/', $conf->DBprefix ) ) {
 	$errs["DBprefix"] = "Invalid table prefix";
 } else {
 	untaint( $conf->DBprefix, TC_MYSQL );
+}
+if( !preg_match( '/^[A-Za-z_0-9]*$/', $conf->DBprefix_ora ) ) {
+	$errs["DBprefix_ora"] = "Invalid table prefix";
 }
 
 error_reporting( E_ALL );
@@ -822,6 +836,9 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		if( $conf->DBprefix2 != '' ) {
 			// For MSSQL
 			$wgDBprefix = $conf->DBprefix2;
+		} elseif( $conf->DBprefix_ora != '' ) {
+			// For Oracle
+			$wgDBprefix = $conf->DBprefix_ora;
 		}
 
 		## DB2 specific:
@@ -837,7 +854,9 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		$wgTitle = Title::newFromText( "Installation script" );
 		error_reporting( E_ALL );
 		print "<li>Loading class: " . htmlspecialchars( $dbclass ) . "</li>\n";
-		$dbc = new $dbclass;
+		if ( $conf->DBtype != 'sqlite' ) {
+			$dbc = new $dbclass;
+		}
 
 		if( $conf->DBtype == 'mysql' ) {
 			$mysqlOldClient = version_compare( mysql_get_client_info(), "4.1.0", "lt" );
@@ -921,7 +940,86 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				$myver = $wgDatabase->getServerVersion();
 			}
 			if (is_callable(array($wgDatabase, 'initial_setup'))) $wgDatabase->initial_setup('', $wgDBname);
-			
+
+		} elseif ( $conf->DBtype == 'sqlite' ) {
+			if ("$wgSQLiteDataDir" == '') {
+				$wgSQLiteDataDir = dirname($_SERVER['DOCUMENT_ROOT']).'/data';
+			}
+			echo "<li>Attempting to connect to SQLite database at \"" . 
+				htmlspecialchars( $wgSQLiteDataDir ) .  "\"";
+			if ( !is_dir( $wgSQLiteDataDir ) ) {
+				if ( is_writable( dirname( $wgSQLiteDataDir ) ) ) {
+					$ok = wfMkdirParents( $wgSQLiteDataDir, $wgSQLiteDataDirMode );
+				} else {
+					$ok = false;
+				}
+				if ( !$ok ) {
+					echo ": cannot create data directory</li>";
+					$errs['SQLiteDataDir'] = 'Enter a valid data directory';
+					continue;
+				}
+			}
+			if ( !is_writable( $wgSQLiteDataDir ) ) {
+				echo ": data directory not writable</li>";
+				$errs['SQLiteDataDir'] = 'Enter a writable data directory';
+				continue;
+			}
+			$dataFile = "$wgSQLiteDataDir/$wgDBname.sqlite";
+			if ( file_exists( $dataFile ) && !is_writable( $dataFile ) ) {
+				echo ": data file not writable</li>";
+				$errs['SQLiteDataDir'] = "$wgDBname.sqlite is not writable";
+				continue;
+			}
+			$wgDatabase = new DatabaseSqlite( false, false, false, $wgDBname, 1 );
+			if (!$wgDatabase->isOpen()) {
+				print ": error: " . htmlspecialchars( $wgDatabase->lastError() ) . "</li>\n";
+				$errs['SQLiteDataDir'] = 'Could not connect to database';
+				continue;
+			} else {
+				$myver = $wgDatabase->getServerVersion();
+			}
+			if (is_callable(array($wgDatabase, 'initial_setup'))) $wgDatabase->initial_setup('', $wgDBname);
+			echo "ok</li>\n";
+		} elseif ( $conf->DBtype == 'oracle' ) {
+			echo "<li>Attempting to connect to database \"" . htmlspecialchars( $wgDBname ) ."\"</li>";
+			$wgDatabase = $dbc->newFromParams('DUMMY', $wgDBuser, $wgDBpassword, $wgDBname, 1);
+			if (!$wgDatabase->isOpen()) {
+				$ok = true;
+				echo "<li>Connect failed.</li>";
+				if ($useRoot) {
+					if (ini_get('oci8.privileged_connect') === false) {
+						echo "<li>Privileged connect disabled, please set oci8.privileged_connect or run maintenance/ora/user.sql script manually prior to continuing.</li>";
+						$ok = false;
+					} else {
+						$wgDBadminuser = $conf->RootUser;
+						$wgDBadminpassword = $conf->RootPW;
+						echo "<li>Attempting to create DB user.</li>";
+						$wgDatabase = $dbc->newFromParams('DUMMY', $wgDBadminuser, $wgDBadminpassword, $wgDBname, 1, 64);
+						if ($wgDatabase->isOpen()) {
+							$wgDBOracleDefTS = $conf->DBdefTS_ora;
+							$wgDBOracleTempTS = $conf->DBtempTS_ora;
+							dbsource( "../maintenance/ora/user.sql", $wgDatabase );
+						} else {
+							echo "<li>Invalid database superuser, please supply a valid superuser account.</li>";
+							echo "<li>ERR: ".print_r(oci_error(), true)."</li>";
+							$ok = false;
+						}
+					}
+				} else {
+					echo "<li>Database superuser missing, please supply a valid superuser account.</li>";
+					$ok = false;
+				}
+				if (!$ok) {
+					$errs["RootUser"] = "Check username";
+					$errs["RootPW"] = "and password";
+				} else {
+					echo "<li>Attempting to connect to database with new user \"" . htmlspecialchars( $wgDBname ) ."\"</li>";
+					$wgDatabase = $dbc->newFromParams('DUMMY', $wgDBuser, $wgDBpassword, $wgDBname, 1);
+				}
+			}
+			if ($ok) {
+				$myver = $wgDatabase->getServerVersion();
+			}
 		} else { # not mysql
 			error_reporting( E_ALL );
 			$wgSuperUser = '';
@@ -1555,6 +1653,19 @@ if( count( $errs ) ) {
 	</div>
 	</fieldset>
 
+	<?php database_switcher('oracle'); ?>
+	<div class="config-input"><?php aField( $conf, "DBprefix_ora", "Database table prefix:" ); ?></div>
+	<div class="config-desc">
+		<p>If you need to share one database between multiple wikis, or
+		between MediaWiki and another web application, you may choose to
+		add a prefix to all the table names to avoid conflicts.</p>
+
+		<p>Avoid exotic characters; something like <tt>mw_</tt> is good.</p>
+	</div>
+	<div class="config-input"><?php aField( $conf, "DBdefTS_ora", "Default tablespace:" ); ?></div>
+	<div class="config-input"><?php aField( $conf, "DBtempTS_ora", "Temporary tablespace:" ); ?></div>
+	</fieldset>
+
 	<div class="config-input" style="padding:2em 0 3em">
 		<label class='column'>&nbsp;</label>
 		<input type="submit" value="Install MediaWiki!" class="btn-install" />
@@ -1730,6 +1841,10 @@ function writeLocalSettings( $conf ) {
 \$wgDBport_db2       = \"{$slconf['DBport_db2']}\";
 \$wgDBmwschema       = \"{$slconf['DBmwschema']}\";
 \$wgDBcataloged      = \"{$slconf['DBcataloged']}\";";
+	} elseif( $conf->DBtype == 'oracle' ) {
+		$dbsettings =
+"# Oracle specific settings
+\$wgDBprefix         = \"{$slconf['DBprefix']}\";";
 	} else {
 		// ummm... :D
 		$dbsettings = '';

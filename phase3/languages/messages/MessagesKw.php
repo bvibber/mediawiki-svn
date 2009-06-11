@@ -237,8 +237,8 @@ $messages = array(
 'diff-strike' => "'''treuslinys'''",
 
 # Search results
-'prevn'                    => 'kyns $1',
-'nextn'                    => 'nessa $1',
+'prevn'                    => 'kyns {{PLURAL:$1|$1}}',
+'nextn'                    => 'nessa {{PLURAL:$1|$1}}',
 'searchhelp-url'           => 'Help:Gweres',
 'searchprofile-images'     => 'Restrennow',
 'searchprofile-everything' => 'Puptra',
@@ -311,8 +311,10 @@ $messages = array(
 'rc-enhanced-hide'  => 'Kudha manylyon',
 
 # Recent changes linked
-'recentchangeslinked'      => 'Chanjyow dhe folennow kevahal',
-'recentchangeslinked-page' => 'Hanow an folen:',
+'recentchangeslinked'         => 'Chanjyow dhe folennow kevahal',
+'recentchangeslinked-feed'    => 'Chanjyow dhe folennow kevahal',
+'recentchangeslinked-toolbox' => 'Chanjyow dhe folennow kevahal',
+'recentchangeslinked-page'    => 'Hanow an folen:',
 
 # Upload
 'upload'          => 'Ughkarga restren',
@@ -328,6 +330,7 @@ $messages = array(
 'listfiles_user' => 'Devnydhyer',
 
 # File description page
+'file-anchor-link'    => 'Restren',
 'filehist'            => 'Istori an folen',
 'filehist-deleteone'  => 'dilea',
 'filehist-datetime'   => 'Dydh/Eur',

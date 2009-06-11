@@ -18,22 +18,22 @@
 $fallback = 'id';
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Média',
-	NS_SPECIAL        => 'Husus',
-	NS_TALK           => 'Obrolan',
-	NS_USER           => 'Pamaké',
-	NS_USER_TALK      => 'Obrolan_pamaké',
-	NS_PROJECT_TALK   => 'Obrolan_$1',
-	NS_FILE           => 'Gambar',
-	NS_FILE_TALK      => 'Obrolan_gambar',
-	NS_MEDIAWIKI      => 'MédiaWiki',
-	NS_MEDIAWIKI_TALK => 'Obrolan MédiaWiki',
-	NS_TEMPLATE       => 'Citakan',
-	NS_TEMPLATE_TALK  => 'Obrolan_citakan',
-	NS_HELP           => 'Pitulung',
-	NS_HELP_TALK      => 'Obrolan_pitulung',
-	NS_CATEGORY       => 'Kategori',
-	NS_CATEGORY_TALK  => 'Obrolan_kategori',
+	NS_MEDIA            => 'Média',
+	NS_SPECIAL          => 'Husus',
+	NS_TALK             => 'Obrolan',
+	NS_USER             => 'Pamaké',
+	NS_USER_TALK        => 'Obrolan_pamaké',
+	NS_PROJECT_TALK     => 'Obrolan_$1',
+	NS_FILE             => 'Gambar',
+	NS_FILE_TALK        => 'Obrolan_gambar',
+	NS_MEDIAWIKI        => 'MédiaWiki',
+	NS_MEDIAWIKI_TALK   => 'Obrolan MédiaWiki',
+	NS_TEMPLATE         => 'Citakan',
+	NS_TEMPLATE_TALK    => 'Obrolan_citakan',
+	NS_HELP             => 'Pitulung',
+	NS_HELP_TALK        => 'Obrolan_pitulung',
+	NS_CATEGORY         => 'Kategori',
+	NS_CATEGORY_TALK    => 'Obrolan_kategori',
 );
 
 $namespaceAliases = array(
@@ -131,8 +131,8 @@ $messages = array(
 'tog-highlightbroken'         => 'Format tumbu pegat <a href="" class="new">kawas kieu</a> (atawa: kawas kieu<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Lempengkeun alinéa',
 'tog-hideminor'               => 'Sumputkeun éditan minor dina nu anyar robah',
-'tog-extendwatchlist'         => 'Legaan awaskeuneun ngarah sakabéh parobahanana katempo',
-'tog-usenewrc'                => 'Nu anyar robah dina wanda séjén (JavaScript)',
+'tog-extendwatchlist'         => 'Legaan béréndélan ngarah sakabéh parobahanana kaawaskeun',
+'tog-usenewrc'                => 'Nu anyar robah dina wanda séjén (maké JavaScript)',
 'tog-numberheadings'          => 'Nomeran lulugu sacara otomatis',
 'tog-showtoolbar'             => "Témbongkeun ''toolbar'' édit (JavaScript)",
 'tog-editondblclick'          => 'Édit kaca ku klik ganda (JavaScript)',
@@ -140,7 +140,7 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Fungsikeun ngédit sub-bagean kalawan klik-katuhu dina judul bagean (JavaScript)',
 'tog-showtoc'                 => 'Témbongkeun daptar eusi<br />(pikeun kaca nu leuwih ti tilu subjudul)',
 'tog-rememberpassword'        => 'Inget sandi nembus rintakan',
-'tog-editwidth'               => 'Kotak édit sing lébar',
+'tog-editwidth'               => 'Legaan kotak édit luyu jeung lébar layar',
 'tog-watchcreations'          => 'Awaskeun kaca jieunan kuring',
 'tog-watchdefault'            => 'Tambahkeun kaca nu diédit ku anjeun kana awaskeuneun anjeun',
 'tog-watchmoves'              => 'Awaskeun kaca nu dipindahkeun ku kuring',
@@ -154,7 +154,7 @@ $messages = array(
 'tog-enotifminoredits'        => 'Béjaan ogé (ngaliwatan surélék) mun aya parobahan leutik dina kacana',
 'tog-enotifrevealaddr'        => 'Témbongkeun alamat surélék kuring dina surat émbaran',
 'tog-shownumberswatching'     => 'Témbongkeun jumlah nu ngawaskeun',
-'tog-fancysig'                => 'Paraf kasar (tanpa tumbu otomatis)',
+'tog-fancysig'                => 'Témbongkeun paraf salaku wikitext (tanpa tumbu otomatis)',
 'tog-externaleditor'          => 'Pigunakeun parabot éditor éksternal ti buhunna',
 'tog-externaldiff'            => 'Paké pangbeda éksternal ti buhunna',
 'tog-showjumplinks'           => 'Aktifkeun tumbu panyambung "luncat ka"',
@@ -363,6 +363,7 @@ $messages = array(
 'editsection'             => 'édit',
 'editold'                 => 'édit',
 'viewsourceold'           => 'tempo sumbér',
+'editlink'                => 'édit',
 'editsectionhint'         => 'Édit bab: $1',
 'toc'                     => 'Daptar eusi',
 'showtoc'                 => 'témbongkeun',
@@ -742,7 +743,6 @@ Alesanana $3 cenah ''$2''.",
 Katerangan: (kiw) = bédana jeung vérsi kiwari,
 (ahir) = bédana jeung vérsi nu harita, m = éditan minor.',
 'history-fieldset-title' => 'Sungsi jujutan',
-'deletedrev'             => '[dihapus]',
 'histfirst'              => 'Pangheubeulna',
 'histlast'               => 'Pangahirna',
 'historysize'            => '($1 {{PLURAL:$1|bit|bit}})',
@@ -850,8 +850,8 @@ Pastikeun yén ieu parobahan bisa miara jujutan kaca sagemblengna.',
 'notitlematches'            => 'Teu aya judul kaca nu cocog',
 'textmatches'               => 'Téks kaca nu cocog',
 'notextmatches'             => 'Teu aya téks kaca nu cocog',
-'prevn'                     => '$1 saméméhna',
-'nextn'                     => '$1 salajengna',
+'prevn'                     => '{{PLURAL:$1|$1}} saméméhna',
+'nextn'                     => '{{PLURAL:$1|$1}} salajengna',
 'viewprevnext'              => 'Témbongkeun ($1) ($2) ($3).',
 'searchhelp-url'            => 'Help:Pitulung',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 kecap|$2 kecap}})',
@@ -898,7 +898,6 @@ Coba susud dimimitian ku ''all:'' pikeun nyusud sakabéh kandunganana (kaasup ka
 'prefs-skin'                => 'Kulit',
 'skin-preview'              => 'Pramidang',
 'prefs-math'                => 'Maté',
-'dateformat'                => 'Format titimangsa',
 'datedefault'               => 'Tanpa préferénsi',
 'prefs-datetime'            => 'Titimangsa jeung wanci',
 'prefs-personal'            => 'Data pamaké',
@@ -1063,6 +1062,8 @@ Coba susud dimimitian ku ''all:'' pikeun nyusud sakabéh kandunganana (kaasup ka
 
 # Recent changes linked
 'recentchangeslinked'          => 'Parobahan nu patali',
+'recentchangeslinked-feed'     => 'Parobahan nu patali',
+'recentchangeslinked-toolbox'  => 'Parobahan nu patali',
 'recentchangeslinked-title'    => 'Parobahan patali ka "$1"',
 'recentchangeslinked-noresult' => 'Dina selang waktu anu dipénta, euweuh parobahan dina kaca-kaca anu numbu.',
 'recentchangeslinked-summary'  => "Ieu kaca husus ngabéréndélkeun parobahan anyar anu numbu ti kaca husus (atawa uesi katagori husus). Kaca anu [[Special:Watchlist|diawaskeun]] némbongan '''kandel'''.",
@@ -1162,6 +1163,7 @@ Catet yén salaku kaca wiki, nu séjén bisa ngarobah atawa ngahapus muatan anje
 'listfiles_description' => 'Pedaran',
 
 # File description page
+'file-anchor-link'          => 'Gambar',
 'filehist'                  => 'Sajarah gambar',
 'filehist-help'             => 'Klik dina titimangsa pikeun nempo koropak nu aya dina mangsa éta.',
 'filehist-deleteall'        => 'hapus kabéh',
@@ -1176,9 +1178,7 @@ Catet yén salaku kaca wiki, nu séjén bisa ngarobah atawa ngahapus muatan anje
 'imagelinks'                => 'Tumbu koropak',
 'linkstoimage'              => 'Kaca ieu  {{PLURAL:$1|numbu|$1 numbu}} ka gambar ieu :',
 'nolinkstoimage'            => 'Teu aya kaca nu numbu ka gambar ieu.',
-'sharedupload'              => 'Ieu koropak téh muatan réréongan nu bisa jadi dipaké ku proyék-proyék lianna.',
-'noimage'                   => 'Euweuh koropak nu ngaranna kitu, tapi anjeun bisa $1.',
-'noimage-linktext'          => 'muatkeun',
+'sharedupload'              => 'Ieu koropak téh ti $1 nu bisa jadi dipaké ku proyék-proyék lianna.',
 'uploadnewversion-linktext' => 'ngamuatkeun vérsi anyar koropak ieu',
 
 # File reversion
@@ -2051,6 +2051,7 @@ Ngan daptar butiran (jajar anu dimimitian ku tanda *) anu diitung. Tumbu kahiji 
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

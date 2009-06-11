@@ -191,19 +191,19 @@ CREATE INDEX /*i*/un_user_ip ON /*_*/user_newtalk (user_ip);
 -- 2) We can more easily do bulk lookups, statistics, or modifications of
 --    saved options since it's a sane table structure.
 --
-CREATE TABLE /*_*/user_properties(
+CREATE TABLE /*_*/user_properties (
   -- Foreign key to user.user_id
-  up_user int not null,
+  up_user int NOT NULL,
   
   -- Name of the option being saved. This is indexed for bulk lookup.
-  up_property varbinary(32) not null,
+  up_property varbinary(32) NOT NULL,
   
   -- Property value as a string.
   up_value blob
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/user_properties_user_property on /*_*/user_properties (up_user,up_property);
-CREATE INDEX /*i*/user_properties_property on /*_*/user_properties (up_property);
+CREATE UNIQUE INDEX /*i*/user_properties_user_property ON /*_*/user_properties (up_user,up_property);
+CREATE INDEX /*i*/user_properties_property ON /*_*/user_properties (up_property);
 
 --
 -- Core of the wiki: each page has an entry here which identifies
@@ -1124,6 +1124,18 @@ CREATE INDEX /*i*/page_time ON /*_*/logging (log_namespace, log_title, log_times
 CREATE INDEX /*i*/times ON /*_*/logging (log_timestamp);
 
 
+CREATE TABLE /*_*/log_search (
+  -- The type of ID (rev ID, log ID, rev timestamp, username)
+  ls_field varbinary(32) NOT NULL,
+  -- The value of the ID
+  ls_value varchar(255) NOT NULL,
+  -- Key to log_id
+  ls_log_id int unsigned NOT NULL default 0
+) /*$wgDBTableOptions*/;
+CREATE UNIQUE INDEX /*i*/ls_field_val ON /*_*/log_search (ls_field,ls_value,ls_log_id);
+CREATE INDEX /*i*/ls_log_id ON /*_*/log_search (ls_log_id);
+
+
 CREATE TABLE /*_*/trackbacks (
   tb_id int PRIMARY KEY AUTO_INCREMENT,
   tb_page int REFERENCES /*_*/page(page_id) ON DELETE CASCADE,
@@ -1179,7 +1191,9 @@ CREATE TABLE /*_*/redirect (
   -- and deletions may refer to different page records as time
   -- goes by.
   rd_namespace int NOT NULL default 0,
-  rd_title varchar(255) binary NOT NULL default ''
+  rd_title varchar(255) binary NOT NULL default '',
+  rd_interwiki varchar(32) default NULL,
+  rd_fragment varchar(255) binary default NULL
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/rd_ns_title ON /*_*/redirect (rd_namespace,rd_title,rd_from);

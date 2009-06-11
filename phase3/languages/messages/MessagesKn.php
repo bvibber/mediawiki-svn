@@ -20,11 +20,9 @@
 $namespaceNames = array(
 	NS_MEDIA            => 'ಮೀಡಿಯ',
 	NS_SPECIAL          => 'ವಿಶೇಷ',
-	NS_MAIN             => '',
 	NS_TALK             => 'ಚರ್ಚೆಪುಟ',
 	NS_USER             => 'ಸದಸ್ಯ',
 	NS_USER_TALK        => 'ಸದಸ್ಯರ_ಚರ್ಚೆಪುಟ',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_ಚರ್ಚೆ',
 	NS_FILE             => 'ಚಿತ್ರ',
 	NS_FILE_TALK        => 'ಚಿತ್ರ_ಚರ್ಚೆಪುಟ',
@@ -35,7 +33,7 @@ $namespaceNames = array(
 	NS_HELP             => 'ಸಹಾಯ',
 	NS_HELP_TALK        => 'ಸಹಾಯ_ಚರ್ಚೆ',
 	NS_CATEGORY         => 'ವರ್ಗ',
-	NS_CATEGORY_TALK    => 'ವರ್ಗ_ಚರ್ಚೆ'
+	NS_CATEGORY_TALK    => 'ವರ್ಗ_ಚರ್ಚೆ',
 );
 
 $digitTransformTable = array(
@@ -652,7 +650,6 @@ $2',
 ಆಖ್ಯಾನ: (ಈಗಿನ) = ಪ್ರಸಕ್ತ ಆವೃತ್ತಿಯೊಂದಿಗೆ ವ್ಯತ್ಯಾಸಗಳು,
 (ಕೊನೆಯ) = ಹಿಂದಿನ ಆವೃತ್ತಿಯೊಂದಿಗೆ ವ್ಯತ್ಯಾಸಗಳು, ಚು = ಚುಟುಕಾದ ಬದಲಾವಣೆ.',
 'history-fieldset-title' => 'ಇತಿಹಾಸವನ್ನು ವಿಹರಿಸಿ',
-'deletedrev'             => '[ಅಳಿಸಲಾಗಿದೆ]',
 'histfirst'              => 'ಅತ್ಯಂತ ಮುಂಚಿನ',
 'histlast'               => 'ಅತ್ಯಂತ ಇತ್ತೀಚಿನ',
 'historysize'            => '({{PLURAL:$1|೧ ಬೈಟ್|$1 ಬೈಟ್‍ಗಳು}})',
@@ -764,8 +761,8 @@ $2',
 'notitlematches'            => 'ಯಾವ ಪುಟ ಶೀರ್ಷಿಕೆಗಳೂ ಹೊಂದಿಕೆ ತೋರಲಿಲ್ಲ',
 'textmatches'               => 'ಪುಟದ ಪಠ್ಯದಲ್ಲಿನ ಹೋಲಿಕೆಗಳು',
 'notextmatches'             => 'ಯಾವ ಪುಟದ ಪಠ್ಯದಲ್ಲೂ ಹೋಲಿಕೆಗಳಿಲ್ಲ',
-'prevn'                     => 'ಹಿಂದಿನ $1',
-'nextn'                     => 'ಮುಂದಿನ $1',
+'prevn'                     => 'ಹಿಂದಿನ {{PLURAL:$1|$1}}',
+'nextn'                     => 'ಮುಂದಿನ {{PLURAL:$1|$1}}',
 'viewprevnext'              => 'ವೀಕ್ಷಿಸು ($1) ($2) ($3)',
 'searchhelp-url'            => 'Help:ಪರಿವಿಡಿ',
 'search-result-size'        => '$1 ({{PLURAL:$2|೧ ಪದ|$2 ಪದಗಳು}})',
@@ -810,7 +807,6 @@ $2',
 'prefs-skin'                => 'ಚರ್ಮ',
 'skin-preview'              => 'ಮುನ್ನೋಟ',
 'prefs-math'                => 'ಗಣಿತ',
-'dateformat'                => 'ದಿನಾಂಕದ ಫಾರ್ಮ್ಯಾಟ್',
 'datedefault'               => 'ಯಾವುದೇ ಪ್ರಾಶಸ್ತ್ಯ ಇಲ್ಲ',
 'prefs-datetime'            => 'ದಿನ ಮತ್ತು ಸಮಯ',
 'prefs-personal'            => 'ಬಳಕೆದಾರರ ಬಗ್ಗೆ',
@@ -949,6 +945,8 @@ $2',
 
 # Recent changes linked
 'recentchangeslinked'          => 'ಸಂಬಂಧಪಟ್ಟ ಬದಲಾವಣೆಗಳು',
+'recentchangeslinked-feed'     => 'ಸಂಬಂಧಪಟ್ಟ ಬದಲಾವಣೆಗಳು',
+'recentchangeslinked-toolbox'  => 'ಸಂಬಂಧಪಟ್ಟ ಬದಲಾವಣೆಗಳು',
 'recentchangeslinked-title'    => '"$1" ಪುಟಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಬದಲಾವಣೆಗಳು',
 'recentchangeslinked-noresult' => 'ಸೂಚಿತ ಕಾಲದಲ್ಲಿ ಸಂಪರ್ಕ ಹೊಂದಿರುವ ಪುಟಗಳಲ್ಲಿ ಯಾವ ಬದಲಾವಣೆಗಳೂ ಇಲ್ಲ.',
 'recentchangeslinked-summary'  => "ಒಂದು ನಿರ್ದಿಷ್ಟ ಪುಟದಿಂದ (ಅಥವ ನಿರ್ದಿಷ್ಟ ವರ್ಗಕ್ಕೆ ಸೇರಿರುವ ಪುಟಗಳಿಂದ) ಸಂಪರ್ಕ ಹೊಂದಿರುವ ಪುಟಗಳಲ್ಲಿ ಇತ್ತೀಚೆಗೆ ಮಾಡಲಾಗಿರುವ ಬದಲಾವಣೆಗಳನ್ನು ಈ ಕೆಳಗೆ ಪಟ್ಟಿ ಮಾಡಲಾಗಿದೆ. 
@@ -1058,6 +1056,7 @@ $2',
 'listfiles_description' => 'ವಿವರ',
 
 # File description page
+'file-anchor-link'          => 'ಚಿತ್ರ',
 'filehist'                  => 'ಕಡತದ ಇತಿಹಾಸ',
 'filehist-help'             => 'ದಿನ/ಕಾಲ ಒತ್ತಿದರೆ ಆ ಸಮಯದಲ್ಲಿ ಈ ಕಡತದ ವಸ್ತುಸ್ಥಿತಿ ತೋರುತ್ತದೆ.',
 'filehist-deleteall'        => 'ಎಲ್ಲವನ್ನೂ ಅಳಿಸು',
@@ -1072,8 +1071,6 @@ $2',
 'linkstoimage'              => 'ಈ ಕೆಳಗಿನ {{PLURAL:$1|ಪುಟವು|$1 ಪುಟಗಳು}} ಈ ಚಿತ್ರಕ್ಕೆ ಸಂಪರ್ಕ {{PLURAL:$1|ಹೊಂದಿದೆ|ಹೊಂದಿವೆ}}:',
 'nolinkstoimage'            => 'ಈ ಫೈಲಿಗೆ ಯಾವ ಪುಟವೂ ಸಂಪರ್ಕ ಹೊಂದಿಲ್ಲ.',
 'sharedupload'              => 'ಈ ಫೈಲು $1 ಇಂದ. ಇದು ಇತರ ಯೋಜನೆಗಳಲ್ಲಿ ಉಪಯೋಗದಲ್ಲಿರಬಹುದು.',
-'noimage'                   => 'ಈ ಹೆಸರಿನ ಫೈಲು ಯಾವುದೂ ಇಲ್ಲ. ಆದರೆ ನೀವು ಅದನ್ನು $1.',
-'noimage-linktext'          => 'ಅಪ್ಲೋಡ್ ಮಾಡಿ',
 'uploadnewversion-linktext' => 'ಈ ಫೈಲಿನ ಹೊಸ ಆವೃತ್ತಿಯನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ',
 
 # File deletion
@@ -1721,6 +1718,7 @@ $1',
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags

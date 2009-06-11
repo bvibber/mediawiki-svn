@@ -158,7 +158,7 @@ $specialPageAliases = array(
 
 $magicWords = array(
 	'redirect'              => array( '0', '#REDIRECIONAMENTO', '#REDIRECT' ),
-	'currentmonth'          => array( '1', 'MESATUAL', 'CURRENTMONTH' ),
+	'currentmonth'          => array( '1', 'MESATUAL', 'CURRENTMONTH', 'CURRENTMONTH2' ),
 	'currentmonthname'      => array( '1', 'NOMEDOMESATUAL', 'CURRENTMONTHNAME' ),
 	'currentday'            => array( '1', 'DIAATUAL', 'CURRENTDAY' ),
 	'currentday2'           => array( '1', 'DIAATUAL2', 'CURRENTDAY2' ),
@@ -166,7 +166,7 @@ $magicWords = array(
 	'currentyear'           => array( '1', 'ANOATUAL', 'CURRENTYEAR' ),
 	'currenttime'           => array( '1', 'HORARIOATUAL', 'CURRENTTIME' ),
 	'currenthour'           => array( '1', 'HORAATUAL', 'CURRENTHOUR' ),
-	'localmonth'            => array( '1', 'MESLOCAL', 'LOCALMONTH' ),
+	'localmonth'            => array( '1', 'MESLOCAL', 'LOCALMONTH', 'LOCALMONTH2' ),
 	'localmonthname'        => array( '1', 'NOMEDOMESLOCAL', 'LOCALMONTHNAME' ),
 	'localday'              => array( '1', 'DIALOCAL', 'LOCALDAY' ),
 	'localday2'             => array( '1', 'DIALOCAL2', 'LOCALDAY2' ),
@@ -860,7 +860,6 @@ A justificativa apresentada por $3 foi ''$2''",
 Legenda: (atu) = diferenças da versão atual,
 (ult) = diferença da versão anterior, m = edição menor',
 'history-fieldset-title' => 'Navegar pelo histórico',
-'deletedrev'             => '[eliminada]',
 'histfirst'              => 'Mais antigas',
 'histlast'               => 'Mais recentes',
 'historysize'            => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -875,69 +874,67 @@ Poderá ter sido eliminada da wiki ou renomeada.
 Tente [[Special:Search|pesquisar na wiki]] por páginas relevantes.',
 
 # Revision deletion
-'rev-deleted-comment'            => '(comentário removido)',
-'rev-deleted-user'               => '(nome de usuário removido)',
-'rev-deleted-event'              => '(entrada removida)',
-'rev-deleted-text-permission'    => "Esta revisão desta página foi '''removida'''.
+'rev-deleted-comment'         => '(comentário removido)',
+'rev-deleted-user'            => '(nome de usuário removido)',
+'rev-deleted-event'           => '(entrada removida)',
+'rev-deleted-text-permission' => "Esta revisão desta página foi '''removida'''.
 Poderão existir detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de eliminação].",
-'rev-deleted-text-unhide'        => "Esta revisão desta página foi '''removida'''.
+'rev-deleted-text-unhide'     => "Esta revisão desta página foi '''removida'''.
 Poderão existir detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de eliminação].
 Como administrador, você ainda pode [$1 ver esta revisão] se desejar continuar.",
-'rev-deleted-text-view'          => "A revisão desta página foi '''removida'''.
+'rev-deleted-text-view'       => "A revisão desta página foi '''removida'''.
 Como administrador desta wiki você pode visualizá-la;
 mais detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de eliminação].",
-'rev-deleted-no-diff'            => "Você não pode ver esta modificação porque uma das revisões foi '''removida'''.
+'rev-deleted-no-diff'         => "Você não pode ver esta modificação porque uma das revisões foi '''removida'''.
 Podem haver detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de eliminação].",
-'rev-deleted-unhide-diff'        => "Uma das revisões destas diferenças foi '''removida dos arquivos públicos'''.
+'rev-deleted-unhide-diff'     => "Uma das revisões destas diferenças foi '''removida dos arquivos públicos'''.
 Poderá haver detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminações].
 Como administrador, você pode mesmo assim [$1 ver estas diferenças], se desejar prosseguir.",
-'rev-delundel'                   => 'mostrar/esconder',
-'revisiondelete'                 => 'Eliminar/restaurar edições',
-'revdelete-nooldid-title'        => 'Nenhuma revisão selecionada',
-'revdelete-nooldid-text'         => 'Você ou não especificou uma(s) edição(ões) de destino, a edição especificada não existe ou, ainda, você está tentando ocultar a edição atual.',
-'revdelete-nologtype-title'      => 'Tipo de registo não especificado',
-'revdelete-nologtype-text'       => 'Você não especificou um tipo de registro sobre o qual executar esta ação.',
-'revdelete-toomanytargets-title' => 'Demasiados alvos',
-'revdelete-toomanytargets-text'  => 'Você especificou demasiados tipos de alvos sobre os quais executar esta ação.',
-'revdelete-nologid-title'        => 'Entrada de registro inválida',
-'revdelete-nologid-text'         => 'Você não especificou um evento de registro alvo para executar esta função ou a entrada especificada não existe.',
-'revdelete-selected'             => "'''{{PLURAL:$2|Edição selecionada|Edições selecionadas}} de [[:$1]]:'''",
-'logdelete-selected'             => "'''{{PLURAL:$1|Evento de registro selecionado|Eventos de registro selecionados}}:'''",
-'revdelete-text'                 => "'''Revisões eliminadas e eventos continuarão aparecendo no histórico da página e nos registros, apesar de o seu conteúdo textual estar inacessível ao público.'''
+'rev-delundel'                => 'mostrar/esconder',
+'revisiondelete'              => 'Eliminar/restaurar edições',
+'revdelete-nooldid-title'     => 'Nenhuma revisão selecionada',
+'revdelete-nooldid-text'      => 'Você ou não especificou uma(s) edição(ões) de destino, a edição especificada não existe ou, ainda, você está tentando ocultar a edição atual.',
+'revdelete-nologtype-title'   => 'Tipo de registo não especificado',
+'revdelete-nologtype-text'    => 'Você não especificou um tipo de registro sobre o qual executar esta ação.',
+'revdelete-nologid-title'     => 'Entrada de registro inválida',
+'revdelete-nologid-text'      => 'Você não especificou um evento de registro alvo para executar esta função ou a entrada especificada não existe.',
+'revdelete-selected'          => "'''{{PLURAL:$2|Edição selecionada|Edições selecionadas}} de [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Evento de registro selecionado|Eventos de registro selecionados}}:'''",
+'revdelete-text'              => "'''Revisões eliminadas e eventos continuarão aparecendo no histórico da página e nos registros, apesar de o seu conteúdo textual estar inacessível ao público.'''
 
 Outros administradores no {{SITENAME}} continuarão podendo acessar ao conteúdo escondido e restaurá-lo através desta mesma ''interface'', a menos que uma restrição adicional seja definida.
 Por favor confirme que deseja fazê-lo, que entende as consequências e que está fazendo isto de acordo com [[{{MediaWiki:Policy-url}}|a política]].",
-'revdelete-suppress-text'        => "A supressão deverá ser usada '''apenas''' para os seguintes casos:
+'revdelete-suppress-text'     => "A supressão deverá ser usada '''apenas''' para os seguintes casos:
 * Informação pessoal inapropriada
 *: ''endereços de domicílio e números de telefone, números da segurança social, etc''",
-'revdelete-legend'               => 'Definir restrições de visualização',
-'revdelete-hide-text'            => 'Ocultar texto da edição',
-'revdelete-hide-name'            => 'Ocultar acção e alvo',
-'revdelete-hide-comment'         => 'Esconder comentário de edição',
-'revdelete-hide-user'            => 'Esconder nome de usuário/IP do editor',
-'revdelete-hide-restricted'      => 'Suprimir dados de administradores assim como de outros',
-'revdelete-suppress'             => 'Suprimir dados de administradores, bem como de outros',
-'revdelete-hide-image'           => 'Ocultar conteúdos do arquivo',
-'revdelete-unsuppress'           => 'Remover restrições das edições restauradas',
-'revdelete-log'                  => 'Comentário de registro:',
-'revdelete-submit'               => 'Aplicar à edição selecionada',
-'revdelete-logentry'             => 'modificou visibilidade de revisão para [[$1]]',
-'logdelete-logentry'             => 'alterada visibilidade de eventos para [[$1]]',
-'revdelete-success'              => 'Visibilidade de edição definida com sucesso.',
-'revdelete-failure'              => "'''Visibilidade da revisão não poderia ser configurada.'''",
-'logdelete-success'              => "'''Visibilidade de evento definida com sucesso.'''",
-'revdel-restore'                 => 'Alterar visibilidade',
-'pagehist'                       => 'Histórico da página',
-'deletedhist'                    => 'Histórico de eliminações',
-'revdelete-content'              => 'conteúdo',
-'revdelete-summary'              => 'sumário de edição',
-'revdelete-uname'                => 'nome do usuário',
-'revdelete-restricted'           => 'restrições a administradores aplicadas',
-'revdelete-unrestricted'         => 'restrições a administradores removidas',
-'revdelete-hid'                  => 'ocultado $1',
-'revdelete-unhid'                => 'desocultado $1',
-'revdelete-log-message'          => '$1 para $2 {{PLURAL:$2|revisão|revisões}}',
-'logdelete-log-message'          => '$1 para $2 {{PLURAL:$2|evento|eventos}}',
+'revdelete-legend'            => 'Definir restrições de visualização',
+'revdelete-hide-text'         => 'Ocultar texto da edição',
+'revdelete-hide-name'         => 'Ocultar acção e alvo',
+'revdelete-hide-comment'      => 'Esconder comentário de edição',
+'revdelete-hide-user'         => 'Esconder nome de usuário/IP do editor',
+'revdelete-hide-restricted'   => 'Suprimir dados de administradores assim como de outros',
+'revdelete-suppress'          => 'Suprimir dados de administradores, bem como de outros',
+'revdelete-hide-image'        => 'Ocultar conteúdos do arquivo',
+'revdelete-unsuppress'        => 'Remover restrições das edições restauradas',
+'revdelete-log'               => 'Comentário de registro:',
+'revdelete-submit'            => 'Aplicar à edição selecionada',
+'revdelete-logentry'          => 'modificou visibilidade de revisão para [[$1]]',
+'logdelete-logentry'          => 'alterada visibilidade de eventos para [[$1]]',
+'revdelete-success'           => 'Visibilidade de edição definida com sucesso.',
+'revdelete-failure'           => "'''Visibilidade da revisão não poderia ser configurada.'''",
+'logdelete-success'           => "'''Visibilidade de evento definida com sucesso.'''",
+'revdel-restore'              => 'Alterar visibilidade',
+'pagehist'                    => 'Histórico da página',
+'deletedhist'                 => 'Histórico de eliminações',
+'revdelete-content'           => 'conteúdo',
+'revdelete-summary'           => 'sumário de edição',
+'revdelete-uname'             => 'nome do usuário',
+'revdelete-restricted'        => 'restrições a administradores aplicadas',
+'revdelete-unrestricted'      => 'restrições a administradores removidas',
+'revdelete-hid'               => 'ocultado $1',
+'revdelete-unhid'             => 'desocultado $1',
+'revdelete-log-message'       => '$1 para $2 {{PLURAL:$2|revisão|revisões}}',
+'logdelete-log-message'       => '$1 para $2 {{PLURAL:$2|evento|eventos}}',
 
 # Suppression log
 'suppressionlog'     => 'Registro de supressões',
@@ -1050,8 +1047,8 @@ Certifique-se de que tal alteração manterá a continuidade das ações.',
 'notitlematches'                   => 'Nenhum título de página coincide',
 'textmatches'                      => 'Resultados nos textos das páginas',
 'notextmatches'                    => 'Não foi possível localizar, no conteúdo das páginas, o termo pesquisado',
-'prevn'                            => 'anteriores $1',
-'nextn'                            => 'próximos $1',
+'prevn'                            => 'anteriores {{PLURAL:$1|$1}}',
+'nextn'                            => 'próximos {{PLURAL:$1|$1}}',
 'prevn-title'                      => '$1 {{PLURAL:$1|resultado anterior|resultados anteriores}}',
 'nextn-title'                      => '{{PLURAL:$1|próximo|próximos}} $1 {{PLURAL:$1|resultado|resultados}}',
 'shown-title'                      => 'Mostrar $1 {{PLURAL:$1|resultado|resultados}} por página',
@@ -1061,9 +1058,9 @@ Certifique-se de que tal alteração manterá a continuidade das ações.',
 'searchmenu-new'                   => "'''Criar a página \"[[:\$1|\$1]]\" nesta wiki!'''",
 'searchhelp-url'                   => 'Help:Conteúdos',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Navegue pelas páginas com este prefixo]]',
-'searchprofile-articles'           => 'Páginas de conteúdo',
-'searchprofile-project'            => 'Páginas do projeto',
-'searchprofile-images'             => 'Arquivos',
+'searchprofile-articles'           => 'Artigos',
+'searchprofile-project'            => 'Ajuda',
+'searchprofile-images'             => 'Multimídia',
 'searchprofile-everything'         => 'Tudo',
 'searchprofile-advanced'           => 'Avançado',
 'searchprofile-articles-tooltip'   => 'Pesquisar em $1',
@@ -1088,6 +1085,7 @@ Certifique-se de que tal alteração manterá a continuidade das ações.',
 'showingresults'                   => "A seguir {{PLURAL:$1|é mostrado '''um''' resultado|são mostrados até '''$1''' resultados}}, iniciando no '''$2'''º.",
 'showingresultsnum'                => "A seguir {{PLURAL:$3|é mostrado '''um''' resultado|são mostrados '''$3''' resultados}}, iniciando com o '''$2'''º.",
 'showingresultstotal'              => "Exibindo {{PLURAL:$4|o resultado '''$1''' de '''$3'''|os resultados '''$1 a $2''' de '''$3'''}}",
+'showingresultsheader'             => "{{PLURAL:$5|Resulado '''$1''' de '''$3'''|Resultados '''$1 - $2''' de '''$3'''}} para '''$4'''",
 'nonefound'                        => "'''Nota''': apenas alguns espaços nominais são pesquisados por padrão. Tente utilizar o prefixo ''all:'' em sua busca, para pesquisar por todos os conteúdos desta wiki (inclusive páginas de discussão, predefinições etc), ou mesmo, utilizando o espaço nominal desejado como prefixo.",
 'search-nonefound'                 => 'Não houve resultados para a pesquisa.',
 'powersearch'                      => 'Pesquisa avançada',
@@ -1117,7 +1115,6 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desat
 'prefs-skin'                => 'Tema',
 'skin-preview'              => 'Pré-visualizar',
 'prefs-math'                => 'Matemática',
-'dateformat'                => 'Formato da data',
 'datedefault'               => 'Sem preferência',
 'prefs-datetime'            => 'Data e hora',
 'prefs-personal'            => 'Perfil de usuário',
@@ -1147,9 +1144,8 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desat
 'recentchangesdays-max'     => '(máximo: $1 {{PLURAL:$1|dia|dias}})',
 'recentchangescount'        => 'Número de edições a serem exibidas nas mudanças recentes, históricos de páginas e páginas de registos, por padrão:',
 'savedprefs'                => 'As suas preferências foram salvas.',
-'timezonelegend'            => 'Fuso horário',
+'timezonelegend'            => 'Fuso horário:',
 'localtime'                 => 'Horário local:',
-'timezoneselect'            => 'Fuso horário:',
 'timezoneuseserverdefault'  => 'Usa padrão do servidor',
 'timezoneuseoffset'         => 'Outro (especifique diferença horária)',
 'timezoneoffset'            => 'Diferença horária¹',
@@ -1378,6 +1374,8 @@ Ela deve ter menos de $1 {{PLURAL:$1|caractere|caracteres}}.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Alterações relacionadas',
+'recentchangeslinked-feed'     => 'Alterações relacionadas',
+'recentchangeslinked-toolbox'  => 'Alterações relacionadas',
 'recentchangeslinked-title'    => 'Alterações relacionadas com "$1"',
 'recentchangeslinked-noresult' => 'Não ocorreram alterações em páginas relacionadas no intervalo de tempo fornecido.',
 'recentchangeslinked-summary'  => "Esta página especial lista as alterações mais recentes de páginas que possuam um link a outra (ou de membros de uma categoria especificada).
@@ -1461,7 +1459,7 @@ Se você ainda quer carregar o seu arquivo, por favor volte e use um novo nome. 
 'sourcefilename'              => 'Nome do arquivo de origem:',
 'destfilename'                => 'Nome do arquivo de destino:',
 'upload-maxfilesize'          => 'Tamanho máximo do arquivo: $1',
-'watchthisupload'             => 'Vigiar esta página',
+'watchthisupload'             => 'Vigiar este arquivo',
 'filewasdeleted'              => 'Um arquivo com este nome foi carregado anteriormente e subsequentemente eliminado. Você precisa verificar o $1 antes de proceder ao carregamento novamente.',
 'upload-wasdeleted'           => "'''Atenção: Você está enviando um arquivo eliminado anteriormente.'''
 
@@ -1517,6 +1515,7 @@ Um clique sobre um cabeçalho de coluna altera a ordenação.',
 'listfiles_count'       => 'Versões',
 
 # File description page
+'file-anchor-link'          => 'Arquivo',
 'filehist'                  => 'Histórico do arquivo',
 'filehist-help'             => 'Clique em uma data/horário para ver o arquivo tal como ele se encontrava em tal momento.',
 'filehist-deleteall'        => 'eliminar todas',
@@ -1545,8 +1544,6 @@ Uma [[Special:WhatLinksHere/$2|listagem completa]] está disponível.',
 Por favor veja a [$2 página de descrição do arquivo] para mais informações.',
 'sharedupload-desc-here'    => 'Este arquivo é do $1 e pode ser utilizado por outros projetos.
 A descrição na sua [$2 página de descrição de arquivo] é exibida abaixo.',
-'noimage'                   => 'Não existe nenhum arquivo com este nome, mas você pode $1.',
-'noimage-linktext'          => 'carregar um',
 'uploadnewversion-linktext' => 'Carregar uma nova versão deste arquivo',
 'shared-repo-from'          => 'de $1',
 'shared-repo'               => 'um repositório compartilhado',
@@ -1778,17 +1775,21 @@ Protocolos suportados: <tt>$1</tt>',
 'newuserlog-autocreate-entry' => 'Conta criada automaticamente',
 
 # Special:ListGroupRights
-'listgrouprights'                 => 'Privilégios de grupo de usuários',
-'listgrouprights-summary'         => 'O que segue é uma lista dos grupos de usuários definidos nesta wiki, com os seus privilégios de acessos associados.
+'listgrouprights'                      => 'Privilégios de grupo de usuários',
+'listgrouprights-summary'              => 'O que segue é uma lista dos grupos de usuários definidos nesta wiki, com os seus privilégios de acessos associados.
 Pode haver [[{{MediaWiki:Listgrouprights-helppage}}|informações adicionais]] sobre privilégios individuais.',
-'listgrouprights-group'           => 'Grupo',
-'listgrouprights-rights'          => 'Privilégios',
-'listgrouprights-helppage'        => 'Help:Privilégios de grupo',
-'listgrouprights-members'         => '(lista de membros)',
-'listgrouprights-addgroup'        => 'Podem adicionar {{PLURAL:$2|grupo|grupos}}: $1',
-'listgrouprights-removegroup'     => 'Podem remover {{PLURAL:$2|grupo|grupos}}: $1',
-'listgrouprights-addgroup-all'    => 'Podem adicionar todos os grupos',
-'listgrouprights-removegroup-all' => 'Podem remover todos os grupos',
+'listgrouprights-group'                => 'Grupo',
+'listgrouprights-rights'               => 'Privilégios',
+'listgrouprights-helppage'             => 'Help:Privilégios de grupo',
+'listgrouprights-members'              => '(lista de membros)',
+'listgrouprights-addgroup'             => 'Podem adicionar {{PLURAL:$2|grupo|grupos}}: $1',
+'listgrouprights-removegroup'          => 'Podem remover {{PLURAL:$2|grupo|grupos}}: $1',
+'listgrouprights-addgroup-all'         => 'Podem adicionar todos os grupos',
+'listgrouprights-removegroup-all'      => 'Podem remover todos os grupos',
+'listgrouprights-addgroup-self'        => 'Pode adicionar {{PLURAL:$2|grupo|grupos}} à própria conta: $1',
+'listgrouprights-removegroup-self'     => 'Pode remover {{PLURAL:$2|grupo|grupos}} da própria conta: $1',
+'listgrouprights-addgroup-self-all'    => 'Pode adicionar todos os grupos à própria conta',
+'listgrouprights-removegroup-self-all' => 'Pode remover todos os grupos da própria conta',
 
 # E-mail user
 'mailnologin'      => 'Nenhum endereço de envio',
@@ -2148,7 +2149,7 @@ Consulte a [[Special:IPBlockList|lista de IPs bloqueados]] para rever os bloquei
 'ipblocklist-submit'              => 'Pesquisar',
 'blocklistline'                   => '$1, $2 bloqueou $3 ($4)',
 'infiniteblock'                   => 'infinito',
-'expiringblock'                   => 'expira em $1',
+'expiringblock'                   => 'expira em $1 $2',
 'anononlyblock'                   => 'anôn. apenas',
 'noautoblockblock'                => 'bloqueio automático desabilitado',
 'createaccountblock'              => 'criação de conta de usuário bloqueada',
@@ -2581,6 +2582,7 @@ Caso o arquivo tenha sido modificado a partir do seu estado original, alguns det
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags
@@ -2831,10 +2833,6 @@ Caso o arquivo tenha sido modificado a partir do seu estado original, alguns det
 'exif-gpslongitude-e' => 'Longitude Leste',
 'exif-gpslongitude-w' => 'Longitude Oeste',
 
-# Pseudotags used for GPSAltitudeRef
-'exif-gpsaltitude-0' => 'Metros acima do nível do mar',
-'exif-gpsaltitude-1' => 'Metros abaixo do nível do mar',
-
 'exif-gpsstatus-a' => 'Medição em progresso',
 'exif-gpsstatus-v' => 'Interoperabilidade de medição',
 
@@ -2845,11 +2843,6 @@ Caso o arquivo tenha sido modificado a partir do seu estado original, alguns det
 'exif-gpsspeed-k' => 'Quilómetros por hora',
 'exif-gpsspeed-m' => 'Milhas por hora',
 'exif-gpsspeed-n' => 'Nós',
-
-# Pseudotags used for GPSDestDistanceRef
-'exif-gpsdestdistance-k' => 'Quilômetros',
-'exif-gpsdestdistance-m' => 'Milhas',
-'exif-gpsdestdistance-n' => 'Milhas náuticas',
 
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
 'exif-gpsdirection-t' => 'Direção real',

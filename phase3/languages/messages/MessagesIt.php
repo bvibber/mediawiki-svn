@@ -19,6 +19,7 @@
  * @author Gianfranco
  * @author Martorell
  * @author Marzedu
+ * @author McDutchie
  * @author Melos
  * @author Nemo bis
  * @author Nick1915
@@ -165,7 +166,7 @@ $specialPageAliases = array(
 
 $magicWords = array(
 	'redirect'              => array( '0', '#RINVIA', '#RINVIO', '#REDIRECT' ),
-	'currentmonth'          => array( '1', 'MESECORRENTE', 'CURRENTMONTH' ),
+	'currentmonth'          => array( '1', 'MESECORRENTE', 'CURRENTMONTH', 'CURRENTMONTH2' ),
 	'currentmonthname'      => array( '1', 'NOMEMESECORRENTE', 'CURRENTMONTHNAME' ),
 	'currentmonthnamegen'   => array( '1', 'NOMEMESECORRENTEGEN', 'CURRENTMONTHNAMEGEN' ),
 	'currentmonthabbrev'    => array( '1', 'MESECORRENTEABBREV', 'CURRENTMONTHABBREV' ),
@@ -175,7 +176,7 @@ $magicWords = array(
 	'currentyear'           => array( '1', 'ANNOCORRENTE', 'CURRENTYEAR' ),
 	'currenttime'           => array( '1', 'ORARIOATTUALE', 'CURRENTTIME' ),
 	'currenthour'           => array( '1', 'ORACORRENTE', 'CURRENTHOUR' ),
-	'localmonth'            => array( '1', 'MESELOCALE', 'LOCALMONTH' ),
+	'localmonth'            => array( '1', 'MESELOCALE', 'LOCALMONTH', 'LOCALMONTH2' ),
 	'localmonthname'        => array( '1', 'NOMEMESELOCALE', 'LOCALMONTHNAME' ),
 	'localmonthnamegen'     => array( '1', 'NOMEMESELOCALEGEN', 'LOCALMONTHNAMEGEN' ),
 	'localmonthabbrev'      => array( '1', 'MESELOCALEABBREV', 'LOCALMONTHABBREV' ),
@@ -263,7 +264,7 @@ $messages = array(
 'tog-diffonly'                => 'Non visualizzare il contenuto della pagina dopo il confronto tra versioni',
 'tog-showhiddencats'          => 'Mostra categorie nascoste',
 'tog-noconvertlink'           => 'Disattiva la conversione dei titoli dei link',
-'tog-norollbackdiff'          => 'Non mostrare il diff dopo aver effettuato un rollback',
+'tog-norollbackdiff'          => 'Non mostrare il confronto tra versioni dopo aver effettuato un rollback',
 
 'underline-always'  => 'Sempre',
 'underline-never'   => 'Mai',
@@ -388,6 +389,7 @@ I seguenti collegamenti sono in lingua inglese:
 'permalink'         => 'Link permanente',
 'print'             => 'Stampa',
 'edit'              => 'Modifica',
+'view'              => 'Leggi',
 'create'            => 'Crea',
 'editthispage'      => 'Modifica questa pagina',
 'create-this-page'  => 'Crea questa pagina',
@@ -518,9 +520,9 @@ L\'ultima query inviata al database è stata:
 "$1"
 richiamata dalla funzione "$2".
 MySQL ha restituito il seguente errore "$3: $4".',
-'laggedslavemode'      => 'Attenzione: la pagina potrebbe non riportare gli aggiornamenti più recenti.',
+'laggedslavemode'      => "'''Attenzione:''' la pagina potrebbe non riportare gli aggiornamenti più recenti.",
 'readonly'             => 'Database bloccato',
-'enterlockreason'      => 'Indica il motivo del blocco, specificando il momento in cui è presumibile che venga rimosso',
+'enterlockreason'      => 'Indicare il motivo del blocco, specificando il momento in cui è presumibile che venga rimosso',
 'readonlytext'         => "In questo momento il database è bloccato e non sono possibili aggiunte o modifiche alle pagine. Il blocco è di solito legato a operazioni di manutenzione ordinaria, al termine delle quali il database è di nuovo accessibile.
 
 L'amministratore di sistema che ha imposto il blocco ha fornito questa spiegazione: $1",
@@ -835,14 +837,14 @@ Sembra che sia stata cancellata.',
 Esiste già.',
 
 # Parser/template warnings
-'expensive-parserfunction-warning'        => "Attenzione: Questa pagina contiene troppe chiamate alle parser functions.
+'expensive-parserfunction-warning'        => "'''Attenzione:''' Questa pagina contiene troppe chiamate alle parser functions.
 
 Dovrebbe averne meno di $2, al momento ce {{PLURAL:$1|n'è $1|ne sono $1}}.",
 'expensive-parserfunction-category'       => 'Pagine con troppe chiamate alle parser functions',
-'post-expand-template-inclusion-warning'  => 'Attenzione: la dimensione dei template inclusi è troppo grande.
-Alcuni template non verranno inclusi.',
+'post-expand-template-inclusion-warning'  => "'''Attenzione:''' la dimensione dei template inclusi è troppo grande.
+Alcuni template non verranno inclusi.",
 'post-expand-template-inclusion-category' => 'Pagine per le quali la dimensione dei template inclusi supera il limite consentito',
-'post-expand-template-argument-warning'   => 'Attenzione: questa pagina contiene almeno un argomento di un template che ha una dimensione troppo grande per essere espanso. Questi argomenti verranno omessi.',
+'post-expand-template-argument-warning'   => "'''Attenzione:''' questa pagina contiene uno o più argomenti di template troppo grandi per essere espansi. Tali argomenti verranno omessi.",
 'post-expand-template-argument-category'  => 'Pagine contenenti template con argomenti mancanti',
 'parser-template-loop-warning'            => 'Rilevato loop del template: [[$1]]',
 'parser-template-recursion-depth-warning' => 'È stato raggiunto il limite di ricorsione nel template ($1)',
@@ -878,7 +880,6 @@ La motivazione del blocco fornita da $3 è la seguente: ''$2''",
 
 Legenda: '''({{int:cur}})''' = differenze con la versione corrente, '''({{int:last}})''' = differenze con la versione precedente, '''{{int:minoreditletter}}''' = modifica minore",
 'history-fieldset-title' => 'Scorri nella cronologia',
-'deletedrev'             => '[cancellata]',
 'histfirst'              => 'Prima',
 'histlast'               => 'Ultima',
 'historysize'            => '({{PLURAL:$1|1 byte|$1 byte}})',
@@ -891,68 +892,79 @@ Legenda: '''({{int:cur}})''' = differenze con la versione corrente, '''({{int:la
 'history-feed-empty'          => 'La pagina richiesta non esiste; potrebbe essere stata cancellata dal sito o rinominata. Verificare con la [[Special:Search|pagina di ricerca]] se vi sono nuove pagine.',
 
 # Revision deletion
-'rev-deleted-comment'            => '(commento rimosso)',
-'rev-deleted-user'               => '(nome utente rimosso)',
-'rev-deleted-event'              => '(azione del log rimossa)',
-'rev-deleted-text-permission'    => "Questa versione della pagina è stata '''cancellata'''.
+'rev-deleted-comment'         => '(commento rimosso)',
+'rev-deleted-user'            => '(nome utente rimosso)',
+'rev-deleted-event'           => '(azione del log rimossa)',
+'rev-deleted-text-permission' => "Questa versione della pagina è stata '''cancellata'''.
 Consultare il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.",
-'rev-deleted-text-unhide'        => "Questa versione della pagina è stata '''cancellata'''.
+'rev-deleted-text-unhide'     => "Questa versione della pagina è stata '''cancellata'''.
 Consultare il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.
 Agli amministratori è ancora consentito [$1 visualizzare questa versione] se necessario.",
-'rev-deleted-text-view'          => "Questa versione della pagina è stata '''cancellata'''.
+'rev-deleted-text-view'       => "Questa versione della pagina è stata '''cancellata'''.
 Gli amministratori possono ancora visualizzarla; consultare il [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.",
-'rev-deleted-no-diff'            => "Non è possibile visualizzare questo diff perché una delle revisioni è stata '''cancellata'''.
+'rev-deleted-no-diff'         => "Non è possibile visualizzare questo confronto tra versioni perché una delle revisioni è stata '''cancellata'''.
 Consultare il [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.",
-'rev-deleted-unhide-diff'        => "Una delle revisioni di questa diff è stata '''cancellata'''.
+'rev-deleted-unhide-diff'     => "Una delle revisioni di questo confronto tra versioni è stata '''cancellata'''.
 Consultare il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.
-Agli amministratori è ancora consentito [$1 visualizzare questa diff] se necessario.",
-'rev-delundel'                   => 'mostra/nascondi',
-'revisiondelete'                 => 'Cancella o ripristina versioni',
-'revdelete-nooldid-title'        => 'Versione non specificata',
-'revdelete-nooldid-text'         => 'Non è stata specificata alcuna versione della pagina su cui eseguire questa funzione.',
-'revdelete-nologtype-title'      => 'Nessun tipo di registro specificato',
-'revdelete-nologtype-text'       => "Non è stato specificato alcun tipo di registro su cui eseguire l'azione.",
-'revdelete-toomanytargets-title' => 'Troppi target',
-'revdelete-toomanytargets-text'  => "Hai specificato troppi tipi di target per eseguire quest'operazione.",
-'revdelete-nologid-title'        => 'Errore di indicazione del log',
-'revdelete-nologid-text'         => 'Per eseguire questa funzione non hai specificato un target per il log oppure il log non esiste.',
-'revdelete-selected'             => "'''{{PLURAL:$2|Versione selezionata|Versioni selezionate}} di [[:$1]]:'''",
-'logdelete-selected'             => "'''{{PLURAL:$1|Evento del registro selezionato|Eventi del registro selezionati}}:'''",
-'revdelete-text'                 => "'''Le versioni cancellate restano visibili nella cronologia della pagina, mentre il testo contenuto non è accessibile al pubblico.'''
+Agli amministratori è ancora consentito [$1 visualizzare il confronto] se necessario.",
+'rev-delundel'                => 'mostra/nascondi',
+'revisiondelete'              => 'Cancella o ripristina versioni',
+'revdelete-nooldid-title'     => 'Versione non specificata',
+'revdelete-nooldid-text'      => 'Non è stata specificata alcuna versione della pagina su cui eseguire questa funzione, la versione specificata non esiste oppure si sta tentando di nascondere la versione corrente.',
+'revdelete-nologtype-title'   => 'Nessun tipo di registro specificato',
+'revdelete-nologtype-text'    => "Non è stato specificato alcun tipo di registro su cui eseguire l'azione.",
+'revdelete-nologid-title'     => 'Errore di indicazione del log',
+'revdelete-nologid-text'      => 'Non è stato specificato un evento del registro su cui eseguire questa funzione oppure il log non esiste.',
+'revdelete-no-file'           => 'Il file specificato non esiste.',
+'revdelete-show-file-confirm' => 'Si desidera visualizzare la versione cancellata del file "<nowiki>$1</nowiki>" del $2 alle $3?',
+'revdelete-show-file-submit'  => 'Sì',
+'revdelete-selected'          => "'''{{PLURAL:$2|Versione selezionata|Versioni selezionate}} di [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Evento del registro selezionato|Eventi del registro selezionati}}:'''",
+'revdelete-text'              => "'''Le versioni cancellate restano visibili nella cronologia della pagina, mentre il testo contenuto non è accessibile al pubblico.'''
 
 Gli altri amministratori di {{SITENAME}} potranno accedere comunque ai contenuti nascosti e ripristinarli attraverso questa stessa interfaccia, se non sono state impostate altre limitazioni in fase di installazione del sito.
 Conferma che è tua intenzione procedere a tale cancellazione, che hai piena consapevolezza delle conseguenze della tua azione e che essa è conforme alle linee guida stabilite in [[{{MediaWiki:Policy-url}}]].",
-'revdelete-suppress-text'        => "La rimozione deve essere utilizzata '''unicamente''' nei seguenti casi:
+'revdelete-suppress-text'     => "La rimozione deve essere utilizzata '''unicamente''' nei seguenti casi:
 * Dati personali inopportuni
 *: ''indirizzi, numeri di telefono, codici fiscali, ecc.''",
-'revdelete-legend'               => 'Imposta le seguenti limitazioni sulle versioni cancellate:',
-'revdelete-hide-text'            => 'Nascondi il testo della versione',
-'revdelete-hide-name'            => 'Nascondi azione e oggetto della stessa',
-'revdelete-hide-comment'         => "Nascondi l'oggetto della modifica",
-'revdelete-hide-user'            => "Nascondi il nome o l'indirizzo IP dell'autore",
-'revdelete-hide-restricted'      => 'Nascondi le informazioni indicate anche agli amministratori',
-'revdelete-suppress'             => 'Nascondi le informazioni anche agli amministratori',
-'revdelete-hide-image'           => 'Nascondi i contenuti del file',
-'revdelete-unsuppress'           => 'Elimina le limitazioni sulle revisioni ripristinate',
-'revdelete-log'                  => 'Commento per il log:',
-'revdelete-submit'               => 'Applica alla revisione selezionata',
-'revdelete-logentry'             => 'ha modificato la visibilità per una revisione di [[$1]]',
-'logdelete-logentry'             => "ha modificato la visibilità dell'evento [[$1]]",
-'revdelete-success'              => "'''Visibilità della revisione impostata correttamente.'''",
-'revdelete-failure'              => "'''La visibilità della versione non può essere impostata.'''",
-'logdelete-success'              => "'''Visibilità dell'evento impostata correttamente.'''",
-'revdel-restore'                 => 'Cambia la visibilità',
-'pagehist'                       => 'Cronologia della pagina',
-'deletedhist'                    => 'Cronologia cancellata',
-'revdelete-content'              => 'contenuto',
-'revdelete-summary'              => 'riassunto della modifica',
-'revdelete-uname'                => 'nome utente',
-'revdelete-restricted'           => 'limitazioni ai soli amministratori attivate',
-'revdelete-unrestricted'         => 'limitazioni ai soli amministratori rimosse',
-'revdelete-hid'                  => 'nascondi $1',
-'revdelete-unhid'                => 'rendi visibile $1',
-'revdelete-log-message'          => '$1 per $2 {{PLURAL:$2|revisione|revisioni}}',
-'logdelete-log-message'          => '$1 per $2 {{PLURAL:$2|evento|eventi}}',
+'revdelete-legend'            => 'Imposta le seguenti limitazioni sulle versioni cancellate:',
+'revdelete-hide-text'         => 'Nascondi il testo della versione',
+'revdelete-hide-name'         => 'Nascondi azione e oggetto della stessa',
+'revdelete-hide-comment'      => "Nascondi l'oggetto della modifica",
+'revdelete-hide-user'         => "Nascondi il nome o l'indirizzo IP dell'autore",
+'revdelete-hide-restricted'   => 'Nascondi le informazioni indicate anche agli amministratori',
+'revdelete-suppress'          => 'Nascondi le informazioni anche agli amministratori',
+'revdelete-hide-image'        => 'Nascondi i contenuti del file',
+'revdelete-unsuppress'        => 'Elimina le limitazioni sulle revisioni ripristinate',
+'revdelete-log'               => 'Commento per il log:',
+'revdelete-submit'            => 'Applica alla revisione selezionata',
+'revdelete-logentry'          => 'ha modificato la visibilità per una revisione di [[$1]]',
+'logdelete-logentry'          => "ha modificato la visibilità dell'evento [[$1]]",
+'revdelete-success'           => "'''Visibilità della revisione impostata correttamente.'''",
+'revdelete-failure'           => "'''La visibilità della versione non può essere impostata:'''
+$1",
+'logdelete-success'           => "'''Visibilità dell'evento impostata correttamente.'''",
+'logdelete-failure'           => "'''La visibilità dell'evento non può essere impostata:'''
+$1",
+'revdel-restore'              => 'Cambia la visibilità',
+'pagehist'                    => 'Cronologia della pagina',
+'deletedhist'                 => 'Cronologia cancellata',
+'revdelete-content'           => 'contenuto',
+'revdelete-summary'           => 'riassunto della modifica',
+'revdelete-uname'             => 'nome utente',
+'revdelete-restricted'        => 'limitazioni ai soli amministratori attivate',
+'revdelete-unrestricted'      => 'limitazioni ai soli amministratori rimosse',
+'revdelete-hid'               => 'nascondi $1',
+'revdelete-unhid'             => 'rendi visibile $1',
+'revdelete-log-message'       => '$1 per $2 {{PLURAL:$2|revisione|revisioni}}',
+'logdelete-log-message'       => '$1 per $2 {{PLURAL:$2|evento|eventi}}',
+'revdelete-hide-current'      => "Impossibile nascondere l'oggetto con data $1 $2 in quanto è la revisione corrente.",
+'revdelete-show-no-access'    => 'Impossibile mostrare l\'oggetto con data $1 $2 in quanto è stato identificato come "riservato" e non si dispone del relativo accesso.',
+'revdelete-modify-no-access'  => 'Impossibile modificare l\'oggetto con data $1 $2 in quanto è stato identificato come "riservato" e non si dispone del relativo accesso.',
+'revdelete-modify-missing'    => "Impossibile modificare l'oggetto con ID $1 in quanto non è presente nel database.",
+'revdelete-no-change'         => "'''Attenzione:''' l'oggetto con data $1 $2 aveva già le impostazioni di visibilità richieste.",
+'revdelete-concurrent-change' => "Impossibile modificare l'oggetto con data $1 $2 in quanto il suo stato è stato modificato da un altro utente mentre se ne tentava la modifica.",
+'revdelete-only-restricted'   => "Non è possibile nascondere oggetti alla vista degli amministratori senza selezionare almeno un'altra delle opzioni di rimozione.",
 
 # Suppression log
 'suppressionlog'     => 'Log delle soppressioni',
@@ -994,7 +1006,7 @@ Conferma che è tua intenzione procedere a tale cancellazione, che hai piena con
 'compareselectedversions'  => 'Confronta le versioni selezionate',
 'showhideselectedversions' => 'Mostra/nascondi versioni selezionate',
 'visualcomparison'         => 'Confronto visuale',
-'wikicodecomparison'       => 'Confronto del wikitext',
+'wikicodecomparison'       => 'Confronto tra comandi wiki',
 'editundo'                 => 'annulla',
 'diff-multi'               => '({{PLURAL:$1|Una revisione intermedia non mostrata|$1 revisioni intermedie non mostrate}}.)',
 'diff-movedto'             => 'spostato a $1',
@@ -1064,8 +1076,8 @@ Conferma che è tua intenzione procedere a tale cancellazione, che hai piena con
 'notitlematches'                   => 'Nessuna corrispondenza nei titoli delle pagine',
 'textmatches'                      => 'Corrispondenze nel testo delle pagine',
 'notextmatches'                    => 'Nessuna corrispondenza nel testo delle pagine',
-'prevn'                            => 'precedenti $1',
-'nextn'                            => 'successivi $1',
+'prevn'                            => '{{PLURAL:$1|precedente|precedenti $1}}',
+'nextn'                            => '{{PLURAL:$1|successivo|successivi $1}}',
 'prevn-title'                      => '{{PLURAL:$1|Risultato precedente|$1 risultati precedenti}}',
 'nextn-title'                      => '{{PLURAL:$1|Risultato successivo|$1 risultati successivi}}',
 'shown-title'                      => 'Mostra {{PLURAL:$1|un risultato|$1 risultati}} per pagina',
@@ -1075,8 +1087,8 @@ Conferma che è tua intenzione procedere a tale cancellazione, che hai piena con
 'searchmenu-new'                   => "'''Crea la pagina \"[[:\$1]]\" su questo sito'''",
 'searchhelp-url'                   => 'Help:Indice',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Visualizza le pagine con questo prefisso]]',
-'searchprofile-articles'           => 'Voci',
-'searchprofile-project'            => 'Aiuto',
+'searchprofile-articles'           => 'Pagine di contenuti',
+'searchprofile-project'            => 'Pagine di aiuto e relative al progetto',
 'searchprofile-images'             => 'Multimedia',
 'searchprofile-everything'         => 'Tutto',
 'searchprofile-advanced'           => 'Avanzata',
@@ -1097,6 +1109,7 @@ Conferma che è tua intenzione procedere a tale cancellazione, che hai piena con
 'search-mwsuggest-disabled'        => 'senza suggerimenti',
 'search-relatedarticle'            => 'Risultati correlati',
 'mwsuggest-disable'                => 'Disattiva suggerimenti AJAX',
+'searcheverything-enable'          => 'Cerca in tutti i namespace',
 'searchrelated'                    => 'correlati',
 'searchall'                        => 'tutti',
 'showingresults'                   => "Di seguito {{PLURAL:$1|viene presentato al massimo '''1''' risultato|vengono presentati al massimo '''$1''' risultati}} a partire dal numero '''$2'''.",
@@ -1110,6 +1123,9 @@ Conferma che è tua intenzione procedere a tale cancellazione, che hai piena con
 'powersearch-ns'                   => 'Cerca nei namespace:',
 'powersearch-redir'                => 'Elenca redirect',
 'powersearch-field'                => 'Cerca',
+'powersearch-togglelabel'          => 'Seleziona:',
+'powersearch-toggleall'            => 'Tutti',
+'powersearch-togglenone'           => 'Nessuno',
 'search-external'                  => 'Ricerca esterna',
 'searchdisabled'                   => 'La ricerca interna di {{SITENAME}} non è attiva; nel frattempo si può provare ad usare un motore di ricerca esterno come Google. (Si noti però che i contenuti di {{SITENAME}} presenti in tali motori potrebbero non essere aggiornati.)',
 
@@ -1122,98 +1138,106 @@ Conferma che è tua intenzione procedere a tale cancellazione, che hai piena con
 'qbsettings-floatingright' => 'Fluttuante a destra',
 
 # Preferences page
-'preferences'               => 'Preferenze',
-'mypreferences'             => 'preferenze',
-'prefs-edits'               => 'Modifiche effettuate:',
-'prefsnologin'              => 'Accesso non effettuato',
-'prefsnologintext'          => 'Per poter personalizzare le preferenze è necessario effettuare l\'<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} accesso]</span>.',
-'changepassword'            => 'Cambia password',
-'prefs-skin'                => 'Aspetto grafico (skin)',
-'skin-preview'              => 'anteprima',
-'prefs-math'                => 'Formule matematiche',
-'dateformat'                => 'Formato della data',
-'datedefault'               => 'Nessuna preferenza',
-'prefs-datetime'            => 'Data e ora',
-'prefs-personal'            => 'Profilo utente',
-'prefs-rc'                  => 'Ultime modifiche',
-'prefs-watchlist'           => 'Osservati speciali',
-'prefs-watchlist-days'      => 'Numero di giorni da mostrare negli osservati speciali:',
-'prefs-watchlist-days-max'  => '(massimo 7 giorni)',
-'prefs-watchlist-edits'     => 'Numero di modifiche da mostrare con le funzioni avanzate:',
-'prefs-watchlist-edits-max' => '(numero massimo: 1000)',
-'prefs-misc'                => 'Varie',
-'prefs-resetpass'           => 'Cambia password',
-'prefs-email'               => 'Opzioni email',
-'prefs-rendering'           => 'Aspetto',
-'saveprefs'                 => 'Salva le preferenze',
-'resetprefs'                => 'Reimposta le preferenze',
-'restoreprefs'              => 'Ripristina le impostazioni di default',
-'prefs-editing'             => 'Casella di modifica',
-'prefs-edit-boxsize'        => 'Dimensioni della finestra di modifica.',
-'rows'                      => 'Righe:',
-'columns'                   => 'Colonne:',
-'searchresultshead'         => 'Ricerca',
-'resultsperpage'            => 'Numero di risultati per pagina:',
-'contextlines'              => 'Righe di testo per ciascun risultato:',
-'contextchars'              => 'Numero di caratteri di contesto:',
-'stub-threshold'            => 'Valore minimo per i <a href="#" class="stub">collegamenti agli stub</a>, in byte:',
-'recentchangesdays'         => 'Numero di giorni da mostrare nelle ultime modifiche:',
-'recentchangesdays-max'     => '(massimo $1 {{PLURAL:$1|giorno|giorni}})',
-'recentchangescount'        => 'Numero di righe nelle ultime modifiche, cronologie e registri (valore predefinito):',
-'savedprefs'                => 'Le preferenze sono state salvate.',
-'timezonelegend'            => 'Fuso orario',
-'localtime'                 => 'Ora locale:',
-'timezoneselect'            => 'Fuso orario:',
-'timezoneuseserverdefault'  => 'Usa ora del server',
-'timezoneuseoffset'         => 'Altro (specificare differenza)',
-'timezoneoffset'            => 'Differenza¹:',
-'servertime'                => 'Ora del server:',
-'guesstimezone'             => "Usa l'ora del tuo browser",
-'timezoneregion-africa'     => 'Africa',
-'timezoneregion-america'    => 'America',
-'timezoneregion-antarctica' => 'Antartide',
-'timezoneregion-arctic'     => 'Artide',
-'timezoneregion-asia'       => 'Asia',
-'timezoneregion-atlantic'   => 'Oceano Atlantico',
-'timezoneregion-australia'  => 'Australia',
-'timezoneregion-europe'     => 'Europa',
-'timezoneregion-indian'     => 'Oceano Indiano',
-'timezoneregion-pacific'    => 'Oceano Pacifico',
-'allowemail'                => 'Abilita la ricezione di messaggi e-mail da altri utenti¹',
-'prefs-searchoptions'       => 'Opzioni di ricerca',
-'prefs-namespaces'          => 'Namespace',
-'defaultns'                 => 'Cerca in questi namespace se non diversamente specificato:',
-'default'                   => 'predefinito',
-'prefs-files'               => 'File',
-'prefs-custom-css'          => 'CSS personalizzato',
-'prefs-custom-js'           => 'JS personalizzato',
-'prefs-reset-intro'         => "È possibile usare questa pagina per reimpostare le proprie preferenze a quelle predefinite del sito.
+'preferences'                   => 'Preferenze',
+'mypreferences'                 => 'preferenze',
+'prefs-edits'                   => 'Modifiche effettuate:',
+'prefsnologin'                  => 'Accesso non effettuato',
+'prefsnologintext'              => 'Per poter personalizzare le preferenze è necessario effettuare l\'<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} accesso]</span>.',
+'changepassword'                => 'Cambia password',
+'prefs-skin'                    => 'Aspetto grafico (skin)',
+'skin-preview'                  => 'anteprima',
+'prefs-math'                    => 'Formule matematiche',
+'datedefault'                   => 'Nessuna preferenza',
+'prefs-datetime'                => 'Data e ora',
+'prefs-personal'                => 'Profilo utente',
+'prefs-rc'                      => 'Ultime modifiche',
+'prefs-watchlist'               => 'Osservati speciali',
+'prefs-watchlist-days'          => 'Numero di giorni da mostrare negli osservati speciali:',
+'prefs-watchlist-days-max'      => '(massimo 7 giorni)',
+'prefs-watchlist-edits'         => 'Numero di modifiche da mostrare con le funzioni avanzate:',
+'prefs-watchlist-edits-max'     => '(numero massimo: 1000)',
+'prefs-misc'                    => 'Varie',
+'prefs-resetpass'               => 'Cambia password',
+'prefs-email'                   => 'Opzioni email',
+'prefs-rendering'               => 'Aspetto',
+'saveprefs'                     => 'Salva le preferenze',
+'resetprefs'                    => 'Reimposta le preferenze',
+'restoreprefs'                  => 'Ripristina le impostazioni di default',
+'prefs-editing'                 => 'Casella di modifica',
+'prefs-edit-boxsize'            => 'Dimensioni della finestra di modifica.',
+'rows'                          => 'Righe:',
+'columns'                       => 'Colonne:',
+'searchresultshead'             => 'Ricerca',
+'resultsperpage'                => 'Numero di risultati per pagina:',
+'contextlines'                  => 'Righe di testo per ciascun risultato:',
+'contextchars'                  => 'Numero di caratteri di contesto:',
+'stub-threshold'                => 'Valore minimo per i <a href="#" class="stub">collegamenti agli stub</a>, in byte:',
+'recentchangesdays'             => 'Numero di giorni da mostrare nelle ultime modifiche:',
+'recentchangesdays-max'         => '(massimo $1 {{PLURAL:$1|giorno|giorni}})',
+'recentchangescount'            => 'Numero di modifiche da mostrare per default:',
+'prefs-help-recentchangescount' => 'Comprende ultime modifiche, cronologie e registri.',
+'savedprefs'                    => 'Le preferenze sono state salvate.',
+'timezonelegend'                => 'Fuso orario:',
+'localtime'                     => 'Ora locale:',
+'timezoneuseserverdefault'      => 'Usa ora del server',
+'timezoneuseoffset'             => 'Altro (specificare differenza)',
+'timezoneoffset'                => 'Differenza¹:',
+'servertime'                    => 'Ora del server:',
+'guesstimezone'                 => "Usa l'ora del browser",
+'timezoneregion-africa'         => 'Africa',
+'timezoneregion-america'        => 'America',
+'timezoneregion-antarctica'     => 'Antartide',
+'timezoneregion-arctic'         => 'Artide',
+'timezoneregion-asia'           => 'Asia',
+'timezoneregion-atlantic'       => 'Oceano Atlantico',
+'timezoneregion-australia'      => 'Australia',
+'timezoneregion-europe'         => 'Europa',
+'timezoneregion-indian'         => 'Oceano Indiano',
+'timezoneregion-pacific'        => 'Oceano Pacifico',
+'allowemail'                    => 'Abilita la ricezione di messaggi e-mail da altri utenti',
+'prefs-searchoptions'           => 'Opzioni di ricerca',
+'prefs-namespaces'              => 'Namespace',
+'defaultns'                     => 'In caso contrario, cerca in questi namespace:',
+'default'                       => 'predefinito',
+'prefs-files'                   => 'File',
+'prefs-custom-css'              => 'CSS personalizzato',
+'prefs-custom-js'               => 'JS personalizzato',
+'prefs-reset-intro'             => "È possibile usare questa pagina per reimpostare le proprie preferenze a quelle predefinite del sito.
 L'operazione non può essere annullata.",
-'prefs-emailconfirm-label'  => "Conferma dell'e-mail:",
-'prefs-textboxsize'         => 'Dimensione della finestra di modifica',
-'youremail'                 => 'Indirizzo e-mail:',
-'username'                  => 'Nome utente:',
-'uid'                       => 'ID utente:',
-'prefs-memberingroups'      => 'Membro {{PLURAL:$1|del gruppo|dei gruppi}}:',
-'prefs-registration'        => 'Data di registrazione:',
-'yourrealname'              => 'Nome vero:',
-'yourlanguage'              => "Lingua dell'interfaccia:",
-'yourvariant'               => 'Variante:',
-'yournick'                  => 'Soprannome (nickname):',
-'badsig'                    => 'Errore nella firma non standard, verificare i tag HTML.',
-'badsiglength'              => 'Il soprannome scelto è troppo lungo, non deve superare $1 {{PLURAL:$1|carattere|caratteri}}.',
-'yourgender'                => 'Genere:',
-'gender-unknown'            => 'Non specificato',
-'gender-male'               => 'Maschile',
-'gender-female'             => 'Femminile',
-'prefs-help-gender'         => "Opzionale: usato per l'indicazione del genere dal software. Questa informazione sarà pubblica.",
-'email'                     => 'Indirizzo e-mail',
-'prefs-help-realname'       => "L'indicazione del proprio nome vero è opzionale; se si sceglie di inserirlo, verrà utilizzato per attribuire la paternità dei contenuti inviati.",
-'prefs-help-email'          => "L'inserimento del proprio indirizzo e-mail è opzionale ma permette di ricevere la propria password via e-mail qualora venisse dimenticata. È inoltre possibile permettere di essere contattati dagli altri utenti attraverso un link nella propria pagina utente o nella relativa pagina di discussione, senza dover rivelare la propria identità.",
-'prefs-help-email-required' => 'Indirizzo e-mail necessario.',
-'prefs-info'                => 'Informazioni di base',
-'prefs-i18n'                => 'Internazionalizzazione',
-'prefs-signature'           => 'Firma',
+'prefs-emailconfirm-label'      => "Conferma dell'e-mail:",
+'prefs-textboxsize'             => 'Dimensione della finestra di modifica',
+'youremail'                     => 'Indirizzo e-mail:',
+'username'                      => 'Nome utente:',
+'uid'                           => 'ID utente:',
+'prefs-memberingroups'          => 'Membro {{PLURAL:$1|del gruppo|dei gruppi}}:',
+'prefs-registration'            => 'Data di registrazione:',
+'yourrealname'                  => 'Nome vero:',
+'yourlanguage'                  => "Lingua dell'interfaccia:",
+'yourvariant'                   => 'Variante:',
+'yournick'                      => 'Soprannome (nickname):',
+'badsig'                        => 'Errore nella firma non standard, verificare i tag HTML.',
+'badsiglength'                  => 'La firma scelta è troppo lunga, non deve superare $1 {{PLURAL:$1|carattere|caratteri}}.',
+'yourgender'                    => 'Genere:',
+'gender-unknown'                => 'Non specificato',
+'gender-male'                   => 'Maschile',
+'gender-female'                 => 'Femminile',
+'prefs-help-gender'             => "Opzionale: consente di adattare i messaggi del software in funzione del genere dell'utente. Questa informazione sarà pubblica.",
+'email'                         => 'Indirizzo e-mail',
+'prefs-help-realname'           => "L'indicazione del proprio nome vero è opzionale; se si sceglie di inserirlo, verrà utilizzato per attribuire la paternità dei contenuti inviati.",
+'prefs-help-email'              => "L'inserimento del proprio indirizzo e-mail è opzionale ma permette di ricevere la propria password via e-mail qualora venisse dimenticata. È inoltre possibile permettere di essere contattati dagli altri utenti attraverso un link nella propria pagina utente o nella relativa pagina di discussione, senza dover rivelare la propria identità.",
+'prefs-help-email-required'     => 'Indirizzo e-mail necessario.',
+'prefs-info'                    => 'Informazioni di base',
+'prefs-i18n'                    => 'Internazionalizzazione',
+'prefs-signature'               => 'Firma',
+'prefs-dateformat'              => 'Formato data',
+'prefs-timeoffset'              => 'Ore di differenza',
+'prefs-advancedediting'         => 'Opzioni avanzate',
+'prefs-advancedrc'              => 'Opzioni avanzate',
+'prefs-advancedrendering'       => 'Opzioni avanzate',
+'prefs-advancedsearchoptions'   => 'Opzioni avanzate',
+'prefs-advancedwatchlist'       => 'Opzioni avanzate',
+'prefs-display'                 => 'Opzioni di visualizzazione',
+'prefs-diffs'                   => 'Differenze',
 
 # User rights
 'userrights'                  => 'Gestione dei permessi relativi agli utenti',
@@ -1263,7 +1287,7 @@ L'operazione non può essere annullata.",
 # Rights
 'right-read'                  => 'Legge pagine',
 'right-edit'                  => 'Modifica pagine',
-'right-createpage'            => 'Crea pagine',
+'right-createpage'            => 'Crea pagine (escluse le pagine di discussione)',
 'right-createtalk'            => 'Crea pagine di discussione',
 'right-createaccount'         => 'Crea nuovi account utente',
 'right-minoredit'             => 'Segna le modifiche come minori',
@@ -1289,7 +1313,7 @@ L'operazione non può essere annullata.",
 'right-deletedhistory'        => 'Visualizza le revisioni della cronologia cancellate senza il testo associato',
 'right-browsearchive'         => 'Visualizza pagine cancellate',
 'right-undelete'              => 'Recupera una pagina',
-'right-suppressrevision'      => 'Rivede e recupera revisioni nascoste dagli Amministratori',
+'right-suppressrevision'      => 'Rivede e recupera revisioni nascoste agli amministratori',
 'right-suppressionlog'        => 'Visualizza log privati',
 'right-block'                 => 'Blocca le modifiche da parte di altri utenti',
 'right-blockemail'            => 'Impedisce a un utente di inviare email',
@@ -1391,6 +1415,8 @@ L'operazione non può essere annullata.",
 
 # Recent changes linked
 'recentchangeslinked'          => 'Modifiche correlate',
+'recentchangeslinked-feed'     => 'Modifiche correlate',
+'recentchangeslinked-toolbox'  => 'Modifiche correlate',
 'recentchangeslinked-title'    => 'Modifiche correlate a "$1"',
 'recentchangeslinked-noresult' => 'Nessuna modifica alle pagine collegate nel periodo specificato.',
 'recentchangeslinked-summary'  => "Questa pagina speciale mostra le modifiche più recenti alle pagine collegate a quella specificata. Le pagine contenute nella propria lista degli [[Special:Watchlist|Osservati Speciali]] sono evidenziate in '''grassetto'''.",
@@ -1433,7 +1459,7 @@ Consultare la [[Special:NewFiles|galleria dei nuovi file]] per una visione d'ins
 'illegalfilename'             => 'Il nome "$1" contiene dei caratteri non ammessi nei titoli delle pagine. Dare al file un nome diverso e provare a caricarlo di nuovo.',
 'badfilename'                 => 'Il nome del file è stato convertito in "$1".',
 'filetype-badmime'            => 'Non è consentito caricare file di tipo MIME "$1".',
-'filetype-bad-ie-mime'        => 'Impossibile caricare il file perché Internet Explorer lo rileverebbe come "$1", che è un tipo di file disattivato e potenzialmente pericoloso.',
+'filetype-bad-ie-mime'        => 'Impossibile caricare il file perché Internet Explorer lo rileverebbe come "$1", che è un tipo di file non consentito e potenzialmente pericoloso.',
 'filetype-unwanted-type'      => "Caricare file di tipo '''\".\$1\"''' è sconsigliato. {{PLURAL:\$3|Il tipo di file consigliato è|I tipi di file consigliati sono}} \$2.",
 'filetype-banned-type'        => "Caricare file di tipo '''\".\$1\"''' non è consentito. {{PLURAL:\$3|Il tipo di file consentito è|I tipi di file consentiti sono}} \$2.",
 'filetype-missing'            => 'Il file è privo di estensione (ad es. ".jpg").',
@@ -1447,9 +1473,9 @@ Nome del file caricato: '''<tt>$1</tt>'''<br />
 Nome del file esistente: '''<tt>$2</tt>'''<br />
 Scegliere un nome diverso.",
 'fileexists-thumb'            => "<center>'''File preesistente'''</center>",
-'fileexists-thumbnail-yes'    => "Il file caricato sembra essere il risultato di un'anteprima ''(thumbnail)''. Verificare, per confronto, il file '''<tt>$1</tt>'''.<br />
-Se si tratta della stessa immagine, nelle dimensioni originali, non è necessario caricarne altre anteprime.",
-'file-thumbnail-no'           => "Il nome del file inizia con '''<tt>$1</tt>'''; sembra quindi essere il risultato di un'anteprima ''(thumbnail)''.
+'fileexists-thumbnail-yes'    => "Il file caricato sembra essere una miniatura ''(thumbnail)''. Verificare, per confronto, il file '''<tt>$1</tt>'''.<br />
+Se si tratta della stessa immagine, nelle dimensioni originali, non è necessario caricarne altre miniature.",
+'file-thumbnail-no'           => "Il nome del file inizia con '''<tt>$1</tt>'''; sembra quindi essere una miniatura ''(thumbnail)''.
 Se si dispone dell'immagine nella risoluzione originale, si prega di caricarla. In caso contrario, si prega di cambiare il nome del file.",
 'fileexists-forbidden'        => 'Un file con questo nome esiste già e non può essere sovrascritto. Tornare indietro e modificare il nome con il quale caricare il file. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => "Un file con questo nome esiste già nell'archivio di risorse multimediali condivise. Se si desidera ancora caricare il file, tornare indietro e modificare il nome con il quale caricare il file. [[File:$1|thumb|center|$1]]",
@@ -1475,7 +1501,7 @@ Se si dispone dell'immagine nella risoluzione originale, si prega di caricarla. 
 
 Accertarsi che sia davvero opportuno continuare a caricare questo file.
 L'elenco delle relative cancellazioni viene riportato di seguito per comodità:",
-'filename-bad-prefix'         => "Il nome del file che stai caricando inizia con '''\"\$1\"''', che è un nome non-descrittivo tipicamente assegnato automaticamente dalle fotocamere digitali. Per favore scegli un nome più descrittivo per il tuo file.",
+'filename-bad-prefix'         => "Il nome del file che si sta caricando inizia con '''\"\$1\"''', che è un nome generico simile a quelli assegnati automaticamente dalle fotocamere digitali. Si prega di scegliere un nome più descrittivo per il file.",
 'filename-prefix-blacklist'   => ' #<!-- lascia questa riga esattamente com\'è --> <pre>
 # La sintassi è la seguente:
 #   * Tutto ciò che segue il carattere "#" sino alla fine della riga è un commento
@@ -1525,6 +1551,7 @@ Per modificare l'ordinamento, fare clic sull'intestazione della colonna prescelt
 'listfiles_count'       => 'Versioni',
 
 # File description page
+'file-anchor-link'          => 'File',
 'filehist'                  => 'Cronologia del file',
 'filehist-help'             => 'Fare clic su un gruppo data/ora per vedere il file come si presentava nel momento indicato.',
 'filehist-deleteall'        => 'cancella tutto',
@@ -1539,6 +1566,7 @@ Per modificare l'ordinamento, fare clic sull'intestazione della colonna prescelt
 'filehist-dimensions'       => 'Dimensioni',
 'filehist-filesize'         => 'Dimensione del file',
 'filehist-comment'          => 'Oggetto',
+'filehist-missing'          => 'File mancante',
 'imagelinks'                => 'Collegamenti al file',
 'linkstoimage'              => '{{PLURAL:$1|La seguente pagina contiene|Le seguenti $1 pagine contengono}} collegamenti al file:',
 'linkstoimage-more'         => 'Più di $1 {{PLURAL:$1|pagina punta|pagine puntano}} a questo file.
@@ -1553,8 +1581,8 @@ Di seguito sono elencate solo {{PLURAL:$1|la prima pagina che punta|le prime $1 
 Consultare la [$2 pagina di descrizione del file] per ulteriori informazioni.',
 'sharedupload-desc-here'    => 'Questo file proviene da $1 e può essere utilizzato da altri progetti.
 Di seguito viene mostrata la descrizione presente nella [$2 pagina di descrizione del file].',
-'noimage'                   => 'Un file con questo nome non esiste ma è possibile $1.',
-'noimage-linktext'          => 'caricarlo ora',
+'filepage-nofile'           => 'Non esiste un file con questo nome.',
+'filepage-nofile-link'      => 'Non esiste un file con questo nome, ma è possibile [$1 caricarlo].',
 'uploadnewversion-linktext' => 'Carica una nuova versione di questo file',
 'shared-repo-from'          => 'da $1',
 'shared-repo'               => 'un archivio condiviso',
@@ -1752,7 +1780,7 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 
 # Special:Categories
 'categories'                    => 'Categorie',
-'categoriespagetext'            => 'Le categorie indicate di seguito contengono pagine o file multimediali.
+'categoriespagetext'            => '{{PLURAL:$1|La categoria indicata di seguito contiene|Le categorie indicate di seguito contengono}} pagine o file multimediali.
 Le [[Special:UnusedCategories|categorie vuote]] non sono mostrate qui.
 Vedi anche le [[Special:WantedCategories|categorie richieste]].',
 'categoriesfrom'                => 'Mostra le categorie a partire da:',
@@ -1840,7 +1868,7 @@ Potrebbero esserci [[{{MediaWiki:Listgrouprights-helppage}}|ulteriori informazio
 D'ora in poi, le modifiche apportate alla pagina e alla sua discussione verranno elencate in quella sede;
 il titolo della pagina apparirà in '''grassetto''' nella pagina delle [[Special:RecentChanges|ultime modifiche]] per renderlo più visibile.",
 'removedwatch'         => 'Pagina eliminata dalla lista degli osservati speciali',
-'removedwatchtext'     => 'La pagina "[[:$1]]" è stata eliminata dalla lista degli osservati speciali.',
+'removedwatchtext'     => 'La pagina "[[:$1]]" è stata eliminata dalla [[Special:Watchlist|lista degli osservati speciali]].',
 'watch'                => 'Segui',
 'watchthispage'        => 'Segui questa pagina',
 'unwatch'              => 'Non seguire',
@@ -1983,8 +2011,7 @@ Le impostazioni correnti per la pagina sono '''$1''':",
 ** Reiterati vandalismi
 ** Reiterati inserimenti di spam
 ** Edit war
-** Pagina molto usata
-** Pagina archiviata',
+** Pagina molto usata',
 'protect-edit-reasonlist'     => 'Modifica i motivi per la protezione',
 'protect-expiry-options'      => '1 ora:1 hour,1 giorno:1 day,1 settimana:1 week,2 settimane:2 weeks,1 mese:1 month,3 mesi:3 months,6 mesi:6 months,1 anno:1 year,infinito:infinite',
 'restriction-type'            => 'Permesso',
@@ -2023,6 +2050,7 @@ Il testo contenuto nelle revisioni cancellate è disponibile solo agli amministr
 'undelete-nodiff'              => 'Non è stata trovata nessuna revisione precedente.',
 'undeletebtn'                  => 'Ripristina',
 'undeletelink'                 => 'visualizza/ripristina',
+'undeleteviewlink'             => 'visualizza',
 'undeletereset'                => 'Reimposta',
 'undeleteinvert'               => 'Inverti selezione',
 'undeletecomment'              => 'Commento:',
@@ -2152,7 +2180,7 @@ Consultare la [[Special:IPBlockList|lista degli IP bloccati]] per vedere i blocc
 'ipblocklist-submit'              => 'Ricerca',
 'blocklistline'                   => '$1, $2 ha bloccato $3 ($4)',
 'infiniteblock'                   => 'infinito',
-'expiringblock'                   => 'scadenza: $1',
+'expiringblock'                   => 'scade il $1 alle $2',
 'anononlyblock'                   => 'solo anonimi',
 'noautoblockblock'                => 'blocco automatico disabilitato',
 'createaccountblock'              => 'creazione account bloccata',
@@ -2256,7 +2284,7 @@ Scegliere un titolo diverso per la pagina.',
 'movepage-page-exists'         => 'La pagina $1 esiste già e non può essere automaticamente sovrascritta.',
 'movepage-page-moved'          => 'La pagina $1 è stata spostata a $2.',
 'movepage-page-unmoved'        => 'La pagina $1 non può essere spostata a $2.',
-'movepage-max-pages'           => 'È stato spostato il numero massimo di $1 {{PLURAL:$1|pagina|pagine}} e non protranno essere spostate ulteriori pagine automaticamente.',
+'movepage-max-pages'           => 'È stato spostato il numero massimo di $1 {{PLURAL:$1|pagina|pagine}} e non potranno essere spostate ulteriori pagine automaticamente.',
 '1movedto2'                    => 'ha spostato [[$1]] a [[$2]]',
 '1movedto2_redir'              => 'ha spostato [[$1]] a [[$2]] tramite redirect',
 'move-redirect-suppressed'     => 'redirect soppresso',
@@ -2276,7 +2304,7 @@ La pagina specificata come destinazione "[[:$1]]" esiste già. Vuoi cancellarla 
 'selfmove'                     => 'Il nuovo titolo è uguale al vecchio; impossibile spostare la pagina su se stessa.',
 'immobile-source-namespace'    => 'Non è possibile spostare pagine del namespace "$1"',
 'immobile-target-namespace'    => 'Non è possibile spostare pagine nel namespace "$1"',
-'immobile-target-namespace-iw' => 'Il link interwiki non è una destinazione valida per spostare la pagina.',
+'immobile-target-namespace-iw' => 'Un collegamento interwiki non è una destinazione valida per spostare la pagina.',
 'immobile-source-page'         => 'Questa pagina non può essere spostata.',
 'immobile-target-page'         => 'Non è possibile spostare sul titolo indicato.',
 'imagenocrossnamespace'        => 'Non è possibile spostare un file fuori dal relativo namespace.',
@@ -2284,6 +2312,8 @@ La pagina specificata come destinazione "[[:$1]]" esiste già. Vuoi cancellarla 
 'imageinvalidfilename'         => "Il nome dell'immagine non è valido",
 'fix-double-redirects'         => 'Aggiorna tutti i redirect che puntano al titolo originale',
 'move-leave-redirect'          => 'Crea un redirect con lo spostamento',
+'protectedpagemovewarning'     => "'''Attenzione: Questa pagina è stata bloccata in modo che solo gli utenti con privilegi di amministratore possano spostarla.'''",
+'semiprotectedpagemovewarning' => "'''Nota:''' Questa pagina è stata bloccata in modo che solo gli utenti registrati possano spostarla.",
 
 # Export
 'export'            => 'Esporta pagine',
@@ -2321,7 +2351,7 @@ Visitare [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] e [
 'thumbnail_error'          => 'Errore nella creazione della miniatura: $1',
 'djvu_page_error'          => 'Numero di pagina DjVu errato',
 'djvu_no_xml'              => "Impossibile ottenere l'XML per il file DjVu",
-'thumbnail_invalid_params' => 'Parametri anteprima non corretti',
+'thumbnail_invalid_params' => 'Parametri miniatura non corretti',
 'thumbnail_dest_directory' => 'Impossibile creare la directory di destinazione',
 'thumbnail_image-type'     => 'Tipo di immagine non supportato',
 'thumbnail_gd-library'     => 'Configurazione incompleta della libreria GD: funzione $1 mancante',
@@ -2461,7 +2491,7 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 # Metadata
 'nodublincore'      => 'Metadati Dublin Core RDF non attivi su questo server.',
 'nocreativecommons' => 'Metadati Creative Commons RDF non attivi su questo server.',
-'notacceptable'     => 'Il server wiki non è in grado di fornire i dati in un formato leggibile dal tuo client.',
+'notacceptable'     => 'Il server wiki non è in grado di fornire i dati in un formato leggibile dal client.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Utente anonimo|Utenti anonimi}} di {{SITENAME}}',
@@ -2586,6 +2616,7 @@ I collegamenti successivi, sulla stessa riga, sono considerati come eccezioni (o
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength",
 
 # EXIF tags
@@ -2845,10 +2876,6 @@ I collegamenti successivi, sulla stessa riga, sono considerati come eccezioni (o
 'exif-gpslongitude-e' => 'Longitudine est',
 'exif-gpslongitude-w' => 'Longitudine ovest',
 
-# Pseudotags used for GPSAltitudeRef
-'exif-gpsaltitude-0' => 'Metri sopra il livello del mare',
-'exif-gpsaltitude-1' => 'Metri sotto il livello del mare',
-
 'exif-gpsstatus-a' => 'Misurazione in corso',
 'exif-gpsstatus-v' => 'Misurazione interoperabile',
 
@@ -2859,11 +2886,6 @@ I collegamenti successivi, sulla stessa riga, sono considerati come eccezioni (o
 'exif-gpsspeed-k' => 'Chilometri orari',
 'exif-gpsspeed-m' => 'Miglia orarie',
 'exif-gpsspeed-n' => 'Nodi',
-
-# Pseudotags used for GPSDestDistanceRef
-'exif-gpsdestdistance-k' => 'Chilometri',
-'exif-gpsdestdistance-m' => 'Miglia',
-'exif-gpsdestdistance-n' => 'Miglia nautiche',
 
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
 'exif-gpsdirection-t' => 'Direzione reale',
@@ -3072,7 +3094,7 @@ Inserire il nome del file senza il prefisso \"{{ns:file}}:\"",
 #Queste verranno messe a confronto con gli indirizzi URL delle immagini esterne (hotlinked)
 #Le corrispondenze saranno mostrate come immagini, altrimenti verrà mostrato solo un collegamento
 #Le righe che iniziano con # sono considerate dei commenti
-#La differenza tra maiuscole e minuscole non  significativa
+#La differenza tra maiuscole e minuscole non è significativa
 
 #Inserire sopra questa riga tutti i frammenti di regex. Lasciare questa riga esattamente com'è</pre>",
 
@@ -3081,7 +3103,7 @@ Inserire il nome del file senza il prefisso \"{{ns:file}}:\"",
 'tag-filter'              => 'Filtro del [[Special:Tags|tag]]:',
 'tag-filter-submit'       => 'Filtra',
 'tags-title'              => 'Tag',
-'tags-intro'              => 'Questa pagina elenca i tag che il software potrebbe marcare come una modifica e il loro significato.',
+'tags-intro'              => 'Questa pagina elenca i tag con i quali il software potrebbe identificare una modifica e il loro significato.',
 'tags-tag'                => 'Nome interno del tag',
 'tags-display-header'     => 'Aspetto nella lista delle modifiche',
 'tags-description-header' => 'Descrizione completa del significato',

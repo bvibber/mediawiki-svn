@@ -8,7 +8,7 @@
 /**
  * Entry point
  */
-function wfSpecialUpload() {	
+function wfSpecialUpload() {
 	global $wgRequest;
 	$form = new UploadForm( $wgRequest );
 	$form->execute();
@@ -26,7 +26,7 @@ class UploadForm extends SpecialPage {
 	var $mCopyrightStatus, $mCopyrightSource, $mReUpload, $mAction, $mUploadClicked;
 	var $mDestWarningAck;
 	var $mLocalFile;
-	
+
 	var $mUpload;	// Instance of UploadBase or derivative
 
 	# Placeholders for text injection by hooks (must be HTML)
@@ -41,12 +41,13 @@ class UploadForm extends SpecialPage {
 	 * Get data POSTed through the form and assign them to the object
 	 * @param $request Data posted.
 	 */
-	function __construct( &$request ) {	
+	function __construct( &$request ) {
+	    global $wgUser;
 		// Guess the desired name from the filename if not provided
 		$this->mDesiredDestName   = $request->getText( 'wpDestFile' );
 		if( !$this->mDesiredDestName )
 			$this->mDesiredDestName = $request->getText( 'wpUploadFile' );
-			
+
 		$this->mIgnoreWarning     = $request->getCheck( 'wpIgnoreWarning' );
 		$this->mComment           = $request->getText( 'wpUploadDescription' );
 
@@ -55,6 +56,10 @@ class UploadForm extends SpecialPage {
 			# filename and description
 			return;
 		}
+		//if it was posted check for the token (no remote POST'ing with user credentials)
+		$token = $request->getVal( 'wpEditToken' );
+		$this->mTokenOk = $wgUser->matchEditToken( $token );
+
 		# Placeholders for text injection by hooks (empty per default)
 		$this->uploadFormTextTop = "";
 		$this->uploadFormTextAfterSummary = "";
@@ -71,9 +76,9 @@ class UploadForm extends SpecialPage {
 		$this->mForReUpload       = $request->getBool( 'wpForReUpload' );
 		$this->mReUpload          = $request->getCheck( 'wpReUpload' );
 
-		$this->mAction            = $request->getVal( 'action' );		
-		
-		$this->mUpload 			  = UploadBase::createFromRequest( $request );				
+		$this->mAction            = $request->getVal( 'action' );
+
+		$this->mUpload 			  = UploadBase::createFromRequest( $request );
 	}
 
 
@@ -81,16 +86,16 @@ class UploadForm extends SpecialPage {
 	 * Start doing stuff
 	 * @access public
 	 */
-	function execute() {		
-		global $wgUser, $wgOut;						
-		
+	function execute() {
+		global $wgUser, $wgOut;
+
 		# Check uploading enabled
 		if( !UploadBase::isEnabled() ) {
 			$wgOut->showErrorPage( 'uploaddisabled', 'uploaddisabledtext' );
 			return;
 		}
 
-		# Check permissions		
+		# Check permissions
 		if( $this->mUpload ) {
 			$permission = $this->mUpload->isAllowed( $wgUser );
 		} else {
@@ -114,25 +119,25 @@ class UploadForm extends SpecialPage {
 		if( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
-		}				
-		if( $this->mReUpload ) {					
+		}
+		if( $this->mReUpload ) {
 			// User choose to cancel upload
-			if( !$this->mUpload->unsaveUploadedFile() ) {				
+			if( !$this->mUpload->unsaveUploadedFile() ) {
 				return;
 			}
 			# Because it is probably checked and shouldn't be
 			$this->mIgnoreWarning = false;
-			
+
 			$this->mainUploadForm();
-		} elseif( $this->mUpload && ( 
-					'submit' == $this->mAction || 
-					$this->mUploadClicked 
+		} elseif( $this->mUpload && (
+					'submit' == $this->mAction ||
+					$this->mUploadClicked
 				) ) {
 			$this->processUpload();
 		} else {
 			$this->mainUploadForm();
 		}
-		
+
 		if( $this->mUpload )
 			$this->mUpload->cleanupTempFile();
 	}
@@ -141,14 +146,14 @@ class UploadForm extends SpecialPage {
 	 * Do the upload
 	 * Checks are made in SpecialUpload::execute()
 	 *
-	 * FIXME this should really use the standard Status class (instead of associative array) 
-	 * 
+	 * FIXME this should really use the standard Status class (instead of associative array)
+	 *
 	 * @access private
 	 */
 	function processUpload(){
 		global $wgOut, $wgFileExtensions, $wgLang;
-	 	$details = $this->internalProcessUpload();		
-		
+	 	$details = $this->internalProcessUpload();
+
 	 	switch( $details['status'] ) {
 			case UploadBase::SUCCESS:
 				$wgOut->redirect( $this->mLocalFile->getTitle()->getFullURL() );
@@ -214,7 +219,7 @@ class UploadForm extends SpecialPage {
 				break;
 
 			case UploadBase::UPLOAD_WARNING:
-				unset( $details['status'] );				
+				unset( $details['status'] );
 				$this->uploadWarning( $details );
 				break;
 
@@ -253,15 +258,15 @@ class UploadForm extends SpecialPage {
 		if( $permErrors !== true ) {
 			return array( 'status' => UploadBase::PROTECTED_PAGE, 'permissionserrors' => $permErrors );
 		}
-		
+
 		// Fetch the file if required
 		$status = $this->mUpload->fetchFile();
-		if( !$status->isOK() ){			
+		if( !$status->isOK() ){
 			return array( 'status' =>UploadBase::BEFORE_PROCESSING, 'error'=>$status->getWikiText() );
-		}		
-		
+		}
+
 		// Check whether this is a sane upload
-		$result = $this->mUpload->verifyUpload();		
+		$result = $this->mUpload->verifyUpload();
 		if( $result != UploadBase::OK )
 			return $result;
 
@@ -269,7 +274,7 @@ class UploadForm extends SpecialPage {
 
 		if( !$this->mIgnoreWarning ) {
 			$warnings = $this->mUpload->checkWarnings();
-	
+
 			if( count( $warnings ) ) {
 				$warnings['status'] = UploadBase::UPLOAD_WARNING;
 				return $warnings;
@@ -285,7 +290,6 @@ class UploadForm extends SpecialPage {
 			$pageText = self::getInitialPageText( $this->mComment, $this->mLicense,
 				$this->mCopyrightStatus, $this->mCopyrightSource );
 		}
-
 		$status = $this->mUpload->performUpload( $this->mComment, $pageText, $this->mWatchthis, $wgUser );
 
 		if ( !$status->isGood() ) {
@@ -305,10 +309,10 @@ class UploadForm extends SpecialPage {
 	 */
 	static function getExistsWarning( $exists ) {
 		global $wgUser, $wgContLang;
-	
+
 		if( $exists === false )
 			return '';
-		
+
 		$warning = '';
 		$align = $wgContLang->isRtl() ? 'left' : 'right';
 
@@ -375,7 +379,7 @@ class UploadForm extends SpecialPage {
 		}
 		return $warning;
 	}
-	
+
 	/**
 	 * Get a list of warnings
 	 *
@@ -391,7 +395,7 @@ class UploadForm extends SpecialPage {
 		}
 		$s = '&nbsp;';
 		if ( $file ) {
-			$exists = UploadBase::getExistsWarning( $file );			
+			$exists = UploadBase::getExistsWarning( $file );
 			$warning = self::getExistsWarning( $exists );
 			// FIXME: We probably also want the prefix blacklist and the wasdeleted check here
 			if ( $warning !== '' ) {
@@ -419,11 +423,11 @@ class UploadForm extends SpecialPage {
 
 		return $output->getText();
 	}
-	
+
 	/**
-	 * Construct the human readable warning message from an array of duplicate files 
+	 * Construct the human readable warning message from an array of duplicate files
 	 */
-	public static function getDupeWarning( $dupes ) {		
+	public static function getDupeWarning( $dupes ) {
 		if( $dupes ) {
 			global $wgOut;
 			$msg = "<gallery>";
@@ -441,7 +445,7 @@ class UploadForm extends SpecialPage {
 			return '';
 		}
 	}
-		
+
 
 	/**
 	 * Remove a temporarily kept file stashed by saveTempUploadedFile().
@@ -461,7 +465,7 @@ class UploadForm extends SpecialPage {
 
 	/*              Interface code starts below this line             *
 	 * -------------------------------------------------------------- */
-	
+
 
 	/**
 	 * @param string $error as HTML
@@ -484,14 +488,14 @@ class UploadForm extends SpecialPage {
 	function uploadWarning( $warnings ) {
 		global $wgOut, $wgUser;
 		global $wgUseCopyrightUpload;
-		
+
 		$this->mSessionKey = $this->mUpload->stashSession();
-		
+
 		if( $sessionData === false ) {
 			# Couldn't save file; an error has been displayed so let's go.
 			return;
-		}				
-		
+		}
+
 		$sk = $wgUser->getSkin();
 
 		$wgOut->addHTML( '<h2>' . wfMsgHtml( 'uploadwarning' ) . "</h2>\n" );
@@ -499,13 +503,13 @@ class UploadForm extends SpecialPage {
 		foreach( $warnings as $warning => $args ) {
 				$msg = null;
 				if( $warning == 'exists' ) {
-					
+
 					//we should not have produced this warning if the user already acknowledged the destination warning
-					//at any rate I don't see why we should hid this warning if mDestWarningAck has been checked 
-					//(it produces an empty warning page when no other warnings are fired) 									
-					//if ( !$this->mDestWarningAck ) 
+					//at any rate I don't see why we should hid this warning if mDestWarningAck has been checked
+					//(it produces an empty warning page when no other warnings are fired)
+					//if ( !$this->mDestWarningAck )
 						$msg = self::getExistsWarning( $args );
-					
+
 				} elseif( $warning == 'duplicate' ) {
 					$msg = $this->getDupeWarning( $args );
 				} elseif( $warning == 'duplicate-archive' ) {
@@ -519,14 +523,14 @@ class UploadForm extends SpecialPage {
 				} else {
 					if( is_bool( $args ) )
 						$args = array();
-					elseif( !is_array( $args ) ) 
+					elseif( !is_array( $args ) )
 						$args = array( $args );
 					$msg = "\t<li>" . wfMsgExt( $warning, 'parseinline', $args ) . "</li>\n";
 				}
 				if( $msg )
 					$wgOut->addHTML( $msg );
 		}
-		
+
 		$titleObj = SpecialPage::getTitleFor( 'Upload' );
 
 		if ( $wgUseCopyrightUpload ) {
@@ -572,9 +576,9 @@ class UploadForm extends SpecialPage {
 		$adc = wfBoolToStr( $useAjaxDestCheck );
 		$alp = wfBoolToStr( $useAjaxLicensePreview );
 		$uef = wfBoolToStr( $wgEnableFirefogg );
-		$autofill = wfBoolToStr( $this->mDesiredDestName == '' );	
-			
-		
+		$autofill = wfBoolToStr( $this->mDesiredDestName == '' );
+
+
 		$wgOut->addScript( "<script type=\"text/javascript\">
 wgAjaxUploadDestCheck = {$adc};
 wgAjaxLicensePreview = {$alp};
@@ -584,10 +588,10 @@ wgUploadAutoFill = {$autofill};
 		//legacy upload code:
 		//$wgOut->addScriptFile( 'upload.js' );
 		//$wgOut->addScriptFile( 'edit.js' ); // For <charinsert> support
-		
-		//add javascript phase 2 upload script (will completely replace upload.js shortly)		
-		$wgOut->addScriptClass( 'uploadPage' );  
-		
+
+		//add javascript phase 2 upload script (will completely replace upload.js shortly)
+		$wgOut->addScriptClass( 'uploadPage' );
+
 
 		if( !wfRunHooks( 'UploadForm:initial', array( &$this ) ) )
 		{
@@ -679,22 +683,22 @@ wgUploadAutoFill = {$autofill};
 				break;
 			default:
 				$val2 = $val;
-		}						
-		$maxUploadSize = '<div id="mw-upload-maxfilesize">' . 
-			wfMsgExt( 'upload-maxfilesize', array( 'parseinline', 'escapenoentities' ), 
+		}
+		$maxUploadSize = '<div id="mw-upload-maxfilesize">' .
+			wfMsgExt( 'upload-maxfilesize', array( 'parseinline', 'escapenoentities' ),
 				$wgLang->formatSize( $val2 ) ) .
 				"</div>\n";
 		//add a hidden filed for upload by url (uses the $wgMaxUploadSize var)
 		if( UploadFromUrl::isEnabled() ){
-			$maxUploadSize.='<div id="mw-upload-maxfilesize-url" style="display:none">' . 
-			wfMsgExt( 'upload-maxfilesize', array( 'parseinline', 'escapenoentities' ), 
+			$maxUploadSize.='<div id="mw-upload-maxfilesize-url" style="display:none">' .
+			wfMsgExt( 'upload-maxfilesize', array( 'parseinline', 'escapenoentities' ),
 				$wgLang->formatSize( $wgMaxUploadSize ) ) .
-				"</div>\n";			
+				"</div>\n";
 		}
 
 		$sourcefilename = wfMsgExt( 'sourcefilename', array( 'parseinline', 'escapenoentities' ) );
-        $destfilename = wfMsgExt( 'destfilename', array( 'parseinline', 'escapenoentities' ) ); 
-		
+        $destfilename = wfMsgExt( 'destfilename', array( 'parseinline', 'escapenoentities' ) );
+
 		$msg = $this->mForReUpload ? 'filereuploadsummary' : 'fileuploadsummary';
 		$summary = wfMsgExt( $msg, 'parseinline' );
 
@@ -713,7 +717,7 @@ wgUploadAutoFill = {$autofill};
 		$watchChecked = $this->watchCheck() ? 'checked="checked"' : '';
 		# Re-uploads should not need "file exist already" warnings
 		$warningChecked = ($this->mIgnoreWarning || $this->mForReUpload) ? 'checked="checked"' : '';
-		
+
 		// Prepare form for upload or upload/copy
 		//javascript moved from inline calls to setup:
 		if( UploadFromUrl::isEnabled() && $wgUser->isAllowed( 'upload_by_url' ) ) {
@@ -729,6 +733,10 @@ wgUploadAutoFill = {$autofill};
 				"<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' size='60' />" .
 				"<input type='hidden' name='wpSourceType' value='upload' />" ;
 		}
+		//add the wpEditToken
+		$token = htmlspecialchars( $wgUser->editToken() );
+		$wgOut->addHTML( "\n<input type='hidden' value=\"$token\" name=\"wpEditToken\" />\n" );
+
 		if ( $useAjaxDestCheck ) {
 			$warningRow = "<tr><td colspan='2' id='wpDestFile-warning'>&nbsp;</td></tr>";
 			$destOnkeyup = '';
@@ -783,7 +791,7 @@ wgUploadAutoFill = {$autofill};
 						value=\"{$encDestName}\" $destOnkeyup />"
 			);
 		}
-		
+
 
 		$wgOut->addHTML(
 				"</td>
@@ -895,7 +903,7 @@ wgUploadAutoFill = {$autofill};
 	}
 
 	/* -------------------------------------------------------------- */
-	
+
 	/**
 	 * See if we should check the 'watch this page' checkbox on the form
 	 * based on the user's preferences and whether we're being asked
@@ -913,7 +921,7 @@ wgUploadAutoFill = {$autofill};
 			// Watch all edits!
 			return true;
 		}
-		
+
 		$local = wfLocalFile( $this->mDesiredDestName );
 		if( $local && $local->exists() ) {
 			// We're uploading a new version of an existing file.
@@ -935,7 +943,7 @@ wgUploadAutoFill = {$autofill};
 	 */
 	public static function userCanReUpload( User $user, $img ) {
 		wfDeprecated( __METHOD__ );
-		
+
 		if( $user->isAllowed( 'reupload' ) )
 			return true; // non-conditional
 		if( !$user->isAllowed( 'reupload-own' ) )
@@ -967,7 +975,7 @@ wgUploadAutoFill = {$autofill};
 	/**
 	 * Get the initial image page text based on a comment and optional file status information
 	 */
-	static function getInitialPageText( $comment, $license, $copyStatus, $source ) {
+	static function getInitialPageText( $comment='', $license='', $copyStatus='', $source='' ) {
 		global $wgUseCopyrightUpload;
 		if ( $wgUseCopyrightUpload ) {
 			if ( $license != '' ) {

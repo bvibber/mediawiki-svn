@@ -189,7 +189,9 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'show'          => 'Bukisa',
 
 # Recent changes linked
-'recentchangeslinked' => 'Izinguquko ezilandiweyo',
+'recentchangeslinked'         => 'Izinguquko ezilandiweyo',
+'recentchangeslinked-feed'    => 'Izinguquko ezilandiweyo',
+'recentchangeslinked-toolbox' => 'Izinguquko ezilandiweyo',
 
 # Upload
 'upload'           => 'Layisha ifayili',
@@ -201,9 +203,8 @@ ikhawundi lakho liyadalwa. musa ukukhohlwa ukuguqula amakhethelo a-{{SITENAME}} 
 'nolicense' => 'Ubekhetha lutho',
 
 # File description page
+'file-anchor-link' => 'Ifayela',
 'nolinkstoimage'   => 'Akukho amakhasi akhomba kuleli fayela.',
-'noimage'          => 'Akukho ifayela elinaleli gama, unga $1.',
-'noimage-linktext' => 'Layisha',
 
 # Random page
 'randompage' => 'Ikhasi elingaphandle kokucabanga',

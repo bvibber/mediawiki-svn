@@ -208,6 +208,8 @@ $wgFileStore['deleted']['hash'] = 3;         ///< 3-level subdirectory split
  *                      May be 'paranoid' to remove all parameters from error messages, 'none' to
  *                      leave the paths in unchanged, or 'simple' to replace paths with
  *                      placeholders. Default for LocalRepo is 'simple'.
+ *    fileMode          This allows wikis to set the file mode when uploading/moving files. Default
+ *                      is 0644.
  *
  * These settings describe a foreign MediaWiki installation. They are optional, and will be ignored
  * for local repositories:
@@ -1105,6 +1107,12 @@ $wgShowExceptionDetails = false;
 $wgShowHostnames = false;
 
 /**
+ * If set to true MediaWiki will throw notices for some possible error
+ * conditions and for deprecated functions.
+ */
+$wgDevelopmentWarnings = false;
+
+/**
  * Use experimental, DMOZ-like category browser
  */
 $wgUseCategoryBrowser   = false;
@@ -1213,6 +1221,7 @@ $wgGroupPermissions['*']['edit']             = true;
 $wgGroupPermissions['*']['createpage']       = true;
 $wgGroupPermissions['*']['createtalk']       = true;
 $wgGroupPermissions['*']['writeapi']         = true;
+//$wgGroupPermissions['*']['patrolmarks']      = false; // let anons see what was patrolled
 
 // Implicit group for all logged-in accounts
 $wgGroupPermissions['user']['move']             = true;
@@ -1493,10 +1502,10 @@ $wgCacheEpoch = '20030516000000';
 /**
  * Bump this number when changing the global style sheets and JavaScript.
  * It should be appended in the query string of static CSS and JS includes,
- * to ensure that client-side caches don't keep obsolete copies of global
+ * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '218';
+$wgStyleVersion = '224';
 
 
 # Server-side caching:
@@ -1988,6 +1997,7 @@ $wgNamespacesWithSubpages = array(
 	NS_USER_TALK      => true,
 	NS_PROJECT_TALK   => true,
 	NS_FILE_TALK      => true,
+	NS_MEDIAWIKI      => true,
 	NS_MEDIAWIKI_TALK => true,
 	NS_TEMPLATE_TALK  => true,
 	NS_HELP_TALK      => true,
@@ -2012,6 +2022,13 @@ $wgNamespacesToBeSearchedProject = array(
 );
 
 $wgUseOldSearchUI = true; // temp testing variable
+
+/**
+ * If set to true the 'searcheverything' preference will be effective only for logged-in users.
+ * Useful for big wikis to maintain different search profiles for anonymous and logged-in users.
+ *
+ */
+$wgSearchEverythingOnlyLoggedIn = false;
 
 /**
  * Site notice shown at the top of each page
@@ -2164,9 +2181,9 @@ $wgPutIPinRC = true;
 /**
  * Recentchanges items are periodically purged; entries older than this many
  * seconds will go.
- * For one week : 7 * 24 * 3600
+ * Default: 13 weeks = about three monts
  */
-$wgRCMaxAge = 7 * 24 * 3600;
+$wgRCMaxAge = 13 * 7 * 24 * 3600;
 
 /**
  * Filter $wgRCLinkDays by $wgRCMaxAge to avoid showing links for numbers higher than what will be stored.
@@ -2392,7 +2409,10 @@ $wgValidateAllHtml = false;
 /** See list of skins and their symbolic names in languages/Language.php */
 $wgDefaultSkin = 'monobook';
 
-/** Should we allow the user's to select their own skin that will override the default? */
+/**
+* Should we allow the user's to select their own skin that will override the default?
+* @deprecated in 1.16, use $wgHiddenPrefs[] = 'skin' to disable it
+*/
 $wgAllowUserSkin = true;
 
 /**
@@ -2496,8 +2516,15 @@ $wgDefaultUserOptions = array(
 	'disablemail'			  => 0,
 );
 
-/** Whether or not to allow and use real name fields. Defaults to true. */
+/** 
+ * Whether or not to allow and use real name fields. 
+ * @deprecated in 1.16, use $wgHiddenPrefs[] = 'realname' below to disable real
+ * names
+ */
 $wgAllowRealName = true;
+
+/** An array of preferences to not show for the user */
+$wgHiddenPrefs = array();
 
 /*****************************************************************************
  *  Extensions
@@ -3354,12 +3381,6 @@ $wgRateLimitLog = null;
 $wgRateLimitsExcludedGroups = array();
 
 /**
- * Array of IPs which should be excluded from rate limits.
- * This may be useful for whitelisting NAT gateways for conferences, etc.
- */
-$wgRateLimitsExcludedIPs = array();
-
-/**
  * On Special:Unusedimages, consider images "used", if they are put
  * into a category. Default (false) is not to count those as used.
  */
@@ -3878,10 +3899,3 @@ $wgInvalidUsernameCharacters = '@';
  * modify the user rights of those users via Special:UserRights
  */
 $wgUserrightsInterwikiDelimiter = '@';
-
-/**
- * The $wgSectionContainers variable is used by the parser to determine if it should
- * wrap each section of an article in a div. It is automatically enabled if the EditSectionHiliteLink
- * extension is installed.
- */
-$wgSectionContainers = false;

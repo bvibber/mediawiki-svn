@@ -1,5 +1,5 @@
 <?php
-/** Chuvash (Чăвашла)
+/** Chuvash (Чӑвашла)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -19,11 +19,9 @@ $linkPrefixExtension = true;
 $namespaceNames = array(
 	NS_MEDIA            => 'Медиа',
 	NS_SPECIAL          => 'Ятарлă',
-	NS_MAIN             => '',
 	NS_TALK             => 'Сӳтсе явасси',
 	NS_USER             => 'Хутшăнакан',
 	NS_USER_TALK        => 'Хутшăнаканăн_канашлу_страници',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_сӳтсе_явмалли',
 	NS_FILE             => 'Ӳкерчĕк',
 	NS_FILE_TALK        => 'Ӳкерчĕке_сӳтсе_явмалли',
@@ -546,7 +544,6 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'last'                => 'малт.',
 'page_first'          => 'пĕрремĕш',
 'page_last'           => 'юлашки',
-'deletedrev'          => '[кăларса пăрахнă]',
 'histfirst'           => 'Пĕрремĕш',
 'histlast'            => 'Юлашки',
 'historysize'         => '$1 байт',
@@ -585,8 +582,8 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'searchresults'      => 'Тупрăмăр',
 'notitlematches'     => 'Статьясен ячĕсем пĕр пек мар',
 'textmatches'        => 'Статьясенчи текст пĕрпеклĕхĕ',
-'prevn'              => 'малтанхи $1',
-'nextn'              => 'малалли $1',
+'prevn'              => 'малтанхи {{PLURAL:$1|$1}}',
+'nextn'              => 'малалли {{PLURAL:$1|$1}}',
 'searchhelp-url'     => 'Help:Пулăшу',
 'showingresults'     => 'Аяларах эсир <b>#$2</b> пуçласа кăтартнă <b>$1</b> йĕркене куратăр.',
 'powersearch'        => 'Анлă шырав',
@@ -603,7 +600,6 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'changepassword'            => 'Пароле улăштар',
 'prefs-skin'                => 'Ерешленӳ',
 'skin-preview'              => 'Малтанхи курăну',
-'dateformat'                => 'Дата формачĕ',
 'datedefault'               => 'Палăртман чухнехи',
 'prefs-rc'                  => 'Юлашки улшăнусен страници',
 'prefs-watchlist'           => 'Сăнав списокĕ',
@@ -689,7 +685,9 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'newsectionsummary' => '/* $1 */ Çĕнĕ тема',
 
 # Recent changes linked
-'recentchangeslinked' => 'Çыхăннă улшăнусем',
+'recentchangeslinked'         => 'Çыхăннă улшăнусем',
+'recentchangeslinked-feed'    => 'Çыхăннă улшăнусем',
+'recentchangeslinked-toolbox' => 'Çыхăннă улшăнусем',
 
 # Upload
 'upload'             => 'Файла кĕртесси',
@@ -746,12 +744,11 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'listfiles_description' => 'Ăнлантаркăч',
 
 # File description page
+'file-anchor-link'          => 'Файл',
 'filehist'                  => 'Файл историйĕ',
 'imagelinks'                => 'Ссылкăсем',
 'linkstoimage'              => 'Çак страницăсем ку файл çине кăтартаççĕ:',
 'nolinkstoimage'            => 'Ку файл çине кăтартакан страницăсем çук.',
-'noimage'                   => 'Ун пек ятлă файл çук, эсир ăна $1.',
-'noimage-linktext'          => 'кĕртме пултаратăр',
 'uploadnewversion-linktext' => 'Ку файлăн çĕнĕ версине кĕрт',
 
 # File reversion

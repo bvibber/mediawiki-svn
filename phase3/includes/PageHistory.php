@@ -90,8 +90,13 @@ class PageHistory {
 		$wgOut->addScriptFile( 'history.js' );
 
 		$logPage = SpecialPage::getTitleFor( 'Log' );
-		$logLink = $this->mSkin->makeKnownLinkObj( $logPage, wfMsgHtml( 'viewpagelogs' ),
-			'page=' . $this->mTitle->getPrefixedUrl() );
+		$logLink = $this->mSkin->link(
+			$logPage,
+			wfMsgHtml( 'viewpagelogs' ),
+			array(),
+			array( 'page' => $this->mTitle->getPrefixedUrl() ),
+			array( 'known', 'noclasses' )
+		);
 		$wgOut->setSubtitle( $logLink );
 
 		$feedType = $wgRequest->getVal( 'feed' );
@@ -160,13 +165,16 @@ class PageHistory {
 			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			$s .= Xml::openElement( 'form',
 				array(
-					'action' => $revdel->getFullUrl(),
-					'method' => 'get', 'id' => 'mw-history-revdeleteform',
+					'action' => $revdel->getLocalURL( array( 
+						'type' => 'revision',
+						'target' => $this->mTitle->getPrefixedDbKey()
+					) ),
+					'method' => 'post', 
+					'id' => 'mw-history-revdeleteform',
 					'style'  => 'visibility:hidden;float:right;'
 				)
 			);
-			$s .= Xml::hidden( 'target', $this->mTitle->getPrefixedDbKey() );
-			$s .= Xml::hidden( 'oldid', '', array('id'=>'revdel-oldid') );
+			$s .= Xml::hidden( 'ids', '', array('id'=>'revdel-oldid') );
 			$s .= Xml::submitButton( wfMsg( 'showhideselectedversions' ) );
 			$s .= Xml::closeElement( 'form' );
 		}
@@ -296,8 +304,10 @@ class PageHistory {
 				$jsCall = 'updateShowHideForm('.$rev->getId().',this.checked)';
 				$del = Xml::check( 'showhiderevisions', false,
 					$hidden + array('onchange' => $jsCall) );
-				$query = array( 'target' => $this->mTitle->getPrefixedDbkey(),
-					'oldid' => $rev->getId() );
+				$query = array(
+					'type' => 'revision',
+					'target' => $this->mTitle->getPrefixedDbkey(),
+					'ids' => $rev->getId() );
 				$del .= $this->mSkin->revDeleteLink( $query,
 					$rev->isDeleted( Revision::DELETED_RESTRICTED ) );
 			}
@@ -320,19 +330,18 @@ class PageHistory {
 		if( $notificationtimestamp && ($row->rev_timestamp >= $notificationtimestamp) ) {
 			$s .= ' <span class="updatedmarker">' .  wfMsgHtml( 'updatedmarker' ) . '</span>';
 		}
-		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
-			$s .= ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
-		}
 
 		$tools = array();
 
 		if( !is_null( $next ) && is_object( $next ) ) {
 			if( $latest && $this->mTitle->userCan( 'rollback' ) && $this->mTitle->userCan( 'edit' ) ) {
-				$tools[] = '<span class="mw-rollback-link">'.$this->mSkin->buildRollbackLink( $rev ).'</span>';
+				$tools[] = '<span class="mw-rollback-link">'.
+					$this->mSkin->buildRollbackLink( $rev ).'</span>';
 			}
 
-			if( $this->mTitle->quickUserCan( 'edit' ) && !$rev->isDeleted( Revision::DELETED_TEXT ) &&
-				!$next->rev_deleted & Revision::DELETED_TEXT )
+			if( $this->mTitle->quickUserCan( 'edit' )
+				&& !$rev->isDeleted( Revision::DELETED_TEXT )
+				&& !$next->rev_deleted & Revision::DELETED_TEXT )
 			{
 				# Create undo tooltip for the first (=latest) line only
 				$undoTooltip = $latest
@@ -373,13 +382,17 @@ class PageHistory {
 	function revLink( $rev ) {
 		global $wgLang;
 		$date = $wgLang->timeanddate( wfTimestamp(TS_MW, $rev->getTimestamp()), true );
-		if( $rev->userCan( Revision::DELETED_TEXT ) ) {
-			$link = $this->mSkin->makeKnownLinkObj( $this->mTitle, $date, "oldid=" . $rev->getId() );
+		$date = htmlspecialchars( $date );
+		if( !$rev->isDeleted( Revision::DELETED_TEXT ) ) {
+			$link = $this->mSkin->link(
+				$this->mTitle,
+				$date,
+				array(),
+				array( 'oldid' => $rev->getId() ),
+				array( 'known', 'noclasses' )
+			);
 		} else {
-			$link = $date;
-		}
-		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
-			$link = "<span class=\"history-deleted\">$link</span>";
+			$link = "<span class=\"history-deleted\">$date</span>";
 		}
 		return $link;
 	}
@@ -395,8 +408,16 @@ class PageHistory {
 		if( $latest || !$rev->userCan( Revision::DELETED_TEXT ) ) {
 			return $cur;
 		} else {
-			return $this->mSkin->makeKnownLinkObj( $this->mTitle, $cur,
-				'diff=' . $this->mTitle->getLatestRevID() . "&oldid=" . $rev->getId() );
+			return $this->mSkin->link(
+				$this->mTitle,
+				$cur,
+				array(),
+				array(
+					'diff' => $this->mTitle->getLatestRevID(),
+					'oldid' => $rev->getId()
+				),
+				array( 'known', 'noclasses' )
+			);
 		}
 	}
 
@@ -416,13 +437,29 @@ class PageHistory {
 			return $last;
 		} elseif( $next === 'unknown' ) {
 			# Next row probably exists but is unknown, use an oldid=prev link
-			return $this->mSkin->makeKnownLinkObj( $this->mTitle, $last,
-				"diff=" . $prevRev->getId() . "&oldid=prev" );
+			return $this->mSkin->link(
+				$this->mTitle,
+				$last,
+				array(),
+				array(
+					'diff' => $prevRev->getId(),
+					'oldid' => 'prev'
+				),
+				array( 'known', 'noclasses' )
+			);
 		} elseif( !$prevRev->userCan(Revision::DELETED_TEXT) || !$nextRev->userCan(Revision::DELETED_TEXT) ) {
 			return $last;
 		} else {
-			return $this->mSkin->makeKnownLinkObj( $this->mTitle, $last,
-				"diff=" . $prevRev->getId() . "&oldid={$next->rev_id}" );
+			return $this->mSkin->link(
+				$this->mTitle,
+				$last,
+				array(),
+				array(
+					'diff' => $prevRev->getId(),
+					'oldid' => $next->rev_id
+				),
+				array( 'known', 'noclasses' )
+			);
 		}
 	}
 
@@ -504,10 +541,11 @@ class PageHistory {
 		}
 
 		$feed = new $wgFeedClasses[$type](
-		$this->mTitle->getPrefixedText() . ' - ' .
-		wfMsgForContent( 'history-feed-title' ),
-		wfMsgForContent( 'history-feed-description' ),
-		$this->mTitle->getFullUrl( 'action=history' ) );
+			$this->mTitle->getPrefixedText() . ' - ' .
+				wfMsgForContent( 'history-feed-title' ),
+			wfMsgForContent( 'history-feed-description' ),
+			$this->mTitle->getFullUrl( array( 'action' => 'history' ) )
+		);
 
 		// Get a limit on number of feed entries. Provide a sane default
 		// of 10 if none is defined (but limit to $wgFeedLimit max)
@@ -558,9 +596,12 @@ class PageHistory {
 
 		if( $rev->getComment() == '' ) {
 			global $wgContLang;
+			$ts = $rev->getTimestamp();
 			$title = wfMsgForContent( 'history-feed-item-nocomment',
-			$rev->getUserText(),
-			$wgContLang->timeanddate( $rev->getTimestamp() ) );
+				$rev->getUserText(),
+				$wgContLang->timeanddate( $ts ),
+				$wgContLang->date( $ts ),
+				$wgContLang->time( $ts ) );
 		} else {
 			$title = $rev->getUserText() . wfMsgForContent( 'colon-separator' ) . FeedItem::stripComment( $rev->getComment() );
 		}
@@ -568,13 +609,15 @@ class PageHistory {
 		return new FeedItem(
 			$title,
 			$text,
-			$this->mTitle->getFullUrl( 'diff=' . $rev->getId() . '&oldid=prev' ),
+			$this->mTitle->getFullUrl( array(
+				'diff' => $rev->getId(),
+				'oldid' => 'prev'
+			) ),
 			$rev->getTimestamp(),
 			$rev->getUserText(),
 			$this->mTitle->getTalkPage()->getFullUrl() );
 	}
 }
-
 
 /**
  * @ingroup Pager

@@ -14,6 +14,7 @@
  * @author Temuri rajavi
  * @author ka.wikipedia.org sysops
  * @author לערי ריינהארט
+ * @author გიორგიმელა
  */
 
 $namespaceNames = array(
@@ -95,7 +96,7 @@ $specialPageAliases = array(
 );
 
 $magicWords = array(
-	'redirect' => array( 0   , '#REDIRECT', '#გადამისამართება' ),
+	'redirect'              => array( '0', '#გადამისამართება', '#REDIRECT' ),
 );
 
 $linkPrefixExtension = true;
@@ -699,7 +700,6 @@ $1 საათში.',
 *ვერსიების შედარება: აირჩიეთ სასურველი ვერსიები რადიო-რგოლების მონიშვნით და დააწკაპუნეთ შედარების ღილაკზე.
 *შემოკლებები: (მიმდ.) = სხვაობა მიმდინარე ვერსიასთან, (ბოლო) = სხვაობა წინა ვერსიასთან, მ = მცირე შესწორება.',
 'history-fieldset-title' => 'დათვალიერების ისტორია',
-'deletedrev'             => '[წაშლილია]',
 'histfirst'              => 'პირველი',
 'histlast'               => 'უკანასკნელი',
 'historysize'            => '($1 ბაიტი)',
@@ -734,6 +734,7 @@ $1 საათში.',
 
 # History merging
 'mergehistory'                => 'გვერდების ისტორიის შერწყმა',
+'mergehistory-from'           => 'წყაროს გვერდი:',
 'mergehistory-submit'         => 'ცვლილებების შერწყმა',
 'mergehistory-empty'          => 'რაიმე ცვლილების შერწყმა შეუძლებელია.',
 'mergehistory-no-destination' => 'დანიშნულების გვერდი $1 არ არსებობს.',
@@ -757,7 +758,7 @@ $1 საათში.',
 # Search results
 'searchresults'                => 'ძიების შედეგები',
 'searchresults-title'          => 'ძიების შედეგები "$1"',
-'searchresulttext'             => 'მეტი ინფორმაციისათვის ვიკიპედიის საძიებლის შესახებ გთხოვთ ნახოთ [[{{ns:project}}:ძიება|ძიება {{SITENAME}}]].',
+'searchresulttext'             => 'მეტი ინფორმაციისათვის {{SITENAME}}-ის საძიებლის შესახებ გთხოვთ ნახოთ [[{{MediaWiki:Helppage}}|{{int:help}}]].',
 'searchsubtitle'               => 'თქვენ მოიძიეთ \'\'\'[[:$1]]\'\'\' ([[Special:Prefixindex/$1|ყველა გვერდი დაწყებული "$1"-ით]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|ყველა გვერდი ბმულით "$1"-ზე]])',
 'searchsubtitleinvalid'        => "თქვენ მოიძიეთ '''$1'''",
 'noexactmatch'                 => "'''გვერდი ამ სათაურით \"\$1\" არ არსებობს.''' თქვენ შეგიძლიათ [[:\$1|შექმნათ ეს გვერდი]].",
@@ -766,11 +767,12 @@ $1 საათში.',
 'notitlematches'               => 'არ შეესაბამება არცერთი გვერდის სათაური',
 'textmatches'                  => 'გვერდის ტექსტი შესაბამისია',
 'notextmatches'                => 'არ შეესაბამება არცერთი გვერდის ტექსტი',
-'prevn'                        => 'წინა $1',
-'nextn'                        => 'შემდეგი $1',
+'prevn'                        => 'წინა {{PLURAL:$1|$1}}',
+'nextn'                        => 'შემდეგი {{PLURAL:$1|$1}}',
 'viewprevnext'                 => 'იხილე  ($1) ($2) ($3).',
 'searchhelp-url'               => 'Help:დახმარება',
-'searchprofile-project'        => 'პროექტის გვერდები',
+'searchprofile-articles'       => 'სტატიები',
+'searchprofile-project'        => 'დახმარება',
 'searchprofile-images'         => 'ფაილები',
 'searchprofile-everything'     => 'ყველაფერი',
 'searchprofile-images-tooltip' => 'ფაილების ძიება',
@@ -813,7 +815,6 @@ $1 საათში.',
 'prefs-skin'                => 'გარეკანი',
 'skin-preview'              => 'წინასწარი გადახედვა',
 'prefs-math'                => 'მათემატიკა',
-'dateformat'                => 'თარიღის ფორმატი',
 'datedefault'               => 'წყარო მითითებული არაა',
 'prefs-datetime'            => 'თარიღი და დრო',
 'prefs-personal'            => 'მომხმარებლის მონაცემები',
@@ -839,7 +840,6 @@ $1 საათში.',
 'savedprefs'                => 'თქვენს მიერ შერჩეული პარამეტრები დამახსოვრებულია.',
 'timezonelegend'            => 'დროის ზონა',
 'localtime'                 => 'ადგილობრივი დრო:',
-'timezoneselect'            => 'დროის სარტყელი:',
 'timezoneoffset'            => 'განსხვავება¹:',
 'servertime'                => 'სერვერის დრო:',
 'guesstimezone'             => 'ბრაუზერიდან შევსება',
@@ -975,6 +975,8 @@ $1 საათში.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'დაკავშირებული ცვლილებები',
+'recentchangeslinked-feed'     => 'დაკავშირებული ცვლილებები',
+'recentchangeslinked-toolbox'  => 'დაკავშირებული ცვლილებები',
 'recentchangeslinked-title'    => '"$1"-თან დაკავშირებული ცვლილებები',
 'recentchangeslinked-noresult' => 'მითითებულ პერიოდში ცვლილებები დაკავშირებულ გვერდებზე არ მომხდარა.',
 'recentchangeslinked-summary'  => "ეს არის მითითებულ გვერდთან (ან მითითებული კატეგორიის წევრებთან) დაკავშირებულ გვერდებში ბოლო დროს განხორციელებული ცვლილებების სია. 
@@ -1042,7 +1044,7 @@ $1 საათში.',
 'uploadvirus'                 => 'ფაილი ვირუსს შეიცავს! დეტალები: $1',
 'sourcefilename'              => 'წყარო:',
 'destfilename'                => 'საბოლოო სახელი:',
-'watchthisupload'             => 'უთვალთვალე ამ გვერდს',
+'watchthisupload'             => 'უთვალთვალე ამ ფაილს',
 'filewasdeleted'              => 'ამ სახელწოდების ფაილი უკვე არსებობდა, მაგრამ წაშლილ იქნა. ხელმეორედ ჩატვირთვამდე იხილეთ $1.',
 'upload-wasdeleted'           => "'''გაფრთხილეა: თქვენ ტვირთავთ ფაილს, რომელიც წინათ წაიშალა.'''
 
@@ -1075,6 +1077,7 @@ $1 საათში.',
 'listfiles_count'       => 'ვერსიები',
 
 # File description page
+'file-anchor-link'          => 'ფაილი',
 'filehist'                  => 'ფაილის ისტორია',
 'filehist-help'             => 'დააწკაპუნეთ თარიღზე/დროზე, რათა იხილოთ ფაილი, როგორც ის მაშინ გამოიყურებოდა.',
 'filehist-deleteall'        => 'წაშალე ყველა',
@@ -1091,8 +1094,6 @@ $1 საათში.',
 'linkstoimage'              => 'მომდევნო {{PLURAL:$1|გვერდი|გვერდები}} ებმის ამ ფაილს:',
 'nolinkstoimage'            => 'არ არსებობს ამ ფაილთან დაკავშირებული გვერდები.',
 'sharedupload'              => 'ეს ფაილი $1-დანაა და შეიძლება სხვა პროექტებიც იყენებდეს.',
-'noimage'                   => 'ამ სახელის მქონე ფაილი არ არსებობს, თქვენ შეგიძლიათ $1.',
-'noimage-linktext'          => 'ფაილის ატვირთვა',
 'uploadnewversion-linktext' => 'ატვირთეთ ამ ფაილის ახალი ვერსია',
 
 # File reversion
@@ -1554,7 +1555,7 @@ $NEWPAGE
 'ipblocklist-submit'       => 'ძიება',
 'blocklistline'            => '$1, $2 დაბლოკა $3 ($4)',
 'infiniteblock'            => 'უსასრულო',
-'expiringblock'            => 'ვადის გასვლის დრო $1',
+'expiringblock'            => 'ვადის გასვლის დრო $1 $2',
 'anononlyblock'            => 'მხოლოდ ანონ.',
 'createaccountblock'       => 'ანგარიშის გახსნა ბლოკირებულია',
 'emailblock'               => 'დაიბლოკა ელ. ფოსტა',
@@ -1825,6 +1826,7 @@ $NEWPAGE
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # EXIF tags
@@ -2085,5 +2087,8 @@ $1',
 # Special:Tags
 'tag-filter-submit' => 'გაფილტვრა',
 'tags-edit'         => 'რედაქტირება',
+
+# HTML forms
+'htmlform-selectorother-other' => 'სხვა',
 
 );

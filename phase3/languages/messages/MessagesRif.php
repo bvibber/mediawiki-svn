@@ -300,8 +300,8 @@ Tasarut: (cur) = imṣebḍiyen ag tunɣilt n ruxa,
 # Search results
 'noexactmatch' => "'''war telli ca n Tasna qarn-as \"\$1\".'''
 tzemred ad [[:\$1|tarnid cek]].",
-'prevn'        => 'zzat $1',
-'nextn'        => 'deffar $1',
+'prevn'        => 'zzat {{PLURAL:$1|$1}}',
+'nextn'        => 'deffar {{PLURAL:$1|$1}}',
 'viewprevnext' => 'Ẓar ($1) ($2) ($3)',
 'searchall'    => 'maṛṛa',
 'powersearch'  => 'Tarezzut cwa-cway',
@@ -346,6 +346,8 @@ mala tucit-id, ataf Lxdant inec a tetwassan ila inec.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Tiẓṛigin ag ta',
+'recentchangeslinked-feed'     => 'Tiẓṛigin ag ta',
+'recentchangeslinked-toolbox'  => 'Tiẓṛigin ag ta',
 'recentchangeslinked-title'    => 'Tiẓṛigin ssaɣant-id ɣar "$1"',
 'recentchangeslinked-noresult' => 'War llint ca n tiẓṛigin di Tasna ya di lwaqt id-tucid .',
 'recentchangeslinked-summary'  => "Ta d Tabdart n tirra itwaggen εad mamk di Tasna id-izedyen zeg ijjen n Tasna nniḍn (niɣ iwdan zi category nniḍn).
@@ -364,6 +366,7 @@ Tasniwin di [[Special:Watchlist|Tabdart uḥṭṭu inec]] d '''tizurarin'''.",
 'listfiles' => 'Tabdart n ifayluten',
 
 # File description page
+'file-anchor-link'          => 'Afaylu',
 'filehist'                  => 'Amzruy n ufaylu',
 'filehist-help'             => 'Tka di date/time bac ad tẓerd afaylu mamec ja d-itban di Lwaqt a .',
 'filehist-deleteone'        => 'sfaḍ',
@@ -377,8 +380,6 @@ Tasniwin di [[Special:Watchlist|Tabdart uḥṭṭu inec]] d '''tizurarin'''.",
 'linkstoimage'              => '{{PLURAL:$1|Tasna ya teqn-ad|$1 Tasniwin a qnent-id}} ɣa ufaylu ya :',
 'nolinkstoimage'            => 'war telli ca n Tasna teqqen-d ɣa ufaylu ya.',
 'sharedupload'              => 'Wa d ijj ufaylu itwacrec jar aṭṭas n isenfaren(projects).',
-'noimage'                   => 'war illi ca n ufaylu s isem a , tzemred ad $1.',
-'noimage-linktext'          => 'Zdem d ijj',
 'uploadnewversion-linktext' => 'Zdem-d tunɣilt d-tamaynut n ufaylu a',
 
 # File deletion
@@ -715,6 +716,7 @@ mayn nniḍn ad itwasenfar.
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength',
 
 # External editor support

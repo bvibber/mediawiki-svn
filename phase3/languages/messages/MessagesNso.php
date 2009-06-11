@@ -31,7 +31,7 @@ $namespaceNames = array(
 );
 
 $magicWords = array(
-	'currentmonth'          => array( '1', 'KGWEDI_BJALE', 'CURRENTMONTH' ),
+	'currentmonth'          => array( '1', 'KGWEDI_BJALE', 'CURRENTMONTH', 'CURRENTMONTH2' ),
 	'currentmonthname'      => array( '1', 'LEINA_KGWEDI_BJALE', 'CURRENTMONTHNAME' ),
 	'currentday'            => array( '1', 'LEHONO_LETSATSI', 'CURRENTDAY' ),
 	'currentday2'           => array( '1', 'LEHONO_LETSATSI2', 'CURRENTDAY2' ),
@@ -466,7 +466,6 @@ Sedi ya phumulo ya letlakala e re:",
 'histlegend'          => "Tlhaolo ya diphapano: swaya lepokisi la phetogo go bapetša ke moka o thwanye ''enter'' tlase-tlase<br />
 Nane: (bjale) = phapang le diphetogo tša bjale,
 (mafelelo) = phapang le diphetogo tša pele, M = diphetogo tše nyenyane.",
-'deletedrev'          => '[phumutšwe]',
 'histfirst'           => 'Pelepele',
 'histlast'            => 'Ntshwantshwa',
 'historysize'         => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -501,8 +500,8 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 'searchsubtitleinvalid' => "O fetlekile o nyaka  '''$1'''",
 'noexactmatch'          => "'''Ga go letlaka leo le bitšwago \"\$1\".''' O ka tlhola [[:\$1|letlakala le]].",
 'noexactmatch-nocreate' => "'''Gago matlakala a thaetlele ya  \"\$1\".'''",
-'prevn'                 => 'gofeta $1',
-'nextn'                 => 'latela $1',
+'prevn'                 => 'gofeta {{PLURAL:$1|$1}}',
+'nextn'                 => 'latela {{PLURAL:$1|$1}}',
 'viewprevnext'          => 'Lebelela ($1) ($2) ($3)',
 'searchhelp-url'        => 'Help:Mateng',
 'searchall'             => 'tšohle',
@@ -583,6 +582,8 @@ Le swanela goba fase ga $1 {{PLURAL:$1|ya tlhaka|ya ditlhaka}}',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Diphetogo tša go tswalana',
+'recentchangeslinked-feed'     => 'Diphetogo tša go tswalana',
+'recentchangeslinked-toolbox'  => 'Diphetogo tša go tswalana',
 'recentchangeslinked-title'    => 'Diphetogo tša go tswalana le "$1"',
 'recentchangeslinked-noresult' => 'Gago na diphetogo go matlakala a hlomaganya ka sebaka/sekga seo o se kgethilego.',
 'recentchangeslinked-summary'  => "Letlakala le le laetša diphetogo tša bjale matlakaleng a go hlomaganya. 
@@ -611,6 +612,7 @@ Matlakala ago ba [[Special:Watchlist|lenanong la gago la matlakala ditlhapetšo]
 'listfiles_size' => 'Bogolo',
 
 # File description page
+'file-anchor-link'          => 'Faele',
 'filehist'                  => 'Histori ya faele',
 'filehist-help'             => 'Pinyeletša go letšatšikgwedi/nako go bona faela ka tsela yeo ebego e le ka gona nakong yeo.',
 'filehist-deleteall'        => 'phumula ka moka',
@@ -625,8 +627,6 @@ Matlakala ago ba [[Special:Watchlist|lenanong la gago la matlakala ditlhapetšo]
 'linkstoimage'              => '{{PLURAL:$1|Letlakala le ke |$1 ya matlakala a}} latelago a hlomaganya go faele ye:',
 'nolinkstoimage'            => 'Gago matlakala a hlomaganyago faeleng ye.',
 'sharedupload'              => 'Faele ye e hlakanetšwe ka fao e kabe e šumišwa ke ditirotherwa tše dingwe.',
-'noimage'                   => 'Ga gona faele ya leina le, efela  o ka $1.',
-'noimage-linktext'          => 'Lokele ye tee',
 'uploadnewversion-linktext' => 'Lokela peoletšo ye mphsa ya faele',
 
 # File reversion
@@ -1058,6 +1058,7 @@ letlakala la seswantšho ge tafola ya metadata e bulwa. Tše dingwe tša di ''fi
 * datetimeoriginal
 * exposuretime
 * fnumber
+* isospeedratings
 * focallength",
 
 # EXIF tags

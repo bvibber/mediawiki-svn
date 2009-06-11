@@ -517,8 +517,6 @@ abstract class AlphabeticPager extends IndexPager {
 	function getNavigationBar() {
 		global $wgLang;
 
-		if ( $this->mIsFirst && $this->mIsLast ) return '';
-
 		if( isset( $this->mNavigationBar ) ) {
 			return $this->mNavigationBar;
 		}
@@ -600,15 +598,13 @@ abstract class ReverseChronologicalPager extends IndexPager {
 	function getNavigationBar() {
 		global $wgLang;
 
-		if ( $this->mIsFirst && $this->mIsLast ) return '';
-
 		if ( isset( $this->mNavigationBar ) ) {
 			return $this->mNavigationBar;
 		}
 		$nicenumber = $wgLang->formatNum( $this->mLimit );
 		$linkTexts = array(
-			'prev' => wfMsgExt( 'pager-newer-n', array( 'parsemag' ), $nicenumber ),
-			'next' => wfMsgExt( 'pager-older-n', array( 'parsemag' ), $nicenumber ),
+			'prev' => wfMsgExt( 'pager-newer-n', array( 'parsemag', 'escape' ), $nicenumber ),
+			'next' => wfMsgExt( 'pager-older-n', array( 'parsemag', 'escape' ), $nicenumber ),
 			'first' => wfMsgHtml( 'histlast' ),
 			'last' => wfMsgHtml( 'histfirst' )
 		);

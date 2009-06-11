@@ -127,21 +127,23 @@ class ImageListPager extends TablePager {
 		global $wgLang;
 		switch ( $field ) {
 			case 'img_timestamp':
-				return $wgLang->timeanddate( $value, true );
+				return htmlspecialchars( $wgLang->timeanddate( $value, true ) );
 			case 'img_name':
 				static $imgfile = null;
 				if ( $imgfile === null ) $imgfile = wfMsg( 'imgfile' );
 
 				$name = $this->mCurrentRow->img_name;
-				$link = $this->getSkin()->makeKnownLinkObj( Title::makeTitle( NS_FILE, $name ), $value );
+				$link = $this->getSkin()->linkKnown( Title::makeTitle( NS_FILE, $name ), $value );
 				$image = wfLocalFile( $value );
 				$url = $image->getURL();
 				$download = Xml::element('a', array( 'href' => $url ), $imgfile );
 				return "$link ($download)";
 			case 'img_user_text':
 				if ( $this->mCurrentRow->img_user ) {
-					$link = $this->getSkin()->makeLinkObj( Title::makeTitle( NS_USER, $value ),
-						htmlspecialchars( $value ) );
+					$link = $this->getSkin()->link(
+						Title::makeTitle( NS_USER, $value ),
+						htmlspecialchars( $value )
+					);
 				} else {
 					$link = htmlspecialchars( $value );
 				}
