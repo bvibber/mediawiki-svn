@@ -437,7 +437,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			aReq['ignorewarnings'] = _this.formData['wpIgnoreWarning'];
 		
 		js_log('do fogg upload call: '+ _this.api_url + ' :: ' + JSON.stringify( aReq ) );			
-					
+		js_log('foggEncode: '+ JSON.stringify( _this.encoder_settings ) );			
 		_this.fogg.upload( JSON.stringify( _this.encoder_settings ),  _this.api_url ,  JSON.stringify( aReq ) );		
 			
 		//update upload status:						
@@ -529,15 +529,14 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 					   js_log( 'done upload response is: ' + cat["responseText"] );
 					   _this.procPageResponse( response_text );						   
 				   	}else if( _this.upload_mode == 'api'){										  
-					   if( _this.fogg.resultUrl ){		
+					   if( _this.fogg.resultUrl ){	
+					   		var buttons ={}; 
+					   		buttons[gM('go-to-resource')] =  function(){
+									window.location = _this.fogg.resultUrl;
+							}
 							var go_to_url_txt = gM('go-to-resource');			   
 						   //should have an json result:
-						   _this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done', _this.fogg.resultUrl), 
-						   {
-								go_to_url_txt:function(){
-									window.location = _this.fogg.resultUrl;
-								}
-						   });	
+						   _this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done', _this.fogg.resultUrl),buttons);	
 					   }else{
 						   //done state with error? ..not really possible given how firefogg works
 						   js_log(" upload done, in chunks mode, but no resultUrl!");

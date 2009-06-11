@@ -539,7 +539,7 @@ mediaSource.prototype =
 		//should check some other way. 
 		var pUrl = parseUri ( this.src );
 		if(typeof pUrl['queryKey']['t'] != 'undefined'){
-			this['URLTimeEncoding']=true;
+			this['URLTimeEncoding']=true;			
 		}				
 		for(var i=0; i < mv_default_source_attr.length; i++){ //array loop:
 			var attr = mv_default_source_attr[ i ];			
