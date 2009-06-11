@@ -146,7 +146,7 @@ div.floatleft, table.floatleft {
 	list-style:none outside none;
 	margin:2px;
 	padding:4px 0;
-	width: 24px;
+	width: 23px;
 	height:16px;
 	position:relative;
 }
@@ -194,8 +194,8 @@ div.floatleft, table.floatleft {
 	line-height: 32px;
 	height: 29px;
 	overflow: visible;
-	font-size: 10.4px;
-	width: 95px;
+	font-size: 10.2px;
+	width: 80px;
 	float: right;
 	display: inline;
 	border:none;

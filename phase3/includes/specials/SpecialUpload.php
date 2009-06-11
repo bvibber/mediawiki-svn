@@ -33,7 +33,7 @@ class UploadForm extends SpecialPage {
 	# extensions should take care to _append_ to the present value
 	var $uploadFormTextTop;
 	var $uploadFormTextAfterSummary;
-
+    var $mTokenOk = false;
 	/**#@-*/
 
 	/**
@@ -120,6 +120,18 @@ class UploadForm extends SpecialPage {
 			$wgOut->readOnlyPage();
 			return;
 		}
+		//check token if uploading or reUploading
+		if( !$this->mTokenOk && !$this->mReUpload && ($this->mUpload && (
+						'submit' == $this->mAction ||
+						$this->mUploadClicked
+					)
+				)
+		){
+		    $this->mainUploadForm ( wfMsg( 'session_fail_preview' ) );
+		    return ;
+		}
+
+
 		if( $this->mReUpload ) {
 			// User choose to cancel upload
 			if( !$this->mUpload->unsaveUploadedFile() ) {
@@ -539,10 +551,14 @@ class UploadForm extends SpecialPage {
 		} else {
 			$copyright = '';
 		}
+        //add the wpEditToken
+		$token = htmlspecialchars( $wgUser->editToken() );
+		$tokenInput = "\n<input type='hidden' value=\"$token\" name=\"wpEditToken\" />\n";
 
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $titleObj->getLocalURL( 'action=submit' ),
 				 'enctype' => 'multipart/form-data', 'id' => 'uploadwarning' ) ) . "\n" .
+			$tokenInput .
 			Xml::hidden( 'wpIgnoreWarning', '1' ) . "\n" .
 			Xml::hidden( 'wpSourceType', 'stash' ) . "\n" .
 			Xml::hidden( 'wpSessionKey', $this->mSessionKey ) . "\n" .
@@ -733,9 +749,6 @@ wgUploadAutoFill = {$autofill};
 				"<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' size='60' />" .
 				"<input type='hidden' name='wpSourceType' value='upload' />" ;
 		}
-		//add the wpEditToken
-		$token = htmlspecialchars( $wgUser->editToken() );
-		$wgOut->addHTML( "\n<input type='hidden' value=\"$token\" name=\"wpEditToken\" />\n" );
 
 		if ( $useAjaxDestCheck ) {
 			$warningRow = "<tr><td colspan='2' id='wpDestFile-warning'>&nbsp;</td></tr>";
@@ -749,9 +762,14 @@ wgUploadAutoFill = {$autofill};
 
 		$encComment = htmlspecialchars( $this->mComment );
 
+	    //add the wpEditToken
+		$token = htmlspecialchars( $wgUser->editToken() );
+		$tokenInput = "\n<input type='hidden' value=\"$token\" name=\"wpEditToken\" />\n";
+
 		$wgOut->addHTML(
 			 Xml::openElement( 'form', array( 'method' => 'post', 'action' => $titleObj->getLocalURL(),
 				 'enctype' => 'multipart/form-data', 'id' => 'mw-upload-form' ) ) .
+			 $tokenInput .
 			 Xml::openElement( 'fieldset' ) .
 			 Xml::element( 'legend', null, wfMsg( 'upload' ) ) .
 			 Xml::openElement( 'table', array( 'border' => '0', 'id' => 'mw-upload-table' ) ) .

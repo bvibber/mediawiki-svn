@@ -41,16 +41,18 @@ class ApiUpload extends ApiBase {
 	public function execute() {
 		global $wgUser;
 
-		//do token checks:
-		/*if(is_null($params['token']))
-			$this->dieUsageMsg(array('missingparam', 'token'));
-		if(!$wgUser->matchEditToken($params['token']))
-			$this->dieUsageMsg(array('sessionfailure'));
-		*/
 
 		$this->getMain()->isWriteMode();
 		$this->mParams = $this->extractRequestParams();
 		$request = $this->getMain()->getRequest();
+
+		//do token checks:
+		print_r($this->mParams);
+		if(is_null($this->mParams['token']))
+			$this->dieUsageMsg(array('missingparam', 'token'));
+		if(!$wgUser->matchEditToken($this->mParams['token']))
+			$this->dieUsageMsg(array('sessionfailure'));
+
 
 		// Add the uploaded file to the params array
 		$this->mParams['file'] = $request->getFileName( 'file' );

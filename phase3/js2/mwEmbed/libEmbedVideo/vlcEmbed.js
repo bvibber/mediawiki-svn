@@ -219,15 +219,16 @@ var vlcEmbed = {
 		}		
 	},
 	stop : function(){
-		js_log(this.vlc);
-		if(typeof this.vlc != 'undefined' ){
-			if(typeof this.vlc.playlist != 'undefined'){
-				//dont' stop (issues all the plugin-stop actions) 
-				//this.vlc.playlist.stop();
-				if( this.monitorTimerId != 0 )
-				{
-					clearInterval(this.monitorTimerId);
-					this.monitorTimerId = 0;
+		if(this.vlc){
+			if(typeof this.vlc != 'undefined' ){
+				if(typeof this.vlc.playlist != 'undefined'){
+					//dont' stop (issues all the plugin-stop actions) 
+					//this.vlc.playlist.stop();
+					if( this.monitorTimerId != 0 )
+					{
+						clearInterval(this.monitorTimerId);
+						this.monitorTimerId = 0;
+					}
 				}
 			}
 		}

@@ -477,7 +477,7 @@ var ctrlBuilder = {
 			}
 		},
 		'time_display':{
-			'w':95,
+			'w':90,
 			'o':function(){
 				return '<div id="mv_time_'+ctrlBuilder.id+'" class="ui-widget time">' + ctrlBuilder.embedObj.getTimeReq() + '</div>';
 			}

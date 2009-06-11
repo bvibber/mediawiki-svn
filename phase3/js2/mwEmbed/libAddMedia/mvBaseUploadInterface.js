@@ -53,6 +53,8 @@ mvBaseUploadInterface.prototype = {
 	warnings_sessionkey:null,
 	chunks_supported:false,
 	form_post_override:false,
+	//the edit token:
+	etoken:false,
 	init: function( iObj ){
 		if(!iObj)
 			iObj = {};
@@ -194,6 +196,11 @@ mvBaseUploadInterface.prototype = {
 			   'comment' 	: $j('#wpUploadDescription').val(),
 			   'asyncdownload': true	
 		}
+		//check for editToken
+		_this.etoken = $j("input[name='wpEditToken']").val();
+		if(_this.etoken)
+			req['token'] = _this.etoken;
+			
 		for(var i in opt){			
 		  req[i]= opt[i];
 		}				
@@ -208,12 +215,17 @@ mvBaseUploadInterface.prototype = {
 		var _this = this;
 		if( !_this.upload_session_key )
 			return js_error('missing upload_session_key (can\'t ignore warnigns');
-		//do the ignore warnings submit to the api: 
-		do_api_req({
-			'data':{
+		//do the ignore warnings submit to the api:
+		var req = {
 				'ignorewarnings' : 'true',
 				'sessionkey'	 :!_this.upload_session_key
-			},
+			};
+		//add token if present: 		
+		if(this.etoken)
+			req['token'] = this.etoken;
+			 
+		do_api_req({
+			'data':req,
 			'url': _this.api_url
 		},function(data){
 			_this.processApiResult(data);
@@ -224,15 +236,19 @@ mvBaseUploadInterface.prototype = {
 		
 		//set up the progress display for status updates: 
 		_this.dispProgressOverlay();
-		
-		var uploadStatus = function(){
-			//do the api request: 
-			do_api_req({
-				'data':{
+		var req ={
 					'action'	 : 'upload',
 					'httpstatus' : 'true',
 					'sessionkey' : _this.upload_session_key
-				},
+				};
+		//add token if present: 		
+		if(this.etoken)
+			req['token'] = this.etoken;
+			
+		var uploadStatus = function(){
+			//do the api request: 
+			do_api_req({
+				'data':req,
 				'url' : _this.api_url
 			}, function( data ){									
 				//@@check if we are done
@@ -331,16 +347,20 @@ mvBaseUploadInterface.prototype = {
 				 };  	
 				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg, bObj);	
 			}else{
-				gMsgLoadRemote(error_code, function(){
-					js_log('send msg: ' + gM( error_code ));
-					var bObj = {};
-					bObj[gM('return-to-form')] = function(){
-							$(this).dialog('close');
-					};
-					_this.updateProgressWin(  gM('uploaderror'), gM( error_code ),bObj);
-				});		
-				js_log("api.erorr");		
-				return ;	
+				if( apiRes.error.info ){
+					_this.updateProgressWin(  gM('uploaderror'), apiRes.error.info ,bObj);
+				}else{
+					gMsgLoadRemote(error_code, function(){
+						js_log('send msg: ' + gM( error_code ));
+						var bObj = {};
+						bObj[gM('return-to-form')] = function(){
+								$(this).dialog('close');
+						};
+						_this.updateProgressWin(  gM('uploaderror'), gM( error_code ),bObj);
+					});		
+					js_log("api.erorr");		
+					return ;	
+				}
 			}	
 		}
 		//check for upload_session key for async upload:

@@ -429,6 +429,10 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			'comment'	: _this.formData['wpUploadDescription'],
 			'enablechunks': true
 		};
+		//check for editToken:
+		var etoken = _this.formData['wpEditToken'];
+		if(etoken)
+			aReq['token'] = etoken;
 		
 		if( _this.formData['wpWatchthis'] )
 			aReq['watch'] =  _this.formData['wpWatchthis'];
