@@ -81,12 +81,8 @@ function mv_do_setup_search(req_mode){
 			break;	
 			case 'date_range':
 				$j('#mvs_'+inx+'_tc').html( gM('loading_txt') );
-				var load_js_set = { 'Date.fromString':'jquery/plugins/date.js',
-									'$j.fn.datePicker':'jquery/plugins/jquery.datePicker.js'};
-				if(embedTypes.msie6){
-					js_log('using IE v6 need iframe as well');
-					load_js_set['$j.fn.bgIframe'] = 'jquery/plugins/jquery.bgiframe.js';
-				}
+				//@@todo refactor to new date range method
+				var load_js_set = ['$j.fn.datePicker'];			
 				uri = wgServer +
 					((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript);
 				mvJsLoader.doLoad(load_js_set,function(){

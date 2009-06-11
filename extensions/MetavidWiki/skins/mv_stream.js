@@ -59,14 +59,13 @@ function mv_load_interface_libs(){
 		//load some additional plugins/components:
 		//:hoverIntent
 		//http://cherne.net/brian/resources/jquery.hoverIntent.html
-		mvJsLoader.doLoad({			
-			'$j.fn.autocomplete': 'jquery/plugins/jquery.autocomplete.js',
-			'$j.fn.hoverIntent'	: 'jquery/plugins/jquery.hoverIntent.js',
-			'$j.ui'				: 'jquery/jquery.ui-1.7.1/ui/ui.core.js',
-			'$j.ui.resizable'	: 'jquery/jquery.ui-1.7.1/ui/ui.resizable.js',
-			'mvClipEdit'		: 'libClipEdit/mvClipEdit.js',
-			'$j.ui.draggable'	: 'jquery/jquery.ui-1.7.1/ui/ui.draggable.js'
-	  	},function(){		  		
+		mvJsLoader.doLoad([		
+			'$j.fn.autocomplete',
+			'$j.ui',
+			'$j.ui.resizable',
+			'mvClipEdit',
+			'$j.ui.draggable'
+	  	],function(){		  		
 	  		//make sure mv_embed has done video re-write: 			  			  		
   			mv_stream_interface.init();
 	  	});
@@ -188,10 +187,8 @@ var mv_stream_interface = {
 			selector='.mv_timeline_mvd_jumper,.mv_fd_mvd';
 		}
 		js_log('selector: '+selector);
-		$j(selector).hoverIntent({
-			interval:200, //polling interval
-			timeout:200, //delay before onMouseOut
-			over:function(){
+		$j(selector).hover(
+			function(){
 				//get the mvd_id (the last part of the this.id)
 				mvd_id = this.id.split('_').pop();
 				//if timeline scroll to position:
@@ -204,7 +201,7 @@ var mv_stream_interface = {
 				}
 				this_stream.mvdOver( mvd_id );
 			},
-			out:function(){
+			function(){
 				//get the mvd_id (the last part of the this.id)
 				mvd_id = this.id.split('_').pop();
 				this_stream.mvdOut(mvd_id);
@@ -214,7 +211,7 @@ var mv_stream_interface = {
 						return ;
 				});
 			}
-		});
+		);
 	},
 	mvdOver:function(mvd_id){
 		js_log('f:mvdOver' + mvd_id );

@@ -12,18 +12,17 @@ if(typeof wgScript=='undefined')
 	var wgScript = "/w/index.php";
 	
 if(typeof wgScriptPath=='undefined')
-	var wgScriptPath = '/w';
-		
+	var wgScriptPath = '/w';		
+
 var gMvd={};
 function mv_setup_allpage(){
 	js_log("mv embed done loading now setup 'all page'");		
 	//make sure we have jQuery and any base required libs:
 	mvJsLoader.jQueryCheck(function(){ 		
  		js_log('allpage_ did jquery check'); 		
- 		mvJsLoader.doLoad( {
- 			'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',
- 			'$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'
- 		}, function(){
+ 		mvJsLoader.doLoad( [
+ 			'$j.fn.autocomplete' 			
+ 		], function(){
 			//js_log('allpage_ auto and hover check'+mv_setup_allpage_flag);
 			if( ! mv_setup_allpage_flag ){
 				mv_setup_search_ac();

@@ -137,5 +137,4 @@ if ( $page_id_added ) {
 	$wgDatabase->query( "ALTER TABLE `mv_mvd_index` ADD PRIMARY KEY(`mv_page_id`)" );
 	print "done\n";
 }
-
 print "done with db tables update check\n";

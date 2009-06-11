@@ -84,7 +84,8 @@ class MV_SequencePage extends Article {
 			'interface_url' => str_replace('index.php', 'api.php', $wgServer . $wgScript), //api link (might be a better way to grab that) 
 			'linkback'		=> $this->mTitle->getFullURL(),
 			'mTitle'		=> $this->mTitle->getPrefixedDBKey(),
-			'mTalk'			=> $talkTitle->getPrefixedDBKey()
+			'mTalk'			=> $talkTitle->getPrefixedDBKey(),
+			'mTouchedTime'	=> wfTimestamp(TS_ISO_8601, $this->mTitle->getTouched())
 		);
 		foreach($metaData as $name=>$val){
 			$titleNode = $this->smilDoc->createElement('meta');
@@ -92,11 +93,22 @@ class MV_SequencePage extends Article {
 			$titleNode->setAttribute("content", htmlentities($val) );
 			$headNode->appendChild($titleNode);
 		}
+		//add special meta wikiDesc:
+		$titleNode = $this->smilDoc->createElement('meta');
+		$titleNode->setAttribute("name", htmlentities('wikiDesc') );
+			$f = $titleNode->ownerDocument->createDocumentFragment();
+	 		$f->appendXML( "<![CDATA[\n".
+	 			trim( $this->getPageContent() ). 
+		    		"\n]]>");
+			$titleNode->appendChild($f); 
+		$headNode->appendChild( $titleNode );
+		
 		
 		//add resolved transitions to the head: 
 		$tranNodeList = $this->hlrdDoc->getElementsByTagName('transition');
 		foreach ($tranNodeList as $tranNode){
-			//for now do a direct copy (future we should do additional validation even though it should be validated on the way in)
+			//for now do a direct copy 
+			//(future we should do additional validation even though it should be validated on the way in)
 			$node = $this->smilDoc->importNode($tranNode, true);
 			$headNode->appendChild($node);
 		}				
@@ -251,9 +263,11 @@ class MV_SequencePage extends Article {
 				foreach($paramVars as $name=>$val){
  					$phtml.='<param name="' . htmlentities($name) . '">' . htmlentities($val) . '</param>';
  				}
- 				$f = $node->ownerDocument->createDocumentFragment();
- 				$f->appendXML(  $phtml );
-				$node->appendChild($f); 
+ 				if($phtml!=''){
+ 					$f = $node->ownerDocument->createDocumentFragment(); 				
+ 					$f->appendXML(  $phtml );
+					$node->appendChild($f); 
+ 				}
  			break;
  			case NS_IMAGE:
  			case NS_FILE:
@@ -713,8 +727,7 @@ class MV_SequencePage extends Article {
 		$markerList[] = $vidtag;
 		return $marker;
 	}
-	function getPageContent() {
-		global $wgRequest;
+	function getPageContent() {		
 		$base_text = parent::getContent();
 		// strip the sequence
 		$seqClose = strpos( $base_text, '</' . SEQUENCE_TAG . '>' );
