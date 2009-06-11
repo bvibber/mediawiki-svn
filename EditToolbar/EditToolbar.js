@@ -343,6 +343,7 @@
 		parseCharinsert: function( charinsert ) {
 			var retval = {};
 			for( page in charinsert ) {
+				var pageKey = page.replace(/ /g, '_');
 				var characters = [], attributes = {}, styles = {};
 				var i = 0;
 				for( line in charinsert[page] ) {
@@ -374,17 +375,15 @@
 						 if( charinsert[page][line][character] instanceof Array ) {
 						 	tool.action.options.pre = charinsert[page][line][character][0];
 						 	tool.action.options.post = charinsert[page][line][character][1];
-						 	//tool.text = charinsert[page][line][chr][0] + charinsert[page][line][character][1];
 						 } else {
 						 	tool.action.options.pre = charinsert[page][line][character];
-						 	//tool.text = charinsert[page][line][character];
 						 }
 						tool.text = tool.action.options.pre + tool.action.options.post;
 						characters[i++] = tool;
 					}
 					characters[i++] = { type: 'break' };
 				}
-				retval[page] = {
+				retval[pageKey] = {
 					label: page,
 					layout: 'characters',
 					attributes: attributes,
