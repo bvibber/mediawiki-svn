@@ -96,8 +96,8 @@ abstract class Maintenance {
 	}
 
 	/**
-	 * Does the script need DB access? Override this and return true,
-	 * if needed
+	 * Does the script need DB access? Specifically, we mean admin access to
+	 * the DB. Override this and return true, if needed
 	 * @return boolean
 	 */
 	protected function needsDB() {
