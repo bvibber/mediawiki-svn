@@ -37,7 +37,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Trevor Parscal',
 	'version' => '0.1.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
-	'descriptionmsg' => 'toolbar-desc',
+	'descriptionmsg' => 'edittoolbar-desc',
 );
 
 // Adds Autoload Classes
