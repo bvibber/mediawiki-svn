@@ -306,8 +306,11 @@ abstract class Maintenance {
 				$this->output( $this->mDescription . "\n" );
 			}
 			$this->output( "\nUsage: php " . $this->mSelf . " [--" . 
-							implode( array_keys( $this->mParams ), "|--" ) . "] <" . 
-							implode( $this->mArgList, "> <" ) . ">\n" );
+							implode( array_keys( $this->mParams ), "|--" ) . "]" );
+			if( $this->mArgList ) {
+				$this->output( " <" . implode( $this->mArgList, "> <" ) . ">" );
+			}
+			$this->output( "\n" );
 			foreach( $this->mParams as $par => $info ) {
 				$this->output( "\t$par : " . $info['desc'] . "\n" );
 			}
