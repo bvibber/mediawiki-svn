@@ -143,7 +143,7 @@ class MasterSwitcher {
 
 	function getConnection( $host ) {
 		if ( !isset( $this->conns[$host] ) ) {
-			$this->conns[$host] = new Database( $host, $this->rootUser, $this->rootPass );
+			$this->conns[$host] = new DatabaseMysql( $host, $this->rootUser, $this->rootPass );
 		}
 		return $this->conns[$host];
 	}

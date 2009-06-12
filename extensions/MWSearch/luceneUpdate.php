@@ -122,7 +122,7 @@ class LuceneBuilder {
 	
 	function &streamingSlave( $db ) {
 		global $wgDBname;
-		$stream = new Database( $db->mServer, $db->mUser, $db->mPassword, $wgDBname );
+		$stream = new DatabaseMysql( $db->mServer, $db->mUser, $db->mPassword, $wgDBname );
 		$stream->bufferResults( false );
 		
 		$timeout = 3600 * 24;

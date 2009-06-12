@@ -112,7 +112,7 @@
 	<pre><?php
 
 	if ( isset( $_POST['update'] ) ) {
-		$dbr = new Database();
+		$dbr = new DatabaseMysql();
 		$dateRange = array(
 			sprintf(
 				'rev_timestamp > %s',
