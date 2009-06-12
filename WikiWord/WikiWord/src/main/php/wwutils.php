@@ -425,7 +425,7 @@ class WWUtils {
     }
 
     function getImagesAbout($id, $max = 0) {
-	global $wwFakeCommonsConcepts;
+	global $wwFakeCommonsConcepts, $wwFakeCommonsPlural;
 
 	$concepts = $this->getLocalConcepts($id);
 
@@ -455,7 +455,12 @@ class WWUtils {
 		return $images->listImages($max);
 
 	    $img = $this->getImagesInCategory("commmons", $title); //FIXME: resource mapping
-	    $images->addImages($img, "commons:" . $title, "category", 0.5);
+	    $images->addImages($img, "commons:category:" . $title, "category", 0.5);
+
+	    if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural) {
+		$img = $this->getImagesInCategory("commmons", $title); //FIXME: resource mapping
+		$images->addImages($img, "commons:category:" . $title, "category(pl)", 0.5);
+	    }
 	}
 
 	return $images->listImages($max);

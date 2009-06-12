@@ -17,6 +17,7 @@ $wwThumbnailURL = "http://toolserver.org/tsthumb/tsthumb?f={name}&domain=commons
 $wwImagePageURL = "http://commons.wikimedia.org/wiki/File:{name}";
 
 $wwFakeCommonsConcepts = true;
+$wwFakeCommonsPlural = true;
 $wwCommonsTablePrefix = "commonswiki_p.";
 
 $wwWikiInfoTable = "toolserver.wiki";
