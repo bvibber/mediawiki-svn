@@ -152,7 +152,7 @@ class Preferences {
 		global $wgAuth;
 		$defaultPreferences['realname'] =
 				array(
-					'type' => $wgAuth->allowRealNameChange() ? 'text' : 'info',
+					'type' => $wgAuth->allowPropChange( 'realname' ) ? 'text' : 'info',
 					'default' => $user->getRealName(),
 					'section' => 'personal/info',
 					'label-message' => 'yourrealname',
@@ -260,7 +260,7 @@ class Preferences {
 		global $wgMaxSigChars;
 		$defaultPreferences['nickname'] =
 				array(
-					'type' => $wgAuth->allowNickChange() ? 'text' : 'info',
+					'type' => $wgAuth->allowPropChange( 'nickname' ) ? 'text' : 'info',
 					'maxlength' => $wgMaxSigChars,
 					'label-message' => 'yournick',
 					'validation-callback' =>
@@ -281,7 +281,7 @@ class Preferences {
 		
 		$defaultPreferences['emailaddress'] =
 				array(
-					'type' => $wgAuth->allowEmailChange() ? 'text' : 'info',
+					'type' => $wgAuth->allowPropChange( 'emailaddress' ) ? 'text' : 'info',
 					'default' => $user->getEmail(),
 					'section' => 'personal/email',
 					'label-message' => 'youremail',
@@ -574,6 +574,8 @@ class Preferences {
 	}
 	
 	static function editingPreferences( $user, &$defaultPreferences ) {
+		global $wgUseExternalEditor;
+
 		## Editing #####################################
 		$defaultPreferences['cols'] =
 				array(
@@ -640,19 +642,14 @@ class Preferences {
 					'label-message' => 'tog-minordefault',
 				);
 
-		global $wgUseExternalEditor;
-		if ($wgUseExternalEditor) {
+		if ( $wgUseExternalEditor ) {
 			$defaultPreferences['externaleditor'] =
 					array(
 						'type' => 'toggle',
 						'section' => 'editing/advancedediting',
 						'label-message' => 'tog-externaleditor',
 					);
-		}
-
-		global $wgExternalDiffEngine;
-		if ($wgExternalDiffEngine) {
-		  $defaultPreferences['externaldiff'] =
+			$defaultPreferences['externaldiff'] =
 					array(
 						'type' => 'toggle',
 						'section' => 'editing/advancedediting',
