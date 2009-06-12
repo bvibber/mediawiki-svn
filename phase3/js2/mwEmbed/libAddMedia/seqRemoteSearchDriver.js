@@ -1,11 +1,16 @@
 /*the sequence remote search driver
 	 extends the base remote search driver with sequence specific stuff.		 could seperate this out into seperate lib.
 */
+loadGM({
+	
+});
 var seqRemoteSearchDriver = function(iObj){
 	return this.init( iObj )
 }
 seqRemoteSearchDriver.prototype = {
+	sequence_add_target:false,
 	init:function( this_seq ){
+		var _this = this;
 		js_log("init:seqRemoteSearchDriver");
 		//setup remote search driver with a seq parent: 
 		this.pSeq = this_seq;
@@ -24,61 +29,97 @@ seqRemoteSearchDriver.prototype = {
 				this[i] = tmpRSD[i];
 			}
 		}
+		//extend actions:
+		this.pSeq.parent_do_refresh_timeline = this.pSeq.do_refresh_timeline;
+		this.pSeq.do_refresh_timeline = function(){
+			js_log("seqRs refresh chain::" + _this.pSeq.disp_menu_item);
+			//call the parent
+			_this.pSeq.parent_do_refresh_timeline();
+			//add our local bindings if our window is 'active'
+			if(_this.pSeq.disp_menu_item == 'cliplib'){
+				_this.addResultBindings();
+			}
+		}
 	},	
+	resourceEdit:function(){
+		var _this = this;	
+		
+	},
 	addResultBindings:function(){
 		//set up seq:		
 		var _this = this;
 		//setup parent bindings:
 		this.parent_addResultBindings();
 		
-		//add an additional drag binding
-		var source_pos = null;
-		var insert_key='na';
-		var clip_key ='';		
-		var clipTarget = '';
-		$j( '.mv_clip_box_result' ).draggable({
-			helper:'clone',
-			opacity: 0.7,
-			revert:'invalid',
-			start: function(event, ui) { 				
-				//create a clip target (just a temporary image representation  .. will swap and import after drag) 
-				_this.pSeq.addClips({		
-					'type':'image/jpeg'
-				})
-			},
-			drag:function(e, ui){
-				insert_key = _this.pSeq.clipDragUpdate(ui, this);
-			}						 			
-		});
-		//@@todo support multiple target tracks
-		/*$j( '.mv_clip_box_result' ).draggable({
+		//add an additional drag binding					
+		$j( '.rsd_res_item' ).draggable('destroy').draggable({
+			helper:function(){
+				return $j( this ).clone().appendTo('body').css({'z-index':9999}).get(0);
+			},		
+			revert:'invalid',						
 			start:function(){
-				source_pos = $j(this).offset();
-				js_log("update pos of: #clone_" + this.id + ' to l:' +source_pos.left  + ' t:' + source_pos.top ); 
-				$j('#clone_' + this.id).css(source_pos);
+				js_log('start drag');
+			}								
+		});				
+		$j(".mv_clip_drag").droppable( 'destroy' ).droppable({
+			accept: '.rsd_res_item',
+			over:function(event, ui){
+				js_log("over : mv_clip_drag: " + $j(this).attr('id') );
+				$j(this).css('border-right', 'solid thick red');				
 			},
-			helper:function(){			
-				//js_log(' should put at: ' + source_pos.left + ' ' + source_pos.right);
-				//get source pos:
-				//$j(this).clone().attr('id', 'clone_' + this.id).css({'z-index':'101'}).appendTo('body');
-				$j(this).clone().attr('id', 'clone_' + this.id).css({
-					'z-index':'101',
-					'position':'absolute'
-				}).appendTo('#container_track_0'); 
-				js_log('appended: ' +  'clone_' + this.id );
-				return $j('#clone_'+this.id).get(0);
+			out:function(event, ui){
+				$j(this).css('border-right', 'solid thin white');				
 			},
-			drag:function(e, ui){
-				insert_key = _this.pSeq.clipDragUpdate(ui, this);		
-			},
-			stop:function(){
-				js_log('done drag insert after: ' + insert_key);
-			}			
-		}); */
+			drop: function(event, ui) {
+				$j(this).css('border-right', 'solid thin white');
+				js_log("Droped: "+ $j(ui.draggable).attr('id') +' on ' +  $j(this).attr('id') );
+				_this.sequence_add_target =  $j(this).attr('id');
+				//load the orginal draged item
+				var rObj = _this.getResourceFromId( $j(ui.draggable).attr('id') );							
+				_this.resourceEdit(rObj, ui.draggable);				
+			}
+		});		
 	
 	},
+	insertResource:function(rObj){
+		js_log("SEQ insert resource");
+	},
+	getClipEditControlActions:function(){
+		var _this = this;	
+		return {
+			'insert_seq':function(rObj){
+				_this.insertResource( rObj )
+			},
+			'cancel'	:function(rObj){
+				_this.cancelClipEditCB( rObj )
+			}
+		};
+	},
 	resourceEdit:function(rObj, rsdElement){
-		//pass along for now: 
-		this.parent_resourceEdit(rObj, rsdElement);
+		var _this = this;
+		//don't resize to default (full screen behavior) 
+		_this.dmodalCss = {};
+		//open up a new target_contaienr: 
+		if($j('#seq_resource_import').length == 0)
+			$j('body').append('<div id="seq_resource_import" style="position:relative"></div>');
+			
+		$j('#seq_resource_import').dialog('destroy').dialog({
+			bgiframe: true,
+			width:640,
+			height:480,
+			modal: true,
+			buttons: { 
+				"Cancel": function() { 
+						$j(this).dialog("close"); 
+					} 
+				}
+		});
+		_this.target_container = '#seq_resource_import';		
+		//do parent resource edit (with updated target)
+		this.parent_resourceEdit(rObj, rsdElement);				
+	},
+	cancelClipEditCB:function(){
+		js_log('seqRSD:cancelClipEditCB');
+		$j('#seq_resource_import').dialog('close').dialog('destroy').remove();			
 	}
 };

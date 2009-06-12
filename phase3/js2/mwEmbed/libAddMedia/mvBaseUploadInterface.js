@@ -343,7 +343,7 @@ mvBaseUploadInterface.prototype = {
 				}		
 				var bObj = {};
 				bObj[ gM('return-to-form') ] = 	function(){
-						$(this).dialog('close');
+						$j(this).dialog('close');
 				 };  	
 				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg, bObj);	
 			}else{
@@ -528,10 +528,11 @@ mvBaseUploadInterface.prototype = {
 	},
 	cancel_button:function(){
 	   var _this = this;
-	   var cancel_txt = gM('cancel-button');
-	   //@@todo should convice the jquery ui people to not use object keys as user msg's (or patch and move upstream) 
-	   eval('var res = {"' +gM('cancel-button') + '" : function(){  _this.cancel_action(this); } }' );
-	   return res;
+	   var cancelBtn = new Array();
+	   cancelBtn[ gM('cancel-button') ] =  function(){  
+	   		_this.cancel_action(this); 
+	   };
+	   return cancelBtn;
 	},	
 	cancel_action:function(dlElm){
 		//confirm:	

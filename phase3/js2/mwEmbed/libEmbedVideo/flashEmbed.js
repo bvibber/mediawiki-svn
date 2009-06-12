@@ -1642,7 +1642,7 @@ var flashEmbed = {
 	},
 	//@@todo support mute
 	toggleMute: function(){
-		parent_toggleMute();
+		this.parent_toggleMute();
 		this.getFLA();
 		if(this.fla){
 			if(this.muted){

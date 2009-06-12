@@ -43,6 +43,8 @@ var default_clipedit_values = {
 	'p_rsdObj': null,	//parent remote search object
 	'p_seqObj': null,	 //parent sequence Object
 	
+	'controlActionsCb' : null, //the object that configures control Action callbacks
+	
 	'edit_action': null, //the requested edit action
 	'profile': 'inpage' //the given profile either "inpage" or "sequence"
 						//timeline invokes the timeline editor (letting you set keyframes)
@@ -359,9 +361,8 @@ mvClipEdit.prototype = {
 			$j('#'+this.control_ct).append(	 gM('no_import_by_url') + '<br>' +			 
 				'<a href="#" class="mv_cancel_img_edit" title="' + gM('mv_cancel_image_insert')+'">' + gM('mv_cancel_image_insert') + '</a> ' );
 		}else{										
-			$j('#'+this.control_ct).append(  this.getInsertAction()	);
-		}						
-		this.applyInsertControlBindings();
+			this.updateInsertControlActions();
+		}								
 	},
 	setInOutBindings:function(){
 		var _this = this;
@@ -437,41 +438,54 @@ mvClipEdit.prototype = {
 		//js_log('getInsertDescHtml: ' + o );
 		return o;
 	},
-	getInsertAction:function(){		
-		return '<h3>Actions</h3>'+
-				$j.btnHtml( gM('mv_insert_image_page'), 'mv_insert_image_page', 'check' ) + ' ' + 
-				$j.btnHtml( gM('mv_preview_insert'), 'mv_preview_insert', 'refresh') + '<div style="clear:both;height:20px;"/>' +
-				$j.btnHtml( gM('mv_cancel_image_insert'), 'mv_cancel_img_edit', 'close');
+	updateInsertControlActions:function(){
+		var _this = this;		
+		var b_target =   _this.p_rsdObj.target_container + '~ .ui-dialog-buttonpane';
+		//empty the ui-dialog-buttonpane bar:
+		$j(b_target).empty();
+		for(var cbType in _this.controlActionsCb){
+			switch(cbType){
+				case 'insert_seq':
+					$j(b_target).append( $j.btnHtml(gM('mv_insert_image_page'), 'mv_insert_image_page', 'check' ) + ' ' )
+				break;				
+				case 'insert': 
+					$j(b_target).append(  $j.btnHtml(gM('mv_insert_image_page'), 'mv_insert_image_page', 'check' ) + ' ' )
+						.children('.mv_insert_image_page').btnBind()
+						.click(function(){							
+							_this.applyEdit();
+							_this.controlActionsCb['insert'](  _this.rObj );																		
+						}).show('slow');
+				break;
+				case 'preview':
+					$j(b_target).append( $j.btnHtml( gM('mv_preview_insert'), 'mv_preview_insert', 'refresh') + ' ' )
+						.children('.mv_preview_insert').btnBind()
+						.click(function(){	
+							_this.applyEdit();
+							_this.controlActionsCb['preview'](  _this.rObj );
+						}).show('slow');
+				break;		
+				case 'cancel':
+					$j(b_target).append( $j.btnHtml( gM('mv_cancel_image_insert'), 'mv_cancel_img_edit', 'close') + ' ')
+						.children('.mv_cancel_img_edit').btnBind()
+						.click(function(){
+							//no cancel action; 
+							_this.controlActionsCb['cancel'](  _this.rObj );
+						}).show('slow');
+				break;			 
+			}				
+		}		
 	},
 	applyEdit:function(){
+		var _this = this;
 		js_log('applyEdit::' + this.media_type);
 		if(this.media_type == 'image'){
 			this.applyCrop();
 		}else if(this.media_type == 'video'){
 			this.applyVideoAdj();
 		}
-	},
-	applyInsertControlBindings:function(){
-		var _this = this;
-		$j('.mv_insert_image_page').btnBind().click(function(){
-			_this.applyEdit();	
-			//copy over the desc text to the resource object
-			_this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
-			_this.p_rsdObj.insertResource( _this.rObj );
-		});
-		$j('.mv_preview_insert').btnBind().click(function(){					
-			_this.applyEdit();
-			//copy over the desc text to the resource object
-			_this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
-			js_log('going to call previewResource on rObj');
-			_this.p_rsdObj.previewResource( _this.rObj );
-		});
-		$j('.mv_cancel_img_edit').btnBind().click( function(){
-			$j('#rsd_resource_edit').fadeOut("fast");
-			//restore the title: 
-			$j( _this.p_rsdObj.target_container ).dialog( 'option', 'title', gM('add_media_wizard'));
-		});
-	},
+		//copy over the desc text to the resource object
+		_this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
+	},	
 	setUpImageCtrl:function(){
 		var _this = this;		
 		//by default apply Crop tool 
@@ -487,9 +501,11 @@ mvClipEdit.prototype = {
 				'<input type="radio" name="mv_layout" id="mv_layout_left" style="float:left"><div id="mv_layout_left_img" title="'+gM('mv_layout_left')+'"/>'+
 				'<input type="radio" name="mv_layout" id="mv_layout_right" style="float:left"><div id="mv_layout_right_img" title="'+gM('mv_layout_left')+'"/>'+	
 			'<hr style="clear:both" /><br>' +									 
-				_this.getInsertDescHtml() + 
-				_this.getInsertAction()					
+				_this.getInsertDescHtml() 							
 		);
+		//add the actions to the 'button bar'
+		_this.updateInsertControlActions()	
+		
 		/*scale: 
 		 '<div class="mv_edit_button mv_scale_button_base" id="mv_scale_button" alt="crop" title="'+gM('mv_scale')+'"></div>'+				
 				'<a href="#" class="mv_scale_msg">' + gM('mv_scale') + '</a><br>'+
@@ -533,8 +549,7 @@ mvClipEdit.prototype = {
 			$j('#' + _this.clip_disp_ct ).empty().html(
 				'<img src="' + _this.rObj.url + '" id="rsd_edit_img">'
 			);
-		});		
-		this.applyInsertControlBindings();
+		});				
 	},
 	applyVideoAdj:function(){		
 		js_log('applyVideoAdj::');	

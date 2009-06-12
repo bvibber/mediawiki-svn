@@ -32,10 +32,10 @@ loadGM( {
 	"no_edit_permissions" : "You don't have permissions to save changes to this sequence", 
 	
 	"edit_clip" : "Edit Clip",
-	"edit_save" : "Save Changes",
+	"edit_save" : "Save Sequence Changes",
 	"saving_wait": "Save in Progress (please wait)",
 	"save_done"	:	"Save Done",
-	"edit_cancel" : "Cancel Edit",
+	"edit_cancel" : "Cancel Sequence Edit",
 	"edit_cancel_confirm" : "Are you sure you want to cancel your edit. Changes will be lost",
 			
 	"zoom_in" : "Zoom In",
@@ -116,7 +116,7 @@ var sequencerDefaultValues = {
 	mv_pl_src:'null',
 	//the edit stack:
 	edit_stack:new Array(),
-	
+	disp_menu_item:null,
 	//trackObj used to payload playlist Track Object (when inline not present) 
 	tracks:{}
 }
@@ -326,7 +326,11 @@ mvSequencer.prototype = {
 							$j('#seq_save_dialog').html( gM('save_done') );
 							$j('#seq_save_dialog').dialog('option', 
 								'buttons', { 
-									"Ok": function() { 
+									"Done":function(){
+										//close the editor if we can
+										$j(this).dialog("close"); 
+									},
+									"Do More Edits": function() { 
 										$j(this).dialog("close"); 
 									} 
 							});
@@ -342,8 +346,7 @@ mvSequencer.prototype = {
 	//display a menu item (hide the rest) 
 	disp:function( item ){
 		js_log('menu_item disp: ' + item);
-		//hide the welcome msg if visible  
-		$j('#welcome_ic').fadeOut("fast");
+		this.disp_menu_item = item;
 		//update the display and item state:		
 		for(var i in this.menu_items){			
 			if(i==item){
@@ -352,10 +355,7 @@ mvSequencer.prototype = {
 				//do any click_js actions:getInsertControl
 				if( this.menu_items[i].click_js ) 
 					this.menu_items[i].click_js( this );						
-			}else{
-				$j('#'+i+'_ic').filter(':visible').fadeOut("fast");
-				this.menu_items[i].d = 0;
-			}		
+			}	
 		}		
 	},
 	//setup the menu items:	 
@@ -588,8 +588,10 @@ mvSequencer.prototype = {
 		var o='<div id="seq_menu" style="width:100%;height:100%">';
 		o+='<ul>';			
 		$j.each(this.menu_items, function(tab_id, menu_item){
-			if(menu_item.d)
+			if(menu_item.d){
 				selected_tab=inx;
+				_this.disp_menu_item =tab_id;
+			}
 						
 			o+='<li>' + 
 				'<a id="mv_menu_item_'+tab_id+'" href="#' + tab_id + '_ic">'+gM('menu_' + tab_id ) + '</a>' +
@@ -601,10 +603,10 @@ mvSequencer.prototype = {
 			inx++;
 		});
 		o+='</ul>';
-		o+=tabc;	
-			
+		o+=tabc;				
 		$j('#'+this.sequence_tools_id).html( o );
-		
+				
+		 
 		$j("#seq_menu").tabs({
 			selected:selected_tab,
 			select: function(event, ui) {									

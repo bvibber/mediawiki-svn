@@ -178,7 +178,7 @@ metavidSearch.prototype = {
 			if( cur_source.id ==  this.cp.target_source_id)
 				rObj['url'] = cur_source.getURI();
 		}
-		js_log('set url to: ' + rObj['url']);
+		//js_log('set url to: ' + rObj['url']);
 		return rObj;			
 	},
 	//update rObj for import:

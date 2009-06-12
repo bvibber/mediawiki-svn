@@ -293,7 +293,7 @@ var ctrlBuilder = {
 		
 			
 		//append options to body (if not already there)
-		if($j('#mv_embedded_options_'+ctrlBuilder.id).length==0)
+		if($j('#mv_vid_options_'+ctrlBuilder.id).length==0)
 			$j('body').append( this.components['mv_embedded_options'].o() );		
 					
 		var o='';	
@@ -407,6 +407,24 @@ var ctrlBuilder = {
 		//extended class list for jQuery ui themeing (we can probably refactor this with custom buffering highliter) 
 		$j('#mv_play_head_'+embedObj.id).append( ctrlBuilder.getMvBufferHtml() );
 		
+		
+		//videoOptions: 
+		$j('#mv_vid_options_'+ctrlBuilder.id+' .vo_selection').click(function(){
+			embedObj.selectPlaybackMethod();
+			$j('#mv_vid_options_'+ctrlBuilder.id).hide();
+			return false;
+		});
+		$j('#mv_vid_options_'+ctrlBuilder.id+' .vo_download').click(function(){
+			embedObj.showVideoDownload();
+			$j('#mv_vid_options_'+ctrlBuilder.id).hide();
+			return false;
+		})		
+		$j('#mv_vid_options_'+ctrlBuilder.id+' .vo_showcode').click(function(){
+			embedObj.showEmbedCode();
+			$j('#mv_vid_options_'+ctrlBuilder.id).hide();
+			return false;
+		});		
+		
 	},
 	getMvBufferHtml:function(){
 		return '<div class="ui-slider-range ui-slider-range-min ui-widget-header ' +
@@ -423,26 +441,25 @@ var ctrlBuilder = {
 		'mv_embedded_options':{
 			'w':0,
 			'o':function(){
-				var o= '<div id="mv_embedded_options_'+ctrlBuilder.id+'" class="videoOptions">'
-+'				<div class="videoOptionsTop"></div>'
-+'				<div class="videoOptionsBox">'
-+'					<div class="block">'
-+'						<h6>Video Options</h6>'
-+'					</div>'
-+'					<div class="block">'
-+'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).selectPlaybackMethod();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();"><span><strong>Stream Selection</strong></span></a></p>'
-+'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).showVideoDownload();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();" ><span><strong>Download</strong></span></a></p>'
-+'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).showEmbedCode();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();" ><span><strong>Share or Embed</strong></span></a></p>';
+				var o= '<div id="mv_vid_options_'+ctrlBuilder.id+'" class="videoOptions">'+
+				'<div class="videoOptionsTop"></div>'+
+				'<div class="videoOptionsBox">'+
+				'<div class="block">'+
+					'<h6>Video Options</h6>'+
+				'</div>'+
+					'<div class="block">'+
+						'<p class="short_match vo_selection"><a href="#"><span>Stream Selection</span></a></p>'+
+						'<p class="short_match vo_download"><a href="#"><span>Download</span></a></p>'+
+						'<p class="short_match vo_showcode"><a href="#"><span>Share or Embed</span></a></p>';
 					
 					//link to the stream page if we are not already there: 
 					if( ctrlBuilder.embedObj.roe && typeof mv_stream_interface == 'undefined' )
 						o+='<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).doLinkBack()"><span><strong>Source Page</strong></span></a></p>';
 											
-					o+=''
-+'					</div>'  
-+'				</div><!--videoOptionsInner-->'  
-+'				<div class="videoOptionsBot"></div>'  
-+'			</div><!--videoOptions-->';
+				o+='</div>'+  
+				'</div><!--videoOptionsInner-->' +   
+					'<div class="videoOptionsBot"></div>' +   
+				'</div><!--videoOptions-->';
 				return o;
 			}
 		},
@@ -465,7 +482,7 @@ var ctrlBuilder = {
 			}
 		},
 		'closed_captions':{
-			'w':40,
+			'w':22,
 			'o':function(){
 				return '<div id="timed_text_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-comment"></span></div>'
 			}			
@@ -1724,7 +1741,7 @@ embedVideo.prototype = {
 		pos['top']=pos['top']+24;
 		pos['left']=pos['left']-124;
 		//js_log('pos of options button: t:'+pos['top']+' l:'+ pos['left']);
-		$j('#mv_embedded_options_'+sel_id).css(pos).toggle();
+		$j('#mv_vid_options_'+sel_id).css(pos).toggle();
 		return;
 	},
 	getPlayButton:function(id){

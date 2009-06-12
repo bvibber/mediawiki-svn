@@ -410,12 +410,12 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		//add the parent target_container if not provided or missing
 		if(!_this.target_container || $j(_this.target_container).length==0){
-			$j('body').append('<div id="rsd_modal_target" style="position:relative" title="' + gM('add_media_wizard') + '" ></div>');
+			$j('body').append('<div id="rsd_modal_target" style="position:absolute;top:30px;left:0px;bottom:45px;right:0px" title="' + gM('add_media_wizard') + '" ></div>');
 			_this.target_container = '#rsd_modal_target';
 			js_log('appended: #rsd_modal_target' + $j(_this.target_container).attr('id'));
 				js_log('added target id:' + $j(_this.target_container).attr('id'));
 			//get layout			
-			//layout = _this.getMaxModalLayout();
+			//layout = _this.getMaxModalLayout();			
 			$j(_this.target_container).dialog({
 				bgiframe: true,
 				autoOpen: true,		  
@@ -490,7 +490,7 @@ remoteSearchDriver.prototype = {
 		o+='</div>';
 	
 		//search provider tabs based on "checked" and "enabled" and "combined tab"
-		o+='<div id="rsd_results_container"></div>';
+		o+='<div id="rsd_results_container" style="top:0px;bottom:0px;left:0px;right:0px;></div>';
 		js_log('should set: ' + this.target_container + ' to: ' + o);
 		$j(this.target_container).html( o );
 		//add simple styles:
@@ -954,14 +954,14 @@ remoteSearchDriver.prototype = {
 		var overflow_style = ( mediaType =='video' )?'':'overflow:auto;';
 		//append to the top level of model window:
 		$j( _this.target_container ).append('<div id="rsd_resource_edit" '+
-			'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +			 
+			'style="position:absolute;top:0px;left:0px;bottom:85px;right:4px;background-color:#FFF;">' +			 
 				'<div id="clip_edit_disp" style="position:absolute;' + overflow_style + 'width:100%;height:100%;padding:5px;'+
 					'width:' + (maxWidth + 10) + 'px;" >' +
 						mv_get_loading_img('position:absolute;top:30px;left:30px') +
 				'</div>'+
-				'<div id="clip_edit_ctrl" style="position:absolute;border:solid thin blue;'+
-					'left:' + ( maxWidth + 10 ) +'px;top:5px;bottom:0px;right:0px;overflow:auto;padding:5px;">'+
-					mv_get_loading_img() +					 
+				'<div id="clip_edit_ctrl" class="ui-widget ui-widget-content ui-corner-all" style="position:absolute;'+
+					'left:' + ( maxWidth + 10 ) +'px;top:5px;bottom:10px;right:0px;overflow:auto;padding:5px;">'+
+						mv_get_loading_img() +					 
 				'</div>'+
 			'</div>');
 		//update add media wizard title:
@@ -1047,6 +1047,33 @@ remoteSearchDriver.prototype = {
 				}).attr('src', rObj.edit_url);  
 			});	
 	},
+	cancelClipEditCB:function(){		
+		var _this = this;
+		js_log('RSD:cancelClipEditCB');		
+		var b_target =   _this.target_container + '~ .ui-dialog-buttonpane';
+		$j('#rsd_resource_edit').remove();
+		js_log("should update: " + b_target + ' with: cancel');
+		$j(b_target).html( $j.btnHtml( 'Cancel' , 'mv_cancel_rsd', 'close'))
+			.children('.mv_cancel_rsd')
+			.click(function(){
+				$j( _this.target_container).dialog('close');	
+			}) 										
+	},
+	/*set-up the control actions for clipEdit with relevent callbacks */
+	getClipEditControlActions:function(){
+		var _this = this;
+		return {
+			'insert' :function(rObj){
+				_this.insertResource();
+			},			
+			'preview':function(rObj){
+				_this.previewResource( rObj )
+			},			
+			'cancel' :function(){
+				_this.cancelClipEditCB()
+			}				
+		};
+	},
 	//loads the media editor:
 	doMediaEdit:function( rObj , mediaType){
 		var _this = this;									
@@ -1054,10 +1081,12 @@ remoteSearchDriver.prototype = {
 				'rObj':rObj, //the resource object
 				'parent_ct':'rsd_modal_target',
 				'clip_disp_ct':'clip_edit_disp',
-				'control_ct': 'clip_edit_ctrl',
+				'control_ct': 'clip_edit_ctrl',								
 				'media_type': mediaType,
-				'p_rsdObj': _this					
+				'p_rsdObj': _this,		
+				'controlActionsCb':_this.getClipEditControlActions()											
 		};	
+		
 		var clibs = ['mvClipEdit'];
 		if( mediaType == 'image'){
 			//load the crop library:
@@ -1096,7 +1125,7 @@ remoteSearchDriver.prototype = {
 					});
 				});
 			});
-		}
+		}		
 	},
 	checkRepoLocal:function( cp ){
 		if( cp.local ){
@@ -1365,35 +1394,44 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		this.checkImportResource( rObj, function(){	
 			//put another window ontop:
-			$j( _this.target_container ).append('<div id="rsd_resource_preview" '+
-					'style="position:absolute;z-index:4;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
-						'<h3>preview insert of resource: ' + rObj.title + '</h3>'+
-						'<div id="rsd_preview_display" style="position:absolute;width:100%;top:30px;bottom:30px;overflow:auto;">' +
-							mv_get_loading_img('top:30px;left:30px') +
-						'</div>' +
-						'<div id="rsd_preview_control" style="position:absolute;width:60%;left:40%;bottom:0px;height:30px;">' +
-							$j.btnHtml( gM('rsd_do_insert'), 'preview_do_insert', 'check') + ' ' +							
-							'<a href="#" id="preview_close">Do More Modification</a>' +
-						'</div>' +
-					'</div>');					
+			$j( _this.target_container ).append('<div id="rsd_preview_display"' +
+					'style="position:absolute;overflow:hidden;z-index:4;top:0px;bottom:75px;right:0px;left:0px;background-color:#FFF;">' +
+						mv_get_loading_img('top:30px;left:30px') +
+					'</div>');
+					
+			var bPlaneTarget = _this.target_container +'~ .ui-dialog-buttonpane';
+			var pTitle = $j( _this.target_container ).dialog('option', 'title');			
+			
+			//update title: 
+			$j( _this.target_container ).dialog('option', 'title', 'Preview Insert of Resource: ' + rObj.title );	
+					
+			//update buttons preview: 
+			$j(bPlaneTarget).html( $j.btnHtml( gM('rsd_do_insert'), 'preview_do_insert', 'check') + ' ' )
+				.children('.preview_do_insert')
+				.click(function(){
+					_this.insertResource( rObj );
+				});
+			//update cancel button
+			$j(bPlaneTarget).append('<a href="#" class="preview_close">Do More Modification</a>')
+				.children('.preview_close')
+				.click(function(){
+					$j('#rsd_preview_display').remove();
+					//restore title: 
+					$j( _this.target_container ).dialog('option', 'title', pTitle);
+					//restore buttons (from the clipEdit object::) 
+					_this.cEdit.updateInsertControlActions();
+				});
+									
 			//update the preview_wtext
-			_this.updatePreviewText( rObj );	
-				  
+			_this.updatePreviewText( rObj );			
 			_this.getParsedWikiText(_this.preview_wtext, _this.target_title,
 				function(phtml){
 					$j('#rsd_preview_display').html( phtml );
 					//update the display of video tag items (if any)
 					mwdomReady(true);
 				}
-			);		
-			//add bindings:
-			$j( _this.target_container + ' .preview_do_insert').btnBind().click(function(){
-				_this.insertResource( rObj );
-			});
-			$j('#preview_close').click(function(){
-				$j('#rsd_resource_preview').remove();
-			});
-		});
+			);
+		});		
 	},
 	updatePreviewText:function( rObj ){
 		var _this = this;
@@ -1466,9 +1504,8 @@ remoteSearchDriver.prototype = {
 			about_desc ='<span style="position:relative;top:0px;font-style:italic;">' +
 					' <i> Results From <a href="'+ cp.homepage + '" target="_new" >'+ cp.title +'</a> </i></span>';	
 			$j('#tab-'+this.disp_item).append( '<div id="rds_results_bar">'+						
-				'<span style="position:relative;top:0px;font-style:italic;">'+
-					gM('rsd_layout')+' '+
-				'</span>'+
+				'<span style="float:left;top:0px;font-style:italic;">'+
+					gM('rsd_layout')+' '+				
 					'<img id="msc_box_layout" ' +
 						'title = "' + gM('rsd_box_layout') + '" '+
 						'src = "' +  ( (_this.result_display_mode=='box')?box_dark_url:box_light_url ) + '" ' +		
@@ -1477,8 +1514,9 @@ remoteSearchDriver.prototype = {
 						'title = "' + gM('rsd_list_layout') + '" '+
 						'src = "' +  ( (_this.result_display_mode=='list')?list_dark_url:list_light_url ) + '" '+		
 						'style="width:20px;height:20px;cursor:pointer;">'+		
-				'<span id="rsd_paging_ctrl" style="float:right;top:5px;"></span>'+
-				about_desc +
+					about_desc +
+				'</span>'+
+				'<span id="rsd_paging_ctrl" style="float:right;"></span>'+		
 				'</div>'
 			);
 			//get paging with bindings:

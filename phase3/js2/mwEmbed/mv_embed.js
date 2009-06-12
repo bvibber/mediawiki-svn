@@ -126,7 +126,7 @@ function lcPaths( path, gClasses , opt){
 function mvGetClassPath(k){	
 	var cat  = mvClassPaths;
 	if( mvClassPaths[k] ){
-		js_log('got classpath:' + k +  ' : '+ mvClassPaths[k]);
+		//js_log('got classpath:' + k +  ' : '+ mvClassPaths[k]);
 		return mvClassPaths[k];
 	}else{
 		return js_error('could not find path for requested class ' + k );

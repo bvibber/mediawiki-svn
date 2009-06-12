@@ -75,7 +75,6 @@ class ApiUpload extends ApiBase {
 				$this->dieUsageMsg( $this->mUpload->status[ 'error' ] );
 
 		}else if( $this->mParams['internalhttpsession'] ){
-			wfDebug("internalhttpsession:\n");
 			$sd = & $_SESSION['wsDownload'][ $this->mParams['internalhttpsession'] ];
 
 			//get the params from the init session:
