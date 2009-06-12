@@ -177,6 +177,14 @@ mvClipEdit.prototype = {
 							'</tr>';		
 						}
 					}		
+					if(typeof wgArticlePath != 'undefined' ){
+						var res_src = wgArticlePath.replace(/\$1/, _this.rObj.uri );
+						var res_title = _this.rObj.uri;
+					}else{
+						//var res_page = 
+						var res_src = _this.rObj.src;								
+						var res_title = parseUri(_this.rObj.src).file;			
+					} 
 					o+=		'<tr>'+
 								'<td colspan="2"><b>'+gM('mv_other_properties')+'</b></td>'+
 							'</tr>'+
@@ -184,9 +192,9 @@ mvClipEdit.prototype = {
 								'<td>' + 
 									gM('mv_resource_page') + 
 								'</td>' +
-								'<td><a href="' + wgArticlePath.replace(/\$1/, _this.rObj.uri ) +'" '+
+								'<td><a href="' + res_src  +'" '+
 									' target="new">'+
-										_this.rObj.uri + '</a>'+
+										res_title + '</a>'+
 								'</td>'+
 							'</tr>';
 					o+='</table>'; 
