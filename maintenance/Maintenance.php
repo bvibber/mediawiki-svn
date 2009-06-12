@@ -85,9 +85,26 @@ abstract class Maintenance {
 	 * Add some args that are needed. Used in formatting help
 	 */
 	protected function addArgs( $args ) {
-		foreach( $args as $arg ) {
-			$this->mArgList[] = $arg;
-		}
+		$this->mArgList = array_merge( $this->mArgList, $args );
+	}
+	
+	/**
+	 * Does a given argument exist?
+	 * @param $argId int The integer value (from zero) for the arg
+	 * @return boolean
+	 */
+	protected function hasArg( $argId = 0 ) {
+		return isset( $this->mArgs[ $argId ] ) ;
+	}
+
+	/**
+	 * Get an argument.
+	 * @param $argId int The integer value (from zero) for the arg
+	 * @param $default mixed The default if it doesn't exist
+	 * @return mixed
+	 */
+	protected function getArg( $argId = 0, $default = null ) {
+		return $this->hasArg($name) ? $this->mArgs[$name] : $default;
 	}
 
 	/**
@@ -305,8 +322,10 @@ abstract class Maintenance {
 			if( $this->mDescription ) {
 				$this->output( $this->mDescription . "\n" );
 			}
-			$this->output( "\nUsage: php " . $this->mSelf . " [--" . 
-							implode( array_keys( $this->mParams ), "|--" ) . "]" );
+			$this->output( "\nUsage: php " . $this->mSelf );
+			if( $this->mParams ) {
+				$this->output( " [--" . implode( array_keys( $this->mParams ), "|--" ) . "]" );
+			}
 			if( $this->mArgList ) {
 				$this->output( " <" . implode( $this->mArgList, "> <" ) . ">" );
 			}
