@@ -69,6 +69,7 @@ div#edittoolbar div.sections > div.loading > div.progress {
 	background-repeat: no-repeat;
 	padding-left: 32px;
 	float: left;
+	color: #666666;
 }
 div#edittoolbar div.group > div.label {
 	float: left;
