@@ -78,7 +78,13 @@ abstract class Maintenance {
 	 * @return mixed
 	 */
 	protected function getOption( $name, $default = null ) {
-		return $this->hasOption($name) ? $this->mOptions[$name] : $default;
+		if( $this->hasOption($name) ) {
+			return $this->mOptions[$name];
+		} else {
+			// Set it so we don't have to provide the default again
+			$this->mOptions[$name] = $default;
+			return $this->mOptions[$name];
+		}
 	}
 	
 	/**
