@@ -47,7 +47,6 @@ class ApiUpload extends ApiBase {
 		$request = $this->getMain()->getRequest();
 
 		//do token checks:
-		print_r($this->mParams);
 		if(is_null($this->mParams['token']))
 			$this->dieUsageMsg(array('missingparam', 'token'));
 		if(!$wgUser->matchEditToken($this->mParams['token']))
