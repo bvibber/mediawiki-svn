@@ -72,7 +72,7 @@ var nativeEmbed = {
 		//@@todo check if the clip is loaded here (if so we can do a local seek)
 		if( this.supportsURLTimeEncoding() || !this.vid){			
 			//make sure we could not do a local seek instead:
-			if( perc < this.bufferedPercent ){
+			if( perc < this.bufferedPercent && this.vid.duration ){
 				js_log("do local seek " + perc + ' is already buffered < ' + this.bufferedPercent);
 				this.doNativeSeek(perc);
 			}else{

@@ -783,7 +783,7 @@ mvSequencer.prototype = {
 	closeModEditor:function(){
 		//unset the sequencer
 		_global['mvSeq'] = null;
-		$j('#modalbox,#mv_overlay').remove();
+		$j('#sequencer_target,.ui-widget-overlay').remove();
 	},
 	closeModWindow:function(){
 		$j('#modal_window').hide();

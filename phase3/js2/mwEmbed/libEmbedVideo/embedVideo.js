@@ -237,7 +237,7 @@ mvEmbed = {
 	},
 	//this should not be needed.
 	checkClipsReady : function(){
-		js_log('checkClipsReady');
+		//js_log('checkClipsReady');
 		var is_ready=true;	  
 		  for(var i=0; i < global_player_list.length; i++){
 			  if( $j('#'+global_player_list[i]).length !=0){

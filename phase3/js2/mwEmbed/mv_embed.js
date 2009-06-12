@@ -912,7 +912,11 @@ function seconds2npt(sec, show_ms){
 	}else{
 		seconds = Math.round( seconds );
 	}
-		
+	if(seconds <10 )
+		seconds = '0'+	seconds;
+	if(minutes < 10 )
+		minutes = '0' + minutes;	
+	
 	return hours+":"+minutes+":"+seconds;
 }
 /* 
