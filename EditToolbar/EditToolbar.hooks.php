@@ -51,6 +51,7 @@ class EditToolbarHooks {
 		// Adds messages to page
 		UsabilityInitiativeHooks::addMessages(
 			array(
+				'edittoolbar-loading',
 				/* Main Section */
 				'edittoolbar-tool-format-bold',
 				'edittoolbar-tool-format-bold-example',

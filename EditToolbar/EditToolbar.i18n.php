@@ -15,6 +15,7 @@ $messages['en'] = array(
 	'edittoolbar' => 'Editing Toolbar',
 	'edittoolbar-desc' => 'Edit page toolbar with enhanced usability',
 	'edittoolbar-preference' => 'Enable enhanced editing toolbar',
+	'edittoolbar-loading' => 'Loading...',
 	/* Main Section */
 	'edittoolbar-tool-format-bold' => 'Bold',
 	'edittoolbar-tool-format-bold-example' => 'Bold text',
