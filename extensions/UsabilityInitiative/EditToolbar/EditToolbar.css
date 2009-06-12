@@ -56,6 +56,20 @@ div#edittoolbar div.sections > div.section {
 body.rtl div#edittoolbar div.sections > div.section {
 	float: right;
 }
+div#edittoolbar div.sections > div.loading {
+	padding: 10px;
+}
+div#edittoolbar div.sections > div > div.progress {
+	display: none;
+}
+div#edittoolbar div.sections > div.loading > div.progress {
+	display: block;
+	background-image: url(images/loading.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	padding-left: 32px;
+	float: left;
+}
 div#edittoolbar div.group > div.label {
 	float: left;
 	border: 0px;

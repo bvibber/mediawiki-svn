@@ -32,6 +32,8 @@
 				$(this).append( $( '<div style="clear:both"></div>' ) );
 				// Cookie name for storing section state
 				var sectionCookie = 'edittoolbar-' + $(this).attr( 'id' ) + '-section';
+				// Queue for sections to be built asynchonously
+				var sectionQueue = [];
 				// Loops over each section
 				for ( section in tools ) {
 					// Skips over main (was handled as special case already)
@@ -41,7 +43,14 @@
 					// Appends section content
 					var sectionDiv = $( '<div />')
 						.attr( { 'class': 'section', 'id': $(this).attr( 'id' ) + '-section-' + section } )
-						.appendTo( sectionsDiv );
+						.appendTo( sectionsDiv )
+						.addClass( 'loading' )
+						.append(
+							$( '<div />' )
+								.addClass( 'progress' )
+								.text( gM( 'edittoolbar-loading' )
+							)
+						);
 					// Respects state
 					var current = false;
 					if ( $.cookie( sectionCookie ) == sectionDiv.attr( 'id' ) ) {
@@ -49,7 +58,11 @@
 						current = true;
 					}
 					// Appends toolbar to section div
-					sectionDiv.addToolbarSection( tools[section], textbox );
+					sectionQueue[sectionQueue.length] = {
+						'sectionDiv': sectionDiv,
+						'tools': tools[section],
+						'textbox': textbox
+					};
 					// Appends section tab
 					tabDiv.append(
 						$( '<div />' )
@@ -81,6 +94,13 @@
 							)
 					);
 				}
+				$.eachAsync( sectionQueue, {
+					bulk: 0,
+					loop: function( index, value ) {
+						value.sectionDiv.addToolbarSection( value.tools, value.textbox );
+						value.sectionDiv.removeClass( 'loading' )
+					}
+				} )
 			});
 		},
 		/**
