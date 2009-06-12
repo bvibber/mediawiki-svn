@@ -222,9 +222,7 @@ mvSequencer.prototype = {
 		//add the container divs (with basic layout ~universal~ 
 		$j(this.target_sequence_container).html(''+
 			'<div id="'+this.video_container_id+'" style="position:absolute;right:0px;top:0px;' +
-				'width:'+this.video_width+'px;height:'+this.video_height+'px;border:solid thin blue;background:#FFF;font-color:black;"/>'+
-			'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
-				'left:0px;right:'+(this.video_width+15)+'px;top:0px;height:'+(this.video_height+23)+'px;"/>'+
+				'width:'+this.video_width+'px;height:'+this.video_height+'px;border:solid thin blue;background:#FFF;font-color:black;"/>'+			
 			'<div id="'+this.timeline_id+'" class="ui-widget ui-widget-content ui-corner-all" style="position:absolute;' + 
 				'left:0px;right:0px;top:'+(this.video_height+34)+'px;bottom:35px;overflow:auto;">'+
 					gM('loading_timeline')+ '</div>'+
@@ -232,7 +230,9 @@ mvSequencer.prototype = {
 			'<div class="seq_save_cancel" style="position:absolute;'+
 				'left:5px;bottom:0px;height:25px;">'+					
 					gM('loading_user_rights') +
-			'</div>'
+			'</div>'+
+			'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
+				'left:0px;right:'+(this.video_width+15)+'px;top:0px;height:'+(this.video_height+23)+'px;"/>'
 		);
 		
 		/*js_log('set: '+this.target_sequence_container + ' html to:'+ "\n"+
@@ -808,8 +808,8 @@ mvSequencer.prototype = {
 		if( parseUri(  document.URL ).host != parseUri( this_seq.plObj.interface_url ).host ){
 			js_log('error: presently we can\'t copy clips across domains'); 
 		}else{					
-			if( this_seq.clipboardEditToken ){			
-				//@@todo we need a api entry point to store a "clipboard"
+			//@@we need a api entry point to store a "clipboard"
+			if( this_seq.clipboardEditToken && this_seq.plObj.interface_url ){							
 				var req_url = this_seq.plObj.interface_url.replace(/api.php/, 'index.php') + '?action=ajax&rs=mv_seqtool_clipboard&rsargs[]=copy';
 				$j.ajax({
 					type: "POST",
@@ -848,7 +848,11 @@ mvSequencer.prototype = {
 	//add a single or set of clips
 	//to a given position and track_inx 
 	addClips:function( clipSet, before_clip_pos, track_inx){
-		this_seq = this;		
+		this_seq = this;	
+		if(!track_inx)
+			track_inx = this.plObj.default_track
+		if(!before_clip_pos)	
+			before_clip_pos= 
 		js_log("seq: add clip: at: "+ before_clip_pos + ' in track: ' + track_inx);			
 		var cur_pos = before_clip_pos;
 		js_log('paste clip before_clip_pos: ' + before_clip_pos);

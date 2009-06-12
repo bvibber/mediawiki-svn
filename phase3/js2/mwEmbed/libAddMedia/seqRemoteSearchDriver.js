@@ -12,7 +12,8 @@ seqRemoteSearchDriver.prototype = {
 		var iObj = {			
 			'target_container'	: '#cliplib_ic',
 			'local_wiki_api_url': this_seq.getLocalApiUrl(),										
-			'instance_name'		: this_seq.instance_name + '.mySearch'						
+			'instance_name'		: this_seq.instance_name + '.mySearch',		
+			'default_query'		: this_seq.plObj.title							
 		}		
 		//inherit the remoteSearchDriver properties:n		
 		var tmpRSD = new remoteSearchDriver( iObj );
@@ -33,10 +34,24 @@ seqRemoteSearchDriver.prototype = {
 		//add an additional drag binding
 		var source_pos = null;
 		var insert_key='na';
-		var clip_key ='';
-		
-		//@@todo support multiple target tracks
+		var clip_key ='';		
+		var clipTarget = '';
 		$j( '.mv_clip_box_result' ).draggable({
+			helper:'clone',
+			opacity: 0.7,
+			revert:'invalid',
+			start: function(event, ui) { 				
+				//create a clip target (just a temporary image representation  .. will swap and import after drag) 
+				_this.pSeq.addClips({		
+					'type':'image/jpeg'
+				})
+			},
+			drag:function(e, ui){
+				insert_key = _this.pSeq.clipDragUpdate(ui, this);
+			}						 			
+		});
+		//@@todo support multiple target tracks
+		/*$j( '.mv_clip_box_result' ).draggable({
 			start:function(){
 				source_pos = $j(this).offset();
 				js_log("update pos of: #clone_" + this.id + ' to l:' +source_pos.left  + ' t:' + source_pos.top ); 
@@ -56,12 +71,10 @@ seqRemoteSearchDriver.prototype = {
 			drag:function(e, ui){
 				insert_key = _this.pSeq.clipDragUpdate(ui, this);		
 			},
-			//do contain: 
-			containment:'#container_track_0',
 			stop:function(){
 				js_log('done drag insert after: ' + insert_key);
 			}			
-		}); 
+		}); */
 	
 	},
 	resourceEdit:function(rObj, rsdElement){
