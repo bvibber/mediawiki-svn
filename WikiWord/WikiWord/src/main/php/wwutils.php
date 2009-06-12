@@ -458,8 +458,8 @@ class WWUtils {
 	    $images->addImages($img, "commons:category:" . $title, "category", 0.5);
 
 	    if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural) {
-		$img = $this->getImagesInCategory("commmons", $title); //FIXME: resource mapping
-		$images->addImages($img, "commons:category:" . $title, "category(pl)", 0.5);
+		$img = $this->getImagesInCategory("commmons", $title+"s"); //FIXME: resource mapping
+		$images->addImages($img, "commons:category:" . $title+"s", "category(pl)", 0.5);
 	    }
 	}
 
