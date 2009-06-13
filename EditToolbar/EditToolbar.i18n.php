@@ -62,8 +62,8 @@ $messages['en'] = array(
 	'edittoolbar-tool-insert-gallery-example' => "File:Example.jpg|Caption1\nFile:Example.jpg|Caption2",
 	'edittoolbar-group-insert-whitespace' => 'Whitespace',
 	'edittoolbar-tool-insert-newline' => 'New line',
-	/* Special Characters Section */
-	'edittoolbar-section-characters' => 'Special Characters',
+	/* Special characters Section */
+	'edittoolbar-section-characters' => 'Special characters',
 	/* Help Section */
 	'edittoolbar-section-help' => 'Help',
 	'edittoolbar-help-heading-description' => 'Description',
@@ -126,10 +126,10 @@ $messages['en'] = array(
 	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Link text</a>, additional text.</li></ol>",
 	'edittoolbar-help-content-signaturetimestamp-description' => 'Signature with timestamp',
 	'edittoolbar-help-content-signaturetimestamp-syntax' => '~~~~',
-	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='Special:MyPage'>Username</a> (<a href='#' title='Special:MyTalk'>talk</a>) 15:54, 10 June 2009 (UTC)",
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Username</a> (<a href='#' title='{{#special:mytalk}}'>talk</a>) 15:54, 10 June 2009 (UTC)",
 	'edittoolbar-help-content-signature-description' => 'Signature',
 	'edittoolbar-help-content-signature-syntax' => '~~~',
-	'edittoolbar-help-content-signature-result' => "<a href='#' title='Special:MyPage'>Username</a> (<a href='#' title='Special:MyTalk'>talk</a>)</p>",
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Username</a> (<a href='#' title='{{#special:mytalk}}'>talk</a>)</p>",
 	'edittoolbar-help-content-indent-description' => 'Indent',
 	'edittoolbar-help-content-indent-syntax' => 'Normal text<br />:Indented text<br />::Indented text',
 	'edittoolbar-help-content-indent-result' => 'Normal text<dl><dd>Indented text<dl><dd>Indented text</dd></dl></dd></dl>'
