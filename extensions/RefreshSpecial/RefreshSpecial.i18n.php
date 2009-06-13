@@ -933,7 +933,7 @@ $messages['ru'] = array(
 	'refreshspecial' => 'Обновить служебные страницы',
 	'refreshspecial-select-all-pages' => 'Выбрать все страницы',
 	'refreshspecial-link-back' => 'Вернуться к служебной странице',
-	'refreshspecial-db-error' => 'Неудачно: Ошибка базы данных',
+	'refreshspecial-db-error' => 'Неудачно. Ошибка базы данных.',
 	'refreshspecial-no-page' => 'Нет такой служебной страницы',
 	'right-refreshspecial' => 'обновление служебных страниц',
 );

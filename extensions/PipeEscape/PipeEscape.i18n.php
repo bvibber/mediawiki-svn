@@ -169,6 +169,13 @@ $messages['oc'] = array(
 	'pipeescape-desc' => 'Foncion parser <code>#!</code> per inserir lo caractèr pipe en tant que caractèr simple.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'pipeescape-desc' => 'Funkcja parsera <code>#!</code> pozwalająca na użycie znaku pionowej kreski',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

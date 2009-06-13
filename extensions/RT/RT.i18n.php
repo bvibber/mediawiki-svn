@@ -268,6 +268,13 @@ Você tentou: '''$1'''",
 	'rt-nomatches' => 'Nenhum ticket RT correspondente foi encontrado',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'rt-inactive' => 'Расширение RT неактивно',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

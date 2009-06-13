@@ -399,6 +399,24 @@ $messages['oc'] = array(
 	'right-adminlinks' => "Vejatz lo ligam cap als [[Special:AdminLinks|ligams d'administracion]]",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'adminlinks' => 'Linki dla administratorów',
+	'adminlinks-desc' => 'Dodaje [[Special:AdminLinks|stronę specjalną]] z linkami użytecznymi dla administratorów',
+	'adminlinks_documentation' => 'Dokumentacja $1',
+	'adminlinks_general' => 'Ogólne',
+	'adminlinks_editsidebar' => 'Edycja menu bocznego',
+	'adminlinks_editcss' => 'Edycja pliku CSS',
+	'adminlinks_editmainpagename' => 'Zmiana nazwy strony głównej',
+	'adminlinks_users' => 'Użytkownicy',
+	'adminlinks_createuser' => 'Utwórz użytkownika',
+	'adminlinks_browsesearch' => 'Przeglądanie i wyszukiwanie',
+	'adminlinks_importexport' => 'Importowanie i eksportowanie',
+	'right-adminlinks' => 'Zobacz link do [[Special:AdminLinks|Linki dla administratorów]]',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

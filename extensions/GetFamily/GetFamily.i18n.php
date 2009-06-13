@@ -208,11 +208,12 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'getfamily-desc' => 'Создание файла family для pywikipediabot',
 	'getfamily' => 'Получить pywikipediabot family',
-	'getfamily-interwikierror' => 'Ошибка: неправильно установлены интервики, свяжитесь с ваши локальным администратором.',
+	'getfamily-interwikierror' => 'Ошибка. Неправильно установлены интервики, свяжитесь с ваши локальным администратором.',
 	'right-getfamily' => 'создание файла familiy для pywikipediabot',
 );
 

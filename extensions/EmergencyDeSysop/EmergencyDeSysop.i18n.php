@@ -625,6 +625,7 @@ $messages['ro'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Rubin
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'emergencydesysop' => 'Аварийное снятие прав администратора',
@@ -632,13 +633,13 @@ $messages['ru'] = array(
 	'emergencydesysop-title' => 'Снять права администратора у текущего участника и другого администратора',
 	'emergencydesysop-otheradmin' => 'Другой администратор для снятия прав',
 	'emergencydesysop-reason' => 'Причина удаления',
-	'emergencydesysop-submit' => 'Отправить',
-	'emergencydesysop-incomplete' => 'Все поля требуются, пожалуйста, повторите.',
+	'emergencydesysop-submit' => 'Выполнить',
+	'emergencydesysop-incomplete' => 'Требуется заполнить все поля, пожалуйста, повторите.',
 	'emergencydesysop-notasysop' => 'Целевой участник не состоит в группе администраторов.',
 	'emergencydesysop-nogroups' => 'Нет',
 	'emergencydesysop-done' => 'Действие успешно выполнено, вы и [[$1]] лишены прав администратора.',
 	'emergencydesysop-invalidtarget' => 'Целевой участник не существует.',
-	'emergencydesysop-blocked' => 'Вы не можете получить доступ к этой странице, будучи заблокированными',
+	'emergencydesysop-blocked' => 'Вы не можете получить доступ к этой странице, будучи заблокированным',
 	'emergencydesysop-noright' => 'Вы не имеете достаточных полномочий для доступа к этой странице',
 	'right-emergencydesysop' => 'снятие прав администратора другого участника, вместе со своими',
 );

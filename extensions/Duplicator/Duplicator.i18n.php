@@ -1132,6 +1132,7 @@ $messages['pl'] = array(
 	'duplicator-dest-invalid' => 'Podaj poprawny tytuł celu.',
 	'duplicator-dest-exists' => 'Artykuł [[$1]] już istnieje. Wybierz tytuł celu, który nie jest używany przez istniejącą stronę.',
 	'duplicator-toomanyrevisions' => 'Artykuł [[$1]] ma zbyt dużo ($2) edycji i nie może być skopiowany. Aktualny limit edycji to $3.',
+	'right-duplicate' => 'Duplikowanie stron',
 );
 
 /** Piedmontese (Piemontèis)

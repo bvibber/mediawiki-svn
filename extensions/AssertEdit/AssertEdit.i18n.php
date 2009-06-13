@@ -404,6 +404,14 @@ $messages['li'] = array(
 	'assert_edit_message' => 'De gevraogde bevestiging ($1) mislökde.',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'assert_edit_title' => 'Tsy nande ny assertion',
+	'assert_edit_desc' => "Manampy assertion ny fanovàna hoan'ny fampiasàna rindrankajy (bot)",
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  */

@@ -27,13 +27,6 @@ $messages['qqq'] = array(
 * $1 will not be replaced in this message.",
 );
 
-/** Lower Silesian (Schläsch)
- * @author Jonny84
- */
-$messages['sli'] = array(
-	'metakeywords-desc' => 'Erlaubt de Konfiguration vn <tt><nowiki><meta "keywords"></nowiki></tt>- und <tt><nowiki><meta "description"></nowiki></tt>-Tags pro Namensraum',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -268,6 +261,13 @@ $messages['oc'] = array(
 	'metakeywords-desc' => 'Permet la configuracion de las balisas <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> per espaci de nom',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'metakeywords-desc' => 'Pozwala na konfigurację znaczników <tt><nowiki><meta "keywords"></nowiki></tt> oraz <tt><nowiki><meta "description"></nowiki></tt> dla przestrzeni nazw',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -294,6 +294,13 @@ $messages['roa-tara'] = array(
  */
 $messages['sk'] = array(
 	'metakeywords-desc' => 'Umožňuje konfiguráciu značiek <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> v závislosti od menného priestoru',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'metakeywords-desc' => 'Erlaubt de Konfiguration vn <tt><nowiki><meta "keywords"></nowiki></tt>- und <tt><nowiki><meta "description"></nowiki></tt>-Tags pro Namensraum',
 );
 
 /** Albanian (Shqip)

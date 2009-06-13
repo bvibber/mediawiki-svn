@@ -993,8 +993,8 @@ $messages['ru'] = array(
 	'imstatus_or' => 'или',
 	'imstatus_style' => 'стиль индикатора состояния',
 	'imstatus_your_name' => 'ваше $1 имя',
-	'imstatus_gtalk_height' => 'высота коробки, в пикселах.',
-	'imstatus_gtalk_width' => 'ширина коробки, в пикселах.',
+	'imstatus_gtalk_height' => 'высота блока, в пикселах.',
+	'imstatus_gtalk_width' => 'ширина блока, в пикселах.',
 	'imstatus_icq_id' => 'ваш ICQ ID',
 );
 

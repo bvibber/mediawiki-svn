@@ -394,7 +394,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'advancedrandom' => 'Losowa strona (zaawansowane)',
-	'advancedrandom-desc' => 'Wyświetla losową stronę, na której (lub na jej stronie dyskusji) znajduje się link do danej strony. Funkcje można wywołać na przykład jako [[Special:AdvancedRandom/Template:Featured/Talk]], co wylosuje artykuł medalowy, lub [[Special:AdvancedRandom/Template:GFDL/Image]], co wylosuje dowolny plik opatrzony licencją GFDL.',
+	'advancedrandom-desc' => 'Wyświetla losową stronę, na której (lub na jej stronie dyskusji) znajduje się link do danej strony. Funkcje można wywołać na przykład jako [[Special:AdvancedRandom/Template:Featured/Talk]], co wylosuje artykuł medalowy, lub [[Special:AdvancedRandom/Template:GFDL/File]], co wylosuje dowolny plik opatrzony licencją GFDL.',
 );
 
 /** Pashto (پښتو)
@@ -443,7 +443,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'advancedrandom' => 'Продвинутая случайная',
-	'advancedrandom-desc' => 'Выдаёт случайную страницу, с подстраницы или страницы обсуждения которой есть ссылка на указанную страницу. Может использоваться по примеру [[Special:AdvancedRandom/Template:Featured/Talk]], чтобы получить случайную избранную статью, или [[Special:AdvancedRandom/Template:GFDL/File]], чтобы получить случайный GFDL-файл.',
+	'advancedrandom-desc' => 'Выдаёт случайную страницу из любого пространства имён, с подстраницы или страницы обсуждения которой есть ссылка на указанную страницу. Может использоваться по примеру [[Special:AdvancedRandom/Template:Featured/Talk]], чтобы получить случайную избранную статью, или [[Special:AdvancedRandom/Template:GFDL/File]], чтобы получить случайный GFDL-файл.',
 );
 
 /** Sicilian (Sicilianu)

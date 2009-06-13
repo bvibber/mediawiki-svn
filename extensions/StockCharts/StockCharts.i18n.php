@@ -118,6 +118,15 @@ $messages['ksh'] = array(
 	'stockcharts-missingticker' => 'Öm e Börsedijajramm em Wiki enzeboue, moß de winneschßdenß ene Börsedeens (<i lang="en">ticker</i>) aanjevve. Nemm: „<code lang="en">&lt;stockchart ticker="AAPL"/&gt;</code>“ doh för.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'stockcharts-desc' => 'Setzt den Tag <nowiki><stockchart ticker="AAPL"/></nowiki> derbäi fir interaktiv Grafike vu Finanzwerter',
+	'stockcharts-missingticker' => 'Fir e Grafik mat Finanzwerter anzebanne musst Dir mindestens een ticker uginn.
+Benotzt: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

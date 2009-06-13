@@ -580,6 +580,8 @@ $messages['li'] = array(
  */
 $messages['mg'] = array(
 	'call' => 'Antso',
+	'call-save' => "Mety voatahiry amin'ny pejy '''$1''' ny valin'ity antso ity .",
+	'call-save-success' => "Voatahiry any amin'ny pejy <big>[[$1]]</big> io lahatsoratra io.",
 );
 
 /** Malayalam (മലയാളം)

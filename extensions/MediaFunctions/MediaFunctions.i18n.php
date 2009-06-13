@@ -421,9 +421,11 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author VasilievVV
  */
 $messages['ru'] = array(
+	'mediafunctions-desc' => 'Функции парсера для получения информации о медиа-файлах',
 	'mediafunctions-invalid-title' => '«$1» не является корректным заголовком',
 	'mediafunctions-not-exist' => '«$1» не существует',
 );

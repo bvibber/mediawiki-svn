@@ -563,6 +563,24 @@ $messages['roa-tara'] = array(
 	'framedvideo_helppage' => 'Help:Video',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'framedvideo_error_unknown_type' => 'Неизвестный id видеосервиса («$1»): проверьте параметр «type».',
+	'framedvideo_error_no_id_given' => 'Нет параметра «id».',
+	'framedvideo_error_height_required' => 'Тип видео «$1» требует параметр «height».',
+	'framedvideo_error_height_required_not_only_width' => 'Тип видео «$1» требует не только параметр «width», но и «height».',
+	'framedvideo_error_width_too_big' => 'Данное значение параметра «width» слишком большое.',
+	'framedvideo_error_height_too_big' => 'Данное значение параметра «height» слишком большое.',
+	'framedvideo_error_no_integer' => 'Данное значение «$1» не является положительным числом.',
+	'framedvideo_error_limit' => 'Наибольшее допустимое значение — $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Значение «full» для параметра «size» не допустимо для видеосервиса id «$1».',
+	'framedvideo_helppage' => 'Help:Видео',
+	'framedvideo_error_height_and_width_required' => 'Тип видео «$1» требует парамерты «height» и «width2» или «width».',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -1791,14 +1791,21 @@ $wdMessages['ca'] = array(
 $wdMessages['ckb-arab'] = array(
 	'langman-desc' => 'به [[Special:Languages]] زمان زیاد بکە و هەڵبژاردەکانی بگۆڕە ‌',
 	'langman_title' => 'جێبەجێکەری زمان',
+	'langman_not_allowed' => 'ڕێگەت پێ‌نەدراوە بۆ گۆڕانی هەڵبژاردەکانی زمان.',
 	'langman_header' => 'لەم ژێرەدا کۆدی زمان و ناوەکەی بە ئینگلیزی بنووسە:',
 	'langman_req_fields' => 'هەردوو ناوی زمان و کۆدی ISO 639-3 پێویستن!',
+	'langman_adding' => 'به‌ کلیلی $2 زمانی $1 زیاد بکه‌.',
 	'langman_langname' => 'ناوی زمان:',
 	'langman_iso639-3' => 'کۆدی ISO 639-3:',
 	'langman_iso639-2' => 'کۆدی ISO 639-2:',
+	'langman_wikimedia' => 'کۆدی ویکی‌مێدیا:',
+	'langman_field_optional' => '(دڵخوازانه‌)',
 	'langman_addlang' => 'زمان زیاد بکە',
 	'importlangnames_not_allowed' => 'ڕێگەت پێ‌نەدراوە بۆ گۆڕانی هەڵبژاردەکانی زمان.',
+	'importlangnames_added' => 'ناوه‌کانی زمان بۆ "$1" زیاد کرا.',
 	'datasearch_language' => 'زمان:',
+	'datasearch_search_text' => 'گه‌ڕان بۆ ئه‌م ده‌قه‌:',
+	'datasearch_within_words' => 'بریتی بێت له‌م وشانه‌:',
 );
 
 /** Czech (Česky)

@@ -889,6 +889,13 @@ $messages['li'] = array(
 	'recordadmin-invert' => 'Ómgedriejde selectie',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'recordadmin-invert' => 'Кочказень таркас апаконь кочкамо',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1219,6 +1226,8 @@ $messages['ru'] = array(
 	'recordadmin-updatesuccess' => '$1 обновлено',
 	'recordadmin-buttonsave' => 'Сохранить',
 	'recordadmin-createlink' => 'создать один',
+	'recordadmin-newcreated' => 'Новый $1 создан через публичную форму',
+	'recordadmin-summary-typecreated' => 'Новый $1 создан',
 	'recordadmin-viewlink' => 'просмотр',
 	'recordadmin-editlink' => 'править',
 	'recordadmin-created' => 'Создано',

@@ -602,11 +602,15 @@ $messages['be-tarask'] = array(
 	'deletequeue-action-queued' => 'Выдаленьне',
 	'deletequeue-action' => 'Прапанаваць выдаленьне',
 	'deletequeue-action-title' => 'Прапанаваць выдаленьне «$1»',
+	'deletequeue-action-text-queued' => 'Вы можаце паглядзець наступныя старонкі па гэтай прычыне выдаленьня:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Паглядзець цяперашнія пацьверджаньні і аспрэчаньні].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Пацьвердзіць ці аспрэчыць выдаленьне гэтай старонкі].',
+	'deletequeue-permissions-noedit' => 'Вам неабходна мець магчымасьць рэдагаваць старонку, каб уплываць на статус выдаленьня.',
 	'deletequeue-generic-reasons' => '* Агульныя прычыны
-** Вандалізм
-** Спам
-** Падтрымка
-** Па-за межамі праекту',
+  ** Вандалізм
+  ** Спам
+  ** Падтрымка
+  ** Па-за межамі праекту',
 	'deletequeue-nom-alreadyqueued' => 'Гэтая старонка ўжо знаходзіцца ў чарзе выдаленьня.',
 	'deletequeue-speedy-title' => 'Пазначыць «$1» да хуткага выдаленьня',
 	'deletequeue-speedy-text' => "Вы можаце выкарыстоўваць гэтую форму для пазнакі старонкі «'''$1'''» да хуткага выдаленьня.
@@ -645,10 +649,31 @@ $messages['be-tarask'] = array(
 Пададзеная прычына — ''$1''.
 Абмеркаваньне вядзецца на [[$5]] і павінна скончыцца ''$2''.",
 	'deletequeue-notqueued' => 'Старонка, якую Вы выбралі, не знаходзіцца ў чарзе выдаленьня',
+	'deletequeue-review-action' => 'Дзеяньне на выбар:',
 	'deletequeue-review-delete' => 'Выдаліць старонку.',
+	'deletequeue-review-change' => 'Выдаліць гэту старонку, але па іншай прычыне.',
+	'deletequeue-review-requeue' => 'Перанесьці гэту старонку ў іншую чаргу:',
+	'deletequeue-review-dequeue' => 'Нічога не рабіць і выдаліць старонку з чаргі выдаленьня.',
 	'deletequeue-review-reason' => 'Камэнтары:',
 	'deletequeue-review-newreason' => 'Новая прычына:',
 	'deletequeue-review-newextra' => 'Дадатковая інфармацыя:',
+	'deletequeue-review-submit' => 'Захаваць рэцэнзію',
+	'deletequeue-review-original' => 'Прычына прапановы',
+	'deletequeue-actiondisabled-involved' => 'Наступнае дзеяньне забароненае, таму што Вы прынялі ўдзел у гэтай прапанове выдаленьня ў ролі $1:',
+	'deletequeue-actiondisabled-notexpired' => 'Наступнае дзеяньне забароненае, таму што прапанова на выдаленьне яшчэ дзейнічае:',
+	'deletequeue-review-badaction' => 'Вы пазначылі няслушнае дзеяньне',
+	'deletequeue-review-actiondenied' => 'Вы выбралі дзеяньне, якое немагчымае для гэтай старонкі',
+	'deletequeue-review-objections' => "'''Увага''': Выдаленьне гэтай старонкі было [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} аспрэчана].
+Калі ласка, упэўніцеся, што Вы разгледзелі гэтыя пярэчаньні перад выдаленьнем гэтай старонкі.",
+	'deletequeue-reviewspeedy-tab' => 'Аглядзець паскоранае выдаленьне',
+	'deletequeue-reviewspeedy-title' => 'Праглядзець прапанову на паскоранае выдаленьне «$1»',
+	'deletequeue-reviewspeedy-text' => "Вы можаце карыстацца гэтай формай для прагляду прапановы «'''$1'''» на паскоранае выдаленьне.
+Калі ласка, упэўніцеся, што гэта старонка можа быць хутка выдалена ў адпаведнасьці з правіламі.",
+	'deletequeue-reviewprod-tab' => 'Прагляд прапанаваных выдаленьняў',
+	'deletequeue-reviewprod-title' => 'Прагляд прапанаванага выдаленьня «$1»',
+	'deletequeue-reviewprod-text' => "Вы можаце карыстацца гэтай формай для прагляду прапановы на выдаленьне «'''$1'''».",
+	'deletequeue-reviewdeletediscuss-tab' => 'Праглядзець выдаленьне',
+	'deletequeue-reviewdeletediscuss-title' => 'Праглядзець абмяркаваньне выдаленьня «$1»',
 	'deletequeue-vote-action' => 'Рэкамэндацыя:',
 	'deletequeue-vote-reason' => 'Камэнтары:',
 	'deletequeue' => 'Чарга выдаленьняў',
@@ -3895,7 +3920,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'deletequeue-desc' => 'Создание [[Special:DeleteQueue|основанной на очереди системы для управления удалениями]]',
+	'deletequeue-desc' => 'Создаёт [[Special:DeleteQueue|основанную на очереди систему управления удалениями]]',
 	'deletequeue-action-queued' => 'Удаление',
 	'deletequeue-action' => 'Предложить удаление',
 	'deletequeue-action-title' => 'Предложить удаление "$1"',
@@ -3951,12 +3976,17 @@ $messages['ru'] = array(
 	'deletequeue-list-search-legend' => 'Поиск по страницам',
 	'deletequeue-list-queue' => 'Очередь:',
 	'deletequeue-list-status' => 'Статус:',
+	'deletequeue-list-expired' => 'Показывать только номинации, требующие закрытия.',
 	'deletequeue-list-search' => 'Поиск',
+	'deletequeue-list-anyqueue' => '(любой)',
 	'deletequeue-list-votes' => 'Список голосований',
 	'deletequeue-list-header-page' => 'Страница',
 	'deletequeue-list-header-queue' => 'Очередь',
 	'deletequeue-list-header-expiry' => 'Истёкшие',
 	'deletequeue-list-header-discusspage' => 'Страница обсуждения',
+	'deletequeue-list-header-reason' => 'Причина для удаления',
+	'deletequeue-case-title' => 'Подробности запроса на удаление',
+	'deletequeue-case-details' => 'Основные подробности',
 	'deletequeue-case-page' => 'Страница:',
 	'deletequeue-case-reason' => 'Причина:',
 	'deletequeue-case-expiry' => 'Истекает:',

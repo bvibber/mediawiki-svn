@@ -108,6 +108,13 @@ $messages['ksh'] = array(
 	'localisationupdate-desc' => 'Texte un Nohreeschte vum Wiki esu joot wi müjjelich om neueste Shtand halde',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'localisationupdate-desc' => 'hält déi lokaliséiert Messagen esou aktuell wéi méiglech.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -120,6 +127,13 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'localisationupdate-desc' => 'Manténer la traduccion dels messatges a jorn autant que possible',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'localisationupdate-desc' => 'Uaktualnia lokalne komunikaty w miarę możliwości na bieżąco',
 );
 
 /** Slovak (Slovenčina)

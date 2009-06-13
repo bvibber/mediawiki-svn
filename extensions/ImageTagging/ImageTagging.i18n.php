@@ -1340,7 +1340,7 @@ $messages['ru'] = array(
 	'imagetagging-imghistory' => 'История',
 	'imagetagging-images' => 'изображения',
 	'imagetagging-inthisimage' => 'В изображении: $1',
-	'imagetagging-logentry' => 'Удаление метки для страницы [[$1]] от $2',
+	'imagetagging-logentry' => 'Удаление метки для страницы [[$1]] — $2',
 	'imagetagging-new' => '<sup><span style="color:red">Новое!</span></sup>',
 	'imagetagging-removetag' => 'удалить метку',
 	'imagetagging-done-button' => 'Отметка сделана',
@@ -1352,8 +1352,9 @@ $messages['ru'] = array(
 	'imagetagging-removetagsuccess' => 'Метка удалена.',
 	'imagetagging-imagetag-seemoreimages' => 'Смотреть больше изображений «$1» ($2)',
 	'imagetagging-taggedimages-title' => 'Изображения «$1»',
+	'imagetagging-taggedimages-displaying' => 'Отображать $1 — $2 из $3 изображений из «$4»',
 	'tag-logpagename' => 'Журнал меток',
-	'tag-logpagetext' => 'Это журнал добавления и удаления меток всех изображений.',
+	'tag-logpagetext' => 'Это журнал добавления и удаления всех меток изображений.',
 );
 
 /** Slovak (Slovenčina)

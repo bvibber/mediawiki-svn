@@ -383,6 +383,7 @@ $messages['pl'] = array(
 	'piwik-lastvisits' => 'Ostatnie wizyty',
 	'piwik-countries' => 'Kraje',
 	'piwik-browsers' => 'Przeglądarki',
+	'right-viewpiwik' => 'Dostęp do [[Special:Piwik|statystyk Piwik]]',
 );
 
 /** Pashto (پښتو)
@@ -429,6 +430,7 @@ $messages['ro'] = array(
 $messages['ru'] = array(
 	'piwik-lastvisits' => 'Последние посещения',
 	'piwik-browsers' => 'Браузеры',
+	'right-viewpiwik' => 'просмотр [[Special:Piwik|статистики Piwik]]',
 );
 
 /** Slovak (Slovenčina)

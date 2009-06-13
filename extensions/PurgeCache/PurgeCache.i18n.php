@@ -405,6 +405,7 @@ $messages['pl'] = array(
 	'purgecache-warning' => 'To polecenie spowoduje wyczyszczenie pamięci podręcznej.',
 	'purgecache-purged' => 'Pamięć podręczna została wyczyszczona.',
 	'purgecache-button' => 'Wyczyść',
+	'right-purgecache' => 'Czyszczenie tabeli OBJECTCACHE',
 );
 
 /** Pashto (پښتو)

@@ -490,7 +490,7 @@ Pengurangan: $6
 Terima kasih,
 
 $2',
-	'userrightsnotif-desc' => 'Kirim notifikasi via e-mail ke para pengguna saat ada perubahan hak pengguna',
+	'userrightsnotif-desc' => 'Mengirimkan notifikasi melalui surat-e ke para pengguna saat ada perubahan hak pengguna',
 );
 
 /** Italian (Italiano)

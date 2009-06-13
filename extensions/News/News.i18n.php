@@ -220,6 +220,13 @@ $messages['oc'] = array(
 	'newsextension-desc' => 'Mòstra los darrièrs cambiaments especifics sus una pagina wiki o coma un flus RSS o Atom.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'newsextension-desc' => 'Wyświetla dostosowane ostatnie zmiany na stronie wiki, jako kanały RSS lub Atom',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

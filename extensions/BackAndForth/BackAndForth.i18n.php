@@ -495,6 +495,15 @@ $messages['lt'] = array(
 	'backforth-prev' => 'Ankstesnis ($1)',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'backforth-next' => 'Manaraka ($1)',
+	'backforth-desc' => "Manampy rohy ny fikarohana ara-abidy « Manaraka » sy « Teo arina » eo ambon'ny pejy",
+	'backforth-prev' => 'Teo aloha ($1)',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

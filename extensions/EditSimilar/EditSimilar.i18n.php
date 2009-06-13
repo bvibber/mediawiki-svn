@@ -486,10 +486,11 @@ Vizitaţi şi paginile conexe: $1.',
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'editsimilar-thanks' => 'Спасибо за ваш вклад.
-Проверьте {{PLURAL:$2|эту связанную страницу|эти связанные страницы}}: $1.',
+Обратите внимание на {{PLURAL:$2|эту страницу|эти страницы}}: $1.',
 	'editsimilar-thankyou' => 'Спасибо за ваш вклад, $1!',
 	'editsimilar-link-disable' => 'установить настройки',
 );

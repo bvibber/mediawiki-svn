@@ -220,6 +220,13 @@ $messages['oc'] = array(
 	'navigationpopups-desc' => 'Carga, dins mèdiawiki, los escripts de las fenèstras de navigacion de Lupin',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'navigationpopups-desc' => 'Ładuje napisane przez Lupina skrypty nawigacyjne wyskakujących okienek dla MediaWiki',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -140,6 +140,7 @@ $messages['be-tarask'] = array(
 	'editmsg-get-patch' => 'Стварыць патч',
 	'editmsg-new-search' => 'Новы пошук',
 	'editmsg-warning-parse1' => '* Назва паведамленьня не адпавядае рэгулярнаму выразу: $1',
+	'editmsg-warning-parse2' => '* Чакаецца сымбаль двукосься пасьля стрэлкі: $1',
 	'editmsg-warning-parse3' => '* Ня знойдзены канчатак радку: $1',
 	'editmsg-warning-file' => '* Памылка чытаньня {{PLURAL:$2|файла для наступнай мовы|файлаў для наступных моваў}}: $1',
 	'editmsg-warning-mismatch' => '* Арыгінальны тэкст ня мае чаканага значэньня для {{PLURAL:$2|мовы|моваў}}: $1',

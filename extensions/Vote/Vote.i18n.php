@@ -764,6 +764,7 @@ sphinx|Sphinx',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Ivan Lanin
+ * @author Rex
  */
 $messages['id'] = array(
 	'vote' => 'Pemilihan',
@@ -778,7 +779,7 @@ $messages['id'] = array(
 	'vote-results-choice' => 'Pilihan',
 	'vote-results-count' => 'Suara',
 	'vote-results-none' => 'Saat ini belum ada suara yang masuk.',
-	'vote-login' => 'Anda harus [$1 masuk log] untuk memilih.',
+	'vote-login' => 'Anda harus [$1 masuk log] untuk memberikan suara.',
 	'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',
 );
 

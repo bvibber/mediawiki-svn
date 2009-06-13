@@ -260,6 +260,13 @@ $messages['li'] = array(
 	'breadcrumbs-desc' => 'Tuuntj gebroekerspaad dore wiki.',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'breadcrumbs-desc' => "Mampiseho ny rohy ny pejy notsidian'ny mpikambana teto ambon'ity wiki ity.",
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

@@ -342,13 +342,14 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'plotters' => 'Плоттеры',
 	'plotters-title' => 'Плоттеры',
 	'plotters-uses' => 'Использования',
-	'plotters-missing-script' => 'Нет определённых скриптов',
-	'plotters-missing-arguments' => 'Нет указанных аргументов.',
+	'plotters-missing-script' => 'Не определено ни одного скрипта.',
+	'plotters-missing-arguments' => 'Аргументы не указаны.',
 );
 
 /** Slovak (Slovenčina)
