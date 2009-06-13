@@ -12,7 +12,7 @@ $messages = array();
  * @author Trevor Parscal
  */
 $messages['en'] = array(
-	'edittoolbar' => 'Editing Toolbar',
+	'edittoolbar' => 'Editing toolbar',
 	'edittoolbar-desc' => 'Edit page toolbar with enhanced usability',
 	'edittoolbar-preference' => 'Enable enhanced editing toolbar',
 	'edittoolbar-loading' => 'Loading...',

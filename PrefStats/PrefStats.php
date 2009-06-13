@@ -17,7 +17,7 @@
 
 /* Configuration */
 
-//.Set to false to disable tracking
+// .Set to false to disable tracking
 $wgPrefStatsEnable = true;
 
 // array('prefname' => 'value')
