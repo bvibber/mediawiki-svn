@@ -7,16 +7,16 @@
  */
 
 class EditWarningHooks {
-	
+
 	/* Static Functions */
-	
+
 	/**
 	 * AjaxAddScript hook
 	 * Initializes the component
 	 */
 	public static function initialize() {
 		global $wgEditWarningStyleVersion;
-		
+
 		// Adds script to document
 		UsabilityInitiativeHooks::addScript(
 			'EditWarning/EditWarning.js', $wgEditWarningStyleVersion

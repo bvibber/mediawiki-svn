@@ -9,7 +9,7 @@
 class UsabilityInitiativeHooks {
 
 	/* Static Members */
-	
+
 	private static $messages = array();
 	private static $styles = array();
 	private static $scripts = array(
@@ -19,7 +19,7 @@ class UsabilityInitiativeHooks {
 		array( 'src' => 'Resources/jquery.async.js', 'version' => 1 ),
 		array( 'src' => 'Resources/messages.js', 'version' => 1 ),
 	);
-	
+
 	/* Static Functions */
 
 	/**
@@ -28,7 +28,7 @@ class UsabilityInitiativeHooks {
 	 */
 	public static function addJs( $out ) {
 		global $wgScriptPath, $wgJsMimeType;
-		
+
 		// Loops over each script
 		foreach ( self::$scripts as $script ) {
 			// Add javascript to document
@@ -66,14 +66,14 @@ class UsabilityInitiativeHooks {
 		// Continue
 		return true;
 	}
-	
+
 	/**
 	 * BeforePageDisplay hook
 	 * Adds styles
 	 */
 	public static function addCss( $out ) {
 		global $wgScriptPath, $wgJsMimeType;
-		
+
 		// Loops over each style
 		foreach ( self::$styles as $style ) {
 			// Add css for various styles
@@ -89,7 +89,7 @@ class UsabilityInitiativeHooks {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Adds a reference to a javascript file to the head of the document
 	 * @param string $src Path to the file relative to this extension's folder
@@ -98,7 +98,7 @@ class UsabilityInitiativeHooks {
 	public static function addScript( $src, $version = '' ) {
 		self::$scripts[] = array( 'src' => $src, 'version' => $version );
 	}
-	
+
 	/**
 	 * Adds a reference to a css file to the head of the document
 	 * @param string $src Path to the file relative to this extension's folder
@@ -107,7 +107,7 @@ class UsabilityInitiativeHooks {
 	public static function addStyle( $src, $version = '' ) {
 		self::$styles[] = array( 'src' => $src, 'version' => $version );
 	}
-	
+
 	/**
 	 * Adds internationalized message definitions to the document for access
 	 * via javascript using the gM() function

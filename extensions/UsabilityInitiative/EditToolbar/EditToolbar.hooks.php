@@ -9,14 +9,14 @@
 class EditToolbarHooks {
 
 	/* Static Functions */
-	
+
 	/**
 	 * EditPageBeforeEditToolbar hook
 	 * Intercept the display of the toolbar, replacing the content of $toolbar
 	 */
 	public static function intercept( &$toolbar ) {
 		global $wgUser, $wgEditToolbarGlobalEnable, $wgEditToolbarUserEnable;
-		
+
 		// Checks if...
 		if (
 			// The following is NOT true
@@ -28,7 +28,7 @@ class EditToolbarHooks {
 					// Toolbar is per-user enablable
 					$wgEditToolbarUserEnable &&
 					// And this user has enabled it
-					$wgUser->getOption( 'usebetatoolbar' ) 
+					$wgUser->getOption( 'usebetatoolbar' )
 				)
 			)
 		) {
@@ -37,7 +37,7 @@ class EditToolbarHooks {
 		}
 		// Replaces stock toolbar with new toolbar container
 		$toolbar = '<div id="edittoolbar"></div>';
-		
+
 		// Add JS and CSS
 		global $wgEditToolbarStyleVersion;
 		UsabilityInitiativeHooks::addScript(
@@ -174,14 +174,14 @@ class EditToolbarHooks {
 		// Continue
 		return true;
 	}
-	
+
 	/**
 	 * GetPreferences hook
 	 * Add toolbar related items to the preferences
 	 */
 	public static function addPreferences( $user, $defaultPreferences ) {
 		global $wgEditToolbarGlobalEnable, $wgEditToolbarUserEnable;
-		
+
 		// Checks if...
 		if (
 			// Toolbar is NOT globablly enabled
