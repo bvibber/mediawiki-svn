@@ -97,26 +97,16 @@ seqRemoteSearchDriver.prototype = {
 		//get target order:
 		var cat = rObj;			
 		//check for target insert path
-		this.checkImportResource( rObj, function(){
-			//get the local src file (if we imported) :			
-			do_api_req({
-				'data': { 
-					'action'	: 'query', 
-					'prop'		: 'imageinfo',
-					'iiprop'	: 'url'
-				 },
-				'url': _this.local_wiki_api_url
-			}, function(data){
-				debugger;
-			});					
-					
-			var clipConfig = {	
-				'src' 	 : rObj.src,
+		this.checkImportResource( rObj, function(){													
+			var clipConfig = {					
 				'type' 	 : rObj.mime,
-				'uri' 	 : _this.cFileNS + ':' + rObj.target_resource_title,
-				'poster' : rObj.poster,
+				'uri' 	 : _this.cFileNS + ':' + rObj.target_resource_title,				
 				'title'	 : rObj.title								
 			};																
+			//set via local properites if avaliable
+			clipConfig['src'] = (rObj.local_src) ? rObj.local_src : rObj.src;
+			clipConfig['poster'] = (rObj.local_poster) ? rObj.local_poster : rObj.poster;
+			
 			if(rObj.start_time && rObj.end_time){
 				clipConfig['dur'] = npt2seconds( rObj.end_time ) - npt2seconds( rObj.start_time );
 			}						

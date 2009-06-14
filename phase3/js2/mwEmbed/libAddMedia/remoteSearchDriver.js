@@ -1150,7 +1150,7 @@ remoteSearchDriver.prototype = {
 		var _this = this;				
 		
 		//check if local repository
-		//or if import mode if just "linking" 		
+		//or if import mode if just "linking" (we should alaredy have the 'url' 		
 		if( this.checkRepoLocal( cp ) || this.import_url_mode == 'remote_link'){
 			//local repo jump directly to check Import Resource callback:
 			 cir_callback( rObj );
@@ -1162,7 +1162,10 @@ remoteSearchDriver.prototype = {
 			//check if the resource is not already on this wiki		
 			reqObj={
 				'action':'query', 
-				'titles': _this.cFileNS + ':' + rObj.target_resource_title
+				'titles': _this.cFileNS + ':' + rObj.target_resource_title,
+				'prop'		: 'imageinfo',
+				'iiprop'	: 'url',
+				'iiurlwidth': '400'				
 			};				
 		
 			do_api_req( {
@@ -1174,12 +1177,16 @@ remoteSearchDriver.prototype = {
 						if( i != '-1' && i != '-2' ){
 							js_log('found title: ' + i + ':' +  data.query.pages[i]['title']);
 							found_title=data.query.pages[i]['title'];
+							//update to local src						
+							rObj.local_src = data.query.pages[i]['imageinfo'][0].url;
+							//@@todo maybe  update poster too? 			
+							rObj.local_poster = data.query.pages[i]['imageinfo'][0].thumburl;				
 						}
 					}		
 					if( found_title ){			
 						js_log("checkImportResource:found title:" + found_title); 
 						//resource is already present (or resource with same name is already present)
-						rObj.target_resource_title = found_title.replace(/File:|Image:/,'');		
+						rObj.target_resource_title = found_title.replace(/File:|Image:/,'');								
 						cir_callback( rObj );
 					}else{
 						js_log("resource not present: update:"+ _this.cFileNS + ':' + rObj.target_resource_title);
