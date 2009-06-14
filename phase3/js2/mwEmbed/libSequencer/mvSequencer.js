@@ -5,10 +5,9 @@
  * for more info visit http://metavid.org/wiki/Code
  * 
  * @author Michael Dale
- * @email dale@ucsc.edu
- * @url http://metavid.org
+ * @email mdale@wikimedia.org
  * 
- * @further developed in open source collaboration with kaltura. 
+ * further developed in open source development partnership with kaltura. 
  * more info at http://kaltura.com & http://kaltura.org
  * 
  * mv_sequencer.js 
@@ -19,7 +18,7 @@
  *  exports back out to json or inline format
  */
 
-loadGM( { 
+loadGM({ 
 	"menu_clipedit" : "Edit Selected Resource",	
 	"menu_cliplib" : "Add Resource",
 	"menu_transition" : "Transitions Effects",
@@ -117,7 +116,11 @@ var sequencerDefaultValues = {
 	edit_stack:new Array(),
 	disp_menu_item:null,
 	//trackObj used to payload playlist Track Object (when inline not present) 
-	tracks:{}
+	tracks:{},
+	
+	about_html:'Developed by <a href="http://kaltura.com">Kaltura, Inc.</a>' +
+			'in partnership with the <a href="http://wikimediafoundation.org/wiki/Home">Wikimedia Foundation</a> ' +
+			'( <a href="#">more info</a> )'
 }
 var mvSequencer = function(iObj) {		
 	return this.init(iObj);
@@ -230,6 +233,9 @@ mvSequencer.prototype = {
 				'left:5px;bottom:0px;height:25px;">'+					
 					gM('loading_user_rights') +
 			'</div>'+
+			'<div class="about_editor" style="position:absolute;right:5px;bottom:7px;">' +
+				this.about_html +
+			'</div>'+
 			'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
 				'left:0px;right:'+(this.video_width+15)+'px;top:0px;height:'+(this.video_height+23)+'px;"/>'
 		);
@@ -269,8 +275,8 @@ mvSequencer.prototype = {
 		var _this = this;	
 		if( this.sequenceEditToken ){
 			$j(this.target_sequence_container+' .seq_save_cancel').html( 
-				$j.btnHtml( gM('edit_cancel'), 'seq_edit_cancel', 'close') + ' ' + 
-				$j.btnHtml( gM('edit_save'), 'seq_edit_save', 'close') 
+				$j.btnHtml( gM('edit_save'), 'seq_edit_save', 'close') + ' ' +
+				$j.btnHtml( gM('edit_cancel'), 'seq_edit_cancel', 'close')				
 			); 			
 		}else{
 			$j(this.target_sequence_container+' .seq_save_cancel').html( cancel_button + gM('no_edit_permissions') );
@@ -325,13 +331,13 @@ mvSequencer.prototype = {
 							$j('#seq_save_dialog').html( gM('save_done') );
 							$j('#seq_save_dialog').dialog('option', 
 								'buttons', { 
-									"Done":function(){
-										//close the editor if we can
-										$j(this).dialog("close"); 
+									"Done":function(){										
+										//refresh the page?
+										window.location.reload();
 									},
 									"Do More Edits": function() { 
 										$j(this).dialog("close"); 
-									} 
+									}
 							});
 						});
 					},
@@ -625,7 +631,7 @@ mvSequencer.prototype = {
 		this.doFocusBindings();		
 		
 		//set up key bidnings
-		$j().keydown(function(e){
+		$j(window).keydown(function(e){
 			js_log('pushed down on:' + e.which);			
 			if( e.which == 16 )
 				_this.key_shift_down = true;
@@ -644,7 +650,7 @@ mvSequencer.prototype = {
 				_this.pasteClipBoardClips();
 				
 		});
-		$j().keyup(function(e){			
+		$j(window).keyup(function(e){			
 			js_log('key up on ' + e.which);			
 			//user let go of "shift" turn off multi-select
 			if( e.which == 16 )
@@ -1030,18 +1036,19 @@ mvSequencer.prototype = {
 										'time':0
 									});			
 						//render out edit button
-						track_html+='<div class="clip_edit_button clip_edit_base clip_control"/>';
+						/*track_html+='<div class="clip_edit_button clip_edit_base clip_control"/>';*/
 													
 						//render out transition edit box 
 						track_html+='<div id="tb_' + base_id + '"  style="" class="clip_trans_box"/>';
 						
 						//render out adjustment text
-						track_html+='<div id="' + base_id + '_adj' + '" class="mv_adj_text" style="top:'+ (this.track_clipThumb_height+10 )+'px;">'+
+						/*track_html+='<div id="' + base_id + '_adj' + '" class="mv_adj_text" style="top:'+ (this.track_clipThumb_height+10 )+'px;">'+
 										'<span class="mv_adjust_click" onClick="'+this.instance_name+'.adjClipDur(' + track_id + ',' + j + ',\'-\')" /> - </span>'+
 										  ( (clip.getDuration() > 60 )? seconds2npt(clip.getDuration()): clip.getDuration() )  +
 										'<span class="mv_adjust_click" onClick="'+this.instance_name+'.adjClipDur(' + track_id + ',' + j + ',\'+\')" /> + </span>'+ 
-									'</div>';																	
-						track_html+='</span>';						
+									'</div>';																						
+						*/						
+						track_html+='</span>';
 													
 					}														
 					//do timeline_mode rendering:

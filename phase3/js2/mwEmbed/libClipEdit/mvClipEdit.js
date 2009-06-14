@@ -205,7 +205,9 @@ mvClipEdit.prototype = {
 					$j(target).html ( o );
 					//add update bindings	
 					$j(target + ' .ic_tparam').change(function(){
-						js_log("updated tparam" + $j(this).attr("name"));
+						js_log("updated tparam::" + $j(this).attr("name"));
+						//add wait 
+						//re-parse template
 					})
 							
 					//update doFocusBindings
