@@ -327,6 +327,24 @@ $messages['lzz'] = array(
 	'adminlinks_users' => "K'oçepe",
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'adminlinks' => 'rohy ny fandrindràna',
+	'adminlinks-desc' => "Manampy [[special:AdminLinks|pejy manokana]] misy ny rohy ilain'ny mpandrindra",
+	'adminlinks_documentation' => "fanoroan'ny $1",
+	'adminlinks_general' => 'ankabiazany/jeneraly',
+	'adminlinks_editsidebar' => 'ovay ny bara sisiny',
+	'adminlinks_editcss' => 'Ovao ny rakitra CSS',
+	'adminlinks_editmainpagename' => "ovay ny anaran'ny pejy fandraisana",
+	'adminlinks_users' => 'mpikambana',
+	'adminlinks_createuser' => 'hamorona mpikambana',
+	'adminlinks_browsesearch' => 'Fikarohana sy fitadiavina',
+	'adminlinks_importexport' => 'hampiditra sy hamoaka',
+	'right-adminlinks' => "Hijery ny rohy any amin'ny [[Special:AdminLinks|rohy ampiasain'ny mpandrindra]]",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -458,6 +476,24 @@ $messages['ru'] = array(
 	'adminlinks_browsesearch' => 'Обзор и поиск',
 	'adminlinks_importexport' => 'Импорт и экспорт',
 	'right-adminlinks' => 'видеть [[Special:AdminLinks|ссылки для администраторов]]',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'adminlinks' => 'Дьаһабыллар сигэлэрэ',
+	'adminlinks-desc' => 'Дьаһабылларга туһалаах сигэлэрдээх [[Special:AdminLinks|анал сирэйи]] эбэр',
+	'adminlinks_documentation' => '$1 дөкүмүөннэрэ',
+	'adminlinks_general' => 'Сүрүн (барытыгар сыһыаннаах)',
+	'adminlinks_editsidebar' => 'Хаҥас холуоҥканы уларытыы',
+	'adminlinks_editcss' => 'CSS билэни уларытыы',
+	'adminlinks_editmainpagename' => 'Сүрүн сирэй аатын уларытыы',
+	'adminlinks_users' => 'Кыттааччылар',
+	'adminlinks_createuser' => 'Саҥа ааты оҥоруу',
+	'adminlinks_browsesearch' => 'Көрүү уонна көрдөөһүн',
+	'adminlinks_importexport' => 'Импорт уонна экспорт',
+	'right-adminlinks' => '[[Special:AdminLinks|Дьаһабылларга анаммыт сигэлэри]] көрүү',
 );
 
 /** Slovak (Slovenčina)

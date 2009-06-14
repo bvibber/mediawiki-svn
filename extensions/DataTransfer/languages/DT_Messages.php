@@ -348,10 +348,12 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
 	'dt_viewxml_categories' => 'Κατηγορίες',
 	'dt_xml_page' => 'Σελίδα',
+	'dt_xml_template' => 'Πρότυπο',
 	'dt_xml_field' => 'Πεδίο',
 	'dt_xml_name' => 'Όνομα',
 	'dt_xml_title' => 'Τίτλος',
@@ -516,6 +518,7 @@ $messages['grc'] = array(
 	'dt_viewxml_namespaces' => 'Ὀνοματεῖα',
 	'dt_xml_namespace' => 'Ὀνοματεῖον',
 	'dt_xml_page' => 'Δέλτος',
+	'dt_xml_template' => 'Πρότυπον',
 	'dt_xml_field' => 'Πεδίον',
 	'dt_xml_name' => 'Ὄνομα',
 	'dt_xml_title' => 'Ἐπιγραφή',

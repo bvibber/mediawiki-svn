@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'localisationupdate-desc' => 'Keeps the localised messages as up to date as possible',
 );
 
-/** Message Documentation
+/** Message documentation (Message documentation)
  * @author Purodha
  */
 $messages['qqq'] = array(
@@ -38,7 +38,7 @@ $messages['bs'] = array(
 	'localisationupdate-desc' => 'Zadržavanje lokaliziranih poruka ažurnim koliko je god moguće',
 );
 
-/** German
+/** German (Deutsch)
  * @author Purodha
  */
 $messages['de'] = array(
@@ -101,7 +101,7 @@ $messages['ja'] = array(
 	'localisationupdate-desc' => 'メッセージの翻訳を可能な限り最新に保つようにする',
 );
 
-/** Ripuarian
+/** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -17,6 +17,33 @@ $messages['en'] = array(
 	'editwarning-warning' => 'Leaving this page will cause you to lose any changes you have made.',
 );
 
+/** French (Français)
+ * @author Crochet.david
+ */
+$messages['fr'] = array(
+	'editwarning' => 'Avertissement de modification',
+	'editwarning-desc' => 'Afficher un avertissement lorsque l’utilisateur tente de quitter le formulaire sans enregistrer les modifications',
+	'editwarning-warning' => 'Quitter cette page vous fera perdre toutes les modifications que vous avez faite.',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'editwarning' => 'Wobdźěłowanske warnowanje',
+	'editwarning-desc' => 'Warnowanje pokazać, hdyž wužiwar pospytuje, wobdźěłowanski formular bjez składowanja wopušćić',
+	'editwarning-warning' => 'Hdyž so strona wopušća, so přewjedźene změny zhubja.',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'editwarning' => 'Warnung beim Ändere_Afbreshe',
+	'editwarning-desc' => 'Donn en Warnung aanzeije, wann ene Metmaacher vum Sigge_Ändere fott jonn well, der oohne sing Änderunge afzeseschere.',
+	'editwarning-warning' => 'Wann de vun hee dä SIgg fott jeihß, dann jonn all Ding Änderunge aan dä Sigg verschött.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

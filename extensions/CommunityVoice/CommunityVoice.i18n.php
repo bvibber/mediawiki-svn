@@ -517,6 +517,13 @@ $messages['ru'] = array(
 	'communityvoice-ratings-error-no-title' => 'В теге рейтинга отсутствует атрибут названия.',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'communityvoice' => 'Бар-дьон куолаһа',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

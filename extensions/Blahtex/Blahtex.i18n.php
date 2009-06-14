@@ -1073,9 +1073,9 @@ Iberleg Dir s „\\mathop“ z neh.',
 S muess genau ei Befähl definiert wäre;
 är muess mit eme umgchehrte Schregstrich (Backslash) „\\“ aafange un s derf nume alfabetischi Zeichen din haa.',
 	'math_MissingDelimiter' => 'Trännzeiche hinter „$1“ fählt',
-	'math_MissingOpenBraceAfter' => 'Ufigi Chlammere „{“ hinter „$1“ fählt',
-	'math_MissingOpenBraceAtEnd' => 'Ufigi Chlammere „{“ am Änd vu dr Yygab fählt',
-	'math_MissingOpenBraceBefore' => 'Ufigi Chlammere „{“ vor „$1“ fählt',
+	'math_MissingOpenBraceAfter' => 'Ufigi Chlammere „&#x007B;“ hinter „$1“ fählt',
+	'math_MissingOpenBraceAtEnd' => 'Ufigi Chlammere „&#x007B;“ am Änd vu dr Yygab fählt',
+	'math_MissingOpenBraceBefore' => 'Ufigi Chlammere „&#x007B;“ vor „$1“ fählt',
 	'math_MissingOrIllegalParameterCount' => 'Parameterzahl in dr Definition vu „$1“ fählt oder isch nit giltig.
 S muess e einzelni Ziffer zwische 1 un 9 syy.',
 	'math_MissingOrIllegalParameterIndex' => 'Parameterindex in dr Definition vu „$1“ fählt oder isch nit giltig',

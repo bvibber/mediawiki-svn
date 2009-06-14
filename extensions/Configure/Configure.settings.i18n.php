@@ -1443,9 +1443,16 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'configure-setting-wgSitename' => 'Име на сайта',
 	'configure-setting-wgActionPaths-key' => 'Действие',
+	'configure-setting-wgDBpassword' => 'Парола за $wgDBuser',
+	'configure-setting-wgIgnoreImageErrors' => 'Без показване на съобщения за грешка за файлове',
 	'configure-setting-wgShowEXIF' => 'Показване на EXIF данните на описателната страница на файловете',
+	'configure-setting-wgUseGzip' => 'Използване на GZIP кодиране',
+	'configure-setting-wgCleanSignatures' => 'Заместване на шаблоните в подписите',
 	'configure-setting-wgParserConf' => 'Настройки на парсера',
+	'configure-setting-wgInterwikiMagic' => 'Показване на междууики препратките в специален списък',
+	'configure-setting-wgLanguageCode' => 'Езиков код на сайта',
 	'configure-setting-wgExtraLanguageNames-key' => 'Езиков код',
 	'configure-setting-wgExtraLanguageNames-value' => 'Име',
 	'configure-setting-wgAllowCopyUploads' => 'Позволяване на качвания от URL',
