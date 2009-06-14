@@ -801,5 +801,8 @@ url = http://www.mediawiki.org/wiki/Extension:User_Merge_and_Delete
 UsernameBlacklist
 url = http://www.mediawiki.org/wiki/Extension:Username_Blacklist
 
+Widgets
+url = http://www.mediawiki.org/wiki/Extension:Widgets
+
 wikihiero
 url = http://www.mediawiki.org/wiki/Extension:WikiHiero
