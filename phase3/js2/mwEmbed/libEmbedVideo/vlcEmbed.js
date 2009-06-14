@@ -93,8 +93,33 @@ var vlcEmbed = {
 				this.vlc.input.position = perc;
 				this.setStatus( 'seeking...' );		   
 			}				
+		}else{
+			this.doPlayThenSeek(perc);
 		}
 		this.parent_monitor();
+	},
+	doPlayThenSeek:function(perc){
+		js_log('doPlayThenSeekHack');
+		var _this = this;
+		this.play();
+		var rfsCount = 0;
+		var readyForSeek = function(){
+			_this.getVLC();
+			var newState = _this.vlc.input.state;
+			//if playing we are ready to do the 
+			if(newState==3){
+				_this.doSeek(perc);
+			}else{			
+				//try to get player for 10 seconds: 
+				if( rfsCount < 200 ){
+					setTimeout(readyForSeek, 50);
+					rfsCount++;
+				}else{
+					js_log('error:doPlayThenSeek failed');
+				}
+			}
+		}
+		readyForSeek();
 	},
 	playMovieAt: function (order){
 		//@@todo add clips to playlist after (order) and then play
@@ -186,7 +211,7 @@ var vlcEmbed = {
 		//for now trust the duration from url over vlc input.length
 		if( !this.getDuration() && this.vlc.input.length > 0 )
 		{
-			js_log('setting duration to ' + this.vlc.input.length /1000);			
+			//js_log('setting duration to ' + this.vlc.input.length /1000);			
 			this.duration = this.vlc.input.length /1000;
 		}
 		this.currentTime = this.vlc.input.time/1000;		

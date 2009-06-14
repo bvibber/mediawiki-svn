@@ -60,7 +60,9 @@ archiveOrgSearch.prototype = {
 			for(var resource_id in data.response.docs){
 				var resource = data.response.docs[resource_id];				
 				var rObj = {
-					'titleKey'	 : resource.identifier,
+					//@@todo we should add .ogv or oga if video or audio:
+					'titleKey'	 :  resource.identifier + '.ogg',
+					'resourceKey':  resource.identifier,				
 					'link'		 : _this.dtUrl + resource.identifier,				
 					'title'		 : resource.title,
 					'poster'	 : _this.dnUrl + resource.identifier+'/format=thumbnail',
@@ -72,7 +74,8 @@ archiveOrgSearch.prototype = {
 					'mime'		  : 'application/ogg',
 					//set the licence: (rsd is a pointer to the parent remoteSearchDriver )		 
 					'license'	  : this.rsd.getLicenceFromUrl( resource.licenseurl ),
-					'pSobj'		 :_this
+					'pSobj'		 :_this				
+					
 				};																										 
 				this.resultsObj[ resource_id ] = rObj;
 				
@@ -90,7 +93,7 @@ archiveOrgSearch.prototype = {
 		var _this = this;
 		do_api_req( {
 			'data':{'avinfo':1},
-			'url':_this.dnUrl + rObj.titleKey + '/format=Ogg+video'
+			'url':_this.dnUrl + rObj.resourceKey + '/format=Ogg+video'
 		},function(data){			
 			var cat = data;
 			if(data['length'])
@@ -99,6 +102,7 @@ archiveOrgSearch.prototype = {
 				rObj.width = data['width'];
 			if(data['height'])
 				rObj.height = data['height'];
+								   
 			callback();
 		});
 	},

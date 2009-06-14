@@ -61,7 +61,6 @@ loadGM( {
 	"mv_other_options" : "Other Options",	
 	"mv_contextmenu_opt" : "Enable Context Menus"
 });
-
  //used to set default values and validate the passed init object
 var sequencerDefaultValues = {
 	
@@ -81,7 +80,7 @@ var sequencerDefaultValues = {
 	
 	sequence_tools_id:'mv_sequence_tools',
 	timeline_id:'mv_timeline',
-	plObj_id:'seq_plobj',
+	plObj_id:'seq_pl',
 	plObj:'null',	
 	
 	timeline_scale:.06, //in pixel to second ratio ie 100pixles for every ~30seconds
@@ -221,9 +220,9 @@ mvSequencer.prototype = {
 		
 		//add the container divs (with basic layout ~universal~ 
 		$j(this.target_sequence_container).html(''+
-			'<div id="'+this.video_container_id+'" style="position:absolute;right:0px;top:0px;' +
-				'width:'+this.video_width+'px;height:'+this.video_height+'px;border:solid thin blue;background:#FFF;font-color:black;"/>'+			
-			'<div id="'+this.timeline_id+'" class="ui-widget ui-widget-content ui-corner-all" style="position:absolute;' + 
+			'<div id="' + this.video_container_id + '" style="position:absolute;right:0px;top:0px;' +
+				'width:' + this.video_width + 'px;height:'+this.video_height+'px;border:solid thin blue;background:#FFF;font-color:black;"/>'+			
+			'<div id="' + this.timeline_id + '" class="ui-widget ui-widget-content ui-corner-all" style="position:absolute;' + 
 				'left:0px;right:0px;top:'+(this.video_height+34)+'px;bottom:35px;overflow:auto;">'+
 					gM('loading_timeline')+ '</div>'+
 			'<div class="seq_status" style="position:absolute;left:0px;width:300px;"></div>'+
@@ -632,16 +631,16 @@ mvSequencer.prototype = {
 				_this.key_shift_down = true;
 						
 			if( e.which == 17)
-				this_seq.key_ctrl_down = true;
+				_this.key_ctrl_down = true;
 				
-			if( (e.which == 67 && this_seq.key_ctrl_down) && !_this.inputFocus)
+			if( (e.which == 67 && _this.key_ctrl_down) && !_this.inputFocus)
 				_this.copySelectedClips();
 				
-			if( (e.which == 88 && this_seq.key_ctrl_down) && !_this.inputFocus)
+			if( (e.which == 88 && _this.key_ctrl_down) && !_this.inputFocus)
 				_this.cutSelectedClips();
 			
 			//paste cips on v + ctrl while not focused on a text area: 
-			if( (e.which == 86 && this_seq.key_ctrl_down) && !_this.inputFocus)				
+			if( (e.which == 86 && _this.key_ctrl_down) && !_this.inputFocus)				
 				_this.pasteClipBoardClips();
 				
 		});
@@ -655,22 +654,22 @@ mvSequencer.prototype = {
 				_this.key_ctrl_down = false;							
 			
 			//backspace or delete key while not focused on a text area: 
-			if( (e.which == 8 || e.which == 46) && !this_seq.inputFocus)								
+			if( (e.which == 8 || e.which == 46) && !_this.inputFocus)								
 				_this.removeSelectedClips();					
 		});
 	},
 	//check all nodes for focus 
 	//@@todo it would probably be faster to search a given subnode instead of all text
 	doFocusBindings:function(){
-		var this_seq = this;
+		var _this = this;
 		//if an input or text area has focus disable delete key binding
 		$j("input,textarea").focus(function () {
 			js_log("inputFocus:true");
-			this_seq.inputFocus = true;	
+			_this.inputFocus = true;	
 		});
 		$j("input,textarea").blur( function () {
 			js_log("inputFocus:blur");
-			this_seq.inputFocus = false;
+			_this.inputFocus = false;
 		})
 	},
 	update_tl_hook:function(jh_time_ms){			
@@ -711,19 +710,21 @@ mvSequencer.prototype = {
 				}
 			o+=">\n";			
 			for( var k in curTrack.clips ){
-				var curClip = curTrack.clips[k];
+				var curClip = curTrack.clips[k];				
 				o+="\t\t<ref ";
 					var cAttr = curClip.getAttributeObj();
+					var lt = '';
 					for(var j in  cAttr){
 						var val =  (j=='transIn' || j=='transOut') ? cAttr[j].id : cAttr[j];													
-						o+=j+'="' + val + '"\n\t\t';
+						o+=lt + j+'="' + val + '"';
+						lt ="\n\t\t\t";
 					}					
 				o+=">\n" //close the clip				
 				for(var pName in curClip.params){
 					var pVal = curClip.params[pName];
 					o+="\t\t\t" + '<param name="'+ pName + '">' + pVal + '</param>' + "\n";
 				} 
-				o+="\t\t</ref>\n";
+				o+="\t\t</ref>\n\n";
 			}
 			o+="\n</seq>\n";
 		}
@@ -794,7 +795,7 @@ mvSequencer.prototype = {
 	pasteClipBoardClips:function(){
 		js_log('f:pasteClipBoardClips');
 		//@@todo query the server for updated clipboard		
-		//paste before the "current clip" 
+		//paste before the "current clip"	
 		this.addClips( this.clipboard, this.plObj.cur_clip.order );		
 	},
 	copySelectedClips:function(){
@@ -847,21 +848,27 @@ mvSequencer.prototype = {
 		//doEdit selected clips (updated selected resource)	 
 		this.doEditSelectedClip();		
 	},
+	addClip:function( clip, before_clip_pos, track_inx){
+		this.addClips([clip],  before_clip_pos, track_inx)
+	},
 	//add a single or set of clips
 	//to a given position and track_inx 
 	addClips:function( clipSet, before_clip_pos, track_inx){
 		this_seq = this;	
+		
 		if(!track_inx)
-			track_inx = this.plObj.default_track
+			track_inx = this.plObj.default_track.inx;
+			
 		if(!before_clip_pos)	
-			before_clip_pos= 
+			before_clip_pos= this.plObj.default_track.getClipCount();
+			
 		js_log("seq: add clip: at: "+ before_clip_pos + ' in track: ' + track_inx);			
-		var cur_pos = before_clip_pos;
-		js_log('paste clip before_clip_pos: ' + before_clip_pos);
-		var smilXML =		 
+		var cur_pos = before_clip_pos;		
+			 
 		$j.each(clipSet, function(inx, clipInitDom){
 			var mediaElement = document.createElement('ref');
 			for(var i in clipInitDom){
+				js_log("set: " + i + ' to ' + clipInitDom[i]);
 				if(i!='id')
 					$j(mediaElement).attr(i, clipInitDom[i]);
 			}						
@@ -1511,6 +1518,7 @@ mvSeqPlayList.prototype = {
 	},	
 	//override renderDisplay
 	renderDisplay:function(){
+		js_log('mvSequence:renderDisplay');
 		//setup layout for title and dc_ clip container  
 		$j(this).html('<div id="dc_'+this.id+'" style="width:'+this.width+'px;' +
 				'height:'+(this.height)+'px;position:relative;" />');			

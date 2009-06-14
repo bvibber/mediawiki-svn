@@ -188,7 +188,11 @@ baseRemoteSearch.prototype = {
 	getEmbedWikiCode:function(rObj){	    
 		var layout = ( rObj.layout)? rObj.layout:"right"
 		var o= '[[' + this.rsd.cFileNS + ':' + rObj.target_resource_title + '|thumb|'+layout;
-			
+		
+		if(!rObj.target_width && rObj.width){
+			rObj.target_width = (rObj.width < 640)? rObj.width: '640';
+		}
+		
 		if(rObj.target_width)
 			o+='|' + rObj.target_width + 'px';
 		
@@ -197,6 +201,10 @@ baseRemoteSearch.prototype = {
 			
 		o+=']]';
 		return o;
+	},
+	updateTargetResourceTitle:function(rObj){
+		rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');								
+		rObj.target_resource_title = this.cp.resource_prefix + rObj.target_resource_title;
 	},
 	updateDataForImport:function( rObj ){
 		return rObj;

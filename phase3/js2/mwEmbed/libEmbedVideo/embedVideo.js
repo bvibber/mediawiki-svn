@@ -374,9 +374,8 @@ var ctrlBuilder = {
 								npt2seconds(embedObj.getTimeReq().split('/')[0]);	 
 			},
 			slide: function(event, ui) {									
-				var perc = ui.value/1000;															
-																				 
-				embedObj.jump_time = seconds2npt( parseInt( embedObj.getDuration() * perc ) + embedObj.start_time_sec);	
+				var perc = ui.value/1000;																																			
+				embedObj.jump_time = seconds2npt( parseFloat( parseFloat(embedObj.getDuration()) * perc ) + embedObj.start_time_sec);	
 				//js_log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
 				embedObj.setStatus( gM('seek_to')+' '+embedObj.jump_time );	
 				//update the thumbnail / frame 

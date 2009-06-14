@@ -11,6 +11,7 @@ loadGM( {
 	"mv_apply_crop":"Apply Crop to Image",
 	"mv_reset_crop":"Rest Crop",
 	"mv_insert_image_page":"Insert Into page",
+	"mv_insert_into_sequence": "Insert Into Sequence",
 	"mv_preview_insert":"Preview Insert",
 	"mv_cancel_image_insert": "Cancel Insert",
 	
@@ -230,11 +231,15 @@ mvClipEdit.prototype = {
 								return doEditHtml();
 							for(var i in data.query.pages){
 								var page = data.query.pages[i];
-								var template_rev = page['revisions'][0]['*'];
+								if(!page['revisions'] || !page['revisions'][0]['*']){
+									return doEditHtml();	
+								}else{
+									var template_rev = page['revisions'][0]['*'];
+								}
 							}						
 							
 							//do a regular ex to get the ~likely~ template values 
-							//(ofcourse this sucks)
+							//(of course this sucks)
 							//but maybe this will make its way into the api sometime soon to support wysiwyg type editors
 							//idealy it would expose a good deal of info about the template params
 							js_log('matching against: ' + template_rev);
@@ -446,12 +451,17 @@ mvClipEdit.prototype = {
 		for(var cbType in _this.controlActionsCb){
 			switch(cbType){
 				case 'insert_seq':
-					$j(b_target).append( $j.btnHtml(gM('mv_insert_image_page'), 'mv_insert_image_page', 'check' ) + ' ' )
+					$j(b_target).append( $j.btnHtml(gM('mv_insert_into_sequence'), 'mv_insert_sequence', 'check' ) + ' ' )
+						.children('.mv_insert_sequence').btnBind()
+						.click(function(){
+							_this.applyEdit();							
+							_this.controlActionsCb['insert_seq'](  _this.rObj );		
+						});
 				break;				
 				case 'insert': 
 					$j(b_target).append(  $j.btnHtml(gM('mv_insert_image_page'), 'mv_insert_image_page', 'check' ) + ' ' )
 						.children('.mv_insert_image_page').btnBind()
-						.click(function(){							
+						.click(function(){
 							_this.applyEdit();
 							_this.controlActionsCb['insert'](  _this.rObj );																		
 						}).show('slow');

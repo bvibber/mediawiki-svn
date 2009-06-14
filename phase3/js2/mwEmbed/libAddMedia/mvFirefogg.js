@@ -430,9 +430,11 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			'enablechunks': true
 		};
 		//check for editToken:
-		var etoken = _this.formData['wpEditToken'];
-		if(etoken)
-			aReq['token'] = etoken;
+		if(!this.etoken)
+			this.etoken = _this.formData['wpEditToken'];
+			
+		if(this.etoken)
+			aReq['token'] = this.etoken;
 		
 		if( _this.formData['wpWatchthis'] )
 			aReq['watch'] =  _this.formData['wpWatchthis'];

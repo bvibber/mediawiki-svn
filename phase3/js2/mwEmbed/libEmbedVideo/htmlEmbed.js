@@ -4,7 +4,7 @@
  * (we make assumptions about this.pc (parent clip) being available)
  */
 var pcHtmlEmbedDefaults={
-	'dur':4 //default duration of 4seconds
+	'dur':4 //default duration of 4 seconds
 }
 var htmlEmbed ={
 	 supports: {

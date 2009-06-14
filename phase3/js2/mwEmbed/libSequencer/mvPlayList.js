@@ -76,7 +76,7 @@ mvPlayList.prototype = {
 		
 		this.activeClipList = new activeClipList();
 		//add default track & default track pointer: 
-		this.tracks[0]= new trackObj();
+		this.tracks[0]= new trackObj({'inx':0});
 		this.default_track = this.tracks[0];				
 		
 		//get all the attributes:
@@ -120,31 +120,13 @@ mvPlayList.prototype = {
 		$j('body').append('<div class="ui-widget-overlay" style="width: 100%; height: 100%px; z-index: 10;"></div>');
 		$j('body').append('<div id="sequencer_target" style="z-index:11;position:fixed;top:10px;left:10px;right:10px;bottom:10px;" ' +
 				'class="ui-widget ui-widget-content ui-corner-all"></div>');			
-		/*$j('#sequencer_target').dialog({
-				bgiframe: true,
-				autoOpen: true,			
-				modal: true,
-				buttons: {		
-					'Cancel': function() {
-						$j(this).dialog('close');
-					}
-				},
-		}).css({
-			"position":"relative",	
-			"height": "90%"		
-		}).parent('.ui-dialog').css({
-			'width':'auto',
-			'height':'auto',
-			'top'	: '10px',
-			'left'	: '10px',
-			'right' : '10px',
-			'bottom': '10px'
-		});*/
+					
 		//@@todo clone the playlist (for faster startup)
-		/*var this_plObj_Clone = $j('#'+this.id).get(0).cloneNode(true);
-			this_plObj_Clone.sequencer=true;
-			this_plObj_Clone.id= 'seq_plobj';
-			debugger;
+		/*
+		 * var this_plObj_Clone = $j('#'+this.id).get(0).cloneNode(true);
+		 *	this_plObj_Clone.sequencer=true;
+		 *	this_plObj_Clone.id= 'seq_plobj';
+		 *	debugger;
 		*/		
 		//load sequencer: 
 		$j("#sequencer_target").sequencer({				
@@ -178,8 +160,8 @@ mvPlayList.prototype = {
 		js_log("f:getPlaylist: " + this.srcType );
 		//@@todo lazy load plLib
 		eval('var plObj = '+this.srcType+'Playlist;');	
-			 //import methods from the plObj to this
-			 for(var method in plObj){
+		//import methods from the plObj to this
+		for(var method in plObj){
 			//js parent preservation for local overwritten methods
 			if(this[method])this['parent_' + method] = this[method];
 			this[method]=plObj[method];
@@ -243,6 +225,7 @@ mvPlayList.prototype = {
 		}								
 	},
 	doWhenClipLoadDone:function(){		
+		js_log('mvPlaylist:doWhenClipLoadDone');
 		this.ready_to_play = true;
 		this.loading = false;
 		this.getHTML();		
@@ -364,9 +347,9 @@ mvPlayList.prototype = {
 	//takes in the playlist 
 	// inherits all the properties 
 	// swaps in the playlist object html/interface div	
-	getHTML:function(){							
-		if(this.loading){
-			js_log('called getHTML (loading)');
+	getHTML:function(){	
+		js_log('mvPlaylist:getHTML:  loading:' + this.loading);						
+		if(this.loading){		
 			$j('#'+this.id).html('loading playlist<blink>...</blink>'); 
 			if( this.loading_external_data ){
 				//load the data source chain of functions (to update the innerHTML)			   
@@ -386,7 +369,7 @@ mvPlayList.prototype = {
 		}
 	},
 	renderDisplay:function(){		
-		js_log('track length: ' +this.default_track.getClipCount() );''
+		js_log('mvPlaylist:renderDisplay:: track length: ' +this.default_track.getClipCount() );''
 		
 		var plObj=this;			
 		//setup layout for title and dc_ clip container  
@@ -418,25 +401,32 @@ mvPlayList.prototype = {
 		this.updateBaseStatus();	
 	},
 	setupClipDisplay:function(){
-		var plObj = this;
-		$j.each(this.default_track.clips, function(i, clip){
-			$j('#dc_'+plObj.id).append('<div class="clip_container" id="clipDesc_'+clip.id+'" '+
-				'style="display:none;position:absolute;text-align: center;border:solid thin;width:'+plObj.width + 'px;'+
-				'height:'+(plObj.height )+'px;'+
-				'top:' + this.title_bar_height + 'px;left:0px"></div>');	
+		js_log('mvPlaylist:setupClipDisplay:: clip len:'+ this.default_track.clips.length);
+		var _this = this;	
+		$j.each(this.default_track.clips, function(i, clip){					
+			$j('#dc_'+_this.id).append('<div class="clip_container cc_" id="clipDesc_'+clip.id+'" '+
+				'style="display:none;position:absolute;text-align: center;border:solid thin;width:'+_this.width + 'px;'+
+				'height:'+(_this.height )+'px;'+
+				'top:' + this.title_bar_height + 'px;left:0px"></div>');			
 			//update the embed html:					 
-			clip.embed.height=plObj.height;
-			clip.embed.width=plObj.width;				
+			clip.embed.height=_this.height;
+			clip.embed.width=_this.width;				
 			clip.embed.play_button=false;
 			
 			clip.embed.getHTML();//get the thubnails for everything			
-			$j(clip.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});					
-			if($j('#clipDesc_'+clip.id).get(0)){
-				$j('#clipDesc_'+clip.id).get(0).appendChild(clip.embed);
+			
+			$j(clip.embed).css({ 
+				'position':"absolute",
+				'top':"0px", 
+				'left':"0px"
+			});
+			if($j('#clipDesc_'+clip.id).length != 0){
+				js_log("should set: #clipDesc_"+clip.id + ' to: ' + $j(clip.embed).html() )
+				$j('#clipDesc_'+clip.id).append( clip.embed );				
 			}else{
 				js_log('cound not find: clipDesc_'+clip.id);					
 			}																
-		});				 
+		});					
 		if(this.cur_clip)
 			$j('#clipDesc_'+this.cur_clip.id).css( { display:'inline' } );
 	},	
@@ -488,6 +478,7 @@ mvPlayList.prototype = {
 			$j( $j.btnHtml('edit', 'editBtn_'+this.id, 'pencil', 
 				{'style':'position:absolute;right:0;;font-size:x-small;height:10px;margin-bottom:0;padding-bottom:7px;padding-top:0;'} )
     			).click(function(){	
+    				_this.stop();
 					_this.doEditor();
 					return false;
     			}).appendTo('#ptitle_'+this.id);	
@@ -923,7 +914,7 @@ mvPlayList.prototype = {
 		}else{
 			var track = this.tracks[ clipObj.track_id ]
 		}
-		js_log('add clip' + clipObj.id +' to track: at:' + pos);		
+		js_log('add clip:' + clipObj.id +' to track: at:' + pos);		
 		//set the first clip to current (maybe deprecated ) 
 		if(clipObj.order==0){
 			if(!this.cur_clip)this.cur_clip=clipObj;
@@ -1207,8 +1198,7 @@ PlMvEmbed.prototype = {
 	stop:function(){
 		js_log('pl:do stop');
 		//set up convenience pointer to parent playlist
-		var plObj = this.pc.pp;
-		var plEmbed = this;					
+		var plObj = this.pc.pp;				
 					
 		var th=Math.round( plObj.pl_layout.clip_desc * plObj.height );	
 		var tw=Math.round( th * plObj.pl_layout.clip_aspect );
@@ -1216,32 +1206,8 @@ PlMvEmbed.prototype = {
 		this.pe_stop();
 		var pl_height = (plObj.sequencer=='true')?plObj.height+27:plObj.height;
 		
-		plEmbed.getHTML();
-		
-		//restore control offsets:		 
-		/*(if(this.pc.pp.controls){
-			$j('#dc_'+plObj.id).animate({
-				height:pl_height
-			},"slow");
-		}*/	
-		//if(plObj.sequencer=='true'){						
-		/*}else{
-			//fade in elements
-			$j('#big_play_link_'+this.id+',#lb_'+this.id+',#le_'+this.id+',#seqThumb_'+plObj.id+',#pl_desc_txt_'+this.pc.id).fadeIn("slow");	
-			//animate restore of resize 
-			var res ={};
-			this.pc.setBaseEmbedDim(res);
-			//debugger;
-			$j('#img_thumb_'+this.id).animate(res,"slow",null,function(){
-				plEmbed.pc.setBaseEmbedDim(plEmbed);
-				plEmbed.getHTML();
-				//restore the detail
-				$j('#clipDesc_'+plEmbed.pc.id).empty();
-				plEmbed.pc.getDetail();
-				//$j('#seqThumb_'+plObj.id).css({position:'absolute',bottom:Math.round(this.height* pl_layout.seq_nav)});
-				//$j('#'+plEmbed.id+',#dc_'+plEmbed.id).css({position:'absolute', zindex:0,width:tw,height:th});		
-			});
-		}*/
+		this.getHTML();
+				
 	},
 	play:function(){
 		//js_log('pl eb play');		
@@ -1737,15 +1703,16 @@ var smilPlaylist ={
 	},
 	tryAddMedia:function(mediaElement, order, track_id){	
 		js_log('SMIL:tryAddMedia:' + mediaElement);
+		var _this = this;		
 		//set up basic mvSMILClip send it the mediaElemnt & mvClip init: 
 		var clipObj = {};
-		var clipObj = new mvSMILClip(mediaElement, 
-					{
-						"id":'p_' + this.id + '_c_' + order,
+		var cConfig = {
+						"id":'p_' + _this.id + '_c_' + order,
 						"pp":this, //set the parent playlist object pointer
 						"order": order									
-					}								
-				);		
+					};		
+		var clipObj = new mvSMILClip(mediaElement, cConfig );
+			
 		//set optional params track										 
 		if( typeof track_id != 'undefined')
 			clipObj["track_id"]	= track_id;
@@ -1753,9 +1720,9 @@ var smilPlaylist ={
 		//debugger;
 		if ( clipObj ){
 			//set up embed:						
-			clipObj.setUpEmbedObj();						
+			clipObj.setUpEmbedObj();								
 			//add clip to track: 
-			this.addCliptoTrack( clipObj , order);
+			this.addCliptoTrack( clipObj , order);		
 			return true;
 		}	
 		//@@todo we could throw error details here once we integrate try catches everywhere :P
@@ -1764,8 +1731,9 @@ var smilPlaylist ={
 }
 //http://www.w3.org/TR/2007/WD-SMIL3-20070713/smil-extended-media-object.html#smilMediaNS-BasicMedia
 //and added resource description elements
-var mv_smil_ref_supported_attributes = new Array(
-		'id',
+//@@ supporting the "ID" attribute turns out to be kind of tricky since we use it internally 
+// (for now don't include) 
+var mv_smil_ref_supported_attributes = new Array(		
 		'src',
 		'type',
 		'region',
@@ -1773,6 +1741,7 @@ var mv_smil_ref_supported_attributes = new Array(
 		'transOut',
 		'fill',
 		'dur',
+		'title',
 		
 		'uri',			
 		'poster'
@@ -1798,14 +1767,15 @@ mvSMILClip.prototype = {
 			}else{		
 				this[method] = myMvClip[method];
 			}		
-		}				 
+		}		
 		
 		//get supported media attr init non-set		
-		$j.each(mv_smil_ref_supported_attributes, function(i, attr){			
+		for(var i =0; i < mv_smil_ref_supported_attributes.length;i++){		
+			var attr = 	mv_smil_ref_supported_attributes[i];
 			if( $j(sClipElm).attr(attr)){
 				_this[attr] = $j(sClipElm).attr(attr);
 			}
-		})				
+		}				
 		this['tagName'] = sClipElm.tagName;	
 		
 		if( sClipElm.firstChild ){
@@ -1848,7 +1818,7 @@ mvSMILClip.prototype = {
 				this.params[ sClipElm.getElementsByTagName('param')[i].getAttribute("name") ] = 
 						 sClipElm.getElementsByTagName('param')[i].firstChild.nodeValue;
 			}			
-		}			
+		}					
 		return this;		
 	},
 	//returns the values of supported_attributes: 
@@ -2064,8 +2034,9 @@ trackObj.prototype = {
 	//http://www.w3.org/TR/SMIL3/smil-timing.html#edef-seq
 	// but we don't really support anywhere near the full concept of seq containers yet either
 	supported_attributes: new Array(
-		 'title',
-		'desc:'		
+		'title',
+		'desc',
+		'inx'		
 	 ),					
 	disp_mode:'timeline_thumb',
 	init : function(iObj){
@@ -2121,7 +2092,7 @@ trackObj.prototype = {
 	
 /* utility functions 
  * (could be combined with other stuff) 
- */
+*/
 
 function getAbsolutePos(objectId) {
 	// Get an object left position from the upper left viewport corner

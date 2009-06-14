@@ -89,8 +89,6 @@ var javaEmbed = {
 			   //java reads ogg media time.. so no need to add the start or seek offset:
 			   //js_log(' ct: ' + this.jce.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
 			   this.currentTime = this.jce.getPlayPosition();	
-			   
-			   
 			   if( this.jce.getPlayPosition() < 0){
 			   		js_log('pp:'+this.jce.getPlayPosition());				 
 					//probably reached clip end 
@@ -108,20 +106,42 @@ var javaEmbed = {
 	*/
 	doSeek:function(perc){		 
 		js_log('java:seek:p: ' + perc+ ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );		
-			  
+		this.getJCE();
+		
 		if( this.supportsURLTimeEncoding() ){		 
 			this.parent_doSeek(perc);   
 			//this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );						
 		   // this.jce.setParam('url', this.getURI( this.seek_time_sec ))
 			//this.jce.restart();
+		}else if(this.jce){					 
+		   //do a (genneraly broken) local seek:   
+		   js_log("cortado javascript seems to always fail ... but here we go... doSeek(" + (perc * parseFloat(this.getDuration()) ) );	 
+		   this.jce.doSeek( perc * parseFloat(this.getDuration())  );				
 		}else{
-			this.getJCE();
-			if(this.jce){					 
-			   //do a (genneraly broken) local seek:   
-			   js_log("cortado javascript seems to always fail ... but here we go... doSeek(" + perc * this.getDuration() );	 
-			   this.jce.doSeek( perc * this.getDuration()  );
-			}			
+			this.doPlayThenSeek(perc);
 		}		
+	},
+	doPlayThenSeek:function(perc){
+		js_log('doPlayThenSeek Hack');
+		var _this = this;
+		this.play();
+		var rfsCount = 0;
+		var readyForSeek = function(){
+			_this.getJCE();	
+			//if we have .jre ~in theory~ we can seek (but probably not) 
+			if(_this.jce){
+				_this.doSeek(perc);
+			}else{			
+				//try to get player for 10 seconds: 
+				if( rfsCount < 200 ){
+					setTimeout(readyForSeek, 50);
+					rfsCount++;
+				}else{
+					js_log('error:doPlayThenSeek failed');
+				}
+			}
+		}
+		readyForSeek();
 	},
 	//get java cortado embed object
 	getJCE:function(){		

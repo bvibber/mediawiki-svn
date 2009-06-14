@@ -78,14 +78,38 @@ var nativeEmbed = {
 			}else{
 				this.parent_doSeek(perc);
 			}			
-		}else if(this.vid.duration ){	   
+		}else if(this.vid && this.vid.duration ){	   
 			this.doNativeSeek(perc);	
+		}else{
+			this.doPlayThenSeek(perc)
 		}				  
-	},
+	},	
 	doNativeSeek:function(perc){
 		this.seek_time_sec=0;			 
 		this.vid.currentTime = perc * this.vid.duration;
 		this.parent_monitor();	
+	},
+	doPlayThenSeek:function(perc){
+		js_log('doPlayThenSeek Hack');
+		var _this = this;
+		this.play();
+		var rfsCount = 0;
+		var readyForSeek = function(){
+			_this.getVID();		
+			//if we have duration then we are ready to do the seek
+			if(this.vid && this.vid.duration){
+				_this.doSeek(perc);
+			}else{			
+				//try to get player for 10 seconds: 
+				if( rfsCount < 200 ){
+					setTimeout(readyForSeek, 50);
+					rfsCount++;
+				}else{
+					js_log('error:doPlayThenSeek failed');
+				}
+			}
+		}
+		readyForSeek();
 	},
 	setCurrentTime: function(pos, callback){
 		var _this = this;

@@ -55,7 +55,7 @@ metavidSearch.prototype = {
 				rObj['start_time'] = proe.queryKey['t'].split('/')[0];
 				rObj['end_time'] = proe.queryKey['t'].split('/')[1];	
 				rObj['stream_name'] = proe.queryKey['stream_name'];
-				
+								
 				//all metavid content is public domain: 
 				rObj['license'] = _this.rsd.getLicenceFromKey( 'pd' );
 				

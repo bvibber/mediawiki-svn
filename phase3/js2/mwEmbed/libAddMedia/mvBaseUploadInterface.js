@@ -177,7 +177,15 @@ mvBaseUploadInterface.prototype = {
 		}else if( _this.upload_mode == 'api' && $j('#wpSourceTypeURL').get(0).checked){	
 			js_log('doHttpUpload (no form submit) ');
 			//if the api is supported.. && source type is http do upload with http status updates
-			_this.doHttpUpload();			
+			var httpUpConf ={
+			    'url'		: $j('#wpUploadFileURL').val(),
+			    'filename'	: $j('#wpDestFile').val(),
+			    'comment' 	: $j('#wpUploadDescription').val()			    
+			}
+			//check for editToken
+			_this.etoken = $j("input[name='wpEditToken']").val();			
+			
+			_this.doHttpUpload( httpUpConf );			
 		}else{
 			js_error( 'Error: unrecongized upload mode: ' + _this.upload_mode );
 		}				
@@ -189,27 +197,30 @@ mvBaseUploadInterface.prototype = {
 		$j('#dlbox-centered').html( '<h5>' + _this.getProgressTitle() + '</h5>' + 
 			mv_get_loading_img( 'left:40%;top:20%')
 		);	
+		//setup request:
 		var req = {
-			   'action'		: 'upload',
-			   'url'		: $j('#wpUploadFileURL').val(),
-			   'filename'	: $j('#wpDestFile').val(),
-			   'comment' 	: $j('#wpUploadDescription').val(),
-			   'asyncdownload': true	
-		}
-		//check for editToken
-		_this.etoken = $j("input[name='wpEditToken']").val();
-		if(_this.etoken)
-			req['token'] = _this.etoken;
-			
+			'action'		: 'upload',
+			'asyncdownload' : true	//do a s
+		};
+		//set config from options:
 		for(var i in opt){			
-		  req[i]= opt[i];
+			req[i]= opt[i];
+		}						
+			
+		//else try and get a token:
+		if(!_this.etoken  && _this.api_url){
+			js_log('Error:doHttpUpload: missing token');
+			
+		}else{					
+			req['token'] =_this.etoken;
 		}				
+		//do the api req		
 		do_api_req({
 			'data': req,
 			'url' : _this.api_url 
 		}, function( data ){			
 			_this.processApiResult( data );		
-		});			
+		});				
 	},
 	doAjaxWarningIgnore:function(){
 		var _this = this;
@@ -345,10 +356,12 @@ mvBaseUploadInterface.prototype = {
 				bObj[ gM('return-to-form') ] = 	function(){
 						$j(this).dialog('close');
 				 };  	
-				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg, bObj);	
+				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg, bObj);
+				return ;	
 			}else{
 				if( apiRes.error.info ){
 					_this.updateProgressWin(  gM('uploaderror'), apiRes.error.info ,bObj);
+					return ;
 				}else{
 					gMsgLoadRemote(error_code, function(){
 						js_log('send msg: ' + gM( error_code ));

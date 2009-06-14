@@ -91,7 +91,7 @@ remoteSearchDriver.prototype = {
 	 * sets the default display item:
 	 * can be any content_providers key or 'all'
 	 */
-	disp_item : 'metavid',
+	disp_item : 'archive_org',
 	/** the default content providers list. 
 	 *
 	 * (should be note that special tabs like "upload" and "combined" don't go into the content proviers list:
@@ -714,13 +714,13 @@ remoteSearchDriver.prototype = {
 			cp.offset = (cp.offset) ? cp.offset : cp.sObj.offset;
 					
 			//do search	
-			cp.sObj.getSearchResults();
-			js_log('rand getSearchResults on cp disp is: '+ _this.disp_item);
+			cp.sObj.getSearchResults();			
 			_this.checkResultsDone();			
 		});
 	},
 	/* check for all the results to finish */
 	checkResultsDone: function(){		
+		//js_log('rsd:checkResultsDone');
 		var _this = this;
 		var loading_done = true;				
 		
@@ -736,7 +736,7 @@ remoteSearchDriver.prototype = {
 		}else{			
 			//make sure the instance name is up-to-date refrence to _this;
 			eval( _this.instance_name + ' = _this');
-			setTimeout( _this.instance_name + '.checkResultsDone()', 30);
+			setTimeout( _this.instance_name + '.checkResultsDone()', 50);
 		}		
 	},
 	drawTabs: function(){
@@ -1064,7 +1064,7 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		return {
 			'insert' :function(rObj){
-				_this.insertResource();
+				_this.insertResource(rObj);
 			},			
 			'preview':function(rObj){
 				_this.previewResource( rObj )
@@ -1147,8 +1147,7 @@ remoteSearchDriver.prototype = {
 	checkImportResource:function( rObj, cir_callback){	
 		//@@todo get the localized File/Image namespace name or do a general {NS}:Title
 		var cp = rObj.pSobj.cp;
-		var _this = this;
-		rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');				
+		var _this = this;				
 		
 		//check if local repository
 		//or if import mode if just "linking" 		
@@ -1156,11 +1155,15 @@ remoteSearchDriver.prototype = {
 			//local repo jump directly to check Import Resource callback:
 			 cir_callback( rObj );
 		}else{										
-			//not a local domain update target resource name with the prefix:
+			//update target_resource_title
+			rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');								
 			rObj.target_resource_title = cp.resource_prefix +rObj.target_resource_title; 
 		
 			//check if the resource is not already on this wiki		
-			reqObj={'action':'query', 'titles': _this.cFileNS + ':' + rObj.target_resource_title};				
+			reqObj={
+				'action':'query', 
+				'titles': _this.cFileNS + ':' + rObj.target_resource_title
+			};				
 		
 			do_api_req( {
 				'data':reqObj,
@@ -1283,6 +1286,7 @@ remoteSearchDriver.prototype = {
 			'mvBaseUploadInterface',		
 			'$j.ui.progressbar'	
 		],function(){	 
+			
 			//initicate a download similar to url copy:
 			myUp = new mvBaseUploadInterface({
 				'api_url' : _this.local_wiki_api_url,
@@ -1295,12 +1299,31 @@ remoteSearchDriver.prototype = {
 				   cir_callback(); 
 				}
 			});
-			myUp.doHttpUpload({
-				'url'	   : rObj.src,
-				'filename'  : rObj.target_resource_title,
-				'comment'   : $j('#rsd_import_ta').val()
-			});
+			//set the edit token if we have it handy
+			_this.getEditToken(function( token ){
+				myUp.etoken = token;
+				myUp.doHttpUpload({
+					'url'	    : rObj.src,		
+					'filename'  : rObj.target_resource_title,
+					'comment'   : $j('#rsd_import_ta').val()				
+				});
+			})
+			
+			
 		});				
+	},
+	getEditToken:function(callback){
+		//first try the page form: 
+		var etoken = $j("input[name='wpEditToken']").val();
+		if(etoken){		
+			callback( etoken );
+			return ; 
+		}
+		//@@todo try to load over ajax if( _this.local_wiki_api_url ) is set 
+		// (your on the api domain but are inserting from a normal page view) 
+		if( _this.local_wiki_api_url){
+				
+		}		
 	},
 	/**
 	 * doImportSpecialPage
@@ -1490,6 +1513,7 @@ remoteSearchDriver.prototype = {
 		 $j('#rsd_resource_preview').remove();
 		 $j('#rsd_resource_edit').remove();
 		 $j(this.target_container).dialog('close');
+		 $j(this.target_container).remove();
 	},
 	setResultBarControl:function( ){
 		var _this = this;
