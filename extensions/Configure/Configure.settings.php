@@ -104,7 +104,7 @@ class ConfigurationSettings {
 	 * Callback to sort extensions
 	 */
 	public static function compExt( $e1, $e2 ) {
-		return strcmp( $e1['name'], $e2['name'] );
+		return strcasecmp( $e1['name'], $e2['name'] );
 	}
 
 	/**
