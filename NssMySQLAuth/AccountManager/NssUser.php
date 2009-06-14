@@ -1,6 +1,8 @@
 <?php
 
 class NssUser {
+	static $passwdFields = array( 'pwd_uid', 'pwd_gid', 'pwd_home', 'pwd_active', 'pwd_email' );
+	
 	function __construct( $name ) {
 		$this->name = $name;
 		
@@ -23,7 +25,7 @@ class NssUser {
 		
 		// Load the user existence from passwd
 		$result = $dbr->select( 'passwd',
-			array( 'pwd_uid', 'pwd_gid', 'pwd_home', 'pwd_active', 'pwd_email' ),
+			self::$passwdFields,
 		 	array( 'pwd_name' => $this->name ),
 		 	__METHOD__ 
 		);
@@ -116,6 +118,19 @@ class NssUser {
 		while ( $row = $res->fetchObject() )
 			$names[] = $row->pwd_name;
 		return $names;
+	}
+	
+	public static function fetchAll() {
+		global $wgAuth;
+		$dbr = $wgAuth->getDB( DB_READ );
+		
+		$res = $dbr->select( 'passwd', self::$passwdFields, array(), __METHOD__ );
+		$users = array();
+		while ( $row = $res->fetchObject() ) {
+			$user = new self( $row->pwd_name );
+			$user->loadFromRow( $row );
+		}
+		return $users;
 	}
 }
 	

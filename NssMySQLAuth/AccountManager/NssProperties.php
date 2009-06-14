@@ -25,6 +25,24 @@ class NssProperties {
 		self::$users[$username] = $propObj;
 		return $propObj;
 	}
+	public static function getAllUsers() {
+		global $wgAuth;
+		$dbr = $wgAuth->getDB( DB_READ );
+		$res = $dbr->select( 'user_props',
+			array( 'up_user', 'up_name', 'up_value' ),
+			array(),
+			__METHOD__,
+			array( 'ORDER BY' => 'up_timestamp ASC' )
+			);		
+		
+		$users = array();
+		while ( $row = $res->fetchObject() ) {
+			if ( !isset( $users[$row->up_user] ) )
+				$users[$row->up_user] = array();
+			$users[$row->up_user][$row->up_name] = $row->up_value;
+		}
+		return $users;
+	}
 	
 	function __construct( $name = null ) {
 		$this->name = $name;

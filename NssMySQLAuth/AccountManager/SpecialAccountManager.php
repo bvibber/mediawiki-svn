@@ -64,6 +64,13 @@ class SpecialAccountManager extends SpecialPage {
 			return $this->displayRestrictionError();
 		$this->setHeaders();
 		
+		$export = $wgRequest->getVal( 'export' );
+		if ( $export ) {
+			$exporter = new AmExport();
+			if ( $exporter->execute( $export ) === true )
+				return;
+		}
+		
 		$username = $wgRequest->getVal( 'user' );
 		
 		$result = $this->processData();
@@ -74,12 +81,11 @@ class SpecialAccountManager extends SpecialPage {
 					wfMsg( $this->error ) ) . "\n" );
 		}
 		
-		$list = new AmUserListView();
-		$list->execute();
-		
 		$userView = new AmUserView( $username );
 		$userView->execute();
-		
+
+		$list = new AmUserListView();
+		$list->execute();
 	}
 
 
