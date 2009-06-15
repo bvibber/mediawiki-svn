@@ -316,7 +316,7 @@ class OmegaWikiAttributes {
 		$t->in_setup=False;
 	}
 
-	protected function __set($key,$value) {
+	public function __set($key,$value) {
 		if (!$this->setup()) 
 			throw new Exception("OmegaWikiAttributes accessed, but was not properly initialized");
 		$attributes=&$this->attributes;

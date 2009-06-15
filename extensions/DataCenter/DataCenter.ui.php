@@ -739,9 +739,9 @@ abstract class DataCenterRenderable {
 	 * Abstract function for rendering the input
 	 * @param	parameters		Array of parameters
 	 */
-	abstract public static function render(
+	public static function render(
 		array $parameters
-	);
+	) {}
 
 	/* Protected Static Functions */
 
