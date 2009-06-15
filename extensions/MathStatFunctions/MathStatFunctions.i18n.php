@@ -489,6 +489,9 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'msfunc_desc' => "'Na colleziona de funziune matemateche e statisteche",
+	'msfunc_nan' => "'U valore resultande non g'è 'nu numere",
+	'msfunc_inf' => "'U valore resultande jè infinite",
 	'msfunc_div_zero' => 'Divisione pe zero',
 );
 

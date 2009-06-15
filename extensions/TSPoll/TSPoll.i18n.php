@@ -213,6 +213,15 @@ $messages['pt-br'] = array(
 	'tspoll-id-error' => 'Não foi dado um ID!',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'tspoll-desc' => "Inglude 'u [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] cumme a 'nu tag HTML",
+	'tspoll-fetch-error' => "Errore quanne stè analizzave 'a URL!",
+	'tspoll-id-error' => "Non g'è date nisciune ID!",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

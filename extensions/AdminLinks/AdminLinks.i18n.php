@@ -54,6 +54,18 @@ $messages['ar'] = array(
 	'right-adminlinks' => 'راجع وصلة [[Special:AdminLinks]]',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'adminlinks-desc' => 'Добавя [[Special:AdminLinks|специална страница]], която съдържа полезни препратки за администраторите',
+	'adminlinks_editsidebar' => 'Редактиране на страничната лента',
+	'adminlinks_editcss' => 'Редактиране на CSS файл',
+	'adminlinks_users' => 'Потребители',
+	'adminlinks_createuser' => 'Създаване на потребител',
+	'adminlinks_importexport' => 'Внасяне и изнасяне',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

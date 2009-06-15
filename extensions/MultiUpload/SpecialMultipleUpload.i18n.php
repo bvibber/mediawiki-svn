@@ -154,7 +154,7 @@ $messages['be-tarask'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
-	'multipleupload' => 'Качване на файлове',
+	'multipleupload' => 'Качване на няколко файла',
 	'multipleupload-desc' => 'Позволява на потребителите да [[Special:MultipleUpload|качват по няколко файла наведнъж]]',
 	'multipleupload-ignoreallwarnings' => "Пренебрегване на '''всички предупреждения''' и съхраняване на файловете въпреки тях.",
 	'multipleupload-saveallfiles' => 'Запазване на всички файлове',
@@ -169,6 +169,8 @@ $messages['bg'] = array(
 Неприемливите файлове ще бъдат изтривани незабавоно; вижте [[{{MediaWiki:Multipleupload-page}}|политиката за изтриване на файлове]].",
 	'multiupload-fileuploaded' => 'Файлът беше качен.',
 	'multiupload-toolbox' => 'Качване на няколко файла',
+	'multiupload-no-files' => 'Необходимо е да бъде избран поне един файл за качване',
+	'multiupload-blank' => 'Не е избран файл',
 );
 
 /** Bosnian (Bosanski)

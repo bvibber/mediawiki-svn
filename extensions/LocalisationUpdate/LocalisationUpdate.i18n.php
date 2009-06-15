@@ -136,6 +136,13 @@ $messages['pl'] = array(
 	'localisationupdate-desc' => 'Uaktualnia lokalne komunikaty w miarę możliwości na bieżąco',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'localisationupdate-desc' => "Mandine le messagge localizzate 'u cchiù aggiornate possibbile",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -143,21 +150,21 @@ $messages['sk'] = array(
 	'localisationupdate-desc' => 'Udržiava lokalizované správy čo najaktuálnejšie',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Tom Maaswinkel
  */
 $messages['yue'] = array(
 	'localisationupdate-desc' => '將本地化嘅信息保持最新',
 );
 
-/** Chinese (simplified)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Tom Maaswinkel
  */
 $messages['zh-hans'] = array(
 	'localisationupdate-desc' => '将本地化的信息保持最新',
 );
 
-/** Chinese (Tranditional)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Tom Maaswinkel
  */
 $messages['zh-hant'] = array(

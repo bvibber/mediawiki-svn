@@ -120,6 +120,7 @@ $messages['bg'] = array(
 	'findspam-ip' => 'IP адрес:',
 	'findspam-ok' => 'Търсене',
 	'findspam-notextfound' => 'Няма намерени приноси',
+	'right-findspam' => 'Търсене за наскоро добавен спам',
 );
 
 /** Breton (Brezhoneg)

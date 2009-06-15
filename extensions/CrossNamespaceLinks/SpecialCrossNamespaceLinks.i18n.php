@@ -289,10 +289,10 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'crossnamespacelinks' => 'Pâges contegnent des lims vers un ôtro èspâço de nom',
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Ènumère los lims a travèrs los èspâços de nom]] que devriant pas ègzistar dessus {{SITENAME}}.',
-	'crossnamespacelinks-summary' => 'Ceta pâge fornét una lista de les pâges de l’èspâço de nom principâl qu’ont un lim vers un ôtro èspâço de nom (èxcèptâ por los èspâços de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), cen qu’est pas recomandâ.',
-	'crossnamespacelinkstext' => '$1 : at $2 {{PLURAL:$2|lim|lims}} vers l’èspâço de nom « $3 »',
+	'crossnamespacelinks' => 'Lims de vers d’ôtros èspâços de nom',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Ènumère los lims de vers d’ôtros èspâços de nom]] que devriant pas ègzistar dessus {{SITENAME}}.',
+	'crossnamespacelinks-summary' => 'Ceta pâge balye una lista des lims dês una pâge de l’èspâço de nom principâl de vers d’ôtros èspâços de nom (èxcèptâs {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}) et que l’usâjo est dèconselyê.',
+	'crossnamespacelinkstext' => '$1 : contint $2 lim{{PLURAL:$2||s}} de vers l’èspâço de nom $3',
 );
 
 /** Friulian (Furlan)

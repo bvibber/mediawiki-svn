@@ -393,6 +393,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'usercontactlink-baduser' => 'Nome utende sbagliate',
+	'usercontactlink-desc' => "Te dè 'a possibbilità de aggiungere facile facile l'otre nome utinde ausanne 'a sindassi ^^^user^^^",
 );
 
 /** Russian (Русский)

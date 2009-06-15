@@ -713,8 +713,11 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'showprocesslist' => "Fà vedè 'a liste de le processe",
+	'showprocesslist-desc' => "Fà vedè 'u resultate de [[Special:ShowProcesslist|FA VEDE TOTTE 'A LISTE DE LE PROCESSE]]",
 	'showprocesslist-id' => 'Codece (Id)',
 	'showprocesslist-user' => 'Utende',
+	'showprocesslist-host' => 'Ospite',
 	'showprocesslist-db' => 'db',
 	'showprocesslist-command' => 'Comande',
 	'showprocesslist-time' => 'Orarie',

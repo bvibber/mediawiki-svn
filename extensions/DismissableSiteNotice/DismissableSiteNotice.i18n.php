@@ -283,7 +283,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'sitenotice_close' => 'cachiér',
-	'sitenotice-desc' => 'Pèrmèt ux utilisators de cllôre lo sitenotice.',
+	'sitenotice-desc' => 'Pèrmèt ux utilisators de cachiér lo sitenotice.',
 );
 
 /** Friulian (Furlan)

@@ -135,6 +135,117 @@ $messages['en'] = array(
 	'edittoolbar-help-content-indent-result' => 'Normal text<dl><dd>Indented text<dl><dd>Indented text</dd></dl></dd></dl>'
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'edittoolbar' => 'Рэдагаваньне панэлі прылыдаў',
+	'edittoolbar-desc' => 'Рэдагаваць старонку панэлі прыладаў з палепшанай зручнасьцю',
+	'edittoolbar-preference' => 'Уключыць палепшанае рэдагаваньне панэлі прыладаў',
+	'edittoolbar-loading' => 'Загрузка...',
+	'edittoolbar-tool-format-bold' => 'Тлусты',
+	'edittoolbar-tool-format-bold-example' => 'Тлусты тэскт',
+	'edittoolbar-tool-format-italic' => 'Курсіў',
+	'edittoolbar-tool-format-italic-example' => 'Курсіўны тэкст',
+	'edittoolbar-tool-insert-ilink' => 'Вонкавая спасылка',
+	'edittoolbar-tool-insert-ilink-example' => 'Назва спасылкі',
+	'edittoolbar-tool-insert-xlink' => 'Вонкавая спасылка (не забывайце пачынаць з http:// прэфікс)',
+	'edittoolbar-tool-insert-xlink-example' => 'http://www.example.com назва спасылкі',
+	'edittoolbar-tool-insert-file' => 'Укладзены файл',
+	'edittoolbar-tool-insert-file-pre' => '$1Файл:',
+	'edittoolbar-tool-insert-file-example' => 'Прыклад.jpg',
+	'edittoolbar-tool-insert-reference' => 'Прывілей',
+	'edittoolbar-tool-insert-reference-example' => 'Уставіць тут тэкст зноскі',
+	'edittoolbar-tool-insert-signature' => 'Подпіс і час',
+	'edittoolbar-section-format' => 'Фармат',
+	'edittoolbar-tool-format-heading' => 'Загаловак',
+	'edittoolbar-tool-format-heading-1' => 'Узровень 1',
+	'edittoolbar-tool-format-heading-2' => 'Узровень 2',
+	'edittoolbar-tool-format-heading-3' => 'Узровень 3',
+	'edittoolbar-tool-format-heading-4' => 'Узровень 4',
+	'edittoolbar-tool-format-heading-5' => 'Узровень 5',
+	'edittoolbar-tool-format-heading-example' => 'Тэкст загалоўка',
+	'edittoolbar-group-format-list' => 'Сьпіс',
+	'edittoolbar-tool-format-ulist' => 'Сьпіс з маркерамі абзацу',
+	'edittoolbar-tool-format-ulist-example' => 'Элемэнты сьпісу з маркерамі абзацу',
+	'edittoolbar-tool-format-olist' => 'Пранумэраваны сьпіс',
+	'edittoolbar-tool-format-olist-example' => 'Элемэнты пранумэраванага сьпісу',
+	'edittoolbar-group-format-size' => 'Памер',
+	'edittoolbar-tool-format-big' => 'Вялікі',
+	'edittoolbar-tool-format-big-example' => 'Вялікі тэкст',
+	'edittoolbar-tool-format-small' => 'Маленькі',
+	'edittoolbar-tool-format-small-example' => 'Маленькі тэкст',
+	'edittoolbar-group-format-baseline' => 'Базавая лінія',
+	'edittoolbar-tool-format-superscript' => 'Супэрскрыпт',
+	'edittoolbar-tool-format-superscript-example' => 'Тэкст супэрскрыпта',
+	'edittoolbar-tool-format-subscript' => 'Падскрыпт',
+	'edittoolbar-tool-format-subscript-example' => 'Тэкст падскрыпта',
+	'edittoolbar-section-insert' => 'Уставіць',
+	'edittoolbar-group-insert-media' => 'Мэдыя',
+	'edittoolbar-tool-insert-gallery' => 'Галерэя выяваў',
+	'edittoolbar-group-insert-whitespace' => 'Вольнае месца',
+	'edittoolbar-tool-insert-newline' => 'Новая лінія',
+	'edittoolbar-section-characters' => 'Спэцыяльныя сымбалі',
+	'edittoolbar-section-help' => 'Дапамога',
+	'edittoolbar-help-heading-description' => 'Апісаньне',
+	'edittoolbar-help-heading-syntax' => 'Які новы тып',
+	'edittoolbar-help-heading-result' => 'Што Вы атрымаеце',
+	'edittoolbar-help-page-format' => 'Фарматаваньне',
+	'edittoolbar-help-page-link' => 'Спасылкі',
+	'edittoolbar-help-page-heading' => 'Загалоўкі',
+	'edittoolbar-help-page-list' => 'Сьпісы',
+	'edittoolbar-help-page-file' => 'Файлы',
+	'edittoolbar-help-page-reference' => 'Спасылкі',
+	'edittoolbar-help-page-discussion' => 'Абмяркаваньні',
+	'edittoolbar-help-content-italic-description' => 'Курсіў',
+	'edittoolbar-help-content-italic-syntax' => "''Курсіўны тэкст''",
+	'edittoolbar-help-content-italic-result' => '<em>Курсіўны тэкст</em>',
+	'edittoolbar-help-content-bold-description' => 'Тлусты',
+	'edittoolbar-help-content-bold-syntax' => "'''Тлусты тэкст'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Тлусты тэкст</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Тлусты &amp; курсіў',
+	'edittoolbar-help-content-bolditalic-syntax' => "''''Тлусты &amp; курсіўны тэкст''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Тлусты &amp; курсіўны тэкст</em></strong>',
+	'edittoolbar-help-content-ilink-description' => 'Унутраная спасылка',
+	'edittoolbar-help-content-ilink-syntax' => '[[Назва старонкі|Метка спасылкі]]<br />[[Назва старонкі]]',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>Метка спасылкі</a><br /><a href='#'>Назва старонкі</a>",
+	'edittoolbar-help-content-xlink-description' => 'Вонкавая спасылка',
+	'edittoolbar-help-content-xlink-syntax' => '[http://www.example.org Метка спасылкі]<br />[http://www.example.org]<br />http://www.example.org',
+	'edittoolbar-help-content-xlink-result' => "<a href='#' class='external'>Метка спасылкі</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
+	'edittoolbar-help-content-heading1-description' => 'Загаловак 1-га ўзроўню',
+	'edittoolbar-help-content-heading1-syntax' => '= Тэкст загалоўка =',
+	'edittoolbar-help-content-heading1-result' => '<h1>Тэкст загалоўка</h1>',
+	'edittoolbar-help-content-heading2-description' => 'Загаловак 1-га ўзроўню',
+	'edittoolbar-help-content-heading2-syntax' => '== Тэкст загалоўка ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>Тэкст загалоўка</h2>',
+	'edittoolbar-help-content-heading3-description' => 'Загаловак 3-га ўзроўню',
+	'edittoolbar-help-content-heading3-syntax' => '=== Тэкст загалоўка ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>Тэкст загалоўка</h3>',
+	'edittoolbar-help-content-heading4-description' => 'Загаловак 4-га ўзроўня',
+	'edittoolbar-help-content-heading4-syntax' => '==== Тэкст загалоўку ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>Тэкст загалоўка</h4>',
+	'edittoolbar-help-content-heading5-description' => 'Загаловак 5-га ўзроўня',
+	'edittoolbar-help-content-heading5-syntax' => '===== Тэкст загалоўку =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>Тэкст загалоўка</h5>',
+	'edittoolbar-help-content-ulist-description' => 'Сьпіс з маркерамі абзацу',
+	'edittoolbar-help-content-ulist-syntax' => '* Элемэнт сьпісу<br />* Элемэнт сьпісу',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'edittoolbar-loading' => 'Зареждане...',
+	'edittoolbar-tool-format-bold' => 'Получер',
+	'edittoolbar-tool-format-bold-example' => 'Текст в получер',
+	'edittoolbar-tool-format-italic' => 'Курсив',
+	'edittoolbar-tool-format-italic-example' => 'Текст в курсив',
+	'edittoolbar-tool-insert-ilink' => 'Вътрешна препратка',
+	'edittoolbar-tool-insert-xlink' => 'Външна препратка (не забравяйте http:// )',
+	'edittoolbar-tool-insert-file-example' => 'Пример.jpg',
+	'edittoolbar-group-format-list' => 'Списък',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -252,6 +363,16 @@ $messages['fr'] = array(
 	'edittoolbar-help-content-indent-description' => 'Identation',
 	'edittoolbar-help-content-indent-syntax' => 'Texte normal<br />:Texte indenté<br />::Texte indenté',
 	'edittoolbar-help-content-indent-result' => 'Texte normal<dl><dd>Texte indenté<dl><dd>Texte indenté</dd></dl></dd></dl>',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'edittoolbar' => '編集ツールバー',
+	'edittoolbar-desc' => '使いやすさの向上したページ編集ツールバー',
+	'edittoolbar-preference' => '改良型編集ツールバーを有効にする',
+	'edittoolbar-loading' => '読み込み中…',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -412,6 +533,7 @@ $messages['lb'] = array(
 	'edittoolbar-tool-format-big-example' => 'Groussen Text',
 	'edittoolbar-tool-format-small' => 'Kleng',
 	'edittoolbar-tool-format-small-example' => 'Klengen Text',
+	'edittoolbar-section-insert' => 'Drasetzen',
 	'edittoolbar-tool-insert-gallery' => 'Billergallerie',
 	'edittoolbar-tool-insert-newline' => 'Nei Linn',
 	'edittoolbar-section-characters' => 'Spezialzeechen',
@@ -427,23 +549,43 @@ $messages['lb'] = array(
 	'edittoolbar-help-page-discussion' => 'Diskussioun',
 	'edittoolbar-help-content-italic-description' => 'Kursiv',
 	'edittoolbar-help-content-italic-syntax' => "''Kursiven Text''",
+	'edittoolbar-help-content-italic-result' => '<em>Kursiven Text</em>',
 	'edittoolbar-help-content-bold-description' => 'Fett',
+	'edittoolbar-help-content-bold-syntax' => "'''Fetten Text'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Fetten Text</strong>',
 	'edittoolbar-help-content-bolditalic-description' => 'Fett &amp; kursiv',
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Fetten &amp; kursiven Text</em></strong>',
 	'edittoolbar-help-content-ilink-description' => 'Interne Link',
 	'edittoolbar-help-content-xlink-description' => 'Externe Link',
 	'edittoolbar-help-content-heading1-description' => 'Iwwerschrëft vum 1. Niveau',
 	'edittoolbar-help-content-heading1-syntax' => '= Text vum Titel=',
+	'edittoolbar-help-content-heading1-result' => '<h1>Text vum Titel</h1>',
 	'edittoolbar-help-content-heading2-description' => 'Iwwerschrëft vum 2. Niveau',
 	'edittoolbar-help-content-heading2-syntax' => '== Text vum Titel ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>Text vum Titel</h2>',
 	'edittoolbar-help-content-heading3-description' => 'Iwwerschrëft vum 3. Niveau',
+	'edittoolbar-help-content-heading3-syntax' => '=== Text vum Titel ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>Text vum Titel</h3>',
 	'edittoolbar-help-content-heading4-description' => 'Iwwerschrëft vum 4. Niveau',
+	'edittoolbar-help-content-heading4-syntax' => '==== Text vum Titel ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>Text vum Titel</h4>',
 	'edittoolbar-help-content-heading5-description' => 'Iwwerschrëft vum 5. Niveau',
+	'edittoolbar-help-content-heading5-syntax' => '===== Text vum Titel =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>Text vum Titel</h5>',
+	'edittoolbar-help-content-ulist-syntax' => '* Element vun der Lëscht<br />
+* Element vun der Lëscht',
+	'edittoolbar-help-content-ulist-result' => '<ul>
+ <li>Element vun der Lëscht</li>
+ <li>Element vun der Lëscht</li>
+</ul>',
 	'edittoolbar-help-content-olist-description' => 'Numeréiert Lëscht',
+	'edittoolbar-help-content-olist-syntax' => '# Element vun der Lëscht<br />
+# Element vun der Lëscht',
 	'edittoolbar-help-content-olist-result' => '<ol>
  <li>Element vun der Lëscht</li>
  <li>Element vun der Lëscht</li>
 </ol>',
-	'edittoolbar-help-content-file-syntax' => '[[File:Beispill.png|thumb|Ugewisenen Text]]',
+	'edittoolbar-help-content-file-syntax' => '[[File:Example.png|thumb|Ugewisenen Text]]',
 	'edittoolbar-help-content-reference-description' => 'Referenz',
 	'edittoolbar-help-content-reference-result' => "Text vun der Säit <sup><a href='#'>[1]</a></sup>",
 	'edittoolbar-help-content-rereference-description' => 'Zousätzleche Gebrauch vun derselwëschter Referenz',
@@ -453,6 +595,7 @@ $messages['lb'] = array(
 	'edittoolbar-help-content-signaturetimestamp-description' => 'Ënnerschrëft mat Datum an Auerzäit',
 	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Benotzernumm</a> (<a href='#' title='{{#special:mytalk}}'>Diskussioun</a>) 10 Juni 2009 àëm 15:54 (UTC)",
 	'edittoolbar-help-content-signature-description' => 'Ënnerschrëft',
+	'edittoolbar-help-content-indent-description' => 'Erasetzen',
 );
 
 /** Dutch (Nederlands)

@@ -22,6 +22,7 @@ $messages['en'] = array(
  */
 $messages['be-tarask'] = array(
 	'usabilityinitiative' => 'Ініцыятыва па паляпшэньню зручнасьці і прастаты выкарыстаньня',
+	'usabilityinitiative-desc' => 'Дапаўненьні распрацаваныя Wikipedia Usability Initiative для паляпшэньня зручнасьці працы MediaWiki',
 );
 
 /** French (Français)
@@ -38,6 +39,14 @@ $messages['fr'] = array(
 $messages['hsb'] = array(
 	'usabilityinitiative' => 'Iniciatiwa wužiwajomnosće',
 	'usabilityinitiative-desc' => 'Funkcije, wuwity přez iniciatiwu wužiwajomnosće Wikipedije, za polěpšenje wužiwajomnosće MediaWiki',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'usabilityinitiative' => 'ユーザビリティ・イニシアティブ',
+	'usabilityinitiative-desc' => 'ウィキペディア・ユーザビリティ・イニシアティブによって MediaWiki の使いやすさを向上させるために開発された各種機能',
 );
 
 /** Ripoarisch (Ripoarisch)

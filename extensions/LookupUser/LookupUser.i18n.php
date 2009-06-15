@@ -122,6 +122,7 @@ $messages['bg'] = array(
 	'lookupuser-registration' => 'Дата на регистрация: $1',
 	'lookupuser-touched' => 'Последна промяна на потребителските настройки: $1',
 	'lookupuser-useroptions' => 'Потребителски настройки:',
+	'right-lookupuser' => 'Изследване на потребителските предпочитания',
 );
 
 /** Bosnian (Bosanski)

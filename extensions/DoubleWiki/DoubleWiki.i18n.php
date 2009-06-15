@@ -170,7 +170,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'doublewiki-desc' => 'Afiche una pâge et sa traduccion dês un ôtro vouiqui en doves colones sur la méma pâge.',
+	'doublewiki-desc' => 'Montre una pâge et sa traduccion dês un ôtro vouiqui en doves colones sur la méma pâge.',
 );
 
 /** Galician (Galego)

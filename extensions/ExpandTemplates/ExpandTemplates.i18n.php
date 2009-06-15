@@ -592,18 +592,20 @@ Elle réalise ceci en appelant les étages successifs appropriés du parseur de 
  */
 $messages['frp'] = array(
 	'expandtemplates' => 'Èxpension des modèlos',
-	'expandtemplates-desc' => 'Ôgmente los modèlos, les fonccions d’analisa et les variâbles por visionar los tèxtes vouiquis ètendus et prèvisualise les pâges rendues d’ense.',
-	'expand_templates_intro' => 'Ceta pâge pèrmèt d’èprovar l’èxpension de modèlos,
-que sont dèvelopâs rècursivament. Les fonccions et les variâbles prèdèfenies,
-tâles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}}, sont asse-ben dèvelopâs.',
-	'expand_templates_title' => 'Titro de l’articllo, utilo per ègzemplo se lo modèlo utilise {{PAGENAME}} :',
-	'expand_templates_input' => 'Entrâd voutron tèxte ique :',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Rèalise l’èxpension des modèlos, de les fonccions du parsor et de les variâbles]] por fâre vêre lo vouiquitèxto ètendu et pués prèvisualisar lo rendu èfèctif de la pâge.',
+	'expand_templates_intro' => 'Ceta pâge spèciâla accèpte un vouiquitèxto sôrsa et pèrmèt de rèalisar rècursivament l’èxpension des modèlos que contint.
+Rèalise asse-ben l’èxpension de les fonccions du parsor coment
+<tt><nowiki>{{</nowiki>#if:...<nowiki>}}</nowiki></tt> et de les variâbles prèdèfenies coment
+<tt><nowiki>{{</nowiki>CURRENTDAY<nowiki>}}</nowiki></tt> — en veré praticament tot cen qu’est encâdrâ per des dobles colâdes.
+Rèalise cen en apelent los étâjos que vont avouéc du parsor de MediaWiki lui-mémo.',
+	'expand_templates_title' => 'Titro de la pâge, se lo code utilise {{PAGENAME}}, etc. :',
+	'expand_templates_input' => 'Vouiquitèxto sôrsa :',
 	'expand_templates_output' => 'Rèsultat',
-	'expand_templates_xml_output' => 'Sortia XML',
+	'expand_templates_xml_output' => 'Rèsultat u format XML',
 	'expand_templates_ok' => 'D’acôrd',
-	'expand_templates_remove_comments' => 'Suprimar los comentèros.',
-	'expand_templates_generate_xml' => 'Afichiér l’arborèscence XML.',
-	'expand_templates_preview' => 'Prèvisualisacion',
+	'expand_templates_remove_comments' => 'Suprimar los comentèros',
+	'expand_templates_generate_xml' => 'Fâre vêre l’âbro du parsor u format XML',
+	'expand_templates_preview' => 'Prèvisualisacion du rendu',
 );
 
 /** Friulian (Furlan)

@@ -17,6 +17,15 @@ $messages['en'] = array(
 	'editwarning-warning' => 'Leaving this page will cause you to lose any changes you have made.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'editwarning' => 'Рэдагаваць папярэджаньне',
+	'editwarning-desc' => 'Паказваць папярэджаньне, калі ўдзельнік спрабуе пакінуць форму рэдагаваньня без захаваньня',
+	'editwarning-warning' => 'Пакідаючы гэту старонку Вы страціце ўсе зробленыя Вамі зьмены.',
+);
+
 /** French (Français)
  * @author Crochet.david
  */
@@ -35,6 +44,15 @@ $messages['hsb'] = array(
 	'editwarning-warning' => 'Hdyž so strona wopušća, so přewjedźene změny zhubja.',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'editwarning' => '編集警告',
+	'editwarning-desc' => '利用者が編集フォームを保存せずに閉じようとしたときに警告を表示する',
+	'editwarning-warning' => 'このページを離れると、あなたが行った変更はすべて失われてしまいます。',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -42,6 +60,15 @@ $messages['ksh'] = array(
 	'editwarning' => 'Warnung beim Ändere_Afbreshe',
 	'editwarning-desc' => 'Donn en Warnung aanzeije, wann ene Metmaacher vum Sigge_Ändere fott jonn well, der oohne sing Änderunge afzeseschere.',
 	'editwarning-warning' => 'Wann de vun hee dä SIgg fott jeihß, dann jonn all Ding Änderunge aan dä Sigg verschött.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'editwarning' => 'Warnung virun enger Ännerung',
+	'editwarning-desc' => 'Weist eng Warnung wann e Benotzer versicht den Ännerungsformulaire ze verloossen ouni ofzespàicheren',
+	'editwarning-warning' => 'Wann Dir dës Säit verloosst da verléiert Dir all Ännerungen déi Dir gemaach hutt.',
 );
 
 /** Dutch (Nederlands)
