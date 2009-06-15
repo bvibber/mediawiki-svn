@@ -85,8 +85,8 @@ def intro():
 	else:
 		print "disabled."
 	print
-	print "Note: 'extension:' now means something else"
-	print "if you want the old functionality: use 'scripted:'"
+	print "Revision 51908 is a compatibility break with previous revisions; solving a security issue"
+	print "If anyone has trouble with this, please feel free to talk to kim, and we'll work something out."
 	print
 	print "please type a command and hit enter"
 	print "help<enter> for help"
