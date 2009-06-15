@@ -17,11 +17,20 @@ $messages['en'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'prefstats' => 'Статыстыка прывілеяў',
-	'prefstats-desc' => 'Ствараць статыстыку аб тым, як многа ўдзельнікаў дакладна карыстаюцца прывілеямі',
+	'prefstats' => 'Статыстыка ўстановак удзельнікаў',
+	'prefstats-desc' => 'Стварае статыстыку пра тое, як многа ўдзельнікаў выкарыстоўваюць ўстаноўкі',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'prefstats' => 'Statistike postavki',
+	'prefstats-desc' => 'Praćenje statistika o tome kako korisnici imaju postavljene određene postavke',
 );
 
 /** French (Français)
@@ -31,6 +40,22 @@ $messages['be-tarask'] = array(
 $messages['fr'] = array(
 	'prefstats' => 'Préférence des statistiques',
 	'prefstats-desc' => "Statistiques sur le nombre d'utilisateurs ayant certaines préférences activées",
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'prefstats' => 'Preferencia de estatísticas',
+	'prefstats-desc' => 'Segue as estatísticas sobre cantos usuarios teñen determinadas preferencias activadas',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'prefstats' => 'Prioritäte-Statischtik',
+	'prefstats-desc' => 'Statischtik wievil Benutzer di sichere Yystellige meglig gmacht hän',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -57,6 +82,14 @@ $messages['ksh'] = array(
 	'prefstats-desc' => 'Määt Shtatistike doh drövver, wi vill Metmaacher beshtemmpte Enshtellunge för sesch jemaat han.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'prefstats' => 'Statistike vun den Astellungen',
+	'prefstats-desc' => 'Statistiken doriwwer wéivil Benotzer bestëmmten Astellungn aktivéiert hunn',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -71,5 +104,21 @@ $messages['nl'] = array(
 $messages['roa-tara'] = array(
 	'prefstats' => 'Statistece de preferenze',
 	'prefstats-desc' => 'Traccie le statisteche sus a quanda utinde onne certe preferenze abbilitate',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'prefstats' => 'Статистика настроек',
+	'prefstats-desc' => 'Отслеживание статистики о том, сколько пользователей включили у себя те или иные настройки',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'prefstats' => 'Štatistika nastavení',
+	'prefstats-desc' => 'Umožňuje sledovať štatistiku, koľko ľudí má zapnutú určitú voľbu v nastaveniach',
 );
 
