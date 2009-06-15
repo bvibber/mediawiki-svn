@@ -75,7 +75,8 @@ mvClipEdit.prototype = {
 			}else if( this.rObj.type.indexOf("text/") === 0){
 				this.media_type = 'template';
 			}
-		}		
+		}				
+		
 		//display control:
 		if(this.profile == 'sequence'){			
 			this.doEditTypesMenu();
@@ -98,7 +99,7 @@ mvClipEdit.prototype = {
 	edit_types:{		
 		'duration':{			
 			'media':['image','template'],
-			'doEdit':function(target, _this ){
+			'doEdit':function( _this, target ){
 				//(_this is a smilClip instance)
 				//do clock mouse scroll duration editor
 				$j(target).html(									
@@ -119,7 +120,7 @@ mvClipEdit.prototype = {
 		},
 		'inoutpoints':{
 			'media':['video'],
-			'doEdit':function(target, _this ){								
+			'doEdit':function( _this, target ){								
 				//do clock mouse scroll duration editor
 				var end_ntp = ( _this.rObj.embed.end_ntp) ? _this.rObj.embed.end_ntp : _this.rObj.embed.getDuration();
 				if(!end_ntp)
@@ -140,7 +141,7 @@ mvClipEdit.prototype = {
 		},
 		'fileopts':{
 			'media':['image','video','template'],
-			'doEdit':function(target, _this ){		
+			'doEdit':function(_this, target ){		
 				var doEditHtml = function(){
 					//add html for rObj resource:
 					var o=	'<table>' +
@@ -273,14 +274,14 @@ mvClipEdit.prototype = {
 		},
 		'overlays':{			
 			'media':['image','video'],
-			'doEdit':function(target, _this ){
+			'doEdit':function(_this, target){
 				//do clock mouse scroll duration editor
 				$j(target).html('<h3>Current Overlays:</h3>Add,Remove,Modify');
 			}	
 		},
 		'audio':{
 			'media':['image','video', 'template'],
-			'doEdit':function(target, _this ){
+			'doEdit':function(_this, target){
 				//do clock mouse scroll duration editor
 				$j(target).html('<h3>Audio Volume:</h3>');
 			}	
@@ -335,7 +336,7 @@ mvClipEdit.prototype = {
 		
 		//do edit interface for that edit type: 
 		if( this.edit_types[ edit_type ].doEdit )
-			this.edit_types[ edit_type ].doEdit( '#sc_'+edit_type, this );
+			this.edit_types[ edit_type ].doEdit(this, '#sc_'+edit_type );
 	},
 	setUpVideoCtrl:function(){
 		js_log('setUpVideoCtrl:f');

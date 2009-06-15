@@ -2107,7 +2107,6 @@ trackObj.prototype = {
 /* utility functions 
  * (could be combined with other stuff) 
 */
-
 function getAbsolutePos(objectId) {
 	// Get an object left position from the upper left viewport corner
 	o = document.getElementById(objectId);

@@ -611,7 +611,7 @@ mvSequencer.prototype = {
 		o+=tabc;				
 		$j('#'+this.sequence_tools_id).html( o );
 				
-		 
+		  
 		$j("#seq_menu").tabs({
 			selected:selected_tab,
 			select: function(event, ui) {									
@@ -770,18 +770,20 @@ mvSequencer.prototype = {
 		}		
 	},
 	doEditTransition:function( cObj ){
-		var _this = this;
-		mv_get_loading_img( '#clipedit_ic' );
+		js_log("doEditTransition");
+		var _this = this;		
+		mv_get_loading_img( '#transitions_ic' );
 		mvJsLoader.doLoad([
 			'mvClipEdit',
 			'mvTimedEffectsEdit'
 		],function(){
+			js_log("mvTimedEffectsEdit loaded d")
 			//if mvClipEditor not preset init	
 			_this.myEffectEdit = {};		
 			_this.myEffectEdit = new mvTimedEffectsEdit({
-				'rObj' : cObj,
-				'control_ct':'transitions_ic',
-				'p_SeqObj': _this,
+				'rObj' 		 : cObj,
+				'control_ct' : 'transitions_ic',
+				'p_SeqObj'	 : _this,
 			});
 		})
 	},
@@ -800,12 +802,12 @@ mvSequencer.prototype = {
 			_this.myClipEditor = {};
 			//setup the cliploader
 			_this.myClipEditor = new mvClipEdit({
-				'rObj' : cObj,
-				'control_ct':'clipedit_ic',
-				'clip_disp_ct':	cObj.id,	
-				'edit_action':edit_action,
-				'p_seqObj': _this,
-				'profile':'sequence'
+				'cClip'			: cObj,
+				'control_ct'	: 'clipedit_ic',
+				'clip_disp_ct'	: cObj.id,	
+				'edit_action'	: edit_action,
+				'p_seqObj'		: _this,
+				'profile'		: 'sequence'
 			}); 
 		});
 	},
@@ -1136,9 +1138,7 @@ mvSequencer.prototype = {
 						//jump to the current clip
 						this_seq.plObj.updateCurrentClip( sClipObj  );		
 						//display the transition edit tab:						
-						this_seq.disp( 'transition' );
-						//display edit dialog: 
-						this_seq.doEditTransition( sClipObj );		
+						this_seq.disp( 'transition' );								
 					}
 				});
 				
