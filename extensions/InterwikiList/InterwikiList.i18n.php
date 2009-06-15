@@ -258,6 +258,17 @@ $messages['gsw'] = array(
 	'interwikilist-prefix' => 'Interwiki-Präfix:',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Ashok modhvadia
+ */
+$messages['gu'] = array(
+	'interwikilist' => 'આંતરવિકિ યાદી',
+	'interwikilist-desc' => 'ઉપલબ્ધ આંતરવિકિ કડીઓ જોવા માટે [[Special:આંતરવિકિ યાદી|ખાસ પાનું]] ઉમેરો',
+	'interwikilist-linkname' => 'આંતરવિકિ કડી',
+	'interwikilist-filter' => 'ગળણી યાદી',
+	'interwikilist-prefix' => 'આંતરવિકિ ઉપસર્ગ:',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

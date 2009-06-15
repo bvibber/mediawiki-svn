@@ -722,11 +722,13 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author ChrisiPK
  * @author Melancholie
  * @author Purodha
  * @author Revolus
  * @author SabineCretella
+ * @author Xqt
  */
 $messages['de'] = array(
 	'voctrain_Hello_World' => 'HALLO WIKI!',
@@ -742,7 +744,7 @@ $messages['de'] = array(
 	'voctrain_Set_up_your_exercise' => 'Übung einrichten',
 	'voctrain_Number_of_questions' => 'Anzahl der Fragen',
 	'voctrain_Languages' => 'Sprachen',
-	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Bitte gib die Sprachen an, in der Du üben möchtest',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Bitte gib die Sprachen an, in denen Du üben möchtest',
 	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(z.&nbsp;B. eng für Englisch, deu für Deutsch)',
 	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'Je nach Deiner Testmenge können einige Kombinationen besser und andere weniger gut funktionieren.',
 	'voctrain_Questions' => 'Fragen',
@@ -767,7 +769,7 @@ $messages['de'] = array(
 	'voctrain_one_of' => 'eines von',
 	'voctrain_list_of_questions_and_answers' => 'Liste der Fragen und Antworten',
 	'voctrain_Answer_s_' => 'Antwort(en)',
-	'voctrain_logout' => 'abmelden',
+	'voctrain_logout' => 'geh naus',
 	'voctrain_Powered_by' => 'Betrieben mit',
 	'voctrain_Omegawiki' => 'Omegawiki',
 	'voctrain_Exercise_complete' => 'Übung abgeschlossen',
@@ -775,11 +777,11 @@ $messages['de'] = array(
 	'voctrain_Start_a_new_exercise' => 'Eine neue Übung beginnen',
 	'voctrain_User_name' => 'Benutzername',
 	'voctrain_Password' => 'Passwort',
-	'voctrain_Login' => 'Anmelden',
+	'voctrain_Login' => 'Kumm nei',
 	'voctrain_Create_new_user' => 'Neuen Benutzer anlegen',
 	'voctrain_Switch_language' => 'Sprache wechseln',
 	'voctrain_Language' => 'Sprache',
-	'voctrain_Log_in' => 'Einloggen',
+	'voctrain_Log_in' => 'Kumm nei',
 	'voctrain_Omegawiki_vocabulary_trainer' => 'OmegaWiki-Vokabel-Trainer',
 	'voctrain_Definitions' => 'Definitionen',
 	'voctrain_Could_not_create_new_user' => 'Konnte keinen neuen Benutzer anlegen',

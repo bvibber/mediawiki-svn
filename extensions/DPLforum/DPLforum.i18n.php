@@ -501,6 +501,13 @@ $messages['oc'] = array(
 	'dplforum-toomany' => 'DPL Forum : Tròp de categorias !',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'dplforum-never' => 'Nie net',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author McMonster

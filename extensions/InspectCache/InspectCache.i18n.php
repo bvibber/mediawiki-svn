@@ -703,6 +703,13 @@ $messages['os'] = array(
 	'inspectcache-delete' => 'Аппар',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'inspectcache-delete' => 'Lösche',
+);
+
 /** Polish (Polski)
  * @author Masti
  * @author McMonster

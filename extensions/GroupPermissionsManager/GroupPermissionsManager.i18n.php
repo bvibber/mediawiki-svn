@@ -1924,6 +1924,14 @@ $messages['os'] = array(
 	'grouppermissions-sp-save' => 'Афтæ уæд',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'grouppermissions-dologin' => 'Kumm nei',
+	'grouppermissions-never' => 'Nie net',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  * @author Maikking

@@ -1446,7 +1446,7 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'multipleupload' => 'Carga file multimediài',
+	'multipleupload' => 'Carga file multipli',
 	'multipleupload-desc' => 'Permeti ai utenti de [[Special:MultipleUpload|cargar pi de un file in te un colpo solo]]',
 	'multipleupload-ignoreallwarnings' => "Ignora '''tuti i avertimenti''' e salva istesso i file.",
 	'multipleupload-saveallfiles' => 'Salva tuti i file',

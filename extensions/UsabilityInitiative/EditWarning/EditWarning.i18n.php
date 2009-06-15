@@ -18,12 +18,13 @@ $messages['en'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'editwarning' => 'Рэдагаваць папярэджаньне',
-	'editwarning-desc' => 'Паказваць папярэджаньне, калі ўдзельнік спрабуе пакінуць форму рэдагаваньня без захаваньня',
-	'editwarning-warning' => 'Пакідаючы гэту старонку Вы страціце ўсе зробленыя Вамі зьмены.',
+	'editwarning' => 'Папярэджаньне рэдагаваньня',
+	'editwarning-desc' => 'Паказвае папярэджаньне, калі ўдзельнік спрабуе пакінуць форму рэдагаваньня без захаваньня',
+	'editwarning-warning' => 'Усе зробленыя Вамі зьмены будуць страчаныя, калі Вы пакінеце гэтую старонку.',
 );
 
 /** French (Français)
@@ -33,6 +34,24 @@ $messages['fr'] = array(
 	'editwarning' => 'Avertissement de modification',
 	'editwarning-desc' => 'Afficher un avertissement lorsque l’utilisateur tente de quitter le formulaire sans enregistrer les modifications',
 	'editwarning-warning' => 'Quitter cette page vous fera perdre toutes les modifications que vous avez faite.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'editwarning' => 'Advertencia de edición',
+	'editwarning-desc' => 'Mostrar unha advertencia cando un usuario intente deixar o formulario de edición sen gardar',
+	'editwarning-warning' => 'Se deixa esta páxina causará a perda de todos os cambios que feitos.',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'editwarning' => 'Warnig bearbeite',
+	'editwarning-desc' => 'E Warnig zeige wänn e Benutzer versuecht s Bearbeitgsfänschter ohni Spychere z verloo',
+	'editwarning-warning' => 'Wänn Du die Syte verlosch, no verliersch alli Bearbeitige, wu Du do dra gmacht hesch.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -78,5 +97,23 @@ $messages['nl'] = array(
 	'editwarning' => 'Bewerkingswaarschuwing',
 	'editwarning-desc' => 'Geeft een waarschuwing weer als een gebruiker probeert een bewerkingsvenster te verlaten zonder wijzigingen op te slaan',
 	'editwarning-warning' => 'Als u deze pagina verlaat verliest u eventuele wijzigingen die u hebt gemaakt.',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'editwarning' => 'Предупреждение редактирования',
+	'editwarning-desc' => 'Выдаёт предупреждение, когда участник пытается покинуть форму редактирования без сохранения',
+	'editwarning-warning' => 'Переход на другую страницу приведёт к потере сделанных вами изменений.',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'editwarning' => 'Upozornenie pri úprave',
+	'editwarning-desc' => 'Zobrazí upozornenie, keď sa používateľ pokúsi opustiť formulár na úpravy bez uloženia',
+	'editwarning-warning' => 'Ak opustíte túto stránku, stratíte tým všetky vykonané zmeny.',
 );
 

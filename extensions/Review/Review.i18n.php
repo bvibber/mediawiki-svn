@@ -348,6 +348,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'review_sidebar_title' => 'Pregled',
 	'review-desc' => 'Omogućuje korisnicima da [[Special:Review|provjere]] stranice',
 	'review_topic_page' => 'Teme pregleda',
 	'review_sidebar_explanation' => "Krajnji lijevi potvrdni okvir uvijek znači 'bez mišljenja'.",
@@ -365,6 +366,7 @@ $messages['bs'] = array(
 	'review_concerns_page' => 'Ovaj pregled je o stranici "$1".',
 	'review_user_reviews' => '<small>(provjere {{GENDER:$1|ovog korisnika|ove korisnice}})</small>',
 	'review_user_details_link' => '(detalji)',
+	'review_has_been_stored' => 'Vaš pregled je spremljen!',
 	'review_blocked' => 'Blokirani ste i ne možete učestvovati u pregledima.',
 	'review_wrong_namespace' => 'Stranice u ovom imenskom prostoru ne mogu biti provjerene!',
 	'review_topic' => 'Tema',

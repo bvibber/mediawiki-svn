@@ -2201,6 +2201,7 @@ $messages['pa'] = array(
  */
 $messages['pdc'] = array(
 	'whitelisttableedit' => 'Ennere',
+	'whitelistnever' => 'nie net',
 );
 
 /** Polish (Polski)

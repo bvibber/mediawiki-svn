@@ -6773,6 +6773,13 @@ $messages['os'] = array(
 	'mv_category' => 'категори',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'mv_history' => 'Gschicht',
+);
+
 /** Polish (Polski)
  * @author Jwitos
  * @author Maikking

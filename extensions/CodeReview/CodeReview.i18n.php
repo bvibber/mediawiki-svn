@@ -6802,6 +6802,7 @@ $messages['yi'] = array(
 	'codereview-subtitle' => 'פֿאַר $1',
 );
 
+/** Yue (粵語) */
 $messages['yue'] = array(
 	'code' => '代碼複查',
 	'code-rev-title' => 'r$1 - 代碼複查',
@@ -6851,7 +6852,7 @@ $messages['yue'] = array(
 	'code-rev-modified-r' => '換咗',
 	'code-rev-modified-d' => '刪咗',
 	'code-rev-modified-m' => '改咗',
-	'code-rev-imagediff'  => '改圖',
+	'code-rev-imagediff' => '改圖',
 	'code-rev-status' => '狀態：',
 	'code-rev-status-set' => '改狀態',
 	'code-rev-tags' => '標籤：',
@@ -6874,21 +6875,16 @@ $messages['yue'] = array(
 	'code-pathsearch-path' => '路徑：',
 	'code-rev-submit' => '保存更改',
 	'code-rev-submit-next' => '保存同時跳到下一個未解決嘅',
-
 	'code-batch-status' => '改狀態：',
 	'code-batch-tags' => '改標籤：',
 	'codereview-batch-title' => '改全部揀咗嘅修訂',
 	'codereview-batch-submit' => '遞交',
-
-	'code-releasenotes'     => '發行解',
-	'code-release-legend'   => '產生發行解',
+	'code-releasenotes' => '發行解',
+	'code-release-legend' => '產生發行解',
 	'code-release-startrev' => '開始修訂：',
-	'code-release-endrev'   => '最後修訂：',
-
+	'code-release-endrev' => '最後修訂：',
 	'codereview-subtitle' => '$1嘅代碼',
-
 	'codereview-reply-link' => '回覆',
-
 	'codereview-email-subj' => '[$1] [r$2]：加咗新註解',
 	'codereview-email-body' => '用戶 "$1" 響 r$3 貼咗一個註解。
 
@@ -6897,7 +6893,6 @@ $messages['yue'] = array(
 註解：
 
 $4',
-
 	'codereview-email-subj2' => '[$1] [r$2]：後繼更改',
 	'codereview-email-body2' => '用戶 "$1" 響 r$2 整咗後繼更改。
 
@@ -6906,7 +6901,6 @@ $4',
 遞交摘要：
 
 $4',
-
 	'repoadmin' => '檔案室庫管理',
 	'repoadmin-new-legend' => '開一個新檔案庫',
 	'repoadmin-new-label' => '檔案庫名：',
@@ -6917,7 +6911,6 @@ $4',
 	'repoadmin-edit-view' => 'ViewVC路徑：',
 	'repoadmin-edit-button' => '好',
 	'repoadmin-edit-sucess' => '檔案庫 "[[Special:Code/$1|$1]]" 已經成功噉改好咗。',
-
 	'right-repoadmin' => '管理代碼檔案庫',
 	'right-codereview-use' => '用Special:Code',
 	'right-codereview-add-tag' => '加新標籤到修訂',
@@ -6925,7 +6918,6 @@ $4',
 	'right-codereview-post-comment' => '響修訂度加註解',
 	'right-codereview-set-status' => '改修訂狀態',
 	'right-codereview-link-user' => '連結作者到wiki用戶',
-
 	'specialpages-group-developer' => '開發者工具',
 );
 

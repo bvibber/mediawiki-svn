@@ -2168,6 +2168,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'tasks_delete' => 'Lösche',
 	'tasks_help_page_link' => 'Hilf',
 	'tasks_table_header_page' => 'Blatt',
 );

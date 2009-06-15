@@ -5827,6 +5827,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'configure-js-remove' => 'Lösche',
 	'configure-throttle-action-move' => 'Ziehe',
 );
 
