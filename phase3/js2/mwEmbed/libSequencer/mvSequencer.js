@@ -373,26 +373,6 @@ mvSequencer.prototype = {
 				this.menu_items[i].js( this );
 		}										
 	},
-	//renders out the transitions effects set			
-	renderTransitionsSet:function(target_id){
-		js_log('f:renderTransitionsSet:' + target_id);
-		var o = '';
-		if(typeof mvTransLib == 'undefined'){
-			js_error('Error: missing mvTransLib');
-			return false;
-		}		
-		for(var type in mvTransLib['type']){
-			js_log('on tran type: ' + i);			
-			var base_trans_name = i;
-			var tLibSet = mvTransLib['type'][ type ];
-			for(var subtype in tLibSet){			
-				o+='<img style="float:left;padding:10px;" '+
-					'src="' + mvTransLib.getTransitionIcon(type, subtype)+ '">';		
-			}
-		}
-		js_log('should set: ' + target_id + ' to: ' + o);
-		$j('#'+target_id).append(o);
-	},
 	renderTimeLine:function(){
 		//empty out the top level html: 
 		$j('#'+this.timeline_id).html('');
@@ -773,8 +753,7 @@ mvSequencer.prototype = {
 		js_log("doEditTransition");
 		var _this = this;		
 		mv_get_loading_img( '#transitions_ic' );
-		mvJsLoader.doLoad([
-			'mvClipEdit',
+		mvJsLoader.doLoad([			
 			'mvTimedEffectsEdit'
 		],function(){
 			js_log("mvTimedEffectsEdit loaded d")
@@ -782,7 +761,7 @@ mvSequencer.prototype = {
 			_this.myEffectEdit = {};		
 			_this.myEffectEdit = new mvTimedEffectsEdit({
 				'rObj' 		 : cObj,
-				'control_ct' : 'transitions_ic',
+				'control_ct' : 'transition_ic',
 				'p_SeqObj'	 : _this,
 			});
 		})
@@ -802,7 +781,7 @@ mvSequencer.prototype = {
 			_this.myClipEditor = {};
 			//setup the cliploader
 			_this.myClipEditor = new mvClipEdit({
-				'cClip'			: cObj,
+				'rObj'			: cObj,
 				'control_ct'	: 'clipedit_ic',
 				'clip_disp_ct'	: cObj.id,	
 				'edit_action'	: edit_action,
@@ -1062,12 +1041,13 @@ mvSequencer.prototype = {
 						
 						//check if the clip has transitions						
 						var imgHtml = '';					
-						var imsrc = '';	
+						var imsrc = '';
+						var cat = clip;							
 						if(clip.transIn || clip.transOut){
-							if( clip.transIn )
+							if( clip.transIn && clip.transIn.getIconSrc )
 								imsrc = clip.transIn.getIconSrc();
 							//@@todo put transOut somewhere else
-							if( clip.transOut )
+							if( clip.transOut && clip.transOut.getIconSrc )
 								imsrc = clip.transOut.getIconSrc();				
 							if(imsrc != '')
 								imgHtml = '<img style="width:32px;height:32px" src="' + imsrc + '" />';							

@@ -13,7 +13,7 @@ loadGM({
 });
 
 
-var default_timedeffect_values = {
+var default_timed_effect_values = {
 	'rObj':	null,		 // the resource object
 	'clip_disp_ct':null, //target clip disp
 	'control_ct':null,	 //control container
@@ -54,7 +54,7 @@ mvTimedEffectsEdit.prototype = {
 	},
 	init:function(iObj){
 		//init object: 
-		for(var i in default_clipedit_values){
+		for(var i in default_timed_effect_values){
 			if( iObj[i] ){   
 				this[i] = iObj[i];
 			}
@@ -64,41 +64,45 @@ mvTimedEffectsEdit.prototype = {
 	doEditMenu:function(){
 		var _this = this;
 		//add in subMenus if set
-		//check for submenu and add to item container		
+		//check for submenu and add to item container
+		
+		//update the default edit display (if we have a target)
+		var tTarget = 'transin';
+		if(this.rObj.transOut)
+			tTarget = 'transout';
+		if(this.rObj.effects)
+			tTarget = 'effects';		
+			
 		var o='';		
 		var tabc ='';					
-		o+= '<div id="mv_submenu_timedeffect">';
-		o+='<ul>';		 
+		o+= '<div id="mv_submenu_timedeffect" style="width:90%">';
+		o+='<ul>';		  
 		var inx =0;		
-		$j.each(this.menu_items, function(sInx, na){					
+		$j.each(this.menu_items, function(sInx, mItem){					
 			//check if the given editType is valid for our given media type		
 			o+=	'<li>'+ 
-					'<a id="mv_te_'+sInx+'" href="#te_' + sInx + '">' + gM('te_' + sInx ) + '</a>'+
+					'<a id="mv_te_'+sInx+'" href="#te_' + sInx + '">' + mItem.title + '</a>'+
 				'</li>';															
 			tabc += '<div id="te_' + sInx + '" style="overflow:auto;" ></div>';																									
 		});
 		o+= '</ul>' + tabc;
 		o+= '</div>';
-		//add sub menu container with menu html: 		
-		$j('#'+this.control_ct).html( o ) ;			
-		//set up bindings:	 
+		//add sub menu container with menu html: 			
+		$j('#'+this.control_ct).html( o ) ;		
+		js_log('should have set: #'+this.control_ct + ' to: ' + o);		
+		
+				
+		//set up bindins:	 
 		$j('#mv_submenu_timedeffect').tabs({
 			selected: 0,
 			select: function(event, ui) {									
 				_this.doDisplayEdit( $j(ui.tab).attr('id').replace('mv_te_', '') );
 			}				
 		}).addClass('ui-tabs-vertical ui-helper-clearfix');
+		js_log('setup tabs #' + this.control_ct);
+		
 		//close left: 
-		$j("#mv_submenu_clipedit li").removeClass('ui-corner-top').addClass('ui-corner-left');		
-		
-		//update the default edit display (if we have a target)
-		var tTarget = 'transin';
-		if(cClip.transOut)
-			tTarget = 'transout';
-		if(cClip.effects)
-			tTarget = 'effects';
-		
-		_this.doDisplayEdit( 'transin' );
+		$j("#mv_submenu_clipedit li").removeClass('ui-corner-top').addClass('ui-corner-left');								
 	},
 	doDisplayEdit:function( tab_id ){		
 		if( !this.menu_items[ tab_id ] ){
@@ -109,12 +113,13 @@ mvTimedEffectsEdit.prototype = {
 		}					
 	},
 	doTransitionDisplayEdit:function(target_item){
+		var apendTarget = 'te_' + target_item;
 		//check if we have a transition
-		if(!cClip[ this.menu_items[ target_item ].clip_attr ]){
-			this.getTransitionList();
+		if(!this.rObj[ this.menu_items[ target_item ].clip_attr ]){
+			this.getTransitionList( apendTarget );
 			return ;
 		}
-		cTran = cClip[ this.menu_items[ target_item ].clip_attr ];
+		cTran = this.rObj[ this.menu_items[ target_item ].clip_attr ];
 		var o='<h3>Edit Transition</h3>';
 		o+='Type: ' +
 			'<select class="te_select_type">';
@@ -131,6 +136,7 @@ mvTimedEffectsEdit.prototype = {
 		}
 		o+='</select>'+		
 		   '</span>';
+		js_log("update: " + apendTarget);
 		//set up bidings: 
 		$j(apendTarget).append(o).children('.te_select_type')
 			.change(function(){
@@ -139,5 +145,19 @@ mvTimedEffectsEdit.prototype = {
 				$j(apendTarget + ' .te_select_subtype').html();
 			});
 		$j('te_' + target_item).html(o);
+	},
+	getTransitionList:function(target_out){
+		js_log("getTransitionList");
+		var o= '';
+		for(var type in mvTransLib['type']){
+			js_log('on tran type: ' + i);			
+			var base_trans_name = i;
+			var tLibSet = mvTransLib['type'][ type ];
+			for(var subtype in tLibSet){			
+				o+='<img style="float:left;padding:10px;" '+
+					'src="' + mvTransLib.getTransitionIcon(type, subtype)+ '">';		
+			}
+		}	
+		$j(target_out).html(o);
 	}		
 }
