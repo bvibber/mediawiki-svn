@@ -14,6 +14,14 @@ define( 'DO_MAINTENANCE', dirname(__FILE__) . '/doMaintenance.php' );
  */
 abstract class Maintenance {
 
+	/**
+	 * Constants for DB access type
+	 * @see Maintenance::getDbType()
+	 */
+	const NO_DB     = 0;
+	const NORMAL_DB = 1;
+	const ADMIN_DB  = 2;
+
 	// This is the desired params
 	private $mParams = array();
 	
@@ -153,13 +161,17 @@ abstract class Maintenance {
 	}
 
 	/**
-	 * Does the script need DB access? Specifically, we mean admin access to
-	 * the DB. Override this and return true,
-	 * if needed
-	 * @return boolean
+	 * Does the script need normal DB access? By default, we give Maintenance
+	 * scripts admin rights to the DB (when available). Sometimes, a script needs
+	 * normal access for a reason and sometimes they want no access. Subclasses 
+	 * should override and return one of the following values, as needed:
+	 *    Maintenance::NO_DB      -  For no DB access at all
+	 *    Maintenance::NORMAL_DB  -  For normal DB access
+	 *    Maintenance::ADMIN_DB   -  For admin DB access, default
+	 * @return int
 	 */
-	protected function needsDB() {
-		return false;
+	protected function getDbType() {
+		return Maintenance :: ADMIN_DB;
 	}
 
 	/**
@@ -170,7 +182,7 @@ abstract class Maintenance {
 		$this->addParam( 'quiet', "Whether to supress non-error output" );
 		$this->addParam( 'conf', "Location of LocalSettings.php, if not default", false, true );
 		$this->addParam( 'wiki', "For specifying the wiki ID", false, true );
-		if( $this->needsDB() ) {
+		if( $this->getDbType() > 0 ) {
 			$this->addParam( 'dbuser', "The DB user to use for this script", false, true );
 			$this->addParam( 'dbpass', "The password to use for this script", false, true );
 		}
