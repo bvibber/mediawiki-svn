@@ -243,6 +243,7 @@ body.rtl div#edittoolbar div.tabs > div.tab > a,
 body.rtl div#edittoolbar div.tabs > div.tab > a:visited {
 	padding-left: 12px;
 	padding-right: 18px;
+	background-image: url(images/arrow-left.png);
 	background-position: right center;
 }
 div#edittoolbar div.tabs > div.tab > a.current,
