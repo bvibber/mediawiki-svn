@@ -6802,6 +6802,133 @@ $messages['yi'] = array(
 	'codereview-subtitle' => 'פֿאַר $1',
 );
 
+$messages['yue'] = array(
+	'code' => '代碼複查',
+	'code-rev-title' => 'r$1 - 代碼複查',
+	'code-comments' => '註解',
+	'code-references' => '後繼修訂',
+	'code-change-status' => "改咗 r$1 嘅'''狀態'''",
+	'code-change-tags' => "改咗 r$1 嘅'''標籤'''",
+	'code-change-removed' => '拎走咗：',
+	'code-change-added' => '加咗：',
+	'code-prop-changes' => '狀態同標籤紀錄',
+	'code-desc' => '帶有[[Special:RepoAdmin|Subversion支援]]嘅[[Special:Code|代碼複查工具]]',
+	'code-no-repo' => '無檔案庫設定！',
+	'code-load-diff' => '載入差異中…',
+	'code-notes' => '之前嘅註解',
+	'code-authors' => '作者',
+	'code-status' => '狀態',
+	'code-tags' => '標籤',
+	'code-authors-text' => '下面係檔案庫作者對於最近遞交嘅表。',
+	'code-author-haslink' => '呢位作者係連結到wiki用戶$1',
+	'code-author-orphan' => '呢位作者無連結到一個wiki戶口',
+	'code-author-dolink' => '連結呢位作者到一位用戶：',
+	'code-author-alterlink' => '改個wiki用戶到呢位作者：',
+	'code-author-orunlink' => '或者唔連結呢一位wiki用戶：',
+	'code-author-name' => '輸入一個用戶名：',
+	'code-author-success' => '作者$1已經連結到wiki用戶$2',
+	'code-author-link' => '連結？',
+	'code-author-unlink' => '唔連結？',
+	'code-author-unlinksuccess' => '作者$1已經唔再連結',
+	'code-field-id' => '修訂',
+	'code-field-author' => '作者',
+	'code-field-user' => '註解者',
+	'code-field-message' => '遞交摘要',
+	'code-field-status' => '狀態',
+	'code-field-timestamp' => '日期',
+	'code-field-comments' => '註',
+	'code-field-path' => '路徑',
+	'code-field-text' => '註',
+	'code-field-select' => '選擇',
+	'code-rev-author' => '作者：',
+	'code-rev-date' => '日期：',
+	'code-rev-message' => '意見：',
+	'code-rev-repo' => '檔案庫：',
+	'code-rev-rev' => '修訂：',
+	'code-rev-rev-viewvc' => '響ViewVC',
+	'code-rev-paths' => '修改咗嘅路徑：',
+	'code-rev-modified-a' => '加咗',
+	'code-rev-modified-r' => '換咗',
+	'code-rev-modified-d' => '刪咗',
+	'code-rev-modified-m' => '改咗',
+	'code-rev-imagediff'  => '改圖',
+	'code-rev-status' => '狀態：',
+	'code-rev-status-set' => '改狀態',
+	'code-rev-tags' => '標籤：',
+	'code-rev-tag-add' => '加標籤：',
+	'code-rev-tag-remove' => '拎走標籤：',
+	'code-rev-comment-by' => '$1嘅註解',
+	'code-rev-comment-submit' => '遞交註解',
+	'code-rev-comment-preview' => '預覽',
+	'code-rev-diff' => '差異',
+	'code-rev-diff-link' => '差異',
+	'code-rev-purge-link' => '洗快取',
+	'code-status-new' => '新',
+	'code-status-fixme' => '修我',
+	'code-status-reverted' => '打咗回頭',
+	'code-status-resolved' => '解決咗',
+	'code-status-ok' => '好',
+	'code-status-verified' => '認定咗',
+	'code-status-deferred' => '押後咗',
+	'code-pathsearch-legend' => '跟跟徑搵呢個檔案庫嘅修訂',
+	'code-pathsearch-path' => '路徑：',
+	'code-rev-submit' => '保存更改',
+	'code-rev-submit-next' => '保存同時跳到下一個未解決嘅',
+
+	'code-batch-status' => '改狀態：',
+	'code-batch-tags' => '改標籤：',
+	'codereview-batch-title' => '改全部揀咗嘅修訂',
+	'codereview-batch-submit' => '遞交',
+
+	'code-releasenotes'     => '發行解',
+	'code-release-legend'   => '產生發行解',
+	'code-release-startrev' => '開始修訂：',
+	'code-release-endrev'   => '最後修訂：',
+
+	'codereview-subtitle' => '$1嘅代碼',
+
+	'codereview-reply-link' => '回覆',
+
+	'codereview-email-subj' => '[$1] [r$2]：加咗新註解',
+	'codereview-email-body' => '用戶 "$1" 響 r$3 貼咗一個註解。
+
+完整URL：$2
+
+註解：
+
+$4',
+
+	'codereview-email-subj2' => '[$1] [r$2]：後繼更改',
+	'codereview-email-body2' => '用戶 "$1" 響 r$2 整咗後繼更改。
+
+完整URL：$3
+
+遞交摘要：
+
+$4',
+
+	'repoadmin' => '檔案室庫管理',
+	'repoadmin-new-legend' => '開一個新檔案庫',
+	'repoadmin-new-label' => '檔案庫名：',
+	'repoadmin-new-button' => '開',
+	'repoadmin-edit-legend' => '檔案庫 "$1" 嘅更改',
+	'repoadmin-edit-path' => '檔案庫路徑：',
+	'repoadmin-edit-bug' => 'Bugzilla路徑：',
+	'repoadmin-edit-view' => 'ViewVC路徑：',
+	'repoadmin-edit-button' => '好',
+	'repoadmin-edit-sucess' => '檔案庫 "[[Special:Code/$1|$1]]" 已經成功噉改好咗。',
+
+	'right-repoadmin' => '管理代碼檔案庫',
+	'right-codereview-use' => '用Special:Code',
+	'right-codereview-add-tag' => '加新標籤到修訂',
+	'right-codereview-remove-tag' => '響修訂度拎走標籤',
+	'right-codereview-post-comment' => '響修訂度加註解',
+	'right-codereview-set-status' => '改修訂狀態',
+	'right-codereview-link-user' => '連結作者到wiki用戶',
+
+	'specialpages-group-developer' => '開發者工具',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  * @author Gaoxuewei
