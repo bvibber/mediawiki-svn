@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation for Usability Initiative EditWarning extension
+ * Internationalisation for Usability Initiative PrefStats extension
  *
  * @file
  * @ingroup Extensions
@@ -14,6 +14,10 @@ $messages = array();
 $messages['en'] = array(
 	'prefstats' => 'Preference statistics',
 	'prefstats-desc' => 'Track statistics about how many users have certain preferences enabled',
+	'prefstats-title' => 'Preference statistics',
+	'prefstats-list-intro' => 'Currently, the following preferences are being tracked. Click on one to view statistics about it.',
+	'prefstats-list-elem' => '$1 = $2',
+	'prefstats-stat-line' => '$1 users have had the preference enabled for between $2 and $3 seconds', 
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
