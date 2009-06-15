@@ -494,9 +494,11 @@ mvPlayList.prototype = {
 		$j('#mv_time_'+this.id).html( value );
 	},
 	setSliderValue:function(value){
+		if(this.cur_clip.embed){
 		//js_log('calling original embed slider with val: '+value);
 		this.cur_clip.embed.pe_setSliderValue( value );
 		//call seq playline update here
+		}
 	},	
 	getPlayHeadPos: function(prec_done){
 		var	plObj = this;
@@ -1596,13 +1598,16 @@ var mvTransLib = {
 			
 		this['type'][tObj.type][tObj.subtype].u(tObj,percent);
 	},
+	getTransitionIcon:function( type, subtype){
+		return mv_embed_path +'/skins/'+mv_skin_name+'/transition_images/'+ type+'_'+ subtype+ '.png';
+	},
 	/*
 	 * mvTransLib: functional library mapping:
 	 */ 
 	type:{
 		//types:
 		fade:{
-			fadeFromColor:{
+			fadeFromColor:{				
 				'init':function(tObj){										
 					//js_log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
 					if(!tObj.fadeColor)
@@ -1644,6 +1649,138 @@ var mvTransLib = {
 		}							
 	}
 }
+
+/* object to manage embedding html with smil timings 
+ *  grabs settings from parent clip 
+ */
+var transitionObj = function(element) {		
+	this.init(element);
+};
+transitionObj.prototype = {	
+	supported_attributes : new Array(
+		'id',
+		'type',
+		'subtype',
+		'fadeColor',
+		'dur'
+	),
+	transAttrType:null, //transIn or transOut
+	overlay_selector_id:null,
+	pClip:null,
+	timerId:null,
+	animation_state:0, //can be 0=unset, 1=running, 2=done 
+	interValCount:0, //inter-intervalCount for animating between time updates
+	dur:2, //default duration of 2	
+	init:function(element){
+		//load supported attributes:	 
+		var _this = this;
+		$j.each(this.supported_attributes, function(i, attr){
+			if(element.getAttribute(attr))
+				_this[attr]= element.getAttribute(attr);
+		});				
+		//@@todo process duration (for now just strip s) per: 
+		//http://www.w3.org/TR/SMIL3/smil-timing.html#Timing-ClockValueSyntax
+		if(_this.dur)
+			_this.dur = smilParseTime(_this.dur);
+	},
+	/* 
+	 * returns a visual representation of the transition
+	 */
+	getIconSrc:function(opt){
+		//@@todo support some arguments 
+		return mvTransLib.getTransitionIcon(this.type, this.subtype);										
+	},
+	getDuration:function(){
+		return this.dur;
+	},
+	//returns the values of supported_attributes: 
+	getAttributeObj:function(){
+		var elmObj = {};
+		for(var i in this.supported_attributes){
+			var attr = this.supported_attributes[i];
+			if(this[attr])
+				elmObj[ attr ] = this[attr]; 
+		}		
+		return elmObj;
+	},
+	/*
+	 * the main animation loop called every MV_ANIMATION_CB_RATE or 34ms ~around 30frames per second~
+	 */
+	run_transition:function(){
+		//js_log('f:run_transition:' + this.interValCount);
+						 
+		//update the time from the video if native:   
+		if(typeof this.pClip.embed.vid !='undefined'){
+			this.interValCount=0;
+			this.pClip.embed.currentTime = this.pClip.embed.vid.currentTime;
+		}
+		
+		//}else{
+			//relay on currentTime update grabs (every 250ms or so) (ie for images)
+		//	if(this.prev_curtime!=this.pClip.embed.currentTime){	
+		//		this.prev_curtime =	this.pClip.embed.currentTime;
+		//		this.interValCount=0;
+		//	}
+		//}		
+		//start_time =asigned by doSmilActions
+		//base_cur_time = pClip.embed.currentTime;
+		//dur = asigned by attribute		
+		if(this.animation_state==0){
+			mvTransLib.doInitTransition(this);
+			this.animation_state=1;
+		}
+		//set percentage include difrence of currentTime to prev_curTime 
+		// ie updated in-between currentTime updates) 
+		
+		if(this.transAttrType=='transIn')
+			var percentage = ( this.pClip.embed.currentTime + 
+									( (this.interValCount*MV_ANIMATION_CB_RATE)/1000 )
+							) / this.dur ;
+				
+		if(this.transAttrType=='transOut')
+			var percentage = (this.pClip.embed.currentTime  + 
+									( (this.interValCount*MV_ANIMATION_CB_RATE)/1000 )
+									- (this.pClip.dur - this.dur)
+							) /this.dur ;			
+		
+		/*js_log('percentage = ct:'+this.pClip.embed.currentTime + ' + ic:'+this.interValCount +' * cb:'+MV_ANIMATION_CB_RATE +
+			  ' / ' + this.dur + ' = ' + percentage );
+		*/
+		
+		//js_log('cur percentage of transition: '+percentage);
+		//update state based on current time + cur_time_offset (for now just use pClip.embed.currentTime)
+		mvTransLib.doUpdate(this, percentage);
+		
+		if( percentage >= 1 ){
+			js_log("transition done update with percentage "+percentage);
+			this.animation_state=2;					
+			clearInterval(this.timerId);	
+			mvTransLib.doCloseTransition(this)
+			return true;
+		}
+						
+		this.interValCount++;
+		//setInterval in we are still in running state and user is not using the playhead 
+		if( this.animation_state==1 ){
+			if(!this.timerId){
+				this.timerId = setInterval('document.getElementById(\'' + this.pClip.pp.id + '\').'+ 
+							'run_transition(\'' + this.pClip.pp.cur_clip.order + '\','+
+								'\''+ this.transAttrType + '\')',
+						 MV_ANIMATION_CB_RATE);
+			}
+		}else{
+			clearInterval(this.timerId);
+		}
+		return true;
+	},
+	clone:function(){
+		var cObj = new this.constructor();
+		for(var i in this)
+			cObj[i]=this[i];				
+		return cObj;
+	}		
+}
+
 //very limited smile feature set more details soon:  
 //region="video_region" transIn="fromGreen" begin="2s"
 //http://www.w3.org/TR/2007/WD-SMIL3-20070713/smil-extended-media-object.html#edef-ref
@@ -1820,7 +1957,7 @@ mvSMILClip.prototype = {
 			}			
 		}					
 		return this;		
-	},
+	},	
 	//returns the values of supported_attributes: 
 	getAttributeObj:function(){
 		var elmObj = {};
@@ -1851,129 +1988,6 @@ mvSMILClip.prototype = {
 		js_log("getSoloDuration:: td: " + this.getDuration() + ' sd:' + fulldur);
 		return fulldur;
 	}
-}
-/* object to manage embedding html with smil timings 
- *  grabs settings from parent clip 
- */
-var transitionObj = function(element) {		
-	this.init(element);
-};
-transitionObj.prototype = {	
-	supported_attributes : new Array(
-		'id',
-		'type',
-		'subtype',
-		'fadeColor',
-		'dur'
-	),
-	transAttrType:null, //transIn or transOut
-	overlay_selector_id:null,
-	pClip:null,
-	timerId:null,
-	animation_state:0, //can be 0=unset, 1=running, 2=done 
-	interValCount:0, //inter-intervalCount for animating between time updates
-	dur:2, //default duration of 2	
-	init:function(element){
-		//load supported attributes:	 
-		var _this = this;
-		$j.each(this.supported_attributes, function(i, attr){
-			if(element.getAttribute(attr))
-				_this[attr]= element.getAttribute(attr);
-		});				
-		//@@todo process duration (for now just strip s) per: 
-		//http://www.w3.org/TR/SMIL3/smil-timing.html#Timing-ClockValueSyntax
-		if(_this.dur)
-			_this.dur = smilParseTime(_this.dur);
-	},
-	getDuration:function(){
-		return this.dur;
-	},
-	//returns the values of supported_attributes: 
-	getAttributeObj:function(){
-		var elmObj = {};
-		for(var i in this.supported_attributes){
-			var attr = this.supported_attributes[i];
-			if(this[attr])
-				elmObj[ attr ] = this[attr]; 
-		}		
-		return elmObj;
-	},
-	/*
-	 * the main animation loop called every MV_ANIMATION_CB_RATE or 34ms ~around 30frames per second~
-	 */
-	run_transition:function(){
-		//js_log('f:run_transition:' + this.interValCount);
-						 
-		//update the time from the video if native:   
-		if(typeof this.pClip.embed.vid !='undefined'){
-			this.interValCount=0;
-			this.pClip.embed.currentTime = this.pClip.embed.vid.currentTime;
-		}
-		
-		//}else{
-			//relay on currentTime update grabs (every 250ms or so) (ie for images)
-		//	if(this.prev_curtime!=this.pClip.embed.currentTime){	
-		//		this.prev_curtime =	this.pClip.embed.currentTime;
-		//		this.interValCount=0;
-		//	}
-		//}		
-		//start_time =asigned by doSmilActions
-		//base_cur_time = pClip.embed.currentTime;
-		//dur = asigned by attribute		
-		if(this.animation_state==0){
-			mvTransLib.doInitTransition(this);
-			this.animation_state=1;
-		}
-		//set percentage include difrence of currentTime to prev_curTime 
-		// ie updated in-between currentTime updates) 
-		
-		if(this.transAttrType=='transIn')
-			var percentage = ( this.pClip.embed.currentTime + 
-									( (this.interValCount*MV_ANIMATION_CB_RATE)/1000 )
-							) / this.dur ;
-				
-		if(this.transAttrType=='transOut')
-			var percentage = (this.pClip.embed.currentTime  + 
-									( (this.interValCount*MV_ANIMATION_CB_RATE)/1000 )
-									- (this.pClip.dur - this.dur)
-							) /this.dur ;			
-		
-		/*js_log('percentage = ct:'+this.pClip.embed.currentTime + ' + ic:'+this.interValCount +' * cb:'+MV_ANIMATION_CB_RATE +
-			  ' / ' + this.dur + ' = ' + percentage );
-		*/
-		
-		//js_log('cur percentage of transition: '+percentage);
-		//update state based on current time + cur_time_offset (for now just use pClip.embed.currentTime)
-		mvTransLib.doUpdate(this, percentage);
-		
-		if( percentage >= 1 ){
-			js_log("transition done update with percentage "+percentage);
-			this.animation_state=2;					
-			clearInterval(this.timerId);	
-			mvTransLib.doCloseTransition(this)
-			return true;
-		}
-						
-		this.interValCount++;
-		//setInterval in we are still in running state and user is not using the playhead 
-		if( this.animation_state==1 ){
-			if(!this.timerId){
-				this.timerId = setInterval('document.getElementById(\'' + this.pClip.pp.id + '\').'+ 
-							'run_transition(\'' + this.pClip.pp.cur_clip.order + '\','+
-								'\''+ this.transAttrType + '\')',
-						 MV_ANIMATION_CB_RATE);
-			}
-		}else{
-			clearInterval(this.timerId);
-		}
-		return true;
-	},
-	clone:function(){
-		var cObj = new this.constructor();
-		for(var i in this)
-			cObj[i]=this[i];				
-		return cObj;
-	}		
 }
 /*
  * takes an input 

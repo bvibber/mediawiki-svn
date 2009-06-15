@@ -30,7 +30,8 @@ var vlcEmbed = {
 	getEmbedObj:function(){
 		var embed_code = '<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" '+
 			'codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab#Version=0,8,6,0" '+
-			'id="' + this.pid + '" events="True" height="'+this.height+'" width="'+this.width+'">'+
+			'id="' + this.pid + '" events="True" height="'+this.height+'" width="'+this.width+'"' +
+			'>'+
 				'<param name="MRL" value="">'+
 				'<param name="ShowDisplay" value="True">'+
 				'<param name="AutoLoop" value="False">'+
@@ -38,7 +39,11 @@ var vlcEmbed = {
 				'<param name="Volume" value="50">'+
 				'<param name="StartTime" value="0">'+
 				'<embed pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" '+
-				'progid="VideoLAN.VLCPlugin.2" name="' + this.pid + '" height="'+this.height+'" width="'+this.width+'">'+
+					'progid="VideoLAN.VLCPlugin.2" name="' + this.pid + '" '+
+					'height="'+this.height+'" width="'+this.width+'" ' +
+					//set the style too 'just to be sure'
+					'style="width:'+this.width+'px;height:'+this.height+'px;" '+ 
+				'>'+
 			'</object>';
 		js_log('embed with: ' + embed_code);
 		return embed_code;		

@@ -30,7 +30,7 @@ seqRemoteSearchDriver.prototype = {
 			}
 		}
 		//extend parent_do_refresh_timeline actions:
-		/*if(!this.pSeq.parent_do_refresh_timeline){
+		if(!this.pSeq.parent_do_refresh_timeline){
 			this.pSeq.parent_do_refresh_timeline = this.pSeq.do_refresh_timeline;
 			this.pSeq.do_refresh_timeline = function(){
 				js_log("seqRs refresh chain::" + _this.pSeq.disp_menu_item);
@@ -41,7 +41,7 @@ seqRemoteSearchDriver.prototype = {
 					_this.addResultBindings();
 				}
 			}
-		}*/
+		}
 	},	
 	resourceEdit:function(){
 		var _this = this;	

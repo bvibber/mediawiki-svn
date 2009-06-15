@@ -175,7 +175,7 @@ mvEmbed = {
 								mvEmbed.swapEmbedVideoElement( pl_element, seqObj );																					
 							}
 						); 
-					}else{					
+					}else{
 						//create new playlist interface:
 						var plObj = new mvPlayList( this );		
 						mvEmbed.swapEmbedVideoElement(this, plObj);
@@ -276,7 +276,7 @@ var ctrlBuilder = {
 		  'borders':true			   
 	},
 	getControls:function( embedObj ){	
-		js_log('f:controlsBuilder');		
+		js_log('f:controlsBuilder:: opt:' + this.options);		
 		this.id = (embedObj.pc)?embedObj.pc.pp.id:embedObj.id;
 		this.avaliable_width=embedObj.playerPixelWidth();
 		//make pointer to the embedObj
@@ -309,7 +309,7 @@ var ctrlBuilder = {
 					js_log('not enough space for control component:'+i);
 				}
 			}
-		}
+		}		
 		return o;
 	},
 	 /*

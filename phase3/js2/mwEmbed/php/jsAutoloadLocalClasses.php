@@ -53,9 +53,7 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 	//libAddMedia:
 	$wgJSAutoloadLocalClasses['mvFirefogg'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvFirefogg.js';
 	$wgJSAutoloadLocalClasses['mvAdvFirefogg'] 		= $wgMwEmbedDirectory . 'libAddMedia/mvAdvFirefogg.js';
-
     $wgJSAutoloadLocalClasses['mvBaseUploadInterface'] = $wgMwEmbedDirectory . 'libAddMedia/mvBaseUploadInterface.js';
-
 	$wgJSAutoloadLocalClasses['remoteSearchDriver'] = $wgMwEmbedDirectory . 'libAddMedia/remoteSearchDriver.js';
 	$wgJSAutoloadLocalClasses['seqRemoteSearchDriver'] = $wgMwEmbedDirectory . 'libAddMedia/seqRemoteSearchDriver.js';
 	$wgJSAutoloadLocalClasses['baseRemoteSearch'] 	= $wgMwEmbedDirectory . 'libAddMedia/searchLibs/baseRemoteSearch.js';
@@ -80,7 +78,8 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 	//libSequencer:
 	$wgJSAutoloadLocalClasses['mvPlayList'] 		= $wgMwEmbedDirectory . 'libSequencer/mvPlayList.js';
 	$wgJSAutoloadLocalClasses['mvSequencer']		= $wgMwEmbedDirectory . 'libSequencer/mvSequencer.js';
+	$wgJSAutoloadLocalClasses['mvSequencer']		= $wgMwEmbedDirectory . 'libSequencer/mvSequencer.js';
 
 	//libTimedText:
-	$wgJSAutoloadLocalClasses['mvTextInterface']	= $wgMwEmbedDirectory . 'libTimedText/mvTextInterface.js';
+	$wgJSAutoloadLocalClasses['mvTimedEffectsEdit']	= $wgMwEmbedDirectory . 'libTimedText/mvTimedEffectsEdit.js';
 ?>

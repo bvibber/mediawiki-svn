@@ -211,7 +211,8 @@ lcPaths( 'libEmbedVideo/', [
 //libSequencer:	
 lcPaths( 'libSequencer/', [
 	'mvPlayList',
-	'mvSequencer'
+	'mvSequencer',
+	'mvTimedEffectsEdit'
 ])
 //libTimedText:
 lcPaths( 'libTimedText/', [

@@ -133,6 +133,9 @@
 .mv_selected_clip{
 	border:solid #9F9; 	
 }
+.mv_selected_transition{
+	border:solid #9F9;
+}
 .mv_adj_text{
 	font-weight: strong;
 	font-size:small;

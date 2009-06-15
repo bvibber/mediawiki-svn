@@ -16,11 +16,10 @@ loadGM( {
 	"mv_cancel_image_insert": "Cancel Insert",
 	
 	"sc_fileopts":"Clip Detail Edit",
-	"sc_inoutpoints":"Set In-Out points",
-	"sc_panzoom":"Pan Zoom Crop",
+	"sc_inoutpoints":"Set In-Out points",	
 	"sc_overlays":"Overlays",
 	"sc_audio":"Audio Control",
-	"sc_duration":"Duration",
+	"sc_duration":"Duration",		
 		
 	"mv_template_properties":"Template Properties",
 	"mv_custom_title":"Custom Title",
@@ -47,8 +46,7 @@ var default_clipedit_values = {
 	'controlActionsCb' : null, //the object that configures control Action callbacks
 	
 	'edit_action': null, //the requested edit action
-	'profile': 'inpage' //the given profile either "inpage" or "sequence"
-						//timeline invokes the timeline editor (letting you set keyframes)
+	'profile': 'inpage' //the given profile either "inpage" or "sequence"						
 }
 var mvClipEdit = function(iObj) {		
 	return this.init(iObj);
@@ -90,7 +88,7 @@ mvClipEdit.prototype = {
 				this.setUpImageCtrl();
 			}else if(this.media_type=='video'){
 				this.setUpVideoCtrl();
-			}		
+			}
 		}
 	},
 	
@@ -273,13 +271,6 @@ mvClipEdit.prototype = {
 				}
 			}		
 		},
-		'panzoom':{			
-			'media':['image','video'],
-			'doEdit':function(target, _this ){
-				//do clock mouse scroll duration editor
-				$j(target).html('<h3>Set Position</h3><h3>Set Zoom</h3><h3>Set Crop</h3><h3>Set Aspect</h3>');
-			}	
-		},				
 		'overlays':{			
 			'media':['image','video'],
 			'doEdit':function(target, _this ){
