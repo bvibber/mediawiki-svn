@@ -1,0 +1,8 @@
+<?PHP
+
+require_once("$IP/extensions/UsabilityInitiative/UsabilityInitiative.php");
+require_once("$IP/extensions/UsabilityInitiative/EditWarning/EditWarning.php");
+require_once("$IP/extensions/UsabilityInitiative/EditToolbar/EditToolbar.php");
+require_once("$IP/extensions/UsabilityInitiative/PrefStats/PrefStats.php");
+
+?>

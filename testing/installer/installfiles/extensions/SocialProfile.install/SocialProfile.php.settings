@@ -1,0 +1,35 @@
+<?PHP
+
+require_once("$IP/extensions/SocialProfile/SocialProfile.php");
+$wgExtraNamespaces[NS_USER_PROFILE] = 'User_profile';
+$wgExtraNamespaces[NS_USER_WIKI] = 'UserWiki';
+
+$wgUserProfileDisplay['friends'] = true;
+$wgUserProfileDisplay['foes'] = true;
+
+$wgUserBoard = true;
+$wgUserProfileDisplay['board'] = true;
+
+$wgUserProfileDisplay['stats'] = true;
+
+$wgUserStatsPointValues['edit'] = 50; // Points awarded on a main namespace edit
+$wgUserStatsPointValues['vote'] = 0; // Points awarded for voting for an article
+$wgUserStatsPointValues['comment'] = 0; // Points awarded for leaving a comment
+$wgUserStatsPointValues['comment_plus'] = 0; // Points awarded if your comment gets a thumbs up 
+$wgUserStatsPointValues['comment_ignored'] = 0; // Points awarded if another user ignores your comments
+$wgUserStatsPointValues['opinions_created'] = 0; // Points awarded for writing a blog article
+$wgUserStatsPointValues['opinions_pub'] = 0; // Points awarded for having that article hit the "Blogs" page
+$wgUserStatsPointValues['referral_complete'] = 0; // Points awarded for recruiting a new user
+$wgUserStatsPointValues['friend'] = 0; // Points awarded for adding a friend
+$wgUserStatsPointValues['foe'] = 0; // Points awarded for adding a foe
+$wgUserStatsPointValues['gift_rec'] = 0; // Points awarded for receiving a gift
+$wgUserStatsPointValues['gift_sent'] = 0; // Points awarded for giving a gift
+$wgUserStatsPointValues['points_winner_weekly'] = 0; // Points awarded for having the most points for a week 
+$wgUserStatsPointValues['points_winner_monthly'] = 0; // Points awarded for having the most points for a month 
+$wgUserStatsPointValues['user_image'] = 1000; // Points awareded for adding your first avatar 
+$wgUserStatsPointValues['poll_vote'] = 0; // Points awarded for taking a poll
+$wgUserStatsPointValues['quiz_points'] = 0; // Points awarded for answering a quiz question 
+$wgUserStatsPointValues['quiz_created'] = 0; // Points awarded for creating a quiz question 
+$wgNamespacesForEditPoints = array(0); // Array of namespaces for that can earn you points. Use numerical keys. Default is 0 -- only main namespace edits can earn a user points.
+
+?>
