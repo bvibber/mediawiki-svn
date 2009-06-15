@@ -253,9 +253,11 @@
 										'width': '100%'
 									} )
 									.appendTo( pageDiv );
+								var headingRow = $( '<tr />' )
+									.appendTo( contentTable );
 								// Appends headings to table
 								for ( heading in section.pages[page].headings ) {
-									contentTable.append(
+									headingRow.append(
 										$( '<th />' )
 											.text( msg( section.pages[page].headings[heading], 'content' ) )
 									);
