@@ -115,7 +115,7 @@ class LuceneSearch extends SearchEngine {
 				$rewritten .= $part;				
 			} else{
 				# replace namespaces
-				$r = preg_replace_callback('/(^|[ :])('.$regexp.'):/i',array($this,'replaceNamespace'),$part);
+				$r = preg_replace_callback('/(^|[| :])('.$regexp.'):/i',array($this,'replaceNamespace'),$part);
 				# replace to backend all: notation
 				$rewritten .= str_replace($allkeyword.':', 'all:', $r);
 			}
