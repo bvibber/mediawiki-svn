@@ -618,7 +618,7 @@ public class SearchEngine {
 		udpLogger.log(iid.getDBname(), searchterm);
 		
 		// check if request is explicitely on one field
-		if(searchAllFromRequest){
+		if(searchAllFromRequest && !(fields.size()==1 && !fields.contains(nsDefault))){
 			nsfw.setNamespaceFilter(new NamespaceFilter());  
 			searchAll = true;
 		// if search is over one field, try to use filters
@@ -639,11 +639,14 @@ public class SearchEngine {
 		}
 		
 		parser.extractPrefixFilter(searchterm);
-		if(parser.hasPrefixFilter()){
+		if(parser.hasPrefixFilters()){
 			// set additional prefix filter, and tune namespace filter to search only the specified namespace
-			String key = parser.getPrefixFilter().toLowerCase();
-			nsfw.addFilter(new PrefixFilter(key));
-			nsfw.setNamespaceFilter(new NamespaceFilter(key.substring(0,key.indexOf(':'))));
+			String[] filters = parser.getPrefixFilters();
+			nsfw.addFilter(new PrefixFilter(filters));
+			NamespaceFilter union = new NamespaceFilter();
+			for(String key : filters)
+				union.set(Integer.parseInt(key.substring(0,key.indexOf(':'))));
+			nsfw.setNamespaceFilter(union);
 		}
 		
 		// if we are searching over image or image_search include commons wiki into multi searcher
@@ -839,7 +842,7 @@ public class SearchEngine {
 			return;
 		if(offset != 0)
 			return; // do titles search only for first page of normal-search results
-		if(parser.hasPrefixFilter())
+		if(parser.hasPrefixFilters())
 			return; // TODO: implement, currently we don't do interwiki prefix queries
 		try{
 			IndexId titles = iid.getTitlesIndex();

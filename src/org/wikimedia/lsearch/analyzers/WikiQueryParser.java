@@ -71,7 +71,7 @@ public class WikiQueryParser {
 	private TokenStream tokenStream; 
 	private ArrayList<Token> tokens; // tokens from analysis
 	protected ParsedWords parsedWords;
-	protected String prefixFilter;
+	protected String[] prefixFilters;
 	protected enum ExpandedType { WORD, WILDCARD, FUZZY, PHRASE };
 	protected Term[] highlightTerms = null;
 	
@@ -1224,18 +1224,29 @@ public class WikiQueryParser {
 	 * @return queryText with prefix part deleted
 	 */
 	public String extractPrefixFilter(String queryText){
-		prefixFilter = null;
+		this.prefixFilters = null;
+		ArrayList<String> filters = new ArrayList<String>(); 
 		int start = 0;
 		while(start < queryText.length()){
 			int end = indexOf(queryText,'"',start); // begin of phrase
 			int inx = queryText.indexOf("prefix:"); 
 			if(inx >=0 && inx < end){
-				prefixFilter = queryText.substring(inx+"prefix:".length());
-				if(prefixFilter.startsWith("[") && prefixFilter.contains("]:")){
-					// convert from [2]:query to 2:query form
-					prefixFilter = prefixFilter.replace("[","").replace("]:",":");
-				} else // default to main namespace
-					prefixFilter = "0:"+prefixFilter; 
+				String[] prefixes = queryText.substring(inx+"prefix:".length()).split("\\|");
+
+				for(String prefix : prefixes){
+					String full = null;
+					if(prefix.startsWith("[") && prefix.contains("]:")){
+						// convert from [2]:query to 2:query form
+						full = prefix.replace("[","").replace("]:",":");
+					} else // default to main namespace
+						full = "0:"+prefix ;
+					
+					// add lowercase nonempty prefixes
+					if(full != null && full.length()>0)
+						filters.add(full.toLowerCase());
+						
+				}
+				this.prefixFilters = filters.toArray(new String[]{});
 				// return the actual query without prefix
 				return queryText.substring(0,inx);
 			}
@@ -1245,6 +1256,7 @@ public class WikiQueryParser {
 				start = indexOf(queryText,'"',start) + 1;
 			}
 		}
+		
 		return queryText;
 	}
 	
@@ -1291,7 +1303,7 @@ public class WikiQueryParser {
 	 */
 	public Query parseRaw(String queryText){
 		queryText = extractPrefixFilter(queryText);
-		if(queryText.trim().length()==0 && hasPrefixFilter())
+		if(queryText.trim().length()==0 && hasPrefixFilters())
 			return new MatchAllTitlesQuery(fields.title());
 		queryLength = queryText.length(); 
 		text = queryText.toCharArray();
@@ -2001,13 +2013,13 @@ public class WikiQueryParser {
 		return cleanupWords(parsedWords.extractFirst());
 	}
 	
-	public boolean hasPrefixFilter(){
-		return prefixFilter != null && prefixFilter.length()>0;
+	public boolean hasPrefixFilters(){
+		return prefixFilters != null && prefixFilters.length>0;
 	}
 	
 	/** Gets the raw prefix text, e.g. project:npov */
-	public String getPrefixFilter(){
-		return prefixFilter;
+	public String[] getPrefixFilters(){
+		return prefixFilters;
 	}
 
 	/** Get urls that have been extracted from last query */

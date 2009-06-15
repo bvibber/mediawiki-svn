@@ -81,7 +81,11 @@ public class WikiQueryParserTest extends WikiTestCase {
 			
 			q = parser.parseRaw("something prefix:[2]:Rainman/Archive");
 			assertEquals("contents:something",q.toString());
-			assertEquals("2:Rainman/Archive",parser.getPrefixFilter());
+			assertEquals("[2:rainman/archive]",Arrays.toString(parser.getPrefixFilters()));
+			
+			q = parser.parseRaw("something prefix:[2]:Rainman/Archive|Names|[4]:Help");
+			assertEquals("contents:something",q.toString());
+			assertEquals("[2:rainman/archive, 0:names, 4:help]",Arrays.toString(parser.getPrefixFilters()));
 			
 			q = parser.parseRaw("query incategory:Some_category_name");
 			assertEquals("+contents:query +category:some category name",q.toString());
