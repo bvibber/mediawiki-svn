@@ -24,7 +24,7 @@ set_include_path( implode( PATH_SEPARATOR, $path ) . PATH_SEPARATOR . get_includ
 require_once( "$IP/includes/DefaultSettings.php" );
 
 # If PHP's memory limit is very low, some operations may fail.
-# ini_set( 'memory_limit', '20M' );
+ini_set( 'memory_limit', '100M' );
 
 if ( $wgCommandLineMode ) {
 	if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
@@ -129,7 +129,7 @@ $wgLogo="$wgScriptPath/Logo.png";
 
 # load Localsettings specific to particular modules
 
-$additional_settings=glob("$IP/LocalSettings/*.php");
+$additional_settings=glob("$IP/LocalSettings/*.php.settings");
 if ($additional_settings) {
 	foreach ($additional_settings as $file) {
 		require_once($file);

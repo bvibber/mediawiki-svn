@@ -27,7 +27,7 @@ class Scripted_Installer(Extension_Installer):
 		dirlist=os.listdir(installdir)
 		for filename in dirlist:
 			filepath=os.path.join(installdir,filename)
-			if filename.endswith('.settings.php') and os.access(filepath, os.R_OK):
+			if filename.endswith('.php.settings') and os.access(filepath, os.R_OK):
  				shutil.copy(filepath,settingsdir)
 
 	def uninstall_settings(self,installer_name):
@@ -37,7 +37,7 @@ class Scripted_Installer(Extension_Installer):
 		#compare which files were originally installed, then remove those
 		for filename in dirlist:
 			filepath=os.path.join(installdir,filename)
-			if filename.endswith('.settings.php') and os.access(filepath, os.R_OK):
+			if filename.endswith('.php.settings') and os.access(filepath, os.R_OK):
 				destpath=os.path.join(settingsdir,filename)
 				if os.access(destpath, os.R_OK):
 					os.unlink(destpath)

@@ -68,7 +68,7 @@ class Download_Installer(Extension_Installer):
 	
 	def _settings_filepath(self, installer_name):
 		settingsdir=os.path.join(self.destination_dir,"../LocalSettings")
-		filename=installer_name+".settings.php"
+		filename=installer_name+".php.settings"
 		filepath=os.path.join(settingsdir,filename)
 		return filepath
 
