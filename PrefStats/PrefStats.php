@@ -25,6 +25,10 @@ $wgPrefStatsEnable = true;
 // Tracking multiple values of the same preference is not possible
 $wgPrefStatsTrackPrefs = array();
 
+$wgPrefStatsChartDimensions = '1000x300';
+
+$wgPrefStatsTimeUnit = 60*60; // one hour
+
 /* Setup */
 
 // Credits
@@ -40,10 +44,16 @@ $wgExtensionCredits['other'][] = array(
 // Adds Autoload Classes
 $wgAutoloadClasses['PrefStatsHooks'] =
 	dirname( __FILE__ ) . '/PrefStats.hooks.php';
+$wgAutoloadClasses['SpecialPrefStats'] =
+	dirname( __FILE__ ). '/SpecialPrefStats.php';
+
+$wgSpecialPages['PrefStats'] = 'SpecialPrefStats';
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['PrefStats'] =
 	dirname( __FILE__ ) . '/PrefStats.i18n.php';
+$wgExtensionAliasesFiles['PrefStats'] =
+	dirname( __FILE__ ). '/PrefStats.alias.php';
 
 // Registers Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'PrefStatsHooks::schema';
