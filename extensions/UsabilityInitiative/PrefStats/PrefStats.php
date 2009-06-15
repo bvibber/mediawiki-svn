@@ -27,7 +27,7 @@ $wgPrefStatsTrackPrefs = array();
 
 $wgPrefStatsChartDimensions = '1000x300';
 
-$wgPrefStatsTimeUnit = 60*60; // one hour
+$wgPrefStatsTimeUnit = 60*60*24; // one day
 
 /* Setup */
 
