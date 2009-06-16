@@ -409,10 +409,10 @@ class WWUtils {
 	$sql = "/* queryImagesInCategory(" . $this->quote($lang) . ", " . $this->quote($title) . ") */ ";
 
 	$sql .= " SELECT P.page_title as name FROM $page_table as P ";
-	$sql .= " JOIN $categorylinks_table as C on C.from = P.page_id ";
+	$sql .= " JOIN $categorylinks_table as C on C.cl_from = P.page_id ";
 
 	$sql .= " WHERE C.cl_to = " . $this->quote($title);
-	$sql .= " AND P.pange_namespace = " . NS_IMAGE;
+	$sql .= " AND P.page_namespace = " . NS_IMAGE;
 
 	return $this->queryWiki($lang, $sql);
     }
@@ -465,8 +465,8 @@ class WWUtils {
 	    $images->addImages($img, "commons:category:" . $title, "category", 0.5);
 
 	    if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural) {
-		$img = $this->getImagesInCategory("commons", $title+"s"); //FIXME: resource mapping
-		$images->addImages($img, "commons:category:" . $title+"s", "category(pl)", 0.5);
+		$img = $this->getImagesInCategory("commons", $title."s"); //FIXME: resource mapping
+		$images->addImages($img, "commons:category:" . $title."s", "category(pl)", 0.5);
 	    }
 	}
 
