@@ -418,7 +418,7 @@ class WWUtils {
     }
 
     function getImagesInCategory($lang, $title) {
-	$rs = $this->queryImagesOnPage($lang, $title);
+	$rs = $this->queryImagesInCategory($lang, $title);
 	$list = WWUtils::slurpList($rs, "name");
 	mysql_free_result($rs);
 	return $list;
