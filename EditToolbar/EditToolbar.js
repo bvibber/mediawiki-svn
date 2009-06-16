@@ -412,8 +412,8 @@
  * This initializes an edit toolbar on div#edittoolbar and connects it to
  * textarea#wpTextbox1 - which needs to be done after the document is loaded.
  */
-$( document ).ready( function() {
-	$( 'div#edittoolbar' ).toolbar( $( 'textarea#wpTextbox1' ), editToolbarConfiguration );
+jQuery( document ).ready( function() {
+	jQuery( 'div#edittoolbar' ).toolbar( $( 'textarea#wpTextbox1' ), editToolbarConfiguration );
 });
 /**
  * This enormous structure is what makes the toolbar what it is. Customization
