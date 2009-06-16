@@ -26,7 +26,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Poll',
-	'version'        => '1.0(r51982)',
+	'version'        => '1.0',
 	'path'           => __FILE__,
 	'author'         => 'Jan Luca',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Poll2',
