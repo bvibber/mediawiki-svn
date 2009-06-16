@@ -544,14 +544,14 @@ mvClipEdit.prototype = {
 				js_log('click:turn on');
 				_this.enableCrop();
 			}
-		}); 
-		$j('.mv_rest_crop').click(function(){
+		}); 		
+		$j('.mv_rest_crop').click(function(){	
 			$j('.mv_apply_crop,.mv_rest_crop').hide();
 			$j('.mv_crop_msg').show();
 			$j('#mv_crop_button').removeClass('mv_crop_button_selected').addClass('mv_crop_button_base').attr('title',gM('mv_crop'));
 			_this.rObj.crop=null;
 			$j('#' + _this.clip_disp_ct ).empty().html(
-				'<img src="' + _this.rObj.url + '" id="rsd_edit_img">'
+				'<img src="' + _this.rObj.edit_url + '" id="rsd_edit_img">'
 			);
 		});				
 	},
@@ -577,7 +577,8 @@ mvClipEdit.prototype = {
 		$j('.mv_crop_msg').show();
 		$j('#mv_crop_button').removeClass('mv_crop_button_selected').addClass('mv_crop_button_base').attr('title',gM('mv_crop'));
 		js_log( 'click:turn off' );
-		if(_this.rObj.crop){
+		var cat = _this.rObj;		
+		if(_this.rObj.crop){			
 			//empty out and display croped:
 			$j('#'+_this.clip_disp_ct ).empty().html(
 				'<div id="mv_cropcotainer" style="overflow:hidden;position:absolute;'+
@@ -586,10 +587,10 @@ mvClipEdit.prototype = {
 					'<div id="mv_crop_img" style="position:absolute;'+
 						'top:-' + _this.rObj.crop.y +'px;'+
 						'left:-' + _this.rObj.crop.x + 'px;">'+
-						'<img src="' + _this.rObj.src + '">'+
+						'<img src="' + _this.rObj.edit_url  + '">'+
 					'</div>'+
 				'</div>'						
-			);
+			);			
 		}
 		return true;
 	},
@@ -600,20 +601,19 @@ mvClipEdit.prototype = {
 		$j('.mv_crop_msg').hide();
 		$j('.mv_crop_msg_load').show();
 		var doEnableCrop = function(){	
-			$j('.mv_crop_msg_load').hide();
-			$j('.mv_rest_crop,.mv_apply_crop').show();				
-			$j('#mv_crop_button').removeClass('mv_crop_button_base').addClass('mv_crop_button_selected').attr('title',gM('mv_crop_done'));				
-			$j('#' + _this.clip_disp_ct + ' img').Jcrop({
-					 onSelect: function(c){
-						 js_log('on select:' + c.x +','+ c.y+','+ c.x2+','+ c.y2+','+ c.w+','+ c.h);
-						 _this.rObj.crop = c;
-					 },
-					  onChange: function(c){							
-					  }						
-			});
+		$j('.mv_crop_msg_load').hide();
+		$j('.mv_rest_crop,.mv_apply_crop').show();				
+		$j('#mv_crop_button').removeClass('mv_crop_button_base').addClass('mv_crop_button_selected').attr('title',gM('mv_crop_done'));				
+		$j('#' + _this.clip_disp_ct + ' img').Jcrop({
+			 onSelect: function(c){
+				 js_log('on select:' + c.x +','+ c.y+','+ c.x2+','+ c.y2+','+ c.w+','+ c.h);
+				 _this.rObj.crop = c;
+			 },
+			 onChange: function(c){							
+			 }						
+		});
 		}		
-		if(typeof $j.Jcrop == 'undefined'){
-			loadExternalCss( mv_embed_path + 'jquery/plugins/Jcrop/css/jquery.Jcrop.css');
+		if(typeof $j.Jcrop == 'undefined'){			
 			//load the jcrop library if needed:
 			mvJsLoader.doLoad([
 				'$j.Jcrop'

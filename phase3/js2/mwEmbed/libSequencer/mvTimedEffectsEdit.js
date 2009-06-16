@@ -7,9 +7,12 @@
 
 //add our local msgs
 loadGM({ 
-	"transition_in"  : "Transition In",
-	"transition_out" : "Transition Out",
-	"effects"		 : "Effects Stack"
+	"transition_in"  	: "Transition In",
+	"transition_out" 	: "Transition Out",
+	"effects"		 	: "Effects Stack",
+	"remove_transition"	: "Remove Transition",
+	"edit_transin"		: "Edit Transition Into Clip",
+	"edit_transout"		: "Edit Transition Out of Clip"
 });
 
 
@@ -53,15 +56,16 @@ mvTimedEffectsEdit.prototype = {
 		}
 	},
 	init:function(iObj){
-		//init object: 
-		for(var i in default_timed_effect_values){
+		//init object: 		
+		for(var i in default_timed_effect_values){			
 			if( iObj[i] ){   
 				this[i] = iObj[i];
 			}
-		}		
+		}				
 		this.doEditMenu();
 	},	
 	doEditMenu:function(){
+		js_log('mvTimedEffects : doEditMenu::');
 		var _this = this;
 		//add in subMenus if set
 		//check for submenu and add to item container
@@ -75,36 +79,40 @@ mvTimedEffectsEdit.prototype = {
 			
 		var o='';		
 		var tabc ='';					
-		o+= '<div id="mv_submenu_timedeffect" style="width:90%">';
+		o+= '<div id="mv_submenu_timedeffect">';
 		o+='<ul>';		  
 		var inx =0;		
-		$j.each(this.menu_items, function(sInx, mItem){					
+		var selected_tab=0;
+		$j.each(this.menu_items, function(sInx, mItem){				
+			if( sInx == tTarget){
+				selected_tab = inx;
+			}	
 			//check if the given editType is valid for our given media type		
 			o+=	'<li>'+ 
 					'<a id="mv_te_'+sInx+'" href="#te_' + sInx + '">' + mItem.title + '</a>'+
 				'</li>';															
-			tabc += '<div id="te_' + sInx + '" style="overflow:auto;" ></div>';																									
+			tabc += '<div id="te_' + sInx + '" style="overflow:auto;" ></div>';
+			inx++;																									
 		});
 		o+= '</ul>' + tabc;
 		o+= '</div>';
 		//add sub menu container with menu html: 			
 		$j('#'+this.control_ct).html( o ) ;		
-		js_log('should have set: #'+this.control_ct + ' to: ' + o);		
-		
-				
+		js_log('should have set: #'+this.control_ct + ' to: ' + o);								
 		//set up bindins:	 
 		$j('#mv_submenu_timedeffect').tabs({
-			selected: 0,
+			selected: selected_tab,
 			select: function(event, ui) {									
 				_this.doDisplayEdit( $j(ui.tab).attr('id').replace('mv_te_', '') );
 			}				
-		}).addClass('ui-tabs-vertical ui-helper-clearfix');
-		js_log('setup tabs #' + this.control_ct);
-		
+		}).addClass('ui-tabs-vertical ui-helper-clearfix');			
 		//close left: 
-		$j("#mv_submenu_clipedit li").removeClass('ui-corner-top').addClass('ui-corner-left');								
+		$j("#mv_submenu_clipedit li").removeClass('ui-corner-top').addClass('ui-corner-left');
+		_this.doDisplayEdit(tTarget);												
 	},
-	doDisplayEdit:function( tab_id ){		
+	doDisplayEdit:function( tab_id ){
+		//@@todo fix the double display of doDisplayEdit		
+		js_log("doDisplayEdit::");
 		if( !this.menu_items[ tab_id ] ){
 			js_log('error: doDisplayEdit missing item:' + tab_id);  	
 		}else{
@@ -113,41 +121,109 @@ mvTimedEffectsEdit.prototype = {
 		}					
 	},
 	doTransitionDisplayEdit:function(target_item){
-		var apendTarget = 'te_' + target_item;
-		//check if we have a transition
+		var _this = this;
+		js_log("doTransitionDisplayEdit: "+ target_item);
+		var apendTarget = '#te_' + target_item;
+		//check if we have a transition of type clip_attr
 		if(!this.rObj[ this.menu_items[ target_item ].clip_attr ]){
-			this.getTransitionList( apendTarget );
+			//empty append the transition list:
+			this.getTransitionListControl( apendTarget );
 			return ;
 		}
-		cTran = this.rObj[ this.menu_items[ target_item ].clip_attr ];
-		var o='<h3>Edit Transition</h3>';
+		var cTran = this.rObj[ this.menu_items[ target_item ].clip_attr ];
+		var o='<h3>' + gM('edit_'+target_item ) + '</h3>';
 		o+='Type: ' +
 			'<select class="te_select_type">';
 		for(var typeKey in mvTransLib.type){			
 			var selAttr = (cTran.type == typeKey)?' selected':'';
 			o+='<option	value="'+typeKey+'"'+ selAttr +'>'+typeKey+'</option>';
-		}	
-		o+='</select>';
-		o+='<span class="te_select_subtype">Sub Type:'+
-		   '<select class="te_select_subtype">';
-		for(var subTypeKey in mvTransLib.type[ cTran.type ]){
-			var selAttr = (cTran.subtype == typeKey)?' selected':'';
-			o+='<option	value="'+subTypeKey+'"'+ selAttr +'>'+typeKey+'</option>';
 		}
-		o+='</select>'+		
-		   '</span>';
-		js_log("update: " + apendTarget);
-		//set up bidings: 
-		$j(apendTarget).append(o).children('.te_select_type')
+		o+='</select><br>';		
+		o+='<span class="te_subtype_container"></span>';		  				  				
+		
+		//add html and select bindings
+		$j(apendTarget).html(o).children('.te_select_type')
 			.change(function(){
-				//update subtype listing: 
-				var o = '';			
-				$j(apendTarget + ' .te_select_subtype').html();
+				var selectedType = $j(this).val();
+				//update subtype listing: 										
+				_this.getSubTypeControl(target_item, selectedType, apendTarget + ' .te_subtype_container' );
 			});
-		$j('te_' + target_item).html(o);
+		//add subtype control
+		_this.getSubTypeControl( target_item, cTran.type, apendTarget + ' .te_subtype_container' );
+		
+		//add remove transition button:
+		$j(apendTarget).append( '<br><br>' + $j.btnHtml(gM('remove_transition'), 'te_remove_transition', 'close'  ) )
+			.children('.te_remove_transition')
+			.click(function(){								
+				//remove the transtion from the playlist
+				_this.p_seqObj.plObj.transitions[cTran.id] = null;
+				//remove the transtion from the clip:
+				_this.rObj[ _this.menu_items[ target_item ].clip_attr ] = null;				
+				//update the interface: 
+				_this.doTransitionDisplayEdit( target_item );
+				//update the sequence
+			});		
+	},	
+	getSubTypeControl:function(target_item, transition_type, htmlTarget){
+		var _this = this;						
+		var cTran = this.rObj[ this.menu_items[ target_item ].clip_attr ];	
+		var o='Sub Type:<select class="te_subtype_select">';
+		for(var subTypeKey in mvTransLib.type[ transition_type ]){
+			var selAttr = (cTran.subtype == subTypeKey) ? ' selected' : '';
+			o+='<option	value="'+subTypeKey+'"'+ selAttr +'>'+subTypeKey+'</option>';
+		}
+		o+='</select><br>';
+		$j(htmlTarget).html(o)
+			.children('.te_subtype_select')
+			.change(function(){
+				//update the property
+				cTran.subtype = $j(this).val(); 
+				//re-gen timeline / playlist
+				_this.p_seqObj.do_refresh_timeline();
+				//(re-select self?) 
+				_this.getSubTypeControl(target_item, transition_type, htmlTarget);
+		});	
+		var o='';
+		//check for extra properties control: 
+		for(var i=0; i < mvTransLib.type[ transition_type ][ cTran.subtype ].attr.length; i++){
+			var tAttr =mvTransLib.type[ transition_type ][ cTran.subtype ].attr[i]
+			switch(tAttr){
+				case 'fadeColor':
+					var cColor = (cTran['fadeColor'])?cTran['fadeColor']:'';
+					$j(htmlTarget).append('Select Color: <div class="colorSelector"><div class="colorIndicator" style="background-color: '+cColor+'"></div></div>');			
+					js_log('cs target: '+htmlTarget +' .colorSelector' );
+				
+				
+					$j(htmlTarget + ' .colorSelector').ColorPicker({						
+						color: cColor,
+						onShow: function (colpkr) {
+							//make sure its ontop:
+							$j(colpkr).css("zIndex", "12"); 							
+							$j(colpkr).fadeIn(500);
+							return false;
+						},
+						onHide: function (colpkr) {
+							$j(colpkr).fadeOut(500);
+							//for some strange reason ColorPicker loses context: 							
+							_this.p_seqObj.plObj.setCurrentTime(0, function(){
+								js_log("render ready");
+							});	
+							return false;
+						},
+						onChange: function (hsb, hex, rgb) {
+							$j(htmlTarget + ' .colorIndicator').css('backgroundColor', '#' + hex);
+							//update the transition 
+							cTran['fadeColor'] =  '#' + hex;																											
+						}
+					})
+				break;
+			}
+		}
+		//and finally add effect timeline scrubber (for timed effects this also stores keyframes)
+				
 	},
-	getTransitionList:function(target_out){
-		js_log("getTransitionList");
+	getTransitionListControl:function(target_out){
+		js_log("getTransitionListControl");
 		var o= '';
 		for(var type in mvTransLib['type']){
 			js_log('on tran type: ' + i);			

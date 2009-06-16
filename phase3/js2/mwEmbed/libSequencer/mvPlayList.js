@@ -802,10 +802,10 @@ mvPlayList.prototype = {
 				clipTime = pos - currentOffset;
 				if (plObj.cur_clip.id != clip.id) {
 					plObj.updateCurrentClip( clip );
-				}
+				}								
 				plObj.cur_clip.embed.setCurrentTime(clipTime, callback);
 				plObj.currentTime = pos;
-				plObj.doSmilActions();
+				plObj.doSmilActions();				
 				return '';
 			}
 			currentOffset += nextTime;
@@ -1607,7 +1607,8 @@ var mvTransLib = {
 	type:{
 		//types:
 		fade:{
-			fadeFromColor:{				
+			fadeFromColor:{	
+				'attr':['fadeColor'],			
 				'init':function(tObj){										
 					//js_log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
 					if(!tObj.fadeColor)
@@ -1632,6 +1633,7 @@ var mvTransLib = {
 			},
 			//corssFade
 			crossfade:{
+				"attr":[],
 				"init":function(tObj){
 					js_log('f:crossfade: '+tObj.overlay_selector_id);
 					if($j('#'+tObj.overlay_selector_id).length==0)

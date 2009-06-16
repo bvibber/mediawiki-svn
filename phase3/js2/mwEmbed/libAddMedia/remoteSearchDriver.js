@@ -1089,10 +1089,6 @@ remoteSearchDriver.prototype = {
 		
 		var clibs = ['mvClipEdit'];
 		if( mediaType == 'image'){
-			//load the crop library:
-			//loadLibs['$j.Jcrop']='jquery/plugins/Jcrop/js/jquery.Jcrop.js';
-			//@@todo integrate css calls into mvJsLoader or move jcrop css
-			//loadExternalCss( mv_embed_path + 'jquery/plugins/Jcrop/css/jquery.Jcrop.css');
 			//display the mvClipEdit obj once we are done loading:
 			mvJsLoader.doLoad( clibs, function(){			
 				//run the image clip tools

@@ -18,9 +18,14 @@ global $wgJSAutoloadLocalClasses, $wgMwEmbedDirectory;
 
 	$wgJSAutoloadLocalClasses['j.fn.autocomplete']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.autocomplete.js';
 	$wgJSAutoloadLocalClasses['j.fn.hoverIntent']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.hoverIntent.js';
-	$wgJSAutoloadLocalClasses['j.Jcrop'] 			= $wgMwEmbedDirectory . 'jquery/plugins/Jcrop/js/jquery.Jcrop.js';
 	$wgJSAutoloadLocalClasses['Date.fromString']  	= $wgMwEmbedDirectory . 'jquery/plugins/date.js';
 	$wgJSAutoloadLocalClasses['j.fn.datePicker']	= $wgMwEmbedDirectory . 'jquery/plugins/jquery.datePicker.js';
+
+	//jcrop
+	$wgJSAutoloadLocalClasses['j.Jcrop'] 			= $wgMwEmbedDirectory . 'libClipEdit/Jcrop/js/jquery.Jcrop.js';
+
+    //color picker
+	$wgJSAutoloadLocalClasses['j.fn.ColorPicker']	= $wgMwEmbedDirectory . 'libClipEdit/colorpicker/js/colorpicker.js';
 
 	//jquery.ui
 	$wgJSAutoloadLocalClasses['j.ui']				= $wgMwEmbedDirectory . 'jquery/jquery.ui-1.7.1/ui/ui.core.js';

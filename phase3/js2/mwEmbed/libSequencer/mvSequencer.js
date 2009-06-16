@@ -725,9 +725,10 @@ mvSequencer.prototype = {
 		this.doEditClip( cObj );
 	},
 	doEditTransitionSelectedClip:function(){
+		var _this = this;
 		js_log("f:doEditTransitionSelectedClip:" + $j('.mv_selected_clip').length);				
 		if( $j('.mv_selected_clip').length == 1){			
-			this.doEditTransition( this.getClipFromSeqID( $j('.mv_selected_clip').parent().attr('id') ) );
+			_this.doEditTransition( _this.getClipFromSeqID( $j('.mv_selected_clip').parent().attr('id') ) );
 		}else if( $j('.mv_selected_clip').length === 0){
 			//no clip selected warning: 
 			$j('#transition_ic').html( gM('no_selected_resource') );
@@ -750,19 +751,19 @@ mvSequencer.prototype = {
 		}		
 	},
 	doEditTransition:function( cObj ){
-		js_log("doEditTransition");
+		js_log("sequence:doEditTransition");
 		var _this = this;		
 		mv_get_loading_img( '#transitions_ic' );
 		mvJsLoader.doLoad([			
-			'mvTimedEffectsEdit'
+			'mvTimedEffectsEdit',
+			'$j.fn.ColorPicker'
 		],function(){
-			js_log("mvTimedEffectsEdit loaded d")
-			//if mvClipEditor not preset init	
-			_this.myEffectEdit = {};		
+			//no idea why this works / is needed. 
+			var localSeqRef = _this;
 			_this.myEffectEdit = new mvTimedEffectsEdit({
 				'rObj' 		 : cObj,
 				'control_ct' : 'transition_ic',
-				'p_SeqObj'	 : _this,
+				'p_seqObj'	 : localSeqRef
 			});
 		})
 	},
@@ -852,7 +853,8 @@ mvSequencer.prototype = {
 		if(remove_clip_ary.length !=0 )
 			this.removeClips(remove_clip_ary);
 			
-		//doEdit selected clips (updated selected resource)	 
+		//doEdit selected clips (updated selected resource)	
+		//@@todo refresh menu of current		
 		this.doEditSelectedClip();		
 	},
 	addClip:function( clip, before_clip_pos, track_inx){

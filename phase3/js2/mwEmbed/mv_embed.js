@@ -123,13 +123,20 @@ function lcPaths( path, gClasses , opt){
 	}
 	var cat = mvClassPaths;	
 }
-function mvGetClassPath(k){	
-	var cat  = mvClassPaths;
+function mvGetClassPath(k){		
 	if( mvClassPaths[k] ){
 		//js_log('got classpath:' + k +  ' : '+ mvClassPaths[k]);
 		return mvClassPaths[k];
 	}else{
 		return js_error('could not find path for requested class ' + k );
+	}
+}
+if(typeof mvCssPaths == 'undefined')
+	mvCssPaths = {};
+	
+function lcCssPath(cssSet){
+	for(var i in cssSet){
+		mvCssPaths[i]= mv_embed_path + cssSet[i];
 	}
 }
 //core and (non-standard named files relative to class the init):
@@ -140,14 +147,15 @@ lcPaths('',{
 	'$j.fn.autocomplete': 'jquery/plugins/jquery.autocomplete.js',
 	'$j.fn.hoverIntent'	: 'jquery/plugins/jquery.hoverIntent.js',
 	'$j.fn.datePicker'	: 'jquery/plugins/jquery.datePicker.js',
-	'$j.ui'				: 'jquery/jquery.ui-1.7.1/ui/ui.core.js'
+	'$j.ui'				: 'jquery/jquery.ui-1.7.1/ui/ui.core.js',	
+	'$j.fn.ColorPicker'	: 'libClipEdit/colorpicker/js/colorpicker.js',
+	'$j.Jcrop'			: 'libClipEdit/Jcrop/js/jquery.Jcrop.js'
 });	
 //query plugins
 lcPaths( 'jquery/plugins/', [
 	'$j.secureEvalJSON',	
 	'$j.cookie',
-	'$j.contextMenu',	
-	'$j.Jcrop'		
+	'$j.contextMenu',				
 ]);
 //jquery ui
 lcPaths('jquery/jquery.ui-1.7.1/ui/', [	
@@ -219,6 +227,11 @@ lcPaths( 'libTimedText/', [
 	'mvTextInterface'
 ]);
 
+//depencency mapping for css files for self contained included plugins:
+lcCssPath({
+	'$j.Jcrop'		: 'libClipEdit/jCrop/css/jquery.Jcrop.css',
+	'$j.fn.ColorPicker': 'libClipEdit/colorpicker/css/colorpicker.css'
+})
 
 /**
  * Language Functions:
@@ -346,8 +359,9 @@ var mvJsLoader = {
 	 cur_path: null,
 	 missing_path : null,				
 	 doLoad:function(loadLibs, callback){		 
-		 this.ctime++;
-		 if( loadLibs && loadLibs.length!=0 ){ //setup this.libs:							
+		 this.ctime++;		 
+		 if( loadLibs && loadLibs.length!=0 ){ //setup this.libs:		
+		 						
 			 //first check if we already have this lib loaded
 			 var all_libs_loaded=true;
 			 for(var i=0; i< loadLibs.length; i++){
@@ -360,7 +374,14 @@ var mvJsLoader = {
 				js_log('all libs already loaded skipping... load req');
 				callback();
 				return ;
-			}											 
+			}
+			//do a check for any css we may need and get it:
+			for(var i=0; i< loadLibs.length; i++){				
+				if( typeof mvCssPaths[ loadLibs[i] ] != 'undefined' ){
+					loadExternalCss(  mvCssPaths[ loadLibs[i] ]); 
+				}
+			}
+														 
 			 //check if we should use the script loader to combine all the requests into one:			 
 			 if( typeof mwSlScript != 'undefined' ){
 				var class_set = '';
@@ -456,7 +477,10 @@ var mvJsLoader = {
 		 var i=null;
 		 for(var i in this.libs){ //for in loop oky on object					  
 			 if( ! this.checkObjPath( i ) ){				 
-				 if(!this.libreq[i]) loadExternalJs( this.libs[i] );
+				 if(!this.libreq[i]){ 
+				 	loadExternalJs( this.libs[i] );
+				 }
+				 	
 				 this.libreq[i]=1;
 				 //js_log("has not yet loaded: " + i);
 				 loading=1;
@@ -762,6 +786,7 @@ function mv_jqueryBindings(){
         				'mvPlayList',
         				'$j.ui',  
         				'$j.contextMenu',
+        				'$j.secureEvalJSON',
         				'mvSequencer'		
 	        		],
 	        		[
