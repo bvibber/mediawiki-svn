@@ -398,27 +398,27 @@ class MV_SpecialMediaSearch {
 						);
 		$o .= '	<ul id="results">';
 		//setup the MV_index:
-		$mvIndex = new MV_Index();			
+		$mvIndex = new MV_Index();
 		foreach ( $this->results as $inx => & $mvd ) {
-			$mvTitle = new MV_Title( $mvd->wiki_title );			
-			
-			//get parent meta if requested: 
-			global $mvGetParentMeta;						
-			$pmeta_out = '';		
-			if( $mvGetParentMeta && strtolower( $mvTitle->getMvdTypeKey() ) == 'ht_en'){						
-				$pmvd = $mvIndex->getParentAnnotativeLayers($mvTitle);				
-								
-				if( $pmvd->wiki_title ){											
+			$mvTitle = new MV_Title( $mvd->wiki_title );
+
+			//get parent meta if requested:
+			global $mvGetParentMeta;
+			$pmeta_out = '';
+			if( $mvGetParentMeta && strtolower( $mvTitle->getMvdTypeKey() ) == 'ht_en'){
+				$pmvd = $mvIndex->getParentAnnotativeLayers($mvTitle);
+
+				if( $pmvd->wiki_title ){
 					$pMvTitle =  new MV_Title( $pmvd->wiki_title );
 					$pAnnoStreamLink = Title :: MakeTitle( MV_NS_STREAM, $pMvTitle->getNearStreamName( 0 ) );
 					$clip_desc_txt = 'Segment';
-					if($pmvd->Speech_by){	
+					if($pmvd->Speech_by){
 						$personTitle = Title :: newFromText( $pmvd->Speech_by );
 						$clip_desc_txt = 'Speech By ' . $personTitle->getText();
-					}					
-						
+					}
+
 					$pmeta_out.='This '. $sk->makeKnownLinkObj($pAnnoStreamLink, seconds2Description ( $mvTitle->getSegmentDuration(), true, true ) ).
-								' clip is part of a larger '. 
+								' clip is part of a larger '.
 								$sk->makeKnownLinkObj($pAnnoStreamLink, seconds2Description ( $pMvTitle->getSegmentDuration(), true, true ) ) . ' Speech';
 					if($pmvd->category){
 						$pmeta_out.='<br>Covering: ';
@@ -431,13 +431,13 @@ class MV_SpecialMediaSearch {
 						}
 					}
 					if($pmvd->Bill){
-						$pmeta_out.='<br>Bill: ';						
+						$pmeta_out.='<br>Bill: ';
 						$bTitle = Title :: newFromText( $pmvd->Bill );
-						$pmeta_out .= $sk->makeKnownLinkObj( $bTitle, $bTitle->getText() );		
-						assoc_array_increment( $sideBarLinkBucket, 'bill', $pmvd->Bill );					
-					}					
+						$pmeta_out .= $sk->makeKnownLinkObj( $bTitle, $bTitle->getText() );
+						assoc_array_increment( $sideBarLinkBucket, 'bill', $pmvd->Bill );
+					}
 				}
-			}						
+			}
 			$mvd_cnt_links = '';
 			if ( isset ( $mvd->spoken_by ) ) {
 				$ptitle = Title :: MakeTitle( NS_MAIN, $mvd->spoken_by );
@@ -472,12 +472,12 @@ class MV_SpecialMediaSearch {
 			}
 			// link directly to the current range:
 			//if the clip length is < $mvDefaultClipLength get range:
-			global $mvDefaultClipLength;			
-			if( $mvTitle->getSegmentDuration() < $mvDefaultClipLength){		
+			global $mvDefaultClipLength;
+			if( $mvTitle->getSegmentDuration() < $mvDefaultClipLength){
 				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( $mvDefaultClipRange ) );
 			}else{
-				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( 0 ) );				
-			}			
+				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( 0 ) );
+			}
 			// $mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
 			$mvd_text = $mvd->text;
 
@@ -500,7 +500,7 @@ class MV_SpecialMediaSearch {
 					</div>
 					<div class="result_meta">
 						<span class="views">Views: ' . htmlspecialchars( $mvd->view_count ) . '</span>
-						<span class="duration">' . wfMsg( 'mv_duration_label' ) . ':' . htmlspecialchars( $mvTitle->getSegmentDurationNTP( $short_time = true ) ) . '</span>						
+						<span class="duration">' . wfMsg( 'mv_duration_label' ) . ':' . htmlspecialchars( $mvTitle->getSegmentDurationNTP( $short_time = true ) ) . '</span>
 						<span class="playinline"><a href="javascript:mv_pl(\'' . htmlspecialchars( $mvd->id ) . '\')">' .
 			wfMsg( 'mv_play_inline' ) . '</a></span>
 										</div>';
@@ -861,7 +861,7 @@ class MV_SpecialMediaSearch {
 					if ( $f['t'] != 'match' ) // no desc for text search
 						$o .= ( $query_key ) ? $a : $a . wfMsg( 'mv_' . $f['t'] ) . ' ';
 				if ( $f['t'] == 'date_range' ) { // handle special case of date range:
-					$o .= ' '+ wfMsg( 'mv_time_separator', $bo . htmlspecialchars( $f['vs'] ) . $bc, $bo . htmlspecialchars( $f['ve'] ) . $bc );
+					$o .= ' '. wfMsg( 'mv_time_separator', $bo . htmlspecialchars( $f['vs'] ) . $bc, $bo . htmlspecialchars( $f['ve'] ) . $bc );
 				} else {
 					$o .=' '. $bo . str_replace( '_', ' ', htmlspecialchars( $f['v'] ) ) . $bc .' ';
 				}
@@ -974,7 +974,7 @@ class MV_SpecialMediaSearch {
 		$result = $dbr->select( 'page', 'page_title', array (
 			'page_namespace' => NS_CATEGORY,
 			'`page_title` LIKE \'%' . mysql_escape_string( $val
-		) . '%\' COLLATE latin1_general_ci' ), __METHOD__, array (
+		) . '%\' COLLATE utf8_bin' ), __METHOD__, array (
 			'LIMIT' => $result_limit
 		) );
 		$match_count = $dbr->numRows( $result );
@@ -996,7 +996,7 @@ class MV_SpecialMediaSearch {
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
 			'cl_to' => $category,
 			'`cl_sortkey` LIKE \'%' . mysql_escape_string( $val
-		) . '%\'  COLLATE latin1_general_ci' ), __METHOD__, array (
+		) . '%\'  COLLATE utf8_bin' ), __METHOD__, array (
 			'LIMIT' => $result_limit
 		) );
 		// print 'ran: ' .  $dbr->lastQuery();
@@ -1023,7 +1023,7 @@ class MV_SpecialMediaSearch {
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
 			'cl_to' => 'Person',
 			'`cl_sortkey` LIKE \'%' . mysql_escape_string( $val
-		) . '%\' COLLATE latin1_general_ci' ), __METHOD__, array (
+		) . '%\' COLLATE utf8_bin' ), __METHOD__, array (
 			'LIMIT' => $result_limit
 		) );
 		$out = '';
