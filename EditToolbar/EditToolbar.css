@@ -251,6 +251,10 @@ div#edittoolbar div.tabs > div.tab > a.current:visited {
 	color: #333333;
 	background-image: url(images/arrow-down.png);
 }
+body.rtl div#edittoolbar div.tabs > div.tab > a.current,
+body.rtl div#edittoolbar div.tabs > div.tab > a.current:visited {
+	background-image: url(images/arrow-down.png);
+}
 div#edittoolbar div.tabs > div.tab > a.current:hover {
 	text-decoration: none;
 }
