@@ -57,6 +57,7 @@ $messages['en'] = array(
 	'poll-no-dis' => 'No Description!',
 	'poll-create-allow-more' => 'Allow Multi-Vote',
 	'poll-vote-changed' => 'Vote has been changed!',
+	'poll-vote-other' => 'Other answers: '
 );
 
 /** German (Deutsch)
@@ -107,4 +108,5 @@ $messages['de'] = array(
 	'poll-no-dis' => 'Keine Beschreibung vorhanden!',
 	'poll-create-allow-more' => 'Mehfachabstimmung erlaubt',
 	'poll-vote-changed' => 'Stimme wurde geändert!',
+	'poll-vote-other' => 'Andere Antworten: '
 );

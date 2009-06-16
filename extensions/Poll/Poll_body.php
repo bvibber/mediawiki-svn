@@ -50,6 +50,7 @@ class Poll extends SpecialPage {
 		}
 	}
 
+	// This function create a list with all polls that are in the DB
 	public function make_list() {
 		global $wgOut;
 		$wgOut->setPagetitle( wfMsg( 'poll' ) );
@@ -73,6 +74,7 @@ class Poll extends SpecialPage {
 
 	}
 
+	// This function create a interface for create new polls
 	public function create() {
 		global $wgOut, $wgUser;
 
@@ -101,6 +103,7 @@ class Poll extends SpecialPage {
 		}
 	}
 
+	// This function create a interface for voting
 	public function vote( $vid ) {
 		global $wgOut, $wgUser;
 
@@ -135,6 +138,7 @@ class Poll extends SpecialPage {
 				if($alternative_4 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '4').' '.$alternative_4.'</td></tr>' ); }
 				if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '5').' '.$alternative_5.'</td></tr>' ); }
 				if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '6').' '.$alternative_6.'</td></tr>' ); }
+				$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-vote-other' ).'</td><td>'.Xml::input('vote_other').'</td></tr>' );
 			}
 			if( $multi == 1 ) {
 				$wgOut->addHtml( '<tr><td>'.Xml::check('vote_1').' '.$alternative_1.'</td></tr>' );
@@ -156,6 +160,7 @@ class Poll extends SpecialPage {
 		}
 	}
 
+	// This function create a score for the polls
 	public function score( $sid ) {
 		global $wgOut;
 
@@ -213,6 +218,21 @@ class Poll extends SpecialPage {
 				if($vote[5] == "1") { $query_num_6++; }
 			}
 		}
+		
+		$query_other = $dbr->select( 'poll_answer', 'vote_other', array( 'pid' => $sid, 'isset_vote_other' => 1 ) );
+		$score_other = array( );
+		while( $row = $dbr->fetchObject( $query_other ) ) {
+			if( !isset($score_other[$row->vote_other]['first']) ) {
+				$score_other[$row->vote_other]['first'] = 0;
+				$score_other[$row->vote_other]['number'] = 1;
+				continue;
+			}
+			$score_other[$row->vote_other]['number']++;
+		}
+		$score_other_out = "";
+		foreach($score_other as $name => $value) {
+			$score_other_out .= '<tr><td>'.$name.'</td><td>'.$value['number'].'</td></tr>';
+		}
 
 		$wgOut->addHtml( Xml::openElement( 'table' ) );
 		$wgOut->addHtml( '<tr><th><center>'.$question.'</center></th></tr>' );;
@@ -222,6 +242,7 @@ class Poll extends SpecialPage {
 		if($alternative_4 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_4.'</td><td>'.$query_num_4.'</td></tr>' ); }
 		if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_5.'</td><td>'.$query_num_5.'</td></tr>' ); }
 		if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_6.'</td><td>'.$query_num_6.'</td></tr>' ); }
+		if($score_other_out != "") { $wgOut->addHtml( '<tr><td colspan="2">'.wfMsg( 'poll-vote-other' ).'</td></tr>'. $score_other_out ); }
 		$wgOut->addHtml( '<tr><td>' );
 		$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created', $creater ).'</small>' );
 		$wgOut->addHtml( '</td></tr>' );
@@ -229,6 +250,7 @@ class Poll extends SpecialPage {
 		$wgOut->addHtml( '<a href="'.$this->getTitle()->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 	}
 
+	// This function create a interfache for deleting polls
 	public function delete( $did ) {
 		global $wgOut;
 		$wgOut->setPagetitle( wfMsg( 'poll-title-delete' ) );
@@ -250,6 +272,7 @@ class Poll extends SpecialPage {
 		}
 	}
 
+	// This function create a interfache for changing polls
 	public function change($cid) {
 		global $wgOut, $wgUser;
 
@@ -291,6 +314,7 @@ class Poll extends SpecialPage {
 		}
 	}
 
+	// This fucntion execute the order of the other function
 	public function submit( $pid ) {
 		global $wgRequest, $wgOut, $wgUser;
 
@@ -348,6 +372,11 @@ class Poll extends SpecialPage {
 				
 				if($multi != 1) {
 					$vote = $wgRequest->getVal('vote');
+					$vote_other = $wgRequest->getVal('vote_other');
+					
+					if($vote == "" AND $vote_other == "") {
+						$vote = "err001";
+					}
 				}				
 				if($multi == 1) {
 					$vote_1 = $wgRequest->getVal('vote_1');
@@ -356,6 +385,7 @@ class Poll extends SpecialPage {
 					$vote_4 = $wgRequest->getVal('vote_4');
 					$vote_5 = $wgRequest->getVal('vote_5');
 					$vote_6 = $wgRequest->getVal('vote_6');
+					$vote_other = ($wgRequest->getVal('vote_other') != "")? $wgRequest->getVal('vote_other') : "";
 					
 					$vote = "";
 					$vote .= ($vote_1 == 1)? "1|" : "0|";
@@ -364,16 +394,35 @@ class Poll extends SpecialPage {
 					$vote .= ($vote_4 == 1)? "1|" : "0|";
 					$vote .= ($vote_5 == 1)? "1|" : "0|";
 					$vote .= ($vote_6 == 1)? "1" : "0";
+					
+					if($vote == "0|0|0|0|0|0" AND $vote_other == "") {
+						$vote = "err001";
+					}
+				}
+				
+				if($vote == "err001") {
+					$wgOut->addWikiMsg( 'poll-vote-empty-error' );
+					$wgOut->addHtml( '<a href="'.$this->getTitle()->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
+					
+					return;
+				}
+				
+				if($vote_other != "") {
+					$vote = "";
+					$isset_vote_other = 1;
+				}
+				elseif($vote_other == "") {
+					$isset_vote_other = 0;
 				}
 
 				if( $num == 0 ) {
-					$dbw->insert( 'poll_answer', array( 'pid' => $pid, 'uid' => $uid, 'vote' => $vote, 'user' => $wgUser->getName() ) );
+					$dbw->insert( 'poll_answer', array( 'pid' => $pid, 'uid' => $uid, 'vote' => $vote, 'user' => $wgUser->getName(), 'isset_vote_other' => $isset_vote_other, 'vote_other' => $vote_other  ) );
 
 					$wgOut->addWikiMsg( 'poll-vote-pass' );
 					$wgOut->addHtml( '<a href="'.$this->getTitle()->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 				}
 				else {
-					$dbw->update( 'poll_answer', array( 'vote' => $vote ), array( 'uid' => $uid, 'pid' => $pid ) );
+					$dbw->update( 'poll_answer', array( 'vote' => $vote, 'isset_vote_other' => $isset_vote_other, 'vote_other' => $vote_other ), array( 'uid' => $uid, 'pid' => $pid ) );
 					
 					$wgOut->addWikiMsg( 'poll-vote-changed' );
 					$wgOut->addHtml( '<a href="'.$this->getTitle()->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
