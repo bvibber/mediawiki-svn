@@ -128,7 +128,7 @@ class Combined_Installer(Installation_System):
 				if system.install(installer_name):
 					return True
 			except Exception,e:	#TODO sometimes an installer may recognise that something CAN NOT be installed, in that case, we should stop trying.
-				messages.append(system.system_name+": "+e.message)
+				messages.append(system.system_name+": "+str(e))
 		
 		if messages:
 			raise Combined_Installer_Exception ("\n".join(messages))
@@ -159,7 +159,7 @@ class Combined_Installer(Installation_System):
 				if system.uninstall(installer_name):
 					return True
 			except Exception,e: #TODO sometimes an installer may recognise that something CAN NOT be uninstalled, in that case, we should stop trying
-				messages.append(system.system_name+": "+e.message)
+				messages.append(system.system_name+": "+str(e))
 		
 		if messages:
 			raise Combined_Installer_Exception ("\n".join(messages))
