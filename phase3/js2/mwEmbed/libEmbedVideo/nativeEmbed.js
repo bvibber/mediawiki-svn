@@ -30,32 +30,37 @@ var nativeEmbed = {
 					'id="' + this.pid + '" ' +
 					'style="width:' + this.width+'px;height:' + this.height + 'px;" ' +
 					'width="' + this.width + '" height="'+this.height+'" '+
-					   'src="' + this.getSrc() + '" ';
+					   'src="' + this.getSrc() + '" >';
 					   
-		if(!this.onlyLoadFlag)
-			eb+='autoplay="true" ';
+		/*if(!this.onlyLoadFlag)
+			eb+='autoplay="true" ';*/
 			
 		//continue with the other attr:						
-		eb+=		'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
+		/*eb+=		'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
 					   'onloadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' + 
 					   'loadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' +
 					   'onprogress="$j(\'#'+this.id+'\').get(0).onprogress( event );return false;" '+
-					   'onended="$j(\'#'+this.id+'\').get(0).onended();return false;" >' +
-				'</video>';
+					   'onended="$j(\'#'+this.id+'\').get(0).onended();return false;" >' +*/
+		eb+='</video>';
 		return eb;
 	},
 	//@@todo : loading progress	
 	postEmbedJS:function(){
+		var _this = this;
 		js_log("f:native:postEmbedJS:");		
 		this.getVID();
+		var doActualPlay= function(){
+			js_log("doActualPlay ");
+			_this.vid.play();
+		}
 		if(typeof this.vid != 'undefined'){			
 			//always load the media:
 			if( this.onlyLoadFlag ){ 
 				this.vid.load();
-			}else{						 
-				this.vid.play();
-			}
-							
+			}else{	
+				this.vid.load();
+				setTimeout(doActualPlay, 500);				 				
+			}							
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()',100);		
 		}else{
 			js_log('could not grab vid obj trying again:' + typeof this.vid);
@@ -169,7 +174,7 @@ var nativeEmbed = {
 		this.getVID();
 		js_log('f:onloadedmetadata metadata ready (update duration)');		
 		//update duration if not set (for now trust the getDuration more than this.vid.duration		
-		if( this.getDuration()==0  ){
+		if( this.getDuration()==0  &&  !isNaN( this.vid.duration )){
 			js_log('updaed duration via native video duration: '+ this.vid.duration)
 			this.duration = this.vid.duration;
 		}

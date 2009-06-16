@@ -588,7 +588,7 @@ mediaSource.prototype =
 			if( !npt2seconds(end_ntp) )
 				end_ntp = this.end_ntp;
 										  
-			this.src = getURLParamReplace(this.src, { 't': start_ntp + end_ntp } );		   
+			this.src = getURLParamReplace(this.src, { 't': start_ntp +'/'+ end_ntp } );		   
 			
 			//update the duration
 			this.parseURLDuration();
@@ -800,7 +800,7 @@ mediaElement.prototype =
 		js_log('f:autoSelectSource:');	
 		//@@todo read user preference for source		
 		// Select the default source
-		var playable_sources = this.getPlayableSources();							 
+		var playable_sources = this.getPlayableSources();							
 		var flash_flag=ogg_flag=false;		  
 		//debugger;
 		for(var source=0; source < playable_sources.length; source++){
@@ -817,20 +817,19 @@ mediaElement.prototype =
 				 return true; 
 			}															
 		}	   
-		//set Ogg via player support
+		//set Ogg via player support		
 		for(var source=0; source < playable_sources.length; source++){
 			js_log('f:autoSelectSource:' + playable_sources[source].mime_type);
-			var mime_type =playable_sources[source].mime_type;			
+			var mime_type =playable_sources[source].mime_type;					
 			   //set source via player				 
-			if(mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex' || mime_type=='application/ogg'){
-				for(var i in embedTypes.players){ //for in loop on object oky
-					var player = embedTypes.players[i];
-					//debugger;
+			if(mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex' || mime_type=='application/ogg'){				
+				for(var i=0; i < embedTypes.players.players.length; i++){ //for in loop on object oky
+					var player = embedTypes.players.players[i];					
 					if(player.library=='vlc' || player.library=='native'){
-						js_log('set via ogg via order')
+						js_log('set via ogg via order');						
 						this.selected_source = playable_sources[source];	
 						return true;
-					}
+					}					
 				}
 			}
 		}
@@ -838,7 +837,7 @@ mediaElement.prototype =
 		for(var source=0; source < playable_sources.length; source++){  
 			var mime_type =playable_sources[source].mime_type;										
 			if( mime_type=='video/h264' ){
-				js_log('set via by player preference h264 flash')
+				js_log('set via playable_sources preference h264 flash')
 				this.selected_source = playable_sources[source];
 				return true;
 			}			   
@@ -851,8 +850,7 @@ mediaElement.prototype =
 				this.selected_source = playable_sources[source];
 				return true;
 			}						
-		}
-		
+		}	
 		//select first source		
 		if (!this.selected_source)
 		{

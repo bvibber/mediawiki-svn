@@ -630,7 +630,60 @@ mvClipEdit.prototype = {
 if(typeof mv_lock_vid_updates == 'undefined')
 	mv_lock_vid_updates= false;
 
-function add_adjust_hooks( mvd_id, adj_callback ){
+function add_adjust_hooks(mvd_id, adj_callback){
+	/*myClipEdit = new mvClipEdit({
+		'control_ct': '#mvd_form_'+mvd_id
+	});
+	$j('#mvd_form_'+mvd_id).html(
+		mvClipEdit.getSetInOutHtml({
+			'start_ntp'	:  $j('#mv_start_hr_' + mvd_id).val(), 
+			'end_ntp'	:  $j('#mv_end_hr_' + mvd_id).val() 
+		})		
+	);
+	mvClipEdit.setInOutBindings();*/
+	
+	var start_sec = npt2seconds($j('#mv_start_hr_' + mvd_id).val() );
+	var end_sec   = npt2seconds($j('#mv_end_hr_' + mvd_id).val()  );
+		
+	//if we don't have 0 as start then assume we are in a range request and give some buffer area:		  
+	var min_slider =  (start_sec - 60 < 0 ) ? 0 : start_sec - 60;
+	if(min_slider!=0){
+		var max_slider =  end_sec+60;
+	}else{
+		max_slider = end_sec;
+	}		
+	//pre-destroy just in case:
+	$j('#mvd_form_' + mvd_id + ' .inOutSlider').slider( 'destroy' ).slider({
+		range: true,
+		min: min_slider,
+		max: max_slider,
+		values: [start_sec, end_sec],
+		slide: function(event, ui) {
+			js_log(" vals:"+  seconds2npt( ui.values[0] ) + ' : ' + seconds2npt( ui.values[1]) );
+			$j('#mv_start_hr_' + mvd_id).val( seconds2npt( ui.values[0] ) );
+			$j('#mv_end_hr_' + mvd_id).val( seconds2npt( ui.values[1] ) );
+		},
+		change:function(event, ui){
+			do_video_time_update( seconds2npt( ui.values[0]), seconds2npt( ui.values[1] ) );
+		}			
+	});
+	$j('.mv_adj_hr').change(function(){
+		//preserve track duration for nav and seq:
+		//ie seems to crash so no interface updates for IE for the time being
+		if(!$j.browser.msie){
+			if(mvd_id=='nav'||mvd_id=='seq'){
+				add_adjust_hooks(mvd_id); // (no adj_callback)
+			}else{
+				add_adjust_hooks(mvd_id)
+			}
+		}
+		//update the video time for onChange
+		do_video_time_update( $j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
+	});
+	
+}
+
+/*function add_adjust_hooks( mvd_id, adj_callback ){
 	js_log('add_adjust_hooks: ' + mvd_id );	
 	//if options are unset populate functions:
 	//add mouse over end time frame highlight
@@ -752,7 +805,7 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 					 $j('#container_track_'+mvd_id).width() -
 					 $j('#resize_'+mvd_id).position().left
 				);
-			}*/
+			}
 			//js_log("updated maxWidth: " + ui.options.maxWidth);
 			//js_log('grabbed: ' + e.explicitOriginalTarget.id);
 			//console.log('start ', ui);
@@ -812,9 +865,9 @@ function add_adjust_hooks( mvd_id, adj_callback ){
 			$j('#mv_start_hr_'+mvd_id).val( seconds2npt(base_offset + (track_dur *($j('#resize_'+mvd_id).position().left /
 				$j('#container_track_'+mvd_id).width()) ) ));
 	}
-}
+}*/
 function do_video_time_update(start_time, end_time, mvd_id)	{
-	js_log('do_video_time_update: ' +start_time + end_time);
+	js_log('do_video_time_update: ' +start_time +' '+ end_time);
 	
 	if(mv_lock_vid_updates==false){
 		//update the vid title:
