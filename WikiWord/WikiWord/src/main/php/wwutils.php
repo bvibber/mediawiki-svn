@@ -445,8 +445,8 @@ class WWUtils {
 	if ($max && $images->size()>$max) 
 	    return $images->listImages($max);
 
-	if (isset($conceps['commons'])) {
-	    $title = $conceps['commons'];
+	if (isset($concepts['commons'])) {
+	    $title = $concepts['commons'];
 
 	    $img = $this->getRelevantImagesOnPage("commmons", 0, $title, false); //FIXME: resource mapping
 	    $images->addImages($img, "commons:" . $title, "gallery", 0.8);
