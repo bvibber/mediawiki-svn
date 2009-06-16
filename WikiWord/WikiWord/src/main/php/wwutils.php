@@ -344,7 +344,9 @@ class WWUtils {
 	$page_table = $this->getWikiTableName($lang, "page");
 	$image_table = $this->getWikiTableName($lang, "image");
 
-	$sql = "SELECT I.il_to as name FROM $imagelinks_table as I ";
+	$sql = "/* queryImagesOnPage(" . $this->quote($lang) . ", " . (int)$ns . ", " . $this->quote($title) . ", " . (int)$commonsOnly . ") */ ";
+
+	$sql .= " SELECT I.il_to as name FROM $imagelinks_table as I ";
 	$sql .= " JOIN $page_table as P on P.page_id = I.il_from ";
 	if ($commonsOnly) $sql .= " LEFT JOIN $image_table as R on R.img_name = I.il_to ";
 	if ($commonsOnly) $sql .= " JOIN {$wwCommonsTablePrefix}image as C on C.img_name = I.il_to ";
@@ -375,7 +377,9 @@ class WWUtils {
 	$image_table = $this->getWikiTableName($lang, "image");
 	$templatelinks_table = $this->getWikiTableName($lang, "templatelinks");
 
-	$sql = "SELECT I.il_to as name FROM $imagelinks_table as I ";
+	$sql = "/* queryImagesOnPageTemplates(" . $this->quote($lang) . ", " . (int)$ns . ", " . $this->quote($title) . ", " . (int)$commonsOnly . ") */ ";
+
+	$sql .= " SELECT I.il_to as name FROM $imagelinks_table as I ";
 	$sql .= " JOIN $page_table as TP on TP.page_id = I.il_from ";
 	$sql .= " JOIN $templatelinks_table as T on T.tl_namespace = TP.page_namespace AND T.tl_title = TP.page_title ";
 	$sql .= " JOIN $page_table as P on P.page_id = T.tl_from ";
@@ -401,7 +405,9 @@ class WWUtils {
 	$categorylinks_table = $this->getWikiTableName($lang, "categorylinks");
 	$page_table = $this->getWikiTableName($lang, "page");
 
-	$sql = "SELECT P.page_title as name FROM $page_table as P ";
+	$sql = "/* queryImagesInCategory(" . $this->quote($lang) . ", " . $this->quote($title) . ") */ ";
+
+	$sql .= " SELECT P.page_title as name FROM $page_table as P ";
 	$sql .= " JOIN $categorylinks_table as C on C.from = P.page_id ";
 
 	$sql .= " WHERE C.cl_to = " . $this->quote($title);
