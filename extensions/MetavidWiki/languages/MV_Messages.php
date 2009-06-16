@@ -102,7 +102,7 @@ Maybe disable the video converter?',
 
 	'no_import_by_url' => 'This user or wiki <b>can not</b> import assets via URLs.
 
-If permissions are correct; you may have to enable $wgAllowCopyUploads, <a href="http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads">more info</a>"',
+If permissions are correct; you may have to enable $wgAllowCopyUploads, <a href="http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads">more info</a>',
 	#metavidSearch.js	
 	'mv_stream_title' => '$1 $2 to $3', # $stream name $start time to $end time
 
