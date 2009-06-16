@@ -25,8 +25,10 @@ $wgPrefStatsEnable = true;
 // Tracking multiple values of the same preference is not possible
 $wgPrefStatsTrackPrefs = array();
 
+// Dimensions of the chart on Special:PrefStats
 $wgPrefStatsChartDimensions = '1000x300';
 
+// Time unit to use for the graph on Special:PrefStats
 $wgPrefStatsTimeUnit = 60*60*24; // one day
 
 /* Setup */
