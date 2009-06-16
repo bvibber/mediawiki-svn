@@ -1,0 +1,67 @@
+diff -ur ircd-ratbox-2.2.8/modules/core/m_join.c ircd-ratbox-notalk-2.2.8/modules/core/m_join.c
+--- ircd-ratbox-2.2.8/modules/core/m_join.c	2007-01-22 10:12:25.000000000 -0800
++++ ircd-ratbox-notalk-2.2.8/modules/core/m_join.c	2009-06-15 15:30:31.000000000 -0700
+@@ -183,6 +183,13 @@
+ 		}
+ 		else
+ 		{
++                	/* PATCH by Fred Vassard -> disallow channel creation if not oper */
++			if (!IsOper(source_p)) {
++				sendto_one(source_p, form_str(ERR_NOSUCHCHANNEL),
++				me.name, source_p->name,name);
++				continue;
++			}
++
+ 			if(splitmode && !IsOper(source_p) && (*name != '&') &&
+ 			   ConfigChannel.no_create_on_split)
+ 			{
+diff -ur ircd-ratbox-2.2.8/modules/core/m_message.c ircd-ratbox-notalk-2.2.8/modules/core/m_message.c
+--- ircd-ratbox-2.2.8/modules/core/m_message.c	2006-07-02 13:51:11.000000000 -0700
++++ ircd-ratbox-notalk-2.2.8/modules/core/m_message.c	2009-06-03 13:35:07.000000000 -0700
+@@ -89,8 +89,8 @@
+ 			     struct Client *source_p, const char *nicks_channels, const char *text);
+ 
+ static int flood_attack_client(int p_or_n, struct Client *source_p, struct Client *target_p);
+-static int flood_attack_channel(int p_or_n, struct Client *source_p,
+-				struct Channel *chptr, char *chname);
++//static int flood_attack_channel(int p_or_n, struct Client *source_p,
++//				struct Channel *chptr, char *chname);
+ static struct Client *find_userhost(const char *, const char *, int *);
+ 
+ #define ENTITY_NONE    0
+@@ -435,7 +435,7 @@
+ msg_channel(int p_or_n, const char *command,
+ 	    struct Client *client_p, struct Client *source_p, struct Channel *chptr, const char *text)
+ {
+-	int result;
++	//int result;
+ 
+ 	if(MyClient(source_p))
+ 	{
+@@ -444,8 +444,10 @@
+ 			source_p->localClient->last = CurrentTime;
+ 	}
+ 
++	
++	/* PATCH by Fred Vassard <fvassard@wikimedia.org> => dis-allow non-oper from sending to channel */
+ 	/* chanops and voiced can flood their own channel with impunity */
+-	if((result = can_send(chptr, source_p, NULL)))
++	/* if((result = can_send(chptr, source_p, NULL)))
+ 	{
+ 		if(result == CAN_SEND_OPV ||
+ 		   !flood_attack_channel(p_or_n, source_p, chptr, chptr->chname))
+@@ -455,6 +457,14 @@
+ 					      command, chptr->chname, text);
+ 		}
+ 	}
++	*/
++	if (IsOper(client_p))
++	{
++		sendto_channel_flags(client_p, ALL_MEMBERS, source_p, chptr,
++				"%s %s :%s",
++				command, chptr->chname, text);
++	}
++	
+ 	else
+ 	{
+ 		if(p_or_n != NOTICE)
