@@ -588,6 +588,7 @@ settings[] = sdgNumResultsColumns: int
 settings[] = sdgNumResultsPerPage : int
 settings[] = sdgFiltersSmallestFontSize: int
 settings[] = sdgFiltersLargestFontSize: int
+extensions-dependencies[] = SemanticMediaWiki
 url = http://www.mediawiki.org/wiki/Extension:Semantic_Drilldown
 
 SemanticForms
@@ -597,6 +598,7 @@ settings[] = sfgRenameEditTabs: bool
 settings[] = sfgListSeparator: text
 settings[] = sfgYUIBase: text
 settings[] = sfg24HourTime: bool
+extensions-dependencies[] = SemanticMediaWiki
 url = http://www.mediawiki.org/wiki/Extension:Semantic_Forms
 
 SemanticMediaWiki
@@ -653,6 +655,7 @@ SemanticResultFormats
 file = SRF_Settings.php
 settings[] = srfgFormats: array
 array[] = srfgFormats: simple
+extensions-dependencies[] = SemanticMediaWiki
 url = http://www.mediawiki.org/wiki/Extension:Semantic_Result_Formats
 
 SkinPerNamespace
