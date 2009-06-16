@@ -72,7 +72,7 @@ class File_Ogg_Bitstream
      * @param   pointer $filePointer    File pointer for the current physical stream.
      * @access  private
      */
-    function File_Ogg_Bitstream($streamSerial, $streamData, $filePointer)
+    function __construct($streamSerial, $streamData, $filePointer)
     {
         $this->_streamSerial    = $streamSerial;
         $this->_streamList      = $streamData;

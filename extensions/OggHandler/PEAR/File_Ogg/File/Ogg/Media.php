@@ -51,10 +51,6 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
 	
     /* Start offset of the stream in seconds */
     var $_startOffset = 0;
-    /*function File_Ogg_Media($streamSerial, $streamData, $filePointer)
-    {
-        File_Ogg_Bitstream::File_Ogg_Bitstream($streamSerial, $streamData, $filePointer);
-    }*/
 
     /**
      * Get a short string describing the type of the stream

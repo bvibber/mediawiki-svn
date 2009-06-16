@@ -44,9 +44,9 @@ class File_Ogg_Theora extends File_Ogg_Media
     /**
      * @access  private
      */
-    function File_Ogg_Theora($streamSerial, $streamData, $filePointer)
+    function __construct($streamSerial, $streamData, $filePointer)
     {
-        File_Ogg_Media::File_Ogg_Media($streamSerial, $streamData, $filePointer);
+        parent::__construct($streamSerial, $streamData, $filePointer);
         $this->_decodeIdentificationHeader();
         $this->_decodeCommentsHeader();
       	$endSec = $this->getSecondsFromGranulePos( $this->_lastGranulePos );

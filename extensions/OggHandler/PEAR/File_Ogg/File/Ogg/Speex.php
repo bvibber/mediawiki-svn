@@ -38,7 +38,7 @@ class File_Ogg_Speex extends File_Ogg_Media
     /**
      * @access  private
      */
-    function File_Ogg_Speex($streamSerial, $streamData, $filePointer)
+    function __construct($streamSerial, $streamData, $filePointer)
     {
         parent::__construct($streamSerial, $streamData, $filePointer);
         $this->_decodeHeader();

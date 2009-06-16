@@ -175,7 +175,7 @@ class File_Ogg
      * @access  public
      * @param   string  $fileLocation   The path of the file to be examined.
      */
-    function File_Ogg($fileLocation)
+    function __construct($fileLocation)
     {
         clearstatcache();
         if (! file_exists($fileLocation)) {

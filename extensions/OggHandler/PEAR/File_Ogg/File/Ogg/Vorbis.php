@@ -166,9 +166,9 @@ class File_Ogg_Vorbis extends File_Ogg_Media
      * @param   pointer $filePointer    File pointer for the current physical stream.
      * @access  private
      */
-    function File_Ogg_Vorbis($streamSerial, $streamData, $filePointer)
+    function __construct($streamSerial, $streamData, $filePointer)
     {
-        File_Ogg_Bitstream::File_Ogg_Bitstream($streamSerial, $streamData, $filePointer);
+        parent::__construct($streamSerial, $streamData, $filePointer);
         $this->_decodeIdentificationHeader();
         $this->_decodeCommentsHeader(OGG_VORBIS_COMMENTS_HEADER, OGG_VORBIS_COMMENTS_PAGE_OFFSET);
         $endSec = (( '0x' . substr( $this->_lastGranulePos, 0, 8 ) ) * pow(2, 32) 
