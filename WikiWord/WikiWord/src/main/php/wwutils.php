@@ -455,17 +455,17 @@ class WWUtils {
 	if (isset($concepts['commons'])) {
 	    $title = $concepts['commons'];
 
-	    $img = $this->getRelevantImagesOnPage("commmons", 0, $title, false); //FIXME: resource mapping
+	    $img = $this->getRelevantImagesOnPage("commons", 0, $title, false); //FIXME: resource mapping
 	    $images->addImages($img, "commons:" . $title, "gallery", 0.8);
 
 	    if ($max && $images->size()>$max) 
 		return $images->listImages($max);
 
-	    $img = $this->getImagesInCategory("commmons", $title); //FIXME: resource mapping
+	    $img = $this->getImagesInCategory("commons", $title); //FIXME: resource mapping
 	    $images->addImages($img, "commons:category:" . $title, "category", 0.5);
 
 	    if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural) {
-		$img = $this->getImagesInCategory("commmons", $title+"s"); //FIXME: resource mapping
+		$img = $this->getImagesInCategory("commons", $title+"s"); //FIXME: resource mapping
 		$images->addImages($img, "commons:category:" . $title+"s", "category(pl)", 0.5);
 	    }
 	}
