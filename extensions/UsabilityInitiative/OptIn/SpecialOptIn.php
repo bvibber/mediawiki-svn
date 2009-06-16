@@ -18,13 +18,9 @@ class SpecialOptIn extends SpecialPage {
 		$wgOut->setPageTitle( wfMsg( 'optin-title' ) );
 		
 		if ( $wgUser->isAnon() ) {
-			$llink = $wgUser->getSkin()->link(
-				SpecialPage::getTitleFor( 'Userlogin' ),
-				wfMsgHtml( 'loginreqlink' ),
-				array(),
-				array( 'returnto' => $this->getTitle()->getPrefixedUrl() )
-			);
-			$wgOut->addHTML( wfMsgWikiHtml( 'optin-needlogin', $llink ) );
+			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
+				array( 'returnto' => $this->getTitle()->getPrefixedUrl() ) );
+			$wgOut->addWikiText( wfMsg( 'optin-needlogin', $url ) );
 			return;
 		}
 		
