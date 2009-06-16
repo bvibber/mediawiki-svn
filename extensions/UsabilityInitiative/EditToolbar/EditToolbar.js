@@ -357,7 +357,7 @@
 		parseCharinsert: function( charinsert ) {
 			var retval = {};
 			for( page in charinsert ) {
-				var pageKey = page.replace(/^[A-Za-z]/g, '-');
+				var pageKey = page.replace(/[^A-Za-z]/g, '-');
 				var characters = [], attributes = {}, styles = {};
 				var i = 0;
 				for( line in charinsert[page] ) {
