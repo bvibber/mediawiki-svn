@@ -481,13 +481,13 @@ var ctrlBuilder = {
 			}
 		},
 		'closed_captions':{
-			'w':22,
+			'w':23,
 			'o':function(){
 				return '<div id="timed_text_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-comment"></span></div>'
 			}			
 		},
 		'volume_control':{
-			'w':22,
+			'w':23,
 			'o':function(){
 				return '<div id="volume_control_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-volume-on"></span></div>'
 			}

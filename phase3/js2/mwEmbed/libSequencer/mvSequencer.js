@@ -794,7 +794,7 @@ mvSequencer.prototype = {
 	//save new clip segment
 	saveClipEdit:function(){
 		//saves the clip updates
-	},
+	}, 
 	closeModEditor:function(){
 		//unset the sequencer
 		_global['mvSeq'] = null;		
