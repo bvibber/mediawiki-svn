@@ -95,7 +95,13 @@ mvPlayList.prototype = {
 		
 		//if style is set override width and height
 		if(element.style.width)this.width = parseInt(element.style.width.replace('px',''));
-		if(element.style.height)this.height = parseInt(element.style.height.replace('px',''));													 
+		if(element.style.height)this.height = parseInt(element.style.height.replace('px',''));			
+				
+		//if controls=false hide the title and the controls:
+		if(this.controls===false){			 
+			this.pl_layout.control_height=0;	
+			this.pl_layout.title_bar_height=0;			
+		}						 
 	},			
 	//the element has now been swapped into the dom: 
 	on_dom_swap:function(){
@@ -371,30 +377,40 @@ mvPlayList.prototype = {
 	renderDisplay:function(){		
 		js_log('mvPlaylist:renderDisplay:: track length: ' +this.default_track.getClipCount() );''
 		
-		var plObj=this;			
+		var _this=this;			
 		//setup layout for title and dc_ clip container  
+										
+		
+		//add the playlist controls:
+							
+		//append container and videoPlayer; 
 		$j(this).html('<div id="dc_'+this.id+'" style="width:'+this.width+'px;' +
-				'height:'+(this.height+this.pl_layout.title_bar_height + this.pl_layout.control_height)+'px;position:relative;">' +
-				'	<div style="font-size:13px;border:solid thin;width:'+this.width+'px;" id="ptitle_'+this.id+'"></div>' +
-				'</div>');									
-		
-		//add the playlist controls:						
-		$j('#dc_'+plObj.id).append(
-			'<div class="videoPlayer" style="position:absolute;top:'+(plObj.height+plObj.pl_layout.title_bar_height+4)+'px">' +
-				'<div id="mv_embedded_controls_'+plObj.id+'" class="ui-widget ui-corner-bottom ui-state-default controls" '+
-					'style="width:' + plObj.width + 'px" >' + 
-					 plObj.getControlsHTML() +
-				'</div>'+
-			'</div>'
-		);
-		
-		//add the play button:						
-		$j('#dc_'+plObj.id).append(
-			this.cur_clip.embed.getPlayButton()
-        );
-		//once the controls are in the DOM add hooks: 
-		ctrlBuilder.addControlHooks(this);
-		
+				'height:'+(this.height+this.pl_layout.title_bar_height + this.pl_layout.control_height)+'px;position:relative;">' +				
+			'</div>');		
+		if(this.controls==true){	
+			//append title & controler:
+			$j('#dc_'+_this.id).append(
+				'<div style="font-size:13px;border:solid thin;width:'+this.width+'px;" id="ptitle_'+this.id+'"></div>' +
+				'<div class="videoPlayer" style="position:absolute;top:'+(_this.height+_this.pl_layout.title_bar_height+4)+'px">' +
+				'<div id="mv_embedded_controls_'+_this.id+'" class="ui-widget ui-corner-bottom ui-state-default controls" '+
+					'style="width:' + _this.width + 'px" >' + 
+						 _this.getControlsHTML() +
+					'</div>'+
+				'</div>'
+			);											
+					
+			//add the play button:						
+			$j('#dc_'+_this.id).append(
+				this.cur_clip.embed.getPlayButton()
+	        );
+	        //once the controls are in the DOM add hooks: 
+			ctrlBuilder.addControlHooks(this);
+		}else{
+			//just append the video: 
+			$j('#dc_'+_this.id).append(
+				'<div class="videoPlayer" style="position:absolute;top:'+(_this.height+_this.pl_layout.title_bar_height+4)+'px"></div>'
+			);
+		}			
 		this.setupClipDisplay();										 
 						
 		//update the title and status bar
@@ -404,10 +420,15 @@ mvPlayList.prototype = {
 		js_log('mvPlaylist:setupClipDisplay:: clip len:'+ this.default_track.clips.length);
 		var _this = this;	
 		$j.each(this.default_track.clips, function(i, clip){					
-			$j('#dc_'+_this.id).append('<div class="clip_container cc_" id="clipDesc_'+clip.id+'" '+
-				'style="display:none;position:absolute;text-align: center;border:solid thin;width:'+_this.width + 'px;'+
+			var cout = '<div class="clip_container cc_" id="clipDesc_'+clip.id+'" '+
+				'style="display:none;position:absolute;text-align: center;width:'+_this.width + 'px;'+
 				'height:'+(_this.height )+'px;'+
-				'top:' + this.title_bar_height + 'px;left:0px"></div>');			
+				'top:' + this.title_bar_height + 'px;left:0px;';	
+			if(_this.controls){				
+				cout+='border:solid thin black;';
+			}			
+			cout+='"></div>';
+			$j('#dc_'+_this.id).append( cout );	
 			//update the embed html:					 
 			clip.embed.height=_this.height;
 			clip.embed.width=_this.width;				
@@ -501,7 +522,7 @@ mvPlayList.prototype = {
 		}
 	},	
 	getPlayHeadPos: function(prec_done){
-		var	plObj = this;
+		var	_this = this;
 		if($j('#mv_seeker_'+this.id).length==0){
 			//js_log('no playhead so we can\'t get playhead pos' );
 			return 0;
@@ -513,7 +534,7 @@ mvPlayList.prototype = {
 		for(var i in this.default_track.clips){
 			var clip = this.default_track.clips[i];
 			if(this.cur_clip.id ==clip.id)break;
-			perc_offset+=(clip.embed.duration /  plObj.getDuration());
+			perc_offset+=(clip.embed.duration /  _this.getDuration());
 			time_offset+=clip.embed.duration;
 		}		 
 		//run any update time line hooks:		
@@ -655,7 +676,7 @@ mvPlayList.prototype = {
 	},
 	//playlist play
 	play: function(){
-		var plObj=this;
+		var _this=this;
 		//js_log('pl play');
 		//hide the playlist play button: 
 		$j('#big_play_link_'+this.id).hide();				
@@ -761,25 +782,25 @@ mvPlayList.prototype = {
 	},	
 	doSeek:function(v){
 		js_log('pl:doSeek:' + v + ' sts:' + this.seek_time_sec );
-		var plObj = this;
+		var _this = this;
 		var prevClip=null;						
 		
 		//jump to the clip in the current percent. 
 		var perc_offset=0;
 		var next_perc_offset=0;
-		for(var i in plObj.default_track.clips){
-			var clip = plObj.default_track.clips[i];		
-			next_perc_offset+=( clip.getDuration() /  plObj.getDuration()) ;
+		for(var i in _this.default_track.clips){
+			var clip = _this.default_track.clips[i];		
+			next_perc_offset+=( clip.getDuration() /  _this.getDuration()) ;
 			//js_log('on ' + clip.getDuration() +' next_perc_offset:'+ next_perc_offset);
 			if( next_perc_offset > v ){	
 				//pass along the relative percentage to embed object:				 
 				//js_log('seek:'+ v +' - '+perc_offset + ') /  (' + next_perc_offset +' - '+ perc_offset);
 				var relative_perc =  (v -perc_offset) /  (next_perc_offset - perc_offset);	  
 				//update the current clip:								 
-				plObj.updateCurrentClip( clip );
+				_this.updateCurrentClip( clip );
 				
 				//update the clip relative seek_time_sec
-				plObj.cur_clip.embed.doSeek( relative_perc );								
+				_this.cur_clip.embed.doSeek( relative_perc );								
 				this.play();
 				return '';
 			}
@@ -788,24 +809,24 @@ mvPlayList.prototype = {
 	},
 	setCurrentTime: function(pos, callback){
 		js_log('pl:setCurrentTime:' + pos + ' sts:' + this.seek_time_sec );
-		var plObj = this;
+		var _this = this;
 		var prevClip=null;
 		
 		//jump to the clip at pos 
 		var currentOffset = 0;
 		var nextTime = 0;
-		for (var i in plObj.default_track.clips) {
-			var clip = plObj.default_track.clips[i];
+		for (var i in _this.default_track.clips) {
+			var clip = _this.default_track.clips[i];
 			nextTime = clip.getDuration();
 			if (currentOffset + nextTime > pos) {
 				//update the clip relative seek_time_sec
 				clipTime = pos - currentOffset;
-				if (plObj.cur_clip.id != clip.id) {
-					plObj.updateCurrentClip( clip );
+				if (_this.cur_clip.id != clip.id) {
+					_this.updateCurrentClip( clip );
 				}								
-				plObj.cur_clip.embed.setCurrentTime(clipTime, callback);
-				plObj.currentTime = pos;
-				plObj.doSmilActions();				
+				_this.cur_clip.embed.setCurrentTime(clipTime, callback);
+				_this.currentTime = pos;
+				_this.doSmilActions();				
 				return '';
 			}
 			currentOffset += nextTime;
@@ -832,7 +853,7 @@ mvPlayList.prototype = {
 		var pl_duration = _this.getDuration();
 		
 		var cur_pixle=0;		
-		//set up plObj
+		//set up _this
 		
 		//js_log("do play head total dur: "+pl_duration );
 		$j.each(this.default_track.clips, function(i, clip){		
@@ -871,9 +892,9 @@ mvPlayList.prototype = {
 		//set up hover for prev,next 
 		var th = 50;
 		var tw = th*this.pl_layout.clip_aspect;
-		var plObj = this;
-		$j('#mv_prev_link_'+plObj.id+',#mv_next_link_'+plObj.id).hover(function() {
-			  var clip = (this.id=='mv_prev_link_'+plObj.id) ? plObj.getPrevClip() : plObj.getNextClip();
+		var _this = this;
+		$j('#mv_prev_link_'+_this.id+',#mv_next_link_'+_this.id).hover(function() {
+			  var clip = (this.id=='mv_prev_link_'+_this.id) ? _this.getPrevClip() : _this.getNextClip();
 			  if(!clip)
 				  return js_log('missing clip for Hover');
 			  //get the position of #mv_perv|next_link:
@@ -925,9 +946,9 @@ mvPlayList.prototype = {
 	},
 	swapClipDesc: function(req_clipID, callback){
 		//hide all but the requested
-		var plObj=this;
-		js_log('r:'+req_clipID+' cur:'+plObj.id);
-		if(req_clipID==plObj.cur_clip.id){
+		var _this=this;
+		js_log('r:'+req_clipID+' cur:'+_this.id);
+		if(req_clipID==_this.cur_clip.id){
 			js_log('no swap to same clip');
 		}else{
 			//fade out clips
@@ -944,7 +965,7 @@ mvPlayList.prototype = {
 			});
 			//fade in requested clip *and set req_clip to current
 			$j('#clipDesc_'+req_clipID).fadeIn("slow", function(){
-					plObj.cur_clip = req_clip;
+					_this.cur_clip = req_clip;
 					if(callback)
 						callback();
 			});		
@@ -1200,20 +1221,20 @@ PlMvEmbed.prototype = {
 	stop:function(){
 		js_log('pl:do stop');
 		//set up convenience pointer to parent playlist
-		var plObj = this.pc.pp;				
+		var _this = this.pc.pp;				
 					
-		var th=Math.round( plObj.pl_layout.clip_desc * plObj.height );	
-		var tw=Math.round( th * plObj.pl_layout.clip_aspect );
+		var th=Math.round( _this.pl_layout.clip_desc * _this.height );	
+		var tw=Math.round( th * _this.pl_layout.clip_aspect );
 		//run the parent stop:
 		this.pe_stop();
-		var pl_height = (plObj.sequencer=='true')?plObj.height+27:plObj.height;
+		var pl_height = (_this.sequencer=='true')?_this.height+27:_this.height;
 		
 		this.getHTML();
 				
 	},
 	play:function(){
 		//js_log('pl eb play');		
-		var plObj = this.pc.pp;	
+		var _this = this.pc.pp;	
 		//check if we are already playing
 		if( !this.thumbnail_disp ){
 			this.pe_play();	

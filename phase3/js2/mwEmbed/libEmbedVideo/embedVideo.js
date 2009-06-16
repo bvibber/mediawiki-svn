@@ -163,26 +163,13 @@ mvEmbed = {
 				'$j.ui',	//include dialog for pop-ing up thigns
 				'$j.ui.dialog'	
 			], function(){
-				$j('playlist').each(function(){															 						
-					//check if we are in sequence mode load sequence libs (if not already loaded)								 
-					if( $j(this).attr('sequencer')=="true" ){
-						var pl_element = this;
-						//load the mv_sequencer and the json util lib:
-						mvJsLoader.doLoad([
-								'mvSeqPlayList'
-							],function(){
-								var seqObj = new mvSeqPlayList( pl_element );
-								mvEmbed.swapEmbedVideoElement( pl_element, seqObj );																					
-							}
-						); 
-					}else{
-						//create new playlist interface:
-						var plObj = new mvPlayList( this );		
-						mvEmbed.swapEmbedVideoElement(this, plObj);
-						var added_height = plObj.pl_layout.title_bar_height + plObj.pl_layout.control_height;		
-						//move into a blocking display container with height + controls + title height: 
-						$j('#'+plObj.id).wrap('<div style="display:block;height:' + (plObj.height + added_height) + 'px;"></div>');					
-					}										
+				$j('playlist').each(function(){															 														 				
+					//create new playlist interface:
+					var plObj = new mvPlayList( this );
+					mvEmbed.swapEmbedVideoElement(this, plObj);
+					var added_height = plObj.pl_layout.title_bar_height + plObj.pl_layout.control_height;
+					//move into a blocking display container with height + controls + title height: 
+					$j('#'+plObj.id).wrap('<div style="display:block;height:' + (plObj.height + added_height) + 'px;"></div>');										
 				});
 			});
 		}	   

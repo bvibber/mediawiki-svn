@@ -266,7 +266,7 @@ mvSequencer.prototype = {
 		}			
 		$j('#'+this.video_container_id).html('<playlist ' + src_attr +
 			' style="width:' + this.video_width + 'px;height:' + this.video_height + 'px;" '+
-			' sequencer="true" id="' + this.plObj_id + '" />');		
+			' controls="false" id="' + this.plObj_id + '" />');		
 		rewrite_by_id( this.plObj_id );	
 		setTimeout(this.instance_name +'.checkReadyPlObj()', 25);		
 	},
