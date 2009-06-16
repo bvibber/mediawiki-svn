@@ -30,18 +30,18 @@ var nativeEmbed = {
 					'id="' + this.pid + '" ' +
 					'style="width:' + this.width+'px;height:' + this.height + 'px;" ' +
 					'width="' + this.width + '" height="'+this.height+'" '+
-					   'src="' + this.getSrc() + '" >';
+					   'src="' + this.getSrc() + '" ';
 					   
 		/*if(!this.onlyLoadFlag)
 			eb+='autoplay="true" ';*/
 			
 		//continue with the other attr:						
-		/*eb+=		'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
+		eb+=		'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
 					   'onloadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' + 
 					   'loadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' +
 					   'onprogress="$j(\'#'+this.id+'\').get(0).onprogress( event );return false;" '+
-					   'onended="$j(\'#'+this.id+'\').get(0).onended();return false;" >' +*/
-		eb+='</video>';
+					   'onended="$j(\'#'+this.id+'\').get(0).onended();return false;" >' +
+			'</video>';
 		return eb;
 	},
 	//@@todo : loading progress	
