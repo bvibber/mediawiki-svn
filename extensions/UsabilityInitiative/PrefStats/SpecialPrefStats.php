@@ -47,18 +47,10 @@ class SpecialPrefStats extends SpecialPage {
 	}
 	
 	function displayPrefStats( $pref ) {
-		global $wgOut, $wgUser, $wgRequest, $wgPrefStatsTrackPrefs;
+		global $wgOut, $wgRequest, $wgPrefStatsTrackPrefs;
 		$max = $this->getMaxDuration( $pref );
-		$wgOut->addHTML( Xml::openElement( 'ul' ) );
 		$stats = $this->getPrefStats( $pref,
 			$wgRequest->getIntOrNull( 'inc' ) );
-		foreach ( $stats as $key => $val ) {
-			list( $from, $to ) = explode( '-', $key );
-			$wgOut->addHTML( Xml::element( 'li', array(),
-				wfMsg( 'prefstats-stat-line', $val, $from, $to )
-			) );
-		}
-		$wgOut->addHTML( Xml::closeElement( 'ul' ) );
 		$wgOut->addHTML( Xml::element( 'img', array( 'src' =>
 			$this->getGoogleChartParams( $stats ) ) ) );
 	}

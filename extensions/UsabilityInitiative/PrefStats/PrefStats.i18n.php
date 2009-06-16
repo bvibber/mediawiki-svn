@@ -17,7 +17,6 @@ $messages['en'] = array(
 	'prefstats-title' => 'Preference statistics',
 	'prefstats-list-intro' => 'Currently, the following preferences are being tracked. Click on one to view statistics about it.',
 	'prefstats-list-elem' => '$1 = $2',
-	'prefstats-stat-line' => '$1 users have had the preference enabled for between $2 and $3 seconds', 
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
