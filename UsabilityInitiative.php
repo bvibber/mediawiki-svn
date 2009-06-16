@@ -45,6 +45,8 @@ $wgExtensionMessagesFiles['UsabilityInitiative'] =
 // Includes sub-extensions
 require_once( dirname( __FILE__ ) . "/EditToolbar/EditToolbar.php" );
 require_once( dirname( __FILE__ ) . "/EditWarning/EditWarning.php" );
+require_once( dirname( __FILE__ ) . "/PrefStats/PrefStats.php" );
+require_once( dirname( __FILE__ ) . "/OptIn/OptIn.php" );
 
 // Registers Hooks
 $wgHooks['AjaxAddScript'][] = 'UsabilityInitiativeHooks::addJs';
