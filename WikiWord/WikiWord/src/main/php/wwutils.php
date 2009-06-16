@@ -133,9 +133,10 @@ class WWUtils {
 	if (!$info) {
 		$db = false;
 	} else {
-	    $db = mysql_connect($info['server'], $this->dbuser, $this->dbpassword) or throw new Exception("Connection Failure to Database: " . mysql_error());
-	    mysql_select_db($info['dbname'], $db) or throw new Exception ("Database not found: " . mysql_error());
-	    mysql_query("SET NAMES Latin1;", $db) or throw new Exception ("Database not found: " . mysql_error());
+	    $db = mysql_connect($info['server'], $this->dbuser, $this->dbpassword);
+	    if (!$db) throw new Exception("Connection Failure to Database: " . mysql_error());
+	    if (!mysql_select_db($info['dbname'], $db)) throw new Exception ("Database not found: " . mysql_error());
+	    if (!mysql_query("SET NAMES Latin1;", $db)) throw new Exception ("Database not found: " . mysql_error());
 	}
 
 	$this->wikidbs[$lang] = $db;
