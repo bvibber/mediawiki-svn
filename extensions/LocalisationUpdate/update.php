@@ -16,6 +16,10 @@ $mtime = explode( " ", $mtime );
 $mtime = $mtime[1] + $mtime[0];
 $starttime = $mtime;
 
+// Prevent the script from timing out
+set_time_limit( 0 );
+ini_set( "max_execution_time", 0 );
+
 LocalisationUpdate::updateMessages( $verbose );
 
 $mtime = microtime();

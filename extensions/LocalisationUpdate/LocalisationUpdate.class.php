@@ -1,5 +1,4 @@
 <?php
-$verbose = false;
 class LocalisationUpdate {
 	// DB Search funtion
 	public static function FindUpdatedMessage( &$message, $lckey, $langcode, $isFullKey ) {
@@ -35,10 +34,6 @@ class LocalisationUpdate {
 		// Need this later
 		global $wgExtensionMessagesFiles;
 
-		// Prevent the script from timing out
-		set_time_limit( 0 );
-		ini_set( "max_execution_time", 0 );
-
 		// Update all MW core messages
 		$result = self::updateMediawikiMessages( $verbose );
 		
@@ -55,10 +50,7 @@ class LocalisationUpdate {
 
 	// Update Extension Messages
 	public static function updateExtensionMessages( $file, $extension, $verbose ) {
-		global $IP;
-
-		// Define the wikimedia SVN path
-		$wmSvnPath = 'svn.wikimedia.org/svnroot/mediawiki/';
+		global $IP, $wgLocalisationUpdateSVNURL;
 
 		// Find the right SVN folder
 		$svnFolder = SpecialVersion::getSvnRevision( dirname( $file ), false, false, true );
@@ -67,7 +59,7 @@ class LocalisationUpdate {
 		$localfile = $IP . "/" . $file;
 
 		// Get the full SVN directory path
-		$svndir = "http://" . $wmSvnPath . $svnFolder;
+		$svndir = "http://" . $wgLocalisationUpdateSVNURL . $svnFolder;
 
 		// Compare the 2 files
 		$result = self::compareExtensionFiles( $extension, $svndir . "/" . basename( $file ), $file, $verbose, false, true );
@@ -76,10 +68,7 @@ class LocalisationUpdate {
 
 	// Update the Mediawiki Core Messages
 	public static function updateMediawikiMessages( $verbose ) {
-		global $IP;
-
-		// Define the wikimedia SVN path
-		$wmSvnPath = 'svn.wikimedia.org/svnroot/mediawiki/';
+		global $IP, $wgLocalisationUpdateSVNURL;
 
 		// Create an array which will later contain all the files that we want to try to update
 		$files = array();
@@ -90,20 +79,6 @@ class LocalisationUpdate {
 		// Get the full path to the directory
 		$dirname = $IP . "/" . $dirname;
 
-		// Open the directory
-		$dir = opendir( $dirname );
-		while ( false !== ( $file = readdir( $dir ) ) ) {
-			$m = array();
-
-			// And save all the filenames of files containing messages
-			if ( preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $file, $m ) ) {
-				if ( $m[1] != 'En' ) { // Except for the english one
-					$files[] = $file;
-				}
-			}
-		}
-		closedir( $dir );
-
 		// Get the SVN folder used for the checkout
 		$svnFolder = SpecialVersion::getSvnRevision( $dirname, false, false, true );
 
@@ -112,9 +87,23 @@ class LocalisationUpdate {
 			self::myLog( 'Cannot update localisation as the files are not retrieved from SVN' );
 			return 0;
 		}
-
+		
 		// Get the full SVN Path
-		$svndir = "http://" . $wmSvnPath . $svnFolder;
+		$svndir = "http://" . $wgLocalisationUpdateSVNURL . $svnFolder;
+
+		// Open the directory
+		$dir = opendir( $dirname );
+		while ( false !== ( $file = readdir( $dir ) ) ) {
+			$m = array();
+
+			// And save all the filenames of files containing messages
+			if ( preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $file, $m ) ) {
+				if ( $m[1] != 'En' ) { // Except for the English one
+					$files[] = $file;
+				}
+			}
+		}
+		closedir( $dir );
 
 		// Find the changed English strings (as these messages won't be updated in ANY language)
 		$changedEnglishStrings = self::compareFiles( $dirname . "/MessagesEn.php", $svndir . "/MessagesEn.php", $verbose );
@@ -123,10 +112,6 @@ class LocalisationUpdate {
 		$changedCount = 0;
 
 		// For each language
-		if(!is_array($files)) {
-			self::myLog("CRITICAL ERROR: \$files is not an array in file ".(__FILE__)." at line ".(__LINE__));
-			return 0;
-		}
 		sort($files);
 		foreach ( $files as $file ) {
 			$svnfile = $svndir . "/" . $file;
@@ -161,7 +146,7 @@ class LocalisationUpdate {
 		}
 
 		// Windows vs Unix always stinks when comparing files
-		$contents = preg_replace( "/\\\r/", "", $contents );
+		$contents = preg_replace( "/\\\r\\\n?/", "\n", $contents );
 
 		// return the cleaned up file
 		return $contents;
@@ -184,7 +169,7 @@ class LocalisationUpdate {
 					return false;
 			}
 		} else {// otherwise try file_get_contents
-			if ( !$basefilecontents = file_get_contents( $basefile ) ) {
+			if ( !( $basefilecontents = file_get_contents( $basefile ) ) ) {
 				self::myLog( "Cannot get the contents of " . $basefile );
 				return false;
 			}
@@ -223,6 +208,7 @@ class LocalisationUpdate {
 		}
 
 		// Get the array with messages
+		// TODO: Security?
 		eval( $basefilecontents );
 
 		$comparefilecontents = self::getFileContents( $comparefile );
@@ -243,6 +229,7 @@ class LocalisationUpdate {
 			}
 		}
 		// Get the array
+		// TODO: security?
 		eval( $comparefilecontents );
 
 		// if the localfile and the remote file are the same, skip them!
@@ -266,7 +253,7 @@ class LocalisationUpdate {
 		if ( $saveResults === true && !empty($changedStrings) && is_array($changedStrings)) {
 			self::myLog( "--Checking languagecode {$langcode}--" );
 			// The save them
-			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode );
+			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode, $verbose );
 			self::myLog( "{$updates} messages updated for {$langcode}." );
 		} elseif($saveResults === true) {
 			self::myLog( "--{$langcode} hasn't changed--" );
@@ -304,9 +291,7 @@ class LocalisationUpdate {
 		$db->insert( 'localisation_file_hash', $hashConds, __METHOD__ );
 	}
 
-	public static function saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode ) {
-		global $verbose;
-
+	public static function saveChanges( $changedStrings, $forbiddenKeys, $base_messages, $langcode, $verbose ) {
 		// Gonna write to the DB again
 		$db = wfGetDB ( DB_MASTER );
 
@@ -318,34 +303,19 @@ class LocalisationUpdate {
 		}
 
 		foreach ( $changedStrings as $key => $value ) {
-			// If this message wasn't changed in english
+			// If this message wasn't changed in English
 			if ( !array_key_exists( $key , $forbiddenKeys ) ) {
 				// See if we can update the database
 				
-				$values = array( 'lo_value' => $base_messages[$key] );
-				$conds = array( 'lo_language' => $langcode, 'lo_key' => $key );
-				$result = $db->select( 'localisation', 'lo_value', $conds );
-				$dbObject = $db->fetchObject($result);
-				if($db->numRows($result) != 0 && $dbObject->lo_value === $base_messages[$key])
-					continue;
+				$values = array(
+					'lo_value' => $base_messages[$key],
+					'lo_language' => $langcode,
+					'lo_key' => $key
+				);
+				$db->replace( 'localisation',
+					array( 'PRIMARY' ), $values,
+					__METHOD__ );
 				
-				if($db->numRows($result) == 0) { 
-					$inserts = array(
-						'lo_value' => $base_messages[$key],
-						'lo_language' => $langcode,
-						'lo_key' => $key
-					);
-					$db->insert( 'localisation', $inserts );
-					if ( $db->affectedRows() == 0 ) {
-						throw new MWException( "An error has occured while inserting a new message into the database!" );
-					}
-				} else {
-					$db->update( 'localisation', $values, $conds );
-					if ( $db->affectedRows() == 0 ) {
-						throw new MWException( "An error has occured while updating a message in the database!" );
-					}
-				}
-
 				// Output extra logmessages when needed
 				if ( $verbose ) {
 					self::myLog( "Updated message {$key} from {$compare_messages[$key]} to {$base_messages[$key]}" );
@@ -373,11 +343,13 @@ class LocalisationUpdate {
 		}
 
 		// And we hate the windows vs linux linebreaks
-		$contents = preg_replace( "/\\\r/", "", $contents );
+		$contents = preg_replace( "/\\\r\\\n?/", "\n", $contents );
 		return $contents;
 	}
 
 	public static function compareExtensionFiles( $extension, $basefile, $comparefile, $verbose, $alwaysGetResult = true, $saveResults = false ) {
+		// FIXME: Factor out duplicated code?
+		
 		// Let's mess with the database again
 		$db = wfGetDB ( DB_MASTER );
 		$compare_messages = array();
@@ -403,6 +375,7 @@ class LocalisationUpdate {
 		}
 
 		// And get the real contents
+		// TODO: security?
 		eval( $basefilecontents );
 
 		$comparefilecontents = self::getFileContents( $comparefile );
@@ -422,6 +395,7 @@ class LocalisationUpdate {
 			}
 		}
 		// Get the real array
+		// TODO: security?
 		eval( $comparefilecontents );
 
 		// If both files are the same, they can be skipped
@@ -433,15 +407,17 @@ class LocalisationUpdate {
 		// Update counter
 		$updates = 0;
 
-		if(!is_array($base_messages))
+		if ( !is_array( $base_messages ) ) {
 			$base_messages = array();
+		}
 
 		if ( empty( $base_messages['en'] ) ) {
 			$base_messages['en'] = array();
 		}
 
-		if(!is_array($compare_messages))
+		if ( !is_array( $compare_messages ) ) {
 			$compare_messages = array();
+		}
 
 		if ( empty( $compare_messages['en'] ) ) {
 			$compare_messages['en'] = array();
@@ -476,7 +452,7 @@ class LocalisationUpdate {
 			if ( $saveResults === true && !empty($changedStrings) && is_array($changedStrings)) {
 				self::myLog( "--Checking languagecode {$language}--" );
 				// The save them
-				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $messages, $language );
+				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $messages, $language, $verbose );
 				self::myLog( "{$updates} messages updated for {$language}." );
 			} elseif($saveResults === true) {
 				self::myLog( "--{$language} hasn't changed--" );

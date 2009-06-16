@@ -5,6 +5,11 @@ KNOWN ISSUES:
   Mediawiki core
 */
 
+// Configuration
+
+$wgLocalisationUpdateSVNURL = "svn.wikimedia.org/svnroot/mediawiki/";
+$wgLocalisationUpdateRetryAttempts = 5;
+
 // Info about me!
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
@@ -23,5 +28,3 @@ $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['LocalisationUpdate'] = $dir . 'LocalisationUpdate.i18n.php';
 $wgAutoloadClasses['LocalisationUpdate'] = $dir . 'LocalisationUpdate.class.php';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'LocalisationUpdate::schemaUpdates';
-
-$wgLocalisationUpdateRetryAttempts = 5;
