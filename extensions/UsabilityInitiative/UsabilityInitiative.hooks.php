@@ -13,12 +13,12 @@ class UsabilityInitiativeHooks {
 	private static $messages = array();
 	private static $styles = array();
 	private static $scripts = array(
-		array( 'src' => 'Resources/jquery.js', 'version' => 1 ),
 		array( 'src' => 'Resources/jquery.textSelection.js', 'version' => 1 ),
 		array( 'src' => 'Resources/jquery.cookie.js', 'version' => 1 ),
 		array( 'src' => 'Resources/jquery.async.js', 'version' => 1 ),
-		array( 'src' => 'Resources/messages.js', 'version' => 1 ),
 	);
+	
+	
 
 	/* Static Functions */
 
@@ -28,7 +28,19 @@ class UsabilityInitiativeHooks {
 	 */
 	public static function addJs( $out ) {
 		global $wgScriptPath, $wgJsMimeType;
-
+		global $wgUsabilityInitiativeCoesxistWithMvEmbed;
+		
+		// Play nice with mv_embed
+		if ( !$wgUsabilityInitiativeCoesxistWithMvEmbed ) {
+			self::$scripts = array_merge(
+				array(
+					array( 'src' => 'Resources/jquery.js', 'version' => 1 ),
+					array( 'src' => 'Resources/messages.js', 'version' => 1 ),
+				),
+				self::$scripts
+			);
+		}
+		
 		// Loops over each script
 		foreach ( self::$scripts as $script ) {
 			// Add javascript to document
