@@ -281,6 +281,30 @@ $messages = array(
 'faq'            => 'Husto stajene prašenja (FAQ)',
 'faqpage'        => 'Project:Husto stajene prašenja (FAQ)',
 
+# Vector skin
+'vector-action-addsection'   => 'Temu přidać',
+'vector-action-delete'       => 'Wušmórnyć',
+'vector-action-move'         => 'Přesunyć',
+'vector-action-protect'      => 'Škitać',
+'vector-action-undelete'     => 'Wobnowić',
+'vector-action-unprotect'    => 'Škit wotstronić',
+'vector-namespace-category'  => 'Kategorija',
+'vector-namespace-help'      => 'Strona pomocy',
+'vector-namespace-image'     => 'Dataja',
+'vector-namespace-main'      => 'Strona',
+'vector-namespace-media'     => 'Medijowa strona',
+'vector-namespace-mediawiki' => 'Powěsć',
+'vector-namespace-project'   => 'Projektowa strona',
+'vector-namespace-special'   => 'Specialna strona',
+'vector-namespace-talk'      => 'Diskusija',
+'vector-namespace-template'  => 'Předłoha',
+'vector-namespace-user'      => 'Wužiwarska strona',
+'vector-view-create'         => 'Wutworić',
+'vector-view-edit'           => 'Wobdźěłać',
+'vector-view-history'        => 'Stawizny sej wobhladać',
+'vector-view-view'           => 'Čitać',
+'vector-view-viewsource'     => 'Žórło sej wobhladać',
+
 # Metadata in edit box
 'metadata_help' => 'Metadaty:',
 
@@ -300,7 +324,6 @@ $messages = array(
 'permalink'         => 'Trajny wotkaz',
 'print'             => 'Ćišćeć',
 'edit'              => 'wobdźěłać',
-'view'              => 'Čitać',
 'create'            => 'Wutworić',
 'editthispage'      => 'Stronu wobdźěłać',
 'create-this-page'  => 'Stronu wudźěłać',
@@ -1583,8 +1606,8 @@ Slědowaca lisćina pokazuje jenož {{PLURAL:$1|prěni wotkaz strony|prěnjej $1
 
 'brokenredirects'        => 'Skóncowane daleposrědkowanja',
 'brokenredirectstext'    => 'Slědowace daleposrědkowanja wotkazuja na njeeksistowace strony:',
-'brokenredirects-edit'   => '(wobdźěłać)',
-'brokenredirects-delete' => '(wušmórnyć)',
+'brokenredirects-edit'   => 'wobdźěłać',
+'brokenredirects-delete' => 'wušmórnyć',
 
 'withoutinterwiki'         => 'Strony bjez mjezyrěčnych wotkazow',
 'withoutinterwiki-summary' => 'Sćěhowace strony njewotkazuja na druhe rěčne wersije:',

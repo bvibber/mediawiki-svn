@@ -1193,8 +1193,8 @@ Tuturing yang bulung pamipalino ing metung a bulung nung gagamit yang modelung (
 
 'brokenredirects'        => 'Meputut a pamanaliling direksiun',
 'brokenredirectstext'    => 'Makasuglung la kareng bulung a ala naman deng makatuking pamanalis direksiun (redirects):',
-'brokenredirects-edit'   => '(alilan)',
-'brokenredirects-delete' => '(buran)',
+'brokenredirects-edit'   => 'alilan',
+'brokenredirects-delete' => 'buran',
 
 'withoutinterwiki'         => 'Bulung a yalang suglung kareng aliwang amanu',
 'withoutinterwiki-summary' => 'E la makasuglung kareng bersion king aliwang amanu deng makatuking bulung:',
@@ -1427,8 +1427,8 @@ Makasulat la king $2 deng pekabayung mebura.',
 'deletereasonotherlist'  => 'Aliwang sangkan',
 'deletereason-dropdown'  => '*Karaniwang sangkan king pamamura
 ** Pekisabi ning sinulat 
-** Pamaglabang king katulirang mangopia (copyright violation)
-** Pamanyira (vandalism)',
+** Pamaglabang king katulirang mangopia
+** Pamanyira',
 'delete-edit-reasonlist' => 'I-edit la reng sangkan king pamamura',
 'delete-toobig'          => 'Maki maragul yang amlat ning pamag-edit ing bulung a ini, nung nu maigit lang $1 deng miyalilan.
 Me-limita ing pamamura kareng bulung a anti kaniti, bang e maliliari ing e sasarian a kaguluan o pamag-distorbu king {{SITENAME}}.',

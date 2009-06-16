@@ -269,8 +269,8 @@ $magicWords = array(
 	'ns'                    => array( '0', 'NR:', 'NS:' ),
 	'localurl'              => array( '0', 'LOKALE_URL:', 'LOCALURL:' ),
 	'scriptpath'            => array( '0', 'SKRIPTPFAD', 'SCRIPTPATH' ),
-	'grammar'               => array( '0', 'GRAMMATIK', 'GRAMMAR:' ),
-	'gender'                => array( '0', 'GESCHLECHT', 'GENDER:' ),
+	'grammar'               => array( '0', 'GRAMMATIK:', 'GRAMMAR:' ),
+	'gender'                => array( '0', 'GESCHLECHT:', 'GENDER:' ),
 	'currentweek'           => array( '1', 'JETZIGE_KALENDERWOCHE', 'CURRENTWEEK' ),
 	'currentdow'            => array( '1', 'JETZIGER_WOCHENTAG_ZAHL', 'CURRENTDOW' ),
 	'localweek'             => array( '1', 'LOKALE_KALENDERWOCHE', 'LOCALWEEK' ),
@@ -282,7 +282,6 @@ $magicWords = array(
 	'revisionyear'          => array( '1', 'REVISIONSJAHR', 'REVISIONYEAR' ),
 	'revisiontimestamp'     => array( '1', 'REVISIONSZEITSTEMPEL', 'REVISIONTIMESTAMP' ),
 	'revisionuser'          => array( '1', 'REVISIONSBENUTZER', 'REVISIONUSER' ),
-	'plural'                => array( '0', 'PLURAL', 'PLURAL:' ),
 	'fullurl'               => array( '0', 'VOLLSTÄNDIGE_URL:', 'FULLURL:' ),
 	'lcfirst'               => array( '0', 'INITIAL_KLEIN:', 'LCFIRST:' ),
 	'ucfirst'               => array( '0', 'INITIAL_GROSS:', 'UCFIRST:' ),
@@ -477,6 +476,30 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Abschnitt hinzufügen',
+'vector-action-delete'       => 'Löschen',
+'vector-action-move'         => 'Verschieben',
+'vector-action-protect'      => 'Schützen',
+'vector-action-undelete'     => 'Wiederherstellen',
+'vector-action-unprotect'    => 'Freigeben',
+'vector-namespace-category'  => 'Kategorie',
+'vector-namespace-help'      => 'Hilfeseite',
+'vector-namespace-image'     => 'Datei',
+'vector-namespace-main'      => 'Seite',
+'vector-namespace-media'     => 'Medienseite',
+'vector-namespace-mediawiki' => 'MediaWiki-Systemnachricht',
+'vector-namespace-project'   => 'Projektseite',
+'vector-namespace-special'   => 'Spezialseite',
+'vector-namespace-talk'      => 'Diskussion',
+'vector-namespace-template'  => 'Vorlage',
+'vector-namespace-user'      => 'Benutzerseite',
+'vector-view-create'         => 'Erstellen',
+'vector-view-edit'           => 'Bearbeiten',
+'vector-view-history'        => 'Versionsgeschichte',
+'vector-view-view'           => 'Lesen',
+'vector-view-viewsource'     => 'Quelltext betrachten',
+
 # Metadata in edit box
 'metadata_help' => 'Metadaten:',
 
@@ -496,7 +519,6 @@ $messages = array(
 'permalink'         => 'Permanentlink',
 'print'             => 'Drucken',
 'edit'              => 'Bearbeiten',
-'view'              => 'Lesen',
 'create'            => 'Erstellen',
 'editthispage'      => 'Seite bearbeiten',
 'create-this-page'  => 'Seite erstellen',
@@ -1818,8 +1840,8 @@ Jede Zeile enthält Links zu der ersten und zweiten Weiterleitung sowie das Ziel
 
 'brokenredirects'        => 'Kaputte Weiterleitungen',
 'brokenredirectstext'    => 'Diese Spezialseite listet Weiterleitungen auf nicht existierende Seiten auf.',
-'brokenredirects-edit'   => '(bearbeiten)',
-'brokenredirects-delete' => '(löschen)',
+'brokenredirects-edit'   => 'bearbeiten',
+'brokenredirects-delete' => 'löschen',
 
 'withoutinterwiki'         => 'Seiten ohne Links zu anderen Sprachen',
 'withoutinterwiki-summary' => 'Die folgenden Seiten verlinken nicht auf andere Sprachversionen.',
@@ -2094,8 +2116,7 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'deletecomment'          => 'Grund der Löschung:',
 'deleteotherreason'      => 'Anderer/ergänzender Grund:',
 'deletereasonotherlist'  => 'Anderer Grund',
-'deletereason-dropdown'  => '
-* Allgemeine Löschgründe
+'deletereason-dropdown'  => '* Allgemeine Löschgründe
 ** Wunsch des Autors
 ** Urheberrechtsverletzung
 ** Vandalismus',
@@ -2286,8 +2307,7 @@ Bitte gib den Grund für die Sperre an.',
 'ipbexpiry'                       => 'Sperrdauer:',
 'ipbreason'                       => 'Begründung:',
 'ipbreasonotherlist'              => 'Andere Begründung',
-'ipbreason-dropdown'              => '
-* Allgemeine Sperrgründe
+'ipbreason-dropdown'              => '* Allgemeine Sperrgründe
 ** Löschen von Seiten
 ** Einstellen unsinniger Seiten
 ** Fortgesetzte Verstöße gegen die Richtlinien für Weblinks
@@ -3140,7 +3160,8 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 'confirm-purge-bottom' => 'Leert den Cache einer Seite und erzwingt die Anzeige der aktuellen Version.',
 
 # Separators for various lists, etc.
-'percent' => '$1&nbsp;%',
+'ellipsis' => '…',
+'percent'  => '$1&nbsp;%',
 
 # Multipage image navigation
 'imgmultipageprev' => '← vorherige Seite',

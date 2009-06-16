@@ -289,6 +289,30 @@ $messages = array(
 'faq'            => 'Quaestiones frequentes',
 'faqpage'        => 'Project:Quaestiones frequentes',
 
+# Vector skin
+'vector-action-addsection'   => 'Partem novam addere',
+'vector-action-delete'       => 'Delere',
+'vector-action-move'         => 'Movere',
+'vector-action-protect'      => 'Protegere',
+'vector-action-undelete'     => 'Restituere',
+'vector-action-unprotect'    => 'Deprotegere',
+'vector-namespace-category'  => 'Categoria',
+'vector-namespace-help'      => 'Auxilium',
+'vector-namespace-image'     => 'Fasciculus',
+'vector-namespace-main'      => 'Res',
+'vector-namespace-media'     => 'Media',
+'vector-namespace-mediawiki' => 'Nuntium',
+'vector-namespace-project'   => 'Consilium',
+'vector-namespace-special'   => 'Pagina specialis',
+'vector-namespace-talk'      => 'Disputatio',
+'vector-namespace-template'  => 'Formula',
+'vector-namespace-user'      => 'Pagina usoris',
+'vector-view-create'         => 'Creare',
+'vector-view-edit'           => 'Recensere',
+'vector-view-history'        => 'Historiam inspicere',
+'vector-view-view'           => 'Legere',
+'vector-view-viewsource'     => 'Fontem inspicere',
+
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
 
@@ -307,7 +331,6 @@ $messages = array(
 'permalink'         => 'Nexus perpetuus',
 'print'             => 'Imprimere',
 'edit'              => 'Recensere',
-'view'              => 'Legere',
 'create'            => 'Creare',
 'editthispage'      => 'Recensere hanc paginam',
 'create-this-page'  => 'Creare hanc paginam',
@@ -386,7 +409,7 @@ Vide [[Special:Version|paginam versionis]].',
 'editold'                 => 'recensere',
 'viewsourceold'           => 'fontem videre',
 'editlink'                => 'recensere',
-'viewsourcelink'          => 'fontem videre',
+'viewsourcelink'          => 'fontem inspicere',
 'editsectionhint'         => 'Recensere partem: $1',
 'toc'                     => 'Index',
 'showtoc'                 => 'monstrare',
@@ -448,7 +471,7 @@ MySQL erratum reddidit "$3: $4"',
 'wrong_wfQuery_params' => 'Parametri incorrectae pro wfQuery()<br />
 Functio: $1<br />
 Inquisitio: $2',
-'viewsource'           => 'Fontem videre',
+'viewsource'           => 'Fontem inspicere',
 'viewsourcefor'        => 'pro $1',
 'actionthrottled'      => 'Actio strangulata',
 'protectedpagetext'    => 'Haec pagina protecta est, ut emendationes prohibeantur.',
@@ -888,6 +911,8 @@ Try prefixing your query with ''all:'' to search all content (including talk pag
 'powersearch-ns'                 => 'Quaerere in spatiis nominalibus:',
 'powersearch-redir'              => 'Monstrare redirectiones',
 'powersearch-field'              => 'Quaerere',
+'powersearch-toggleall'          => 'Omnia',
+'powersearch-togglenone'         => 'Nullum',
 'search-external'                => 'Inquisitio externalis',
 'searchdisabled'                 => 'Per {{grammar:accusative|{{SITENAME}}}} ad tempus non potes quaerere. Interea per [http://www.google.com Googlem] quaeras. Nota indices {{grammar:genitive|{{SITENAME}}}} contentorum apud Googlem fortasse antiquiores esse.',
 
@@ -917,6 +942,7 @@ Try prefixing your query with ''all:'' to search all content (including talk pag
 'prefs-watchlist-days'      => 'Numerus dierum displicandus in paginis tuis custoditis:',
 'prefs-watchlist-days-max'  => '(maximum 7 dies)',
 'prefs-watchlist-edits'     => 'Numerus recensionum displicandus in paginis tuis custoditis extensis:',
+'prefs-watchlist-edits-max' => '(numerus maximus: 1000)',
 'prefs-misc'                => 'Misc',
 'prefs-resetpass'           => 'Tesseram mutare',
 'prefs-email'               => 'Optiones inscriptionis electronicae',
@@ -984,6 +1010,7 @@ Si vis, sinit etiam aliis tecum loqui per tuam paginam usoris vel disputationis,
 'prefs-info'                => 'Informatio basica',
 'prefs-i18n'                => 'Internationalizatio',
 'prefs-signature'           => 'Subscriptio',
+'prefs-diffs'               => 'Differentiae',
 
 # User rights
 'userrights'                  => 'Usorum potestates',
@@ -1033,7 +1060,7 @@ Si vis, sinit etiam aliis tecum loqui per tuam paginam usoris vel disputationis,
 'right-move-subpages'        => 'Paginas una cum subpaginis movere',
 'right-move-rootuserpages'   => 'Paginas usorum movere',
 'right-movefile'             => 'Fasciculos movere',
-'right-suppressredirect'     => 'Non creare redirectionem ex titulo vetere paginam movendo',
+'right-suppressredirect'     => 'Non creare redirectiones ex titulis veteribus paginas movendo',
 'right-upload'               => 'Fasciculos imponere',
 'right-upload_by_url'        => 'Fasciculum imponere ex inscriptione URL',
 'right-autoconfirmed'        => 'Paginas semiprotectas recensere',
@@ -1314,8 +1341,8 @@ Pagina discretivam esse putatur si formulam adhibet ad quem [[MediaWiki:Disambig
 
 'brokenredirects'        => 'Redirectiones fractae',
 'brokenredirectstext'    => 'Hae redirectiones ad paginas inexistentes nectunt:',
-'brokenredirects-edit'   => '(recensere)',
-'brokenredirects-delete' => '(delere)',
+'brokenredirects-edit'   => 'recensere',
+'brokenredirects-delete' => 'delere',
 
 'withoutinterwiki'         => 'Paginae sine nexibus ad linguas alias',
 'withoutinterwiki-summary' => 'Paginae sequentes non ad paginas in linguis aliis nectunt.',
@@ -1443,14 +1470,14 @@ Vide etiam [[Special:WantedCategories|categorias desideratas]].',
 'listgrouprights-rights'               => 'Potestates',
 'listgrouprights-helppage'             => 'Help:Gregum potestates',
 'listgrouprights-members'              => '(index rationum)',
-'listgrouprights-addgroup'             => 'Potest usores addere ad {{PLURAL:$2|gregem|greges}}: $1',
-'listgrouprights-removegroup'          => 'Potest usores removere ex {{PLURAL:$2|grege|gregibus}}: $1',
-'listgrouprights-addgroup-all'         => 'Potest usores addere ad omnes greges',
-'listgrouprights-removegroup-all'      => 'Potest usores removere ex omnibus gregibus',
-'listgrouprights-addgroup-self'        => 'Potest {{PLURAL:$2|gregem|greges}} addere ad rationem suam: $1',
-'listgrouprights-removegroup-self'     => 'Potest {{PLURAL:$2|gregem|greges}} removere ex ratione sua: $1',
-'listgrouprights-addgroup-self-all'    => 'Potest omnes greges addere ad rationem suam',
-'listgrouprights-removegroup-self-all' => 'Potest omnes greges removere ex ratione sua',
+'listgrouprights-addgroup'             => 'Addere {{PLURAL:$2|gregem|greges}}: $1',
+'listgrouprights-removegroup'          => 'Removere {{PLURAL:$2|gregem|greges}}: $1',
+'listgrouprights-addgroup-all'         => 'Addere omnes greges',
+'listgrouprights-removegroup-all'      => 'Removere omnes greges',
+'listgrouprights-addgroup-self'        => 'Addere {{PLURAL:$2|gregem|greges}} ad rationem propriam: $1',
+'listgrouprights-removegroup-self'     => 'Removere {{PLURAL:$2|gregem|greges}} ex ratione propria: $1',
+'listgrouprights-addgroup-self-all'    => 'Addere omnes greges ad rationem propriam',
+'listgrouprights-removegroup-self-all' => 'Removere omnes greges ex ratione propria',
 
 # E-mail user
 'emailuser'        => 'Litteras electronicas usori mittere',
@@ -2160,6 +2187,10 @@ Paginae nomen petitum "[[:$1]]" iam existit. Vin tu eam delere ut pagina illic m
 'exif-lightsource-3'   => 'Wolframium (lumen incandescens)',
 'exif-lightsource-4'   => 'Organum fulminescens',
 'exif-lightsource-11'  => 'Umbra',
+'exif-lightsource-15'  => 'Fluorescentia alba (WW 3200 – 3700K)',
+'exif-lightsource-17'  => 'Lumen accommodum A',
+'exif-lightsource-18'  => 'Lumen accommodum B',
+'exif-lightsource-19'  => 'Lumen accommodum C',
 'exif-lightsource-24'  => 'Wolframium studiorii normalizatum per ISO',
 'exif-lightsource-255' => 'Alius fons luminis',
 
@@ -2183,6 +2214,7 @@ Paginae nomen petitum "[[:$1]]" iam existit. Vin tu eam delere ut pagina illic m
 'exif-whitebalance-0' => 'Compensatio alba automatica',
 'exif-whitebalance-1' => 'Compensatio alba manualis',
 
+'exif-scenecapturetype-0' => 'Commoda',
 'exif-scenecapturetype-3' => 'Nocturna',
 
 'exif-gaincontrol-0' => 'Nullum',
@@ -2201,6 +2233,14 @@ Paginae nomen petitum "[[:$1]]" iam existit. Vin tu eam delere ut pagina illic m
 
 'exif-subjectdistancerange-0' => 'Ignota',
 'exif-subjectdistancerange-1' => 'Macro',
+
+# Pseudotags used for GPSLatitudeRef and GPSDestLatitudeRef
+'exif-gpslatitude-n' => 'Latitudo borealis',
+'exif-gpslatitude-s' => 'Latitudo australis',
+
+# Pseudotags used for GPSLongitudeRef and GPSDestLongitudeRef
+'exif-gpslongitude-e' => 'Longitudo orientalis',
+'exif-gpslongitude-w' => 'Longitudo occidentalis',
 
 'exif-gpsstatus-a' => 'Mensura in progressu',
 'exif-gpsstatus-v' => 'Interoperabilitas mensurae',
@@ -2368,5 +2408,8 @@ Quaesumus, adfirma ut iterum hanc paginam crees.",
 'tags-title'        => 'Affixa',
 'tags-edit'         => 'mutatum',
 'tags-hitcount'     => '$1 {{PLURAL:$1|mutatum|mutata}}',
+
+# HTML forms
+'htmlform-selectorother-other' => 'Aliud',
 
 );

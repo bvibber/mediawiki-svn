@@ -1258,7 +1258,7 @@ class OutputPage {
 			$loginTitle,
 			wfMsgHtml( 'loginreqlink' ),
 			array(),
-			array( 'returnto' => $this->getTitle()->getPrefixedUrl() ),
+			array( 'returnto' => $this->getTitle()->getPrefixedText() ),
 			array( 'known', 'noclasses' )
 		);
 		$this->addHTML( wfMsgWikiHtml( 'loginreqpagetext', $loginLink ) );
@@ -1469,7 +1469,7 @@ class OutputPage {
 		global $wgUser;
 		$this->addLink( array( 'rel' => 'next', 'href' => $title->getFullUrl() ) );
 		$link = wfMsgHtml( 'returnto', $wgUser->getSkin()->link( $title ) );
-		$this->addHTML( "<p>{$link}</p>\n" );
+		$this->addHTML( "<p id=\"mw-returnto\">{$link}</p>\n" );
 	}
 
 	/**

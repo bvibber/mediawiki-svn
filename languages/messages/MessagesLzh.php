@@ -216,6 +216,30 @@ $messages = array(
 'faq'            => '頻答問',
 'faqpage'        => 'Project:頻答問',
 
+# Vector skin
+'vector-action-addsection'   => '入題',
+'vector-action-delete'       => '刪',
+'vector-action-move'         => '遷',
+'vector-action-protect'      => '緘',
+'vector-action-undelete'     => '覽刪',
+'vector-action-unprotect'    => '啟',
+'vector-namespace-category'  => '類',
+'vector-namespace-help'      => '助',
+'vector-namespace-image'     => '檔',
+'vector-namespace-main'      => '文',
+'vector-namespace-media'     => '雅',
+'vector-namespace-mediawiki' => '訊',
+'vector-namespace-project'   => '策',
+'vector-namespace-special'   => '奇',
+'vector-namespace-talk'      => '議',
+'vector-namespace-template'  => '模',
+'vector-namespace-user'      => '齋',
+'vector-view-create'         => '立',
+'vector-view-edit'           => '纂',
+'vector-view-history'        => '覽史',
+'vector-view-view'           => '閱',
+'vector-view-viewsource'     => '覽源',
+
 # Metadata in edit box
 'metadata_help' => '衍意：',
 
@@ -235,7 +259,6 @@ $messages = array(
 'permalink'         => '恆鏈',
 'print'             => '印',
 'edit'              => '纂',
-'view'              => '閱',
 'create'            => '立',
 'editthispage'      => '纂',
 'create-this-page'  => '立',
@@ -1066,7 +1089,7 @@ $1",
 'right-move-subpages'         => '連遷子頁',
 'right-move-rootuserpages'    => '遷根齋',
 'right-movefile'              => '遷檔',
-'right-suppressredirect'      => '遷頁時無增轉',
+'right-suppressredirect'      => '遷頁時無增源之轉',
 'right-upload'                => '貢獻品物',
 'right-reupload'              => '蓋現之品物',
 'right-reupload-own'          => '蓋同簿之品物',
@@ -1388,8 +1411,8 @@ $1",
 
 'brokenredirects'        => '斷渡',
 'brokenredirectstext'    => '頁下斷渡。',
-'brokenredirects-edit'   => '(替)',
-'brokenredirects-delete' => '(刪)',
+'brokenredirects-edit'   => '替',
+'brokenredirects-delete' => '刪',
 
 'withoutinterwiki'         => '孤語',
 'withoutinterwiki-summary' => '頁下無鏈他語。',
@@ -1495,8 +1518,9 @@ $1",
 'special-categories-sort-abc'   => '排字',
 
 # Special:DeletedContributions
-'deletedcontributions'       => '已刪之積',
-'deletedcontributions-title' => '所棄之事',
+'deletedcontributions'             => '已刪之積',
+'deletedcontributions-title'       => '所棄之事',
+'sp-deletedcontributions-contribs' => '積',
 
 # Special:LinkSearch
 'linksearch'       => '尋網連',
@@ -1645,8 +1669,7 @@ $NEWPAGE
 'deletecomment'          => '刪因：',
 'deleteotherreason'      => '另／附之因：',
 'deletereasonotherlist'  => '另因',
-'deletereason-dropdown'  => '
-*常刪之因
+'deletereason-dropdown'  => '*常刪之因
 ** 作者之求
 ** 侵版權
 ** 破壞',
@@ -1824,8 +1847,7 @@ $1',
 'ipbexpiry'                       => '限期',
 'ipbreason'                       => '指證',
 'ipbreasonotherlist'              => '常犯',
-'ipbreason-dropdown'              => '
-*如下道：
+'ipbreason-dropdown'              => '*如下道：
 ** 造假報
 ** 毀文貌
 ** 廣賈告

@@ -168,7 +168,7 @@ class SpecialContributions extends SpecialPage {
 					array(),
 					array(
 						'type' => 'block',
-						'page' => $nt->getPrefixedUrl()
+						'page' => $nt->getPrefixedText()
 					)
 				);
 			}
@@ -177,7 +177,7 @@ class SpecialContributions extends SpecialPage {
 				SpecialPage::getTitleFor( 'Log' ),
 				wfMsg( 'sp-contributions-logs' ),
 				array(),
-				array( 'user' => $nt->getPartialUrl() )
+				array( 'user' => $nt->getText() )
 			);
 
 			# Add link to deleted user contributions for priviledged users
@@ -411,7 +411,7 @@ class ContribsPager extends ReverseChronologicalPager {
 		$conds = array_merge( $userCond, $this->getNamespaceCond() );
 		// Paranoia: avoid brute force searches (bug 17342)
 		if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
-			$conds[] = 'rev_deleted & ' . Revision::DELETED_USER . ' = 0';
+			$conds[] = $this->mDb->bitAnd('rev_deleted', Revision::DELETED_USER) . ' = 0';
 		}
 		$join_cond['page'] = array( 'INNER JOIN', 'page_id=rev_page' );
 		

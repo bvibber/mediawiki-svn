@@ -301,6 +301,30 @@ $messages = array(
 'faq'            => 'FAQ (pšašanja a wótegrona)',
 'faqpage'        => 'Project:FAQ (pšašanja a wótegrona)',
 
+# Vector skin
+'vector-action-addsection'   => 'Temu pśidaś',
+'vector-action-delete'       => 'Wulašowaś',
+'vector-action-move'         => 'Pśesunuś',
+'vector-action-protect'      => 'Šćitaś',
+'vector-action-undelete'     => 'Wótnowiś',
+'vector-action-unprotect'    => 'Šćit wótpóraś',
+'vector-namespace-category'  => 'Kategorija',
+'vector-namespace-help'      => 'Bok pomocy',
+'vector-namespace-image'     => 'Dataja',
+'vector-namespace-main'      => 'Bok',
+'vector-namespace-media'     => 'Medijowy bok',
+'vector-namespace-mediawiki' => 'Powěźeńka',
+'vector-namespace-project'   => 'Projektowy bok',
+'vector-namespace-special'   => 'Specialny bok',
+'vector-namespace-talk'      => 'Diskusija',
+'vector-namespace-template'  => 'Pśedłoga',
+'vector-namespace-user'      => 'Wužywarski bok',
+'vector-view-create'         => 'Napóraś',
+'vector-view-edit'           => 'Wobźěłaś',
+'vector-view-history'        => 'Historiju se woglědaś',
+'vector-view-view'           => 'Cytaś',
+'vector-view-viewsource'     => 'Žrědło se woglědaś',
+
 # Metadata in edit box
 'metadata_help' => 'Metadaty:',
 
@@ -320,7 +344,6 @@ $messages = array(
 'permalink'         => 'Wobstawny wótkaz',
 'print'             => 'Śišćaś',
 'edit'              => 'wobźěłaś',
-'view'              => 'Cytaś',
 'create'            => 'Wuźěłaś',
 'editthispage'      => 'Bok wobźěłaś',
 'create-this-page'  => 'Bok wuźěłaś',
@@ -1600,8 +1623,8 @@ Bok wobjadnawa se ako bok wujasnjenja zapśimjeśa, gaž wótkazujo na nju [[Med
 
 'brokenredirects'        => 'Skóńcowane dalejpósrědnjenja',
 'brokenredirectstext'    => 'Slědujuce dalejpósrědnjenja wótkazuju na njeeksistěrujuce boki:',
-'brokenredirects-edit'   => '(wobźěłaś)',
-'brokenredirects-delete' => '(wulašowaś)',
+'brokenredirects-edit'   => 'wobźěłaś',
+'brokenredirects-delete' => 'wulašowaś',
 
 'withoutinterwiki'         => 'Boki na kótarychž njejsu žedne wótkaze na druge rěcy',
 'withoutinterwiki-summary' => 'Slědujuce boki njewótkazuju na druge rěcne wersije:',

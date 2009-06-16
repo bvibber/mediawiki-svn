@@ -1548,8 +1548,8 @@ $1 เป็นผู้ดำเนินการบล็อกในคร�
 
 'brokenredirects'        => 'หน้าเปลี่ยนทางเสีย',
 'brokenredirectstext'    => 'หน้าเปลี่ยนทางต่อไปนี้เชื่อมโยงไปยังหน้าที่ไม่มี:',
-'brokenredirects-edit'   => '(แก้ไข)',
-'brokenredirects-delete' => '(ลบ)',
+'brokenredirects-edit'   => 'แก้ไข',
+'brokenredirects-delete' => 'ลบ',
 
 'withoutinterwiki'         => 'หน้าที่ไม่มีลิงก์ข้ามภาษา',
 'withoutinterwiki-summary' => 'หน้าต่อไปนี้ไม่มีลิงก์ข้ามไปภาษาอื่น',
@@ -2004,8 +2004,7 @@ $1',
 'ipbexpiry'                    => 'หมดอายุ',
 'ipbreason'                    => 'สาเหตุ',
 'ipbreasonotherlist'           => 'เลือกสาเหตุ',
-'ipbreason-dropdown'           => '
-*สาเหตุการบล็อกทั่วไป
+'ipbreason-dropdown'           => '*สาเหตุการบล็อกทั่วไป
 ** ใส่ข้อมูลเท็จ
 ** ลบเนื้อหาในหน้าออก
 ** ใส่ลิงก์สแปม

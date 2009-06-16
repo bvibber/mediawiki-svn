@@ -370,6 +370,30 @@ I seguenti collegamenti sono in lingua inglese:
 'faq'            => 'Domande frequenti',
 'faqpage'        => 'Project:Domande frequenti',
 
+# Vector skin
+'vector-action-addsection'   => 'Aggiungi discussione',
+'vector-action-delete'       => 'Cancella',
+'vector-action-move'         => 'Sposta',
+'vector-action-protect'      => 'Proteggi',
+'vector-action-undelete'     => 'Recupera',
+'vector-action-unprotect'    => 'Sblocca',
+'vector-namespace-category'  => 'Categoria',
+'vector-namespace-help'      => 'Aiuto',
+'vector-namespace-image'     => 'File',
+'vector-namespace-main'      => 'Pagina',
+'vector-namespace-media'     => 'File multimediale',
+'vector-namespace-mediawiki' => 'Messaggio',
+'vector-namespace-project'   => 'Pagina di servizio',
+'vector-namespace-special'   => 'Pagina speciale',
+'vector-namespace-talk'      => 'Discussione',
+'vector-namespace-template'  => 'Template',
+'vector-namespace-user'      => 'Utente',
+'vector-view-create'         => 'Crea',
+'vector-view-edit'           => 'Modifica',
+'vector-view-history'        => 'Visualizza cronologia',
+'vector-view-view'           => 'Leggi',
+'vector-view-viewsource'     => 'Visualizza sorgente',
+
 # Metadata in edit box
 'metadata_help' => 'Metadati:',
 
@@ -389,7 +413,6 @@ I seguenti collegamenti sono in lingua inglese:
 'permalink'         => 'Link permanente',
 'print'             => 'Stampa',
 'edit'              => 'Modifica',
-'view'              => 'Leggi',
 'create'            => 'Crea',
 'editthispage'      => 'Modifica questa pagina',
 'create-this-page'  => 'Crea questa pagina',
@@ -1672,8 +1695,8 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 
 'brokenredirects'        => 'Redirect errati',
 'brokenredirectstext'    => 'I seguenti redirect puntano a pagine inesistenti:',
-'brokenredirects-edit'   => '(modifica)',
-'brokenredirects-delete' => '(cancella)',
+'brokenredirects-edit'   => 'modifica',
+'brokenredirects-delete' => 'cancella',
 
 'withoutinterwiki'         => 'Pagine prive di interwiki',
 'withoutinterwiki-summary' => 'Le pagine indicate di seguito sono prive di collegamenti alle versioni in altre lingue:',

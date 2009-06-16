@@ -428,6 +428,30 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'トピック追加',
+'vector-action-delete'       => '削除',
+'vector-action-move'         => '移動',
+'vector-action-protect'      => '保護',
+'vector-action-undelete'     => '復帰',
+'vector-action-unprotect'    => '保護解除',
+'vector-namespace-category'  => 'カテゴリ',
+'vector-namespace-help'      => 'ヘルプページ',
+'vector-namespace-image'     => 'ファイル',
+'vector-namespace-main'      => 'ページ',
+'vector-namespace-media'     => 'メディアページ',
+'vector-namespace-mediawiki' => 'メッセージ',
+'vector-namespace-project'   => 'プロジェクトページ',
+'vector-namespace-special'   => '特別ページ',
+'vector-namespace-talk'      => 'ノート',
+'vector-namespace-template'  => 'テンプレート',
+'vector-namespace-user'      => '利用者ページ',
+'vector-view-create'         => '作成',
+'vector-view-edit'           => '編集',
+'vector-view-history'        => '履歴表示',
+'vector-view-view'           => '閲覧',
+'vector-view-viewsource'     => 'ソース表示',
+
 # Metadata in edit box
 'metadata_help' => 'メタデータ:',
 
@@ -447,7 +471,6 @@ $messages = array(
 'permalink'         => 'この版への固定リンク',
 'print'             => '印刷',
 'edit'              => '編集',
-'view'              => '閲覧',
 'create'            => '作成',
 'editthispage'      => 'このページを編集',
 'create-this-page'  => 'このページを作成',
@@ -1709,8 +1732,8 @@ PICT # misc.
 
 'brokenredirects'        => '迷子のリダイレクト',
 'brokenredirectstext'    => '以下は存在しないページにリンクしているリダイレクトです。',
-'brokenredirects-edit'   => '(編集)',
-'brokenredirects-delete' => '(削除)',
+'brokenredirects-edit'   => '編集',
+'brokenredirects-delete' => '削除',
 
 'withoutinterwiki'         => '言語間リンクを持たないページ',
 'withoutinterwiki-summary' => '以下のページには多言語版へのリンクがありません:',

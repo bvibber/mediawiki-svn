@@ -31,7 +31,7 @@ class DeletedContribsPager extends IndexPager {
 		$conds = array_merge( $userCond, $this->getNamespaceCond() );
 		// Paranoia: avoid brute force searches (bug 17792)
 		if( !$wgUser->isAllowed( 'suppressrevision' ) ) {
-			$conds[] = 'ar_deleted & ' . Revision::DELETED_USER . ' = 0';
+			$conds[] = $this->mDb->bitAnd('ar_deleted', Revision::DELETED_USER) . ' = 0';
 		}
 		return array(
 			'tables' => array( 'archive' ),
@@ -132,7 +132,7 @@ class DeletedContribsPager extends IndexPager {
 			array(),
 			array(
 				'type' => 'delete',
-				'page' => $page->getPrefixedUrl()
+				'page' => $page->getPrefixedText()
 			)
 		);
 
@@ -146,7 +146,7 @@ class DeletedContribsPager extends IndexPager {
 			htmlspecialchars( $page->getPrefixedText() ),
 			array(),
 			array(
-				'target' => $page->getPrefixedUrl(),
+				'target' => $page->getPrefixedText(),
 				'timestamp' => $rev->getTimestamp()
 			)
 		);
@@ -156,7 +156,7 @@ class DeletedContribsPager extends IndexPager {
 			$this->messages['diff'],
 			array(),
 			array(
-				'target' => $page->getPrefixedUrl(),
+				'target' => $page->getPrefixedText(),
 				'timestamp' => $rev->getTimestamp(),
 				'diff' => 'prev'
 			)
@@ -173,7 +173,7 @@ class DeletedContribsPager extends IndexPager {
 				$d,
 				array(),
 				array(
-					'target' => $page->getPrefixedUrl(),
+					'target' => $page->getPrefixedText(),
 					'timestamp' => $rev->getTimestamp()
 				)
 			);
@@ -347,7 +347,7 @@ class DeletedContributionsPage extends SpecialPage {
 					array(),
 					array(
 						'type' => 'block',
-						'page' => $nt->getPrefixedUrl()
+						'page' => $nt->getPrefixedText()
 					)
 				);
 			}
@@ -356,12 +356,12 @@ class DeletedContributionsPage extends SpecialPage {
 				SpecialPage::getTitleFor( 'Log' ),
 				wfMsgHtml( 'sp-contributions-logs' ),
 				array(),
-				array( 'user' => $nt->getPartialUrl() )
+				array( 'user' => $nt->getText() )
 			);
 			# Link to undeleted contributions
 			$tools[] = $sk->linkKnown(
 				SpecialPage::getTitleFor( 'Contributions', $nt->getDBkey() ),
-				wfMsgHtml( 'contributions' )
+				wfMsgHtml( 'sp-deletedcontributions-contribs' )
 			);
 
 			wfRunHooks( 'ContributionsToolLinks', array( $id, $nt, &$tools ) );

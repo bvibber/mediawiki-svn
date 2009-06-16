@@ -303,6 +303,9 @@ $messages = array(
 'faq'            => 'Soalan Lazim',
 'faqpage'        => 'Project:Soalan Lazim',
 
+# Vector skin
+'vector-view-view' => 'Baca',
+
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
 
@@ -322,7 +325,6 @@ $messages = array(
 'permalink'         => 'Pautan kekal',
 'print'             => 'Cetak',
 'edit'              => 'Sunting',
-'view'              => 'Baca',
 'create'            => 'Cipta',
 'editthispage'      => 'Sunting laman ini',
 'create-this-page'  => 'Cipta laman ini',
@@ -1573,8 +1575,8 @@ Penerangan pada [$2 laman penerangan failnya] di sana ditunjukkan di bawah.',
 
 'brokenredirects'        => 'Lencongan rosak',
 'brokenredirectstext'    => 'Lencongan-lencongan berikut menuju ke laman yang tidak wujud:',
-'brokenredirects-edit'   => '(sunting)',
-'brokenredirects-delete' => '(hapus)',
+'brokenredirects-edit'   => 'sunting',
+'brokenredirects-delete' => 'hapus',
 
 'withoutinterwiki'         => 'Laman tanpa pautan bahasa',
 'withoutinterwiki-summary' => 'Laman-laman berikut tidak mempunyai pautan ke versi bahasa lain:',
@@ -1855,8 +1857,7 @@ Sila lihat $2 untuk rekod penghapusan terkini.',
 'deletecomment'          => 'Sebab penghapusan:',
 'deleteotherreason'      => 'Sebab lain/tambahan:',
 'deletereasonotherlist'  => 'Sebab lain',
-'deletereason-dropdown'  => '
-* Sebab-sebab lazim
+'deletereason-dropdown'  => '* Sebab-sebab lazim
 ** Permintaan pengarang
 ** Melanggar hak cipta
 ** Vandalisme',
@@ -2050,8 +2051,7 @@ dirosakkan).',
 'ipbexpiry'                       => 'Tempoh:',
 'ipbreason'                       => 'Sebab:',
 'ipbreasonotherlist'              => 'Lain-lain',
-'ipbreason-dropdown'              => '
-*Sebab lazim
+'ipbreason-dropdown'              => '*Sebab lazim
 ** Memasukkan maklumat palsu
 ** Membuang kandungan daripada laman
 ** Memmasukkan pautan spam ke tapak web luar

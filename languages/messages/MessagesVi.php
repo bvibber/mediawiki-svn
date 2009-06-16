@@ -381,6 +381,30 @@ $messages = array(
 'faq'            => 'Câu hỏi thường gặp',
 'faqpage'        => 'Project:Các câu hỏi thường gặp',
 
+# Vector skin
+'vector-action-addsection'   => 'Thêm chủ đề',
+'vector-action-delete'       => 'Xóa',
+'vector-action-move'         => 'Di chuyển',
+'vector-action-protect'      => 'Khóa',
+'vector-action-undelete'     => 'Phục hồi',
+'vector-action-unprotect'    => 'Mở khóa',
+'vector-namespace-category'  => 'Thể loại',
+'vector-namespace-help'      => 'Trang trợ giúp',
+'vector-namespace-image'     => 'Tập tin',
+'vector-namespace-main'      => 'Trang',
+'vector-namespace-media'     => 'Trang phương tiện',
+'vector-namespace-mediawiki' => 'Thông điệp',
+'vector-namespace-project'   => 'Trang dự án',
+'vector-namespace-special'   => 'Trang đặc biệt',
+'vector-namespace-talk'      => 'Thảo luận',
+'vector-namespace-template'  => 'Tiêu bản',
+'vector-namespace-user'      => 'Trang cá nhân',
+'vector-view-create'         => 'Tạo',
+'vector-view-edit'           => 'Sửa',
+'vector-view-history'        => 'Xem lịch sử',
+'vector-view-view'           => 'Xem',
+'vector-view-viewsource'     => 'Xem mã nguồn',
+
 # Metadata in edit box
 'metadata_help' => 'Đặc tính hình:',
 
@@ -400,7 +424,6 @@ $messages = array(
 'permalink'         => 'Liên kết thường trực',
 'print'             => 'In',
 'edit'              => 'Sửa đổi',
-'view'              => 'Xem',
 'create'            => 'Tạo',
 'editthispage'      => 'Sửa trang này',
 'create-this-page'  => 'Tạo trang này',
@@ -423,7 +446,7 @@ $messages = array(
 'views'             => 'Xem',
 'toolbox'           => 'Thanh công cụ',
 'userpage'          => 'Xem trang thành viên',
-'projectpage'       => 'Trang Wikipedia',
+'projectpage'       => 'Xem trang dự án',
 'imagepage'         => 'Xem trang tập tin',
 'mediawikipage'     => 'Thông báo giao diện',
 'templatepage'      => 'Trang tiêu bản',
@@ -1703,8 +1726,8 @@ Hãy nhớ kiểm tra các liên kết khác đến tiêu bản trước khi xó
 
 'brokenredirects'        => 'Đổi hướng sai',
 'brokenredirectstext'    => 'Các trang đổi hướng sau đây liên kết đến trang không tồn tại:',
-'brokenredirects-edit'   => '(sửa)',
-'brokenredirects-delete' => '(xóa)',
+'brokenredirects-edit'   => 'sửa',
+'brokenredirects-delete' => 'xóa',
 
 'withoutinterwiki'         => 'Trang chưa có liên kết ngoại ngữ',
 'withoutinterwiki-summary' => 'Các trang sau đây không có liên kết đến các phiên bản ngoại ngữ khác:',

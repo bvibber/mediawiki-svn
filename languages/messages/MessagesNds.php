@@ -67,13 +67,13 @@ $magicWords = array(
 	'pagenamee'             => array( '1', 'SIETNAAME', 'SEITENNAME_URL', 'PAGENAMEE' ),
 	'namespace'             => array( '1', 'NAAMRUUM', 'NAMENSRAUM', 'NAMESPACE' ),
 	'img_thumbnail'         => array( '1', 'duum', 'miniatur', 'thumbnail', 'thumb' ),
-	'img_right'             => array( '1', 'rechts', 'rechts', 'right' ),
-	'img_left'              => array( '1', 'links', 'links', 'left' ),
+	'img_right'             => array( '1', 'rechts', 'right' ),
+	'img_left'              => array( '1', 'links', 'left' ),
 	'img_none'              => array( '1', 'keen', 'ohne', 'none' ),
 	'img_center'            => array( '1', 'merrn', 'zentriert', 'center', 'centre' ),
 	'img_framed'            => array( '1', 'rahmt', 'gerahmt', 'framed', 'enframed', 'frame' ),
 	'sitename'              => array( '1', 'STEEDNAAM', 'PROJEKTNAME', 'SITENAME' ),
-	'ns'                    => array( '0', 'NR:', 'NR:', 'NS:' ),
+	'ns'                    => array( '0', 'NR:', 'NS:' ),
 	'localurl'              => array( '0', 'STEEDURL:', 'LOKALE_URL:', 'LOCALURL:' ),
 	'localurle'             => array( '0', 'STEEDURLE:', 'LOCALURLE:' ),
 	'grammar'               => array( '0', 'GRAMMATIK:', 'GRAMMAR:' ),
@@ -1623,8 +1623,8 @@ to den vun den tweeten Wiederleiden wiest warrt, un to den de eerste Wiederleide
 
 'brokenredirects'        => 'Kaputte Wiederleiden',
 'brokenredirectstext'    => 'Disse Redirects wiest na Sieden, de dat nich gifft.',
-'brokenredirects-edit'   => '(ännern)',
-'brokenredirects-delete' => '(wegsmieten)',
+'brokenredirects-edit'   => 'ännern',
+'brokenredirects-delete' => 'wegsmieten',
 
 'withoutinterwiki'         => 'Sieden ahn Spraaklenken',
 'withoutinterwiki-summary' => 'Disse Sieden hebbt keen Lenken na annere Spraakversionen:',
@@ -1957,7 +1957,6 @@ Gah een Sied trüch un versöök dat noch wedder.',
 ** toveel Vandalismus
 ** toveel Spam
 ** Rin’e-Tuffeln/Rut’e-Tuffeln-Geänner
-** veel bruukt Vörlaag
 ** Sied mit temlich veel Besökers',
 'protect-edit-reasonlist'     => 'Grünn för de Sperr ännern',
 'protect-expiry-options'      => '1 Stünn:1 hour,1 Dag:1 day,1 Week:1 week,2 Weken:2 weeks,1 Maand:1 month,3 Maand:3 months,6 Maand:6 months,1 Johr:1 year,ahn Enn:infinite',

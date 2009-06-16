@@ -182,6 +182,7 @@ $magicWords = array(
 	'filepath'              => array( '0', 'TIEDOSTOPOLKU:', 'FILEPATH:' ),
 	'hiddencat'             => array( '1', '__PIILOLUOKKA__', '__HIDDENCAT__' ),
 	'pagesize'              => array( '1', 'SIVUKOKO', 'PAGESIZE' ),
+	'formatdate'            => array( '0', 'abba', 'formatdate', 'dateformat' ),
 );
 
 $specialPageAliases = array(
@@ -437,6 +438,30 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'faq'            => 'Usein kysytyt kysymykset',
 'faqpage'        => 'Project:Usein kysytyt kysymykset',
 
+# Vector skin
+'vector-action-addsection'   => 'Lisää aihe',
+'vector-action-delete'       => 'Poista',
+'vector-action-move'         => 'Siirrä',
+'vector-action-protect'      => 'Suojaa',
+'vector-action-undelete'     => 'Palauta',
+'vector-action-unprotect'    => 'Muuta suojausta',
+'vector-namespace-category'  => 'Luokka',
+'vector-namespace-help'      => 'Ohjesivu',
+'vector-namespace-image'     => 'Tiedosto',
+'vector-namespace-main'      => 'Sivu',
+'vector-namespace-media'     => 'Mediasivu',
+'vector-namespace-mediawiki' => 'Järjestelmäviesti',
+'vector-namespace-project'   => 'Projektisivu',
+'vector-namespace-special'   => 'Toimintosivu',
+'vector-namespace-talk'      => 'Keskustelu',
+'vector-namespace-template'  => 'Malline',
+'vector-namespace-user'      => 'Käyttäjäsivu',
+'vector-view-create'         => 'Luo',
+'vector-view-edit'           => 'Muokkaa',
+'vector-view-history'        => 'Näytä historia',
+'vector-view-view'           => 'Lue',
+'vector-view-viewsource'     => 'Näytä lähdekoodi',
+
 # Metadata in edit box
 'metadata_help' => 'Sisältökuvaukset:',
 
@@ -456,7 +481,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'permalink'         => 'Ikilinkki',
 'print'             => 'Tulosta',
 'edit'              => 'Muokkaa',
-'view'              => 'Lue',
 'create'            => 'Luo sivu',
 'editthispage'      => 'Muokkaa tätä sivua',
 'create-this-page'  => 'Luo tämä sivu',
@@ -954,6 +978,7 @@ Ylläpitäjänä voit silti [$1 katsoa tämän muutoksen].",
 'revdelete-nologid-title'     => 'Epäkelpo lokitapahtuma',
 'revdelete-nologid-text'      => 'Joko et ole määritellyt kohdetta lokitapahtumalle tämän toiminnon suorittamiseksi tai määriteltyä tapahtumaa ei ole.',
 'revdelete-no-file'           => 'Määritettyä tiedostoa ei ole olemassa.',
+'revdelete-show-file-confirm' => 'Haluatko varmasti nähdä poistetun version tiedostosta <nowiki>$1</nowiki>, joka on tallennettu $2 kello $3?',
 'revdelete-show-file-submit'  => 'Kyllä',
 'revdelete-selected'          => "'''{{PLURAL:$2|Valittu versio|Valitut versiot}} sivusta '''$1:''''''",
 'logdelete-selected'          => "'''{{PLURAL:$1|Valittu lokimerkintä|Valitut lokimerkinnät}}:'''",
@@ -1686,8 +1711,8 @@ Tiedot [$2 tiedoston kuvaussivulta] näkyvät alla.',
 
 'brokenredirects'        => 'Virheelliset ohjaukset',
 'brokenredirectstext'    => 'Seuraavat ohjaukset osoittavat sivuihin, joita ei ole olemassa.',
-'brokenredirects-edit'   => '(muokkaa)',
-'brokenredirects-delete' => '(poista)',
+'brokenredirects-edit'   => 'muokkaa',
+'brokenredirects-delete' => 'poista',
 
 'withoutinterwiki'         => 'Sivut, joilla ei ole kielilinkkejä',
 'withoutinterwiki-summary' => 'Seuraavat sivut eivät viittaa erikielisiin versioihin:',
@@ -2083,7 +2108,7 @@ Viimeisimmän muokkauksen on tehnyt käyttäjä [[User:$3|$3]] ([[User talk:$3|k
 'undelete-error-long'          => 'Tiedoston palauttaminen epäonnistui:
 
 $1',
-'undelete-show-file-confirm'   => 'Haluatko varmasti nähdä poistetun version tiedostosta ”<nowiki>$1</nowiki>” ajalta $2 $3?',
+'undelete-show-file-confirm'   => 'Haluatko varmasti nähdä poistetun version tiedostosta <nowiki>$1</nowiki>, joka on tallennettu $2 kello $3?',
 'undelete-show-file-submit'    => 'Kyllä',
 
 # Namespace form on various pages
@@ -2141,8 +2166,7 @@ $1',
 'ipbexpiry'                       => 'Kesto',
 'ipbreason'                       => 'Syy',
 'ipbreasonotherlist'              => 'Muu syy',
-'ipbreason-dropdown'              => '
-*Yleiset estosyyt
+'ipbreason-dropdown'              => '*Yleiset estosyyt
 ** Väärän tiedon lisääminen
 ** Sisällön poistaminen
 ** Mainoslinkkien lisääminen

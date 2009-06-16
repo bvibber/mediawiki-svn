@@ -1464,8 +1464,8 @@ Vèninu cunzidirati pàggini di disambiguazzioni tutti chiddi ca cuntèninu li t
 
 'brokenredirects'        => "Riinnirizzamenti (''redirects'') rumputi.",
 'brokenredirectstext'    => 'Li rinnirizzamenti siquenti pùntanu a pàggini ca nun asìstinu:',
-'brokenredirects-edit'   => '(cancia)',
-'brokenredirects-delete' => '(cancella)',
+'brokenredirects-edit'   => 'cancia',
+'brokenredirects-delete' => 'cancella',
 
 'withoutinterwiki'         => 'Pàggini senza interwiki',
 'withoutinterwiki-summary' => 'Li pàggini nnicati ccà nun hànnu liami ê virsioni nta àutri lingui:',
@@ -1793,8 +1793,7 @@ Li mpostazzioni correnti pâ pàggina sugnu '''$1''':",
 ** Vannalìsimi fatti cchiossai di na vota
 ** Nzirimenti di spam fatti cchiossai di na vota
 ** Edit war
-** Pàggina usata assai
-** Pàggina archiviata',
+** Pàggina usata assai',
 'protect-edit-reasonlist'     => 'Cancia li mutivi pâ prutizzioni',
 'protect-expiry-options'      => '2 uri:2 hours,1 jornu:1 day,3 jorna:3 days,1 simana:1 week,2 simani:2 weeks,1 misi:1 month,3 misi:3 months,6 misi:6 months,1 annu:1 year,nfinitu:infinite',
 'restriction-type'            => 'Pirmissu',

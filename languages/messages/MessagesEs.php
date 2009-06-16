@@ -368,6 +368,29 @@ $messages = array(
 'faq'            => 'Preguntas Frecuentes (FAQ)',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Agregar tópico',
+'vector-action-delete'       => 'Borrar',
+'vector-action-move'         => 'Mover',
+'vector-action-protect'      => 'Proteger',
+'vector-action-unprotect'    => 'Desproteger',
+'vector-namespace-category'  => 'Categoría',
+'vector-namespace-help'      => 'Página de ayuda',
+'vector-namespace-image'     => 'Archivo',
+'vector-namespace-main'      => 'Página',
+'vector-namespace-media'     => 'Página de medios',
+'vector-namespace-mediawiki' => 'Mensaje',
+'vector-namespace-project'   => 'Página proyecto',
+'vector-namespace-special'   => 'Página especial',
+'vector-namespace-talk'      => 'Discusión',
+'vector-namespace-template'  => 'Plantilla',
+'vector-namespace-user'      => 'Página de usuario',
+'vector-view-create'         => 'Crear',
+'vector-view-edit'           => 'Editar',
+'vector-view-history'        => 'Ver historial',
+'vector-view-view'           => 'Leer',
+'vector-view-viewsource'     => 'Ver fuente',
+
 # Metadata in edit box
 'metadata_help' => 'Metadatos:',
 
@@ -387,7 +410,6 @@ $messages = array(
 'permalink'         => 'Enlace permanente',
 'print'             => 'Imprimir',
 'edit'              => 'Editar',
-'view'              => 'Leer',
 'create'            => 'Crear',
 'editthispage'      => 'Editar esta página',
 'create-this-page'  => 'Crear esta página',
@@ -1681,8 +1703,8 @@ Cada fila contiene enlaces al segundo y tercer redirect, así como la primera l�
 
 'brokenredirects'        => 'Redirecciones incorrectas',
 'brokenredirectstext'    => 'Las siguientes redirecciones enlazan a páginas que no existen:',
-'brokenredirects-edit'   => '(editar)',
-'brokenredirects-delete' => '(borrar)',
+'brokenredirects-edit'   => 'editar',
+'brokenredirects-delete' => 'borrar',
 
 'withoutinterwiki'         => 'Páginas sin interwikis',
 'withoutinterwiki-summary' => 'Las siguientes páginas no enlazan a versiones en otros idiomas:',
@@ -2155,8 +2177,7 @@ las páginas en particular que han sido objeto de vandalismo).',
 'ipbexpiry'                       => 'Caduca dentro de',
 'ipbreason'                       => 'Motivo:',
 'ipbreasonotherlist'              => 'Otra razón',
-'ipbreason-dropdown'              => '
-*Motivos comunes de bloqueo
+'ipbreason-dropdown'              => '*Motivos comunes de bloqueo
 ** Añadir información falsa
 ** Eliminar contenido de las páginas
 ** Publicitar enlaces a otras páginas web

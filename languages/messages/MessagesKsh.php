@@ -186,7 +186,7 @@ $specialPageAliases = array(
 $magicWords = array(
 	'redirect'              => array( '0', '#ÖMLEIDUNG', '#WEITERLEITUNG', '#REDIRECT' ),
 	'language'              => array( '0', '#SHPROOCH:', '#SPROCH:', '#SPRACHE:', '#LANGUAGE:' ),
-	'hiddencat'             => array( '1', '__VERSHTOCHE_SAACHJRUPP__', '__WARTUNGSKATEGORIE__', '__VERSTECKTE_KATEGORIE__', '__WARTUNGSKATEGORIE__', '__HIDDENCAT__' ),
+	'hiddencat'             => array( '1', '__VERSHTOCHE_SAACHJRUPP__', '__VERSTECKTE_KATEGORIE__', '__WARTUNGSKATEGORIE__', '__HIDDENCAT__' ),
 );
 
 $imageFiles = array(
@@ -349,6 +349,30 @@ Em Appachtemang <span class="plainlinks">[{{fullurl:Special:AllPages|namespace={
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Ne neue Afschnet onge draan!',
+'vector-action-delete'       => 'Fottschmiiße!',
+'vector-action-move'         => 'Ömnänne!',
+'vector-action-protect'      => 'Schöze!',
+'vector-action-undelete'     => 'Zerökholle!',
+'vector-action-unprotect'    => 'Schoz ophävve!',
+'vector-namespace-category'  => 'Saachjroppesigg',
+'vector-namespace-help'      => 'Hölpsigg',
+'vector-namespace-image'     => 'Datei',
+'vector-namespace-main'      => 'Wikisigg',
+'vector-namespace-media'     => 'Medijesigg',
+'vector-namespace-mediawiki' => 'Täx/Nohreesch',
+'vector-namespace-project'   => 'Projäksigg',
+'vector-namespace-special'   => 'Söndersigg',
+'vector-namespace-talk'      => 'Klaafsigg',
+'vector-namespace-template'  => 'Schablohn',
+'vector-namespace-user'      => 'Metmaachersigg',
+'vector-view-create'         => 'Neu Schriive!',
+'vector-view-edit'           => 'Ändere!',
+'vector-view-history'        => 'Versione zeije!',
+'vector-view-view'           => 'Lesse!',
+'vector-view-viewsource'     => 'Wikitex aanlooere!',
+
 # Metadata in edit box
 'metadata_help' => 'Metta-Daate:',
 
@@ -368,7 +392,6 @@ Em Appachtemang <span class="plainlinks">[{{fullurl:Special:AllPages|namespace={
 'permalink'         => 'Als Permalink',
 'print'             => 'Drocke',
 'edit'              => 'Ändere',
-'view'              => 'Lesse',
 'create'            => 'Aanläje',
 'editthispage'      => 'De Sigg ändere',
 'create-this-page'  => 'Neu aanläje',
@@ -1859,8 +1882,8 @@ vun dä Sigg dovör.',
 
 'brokenredirects'        => 'Ömleitunge, die en et Leere jonn',
 'brokenredirectstext'    => 'Die Ömleitunge hee jonn op Sigge, die mer jaa nit han:',
-'brokenredirects-edit'   => '(ändere)',
-'brokenredirects-delete' => '(fottschmieße)',
+'brokenredirects-edit'   => 'ändere',
+'brokenredirects-delete' => 'fottschmieße',
 
 'withoutinterwiki'         => 'Atikele ohne Links op annder Shprooche',
 'withoutinterwiki-summary' => 'He sin Sigge jeliß, di nit op annder Shprooche jelingk sin.',
@@ -2164,9 +2187,7 @@ Do kanns hee noh Hölp luure:
 'deletereason-dropdown'  => '* Alljemein Jrönde
 ** dä Schriever wollt et esu
 ** wohr jäje et Urhävverrääsch
-** et wohd jet kapott jemaat
-** et wohr bloß Keu
-** mem Name verdonn bemm Aanläje',
+** et wohd jet kapott jemaat',
 'delete-edit-reasonlist' => 'De Jrönde för et Fottschmieße beärbeide',
 'delete-toobig'          => 'Di Sigg hät {{PLURAL:$1|ein Version|$1 Versione|jakein Version}}. Dat sinn_er ärsch fill. Domet unsere ßööver do nit draan en de Kneen jeit, dom_mer esu en Sigg nit fottschmieße.',
 'delete-warning-toobig'  => 'Di Sigg hät {{PLURAL:$1|ein Version|$1 Versione|jakein Version}}. Dat sinn_er ärsch fill. Wann De die all fottschmieße wells, dat kann dem Wiki sing Datenbangk schwer ußbremse.',

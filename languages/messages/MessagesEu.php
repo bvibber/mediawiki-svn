@@ -272,6 +272,9 @@ $messages = array(
 'faq'            => 'Maiz egindako galderak',
 'faqpage'        => 'Project:Maiz egindako galderak',
 
+# Vector skin
+'vector-view-view' => 'Irakurri',
+
 # Metadata in edit box
 'metadata_help' => 'Metadatuak:',
 
@@ -291,7 +294,6 @@ $messages = array(
 'permalink'         => 'Lotura finkoa',
 'print'             => 'Inprimatu',
 'edit'              => 'Aldatu',
-'view'              => 'Irakurri',
 'create'            => 'Sortu',
 'editthispage'      => 'Orrialde hau aldatu',
 'create-this-page'  => 'Orrialde hau sortu',
@@ -1535,8 +1537,8 @@ Ondorengo zerrendak fitxategira dauden {{PLURAL:$1|lehen lotura|lehen $1 loturak
 
 'brokenredirects'        => 'Hautsitako birzuzenketak',
 'brokenredirectstext'    => 'Jarraian zerrendatutako birzuzenketa loturak existitzen ez diren orrietara zuzenduta daude:',
-'brokenredirects-edit'   => '(aldatu)',
-'brokenredirects-delete' => '(ezabatu)',
+'brokenredirects-edit'   => 'aldatu',
+'brokenredirects-delete' => 'ezabatu',
 
 'withoutinterwiki'         => 'Hizkuntza loturarik gabeko orrialdeak',
 'withoutinterwiki-summary' => 'Orrialde hauek ez daukate beste hizkuntzetarako loturarik:',
@@ -2113,8 +2115,10 @@ Hala ere, $2-(r)en parte denez, blokeoa kendu daiteke.',
 # Move page
 'move-page'                    => '$1 mugitu',
 'move-page-legend'             => 'Orrialdea mugitu',
-'movepagetext'                 => 'Hurrengo pausoak jarraituz, artikulu edo orrialde baten izena aldatu daiteke. Izenburu zaharra, automatikoki izenburu berriari birzuzenduko zaio.
-Gogora ezazu, orrialdearen izena ez dela aldatuko, nahi duzun izena dagoeneko sortuta badago Wikipedian; birzuzenketa bat edo historiarik gabeko orrialde bat ez bada.
+'movepagetext'                 => 'Hurrengo pausoak jarraituz, artikulu edo orrialde baten izena aldatu daiteke.
+Izenburu zaharra, automatikoki izenburu berriari birzuzenduko zaio.
+Gogora ezazu, orrialdearen izena ez dela aldatuko, nahi duzun izena dagoeneko sortuta badago Wikipedian; 
+birzuzenketa bat edo historiarik gabeko orrialde bat ez bada.
 
 <b>KONTUZ!</b>
 Artikulu oso erabilia edo asko aldatzen denaren izenburua aldatzera bazoaz, mesedez, lehenbizi artikuluaren eztabaidan adierazi ezazu beste lankideen iritziak jasotzeko.',

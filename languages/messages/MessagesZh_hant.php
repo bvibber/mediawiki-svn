@@ -316,6 +316,30 @@ $messages = array(
 'faq'            => '常見問題解答',
 'faqpage'        => 'Project:常見問題解答',
 
+# Vector skin
+'vector-action-addsection'   => '加入主題',
+'vector-action-delete'       => '刪除',
+'vector-action-move'         => '移動',
+'vector-action-protect'      => '保護',
+'vector-action-undelete'     => '恢復被刪頁面',
+'vector-action-unprotect'    => '解除保護',
+'vector-namespace-category'  => '分類',
+'vector-namespace-help'      => '幫助頁面',
+'vector-namespace-image'     => '檔案',
+'vector-namespace-main'      => '頁面',
+'vector-namespace-media'     => '媒體頁面',
+'vector-namespace-mediawiki' => '界面',
+'vector-namespace-project'   => '計劃頁面',
+'vector-namespace-special'   => '特殊頁面',
+'vector-namespace-talk'      => '討論',
+'vector-namespace-template'  => '模板',
+'vector-namespace-user'      => '用戶頁面',
+'vector-view-create'         => '建立',
+'vector-view-edit'           => '編輯',
+'vector-view-history'        => '查看歷史',
+'vector-view-view'           => '閱讀',
+'vector-view-viewsource'     => '查看原始碼',
+
 # Metadata in edit box
 'metadata_help' => '元數據:',
 
@@ -335,7 +359,6 @@ $messages = array(
 'permalink'         => '永久連結',
 'print'             => '列印',
 'edit'              => '編輯',
-'view'              => '閱讀',
 'create'            => '建立',
 'editthispage'      => '編輯本頁',
 'create-this-page'  => '建立本頁',
@@ -1241,7 +1264,7 @@ $1",
 'right-move-subpages'         => '移動頁面跟它的字頁面',
 'right-move-rootuserpages'    => '移動根用戶頁面',
 'right-movefile'              => '移動檔案',
-'right-suppressredirect'      => '移動頁面時不建立重定向',
+'right-suppressredirect'      => '當移動頁面時不建立來源頁面之重定向',
 'right-upload'                => '上載檔案',
 'right-reupload'              => '覆蓋現有的檔案',
 'right-reupload-own'          => '覆蓋由同一位上載的檔案',
@@ -1619,8 +1642,8 @@ Template:消除歧義',
 
 'brokenredirects'        => '損壞的重定向頁',
 'brokenredirectstext'    => '以下的重定向頁指向的是不存在的頁面:',
-'brokenredirects-edit'   => '(編輯)',
-'brokenredirects-delete' => '(刪除)',
+'brokenredirects-edit'   => '編輯',
+'brokenredirects-delete' => '刪除',
 
 'withoutinterwiki'         => '未有語言鏈接的頁面',
 'withoutinterwiki-summary' => '以下的頁面是未有語言鏈接到其它語言版本。',
@@ -1733,8 +1756,9 @@ Template:消除歧義',
 'special-categories-sort-abc'   => '按字母排列',
 
 # Special:DeletedContributions
-'deletedcontributions'       => '已刪除的用戶貢獻',
-'deletedcontributions-title' => '已刪除的用戶貢獻',
+'deletedcontributions'             => '已刪除的用戶貢獻',
+'deletedcontributions-title'       => '已刪除的用戶貢獻',
+'sp-deletedcontributions-contribs' => '貢獻',
 
 # Special:LinkSearch
 'linksearch'       => '外部連結',
@@ -1767,14 +1791,14 @@ Template:消除歧義',
 'listgrouprights-rights'               => '權限',
 'listgrouprights-helppage'             => 'Help:群組權限',
 'listgrouprights-members'              => '(成員清單)',
-'listgrouprights-addgroup'             => '可以加入的{{PLURAL:$2|一個|多個}}群組: $1',
-'listgrouprights-removegroup'          => '可以移除的{{PLURAL:$2|一個|多個}}群組: $1',
-'listgrouprights-addgroup-all'         => '可以加入所有群組',
-'listgrouprights-removegroup-all'      => '可以移除所有群組',
-'listgrouprights-addgroup-self'        => '在自己的賬戶中可以加入的{{PLURAL:$2|一個|多個}}群組: $1',
-'listgrouprights-removegroup-self'     => '在自己的賬戶中可以移除的{{PLURAL:$2|一個|多個}}群組: $1',
-'listgrouprights-addgroup-self-all'    => '在自己的賬戶中以加入所有群組',
-'listgrouprights-removegroup-self-all' => '在自己的賬戶中可以移除所有群組',
+'listgrouprights-addgroup'             => '加入的{{PLURAL:$2|一個|多個}}群組: $1',
+'listgrouprights-removegroup'          => '移除的{{PLURAL:$2|一個|多個}}群組: $1',
+'listgrouprights-addgroup-all'         => '入所有群組',
+'listgrouprights-removegroup-all'      => '移除所有群組',
+'listgrouprights-addgroup-self'        => '在自己的賬戶中加入的{{PLURAL:$2|一個|多個}}群組: $1',
+'listgrouprights-removegroup-self'     => '在自己的賬戶中移除的{{PLURAL:$2|一個|多個}}群組: $1',
+'listgrouprights-addgroup-self-all'    => '在自己的賬戶中加入所有群組',
+'listgrouprights-removegroup-self-all' => '在自己的賬戶中移除所有群組',
 
 # E-mail user
 'mailnologin'      => '無電郵地址',
@@ -1900,8 +1924,7 @@ $NEWPAGE
 'deletecomment'          => '刪除理由:',
 'deleteotherreason'      => '其它／附加的理由:',
 'deletereasonotherlist'  => '其它理由',
-'deletereason-dropdown'  => '
-*常用刪除理由
+'deletereason-dropdown'  => '*常用刪除理由
 ** 作者請求
 ** 侵犯版權
 ** 破壞',
@@ -2089,8 +2112,7 @@ $1',
 'ipbexpiry'                       => '期限:',
 'ipbreason'                       => '原因:',
 'ipbreasonotherlist'              => '其它原因',
-'ipbreason-dropdown'              => '
-*一般的封禁理由
+'ipbreason-dropdown'              => '*一般的封禁理由
 ** 屢次增加不實資料
 ** 刪除頁面內容
 ** 外部連結廣告
@@ -2951,6 +2973,7 @@ $1',
 # Separators for various lists, etc.
 'comma-separator' => '、',
 'word-separator'  => '',
+'parentheses'     => '（$1）',
 
 # Multipage image navigation
 'imgmultipageprev' => '← 上一頁',

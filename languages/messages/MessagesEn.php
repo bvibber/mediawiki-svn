@@ -650,6 +650,30 @@ XHTML id names.
 'sitetitle'      => '{{SITENAME}}', # do not translate or duplicate this message to other languages
 'sitesubtitle'   => '', # do not translate or duplicate this message to other languages
 
+# Vector skin
+'vector-action-addsection'   => 'Add topic',
+'vector-action-delete'       => 'Delete',
+'vector-action-move'         => 'Move',
+'vector-action-protect'      => 'Protect',
+'vector-action-undelete'     => 'Undelete',
+'vector-action-unprotect'    => 'Unprotect',
+'vector-namespace-category'  => 'Category',
+'vector-namespace-help'      => 'Help page',
+'vector-namespace-image'     => 'File',
+'vector-namespace-main'      => 'Page',
+'vector-namespace-media'     => 'Media page',
+'vector-namespace-mediawiki' => 'Message',
+'vector-namespace-project'   => 'Project page',
+'vector-namespace-special'   => 'Special page',
+'vector-namespace-talk'      => 'Discussion',
+'vector-namespace-template'  => 'Template',
+'vector-namespace-user'      => 'User page',
+'vector-view-create'         => 'Create',
+'vector-view-edit'           => 'Edit',
+'vector-view-history'        => 'View history',
+'vector-view-view'           => 'Read',
+'vector-view-viewsource'     => 'View source',
+
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
 
@@ -669,7 +693,6 @@ XHTML id names.
 'permalink'         => 'Permanent link',
 'print'             => 'Print',
 'edit'              => 'Edit',
-'view'              => 'Read',
 'create'            => 'Create',
 'editthispage'      => 'Edit this page',
 'create-this-page'  => 'Create this page',
@@ -2129,8 +2152,8 @@ It now redirects to [[$2]].',
 'brokenredirects'         => 'Broken redirects',
 'brokenredirects-summary' => '', # do not translate or duplicate this message to other languages
 'brokenredirectstext'     => 'The following redirects link to non-existent pages:',
-'brokenredirects-edit'    => '(edit)',
-'brokenredirects-delete'  => '(delete)',
+'brokenredirects-edit'    => 'edit',
+'brokenredirects-delete'  => 'delete',
 
 'withoutinterwiki'         => 'Pages without language links',
 'withoutinterwiki-summary' => 'The following pages do not link to other language versions.',
@@ -2279,8 +2302,9 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'special-categories-sort-abc'   => 'sort alphabetically',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Deleted user contributions',
-'deletedcontributions-title' => 'Deleted user contributions',
+'deletedcontributions'             => 'Deleted user contributions',
+'deletedcontributions-title'       => 'Deleted user contributions',
+'sp-deletedcontributions-contribs' => 'contributions',
 
 # Special:LinkSearch
 'linksearch'       => 'External links',
@@ -3686,6 +3710,7 @@ Please confirm that you really want to recreate this page.",
 'word-separator'      => '&#32;', # only translate this message to other languages if you have to change it
 'ellipsis'            => '...', # only translate this message to other languages if you have to change it
 'percent'             => '$1%', # only translate this message to other languages if you have to change it
+'parentheses'         => '($1)', # only translate this message to other languages if you have to change it
 
 # Multipage image navigation
 'imgmultipageprev' => '← previous page',

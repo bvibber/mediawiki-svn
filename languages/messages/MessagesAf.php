@@ -1189,9 +1189,7 @@ Die voorkeurformate is JPEG vir fotografiese prente, PNG vir tekeninge en ander 
 Gebruik asseblief beskrywende lêername om verwarring te voorkom.
 Om die prent in 'n artikel te gebruik, gebruik 'n skakel met die formaat '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:file.jpg]]</nowiki>''' of
 '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:file.png|alt text]]</nowiki>''' of
-'''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:file.ogg]]</nowiki>''' vir klanklêers.
-
-Let asseblief op dat, soos met {{SITENAME}} bladsye, mag ander u gelaaide lêers redigeer as hulle dink dit dien die ensiklopedie, en u kan verhoed word om lêers te laai as u die stelsel misbruik.",
+'''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:file.ogg]]</nowiki>''' vir klanklêers.",
 'upload-permitted'           => 'Toegelate lêertipes: $1.',
 'upload-preferred'           => 'Aanbevole lêertipes: $1.',
 'upload-prohibited'          => 'Verbode lêertipes: $1.',
@@ -1371,8 +1369,8 @@ Elke ry bevat skakels na die eerste en die tweede aanstuur, asook die eerste re�
 
 'brokenredirects'        => 'Stukkende aansture',
 'brokenredirectstext'    => "Die volgende aansture skakel na 'n bladsy wat nie bestaan nie.",
-'brokenredirects-edit'   => '(wysig)',
-'brokenredirects-delete' => '(skrap)',
+'brokenredirects-edit'   => 'wysig',
+'brokenredirects-delete' => 'skrap',
 
 'withoutinterwiki'         => 'Bladsye sonder taalskakels',
 'withoutinterwiki-summary' => 'Die volgende bladsye het nie skakels na weergawes in ander tale nie:',
@@ -1466,7 +1464,7 @@ U kan die resultate vernou deur 'n boekstaaftipe, gebruikersnaam of spesifieke b
 
 # Special:Categories
 'categories'                    => 'Kategorieë',
-'categoriespagetext'            => 'Die volgende kategorieë bestaan op die wiki.',
+'categoriespagetext'            => 'Die volgende {{PLURAL:$1|kategotie bestaat|kategorieë bestaan}} op die wiki.',
 'categoriesfrom'                => 'Wys kategorieë vanaf:',
 'special-categories-sort-count' => 'sorteer volgens getal',
 'special-categories-sort-abc'   => 'sorteer alfabeties',

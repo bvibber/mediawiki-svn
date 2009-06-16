@@ -179,7 +179,7 @@ $magicWords = array(
 	'img_right'             => array( '1', 'dereita', 'right' ),
 	'img_left'              => array( '1', 'esquerda', 'left' ),
 	'img_none'              => array( '1', 'ningún', 'none' ),
-	'img_center'            => array( '1', 'centro', 'centro', 'center', 'centre' ),
+	'img_center'            => array( '1', 'centro', 'center', 'centre' ),
 	'img_page'              => array( '1', 'páxina=$1', 'páxina $1', 'page=$1', 'page $1' ),
 	'img_border'            => array( '1', 'borde', 'border' ),
 	'grammar'               => array( '0', 'GRAMÁTICA:', 'GRAMMAR:' ),
@@ -348,6 +348,30 @@ $messages = array(
 'faq'            => 'PMF',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Engadir un comentario',
+'vector-action-delete'       => 'Borrar',
+'vector-action-move'         => 'Mover',
+'vector-action-protect'      => 'Protexer',
+'vector-action-undelete'     => 'Restaurar',
+'vector-action-unprotect'    => 'Desprotexer',
+'vector-namespace-category'  => 'Categoría',
+'vector-namespace-help'      => 'Páxina de axuda',
+'vector-namespace-image'     => 'Ficheiro',
+'vector-namespace-main'      => 'Páxina',
+'vector-namespace-media'     => 'Páxina de multimedia',
+'vector-namespace-mediawiki' => 'Mensaxe',
+'vector-namespace-project'   => 'Páxina do proxecto',
+'vector-namespace-special'   => 'Páxina especial',
+'vector-namespace-talk'      => 'Conversa',
+'vector-namespace-template'  => 'Modelo',
+'vector-namespace-user'      => 'Páxina de usuario',
+'vector-view-create'         => 'Crear',
+'vector-view-edit'           => 'Editar',
+'vector-view-history'        => 'Ver o historial',
+'vector-view-view'           => 'Ler',
+'vector-view-viewsource'     => 'Ver o código fonte',
+
 # Metadata in edit box
 'metadata_help' => 'Metadatos:',
 
@@ -367,7 +391,6 @@ $messages = array(
 'permalink'         => 'Ligazón permanente',
 'print'             => 'Imprimir',
 'edit'              => 'Editar',
-'view'              => 'Ler',
 'create'            => 'Crear',
 'editthispage'      => 'Editar esta páxina',
 'create-this-page'  => 'Crear esta páxina',
@@ -682,7 +705,7 @@ Pode ser que xa cambiase o seu contrasinal ou que solicitase un novo contrasinal
 'image_tip'       => 'Ficheiro embelecido',
 'media_sample'    => 'Exemplo.ogg',
 'media_tip'       => 'Ligazón a un ficheiro',
-'sig_tip'         => 'A súa sinatura con selo temporal',
+'sig_tip'         => 'A súa sinatura con data e hora',
 'hr_tip'          => 'Liña horizontal (úsea con moderación)',
 
 # Edit pages
@@ -1725,8 +1748,8 @@ Cada ringleira contén ligazóns cara á primeira e segunda redireccións, e tam
 
 'brokenredirects'        => 'Redireccións rotas',
 'brokenredirectstext'    => 'As seguintes redireccións ligan cara a páxinas que non existen:',
-'brokenredirects-edit'   => '(editar)',
-'brokenredirects-delete' => '(borrar)',
+'brokenredirects-edit'   => 'editar',
+'brokenredirects-delete' => 'borrar',
 
 'withoutinterwiki'         => 'Páxinas sen ligazóns interwiki',
 'withoutinterwiki-summary' => 'As seguintes páxinas non ligan con ningunha versión noutra lingua.',
@@ -2000,8 +2023,7 @@ No $2 pode ver unha lista dos borrados máis recentes.',
 'deletecomment'          => 'Razón para o borrado:',
 'deleteotherreason'      => 'Outro motivo:',
 'deletereasonotherlist'  => 'Outro motivo',
-'deletereason-dropdown'  => '
-*Motivos frecuentes para borrar
+'deletereason-dropdown'  => '*Motivos frecuentes para borrar
 ** Petición do autor
 ** Violación de copyright
 ** Vandalismo',
@@ -2200,8 +2222,7 @@ Explique a razón específica do bloqueo (por exemplo, citando as páxinas concr
 'ipbexpiry'                       => 'Remate:',
 'ipbreason'                       => 'Razón:',
 'ipbreasonotherlist'              => 'Outro motivo',
-'ipbreason-dropdown'              => '
-*Mensaxes de bloqueo comúns
+'ipbreason-dropdown'              => '*Mensaxes de bloqueo comúns
 ** Inserir información falsa
 ** Eliminar o contido de páxinas
 ** Ligazóns lixo a sitios externos

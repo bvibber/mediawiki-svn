@@ -305,12 +305,11 @@ class SpecialWhatLinksHere extends SpecialPage {
 		if ( $title === null )
 			$title = SpecialPage::getTitleFor( 'Whatlinkshere' );
 
-		$targetText = $target->getPrefixedUrl();
 		return $this->skin->linkKnown(
 			$title,
 			$text,
 			array(),
-			array( 'target' => $targetText )
+			array( 'target' => $target->getPrefixedText() )
 		);
 	}
 

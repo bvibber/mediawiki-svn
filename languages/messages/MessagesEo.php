@@ -317,6 +317,30 @@ $messages = array(
 'faq'            => 'Oftaj demandoj',
 'faqpage'        => 'Project:Oftaj demandoj',
 
+# Vector skin
+'vector-action-addsection'   => 'Aldoni temon',
+'vector-action-delete'       => 'Forigi',
+'vector-action-move'         => 'Alinomigi',
+'vector-action-protect'      => 'Protekti',
+'vector-action-undelete'     => 'Malforigi',
+'vector-action-unprotect'    => 'Malprotekti',
+'vector-namespace-category'  => 'Kategorio',
+'vector-namespace-help'      => 'Helpopaĝo',
+'vector-namespace-image'     => 'Dosiero',
+'vector-namespace-main'      => 'Paĝo',
+'vector-namespace-media'     => 'Dosiera paĝo',
+'vector-namespace-mediawiki' => 'Mesaĝo',
+'vector-namespace-project'   => 'Projekta paĝo',
+'vector-namespace-special'   => 'Speciala paĝo',
+'vector-namespace-talk'      => 'Diskuto',
+'vector-namespace-template'  => 'Ŝablono',
+'vector-namespace-user'      => 'Uzula paĝo',
+'vector-view-create'         => 'Krei',
+'vector-view-edit'           => 'Redakti',
+'vector-view-history'        => 'Vidi historion',
+'vector-view-view'           => 'Legi',
+'vector-view-viewsource'     => 'Vidi fonton',
+
 # Metadata in edit box
 'metadata_help' => 'Metadatenoj:',
 
@@ -336,7 +360,6 @@ $messages = array(
 'permalink'         => 'Konstanta ligilo',
 'print'             => 'Printi',
 'edit'              => 'Redakti',
-'view'              => 'Legi',
 'create'            => 'Krei',
 'editthispage'      => 'Redakti la paĝon',
 'create-this-page'  => 'Krei ĉi tiun paĝon',
@@ -1652,8 +1675,8 @@ Paĝo estas traktata kiel apartigilo se ĝi uzas ŝablonon kiu estas ligita de [
 
 'brokenredirects'        => 'Rompitaj alidirektadoj',
 'brokenredirectstext'    => 'La jenaj alidirektadoj ligas al neekzistantaj paĝoj:',
-'brokenredirects-edit'   => '(redakti)',
-'brokenredirects-delete' => '(forigi)',
+'brokenredirects-edit'   => 'redakti',
+'brokenredirects-delete' => 'forigi',
 
 'withoutinterwiki'         => 'Paĝoj sen lingvaj ligiloj',
 'withoutinterwiki-summary' => 'Jenaj paĝoj ne ligas al aliaj lingvoversioj:',

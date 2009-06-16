@@ -1288,7 +1288,7 @@ class EditPage {
 		$subject = wfMsgExt( 'subject', 'parseinline' );
 
 		$cancel = $sk->link(
-			$wgTitle->getPrefixedText(),
+			$wgTitle,
 			wfMsgExt( 'cancel', array( 'parseinline' ) ),
 			array(),
 			array(),
@@ -1875,7 +1875,7 @@ END
 			$loginTitle,
 			wfMsgHtml( 'loginreqlink' ),
 			array(),
-			array( 'returnto' => $wgTitle->getPrefixedUrl() ),
+			array( 'returnto' => $wgTitle->getPrefixedText() ),
 			array( 'known', 'noclasses' )
 		);
 
@@ -2465,7 +2465,8 @@ END
 		global $wgUser;
 		$loglist = new LogEventsList( $wgUser->getSkin(), $out );
 		$pager = new LogPager( $loglist, array('move', 'delete'), false,
-			$this->mTitle->getPrefixedText(), '', array('log_action'=>'delete') );
+			$this->mTitle->getPrefixedText(), '', array( "log_action != 'revision'" ) );
+
 		$count = $pager->getNumRows();
 		if ( $count > 0 ) {
 			$pager->mLimit = 10;

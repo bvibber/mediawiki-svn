@@ -289,6 +289,30 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => '加主題',
+'vector-action-delete'       => '刪除',
+'vector-action-move'         => '移動',
+'vector-action-protect'      => '保護',
+'vector-action-undelete'     => '去睇刪除咗嘅頁面',
+'vector-action-unprotect'    => '解除保護',
+'vector-namespace-category'  => '分類',
+'vector-namespace-help'      => '幫助頁',
+'vector-namespace-image'     => '檔案',
+'vector-namespace-main'      => '版',
+'vector-namespace-media'     => '媒體頁',
+'vector-namespace-mediawiki' => '信息',
+'vector-namespace-project'   => '計劃頁',
+'vector-namespace-special'   => '特別頁',
+'vector-namespace-talk'      => '討論',
+'vector-namespace-template'  => '模',
+'vector-namespace-user'      => '用戶頁',
+'vector-view-create'         => '建立',
+'vector-view-edit'           => '編輯',
+'vector-view-history'        => '睇吓歷史',
+'vector-view-view'           => '閱',
+'vector-view-viewsource'     => '睇吓原始碼',
+
 # Metadata in edit box
 'metadata_help' => 'Metadata',
 
@@ -308,7 +332,6 @@ $messages = array(
 'permalink'         => '永久連結',
 'print'             => '印',
 'edit'              => '編輯',
-'view'              => '閱',
 'create'            => '建立',
 'editthispage'      => '編輯呢頁',
 'create-this-page'  => '建立呢頁',
@@ -1224,7 +1247,7 @@ $1",
 'right-move-subpages'         => '搬版同埋佢哋嘅細版',
 'right-move-rootuserpages'    => '搬根用戶版',
 'right-movefile'              => '搬檔案',
-'right-suppressredirect'      => '搬版嗰陣唔開跳轉',
+'right-suppressredirect'      => '當搬版嗰陣唔開來源頁嘅跳轉',
 'right-upload'                => '上載檔案',
 'right-reupload'              => '覆蓋現有嘅檔案',
 'right-reupload-own'          => '覆蓋由同一位上載嘅檔案',
@@ -1597,8 +1620,8 @@ Template:搞清楚',
 
 'brokenredirects'        => '破碎嘅跳轉',
 'brokenredirectstext'    => '以下嘅跳轉係指向唔存在嘅頁面:',
-'brokenredirects-edit'   => '(編輯)',
-'brokenredirects-delete' => '(刪除)',
+'brokenredirects-edit'   => '編輯',
+'brokenredirects-delete' => '刪除',
 
 'withoutinterwiki'         => '無語言連結嘅頁',
 'withoutinterwiki-summary' => '以下嘅頁面係重未有連結到其它嘅語言版本。',
@@ -1711,8 +1734,9 @@ Template:搞清楚',
 'special-categories-sort-abc'   => '跟字母排',
 
 # Special:DeletedContributions
-'deletedcontributions'       => '已經刪除咗嘅用戶貢獻',
-'deletedcontributions-title' => '已經刪除咗嘅用戶貢獻',
+'deletedcontributions'             => '已經刪除咗嘅用戶貢獻',
+'deletedcontributions-title'       => '已經刪除咗嘅用戶貢獻',
+'sp-deletedcontributions-contribs' => '貢獻',
 
 # Special:LinkSearch
 'linksearch'       => '外部連結',
@@ -1745,13 +1769,13 @@ Template:搞清楚',
 'listgrouprights-rights'               => '權',
 'listgrouprights-helppage'             => 'Help:組權限',
 'listgrouprights-members'              => '(成員名單)',
-'listgrouprights-addgroup'             => '可以加入嘅{{PLURAL:$2|一|多}}組: $1',
-'listgrouprights-removegroup'          => '可以拎走嘅{{PLURAL:$2|一|多}}組: $1',
-'listgrouprights-addgroup-all'         => '可以加入全部組',
-'listgrouprights-removegroup-all'      => '可以拎走全部組',
-'listgrouprights-addgroup-self'        => '可以加入嘅{{PLURAL:$2|一|多}}組到自己嘅戶口: $1',
-'listgrouprights-removegroup-self'     => '可以響自己嘅戶口度拎走嘅{{PLURAL:$2|一|多}}組: $1',
-'listgrouprights-addgroup-self-all'    => '可以加入全部組到自己嘅戶口度',
+'listgrouprights-addgroup'             => '加入嘅{{PLURAL:$2|一|多}}組: $1',
+'listgrouprights-removegroup'          => '拎走嘅{{PLURAL:$2|一|多}}組: $1',
+'listgrouprights-addgroup-all'         => '加入全部組',
+'listgrouprights-removegroup-all'      => '拎走全部組',
+'listgrouprights-addgroup-self'        => '加入嘅{{PLURAL:$2|一|多}}組到自己嘅戶口: $1',
+'listgrouprights-removegroup-self'     => '響自己嘅戶口度拎走嘅{{PLURAL:$2|一|多}}組: $1',
+'listgrouprights-addgroup-self-all'    => '加入全部組到自己嘅戶口度',
 'listgrouprights-removegroup-self-all' => '響自己嘅戶口度可以拎走全部組',
 
 # E-mail user
@@ -1870,8 +1894,7 @@ wiki: $PAGEEDITOR_WIKI
 'deletecomment'          => '刪除原因:',
 'deleteotherreason'      => '其它／附加嘅原因:',
 'deletereasonotherlist'  => '其它原因',
-'deletereason-dropdown'  => '
-*常用刪除原因
+'deletereason-dropdown'  => '*常用刪除原因
 ** 作者請求
 ** 侵犯版權
 ** 破壞',
@@ -2058,8 +2081,7 @@ $1',
 'ipbexpiry'                       => '期限:',
 'ipbreason'                       => '原因:',
 'ipbreasonotherlist'              => '其它原因',
-'ipbreason-dropdown'              => '
-*共用封鎖原因
+'ipbreason-dropdown'              => '*共用封鎖原因
 ** 插入錯嘅資料
 ** 響頁面度拎走
 ** 亂加入外部連結
@@ -2926,6 +2948,7 @@ $1',
 # Separators for various lists, etc.
 'comma-separator' => '、',
 'word-separator'  => '',
+'parentheses'     => '（$1）',
 
 # Multipage image navigation
 'imgmultipageprev' => '← 上一版',

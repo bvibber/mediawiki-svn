@@ -183,6 +183,23 @@ $messages = array(
 'faq'            => 'Τὰ πολλάκις αἰτηθέντα',
 'faqpage'        => 'Project:Πολλάκις αἰτηθέντα',
 
+# Vector skin
+'vector-action-delete'       => 'Σβεννύναι',
+'vector-action-move'         => 'κινεῖν',
+'vector-action-protect'      => 'Φυλάττειν',
+'vector-action-unprotect'    => 'μὴ φυλάττειν',
+'vector-namespace-category'  => 'Κατηγορία',
+'vector-namespace-image'     => 'Ἀρχεῖον',
+'vector-namespace-main'      => 'Δέλτος',
+'vector-namespace-mediawiki' => 'Ἀγγελία',
+'vector-namespace-talk'      => 'Διάλεξις',
+'vector-namespace-template'  => 'Πρότυπον',
+'vector-namespace-user'      => 'Δέλτος χρωμένου',
+'vector-view-create'         => 'Ποιεῖν',
+'vector-view-edit'           => 'Μεταγράφειν',
+'vector-view-view'           => 'Ἀναγνῶναι',
+'vector-view-viewsource'     => 'ὁρᾶν τὴν πηγήν',
+
 # Metadata in edit box
 'metadata_help' => 'Μεταδεδομένα:',
 
@@ -202,7 +219,6 @@ $messages = array(
 'permalink'         => 'Σύνδεσμος μόνιμος',
 'print'             => 'Τυποῦν',
 'edit'              => 'Μεταγράφειν',
-'view'              => 'Ἀναγνῶναι',
 'create'            => 'Ποιεῖν',
 'editthispage'      => 'Μεταγράφειν τήνδε τὴν δέλτον',
 'create-this-page'  => 'Ποιεῖν τήνδε τὴν δέλτον',
@@ -828,8 +844,8 @@ $1",
 'powersearch-redir'                => 'Ἀναδιευθύνσεων καταλόγος',
 'powersearch-field'                => 'Ζήτησις περί',
 'powersearch-togglelabel'          => 'Ἐλέγχειν:',
-'powersearch-toggleall'            => 'Ἅπασαι',
-'powersearch-togglenone'           => 'Οὐδεμία',
+'powersearch-toggleall'            => 'Ἅπαντες',
+'powersearch-togglenone'           => 'Οὐδέν',
 'search-external'                  => 'Ἐξωτέρα ἀναζήτησις',
 
 # Quickbar
@@ -1286,8 +1302,8 @@ $1",
 'double-redirect-fixer'      => 'Διορθωτὴς ἀναδιευθύνσεων',
 
 'brokenredirects'        => 'Ἀναδιευθύνσεις οὐκέτι προὔργου οὖσαι',
-'brokenredirects-edit'   => '(μεταγράφειν)',
-'brokenredirects-delete' => '(διαγράφειν)',
+'brokenredirects-edit'   => 'μεταγράφειν',
+'brokenredirects-delete' => 'διαγράφειν',
 
 'withoutinterwiki'        => 'Δέλτοι ἄνευ γλωσσικῶν συνδέσμων',
 'withoutinterwiki-legend' => 'Πρόθεμα',
@@ -1615,7 +1631,7 @@ $NEWPAGE
 'undelete-nodiff'           => 'Οὐδεμία προηγηθεῖσα ἀναθεώρησις εὑρέθη.',
 'undeletebtn'               => 'Ἀνορθοῦν',
 'undeletelink'              => 'ὁρᾶν/ἐπανίσταναι',
-'undeleteviewlink'          => 'Ὁρᾶν',
+'undeleteviewlink'          => 'ὁρᾶν',
 'undeletereset'             => 'Ἐπαναθέτειν',
 'undeleteinvert'            => 'Ἀναστρέφειν τὴν ἐπιλογήν',
 'undeletecomment'           => 'Σχόλιον:',

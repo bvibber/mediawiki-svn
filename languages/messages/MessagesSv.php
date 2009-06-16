@@ -425,6 +425,30 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Nytt ämne',
+'vector-action-delete'       => 'Radera',
+'vector-action-move'         => 'Flytta',
+'vector-action-protect'      => 'Beskydda',
+'vector-action-undelete'     => 'Återställ',
+'vector-action-unprotect'    => 'Ta bort beskyddning',
+'vector-namespace-category'  => 'Kategori',
+'vector-namespace-help'      => 'Hjälpsida',
+'vector-namespace-image'     => 'Fil',
+'vector-namespace-main'      => 'Sida',
+'vector-namespace-media'     => 'Mediasida',
+'vector-namespace-mediawiki' => 'Systemmeddelande',
+'vector-namespace-project'   => 'Projektsida',
+'vector-namespace-special'   => 'Specialsida',
+'vector-namespace-talk'      => 'Diskussion',
+'vector-namespace-template'  => 'Mall',
+'vector-namespace-user'      => 'Användarsida',
+'vector-view-create'         => 'Skapa',
+'vector-view-edit'           => 'Redigera',
+'vector-view-history'        => 'Visa historik',
+'vector-view-view'           => 'Visa',
+'vector-view-viewsource'     => 'Visa källa',
+
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
 
@@ -444,7 +468,6 @@ $messages = array(
 'permalink'         => 'Permanent länk',
 'print'             => 'Skriv ut',
 'edit'              => 'Redigera',
-'view'              => 'Visa',
 'create'            => 'Skapa',
 'editthispage'      => 'Redigera denna sida',
 'create-this-page'  => 'Skapa denna sida',
@@ -1032,6 +1055,7 @@ $1",
 'revdelete-unhid'             => 'synliggjorde $1',
 'revdelete-log-message'       => '$1 för $2 {{PLURAL:$2|sidversion|sidversioner}}',
 'logdelete-log-message'       => '$1 för $2 {{PLURAL:$2|åtgärd|åtgärder}}',
+'revdelete-no-change'         => "'''Varning:''' objektet daterat $2, $1 hade redan de begärda synlighetsinställningarna.",
 'revdelete-only-restricted'   => 'Du kan inte hindra visning av objekt av administratörer utan att också välja en av de övriga visningshindrande alternativen.',
 
 # Suppression log
@@ -1758,8 +1782,8 @@ En sida anses vara en förgreningssida om den inkluderar en mall som länkas til
 
 'brokenredirects'        => 'Trasiga omdirigeringar',
 'brokenredirectstext'    => 'Följande omdirigerar länkar till ej existerande sidor:',
-'brokenredirects-edit'   => '(redigera)',
-'brokenredirects-delete' => '(radera)',
+'brokenredirects-edit'   => 'redigera',
+'brokenredirects-delete' => 'radera',
 
 'withoutinterwiki'         => 'Sidor utan språklänkar',
 'withoutinterwiki-summary' => 'Följande sidor innehåller inte några länkar till andra språkversioner.',

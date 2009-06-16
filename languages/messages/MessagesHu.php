@@ -430,6 +430,9 @@ $messages = array(
 'faq'            => 'GyIK',
 'faqpage'        => 'Project:GyIK',
 
+# Vector skin
+'vector-view-view' => 'Olvasás',
+
 # Metadata in edit box
 'metadata_help' => 'Metaadatok:',
 
@@ -449,7 +452,6 @@ $messages = array(
 'permalink'         => 'Link erre a változatra',
 'print'             => 'Nyomtatás',
 'edit'              => 'Szerkesztés',
-'view'              => 'Olvasás',
 'create'            => 'Létrehozás',
 'editthispage'      => 'Lap szerkesztése',
 'create-this-page'  => 'Oldal létrehozása',
@@ -1669,10 +1671,10 @@ A teljes lista [[Special:WhatLinksHere/$2|ezen a lapon]] található meg.',
 'redirectstofile'           => 'A következő {{PLURAL:$1|fájl|$1 fájl}} van átirányítva erre a névre:',
 'duplicatesoffile'          => 'A következő {{PLURAL:$1|fájl|$1 fájl}} ennek a fájlnak a duplikátuma ([[Special:FileDuplicateSearch/$2|további részletek]]):',
 'sharedupload'              => 'Ez a fájl a(z) $1 megosztott tárhelyről származik, és más projektek is használhatják.',
-'sharedupload-desc-there'   => 'Ez a fájl a(z) $1 megosztott szárhelyről származik, és más projektek is használhatják.
-A [$2 fájl leírólapján] további információkat találhatsz róla.',
-'sharedupload-desc-here'    => 'Ez a fájl a(z) $1 megosztott szárhelyről származik, és más projektek is használhatják.
-A [$2 fájl leírólapján] található leírás alább látható.',
+'sharedupload-desc-there'   => 'Ez a fájl a $1 megosztott tárhelyről származik, és más projektek is használhatják.
+Az [$2 ottani leírólapján] további információkat találhatsz róla.',
+'sharedupload-desc-here'    => 'Ez a fájl a $1 megosztott tárhelyről származik, és más projektek is használhatják.
+A [$2 fájl ottani leírólapjának] másolata alább látható.',
 'filepage-nofile'           => 'Nem létezik ilyen nevű fájl.',
 'filepage-nofile-link'      => 'Nem létezik ilyen nevű fájl. [$1 Ide kattintva] feltölthetsz egyet.',
 'uploadnewversion-linktext' => 'Új változat feltöltése',
@@ -1766,8 +1768,8 @@ Egy oldal egyértelműsítő lapnak számít, ha tartalmazza a [[MediaWiki:Disam
 
 'brokenredirects'        => 'Nem létező lapra mutató átirányítások',
 'brokenredirectstext'    => 'A következő átirányítások nem létező lapokra hivatkoznak:',
-'brokenredirects-edit'   => '(szerkesztés)',
-'brokenredirects-delete' => '(törlés)',
+'brokenredirects-edit'   => 'szerkesztés',
+'brokenredirects-delete' => 'törlés',
 
 'withoutinterwiki'         => 'Nyelvi hivatkozás nélküli lapok',
 'withoutinterwiki-summary' => 'A következő lapok nem hivatkoznak más nyelvű változatokra:',

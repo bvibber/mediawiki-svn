@@ -16,6 +16,21 @@
  * @author לערי ריינהארט
  */
 
+$specialPageAliases = array(
+	'Disambiguations'           => array( '消歧義頁' ),
+	'Blockme'                   => array( '封禁我' ),
+	'Blockip'                   => array( '查封用戶' ),
+	'Lockdb'                    => array( '鎖定數據庫' ),
+	'Unlockdb'                  => array( '解除數據庫鎖定' ),
+	'FileDuplicateSearch'       => array( '搜索重復文件' ),
+	'Unwatchedpages'            => array( '未被監視的頁面' ),
+	'Listredirects'             => array( '重定向頁面列表' ),
+	'Revisiondelete'            => array( '刪除或恢復版本' ),
+	'Randomredirect'            => array( '隨機重定向頁面' ),
+	'Withoutinterwiki'          => array( '沒有跨語言鏈接的頁面' ),
+	'LinkSearch'                => array( '搜索網頁鏈接' ),
+);
+
 $fallback = 'zh-hant';
 
 $namespaceNames = array(
@@ -601,8 +616,7 @@ $NEWPAGE
 # Block/unblock
 'blockip'                     => '封鎖使用者',
 'ipadressorusername'          => 'IP地址或使用者名:',
-'ipbreason-dropdown'          => '
-*一般的封鎖理由
+'ipbreason-dropdown'          => '*一般的封鎖理由
 ** 屢次增加不實資料
 ** 刪除頁面內容
 ** 外部連結廣告

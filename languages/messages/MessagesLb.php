@@ -282,6 +282,30 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Sujet derbäisetzen',
+'vector-action-delete'       => 'Läschen',
+'vector-action-move'         => 'Réckelen',
+'vector-action-protect'      => 'Spären',
+'vector-action-undelete'     => 'Restauréieren',
+'vector-action-unprotect'    => 'Spär ophiewen',
+'vector-namespace-category'  => 'Kategorie',
+'vector-namespace-help'      => 'Hellëfsäit',
+'vector-namespace-image'     => 'Fichier',
+'vector-namespace-main'      => 'Säit',
+'vector-namespace-media'     => 'Mediesäit',
+'vector-namespace-mediawiki' => 'Message',
+'vector-namespace-project'   => 'Projetssäit',
+'vector-namespace-special'   => 'Spezialsäit',
+'vector-namespace-talk'      => 'Diskussioun',
+'vector-namespace-template'  => 'Schabloun',
+'vector-namespace-user'      => 'Benotzersäit',
+'vector-view-create'         => 'Uleeën',
+'vector-view-edit'           => 'Änneren',
+'vector-view-history'        => 'Versioune weisen',
+'vector-view-view'           => 'Liesen',
+'vector-view-viewsource'     => 'Quellcode weisen',
+
 # Metadata in edit box
 'metadata_help' => 'Metadaten:',
 
@@ -301,7 +325,6 @@ $messages = array(
 'permalink'         => 'Zitéierfäege Link',
 'print'             => 'Drécken',
 'edit'              => 'Änneren',
-'view'              => 'Liesen',
 'create'            => 'Uleeën',
 'editthispage'      => 'Dës Säit änneren',
 'create-this-page'  => 'Dës Säit uleeën',
@@ -332,7 +355,7 @@ $messages = array(
 'categorypage'      => 'Kategoriesäit weisen',
 'viewtalkpage'      => 'Diskussioun weisen',
 'otherlanguages'    => 'Aner Sproochen',
-'redirectedfrom'    => '(Virugeleet vun $1)',
+'redirectedfrom'    => '(Virugeleet vu(n) $1)',
 'redirectpagesub'   => 'Viruleedungssäit',
 'lastmodifiedat'    => "Dës Säit gouf den $1 ëm $2 Auer fir d'lescht geännert.",
 'viewcount'         => 'Dës Säit gouf bis elo {{PLURAL:$1|emol|$1-mol}} ofgefrot.',
@@ -696,8 +719,8 @@ Wann de Problem dann ëmmer nach bestoe sollt, versicht iech [[Special:UserLogou
 D'Ännerung gouf refuséiert fir ze verhënneren datt den Text op der Säit onliesbar gëtt.
 Dëst geschitt heiandsdo wann Dir en anonyme Proxy-Service um Internet notzt.",
 'editing'                          => 'Ännere vu(n) $1',
-'editingsection'                   => 'Ännere vun $1 (Abschnitt)',
-'editingcomment'                   => 'Ännere vun $1 (neien Abschnitt)',
+'editingsection'                   => 'Ännere vu(n) $1 (Abschnitt)',
+'editingcomment'                   => 'Ännere vu(n) $1 (neien Abschnitt)',
 'editconflict'                     => 'Ännerungskonflikt: $1',
 'explainconflict'                  => "Een anere Benotzer huet un dëser Säit geschafft, während Dir amgaange waart, se ze änneren.
 Dat ieweschtt Textfeld weist Iech den aktuellen Text.
@@ -772,7 +795,9 @@ Et däerfen net méi wéi $2 {{PLURAL:$2|Ufro|Ufroe}} sinn, aktuell {{PLURAL:$2|
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Benotzerkont konnt net opgemaach ginn',
-'cantcreateaccount-text' => 'Dës IP Adress (\'\'\'$1\'\'\') gouf vum [[User:$3|$3]] blokéiert fir Benotzer-Konten op der lëtzebuergescher Wikipedia opzemaachen. De Benotzer $3 huet "$2" als Ursaach uginn.',
+'cantcreateaccount-text' => 'D\'Opmaache vu Benotzerkonten vun dëser IP Adress (\'\'\'$1\'\'\') gouf vum [[User:$3|$3]] gespaart.
+
+De Benotzer $3 huet "$2" als Grond uginn.',
 
 # History pages
 'viewpagelogs'           => 'Logbicher fir dës Säit weisen',
@@ -1313,7 +1338,7 @@ Dir kënnt et och zouloossen datt aner Benotzer iech - iwwert e Link op ärer Be
 'recentchanges-feed-description'    => 'Verfollegt mat dësem Feed déi rezent Ännerungen op {{SITENAME}}.',
 'rcnote'                            => "Hei {{PLURAL:$1|ass déi lescht Ännerung|sinn déi lescht '''$1''' Ännerungen}} {{PLURAL:$2|vum leschten Dag|vun de leschten '''$2''' Deeg}}, Stand: $4 ëm $5 Auer.",
 'rcnotefrom'                        => "Ugewise ginn d'Ännerunge vum '''$2''' un (maximal '''$1''' Ännerunge gi gewisen).",
-'rclistfrom'                        => 'Weis Ännerunge vun $1 un',
+'rclistfrom'                        => 'Weis Ännerunge vu(n) $1 un',
 'rcshowhideminor'                   => 'Kleng Ännerunge $1',
 'rcshowhidebots'                    => 'Botte $1',
 'rcshowhideliu'                     => 'Ugemellte Benotzer $1',
@@ -1596,8 +1621,8 @@ An all Rei sti Linken zur éischter an zweeter Viruleedung, souwéi déi éischt
 
 'brokenredirects'        => 'Futtis Viruleedungen',
 'brokenredirectstext'    => 'Dës Viruleedungen linken op Säiten déi et net gëtt.',
-'brokenredirects-edit'   => '(änneren)',
-'brokenredirects-delete' => '(läschen)',
+'brokenredirects-edit'   => 'änneren',
+'brokenredirects-delete' => 'läschen',
 
 'withoutinterwiki'         => 'Säiten ouni Interwiki-Linken',
 'withoutinterwiki-summary' => 'Op dëser Spezialsäit stinn all déi Säiten déi keng Interwikilinken hunn.',
@@ -1976,7 +2001,7 @@ Wann zënter dem Läschen eng nei Säit mat dem selweschten Numm ugeluecht gouf,
 'undeleterevdel'               => "D'Restauratioun gëtt net gemaach wann dëst dozou féiert datt déi aktuell Versioun vun der Säit oder vum Fichier deelweis geläscht gëtt.
 An esou Fäll däerf déi neiste Versioun net markéiert ginn oder déi neiste geläschte Versioun muss nees ugewise ginn.",
 'undeletehistorynoadmin'       => "Dës Säit gouf geläscht. De Grond fir d'Läsche gesitt der ënnen, zesumme mat der Iwwersiicht vun den eenzele Versioune vun der Säit an hiren Auteuren. Déi verschidden Textversioune kënnen awer just vun Administrateure gekuckt a restauréiert ginn.",
-'undelete-revision'            => 'Geläschte Versioun vun $1 (Versioun  vum $4 um $5 Auer) vum $3:',
+'undelete-revision'            => 'Geläschte Versioun vu(n) $1 (Versioun vum $4 um $5 Auer) vum $3:',
 'undeleterevision-missing'     => "Ongëlteg oder Versioun déi feelt. Entweder ass de Link falsch oder d'Versioun gouf aus dem Archiv restauréiert oder geläscht.",
 'undelete-nodiff'              => 'Et si keng méi al Versiounen do.',
 'undeletebtn'                  => 'Restauréieren',
@@ -2225,7 +2250,7 @@ An deene Fäll musst Dir d'Diskussiounssäit manuell réckelen oder fusionéiere
 'movepage-page-exists'         => "D'Säit $1 gëtt et schonn a kann net automatesch iwwerschriwwe ginn.",
 'movepage-page-moved'          => "D'Säit $1 gouf schonn op $2 geréckelt.",
 'movepage-page-unmoved'        => "D'Säit $1 konnt nett op $2 geréckelt ginn.",
-'movepage-max-pages'           => 'Déi Maximalzuel vun $1 {{PLURAL:$1|Säit gouf|Säite goufe}} gouf geréckelt. All déi aner Säite kënnen net automatesch geréckelt ginn.',
+'movepage-max-pages'           => 'Déi Maximalzuel vu(n) $1 {{PLURAL:$1|Säit gouf|Säite goufe}} gouf geréckelt. All déi aner Säite kënnen net automatesch geréckelt ginn.',
 '1movedto2'                    => '[[$1]] gouf op [[$2]] geréckelt',
 '1movedto2_redir'              => '[[$1]] gouf op [[$2]] geréckelt, dobäi gouf eng Viruleedung iwwerschriwwen.',
 'move-redirect-suppressed'     => 'Viruleedung ewechgehol',

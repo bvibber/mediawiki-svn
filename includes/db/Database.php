@@ -19,7 +19,7 @@ define( 'DEADLOCK_DELAY_MAX', 1500000 );
  * Database abstraction object
  * @ingroup Database
  */
-class Database {
+abstract class DatabaseBase {
 
 #------------------------------------------------------------------------------
 # Variables
@@ -307,7 +307,7 @@ class Database {
 	}
 
 	/**
-	 * Same as new Database( ... ), kept for backward compatibility
+	 * Same as new DatabaseMysql( ... ), kept for backward compatibility
 	 * @param $server String: database server host
 	 * @param $user String: database user name
 	 * @param $password String: database user password
@@ -317,7 +317,7 @@ class Database {
 	 */
 	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0 )
 	{
-		return new Database( $server, $user, $password, $dbName, $failFunction, $flags );
+		return new DatabaseMysql( $server, $user, $password, $dbName, $failFunction, $flags );
 	}
 
 	/**
@@ -328,114 +328,7 @@ class Database {
 	 * @param $password String: database user password
 	 * @param $dbName String: database name
 	 */
-	function open( $server, $user, $password, $dbName ) {
-		global $wgAllDBsAreLocalhost;
-		wfProfileIn( __METHOD__ );
-
-		# Test for missing mysql.so
-		# First try to load it
-		if (!@extension_loaded('mysql')) {
-			@dl('mysql.so');
-		}
-
-		# Fail now
-		# Otherwise we get a suppressed fatal error, which is very hard to track down
-		if ( !function_exists( 'mysql_connect' ) ) {
-			throw new DBConnectionError( $this, "MySQL functions missing, have you compiled PHP with the --with-mysql option?\n" );
-		}
-
-		# Debugging hack -- fake cluster
-		if ( $wgAllDBsAreLocalhost ) {
-			$realServer = 'localhost';
-		} else {
-			$realServer = $server;
-		}
-		$this->close();
-		$this->mServer = $server;
-		$this->mUser = $user;
-		$this->mPassword = $password;
-		$this->mDBname = $dbName;
-
-		$success = false;
-
-		wfProfileIn("dbconnect-$server");
-
-		# The kernel's default SYN retransmission period is far too slow for us,
-		# so we use a short timeout plus a manual retry. Retrying means that a small
-		# but finite rate of SYN packet loss won't cause user-visible errors.
-		$this->mConn = false;
-		if ( ini_get( 'mysql.connect_timeout' ) <= 3 ) {
-			$numAttempts = 2;
-		} else {
-			$numAttempts = 1;
-		}
-		$this->installErrorHandler();
-		for ( $i = 0; $i < $numAttempts && !$this->mConn; $i++ ) {
-			if ( $i > 1 ) {
-				usleep( 1000 );
-			}
-			if ( $this->mFlags & DBO_PERSISTENT ) {
-				$this->mConn = mysql_pconnect( $realServer, $user, $password );
-			} else {
-				# Create a new connection...
-				$this->mConn = mysql_connect( $realServer, $user, $password, true );
-			}
-			if ($this->mConn === false) {
-				#$iplus = $i + 1;
-				#wfLogDBError("Connect loop error $iplus of $max ($server): " . mysql_errno() . " - " . mysql_error()."\n"); 
-			}
-		}
-		$phpError = $this->restoreErrorHandler();
-		# Always log connection errors
-		if ( !$this->mConn ) {
-			$error = $this->lastError();
-			if ( !$error ) {
-				$error = $phpError;
-			}
-			wfLogDBError( "Error connecting to {$this->mServer}: $error\n" );
-			wfDebug( "DB connection error\n" );
-			wfDebug( "Server: $server, User: $user, Password: " .
-				substr( $password, 0, 3 ) . "..., error: " . mysql_error() . "\n" );
-			$success = false;
-		}
-		
-		wfProfileOut("dbconnect-$server");
-
-		if ( $dbName != '' && $this->mConn !== false ) {
-			$success = @/**/mysql_select_db( $dbName, $this->mConn );
-			if ( !$success ) {
-				$error = "Error selecting database $dbName on server {$this->mServer} " .
-					"from client host " . wfHostname() . "\n";
-				wfLogDBError(" Error selecting database $dbName on server {$this->mServer} \n");
-				wfDebug( $error );
-			}
-		} else {
-			# Delay USE query
-			$success = (bool)$this->mConn;
-		}
-
-		if ( $success ) {
-			$version = $this->getServerVersion();
-			if ( version_compare( $version, '4.1' ) >= 0 ) {
-				// Tell the server we're communicating with it in UTF-8.
-				// This may engage various charset conversions.
-				global $wgDBmysql5;
-				if( $wgDBmysql5 ) {
-					$this->query( 'SET NAMES utf8', __METHOD__ );
-				}
-				// Turn off strict mode
-				$this->query( "SET sql_mode = ''", __METHOD__ );
-			}
-
-			// Turn off strict mode if it is on
-		} else {
-			$this->reportConnectionError( $phpError );
-		}
-
-		$this->mOpened = $success;
-		wfProfileOut( __METHOD__ );
-		return $success;
-	}
+	abstract function open( $server, $user, $password, $dbName );
 
 	protected function installErrorHandler() {
 		$this->mPHPError = false;
@@ -467,17 +360,9 @@ class Database {
 	 *
 	 * @return Bool operation success. true if already closed.
 	 */
-	function close()
-	{
-		$this->mOpened = false;
-		if ( $this->mConn ) {
-			if ( $this->trxLevel() ) {
-				$this->immediateCommit();
-			}
-			return mysql_close( $this->mConn );
-		} else {
-			return true;
-		}
+	function close() {
+		# Stub, should probably be overridden
+		return true;
 	}
 
 	/**
@@ -630,14 +515,7 @@ class Database {
 	 * @return Result object to feed to fetchObject, fetchRow, ...; or false on failure
 	 * @private
 	 */
-	/*private*/ function doQuery( $sql ) {
-		if( $this->bufferResults() ) {
-			$ret = mysql_query( $sql, $this->mConn );
-		} else {
-			$ret = mysql_unbuffered_query( $sql, $this->mConn );
-		}
-		return $ret;
-	}
+	/*private*/ abstract function doQuery( $sql );
 
 	/**
 	 * @param $error String
@@ -763,12 +641,8 @@ class Database {
 	 * @param $res Mixed: A SQL result
 	 */
 	function freeResult( $res ) {
-		if ( $res instanceof ResultWrapper ) {
-			$res = $res->result;
-		}
-		if ( !@/**/mysql_free_result( $res ) ) {
-			throw new DBUnexpectedError( $this, "Unable to free MySQL result" );
-		}
+		# Stub.  Might not really need to be overridden, since results should
+		# be freed by PHP when the variable goes out of scope anyway.
 	}
 
 	/**
@@ -780,16 +654,7 @@ class Database {
 	 * @return MySQL row object
 	 * @throws DBUnexpectedError Thrown if the database returns an error
 	 */
-	function fetchObject( $res ) {
-		if ( $res instanceof ResultWrapper ) {
-			$res = $res->result;
-		}
-		@/**/$row = mysql_fetch_object( $res );
-		if( $this->lastErrno() ) {
-			throw new DBUnexpectedError( $this, 'Error in fetchObject(): ' . htmlspecialchars( $this->lastError() ) );
-		}
-		return $row;
-	}
+	abstract function fetchObject( $res );
 
 	/**
 	 * Fetch the next row from the given result object, in associative array
@@ -799,43 +664,20 @@ class Database {
 	 * @return MySQL row object
 	 * @throws DBUnexpectedError Thrown if the database returns an error
 	 */
- 	function fetchRow( $res ) {
-		if ( $res instanceof ResultWrapper ) {
-			$res = $res->result;
-		}
-		@/**/$row = mysql_fetch_array( $res );
-		if ( $this->lastErrno() ) {
-			throw new DBUnexpectedError( $this, 'Error in fetchRow(): ' . htmlspecialchars( $this->lastError() ) );
-		}
-		return $row;
-	}
+	abstract function fetchRow( $res );
 
 	/**
 	 * Get the number of rows in a result object
 	 * @param $res Mixed: A SQL result
 	 */
-	function numRows( $res ) {
-		if ( $res instanceof ResultWrapper ) {
-			$res = $res->result;
-		}
-		@/**/$n = mysql_num_rows( $res );
-		if( $this->lastErrno() ) {
-			throw new DBUnexpectedError( $this, 'Error in numRows(): ' . htmlspecialchars( $this->lastError() ) );
-		}
-		return $n;
-	}
+	abstract function numRows( $res );
 
 	/**
 	 * Get the number of fields in a result object
 	 * See documentation for mysql_num_fields()
 	 * @param $res Mixed: A SQL result
 	 */
-	function numFields( $res ) {
-		if ( $res instanceof ResultWrapper ) {
-			$res = $res->result;
-		}
-		return mysql_num_fields( $res );
-	}
+	abstract function numFields( $res );
 
 	/**
 	 * Get a field name in a result object
@@ -844,12 +686,7 @@ class Database {
 	 * @param $res Mixed: A SQL result
 	 * @param $n Integer
 	 */
-	function fieldName( $res, $n ) {
-		if ( $res instanceof ResultWrapper ) {
-			$res = $res->result;
-		}
-		return mysql_field_name( $res, $n );
-	}
+	abstract function fieldName( $res, $n );
 
 	/**
 	 * Get the inserted value of an auto-increment row
@@ -861,7 +698,7 @@ class Database {
 	 * $dbw->insert('page',array('page_id' => $id));
 	 * $id = $dbw->insertId();
 	 */
-	function insertId() { return mysql_insert_id( $this->mConn ); }
+	abstract function insertId();
 
 	/**
 	 * Change the position of the cursor in a result object
@@ -869,51 +706,25 @@ class Database {
 	 * @param $res Mixed: A SQL result
 	 * @param $row Mixed: Either MySQL row or ResultWrapper
 	 */
-	function dataSeek( $res, $row ) {
-		if ( $res instanceof ResultWrapper ) {
-			$res = $res->result;
-		}
-		return mysql_data_seek( $res, $row );
-	}
+	abstract function dataSeek( $res, $row );
 
 	/**
 	 * Get the last error number
 	 * See mysql_errno()
 	 */
-	function lastErrno() {
-		if ( $this->mConn ) {
-			return mysql_errno( $this->mConn );
-		} else {
-			return mysql_errno();
-		}
-	}
+	abstract function lastErrno();
 
 	/**
 	 * Get a description of the last error
 	 * See mysql_error() for more details
 	 */
-	function lastError() {
-		if ( $this->mConn ) {
-			# Even if it's non-zero, it can still be invalid
-			wfSuppressWarnings();
-			$error = mysql_error( $this->mConn );
-			if ( !$error ) {
-				$error = mysql_error();
-			}
-			wfRestoreWarnings();
-		} else {
-			$error = mysql_error();
-		}
-		if( $error ) {
-			$error .= ' (' . $this->mServer . ')';
-		}
-		return $error;
-	}
+	abstract function lastError();
+
 	/**
 	 * Get the number of rows affected by the last write query
 	 * See mysql_affected_rows() for more details
 	 */
-	function affectedRows() { return mysql_affected_rows( $this->mConn ); }
+	abstract function affectedRows();
 
 	/**
 	 * Simple UPDATE wrapper
@@ -1096,7 +907,7 @@ class Database {
 	 * e.g: selectRow( "page", array( "page_id" ), array( "page_namespace" =>
 	 * NS_MAIN, "page_title" => "Astronomy" ) )   would return an object where
 	 * $obj- >page_id is the ID of the Astronomy article
-	 * @param $fname String: Calling functio name
+	 * @param $fname String: Calling function name
 	 * @param $options Array
 	 * @param $join_conds Array
 	 *
@@ -1258,18 +1069,7 @@ class Database {
 	 * @param $table
 	 * @param $field
 	 */
-	function fieldInfo( $table, $field ) {
-		$table = $this->tableName( $table );
-		$res = $this->query( "SELECT * FROM $table LIMIT 1" );
-		$n = mysql_num_fields( $res->result );
-		for( $i = 0; $i < $n; $i++ ) {
-			$meta = mysql_fetch_field( $res->result, $i );
-			if( $field == $meta->name ) {
-				return new MySQLField($meta);
-			}
-		}
-		return false;
-	}
+	abstract function fieldInfo( $table, $field );
 
 	/**
 	 * mysql_field_type() wrapper
@@ -1441,11 +1241,32 @@ class Database {
 	}
 
 	/**
+	 * Bitwise operations
+	 */
+
+	function bitNot($field) {
+		return "(~$bitField)";
+	}
+
+	function bitAnd($fieldLeft, $fieldRight) {
+		return "($fieldLeft & $fieldRight)";
+	}
+
+	function bitOr($fieldLeft, $fieldRight) {
+		return "($fieldLeft | $fieldRight)";
+	}
+
+	/**
 	 * Change the current database
+	 *
+	 * @return bool Success or failure
 	 */
 	function selectDB( $db ) {
-		$this->mDBname = $db;
-		return mysql_select_db( $db, $this->mConn );
+		# Stub.  Shouldn't cause serious problems if it's not overridden, but
+		# if your database engine supports a concept similar to MySQL's
+		# databases you may as well.  TODO: explain what exactly will fail if
+		# this is not overridden.
+		return true;
 	}
 
 	/**
@@ -1622,9 +1443,7 @@ class Database {
 	 * @param $s String: to be slashed.
 	 * @return String: slashed string.
 	 */
-	function strencode( $s ) {
-		return mysql_real_escape_string( $s, $this->mConn );
-	}
+	abstract function strencode( $s );
 
 	/**
 	 * If it's a string, adds quotes and backslashes
@@ -1662,11 +1481,15 @@ class Database {
 	}
 
 	/**
-	 * USE INDEX clause
-	 * PostgreSQL doesn't have them and returns ""
+	 * USE INDEX clause.  Unlikely to be useful for anything but MySQL.  This
+	 * is only needed because a) MySQL must be as efficient as possible due to
+	 * its use on Wikipedia, and b) MySQL 4.0 is kind of dumb sometimes about
+	 * which index to pick.  Anyway, other databases might have different
+	 * indexes on a given table.  So don't bother overriding this unless you're
+	 * MySQL.
 	 */
 	function useIndexClause( $index ) {
-		return "FORCE INDEX (" . $this->indexName( $index ) . ")";
+		return '';
 	}
 
 	/**
@@ -1754,10 +1577,14 @@ class Database {
 	}
 
 	/**
+	 * A string to insert into queries to show that they're low-priority, like
+	 * MySQL's LOW_PRIORITY.  If no such feature exists, return an empty
+	 * string and nothing bad should happen.
+	 *
 	 * @return string Returns the text of the low priority option if it is supported, or a blank string otherwise
 	 */
 	function lowPriorityOption() {
-		return 'LOW_PRIORITY';
+		return '';
 	}
 
 	/**
@@ -1811,22 +1638,33 @@ class Database {
 	}
 
 	/**
-	 * Construct a LIMIT query with optional offset
-	 * This is used for query pages
+	 * Construct a LIMIT query with optional offset.  This is used for query
+	 * pages.  The SQL should be adjusted so that only the first $limit rows
+	 * are returned.  If $offset is provided as well, then the first $offset
+	 * rows should be discarded, and the next $limit rows should be returned.
+	 * If the result of the query is not ordered, then the rows to be returned
+	 * are theoretically arbitrary.
+	 *
+	 * $sql is expected to be a SELECT, if that makes a difference.  For
+	 * UPDATE, limitResultForUpdate should be used.
+	 *
+	 * The version provided by default works in MySQL and SQLite.  It will very
+	 * likely need to be overridden for most other DBMSes.
+	 *
 	 * @param $sql String: SQL query we will append the limit too
 	 * @param $limit Integer: the SQL limit
 	 * @param $offset Integer the SQL offset (default false)
 	 */
-	function limitResult($sql, $limit, $offset=false) {
-		if( !is_numeric($limit) ) {
+	function limitResult( $sql, $limit, $offset=false ) {
+		if( !is_numeric( $limit ) ) {
 			throw new DBUnexpectedError( $this, "Invalid non-numeric limit passed to limitResult()\n" );
 		}
 		return "$sql LIMIT "
 				. ( (is_numeric($offset) && $offset != 0) ? "{$offset}," : "" )
 				. "{$limit} ";
 	}
-	function limitResultForUpdate($sql, $num) {
-		return $this->limitResult($sql, $num, 0);
+	function limitResultForUpdate( $sql, $num ) {
+		return $this->limitResult( $sql, $num, 0 );
 	}
 
 	/**
@@ -1843,8 +1681,8 @@ class Database {
 	}
 
 	/**
-	 * Returns an SQL expression for a simple conditional.
-	 * Uses IF on MySQL.
+	 * Returns an SQL expression for a simple conditional.  This doesn't need
+	 * to be overridden unless CASE isn't supported in your DBMS.
 	 *
 	 * @param $cond String: SQL expression which will result in a boolean value
 	 * @param $trueVal String: SQL expression to return if true
@@ -1852,7 +1690,7 @@ class Database {
 	 * @return String: SQL fragment
 	 */
 	function conditional( $cond, $trueVal, $falseVal ) {
-		return " IF($cond, $trueVal, $falseVal) ";
+		return " (CASE WHEN $cond THEN $trueVal ELSE $falseVal END) ";
 	}
 
 	/**
@@ -2103,41 +1941,33 @@ class Database {
 	}
 
 	/**
+	 * Returns a wikitext link to the DB's website, e.g.,
+	 *     return "[http://www.mysql.com/ MySQL]";
+	 * Should probably be overridden to at least contain plain text, if for
+	 * some reason your database has no website.
+	 *
 	 * @return String: wikitext of a link to the server software's web site
 	 */
 	function getSoftwareLink() {
-		return "[http://www.mysql.com/ MySQL]";
+		return '(no software link given)';
 	}
 
 	/**
+	 * A string describing the current software version, like from
+	 * mysql_get_server_info().  Will be listed on Special:Version, etc.
+	 * 
 	 * @return String: Version information from the database
 	 */
-	function getServerVersion() {
-		return mysql_get_server_info( $this->mConn );
-	}
+	abstract function getServerVersion();
 
 	/**
 	 * Ping the server and try to reconnect if it there is no connection
+	 *
+	 * @return bool Success or failure
 	 */
 	function ping() {
-		if( !function_exists( 'mysql_ping' ) ) {
-			wfDebug( "Tried to call mysql_ping but this is ancient PHP version. Faking it!\n" );
-			return true;
-		}
-		$ping = mysql_ping( $this->mConn );
-		if ( $ping ) {
-			return true;
-		}
-
-		// Need to reconnect manually in MySQL client 5.0.13+
-		if ( version_compare( mysql_get_client_info(), '5.0.13', '>=' ) ) {
-			mysql_close( $this->mConn );
-			$this->mOpened = false;
-			$this->mConn = false;
-			$this->open( $this->mServer, $this->mUser, $this->mPassword, $this->mDBname );
-			return true;
-		}
-		return false;
+		# Stub.  Not essential to override.
+		return true;
 	}
 
 	/**
@@ -2204,16 +2034,14 @@ class Database {
 	}
 
 	/**
-	 * Override database's default connection timeout.
-	 * May be useful for very long batch queries such as
-	 * full-wiki dumps, where a single query reads out
-	 * over hours or days.
+	 * Override database's default connection timeout.  May be useful for very
+	 * long batch queries such as full-wiki dumps, where a single query reads
+	 * out over hours or days.  May or may not be necessary for non-MySQL
+	 * databases.  For most purposes, leaving it as a no-op should be fine.
+	 *
 	 * @param $timeout Integer in seconds
 	 */
-	public function setTimeout( $timeout ) {
-		$this->query( "SET net_read_timeout=$timeout" );
-		$this->query( "SET net_write_timeout=$timeout" );
-	}
+	public function setTimeout( $timeout ) {}
 
 	/**
 	 * Read and execute SQL commands from a file.
@@ -2419,16 +2247,6 @@ class Database {
 	}
 }
 
-/**
- * Database abstraction object for mySQL
- * Inherit all methods and properties of Database::Database()
- *
- * @ingroup Database
- * @see Database
- */
-class DatabaseMysql extends Database {
-	# Inherit all
-}
 
 /******************************************************************************
  * Utility classes
@@ -2539,7 +2357,7 @@ class DBError extends MWException {
 	 * @param $db Database object which threw the error
 	 * @param $error A simple error message to be used for debugging
 	 */
-	function __construct( Database &$db, $error ) {
+	function __construct( DatabaseBase &$db, $error ) {
 		$this->db =& $db;
 		parent::__construct( $error );
 	}
@@ -2551,7 +2369,7 @@ class DBError extends MWException {
 class DBConnectionError extends DBError {
 	public $error;
 	
-	function __construct( Database &$db, $error = 'unknown error' ) {
+	function __construct( DatabaseBase &$db, $error = 'unknown error' ) {
 		$msg = 'DB connection error';
 		if ( trim( $error ) != '' ) {
 			$msg .= ": $error";
@@ -2722,7 +2540,7 @@ EOT;
 class DBQueryError extends DBError {
 	public $error, $errno, $sql, $fname;
 	
-	function __construct( Database &$db, $error, $errno, $sql, $fname ) {
+	function __construct( DatabaseBase &$db, $error, $errno, $sql, $fname ) {
 		$message = "A database error has occurred\n" .
 		  "Query: $sql\n" .
 		  "Function: $fname\n" .
@@ -2879,18 +2697,5 @@ class ResultWrapper implements Iterator {
 
 	function valid() {
 		return $this->current() !== false;
-	}
-}
-
-class MySQLMasterPos {
-	var $file, $pos;
-
-	function __construct( $file, $pos ) {
-		$this->file = $file;
-		$this->pos = $pos;
-	}
-
-	function __toString() {
-		return "{$this->file}/{$this->pos}";
 	}
 }

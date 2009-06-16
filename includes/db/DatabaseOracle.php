@@ -153,7 +153,7 @@ class ORAField {
 /**
  * @ingroup Database
  */
-class DatabaseOracle extends Database {
+class DatabaseOracle extends DatabaseBase {
 	var $mInsertId = NULL;
 	var $mLastResult = NULL;
 	var $numeric_version = NULL;
@@ -589,13 +589,6 @@ class DatabaseOracle extends Database {
 		return $this->mInsertId;
 	}
 
-	/**
-	 * Oracle does not have a "USE INDEX" clause, so return an empty string
-	 */
-	function useIndexClause($index) {
-		return '';
-	}
-
 	# REPLACE query wrapper
 	# Oracle simulates this with a DELETE followed by INSERT
 	# $row is the row to insert, an associative array
@@ -687,10 +680,6 @@ class DatabaseOracle extends Database {
 		return $size;
 	}
 
-	function lowPriorityOption() {
-		return '';
-	}
-
 	function limitResult($sql, $limit, $offset) {
 		if ($offset === false)
 			$offset = 0;
@@ -701,19 +690,6 @@ class DatabaseOracle extends Database {
 	function unionQueries($sqls, $all = false) {
 		$glue = ' UNION ALL ';
 		return 'SELECT * '.($all?'':'/* UNION_UNIQUE */ ').'FROM ('.implode( $glue, $sqls ).')' ;
-	}
-
-	/**
-	 * Returns an SQL expression for a simple conditional.
-	 * Uses CASE on Oracle
-	 *
-	 * @param $cond String: SQL expression which will result in a boolean value
-	 * @param $trueVal String: SQL expression to return if true
-	 * @param $falseVal String: SQL expression to return if false
-	 * @return String: SQL fragment
-	 */
-	function conditional( $cond, $trueVal, $falseVal ) {
-		return " (CASE WHEN $cond THEN $trueVal ELSE $falseVal END) ";
 	}
 
 	function wasDeadlock() {
@@ -950,11 +926,6 @@ class DatabaseOracle extends Database {
 		return $s;
 	}
 
-	/* For now, does nothing */
-	function selectDB( $db ) {
-		return true;
-	}
-
 	function selectRow( $table, $vars, $conds, $fname = 'DatabaseOracle::selectRow', $options = array(), $join_conds = array() ) {
 		if (is_array($table)) 
 			foreach ($table as $tab)
@@ -1001,6 +972,7 @@ class DatabaseOracle extends Database {
 		return array( $startOpts, $useIndex, $preLimitTail, $postLimitTail );
 	}
 
+	/* redundand ... will remove after confirming bitwise operations functionality
 	public function makeList( $a, $mode = LIST_COMMA ) {
         	if ( !is_array( $a ) ) {
 			throw new DBUnexpectedError( $this, 'DatabaseOracle::makeList called with incorrect parameters' );
@@ -1032,14 +1004,19 @@ class DatabaseOracle extends Database {
 
 		return parent::makeList($a2, $mode);
 	}
+	*/
 
-	public function setTimeout( $timeout ) {
-		// @todo fixme no-op
+	function bitNot($field) {
+		//expecting bit-fields smaller than 4bytes
+		return 'BITNOT('.$bitField.')';
 	}
 
-	function ping() {
-		wfDebug( "Function ping() not written for DatabaseOracle.php yet");
-		return true;
+	function bitAnd($fieldLeft, $fieldRight) {
+		return 'BITAND('.$fieldLeft.', '.$fieldRight.')';
+	}
+
+	function bitOr($fieldLeft, $fieldRight) {
+		return 'BITOR('.$fieldLeft.', '.$fieldRight.')';
 	}
 
 	/**

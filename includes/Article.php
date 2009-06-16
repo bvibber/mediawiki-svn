@@ -697,13 +697,13 @@ class Article {
 		$user = $this->getUser();
 		$pageId = $this->getId();
 
-		$hideBit = Revision::DELETED_USER; // username hidden?
+		$deletedBit = $dbr->bitAnd('rev_deleted', Revision::DELETED_USER); // username hidden?
 
 		$sql = "SELECT {$userTable}.*, MAX(rev_timestamp) as timestamp
 			FROM $revTable LEFT JOIN $userTable ON rev_user = user_id
 			WHERE rev_page = $pageId
 			AND rev_user != $user
-			AND rev_deleted & $hideBit = 0
+			AND $deletedBit = 0
 			GROUP BY rev_user, rev_user_text, user_real_name
 			ORDER BY timestamp DESC";
 
@@ -1078,7 +1078,8 @@ class Article {
 	protected function showLogs() {
 		global $wgUser, $wgOut;
 		$loglist = new LogEventsList( $wgUser->getSkin(), $wgOut );
-		$pager = new LogPager( $loglist, array('move', 'delete'), false, $this->mTitle->getPrefixedText() );
+		$pager = new LogPager( $loglist, array('move', 'delete'), false,
+			$this->mTitle->getPrefixedText(), '', array( "log_action != 'revision'" ) );
 		if( $pager->getNumRows() > 0 ) {
 			$pager->mLimit = 10;
 			$wgOut->addHTML( '<div class="mw-warning-with-logexcerpt">' );
@@ -1705,6 +1706,7 @@ class Article {
 					$dbw->rollback();
 				} else {
 					global $wgUseRCPatrol;
+					wfRunHooks( 'NewRevisionFromEditComplete', array($this, $revision, $baseRevId, $user) );
 					# Update recentchanges
 					if( !( $flags & EDIT_SUPPRESS_RC ) ) {
 						# Mark as patrolled if the user can do so
@@ -1719,8 +1721,6 @@ class Article {
 							PatrolLog::record( $rc, true );
 						}
 					}
-					# Notify extensions of a new edit
-					wfRunHooks( 'NewRevisionFromEditComplete', array(&$this, $revision, $baseRevId, $user) );
 					$user->incEditCount();
 					$dbw->commit();
 				}
@@ -1787,6 +1787,7 @@ class Article {
 			# Update the page record with revision data
 			$this->updateRevisionOn( $dbw, $revision, 0 );
 
+			wfRunHooks( 'NewRevisionFromEditComplete', array($this, $revision, false, $user) );
 			# Update recentchanges
 			if( !( $flags & EDIT_SUPPRESS_RC ) ) {
 				global $wgUseRCPatrol, $wgUseNPPatrol;
@@ -1800,8 +1801,6 @@ class Article {
 					PatrolLog::record( $rc, true );
 				}
 			}
-			# Notify extensions of a new page edit
-			wfRunHooks( 'NewRevisionFromEditComplete', array(&$this, $revision, false, $user) );
 			$user->incEditCount();
 			$dbw->commit();
 
@@ -2213,7 +2212,7 @@ class Article {
 		// Find out if there was only one contributor
 		// Only scan the last 20 revisions
 		$res = $dbw->select( 'revision', 'rev_user_text',
-			array( 'rev_page' => $this->getID(), 'rev_deleted & '.Revision::DELETED_USER.'=0' ),
+			array( 'rev_page' => $this->getID(), $dbw->bitAnd('rev_deleted', Revision::DELETED_USER) . ' = 0' ),
 			__METHOD__,
 			array( 'LIMIT' => 20 )
 		);

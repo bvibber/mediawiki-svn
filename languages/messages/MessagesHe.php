@@ -124,7 +124,7 @@ $magicWords = array(
 	'img_right'             => array( '1', 'ימין', 'right' ),
 	'img_left'              => array( '1', 'שמאל', 'left' ),
 	'img_none'              => array( '1', 'ללא', 'none' ),
-	'img_width'             => array( '1', '$1px' ),
+	'img_width'             => array( '1', '$1 פיקסלים', '$1px' ),
 	'img_center'            => array( '1', 'מרכז', 'center', 'centre' ),
 	'img_framed'            => array( '1', 'ממוסגר', 'מסגרת', 'framed', 'enframed', 'frame' ),
 	'img_frameless'         => array( '1', 'לא ממוסגר', 'ללא מסגרת', 'frameless' ),
@@ -470,6 +470,30 @@ $messages = array(
 'faq'            => 'שאלות ותשובות',
 'faqpage'        => 'Project:שאלות ותשובות',
 
+# Vector skin
+'vector-action-addsection'   => 'הוספת נושא',
+'vector-action-delete'       => 'מחיקה',
+'vector-action-move'         => 'העברה',
+'vector-action-protect'      => 'הגנה',
+'vector-action-undelete'     => 'ביטול מחיקה',
+'vector-action-unprotect'    => 'הסרת הגנה',
+'vector-namespace-category'  => 'קטגוריה',
+'vector-namespace-help'      => 'דף עזרה',
+'vector-namespace-image'     => 'קובץ',
+'vector-namespace-main'      => 'דף',
+'vector-namespace-media'     => 'דף מדיה',
+'vector-namespace-mediawiki' => 'הודעה',
+'vector-namespace-project'   => 'דף מיזם',
+'vector-namespace-special'   => 'דף מיוחד',
+'vector-namespace-talk'      => 'שיחה',
+'vector-namespace-template'  => 'תבנית',
+'vector-namespace-user'      => 'דף משתמש',
+'vector-view-create'         => 'יצירה',
+'vector-view-edit'           => 'עריכה',
+'vector-view-history'        => 'הצגת היסטוריה',
+'vector-view-view'           => 'קריאה',
+'vector-view-viewsource'     => 'הצגת מקור',
+
 # Metadata in edit box
 'metadata_help' => 'מטא־דטה:',
 
@@ -489,7 +513,6 @@ $messages = array(
 'permalink'         => 'קישור קבוע',
 'print'             => 'גרסה להדפסה',
 'edit'              => 'עריכה',
-'view'              => 'קריאה',
 'create'            => 'יצירה',
 'editthispage'      => 'עריכת דף זה',
 'create-this-page'  => 'יצירת דף זה',
@@ -1831,8 +1854,8 @@ PICT # שונות
 
 'brokenredirects'        => 'הפניות לא תקינות',
 'brokenredirectstext'    => 'ההפניות שלהלן מפנות לדפים שאינם קיימים:',
-'brokenredirects-edit'   => '(עריכה)',
-'brokenredirects-delete' => '(מחיקה)',
+'brokenredirects-edit'   => 'עריכה',
+'brokenredirects-delete' => 'מחיקה',
 
 'withoutinterwiki'         => 'דפים ללא קישורי שפה',
 'withoutinterwiki-summary' => 'הדפים הבאים אינם מקשרים לגרסאות שלהם בשפות אחרות:',
@@ -2109,8 +2132,7 @@ $NEWPAGE
 'deletecomment'          => 'סיבת המחיקה:',
 'deleteotherreason'      => 'סיבה נוספת/אחרת:',
 'deletereasonotherlist'  => 'סיבה אחרת',
-'deletereason-dropdown'  => '
-* סיבות מחיקה נפוצות
+'deletereason-dropdown'  => '* סיבות מחיקה נפוצות
 ** לבקשת הכותב
 ** הפרת זכויות יוצרים
 ** השחתה',
@@ -2303,8 +2325,7 @@ $1',
 'ipbexpiry'                       => 'פקיעה:',
 'ipbreason'                       => 'סיבה:',
 'ipbreasonotherlist'              => 'סיבה אחרת',
-'ipbreason-dropdown'              => "
-* סיבות חסימה נפוצות
+'ipbreason-dropdown'              => "* סיבות חסימה נפוצות
 ** הוספת מידע שגוי
 ** הסרת תוכן מדפים
 ** הצפת קישורים לאתרים חיצוניים

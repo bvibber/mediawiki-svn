@@ -22,6 +22,7 @@
  * @author Hercule
  * @author Hégésippe Cormier
  * @author IAlex
+ * @author Jagwar
  * @author JeanVoisin
  * @author Korg
  * @author Korrigan
@@ -320,7 +321,7 @@ $messages = array(
 'tog-hideminor'               => 'Cacher les modifications récentes mineures',
 'tog-hidepatrolled'           => 'Masquer les modifications surveillées des modifications récentes',
 'tog-newpageshidepatrolled'   => 'Masquer les pages surveillées de la liste des nouvelles pages',
-'tog-extendwatchlist'         => 'Étendre la liste de suivi pour afficher toutes les modification et non seulement les plus récentes',
+'tog-extendwatchlist'         => 'Étendre la liste de suivi pour afficher toutes les modifications et non seulement les plus récentes',
 'tog-usenewrc'                => 'Utiliser les modifications récentes améliorées (nécessite JavaScript)',
 'tog-numberheadings'          => 'Numéroter automatiquement les titres de section',
 'tog-showtoolbar'             => 'Montrer la barre de menu de modification (JavaScript doit être activé)',
@@ -465,6 +466,30 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Ajouter un sujet',
+'vector-action-delete'       => 'Supprimer',
+'vector-action-move'         => 'Renommer',
+'vector-action-protect'      => 'Protéger',
+'vector-action-undelete'     => 'Rétablir',
+'vector-action-unprotect'    => 'Déprotéger',
+'vector-namespace-category'  => 'Catégorie',
+'vector-namespace-help'      => 'Aide',
+'vector-namespace-image'     => 'Fichier',
+'vector-namespace-main'      => 'Page',
+'vector-namespace-media'     => 'Page de Média',
+'vector-namespace-mediawiki' => 'Message',
+'vector-namespace-project'   => 'Page de projet',
+'vector-namespace-special'   => 'Page spéciale',
+'vector-namespace-talk'      => 'Discussion',
+'vector-namespace-template'  => 'Modèle',
+'vector-namespace-user'      => 'Page utilisateur',
+'vector-view-create'         => 'Créer',
+'vector-view-edit'           => 'Modifier',
+'vector-view-history'        => 'Afficher l’historique',
+'vector-view-view'           => 'Lire',
+'vector-view-viewsource'     => 'Voir la source',
+
 # Metadata in edit box
 'metadata_help' => 'Métadonnées :',
 
@@ -484,7 +509,6 @@ $messages = array(
 'permalink'         => 'Lien historique',
 'print'             => 'Imprimer',
 'edit'              => 'Modifier',
-'view'              => 'Lire',
 'create'            => 'Créer',
 'editthispage'      => 'Modifier cette page',
 'create-this-page'  => 'Créer cette page',
@@ -1230,7 +1254,7 @@ Assurez-vous que cette opération conservera la continuité de l’historique de
 'mwsuggest-disable'                => 'Désactiver les suggestions AJAX',
 'searcheverything-enable'          => 'Rechercher dans tous les espaces de noms',
 'searchrelated'                    => 'relaté',
-'searchall'                        => 'Tous',
+'searchall'                        => 'tout',
 'showingresults'                   => 'Affichage de <b>$1</b> résultat{{PLURAL:$1||s}} à partir du #<b>$2</b>.',
 'showingresultsnum'                => 'Affichage de <b>$3</b> résultat{{PLURAL:$3||s}} à partir du #<b>$2</b>.',
 'showingresultstotal'              => "Affichage {{PLURAL:$4|du résultat '''$1'''|des résultats '''$1 – $2'''}} sur '''$3'''",
@@ -1362,7 +1386,7 @@ Vous pouvez également décider de laisser les autres vous contacter via votre p
 'prefs-diffs'                   => 'Différences',
 
 # User rights
-'userrights'                  => 'gestion des droits utilisateur',
+'userrights'                  => 'Gestion des droits utilisateur',
 'userrights-lookup-user'      => 'Gestion des droits utilisateur',
 'userrights-user-editname'    => 'Entrez un nom d’utilisateur :',
 'editusergroup'               => 'Modification des groupes utilisateurs',
@@ -1809,8 +1833,8 @@ Chaque entrée contient des liens vers la première et la seconde redirections, 
 
 'brokenredirects'        => 'Redirections cassées',
 'brokenredirectstext'    => 'Ces redirections mènent vers des pages inexistantes :',
-'brokenredirects-edit'   => '(modifier)',
-'brokenredirects-delete' => '(supprimer)',
+'brokenredirects-edit'   => 'modifier',
+'brokenredirects-delete' => 'supprimer',
 
 'withoutinterwiki'         => 'Pages sans liens inter-langues',
 'withoutinterwiki-summary' => 'Les pages suivantes ne possèdent pas de liens vers d’autres langues :',
@@ -1839,7 +1863,7 @@ Chaque entrée contient des liens vers la première et la seconde redirections, 
 'wantedcategories'        => 'Catégories les plus demandées',
 'wantedpages'             => 'Pages les plus demandées',
 'wantedpages-badtitle'    => 'Titre invalide dans les résultats : $1',
-'wantedfiles'             => 'Fichiers les plus désirés',
+'wantedfiles'             => 'Fichiers les plus demandés',
 'wantedtemplates'         => 'Modèles demandés',
 'mostlinked'              => 'Pages les plus liées',
 'mostlinkedcategories'    => 'Catégories les plus utilisées',
@@ -1926,8 +1950,9 @@ Voyez aussi [[Special:WantedCategories|les catégories demandées]].',
 'special-categories-sort-abc'   => 'tri alphabétique',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Contributions supprimées',
-'deletedcontributions-title' => 'Contributions supprimées',
+'deletedcontributions'             => 'Contributions supprimées',
+'deletedcontributions-title'       => 'Contributions supprimées',
+'sp-deletedcontributions-contribs' => 'contributions',
 
 # Special:LinkSearch
 'linksearch'       => 'Liens externes',
@@ -2091,9 +2116,7 @@ Voir $2 pour une liste des suppressions récentes.',
 'deletereason-dropdown'  => '* Motifs de suppression les plus courants
 ** Demande de l’auteur
 ** Violation des droits d’auteur
-** Vandalisme
-** Langue erronée
-** Message mis à jour de façon externe',
+** Vandalisme',
 'delete-edit-reasonlist' => 'Modifier les motifs de suppression de page',
 'delete-toobig'          => 'Cette page possède un historique important de modifications, dépassant $1 version{{PLURAL:$1||s}}.
 La suppression de telles pages a été restreinte pour prévenir des perturbations accidentelles de {{SITENAME}}.',
@@ -2205,7 +2228,7 @@ Le contenu effectif de ces versions supprimées n’est accessible qu’aux admi
 'undeleterevision-missing'     => 'Version incorrecte ou manquante.
 Vous avez peut-être un mauvais lien, ou la version a pu être restaurée ou supprimée de l’archive.',
 'undelete-nodiff'              => 'Aucune version précédente trouvée.',
-'undeletebtn'                  => 'Restaurer',
+'undeletebtn'                  => 'restaurer',
 'undeletelink'                 => 'visualiser/rétablir',
 'undeleteviewlink'             => 'voir',
 'undeletereset'                => 'Réinitialiser',

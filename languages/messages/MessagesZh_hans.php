@@ -339,6 +339,30 @@ $messages = array(
 'faq'            => '常见问题解答',
 'faqpage'        => 'Project:常见问题解答',
 
+# Vector skin
+'vector-action-addsection'   => '加入主题',
+'vector-action-delete'       => '删除',
+'vector-action-move'         => '移动',
+'vector-action-protect'      => '保护',
+'vector-action-undelete'     => '恢复被删页面',
+'vector-action-unprotect'    => '解除保护',
+'vector-namespace-category'  => '分类',
+'vector-namespace-help'      => '帮助页面',
+'vector-namespace-image'     => '文件',
+'vector-namespace-main'      => '页面',
+'vector-namespace-media'     => '媒体页面',
+'vector-namespace-mediawiki' => '信息',
+'vector-namespace-project'   => '计划页面',
+'vector-namespace-special'   => '特殊页面',
+'vector-namespace-talk'      => '讨论',
+'vector-namespace-template'  => '模板',
+'vector-namespace-user'      => '用户页面',
+'vector-view-create'         => '创建',
+'vector-view-edit'           => '编辑',
+'vector-view-history'        => '查看历史',
+'vector-view-view'           => '阅读',
+'vector-view-viewsource'     => '查看源代码',
+
 # Metadata in edit box
 'metadata_help' => '元数据：',
 
@@ -358,7 +382,6 @@ $messages = array(
 'permalink'         => '永久链接',
 'print'             => '打印',
 'edit'              => '编辑',
-'view'              => '阅读',
 'create'            => '创建',
 'editthispage'      => '编辑此页',
 'create-this-page'  => '创建此页',
@@ -1263,7 +1286,7 @@ $1",
 'right-move-subpages'         => '移动页面跟它的字页面',
 'right-move-rootuserpages'    => '移动根用户页面',
 'right-movefile'              => '移动文件',
-'right-suppressredirect'      => '移动页面时不建立重定向',
+'right-suppressredirect'      => '当移动页面时不建立来源页面之重定向',
 'right-upload'                => '上传文件',
 'right-reupload'              => '覆盖现有的文件',
 'right-reupload-own'          => '覆盖由同一位上传的文件',
@@ -1640,8 +1663,8 @@ Template:消除歧義',
 
 'brokenredirects'        => '损坏的重定向页',
 'brokenredirectstext'    => '以下的重定向页面指向的是不存在的页面：',
-'brokenredirects-edit'   => '(编辑)',
-'brokenredirects-delete' => '(删除)',
+'brokenredirects-edit'   => '编辑',
+'brokenredirects-delete' => '删除',
 
 'withoutinterwiki'         => '未有语言链接的页面',
 'withoutinterwiki-summary' => '以下的页面是未有语言链接到其它语言版本。',
@@ -1755,8 +1778,9 @@ Template:消除歧義',
 'special-categories-sort-abc'   => '按字母排列',
 
 # Special:DeletedContributions
-'deletedcontributions'       => '已删除的用户贡献',
-'deletedcontributions-title' => '已删除的用户贡献',
+'deletedcontributions'             => '已删除的用户贡献',
+'deletedcontributions-title'       => '已删除的用户贡献',
+'sp-deletedcontributions-contribs' => '贡献',
 
 # Special:LinkSearch
 'linksearch'       => '外部链接',
@@ -1789,14 +1813,14 @@ Template:消除歧義',
 'listgrouprights-rights'               => '权限',
 'listgrouprights-helppage'             => 'Help:群组权限',
 'listgrouprights-members'              => '(成员列表)',
-'listgrouprights-addgroup'             => '可以加入的{{PLURAL:$2|一个|多个}}群组：$1',
-'listgrouprights-removegroup'          => '可以移除的{{PLURAL:$2|一个|多个}}群组：$1',
-'listgrouprights-addgroup-all'         => '可以加入所有群组',
-'listgrouprights-removegroup-all'      => '可以移除所有群组',
-'listgrouprights-addgroup-self'        => '在自己的账户中可以加入的{{PLURAL:$2|一个|多个}}群组: $1',
-'listgrouprights-removegroup-self'     => '在自己的账户中可以移除的{{PLURAL:$2|一个|多个}}群组: $1',
-'listgrouprights-addgroup-self-all'    => '在自己的账户中以加入所有群组',
-'listgrouprights-removegroup-self-all' => '在自己的账户中可以移除所有群组',
+'listgrouprights-addgroup'             => '加入的{{PLURAL:$2|一个|多个}}群组：$1',
+'listgrouprights-removegroup'          => '移除的{{PLURAL:$2|一个|多个}}群组：$1',
+'listgrouprights-addgroup-all'         => '加入所有群组',
+'listgrouprights-removegroup-all'      => '移除所有群组',
+'listgrouprights-addgroup-self'        => '在自己的账户中加入的{{PLURAL:$2|一个|多个}}群组: $1',
+'listgrouprights-removegroup-self'     => '在自己的账户中移除的{{PLURAL:$2|一个|多个}}群组: $1',
+'listgrouprights-addgroup-self-all'    => '在自己的账户中加入所有群组',
+'listgrouprights-removegroup-self-all' => '在自己的账户中移除所有群组',
 
 # E-mail user
 'mailnologin'      => '无电邮地址',
@@ -1921,8 +1945,7 @@ $NEWPAGE
 'deletecomment'          => '删除原因：',
 'deleteotherreason'      => '其它／附加的理由：',
 'deletereasonotherlist'  => '其它理由',
-'deletereason-dropdown'  => '
-*常用删除理由
+'deletereason-dropdown'  => '*常用删除理由
 ** 作者请求
 ** 侵犯版权
 ** 破坏',
@@ -2110,8 +2133,7 @@ $1',
 'ipbexpiry'                       => '期限：',
 'ipbreason'                       => '原因：',
 'ipbreasonotherlist'              => '其它原因',
-'ipbreason-dropdown'              => '
-*一般的封禁理由
+'ipbreason-dropdown'              => '*一般的封禁理由
 ** 增加不实资料
 ** 删除页面内容
 ** 添加外部垃圾链接
@@ -2972,6 +2994,7 @@ $1',
 # Separators for various lists, etc.
 'comma-separator' => '、',
 'word-separator'  => '',
+'parentheses'     => '（$1）',
 
 # Multipage image navigation
 'imgmultipageprev' => '← 上一页',

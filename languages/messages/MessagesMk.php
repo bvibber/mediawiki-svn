@@ -412,6 +412,9 @@ $messages = array(
 'faq'            => 'ЧПП',
 'faqpage'        => 'Project:ЧПП',
 
+# Vector skin
+'vector-view-view' => 'Читај',
+
 # Metadata in edit box
 'metadata_help' => 'Метаподатоци:',
 
@@ -431,7 +434,6 @@ $messages = array(
 'permalink'         => 'Перманентна врска',
 'print'             => 'Печати',
 'edit'              => 'Уреди',
-'view'              => 'Читај',
 'create'            => 'Создади',
 'editthispage'      => 'Уреди ја оваа страница',
 'create-this-page'  => 'Создади ја оваа страница',
@@ -1770,8 +1772,8 @@ PICT # misc.
 
 'brokenredirects'        => 'Прекинати пренасочувања',
 'brokenredirectstext'    => 'Следните пренасочувања водат до непостоечки страници.',
-'brokenredirects-edit'   => '(уреди)',
-'brokenredirects-delete' => '(бриши)',
+'brokenredirects-edit'   => 'уреди',
+'brokenredirects-delete' => 'бриши',
 
 'withoutinterwiki'         => 'Страници без интервики (јазични) врски',
 'withoutinterwiki-summary' => 'Следните страници немаат врски до други јазични верзии.',
@@ -2049,10 +2051,7 @@ $NEWPAGE
 ** На барање на авторот
 ** Прекршување на авторски права
 ** Страница создадена по грешка
-** Несоодветен наслов
-
-*Спам
-**Спам',
+** Несоодветен наслов',
 'delete-edit-reasonlist' => 'Уредување на причини за бришење',
 'delete-toobig'          => 'Оваа страница има долга историја на уредување, преку $1 {{PLURAL:$1|ревизија|ревизии}}.
 Бришењето на ваквии страници е забрането со цел да се заштити {{SITENAME}} од оштетувања.',

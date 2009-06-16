@@ -67,23 +67,26 @@ function wfGetAgent() {
  * @return string
  */
 function wfGetIP() {
-	global $wgIP, $wgUsePrivateIPs;
+	global $wgIP, $wgUsePrivateIPs, $wgCommandLineMode;
 
 	# Return cached result
 	if ( !empty( $wgIP ) ) {
 		return $wgIP;
 	}
 
+	$ipchain = array();
+	$ip = false;
+
 	/* collect the originating ips */
 	# Client connecting to this webserver
 	if ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
 		$ip = IP::canonicalize( $_SERVER['REMOTE_ADDR'] );
+	} elseif( $wgCommandLineMode ) {
+		$ip = '127.0.0.1';
 	}
 	if( $ip ) {
 		$ipchain[] = $ip;
 	}
-	
-	$ip = false;
 
 	# Append XFF on to $ipchain
 	$forwardedFor = wfGetForwardedFor();
@@ -108,7 +111,7 @@ function wfGetIP() {
 		}
 	}
 
-	if( $ip ) {
+	if( !$ip ) {
 		throw new MWException( "Unable to determine IP" );
 	}
 

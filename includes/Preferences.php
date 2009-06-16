@@ -489,7 +489,7 @@ class Preferences {
 		$tzSetting = $tzOffset;
 		if (count($tz) > 1 && $tz[0] == 'Offset') {
 			$minDiff = $tz[1];
-			$tzSetting = sprintf( '%+03d:%02d', floor($minDiff/60), abs($minDiff)%60 );;
+			$tzSetting = sprintf( '%+03d:%02d', floor($minDiff/60), abs($minDiff)%60 );
 		}
 		
 		$defaultPreferences['timecorrection'] =
@@ -965,6 +965,11 @@ class Preferences {
 		$ret = array();
 		
 		if ($dateopts) {
+			if ( !in_array( 'default', $dateopts ) ) {
+				$dateopts[] = 'default'; // Make sure default is always valid
+											// Bug 19237
+			}
+			
 			$idCnt = 0;
 			$epoch = '20010115161234'; # Wikipedia day
 			foreach( $dateopts as $key ) {
