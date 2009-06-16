@@ -26,7 +26,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Poll',
-	'version'        => '1.0(r51981)',
+	'version'        => '1.0(r51982)',
 	'path'           => __FILE__,
 	'author'         => 'Jan Luca',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Poll2',
@@ -79,7 +79,7 @@ function efPollSchemaUpdates() {
 		// "poll_answer"-Table: The answer of the users
 		$wgExtNewTables[] = array( 'poll_answer', "$base/archives/Poll-answer.sql" ); // Initial answer tables
 		$wgExtNewFields[] = array( 'poll_answer', 'user', "$base/archives/patch-user.sql" ); // Add user
-		$wgExtNewFields[] = array( 'poll_answer', 'vote_other', "$base/archives/patch-vote_other#.sql" ); // Add vote_other
+		$wgExtNewFields[] = array( 'poll_answer', 'vote_other', "$base/archives/patch-vote_other.sql" ); // Add vote_other
 	}
 	return true;
 }
