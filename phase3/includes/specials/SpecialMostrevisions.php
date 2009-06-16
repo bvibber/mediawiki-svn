@@ -12,7 +12,27 @@ class MostrevisionsPage extends FewestrevisionsPage {
 	function __construct() {
 		SpecialPage::__construct( 'Mostrevisions' );
 	}
-	
+
+	function formatResult( $skin, $result ) {
+		global $wgLang, $wgContLang;
+
+		$nt = Title::makeTitle( $result->namespace, $result->title );
+		$text = $wgContLang->convert( $nt->getPrefixedText() );
+
+		$plink = $skin->linkKnown( $nt, $text );
+
+		$nl = wfMsgExt( 'nrevisions', array( 'parsemag', 'escape'),
+			$wgLang->formatNum( $result->value ) );
+		$nlink = $skin->linkKnown(
+			$nt,
+			$nl,
+			array(),
+			array( 'action' => 'history' )
+		);
+
+		return wfSpecialList($plink, $nlink);
+	}
+
 	function sortDescending() {
 		return true;
 	}

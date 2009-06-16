@@ -83,7 +83,7 @@ class DeletedContribsPager extends IndexPager {
 		$limits = $wgLang->pipeList( $limitLinks );
 
 		$this->mNavigationBar = "(" . $wgLang->pipeList( array( $pagingLinks['first'], $pagingLinks['last'] ) ) . ") " .
-			wfMsgExt( 'viewprevnext', array( 'parsemag' ), $pagingLinks['prev'], $pagingLinks['next'], $limits );
+			wfMsgExt( 'viewprevnext', array( 'parsemag', 'escape', 'replaceafter' ), $pagingLinks['prev'], $pagingLinks['next'], $limits );
 		return $this->mNavigationBar;
 	}
 
@@ -126,33 +126,57 @@ class DeletedContribsPager extends IndexPager {
 		$undelete = SpecialPage::getTitleFor( 'Undelete' );
 
 		$logs = SpecialPage::getTitleFor( 'Log' );
-		$dellog = $sk->makeKnownLinkObj( $logs,
+		$dellog = $sk->linkKnown(
+			$logs,
 			$this->messages['deletionlog'],
-			'type=delete&page=' . $page->getPrefixedUrl() );
+			array(),
+			array(
+				'type' => 'delete',
+				'page' => $page->getPrefixedText()
+			)
+		);
 
-		$reviewlink = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete', $page->getPrefixedDBkey() ),
-			$this->messages['undeletebtn'] );
+		$reviewlink = $sk->linkKnown(
+			SpecialPage::getTitleFor( 'Undelete', $page->getPrefixedDBkey() ),
+			$this->messages['undeletebtn']
+		);
 
-		$link = $sk->makeKnownLinkObj( $undelete,
+		$link = $sk->linkKnown(
+			$undelete,
 			htmlspecialchars( $page->getPrefixedText() ),
-			'target=' . $page->getPrefixedUrl() .
-			'&timestamp=' . $rev->getTimestamp() );
+			array(),
+			array(
+				'target' => $page->getPrefixedText(),
+				'timestamp' => $rev->getTimestamp()
+			)
+		);
 
-		$last = $sk->makeKnownLinkObj( $undelete,
+		$last = $sk->linkKnown(
+			$undelete,
 			$this->messages['diff'],
-			"target=" . $page->getPrefixedUrl() .
-			"&timestamp=" . $rev->getTimestamp() .
-			"&diff=prev" );
+			array(),
+			array(
+				'target' => $page->getPrefixedText(),
+				'timestamp' => $rev->getTimestamp(),
+				'diff' => 'prev'
+			)
+		);
 
 		$comment = $sk->revComment( $rev );
-		$d = $wgLang->timeanddate( $rev->getTimestamp(), true );
+		$d = htmlspecialchars( $wgLang->timeanddate( $rev->getTimestamp(), true ) );
 
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$d = '<span class="history-deleted">' . $d . '</span>';
 		} else {
-			$link = $sk->makeKnownLinkObj( $undelete, $d,
-				'target=' . $page->getPrefixedUrl() .
-				'&timestamp=' . $rev->getTimestamp() );
+			$link = $sk->linkKnown(
+				$undelete,
+				$d,
+				array(),
+				array(
+					'target' => $page->getPrefixedText(),
+					'timestamp' => $rev->getTimestamp()
+				)
+			);
 		}
 
 		$pagelink = $sk->link( $page );
@@ -313,19 +337,34 @@ class DeletedContributionsPage extends SpecialPage {
 			if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && User::isIP( $nt->getText() ) ) ) {
 				# Block link
 				if( $wgUser->isAllowed( 'block' ) )
-					$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Blockip', $nt->getDBkey() ),
-						wfMsgHtml( 'blocklink' ) );
+					$tools[] = $sk->linkKnown(
+						SpecialPage::getTitleFor( 'Blockip', $nt->getDBkey() ),
+						wfMsgHtml( 'blocklink' )
+					);
 				# Block log link
-				$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ),
-					wfMsgHtml( 'sp-contributions-blocklog' ), 'type=block&page=' . $nt->getPrefixedUrl() );
+				$tools[] = $sk->linkKnown(
+					SpecialPage::getTitleFor( 'Log' ),
+					wfMsgHtml( 'sp-contributions-blocklog' ),
+					array(),
+					array(
+						'type' => 'block',
+						'page' => $nt->getPrefixedText()
+					)
+				);
 			}
 			# Other logs link
-			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ),
-				wfMsgHtml( 'sp-contributions-logs' ), 'user=' . $nt->getPartialUrl() );
+			$tools[] = $sk->linkKnown(
+				SpecialPage::getTitleFor( 'Log' ),
+				wfMsgHtml( 'sp-contributions-logs' ),
+				array(),
+				array( 'user' => $nt->getText() )
+			);
 			# Link to undeleted contributions
-			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $nt->getDBkey() ),
-				wfMsgHtml( 'contributions' ) );
-				
+			$tools[] = $sk->linkKnown(
+				SpecialPage::getTitleFor( 'Contributions', $nt->getDBkey() ),
+				wfMsgHtml( 'contributions' )
+			);
+
 			wfRunHooks( 'ContributionsToolLinks', array( $id, $nt, &$tools ) );
 
 			$links = $wgLang->pipeList( $tools );

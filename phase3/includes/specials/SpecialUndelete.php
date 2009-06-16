@@ -707,8 +707,12 @@ class UndeleteForm {
 		$wgOut->addHTML( "<ul>\n" );
 		while( $row = $result->fetchObject() ) {
 			$title = Title::makeTitleSafe( $row->ar_namespace, $row->ar_title );
-			$link = $sk->makeKnownLinkObj( $undelete, htmlspecialchars( $title->getPrefixedText() ),
-				'target=' . $title->getPrefixedUrl() );
+			$link = $sk->linkKnown(
+				$undelete,
+				htmlspecialchars( $title->getPrefixedText() ),
+				array(),
+				array( 'target' => $title->getPrefixedUrl() )
+			);
 			$revs = wfMsgExt( 'undeleterevisions',
 				array( 'parseinline' ),
 				$wgLang->formatNum( $row->count ) );
@@ -748,7 +752,7 @@ class UndeleteForm {
 
 		$wgOut->setPageTitle( wfMsg( 'undeletepage' ) );
 
-		$link = $skin->makeKnownLinkObj(
+		$link = $skin->linkKnown(
 			SpecialPage::getTitleFor( 'Undelete', $this->mTargetObj->getPrefixedDBkey() ),
 			htmlspecialchars( $this->mTargetObj->getPrefixedText() )
 		);
@@ -800,7 +804,7 @@ class UndeleteForm {
 			Xml::openElement( 'div' ) .
 			Xml::openElement( 'form', array(
 				'method' => 'post',
-				'action' => $self->getLocalURL( "action=submit" ) ) ) .
+				'action' => $self->getLocalURL( array( 'action' => 'submit' ) ) ) ) .
 			Xml::element( 'input', array(
 				'type' => 'hidden',
 				'name' => 'target',
@@ -897,7 +901,7 @@ class UndeleteForm {
 					$targetPage,
 					wfMsgHtml(
 						'revisionasof',
-						$wgLang->timeanddate( $rev->getTimestamp(), true )
+						htmlspecialchars( $wgLang->timeanddate( $rev->getTimestamp(), true ) )
 					),
 					array(),
 					$targetQuery
@@ -1011,7 +1015,7 @@ class UndeleteForm {
 
 		if ( $this->mAllowed ) {
 			$titleObj = SpecialPage::getTitleFor( "Undelete" );
-			$action = $titleObj->getLocalURL( "action=submit" );
+			$action = $titleObj->getLocalURL( array( 'action' => 'submit' ) );
 			# Start the form here
 			$top = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 'id' => 'undelete' ) );
 			$wgOut->addHTML( $top );
@@ -1143,14 +1147,22 @@ class UndeleteForm {
 			if( !$rev->userCan( Revision::DELETED_TEXT ) ) {
 				$last = wfMsgHtml('diff');
 			} else if( $remaining > 0 || ($earliestLiveTime && $ts > $earliestLiveTime) ) {
-				$last = $sk->makeKnownLinkObj( $titleObj, wfMsgHtml('diff'),
-					"target=" . $this->mTargetObj->getPrefixedUrl() . "&timestamp=$ts&diff=prev" );
+				$last = $sk->linkKnown(
+					$titleObj,
+					wfMsgHtml('diff'),
+					array(),
+					array(
+						'target' => $this->mTargetObj->getPrefixedUrl(),
+						'timestamp' => $ts,
+						'diff' => 'prev'
+					)
+				);
 			} else {
 				$last = wfMsgHtml('diff');
 			}
 		} else {
 			$checkBox = '';
-			$pageLink = $wgLang->timeanddate( $ts, true );
+			$pageLink = htmlspecialchars( $wgLang->timeanddate( $ts, true ) );
 			$last = wfMsgHtml('diff');
 		}
 		$userLink = $sk->revUserTools( $rev );
@@ -1224,11 +1236,20 @@ class UndeleteForm {
 	function getPageLink( $rev, $titleObj, $ts, $sk ) {
 		global $wgLang;
 
+		$time = htmlspecialchars( $wgLang->timeanddate( $ts, true ) );
+
 		if( !$rev->userCan(Revision::DELETED_TEXT) ) {
-			return '<span class="history-deleted">' . $wgLang->timeanddate( $ts, true ) . '</span>';
+			return '<span class="history-deleted">' . $time . '</span>';
 		} else {
-			$link = $sk->makeKnownLinkObj( $titleObj, $wgLang->timeanddate( $ts, true ),
-				"target=".$this->mTargetObj->getPrefixedUrl()."&timestamp=$ts" );
+			$link = $sk->linkKnown(
+				$titleObj,
+				$time,
+				array(),
+				array(
+					'target' => $this->mTargetObj->getPrefixedUrl(),
+					'timestamp' => $ts
+				)
+			);
 			if( $rev->isDeleted(Revision::DELETED_TEXT) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
@@ -1245,10 +1266,16 @@ class UndeleteForm {
 		if( !$file->userCan(File::DELETED_FILE) ) {
 			return '<span class="history-deleted">' . $wgLang->timeanddate( $ts, true ) . '</span>';
 		} else {
-			$link = $sk->makeKnownLinkObj( $titleObj, $wgLang->timeanddate( $ts, true ),
-				"target=".$this->mTargetObj->getPrefixedUrl().
-				"&file=$key" .
-				"&token=" . urlencode( $wgUser->editToken( $key ) ) );
+			$link = $sk->linkKnown(
+				$titleObj,
+				$wgLang->timeanddate( $ts, true ),
+				array(),
+				array(
+					'target' => $this->mTargetObj->getPrefixedUrl(),
+					'file' => $key,
+					'token' => $wgUser->editToken( $key )
+				)
+			);
 			if( $file->isDeleted(File::DELETED_FILE) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
@@ -1307,7 +1334,7 @@ class UndeleteForm {
 						$wgUser, $this->mComment) );
 
 				$skin = $wgUser->getSkin();
-				$link = $skin->makeKnownLinkObj( $this->mTargetObj );
+				$link = $skin->linkKnown( $this->mTargetObj );
 				$wgOut->addHTML( wfMsgWikiHtml( 'undeletedpage', $link ) );
 			} else {
 				$wgOut->showFatalError( wfMsg( "cannotundelete" ) );

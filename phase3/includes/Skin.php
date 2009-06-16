@@ -1616,9 +1616,7 @@ END;
 	}
 
 	function historyLink() {
-		global $wgTitle;
-
-		return $this->link( $wgTitle, wfMsg( 'history' ),
+		return $this->link( $this->mTitle, wfMsgHtml( 'history' ),
 			array( 'rel' => 'archives' ), array( 'action' => 'history' ) );
 	}
 
@@ -1627,7 +1625,7 @@ END;
 
 		return $this->makeKnownLinkObj(
 			SpecialPage::getTitleFor( 'Whatlinkshere', $wgTitle->getPrefixedDBkey() ),
-			wfMsg( 'whatlinkshere' ) );
+			wfMsgHtml( 'whatlinkshere' ) );
 	}
 
 	function userContribsLink() {
@@ -1635,7 +1633,7 @@ END;
 
 		return $this->makeKnownLinkObj(
 			SpecialPage::getTitleFor( 'Contributions', $wgTitle->getDBkey() ),
-			wfMsg( 'contributions' ) );
+			wfMsgHtml( 'contributions' ) );
 	}
 
 	function showEmailUser( $id ) {

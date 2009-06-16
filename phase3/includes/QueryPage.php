@@ -622,7 +622,7 @@ abstract class WantedQueryPage extends QueryPage {
 	function isSyndicated() {
 		return false;
 	}
-	
+
 	/**
 	 * Cache page existence for performance
 	 */
@@ -651,14 +651,26 @@ abstract class WantedQueryPage extends QueryPage {
 			if( $this->isCached() ) {
 				$pageLink = $title->exists()
 					? '<s>' . $skin->link( $title ) . '</s>'
-					: $skin->makeBrokenLinkObj( $title );
+					: $skin->link(
+						$title,
+						null,
+						array(),
+						array(),
+						array( 'broken' )
+					);
 			} else {
-				$pageLink = $skin->makeBrokenLinkObj( $title );
+				$pageLink = $skin->link(
+					$title,
+					null,
+					array(),
+					array(),
+					array( 'broken' )
+				);
 			}
 			return wfSpecialList( $pageLink, $this->makeWlhLink( $title, $skin, $result ) );
 		} else {
 			$tsafe = htmlspecialchars( $result->title );
-			return wfMsg( 'wantedpages-badtitle', $tsafe );
+			return wfMsgHtml( 'wantedpages-badtitle', $tsafe );
 		}
 	}
 	

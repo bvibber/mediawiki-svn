@@ -1277,7 +1277,7 @@ class Linker {
 			}
 			if ( $sectionTitle ) {
 				$link = $this->link( $sectionTitle,
-					wfMsgForContent( 'sectionlink' ), array(), array(),
+					htmlspecialchars( wfMsgForContent( 'sectionlink' ) ), array(), array(),
 					'noclasses' );
 			} else {
 				$link = '';

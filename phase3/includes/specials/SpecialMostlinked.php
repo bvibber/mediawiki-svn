@@ -66,7 +66,7 @@ class MostlinkedPage extends QueryPage {
 	 */
 	function makeWlhLink( &$title, $caption, &$skin ) {
 		$wlh = SpecialPage::getTitleFor( 'Whatlinkshere', $title->getPrefixedDBkey() );
-		return $skin->makeKnownLinkObj( $wlh, $caption );
+		return $skin->linkKnown( $wlh, $caption );
 	}
 
 	/**
@@ -79,6 +79,9 @@ class MostlinkedPage extends QueryPage {
 	function formatResult( $skin, $result ) {
 		global $wgLang;
 		$title = Title::makeTitleSafe( $result->namespace, $result->title );
+		if ( !$title ) {
+			return '<!-- ' . htmlspecialchars( "Invalid title: [[$title]]" ) . ' -->';
+		}
 		$link = $skin->link( $title );
 		$wlh = $this->makeWlhLink( $title,
 			wfMsgExt( 'nlinks', array( 'parsemag', 'escape'),

@@ -1210,7 +1210,13 @@ class OutputPage {
 		$this->setArticleFlag( false );
 
 		$loginTitle = SpecialPage::getTitleFor( 'Userlogin' );
-		$loginLink = $skin->makeKnownLinkObj( $loginTitle, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $wgTitle->getPrefixedUrl() );
+		$loginLink = $skin->link(
+			$loginTitle,
+			wfMsgHtml( 'loginreqlink' ),
+			array(),
+			array( 'returnto' => $this->getTitle()->getPrefixedText() ),
+			array( 'known', 'noclasses' )
+		);
 		$this->addHTML( wfMsgWikiHtml( 'loginreqpagetext', $loginLink ) );
 		$this->addHTML( "\n<!--" . $wgTitle->getPrefixedUrl() . "-->" );
 
@@ -1407,7 +1413,7 @@ class OutputPage {
 	public function addReturnTo( $title ) {
 		global $wgUser;
 		$this->addLink( array( 'rel' => 'next', 'href' => $title->getFullUrl() ) );
-		$link = wfMsg( 'returnto', $wgUser->getSkin()->makeLinkObj( $title ) );
+		$link = wfMsgHtml( 'returnto', $wgUser->getSkin()->link( $title ) );
 		$this->addHTML( "<p>{$link}</p>\n" );
 	}
 

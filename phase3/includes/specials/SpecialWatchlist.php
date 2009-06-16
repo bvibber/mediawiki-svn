@@ -21,8 +21,12 @@ function wfSpecialWatchlist( $par ) {
 	# Anons don't get a watchlist
 	if( $wgUser->isAnon() ) {
 		$wgOut->setPageTitle( wfMsg( 'watchnologin' ) );
-		$llink = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Userlogin' ), 
-			wfMsgHtml( 'loginreqlink' ), 'returnto=' . $specialTitle->getPrefixedUrl() );
+		$llink = $skin->linkKnown(
+			SpecialPage::getTitleFor( 'Userlogin' ), 
+			wfMsgHtml( 'loginreqlink' ),
+			array(),
+			array( 'returnto' => $specialTitle->getPrefixedText() )
+		);
 		$wgOut->addHTML( wfMsgWikiHtml( 'watchlistanontext', $llink ) );
 		return;
 	}
@@ -256,34 +260,100 @@ function wfSpecialWatchlist( $par ) {
 	$hideLinktext = wfMsgHtml( 'hide' );
 	# Hide/show minor edits
 	$label = $hideMinor ? $showLinktext : $hideLinktext;
-	$linkBits = wfArrayToCGI( array( 'hideMinor' => 1 - (int)$hideMinor ), $nondefaults );
-	$links[] = wfMsgHtml( 'rcshowhideminor', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
+	$linkBits = array_merge(
+		array( 'hideMinor' => 1 - (int)$hideMinor ),
+		$nondefaults
+	);
+	$links[] = wfMsgHtml(
+		'rcshowhideminor',
+		$skin->linkKnown(
+			$thisTitle,
+			$label,
+			array(),
+			$linkBits
+		)
+	);
 
 	# Hide/show bot edits
 	$label = $hideBots ? $showLinktext : $hideLinktext;
-	$linkBits = wfArrayToCGI( array( 'hideBots' => 1 - (int)$hideBots ), $nondefaults );
-	$links[] = wfMsgHtml( 'rcshowhidebots', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
+	$linkBits = array_merge(
+		array( 'hideBots' => 1 - (int)$hideBots ),
+		$nondefaults
+	);
+	$links[] = wfMsgHtml(
+		'rcshowhidebots',
+		$skin->linkKnown(
+			$thisTitle,
+			$label,
+			array(),
+			$linkBits
+		)
+	);
 
 	# Hide/show anonymous edits
 	$label = $hideAnons ? $showLinktext : $hideLinktext;
-	$linkBits = wfArrayToCGI( array( 'hideAnons' => 1 - (int)$hideAnons ), $nondefaults );
-	$links[] = wfMsgHtml( 'rcshowhideanons', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
+	$linkBits = array_merge(
+		array( 'hideAnons' => 1 - (int)$hideAnons ),
+		$nondefaults
+	);
+	$links[] = wfMsgHtml(
+		'rcshowhideanons',
+		$skin->linkKnown(
+			$thisTitle,
+			$label,
+			array(),
+			$linkBits
+		)
+	);
 
 	# Hide/show logged in edits
 	$label = $hideLiu ? $showLinktext : $hideLinktext;
-	$linkBits = wfArrayToCGI( array( 'hideLiu' => 1 - (int)$hideLiu ), $nondefaults );
-	$links[] = wfMsgHtml( 'rcshowhideliu', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
+	$linkBits = array_merge(
+		array( 'hideLiu' => 1 - (int)$hideLiu ),
+		$nondefaults
+	);
+	$links[] = wfMsgHtml(
+		'rcshowhideliu',
+		$skin->linkKnown(
+			$thisTitle,
+			$label,
+			array(),
+			$linkBits
+		)
+	);
 
 	# Hide/show own edits
 	$label = $hideOwn ? $showLinktext : $hideLinktext;
-	$linkBits = wfArrayToCGI( array( 'hideOwn' => 1 - (int)$hideOwn ), $nondefaults );
-	$links[] = wfMsgHtml( 'rcshowhidemine', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
+	$linkBits = array_merge(
+		array( 'hideOwn' => 1 - (int)$hideOwn ),
+		$nondefaults
+	);
+	$links[] = wfMsgHtml(
+		'rcshowhidemine',
+		$skin->linkKnown(
+			$thisTitle,
+			$label,
+			array(),
+			$linkBits
+		)
+	);
 
 	# Hide/show patrolled edits
 	if( $wgUser->useRCPatrol() ) {
 		$label = $hidePatrolled ? $showLinktext : $hideLinktext;
-		$linkBits = wfArrayToCGI( array( 'hidePatrolled' => 1 - (int)$hidePatrolled ), $nondefaults );
-		$links[] = wfMsgHtml( 'rcshowhidepatr', $skin->makeKnownLinkObj( $thisTitle, $label, $linkBits ) );
+		$linkBits = array_merge(
+			array( 'hidePatrolled' => 1 - (int)$hidePatrolled ),
+			$nondefaults
+		);
+		$links[] = wfMsgHtml(
+			'rcshowhidepatr',
+			$skin->linkKnown(
+				$thisTitle,
+				$label,
+				array(),
+				$linkBits
+			)
+		);
 	}
 
 	# Namespace filter and put the whole form together.
@@ -370,21 +440,36 @@ function wfSpecialWatchlist( $par ) {
 
 function wlHoursLink( $h, $page, $options = array() ) {
 	global $wgUser, $wgLang, $wgContLang;
+
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink(
-	  $wgContLang->specialPage( $page ),
-	  $wgLang->formatNum( $h ),
-	  wfArrayToCGI( array('days' => ($h / 24.0)), $options ) );
+	$title = Title::newFromText( $wgContLang->specialPage( $page ) );
+	$options['days'] = ($h / 24.0);
+
+	$s = $sk->linkKnown(
+		$title,
+		$wgLang->formatNum( $h ),
+		array(),
+		$options
+	);
+
 	return $s;
 }
 
 function wlDaysLink( $d, $page, $options = array() ) {
 	global $wgUser, $wgLang, $wgContLang;
+
 	$sk = $wgUser->getSkin();
-	$s = $sk->makeKnownLink(
-	  $wgContLang->specialPage( $page ),
-	  ($d ? $wgLang->formatNum( $d ) : wfMsgHtml( 'watchlistall2' ) ),
-	  wfArrayToCGI( array('days' => $d), $options ) );
+	$title = Title::newFromText( $wgContLang->specialPage( $page ) );
+	$options['days'] = $d;
+	$message = ($d ? $wgLang->formatNum( $d ) : wfMsgHtml( 'watchlistall2' ) );
+
+	$s = $sk->linkKnown(
+		$title,
+		$message,
+		array(),
+		$options
+	);
+
 	return $s;
 }
 
