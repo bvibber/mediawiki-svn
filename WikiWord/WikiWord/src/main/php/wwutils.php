@@ -59,9 +59,9 @@ class WWUtils {
     var $dbpassword;
 
     function connect($server, $user, $password, $database) {
-	$db = mysql_connect($server, $user, $password) or die("Connection Failure to Database: " . mysql_error());
-	mysql_select_db($database, $db) or die ("Database not found: " . mysql_error());
-	mysql_query("SET NAMES UTF8;", $db) or die ("Database not found: " . mysql_error());
+	$db = mysql_connect($server, $user, $password) or die("Connection Failure to Database: " . htmlspecialchars(mysql_error())."\n");
+	mysql_select_db($database, $db) or die ("Database not found: " . htmlspecialchars(mysql_error())."\n");
+	mysql_query("SET NAMES UTF8;", $db) or die ("Database not found: " . htmlspecialchars(mysql_error())."\n");
 
 	$this->dbuser = $user;
 	$this->dbpassword = $password;
@@ -133,9 +133,9 @@ class WWUtils {
 	if (!$info) {
 		$db = false;
 	} else {
-	    $db = mysql_connect($info['server'], $this->dbuser, $this->dbpassword) or die("Connection Failure to Database: " . mysql_error());
-	    mysql_select_db($info['dbname'], $db) or die ("Database not found: " . mysql_error());
-	    mysql_query("SET NAMES Latin1;", $db) or die ("Database not found: " . mysql_error());
+	    $db = mysql_connect($info['server'], $this->dbuser, $this->dbpassword) or throw new Exception("Connection Failure to Database: " . mysql_error());
+	    mysql_select_db($info['dbname'], $db) or throw new Exception ("Database not found: " . mysql_error());
+	    mysql_query("SET NAMES Latin1;", $db) or throw new Exception ("Database not found: " . mysql_error());
 	}
 
 	$this->wikidbs[$lang] = $db;
@@ -144,7 +144,7 @@ class WWUtils {
 
     function queryWiki($lang, $sql) {
 	$db = $this->getWikiConnection($lang);
-	if (!$db) return false;
+	if (!$db) throw new Exception ("Wiki not found: $lang");
 
 	return $this->query($sql, $db);
     }
