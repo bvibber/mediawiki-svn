@@ -10,7 +10,7 @@ require 'LocalSettings.php';
 require 'includes/Setup.php';
 
 function buildTestDatabase( $tables ) {
-	global $wgDBprefix, $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname, $wgDBtype;
+	global $wgDBprefix, $wgDBserver, $wgDBname, $wgDBtype;
 	$oldPrefix = $wgDBprefix;
 	$wgDBprefix = 'parsertest';
 

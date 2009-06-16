@@ -155,8 +155,8 @@ abstract class Maintenance {
 	 */
 	protected function error( $err, $die = false ) {
 		$f = fopen( 'php://stderr', 'w' ); 
-		fwrite( $f, $err ); 
-		fclose( $f ); 
+		fwrite( $f, $err );
+		fclose( $f );
 		if( $die ) die();
 	}
 
@@ -326,6 +326,11 @@ abstract class Maintenance {
 				$this->error( "Param $opt required.\n", true );
 			}
 		}
+		
+		# Also make sure we've got enough arguments
+		if ( count( $args ) < count( $this->mArgList ) ) {
+			$this->error( "Not enough arguments passed", true );
+		}
 
 		$this->mOptions = $options;
 		$this->mArgs = $args;
@@ -333,9 +338,10 @@ abstract class Maintenance {
 
 	/**
 	 * Maybe show the help.
+	 * @param $force boolean Whether to force the help to show, default false
 	 */
-	private function maybeHelp() {
-		if( $this->hasOption('help') || in_array( 'help', $this->mArgs ) ) {
+	private function maybeHelp( $force = false ) {
+		if( $this->hasOption('help') || in_array( 'help', $this->mArgs ) || $force ) {
 			$this->mQuiet = false;
 			if( $this->mDescription ) {
 				$this->output( $this->mDescription . "\n" );
@@ -484,4 +490,62 @@ abstract class Maintenance {
 		$this->finalSetup();
 		return $settingsFile;
 	}
+	
+	/**
+	 * Support function for cleaning up redundant text records
+	 * @param $delete boolean Whether or not to actually delete the records
+	 * @author Rob Church <robchur@gmail.com>
+	 */
+	protected function purgeRedundantText( $delete = true ) {
+		# Data should come off the master, wrapped in a transaction
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
+
+		$tbl_arc = $dbw->tableName( 'archive' );
+		$tbl_rev = $dbw->tableName( 'revision' );
+		$tbl_txt = $dbw->tableName( 'text' );
+
+		# Get "active" text records from the revisions table
+		$this->output( "Searching for active text records in revisions table..." );
+		$res = $dbw->query( "SELECT DISTINCT rev_text_id FROM $tbl_rev" );
+		while( $row = $dbw->fetchObject( $res ) ) {
+			$cur[] = $row->rev_text_id;
+		}
+		$this->output( "done.\n" );
+
+		# Get "active" text records from the archive table
+		$this->output( "Searching for active text records in archive table..." );
+		$res = $dbw->query( "SELECT DISTINCT ar_text_id FROM $tbl_arc" );
+		while( $row = $dbw->fetchObject( $res ) ) {
+			$cur[] = $row->ar_text_id;
+		}
+		$this->output( "done.\n" );
+
+		# Get the IDs of all text records not in these sets
+		$this->output( "Searching for inactive text records..." );
+		$set = implode( ', ', $cur );
+		$res = $dbw->query( "SELECT old_id FROM $tbl_txt WHERE old_id NOT IN ( $set )" );
+		$old = array();
+		while( $row = $dbw->fetchObject( $res ) ) {
+			$old[] = $row->old_id;
+		}
+		$this->output( "done.\n" );
+
+		# Inform the user of what we're going to do
+		$count = count( $old );
+		$this->output( "$count inactive items found.\n" );
+
+		# Delete as appropriate
+		if( $delete && $count ) {
+			$this->output( "Deleting..." );
+			$set = implode( ', ', $old );
+			$dbw->query( "DELETE FROM $tbl_txt WHERE old_id IN ( $set )" );
+			$this->output( "done.\n" );
+		}
+
+		# Done
+		$dbw->commit();
+	
+	}
 }
+
