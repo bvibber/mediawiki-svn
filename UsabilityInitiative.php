@@ -17,6 +17,11 @@
  * @version 0.1.1
  */
 
+/* Configuration */
+
+// Set this to true to simply override the stock toolbar for everyone
+$wgUsabilityInitiativeCoesxistWithMvEmbed = false;
+
 /* Setup */
 
 // Sets Credits
