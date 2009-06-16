@@ -20,7 +20,10 @@ class SpecialOptIn extends SpecialPage {
 		if ( $wgUser->isAnon() ) {
 			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
 				array( 'returnto' => $this->getTitle()->getPrefixedUrl() ) );
+			$wgOut->addHTML( Xml::openElement( 'div', 
+				array( 'class' => 'plainlinks' ) ) );
 			$wgOut->addWikiText( wfMsg( 'optin-needlogin', $url ) );
+			$wgOut->addHTML( Xml::closeElement( 'div' ) );
 			return;
 		}
 		
