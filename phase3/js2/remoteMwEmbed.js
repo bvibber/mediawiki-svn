@@ -23,9 +23,10 @@ if( wgPageName== "Special:Upload" ){
 }
 	
 //oggHandler rewrite: 
+var vidIdList = []; 
 var divs = document.getElementsByTagName('div');    
 for(var i = 0; i < divs.length; i++){        
-    if( divs[i].id.substring(0,11) == 'ogg_player_'){
+    if( divs[i].id && divs[i].id.substring(0,11) == 'ogg_player_'){
         vidIdList.push( divs[i].getAttribute("id") );
     } 
 }            

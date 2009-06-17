@@ -339,7 +339,7 @@ remoteSearchDriver.prototype = {
 		
 		//set up the target invocation:
 		if( $j(this.target_invocation).length==0 ){
-			js_error("RemoteSearchDriver:: no target invocation provided")
+			js_log("RemoteSearchDriver:: no target invocation provided")
 		}else{
 			$j(this.target_invocation).css('cursor','pointer').attr('title', gM('add_media_wizard')).click(function(){
 				_this.doInitDisplay();
