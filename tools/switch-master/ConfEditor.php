@@ -560,7 +560,7 @@ class ConfEditor {
 					$this->error( "expected a string or number for the array key" );
 				}
 				if ( $token->type == T_CONSTANT_ENCAPSED_STRING ) {
-					$text = eval( "return {$token->text};" );
+					$text = stripslashes( substr( $token->text, 1, -1 ) );
 				} else {
 					$text = $token->text;
 				}
