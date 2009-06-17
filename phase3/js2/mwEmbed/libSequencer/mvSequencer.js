@@ -763,7 +763,7 @@ mvSequencer.prototype = {
 			_this.myEffectEdit = new mvTimedEffectsEdit({
 				'rObj' 		 : cObj,
 				'control_ct' : 'transition_ic',
-				'p_seqObj'	 : localSeqRef
+				'pSeq'	 : localSeqRef
 			});
 		})
 	},
@@ -1114,6 +1114,8 @@ mvSequencer.prototype = {
 						$j(this).removeClass('mv_selected_transition');
 						this_seq.deselectClip( $j(this).siblings('.mv_clip_thumb').get(0) );
 					}else{
+						//deselect others 
+						$j('.clip_trans_box').removeClass('mv_selected_transition');
 						$j(this).addClass("mv_selected_transition");
 						$j(this).siblings('.mv_clip_thumb').addClass("mv_selected_clip");	
 						var sClipObj = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );
@@ -1179,7 +1181,7 @@ mvSequencer.prototype = {
 					if( this_seq.key_shift_down ){
 						//get the min max of current selection (within the current track)
 						var max_order = 0;
-						var min_order = 999999999999999;
+						var min_order = 999999999;
 						$j('.mv_selected_clip').each(function(){
 							var cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );							
 							//get min max

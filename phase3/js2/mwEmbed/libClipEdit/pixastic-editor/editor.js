@@ -55,13 +55,13 @@ var PixasticEditor = (function () {
 		caller = caller.substring(0, caller.indexOf("("));
 		context = context || caller;
 		errTxt = context + "(): " + errTxt;
-		var dialog = $("<div></div>", doc)
+		var dialog = $j("<div></div>", doc)
 			.addClass("error-dialog")
 			.attr("title", "Oops!")
 			.html(errTxt)
 			.dialog();
 		// the dialog is added outside the Pixastic container, so get it back in.
-		var dialogParent = $(dialog.get(0).parentNode);
+		var dialogParent = $j(dialog.get(0).parentNode);
 		dialogParent.appendTo($editor);
 
 		return errTxt;
@@ -77,7 +77,7 @@ var PixasticEditor = (function () {
 
 		if ($activeTabContent) {
 			if ($activeTabContent.get(0)) {
-				var $parent = $($activeTabContent.get(0).parentNode);
+				var $parent = $j($activeTabContent.get(0).parentNode);
 				activeIndex = $parent.data("accordionindex");
 				if ($parent.data("ondeactivate")) {
 					$parent.data("ondeactivate")();
@@ -139,18 +139,18 @@ var PixasticEditor = (function () {
 		undoCanvas.width = canvasElement.width;
 		undoCanvas.height = canvasElement.height;
 		undoCanvas.getContext("2d").drawImage(canvasElement,0,0);
-		$(undoCanvas).addClass("undo-canvas");
+		$j(undoCanvas).addClass("undo-canvas");
 		undoImages.push(undoCanvas);
 		updateUndoList();
 	}
 
 	function updateUndoList() {
-		var $listCtr = $("#undo-bar", doc)
+		var $listCtr = $j("#undo-bar", doc)
 			.html("");
 
 		var ctrHeight = $listCtr.height();
 
-		var $testCanvas = $("<canvas></canvas>", doc)
+		var $testCanvas = $j("<canvas></canvas>", doc)
 			.addClass("undo-canvas-small")
 			.addClass("far-far-away")
 			.appendTo("body");
@@ -166,13 +166,13 @@ var PixasticEditor = (function () {
 		for (var i=undoImages.length-1;i>=0;i--) {
 			(function(){
 				var canvas = document.createElement("canvas");
-				$(canvas)
+				$j(canvas)
 					.addClass("undo-canvas-small")
 					.attr("width", canvasWidth)
 					.attr("height", canvasHeight);
 
 				var image = undoImages[i];
-				$(image).show();
+				$j(image).show();
 				
 				var undoWidth, undoHeight;
 				var imageRatio = image.width / image.height;
@@ -196,33 +196,33 @@ var PixasticEditor = (function () {
 				);
 
 
-				$link = $("<a href='#'></a>", doc)
+				$link = $j("<a href='#'></a>", doc)
 					.addClass("undo-link")
 					.appendTo($listCtr)
-					.mouseover(function(){ $(this).addClass("hover") })
-					.mouseout(function(){ $(this).removeClass("hover") });
-				$(canvas).appendTo($link);
+					.mouseover(function(){ $j(this).addClass("hover") })
+					.mouseout(function(){ $j(this).removeClass("hover") });
+				$j(canvas).appendTo($link);
 
 				var displayShowing;
 				var undoIndex = i;
 				$link.click(function() {
-					$(image).hide();
-					$(image).remove();
+					$j(image).hide();
+					$j(image).remove();
 					undo(undoIndex);
 					if (displayShowing)
 						$displayCanvas.show();
-					$(".jcrop-holder", doc).show();
+					$j(".jcrop-holder", doc).show();
 				});
 
 				$link.mouseover(function() {
 					displayShowing = $displayCanvas.css("display") != "none";
-					var $imagectr = $("#image-container", doc);
+					var $imagectr = $j("#image-container", doc);
 
-					$(".jcrop-holder", doc).hide();
+					$j(".jcrop-holder", doc).hide();
 					$displayCanvas.hide();
-					$(image).appendTo($imagectr);
+					$j(image).appendTo($imagectr);
 
-					var h1 = $("#image-area", doc).height();
+					var h1 = $j("#image-area", doc).height();
 					var h2 = image.height;
 					var m = Math.max(0, (h1 - h2) / 2);
 					$imagectr.css("marginTop", m);
@@ -231,15 +231,15 @@ var PixasticEditor = (function () {
 				});
 
 				$link.mouseout(function() {
-					$(image).remove();
+					$j(image).remove();
 					if (displayShowing)
 						$displayCanvas.show();
-					$(".jcrop-holder", doc).show();
+					$j(".jcrop-holder", doc).show();
 					updateDisplayCanvas();
 				});
 
 
-				$(canvas).attr("title", "Click to revert to this previous image");
+				$j(canvas).attr("title", "Click to revert to this previous image");
 
 			})();
 		}
@@ -250,7 +250,7 @@ var PixasticEditor = (function () {
 		if (!Pixastic.Actions[id])
 			throw new Error("applyAction(): unknown action [" + id + "]");
 
-		$("#action-bar-overlay", doc).show();
+		$j("#action-bar-overlay", doc).show();
 
 		setTimeout(function() {
 			options.leaveDOM = true;
@@ -266,10 +266,10 @@ var PixasticEditor = (function () {
 					var ctx = canvasElement.getContext("2d");
 					ctx.clearRect(0,0,imageWidth,imageHeight);
 					ctx.drawImage(resCanvas,0,0);
-					$imageCanvas = $(canvasElement);
+					$imageCanvas = $j(canvasElement);
 					resetDisplayCanvas();
 	
-					$("#action-bar-overlay", doc).hide();
+					$j("#action-bar-overlay", doc).hide();
 
 					if (afteraction)
 						afteraction();
@@ -285,7 +285,7 @@ var PixasticEditor = (function () {
 		if (!Pixastic.Actions[id])
 			throw new Error("applyAction(): unknown action [" + id + "]");
 
-		$("#action-bar-overlay", doc).show();
+		$j("#action-bar-overlay", doc).show();
 
 		resetDisplayCanvas();
 
@@ -305,7 +305,7 @@ var PixasticEditor = (function () {
 				updateDisplayCanvas();
 				updateOverlay();
 
-				$("#action-bar-overlay", doc).hide();
+				$j("#action-bar-overlay", doc).hide();
 
 				if (afteraction)
 					afteraction();
@@ -342,36 +342,36 @@ var PixasticEditor = (function () {
 		$activeTabContent = null;
 
 		// setup DOM UI skeleton
-		$editor = $("<div />", doc)
+		$editor = $j("<div />", doc)
 			.attr("id", "pixastic-editor")
-			.appendTo($(doc.body));
+			.appendTo($j(doc.body));
 
 		$editor.append(
-			$("<div id='background' />", doc),
-			$("<div id='edit-ctr-1' />", doc).append(
-				$("<div id='edit-ctr-2' />", doc).append(
-					$("<div id='controls-bar' />", doc).append(
-						$("<div id='action-bar' />", doc).append(
-							$("<div id='action-bar-overlay' />", doc)
+			$j("<div id='background' />", doc),
+			$j("<div id='edit-ctr-1' />", doc).append(
+				$j("<div id='edit-ctr-2' />", doc).append(
+					$j("<div id='controls-bar' />", doc).append(
+						$j("<div id='action-bar' />", doc).append(
+							$j("<div id='action-bar-overlay' />", doc)
 						),
-						$("<div id='undo-bar' />", doc)
+						$j("<div id='undo-bar' />", doc)
 					),
-					$("<div id='image-area' />", doc).append(
-						$("<div id='image-area-sub' />", doc).append(
-							$("<div id='image-container' />", doc),
-							$("<div id='image-overlay-container' />", doc).append(
-								$("<div id='image-overlay' />", doc)
+					$j("<div id='image-area' />", doc).append(
+						$j("<div id='image-area-sub' />", doc).append(
+							$j("<div id='image-container' />", doc),
+							$j("<div id='image-overlay-container' />", doc).append(
+								$j("<div id='image-overlay' />", doc)
 							)
 						)
 					)
 				)
 			),
-			$("<div id='main-bar' />", doc),
-			$("<div id='powered-by-pixastic'><a href=\"http://www.pixastic.com/\" target=\"_blank\">Powered by Pixastic</a></div>", doc)
+			$j("<div id='main-bar' />", doc),
+			$j("<div id='powered-by-pixastic'><a href=\"http://www.pixastic.com/\" target=\"_blank\">Powered by Pixastic</a></div>", doc)
 		);
 
-		$("#image-container", doc).append(
-			$displayCanvas = $("<canvas />", doc)
+		$j("#image-container", doc).append(
+			$displayCanvas = $j("<canvas />", doc)
 				.addClass("display-canvas")
 		);
 
@@ -383,20 +383,20 @@ var PixasticEditor = (function () {
 	
 			var tab = tabs[i];
 
-			var $tabElement = $("<a href=\"#\">" + tab.title + "</a>", doc)
+			var $tabElement = $j("<a href=\"#\">" + tab.title + "</a>", doc)
 				.attr("id", "main-tab-button-" + tab.id)
 				.addClass("main-tab")
 				.click(function() {
 					enableTab(tab.id);
 				})
-				.mouseover(function(){ $(this).addClass("hover") })
-				.mouseout(function(){ $(this).removeClass("hover") });
+				.mouseover(function(){ $j(this).addClass("hover") })
+				.mouseout(function(){ $j(this).removeClass("hover") });
 	
-			$("#main-bar", doc).append($tabElement);
+			$j("#main-bar", doc).append($tabElement);
 
 			tabElements[tab.id] = $tabElement;
 
-			var $menu = $("<div/>", doc);
+			var $menu = $j("<div/>", doc);
 			accordionElements[tab.id] = $menu;
 
 			for (var j=0;j<tab.actions.length;j++) {
@@ -404,11 +404,11 @@ var PixasticEditor = (function () {
 
 				var action = tab.actions[j];
 
-				var $actionElement = $("<div><h3><a href=\"#\">" + action.title + "</a></h3></div>", doc)
+				var $actionElement = $j("<div><h3><a href=\"#\">" + action.title + "</a></h3></div>", doc)
 
 				$menu.append($actionElement);
 
-				var $content = $("<div></div>", doc)
+				var $content = $j("<div></div>", doc)
 					.attr("id", "pixastic-action-tab-content-" + action.id)
 					.appendTo($actionElement);
 
@@ -451,7 +451,7 @@ var PixasticEditor = (function () {
 							resetDisplayCanvas();
 	
 						if (!isPreview && !action.forcePreview) {
-							$("#pixastic-input-preview-" + action.id, doc).attr("checked", false);
+							$j("#pixastic-input-preview-" + action.id, doc).attr("checked", false);
 							togglePreview(false);
 							reset();
 						}
@@ -537,7 +537,7 @@ var PixasticEditor = (function () {
 								}
 								break;
 							case "output" :
-								var outputText = $("<div></div>", doc)
+								var outputText = $j("<div></div>", doc)
 									.addClass("ui-action-output")
 									.html(control.content)
 									.appendTo($content);
@@ -563,17 +563,17 @@ var PixasticEditor = (function () {
 					}
 
 					if (action.preview && !action.forcePreview) {
-						var $checkctr = $("<div></div>", doc)
+						var $checkctr = $j("<div></div>", doc)
 							.addClass("ui-checkbox-container")
 							.addClass("ui-preview-checkbox-container");
 
-						var $label = $("<label></label>", doc)
+						var $label = $j("<label></label>", doc)
 							.addClass("ui-checkbox-label")
 							.attr("for", "pixastic-input-preview-" + action.id)
 							.html("Preview:")
 							.appendTo($checkctr);
 
-						var $checkbox = $("<input type=\"checkbox\"></input>", doc)
+						var $checkbox = $j("<input type=\"checkbox\"></input>", doc)
 							.addClass("ui-checkbox")
 							.attr("id", "pixastic-input-preview-" + action.id)
 							.appendTo($checkctr)
@@ -594,7 +594,7 @@ var PixasticEditor = (function () {
 				}
 
 				// stupid hack to make it possible to get $content in change event (below)
-				$("<span></span>", doc).appendTo($content);
+				$j("<span></span>", doc).appendTo($content);
 
 				$content.data("controlOptions", controlOptions);
 				$content.data("onactivate", action.onactivate);
@@ -606,7 +606,7 @@ var PixasticEditor = (function () {
 				})();
 			}
 	
-			$("#action-bar", doc).append($menu);
+			$j("#action-bar", doc).append($menu);
 
 			$menu.hide().accordion({
 				header: "h3",
@@ -622,7 +622,7 @@ var PixasticEditor = (function () {
 					// We need the parent element (the one holding the content) but if there is no content, how do we get it?
 					// fixed above by always appending a <span> but that's ugly and needs to be done in some other way
 					if (ui.oldContent.get(0)) {
-						var $parent = $(ui.oldContent.get(0).parentNode);
+						var $parent = $j(ui.oldContent.get(0).parentNode);
 						if ($parent.data("ondeactivate")) {
 							$parent.data("ondeactivate")();
 						}
@@ -630,7 +630,7 @@ var PixasticEditor = (function () {
 					$activeTabContent = ui.newContent;
 
 					if (ui.newContent.get(0)) {
-						var $parent = $(ui.newContent.get(0).parentNode);
+						var $parent = $j(ui.newContent.get(0).parentNode);
 						if ($parent.data("previewCheckbox"))
 							$parent.data("previewCheckbox").attr("checked", false);
 						$parent.data("uidesc").previewEnabled = false;
@@ -656,7 +656,7 @@ var PixasticEditor = (function () {
 			})();
 		}
 
-		$(window).bind("resize", onwindowresize);
+		$j(window).bind("resize", onwindowresize);
 	}
 
 	function showLoadingScreen() {
@@ -664,9 +664,9 @@ var PixasticEditor = (function () {
 			$loadingScreen.show();
 			return;
 		}
-		$loadingScreen = $("<div id=\"loading-screen\" />")
-		var $ctr = $("<div id=\"loading-screen-cell\" />");
-		$("<div />")
+		$loadingScreen = $j("<div id=\"loading-screen\" />")
+		var $ctr = $j("<div id=\"loading-screen-cell\" />");
+		$j("<div />")
 			.addClass("spinner")
 			.appendTo($ctr);
 		$loadingScreen.append($ctr);
@@ -697,14 +697,15 @@ var PixasticEditor = (function () {
 		document.body.scrollTop = 0;
 		document.body.style.overflow = "hidden";
 
-		$frame = $("<iframe />");
+		$frame = $j("<iframe />");
 		$frame.hide();
 		$frame.css({
 			position : "absolute",
 			left : document.body.scrollLeft + "px",
 			top : document.body.scrollTop + "px",
 			width : "100%",
-			height : "100%"
+			height : "100%",
+			zIndex : "11"
 		});
 		$frame.load(function(){
 			doc = $frame.get(0).contentDocument;
@@ -722,7 +723,7 @@ var PixasticEditor = (function () {
 
 	// unload the editor, remove all elements added to the page and restore whatever properties we messed with
 	function unload() {
-		$(window).unbind("resize", onwindowresize);
+		$j(window).unbind("resize", onwindowresize);
 		$frame.hide();
 		$editor.hide();
 		$editor.remove();
@@ -759,15 +760,15 @@ var PixasticEditor = (function () {
 	// updates the display by resetting the height and margin of the image container
 	// this is mainly to keep vertical centering
 	function updateDisplayCanvas() {
-		var $imageCtr = $("#image-container", doc);
-		var $editArea = $("#image-area", doc);
+		var $imageCtr = $j("#image-container", doc);
+		var $editArea = $j("#image-area", doc);
 
 		if (!$imageCtr.get(0)) 		throw new Error(errorDialog("updateDisplayCanvas(): $imageCtr doesn't exist"));
 		if (!$displayCanvas.get(0)) 	throw new Error(errorDialog("updateDisplayCanvas(): $displayCanvas doesn't exist"));
 		if (!$editArea.get(0))	 	throw new Error(errorDialog("updateDisplayCanvas(): $editArea doesn't exist"));
 
 		var h2 = $displayCanvas.get(0).height;
-		var h1 = $("#image-area", doc).height();
+		var h1 = $j("#image-area", doc).height();
 		var m = Math.max(0, (h1 - h2) / 2);
 		$imageCtr.height(h2);
 		$imageCtr.css("marginTop", m);
@@ -775,13 +776,13 @@ var PixasticEditor = (function () {
 
 	// basically the same as updateDisplayCanvas but for the image overlay
 	function updateOverlay() {
-		var $overlay = $("#image-overlay-container", doc);
-		var $imagectr = $("#image-container", doc);
+		var $overlay = $j("#image-overlay-container", doc);
+		var $imagectr = $j("#image-container", doc);
 		$overlay.height($imagectr.height());
 		$overlay.css("marginTop", $imagectr.css("marginTop"));
 
 		if ($activeTabContent && $activeTabContent.get(0)) {
-			var $tabContent = $($activeTabContent.get(0).parentNode);
+			var $tabContent = $j($activeTabContent.get(0).parentNode);
 			if (typeof $tabContent.data("onoverlayupdate") == "function")
 				$tabContent.data("onoverlayupdate")();
 		}
@@ -799,7 +800,7 @@ var PixasticEditor = (function () {
 
 		originalImageElement = imgEl;
 
-		$imageCanvas = $("<canvas />", doc);
+		$imageCanvas = $j("<canvas />", doc);
 		imageCtx = $imageCanvas.get(0).getContext("2d");
 
 		imageWidth = 0;
@@ -821,7 +822,7 @@ var PixasticEditor = (function () {
 					resetDisplayCanvas();
 				}, 10);
 			}
-			$tmpImg = $("<img />", doc)
+			$tmpImg = $j("<img />", doc)
 				.css("position", "absolute")
 				.css("left", "-9999px")
 				.css("top", "-9999px")
@@ -928,7 +929,7 @@ var PixasticEditor = (function () {
 		getOverlay : function() {
 			if (!isRunning) throw new Error("PixasticEditor::getOverlay(): Editor is not running");
 
-			return $("#image-overlay", doc);
+			return $j("#image-overlay", doc);
 		},
 		getDisplayCanvas : function() {
 			if (!isRunning) throw new Error("PixasticEditor::getDisplayCanvas(): Editor is not running");

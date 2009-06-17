@@ -141,78 +141,7 @@ mvClipEdit.prototype = {
 		},
 		'fileopts':{
 			'media':['image','video','template'],
-			'doEdit':function(_this, target ){		
-				var doEditHtml = function(){
-					//add html for rObj resource:
-					var o=	'<table>' +
-							'<tr>' +
-								'<td colspan="2"><b>'+gM('mv_edit_properties')+'</b></td>'+
-							'</tr>'+
-							'<tr>'+
-								'<td>' + 
-									gM('mv_custom_title') + 
-								'</td>'+
-								'<td><input type="text" size="15" maxwidth="255" value="';
-									if(_this.rObj.title != null)
-										o+=_this.rObj.title;
-									o+='">'+
-								'</td>'+
-							'</tr>';		
-					if( _this.rObj.tVars){
-						var existing_p = _this.rObj.params;
-						var testing_a = _this.rObj.tVars;
-						//debugger;
-						o+= '<tr>'+
-								'<td colspan="2"><b>' + gM('mv_template_properties') + '</b></td>'+
-							'</tr>';
-						for(var i =0; i < _this.rObj.tVars.length ; i++){
-							o+='<tr>'+
-								'<td>' + 
-									_this.rObj.tVars[i] + 
-								'</td>' +
-								'<td><input name="'+_this.rObj.tVars[i]+'" class="ic_tparam" type="text" size="15" maxwidth="255" value="';
-							if(_this.rObj.params[ _this.rObj.tVars[i] ]){
-								o+= _this.rObj.params[ _this.rObj.tVars[i] ];
-							}
-							o+='">'+ 
-								'</td>'+
-							'</tr>';		
-						}
-					}		
-					if(typeof wgArticlePath != 'undefined' ){
-						var res_src = wgArticlePath.replace(/\$1/, _this.rObj.uri );
-						var res_title = _this.rObj.uri;
-					}else{
-						//var res_page = 
-						var res_src = _this.rObj.src;								
-						var res_title = parseUri(_this.rObj.src).file;			
-					} 
-					o+=		'<tr>'+
-								'<td colspan="2"><b>'+gM('mv_other_properties')+'</b></td>'+
-							'</tr>'+
-							'<tr>'+
-								'<td>' + 
-									gM('mv_resource_page') + 
-								'</td>' +
-								'<td><a href="' + res_src  +'" '+
-									' target="new">'+
-										res_title + '</a>'+
-								'</td>'+
-							'</tr>';
-					o+='</table>'; 
-					
-					$j(target).html ( o );
-					//add update bindings	
-					$j(target + ' .ic_tparam').change(function(){
-						js_log("updated tparam::" + $j(this).attr("name"));
-						//add wait 
-						//re-parse template
-					})
-							
-					//update doFocusBindings
-					if( _this.p_seqObj )
-						_this.p_seqObj.doFocusBindings();
-				}	
+			'doEdit':function(_this, target ){							
 				//if media type is template we have to query to get its URI to get its paramaters
 				if(_this.media_type == 'template' && !_this.rObj.tVars){		
 					mv_set_loading('#sub_cliplib_ic');
@@ -229,11 +158,11 @@ mvClipEdit.prototype = {
 						'url':api_url
 						}, function(data){
 							if(typeof data.query.pages == 'undefined')
-								return doEditHtml();
+								return _this.doEditOpts(target);
 							for(var i in data.query.pages){
 								var page = data.query.pages[i];
 								if(!page['revisions'] || !page['revisions'][0]['*']){
-									return doEditHtml();	
+									return _this.doEditOpts(target);	
 								}else{
 									var template_rev = page['revisions'][0]['*'];
 								}
@@ -264,11 +193,11 @@ mvClipEdit.prototype = {
 								if(do_add)
 									_this.rObj.tVars.push( tvar );
 							}					
-							doEditHtml();
+							_this.doEditOpts(target);
 						}
 					);
 				}else{
-					doEditHtml();
+					_this.doEditOpts(target);
 				}
 			}		
 		},
@@ -287,6 +216,103 @@ mvClipEdit.prototype = {
 			}	
 		}		
 	},	
+	doEditOpts:function(target){
+		var _this = this;
+		//add html for rObj resource:
+		var o=	'<table>' +
+				'<tr>' +
+					'<td colspan="2"><b>'+gM('mv_edit_properties')+'</b></td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>' + 
+						gM('mv_custom_title') + 
+					'</td>'+
+					'<td><input type="text" size="15" maxwidth="255" value="';
+						if(_this.rObj.title != null)
+							o+=_this.rObj.title;
+						o+='">'+
+					'</td>'+
+				'</tr>';		
+		if( _this.rObj.tVars){
+			var existing_p = _this.rObj.params;
+			var testing_a = _this.rObj.tVars;
+			//debugger;
+			o+= '<tr>'+
+					'<td colspan="2"><b>' + gM('mv_template_properties') + '</b></td>'+
+				'</tr>';
+			for(var i =0; i < _this.rObj.tVars.length ; i++){
+				o+='<tr>'+
+					'<td>' + 
+						_this.rObj.tVars[i] + 
+					'</td>' +
+					'<td><input name="'+_this.rObj.tVars[i]+'" class="ic_tparam" type="text" size="15" maxwidth="255" value="';
+				if(_this.rObj.params[ _this.rObj.tVars[i] ]){
+					o+= _this.rObj.params[ _this.rObj.tVars[i] ];
+				}
+				o+='">'+ 
+					'</td>'+
+				'</tr>';		
+			}
+		}		
+		if(typeof wgArticlePath != 'undefined' ){
+			var res_src = wgArticlePath.replace(/\$1/, _this.rObj.uri );
+			var res_title = _this.rObj.uri;
+		}else{
+			//var res_page = 
+			var res_src = _this.rObj.src;								
+			var res_title = parseUri(_this.rObj.src).file;			
+		} 
+		o+=		'<tr>'+
+					'<td colspan="2"><b>'+gM('mv_other_properties')+'</b></td>'+
+				'</tr>'+
+				'<tr>'+
+					'<td>' + 
+						gM('mv_resource_page') + 
+					'</td>' +
+					'<td><a href="' + res_src  +'" '+
+						' target="new">'+
+							res_title + '</a>'+
+					'</td>'+
+				'</tr>';
+		o+='</table>'; 
+		
+		$j(target).html ( o );
+		
+		//add update bindings
+		$j(target + ' .ic_tparam').change(function(){
+			js_log("updated tparam::" + $j(this).attr("name"));
+			//update param value: 
+			_this.rObj.params[ $j(this).attr("name") ] = $j(this).val();
+			//re-parse & update template
+			var template_wiki_text = '{{' + _this.rObj.uri;
+			for(var i =0;i < _this.rObj.tVars.length ; i++){	
+				
+				template_wiki_text += "\n|"+_this.rObj.tVars[i] + ' = ' +  _this.rObj.params[ _this.rObj.tVars[i] ]  ;
+			}		
+			template_wiki_text += "\n}}";				
+			var reqObj ={	
+					'action':'parse',
+					'title'	: _this.p_seqObj.plObj.mTitle,
+					'text'	:	template_wiki_text								
+			};
+			$j( _this.rObj.embed ).html( mv_get_loading_img() );
+			
+			var api_url = _this.p_seqObj.plObj.interface_url; 
+			do_api_req({
+				'data':reqObj,
+				'url':api_url
+			},function(data){
+				if(data.parse.text['*']){
+					//update the target
+					$j( _this.rObj.embed ).html( data.parse.text['*'] );
+				}
+			})
+		})
+				
+		//update doFocusBindings
+		if( _this.p_seqObj )
+			_this.p_seqObj.doFocusBindings();
+	},
 	doEditTypesMenu:function(){
 		var _this = this;
 		//add in subMenus if set

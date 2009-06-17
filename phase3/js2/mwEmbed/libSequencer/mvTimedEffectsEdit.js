@@ -22,7 +22,7 @@ var default_timed_effect_values = {
 	'control_ct':null,	 //control container
 	 	
 	'parent_ct': null,	 //parent container
-	'p_seqObj': null,	 //parent sequence Object
+	'pSeq': null,	 //parent sequence Object
 	
 	'edit_action': null, //the requested edit action						
 }
@@ -52,6 +52,7 @@ mvTimedEffectsEdit.prototype = {
 			'clip_attr':'Effects',
 			'doEdit':function(_this){
 				//display 	
+				_this.doEditEffectDisplayEdit();
 			}	
 		}
 	},
@@ -61,7 +62,7 @@ mvTimedEffectsEdit.prototype = {
 			if( iObj[i] ){   
 				this[i] = iObj[i];
 			}
-		}				
+		}						
 		this.doEditMenu();
 	},	
 	doEditMenu:function(){
@@ -120,6 +121,32 @@ mvTimedEffectsEdit.prototype = {
 			this.menu_items[tab_id].doEdit(this);
 		}					
 	},
+	doEditEffectDisplayEdit:function(){
+		var _this = this;
+		var appendTarget = '#te_effects';
+		js_log('type:' + _this.rObj['type']);
+		$j(appendTarget).html(gM('loading_txt'));
+		//@@todo integrate into core and loading system:  
+		loadExternalJs(mv_embed_path + 'libClipEdit/pixastic-editor/editor.js?' + getMvUniqueReqId() );
+		loadExternalJs(mv_embed_path + 'libClipEdit/pixastic-editor/pixastic.all.js?' + getMvUniqueReqId() );
+		loadExternalJs(mv_embed_path + 'libClipEdit/pixastic-editor/ui.js?' + getMvUniqueReqId() );
+		loadExternalJs(mv_embed_path + 'libClipEdit/pixastic-editor/uidata.js?' + getMvUniqueReqId() );
+		loadExternalCss(mv_embed_path + 'libClipEdit/pixastic-editor/pixastic.all.js?' + getMvUniqueReqId() );		
+		 
+		var isPixasticReady = function(){
+			if(typeof PixasticEditor != 'undefined'){
+				$j(appendTarget).html('<a href="#" class="run_effect_demo">Run Pixastic Editor Demo</a> (not yet fully integrated/ super alpha)<br> best to view <a href="http://www.pixastic.com/editor-test/">stand alone</a>');
+				$j(appendTarget + ' .run_effect_demo').click(function(){
+					var cat = _this;
+					var imgElm = $j( '.clip_container:visible  img').get(0);					
+					PixasticEditor.load(imgElm);				
+				});
+			}else{
+				setTimeout(isPixasticReady, 100)		
+			}
+		}
+		isPixasticReady();			
+	},
 	doTransitionDisplayEdit:function(target_item){
 		var _this = this;
 		js_log("doTransitionDisplayEdit: "+ target_item);
@@ -156,12 +183,13 @@ mvTimedEffectsEdit.prototype = {
 			.children('.te_remove_transition')
 			.click(function(){								
 				//remove the transtion from the playlist
-				_this.p_seqObj.plObj.transitions[cTran.id] = null;
+				_this.pSeq.plObj.transitions[cTran.id] = null;
 				//remove the transtion from the clip:
 				_this.rObj[ _this.menu_items[ target_item ].clip_attr ] = null;				
 				//update the interface: 
 				_this.doTransitionDisplayEdit( target_item );
 				//update the sequence
+				_this.pSeq.do_refresh_timeline();
 			});		
 	},	
 	getSubTypeControl:function(target_item, transition_type, htmlTarget){
@@ -179,7 +207,7 @@ mvTimedEffectsEdit.prototype = {
 				//update the property
 				cTran.subtype = $j(this).val(); 
 				//re-gen timeline / playlist
-				_this.p_seqObj.do_refresh_timeline();
+				_this.pSeq.do_refresh_timeline();
 				//(re-select self?) 
 				_this.getSubTypeControl(target_item, transition_type, htmlTarget);
 		});	
@@ -203,9 +231,8 @@ mvTimedEffectsEdit.prototype = {
 							return false;
 						},
 						onHide: function (colpkr) {
-							$j(colpkr).fadeOut(500);
-							//for some strange reason ColorPicker loses context: 							
-							_this.p_seqObj.plObj.setCurrentTime(0, function(){
+							$j(colpkr).fadeOut(500);												
+							_this.pSeq.plObj.setCurrentTime(0, function(){
 								js_log("render ready");
 							});	
 							return false;
@@ -224,7 +251,7 @@ mvTimedEffectsEdit.prototype = {
 	},
 	getTransitionListControl:function(target_out){
 		js_log("getTransitionListControl");
-		var o= '';
+		var o= '<h3>Add a Transition:</h3>';
 		for(var type in mvTransLib['type']){
 			js_log('on tran type: ' + i);			
 			var base_trans_name = i;

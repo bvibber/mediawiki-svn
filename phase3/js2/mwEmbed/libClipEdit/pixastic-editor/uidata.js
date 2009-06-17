@@ -93,14 +93,14 @@ PE.UI.data = {
 						var $canvas = PE.getDisplayCanvas();
 						var onchange = function(c) {
 							var doc = PE.getDocument();
-							$("#input-numeric-crop-left", doc).val(c.x).change();
-							$("#input-numeric-crop-top", doc).val(c.y).change();
-							$("#input-numeric-crop-width", doc).val(c.w).change();
-							$("#input-numeric-crop-height", doc).val(c.h).change();
-							$("#input-hidden-crop-left", doc).val(c.x).change();
-							$("#input-hidden-crop-top", doc).val(c.y).change();
-							$("#input-hidden-crop-width", doc).val(c.w).change();
-							$("#input-hidden-crop-height", doc).val(c.h).change();
+							$j("#input-numeric-crop-left", doc).val(c.x).change();
+							$j("#input-numeric-crop-top", doc).val(c.y).change();
+							$j("#input-numeric-crop-width", doc).val(c.w).change();
+							$j("#input-numeric-crop-height", doc).val(c.h).change();
+							$j("#input-hidden-crop-left", doc).val(c.x).change();
+							$j("#input-hidden-crop-top", doc).val(c.y).change();
+							$j("#input-hidden-crop-width", doc).val(c.w).change();
+							$j("#input-hidden-crop-height", doc).val(c.h).change();
 						}
 						$canvas.data("Jcrop-onchange", onchange);
 						$canvas.Jcrop({onChange:onchange}, PE.getDocument());
@@ -148,7 +148,7 @@ PE.UI.data = {
 						var doc = PE.getDocument();
 						var $displayCanvas = PE.getDisplayCanvas();
 						var dim = Math.min($displayCanvas.attr("height"), 200);
-						var $canvas = $("<canvas></canvas>", doc);
+						var $canvas = $j("<canvas></canvas>", doc);
 						PE.getOverlay().append($canvas);
 
 						$canvas.attr("width", dim);
@@ -172,7 +172,7 @@ PE.UI.data = {
 						ctx.lineWidth = 20;
 						ctx.stroke();
 
-						$("#image-area", doc).css("cursor", "move");
+						$j("#image-area", doc).css("cursor", "move");
 
 						$overlay = PE.getOverlay();
 
@@ -192,7 +192,7 @@ PE.UI.data = {
 							mx = (e.pageX - offset.left) - $displayCanvas.attr("width")*0.5;
 							my = (e.pageY - offset.top) - $displayCanvas.attr("height")*0.5;
 							startMouseAngle = Math.atan2(my, mx);
-							startAngle = parseInt($("#input-numeric-rotate-angle", doc).val(), 10) * Math.PI / 180;
+							startAngle = parseInt($j("#input-numeric-rotate-angle", doc).val(), 10) * Math.PI / 180;
 						}
 						var onmousemove = function(e) {
 							if (!mouseIsDown) return;
@@ -204,16 +204,16 @@ PE.UI.data = {
 							angle = startAngle - deltaAngle;
 							if (angle < -Math.PI) angle += 2*Math.PI;
 							if (angle > Math.PI) angle -= 2*Math.PI;
-							$("#input-numeric-rotate-angle", doc).val(Math.round(angle * 180 / Math.PI));
-							$("#input-numeric-rotate-angle", doc).change();
+							$j("#input-numeric-rotate-angle", doc).val(Math.round(angle * 180 / Math.PI));
+							$j("#input-numeric-rotate-angle", doc).change();
 						}
 						var onmouseup = function() {
 							mouseIsDown = false;
 						}
 
-						$("#image-area", doc).bind("mousedown", onmousedown);
-						$("#image-area", doc).bind("mousemove", onmousemove);
-						$("#image-area", doc).bind("mouseup", onmouseup);
+						$j("#image-area", doc).bind("mousedown", onmousedown);
+						$j("#image-area", doc).bind("mousemove", onmousemove);
+						$j("#image-area", doc).bind("mouseup", onmouseup);
 						$canvas.data("onmousedown", onmousedown);
 						$canvas.data("onmousemove", onmousemove);
 						$canvas.data("onmouseup", onmouseup);
@@ -223,13 +223,13 @@ PE.UI.data = {
 						var doc = PE.getDocument();
 						var $displayCanvas = PE.getDisplayCanvas();
 						$overlay = PE.getOverlay();
-						$("#image-area", doc).css("cursor", "default");
+						$j("#image-area", doc).css("cursor", "default");
 
 						var $canvas = $displayCanvas.data("rotateCanvas");
 
-						$("#image-area", doc).unbind("mousedown", $canvas.data("onmousedown"));
-						$("#image-area", doc).unbind("mousemove", $canvas.data("onmousemove"));
-						$("#image-area", doc).unbind("mouseup", $canvas.data("onmouseup"));
+						$j("#image-area", doc).unbind("mousedown", $canvas.data("onmousedown"));
+						$j("#image-area", doc).unbind("mousemove", $canvas.data("onmousemove"));
+						$j("#image-area", doc).unbind("mouseup", $canvas.data("onmouseup"));
 						$displayCanvas.removeData("rotateCanvas");
 						$canvas.remove();
 					},
@@ -790,13 +790,13 @@ PE.UI.data = {
 					id : "savepage",
 					content : function($ctr) {
 						var doc = PE.getDocument();
-						$("<div></div>", doc)
+						$j("<div></div>", doc)
 							.addClass("action-output-text")
 							.html("This will save the image to the page.")
 							.appendTo($ctr);
 
-						var $buttonCtr = $("<div></div>", doc).appendTo($ctr);
-						var $saveButton = $("<button></button>", doc)
+						var $buttonCtr = $j("<div></div>", doc).appendTo($ctr);
+						var $saveButton = $j("<button></button>", doc)
 							.html("Save image")
 							.appendTo($buttonCtr)
 							.click(function() {
@@ -810,7 +810,7 @@ PE.UI.data = {
 					id : "savefile",
 					content : function(ctr) {
 						var doc = PE.getDocument();
-						$("<div></div>", doc)
+						$j("<div></div>", doc)
 							.addClass("action-output-text")
 							.html("This will save the image to your local computer.")
 							.appendTo(ctr);
@@ -823,22 +823,22 @@ PE.UI.data = {
 						}
 						selectHtml += "</select>";
 
-						var selectCtr = $("<div></div>", doc)
+						var selectCtr = $j("<div></div>", doc)
 							.addClass("ui-select-container");
 
 
-						var label = $("<div></div>", doc)
+						var label = $j("<div></div>", doc)
 							.addClass("ui-select-label")
 							.html("Format:")
 							.appendTo(selectCtr);
 
-						var formatSelect = $(selectHtml, doc).appendTo(selectCtr);
+						var formatSelect = $j(selectHtml, doc).appendTo(selectCtr);
 
 
 						selectCtr.appendTo(ctr);
 
-						var buttonCtr = $("<div></div>", doc).appendTo(ctr);
-						var saveButton = $("<button></button>", doc)
+						var buttonCtr = $j("<div></div>", doc).appendTo(ctr);
+						var saveButton = $j("<button></button>", doc)
 							.html("Save file")
 							.appendTo(buttonCtr)
 
@@ -847,7 +847,7 @@ PE.UI.data = {
 							var formatMime = selectElement.options[selectElement.selectedIndex].value;
 							var dataString = PE.getDataURI(formatMime);
 
-							var dialog = $("<div></div>", doc)
+							var dialog = $j("<div></div>", doc)
 								.attr("id", "save-dialog")
 								.attr("title", "Download file")
 								.html(
@@ -858,8 +858,8 @@ PE.UI.data = {
 								.dialog();
 
 							// the dialog is added outside the Pixastic container, so get it back in.
-							var dialogParent = $(dialog.get(0).parentNode);
-							$("#pixastic-editor", doc).append(dialogParent);
+							var dialogParent = $j(dialog.get(0).parentNode);
+							$j("#pixastic-editor", doc).append(dialogParent);
 						});
 					}
 				},
@@ -871,12 +871,12 @@ PE.UI.data = {
 						var doc = PE.getDocument();
 
 						function flickrAuthed() {
-							var $text = $("<div />", doc)
+							var $text = $j("<div />", doc)
 								.addClass("action-output-text")
 								.html("Authorized as: " + PE.Flickr.getAuthName());
 
-							var $buttonCtr = $("<div></div>", doc);
-							var $uploadButton = $("<button></button>", doc)
+							var $buttonCtr = $j("<div></div>", doc);
+							var $uploadButton = $j("<button></button>", doc)
 								.html("Upload image")
 								.appendTo($buttonCtr)
 
@@ -887,15 +887,15 @@ PE.UI.data = {
 							$ctr.append($text, $buttonCtr);
 						}
 
-						var $authCtr = $("<div />", doc).appendTo($ctr);
+						var $authCtr = $j("<div />", doc).appendTo($ctr);
 
-						$("<div />", doc)
+						$j("<div />", doc)
 							.addClass("action-output-text")
 							.html("If you have a Flickr account you can now upload your image to Flickr. You will need to give access to your account first. Click the button below to open an authorization window.")
 							.appendTo($authCtr);
 
-						var $buttonCtr = $("<div></div>", doc).appendTo($authCtr);
-						var $authButton = $("<button></button>", doc)
+						var $buttonCtr = $j("<div></div>", doc).appendTo($authCtr);
+						var $authButton = $j("<button></button>", doc)
 							.html("Authenticate")
 							.appendTo($buttonCtr)
 
@@ -905,15 +905,15 @@ PE.UI.data = {
 							if (!checkButtonAdded) {
 								checkButtonAdded = true;
 
-								var $text = $("<div />", doc)
+								var $text = $j("<div />", doc)
 									.addClass("action-output-text")
 									.html("Now click the button below when you have authorized access to your Flickr account.");
 	
-								var $buttonCtr = $("<div></div>", doc);
+								var $buttonCtr = $j("<div></div>", doc);
 	
 								$authCtr.append($text, $buttonCtr);
 	
-								var $checkButton = $("<button></button>", doc)
+								var $checkButton = $j("<button></button>", doc)
 									.html("I have authenticated!")
 									.appendTo($buttonCtr);
 	
@@ -937,10 +937,10 @@ PE.UI.data = {
 					content : function(ctr) {
 						var doc = PE.getDocument();
 
-						$("<div>Are you sure you want to quit?</div>", doc)
+						$j("<div>Are you sure you want to quit?</div>", doc)
 							.addClass("action-output-text")
 							.appendTo(ctr);
-						var $buttonCtr = $("<div></div>", doc).appendTo(ctr);
+						var $buttonCtr = $j("<div></div>", doc).appendTo(ctr);
 
 						var $quitButton = PE.UI.makeButton("Yes, quit now!")
 							.appendTo($buttonCtr)

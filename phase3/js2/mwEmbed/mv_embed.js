@@ -451,6 +451,9 @@ var mvJsLoader = {
 		 }
 		 this.ptime=this.ctime;		
 	 },	 
+	 doLoadFullPaths:function(loadObj, callback){
+	 	
+	 },
 	 doLoadDepMode:function(loadChain, callback){
 	 	//firefox executes js ~in-order of it being included~ so just directly issue request:
 	 	if( $j.browser.firefox ){
@@ -790,13 +793,14 @@ function mv_jqueryBindings(){
         				'mvSequencer'		
 	        		],
 	        		[
+	        			'$j.ui.accordion',
         				'$j.ui.dialog',
         				'$j.ui.droppable',
         				'$j.ui.draggable',    
         				'$j.ui.progressbar',    				
         				'$j.ui.sortable',
         				'$j.ui.resizable',
-        				'$j.ui.slider',
+        				'$j.ui.slider',        				
         				'$j.ui.tabs'
         			]
         		], function(){			        			
