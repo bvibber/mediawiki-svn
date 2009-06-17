@@ -130,7 +130,7 @@ $wgLogo="$wgScriptPath/Logo.png";
 # load Localsettings specific to particular modules
 
 $additional_settings=glob("$IP/LocalSettings/*.php.settings");
-$additional_settings=array_merge(glob("$IP/LocalSettings/*.settings.php")); #backward compatibility
+$additional_settings=array_merge(glob("$IP/LocalSettings/*.settings.php"), $additional_settings); #backward compatibility
 if ($additional_settings) {
 	foreach ($additional_settings as $file) {
 		require_once($file);
