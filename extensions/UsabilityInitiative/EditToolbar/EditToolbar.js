@@ -77,10 +77,10 @@
 									.click( function() {
 										$(this).blur();
 										var show = ( $(this).data( 'sectionDiv' ).css( 'display' ) == 'none' );
-										$(this).data( 'sectionDiv' ).parent().children().hide();
+										$(this).data( 'sectionDiv' ).parent().children().hide('fast');
 										$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 										if ( show ) {
-											$(this).data( 'sectionDiv' ).show();
+											$(this).data( 'sectionDiv' ).show('fast');
 											$(this).addClass( 'current' );
 										}
 										// Sets or deletes cookie when sections are shown or hidden
