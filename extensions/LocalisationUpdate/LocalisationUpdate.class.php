@@ -208,8 +208,8 @@ class LocalisationUpdate {
 		}
 
 		// Get the array with messages
-		// TODO: Security?
-		eval( $basefilecontents );
+		$vars = new ConfEditor( $basefilecontents )->getVars();
+		$base_messages = $vars['base_messages'];
 
 		$comparefilecontents = self::getFileContents( $comparefile );
 		if ( $comparefilecontents === false || $comparefilecontents === "" ) return array(); // Failed
@@ -229,8 +229,8 @@ class LocalisationUpdate {
 			}
 		}
 		// Get the array
-		// TODO: security?
-		eval( $comparefilecontents );
+		$vars = new ConfEditor( $comparefilecontents )->getVars();
+		$compare_messages = $vars['compare_messages'];
 
 		// if the localfile and the remote file are the same, skip them!
 		if ( $basehash == $comparehash && !$alwaysGetResult ) {
@@ -375,8 +375,8 @@ class LocalisationUpdate {
 		}
 
 		// And get the real contents
-		// TODO: security?
-		eval( $basefilecontents );
+		$vars = new ConfEditor( $basefilecontents )->getVars();
+		$base_messages = $vars['base_messages'];
 
 		$comparefilecontents = self::getFileContents( $comparefile );
 		if ( $comparefilecontents === false || $comparefilecontents === "" ) return 0; // Failed
@@ -395,8 +395,8 @@ class LocalisationUpdate {
 			}
 		}
 		// Get the real array
-		// TODO: security?
-		eval( $comparefilecontents );
+		$vars = new ConfEditor( $comparefilecontents )->getVars();
+		$compare_messages = $vars['compare_messages'];
 
 		// If both files are the same, they can be skipped
 		if ( $basehash == $comparehash && !$alwaysGetResult ) {
