@@ -575,6 +575,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	* its all very fragile to read the html output and guess at stuff
 	*/
 	procPageResponse:function( result_page ){
+		var _this = this;
 		js_log('f:procPageResponse');
 		var sstring = 'var wgTitle = "' + this.formData['wpDestFile'].replace('_',' ');		
 		
@@ -585,7 +586,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		}		
 		
 		//set the error text in case we dont' get far along in processing the response 
-		updateProgressWin( gM('mv_upload_completed'), result_txt );
+		_this.updateProgressWin( gM('mv_upload_completed'), result_txt );
 												
 		if( result_page && result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
 			js_log( 'upload done got redirect found: ' + sstring + ' r:' + _this.upload_done_action );										
