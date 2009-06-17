@@ -108,6 +108,8 @@ archiveOrgSearch.prototype = {
 	},
 	getEmbedHTML: function( rObj , options) {
 		js_log('getEmbedHTML:: ' + rObj.poster );
+		if(!options)
+			options ={};
 		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';
 		var src = rObj.src + '?t=0:0:0/'+ seconds2npt( rObj.duration );
 		if(rObj.mime == 'application/ogg' || rObj.mime == 'audio/ogg' || rObj.mime=='video/ogg'){

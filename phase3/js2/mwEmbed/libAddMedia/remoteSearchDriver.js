@@ -356,11 +356,12 @@ remoteSearchDriver.prototype = {
 		this.add_interface_bindings();
 	
 		//update the target bining to just unhide the dialog:
-		 $j(this.target_invocation).unbind().click(function(){
+		$j(this.target_invocation).unbind().click(function(){
+		 	  js_log("re-open");
 			  //update the base text:
 			  if(_this.target_textbox)
 					_this.getTexboxSelection();
-				
+		
 			  $j(_this.target_container).dialog('open').parent('.ui-dialog').css( _this.dmodalCss );
 		 });	
 	},
@@ -1220,7 +1221,7 @@ remoteSearchDriver.prototype = {
 						'style="position:absolute;top:50px;left:50px;right:50px;bottom:50px;z-index:5">' +
 							'<h3 style="color:red">Resource: <span style="color:black">' + rObj.title + '</span> needs to be imported</h3>'+
 								'<div id="rsd_preview_import_container" style="position:absolute;width:50%;bottom:0px;left:0px;overflow:auto;top:30px;">' +
-									rObj.pSobj.getEmbedHTML( rObj, {'max_height':'200','only_poster':true} )+ //get embedHTML with small thumb:
+									rObj.pSobj.getEmbedHTML( rObj, {'id': _this.target_container + '_rsd_pv_vid', 'max_height':'200','only_poster':true} )+ //get embedHTML with small thumb:
 									'<br style="clear both">'+
 									'<strong>Resource Page Description:</strong>'+
 									'<div id="rsd_import_desc" syle="display:inline;">'+
@@ -1247,6 +1248,8 @@ remoteSearchDriver.prototype = {
 								'</div>'+
 								//output the rendered and non-renderd version of description for easy swiching:
 						'</div>');		
+						//update video tag
+						rewrite_by_id(_this.target_container + '_rsd_pv_vid');
 						//load the preview text:					
 						_this.getParsedWikiText( wt, _this.cFileNS +':'+ rObj.target_resource_title, function( o ){					
 							$j('#rsd_import_desc').html(o);
@@ -1333,6 +1336,7 @@ remoteSearchDriver.prototype = {
 	 * can be depricated once we support upload api support is widespred.
 	 */
 	doImportSpecialPage:function(rObj, cir_callback){
+		var _this = this;
 		 //get an edittoken:
 		do_api_req( {
 			'data':	{	'action':'query',
@@ -1505,8 +1509,14 @@ remoteSearchDriver.prototype = {
 			if(_this.target_render_area && _this.cur_embed_code){			
 				 //output with some padding: 
 				 $j(_this.target_render_area).append( _this.cur_embed_code + '<div style="clear:both;height:10px">')
-				 //update if its 
-				 mv_video_embed();				 
+				 //update if its video or audio:
+				 if( rObj.mime.indexOf('audio')!=-1 || 
+				 	 rObj.mime.indexOf('video')!=-1 ||
+				 	 rObj.mime.indexOf('/ogg')){
+					 mvJsLoader.embedVideoCheck(function(){
+					 	mv_video_embed();				 
+					 });
+				 }
 			}						
 			_this.closeAll();
 		});		
@@ -1515,8 +1525,7 @@ remoteSearchDriver.prototype = {
 		 js_log("close all");
 		 $j('#rsd_resource_preview').remove();
 		 $j('#rsd_resource_edit').remove();
-		 $j(this.target_container).dialog('close');
-		 $j(this.target_container).remove();
+		 $j(this.target_container).dialog('close');		 
 	},
 	setResultBarControl:function( ){
 		var _this = this;

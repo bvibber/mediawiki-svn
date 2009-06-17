@@ -195,6 +195,8 @@ mediaWikiSearch.prototype = {
 			var cEdit = _this.cEdit;		
 	},
 	getEmbedHTML: function( rObj , options) {
+		if(!options)
+			options = {};
 		//set up the output var with the default values: 
 		var outOpt = { 'width': rObj.width, 'height': rObj.height};
 		if( options['max_height'] ){			

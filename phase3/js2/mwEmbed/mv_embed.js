@@ -757,7 +757,7 @@ function mv_jqueryBindings(){
 					['remoteSearchDriver',
 						'$j.cookie',
 						'$j.ui'
-					],[				
+					],[		
 						'$j.ui.resizable',
 						'$j.ui.draggable',
 						'$j.ui.dialog',
