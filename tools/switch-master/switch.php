@@ -25,7 +25,6 @@ if ( $IP === false ) {
 $optionsWithArgs = array( 'slave-load', 'master-load' );
 $wgNoDBParam = true;
 require( "$IP/maintenance/commandLine.inc" );
-$wgAutoloadClasses['ConfEditor'] = dirname(__FILE__).'/ConfEditor.php';
 $wgAutoloadClasses['MasterSwitcher'] = dirname(__FILE__).'/MasterSwitcher.php';
 
 if ( count( $args ) < 2 ) {
