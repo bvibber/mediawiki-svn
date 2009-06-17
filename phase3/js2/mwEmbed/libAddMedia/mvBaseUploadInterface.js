@@ -510,10 +510,8 @@ mvBaseUploadInterface.prototype = {
 		  width:400,
 		  heigh:200,
 		  beforeclose: function(event, ui) {	 			  
-			  if( event.button==0 ){			   
-				  if( confirm( gM('mv-canecl-confim') )){
-					_this.cancel_action();
-				  }
+			  if( event.button==0 ){			   				  
+				_this.cancel_action();
 			  }else{
 				 //click on button (dont do close action);
 				 return true; 

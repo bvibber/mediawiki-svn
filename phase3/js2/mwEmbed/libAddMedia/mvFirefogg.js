@@ -447,7 +447,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		if(  _this.formData['wpIgnoreWarning'] )
 			aReq['ignorewarnings'] = _this.formData['wpIgnoreWarning'];
 		
-		js_log('do fogg upload call: '+ _this.api_url + ' :: ' + JSON.stringify( aReq ) );			
+		js_log('do fogg upload/encode call: '+ _this.api_url + ' :: ' + JSON.stringify( aReq ) );			
 		js_log('foggEncode: '+ JSON.stringify( _this.encoder_settings ) );			
 		_this.fogg.upload( JSON.stringify( _this.encoder_settings ),  _this.api_url ,  JSON.stringify( aReq ) );		
 			
@@ -488,8 +488,8 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		var _this = this;
 		js_log('::encodeDone::');
 		//send to the post url:				 
-		if( _this.form_rewrite ){
-			js_log('done with encoding do upload:' + _this.editForm.action);					
+		if( _this.form_rewrite && _this.upload_mode == 'post' ){
+			js_log('done with encoding do POST upload:' + _this.editForm.action);					
 			// ignore warnings & set source type 
 			//_this.formData[ 'wpIgnoreWarning' ]='true';
 			_this.formData[ 'wpSourceType' ] = 'file';		
@@ -499,6 +499,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			//update upload status:						
 			_this.doUploadStatus();
 		}else{
+			js_log("done with encoding (no upload) ")
 		   _this.updateProgressWin(gM('fogg-encoding-done'), gM('fogg-encoding-done'));
 		}
 	},
@@ -533,7 +534,9 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				setTimeout(uploadStatus, 100);
 			}
 			//check upload state
-			else if( _this.fogg.state == 'upload done' ||  _this.fogg.state == 'done' ) {	
+			else if( _this.fogg.state == 'upload done' || 
+						 _this.fogg.state == 'done' ||
+						 _this.fogg.state == 'encoding done' ) {	
 				   js_log( 'firefogg:upload done: ');																														   
 				   //if in "post" upload mode read the html response (should be depricated): 
 				   	if( _this.upload_mode == 'post' && _this.api_url ) {					   					  
