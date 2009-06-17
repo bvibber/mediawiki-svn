@@ -320,14 +320,15 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				js_log(" should update: " + _this.target_input_file_name + ' to: ' + _this.fogg.sourceFilename );				 
 				$j(_this.target_input_file_name).val(_this.fogg.sourceFilename).show();
 				
-				if(_this.new_source_cb){			
+				if(_this.new_source_cb){								
 				    var oggExt = (_this.isSourceAudio())?'oga':'ogg';
                     oggExt = (_this.isSourceVideo())?'ogv':oggExt;
+                    oggExt = (_this.isUnknown())?'ogg':oggExt;
 				    oggName = _this.fogg.sourceFilename.substr(0,
 				                  _this.fogg.sourceFilename.lastIndexOf('.'));
 				         
 					_this.new_source_cb( _this.fogg.sourceFilename , oggName +'.'+ oggExt);
-					}
+				}
 			}													
 		}else{
 			//js_error("Firefogg error selecting file");
@@ -368,14 +369,18 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				 
 		js_log('base autoEncoderSettings::' + _this.sourceFileInfo.contentType  + ' passthrough:' + _this.encoder_settings['passthrough']);
 	},
+	isUnknown:function(){
+		return (this.sourceFileInfo.contentType.indexOf("unknown") != -1);
+	},
 	isSourceAudio:function(){
 	   return (this.sourceFileInfo.contentType.indexOf("audio/") != -1);
 	},
 	isSourceVideo:function(){
 	    return (this.sourceFileInfo.contentType.indexOf("video/") != -1);
-	},
+	},	
 	isOggFormat:function(){
-	   return ( this.sourceFileInfo.contentType.indexOf("video/ogg") != -1); 
+	   return ( this.sourceFileInfo.contentType.indexOf("video/ogg") != -1 || 
+	    		this.sourceFileInfo.contentType.indexOf("application/ogg") != -1   ); 
 	},
 	getProgressTitle:function(){
 		js_log("fogg:getProgressTitle f:" + this.fogg_enabled  + ' rw:' + this.form_rewrite);

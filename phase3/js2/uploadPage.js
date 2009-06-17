@@ -9,6 +9,10 @@ mwAddOnloadHook( function(){
 var mwUploadHelper = {
 	init:function(){
 		var _this = this;
+		//if not boolean false set to true: 
+		if(typeof wgEnableFirefogg == 'undefined')
+			wgEnableFirefogg = true;
+			
 		if( wgEnableFirefogg ){
 			//setup the upload handler to firefogg  (supports our upload proccess) (should work with the http uploads too) 
 			$j('#wpUploadFile').firefogg({ 

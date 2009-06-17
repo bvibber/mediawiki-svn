@@ -1512,7 +1512,7 @@ remoteSearchDriver.prototype = {
 				 //update if its video or audio:
 				 if( rObj.mime.indexOf('audio')!=-1 || 
 				 	 rObj.mime.indexOf('video')!=-1 ||
-				 	 rObj.mime.indexOf('/ogg')){
+				 	 rObj.mime.indexOf('/ogg') !=-1){
 					 mvJsLoader.embedVideoCheck(function(){
 					 	mv_video_embed();				 
 					 });

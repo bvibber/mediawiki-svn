@@ -686,6 +686,11 @@ div.rsd_selected {
 	background-image: url('images/pbar-ani.gif');
 }
 
+ui-widget-overlay{
+	background: url("images/ui-bg_diagonals-thick_20_666666_40x40.png") repeat scroll 50% 50% #666666;
+	opacity:0.5;
+}
+
 /* Vertical Tabs
 ----------------------------------*/
 .ui-dialog-buttonpane { padding:10px !important; }
@@ -747,4 +752,5 @@ div.rsd_selected {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
+
 
