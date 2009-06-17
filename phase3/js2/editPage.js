@@ -25,6 +25,7 @@ mwAddOnloadHook( function(){
 var mwEditPageHelper = {	
 	init:function(){
 		var _this = this;
+		alert('runing mwEditPageHelper');
 		//add the add-media-wizard button
 		$j('#toolbar').append('<img style="cursor:pointer" id="btn-add-media-wiz" src="' + mv_skin_img_path + 'Button_add_media.png">');
 		$j('#btn-add-media-wiz').addMediaWiz( 
