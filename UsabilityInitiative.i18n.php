@@ -33,6 +33,14 @@ $messages['bs'] = array(
 	'usabilityinitiative-desc' => 'Mogućnost koju je razvila Wikipedia inicijativa upotrebljivosti da bi se poboljšala upotrebljivost MediaWiki',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'usabilityinitiative' => 'Iniciatiwa wužywajobnosći',
+	'usabilityinitiative-desc' => 'Funkcije wuwite pśez iniciatiwu wužywajobnosći Wikipedije za pólěpšenje wužywajobnosći MediaWiki',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -79,7 +87,7 @@ $messages['ja'] = array(
 $messages['ksh'] = array(
 	'usabilityinitiative' => 'Bewääjung för 
 Usability',
-	'usabilityinitiative-desc' => 'Eijeschaffte för de usability fun MediaWiki ze verbessere vun dä Bewääjung doför.',
+	'usabilityinitiative-desc' => 'Eijeschaffte för de usability fun MediaWiki ze verbessere, äntwekelt vun dä Bewääjung doh doför.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -96,6 +104,22 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'usabilityinitiative' => 'Bruikbaarheidsinitiatief',
 	'usabilityinitiative-desc' => 'Functionaliteit die door het Wikipedia Bruikbaarheidsinitiatief is ontwikkeld ter verbetering van de bruikbaarheid van MediaWiki',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'usabilityinitiative' => "Iniciativa d'utilizabilitat",
+	'usabilityinitiative-desc' => "Foncionalitats desvolopadas per l'iniciativa d'utilizabilitat de Wikipèdia per melhorar l'utilizabilitat de MediaWiki",
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'usabilityinitiative' => "Iniziative pe l'usabbilità",
+	'usabilityinitiative-desc' => "Dettaglie sviluppate de 'a Wikipedia Usability Initiative pe aumendà l'usabbilità de Uicchipèdie",
 );
 
 /** Russian (Русский)
