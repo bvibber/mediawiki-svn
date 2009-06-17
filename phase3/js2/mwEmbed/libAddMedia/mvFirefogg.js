@@ -536,8 +536,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			else if( _this.fogg.state == 'upload done' ||  _this.fogg.state == 'done' ) {	
 				   js_log( 'firefogg:upload done: ');																														   
 				   //if in "post" upload mode read the html response (should be depricated): 
-				   	if( _this.upload_mode == 'post' && _this.api_url ) {					   
-					   js_log( 'done upload response is: ' + cat["responseText"] );
+				   	if( _this.upload_mode == 'post' && _this.api_url ) {					   					  
 					   _this.procPageResponse( response_text );						   
 				   	}else if( _this.upload_mode == 'api'){										  
 					   if( _this.fogg.resultUrl ){	
