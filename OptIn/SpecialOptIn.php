@@ -25,7 +25,6 @@ class SpecialOptIn extends SpecialPage {
 		}
 		
 		if ( $wgRequest->wasPosted() ) {
-			// Is the weak comparison intentional?
 			if ( $wgRequest->getVal( 'opt' ) == 'in' ) {
 				$this->optIn( $wgUser );
 				$wgOut->addWikiMsg( 'optin-success-in' );
