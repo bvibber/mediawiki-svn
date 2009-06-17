@@ -20,23 +20,21 @@ class SpecialOptIn extends SpecialPage {
 		if ( $wgUser->isAnon() ) {
 			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
 				array( 'returnto' => $this->getTitle()->getPrefixedUrl() ) );
-			$wgOut->addHTML( Xml::openElement( 'div', 
-				array( 'class' => 'plainlinks' ) ) );
-			$wgOut->addWikiText( wfMsg( 'optin-needlogin', $url ) );
-			$wgOut->addHTML( Xml::closeElement( 'div' ) );
+			$wgOut->wrapWikiMsg( "<div class='plainlinks'>\n$1\n</div>", array( 'optin-needlogin', $url ) );
 			return;
 		}
 		
 		if ( $wgRequest->wasPosted() ) {
+			// Is the weak comparison intentional?
 			if ( $wgRequest->getVal( 'opt' ) == 'in' ) {
 				$this->optIn( $wgUser );
-				$wgOut->addWikiText( wfMsg( 'optin-success-in' ) );
+				$wgOut->addWikiMsg( 'optin-success-in' );
 			} else {
 				$this->optOut( $wgUser );
-				$wgOut->addWikiText( wfMsg( 'optin-success-out' ) );
+				$wgOut->addWikfMsg( 'optin-success-out' );
 			}
 		} else {
-			$wgOut->addWikiText( wfMsg( 'optin-intro' ) );
+			$wgOut->addWikiMsg( 'optin-intro' );
 		}
 		$this->showForm();
 	}
@@ -44,7 +42,7 @@ class SpecialOptIn extends SpecialPage {
 	function showForm() {
 		global $wgUser, $wgOut;
 		$retval = Xml::openElement( 'form', array(
-			'method' => 'POST',
+			'method' => 'post',
 			'action' => $this->getTitle()->getLinkURL()
 		) );
 		$opt = ( $this->isOptedIn( $wgUser ) ? 'out' : 'in' );

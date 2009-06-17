@@ -34,14 +34,14 @@ class SpecialPrefStats extends SpecialPage {
 	
 	function displayTrackedPrefs() {
 		global $wgOut, $wgUser, $wgPrefStatsTrackPrefs;
-		$wgOut->addWikitext( wfMsg( 'prefstats-list-intro' ) );
+		$wgOut->addWikiMsg( 'prefstats-list-intro' );
 		$wgOut->addHTML( Xml::openElement( 'ul' ) );
 		foreach ( $wgPrefStatsTrackPrefs as $pref => $value ) {
 			$wgOut->addHTML( Xml::tags( 'li', array(),
 				$wgUser->getSkin()->link(
 					$this->getTitle( $pref ),
-					wfMsg( 'prefstats-list-elem', $pref,
-						$value ) ) ) );
+					htmlspecialchars( wfMsg( 'prefstats-list-elem', $pref,
+						$value ) ) ) ) );
 		}
 		$wgOut->addHTML( Xml::closeElement( 'ul' ) );
 	}
