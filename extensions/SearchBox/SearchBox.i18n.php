@@ -76,6 +76,16 @@ $messages['arz'] = array(
 	'searchbox-namespaces' => 'النطاقات:',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'searchbox-desc' => "Ealaubt s'Eibindn vu am Suachfoamular",
+	'searchbox-search' => 'Suacha',
+	'searchbox-go' => 'Passd',
+	'searchbox-namespaces' => 'Nãmensräim:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

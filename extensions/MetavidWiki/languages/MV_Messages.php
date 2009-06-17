@@ -1763,6 +1763,7 @@ Besuche die <a href="http://metavid.org/wiki/Client_Playback">MetaVid-Projektsei
 	'cc_nd_title' => 'Keine Bearbeitung',
 	'cc_sa_title' => 'Weitergabe unter gleichen Bedingungen',
 	'cc_pd_title' => 'Gemeinfrei',
+	'unknown_license' => 'Lizenz unbekannt',
 	'mv_stream_title' => '$1 (von $2 bis $3)',
 	'menu_options' => 'Optionen',
 	'loading_timeline' => 'Zeitleiste laden <blink>…</blink>',
@@ -4918,16 +4919,45 @@ $messages['ksh'] = array(
 	'error_load_lib' => '<i lang="en">mv_embed:</i> Kann de nüdejje JavaSkrepp Projrammbiplijoteek nit lade. Dat Skrepp övver <i lang="en">DOM</i> en de Web-Sigg enzefööje hät nit jeflupp. Noch ens versöke, dat Skrepp ze laade?',
 	'download_segment' => 'Ußwahl för erunger ze laade:',
 	'download_full' => 'Donn dä janze Viddejo erunge laade:',
+	'download_clip' => '
+Donn dä
+clip
+eronger laade',
 	'download_text' => 'Tex erungerlaade (<i lang="en"><a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML</i>):',
+	'clip_linkback' => '
+Däm 
+clip
+sing Quell-Sigg',
 	'mv_ogg-player-videoElement' => 'Et ennjeboute Projramm för <i lang="en">Ogg</i> Viddejos afzeshpelle',
 	'mv_ogg-player-oggPlugin' => 'Dat shtandatmääßijje Zohsazprojramm för <i lang="en">Ogg</i> Viddejos afzeshpelle',
 	'mv_ogg-player-selected' => '(ußjesöök)',
+	'mv_generic_missing_plugin' => 'Dinge Brauser schingk de Zoot <b>$1</b> för zem Afschpelle nit ze künne<br />
+Loor op dä Sigg <i lang="en"><a href="http://metavid.org/wiki/Client_Playback">Playback methods</a></i> noh, öm Der e Projramm zom Afschpelle eronger ze laade.<br />',
+	'add_to_end_of_sequence' => '
+Aam Engk vun dä
+sequence
+aanhange',
 	'missing_video_stream' => ' De Viddejo-Dattei för he dä 
 stream
 is nit doh',
 	'select_transcript_set' => 'Donn de Nivvohs vum Täx ußwähle',
 	'auto_scroll' => 'automattesch wigger_Rolle',
 	'close' => 'zoh maache',
+	'improve_transcript' => '
+transcript
+verbessere',
+	'next_clip_msg' => '
+Dä nächste 
+clip
+afshpelle',
+	'prev_clip_msg' => '
+Dä vörijje 
+clip
+afshpelle',
+	'current_clip_msg' => '
+Heh dä  
+clip
+wigger afshpelle',
 	'seek_to' => 'Söhk bes',
 	'upload-enable-converter' => 'Donn dä Ömwandler för em Viddejo sing Fommaat aanschallde. Donn dat hee bruche, öm ene Viddejo huhzelaade, dä noch nit em <i lang="en">Theora</i>-Fommaat es. (Doh drövver jidd et noch <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">mieh Ennformazjuhne</a>)',
 	'upload-fogg_not_installed' => 'Wann de Viddejos huhlaade wells, dann övverlääsch_ens, dä <i lang="en"><a href="http://firefogg.org">Firefogg</a></i> ze enshtalleere. (Doh drövver jidd et noch <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">mieh Ennformazjuhne</a>)',
@@ -4947,6 +4977,9 @@ is nit doh',
 	'cc_nd_title' => 'Nit för zem Ändere udder Övverärbeide',
 	'cc_pd_title' => '„Jemeinfrei“ (<i lang="en">public domain</i>)',
 	'unknown_license' => 'En onbikannte Lizänz',
+	'no_import_by_url' => 'Do als ene Metmaacher met Ding päsöönlejje Rääschte, udder dat Wiki enjesamp, <b>kann nix</b> vun URLs empotteere.
+
+Wann et nit aan Dinge Rääschte litt, künnd et sin, dat De <code lang="en">$wgAllowCopyUploads</code> aanschallde moß (<a href="http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads">mieh dohzo</a>)',
 	'mv_stream_title' => '$1 (vun $2 beß $3)',
 	'mv_insert_image_page' => 'En en Sigg ennfööje',
 	'mv_preview_insert' => 'Vör_Aansich för et Ennfööje',
@@ -4971,10 +5004,29 @@ Resource',
 	'no_edit_permissions' => 'Do häß nit dat Rääsch, Änderunge aan dä
 sequence
 afzeseschere.',
+	'edit_clip' => '
+Dä  
+clip
+ändere',
 	'edit_save' => 'De Änderunge afseschere',
 	'edit_cancel' => 'Mem Ändere ophüüre',
+	'edit_cancel_confirm' => 'Bes De sescher, dat De et Ändere afbräsche wells? All Ding Werrek beß jäz jeiht verschött!',
+	'zoom_in' => 'Eraan zoome',
+	'zoom_out' => 'Fott zoome',
 	'pixle2sec' => 'Pixelle en Sekunde',
+	'no_selected_resource' => '<h3>Nix ußjesöhk</h3>
+Donn ene
+clip
+ußsöke, öm et Ändere müjjelesch ze maache',
+	'error_edit_multiple' => '<h3>Ättlijje Saache ußjesöhk</h3>
+Donn ene einzel
+clip
+ußsöke, öm dä ze ändere',
 	'metavid' => 'Metavid Sigg',
+	'mv_missing_stream' => '
+Dä
+stream 
+„$1“ fäählt',
 	'specialpages-group-mv_group' => 'MetaVidWiki Söndersigge',
 	'mv_warning_wiki' => '<i>Opjepaß: <i lang="en">MetaVid</i> Viddejo Protokolle [[Help:FAQ#How_accurate_is_the_information.3F|künne unjenou sin]], donn uns hellfe, [[Help:Participation#Improving_Archive_Accuracy|noch e besser Aschiif opzeboue]]</i>',
 	'mv_ogg_low_quality' => ' Striimbaa övver et Nez - <i lang="en">Ogg Theora</i> 300&nbsp;Killobits&nbsp;de&nbsp;Sekund',
@@ -4983,7 +5035,56 @@ afzeseschere.',
 	'mv_archive_org_mp4' => 'Ene em <i lang="en">Archive.org-MP4</i> enjepackte H.264-Schtroom',
 	'mv_archive_org_link' => 'Lengks op ojinaal MPEG2-Dateije vun Archive.org',
 	'mv_error_stream_missing' => '<span class="error">Fähler: För dä Shtroom jidd_et kein Viddejo_Dattei.</span><br />Beß esu joot, un donn dat eenem [[{{MediaWiki:Grouppage-sysop}}|Wiki_Kööbeß]] verzälle.',
+	'mv_stream_added' => '
+Do häs dä 
+stream 
+„$1“ dobei jedonn',
+	'mv_stream_meta' => '
+stream  
+Sigg',
+	'mv_add_stream' => '
+<i lang="en">MetaVid</i> 
+stream  
+dobei donn',
+	'mv_edit_stream' => '
+<i lang="en">MetaVid</i> 
+stream  
+ändere',
+	'mvexportsearch' => '<i lang="en">MetaVid</i> Expoot',
+	'mvexportsequence' => '
+<i lang="en">MetaVid</i> 
+sequence  
+expoteere',
+	'mvexportstream' => '
+<i lang="en">MetaVid</i> 
+stream  
+expooteere',
 	'mv_move_delete_msg' => 'op $1 ömjenannt',
+	'mv_add_stream_page' => '
+<i lang="en">MetaVid</i> Stream 
+dobei donn',
+	'mv_edit_strea_docu' => '
+<p>Stream ändere als <b>Wiki-Köbes</b><br />
+De Aansich för der nommaale Metmaacher es op dä Sigg: $1',
+	'mv_add_stream_docu' => '
+<p>Donn ene neue 
+stream 
+dobei, övver dat Feld heh dronger.</p>
+<p>Mieh Enfommazjuhne fingk mer op dä <a href="$1">Hülp-Sigg övver et 
+stream-
+Dobei-Donn</a>.</p>',
+	'mv_add_stream_submit' => '
+stream
+dobei donn',
+	'mv_no_stream_files' => '
+Mer han kei 
+stream  
+Datteije',
+	'mv_edit_stream_files' => '
+stream  
+Datteije ändere',
+	'mv_path_type_url_anx' => 'kumplätte Medije-URL',
+	'mv_path_type_wiki_title' => 'Medije-Tittel em Wiki',
 	'mv_path_type_label' => 'Tüp fun enem Paad',
 	'mv_base_offset_label' => 'Aanfangs-Afshtand',
 	'mv_duration_label' => 'Door',
@@ -5005,6 +5106,10 @@ dobei ze donn',
 	'mv_tool_search' => 'Sööke',
 	'mv_search_transcripts_for' => 'Söhk en de Viddejos noh $1 (donn dä Kaßte verschteische)',
 	'mv_tool_export' => 'Expotteere',
+	'mv_tool_embed' => 'Enbenge',
+	'mv_tool_embed_title' => '
+options for the current requested segment
+Enbenge',
 	'mv_results_found' => 'Jefonge Viddejo-Daate <b>$1</b> beß <b>$2</b> vun <b>$3</b>',
 	'mv_tool_mang_layers' => 'Nivohs verwallde',
 	'mv_update_layers' => 'Novohs op ene neue Shtand bränge',
@@ -5014,6 +5119,13 @@ beloore',
 	'mv_close_clip' => '
 clip
 zoh maache',
+	'mv_improve_transcript' => '
+transcrip
+verbessere',
+	'mv_people_matches' => 'Treffer bei Lück',
+	'mv_category_matches' => 'Treffer bei de Saachjroppe',
+	'mv_bill_matches' => 'Treffer bei de Projrammleßte',
+	'mv_interest_group_matches' => 'Treffer bei de Enträßenßjroppe',
 	'mv_click_to_edit' => 'Klecke zum Ändere',
 	'anno_en_desc' => 'Englesch katejoriseere un Aanmerkunge maache.
 Hemet kanns De Stöckscher uß em Viddeo en Kattejorije donn un
@@ -5024,6 +5136,12 @@ Enfommazjuhne als Aanmerkunge dobei don, die nit jekallt sin.',
 	'mvd_default_mismatch_text' => 'Do es ene Fähler en Dinge Dattei met de Enshtellunge. <code lang="en">$mvMVDTypeDefaultDisp</code> sullt ene Deijl vun <code lang="en">$mvMVDTypeAllAvailable</code> sin.',
 	'mv_data_page_title' => '$1 för $2 vun $3 aan',
 	'mv_time_separator' => 'vun $1 bes $2',
+	'mv_list_streams_docu' => '
+Et jitt hee di  
+streams',
+	'mv_list_streams_none' => '
+Et jitt kei 
+streams',
 	'mv_play' => 'Afshpelle',
 	'mv_edit' => 'Ändere',
 	'mv_edit_title' => 'Tex ändere',
@@ -5140,6 +5258,7 @@ $messages['lb'] = array(
 	'rsd_results_prev' => 'vireg',
 	'mv_upload' => 'Eroplueden',
 	'rsd_layout' => 'Layout:',
+	'cc_nc_title' => 'Net kommerziell',
 	'unknown_license' => 'Onbekannte Lizenz',
 	'mv_crop' => 'Bild ofschneiden',
 	'mv_insert_image_page' => "An d'Säit drasetzen",
@@ -5151,6 +5270,7 @@ $messages['lb'] = array(
 	'menu_options' => 'Optiounen',
 	'loading_timeline' => 'Zäitläischt lueden <blink>...</blink>',
 	'loading_user_rights' => 'Benotzerrechter lueden <blink>...</blink>',
+	'no_edit_permissions' => 'Dir hutt net déi néideg Rechter fir Ännerungen an dëser Sequenz ofzespäicheren',
 	'edit_clip' => 'Clip änneren',
 	'edit_save' => 'Ännerunge späicheren',
 	'edit_cancel' => 'Ännerung ofbriechen',
@@ -5229,8 +5349,10 @@ All Ännerunge sinn da verluer',
 	'mv_editor_options' => 'Ännerungsoptiounen',
 	'mv_transitions' => 'Transitiounen',
 	'mv_save_sequence' => 'Sequenz späicheren',
+	'mv_sequence_page_desc' => 'Déi aktuell Sequenz späicheren',
 	'mv_sequence_add' => 'Clippen derbäisetzen',
 	'mv_other_options' => 'Aner Optiounen',
+	'mv_days' => '$1 {{PLURAL:$1|Dag|Deeg}}',
 	'mv_hours' => '$1 {{PLURAL:$1|Stonn|Stonnen}}',
 	'mv_hours_singular' => '$1 Stonn(en)',
 	'mv_minutes' => '$1 {{PLURAL:$1|Minutt|Minutten}}',
@@ -6777,6 +6899,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'rsd_results_next' => 'weiter',
 	'mv_history' => 'Gschicht',
 );
 

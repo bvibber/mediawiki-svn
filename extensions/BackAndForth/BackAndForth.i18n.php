@@ -618,6 +618,13 @@ $messages['oc'] = array(
 	'backforth-prev' => 'Precedent ($1)',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'backforth-next' => 'Neegscht ($1)',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

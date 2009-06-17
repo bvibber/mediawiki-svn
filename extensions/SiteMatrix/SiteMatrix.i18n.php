@@ -1245,6 +1245,13 @@ $messages['pag'] = array(
 	'sitematrix' => 'Listaan na saray Wikimedia wiki',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'sitematrix-language' => 'Schprooch',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

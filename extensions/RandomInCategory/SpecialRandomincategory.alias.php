@@ -35,6 +35,11 @@ $aliases['fi'] = array(
 	'RandomInCategory' => array( 'Satunnainen sivu luokasta' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'RandomInCategory' => array( 'Page au hasard dans une catégorie' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'RandomInCategory' => array( 'Zuefelligi Kategori' ),

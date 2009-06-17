@@ -39,6 +39,14 @@ $messages['arz'] = array(
 	'untidy' => 'لا ترتيب',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'tidy' => 'Oadnen',
+	'untidy' => 'Ned oadnen',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -43,6 +43,13 @@ $messages['arz'] = array(
 	'signaturelogentry' => 'وقع الوثيقة $1',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'signaturelogpage' => 'Untaschrifts-Logbuach',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

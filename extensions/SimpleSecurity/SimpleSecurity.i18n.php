@@ -495,6 +495,13 @@ $messages['oc'] = array(
 	'security-restricttogroup' => 'Accès al contengut reservat als membres de « $1 »',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'security-type-namespace' => 'Blatznaame vun',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Sp5uhe

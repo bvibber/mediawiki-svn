@@ -75,6 +75,16 @@ $messages['ast'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|enllaz|enllaces}} a $3',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'crossnamespacelinks' => 'Seitn mid Link in ãndare Nãmensräim',
+	'crossnamespacelinks-desc' => "[[Special:CrossNamespaceLinks|Listn vu de Links auf Seitn in ãndare Nãmensräim]], de's in {{SITENAME}} ned gem soi",
+	'crossnamespacelinks-summary' => "De Listn zoagt Seitn, in de's Links auf Seitn in ãndare Nãmensräim gibt. Ausgnumma san dabei de Nãmensräim {{ns:special}}, {{ns:talk}}, {{ns:project}} und {{ns:template}}.",
+	'crossnamespacelinkstext' => "$1: $2 {{PLURAL:$2|Link zoagt|Links zoang}} in'dn $3-Nãmensraum",
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

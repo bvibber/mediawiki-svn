@@ -386,6 +386,15 @@ $messages['lb'] = array(
 	'communityvoice-ratings-error-no-title' => 'Den Titel-Attribut feelt am Bewertungs-Tag.',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Siunčiama...',
+	'communityvoice-ratings-scale-status-error' => 'Klaida persiuntime!',
+	'communityvoice-ratings-scale-status-thanks' => 'Ačiū, kad balsavote!',
+);
+
 /** Dutch (Nederlands)
  * @author Fryed-peach
  * @author Siebrand

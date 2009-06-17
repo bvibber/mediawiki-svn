@@ -113,7 +113,7 @@ $messages['bar'] = array(
 	'multipleupload-page' => '{{ns:project}}:Löschrichtlinien',
 	'multipleupload-text' => "Gleichzeitigs Aufelådn vu mearare Datein.
 
-Klick auf „Browse“ und wöih a jede Datei aus, de'st aufelådn wüist. Du kãnnst gleichzeitig zwischn 1 und 1\$ Datein aufelådn.
+Klick auf „Browse“ und wöih a jede Datei aus, de'st aufelådn wüist. Du kãnnst gleichzeitig zwischn 1 und $1 Datein aufelådn.
 
 Du kãnnst aa an ''Züi-Dateinãm'' voagem und a ''Beschreiwung'' fia deine Datein.
 

@@ -958,6 +958,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'contributors' => 'Bidragsytere',
@@ -967,8 +968,8 @@ $messages['no'] = array(
 	'contributors-target' => 'Tittel:',
 	'contributors-submit' => 'Vis',
 	'contributors-subtitle' => 'Hovedbidragsytere på $1',
-	'contributors-others-long' => 'Det er $1 andre bidragsytere på denne siden.',
-	'contributors-others' => 'og $1 andre',
+	'contributors-others-long' => 'Det er {{PLURAL:$1|én annen bidragsyter|$1 andre bidragsytere}} på denne siden.',
+	'contributors-others' => 'og {{PLURAL:$1|én annen|$1 andre}}',
 	'contributors-badtitle' => 'Ugyldig tittel.',
 	'contributors-nosuchpage' => 'Siden $1 eksisterer ikke.',
 );

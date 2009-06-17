@@ -134,6 +134,11 @@ $aliases['lb'] = array(
 	'Vote' => array( 'Ofstëmmen' ),
 );
 
+/** Lithuanian (Lietuvių) */
+$aliases['lt'] = array(
+	'Vote' => array( 'Balsuoti' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'Vote' => array( 'Гласање' ),

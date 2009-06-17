@@ -49,7 +49,7 @@ $messages['ar'] = array(
 	'editsimilar-thanks' => 'شكرا لمساهمتك.
 تحقق من {{PLURAL:$2|هذه الصفحة المرتبطة|هذه الصفحة المرتبطة|هاتان الصفحتان المرتبطتان|هذه الصفحات المرتبطة|هذه الصفحات المرتبطة|هذه الصفحات المرتبطة}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'شكرا لمساهمتك.
-هذه الصفحات يمكن أيضا أن تستخدم مساعدتك: $1.',
+{{PLURAL:$2|هذه الصفحة|هذه الصفحات}} يمكن أيضا أن تستخدم مساعدتك: $1.',
 	'editsimilar-thankyou' => 'شكرا لمساهمتك، $1!',
 	'editsimilar-link-disable' => 'ضبط الخيارات',
 	'tog-edit-similar' => 'تفعيل اقتراحات الصفحات المشابهة',
@@ -117,10 +117,10 @@ Pogledajte {{PLURAL:$2|ovu povezanu stranicu|ove povezane stranice}}: $1.',
  */
 $messages['de'] = array(
 	'editsimilar-desc' => 'Schlägt Benutzern nach dem Speichern einer Seite vor, eine ähnliche Seite zu bearbeiten',
-	'editsimilar-thanks' => 'Dank dir für deinen Beitrag.
+	'editsimilar-thanks' => 'Danke für deinen Beitrag.
 Schau dir auch diese {{PLURAL:$2|ähnliche Seite|ähnlichen Seiten}} an: $1.',
-	'editsimilar-thanks-notsimilar' => 'Dank dir für deinen Beitrag.
-Diese {{PLURAL:$2|Seite könnte|Seiten könnten}} dir auch hilfreich sein: $1.',
+	'editsimilar-thanks-notsimilar' => 'Danke für deinen Beitrag.
+Diese {{PLURAL:$2|Seite könnte|Seiten könnten}} auch hilfreich sein: $1.',
 	'editsimilar-thankyou' => 'Danke für deinen Beitrag, $1!',
 	'editsimilar-link-disable' => 'Einstellungen setzen',
 	'tog-edit-similar' => 'Vorschläge für ähnliche Seiten anzeigen',

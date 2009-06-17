@@ -53,6 +53,11 @@ $aliases['gl'] = array(
 	'GlobalUserrights' => array( 'Dereitos de usuario globais' ),
 );
 
+/** Gujarati (ગુજરાતી) */
+$aliases['gu'] = array(
+	'GlobalUserrights' => array( 'વૈશ્વીકસભ્ય હક્કો' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'GlobalUserrights' => array( 'Globalne wužwiarske prawa' ),

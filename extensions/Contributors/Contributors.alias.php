@@ -144,7 +144,7 @@ $aliases['nds-nl'] = array(
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'Contributors' => array( 'Bijdragers' ),
+	'Contributors' => array( 'Auteurs', 'Bijdragers' ),
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */

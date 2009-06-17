@@ -24,6 +24,13 @@ It is shown on [[SPECIAL:Version]].
 Do not translate tag names, or link targets.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'localisationupdate-desc' => 'يبقي الرسائل المترجمة محدثة كأفضل ما يكون',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -120,6 +127,13 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'localisationupdate-desc' => 'Houdt de gelokaliseerde berichten zo actueel mogelijk',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'localisationupdate-desc' => 'Holder de lokaliserte meldingene så oppdaterte som mulig',
 );
 
 /** Occitan (Occitan)

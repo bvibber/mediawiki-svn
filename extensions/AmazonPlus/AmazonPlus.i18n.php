@@ -820,6 +820,17 @@ $messages['oc'] = array(
 	'amazonplus-less' => 'mens',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'amazonplus-german' => 'Hochdeitsch',
+	'amazonplus-french' => 'French',
+	'amazonplus-new' => 'nei',
+	'amazonplus-cp-none' => 'Ken',
+	'amazonplus-more' => 'meh',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */

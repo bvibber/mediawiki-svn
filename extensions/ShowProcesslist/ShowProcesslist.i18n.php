@@ -628,6 +628,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'showprocesslist-user' => 'Yuuser',
+	'showprocesslist-time' => 'Zeit',
 );
 
 /** Plautdietsch (Plautdietsch)

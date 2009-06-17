@@ -602,6 +602,10 @@ $messages['be-tarask'] = array(
 	'deletequeue-action-queued' => 'Выдаленьне',
 	'deletequeue-action' => 'Прапанаваць выдаленьне',
 	'deletequeue-action-title' => 'Прапанаваць выдаленьне «$1»',
+	'deletequeue-action-text' => "У {{GRAMMAR:родны|{{SITENAME}}}} ёсьць некалькі працэсаў выдаленьня старонак:
+* Калі Вы ўпэўнены, што гэта старонка вартая выдаленьня, Вы можаце [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} прапанаваць яе на ''хуткае выдаленьне''].
+* Калі гэта старонка ня вартая хуткага выдаленьня, але ''выдаленьня ня будзе аспрэчвацца'', Вам неабходна [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} прапанаваць бясспрэчнае выдаленьне].
+* Калі выдаленьне гэтай старонкі ''хутчэй за ўсё будзе аспрэчанае'', Вам неабходна [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} распачаць абмеркаваньне].",
 	'deletequeue-action-text-queued' => 'Вы можаце паглядзець наступныя старонкі па гэтай прычыне выдаленьня:
 * [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Паглядзець цяперашнія пацьверджаньні і аспрэчаньні].
 * [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Пацьвердзіць ці аспрэчыць выдаленьне гэтай старонкі].',
@@ -674,6 +678,21 @@ $messages['be-tarask'] = array(
 	'deletequeue-reviewprod-text' => "Вы можаце выкарыстоўваць гэтую форму для рэцэнзаваньня не аспрэчанай прапановы на выдаленьне «'''$1'''».",
 	'deletequeue-reviewdeletediscuss-tab' => 'Рэцэнзаваць выдаленьне',
 	'deletequeue-reviewdeletediscuss-title' => 'Рэцэнзаваньне абмеркаваньня выдаленьня «$1»',
+	'deletequeue-reviewdeletediscuss-text' => "Вы можаце выкарыстоўваць гэтую форму для рэцэнзаваньня абмеркаваньня выдаленьня «'''$1'''».
+
+[{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Сьпіс] галасоў у падтрымку і супраць гэтага выдаленьня даступны, а абмеркаваньне можна знайсьці на [[$2]].
+Калі ласка, упэўніцеся, што Ваша рашэньне адпавядае кансэнсусу ў абмеркаваньні.",
+	'deletequeue-review-success' => 'Вы пасьпяхова прарэцэнзавалі выдаленьне гэтай старонкі',
+	'deletequeue-review-success-title' => 'Рэцэнзаваньне скончанае',
+	'deletequeue-deletediscuss-discussionpage' => 'Гэта старонка абмеркаваньня для выдаленьня [[$1]].
+У цяперашні момант $2 {{PLURAL:$2|удзельнік|удзельнікі|удзельнікаў}} падтрымліваюць выдаленьне, і $3 {{PLURAL:$3|удзельнік|удзельнікі|удзельнікаў}} аспрэчваюць выдаленьне.
+Вы можаце [{{fullurl:$1|action=delvote}} падтрымаць альбо аспрэчыць] выдаленьне, альбо [{{fullurl:$1|action=delviewvotes}} праглядзець усе галасы за і супраць].',
+	'deletequeue-discusscreate-summary' => 'Стварэньне абмеркаваньня выдаленьня [[$1]].',
+	'deletequeue-discusscreate-text' => 'Выдаленьне прапануецца па наступнай прычыне: $2',
+	'deletequeue-role-nominator' => 'удзельнік, які прапанаваў выдаленьне',
+	'deletequeue-role-vote-endorse' => 'за выдаленьне',
+	'deletequeue-role-vote-object' => 'супраць выдаленьня',
+	'deletequeue-vote-tab' => 'Галасаваць у працэсе выдаленьня',
 	'deletequeue-vote-action' => 'Рэкамэндацыя:',
 	'deletequeue-vote-reason' => 'Камэнтары:',
 	'deletequeue' => 'Чарга выдаленьняў',

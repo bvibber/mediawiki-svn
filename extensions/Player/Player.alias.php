@@ -42,6 +42,11 @@ $aliases['dsb'] = array(
 	'Player' => array( 'Wótegrawak' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'Player' => array( 'Lecteur' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Player' => array( 'Xogador' ),

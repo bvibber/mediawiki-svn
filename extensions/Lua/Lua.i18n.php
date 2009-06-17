@@ -73,6 +73,13 @@ $messages['ast'] = array(
 	'lua_overflow_time' => "Algamáu'l máximu tiempu d'execución",
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'lua_error_internal' => 'Inteana Fehla',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

@@ -113,6 +113,11 @@ $aliases['lb'] = array(
 	'Watchers' => array( 'Iwwerwaacher' ),
 );
 
+/** Lithuanian (Lietuvių) */
+$aliases['lt'] = array(
+	'Watchers' => array( 'Stebėtojai' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'Watchers' => array( 'Набљудувачи' ),

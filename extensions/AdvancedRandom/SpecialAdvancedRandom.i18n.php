@@ -208,7 +208,7 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'advancedrandom' => 'Zuefälligi Syte',
-	'advancedrandom-desc' => 'Hol e zuefälligi Syte, z. B. mit [[Special:AdvancedRandom/Template:Featured/Talk]], zum e zuefälligi Diskussionssyte zue me exzellänten Artikel oder mit [[Special:AdvancedRandom/Template:GFDL/Image]], zum e zuefälligi Datei aazzeige, wu as GFDL lizänziert isch.',
+	'advancedrandom-desc' => 'Hol e zuefälligi Syte, z. B. mit [[Special:AdvancedRandom/Template:Featured/Talk]], zum e zuefälligi Diskussionssyte zue me exzellänten Artikel oder mit [[Special:AdvancedRandom/Template:GFDL/File]], zum e zuefälligi Datei aazzeige, wu as GFDL lizänziert isch.',
 );
 
 /** Hebrew (עברית)

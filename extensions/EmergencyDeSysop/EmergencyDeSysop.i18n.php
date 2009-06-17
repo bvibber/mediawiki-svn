@@ -545,6 +545,13 @@ $messages['oc'] = array(
 	'right-emergencydesysop' => 'Possible de desysopar mutualament un autre utilizaire.',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'emergencydesysop-nogroups' => 'Ken',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Sp5uhe

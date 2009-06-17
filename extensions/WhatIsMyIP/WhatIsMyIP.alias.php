@@ -122,6 +122,11 @@ $aliases['lb'] = array(
 	'WhatIsMyIP' => array( 'Wéi ass meng IP-Adress' ),
 );
 
+/** Lithuanian (Lietuvių) */
+$aliases['lt'] = array(
+	'WhatIsMyIP' => array( 'Koks mano IP' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'WhatIsMyIP' => array( 'КојаЕМојатаIP' ),

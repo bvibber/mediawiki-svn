@@ -47,6 +47,13 @@ $messages['ast'] = array(
 	'doublewiki-desc' => "Amuesa una páxina y la so traducción d'otra wiki en dos columnes na mesma páxina",
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'doublewiki-desc' => 'Zoagt a Seitn und ia Üwasetzung aus amãndan Wiki in zwoa Spåitn auf ana Seitn ãn',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

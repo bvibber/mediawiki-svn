@@ -48,6 +48,7 @@ $messages['ar'] = array(
 	'piwik-lastvisits' => 'آخر زيارات',
 	'piwik-countries' => 'دول',
 	'piwik-browsers' => 'متصفحات',
+	'right-viewpiwik' => 'رؤية [[Special:Piwik|إحصاءات بيويك]]',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

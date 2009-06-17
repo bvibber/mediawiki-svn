@@ -24,15 +24,6 @@ $messages['qqq'] = array(
 	'right-forcepreviewexempt' => '{{doc-right}}',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Jonny84
- */
-$messages['sli'] = array(
-	'forcepreview' => 'Seite speichern (zuerst Vorschau anzeigen)',
-	'forcepreview-desc' => 'Vorschau für unprivilegierte Benutzer erzwingen',
-	'right-forcepreviewexempt' => 'Speichern ohne Erzwingung der Vorschau',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -67,6 +58,15 @@ $messages['ast'] = array(
 	'forcepreview' => 'Guardar páxina (primero previsualízala)',
 	'forcepreview-desc' => 'Fuercia la previsualización pa usuarios ensin privilexos',
 	'right-forcepreviewexempt' => 'Poder guardar ensin amosar previsualización',
+);
+
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'forcepreview' => 'Seitn speichan (zeast Voaschau ãnzoang)',
+	'forcepreview-desc' => 'Voaschau fia ned privilegiade Benutza dazwinga',
+	'right-forcepreviewexempt' => 'Speichan ohne dass a Voaschau dazwunga wiad',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -441,6 +441,15 @@ $messages['sk'] = array(
 	'forcepreview' => 'Uložiť stránku (najprv zobraziť náhľad)',
 	'forcepreview-desc' => 'Vynucuje náhľad u neprivilegovaných používateľov',
 	'right-forcepreviewexempt' => 'Je možné uložiť bez použitia Zobraziť náhľad',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'forcepreview' => 'Seite speichern (zuerst Vorschau anzeigen)',
+	'forcepreview-desc' => 'Vorschau für unprivilegierte Benutzer erzwingen',
+	'right-forcepreviewexempt' => 'Speichern ohne Erzwingung der Vorschau',
 );
 
 /** Swedish (Svenska)

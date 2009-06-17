@@ -1954,9 +1954,11 @@ Czekaj.',
 );
 
 /** Pontic (Ποντιακά)
+ * @author Omnipaedista
  * @author Sinopeus
  */
 $messages['pnt'] = array(
+	'youtubeauthsub_title' => 'Τίτλον',
 	'youtubeauthsub_category' => 'Κατηγορίαν',
 	'youtubeauthsub_submit' => 'Στείλον',
 	'youtubeauthsub_uploadbutton' => 'Φόρτωμαν',

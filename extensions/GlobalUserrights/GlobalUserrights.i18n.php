@@ -58,6 +58,18 @@ $messages['arz'] = array(
 	'right-userrights-global' => 'إدارة سجل الحقوق العامه',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'globaluserrights' => 'Globale Benutzarechtevawåitung',
+	'gur-desc' => 'Oafåche Vawåitung vu de [[Special:GlobalUserRights|globaln Benutzarechte]]',
+	'gur-rightslog-name' => 'Globals Rechte-Logbiachl',
+	'gur-rightslog-header' => 'Des is a Logbuach vu de letztn Änderungen vu globale Benutzarechte.',
+	'gur-rightslog-entry' => 'håd de globale Gruppmmitgliadschåft fia $1 vu $2 auf $3 gändat',
+	'right-userrights-global' => 'Globale Benutzrechte vawåitn',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

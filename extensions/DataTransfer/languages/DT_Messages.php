@@ -1065,6 +1065,8 @@ $messages['no'] = array(
 	'dt_import_editsummary' => '$1-importering',
 	'dt_import_importing' => 'Importerer...',
 	'dt_import_success' => '{{PLURAL:$1|Én side|$1 sider}} vil bli importert fra $2-filen.',
+	'importcsv' => 'Importer CSV',
+	'right-datatransferimport' => 'Importer data',
 );
 
 /** Occitan (Occitan)
@@ -1108,6 +1110,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'dt_xml_namespace' => 'Blatznaame',
 	'dt_xml_page' => 'Blatt',
 );
 

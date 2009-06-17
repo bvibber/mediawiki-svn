@@ -105,6 +105,11 @@ $aliases['lb'] = array(
 	'WhoIsWatching' => array( 'Wien iwwerwaacht' ),
 );
 
+/** Lithuanian (Lietuvių) */
+$aliases['lt'] = array(
+	'WhoIsWatching' => array( 'Kas stebi' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'WhoIsWatching' => array( 'КојНабљудува' ),

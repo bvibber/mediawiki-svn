@@ -50,7 +50,8 @@ $aliases['dsb'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'PasswordReset' => array( 'RéinitialisationDuMotDePasse', 'Réinitialisation du mot de passe' ),
+	'PasswordReset' => array( 'Réinitialisation du mot de passe', 'RéinitialisationDuMotDePasse' ),
+	'Disabledusers' => array( 'Utilisateurs désactivés' ),
 );
 
 /** Swiss German (Alemannisch) */

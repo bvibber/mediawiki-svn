@@ -675,6 +675,13 @@ Lo gestionari del sit es pas responsable de lor contengut.',
 	'talkhere-collapse' => 'amagar l’editor',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'talkhere-talkpage' => 'Gschwetz-Blatt',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

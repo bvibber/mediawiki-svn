@@ -40,6 +40,13 @@ $messages['arz'] = array(
 	'purge-desc' => 'يضيف لسان إفراغ للكاش فى كل الصفحات العادية ويتفادى تحقق الكاش للمستخدمين المجهولين مما يسمح بإفراغ الكاش بشكل سريع',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'purge' => 'in Cache laarn',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

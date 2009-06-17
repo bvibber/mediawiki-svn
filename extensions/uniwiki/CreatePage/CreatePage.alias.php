@@ -95,6 +95,11 @@ $aliases['lb'] = array(
 	'CreatePage' => array( 'Säiten uleeën' ),
 );
 
+/** Lithuanian (Lietuvių) */
+$aliases['lt'] = array(
+	'CreatePage' => array( 'Kurti puslapį' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'CreatePage' => array( 'КреирајСтраница' ),

@@ -216,7 +216,7 @@ $messages['cs'] = array(
  * @author ОйЛ
  */
 $messages['cu'] = array(
-	'passwordreset-username' => 'по́льꙃєватєлꙗ и́мѧ',
+	'passwordreset-username' => 'по́льꙃєватєлꙗ и́мѧ :',
 );
 
 /** Danish (Dansk)

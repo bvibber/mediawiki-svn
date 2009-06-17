@@ -45,6 +45,13 @@ $messages['arz'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'حد إنشاء اليوزر',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'acct_creation_global_soft_throttle_hit-desc' => 'Neiãnmöidungen drossln',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

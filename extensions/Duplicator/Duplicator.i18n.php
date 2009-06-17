@@ -97,6 +97,7 @@ $messages['ar'] = array(
 	'duplicator-dest-exists' => '[[$1]] موجودة بالفعل. من فضلك اكتب عنوان هدف غير موجود.',
 	'duplicator-toomanyrevisions' => '[[$1]] لديه عدد كبير ($2) من المراجعات ولا يمكن نسخه.
 الحد الحالي هو $3.',
+	'right-duplicate' => 'استنساخ الصفحات',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

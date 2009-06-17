@@ -40,6 +40,7 @@ $messages['ar'] = array(
 	'gblrights-logpage' => 'سجل الصلاحيات العام',
 	'gblrights-pagetext' => 'هذا سجل بكل التغييرات التي حدثت لجدول صلاحيات المستخدمين العامة في عائلة الويكي',
 	'gblrights-rights-entry' => 'غير عضوية المجموعة العامة ل$1 من $2 إلى $3',
+	'right-userrights-shared' => 'إدارة صلاحيات المستخدم المشتركة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

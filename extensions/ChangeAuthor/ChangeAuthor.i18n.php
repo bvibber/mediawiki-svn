@@ -212,6 +212,31 @@ $messages['arz'] = array(
 	'right-changeauthor' => 'غير مؤلف مراجعة',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'changeauthor' => 'Autor vu ana Veasion ändan',
+	'changeauthor-desc' => "Ealaubt s'Ändan vum Autor vu ana Version",
+	'changeauthor-title' => 'Autor vu ana Veasion ändan',
+	'changeauthor-search-box' => 'Veasion suacha',
+	'changeauthor-pagename-or-revid' => 'Seitnnãm oda Veasionsnumma:',
+	'changeauthor-pagenameform-go' => 'Suach',
+	'changeauthor-comment' => 'Kommentar:',
+	'changeauthor-changeauthors-multi' => "{{PLURAL:$1|In Autor|D'Autoan}} ändan",
+	'changeauthor-explanation-multi' => "Mit dem Formular kãnnst d'Autoan vu da Veasion ändan. Ända oafåch an oda mearare Autornnãmen in da Listn, eagänz an Kommentar (opzional) und klick auf d'„Autor ändan“-Schåitflächn.",
+	'changeauthor-changeauthors-single' => 'Autor ändan',
+	'changeauthor-explanation-single' => "Mit dem Formular kãnnst in Autoa vu da Veasion ändan. Ända oafåch in Autornnãmen in da Listn, eagänz an Kommentar (opzional) und klick auf d'„Autor ändan“-Schåitflächn.",
+	'changeauthor-invalid-username' => 'Ungüitiga Benutzanãm „$1“.',
+	'changeauthor-nosuchuser' => 'Es gibt kan Benutza „$1“ ned.',
+	'changeauthor-revview' => 'Veasion #$1 vu $2',
+	'changeauthor-nosuchtitle' => 'Es gibt ka Seitn „$1“ ned.',
+	'changeauthor-success' => 'Dei Ändarung is eafoigreich duachgfüahd woan.',
+	'changeauthor-logentry' => 'håd in Autoannãmen vu $2 vu $1 vu $3 auf $4 gändat',
+	'changeauthor-logpagename' => 'Autoanändarungs-Logbiachl',
+	'right-changeauthor' => 'In Autoan vu ana Veasion ändan',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -938,6 +963,7 @@ Jika kesalahan ini tetap terulang, kemungkinan terjadi kerusakan di basis data.'
 	'changeauthor-success' => 'Permintaan Anda telah berhasil diproses.',
 	'changeauthor-logentry' => 'Mengubah penulis revisi $2 halaman $1 dari $3 menjadi $4',
 	'changeauthor-logpagename' => 'Log perubahan penulis',
+	'right-changeauthor' => 'Mengubah penulis suatu revisi',
 );
 
 /** Ido (Ido)

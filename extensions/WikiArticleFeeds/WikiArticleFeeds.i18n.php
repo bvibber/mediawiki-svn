@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'wikiarticlefeeds_combined_description' => 'هذا تلقيم مركب، يحتوي على مدخلات من عدة مصادر للتلقيم.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'wikiarticlefeeds-desc' => 'Eazeigt Feeds aus MediaWiki-Seitn',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -178,6 +185,14 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'wikiarticlefeeds-desc' => 'Produz "feeds" gerados a partir de artigos do MediaWiki',
 	'wikiarticlefeeds_combined_description' => 'Esse é um "feed" combinado, contendo itens de várias fontes de "feeds".',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikiarticlefeeds-desc' => "Face le ''feed'' fatte da le pàggene de MediaUicchi",
+	'wikiarticlefeeds_combined_description' => "Quistejè 'nu feed combinate, ca tène articole da cchiù sorgente de feed.",
 );
 
 /** Russian (Русский)

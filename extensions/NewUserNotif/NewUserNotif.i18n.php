@@ -428,6 +428,15 @@ $messages['oc'] = array(
 	'newusernotifbody' => "Adissiatz $1, Un compte novèl d'utilizaire, $2, es estat creat sus $3 lo $4.",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'newusernotifbody' => 'Haiya $1,
+
+uff $3 iss am $5, $6 Uhr en neier Yuuser, $2, komme.',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  */

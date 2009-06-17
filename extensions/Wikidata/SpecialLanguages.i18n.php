@@ -7271,6 +7271,7 @@ $wdMessages['os'] = array(
 $wdMessages['pdc'] = array(
 	'ow_history' => 'Gschicht',
 	'ow_User' => 'Yuuser',
+	'ow_suggest_next' => 'Neegscht',
 );
 
 /** Polish (Polski)

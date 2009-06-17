@@ -52,6 +52,11 @@ $aliases['fi'] = array(
 	'NewsChannel' => array( 'Uutiskanava' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'NewsChannel' => array( 'Chaîne d’information' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'NewsChannel' => array( 'Kanal fir Nejigkeite' ),

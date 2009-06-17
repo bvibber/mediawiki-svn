@@ -33,7 +33,7 @@ $aliases['dsb'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'EmergencyDeSysop' => array( 'DesysopageUrgent', 'DésysopageUrgent', 'DéSysopageUrgent', 'DeSysopageUrgent' ),
+	'EmergencyDeSysop' => array( 'Désysoppage d’urgence', 'DeSysopageUrgent' ),
 );
 
 /** Franco-Provençal (Arpetan) */

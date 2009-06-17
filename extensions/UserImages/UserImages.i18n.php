@@ -75,6 +75,15 @@ $messages['avk'] = array(
 	'userimages-noimages' => 'Meka kalvajayana ewava gan $1.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'userimages-caption' => 'vu $1 aufeglådne Büidl',
+	'userimages-noname' => "ungüitiga Benutzanãm oda s'Eingåbeföid is laa",
+	'userimages-noimages' => '$1 håd kane Büidl aufeglådn.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -286,8 +295,11 @@ $messages['ia'] = array(
 	'userimages-noimages' => '$1 non ha cargate alcun imagine.',
 );
 
-/** Indonesian (Bahasa Indonesia) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
 $messages['id'] = array(
+	'userimages-desc' => 'Menciptakan galeri dari berkas-berkas yang dimuatkan oleh pengguna dengan menggunakan tag <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Berkas yang dimuatkan oleh $1',
 	'userimages-noname' => 'Nama pengguna tidak sah atau tidak diberikan.',
 	'userimages-noimages' => '$1 tidak pernah memuatkan berkas.',

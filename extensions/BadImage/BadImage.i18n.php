@@ -117,6 +117,7 @@ $messages['ar'] = array(
 	'badimages-log-add' => 'أضاف [[$1]] إلى قائمة الصور السيئة',
 	'badimages-log-remove' => 'أزال [[$1]] من قائمة الصور السيئة',
 	'badimages-page' => '{{ns:help}}:قائمة الصور السيئة',
+	'right-badimages' => 'تحديث قائمة الصور السيئة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1635,6 +1636,13 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'badimages-reason' => 'Аххос:',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'badimages-name' => 'Naame:',
 );
 
 /** Polish (Polski)

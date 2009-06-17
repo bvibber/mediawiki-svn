@@ -645,6 +645,13 @@ $messages['os'] = array(
 	'languageselector' => 'Æвзаг',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'languageselector' => 'Schprooch',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Wpedzich

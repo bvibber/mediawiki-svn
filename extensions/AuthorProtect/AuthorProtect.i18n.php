@@ -83,6 +83,7 @@ $messages['ar'] = array(
 	'authorprotect-failure' => 'فشلت الحماية',
 	'protect-level-author' => 'احمي من غير المؤلفين',
 	'restriction-level-author' => 'حماية المؤلف',
+	'right-authorprotect' => 'حماية الصفحات المؤلفة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -892,6 +893,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'authorprotect' => 'Beskytt siden for andre enn forfatteren',
@@ -907,6 +909,7 @@ $messages['no'] = array(
 	'authorprotect-failure' => 'Beskytting mislyktes',
 	'protect-level-author' => 'Beskytt for andre enn forfattere',
 	'restriction-level-author' => 'Beskyttet for forfattere',
+	'right-authorprotect' => 'Beskytt forfattede sider',
 );
 
 /** Novial (Novial)

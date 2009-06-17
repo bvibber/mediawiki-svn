@@ -3656,6 +3656,15 @@ $messages['os'] = array(
 	'viewapc-ls-sort-deleted' => 'Аппæрст',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'viewapc-ls-header-size' => 'Grees',
+	'viewapc-ls-sort-size' => 'Grees',
+	'viewapc-ls-limit-none' => 'All',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

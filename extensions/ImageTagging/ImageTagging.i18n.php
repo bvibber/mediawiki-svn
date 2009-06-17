@@ -923,6 +923,7 @@ $messages['lb'] = array(
 	'imagetagging-removetag' => 'Tag ewechhuelen',
 	'imagetagging-tag-button' => 'Tag',
 	'imagetagging-tagcancel-button' => 'Zréck',
+	'imagetagging-addingtag' => 'Tag derbäisetzen',
 	'imagetagging-imagetag-seemoreimages' => 'Kuckt méi Biller vu(n) "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Biller vun "$1"',
 	'imagetagging-taggedimages-displaying' => 'Weis $1 - $2 vu(n) $3 Biller vu(n) "$4"',

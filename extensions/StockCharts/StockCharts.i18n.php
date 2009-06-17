@@ -154,6 +154,15 @@ $messages['roa-tara'] = array(
 Ause: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'stockcharts-desc' => 'Добавляет тег <nowiki><stockchart ticker="AAPL"/></nowiki> для показа интерактивного финансового графика биржевого типа',
+	'stockcharts-missingticker' => 'Чтобы вставить график биржевого типа, нужно указать тикер.
+Использование: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

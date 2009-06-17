@@ -129,6 +129,7 @@ $messages['ar'] = array(
 	'usagestatisticscalselect' => 'اختيار',
 	'usagestatistics-editindividual' => 'إحصاءات تعديلات المستخدم المنفرد $1',
 	'usagestatistics-editpages' => 'إحصاءات صفحات المستخدم المنفرد $1',
+	'right-viewsystemstats' => 'رؤية [[Special:UserStats|إحصاءات استخدام الويكي]]',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

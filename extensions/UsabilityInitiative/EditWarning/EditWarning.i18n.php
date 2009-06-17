@@ -27,6 +27,22 @@ $messages['be-tarask'] = array(
 	'editwarning-warning' => 'Усе зробленыя Вамі зьмены будуць страчаныя, калі Вы пакінеце гэтую старонку.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'editwarning-desc' => 'Prikazuje upozorenje kada korisnik pokušava napustiti obrazac za uređivanje bez spremanja',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'editwarning' => 'Wobźěłowańske warnowanje',
+	'editwarning-desc' => 'Warnowanje pokazaś, gaž wužywaŕ wopytujo wobźěłowański formular bźeze składowanja spušćiś',
+	'editwarning-warning' => 'Gaž toś ten bok se spušća, budu se změny zgubowaś.',
+);
+
 /** French (Français)
  * @author Crochet.david
  */
@@ -97,6 +113,15 @@ $messages['nl'] = array(
 	'editwarning' => 'Bewerkingswaarschuwing',
 	'editwarning-desc' => 'Geeft een waarschuwing weer als een gebruiker probeert een bewerkingsvenster te verlaten zonder wijzigingen op te slaan',
 	'editwarning-warning' => 'Als u deze pagina verlaat verliest u eventuele wijzigingen die u hebt gemaakt.',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'editwarning' => 'Avertiment de modificacion',
+	'editwarning-desc' => 'Afichar un avertiment quora l’utilizaire tempta de quitar lo formulari sens enregistrar las modificacions',
+	'editwarning-warning' => "Quitar aquesta pagina vos farà pèrdre totas las modificacions qu'avètz facha.",
 );
 
 /** Russian (Русский)

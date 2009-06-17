@@ -949,6 +949,13 @@ $messages['os'] = array(
 	'scanset_no_files' => 'Рæдыд: амынд файлдоны мидæг файлтæ нæй.',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'scanset_next' => 'Neegscht →',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

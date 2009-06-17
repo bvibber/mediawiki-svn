@@ -2177,6 +2177,13 @@ $messages['pa'] = array(
 	'ogg-more' => 'ਹੋਰ...',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'ogg-more' => 'Mehr…',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

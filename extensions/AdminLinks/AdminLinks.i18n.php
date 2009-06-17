@@ -38,11 +38,13 @@ $messages['qqq'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
 	'adminlinks' => 'وصلات الإداريين',
 	'adminlinks-desc' => 'يضيف [[Special:AdminLinks|صفحة خاصة]] تحتوي وصلات مفيدة للإداريين.',
+	'adminlinks_documentation' => 'توثيق $1',
 	'adminlinks_general' => 'عام',
 	'adminlinks_editsidebar' => 'حرّر الشريط الجانبي',
 	'adminlinks_editcss' => 'حرّر ملف CSS',
@@ -52,6 +54,23 @@ $messages['ar'] = array(
 	'adminlinks_browsesearch' => 'التصفح والبحث',
 	'adminlinks_importexport' => 'الاستيراد والتصدير',
 	'right-adminlinks' => 'راجع وصلة [[Special:AdminLinks]]',
+);
+
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'adminlinks' => 'Links fia Administratoan',
+	'adminlinks-desc' => 'Eagänzt a [[Special:AdminLinks|Spezialseitn]] mid hüifreiche Links fia Administratoan',
+	'adminlinks_documentation' => 'Dokumentazion vu „$1“',
+	'adminlinks_general' => 'Åigemein',
+	'adminlinks_editsidebar' => "d'Sidebar beåawatn",
+	'adminlinks_editcss' => 'CSS-Datein beåawatn',
+	'adminlinks_editmainpagename' => 'in Nãmen vu da Hauptseitn ändan',
+	'adminlinks_users' => 'Benutza',
+	'adminlinks_createuser' => 'Benutza eastöin',
+	'adminlinks_browsesearch' => 'Duachschaun und suacha',
+	'adminlinks_importexport' => 'Impoatian und expoatian',
 );
 
 /** Bulgarian (Български)
@@ -429,6 +448,13 @@ $messages['oc'] = array(
 	'right-adminlinks' => "Vejatz lo ligam cap als [[Special:AdminLinks|ligams d'administracion]]",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'adminlinks_users' => 'Yuuser',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -524,6 +550,24 @@ $messages['sk'] = array(
 	'adminlinks_browsesearch' => 'Prehliadanie a vyhľadávanie',
 	'adminlinks_importexport' => 'Import a export',
 	'right-adminlinks' => 'Pozri odkaz na [[Special:AdminLinks|Odkazy správcu]]',
+);
+
+/** Swedish (Svenska)
+ * @author Gabbe.g
+ */
+$messages['sv'] = array(
+	'adminlinks' => 'Administrationslänkar',
+	'adminlinks-desc' => 'Lägger till en [[Special:AdminLinks|special sida]] som innehåller hjälpfulla länkar för administratörer',
+	'adminlinks_documentation' => 'dokumentation dör $1',
+	'adminlinks_general' => 'Generell',
+	'adminlinks_editsidebar' => 'Ändra sidpanelen',
+	'adminlinks_editcss' => 'Ändra CSS-fil',
+	'adminlinks_editmainpagename' => 'Ändra namnet på huvudsidan',
+	'adminlinks_users' => 'Användare',
+	'adminlinks_createuser' => 'Skapa en användare',
+	'adminlinks_browsesearch' => 'Bläddring och sökning',
+	'adminlinks_importexport' => 'Importering och exportering',
+	'right-adminlinks' => 'Se länken till [[Special:AdminLinks|Administrationslänkarna]]',
 );
 
 /** Vietnamese (Tiếng Việt)

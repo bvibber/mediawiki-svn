@@ -157,6 +157,7 @@ $messages['ar'] = array(
 * [[Special:CrosswikiBlock|استمارة المنع]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'عمليات المنع المحلية غير مدعومة بواسطة هذه الواجهة. استخدم [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'منع ورفع المنع عن المستخدمين في الويكيات الأخرى',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

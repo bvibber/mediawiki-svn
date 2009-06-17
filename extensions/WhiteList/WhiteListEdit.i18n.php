@@ -2200,6 +2200,7 @@ $messages['pa'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'whitelisttablemodifynone' => 'Nix tscheensche',
 	'whitelisttableedit' => 'Ennere',
 	'whitelistnever' => 'nie net',
 );

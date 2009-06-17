@@ -36,6 +36,7 @@ $messages['ar'] = array(
 	'purgecache-warning' => 'هذا سيفرغ جداول الكاش.',
 	'purgecache-purged' => 'تم إفراغ الكاش',
 	'purgecache-button' => 'إفراغ الكاش',
+	'right-purgecache' => 'مسح جدول OBJECTCACHE',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -47,6 +48,14 @@ $messages['arz'] = array(
 	'purgecache-warning' => 'هذا سيفرغ جداول الكاش.',
 	'purgecache-purged' => 'تم إفراغ الكاش',
 	'purgecache-button' => 'إفراغ الكاش',
+);
+
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'purgecache' => 'in Cache löschn',
+	'purgecache-button' => 'löschn',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

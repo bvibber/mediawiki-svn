@@ -34,6 +34,7 @@ $messages['ar'] = array(
 	'protectsection_add_remove' => 'أنت حاولت إضافة أو إزالة قسم محمي',
 	'protectsection_modify' => 'أنت حاولت تعديل نص محمي',
 	'protectsection_forbidden' => 'ممنوع',
+	'right-protectsection' => 'حماية أقسام الصفحات',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

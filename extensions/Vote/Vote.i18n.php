@@ -107,7 +107,7 @@ $messages['ar'] = array(
 	'vote-results-choice' => 'الاختيار',
 	'vote-results-count' => 'العدد',
 	'vote-results-none' => 'لا أصوات تم وضعها في هذا الوقت.',
-	'vote-login' => 'يجب عليك [$1 دخول] لكي تصوت.',
+	'vote-login' => 'يجب أن [$1 تسجل الدخول] للتصويت.',
 	'vote-invalid-choice' => 'يجب عليك اختيار واحد من الخيارات المتاحة.',
 	'right-vote' => 'تصويت',
 	'right-voteadmin' => 'مشاهدة نتائج التصويتات',
@@ -768,10 +768,14 @@ sphinx|Sphinx',
  */
 $messages['id'] = array(
 	'vote' => 'Pemilihan',
+	'vote-desc' => 'Memberikan fungsi pemungutan suara sederhana',
 	'vote-header' => "Anda dapat memilih '''Penguasa Tertinggi Dunia''' di sini!",
 	'vote-current' => "Pilihan Anda saat ini adalah '''$1'''.",
 	'vote-legend' => 'Berikan atau ubah pilihan',
 	'vote-caption' => 'Pilihan Anda:',
+	'vote-choices' => 'joker|The Joker
+penguin|The Penguin
+riddler|Riddler',
 	'vote-submit' => 'Pilih',
 	'vote-registered' => 'Pilihan Anda telah didaftarkan.',
 	'vote-view-results' => 'Lihat hasil',
@@ -781,6 +785,8 @@ $messages['id'] = array(
 	'vote-results-none' => 'Saat ini belum ada suara yang masuk.',
 	'vote-login' => 'Anda harus [$1 masuk log] untuk memberikan suara.',
 	'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',
+	'right-vote' => 'Memberikan suara',
+	'right-voteadmin' => 'Melihat hasil pemungutan suara',
 );
 
 /** Italian (Italiano)
