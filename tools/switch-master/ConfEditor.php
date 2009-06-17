@@ -286,7 +286,6 @@ class ConfEditor {
 	 * @param $value mixed Value
 	 */
 	function setVar( &$array, $path, $key, $value ) {
-		echo "$path [$key] = $value\n";
 		$pathArr = explode( '/', $path );
 		$target =& $array;
 		if ( $path !== '' ) {
@@ -305,11 +304,11 @@ class ConfEditor {
 	 * @return mixed Parsed value
 	 */
 	function parseScalar( $str ) {
-		if ( @$str[0] == '\'' )
+		if ( $str !== '' && $str[0] == '\'' )
 			// Single-quoted string
 			return strtr( substr( $str, 1, -1 ),
 				array( '\\\'' => '\'', '\\\\' => '\\' ) );
-		if ( @$str[0] == '"' )
+		if ( $str !== '' && @$str[0] == '"' )
 			// Double-quoted string
 			return strtr( stripcslashes( substr( $str, 1, -1 ) ),
 				 array( '\'' => '\\\'' ) );
@@ -555,15 +554,43 @@ class ConfEditor {
 				$this->nextPath( $token->text );
 				$this->expect( T_VARIABLE );
 				$this->skipSpace();
+				$arrayAssign = false;
+				if ( $this->currentToken()->type == '[' ) {
+					$this->nextToken();
+					$token = $this->skipSpace();
+					if ( !$token->isScalar() ) {
+						$this->error( "expected a string or number for the array key" );
+					}
+					if ( $token->type == T_CONSTANT_ENCAPSED_STRING ) {
+						$text = $this->parseScalar( $token->text );
+					} else {
+						$text = $token->text;
+					}
+					if ( !$this->validatePath( $text ) ) {
+						$this->error( "Invalid associative array name \"$text\"" );
+					}
+					$this->pushPath( $text );
+					$this->nextToken();
+					$this->skipSpace();
+					$this->expect( ']' );
+					$this->skipSpace();
+					$arrayAssign = true;
+				}
 				$this->expect( '=' );
 				$this->skipSpace();
 				$this->startPathValue();
-				$this->pushState( 'expression', 'statement end' );
+				if ( $arrayAssign )
+					$this->pushState( 'expression', 'array assign end' );
+				else
+					$this->pushState( 'expression', 'statement end' );
 				break;
+			case 'array assign end':
 			case 'statement end':
-				$this->skipSpace();
 				$this->endPathValue();
-				$this->expect( ';');
+				if ( $state == 'array assign end' )
+					$this->popPath();
+				$this->skipSpace();
+				$this->expect( ';' );
 				$this->nextPath( '@extra-' . ($this->serial++) );
 				break;
 			case 'expression':
