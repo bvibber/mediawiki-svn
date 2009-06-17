@@ -245,6 +245,84 @@ class ConfEditor {
 		}
 		return $out;
 	}
+	
+	/**
+	 * Get the variables defined in the text
+	 * @return array( varname => value )
+	 */
+	function getVars() {
+		$vars = array();
+		$this->parse();
+		foreach( $this->pathInfo as $path => $data ) {
+			if ( $path[0] != '$' )
+				continue;
+			$trimmedPath = substr( $path, 1 );
+			$name = $data['name'];
+			if ( $name[0] == '@' )
+				continue;
+			if ( $name[0] == '$' )
+				$name = substr( $name, 1 );
+			$parentPath = substr( $trimmedPath, 0,
+				strlen( $trimmedPath ) - strlen( $name ) );
+			if( substr( $parentPath, -1 ) == '/' )
+				$parentPath = substr( $parentPath, 0, -1 );
+			
+			$value = substr( $this->text, $data['valueStartByte'],
+				$data['valueEndByte'] - $data['valueStartByte']
+			);
+			$this->setVar( $vars, $parentPath, $name,
+				$this->parseScalar( $value ) );
+		}
+		return $vars;
+	}
+	
+	/**
+	 * Set a value in an array, unless it's set already. For instance,
+	 * setVar( $arr, 'foo/bar', 'baz', 3 ); will set
+	 * $arr['foo']['bar']['baz'] = 3;
+	 * @param $array array
+	 * @param $path string slash-delimited path
+	 * @param $key mixed Key
+	 * @param $value mixed Value
+	 */
+	function setVar( &$array, $path, $key, $value ) {
+		echo "$path [$key] = $value\n";
+		$pathArr = explode( '/', $path );
+		$target =& $array;
+		if ( $path !== '' ) {
+			foreach ( $pathArr as $p ) {
+				if( !isset( $target[$p] ) )
+					$target[$p] = array();
+				$target =& $target[$p];
+			}
+		}
+		if ( !isset( $target[$key] ) )
+			$target[$key] = $value;
+	}
+	
+	/**
+	 * Parse a scalar value in PHP
+	 * @return mixed Parsed value
+	 */
+	function parseScalar( $str ) {
+		if ( @$str[0] == '\'' )
+			// Single-quoted string
+			return strtr( substr( $str, 1, -1 ),
+				array( '\\\'' => '\'', '\\\\' => '\\' ) );
+		if ( @$str[0] == '"' )
+			// Double-quoted string
+			return strtr( stripcslashes( substr( $str, 1, -1 ) ),
+				 array( '\'' => '\\\'' ) );
+		if ( substr( $str, 0, 4 ) == 'true' )
+			return true;
+		if ( substr( $str, 0, 5 ) == 'false' )
+			return false;
+		if ( substr( $str, 0, 4 ) == 'null' )
+			return null;
+		// Must be some kind of numeric value, so let PHP's weak typing
+		// be useful for a change
+		return $str;
+	}
 
 	/**
 	 * Replace the byte offset region of the source with $newText.
@@ -560,7 +638,7 @@ class ConfEditor {
 					$this->error( "expected a string or number for the array key" );
 				}
 				if ( $token->type == T_CONSTANT_ENCAPSED_STRING ) {
-					$text = stripslashes( substr( $token->text, 1, -1 ) );
+					$text = $thsi->parseScalar( $token->text );
 				} else {
 					$text = $token->text;
 				}
