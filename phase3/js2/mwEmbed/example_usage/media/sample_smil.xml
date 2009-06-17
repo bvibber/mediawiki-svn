@@ -23,7 +23,7 @@
   <body>
     <seq>
 
- 	<video src="media/sample_fish.ogg?t=0:0:0/0:0:25" 
+ 	<video src="media/sample_fish.ogg" 
 		region="video_region" 
 		transIn="fromGreen"	
 		transOut="xFade" 	
@@ -32,9 +32,10 @@
 		dur="7s"
 		poster="media/sample_fish.jpg"/>	
 	
-    <video src="media/sample_jellyfish.ogg?t=0:0:0/0:0:10" 
+    <video src="media/sample_jellyfish.ogg" 
 		region="video_region" 				
 		fill="transition" 
+		dur="10s"
 		type="video/ogg" 
 		poster="media/sample_jellyfish.jpg"/>     
     </seq>
