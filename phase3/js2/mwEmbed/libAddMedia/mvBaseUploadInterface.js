@@ -400,7 +400,7 @@ mvBaseUploadInterface.prototype = {
 				bObj[ gM('go-to-resource') ] = function(){
 						window.location = url;
 				};
-				_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done'), bObj);
+				_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done', url), bObj);
 				js_log('apiRes.upload.imageinfo::'+url);
 			}
 			return ;

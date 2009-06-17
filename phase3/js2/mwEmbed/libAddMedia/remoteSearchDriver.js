@@ -91,7 +91,7 @@ remoteSearchDriver.prototype = {
 	 * sets the default display item:
 	 * can be any content_providers key or 'all'
 	 */
-	disp_item : 'archive_org',
+	disp_item : 'wiki_commons',
 	/** the default content providers list. 
 	 *
 	 * (should be note that special tabs like "upload" and "combined" don't go into the content proviers list:
@@ -1522,10 +1522,11 @@ remoteSearchDriver.prototype = {
 		});		
 	},
 	closeAll:function(){
+		 var _this = this;
 		 js_log("close all");
 		 $j('#rsd_resource_preview').remove();
 		 $j('#rsd_resource_edit').remove();
-		 $j(this.target_container).dialog('close');		 
+		 $j(_this.target_container).dialog('close');		 
 	},
 	setResultBarControl:function( ){
 		var _this = this;

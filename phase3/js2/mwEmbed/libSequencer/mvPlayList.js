@@ -1024,7 +1024,8 @@ mvClip.prototype = {
 		js_log('id is: '+ this.id);
 	},
 	//setup the embed object:
-	setUpEmbedObj:function(){		
+	setUpEmbedObj:function(){	
+		js_log('mvClip:setUpEmbedObj()');	
 		//init:
 		//debugger;
 		
@@ -1049,7 +1050,7 @@ mvClip.prototype = {
 		
 		if(this.poster)init_pl_embed['thumbnail']=this.poster;
 		
-		if( this.type ) init_pl_embed['type'] = this.type;
+		if( this.type )init_pl_embed['type'] = this.type;
 		
 		this.embed = new PlMvEmbed( init_pl_embed );
 				
@@ -1861,6 +1862,15 @@ var smilPlaylist ={
 		js_log("done proc seq tags");		
 		return true;
 	},
+	tryAddMediaObj:function(mConfig, order, track_id){
+		var mediaElement = document.createElement('ref');	
+		for(var i =0; i < mv_smil_ref_supported_attributes.length;i++){		
+			var attr = 	mv_smil_ref_supported_attributes[i];
+			if(mConfig[attr])
+				$j(mediaElement).attr(attr, mConfig[attr]);
+		}			
+		this.tryAddMedia(mediaElement, order, track_id);
+	},
 	tryAddMedia:function(mediaElement, order, track_id){	
 		js_log('SMIL:tryAddMedia:' + mediaElement);
 		var _this = this;		
@@ -1914,7 +1924,7 @@ var mvSMILClip=function(sClipElm, mvClipInit){
 mvSMILClip.prototype = {	
 	instanceOf:'mvSMILClip',	
 	params : {}, //support param as child of ref clips per SMIL spec  
-	init:function(sClipElm, mvClipInit){
+	init:function(sClipElm, mvClipInit){	
 		_this = this;			
 		this.params	= {};		
 		//make new mvCLip with ClipInit vals  
@@ -1962,9 +1972,9 @@ mvSMILClip.prototype = {
 		}		
 		//parse duration / begin times: 
 		if( this.dur )
-			this.dur = smilParseTime( this.dur );							
+			this.dur = smilParseTime( this.dur );									
 		
-		//conform type to video/ogg:
+		//conform type to vido/ogg:
 		if( this.type == 'application/ogg' )
 			this.type = 'video/ogg'; //conform to 'video/ogg' type
 				
@@ -2099,13 +2109,14 @@ trackObj.prototype = {
 		return elmObj;
 	},
 	addClip:function(clipObj, pos){
-		js_log('pl_Track: AddClip at:' + pos);  
+		js_log('pl_Track: AddClip at:' + pos + ' clen: ' + this.clips.length);  
 		if( typeof pos == 'undefined' )
 			pos = this.clips.length;				
 		//get everything after pos	
 		this.clips.splice(pos, 0, clipObj);			
 		//keep the clip order values accurate:
 		this.reOrderClips();				
+		js_log("did add now cLen: " + this.clips.length);
 	},
 	getClip:function( inx ){
 		if( !this.clips[inx] )

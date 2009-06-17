@@ -67,7 +67,7 @@ mvClipEdit.prototype = {
 
 		//if media type was not supplied detect for resource if possible:
 		//@@todo more advanced detection.		 
-		if(!this.media_type){
+		if(!this.media_type && this.rObj && this.rObj.type ){
 			if( this.rObj.type.indexOf("image/") === 0){
 				this.media_type = 'image';
 			}else if( this.rObj.type.indexOf("video/") === 0){

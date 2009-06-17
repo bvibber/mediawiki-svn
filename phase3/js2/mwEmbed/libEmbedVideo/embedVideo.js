@@ -1191,18 +1191,18 @@ embedVideo.prototype = {
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
 	},	
 	getDuration:function(){							
-		//update some local pointers for the selected source:										 
-		this.duration = this.media_element.selected_source.duration;						
-		this.start_offset = this.media_element.selected_source.start_offset;
-		this.start_ntp = this.media_element.selected_source.start_ntp;
-		this.end_ntp = this.media_element.selected_source.end_ntp;		 			
-		
+		//update some local pointers for the selected source:	
+		if(this.media_element && this.media_element.selected_source && this.media_element.selected_source.duration){									 
+			this.duration = this.media_element.selected_source.duration;						
+			this.start_offset = this.media_element.selected_source.start_offset;
+			this.start_ntp = this.media_element.selected_source.start_ntp;
+			this.end_ntp = this.media_element.selected_source.end_ntp;		 			
+		}
 		//update start end_ntp if duration !=0 (set from plugin) 
 		if(!this.start_ntp)
 			this.start_ntp = '0:0:0';
 		if(!this.end_ntp && this.duration)
-			this.end_ntp = seconds2npt( this.duration );
-						
+			this.end_ntp = seconds2npt( this.duration );		
 		//return the duration
 		return this.duration;
 	},
