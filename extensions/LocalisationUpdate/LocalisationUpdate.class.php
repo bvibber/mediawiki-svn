@@ -208,7 +208,8 @@ class LocalisationUpdate {
 		}
 
 		// Get the array with messages
-		$vars = new ConfEditor( $basefilecontents )->getVars();
+		$fileEditor = new ConfEditor( $basefilecontents );
+		$vars = $fileEditor->getVars();
 		$base_messages = $vars['base_messages'];
 
 		$comparefilecontents = self::getFileContents( $comparefile );
@@ -229,7 +230,8 @@ class LocalisationUpdate {
 			}
 		}
 		// Get the array
-		$vars = new ConfEditor( $comparefilecontents )->getVars();
+		$fileEditor = new ConfEditor( $comparefilecontents );
+		$vars = $fileEditor->getVars();
 		$compare_messages = $vars['compare_messages'];
 
 		// if the localfile and the remote file are the same, skip them!
@@ -375,7 +377,8 @@ class LocalisationUpdate {
 		}
 
 		// And get the real contents
-		$vars = new ConfEditor( $basefilecontents )->getVars();
+		$fileEditor = new ConfEditor( $basefilecontents );
+		$vars = $fileEditor->getVars();
 		$base_messages = $vars['base_messages'];
 
 		$comparefilecontents = self::getFileContents( $comparefile );
@@ -395,7 +398,8 @@ class LocalisationUpdate {
 			}
 		}
 		// Get the real array
-		$vars = new ConfEditor( $comparefilecontents )->getVars();
+		$fileEditor = new ConfEditor( $comparefilecontents );
+		$vars = $fileEditor->getVars();
 		$compare_messages = $vars['compare_messages'];
 
 		// If both files are the same, they can be skipped
