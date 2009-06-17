@@ -399,6 +399,16 @@ ndf-cache2-vif0.saix.net
 # Source: reverse DNS and access logs
 165.21.154.0/24
 165.21.155.0/24
+# New subnet of SingTel it seems, -- Domas, 2009/05/07
+# Confirmed with access logs -- Tim
+220.255.7.0/24
+# More proxies detected via user report and access logs -- Tim
+220.255.4.26
+220.255.4.27
+220.255.4.28
+220.255.4.29
+220.255.4.30
+
 
 # Telefonica
 80-58-55-42.proxycache.rima-tde.net
@@ -1133,11 +1143,12 @@ w3cache.icm.edu.pl
 195.188.152.17
 
 # brightsparks.net.au
-202.182.65.199
-202.182.65.201
-202.182.65.204
-202.182.65.205
-202.182.65.206
+proxy1.brightsparks.net.au
+proxy2.brightsparks.net.au
+whitelist.brightsparks.net.au
+blacklist1.brightsparks.net.au
+blacklist2.brightsparks.net.au
+unfiltered.brightsparks.net.au
 
 # *.wwwcache.cam.ac.uk
 131.111.8.96

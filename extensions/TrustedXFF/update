@@ -3,3 +3,6 @@
 cd `dirname $0`
 php generate.php
 bzip2 -kf trusted-xff.cdb
+if [ -x /home/wikipedia/bin/sync-common-file ]; then
+	sync-common-file php-1.5/extensions/TrustedXFF/trusted-xff.cdb
+fi
