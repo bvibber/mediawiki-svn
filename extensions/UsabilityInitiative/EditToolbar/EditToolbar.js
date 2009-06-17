@@ -18,7 +18,7 @@
 				// Checks if main section is in the structure
 				if ( 'main' in tools ) {
 					// Adds main section to toolbar
-					$(this).addToolbarSection( tools.main, textbox );
+					$(this).addToolbarSection( tools.main, textbox, 'main' );
 				}
 				// Appends additional section tabs
 				var tabDiv = $( '<div />' )
@@ -97,7 +97,7 @@
 				$.eachAsync( sectionQueue, {
 					bulk: 0,
 					loop: function( index, value ) {
-						value.sectionDiv.addToolbarSection( value.tools, value.textbox );
+						value.sectionDiv.addToolbarSection( value.tools, value.textbox, index );
 						value.sectionDiv.removeClass( 'loading' )
 					}
 				} )
@@ -107,8 +107,9 @@
 		 * Adds a toolbar section to a containing div
 		 * @param {Object} section Section data to build toolbar from
 		 * @param {Object} textbox
+		 * @param {String} section ID (used for cookies)
 		 */
-		addToolbarSection: function( section, textbox ) {
+		addToolbarSection: function( section, textbox, id ) {
 			// Path to images (THIS WILL HAVE TO CHANGE IF YOU MOVE THIS INTO CORE)
 			var imagePath = wgScriptPath +
 				'/extensions/UsabilityInitiative/EditToolbar/images/';
@@ -212,25 +213,29 @@
 					var indexDiv = $( '<div />' )
 						.attr( 'class', 'index' )
 						.appendTo( $(this) );
-					// THIS SHOULD BE REPLACED WITH SOMETHING THAT USES A COOKIE
-					// TO DETECT THE STATE OF THE LAST VIEW
-					var first = true;
+
+					var bookletCookie = 'edittoolbar-' + $(this).attr( 'id' ) + '-booklet-' + id;
+					var selectedID = $.cookie( bookletCookie ); 
+					
 					// Loops over each page
 					for ( page in section.pages ) {
 						// Appends index entry
 						indexDiv.append(
 							$( '<div />' )
-								.attr( 'class', first ? 'current' : null )
+								.attr( 'class', page == selectedID ? 'current' : null )
 								.text( msg( section.pages[page], 'label' ) )
 								.data( 'page', page )
+								.data( 'cookie', bookletCookie )
 								.click( function() {
 									$(this).parent().parent().find( 'div.pages > div.page' ).hide();
 									$(this).parent().find( 'div' ).removeClass( 'current' );
 									$(this).parent().parent().find( 'div.pages > div.page-' + $(this).data( 'page' ) ).show();
 									$(this).addClass( 'current' );
+									
+									// Update cookie
+									$.cookie( $(this).data( 'cookie'), $(this).data( 'page' ) );
 								} )
 						);
-						first = false;
 					}
 					var pagesDiv = $( '<div />' )
 						.attr( 'class', 'pages' )
