@@ -564,7 +564,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	},	
 	cancel_action:function( dlElm ){
 	  js_log('firefogg:cancel')
-	  	if( confirm( gM('mv-canecl-confim') )){
+	  	if( confirm( gM('mv-cancel-confim') )){
 	  	    if(navigator.oscpu && navigator.oscpu.search('Win') >= 0){
 	  	         alert( 'sorry we do not yet support cancel on windows' );
 	  	    }else{

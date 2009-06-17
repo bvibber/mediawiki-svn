@@ -15,7 +15,7 @@ loadGM({
 	"mv_upload_done" 	  : "Your upload <i>should be</i> accessible <a href=\"$1\">here</a>",
 	"upload-unknown-size": "Unknown size",	
 	
-	"mv-canecl-confim"	 : "Are you sure you want to cancel?",
+	"mv-cancel-confim"	 : "Are you sure you want to cancel?",
 	
 	"successfulupload" : "Successful Upload",
 	"uploaderror" : "Upload error",
@@ -547,7 +547,7 @@ mvBaseUploadInterface.prototype = {
 	},	
 	cancel_action:function(dlElm){
 		//confirm:	
-		if( confirm( gM('mv-canecl-confim') )){
+		if( confirm( gM('mv-cancel-confim') )){
 			//@@todo (cancel the encode / upload)
 			//$j(dlElm).dialog('close');
 			alert('(sorry we do not yet support cancel)');
