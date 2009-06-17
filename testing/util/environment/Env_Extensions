@@ -1,0 +1,123 @@
+Referata SemanticMediaWiki
+Referata SemanticForms
+Referata SemanticDrilldown
+Referata SemanticCompoundQueries
+Referata SemanticResultFormats
+Referata SemanticGoogleMaps
+Referata ExternalData
+Referata DataTransfer
+Referata ParserFunctions
+Referata Renameuser
+Referata Cite
+Referata HeaderTabs
+Referata StringFunctions
+Referata ConfirmEdit
+Referata GoogleGeocoder
+Referata Widgets
+Referata DeleteBatch
+Referata AdminLinks
+Referata ReplaceText
+Referata SpecialInterwiki
+Referata InputBox
+Uniwiki Configure
+Uniwiki CssHooks
+Uniwiki Javascript
+Uniwiki MooTools12core
+Uniwiki AutoCreateCategoryPages
+Uniwiki GenericEditPage
+Uniwiki CatBoxAtTop
+Uniwiki Layouts
+Uniwiki Authors
+Uniwiki CreatePage
+MetavidWiki Configure
+MetavidWiki SemanticMediaWiki
+MetavidWiki MetavidWiki
+MetavidWiki ParserFunctions
+MetavidWiki ExternalData
+MetavidWiki Cite
+MetavidWiki ConfirmEdit
+MetavidWiki OggHandler
+#Wikipedia CentralAuth 51864
+#Wikipedia GlobalBlocking 51864
+Wikipedia CategoryTree 51864
+Wikipedia CheckUser 51864
+Wikipedia Cite 51864
+Wikipedia SpecialCite 51864
+Wikipedia Collection 51864
+Wikipedia CrossNamespaceLinks 51864
+Wikipedia ExpandTemplates 51864
+Wikipedia Makebot 51864
+#Wikipedia Makesysop 51864
+Wikipedia OAI 51864
+Wikipedia Oversight 51864
+Wikipedia RenameUser 51864
+Wikipedia SiteMatrix 51864
+Wikipedia CharInsert 51864
+#requires ploticus
+Wikipedia timeline 51864
+Wikipedia ImageMap 51864
+Wikipedia InputBox 51864
+Wikipedia ParserFunctions 51864
+Wikipedia Poem 51864
+Wikipedia SyntaxHighlight_GeSHi 51864
+Wikipedia WikiHiero 51864
+Wikipedia OggHandler 51864
+Wikipedia AntiSpoof 51864
+Wikipedia AbuseFilter 51864
+Wikipedia AntiBot 51864
+Wikipedia AssertEdit 51864
+Wikipedia CentralNotice 51864
+Wikipedia ConfirmEdit 51864
+Wikipedia DismissableSiteNotice 51864
+Wikipedia Gadgets 51864
+Wikipedia MWSearch 51864
+Wikipedia OpenSearchXML 51864
+Wikipedia SimpleAntiSpam 51864
+Wikipedia SpamBlacklist 51864
+Wikipedia TitleBlacklist 51864
+Wikipedia Titlekey 51864
+Wikipedia Torblock 51864
+# results in an exception error
+#Wikipedia TrusteXFF 51864
+Wikipedia UsernameBlacklist 51864
+Wikipedia WikimediaMessages 51864
+Wikipedia LocalisationUpdate 51998
+Usability CategoryTree 51998
+Usability CheckUser 51998
+Usability Collection 51998
+Usability CrossNamespaceLinks 51998
+Usability ExpandTemplates 51998
+Usability Makebot 51998
+#Usability Makesysop 51998
+Usability Oversight 51998
+Usability Renameuser 51998
+Usability CategoryTree 51998
+Usability CharInsert 51998
+Usability Cite 51998
+Usability timeline 51998
+Usability ImageMap 51998
+Usability InputBox 51998
+Usability ParserFunctions 51998
+Usability Poem 51998
+Usability SyntaxHighlight_GeSHi 51998
+Usabilitya WikiHiero 51998
+Usability OggHandler 51998
+Usability AbuseFilter 51998
+Usability AntiBot 51998
+Usability AntiSpoof 51998
+Usability AssertEdit 51998
+Usability ConfirmEdit 51998
+Usability DismissableSiteNotice 51998
+Usability Gadgets 51998
+# GlobalBlocking is not supported yet and breaks the system
+#Usability GlobalBlocking 51998
+Usability SecurePoll 51998
+Usability SimpleAntiSpam 51998
+Usability SpamBlacklist 51998
+Usability TitleBlacklist 51998
+Usability TitleKey 51998
+Usability TorBlock 51998
+Usability UsabilityInitiative
+Usability UsernameBlacklist 51998
+Usability WikimediaMessages 51998
+Usability LocalisationUpdate
