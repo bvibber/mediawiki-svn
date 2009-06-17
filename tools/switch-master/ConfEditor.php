@@ -638,7 +638,7 @@ class ConfEditor {
 					$this->error( "expected a string or number for the array key" );
 				}
 				if ( $token->type == T_CONSTANT_ENCAPSED_STRING ) {
-					$text = $thsi->parseScalar( $token->text );
+					$text = $this->parseScalar( $token->text );
 				} else {
 					$text = $token->text;
 				}
