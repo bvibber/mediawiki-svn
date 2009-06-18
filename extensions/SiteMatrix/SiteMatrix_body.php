@@ -222,7 +222,7 @@ class SiteMatrixPage extends SpecialPage {
 		# Construct the HTML
 
 		# Header row
-		$s = Xml::openElement( 'table', array( 'id' => 'mw-sitematrix-table' ) ) .
+		$s = Xml::openElement( 'table', array( 'class' => 'wikitable', 'id' => 'mw-sitematrix-table' ) ) .
 			"<tr>" .
 				Xml::element( 'th', null, wfMsg( 'sitematrix-language' ) ) .
 				Xml::element( 'th', array( 'colspan' => count( $matrix->getSites() ) ), wfMsg( 'sitematrix-project' ) ) .
