@@ -554,6 +554,7 @@ schema = true
 url = http://www.mediawiki.org/wiki/Extension:Oversight
 
 PageCSS
+url = http://www.mediawiki.org/wiki/Extension:PageCSS
 
 PageNotice
 url = http://www.mediawiki.org/wiki/Extension:PageNotice
