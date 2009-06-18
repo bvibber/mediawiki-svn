@@ -6,7 +6,7 @@ echo -n Updating php-1.5...
 rsync -a 10.0.5.8::common/php-1.5/ /usr/local/apache/common-local/php-1.5 && echo ok || echo failed
 
 # Install compiled executables
-cp /var/tmp/texvc/texvc /usr/local/bin/
+/usr/sbin/install-common
 
 echo -n "Restarting apache... "
 /usr/bin/apache-sanity-check && ( sudo /usr/sbin/apache2ctl stop; sudo killall -9 apache2;sleep 3; sudo /usr/sbin/apache2ctl start )

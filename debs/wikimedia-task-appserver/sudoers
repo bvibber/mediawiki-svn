@@ -19,7 +19,14 @@ Cmnd_Alias	ADMIN_COMMANDS = \
 	/etc/init.d/apache2, \
         /usr/sbin/scap15-2, \
 	/usr/sbin/set-group-write2, \
-	/usr/bin/renice
+	/usr/sbin/install-common, \
+	/usr/bin/renice, \
+	/home/wikipedia/sbin/apache-kill-it, \
+	/home/wikipedia/sbin/sync-common-it, \
+	/home/wikipedia/sbin/sync-common-php, \
+        /home/wikipedia/sbin/scap15-2, \
+	/home/wikipedia/sbin/unscap-2, \
+	/home/wikipedia/sbin/set-group-write2
 	
 # User privilege specification
 root	ALL=(ALL) ALL

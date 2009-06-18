@@ -1,3 +1,10 @@
+wikimedia-task-appserver (1.39) hardy; urgency=medium
+
+  * Factor out install of texvc executable in /usr/local/bin into separate
+    sudo script install-common
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 18 Jun 2009 15:58:00 +0000
+
 wikimedia-task-appserver (1.38) hardy; urgency=low
 
   * Adapt sudoers file to new, /home-less situation
