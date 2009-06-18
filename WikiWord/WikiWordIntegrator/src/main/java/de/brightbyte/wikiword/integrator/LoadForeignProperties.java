@@ -1,7 +1,6 @@
 package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
@@ -43,7 +42,9 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 		this.conceptStore.finalizeImport();
 	}	
 
+	@Override
 	protected ForeignPropertyProcessor createProcessor(ForeignPropertyStoreBuilder conceptStore) throws InstantiationException {
+		//		FIXME: parameter list is restrictive, pass descriptor 
 		return instantiate(sourceDescriptor, "foreignPropertyProcessorClass", ForeignPropertyPassThrough.class, conceptStore);
 	}
 

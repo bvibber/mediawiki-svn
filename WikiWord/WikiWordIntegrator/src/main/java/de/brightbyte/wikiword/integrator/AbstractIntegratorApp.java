@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.integrator;
 
 import java.beans.IntrospectionException;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -12,17 +13,23 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import javax.sql.DataSource;
+
 import de.brightbyte.data.Functor;
 import de.brightbyte.data.cursor.DataCursor;
+import de.brightbyte.db.DatabaseConnectionInfo;
 import de.brightbyte.db.SqlScriptRunner;
 import de.brightbyte.io.IOUtil;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.util.BeanUtils;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.StoreBackedApp;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.InputFileHelper;
 import de.brightbyte.wikiword.integrator.data.AssemblingFeatureSetCursor;
+import de.brightbyte.wikiword.integrator.data.Association;
+import de.brightbyte.wikiword.integrator.data.AssociationCursor;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.FeatureSetValueSplitter;
 import de.brightbyte.wikiword.integrator.data.MangelingFeatureSetCursor;
@@ -42,9 +49,38 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 	protected InputFileHelper inputHelper;
 	protected P propertyProcessor;
 	protected FeatureSetSourceDescriptor sourceDescriptor;
+	private DataSource configuredDataSource;
+	private DatasetIdentifier configuredDataset;
 	
 	public AbstractIntegratorApp() {
 		super(true, true);
+	}
+	
+	@Override
+	protected DataSource getConfiguredDataSource() throws IOException, PersistenceException {
+		if (configuredDataSource!=null) return configuredDataSource; 
+		configuredDataSource = super.getConfiguredDataSource();
+		return configuredDataSource;
+	}
+	
+	@Override
+	public DatasetIdentifier getConfiguredDataset() {
+		if (configuredDataset!=null) return configuredDataset; 
+		configuredDataset = super.getConfiguredDataset();
+		return configuredDataset;
+	}
+	
+	public void testInit(DataSource dataSource, DatasetIdentifier dataset, TweakSet tweaks, FeatureSetSourceDescriptor sourceDescriptor) {
+		if (this.tweaks!=null || this.sourceDescriptor!=null) throw new IllegalStateException("application already initialized");
+		
+		this.configuredDataSource = dataSource;
+		this.configuredDataset = dataset;
+		this.tweaks = tweaks;
+		this.sourceDescriptor = sourceDescriptor;
+	}
+	
+	public void testLaunch() throws Exception {
+		launchExecute();
 	}
 	
 	protected InputFileHelper getInputHelper() {
@@ -75,6 +111,43 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 		args.declareHelp("<wiki>", null);
 		args.declareHelp("<dataset>", "name of the wiki/thesaurus to process");
 		args.declare("dataset", null, true, String.class, "sets the wiki name (overrides the <wiki-or-dump> parameter)");
+	}
+	
+	protected DataCursor<Association> openAssociationCursor() throws IOException, SQLException, PersistenceException {
+		Iterable<String> foreignFields = sourceDescriptor.getTweak("foreign-fields", (Iterable<String>)null);
+		Iterable<String> conceptFields = sourceDescriptor.getTweak("concept-fields", (Iterable<String>)null);
+		Iterable<String> propertyFields = sourceDescriptor.getTweak("property-fields", (Iterable<String>)null);
+		
+		if (foreignFields==null) {
+			foreignFields = Arrays.asList(new String[] {
+					sourceDescriptor.getTweak("foreign-id-field", (String)null),
+					sourceDescriptor.getTweak("foreign-name-field", (String)null)
+			});
+		}
+
+		if (conceptFields==null) {
+			conceptFields = Arrays.asList(new String[] {
+					sourceDescriptor.getTweak("concept-id-field", (String)null),
+					sourceDescriptor.getTweak("concept-name-field", (String)null)
+			});
+		}
+		
+		if (propertyFields==null) {
+			propertyFields = Arrays.asList(new String[] {
+					sourceDescriptor.getTweak("association-via-field", (String)null),
+					sourceDescriptor.getTweak("association-weight-field", (String)null)
+			});
+		}
+		
+		DataCursor<FeatureSet> fsc = openFeatureSetCursor();
+
+		DataCursor<Association> cursor = 
+			new AssociationCursor(fsc, 
+					foreignFields, 
+					conceptFields, 
+					propertyFields );
+		
+		return cursor;
 	}
 	
 	protected DataCursor<FeatureSet> openFeatureSetCursor() throws IOException, SQLException, PersistenceException {
@@ -173,6 +246,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 		}
 	}
 	
-	
+	protected abstract P createProcessor(S conceptStore) throws InstantiationException;
+
 
 }

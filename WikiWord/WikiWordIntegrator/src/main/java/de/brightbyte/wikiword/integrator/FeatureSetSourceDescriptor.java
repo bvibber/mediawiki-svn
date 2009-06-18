@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.integrator;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -23,6 +24,10 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 		super(prefix, parent);
 	}
 
+	public void loadTweaks(URL u) throws IOException {
+		super.loadTweaks(u);
+		if (getBaseURL()==null) setBaseURL(u);
+	}
 	
 	public String getAuthorityName() {
 		String name = getTweak("authority", null);
