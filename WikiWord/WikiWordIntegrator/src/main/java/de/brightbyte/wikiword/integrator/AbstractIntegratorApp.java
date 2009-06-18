@@ -1,7 +1,6 @@
 package de.brightbyte.wikiword.integrator;
 
 import java.beans.IntrospectionException;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -17,7 +16,6 @@ import javax.sql.DataSource;
 
 import de.brightbyte.data.Functor;
 import de.brightbyte.data.cursor.DataCursor;
-import de.brightbyte.db.DatabaseConnectionInfo;
 import de.brightbyte.db.SqlScriptRunner;
 import de.brightbyte.io.IOUtil;
 import de.brightbyte.text.Chunker;
@@ -51,6 +49,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 	protected FeatureSetSourceDescriptor sourceDescriptor;
 	private DataSource configuredDataSource;
 	private DatasetIdentifier configuredDataset;
+	private String targetTableName;
 	
 	public AbstractIntegratorApp() {
 		super(true, true);
@@ -70,13 +69,14 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 		return configuredDataset;
 	}
 	
-	public void testInit(DataSource dataSource, DatasetIdentifier dataset, TweakSet tweaks, FeatureSetSourceDescriptor sourceDescriptor) {
+	public void testInit(DataSource dataSource, DatasetIdentifier dataset, TweakSet tweaks, FeatureSetSourceDescriptor sourceDescriptor, String targetTableName) {
 		if (this.tweaks!=null || this.sourceDescriptor!=null) throw new IllegalStateException("application already initialized");
 		
 		this.configuredDataSource = dataSource;
 		this.configuredDataset = dataset;
 		this.tweaks = tweaks;
 		this.sourceDescriptor = sourceDescriptor;
+		this.targetTableName = targetTableName;
 	}
 	
 	public void testLaunch() throws Exception {
@@ -91,12 +91,17 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 	}
 
 	protected String getTargetTableName() throws IOException {
-		if (args.getParameterCount() > 2) return args.getParameter(2);
+		if (targetTableName!=null) return targetTableName;
 		
-		String authority = getSourceDescriptor().getAuthorityName();
-		authority = authority.replaceAll("[^\\w\\d]", "_").toLowerCase();
+		if (args.getParameterCount() > 2) targetTableName = args.getParameter(2);
+		else {
+			String authority = getSourceDescriptor().getAuthorityName();
+			authority = authority.replaceAll("[^\\w\\d]", "_").toLowerCase();
+			
+			targetTableName= authority+"_property";
+		}
 		
-		return authority+"_property";
+		return targetTableName;
 	}
 
 	protected String getSourceFileName() {
