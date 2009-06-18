@@ -45,11 +45,8 @@ function renderMemorize( $input, $argv, &$parser ) {
 }
 
 function addMemorizeJavascriptAndCSS( &$m_pageObj ) {
-	global $wgMemorizeExtensionPath;
-
-        $extensionpath = "$wgMemorizeExtensionPath";
-
-        $m_pageObj->addScript( '<script src="' . $extensionpath . '/memorizable.js" type="text/javascript"></script>' );
+	global $wgScriptPath;
+	$m_pageObj->addScript( '<script src="'. $wgScriptPath.'/extensions/Memorize/memorizable.js" type="text/javascript"></script>' );
 
 	return true;
 }
@@ -60,10 +57,10 @@ function addMemorizeJavascriptAndCSS( &$m_pageObj ) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Memorizable parser extension',
-	'version' => '1.0a',
+	'version' => '1.0b',
 	'author' => 'Ryan Lane',
 	'description' => 'Allows users to create tables that are memorizable like those on Memorizable.org',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Memorizable'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Memorize'
 	);
 
 
