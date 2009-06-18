@@ -152,9 +152,19 @@ class SpecialOptIn extends SpecialPage {
 					wfMsgWikiHtml( $question['question'] ) );
 				$retval .= Xml::openElement( 'td',
 					array( 'valign' => 'top' ) );
-				$retval .= Xml::input( "survey-$id-x", 5 );
+				$retval .= Xml::input( "survey-$id-x",
+						5, false, array(
+							'class' => 'optin-resolution-x',
+							'id' => "survey-$id-x",
+						)
+				);
 				$retval .= ' x ';
-				$retval .= Xml::input( "survey-$id-y", 5 );
+				$retval .= Xml::input( "survey-$id-y",
+						5, false, array(
+							'class' => 'optin-resolution-y',
+							'id' => "survey-$id-y",
+						)
+				);
 				$retval .= Xml::closeElement( 'td' );
 				$retval .= Xml::closeElement( 'tr' );
 			break;
