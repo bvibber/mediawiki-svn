@@ -50,6 +50,6 @@ $messages['en'] = array(
 	'optin-survey-answer-os-macos' => 'Mac OS',
 	'optin-survey-answer-os-linux' => 'Linux',
 	'optin-survey-answer-os-other' => 'Other:',
-	'optin-survey-question-res' => 'What is the resolution of your screen?<br />If you don\'t know, [http://www.whatismyscreenresolution.com/ click here].',
+	'optin-survey-question-res' => 'What is the resolution of your screen?',
 	'optin-survey-question-feedback' => 'Please let us know your feedback:',
 );
