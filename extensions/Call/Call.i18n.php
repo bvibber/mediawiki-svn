@@ -13,17 +13,17 @@ $messages['en'] = array(
 Can be used at the browser’s command line or within wiki text',
 	'call-text' => 'The Call extension expects a wiki page and optional parameters for that page as an argument.<br /><br />
 
-Example 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
-Example 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
-Example 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
-Example 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt><br /><br />
+Example 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
+Example 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+Example 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Example 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
 
 The <i>Call extension</i> will call the given page and pass the parameters.<br />
 You will see the contents of the called page and its title but its \'type\' will be that of a special page, i.e. such a page cannot be edited.<br />The contents you see may vary depending on the value of the parameters you passed.<br /><br />
 
 The <i>Call extension</i> is useful to build interactive applications with MediaWiki.<br />
 For an example see <a href=\'http://semeb.com/dpldemo/Template:Catlist\'>the DPL GUI</a> ..<br />
-In case of problems you can try <b>Special:Call/DebuG</b>',
+In case of problems you can try <b>{{#special:call}}/DebuG</b>',
 	'call-save' => 'The output of this call would be saved to a page called \'\'$1\'\'.',
 	'call-save-success' => 'The following text has been saved to page <big>[[$1]]</big> .',
 	'call-save-failed' => 'The following text has NOT been saved to page <big>[[$1]]</big> because that page already exists.',
