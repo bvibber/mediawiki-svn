@@ -14,36 +14,38 @@ public abstract class IntegratorAppTestBase<T extends AbstractIntegratorApp> ext
 	}
 
 	public TweakSet loadTweakSet() throws IOException {
-		URL url = requireAuxilliaryFileURL(getBaseName()+".tweaks.properties");
+		URL url = requireAuxilliaryFileURL("test-tweaks.properties");
 		TweakSet tweaks = new TweakSet();
 		tweaks.loadTweaks(url);
 		return tweaks;
 	}
 
 	public FeatureSetSourceDescriptor loadSourceDescriptor(String testName) throws IOException {
-		URL url = requireAuxilliaryFileURL(getBaseName()+"."+testName+".properties");
+		URL url = requireAuxilliaryFileURL(getBaseName()+"-"+testName+".properties");
 		FeatureSetSourceDescriptor descriptor = new FeatureSetSourceDescriptor();
 		descriptor.loadTweaks(url);
 		return descriptor;
 	}
-	
+
 	protected abstract T createApp();
 	
-	protected T prepareApp(FeatureSetSourceDescriptor sourceDescriptor) throws IOException {
+	protected T prepareApp(FeatureSetSourceDescriptor sourceDescriptor, String targetTable) throws IOException {
 		TweakSet tweaks = loadTweakSet();
 		T app = createApp();
 		
-		app.testInit(testDataSource, DatasetIdentifier.forName("TEST", "xx"), tweaks, sourceDescriptor);
+		app.testInit(testDataSource, DatasetIdentifier.forName("TEST", "xx"), tweaks, sourceDescriptor, targetTable);
 		return app;
 	}
 
 	protected void runApp(String testName) throws Exception {
 		FeatureSetSourceDescriptor source = loadSourceDescriptor(testName);
-		runApp(source);
+		launchApp(source, testName);
+		
+		assertTableContent(testName, "SELECT * FROM "+testName); //FIXME: sort order
 	}
 	
-	protected void runApp(FeatureSetSourceDescriptor sourceDescriptor) throws Exception {
-		T app = prepareApp(sourceDescriptor);
+	protected void launchApp(FeatureSetSourceDescriptor sourceDescriptor, String targetTable) throws Exception {
+		T app = prepareApp(sourceDescriptor, targetTable);
 		app.testLaunch();
 	}
 

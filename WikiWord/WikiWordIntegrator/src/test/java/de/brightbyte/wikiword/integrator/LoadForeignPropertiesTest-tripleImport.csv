@@ -1,0 +1,7 @@
+concept_name,property,value
+FooBar,name,Foo
+FooBar,firstName,Bar
+FooBar,phone,12345
+XyzzyQuux,name,Xyzzy
+XyzzyQuux,firstName,Quux
+XyzzyQuux,phone,67890

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <tripleImport concept_name="FooBar" name="Foo" firstName="Bar" phone="12345"/>
+  <tripleImport concept_name="XyzzyQuux" name="Xyzzy" firstName="Quux" phone="67890"/>
+  <tableImport concept_name="FooBar" name="Foo" firstName="Bar" phone="12345"/>
+  <tableImport concept_name="XyzzyQuux" name="Xyzzy" firstName="Quux" phone="67890"/>
+</dataset>
+
