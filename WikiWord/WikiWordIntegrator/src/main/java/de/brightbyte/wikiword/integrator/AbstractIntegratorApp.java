@@ -1,7 +1,9 @@
 package de.brightbyte.wikiword.integrator;
 
+import java.beans.IntrospectionException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,8 +17,10 @@ import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.db.SqlScriptRunner;
 import de.brightbyte.io.IOUtil;
 import de.brightbyte.text.Chunker;
+import de.brightbyte.util.BeanUtils;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.StoreBackedApp;
+import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.InputFileHelper;
 import de.brightbyte.wikiword.integrator.data.AssemblingFeatureSetCursor;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
@@ -59,7 +63,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 		return authority+"_property";
 	}
 
-	protected String getSourceDescriptionFileName() {
+	protected String getSourceFileName() {
 		if (args.getParameterCount() < 2) throw new IllegalArgumentException("missing second parameter (descripion file name)");
 		return args.getParameter(1);
 	}
@@ -129,7 +133,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 		
 		sourceDescriptor = new FeatureSetSourceDescriptor("source", tweaks);
 		
-		String n = getSourceDescriptionFileName();
+		String n = getSourceFileName();
 		InputStream in = getInputHelper().open(n);
 		sourceDescriptor.setBaseURL(getInputHelper().getBaseURL(n));
 		sourceDescriptor.loadTweaks(in);
@@ -148,5 +152,27 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 				new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_db* \\*/"), getConfiguredDatasetName()),
 		};
 	}
+	
+	protected <T> T instantiate(TweakSet config, String optionName, Class<? extends T> def, Object... params) throws InstantiationException {
+		if (config==null) config = tweaks;
+		Class<? extends T> cls = null;
+		
+		if (optionName!=null) cls = tweaks.getTweak(optionName, def);
+		if (cls==null) return null;
+		
+		try {
+			return BeanUtils.createBean(cls, Arrays.asList(params), null);
+		}  catch (IntrospectionException e) {
+			throw (InstantiationException)new InstantiationException("failed to instantiate "+cls+" because of "+e).initCause(e);
+		} catch (IllegalAccessException e) {
+			throw (InstantiationException)new InstantiationException("failed to instantiate "+cls+" because of "+e).initCause(e);
+		} catch (NoSuchMethodException e) {
+			throw (InstantiationException)new InstantiationException("failed to instantiate "+cls+" because of "+e).initCause(e);
+		} catch (InvocationTargetException e) {
+			throw (InstantiationException)new InstantiationException("failed to instantiate "+cls+" because of "+e).initCause(e);
+		}
+	}
+	
+	
 
 }

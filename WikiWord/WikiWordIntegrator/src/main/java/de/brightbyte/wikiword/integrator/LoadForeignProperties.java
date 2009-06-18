@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
@@ -27,6 +28,8 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 
 	@Override
 	protected void run() throws Exception {
+		this.propertyProcessor = createProcessor(conceptStore); //FIXME
+		
 		section("-- fetching properties --------------------------------------------------");
 		DataCursor<FeatureSet> fsc = openFeatureSetCursor();
 		DataCursor<ForeignEntity> cursor = new ForeignEntityCursor(fsc, sourceDescriptor.getAuthorityName(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField());
@@ -34,12 +37,15 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 		section("-- process properties --------------------------------------------------");
 		this.conceptStore.prepareImport();
 		
-		this.propertyProcessor = new ForeignPropertyPassThrough(conceptStore); //FIXME
 		this.propertyProcessor.processProperties(cursor);
 		cursor.close();
 
 		this.conceptStore.finalizeImport();
 	}	
+
+	protected ForeignPropertyProcessor createProcessor(ForeignPropertyStoreBuilder conceptStore) throws InstantiationException {
+		return instantiate(sourceDescriptor, "foreignPropertyProcessorClass", ForeignPropertyPassThrough.class, conceptStore);
+	}
 
 	public static void main(String[] argv) throws Exception {
 		LoadForeignProperties app = new LoadForeignProperties();

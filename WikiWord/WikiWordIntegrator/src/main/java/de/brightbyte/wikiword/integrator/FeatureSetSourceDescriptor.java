@@ -11,6 +11,10 @@ import de.brightbyte.wikiword.TweakSet;
 
 public class FeatureSetSourceDescriptor extends TweakSet {
 	
+	public interface SqlQueryGenerator {
+		public String makewQuery(FeatureSetSourceDescriptor fsd);
+	}
+
 	public FeatureSetSourceDescriptor() {
 		this(null, null);
 	}
@@ -31,7 +35,14 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 	}
 
 	public String getSqlQuery() {
-		return getTweak("query", null);
+		String sql = getTweak("query", null);
+		
+		if (sql==null) {
+			SqlQueryGenerator generator = getTweak("queryGenerator", null);
+			if (generator!=null) sql = generator.makewQuery(this); 
+		}
+		
+		return sql;
 	}
 
 	public String getSourceFileName() { //FIXME

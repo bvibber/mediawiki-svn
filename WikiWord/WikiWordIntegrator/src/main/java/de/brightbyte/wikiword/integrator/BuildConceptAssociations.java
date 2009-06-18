@@ -47,6 +47,8 @@ public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationF
 
 	@Override
 	protected void run() throws Exception {
+		this.propertyProcessor = createProcessor(conceptStore); 
+
 		section("-- fetching properties --------------------------------------------------");
 		DataCursor<FeatureSet> fsc = openFeatureSetCursor();
 		
@@ -84,13 +86,16 @@ public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationF
 		section("-- process properties --------------------------------------------------");
 		this.conceptStore.prepareImport();
 		
-		this.propertyProcessor = new ConceptAssociationPassThrough(conceptStore); //FIXME
 		this.propertyProcessor.processAssociations(cursor);
 		cursor.close();
 
 		this.conceptStore.finalizeImport();
 	}	
 
+	protected ConceptAssociationProcessor createProcessor(AssociationFeatureStoreBuilder conceptStore) throws InstantiationException {
+		return instantiate(sourceDescriptor, "conceptAssociationProcessorClass", ConceptAssociationPassThrough.class, conceptStore);
+	}
+	
 	public static void main(String[] argv) throws Exception {
 		LoadForeignProperties app = new LoadForeignProperties();
 		app.launch(argv);
