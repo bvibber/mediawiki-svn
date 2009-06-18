@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.14.6 - 18 June 2009
+  Added support for PageCSS, PageNotice, PhpHighlight and PurgeCache extensions.
+
 0.14.5 - 16 June 2009
   SemanticDrilldown, SemanticForms and SemanticResultFormats extensions now
   require Semantic MediaWiki extension to be enabled.
@@ -22,6 +25,7 @@ Localisation updates are done on betawiki and aren't listed here.
 0.14.0 - 2 June 2009
   Now use SiteConfiguration::loadFullData() to load full configuration data.
   THIS VERSION NOW REQUIRES MediaWiki 1.16 TO WORK.
+
 
 0.13.20 - 30 May 2009
   Changed Configure special pages's order in Special:AdminLinks.
