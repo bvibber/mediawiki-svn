@@ -13,10 +13,13 @@ import javax.sql.DataSource;
 
 import de.brightbyte.db.DatabaseAgendaPersistor;
 import de.brightbyte.db.DatabaseField;
+import de.brightbyte.db.DatabaseHints;
 import de.brightbyte.db.DatabaseSchema;
 import de.brightbyte.db.DatabaseTable;
+import de.brightbyte.db.DefaultSqlDialect;
 import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.KeyType;
+import de.brightbyte.db.MySqlDialect;
 import de.brightbyte.db.ReferenceField;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
@@ -78,13 +81,40 @@ public class WikiWordStoreSchema extends DatabaseSchema {
 
 	private DatasetIdentifier dataset;
 	
+	public static DatabaseHints makeHints(TweakSet tweaks, boolean useFlushQueue) {
+		DatabaseHints hints = new DatabaseHints();
+		
+		if (useFlushQueue) hints.setHint(HINT_JOB_QUEUE_CAPACITY, tweaks.getTweak("dbstore.backgroundFlushQueue", 4)); //XXX: doc tweak!
+
+		hints.setHint(MySqlDialect.HINT_EXPLAIN_SQL_THREASHOLD, tweaks.getTweak("dbstore.explainSQLThreashold", 0));
+		hints.setHint(DefaultSqlDialect.HINT_SLOW_SQL_THREASHOLD, tweaks.getTweak("dbstore.slowSQLThreashold", 0));
+		hints.setHint(DefaultSqlDialect.HINT_TRACE_SQL, tweaks.getTweak("dbstore.traceSQL", false));
+
+		String sqlMode = tweaks.getTweak("dbstore.sqlMode", null);
+		if (sqlMode!=null) hints.setHint(MySqlDialect.HINT_SQL_MODE, sqlMode);
+
+		hints.setHint(HINT_MAX_STATEMENT_SIZE, tweaks.getTweak("dbstore.maxStatementSize", -1));
+		hints.setHint(HINT_BUFFER_SCALE, tweaks.getTweak("dbstore.insertionBufferFactor", 16));
+		
+		int groupLen = tweaks.getTweak("dbstore.groupConcatMaxLen", -1);
+		if (groupLen>0) hints.setHint(MySqlDialect.HINT_GROUP_CONCAT_MAX_LEN, groupLen);
+		
+		String dbengine = tweaks.getTweak("dbstore.engine", "MyISAM");
+		String defaultTableAttributes = "ENGINE="+dbengine+" CHARSET utf8 COLLATE utf8_bin";
+		defaultTableAttributes = tweaks.getTweak("dbstore.table.attributes", defaultTableAttributes);
+		
+		hints.setHint(HINT_DEFAULT_TABLE_ATTRIBUTES, defaultTableAttributes);
+		
+		return hints;
+	}
+	
 	public WikiWordStoreSchema(DatasetIdentifier dataset, Connection connection, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
-		super(dataset.getDbPrefix(), connection, useFlushQueue ? tweaks.getTweak("dbstore.backgroundFlushQueue", 4) : 0 ); //XXX: doc tweak!
+		super(dataset.getDbPrefix(), connection, makeHints(tweaks, useFlushQueue) ); 
 		init(dataset, tweaks);
 	}
 
 	public WikiWordStoreSchema(DatasetIdentifier dataset, DataSource connectionInfo, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
-		super(dataset.getDbPrefix(), connectionInfo, useFlushQueue ? tweaks.getTweak("dbstore.backgroundFlushQueue", 4) : 0); //XXX: doc tweak!
+		super(dataset.getDbPrefix(), connectionInfo, makeHints(tweaks, useFlushQueue) ); 
 		init(dataset, tweaks);
 	}
 	
@@ -92,22 +122,6 @@ public class WikiWordStoreSchema extends DatabaseSchema {
 		this.setLogLevel(tweaks.getTweak("dbstore.logLevel", LOG_INFO));
 		
 		this.dataset = dataset;
-		this.setExplainSQLThreashold(tweaks.getTweak("dbstore.explainSQLThreashold", 0));
-		this.setSlowSQLThreashold(tweaks.getTweak("dbstore.slowSQLThreashold", 0));
-		this.setTraceSQL(tweaks.getTweak("dbstore.traceSQL", false));
-		
-		this.setMaxStatementSize(tweaks.getTweak("dbstore.maxStatementSize", -1)); 
-		
-		this.setBufferScale(tweaks.getTweak("dbstore.insertionBufferFactor", 16));
-		
-		String sqlMode = tweaks.getTweak("dbstore.sqlMode", null);
-		if (sqlMode!=null) this.setSqlMode(sqlMode);
-		
-		String dbengine = tweaks.getTweak("dbstore.engine", "MyISAM");
-		String defaultTableAttributes = "ENGINE="+dbengine+" CHARSET utf8 COLLATE utf8_bin";
-		defaultTableAttributes = tweaks.getTweak("dbstore.table.attributes", defaultTableAttributes);
-		
-		this.setDefaultTableAttributes(defaultTableAttributes);
 		this.useBinaryText = tweaks.getTweak("dbstore.useBinaryText", true);
 
 		logTable = DatabaseAgendaPersistor.makeTableSpec(this, "log");

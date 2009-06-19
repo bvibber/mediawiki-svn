@@ -252,7 +252,7 @@ public class ValidateImport {
 		
 		String prefix = tweaks.getTweak("prefix", "TEST");
 		if (prefix!=null && prefix.length()>0) prefix += "_";
-		database = new DatabaseSchema(prefix, dataSource, 0);
+		database = new DatabaseSchema(prefix, dataSource, null);
 		
 		//--------------------
 		String dir = args.getStringOption("dir", null);

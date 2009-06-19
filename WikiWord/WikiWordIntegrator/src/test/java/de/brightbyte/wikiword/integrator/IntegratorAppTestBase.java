@@ -3,6 +3,8 @@ package de.brightbyte.wikiword.integrator;
 import java.io.IOException;
 import java.net.URL;
 
+import org.dbunit.operation.DatabaseOperation;
+
 import de.brightbyte.db.testing.DatabaseTestBase;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
@@ -12,6 +14,11 @@ public abstract class IntegratorAppTestBase<T extends AbstractIntegratorApp> ext
 	public IntegratorAppTestBase(String name) {
 		super(name);
 	}
+	
+    protected DatabaseOperation getSetUpOperation() throws Exception
+    {
+        return DatabaseOperation.NONE;
+    }
 
 	public TweakSet loadTweakSet() throws IOException {
 		URL url = requireAuxilliaryFileURL("test-tweaks.properties");
