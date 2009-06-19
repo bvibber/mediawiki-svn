@@ -47,7 +47,8 @@ function efDiscussionThreadSetup() {
 	global $wgVersion;
 	$xversion = explode(".",$wgVersion);
 	if ($xversion[0] <= "1" && $xversion[1] <= "11") {
-		global $wgMessageCache, $messages;
+		global $wgMessageCache, $messages,$wgExtensionMessagesFiles;
+		require_once($wgExtensionMessagesFiles['DiscussionThreading']);
 		foreach( $messages as $lang => $LangMsg )
 			$wgMessageCache->addMessages( $LangMsg, $lang );
 	} else wfLoadExtensionMessages( 'DiscussionThreading' );
