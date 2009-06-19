@@ -24,4 +24,4 @@ CREATE TABLE IF NOT EXISTS /*_*/prefstats (
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/ps_user_pref_start ON /*_*/prefstats (ps_user, ps_pref, ps_start);
-CREATE INDEX /*i*/ps_duration_start ON /*_*/prefstats (ps_duration, ps_start);
+CREATE INDEX /*i*/ps_pref_duration_start ON /*_*/prefstats (ps_pref, ps_duration, ps_start);
