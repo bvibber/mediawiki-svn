@@ -17,7 +17,7 @@
 
 /* Configuration */
 
-$wgOptInStyleVersion = 0;
+$wgOptInStyleVersion = 1;
 
 // Preferences to set when users opt in
 // array( prefname => value )
