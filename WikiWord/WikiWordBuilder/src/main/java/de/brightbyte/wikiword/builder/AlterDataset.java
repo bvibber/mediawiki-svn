@@ -49,7 +49,7 @@ public class AlterDataset {
 		params = params.subList(1, params.size());
 		
 		DatabaseConnectionInfo dbinfo = new DatabaseConnectionInfo(new File(dbfile));
-		DatabaseSchema db = new DatabaseSchema("", dbinfo, 0);
+		DatabaseSchema db = new DatabaseSchema("", dbinfo, null);
 		db.open();
 		
 		AlterDataset alter = new AlterDataset(db, force);
