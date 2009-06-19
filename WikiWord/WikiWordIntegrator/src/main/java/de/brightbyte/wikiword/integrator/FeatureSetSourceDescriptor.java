@@ -26,7 +26,7 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 
 	public void loadTweaks(URL u) throws IOException {
 		super.loadTweaks(u);
-		if (getBaseURL()==null) setBaseURL(u);
+		setBaseURL(u); //XXX: always?!
 	}
 	
 	public String getAuthorityName() {

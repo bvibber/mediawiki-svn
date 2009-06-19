@@ -103,7 +103,7 @@ public class WikiWordStoreSchema extends DatabaseSchema {
 		String defaultTableAttributes = "ENGINE="+dbengine+" CHARSET utf8 COLLATE utf8_bin";
 		defaultTableAttributes = tweaks.getTweak("dbstore.table.attributes", defaultTableAttributes);
 		
-		hints.setHint(HINT_DEFAULT_TABLE_ATTRIBUTES, defaultTableAttributes);
+		hints.setHint(DefaultSqlDialect.HINT_DEFAULT_TABLE_ATTRIBUTES, defaultTableAttributes);
 		
 		return hints;
 	}

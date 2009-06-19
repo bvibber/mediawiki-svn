@@ -26,7 +26,7 @@ public class LocalStatisticsStoreSchema extends StatisticsStoreSchema {
 	}
 	
 	private void init(TweakSet tweaks) {
-		termTable = new EntityTable(this, "term", defaultTableAttributes);
+		termTable = new EntityTable(this, "term", getDefaultTableAttributes());
 		termTable.addField( new DatabaseField(this, "rank", "INT", "AUTO_INCREMENT", true, KeyType.PRIMARY ) );
 		termTable.addField( new DatabaseField(this, "term", getTextType(255), null, true, KeyType.UNIQUE ) );
 		termTable.addField( new DatabaseField(this, "freq", "INT", null, true, KeyType.INDEX ) );

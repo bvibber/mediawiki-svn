@@ -32,14 +32,14 @@ public class TextStoreSchema extends WikiWordStoreSchema {
 	private void init(Corpus corpus, TweakSet tweaks) {
 		this.corpus = corpus;
 		
-		rawTextTable = new EntityTable(this, "rawtext", defaultTableAttributes);
+		rawTextTable = new EntityTable(this, "rawtext", getDefaultTableAttributes());
 		rawTextTable.addField( new DatabaseField(this, "id", "INT", null, true, KeyType.PRIMARY ) );
 		rawTextTable.addField( new ReferenceField(this, "resource", "INT", null, true, KeyType.UNIQUE, "resource", "id", null ) );
 		rawTextTable.addField( new DatabaseField(this, "text", "LONGTEXT", null, true, null ) );
 		rawTextTable.setAutomaticField(null);
 		addTable(rawTextTable);
 
-		plainTextTable = new EntityTable(this, "plaintext", defaultTableAttributes);
+		plainTextTable = new EntityTable(this, "plaintext", getDefaultTableAttributes());
 		plainTextTable.addField( new DatabaseField(this, "id", "INT", null, true, KeyType.PRIMARY ) );
 		plainTextTable.addField( new ReferenceField(this, "resource", "INT", null, true, KeyType.UNIQUE, "resource", "id", null ) );
 		plainTextTable.addField( new DatabaseField(this, "text", "LONGTEXT", null, true, null ) );

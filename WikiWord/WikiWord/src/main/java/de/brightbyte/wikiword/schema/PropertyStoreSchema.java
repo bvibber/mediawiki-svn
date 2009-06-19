@@ -32,7 +32,7 @@ public class PropertyStoreSchema extends WikiWordStoreSchema {
 	private void init(Corpus corpus, TweakSet tweaks) {
 		this.corpus = corpus;
 		
-		propertyTable = new RelationTable(this, "property", defaultTableAttributes);
+		propertyTable = new RelationTable(this, "property", getDefaultTableAttributes());
 		propertyTable.addField( new ReferenceField(this, "resource", "INT", null, false, KeyType.INDEX, "resource", "id", null ) );
 		propertyTable.addField( new ReferenceField(this, "concept", "INT", null, false, KeyType.INDEX, "concept", "id", null ) );
 		propertyTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );

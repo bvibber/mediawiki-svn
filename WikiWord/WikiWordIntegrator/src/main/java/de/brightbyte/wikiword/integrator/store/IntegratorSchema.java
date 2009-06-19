@@ -25,7 +25,7 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 	}
 
 	public RelationTable newForeignPropertyTable(String name) {
-		RelationTable table = new RelationTable(this, name, defaultTableAttributes);
+		RelationTable table = new RelationTable(this, name, getDefaultTableAttributes());
 		
 		table.addField( new DatabaseField(this, "external_authority", getTextType(64), null, true, null) );
 		table.addField( new DatabaseField(this, "external_id", getTextType(255), null, true, null) );
@@ -43,7 +43,7 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 	}
 
 	public RelationTable newConceptMappingTable(String name, boolean unique) {
-		RelationTable table = new RelationTable(this, name, defaultTableAttributes);
+		RelationTable table = new RelationTable(this, name, getDefaultTableAttributes());
 		
 		table.addField( new DatabaseField(this, "external_authority", getTextType(64), null, true, null) );
 		table.addField( new DatabaseField(this, "external_id", getTextType(255), null, true, null) );

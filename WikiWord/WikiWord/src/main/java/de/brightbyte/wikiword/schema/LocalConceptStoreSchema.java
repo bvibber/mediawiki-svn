@@ -62,7 +62,7 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		
 		//--------
 		
-		resourceTable = new EntityTable(this, "resource", defaultTableAttributes);
+		resourceTable = new EntityTable(this, "resource", getDefaultTableAttributes());
 		resourceTable.addField( new DatabaseField(this, "id", "INT", "AUTO_INCREMENT", true, KeyType.PRIMARY ) );
 		//resourceTable.addField( new ReferenceField(this, "corpus", "INT", null, true, null, "corpus", "id", null ) );
 		resourceTable.addField( new DatabaseField(this, "name", getTextType(255), null, true, KeyType.UNIQUE ) );
@@ -72,14 +72,14 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		resourceTable.setAutomaticField("id");
 		addTable(resourceTable);
 		
-		definitionTable = new EntityTable(this, "definition", defaultTableAttributes);
+		definitionTable = new EntityTable(this, "definition", getDefaultTableAttributes());
 		definitionTable.addField( new ReferenceField(this, "concept", "INT", null, true, KeyType.PRIMARY, "concept", "id", null ) );
 		definitionTable.addField( new ReferenceField(this, "resource", "INT", null, true, KeyType.UNIQUE, "resource", "id", null ) );
 		definitionTable.addField( new DatabaseField(this, "definition", getTextType(1024*8), null, true, null ) );
 		definitionTable.setAutomaticField(null);
 		addTable(definitionTable);
 
-		sectionTable = new EntityTable(this, "section", defaultTableAttributes);
+		sectionTable = new EntityTable(this, "section", getDefaultTableAttributes());
 		sectionTable.addField( new ReferenceField(this, "resource", "INT", null, true, KeyType.INDEX, "resource", "id", null ) );
 		sectionTable.addField( new DatabaseField(this, "section_name", getTextType(255), null, true, KeyType.INDEX ) );
 		sectionTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
@@ -88,7 +88,7 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		sectionTable.setAutomaticField(null);
 		addTable(sectionTable);
 		
-		aliasTable = new RelationTable(this, "alias", defaultTableAttributes);
+		aliasTable = new RelationTable(this, "alias", getDefaultTableAttributes());
 		//aliasTable.addField( new DatabaseField(this, "id", "INT", "AUTO_INCREMENT", false, KeyType.PRIMARY) );
 		aliasTable.addField( new ReferenceField(this, "resource", "INT", null, true, KeyType.INDEX, "resource", "id", null ) );
 		aliasTable.addField( new ReferenceField(this, "source", "INT", null, false, KeyType.INDEX, "concept", "id", null ) );
@@ -101,7 +101,7 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		//aliasTable.addKey( new DatabaseKey(this, KeyType.UNIQUE, "ident", new String[] {"resource", "concept_name", "term_text"}) );
 		addTable(aliasTable);
 
-		aboutTable = new RelationTable(this, "about", defaultTableAttributes);
+		aboutTable = new RelationTable(this, "about", getDefaultTableAttributes());
 		//aliasTable.addField( new DatabaseField(this, "id", "INT", "AUTO_INCREMENT", false, KeyType.PRIMARY) );
 		aboutTable.addField( new ReferenceField(this, "resource", "INT", null, true, null, "resource", "id", null ) );
 		aboutTable.addField( new ReferenceField(this, "concept", "INT", null, false, KeyType.INDEX, "concept", "id", null ) );
@@ -109,7 +109,7 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		aboutTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "about", new String[] {"resource", "concept"}) );
 		addTable(aboutTable);
 
-		meaningTable = new RelationTable(this, "meaning", defaultTableAttributes);
+		meaningTable = new RelationTable(this, "meaning", getDefaultTableAttributes());
 		//meaningTable.addField( new DatabaseField(this, "id", "INT", "AUTO_INCREMENT", false, KeyType.PRIMARY) );
 		meaningTable.addField( new ReferenceField(this, "concept", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
 		meaningTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );

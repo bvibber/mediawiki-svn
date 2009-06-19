@@ -114,7 +114,7 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 		int listBlobSize = tweaks.getTweak("dbstore.listBlobSize", 255*255); 
 		setGroupConcatMaxLen(listBlobSize); //TODO: if it's larger currently, don't shrink!
 		
-		conceptInfoTable = new EntityTable(this, "concept_info", defaultTableAttributes);
+		conceptInfoTable = new EntityTable(this, "concept_info", getDefaultTableAttributes());
 		conceptInfoTable.addField( new DatabaseField(this, "concept", "INT", "AUTO_INCREMENT", true, KeyType.PRIMARY ) );
 		conceptInfoTable.addField( new DatabaseField(this, "inlinks", getTextType(listBlobSize), null, false, null ) );
 		conceptInfoTable.addField( new DatabaseField(this, "outlinks", getTextType(listBlobSize), null, false, null ) );
@@ -128,7 +128,7 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 		addTable(conceptInfoTable);
 
 		if (description) {
-			conceptDescriptionTable = new EntityTable(this, "concept_description", defaultTableAttributes);
+			conceptDescriptionTable = new EntityTable(this, "concept_description", getDefaultTableAttributes());
 			conceptDescriptionTable.addField( new DatabaseField(this, "concept", "INT", "AUTO_INCREMENT", true, KeyType.PRIMARY ) );
 			conceptDescriptionTable.addField( new DatabaseField(this, "terms", getTextType(listBlobSize), null, false, null ) );
 			conceptDescriptionTable.setAutomaticField(null);

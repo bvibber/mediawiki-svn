@@ -34,7 +34,7 @@ public class WikiWordConceptStoreSchema extends WikiWordStoreSchema {
 	}
 	
 	private void init(TweakSet tweaks) {
-		conceptTable = new EntityTable(this, "concept", defaultTableAttributes);
+		conceptTable = new EntityTable(this, "concept", getDefaultTableAttributes());
 		conceptTable.addField( new DatabaseField(this, "id", "INT", "AUTO_INCREMENT", true, KeyType.PRIMARY ) );
 		conceptTable.addField( new DatabaseField(this, "random", "REAL UNSIGNED", null, true, KeyType.INDEX ) );
 		conceptTable.addField( new DatabaseField(this, "name", getTextType(255), null, true, KeyType.UNIQUE ) );
@@ -42,7 +42,7 @@ public class WikiWordConceptStoreSchema extends WikiWordStoreSchema {
 		conceptTable.setAutomaticField("id");
 		addTable(conceptTable);
 
-		broaderTable = new RelationTable(this, "broader", defaultTableAttributes);
+		broaderTable = new RelationTable(this, "broader", getDefaultTableAttributes());
 		//broaderTable.addField( new DatabaseField(this, "id", "INT", "AUTO_INCREMENT", false, KeyType.PRIMARY) );
 		broaderTable.addField( new ReferenceField(this, "narrow", "INT", null, false, null, "concept", "id", null ) );
 		broaderTable.addField( new ReferenceField(this, "broad", "INT", null, false, null, "concept", "id", null ) );
@@ -51,7 +51,7 @@ public class WikiWordConceptStoreSchema extends WikiWordStoreSchema {
 		broaderTable.addKey( new DatabaseKey(this, KeyType.INDEX, "broad_narrow", new String[] {"broad", "narrow"}) );
 		addTable(broaderTable);
 		
-		langlinkTable = new RelationTable(this, "langlink", defaultTableAttributes);
+		langlinkTable = new RelationTable(this, "langlink", getDefaultTableAttributes());
 		//langlinkTable.addField( new DatabaseField(this, "id", "INT", "AUTO_INCREMENT", false, KeyType.PRIMARY) );
 		langlinkTable.addField( new ReferenceField(this, "concept", "INT", null, true, null, "concept", "id", null ) );
 		langlinkTable.addField( new DatabaseField(this, "language", getTextType(16), null, true, null ) );
@@ -62,14 +62,14 @@ public class WikiWordConceptStoreSchema extends WikiWordStoreSchema {
 		
 		groupStats.add( new GroupStatsSpec("concept", "type", conceptTypeCodeTranslator));
 
-		linkTable = new RelationTable(this, "link", defaultTableAttributes);
+		linkTable = new RelationTable(this, "link", getDefaultTableAttributes());
 		linkTable.addField( new ReferenceField(this, "anchor", "INT", null, false, null, "concept", "id", null ) );
 		linkTable.addField( new ReferenceField(this, "target", "INT", null, false, null, "concept", "id", null ) );
 		linkTable.addKey( new DatabaseKey(this, KeyType.INDEX, "anchor_target", new String[] {"anchor", "target"}) );
 		linkTable.addKey( new DatabaseKey(this, KeyType.INDEX, "target_anchor", new String[] {"target", "anchor"}) );
 		addTable(linkTable);
 		
-		relationTable = new RelationTable(this, "relation", defaultTableAttributes);
+		relationTable = new RelationTable(this, "relation", getDefaultTableAttributes());
 		relationTable.addField( new ReferenceField(this, "concept1", "INT", null, true, null, "concept", "id", null ) );
 		relationTable.addField( new ReferenceField(this, "concept2", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
 		relationTable.addField( new DatabaseField(this, "langmatch", "INT", "DEFAULT 0", true, KeyType.INDEX ) );

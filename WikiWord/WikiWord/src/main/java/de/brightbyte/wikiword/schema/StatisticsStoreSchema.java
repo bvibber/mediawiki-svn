@@ -30,7 +30,7 @@ public class StatisticsStoreSchema extends WikiWordStoreSchema {
 	}
 	
 	private void init(boolean global, TweakSet tweaks) {
-		degreeTable = new EntityTable(this, "degree", defaultTableAttributes);
+		degreeTable = new EntityTable(this, "degree", getDefaultTableAttributes());
 		degreeTable.addField( new ReferenceField(this, "concept", "INT", null, true, KeyType.PRIMARY, "concept", "id", null ));
 		degreeTable.addField( new ReferenceField(this, "concept_name", getTextType(global ? 32*255+32*16 : 255), null, true, global ? null : KeyType.UNIQUE, "concept", "name", null ) ); 
 		degreeTable.addField( new DatabaseField(this, "in_rank", "INT", null, true, KeyType.INDEX ) );
@@ -46,7 +46,7 @@ public class StatisticsStoreSchema extends WikiWordStoreSchema {
 		degreeTable.setAutomaticField(null);
 		addTable(degreeTable);
 
-		statsTable = new EntityTable(this, "stats", defaultTableAttributes);
+		statsTable = new EntityTable(this, "stats", getDefaultTableAttributes());
 		statsTable.addField( new DatabaseField(this, "block", getTextType(32), null, true, null ) );
 		statsTable.addField( new DatabaseField(this, "name", getTextType(64), null, true, null ) );
 		statsTable.addField( new DatabaseField(this, "value", "REAL(16,4)", null, true, null ) );

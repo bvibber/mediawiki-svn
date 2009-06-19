@@ -69,7 +69,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		//NOTE: replace key defined by WikiWordConceptStoreSchema!
 		//meaningTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "term_concept", new String[] {"lang", "term_text", "concept"}) );		
 
-		originTable = new RelationTable(this, "origin", defaultTableAttributes);
+		originTable = new RelationTable(this, "origin", getDefaultTableAttributes());
 		originTable.addField( new ReferenceField(this, "global_concept", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
 		originTable.addField( new DatabaseField(this, "local_concept", "INT", null, true, null ) );
 		//originTable.addField( new DatabaseField(this, "global_concept_name", getTextType(nameSize), "DEFAULT NULL", false, null ) );
@@ -90,7 +90,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		addTable(langprepTable);
 		*/
 		
-		mergeTable = new RelationTable(this, "merge", defaultTableAttributes);
+		mergeTable = new RelationTable(this, "merge", getDefaultTableAttributes());
 		mergeTable.addField( new ReferenceField(this, "old", "INT", null, true, KeyType.PRIMARY, "concept", "id", null ) );
 		mergeTable.addField( new DatabaseField(this, "new", "INT", null, true, KeyType.INDEX ) );
 		addTable(mergeTable);
