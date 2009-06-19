@@ -427,9 +427,12 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'piwik-desc' => 'Добавляет на страницы MediaWiki скрипт Piwik, позволяющий отслеживать посещения и собирающий [[Special:Piwik|некоторые статистику]]',
 	'piwik-lastvisits' => 'Последние посещения',
+	'piwik-countries' => 'Страны',
 	'piwik-browsers' => 'Браузеры',
 	'right-viewpiwik' => 'просмотр [[Special:Piwik|статистики Piwik]]',
 );

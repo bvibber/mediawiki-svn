@@ -1552,6 +1552,7 @@ $wgCustomToolbarMessages['os'] = array(
  */
 $wgCustomToolbarMessages['pdc'] = array(
 	'ct_user_user' => 'Yuuser',
+	'ct_user_sample' => 'Yuuser-Naame',
 );
 
 /** Polish (Polski)

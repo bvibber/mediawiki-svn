@@ -227,15 +227,15 @@ $messages['qqq'] = array(
 	'right-deletediscuss-review' => '{{doc-right}}',
 	'right-deletequeue-vote' => '{{doc-right}}',
 	'deletequeue-page-speedy' => '$1 is the reason that the proposer entered.',
-	'deletequeue-page-prod' => '$1 is the reason that the proposer entered,
-$2 is a date/time,
-$3 is its date alone,
-$4 is its time alone',
-	'deletequeue-page-deletediscuss' => '$1 is the reason that the proposer entered,
-$2 is a date/time,
-$3 is the date alone,
-$4 is the time alone,
-$5 is a page title.',
+	'deletequeue-page-prod' => '* $1 is the reason that the proposer entered
+* $2 is a date/time,
+* $3 is a date (optional)
+* $4 is a time (optional)',
+	'deletequeue-page-deletediscuss' => '* $1 is the reason that the proposer entered
+* $2 is a date/time,
+* $3 is a date (optional)
+* $4 is a time (optional) 
+* $5 is a page title',
 	'deletequeue-review-reason' => '{{Identical|Comments}}',
 	'deletequeue-review-newextra' => '{{Identical|Extra information}}',
 	'deletequeue-vote-reason' => '{{Identical|Comments}}',
@@ -607,7 +607,7 @@ $messages['be-tarask'] = array(
 * Калі гэта старонка ня вартая хуткага выдаленьня, але ''выдаленьня ня будзе аспрэчвацца'', Вам неабходна [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} прапанаваць бясспрэчнае выдаленьне].
 * Калі выдаленьне гэтай старонкі ''хутчэй за ўсё будзе аспрэчанае'', Вам неабходна [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} распачаць абмеркаваньне].",
 	'deletequeue-action-text-queued' => 'Вы можаце паглядзець наступныя старонкі па гэтай прычыне выдаленьня:
-* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Паглядзець цяперашнія пацьверджаньні і аспрэчаньні].
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Паглядзець цяперашнія пацьверджаньні і аспрэчваньні].
 * [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Пацьвердзіць ці аспрэчыць выдаленьне гэтай старонкі].',
 	'deletequeue-permissions-noedit' => 'Вам неабходна мець магчымасьць рэдагаваць старонку, каб уплываць на статус выдаленьня.',
 	'deletequeue-generic-reasons' => '* Агульныя прычыны
@@ -693,18 +693,58 @@ $messages['be-tarask'] = array(
 	'deletequeue-role-vote-endorse' => 'за выдаленьне',
 	'deletequeue-role-vote-object' => 'супраць выдаленьня',
 	'deletequeue-vote-tab' => 'Галасаваць у працэсе выдаленьня',
+	'deletequeue-vote-title' => 'Падтрымаць альбо аспрэчыць выдаленьне «$1»',
+	'deletequeue-vote-text' => "Вы можаце выкарыстоўваць гэтую форму для таго каб падтрымаць альбо аспрэчыць выдаленьне «'''$1'''».
+Гэтае дзеяньне заменіць усе папярэднія падтрымкі/пярэчаньні, якія Вы зрабілі ў выдаленьне гэтай старонкі.
+Вы можаце [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} праглядзець] існуючыя падтрымкі і пярэчаньні.
+Прычына, якая была пададзеная ў прапанове на выдаленьне была ''$2''.",
+	'deletequeue-vote-legend' => 'Падтрымка/Аспрэчваньне выдаленьня',
 	'deletequeue-vote-action' => 'Рэкамэндацыя:',
+	'deletequeue-vote-endorse' => 'Падтрымаць выдаленьне.',
+	'deletequeue-vote-object' => 'Аспрэчыць выдаленьне.',
 	'deletequeue-vote-reason' => 'Камэнтары:',
+	'deletequeue-vote-submit' => 'Даслаць',
+	'deletequeue-vote-success-endorse' => 'Вы пасьпяхова падтрымалі выдаленьне гэтай старонкі.',
+	'deletequeue-vote-success-object' => 'Вы пасьпяхова аспрэчылі выдаленьне гэтай старонкі.',
+	'deletequeue-vote-requeued' => 'Вы пасьпяхова аспрэчылі выдаленьне гэтай старонкі.
+Згодна з Вашым аспрэчваньнем, старонка была перанесена ў чаргу $1.',
+	'deletequeue-showvotes' => 'Падтрымкі і аспрэчваньні выдаленьня «$1»',
+	'deletequeue-showvotes-text' => "Ніжэй пададзеныя падтрымкі і аспрэчваньні пададзеныя ў выдаленьні старонкі «'''$1'''».
+Вы можаце [{{fullurl:{{FULLPAGENAME}}|action=delvote}} выказаць Вашую падтрымку альбо аспрэчваньне] гэтага выдаленьня.",
+	'deletequeue-showvotes-restrict-endorse' => 'Паказаць толькі падтрымкі',
+	'deletequeue-showvotes-restrict-object' => 'Паказаць толькі аспрэчваньні',
+	'deletequeue-showvotes-restrict-none' => 'Паказаць усе падтрымкі і аспрэчваньні',
+	'deletequeue-showvotes-vote-endorse' => "'''Падтрыманае''' выдаленьне $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''Аспрэчанае''' выдаленьне $1 $2",
+	'deletequeue-showvotes-showingonly-endorse' => 'Паказаныя толькі падтрымкі',
+	'deletequeue-showvotes-showingonly-object' => 'Паказаныя толькі аспрэчваньні',
+	'deletequeue-showvotes-none' => 'Няма ні падтрымак, ні аспрэчваньняў выдаленьня гэтай старонкі.',
+	'deletequeue-showvotes-none-endorse' => 'Няма падтрымак выдаленьня гэтай старонкі.',
+	'deletequeue-showvotes-none-object' => 'Няма аспрэчваньняў выдаленьня гэтай старонкі.',
 	'deletequeue' => 'Чарга выдаленьняў',
+	'deletequeue-list-text' => 'Гэтая старонка паказвае ўсе старонкі, якія знаходзяцца ў сыстэме выдаленьня.',
+	'deletequeue-list-search-legend' => 'Пошук старонак',
 	'deletequeue-list-queue' => 'Чарга:',
 	'deletequeue-list-status' => 'Статус:',
+	'deletequeue-list-expired' => 'Паказваць толькі прапановы, якія патрабуюць закрыцьця.',
+	'deletequeue-list-search' => 'Пошук',
+	'deletequeue-list-anyqueue' => '(любое)',
+	'deletequeue-list-votes' => 'Сьпіс галасоў',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|падтрымка|падтрымкі|падтрымак}}, $2 {{PLURAL:$2|аспрэчваньне|аспрэчваньні|аспрэчваньняў}}',
 	'deletequeue-list-header-page' => 'Старонка',
 	'deletequeue-list-header-queue' => 'Чарга',
+	'deletequeue-list-header-votes' => 'Падтрымкі і аспрэчваньні',
+	'deletequeue-list-header-expiry' => 'Скончаныя',
 	'deletequeue-list-header-discusspage' => 'Старонка абмеркаваньня',
+	'deletequeue-case-intro' => 'Гэтая старонка ўтрымлівае інфармацыю пра выдаленьне.',
 	'deletequeue-list-header-reason' => 'Прычына выдаленьня',
+	'deletequeue-case-votes' => 'Падтрымкі/аспрэчваньні:',
+	'deletequeue-case-title' => 'Падрабязнасьці пра запыт на выдаленьне',
+	'deletequeue-case-details' => 'Асноўныя падрабязнасьці',
 	'deletequeue-case-page' => 'Старонка:',
 	'deletequeue-case-reason' => 'Прычына:',
 	'deletequeue-case-expiry' => 'Тэрмін:',
+	'deletequeue-case-needs-review' => 'Гэты запыт патрабуе [[$1|рэцэнзаваньня]].',
 );
 
 /** Bulgarian (Български)
@@ -1537,6 +1577,7 @@ Huomaa, että tämä sivu voidaan poistaa nopeasti käytännön mukaisesti.",
  * @author McDutchie
  * @author Meno25
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'deletequeue-desc' => 'Crée un [[Special:DeleteQueue|système de queue pour gérer les suppression]]',
@@ -1604,7 +1645,7 @@ Une discussion est en cours sur [[$5]], elle terminera le ''$2''.",
 	'deletequeue-review-newextra' => 'Information supplémentaire :',
 	'deletequeue-review-submit' => 'Sauvegarder la relecture',
 	'deletequeue-review-original' => 'Motif de la nomination',
-	'deletequeue-actiondisabled-involved' => 'L’action suivante est désactivée car vous avez pris part dans ce cas de suppression dans le sens de $1 :',
+	'deletequeue-actiondisabled-involved' => 'L’action suivante est désactivée dans ce cas de suppression car vous avez joué le(s) rôle(s) de $1 :',
 	'deletequeue-actiondisabled-notexpired' => 'L’action suivante a été désactivée car le délai pour la nomination à la suppression n’est pas encore expiré :',
 	'deletequeue-review-badaction' => 'Vous avez indiqué une action incorrecte',
 	'deletequeue-review-actiondenied' => 'Vous avez indiqué une action qui est désactivée pour cette page.',
@@ -3558,8 +3599,10 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'deletequeue-delnom-otherreason' => 'Annerer Grund',
 	'deletequeue-list-header-page' => 'Blatt',
 	'deletequeue-case-page' => 'Blatt:',
+	'deletequeue-case-reason' => 'Grund:',
 );
 
 /** Polish (Polski)

@@ -158,11 +158,12 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
 	'backforth-next' => 'Següent ($1)',
-	'backforth-desc' => 'Afegeix les enllaços de paginació "Següent" i "Anterior" al cap d\'amunt de les pàgines',
+	'backforth-desc' => 'Afegeix els enllaços de paginació alfabètica «Següent» i «Anterior» al capdamunt de les pàgines',
 	'backforth-prev' => 'Anterior ($1)',
 );
 
@@ -623,6 +624,7 @@ $messages['oc'] = array(
  */
 $messages['pdc'] = array(
 	'backforth-next' => 'Neegscht ($1)',
+	'backforth-prev' => 'Letscht ($1)',
 );
 
 /** Polish (Polski)

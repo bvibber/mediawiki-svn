@@ -58,10 +58,11 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
-	'csshooks-desc' => 'Afegeix CSS a les pàgines de sortida per un estil millor',
+	'csshooks-desc' => 'Afegeix CSS a la presentació HTML de les pàgines per un millor estil',
 );
 
 /** Czech (Česky)

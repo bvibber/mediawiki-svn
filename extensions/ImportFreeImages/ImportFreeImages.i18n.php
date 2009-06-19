@@ -943,6 +943,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'importfreeimages_owner' => 'Autore',
+	'importfreeimages_next' => 'Prossime $1',
 	'importfreeimages_promptuserforfilename' => "Pe piacere scrive 'u nome d'u file de destinazione:",
 );
 

@@ -1005,6 +1005,13 @@ $messages['os'] = array(
 	'countedits-ok' => 'Афтæ уæд!',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'countedits-username' => 'Yuuser-Naame:',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Slomox
  */

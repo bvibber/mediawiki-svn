@@ -1245,6 +1245,13 @@ $messages['pam'] = array(
 	'bookinfo-error-nosuchitem' => 'Ala yu o e meyakit ing bageng iti.',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'bookinfo-result-year' => 'Yaahr:',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Holek

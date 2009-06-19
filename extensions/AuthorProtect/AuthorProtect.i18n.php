@@ -947,6 +947,13 @@ $messages['os'] = array(
 	'authorprotect-reason' => 'Аххос',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'authorprotect-reason' => 'Grund',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad

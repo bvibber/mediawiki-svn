@@ -1003,10 +1003,11 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
-	'configure' => 'Configura la wiki',
+	'configure' => 'Configura el wiki',
 	'configure-desc-group' => 'Grup',
 	'configure-desc-key' => 'Clau',
 	'configure-desc-ns' => 'Espai de noms',
@@ -5828,6 +5829,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'configure-js-remove' => 'Lösche',
+	'configure-section-specialpages' => 'Besunnere Bledder',
 	'configure-throttle-action-move' => 'Ziehe',
 );
 

@@ -138,11 +138,12 @@ Molimo koristite stranicu [[MediaWiki:Number_of_watching_users_pageview]] za odr
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
 	'whoiswatching' => 'Qui està una pàgina wiki',
-	'whoiswatching-desc' => "Proporciona una llistat d'usuaris que estan mirant una pàgina wiki",
+	'whoiswatching-desc' => 'Proporciona una llista dels usuaris que estan mirant una pàgina wiki',
 	'specialwhoiswatchingthepage' => 'Qui està mirant %s',
 );
 

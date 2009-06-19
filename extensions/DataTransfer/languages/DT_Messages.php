@@ -175,9 +175,12 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'dt-desc' => 'Дазваляе імпартаваць і экспартаваць зьвесткі, якія ўтрымліваюцца ў выкліках шаблёнах',
 	'viewxml' => 'Паказаць XML',
+	'dt_viewxml_docu' => 'Калі ласка, выберыце што праглядаць у фармаце XML сярод наступных катэгорыяў і прастораў назваў.',
 	'dt_viewxml_categories' => 'Катэгорыі',
 	'dt_viewxml_namespaces' => 'Прасторы назваў',
 	'dt_viewxml_simplifiedformat' => 'Спрошчаны фармат',
@@ -188,6 +191,16 @@ $messages['be-tarask'] = array(
 	'dt_xml_field' => 'Поле',
 	'dt_xml_name' => 'Назва',
 	'dt_xml_title' => 'Назва',
+	'dt_xml_id' => 'Ідэнтыфікатар',
+	'dt_xml_freetext' => 'Вольны тэкст',
+	'importxml' => 'Імпарт XML',
+	'dt_import_selectfile' => 'Калі ласка, выберыце файл у фармаце $1 для імпарту:',
+	'dt_import_editsummary' => 'імпарт $1',
+	'dt_import_importing' => 'Імпартаваньне...',
+	'dt_import_success' => '$1 {{PLURAL:$1|старонка будзе|старонкі будуць|старонак будзе}} створана з файла ў фармаце $2.',
+	'importcsv' => 'Імпарт CSV',
+	'dt_importcsv_badheader' => "Памылка: загаловак слупка $1, '$2', павінен быць адным з '$3', '$4' альбо у форме 'назва_шаблёну[назва_поля]'",
+	'right-datatransferimport' => 'імпарт зьвестак',
 );
 
 /** Bulgarian (Български)
@@ -244,9 +257,9 @@ $messages['bs'] = array(
 $messages['ca'] = array(
 	'dt-desc' => 'Permet importar i exportar les dades que contenen les crides de les plantilles',
 	'viewxml' => 'Veure XML',
-	'dt_viewxml_docu' => "Si us plau, selecciona d'entre les següents categories i espais de noms per a veure-ho en format XML.",
+	'dt_viewxml_docu' => "Si us plau, seleccioneu d'entre les següents categories i espais de noms, per a veure-ho en format XML.",
 	'dt_viewxml_categories' => 'Categories',
-	'dt_viewxml_namespaces' => 'Espai de noms',
+	'dt_viewxml_namespaces' => 'Espais de noms',
 	'dt_viewxml_simplifiedformat' => 'Format simplificat',
 	'dt_xml_namespace' => 'Espai de noms',
 	'dt_xml_pages' => 'Pàgines',
@@ -258,7 +271,7 @@ $messages['ca'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Text lliure',
 	'importxml' => 'Importa XML',
-	'dt_import_selectfile' => 'Si us plau, selecciona el fitxer $1 per a importar:',
+	'dt_import_selectfile' => 'Si us plau, seleccioneu el fitxer $1 per a importar:',
 	'dt_import_editsummary' => 'Importació $1',
 	'dt_import_importing' => "S'està important...",
 	'dt_import_success' => '$1 {{PLURAL:$1|pàgina|pàgines}} es crearan des del fitxer $2.',
@@ -885,6 +898,7 @@ $messages['lb'] = array(
 	'dt_import_importing' => 'Import am gaang ...',
 	'dt_import_success' => '$1 {{PLURAL:$1|Säit gëtt|Säite ginn}} aus dem $2-Fichier ugeluecht.',
 	'importcsv' => 'CSV importéieren',
+	'dt_importcsv_badheader' => "Feeler: D'Iwwerschrëft vun der Kolonn $1, '$2', muss entweder '$3', '$4' oder am Format 'Numm_vun_der_Schabloun(Numm_vum_Feld)' sinn",
 	'right-datatransferimport' => 'Donnéeën importéieren',
 );
 
@@ -1112,6 +1126,7 @@ $messages['os'] = array(
 $messages['pdc'] = array(
 	'dt_xml_namespace' => 'Blatznaame',
 	'dt_xml_page' => 'Blatt',
+	'dt_xml_name' => 'Naame',
 );
 
 /** Polish (Polski)
@@ -1268,6 +1283,7 @@ $messages['ru'] = array(
 	'dt_import_importing' => 'Импортирование...',
 	'dt_import_success' => '$1 {{PLURAL:$1|страница была|страницы были|страниц были}} созданы из файла $2.',
 	'importcsv' => 'Импорт CSV',
+	'dt_importcsv_badheader' => 'Ошибка. Заголовок колонки №$1 «$2» должен быть или «$3», или «$4», или в форме «template_name[field_name]»',
 	'right-datatransferimport' => 'импорт информации',
 );
 

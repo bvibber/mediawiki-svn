@@ -1124,6 +1124,13 @@ $messages['os'] = array(
 	'patrol-revert-reason' => 'Аххос',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'patrol-revert-reason' => 'Grund:',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad

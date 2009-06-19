@@ -5268,6 +5268,13 @@ $messages['ia'] = array(
 	'configure-setting-wgUDPProfilerPort' => 'Porta pro le analyse de rendimento via UDP',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'configure-setting-wgDebugLogGroups-value' => 'Berkas',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty
@@ -5784,22 +5791,22 @@ $messages['ja'] = array(
 	'configure-setting-wgUploadNavigationUrl' => 'アップロードのナビゲーション用リンクが指すURL',
 	'configure-setting-wgUploadPath' => 'アップロードディレクトリのURL',
 	'configure-setting-wgVariantArticlePath' => '言語変種ページ用のパス',
-	'configure-setting-wgAllowCategorizedRecentChanges' => '最近更新したページのうち、あるカテゴリまたはそのサブ（サブサブサブ…）カテゴリに含まれるもののみを表示することができるようにする',
+	'configure-setting-wgAllowCategorizedRecentChanges' => '最近の更新に、あるカテゴリまたはそのサブ（サブサブサブ…）カテゴリに含まれるもののみを表示することができるようにする',
 	'configure-setting-wgPutIPinRC' => '"recentchanges" テーブルにIPアドレスを記録する',
-	'configure-setting-wgRCChangedSizeThreshold' => '最近更新したページで編集前後の文字数の変化がこの値よりも小さいものをハイライトする',
+	'configure-setting-wgRCChangedSizeThreshold' => '文字数の変化がこの値よりも小さいものを最近の更新でハイライトする',
 	'configure-setting-wgRCFilterByAge' => '$wgRCLinkDays から $wgRCMaxAge より高い値を除外して表示する',
-	'configure-setting-wgRCLinkLimits' => '最近更新したページで表示する件数のリスト',
-	'configure-setting-wgRCLinkDays' => '最近更新したページで表示する日数のリスト',
-	'configure-setting-wgRCMaxAge' => '最近更新したページに項目を載せておく最大の期間',
-	'configure-setting-wgRCShowChangedSize' => '最近更新したページで文字数の変化を表示する',
-	'configure-setting-wgRCShowWatchingUsers' => '最近更新したページおよびウォッチリスト、ページ履歴画面でウォッチしている利用者の数を表示する',
-	'configure-setting-wgShowUpdatedMarker' => '最近更新したページおよびウォッチリスト、ページ履歴画面で「最後の訪問から更新されています」という印を表示する',
+	'configure-setting-wgRCLinkLimits' => '最近の更新ページで表示する件数',
+	'configure-setting-wgRCLinkDays' => '最近の更新ページで表示する日数',
+	'configure-setting-wgRCMaxAge' => '最近の更新ページに項目を載せておく最低期間',
+	'configure-setting-wgRCShowChangedSize' => '最近の更新ページに文字数の変化を表示する',
+	'configure-setting-wgRCShowWatchingUsers' => '最近の更新ページおよびウォッチリスト、ページ履歴画面でウォッチしている利用者の数を表示する',
+	'configure-setting-wgShowUpdatedMarker' => '最近の更新ページおよびウォッチリスト、ページ履歴画面で「(最後の訪問から) 更新あり」という印を表示する',
 	'configure-setting-wgUseRCPatrol' => '荒らしの点検に最近の更新パトロールを利用する',
-	'configure-setting-wgRC2UDPAddress' => '最近更新したページのUDPによる送信のアドレス',
-	'configure-setting-wgRC2UDPInterwikiPrefix' => '最近更新したページのUDP通知にインターウィキ接頭辞を加える',
-	'configure-setting-wgRC2UDPOmitBots' => '最近更新したページのUDP通知からロボットの編集を省く',
-	'configure-setting-wgRC2UDPPort' => '最近更新したページのUDP通知に使うポート',
-	'configure-setting-wgRC2UDPPrefix' => '最近更新したページのUDP通知で行頭につける文字列',
+	'configure-setting-wgRC2UDPAddress' => '最近の更新のUDPによる送信のアドレス',
+	'configure-setting-wgRC2UDPInterwikiPrefix' => '最近の更新のUDP通知にインターウィキ接頭辞を加える',
+	'configure-setting-wgRC2UDPOmitBots' => '最近の更新のUDP通知からロボットの編集を省く',
+	'configure-setting-wgRC2UDPPort' => '最近の更新のUDP通知に使うポート',
+	'configure-setting-wgRC2UDPPrefix' => '最近の更新のUDP通知で行頭につける文字列',
 	'configure-setting-wgBlockAllowsUTEdit' => 'ブロックされた利用者が自身の会話ページを編集できるようにする',
 	'configure-setting-wgSysopEmailBans' => '利用者が [[Special:EmailUser]] にアクセスするのを管理者が禁止できるようにする',
 	'configure-setting-wgSysopRangeBans' => '管理者にIPアドレス範囲を禁止することを許可する',
@@ -5937,7 +5944,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgAmericanDates' => 'Donn en Englisch nit "May 12" en "12 May" ömsäze',
 	'configure-setting-wgDisableLangConversion' => 'Donn nit automattesch zwesche Dialäkte un Schriifaate ömwandelle',
 	'configure-setting-wgDisableTitleConversion' => 'Donn de Siggetittelle nit automattesch zwesche Dialäkte un Schriifaate ömwandelle',
-	'configure-setting-wgEditEncoding' => 'Zeijsche, die nit ußdröklesch omjewandelt wääde, wan se ußjejovve wääde',
+	'configure-setting-wgEditEncoding' => 'Zeijsche, die nit ußdröklesch beim Ujävve ömjewandelt wääde, ävver ömjewandelt wääde möße, wann se en et Feld vör dä Ennhalt vun Sigge ze ändere jonn',
 	'configure-setting-wgForceUIMsgAsContentMsg' => 'De Nahme vun Texte un Nohreeschte uss em Engerfäjß, di zohsäzlesch als Enhalldt vum Wiki jellde sulle, alsu als Siggetittelle un esu jet',
 	'configure-setting-wgInputEncoding' => 'De Ömwandlung vun enjejovve Zeijsche, wann et Wiki nit met UTF-8 leuf',
 	'configure-setting-wgInterwikiMagic' => 'Donn de Engerwiki_Lengks en en extra Leß aanzeije',
@@ -6034,8 +6041,8 @@ $messages['ksh'] = array(
 	'configure-setting-wgReadOnly' => 'Deiht et Ändere em Wiki verbeede, un dat hee als der Jrond doför aanzeije',
 	'configure-setting-wgReadOnlyFile' => 'Datei met dämm Jrond dren, woröm de Datebangk jrahdt kei Änderunge aanämme kann',
 	'configure-setting-wgRestrictionTypes' => 'Akßjuhne, di mer ennschrängke odder verbeede kann',
-	'configure-setting-wgSpamRegex' => '<i lang="en">Regular expressons</i> als Fellter jäje der <i lang="en">SPAM</i>',
-	'configure-setting-wgSummarySpamRegex' => 'Et sellve wi <code lang="en">$wgSpamRegex</code>, ußer bei Kommentaare för et Ändee',
+	'configure-setting-wgSpamRegex' => '<i lang="en">Regular expressons</i> als Fellter jäje der <i lang="en">SPAM</i> en Sigge',
+	'configure-setting-wgSummarySpamRegex' => '<i lang="en">Regular expressons</i> als Fellter jäje der <i lang="en">SPAM</i> em Feld „{{int:Summary}}“ beim Sigge Ändere udder Schriive',
 	'configure-setting-wgWhitelistRead' => 'Sigge, di de naameloose Metmaacher ze sinn krijje',
 	'configure-setting-wgEmailAuthentication' => 'En beschtääteschte <i lang="en">e-mail</i>-Addräß es nüdesch, öm de <i lang="en">e-mail</i> ier Müjjeleschkeite bruch ze künne',
 	'configure-setting-wgEmergencyContact' => 'Däm Wikki-Verantwootlijje sing <i lang="en">e-mail</i>-Addräß',
@@ -6414,7 +6421,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgProfilePerHost' => 'Donn däm ßööver för de Aanwendung singe Nahme en de Daate övver de Projramme ier Leißdung schriive',
 	'configure-setting-wgProfileToDatabase' => 'Donn zosamme jezallte Daate uß dä Tabäll övver de Projramme ier Leißdung en de Daatebangk schriive',
 	'configure-setting-wgUDPProfilerHost' => 'Dä Rääschner för dat Projramm <i lang="en">UDP</i> öm de Projramme ier Leißdung beschriive',
-	'configure-setting-wgUDPProfilerPort' => 'De Pooz (<i lang="en">port</i>) för dat Projramm <i lang="en">UDP</i> öm de Projramme ier Leißdung beschriive',
+	'configure-setting-wgUDPProfilerPort' => 'De „Pooz“ (<code lang="en">port</code>) för dat Projramm, öm övver <i lang="en">UDP</i> de Projramme ier Leißdung ze beshtemme (<code lang="en">UDP-profiler</code>)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -6441,6 +6448,7 @@ $messages['lb'] = array(
 	'configure-setting-wgAllowImageMoving' => 'Ëmbenne vu Fichieren aschalten',
 	'configure-setting-wgIgnoreImageErrors' => 'Feelermessage fir Biller net weisen',
 	'configure-setting-wgMaxAnimatedGifArea' => "Maximale Beräich a Pixele fir animéiert GIF'en",
+	'configure-setting-wgMaxImageArea' => 'Maximal Gréisst a Pixel fir Biller',
 	'configure-setting-wgShowEXIF' => 'EXIF-Donnéeën op der Beschreiwungssäit vum Fichier weisen',
 	'configure-setting-wgThumbLimits' => 'Erlaabte Gréisste vun de Miniaturen',
 	'configure-setting-wgUseFileCache' => 'Den Tëschespäicher fir Fichiere benotzen',
@@ -7724,6 +7732,15 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'configure-setting-wgVersion' => 'MediaWiki-versjon',
+	'configure-setting-wgAllowSpecialInclusion' => 'Tillat inkludering av spesialsider',
+	'configure-setting-wgExportAllowHistory' => 'Tillat eksportering for å inkludere hele historikken',
+	'configure-setting-wgExportAllowListContributors' => 'Tillat at en liste over bidragsytere kan eksporteres',
+	'configure-setting-wgExportFromNamespaces' => 'Tillat alternativet "eksporter alle sidene i navnerommet" i [[Special:Export]]',
+	'configure-setting-wgExportMaxHistory' => 'Maksimalt antall versjoner for [[Special:Export]]',
+	'configure-setting-wgExportMaxLinkDepth' => 'Største verdi for "pagelink-depth"-parameteren i [[Special:Export]]',
+	'configure-setting-wgFilterLogTypes' => 'Tillatte loggslettingstyper',
+	'configure-setting-wgImportTargetNamespace' => 'Målnavnerom for interwikiimporteringer',
 	'configure-setting-wgDjvuToXML' => 'Filsti til den kjørbare djvutoxml',
 	'configure-setting-wgMemCachedPersistent' => 'Bruk varige memcached-tilkoblinger',
 	'configure-setting-wgMemCachedServers' => 'Memcached-tjenere',
@@ -8336,6 +8353,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'configure-setting-wgExtraLanguageNames-value' => 'Naame',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Blatznaame',
 );
 

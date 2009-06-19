@@ -275,6 +275,13 @@ $messages['oc'] = array(
 	'uos-title' => "Distribucion de las valors de l'opcion d'utilizaire $1",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'uos-other' => '*Annere',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */

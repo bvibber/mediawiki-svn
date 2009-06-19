@@ -3642,6 +3642,7 @@ Subukan me ing pekabayung bersion ning <a href="http://www.microsoft.com/ie">Int
  */
 $wgGoogleMapsMessages['pdc'] = array(
 	'gm-zoom-control' => 'Faahre-Gnepp',
+	'gm-yes' => 'Ya',
 );
 
 /** Polish (Polski)
@@ -3974,6 +3975,7 @@ $wgGoogleMapsMessages['roa-tara'] = array(
 	'gm-load-map' => "Careche 'a mappe",
 	'gm-no-results' => 'Niscune resultete',
 	'gm-map' => 'Mappe',
+	'gm-are-you-sure' => 'Sì secure secure?',
 	'gm-large' => 'Granne',
 	'gm-medium' => 'Medie',
 	'gm-small' => 'Piccinne',
@@ -3981,9 +3983,22 @@ $wgGoogleMapsMessages['roa-tara'] = array(
 	'gm-yes' => 'Sine',
 	'gm-no' => 'None',
 	'gm-search' => 'Cirche',
+	'gm-meters' => 'metre',
+	'gm-miles' => 'miglie',
+	'gm-editing-path' => "Cazze sus 'a mappe pe aggiungere cchiù punde pe stu percorse.",
 	'gm-save-path' => 'Reggistre',
+	'gm-edit-path' => 'aggiunge punde',
+	'gm-show-path' => 'fà vedè le punde',
+	'gm-color-path' => 'cange culore',
+	'gm-color-fill' => "cange 'u culore de inghijemende",
+	'gm-add-fill' => "inghije l'area",
+	'gm-remove-fill' => "live l'inghijemende",
+	'gm-fill-color' => 'Colore de inghijemende',
+	'gm-line-color' => "Colore d'a linea",
+	'gm-opacity' => 'Opacetà',
 	'gm-make-map' => "fà 'na mappe",
 	'gm-hide-map' => "scunne 'a mappe",
+	'gm-back' => 'rrete',
 	'gm-earth' => 'Terra',
 	'gm-moon' => 'Lune',
 	'gm-mars' => 'Marte',

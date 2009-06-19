@@ -198,6 +198,7 @@ Neodgovarajuće datoteke će biti obrisane odmah, pogledajte [[{{MediaWiki:Multi
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
@@ -207,7 +208,7 @@ $messages['ca'] = array(
 	'multipleupload-saveallfiles' => 'Desa tots els fitxers',
 	'multiupload-fileuploaded' => "S'ha carregat el fitxer.",
 	'multiupload-toolbox' => 'Carrega múltiples fitxers',
-	'multiupload-no-files' => 'Si us plau, seleccioni com a mínim un fitxer per a carregar',
+	'multiupload-no-files' => 'Si us plau, seleccioneu com a mínim un fitxer per a carregar',
 	'multiupload-blank' => "No s'ha seleccionat cap fitxer",
 );
 

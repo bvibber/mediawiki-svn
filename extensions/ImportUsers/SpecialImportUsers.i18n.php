@@ -178,7 +178,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'importusers' => 'Внасяне на потребители',
-	'importusers-desc' => 'Внасяне на потребители от CSV-файл; кодиране: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Внасяне на потребители]] от CSV-файл; кодиране: UTF-8',
 	'importusers-uploadfile' => 'Качване на файл',
 	'importusers-form-replace-present' => 'Заменяне на съществуващите потребители',
 	'importusers-form-button' => 'Внасяне',
@@ -222,6 +222,7 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Aleator
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
@@ -237,8 +238,8 @@ $messages['ca'] = array(
 Actualitzat.",
 	'importusers-user-present-not-update' => "L'usuari '''$1''' ja existeix actualment.
 No s'ha actualitzat.",
-	'importusers-user-invalid-format' => "Les dades d'usuari de la línia #&1 tenen un format invàlid o estan en blanc.
-S'ha omès.",
+	'importusers-user-invalid-format' => "Les dades d'usuari de la línia #$1 tenen un format invàlid o estan en blanc.
+S'han omès.",
 	'importusers-log' => "Importa el registre d'usuaris",
 	'importusers-log-summary' => 'Resum',
 	'importusers-log-summary-all' => 'Tot',
@@ -438,6 +439,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jack Phoenix
  * @author Nike
  * @author Vililikku
@@ -454,7 +456,7 @@ $messages['fi'] = array(
 	'importusers-user-present-update' => "Käyttäjä '''$1''' on jo olemassa. Päivitetty.",
 	'importusers-user-present-not-update' => "Käyttäjä '''$1''' on jo olemassa. Ei päivitetty.",
 	'importusers-user-invalid-format' => 'Käyttäjätiedolla rivillä #$1 on kelvoton muoto tai on tyhjä. Ohitettu.',
-	'importusers-log' => 'Tuontiloki',
+	'importusers-log' => 'Käyttäjien tuontiloki',
 	'importusers-log-summary' => 'Yhteenveto',
 	'importusers-log-summary-all' => 'Kaikki',
 	'importusers-log-summary-added' => 'Lisätty',
@@ -1325,6 +1327,7 @@ $messages['ru'] = array(
 	'importusers-password' => 'пароль',
 	'importusers-email' => 'эл. почта',
 	'importusers-realname' => 'настоящее имя',
+	'right-import_users' => 'импортировать сразу несколько участников',
 );
 
 /** Tachelhit (Tašlḥiyt)

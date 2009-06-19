@@ -186,6 +186,18 @@ $2",
 	'userrightsnotif-desc' => 'Envia una notificació als usuaris per correu electrònic quan es canvien els seus drets',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'userrightsnotifybody' => 'سڵاو $1.<br /><br />
+ئه‌مه‌ بۆ ئاگادارکردنه‌وه‌ته‌ که‌ هاوبه‌شی گرووپه‌که‌ت له‌ $2 دا به‌ده‌ست $3 له‌ $4 دا گۆڕدرا.<br /><br />
+زیادکرا:$5 <br />
+لابرا:$6  <br /><br />
+له‌گه‌ڵ ڕێزدا، <br /><br />
+$2',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -367,11 +367,13 @@ $messages['pt-br'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'shareduserrights' => 'Управление общими правами участников',
 	'gblrights-desc' => 'Простое [[Special:SharedUserRights|администрирование глобальных прав участников]]',
 	'gblrights-logpage' => 'Журнал глобальных прав',
+	'gblrights-pagetext' => 'Это журнал изменений, внесенных в таблицу глобальных прав.',
 	'gblrights-rights-entry' => 'изменил глобальное членство в группах для $1 с $2 на $3',
 	'right-userrights-shared' => 'управление общими правами участников',
 );

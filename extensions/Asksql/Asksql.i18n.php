@@ -186,6 +186,7 @@ Ovo može dovesti do češćeg ažuriranja na serveru, pa te molimo da ovo funkc
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
@@ -194,10 +195,10 @@ $messages['ca'] = array(
 	'asksqltext' => "Useu el formulari inferior per a realitzar consultes directament a la base de dades.
 Useu cometes senzilles ('com aquestes') per a delimitar els textos.
 Això pot carregar considerablement el servidor, per tant, si us plau useu aquesta funció adequadament.",
-	'sqlislogged' => 'Si us plau, observa que totes les consultes estan carregades.',
-	'sqlquery' => 'Introdueix una consulta',
+	'sqlislogged' => "Si us plau, observeu que totes les consultes s'enregistren.",
+	'sqlquery' => 'Introduiu una consulta',
 	'querybtn' => 'Tramet una consulta',
-	'selectonly' => 'Sols estan permeses les consultes només de lectura.',
+	'selectonly' => 'Solament estan permeses les consultes de només lectura.',
 	'querysuccessful' => 'Consulta correcta',
 	'right-asksql' => 'Fes consultes SQL',
 );

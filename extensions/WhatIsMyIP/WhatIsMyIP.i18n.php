@@ -88,6 +88,14 @@ $messages['bs'] = array(
 	'right-whatismyip' => 'Pregledati [[Special:WhatIsMyIP|vlastitu IP adresu]]',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'whatismyip' => 'ئای‌پی من چیه‌',
+	'whatismyip-out' => 'ئه‌دره‌سی ئای‌پی تۆ:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

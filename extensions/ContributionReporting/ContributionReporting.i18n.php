@@ -2059,6 +2059,17 @@ $messages['oc'] = array(
 	'specialpages-group-contribution' => 'Contribucions / Levada de fonses',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'contrib-hist-name' => 'Naame',
+	'contribstats-day' => 'Daag',
+	'contribstats-month' => 'Munet',
+	'contribstats-value-under' => 'Wennicher als $1',
+	'contribstats-value-over' => 'Iwwer $1',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Maikking

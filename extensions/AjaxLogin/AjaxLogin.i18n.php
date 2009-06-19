@@ -59,11 +59,12 @@ Možete izgubiti promjene koje ste napravili na ovoj stranicu ako sada napustite
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
-	'ajaxLogin2' => 'Està segur?
-Pot perdre els seus canvis en aqueeta pàgina si en surt ara.',
+	'ajaxLogin2' => "N'esteu segurs?
+Podeu perdre els vostres canvis en aquesta pàgina si ara en sortiu.",
 	'ajaxlogin-create' => 'Crea un compte',
 );
 

@@ -62,8 +62,8 @@ Utilisation : &lt;stockchart ticker="AAPL"/&gt;',
  * @author Toliño
  */
 $messages['gl'] = array(
-	'stockcharts-desc' => 'Engade a etiqueta <nowiki><stockchart ticker="AAPL"/></nowiki> para un gráfico circular financeiro interactivo',
-	'stockcharts-missingticker' => 'Para inserir un gráfico circular é necesario especificar, polo menos, un marcador.
+	'stockcharts-desc' => 'Engade a etiqueta <nowiki><stockchart ticker="AAPL"/></nowiki> para unha gráfica circular financeira interactiva',
+	'stockcharts-missingticker' => 'Para inserir unha gráfica circular é necesario especificar, polo menos, un marcador.
 Use: &lt;stockchart ticker="AAPL"/&gt;',
 );
 

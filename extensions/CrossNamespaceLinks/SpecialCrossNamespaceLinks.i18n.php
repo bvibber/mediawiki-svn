@@ -289,7 +289,7 @@ $messages['fo'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'crossnamespacelinks' => 'Liens vers d’autres espaces de noms',
+	'crossnamespacelinks' => 'Liens entre espaces de noms',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Énumère les liens vers des espaces de noms différents]] qui ne devraient pas exister sur {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Cette page fournit une liste des liens depuis une page de l’espace de noms principal vers d’autres espaces de noms (exceptés {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}) et dont l’utilisation est déconseillée.',
 	'crossnamespacelinkstext' => '$1 : contient $2 lien{{PLURAL:$2||s}} vers l’espace $3',

@@ -1607,12 +1607,14 @@ Koristite ovo da biste postavili izvorni video koji nije pretvoren u Theora form
 	'specialpages-group-mv_group' => 'MetaVidWiki posebne stranice',
 	'mv_ogg_high_quality' => 'Visoki kvalitet - Ogg Theora 900 kbit/s',
 	'mv_stream_added' => 'Dodali ste tok $1',
+	'mvexportsearch' => 'MetaVid izvoz',
 	'mv_move_delete_msg' => 'premješten na $1',
 	'mv_add_stream_submit' => 'Dodaj tok',
 	'mv_path_type_mp4_stream' => 'MP4 server toka',
 	'mv_path_type_label' => 'tip puta',
 	'mv_duration_label' => 'Trajanje',
 	'mv_save_changes' => 'Sačuvaj promjene',
+	'mv_user_cant_edit' => 'Morate se [$1 prijaviti] da biste uređivali, $2',
 	'mv_media_path' => 'putanja medije',
 	'mv_missing_cat' => 'Nedostaje ime kategorije',
 	'mv_remove_reason' => 'Razlog brisanja:',
@@ -1649,7 +1651,7 @@ $messages['ca'] = array(
 	'mv_external_file' => 'Fitxer extern',
 	'mv_tool_search' => 'Cerca',
 	'mv_edit' => 'Edita',
-	'mv_history' => 'Història',
+	'mv_history' => 'Historial',
 	'mv_edit_title' => 'Edició de text',
 	'mv_remove' => 'elimina',
 	'mv_adjust' => 'ajusta',
@@ -5287,6 +5289,8 @@ All Ännerunge sinn da verluer',
 	'mv_duration_label' => 'Dauer',
 	'mv_save_changes' => 'Ännerunge späicheren',
 	'mv_label_stream_name' => "Numm vum ''Stream''",
+	'mv_label_stream_desc' => 'Beschreiwung vum Stream',
+	'add_stream_permission' => 'Dir hutt net déi néideg Rechter fir e Stream derbäizesetzen',
 	'mv_missing_cat' => 'Den Numm vun der Kategorie feelt',
 	'mv_redirect_and_delete_reason' => 'Viruleedungssäit ass ewech geholl ginn',
 	'mv_remove_reason' => 'Grond vum Läschen:',
@@ -5304,6 +5308,7 @@ All Ännerunge sinn da verluer',
 	'anno_en' => 'Bemierkungen a Kategorien',
 	'mv_data_page_title' => '$1 fir $2 vum $3 un',
 	'mv_time_separator' => '$1 op $2',
+	'mv_list_streams_none' => 'Et gëtt kee Stream',
 	'mv_play' => 'Ofspillen',
 	'mv_edit' => 'Änneren',
 	'mv_history' => 'Versiounen',
@@ -6320,6 +6325,7 @@ For alle metadata i eit kategoriområde, søk etter $1',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'metavid' => 'Metavid-side',
@@ -6335,7 +6341,8 @@ Vennligst rapporter dette til [[{{MediaWiki:Grouppage-sysop}}|sideoperatøren]].
 	'mvexportsearch' => 'Metavid eksporter',
 	'mvexportsequence' => 'Metavid eksporter sekvens',
 	'mvexportstream' => 'Metavid eksporter dataflyt',
-	'mv_add_stream_page' => 'Mv legg til dataflyt',
+	'mv_move_delete_msg' => 'flyttet til $1',
+	'mv_add_stream_page' => 'MetaVid legg til datastrøm',
 	'mv_edit_strea_docu' => '<p>Rediger datastrøm <b>admin</b><br />for vanlig brukervisning/-redigering, se siden $1',
 	'mv_add_stream_docu' => '<p>Legg til en ny dataflyt med feltet nedenfor.</p><p>Mer informasjon gis på <a href="$1">hjelpesiden for tillegging av dataflyt</a>.</p>',
 	'mv_add_stream_submit' => 'Legg til dataflyt',
@@ -6436,7 +6443,8 @@ Denne overleggstypen kan brukes for å kategorisere seksjoner av videoer eller t
 	'mv_advanced_edit' => 'Avansert redigering',
 	'mv_basic_edit' => 'Enkel redigering',
 	'mv_remove_category' => 'Fjern kategori',
-	'mv_existing_categories' => 'Eksisterende kategorier:',
+	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategorier}}:',
+	'mv_add_category' => 'Legg til en kategorisering',
 	'mv_basic_text_desc' => 'Tekstbeskrivelse (valgfri)',
 	'mv_viewnext' => 'Vis ($1)',
 	'mediasearch' => 'Mediesøk',
@@ -6900,6 +6908,8 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'rsd_results_next' => 'weiter',
+	'rsd_results_prev' => 'zerick',
+	'mv_remove_reason' => 'Grund fers Lösche:',
 	'mv_history' => 'Gschicht',
 );
 

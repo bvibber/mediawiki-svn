@@ -426,6 +426,18 @@ $1',
 	'webstore_php_error' => 'PHP greške koje su se desile:',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'inplace_access_disabled' => 'ئه‌و ڕاژه‌یه‌ بۆ هه‌موو ڕاژه‌خوازان له‌ کارخستراوه‌.',
+	'inplace_scaler_invalid_image' => 'له‌به‌ر شێوازی وێنه‌ی نه‌ناسراو، قه‌باره‌ ده‌رناکه‌وێت.',
+	'webstore_path_invalid' => 'نێوی په‌ڕگه‌ نه‌ناسراو بوو.',
+	'webstore_no_file' => 'هیچ په‌ڕگه‌یه‌ک بار نه‌کرا.',
+	'webstore_404' => 'په‌ڕگه‌که‌ نه‌دۆزرایه‌وه‌.',
+	'webstore_no_response' => 'وه‌ڵامێک له‌ ڕاژه‌کار نه‌هاته‌وه‌',
+);
+
 /** Czech (Česky)
  * @author Fryed-peach
  * @author Matěj Grabovský

@@ -3660,8 +3660,11 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'viewapc-display-mem_size' => 'Grees',
+	'viewapc-ls-header-name' => 'Naame',
 	'viewapc-ls-header-size' => 'Grees',
 	'viewapc-ls-sort-size' => 'Grees',
+	'viewapc-ls-sort-name' => 'Naame',
 	'viewapc-ls-limit-none' => 'All',
 );
 

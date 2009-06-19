@@ -401,13 +401,14 @@ Desse sidene kan òg trenga hjelpa di: $1.',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'editsimilar-desc' => 'Oppfordrer brukere til å redigere lignende sider etter å ha lagret en side',
 	'editsimilar-thanks' => 'Takk for bidraget ditt.
-Sjekk disse relaterte sidene: $1.',
+Sjekk {{PLURAL:$2|denne relaterte siden|disse relaterte sidene}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Takk for bidraget ditt.
-Disse sidene kan også trenge din hjelp: $1.',
+{{PLURAL:$2|Denne siden|Disse sidene}} kan også trenge din hjelp: $1.',
 	'editsimilar-thankyou' => 'Takk for bidraget ditt, $1!',
 	'editsimilar-link-disable' => 'endre innstillinger',
 	'tog-edit-similar' => 'Slå på forslag for lignende sider',
@@ -490,10 +491,14 @@ Vizitaţi şi paginile conexe: $1.',
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'editsimilar-desc' => 'Стимулирует участников редактировать похожую страницу после сохранения страницы',
 	'editsimilar-thanks' => 'Спасибо за ваш вклад.
 Обратите внимание на {{PLURAL:$2|эту страницу|эти страницы}}: $1.',
+	'editsimilar-thanks-notsimilar' => 'Спасибо за ваш вклад.
+{{PLURAL:$2|Эта страница, вероятно, также нуждается|Эти страницы, вероятно, также нуждаются}} в вашем внимании: $1.',
 	'editsimilar-thankyou' => 'Спасибо за ваш вклад, $1!',
 	'editsimilar-link-disable' => 'установить настройки',
+	'tog-edit-similar' => 'Включить предложения редактировать похожие страницы',
 );
 
 /** Slovak (Slovenčina)

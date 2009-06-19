@@ -200,6 +200,13 @@ $messages['roa-tara'] = array(
 	'semanticgallery-desc' => "Aggiunge 'nu formete de resultete p'a gallerie  ausanne le inderrogaziune SMW inline",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'semanticgallery-desc' => 'Добавляет выходной формат галереи для встроенных SMW-запросов',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

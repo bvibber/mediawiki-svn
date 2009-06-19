@@ -157,6 +157,13 @@ $messages['roa-tara'] = array(
 	'localisationupdate-desc' => "Mandine le messagge localizzate 'u cchiù aggiornate possibbile",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'localisationupdate-desc' => 'Поддерживает актуальность локализованных сообщений, насколько это возможно',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

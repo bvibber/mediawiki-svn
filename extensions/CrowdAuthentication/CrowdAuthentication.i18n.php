@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'crowdauthentication-desc' => 'إضافة تأكيد لحشد الأتلاسيان',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'crowdauthentication-desc' => 'Дапаўненьне аўтэнтыфікацыі для Atlassian Crowd',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

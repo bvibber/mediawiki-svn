@@ -1510,6 +1510,13 @@ $messages['oc'] = array(
 	'review_comment' => 'Comentari',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'review_comment' => 'Comment',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe
@@ -1697,7 +1704,7 @@ $messages['ru'] = array(
 	'review_version_reviews_link' => '<small>(оценки версий)</small>',
 	'review_concerns_page' => 'Это оценка страницы «$1».',
 	'review_concerns_user' => 'Это об оценках участника «$1».',
-	'review_user_reviews' => '<small>(оценки {{GENDER:$1|этого участника|этой участницы}})</small>',
+	'review_user_reviews' => '<small>(оценки этого участника)</small>',
 	'review_user_page_list' => '{{GENDER:$1|Участник оценил|Участница оценила}} следующие страницы:',
 	'review_user_details_link' => '(подробности)',
 	'review_do_merge' => 'Перенести мои оценки других версий этой страницы на эту версию',

@@ -417,19 +417,19 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'editsubpages-desc' => 'Lar administratorer låse opp en side og alle dens undersider for endringer av uregistrerte via [[MediaWiki:Unlockedpages]]',
 	'unlockedpages' => ' #<!-- la denne linja være som den er --><pre>
 # Skriv inn sider du vil låse opp nedenfor på formen
-# * sidenavn
+# * Sidenavn
 # Navnene må begynne med stjerne,
 # alt annet regnes som kommentar
-# Sidenavn kan være [[lenker]], og
-# man må skille mellom store og små bokstaver.
+# Sidenavn kan være [[lenker]] og skiller mellom store og små bokstaver
 # Diskusjonssider blir automatisk låst opp sammen med hovedsiden
 # Se http://www.mediawiki.org/wiki/Extension:EditSubpages for mer informasjon
-  #</pre><!-- la denne linja være som den er -->',
+ #</pre><!-- la denne linja være som den er -->',
 );
 
 /** Occitan (Occitan)

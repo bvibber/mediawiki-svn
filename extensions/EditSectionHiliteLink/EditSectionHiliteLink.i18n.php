@@ -44,10 +44,11 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
-	'Editsectionhilitelink-desc' => "Resalta la secció apropiada d'una pàgina quan passeu el ratolí per a sobre l'enllça per a editar",
+	'Editsectionhilitelink-desc' => "Ressalta la secció apropiada d'una pàgina quan passeu el ratolí per a sobre l'enllaç per a editar",
 );
 
 /** German (Deutsch) */
@@ -187,6 +188,13 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'Editsectionhilitelink-desc' => "Evidenzie 'a seziona appropriate de 'na pàgene quanne tu spuèste 'u mouse da sus a 'nu collegamende cangiate",
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'Editsectionhilitelink-desc' => 'Подсвечивает на странице соответствующий раздел, когда вы перемещаете указатель мыши на ссылку «править»',
 );
 
 /** Slovak (Slovenčina)

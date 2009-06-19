@@ -122,14 +122,15 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
 	'layouts_title' => 'Crea una pàgina',
-	'layouts_chooselayout' => 'Escull un format per a $1:',
+	'layouts_chooselayout' => 'Escolliu un format per a $1:',
 	'layouts_nolayout' => 'Sense format',
 	'layouts_continue' => 'Continua',
-	'layouts_choosecategory' => 'Escull una categoria per a $1:',
+	'layouts_choosecategory' => 'Escolliu una categoria per a $1:',
 	'layouts_unknown' => 'Desconegut',
 	'layouts_tagline' => "Aquesta pàgina va ser generada pel format '''$1'''.",
 );
@@ -495,6 +496,13 @@ $messages['oc'] = array(
 	'layouts_unknown' => 'Desconegut',
 	'layouts_tagline' => "Aquesta pagina es estada generida amb la mesa en pagina '''$1'''.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'layouts_continue' => 'Weiter',
 );
 
 /** Polish (Polski)

@@ -557,11 +557,13 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
+ * @author Rex
  */
 $messages['id'] = array(
 	'player' => 'Pemain',
 	'player-title' => 'Pemain',
 	'player-goto-player' => 'Pemain',
+	'player-goto-file' => 'berkas',
 );
 
 /** Ido (Ido)

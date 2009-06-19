@@ -281,6 +281,18 @@ $messages['ca'] = array(
 	'vote-submit' => 'Vota',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'vote-registered' => 'ده‌نگی تۆ تۆمار کرا.',
+	'vote-results' => 'ئه‌نجامه‌کانی ده‌نگ',
+	'vote-results-choice' => 'هه‌ڵبژێردراو',
+	'vote-results-count' => 'ژماردن',
+	'vote-invalid-choice' => 'ده‌بێ یه‌کێک له‌ هه‌ڵبژارده‌ ئاماده‌کان دیاری بکه‌یت.',
+	'right-voteadmin' => 'دیتنی ئه‌نجامه‌کانی ده‌نگ',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

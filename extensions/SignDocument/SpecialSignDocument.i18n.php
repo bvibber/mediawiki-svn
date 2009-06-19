@@ -2786,6 +2786,16 @@ $messages['os'] = array(
 	'sign-viewfield-email' => 'Эл. посты адрис',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'sign-realname' => 'Naame:',
+	'sign-viewfield-realname' => 'Naame',
+	'sign-viewfield-reviewcomment' => 'Comment',
+	'sign-review-comment' => 'Comment',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Maikking

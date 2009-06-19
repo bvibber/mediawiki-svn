@@ -39,6 +39,7 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Malafaya
@@ -46,11 +47,8 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
  */
 $messages['qqq'] = array(
 	'deletebatch-desc' => 'Short description of the :Deletebatch extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'deletebatch-or' => '{{Identical|Or}}',
 	'deletebatch-reason' => '{{Identical|Reason for deletion}}',
-	'deletebatch-processing' => 'Used as page subtitle.
-* $1 is text from {{msg-mw|deletebatch-from-file}} or {{msg-mw|deletebatch-from-form}}',
-	'deletebatch-from-file' => 'Used as $1 in {{msg-mw|Deletebatch-processing}}',
-	'deletebatch-from-form' => 'Used as $1 in {{msg-mw|Deletebatch-processing}}',
 	'deletebatch-success-subtitle' => '{{Identical|For $1}}',
 	'deletebatch-select-script' => 'User name. Entry in dropdown for user that should execute the deletions',
 	'deletebatch-select-yourself' => 'Entry in dropdown for user that should execute the deletions',
@@ -81,9 +79,8 @@ $messages['ar'] = array(
 	'deletebatch-or' => '<b>أو</b>',
 	'deletebatch-page' => 'الصفحات للحذف:',
 	'deletebatch-reason' => 'سبب الحذف',
-	'deletebatch-processing' => 'حذف الصفحات $1',
-	'deletebatch-from-file' => 'من قائمة ملف',
-	'deletebatch-from-form' => 'من استمارة',
+	'deletebatch-processing-from-file' => 'جاري حذف الصفحات من قائمة الملف',
+	'deletebatch-processing-from-form' => 'جاري حذف الصفحات من الاستمارة',
 	'deletebatch-success-subtitle' => 'ل$1',
 	'deletebatch-omitting-nonexistant' => 'إزالة صفحة غير موجودة $1.',
 	'deletebatch-omitting-invalid' => 'إزالة صفحة غير صحيحة $1.',
@@ -130,10 +127,33 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'deletebatch' => 'Выдаленьне групы старонак',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Выдаліць групу старонак]]',
+	'deletebatch-help' => 'Выдаленьне групы старонак. Вы можаце выдаляць старонкі па адной альбо выдаліць старонкі зьмешчаныя ў файле.
+Выберыце ўдзельніка, які будзе паказаны ў журнале выдаленьняў.
+Загружаны файл павінен зьмяшчаць назвы старонак і неабавязковую прычыну выдаленьня, якія падзеленыя паміж сабой сымбалем «|» па аднаму запісу на радок.',
 	'deletebatch-caption' => 'Сьпіс старонак:',
+	'deletebatch-title' => 'Выдаліць групу',
+	'deletebatch-link-back' => 'Вярнуцца да спэцыяльнай старонкі',
+	'deletebatch-as' => 'Запусьціць скрыпт як:',
+	'deletebatch-both-modes' => 'Калі ласка, выберыце адну вызначаную старонку альбо сьпіс старонак.',
+	'deletebatch-or' => '<b>ці</b>',
+	'deletebatch-page' => 'Старонкі да выдаленьня:',
 	'deletebatch-reason' => 'Прычына выдаленьня',
+	'deletebatch-processing-from-file' => 'выдаленьне старонак са сьпісу ў файле',
+	'deletebatch-processing-from-form' => 'выдаленьне старонак з формы',
+	'deletebatch-success-subtitle' => 'для $1',
+	'deletebatch-omitting-nonexistant' => 'Прапушчаная неіснуючая старонка $1.',
+	'deletebatch-omitting-invalid' => 'Прапушчаная няслушная старонка $1.',
+	'deletebatch-file-bad-format' => 'Файл павінен утрымліваць толькі тэкст',
+	'deletebatch-file-missing' => 'Немагчыма прачытаць пададзены файл',
+	'deletebatch-select-script' => 'скрыпт выдаленьня старонак',
+	'deletebatch-select-yourself' => 'Вы',
+	'deletebatch-no-page' => 'Калі ласка, пазначце хаця б адну старонку АЛЬБО файл, які ўтрымлівае сьпіс старонак да выдаленьня.',
+	'right-deletebatch' => 'выдаленьне групы старонак',
 );
 
 /** Bulgarian (Български)
@@ -909,6 +929,7 @@ Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu 
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'deletebatch-reason' => 'Grund fers Lösche',
 	'deletebatch-success-subtitle' => 'fer $1',
 );
 

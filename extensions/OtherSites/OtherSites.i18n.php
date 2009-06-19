@@ -324,9 +324,11 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'othersites' => 'Другие сайты',
+	'othersites-desc' => 'Перемещает интервики-ссылки, не являющиеся языковыми ссылками, в отдельный блок',
 );
 
 /** Slovak (Slovenčina)

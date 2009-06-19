@@ -588,6 +588,13 @@ $messages['oc'] = array(
 	'nss-db-error' => "Error pendent la lectura de la banca de donadas d'autentificacion",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'am-username' => 'Yuuser-Naame',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
@@ -694,6 +701,8 @@ $messages['ru'] = array(
 	'am-username' => 'имя участника',
 	'am-email' => 'электронная почта',
 	'am-active' => 'активный',
+	'am-updated' => 'Изменения были успешно сохранены',
+	'nss-desc' => 'Плагин для проверки подлинности с помощью базы данных libnss-mysql. Содержит [[Special:AccountManager|инструмент управления учётными записями]]',
 	'nss-rights' => 'права',
 	'nss-save-changes' => 'Сохранить изменения',
 	'nss-create-account-header' => 'Создать новую учётную запись',

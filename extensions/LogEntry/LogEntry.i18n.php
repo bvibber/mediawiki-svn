@@ -345,9 +345,12 @@ $messages['pt-br'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'logentry-append' => 'Добавить',
+	'logentry-parserhook-desc' => 'Этот тег-расширение предоставляет форму для добавления записей в начало или конец страницы в виде журнала',
+	'logentry-specialpage-desc' => 'Этот тег-расширение предоставляет механизм добавления на страницу записей в виде журнала',
 	'logentry' => 'ЗаписьЖурнала',
 	'logentry-invalidpage' => 'Неправильная страница',
 	'logentry-invalidtoken' => 'Неправильный токен',

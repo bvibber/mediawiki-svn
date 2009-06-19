@@ -1042,6 +1042,13 @@ $messages['oc'] = array(
 	'right-passwordreset' => 'Tòrna inicializar lo senhal d’un utilizaire ([[Special:PasswordReset|pagina especiala]])',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'passwordreset-username' => 'Yuuser-Naame:',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Slomox
  */

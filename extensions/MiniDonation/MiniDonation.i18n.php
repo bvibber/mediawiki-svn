@@ -76,10 +76,11 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
-	'donationform-desc' => 'Afegeixi una etiqueta <tt>&lt;donateform&gt;</tt> per suportar donacions via PayPal',
+	'donationform-desc' => 'Afegiu una etiqueta <tt>&lt;donateform&gt;</tt> per fer donatius via PayPal',
 	'donationform-submit' => 'Donació via PayPal',
 );
 
@@ -396,6 +397,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'donationform-desc' => 'Добавляет тег <tt>&lt;donateform&gt;</tt> для возможности пожертвований через PayPal',
 	'donationform-submit' => 'Пожертвовать через PayPal',
 );
 

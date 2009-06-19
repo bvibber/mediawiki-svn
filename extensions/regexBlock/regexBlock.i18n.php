@@ -101,7 +101,9 @@ $messages['qqq'] = array(
 	'regexblock-view-all' => '{{Identical|All}}',
 	'regexblock-view-go' => '{{Identical|Go}}',
 	'regexblock-view-match' => '{{Identical|Exact match}}',
-	'regexblock-view-time' => 'parameters: $1 is a date/time, $2 is its date alone, $3 is its time isolated.',
+	'regexblock-view-time' => '* $1 is a date/time
+* $2 is a date (optional)
+* $3 is a time (optional)',
 	'right-regexblock' => '{{doc-right}}',
 );
 
@@ -1826,6 +1828,13 @@ $messages['os'] = array(
  */
 $messages['pa'] = array(
 	'regexblock-view-all' => 'ਸਭ',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'regexblock-form-reason' => 'Grund:',
 );
 
 /** Polish (Polski)

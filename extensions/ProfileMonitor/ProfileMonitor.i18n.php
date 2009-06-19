@@ -736,6 +736,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'profiling' => 'Данные профилирования',
+	'profiling-desc' => '[[Special:Profiling|Служебная страница]] для поиска и проверки данных профилирования',
 	'profiling-process' => 'Строка процесса:',
 	'profiling-wildcard' => 'Использование групповых символов',
 	'profiling-ok' => 'OK',

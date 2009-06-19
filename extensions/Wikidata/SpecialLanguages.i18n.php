@@ -1730,6 +1730,7 @@ Molimo kontaktirajte operatora servera ili administratora.',
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author SMP
  * @author Solde
  * @author Toniher
  */
@@ -1744,7 +1745,7 @@ $wdMessages['ca'] = array(
 	'langman_wikimedia' => 'Codi Wikimedia:',
 	'langman_field_optional' => '(opcional)',
 	'importlangnames_title' => 'Importa els noms dels idiomes',
-	'importlangnames_not_allowed' => 'No tens permisos per a importar els noms dels idiomes.',
+	'importlangnames_not_allowed' => 'No teniu permisos per a importar els noms dels idiomes.',
 	'datasearch_language' => 'Idioma:',
 	'ow_save' => 'Desa',
 	'ow_history' => 'Historial',
@@ -3662,6 +3663,7 @@ $wdMessages['grc'] = array(
 	'ow_TextAttribute' => 'Ἰδιότης',
 	'ow_TranslatedTextAttribute' => 'Ἰδιότης',
 	'ow_LinkAttribute' => 'Ἰδιότης',
+	'ow_LinkAttributeValues' => 'σύνδεσμοι',
 	'ow_User' => 'Χρώμενος',
 	'ow_Property' => 'Ἰδιότης',
 	'ow_Value' => 'Τιμή',
@@ -5583,8 +5585,8 @@ Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es z
 	'ow_uipref_datasets' => 'Shtandat-Ansich:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Nix ußjewählt',
-	'transaction' => 'Wikidata: Transakßjuhnß_Logbooch',
-	'ow_transaction_from_transaction' => 'Vun Transakßjuhn:',
+	'transaction' => "Wikidata: Logboch vun de Tranß'Akßjuhne",
+	'ow_transaction_from_transaction' => "Vun de Tranß'Akßjuhn:",
 	'ow_transaction_count' => 'Aanzahl:',
 	'ow_transaction_user' => 'Metmaacher-Name:',
 	'ow_transaction_show_rollback' => 'De Knöpp zom Retuur maache aanzeije:',
@@ -7270,7 +7272,9 @@ $wdMessages['os'] = array(
  */
 $wdMessages['pdc'] = array(
 	'ow_history' => 'Gschicht',
+	'ow_transaction_user' => 'Yuuser-Naame:',
 	'ow_User' => 'Yuuser',
+	'ow_suggest_previous' => 'Letscht',
 	'ow_suggest_next' => 'Neegscht',
 );
 

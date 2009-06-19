@@ -440,9 +440,11 @@ $messages['pt-br'] = array(
 
 /** Russian (Русский)
  * @author Iaroslav Vassiliev
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'newschannel' => 'Канал новостей',
+	'newschannel-desc' => 'Создаёт новостной канал в виде динамической [[Special:NewsChannel|служебной страницы]]',
 	'newschannel_format' => 'Формат новостей:',
 	'newschannel_limit' => 'Кол-во последних новостей:',
 	'newschannel_include_category' => 'Дополнительная категория:',

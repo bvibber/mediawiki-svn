@@ -31,6 +31,8 @@ $messages['ar'] = array(
 	'signature-desc' => 'يفعل [[Special:SignDocument|توقيع]] الوثيقة',
 	'signaturelogpagetext' => 'هذا سجل [[Special:SignDocument|بكل التوقيعات التي أضيفت إلى الوثائق]].',
 	'signaturelogentry' => 'وقع الوثيقة $1',
+	'right-sigadmin' => 'إدارة توقيع الوثائق',
+	'right-createsigndocument' => 'إنشاء وثائق يمكن توقيعها',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

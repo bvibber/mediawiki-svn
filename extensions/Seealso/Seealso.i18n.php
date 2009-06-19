@@ -86,11 +86,12 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
 	'seealso' => 'Vegeu també',
-	'seealso-desc' => "Localitza les capçaleres 'See also' usant l'etiqueta <code><nowiki><seealso></nowiki></code>",
+	'seealso-desc' => "Localitza les seccions «Vegeu també» usant l'etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Welsh (Cymraeg)

@@ -201,6 +201,16 @@ $messages['bs'] = array(
 	'watchers_less_than_x' => 'Manje od $1 {{PLURAL:$1|korisnika ima|korisnika imaju}} ovu stranicu na svom spisku praćenja.',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'watchers' => 'چاودێران',
+	'watchers_link_title' => 'کێ چاو له ئه‌‌م لاپه‌ڕه‌ ده‌کات؟',
+	'watchers_error_article' => "'''هه‌ڵه‌:''' ئه‌و لاپه‌ڕه‌ بوونی نیه‌.",
+	'watchers_noone_watches' => 'هیچ‌که‌س چاودێری ئه‌م لاپه‌ڕه‌یه‌ ناکات.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

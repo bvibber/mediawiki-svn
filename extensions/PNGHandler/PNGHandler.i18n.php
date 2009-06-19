@@ -281,6 +281,13 @@ $messages['roa-tara'] = array(
 	'pnghandler-desc' => 'Ridimenzione le PNG ausanne le pngds',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'pnghandler-desc' => 'Изменяет размер PNG-файлов с помощью pngds',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

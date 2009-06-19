@@ -53,7 +53,7 @@ $messages['ar'] = array(
 	'adminlinks_createuser' => 'أنشئ مستخدمًا',
 	'adminlinks_browsesearch' => 'التصفح والبحث',
 	'adminlinks_importexport' => 'الاستيراد والتصدير',
-	'right-adminlinks' => 'راجع وصلة [[Special:AdminLinks]]',
+	'right-adminlinks' => 'انظر الوصلة إلى [[Special:AdminLinks|وصلات الإدارة]]',
 );
 
 /** Bavarian (Boarisch)
@@ -104,6 +104,7 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
@@ -118,7 +119,7 @@ $messages['ca'] = array(
 	'adminlinks_createuser' => 'Crea un usuari',
 	'adminlinks_browsesearch' => "S'està navegant i buscant",
 	'adminlinks_importexport' => "S'està important i exportant",
-	'right-adminlinks' => "Vegi l'enllaç a [[Special:AdminLinks|Enllaços d'administrador]]",
+	'right-adminlinks' => "Veure l'enllaç a [[Special:AdminLinks|enllaços d'administrador]]",
 );
 
 /** German (Deutsch)

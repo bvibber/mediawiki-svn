@@ -57,10 +57,11 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
-	'emailaddressimage-desc' => 'Afegeix <tt>&lt;correu electrònic&gt;</tt> per a mostar un correu electrònic com a imatge',
+	'emailaddressimage-desc' => 'Afegeix <tt>&lt;email&gt;</tt> per a mostar un correu electrònic com a imatge',
 );
 
 /** Czech (Česky)

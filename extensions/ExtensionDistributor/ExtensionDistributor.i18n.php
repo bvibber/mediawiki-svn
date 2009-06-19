@@ -1663,6 +1663,14 @@ $messages['os'] = array(
 	'extdist-want-more' => 'Æндæр æххæстгæнæн æрбавгæн',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'extdist-submit-extension' => 'Weiter',
+	'extdist-submit-version' => 'Weiter',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad

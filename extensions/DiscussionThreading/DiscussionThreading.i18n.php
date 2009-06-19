@@ -88,12 +88,13 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
 	'discussionthreading-desc' => 'Afegeix fils a les pàgines de discussió',
-	'discussionthreading-replysection' => 'contestar',
-	'discussionthreading-replysectionhint' => 'Respondre a aquest missatge',
+	'discussionthreading-replysection' => 'respon',
+	'discussionthreading-replysectionhint' => 'Respon aquest missatge',
 	'discussionthreading-threadnewsection' => 'nou',
 	'discussionthreading-threadnewsectionhint' => 'Comença un nou fil',
 );
@@ -439,6 +440,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'discussionthreading-desc' => 'Добавляет ветви обсуждений на страницы обсуждений',
 	'discussionthreading-replysection' => 'ответ',
 	'discussionthreading-replysectionhint' => 'Ответить на это сообщение',
 	'discussionthreading-threadnewsection' => 'новые',

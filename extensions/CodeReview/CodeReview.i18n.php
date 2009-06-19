@@ -4681,7 +4681,15 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'code-comments' => 'Comments',
+	'code-references' => 'Neegschte Versione',
+	'code-change-removed' => 'gelöscht:',
+	'code-rev-message' => 'Comment:',
+	'code-rev-modified-d' => 'gelöscht',
+	'code-status-new' => 'nei',
+	'code-status-ok' => 'OK',
 	'codereview-subtitle' => 'Fer $1',
+	'repoadmin-edit-button' => 'OK',
 );
 
 /** Polish (Polski)

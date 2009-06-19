@@ -227,6 +227,13 @@ $messages['roa-tara'] = array(
 	'jskit-desc' => 'Indegre le tool js-kit sus a le pàggene de Uicchi',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'jskit-desc' => 'Интегрирует набор инструментов JS на страницу вики',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -201,10 +201,11 @@ Id koji trebate da navedete su brojevi i slova između oznaka "$2" i "$3".',
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
-	'imstatus_syntax' => 'Sintaxis',
+	'imstatus_syntax' => 'Sintaxi',
 	'imstatus_default' => 'Per defecte',
 	'imstatus_example' => 'Exemple',
 	'imstatus_possible_val' => 'Possibles valors',
@@ -821,6 +822,33 @@ ID\'en du må oppgje er tala og bokstavane mellom  «$2» og «$3».',
 	'imstatus_skype_nbstyle' => 'Merk: Om du vel ein stil som òg er ei handling, vil handlingsvalet ditt bli overkøyrt av handlinga som samsvarer med stilvalet ditt.',
 	'imstatus_xfire_size' => 'knappestorleiken, frå $1 (størst) til $2 (minst).',
 	'imstatus_yahoo_style' => 'knappestilen, frå $1 (minst) til $2 (størst), $3 og $4 er for lydpost.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'imstatus_max' => 'max',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'eller',
+	'imstatus_style' => 'stilen til statusindikatoren',
+	'imstatus_action' => 'handling når knappen blir klikket på',
+	'imstatus_details_saa' => 'For flere detaljer om alle stilene og handligene, se $1.',
+	'imstatus_your_name' => 'ditt $1 navn',
+	'imstatus_aim_presence' => '$1 viser statusen din med en lenke som vil starte AIM for å sende deg en direktemelding, gitt at brukeren har det installert.',
+	'imstatus_aim_api' => '$1 viser statusen din med en lenke som vil starte en <b>nettleser</b>-javaskriptversjon av AIM for å sende deg en direktemelding.',
+	'imstatus_gtalk_code' => 'din google talk-kode',
+	'imstatus_gtalk_get_code' => 'din google talk-kode: få den på $1.',
+	'imstatus_gtalk_height' => 'boksens høyde, i piksler.',
+	'imstatus_gtalk_width' => 'boksens bredde, i piksler.',
+	'imstatus_icq_id' => 'din ICQ-ID',
+	'imstatus_icq_style' => 'et tall i intervallet fra 0 til 26 (ja, det finnes 27 tilgjengelige stiler).',
+	'imstatus_live_code' => "ID'en til ditt Live Messenger-nettsted",
+	'imstatus_live_get_code' => 'ID\'en til ditt Live Messenger-nettsted: <strong>dette er ikke e-postadressen din</strong>, du må lage en i <a href="$1">dine Live Messenger-alternativ</a>.
+ID\'en du må oppgi er tallene og bokstavene mellom "$2" og "$3".',
+	'imstatus_skype_nbstyle' => 'Merk: Dersom du velger en stil som også er en handling vil handlingsvalget ditt bli overkjørt av handlingen som samsvarer med stilvalget ditt.',
+	'imstatus_xfire_size' => 'knappens størrelse, fra $1 (størst) til $2 (minst).',
+	'imstatus_yahoo_style' => 'knappes stil, fra $1 (minst) til $2 (størst), $3 og $4 er for lydpost.',
 );
 
 /** Occitan (Occitan)

@@ -1369,8 +1369,9 @@ $messages['ru'] = array(
 	'createsigndoc-error-generic' => 'Ошибка: $1',
 	'createsigndoc-error-pagenoexist' => 'Ошибка: страницы [[$1]] не существует.',
 	'createsigndoc-success' => 'Подписание документа успешно включено на странице [[$1]].
-Чтобы проверить сбор подписей, пожалуйста, зайдите на [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} эту страницу].',
-	'createsigndoc-error-alreadycreated' => 'Сбор подписей для страницы «$1» уже включён.',
+Вы можете [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} проверить его].',
+	'createsigndoc-error-alreadycreated' => 'Сбор подписей для страницы «$1» уже включён.
+Это не может быть сделано ещё раз.',
 );
 
 /** Slovak (Slovenčina)

@@ -334,7 +334,7 @@ $messages['id'] = array(
 Tekan tombol "Connect" untuk memulai koneksi.
 Jika Anda telah masuk log, nama pengguna Anda akan dipergunakan.
 Pengguna anonim diberikan nama pengguna otomatis, yang dapat diubah sendiri.',
-	'right-mibbit' => 'Diizinkan menggunakan fasilitas chat Mibbit',
+	'right-mibbit' => 'Dapat menggunakan fasilitas chat Mibbit',
 );
 
 /** Italian (Italiano)

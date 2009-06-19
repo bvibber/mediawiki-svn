@@ -207,10 +207,20 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'crosswikiblock-desc' => 'Дазваляе блякаваць удзельнікаў у іншых вікі з дапамогай [[Special:Crosswikiblock|спэцыяльнай старонкі]]',
+	'crosswikiblock' => 'Блякаваць удзельнікаў на іншых вікі',
+	'crosswikiblock-header' => 'Гэтая старонка дазваляе блякаваць удзельніка ў іншай вікі.
+Калі ласка, упэўніцеся, што Вам дазволена гэта дзеяньне на гэтай вікі і Вашы дзеяньні адпавядаюць правілам.',
+	'crosswikiblock-target' => 'IP-адрас альбо імя ўдзельніка і мэтавая вікі:',
+	'crosswikiblock-expiry' => 'Канчаецца:',
 	'crosswikiblock-reason' => 'Прычына:',
 	'crosswikiblock-submit' => 'Заблякаваць гэтага удзельніка',
+	'crosswikiblock-anononly' => 'Блякіраваць толькі ананімных удзельнікаў',
+	'crosswikiblock-nocreate' => 'Забараніць стварэнье рахункаў',
+	'crosswikiblock-autoblock' => 'Аўтаматычна блякаваць апошнія IP-адрасы якімі карыстаўся гэты ўдезльнік, і любыя іншыя IP-адрасы зь якіх вядзецца спроба рэдагаваньня',
 	'crosswikiunblock-reason' => 'Прычына:',
 );
 
@@ -1655,6 +1665,14 @@ $messages['os'] = array(
 	'crosswikiblock-reason' => 'Аххос:',
 	'crosswikiunblock-reason' => 'Аххос:',
 	'crosswikiblock-dbnotfound' => 'Бæрæггæнæнты $1 базæ нæй',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'crosswikiblock-reason' => 'Grund:',
+	'crosswikiunblock-reason' => 'Grund:',
 );
 
 /** Polish (Polski)

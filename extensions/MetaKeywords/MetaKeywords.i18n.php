@@ -289,6 +289,13 @@ $messages['roa-tara'] = array(
 	'metakeywords-desc' => 'Permette \'a configurazione de le tag <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> pe namespace',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'metakeywords-desc' => 'Позволяет настройку тегов <nowiki><meta "keywords"></nowiki> и <nowiki><meta "description"></nowiki> для каждого пространства имён в отдельности',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

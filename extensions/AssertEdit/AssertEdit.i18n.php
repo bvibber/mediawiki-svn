@@ -194,11 +194,12 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  */
 $messages['fi'] = array(
 	'assert_edit_title' => 'Vahvistus epäonnistui',
-	'assert_edit_desc' => 'Muokkausvahvistusmahdollisuus boteille',
+	'assert_edit_desc' => 'Muokkausvahvistusmahdollisuus boteille.',
 	'assert_edit_message' => 'Määritelty vahvistus ($1) epäonnistui.',
 );
 

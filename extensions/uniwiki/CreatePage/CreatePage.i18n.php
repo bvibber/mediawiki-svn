@@ -120,19 +120,20 @@ Da li želite uređivati postojeću stranicu?',
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
 	'createpage' => 'Crea una pàgina',
 	'createpage-desc' => 'Afegeix una [[Special:CreatePage|pàgina especial]] per a crear noves pàgines',
 	'createpage_submitbutton' => 'Envia',
-	'createpage_instructions' => 'Introdueixi el títol de la pàgina que vol crear:',
-	'createpage_entertitle' => 'Si us plau, introdueixi el títol per a la seva pàgina.',
-	'createpage_titleexists' => 'Una pàgina amb el títol [[$1]] ja existeix.
-Vol editar la pàgina ja existent?',
+	'createpage_instructions' => 'Introduïu el títol de la pàgina que vulgueu crear:',
+	'createpage_entertitle' => 'Si us plau, introduïu el títol per a la pàgina.',
+	'createpage_titleexists' => 'Ja existeix una pàgina amb el títol [[$1]].
+Voleu editar la pàgina existent?',
 	'createpage_tryagain' => 'No. Vull crear una pàgina nova amb un títol diferent.',
-	'createpage_editexisting' => 'Sí. Vull contribuïr a la pàgina existent.',
-	'createpage-badtitle' => '"$1" no es pot utilitzar com a títol de la pàgina',
+	'createpage_editexisting' => 'Sí. Vull contribuir a la pàgina existent.',
+	'createpage-badtitle' => '«$1» no es pot utilitzar com a títol de pàgina',
 );
 
 /** Czech (Česky)

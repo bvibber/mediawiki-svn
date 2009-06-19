@@ -566,6 +566,13 @@ $messages['oc'] = array(
 	'contrib-tracking-button' => 'Contunhar',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'contrib-tracking-button' => 'Weiter',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Sp5uhe

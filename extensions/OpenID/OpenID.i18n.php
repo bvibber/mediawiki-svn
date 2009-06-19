@@ -551,6 +551,7 @@ Postoji mnogo [http://wiki.openid.net/Public_OpenID_providers javnih provajdera 
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  * @author Toniher
  */
@@ -573,8 +574,8 @@ $messages['ca'] = array(
 podeu triar-ne un de les opcions a continuació.',
 	'openidchoosefull' => 'El vostre nom complet ($1)',
 	'openidchooseexisting' => 'Un compte existent en aquest wiki:',
-	'openidchoosepassword' => 'contrassenya:',
-	'openid-provider-label-other-username' => "Introdueixi el seu $1 nom d'usuari",
+	'openidchoosepassword' => 'contrasenya:',
+	'openid-provider-label-other-username' => "Introduïu el vostre $1 nom d'usuari",
 );
 
 /** Czech (Česky)
@@ -1049,7 +1050,7 @@ $messages['eu'] = array(
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'openid-desc' => 'Kirjaudu wikiin [http://openid.net/ OpenID:llä] ja muille OpenID-tuetuille sivustoille wiki-käyttäjätilillä',
+	'openid-desc' => 'Kirjaudu wikiin [http://openid.net/ OpenID:llä] ja muille OpenID-tuetuille sivustoille wiki-käyttäjätilillä.',
 	'openidlogin' => 'Kirjaudu OpenID:llä',
 	'openidfinish' => 'Lopeta OpenID-kirjautuminen',
 	'openidserver' => 'OpenID-palvelin',
@@ -3049,9 +3050,18 @@ $messages['roa-tara'] = array(
 	'openidxrds' => 'File Yadis',
 	'openidoptional' => 'Opzionele',
 	'openidrequired' => 'Richieste',
+	'openidnickname' => 'Soprannome',
+	'openidfullname' => 'Nome comblete',
 	'openidemail' => 'Indirizze e-mail',
 	'openidlanguage' => 'Lènghe',
+	'openidchoosemanual' => "Scacchie 'nu nome:",
 	'openidchoosepassword' => 'password:',
+	'openidnousername' => 'Nisciune nome utende specificate.',
+	'openidbadusername' => "'U nome utende specificate non g'è valide.",
+	'openid-provider-label-google' => "Tràse ausanne 'u cunde utende de Google",
+	'openid-provider-label-yahoo' => "Tràse ausanne 'u cunde utende de Yahoo",
+	'openid-provider-label-aol' => "Mitte 'u tue nome utende AOL",
+	'openid-provider-label-other-username' => "Mitte 'u tue $1 nome utende",
 );
 
 /** Russian (Русский)

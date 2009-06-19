@@ -349,8 +349,12 @@ Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'linkopenid-desc' => 'Позволяет участникам связывать свою учётную запись с внешним OpenID',
+	'linkopenid-prefstext-pre' => 'Если у вас есть OpenID от внешнего провайдера, вы можете указать его здесь.
+Это позволит вам использовать страницу участника в качестве OpenID.',
 	'linkopenid-prefstext-openid' => 'Ваш OpenID:',
 	'linkopenid-prefstext-v1url' => 'URL сервера для OpenID версии 1.1:',
 	'linkopenid-prefstext-v2url' => 'URL сервера для OpenID версии 2:',

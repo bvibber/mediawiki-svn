@@ -197,6 +197,13 @@ $messages['roa-tara'] = array(
 	'pipeescape-desc' => "Funziona d'analisi <code>#!</code> pe quanne tu vuè ca 'nu carattere de ''pipe'' avène conziderate cumme a 'nu ''pipe''",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'pipeescape-desc' => 'Функция парсера <code>#!</code> предназначена для случаев, когда вы хотите использовать символ вертикальной черты просто как символ',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

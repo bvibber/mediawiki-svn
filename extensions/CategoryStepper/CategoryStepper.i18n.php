@@ -303,7 +303,7 @@ $messages['km'] = array(
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'categorystepper-desc' => '한 페이지에 안에 있는 하나 또는 보다 많은 분류들을 가나다라 순서대로 앞글자부터 뒷글자로, 뒷글자부터 앞글자로 안내해주는, 분류 검색 상자를 보여드리고 있습니다.',
+	'categorystepper-desc' => '한 문서 안에 있는 하나 또는 보다 많은 분류를 가나다라 순서대로 앞글자부터 뒷글자로, 뒷글자부터 앞글자로 안내해주는, 분류 검색 상자를 보여드리고 있습니다.',
 	'categorystepper-end' => '(분류의 끝)',
 	'categorystepper-start' => '(분류의 시작)',
 );

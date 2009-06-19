@@ -58,10 +58,11 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
-	'editown-desc' => 'Els usuaris sense els permisos per editar-ho tot només poden editar les pàgines que ha creat',
+	'editown-desc' => 'Els usuaris sense el permís editall només poden editar les pàgines que han creat',
 );
 
 /** Kashubian (Kaszëbsczi)

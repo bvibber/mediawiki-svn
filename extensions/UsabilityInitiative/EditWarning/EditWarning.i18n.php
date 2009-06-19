@@ -31,7 +31,9 @@ $messages['be-tarask'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'editwarning' => 'Upozorenje uređivanja',
 	'editwarning-desc' => 'Prikazuje upozorenje kada korisnik pokušava napustiti obrazac za uređivanje bez spremanja',
+	'editwarning-warning' => 'Napuštanjem ove stranice će se izgubiti sve promjene koje ste načinili.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -41,6 +43,13 @@ $messages['dsb'] = array(
 	'editwarning' => 'Wobźěłowańske warnowanje',
 	'editwarning-desc' => 'Warnowanje pokazaś, gaž wužywaŕ wopytujo wobźěłowański formular bźeze składowanja spušćiś',
 	'editwarning-warning' => 'Gaž toś ten bok se spušća, budu se změny zgubowaś.',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'editwarning' => 'Editar advertencia',
 );
 
 /** French (Français)
@@ -79,6 +88,15 @@ $messages['hsb'] = array(
 	'editwarning-warning' => 'Hdyž so strona wopušća, so přewjedźene změny zhubja.',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'editwarning' => 'Avviso di modifica',
+	'editwarning-desc' => 'Visualizza un avviso quando un utente cerca di lasciare il modulo di modifica senza salvare',
+	'editwarning-warning' => 'Lasciare questa pagina provoca la perdita di tutti i cambiamenti effettuati.',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -113,6 +131,15 @@ $messages['nl'] = array(
 	'editwarning' => 'Bewerkingswaarschuwing',
 	'editwarning-desc' => 'Geeft een waarschuwing weer als een gebruiker probeert een bewerkingsvenster te verlaten zonder wijzigingen op te slaan',
 	'editwarning-warning' => 'Als u deze pagina verlaat verliest u eventuele wijzigingen die u hebt gemaakt.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'editwarning' => 'Rediger advarsel',
+	'editwarning-desc' => 'Vis en advarsel når en bruker prøver å forlate et redigeringsskjema uten å lagre',
+	'editwarning-warning' => 'Ved å forlate siden vil du miste alle endringer du har utført.',
 );
 
 /** Occitan (Occitan)

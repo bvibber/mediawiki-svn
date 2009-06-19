@@ -129,10 +129,11 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Tarmo
  */
 $messages['fi'] = array(
-	'oai-desc' => 'Tarjoaa [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-varantorajapinnan',
+	'oai-desc' => 'Tarjoaa [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-varantorajapinnan.',
 );
 
 /** French (Français)

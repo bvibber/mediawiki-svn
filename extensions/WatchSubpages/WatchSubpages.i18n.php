@@ -134,14 +134,26 @@ Kada označujete ili uklanjate više stranica, možete držati tipku ''shift'' d
  */
 $messages['ca'] = array(
 	'watchsubpages' => 'Vigila subpàgines',
-	'watchsubpages-addedtowatchlist' => "El següent s'ha afegit a la teva llista de seguiment.",
+	'watchsubpages-addedtowatchlist' => "El següent s'ha afegit a la vostra llista de seguiment.",
 	'watchsubpages-addtitles' => 'Afegeix pàgines',
 	'watchsubpages-addtitlestowatchlist' => 'Afegeix les pàgines a la llista de seguiment',
 	'watchsubpages-desc' => "Afegeix ràpidament [[Special:WatchSubpages|totes les subpàgines]] d'una pàgina a la llista de seguiment",
-	'watchsubpages-form' => 'Seleccioni les pàgines de sota que vol afegir a la llista de seguiment.
-Per afegir una pàgina, marqui la casella de selecció del costat, o cliqui a "Afegir pàgines".
+	'watchsubpages-form' => "Seleccioneu les pàgines de sota que vulgueu afegir a la vostra llista de seguiment.
+Per afegir una pàgina, marqueu la casella de selecció del costat i feu clic a «Afegeix pàgines».
 
-Quan vol marcar o desmarcar múltiples pàgines, mantenir apretada la tecla de majúscules permet seleccionar caselles consecutives clicant cada final del rang a ser marcat.',
+Per a marcar o desmarcar múltiples pàgines, si manteniu polsada la tecla de majúscules podreu seleccionar caselles consecutives clicant a l'última del rang a ser marcat.",
+);
+
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'watchsubpages-addedtowatchlist' => 'ئه‌مانه‌ی خواره‌وه‌ زیاد کرا سه‌ر‌ لیستی چاودێریه‌که‌ت.',
+	'watchsubpages-addtitles' => 'زیاد کردنی لاپه‌ڕه‌کان',
+	'watchsubpages-addtitlestowatchlist' => 'زیاد کردنی لاپه‌ڕه‌کان بۆ لیستی چاودێری',
+	'watchsubpages-form' => 'ئه‌و ڵاپه‌ڕانه‌ی ده‌ته‌وێ زیادی بکه‌یته‌ سه‌ر لیستی چاودێری، له‌ خواره‌وه‌ هه‌ڵبژێره‌.<br />
+بۆ زیادکردنی لاپه‌ڕه‌یه‌ک، چه‌ک باکسی پاڵیه‌وه‌ لێده‌ و کرته‌ بکه‌ سه‌ر "زیاد کردنی لاپه‌ڕه‌کان".<br /><br />
+کاتێ ده‌ته‌وێ چه‌ن لاپه‌ڕه‌ی به‌شوێن یه‌کدا هه‌ڵبژێریت یان له‌ هه‌ڵبژێراوی ده‌ریان بێنیت، به ڕاگرتنی دوگمه‌ی گوڕین (Shift) و کرته‌ کردن له‌ سه‌ر دوایین لاپه‌ڕه‌ ده‌توانی مارکی هه‌ڵبژاردنی چه‌ک باکس بۆ چه‌ن لاپه‌ڕه‌ پێکه‌وه‌ زیاد بکه‌ی یان بیسڕیته‌وه‌.',
 );
 
 /** Czech (Česky)

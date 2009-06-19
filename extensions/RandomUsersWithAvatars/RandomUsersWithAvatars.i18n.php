@@ -249,6 +249,14 @@ $messages['roa-tara'] = array(
 	'random-users-avatars-desc' => "Aggiunge 'u tag <tt>&lt;randomuserswithavatars&gt;</tt> pe fà vedè le avatar scacchiete a uecchije da l'utinde",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'random-users-avatars-title' => 'Познакомьтесь с сообществом',
+	'random-users-avatars-desc' => 'Добавляет тег <tt>&lt;randomuserswithavatars&gt;</tt> для отображения аватар случайно выбранных участников',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

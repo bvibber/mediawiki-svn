@@ -1051,8 +1051,8 @@ $messages['fo'] = array(
 $messages['fr'] = array(
 	'hiderevision' => 'Cacher définitivement les révisions',
 	'hiderevision-desc' => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
-	'group-oversight' => 'Oversighters',
-	'group-oversight-member' => 'Oversighter',
+	'group-oversight' => 'Superviseurs',
+	'group-oversight-member' => 'Superviseur',
 	'grouppage-oversight' => '{{ns:project}}:Oversighter',
 	'right-oversight' => 'Voir les versions cachées par oversight',
 	'right-hiderevision' => 'Masquer des révisions aux administrateurs',
@@ -1078,9 +1078,9 @@ Les articles supprimés ne sont plus visibles dans ce système, mais ces suppres
 Annulez d’abord cette modification en rétablissant la version précédente.',
 	'hiderevision-error-delete' => 'Ne peut être archivé ; la page aurait-elle été supprimée ?',
 	'hiderevision-archive-status' => 'Modification supprimée de $1 : $2',
-	'oversight-nodiff' => 'Impossible de détecter des changements tant que ne se trouve aucune révision antérieure pour la page. Les raisons peuvent être les suivantes :
-*La page a été supprimée,
-*La révision cachée était la toute première de la page',
+	'oversight-nodiff' => 'Impossible de détecter des changements prace qu’il n’existe pas de révision antérieure. Il se peut que :
+* La page ait été supprimée ; ou que
+* Cette révision cachée soit la toute première révision de la page.',
 	'oversight-log-hiderev' => 'a supprimé une édition de $1',
 	'oversight' => 'Oversight',
 	'oversight-view' => 'détails',
@@ -2647,6 +2647,13 @@ $messages['pam'] = array(
 	'right-hiderevision' => 'Surian la ampong isubli deng pamagbayung makasalikut kareng Sysop',
 	'hiderevision-continue' => 'Deng ambag da reng talagamit a mebura',
 	'hiderevision-noreason' => 'Kaylangan mung isplica ing sangkan nung bakit lalako me ini.',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'hiderevision-continue' => 'Weiter',
 );
 
 /** Polish (Polski)

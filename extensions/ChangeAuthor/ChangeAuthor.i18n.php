@@ -1427,6 +1427,13 @@ $messages['oc'] = array(
 	'right-changeauthor' => "Modificar l'autor d'una revision",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'changeauthor-comment' => 'Comment:',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Equadus

@@ -96,6 +96,7 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author SMP
  * @author Solde
  * @author Toniher
  */
@@ -104,8 +105,8 @@ $messages['ca'] = array(
 	'dplforum-by' => 'per $1',
 	'dplforum-edited' => '- Última edició',
 	'dplforum-never' => 'Mai',
-	'dplforum-toofew' => 'Fòrum DPL: masses categories!',
-	'dplforum-toomany' => 'Fòrum DPL: masses categories!',
+	'dplforum-toofew' => 'Fòrum DPL: massa poques categories!',
+	'dplforum-toomany' => 'Fòrum DPL: massa categories!',
 );
 
 /** Czech (Česky)

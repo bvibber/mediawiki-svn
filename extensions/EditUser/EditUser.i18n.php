@@ -864,6 +864,13 @@ $messages['os'] = array(
 	'edituser-dosearch' => 'Агур',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'edituser-username' => 'Naame',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Masti
