@@ -76,8 +76,6 @@ public class WikiWordStoreSchema extends DatabaseSchema {
 	
 	protected EntityTable logTable;
 	protected EntityTable warningTable;
-	
-	protected boolean useBinaryText = true;
 
 	private DatasetIdentifier dataset;
 	
@@ -102,8 +100,9 @@ public class WikiWordStoreSchema extends DatabaseSchema {
 		String dbengine = tweaks.getTweak("dbstore.engine", "MyISAM");
 		String defaultTableAttributes = "ENGINE="+dbengine+" CHARSET utf8 COLLATE utf8_bin";
 		defaultTableAttributes = tweaks.getTweak("dbstore.table.attributes", defaultTableAttributes);
-		
 		hints.setHint(DefaultSqlDialect.HINT_DEFAULT_TABLE_ATTRIBUTES, defaultTableAttributes);
+		
+		hints.setHint(MySqlDialect.HINT_USE_BINARY_TEXT, tweaks.getTweak("dbstore.useBinaryText", true));
 		
 		return hints;
 	}
@@ -122,7 +121,6 @@ public class WikiWordStoreSchema extends DatabaseSchema {
 		this.setLogLevel(tweaks.getTweak("dbstore.logLevel", LOG_INFO));
 		
 		this.dataset = dataset;
-		this.useBinaryText = tweaks.getTweak("dbstore.useBinaryText", true);
 
 		logTable = DatabaseAgendaPersistor.makeTableSpec(this, "log");
 		addTable(logTable);
@@ -138,20 +136,9 @@ public class WikiWordStoreSchema extends DatabaseSchema {
 		
 		groupStats.add( new GroupStatsSpec("warning", "problem", null));
 	}
-	
+
 	public String getCollectionName() {
 		return dataset.getCollection();
-	}
-	
-	public String getTextType(int length) {
-		//TODO: dialects
-		//NOTE: for MySQL: VARBINARY != VARCHAR BINARY
-		
-		if (length<=256-1) return useBinaryText ? "VARBINARY("+length+")" : "VARCHAR("+length+")"; 
-		else if (length<=256*4-2) return useBinaryText ? "VARBINARY("+length+")" : "VARCHAR("+length+")"; 
-		else if (length<=256*256-2) return useBinaryText ? "BLOB" : "TEXT"; 
-		else if (length<=256*256*256-3) return useBinaryText ? "MEDIUMBLOB" : "MEDIUMTEXT"; 
-		else return useBinaryText ? "LONGBLOB" : "LONGTEXT";
 	}
 
 	public List<GroupStatsSpec> getGroupStatsSpecs() {

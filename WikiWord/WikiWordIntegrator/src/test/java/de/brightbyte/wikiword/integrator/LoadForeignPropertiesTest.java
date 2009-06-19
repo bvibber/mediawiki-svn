@@ -1,8 +1,5 @@
 package de.brightbyte.wikiword.integrator;
 
-import java.net.URL;
-
-import de.brightbyte.db.testing.DatabaseTestBase;
 
 public class LoadForeignPropertiesTest extends IntegratorAppTestBase<LoadForeignProperties> {
 	
@@ -23,11 +20,11 @@ public class LoadForeignPropertiesTest extends IntegratorAppTestBase<LoadForeign
 	
 	//-----------------------------------------------------------------------------------------------------
 	public void testTableImport() throws Exception {
-		runApp("tableImport");
+		runApp("tableImport", "external_authority", "external_id", "property", "value", "qualifier");
 	}
 
 	public void testTripleImport() throws Exception {
-		runApp("tripleImport");
+		runApp("tripleImport", "external_authority", "external_id", "property", "value", "qualifier");
 	}
 
 	@Override

@@ -2,7 +2,13 @@ package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
+import org.dbunit.dataset.Column;
+import org.dbunit.dataset.ITable;
 import org.dbunit.operation.DatabaseOperation;
 
 import de.brightbyte.db.testing.DatabaseTestBase;
@@ -40,20 +46,34 @@ public abstract class IntegratorAppTestBase<T extends AbstractIntegratorApp> ext
 		TweakSet tweaks = loadTweakSet();
 		T app = createApp();
 		
+		app.setKeepAlive(true);
 		app.testInit(testDataSource, DatasetIdentifier.forName("TEST", "xx"), tweaks, sourceDescriptor, targetTable);
 		return app;
 	}
 
-	protected void runApp(String testName) throws Exception {
+	protected void runApp(String testName, String... orderBy) throws Exception {
+		//get source description
 		FeatureSetSourceDescriptor source = loadSourceDescriptor(testName);
-		launchApp(source, testName);
 		
-		assertTableContent(testName, "SELECT * FROM "+testName); //FIXME: sort order
+		//run application
+		T app = prepareApp(source, testName);
+		app.testLaunch();
+
+		//build order string
+		StringBuilder order = new StringBuilder();
+		for (String by: orderBy) {
+			if (order.length()>0) order.append(", ");
+			order.append('"');
+			order.append(by);
+			order.append('"');
+		}
+		
+		//get real table name and build query
+		 String tableName = app.getConfiguredDataset().getDbPrefix()+testName;
+		 String sql = "SELECT * FROM \""+tableName+"\" ORDER BY "+order;
+		 
+		 //compare query result to expected data from XML file.
+		assertTableContent(testName, sql);
 	}
 	
-	protected void launchApp(FeatureSetSourceDescriptor sourceDescriptor, String targetTable) throws Exception {
-		T app = prepareApp(sourceDescriptor, targetTable);
-		app.testLaunch();
-	}
-
 }

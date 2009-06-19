@@ -1,8 +1,30 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-  <tripleImport concept_name="FooBar" name="Foo" firstName="Bar" phone="12345"/>
-  <tripleImport concept_name="XyzzyQuux" name="Xyzzy" firstName="Quux" phone="67890"/>
-  <tableImport concept_name="FooBar" name="Foo" firstName="Bar" phone="12345"/>
-  <tableImport concept_name="XyzzyQuux" name="Xyzzy" firstName="Quux" phone="67890"/>
+		table.addField( new DatabaseField(this, "external_authority", getTextType(64), null, true, null) );
+		table.addField( new DatabaseField(this, "external_id", getTextType(255), null, true, null) );
+		
+		table.addField( new DatabaseField(this, "property", getTextType(255), null, true, KeyType.INDEX) );
+		table.addField( new DatabaseField(this, "value", getTextType(255), null, true, null) );
+		table.addField( new DatabaseField(this, "qualifier", getTextType(64), null, false, null) );
+		
+  <tripleImport external_authority="acme" external_id="FooBar" property="concept_name" value="FooBar"/>
+  <tripleImport external_authority="acme" external_id="FooBar" property="firstName" value="Bar"/>
+  <tripleImport external_authority="acme" external_id="FooBar" property="name" value="Foo"/>
+  <tripleImport external_authority="acme" external_id="FooBar" property="phone" value="12345"/>
+  
+  <tripleImport external_authority="acme" external_id="XyzzyQuux" property="concept_name" value="XyzzyQuux"/>
+  <tripleImport external_authority="acme" external_id="XyzzyQuux" property="firstName" value="Quux"/>
+  <tripleImport external_authority="acme" external_id="XyzzyQuux" property="name" value="Xyzzy"/>
+  <tripleImport external_authority="acme" external_id="XyzzyQuux" property="phone" value="67890"/>
+		
+  <tableImport external_authority="acme" external_id="FooBar" property="concept_name" value="FooBar"/>
+  <tableImport external_authority="acme" external_id="FooBar" property="firstName" value="Bar"/>
+  <tableImport external_authority="acme" external_id="FooBar" property="name" value="Foo"/>
+  <tableImport external_authority="acme" external_id="FooBar" property="phone" value="12345"/>
+  
+  <tableImport external_authority="acme" external_id="XyzzyQuux" property="concept_name" value="XyzzyQuux"/>
+  <tableImport external_authority="acme" external_id="XyzzyQuux" property="firstName" value="Quux"/>
+  <tableImport external_authority="acme" external_id="XyzzyQuux" property="name" value="Xyzzy"/>
+  <tableImport external_authority="acme" external_id="XyzzyQuux" property="phone" value="67890"/>
 </dataset>
 
