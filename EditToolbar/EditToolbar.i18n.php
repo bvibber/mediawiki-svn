@@ -204,7 +204,7 @@ $messages['be-tarask'] = array(
 	'edittoolbar-tool-format-heading-example' => 'Тэкст загалоўку',
 	'edittoolbar-group-format-list' => 'Сьпіс',
 	'edittoolbar-tool-format-ulist' => 'Маркіраваны сьпіс',
-	'edittoolbar-tool-format-ulist-example' => 'Элемэнт сьпісу з маркерамі абзацу',
+	'edittoolbar-tool-format-ulist-example' => 'Элемэнт маркіраванага сьпісу',
 	'edittoolbar-tool-format-olist' => 'Нумараваны сьпіс',
 	'edittoolbar-tool-format-olist-example' => 'Элемэнт нумараванага сьпісу',
 	'edittoolbar-group-format-size' => 'Памер',
@@ -264,7 +264,7 @@ $messages['be-tarask'] = array(
 	'edittoolbar-help-content-heading5-description' => 'Загаловак 5-га ўзроўню',
 	'edittoolbar-help-content-heading5-syntax' => '===== Тэкст загалоўку =====',
 	'edittoolbar-help-content-heading5-result' => '<h5>Тэкст загалоўку</h5>',
-	'edittoolbar-help-content-ulist-description' => 'Сьпіс з маркерамі абзацу',
+	'edittoolbar-help-content-ulist-description' => 'Маркіраваны сьпіс',
 	'edittoolbar-help-content-ulist-syntax' => '* Элемэнт сьпісу<br />* Элемэнт сьпісу',
 	'edittoolbar-help-content-ulist-result' => '<ul><li>Элемэнт сьпісу</li><li>Элемэнт сьпісу</li></ul>',
 	'edittoolbar-help-content-olist-description' => 'Нумараваны сьпіс',
@@ -420,6 +420,14 @@ $messages['dsb'] = array(
 	'edittoolbar-help-content-indent-description' => 'Zasunjenje',
 	'edittoolbar-help-content-indent-syntax' => 'Normalny tekst<br />:Zasunjony tekst<br />::Zasunjony tekst',
 	'edittoolbar-help-content-indent-result' => 'Normalny tekst<dl><dd>Zasunjony tekst<dl><dd>Zasunjony tekst</dd></dl></dd></dl>',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'edittoolbar-loading' => 'Cargando...',
+	'edittoolbar-tool-format-bold-example' => 'Texto en negrita',
 );
 
 /** French (Français)
@@ -657,6 +665,50 @@ $messages['gl'] = array(
 	'edittoolbar-help-content-indent-result' => 'Texto normal<dl><dd>Texto con sangría<dl><dd>Texto con máis sangría</dd></dl></dd></dl>',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'edittoolbar-loading' => 'Φορτίζειν…',
+	'edittoolbar-tool-format-bold' => 'ἔντονον',
+	'edittoolbar-tool-format-bold-example' => 'Γράμματα παχέα',
+	'edittoolbar-tool-format-italic' => 'πλάγιον',
+	'edittoolbar-tool-format-italic-example' => 'Γράμματα πλάγια',
+	'edittoolbar-section-format' => 'Μορφοποίησις',
+	'edittoolbar-tool-format-heading' => 'Ἐπικεφαλίς',
+	'edittoolbar-tool-format-heading-1' => 'Ἐπίπεδον 1',
+	'edittoolbar-tool-format-heading-2' => 'Ἐπίπεδον 2',
+	'edittoolbar-tool-format-heading-3' => 'Ἐπίπεδον 3',
+	'edittoolbar-tool-format-heading-4' => 'Ἐπίπεδον 4',
+	'edittoolbar-tool-format-heading-5' => 'Ἐπίπεδον 5',
+	'edittoolbar-group-format-list' => 'Κατάλογος',
+	'edittoolbar-group-format-size' => 'Μέγεθος',
+	'edittoolbar-tool-format-big' => 'Μέγα',
+	'edittoolbar-tool-format-big-example' => 'Μέγα κείμενον',
+	'edittoolbar-tool-format-small' => 'Σμικρόν',
+	'edittoolbar-tool-format-small-example' => 'Σμικρόν κείμενον',
+	'edittoolbar-group-insert-media' => 'Μέσα',
+	'edittoolbar-tool-insert-newline' => 'Νέα γραμμή',
+	'edittoolbar-section-help' => 'Βοήθεια',
+	'edittoolbar-help-heading-description' => 'Περιγραφή',
+	'edittoolbar-help-page-link' => 'σύνδεσμοι',
+	'edittoolbar-help-page-list' => 'Κατάλογοι',
+	'edittoolbar-help-page-file' => 'Ἀρχεῖα',
+	'edittoolbar-help-page-reference' => 'Ἀναφοραί',
+	'edittoolbar-help-page-discussion' => 'Διάλεξις',
+	'edittoolbar-help-content-italic-description' => 'πλάγιον',
+	'edittoolbar-help-content-italic-syntax' => "''Γράμματα πλάγια''",
+	'edittoolbar-help-content-italic-result' => '<em>Γράμματα πλάγια</em>',
+	'edittoolbar-help-content-bold-description' => 'ἔντονον',
+	'edittoolbar-help-content-bold-syntax' => "'''Γράμματα παχέα'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Γράμματα παχέα</strong>',
+	'edittoolbar-help-content-ilink-description' => 'Ἐσωτερικός σύνδεσμος',
+	'edittoolbar-help-content-xlink-description' => 'Ἐξωτερικός σύνδεσμος',
+	'edittoolbar-help-content-reference-description' => 'Ἀναφορά',
+	'edittoolbar-help-content-signature-description' => 'Ὑπογραφή',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -889,6 +941,121 @@ $messages['hsb'] = array(
 	'edittoolbar-help-content-indent-description' => 'Zasunjenje',
 	'edittoolbar-help-content-indent-syntax' => 'Normalny tekst<br />:Zasunjeny tekst<br />::Zasunjeny tekst',
 	'edittoolbar-help-content-indent-result' => 'Normalny tekst<dl><dd>Zasunjeny tekst<dl><dd>Zasunjeny tekst</dd></dl></dd></dl>',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'edittoolbar-help-page-file' => 'Berkas',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'edittoolbar-loading' => 'Caricamento in corso...',
+	'edittoolbar-tool-format-bold' => 'Grassetto',
+	'edittoolbar-tool-format-bold-example' => 'Testo in grassetto',
+	'edittoolbar-tool-format-italic' => 'Corsivo',
+	'edittoolbar-tool-format-italic-example' => 'Testo in corsivo',
+	'edittoolbar-tool-insert-ilink' => 'Collegamento interno',
+	'edittoolbar-tool-insert-ilink-example' => 'Titolo del collegamento',
+	'edittoolbar-tool-insert-xlink' => 'Collegamento esterno (ricorda il prefisso http:// )',
+	'edittoolbar-tool-insert-xlink-example' => 'http://www.example.com titolo del collegamento',
+	'edittoolbar-tool-insert-file' => 'File incorporato',
+	'edittoolbar-tool-insert-file-example' => 'Esempio.jpg',
+	'edittoolbar-tool-insert-reference' => 'Nota',
+	'edittoolbar-tool-insert-reference-example' => 'Inserire qui il testo della nota',
+	'edittoolbar-tool-insert-signature' => 'Firma e data',
+	'edittoolbar-section-format' => 'Formato',
+	'edittoolbar-tool-format-heading' => 'Intestazione',
+	'edittoolbar-tool-format-heading-1' => 'Livello 1',
+	'edittoolbar-tool-format-heading-2' => 'Livello 2',
+	'edittoolbar-tool-format-heading-3' => 'Livello 3',
+	'edittoolbar-tool-format-heading-4' => 'Livello 4',
+	'edittoolbar-tool-format-heading-5' => 'Livello 5',
+	'edittoolbar-tool-format-heading-example' => 'Titolo sezione',
+	'edittoolbar-group-format-list' => 'Elenco',
+	'edittoolbar-tool-format-ulist' => 'Elenco puntato',
+	'edittoolbar-tool-format-ulist-example' => "Elemento dell'elenco puntato",
+	'edittoolbar-tool-format-olist' => 'Elenco numerato',
+	'edittoolbar-tool-format-olist-example' => "Elemento dell'elenco numerato",
+	'edittoolbar-group-format-size' => 'Dimensione',
+	'edittoolbar-tool-format-big' => 'Grande',
+	'edittoolbar-tool-format-big-example' => 'Testo grande',
+	'edittoolbar-tool-format-small' => 'Piccolo',
+	'edittoolbar-tool-format-small-example' => 'Testo piccolo',
+	'edittoolbar-tool-format-superscript' => 'Apice',
+	'edittoolbar-tool-format-superscript-example' => 'Testo in apice',
+	'edittoolbar-tool-format-subscript' => 'Pedice',
+	'edittoolbar-tool-format-subscript-example' => 'Testo in pedice',
+	'edittoolbar-section-insert' => 'Inserisci',
+	'edittoolbar-group-insert-media' => 'Media',
+	'edittoolbar-tool-insert-gallery' => 'Galleria di immagini',
+	'edittoolbar-group-insert-whitespace' => 'Spaziatura',
+	'edittoolbar-tool-insert-newline' => 'Nuova riga',
+	'edittoolbar-section-characters' => 'Caratteri speciali',
+	'edittoolbar-section-help' => 'Aiuto',
+	'edittoolbar-help-heading-description' => 'Descrizione',
+	'edittoolbar-help-heading-syntax' => 'Cosa si digita',
+	'edittoolbar-help-heading-result' => 'Cosa si ottiene',
+	'edittoolbar-help-page-format' => 'Formattazione',
+	'edittoolbar-help-page-link' => 'Collegamenti',
+	'edittoolbar-help-page-heading' => 'Intestazioni',
+	'edittoolbar-help-page-list' => 'Elenchi',
+	'edittoolbar-help-page-file' => 'File',
+	'edittoolbar-help-page-reference' => 'Note',
+	'edittoolbar-help-page-discussion' => 'Discussione',
+	'edittoolbar-help-content-italic-description' => 'Corsivo',
+	'edittoolbar-help-content-italic-syntax' => "''Testo in corsivo''",
+	'edittoolbar-help-content-italic-result' => '<em>Testo in corsivo</em>',
+	'edittoolbar-help-content-bold-description' => 'Grassetto',
+	'edittoolbar-help-content-bold-syntax' => "'''Testo in grassetto'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Testo in grassetto</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Grassetto e corsivo',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Testo in grassetto e corsivo'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Testo in grassetto e corsivo</em></strong>',
+	'edittoolbar-help-content-ilink-description' => 'Collegamento interno',
+	'edittoolbar-help-content-ilink-syntax' => '[[Titolo pagina|Etichetta collegamento]]<br />[[Titolo pagina]]',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>Etichetta collegamento</a><br /><a href='#'>Titolo pagina</a>",
+	'edittoolbar-help-content-xlink-description' => 'Collegamento esterno',
+	'edittoolbar-help-content-xlink-syntax' => '[http://www.example.org Etichetta collegamento]<br />[http://www.example.org]<br />http://www.example.org',
+	'edittoolbar-help-content-xlink-result' => "<a href='#' class='external'>Etichetta collegamento</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
+	'edittoolbar-help-content-heading1-syntax' => '= Titolo sezione =',
+	'edittoolbar-help-content-heading1-result' => '<h1>Titolo sezione</h1>',
+	'edittoolbar-help-content-heading2-syntax' => '== Titolo sezione ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>Titolo sezione</h2>',
+	'edittoolbar-help-content-heading3-syntax' => '=== Titolo sezione ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>Titolo sezione</h3>',
+	'edittoolbar-help-content-heading4-syntax' => '==== Titolo sezione ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>Titolo sezione</h4>',
+	'edittoolbar-help-content-heading5-syntax' => '===== Titolo sezione =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>Titolo sezione</h5>',
+	'edittoolbar-help-content-ulist-description' => 'Elenco puntato',
+	'edittoolbar-help-content-ulist-syntax' => "* Elemento dell'elenco<br />* Elemento dell'elenco",
+	'edittoolbar-help-content-ulist-result' => "<ul><li>Elemento dell'elenco</li><li>Elemento dell'elenco</li></ul>",
+	'edittoolbar-help-content-olist-description' => 'Elenco numerato',
+	'edittoolbar-help-content-olist-syntax' => "# Elemento dell'elenco<br /># Elemento dell'elenco",
+	'edittoolbar-help-content-olist-result' => "<ol><li>Elemento dell'elenco</li><li>Elemento dell'elenco</li></ol>",
+	'edittoolbar-help-content-file-description' => 'File incorporato',
+	'edittoolbar-help-content-file-syntax' => '[[File:Esempio.png|thumb|Testo della didascalia]]',
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='/wiki/File:Wiki.png'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/EditToolbar/images/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='/wiki/File:Wiki.png'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Testo della didascalia</div></div>",
+	'edittoolbar-help-content-reference-description' => 'Nota',
+	'edittoolbar-help-content-reference-syntax' => 'Testo della pagina.&lt;ref name="test"&gt;[http://www.example.org Testo del collegamento], testo aggiuntivo.&lt;/ref&gt;',
+	'edittoolbar-help-content-reference-result' => "Testo della pagina.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-rereference-description' => 'Ulteriore uso della stessa nota',
+	'edittoolbar-help-content-rereference-result' => "Testo della pagina.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-showreferences-description' => 'Mostra note',
+	'edittoolbar-help-content-showreferences-syntax' => '&lt;references /&gt; o {<!-- -->{Reflist}}',
+	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Testo del collegamento</a>, testo aggiuntivo.</li></ol>",
+	'edittoolbar-help-content-signaturetimestamp-description' => 'Firma con data e ora',
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Nome utente</a> (<a href='#' title='{{#special:mytalk}}'>discussione</a>) 15:54, 10 giu 2009 (UTC)",
+	'edittoolbar-help-content-signature-description' => 'Firma',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Nome utente</a> (<a href='#' title='{{#special:mytalk}}'>discussione</a>)",
+	'edittoolbar-help-content-indent-description' => 'Indentazione',
+	'edittoolbar-help-content-indent-syntax' => 'Testo normale<br />:Testo indentato<br />::Testo indentato',
+	'edittoolbar-help-content-indent-result' => 'Testo normale<dl><dd>Testo indentato<dl><dd>Testo indentato</dd></dl></dd></dl>',
 );
 
 /** Japanese (日本語)
@@ -1159,6 +1326,7 @@ $messages['lb'] = array(
 	'edittoolbar-tool-format-heading-5' => 'Niveau 5',
 	'edittoolbar-tool-format-heading-example' => 'Text vum Titel',
 	'edittoolbar-group-format-list' => 'Lëscht',
+	'edittoolbar-tool-format-ulist' => 'Lëscht mat Punkten',
 	'edittoolbar-tool-format-olist' => 'Numeréiert Lëscht',
 	'edittoolbar-tool-format-olist-example' => 'Element vun der numeréieter Lëscht',
 	'edittoolbar-group-format-size' => 'Gréisst',
@@ -1166,6 +1334,7 @@ $messages['lb'] = array(
 	'edittoolbar-tool-format-big-example' => 'Groussen Text',
 	'edittoolbar-tool-format-small' => 'Kleng',
 	'edittoolbar-tool-format-small-example' => 'Klengen Text',
+	'edittoolbar-group-format-baseline' => 'Ënnerstrach',
 	'edittoolbar-section-insert' => 'Drasetzen',
 	'edittoolbar-tool-insert-gallery' => 'Billergallerie',
 	'edittoolbar-group-insert-whitespace' => 'Espace',
@@ -1193,8 +1362,10 @@ $messages['lb'] = array(
 	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Fetten &amp; kursiven Text</em></strong>',
 	'edittoolbar-help-content-ilink-description' => 'Interne Link',
 	'edittoolbar-help-content-ilink-syntax' => '[[Page title|Text vum Link]]<br />[[Page title]]',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>Text vum Link</a><br /><a href='#'>Titel vun der Säit</a>",
 	'edittoolbar-help-content-xlink-description' => 'Externe Link',
 	'edittoolbar-help-content-xlink-syntax' => '[http://www.example.org Text vum Link]<br />[http://www.example.org]<br />http://www.example.org',
+	'edittoolbar-help-content-xlink-result' => "a href='#' class='external'>Text vum Link</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
 	'edittoolbar-help-content-heading1-description' => 'Iwwerschrëft vum 1. Niveau',
 	'edittoolbar-help-content-heading1-syntax' => '= Text vum Titel=',
 	'edittoolbar-help-content-heading1-result' => '<h1>Text vum Titel</h1>',
@@ -1210,6 +1381,7 @@ $messages['lb'] = array(
 	'edittoolbar-help-content-heading5-description' => 'Iwwerschrëft vum 5. Niveau',
 	'edittoolbar-help-content-heading5-syntax' => '===== Text vum Titel =====',
 	'edittoolbar-help-content-heading5-result' => '<h5>Text vum Titel</h5>',
+	'edittoolbar-help-content-ulist-description' => 'Lëscht mat Punkten',
 	'edittoolbar-help-content-ulist-syntax' => '* Element vun der Lëscht<br />
 * Element vun der Lëscht',
 	'edittoolbar-help-content-ulist-result' => '<ul>
@@ -1224,6 +1396,7 @@ $messages['lb'] = array(
  <li>Element vun der Lëscht</li>
 </ol>',
 	'edittoolbar-help-content-file-syntax' => '[[File:Example.png|thumb|Ugewisenen Text]]',
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Ugewisenen Texte' class='image' href='/wiki/File:Wiki.png'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/EditToolbar/images/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='/wiki/File:Wiki.png'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Ugewisenen Text</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referenz',
 	'edittoolbar-help-content-reference-syntax' => 'Text vun der Säit.&lt;ref name="test"&gt;[http://www.example.org Text vum Link], zousätzlechen Text.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Text vun der Säit <sup><a href='#'>[1]</a></sup>",
@@ -1360,6 +1533,36 @@ $messages['nl'] = array(
 	'edittoolbar-help-content-indent-result' => 'Normale tekst<dl><dd>Ingesprongen tekst<dl><dd>Ingesprongen tekst</dd></dl></dd></dl>',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'edittoolbar-loading' => 'Laster...',
+	'edittoolbar-tool-format-bold' => 'Fet',
+	'edittoolbar-tool-format-bold-example' => 'Fet tekst',
+	'edittoolbar-tool-format-italic' => 'Kursiv',
+	'edittoolbar-tool-format-italic-example' => 'Kursiv tekst',
+	'edittoolbar-tool-insert-ilink' => 'Intern lenke',
+	'edittoolbar-tool-insert-ilink-example' => 'Lenketittel',
+	'edittoolbar-tool-insert-xlink' => 'Ekstern lenke (husk http:// først)',
+	'edittoolbar-tool-insert-xlink-example' => 'http://www.example.com lenketittel',
+	'edittoolbar-help-content-italic-description' => 'Kursiv',
+	'edittoolbar-help-content-italic-syntax' => "''Kursiv tekst''",
+	'edittoolbar-help-content-italic-result' => '<em>Kursiv tekst</em>',
+	'edittoolbar-help-content-bold-description' => 'Fet',
+	'edittoolbar-help-content-bold-syntax' => "'''Fet tekst'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Fet tekst</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Fet &amp; kursiv',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Fet &amp; kursiv tekst'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Fet &amp; kursiv tekst</em></strong>',
+	'edittoolbar-help-content-ilink-description' => 'Intern lenke',
+	'edittoolbar-help-content-ilink-syntax' => '[[Sidetittel|Lenkenavn]]<br />[[Sidetittel]]',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>Lenkenavn</a><br /><a href='#'>Sidetittel</a>",
+	'edittoolbar-help-content-xlink-description' => 'Ekstern lenke',
+	'edittoolbar-help-content-xlink-syntax' => '[http://www.example.org Lenkenavn]<br />[http://www.example.org]<br />http://www.example.org',
+	'edittoolbar-help-content-xlink-result' => "<a href='#' class='external'>Lenkenavn</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -1481,6 +1684,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'edittoolbar-group-format-size' => 'Grees',
 	'edittoolbar-help-page-discussion' => 'Gschwetz',
 );
 
