@@ -16,6 +16,7 @@ class UsabilityInitiativeHooks {
 		array( 'src' => 'Resources/jquery.textSelection.js', 'version' => 1 ),
 		array( 'src' => 'Resources/jquery.cookie.js', 'version' => 1 ),
 		array( 'src' => 'Resources/jquery.async.js', 'version' => 1 ),
+		array( 'src' => 'Resources/jquery.browser.js', 'version' => 1 ),
 	);
 	
 	
