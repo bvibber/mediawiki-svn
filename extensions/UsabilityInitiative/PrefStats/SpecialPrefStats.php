@@ -114,6 +114,7 @@ class SpecialPrefStats extends SpecialPage {
 		$maxTS = wfTimestamp( TS_UNIX ) - $min;
 		$minTS = wfTimestamp( TS_UNIX ) - $max;
 		$count2 = $dbr->selectField( 'prefstats', 'COUNT(*)', array(
+				'ps_pref' => $pref,
 				'ps_duration IS NULL',
 				'ps_start <' . $dbr->timestamp( $maxTS ),
 				'ps_start >=' . $dbr->timestamp( $minTS )
