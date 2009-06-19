@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Check images to see if they exist, are readable, etc etc
+ */
 require_once( "Maintenance.php" );
 
 class CheckImages extends Maintenance {

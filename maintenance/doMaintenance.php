@@ -12,6 +12,10 @@ if( !isset( $maintClass ) || !class_exists( $maintClass ) ) {
 	die();
 }
 
+if( defined( 'MW_NO_SETUP' ) ) {
+	return;
+}
+
 // Get an object to start us off
 $maintenance = new $maintClass();
 

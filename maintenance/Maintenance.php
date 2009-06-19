@@ -43,6 +43,9 @@ abstract class Maintenance {
 
 	// A description of the script, children should change this
 	protected $mDescription = '';
+	
+	// Have we already loaded our user input?
+	private $inputLoaded = false;
 
 	/**
 	 * Default constructor. Children should call this if implementing
@@ -55,7 +58,7 @@ abstract class Maintenance {
 	/**
 	 * Do the actual work. All child classes will need to implement this
 	 */
-	abstract protected function execute();
+	abstract public function execute();
 
 	/**
 	 * Add a parameter to the script. Will be displayed on --help
@@ -123,13 +126,17 @@ abstract class Maintenance {
 
 	/**
 	 * Return input from stdin.
-	 * @param $length int The number of bytes to read
+	 * @param $length int The number of bytes to read. If null,
+	 *        just return the handle
 	 * @return mixed
 	 */
-	protected function getStdin( $len = 255 ) {
-		$f = fopen( 'php://stdin', 'r' );
-		$input = fgets( $fr, $len );
-		fclose ( $fr );
+	protected function getStdin( $len = null ) {
+		$f = fopen( 'php://stdin', 'rt' );
+		if( !$len ) {
+			return $f;
+		}
+		$input = fgets( $f, $len );
+		fclose ( $f );
 		return rtrim( $input );
 	}
 
@@ -189,7 +196,36 @@ abstract class Maintenance {
 	}
 
 	/**
-	 * Do some sanity checking
+	 * Spawn a child maintenance script. Pass all of the current arguments
+	 * to it.
+	 * @param $maintClass String A name of a child maintenance class
+	 * @param $classFile String Full path of where the child is
+	 * @return Maintenance child
+	 */
+	protected function spawnChild( $maintClass, $classFile = null ) {
+		// If we haven't already specified, kill setup procedures
+		// for child scripts, we've already got a sane environment
+		if( !defined( 'MW_NO_SETUP' ) ) {
+			define( 'MW_NO_SETUP', true );
+		}
+		
+		// Make sure the class is loaded first
+		if( !class_exists( $maintClass ) ) {
+			if( $classFile ) {
+				require_once( $classFile );
+			}
+			if( !class_exists( $maintClass ) ) {
+				$this->error( "Cannot spawn child: $maintClass\n" );
+			}
+		}
+		
+		$child = new $maintClass();
+		$child->loadParamsAndArgs( $this->mSelf, $this->mOptions, $this->mArgs );
+		return $child;
+	}
+
+	/**
+	 * Do some sanity checking and basic setup
 	 */
 	public function setup() {
 		global $IP, $wgCommandLineMode, $wgUseNormalUser, $wgRequestTime;
@@ -247,17 +283,52 @@ abstract class Maintenance {
 		if (!isset( $wgUseNormalUser ) ) {
 			$wgUseNormalUser = false;
 		}
-		
-		$this->loadArgs();
+
+		$this->loadParamsAndArgs();
 		$this->maybeHelp();
+	}
+
+	/**
+	 * Clear all params and arguments.
+	 */
+	public function clearParamsAndArgs() {
+		$this->mOptions = array();
+		$this->mArgs = array();
+		$this->inputLoaded = false;
 	}
 
 	/**
 	 * Process command line arguments
 	 * $mOptions becomes an array with keys set to the option names
 	 * $mArgs becomes a zero-based array containing the non-option arguments
+	 *
+	 * @param $self String The name of the script, if any
+	 * @param $opts Array An array of options, in form of key=>value
+	 * @param $args Array An array of command line arguments
 	 */
-	private function loadArgs() {
+	public function loadParamsAndArgs( $self = null, $opts = null, $args = null ) {
+		# If we were given opts or args, set those and return early
+		if( $self ) {
+			$this->mSelf = $self;
+			$this->inputLoaded = true;
+		}
+		if( $opts ) {
+			$this->mOptions = $opts
+			$this->inputLoaded = true;
+		}
+		if( $args ) {
+			$this->mArgs = $args;
+			$this->inputLoaded = true;
+		}
+
+		# If we've already loaded input (either by user values or from $argv)
+		# skip on loading it again. The array_shift() will corrupt values if
+		# it's run again and again
+		if( $this->inputLoaded ) {
+			$this->loadSpecialVars();
+			return;
+		}
+
 		global $argv;
 		$this->mSelf = array_shift( $argv );
 
@@ -312,14 +383,6 @@ abstract class Maintenance {
 			}
 		}
 
-		# These vars get special treatment
-		if( isset( $options['dbuser'] ) )
-			$this->mDbUser = $options['dbuser'];
-		if( isset( $options['dbpass'] ) )
-			$this->mDbPass = $options['dbpass'];
-		if( isset( $options['quiet'] ) )
-			$this->mQuiet = true;
-
 		# Check to make sure we've got all the required ones
 		foreach( $this->mParams as $opt => $info ) {
 			if( $info['require'] && !$this->hasOption($opt) ) {
@@ -334,6 +397,20 @@ abstract class Maintenance {
 
 		$this->mOptions = $options;
 		$this->mArgs = $args;
+		$this->loadSpecialVars();
+		$this->inputLoaded = true;
+	}
+	
+	/**
+	 * Handle the special variables that are global to all scripts
+	 */
+	private function loadSpecialVars() {
+		if( $this->hasOption( 'dbuser' ) )
+			$this->mDbUser = $this->getOption( 'dbuser' );
+		if( $this->hasOption( 'dbpass' ) )
+			$this->mDbPass = $this->getOption( 'dbpass' );
+		if( $this->hasOption( 'quiet' ) )
+			$this->mQuiet = true;
 	}
 
 	/**

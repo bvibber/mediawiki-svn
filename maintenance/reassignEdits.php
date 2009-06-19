@@ -29,7 +29,7 @@ class ReassignEdits extends Maintenance {
 			if( $to->getId() || $this->hasOption('force') ) {
 				# Reassign the edits
 				$report = $this->hasOption('report');
-				$count = reassignEdits( $from, $to, !$this->hasOption('norc'), $report );
+				$count = $this->reassignEdits( $from, $to, !$this->hasOption('norc'), $report );
 				# If reporting, and there were items, advise the user to run without --report	
 				if( $report )
 					$this->output( "Run the script again without --report to update.\n" );
