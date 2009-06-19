@@ -2,13 +2,7 @@ package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
-import org.dbunit.dataset.Column;
-import org.dbunit.dataset.ITable;
 import org.dbunit.operation.DatabaseOperation;
 
 import de.brightbyte.db.testing.DatabaseTestBase;
