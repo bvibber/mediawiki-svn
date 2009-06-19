@@ -47,14 +47,13 @@ $( document ).ready( function() {
 	var osIndex = -1; 
 	switch ( $.os.name ) {
 		case 'win':
-			// Select Windows XP, can't tell the difference with Vista
 			osIndex = 0;
 		break;
 		case 'mac':
-			osIndex = 2;
+			osIndex = 1;
 		break;
 		case 'linux':
-			osIndex = 3;
+			osIndex = 2;
 		break;
 	}
 	

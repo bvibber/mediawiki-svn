@@ -17,7 +17,7 @@
 
 /* Configuration */
 
-$wgOptInStyleVersion = 1;
+$wgOptInStyleVersion = 2;
 
 // Preferences to set when users opt in
 // array( prefname => value )
@@ -55,8 +55,7 @@ $wgOptInSurvey = array(
 		'type' => 'dropdown',
 		'answers' => array(
 			// TODO: Add more
-			'optin-survey-answer-os-winxp',
-			'optin-survey-answer-os-winvista',
+			'optin-survey-answer-os-windows',
 			'optin-survey-answer-os-macos',
 			'optin-survey-answer-os-linux' ),
 		'other' => 'optin-survey-answer-os-other' ),
