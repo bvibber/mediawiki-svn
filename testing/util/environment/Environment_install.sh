@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # (c) Gerard Meijssen - MIT licence
 
 # make sense of the input parameters
