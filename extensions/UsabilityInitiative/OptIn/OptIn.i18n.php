@@ -12,22 +12,24 @@ $messages = array();
  * @author Roan Kattouw
  */
 $messages['en'] = array(
-	'optin' => 'OptIn',
-	'optin-desc' => 'Allow users to opt-in to the Usability Initiative\'s usability enhancements',
+	'optin' => 'Usability Initiative opt in',
+	'optin-desc' => 'Allow users to opt in to the Usability Initiative\'s usability enhancements',
 	'optin-title' => 'Usability Intitiative enhancements',
-	'optin-needlogin' => 'You need to [$1 log in] to opt-in to the Usability Initiative\'s usability enhancements.',
-	'optin-intro' => 'The Wikipedia Usability Initiative has developed a new skin and a new edit toolbar intended to enhance the usability of Wikipedia. These enhancements have not been enabled for all users yet, but you can opt-in to them by clicking the button below.',
+	'optin-needlogin' => 'You need to [$1 log in] to opt in to the Usability Initiative\'s usability enhancements.',
+	'optin-intro' => 'The Wikipedia Usability Initiative has developed a new skin and a new edit toolbar intended to enhance the usability of Wikipedia. These enhancements have not been enabled for all users yet, but you can opt in to them by clicking "{{int:optin-submit-in}}" below.',
 	'optin-success-in' => 'You have successfully opted in to the Usability Initiative\'s usability enhancements.
-You can opt back out at any time by clicking the button below.',
+You can opt back out at any time by clicking "{{int:optin-submit-out}}" below.',
 	'optin-success-out' => 'You have successfully opted out of the Usability Initiative\'s usability enhancements.
-You can opt back in at any time by clicking the button below.',
+You can opt back in at any time by clicking {{int:optin-submit-in}} below.',
 	'optin-submit-in' => 'Opt in',
 	'optin-submit-out' => 'Opt out',
 	'optin-survey-intro' => "Thank you for trying the Usability Initiative's usability enhancements.
-You can opt out by clicking the button at the bottom of this page.\n\nWe'd like to know what you think about our new interface, so we'd appreciate it if you filled out the optional survey below before clicking the Opt out button.",
+You can opt out by clicking \"{{int:optin-submit-out}}\" at the bottom of this page.
+
+We would like to know what you think about our new interface, so we would appreciate it if you filled out the optional survey below before clicking \"{{int:optin-submit-out}}\".",
 	'optin-survey-question-whyoptout' => 'Why are you opting out of this interface?',
 	'optin-survey-answer-whyoptout-didntlike' => 'I do not like the design.',
-	'optin-survey-answer-whyoptout-hard' => 'It was too hard to edit an article or a discussion page.',
+	'optin-survey-answer-whyoptout-hard' => 'It was too hard to edit a page.',
 	'optin-survey-answer-whyoptout-didntwork' => 'It did not function properly.',
 	'optin-survey-answer-whyoptout-other' => 'Other reason:',
 	'optin-survey-question-browser' => 'Which browser do you use?',
