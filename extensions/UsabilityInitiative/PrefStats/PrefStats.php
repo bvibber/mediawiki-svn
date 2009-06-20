@@ -50,6 +50,7 @@ $wgAutoloadClasses['SpecialPrefStats'] =
 	dirname( __FILE__ ) . '/SpecialPrefStats.php';
 
 $wgSpecialPages['PrefStats'] = 'SpecialPrefStats';
+$wgSpecialPageGroups['PrefStats'] = 'wiki';
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['PrefStats'] =
