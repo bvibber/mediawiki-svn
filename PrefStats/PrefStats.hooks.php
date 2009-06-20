@@ -29,7 +29,7 @@ class PrefStatsHooks {
 					'ps_pref' => $pref,
 					'ps_end IS NULL'
 				), __METHOD__ );
-			if ( isset( $options[$pref] ) && $options[$pref] == $value && !$start)
+			if ( isset( $options[$pref] ) && $options[$pref] == $value && !$start )
 				$dbw->insert( 'prefstats', array(
 						'ps_user' => $user->getId(),
 						'ps_pref' => $pref,
@@ -55,5 +55,4 @@ class PrefStatsHooks {
 		}
 		return true;
 	}
-
 }

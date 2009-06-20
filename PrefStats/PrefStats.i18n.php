@@ -15,7 +15,8 @@ $messages['en'] = array(
 	'prefstats' => 'Preference statistics',
 	'prefstats-desc' => 'Track statistics about how many users have certain preferences enabled',
 	'prefstats-title' => 'Preference statistics',
-	'prefstats-list-intro' => 'Currently, the following preferences are being tracked. Click on one to view statistics about it.',
+	'prefstats-list-intro' => 'Currently, the following preferences are being tracked.
+Click on one to view statistics about it.',
 	'prefstats-list-elem' => '$1 = $2',
 );
 

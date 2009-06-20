@@ -18,7 +18,7 @@
 					var width = control.scrollWidth;
 					return Math.floor(width/8);
 				}
-		
+
 				function getCaret(control) {
 					var caretPos = 0;
 					// IE Support
@@ -38,16 +38,16 @@
 					}
 					return caretPos;
 				}
-		
+
 				function getCaretPosition(control) {
 					var text = control.value.replace(/\r/g, "");
 					var caret = getCaret(control);
 					var lineLength = getLineLength(control);
-		
+
 					var row = 0;
 					var charInLine = 0;
 					var lastSpaceInLine = 0;
-		
+
 					for(i = 0; i < caret; i++) {
 						charInLine++;
 						if(text.charAt(i) == " ") {
@@ -60,13 +60,13 @@
 						if(charInLine > lineLength) {
 							if(lastSpaceInLine > 0) {
 								charInLine = charInLine - lastSpaceInLine;
-			
+
 								lastSpaceInLine = 0;
 								row++;
 							}
 						}
 					}
-			
+
 					var nextSpace = 0;
 					for(j = caret; j < caret + lineLength; j++) {
 						if(text.charAt(j) == " " || text.charAt(j) == "\n" || caret == text.length) {
@@ -74,16 +74,16 @@
 							break;
 						}
 					}
-			
+
 					if(nextSpace > lineLength && caret <= lineLength) {
 						charInLine = caret - lastSpaceInLine;
 						row++;
 					}
-			
-					
+
+
 					return ($.os.name == 'mac' ? 13 : 16)*row;
 				}
-				
+
 				// Put the cursor at the desired position
 				this.focus();
 				if ( this.selectionStart || this.selectionStart == '0' ) { // Mozilla
@@ -111,6 +111,5 @@ $( document ).ready( function() {
 			$( '#wpTextbox1' ).scrollToPosition( $(this).data( 'offset' ) );
 			e.preventDefault();
 	});
-			
-});
 
+});

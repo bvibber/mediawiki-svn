@@ -63,7 +63,7 @@ $wgOptInSurvey = array(
 		'type' => 'resolution' ),
 	array(	'question' => 'optin-survey-question-feedback',
 		'type' => 'textarea' )
-);			
+);
 
 /* Setup */
 

@@ -5,9 +5,9 @@
  * @file
  * @ingroup Extensions
  */
- 
+
  $aliases = array();
- 
+
  $aliases['en'] = array(
  	'PrefStats' => array( 'PrefStats' ),
 );

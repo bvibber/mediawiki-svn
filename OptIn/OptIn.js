@@ -43,8 +43,8 @@ $( document ).ready( function() {
 				browserIndex = 14;
 		break;
 	}
-	
-	var osIndex = -1; 
+
+	var osIndex = -1;
 	switch ( $.os.name ) {
 		case 'win':
 			osIndex = 0;
@@ -56,7 +56,7 @@ $( document ).ready( function() {
 			osIndex = 2;
 		break;
 	}
-	
+
 	if ( browserIndex == -1 )
 		$( '#survey-1' ).val( 'other' );
 	else
@@ -65,5 +65,5 @@ $( document ).ready( function() {
 		$( '#survey-2' ).val( 'other' );
 	else
 		$( '#survey-2' ).val( osIndex );
-	
+
 });
