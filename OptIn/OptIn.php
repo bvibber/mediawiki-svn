@@ -72,7 +72,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'OptIn',
 	'author' => 'Roan Kattouw',
-	'version' => '0.1.1',
+	'version' => '0.1.2',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'optin-desc',
 );
@@ -86,7 +86,10 @@ $wgAutoloadClasses['OptInHooks'] =
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['OptIn'] =
 	dirname( __FILE__ ) . '/OptIn.i18n.php';
+$wgExtensionAliasesFiles['OptIn'] =
+	dirname( __FILE__ ) . '/OptIn.alias.php';
 
 $wgSpecialPages['OptIn'] = 'SpecialOptIn';
+$wgSpecialPageGroups['OptIn'] = 'wiki';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'OptInHooks::schema';
