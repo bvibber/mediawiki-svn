@@ -6,11 +6,19 @@ class NssProperties {
 		if ( isset( self::$users[$username] ) )
 			return self::$users[$username];
 		
+		$propObj = new self( $username );
+		self::$users[$username] = $propObj;					
+		return $propObj;	
+	}
+		
+	public function load() {
+		if ( $this->loaded ) return;
+		
 		global $wgAuth;
 		$dbr = $wgAuth->getDB( DB_READ );
 		$res = $dbr->select( 'user_props',
 			array( 'up_name', 'up_value' ),
-			array( 'up_user' => $username ),
+			array( 'up_user' => $this->name ),
 			__METHOD__,
 			array( 'ORDER BY' => 'up_timestamp ASC' )
 			);
@@ -20,10 +28,8 @@ class NssProperties {
 			$props[$row->up_name] = $row->up_value;
 		}
 		
-		$propObj = new self( $username );
-		$propObj->props = $props;
-		self::$users[$username] = $propObj;
-		return $propObj;
+		$this->props = $props;
+		$this->loaded = true;
 	}
 	public static function getAllUsers() {
 		global $wgAuth;
@@ -48,12 +54,15 @@ class NssProperties {
 		$this->name = $name;
 		$this->props = array();
 		$this->changed = array();
+		$this->loaded = false;
 	}
 	
 	function get( $name ) {
+		$this->load();
 		return $this->props[$name];
 	}
 	function set( $name, $value ) {
+		$this->load();
 		if ( $this->props[$name] == $value )
 			return false;
 		$this->changed[] = $name;
@@ -62,6 +71,8 @@ class NssProperties {
 	}
 	
 	function commit() {
+		$this->load();
+		
 		global $wgAuth;
 		$dbw = $wgAuth->getDB( DB_WRITE );
 		

@@ -6,9 +6,10 @@ class AmExport {
 			return false;
 		
 		$data = NssProperties::getAllUsers();
-		$result = call_user_func( $this, array( 
+		
+		$result = call_user_func( array( $this,
 				'format'.ucfirst( strtolower( $format ) ) 
-			) );
+			), $data );
 		
 		global $wgOut;
 		$wgOut->disable();
@@ -22,12 +23,17 @@ class AmExport {
 	
 	function formatCsv( $data ) {
 		$props = NssProperties::getAll();
+		$users = NssUser::fetchAll();
 		
 		$result = '';
-		foreach ( $data as $line ) {
+		foreach ( $data as $username => $line ) {
 			$dataline = array();
 			foreach ( $props as $name ) {
-				$field = isset( $props[$name] ) ? $props[$name] : '';
+				$field = isset( $line[$name] ) ? $line[$name] : '';
+				
+				if ( !$field && in_array( $name, array( 'username', 'home', 'active', 'email' ) ) ) {
+					$field = $users[$username]->get( $name );
+				}
 				
 				$escape = false;
 				if ( strpos( $field, '"' ) !== false ) {

@@ -11,6 +11,7 @@ $wgAutoloadClasses['NssProperties'] = $dir . 'NssProperties.php';
 $wgAutoloadClasses['SpecialAccountManager'] = $dir . 'SpecialAccountManager.php';
 $wgAutoloadClasses['AmUserListView'] = $dir . 'AmUserListView.php';
 $wgAutoloadClasses['AmUserView'] = $dir . 'AmUserView.php';
+$wgAutoloadClasses['AmExport'] = $dir . 'AmExport.php';
 
 $wgSpecialPages['AccountManager'] = 'SpecialAccountManager';
 
