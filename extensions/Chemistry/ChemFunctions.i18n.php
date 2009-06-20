@@ -551,16 +551,17 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'chemicalsources' => '化学関連の検索',
 	'chemicalsource-desc' => '化学式のためのタグ <nowiki><chemform></nowiki> を追加する',
 	'chemFunctions_ListPage' => '化学関連の検索',
-	'chemFunctions_DataList' => '以下のリストは、あなたが検索した化学物質に関する情報を提供しているサイトです。
+	'chemFunctions_DataList' => '以下の一覧は、あなたが検索した化学物質に関する情報を提供している可能性の高いサイトです。
 
-* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">$MIXCASNameFormula 化合物（アメリカ国立標準技術研究所）</a><br />
-* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">化学物質安全性データシート（英オックスフォード大学、検索できません）</a><br />',
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">$MIXCASNameFormula 化合物 (アメリカ国立標準技術研究所)</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">化学物質安全性データシート (英オックスフォード大学、検索できません)</a><br />',
 	'chemFunctions_CAS' => 'CAS登録番号',
 	'chemFunctions_ATCCode' => 'ATC分類',
 	'chemFunctions_ECNumber' => 'EC番号',

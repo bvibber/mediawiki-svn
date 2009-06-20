@@ -1916,6 +1916,7 @@ Esistono molti [http://openid.net/get/ Provider OpenID]; è possibile che tu abb
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
@@ -1966,7 +1967,7 @@ $messages['ja'] = array(
 	'openidconvertsuccesstext' => 'あなたは OpenID の $1 への変換に成功しました。',
 	'openidconvertyourstext' => 'これは既にあなたの OpenID です。',
 	'openidconvertothertext' => 'これは他の誰かの OpenID です。',
-	'openidalreadyloggedin' => "'''$1 さん、あなたは既にログインしています!'''
+	'openidalreadyloggedin' => "'''$1 さん、あなたは既にログインしています！'''
 
 将来は OpenID を使ってログインしたい場合は、[[Special:OpenIDConvert|あなたのアカウントを OpenID を使うように変換する]]ことができます。",
 	'openidnousername' => '利用者名が指定されていません。',

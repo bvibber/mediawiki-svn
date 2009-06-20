@@ -1467,6 +1467,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -1508,13 +1509,13 @@ $messages['ja'] = array(
 	'whitelistoverviewrm' => '* [[:$1|$1]] へのアクセスを除去',
 	'whitelistoverviewna' => "* アクセス権限を'''$2'''し、期限切れを '''$3''' として、[[:$1|$1]]をホワイトリストに追加",
 	'whitelistrequest' => 'ページへのアクセス追加を要望',
-	'whitelistrequestmsg' => '$1 は次のページへのアクセスを求めました:
+	'whitelistrequestmsg' => '$1 は次の{{PLURAL:$3|ページ}}へのアクセスを求めました:
 
 $2',
 	'whitelistrequestconf' => '新しいページの要望は $1 に送られました',
 	'whitelistnonrestricted' => "利用者 '''$1''' は制限付利用者ではありません。このページは制限付利用者にのみ適用可能です",
 	'whitelistnever' => '無期限',
-	'whitelistnummatches' => ' - $1件の一致',
+	'whitelistnummatches' => ' - $1{{PLURAL:$1|件}}の一致',
 	'right-editwhitelist' => '既存利用者用のホワイトリストを変更する',
 	'right-restricttowhitelist' => 'ホワイトリストにあるページのみを編集および閲覧する',
 	'action-editwhitelist' => '既存利用者用ホワイトリストの変更',

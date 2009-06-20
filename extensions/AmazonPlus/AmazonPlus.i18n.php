@@ -588,10 +588,10 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'amazonplus-desc' => 'Amazon からの情報を表示する高度にカスタマイズ可能な拡張機能',
-	'amazonplus-nores' => 'エラー: 結果は見つかりませんでした!',
+	'amazonplus-nores' => 'エラー: 結果は見つかりませんでした！',
 	'amazonplus-noidres' => 'エラー: プロダクトIDが見つかりませんでした！',
 	'amazonplus-fgcerr' => 'エラー: Amazon からデータを取得できませんでした！',
-	'amazonplus-slserr' => 'エラー:アマゾンからのデータを解析することができませんでした!',
+	'amazonplus-slserr' => 'エラー: Amazon からのデータを解析することができませんでした！',
 	'amazonplus-used' => '中古',
 	'amazonplus-german' => 'ドイツ語',
 	'amazonplus-french' => 'フランス語',

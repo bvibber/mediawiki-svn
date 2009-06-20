@@ -219,11 +219,12 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'authors-desc' => '各ページへ投稿者のリストを追加する',
+	'authors-desc' => '各ページへ投稿者一覧を表示する',
 	'authors_authors' => '著作者',
 	'authors_anonymous' => '匿名',
 );

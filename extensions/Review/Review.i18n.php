@@ -1012,13 +1012,14 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'review_sidebar_title' => '批評',
 	'review-desc' => '利用者がページを[[Special:Review|批評]]できるようにする',
-	'review_topics' => '# 以下は批評機能で使用する、題目と値の範囲のリストです。
+	'review_topics' => '# 以下は査読機能で使用する題目と値の範囲の一覧です。
 # 各題目は、5つの値をもつ行で定義されます。値は「:」で区切ります。その他の行は無視されます。
 # 順序は次のようにします: 数値キー (>0)、名前、値の数 (>1。2 = 真/偽)、最低値の意味 (例: 不良)、最高値の意味 (例: 良)
 1:品質:5:不良:良
@@ -1037,7 +1038,7 @@ $messages['ja'] = array(
 	'review_total_statistics' => '合計',
 	'review_statistics_left_corner' => '特定版',
 	'review_version_link' => '第$1版',
-	'review_statistic_cell' => '平均: $2中 $1<br />(登録利用者 $4人、匿名利用者 $5人)',
+	'review_statistic_cell' => '平均: $2中 $1<br />(登録{{PLURAL:$4|利用者}} $4人、匿名{{PLURAL:$5|利用者}} $5人)',
 	'review_version_statistic_cell' => '$2中 $1',
 	'review_version_reviews_link' => '<small>(特定版への批評)</small>',
 	'review_concerns_page' => 'この批評はページ「$1」についてのものです。',

@@ -941,6 +941,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -957,7 +958,7 @@ $messages['ja'] = array(
 	'usagestatisticssubmit' => '統計を生成',
 	'usagestatisticsnostart' => '開始日を指定してください',
 	'usagestatisticsnoend' => '終了日を指定してください',
-	'usagestatisticsbadstartend' => '<b><i>開始</i>および、あるいは<i>終了</i>の日付が不正です!</b>',
+	'usagestatisticsbadstartend' => '<b><i>開始</i>および、あるいは<i>終了</i>の日付が不正です！</b>',
 	'usagestatisticsintervalday' => '日',
 	'usagestatisticsintervalweek' => '週',
 	'usagestatisticsintervalmonth' => '月',

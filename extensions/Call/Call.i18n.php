@@ -719,13 +719,14 @@ $messages['oc'] = array(
 	'call' => 'Ampèl',
 	'call-desc' => 'Crèa un ligam ipertèxte cap a un modèl o un article wiki normals tot i passant de paramètres. Pòt èsser utilizada en linha de comanda dempuèi un navigador o a travèrs un tèxte wiki.',
 	'call-text' => "L’extension Ampèl a besonh d’una pagina wiki e dels paramètres facultatius per aquesta darrièra coma argumen.<br /><br />
+
 Exemple 1: &nbsp; <tt>[[{{#special:call}}/Mon modèl,parm1=value1]]</tt><br />
 Exemple 2: &nbsp; <tt>[[{{#special:call}}/Discussion:Ma discussion,parm1=valor1]]</tt><br />
 Exemple 3: &nbsp; <tt>[[{{#special:call}}/:Ma pagina,parm1=valor1,parm2=valor2]]</tt><br /><br />
-Exemple 4 (Adreça per navigador) : &nbsp; <tt>http://mondomeni/monwiki/index.php?{{#special:call}}/:Ma_Pagina,param1=valor1</tt>
+Exemple 4 (Adreça per navigador) : &nbsp; <tt>http://mondomeni/monwiki/index.php?{{#special:call}}/:Ma_Pagina,param1=valor1</tt>.<br /><br />
 
 L’extension <i>Ampèl</i> apelarà la pagina indicada en i passant los paramètres.<br />
-Veiretz las entresenhas d'aquesta pagina, son títol, mas son « tipe » serà lo d’una pagina especiala que poirà pas èsser editada.<br />Las entresenhas que veiretz variaràn en foncion dels paramètres qu'auretz indicats.
+Veiretz las entresenhas d'aquesta pagina, son títol, mas son « tipe » serà lo d’una pagina especiala que poirà pas èsser editada.<br />Las entresenhas que veiretz variaràn en foncion dels paramètres qu'auretz indicats.<br /><br />
 
 Aquesta extension es fòrt practica per crear d'aplicacions interactivas amb MediaWiki.<br />
 A títol d’exemple, vejatz <a href='http://semeb.com/dpldemo/Template:Catlist'>l'interfàcia DPL</a>...<br />

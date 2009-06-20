@@ -1201,12 +1201,14 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv
+ * @author Lockal
  * @author Rubin
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'recordadmin' => 'Администрирование записей',
 	'recordadmin-desc' => '[[Special:RecordAdmin|Служебная страница]] для поиска и правки страниц записей, используя форму',
+	'recordadmin-categoryempty' => 'Типы записей на данный момент отсутствуют. Пожалуйста, категоризуйте шаблоны записей в [[:$1|$1]].',
 	'recordadmin-select' => 'Выбрать',
 	'recordadmin-createtype' => 'Введите название нового типа записи для создания',
 	'recordadmin-recordtype' => 'тип записи',
@@ -1216,15 +1218,21 @@ $messages['ru'] = array(
 	'recordadmin-create' => 'Найти или создать запись «$1»',
 	'recordadmin-alreadyexist' => 'Извините, «$1» уже существует !',
 	'recordadmin-createsuccess' => '$1 создано',
+	'recordadmin-createerror' => 'При создании $1 произошла ошибка!',
 	'recordadmin-badtitle' => 'Неправильный заголовок!',
 	'recordadmin-recordid' => 'ID/имя записи:',
+	'recordadmin-invert' => 'Обратить выделение',
 	'recordadmin-buttonsearch' => 'Найти',
 	'recordadmin-buttoncreate' => 'Создать',
 	'recordadmin-buttonreset' => 'Сбросить',
 	'recordadmin-searchresult' => 'Результаты поиска',
+	'recordadmin-nomatch' => 'Подходящие записи не найдены!',
 	'recordadmin-edit' => 'Редактировать $2 запись «$1»',
+	'recordadmin-typeupdated' => 'Обновлено $1 свойств',
 	'recordadmin-updatesuccess' => '$1 обновлено',
+	'recordadmin-updateerror' => 'Во время обновления произошла ошибка',
 	'recordadmin-buttonsave' => 'Сохранить',
+	'recordadmin-noform' => 'Нет формы, ассоциированной с записями «$1»!',
 	'recordadmin-createlink' => 'создать один',
 	'recordadmin-newcreated' => 'Новый $1 создан через общедоступную форму',
 	'recordadmin-summary-typecreated' => 'Создан новый $1',

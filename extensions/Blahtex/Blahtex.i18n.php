@@ -1560,6 +1560,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -1592,9 +1593,9 @@ $messages['ja'] = array(
 	'math_MisplacedLimits' => 'コマンド "$1" は数式演算子の後でのみ使用可能です（"\\mathop" の使用をご検討ください）',
 	'math_MissingCommandAfterNewcommand' => '"\\newcommand" に続く新しいコマンドが存在しないか不正です（"\\" から始まりアルファベットのみで記述される、1コマンドの正確な定義でなくてはいけません）',
 	'math_MissingDelimiter' => '"$1" に続く区切り文字がありません',
-	'math_MissingOpenBraceAfter' => '"$1" の後に、始め波括弧 "{" がありません',
+	'math_MissingOpenBraceAfter' => '「$1」の後に、始め波括弧 "{" がありません',
 	'math_MissingOpenBraceAtEnd' => '入力文字列の終わりに、始め波括弧 "{" がありません',
-	'math_MissingOpenBraceBefore' => '"$1" の前に、始め波括弧 "{" がありません',
+	'math_MissingOpenBraceBefore' => '「$1」 の前に、始め波括弧 "{" がありません',
 	'math_MissingOrIllegalParameterCount' => '"$1" の定義に引数の数が指定されていないか不正です（1から9までの一桁の数字を指定します）',
 	'math_MissingOrIllegalParameterIndex' => '"$1" の定義に引数の添え字がないか不正です',
 	'math_NonAsciiInMathMode' => 'ASCII以外の文字はテキストモードのみ利用可能です（問題のある文字は "\\text{...}" 中で使用してください）',

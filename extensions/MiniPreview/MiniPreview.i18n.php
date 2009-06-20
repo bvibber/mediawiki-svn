@@ -369,8 +369,8 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'minipreview-desc' => '画像の隣に同じカテゴリに属すファイルや同じページに挿入されているファイルの小さなプレビューを生成する',
-	'minipreview-files_in_category' => "このカテゴリには合計で'''$1'''ファイルが属しています。",
-	'minipreview-files_in_gallery' => "このギャラリーには全部で'''$1'''ファイル属しています。",
+	'minipreview-files_in_category' => "このカテゴリには'''$1'''{{PLURAL:$1|ファイル}}が属しています。",
+	'minipreview-files_in_gallery' => "このギャラリーには'''$1'''{{PLURAL:$1|ファイル}}属しています。",
 	'minipreview-no_more_files_here' => 'この先にはファイルがありません。',
 	'minipreview-no_category_gallery' => 'カテゴリもギャラリーもありません。',
 	'minipreview-ignore_categories' => '以下は MiniPreview に表示しないカテゴリ名冒頭部の一覧です。ここにある文字列から始まるカテゴリは MiniPreview に表示されません。たとえば "* PD-" とあれば、 "PD-" から始まるカテゴリ（"PD-old"など）をすべて表示しません。

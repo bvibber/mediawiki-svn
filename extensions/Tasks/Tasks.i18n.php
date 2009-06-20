@@ -1495,6 +1495,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -1506,7 +1507,7 @@ $messages['ja'] = array(
 	'tasks_form_new' => '新規課題の作成',
 	'tasks_form_comment' => 'コメント',
 	'tasks_error1' => '課題が作成されましたが、そのような課題は既に存在します。',
-	'tasks_ok1' => '新規課題を作成されました。',
+	'tasks_ok1' => '新規課題が作成されました！',
 	'tasks_create_header' => '新規課題の作成',
 	'tasks_existing_header' => '既存の課題',
 	'tasks_existing_table_header' => '課題|日付|初期コメント|割り当て/行動/ページ',
@@ -1540,9 +1541,9 @@ $messages['ja'] = array(
 	'tasks_event_on_creation' => '検査',
 	'tasks_event_on_creation_anon' => '検査',
 	'tasks_on_creation_comment' => 'ページ作成時に生成された、自動課題',
-	'tasks_link_your_assignments' => '有効割り当てリスト',
-	'tasks_see_your_assignments' => '現在あなたには有効な割り当てが $1件あります。$2を参照してください。',
-	'tasks_my_assignments' => '現在のあなたへの割り当て',
+	'tasks_link_your_assignments' => '割り当て待ちの作業',
+	'tasks_see_your_assignments' => '現在、対応待ちの{{PLURAL:$1|作業}}が$1件あります。$2を参照してください。',
+	'tasks_my_assignments' => '現在のあなたへの{{PLURAL:$1|割り当て}}',
 	'tasks_table_header_page' => 'ページ',
 	'tasks_you_have_no_assignments' => 'あなたへの有効な割り当てはありません',
 	'tasks_search_form_title' => '検索',

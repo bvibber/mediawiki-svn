@@ -700,8 +700,8 @@ $1',
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
 -->[[Special:BlockIP/$1|Benutzer sperren]] • <!--
--->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Sperr-Logbuch] • <!--
--->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Checkuser])<!--
+-->[{{fullurl:{{#special:Log}}|type=block&page={{ns:2}}:{{urlencode:$1}}}} Sperr-Logbuch] • <!--
+-->[{{fullurl:{{#special:CheckUser}}|ip={{urlencode:$1}}}} Checkuser])<!--
 --></span>',
 	'sign-viewfield-stricken' => 'Gestrichen',
 	'sign-viewfield-reviewedby' => 'Prüfer',

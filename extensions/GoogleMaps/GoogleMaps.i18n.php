@@ -1030,7 +1030,7 @@ $wgGoogleMapsMessages['de'] = array(
 	'gm-start-path' => 'Pfad beginnen',
 	'gm-trace-area' => 'ein Gebiet ausfindig machen',
 	'gm-save-point' => 'Speichern',
-	'gm-load-map-from-article' => 'Lade Karte aus Artikel:',
+	'gm-load-map-from-article' => 'Lade Karte aus Seite:',
 	'gm-no-maps' => 'Dieser Artikel enthält keine Karten.',
 	'gm-refresh-list' => 'Liste neu laden',
 	'gm-load-map' => 'Karte laden',
@@ -1088,13 +1088,14 @@ $wgGoogleMapsMessages['de'] = array(
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Raimond Spekking
+ * @author Umherirrender
  * @author [[mw:User:Helge.at]]
  */
 $wgGoogleMapsMessages['de-formal'] = array(
 	'gm-incompatible-browser' => 'Um die Karte sehen zu können, die hier angezeigt werden soll, brauchen Sie einen kompatiblen Browser.',
 	'gm-incompatible-browser-link' => 'Klicken Sie hier für eine Liste kompatibler Browser.',
 	'gm-no-editor' => 'Leider unterstützt Ihr Browser den interaktiven Karten-Editor nicht. Versuchen Sie es mit der neuesten Version von <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac und Linux) oder <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
-	'gm-note' => 'Achtung: Kopieren Sie die Wiki-Syntax in den Artikel (unten), bevor Sie „Karte laden“, „Speichern“ oder „Vorschau“ klicken!',
+	'gm-note' => 'Achtung: Kopieren Sie die Wiki-Syntax in die Seite (unten), bevor Sie „Karte laden“, „Speichern“ oder „Vorschau“ klicken!',
 	'gm-are-you-sure' => 'Sind Sie sicher?',
 	'gm-search-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen. Oder springen Sie zu einer Stadt, Land, Adresse oder einem Geschäft:',
 	'gm-geocode-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen. Oder springen Sie zu einer Stadt, Land oder Adresse:',
@@ -2549,6 +2550,7 @@ $wgGoogleMapsMessages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -2569,7 +2571,7 @@ $wgGoogleMapsMessages['ja'] = array(
 	'gm-save-point' => '保存して閉じる',
 	'gm-load-map-from-article' => '地図を読み込むページ:',
 	'gm-no-maps' => 'このページには読み込むべき地図はありません。',
-	'gm-refresh-list' => 'リストを更新',
+	'gm-refresh-list' => '一覧を更新',
 	'gm-load-map' => '地図を読み込み',
 	'gm-clip-result' => '地図に追加',
 	'gm-no-results' => 'すみません、結果はありません',
@@ -3963,7 +3965,10 @@ $wgGoogleMapsMessages['ro'] = array(
  * @author Joetaras
  */
 $wgGoogleMapsMessages['roa-tara'] = array(
+	'gm-desc' => 'FAcile facile ccreje le mappe cu le marcature uicchi-fied',
+	'gm-incompatible-browser-link' => "Cazze aqquà pe vedè 'na liste de browser combatibbele.",
 	'gm-balloon-title' => 'Titele:',
+	'gm-balloon-link-article' => 'Colleghe a sta pàgene (opzionale):',
 	'gm-remove' => 'live',
 	'gm-caption' => "'Ndestazione",
 	'gm-tab-title' => "Titele d'a schede",
@@ -3972,17 +3977,33 @@ $wgGoogleMapsMessages['roa-tara'] = array(
 	'gm-trace-area' => "racce 'n'area",
 	'gm-save-point' => 'reggistre &amp; achiude',
 	'gm-load-map-from-article' => "Careche 'na mappe da 'a pàgene:",
+	'gm-no-maps' => "Non g'ha state carecate nisciuna mappe jndr'à pàgene.",
+	'gm-refresh-list' => "Aggiorne 'a liste",
 	'gm-load-map' => "Careche 'a mappe",
+	'gm-clip-result' => "Aggiunge a 'a mappe",
 	'gm-no-results' => 'Niscune resultete',
+	'gm-searching' => 'stoche a cerche…',
 	'gm-map' => 'Mappe',
 	'gm-are-you-sure' => 'Sì secure secure?',
+	'gm-clear-all-points' => 'Scangille tutte le punde',
+	'gm-refresh-points' => 'Aggiorne le punde',
+	'gm-width' => 'Larghezze',
+	'gm-height' => 'Altezze',
+	'gm-scale-control' => 'Scala',
+	'gm-overview-control' => 'Panoramiche',
+	'gm-selector-control' => 'Selezionatore de Mappe/Satellite',
+	'gm-zoom-control' => 'Navigazzione',
 	'gm-large' => 'Granne',
 	'gm-medium' => 'Medie',
 	'gm-small' => 'Piccinne',
 	'gm-no-zoom-control' => 'Ninde',
 	'gm-yes' => 'Sine',
 	'gm-no' => 'None',
+	'gm-search-preface' => "Cazze sus 'a mappe pe aggiungere 'nu punde o, zumbà a 'na cetate, 'na nazione o 'n'indirizze de case o de fatije:",
+	'gm-geocode-preface' => "Cazze sus 'a mappe pe aggiungere 'nu punde o, zumbà a 'na cetate, 'na nazione o 'n'indirizze:",
+	'gm-no-search-preface' => "Cazze sus 'a mappe pe aggiungere 'nu punde",
 	'gm-search' => 'Cirche',
+	'gm-clear-search' => 'scangille le resultate de ricerche',
 	'gm-meters' => 'metre',
 	'gm-miles' => 'miglie',
 	'gm-editing-path' => "Cazze sus 'a mappe pe aggiungere cchiù punde pe stu percorse.",
@@ -3996,9 +4017,14 @@ $wgGoogleMapsMessages['roa-tara'] = array(
 	'gm-fill-color' => 'Colore de inghijemende',
 	'gm-line-color' => "Colore d'a linea",
 	'gm-opacity' => 'Opacetà',
+	'gm-line-width' => 'Larghezze',
 	'gm-make-map' => "fà 'na mappe",
 	'gm-hide-map' => "scunne 'a mappe",
 	'gm-back' => 'rrete',
+	'gm-kml-include' => 'Esterne KML/GeoRSS:',
+	'gm-kml-include-link' => "aggiunge a 'a mappe",
+	'gm-kml-loading' => 'stoche a careche…',
+	'gm-kml-export' => "Esporte sta mappe jndr'à 'nu KML",
 	'gm-earth' => 'Terra',
 	'gm-moon' => 'Lune',
 	'gm-mars' => 'Marte',

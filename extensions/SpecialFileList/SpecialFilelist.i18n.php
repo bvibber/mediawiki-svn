@@ -371,11 +371,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'filelist' => 'ファイルリスト',
+	'filelist' => 'ファイル一覧',
 	'filelist-desc' => 'アップロードされたファイルを一覧表示する[[Special:Filelist|特別ページ]]',
 	'filelist-show-list' => '一覧表示',
 	'filelist-show-gallery' => 'ギャラリー表示',

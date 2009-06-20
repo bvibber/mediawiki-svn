@@ -67,8 +67,10 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'createbox-desc' => 'Спэцыялізаванае поле ўводу для стварэньня старонак',
 	'createbox-create' => 'Стварыць',
 );
 

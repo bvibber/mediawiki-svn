@@ -793,21 +793,22 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'todo' => 'やることリスト',
-	'todo-desc' => '個人用の[[Special:Todo|やることリスト]]を実現する実験的な拡張機能',
+	'todo' => 'ToDo一覧',
+	'todo-desc' => '個人用の[[Special:Todo|ToDo一覧]]を実現する実験的な拡張機能',
 	'todo-tab' => 'やること',
 	'todo-new-queue' => '新規',
-	'todo-mail-subject' => '$1 のやることリスト上の項目が完了しました',
-	'todo-mail-body' => 'あなたは、$1 のやることリストに提出した項目の完了について、確認メールを希望されました。
+	'todo-mail-subject' => '$1 のToDo一覧上の完了項目',
+	'todo-mail-body' => 'ご依頼にそって、あなたが $1 のToDo一覧に登録した項目の完了をメールにて通知いたしました。
 
 項目: $2
-提出: $3
+登録日時: $3
 
-この項目は完了済みとマークされました。以下コメント:
+この項目は以下のコメントを添えて、完了済みとされました。
 $4',
 	'todo-invalid-item' => '項目が見当たらないか、不正です',
 	'todo-update-else-item' => '他の誰かの項目を更新しようとしています',
@@ -818,7 +819,7 @@ $4',
 	'todo-invalid-owner' => 'この項目の担当者が無効です',
 	'todo-add-queue' => 'キューに追加…',
 	'todo-move-queue' => 'キューに移動…',
-	'todo-list-for' => '$1 のやることリスト',
+	'todo-list-for' => '$1 のToDo一覧',
 	'todo-list-change' => '変更',
 	'todo-list-cancel' => '中止',
 	'todo-new-item' => '新規項目',
@@ -826,8 +827,8 @@ $4',
 	'todo-form-details' => '詳細:',
 	'todo-form-email' => '項目が完了した際に電子メールで通知を希望するなら、あなたのアドレスをここに入力してください:',
 	'todo-form-submit' => '送信',
-	'right-todo' => 'やることリストをもつ',
-	'right-todosubmit' => '利用者のやることリストに関する権限を制限する',
+	'right-todo' => 'ToDo一覧をもつ',
+	'right-todosubmit' => '利用者のToDo一覧に関する権限を制限する',
 );
 
 /** Javanese (Basa Jawa)

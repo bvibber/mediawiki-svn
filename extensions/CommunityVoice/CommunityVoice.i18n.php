@@ -330,16 +330,17 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'communityvoice' => 'コミュニティー・ボイス',
 	'communityvoice-desc' => 'コミュニティ参加ツール',
 	'communityvoice-ratings' => '評価',
-	'communityvoice-ratings-scale-status-sending' => '送信中...',
+	'communityvoice-ratings-scale-status-sending' => '送信中…',
 	'communityvoice-ratings-scale-status-error' => 'エラーを送信中です！',
 	'communityvoice-ratings-scale-status-thanks' => 'ご投票ありがとうございます！',
-	'communityvoice-ratings-scale-stats' => '$1 / 5 (投票総数: $2)',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|投票}}総数: $2)',
 	'communityvoice-ratings-error-no-category' => 'rating タグに category 属性が欠けています。',
 	'communityvoice-ratings-error-no-title' => 'rating タグに title 属性が欠けています。',
 );

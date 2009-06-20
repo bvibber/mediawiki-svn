@@ -596,6 +596,7 @@ $messages['is'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -616,7 +617,7 @@ $messages['ja'] = array(
 	'formbadpagename' => '不正なページ名',
 	'formbadrecaptcha' => 'reCAPTCHA 用の値が不正です。再度試してください。',
 	'formbadpagenametext' => 'あなたが入力したフォームのデータは不正なページ名「$1」を作ります。',
-	'formrequiredfielderror' => '欄 $1 はこのフォームで必須です。入力してください。',
+	'formrequiredfielderror' => '{{PLURAL:$2|欄 $1}}はこのフォームで必須です。{{PLURAL:$2|入力}}してください。',
 	'formsavesummary' => '[[Special:Form/$1|$1フォーム]]を使ってページ作成',
 	'formsaveerror' => 'フォーム保存時のエラー',
 	'formsaveerrortext' => 'ページ「$1」の保存時に不明なエラーがありました。',

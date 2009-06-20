@@ -1574,7 +1574,7 @@ $messages['id'] = array(
 	'group-oversight' => 'Pengawas suntingan',
 	'group-oversight-member' => 'Pengawas',
 	'grouppage-oversight' => '{{ns:project}}:Pengawas suntingan',
-	'right-oversight' => 'Lihat revisi yang telah disembunyikan',
+	'right-oversight' => 'Melihat revisi yang telah disembunyikan',
 	'right-hiderevision' => 'Menyembunyikan revisi-revisi dari opsis',
 	'hiderevision-prompt' => 'Nomor revisi untuk dihilangkan:',
 	'hiderevision-continue' => 'Lanjutkan',
@@ -1590,6 +1590,7 @@ administrator basis data jika Anda membuat kesalahan.",
 	'hiderevision-reason' => 'Alasan:',
 	'hiderevision-submit' => 'Sembunyikan data secara permanen',
 	'hiderevision-tab' => 'Sembunyikan revisi',
+	'hiderevision-link' => 'kontribusi pengguna yang disembunyikan',
 	'hiderevision-norevisions' => 'Tidak ada revisi untuk dihapus.',
 	'hiderevision-noreason' => 'Anda harus menyatakan alasan penghapusan.',
 	'hiderevision-status' => 'Revisi $1: $2',
@@ -1610,6 +1611,8 @@ administrator basis data jika Anda membuat kesalahan.",
 	'oversight-header' => 'Di bawah ini adalah daftar revisi yang disembunyikan secara permanen dari umum.
 Menyebarkan informasi ini dapat berakibat kepada hilangnya hak pengawas.',
 	'oversight-legend' => 'Cari log penyembunyian revisi',
+	'oversight-oversighter' => 'Penyembunyi suntingan:',
+	'oversight-offender' => 'Pelaku revisi:',
 );
 
 /** Ido (Ido)
@@ -1717,7 +1720,7 @@ $messages['ja'] = array(
 	'hiderevision-success' => 'アーカイブ化と削除に成功しました。',
 	'hiderevision-error-missing' => 'データベースに存在しませんでした。',
 	'hiderevision-error-current' => 'ページの最新版は削除することができません。先にこの版を差し戻してください。',
-	'hiderevision-error-delete' => 'アーカイブ化できませんでした。その版は過去に削除されていませんか?',
+	'hiderevision-error-delete' => 'アーカイブ化できませんでした。過去に削除されていませんか？',
 	'hiderevision-archive-status' => '$1 の削除版: $2',
 	'oversight-nodiff' => 'このページには現時点より前の版がないため、変更履歴を遡ることができません。以下の理由が考えられます:
 *このページは既に削除されている

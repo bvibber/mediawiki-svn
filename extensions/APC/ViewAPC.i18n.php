@@ -2432,6 +2432,7 @@ APC non sembra essere in esecuzione.",
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -2440,7 +2441,7 @@ $messages['ja'] = array(
 	'viewapc-desc' => 'MediaWiki で[[Special:ViewAPC|APCキャッシュを表示および管理する]]',
 	'right-apc' => '[[Special:ViewAPC|APC情報]]の全機能の使用',
 	'viewapc-apc-not-available' => 'キャッシュ情報は利用できません。APCが動作していないようです。',
-	'viewapc-clear-confirm' => 'キャッシュをクリアしたいのですか?',
+	'viewapc-clear-confirm' => 'キャッシュをクリアしますか？',
 	'viewapc-clear-user-cache' => 'ユーザーキャッシュをクリアする',
 	'viewapc-clear-code-cache' => '実行コードのキャッシュをクリアする',
 	'viewapc-mode-stats' => 'ホスト統計を閲覧する',
@@ -2460,7 +2461,7 @@ $messages['ja'] = array(
 	'viewapc-filecache-info' => 'ファイルキャッシュ情報',
 	'viewapc-usercache-info' => 'ユーザーキャッシュ情報',
 	'viewapc-cached-files' => 'キャッシュされたファイル',
-	'viewapc-cached-files-d' => '$1個 ($2)',
+	'viewapc-cached-files-d' => '$1{{PLURAL:$1|ファイル}} ($2)',
 	'viewapc-hits' => 'ヒット',
 	'viewapc-misses' => 'ミス',
 	'viewapc-requests' => 'リクエスト率',
@@ -2480,7 +2481,7 @@ $messages['ja'] = array(
 	'viewapc-memory-hits' => 'ヒット: $1 ($2)',
 	'viewapc-memory-miss' => 'ミス: $1 ($2)',
 	'viewapc-memoryfragmentation' => 'メモリ使用および断片化の詳細',
-	'viewapc-fragmentation-info' => '断片化: $1 ($3中 $2が$4個の領域に断片化)',
+	'viewapc-fragmentation-info' => '断片化: $1 ($3中 $2が$4個の{{PLURAL:$4|領域}}に断片化)',
 	'viewapc-fragmentation-none' => '断片化: 断片化なし',
 	'viewapc-display-attribute' => '属性',
 	'viewapc-display-value' => '値',
@@ -2526,7 +2527,7 @@ $messages['ja'] = array(
 	'viewapc-ls-sort-deleted' => '削除時刻',
 	'viewapc-ls-sort-timeout' => 'タイムアウト',
 	'viewapc-ls-limit-none' => 'すべて',
-	'viewapc-ls-more' => "''さらに $1 個のエントリがあります''",
+	'viewapc-ls-more' => "''さらに $1 個の{{PLURAL:$1|エントリ}}があります''",
 	'viewapc-ls-nodata' => "''マッチするデータなし''",
 	'viewapc-delete-ok' => 'キャッシュエントリ <nowiki>$1</nowiki> は削除されました。',
 	'viewapc-delete-failed' => 'キャッシュエントリ <nowiki>$1</nowiki> の削除に失敗しました。',

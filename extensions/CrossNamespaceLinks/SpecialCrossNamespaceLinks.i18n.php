@@ -474,7 +474,7 @@ $messages['ja'] = array(
 	'crossnamespacelinks' => '名前空間をまたぐリンク',
 	'crossnamespacelinks-desc' => '{{SITENAME}}において望ましくない[[Special:CrossNamespaceLinks|名前空間をまたぐリンクを一覧化する]]',
 	'crossnamespacelinks-summary' => '標準名前空間から他の名前空間（{{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} を除く）のページへとリンクしているページの一覧です。このようなリンクの使用は推奨されません。',
-	'crossnamespacelinkstext' => '$1: $2 個 の $3 へのリンク',
+	'crossnamespacelinkstext' => '$1: $2{{PLURAL:$2|個}}の $3 へのリンク',
 );
 
 /** Jutish (Jysk)

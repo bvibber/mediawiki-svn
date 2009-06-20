@@ -765,6 +765,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author JtFuruhata
  */
@@ -788,7 +789,7 @@ $messages['ja'] = array(
 	'dt_import_selectfile' => 'インポートする $1 ファイルを選択してください:',
 	'dt_import_editsummary' => '$1 のインポート',
 	'dt_import_importing' => 'インポート中…',
-	'dt_import_success' => '$2 ファイルからは $1個のページがインポートされます。',
+	'dt_import_success' => '$2ファイルから$1{{PLURAL:$1|ページ}}がインポートされます。',
 	'importcsv' => 'CSVのインポート',
 	'dt_importcsv_badheader' => 'エラー: 列 $1 のヘッダ「$2」は、「$3」もしくは「$4」であるか、または「テンプレート名[フィールド名]」という形式になっていなければなりません。',
 	'right-datatransferimport' => 'データをインポートする',

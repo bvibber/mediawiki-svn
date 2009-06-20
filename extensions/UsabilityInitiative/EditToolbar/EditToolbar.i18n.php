@@ -305,6 +305,26 @@ $messages['bg'] = array(
 	'edittoolbar-group-format-list' => 'Списък',
 );
 
+/** German (Deutsch)
+ * @author Lukas9950
+ */
+$messages['de'] = array(
+	'edittoolbar-tool-format-bold' => 'Fett',
+	'edittoolbar-tool-format-bold-example' => 'Fetter Text',
+	'edittoolbar-tool-format-italic' => 'Kursiv',
+	'edittoolbar-tool-format-italic-example' => 'Kursiver Text',
+	'edittoolbar-group-format-size' => 'Größe',
+	'edittoolbar-help-content-italic-description' => 'Kursiv',
+	'edittoolbar-help-content-italic-syntax' => "''Kursiver Text''",
+	'edittoolbar-help-content-italic-result' => '<em>Kursiver Text</em>',
+	'edittoolbar-help-content-bold-description' => 'Fett',
+	'edittoolbar-help-content-bold-syntax' => "'''Fetter Text'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Fetter Text</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Fett &amp; kursiv',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Fetter &amp; kursiver Text'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Fetter &amp; kursiver Text</em></strong>',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -1685,6 +1705,7 @@ $messages['oc'] = array(
  */
 $messages['pdc'] = array(
 	'edittoolbar-group-format-size' => 'Grees',
+	'edittoolbar-help-page-link' => 'Gleecher',
 	'edittoolbar-help-page-discussion' => 'Gschwetz',
 );
 

@@ -445,7 +445,7 @@ $messages['oc'] = array(
 # Los noms de paginas pòdon èsser de [[ligams]] e son sensibles a la cassa.
 # Amai, las paginas de discussion seràn desvarrolhadas automaticament amb sa pagina principala.
 # Vejatz http://www.mediawiki.org/wiki/Extension:EditSubpages per mai d’entresenhas.
-  #</pre><!-- Daissatz aquesta linha tala coma es -->',
+ #</pre><!-- Daissatz aquesta linha tala coma es -->',
 );
 
 /** Polish (Polski)

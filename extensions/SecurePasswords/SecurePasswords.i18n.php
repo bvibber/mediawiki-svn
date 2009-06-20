@@ -293,6 +293,7 @@ Illo debe:',
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Mizusumashi
  */
@@ -300,7 +301,7 @@ $messages['ja'] = array(
 	'securepasswords-desc' => 'より安全なパスワードのハッシュを生成し、パスワード強度検査器を追加する',
 	'securepasswords-valid' => 'あなたのパスワードは不正であるか、または短すぎます。
 以下を充たさなければなりません:',
-	'securepasswords-minlength' => '$1文字以上の長さである',
+	'securepasswords-minlength' => '$1{{PLURAL:$1|文字}}以上の長さである',
 	'securepasswords-lowercase' => '最低1文字は小文字を含む',
 	'securepasswords-uppercase' => '最低1文字は大文字を含む',
 	'securepasswords-digit' => '最低1文字は数字を含む',

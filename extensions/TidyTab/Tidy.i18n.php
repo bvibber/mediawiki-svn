@@ -290,6 +290,15 @@ $messages['pt-br'] = array(
 	'untidy' => 'Desarrumado',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'tidy-desc' => "Aggiunge 'na scheda Mitte 'u reggitte, Live 'u reggitte (ca depende da \$wgUseTidy) sus a le vôsce normale pe permettere de sovrascrivere le 'mbostaziune globale de l'ordine de HTML pe 'na singola viste",
+	'tidy' => "Mitte 'u reggitte",
+	'untidy' => "Live 'u reggitte",
+);
+
 /** Russian (Русский)
  * @author Kaganer
  * @author Александр Сигачёв

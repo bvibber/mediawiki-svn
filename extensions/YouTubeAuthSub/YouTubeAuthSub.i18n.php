@@ -1214,7 +1214,7 @@ Sii paziente.',
 $messages['ja'] = array(
 	'youtubeauthsub' => 'YouTube動画をアップロード',
 	'youtubeauthsub-desc' => '利用者に直接 YouTube へ[[Special:YouTubeAuthSub|動画をアップロード]]できるようにする',
-	'youtubeauthsub_info' => 'YouTubeへアップロードしたビデオをページに挿入するには、以下の情報を書き込んでください:',
+	'youtubeauthsub_info' => 'YouTubeへアップロードした動画をページに挿入するには、以下の情報を書き込んでください:',
 	'youtubeauthsub_title' => 'タイトル',
 	'youtubeauthsub_description' => '説明',
 	'youtubeauthsub_password' => 'YouTube パスワード',
@@ -1224,26 +1224,26 @@ $messages['ja'] = array(
 	'youtubeauthsub_submit' => '送信',
 	'youtubeauthsub_clickhere' => 'YouTubeにログインするにはここをクリックしてください',
 	'youtubeauthsub_tokenerror' => '認証トークンの生成時エラー。更新してみてください。',
-	'youtubeauthsub_success' => "おめでとうございます!
-あなたのビデオはアップロードされました。
+	'youtubeauthsub_success' => "おめでとうございます！
+あなたの動画はアップロードされました。
 <a href='http://www.youtube.com/watch?v=$1'>あなたのビデオを見る</a>。
-YouTubeがあなたのビデオを処理する準備ができるまで、いくらかの時間を必要とする可能性があります。
+YouTubeがあなたの動画を処理するまで、いくらかの時間を必要とする可能性があります。
 
-あなたのビデオをウィキ内のページに埋め込むには、次のコードをページの中に挿入してください:
+あなたの動画をウィキ内のページに埋め込むには、次のコードをページの中に挿入してください:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'ビデオをアップロードするには、最初にYouTubeにログインする必要があります。',
-	'youtubeauthsub_uploadhere' => 'ここからビデオをアップロード:',
+	'youtubeauthsub_authsubinstructions' => '動画をアップロードするには、最初にYouTubeにログインする必要があります。',
+	'youtubeauthsub_uploadhere' => 'ここから動画をアップロード:',
 	'youtubeauthsub_uploadbutton' => 'アップロード',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}。
 
-[http://www.youtube.com/watch?v=$1 このビデオを見る]',
-	'youtubeauthsub_summary' => 'YouTubeビデオをアップロード中',
-	'youtubeauthsub_uploading' => 'あなたのビデオはアップロードされています。 
+[http://www.youtube.com/watch?v=$1 この動画を見る]',
+	'youtubeauthsub_summary' => 'YouTube動画をアップロード中',
+	'youtubeauthsub_uploading' => 'あなたの動画をアップロードしています。 
 しばらくお待ちください。',
-	'youtubeauthsub_viewpage' => '代わりに、あなたが[[$1|あなたのビデオを見る]]ことができます。',
+	'youtubeauthsub_viewpage' => '代わりに、[[$1|自分の動画を見る]]ことができます。',
 	'youtubeauthsub_jserror_nokeywords' => '1つ以上のキーワードを入力してください。',
-	'youtubeauthsub_jserror_notitle' => 'ビデオのタイトルを入力してください。',
-	'youtubeauthsub_jserror_nodesc' => 'ビデオの説明を入力してください。',
+	'youtubeauthsub_jserror_notitle' => '動画のタイトルを入力してください。',
+	'youtubeauthsub_jserror_nodesc' => '動画の説明を入力してください。',
 );
 
 /** Javanese (Basa Jawa)
@@ -1502,6 +1502,12 @@ $messages['lt'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
+	'youtubeauthsub_title' => 'Lohateny',
+	'youtubeauthsub_description' => 'Visavisa',
+	'youtubeauthsub_password' => "Tenimiafina amin'ny YouTube",
+	'youtubeauthsub_username' => "Solonanarana eo amin'ny YouTube",
+	'youtubeauthsub_keywords' => 'Keyword',
+	'youtubeauthsub_category' => 'Sokajy',
 	'youtubeauthsub_submit' => 'Alefa',
 	'youtubeauthsub_clickhere' => "Tsindrio eto ra tia hiditra anatin'ny Youtube",
 );

@@ -299,7 +299,7 @@ $messages['ja'] = array(
 	'commentspammer-save-blocked' => 'あなたのIPアドレスはスパム投稿に用いられているとの疑いがあるため、ページは保存されませんでした。[[Special:UserLogin|ログインまたはアカウントの作成]]を行ってください。',
 	'commentspammer-desc' => 'DNSブラックリストに記載されたコメントスパム投稿容疑IPアドレスからの編集を拒絶する',
 	'commentspammer-log-msg' => '利用者 [[Special:Contributions/$1|$1]] による [[:$2]] の編集',
-	'commentspammer-log-msg-info' => '最後のスパム行為は $1日前 / 脅威レベル $2 / 違反コード $3 / [http://www.projecthoneypot.org/search_ip.php?ip=$4 詳細表示] / [[{{ns:Special}}:Blockip/$4|ブロックする]]',
+	'commentspammer-log-msg-info' => '最後のスパム行為は$1{{PLURAL:$1|日前}}に行われ、脅威レベルは$2、違反コードは$3です。 [http://www.projecthoneypot.org/search_ip.php?ip=$4 詳細を確認する]か[[Special:Blockip/$4|ブロック]]してください。',
 	'cspammerlogpagetext' => 'コメントスパマーとしての登録の有無によって判定された投稿の許可/拒否状況の記録',
 	'cspammer-log-page' => 'スパム投稿ログ',
 );

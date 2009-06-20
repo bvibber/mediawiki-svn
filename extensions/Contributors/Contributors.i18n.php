@@ -652,8 +652,8 @@ $messages['ja'] = array(
 	'contributors-target' => 'タイトル:',
 	'contributors-submit' => '表示',
 	'contributors-subtitle' => '$1 への主な投稿者',
-	'contributors-others-long' => 'このページにはほかに $1 名の投稿者がいます。',
-	'contributors-others' => '及びその他 $1 名',
+	'contributors-others-long' => 'このページにはほかに $1 名の{{PLURAL:$1|投稿者}}がいます。',
+	'contributors-others' => '及びその他$1{{PLURAL:$1|名}}',
 	'contributors-badtitle' => '不正なページ名です。',
 	'contributors-nosuchpage' => 'ページ $1 は存在しません。',
 );

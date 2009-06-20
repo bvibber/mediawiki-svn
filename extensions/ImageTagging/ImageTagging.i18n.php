@@ -809,6 +809,7 @@ Per favore aspetta che venga completata l'azione esistente.",
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -824,7 +825,7 @@ $messages['ja'] = array(
 	'imagetagging-inthisimage' => 'この画像中: $1',
 	'imagetagging-logentry' => '$2 が付けたページ [[$1]] へのラベルを除去',
 	'imagetagging-log-tagged' => '$4 が画像 [[$1|$2]] に [[$3]] をラベル付け',
-	'imagetagging-new' => '<sup><span style="color:red">新!</span></sup>',
+	'imagetagging-new' => '<sup><span style="color:red">新着</span></sup>',
 	'imagetagging-removetag' => 'ラベルを除去',
 	'imagetagging-done-button' => 'ラベル付け完了',
 	'imagetagging-tag-button' => 'ラベル',

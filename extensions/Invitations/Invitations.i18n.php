@@ -589,6 +589,7 @@ Pro gerer le invitationes a un function particular, clicca super le nomine de il
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
@@ -599,7 +600,7 @@ $messages['ja'] = array(
 	'invitations-desc' => '招待された利用者でなければ利用できないような[[Special:Invitations|新機能管理]]を実現する',
 	'invitations-invitedlist-description' => 'あなたは以下の招待限定のソフトウェア機能を利用できます。各機能への招待を管理するには、その名前をクリックしてください。',
 	'invitations-invitedlist-none' => 'あなたは招待限定のソフトウェア機能にはひとつも招待されていません。',
-	'invitations-invitedlist-item-count' => '($1件の招待があります)',
+	'invitations-invitedlist-item-count' => '($1件の{{PLURAL:$1|招待}}があります)',
 	'invitations-pagetitle' => '招待限定のソフトウェア機能',
 	'invitations-uninvitedlist-description' => 'あなたはこれらの招待限定のソフトウェア機能を利用できません。',
 	'invitations-uninvitedlist-none' => '現時点では、他に招待限定に設定されたソフトウェア機能はありません。',
@@ -613,8 +614,8 @@ $messages['ja'] = array(
 	'invitations-inviteform-username' => '招待する利用者',
 	'invitations-inviteform-submit' => '招待',
 	'invitations-error-baduser' => '指定した利用者は存在しないようです。',
-	'invitations-error-alreadyinvited' => '指定した利用者は既にこの機能を利用できます。',
-	'invitations-invite-success' => 'この機能への $1 の招待に成功しました。',
+	'invitations-error-alreadyinvited' => '指定した利用者は既にこの機能を利用できます！',
+	'invitations-invite-success' => 'この機能への $1 の招待に成功しました！',
 );
 
 /** Javanese (Basa Jawa)

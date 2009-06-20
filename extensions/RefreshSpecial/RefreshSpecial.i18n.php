@@ -576,6 +576,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
@@ -595,11 +596,11 @@ $messages['ja'] = array(
 	'refreshspecial-none-selected' => '特別ページを一つも選択していません。デフォルトの選択状態に戻します。',
 	'refreshspecial-db-error' => '失敗: データベースのエラー',
 	'refreshspecial-no-page' => 'そのような特別ページはありません',
-	'refreshspecial-slave-lagged' => 'スレーブサーバーの遅延、待機中...',
+	'refreshspecial-slave-lagged' => 'スレーブサーバーの遅延、待機中…',
 	'refreshspecial-reconnected' => '再接続しました。',
-	'refreshspecial-reconnecting' => '接続失敗、10秒間の再接続中...',
-	'refreshspecial-page-result' => '$1行を取得',
-	'refreshspecial-total-display' => '$1個のページ (データベース行数合計: $2) を $3で更新しました (スクリプトの全実行時間: $4)',
+	'refreshspecial-reconnecting' => '接続失敗、10秒間の再接続中…',
+	'refreshspecial-page-result' => '$1{{PLURAL:$1|行}}を取得',
+	'refreshspecial-total-display' => '$1{{PLURAL:$1|ページ}} (データベース{{PLURAL:$2|行数}}合計: $2) を $3で更新しました (スクリプトの全実行時間: $4)',
 	'right-refreshspecial' => '特別ページを更新する',
 );
 
@@ -927,14 +928,26 @@ După ce aţi ales toate paginile pe care doriţi să le reîmprospătaţi, face
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'refreshspecial' => 'Обновить служебные страницы',
+	'refreshspecial-desc' => 'Позволяет [[Special:RefreshSpecial|руководство обновления служебных страниц]] для служебных страниц',
+	'refreshspecial-title' => 'Обновить служебные страницы',
+	'refreshspecial-button' => 'Обновление выбрано',
+	'refreshspecial-fail' => 'Пожалуйста, выберите одну служебную страницу для обновления.',
+	'refreshspecial-refreshing' => 'обновление служебных страниц',
+	'refreshspecial-choice' => 'обновление служебных страниц',
+	'refreshspecial-js-disabled' => '(<i>Вы не можете выбрать все страницы, когда JavaScript отключён</i>)',
 	'refreshspecial-select-all-pages' => 'Выбрать все страницы',
 	'refreshspecial-link-back' => 'Вернуться к служебной странице',
+	'refreshspecial-none-selected' => 'Вы не выбрали служебных страниц. Возвращение к выбору по умолчанию.',
 	'refreshspecial-db-error' => 'Неудачно. Ошибка базы данных.',
 	'refreshspecial-no-page' => 'Нет такой служебной страницы',
+	'refreshspecial-reconnected' => 'Пересоединение.',
+	'refreshspecial-reconnecting' => 'Соединение неудачно, пересоединение через 10 секунд...',
+	'refreshspecial-total-display' => '{{PLURAL:$1|Обновлена $1 страница, содержащая|Обновлено $1 страниц, содержащих}} $2 {{PLURAL:$2|строку|строк}} за время $3 (полное время выполнения скрипта составило $4)',
 	'right-refreshspecial' => 'обновление служебных страниц',
 );
 

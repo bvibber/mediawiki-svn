@@ -2537,6 +2537,7 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -2617,7 +2618,7 @@ $messages['ja'] = array(
 この削除への賛成と反対の[{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} 一覧]が確認でき、議論そのものは[[$2]]で見ることができます。議論での合意に則って決断を下してください。",
 	'deletequeue-review-success' => 'このページの削除審査に成功しました',
 	'deletequeue-review-success-title' => '審査完了',
-	'deletequeue-deletediscuss-discussionpage' => 'これは [[$1]] の削除について議論するページです。現時点で、$2人の利用者が削除に賛成し、$3人の利用者が削除に反対しています。あなたは削除に[{{fullurl:$1|action=delvote}} 賛成または反対]をするか、[{{fullurl:$1|action=delviewvotes}} すべての賛成と反対を見る]ことができます。',
+	'deletequeue-deletediscuss-discussionpage' => 'これは [[$1]] の削除について議論するページです。現時点で、$2人の{{PLURAL:$2|利用者}}が削除に賛成し、$3人の{{PLURAL:$3|利用者}}が削除に反対しています。あなたは削除に[{{fullurl:$1|action=delvote}} 賛成または反対]をするか、[{{fullurl:$1|action=delviewvotes}} すべての賛成と反対を見る]ことができます。',
 	'deletequeue-discusscreate-summary' => '[[$1]] の削除議論を作成中',
 	'deletequeue-discusscreate-text' => '次の理由で提案された削除: $2',
 	'deletequeue-role-nominator' => '削除の提案者',
@@ -2656,7 +2657,7 @@ $messages['ja'] = array(
 	'deletequeue-list-search' => '検索',
 	'deletequeue-list-anyqueue' => '(任意)',
 	'deletequeue-list-votes' => '票一覧',
-	'deletequeue-list-votecount' => '賛成 $1票、反対 $2票',
+	'deletequeue-list-votecount' => '賛成$1{{PLURAL:$1|票}}、反対$2{{PLURAL:$2|票}}',
 	'deletequeue-list-header-page' => 'ページ',
 	'deletequeue-list-header-queue' => 'キュー',
 	'deletequeue-list-header-votes' => '賛成と反対',

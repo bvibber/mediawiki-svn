@@ -897,6 +897,7 @@ Clicca sul pulsante qui sotto per iscriverti.',
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
@@ -909,7 +910,7 @@ $messages['ja'] = array(
 	'povwatch_not_subscribed' => 'あなたは編集合戦の監視を購読していないため、購読停止はできません。',
 	'povwatch_unsubscribed' => 'あなたは編集合戦の監視を購読停止しました',
 	'povwatch_invalid_title' => '指定したページ名は無効です',
-	'povwatch_pushed' => '[[$1]] を $2人の利用者のウォッチリストに追加しました',
+	'povwatch_pushed' => '[[$1]] を $2人の利用者の{{PLURAL:$2|ウォッチリスト}}に追加しました',
 	'povwatch_intro' => '編集合戦の監視は、購読している管理者のウォッチリストに議論の起きやすいページをこっそりと入れることができるようにするサービスです。
 
 最近のウォッチリストへの追加記録は [[Special:PovWatch/log]] で閲覧可能です。',

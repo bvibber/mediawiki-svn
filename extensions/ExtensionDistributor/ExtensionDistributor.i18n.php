@@ -911,7 +911,7 @@ $messages['hr'] = array(
 	'extdist-choose-extension' => 'Odaberite koju ekstenziju želite preuzeti:',
 	'extdist-wc-empty' => 'U konfiguriranom radnom direktoriju za kopiranje nema ekstenzija za distribuciju!',
 	'extdist-submit-extension' => 'Nastavi',
-	'extdist-current-version' => 'Tekuća inačica (stablo)',
+	'extdist-current-version' => 'Razvojna inačica (stablo)',
 	'extdist-choose-version' => '<big>Preuzimate ekstenziju <b>$1</b>.</big> 
 
 Izaberite vašu inačicu MedijaWikija.
@@ -1107,6 +1107,7 @@ Se hai qualche domanda riguardo al sistema di distribuzione di questa estensione
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Marine-Blue
  */
@@ -1114,11 +1115,11 @@ $messages['ja'] = array(
 	'extensiondistributor' => 'MediaWiki 拡張機能のダウンロード',
 	'extdist-desc' => '拡張機能のスナップショットのアーカイブを配布するための拡張機能',
 	'extdist-not-configured' => '$wgExtDistTarDirと$wgExtDistWorkingCopyの設定を行ってください',
-	'extdist-wc-missing' => '指定されたコピー用ディレクトリが存在しません!',
+	'extdist-wc-missing' => '指定されたコピー用ディレクトリが存在しません！',
 	'extdist-no-such-extension' => '"$1"という拡張機能は存在しません',
 	'extdist-no-such-version' => '拡張機能 "$1" に "$2" というバージョンは存在しません。',
 	'extdist-choose-extension' => 'ダウンロードしたい拡張機能を選択してください:',
-	'extdist-wc-empty' => '指定されたコピー先ディレクトリにダウンロードする拡張機能が存在しません!',
+	'extdist-wc-empty' => '指定されたコピー先ディレクトリにダウンロードする拡張機能が存在しません！',
 	'extdist-submit-extension' => '続行',
 	'extdist-current-version' => '開発バージョン (trunk)',
 	'extdist-choose-version' => '<big>拡張機能 <b>$1</b> をダウンロードしようとしています。</big>
@@ -1126,7 +1127,7 @@ $messages['ja'] = array(
 あなたが利用しているMediaWikiのバージョンを選択してください。
 
 多くの拡張機能は複数のバージョンで利用できますが、あなたの使用しているMediaWikiのバージョンが下記にない場合、最新版にアップデートする必要があります。',
-	'extdist-no-versions' => '選択された拡張機能($1)は全てのバージョンで利用できません!',
+	'extdist-no-versions' => '選択された拡張機能($1)は全てのバージョンで利用できません！',
 	'extdist-submit-version' => '選択',
 	'extdist-no-remote' => 'subversionクライアントと接続できませんでした。',
 	'extdist-remote-error' => 'subversionクライアントがエラーを返しました: <pre>$1</pre>',

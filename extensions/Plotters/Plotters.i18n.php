@@ -243,6 +243,7 @@ Per favor defini un classe de tabula que ha 255 characteres al maximo.',
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
@@ -259,7 +260,7 @@ $messages['ja'] = array(
 	'plotters-excessively-long-tableclass' => 'テーブルのクラスが長すぎます。クラスは255文字以内に収めてください。',
 	'plotters-no-data' => 'データが与えられていません。',
 	'plotters-invalid-renderer' => '無効なレンダラーが選択されました。',
-	'plotters-errors' => 'プロッターのエラー:',
+	'plotters-errors' => 'プロッターの{{PLURAL:$1|エラー}}:',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -342,14 +343,21 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'plotters-desc' => 'Позволяет участникам использовать свой JavaScript в тегах jsplot',
 	'plotters' => 'Плоттеры',
 	'plotters-title' => 'Плоттеры',
 	'plotters-uses' => 'Использования',
 	'plotters-missing-script' => 'Не определено ни одного скрипта.',
 	'plotters-missing-arguments' => 'Аргументы не указаны.',
+	'plotters-excessively-long-scriptname' => 'Имя скрипта слишком длинное.
+Пожалуйста, укажите скрипт, чьё имя не превышает 255 символов.',
+	'plotters-excessively-long-preprocessorname' => 'Имя препроцессора слишком длинное.
+Пожалуйста, укажите препроцессор, чьё имя не превышает 255 символов.',
+	'plotters-no-data' => 'Данные не указаны.',
 );
 
 /** Slovak (Slovenčina)
