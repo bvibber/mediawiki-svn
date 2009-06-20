@@ -151,7 +151,7 @@ seqRemoteSearchDriver.prototype = {
 			
 		$j('#seq_resource_import').dialog('destroy').dialog({
 			bgiframe: true,
-			width:700,
+			width:750,
 			height:480,
 			modal: true,
 			buttons: { 

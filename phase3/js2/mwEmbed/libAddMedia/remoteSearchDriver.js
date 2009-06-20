@@ -294,7 +294,7 @@ remoteSearchDriver.prototype = {
 	},
 	//some default layout values:	
 	thumb_width		 : 80,
-	image_edit_width	: 600,
+	image_edit_width	: 400,
 	video_edit_width	: 400,
 	insert_text_pos		: 0,	  //insert at the start (will be overwritten by the user cursor pos)
 	result_display_mode : 'box', //box or list
@@ -942,7 +942,7 @@ remoteSearchDriver.prototype = {
 		if(rObj.mime.indexOf('image')!=-1){				
 			//set width to default image_edit_width
 			var maxWidth = _this.image_edit_width;	
-			var mediaType = 'image';									
+			var mediaType = 'image';												
 		}else if(rObj.mime.indexOf('audio')!=-1){
 			var maxWidth = _this.video_edit_width;
 			var mediaType = 'audio';
@@ -950,21 +950,21 @@ remoteSearchDriver.prototype = {
 			//set to default video size:
 			var maxWidth = _this.video_edit_width;
 			var mediaType = 'video';
-		}
+		}	
 		//so that transcripts show ontop
 		var overflow_style = ( mediaType =='video' )?'':'overflow:auto;';
 		//append to the top level of model window:
 		$j( _this.target_container ).append('<div id="rsd_resource_edit" '+
 			'style="position:absolute;top:0px;left:0px;bottom:85px;right:4px;background-color:#FFF;">' +			 
 				'<div id="clip_edit_disp" style="position:absolute;' + overflow_style + 'width:100%;height:100%;padding:5px;'+
-					'width:' + (maxWidth + 10) + 'px;" >' +
+					'width:' + (maxWidth) + 'px;" >' +
 						mv_get_loading_img('position:absolute;top:30px;left:30px') +
 				'</div>'+
 				'<div id="clip_edit_ctrl" class="ui-widget ui-widget-content ui-corner-all" style="position:absolute;'+
 					'left:' + ( maxWidth + 10 ) +'px;top:5px;bottom:10px;right:0px;overflow:auto;padding:5px;">'+
 						mv_get_loading_img() +					 
 				'</div>'+
-			'</div>');
+			'</div>');			
 		//update add media wizard title:
 		$j( _this.target_container ).dialog( 'option', 'title', gM('add_media_wizard')+': '+ gM('rsd_resource_edit', rObj.title ) );		 
 		js_log('did append to: '+ _this.target_container );
@@ -988,7 +988,7 @@ remoteSearchDriver.prototype = {
 			var tRatio = 1; //set ratio to 1 if the width of the thumbnail can't be found for some reason
 	
 		js_log('set from ' +  $j('#rsd_edit_img').width()+'x'+ $j('#rsd_edit_img').height() + ' to init thumbimage to ' + maxWidth + ' x ' + parseInt( tRatio * maxWidth) );
-		//scale up image and swap with high res version
+		//scale up image and to swap with high res version
 		$j('#rsd_edit_img').animate({
 			'opacity':1,
 			'top':'0px',

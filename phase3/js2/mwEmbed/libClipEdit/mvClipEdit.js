@@ -262,7 +262,7 @@ mvClipEdit.prototype = {
 			var res_src = _this.rObj.src;								
 			var res_title = parseUri(_this.rObj.src).file;			
 		} 
-		o+=		'<tr>'+
+		o+=	'<tr>'+
 					'<td colspan="2"><b>'+gM('mv_other_properties')+'</b></td>'+
 				'</tr>'+
 				'<tr>'+
