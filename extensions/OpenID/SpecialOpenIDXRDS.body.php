@@ -31,7 +31,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 class SpecialOpenIDXRDS extends SpecialOpenID {
 
 	function SpecialOpenIDXRDS() {
-		SpecialPage::SpecialPage( "OpenIDXRDS", '', false );
+		SpecialPage::SpecialPage( 'OpenIDXRDS', '', false );
 	}
 
 	# $par is a user name
@@ -51,7 +51,7 @@ class SpecialOpenIDXRDS extends SpecialOpenID {
 		}
 
 		// XRDS preamble XML.
-		$xml_template = array( '<?xml version="1.0" encoding="UTF-8"?>',
+		$xml_template = array( '<?xml version="1.0" encoding="UTF-8"?' . '>',
 			'<xrds:XRDS',
 			'  xmlns:xrds="xri://\$xrds"',
 			'  xmlns:openid="http://openid.net/xmlns/1.0"',
@@ -108,6 +108,7 @@ class SpecialOpenIDXRDS extends SpecialOpenID {
 
 		// Print content-type and XRDS XML.
 		header( "Content-Type: application/xrds+xml" );
+
 		print implode( "\n", $xml_template );
 		print $service_text;
 		print implode( "\n", array( "</XRD>", "</xrds:XRDS>" ) );

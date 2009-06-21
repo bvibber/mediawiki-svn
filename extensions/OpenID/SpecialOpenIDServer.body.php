@@ -51,7 +51,6 @@ class SpecialOpenIDServer extends SpecialOpenID {
 	}
 
 	function execute( $par ) {
-
 		global $wgOut, $wgOpenIDClientOnly;
 
 		wfLoadExtensionMessages( 'OpenID' );
@@ -500,7 +499,6 @@ class SpecialOpenIDServer extends SpecialOpenID {
 	}
 
 	function LoginForm( $request, $msg = null ) {
-
 		global $wgOut, $wgUser;
 
 		$url = $request->identity;
@@ -514,7 +512,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		$ok = wfMsg( 'ok' );
 		$cancel = wfMsg( 'cancel' );
 
-		if ( isset( $msg ) ) {
+		if ( !is_null( $msg ) ) {
 			$wgOut->addHTML( "<p class='error'>{$msg}</p>" );
 		}
 
@@ -744,6 +742,6 @@ class SpecialOpenIDServer extends SpecialOpenID {
 	}
 
 	function serverUrl() {
-		return $this->fullURL( 'OpenIDServer' );
+		return $this->getTitle()->getFullUrl();
 	}
 }

@@ -87,70 +87,21 @@ class SpecialOpenID extends SpecialPage {
 		}
 	}
 
-	static function getUserUrl( $user ) {
-		$openid_url = null;
-
-		if ( isset( $user ) && $user->getId() != 0 ) {
-			global $wgSharedDB, $wgDBprefix;
-			if ( isset( $wgSharedDB ) ) {
-				$tableName = "`${wgSharedDB}`.${wgDBprefix}user_openid";
-			} else {
-				$tableName = 'user_openid';
-			}
-
-			$dbr = wfGetDB( DB_SLAVE );
-			$res = $dbr->select(
-				array( $tableName ),
-				array( 'uoi_openid' ),
-				array( 'uoi_user' => $user->getId() ),
-				__METHOD__
-			);
-
-			# This should return 0 or 1 result, since user is unique
-			# in the table.
-
-			while ( $row = $res->fetchObject() ) {
-				$openid_url = $row->uoi_openid;
-			}
-			$res->free();
-		}
-		return $openid_url;
-	}
-
 	# Login, Finish
 
 	function getConsumer() {
 		global $wgOpenIDConsumerStoreType, $wgOpenIDConsumerStorePath;
 
-		$store = $this->getOpenIDStore( $wgOpenIDConsumerStoreType,
-									   'consumer',
-									   array( 'path' => $wgOpenIDConsumerStorePath ) );
+		$store = $this->getOpenIDStore(
+			$wgOpenIDConsumerStoreType,
+			'consumer',
+			array( 'path' => $wgOpenIDConsumerStorePath )
+		);
 
 		return new Auth_OpenID_Consumer( $store );
 	}
 
-	function fullUrl( $title ) {
-		$nt = Title::makeTitleSafe( NS_SPECIAL, $title );
-		if ( isset( $nt ) ) {
-			return $nt->getFullURL();
-		} else {
-			return NULL;
-		}
-	}
-
-	function scriptUrl( $title ) {
-		global $wgServer, $wgScript;
-		$nt = Title::makeTitleSafe( NS_SPECIAL, $title );
-		if ( isset( $nt ) ) {
-			$dbkey = wfUrlencode( $nt->getPrefixedDBkey() );
-			return "{$wgServer}{$wgScript}?title={$dbkey}";
-		} else {
-			return $url;
-		}
-	}
-
 	function canLogin( $openid_url ) {
-
 		global $wgOpenIDConsumerDenyByDefault, $wgOpenIDConsumerAllow, $wgOpenIDConsumerDeny;
 
 		if ( $this->isLocalUrl( $openid_url ) ) {
@@ -194,7 +145,6 @@ class SpecialOpenID extends SpecialPage {
 	}
 
 	function isLocalUrl( $url ) {
-
 		global $wgServer, $wgArticlePath;
 
 		$pattern = $wgServer . $wgArticlePath;
@@ -204,30 +154,8 @@ class SpecialOpenID extends SpecialPage {
 		return preg_match( '|^' . $pattern . '$|', $url );
 	}
 
-	# Find the user with the given openid, if any
-
-	function getUser( $openid ) {
-		global $wgSharedDB, $wgDBprefix;
-
-		if ( isset( $wgSharedDB ) ) {
-			$tableName = "`$wgSharedDB`.${wgDBprefix}user_openid";
-		} else {
-			$tableName = 'user_openid';
-		}
-
-		$dbr =& wfGetDB( DB_SLAVE );
-		$id = $dbr->selectField( $tableName, 'uoi_user',
-								array( 'uoi_openid' => $openid ) );
-		if ( $id ) {
-			$name = User::whoIs( $id );
-			return User::newFromName( $name );
-		} else {
-			return NULL;
-		}
-	}
-	function login( $openid_url, $finish_page = 'OpenIDFinish' ) {
-
-		global $wgUser, $wgTrustRoot, $wgOut;
+	function login( $openid_url, $finish_page ) {
+		global $wgTrustRoot, $wgOut;
 
 		# If it's an interwiki link, expand it
 
@@ -240,15 +168,15 @@ class SpecialOpenID extends SpecialPage {
 			return;
 		}
 
-		$sk = $wgUser->getSkin();
-
-		if ( isset( $wgTrustRoot ) ) {
+		if ( !is_null( $wgTrustRoot ) ) {
 			$trust_root = $wgTrustRoot;
 		} else {
 			global $wgArticlePath, $wgServer;
 			$root_article = str_replace( '$1', '', $wgArticlePath );
 			$trust_root = $wgServer . $root_article;
 		}
+
+		wfSuppressWarnings();
 
 		$consumer = $this->getConsumer();
 
@@ -258,12 +186,7 @@ class SpecialOpenID extends SpecialPage {
 		}
 
 		# Make sure the user has a session!
-
-		global $wgSessionStarted;
-
-		if ( !$wgSessionStarted ) {
-			$wgUser->SetupSession();
-		}
+		$this->setupSession();
 
 		$auth_request = $consumer->begin( $openid_url );
 
@@ -277,7 +200,7 @@ class SpecialOpenID extends SpecialPage {
 
 		$endpoint = $auth_request->endpoint;
 
-		if ( isset( $endpoint ) ) {
+		if ( !is_null( $endpoint ) ) {
 			# Check if the URL is allowed
 
 			if ( isset( $endpoint->identity_url ) && !$this->canLogin( $endpoint->identity_url ) ) {
@@ -292,17 +215,17 @@ class SpecialOpenID extends SpecialPage {
 		}
 
 		$sreg_request = Auth_OpenID_SRegRequest::build(
-													   // Required
-													   array(),
-													   // Optional
-													   array( 'nickname', 'email',
-															 'fullname', 'language', 'timezone' ) );
+			// Required
+			array(),
+			// Optional
+			array( 'nickname', 'email', 'fullname', 'language', 'timezone' )
+		);
 
 		if ( $sreg_request ) {
 			$auth_request->addExtension( $sreg_request );
 		}
 
-		$process_url = $this->scriptUrl( $finish_page );
+		$process_url = $finish_page->getFullUrl();
 
 		if ( $auth_request->shouldSendRedirect() ) {
 			$redirect_url = $auth_request->redirectURL( $trust_root,
@@ -322,57 +245,89 @@ class SpecialOpenID extends SpecialPage {
 			// Display an error if the form markup couldn't be generated;
 			// otherwise, render the HTML.
 			if ( Auth_OpenID::isFailure( $form_html ) ) {
-				displayError( "Could not redirect to server: " . $form_html->message );
+				displayError( 'Could not redirect to server: ' . $form_html->message );
 			} else {
-				$wgOut->addHTML( "<p>" . wfMsg( "openidautosubmit" ) . "</p>" );
+				$wgOut->addWikiMsg( 'openidautosubmit' );
 				$wgOut->addHTML( $form_html );
 				$wgOut->addInlineScript( "function submitOpenIDForm() {\n document.getElementById(\"" . $form_id . "\").submit()\n }\nhookEvent(\"load\", submitOpenIDForm);\n" );
 			}
 		}
+
+		wfRestoreWarnings();
 	}
 
-	function setUserUrl( $user, $url ) {
-		$other = $this->getUserUrl( $user );
-		if ( isset( $other ) ) {
-			$this->updateUserUrl( $user, $url );
+	protected function setupSession() {
+		global $wgSessionStarted;
+
+		if ( !$wgSessionStarted ) {
+			wfSetupSession();
+		}
+	}
+
+	# Find the user with the given openid, if any
+	public static function getUserUrl( $user ) {
+		$openid_urls = array();
+
+		if ( $user instanceof User && $user->getId() != 0 ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+				array( 'user_openid' ),
+				array( 'uoi_openid' ),
+				array( 'uoi_user' => $user->getId() ),
+				__METHOD__
+			);
+
+			foreach( $res as $row ) {
+				$openid_urls[] = $row->uoi_openid;
+			}
+			$res->free();
+		}
+		return $openid_urls;
+	}
+
+	public static function getUser( $openid ) {
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$id = $dbr->selectField(
+			'user_openid',
+			'uoi_user',
+			array( 'uoi_openid' => $openid ),
+			__METHOD__
+		);
+
+		if ( $id ) {
+			return User::newFromId( $id );
 		} else {
-			$this->insertUserUrl( $user, $url );
+			return null;
 		}
 	}
 
-	function insertUserUrl( $user, $url ) {
-		global $wgSharedDB, $wgDBname;
-		$dbw =& wfGetDB( DB_MASTER );
+	public static function addUserUrl( $user, $url ) {
+		$dbw = wfGetDB( DB_MASTER );
 
-		if ( isset( $wgSharedDB ) ) {
-			# It would be nicer to get the existing dbname
-			# and save it, but it's not possible
-			$dbw->selectDB( $wgSharedDB );
-		}
+		$dbw->insert(
+			'user_openid',
+			array(
+				'uoi_user' => $user->getId(),
+				'uoi_openid' => $url
+			),
+			__METHOD__
+		);
 
-		$dbw->insert( 'user_openid', array( 'uoi_user' => $user->getId(),
-										  'uoi_openid' => $url ) );
-
-		if ( isset( $wgSharedDB ) ) {
-			$dbw->selectDB( $wgDBname );
-		}
 	}
 
-	function updateUserUrl( $user, $url ) {
-		global $wgSharedDB, $wgDBname;
-		$dbw =& wfGetDB( DB_MASTER );
+	public static function removeUserUrl( $user, $url ) {
+		$dbw = wfGetDB( DB_MASTER );
 
-		if ( isset( $wgSharedDB ) ) {
-			# It would be nicer to get the existing dbname
-			# and save it, but it's not possible
-			$dbw->selectDB( $wgSharedDB );
-		}
+		$dbw->delete(
+			'user_openid',
+			array(
+				'uoi_user' => $user->getId(),
+				'uoi_openid' => $url
+			),
+			__METHOD__
+		);
 
-		$dbw->set( 'user_openid', 'uoi_openid', $url,
-				  'uoi_user = ' . $user->getID() );
-
-		if ( isset( $wgSharedDB ) ) {
-			$dbw->selectDB( $wgDBname );
-		}
+		return (bool)$dbw->affectedRows();
 	}
 }

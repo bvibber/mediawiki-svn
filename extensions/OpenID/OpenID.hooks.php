@@ -12,7 +12,7 @@ class OpenIDHooks {
 
 		# Special pages are added at global scope; remove server-related ones
 		# if client-only flag is set
-		$addList = array( 'Login', 'Finish', 'Convert' );
+		$addList = array( 'Login', 'Convert' );
 		if ( !$wgOpenIDClientOnly ) {
 			$addList[] = 'Server';
 			$addList[] = 'XRDS';
@@ -41,7 +41,7 @@ class OpenIDHooks {
 			$user = User::newFromName( $nt->getText() );
 			if ( $user && $user->getID() != 0 ) {
 				$openid = SpecialOpenID::getUserUrl( $user );
-				if ( isset( $openid ) && strlen( $openid ) != 0 ) {
+				if ( count( $openid ) && strlen( $openid[0] ) != 0 ) {
 					global $wgOpenIDShowUrlOnUserPage;
 
 					if ( $wgOpenIDShowUrlOnUserPage == 'always' ||
@@ -49,21 +49,20 @@ class OpenIDHooks {
 					{
 						global $wgOpenIDLoginLogoUrl;
 
-						$url = SpecialOpenID::OpenIDToUrl( $openid );
-						$disp = htmlspecialchars( $openid );
+						$url = SpecialOpenID::OpenIDToUrl( $openid[0] );
+						$disp = htmlspecialchars( $openid[0] );
 						$wgOut->setSubtitle( "<span class='subpages'>" .
 											"<img src='$wgOpenIDLoginLogoUrl' alt='OpenID' />" .
 											"<a href='$url'>$disp</a>" .
 											"</span>" );
 					}
-				} else {
-					# Add OpenID data iif its allowed
+					# Add OpenID data if its allowed
 					if ( !$wgOpenIDClientOnly ) {
 						$st = SpecialPage::getTitleFor( 'OpenIDServer' );
 						$wgOut->addLink( array( 'rel' => 'openid.server',
-											    'href' => $st->getFullURL() ) );
+												'href' => $st->getFullURL() ) );
 						$wgOut->addLink( array( 'rel' => 'openid2.provider',
-											    'href' => $st->getFullURL() ) );
+												'href' => $st->getFullURL() ) );
 						$rt = SpecialPage::getTitleFor( 'OpenIDXRDS', $user->getName() );
 						$wgOut->addMeta( 'http:X-XRDS-Location', $rt->getFullURL() );
 						header( 'X-XRDS-Location: ' . $rt->getFullURL() );
@@ -76,11 +75,10 @@ class OpenIDHooks {
 	}
 
 	public static function onPersonalUrls( &$personal_urls, &$title ) {
-		global $wgHideOpenIDLoginLink, $wgUser, $wgLang, $wgOut, $wgOpenIDOnly;
+		global $wgHideOpenIDLoginLink, $wgUser, $wgLang, $wgOpenIDOnly;
 
 		if ( !$wgHideOpenIDLoginLink && $wgUser->getID() == 0 ) {
 			wfLoadExtensionMessages( 'OpenID' );
-			$wgOut->addHeadItem( 'openidloginstyle', self::loginStyle() );
 			$sk = $wgUser->getSkin();
 			$returnto = $title->isSpecial( 'Userlogout' ) ?
 			  '' : ( 'returnto=' . $title->getPrefixedURL() );
@@ -104,22 +102,73 @@ class OpenIDHooks {
 		return true;
 	}
 
-	public static function onGetPreferences( $user, &$preferences ) {
-		wfLoadExtensionMessages( 'OpenID' );
-		
-		$preferences['openid-hide'] =
-			array(
-				'type' => 'toggle',
-				'section' => 'openid',
-				'label-message' => 'openid-pref-hide',
-			);
+	public static function onBeforePageDisplay( $out, &$sk ) {
+		global $wgHideOpenIDLoginLink, $wgUser;
 
-		$preferences['openid-update-userinfo-on-login'] =
+		# We need to do this *before* PersonalUrls is called 
+		if ( !$wgHideOpenIDLoginLink && $wgUser->getID() == 0 ) {
+			$out->addHeadItem( 'openidloginstyle', self::loginStyle() );
+		}
+
+		return true;
+	}
+
+	public static function onGetPreferences( $user, &$preferences ) {
+		global $wgOpenIDShowUrlOnUserPage, $wgAllowRealName;
+
+		wfLoadExtensionMessages( 'OpenID' );
+
+		if ( $wgOpenIDShowUrlOnUserPage == 'user' ) {
+			$preferences['openid-hide'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'openid',
+					'label-message' => 'openid-pref-hide',
+				);
+		}
+
+		$update = array();
+		$update[wfMsg( 'openidnickname' )] = 'nickname';
+		$update[wfMsg( 'openidemail' )] = 'email';
+		if ( $wgAllowRealName )
+			$update[wfMsg( 'openidfullname' )] = 'fullname';
+		$update[wfMsg( 'openidlanguage' )] = 'language';
+		$update[wfMsg( 'openidtimezone' )] = 'timezone';
+
+		$preferences['openid-update-on-login'] =
 			array(
-				'type' => 'toggle',
+				'type' => 'multiselect',
 				'section' => 'openid',
 				'label-message' => 'openid-pref-update-userinfo-on-login',
+				'options' => $update,
+				'prefix' => 'openid-update-on-login-',
 			);
+
+		$urls = SpecialOpenID::getUserUrl( $user );
+		$delTitle = SpecialPage::getTitleFor( 'OpenIDConvert', 'Delete' );
+		$sk = $user->getSkin();
+		$rows = '';
+		foreach( $urls as $url ) {
+			$rows .= Xml::tags( 'tr', array(),
+				Xml::tags( 'td', array(), Xml::element( 'a', array( 'href' => $url ), $url ) ) .
+				Xml::tags( 'td', array(), $sk->link( $delTitle, wfMsg( 'openid-urls-delete' ), array(), array( 'url' => $url ) ) )
+			) . "\n";
+		}
+		$info = Xml::tags( 'table', array( 'class' => 'wikitable' ),
+			Xml::tags( 'tr', array(), Xml::element( 'th', array(), wfMsg( 'openid-urls-url' ) ) . Xml::element( 'th', array(), wfMsg( 'openid-urls-action' ) ) ) . "\n" .
+			$rows
+		);
+		$info .= $user->getSkin()->link( SpecialPage::getTitleFor( 'OpenIDConvert' ), wfMsgHtml( 'openid-add-url' ) );
+
+		$preferences['openid-urls'] =
+				array(
+					'type' => 'info',
+					'label-message' => 'openid-urls-desc',
+					'default' => $info,
+					'raw' => true,
+					'section' => 'openid',
+				);
+		
 
 		return true;
 	}
@@ -147,6 +196,7 @@ class OpenIDHooks {
 		  text-transform: none;
 		}
 		</style>
+
 EOS;
 	}
 }

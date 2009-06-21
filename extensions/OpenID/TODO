@@ -8,7 +8,7 @@
 + Function to let skins tell if user is OpenID user
 + Function to let skins know user's OpenID URL
 + Interwiki login
-- drop-down for username prefixes (Yahoo, etc.)
++ drop-down for username prefixes (Yahoo, etc.)
 + server mode login
 + server mode trust form
 + server mode share fields form
@@ -24,7 +24,7 @@
 + hide openid.server for non-user pages
 - optimize trust storage
 + change trust data separators from , and | to FS and RS
-- User preferences tab for OpenID
++ User preferences tab for OpenID
 - Manage allow-to-trust settings in User preferences
 - Optionally redirect User: page to OpenID URL
 - If user logs in with OpenID, add a cookie, and auto-login next time
@@ -54,7 +54,7 @@
 - deal with difference between canonical ID and "display ID" with XRIs
 + add more explanatory text to the default login instructions (copy Wikitravel text)
 - add a public-domain Help:OpenID.wiki
-- add more than one OpenID to a user account
++ add more than one OpenID to a user account
 + link to Special:OpenIDConvert if user is already logged in
 - support RP discovery
 - AJAX login, rather than klutzy JS form
