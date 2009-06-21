@@ -11,3 +11,9 @@
  $aliases['en'] = array(
  	'PrefStats' => array( 'PrefStats' ),
 );
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'PrefStats' => array( 'Voorkeurenstatistieken' ),
+);
+

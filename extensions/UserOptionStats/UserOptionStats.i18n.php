@@ -318,6 +318,13 @@ $messages['sk'] = array(
 	'uos-title' => 'Rozdelenie hodnôt používateľskej voľby $1',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'uos-other' => '*ఇతర',
+);
+
 /** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))
  * @author Ерней
  */

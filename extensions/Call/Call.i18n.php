@@ -304,6 +304,7 @@ Ongelmien ratkaisuun voit kokeilla sivua <b>{{#special:call}}/DebuG</b>",
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Urhixidur
@@ -314,6 +315,7 @@ $messages['fr'] = array(
 	'call-desc' => 'Crée un lien hypertexte permettant d’afficher l’expansion d’un modèle (ou d’une page wiki normale) tout en lui passant des paramètres.
 Ce lien peut être utilisé en ligne de commande depuis un navigateur ou dans un texte wiki.',
 	'call-text' => "L’extension Appel a besoin d’une page wiki et des paramètres facultatifs pour cette dernière comme argument.<br /><br />
+
 Exemple 1 : &nbsp; <tt>[[{{#special:call}}/Mon modèle,param1=valeur1]]</tt><br />
 Exemple 2 : &nbsp; <tt>[[{{#special:call}}/Discussion:Ma discussion,param1=valeur1]]</tt><br />
 Exemple 3 : &nbsp; <tt>[[{{#special:call}}/:Ma page,param1=valeur1,param2=valeur2]]</tt><br />
@@ -322,7 +324,7 @@ Exemple 4 (adresse pour navigateur) : &nbsp; <tt>http://mondomaine/monwiki/index
 L’extension <i>Appel</i> appellera la page indiquée tout en lui passant les paramètres.<br />
 Vous verrez les informations de cette page, son titre, mais son « type » sera celui d’une page spéciale qui ne pourra pas être éditée.<br />Les informations que vous verrez varieront en fonction des paramètres que vous avez passés.
 
-Cette extension est très pratique pour créer des applications interactives avec MediaWiki.<br />
+Cette <i>extension</i> est très pratique pour créer des applications interactives avec MediaWiki.<br />
 À titre d’exemple, voyez <a href='http://semeb.com/dpldemo/Template:Catlist'>l’interface DPL</a>...<br />
 En cas de problèmes, vous pouvez essayer <b>{{#special:call}}/DebuG</b>",
 	'call-save' => "Le résultat de cet appel pourrait être publié dans une page appelée ''$1''.",

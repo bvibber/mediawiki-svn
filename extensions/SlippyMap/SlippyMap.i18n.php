@@ -1030,10 +1030,12 @@ $messages['ru'] = array(
 	'slippymap_lonbig' => 'значение longitude (lon) не может быть больше 180',
 	'slippymap_lonsmall' => 'значение longitude (lon) не может быть меньше -180',
 	'slippymap_zoomsmall' => 'значение zoom (z) не может быть меньше 0',
+	'slippymap_zoom18' => "значение zoom (z) не может быть больше 17. Отметьте, что это перехватчик расширения MediaWiki в OpenStreetMap 'osmarender', слой которого не выходит за уровень масштабирования 17. Слой Mapnik, доступный на on openstreetmap.org, выходит до масштаба 18",
 	'slippymap_zoombig' => 'значение zoom (z) не может быть больше 17.',
 	'slippymap_invalidlayer' => "Неверное значение 'layer' '%1'",
 	'slippymap_maperror' => 'Ошибка карты:',
 	'slippymap_osmtext' => 'Просмотр карты на OpenStreetMap.org',
+	'slippymap_code' => 'Викикод для просмотра этой карты:',
 	'slippymap_button_code' => 'Получить викикод',
 	'slippymap_resetview' => 'Сбросить просмотр',
 );

@@ -589,7 +589,7 @@ $messages['szl'] = array(
  */
 $messages['te'] = array(
 	'whatismyip' => 'నా ఐపీ ఏమిటి',
-	'whatismyip-out' => 'మీ ఐపీ:',
+	'whatismyip-out' => 'మీ ఐపీ చిరునామా:',
 );
 
 /** Tagalog (Tagalog)
@@ -624,8 +624,9 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'whatismyip' => 'Quale xelo el me IP?',
-	'whatismyip-desc' => "Mostra l'indirisso IP atuale de l'utente in [[Special:WhatIsMyIP]]",
-	'whatismyip-out' => 'El to IP el xe:',
+	'whatismyip-desc' => "Mostra l'atuale [[Special:WhatIsMyIP|indirisso IP]] de l'utente",
+	'whatismyip-out' => 'El to indirisso IP:',
+	'right-whatismyip' => 'Vardar [[Special:WhatIsMyIP|el proprio indirisso IP]]',
 );
 
 /** Vietnamese (Tiếng Việt)

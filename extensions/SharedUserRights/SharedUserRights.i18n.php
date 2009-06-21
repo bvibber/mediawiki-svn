@@ -243,6 +243,7 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fievarsty
  * @author Fryed-peach
  */
@@ -251,7 +252,7 @@ $messages['ja'] = array(
 	'gblrights-desc' => '簡単な[[Special:SharedUserRights|グローバル利用者権限管理]]',
 	'gblrights-logpage' => 'グローバル権限変更記録',
 	'gblrights-pagetext' => 'これはこのウィキファミリーのグローバル利用者権限テーブルに対するすべての変更の記録です',
-	'gblrights-rights-entry' => '$1 のグローバルグループ所属を $2 から $3 へ変更しました',
+	'gblrights-rights-entry' => 'が$1 のグローバルグループ所属を $2 から $3 へ変更しました',
 	'right-userrights-shared' => '共有利用者権限を管理する',
 );
 

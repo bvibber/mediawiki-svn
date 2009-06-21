@@ -9386,6 +9386,7 @@ $wdMessages['ta'] = array(
 $wdMessages['te'] = array(
 	'languages' => 'వికీడాటా: భాషా నిర్వహణ',
 	'langman_title' => 'భాషా నిర్వహణ',
+	'langman_langname' => 'భాష పేరు:',
 	'langman_field_optional' => '(ఐచ్ఛికం)',
 	'datasearch' => 'వికీడాటా: డాటా అన్వేషణ',
 	'datasearch_language' => 'భాష:',
@@ -9428,6 +9429,7 @@ $wdMessages['te'] = array(
 	'ow_OtherDefinedMeaning' => 'ఇతర నిర్వచిత అర్థం',
 	'ow_Relations' => 'సంబంధాలు',
 	'ow_RelationType' => 'సంబంధ రకం',
+	'ow_Remove' => 'తొలగించు',
 	'ow_Spelling' => 'వర్ణక్రమం',
 	'ow_Synonyms' => 'సమానార్థాలు',
 	'ow_SynonymsAndTranslations' => 'సమానార్థాలు మరియు అనువాదాలు',
@@ -9451,6 +9453,9 @@ $wdMessages['te'] = array(
 	'ow_copy_no_action_specified' => 'దయచేసి ఒక చర్యని స్పష్టంచెయ్యండి',
 	'ow_copy_help' => 'ఏదో ఒక రోజు, మీకు సహాయపడగలం.',
 	'ow_copy_successful' => '<h2>కాపీ విజయవంతం</h2>మీ భోగట్టా విజయవంతంగా కాపీ అయింది. కానీ మరోసారి సరిచూచుకోవడం మర్చిపోకండి!',
+	'ow_class_attr_type_plain' => 'సాదా పాఠ్యం',
+	'ow_needs_xlation_source_lang' => 'మూల భాష:',
+	'ow_needs_xlation_dest_lang' => 'లక్ష్యిత భాష:',
 );
 
 /** Tetum (Tetun)

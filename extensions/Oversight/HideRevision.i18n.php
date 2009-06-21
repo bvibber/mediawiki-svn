@@ -381,7 +381,7 @@ $messages['be-tarask'] = array(
 * Старонка была выдалена
 * Схаваная вэрсія была першай',
 	'oversight-log-hiderev' => 'выдаленая вэрсія старонкі $1',
-	'oversight' => 'Журнал схаваных вэрсіяў',
+	'oversight' => 'Хаваньне вэрсіяў',
 	'oversight-view' => 'падрабязнасьці',
 	'oversight-difference' => '(Адрозьненьні з папярэдняй пакінутай вэрсіяй)',
 	'oversight-prev' => 'Апошняя папярэдняя вэрсія',
@@ -1696,9 +1696,9 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 $messages['ja'] = array(
 	'hiderevision' => '永久的な版の秘匿',
 	'hiderevision-desc' => '法律上の理由などにより特定版を全利用者から閲覧不可能にする',
-	'group-oversight' => 'Oversight',
-	'group-oversight-member' => 'Oversight',
-	'grouppage-oversight' => '{{ns:project}}:Oversight',
+	'group-oversight' => '秘匿者',
+	'group-oversight-member' => '秘匿者',
+	'grouppage-oversight' => '{{ns:project}}:秘匿者',
 	'right-oversight' => '秘匿前の版を閲覧する',
 	'right-hiderevision' => '指定した版を管理者から秘匿する',
 	'hiderevision-prompt' => '秘匿する特定版ID:',

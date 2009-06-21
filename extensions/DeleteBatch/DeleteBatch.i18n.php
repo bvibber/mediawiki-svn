@@ -1061,6 +1061,9 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'deletebatch' => 'Удаление набора страниц',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Удаление набора страниц]]',
+	'deletebatch-help' => 'Удаление набора страниц. Вы можете использовать это для одного удаления, или удаления страниц, перечисленных в файле.
+Выберите участника, который будет показан в журнале удалений.
+Загружаемый файл должен содержать имя страницы и необязательную причину удаления, разделённую «|» на каждой строке.',
 	'deletebatch-caption' => 'Список страниц:',
 	'deletebatch-title' => 'Удаление набора',
 	'deletebatch-link-back' => 'Вернуться к служебной странице',
@@ -1074,8 +1077,11 @@ $messages['ru'] = array(
 	'deletebatch-success-subtitle' => 'для $1',
 	'deletebatch-omitting-nonexistant' => 'За исключением несуществующей страницы $1.',
 	'deletebatch-omitting-invalid' => 'За исключением ошибочной страницы $1.',
+	'deletebatch-file-bad-format' => 'Файл должен быть в формате text/plain',
+	'deletebatch-file-missing' => 'Невозможно прочитать данный файл',
 	'deletebatch-select-script' => 'скрипт удаления страниц',
 	'deletebatch-select-yourself' => 'вы',
+	'deletebatch-no-page' => 'Пожалуйста, выберите минимум одну страницу для удаления ИЛИ выберите файл, содержащий список страниц.',
 	'right-deletebatch' => 'удаление набора страниц',
 );
 
@@ -1148,10 +1154,8 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
 $messages['te'] = array(
 	'deletebatch-caption' => 'పేజీల జాబితా:',
 	'deletebatch-or' => '<b>లేదా</b>',
-	'deletebatch-page' => 'తొలగించాల్సిన పేజీలు',
+	'deletebatch-page' => 'తొలగించాల్సిన పేజీలు:',
 	'deletebatch-reason' => 'తొలగింపునకు కారణం',
-	'deletebatch-from-file' => 'ఫైలు నుంచి',
-	'deletebatch-from-form' => 'ఫారం నుంచి',
 );
 
 /** Tetum (Tetun)

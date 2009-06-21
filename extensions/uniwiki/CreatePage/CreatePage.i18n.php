@@ -136,6 +136,20 @@ Voleu editar la pàgina existent?',
 	'createpage-badtitle' => '«$1» no es pot utilitzar com a títol de pàgina',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'createpage' => 'دروست‌کردنی لاپەڕەیەک',
+	'createpage_submitbutton' => 'ناردن',
+	'createpage_instructions' => 'سەڕدێڕی ئەو لاپەڕەی دەتەوێ دروستی‌بکەی بنووسە:',
+	'createpage_entertitle' => 'تکایە سەردێڕێک بۆ لاپەڕەکەت بنووسە.',
+	'createpage_titleexists' => 'لە پێش‌دا لاپەڕەیەک بە سەردێڕی [[$1]] دروست‌کراوە.<br />
+ئایا دەتەوێ دەستکاری ئەو لاپەڕە بکەی؟',
+	'createpage_tryagain' => 'نەخێر. دەمەوێ لاپەڕەیەکی نوێ بە سەردێڕێکی جیاوازەوە دروست‌بکەم.',
+	'createpage-badtitle' => '"$1" ناکرێت وەک سەردێڕی لاپەڕەیەک بە کاربێت',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

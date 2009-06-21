@@ -677,9 +677,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Ivan Lanin
+ * @author Rex
  */
 $messages['id'] = array(
 	'patrol' => 'Patroli suntingan',
+	'patrol-desc' => 'Antarmuka patroli yang ditingkatkan dengan pembagian beban kerja',
 	'patrol-endorse' => 'Setujui',
 	'patrol-revert' => 'Kembalikan',
 	'patrol-revert-reason' => 'Alasan:',
@@ -700,6 +702,7 @@ $messages['id'] = array(
 	'group-patroller' => 'Pematroli',
 	'group-patroller-member' => 'Pematroli',
 	'grouppage-patroller' => '{{ns:project}}:Pematroli',
+	'right-patroller' => 'Melakukan patroli atas halaman-halaman',
 );
 
 /** Icelandic (Íslenska)

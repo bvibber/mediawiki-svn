@@ -1676,6 +1676,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1706,7 +1707,7 @@ $messages['ru'] = array(
 	'review_concerns_page' => 'Это оценка страницы «$1».',
 	'review_concerns_user' => 'Это об оценках участника «$1».',
 	'review_user_reviews' => '<small>(оценки этого участника)</small>',
-	'review_user_page_list' => '{{GENDER:$1|Участник оценил|Участница оценила}} следующие страницы:',
+	'review_user_page_list' => 'Участник оценил следующие страницы:',
 	'review_user_details_link' => '(подробности)',
 	'review_do_merge' => 'Перенести мои оценки других версий этой страницы на эту версию',
 	'review_has_been_stored' => 'Ваша оценка сохранена!',

@@ -82,6 +82,13 @@ $messages['ca'] = array(
 	'catboxattop-categories' => 'Categories',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'catboxattop-categories' => 'هاوپۆلەکان',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

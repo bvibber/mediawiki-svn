@@ -1012,6 +1012,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'imstatus-desc' => 'Добавляет теги для отображения различных статусов IM (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Синтаксис',
 	'imstatus_default' => 'По умолчанию',
 	'imstatus_example' => 'Пример',
@@ -1020,10 +1021,20 @@ $messages['ru'] = array(
 	'imstatus_min' => 'мин.',
 	'imstatus_or' => 'или',
 	'imstatus_style' => 'стиль индикатора состояния',
+	'imstatus_action' => 'действие при нажатии кнопки',
+	'imstatus_details_saa' => 'Для подробностей о всех стилях и действиях, смотрите $1.',
 	'imstatus_your_name' => 'ваше $1 имя',
+	'imstatus_aim_presence' => '$1 показывает ваш статус вместе с ссылкой, когда вы запускаете AIM для отправления IM, если у пользователя она установлена.',
+	'imstatus_aim_api' => '$1 показывает ваш статус вместе с ссылкой, когда вы запускаете <b>browser</b>, javascript-версий AIM для отправления IM.',
+	'imstatus_gtalk_code' => 'ваш код google talk',
+	'imstatus_gtalk_get_code' => 'ваш код google code: получите его на $1',
 	'imstatus_gtalk_height' => 'высота блока, в пикселах.',
 	'imstatus_gtalk_width' => 'ширина блока, в пикселах.',
 	'imstatus_icq_id' => 'ваш ICQ ID',
+	'imstatus_icq_style' => 'числа от 0 до 26 (да, существует 27 доступных стилей).',
+	'imstatus_live_code' => 'ваш id вебсайта Live Messenger',
+	'imstatus_xfire_size' => 'размер кнопки, от $1 (наибольший) до $2 (наименьший).',
+	'imstatus_yahoo_style' => 'стиль кнопки, от $1 (наименьший) до $2 (наибольший), $3 и $4 для голосовой почты.',
 );
 
 /** Slovak (Slovenčina)

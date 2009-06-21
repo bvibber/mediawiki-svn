@@ -510,10 +510,14 @@ $messages['roa-tara'] = array(
  * @author Ferrer
  */
 $messages['ru'] = array(
+	'lua_desc' => 'Добавляет в парсер поддержку включаемых блоков кода [http://www.lua.org/ Lua]',
 	'lua_error' => 'Ошибка на линии $1',
 	'lua_extension_notfound' => 'Расширение Lua не настроено',
 	'lua_interp_notfound' => 'Интерпретатор Lua не найден',
 	'lua_error_internal' => 'Внутренняя ошибка',
+	'lua_overflow_recursion' => 'Достигнут предел рекурсии',
+	'lua_overflow_loc' => 'Достигнут предел максимального числа строчек кода',
+	'lua_overflow_time' => 'Достигнут предел максимального времени выполнения',
 );
 
 /** Slovak (Slovenčina)

@@ -568,6 +568,8 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'framedvideo_errors' => 'Произошло множество ошибок!',
+	'framedvideo_error' => 'Произошла ошибка!',
 	'framedvideo_error_unknown_type' => 'Неизвестный id видеосервиса («$1»): проверьте параметр «type».',
 	'framedvideo_error_no_id_given' => 'Нет параметра «id».',
 	'framedvideo_error_height_required' => 'Тип видео «$1» требует параметр «height».',
@@ -578,7 +580,9 @@ $messages['ru'] = array(
 	'framedvideo_error_limit' => 'Наибольшее допустимое значение — $1.',
 	'framedvideo_error_full_size_not_allowed' => 'Значение «full» для параметра «size» не допустимо для видеосервиса id «$1».',
 	'framedvideo_helppage' => 'Help:Видео',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Больше о синтаксисе]].',
 	'framedvideo_error_height_and_width_required' => 'Тип видео «$1» требует парамерты «height» и «width2» или «width».',
+	'framedvideo-desc' => 'Позволяет включать видео с различных веб-сайтов, используя тег <tt><nowiki><video></nowiki></tt>',
 );
 
 /** Slovak (Slovenčina)

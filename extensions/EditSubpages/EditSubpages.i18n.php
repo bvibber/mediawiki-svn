@@ -178,12 +178,13 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'editsubpages-desc' => 'Permet aux administrateurs de déverrouiller une page et tous ses sous-pages pour les modifications anonymes grâce à [[MediaWiki:Unlockedpages]]',
-	'unlockedpages' => ' #<!-- Laisser cette ligne telle quelle --><pre>
+	'unlockedpages' => '  #<!-- Laisser cette ligne telle quelle --><pre>
 # Indiquez, ci-dessous, les pages que vous désirez déverrouiller en utilisant
 # * Nomdelapage
 # Les pages déverrouillées doivent commencer par une puce pour être prises en compte,

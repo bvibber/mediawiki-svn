@@ -1410,6 +1410,7 @@ $messages['te'] = array(
 	'dt_xml_namespace' => 'పేరుబరి',
 	'dt_xml_pages' => 'పేజీలు',
 	'dt_xml_page' => 'పేజీ',
+	'dt_xml_template' => 'మూస',
 	'dt_xml_name' => 'పేరు',
 	'dt_xml_title' => 'శీర్షిక',
 	'dt_xml_id' => 'ఐడీ',

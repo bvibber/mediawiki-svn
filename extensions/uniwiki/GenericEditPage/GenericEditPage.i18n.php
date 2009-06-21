@@ -225,6 +225,13 @@ $messages['ca'] = array(
 	'gep-genericmode' => 'Mode genèric',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'gep-suggestcategorybutton' => 'ناردن',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

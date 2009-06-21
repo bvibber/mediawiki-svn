@@ -524,8 +524,13 @@ Adda essere:",
  */
 $messages['ru'] = array(
 	'securepasswords-desc' => 'Создаёт защищённые хеши паролей и добавляет проверку силы пароля',
+	'securepasswords-valid' => 'Вам пароль неверный или слишком короткий.
+Он должен быть:',
+	'securepasswords-minlength' => 'быть, по крайней мере, длиной $1 {{PLURAL:$1|символ|символа|символов}}',
 	'securepasswords-lowercase' => 'содержит минимум 1 строчную букву',
 	'securepasswords-uppercase' => 'содержит минимум 1 прописную букву',
+	'securepasswords-digit' => 'содержать минимум одну цифру',
+	'securepasswords-special' => 'содержать минимум 1 служебный символ (служебные символы: $1)',
 	'securepasswords-username' => 'будет отличаться от вашего имени участника',
 	'securepasswords-word' => 'не слово',
 );
@@ -588,7 +593,7 @@ $messages['te'] = array(
 	'securepasswords-lowercase' => 'కనీసం ఒక్క చిన్న బడి అక్షరాన్నైనా కలిగివుండాలి.',
 	'securepasswords-uppercase' => 'కనీసం ఒక్క పెద్దబడి అక్షరాన్నైనా కలిగివుండాలి.',
 	'securepasswords-digit' => 'కనీసం ఒక్క అంకెనైనా కలిగివుండాలి.',
-	'securepasswords-special' => 'కనీసం 1 ప్రత్యేక అక్షరాన్నైనా కలిగివుండాలి (ప్రత్యేక అక్షరాలు ఇవీ: 1)',
+	'securepasswords-special' => 'కనీసం 1 ప్రత్యేక అక్షరాన్నైనా కలిగివుండాలి (ప్రత్యేక అక్షరాలు ఇవీ: $1)',
 	'securepasswords-username' => 'మీ వాడుకరిపేరు అయివుండకూడదు',
 	'securepasswords-word' => 'ఒక పదం అయివుండకూడదు',
 );

@@ -1336,22 +1336,32 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'taggedimages' => 'Изображения с метками',
+	'imagetagging-desc' => 'Позволяет участнику выбрать один из регионов для включённых изображений и ассоциировать страницу с этим регионом',
 	'imagetagging-addimagetag' => 'Отметить это изображение',
 	'imagetagging-article' => 'Страница:',
 	'imagetagging-articletotag' => 'Страница для метки',
+	'imagetagging-canteditothermessage' => 'Вы не можете править эту страницу, или из-за того, что не имеете необходимых прав, или из-за того, что страница заблокирована по другим причинам.',
 	'imagetagging-imghistory' => 'История',
 	'imagetagging-images' => 'изображения',
 	'imagetagging-inthisimage' => 'В изображении: $1',
 	'imagetagging-logentry' => 'Удаление метки для страницы [[$1]] — $2',
+	'imagetagging-log-tagged' => 'Изображение [[$1|$2]] было отмечено к странице [[$3]] — $4',
 	'imagetagging-new' => '<sup><span style="color:red">Новое!</span></sup>',
 	'imagetagging-removetag' => 'удалить метку',
 	'imagetagging-done-button' => 'Отметка сделана',
 	'imagetagging-tag-button' => 'Метка',
 	'imagetagging-tagcancel-button' => 'Отмена',
+	'imagetagging-tagging-instructions' => 'Нажмите на участника или деталь в изображении для отметки.',
 	'imagetagging-addingtag' => 'Добавление метки…',
 	'imagetagging-removingtag' => 'Удаление метки…',
 	'imagetagging-addtagsuccess' => 'Метка добавлена.',
 	'imagetagging-removetagsuccess' => 'Метка удалена.',
+	'imagetagging-canteditneedloginmessage' => 'Вы не можете править эту страницу.
+Требуется представиться системе для отметки изображений.
+Вы ещё не представились системе?',
+	'imagetagging-oneactionatatimemessage' => 'Только одно действие отметки на момент времени допустимо.
+Пожалуйста, подождите, пока завершатся существующие действия.',
+	'imagetagging-oneuniquetagmessage' => 'Это изображение уже было отмечено с этим именем.',
 	'imagetagging-imagetag-seemoreimages' => 'Смотреть больше изображений «$1» ($2)',
 	'imagetagging-taggedimages-title' => 'Изображения «$1»',
 	'imagetagging-taggedimages-displaying' => 'Отображать $1 — $2 из $3 изображений из «$4»',

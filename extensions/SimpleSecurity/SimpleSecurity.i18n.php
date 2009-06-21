@@ -359,13 +359,14 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'security' => 'セキュリティ記録',
-	'security-desc' => 'MediaWikiのページ保護機能で、ページの閲覧を制限できるように拡張する',
+	'security-desc' => 'ページの閲覧を制限できるようにMediaWikiのページ保護機能を拡張する',
 	'security-logpage' => 'セキュリティ記録',
 	'security-logpagetext' => 'これは、[http://www.mediawiki.org/wiki/Extension:SimpleSecurity SimpleSecurity 拡張機能]によって阻止された操作の記録です。',
 	'badaccess-read' => '警告:「$1」はここを参照していますが、あなたにはアクセスに必要な権限がありません。',

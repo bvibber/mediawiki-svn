@@ -571,6 +571,14 @@ $messages['sv'] = array(
 	'right-adminlinks' => 'Se länken till [[Special:AdminLinks|Administrationslänkarna]]',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'adminlinks_general' => 'సాధారణ',
+	'adminlinks_users' => 'వాడుకరులు',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

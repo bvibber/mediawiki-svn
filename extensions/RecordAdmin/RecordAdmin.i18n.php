@@ -560,6 +560,7 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'recordadmin-submit' => 'Ὑποβάλλειν',
 	'recordadmin-buttoncreate' => 'Ποιεῖν',
+	'recordadmin-buttonreset' => 'Ἀνατιθέναι',
 	'recordadmin-buttonsave' => 'Γράφειν',
 );
 

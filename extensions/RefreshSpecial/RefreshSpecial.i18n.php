@@ -935,9 +935,13 @@ $messages['ru'] = array(
 	'refreshspecial' => 'Обновить служебные страницы',
 	'refreshspecial-desc' => 'Позволяет [[Special:RefreshSpecial|руководство обновления служебных страниц]] для служебных страниц',
 	'refreshspecial-title' => 'Обновить служебные страницы',
+	'refreshspecial-help' => "Эта служебная страница позволяет обновлять служебные страницы.
+Вы можете выбрать все страницы, которые вам нужно обновить, нажать «Обновление выбрано» для обновления выбранных служебных страниц.
+'''Внимание:''' Обновление может вызвать задержку в больших вики.",
 	'refreshspecial-button' => 'Обновление выбрано',
 	'refreshspecial-fail' => 'Пожалуйста, выберите одну служебную страницу для обновления.',
 	'refreshspecial-refreshing' => 'обновление служебных страниц',
+	'refreshspecial-skipped' => 'ошибка, пропущена',
 	'refreshspecial-choice' => 'обновление служебных страниц',
 	'refreshspecial-js-disabled' => '(<i>Вы не можете выбрать все страницы, когда JavaScript отключён</i>)',
 	'refreshspecial-select-all-pages' => 'Выбрать все страницы',
@@ -945,9 +949,11 @@ $messages['ru'] = array(
 	'refreshspecial-none-selected' => 'Вы не выбрали служебных страниц. Возвращение к выбору по умолчанию.',
 	'refreshspecial-db-error' => 'Неудачно. Ошибка базы данных.',
 	'refreshspecial-no-page' => 'Нет такой служебной страницы',
+	'refreshspecial-slave-lagged' => 'Лаг зависимого сервера, ожидание...',
 	'refreshspecial-reconnected' => 'Пересоединение.',
 	'refreshspecial-reconnecting' => 'Соединение неудачно, пересоединение через 10 секунд...',
-	'refreshspecial-total-display' => '{{PLURAL:$1|Обновлена $1 страница, содержащая|Обновлено $1 страниц, содержащих}} $2 {{PLURAL:$2|строку|строк}} за время $3 (полное время выполнения скрипта составило $4)',
+	'refreshspecial-page-result' => 'выведено $1 {{PLURAL:$1|строка|строки|строк}} в',
+	'refreshspecial-total-display' => '{{PLURAL:$1|Обновлена $1 страница, содержащая|Обновлено $1 страницы, содержащих|Обновлено $1 страниц, содержащих}} $2 {{PLURAL:$2|строку|строки|строк}} за время $3 (полное время выполнения скрипта составило $4)',
 	'right-refreshspecial' => 'обновление служебных страниц',
 );
 
@@ -1028,6 +1034,7 @@ $messages['te'] = array(
 	'refreshspecial-link-back' => 'తిరిగి పొడగింతకు వెళ్ళండి',
 	'refreshspecial-db-error' => 'విఫలం: డాటాబేసు పొరపాటు',
 	'refreshspecial-no-page' => 'అటువంటి ప్రత్యేక పేజీ లేదు',
+	'right-refreshspecial' => 'ప్రత్యేక పేజీలను తాజాకరించడం',
 );
 
 /** Tagalog (Tagalog)

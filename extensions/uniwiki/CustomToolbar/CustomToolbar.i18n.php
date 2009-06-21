@@ -372,6 +372,38 @@ $wgCustomToolbarMessages['ca'] = array(
 	'ct_submit' => 'Vés-hi!',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$wgCustomToolbarMessages['ckb-arab'] = array(
+	'ct_bold_sample' => 'دەقی تۆخ',
+	'ct_bold_tip_ins' => 'دەقی تۆخ دابنێ',
+	'ct_bold_tip_wrap' => 'ئەم دەقە تۆخ بکە',
+	'ct_bold_caption' => 'تۆخ',
+	'ct_italic_sample' => 'دەقی لار',
+	'ct_italic_tip_ins' => 'دەقی لار دابنێ',
+	'ct_italic_tip_wrap' => 'ئەم دەقە لار بکە',
+	'ct_italic_caption' => 'لار',
+	'ct_internal_sample' => 'ناوی لاپەڕە',
+	'ct_internal_tip_ins' => 'بەستەرەکی ناوەکی دابنێ',
+	'ct_internal_tip_wrap' => 'ئەم دەقە بکە بە بەستەرەکی ناوەکی',
+	'ct_internal_caption' => 'بەستەرەی ناوەکی',
+	'ct_external_tip_ins' => 'بەستەرەکی دەرەکی دابنێ',
+	'ct_external_tip_wrap' => 'ئەم دەقە بکە بە بەستەرەکی دەرەکی',
+	'ct_external_caption' => 'بەستەری دەرەکی',
+	'ct_image_tip' => 'وێنەیەک دابنێ',
+	'ct_image_caption' => 'زیادکردنی وێنە',
+	'ct_attachment_tip' => 'پاشکۆیەک دابنێ',
+	'ct_attachment_caption' => 'زیاد کردنی پاشکۆ',
+	'ct_submit' => 'بڕۆ !',
+	'ct_close' => 'بەستنی پەنجەرە',
+	'ct_success' => 'بارکردنی پەڕگە سەرکەوتوو بوو!',
+	'ct_user_user' => 'بەکارهێنەر',
+	'ct_user_tip' => 'بەستەرێک بۆ لاپەڕەی بەکارهێنەر دابنێ',
+	'ct_user_caption' => 'بەستەری بەکارهێنەر',
+	'ct_user_sample' => 'ناوی بەکارهێنەر',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

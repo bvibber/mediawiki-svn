@@ -151,6 +151,15 @@ $messages['oc'] = array(
 	'editwarning-warning' => "Quitar aquesta pagina vos farà pèrdre totas las modificacions qu'avètz facha.",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'editwarning' => 'Edycja – ostrzeżenie',
+	'editwarning-desc' => 'Wyświetla ostrzeżenie gdy użytkownik próbuje opuścić formularz edycji bez zapisania',
+	'editwarning-warning' => 'Opuszczenie tej strony spowoduje utratę wprowadzonych przez Ciebie zmian.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -167,5 +176,14 @@ $messages['sk'] = array(
 	'editwarning' => 'Upozornenie pri úprave',
 	'editwarning-desc' => 'Zobrazí upozornenie, keď sa používateľ pokúsi opustiť formulár na úpravy bez uloženia',
 	'editwarning-warning' => 'Ak opustíte túto stránku, stratíte tým všetky vykonané zmeny.',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'editwarning' => 'Değişiklik uyarısı',
+	'editwarning-desc' => 'Bir kullanıcı kaydetmeden değişiklik formundan çıkmaya çalışırsa bir uyarı göster',
+	'editwarning-warning' => 'Bu sayfadan ayrılmak yaptığınız herhangi bir değişikliği kaybetmenize sebep olacaktır.',
 );
 

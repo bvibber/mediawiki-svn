@@ -892,6 +892,7 @@ $messages['roa-tara'] = array(
  * @author Rubin
  */
 $messages['ru'] = array(
+	'errorhandler-desc' => 'Ошибка обработчика для MediaWiki',
 	'errorhandler-errors' => 'Ошибки:',
 	'errorhandler-error-fatal' => 'Серьёзная ошибка',
 	'errorhandler-error-warning' => 'Внимание',
@@ -906,8 +907,11 @@ $messages['ru'] = array(
 	'errorhandler-error-user-warning' => 'Предупреждение участника',
 	'errorhandler-error-user-notice' => 'Уведомление участника',
 	'errorhandler-error-user-deprecated' => 'Запрет участника',
+	'errorhandler-error-strict' => 'Точные стандарты',
+	'errorhandler-error-recoverable' => 'Фатальная ошибка Catchable',
 	'errorhandler-msg-text' => '$1 : $2 в $3 (линия $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> в <b>$3</b> (линия <b>$4</b>)',
+	'errorhandler-trace' => 'след:',
 	'errorhandler-trace-line' => '$1 (линия $2): $3',
 	'errorhandler-trace-line-internal' => '[внутренняя функция]: $1',
 );
