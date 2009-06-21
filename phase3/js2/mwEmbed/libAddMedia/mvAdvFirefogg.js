@@ -417,7 +417,7 @@ mvAdvFirefogg.prototype = {
 				'sf:' +	 $j(this.target_btn_save_local_file).width() );
 		$j(this.target_input_file_name).width( 
 			$j(this.selector).width() - ( $j(this.target_btn_select_new_file).width() +
-			$j(this.target_btn_save_local_file).width() + 79 )
+			$j(this.target_btn_save_local_file).width() + 50 )
 		)
 		
 		//special preset action: 

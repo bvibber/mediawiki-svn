@@ -36,6 +36,7 @@ class jsScriptLoader{
 			    //just output headers so we can use php "efficient" readfile
 				$this->outputJsHeaders();
 				$this->sFileCache->outputFromFileCache();
+				die();
 			}
 		}
 
@@ -312,14 +313,18 @@ class simpleFileCache{
 			    }else{
 			        readfile( $this->filename );
 			    }
-				return true;
 			}
+		}else{
+		    //just output the file
+		    readfile( $this->filename );
 		}
+		//return true
+		return true;
 	}
 	public function saveToFileCache(& $text ) {
 		global $wgUseFileCache, $wgUseGzip;
 		if( !$wgUseFileCache ) {
-			return 'Called saveToFileCache with $wgUseFileCache off'; // return to output
+			return 'Error: Called saveToFileCache with $wgUseFileCache off';
 		}
 		if( strcmp($text,'') == 0 ) return 'saveToFileCache: empty output file';
 
