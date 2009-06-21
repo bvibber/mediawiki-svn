@@ -16,7 +16,7 @@
 				// https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest/LinkSuggest.js
 				function getLineLength(control) {
 					var width = control.scrollWidth;
-					return Math.floor(width/8);
+					return Math.floor(width/($.os.name == 'linux' ? 7 : 8));
 				}
 
 				function getCaret(control) {
@@ -81,7 +81,7 @@
 					}
 
 
-					return ($.os.name == 'mac' ? 13 : 16)*row;
+					return ($.os.name == 'mac' ? 13 : ($.os.name == 'linux' ? 15 : 16))*row;
 				}
 
 				// Put the cursor at the desired position
@@ -104,8 +104,38 @@
 })(jQuery);
 
 $( document ).ready( function() {
-	for ( i = 1; i <= $.sectionOffsets.length; i++ )
-		$( '.tocsection-' + i ).children( 'a' ).data( 'offset', $.sectionOffsets[i - 1] );
+	if ( $.section == '' ) {
+		// Full page edit
+		// Tell the section links what their offsets are
+		for ( i = 0; i < $.sectionOffsets.length; i++ )
+			$( '.tocsection-' + ( i + 1 ) ).children( 'a' )
+				.data( 'offset', $.sectionOffsets[i] );
+	} else if ( $.section != 'new' && $.section != 0 ) {
+		// Existing section edit
+		// Unlink all irrelevant section links
+		$.section = parseInt( $.section );
+		sectionLi = $( '.tocsection-' + $.section );
+		$( '.toc * li' ).not( '.tocsection-' + $.section + ' * li')
+			.not( sectionLi ).each( function() {
+				link = $(this).children( 'a' );
+				link.hide();
+				$(this).prepend( link.html() );
+			});
+		
+		// Set adjusted offsets on the usable links
+		for ( i = 0; i < $.sectionOffsets.length; i++ )
+			$( '.tocsection-' + ( i + $.section ) ).children( 'a' )
+				.data( 'offset', $.sectionOffsets[i] -
+					$.sectionOffsets[0] );
+	} else {
+		// New section or section 0
+		// Unlink everything
+		$( '.toc * li' ).each( function() {
+			link = $(this).children( 'a' );
+			link.hide();
+			$(this).prepend( link.html() );
+		});
+	}
 	$( '.toc * li a' ).click( function(e) {
 		if( typeof $(this).data( 'offset' ) != 'undefined' )
 			$( '#wpTextbox1' ).scrollToPosition( $(this).data( 'offset' ) );

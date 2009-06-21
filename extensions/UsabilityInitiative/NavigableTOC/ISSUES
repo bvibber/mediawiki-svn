@@ -1,0 +1,13 @@
+* Script assumes lines only break on spaces, but in practice lines can also be
+  broken mid-word on - / & etc.  This means the presence of such breaks (e.g.
+  in URLs) causes the script to scroll down a few lines too few or too many.
+  Especially the latter is very confusing.
+* Script assumes the letters in the textarea are 8x16 (Windows), 8x13 (Mac) or
+  7x15 (Linux), but these values should really be determined dynamically.
+* When previewing, the TOC reflects the old page content, not the text being
+  previewed.
+* When previewing, two TOCs may show up (one in the preview, one navigable),
+  which causes:
+** Invalid XHTML: <table id="toc"> occurs twice
+** Two [hide] links on the first TOC, none on the second
+** Both TOCs affect the textarea; could be fixed with .tocsection-$i :last
