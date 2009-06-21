@@ -15,7 +15,7 @@ class NavigableTOCHooks {
 	 * Adds the TOC to the edit form
 	 */
 	 public static function addTOC( &$ep ) {
-	 	global $wgNavigableTOCStyleVersion, $wgParser, $wgUser;
+		global $wgNavigableTOCStyleVersion, $wgParser, $wgUser;
 		global $wgEnableParserCache;
 
 		// Adds script to document
@@ -25,23 +25,41 @@ class NavigableTOCHooks {
 
 		// Try the parser cache first
 		$pcache = ParserCache::singleton();
-		$popts = new ParserOptions();
+		$popts = ParserOptions::newFromUser( $wgUser );
+		$popts->setTidy( true );
+		$popts->enableLimitReport();
 		$articleObj = new Article( $ep->mTitle );
 		$p_result = false;
-		if ( $wgEnableParserCache ) {
-			$p_result = $pcache->get( $articleObj, $wgUser );
+		if ( $ep->preview && $ep->section == '' )
+			$p_result = $ep->mParserOutput;
+		else if ( $wgEnableParserCache && !$ep->preview ) {
+			$p_result = $pcache->get( $articleObj, $popts );
 			// The ParserOutput in cache could be too old to have
 			// byte offsets. In that case, reparse
-			$sections = $p_result->getSections();
-			if ( isset( $sections[0] ) && !isset( $sections[0]['byteoffset'] ) ) {
-				$p_result = $wgParser->parse( $articleObj->getContent(),
-					$ep->mTitle, $popts );
-				$pcache->save( $p_result, $articleObj, $popts );
+			if ( $p_result ) {
+				$sections = $p_result->getSections();
+				if ( isset( $sections[0] ) && !isset( $sections[0]['byteoffset'] ) ) {
+					$p_result = $wgParser->parse( $articleObj->getContent(),
+						$ep->mTitle, $popts );
+					if ( $p_result )
+						$pcache->save( $p_result, $articleObj, $popts );
+				}
 			}
 		}
 		if ( !$p_result ) {
-			$p_result = $wgParser->parse( $articleObj->getContent(),
-				$ep->mTitle, $popts );
+			$popts->setIsPreview( $ep->preview || $ep->section != '' );
+			$text = $articleObj->getContent();
+			if ( $ep->preview ) {
+				if( $ep->section == 'new' )
+					$text .= $ep->textbox1;
+				else if ( $ep->section != '' )
+					$text = $wgParser->replaceSection( $text,
+						$ep->section, $ep->textbox1 );
+				else
+					$text = $ep->textbox1;
+			}
+			$p_result = $wgParser->parse( $text, $ep->mTitle,
+				$popts );
 			if ( $wgEnableParserCache )
 				$pcache->save( $p_result, $articleObj, $popts );
 		}
@@ -66,7 +84,11 @@ class NavigableTOCHooks {
 		$js .= '];';
 		$jsTag = Xml::element( 'script', array(), $js );
 
-		$ep->editFormTextTop .= $p_result->getTOCHTML() . $jsTag;
+		// Terrible hack to prevent two TOCs with the same ID
+		// from being displayed
+		$toc = str_replace( '<table id="toc"',
+			'<table id="navigableTOC"', $p_result->getTOCHTML() );
+		$ep->editFormTextTop .= $toc . $jsTag;
 		return true;
 	 }
 }

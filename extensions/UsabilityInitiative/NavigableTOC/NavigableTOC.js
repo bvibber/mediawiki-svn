@@ -114,12 +114,13 @@ $( document ).ready( function() {
 		// Existing section edit
 		// Unlink all irrelevant section links
 		$.section = parseInt( $.section );
-		sectionLi = $( '.tocsection-' + $.section );
-		$( '.toc * li' ).not( '.tocsection-' + $.section + ' * li')
-			.not( sectionLi ).each( function() {
+		$( '.toc:last * li' ).not( '.tocsection-' + $.section + ' * li')
+			.not( '.tocsection-' + $.section ).each( function() {
 				link = $(this).children( 'a' );
-				link.hide();
-				$(this).prepend( link.html() );
+				if ( link.visible() ) {
+					link.hide();
+					$(this).prepend( link.html() );
+				}
 			});
 		
 		// Set adjusted offsets on the usable links
@@ -130,13 +131,15 @@ $( document ).ready( function() {
 	} else {
 		// New section or section 0
 		// Unlink everything
-		$( '.toc * li' ).each( function() {
+		$( '.toc:last * li' ).each( function() {
 			link = $(this).children( 'a' );
-			link.hide();
-			$(this).prepend( link.html() );
+			if ( link.visible() ) {
+				link.hide();
+				$(this).prepend( link.html() );
+			}
 		});
 	}
-	$( '.toc * li a' ).click( function(e) {
+	$( '.toc:last * li a' ).click( function(e) {
 		if( typeof $(this).data( 'offset' ) != 'undefined' )
 			$( '#wpTextbox1' ).scrollToPosition( $(this).data( 'offset' ) );
 			e.preventDefault();
