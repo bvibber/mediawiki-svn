@@ -4,8 +4,10 @@
   Especially the latter is very confusing.
 * Script assumes the letters in the textarea are 8x16 (Windows), 8x13 (Mac) or
   7x15 (Linux), but these values should really be determined dynamically.
+** Both of these can be avoided by determining the caret position properly,
+   I'll ask Michael Dale about this.
 * When previewing, two TOCs may show up (one in the preview, one navigable),
-  in which case the first TOC gets two [hide] link and the second gets none
+  in which case the first TOC gets two [hide] links and the second gets none
 * When previewing a section, both the section content and the entire page are
   parsed, which is slow.
 ** We're parsing the entire page solely for its TOC, maybe we can take the
