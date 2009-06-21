@@ -344,7 +344,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 		wfSuppressWarnings();
 		$consumer = $this->getConsumer();
-		$response = $consumer->complete( $this->getTitle( 'Finish' )->getFullUrl() );
+		$response = $consumer->complete( $this->scriptUrl( 'Finish' ) );
 		wfRestoreWarnings();
 
 		if ( is_null( $response ) ) {

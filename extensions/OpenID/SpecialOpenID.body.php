@@ -225,7 +225,7 @@ class SpecialOpenID extends SpecialPage {
 			$auth_request->addExtension( $sreg_request );
 		}
 
-		$process_url = $finish_page->getFullUrl();
+		$process_url = $this->scriptUrl( $finish_page );
 
 		if ( $auth_request->shouldSendRedirect() ) {
 			$redirect_url = $auth_request->redirectURL( $trust_root,
@@ -254,6 +254,22 @@ class SpecialOpenID extends SpecialPage {
 		}
 
 		wfRestoreWarnings();
+	}
+
+	function scriptUrl( $par = false ) {
+		global $wgServer, $wgScript;
+
+		if ( !is_object( $par ) )
+			$nt = $this->getTitle( $par );
+		else
+			$nt = $par;
+
+		if ( !is_null( $nt ) ) {
+			$dbkey = wfUrlencode( $nt->getPrefixedDBkey() );
+			return "{$wgServer}{$wgScript}?title={$dbkey}";
+		} else {
+			return '';
+		}
 	}
 
 	protected function setupSession() {
