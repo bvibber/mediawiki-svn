@@ -20,11 +20,11 @@ public class LoadForeignPropertiesTest extends IntegratorAppTestBase<LoadForeign
 	
 	//-----------------------------------------------------------------------------------------------------
 	public void testTableImport() throws Exception {
-		runApp("tableImport", "external_authority", "external_id", "property", "value", "qualifier");
+		runApp("tableImport");
 	}
 
 	public void testTripleImport() throws Exception {
-		runApp("tripleImport", "external_authority", "external_id", "property", "value", "qualifier");
+		runApp("tripleImport");
 	}
 
 	@Override

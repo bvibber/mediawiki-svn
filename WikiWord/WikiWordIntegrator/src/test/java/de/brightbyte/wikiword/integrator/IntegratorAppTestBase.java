@@ -45,7 +45,7 @@ public abstract class IntegratorAppTestBase<T extends AbstractIntegratorApp> ext
 		return app;
 	}
 
-	protected void runApp(String testName, String... orderBy) throws Exception {
+	protected void runApp(String testName) throws Exception {
 		//get source description
 		FeatureSetSourceDescriptor source = loadSourceDescriptor(testName);
 		
@@ -53,21 +53,8 @@ public abstract class IntegratorAppTestBase<T extends AbstractIntegratorApp> ext
 		T app = prepareApp(source, testName);
 		app.testLaunch();
 
-		//build order string
-		StringBuilder order = new StringBuilder();
-		for (String by: orderBy) {
-			if (order.length()>0) order.append(", ");
-			order.append('"');
-			order.append(by);
-			order.append('"');
-		}
-		
-		//get real table name and build query
-		 String tableName = app.getConfiguredDataset().getDbPrefix()+testName;
-		 String sql = "SELECT * FROM \""+tableName+"\" ORDER BY "+order;
-		 
 		 //compare query result to expected data from XML file.
-		assertTableContent(testName, sql);
+		 assertTableData(getBaseName()+"-"+testName, app.getConfiguredDataset().getDbPrefix()+testName);
 	}
 	
 }

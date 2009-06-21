@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <TEST_xx_tripleImport external_authority="acme" external_id="FooBar" property="concept_name" value="FooBar" qualifier="dummy"/>
+  <TEST_xx_tripleImport external_authority="acme" external_id="FooBar" property="firstName" value="Bar" qualifier="dummy"/>
+  <TEST_xx_tripleImport external_authority="acme" external_id="FooBar" property="name" value="Foo" qualifier="dummy"/>
+  <TEST_xx_tripleImport external_authority="acme" external_id="FooBar" property="phone" value="12345" qualifier="dummy"/>
+  
+  <TEST_xx_tripleImport external_authority="acme" external_id="XyzzyQuux" property="concept_name" value="XyzzyQuux" qualifier="dummy"/>
+  <TEST_xx_tripleImport external_authority="acme" external_id="XyzzyQuux" property="firstName" value="Quux" qualifier="dummy"/>
+  <TEST_xx_tripleImport external_authority="acme" external_id="XyzzyQuux" property="name" value="Xyzzy" qualifier="dummy"/>
+  <TEST_xx_tripleImport external_authority="acme" external_id="XyzzyQuux" property="phone" value="67890" qualifier="dummy"/>
+</dataset>
+
