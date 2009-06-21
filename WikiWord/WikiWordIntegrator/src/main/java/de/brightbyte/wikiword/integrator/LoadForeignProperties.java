@@ -45,7 +45,14 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 	@Override
 	protected ForeignPropertyProcessor createProcessor(ForeignPropertyStoreBuilder conceptStore) throws InstantiationException {
 		//		FIXME: parameter list is restrictive, pass descriptor 
-		return instantiate(sourceDescriptor, "foreignPropertyProcessorClass", ForeignPropertyPassThrough.class, conceptStore);
+		ForeignPropertyProcessor processor = instantiate(sourceDescriptor, "foreignPropertyProcessorClass", ForeignPropertyPassThrough.class, conceptStore);
+
+		if (processor instanceof ForeignPropertyPassThrough) {
+			String qualifier = sourceDescriptor.getTweak("property-qualifier", null);
+			if (qualifier!=null) ((ForeignPropertyPassThrough)processor).setQualifier(qualifier);
+		}
+		
+		return processor;
 	}
 
 	public static void main(String[] argv) throws Exception {

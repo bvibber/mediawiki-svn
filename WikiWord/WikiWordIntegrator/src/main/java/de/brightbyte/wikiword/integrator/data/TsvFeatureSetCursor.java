@@ -8,7 +8,8 @@ import java.util.List;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.io.LineCursor;
-import de.brightbyte.io.TsvCursor;
+import de.brightbyte.io.ChunkingCursor;
+import de.brightbyte.text.Chunker;
 import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.util.PersistenceException;
 
@@ -17,23 +18,27 @@ public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {
 	private String[] fields;
 	
 	public TsvFeatureSetCursor(InputStream in, String enc) throws UnsupportedEncodingException {
-		this( new TsvCursor(in, enc) );
+		this( new ChunkingCursor(in, enc) );
 	}
 
 	public TsvFeatureSetCursor(Reader rd) {
-		this(new TsvCursor(rd));
+		this(new ChunkingCursor(rd));
 	}
 	
 	public TsvFeatureSetCursor(BufferedReader reader) {
-		this(new TsvCursor(reader));
+		this(new ChunkingCursor(reader));
 	}
 
 	public TsvFeatureSetCursor(LineCursor lines) {
-		this(new TsvCursor(lines));
+		this(new ChunkingCursor(lines));
 	}
 
-	public TsvFeatureSetCursor(LineCursor lines, CsvLineChunker chunker) {
-		this(new TsvCursor(lines, chunker));
+	public TsvFeatureSetCursor(LineCursor lines, char separator, boolean esc) {
+		this(new ChunkingCursor(lines, new CsvLineChunker(separator, esc)));
+	}
+
+	public TsvFeatureSetCursor(LineCursor lines, Chunker chunker) {
+		this(new ChunkingCursor(lines, chunker));
 	}
 
 	public TsvFeatureSetCursor(DataCursor<List<String>> source) {

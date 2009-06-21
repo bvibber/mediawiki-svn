@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.brightbyte.text.Chunker;
+import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.wikiword.TweakSet;
 
 public class FeatureSetSourceDescriptor extends TweakSet {
@@ -77,8 +78,8 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 	}
 	
 
-	public Map<String, Chunker> getDataFieldChunkers() { //FIXME: factory/parser!
-		return getTweak("foreign.chunkers", (Map<String, Chunker>)null);
+	public Map<String, Chunker> getDataFieldChunkers() { 
+		return getTweak("field-chunkers", (Map<String, Chunker>)null);
 	}
 	
 	public String getPropertyValueField() {
@@ -95,6 +96,27 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 
 	public String getPropertySubjectNameField() {
 		return getTweak("property-subject-name-field", null);
+	}
+
+	public boolean getSkipHeader() {
+		return getTweak("skip-header", false);
+	}
+
+	public Chunker getCsvLineChunker() {
+		Chunker chunker = getTweak("csv-chunker", null);
+		
+		if (chunker==null) {
+			char ch = getTweak("csv-separator", '\u008F');
+			if (ch!='\u008F') chunker = new CsvLineChunker(ch, getTweak("csv-backslash-escape", false));
+		}
+
+		if (chunker==null) {
+			if (getTweak("file-format", "tsv").equals("csv"))
+				chunker = CsvLineChunker.csv;
+		}
+		
+		if (chunker==null) chunker = CsvLineChunker.tsv;
+		return chunker;
 	}
 
 	

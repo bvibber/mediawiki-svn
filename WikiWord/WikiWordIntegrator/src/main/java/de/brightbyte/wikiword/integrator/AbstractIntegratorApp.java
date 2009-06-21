@@ -18,6 +18,7 @@ import de.brightbyte.data.Functor;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.db.SqlScriptRunner;
 import de.brightbyte.io.IOUtil;
+import de.brightbyte.io.LineCursor;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.util.BeanUtils;
 import de.brightbyte.util.PersistenceException;
@@ -185,10 +186,19 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 			
 			fsc = new ResultSetFeatureSetCursor(rs, fields);
 		} else {
-			fsc = new TsvFeatureSetCursor(in, enc);
+			LineCursor lines = new LineCursor(in, enc);
 			
-			if (fields!=null) ((TsvFeatureSetCursor)fsc).setFields(fields);
-			else ((TsvFeatureSetCursor)fsc).readFields();
+			Chunker chunker = sourceDescriptor.getCsvLineChunker();
+			
+			fsc = new TsvFeatureSetCursor(lines, chunker);
+			
+			if (fields!=null) {
+				if (sourceDescriptor.getSkipHeader()) ((TsvFeatureSetCursor)fsc).readFields();
+				((TsvFeatureSetCursor)fsc).setFields(fields);
+			} else {
+				((TsvFeatureSetCursor)fsc).readFields();
+				fields = ((TsvFeatureSetCursor)fsc).getFields();
+			}
 		}
 		
 		String propField = sourceDescriptor.getPropertyNameField();

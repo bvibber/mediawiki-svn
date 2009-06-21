@@ -42,7 +42,7 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 		return table;
 	}
 
-	public RelationTable newConceptMappingTable(String name, boolean unique) {
+	public RelationTable newConceptAssociationTable(String name, boolean unique) {
 		RelationTable table = new RelationTable(this, name, getDefaultTableAttributes());
 		
 		table.addField( new DatabaseField(this, "external_authority", getTextType(64), null, true, null) );

@@ -10,6 +10,7 @@ import de.brightbyte.wikiword.integrator.store.ForeignPropertyStoreBuilder;
 
 public class ForeignPropertyPassThrough extends AbstractForeignPropertyProcessor {
 	protected ForeignPropertyStoreBuilder store;
+	protected String qualifier;
 	
 	public ForeignPropertyPassThrough(ForeignPropertyStoreBuilder store) {
 		if (store==null) throw new NullPointerException();
@@ -24,9 +25,17 @@ public class ForeignPropertyPassThrough extends AbstractForeignPropertyProcessor
 			List<Object> vv = p.getValue();
 			
 			for (Object v: vv) {
-				store.storeProperty(e.getAuthority(), e.getID(), prop, String.valueOf(v), null);
+				store.storeProperty(e.getAuthority(), e.getID(), prop, String.valueOf(v), qualifier);
 			}
 		}
+	}
+
+	public String getQualifier() {
+		return qualifier;
+	}
+
+	public void setQualifier(String qualifier) {
+		this.qualifier = qualifier;
 	}
 
 }
