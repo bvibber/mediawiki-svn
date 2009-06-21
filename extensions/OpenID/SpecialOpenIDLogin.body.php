@@ -516,7 +516,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
 			$ssUpdate->doUpdate();
 
-			$this->insertUserUrl( $user, $openid );
+			self::addUserUrl( $user, $openid );
 			$this->updateUser( $user, $sreg );
 			$user->saveSettings();
 			return $user;
