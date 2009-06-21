@@ -7,4 +7,4 @@ CREATE TABLE /*$wgDBprefix*/user_openid (
   uoi_user int(5) unsigned NOT NULL
 ) /*$wgDBTableOptions*/;
 
-CREATE INDEX user_openid_user ON user_openid(uoi_user);
+CREATE INDEX /*$wgDBprefix*/user_openid_user ON /*$wgDBprefix*/user_openid(uoi_user);
