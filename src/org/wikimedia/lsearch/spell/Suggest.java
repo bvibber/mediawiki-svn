@@ -442,7 +442,7 @@ public class Suggest {
 				continue;
 			}
 			// words found within context should be spell-checked only if they are not valid words
-			if(info.foundInContext.contains(w) && wordExists(w,ns) && wordFrequency(w,ns)>minWordFreq*100){
+			if(info.foundInContext.contains(w) && wordExists(w,ns) && wordFrequency(w,ns)>minWordFreq*10){
 				addCorrectWord(w,wordSug,possibleStopWords);
 				continue;
 			} 
@@ -808,7 +808,7 @@ public class Suggest {
 				b = reader.docFreq(new Term("word",w)) != 0;				
 			else{ // other namespaces
 				b = reader.docFreq(new Term(ns.prefix+"word",w)) != 0;
-				if(!b && ns.additional)
+				if(!b) // always look in main (was  && ns.additional)
 					b = reader.docFreq(new Term("word",w)) != 0;
 			}
 			wordExistCache.put(w,b);
@@ -827,11 +827,12 @@ public class Suggest {
 			TermDocs td = reader.termDocs(new Term(ns.prefix+"word",w));
 			if(td.next())
 				freq = getFrequency(reader.document(td.doc()),ns);
-			if(ns.additional){ // also look in main
+			//if(ns.additional){ // also look in main
+			// always look in main
 				TermDocs td2 = reader.termDocs(new Term("word",w));
 				if(td2.next())
 					freq += getFrequency(reader.document(td2.doc()),null);
-			}
+			//}
 			return freq;
 		}
 	}

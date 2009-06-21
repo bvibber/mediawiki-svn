@@ -385,5 +385,10 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 		System.out.println("Parser elapsed: "+delta+"ms, per serialization: "+((double)delta/total)+"ms, size:"+size/total);
 
 	}
+	
+	public void testVowels(){
+		assertEquals("zdrv", FastWikiTokenizerEngine.deleteVowels("zdravo"));
+		assertEquals("v g mlrd", FastWikiTokenizerEngine.deleteVowels("eve ga milorad"));
+	}
 
 }

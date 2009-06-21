@@ -17,7 +17,7 @@ import java.net.URLEncoder;
 public class SuggestTest {
 	static String host = "localhost";
 	static int port = 8123;
-	static String db = "enwiki";
+	static String db = "wikilucene";
 	
 	public static String getSuggestion(String query) throws IOException{
 		query = query.replace(" ","%20"); 
@@ -118,7 +118,8 @@ public class SuggestTest {
    	{"los angles gardens","los angeles gardens"},
    	{"huston we have a problem","houston we have a problem"},
    	{"janeus","janus"},
-   	
+   	{"fish pupy", ""}, 
+   	{"current topics depicting shining india", ""},
    };
 
 }

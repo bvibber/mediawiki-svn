@@ -1590,6 +1590,19 @@ public class FastWikiTokenizerEngine {
 		return new String(buf,0,len).trim();
 	}
 	
+	/** Delete all vowels from a word or phrase */
+	public static String deleteVowels(String title){
+		char[] buf = new char[256];
+		
+		int len = 0;
+		for(int i=0;i<title.length();i++){
+			char ch = title.charAt(i);
+			if( ch!='a' && ch!='e' && ch!='i' && ch!='o' && ch!='u' )
+				buf[len++] = title.charAt(i);
+		}
+		return new String(buf,0,len);
+	}
+	
 	/** Delete everything that is not being indexes, decompose chars */
 	public static String stripTitle(String title){
 		if(decomposer == null)
