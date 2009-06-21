@@ -313,7 +313,7 @@ abstract class Maintenance {
 			$this->inputLoaded = true;
 		}
 		if( $opts ) {
-			$this->mOptions = $opts
+			$this->mOptions = $opts;
 			$this->inputLoaded = true;
 		}
 		if( $args ) {
