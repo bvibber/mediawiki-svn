@@ -98,7 +98,7 @@ There are many [http://openid.net/get/ OpenID providers], and you may already ha
 	'openidupdateuserinfo' => 'Update my personal information',
 
 	'openiddelete' => 'Delete OpenID',
-	'openiddelete-text' => 'By clicking the "Confirm" button, you will remove the OpenID $1 from your account.
+	'openiddelete-text' => 'By clicking the "{{int:openiddelete-button}}" button, you will remove the OpenID $1 from your account.
 You will not be able anymore to login with this OpenID.',
 	'openiddelete-button' => 'Confirm',
 	'openiddelete-sucess' => 'The OpenID has been successfully removed from your account.',
