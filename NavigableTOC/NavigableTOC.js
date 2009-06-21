@@ -117,7 +117,7 @@ $( document ).ready( function() {
 		$( '.toc:last * li' ).not( '.tocsection-' + $.section + ' * li')
 			.not( '.tocsection-' + $.section ).each( function() {
 				link = $(this).children( 'a' );
-				if ( link.visible() ) {
+				if ( link.is( ':visible' ) ) {
 					link.hide();
 					$(this).prepend( link.html() );
 				}
