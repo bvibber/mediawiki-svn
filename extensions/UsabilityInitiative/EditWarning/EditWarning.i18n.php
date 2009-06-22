@@ -45,6 +45,13 @@ $messages['dsb'] = array(
 	'editwarning-warning' => 'Gaž toś ten bok se spušća, budu se změny zgubowaś.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'editwarning' => 'Redakta averto',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -86,6 +93,15 @@ $messages['hsb'] = array(
 	'editwarning' => 'Wobdźěłowanske warnowanje',
 	'editwarning-desc' => 'Warnowanje pokazać, hdyž wužiwar pospytuje, wobdźěłowanski formular bjez składowanja wopušćić',
 	'editwarning-warning' => 'Hdyž so strona wopušća, so přewjedźene změny zhubja.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'editwarning' => 'Peringatan suntingan',
+	'editwarning-desc' => 'Menampilkan sebuah peringatan jika pengguna hendak meninggalkan penyuntingan tanpa menyimpan',
+	'editwarning-warning' => 'Semua perubahan yang Anda lakukan akan hilang jika Anda meninggalkan halaman ini',
 );
 
 /** Italian (Italiano)
@@ -185,5 +201,14 @@ $messages['tr'] = array(
 	'editwarning' => 'Değişiklik uyarısı',
 	'editwarning-desc' => 'Bir kullanıcı kaydetmeden değişiklik formundan çıkmaya çalışırsa bir uyarı göster',
 	'editwarning-warning' => 'Bu sayfadan ayrılmak yaptığınız herhangi bir değişikliği kaybetmenize sebep olacaktır.',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'editwarning' => 'Редакторне попередження',
+	'editwarning-desc' => 'Показує попередження, якщо користувач покидає форму редагування без збереження',
+	'editwarning-warning' => 'Перехід на іншу сторінку призведе до втрати ваших змін.',
 );
 

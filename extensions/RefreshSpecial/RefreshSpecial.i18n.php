@@ -933,7 +933,7 @@ După ce aţi ales toate paginile pe care doriţi să le reîmprospătaţi, face
  */
 $messages['ru'] = array(
 	'refreshspecial' => 'Обновить служебные страницы',
-	'refreshspecial-desc' => 'Позволяет [[Special:RefreshSpecial|руководство обновления служебных страниц]] для служебных страниц',
+	'refreshspecial-desc' => 'Позволяет [[Special:RefreshSpecial|совершать ручное обновление]] служебных страниц',
 	'refreshspecial-title' => 'Обновить служебные страницы',
 	'refreshspecial-help' => "Эта служебная страница позволяет обновлять служебные страницы.
 Вы можете выбрать все страницы, которые вам нужно обновить, нажать «Обновление выбрано» для обновления выбранных служебных страниц.

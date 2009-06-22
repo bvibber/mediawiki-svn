@@ -388,6 +388,13 @@ $messages['vo'] = array(
 	'editown-desc' => 'Gebans nen gität: „redakön vali“ kanons redakön te padis fa oks pejafölis',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'editown-desc' => 'באניצער וואס האבן נישט דעם אלץ-רעדאקטירן רעכט (editall) קענען רעדאקטירן נאר בלעטער וואס זיי האבן אליין געשאפן.',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong

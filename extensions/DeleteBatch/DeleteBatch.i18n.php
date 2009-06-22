@@ -1063,7 +1063,7 @@ $messages['ru'] = array(
 	'deletebatch-desc' => '[[Special:DeleteBatch|Удаление набора страниц]]',
 	'deletebatch-help' => 'Удаление набора страниц. Вы можете использовать это для одного удаления, или удаления страниц, перечисленных в файле.
 Выберите участника, который будет показан в журнале удалений.
-Загружаемый файл должен содержать имя страницы и необязательную причину удаления, разделённую «|» на каждой строке.',
+Загружаемый файл должен содержать имя страницы и необязательную причину удаления, их должен разделять символ «|».',
 	'deletebatch-caption' => 'Список страниц:',
 	'deletebatch-title' => 'Удаление набора',
 	'deletebatch-link-back' => 'Вернуться к служебной странице',
@@ -1077,7 +1077,7 @@ $messages['ru'] = array(
 	'deletebatch-success-subtitle' => 'для $1',
 	'deletebatch-omitting-nonexistant' => 'За исключением несуществующей страницы $1.',
 	'deletebatch-omitting-invalid' => 'За исключением ошибочной страницы $1.',
-	'deletebatch-file-bad-format' => 'Файл должен быть в формате text/plain',
+	'deletebatch-file-bad-format' => 'Файл должен содержать простой текст',
 	'deletebatch-file-missing' => 'Невозможно прочитать данный файл',
 	'deletebatch-select-script' => 'скрипт удаления страниц',
 	'deletebatch-select-yourself' => 'вы',

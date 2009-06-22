@@ -75,6 +75,7 @@ Do not translate or change tag names, or link anchors.',
 * $2 is the name of a record type. What actual values they can have depends on the types of records that have been created, but is usually things like "Issue", "Activity", "Invoice", "Person", etc.',
 	'recordadmin-buttonsave' => '{{Identical|Save}}',
 	'recordadmin-editlink' => '{{Identical|Edit}}',
+	'recordadmin-actions' => '{{Identical|Action}}',
 );
 
 /** Arabic (العربية)

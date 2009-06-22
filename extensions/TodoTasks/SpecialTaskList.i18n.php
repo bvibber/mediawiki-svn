@@ -565,15 +565,15 @@ Le systema de notification de %s',
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'tasklist' => '作業一覧',
+	'tasklist' => '課題一覧',
 	'tasklist-parser-desc' => '課題割り当てのための <nowiki>{{#todo:}}</nowiki> パーサー関数を加える',
 	'tasklist-special-desc' => '[[Special:TaskList|課題割り当て]]を見直すための特別ページを追加する',
-	'tasklistbyproject' => 'プロジェクト別作業一覧',
+	'tasklistbyproject' => 'プロジェクト別課題一覧',
 	'tasklistunknownproject' => '不明なプロジェクト',
 	'tasklistunspecuser' => '利用者未指定',
 	'tasklistincorrectuser' => '不正確な利用者名',
 	'tasklistemail' => '%s さんへ',
-	'tasklistemailsubject' => '[%s] 作業一覧の変更',
+	'tasklistemailsubject' => '[%s] 課題リストの変更',
 	'tasklistmytasks' => '自分の課題',
 	'tasklistbyprojectbad' => "プロジェクト「'''%s'''」は有効なプロジェクトではありません。有効なプロジェクトの一覧は、[[MediaWiki:TodoTasksValidProjects]]をご覧ください。",
 	'tasklistbyprojname' => "'''%s''' の割り当て済み課題",
@@ -582,10 +582,9 @@ $messages['ja'] = array(
 	'tasklistbyname' => '== %s の ToDo 一覧==',
 	'tasklistnoprojects' => "エラー: あなたは '''\$wgUseProjects''' を有効にしているようですが、[[MediaWiki:TodoTasksValidProjects]] を作成していません。詳細は[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 インストール手順]をご覧ください。",
 	'tasklistemailbody' => '
+どなたかがあなたに %s での新しい課題を割り当てました。
 
-どなたかがあなたに %s での新しい作業を割り当てました。
-
-あなたに割り当てられている作業一覧は %s で確認できます。
+あなたに割り当てられている課題一覧は %s で確認できます。
 
 %s 通知システムより',
 );

@@ -94,6 +94,13 @@ $messages['ca'] = array(
 	'seealso-desc' => "Localitza les seccions «Vegeu també» usant l'etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'seealso' => 'Vizte též',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

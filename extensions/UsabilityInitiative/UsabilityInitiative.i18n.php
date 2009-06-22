@@ -73,6 +73,14 @@ $messages['hsb'] = array(
 	'usabilityinitiative-desc' => 'Funkcije, wuwity přez iniciatiwu wužiwajomnosće Wikipedije, za polěpšenje wužiwajomnosće MediaWiki',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'usabilityinitiative' => 'Proyek Inisiatif Kebergunaan',
+	'usabilityinitiative-desc' => 'Fitur-fitur yang dikembangkan oleh Proyek Inisiatif Kebergunaan Wikipedia untuk meningkatkan kebergunaan MediaWiki',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

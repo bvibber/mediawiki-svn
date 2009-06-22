@@ -802,7 +802,7 @@ $messages['ja'] = array(
 	'todo-desc' => '個人用の[[Special:Todo|ToDo一覧]]を実現する実験的な拡張機能',
 	'todo-tab' => 'やること',
 	'todo-new-queue' => '新規',
-	'todo-mail-subject' => '$1 のToDo一覧上の完了項目',
+	'todo-mail-subject' => '$1 のToDoリスト上の項目が完了しました',
 	'todo-mail-body' => 'ご依頼にそって、あなたが $1 のToDo一覧に登録した項目の完了をメールにて通知いたしました。
 
 項目: $2

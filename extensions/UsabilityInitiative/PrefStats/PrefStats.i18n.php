@@ -40,6 +40,17 @@ $messages['bs'] = array(
 	'prefstats-desc' => 'Praćenje statistika o tome kako korisnici imaju postavljene određene postavke',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'prefstats' => 'Statistika nastavení',
+	'prefstats-desc' => 'Statistické sledování toho, kolik uživatelů používá která nastavení',
+	'prefstats-title' => 'Statistika nastavení',
+	'prefstats-list-intro' => 'V současnosti se sledují následující nastavení.
+Kliknutím zobrazíte příslušné statistiky.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -49,6 +60,14 @@ $messages['dsb'] = array(
 	'prefstats-title' => 'Statistika nastajenjow',
 	'prefstats-list-intro' => 'Tuchylu se slědujuce nastajenja slěduju.
 Klikni na jadne z nich, aby se statistiku wó nim woglědał.',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'prefstats' => 'Statistikoj pri preferoj',
+	'prefstats-title' => 'Statistikoj pri preferoj',
 );
 
 /** French (Français)
@@ -90,6 +109,28 @@ $messages['hsb'] = array(
 	'prefstats-desc' => 'Statistika wo tym, kelko wužiwarjow je wěste nastajenja aktiwizowało',
 	'prefstats-title' => 'Statistika nastajenjow',
 	'prefstats-list-intro' => 'Tuchwilu so slědowace nastajenja sćěhuja. Klikń na jedne z nich, zo by sej statistiku wo nim wobhladał.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'prefstats' => 'Statistik preferensi',
+	'prefstats-desc' => 'Statistik mengenai berapa banyak pengguna yang mengaktifkan preferensi tertentu',
+	'prefstats-title' => 'Statistik preferensi',
+	'prefstats-list-intro' => 'Saat ini, preferensi-preferensi berikut sedang ditelusuri.
+Klik pada salah satu untuk melihat statistiknya.',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'prefstats' => 'Statistiche delle preferenze',
+	'prefstats-desc' => 'Statistiche circa il numero di utenti che hanno attivato alcune preferenze',
+	'prefstats-title' => 'Statistiche delle preferenze',
+	'prefstats-list-intro' => 'Attualmente, le seguenti preferenze vengono seguite.
+Fare clic su una per vedere le statistiche su di essa.',
 );
 
 /** Japanese (日本語)
@@ -136,6 +177,17 @@ $messages['nl'] = array(
 Klik op een voorkeur om de statistieken te bekijken.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'prefstats' => 'Preferéncia de las estatisticas',
+	'prefstats-desc' => "Estatisticas sul nombre d'utilizaires qu'an cèrtas preferéncias activadas",
+	'prefstats-title' => 'Estatisticas de las preferéncias',
+	'prefstats-list-intro' => "En aqueste moment, las preferéncias seguentas son seguidas.
+Clicatz sus una d'entre elas per veire las estatisticas a son prepaus.",
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -163,8 +215,8 @@ $messages['ru'] = array(
 	'prefstats' => 'Статистика настроек',
 	'prefstats-desc' => 'Отслеживание статистики о том, сколько пользователей включили у себя те или иные настройки',
 	'prefstats-title' => 'Статистика настроек',
-	'prefstats-list-intro' => 'Сейчас, следующие настройки отслеживаются.
-Выберите одну для просмотра статистики о ней.',
+	'prefstats-list-intro' => 'Сейчас отслеживаются следующие настройки.
+Выберите одну из них для просмотра статистики.',
 );
 
 /** Slovak (Slovenčina)
@@ -187,5 +239,16 @@ $messages['tr'] = array(
 	'prefstats-title' => 'Tercih istatistikleri',
 	'prefstats-list-intro' => 'Şu anda, aşağıdaki tercihler izleniyor.
 İlgili istatistikleri görmek için birine tıklayın.',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'prefstats' => 'Статистика налаштувань',
+	'prefstats-desc' => 'Творення статистики про популярність тих чи інших налаштувань',
+	'prefstats-title' => 'Статистика налаштувань',
+	'prefstats-list-intro' => 'Зараз відстежуються такі налаштування.
+Натисніть на якомусь, щоб побачити його статистику.',
 );
 

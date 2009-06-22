@@ -3980,6 +3980,7 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -3987,6 +3988,9 @@ $messages['ru'] = array(
 	'deletequeue-action-queued' => 'Удаление',
 	'deletequeue-action' => 'Предложить удаление',
 	'deletequeue-action-title' => 'Предложить удаление "$1"',
+	'deletequeue-action-text-queued' => 'Вы можете просмотреть следующие страницы для этого запроса удаления:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Просмотреть текущих сторонников и противников].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Поддержать или отклонить удаление этой страницы].',
 	'deletequeue-generic-reasons' => '* Типовые причины
   ** Вандализм
   ** Спам
@@ -4032,7 +4036,7 @@ $messages['ru'] = array(
 	'deletequeue-review-original' => 'Причина номинации',
 	'deletequeue-review-badaction' => 'Вы указали неправильное действие',
 	'deletequeue-reviewspeedy-tab' => 'Досмотр быстрого удаления',
-	'deletequeue-reviewspeedy-title' => 'Досмотр быстрого удаления номинации от «$1»',
+	'deletequeue-reviewspeedy-title' => 'Досмотр быстрого удаления номинации «$1»',
 	'deletequeue-reviewprod-tab' => 'Просмотр предлагаемых удалений',
 	'deletequeue-reviewprod-title' => 'Просмотр предлагаемого удаления «$1»',
 	'deletequeue-reviewdeletediscuss-tab' => 'Досмотр удаления',
