@@ -58,6 +58,60 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-question-feedback' => 'Please let us know your feedback:',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'optin-survey-answer-whyoptout-other' => '{{Identical|Other reason}}',
+	'optin-survey-answer-os-other' => '{{Identical|Other}}',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'optin' => 'Удзел у Ініцыятыве па паляпшэньню зручнасьці і прастаты выкарыстаньня',
+	'optin-desc' => 'Дазваляе ўдзельнікам далучыцца ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня',
+	'optin-title' => 'Паляпшэньні ў рамках ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня',
+	'optin-needlogin' => 'Вам неабходна [$1 увайсьці ў сыстэму] каб далучыцца да ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня.',
+	'optin-intro' => 'У рамках ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня Вікіпэдыі былі распрацаваныя новае афармленьне і новая панэль інструмэнтаў рэдагаваньняў з намерам павышэньня зручнасьці і прастаты выкарыстаньня Вікіпэдыі. Гэтыя паляпшэньні яшчэ не ўключаныя для ўсіх удзельнікаў, яле Вы можаце пачаць выкарыстоўваць іх націснуўшы кнопку «{{int:optin-submit-in}}» ніжэй.',
+	'optin-success-in' => 'Вы пасьпяхова далучыліся да паляпшэньняў зробленых у рамках ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня.
+Вы можаце пакінуць адлучыцца ў любы час націснуўшы кнопку «{{int:optin-submit-out}}» ніжэй.',
+	'optin-success-out' => 'Вы пасьпяхова адлучыліся ад праграмы паляпшэньняў ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня.
+Вы можаце зноў далучыцца да яе націснуўшы кнопку «{{int:optin-submit-in}}» ніжэй.',
+	'optin-submit-in' => 'Далучыцца',
+	'optin-submit-out' => 'Адлучыцца',
+	'optin-survey-intro' => 'Дзякуй за ўдзел у праграме паляпшэньняў ініцыятывы па паляпшэньню зручнасьці і прастаты выкарыстаньня.
+Вы можаце адлучыцца ад гэтай праграмы ў любы час націснуўшы кнопку «{{int:optin-submit-out}}» у нізу  гэтай старонцы.
+
+Мы жадаем ведаць, што Вы мяркуеце пра новы інтэрфэйс, з-за гэтага мы былі б удзячныя, калі б Вы прынялі ўдзел у неабавязковым апытаньні, перад тым як Вы націсьніце «{{int:optin-submit-out}}».',
+	'optin-survey-question-whyoptout' => 'Чаму Вы вырашылі адключыць гэты інтэрфэйс?',
+	'optin-survey-answer-whyoptout-didntlike' => 'Мне не падабаецца дызайн.',
+	'optin-survey-answer-whyoptout-hard' => 'Занадта складана рэдагаваць старонкі.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Ён не працуе належным чынам.',
+	'optin-survey-answer-whyoptout-other' => 'Іншая прычына:',
+	'optin-survey-question-browser' => 'Якім браўзэрам Вы карыстаецеся?',
+	'optin-survey-answer-browser-other' => 'Іншы браўзэр:',
+	'optin-survey-question-os' => 'Якой апэрацыйнай сыстэмай Вы карыстаецеся?',
+	'optin-survey-answer-os-other' => 'Іншая:',
+	'optin-survey-question-res' => 'Якое разрозьненьне Вашага манітора?',
+	'optin-survey-question-feedback' => 'Калі ласка, паведаміце нам Вашае меркаваньне:',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'optin-survey-answer-whyoptout-didntlike' => 'Ne sviđa mi se dizajn.',
+	'optin-survey-answer-whyoptout-hard' => 'Isuviše je teško uređivati stranicu.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Nije pravilno funkcioniralo.',
+	'optin-survey-answer-whyoptout-other' => 'Ostali preglednici:',
+	'optin-survey-question-browser' => 'Koji preglednik koristite?',
+	'optin-survey-answer-browser-other' => 'Ostali preglednici:',
+	'optin-survey-answer-os-other' => 'Ostalo:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -113,13 +167,42 @@ $messages['el'] = array(
 	'optin-survey-answer-os-linux' => 'Linux',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'optin-survey-question-whyoptout' => 'Kial vi ne volas uzi ĉi tiun interfacon?',
+	'optin-survey-answer-whyoptout-didntlike' => 'La apero ne plaĉas al mi.',
+	'optin-survey-answer-whyoptout-hard' => 'Ĝi estis tro malfacila redakti paĝon.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Ĝi ne funkciis ĝuste.',
+	'optin-survey-answer-whyoptout-other' => 'Alia kialo:',
+	'optin-survey-question-browser' => 'Kiun retumilon vi uzas?',
+	'optin-survey-answer-browser-other' => 'Alia retumilo:',
+	'optin-survey-question-os' => 'Kiun operaciumon vi uzas?',
+	'optin-survey-answer-os-other' => 'Alia:',
+	'optin-survey-question-res' => 'Kio estas la distingivo de via ekrano?',
+	'optin-survey-question-feedback' => 'Bonvolu diri al ni viajn rimarkojn:',
+);
+
 /** French (Français)
  * @author IAlex
  */
 $messages['fr'] = array(
+	'optin' => "Participer à l'initiative d'utilisabilité",
+	'optin-desc' => "Permet aux utilisateurs de participer aux améliorations de l'initiative d'utilisabilité",
 	'optin-title' => "Améliorations de l'initiative d'utilisabilité",
+	'optin-needlogin' => "Vous devez vous [$1 connecter] pour participer aux améliorations de l'initiative d'utilisabilité.",
+	'optin-intro' => "L'initiative d'utilisabilité de Wikipédia a développé un nouvel habillage et une nouvelle bare d'outils de modification pour améliorer l'utilisabilité de Wikipédia. Ces améliorations ne sont pas activées pour tous les utilisateurs, mais vous pouvez les utiliser en cliquant sur le bouton « {{int:optin-submit-in}} » ci-dessous.",
+	'optin-success-in' => "Vous participez dès maintenant aux améliorations de l'initiative d'utilisabilité de Wikipédia.
+Vous pouvez ne plus participer en cliquant sur « {{int:optin-submit-out}} » ci-dessous.",
+	'optin-success-out' => "Vous participez plus aux améliorations de l'initiative d'utilisabilité de Wikipédia.
+Vous pouvez de nouveau participer à tout moment en cliquant sur « {{int:optin-submit-in}} » ci-dessous.",
 	'optin-submit-in' => 'Participer',
 	'optin-submit-out' => 'Ne plus participer',
+	'optin-survey-intro' => "Merci pour essayer les amélioration de l'initiative d'utilisabilité.
+Vous pouvez ne plus participer en cliquant sur « {{int:optin-submit-out}} » ci-dessous.
+
+Nous aimerions savoir ce que vous pensez de notre nouvelle interface, nous apprécierions si vous remplissiez le sondage optionnel avant de cliquer sur « {{int:optin-submit-out}} ».",
 	'optin-survey-question-whyoptout' => 'Pourquoi ne voulez-vous plus participer à cette interface ?',
 	'optin-survey-answer-whyoptout-didntlike' => "Je n'aime pas le design.",
 	'optin-survey-answer-whyoptout-hard' => 'Il est trop difficile de modifier une page.',
@@ -130,6 +213,7 @@ $messages['fr'] = array(
 	'optin-survey-question-os' => "Quel système d'exploitation utilisez-vous ?",
 	'optin-survey-answer-os-other' => 'Autre :',
 	'optin-survey-question-res' => 'Quelle est la résolution de votre écran ?',
+	'optin-survey-question-feedback' => 'Donnez-nous votre réaction :',
 );
 
 /** Swiss German (Alemannisch)
@@ -189,6 +273,38 @@ Bychmy rady wědźeli, što mysliš wo našim nowym wužiwarskim powjerchu, bych
 	'optin-survey-answer-os-other' => 'Druhi:',
 	'optin-survey-question-res' => 'Kotre je rozeznaće twojeje wobrazowki?',
 	'optin-survey-question-feedback' => 'Zdźěl nam prošu swoje měnjenja:',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'optin' => 'Bergabung dengan Proyek Inisiatif Kebergunaan',
+	'optin-desc' => 'Memungkinkan pengguna untuk bergabung dengan peningkatan kebergunaan dalam Proyek Inisiatif Kebergunaan',
+	'optin-title' => 'Proyek Inisiatif Kebergunaan',
+	'optin-needlogin' => 'Anda harus [$1 masuk log] untuk dapat bergabung dengan peningkatan kebergunaan dari Proyek Inisiatif Kebergunaan.',
+	'optin-intro' => 'Proyek Inisiatif Kebergunaan Wikipedia telah mengembangkan sebuah skin baru dan batang alat penyuntingan baru yang ditujukan untuk meningkatkan kebergunaan Wikipedia. Peningkatan ini belum diaktifkan untuk semua pengguna, tapi Anda dapat bergabung dengan Proyek ini dengan mengklik "{{int:optin-submit-in}}" di bawah ini.',
+	'optin-success-in' => 'Anda telah berhasil bergabung dengan peningkatan kebergunaan dari Proyek Inisiatif Kebergunaan.
+Anda dapat keluar kapan saja dengan mengklik "{{int:optin-submit-out}}" di bawah ini.',
+	'optin-success-out' => 'Anda telah berhasil keluar dari Proyek Inisiatif Kebergunaan.
+Anda dapat bergabung kembali kapan saja dengan mengklik "{{int:optin-submit-in}}" di bawah ini.',
+	'optin-submit-in' => 'Bergabung',
+	'optin-submit-out' => 'Keluar',
+	'optin-survey-intro' => 'Terima kasih untuk menguji coba peningkatan kebergunaan dari Proyek Inisiatif Kebergunaan.
+Anda dapat keluar dengan mengklik "{{int:optin-submit-out}}" pada bagian bawah halaman ini.
+
+Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, karenanya kami akan sangat menghargai jika Anda mengisi survei opsional berikut sebelum mengklik "{{int:optin-submit-out}}".',
+	'optin-survey-question-whyoptout' => 'Mengapa Anda keluar dari antarmuka ini?',
+	'optin-survey-answer-whyoptout-didntlike' => 'Saya tidak menyukai desainnya.',
+	'optin-survey-answer-whyoptout-hard' => 'Terlalu sulit untuk menyunting halaman.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Tidak berfungsi dengan baik.',
+	'optin-survey-answer-whyoptout-other' => 'Alasan lainnya:',
+	'optin-survey-question-browser' => 'Penjelajah web apa yang Anda gunakan?',
+	'optin-survey-answer-browser-other' => 'Penjelajah web lainnya:',
+	'optin-survey-question-os' => 'Sistem operasi apa yang Anda gunakan?',
+	'optin-survey-answer-os-other' => 'Lain-lain:',
+	'optin-survey-question-res' => 'Berapa besar resolusi layar Anda?',
+	'optin-survey-question-feedback' => 'Beritahukan kami tanggapan Anda:',
 );
 
 /** Japanese (日本語)
@@ -316,11 +432,21 @@ We willen graag weten wat u vindt van deze nieuwe interface, dus wilt u alstubli
 	'optin-survey-question-feedback' => 'Laat ons alstublieft weten wat u vindt:',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'optin' => "Participar a l'iniciativa d'utilizabilitat",
+	'optin-desc' => "Permet als utilizaires de participar als melhoraments de l'iniciativa d'utilizabilitat",
+	'optin-title' => "Melhoraments de l'iniciativa d'utilizabilitat",
+	'optin-needlogin' => "Vos cal vos [$1 connectar] per participar als melhoraments de l'iniciativa d'utilizabilitat.",
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'optin-survey-answer-whyoptout-didntlike' => 'Nie podoba mi się pomysł.',
+	'optin-survey-answer-whyoptout-didntlike' => 'Nie podoba mi się wygląd strony.',
 	'optin-survey-answer-whyoptout-other' => 'Inny powód',
 	'optin-survey-question-browser' => 'Z jakiej korzystasz przeglądarki?',
 	'optin-survey-answer-browser-ie5' => 'Internet Explorer 5',
@@ -349,13 +475,27 @@ $messages['pl'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'optin-submit-in' => 'Включить',
-	'optin-submit-out' => 'Выключить',
+	'optin' => 'Участие в Инициативе юзабилити',
+	'optin-desc' => 'Позволяет участникам приобщиться к улучшениям движка, сделанным в ходе Инициативы юзабилити',
+	'optin-title' => 'Улучшения в рамках Инициативы юзабилити',
+	'optin-needlogin' => 'Вам нужно [$1 представиться] чтобы включиться в использование улучшений Инициативы юзабилити',
+	'optin-intro' => 'В рамках Инициативы юзабилити Википедии разработана новая тема оформления и панель инструментов редактирования, предназначенные для повышения удобства использования Википедии. Эти усовершенствования пока ещё не включены для всех участников, но вы можете начать использовать нововведения, нажав на кнопку «{{int:optin-submit-in}}».',
+	'optin-success-in' => 'Вы успешно подключились к программе усовершенствований, сделанных в рамках Инициативы юзабилити.
+В можете отключиться от программы в любое время, нажав  «{{int:optin-submit-out}}» ниже.',
+	'optin-success-out' => 'Вы успешно отключились от программы усовершенствований, сделанных в рамках Инициативы юзабилити.
+В можете подключиться обратно к программе в любое время, нажав  «{{int:optin-submit-in}}» ниже.',
+	'optin-submit-in' => 'Включиться',
+	'optin-submit-out' => 'Отключиться',
+	'optin-survey-intro' => 'Благодарим вас участие в программе использования улучшений Инициативы юзабилити.
+В можете отключиться от программы в любое время, нажав на «{{int:optin-submit-out}}» ниже на этой странице.
+
+Нам бы хотелось знать что вы думаете о новом интерфейсе, поэтому мы были бы признательны, если бы вы приняли участие в приведённом ниже опросе, перед тем, как нажмёте «{{int:optin-submit-out}}».',
 	'optin-survey-question-whyoptout' => 'Почему вы решили выключить этот интерфейс?',
-	'optin-survey-answer-whyoptout-didntlike' => 'Мнен не нравится дизайн.',
-	'optin-survey-answer-whyoptout-hard' => 'Это очень сложно для правки страниц.',
+	'optin-survey-answer-whyoptout-didntlike' => 'Мне не нравится дизайн.',
+	'optin-survey-answer-whyoptout-hard' => 'Он очень сложен для правки страниц.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Он не работает должным образом.',
 	'optin-survey-answer-whyoptout-other' => 'Другая причина:',
 	'optin-survey-question-browser' => 'Какой браузер вы используете?',
@@ -380,7 +520,7 @@ $messages['ru'] = array(
 	'optin-survey-answer-os-macos' => 'Mac OS',
 	'optin-survey-answer-os-linux' => 'Linux',
 	'optin-survey-answer-os-other' => 'Другая:',
-	'optin-survey-question-res' => 'Какое разрешение вашего монитора?',
+	'optin-survey-question-res' => 'Каково разрешение вашего монитора?',
 	'optin-survey-question-feedback' => 'Пожалуйста, сообщите нам своё мнение:',
 );
 
@@ -434,5 +574,22 @@ $messages['tr'] = array(
 	'optin-title' => 'Kullanılabilirlik Girişimi geliştirmeleri',
 	'optin-submit-in' => 'Katıl',
 	'optin-submit-out' => 'Katılma',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'optin-survey-question-whyoptout' => 'Чому ви вирішили відмовитися від цього інтерфейсу?',
+	'optin-survey-answer-whyoptout-didntlike' => 'Мені не подобається оформлення.',
+	'optin-survey-answer-whyoptout-hard' => 'Надто складно редагувати сторінки.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Він не працює належним чином.',
+	'optin-survey-answer-whyoptout-other' => 'Інша причина:',
+	'optin-survey-question-browser' => 'Яким оглядачем ви користуєтесь?',
+	'optin-survey-answer-browser-other' => 'Інший:',
+	'optin-survey-question-os' => 'Якою операційною системою ви користуєтесь?',
+	'optin-survey-answer-os-other' => 'Інша:',
+	'optin-survey-question-res' => 'Яка роздільність вашого монітора?',
+	'optin-survey-question-feedback' => 'Будь ласка, висловіть своє судження:',
 );
 
