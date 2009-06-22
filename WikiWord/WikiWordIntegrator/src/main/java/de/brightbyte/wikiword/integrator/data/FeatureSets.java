@@ -57,7 +57,7 @@ public class FeatureSets {
 		
 		public static <V>PropertyAccessor<FeatureSet, V>  fieldAccessor(String field, Class<V> type) {
 			if (field.startsWith("=")) { //HACK: force constant! //DOC
-				return (PropertyAccessor<FeatureSet, V>)(Object)new PropertyAccessor.Constant<String>(field.substring(1)); //X: if V is not String, this sucks!
+				return (PropertyAccessor<FeatureSet, V>)(Object)constantAccessor(field.substring(1)); //X: if V is not String, this sucks!
 			}
 			
 			AbstractedAccessor<FeatureSet, List<Object>> accessor = 
@@ -65,5 +65,8 @@ public class FeatureSets {
 
 			return new ConvertingAccessor<FeatureSet, List<Object>, V>(accessor, new FirstValue<V>(), type);
 		}
-		
+
+		public static <T>PropertyAccessor<FeatureSet, T> constantAccessor(T value) {
+			return (PropertyAccessor<FeatureSet, T>)(Object)new PropertyAccessor.Constant<T>(value); 
+		}
 }

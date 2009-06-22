@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -138,29 +140,15 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		Iterable<String> propertyFields = sourceDescriptor.getTweak("property-fields", (Iterable<String>)null);
 		
 		if (foreignFields==null) {
-			foreignFields = Arrays.asList(new String[] {
-					sourceDescriptor.getTweak("foreign-id-field", (String)null),
-					sourceDescriptor.getTweak("foreign-name-field", (String)null)
-			});
+			foreignFields = getDefaultForeignFields();
 		}
 
 		if (conceptFields==null) {
-			conceptFields = Arrays.asList(new String[] {
-					sourceDescriptor.getTweak("concept-id-field", (String)null),
-					sourceDescriptor.getTweak("concept-name-field", (String)null)
-			});
+			conceptFields = getDefaultConceptFields();
 		}
 		
 		if (propertyFields==null) {
-			propertyFields = Arrays.asList(new String[] {
-					sourceDescriptor.getTweak("foreign-property-field", (String)null),
-					sourceDescriptor.getTweak("concept-property-field", (String)null),
-					sourceDescriptor.getTweak("concept-property-source-field", (String)null),
-					sourceDescriptor.getTweak("concept-property-freq-field", (String)null),
-					sourceDescriptor.getTweak("association-annotation-field", (String)null),
-					sourceDescriptor.getTweak("association-weight-field", (String)null),
-					sourceDescriptor.getTweak("association-value-field", (String)null)
-			});
+			propertyFields = getDefaultPropertyFields();
 		}
 		
 		DataCursor<FeatureSet> fsc = openFeatureSetCursor();
@@ -172,6 +160,34 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 					propertyFields );
 		
 		return cursor;
+	}
+	
+	protected List<String> getDefaultForeignFields() {
+		return Arrays.asList(new String[] {
+				sourceDescriptor.getTweak("foreign-authority-field", "=" + sourceDescriptor.getAuthorityName()),
+				sourceDescriptor.getTweak("foreign-id-field", (String)null),
+				sourceDescriptor.getTweak("foreign-name-field", (String)null)
+		});
+	}
+	
+	protected List<String> getDefaultConceptFields() {
+		return Arrays.asList(new String[] {
+				sourceDescriptor.getTweak("concept-id-field", (String)null),
+				sourceDescriptor.getTweak("concept-name-field", (String)null)
+		});
+	}
+
+	protected List<String> getDefaultPropertyFields() {
+		return Arrays.asList(new String[] {
+				sourceDescriptor.getTweak("foreign-property-field", (String)null),
+				sourceDescriptor.getTweak("concept-property-field", (String)null),
+				sourceDescriptor.getTweak("concept-property-source-field", (String)null),
+				sourceDescriptor.getTweak("concept-property-freq-field", (String)null),
+				sourceDescriptor.getTweak("association-weight-field", (String)null),
+				sourceDescriptor.getTweak("association-value-field", (String)null),
+				sourceDescriptor.getTweak("association-annotation-field", (String)null),
+				sourceDescriptor.getTweak("optimization-field", (String)null)
+		});
 	}
 	
 	protected DataCursor<FeatureSet> openFeatureSetCursor() throws IOException, SQLException, PersistenceException {

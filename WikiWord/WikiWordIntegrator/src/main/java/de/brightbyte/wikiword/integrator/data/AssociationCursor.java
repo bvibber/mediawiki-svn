@@ -10,8 +10,8 @@ public class AssociationCursor implements DataCursor<Association> {
 
 	private DataCursor<FeatureSet> source;
 
-	protected Iterable<String> sourceFields;
-	protected Iterable<String> targetFields;
+	protected Iterable<String> foreignFields;
+	protected Iterable<String> conceptFields;
 	protected Iterable<String> propertyFields;
 	
 	public AssociationCursor(DataCursor<FeatureSet> source, String[] sourceFields, String[] targetFields, String[] propertyFields) {
@@ -21,8 +21,8 @@ public class AssociationCursor implements DataCursor<Association> {
 	public AssociationCursor(DataCursor<FeatureSet> source, Iterable<String> sourceFields, Iterable<String> targetFields, Iterable<String> propertyFields) {
 		if (source==null) throw new NullPointerException();
 		this.source = source;
-		this.sourceFields = sourceFields;
-		this.targetFields = targetFields;
+		this.foreignFields = sourceFields;
+		this.conceptFields = targetFields;
 		this.propertyFields = propertyFields;
 	}
 
@@ -34,8 +34,8 @@ public class AssociationCursor implements DataCursor<Association> {
 	}
 
 	public Association newAssociation(FeatureSet row) throws PersistenceException {
-		FeatureSet source = sourceFields==null ? row : newFeatureSet(row, sourceFields);
-		FeatureSet target = targetFields==null ? row : newFeatureSet(row, targetFields);
+		FeatureSet source = foreignFields==null ? row : newFeatureSet(row, foreignFields);
+		FeatureSet target = conceptFields==null ? row : newFeatureSet(row, conceptFields);
 		FeatureSet props = propertyFields==null ? row : newFeatureSet(row, propertyFields);
 		
 		return new Association(source, target, props);

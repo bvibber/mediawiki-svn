@@ -5,7 +5,6 @@ import java.util.Comparator;
 
 import de.brightbyte.abstraction.PropertyAccessor;
 import de.brightbyte.data.Functor;
-import de.brightbyte.data.NaturalComparator;
 import de.brightbyte.data.Optimum;
 import de.brightbyte.data.PropertyComparator;
 import de.brightbyte.util.PersistenceException;
@@ -17,8 +16,8 @@ public class OptimalMappingSelector extends ConceptMappingPassThrough {
 
 	protected Optimum<FeatureSet> optimum;
 	
-	public OptimalMappingSelector(AssociationFeatureStoreBuilder store, String property, Functor<Number, ? extends Collection<Number>> aggregator) {
-		this(store, (Comparator<FeatureSet>)(Object)PropertyComparator.newMultiMapEntryComparator(property, (Comparator<Number>)(Object)NaturalComparator.instance, aggregator, Number.class));
+	public <T>OptimalMappingSelector(AssociationFeatureStoreBuilder store, String property, Functor<T, ? extends Collection<T>> aggregator, Comparator<T> comp, Class<T> type) {
+		this(store, (Comparator<FeatureSet>)(Object)PropertyComparator.newMultiMapEntryComparator(property, comp, aggregator, type));
 	}
 	
 	public OptimalMappingSelector(AssociationFeatureStoreBuilder store, PropertyAccessor<FeatureSet, Number> accessor) {

@@ -70,8 +70,9 @@ public class DatabaseConceptMappingStoreBuilder extends DatabaseWikiWordStoreBui
 	
 	public void storeMapping(String authority, String extId, String extName, int conceptId, String conceptName, double weight, String annotation) throws PersistenceException {
 		try {
-			mappingInserter.updateString("external_authority", authority);
-			mappingInserter.updateString("external_id", extId);
+			mappingInserter.updateString("foreign_authority", authority);
+			mappingInserter.updateString("foreign_id", extId);
+			mappingInserter.updateString("foreign_name", extName);
 			mappingInserter.updateInt("concept", conceptId); 
 			mappingInserter.updateString("concept_name", conceptName);
 			mappingInserter.updateString("annotation", annotation);

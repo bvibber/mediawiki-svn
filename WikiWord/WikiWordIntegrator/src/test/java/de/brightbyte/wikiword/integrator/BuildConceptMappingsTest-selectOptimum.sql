@@ -1,0 +1,1 @@
+select * from "TEST_xx_assoc";
