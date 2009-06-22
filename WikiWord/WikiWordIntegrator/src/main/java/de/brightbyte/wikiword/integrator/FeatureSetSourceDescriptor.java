@@ -10,6 +10,7 @@ import java.util.Map;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.builder.InputFileHelper;
 
 public class FeatureSetSourceDescriptor extends TweakSet {
 	
@@ -102,6 +103,17 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 		return getTweak("skip-header", false);
 	}
 
+	public String getSourceFileFormat() {
+		String format = getTweak("file-format", null);
+		
+		if (format==null) {
+			String n = getSourceFileName();
+			if (n!=null) format = InputFileHelper.getFormat(n);
+		}
+		
+		return format;
+	}
+	
 	public Chunker getCsvLineChunker() {
 		Chunker chunker = getTweak("csv-chunker", null);
 		

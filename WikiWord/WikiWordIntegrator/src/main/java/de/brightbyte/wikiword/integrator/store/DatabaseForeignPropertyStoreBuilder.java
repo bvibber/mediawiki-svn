@@ -70,8 +70,8 @@ public class DatabaseForeignPropertyStoreBuilder extends DatabaseWikiWordStoreBu
 	
 	public void storeProperty(String authority, String extId, String property, String value, String qualifier) throws PersistenceException {
 		try {
-			propertyInserter.updateString("external_authority", authority);
-			propertyInserter.updateString("external_id", extId);
+			propertyInserter.updateString("foreign_authority", authority);
+			propertyInserter.updateString("foreign_id", extId);
 			propertyInserter.updateString("property", property);
 			propertyInserter.updateString("value", value);
 			propertyInserter.updateString("qualifier", qualifier);

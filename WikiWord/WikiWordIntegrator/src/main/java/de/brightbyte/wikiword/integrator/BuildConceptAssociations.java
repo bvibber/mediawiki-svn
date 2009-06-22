@@ -8,12 +8,9 @@ import de.brightbyte.wikiword.integrator.data.Association;
 import de.brightbyte.wikiword.integrator.data.FeatureMapping;
 import de.brightbyte.wikiword.integrator.processor.ConceptAssociationPassThrough;
 import de.brightbyte.wikiword.integrator.processor.ConceptAssociationProcessor;
-import de.brightbyte.wikiword.integrator.store.ConceptAssociationStoreBuilder;
 import de.brightbyte.wikiword.integrator.store.AssociationFeature2ConceptAssociationStoreBuilder;
 import de.brightbyte.wikiword.integrator.store.AssociationFeatureStoreBuilder;
 import de.brightbyte.wikiword.integrator.store.DatabaseConceptAssociationStoreBuilder;
-import de.brightbyte.wikiword.integrator.store.DatabaseConceptMappingStoreBuilder;
-import de.brightbyte.wikiword.integrator.store.DatabaseConceptMappingStoreBuilder.Factory;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
 /**
@@ -43,10 +40,12 @@ public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationF
 		cm.addMapping(AssociationFeature2ConceptAssociationStoreBuilder.CONCEPT_NAME, sourceDescriptor, "concept-name-field", null, String.class);
 
 		FeatureMapping am = new FeatureMapping();
+		am.addMapping(AssociationFeature2ConceptAssociationStoreBuilder.FOREIGN_PROPERTY, sourceDescriptor, "foreign-property-field", null, String.class);
 		am.addMapping(AssociationFeature2ConceptAssociationStoreBuilder.CONCEPT_PROPERTY, sourceDescriptor, "concept-property-field", null, String.class);
 		am.addMapping(AssociationFeature2ConceptAssociationStoreBuilder.CONCEPT_PROPERTY_SOURCE, sourceDescriptor, "concept-property-source-field", null, String.class);
 		am.addMapping(AssociationFeature2ConceptAssociationStoreBuilder.CONCEPT_PROPERTY_FREQ, sourceDescriptor, "concept-property-freq-field", null, Integer.class);
 		
+		am.addMapping(AssociationFeature2ConceptAssociationStoreBuilder.ASSOCIATION_VALUE, sourceDescriptor, "association-value-field", null, String.class);
 		am.addMapping(AssociationFeature2ConceptAssociationStoreBuilder.ASSOCIATION_WEIGHT, sourceDescriptor, "association-weight-field", null, Double.class);
 		
 		return new AssociationFeature2ConceptAssociationStoreBuilder.Factory<DatabaseConceptAssociationStoreBuilder>(

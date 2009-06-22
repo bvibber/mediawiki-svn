@@ -2,14 +2,66 @@ package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 
+import org.dbunit.DatabaseUnitException;
 import org.dbunit.operation.DatabaseOperation;
 
 import de.brightbyte.db.testing.DatabaseTestBase;
+import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
 public abstract class IntegratorAppTestBase<T extends AbstractIntegratorApp> extends DatabaseTestBase {
+	
+	protected class AppRunner {
+		protected String testName;
+		protected boolean completed = false;
+		
+		protected FeatureSetSourceDescriptor source;
+		protected T app;
+		
+		public AppRunner(String testName) throws IOException {
+			this.testName = testName;
+			this.source = loadSourceDescriptor(testName);
+		}
+		
+		public T prepare() throws IOException, PersistenceException, DatabaseUnitException, SQLException {
+			TweakSet tweaks = loadTweakSet();
+			app = createApp();
+			
+			app.setKeepAlive(true);
+			app.testInit(testDataSource, DatasetIdentifier.forName("TEST", "xx"), tweaks, source, testName);
+			
+			WikiWordStoreBuilder store = app.getStoreBuilder();
+			store.initialize(true, true);
+			
+			String[] sql = loadSqlScript(getBaseName()+"-"+testName+".create");
+			if (sql!=null && sql.length>0) runRawQueries(sql);
+
+			insertDataSetIfExists(getBaseName()+"-"+testName+".initial");
+			
+			return app;
+		}
+		
+		public void run() throws Exception {
+			if (completed) throw new IllegalStateException("app was already run");
+			if (app==null) prepare();
+			
+			//run application
+			app.testLaunch();
+			completed = true;
+		}
+
+		public void assertResult() throws Exception {
+			if (!completed) throw new IllegalStateException("call run() first");
+			
+			 //compare query result to expected data from XML file.
+			 assertTableData(getBaseName()+"-"+testName, app.getConfiguredDataset().getDbPrefix()+testName);
+		}
+		
+	}
 	
 	public IntegratorAppTestBase(String name) {
 		super(name);
@@ -36,25 +88,10 @@ public abstract class IntegratorAppTestBase<T extends AbstractIntegratorApp> ext
 
 	protected abstract T createApp();
 	
-	protected T prepareApp(FeatureSetSourceDescriptor sourceDescriptor, String targetTable) throws IOException {
-		TweakSet tweaks = loadTweakSet();
-		T app = createApp();
-		
-		app.setKeepAlive(true);
-		app.testInit(testDataSource, DatasetIdentifier.forName("TEST", "xx"), tweaks, sourceDescriptor, targetTable);
-		return app;
+	public void runApp(String testName) throws Exception {
+		AppRunner runner = new AppRunner(testName);
+		runner.run();
+		runner.assertResult();
 	}
-
-	protected void runApp(String testName) throws Exception {
-		//get source description
-		FeatureSetSourceDescriptor source = loadSourceDescriptor(testName);
 		
-		//run application
-		T app = prepareApp(source, testName);
-		app.testLaunch();
-
-		 //compare query result to expected data from XML file.
-		 assertTableData(getBaseName()+"-"+testName, app.getConfiguredDataset().getDbPrefix()+testName);
-	}
-	
 }

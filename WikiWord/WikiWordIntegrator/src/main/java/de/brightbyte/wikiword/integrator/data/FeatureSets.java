@@ -45,7 +45,7 @@ public class FeatureSets {
 			return c;
 		}
 		
-		public static final Abstractor<MultiMap<String, Object, List<Object>>> abstractor = new MultiMapAbstractor<Object, List<Object>>();
+		public static final Abstractor<? extends MultiMap<String, Object, List<Object>>> abstractor = new MultiMapAbstractor<Object, List<Object>>();
 		
 		public static class  FirstValue<V> implements Functor<V, List<Object>> {
 			public V apply(List<Object> obj) {
@@ -57,11 +57,11 @@ public class FeatureSets {
 		
 		public static <V>PropertyAccessor<FeatureSet, V>  fieldAccessor(String field, Class<V> type) {
 			if (field.startsWith("=")) { //HACK: force constant! //DOC
-				return (PropertyAccessor<FeatureSet, V>)(Object)new PropertyAccessor.Constant<String>(field.substring(1));
+				return (PropertyAccessor<FeatureSet, V>)(Object)new PropertyAccessor.Constant<String>(field.substring(1)); //X: if V is not String, this sucks!
 			}
 			
-			AbstractedAccessor<MultiMap<String, Object, List<Object>>, List<Object>> accessor = 
-				new AbstractedAccessor<MultiMap<String, Object, List<Object>>, List<Object>>(field, abstractor);
+			AbstractedAccessor<FeatureSet, List<Object>> accessor = 
+				new AbstractedAccessor<FeatureSet, List<Object>>(field, (Abstractor<FeatureSet>)abstractor);
 
 			return new ConvertingAccessor<FeatureSet, List<Object>, V>(accessor, new FirstValue<V>(), type);
 		}

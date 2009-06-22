@@ -9,5 +9,5 @@ public interface ConceptAssociationStoreBuilder extends WikiWordStoreBuilder, Wi
 																int concept, String name,
 																String foreignProperty,
 																String conceptProperty, String conceptPropertySource, int conceptPropertyFreq,
-																double weight) throws PersistenceException;
+																String value, double weight) throws PersistenceException;
 }

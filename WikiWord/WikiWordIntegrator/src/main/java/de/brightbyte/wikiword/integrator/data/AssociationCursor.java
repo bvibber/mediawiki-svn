@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.integrator.data;
 
 import java.util.Arrays;
+import java.util.List;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
@@ -18,6 +19,8 @@ public class AssociationCursor implements DataCursor<Association> {
 	}
 	
 	public AssociationCursor(DataCursor<FeatureSet> source, Iterable<String> sourceFields, Iterable<String> targetFields, Iterable<String> propertyFields) {
+		if (source==null) throw new NullPointerException();
+		this.source = source;
 		this.sourceFields = sourceFields;
 		this.targetFields = targetFields;
 		this.propertyFields = propertyFields;
@@ -31,9 +34,9 @@ public class AssociationCursor implements DataCursor<Association> {
 	}
 
 	public Association newAssociation(FeatureSet row) throws PersistenceException {
-		FeatureSet source = newFeatureSet(row, sourceFields);
-		FeatureSet target = newFeatureSet(row, targetFields);
-		FeatureSet props = newFeatureSet(row, propertyFields);
+		FeatureSet source = sourceFields==null ? row : newFeatureSet(row, sourceFields);
+		FeatureSet target = targetFields==null ? row : newFeatureSet(row, targetFields);
+		FeatureSet props = propertyFields==null ? row : newFeatureSet(row, propertyFields);
 		
 		return new Association(source, target, props);
 	}
@@ -41,9 +44,10 @@ public class AssociationCursor implements DataCursor<Association> {
 	protected FeatureSet newFeatureSet(FeatureSet row, Iterable<String> fields) {
 		FeatureSet m = new DefaultFeatureSet();
 		
-		int i = 0;
 		for (String f: fields) {
-			m.putAll(f, row.get(i++)); 
+			if (f==null) continue;
+			List<Object> values = row.get(f);
+			m.putAll(f, values); 
 		}
 		
 		return m;

@@ -72,16 +72,18 @@ public class DatabaseConceptAssociationStoreBuilder extends DatabaseWikiWordStor
 			int conceptId, String conceptName,
 			String foreignProperty,
 			String conceptProperty, String conceptPropertySource, int conceptPropertyFreq,
-			double weight) throws PersistenceException {
+			String value, double weight) throws PersistenceException {
 		try {
-			mappingInserter.updateString("external_authority", authority);
-			mappingInserter.updateString("external_id", extId);
+			mappingInserter.updateString("foreign_authority", authority);
+			mappingInserter.updateString("foreign_id", extId);
+			mappingInserter.updateString("foreign_name", extName);
 			mappingInserter.updateInt("concept", conceptId); 
 			mappingInserter.updateString("concept_name", conceptName);
 			mappingInserter.updateString("foreign_property", foreignProperty);
 			mappingInserter.updateString("concept_property", conceptProperty);
 			mappingInserter.updateString("concept_property_source", conceptPropertySource);
-			mappingInserter.updateInt("concept_property_weight", conceptPropertyFreq);
+			mappingInserter.updateInt("concept_property_freq", conceptPropertyFreq);
+			mappingInserter.updateString("value", value);
 			mappingInserter.updateDouble("weight", weight);
 			mappingInserter.updateRow();
 		} catch (SQLException e) {

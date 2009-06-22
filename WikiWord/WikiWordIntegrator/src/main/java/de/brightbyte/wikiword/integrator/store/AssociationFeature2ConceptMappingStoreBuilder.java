@@ -54,13 +54,13 @@ public class AssociationFeature2ConceptMappingStoreBuilder extends AbstractMappi
 	}
 	
 	public void storeAssociationFeatures(FeatureSet foreign, FeatureSet concept, FeatureSet props) throws PersistenceException {
-		String authority = foreignMapping.getValue(foreign, FOREIGN_AUTHORITY, String.class);
-		String extId = foreignMapping.getValue(foreign, FOREIGN_ID, String.class);
+		String authority = foreignMapping.requireValue(foreign, FOREIGN_AUTHORITY, String.class);
+		String extId = foreignMapping.requireValue(foreign, FOREIGN_ID, String.class);
 		String extName = foreignMapping.getValue(foreign, FOREIGN_NAME, String.class);
-		int conceptId = conceptMapping.getValue(concept, CONCEPT_ID, Integer.class);
+		int conceptId = conceptMapping.requireValue(concept, CONCEPT_ID, Integer.class);
 		String name = conceptMapping.getValue(concept, CONCEPT_NAME, String.class);
 		String annotation = assocMapping.getValue(props, ASSOCIATION_ANNOTATION, String.class);
-		double weight = assocMapping.getValue(props, ASSOCIATION_WEIGHT, Double.class);
+		double weight = assocMapping.getValue(props, ASSOCIATION_WEIGHT, Double.class, 1.0);
 		
 		store.storeMapping(authority, extId, extName, conceptId, name, weight, annotation);
 	}

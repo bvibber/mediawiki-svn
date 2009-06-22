@@ -59,7 +59,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 	
 	public S getStoreBuilder() throws IOException, PersistenceException {
 		if (conceptStoreFactory==null) conceptStoreFactory= createConceptStoreFactory();
-		if (conceptStore==null) createStore(conceptStoreFactory);
+		if (conceptStore==null) createStores(conceptStoreFactory);
 
 		return (S)conceptStore; //XXX: nasty cast!
 	}
@@ -76,6 +76,11 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		if (configuredDataset!=null) return configuredDataset; 
 		configuredDataset = super.getConfiguredDataset();
 		return configuredDataset;
+	}
+	
+	public String getConfiguredDatasetName() {
+		if (configuredDataset!=null) return configuredDataset.getName();
+		else return super.getConfiguredDatasetName();
 	}
 	
 	public void testInit(DataSource dataSource, DatasetIdentifier dataset, TweakSet tweaks, FeatureSetSourceDescriptor sourceDescriptor, String targetTableName) {
@@ -148,8 +153,13 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		
 		if (propertyFields==null) {
 			propertyFields = Arrays.asList(new String[] {
-					sourceDescriptor.getTweak("association-via-field", (String)null),
-					sourceDescriptor.getTweak("association-weight-field", (String)null)
+					sourceDescriptor.getTweak("foreign-property-field", (String)null),
+					sourceDescriptor.getTweak("concept-property-field", (String)null),
+					sourceDescriptor.getTweak("concept-property-source-field", (String)null),
+					sourceDescriptor.getTweak("concept-property-freq-field", (String)null),
+					sourceDescriptor.getTweak("association-annotation-field", (String)null),
+					sourceDescriptor.getTweak("association-weight-field", (String)null),
+					sourceDescriptor.getTweak("association-value-field", (String)null)
 			});
 		}
 		
@@ -173,7 +183,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		
 		if (sql==null) {
 				String n = sourceDescriptor.getSourceFileName();
-				String format = getInputHelper().getFormat(n); //FIXME: explicit format!
+				String format = sourceDescriptor.getSourceFileFormat() ;
 				in =  getInputHelper().open(sourceDescriptor.getBaseURL(), n);
 				
 				if (format!=null && format.equals("sql")) {

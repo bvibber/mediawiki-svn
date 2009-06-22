@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.brightbyte.abstraction.PropertyAccessor;
+import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.wikiword.integrator.FeatureSetSourceDescriptor;
 
 public class FeatureMapping {
@@ -51,12 +52,23 @@ public class FeatureMapping {
 	}
 	
 	public <T> T getValue(FeatureSet features, String field, Class<T> type) {
+		return getValue(features, field, type, null);
+	}
+	
+	public <T> T getValue(FeatureSet features, String field, Class<T> type, T def) {
 		PropertyAccessor<FeatureSet, ?> accessor = getAccessor(field);
+		if (accessor==null) return def; 
+		
 		if (!type.isAssignableFrom(accessor.getType())) throw new IllegalArgumentException("incompatible value type: accessor provides "+accessor.getType()+", caller requested "+type);
 		
-		if (accessor==null) return null; 
-		
 		T v = (T)accessor.getValue(features); //NOTE: this is actually safe, provided accessor.getType() isn't lying
+		if (v==null) return def;
+		
+		//XXX: type conversion hack
+		if (type==String.class && v.getClass()!=String.class) v= (T)(Object)DatabaseUtil.asString(v);
+		if (type==Integer.class && v.getClass()!=Integer.class) v= (T)(Object)DatabaseUtil.asInt(v);
+		if (type==Double.class && v.getClass()!=Double.class) v= (T)(Object)DatabaseUtil.asDouble(v);
+		
 		return v; 
 	}
 }

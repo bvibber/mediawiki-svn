@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="FooBar" property="concept_name" value="FooBar" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="FooBar" property="firstName" value="Bar" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="FooBar" property="name" value="Foo" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="FooBar" property="fullName" value="Bar Foo" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="FooBar" property="alias" value="foo" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="FooBar" property="alias" value="B. Foo" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="FooBar" property="alias" value="B.F." qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="FooBar" property="sortName" value="Foo, Bar" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="FooBar" property="phone" value="12345" qualifier="dummy"/>
+  
+  <TEST_xx_meaning concept="10" concept_name="Bar Foo" term_text="Bar Foo" freq="6" rule="60"/>
+  <TEST_xx_meaning concept="10" concept_name="Bar Foo" term_text="Foo, Bar" freq="1" rule="50"/>
+  <TEST_xx_meaning concept="10" concept_name="Bar Foo" term_text="B. Foo" freq="20" rule="10"/>
+  <TEST_xx_meaning concept="10" concept_name="Bar Foo" term_text="BF" freq="2" rule="40"/>
+  <TEST_xx_meaning concept="10" concept_name="Bar Foo" term_text="B.F." freq="1" rule="10"/>
+  <TEST_xx_meaning concept="11" concept_name="Bad Form" term_text="Bad Form" freq="10" rule="60"/>
+  <TEST_xx_meaning concept="11" concept_name="Bad Form" term_text="BF" freq="1" rule="10"/>
+  <TEST_xx_meaning concept="12" concept_name="Bar Foo (soap)" term_text="Bar Foo" freq="1" rule="60"/>
+  <TEST_xx_meaning concept="12" concept_name="Bar Foo (soap)" term_text="Foo Bar" freq="2" rule="10"/>
+  
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="XyzzyQuux" property="concept_name" value="XyzzyQuux" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="XyzzyQuux" property="firstName" value="Quux" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="XyzzyQuux" property="name" value="Xyzzy" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="XyzzyQuux" property="fullName" value="Quux Xyzzy" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="XyzzyQuux" property="alias" value="QX" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="XyzzyQuux" property="alias" value="Q. Xyzzy" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="XyzzyQuux" property="sortName" value="Xyzzy, Quux" qualifier="dummy"/>
+  <TEST_xx_foreign foreign_authority="acme" foreign_id="XyzzyQuux" property="phone" value="67890" qualifier="dummy"/>
+  
+  <TEST_xx_meaning concept="20" concept_name="Quux Xyzzy" term_text="Quux Xyzzy" freq="6" rule="60"/>
+  <TEST_xx_meaning concept="20" concept_name="Quux Xyzzy" term_text="QX" freq="2" rule="40"/>
+  <TEST_xx_meaning concept="20" concept_name="Quux Xyzzy" term_text="Q.X." freq="1" rule="10"/>
+  <TEST_xx_meaning concept="21" concept_name="Quality Xchange" term_text="Quality Xchange" freq="10" rule="60"/>
+  <TEST_xx_meaning concept="21" concept_name="Quality Xchange" term_text="QX" freq="1" rule="10"/>
+</dataset>
+

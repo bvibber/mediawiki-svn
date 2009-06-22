@@ -32,9 +32,9 @@ public class InputFileHelper {
 		externalBunzip = bz2;
 	}
 	
-	protected static final Pattern extensionPattern = Pattern.compile("\\.([^./\\\\]+)(\\.gz|\\.bz2)$", Pattern.CASE_INSENSITIVE);
+	protected static final Pattern extensionPattern = Pattern.compile("\\.([^./\\\\]+)(\\.gz|\\.bz2)?$", Pattern.CASE_INSENSITIVE);
 	
-	public String getFormat(String n) {
+	public static String getFormat(String n) {
 		Matcher m = extensionPattern.matcher(n);
 		
 		if (!m.find()) return null;

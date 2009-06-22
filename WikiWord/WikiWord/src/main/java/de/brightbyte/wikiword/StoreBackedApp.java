@@ -119,14 +119,14 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 		}
 	}
 	
-	protected void createStore(WikiWordStoreFactory<? extends S> factory) throws IOException, PersistenceException {
+	protected void createStores(WikiWordStoreFactory<? extends S> factory) throws IOException, PersistenceException {
 		conceptStore = factory.newStore();
 		registerStore(conceptStore);
 	}
 
 	protected void launchExecute() throws Exception {
 		if (conceptStoreFactory==null) conceptStoreFactory= createConceptStoreFactory();
-		if (conceptStore==null) createStore(conceptStoreFactory);
+		if (conceptStore==null) createStores(conceptStoreFactory);
 		
 		if (conceptStore==null) throw new RuntimeException("createStores() failed to initialize conceptStore");
 

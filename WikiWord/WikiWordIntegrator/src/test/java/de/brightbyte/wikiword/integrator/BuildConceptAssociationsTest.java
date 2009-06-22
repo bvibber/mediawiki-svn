@@ -1,15 +1,17 @@
 package de.brightbyte.wikiword.integrator;
 
-
 public class BuildConceptAssociationsTest extends IntegratorAppTestBase<BuildConceptAssociations> {
 	
 	public BuildConceptAssociationsTest() {
-		super("BildConceptAssociations");
+		super("BuildConceptAssociationsTest");
+		
+		dumpActual = true;
+		dumpExpected = true;
 	}
 
 	//-----------------------------------------------------------------------------------------------------
-	public void testTableImport() throws Exception {
-		runApp("tableImport");
+	public void testMatchTerms() throws Exception {
+		runApp("matchTerms");
 	}
 
 	@Override

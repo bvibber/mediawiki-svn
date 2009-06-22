@@ -16,6 +16,7 @@ public class AssociationFeature2ConceptAssociationStoreBuilder extends AbstractM
 	public static final String CONCEPT_PROPERTY = "CONCEPT_PROPERTY";
 	public static final String CONCEPT_PROPERTY_SOURCE = "CONCEPT_PROPERTY_SOURCE";
 	public static final String CONCEPT_PROPERTY_FREQ = "CONCEPT_PROPERTY_FREQ";
+	public static final String ASSOCIATION_VALUE = "ASSOCIATION_VALUE";
 	public static final String ASSOCIATION_WEIGHT = "ASSOCIATION_WEIGHT";
 	
 	public static class Factory<D extends ConceptAssociationStoreBuilder> extends AbstractMappingAssociationFeatureStoreBuilder.Factory<AssociationFeature2ConceptAssociationStoreBuilder, D> {
@@ -57,18 +58,19 @@ public class AssociationFeature2ConceptAssociationStoreBuilder extends AbstractM
 	}
 	
 	public void storeAssociationFeatures(FeatureSet foreign, FeatureSet concept, FeatureSet props) throws PersistenceException {
-		String authority = foreignMapping.getValue(foreign, FOREIGN_AUTHORITY, String.class);
-		String extId = foreignMapping.getValue(foreign, FOREIGN_ID, String.class);
+		String authority = foreignMapping.requireValue(foreign, FOREIGN_AUTHORITY, String.class);
+		String extId = foreignMapping.requireValue(foreign, FOREIGN_ID, String.class);
 		String extName = foreignMapping.getValue(foreign, FOREIGN_NAME, String.class);
-		int conceptId = conceptMapping.getValue(concept, CONCEPT_ID, Integer.class);
+		int conceptId = conceptMapping.requireValue(concept, CONCEPT_ID, Integer.class);
 		String name = conceptMapping.getValue(concept, CONCEPT_NAME, String.class);
 		String foreignProperty = assocMapping.getValue(props, FOREIGN_PROPERTY, String.class);
 		String conceptProperty = assocMapping.getValue(props, CONCEPT_PROPERTY, String.class);
 		String conceptPropertySource = assocMapping.getValue(props, CONCEPT_PROPERTY_SOURCE, String.class);
-		int conceptPropertyFreq = assocMapping.getValue(props, CONCEPT_PROPERTY_FREQ, Integer.class);
-		double weight = assocMapping.getValue(props, ASSOCIATION_WEIGHT, Double.class);
+		int conceptPropertyFreq = assocMapping.getValue(props, CONCEPT_PROPERTY_FREQ, Integer.class, 1);
+		String value = assocMapping.getValue(props, ASSOCIATION_VALUE, String.class);
+		double weight = assocMapping.getValue(props, ASSOCIATION_WEIGHT, Double.class, 1.0);
 		
-		store.storeAssociation(authority, extId, extName, conceptId, name, foreignProperty, conceptProperty, conceptPropertySource, conceptPropertyFreq, weight);
+		store.storeAssociation(authority, extId, extName, conceptId, name, foreignProperty, conceptProperty, conceptPropertySource, conceptPropertyFreq, value, weight);
 	}
 }
 
