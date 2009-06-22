@@ -42,7 +42,7 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 		return table;
 	}
 
-	public RelationTable newConceptAssociationTable(String name, boolean unique) {
+	public RelationTable newConceptAssociationTable(String name) {
 		RelationTable table = new RelationTable(this, name, getDefaultTableAttributes());
 		
 		table.addField( new DatabaseField(this, "external_authority", getTextType(64), null, true, null) );
@@ -52,13 +52,40 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 		table.addField( new ReferenceField(this, "concept", "INT", null, false, KeyType.INDEX, "concept", "id", null ) );
 		table.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
 
-		table.addField( new DatabaseField(this, "via", getTextType(32), null, false, KeyType.INDEX ) );
-		table.addField( new DatabaseField(this, "weight", "FLOAT", null, false, KeyType.INDEX ) );
+		table.addField( new DatabaseField(this, "foreign_property", getTextType(64), null, false, null ) );
+		
+		table.addField( new DatabaseField(this, "concept_property", getTextType(64), null, false, null ) );
+		table.addField( new DatabaseField(this, "concept_property_source", getTextType(64), null, false, null ) );
+		table.addField( new DatabaseField(this, "concept_property_freq", "INT", null, false, null ) );
+		
+		table.addField( new DatabaseField(this, "weight", "FLOAT", null, false, null ) );
+
+		table.addKey( new DatabaseKey(this, KeyType.INDEX, "external_id", new String[] {"external_authority", "external_id"}) );
+		table.addKey( new DatabaseKey(this, KeyType.INDEX, "external_name", new String[] {"external_authority", "external_name"}) );
+		table.addKey( new DatabaseKey(this, KeyType.INDEX, "foreign_property", new String[] {"foreign_property", "concept_property"}) );
+		table.addKey( new DatabaseKey(this, KeyType.INDEX, "concept_property", new String[] {"concept_property", "concept_property_source"}) );
+
+		addTable(table);
+		return table;
+	}
+
+	public RelationTable newConceptMappingTable(String name) {
+		RelationTable table = new RelationTable(this, name, getDefaultTableAttributes());
+		
+		table.addField( new DatabaseField(this, "external_authority", getTextType(64), null, true, null) );
+		table.addField( new DatabaseField(this, "external_id", getTextType(255), null, true, null) );
+		table.addField( new DatabaseField(this, "external_name", getTextType(255), null, false, null) );
+		
+		table.addField( new ReferenceField(this, "concept", "INT", null, false, KeyType.INDEX, "concept", "id", null ) );
+		table.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
+
+		table.addField( new DatabaseField(this, "annotation", getTextType(255), null, false, null ) );
+		table.addField( new DatabaseField(this, "weight", "FLOAT", null, false, null ) );
 
 		table.addKey( new DatabaseKey(this, KeyType.INDEX, "external_id", new String[] {"external_authority", "external_id"}) );
 		table.addKey( new DatabaseKey(this, KeyType.INDEX, "external_name", new String[] {"external_authority", "external_name"}) );
 		
-		if (unique) table.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concept_mapping", new String[] {"concept", "external_authority", "external_id"}) );
+		table.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concept_mapping", new String[] {"concept", "external_authority", "external_id"}) );
 		
 		addTable(table);
 		return table;

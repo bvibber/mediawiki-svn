@@ -15,9 +15,9 @@ import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.DatabaseWikiWordStoreBuilder;
 
-public class DatabaseConceptMappingStoreBuilder extends DatabaseWikiWordStoreBuilder implements ConceptMappingStoreBuilder {
+public class DatabaseConceptAssociationStoreBuilder extends DatabaseWikiWordStoreBuilder implements ConceptAssociationStoreBuilder {
 
-	public static class Factory implements WikiWordStoreFactory<DatabaseConceptMappingStoreBuilder> {
+	public static class Factory implements WikiWordStoreFactory<DatabaseConceptAssociationStoreBuilder> {
 		private String table;
 		private DataSource db;
 		private DatasetIdentifier dataset;
@@ -32,9 +32,9 @@ public class DatabaseConceptMappingStoreBuilder extends DatabaseWikiWordStoreBui
 		}
 
 		@SuppressWarnings("unchecked")
-		public DatabaseConceptMappingStoreBuilder newStore() throws PersistenceException {
+		public DatabaseConceptAssociationStoreBuilder newStore() throws PersistenceException {
 			try {
-				return new DatabaseConceptMappingStoreBuilder(table, dataset, db.getConnection(), tweaks);
+				return new DatabaseConceptAssociationStoreBuilder(table, dataset, db.getConnection(), tweaks);
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
@@ -45,14 +45,14 @@ public class DatabaseConceptMappingStoreBuilder extends DatabaseWikiWordStoreBui
 	protected Inserter mappingInserter;
 	protected IntegratorSchema integratorSchema;
 
-	public DatabaseConceptMappingStoreBuilder(String table, DatasetIdentifier corpus, Connection connection, TweakSet tweaks) throws SQLException, PersistenceException {
+	public DatabaseConceptAssociationStoreBuilder(String table, DatasetIdentifier corpus, Connection connection, TweakSet tweaks) throws SQLException, PersistenceException {
 		this(table, new IntegratorSchema(corpus, connection, tweaks, true), tweaks, null);
 	}
 	
-	protected DatabaseConceptMappingStoreBuilder(String table, IntegratorSchema integratorSchema, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
+	protected DatabaseConceptAssociationStoreBuilder(String table, IntegratorSchema integratorSchema, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
 		super(integratorSchema, tweaks, agenda);
 
-		integratorSchema.newConceptMappingTable(table); 
+		integratorSchema.newConceptAssociationTable(table); 
 		
 		this.mappingInserter = configureTable(table, 128, 5*32);
 		this.mappingTable =  (RelationTable)mappingInserter.getTable();
@@ -68,13 +68,20 @@ public class DatabaseConceptMappingStoreBuilder extends DatabaseWikiWordStoreBui
 		super.flush();
 	}
 	
-	public void storeMapping(String authority, String extId, String extName, int conceptId, String conceptName, double weight, String annotation) throws PersistenceException {
+	public void storeAssociation(String authority, String extId, String extName, 
+			int conceptId, String conceptName,
+			String foreignProperty,
+			String conceptProperty, String conceptPropertySource, int conceptPropertyFreq,
+			double weight) throws PersistenceException {
 		try {
 			mappingInserter.updateString("external_authority", authority);
 			mappingInserter.updateString("external_id", extId);
 			mappingInserter.updateInt("concept", conceptId); 
 			mappingInserter.updateString("concept_name", conceptName);
-			mappingInserter.updateString("annotation", annotation);
+			mappingInserter.updateString("foreign_property", foreignProperty);
+			mappingInserter.updateString("concept_property", conceptProperty);
+			mappingInserter.updateString("concept_property_source", conceptPropertySource);
+			mappingInserter.updateInt("concept_property_weight", conceptPropertyFreq);
 			mappingInserter.updateDouble("weight", weight);
 			mappingInserter.updateRow();
 		} catch (SQLException e) {

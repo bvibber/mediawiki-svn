@@ -13,7 +13,7 @@ public class ConceptAssociationPassThrough extends AbstractConceptAssociationPro
 	}
 	
 	protected  void processAssociation(Association m) throws PersistenceException {
-			store.storeMapping(m.getSourceItem(), m.getTargetItem(), m.getProperties());
+			store.storeAssociationFeatures(m.getSourceItem(), m.getTargetItem(), m.getProperties());
 	}
 
 }

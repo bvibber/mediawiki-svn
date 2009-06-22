@@ -38,7 +38,7 @@ public class OptimalMappingSelector extends ConceptMappingPassThrough {
 
 	protected  void processMappingCandidates(MappingCandidates m) throws PersistenceException {
 			FeatureSet f = optimum.apply(m.getCandidates());
-			if (f!=null) store.storeMapping(m.getSubject(), f, f);
+			if (f!=null) store.storeAssociationFeatures(m.getSubject(), f, f);
 	}
 
 }

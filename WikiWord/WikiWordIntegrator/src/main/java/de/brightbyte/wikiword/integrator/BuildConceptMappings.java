@@ -9,27 +9,48 @@ import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.Association;
 import de.brightbyte.wikiword.integrator.data.CollapsingMatchesCursor;
+import de.brightbyte.wikiword.integrator.data.FeatureMapping;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 import de.brightbyte.wikiword.integrator.processor.ConceptMappingProcessor;
 import de.brightbyte.wikiword.integrator.processor.OptimalMappingSelector;
-import de.brightbyte.wikiword.integrator.store.ConceptMappingStoreBuilder;
+import de.brightbyte.wikiword.integrator.store.AssociationFeature2ConceptMappingStoreBuilder;
+import de.brightbyte.wikiword.integrator.store.AssociationFeatureStoreBuilder;
 import de.brightbyte.wikiword.integrator.store.DatabaseConceptMappingStoreBuilder;
-import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
 /**
  * This is the primary entry point to the first phase of a WikiWord analysis.
  * ImportDump can be invoked as a standalone program, use --help as a
  * command line parameter for usage information.
  */
-public class BuildConceptMappings extends AbstractIntegratorApp<ConceptMappingStoreBuilder, ConceptMappingProcessor, MappingCandidates> {
+public class BuildConceptMappings extends AbstractIntegratorApp<AssociationFeatureStoreBuilder, ConceptMappingProcessor, MappingCandidates> {
 	
 	@Override
-	protected WikiWordStoreFactory<? extends ConceptMappingStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
-		return new DatabaseConceptMappingStoreBuilder.Factory(
+	protected  AssociationFeature2ConceptMappingStoreBuilder.Factory<DatabaseConceptMappingStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
+		DatabaseConceptMappingStoreBuilder.Factory mappingStoreFactory= new DatabaseConceptMappingStoreBuilder.Factory(
 				getTargetTableName(), 
 				getConfiguredDataset(), 
 				getConfiguredDataSource(), 
 				tweaks);
+		
+		FeatureSetSourceDescriptor sourceDescriptor = getSourceDescriptor();
+		
+		FeatureMapping fm = new FeatureMapping();
+		fm.addMapping(AssociationFeature2ConceptMappingStoreBuilder.FOREIGN_AUTHORITY, sourceDescriptor, "authority-name-field", "=" + sourceDescriptor.getAuthorityName(), String.class);
+		fm.addMapping(AssociationFeature2ConceptMappingStoreBuilder.FOREIGN_ID, sourceDescriptor, "foreign-id-field", null, String.class);
+		fm.addMapping(AssociationFeature2ConceptMappingStoreBuilder.FOREIGN_NAME, sourceDescriptor, "foreign-name-field", null, String.class);
+
+		FeatureMapping  cm = new FeatureMapping();
+		cm.addMapping(AssociationFeature2ConceptMappingStoreBuilder.CONCEPT_ID, sourceDescriptor, "concept-id-field", null, Integer.class);
+		cm.addMapping(AssociationFeature2ConceptMappingStoreBuilder.CONCEPT_NAME, sourceDescriptor, "concept-name-field", null, String.class);
+
+		FeatureMapping am = new FeatureMapping();
+		am.addMapping(AssociationFeature2ConceptMappingStoreBuilder.ASSOCIATION_ANNOTATION, sourceDescriptor, "association-annotation-field", null, String.class);
+		am.addMapping(AssociationFeature2ConceptMappingStoreBuilder.ASSOCIATION_WEIGHT, sourceDescriptor, "association-weight-field", null, Double.class);
+		
+		return new AssociationFeature2ConceptMappingStoreBuilder.Factory<DatabaseConceptMappingStoreBuilder>(
+				mappingStoreFactory,
+				fm, cm, am
+				);
 	}
 
 	@Override
@@ -43,7 +64,8 @@ public class BuildConceptMappings extends AbstractIntegratorApp<ConceptMappingSt
 			else throw new IllegalArgumentException("unknwon aggregator function: "+f);
 		}
 		
-		this.propertyProcessor = createProcessor(conceptStore, sourceDescriptor.getTweak("optiomization-field", "freq"), aggregator); 
+		AssociationFeatureStoreBuilder store = getStoreBuilder();
+		this.propertyProcessor = createProcessor(store, sourceDescriptor.getTweak("optiomization-field", "freq"), aggregator); 
 
 		section("-- fetching properties --------------------------------------------------");
 		DataCursor<Association> asc = openAssociationCursor(); 
@@ -54,21 +76,21 @@ public class BuildConceptMappings extends AbstractIntegratorApp<ConceptMappingSt
 					sourceDescriptor.getTweak("concept-id-field", (String)null) );
 		
 		section("-- process properties --------------------------------------------------");
-		this.conceptStore.prepareImport();
+		store.prepareImport();
 		
 		this.propertyProcessor.processMappings(cursor);
 		cursor.close();
 
-		this.conceptStore.finalizeImport();
+		store.finalizeImport();
 	}	
 
 	@Override
-	protected ConceptMappingProcessor createProcessor(ConceptMappingStoreBuilder conceptStore) throws InstantiationException {
+	protected ConceptMappingProcessor createProcessor(AssociationFeatureStoreBuilder conceptStore) throws InstantiationException {
 		//FIXME: parameter list is specific to  OptimalMappingSelector
 		throw new UnsupportedOperationException("not supported");
 	}
 	
-	protected ConceptMappingProcessor createProcessor(ConceptMappingStoreBuilder conceptStore, String property, Functor<Number, ? extends Collection<? extends Number>> aggregator) throws InstantiationException {
+	protected ConceptMappingProcessor createProcessor(AssociationFeatureStoreBuilder conceptStore, String property, Functor<Number, ? extends Collection<? extends Number>> aggregator) throws InstantiationException {
 		//FIXME: parameter list is specific to  OptimalMappingSelector
 		return instantiate(sourceDescriptor, "conceptMappingProcessorClass", OptimalMappingSelector.class, conceptStore, property, aggregator);
 	}

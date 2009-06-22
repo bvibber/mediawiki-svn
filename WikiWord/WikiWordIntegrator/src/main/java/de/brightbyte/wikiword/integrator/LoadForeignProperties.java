@@ -27,19 +27,20 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 
 	@Override
 	protected void run() throws Exception {
-		this.propertyProcessor = createProcessor(conceptStore); //FIXME
+		ForeignPropertyStoreBuilder store = getStoreBuilder();
+		this.propertyProcessor = createProcessor(store); //FIXME
 		
 		section("-- fetching properties --------------------------------------------------");
 		DataCursor<FeatureSet> fsc = openFeatureSetCursor();
 		DataCursor<ForeignEntity> cursor = new ForeignEntityCursor(fsc, sourceDescriptor.getAuthorityName(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField());
 		
 		section("-- process properties --------------------------------------------------");
-		this.conceptStore.prepareImport();
+		store.prepareImport();
 		
 		this.propertyProcessor.processProperties(cursor);
 		cursor.close();
 
-		this.conceptStore.finalizeImport();
+		store.finalizeImport();
 	}	
 
 	@Override

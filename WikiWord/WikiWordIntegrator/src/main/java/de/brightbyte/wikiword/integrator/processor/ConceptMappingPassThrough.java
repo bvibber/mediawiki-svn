@@ -15,7 +15,7 @@ public class ConceptMappingPassThrough extends AbstractConceptMappingProcessor {
 	
 	protected  void processMappingCandidates(MappingCandidates m) throws PersistenceException {
 		for (FeatureSet f: m.getCandidates()) {
-			store.storeMapping(m.getSubject(), f, f);
+			store.storeAssociationFeatures(m.getSubject(), f, f);
 		}
 	}
 

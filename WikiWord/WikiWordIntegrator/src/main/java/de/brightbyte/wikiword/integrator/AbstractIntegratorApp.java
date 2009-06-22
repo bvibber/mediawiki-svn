@@ -36,13 +36,14 @@ import de.brightbyte.wikiword.integrator.data.ResultSetFeatureSetCursor;
 import de.brightbyte.wikiword.integrator.data.TsvFeatureSetCursor;
 import de.brightbyte.wikiword.integrator.processor.WikiWordProcessor;
 import de.brightbyte.wikiword.store.WikiWordConceptStoreBase;
+import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
 /**
  * This is the primary entry point to the first phase of a WikiWord analysis.
  * ImportDump can be invoked as a standalone program, use --help as a
  * command line parameter for usage information.
  */
-public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, P extends WikiWordProcessor, E> extends StoreBackedApp<S> {
+public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P extends WikiWordProcessor, E> extends StoreBackedApp<WikiWordConceptStoreBase> {
 
 	//protected ForeignPropertyStoreBuilder propertyStore;
 	protected InputFileHelper inputHelper;
@@ -54,6 +55,13 @@ public abstract class AbstractIntegratorApp<S extends WikiWordConceptStoreBase, 
 	
 	public AbstractIntegratorApp() {
 		super(true, true);
+	}
+	
+	public S getStoreBuilder() throws IOException, PersistenceException {
+		if (conceptStoreFactory==null) conceptStoreFactory= createConceptStoreFactory();
+		if (conceptStore==null) createStore(conceptStoreFactory);
+
+		return (S)conceptStore; //XXX: nasty cast!
 	}
 	
 	@Override
