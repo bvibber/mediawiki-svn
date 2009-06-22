@@ -140,8 +140,8 @@ $( document ).ready( function() {
 		});
 	}
 	$( '.toc:last * li a' ).click( function(e) {
-		if( typeof $(this).data( 'offset' ) != 'undefined' )
-			$( '#wpTextbox1' ).scrollToPosition( $(this).data( 'offset' ) );
+		if( typeof jQuery(this).data( 'offset' ) != 'undefined' )
+			jQuery( '#wpTextbox1' ).scrollToPosition( jQuery(this).data( 'offset' ) );
 			e.preventDefault();
 	});
 
