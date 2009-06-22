@@ -171,9 +171,8 @@ class SpecialOpenID extends SpecialPage {
 		if ( !is_null( $wgTrustRoot ) ) {
 			$trust_root = $wgTrustRoot;
 		} else {
-			global $wgArticlePath, $wgServer;
-			$root_article = str_replace( '$1', '', $wgArticlePath );
-			$trust_root = $wgServer . $root_article;
+			global $wgScriptPath, $wgServer;
+			$trust_root = $wgServer . $wgScriptPath;
 		}
 
 		wfSuppressWarnings();
