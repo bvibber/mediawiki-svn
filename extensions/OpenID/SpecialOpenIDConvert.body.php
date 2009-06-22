@@ -92,22 +92,69 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 	}
 
 	function form() {
-		global $wgOut, $wgUser, $wgOpenIDLoginLogoUrl;
+		global $wgOut, $wgUser, $wgScriptPath, $wgOpenIDShowProviderIcons;
 
-		$url = self::getUserUrl( $wgUser );
-		if ( count( $url ) ) {
-			$url = '';
+		$oidScriptPath = $wgScriptPath . '/extensions/OpenID';
+
+		$wgOut->addLink( array(
+			'rel' => 'stylesheet',
+			'type' => 'text/css',
+			'media' => 'screen, projection',
+			'href' => $oidScriptPath . ( $wgOpenIDShowProviderIcons ? '/skin/openid.css' : '/skin/openid-plain.css' )
+		) );
+
+		$wgOut->addScript( '<script type="text/javascript" src="' . $oidScriptPath . '/skin/jquery-1.3.2.min.js"></script>' . "\n" );
+		$wgOut->addScript( '<script type="text/javascript" src="' . $oidScriptPath . '/skin/openid.js"></script>' . "\n" );
+
+		$formsHTML = '';
+
+		$largeButtonsHTML = '<div id="openid_large_providers">';
+		foreach ( OpenIDProvider::getLargeProviders() as $provider ) {
+			$largeButtonsHTML .= $provider->getLargeButtonHTML();
+			$formsHTML .= $provider->getLoginFormHTML();
+		}
+		$largeButtonsHTML .= '</div>';
+
+		$smallButtonsHTML = '';
+		if ( $wgOpenIDShowProviderIcons ) {
+			$smallButtonsHTML .= '<div id="openid_small_providers_icons">';
+			foreach ( OpenIDProvider::getSmallProviders() as $provider ) {
+				$smallButtonsHTML .= $provider->getSmallButtonHTML();
+				$formsHTML .= $provider->getLoginFormHTML();
+			}
+			$smallButtonsHTML .= '</div>';
+		} else {
+			$smallButtonsHTML .= '<div id="openid_small_providers_links">';
+			$smallButtonsHTML .= '<ul class="openid_small_providers_block">';
+			$small = OpenIDProvider::getSmallProviders();
+
+			$i = 0;
+			$break = true;
+			foreach ( $small as $provider ) {
+				if ( $break && $i > count( $small ) / 2 ) {
+					$smallButtonsHTML .= '</ul><ul class="openid_small_providers_block">';
+					$break = false;
+				}
+
+				$smallButtonsHTML .= '<li>' . $provider->getSmallButtonHTML() . '</li>';
+
+				$formsHTML .= $provider->getLoginFormHTML();
+				$i++;
+			}
+			$smallButtonsHTML .= '</ul>';
+			$smallButtonsHTML .= '</div>';
 		}
 
-		$wgOut->addWikiMsg( 'openidconvertinstructions' );
 		$wgOut->addHTML(
-			Xml::openElement( 'form', array( 'action' => $this->getTitle()->getLocalUrl(), 'method' => 'post' ) ) .
-			'<input type="text" name="openid_url" size="30" ' .
-			' style="background: url(' . $wgOpenIDLoginLogoUrl . ') ' .
-			'        no-repeat; background-color: #fff; background-position: 0 50%; ' .
-			'        color: #000; padding-left: 18px;" value="" />' .
-			Xml::submitButton( wfMsg( 'ok' ) ) .
-			Xml::closeElement( 'form' )
+			Xml::openElement( 'form', array( 'id' => 'openid_form', 'action' => $this->getTitle()->getLocalUrl(), 'method' => 'post', 'onsubmit' => 'openid.update()' ) ) .
+			Xml::fieldset( wfMsg( 'openidconvertoraddmoreids' ) ) .
+			Xml::openElement('p') . wfMsg( 'openidconvertinstructions' ) . Xml::closeElement( 'p' ) .
+			$largeButtonsHTML .
+			'<div id="openid_input_area">' .
+			$formsHTML .
+			'</div>' .
+			$smallButtonsHTML .
+			Xml::closeElement( 'fieldset' ) . Xml::closeElement( 'form' )
 		);
 	}
 
