@@ -42,7 +42,7 @@ class OpenIDProvider {
 			'<div><label for="openid_url">' . $this->label . '</label></div>';
 
 		if ( $this->id == 'openid' ) {
-			$html .= '<input type="text" name="openid_url" id="openid_url" size="50" value="" />';
+			$html .= '<input type="text" name="openid_url" id="openid_url" size="45" value="" />';
 			$html .= '<input type="submit" value="' . wfMsg( 'login' ) . '"/>';
 		} else {
 			$html .= '<input type="hidden" id="openid_provider_url_' . $this->id . '" value="' . $this->url . '" />';

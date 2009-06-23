@@ -21,7 +21,7 @@
 .openid_large_btn {
 	width: 100px;
 	height: 60px;
-	border: 1px solid #DDD;
+	border: 2px solid #DDD;
 	margin: 3px;
 	float: left;
 	background: #fff url(openid_sprite.png) no-repeat top left;
