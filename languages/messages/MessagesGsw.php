@@ -261,7 +261,28 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
-'vector-view-view' => 'Läse',
+'vector-action-addsection'   => 'Abschnitt zuefiege',
+'vector-action-delete'       => 'Lesche',
+'vector-action-move'         => 'Verschiebe',
+'vector-action-protect'      => 'Schitze',
+'vector-action-undelete'     => 'Widerhärstelle',
+'vector-action-unprotect'    => 'Frej gee',
+'vector-namespace-category'  => 'Kategorii',
+'vector-namespace-help'      => 'Hilfssyte',
+'vector-namespace-image'     => 'Datei',
+'vector-namespace-main'      => 'Syte',
+'vector-namespace-media'     => 'Mediesyte',
+'vector-namespace-mediawiki' => 'Syschtemnochricht',
+'vector-namespace-project'   => 'Projäktsyte',
+'vector-namespace-special'   => 'Spezialsyte',
+'vector-namespace-talk'      => 'Diskussion',
+'vector-namespace-template'  => 'Vorlag',
+'vector-namespace-user'      => 'Benutzersyte',
+'vector-view-create'         => 'Aalege',
+'vector-view-edit'           => 'Bearbeite',
+'vector-view-history'        => 'Versionsgschicht',
+'vector-view-view'           => 'Läse',
+'vector-view-viewsource'     => 'Quälltext aaluege',
 
 # Metadata in edit box
 'metadata_help' => 'Metadate:',
@@ -805,16 +826,16 @@ Erklärig: (aktuell) = Underschid zu jetz,
 'rev-deleted-user'            => '(Benutzername uusegnuh)',
 'rev-deleted-event'           => '(Logbuechaktion uusegnuh)',
 'rev-deleted-text-permission' => "Die Version isch '''glescht''' wore.
-Information zue dr Leschig un e Begrindig het s im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lesch-Logbuech].",
+Information zue dr Leschig un e Begrindig het s im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Oversight-Logbuech].",
 'rev-deleted-text-unhide'     => "Die Version isch '''glescht''' wore.
-Detail stehn im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lesch-Logbuech].
-As Ammann chasch Du [$1 des Gelich aaluege], wänn du witt wytermache.",
+Detail stehn im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Oversight-Logbuech].
+As Ammann chasch Du [$1 des Gleich aaluege], wänn du witt wytermache.",
 'rev-deleted-text-view'       => "Die Version isch '''glescht''' wore. As Amman chasch si aber alno aaluege.
-Informatione zue dr Leschig un e Begrindig het s im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lesch-Logbuech].",
+Informatione zue dr Leschig un e Begrindig het s im [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Oversight-Logbuech].",
 'rev-deleted-no-diff'         => "Du chasch die Änderig nit aaluege, wel eini vu dr Versione '''glescht''' woren isch.
-Villicht het s Detail im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lesch-Logbuech].",
+Villicht het s Detail im [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Oversight-Logbuech].",
 'rev-deleted-unhide-diff'     => "Eini vu dr Versione isch '''glescht''' wore.
-Villicht het s Detail im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lesch-Logbuech].
+Villicht het s Detail im [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Oversight-Logbuech].
 Wänn Du Ammann bisch, chasch [$1 dä Unterschid aaluege] wänn Du wytermache witt.",
 'rev-delundel'                => 'zeig/versteck',
 'revisiondelete'              => 'Versione lesche/widerherstelle',
@@ -1060,7 +1081,7 @@ Du chasch die [[:$1|Syte nöu schrybe]].",
 'mypreferences'                 => 'Ystellige',
 'prefs-edits'                   => 'Aazahl vu dr Bearbeitige:',
 'prefsnologin'                  => 'Nid aagmäldet',
-'prefsnologintext'              => 'Du muesch <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} aagmäldet]</span> sy, für Benutzerystellige chönne z ändere',
+'prefsnologintext'              => 'Du muesch <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} aagmäldet]</span> sy, für Benutzerystellige chönne z ändere',
 'changepassword'                => 'Passwort ändere',
 'prefs-skin'                    => 'Skin',
 'skin-preview'                  => 'Vorschou',
@@ -1697,8 +1718,9 @@ Lueg au d Lischt vu dr [[Special:WantedCategories|gwinschte Kategorie]].',
 'special-categories-sort-abc'   => 'Sortierig no Alfabet',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Gleschti Bytreg',
-'deletedcontributions-title' => 'Gleschti Bytreg',
+'deletedcontributions'             => 'Gleschti Bytreg',
+'deletedcontributions-title'       => 'Gleschti Bytreg',
+'sp-deletedcontributions-contribs' => 'Byyträg',
 
 # Special:LinkSearch
 'linksearch'       => 'Netzgleicher',
@@ -1713,6 +1735,13 @@ Lueg au d Lischt vu dr [[Special:WantedCategories|gwinschte Kategorie]].',
 'listusersfrom'      => 'Zeig Benutzer ab:',
 'listusers-submit'   => 'Zeig',
 'listusers-noresult' => 'Kei Benutzer gfunde.',
+'listusers-blocked'  => '(gsperrt)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lischt vu dr aktive Benutzer',
+'activeusers-count'    => '$1 {{PLURAL:$1|Bearbeitig|Bearbeitige}} in dr letschte Zyt',
+'activeusers-from'     => 'Zeig Benutzer ab:',
+'activeusers-noresult' => 'Kei Benutzer gfunde.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Nejaamäldigs-Logbuech',
@@ -1726,6 +1755,8 @@ Lueg au d Lischt vu dr [[Special:WantedCategories|gwinschte Kategorie]].',
 'listgrouprights'                      => 'Benutzergruppe-Rächt',
 'listgrouprights-summary'              => 'Des isch e Liste vu dr Benutzergruppe, wu in däm Wiki definiert sin, un dr Rächt, wu dermit verbunde sin.
 Zuesätzligi Informatione iber einzelni Rächt git s [[{{MediaWiki:Listgrouprights-helppage}}|doo]].',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Bewilligt Rächt</span>
+* <span class="listgrouprights-revoked">Entzoge Rächt</span>',
 'listgrouprights-group'                => 'Grupp',
 'listgrouprights-rights'               => 'Rächt',
 'listgrouprights-helppage'             => 'Help:Grupperächt',

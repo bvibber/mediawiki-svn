@@ -29,6 +29,12 @@ $fallback = false;
 $rtl = false;
 
 /**
+ * Should all nouns (not just proper ones) be capitalized?
+ * Enabling this property will add the capitalize-all-nouns class to the <body> tag
+ */
+$capitalizeAllNouns = false;
+
+/**
  * Optional array mapping ASCII digits 0-9 to local digits.
  */
 $digitTransformTable = null;
@@ -441,6 +447,7 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( 'LinkSearch' ),
 	'DeletedContributions'      => array( 'DeletedContributions' ),
 	'Tags'                      => array( 'Tags' ),
+	'Activeusers'               => array( 'ActiveUsers' ),
 );
 
 /**
@@ -1287,16 +1294,16 @@ Try [[Special:Search|searching on the wiki]] for relevant new pages.',
 'rev-deleted-user'            => '(username removed)',
 'rev-deleted-event'           => '(log action removed)',
 'rev-deleted-text-permission' => "This page revision has been '''deleted'''.
-There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].",
+There may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} suppression log].",
 'rev-deleted-text-unhide'     => "This page revision has been '''deleted'''.
-There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
+There may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} suppression log].
 As an administrator you can still [$1 view this revision] if you wish to proceed.",
 'rev-deleted-text-view'       => "This page revision has been '''deleted'''.
-As an administrator you can view it; there may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].",
+As an administrator you can view it; there may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} suppression log].",
 'rev-deleted-no-diff'         => "You cannot view this diff because one of the revisions has been '''deleted'''.
-There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].",
+There may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} suppression log].",
 'rev-deleted-unhide-diff'     => "One of the revisions of this diff has been '''deleted'''.
-There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
+There may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} suppression log].
 As an administrator you can still [$1 view this diff] if you wish to proceed.",
 'rev-delundel'                => 'show/hide',
 'revisiondelete'              => 'Delete/undelete revisions',
@@ -1565,7 +1572,7 @@ Note that their indexes of {{SITENAME}} content may be out of date.',
 'mypreferences'                 => 'My preferences',
 'prefs-edits'                   => 'Number of edits:',
 'prefsnologin'                  => 'Not logged in',
-'prefsnologintext'              => 'You must be <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} logged in]</span> to set user preferences.',
+'prefsnologintext'              => 'You must be <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} logged in]</span> to set user preferences.',
 'changepassword'                => 'Change password',
 'prefs-skin'                    => 'Skin',
 'skin-preview'                  => 'Preview',
@@ -2320,6 +2327,14 @@ Supported protocols: <tt>$1</tt>',
 'listusersfrom'      => 'Display users starting at:',
 'listusers-submit'   => 'Show',
 'listusers-noresult' => 'No user found.',
+'listusers-blocked'  => '(blocked)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Active users list',
+'activeusers-summary'  => '', # do not translate or duplicate this message to other languages
+'activeusers-count'    => '$1 recent {{PLURAL:$1|edit|edits}}',
+'activeusers-from'     => 'Display users starting at:',
+'activeusers-noresult' => 'No users found.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'User creation log',
@@ -2334,11 +2349,14 @@ Supported protocols: <tt>$1</tt>',
 'listgrouprights'                      => 'User group rights',
 'listgrouprights-summary'              => 'The following is a list of user groups defined on this wiki, with their associated access rights.
 There may be [[{{MediaWiki:Listgrouprights-helppage}}|additional information]] about individual rights.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Granted right</span>
+* <span class="listgrouprights-revoked">Revoked right</span>',
 'listgrouprights-group'                => 'Group',
 'listgrouprights-rights'               => 'Rights',
 'listgrouprights-helppage'             => 'Help:Group rights',
 'listgrouprights-members'              => '(list of members)',
-'listgrouprights-right-display'        => '$1 ($2)', # only translate this message to other languages if you have to change it
+'listgrouprights-right-display'        => '<span class="listgrouprights-granted">$1 ($2)</span>', # only translate this message to other languages if you have to change it
+'listgrouprights-right-revoked'        => '<span class="listgrouprights-revoked">$1 ($2)</span>', # only translate this message to other languages if you have to change it
 'listgrouprights-addgroup'             => 'Add {{PLURAL:$2|group|groups}}: $1',
 'listgrouprights-removegroup'          => 'Remove {{PLURAL:$2|group|groups}}: $1',
 'listgrouprights-addgroup-all'         => 'Add all groups',
@@ -2903,8 +2921,8 @@ In the latter case you can also use a link, for example [[{{#Special:Export}}/{{
 # Namespace 8 related
 'allmessages'               => 'System messages',
 'allmessagesname'           => 'Name',
-'allmessagesdefault'        => 'Default text',
-'allmessagescurrent'        => 'Current text',
+'allmessagesdefault'        => 'Default message text',
+'allmessagescurrent'        => 'Current message text',
 'allmessagestext'           => 'This is a list of system messages available in the MediaWiki namespace.
 Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net translatewiki.net] if you wish to contribute to the generic MediaWiki localisation.',
 'allmessagesnotsupportedDB' => "This page cannot be used because '''\$wgUseDatabaseMessages''' has been disabled.",
@@ -3097,7 +3115,7 @@ You can view its source',
 'tooltip-recreate'                => 'Recreate the page even though it has been deleted',
 'tooltip-upload'                  => 'Start upload',
 'tooltip-rollback'                => '"Rollback" reverts edit(s) to this page of the last contributor in one click',
-'tooltip-undo'                    => '"Undo" reverts this edit and opens the edit form in preview mode. 
+'tooltip-undo'                    => '"Undo" reverts this edit and opens the edit form in preview mode.
 It allows adding a reason in the summary.',
 
 # Stylesheets

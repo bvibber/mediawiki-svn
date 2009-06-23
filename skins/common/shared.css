@@ -32,16 +32,9 @@ div#mw-js-message {
 /**
  * File histories
  */
-table.filehistory {
-	border:1px solid #ccc;
-	border-collapse:collapse;
-}
-
 table.filehistory th,
 table.filehistory td {
-	padding: 0 0.2em 0 0.2em;
 	vertical-align:top;
-	border:1px solid #ccc;
 }
 table.filehistory th {
 	text-align: left;
@@ -113,7 +106,7 @@ p.mw-filedelete-editreasons, p.mw-delete-editreasons {
 
 div.searchresult {
 	font-size: 95%;
-	width:38em;	
+	width:38em;
 }
 
 .mw-search-results {
@@ -140,13 +133,13 @@ div.searchresult {
 	border: 1px solid silver;
 }
 .mw-search-formheader div.search-types {
-	float:left; 
+	float:left;
 	padding-left: 0.25em;
 }
 .mw-search-formheader div.search-types > ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none !important;
 }
 .mw-search-formheader div.search-types > ul > li {
 	float: left;
@@ -170,9 +163,9 @@ div.searchresult {
 	padding-right: 0.75em;
 }
 .mw-search-formheader div.results-info > ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none !important;
 }
 .mw-search-formheader div.results-info > ul > li {
 	float: right;
@@ -181,15 +174,14 @@ div.searchresult {
 }
 fieldset#mw-searchoptions {
 	margin: 0;
-	padding: 0;
-	padding-left: 1em;
-	padding-right: 1em;
-	padding-bottom: 0.5em;
-	padding-top: 0.5em;
+	padding-left: 0.75em !important;
+	padding-right: 0.75em !important;
+	padding-bottom: 0.5em !important;
+	padding-top: 0.5em !important;
 	border: none;
 	background-color: #f9f9f9;
-	border: 1px solid silver;
-	border-top: none;
+	border: 1px solid silver !important;
+	border-top: none !important;
 }
 fieldset#mw-searchoptions > legend {
 	display: none;
@@ -269,7 +261,7 @@ div#mw-search-interwiki-caption {
 	padding-right: 0.15em;
 	padding-bottom: 0.2em;
 	padding-top: 0.15em;
-	background-color:#ececec; 
+	background-color:#ececec;
 	border-top:1px solid #BBBBBB;
 }
 
@@ -326,29 +318,29 @@ table.mw-userrights-groups * td,table.mw-userrights-groups * th {
 	padding-right: 1.5em;
 }
 
-/* 
+/*
  * OpenSearch ajax suggestions
  */
 .os-suggest {
-	overflow: auto; 
-	overflow-x: hidden; 
+	overflow: auto;
+	overflow-x: hidden;
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	width: 0px;
-	background-color: white; 
+	background-color: white;
 	background-color: Window;
 	border-style: solid;
 	border-color: #AAAAAA;
 	border-width: 1px;
-	z-index:99; 
-	visibility:hidden; 
-	font-size:95%;	
+	z-index:99;
+	visibility:hidden;
+	font-size:95%;
 }
 
 table.os-suggest-results {
 	font-size: 95%;
-	cursor: pointer; 
+	cursor: pointer;
 	border: 0;
 	border-collapse: collapse;
 	width: 100%;
@@ -356,7 +348,7 @@ table.os-suggest-results {
 
 td.os-suggest-result, td.os-suggest-result-hl {
 	white-space: nowrap;
-	background-color: white; 
+	background-color: white;
 	background-color: Window;
 	color: black;
 	color: WindowText;
@@ -364,7 +356,7 @@ td.os-suggest-result, td.os-suggest-result-hl {
 }
 td.os-suggest-result-hl,
 td.os-suggest-result-hl-webkit {
-	background-color: #4C59A6; 
+	background-color: #4C59A6;
 	color: white;
 }
 td.os-suggest-result-hl {
@@ -375,7 +367,7 @@ td.os-suggest-result-hl {
 }
 
 .os-suggest-toggle {
-	position: relative; 
+	position: relative;
 	left: 1ex;
 	font-size: 65%;
 }
@@ -406,30 +398,13 @@ td.os-suggest-result-hl {
 	font-weight: bold;
 }
 
-/*
- * Special:ListGroupRights styling
- * Special:Statistics styling 
- * Special:Tags styling 
-*/
-
-table.mw-listgrouprights-table,
-table.mw-statistics-table,
-table.mw-tags-table {
-	border: 1px solid #ccc;
-	border-collapse: collapse;
-}
-
+/* Special:ListGroupRights styling */
 table.mw-listgrouprights-table tr  {
 	vertical-align: top;
 }
+.listgrouprights-revoked { text-decoration: line-through; }
 
-table.mw-listgrouprights-table td, table.mw-listgrouprights-table th,
-table.mw-statistics-table td, table.mw-statistics-table th,
-table.mw-tags-table td, table.mw-tags-table th {
-	padding: 0.5em 0.2em 0.5em 0.2em;
-	border: 1px solid #ccc;
-}
-
+/* Special:Statistics styling */
 td.mw-statistics-numbers {
 	text-align: right;
 }
@@ -571,3 +546,27 @@ table.wikitable {
 .visualClear {
 	clear: both;
 }
+
+/*
+  Table pager (e.g. Special:Imagelist)
+  - remove underlines from the navigation link
+  - collapse borders
+  - set the borders to outsets (similar to Special:Allmessages)
+  - remove line wrapping for all td and th, set background color
+  - restore line wrapping for the last two table cells (description and size)
+*/
+.TablePager { min-width: 80%; }
+.TablePager_nav a { text-decoration: none; }
+.TablePager { border-collapse: collapse; }
+.TablePager, .TablePager td, .TablePager th { 
+	border: 1px solid #aaaaaa;
+	padding: 0 0.15em 0 0.15em;
+}
+.TablePager th { background-color: #eeeeff }
+.TablePager td { background-color: #ffffff }
+.TablePager tr:hover td { background-color: #eeeeff }
+
+.imagelist td, .imagelist th { white-space: nowrap }
+.imagelist .TablePager_col_links { background-color: #eeeeff }
+.imagelist .TablePager_col_img_description { white-space: normal }
+.imagelist th.TablePager_sort { background-color: #ccccff }

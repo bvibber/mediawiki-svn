@@ -890,16 +890,16 @@ Provu [[Special:Search|serĉi en la vikio]] por rilataj novaj paĝoj.',
 'rev-deleted-user'            => '(uzanto-nomo forigita)',
 'rev-deleted-event'           => '(protokola ago forigita)',
 'rev-deleted-text-permission' => "Ĉi tiu revizio de la paĝo estis '''forigita'''.
-Eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolo de forigoj].",
+Eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri subpremado].",
 'rev-deleted-text-unhide'     => "Ĉi tiu revizio de la paĝo estis '''forigita'''.
-Eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolo de forigoj].
+Eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri subpremado].
 Kiel administranto, vi ankoraŭ povas [$1 vidi ĉi tiun revizio] se vi volas kontinui.",
 'rev-deleted-text-view'       => "Ĉi tiu revizio de la paĝo estis '''forigita'''.
-Kiel administranto vi povas rigardi ĝin; eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolo pri forigoj].",
+Kiel administranto vi povas rigardi ĝin; eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri subpremado].",
 'rev-deleted-no-diff'         => "Vi ne povas vidi ĉi tiun diferencon ĉar unu el la revizioj estis '''forigitaj'''.
-Eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolo pri forigoj].",
+Eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri subpremado].",
 'rev-deleted-unhide-diff'     => "Unu el la revizioj de ĉi tiu diferenco estis '''forigita'''.
-Eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolo de forigoj].
+Eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri subpremado].
 Kiel administranto vi povas ankoraŭ [$1 vidi ĉi tiun diferencon] se vi volas kontinui.",
 'rev-delundel'                => 'montri/kaŝi',
 'revisiondelete'              => 'Forigi/malforigi versiojn',
@@ -1144,7 +1144,7 @@ indekso pro troŝarĝita servilo. Intertempe, vi povas serĉi per <i>guglo</i> a
 'mypreferences'                 => 'Miaj preferoj',
 'prefs-edits'                   => 'Nombro de redaktoj:',
 'prefsnologin'                  => 'Ne jam salutis!',
-'prefsnologintext'              => 'Vi devas esti <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} ensalutita]</span> por fari viajn preferojn.',
+'prefsnologintext'              => 'Vi devas esti <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ensalutita]</span> por fari viajn preferojn.',
 'changepassword'                => 'Ŝanĝi pasvorton',
 'prefs-skin'                    => 'Etoso',
 'skin-preview'                  => 'Antaŭrigardo',
@@ -1795,8 +1795,9 @@ Vidu ankaŭ [[Special:WantedCategories|Dezirataj kategorioj]].',
 'special-categories-sort-abc'   => 'ordigi laŭ alfabeto',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Forigitaj kontribuoj de uzantoj',
-'deletedcontributions-title' => 'Forigitaj kontribuoj de uzantoj',
+'deletedcontributions'             => 'Forigitaj kontribuoj de uzantoj',
+'deletedcontributions-title'       => 'Forigitaj kontribuoj de uzantoj',
+'sp-deletedcontributions-contribs' => 'kontribuoj',
 
 # Special:LinkSearch
 'linksearch'       => 'Eksteraj ligiloj',
@@ -1811,6 +1812,13 @@ Vidu ankaŭ [[Special:WantedCategories|Dezirataj kategorioj]].',
 'listusersfrom'      => 'Montri uzantojn ekde:',
 'listusers-submit'   => 'Montri',
 'listusers-noresult' => 'Neniu uzanto trovita.',
+'listusers-blocked'  => '(forbarita)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Listo de aktivaj uzantoj',
+'activeusers-count'    => '$1 {{PLURAL:$1|lasta redakto|lastaj redaktoj}}',
+'activeusers-from'     => 'Montri uzantojn ekde:',
+'activeusers-noresult' => 'Neniuj uzantoj trovitaj.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Protokolo de uzanto-kreado',
@@ -1824,6 +1832,8 @@ Vidu ankaŭ [[Special:WantedCategories|Dezirataj kategorioj]].',
 'listgrouprights'                      => 'Gruprajtoj de uzantoj',
 'listgrouprights-summary'              => 'Jen listo de uzanto-grupoj difinitaj en ĉi tiu vikio, kun ties asociaj atingrajtoj.
 Estas [[{{MediaWiki:Listgrouprights-helppage}}|aldona informo]] pri individuaj rajtoj.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Donita rajto</span>
+* <span class="listgrouprights-revoked">Maldonita rajto</span>',
 'listgrouprights-group'                => 'Grupo',
 'listgrouprights-rights'               => 'Rajtoj',
 'listgrouprights-helppage'             => 'Help:Grupaj rajtoj',

@@ -958,16 +958,16 @@ Kokeile [[Special:Search|hakua]] löytääksesi asiaan liittyviä sivuja.',
 'rev-deleted-user'            => '(käyttäjänimi poistettu)',
 'rev-deleted-event'           => '(lokitapahtuma poistettu)',
 'rev-deleted-text-permission' => "Tämä versio on '''poistettu'''.
-[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} Poistolokissa] saattaa olla lisätietoja.",
+Lisätietoja saattaa olla [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} häivytyslokissa].",
 'rev-deleted-text-unhide'     => "Tämä versio sivusta on '''poistettu'''.
-Lisätietoja saattaa olla [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} poistolokissa].
+Lisätietoja saattaa olla [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} häivytyslokissa].
 Ylläpitäjänä voit silti [$1 katsoa tämän version].",
 'rev-deleted-text-view'       => "Tämä versio on '''poistettu'''.
-Ylläpitäjänä voit nähdä sen. Lisätietoja saattaa olla [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} poistolokissa].",
+Ylläpitäjänä voit nähdä sen. Lisätietoja saattaa olla [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} häivytyslokissa].",
 'rev-deleted-no-diff'         => "Et voi katsoa tätä muokkausta, koska yksi versioista on '''poistettu'''.
-Lisätietoja saattaa olla [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} poistolokissa].",
+Lisätietoja saattaa olla [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} häivytyslokissa].",
 'rev-deleted-unhide-diff'     => "Yksi tämän muutoksen versioista on '''poistettu'''.
-Lisätietoja saattaa olla [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} poistolokissa].
+Lisätietoja saattaa olla [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} häivytyslokissa].
 Ylläpitäjänä voit silti [$1 katsoa tämän muutoksen].",
 'rev-delundel'                => 'näytä tai piilota',
 'revisiondelete'              => 'Poista tai palauta versioita',
@@ -1009,8 +1009,8 @@ $1",
 'logdelete-failure'           => "'''Lokin näkyvyyttä ei voitu asettaa:'''
 $1",
 'revdel-restore'              => 'Muuta näkyvyyttä',
-'pagehist'                    => 'Muutoshistoria',
-'deletedhist'                 => 'Poistettu muutoshistoria',
+'pagehist'                    => 'Sivun muutoshistoria',
+'deletedhist'                 => 'Poistettujen versioiden historia',
 'revdelete-content'           => 'sisällön',
 'revdelete-summary'           => 'yhteenvedon',
 'revdelete-uname'             => 'käyttäjänimen',
@@ -1020,6 +1020,7 @@ $1",
 'revdelete-unhid'             => 'palautti näkyviin $1',
 'revdelete-log-message'       => '$1 koskien $2 {{PLURAL:$2|versiota}}',
 'logdelete-log-message'       => '$1 koskien $2 {{PLURAL:$2|tapahtumaa}}',
+'revdelete-modify-missing'    => 'Virhe muuttaessa kohdetta, jonka tunnus on $1: Se puuttuu tietokannasta.',
 
 # Suppression log
 'suppressionlog'     => 'Häivytysloki',
@@ -1201,7 +1202,7 @@ Kokeile lisätä haun alkuun ''all:'', niin haku kohdistuu kaikkeen sisältöön
 'mypreferences'                 => 'Asetukset',
 'prefs-edits'                   => 'Muokkauksia',
 'prefsnologin'                  => 'Et ole kirjautunut sisään.',
-'prefsnologintext'              => 'Sinun täytyy <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} kirjautua sisään]</span>, jotta voisit muuttaa asetuksiasi.',
+'prefsnologintext'              => 'Sinun täytyy <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} kirjautua sisään]</span>, jotta voisit muuttaa asetuksiasi.',
 'changepassword'                => 'Salasanan vaihto',
 'prefs-skin'                    => 'Ulkonäkö',
 'skin-preview'                  => 'esikatselu',
@@ -1827,8 +1828,9 @@ Katso myös [[Special:WantedCategories|halutut luokat]].',
 'special-categories-sort-abc'   => 'järjestä nimen mukaan',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Poistetut muokkaukset',
-'deletedcontributions-title' => 'Poistetut muokkaukset',
+'deletedcontributions'             => 'Poistetut muokkaukset',
+'deletedcontributions-title'       => 'Poistetut muokkaukset',
+'sp-deletedcontributions-contribs' => 'muokkaukset',
 
 # Special:LinkSearch
 'linksearch'       => 'Ulkoiset linkit',
@@ -1845,6 +1847,13 @@ Tuetut protokollat: <tt>$1</tt>.',
 'listusersfrom'      => 'Katkaisuhaku',
 'listusers-submit'   => 'Hae',
 'listusers-noresult' => 'Käyttäjiä ei löytynyt.',
+'listusers-blocked'  => '(estetty)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Aktiivisten käyttäjien lista',
+'activeusers-count'    => '$1 {{PLURAL:$1|viimeisin muokkaus|viimeisintä muokkausta}}',
+'activeusers-from'     => 'Näytä käyttäjät alkaen',
+'activeusers-noresult' => 'Käyttäjiä ei löytynyt.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Uudet käyttäjät',
@@ -1858,6 +1867,8 @@ Tuetut protokollat: <tt>$1</tt>.',
 'listgrouprights'                      => 'Käyttäjäryhmien oikeudet',
 'listgrouprights-summary'              => 'Tämä lista sisältää tämän wikin käyttäjäryhmät sekä ryhmiin liitetyt käyttöoikeudet.
 Lisätietoa yksittäisistä käyttäjäoikeuksista saattaa löytyä [[{{MediaWiki:Listgrouprights-helppage}}|erilliseltä ohjesivulta]].',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Myönnetyt oikeudet</span>
+* <span class="listgrouprights-revoked">Kumotut oikeudet</span>',
 'listgrouprights-group'                => 'Ryhmä',
 'listgrouprights-rights'               => 'Oikeudet',
 'listgrouprights-helppage'             => 'Help:Käyttöoikeudet',

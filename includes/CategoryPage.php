@@ -95,11 +95,22 @@ class CategoryViewer {
 		$this->doCategoryQuery();
 		$this->finaliseCategoryState();
 
-		$r = $this->getCategoryTop() .
-			$this->getSubcategorySection() .
+		$r = $this->getSubcategorySection() .
 			$this->getPagesSection() .
-			$this->getImageSection() .
-			$this->getCategoryBottom();
+			$this->getImageSection();
+
+		if( $r == '' ) {
+			// If there is no category content to display, only
+			// show the top part of the navigation links.
+			// FIXME: cannot be completely suppressed because it
+			//        is unknown if 'until' or 'from' makes this
+			//        give 0 results.
+			$r = $r . $this->getCategoryTop();
+		} else {
+			$r = $this->getCategoryTop() .
+				$r .
+				$this->getCategoryBottom();
+		}
 
 		// Give a proper message if category is empty
 		if ( $r == '' ) {
@@ -263,17 +274,11 @@ class CategoryViewer {
 				$this->addPage( $title, $x->cl_sortkey, $x->page_len, $x->page_is_redirect );
 			}
 		}
-		$dbr->freeResult( $res );
 	}
 
 	function getCategoryTop() {
-		$r = '';
-		if( $this->until != '' ) {
-			$r .= $this->pagingLinks( $this->title, $this->nextPage, $this->until, $this->limit );
-		} elseif( $this->nextPage != '' || $this->from != '' ) {
-			$r .= $this->pagingLinks( $this->title, $this->from, $this->nextPage, $this->limit );
-		}
-		return $r == ''
+		$r = $this->getCategoryBottom();
+		return $r === ''
 			? $r
 			: "<br style=\"clear:both;\"/>\n" . $r;
 	}
@@ -466,7 +471,7 @@ class CategoryViewer {
 		if( $first != '' ) {
 			$prevQuery = $query;
 			$prevQuery['until'] = $first;
-			$prevLink = $sk->link(
+			$prevLink = $sk->linkKnown(
 				$title,
 				$prevLink,
 				array(),
@@ -477,7 +482,7 @@ class CategoryViewer {
 		if( $last != '' ) {
 			$lastQuery = $query;
 			$lastQuery['from'] = $last;
-			$nextLink = $sk->link(
+			$nextLink = $sk->linkKnown(
 				$title,
 				$nextLink,
 				array(),

@@ -939,16 +939,16 @@ Probe a [[Special:Search|buscar no wiki]] para atopar as páxinas relacionadas.'
 'rev-deleted-user'            => '(nome de usuario eliminado)',
 'rev-deleted-event'           => '(rexistro de evento eliminado)',
 'rev-deleted-text-permission' => "Esta revisión da páxina foi '''eliminada'''.
-Pode ampliar os detalles no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rexistro de borrados].",
+Pode ampliar os detalles no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rexistro de borrados].",
 'rev-deleted-text-unhide'     => "Esta revisión da páxina foi '''eliminada'''.
-Pode ampliar os detalles no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rexistro de borrados].
+Pode ampliar os detalles no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rexistro de borrados].
 Como administrador aínda podería [$1 ver esta revisión] se quixese.",
 'rev-deleted-text-view'       => "Esta revisión da páxina foi '''eliminada'''.
-Como administrador pode vela; pode ampliar os detalles no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rexistro de borrados].",
+Como administrador pode vela; pode ampliar os detalles no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rexistro de borrados].",
 'rev-deleted-no-diff'         => "Non pode ver esta diferenza porque unha das revisións foi '''eliminada'''.
-Pode ampliar os detalles no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rexistro de borrados].",
+Pode ampliar os detalles no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rexistro de borrados].",
 'rev-deleted-unhide-diff'     => "Unha das revisións desta diferenza foi '''eliminada'''.
-Pode ampliar os detalles no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rexistro de borrados].
+Pode ampliar os detalles no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rexistro de borrados].
 Como administrador aínda podería [$1 ver esta diferenza] se quixese.",
 'rev-delundel'                => 'mostrar/agochar',
 'revisiondelete'              => 'Borrar/restaurar revisións',
@@ -1195,7 +1195,7 @@ Note que os seus índices do contido de {{SITENAME}} poden estar desactualizados
 'mypreferences'                 => 'As miñas preferencias',
 'prefs-edits'                   => 'Número de edicións:',
 'prefsnologin'                  => 'Non está dentro do sistema',
-'prefsnologintext'              => 'Debe <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} acceder ao sistema]</span> para modificar as preferencias de usuario.',
+'prefsnologintext'              => 'Debe <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} acceder ao sistema]</span> para modificar as preferencias de usuario.',
 'changepassword'                => 'Cambiar o meu contrasinal',
 'prefs-skin'                    => 'Aparencia',
 'skin-preview'                  => 'Vista previa',
@@ -1863,8 +1863,9 @@ Olle tamén as [[Special:WantedCategories|categorías requiridas]].',
 'special-categories-sort-abc'   => 'ordenar alfabeticamente',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Contribucións borradas do usuario',
-'deletedcontributions-title' => 'Contribucións borradas do usuario',
+'deletedcontributions'             => 'Contribucións borradas do usuario',
+'deletedcontributions-title'       => 'Contribucións borradas do usuario',
+'sp-deletedcontributions-contribs' => 'contribucións',
 
 # Special:LinkSearch
 'linksearch'       => 'Ligazóns externas',
@@ -1892,6 +1893,8 @@ Olle tamén as [[Special:WantedCategories|categorías requiridas]].',
 'listgrouprights'                      => 'Dereitos dun usuario segundo o seu grupo',
 'listgrouprights-summary'              => 'A seguinte lista mostra os grupos de usuario definidos neste wiki, cos seus dereitos de acceso asociados.
 Se quere máis información acerca dos dereitos individuais, pode atopala [[{{MediaWiki:Listgrouprights-helppage}}|aquí]].',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Dereito concedido</span>
+* <span class="listgrouprights-revoked">Dereito revogado</span>',
 'listgrouprights-group'                => 'Grupo',
 'listgrouprights-rights'               => 'Dereitos',
 'listgrouprights-helppage'             => 'Help:Dereitos do grupo',

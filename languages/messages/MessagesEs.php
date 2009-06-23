@@ -580,7 +580,7 @@ Consulta: $2',
 'protectedpagetext'    => 'Esta página ha sido bloqueada para evitar su edición.',
 'viewsourcetext'       => 'Puedes ver y copiar el código fuente de esta página:',
 'protectedinterface'   => 'Esta página provee texto del interfaz del software, y está protegida para evitar vandalismos.',
-'editinginterface'     => "'''Aviso:''' Estás editando una página usada para proporcionar texto de interface para el software. Los cambios en esta página afectarán a la apariencia de la interfaz para los demás usuarios. Para traducciones, por favor considere usar [http://translatewiki.net/wiki/Main_Page?setlang=en translatewiki.net], el proyecto de localización MediaWiki.",
+'editinginterface'     => "'''Aviso:''' Estás editando una página usada para proporcionar texto de interfaz para el software. Los cambios en esta página afectarán a la apariencia de la interfaz para los demás usuarios. Para traducciones, por favor considere usar [http://translatewiki.net/wiki/Main_Page?setlang=en translatewiki.net], el proyecto de localización MediaWiki.",
 'sqlhidden'            => '(Consulta SQL oculta)',
 'cascadeprotected'     => 'Esta página ha sido protegida para su edición, porque está incluida en {{PLURAL:$1|la siguiente página|las siguientes páginas}}, que están protegidas con las opción de "cascada":
 $2',
@@ -850,7 +850,7 @@ El administrador que la bloqueó dio esta explicación: $1",
 Deberías considerar si es apropiado continuar editando esta página.
 El registro de borrado y traslados para esta página están proveídos aquí por conveniencia:",
 'moveddeleted-notice'              => 'Esta página ha sido borrada.
-El registro de borrado y traslados para la página estás proveídos abajo para referencia.',
+El registro de borrados y traslados para la página están proveídos debajo como referencia.',
 'log-fulllog'                      => 'Ver todo el registro',
 'edit-hook-aborted'                => 'Edición abortada por la extensión.
 No dió explicaciones.',
@@ -924,17 +924,17 @@ Prueba a [[Special:Search|buscar en el wiki]] nuevas páginas relevantes.',
 'rev-deleted-user'            => '(nombre de usuario eliminado)',
 'rev-deleted-event'           => '(entrada borrada)',
 'rev-deleted-text-permission' => "Esta revisión de la página ha sido '''borrada'''.
-Puede haber detalles en el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de borrado].",
+Puede haber detalles en el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de borrado].",
 'rev-deleted-text-unhide'     => "Esta revisión de página ha sido '''borrada'''.
-Puede haber detalles en el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de borrado].
+Puede haber detalles en el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de borrado].
 Como administrador todavía puedes [$1 ver esta revisión] si deseas proceder.",
 'rev-deleted-text-view'       => "Esta revisión de la página ha sido '''borrada'''.
 Como administrador en {{SITENAME}} puedes verla;
-puede haber detalles en el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de borrado].",
+puede haber detalles en el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de borrado].",
 'rev-deleted-no-diff'         => "No puede visualizarse este cambio debido a que las revisiones han sido '''borradas'''.
-Puede haber detalles en el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de borrado].",
+Puede haber detalles en el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de borrado].",
 'rev-deleted-unhide-diff'     => "Una de las revisiones de este cambio ha sido '''borrada'''.
-Puede haber detalles en el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de borrado].
+Puede haber detalles en el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de borrado].
 Como administrador todavía puedes [$1 ver este cambio] si deseas proceder.",
 'rev-delundel'                => 'mostrar/ocultar',
 'revisiondelete'              => 'Borrar/restaurar revisiones',
@@ -1818,8 +1818,9 @@ Véase también las [[Special:WantedCategories|categorías requeridas]].',
 'special-categories-sort-abc'   => 'ordenar alfabéticamente',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Contribuciones de usuario borradas',
-'deletedcontributions-title' => 'Contribuciones de usuario borradas',
+'deletedcontributions'             => 'Contribuciones de usuario borradas',
+'deletedcontributions-title'       => 'Contribuciones de usuario borradas',
+'sp-deletedcontributions-contribs' => 'contribuciones',
 
 # Special:LinkSearch
 'linksearch'       => 'Enlaces externos',
@@ -1976,7 +1977,7 @@ consecuencias, y que lo estás haciendo de acuerdo con [[{{MediaWiki:Policy-url}
 'deletedtext'            => '"<nowiki>$1</nowiki>" ha sido borrado.
 Véase $2 para un registro de los borrados recientes.',
 'deletedarticle'         => 'borró «[[$1]]»',
-'suppressedarticle'      => 'se ha suprimido «[[$1]]»',
+'suppressedarticle'      => 'suprimió «[[$1]]»',
 'dellogpage'             => 'Registro de borrados',
 'dellogpagetext'         => 'A continuación se muestra una lista de los borrados más recientes.',
 'deletionlog'            => 'registro de borrados',
@@ -2135,10 +2136,10 @@ $1',
 'sp-contributions-newbies'       => 'Mostrar solo las contribuciones de usuarios nuevos',
 'sp-contributions-newbies-sub'   => 'Para cuentas nuevas',
 'sp-contributions-newbies-title' => 'Contribuciones de usuarios nuevos',
-'sp-contributions-blocklog'      => 'Registro de bloqueos',
-'sp-contributions-deleted'       => 'Contribuciones de usuario borradas',
+'sp-contributions-blocklog'      => 'registro de bloqueos',
+'sp-contributions-deleted'       => 'contribuciones de usuario borradas',
 'sp-contributions-logs'          => 'registros',
-'sp-contributions-talk'          => 'discutir',
+'sp-contributions-talk'          => 'discusión',
 'sp-contributions-userrights'    => 'administración de derechos de usuarios',
 'sp-contributions-search'        => 'Buscar contribuciones',
 'sp-contributions-username'      => 'Dirección IP o nombre de usuario:',
@@ -2186,7 +2187,7 @@ las páginas en particular que han sido objeto de vandalismo).',
 ** Abusar de múltiples cuentas
 ** Nombre de usuario inaceptable',
 'ipbanononly'                     => 'Bloquear usuarios anónimos solamente',
-'ipbcreateaccount'                => 'Prevenir creación de cuenta de usuario.',
+'ipbcreateaccount'                => 'Prevenir la creación de cuenta de usuario',
 'ipbemailban'                     => 'Prevenir que los usuarios envien correo electrónico',
 'ipbenableautoblock'              => 'Bloquear automáticamente la dirección IP usada por este usuario, y cualquier IP posterior desde la cual intente editar',
 'ipbsubmit'                       => 'Bloquear a este usuario',
@@ -2221,7 +2222,7 @@ las páginas en particular que han sido objeto de vandalismo).',
 'ipblocklist-submit'              => 'Buscar',
 'blocklistline'                   => '$1, $2 bloquea a $3 ($4)',
 'infiniteblock'                   => 'infinito',
-'expiringblock'                   => 'expira en $1 en $2',
+'expiringblock'                   => 'expira el $1 a las $2',
 'anononlyblock'                   => 'sólo anón.',
 'noautoblockblock'                => 'bloqueo automático deshabilitado',
 'createaccountblock'              => 'creación de cuenta bloqueada.',

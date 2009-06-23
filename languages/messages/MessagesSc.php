@@ -589,7 +589,7 @@ Prova a scioberai ''totu:'' pro chircare in totu su cuntènnidu (includius pàgi
 'mypreferences'            => 'Preferèntzias meas',
 'prefs-edits'              => 'Nùmeru de acontzos:',
 'prefsnologin'             => 'Non ses intrau',
-'prefsnologintext'         => 'Depis èssere <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} intrau]</span> pro scioberai is preferèntzias.',
+'prefsnologintext'         => 'Depis èssere <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} intrau]</span> pro scioberai is preferèntzias.',
 'changepassword'           => 'Càmbia password',
 'prefs-skin'               => 'Bisura',
 'skin-preview'             => 'Antiprima',
@@ -771,13 +771,13 @@ Càstia sa [[Special:NewFiles|galleria de files nous]] pro una presentatzione pr
 'listredirects' => 'Lista de totu is redirects',
 
 # Random page
-'randompage' => 'Una pàgina a sorte',
+'randompage' => 'Pàgina a sa tzurpa',
 
 # Statistics
 'statistics'              => 'Istatìsticas',
-'statistics-header-users' => 'Istatìsticas usuàriu',
+'statistics-header-users' => 'Istatìsticas subra is usuàrios',
 
-'disambiguationspage' => 'Template:Disambigua',
+'disambiguationspage' => 'Template:Disambìgua',
 
 'doubleredirects'     => 'Redirects dòpius',
 'doubleredirectstext' => '<b>Attenzione:</b> Questa lista può talvolta contenere dei risultati non corretti. Ciò potrebbe magari accadere perchè vi sono del testo aggiuntivo o dei link dopo il tag #REDIRECT.<br />
@@ -852,8 +852,7 @@ Ogni riga contiene i link al primo ed al secondo redirect, oltre alla prima riga
 'newuserlog-create-entry' => 'Account usuàriu nou',
 
 # Special:ListGroupRights
-'listgrouprights-members'       => '(lista de is cumponentes)',
-'listgrouprights-right-display' => '$1 ($2)',
+'listgrouprights-members' => '(lista de is cumponentes)',
 
 # E-mail user
 'mailnologintext' => 'Devi fare il [[Special:UserLogin|login]]

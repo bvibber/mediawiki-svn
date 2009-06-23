@@ -96,18 +96,18 @@ class SpecialContributions extends SpecialPage {
 		$pager = new ContribsPager( $target, $this->opts['namespace'], $this->opts['year'], $this->opts['month'] );
 		if( !$pager->getNumRows() ) {
 			$wgOut->addWikiMsg( 'nocontribs', $target );
-			return;
+		} else {
+			# Show a message about slave lag, if applicable
+			if( ( $lag = $pager->getDatabase()->getLag() ) > 0 )
+				$wgOut->showLagWarning( $lag );
+
+			$wgOut->addHTML(
+				'<p>' . $pager->getNavigationBar() . '</p>' .
+				$pager->getBody() .
+				'<p>' . $pager->getNavigationBar() . '</p>'
+			);
 		}
 
-		# Show a message about slave lag, if applicable
-		if( ( $lag = $pager->getDatabase()->getLag() ) > 0 )
-			$wgOut->showLagWarning( $lag );
-
-		$wgOut->addHTML(
-			'<p>' . $pager->getNavigationBar() . '</p>' .
-			$pager->getBody() .
-			'<p>' . $pager->getNavigationBar() . '</p>'
-		);
 
 		# If there were contributions, and it was a valid user or IP, show
 		# the appropriate "footer" message - WHOIS tools, etc.
@@ -117,9 +117,8 @@ class SpecialContributions extends SpecialPage {
 
 			$text = wfMsgNoTrans( $message, $target );
 			if( !wfEmptyMsg( $message, $text ) && $text != '-' ) {
-				$wgOut->addHTML( '<div class="mw-contributions-footer">' );
-				$wgOut->addWikiText( $text );
-				$wgOut->addHTML( '</div>' );
+				$wgOut->wrapWikiMsg(
+					"<div class='mw-contributions-footer'>\n$1\n</div>", $message );
 			}
 		}
 	}
@@ -523,7 +522,7 @@ class ContribsPager extends ReverseChronologicalPager {
 			}
 		}
 		# Is there a visible previous revision?
-		if( $rev->userCan(Revision::DELETED_TEXT) ) {
+		if( !$rev->isDeleted(Revision::DELETED_TEXT) ) {
 			$difftext = '(' . $sk->linkKnown(
 				$page,
 				$this->messages['diff'],
@@ -545,22 +544,22 @@ class ContribsPager extends ReverseChronologicalPager {
 
 		$comment = $wgContLang->getDirMark() . $sk->revComment( $rev, false, true );
 		$date = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->rev_timestamp ), true );
-		$d = $sk->linkKnown(
-			$page,
-			htmlspecialchars($date),
-			array(),
-			array( 'oldid' => intval( $row->rev_id ) )
-		);
+		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
+			$d = '<span class="history-deleted">' . $date . '</span>';
+		} else {
+			$d = $sk->linkKnown(
+				$page,
+				htmlspecialchars($date),
+				array(),
+				array( 'oldid' => intval( $row->rev_id ) )
+			);
+		}
 
 		if( $this->target == 'newbies' ) {
 			$userlink = ' . . ' . $sk->userLink( $row->rev_user, $row->rev_user_text );
 			$userlink .= ' (' . $sk->userTalkLink( $row->rev_user, $row->rev_user_text ) . ') ';
 		} else {
 			$userlink = '';
-		}
-
-		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
-			$d = '<span class="history-deleted">' . $d . '</span>';
 		}
 
 		if( $rev->getParentId() === 0 ) {

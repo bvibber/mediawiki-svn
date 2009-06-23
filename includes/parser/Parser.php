@@ -441,7 +441,7 @@ class Parser
 		wfProfileIn( __METHOD__ );
 		wfRunHooks( 'ParserBeforeStrip', array( &$this, &$text, &$this->mStripState ) );
 		wfRunHooks( 'ParserAfterStrip', array( &$this, &$text, &$this->mStripState ) );
-		$text = $this->internalParse( $text );
+		$text = $this->internalParse( $text, false );
 		wfProfileOut( __METHOD__ );
 		return $text;
 	}
@@ -862,9 +862,10 @@ class Parser
 	 *
 	 * @private
 	 */
-	function internalParse( $text ) {
-		$isMain = true;
+	function internalParse( $text, $isMain = true ) {
 		wfProfileIn( __METHOD__ );
+		
+		$origText = $text;
 
 		# Hook to suspend the parser in this state
 		if ( !wfRunHooks( 'ParserBeforeInternalParse', array( &$this, &$text, &$this->mStripState ) ) ) {
@@ -899,7 +900,7 @@ class Parser
 		$text = str_replace($this->mUniqPrefix.'NOPARSE', '', $text);
 
 		$text = $this->doMagicLinks( $text );
-		$text = $this->formatHeadings( $text, $isMain );
+		$text = $this->formatHeadings( $text, $origText, $isMain );
 
 		wfProfileOut( __METHOD__ );
 		return $text;
@@ -1934,9 +1935,9 @@ class Parser
 		$result = $this->closeParagraph();
 
 		if ( '*' === $char ) { $result .= '<ul><li>'; }
-		else if ( '#' === $char ) { $result .= '<ol><li>'; }
-		else if ( ':' === $char ) { $result .= '<dl><dd>'; }
-		else if ( ';' === $char ) {
+		elseif ( '#' === $char ) { $result .= '<ol><li>'; }
+		elseif ( ':' === $char ) { $result .= '<dl><dd>'; }
+		elseif ( ';' === $char ) {
 			$result .= '<dl><dt>';
 			$this->mDTopen = true;
 		}
@@ -1947,7 +1948,7 @@ class Parser
 
 	/* private */ function nextItem( $char ) {
 		if ( '*' === $char || '#' === $char ) { return '</li><li>'; }
-		else if ( ':' === $char || ';' === $char ) {
+		elseif ( ':' === $char || ';' === $char ) {
 			$close = '</dd>';
 			if ( $this->mDTopen ) { $close = '</dt>'; }
 			if ( ';' === $char ) {
@@ -1963,8 +1964,8 @@ class Parser
 
 	/* private */ function closeList( $char ) {
 		if ( '*' === $char ) { $text = '</li></ul>'; }
-		else if ( '#' === $char ) { $text = '</li></ol>'; }
-		else if ( ':' === $char ) {
+		elseif ( '#' === $char ) { $text = '</li></ol>'; }
+		elseif ( ':' === $char ) {
 			if ( $this->mDTopen ) {
 				$this->mDTopen = false;
 				$text = '</dt></dl>';
@@ -1980,6 +1981,7 @@ class Parser
 	/**
 	 * Make lists from lines starting with ':', '*', '#', etc. (DBL)
 	 *
+	 * @param $linestart bool whether or not this is at the start of a line.
 	 * @private
 	 * @return string the lists rendered as HTML
 	 */
@@ -2004,16 +2006,24 @@ class Parser
 				$linestart = true;
 				continue;
 			}
+			// * = ul
+			// # = ol
+			// ; = dt
+			// : = dd
 
 			$lastPrefixLength = strlen( $lastPrefix );
 			$preCloseMatch = preg_match('/<\\/pre/i', $oLine );
 			$preOpenMatch = preg_match('/<pre/i', $oLine );
+			// If not in a <pre> element, scan for and figure out what prefixes are there.
 			if ( !$this->mInPre ) {
 				# Multiple prefixes may abut each other for nested lists.
 				$prefixLength = strspn( $oLine, '*#:;' );
 				$prefix = substr( $oLine, 0, $prefixLength );
 
 				# eh?
+				// ; and : are both from definition-lists, so they're equivalent
+				//  for the purposes of determining whether or not we need to open/close
+				//  elements.
 				$prefix2 = str_replace( ';', ':', $prefix );
 				$t = substr( $oLine, $prefixLength );
 				$this->mInPre = (bool)$preOpenMatch;
@@ -2042,17 +2052,24 @@ class Parser
 					}
 				}
 			} elseif( $prefixLength || $lastPrefixLength ) {
+				// We need to open or close prefixes, or both.
+				
 				# Either open or close a level...
 				$commonPrefixLength = $this->getCommon( $prefix, $lastPrefix );
 				$paragraphStack = false;
 
+				// Close all the prefixes which aren't shared.
 				while( $commonPrefixLength < $lastPrefixLength ) {
 					$output .= $this->closeList( $lastPrefix[$lastPrefixLength-1] );
 					--$lastPrefixLength;
 				}
+				
+				// Continue the current prefix if appropriate.
 				if ( $prefixLength <= $commonPrefixLength && $commonPrefixLength > 0 ) {
 					$output .= $this->nextItem( $prefix[$commonPrefixLength-1] );
 				}
+				
+				// Open prefixes where appropriate.
 				while ( $prefixLength > $commonPrefixLength ) {
 					$char = substr( $prefix, $commonPrefixLength, 1 );
 					$output .= $this->openList( $char );
@@ -2068,6 +2085,8 @@ class Parser
 				}
 				$lastPrefix = $prefix2;
 			}
+			
+			// If we have no prefixes, go to paragraph mode.
 			if( 0 == $prefixLength ) {
 				wfProfileIn( __METHOD__."-paragraph" );
 				# No prefix (not in list)--go to paragraph mode
@@ -3373,10 +3392,11 @@ class Parser
 	 * string and re-inserts the newly formatted headlines.
 	 *
 	 * @param string $text
+	 * @param string $origText Original, untouched wikitext
 	 * @param boolean $isMain
 	 * @private
 	 */
-	function formatHeadings( $text, $isMain=true ) {
+	function formatHeadings( $text, $origText, $isMain=true ) {
 		global $wgMaxTocLevel, $wgContLang, $wgEnforceHtmlIds;
 
 		$doNumberHeadings = $this->mOptions->getNumberHeadings();
@@ -3442,6 +3462,12 @@ class Parser
 		$prevtoclevel = 0;
 		$markerRegex = "{$this->mUniqPrefix}-h-(\d+)-" . self::MARKER_SUFFIX;
 		$baseTitleText = $this->mTitle->getPrefixedDBkey();
+		$oldType = $this->mOutputType;
+		$this->setOutputType( self::OT_WIKI );
+		$frame = $this->getPreprocessor()->newFrame();
+		$root = $this->preprocessToDom( $origText );
+		$node = $root->getFirstChild();
+		$byteOffset = 0;
 		$tocraw = array();
 
 		foreach( $matches[3] as $headline ) {
@@ -3620,8 +3646,29 @@ class Parser
 				$legacyAnchor .= '_' . $refers[$legacyArrayKey];
 			}
 			if( $enoughToc && ( !isset($wgMaxTocLevel) || $toclevel<$wgMaxTocLevel ) ) {
-				$toc .= $sk->tocLine($anchor, $tocline, $numbering, $toclevel);
-				$tocraw[] = array( 'toclevel' => $toclevel, 'level' => $level, 'line' => $tocline, 'number' => $numbering );
+				$toc .= $sk->tocLine($anchor, $tocline,
+					$numbering, $toclevel, ($isTemplate ? false : $sectionIndex));
+				
+				# Find the DOM node for this header
+				while ( $node && !$isTemplate ) {
+					if ( $node->getName() === 'h' ) {
+						$bits = $node->splitHeading();
+						if ( $bits['i'] == $sectionIndex )
+							break;
+					}
+					$byteOffset += mb_strlen( $this->mStripState->unstripBoth( 
+						$frame->expand( $node, PPFrame::RECOVER_ORIG ) ) );
+					$node = $node->getNextSibling();
+				}
+				$tocraw[] = array( 
+					'toclevel' => $toclevel,
+					'level' => $level,
+					'line' => $tocline,
+					'number' => $numbering,
+					'index' => $sectionIndex,
+					'fromtitle' => $titleText,
+					'byteoffset' => ( $isTemplate ? null : $byteOffset ),
+				);
 			}
 			# give headline the correct <h#> tag
 			if( $showEditLink && $sectionIndex !== false ) {
@@ -3642,7 +3689,7 @@ class Parser
 			$headlineCount++;
 		}
 
-		$this->mOutput->setSections( $tocraw );
+		$this->setOutputType( $oldType );
 
 		# Never ever show TOC if no headers
 		if( $numVisible < 1 ) {
@@ -3654,6 +3701,11 @@ class Parser
 				$toc .= $sk->tocUnindent( $prevtoclevel - 1 );
 			}
 			$toc = $sk->tocList( $toc );
+		}
+		
+		if ( $isMain ) {
+			$this->mOutput->setSections( $tocraw );
+			$this->mOutput->setTOCHTML( $toc );
 		}
 
 		# split up and insert constructed headlines

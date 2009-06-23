@@ -700,14 +700,14 @@ $2',
 'rev-deleted-comment'         => '（此註刪矣）',
 'rev-deleted-user'            => '（此簿刪矣）',
 'rev-deleted-event'           => '（此誌刪矣）',
-'rev-deleted-text-permission' => "此審'''刪'''矣，詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}}誌刪]。",
-'rev-deleted-text-unhide'     => "此審'''刪'''矣，詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}}誌刪]。
+'rev-deleted-text-permission' => "此審'''刪'''矣，詳見[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}}誌廢]。",
+'rev-deleted-text-unhide'     => "此審'''刪'''矣，詳見[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}}誌廢]。
 有秩仍看者，[$1 看此審]也。",
-'rev-deleted-text-view'       => "此審'''刪'''矣，惟有秩可見之，詳見[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 誌刪]。",
+'rev-deleted-text-view'       => "此審'''刪'''矣，惟有秩可見之，詳見[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 誌廢]。",
 'rev-deleted-no-diff'         => "此審'''刪'''矣，無視之審也。
-詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}}誌刪]。",
+詳見[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}}誌廢]。",
 'rev-deleted-unhide-diff'     => "此審'''刪'''矣，
-詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}}誌刪]。
+詳見[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}}誌廢]。
 有秩仍看者，[$1 看此審]也。",
 'rev-delundel'                => '見/藏',
 'revisiondelete'              => '刪、還審',
@@ -935,7 +935,7 @@ $1",
 'mypreferences'                 => '簿註',
 'prefs-edits'                   => '數計：',
 'prefsnologin'                  => '未登簿',
-'prefsnologintext'              => '註記須<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} 登簿]</span>。',
+'prefsnologintext'              => '註記須<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} 登簿]</span>。',
 'changepassword'                => '易符節',
 'prefs-skin'                    => '面版',
 'skin-preview'                  => '草覽',
@@ -1536,6 +1536,13 @@ $1",
 'listusersfrom'      => '始簿：',
 'listusers-submit'   => '見',
 'listusers-noresult' => '尋無簿。',
+'listusers-blocked'  => '(已禁)',
+
+# Special:ActiveUsers
+'activeusers'          => '躍簿',
+'activeusers-count'    => '$1次近易',
+'activeusers-from'     => '示簿始於：',
+'activeusers-noresult' => '無簿矣。',
 
 # Special:Log/newusers
 'newuserlogpage'              => '誌簿',
@@ -1548,6 +1555,8 @@ $1",
 # Special:ListGroupRights
 'listgrouprights'                      => '權任一覽',
 'listgrouprights-summary'              => '此所列述，諸職所司也，各有異同。欲知其詳，請閱[[{{MediaWiki:Listgrouprights-helppage}}|此文]]。',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">權授矣</span>
+* <span class="listgrouprights-revoked">權撤矣</span>',
 'listgrouprights-group'                => '組',
 'listgrouprights-rights'               => '權',
 'listgrouprights-helppage'             => 'Help:組權',
@@ -2026,8 +2035,8 @@ $1已被禁矣。爾是否改此置？',
 # Namespace 8 related
 'allmessages'               => '官話',
 'allmessagesname'           => '話',
-'allmessagesdefault'        => '慣文',
-'allmessagescurrent'        => '今文',
+'allmessagesdefault'        => '慣話文',
+'allmessagescurrent'        => '今話文',
 'allmessagestext'           => '此列MediaWiki官話。
 如貢正宗MediaWiki本地化，[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]與[http://translatewiki.net translatewiki.net]閱之。',
 'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages'''閉庫，'''無纂也。",

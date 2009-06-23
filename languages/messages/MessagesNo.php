@@ -23,6 +23,7 @@
  * @author Laaknor
  * @author Najami
  * @author Nghtwlkr
+ * @author Nsaa
  * @author Piivaat
  * @author Samuelsen
  * @author Stigmj
@@ -374,7 +375,28 @@ $messages = array(
 'faqpage'        => 'Project:Ofte stilte spørsmål',
 
 # Vector skin
-'vector-view-view' => 'Les',
+'vector-action-addsection'   => 'Nytt emne',
+'vector-action-delete'       => 'Slett',
+'vector-action-move'         => 'Flytt',
+'vector-action-protect'      => 'Beskytt',
+'vector-action-undelete'     => 'Gjenopprett',
+'vector-action-unprotect'    => 'Opphev beskyttelse',
+'vector-namespace-category'  => 'Kategori',
+'vector-namespace-help'      => 'Hjelpeside',
+'vector-namespace-image'     => 'Fil',
+'vector-namespace-main'      => 'Side',
+'vector-namespace-media'     => 'Mediaside',
+'vector-namespace-mediawiki' => 'Melding',
+'vector-namespace-project'   => 'Prosjektside',
+'vector-namespace-special'   => 'Spesialside',
+'vector-namespace-talk'      => 'Diskusjon',
+'vector-namespace-template'  => 'Mal',
+'vector-namespace-user'      => 'Brukerside',
+'vector-view-create'         => 'Opprett',
+'vector-view-edit'           => 'Rediger',
+'vector-view-history'        => 'Vis historikk',
+'vector-view-view'           => 'Les',
+'vector-view-viewsource'     => 'Vis kilden',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -890,16 +912,16 @@ Grunnen som ble oppgitt av $3 er ''$2''",
 'rev-deleted-user'            => '(brukernavn fjernet)',
 'rev-deleted-event'           => '(fjernet loggoppføring)',
 'rev-deleted-text-permission' => "Denne revisjonen har blitt '''slettet'''. 
-Det kan være detaljer i [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} slettingsloggen].",
+Det kan være detaljer i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} slettingsloggen].",
 'rev-deleted-text-unhide'     => "Denne sideversjonen er blitt '''slettet'''.
-Det kan være mer informasjon i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} sletteloggen].
+Det kan være mer informasjon i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} sletteloggen].
 Som administrator kan du fremdeles [$1 se denne versjonen] hvis du ønsker å fortsette.",
 'rev-deleted-text-view'       => "Denne sideversjonen har blitt '''slettet'''.
-Som administrator kan du se den. Det kan finnes flere detaljer i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} sletteloggen].",
+Som administrator kan du se den. Det kan finnes flere detaljer i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} sletteloggen].",
 'rev-deleted-no-diff'         => "Du kan ikke vise forskjellen fordi en av versjonene har blitt '''slettet'''.
-Det kan finnes flere detaljer i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}}sletteloggen].",
+Det kan finnes flere detaljer i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}}sletteloggen].",
 'rev-deleted-unhide-diff'     => "Én av versjonene i denne forskjellen har blitt '''slettet'''.
-Det kan finnes flere detaljer i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} sletteloggen].
+Det kan finnes flere detaljer i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} sletteloggen].
 Som administrator kan du fortsatt [$1 se forskjellen] om du ønsker å fortsette.",
 'rev-delundel'                => 'vis/skjul',
 'revisiondelete'              => 'Slett/gjenopprett revisjoner',
@@ -1141,7 +1163,7 @@ Forsikre deg om at denne endringen vil opprettholde historisk sidekontinuitet.',
 'mypreferences'                 => 'Innstillinger',
 'prefs-edits'                   => 'Antall redigeringer:',
 'prefsnologin'                  => 'Ikke logget inn',
-'prefsnologintext'              => 'Du må være <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} logget inn]</span> for å endre brukerinnstillingene.',
+'prefsnologintext'              => 'Du må være <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} logget inn]</span> for å endre brukerinnstillingene.',
 'changepassword'                => 'Endre passord',
 'prefs-skin'                    => 'Utseende',
 'skin-preview'                  => 'Forhåndsvisning',
@@ -1576,7 +1598,7 @@ Om problemet fortsetter, kontakt en [[Special:ListUsers/sysop|administrator]].',
 'filehist-comment'          => 'Kommentar',
 'filehist-missing'          => 'Fil mangler',
 'imagelinks'                => 'Fillenker',
-'linkstoimage'              => 'Følgende {{PLURAL:$1|side|$1 sider}} har lenker til denne fila:',
+'linkstoimage'              => 'Følgende {{PLURAL:$1|side|$1 sider}} har lenker til denne filen:',
 'linkstoimage-more'         => 'Mer enn $1 {{PLURAL:$1|side|sider}} lenker til denne fila.
 Følgende liste viser {{PLURAL:$1|den første siden|de $1 første sidene}}.
 En [[Special:WhatLinksHere/$2|fullstendig liste]] er tilgjengelig.',
@@ -1591,7 +1613,7 @@ Se [$2 filbeskrivelsessida] for mer informasjon.',
 Beskrivelsen fra [$2 filbeskrivelsessida] vises nedenfor.',
 'filepage-nofile'           => 'Det finnes ingen fil med dette navnet.',
 'filepage-nofile-link'      => 'Ingen fil med dette navnet eksisterer, men du kan [$1 laste den opp].',
-'uploadnewversion-linktext' => 'Last opp en ny versjon av denne fila',
+'uploadnewversion-linktext' => 'Last opp en ny versjon av denne filen',
 'shared-repo-from'          => 'fra $1',
 'shared-repo'               => 'et delt fillager',
 
@@ -1796,8 +1818,9 @@ Se også [[Special:WantedCategories|ønskede kategorier]].',
 'special-categories-sort-abc'   => 'sorter alfabetisk',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Slettede brukerbidrag',
-'deletedcontributions-title' => 'Slettede brukerbidrag',
+'deletedcontributions'             => 'Slettede brukerbidrag',
+'deletedcontributions-title'       => 'Slettede brukerbidrag',
+'sp-deletedcontributions-contribs' => 'bidrag',
 
 # Special:LinkSearch
 'linksearch'       => 'Eksterne lenker',
@@ -1812,6 +1835,13 @@ Se også [[Special:WantedCategories|ønskede kategorier]].',
 'listusersfrom'      => 'Vis brukere fra og med:',
 'listusers-submit'   => 'Vis',
 'listusers-noresult' => 'Ingen bruker funnet.',
+'listusers-blocked'  => '(konto blokkert)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Liste over aktiver brukere',
+'activeusers-count'    => '$1 nylige redigeringer',
+'activeusers-from'     => 'Vis brukere fra og med:',
+'activeusers-noresult' => 'Ingen brukere funnet.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Brukeropprettelseslogg',
@@ -1825,6 +1855,8 @@ Se også [[Special:WantedCategories|ønskede kategorier]].',
 'listgrouprights'                      => 'Rettigheter for brukergrupper',
 'listgrouprights-summary'              => 'Følgende er en liste over brukergrupper som er definert på denne wikien, og hvilke rettigheter de har.
 Mer informasjon om de enkelte rettighetstypene kan finnes [[{{MediaWiki:Listgrouprights-helppage}}|her]].',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Innvilget rettighet</span>
+* <span class="listgrouprights-granted">Tilbaketrukket rettighet</span>',
 'listgrouprights-group'                => 'Gruppe',
 'listgrouprights-rights'               => 'Rettigheter',
 'listgrouprights-helppage'             => 'Help:Grupperettigheter',
@@ -2907,7 +2939,7 @@ Rotert 90° mot klokka og vridd vertikalt',
 'exif-gpsdirection-m' => 'Magnetisk retning',
 
 # External editor support
-'edit-externally'      => 'Rediger denne fila med et eksternt program',
+'edit-externally'      => 'Rediger denne filen med et eksternt program',
 'edit-externally-help' => '(Se [http://www.mediawiki.org/wiki/Manual:External_editors oppsettsinstruksjonene] for mer informasjon)',
 
 # 'all' in various places, this might be different for inflected languages

@@ -14,6 +14,44 @@
 
 $fallback = 'da';
 
+$namespaceNames = array(
+	NS_SPECIAL          => 'Immikkut',
+	NS_TALK             => 'Oqallinneq',
+	NS_USER             => 'Atuisoq',
+	NS_USER_TALK        => 'Atuisup oqalliffia',
+	NS_PROJECT_TALK     => '$1ip oqalliffia',
+	NS_FILE             => 'Fiileq',
+	NS_FILE_TALK        => 'Fiilip oqalliffia',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Mediawikip oqalliffia',
+	NS_TEMPLATE         => 'Ilisserut',
+	NS_TEMPLATE_TALK    => 'Ilisserummi oqallinneq',
+	NS_HELP             => 'Ikiuutit',
+	NS_HELP_TALK        => 'Ikiuutini oqallinneq',
+	NS_CATEGORY         => 'Sumut atassuseq',
+	NS_CATEGORY_TALK    => 'Sumut atassusermi oqallinneq',
+);
+
+$namespaceAliases = array(
+	'Speciel' => NS_SPECIAL,
+	'Diskussion' => NS_TALK,
+	'Bruger' => NS_USER,
+	'Brugerdiskussion' => NS_USER_TALK,
+	'$1-diskussion' => NS_PROJECT_TALK,
+	'Fil' => NS_FILE,
+	'Fildiskussion' => NS_FILE_TALK,
+	'Billede' => NS_FILE,
+	'Billeddiskussion' => NS_FILE_TALK,
+	'MediaWiki' => NS_MEDIAWIKI,
+	'MediaWiki-diskussion' => NS_MEDIAWIKI_TALK,
+	'Skabelon' => NS_TEMPLATE,
+	'Skabelondiskussion' => NS_TEMPLATE_TALK,
+	'Hjælp' => NS_HELP,
+	'Hjælp-diskussion' => NS_HELP_TALK,
+	'Kategori' => NS_CATEGORY,
+	'Kategoridiskussion' => NS_CATEGORY_TALK
+);
+
 $messages = array(
 # Dates
 'sunday'        => 'sapaat',
@@ -95,6 +133,9 @@ $messages = array(
 'aboutsite'            => '{{SITENAME}} pillugu',
 'aboutpage'            => 'Project:Pillugu',
 'currentevents'        => 'Maannakkut pisut',
+'edithelp'             => 'Ikiuutit',
+'edithelppage'         => 'Help:Aaqqissuussineq',
+'helppage'             => 'Help:Ikiuutit',
 'mainpage'             => 'Saqqaa',
 'mainpage-description' => 'Saqqaa',
 'portal'               => 'Allaatiginnittartup saqqai',
@@ -109,8 +150,9 @@ $messages = array(
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-image'    => 'Assiliaq',
-'nstab-template' => 'Skabeloni',
-'nstab-category' => 'Suussuseq',
+'nstab-template' => 'Ilisserut',
+'nstab-help'     => 'Ikiuutit',
+'nstab-category' => 'Sumut atassuseq',
 
 # Login and logout pages
 'yourname'                   => 'Pineqartoqateq:',

@@ -1,5 +1,5 @@
 <?php
-/** Cantonese (粵語/廣東話)
+/** Yue (粵語)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -845,17 +845,17 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'rev-deleted-user'            => '(用戶名已經移除咗)',
 'rev-deleted-event'           => '(日誌動作已經移除咗)',
 'rev-deleted-text-permission' => "呢頁嘅修訂已經被'''洗咗'''。
-喺[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 刪除日誌]裏面可能會有更詳細嘅資料。",
+喺[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 廢止日誌]裏面可能會有更詳細嘅資料。",
 'rev-deleted-text-unhide'     => "呢頁嘅修訂已經被'''洗咗'''。
-喺[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 刪除日誌]裏面可能會有更詳細嘅資料。
+喺[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 廢止日誌]裏面可能會有更詳細嘅資料。
 作為管理員，如果你想繼續嘅話，可以仍然[$1 睇番呢次修訂]。",
 'rev-deleted-text-view'       => "呢頁嘅修訂已經'''洗咗'''。
 作為嘅管理員，你可以去睇吓佢；
-喺[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]裏面可能會有更詳細嘅資料。",
+喺[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 廢止日誌]裏面可能會有更詳細嘅資料。",
 'rev-deleted-no-diff'         => "因為其中一次修訂'''洗咗'''，你唔可以睇呢個差異。
-響[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]度可能有更多嘅資料。",
+響[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 廢止日誌]度可能有更多嘅資料。",
 'rev-deleted-unhide-diff'     => "呢頁嘅其中一次修訂已經'''洗咗'''。
-喺[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]裏面可能會有更詳細嘅資料。
+喺[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 廢止日誌]裏面可能會有更詳細嘅資料。
 作為管理員，如果你想繼續嘅話，可以仍然[$1 睇番呢次修訂]。",
 'rev-delundel'                => '顯示／隱藏',
 'revisiondelete'              => '刪除／反刪除修訂',
@@ -1093,7 +1093,7 @@ $1",
 'mypreferences'                 => '我嘅喜好設定',
 'prefs-edits'                   => '編輯數:',
 'prefsnologin'                  => '重未登入',
-'prefsnologintext'              => '你一定要去<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} 登入]</span>設定好用戶喜好值先。',
+'prefsnologintext'              => '你一定要去<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} 登入]</span>設定好用戶喜好值先。',
 'changepassword'                => '改密碼',
 'prefs-skin'                    => '畫面',
 'skin-preview'                  => '預覽',
@@ -1752,6 +1752,13 @@ Template:搞清楚',
 'listusersfrom'      => '顯示由呢個字開始嘅用戶：',
 'listusers-submit'   => '顯示',
 'listusers-noresult' => '搵唔到用戶。',
+'listusers-blocked'  => '(封鎖咗)',
+
+# Special:ActiveUsers
+'activeusers'          => '活躍用戶名單',
+'activeusers-count'    => '$1次最近編輯',
+'activeusers-from'     => '顯示用戶開始於:',
+'activeusers-noresult' => '搵唔到用戶。',
 
 # Special:Log/newusers
 'newuserlogpage'              => '使用者開戶記錄',
@@ -1765,6 +1772,8 @@ Template:搞清楚',
 'listgrouprights'                      => '用戶組權限',
 'listgrouprights-summary'              => '下面係一個響呢個wiki定義咗嘅用戶權限一覽，同埋佢哋嘅存取權。
 更多有關個別權限嘅[[{{MediaWiki:Listgrouprights-helppage}}|更多細節]]可以響嗰度搵到。',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">畀咗嘅權限</span>
+* <span class="listgrouprights-revoked">拎咗嘅權限</span>',
 'listgrouprights-group'                => '組',
 'listgrouprights-rights'               => '權',
 'listgrouprights-helppage'             => 'Help:組權限',
@@ -2286,8 +2295,8 @@ $1已經被封鎖。你係咪想更改呢個設定？',
 # Namespace 8 related
 'allmessages'               => '系統信息',
 'allmessagesname'           => '名稱',
-'allmessagesdefault'        => '預設文字',
-'allmessagescurrent'        => '現時文字',
+'allmessagesdefault'        => '預設訊息文字',
+'allmessagescurrent'        => '現時訊息文字',
 'allmessagestext'           => '以下係 MediaWiki 空間名入邊現有系統信息嘅清單。
 如果想貢獻正宗嘅MediaWiki本地化嘅話，請參閱[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]同埋[http://translatewiki.net translatewiki.net]。',
 'allmessagesnotsupportedDB' => "呢一版唔可以用，因為'''\$wgUseDatabaseMessages'''已經閂咗。",

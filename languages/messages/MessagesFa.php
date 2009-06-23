@@ -1120,16 +1120,16 @@ $2',
 'rev-deleted-user'            => '(نام کاربری حذف شده‌است)',
 'rev-deleted-event'           => '(مورد پاک شد)',
 'rev-deleted-text-permission' => "این ویرایش از این صفحه '''حذف شده‌است'''.
-ممکن است اطلاعات مرتبط با آن در [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} سیاههٔ حذف] موجود باشد.",
+ممکن است اطلاعات مرتبط با آن در [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} سیاههٔ فرونشانی] موجود باشد.",
 'rev-deleted-text-unhide'     => "این ویرایش از این صفحه '''حذف شده‌است'''.
-ممکن است اطلاعات مرتبط با آن در [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} سیاههٔ حذف] موجود باشد.
+ممکن است اطلاعات مرتبط با آن در [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} سیاههٔ فرونشانی] موجود باشد.
 شما به عنوان یک مدیر کماکان می‌توانید در صورت تمایل [$1 این نسخه را ببینید].",
 'rev-deleted-text-view'       => "این ویرایش از این صفحه '''حذف شده‌است'''.
-شما به عنوان یک مدیر می‌توانید آن را ببینید؛ ممکن است اطلاعات مرتبط با آن در [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} سیاههٔ حذف] موجود باشد.",
+شما به عنوان یک مدیر می‌توانید آن را ببینید؛ ممکن است اطلاعات مرتبط با آن در [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} سیاههٔ فرونشانی] موجود باشد.",
 'rev-deleted-no-diff'         => "شما نمی‌توانید این تفاوت را مشاهده کنید زیرا یکی از دو نسخه '''حذف شده‌است'''.
-ممکن است اطلاعات مرتبط با آن در [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} سیاههٔ حذف] موجود باشد.",
+ممکن است اطلاعات مرتبط با آن در [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} سیاههٔ فرونشانی] موجود باشد.",
 'rev-deleted-unhide-diff'     => "یکی از دو نسخهٔ این تفاوت '''حذف شده‌است'''.
-ممکن است اطلاعات مرتبط با آن در [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} سیاههٔ حذف] موجود باشد.
+ممکن است اطلاعات مرتبط با آن در [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} سیاههٔ فرونشانی] موجود باشد.
 شما به عنوان یک مدیر کماکان می‌توانید در صورت تمایل [$1 این تفاوت را ببینید].",
 'rev-delundel'                => 'نمایش/نهفتن',
 'revisiondelete'              => 'حذف/احیای نسخه‌ها',
@@ -1374,7 +1374,7 @@ $1",
 'mypreferences'                 => 'ترجیحات من',
 'prefs-edits'                   => 'تعداد ویرایش‌ها',
 'prefsnologin'                  => 'به سیستم وارد نشده‌اید',
-'prefsnologintext'              => 'برای تنظیم ترجیحات کاربر باید <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} به سیستم وارد شوید]</span>.',
+'prefsnologintext'              => 'برای تنظیم ترجیحات کاربر باید <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} به سیستم وارد شوید]</span>.',
 'changepassword'                => 'تغییر گذرواژه',
 'prefs-skin'                    => 'پوسته',
 'skin-preview'                  => 'پیش‌نمایش',
@@ -2024,8 +2024,9 @@ $1",
 'special-categories-sort-abc'   => 'مرتب کردن الفبایی',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'مشارکت‌های حذف شده',
-'deletedcontributions-title' => 'مشارکت‌های حذف شده',
+'deletedcontributions'             => 'مشارکت‌های حذف شده',
+'deletedcontributions-title'       => 'مشارکت‌های حذف شده',
+'sp-deletedcontributions-contribs' => 'مشارکت‌ها',
 
 # Special:LinkSearch
 'linksearch'       => 'پیوندهای بیرونی',
@@ -2040,6 +2041,13 @@ $1",
 'listusersfrom'      => 'نمایش کاربران با شروع از:',
 'listusers-submit'   => 'نمایش',
 'listusers-noresult' => 'هیچ کاربری یافت نشد.',
+'listusers-blocked'  => '(بسته شده)',
+
+# Special:ActiveUsers
+'activeusers'          => 'فهرست کاربران فعال',
+'activeusers-count'    => '$1 {{PLURAL:$1|ویرایش|ویرایش}} اخیر',
+'activeusers-from'     => 'نمایش کاربران با آغاز از:',
+'activeusers-noresult' => 'کاربری پیدا نشد.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'سیاههٔ ایجاد کاربر',
@@ -2053,6 +2061,8 @@ $1",
 'listgrouprights'                      => 'اختیارات گروه‌های کاربری',
 'listgrouprights-summary'              => 'فهرست زیر شامل گروه‌های کاربری تعریف شده در این ویکی و اختیارات داده شده به آن‌ها است.
 اطلاعات بیشتر در مورد هر یک از اختیارات را در [[{{MediaWiki:Listgrouprights-helppage}}]] بیابید.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">اختیارات داده شده</span>
+* <span class="listgrouprights-revoked">اختیارات گرفته شده</span>',
 'listgrouprights-group'                => 'گروه',
 'listgrouprights-rights'               => 'دسترسی‌ها',
 'listgrouprights-helppage'             => 'Help:دسترسی‌های گروهی',

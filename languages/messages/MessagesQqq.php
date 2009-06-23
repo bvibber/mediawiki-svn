@@ -57,6 +57,7 @@
  * @author Platonides
  * @author Purodha
  * @author Raymond
+ * @author Ryan Schmidt
  * @author SPQRobin
  * @author Sanbec
  * @author Sborsody
@@ -83,7 +84,7 @@
 $messages = array(
 # User preference toggles
 'tog-underline'               => "[[Special:Preferences]], tab 'Misc'. Offers user a choice how to underline links.",
-'tog-highlightbroken'         => "[[Special:Preferences]], tab 'Misc'. Offers user a choice how format internal links to non-existing pages. As red links or with a trailing question mark.",
+'tog-highlightbroken'         => "[[Special:Preferences]], tab 'Appearance'. Offers user a choice how format internal links to non-existing pages. As red links or with a trailing question mark.",
 'tog-justify'                 => "[[Special:Preferences]], tab 'Misc'. Offers user a choice to justify paragraphs or not.",
 'tog-hideminor'               => "[[Special:Preferences]], tab 'Recent changes'. Offers user to hide minor edits in recent changes or not.",
 'tog-hidepatrolled'           => 'Option in Recent changes tab of [[Special:Preferences]] (if [[mw:Manual:$wgUseRCPatrol|$wgUseRCPatrol]] is enabled)',
@@ -661,7 +662,7 @@ $1 is the minimum number of characters in the password.',
 
 {{Identical|Summary}}',
 'minoredit'                        => 'Text above Save page button in editor',
-'watchthis'                        => 'Text above Show preview button in editor
+'watchthis'                        => 'Text of checkbox above "Show preview" button in editor.
 
 {{Identical|Watch this page}}',
 'savearticle'                      => 'Text on the Save page button. See also {{msg|showpreview}} and {{msg|showdiff}} for the other buttons.',
@@ -841,6 +842,8 @@ The name of the user who did this task appears before this message.',
 'revdelete-success'           => '{{RevisionDelete}}',
 'logdelete-success'           => '{{RevisionDelete}}',
 'revdel-restore'              => '{{RevisionDelete}}',
+'pagehist'                    => 'Links to page history at Special:RevisionDelete header together with links to the logs and Special:Undelete.',
+'deletedhist'                 => 'Links to Special:Undelete at Special:RevisionDelete header together with links to the logs and page history.',
 'revdelete-content'           => 'This message is used as parameter $1 in {{msg|revdelete-hid}} and {{msg|revdelete-unhid}} when hiding or unhiding the content of a revision or event.',
 'revdelete-summary'           => 'This message is used as parameter $1 in {{msg|revdelete-hid}} and {{msg|revdelete-unhid}} when hiding or unhiding the edit summary of a revision or event.',
 'revdelete-uname'             => 'This message is used as parameter $1 in {{msg|revdelete-hid}} and {{msg|revdelete-unhid}} when hiding or unhiding the username for a revision or event.
@@ -928,6 +931,8 @@ Used, possibly repeatedly, in a {{msg-mw|comma-separator}} separated list after 
 Used in the final position of a {{msg-mw|comma-separator}} separated list headed by {{msg-mw|diff-with}} followed by zero or more repetitions of {{msg-mw|diff-with-additional}}.',
 'diff-width'              => '{{Identical|Width}}',
 'diff-height'             => '{{Identical|Height}}',
+'diff-i'                  => '{{Identical|Italic}}',
+'diff-b'                  => '{{Identical|Bold}}',
 
 # Search results
 'searchresults-title'            => 'Appears as page title in the html header of the search result special page.',
@@ -1013,8 +1018,12 @@ $1 is the relevance of this result in per cent.
 'qbsettings-none' => '{{Identical|None}}',
 
 # Preferences page
-'preferences'                   => '{{Identical|Preferences}}',
-'mypreferences'                 => '{{Identical|My preferences}}',
+'preferences'                   => 'Title of the Special:Preferences page.
+
+{{Identical|Preferences}}',
+'mypreferences'                 => 'Action link label that leads to Special:Preferences; appears in the top menu (e.g. "Username My talk My preferences My watchlist My contributions Log out").
+
+{{Identical|My preferences}}',
 'prefs-edits'                   => 'In user preferences.',
 'prefsnologin'                  => '{{Identical|Not logged in}}',
 'changepassword'                => "Section heading on [[Special:Preferences]], tab 'User profile'.",
@@ -1066,7 +1075,9 @@ Shown as legend of the second fieldset of the tab 'Search' in [[Special:Preferen
 'prefs-custom-css'              => 'visible on [[Special:Preferences]] -[Skins].',
 'prefs-reset-intro'             => 'Used in [[Special:Preferences/reset]].',
 'prefs-emailconfirm-label'      => 'Used in [[Special:Preferences]].',
-'youremail'                     => '{{Identical|E-mail}}',
+'youremail'                     => 'Label of the e-mail text box of the "E-mail options" section of "Special:Preferences".
+
+{{Identical|E-mail}}',
 'username'                      => '{{Identical|Username}}',
 'uid'                           => '{{Identical|User ID}}',
 'prefs-memberingroups'          => 'This message is shown on [[Special:Preferences]], first tab, where it is follwed by a colon.',
@@ -1156,7 +1167,9 @@ Used in [[Special:Preferences]], tab "Recent changes".',
 'grouppage-bot'           => 'Link to project page of this group, displayed on [[Special:ListUsers/bot]].',
 'grouppage-sysop'         => 'Link to project page of this group, displayed on [[Special:ListUsers/sysop]].',
 'grouppage-bureaucrat'    => 'Name of project page of this group, linked to from [[Special:ListUsers/bureaucrat]], [[Special:ListGroupRights]], and some other special pages.',
-'grouppage-suppress'      => 'Link to project page of this group, displayed on [[Special:ListUsers/suppress]].',
+'grouppage-suppress'      => 'Link to project page of this group, displayed on [[Special:ListUsers/suppress]].
+
+{{Identical|Oversight}}',
 
 # Rights
 'right-read'                  => '{{doc-right}}
@@ -1675,6 +1688,7 @@ $1 is a page title",
 'unusedimagestext'        => 'Header message of [[Special:UnusedFiles]]',
 'pager-newer-n'           => "This is part of the navigation message on the top and bottom of Special pages which are lists of things in date order, e.g. the User's contributions page. It is passed as the second argument of {{msg-mw|Viewprevnext}}. $1 is the number of items shown per page.",
 'pager-older-n'           => "This is part of the navigation message on the top and bottom of Special pages which are lists of things in date order, e.g. the User's contributions page. It is passed as the first argument of {{msg-mw|Viewprevnext}}. $1 is the number of items shown per page.",
+'suppress'                => '{{Identical|Oversight}}',
 
 # Book sources
 'booksources'      => 'Name of special page displayed in [[Special:SpecialPages]]',
@@ -1735,21 +1749,34 @@ $1 is a page title",
 'special-categories-sort-count' => 'This message is used on [[Special:Categories]] to sort the list by the number of members in the categories.',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'The message is shown as a link on user contributions page (like [[Special:Contributions/User]]) to the corresponding [[Special:DeletedContributions]] page.
+'deletedcontributions'             => 'The message is shown as a link on user contributions page (like [[Special:Contributions/User]]) to the corresponding [[Special:DeletedContributions]] page.
 
 {{Identical|Deleted user contributions}}',
-'deletedcontributions-title' => 'Title of [[Special:DeletedContributions]] (extension), a special page with a list of edits to pages which were deleted. Only viewable by sysops.
+'deletedcontributions-title'       => 'Title of [[Special:DeletedContributions]] (extension), a special page with a list of edits to pages which were deleted. Only viewable by sysops.
 
 {{Identical|Deleted user contributions}}',
+'sp-deletedcontributions-contribs' => 'Link to user’s contributions on [[Special:DeletedContributions]]',
 
 # Special:LinkSearch
 'linksearch-ns' => '{{Identical|Namespace}}',
 'linksearch-ok' => '{{Identical|Search}}',
 
 # Special:ListUsers
-'listusers-submit' => 'Text displayed in the submission button of the [[Special:ListUsers]] form.
+'listusersfrom'      => 'identical with {{msg-mw|activeusers-from}}',
+'listusers-submit'   => 'Text displayed in the submission button of the [[Special:ListUsers]] form.
 {{Identical|Go}}
 {{Identical|Show}}',
+'listusers-noresult' => 'identical with {{msg-mw|activeusers-noresult}}',
+'listusers-blocked'  => 'Used on [[Special:ActiveUsers]] when a user has been blocked.
+* $1 is a user name for use with GENDER (optional)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Title of [[Special:ActiveUsers]]',
+'activeusers-count'    => "Used in [[Special:ActiveUsers]] to show the active user's recent edit count in brackets ([]).
+* $1 is the number of recent edits
+* $2 is the user's name for use with GENDER (optional)",
+'activeusers-from'     => 'identical with {{msg-mw|listusersfrom}}',
+'activeusers-noresult' => 'identical with {{msg-mw|listusers-noresult}}',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Part of the "Newuserlog" extension. It is both the title of [[Special:Log/newusers]] and the link you can see in the recent changes.',
@@ -1761,6 +1788,7 @@ $1 is a page title",
 # Special:ListGroupRights
 'listgrouprights'                 => 'The name of the special page [[Special:ListGroupRights]].',
 'listgrouprights-summary'         => 'The description used on [[Special:ListGroupRights]].',
+'listgrouprights-key'             => 'Footer note for the [[Special:ListGroupRights]] page',
 'listgrouprights-group'           => "The title of the column in the table, about user groups (like you are in the ''translator'' group).
 
 {{Identical|Group}}",
@@ -1823,7 +1851,7 @@ Special:EmailUser appears when you click on the link "E-mail this user" in the s
 'removedwatchtext'     => "After a page has been removed from a user's watchlist by clicking the {{msg|unwatch}} tab at the top of an article, this message appears just below the title of the article. $1 is the title of the article. See also {{msg|removedwatch}} and {{msg|addedwatchtext}}.",
 'watch'                => 'Name of the Watch tab. Should be in the imperative mood.',
 'watchthispage'        => '{{Identical|Watch this page}}',
-'unwatch'              => 'Name of "Unwatch" tab.',
+'unwatch'              => 'Label of "Unwatch" tab.',
 'notanarticle'         => '{{Identical|Content page}}',
 'watchlist-details'    => 'Message on Special page: My watchlist. This is paired with the message [[Mediawiki:Nowatchlist]] which appears instead of Watchlist-details when $1 is 0.',
 'wlheader-showupdated' => 'This message shows up near top of users watchlist page.',
@@ -2024,6 +2052,7 @@ Shown as subtitle of the protection form. $1 is the title of the page to be (un)
 'sp-contributions-blocklog'      => 'Used as a display name for a link to the block log on for example [[Special:Contributions/Mediawiki default]]
 
 {{Identical|Block log}}',
+'sp-contributions-logs'          => "Appears as an action link in the header of the Special:Contributions/''Username'' pages (e.g. \"For Somebody (talk | block log | logs)\").",
 'sp-contributions-username'      => 'This message appears whenever someone requests [[Special:Contributions]].',
 'sp-contributions-submit'        => '{{Identical|Search}}',
 
@@ -2130,9 +2159,9 @@ See also {{msg-mw|Blocklogentry}}.',
 'blocklink'                    => "Display name for a link that, when selected, leads to a form where a user can be blocked. Used in page history and recent changes pages. Example: \"''UserName (Talk | contribs | '''block''')''\".",
 'change-blocklink'             => 'Used to name the link on Special:Log',
 'contribslink'                 => 'Short for "contributions". Used as display name for a link to user contributions on history pages, [[Special:RecentChanges]], [[Special:Watchlist]], etc.',
-'blocklogpage'                 => 'The page name of [[Special:Log/block]]. It also appears in the drop down menu of [[Special:Log]] pages.
+'blocklogpage'                 => "The page name of [[Special:Log/block]]. Also appears in the drop down menu of [[Special:Log]] pages and in the action links of Special:Contributions/''Username'' pages (e.g. \"For Somebody (talk | block log | logs)\").
 
-{{Identical|Block log}}',
+{{Identical|Block log}}",
 'blocklog-fulllog'             => 'Shown at Special:BlockIP at the end of the block log if there are more than 10 entries for this user, see [[Special:BlockIP/Raymond]] as example (visible for sysops only).',
 'blocklogentry'                => 'This is the text of an entry in the Block log (and RC), after hour (and date, only in the Block log) and sysop name: 
 * $1 is the blocked user or IP (with link to contributions and talk)
@@ -2187,9 +2216,7 @@ Shown as subtitle of [[Special:MovePage/testpage]]. $1 is the title of the page 
 'movenologin'                  => '{{Identical|Not logged in}}',
 'movenologintext'              => "Text of message on special page 'Permissions Errors', which appears when somebody tries to move a page without being logged in.",
 'newtitle'                     => 'Used in the special page "[[Special:MovePage]]". The text for the inputbox to give the new page title.',
-'move-watch'                   => 'The text of the checkbox to watch the page you are moving.
-
-{{Identical|Watch this page}}',
+'move-watch'                   => 'The text of the checkbox to watch the pages you are moving from and to. If checked, the original page will be added to the watchlist even if you decide not to leave a redirect behind.',
 'movepagebtn'                  => "Button label on the special 'Move page'.
 
 {{Identical|Move page}}",
@@ -2280,7 +2307,7 @@ Related messages: {{msg|right-importupload|pl=yes}} (the user right for this).',
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'This text appears in the tool-tip when you hover the mouse over your the tab with you User name on it',
 'tooltip-pt-mytalk'               => 'Tooltip shown when hovering over the "my talk" link in your personal toolbox (upper right side).',
-'tooltip-pt-preferences'          => 'Tooltip shown when hovering over the "my preferences" link in your personal toolbox (upper right side).
+'tooltip-pt-preferences'          => 'Tooltip shown when hovering over the "my preferences" ([[MediaWiki:Mypreferences]]) link in your personal toolbox (upper right side).
 
 {{Identical|My preferences}}',
 'tooltip-pt-watchlist'            => 'Tooltip shown when hovering over the "my watchlist" link in your personal toolbox (upper right side).',

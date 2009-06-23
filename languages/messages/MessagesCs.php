@@ -1010,16 +1010,16 @@ Zkuste [[Special:Search|hledání]].',
 'rev-deleted-user'            => '(uživatelské jméno odstraněno)',
 'rev-deleted-event'           => '(záznam odstraněn)',
 'rev-deleted-text-permission' => "Tato revize byla '''smazána'''.
-Podrobnosti mohou být uvedeny v [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} knize smazaných stránek].",
+Podrobnosti mohou být uvedeny v [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} záznamu utajení].",
 'rev-deleted-text-unhide'     => "Tato revize byla '''smazána'''.
-Podrobnosti mohou být uvedeny v [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} knize smazaných stránek].
+Podrobnosti mohou být uvedeny v [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} záznamu utajení].
 Jako správce si však můžete [$1 tuto revizi prohlédnout], pokud chcete.",
 'rev-deleted-text-view'       => "Tato revize byla '''smazána'''.
-Jako správce si ji můžete prohlédnout; podrobnosti mohou být uvedeny v [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} knize smazaných stránek].",
+Jako správce si ji můžete prohlédnout; podrobnosti mohou být uvedeny v [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} záznamu utajení].",
 'rev-deleted-no-diff'         => "Tento rozdíl si nemůžete prohlédnout, protože jedna z&nbsp;revizí byla '''smazána'''.
-Podrobnosti mohou být uvedeny v&nbsp;[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} knize smazaných stránek].",
+Podrobnosti mohou být uvedeny v&nbsp;[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} záznamu utajení].",
 'rev-deleted-unhide-diff'     => "Jedna z revizí k tomuto porovnání byla '''smazána'''.
-Podrobnosti mohou být uvedeny v [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} knize smazaných stránek].
+Podrobnosti mohou být uvedeny v [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} záznamu utajení].
 Jako správce si však můžete [$1 tento rozdíl prohlédnout], pokud chcete.",
 'rev-delundel'                => 'skrýt/zobrazit',
 'revisiondelete'              => 'Smazat/obnovit revize',
@@ -1262,7 +1262,7 @@ Pokud na začátek dotazu přidáte ''all:'', bude se hledat všude (včetně di
 'mypreferences'                 => 'Nastavení',
 'prefs-edits'                   => 'Počet editací:',
 'prefsnologin'                  => 'Nejste přihlášen(a)!',
-'prefsnologintext'              => 'Pokud chcete měnit uživatelská nastavení, musíte se <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} přihlásit]</span>.',
+'prefsnologintext'              => 'Pokud chcete měnit uživatelská nastavení, musíte se <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} přihlásit]</span>.',
 'changepassword'                => 'Změna hesla',
 'prefs-skin'                    => 'Vzhled',
 'skin-preview'                  => 'Náhled',
@@ -1911,8 +1911,9 @@ Podívejte se také na [[Special:WantedCategories|žádané kategorie]].',
 'special-categories-sort-abc'   => 'seřadit abecedně',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Smazané editace uživatele',
-'deletedcontributions-title' => 'Smazané editace uživatele',
+'deletedcontributions'             => 'Smazané editace uživatele',
+'deletedcontributions-title'       => 'Smazané editace uživatele',
+'sp-deletedcontributions-contribs' => 'příspěvky',
 
 # Special:LinkSearch
 'linksearch'       => 'Externí odkazy',
@@ -1928,6 +1929,13 @@ Podporované protokoly: <tt>$1</tt>',
 'listusersfrom'      => 'Zobrazit uživatele počínaje od:',
 'listusers-submit'   => 'Ukázat',
 'listusers-noresult' => 'Nenalezen žádný uživatel.',
+'listusers-blocked'  => '({{GENDER:$1|zablokován|zablokována|zablokován}})',
+
+# Special:ActiveUsers
+'activeusers'          => 'Seznam aktivních uživatelů',
+'activeusers-count'    => '$1 {{PLURAL:$1|nedávná editace|nedávné editace|nedávných editací}}',
+'activeusers-from'     => 'Zobrazit uživatele počínaje od:',
+'activeusers-noresult' => 'Nenalezen žádný uživatel.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Kniha nových uživatelů',
@@ -1942,6 +1950,8 @@ Podporované protokoly: <tt>$1</tt>',
 'listgrouprights-summary'              => 'Toto je seznam uživatelských skupin definovaných na této wiki a&nbsp;jejich přístupových práv.
 
 [[{{MediaWiki:Listgrouprights-helppage}}|Podrobné informace o&nbsp;jednotlivých právech]]',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Udělená práva</span>
+* <span class="listgrouprights-revoked">Odebraná práva</span>',
 'listgrouprights-group'                => 'Skupina',
 'listgrouprights-rights'               => 'Práva',
 'listgrouprights-helppage'             => 'Help:Práva skupiny',

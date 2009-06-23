@@ -292,6 +292,7 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( 'חיפוש_קישורים_חיצוניים' ),
 	'DeletedContributions'      => array( 'תרומות_מחוקות' ),
 	'Tags'                      => array( 'תגיות' ),
+	'Activeusers'               => array( 'משתמשים_פעילים' ),
 );
 
 $namespaceNames = array(
@@ -1052,16 +1053,16 @@ $2',
 'rev-deleted-user'            => '(שם המשתמש הוסתר)',
 'rev-deleted-event'           => '(פעולת היומן הוסתרה)',
 'rev-deleted-text-permission' => "גרסת הדף הזו '''נמחקה'''.
-ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].",
+ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} יומן ההסתרות].",
 'rev-deleted-text-unhide'     => "גרסת הדף הזו '''נמחקה'''.
-ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].
+ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} יומן ההסתרות].
 כיוון שאתם בעלי הרשאות מפעיל מערכת, באפשרותכם [$1 לצפות בגרסה] אם ברצונכם להמשיך.",
 'rev-deleted-text-view'       => "גרסת הדף הזו '''נמחקה'''.
-כיוון שאתם בעלי הרשאות מפעיל מערכת, באפשרותכם לצפות בגרסה; ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].",
+כיוון שאתם בעלי הרשאות מפעיל מערכת, באפשרותכם לצפות בגרסה; ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} יומן ההסתרות].",
 'rev-deleted-no-diff'         => "אינכם יכולים לצפות בהבדלים בין הגרסאות שציינתם משום שאחת מהן '''נמחקה'''.
-ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].",
+ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} יומן ההסתרות].",
 'rev-deleted-unhide-diff'     => "אחת מהגרסאות שציינתם '''נמחקה'''.
-ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].
+ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} יומן ההסתרות].
 כיוון שאתם בעלי הרשאות מפעיל מערכת, באפשרותכם [$1 לצפות בהבדלים בין הגרסאות] אם ברצונכם להמשיך.",
 'rev-delundel'                => 'הצגה/הסתרה',
 'revisiondelete'              => 'מחיקת ושחזור גרסאות',
@@ -1304,7 +1305,7 @@ $1",
 'mypreferences'                 => 'ההעדפות שלי',
 'prefs-edits'                   => 'מספר עריכות:',
 'prefsnologin'                  => 'לא נרשמת באתר',
-'prefsnologintext'              => 'עליכם <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} להיכנס לחשבון]</span> כדי לשנות העדפות משתמש.',
+'prefsnologintext'              => 'עליכם <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} להיכנס לחשבון]</span> כדי לשנות העדפות משתמש.',
 'changepassword'                => 'שינוי סיסמה',
 'prefs-skin'                    => 'עיצוב',
 'skin-preview'                  => 'תצוגה מקדימה',
@@ -1970,8 +1971,9 @@ PICT # שונות
 'special-categories-sort-abc'   => 'סידור לפי סדר האלף בית',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'תרומות משתמש מחוקות',
-'deletedcontributions-title' => 'תרומות משתמש מחוקות',
+'deletedcontributions'             => 'תרומות משתמש מחוקות',
+'deletedcontributions-title'       => 'תרומות משתמש מחוקות',
+'sp-deletedcontributions-contribs' => 'תרומות',
 
 # Special:LinkSearch
 'linksearch'       => 'קישורים חיצוניים',
@@ -1986,6 +1988,13 @@ PICT # שונות
 'listusersfrom'      => 'הצגת משתמשים החל מ:',
 'listusers-submit'   => 'הצגה',
 'listusers-noresult' => 'לא נמצאו משתמשים.',
+'listusers-blocked'  => '(חסום)',
+
+# Special:ActiveUsers
+'activeusers'          => 'רשימת משתמשים פעילים',
+'activeusers-count'    => '{{PLURAL:$1|עריכה אחת לאחרונה|$1 עריכות לאחרונה}}',
+'activeusers-from'     => 'הצגת משתמשים החל מ:',
+'activeusers-noresult' => 'לא נמצאו משתמשים.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'יומן רישום משתמשים',
@@ -1999,6 +2008,8 @@ PICT # שונות
 'listgrouprights'                      => 'רשימת הרשאות לקבוצה',
 'listgrouprights-summary'              => 'זוהי רשימה של קבוצות המשתמש המוגדרות באתר זה, עם ההרשאות של כל אחת.
 מידע נוסף על ההרשאות ניתן למצוא [[{{MediaWiki:Listgrouprights-helppage}}|כאן]].',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">הרשאה שהוענקה</span>
+* <span class="listgrouprights-revoked">הרשאה שהוסרה</span>',
 'listgrouprights-group'                => 'קבוצה',
 'listgrouprights-rights'               => 'הרשאות',
 'listgrouprights-helppage'             => 'Help:הרשאות',
@@ -2539,8 +2550,8 @@ $1 כבר נחסם. האם ברצונכם לשנות את הגדרות החסי�
 # Namespace 8 related
 'allmessages'               => 'הודעות המערכת',
 'allmessagesname'           => 'שם',
-'allmessagesdefault'        => 'טקסט ברירת מחדל',
-'allmessagescurrent'        => 'טקסט נוכחי',
+'allmessagesdefault'        => 'טקסט ברירת המחדל של ההודעה',
+'allmessagescurrent'        => 'הטקסט הנוכחי של ההודעה',
 'allmessagestext'           => 'זוהי רשימת כל הודעות המערכת שבמרחב השם {{ns:mediawiki}}, המשמשות את ממשק האתר.
 
 מפעילי המערכת יכולים לערוך את ההודעות בלחיצה על שם ההודעה.',

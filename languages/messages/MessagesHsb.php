@@ -265,7 +265,7 @@ $messages = array(
 'cancel'        => 'Přetorhnyć',
 'moredotdotdot' => 'Wjace…',
 'mypage'        => 'Moja strona',
-'mytalk'        => 'Moja diskusija',
+'mytalk'        => 'moja diskusija',
 'anontalk'      => 'Z tutej IP diskutować',
 'navigation'    => 'Nawigacija',
 'and'           => '&#32;a',
@@ -528,8 +528,8 @@ Twoje konto bu wutworjene. Njezabudź swoje nastajenja za [[Special:Preferences|
 'nav-login-createaccount'    => 'Konto wutworić abo so přizjewić',
 'loginprompt'                => 'Zo by so pola {{GRAMMAR:genitiw|{{SITENAME}}}} přizjewić móhł, dyrbja so placki (cookies) zmóžnić.',
 'userlogin'                  => 'Konto wutworić abo so přizjewić',
-'logout'                     => 'Wotzjewić',
-'userlogout'                 => 'Wotzjewić',
+'logout'                     => 'wotzjewić',
+'userlogout'                 => 'wotzjewić',
 'notloggedin'                => 'Njepřizjewjeny',
 'nologin'                    => 'Nimaš žane konto? $1.',
 'nologinlink'                => 'Tu móžeš wužiwarske konto wutworić',
@@ -818,16 +818,16 @@ Legenda: (akt) = rozdźěl k tuchwilnej wersiji, (posl) = rozdźěl k předchadn
 'rev-deleted-user'            => '(wužiwarske mjeno wotstronjene)',
 'rev-deleted-event'           => '(Protokolowa akcija bu wotstronjena)',
 'rev-deleted-text-permission' => "Tuta wersija strony bu '''wušmórnjena'''.
-Hlej podrobnosće w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolu wušmórnjenjow].",
+Hlej podrobnosće w [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolu wušmórnjenjow].",
 'rev-deleted-text-unhide'     => "Tuta wersija strony bu '''wušmórnjena'''.
-Hlej podrobnosće w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolu wušmórnjenjow].
+Hlej podrobnosće w [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolu wušmórnjenjow].
 Jako administrator móžeš [$1 sej tutu wersiju wobhladać], jeli chceš pokročować.",
 'rev-deleted-text-view'       => "Tuta wersija strony bu '''wušmórnjena'''.
-Jako administrator móžeš sej ju wobhladać; hlej podrobnosće w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolu wušmórnjenjow].",
+Jako administrator móžeš sej ju wobhladać; hlej podrobnosće w [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolu wušmórnjenjow].",
 'rev-deleted-no-diff'         => "Njemóžeš sej tutón rozdźěl wobhladać, dokelž jedna z wersijow bu '''wušmórnjena'''.
-Hlej ewentuelne podrobnosće w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolu wušmórnjenjow].",
+Hlej ewentuelne podrobnosće w [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolu wušmórnjenjow].",
 'rev-deleted-unhide-diff'     => "Jedna z wersijow tutoho rozdźěla bu '''wušmórnjena'''.
-Podrobnosće hlej w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokol wušmórnjenjow].
+Podrobnosće hlej w [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokol wušmórnjenjow].
 Jako administrator móžeš hišće [$1 sej tutón rozdźěl wobhladać], jeli chceš pokročować.",
 'rev-delundel'                => 'pokazać/schować',
 'revisiondelete'              => 'Wersije wušmórnyć/wobnowić',
@@ -1071,7 +1071,7 @@ Spytaj swoje naprašowanje z prefiksom ''all:'' wužiwać, zo by wšón wobsah (
 'mypreferences'                 => 'moje nastajenja',
 'prefs-edits'                   => 'Ličba změnow:',
 'prefsnologin'                  => 'Njepřizjewjeny',
-'prefsnologintext'              => 'Dyrbiš <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} přizjewjeny]</span>  być, zo by móhł nastajenja postajić.',
+'prefsnologintext'              => 'Dyrbiš <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} přizjewjeny]</span>  być, zo by móhł nastajenja postajić.',
 'changepassword'                => 'Hesło změnić',
 'prefs-skin'                    => 'Šat',
 'skin-preview'                  => 'Přehlad',
@@ -1720,8 +1720,9 @@ Hlej tež [[Special:WantedCategories|požadane kategorije]].',
 'special-categories-sort-abc'   => 'Alfabetisce sortěrować',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'wušmórnjene přinoški',
-'deletedcontributions-title' => 'wušmórnjene přinoški',
+'deletedcontributions'             => 'wušmórnjene přinoški',
+'deletedcontributions-title'       => 'wušmórnjene přinoški',
+'sp-deletedcontributions-contribs' => 'přinoški',
 
 # Special:LinkSearch
 'linksearch'       => 'Eksterne wotkazy',
@@ -1736,6 +1737,13 @@ Hlej tež [[Special:WantedCategories|požadane kategorije]].',
 'listusersfrom'      => 'Započinajo z:',
 'listusers-submit'   => 'Pokazać',
 'listusers-noresult' => 'Njemóžno wužiwarjow namakać. Prošu wobkedźbuj, zo so mało- abo wulkopisanje na wotprašowanje wuskutkuje.',
+'listusers-blocked'  => '(blokowany)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lisćina aktiwnych wužiwarjow',
+'activeusers-count'    => '$1 {{PLURAL:$1|nowa změna|nowej změnje|nowe změny|nowych změnow}}',
+'activeusers-from'     => 'Wužiwarjow zwobraznić, započinajo z:',
+'activeusers-noresult' => 'Žani wužiwarjo namakani.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Protokol nowych wužiwarjow',
@@ -1748,6 +1756,8 @@ Hlej tež [[Special:WantedCategories|požadane kategorije]].',
 # Special:ListGroupRights
 'listgrouprights'                      => 'Prawa wužiwarskeje skupiny',
 'listgrouprights-summary'              => 'Slěduje lisćina wužiwarskich skupinow na tutej wikiju z jich wotpowědnymi přistupnymi prawami. Tu móžeš [[{{MediaWiki:Listgrouprights-helppage}}|dalše informacije]] wo jednotliwych prawach namakać.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Garantowane prawo</span>
+* <span class="listgrouprights-revoked">Wotwołane prawo</span>',
 'listgrouprights-group'                => 'Skupina',
 'listgrouprights-rights'               => 'Prawa',
 'listgrouprights-helppage'             => 'Help:Skupinske prawa',
@@ -1787,8 +1797,8 @@ E-mejlowa adresa, kotruž sy w [[Special:Preferences|swojich wužiwarskich nasta
 'emailuserfooter'  => 'Tuta e-mejlka bu z pomocu funkcije "Wužiwarjej mejlku pósłać" na {{SITENAME}} wot $1 do $2 pósłana.',
 
 # Watchlist
-'watchlist'            => 'Wobkedźbowanki',
-'mywatchlist'          => 'Wobkedźbowanki',
+'watchlist'            => 'wobkedźbowanki',
+'mywatchlist'          => 'wobkedźbowanki',
 'watchlistfor'         => '(za wužiwarja <b>$1</b>)',
 'nowatchlist'          => 'Nimaš žane strony w swojich wobkedźbowankach.',
 'watchlistanontext'    => 'Dyrbiš so $1, zo by swoje wobkedźbowanki wobhladać abo wobdźěłać móhł.',
@@ -2019,7 +2029,7 @@ $1',
 # Contributions
 'contributions'       => 'Přinoški wužiwarja',
 'contributions-title' => 'Wužiwarske přinoški wot „$1“',
-'mycontris'           => 'Moje přinoški',
+'mycontris'           => 'moje přinoški',
 'contribsub2'         => 'za wužiwarja $1 ($2)',
 'nocontribs'          => 'Žane změny, kotrež podatym kriterijam wotpowěduja.',
 'uctop'               => '(aktualnje)',

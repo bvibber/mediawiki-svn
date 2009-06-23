@@ -124,7 +124,8 @@ class SpecialPage
 		'Preferences'               => 'SpecialPreferences',	
 		'Contributions'             => 'SpecialContributions',	
 		'Listgrouprights'           => 'SpecialListGroupRights',
-		'Listusers'                 => array( 'SpecialPage', 'Listusers' ),	
+		'Listusers'                 => array( 'SpecialPage', 'Listusers' ),
+		'Activeusers'               => array( 'SpecialPage', 'Activeusers' ),
 		'Userrights'                => 'UserrightsPage',
 
 		# Recent changes and logs
@@ -174,7 +175,7 @@ class SpecialPage
 		'Booksources'               => 'SpecialBookSources',
 		
 		# Unlisted / redirects
-		'Blankpage'                 => array( 'UnlistedSpecialPage', 'Blankpage' ),
+		'Blankpage'                 => 'SpecialBlankpage',
 		'Blockme'                   => array( 'UnlistedSpecialPage', 'Blockme' ),	
 		'Emailuser'                 => array( 'UnlistedSpecialPage', 'Emailuser' ),
 		'Listadmins'                => array( 'SpecialRedirectToSpecial', 'Listadmins', 'Listusers', 'sysop' ),

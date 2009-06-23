@@ -296,6 +296,7 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( 'VerwijzingenZoeken', 'LinksZoeken' ),
 	'DeletedContributions'      => array( 'VerwijderdeBijdragen' ),
 	'Tags'                      => array( 'Labels' ),
+	'Activeusers'               => array( 'ActieveGebruikers' ),
 );
 
 $linkTrail = '/^([a-zäöüïëéèà]+)(.*)$/sDu';
@@ -1063,17 +1064,17 @@ Wellicht is die verwijderd of hernoemd.
 'rev-deleted-user'            => '(gebruiker verwijderd)',
 'rev-deleted-event'           => '(logboekregel verwijderd)',
 'rev-deleted-text-permission' => "Deze bewerking is '''verwijderd'''.
-Er kunnen details aanwezig zijn in het [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} verwijderingslogboek].",
+Er kunnen details aanwezig zijn in het [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} logboek onderdrukte versies].",
 'rev-deleted-text-unhide'     => "Deze versie van de pagina is '''verwijderd'''.
-Achtergronden zijn mogelijk te vinden in het [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} verwijderlogboek].
+Achtergronden zijn mogelijk te vinden in het [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} logboek onderdrukte versies].
 Als beheerder kunt u [$1 deze versie bekijken] als u wilt.",
 'rev-deleted-text-view'       => "Deze bewerking is '''verwijderd'''.
 Als beheerder kunt u deze zien;
-er kunnen details aanwezig zijn in het [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} verwijderingslogboek].",
+er kunnen details aanwezig zijn in het [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} logboek onderdrukte versies].",
 'rev-deleted-no-diff'         => "U kunt de verschillen niet bekijken omdat een van de versies is '''verwijderd'''.
-Achtergronden zijn mogelijk te vinden in het [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} verwijderlogboek].",
+Achtergronden zijn mogelijk te vinden in het [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} logboek onderdrukte versies].",
 'rev-deleted-unhide-diff'     => "Een van de bewerkingen voor de verschillen die u hebt opgevraagd is '''verwijderd'''.
-Achtergronden zijn mogelijk te vinden in het [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} verwijderlogboek].
+Achtergronden zijn mogelijk te vinden in het [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} logboek onderdrukte versies].
 Als beheerder kunt u [$1 de verschillen bekijken] als u wilt.",
 'rev-delundel'                => 'weergeven/verbergen',
 'revisiondelete'              => 'Versies verwijderen/terugplaatsen',
@@ -1322,7 +1323,7 @@ De gegevens over {{SITENAME}} zijn mogelijk niet bijgewerkt.',
 'mypreferences'                 => 'Mijn voorkeuren',
 'prefs-edits'                   => 'Aantal bewerkingen:',
 'prefsnologin'                  => 'Niet aangemeld',
-'prefsnologintext'              => 'U moet <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} aangemeld]</span> zijn om uw voorkeuren te kunnen instellen.',
+'prefsnologintext'              => 'U moet <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} aangemeld]</span> zijn om uw voorkeuren te kunnen instellen.',
 'changepassword'                => 'Wachtwoord wijzigen',
 'prefs-skin'                    => 'Vormgeving',
 'skin-preview'                  => 'Voorbeeld',
@@ -1516,7 +1517,7 @@ U kunt ook anderen in staat stellen per e-mail contact met u op te nemen via een
 'right-autopatrol'            => 'Bewerkingen automatisch als gecontroleerd gemarkeerd krijgen',
 'right-patrolmarks'           => 'Controletekens in recente wijzigingen bekijken',
 'right-unwatchedpages'        => "Een lijst met pagina's die niet op een volglijst staan bekijken",
-'right-trackback'             => 'Een trackback opgeven',
+'right-trackback'             => "Terugverwijzende pagina's opgeven",
 'right-mergehistory'          => "De geschiedenis van pagina's samenvoegen",
 'right-userrights'            => 'Alle gebruikersrechten bewerken',
 'right-userrights-interwiki'  => "Gebruikersrechten van gebruikers in andere wiki's wijzigen",
@@ -1560,7 +1561,7 @@ U kunt ook anderen in staat stellen per e-mail contact met u op te nemen via een
 'action-patrol'               => 'bewerkingen van anderen als gecontroleerd te markeren',
 'action-autopatrol'           => 'eigen bewerkingen als gecontroleerd te laten markeren',
 'action-unwatchedpages'       => "de lijst met pagina's die niet op een volglijst staan te bekijken",
-'action-trackback'            => 'een trackback op te geven',
+'action-trackback'            => 'een terugverwijzende pagina op te geven',
 'action-mergehistory'         => 'de geschiedenis van deze pagina samen te voegen',
 'action-userrights'           => 'alle gebruikersrechten te bewerken',
 'action-userrights-interwiki' => "gebruikersrechten van gebruikers van andere wiki's te bewerken",
@@ -1575,7 +1576,7 @@ U kunt ook anderen in staat stellen per e-mail contact met u op te nemen via een
 'rcnote'                            => "Hieronder {{PLURAL:$1|staat de laatste bewerking|staan de laatste '''$1''' bewerkingen}} in de laatste {{PLURAL:$2|dag|'''$2''' dagen}}, op $4 om $5.",
 'rcnotefrom'                        => "Wijzigingen sinds '''$2''' (met een maximum van '''$1''' wijzigingen).",
 'rclistfrom'                        => 'Wijzigingen bekijken vanaf $1',
-'rcshowhideminor'                   => 'kleine wijzigingen $1',
+'rcshowhideminor'                   => 'Kleine wijzigingen $1',
 'rcshowhidebots'                    => 'bots $1',
 'rcshowhideliu'                     => 'aangemelde gebruikers $1',
 'rcshowhideanons'                   => 'anonieme gebruikers $1',
@@ -2030,6 +2031,13 @@ Ondersteunde protocollen: <tt>$1</tt>',
 'listusersfrom'      => 'Gebruikers bekijken vanaf:',
 'listusers-submit'   => 'Weergeven',
 'listusers-noresult' => 'Geen gebruiker gevonden.',
+'listusers-blocked'  => '(geblokkeerd)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Aanwezige gebruikers',
+'activeusers-count'    => '$1 recente bewerkingen',
+'activeusers-from'     => 'Gebruikers worden weergegeven vanaf:',
+'activeusers-noresult' => 'Geen actieve gebruikers gevonden.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Logboek nieuwe gebruikers',
@@ -2043,6 +2051,8 @@ Ondersteunde protocollen: <tt>$1</tt>',
 'listgrouprights'                      => 'Rechten van gebruikersgroepen',
 'listgrouprights-summary'              => 'Op deze pagina staan de gebruikersgroepen in deze wiki beschreven, met hun bijbehorende rechten.
 Er kan [[{{MediaWiki:Listgrouprights-helppage}}|extra informatie]] over individuele rechten aanwezig zijn.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Toewezen recht</span>
+* <span class="listgrouprights-revoked">Ingetrokken recht</span>',
 'listgrouprights-group'                => 'Groep',
 'listgrouprights-rights'               => 'Rechten',
 'listgrouprights-helppage'             => 'Help:Gebruikersrechten',
@@ -3228,11 +3238,11 @@ De bevestigingscode vervalt op $4.',
 'scarytranscludetoolong'  => '[De URL is te lang]',
 
 # Trackbacks
-'trackbackbox'      => 'Trackbacks voor deze pagina:<br />
-$1',
+'trackbackbox'      => "Terugverwijzende pagina's voor deze pagina:<br />
+$1",
 'trackbackremove'   => '([$1 Verwijderen])',
-'trackbacklink'     => 'Trackback',
-'trackbackdeleteok' => 'De trackback is verwijderd.',
+'trackbacklink'     => 'Terugverwijzende pagina',
+'trackbackdeleteok' => 'De terugverwijzende pagina is verwijderd.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Let op''': deze pagina is verwijderd terwijl u bezig was met uw bewerking!",

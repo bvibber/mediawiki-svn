@@ -53,6 +53,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Paveikslėlių sąrašas' ),
 	'Newimages'                 => array( 'Nauji paveikslėliai' ),
 	'Listusers'                 => array( 'Naudotojų sąrašas' ),
+	'Listgrouprights'           => array( 'Grupių teisių sąrašas' ),
 	'Statistics'                => array( 'Statistika' ),
 	'Randompage'                => array( 'Atsitiktinis puslapis' ),
 	'Lonelypages'               => array( 'Vieniši puslapiai' ),
@@ -120,8 +121,12 @@ $specialPageAliases = array(
 	'Resetpass'                 => array( 'Slaptažodžio atstatymas' ),
 	'Withoutinterwiki'          => array( 'Be interwiki' ),
 	'MergeHistory'              => array( 'Sujungti istoriją' ),
+	'Filepath'                  => array( 'Kelias iki failo' ),
+	'Invalidateemail'           => array( 'Nutraukti elektroninio pašto galiojimą' ),
 	'Blankpage'                 => array( 'Tuščias puslapis' ),
+	'LinkSearch'                => array( 'Nuorodų paieška' ),
 	'DeletedContributions'      => array( 'Ištrintas indėlis' ),
+	'Tags'                      => array( 'Žymos' ),
 );
 
 $magicWords = array(
@@ -323,7 +328,28 @@ $messages = array(
 'faqpage'        => 'Project:DUK',
 
 # Vector skin
-'vector-view-view' => 'Skaityti',
+'vector-action-addsection'   => 'Pridėti temą',
+'vector-action-delete'       => 'Ištrinti',
+'vector-action-move'         => 'Perkelti',
+'vector-action-protect'      => 'Užrakinti',
+'vector-action-undelete'     => 'Atšaukti trynimą',
+'vector-action-unprotect'    => 'Atšaukti užrakinimą',
+'vector-namespace-category'  => 'Kategorija',
+'vector-namespace-help'      => 'Pagalbos puslapis',
+'vector-namespace-image'     => 'Failas',
+'vector-namespace-main'      => 'Puslapis',
+'vector-namespace-media'     => 'Media puslapis',
+'vector-namespace-mediawiki' => 'Pranešimas',
+'vector-namespace-project'   => 'Projekto puslapis',
+'vector-namespace-special'   => 'Specialusis puslapis',
+'vector-namespace-talk'      => 'Diskusija',
+'vector-namespace-template'  => 'Šablonas',
+'vector-namespace-user'      => 'Naudotojo puslapis',
+'vector-view-create'         => 'Kurti',
+'vector-view-edit'           => 'Redaguoti',
+'vector-view-history'        => 'Istorija',
+'vector-view-view'           => 'Skaityti',
+'vector-view-viewsource'     => 'Žiūrėti kodą',
 
 # Metadata in edit box
 'metadata_help' => 'Metaduomenys:',
@@ -518,7 +544,7 @@ Užklausa: $2',
 'actionthrottledtext'  => 'Kad būtų apsisaugota nuo reklamų, jums neleidžiama daug kartų atlikti šį veiksmą per trumpą laiko tarpą, bet jūs pasiekėte šį limitą. Prašome vėl pamėginti po kelių minučių.',
 'protectedpagetext'    => 'Šis puslapis yra užrakintas, saugant jį nuo redagavimo.',
 'viewsourcetext'       => 'Jūs galite žiūrėti ir kopijuoti puslapio kodą:',
-'protectedinterface'   => 'Šiame puslapyje yra programinės įrangos sąsajos tekstas ir yra apsaugotas, kad būtų apsisaugota nuo piktnaudžiavimo.',
+'protectedinterface'   => 'Šiame puslapyje yra apsaugotas nuo piktnaudžiavimo programinės įrangos sąsajos tekstas.',
 'editinginterface'     => "'''Dėmesio:''' Jūs redaguojate puslapį, kuris yra naudojamas programinės įrangos sąsajos tekste. Pakeitimai šiame puslapyje taip pat pakeis naudotojo sąsajos išvaizdą ir kitiems naudojams. Jei norite išversti, siūlome pasinaudoti [http://translatewiki.net/wiki/Main_Page?setlang=lt „translatewiki.net“], „MediaWiki“ lokalizacijos projektu.",
 'sqlhidden'            => '(SQL užklausa paslėpta)',
 'cascadeprotected'     => 'Šis puslapis buvo apsaugotas nuo redagavimo, kadangi jis yra įtrauktas į {{PLURAL:$1|šį puslapį, apsaugotą|šiuos puslapius, apsaugotus}} „pakopinės apsaugos“ pasirinktimi:
@@ -800,8 +826,8 @@ Jūs galite grįžti ir redaguoti jau esantį puslapį, arba [[Special:UserLogin
 
 Jūs turite nuspręsti, ar reikėtų toliau redaguoti šį puslapį.
 Dėl patogumo čia pateikta šio puslapio šalinimų ir perkėlimų istorija:",
-'moveddeleted-notice'              => 'Šis puslapis buvo panaikintas.
-Puslapio panaikinimo ir perkėlimų istorija pateikta žemiau peržiūrėjimui.',
+'moveddeleted-notice'              => 'Šis puslapis buvo ištrintas.
+Žemiau pateikta puslapio šalinimų ir pervadinimų istorija.',
 'log-fulllog'                      => 'Rodyti visą istoriją',
 'edit-hook-aborted'                => 'Keitimas nutrauktas užlūžimo.
 Tam nėra paaiškinimo.',
@@ -877,19 +903,19 @@ Pamėginkite [[Special:Search|ieškoti projekte]] susijusių naujų puslapių.',
 'rev-deleted-text-permission' => "Ši puslapio versija buvo '''pašalinta'''.
 Daugiau detalių galima rasti [{{fullurl:{{ns:special}}:Log/delete|page={{FULLPAGENAMEE}}}} trynimų istorijoje].",
 'rev-deleted-text-unhide'     => "Ši puslapio versija buvo '''ištrinta'''.
-Trynimo detales rasite [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} ištrintų puslapių sąraše].
+Trynimo detales rasite [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} ištrintų puslapių sąraše].
 Kaip administratorius, Jūs vis dar galite [$1 peržiūrėti šią versiją].",
 'rev-deleted-text-view'       => "Ši puslapio versija buvo '''pašalinta'''.
 Kaip šios svetainės administratorius, jūs galite jį pamatyti;
 daugiau detalių gali būti [{{fullurl:{{ns:special}}:Log/delete|page={{FULLPAGENAMEE}}}} trynimų istorijoje].",
 'rev-deleted-no-diff'         => "Jūs negalite peržiūrėti šio skirtumo, nes viena iš versijų yra '''ištrinta'''.
-Daugiau detalių gali būti [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} trynimų istorijoje].",
+Daugiau detalių gali būti [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} trynimų istorijoje].",
 'rev-deleted-unhide-diff'     => "One of the revisions of this diff has been '''deleted'''.
-There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
+There may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} deletion log].
 As an administrator you can still [$1 view this diff] if you wish to proceed.
 
 Viena šio skirtumo versijų yra '''ištrinta'''.
-Daugiau detalių gali būti [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} trynimų istorijoje].
+Daugiau detalių gali būti [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} trynimų istorijoje].
 Kaip administratorius, jei norite, jūs vis tiek [$1 galite pamatyti šį skirtumą].",
 'rev-delundel'                => 'rodyti/slėpti',
 'revisiondelete'              => 'Trinti/atkurti versijas',
@@ -900,6 +926,7 @@ Kaip administratorius, jei norite, jūs vis tiek [$1 galite pamatyti šį skirtu
 'revdelete-nologid-title'     => 'Neleistinas istorijos įrašas',
 'revdelete-nologid-text'      => 'Jūs arba nenurodėte paskirties istorijos įvykio, kuriam atlikti šį veiksmą, arba nurodytas įrašas neegzistuoja.',
 'revdelete-no-file'           => 'Nurodytas failas neegzistuoja.',
+'revdelete-show-file-confirm' => 'Ar tikrai norite peržiūrėti ištrintą failo "<nowiki>$1</nowiki>" $2 $3 versiją?',
 'revdelete-show-file-submit'  => 'Taip',
 'revdelete-selected'          => "'''{{PLURAL:$2|Pasirinkta [[:$1]] versija|Pasirinktos [[:$1]] versijos}}:'''",
 'logdelete-selected'          => "'''{{PLURAL:$1|Pasirinktas istorijos įvykis|Pasirinkti istorijos įvykiai}}:'''",
@@ -1114,7 +1141,7 @@ Prašome patvirtinti, kad jūs tikrai to norite, kad suprantate pasekmes, ir kad
 'mypreferences'                 => 'Mano nustatymai',
 'prefs-edits'                   => 'Keitimų skaičius:',
 'prefsnologin'                  => 'Neprisijungęs',
-'prefsnologintext'              => 'Jums reikia būti <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} prisijungusiam]</span>, kad galėtumėte keisti savo nustatymus.',
+'prefsnologintext'              => 'Jums reikia būti <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} prisijungusiam]</span>, kad galėtumėte keisti savo nustatymus.',
 'changepassword'                => 'Pakeisti slaptažodį',
 'prefs-skin'                    => 'Išvaizda',
 'skin-preview'                  => 'Peržiūra',
@@ -2302,6 +2329,7 @@ Paskirties puslapis „[[:$1]]“ jau yra. Ar norite jį ištrinti, kad galėtum
 'imageinvalidfilename'         => 'Failo pavadinimas yra klaidingas',
 'fix-double-redirects'         => 'Atnaujinti peradresavimus, kad šie rodytų į originalų straipsnio pavadinimą',
 'move-leave-redirect'          => 'Pervadinant palikti nukreipimą',
+'semiprotectedpagemovewarning' => "'''Pastaba''': Šis puslapis buvo užrakintas, tad tik registruoti naudotojai gali jį redaguoti.",
 
 # Export
 'export'            => 'Eksportuoti puslapius',

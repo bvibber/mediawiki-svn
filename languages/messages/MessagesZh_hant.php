@@ -1,5 +1,5 @@
 <?php
-/** Traditional Chinese (‪中文(傳統字)‬)
+/** Traditional Chinese (‪中文(繁體)‬)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -10,6 +10,7 @@
  * @author Alexsh
  * @author Bencmq
  * @author FireJackey
+ * @author Jidanni
  * @author Liangent
  * @author Philip
  * @author Shinjiman
@@ -154,6 +155,7 @@ $specialPageAliases = array(
 	'Blankpage'                 => array( '空白頁面' ),
 	'DeletedContributions'      => array( '已刪除的用戶貢獻' ),
 	'Tags'                      => array( '標籤' ),
+	'Activeusers'               => array( '活躍用戶' ),
 );
 
 $bookstoreList = array(
@@ -863,16 +865,16 @@ $2',
 'rev-deleted-user'            => '(用戶名已移除)',
 'rev-deleted-event'           => '(日誌動作已移除)',
 'rev-deleted-text-permission' => "該頁面修訂已經被'''刪除'''。
-在[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。",
+在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 廢止日誌]中您可能會檢視到詳細的訊息。",
 'rev-deleted-text-unhide'     => "該頁面修訂已經被'''刪除'''。
-在[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。
+在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 廢止日誌]中您可能會檢視到詳細的訊息。
 作為管理員，如果您想繼續的話，您可以仍然[$1 去查看這次修訂]。",
 'rev-deleted-text-view'       => "該頁面修訂已經被'''刪除'''。作為管理員，您可以檢視它；
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。",
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 廢止日誌]中您可能會檢視到詳細的訊息。",
 'rev-deleted-no-diff'         => "因為其中一次修訂'''刪除'''，您不可以查看這個差異。
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中可能有更多的資料。",
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 廢止日誌]中可能有更多的資料。",
 'rev-deleted-unhide-diff'     => "該頁面的其中一次修訂已經被'''刪除'''。
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中可能有更多的資料。
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 廢止日誌]中可能有更多的資料。
 作為管理員，如果您想繼續的話，您可以仍然[$1 去查看這次修訂]。",
 'rev-delundel'                => '顯示/隱藏',
 'revisiondelete'              => '刪除/恢復刪除修訂',
@@ -1110,7 +1112,7 @@ $1",
 'mypreferences'                 => '我的參數設置',
 'prefs-edits'                   => '編輯數量:',
 'prefsnologin'                  => '還未登入',
-'prefsnologintext'              => '您必須先<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} 登入]</span>才能設置個人參數。',
+'prefsnologintext'              => '您必須先<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} 登入]</span>才能設置個人參數。',
 'changepassword'                => '更改密碼',
 'prefs-skin'                    => '面板',
 'skin-preview'                  => '預覽',
@@ -1774,6 +1776,13 @@ Template:消除歧義',
 'listusersfrom'      => '給定顯示用戶條件:',
 'listusers-submit'   => '顯示',
 'listusers-noresult' => '找不到用戶。',
+'listusers-blocked'  => '(已封鎖)',
+
+# Special:ActiveUsers
+'activeusers'          => '活躍用戶列表',
+'activeusers-count'    => '$1次最近編輯',
+'activeusers-from'     => '顯示用戶開始於：',
+'activeusers-noresult' => '找不到用戶。',
 
 # Special:Log/newusers
 'newuserlogpage'              => '新進用戶名冊',
@@ -1787,6 +1796,8 @@ Template:消除歧義',
 'listgrouprights'                      => '用戶群組權限',
 'listgrouprights-summary'              => '以下面是一個在這個wiki中定義出來的用戶權限清單，以及它們的存取權。
 更多有關個別權限的細節可以在[[{{MediaWiki:Listgrouprights-helppage}}|這裏]]找到。',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">已授予的權限</span>
+* <span class="listgrouprights-revoked">已撤除的權限</span>',
 'listgrouprights-group'                => '群組',
 'listgrouprights-rights'               => '權限',
 'listgrouprights-helppage'             => 'Help:群組權限',
@@ -2326,8 +2337,8 @@ $1已經被封鎖。您是否想更改這個設定？',
 # Namespace 8 related
 'allmessages'               => '系統界面',
 'allmessagesname'           => '名稱',
-'allmessagesdefault'        => '預設的文字',
-'allmessagescurrent'        => '當前的文字',
+'allmessagesdefault'        => '預設的信息文字',
+'allmessagescurrent'        => '現時的信息文字',
 'allmessagestext'           => '這裡列出所有可定製的系統界面。
 如果想貢獻正宗的MediaWiki本地化的話，請參閱[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]以及[http://translatewiki.net translatewiki.net]。',
 'allmessagesnotsupportedDB' => "這個頁面無法使用，因為'''\$wgUseDatabaseMessages'''已被設定關閉。",
@@ -3079,7 +3090,7 @@ $1',
 'fileduplicatesearch-result-n' => '檔案 "$1" 有$2項完全相同的重覆。',
 
 # Special:SpecialPages
-'specialpages'                   => '特殊頁面',
+'specialpages'                   => '所有特殊頁面',
 'specialpages-note'              => '----
 * 標準特殊頁面。
 * <strong class="mw-specialpagerestricted">有限制的特殊頁面。</strong>',

@@ -267,6 +267,9 @@ class SpecialSearch {
 			} else {
 				$wgOut->addWikiMsg( 'searchmenu-exists', wfEscapeWikiText( $t->getPrefixedText() ) );
 			}
+		} else {
+			// preserve the paragraph for margins etc...
+			$wgOut->addHTML('<p></p>');
 		}
 
 		// prev/next links

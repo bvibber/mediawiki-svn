@@ -314,7 +314,19 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
-'vector-view-view' => 'Ler',
+'vector-action-delete'       => 'Eliminar',
+'vector-action-move'         => 'Mover',
+'vector-action-protect'      => 'Proteger',
+'vector-namespace-category'  => 'Categoria',
+'vector-namespace-image'     => 'Ficheiro',
+'vector-namespace-main'      => 'Página',
+'vector-namespace-mediawiki' => 'Mensagem',
+'vector-namespace-talk'      => 'Discussão',
+'vector-namespace-template'  => 'Predefinição',
+'vector-namespace-user'      => 'Página de utilizador',
+'vector-view-create'         => 'Criar',
+'vector-view-edit'           => 'Editar',
+'vector-view-view'           => 'Ler',
 
 # Metadata in edit box
 'metadata_help' => 'Metadados:',
@@ -867,16 +879,16 @@ Tente [[Special:Search|pesquisar na wiki]] por páginas relevantes.',
 'rev-deleted-user'            => '(nome de utilizador removido)',
 'rev-deleted-event'           => '(entrada removida)',
 'rev-deleted-text-permission' => "Esta edição desta página foi '''eliminada'''.
-Poderão existir detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminação].",
+Poderão existir detalhes no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registo de eliminação].",
 'rev-deleted-text-unhide'     => "Esta edição desta página foi '''eliminada'''.
-Poderão existir detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminação].
+Poderão existir detalhes no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registo de eliminação].
 Por ser um administrador você pode mesmo assim [$1 ver esta versão] se desejar prosseguir.",
 'rev-deleted-text-view'       => "Esta edição desta página foi '''eliminada'''.
-Por ser um administrador, você pode vê-la; poderão existir detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminação].",
+Por ser um administrador, você pode vê-la; poderão existir detalhes no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registo de eliminação].",
 'rev-deleted-no-diff'         => "Você não pode ver estas diferenças porque uma das revisões foi '''eliminada'''.
-Poderá haver detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminações].",
+Poderá haver detalhes no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registo de eliminações].",
 'rev-deleted-unhide-diff'     => "Uma das revisões destas diferenças foi '''eliminada'''.
-Poderá haver detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminações].
+Poderá haver detalhes no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registo de eliminações].
 Por ser um administrador, você pode mesmo assim [$1 ver estas diferenças], se desejar prosseguir.",
 'rev-delundel'                => 'mostrar/esconder',
 'revisiondelete'              => 'Eliminar/restaurar edições',
@@ -1120,7 +1132,7 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desac
 'mypreferences'                 => 'Minhas preferências',
 'prefs-edits'                   => 'Número de edições:',
 'prefsnologin'                  => 'Não autenticado',
-'prefsnologintext'              => 'Precisa de estar <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} autenticado]</span> para definir as suas preferências.',
+'prefsnologintext'              => 'Precisa de estar <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} autenticado]</span> para definir as suas preferências.',
 'changepassword'                => 'Alterar palavra-chave',
 'prefs-skin'                    => 'Tema',
 'skin-preview'                  => 'Pré-visualizar',
@@ -1778,8 +1790,9 @@ Veja também as [[Special:WantedCategories|categorias em falta]].',
 'special-categories-sort-abc'   => 'ordenar alfabeticamente',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Edições eliminadas',
-'deletedcontributions-title' => 'Edições eliminadas',
+'deletedcontributions'             => 'Edições eliminadas',
+'deletedcontributions-title'       => 'Edições eliminadas',
+'sp-deletedcontributions-contribs' => 'contribuições',
 
 # Special:LinkSearch
 'linksearch'       => 'Ligações externas',
@@ -3118,7 +3131,7 @@ Entre com o nome de ficheiro sem fornecer o prefixo "{{ns:file}}:".',
 'dberr-cachederror' => 'A seguinte página é uma cópia em cache da página pedida e pode não estar atualizada.',
 
 # HTML forms
-'htmlform-invalid-input'       => 'Existem problemas com alguns do dados introduzidos',
+'htmlform-invalid-input'       => 'Existem problemas com alguns dos dados introduzidos',
 'htmlform-select-badoption'    => 'O valor que você especificou não é uma opção válida.',
 'htmlform-int-invalid'         => 'O valor que você especificou não é um inteiro.',
 'htmlform-int-toolow'          => 'O valor que você especificou está abaixo do mínimo de $1',

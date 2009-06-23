@@ -1,5 +1,5 @@
 <?php
-/** Simplified Chinese (‪中文(简化字)‬)
+/** Simplified Chinese (‪中文(简体)‬)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -10,6 +10,7 @@
  * @author Bencmq
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author Jidanni
  * @author Liangent
  * @author O
  * @author Philip
@@ -159,6 +160,7 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( '搜索网页链接' ),
 	'DeletedContributions'      => array( '已删除的用户贡献' ),
 	'Tags'                      => array( '标签' ),
+	'Activeusers'               => array( '活跃用户' ),
 );
 
 $extraUserToggles = array(
@@ -885,16 +887,16 @@ $2',
 'rev-deleted-user'            => '(用户名已移除)',
 'rev-deleted-event'           => '(日志动作已移除)',
 'rev-deleted-text-permission' => "该页面修订已经被'''删除'''。
-在[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 删除日志]中您可能会查看到详细的信息。",
+在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 废止日志]中您可能会查看到详细的信息。",
 'rev-deleted-text-unhide'     => "该页面修订已经被'''删除'''。
-在[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 删除日志]中您可能会查看到详细的信息。
+在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 废止日志]中您可能会查看到详细的信息。
 作为管理员，如果您想继续的话，您可以仍然[$1 去查看这次修订]。",
 'rev-deleted-text-view'       => "该页面修订已经被'''删除'''。作为管理员，您可以查看它；
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 删除日志]中您可能会查看到详细的信息。",
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 废止日志]中您可能会查看到详细的信息。",
 'rev-deleted-no-diff'         => "因为其中一次修订'''删除'''，您不可以查看这个差异。
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 删除日志]中可能有更多的信息。",
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 废止日志]中可能有更多的信息。",
 'rev-deleted-unhide-diff'     => "该页面的其中一次修订已经被'''删除'''。
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 删除日志]中可能有更多的信息。
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 废止日志]中可能有更多的信息。
 作为管理员，如果您想继续的话，您可以仍然[$1 去查看这次修订]。",
 'rev-delundel'                => '显示/隐藏',
 'revisiondelete'              => '删除/恢复删除修订',
@@ -1132,7 +1134,7 @@ $1",
 'mypreferences'                 => '我的参数设置',
 'prefs-edits'                   => '编辑数量：',
 'prefsnologin'                  => '尚未登录',
-'prefsnologintext'              => '您必须先<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} 登录]</span>才能设置个人参数。',
+'prefsnologintext'              => '您必须先<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} 登录]</span>才能设置个人参数。',
 'changepassword'                => '更改密码',
 'prefs-skin'                    => '皮肤',
 'skin-preview'                  => '预览',
@@ -1796,6 +1798,13 @@ Template:消除歧義',
 'listusersfrom'      => '给定显示用户条件：',
 'listusers-submit'   => '显示',
 'listusers-noresult' => '找不到用户。',
+'listusers-blocked'  => '(已封锁)',
+
+# Special:ActiveUsers
+'activeusers'          => '活跃用户列表',
+'activeusers-count'    => '$1次最近编辑',
+'activeusers-from'     => '显示用户开始于：',
+'activeusers-noresult' => '找不到用户。',
 
 # Special:Log/newusers
 'newuserlogpage'              => '新进用户名册',
@@ -1809,6 +1818,8 @@ Template:消除歧義',
 'listgrouprights'                      => '用户群组权限',
 'listgrouprights-summary'              => '以下面是一个在这个wiki中定义出来的用户权限列表，以及它们的访问权。
 更多有关个别权限的细节可以在[[{{MediaWiki:Listgrouprights-helppage}}|这里]]找到。',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">已授予的权限</span>
+* <span class="listgrouprights-revoked">已撤除的权限</span>',
 'listgrouprights-group'                => '群组',
 'listgrouprights-rights'               => '权限',
 'listgrouprights-helppage'             => 'Help:群组权限',
@@ -2347,8 +2358,8 @@ $1已经被封锁。您是否想更改这个设置？',
 # Namespace 8 related
 'allmessages'               => '系统界面',
 'allmessagesname'           => '名称',
-'allmessagesdefault'        => '默认的文字',
-'allmessagescurrent'        => '当前的文字',
+'allmessagesdefault'        => '默认的信息文字',
+'allmessagescurrent'        => '现时的信息文字',
 'allmessagestext'           => '这里列出所有可定制的系统界面。
 如果想贡献正宗的MediaWiki本地化的话，请参阅[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]以及[http://translatewiki.net translatewiki.net]。',
 'allmessagesnotsupportedDB' => "这个页面无法使用，因为'''\$wgUseDatabaseMessages'''已被设置关闭。",
@@ -3100,7 +3111,7 @@ $1',
 'fileduplicatesearch-result-n' => '文件“$1”有$2项完全相同的重复副本。',
 
 # Special:SpecialPages
-'specialpages'                   => '特殊页面',
+'specialpages'                   => '所有特殊页面',
 'specialpages-note'              => '----
 * 标准特殊页面。
 * <strong class="mw-specialpagerestricted">有限制的特殊页面。</strong>',

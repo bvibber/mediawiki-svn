@@ -837,17 +837,17 @@ Vläicht gouf se geläscht oder geréckelt.
 'rev-deleted-user'            => '(Benotzernumm ewechgeholl)',
 'rev-deleted-event'           => '(Aktioun aus dem Logbuch erausgeholl)',
 'rev-deleted-text-permission' => "Dës Versioun vun der Säit gouf '''geläscht'''.
-Dir fannt eventuell méi Informatiounen an der [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Läschlëscht].",
-'rev-deleted-text-unhide'     => "Diese Versioun gouf '''geläscht'''.
-Detailer kënnen am [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch] fonnt ginn.
-als Administrateur kënnt Dir [$1 dës Versioun kucken] wann Dir weiderfuere wëllt.",
-'rev-deleted-text-view'       => "Dës Versioun vun der Säit gouf '''eläscht'''.
-Als Administrateur kënnt Dir se weiderhi gesinn; Dir fannt eventuell méi Detailer am  [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Läsch-Logbuch].",
+Dir fannt eventuell méi Informatiounen an der [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Läschlëscht].",
+'rev-deleted-text-unhide'     => "Dës Versioun gouf '''geläscht'''.
+Detailer kënnen am [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Lösch-Logbuch] fonnt ginn.
+Als Administrateur kënnt Dir nach ëmmer [$1 dës Versioun kucken] wann Dir weiderfuere wëllt.",
+'rev-deleted-text-view'       => "Dës Versioun vun der Säit gouf '''geläscht'''.
+Als Administrateur kënnt Dir se gesinn; Dir fannt eventuell méi Detailer am  [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Läsch-Logbuch].",
 'rev-deleted-no-diff'         => "Dir kënnt dësen Ënnerscheed net gesinn, well eng vun de Versiounen '''geläscht gouf'''.
-Detailer stinn eventuell am [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Läsch-Logbuch].",
+Detailer stinn eventuell am [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Läsch-Logbuch].",
 'rev-deleted-unhide-diff'     => "Eng vun de Versioune vun dësem Ënnerscheed gouf '''geläscht'''.
-Detailer stinn eventuell am [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Logbuch vun de Läschungen].
-Als Administrateur kënnt Dir [$1 mat dësem Link de Versiounsënnerschied kucke] wann Dir weiderfuere wëllt.",
+Detailer stinn eventuell am [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Logbuch vun de Läschungen].
+Als Administrateur kënnt Dir [$1 mat dësem Link de Versiounsënnerscheed kucke] wann Dir weiderfuere wëllt.",
 'rev-delundel'                => 'weisen/verstoppen',
 'revisiondelete'              => 'Versioune läschen/restauréieren',
 'revdelete-nooldid-title'     => 'Ongülteg Zilversioun',
@@ -1087,7 +1087,7 @@ Dir kënnt [[:\$1|déi Säit uleeën]].",
 'mypreferences'                 => 'Meng Astellungen',
 'prefs-edits'                   => 'Zuel vun den Ännerungen:',
 'prefsnologin'                  => 'Net ageloggt',
-'prefsnologintext'              => 'Dir musst <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}}agelogged]</span> sinn, fir är Astellungen änneren ze kënnen.',
+'prefsnologintext'              => 'Dir musst <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}}agelogged]</span> sinn, fir är Astellungen änneren ze kënnen.',
 'changepassword'                => 'Passwuert änneren',
 'prefs-skin'                    => 'Skin',
 'skin-preview'                  => 'Kucken',
@@ -1736,8 +1736,9 @@ Kuckt och [[Special:WantedCategories|Gewënschte Kategorien]].',
 'special-categories-sort-abc'   => 'alphabetesch sortéieren',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Geläschte Kontributiounen',
-'deletedcontributions-title' => 'Geläschte Kontributiounen',
+'deletedcontributions'             => 'Geläschte Kontributiounen',
+'deletedcontributions-title'       => 'Geläschte Kontributiounen',
+'sp-deletedcontributions-contribs' => 'Kontributiounen',
 
 # Special:LinkSearch
 'linksearch'      => 'Extern Linken',
@@ -1752,6 +1753,13 @@ Kuckt och [[Special:WantedCategories|Gewënschte Kategorien]].',
 'listusersfrom'      => "D'Benotzer uweisen, ugefaange bei:",
 'listusers-submit'   => 'Weis',
 'listusers-noresult' => 'Kee Benotzer fonnt.',
+'listusers-blocked'  => '(gespaart)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lëscht vun den aktive Benotzer',
+'activeusers-count'    => 'Déi {{PLURAL:$1|rezent Ännerung|$1 rezent Ännerungen}}',
+'activeusers-from'     => 'Benotzer weisen, ugefaang bäi:',
+'activeusers-noresult' => 'Keng Benotzer fonnt.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Logbuch vun den neien Umeldungen',
@@ -1765,6 +1773,8 @@ Kuckt och [[Special:WantedCategories|Gewënschte Kategorien]].',
 'listgrouprights'                      => 'Rechter vun de Benotzergruppen',
 'listgrouprights-summary'              => 'Dëst ass eng Lëscht vun den op dëser Wiki definéierte Benotzergruppen an den domat verbonnene Rechter.
 Et ginn [[{{MediaWiki:Listgrouprights-helppage}}|zousätzlech Informatiounen]] iwwer individuell Benotzerrechter.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Recht dat zouerkannt gouf</span>
+* <span class="listgrouprights-revoked">Recht dat ofgeholl gouf</span>',
 'listgrouprights-group'                => 'Grupp',
 'listgrouprights-rights'               => 'Rechter',
 'listgrouprights-helppage'             => 'Help:Grupperechter',

@@ -530,7 +530,7 @@ No sta desmentegarte de personalixare le to [[Special:Preferences|preferense de 
 'userlogin'                  => 'Entra / Regìstrete',
 'logout'                     => 'Và fora',
 'userlogout'                 => 'và fora',
-'notloggedin'                => 'Acesso non efetuà',
+'notloggedin'                => 'Acesso mia efetuà',
 'nologin'                    => "No gheto gnancora n'acesso? $1.",
 'nologinlink'                => 'Crèalo desso',
 'createaccount'              => 'Crea un novo accesso',
@@ -842,17 +842,17 @@ Legenda: '''({{int:cur}})''' = difarense con la versión corente,
 'rev-deleted-user'            => '(nome utente cavà)',
 'rev-deleted-event'           => '(elemento cavà)',
 'rev-deleted-text-permission' => "Sta version de la pagina la xe stà '''scancelà'''.
-Consulta el [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} registro de scancelazion] par ulteriori detagli.",
+Consulta el [{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} registro de scancelazion] par ulteriori detagli.",
 'rev-deleted-text-unhide'     => "Sta version de la pàxena la xe sta '''scancelà'''.
-Consulta el [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} registro de scancelassion] par ulteriori detagli.
+Consulta el [{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} registro de scancelassion] par ulteriori detagli.
 Ai aministradori xe ancora consentìo [$1 vardar sta version] se necessario.",
 'rev-deleted-text-view'       => "Sta version de la pagina la xe stà '''scancelà'''.
 El testo el pode èssar visualizà soltanto dai aministradori del sito.
-Consulta el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de scancelazion] par ulteriori detagli.",
+Consulta el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de scancelazion] par ulteriori detagli.",
 'rev-deleted-no-diff'         => "No te pode vardar sta difarensa parché una de le revision la xe stà '''scancelà'''.
-Consulta el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de scancelassion] par savérghene piessè.",
+Consulta el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de scancelassion] par savérghene piessè.",
 'rev-deleted-unhide-diff'     => "Una dele revision de sta difarensa la xe stà '''scancelà'''.
-Consulta el [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} registro de scancelassion] par ulteriori detagli.
+Consulta el [{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} registro de scancelassion] par ulteriori detagli.
 I aministradori i pode ancora [$1 vardar sta difarensa] se i vole.",
 'rev-delundel'                => 'mostra/scondi',
 'revisiondelete'              => 'Scanceła o ripristina version',
@@ -1092,7 +1092,7 @@ Assicùrete che la continuità storica de la pagina no la vegna alterà.',
 'mypreferences'                 => 'le me preferense',
 'prefs-edits'                   => 'Nùmaro de modifiche:',
 'prefsnologin'                  => 'No te ghè eseguìo el login',
-'prefsnologintext'              => 'Te ghè da aver eseguìo el <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} login] par poder personalixare le to preferense.',
+'prefsnologintext'              => 'Te ghè da aver eseguìo el <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} login] par poder personalixare le to preferense.',
 'changepassword'                => 'Cambia ła password',
 'prefs-skin'                    => 'Aspeto grafico',
 'skin-preview'                  => 'Anteprima',
@@ -1147,7 +1147,7 @@ Assicùrete che la continuità storica de la pagina no la vegna alterà.',
 'allowemail'                    => 'Consenti la ricezion de e-mail da altri utenti<sup>1</sup>',
 'prefs-searchoptions'           => 'Opsioni de riçerca',
 'prefs-namespaces'              => 'Namespace',
-'defaultns'                     => 'Serca in sti namespace se non diversamente specificà:',
+'defaultns'                     => 'Serca in sti namespace se no diversamente specificà:',
 'default'                       => 'predefinìo',
 'prefs-files'                   => 'Imagini',
 'prefs-custom-css'              => 'CSS personalixà',
@@ -1466,7 +1466,7 @@ Par to comodità qua ghe xe la registrazion de la scancelazion:",
 'upload-file-error'       => 'Eror interno',
 'upload-file-error-text'  => 'Se gà verificà un eror interno durante la creazion de un file tenporaneo sul server.
 Par piaser, contatar un [[Special:ListUsers/sysop|aministrador]].',
-'upload-misc-error'       => 'Eror non identificà par el caricamento',
+'upload-misc-error'       => 'Eror mia identificà par el caricamento',
 'upload-misc-error-text'  => '!Se gà verificà un eror mìa identificà durante el caricamento del file.
 Par piaser, verifica che la URL la sia giusta e acessibile e próa da novo.
 Se el problema el persiste, contatar un [[Special:ListUsers/sysop|aministrador]].',
@@ -1684,7 +1684,7 @@ Vien considerà pagine de disanbiguazion tute quele che contien i template elenc
 'unusedcategoriestext'    => 'Le pàxene de łe categorie indicàe de seguito łe xè stà creàe ma no le contien nissuna pàxena né sotocategoria.',
 'notargettitle'           => 'Dati mancanti',
 'notargettext'            => 'No te ghè indicà na pagina o un utente su cui eseguir sta operazion.',
-'nopagetitle'             => 'Pagina de destinassion non esistente',
+'nopagetitle'             => 'Pagina de destinassion mia esistente',
 'nopagetext'              => 'La pagina de destinassion che ti gà indicà no la esiste mìa.',
 'pager-newer-n'           => '{{PLURAL:$1|quel pi novo|i $1 pi novi}}',
 'pager-older-n'           => '{{PLURAL:$1|quel pi vecio|i $1 pi vèci}}',
@@ -1736,8 +1736,9 @@ Varda anca le [[Special:WantedCategories|categorie domandà]].',
 'special-categories-sort-abc'   => 'ordina alfabeticamente',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Contributi utente scancelà',
-'deletedcontributions-title' => 'Contributi utente scancelà',
+'deletedcontributions'             => 'Contributi utente scancelà',
+'deletedcontributions-title'       => 'Contributi utente scancelà',
+'sp-deletedcontributions-contribs' => 'contributi',
 
 # Special:LinkSearch
 'linksearch'       => 'Colegamenti foresti',
@@ -1753,6 +1754,13 @@ Protocòli suportè: <tt>$1</tt>',
 'listusersfrom'      => 'Mostra i utenti tacando da:',
 'listusers-submit'   => 'Mostra',
 'listusers-noresult' => 'Nissun utente el risponde ai criteri inpostà.',
+'listusers-blocked'  => '(blocà)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lista dei utenti ativi',
+'activeusers-count'    => '$1 {{PLURAL:$1|canbiamento|canbiamenti}} recenti',
+'activeusers-from'     => 'Fà védar i utenti a partir da:',
+'activeusers-noresult' => 'Nissun utente catà.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Registro utenti novi',
@@ -1766,6 +1774,8 @@ Protocòli suportè: <tt>$1</tt>',
 'listgrouprights'                      => 'Diriti dei grupi utenti',
 'listgrouprights-summary'              => 'Sta qua la xe na lista dei grupi de utenti definìi su sta wiki, coi diriti asocià a ognuno.
 Se pol consultar anca dele altre [[{{MediaWiki:Listgrouprights-helppage}}|informassion in pi]] sui diriti individuali.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Dirito acordà</span>
+* <span class="listgrouprights-revoked">Dirito revocà</span>',
 'listgrouprights-group'                => 'Grupo',
 'listgrouprights-rights'               => 'Diriti',
 'listgrouprights-helppage'             => 'Help:Diriti dei grupi',
@@ -1810,7 +1820,7 @@ La e-mail che te ghè indicà ne le [[Special:Preferences|to preferense]] la veg
 'watchlistfor'         => "(da l'utente '''$1''')",
 'nowatchlist'          => "No te ghè indicà pagine da tegner d'ocio.",
 'watchlistanontext'    => "Per vardar e modifegar l'ełenco de i osservati speciałi bisogna $1.",
-'watchnologin'         => 'Acesso non efetuà',
+'watchnologin'         => 'Acesso mia efetuà',
 'watchnologintext'     => 'Te ghè prima da far el [[Special:UserLogin|login]] par modificar la to lista de osservati speciali.',
 'addedwatch'           => 'Xontà ai tòi Osservati Speciali',
 'addedwatchtext'       => "La pàxena \"[[:\$1]]\" l'è stà xontà a la to [[Special:Watchlist|lista de osservati speciali]].

@@ -305,6 +305,7 @@ $messages = array(
 'tog-ccmeonemails'            => 'Me mandar una còpia dels corrièrs electronics que mandi als autres utilizaires',
 'tog-diffonly'                => 'Mostrar pas lo contengut de las paginas jos las difs',
 'tog-showhiddencats'          => 'Afichar las categorias amagadas',
+'tog-noconvertlink'           => 'Desactivar la conversion dels títols',
 'tog-norollbackdiff'          => 'Ometre lo diff aprèp l’utilizacion d’un revert',
 
 'underline-always'  => 'Totjorn',
@@ -411,7 +412,28 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
-'vector-view-view' => 'Legir',
+'vector-action-addsection'   => 'Apondre un subjècte',
+'vector-action-delete'       => 'Suprimir',
+'vector-action-move'         => 'Tornar nomenar',
+'vector-action-protect'      => 'Protegir',
+'vector-action-undelete'     => 'Restablir',
+'vector-action-unprotect'    => 'Desprotegir',
+'vector-namespace-category'  => 'Categoria',
+'vector-namespace-help'      => "Pagina d'ajuda",
+'vector-namespace-image'     => 'Fichièr',
+'vector-namespace-main'      => 'Pagina',
+'vector-namespace-media'     => 'Pagina de Mèdia',
+'vector-namespace-mediawiki' => 'Messatge',
+'vector-namespace-project'   => 'Pagina de projècte',
+'vector-namespace-special'   => 'Pagina especiala',
+'vector-namespace-talk'      => 'Discussion',
+'vector-namespace-template'  => 'Modèl',
+'vector-namespace-user'      => "Pagina d'utilizaire",
+'vector-view-create'         => 'Crear',
+'vector-view-edit'           => 'Modificar',
+'vector-view-history'        => "Veire l'istoric",
+'vector-view-view'           => 'Legir',
+'vector-view-viewsource'     => 'Veire la font',
 
 # Metadata in edit box
 'metadata_help' => 'Metadonadas :',
@@ -946,16 +968,16 @@ Ensajatz de [[Special:Search|recercar sul wiki]] per trobar de paginas en rapòr
 'rev-deleted-user'            => '(nom d’utilizaire suprimit)',
 'rev-deleted-event'           => '(entrada suprimida)',
 'rev-deleted-text-permission' => "Aquesta version de la pagina es estada '''suprimida'''.
-I pòt aver de detalhs dins l'[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} istoric de las supressions].",
+I pòt aver de detalhs dins l'[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} istoric de las supressions].",
 'rev-deleted-text-unhide'     => "Aquesta version de la pagina es estada '''suprimida'''.
-I pòt aver mai de detalhs dins [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} lo jornal de las supressions].
+I pòt aver mai de detalhs dins [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} lo jornal de las supressions].
 Coma administrator, podètz encara [$1 veire aquesta version] s'o volètz.",
 'rev-deleted-text-view'       => "Aquesta version de la pagina es estada '''suprimida'''.
-En tant qu’administrator, la podètz visualizar ; i pòt aver de detalhs dins lo [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} jornal de las supressions].",
+En tant qu’administrator, la podètz visualizar ; i pòt aver de detalhs dins lo [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} jornal de las supressions].",
 'rev-deleted-no-diff'         => "Podètz pas veire aquesta dif per que una de las versions es estada '''suprimida'''.
-I pòt aver mai de detalhs dins lo [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} jornal de las supressions].",
+I pòt aver mai de detalhs dins lo [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} jornal de las supressions].",
 'rev-deleted-unhide-diff'     => "Una de las revisions d'aquesta diferéncia es estada '''suprimida'''.
-I pòt aver mai de detalhs dins lo [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} jornal de las supressions].
+I pòt aver mai de detalhs dins lo [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} jornal de las supressions].
 En tant qu'administrator, podètz encara [$1 veire aquesta diferéncia] se o volètz.",
 'rev-delundel'                => 'afichar/amagar',
 'revisiondelete'              => 'Suprimir/Restablir de versions',
@@ -1201,7 +1223,7 @@ Atencion, lor indexacion de contengut {{SITENAME}} benlèu es pas a jorn.',
 'mypreferences'                 => 'Mas preferéncias',
 'prefs-edits'                   => 'Nombre d’edicions :',
 'prefsnologin'                  => 'Vos sètz pas identificat(ada)',
-'prefsnologintext'              => 'Vos cal èsser <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} connectat(ada)]</span> per modificar vòstras preferéncias d’utilizaire.',
+'prefsnologintext'              => 'Vos cal èsser <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} connectat(ada)]</span> per modificar vòstras preferéncias d’utilizaire.',
 'changepassword'                => 'Modificacion del senhal',
 'prefs-skin'                    => 'Aparéncia',
 'skin-preview'                  => 'Previsualizar',
@@ -1855,8 +1877,9 @@ Vejatz tanben [[Special:WantedCategories|las categorias demandadas]].',
 'special-categories-sort-abc'   => 'triada alfabetica',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Contribucions suprimidas d’un utilizaire',
-'deletedcontributions-title' => 'Contribucions suprimidas d’un utilizaire',
+'deletedcontributions'             => 'Contribucions suprimidas d’un utilizaire',
+'deletedcontributions-title'       => 'Contribucions suprimidas d’un utilizaire',
+'sp-deletedcontributions-contribs' => 'contribucions',
 
 # Special:LinkSearch
 'linksearch'       => 'Ligams extèrnes',
@@ -1871,6 +1894,13 @@ Vejatz tanben [[Special:WantedCategories|las categorias demandadas]].',
 'listusersfrom'      => 'Afichar los utilizaires a partir de :',
 'listusers-submit'   => 'Mostrar',
 'listusers-noresult' => "S'es pas trobat de noms d'utilizaires correspondents. Cercatz tanben amb de majusculas e minusculas.",
+'listusers-blocked'  => '(blocat)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lista dels utilizaires actius',
+'activeusers-count'    => '$1 {{PLURAL:$1|modificacion recenta|modificacions recentas}}',
+'activeusers-from'     => 'Afichar los utilizaires dempuèi :',
+'activeusers-noresult' => "Cap d'utilizaire pas trobat.",
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Istoric de las creacions de comptes',
@@ -1884,6 +1914,8 @@ Vejatz tanben [[Special:WantedCategories|las categorias demandadas]].',
 'listgrouprights'                      => "Dreches dels gropes d'utilizaires",
 'listgrouprights-summary'              => "Aquesta pagina conten una tièra de gropes definits sus aqueste wiki e mai los dreches d'accès qu'i son associats.
 I pòt aver [[{{MediaWiki:Listgrouprights-helppage}}|d'entresenhas complementàrias]] a prepaus dels dreches.",
+'listgrouprights-key'                  => '*<span class="listgrouprights-granted">Drech autrejat</span>
+*<span class="listgrouprights-revoked">Drech revocat</span>',
 'listgrouprights-group'                => 'Grop',
 'listgrouprights-rights'               => 'Dreches associats',
 'listgrouprights-helppage'             => 'Help:Dreches dels gropes',
@@ -2605,7 +2637,7 @@ Aquò es probablament causat per un ligam sus lista negra que punta cap a un sit
 'skinname-myskin'      => 'Mon interfàcia',
 'skinname-chick'       => 'Poleton',
 'skinname-simple'      => 'Simple',
-'skinname-modern'      => 'Modèrn',
+'skinname-modern'      => 'Modèrne',
 
 # Math options
 'mw_math_png'    => 'Totjorn produire un imatge PNG',
@@ -2692,6 +2724,12 @@ $1",
 
 Solas las listas d'enumeracion (las linhas començant per *) son presas en compte. Lo primièr ligam d'una linha deu èsser cap a un imatge marrit.
 Los autres ligams sus la meteissa linha son considerats coma d'excepcions, per exemple d'articles sulsquals l'imatge deu aparéisser.",
+
+# Variants for Kazakh language
+'variantname-kk-arab' => 'kk-arabi',
+
+# Variants for Kurdish language
+'variantname-ku-arab' => 'ku-Arabi',
 
 # Metadata
 'metadata'          => 'Metadonadas',

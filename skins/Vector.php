@@ -35,10 +35,10 @@ class SkinVector extends SkinTemplate {
 	 * @param object $out Output page to add styles to
 	 */
 	public function setupSkinUserCss( OutputPage $out ) {
-		parent::setupSkinUserCss( $out );
-
 		// Append to the default screen common & print styles...
 		$out->addStyle( 'vector/main.css', 'screen' );
+		// Add common styles
+		parent::setupSkinUserCss( $out );
 	}
 
 	/**
@@ -542,7 +542,7 @@ class VectorTemplate extends QuickTemplate {
 			</div>
 			<!-- /content -->
 			<!-- header -->
-			<div id="head">
+			<div id="head" class="noprint">
 				<div class="buffer">
 					<div class="top">
 						<!-- personal -->
@@ -635,7 +635,7 @@ class VectorTemplate extends QuickTemplate {
 			</div>
 			<!-- /header -->
 			<!-- panel -->
-			<div id="panel">
+			<div id="panel" class="noprint">
 				<div class="buffer">
 					<!-- fixalpha -->
 					<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
@@ -669,7 +669,7 @@ class VectorTemplate extends QuickTemplate {
 			<!-- foot -->
 			<div id="foot">
 				<div class="buffer">
-					<ul id="foot-icons">
+					<ul id="foot-icons" class="noprint">
 						<?php if( $this->data['poweredbyico'] ): ?>
 						<li id="foot-icon-poweredby"><?php $this->html( 'poweredbyico' ) ?></li>
 						<?php endif; ?>

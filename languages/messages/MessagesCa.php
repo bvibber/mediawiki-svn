@@ -330,7 +330,12 @@ $messages = array(
 'faqpage'        => 'Project:PMF',
 
 # Vector skin
-'vector-view-view' => 'Llegeix',
+'vector-action-addsection'  => 'Nova secció',
+'vector-action-delete'      => 'Esborra',
+'vector-action-move'        => 'Reanomena',
+'vector-action-protect'     => 'Protegeix',
+'vector-namespace-category' => 'Categoria',
+'vector-view-view'          => 'Llegeix',
 
 # Metadata in edit box
 'metadata_help' => 'Metadades:',
@@ -866,16 +871,16 @@ Intenteu [[Special:Search|cercar al mateix wiki]] per a noves pàgines rellevant
 'rev-deleted-user'            => "(s'ha suprimit el nom d'usuari)",
 'rev-deleted-event'           => "(s'ha suprimit el registre d'accions)",
 'rev-deleted-text-permission' => "Aquesta versió de la pàgina ha estat '''eliminada'''.
-Hi poden haver més detalls al [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registre d'esborrats].",
+Hi poden haver més detalls al [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registre d'esborrats].",
 'rev-deleted-text-unhide'     => "La revisió d'aquesta pàgina ha estat '''eliminada'''.
-Hi poden haver més detalls al [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registre d'esborrats].
+Hi poden haver més detalls al [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registre d'esborrats].
 Com a administrador encara podeu [$1 veure aquesta revisió] si així ho desitgeu.",
 'rev-deleted-text-view'       => "Aquesta versió de la pàgina ha estat '''eliminada'''.
-Com a administrador podeu veure-la; vegeu-ne més detalls al [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registre d'esborrats].",
+Com a administrador podeu veure-la; vegeu-ne més detalls al [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registre d'esborrats].",
 'rev-deleted-no-diff'         => "No podeu veure aquesta comparativa perquè una de les versions ha estat '''esborrada'''.
-Potser trobareu detalls al [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registre d'esborrats].",
+Potser trobareu detalls al [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registre d'esborrats].",
 'rev-deleted-unhide-diff'     => "Una de les revisions d'aquesta comparativa ha estat '''eliminada'''.
-Potser trobareu detalls al [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registre d'esborrats].
+Potser trobareu detalls al [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registre d'esborrats].
 Com a administrador encara podeu [$1 veure aquesta comparativa] si així ho desitgeu.",
 'rev-delundel'                => 'mostra/amaga',
 'revisiondelete'              => 'Esborrar/restaurar revisions',
@@ -887,7 +892,7 @@ funció, la revisió especificada no existeix, o bé esteu provant d'amagar l'ac
 'revdelete-nologid-title'     => 'Entrada de registre no vàlida',
 'revdelete-nologid-text'      => 'Heu especificat un esdeveniment del registre que no existeix o al que no se li pot aplicar aquesta funció.',
 'revdelete-no-file'           => 'El fitxer especificat no existeix.',
-'revdelete-show-file-confirm' => 'Està segur que vol veure una revisió esborrada del fitxer "<nowiki>$1</nowiki>" de $2 al $3?',
+'revdelete-show-file-confirm' => 'Esteu segurs que voleu veure una revisió esborrada del fitxer «<nowiki>$1</nowiki>» de $2 a $3?',
 'revdelete-show-file-submit'  => 'Sí',
 'revdelete-selected'          => "'''{{PLURAL:$2|Revisió seleccionada|Revisions seleccionades}} de [[:$1]]:'''",
 'logdelete-selected'          => "'''{{PLURAL:$1|Esdeveniment del registre seleccionat|Esdeveniments del registre seleccionats}}:'''",
@@ -1075,7 +1080,7 @@ Assegureu-vos que aquest canvi mantindrà la continuïtat històrica de la pàgi
 'search-mwsuggest-disabled'        => 'cap suggeriment',
 'search-relatedarticle'            => 'Relacionat',
 'mwsuggest-disable'                => 'Inhabilita els suggeriments en AJAX',
-'searcheverything-enable'          => 'Cerca a tots els espais de nom',
+'searcheverything-enable'          => 'Cerca a tots els espais de noms',
 'searchrelated'                    => 'relacionat',
 'searchall'                        => 'tots',
 'showingresults'                   => 'Tot seguit es {{PLURAL:$1|mostra el resultat|mostren els <b>$1</b> resultats començant pel número <b>$2</b>}}.',
@@ -1108,7 +1113,7 @@ Assegureu-vos que aquest canvi mantindrà la continuïtat històrica de la pàgi
 'mypreferences'                 => 'Preferències',
 'prefs-edits'                   => "Nombre d'edicions:",
 'prefsnologin'                  => 'No heu iniciat cap sessió',
-'prefsnologintext'              => 'Heu d\'estar <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} autenticats]</span> per a seleccionar les preferències d\'usuari.',
+'prefsnologintext'              => 'Heu d\'estar <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} autenticats]</span> per a seleccionar les preferències d\'usuari.',
 'changepassword'                => 'Canvia la contrasenya',
 'prefs-skin'                    => 'Aparença',
 'skin-preview'                  => 'prova',
@@ -1141,7 +1146,7 @@ Assegureu-vos que aquest canvi mantindrà la continuïtat històrica de la pàgi
 'recentchangesdays'             => 'Dies a mostrar en els canvis recents:',
 'recentchangesdays-max'         => '(màxim $1 {{PLURAL:$1|dia|dies}})',
 'recentchangescount'            => "Nombre d'edicions a mostrar per defecte:",
-'prefs-help-recentchangescount' => "Inclou els canvis recents, l'històric de pàgines i els registres.",
+'prefs-help-recentchangescount' => 'Inclou els canvis recents, els historials de pàgines i els registres.',
 'savedprefs'                    => "S'han desat les vostres preferències",
 'timezonelegend'                => 'Fus horari:',
 'localtime'                     => 'Hora local:',
@@ -1205,7 +1210,7 @@ També podeu contactar amb altres usuaris a través de la vostra pàgina d'usuar
 'prefs-advancedsearchoptions'   => 'Opcions avançades',
 'prefs-advancedwatchlist'       => 'Opcions avançades',
 'prefs-display'                 => "Opcions d'aparença",
-'prefs-diffs'                   => 'Difs.',
+'prefs-diffs'                   => 'Difs',
 
 # User rights
 'userrights'                  => "Gestió dels permisos d'usuari",
@@ -1540,7 +1545,7 @@ Si us plau vegeu la [$2 pàgina de descripció del fitxer] per a més informaci�
 'sharedupload-desc-here'    => 'Aquest fitxer prové de $1 i pot ser usat per altres projectes.
 La descripció de la seva [$2 pàgina de descripció] es mostra a continuació.',
 'filepage-nofile'           => 'No hi ha cap fitxer amb aquest nom.',
-'filepage-nofile-link'      => '$1 - URL de la pàgina de càrrega per aquest fitxer.',
+'filepage-nofile-link'      => 'No existeix cap fitxer amb aquest nom, però podeu [$1 carregar-lo].',
 'uploadnewversion-linktext' => "Carrega una nova versió d'aquest fitxer",
 'shared-repo-from'          => 'des de $1',
 'shared-repo'               => 'un repositori compartit',
@@ -1747,8 +1752,9 @@ Vegeu també [[Special:WantedCategories|les categories soŀlicitades]].",
 'special-categories-sort-abc'   => 'ordena alfabèticament',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Contribucions esborrades',
-'deletedcontributions-title' => 'Contribucions esborrades',
+'deletedcontributions'             => 'Contribucions esborrades',
+'deletedcontributions-title'       => 'Contribucions esborrades',
+'sp-deletedcontributions-contribs' => 'contribucions',
 
 # Special:LinkSearch
 'linksearch'       => 'Enllaços externs',
@@ -1776,6 +1782,8 @@ Vegeu també [[Special:WantedCategories|les categories soŀlicitades]].",
 'listgrouprights'                      => "Drets dels grups d'usuaris",
 'listgrouprights-summary'              => "A continuació hi ha una llista dels grups d'usuaris definits en aquest wiki, així com dels seus drets d'accés associats.
 Pot ser que hi hagi més informació sobre drets individuals [[{{MediaWiki:Listgrouprights-helppage}}|aquí]].",
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Drets concedits</span>
+* <span class="listgrouprights-revoked">Drets revocats</span>',
 'listgrouprights-group'                => 'Grup',
 'listgrouprights-rights'               => 'Drets',
 'listgrouprights-helppage'             => 'Help:Drets del grup',
@@ -2073,7 +2081,7 @@ $1",
 'sp-contributions-blocklog'      => 'Registre de bloquejos',
 'sp-contributions-deleted'       => "contribucions d'usuari esborrades",
 'sp-contributions-logs'          => 'registres',
-'sp-contributions-talk'          => 'discutir',
+'sp-contributions-talk'          => 'discussió',
 'sp-contributions-userrights'    => "gestió de drets d'usuari",
 'sp-contributions-search'        => 'Cerca les contribucions',
 'sp-contributions-username'      => "Adreça IP o nom d'usuari:",

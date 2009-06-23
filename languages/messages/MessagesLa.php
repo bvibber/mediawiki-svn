@@ -407,7 +407,7 @@ Vide [[Special:Version|paginam versionis]].',
 'youhavenewmessagesmulti' => 'Habes nuntia nova in $1',
 'editsection'             => 'recensere',
 'editold'                 => 'recensere',
-'viewsourceold'           => 'fontem videre',
+'viewsourceold'           => 'fontem inspicere',
 'editlink'                => 'recensere',
 'viewsourcelink'          => 'fontem inspicere',
 'editsectionhint'         => 'Recensere partem: $1',
@@ -929,7 +929,7 @@ Try prefixing your query with ''all:'' to search all content (including talk pag
 'mypreferences'             => 'Praeferentiae meae',
 'prefs-edits'               => 'Numerus recensionum:',
 'prefsnologin'              => 'Conventum non est apertum',
-'prefsnologintext'          => '<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} Conventum aperire]</span> debes ad praeferentias tuas modificandum.',
+'prefsnologintext'          => '<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} Conventum aperire]</span> debes ad praeferentias tuas modificandum.',
 'changepassword'            => 'Tesseram mutare',
 'prefs-skin'                => 'Aspectum',
 'skin-preview'              => 'Praevisum',
@@ -1173,9 +1173,9 @@ Si vis, sinit etiam aliis tecum loqui per tuam paginam usoris vel disputationis,
 Ut fasciculos antea impositos videas aut quaeras, adi ad [[Special:FileList|indicem fasciculorum impositorum]]. Fasciculi impositi et deleti quoque in [[Special:Log/upload|notatione fasciculorum impositorum]] notantur.
 
 Ad fasciculum in pagina includendum, utere nexu:
-*'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Fasciculus.jpg]]''' aut
-*'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Fasciculus.png|verba alia]]''' aut
-*'''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:Fasciculus.ogg]]''' pro nexum ad fasciculum directum.",
+*'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Fasciculus.jpg]]</nowiki></tt>''' aut
+*'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Fasciculus.png|verba alia]]</nowiki></tt>''' aut
+*'''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:Fasciculus.ogg]]</nowiki></tt>''' pro nexum ad fasciculum directum.",
 'upload-permitted'    => 'Genera fasciculorum licita: $1.',
 'upload-preferred'    => 'Genera fasciculorum suasa: $1.',
 'upload-prohibited'   => 'Typi fasciculorum vetiti: $1.',
@@ -1443,8 +1443,9 @@ Vide etiam [[Special:WantedCategories|categorias desideratas]].',
 'special-categories-sort-abc'   => 'ordinare secundum abecedarium',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Conlationes usoris deletae',
-'deletedcontributions-title' => 'Conlationes usoris deletae',
+'deletedcontributions'             => 'Conlationes usoris deletae',
+'deletedcontributions-title'       => 'Conlationes usoris deletae',
+'sp-deletedcontributions-contribs' => 'conlationes',
 
 # Special:LinkSearch
 'linksearch'     => 'Quaerere nexus externos',
@@ -1455,6 +1456,12 @@ Vide etiam [[Special:WantedCategories|categorias desideratas]].',
 # Special:ListUsers
 'listusers-submit'   => 'Monstrare',
 'listusers-noresult' => 'Nullus usor inventus.',
+'listusers-blocked'  => '(obstructus)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Index usorum activorum',
+'activeusers-count'    => '{{PLURAL:$1|una recensio recens|$1 recensiones recentes}}',
+'activeusers-noresult' => 'Nullus usor inventus.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Index rationum novarum creatarum',
@@ -1835,9 +1842,7 @@ Adfirma te basem datorum obstruere velle, et te dein basem datorum deobstruendum
 'movepagetext'              => "Formam inferam utere ad paginam renominandum et ad historiam eius ad nomen novum movendum.
 Titulus vetus paginam redirectionis ad titulum novum fiet.
 Nexus ad paginam veterem non mutabuntur;
-redirectiones duplices aut fractas quaerere et figere debebis.
-
-redirectiones [[Special:DoubleRedirects|duplices]] vel [[Special:BrokenRedirects|fractas]].
+redirectiones [[Special:DoubleRedirects|duplices]] vel [[Special:BrokenRedirects|fractas]] quaerere et figere debebis.
 
 Pagina '''non''' movebitur si pagina sub titulo novo iam est, nisi est vacua aut pagina redirectionis et nullam historiam habet.
 
@@ -1909,8 +1914,8 @@ Paginae nomen petitum "[[:$1]]" iam existit. Vin tu eam delere ut pagina illic m
 # Namespace 8 related
 'allmessages'               => 'Nuntia systematis',
 'allmessagesname'           => 'Nomen',
-'allmessagesdefault'        => 'Textus originalis',
-'allmessagescurrent'        => 'Textus recens',
+'allmessagesdefault'        => 'Textus originalis nuntii',
+'allmessagescurrent'        => 'Textus recens nuntii',
 'allmessagestext'           => 'Hic est index omnium nuntiorum in MediaWiki.',
 'allmessagesnotsupportedDB' => "Haec pagina non adhiberi potest, quia '''\$wgUseDatabaseMessages''' non iam agitur.",
 'allmessagesfilter'         => 'Colum nominibus nuntiorum:',

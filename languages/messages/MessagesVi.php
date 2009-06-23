@@ -661,7 +661,7 @@ Nếu bạn không phải là người yêu cầu gửi mật khẩu, hoặc n�
 'mailerror'                  => 'Lỗi gửi thư : $1',
 'acct_creation_throttle_hit' => 'Những người sử dụng địa chỉ IP này đã mở {{PLURAL:$1|1 tài khoản|$1 tài khoản}} trong vòng một ngày, và đó là số lượng tài khoản tối đa có thể mở trong ngày.
 Vì vậy, người khác sử dụng địa chỉ IP này hiện không thể mở thêm tài khoản được nữa.',
-'emailauthenticated'         => 'Địa chỉ thư điện tử của bạn được xác nhận tại $2 vào lúc $3.',
+'emailauthenticated'         => 'Địa chỉ thư điện tử của bạn được xác nhận vào lúc $3 $2.',
 'emailnotauthenticated'      => 'Địa chỉ thư điện tử của bạn chưa được xác nhận. Chức năng thư điện tử chưa bật.',
 'noemailprefs'               => 'Hãy ghi một địa chỉ thư điện tử trong tùy chọn cá nhân để có thể sử dụng tính năng này.',
 'emailconfirmlink'           => 'Xác nhận địa chỉ thư điện tử',
@@ -928,16 +928,16 @@ Chú giải: (hiện) = khác với phiên bản hiện hành,
 'rev-deleted-user'            => '(tên người dùng đã xóa)',
 'rev-deleted-event'           => '(tác vụ nhật trình đã xóa)',
 'rev-deleted-text-permission' => "Phiên bản này đã bị '''xóa'''.
-Có thể có thêm chi tiết tại [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} nhật trình xóa].",
+Có thể có thêm chi tiết tại [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} nhật trình giấu].",
 'rev-deleted-text-unhide'     => "Phiên bản này đã bị '''xóa'''.
-Có thể có thêm chi tiết tại [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} nhật trình xóa].
+Có thể có thêm chi tiết tại [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} nhật trình giấu].
 Vì là người quản lý, bạn vẫn có thể [$1 xem phiên bản này] nếu muốn.",
 'rev-deleted-text-view'       => "Phiên bản này đã bị '''xóa'''.
-Vì là người quản lý bạn vẫn có thể xem nó;có thể có thêm chi tiết tại [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} nhật trình xóa].",
+Vì là người quản lý bạn vẫn có thể xem nó; có thể có thêm chi tiết tại [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} nhật trình giấu].",
 'rev-deleted-no-diff'         => "Bạn không thể xem khác biệt giữa các phiên bản vì một phiên bản đã bị '''xóa'''.
-Bạn có thể xem thêm chi tiết trong [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} nhật trình xóa].",
+Bạn có thể xem thêm chi tiết trong [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} nhật trình giấu].",
 'rev-deleted-unhide-diff'     => "Một trong những phiên bản của khác biệt này đã bị '''xóa'''.
-Bạn có thể xem thêm chi tiết tại [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} nhật trình xóa].
+Bạn có thể xem thêm chi tiết tại [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} nhật trình giấu].
 Vì là người quản lý, bạn vẫn có thể [$1 xem khác biệt này] nếu muốn.",
 'rev-delundel'                => 'hiện/ẩn',
 'revisiondelete'              => 'Xóa hay phục hồi phiên bản',
@@ -1181,7 +1181,7 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'mypreferences'                 => 'Tùy chọn',
 'prefs-edits'                   => 'Số lần sửa đổi:',
 'prefsnologin'                  => 'Chưa đăng nhập',
-'prefsnologintext'              => 'Bạn phải <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} đăng nhập]</span> để thiết lập tùy chọn cá nhân.',
+'prefsnologintext'              => 'Bạn phải <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} đăng nhập]</span> để thiết lập tùy chọn cá nhân.',
 'changepassword'                => 'Đổi mật khẩu',
 'prefs-skin'                    => 'Hình dạng',
 'skin-preview'                  => 'Xem thử',
@@ -1841,8 +1841,9 @@ Xem thêm [[Special:WantedCategories|thể loại cần thiết]].',
 'special-categories-sort-abc'   => 'xếp theo vần',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Đóng góp đã bị xóa của thành viên',
-'deletedcontributions-title' => 'Đóng góp đã bị xóa của thành viên',
+'deletedcontributions'             => 'Đóng góp đã bị xóa của thành viên',
+'deletedcontributions-title'       => 'Đóng góp đã bị xóa của thành viên',
+'sp-deletedcontributions-contribs' => 'đóng góp',
 
 # Special:LinkSearch
 'linksearch'       => 'Liên kết ngoài',
@@ -1857,6 +1858,13 @@ Xem thêm [[Special:WantedCategories|thể loại cần thiết]].',
 'listusersfrom'      => 'Hiển thị thành viên bắt đầu từ:',
 'listusers-submit'   => 'Liệt kê',
 'listusers-noresult' => 'Không thấy thành viên.',
+'listusers-blocked'  => '(bị cấm)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Danh sách thành viên tích cực',
+'activeusers-count'    => '$1 {{PLURAL:$1|sửa đổi|sửa đổi}} gần đây',
+'activeusers-from'     => 'Hiển thị thành viên bắt đầu từ:',
+'activeusers-noresult' => 'Không thấy thành viên.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Nhật trình mở tài khoản',
@@ -1870,6 +1878,8 @@ Xem thêm [[Special:WantedCategories|thể loại cần thiết]].',
 'listgrouprights'                      => 'Nhóm thành viên',
 'listgrouprights-summary'              => 'Dưới đây là danh sách nhóm thành viên được định nghĩa tại wiki này, với mức độ truy cập của từng nhóm.
 Có [[{{MediaWiki:Listgrouprights-helppage}}|thông tin thêm]] về từng nhóm riêng biệt.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Quyền được trao</span>
+* <span class="listgrouprights-revoked">Quyền bị tước</span>',
 'listgrouprights-group'                => 'Nhóm',
 'listgrouprights-rights'               => 'Khả năng',
 'listgrouprights-helppage'             => 'Help:Khả năng của nhóm thành viên',
@@ -2264,7 +2274,7 @@ $1',
 'blocklogpage'                    => 'Nhật trình cấm',
 'blocklog-fulllog'                => 'Nhật trình cấm đầy đủ',
 'blocklogentry'                   => 'đã cấm [[$1]] với thời hạn là $2 $3',
-'reblock-logentry'                => 'thay đổi thiết lập cấm [[$1]] để hết hạn $2 $3',
+'reblock-logentry'                => 'thay đổi thiết lập cấm [[$1]] thành thời hạn $2 $3',
 'blocklogtext'                    => 'Đây là nhật trình ghi lại những lần cấm và bỏ cấm. Các địa chỉ IP bị cấm tự động không được liệt kê ở đây. Xem thêm [[Special:IPBlockList|danh sách cấm]] để có danh sách cấm và cấm hẳn hiện tại.',
 'unblocklogentry'                 => 'đã bỏ cấm “$1”',
 'block-log-flags-anononly'        => 'chỉ cấm thành viên vô danh',

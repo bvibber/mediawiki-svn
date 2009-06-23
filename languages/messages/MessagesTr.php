@@ -857,16 +857,16 @@ Konu ile alakalı diğer sayfaları bulmak için [[Special:Search|vikide arama y
 'rev-deleted-user'            => '(kullanıcı adı silindi)',
 'rev-deleted-event'           => '(kayıt işlemi silindi)',
 'rev-deleted-text-permission' => "Bu sayfa revizyonu '''silinmiş'''.
-[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Silme kayıtlarında] ayrıntıları bulunabilir.",
+[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Silme kayıtlarında] ayrıntıları bulunabilir.",
 'rev-deleted-text-unhide'     => "Bu sayfa revizyonu '''silinmiş'''.
-[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Silme kayıtlarında] ayrıntıları bulunabilir.
+[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Silme kayıtlarında] ayrıntıları bulunabilir.
 Bir yönetici olarak eğer devam ederseniz [$1 bu revizyonu görebilirsiniz].",
 'rev-deleted-text-view'       => "Bu sayfa revizyonu '''silinmiş'''.
-Bir yönetici olarak sayfayı görebilirsiniz; [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} silme kayıtlarında] ayrıntılar bulunabilir.",
+Bir yönetici olarak sayfayı görebilirsiniz; [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} silme kayıtlarında] ayrıntılar bulunabilir.",
 'rev-deleted-no-diff'         => "Bu sayfa değişikliğini göremezsiniz çünkü revizyonlardan biri '''silinmiş'''.
-[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Silme günlüğünde] ayrıntılar bulunabilir.",
+[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Silme günlüğünde] ayrıntılar bulunabilir.",
 'rev-deleted-unhide-diff'     => "Bu sayfa değişikliğinin revizyonlarından birisi '''silinmiş'''.
-[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Silme kayıtları]nda daha ayrıntılı bilgi bulunabilir.
+[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Silme kayıtları]nda daha ayrıntılı bilgi bulunabilir.
 Bir yönetici olarak eğer devam ederseniz [$1 bu değişikliği görebilirsiniz].",
 'rev-delundel'                => 'göster/gizle',
 'revisiondelete'              => 'Sürümleri sil/geri getir',
@@ -1112,7 +1112,7 @@ Aramanızın başına '''all:''' önekini ekleyerek tüm içeriği aramayı (tar
 'mypreferences'                 => 'tercihlerim',
 'prefs-edits'                   => 'Değişiklik sayısı:',
 'prefsnologin'                  => 'Oturum açık değil',
-'prefsnologintext'              => 'Kullanıcı tercihlerinizi ayarlamak için <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} giriş yapmalısınız]</span>.',
+'prefsnologintext'              => 'Kullanıcı tercihlerinizi ayarlamak için <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} giriş yapmalısınız]</span>.',
 'changepassword'                => 'Parola değiştir',
 'prefs-skin'                    => 'Motif',
 'skin-preview'                  => 'Ön izleme',
@@ -1773,8 +1773,9 @@ Ayrıca [[Special:WantedCategories|İstenen kategoriler]]'e bakınız.",
 'special-categories-sort-abc'   => 'alfabetik olarak sırala',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Silinen kullanıcı katkıları',
-'deletedcontributions-title' => 'Silinen kullanıcı katkıları',
+'deletedcontributions'             => 'Silinen kullanıcı katkıları',
+'deletedcontributions-title'       => 'Silinen kullanıcı katkıları',
+'sp-deletedcontributions-contribs' => 'katkılar',
 
 # Special:LinkSearch
 'linksearch'       => 'Dış bağlantılar',
@@ -1790,6 +1791,13 @@ Desteklenen iletişim kuralları: <tt>$1</tt>',
 'listusersfrom'      => 'Şununla başlayan kullanıcıları görüntüle:',
 'listusers-submit'   => 'Göster',
 'listusers-noresult' => 'Kullanıcı bulunamadı.',
+'listusers-blocked'  => '(engellenmiş)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Aktif kullanıcı listesi',
+'activeusers-count'    => 'Son $1 {{PLURAL:$1|değişiklik|değişiklik}}',
+'activeusers-from'     => 'Şununla başlayan kullanıcıları görüntüle:',
+'activeusers-noresult' => 'Kullanıcı bulunamadı.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Yeni kullanıcı kayıtları',
@@ -1803,6 +1811,8 @@ Desteklenen iletişim kuralları: <tt>$1</tt>',
 'listgrouprights'                      => 'Kullanıcı grubu hakları',
 'listgrouprights-summary'              => 'Aşağıdaki bu vikide tanımlanan kullanıcı gruplarının, ilgili erişim haklarıyla birlikte listesidir.
 Bireysel haklarla ilgili [[{{MediaWiki:Listgrouprights-helppage}}|daha fazla bilgi]] olabilir.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Verilen hak</span>
+* <span class="listgrouprights-revoked">Geri alınan hak</span>',
 'listgrouprights-group'                => 'grup',
 'listgrouprights-rights'               => 'Haklar',
 'listgrouprights-helppage'             => 'Help:Grup hakları',
