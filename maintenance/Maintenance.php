@@ -46,6 +46,9 @@ abstract class Maintenance {
 	
 	// Have we already loaded our user input?
 	private $inputLoaded = false;
+	
+	// Batch size
+	protected $mBatchSize = 100;
 
 	/**
 	 * Default constructor. Children should call this if implementing
@@ -122,6 +125,14 @@ abstract class Maintenance {
 	 */
 	protected function getArg( $argId = 0, $default = null ) {
 		return $this->hasArg($name) ? $this->mArgs[$name] : $default;
+	}
+
+	/**
+	 * Set the batch size.
+	 * @param $s int The number of operations to do in a batch
+	 */
+	protected function setBatchSize( $s = 0 ) {
+		$this->mBatchSize = $s;
 	}
 
 	/**
