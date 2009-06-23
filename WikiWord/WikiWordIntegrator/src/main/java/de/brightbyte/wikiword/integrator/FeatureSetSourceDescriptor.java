@@ -4,9 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
+import de.brightbyte.data.Functor;
+import de.brightbyte.db.SqlScriptRunner.RegularExpressionMangler;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.wikiword.TweakSet;
@@ -131,5 +136,24 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 		return chunker;
 	}
 
-	
+	public List<Functor<String, String>> getScriptManglers() {
+		ArrayList<Functor<String, String>> manglers = new ArrayList<Functor<String, String>>();  
+		
+		manglers.addAll( getTweak("sql-manglers", Collections.<Functor<String, String>>emptyList()) );
+		
+		Map<String, String>  subst = getTweak("sql-comment-subst", Collections.<String, String>emptyMap());
+		
+		for (Map.Entry<String, String>e: subst.entrySet()) {
+			Pattern p = Pattern.compile("/\\* *"+e.getKey()+" *\\*/");
+			RegularExpressionMangler m = new RegularExpressionMangler(p, e.getValue());
+			manglers.add(m);
+		}
+		
+		return manglers;
+	}
+
+	public String getSourceTable() {
+		return getTweak("source-table", null);
+	}
+
 }

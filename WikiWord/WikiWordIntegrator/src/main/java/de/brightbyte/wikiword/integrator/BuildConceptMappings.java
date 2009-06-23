@@ -9,7 +9,9 @@ import java.util.Comparator;
 import de.brightbyte.data.Functor;
 import de.brightbyte.data.Functors;
 import de.brightbyte.data.cursor.DataCursor;
+import de.brightbyte.db.SqlDialect;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.integrator.data.Association;
 import de.brightbyte.wikiword.integrator.data.CollapsingMatchesCursor;
 import de.brightbyte.wikiword.integrator.data.FeatureMapping;
@@ -114,6 +116,12 @@ public class BuildConceptMappings extends AbstractIntegratorApp<AssociationFeatu
 
 		store.finalizeImport();
 	}	
+
+	@Override
+	protected String getSqlQuery(String table, FeatureSetSourceDescriptor sourceDescriptor, SqlDialect dialect) {
+		String fields = StringUtils.join(", ", getDefaultFields(dialect));
+		return "SELECT " + fields + " FROM " + dialect.quoteName(getQualifiedTableName(table)) ;
+	}
 
 	@Override
 	protected ConceptMappingProcessor createProcessor(AssociationFeatureStoreBuilder conceptStore) throws InstantiationException {

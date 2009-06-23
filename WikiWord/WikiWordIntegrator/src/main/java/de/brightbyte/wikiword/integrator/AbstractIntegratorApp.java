@@ -4,12 +4,13 @@ import java.beans.IntrospectionException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -18,7 +19,11 @@ import javax.sql.DataSource;
 
 import de.brightbyte.data.Functor;
 import de.brightbyte.data.cursor.DataCursor;
+import de.brightbyte.db.DatabaseSchema;
+import de.brightbyte.db.DatabaseUtil;
+import de.brightbyte.db.SqlDialect;
 import de.brightbyte.db.SqlScriptRunner;
+import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.IOUtil;
 import de.brightbyte.io.LineCursor;
 import de.brightbyte.text.Chunker;
@@ -86,7 +91,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 	}
 	
 	public void testInit(DataSource dataSource, DatasetIdentifier dataset, TweakSet tweaks, FeatureSetSourceDescriptor sourceDescriptor, String targetTableName) {
-		if (this.tweaks!=null || this.sourceDescriptor!=null) throw new IllegalStateException("application already initialized");
+		if (this.sourceDescriptor!=null) throw new IllegalStateException("application already initialized");
 		
 		this.configuredDataSource = dataSource;
 		this.configuredDataset = dataset;
@@ -162,9 +167,21 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		return cursor;
 	}
 	
+	protected List<String> getDefaultFields(SqlDialect dialect) {
+		ArrayList<String> fields = new ArrayList<String>();
+		
+		for (String f: getDefaultForeignFields()) if (f!=null) fields.add(dialect.quoteName(f));
+		for (String f: getDefaultConceptFields()) if (f!=null) fields.add(dialect.quoteName(f));
+		for (String f: getDefaultPropertyFields()) if (f!=null) fields.add(dialect.quoteName(f));
+		
+		return fields;
+	}
 	protected List<String> getDefaultForeignFields() {
 		return Arrays.asList(new String[] {
-				sourceDescriptor.getTweak("foreign-authority-field", "=" + sourceDescriptor.getAuthorityName()),
+				(sourceDescriptor.getTweak("foreign-authority-field", null) == null) ? 
+						("=" + sourceDescriptor.getAuthorityName()) : 
+							sourceDescriptor.getTweak("foreign-authority-field", (String)null),
+							
 				sourceDescriptor.getTweak("foreign-id-field", (String)null),
 				sourceDescriptor.getTweak("foreign-name-field", (String)null)
 		});
@@ -199,24 +216,42 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		
 		if (sql==null) {
 				String n = sourceDescriptor.getSourceFileName();
-				String format = sourceDescriptor.getSourceFileFormat() ;
-				in =  getInputHelper().open(sourceDescriptor.getBaseURL(), n);
 				
-				if (format!=null && format.equals("sql")) {
-					sql = IOUtil.slurp(in, enc);
-					
-					in.close();
-					in = null;
+				if (n!=null) {
+						String format = sourceDescriptor.getSourceFileFormat() ;
+						in =  getInputHelper().open(sourceDescriptor.getBaseURL(), n);
+						
+						if (format!=null && format.equals("sql")) {
+							sql = IOUtil.slurp(in, enc);
+							
+							in.close();
+							in = null;
+						}
 				}
+		}
+		
+		Connection con = null;
+		
+		if (sql==null && in==null) {
+			if (con==null) con = getConfiguredDataSource().getConnection();
+			DatabaseSchema schema = new DatabaseSchema(getConfiguredDataset().getDbPrefix(), con, null);
+			
+			String t = sourceDescriptor.getSourceTable();
+			if (t!=null) sql = getSqlQuery(t, sourceDescriptor, schema.getDialect());
 		}
 		
 		DataCursor<FeatureSet> fsc;
 		String[] fields = sourceDescriptor.getDataFields();
 		
 		if (sql!=null) {
-			Collection<Functor<String, String>> manglers = Arrays.asList(getSqlScriptManglers()); 
-			Connection con = getConfiguredDataSource().getConnection();
+			Collection<Functor<String, String>> manglers = getSqlScriptManglers(sourceDescriptor);
+			if (con==null) con = getConfiguredDataSource().getConnection();
+			
+			//DatabaseUtil.dumpData(con, sql);
+			
 			ResultSet rs = SqlScriptRunner.runQuery(con, sql, manglers);
+			
+			//DatabaseUtil.dumpData(rs, ConsoleIO.output, " | ");
 			
 			fsc = new ResultSetFeatureSetCursor(rs, fields);
 		} else {
@@ -250,16 +285,70 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		return fsc;
 	}
 	
+	protected abstract String getSqlQuery(String table, FeatureSetSourceDescriptor sourceDescriptor, SqlDialect dialct);
+
+	public String getQualifiedTableName(String table) {
+		return getConfiguredDataset().getDbPrefix()+table;
+	}
+	
+	private FeatureSetSourceDescriptor loadSourceDescriptor(String name, boolean file, boolean classpath, URL base) throws IOException {
+		FeatureSetSourceDescriptor d = new FeatureSetSourceDescriptor("", null);
+		
+		InputStream in = null;
+		URL u = null;
+		
+		if (in==null && classpath) {
+			u = AbstractIntegratorApp.class.getResource(name);
+			if (u!=null) in = u.openStream();
+		} 
+		
+		if (in==null && base!=null) {
+			u = new URL(base, name);
+			in = u.openStream();
+		} 
+		
+		if (in==null && file) {
+			in = getInputHelper().open(name);
+			u = getInputHelper().getBaseURL(name);
+		}
+
+		d.setBaseURL(getInputHelper().getBaseURL(name));
+		d.loadTweaks(in);
+		in.close();
+		
+		if (u!=null) d.setBaseURL(u);
+				
+		d = getAugmentedSourceDescriptor(d);
+		return d;
+	}
+
+	public FeatureSetSourceDescriptor getAugmentedSourceDescriptor(FeatureSetSourceDescriptor d) throws IOException {
+		
+		String def = d.getTweak("defaults", (String)null);
+		if (def!=null) {
+			FeatureSetSourceDescriptor dd = loadSourceDescriptor(def, false, true, null);
+			dd.setTweaks(d);
+			d = dd;
+		}
+
+		String par = d.getTweak("parent", (String)null);
+		if (par!=null) {
+			FeatureSetSourceDescriptor pd = loadSourceDescriptor(par, false, false, d.getBaseURL());
+			pd.setTweaks(d);
+			d = pd;
+		}
+		return d;
+		
+	}
+	
 	protected FeatureSetSourceDescriptor getSourceDescriptor() throws IOException {
 		if (sourceDescriptor!=null) return sourceDescriptor;
 		
 		sourceDescriptor = new FeatureSetSourceDescriptor("source", tweaks);
 		
 		String n = getSourceFileName();
-		InputStream in = getInputHelper().open(n);
-		sourceDescriptor.setBaseURL(getInputHelper().getBaseURL(n));
-		sourceDescriptor.loadTweaks(in);
-		in.close();
+		FeatureSetSourceDescriptor d = loadSourceDescriptor(n, true, false, null);
+		sourceDescriptor.setTweaks(d);
 		
 		sourceDescriptor.setTweaks(System.getProperties(), "wikiword.source."); //XXX: doc
 		sourceDescriptor.setTweaks(args, "source."); //XXX: doc
@@ -268,11 +357,16 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 	}
 
 	@SuppressWarnings("unchecked")
-	protected Functor<String, String>[] getSqlScriptManglers() {
-		return new Functor[] {
-				new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_prefix* \\*/"), getConfiguredDataset().getDbPrefix()),
-				new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_db* \\*/"), getConfiguredDatasetName()),
-		};
+	protected Collection<Functor<String, String>> getSqlScriptManglers(FeatureSetSourceDescriptor sourceDescriptor) {
+		ArrayList<Functor<String, String>> list = new ArrayList<Functor<String, String>>();
+		
+		List more = sourceDescriptor.getScriptManglers();
+		if (more!=null) list.addAll(more);
+		
+		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_prefix* \\*/"), getConfiguredDataset().getDbPrefix()) );
+		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_db* \\*/"), getConfiguredDatasetName()) );
+		
+		return list;
 	}
 	
 	protected <T> T instantiate(TweakSet config, String optionName, Class<? extends T> def, Object... params) throws InstantiationException {

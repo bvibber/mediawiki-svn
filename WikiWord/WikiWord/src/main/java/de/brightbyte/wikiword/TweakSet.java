@@ -29,6 +29,10 @@ public class TweakSet {
 		this(null, null);
 	}
 	
+	public String toString() {
+		return parameters.toString();
+	}
+	
 	public TweakSet(String prefix, TweakSet parent) {
 		this.parent = parent;
 		this.prefix = prefix;
@@ -90,6 +94,10 @@ public class TweakSet {
 	
 	public void setTweaks(Map<String, Object> params) {
 		parameters.putAll(params);
+	}
+	
+	public void setTweaks(TweakSet tweaks) {
+		setTweaks(tweaks.parameters);
 	}
 	
 	public void setTweak(String key, Object value) {

@@ -19,19 +19,21 @@ public abstract class IntegratorAppTestBase<T extends AbstractIntegratorApp> ext
 		protected String testName;
 		protected boolean completed = false;
 		
-		protected FeatureSetSourceDescriptor source;
 		protected T app;
 		
 		public AppRunner(String testName) throws IOException {
 			this.testName = testName;
-			this.source = loadSourceDescriptor(testName);
 		}
 		
 		public T prepare() throws IOException, PersistenceException, DatabaseUnitException, SQLException {
 			TweakSet tweaks = loadTweakSet();
 			app = createApp();
-			
 			app.setKeepAlive(true);
+			app.setTweaks(tweaks);
+				
+			FeatureSetSourceDescriptor source = loadSourceDescriptor(testName);
+			source = app.getAugmentedSourceDescriptor(source);
+
 			app.testInit(testDataSource, DatasetIdentifier.forName("TEST", "xx"), tweaks, source, testName);
 			
 			WikiWordStoreBuilder store = app.getStoreBuilder();

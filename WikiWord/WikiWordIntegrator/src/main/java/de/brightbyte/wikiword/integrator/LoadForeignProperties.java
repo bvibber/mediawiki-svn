@@ -3,7 +3,9 @@ package de.brightbyte.wikiword.integrator;
 import java.io.IOException;
 
 import de.brightbyte.data.cursor.DataCursor;
+import de.brightbyte.db.SqlDialect;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.ForeignEntity;
 import de.brightbyte.wikiword.integrator.data.ForeignEntityCursor;
@@ -42,6 +44,12 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 
 		store.finalizeImport();
 	}	
+
+	@Override
+	protected String getSqlQuery(String table, FeatureSetSourceDescriptor sourceDescriptor, SqlDialect dialect) {
+		String fields = StringUtils.join(", ", getDefaultFields(dialect));
+		return "SELECT " + fields + " FROM " + dialect.quoteName(getQualifiedTableName(table));
+	}
 
 	@Override
 	protected ForeignPropertyProcessor createProcessor(ForeignPropertyStoreBuilder conceptStore) throws InstantiationException {
