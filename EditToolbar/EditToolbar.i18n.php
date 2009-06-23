@@ -449,11 +449,29 @@ $messages['eo'] = array(
 	'edittoolbar-loading' => 'Ŝarĝante...',
 	'edittoolbar-tool-format-bold' => 'Grasa',
 	'edittoolbar-tool-format-bold-example' => 'Grasa teksto',
+	'edittoolbar-tool-format-italic' => 'Kursiva',
+	'edittoolbar-tool-format-italic-example' => 'Kursiva teksto',
+	'edittoolbar-tool-insert-ilink' => 'Interna ligilo',
+	'edittoolbar-tool-insert-ilink-example' => 'Ligila titolo',
+	'edittoolbar-tool-insert-xlink' => 'Ekstera ligilo (Memoru prefikson http://)',
+	'edittoolbar-tool-insert-xlink-example' => 'http://www.ekzemplo.com ligila titolo',
+	'edittoolbar-tool-insert-file' => 'Enmetata dosiero',
+	'edittoolbar-tool-insert-file-example' => 'Ekzemplo.jpg',
+	'edittoolbar-tool-insert-reference' => 'Referenco',
+	'edittoolbar-tool-insert-reference-example' => 'Enmetu tekston de piednoto ĉi tien',
 	'edittoolbar-tool-format-heading-1' => 'Nivelo 1',
 	'edittoolbar-tool-format-heading-2' => 'Nivelo 2',
 	'edittoolbar-tool-format-heading-3' => 'Nivelo 3',
 	'edittoolbar-tool-format-heading-4' => 'Nivelo 4',
 	'edittoolbar-tool-format-heading-5' => 'Nivelo 5',
+	'edittoolbar-group-format-list' => 'Listo',
+	'edittoolbar-tool-format-big' => 'Granda',
+	'edittoolbar-tool-format-big-example' => 'Granda teksto',
+	'edittoolbar-help-heading-syntax' => 'Kion vi tajpas',
+	'edittoolbar-help-heading-result' => 'Tion vi vidos',
+	'edittoolbar-help-content-bold-syntax' => "'''Grasa teksto'''",
+	'edittoolbar-help-content-bolditalic-description' => 'Grasa &amp; kursiva',
+	'edittoolbar-help-content-ilink-description' => 'Interna ligilo',
 	'edittoolbar-help-content-xlink-description' => 'Ekstera ligilo',
 );
 
@@ -1448,6 +1466,7 @@ aanzeije',
  */
 $messages['lb'] = array(
 	'edittoolbar' => 'Toolbar änneren',
+	'edittoolbar-desc' => 'Toolbar vun de Säitenännerunge mat erweiderter Benotzerfrëndlechkeet',
 	'edittoolbar-preference' => 'Déi erweidert Ännerungs-Toolbar aktivéieren',
 	'edittoolbar-loading' => 'Lueden...',
 	'edittoolbar-tool-format-bold' => 'Fett',
@@ -1458,6 +1477,7 @@ $messages['lb'] = array(
 	'edittoolbar-tool-insert-ilink-example' => 'Titel vum Link',
 	'edittoolbar-tool-insert-xlink' => 'Externe Link (Denkt un de Prefix http://)',
 	'edittoolbar-tool-insert-xlink-example' => 'http://www.beispill.com Titel vum Link',
+	'edittoolbar-tool-insert-file' => 'Agebonnene Fichier',
 	'edittoolbar-tool-insert-file-example' => 'Beispill.jpg',
 	'edittoolbar-tool-insert-reference' => 'Referenz',
 	'edittoolbar-tool-insert-reference-example' => 'Setzt den Text vun der Foussnote hei ann',
@@ -1481,6 +1501,7 @@ $messages['lb'] = array(
 	'edittoolbar-tool-format-small-example' => 'Klengen Text',
 	'edittoolbar-group-format-baseline' => 'Ënnerstrach',
 	'edittoolbar-section-insert' => 'Drasetzen',
+	'edittoolbar-group-insert-media' => 'Medium',
 	'edittoolbar-tool-insert-gallery' => 'Billergallerie',
 	'edittoolbar-group-insert-whitespace' => 'Espace',
 	'edittoolbar-tool-insert-newline' => 'Nei Linn',
@@ -1540,6 +1561,7 @@ $messages['lb'] = array(
  <li>Element vun der Lëscht</li>
  <li>Element vun der Lëscht</li>
 </ol>',
+	'edittoolbar-help-content-file-description' => 'Agebonnene Fichier',
 	'edittoolbar-help-content-file-syntax' => '[[File:Example.png|thumb|Ugewisenen Text]]',
 	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Ugewisenen Texte' class='image' href='/wiki/File:Wiki.png'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/EditToolbar/images/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='/wiki/File:Wiki.png'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Ugewisenen Text</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referenz',
@@ -1557,6 +1579,38 @@ $messages['lb'] = array(
 	'edittoolbar-help-content-signature-description' => 'Ënnerschrëft',
 	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Benotzernumm</a> (<a href='#' title='{{#special:mytalk}}'>talk</a>)",
 	'edittoolbar-help-content-indent-description' => 'Erasetzen',
+	'edittoolbar-help-content-indent-syntax' => 'Normalen Text<br />
+:Erageréckelten Text<br />
+::Erageréckelten Text',
+	'edittoolbar-help-content-indent-result' => 'Normalen Text
+<dl>
+ <dd>Erageréckelten Text
+  <dl>
+    <dd>Erageréckelten Text</dd>
+  </dl>
+ </dd>
+</dl>',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'edittoolbar-tool-format-bold' => 'Vet',
+	'edittoolbar-tool-format-italic' => 'Schunedrok',
+	'edittoolbar-tool-insert-ilink-example' => 'Verwiezingsbeschrieving',
+	'edittoolbar-tool-format-heading-1' => 'Nivo 1',
+	'edittoolbar-tool-format-heading-2' => 'Nivo 2',
+	'edittoolbar-tool-format-heading-3' => 'Nivo 3',
+	'edittoolbar-tool-format-heading-4' => 'Nivo 4',
+	'edittoolbar-tool-format-heading-5' => 'Nivo 5',
+	'edittoolbar-group-format-list' => 'Lieste',
+	'edittoolbar-group-format-size' => 'Grootte',
+	'edittoolbar-tool-format-superscript' => 'Superscript',
+	'edittoolbar-tool-format-superscript-example' => 'Tekse in superscript',
+	'edittoolbar-tool-format-subscript' => 'Subscript',
+	'edittoolbar-section-insert' => 'Invoegen',
+	'edittoolbar-group-insert-media' => 'Media',
 );
 
 /** Dutch (Nederlands)
@@ -2070,6 +2124,36 @@ $messages['ru'] = array(
 	'edittoolbar-help-content-indent-result' => 'Обычный текст<dl><dd>Текст с отступом<dl><dd>Текст с отступом</dd></dl></dd></dl>',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'edittoolbar' => 'Көннөрүү хаптаһына (панель)',
+	'edittoolbar-desc' => 'Тупсарыллыбыт уларытыы хаптаһына',
+	'edittoolbar-preference' => 'Тупсарыллыбыт уларытыы хаптаһынын холбуурга',
+	'edittoolbar-loading' => 'Киллэрии...',
+	'edittoolbar-tool-format-bold' => 'Модьу',
+	'edittoolbar-tool-format-bold-example' => 'Модьу бичик',
+	'edittoolbar-tool-format-italic' => 'Иҥнэри',
+	'edittoolbar-tool-format-italic-example' => 'Иҥнэри бичик',
+	'edittoolbar-tool-insert-ilink' => 'Ис сигэ',
+	'edittoolbar-tool-insert-ilink-example' => 'Сигэ баһа',
+	'edittoolbar-tool-insert-xlink' => 'Тас сигэ (http:// диэни умнума)',
+	'edittoolbar-tool-insert-xlink-example' => 'http://www.example.com сигэ быһаарыыта',
+	'edittoolbar-tool-insert-file' => 'Иһинээҕи билэ',
+	'edittoolbar-tool-insert-file-example' => 'Example.jpg',
+	'edittoolbar-tool-insert-reference' => 'Быһаарыы',
+	'edittoolbar-tool-insert-reference-example' => 'Манна быһаарыы тиэкиһин киллэр',
+	'edittoolbar-tool-insert-signature' => 'Илии баттааһын уонна кэмэ',
+	'edittoolbar-section-format' => 'Формааттааһын',
+	'edittoolbar-tool-format-heading' => 'Бастарын тиһигэ',
+	'edittoolbar-tool-format-heading-1' => '1 таһым',
+	'edittoolbar-tool-format-heading-2' => '2 таһым',
+	'edittoolbar-tool-format-heading-3' => '3 таһым',
+	'edittoolbar-tool-format-heading-4' => '4 таһым',
+	'edittoolbar-tool-format-heading-5' => '5 таһым',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -2185,6 +2269,14 @@ $messages['sk'] = array(
 	'edittoolbar-help-content-indent-description' => 'Odsadenie',
 	'edittoolbar-help-content-indent-syntax' => 'Bežný text<br />:Odsadený text<br />::Odsadený text',
 	'edittoolbar-help-content-indent-result' => 'Bežný text<dl><dd>Odsadený text<dl><dd>Odsadený text</dd></dl></dd></dl>',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Fatten &amp; kursiven Text</em></strong>',
+	'edittoolbar-help-content-ilink-description' => 'Internen Link',
 );
 
 /** Telugu (తెలుగు)

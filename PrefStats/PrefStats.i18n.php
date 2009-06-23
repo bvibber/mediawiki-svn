@@ -111,6 +111,13 @@ $messages['hsb'] = array(
 	'prefstats-list-intro' => 'Tuchwilu so slědowace nastajenja sćěhuja. Klikń na jedne z nich, zo by sej statistiku wo nim wobhladał.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'prefstats' => 'Statisticas de preferentias',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
