@@ -20,11 +20,8 @@ class CreateAndPromote extends Maintenance {
 	}
 
 	public function execute() {
-		if( count( $this->mArgs ) < 2 ) {
-			$this->error( "Please provide a username and password for the new account.\n", true );
-		}
-		$username = $this->mArgs[0];
-		$password = $this->mArgs[1];
+		$username = $this->getArg(0);
+		$password = $this->getArg(1);
 		
 		$this->output( wfWikiID() . ": Creating and promoting User:{$username}..." );
 		
