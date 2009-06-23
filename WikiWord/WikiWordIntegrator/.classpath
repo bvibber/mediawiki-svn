@@ -20,5 +20,8 @@
 			<attribute name="javadoc_location" value="jar:file:/home/daniel/.m2/repository/org/dbunit/dbunit/2.4.4/dbunit-2.4.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/org/beanshell/bsh-commands/2.0b4/bsh-commands-2.0b4.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/beanshell/bsh-classpath/2.0b4/bsh-classpath-2.0b4.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/beanshell/bsh-util/2.0b4/bsh-util-2.0b4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

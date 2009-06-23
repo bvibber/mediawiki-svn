@@ -20,10 +20,8 @@ import javax.sql.DataSource;
 import de.brightbyte.data.Functor;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.db.DatabaseSchema;
-import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.db.SqlDialect;
 import de.brightbyte.db.SqlScriptRunner;
-import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.IOUtil;
 import de.brightbyte.io.LineCursor;
 import de.brightbyte.text.Chunker;
@@ -90,7 +88,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		else return super.getConfiguredDatasetName();
 	}
 	
-	public void testInit(DataSource dataSource, DatasetIdentifier dataset, TweakSet tweaks, FeatureSetSourceDescriptor sourceDescriptor, String targetTableName) {
+	public void slaveInit(DataSource dataSource, DatasetIdentifier dataset, TweakSet tweaks, FeatureSetSourceDescriptor sourceDescriptor, String targetTableName) {
 		if (this.sourceDescriptor!=null) throw new IllegalStateException("application already initialized");
 		
 		this.configuredDataSource = dataSource;
@@ -100,7 +98,8 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		this.targetTableName = targetTableName;
 	}
 	
-	public void testLaunch() throws Exception {
+	public void slaveLaunch() throws Exception {
+		setKeepAlive(true);
 		launchExecute();
 	}
 	
@@ -289,6 +288,10 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 
 	public String getQualifiedTableName(String table) {
 		return getConfiguredDataset().getDbPrefix()+table;
+	}
+	
+	public FeatureSetSourceDescriptor loadSourceDescriptor(String name) throws IOException {
+		return loadSourceDescriptor(name, true, false, null);
 	}
 	
 	private FeatureSetSourceDescriptor loadSourceDescriptor(String name, boolean file, boolean classpath, URL base) throws IOException {

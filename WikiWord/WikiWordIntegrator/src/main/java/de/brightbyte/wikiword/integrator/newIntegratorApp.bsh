@@ -1,0 +1,28 @@
+import de.brightbyte.wikiword.integrator.*;
+
+newIntegratorApp( type, table, source ) {
+			if (type instanceof Class) c = type;
+			else c = getClass(type);
+			
+			AbstractIntegratorApp app = c.newInstance();
+			app.setKeepAlive(true);
+			app.setTweaks(tweaks);
+
+			if (source instanceof String) source = app.loadSourceDescriptor(source);
+			else {
+					if (source instanceof bsh.XThis) {
+							FeatureSetSourceDescriptor d = new FeatureSetSourceDescriptor();
+							for (String n: source.variables) {
+									d.setTweak(n, source.namespace.getVariable(n));
+							}
+							
+							source = d;
+					}
+					
+					source = app.getAugmentedSourceDescriptor(source);
+	  	   }
+
+			app.slaveInit(datasource, dataset, tweaks, source, table);
+
+			return app;
+}

@@ -131,6 +131,7 @@ public class BuildConceptMappings extends AbstractIntegratorApp<AssociationFeatu
 	
 	protected ConceptMappingProcessor createProcessor(AssociationFeatureStoreBuilder conceptStore, String property, Functor<? extends Number, ? extends Collection<? extends Number>> aggregator, Comparator<? extends Number> comp, Class<? extends Number> type) throws InstantiationException {
 		//FIXME: parameter list is specific to  OptimalMappingSelector
+		//FIXME: also allow passthrough
 		return instantiate(sourceDescriptor, "conceptMappingProcessorClass", OptimalMappingSelector.class, conceptStore, property, aggregator, comp, type);
 	}
 	
