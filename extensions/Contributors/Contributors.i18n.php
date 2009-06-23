@@ -131,9 +131,18 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'contributors' => 'Аўтары',
+	'contributors-desc' => 'Вызначае асноўных аўтараў старонкі',
+	'contributors-toolbox' => 'Асноўныя аўтары',
+	'contributors-legend' => 'Сьпіс асноўных аўтараў старонкі',
 	'contributors-target' => 'Назва:',
+	'contributors-submit' => 'Паказаць',
+	'contributors-subtitle' => 'Асноўныя аўтары $1',
+	'contributors-others-long' => 'Ёсьць $1 {{PLURAL:$1|іншы аўтар|іншых аўтары|іншых аўтараў}} гэтай старонкі.',
+	'contributors-others' => 'і яшчэ $1 {{PLURAL:$1|іншы|іншых|іншых}}',
 	'contributors-badtitle' => 'Няслушная назва.',
 	'contributors-nosuchpage' => 'Старонка $1 не існуе.',
 );

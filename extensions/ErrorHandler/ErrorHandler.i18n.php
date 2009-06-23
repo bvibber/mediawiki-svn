@@ -890,9 +890,10 @@ $messages['roa-tara'] = array(
  * @author Ferrer
  * @author Innv
  * @author Rubin
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'errorhandler-desc' => 'Ошибка обработчика для MediaWiki',
+	'errorhandler-desc' => 'Ошибка обработчика MediaWiki',
 	'errorhandler-errors' => 'Ошибки:',
 	'errorhandler-error-fatal' => 'Серьёзная ошибка',
 	'errorhandler-error-warning' => 'Внимание',

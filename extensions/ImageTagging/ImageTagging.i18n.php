@@ -1340,7 +1340,7 @@ $messages['ru'] = array(
 	'imagetagging-addimagetag' => 'Отметить это изображение',
 	'imagetagging-article' => 'Страница:',
 	'imagetagging-articletotag' => 'Страница для метки',
-	'imagetagging-canteditothermessage' => 'Вы не можете править эту страницу, или из-за того, что не имеете необходимых прав, или из-за того, что страница заблокирована по другим причинам.',
+	'imagetagging-canteditothermessage' => 'Вы не можете править эту страницу, так как не имеете необходимых прав, или из-за того, что страница заблокирована по другим причинам.',
 	'imagetagging-imghistory' => 'История',
 	'imagetagging-images' => 'изображения',
 	'imagetagging-inthisimage' => 'В изображении: $1',
@@ -1358,9 +1358,9 @@ $messages['ru'] = array(
 	'imagetagging-removetagsuccess' => 'Метка удалена.',
 	'imagetagging-canteditneedloginmessage' => 'Вы не можете править эту страницу.
 Требуется представиться системе для отметки изображений.
-Вы ещё не представились системе?',
-	'imagetagging-oneactionatatimemessage' => 'Только одно действие отметки на момент времени допустимо.
-Пожалуйста, подождите, пока завершатся существующие действия.',
+Вы желаете представиться системе сейчас?',
+	'imagetagging-oneactionatatimemessage' => 'За один раз можно отметить только один объект.
+Пожалуйста, подождите, пока выполниться текущее действие.',
 	'imagetagging-oneuniquetagmessage' => 'Это изображение уже было отмечено с этим именем.',
 	'imagetagging-imagetag-seemoreimages' => 'Смотреть больше изображений «$1» ($2)',
 	'imagetagging-taggedimages-title' => 'Изображения «$1»',

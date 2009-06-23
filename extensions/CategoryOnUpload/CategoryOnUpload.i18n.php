@@ -57,6 +57,14 @@ $messages['arz'] = array(
 	'categoryonupload-label' => 'التصنيف:',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'categoryonupload-desc' => 'Fråg an Benutza beim Aufelådn vu Datein nåch ana Kategorie.',
+	'categoryonupload-label' => 'Kategorie:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

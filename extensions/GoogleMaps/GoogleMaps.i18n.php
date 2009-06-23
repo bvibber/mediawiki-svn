@@ -3966,9 +3966,12 @@ $wgGoogleMapsMessages['ro'] = array(
  */
 $wgGoogleMapsMessages['roa-tara'] = array(
 	'gm-desc' => 'FAcile facile ccreje le mappe cu le marcature uicchi-fied',
+	'gm-incompatible-browser' => "Pe vedè 'a mappe addò vulisse scè, jndr'à 'u spazie, tu è abbesogne de ausà 'nu browser combatibbile.",
 	'gm-incompatible-browser-link' => "Cazze aqquà pe vedè 'na liste de browser combatibbele.",
+	'gm-no-editor' => 'Ce peccate! \'U browser tue non ge supporte \'a funzionalità de le mappe inderattive. Pruève l\'urtema versione de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux).',
 	'gm-balloon-title' => 'Titele:',
 	'gm-balloon-link-article' => 'Colleghe a sta pàgene (opzionale):',
+	'gm-make-marker' => 'Titele (uicchi mark-up tutte a poste):',
 	'gm-remove' => 'live',
 	'gm-caption' => "'Ndestazione",
 	'gm-tab-title' => "Titele d'a schede",
@@ -3984,6 +3987,8 @@ $wgGoogleMapsMessages['roa-tara'] = array(
 	'gm-no-results' => 'Niscune resultete',
 	'gm-searching' => 'stoche a cerche…',
 	'gm-map' => 'Mappe',
+	'gm-note' => 'Vide Bbuene: a essere secure de cupià quidde ca tu vuè ccu reggistre jndr\'à pàgene (sotte) apprime de cazza "Careche \'a mappe", "Reggistre" o "Andeprime"!',
+	'gm-instructions' => "Sotte stè 'u mark-up de Uicchi pe ccrejà 'a mappe sus.",
 	'gm-are-you-sure' => 'Sì secure secure?',
 	'gm-clear-all-points' => 'Scangille tutte le punde',
 	'gm-refresh-points' => 'Aggiorne le punde',

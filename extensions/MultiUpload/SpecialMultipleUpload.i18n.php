@@ -1278,7 +1278,7 @@ $messages['sr-ec'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'multipleupload' => 'Doatäie hoochleede',
+	'multipleupload' => 'Moorere Doatäie hoochleede',
 	'multipleupload-desc' => 'Ferlööwet dät [[Special:MultipleUpload|Hoochleeden fon moorere Doatäie]] in een Aktion',
 	'multipleupload-ignoreallwarnings' => "Ignorier '''aal Woarschauengen''' un spiekerje do Doatäie",
 	'multipleupload-saveallfiles' => 'Aal Doatäie spiekerje',
@@ -1293,6 +1293,8 @@ Du koast woalwiese uk n '''Siel-Doatäinoome''' foarreeke un ne '''Beschrieuweng
 Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-page}}|Läskgjuchtlienjen]].",
 	'multiupload-fileuploaded' => 'Doatäi hoochleeden.',
 	'multiupload-toolbox' => 'Hoochleeden fon moorere Doatäie',
+	'multiupload-no-files' => 'Wääl toumindest een Doatäi toun Hoochleeeden uut',
+	'multiupload-blank' => 'Neen Doatäi uutwääld',
 );
 
 /** Swedish (Svenska)

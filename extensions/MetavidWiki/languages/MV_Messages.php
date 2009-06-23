@@ -5105,6 +5105,15 @@ Datteije ändere',
 	'mv_removed_file_stream' => '
 stream
 Dattei „$1“ fottjeschmeße',
+	'mv_missing_stream_text' => 'Dä jewönschte 
+stream
+<b>$1</b> es nit ze han.<br />
+Looer ens op dä <a href="$2">Leß met de
+streams
+</a> noh,<br />
+udder <a href="$3">donn ene
+stream
+dobei</a>.',
 	'mv_user_cant_edit' => 'Do künntß Desch [$1 enlogge] möße, för hee jet ze ändere. Söns: $2',
 	'mv_add_stream_file' => 'En
 stream
@@ -7397,7 +7406,7 @@ $messages['ru'] = array(
 	'download_text' => 'Загрузить текст (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML):',
 	'clip_linkback' => 'Страница источника клипа',
 	'mv_ogg-player-videoElement' => 'Встроенная поддержка Ogg Video',
-	'mv_ogg-player-oggPlugin' => 'Плагин Generic Ogg',
+	'mv_ogg-player-oggPlugin' => 'Общий плагин Ogg',
 	'mv_ogg-player-selected' => '(выбранное)',
 	'add_to_end_of_sequence' => 'Добавить в конец последовательности',
 	'missing_video_stream' => 'Видеофайл для этого потока отсутствует',
@@ -7409,6 +7418,9 @@ $messages['ru'] = array(
 	'prev_clip_msg' => 'Воспроизвести предыдущий клип',
 	'current_clip_msg' => 'Продолжить воспроизведение этого клипа',
 	'seek_to' => 'Перейти к',
+	'upload-enable-converter' => 'Включить видео-конвертёр.
+Используйте эту опцию для загрузки исходного видео, не конвертированного в формат Theora.
+(<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">дополнительная информацию</a>)',
 	'upload-in-progress' => 'Перекодирование и загрузка (не закрывайте это окно)',
 	'upload-transcoded-status' => 'Перекодировано',
 	'uploaded-status' => 'Загружен',
@@ -7441,7 +7453,7 @@ $messages['ru'] = array(
 	'mv_insert_image_page' => 'Включить в страницу',
 	'mv_preview_insert' => 'Предпросмотр включения',
 	'mv_cancel_image_insert' => 'Отменить включение',
-	'sc_fileopts' => 'Правка деталей клипа',
+	'sc_fileopts' => 'Правка подробностей клипа',
 	'sc_overlays' => 'Оверлеи',
 	'sc_audio' => 'Аудиоконтроль',
 	'sc_duration' => 'Длительность',
@@ -7455,7 +7467,7 @@ $messages['ru'] = array(
 	'menu_transition' => 'Эффекты переходов',
 	'menu_resource_overview' => 'Просмотр источника',
 	'menu_options' => 'Настройки',
-	'loading_timeline' => 'Загружается хронология <blink>...</blink>',
+	'loading_timeline' => 'Загружается хронология <blink>…</blink>',
 	'loading_user_rights' => 'Загружаются права участников <blink>…</blink>',
 	'no_edit_permissions' => 'У Вас недостаточно прав для сохранения изменений в этой последовательности',
 	'edit_clip' => 'Редактировать клип',
@@ -7465,14 +7477,14 @@ $messages['ru'] = array(
 Все изменения будут потеряны.',
 	'zoom_in' => 'Увеличить',
 	'zoom_out' => 'Уменьшить',
-	'cut_clip' => 'Вырезать клипы',
+	'cut_clip' => 'Кадрирование клипов',
 	'expand_track' => 'Развернуть трек',
 	'colapse_track' => 'Свернуть трек',
-	'play_clip' => 'Использовать на позиции линии использования',
+	'play_clip' => 'Проигрывать с позиции линии воспроизведения',
 	'pixle2sec' => 'пикселей в секунду',
 	'rmclip' => 'Удалить клип',
-	'clip_in' => 'включить клип',
-	'clip_out' => 'выключить клип',
+	'clip_in' => 'добавить клип',
+	'clip_out' => 'убрать клип',
 	'no_selected_resource' => '<h3>Не выбран источник</h3>
 Выберите клип для включения правки источника',
 	'error_edit_multiple' => '<h3>Выбрано несколько ресурсов</h3>
@@ -7553,10 +7565,10 @@ $messages['ru'] = array(
 	'mv_watch_clip' => 'Смотреть клип',
 	'mv_close_clip' => 'Закрыть клип',
 	'mv_improve_transcript' => 'Улучшать транскрипцию',
-	'mv_people_matches' => 'Людей найдено',
-	'mv_category_matches' => 'Категория найдено',
-	'mv_bill_matches' => 'Счетов найдено',
-	'mv_interest_group_matches' => 'Групп по интересам найдено',
+	'mv_people_matches' => 'Найдено людей',
+	'mv_category_matches' => 'Найдено категорий',
+	'mv_bill_matches' => 'Найдено счетов',
+	'mv_interest_group_matches' => 'Найдено групп по интересам',
 	'mv_click_to_edit' => 'нажмите для правки',
 	'ht_en' => 'Стенограмма',
 	'ht_en_desc' => 'Английская расшифровка стенограммы. Этот тип наложения предназначен для текста, который говорится в видео-потоке. Могут быть добавлены ссылки, но весь текст должен соответствовать тому, что говорят в видео-потоке.',
@@ -7612,10 +7624,10 @@ $mvMVDTypeDefaultDisp должен быть подмножеством $mvMVDTyp
 	'mv_viewprevnext' => 'Просмотр ($1) ($2)',
 	'mediasearch' => 'Поиск медиа',
 	'mv_search_sel_t' => 'Выбор типа поиска',
-	'mv_do_media_search' => 'У поиска медиа MetaVid для $1',
+	'mv_do_media_search' => 'Выполнить поиск MetaVid-медиа для $1',
 	'mv_results_for' => 'Результаты для $1',
 	'mv_video_search' => 'Поиск видео',
-	'mv_page_search' => 'У поиска вики-страницы для $1',
+	'mv_page_search' => 'Выполнить поиск вики-страницы для $1',
 	'mv_add_filter' => 'Добавить фильтр',
 	'mv_search_match' => 'Текст запроса',
 	'mv_search_spoken_by' => 'Говорит',
@@ -7649,7 +7661,7 @@ $mvMVDTypeDefaultDisp должен быть подмножеством $mvMVDTyp
 	'mv_remove_filter' => 'удалить фильтр',
 	'mv_advaced_search' => 'Расширенный поиск медиа',
 	'mv_expand_play' => 'Расширить и воспроизвести на месте',
-	'mv_play_inline' => 'Использовать на линии',
+	'mv_play_inline' => 'Проигрывать встроено',
 	'mv_view_in_stream_interface' => 'Просмотреть в интерфейса потока',
 	'mv_view_wiki_page' => 'Просмотреть вики-страницу',
 	'mv_error_mvd_not_found' => 'Ошибка. Mvd не найден',
@@ -9021,7 +9033,7 @@ Hoặc bạn có thể muốn <a href="$3">Thêm luồng</a>.',
 	'mv_error_stream_insert' => 'không chèn luồng được',
 	'mv_redirect_and_delete_reason' => 'đã xóa trang đổi hướng',
 	'mv_remove_reason' => 'Lý do xóa:',
-	'mv_stream_delete_warrning' => "'''Xóa luồng này cũng sẽ xóa $1 đoạn siêu dữ liệu đi kèm'''<br />",
+	'mv_stream_delete_warrning' => "'''Xóa luồng này cũng sẽ xóa {{PLURAL:$1|đoạn|$1 đoạn}} siêu dữ liệu đi kèm'''<br />",
 	'mv_label_stream_type' => 'Kiểu luồng',
 	'mv_metavid_file' => 'Tập tin đã có trên máy chủ',
 	'mv_metavid_live' => 'Thiết lập luồng trực tiếp',

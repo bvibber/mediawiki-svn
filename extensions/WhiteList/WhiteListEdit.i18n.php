@@ -223,14 +223,14 @@ $messages['ar'] = array(
 	'whitelistoverviewrm' => '* إزالة الوصول إلى [[:$1|$1]]',
 	'whitelistoverviewna' => "* إضافة [[:$1|$1]] إلى القائمة البيضاء بوصول '''$2''' و '''$3''' تاريخ انتهاء",
 	'whitelistrequest' => 'طلب السماح لمزيد من الصفحات',
-	'whitelistrequestmsg' => '$1 طلب الوصول إلى {{PLURAL:$3|الصفحة|الصفحات}} التالية:
+	'whitelistrequestmsg' => '$1 طلب الوصول إلى {{PLURAL:$3||الصفحةالتالية|الصفحتين التاليتين|الصفحات التالية}}:
 
 $2',
 	'whitelistrequestconf' => 'الطلب للصفحات الجديدة تم إرساله إلى $1',
 	'whitelistnonrestricted' => "المستخدم '''$1''' ليس مستخدما محددا.
 هذه الصفحة مطبقة فقط على المستخدمين المحددين",
 	'whitelistnever' => 'أبدا',
-	'whitelistnummatches' => ' - {{PLURAL:$1|مطابقة واحدة|$1 مطابقة}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1||مطابقة واحدة|مطابقتان|$1 مطابقات|$1 مطابقة}}',
 	'right-editwhitelist' => 'عدل القائمة البيضاء للمستخدمون الموجودون',
 	'right-restricttowhitelist' => 'تعديل وعرض الصفحات على القائمة البيضاء فقط',
 	'action-editwhitelist' => 'عدل القائمة البيضاء لمستخدمين موجودين',

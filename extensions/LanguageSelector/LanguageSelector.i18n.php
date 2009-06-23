@@ -79,6 +79,15 @@ $messages['ast'] = array(
 	'languageselector-setlang' => 'establecer',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'languageselector' => 'Språch',
+	'languageselector-desc' => 'Språchnauswåih auf jeda Seitn, aa fia Bsuacha',
+	'languageselector-setlang' => 'setzn',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  * @author Red Winged Duck

@@ -985,24 +985,25 @@ $messages['uk'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'call' => 'Gọi',
 	'call-desc' => 'Tạo một siêu liên kết đến một tiêu bản (hoặc đến một trang wiki thông thường) bằng cách truyền tham số.
 Có thể được dùng tại dòng lệnh của trình duyệt hoặc trong văn bản wiki.',
-	'call-text' => "Gói mở rộng Call mong đợi một trang wiki và những thông số tùy chọn của trang đó là tham số.
+	'call-text' => "Phần mở rộng Call mong đợi một trang wiki và những thông số tùy chọn của trang đó là tham số.
 
 Ví dụ 1: &nbsp; <tt>[[{{#special:call}}/Tiêu bản của tôi,tham1=trị1]]</tt><br />
 Ví dụ 2: &nbsp; <tt>[[{{#special:call}}/Thảo luận:Thảo luận của tôi,tham1=trị1]]</tt><br />
 Ví dụ 3: &nbsp; <tt>[[{{#special:call}}/:Trang của tôi,tham1=trị1,tham2=trị2]]</tt><br />
 Ví dụ 4 (URL trình duyệt): &nbsp; <tt>http://tênmiền/wikitôi/index.php?{{#special:call}}/:Trang của tôi,tham1=trị1</tt>
 
-<i>Gói mở rộng Call</i> sẽ gọi trang chỉ định và truyền tham số.<br />
-Bạn sẽ nhìn thấy nội dung của trang được gọi cùng với tựa đề của nó nhưng 'kiểu' của nó sẽ là một trang đặc biệt, có nghĩa là bạn không thể sửa đổi trang đó.<br />Nội dung bạn nhìn thấy có thể thay đổi tùy theo giá trị tham số bạn truyền vào.
+<i>Phần mở rộng Call</i> sẽ gọi trang chỉ định và truyền tham số.<br />
+Bạn sẽ nhìn thấy nội dung của trang được gọi cùng với tựa đề của nó nhưng “kiểu” của nó sẽ là một trang đặc biệt, có nghĩa là bạn không thể sửa đổi trang đó.<br />Nội dung bạn nhìn thấy có thể thay đổi tùy theo giá trị tham số bạn truyền vào.
 
-<i>Gói mở rộng Call</i> hữu hiệu trong việc xây dựng những ứng dụng tương tác với MediaWiki.<br />
-Xem ví dụ <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br />
+<i>Phần mở rộng Call</i> hữu hiệu trong việc xây dựng những ứng dụng tương tác với MediaWiki.<br />
+Xem ví dụ <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a>.<br />
 Trong trường hợp có vấn đề bạn có thể thử <b>{{#special:call}}/DebuG</b>",
 	'call-save' => "Ngõ ra của lần gọi này sẽ được lưu vào trang có tên ''$1''.",
 	'call-save-success' => 'Văn bản sau đã được lưu vào trang <big>[[$1]]</big> .',

@@ -6378,7 +6378,7 @@ $messages['ru'] = array(
 	'configure-arrayinput-oneperline' => "''(один на строке)''",
 	'configure-summary' => 'Эта служебная страница позволяет вам настраивать вики, подробнее см. [http://www.mediawiki.org/wiki/Manual:Configuration_settings Описание настроек].',
 	'configure-btn-save' => 'Сохранить настройки',
-	'configure-db-error' => 'Указанная вами база данных для проведения настройки ($1) не существует.
+	'configure-db-error' => 'Не существует указанной вами базы данных ($1) для хранения настроек.
 Пожалуйста, создайте её и примените configure.sql или измените её имя.',
 	'configure-db-table-error' => 'Указанная вами база данных не содержит требуемых таблиц. Пожалуйста, примените configure.sql к этой базе данных.',
 	'configure-directory-not-writable' => 'Директория <tt>$1</tt>, используемая для хранения настроек, не доступна для записи.
@@ -6412,7 +6412,7 @@ $messages['ru'] = array(
 	'configure-old-summary' => '$1 от $2 $4 $3',
 	'configure-saved' => 'Настройка была сохранена',
 	'configure-backlink' => 'Вернуться к форме',
-	'configure-image-url-explanation' => 'Введите URL изображения, или имя изображения в этой вики (без пространства имён). Предварительный просмотр будет показан, когда вы оставите поле.',
+	'configure-image-url-explanation' => 'Введите URL изображения или название изображения в этой вики (без указания пространства имён). После выхода из поля будет показан предварительный просмотр.',
 	'configure-section-robots' => 'Поисковые роботы',
 	'configure-section-features' => 'Возможности',
 	'configure-section-general' => 'Основные настройки',
@@ -7597,7 +7597,7 @@ $messages['vi'] = array(
 	'configure-summary' => 'Trang đặc biệt này cho phép bạn cấu hình wiki, mời xem [http://www.mediawiki.org/wiki/Manual:Configuration_settings Các thiết lập cấu hình] để có thêm thông tin.',
 	'configure-btn-save' => 'Lưu thiết lập',
 	'configure-directory-not-writable' => 'Thư mục được dùng để lưu trữ thiết lập, <tt>$1</tt>, không cho phép ghi.
-Xin hãy chỉnh nó để cho phép PHP ghi vào mới dùng gói mở rộng này được.',
+Xin hãy chỉnh nó để cho phép PHP ghi vào mới dùng phần mở rộng này được.',
 	'configure-edit-old' => "'''Cảnh báo:''' Bạn đang sửa đổi một phiên bản cấu hình <strong>cũ</strong> (từ $1).",
 	'configure-error' => 'Không thể lưu cấu hình',
 	'configure-js-add' => 'Thêm đề mục mới',
@@ -7607,9 +7607,9 @@ Xin hãy chỉnh nó để cho phép PHP ghi vào mới dùng gói mở rộng n
 	'configure-js-remove-row' => 'Xóa mục này',
 	'configure-no-diff' => 'Các phiên bản được chọn không khác với nhau.',
 	'configure-no-directory' => 'Thư mục dùng để lưu cấu hình, <tt>$1</tt>, không tồn tại.
-Xin hãy khởi tạo hoặc thay đổi nó để dùng được gói mở rộng này.',
+Xin hãy khởi tạo hoặc thay đổi nó để dùng được phần mở rộng này.',
 	'configure-no-old' => 'Không có phiên bản cấu hình cũ nào.',
-	'configure-no-setup' => 'Bạn phải gọi tường minh <code>efConfigureSetup()</code> trong tập tin LocalSettings.php của bạn để dùng được gói mở rộng này.',
+	'configure-no-setup' => 'Bạn phải gọi tường minh <code>efConfigureSetup()</code> trong tập tin LocalSettings.php của bạn để dùng được phần mở rộng này.',
 	'configure-no-transwiki' => 'Bạn không được phép thay đổi thiết lập ở các wiki khác',
 	'configure-old' => 'Phiên bản cũ',
 	'configure-old-versions' => 'Danh sách các phiên bản cấu hình cũ:',
@@ -7659,7 +7659,7 @@ Xin hãy khởi tạo hoặc thay đổi nó để dùng được gói mở rộ
 	'configure-section-users' => 'Thành viên',
 	'configure-section-feed' => 'Gói tin feed',
 	'configure-section-job' => 'Công việc',
-	'configure-section-extension' => 'Gói mở rộng',
+	'configure-section-extension' => 'Phần mở rộng',
 	'configure-section-search' => 'Tìm kiếm',
 	'configure-section-copyright' => 'Bản quyền',
 	'configure-section-htcp' => 'Phát HTCP',

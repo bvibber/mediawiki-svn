@@ -1762,16 +1762,20 @@ Versöhk ens dat Kommando „<code>$3{…}</code>“.',
 $messages['lb'] = array(
 	'math-desc' => 'MathML Resultat fir &lt;math&gt; Taggen',
 	'math_CannotChangeDirectory' => 'Den Aarbechtsrepertoire kann net geännert ginn',
+	'math_IllegalCharacter' => 'Zeechen dat net zouelooss ass an deem wat Dir aginn hutt.',
 	'math_IllegalFinalBackslash' => 'D\'Zeechen "\\" kann net um Enn vun enger Saisie stoen',
 	'math_IllegalRedefinition' => 'D\'Uweisung "$1" ass schonn definéiert; Dir kënnt se net nach emol definéieren',
 	'math_InvalidColour' => 'D\'Faarw "$1" gëtt et net',
+	'math_MissingOpenBraceAfter' => '"{" hanner "$1" feelt',
 	'math_MissingOpenBraceAtEnd' => 'Eng "{" feelt um Ënn vun der Saisie',
+	'math_MissingOpenBraceBefore' => 'Eng "{" feelt viru(n) "$1"',
 	'math_NotEnoughArguments' => 'Dir hutt net genuch Parameter ugi fir "$1"',
 	'math_PngIncompatibleCharacter' => 'E PNG mat dem Zeechen $1 konnt net korrekt generéiert ginn',
 	'math_TooManyTokens' => 'Dat wat Dir aginn hutt ass ze laang',
 	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',
 	'math_UnmatchedOpenBracket' => 'D\'Klammer "[" as net mat der Klammer "]" zougemaach',
 	'math_UnrecognisedCommand' => 'Unbekannte Commande "$1"',
+	'math_WrongFontEncoding' => 'D\'Symbol "$1" däerf net an der Zeechecodéierung "$2" virkommen',
 );
 
 /** Malayalam (മലയാളം)

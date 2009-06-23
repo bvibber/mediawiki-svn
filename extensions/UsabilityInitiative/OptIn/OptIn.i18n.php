@@ -385,9 +385,11 @@ Mer dääte jähn weße wat De övver uns neu Ovverflääsch meins. Dröm däät
  */
 $messages['lb'] = array(
 	'optin' => 'Benotzerfrëndlechkeets-Initiative matmaachen',
+	'optin-desc' => "Erlaabt et de Benotzer fir d'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative ze benotzen",
 	'optin-title' => "Verbesserungen duerch d'Benotzerfrëndlechkeets-Initiative",
 	'optin-submit-in' => 'Matmaachen',
 	'optin-submit-out' => 'Net méi matmaachen',
+	'optin-survey-question-whyoptout' => 'Firwat wëllt Dir dësen Interface net méi benotzen?',
 	'optin-survey-answer-whyoptout-didntlike' => 'Ech hunn deen Design net gären.',
 	'optin-survey-answer-whyoptout-hard' => "Et war ze komplizéiert fir eng Säit z'änneren.",
 	'optin-survey-answer-whyoptout-didntwork' => 'Et huet net richteg fonctionnéiert.',
@@ -398,6 +400,14 @@ $messages['lb'] = array(
 	'optin-survey-answer-os-other' => 'Aneren:',
 	'optin-survey-question-res' => "Wéi ass d'Opléisung vun ärem Ecran?",
 	'optin-survey-question-feedback' => 'Sot eis w.e.g. Är Meenung:',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'optin-survey-answer-whyoptout-other' => 'Aandere rejen:',
+	'optin-survey-answer-os-other' => 'Aanders:',
 );
 
 /** Dutch (Nederlands)

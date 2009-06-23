@@ -64,7 +64,7 @@ $aliases['ia'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'AccountManager' => array( 'アカウントマネージャー' ),
+	'AccountManager' => array( 'アカウント管理', 'アカウントマネージャー' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */

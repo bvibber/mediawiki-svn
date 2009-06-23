@@ -74,6 +74,7 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'form-desc' => '[[Special:Form|واجهة استمارة]] لبدء الصفحات الجديدة',
@@ -92,8 +93,8 @@ $messages['ar'] = array(
 	'formbadpagename' => 'اسم صفحة سيء',
 	'formbadrecaptcha' => 'قيم غير صحيحة لreCaptcha. حاول مرة ثانية.',
 	'formbadpagenametext' => 'بيانات الاستمارة التي أدخلتها تصنع اسم صفحة سيئا، "$1".',
-	'formrequiredfielderror' => '{{PLURAL:$2|الحقل $1 مطلوب|الحقول $1 مطلوبة}} لهذه الاستمارة.
-من فضلك {{PLURAL:$2|املأه|املأها}}.',
+	'formrequiredfielderror' => '{{PLURAL:$2||الحقل $1 مطلوب|الحقلان $1 مطلوبان|الحقول $1 مطلوبة}} لهذه الاستمارة.
+من فضلك {{PLURAL:$2||املأه|املأهما|املأها}}.',
 	'formsavesummary' => 'صفحة جديدة باستخدام [[Special:Form/$1|الاستمارة $1]]',
 	'formsaveerror' => 'خطأ في حفظ الاستمارة',
 	'formsaveerrortext' => "حدث خطأ غير معروف أثناء حفظ الاستمارة '$1'.",

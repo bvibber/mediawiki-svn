@@ -145,10 +145,20 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'countedits' => 'Лічыльнік рэдагаваньняў',
+	'countedits-desc' => '[[Special:CountEdits|Спэцыяльная старонка],] якая лічыць рэдагаваньні ўдзельнікаў і стварае сьпіс 10 найбольш актыўных удзельнікаў',
+	'countedits-warning' => "'''Папярэджаньне:''' Не судзіце кнігу па яе вокладцы.
+Не судзіце ўдзельнікаў па колькасьці рэдагаваньняў.",
 	'countedits-username' => 'Імя ўдзельніка:',
 	'countedits-ok' => 'Добра',
+	'countedits-nosuchuser' => 'Не існуе ўдзельніка з іменем $1.',
+	'countedits-resultheader' => 'Вынікі для $1',
+	'countedits-resulttext' => '{{GENDER:$1|Удзельнік $1 зрабіў|Удзельніца $1 зрабіла}} $2 {{PLURAL:$2|рэдагаваньне|рэдагаваньні|рэдагаваньняў}}',
+	'countedits-mostactive' => 'Найбольш актыўныя ўдзельнікі',
+	'countedits-nocontribs' => 'У {{GRAMMAR:родны|{{SITENAME}}}} няма рэдагаваньняў.',
 );
 
 /** Bulgarian (Български)

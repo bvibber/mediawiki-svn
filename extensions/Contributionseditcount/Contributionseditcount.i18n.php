@@ -45,6 +45,14 @@ $messages['bcl'] = array(
 	'contributionseditcount' => 'An parágamit na ini igwang $1 na mga hirá.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'contributionseditcount' => '{{GENDER:$2|Гэты ўдзельнік зрабіў|Гэтая ўдзельніца зрабіла}} $1 {{PLURAL:$1|рэдагаваньне|рэдагаваньні|рэдагаваньняў}}.',
+	'contributionseditcount-desc' => 'Паказвае колькасьць зробленых рэдагаваньняў на [[Special:Contributions|старонцы ўнёску ўдзельніка]]',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

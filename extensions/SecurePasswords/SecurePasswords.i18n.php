@@ -35,13 +35,14 @@ Do not translate or change tag names, or link anchors.',
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  * @author Ouda
  */
 $messages['ar'] = array(
 	'securepasswords-desc' => 'ينشئ هاشات كلمة سر أكثر أمنا ويضيف متحقق من قوة كلمة السر',
 	'securepasswords-valid' => 'كلمة السر غير صحيحة أو قصيرة جدا.
 يجب:',
-	'securepasswords-minlength' => 'تكون على الأقل $1 {{PLURAL:$1|حرف|حرف}} طولا',
+	'securepasswords-minlength' => 'يكون طولها على الأقل {{PLURAL:$1||حرفًا واحدًا|حرفين|$1 حروف|$1 حرفًا|$1 حرف}}',
 	'securepasswords-lowercase' => 'تحتوي على الأقل على حرف واحد صغير',
 	'securepasswords-uppercase' => 'تحتوي على الأقل على حرف واحد كبير',
 	'securepasswords-digit' => 'يحتوى على رقم واحد على الأقل',
@@ -525,7 +526,7 @@ Adda essere:",
 $messages['ru'] = array(
 	'securepasswords-desc' => 'Создаёт защищённые хеши паролей и добавляет проверку силы пароля',
 	'securepasswords-valid' => 'Вам пароль неверный или слишком короткий.
-Он должен быть:',
+Он должен:',
 	'securepasswords-minlength' => 'быть, по крайней мере, длиной $1 {{PLURAL:$1|символ|символа|символов}}',
 	'securepasswords-lowercase' => 'содержит минимум 1 строчную букву',
 	'securepasswords-uppercase' => 'содержит минимум 1 прописную букву',

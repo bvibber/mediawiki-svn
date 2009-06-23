@@ -421,6 +421,7 @@ $wdMessages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $wdMessages['ar'] = array(
 	'languages' => 'ويكي داتا: مدير اللغة',
@@ -449,7 +450,7 @@ $wdMessages['ar'] = array(
 	'datasearch_search_text' => 'ابحث في النص:',
 	'datasearch_within_words' => 'في الكلمات:',
 	'datasearch_within_ext_ids' => 'في المعرفات الخارجية:',
-	'datasearch_showing_only' => 'عرض فقط كحد أقصى $1 {{PLURAL:$1|مطابقة|مطابقة}}.',
+	'datasearch_showing_only' => 'عرض  {{PLURAL:$1||مطابقة واحدة|مطابقتين|$1 مطابقات|$1 مطابقة|$1 مطابقة}} فقط كحد أقصى.',
 	'datasearch_match_ext_ids' => 'المعرفات الخارجية تطابق <i>$1</i>',
 	'datasearch_match_words' => 'الكلمات التي تطابق <i>$1</i> والمعاني المصاحبة',
 	'datasearch_match_words_lang' => 'الكلمات باللغة <i>$1</i> التي تطابق <i>$2</i> والمعاني المصاحبة',
@@ -473,7 +474,7 @@ $wdMessages['ar'] = array(
 	'ow_importtsv_test_run_title' => 'تشغيل تجربة لاستيراد بيانات TSV',
 	'ow_importtsv_nothing_added' => 'لا شيء تمت إضافته.',
 	'ow_importtsv_nothing_added_test' => 'لا شيء تمت إضافته (أنت قمت بتشغيل تجريبي).',
-	'ow_importtsv_results' => 'أضاف $1 {{PLURAL:$1|تعريف|تعريف}} و $2 {{PLURAL:$2|ترجمة|ترجمة}}.',
+	'ow_importtsv_results' => 'أضاف {{PLURAL:$1||تعريفًا واحدًا|تعريفين|$1 تعريفات|$1 تعريفًا|$1 تعريف}} و{{PLURAL:$2||ترجمة واحدة|ترجمتين|$2 ترجمات|$2 ترجمة|$2 ترجمة}}.',
 	'ow_impexptsv_unknown_lang' => '<p>لغة غير معروفة أو غير صحيحة: $1.<br />
 اللغات يجب أن تكون أكواد لغات ISO 639-3.</p>',
 	'exporttsv' => 'ويكي داتا: تصدير تي إس في',

@@ -343,6 +343,13 @@ $messages['pt-br'] = array(
 	'logentry-invalidtoken' => 'Token inválido',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'logentry-append' => 'Mitte in code',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

@@ -69,7 +69,7 @@ $aliases['ia'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'Player' => array( 'プレイヤー', 'プレーヤー' ),
+	'Player' => array( 'プレーヤー', 'プレイヤー' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

@@ -12,6 +12,16 @@
  	'PrefStats' => array( 'PrefStats' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'PrefStats' => array( 'إحصاءات التفضيلات' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'PrefStats' => array( '設定統計' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'PrefStats' => array( 'Voorkeurenstatistieken' ),

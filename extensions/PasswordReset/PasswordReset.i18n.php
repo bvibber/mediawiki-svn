@@ -121,6 +121,16 @@ $messages['arz'] = array(
 	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:PasswordReset|صفحة خاصة]])',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'passwordreset-username' => 'Benutzanãm:',
+	'passwordreset-newpass' => 'Neichs Passwoat:',
+	'passwordreset-confirmpass' => 'Passwoat bestäting:',
+	'passwordreset-submit' => 'Passwoat zrucksetzn',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

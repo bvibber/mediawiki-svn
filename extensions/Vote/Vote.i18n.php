@@ -553,6 +553,7 @@ $messages['fa'] = array(
  * @author Crt
  * @author Mobe
  * @author Str4nd
+ * @author Varusmies
  * @author Vililikku
  */
 $messages['fi'] = array(
@@ -574,6 +575,8 @@ riddler|Arvuuttaja',
 	'vote-results-none' => 'Yhtään ääntä ei ole annettu.',
 	'vote-login' => 'Sinun tulee [$1 kirjautua sisään] äänestääksesi.',
 	'vote-invalid-choice' => 'Sinun tulee valita vaihtoehdoista yksi.',
+	'right-vote' => 'Äänestä',
+	'right-voteadmin' => 'Katso äänestystulokset',
 );
 
 /** French (Français)

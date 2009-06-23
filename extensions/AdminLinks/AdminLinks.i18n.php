@@ -174,6 +174,13 @@ $messages['es'] = array(
 	'right-adminlinks' => 'Ver el vínculo a [[Special:AdminLinks|Administrar vínculos]]',
 );
 
+/** Finnish (Suomi)
+ * @author Varusmies
+ */
+$messages['fi'] = array(
+	'adminlinks' => 'Ylläpidon linkit',
+);
+
 /** French (Français)
  * @author IAlex
  */

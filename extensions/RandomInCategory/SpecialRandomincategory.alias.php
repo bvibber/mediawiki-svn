@@ -62,7 +62,7 @@ $aliases['it'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'RandomInCategory' => array( 'カテゴリ中のランダムなページ' ),
+	'RandomInCategory' => array( 'カテゴリ内おまかせ表示', 'カテゴリ中のランダムなページ' ),
 );
 
 /** Ripoarisch (Ripoarisch) */

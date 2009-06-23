@@ -73,6 +73,14 @@ $messages['hsb'] = array(
 	'usabilityinitiative-desc' => 'Funkcije, wuwity přez iniciatiwu wužiwajomnosće Wikipedije, za polěpšenje wužiwajomnosće MediaWiki',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'usabilityinitiative' => 'Initiativa de usabilitate',
+	'usabilityinitiative-desc' => 'Functiones disveloppate per le Initiativa de Usabilitate de Wikipedia pro meliorar le usabilitate de MediaWiki',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

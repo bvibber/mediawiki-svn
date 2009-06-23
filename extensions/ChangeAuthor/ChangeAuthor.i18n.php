@@ -60,6 +60,7 @@ If this error keeps showing up, the database is probably broken.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Aotake
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Meno25
@@ -89,7 +90,7 @@ $messages['qqq'] = array(
 	'changeauthor-weirderror' => 'Error message displayed only when very weird things happen.',
 	'changeauthor-invalidform' => "Error message displayed when expected form values aren't found.",
 	'changeauthor-success' => 'Displayed after a successful change.',
-	'changeauthor-logentry' => 'The log message for author changes. $1 is the page title, $2 the revision ID, $3 the old author and $4 the new one',
+	'changeauthor-logentry' => 'The log message for author changes. $1 is the page title, $2 includes {{msg-mw|changeauthor-rev}} in the site language, $3 the old author and $4 the new one',
 	'changeauthor-logpagename' => 'Displayed on top of Special:Log/changeauth and in the list of available logs.',
 	'right-changeauthor' => '{{doc-right}}',
 );

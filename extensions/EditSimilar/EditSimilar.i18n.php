@@ -313,10 +313,10 @@ Etiam iste {{PLURAL:$2|pagina|paginas}} poterea haber beneficio de tu adjuta: $1
  */
 $messages['it'] = array(
 	'editsimilar-desc' => 'Incoraggia gli utenti a modificare pagine simili dopo aver salvato una pagina',
-	'editsimilar-thanks' => 'Grazie per il tuo contributo.
-Guarda anche queste pagine correlate: $1.',
+	'editsimilar-thanks' => 'Grazie per il contributo.
+Guarda anche {{PLURAL:$2|questa pagina correlata|queste pagine correlate}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Grazie per il tuo contributo.
-Anche queste pagine potrebbero usufruire del tuo aiuto: $1.',
+Anche {{PLURAL:$2|questa pagina potrebbe|queste pagine potrebbero}} usufruire del tuo aiuto: $1.',
 	'editsimilar-thankyou' => 'Grazie per il tuo contributo, $1!',
 	'editsimilar-link-disable' => 'imposta preferenze',
 	'tog-edit-similar' => 'Attiva suggerimenti di pagine simili',
@@ -558,9 +558,9 @@ $messages['tr'] = array(
 $messages['vi'] = array(
 	'editsimilar-desc' => 'Khuyến khích người dùng sửa đổi một trang tương tự sau khi đã lưu một trang',
 	'editsimilar-thanks' => 'Cảm ơn vì sự đóng góp của bạn.
-Mời bạn xem qua các trang tương tự: $1.',
+Mời bạn xem qua {{PLURAL:$2|trang|các trang}} tương tự: $1.',
 	'editsimilar-thanks-notsimilar' => 'Cảm ơn vì sự đóng góp của bạn.
-Bạn cũng có thể giúp đỡ những trang sau: $1.',
+Bạn cũng có thể giúp đỡ {{PLURAL:$2|trang|những trang}} sau: $1.',
 	'editsimilar-thankyou' => 'Cảm ơn về sự đóng góp của $1!',
 	'editsimilar-link-disable' => 'tùy chọn',
 	'tog-edit-similar' => 'Kích hoạt đề nghị về trang tương tự',

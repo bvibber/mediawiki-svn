@@ -1949,11 +1949,11 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'review_sidebar_title' => 'Duyệt',
 	'review-desc' => 'Cho phép thành viên [[Special:Review|phê chuẩn]] trang',
-	'review_topics' => "# Dưới đây là danh sách các chủ đề và tầm vực của gói mở rộng duyệt bài.
-# Mỗi chủ đề được định nghĩa bằng một dòng năm giá trị, cách nhau bởi      Normal   0               false   false   false      EN-US   JA   X-NONE                                                         MicrosoftInternetExplorer4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ‘:’  (tất cả những dòng khác được bỏ qua).
-# Thứ tự là: khóa số (>0), tên, tầm lớn nhất (>1; 2=có/không), ý nghĩa của giá trị nhỏ nhất (ví dụ, 'tồi'), ý nghĩa của giá trị cao nhất (ví dụ, 'tốt').
+	'review_topics' => '# Dưới đây là danh sách các chủ đề và tầm vực của phần mở rộng duyệt bài.
+# Mỗi chủ đề được định nghĩa bằng một dòng năm giá trị, cách nhau bởi “:” (tất cả những dòng khác được bỏ qua).
+# Thứ tự là: khóa số (>0), tên, tầm lớn nhất (>1; 2=có/không), ý nghĩa của giá trị nhỏ nhất (ví dụ, “tồi”), ý nghĩa của giá trị cao nhất (ví dụ, “tốt”).
 1:Chất lượng:5:tồi:tốt
-2:Sẵn sàng cho 1.0:2:không:có",
+2:Sẵn sàng cho 1.0:2:không:có',
 	'review_topic_page' => 'Duyệt chủ đề',
 	'review_sidebar_explanation' => 'Hộp kiểm ngoài cùng bên trái luôn có nghĩa là      Normal   0               false   false   false      EN-US   JA   X-NONE                                                         MicrosoftInternetExplorer4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ‘không có ý kiến’.',
 	'review_save' => 'Lưu trữ duyệt bài',

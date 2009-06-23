@@ -33,6 +33,13 @@ $messages['arz'] = array(
 	'contributorsaddon-desc' => 'يضيف منبثقات JS onMouseOver إلى وصلات "المساهمون الأساسيون"',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'contributorsaddon-desc' => 'Дадае JavaScript да спасылак «Асноўныя аўтары»',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

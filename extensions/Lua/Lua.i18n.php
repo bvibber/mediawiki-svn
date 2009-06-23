@@ -508,9 +508,10 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'lua_desc' => 'Добавляет в парсер поддержку включаемых блоков кода [http://www.lua.org/ Lua]',
+	'lua_desc' => 'Добавляет в парсер поддержку блоков кода [http://www.lua.org/ Lua]',
 	'lua_error' => 'Ошибка на линии $1',
 	'lua_extension_notfound' => 'Расширение Lua не настроено',
 	'lua_interp_notfound' => 'Интерпретатор Lua не найден',

@@ -601,6 +601,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Nike
+ * @author Varusmies
  */
 $messages['fi'] = array(
 	'badimages' => 'Kiellettyjen kuvien luettelo',
@@ -623,6 +624,7 @@ $messages['fi'] = array(
 	'badimages-log-add' => 'lisäsi kuvan [[$1]] kiellettyjen kuvien luetteloon',
 	'badimages-log-remove' => 'poisti kuvan [[$1]] kiellettyjen kuvien luettelosta',
 	'badimages-page' => '{{ns:help}}:Kielletyt kuvat',
+	'right-badimages' => 'Päivitä huonojen kuvien lista',
 );
 
 /** French (Français)

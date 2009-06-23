@@ -2039,7 +2039,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'povwatch' => 'Theo dõi trung lập',
-	'povwatch_desc' => 'Gói mở rộng để [[Special:PovWatch|đẩy trang vào danh sách theo dõi]] của thành viên khác',
+	'povwatch_desc' => 'Phần mở rộng để [[Special:PovWatch|đẩy trang vào danh sách theo dõi]] của thành viên khác',
 	'povwatch_no_session' => 'Lỗi: Không thể đăng mẫu do mất dữ liệu phiên làm việc.',
 	'povwatch_not_allowed_push' => 'Bạn không phải là một quản lý PovWatch, bạn không thể đẩy trang vào danh sách theo dõi.',
 	'povwatch_already_subscribed' => 'Bạn đã đăng ký vào PovWatch',

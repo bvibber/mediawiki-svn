@@ -183,6 +183,19 @@ $messages['ia'] = array(
 	'uos-title' => 'Distribution de valores del option de usator $1',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'useroptionstats' => 'Statistiche opzioni utente',
+	'useroptionstats-desc' => "[[Special:UserOptionStats|Pagina speciale]] per la segnalazione dell'utilizzo delle opzioni degli utenti di MediaWiki",
+	'uos-warn' => 'PHPlot non è installato',
+	'uos-choose' => 'Scegliere una delle seguenti opzioni utente: $1',
+	'uos-unknown' => '*Predefinito',
+	'uos-other' => '*Altro',
+	'uos-title' => "Distribuzione dei valori dell'opzione utente $1",
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

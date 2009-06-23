@@ -89,7 +89,7 @@ $aliases['it'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'NewsChannel' => array( 'ニュース・チャンネル', 'ニュースチャンネル' ),
+	'NewsChannel' => array( 'ニュースチャンネル', 'ニュース・チャンネル' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

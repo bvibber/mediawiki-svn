@@ -22,11 +22,12 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'stalepages' => 'صفحات متجمدة',
 	'stalepages-desc' => 'يولد [[Special:Stalepages|قائمة بالصفحات]] التي لم يتم تعديلها مؤخرا',
-	'stalepages-summary' => 'هذه قائمة بالصفحات التي لم يتم تعديلها في آخر $1 {{PLURAL:$1|يوم|يوم}}.',
+	'stalepages-summary' => 'هذه قائمة بالصفحات التي لم يتم تعديلها في {{PLURAL:$1||اليوم الماضي|اليومين الماضيين|ال$1 أيام الماضية|$ يومًا الماضية|$1 يوم الماضية}}.',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

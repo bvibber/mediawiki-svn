@@ -721,7 +721,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'dplforum-desc' => 'Gói mở rộng diễn đàn dựa trên DPL',
+	'dplforum-desc' => 'Phần mở rộng diễn đàn dựa trên DPL',
 	'dplforum-by' => 'bởi $1',
 	'dplforum-edited' => '- Lần sửa đổi cuối',
 	'dplforum-never' => 'Chưa bao giờ',

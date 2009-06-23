@@ -66,6 +66,16 @@ $messages['arz'] = array(
 * Self',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'minipreview-files_in_category' => "De Kategorie enthåit insgsãmt '''$1''' {{PLURAL:$1|Datei|Datein}}.",
+	'minipreview-files_in_gallery' => "De Galarie enthåit insgsãmt '''$1''' {{PLURAL:$1|Datei|Datein}}.",
+	'minipreview-no_more_files_here' => 'Kane weidan Datein in dera Richtung',
+	'minipreview-no_category_gallery' => 'Kane Kategorien oda Galarien!',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

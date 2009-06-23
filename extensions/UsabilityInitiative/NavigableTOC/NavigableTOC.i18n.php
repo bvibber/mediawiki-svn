@@ -40,6 +40,14 @@ $messages['hsb'] = array(
 	'navigabletoc-desc' => 'Přidawa zapis wobsaha wobdźěłowanskemu formularej, kotaryž tekstowe polo kula, hdyž so na wotrězk kliknje.',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'navigabletoc' => 'ナビゲーション可能な目次',
+	'navigabletoc-desc' => 'クリックした際にテキストボックスをスクロールさせる目次を編集フォームに加える',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
