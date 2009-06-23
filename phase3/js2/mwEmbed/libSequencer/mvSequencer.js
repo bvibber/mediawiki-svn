@@ -675,12 +675,14 @@ mvSequencer.prototype = {
 		o+="\t<head>\n";		
 		//get transitions 
 		for(var i in this.plObj.transitions){
-			var tObj = this.plObj.transitions[i].getAttributeObj();
-			o+="\t\t<transition ";
-			for(var j in tObj){
-				o+=' '+j+'="' + tObj[j] + '"\n\t\t';
+			if( this.plObj.transitions[i] ){
+				var tObj = this.plObj.transitions[i].getAttributeObj();
+				o+="\t\t<transition ";
+				for(var j in tObj){
+					o+=' '+j+'="' + tObj[j] + '"\n\t\t';
+				}
+				o+='/>'+"\n"; //transitions don't have children
 			}
-			o+='/>'+"\n"; //transitions don't have children
 		}
 		o+="\t</head>\n";	
 			

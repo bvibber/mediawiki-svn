@@ -183,9 +183,8 @@ mvBaseUploadInterface.prototype = {
 			    'comment' 	: $j('#wpUploadDescription').val()			    
 			}
 			//check for editToken
-			_this.etoken = $j("input[name='wpEditToken']").val();			
-			
-			_this.doHttpUpload( httpUpConf );			
+			_this.etoken = $j("input[name='wpEditToken']").val();						
+			_this.doHttpUpload( httpUpConf );
 		}else{
 			js_error( 'Error: unrecongized upload mode: ' + _this.upload_mode );
 		}				
