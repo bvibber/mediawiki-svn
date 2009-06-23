@@ -225,8 +225,8 @@ Please report this to the [[{{MediaWiki:Grouppage-sysop}}|site administrator]].'
 	'mv_updated_stream_files' => 'Updated stream files record',
 	'mv_removed_file_stream' => 'Removed stream file: $1',
 	'mv_missing_stream_text' => 'The stream you requested <b>$1</b> is not available.<br />
-You may want to check the <a href="$2">Stream list</a><br />
-Or you may want to <a href="$3">Add the stream</a>.',
+You may want to check the <a href="$2">Stream list</a>,<br />
+or you may want to <a href="$3">Add the stream</a>.',
 	'mv_user_cant_edit' => 'You may have to [$1 login] to edit, $2', // $1 is login link and $2 is cancel link
 
 	'mv_add_stream_file' => 'Add stream file',
