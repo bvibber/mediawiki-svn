@@ -146,12 +146,17 @@ class UploadFromChunks extends UploadBase {
 		if( $this->chunk_mode == UploadFromChunks::INIT ){
 			//firefogg expects a specific result per:
 			//http://www.firefogg.org/dev/chunk_post.html
+
+			//its oky to return the token here because
+			//a) the user must have requested the token to get here and
+			//b) should only happen over POST
+			//c) (we need the token to validate chunks are coming from a non-xss request)
+			$token = urlencode( $wgUser->editToken() );
 			ob_clean();
-			echo ApiFormatJson::getJsonEncode( array( 
+			echo ApiFormatJson::getJsonEncode( array(
 					"uploadUrl" => "{$wgServer}{$wgScriptPath}/api.php?action=upload&".
-									"token=" . htmlspecialchars( $wgUser->editToken() ) . "&".
-									"format=json&enablechunks=true&chunksessionkey=".
-										$this->setupChunkSession($summary, $comment, $watch ) ) );
+									"token={$token}&format=json&enablechunks=true&chunksessionkey=".
+									$this->setupChunkSession($summary, $comment, $watch ) ) );
 			exit(0);
 		}else if( $this->chunk_mode == UploadFromChunks::CHUNK ){
 			$status = $this->doChunkAppend();

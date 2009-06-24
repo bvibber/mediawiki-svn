@@ -999,7 +999,7 @@ function do_api_req( options, callback ){
 	
 	js_log('do api req: ' + options.url +'?' +  jQuery.param(options.data) );			
 	//build request string:			 
-	if( parseUri( document.URL ).host == parseUri( options.url ).host ){		
+	if( parseUri( document.URL ).host == parseUri( options.url ).host ){
 		//local request do api request directly		
 		$j.ajax({
 			type: "POST",
