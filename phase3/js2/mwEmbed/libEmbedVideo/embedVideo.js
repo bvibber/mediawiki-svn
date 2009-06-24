@@ -736,7 +736,7 @@ mediaElement.prototype =
 		// Process all inner <source> elements	
 		//js_log("inner source count: " + video_element.getElementsByTagName('source').length );
 		
-		$j(video_element).children('source,text').each(function(inx, inner_source){			
+		$j(video_element).find('source,text').each(function(inx, inner_source){			
 			_this.tryAddSource( inner_source );
 		});						  
 	},
@@ -2241,33 +2241,11 @@ embedVideo.prototype = {
 		//do head request if on the same domain
 		return this.media_element.selected_source.URLTimeEncoding;
 	},
-	setSliderValue: function(perc, hide_progress){
+	setSliderValue: function(perc, hide_progress){		
 		var this_id = (this.pc)?this.pc.pp.id:this.id;
 		var val = parseInt( perc*1000 ); 
 		$j('#mv_play_head_'+this_id).slider('value', val);
 		
-		/*
-		//js_log('setSliderValue:'+perc+' ct:'+ this.currentTime);
-		var this_id = (this.pc)?this.pc.pp.id:this.id;
-		//alinment offset: 
-		if(!this.mv_seeker_width)
-			this.mv_seeker_width = $j('#mv_seeker_slider_'+this_id).width();				
-		
-		var val = Math.round( perc  * $j('#mv_seeker_'+this_id).width() - (this.mv_seeker_width*perc));
-		if(val > ($j('#mv_seeker_'+this_id).width() -this.mv_seeker_width) )
-			val = $j('#mv_seeker_'+this_id).width() -this.mv_seeker_width ;
-		if(val < 0) 
-			val = 0;
-		$j('#mv_seeker_slider_'+this_id).css('left', (val)+'px' );
-		
-		//update the playback progress bar
-		if( ! hide_progress ){
-			$j('#mv_seeker_' + this_id + ' .mv_playback').css("width",  Math.round( val + (this.mv_seeker_width*.5) ) + 'px' );
-		}else{
-			//hide the progress bar
-			$j('#mv_seeker_' + this_id + ' .mv_playback').css("width", "0px");
-		}			
-		*/
 		//js_log('set#mv_seeker_slider_'+this_id + ' perc in: ' + perc + ' * ' + $j('#mv_seeker_'+this_id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
 	},
@@ -2275,9 +2253,12 @@ embedVideo.prototype = {
 		js_log('highlightPlaySection');		
 		var this_id = (this.pc)?this.pc.pp.id:this.id;
 		var dur = this.getDuration();
-		var hide_progress = true;
+		var hide_progress = true;		
 		//set the left percet and update the slider: 
-		rel_start_sec = ( npt2seconds( options['start']) - this.start_offset );
+		rel_start_sec = npt2seconds( options['start']);
+		//remove the start_offset if relevent: 
+		if(this.start_offset)
+			rel_start_sec = rel_start_sec - this.start_offset
 		
 		var slider_perc=0;
 		if( rel_start_sec <= 0 ){
@@ -2288,7 +2269,8 @@ embedVideo.prototype = {
 		}else{
 			left_perc = parseInt( (rel_start_sec / dur)*100 ) ;		
 			slider_perc = (left_perc / 100);
-		}			
+		}		
+		js_log("slider perc:" + slider_perc);	
 		if( ! this.isPlaying() ){
 			this.setSliderValue( slider_perc , hide_progress);		
 		}

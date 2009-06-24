@@ -16,6 +16,7 @@ mvTextInterface.prototype = {
 	default_time_range: "source", //by default just use the source don't get a time-range
 	transcript_set:null,
 	autoscroll:true,
+	add_to_end_on_this_pass:false,
 	scrollTimerId:0,	
 	init:function( parentEmbed ){
 		   //init a new availableTracks obj:
@@ -113,36 +114,53 @@ mvTextInterface.prototype = {
 		_this.availableTracks[ track_id ].display=true;
 		//setup the layout:
 		this.setup_layout();
-		js_log("SHOULD ADD: "+ track_id + ' count:' +  _this.availableTracks[ track_id ].textNodes.length); 
-		$j.each(_this.availableTracks[ track_id ].textNodes, function(inx, text_clip){
-			_this.add_merge_text_clip( text_clip );
-		});		
-	},
-	add_merge_text_clip: function(text_clip){		
+		js_log("SHOULD ADD: "+ track_id + ' count:' +  _this.availableTracks[ track_id ].textNodes.length);
+		
+		//a flag to avoid checking all clips if we know we are adding to the end: 
+		_this.add_to_end_on_this_pass = false;
+		
+		//run clip adding on a timed interval to not lock the browser on large srt file merges (should use worker threads)
+		var i =0;
+		var track_id = track_id;
+		var addNextClip = function(){						
+			var text_clip = _this.availableTracks[ track_id ].textNodes[i];		
+			_this.add_merge_text_clip(text_clip);
+			i++;	
+			if(i < _this.availableTracks[ track_id ].textNodes.length){						
+				setTimeout(addNextClip, 1);				
+			}
+		}
+		addNextClip();
+	},	
+	add_merge_text_clip: function( text_clip ){		
 		var _this = this;
 		//make sure the clip does not already exist:
 		if($j('#tc_'+text_clip.id).length==0){
 			var inserted = false;
 			var text_clip_start_time = npt2seconds( text_clip.start );
 			
-			var insertHTML = '<div style="border:solid thin black;" id="tc_'+text_clip.id+'" ' +
+			var insertHTML = '<div id="tc_'+text_clip.id+'" ' +
+				'start_sec="' + text_clip_start_time + '" ' + 
 				'start="'+text_clip.start+'" end="'+text_clip.end+'" class="mvtt tt_'+text_clip.type_id+'">' +
-					'<div class="mvttseek" style="top:0px;left:0px;right:0px;height:20px;font-size:small">'+
-						'<img style="display:inline;" src="'+mv_embed_path+'/images/control_play_blue.png">'+
+					'<div class="mvttseek" style="top:0px;left:0px;right:0px;height:20px;font-size:small">'+						
 						text_clip.start + ' to ' +text_clip.end+
 					'</div>'+
 					text_clip.body +
 			'</div>';			
 			//js_log("ADDING CLIP: "  + text_clip_start_time + ' html: ' + insertHTML);
-			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
-				if(!inserted){
-					//js_log( npt2seconds($j(this).attr('start')) + ' > ' + text_clip_start_time);
-					if( npt2seconds($j(this).attr('start')) > text_clip_start_time){
-						inserted=true;
-						$j(this).before(insertHTML);
+			if(!_this.add_to_end_on_this_pass){
+				$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
+					if(!inserted){
+						//js_log( npt2seconds($j(this).attr('start')) + ' > ' + text_clip_start_time);
+						if( $j(this).attr('start_sec') > text_clip_start_time){
+							inserted=true;
+							$j(this).before(insertHTML);
+						}
+					}else{
+						_this.add_to_end = true;
 					}
-				}
-			});		
+				});		
+			}
 			//js_log('should just add to end: '+insertHTML);
 			if(!inserted){
 				$j('#mmbody_'+this.pe.id ).append(insertHTML);
@@ -150,7 +168,7 @@ mvTextInterface.prototype = {
 			
 			//apply the mouse over transcript seek/click functions:
 			$j(".mvttseek").click( function() {
-				_this.pe.play();
+				_this.pe.doSeek( $j(this).parent().attr("start_sec") / _this.pe.getDuration() );
 			});
 			$j(".mvttseek").hoverIntent({
 				interval:200, //polling interval
@@ -249,17 +267,41 @@ mvTextInterface.prototype = {
 		$j('#mvtsel_'+_this.pe.id).fadeOut("fast").remove();
 	},
 	monitor:function(){
+		_this = this;
 		//grab the time from the video object
-		var cur_time = parseInt( this.pe.currentTime );
-		if(cur_time!=0 && this.prevTimeScroll!=cur_time){
-			//search for current time:  flash red border trascript
-			_this = this;
-			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
-				if(npt2seconds($j(this).attr('start')) == cur_time){
-					_this.prevTimeScroll=cur_time;
-					$j('#mmbody_'+_this.pe.id).animate({scrollTop: $j(this).get(0).offsetTop}, 'slow');
+		var cur_time = this.pe.currentTime ;
+		if( cur_time!=0 ){
+			var search_for_range = true;
+			//check if the current transcript is already where we want: 
+			if($j('#mmbody_'+this.pe.id +' .tt_scroll_highlight').length != 0){
+				var curhl = $j('#mmbody_'+this.pe.id +' .tt_scroll_highlight').get(0);
+				if(npt2seconds($j(curhl).attr('start') ) < cur_time &&
+				   npt2seconds($j(curhl).attr('end') ) > cur_time){
+					js_log('in range of current hl: ' + 
+					npt2seconds($j(curhl).attr('start')) +  ' to ' +  npt2seconds($j(curhl).attr('end')));
+					search_for_range = false;					
+				}else{
+					search_for_range = true;
+					//remove the highlight from all: 
+					$j('#mmbody_'+this.pe.id +' .tt_scroll_highlight').removeClass('tt_scroll_highlight');
 				}
-			});
+			};			
+			if(search_for_range){				
+				//search for current time:  flash red border trascript				
+				$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
+					if(npt2seconds($j(this).attr('start') ) < cur_time &&
+					   npt2seconds($j(this).attr('end') ) > cur_time){																		
+						_this.prevTimeScroll=cur_time;
+						$j('#mmbody_'+_this.pe.id).animate({
+							scrollTop: $j(this).get(0).offsetTop						
+						}, 'slow');
+						$j(this).addClass('tt_scroll_highlight');
+						js_log('should add class to: ' + $j(this).attr('id'));
+						//done with loop
+						return false;
+					}
+				});
+			}
 		}
 	},
 	setAutoScroll:function( timer ){
@@ -311,9 +353,11 @@ mvTextInterface.prototype = {
 	    var mt = '#tt_mmenu_'+ _this.pe.id;
 	    $j(mt + ' .tt-close').unbind().btnBind().click(function(){
 	       $j( '#' + _this.pe.id).get(0).closeTextInterface();  
+	       return false;
 	    });
 	    $j(mt + ' .tt-select').unbind().btnBind().click(function(){
 	       $j( '#' +  _this.pe.id).get(0).textInterface.getTsSelect();
+	       return false;
 	    });
 	    //use hard-coded link: 
 	    $j(mt + ' .tt-improve').btnBind();
@@ -434,16 +478,17 @@ timedTextSRT = {
 	load: function( range, callback ){
 		var _this = this;
 		js_log('textSRT: loading : '+ _this.getSRC() );
-		do_request( _this.getSRC() , function(data){
-			js_log("data: " + data);
+		do_request( _this.getSRC() , function(data){			
 			_this.doParse( data );
 			_this.loaded=true;	
 			callback();
 		});
 	},
 	doParse:function( data ){
-		//split up the transcript chunks:			 
-		var tc = data.split('\n\n');		
+		//split up the transcript chunks:		
+		//strip any \r's						
+		var tc = data.split(/[\r]?\n[\r]?\n/);					
+		//pushing can take time	
 		for(var s=0; s < tc.length ; s++) {			
 			var st = tc[s].split('\n');
 			if(st.length >=2) {
@@ -453,7 +498,7 @@ timedTextSRT = {
 				var t = st[2];
 				if(st.length > 2) {
 					for(j=3; j<st.length;j++)
-					t += '\n'+st[j];
+						t += '\n'+st[j];
 				}			  
 				var text_clip = {
 					"start": i,
@@ -464,6 +509,6 @@ timedTextSRT = {
 				}
 				this.textNodes.push( text_clip );
 			 }
-		}	
+		}			
 	}	
 };

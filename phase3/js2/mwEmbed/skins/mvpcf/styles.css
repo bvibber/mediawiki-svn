@@ -292,8 +292,15 @@ div.floatleft, table.floatleft {
 	border: solid thin blue;
 	background: #CCC;
 }
+.tt_scroll_highlight{
+	border: solid thin red;
+	background: #CCF;
+}
 .mvttseek{
 	cursor:pointer;
+}
+.mvtt{
+	border:solid thin black; 
 }
 .large_play_button {	
 	display:block;

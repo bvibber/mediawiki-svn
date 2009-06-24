@@ -962,7 +962,7 @@ function npt2seconds( npt_str ){
 	
 	times = npt_str.split(':');
 	if(times.length!=3){		
-		js_log('npt2seconds: ' + npt_str);
+		js_log('error: npt2seconds on ' + npt_str);			
 		return false;
 	}
 	//sometimes the comma is used inplace of pereid for ms
@@ -1063,10 +1063,11 @@ function grabWikiFormError ( result_page ){
 		return res;		
 }
 //do a "normal" request 
-function do_request(req_url, callback){			 
+function do_request(req_url, callback){		
+	js_log('do_request::req_url:' + req_url + ' != ' +  parseUri( req_url).host);	 
 	//if we are doing a request to the same domain or relative link do a normal GET: 
 	if( parseUri(document.URL).host == parseUri(req_url).host ||
-		req_url == parseUri( req_url).host ){ //relative url
+		req_url.indexOf('://') == -1 ){ //relative url
 		//do a direct request:
 		$j.ajax({
 			type: "GET",
