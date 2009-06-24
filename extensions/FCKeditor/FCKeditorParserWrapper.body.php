@@ -24,8 +24,8 @@ class FCKeditorParserWrapper extends Parser {
 		return parent::makeImage( $title, $options, $holders );
 	}
 
-	function internalParse( $text ) {
-		return parent::internalParse( $text );
+	function internalParse( $text, $isMain = true ) {
+		return parent::internalParse( $text, $isMain );
 	}
 
 	function parse( $text, Title $title, ParserOptions $options, $linestart = true, $clearState = true, $revid = null ) {

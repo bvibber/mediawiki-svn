@@ -421,7 +421,7 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 		return $text;
 	}
 
-	function internalParse( $text ) {
+	function internalParse( $text, $isMain = true ) {
 		$this->fck_internal_parse_text =& $text;
 
 		// these three tags should remain unchanged
@@ -434,7 +434,7 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 		// as well as templates
 		$text = $this->fck_replaceTemplates( $text );
 
-		$finalString = parent::internalParse( $text );
+		$finalString = parent::internalParse( $text, $isMain );
 
 		return $finalString;
 	}
@@ -455,7 +455,7 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 		return '<!--FCK_SKIP_START-->' . $matches['text'] . '<!--FCK_SKIP_END-->';
 	}
 
-	function formatHeadings( $text, $isMain = true ) {
+	function formatHeadings( $text, $origText, $isMain = true ) {
 		return $text;
 	}
 
