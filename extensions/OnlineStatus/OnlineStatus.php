@@ -253,7 +253,9 @@ class OnlineStatus {
 				'help-message' => 'onlinestatus-toggles-explain',
 			)
 		);
-		$preferences = wfArrayInsertAfter( $preferences, $prefs, 'registrationdate' );
+
+		$after = array_key_exists( 'registrationdate', $preferences ) ? 'registrationdate' : 'editcount';
+		$preferences = wfArrayInsertAfter( $preferences, $prefs, $after );
 
 		return true;
 	}
