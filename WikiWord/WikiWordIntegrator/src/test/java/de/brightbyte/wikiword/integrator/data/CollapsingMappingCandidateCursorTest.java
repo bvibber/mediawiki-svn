@@ -8,7 +8,7 @@ import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.IteratorCursor;
 import de.brightbyte.util.PersistenceException;
 
-public class CollapsingMatchesCursorTest extends TestCase {
+public class CollapsingMappingCandidateCursorTest extends TestCase {
 	
 	private static <T> Collection<T> slurp(DataCursor<T> cursor) throws PersistenceException {
 		ArrayList<T> list = new ArrayList<T>();
@@ -50,7 +50,7 @@ public class CollapsingMatchesCursorTest extends TestCase {
 		exp.add(new MappingCandidates(a, FeatureSets.merge(y, q)));
 
 		DataCursor<Association> sourceCursor = new IteratorCursor<Association>(source.iterator());
-		DataCursor<MappingCandidates> cursor = new CollapsingMatchesCursor(sourceCursor, "name", "name");
+		DataCursor<MappingCandidates> cursor = new CollapsingMappingCandidateCursor(sourceCursor, "name", "name");
 		
 		assertEquals(exp, slurp(cursor));
 	}

@@ -5,18 +5,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.regex.Pattern;
 
 import bsh.ConsoleInterface;
 import bsh.Interpreter;
+import de.brightbyte.data.Functor;
+import de.brightbyte.db.SqlScriptRunner;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.wikiword.CliApp;
 import de.brightbyte.wikiword.builder.InputFileHelper;
 
-/**
- * This is the primary entry point to the first phase of a WikiWord analysis.
- * ImportDump can be invoked as a standalone program, use --help as a
- * command line parameter for usage information.
- */
 public class ScriptedIntgratorApp extends CliApp {
 	
 	protected InputFileHelper inputHelper;
@@ -92,6 +92,7 @@ public class ScriptedIntgratorApp extends CliApp {
 		i.set("args", args);                    
 		i.set("dataset", getConfiguredDataset());                    
 		i.set("datasource", getConfiguredDataSource());                    
+		i.set("scriptManglers", getSqlScriptManglers());                    
 
 		i.eval("import java.util.*;");                    
 		i.eval("import de.brightbyte.wikiword.*;");                    
@@ -110,6 +111,15 @@ public class ScriptedIntgratorApp extends CliApp {
 		}
 	}	
 
+	protected Collection<Functor<String, String>> getSqlScriptManglers() {
+		ArrayList<Functor<String, String>> list = new ArrayList<Functor<String, String>>();
+		
+		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_prefix* \\*/"), getConfiguredDataset().getDbPrefix()) );
+		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_db* \\*/"), getConfiguredDatasetName()) );
+		
+		return list;
+	}
+	
 	public static void main(String[] argv) throws Exception {
 		ScriptedIntgratorApp app = new ScriptedIntgratorApp();
 		app.launch(argv);

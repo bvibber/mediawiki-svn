@@ -8,6 +8,7 @@ import de.brightbyte.abstraction.ConvertingAccessor;
 import de.brightbyte.abstraction.MultiMapAbstractor;
 import de.brightbyte.abstraction.PropertyAccessor;
 import de.brightbyte.data.Functor;
+import de.brightbyte.data.Functors;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledVector;
 import de.brightbyte.data.MultiMap;
@@ -63,7 +64,13 @@ public class FeatureSets {
 			AbstractedAccessor<FeatureSet, List<Object>> accessor = 
 				new AbstractedAccessor<FeatureSet, List<Object>>(field, (Abstractor<FeatureSet>)abstractor);
 
-			return new ConvertingAccessor<FeatureSet, List<Object>, V>(accessor, new FirstValue<V>(), type);
+			Functor<V, List<Object>> aggregator;
+			if (type==Integer.class) aggregator = (Functor<V, List<Object>>)(Object)Functors.Integer.sum;
+			else if (type==Double.class) aggregator = (Functor<V, List<Object>>)(Object)Functors.Double.sum;
+			else if (type==Number.class) aggregator = (Functor<V, List<Object>>)(Object)Functors.Double.sum;
+			else aggregator = new FirstValue<V>();
+			
+			return new ConvertingAccessor<FeatureSet, List<Object>, V>(accessor, aggregator, type);
 		}
 
 		public static <T>PropertyAccessor<FeatureSet, T> constantAccessor(T value) {

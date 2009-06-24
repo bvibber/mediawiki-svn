@@ -17,11 +17,6 @@ import de.brightbyte.wikiword.integrator.store.AssociationFeatureStoreBuilder;
 import de.brightbyte.wikiword.integrator.store.DatabaseConceptAssociationStoreBuilder;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
-/**
- * This is the primary entry point to the first phase of a WikiWord analysis.
- * ImportDump can be invoked as a standalone program, use --help as a
- * command line parameter for usage information.
- */
 public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationFeatureStoreBuilder, ConceptAssociationProcessor, Association> {
 	
 	@Override
@@ -33,6 +28,8 @@ public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationF
 				tweaks);
 		
 		FeatureSetSourceDescriptor sourceDescriptor = getSourceDescriptor();
+		
+		//TODO: make aggrregators/accessors configurable
 		
 		FeatureMapping fm = new FeatureMapping();
 		fm.addMapping(AssociationFeature2ConceptAssociationStoreBuilder.FOREIGN_AUTHORITY, sourceDescriptor, "foreign-authority-field", String.class, Functors.<String>firstElement());
@@ -110,7 +107,7 @@ public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationF
 	}
 	
 	public static void main(String[] argv) throws Exception {
-		LoadForeignProperties app = new LoadForeignProperties();
+		BuildConceptAssociations app = new BuildConceptAssociations();
 		app.launch(argv);
 	}
 }

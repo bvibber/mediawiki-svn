@@ -1,0 +1,11 @@
+import de.brightbyte.db.*;
+
+runSql( script ) {
+		SqlResultHandler handler = new SqlResultDumper();
+		
+		db = datasource.getConnection();
+		SqlScriptRunner runner = new SqlScriptRunner(datasource, handler);
+		
+		runner.addManglers(scriptManglers);
+		runner.runScript(new File(script), null);
+}

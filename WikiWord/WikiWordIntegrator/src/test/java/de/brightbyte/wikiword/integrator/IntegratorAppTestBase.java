@@ -34,7 +34,7 @@ public abstract class IntegratorAppTestBase<T extends AbstractIntegratorApp> ext
 			FeatureSetSourceDescriptor source = loadSourceDescriptor(testName);
 			source = app.getAugmentedSourceDescriptor(source);
 
-			app.testInit(testDataSource, DatasetIdentifier.forName("TEST", "xx"), tweaks, source, testName);
+			app.slaveInit(testDataSource, DatasetIdentifier.forName("TEST", "xx"), tweaks, source, testName);
 			
 			WikiWordStoreBuilder store = app.getStoreBuilder();
 			store.initialize(true, true);
@@ -52,7 +52,7 @@ public abstract class IntegratorAppTestBase<T extends AbstractIntegratorApp> ext
 			if (app==null) prepare();
 			
 			//run application
-			app.testLaunch();
+			app.slaveLaunch();
 			completed = true;
 		}
 

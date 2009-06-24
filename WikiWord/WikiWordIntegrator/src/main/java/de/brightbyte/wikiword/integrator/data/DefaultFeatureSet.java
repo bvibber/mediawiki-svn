@@ -18,8 +18,8 @@ public class DefaultFeatureSet extends ValueListMultiMap<String, Object> impleme
 		}
 		
 		public String toString() {
-			if (nameField != null) return String.valueOf(get(nameField));
-			else return super.toString();
+			/*if (nameField != null) return String.valueOf(get(nameField));
+			else*/ return super.toString();
 		}
 
 		public boolean overlaps(FeatureSet item, String feature) {

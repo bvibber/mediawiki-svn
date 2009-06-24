@@ -43,11 +43,6 @@ import de.brightbyte.wikiword.integrator.processor.WikiWordProcessor;
 import de.brightbyte.wikiword.store.WikiWordConceptStoreBase;
 import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
-/**
- * This is the primary entry point to the first phase of a WikiWord analysis.
- * ImportDump can be invoked as a standalone program, use --help as a
- * command line parameter for usage information.
- */
 public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P extends WikiWordProcessor, E> extends StoreBackedApp<WikiWordConceptStoreBase> {
 
 	//protected ForeignPropertyStoreBuilder propertyStore;
@@ -202,7 +197,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 				sourceDescriptor.getTweak("association-weight-field", (String)null),
 				sourceDescriptor.getTweak("association-value-field", (String)null),
 				sourceDescriptor.getTweak("association-annotation-field", (String)null),
-				sourceDescriptor.getTweak("optimization-field", (String)null)
+				sourceDescriptor.getTweak("mapping-filter-field", (String)null)
 		});
 	}
 	
@@ -359,11 +354,10 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		return sourceDescriptor;
 	}
 
-	@SuppressWarnings("unchecked")
 	protected Collection<Functor<String, String>> getSqlScriptManglers(FeatureSetSourceDescriptor sourceDescriptor) {
 		ArrayList<Functor<String, String>> list = new ArrayList<Functor<String, String>>();
 		
-		List more = sourceDescriptor.getScriptManglers();
+		List<Functor<String, String>> more = sourceDescriptor.getScriptManglers();
 		if (more!=null) list.addAll(more);
 		
 		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_prefix* \\*/"), getConfiguredDataset().getDbPrefix()) );

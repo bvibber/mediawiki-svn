@@ -6,7 +6,7 @@ import java.util.Collection;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 
-public class CollapsingMatchesCursor implements DataCursor<MappingCandidates> {
+public class CollapsingMappingCandidateCursor implements DataCursor<MappingCandidates> {
 
 	protected DataCursor<Association> cursor;
 	protected Association prev;
@@ -14,7 +14,7 @@ public class CollapsingMatchesCursor implements DataCursor<MappingCandidates> {
 	protected String foreignKeyField;
 	protected String conceptKeyField;
 	
-	public CollapsingMatchesCursor(DataCursor<Association> cursor, String foreignKeyField, String conceptKeyField) {
+	public CollapsingMappingCandidateCursor(DataCursor<Association> cursor, String foreignKeyField, String conceptKeyField) {
 		if (cursor==null) throw new NullPointerException();
 		if (foreignKeyField==null) throw new NullPointerException();
 		if (conceptKeyField==null) throw new NullPointerException();

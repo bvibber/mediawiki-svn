@@ -6,13 +6,13 @@ package de.brightbyte.wikiword.integrator.data;
 import java.sql.ResultSet;
 
 import de.brightbyte.db.DatabaseDataSet.Factory;
+import de.brightbyte.util.CollectionUtils;
 
 public class ResultSetFeatureSetFactory implements Factory<FeatureSet> {
 	protected String[] fields;
 	
-	public ResultSetFeatureSetFactory(String[] fields) {
-		super();
-		this.fields = fields;
+	public ResultSetFeatureSetFactory(String... fields) {
+		this.fields = CollectionUtils.toCleanArray(fields, String.class, false, false);
 	}
 
 	public FeatureSet newInstance(ResultSet row) throws Exception {

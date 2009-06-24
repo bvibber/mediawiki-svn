@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import de.brightbyte.data.cursor.DataCursor;
+import de.brightbyte.util.CollectionUtils;
 import de.brightbyte.util.PersistenceException;
 
 public class AssociationCursor implements DataCursor<Association> {
@@ -15,15 +16,18 @@ public class AssociationCursor implements DataCursor<Association> {
 	protected Iterable<String> propertyFields;
 	
 	public AssociationCursor(DataCursor<FeatureSet> source, String[] sourceFields, String[] targetFields, String[] propertyFields) {
-		this(source, Arrays.asList(sourceFields), Arrays.asList(targetFields), Arrays.asList(propertyFields));
+		this(source, 
+				Arrays.asList(sourceFields), 
+				Arrays.asList(targetFields), 
+				Arrays.asList(propertyFields));
 	}
 	
 	public AssociationCursor(DataCursor<FeatureSet> source, Iterable<String> sourceFields, Iterable<String> targetFields, Iterable<String> propertyFields) {
 		if (source==null) throw new NullPointerException();
 		this.source = source;
-		this.foreignFields = sourceFields;
-		this.conceptFields = targetFields;
-		this.propertyFields = propertyFields;
+		this.foreignFields = CollectionUtils.toCleanIterable(sourceFields, false, false);
+		this.conceptFields = CollectionUtils.toCleanIterable(targetFields, false, false);
+		this.propertyFields = CollectionUtils.toCleanIterable(propertyFields, false, false);
 	}
 
 	public Association next() throws PersistenceException {

@@ -1,0 +1,6 @@
+import de.brightbyte.wikiword.integrator.*;
+
+filterConceptMappings( table, source ) {
+			AbstractIntegratorApp app = newIntegratorApp(FilterConceptMappings.class, table, source);
+			app.slaveLaunch();
+}

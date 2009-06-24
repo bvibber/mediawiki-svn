@@ -15,11 +15,6 @@ import de.brightbyte.wikiword.integrator.store.DatabaseForeignPropertyStoreBuild
 import de.brightbyte.wikiword.integrator.store.ForeignPropertyStoreBuilder;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
-/**
- * This is the primary entry point to the first phase of a WikiWord analysis.
- * ImportDump can be invoked as a standalone program, use --help as a
- * command line parameter for usage information.
- */
 public class LoadForeignProperties extends AbstractIntegratorApp<ForeignPropertyStoreBuilder, ForeignPropertyProcessor, ForeignEntity> {
 	
 	@Override

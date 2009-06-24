@@ -1,6 +1,6 @@
 import de.brightbyte.wikiword.integrator.*;
 
-loadForeignProperties( table, source ) {
+buildConceptAssociations( table, source ) {
 			AbstractIntegratorApp app = newIntegratorApp(BuildConceptAssociations.class, table, source);
 			app.slaveLaunch();
 }

@@ -10,8 +10,8 @@ public class BuildConceptMappingsTest extends IntegratorAppTestBase<BuildConcept
 	}
 
 	//-----------------------------------------------------------------------------------------------------
-	public void testMatchTerms() throws Exception {
-		runApp("selectOptimum");
+	public void testPassThrough() throws Exception {
+		runApp("passThrough");
 	}
 
 	@Override

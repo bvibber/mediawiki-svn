@@ -2,6 +2,9 @@ package de.brightbyte.wikiword.integrator.data;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+
+import de.brightbyte.util.CollectionUtils;
 
 
 public class MappingCandidates {
@@ -46,7 +49,7 @@ public class MappingCandidates {
 			if (candidates == null) {
 				if (other.candidates != null)
 					return false;
-			} else if (!candidates.equals(other.candidates))
+			} else if (!CollectionUtils.contentEquals(candidates, other.candidates))
 				return false;
 			if (subject == null) {
 				if (other.subject != null)
