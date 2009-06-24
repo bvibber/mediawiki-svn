@@ -76,8 +76,8 @@ class SlippyMap {
 			 	);
 	
 	protected static $MAP_OPTIONS = array ( 
-//		'staticRenderService' => 'http://tile.openstreetmap.org/cgi-bin/export?bbox=##bbox##&scale=##scale##&format=##format##',
-		'staticRenderService' => null,
+		'staticRenderService' => 'http://tile.openstreetmap.org/cgi-bin/export?bbox=##bbox##&scale=##scale##&format=##format##',
+//		'staticRenderService' => null,
 		'defaultZoomLevel' => 14,
 		
 		/* from OpenLayers XYZ.js */
@@ -193,6 +193,7 @@ EOT;
                                                         alt="Slippy Map"
                                                         title="{$clickToActivate}"/>
                                         </div>
+				</div>
 EOT;
 
                         if ( $this->caption ) {
@@ -258,7 +259,7 @@ EOT;
 	}
 	
 	public function getImgSrc() {
-		if ( $this->isValidMode() && isset( SlippyMap::$MAP_OPTIONS['staticRenderService'] ) ) {
+		if ( isset( SlippyMap::$MAP_OPTIONS['staticRenderService'] ) ) {
 			return $this->parameterize( SlippyMap::$MAP_OPTIONS['staticRenderService'], 
 					array( 'bbox' => implode( ',', $this->bounds ),
 					  'scale' => $this->scale,
