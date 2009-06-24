@@ -1,0 +1,1 @@
+SELECT * FROM /* wikiword_mapping_table */;

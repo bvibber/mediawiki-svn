@@ -17,7 +17,7 @@ import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.wikiword.CliApp;
 import de.brightbyte.wikiword.builder.InputFileHelper;
 
-public class ScriptedIntgratorApp extends CliApp {
+public class RunIntgratorScript extends CliApp {
 	
 	protected InputFileHelper inputHelper;
 	
@@ -121,7 +121,7 @@ public class ScriptedIntgratorApp extends CliApp {
 	}
 	
 	public static void main(String[] argv) throws Exception {
-		ScriptedIntgratorApp app = new ScriptedIntgratorApp();
+		RunIntgratorScript app = new RunIntgratorScript();
 		app.launch(argv);
 	}
 }

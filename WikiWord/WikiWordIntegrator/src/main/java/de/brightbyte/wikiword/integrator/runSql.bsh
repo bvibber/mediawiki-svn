@@ -1,11 +1,10 @@
 import de.brightbyte.db.*;
 
-runSql( script ) {
-		SqlResultHandler handler = new SqlResultDumper();
-		
-		db = datasource.getConnection();
-		SqlScriptRunner runner = new SqlScriptRunner(datasource, handler);
-		
-		runner.addManglers(scriptManglers);
-		runner.runScript(new File(script), null);
+runSql( script, table, outfile ) {
+			RunIntegratorSql app = new RunIntegratorSql();
+			app.setKeepAlive(true);
+			app.setTweaks(tweaks);
+			
+			slaveInit();
+			slaveLaunch(datasource, dataset, tweaks, script, table, null, outfile, null); //TODO: more params
 }

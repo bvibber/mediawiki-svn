@@ -128,9 +128,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 	protected void declareOptions() {
 		super.declareOptions();
 
-		args.declareHelp("<wiki>", null);
 		args.declareHelp("<dataset>", "name of the wiki/thesaurus to process");
-		args.declare("dataset", null, true, String.class, "sets the wiki name (overrides the <wiki-or-dump> parameter)");
 	}
 	
 	protected DataCursor<Association> openAssociationCursor() throws IOException, SQLException, PersistenceException {
@@ -307,10 +305,10 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		
 		if (in==null && file) {
 			in = getInputHelper().open(name);
-			u = getInputHelper().getBaseURL(name);
+			u = getInputHelper().getURL(name);
 		}
 
-		d.setBaseURL(getInputHelper().getBaseURL(name));
+		d.setBaseURL(getInputHelper().getURL(name));
 		d.loadTweaks(in);
 		in.close();
 		
@@ -354,7 +352,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		return sourceDescriptor;
 	}
 
-	protected Collection<Functor<String, String>> getSqlScriptManglers(FeatureSetSourceDescriptor sourceDescriptor) {
+	protected Collection<Functor<String, String>> getSqlScriptManglers(FeatureSetSourceDescriptor sourceDescriptor) throws IOException {
 		ArrayList<Functor<String, String>> list = new ArrayList<Functor<String, String>>();
 		
 		List<Functor<String, String>> more = sourceDescriptor.getScriptManglers();
@@ -362,6 +360,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		
 		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_prefix* \\*/"), getConfiguredDataset().getDbPrefix()) );
 		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_db* \\*/"), getConfiguredDatasetName()) );
+		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_target_table* \\*/"), getTargetTableName()) );
 		
 		return list;
 	}
