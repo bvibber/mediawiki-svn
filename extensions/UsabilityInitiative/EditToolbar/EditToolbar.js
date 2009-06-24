@@ -21,7 +21,7 @@
 					$(this).addToolbarSection( tools.main, textbox, 'main' );
 				}
 				// Appends additional section tabs
-				var tabDiv = $( '<div />' )
+				var tabUl = $( '<ul />' )
 					.attr( 'class', 'tabs' )
 					.appendTo( $(this) );
 				// Appends additional section
@@ -64,8 +64,8 @@
 						'textbox': textbox
 					};
 					// Appends section tab
-					tabDiv.append(
-						$( '<div />' )
+					tabUl.append(
+						$( '<li />' )
 							.attr( 'class', 'tab' )
 							.append(
 								$( '<a />' )
@@ -77,10 +77,10 @@
 									.click( function() {
 										$(this).blur();
 										var show = ( $(this).data( 'sectionDiv' ).css( 'display' ) == 'none' );
-										$(this).data( 'sectionDiv' ).parent().children().hide('fast');
+										$(this).data( 'sectionDiv' ).parent().children().hide();
 										$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 										if ( show ) {
-											$(this).data( 'sectionDiv' ).show('fast');
+											$(this).data( 'sectionDiv' ).show();
 											$(this).addClass( 'current' );
 										}
 										// Sets or deletes cookie when sections are shown or hidden
@@ -88,7 +88,7 @@
 											$(this).data( 'sectionCookie' ),
 											show ? $(this).data( 'sectionDiv' ).attr( 'id' ) : null
 										);
-										$(this).data( 'textbox' ).focus();
+										/*$(this).data( 'textbox' ).focus();*/
 										return false;
 									})
 							)
@@ -175,7 +175,8 @@
 										.attr( {
 											src: imagePath + section.groups[group].tools[tool].icon,
 											alt: label,
-											title: label
+											title: label,
+											'class': 'tool'
 										} )
 										.data( 'context', context )
 										.click( action )

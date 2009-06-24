@@ -21,7 +21,12 @@ div#edittoolbar {
 	border-bottom-width: 0;
 	background-color: #F3F3F3;
 }
-div#edittoolbar div.tabs,
+div#edittoolbar ul.tabs {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+div#edittoolbar ul.tabs,
 div#edittoolbar div.group {
 	float: left;
 	height: 26px;
@@ -29,19 +34,13 @@ div#edittoolbar div.group {
 	padding-left: 3px;
 	border-left: solid 1px #DDDDDD;
 }
-div#edittoolbar div.group:first-child {
-	border-left: none;
-}
-body.rtl div#edittoolbar div.tabs,
+body.rtl div#edittoolbar ul.tabs,
 body.rtl div#edittoolbar div.group {
 	float: right;
 	padding-left: 0;
 	padding-right: 3px;
 	border-left: none;
 	border-right: solid 1px #DDDDDD;
-}
-body.rtl div.group:first-child {
-	border-right: none;
 }
 div#edittoolbar div.sections {
 	float: left;
@@ -51,22 +50,22 @@ div#edittoolbar div.sections {
 body.rtl div#edittoolbar div.sections {
 	float: right;
 }
-div#edittoolbar div.sections > div.section {
+div#edittoolbar div.sections div.section {
 	display: none;
 	float: left;
 	width: 100%;
 	border-top: solid 1px #DDDDDD;
 }
-body.rtl div#edittoolbar div.sections > div.section {
+body.rtl div#edittoolbar div.sections div.section {
 	float: right;
 }
-div#edittoolbar div.sections > div.loading {
+div#edittoolbar div.sections div.loading {
 	padding: 10px;
 }
-div#edittoolbar div.sections > div > div.progress {
+div#edittoolbar div.sections div div.progress {
 	display: none;
 }
-div#edittoolbar div.sections > div.loading > div.progress {
+div#edittoolbar div.sections div.loading div.progress {
 	display: block;
 	background-image: url(images/loading.gif);
 	background-position: left center;
@@ -75,13 +74,13 @@ div#edittoolbar div.sections > div.loading > div.progress {
 	float: left;
 	color: #666666;
 }
-div#edittoolbar div.sections > div.loading > div.progress {
+div#edittoolbar div.sections div.loading div.progress {
 	background-position: right center;
 	padding-left: 0;
 	padding-right: 32px;
 	float: right;
 }
-div#edittoolbar div.group > div.label {
+div#edittoolbar div.group div.label {
 	float: left;
 	border: 0px;
 	height: 22px;
@@ -92,12 +91,12 @@ div#edittoolbar div.group > div.label {
 	color: #777777;
 	cursor: default;
 }
-body.rtl div#edittoolbar div.group > div.label {
+body.rtl div#edittoolbar div.group div.label {
 	float: right;
 	margin-left: 8px;
 	margin-right: 5px;
 }
-div#edittoolbar div.group > img {
+div#edittoolbar div.group img.tool {
 	float: left;
 	border: 0px;
 	height: 22px;
@@ -105,16 +104,16 @@ div#edittoolbar div.group > img {
 	padding: 2px;
 	cursor: pointer;
 }
-body.rtl div#edittoolbar div.group > img {
+body.rtl div#edittoolbar div.group img {
 	float: right;
 }
-div#edittoolbar div.group > select {
+div#edittoolbar div.group select {
 	float: left;
 	margin: 2px;
 	height: 22px;
 	cursor: pointer;
 }
-body.rtl div#edittoolbar div.group > select {
+body.rtl div#edittoolbar div.group select {
 	float: right;
 	font-size: 0.9em;
 }
@@ -127,22 +126,22 @@ div#edittoolbar div.index {
 body.rtl div#edittoolbar div.index {
 	float: right;
 }
-div#edittoolbar div.index > div {
+div#edittoolbar div.index div {
 	padding: 4px;
 	padding-left: 6px;
 	cursor: pointer;
 	color: #0645ad;
 }
-body.rtl div#edittoolbar div.index > div {
+body.rtl div#edittoolbar div.index div {
 	padding-left: 4px;
 	padding-right: 6px;
 }
-div#edittoolbar div.index > div.current {
+div#edittoolbar div.index div.current {
 	background-color: #FAFAFA;
 	color: #333333;
 	cursor: default;
 }
-div#edittoolbar div.index > div:first-child {
+div#edittoolbar div.index div:first-child {
 	border-top: none;
 }
 div#edittoolbar div.pages {
@@ -155,48 +154,48 @@ div#edittoolbar div.pages {
 body.rtl div#edittoolbar div.pages {
 	float: left;
 }
-div#edittoolbar div.pages > div.page {
+div#edittoolbar div.pages div.page {
 	display: none;
 }
-div#edittoolbar div.pages > div.page:first-child {
+div#edittoolbar div.pages div.page:first-child {
 	display: block;
 }
-div#edittoolbar div.pages > div.page > table {
+div#edittoolbar div.pages div.page table {
 	padding-left: 5px;
 	padding-right: 5px;
 	background: none;
 }
-div#edittoolbar div.pages > div.page > table th {
+div#edittoolbar div.pages div.page table th {
 	color: #999999;
 }
-div#edittoolbar div.pages > div.page > table td {
+div#edittoolbar div.pages div.page table td {
 	color: black;
 	border-top: solid 1px #EEEEEE;
 }
-div#edittoolbar div.pages > div.page > table tr:first-child > td {
+div#edittoolbar div.pages div.page table tr:first-child td {
 	border-top: solid 1px #DDDDDD;
 }
-div#edittoolbar div.pages > div.page > table th,
-div#edittoolbar div.pages > div.page > table td {
+div#edittoolbar div.pages div.page table th,
+div#edittoolbar div.pages div.page table td {
 	text-align: left;
 	padding: 5px;
 	margin: 0px;
 }
-body.rtl div#edittoolbar div.pages > div.page > table th,
-body.rtl div#edittoolbar div.pages > div.page > table td {
+body.rtl div#edittoolbar div.pages div.page table th,
+body.rtl div#edittoolbar div.pages div.page table td {
 	text-align: right;
 }
-div#edittoolbar div.pages > div.page > table td.syntax {
+div#edittoolbar div.pages div.page table td.syntax {
 	font-family: monospace;
 }
-div#edittoolbar-section-help div.page > table td.syntax,
-div#edittoolbar-section-help div.page > table td.result {
+div#edittoolbar-section-help div.page table td.syntax,
+div#edittoolbar-section-help div.page table td.result {
 	width: 40%;
 }
-div#edittoolbar-section-help div.page > table td.description {
+div#edittoolbar-section-help div.page table td.description {
 	width: 20%;
 }
-div#edittoolbar-section-characters div.page > div > a {
+div#edittoolbar-section-characters div.page div a {
 	border: solid 1px #DDDDDD;
 	padding: 5px;
 	padding-left: 8px;
@@ -209,26 +208,28 @@ div#edittoolbar-section-characters div.page > div > a {
 	color: black;
 	text-decoration: none;
 }
-body.rtl div#edittoolbar-section-characters div.page > div > a {
+body.rtl div#edittoolbar-section-characters div.page div a {
 	direction: rtl;
 	float: right;
 	margin-left: 0;
 	margin-right: 5px;
 }
-div#edittoolbar-section-characters div.page > div > a:hover {
+div#edittoolbar-section-characters div.page div a:hover {
 	background-color: white;
 	text-decoration: none;
 	border-color: #a8d7f9;
 }
-div#edittoolbar div.tabs > div.tab {
+div#edittoolbar ul.tabs li.tab {
+	display: inline-block;
 	float: left;
 	line-height: 26px;
 }
-body.rtl div#edittoolbar div.tabs > div.tab {
+body.rtl div#edittoolbar ul.tabs li.tab {
 	float: right;
 }
-div#edittoolbar div.tabs > div.tab > a,
-div#edittoolbar div.tabs > div.tab > a:visited {
+div#edittoolbar ul.tabs li.tab a,
+div#edittoolbar ul.tabs li.tab a:visited {
+	float: left;
 	padding-left: 18px;
 	padding-right: 12px;
 	display: block;
@@ -239,22 +240,23 @@ div#edittoolbar div.tabs > div.tab > a:visited {
 	background-position: left center;
 	background-repeat: no-repeat;
 }
-body.rtl div#edittoolbar div.tabs > div.tab > a,
-body.rtl div#edittoolbar div.tabs > div.tab > a:visited {
+body.rtl div#edittoolbar ul.tabs li.tab a,
+body.rtl div#edittoolbar ul.tabs li.tab a:visited {
+	float: right;
 	padding-left: 12px;
 	padding-right: 18px;
 	background-image: url(images/arrow-left.png);
 	background-position: right center;
 }
-div#edittoolbar div.tabs > div.tab > a.current,
-div#edittoolbar div.tabs > div.tab > a.current:visited {
+div#edittoolbar ul.tabs li.tab a.current,
+div#edittoolbar ul.tabs li.tab a.current:visited {
 	color: #333333;
 	background-image: url(images/arrow-down.png);
 }
-body.rtl div#edittoolbar div.tabs > div.tab > a.current,
-body.rtl div#edittoolbar div.tabs > div.tab > a.current:visited {
+body.rtl div#edittoolbar ul.tabs li.tab a.current,
+body.rtl div#edittoolbar ul.tabs li.tab a.current:visited {
 	background-image: url(images/arrow-down.png);
 }
-div#edittoolbar div.tabs > div.tab > a.current:hover {
+div#edittoolbar div.ul li.tab a.current:hover {
 	text-decoration: none;
 }
