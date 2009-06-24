@@ -1,375 +1,450 @@
 <?php
-# OpenStreetMap SlippyMap - MediaWiki extension
-#
-# This defines what happens when <slippymap> tag is placed in the wikitext
-#
-# We show a map based on the lat/lon/zoom data passed in. This extension brings in
-# the OpenLayers javascript, to show a slippy map.
-#
-# Usage example:
-# <slippymap lat="51.485" lon="-0.15" z="11" w="300" h="200" layer="osmarender" marker="0" />
-#
-# Tile images are not cached local to the wiki.
-# To acheive this (remove the OSM dependency) you might set up a squid proxy,
-# and modify the requests URLs here accordingly.
-#
-# This file should be placed in the mediawiki 'extensions' directory
-# ...and then it needs to be 'included' within LocalSettings.php
-#
-# #################################################################################
-#
-# Copyright 2008 Harry Wood, Jens Frank, Grant Slater, Raymond Spekking and others
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-#
-# @addtogroup Extensions
-#
-
-# Evil hack as documented at
-# http://www.mediawiki.org/wiki/Manual:Tag_extensions#How_can_I_avoid_modification_of_my_extension.27s_HTML_output.3F
-# This is here so that random <p> and <pre> tags aren't added to the inline JavaScript output
-$SlippyMapMarkerList = array( );
-
-# The number of Slippy Maps we have had thus far, to get unique JavaScript variables
-$SlippyMapCounter = 1;
+/** 
+* 
+* @file
+* 
+* @description
+* OpenStreetMap SlippyMap - MediaWiki extension
+*
+* This defines what happens when <slippymap> tag is placed in the wikitext
+*
+* We show a map based on the lat/lon/zoom data passed in. This extension brings in
+* the OpenLayers javascript, to show a slippy map.
+*
+* Usage example:
+* <slippymap lat="51.485" lon="-0.15" z="11" w="300" h="200" layer="osmarender" marker="0" />
+*
+* Tile images are not cached local to the wiki.
+* To acheive this (remove the OSM dependency) you might set up a squid proxy,
+* and modify the requests URLs here accordingly.
+*
+* This file should be placed in the mediawiki 'extensions' directory
+* ...and then it needs to be 'included' within LocalSettings.php
+*
+* @license
+* 
+* Copyright 2008 Harry Wood, Jens Frank, Grant Slater, Raymond Spekking and others
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*
+*/
 
 class SlippyMap {
-	# The callback function for converting the input text to HTML output
-	static function parse( $input, $argv ) {
-		global $SlippyMapMarkerList, $SlippyMapCounter;
+
+	var $mapId;
+	var $lat;
+	var $lon;
+	var $width;
+	var $height;
+	var $mode;
+	var $layer;
+	var $zoom;
+	var $caption;
+	var $scale;
+	var $resolution;
+	var $resolutions;
+	var $scales;
+	
+	/**
+	 * minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude
+	 */
+	var $bounds;
+	
+	/*
+	 * Constants
+	 * Using static members instead of constants because arrays can't be const
+	 */	
+	protected static $DEFAULT_IMAGE_FORMAT = "png";
+	
+	/**
+	 * Supported map modes and their layer types
+	 */
+	public static $MAP_MODES = array( 
+				"mapnik", "osmarender", "maplint", "cycle"
+			 	);
+	
+	protected static $MAP_OPTIONS = array ( 
+//		'staticRenderService' => 'http://tile.openstreetmap.org/cgi-bin/export?bbox=##bbox##&scale=##scale##&format=##format##',
+		'staticRenderService' => null,
+		'defaultZoomLevel' => 14,
+		
+		/* from OpenLayers XYZ.js */
+		'defaultLayer' => 'mapnik',
+		'numZoomLevels' => 19,
+		'maxResolution' => 156543.0339,
+		'unit' => 'm',
+		'sphericalMercator' => true
+	);
+	
+	/** borrowed from OpenLayers.DOTS_PER_UNIT */
+	protected static $INCHES_PER_UNIT = array (
+	   	'dd' => 4374754,
+	   	'm' => 39.3701
+	);
+    
+	/** borrowed from OpenLayers.DOTS_PER_INCH */
+	protected static $DOTS_PER_INCH = 72;
+    
+	/** pixel size in meters */
+	protected static $PIXEL_SIZE = 0.00028;
+        
+	public function __construct( $mapParams ) {
+		global $wgOut, $wgUser, $wgThumbLimits;
 		wfLoadExtensionMessages( 'SlippyMap' );
 
-		// Support old style parameters from $input
-		// Parse the pipe separated name value pairs (e.g. 'aaa=bbb|ccc=ddd')
-		// With the new syntax we expect nothing in the $input, so this will result in '' values
-		$oldStyleParamStrings = explode( '|', $input );
-		foreach ( $oldStyleParamStrings as $oldStyleParamString ) {
-			$oldStyleParamString = trim( $oldStyleParamString );
-			$eqPos = strpos( $oldStyleParamString, "=" );
-			if ( $eqPos === false ) {
-				$oldStyleParams[$oldStyleParamString] = "true";
-			} else {
-				$oldStyleParams[substr( $oldStyleParamString, 0, $eqPos )] = trim( htmlspecialchars( substr( $oldStyleParamString, $eqPos + 1 ) ) );
+                $this->errors = $this->validate();
+		if ( ! $this->errors ) 
+                        return false;
+		
+		self::initMap( $mapParams );	
+		self::setSize();
+		self::setZoom();		
+		self::initResolutionsAndScales();
+		self::setBounds();
+	}
+
+	public function initMap( $mapParams ) {
+                $this->mapId = $mapParams['mapId'];
+                $this->lat = $mapParams['lat'];
+                $this->lon = $mapParams['lon'];
+                $this->width = $mapParams['w'];
+                $this->height = $mapParams['h'];
+                $this->mode = $mapParams['mode'];
+                $this->zoom = $mapParams['zoom'];
+                $this->caption = $mapParams['caption'];
+                $this->layer = isset( $mapParams['layer'] ) ? strtolower($mapParams['layer']) : SlippyMap::$MAP_OPTIONS['defaultLayer'];
+                $this->marker = ($mapParams['marker'] != '' && $mapParams['marker'] != '0' ? 1 : 0);
+
+                // see if the 'z' paramater is used rather than 'zoom' (and allow it)
+                if ( $this->zoom == '' && isset( $mapParams['z'] ) ) {
+                        $this->zoom = $mapParams['z'];
+                }
+	}
+	
+	public function getMap() {
+		global $wgOut, $wgJsMimeType;
+
+		$mapCode .= <<<EOT
+			<script type="{$wgJsMimeType}">slippymaps.push(new slippymap_map({$this->mapId}, {
+				mode: '{$this->mode}',
+				layer: '{$this->layer}',
+				lat: {$this->lat},
+				lon: {$this->lon},
+				zoom: {$this->zoom},
+				width: {$this->width},
+				height: {$this->height},
+				marker: {$this->marker}
+			}));</script>
+EOT;
+
+		// TODO: NOSCRIPT support
+		if ( isset( SlippyMap::$MAP_OPTIONS['staticRenderService'] ) ) {
+			$mapCode .= self::getStaticMap();
+		} else {
+			$mapCode .= self::getDynamicMap();
+		}
+		return $mapCode;
+	}
+
+	public function getDynamicMap() {
+                $mapCode .= <<<EOT
+                         <div class="mapframe" style="width:{$this->width}px">
+                                <div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
+                                        <script type="{$wgJsMimeType}">slippymaps[{$this->mapId}].init();</script>
+                                </div>
+EOT;
+                if ( $this->caption ) {
+                        $mapcode .= <<<EOT
+                               <div class="mapcaption">{$this->caption}</div>
+EOT;
+                }
+
+                $mapCode .= <<<EOT
+                </div>
+EOT;
+		return $mapCode;
+	}
+
+	public function getStaticMap() {
+                        $clickToActivate = wfMsg('slippymap_clicktoactivate');
+                        $staticmap = <<<EOT
+                                <div class="mapframe" style="width:{$this->width}px;">
+                                        <div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
+                                                <!-- Static preview -->
+                                                <img
+                                                        id="mapPreview{$this->mapId}"
+                                                        class="mapPreview"
+                                                        src="{$this->getImgSrc()}"
+                                                        onclick="slippymaps[{$this->mapId}].init();"
+                                                        width="{$this->width}"
+                                                        height="{$this->height}"
+                                                        alt="Slippy Map"
+                                                        title="{$clickToActivate}"/>
+                                        </div>
+EOT;
+
+                        if ( $this->caption ) {
+	                        $staticmap .= '<div class="mapcaption">{$this->caption}</div>';
+        	                $staticmap .= '</div>';
 			}
+
+			return $staticmap;
+	}
+
+	public function setZoom( $zoom = null ) {
+		global $wgOut;
+                if ( $this->zoom == '' ) $this->zoom = SlippyMap::$MAP_OPTIONS['defaultZoomLevel'];
+	}
+			
+	public function setSize( $w = null, $h = null ) {
+		global $wgUser, $wgOut, $wgThumbLimits;	
+                // set thumbsize based on user preferences
+                $thumbsize = $wgThumbLimits[$wgUser->getOption( 'thumbsize' )];
+
+                // default values (meaning these parameters can be missed out)
+                if ( $this->width == '' ) $this->width = $thumbsize;
+                if ( $this->height == '' ) $this->height = round( $thumbsize * .72 );
+
+                // trim off the 'px' on the end of pixel measurement numbers (ignore if present)
+                if ( substr( $this->width, -2 ) == 'px' )
+                        $this->width = (int) substr( $this->width, 0, -2 );
+
+                if ( substr( $this->height, - 2 ) == 'px' )
+                        $this->height = (int) substr( $this->height, 0, -2 );
+
+	}
+
+	public function setBounds() {
+
+                /* Determine scale and map bounds for static render request */
+                $this->resolution = $this->resolutions[round( $this->zoom )];
+                $this->scale = self::getScaleFromResolution( $this->resolution );
+
+                /*
+                 * Calculate width for Mapnik output using a standard pixel size of 0.00028m
+                 * @see http://trac.mapnik.org/wiki/ScaleAndPpi
+                 */
+                $w_deg = $this->width * SlippyMap::$PIXEL_SIZE * $this->scale;
+                $h_deg = $this->height * SlippyMap::$PIXEL_SIZE * $this->scale;
+
+                $center = array( $this->lon, $this->lat );
+                if ( SlippyMap::$MAP_OPTIONS['sphericalMercator'] ) {
+                        // Calculate bounds within a spherical mercator projection if that is what the scale is based on
+                        $mercatorCenter = SlippyMap::forwardMercator( $center );
+                        $mbounds = array( 
+				$mercatorCenter[0] - $w_deg / 2, 
+				$mercatorCenter[1] - $h_deg / 2, 
+				$mercatorCenter[0] + $w_deg / 2, 
+				$mercatorCenter[1] + $h_deg / 2 
+			);
+                        $this->bounds = SlippyMap::inverseMercator( $mbounds );
+                }
+                else {
+                        // Calculate bounds within WGS84
+                        $this->bounds = array( $center[0] - $w_deg / 2, $center[1] - $h_deg / 2, $center[0] + $w_deg / 2, $center[1] + $h_deg / 2 );
+                }
+	}
+	
+	public function getImgSrc() {
+		if ( $this->isValidMode() && isset( SlippyMap::$MAP_OPTIONS['staticRenderService'] ) ) {
+			return $this->parameterize( SlippyMap::$MAP_OPTIONS['staticRenderService'], 
+					array( 'bbox' => implode( ',', $this->bounds ),
+					  'scale' => $this->scale,
+					  'lat' => $this->lat,
+					  'long' => $this->lon,
+					  'z' => $this->zoom,
+					  'w' => $this->width,
+					  'h' => $this->height,
+					  'format' => SlippyMap::$DEFAULT_IMAGE_FORMAT 
+				)
+			);
+		}
+	}
+	
+	/**
+	 * Substitutes parameters in a template using double hash sign delimiters, for example: 
+	 * 
+	 * <code>
+	 *      <tag xml:lang="##lang##"/>
+	 * </code>
+	 * 
+	 * A corresponding parameter "lang" may then be used to provide a replacement that is
+	 * transparently substituted.
+	 *
+	 * @param string $template	The template text
+	 * @param array $params		A map with parameter names as keys and their replacements as values
+	 * @return string	Parameterized text
+	 */
+	protected static function parameterize( $template, $params ) {
+		foreach ( $params as $key => $value ) {
+			$template = str_replace( "##{$key}##", $value, $template );
+		}
+		return $template;
+	}
+	
+	/**
+	* Borrowed from OpenLayers.Util.getScaleFromResolution
+	*/
+	protected function getScaleFromResolution( $resolution ) {
+		return $resolution * SlippyMap::$INCHES_PER_UNIT[SlippyMap::$MAP_OPTIONS['unit']] * SlippyMap::$DOTS_PER_INCH;
+	}
+    
+	/**
+	* Determines resolutions and scales based on a maximum resolution and number of zoom levels
+	* Borrowed from OpenLayers.Layer.initResolutions
+	*/
+	protected function initResolutionsAndScales() {
+       		$this->resolutions = array();
+	    	$base = 2;
+                
+    		for ( $i = 0; $i < SlippyMap::$MAP_OPTIONS['numZoomLevels']; $i++ ) {
+    			$this->resolutions[$i] = SlippyMap::$MAP_OPTIONS['maxResolution'] / pow( $base, $i );
+			$this->scales[$i] = $this->getScaleFromResolution( $this->resolutions[$i] );
+		}
+	}
+    
+	/**
+	 * Convert from WGS84 to spherical mercator
+	 */
+	protected static function forwardMercator($lonlat) {
+		for ($i=0; $i<count($lonlat); $i+=2) {
+			/* lon */
+			$lonlat[$i] = $lonlat[$i] * (2 * M_PI * 6378137 / 2.0) / 180.0;
+			
+			/* lat */
+			$lonlat[$i+1] = log(tan((90 + $lonlat[$i+1]) * M_PI / 360.0)) / (M_PI / 180.0);
+			$lonlat[$i+1] = $lonlat[$i+1] * (2 * M_PI * 6378137 / 2.0) / 180.0;
+		}		
+		return $lonlat;
+	}
+	
+	/**
+	 * Convert from spherical mercator to WGS84
+	 */
+	protected static function inverseMercator($lonlat) {
+		for ($i=0; $i<count($lonlat); $i+=2) {
+			/* lon */
+			$lonlat[$i] = $lonlat[$i] / ((2 * M_PI * 6378137 / 2.0) / 180.0);
+			
+			/* lat */
+			$lonlat[$i+1] = $lonlat[$i+1] / ((2 * M_PI * 6378137 / 2.0) / 180.0);
+			$lonlat[$i+1] = 180.0 / M_PI * (2 * atan(exp($lonlat[$i+1] * M_PI / 180.0)) - M_PI / 2);
+		}		
+		
+		return $lonlat;
+	}
+
+	public function validMode( $mode ) {
+		global $wgMapModes;
+		$this->errors = '';
+		
+		if ( ! in_array( $mode, $wgMapModes ) ) {
+                        $this->errors .= wfMsg( 'slippymap_invalidmode',  htmlspecialchars( $this->mode ) );
+			return false;
 		}
 
-		// Receive new style args: <slippymap aaa=bbb ccc=ddd></slippymap>
-		if ( isset( $argv['lat'] ) ) {
-			$lat = $argv['lat'];
-		} else if ( isset( $oldStyleParams['lat'] ) ) {
-			$lat = $oldStyleParams['lat'];
-		} else {
-			$lat = '';
-		}
-		if ( isset( $argv['lon'] ) ) {
-			$lon = $argv['lon'];
-		} else if ( isset( $oldStyleParams['lon'] ) ) {
-			$lon = $oldStyleParams['lon'];
-		} else {
-			$lon = '';
-		}
-		if ( isset( $argv['z'] ) ) {
-			$zoom = $argv['z'];
-		} else if ( isset( $oldStyleParams['z'] ) ) {
-			$zoom = $oldStyleParams['z'];
-		} else {
-			$zoom = '';
-		}
-		if ( isset( $argv['w'] ) ) {
-			$width = $argv['w'];
-		} else if ( isset( $oldStyleParams['w'] ) ) {
-			$width = $oldStyleParams['w'];
-		} else {
-			$width = '';
-		}
-		if ( isset( $argv['h'] ) ) {
-			$height = $argv['h'];
-		} else if ( isset( $oldStyleParams['h'] ) ) {
-			$height = $oldStyleParams['h'];
-		} else {
-			$height = '';
-		}
-		if ( isset( $argv['layer'] ) ) {
-			$layer = $argv['layer'];
-		} else if ( isset( $oldStyleParams['layer'] ) ) {
-			$layer = $oldStyleParams['layer'];
-		} else {
-			$layer = '';
-		}
-		if ( isset( $argv['marker'] ) ) {
-			$marker = $argv['marker'];
-		} else {
-			$marker = '';
-		}
+		return true;
+	}
+	
+	public function validate() {
+		wfLoadExtensionMessages( 'SlippyMap' );
+		$errors = null;
+		
+		if ( $this->lat == '' ) $errors .= wfMsg( 'slippymap_latmissing' ) . ' ';
+		if ( $this->lon == '' ) $errors .= wfMsg( 'slippymap_lonmissing' ) . ' ';
+		if ( $this->zoom == '' ) $errors .= wfMsg( 'slippymap_zoommissing' ) . ' ';
 
-		$error = '';
-
-		// default values (meaning these parameters can be missed out)
-		if ( $width == '' ) $width = '450';
-		if ( $height == '' ) $height = '320';
-		if ( $layer == '' ) $layer = 'mapnik';
-
-		if ( $zoom == '' && isset( $argv['zoom'] ) ) {
-			$zoom = $argv['zoom']; // see if they used 'zoom' rather than 'z' (and allow it)
-		}
-
-		$marker = ( $marker != '' && $marker != '0' );
-
-		// trim off the 'px' on the end of pixel measurement numbers (ignore if present)
-		if ( substr( $width, -2 ) == 'px' )
-			$width = (int) substr( $width, 0, -2 );
-
-		if ( substr( $height, - 2 ) == 'px' )
-			$height = (int) substr( $height, 0, -2 );
-
-		if ( trim( $input ) != '' && sizeof( $oldStyleParamStrings ) < 3 ) {
-			$error = 'slippymap tag contents. Were you trying to input KML? KML support ' .
-				'is disabled pending discussions about wiki syntax';
-			$showkml = false;
-// KML code:
-//		if ( $showkml ) {
-//			$input = str_replace( array( '%',   "\n" , "'"  , '"'  , '<'  , '>'  , ' '   ),
-//			array( '%25', '%0A', '%27', '%22', '%3C', '%3E', '%20' ), $input );
-//			$output .= 'var vector = new OpenLayers.Layer.Vector("Vector Layer"); ' .
-//			'   map.addLayer(vector); ' .
-//			'   kml = new OpenLayers.Format.KML( { "internalProjection": map.baseLayer.projection, ' .
-//			'                                      "externalProjection": epsg4326, ' .
-//			'                                      "extractStyles": true, ' .
-//			'                                      "extractAttributes": true } ); ' .
-//			"   features = kml.read(unescape('$input')); " .
-//			'   vector.addFeatures( features ); ';
-//		}
-		} else {
-			$showkml = false;
-		}
-
-		// Check required parameters values are provided
-		if ( $lat == ''  ) $error .= wfMsg( 'slippymap_latmissing' ) . ' ';
-		if ( $lon == ''  ) $error .= wfMsg( 'slippymap_lonmissing' ) . ' ';
-		if ( $zoom == '' ) $error .= wfMsg( 'slippymap_zoommissing' ) . ' ';
-
-		if ( $error == '' ) {
+		if ( $errors == '' ) {
 			// no errors so far. Now check the values
-			if ( !is_numeric( $width ) ) {
-				$error = wfMsg( 'slippymap_widthnan', $width );
-			} else if ( !is_numeric( $height ) ) {
-				$error = wfMsg( 'slippymap_heightnan', $height );
-			} else if ( !is_numeric( $zoom ) ) {
-				$error = wfMsg( 'slippymap_zoomnan', $zoom );
-			} else if ( !is_numeric( $lat ) ) {
-				$error = wfMsg( 'slippymap_latnan', $lat );
-			} else if ( !is_numeric( $lon ) ) {
-				$error = wfMsg( 'slippymap_lonnan', $lon );
-			} else if ( $width > 1000 ) {
-				$error = wfMsg( 'slippymap_widthbig' );
-			} else if ( $width < 100 ) {
-				$error = wfMsg( 'slippymap_widthsmall' );
-			} else if ( $height > 1000 ) {
-				$error = wfMsg( 'slippymap_heightbig' );
-			} else if ( $height < 100 ) {
-				$error = wfMsg( 'slippymap_heightsmall' );
-			} else if ( $lat > 90 ) {
-				$error = wfMsg( 'slippymap_latbig' );
-			} else if ( $lat < -90 ) {
-				$error = wfMsg( 'slippymap_latsmall' );
-			} else if ( $lon > 180 ) {
-				$error = wfMsg( 'slippymap_lonbig' );
-			} else if ( $lon < -180 ) {
-				$error = wfMsg( 'slippymap_lonsmall' );
-			} else if ( $zoom < 0 ) {
-				$error = wfMsg( 'slippymap_zoomsmall' );
-			} else if ( $zoom == 18 ) {
-				$error = wfMsg( 'slippymap_zoom18' );
-			} else if ( $zoom > 17 ) {
-				$error = wfMsg( 'slippymap_zoombig' );
+			if ( !is_numeric( $this->width ) ) {
+				$errors = wfMsg( 'slippymap_widthnan', $this->width );
+			} else if ( !is_numeric( $this->height ) ) {
+				$errors = wfMsg( 'slippymap_heightnan', $this->height );
+			} else if ( !is_numeric( $this->zoom ) ) {
+				$errors = wfMsg( 'slippymap_zoomnan', $this->zoom );
+			} else if ( !is_numeric( $this->lat ) ) {
+				$errors = wfMsg( 'slippymap_latnan', $this->lat );
+			} else if ( !is_numeric( $this->lon ) ) {
+				$errors = wfMsg( 'slippymap_lonnan', $this->lon );
+			} else if ( $this->width > 1000 ) {
+				$errors = wfMsg( 'slippymap_widthbig' );
+			} else if ( $this->width < 100 ) {
+				$errors = wfMsg( 'slippymap_widthsmall' );
+			} else if ( $this->height > 1000 ) {
+				$errors = wfMsg( 'slippymap_heightbig' );
+			} else if ( $this->height < 100 ) {
+				$errors = wfMsg( 'slippymap_heightsmall' );
+			} else if ( $this->lat > 90 ) {
+				$errors = wfMsg( 'slippymap_latbig' );
+			} else if ( $this->lat < -90 ) {
+				$errors = wfMsg( 'slippymap_latsmall' );
+			} else if ( $this->lon > 180 ) {
+				$errors = wfMsg( 'slippymap_lonbig' );
+			} else if ( $this->lon < -180 ) {
+				$errors = wfMsg( 'slippymap_lonsmall' );
+			} else if ( $this->zoom < 0 ) {
+				$errors = wfMsg( 'slippymap_zoomsmall' );
+			} else if ( $this->zoom == 18 ) {
+				$errors = wfMsg( 'slippymap_zoom18' );
+			} else if ( $this->zoom > 17 ) {
+				$errors = wfMsg( 'slippymap_zoombig' );
 			}
 		}
-
-		// Find the tile server URL to use.  Note that we could allow the user to override that with
-		// *any* tile server URL for more flexibility, but that might be a security concern.
-
-		$layer = strtolower( $layer );
-		$layerObjectDef = '';
-		if ( $layer == 'osmarender' ) {
-			$layerObjectDef = 'OpenLayers.Layer.OSM.Osmarender("Osmarender");';
-		} elseif ( $layer == 'mapnik' ) {
-			$layerObjectDef = 'OpenLayers.Layer.OSM.Mapnik("Mapnik");';
-		} elseif ( $layer == 'maplint' ) {
-			$layerObjectDef = 'OpenLayers.Layer.OSM.Maplint("Maplint");';
-		} else {
-			$error = wfMsg( 'slippymap_invalidlayer',  htmlspecialchars( $layer ) );
-		}
-
-		if ( $error != "" ) {
+	
+		return $errors;
+	}
+	
+	public function getErrors() {
+		if ( $this->errors != "" ) {
 			// Something was wrong. Spew the error message and input text.
 			$output  = '';
-			$output .= "<span class=\"error\">" . wfMsg( 'slippymap_maperror' ) . ' ' . $error . "</span><br />";
+			$output .= "<span class=\"error\">" . wfMsg( 'slippymap_maperror' ) . ' ' . $this->errors . "</span><br />";
 			$output .= htmlspecialchars( $input );
 			return $output;
-		} else {
-			$output = self::makeSlippyMapHTMLandJS($lon, $lat, $zoom, $height, $width, $layerObjectDef, $marker, $SlippyMapCounter++);
-
-			$markercount = count($SlippyMapMarkerList);
-			$pMarker = "SlippyMap-marker".$markercount."-SlippyMap";
-			$SlippyMapMarkerList[$markercount] = $output;
-			return $pMarker;
 		}
 	}
 
-	static function makeSlippyMapHTMLandJS($lon, $lat, $zoom, $height, $width, $layerObjectDef, $marker, $unique) {
-		global $wgScriptPath, $wgMapOfServiceUrl;
-		// HTML output for the slippy map.
-		// Note that this must all be output on one line (no linefeeds)
-		// otherwise MediaWiki adds <BR> tags, which is bad in the middle of a block of javascript.
-		// There are other ways of fixing this, but not for MediaWiki v4
-		// (See http://www.mediawiki.org/wiki/Manual:Tag_extensions#How_can_I_avoid_modification_of_my_extension.27s_HTML_output.3F)
-
-		$slippymap_code_marker = '';
-		if ( $marker ) {
-		$slippymap_code_marker = <<<EOT
-var markers${unique} = new OpenLayers.Layer.Markers( "Markers" );
-map${unique}.addLayer(markers${unique});
-var size${unique} = new OpenLayers.Size(20,34);
-var offset${unique} = new OpenLayers.Pixel(-(size${unique}.w/2), -size${unique}.h);
-var icon${unique} = new OpenLayers.Icon('http://boston.openguides.org/markers/YELLOW.png', size${unique},offset${unique});
-markers${unique}.addMarker(new OpenLayers.Marker( lonLat${unique}, icon${unique} ));
-EOT;
-		}
-
-		$slippymap_code_escaped = Xml::escapeJsString( wfMsg( 'slippymap_code' ) );
-		$slippymap_button_code = Xml::escapeJsString( wfMsg( 'slippymap_button_code' ) );
-		$slippymap_resetview = Xml::escapeJsString( wfMsg( 'slippymap_resetview' ) );
-
-		$slippymap_zoom_snippet = '';
-		if ( $height > 320 ) {
-			// Add the zoom bar control, except if the map is only little
-			$slippymap_zoom_snippet = 'new OpenLayers.Control.PanZoomBar(),';
-		} else if ( $height > 140 ) {
-			$slippymap_zoom_snippet = 'new OpenLayers.Control.PanZoom(),';
-		}
-
-		$output = <<<EOT
-<!-- Slippy Map -->
-
-<!-- This inline stylesheet defines how the two extra buttons look, and where they are positioned. -->
-<style> .buttonsPanel div { float:left; display:block; position:relative; left:50px; margin-left:3px; margin-top:7px; width:36px;  height:19px; }</style>
-<style> .buttonsPanel .getWikiCodeButtonItemInactive { width:36px; height:19px; background-image:url('$wgScriptPath/extensions/SlippyMap/wikicode-button.png'); }</style>
-<style> .buttonsPanel .resetButtonItemInactive       { width:36px; height:19px; background-image:url('$wgScriptPath/extensions/SlippyMap/reset-button.png'); }</style>
-
-<!-- bring in the OpenLayers javascript library -->
-<script src="http://openlayers.org/api/OpenLayers.js"></script>
-
-<!-- bring in the OpenStreetMap OpenLayers layers.
-     Using this hosted file will make sure we are kept up
-     to date with any necessary changes -->
-<script src="http://openstreetmap.org/openlayers/OpenStreetMap.js"></script>
-
-<script type="text/javascript">
-	var lon${unique} = ${lon};
-	var lat${unique} = ${lat};
-	var zoom${unique} = ${zoom};
-
-	var lonLat${unique};
-	var map${unique};
-
-	addOnloadHook( slippymap_init );
-
-	function slippymap_resetPosition${unique}() {
-		map${unique}.setCenter(lonLat${unique}, zoom${unique});
+	public function getMapId() {
+		return $this->mapId;
 	}
 
-	function slippymap_getWikicode${unique}() {
-		LL = map${unique}.getCenter().transform(map${unique}.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
-		Z = map${unique}.getZoom();
-		size = map${unique}.getSize();
-		prompt(
-		    "${slippymap_code_escaped}",
-		    "<slippymap h=" + size.h + " w=" + size.w + " z=" + Z + " lat=" + LL.lat + " lon=" + LL.lon + " layer=mapnik marker=1 />"
-		);
+	public function getLat() {
+		return $this->lat;
 	}
 
-	function slippymap_init() {
-		// FIXME: Replace with OpenLayers.Layer.OSM?: http://trac.openlayers.org/changeset/9240
-		map${unique} = new OpenLayers.Map("map${unique}", {
-			controls:[
-				new OpenLayers.Control.Navigation(),
-				$slippymap_zoom_snippet
-				new OpenLayers.Control.Attribution()
-			],
-			maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
-			maxResolution:156543.0399,
-			units: 'meters',
-			projection: "EPSG:900913"
-		});
-
-		layer = new ${layerObjectDef};
-		map${unique}.addLayer(layer);
-		epsg4326 = new OpenLayers.Projection("EPSG:4326");
-		lonLat${unique} = new OpenLayers.LonLat(lon${unique}, lat${unique}).transform( epsg4326, map${unique}.getProjectionObject() );
-
-		$slippymap_code_marker
-
-		map${unique}.setCenter(lonLat${unique}, zoom${unique});
-
-		var getWikiCodeButton${unique} = new OpenLayers.Control.Button({
-			title: "${slippymap_button_code}",
-			displayClass: "getWikiCodeButton",
-			trigger: slippymap_getWikicode${unique}
-		});
-
-		var resetButton${unique} = new OpenLayers.Control.Button({
-			title: "${slippymap_resetview}",
-			displayClass: "resetButton",
-			trigger: slippymap_resetPosition${unique}
-		});
-
-		var panel${unique} = new OpenLayers.Control.Panel( { displayClass: "buttonsPanel" } );
-		panel${unique}.addControls([getWikiCodeButton${unique}, resetButton${unique}]);
-		map${unique}.addControl(panel${unique});
-	}
-</script>
-
-<div style="width: {$width}px; height:{$height}px; border-style:solid; border-width:1px; border-color:lightgrey;" id="map${unique}">
-<noscript>
-	<a href="http://www.openstreetmap.org/?lat=${lat}&lon=${lon}&zoom=${zoom}" title="See this map on OpenStreetMap.org" style="text-decoration:none">
-		<img
-		src="${wgMapOfServiceUrl}lat=${lat}&long=${lon}&z=${zoom}&w=${width}&h=${height}&format=jpeg"
-		width="${width}"
-		height="${height}"
-		border="0"
-		alt="Slippy Map" />
-		<br />
-	</a>
-</noscript>
-</div>
-EOT;
-
-		return $output;
+	public function getLon() {
+		return $this->lon;
 	}
 
-	// Hack, see beginning of file for why
-	static function ParserAfterTidy(&$parser, &$text) {
-		global $SlippyMapMarkerList;
-		$keys = array();
-		$marker_count = count($SlippyMapMarkerList);
-	
-		for ($i = 0; $i < $marker_count; $i++) {
-			$keys[] = 'SlippyMap-marker' . $i . '-SlippyMap';
-		}
- 
-		$text = str_replace($keys, $SlippyMapMarkerList, $text);
-		return true;
+	public function getWidth() {
+		return $this->width;
+	}
+
+	public function getHeight() {
+		return $this->height;
+	}
+
+	public function getMode() {
+		return $this->mode;
+	}
+
+	public function getZoom() {
+		return $this->zoom;
+	}
+
+	public function getLayer() {
+		return $this->layer;
 	}
 }

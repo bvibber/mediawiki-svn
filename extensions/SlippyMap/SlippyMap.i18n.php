@@ -56,6 +56,8 @@ $messages['en'] = array(
 	'slippymap_button_code' => 'Get wikicode',
 	'slippymap_resetview' => 'Reset view',
 	'slippymap_license' => 'OpenStreetMap - CC-BY-SA-2.0', # do not translate or duplicate this message to other languages
+        'slippymap_invalidmode' => "Invalid 'mode' value '$1'",
+        'slippymap_clicktoactivate' => 'Click to activate map'
 );
 
 /** Message documentation (Message documentation)
