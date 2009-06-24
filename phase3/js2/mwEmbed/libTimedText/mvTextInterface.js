@@ -277,8 +277,9 @@ mvTextInterface.prototype = {
 				var curhl = $j('#mmbody_'+this.pe.id +' .tt_scroll_highlight').get(0);
 				if(npt2seconds($j(curhl).attr('start') ) < cur_time &&
 				   npt2seconds($j(curhl).attr('end') ) > cur_time){
-					js_log('in range of current hl: ' + 
-					npt2seconds($j(curhl).attr('start')) +  ' to ' +  npt2seconds($j(curhl).attr('end')));
+					/*js_log('in range of current hl: ' + 
+						npt2seconds($j(curhl).attr('start')) +  ' to ' +  npt2seconds($j(curhl).attr('end')));
+					*/
 					search_for_range = false;					
 				}else{
 					search_for_range = true;
@@ -286,8 +287,12 @@ mvTextInterface.prototype = {
 					$j('#mmbody_'+this.pe.id +' .tt_scroll_highlight').removeClass('tt_scroll_highlight');
 				}
 			};			
+			/*js_log('search_for_range:'+search_for_range +  ' for: '+ cur_time);*/
 			if(search_for_range){				
-				//search for current time:  flash red border trascript				
+				//search for current time: add tt_scroll_highlight to clip		
+				// optimize:
+				//  should do binnary search not iterative 
+				//  avoid jquery function calls do native loops 
 				$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
 					if(npt2seconds($j(this).attr('start') ) < cur_time &&
 					   npt2seconds($j(this).attr('end') ) > cur_time){																		
@@ -296,7 +301,7 @@ mvTextInterface.prototype = {
 							scrollTop: $j(this).get(0).offsetTop						
 						}, 'slow');
 						$j(this).addClass('tt_scroll_highlight');
-						js_log('should add class to: ' + $j(this).attr('id'));
+						//js_log('should add class to: ' + $j(this).attr('id'));
 						//done with loop
 						return false;
 					}

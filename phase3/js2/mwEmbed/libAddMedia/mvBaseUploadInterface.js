@@ -246,11 +246,11 @@ mvBaseUploadInterface.prototype = {
 		
 		//set up the progress display for status updates: 
 		_this.dispProgressOverlay();
-		var req ={
+		var req = {
 					'action'	 : 'upload',
 					'httpstatus' : 'true',
 					'sessionkey' : _this.upload_session_key
-				};
+		};
 		//add token if present: 		
 		if(this.etoken)
 			req['token'] = this.etoken;
