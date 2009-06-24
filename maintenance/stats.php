@@ -26,9 +26,9 @@ class MemcachedStats extends Maintenance {
 			$this->error( "You either have no stats or memcached isn't running. Aborting.\n", true );
 		}
 		$this->output( "Requests\n" );
-		$this->output( sprintf( "with session:      %-10d %6.2f%%\n", $session, $session/$total*100 );
-		$this->output( sprintf( "without session:   %-10d %6.2f%%\n", $noSession, $noSession/$total*100 );
-		$this->output( sprintf( "total:             %-10d %6.2f%%\n", $total, 100 );
+		$this->output( sprintf( "with session:      %-10d %6.2f%%\n", $session, $session/$total*100 ) );
+		$this->output( sprintf( "without session:   %-10d %6.2f%%\n", $noSession, $noSession/$total*100 ) );
+		$this->output( sprintf( "total:             %-10d %6.2f%%\n", $total, 100 ) );
 	
 	
 		$this->output( "\nParser cache\n" );
@@ -59,9 +59,9 @@ class MemcachedStats extends Maintenance {
 		$uncacheable = intval($wgMemc->get(wfMemcKey('stats','diff_uncacheable')));
 		$total = $hits + $misses + $uncacheable;
 		$this->output("\nDiff cache\n");
-		$this->output( sprintf( "hits:              %-10d %6.2f%%\n", $hits, $hits/$total*100 );
-		$this->output( sprintf( "misses:            %-10d %6.2f%%\n", $misses, $misses/$total*100 );
-		$this->output( sprintf( "uncacheable:       %-10d %6.2f%%\n", $uncacheable, $uncacheable/$total*100 );
+		$this->output( sprintf( "hits:              %-10d %6.2f%%\n", $hits, $hits/$total*100 ) );
+		$this->output( sprintf( "misses:            %-10d %6.2f%%\n", $misses, $misses/$total*100 ) );
+		$this->output( sprintf( "uncacheable:       %-10d %6.2f%%\n", $uncacheable, $uncacheable/$total*100 ) );
 	}
 }
 

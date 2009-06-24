@@ -15,14 +15,14 @@ class UpdateArticleCount extends Maintenance {
 	private $namespaces;
 
 	public function __construct() {
-		global $wgContentNamespaces;
 		parent::__construct();
 		$this->mDescription = "Count of the number of articles and update the site statistics table";
 		$this->addParam( 'update', 'Update the site_stats table with the new count' );
-		$this->namespaces = $wgContentNamespaces;
 	}
 
 	public function execute() {
+		global $wgContentNamespaces;
+		$this->namespaces = $wgContentNamespaces;
 		$this->output( "Counting articles..." );
 		$result = $this->count();
 	

@@ -38,7 +38,7 @@ class RenameDbPrefix extends Maintenance {
 			$this->error( "Invalid prefix!\n", true );
 		}
 		if( $old === $new ) {
-			$this->( "Same prefix. Nothing to rename!\n", true );
+			$this->output( "Same prefix. Nothing to rename!\n", true );
 		}
 	
 		$this->output( "Renaming DB prefix for tables of $wgDBname from '$old' to '$new'\n" );

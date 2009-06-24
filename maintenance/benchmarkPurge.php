@@ -12,7 +12,7 @@ class BenchmarkPurge extends Maintenance {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->addParams( "count", "How many URLs to feed to Squid for purging", false, true );
+		$this->addParam( "count", "How many URLs to feed to Squid for purging", false, true );
 		$this->mDescription = "Benchmark the Squid purge functions.";
 	}
 	

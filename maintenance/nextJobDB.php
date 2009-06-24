@@ -16,16 +16,16 @@ class nextJobDB extends Maintenance {
 	}
 	public function execute() {
 		global $wgMemc;
-		$type = $this->getParam( 'type', false );
+		$type = $this->getOption( 'type', false );
 		$mckey = $type === false
 					? "jobqueue:dbs"
 					: "jobqueue:dbs:$type";
-		$pendingDBs = $wgMemcKey->get( $mckey );
+		$pendingDBs = $wgMemc->get( $mckey );
 		
 		# If we didn't get it from the cache
 		if( !$pendingDBs ) {
 			$pendingDBs = $this->getPendingDbs( $type );
-			$wgMemc->get( $mckey, $pendingDBs, 300 )
+			$wgMemc->get( $mckey, $pendingDBs, 300 );
 		}
 		# If we've got a pending job in a db, display it. 
 		if ( $pendingDBs ) {
@@ -39,6 +39,7 @@ class nextJobDB extends Maintenance {
 	 * @return array
 	 */
 	private function getPendingDbs( $type ) {
+		global $wgLocalDatabases;
 		$pendingDBs = array();
 		# Cross-reference DBs by master DB server
 		$dbsByMaster = array();

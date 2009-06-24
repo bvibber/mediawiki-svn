@@ -17,7 +17,7 @@ class ChangePassword extends Maintenance {
 		parent::__construct();
 		$this->addParam( "user", "The username to operate on", true, true );
 		$this->addParam( "password", "The password to use", true, true );
-		$this->mDescription = "Change a user's password."
+		$this->mDescription = "Change a user's password";
 	}
 	
 	public function execute() {

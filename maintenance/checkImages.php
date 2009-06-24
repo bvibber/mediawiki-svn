@@ -28,7 +28,7 @@ class CheckImages extends Maintenance {
 				$file = RepoGroup::singleton()->getLocalRepo()->newFileFromRow( $row );
 				$path = $file->getPath();
 				if ( !$path ) {
-					$this->output( "{$row->img_name}: not locally accessible\n";
+					$this->output( "{$row->img_name}: not locally accessible\n" );
 					continue;
 				}
 				$stat = @stat( $file->getPath() );

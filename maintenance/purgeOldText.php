@@ -12,7 +12,7 @@ class PurgeOldText extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Purge old text records from the database";
-		$this->addOption( 'purge', 'Performs the deletion' );
+		$this->addParam( 'purge', 'Performs the deletion' );
 	}
 	
 	public function execute() {
