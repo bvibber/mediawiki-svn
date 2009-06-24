@@ -35,7 +35,7 @@ class SlippyMapHooks {
 	 * @return true
 	 */        
 
-	public function onParserFirstCallInit( ) {
+	public static function onParserFirstCallInit( ) {
 		global $wgArticle, $wgOut, $wgParser, $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgAutoLoadMaps;
 
 		$smh = new SlippyMapHooks();
@@ -152,7 +152,7 @@ class SlippyMapHooks {
 	 * Evil hack
 	 * @see http://www.mediawiki.org/wiki/Manual:Tag_extensions#How_can_I_avoid_modification_of_my_extension.27s_HTML_output.3F
 	 */
-	function wfSlippyMapParserAfterTidy( &$parser, &$text ) {
+	public static function wfSlippyMapParserAfterTidy( &$parser, &$text ) {
 		global $SlippyMapMarkerList;
 	        $keys = array();
         	$marker_count = count( $SlippyMapMarkerList );
