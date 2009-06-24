@@ -136,6 +136,14 @@ abstract class Maintenance {
 	}
 
 	/**
+	 * Get the script's name
+	 * @return String
+	 */
+	public function getName() {
+		return $this->mSelf;
+	}
+
+	/**
 	 * Return input from stdin.
 	 * @param $length int The number of bytes to read. If null,
 	 *        just return the handle
