@@ -1,6 +1,6 @@
 concept_name,property,value
 FooBar,name,Foo
-FooBar,firstName,Bar
+FooBar,firstName,Bar|Barf
 FooBar,phone,12345
 XyzzyQuux,name,Xyzzy
 XyzzyQuux,firstName,Quux

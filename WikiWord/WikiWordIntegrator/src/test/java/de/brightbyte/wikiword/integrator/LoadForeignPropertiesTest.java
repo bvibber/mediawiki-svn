@@ -5,6 +5,9 @@ public class LoadForeignPropertiesTest extends IntegratorAppTestBase<LoadForeign
 	
 	public LoadForeignPropertiesTest() {
 		super("LoadForeignPropertiesTest");
+		
+		dumpActual = true;
+		dumpExpected = true;
 	}
 
 	/*
