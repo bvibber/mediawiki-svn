@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="en-US">
+<para>Overview</para>
+<orderedlist>
+<listitem>
+<para>The entry point the the Application</para>
+</listitem>
+<listitem>
+<para>The Application sets up the Store (target) and DataCursor (source)</para>
+</listitem>
+<listitem>
+<para>The Application then creates a Processor around the Store and calls it on the DataCursor.</para>
+</listitem>
+<listitem>
+<para>The Processor fetches on entry after another from the DataCursor and passes it to the StoreBuilder. Note that any logic for filtering, grouping and converting of entries is usually implemented in the DataCursor, not in the Processor.</para>
+</listitem>
+</orderedlist>
+<para>Application</para>
+<para>DB Configuration, Tweaks, SourceDescriptor</para>
+<para>Store, StoreBuilder</para>
+<para>FeatureSet</para>
+<para>DataCursor</para>
+<para>FeatureSetSourceDescriptor</para>
+<para>Processor</para>
+<para>Associations</para>
+<para>MappingCandidates</para>
+<para>Filter, Selector</para>
+<para>Scorer</para>
+</article>

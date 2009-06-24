@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="en-US">
+<para>This document outlines the process of semantic vocabulary integration using WikiWord.</para>
+<para>Building the WikiWord Thesaurus</para>
+<para>The WikiWord thesaurus is extracted from Wikipedia's XML dumps.</para>
+<para>Building the WikiWord thesaurus is a long-running task, best performed centrally on appropriately powerful hardware. It is assumed that this will be performed as a service by Wikimedia.</para>
+<para>Thesaurus Extraction</para>
+<para>For each Wikipedia dump (I.e. for each Language), a thesaurus is extracted,</para>
+<para>Thesaurus Merging</para>
+<para>The thesauri are then merged into a multi-lingual thesaurus.</para>
+<para>Building Concept Properties</para>
+<para>Semantic integration means mapping concepts from one vocabulary to another. In the context of this document, concepts from a foreign authority are mapped to WikiWord concepts.</para>
+<para>Concept properties are the basis for mapping concepts. Properties include information supplied from the foreign authority, properties extracted from Wikipedia articles as well as the information in the thesaurus proper, that is, the terms/labels used to refer to a given concept.</para>
+<para>Property Extraction</para>
+<para>WikiWord allows for additional properties to be extracted from Wikipedia pages to be attached to an existing thesaurus. This way, a generic thesaurus can be used for a variety of domains, while the properties extracted can be tailored to the desired domain. Concept properties are most often extracted from so called “infobox” templates contained in Wikipedia articles, but also from other special purpose templates and categorization tags.</para>
+<para>Property Import</para>
+<para>Concepts defined by a third party authority are imported into the WikiWord database as sets of properties attached to a concept id. They are represented in the database as generic triples of concept id, property name and property value.</para>
+<para>External concepts can be imported directly from CSV/TSV files or from the result of an SQL query.</para>
+<para>Mapping Concepts</para>
+<para>Building Concept Associations</para>
+<para>Concept <emphasis>associations</emphasis> represent individual links between foreign authority concepts and WikiWord concepts. There may be several such associations between the same pair of concepts. Associations may be annotated with a variety of information about how the association was derived and how it is weighted.</para>
+<para>Building Concept Mappings</para>
+<para>Concept <emphasis>mappings</emphasis> represent aggregated links between foreign authority concepts and WikiWord concepts. There may be only one mapping between a given pair of concepts. However, the same foreign concept may be mapped to several WikiWord concepts, and a single WikiWord concept may be mapped to several different foreign concepts.</para>
+<para>Mappings are generally derived from associations by a kind of “grouping” operation: all associations between a given pair of concepts are grouped into a single mapping entry. Annotation of the mappings are reduced to figures aggregated from the associations that defined the respective mappings.</para>
+<para>Filtering Concept Mappings</para>
+<para>To get the mappings that are desired for a given purpose,  different kind of filters can be applied. One very common filter uses a threshold: all mappings that are below a given value according to some measure (often, the value of a specific “weight” annotation) are ignored.</para>
+<para>Often, it is desired to get <emphasis>unique </emphasis>mappings, that is, to have a given foreign concept map to only one WikiWord concept. There are two default ways to achieve this: either by using the <emphasis>best</emphasis> available mapping for a given foreign concept, according to some measure. Or my simply ignoring all ambiguous mappings; This of course reduces the amount of mappings, but it also improved the level of confidence in the mappings.</para>
+<para>Sometimes, it is desired to only get <emphasis>exact, exclusive</emphasis> matches – that is, not only to exclude any foreign concept for which there exists more than one mapping to  WikiWord, but to also to exclude all WikiWord concepts mapped to more than one foreign concept. This yields a strict 1:1 relationship and avoids any mismatches in scope or granularity. This is particularly useful when transferring definitions from one authority to another.</para>
+</article>
