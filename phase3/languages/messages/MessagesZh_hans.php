@@ -1,5 +1,5 @@
 <?php
-/** Simplified Chinese (‪中文(简化字)‬)
+/** Simplified Chinese (‪中文(简体)‬)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -10,6 +10,7 @@
  * @author Bencmq
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author Jidanni
  * @author Liangent
  * @author O
  * @author Philip
@@ -159,6 +160,7 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( '搜索网页链接' ),
 	'DeletedContributions'      => array( '已删除的用户贡献' ),
 	'Tags'                      => array( '标签' ),
+	'Activeusers'               => array( '活跃用户' ),
 );
 
 $extraUserToggles = array(
@@ -339,6 +341,30 @@ $messages = array(
 'faq'            => '常见问题解答',
 'faqpage'        => 'Project:常见问题解答',
 
+# Vector skin
+'vector-action-addsection'   => '加入主题',
+'vector-action-delete'       => '删除',
+'vector-action-move'         => '移动',
+'vector-action-protect'      => '保护',
+'vector-action-undelete'     => '恢复被删页面',
+'vector-action-unprotect'    => '解除保护',
+'vector-namespace-category'  => '分类',
+'vector-namespace-help'      => '帮助页面',
+'vector-namespace-image'     => '文件',
+'vector-namespace-main'      => '页面',
+'vector-namespace-media'     => '媒体页面',
+'vector-namespace-mediawiki' => '信息',
+'vector-namespace-project'   => '计划页面',
+'vector-namespace-special'   => '特殊页面',
+'vector-namespace-talk'      => '讨论',
+'vector-namespace-template'  => '模板',
+'vector-namespace-user'      => '用户页面',
+'vector-view-create'         => '创建',
+'vector-view-edit'           => '编辑',
+'vector-view-history'        => '查看历史',
+'vector-view-view'           => '阅读',
+'vector-view-viewsource'     => '查看源代码',
+
 # Metadata in edit box
 'metadata_help' => '元数据：',
 
@@ -358,7 +384,6 @@ $messages = array(
 'permalink'         => '永久链接',
 'print'             => '打印',
 'edit'              => '编辑',
-'view'              => '阅读',
 'create'            => '创建',
 'editthispage'      => '编辑此页',
 'create-this-page'  => '创建此页',
@@ -862,16 +887,16 @@ $2',
 'rev-deleted-user'            => '(用户名已移除)',
 'rev-deleted-event'           => '(日志动作已移除)',
 'rev-deleted-text-permission' => "该页面修订已经被'''删除'''。
-在[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 删除日志]中您可能会查看到详细的信息。",
+在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 废止日志]中您可能会查看到详细的信息。",
 'rev-deleted-text-unhide'     => "该页面修订已经被'''删除'''。
-在[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 删除日志]中您可能会查看到详细的信息。
+在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 废止日志]中您可能会查看到详细的信息。
 作为管理员，如果您想继续的话，您可以仍然[$1 去查看这次修订]。",
 'rev-deleted-text-view'       => "该页面修订已经被'''删除'''。作为管理员，您可以查看它；
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 删除日志]中您可能会查看到详细的信息。",
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 废止日志]中您可能会查看到详细的信息。",
 'rev-deleted-no-diff'         => "因为其中一次修订'''删除'''，您不可以查看这个差异。
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 删除日志]中可能有更多的信息。",
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 废止日志]中可能有更多的信息。",
 'rev-deleted-unhide-diff'     => "该页面的其中一次修订已经被'''删除'''。
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 删除日志]中可能有更多的信息。
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 废止日志]中可能有更多的信息。
 作为管理员，如果您想继续的话，您可以仍然[$1 去查看这次修订]。",
 'rev-delundel'                => '显示/隐藏',
 'revisiondelete'              => '删除/恢复删除修订',
@@ -1109,7 +1134,7 @@ $1",
 'mypreferences'                 => '我的参数设置',
 'prefs-edits'                   => '编辑数量：',
 'prefsnologin'                  => '尚未登录',
-'prefsnologintext'              => '您必须先<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} 登录]</span>才能设置个人参数。',
+'prefsnologintext'              => '您必须先<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} 登录]</span>才能设置个人参数。',
 'changepassword'                => '更改密码',
 'prefs-skin'                    => '皮肤',
 'skin-preview'                  => '预览',
@@ -1263,7 +1288,7 @@ $1",
 'right-move-subpages'         => '移动页面跟它的字页面',
 'right-move-rootuserpages'    => '移动根用户页面',
 'right-movefile'              => '移动文件',
-'right-suppressredirect'      => '移动页面时不建立重定向',
+'right-suppressredirect'      => '当移动页面时不建立来源页面之重定向',
 'right-upload'                => '上传文件',
 'right-reupload'              => '覆盖现有的文件',
 'right-reupload-own'          => '覆盖由同一位上传的文件',
@@ -1640,8 +1665,8 @@ Template:消除歧義',
 
 'brokenredirects'        => '损坏的重定向页',
 'brokenredirectstext'    => '以下的重定向页面指向的是不存在的页面：',
-'brokenredirects-edit'   => '(编辑)',
-'brokenredirects-delete' => '(删除)',
+'brokenredirects-edit'   => '编辑',
+'brokenredirects-delete' => '删除',
 
 'withoutinterwiki'         => '未有语言链接的页面',
 'withoutinterwiki-summary' => '以下的页面是未有语言链接到其它语言版本。',
@@ -1755,8 +1780,9 @@ Template:消除歧義',
 'special-categories-sort-abc'   => '按字母排列',
 
 # Special:DeletedContributions
-'deletedcontributions'       => '已删除的用户贡献',
-'deletedcontributions-title' => '已删除的用户贡献',
+'deletedcontributions'             => '已删除的用户贡献',
+'deletedcontributions-title'       => '已删除的用户贡献',
+'sp-deletedcontributions-contribs' => '贡献',
 
 # Special:LinkSearch
 'linksearch'       => '外部链接',
@@ -1772,6 +1798,13 @@ Template:消除歧義',
 'listusersfrom'      => '给定显示用户条件：',
 'listusers-submit'   => '显示',
 'listusers-noresult' => '找不到用户。',
+'listusers-blocked'  => '(已封锁)',
+
+# Special:ActiveUsers
+'activeusers'          => '活跃用户列表',
+'activeusers-count'    => '$1次最近编辑',
+'activeusers-from'     => '显示用户开始于：',
+'activeusers-noresult' => '找不到用户。',
 
 # Special:Log/newusers
 'newuserlogpage'              => '新进用户名册',
@@ -1785,18 +1818,20 @@ Template:消除歧義',
 'listgrouprights'                      => '用户群组权限',
 'listgrouprights-summary'              => '以下面是一个在这个wiki中定义出来的用户权限列表，以及它们的访问权。
 更多有关个别权限的细节可以在[[{{MediaWiki:Listgrouprights-helppage}}|这里]]找到。',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">已授予的权限</span>
+* <span class="listgrouprights-revoked">已撤除的权限</span>',
 'listgrouprights-group'                => '群组',
 'listgrouprights-rights'               => '权限',
 'listgrouprights-helppage'             => 'Help:群组权限',
 'listgrouprights-members'              => '(成员列表)',
-'listgrouprights-addgroup'             => '可以加入的{{PLURAL:$2|一个|多个}}群组：$1',
-'listgrouprights-removegroup'          => '可以移除的{{PLURAL:$2|一个|多个}}群组：$1',
-'listgrouprights-addgroup-all'         => '可以加入所有群组',
-'listgrouprights-removegroup-all'      => '可以移除所有群组',
-'listgrouprights-addgroup-self'        => '在自己的账户中可以加入的{{PLURAL:$2|一个|多个}}群组: $1',
-'listgrouprights-removegroup-self'     => '在自己的账户中可以移除的{{PLURAL:$2|一个|多个}}群组: $1',
-'listgrouprights-addgroup-self-all'    => '在自己的账户中以加入所有群组',
-'listgrouprights-removegroup-self-all' => '在自己的账户中可以移除所有群组',
+'listgrouprights-addgroup'             => '加入的{{PLURAL:$2|一个|多个}}群组：$1',
+'listgrouprights-removegroup'          => '移除的{{PLURAL:$2|一个|多个}}群组：$1',
+'listgrouprights-addgroup-all'         => '加入所有群组',
+'listgrouprights-removegroup-all'      => '移除所有群组',
+'listgrouprights-addgroup-self'        => '在自己的账户中加入的{{PLURAL:$2|一个|多个}}群组: $1',
+'listgrouprights-removegroup-self'     => '在自己的账户中移除的{{PLURAL:$2|一个|多个}}群组: $1',
+'listgrouprights-addgroup-self-all'    => '在自己的账户中加入所有群组',
+'listgrouprights-removegroup-self-all' => '在自己的账户中移除所有群组',
 
 # E-mail user
 'mailnologin'      => '无电邮地址',
@@ -1921,8 +1956,7 @@ $NEWPAGE
 'deletecomment'          => '删除原因：',
 'deleteotherreason'      => '其它／附加的理由：',
 'deletereasonotherlist'  => '其它理由',
-'deletereason-dropdown'  => '
-*常用删除理由
+'deletereason-dropdown'  => '*常用删除理由
 ** 作者请求
 ** 侵犯版权
 ** 破坏',
@@ -2110,8 +2144,7 @@ $1',
 'ipbexpiry'                       => '期限：',
 'ipbreason'                       => '原因：',
 'ipbreasonotherlist'              => '其它原因',
-'ipbreason-dropdown'              => '
-*一般的封禁理由
+'ipbreason-dropdown'              => '*一般的封禁理由
 ** 增加不实资料
 ** 删除页面内容
 ** 添加外部垃圾链接
@@ -2325,8 +2358,8 @@ $1已经被封锁。您是否想更改这个设置？',
 # Namespace 8 related
 'allmessages'               => '系统界面',
 'allmessagesname'           => '名称',
-'allmessagesdefault'        => '默认的文字',
-'allmessagescurrent'        => '当前的文字',
+'allmessagesdefault'        => '默认的信息文字',
+'allmessagescurrent'        => '现时的信息文字',
 'allmessagestext'           => '这里列出所有可定制的系统界面。
 如果想贡献正宗的MediaWiki本地化的话，请参阅[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]以及[http://translatewiki.net translatewiki.net]。',
 'allmessagesnotsupportedDB' => "这个页面无法使用，因为'''\$wgUseDatabaseMessages'''已被设置关闭。",
@@ -2972,6 +3005,7 @@ $1',
 # Separators for various lists, etc.
 'comma-separator' => '、',
 'word-separator'  => '',
+'parentheses'     => '（$1）',
 
 # Multipage image navigation
 'imgmultipageprev' => '← 上一页',
@@ -3077,7 +3111,7 @@ $1',
 'fileduplicatesearch-result-n' => '文件“$1”有$2项完全相同的重复副本。',
 
 # Special:SpecialPages
-'specialpages'                   => '特殊页面',
+'specialpages'                   => '所有特殊页面',
 'specialpages-note'              => '----
 * 标准特殊页面。
 * <strong class="mw-specialpagerestricted">有限制的特殊页面。</strong>',

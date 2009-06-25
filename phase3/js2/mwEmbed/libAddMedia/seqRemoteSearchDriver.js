@@ -1,9 +1,7 @@
 /*the sequence remote search driver
 	 extends the base remote search driver with sequence specific stuff.		 could seperate this out into seperate lib.
 */
-loadGM({
-	
-});
+
 var seqRemoteSearchDriver = function(iObj){
 	return this.init( iObj )
 }

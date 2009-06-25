@@ -34,7 +34,7 @@ $namespaceNames = array(
 );
 
 $magicWords = array(
-	'redirect'              => array( '0', '#saadaq', '#suuna', '#suuna', '#REDIRECT' ),
+	'redirect'              => array( '0', '#saadaq', '#suuna', '#REDIRECT' ),
 );
 
 $messages = array(
@@ -665,8 +665,8 @@ Seletüs: (viim) = lahkominegiq viimätsest kujost,
 'rev-deleted-user'            => '(pruukjanimi ärq kistutõt)',
 'rev-deleted-event'           => '(kiräkotus ärq kistutõt)',
 'rev-deleted-text-permission' => 'Lehe taa kujo om avaligust arhiivist ärq kistutõt.
-Lisateedüst või ollaq [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} kistutamisnimekirän].',
-'rev-deleted-text-view'       => "Taa kujo om avaligust pruugist ärq kistutõt, a kõrraldajaq saavaq taad nätäq. As'a kotsilõ või teedüst olla [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} kistutusnimekirän]",
+Lisateedüst või ollaq [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} kistutamisnimekirän].',
+'rev-deleted-text-view'       => "Taa kujo om avaligust pruugist ärq kistutõt, a kõrraldajaq saavaq taad nätäq. As'a kotsilõ või teedüst olla [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} kistutusnimekirän]",
 'rev-delundel'                => 'näütäq/käkiq',
 'revisiondelete'              => 'Kistudaq/võtaq tagasi lehe kujjõ',
 'revdelete-nooldid-title'     => 'Säänest otsitavat kujjo olõ-i',
@@ -1070,8 +1070,8 @@ Lehte peetäs täpsüstüslehes, ku timän om pruugit näüdüst, kohe näütäs
 
 'brokenredirects'        => 'Vigadsõq ümbresaatmisõq',
 'brokenredirectstext'    => 'Naaq ümbresaatmisõq näütäseq lehti pääle, midä olõ-i olõman:',
-'brokenredirects-edit'   => '(toimõndaq)',
-'brokenredirects-delete' => '(kistudaq ärq)',
+'brokenredirects-edit'   => 'toimõndaq',
+'brokenredirects-delete' => 'kistudaq ärq',
 
 'withoutinterwiki'         => 'Keelelingeldä leheq',
 'withoutinterwiki-summary' => 'Nail lehil olõ-i linke tõisi kiili lehti pääle:',

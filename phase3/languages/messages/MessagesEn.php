@@ -29,6 +29,12 @@ $fallback = false;
 $rtl = false;
 
 /**
+ * Should all nouns (not just proper ones) be capitalized?
+ * Enabling this property will add the capitalize-all-nouns class to the <body> tag
+ */
+$capitalizeAllNouns = false;
+
+/**
  * Optional array mapping ASCII digits 0-9 to local digits.
  */
 $digitTransformTable = null;
@@ -441,6 +447,7 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( 'LinkSearch' ),
 	'DeletedContributions'      => array( 'DeletedContributions' ),
 	'Tags'                      => array( 'Tags' ),
+	'Activeusers'               => array( 'ActiveUsers' ),
 );
 
 /**
@@ -650,6 +657,30 @@ XHTML id names.
 'sitetitle'      => '{{SITENAME}}', # do not translate or duplicate this message to other languages
 'sitesubtitle'   => '', # do not translate or duplicate this message to other languages
 
+# Vector skin
+'vector-action-addsection'   => 'Add topic',
+'vector-action-delete'       => 'Delete',
+'vector-action-move'         => 'Move',
+'vector-action-protect'      => 'Protect',
+'vector-action-undelete'     => 'Undelete',
+'vector-action-unprotect'    => 'Unprotect',
+'vector-namespace-category'  => 'Category',
+'vector-namespace-help'      => 'Help page',
+'vector-namespace-image'     => 'File',
+'vector-namespace-main'      => 'Page',
+'vector-namespace-media'     => 'Media page',
+'vector-namespace-mediawiki' => 'Message',
+'vector-namespace-project'   => 'Project page',
+'vector-namespace-special'   => 'Special page',
+'vector-namespace-talk'      => 'Discussion',
+'vector-namespace-template'  => 'Template',
+'vector-namespace-user'      => 'User page',
+'vector-view-create'         => 'Create',
+'vector-view-edit'           => 'Edit',
+'vector-view-history'        => 'View history',
+'vector-view-view'           => 'Read',
+'vector-view-viewsource'     => 'View source',
+
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
 
@@ -669,7 +700,6 @@ XHTML id names.
 'permalink'         => 'Permanent link',
 'print'             => 'Print',
 'edit'              => 'Edit',
-'view'              => 'Read',
 'create'            => 'Create',
 'editthispage'      => 'Edit this page',
 'create-this-page'  => 'Create this page',
@@ -1155,6 +1185,7 @@ You are also promising us that you wrote this yourself, or copied it from a publ
 If you do not want your writing to be edited mercilessly, then do not submit it here.<br />
 You are also promising us that you wrote this yourself, or copied it from a public domain or similar free resource (see $1 for details).
 '''Do not submit copyrighted work without permission!'''",
+'editpage-tos-summary'             => '-', # do not translate or duplicate this message to other languages
 'longpagewarning'                  => "'''Warning:''' This page is $1 kilobytes long;
 some browsers may have problems editing pages approaching or longer than 32kb.
 Please consider breaking the page into smaller sections.",
@@ -1266,16 +1297,16 @@ Try [[Special:Search|searching on the wiki]] for relevant new pages.',
 'rev-deleted-user'            => '(username removed)',
 'rev-deleted-event'           => '(log action removed)',
 'rev-deleted-text-permission' => "This page revision has been '''deleted'''.
-There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].",
+There may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} suppression log].",
 'rev-deleted-text-unhide'     => "This page revision has been '''deleted'''.
-There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
+There may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} suppression log].
 As an administrator you can still [$1 view this revision] if you wish to proceed.",
 'rev-deleted-text-view'       => "This page revision has been '''deleted'''.
-As an administrator you can view it; there may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].",
+As an administrator you can view it; there may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} suppression log].",
 'rev-deleted-no-diff'         => "You cannot view this diff because one of the revisions has been '''deleted'''.
-There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].",
+There may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} suppression log].",
 'rev-deleted-unhide-diff'     => "One of the revisions of this diff has been '''deleted'''.
-There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
+There may be details in the [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} suppression log].
 As an administrator you can still [$1 view this diff] if you wish to proceed.",
 'rev-delundel'                => 'show/hide',
 'revisiondelete'              => 'Delete/undelete revisions',
@@ -1544,7 +1575,7 @@ Note that their indexes of {{SITENAME}} content may be out of date.',
 'mypreferences'                 => 'My preferences',
 'prefs-edits'                   => 'Number of edits:',
 'prefsnologin'                  => 'Not logged in',
-'prefsnologintext'              => 'You must be <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} logged in]</span> to set user preferences.',
+'prefsnologintext'              => 'You must be <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} logged in]</span> to set user preferences.',
 'changepassword'                => 'Change password',
 'prefs-skin'                    => 'Skin',
 'skin-preview'                  => 'Preview',
@@ -1704,7 +1735,7 @@ You can also choose to let others contact you through your user or talk page wit
 'right-move-subpages'         => 'Move pages with their subpages',
 'right-move-rootuserpages'    => 'Move root user pages',
 'right-movefile'              => 'Move files',
-'right-suppressredirect'      => 'Not create a redirect from the old name when moving a page',
+'right-suppressredirect'      => 'Not create redirects from source pages when moving pages',
 'right-upload'                => 'Upload files',
 'right-reupload'              => 'Overwrite existing files',
 'right-reupload-own'          => 'Overwrite existing files uploaded by oneself',
@@ -2157,8 +2188,8 @@ It now redirects to [[$2]].',
 'brokenredirects'         => 'Broken redirects',
 'brokenredirects-summary' => '', # do not translate or duplicate this message to other languages
 'brokenredirectstext'     => 'The following redirects link to non-existent pages:',
-'brokenredirects-edit'    => '(edit)',
-'brokenredirects-delete'  => '(delete)',
+'brokenredirects-edit'    => 'edit',
+'brokenredirects-delete'  => 'delete',
 
 'withoutinterwiki'         => 'Pages without language links',
 'withoutinterwiki-summary' => 'The following pages do not link to other language versions.',
@@ -2307,8 +2338,9 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'special-categories-sort-abc'   => 'sort alphabetically',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Deleted user contributions',
-'deletedcontributions-title' => 'Deleted user contributions',
+'deletedcontributions'             => 'Deleted user contributions',
+'deletedcontributions-title'       => 'Deleted user contributions',
+'sp-deletedcontributions-contribs' => 'contributions',
 
 # Special:LinkSearch
 'linksearch'       => 'External links',
@@ -2324,6 +2356,14 @@ Supported protocols: <tt>$1</tt>',
 'listusersfrom'      => 'Display users starting at:',
 'listusers-submit'   => 'Show',
 'listusers-noresult' => 'No user found.',
+'listusers-blocked'  => '(blocked)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Active users list',
+'activeusers-summary'  => '', # do not translate or duplicate this message to other languages
+'activeusers-count'    => '$1 recent {{PLURAL:$1|edit|edits}}',
+'activeusers-from'     => 'Display users starting at:',
+'activeusers-noresult' => 'No users found.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'User creation log',
@@ -2338,19 +2378,22 @@ Supported protocols: <tt>$1</tt>',
 'listgrouprights'                      => 'User group rights',
 'listgrouprights-summary'              => 'The following is a list of user groups defined on this wiki, with their associated access rights.
 There may be [[{{MediaWiki:Listgrouprights-helppage}}|additional information]] about individual rights.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Granted right</span>
+* <span class="listgrouprights-revoked">Revoked right</span>',
 'listgrouprights-group'                => 'Group',
 'listgrouprights-rights'               => 'Rights',
 'listgrouprights-helppage'             => 'Help:Group rights',
 'listgrouprights-members'              => '(list of members)',
-'listgrouprights-right-display'        => '$1 ($2)', # only translate this message to other languages if you have to change it
-'listgrouprights-addgroup'             => 'Can add {{PLURAL:$2|group|groups}}: $1',
-'listgrouprights-removegroup'          => 'Can remove {{PLURAL:$2|group|groups}}: $1',
-'listgrouprights-addgroup-all'         => 'Can add all groups',
-'listgrouprights-removegroup-all'      => 'Can remove all groups',
-'listgrouprights-addgroup-self'        => 'Can add {{PLURAL:$2|group|groups}} to own account: $1',
-'listgrouprights-removegroup-self'     => 'Can remove {{PLURAL:$2|group|groups}} from own account: $1',
-'listgrouprights-addgroup-self-all'    => 'Can add all groups to own account',
-'listgrouprights-removegroup-self-all' => 'Can remove all groups from own account',
+'listgrouprights-right-display'        => '<span class="listgrouprights-granted">$1 ($2)</span>', # only translate this message to other languages if you have to change it
+'listgrouprights-right-revoked'        => '<span class="listgrouprights-revoked">$1 ($2)</span>', # only translate this message to other languages if you have to change it
+'listgrouprights-addgroup'             => 'Add {{PLURAL:$2|group|groups}}: $1',
+'listgrouprights-removegroup'          => 'Remove {{PLURAL:$2|group|groups}}: $1',
+'listgrouprights-addgroup-all'         => 'Add all groups',
+'listgrouprights-removegroup-all'      => 'Remove all groups',
+'listgrouprights-addgroup-self'        => 'Add {{PLURAL:$2|group|groups}} to own account: $1',
+'listgrouprights-removegroup-self'     => 'Remove {{PLURAL:$2|group|groups}} from own account: $1',
+'listgrouprights-addgroup-self-all'    => 'Add all groups to own account',
+'listgrouprights-removegroup-self-all' => 'Remove all groups from own account',
 
 # E-mail user
 'mailnologin'      => 'No send address',
@@ -2907,8 +2950,8 @@ In the latter case you can also use a link, for example [[{{#Special:Export}}/{{
 # Namespace 8 related
 'allmessages'               => 'System messages',
 'allmessagesname'           => 'Name',
-'allmessagesdefault'        => 'Default text',
-'allmessagescurrent'        => 'Current text',
+'allmessagesdefault'        => 'Default message text',
+'allmessagescurrent'        => 'Current message text',
 'allmessagestext'           => 'This is a list of system messages available in the MediaWiki namespace.
 Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net translatewiki.net] if you wish to contribute to the generic MediaWiki localisation.',
 'allmessagesnotsupportedDB' => "This page cannot be used because '''\$wgUseDatabaseMessages''' has been disabled.",
@@ -3714,6 +3757,7 @@ Please confirm that you really want to recreate this page.",
 'word-separator'      => '&#32;', # only translate this message to other languages if you have to change it
 'ellipsis'            => '...', # only translate this message to other languages if you have to change it
 'percent'             => '$1%', # only translate this message to other languages if you have to change it
+'parentheses'         => '($1)', # only translate this message to other languages if you have to change it
 
 # Multipage image navigation
 'imgmultipageprev' => '← previous page',

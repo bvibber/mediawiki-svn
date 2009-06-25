@@ -113,6 +113,7 @@ $messages = array(
 'tog-hideminor'               => 'Celez mikra redaktaji de recenta chanji',
 'tog-hidepatrolled'           => 'Celez patroliita redakti en recenta chanji',
 'tog-newpageshidepatrolled'   => 'Celez patroliita pagini en la listo di nova pagino',
+'tog-extendwatchlist'         => 'Expansez surveyo-listo por montrar omna chanji, vice nur la maxim recenta',
 'tog-usenewrc'                => 'Usez augmentita Recenta chanji (JavaScript bezonesas)',
 'tog-numberheadings'          => 'Autonumerez tituli',
 'tog-showtoolbar'             => 'Montrez redaktilo (JavaScript bezonesas)',
@@ -136,11 +137,14 @@ $messages = array(
 'tog-enotifrevealaddr'        => 'Montrez mea e-posto adreso en notifiko e-posti',
 'tog-shownumberswatching'     => 'Montrez nombro di surveyanta uzanti',
 'tog-fancysig'                => 'Traktez signaturo kom wikikodo (sen automata ligilo)',
+'tog-externaleditor'          => 'Uzez extera redaktanto nespecigite (nur por experti, bezonas specala moderi ye vua komputoro)',
+'tog-forceeditsummary'        => 'Notifikez me kande skribanta vakua redakto-rezumo',
 'tog-watchlisthideown'        => 'Celez mea redaktaji de la surveyaji',
 'tog-watchlisthidebots'       => 'Celez redaktaji da roboti de la surveyaji',
 'tog-watchlisthideminor'      => 'Celez mikra redaktaji de la surveyaji',
 'tog-watchlisthidepatrolled'  => 'Celez patroliita chanji en la surveyo-listo',
 'tog-ccmeonemails'            => 'Sendez a me exemplero di e-posti quin me sendos ad altra uzanti',
+'tog-diffonly'                => 'Ne montrez pagino kontenajo sub diferi',
 'tog-showhiddencats'          => 'Montrar celita kategorii',
 'tog-norollbackdiff'          => 'Omisar difero-komparo pos retrorulo',
 
@@ -214,7 +218,13 @@ $messages = array(
 'category-file-count-limited'    => 'La sequanta {{PLURAL:$1|arkivo|$1 arkivi}} es en la aktuala kategorio.',
 'listingcontinuesabbrev'         => 'seq.',
 
-'mainpagetext' => "<big>'''MediaWiki instalesis sucese.'''</big>",
+'mainpagetext'      => "<big>'''MediaWiki instalesis sucese.'''</big>",
+'mainpagedocfooter' => "Videz la [http://meta.wikimedia.org/wiki/Help:Contents Guidilo por Uzanti] por informo pri uzar la wiki programo.
+
+== Komencar ==
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Listo di ''Configuration setting'']
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki OQQ]
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki nova versioni posto-listo]",
 
 'about'         => 'Pri',
 'article'       => 'artiklo',
@@ -234,6 +244,13 @@ $messages = array(
 'qbpageinfo'     => 'Kuntexto',
 'qbmyoptions'    => 'Mea pagini',
 'qbspecialpages' => 'Specala pagini',
+
+# Vector skin
+'vector-namespace-category'  => 'Kategorio',
+'vector-namespace-help'      => 'Helpo-pagino',
+'vector-namespace-image'     => 'Failo',
+'vector-namespace-main'      => 'Pagino',
+'vector-namespace-mediawiki' => 'Mesajo',
 
 # Metadata in edit box
 'metadata_help' => 'Metadonaji:',
@@ -350,7 +367,7 @@ Videz [[Special:Version|versiono-pagino]].',
 'nstab-user'      => 'Uzanto-pagino',
 'nstab-special'   => 'Specala pagino',
 'nstab-project'   => 'Projeto pagino',
-'nstab-image'     => 'Arkivo',
+'nstab-image'     => 'Failo',
 'nstab-mediawiki' => 'Mesajo',
 'nstab-template'  => 'Modelo',
 'nstab-help'      => 'Helpo',
@@ -620,6 +637,7 @@ Surskriburo: '''({{int:cur}})''' = diferi kun l'aktuala versiono,
 'visualcomparison'        => 'Vidala komparado',
 'wikicodecomparison'      => 'Wikitextala komparado',
 'editundo'                => 'des-facez',
+'diff-src'                => 'fonto',
 'diff-with-final'         => '&#32;e $1 $2',
 
 # Search results
@@ -674,7 +692,7 @@ Probez prefixizar vua demando kun ''all:'' por serchar omna kontenajo (inkluzant
 'mypreferences'             => 'Mea preferaji',
 'prefs-edits'               => 'Nombro di redaktaji:',
 'prefsnologin'              => 'Vu ne eniris',
-'prefsnologintext'          => 'Vu mustas <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} enirir] por establisar la preferaji.',
+'prefsnologintext'          => 'Vu mustas <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} enirir] por establisar la preferaji.',
 'changepassword'            => 'Chanjar pasovorto',
 'prefs-skin'                => 'Pelo',
 'skin-preview'              => 'Pre-videz',
@@ -700,7 +718,7 @@ Probez prefixizar vua demando kun ''all:'' por serchar omna kontenajo (inkluzant
 'contextchars'              => 'Tipi di kuntexto ye singla lineo:',
 'recentchangescount'        => 'Quanto de redakti montrota kustume en la recenta chanji, pagino-versionari e registri:',
 'savedprefs'                => 'Vua preferaji registragesis.',
-'timezonelegend'            => 'Tempala zono',
+'timezonelegend'            => 'Tempala zono:',
 'localtime'                 => 'Lokala tempo:',
 'timezoneoffset'            => 'Difero¹:',
 'servertime'                => 'Kloko en la servanto:',
@@ -809,6 +827,7 @@ Ol mustas ne havar plu kam $1 {{PLURAL:$1|litero|literi}}.',
 'recentchangeslinked-summary' => "Co esas listo di recenta chanji ad pagini ligita da specigita pagino, od pagini en specigita kategorio.
 Pagini en [[Special:Watchlist|vua surveryo-listo]] esas '''dika'''.",
 'recentchangeslinked-page'    => 'Nomo dil pagino:',
+'recentchangeslinked-to'      => 'Montrez chanji a pagini ligita a la specigita pagino vice',
 
 # Upload
 'upload'            => 'Adkargar arkivo',
@@ -847,7 +866,7 @@ Videz rezumo plu vidala en la [[Special:NewFiles|galerio di nova arkivi]].',
 'listfiles_count' => 'Versioni',
 
 # File description page
-'file-anchor-link'          => 'Arkivo',
+'file-anchor-link'          => 'Failo',
 'filehist'                  => 'Historio dil arkivo',
 'filehist-help'             => 'Kliktez sur la dato/horo por vidar arkivo quale ol aparis ye ta tempo.',
 'filehist-current'          => 'aktuala',
@@ -899,8 +918,8 @@ Videz rezumo plu vidala en la [[Special:NewFiles|galerio di nova arkivi]].',
 
 'brokenredirects'        => 'Ridirektili nekorekta',
 'brokenredirectstext'    => 'La sequanta ridirektili ligas a ne-existanta pagini:',
-'brokenredirects-edit'   => '(redaktar)',
-'brokenredirects-delete' => '(efacar)',
+'brokenredirects-edit'   => 'redaktar',
+'brokenredirects-delete' => 'efacar',
 
 'withoutinterwiki'        => 'Pagini sen linguo-ligili',
 'withoutinterwiki-legend' => 'Prefixo',

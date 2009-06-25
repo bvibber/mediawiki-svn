@@ -109,7 +109,8 @@ $magicWords = array(
 	'toc'                   => array( '0', '__ОГЛ__', '__TOC__' ),
 	'noeditsection'         => array( '0', '__БЕЗ_РЕДАКТИРОВАНИЯ_РАЗДЕЛА__', '__NOEDITSECTION__' ),
 	'noheader'              => array( '0', '__БЕЗ_ЗАГОЛОВКА__', '__NOHEADER__' ),
-	'currentmonth'          => array( '1', 'ТЕКУЩИЙ_МЕСЯЦ', 'CURRENTMONTH', 'CURRENTMONTH2' ),
+	'currentmonth'          => array( '1', 'ТЕКУЩИЙ_МЕСЯЦ', 'ТЕКУЩИЙ_МЕСЯЦ_2', 'CURRENTMONTH', 'CURRENTMONTH2' ),
+	'currentmonth1'         => array( '1', 'ТЕКУЩИЙ_МЕСЯЦ_1', 'CURRENTMONTH1' ),
 	'currentmonthname'      => array( '1', 'НАЗВАНИЕ_ТЕКУЩЕГО_МЕСЯЦА', 'CURRENTMONTHNAME' ),
 	'currentmonthnamegen'   => array( '1', 'НАЗВАНИЕ_ТЕКУЩЕГО_МЕСЯЦА_РОД', 'CURRENTMONTHNAMEGEN' ),
 	'currentmonthabbrev'    => array( '1', 'НАЗВАНИЕ_ТЕКУЩЕГО_МЕСЯЦА_АБР', 'CURRENTMONTHABBREV' ),
@@ -119,7 +120,8 @@ $magicWords = array(
 	'currentyear'           => array( '1', 'ТЕКУЩИЙ_ГОД', 'CURRENTYEAR' ),
 	'currenttime'           => array( '1', 'ТЕКУЩЕЕ_ВРЕМЯ', 'CURRENTTIME' ),
 	'currenthour'           => array( '1', 'ТЕКУЩИЙ_ЧАС', 'CURRENTHOUR' ),
-	'localmonth'            => array( '1', 'МЕСТНЫЙ_МЕСЯЦ', 'LOCALMONTH', 'LOCALMONTH2' ),
+	'localmonth'            => array( '1', 'МЕСТНЫЙ_МЕСЯЦ', 'МЕСТНЫЙ_МЕСЯЦ_2', 'LOCALMONTH', 'LOCALMONTH2' ),
+	'localmonth1'           => array( '1', 'МЕСТНЫЙ_МЕСЯЦ_1', 'LOCALMONTH1' ),
 	'localmonthname'        => array( '1', 'НАЗВАНИЕ_МЕСТНОГО_МЕСЯЦА', 'LOCALMONTHNAME' ),
 	'localmonthnamegen'     => array( '1', 'НАЗВАНИЕ_МЕСТНОГО_МЕСЯЦА_РОД', 'LOCALMONTHNAMEGEN' ),
 	'localmonthabbrev'      => array( '1', 'НАЗВАНИЕ_МЕСТНОГО_МЕСЯЦА_АБР', 'LOCALMONTHABBREV' ),
@@ -157,8 +159,8 @@ $magicWords = array(
 	'msg'                   => array( '0', 'СООБЩ:', 'MSG:' ),
 	'subst'                 => array( '0', 'ПОДСТ:', 'SUBST:' ),
 	'msgnw'                 => array( '0', 'СООБЩ_БЕЗ_ВИКИ:', 'MSGNW:' ),
-	'img_thumbnail'         => array( '1', 'мини', 'thumbnail', 'thumb' ),
-	'img_manualthumb'       => array( '1', 'мини=$1', 'thumbnail=$1', 'thumb=$1' ),
+	'img_thumbnail'         => array( '1', 'мини', 'миниатюра', 'thumbnail', 'thumb' ),
+	'img_manualthumb'       => array( '1', 'мини=$1', 'миниатюра=$1', 'thumbnail=$1', 'thumb=$1' ),
 	'img_right'             => array( '1', 'справа', 'right' ),
 	'img_left'              => array( '1', 'слева', 'left' ),
 	'img_none'              => array( '1', 'без', 'none' ),
@@ -401,6 +403,30 @@ $messages = array(
 'faq'            => 'ЧаВО',
 'faqpage'        => 'Project:ЧаВО',
 
+# Vector skin
+'vector-action-addsection'   => 'Добавить тему',
+'vector-action-delete'       => 'Удалить',
+'vector-action-move'         => 'Переименовать',
+'vector-action-protect'      => 'Защитить',
+'vector-action-undelete'     => 'Восстановить',
+'vector-action-unprotect'    => 'Снять защиту',
+'vector-namespace-category'  => 'Категория',
+'vector-namespace-help'      => 'Справочная страница',
+'vector-namespace-image'     => 'Файл',
+'vector-namespace-main'      => 'Страница',
+'vector-namespace-media'     => 'Медиа-страница',
+'vector-namespace-mediawiki' => 'Сообщение',
+'vector-namespace-project'   => 'О проекте',
+'vector-namespace-special'   => 'Служебная страница',
+'vector-namespace-talk'      => 'Обсуждение',
+'vector-namespace-template'  => 'Шаблон',
+'vector-namespace-user'      => 'Страница участника',
+'vector-view-create'         => 'Создать',
+'vector-view-edit'           => 'Править',
+'vector-view-history'        => 'Просмотр истории',
+'vector-view-view'           => 'Чтение',
+'vector-view-viewsource'     => 'Просмотр разметки',
+
 # Metadata in edit box
 'metadata_help' => 'Метаданные:',
 
@@ -420,7 +446,6 @@ $messages = array(
 'permalink'         => 'Постоянная ссылка',
 'print'             => 'Печать',
 'edit'              => 'Править',
-'view'              => 'Чтение',
 'create'            => 'Создать',
 'editthispage'      => 'Править эту страницу',
 'create-this-page'  => 'Создать эту страницу',
@@ -823,7 +848,7 @@ $2',
 '''Если это добросовестная попытка редактирования, пожалуйста, попробуйте ещё раз.
 Если не получается повторная правка, попробуйте [[Special:UserLogout|завершить сеанс]] работы и заново представиться.'''",
 'token_suffix_mismatch'            => "'''Ваша правка была отклонена, так как ваша программа неправильно обрабатывает знаки пунктуации
-в окне редактирования. Правка была отменена для предотвращени искажения текста статьи.
+в окне редактирования. Правка была отменена для предотвращения искажения текста статьи.
 Подобные проблемы могут возникать при использовании анонимизирующих веб-прокси, содержащих ошибки.'''",
 'editing'                          => 'Редактирование: $1',
 'editingsection'                   => 'Редактирование $1 (раздел)',
@@ -947,16 +972,16 @@ $3 указал следующую причину: ''$2''",
 'rev-deleted-user'            => '(имя автора стёрто)',
 'rev-deleted-event'           => '(запись удалена)',
 'rev-deleted-text-permission' => "Эта версия страницы была '''удалена'''.
-Возможно, объяснения даны в [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журнале удалений].",
+Возможно, объяснения даны в [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} журнале сокрытий].",
 'rev-deleted-text-unhide'     => "Эта версия страницы была '''удалена'''.
-Возможно, объяснения даны в [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журнале удалений].
+Возможно, объяснения даны в [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} журнале сокрытий].
 Вы можете [$1 просмотреть данную версию], так как являетесь администратором.",
 'rev-deleted-text-view'       => "Эта версия страницы была '''удалена'''.
-Вы можете просмотреть её, так как являетесь администратором. Возможно, объяснения удаления даны в [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журнале удалений].",
+Вы можете просмотреть её, так как являетесь администратором. Возможно, объяснения удаления даны в [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} журнале сокрытий].",
 'rev-deleted-no-diff'         => "Вы не можете просмотреть эту разницу версий, так как одна из версий страницы была '''удалена'''.
-Возможно, подробности можно найти в [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журнале удалений].",
+Возможно, подробности можно найти в [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} журнале сокрытий].",
 'rev-deleted-unhide-diff'     => "Одна из версий страницы была '''удалена'''.
-Возможно, подробности можно найти в [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журнале удалений].
+Возможно, подробности можно найти в [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} журнале сокрытий].
 Вы можете [$1 просмотреть данную версию], так как являетесь администратором.",
 'rev-delundel'                => 'показать/скрыть',
 'revisiondelete'              => 'Удалить / восстановить версии страницы',
@@ -1077,7 +1102,6 @@ $1",
 'diff-src'                 => 'источник',
 'diff-withdestination'     => 'с назначением $1',
 'diff-with'                => '&#32;с $1 $2',
-'diff-with-additional'     => '$1 $2',
 'diff-with-final'          => '&#32;и $1 $2',
 'diff-width'               => 'ширина',
 'diff-height'              => 'высота',
@@ -1123,7 +1147,7 @@ $1",
 
 # Search results
 'searchresults'                    => 'Результаты поиска',
-'searchresults-title'              => 'Результаты поиска «$1»',
+'searchresults-title'              => 'Поиск «$1»',
 'searchresulttext'                 => 'Для получения более подробной информации о поиске на страницах проекта, см. [[{{MediaWiki:Helppage}}|справочный раздел]].',
 'searchsubtitle'                   => 'По запросу «[[:$1]]» ([[Special:Prefixindex/$1|страницы, начинающиеся с этого названия]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|ссылающиеся на это название]])',
 'searchsubtitleinvalid'            => 'По запросу «$1»',
@@ -1200,7 +1224,7 @@ $1",
 'mypreferences'                 => 'Настройки',
 'prefs-edits'                   => 'Количество правок:',
 'prefsnologin'                  => 'Вы не представились системе',
-'prefsnologintext'              => 'Вы должны <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} представиться системе]</span>, чтобы изменять настройки участника.',
+'prefsnologintext'              => 'Вы должны <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} представиться системе]</span>, чтобы изменять настройки участника.',
 'changepassword'                => 'Изменение пароля',
 'prefs-skin'                    => 'Оформление',
 'skin-preview'                  => 'Предпросмотр',
@@ -1290,12 +1314,12 @@ $1",
 'prefs-i18n'                    => 'Интернационализация',
 'prefs-signature'               => 'Подпись',
 'prefs-dateformat'              => 'Формат даты',
-'prefs-timeoffset'              => 'Размер отставания времени',
-'prefs-advancedediting'         => 'Сильные опции',
-'prefs-advancedrc'              => 'Анальные опции',
-'prefs-advancedrendering'       => 'Сильные опции',
-'prefs-advancedsearchoptions'   => 'Сильные опции',
-'prefs-advancedwatchlist'       => 'Сильные опции',
+'prefs-timeoffset'              => 'Смещение времени',
+'prefs-advancedediting'         => 'Расширенные настройки',
+'prefs-advancedrc'              => 'Расширенные настройки',
+'prefs-advancedrendering'       => 'Расширенные настройки',
+'prefs-advancedsearchoptions'   => 'Расширенные настройки',
+'prefs-advancedwatchlist'       => 'Расширенные настройки',
 'prefs-display'                 => 'Настройки отображения',
 'prefs-diffs'                   => 'Разницы версий',
 
@@ -1678,7 +1702,7 @@ PICT # различные
 'filedelete-nofile-old'       => "Не существует архивной версии '''$1''' с указанными атрибутами.",
 'filedelete-otherreason'      => 'Другая причина:',
 'filedelete-reason-otherlist' => 'Другая причина',
-'filedelete-reason-dropdown'  => '* Распространенные причины удаления
+'filedelete-reason-dropdown'  => '* Распространённые причины удаления
 ** нарушение авторских прав
 ** файл-дубликат',
 'filedelete-edit-reasonlist'  => 'Править список причин',
@@ -1742,8 +1766,8 @@ PICT # различные
 
 'brokenredirects'        => 'Разорванные перенаправления',
 'brokenredirectstext'    => 'Следующие перенаправления указывают на несуществующие страницы:',
-'brokenredirects-edit'   => '(править)',
-'brokenredirects-delete' => '(удалить)',
+'brokenredirects-edit'   => 'править',
+'brokenredirects-delete' => 'удалить',
 
 'withoutinterwiki'         => 'Страницы без межъязыковых ссылок',
 'withoutinterwiki-summary' => 'Следующие страницы не имеют интервики-ссылок:',
@@ -1824,7 +1848,7 @@ PICT # различные
 'specialloguserlabel'  => 'Участник:',
 'speciallogtitlelabel' => 'Заголовок:',
 'log'                  => 'Журналы',
-'all-logs-page'        => 'Все открытые журналы',
+'all-logs-page'        => 'Все доступные журналы',
 'alllogstext'          => 'Общий список журналов сайта {{SITENAME}}.
 Вы можете отфильтровать результаты по типу журнала, имени участника (учитывается регистр) или затронутой странице (также учитывается регистр).',
 'logempty'             => 'Подходящие записи в журнале отсутствуют.',
@@ -1857,8 +1881,9 @@ PICT # различные
 'special-categories-sort-abc'   => 'упорядочить по алфавиту',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Удалённый вклад участника',
-'deletedcontributions-title' => 'Удалённый вклад',
+'deletedcontributions'             => 'Удалённый вклад участника',
+'deletedcontributions-title'       => 'Удалённый вклад',
+'sp-deletedcontributions-contribs' => 'вклад',
 
 # Special:LinkSearch
 'linksearch'       => 'Внешние ссылки',
@@ -1874,19 +1899,28 @@ PICT # различные
 'listusersfrom'      => 'Показать участников, начиная с:',
 'listusers-submit'   => 'Показать',
 'listusers-noresult' => 'Не найдено участников.',
+'listusers-blocked'  => '(заблокирован)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Список активных участников',
+'activeusers-count'    => '$1 {{PLURAL:$1|свежая правка|свежие правки|свежих правок}}',
+'activeusers-from'     => 'Отображение участников, начиная с:',
+'activeusers-noresult' => 'Не найдено участников.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Журнал регистрации участников',
 'newuserlogpagetext'          => 'Список недавно зарегистрировавшихся участников',
 'newuserlog-byemail'          => 'пароль отправлен по эл. почте',
 'newuserlog-create-entry'     => 'Новый участник',
-'newuserlog-create2-entry'    => 'cоздал новую учётную запись $1',
+'newuserlog-create2-entry'    => 'создал новую учётную запись $1',
 'newuserlog-autocreate-entry' => 'Учётная запись создана автоматически',
 
 # Special:ListGroupRights
 'listgrouprights'                      => 'Права групп участников',
 'listgrouprights-summary'              => 'Ниже представлен список определённых в этой вики групп участников, указаны соответствующие им права доступа.
 Возможно, существует [[{{MediaWiki:Listgrouprights-helppage}}|дополнительная информация]] об индивидуальных правах.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Предоставленные права</span>
+* <span class="listgrouprights-revoked">Отозванные права</span>',
 'listgrouprights-group'                => 'Группа',
 'listgrouprights-rights'               => 'Права',
 'listgrouprights-helppage'             => 'Help:Права групп',
@@ -2214,8 +2248,7 @@ $1',
 'ipbexpiry'                       => 'Закончится через:',
 'ipbreason'                       => 'Причина:',
 'ipbreasonotherlist'              => 'Другая причина',
-'ipbreason-dropdown'              => '
-* Стандартные причины блокировок
+'ipbreason-dropdown'              => '* Стандартные причины блокировок
 ** Вставка ложной информации
 ** Удаление содержимого страниц
 ** Спам-ссылки на внешние сайты
@@ -2418,7 +2451,7 @@ $1',
 Вы также можете использовать специальный адрес для экспорта только последней версии. Например для страницы [[{{MediaWiki:Mainpage}}]] это будет адрес [[{{#Special:Export}}/{{MediaWiki:Mainpage}}]].',
 'exportcuronly'     => 'Включать только текущую версию, без полной предыстории',
 'exportnohistory'   => "----
-'''Замечание:''' экспорт полной истории изменений страниц отключен из-за проблем с производительностью.",
+'''Замечание:''' экспорт полной истории изменений страниц отключён из-за проблем с производительностью.",
 'export-submit'     => 'Экспортировать',
 'export-addcattext' => 'Добавить страницы из категории:',
 'export-addcat'     => 'Добавить',
@@ -2577,7 +2610,7 @@ The wiki server can't provide data in a format your client can read.",
 'anonymous'        => '{{PLURAL:$1|Анонимный участник|Анонимные участники}} {{grammar:genitive|{{SITENAME}}}}',
 'siteuser'         => 'Участник {{grammar:genitive|{{SITENAME}}}} $1',
 'lastmodifiedatby' => 'Эта страница последний раз была изменена $2, $1 участником $3.',
-'othercontribs'    => 'Основано на работе $1.',
+'othercontribs'    => 'В создании также приняли участие: $1.',
 'others'           => 'другие',
 'siteusers'        => '{{PLURAL:$2|Участник|Участники}} {{grammar:genitive|{{SITENAME}}}} $1',
 'creditspage'      => 'Благодарности',
@@ -3063,7 +3096,7 @@ $1',
 # action=purge
 'confirm_purge_button' => 'OK',
 'confirm-purge-top'    => 'Очистить кеш этой страницы?',
-'confirm-purge-bottom' => 'После очистки кэша страницы будет показана её последняя версия.',
+'confirm-purge-bottom' => 'После очистки кеша страницы будет показана её последняя версия.',
 
 # Multipage image navigation
 'imgmultipageprev' => '← предыдущая страница',

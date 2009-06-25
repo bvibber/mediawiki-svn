@@ -687,9 +687,9 @@ $3-н тодорхойлсон шалтгаан нь ''$2''",
 'rev-deleted-user'            => '(хэрэглэгчийн нэр арилгагдсан байна)',
 'rev-deleted-event'           => '(логийн үйлдэл арилгагдсан байна)',
 'rev-deleted-text-permission' => 'Энэ хуудасны засвар нийтийн архиваас арилгагдсан байна.
-[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Устгалын логт] дэлгэрэнгүй мэдээлэл байж магадгүй.',
+[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Устгалын логт] дэлгэрэнгүй мэдээлэл байж магадгүй.',
 'rev-deleted-text-view'       => 'Энэ хуудасны засвар нийтийн архиваас арилгагдсан байна. Та {{SITENAME}}-д администратор учраас харах боломжтой;
-[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} устгалын логт] дэлгэрэнгүй мэдээлэл байж магадгүй.',
+[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} устгалын логт] дэлгэрэнгүй мэдээлэл байж магадгүй.',
 'rev-delundel'                => 'үзүүлэх/нуух',
 'revisiondelete'              => 'Засваруудыг устгах/сэргээх',
 'revdelete-nooldid-title'     => 'Зорьсон засвар байхгүй байна',
@@ -1205,8 +1205,8 @@ URL нь зөв болон сайт ажиллагаатай байгаа эсэ
 
 'brokenredirects'        => 'Эвдэрхий чиглүүлэгчүүд',
 'brokenredirectstext'    => 'Дараах автомат холбогч нь одоо байхгүй хуудас руу холбож байна:',
-'brokenredirects-edit'   => '(засварлах)',
-'brokenredirects-delete' => '(устгах)',
+'brokenredirects-edit'   => 'засварлах',
+'brokenredirects-delete' => 'устгах',
 
 'withoutinterwiki'         => 'Бусад хэлтэйх холбоосгүй хуудсууд',
 'withoutinterwiki-summary' => 'Дараах хуудсууд бусад хэлний хувилбаруудад холбогддоггүй:',

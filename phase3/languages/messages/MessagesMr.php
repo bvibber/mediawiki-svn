@@ -134,7 +134,7 @@ $specialPageAliases = array(
 );
 
 $magicWords = array(
-	'redirect'              => array( '0', '#पुनर्निर्देशन', '#REDIRECT' ),
+	'redirect'              => array( '0', '#पुनर्निर्देशन', '#पुर्ननिर्देशन', '#REDIRECT' ),
 	'notoc'                 => array( '0', '__अनुक्रमणिकानको__', '__NOTOC__' ),
 	'nogallery'             => array( '0', '__प्रदर्शननको__', '__NOGALLERY__' ),
 	'forcetoc'              => array( '0', '__अनुक्रमणिकाहवीच__', '__FORCETOC__' ),
@@ -196,7 +196,7 @@ $magicWords = array(
 	'img_right'             => array( '1', 'उजवे', 'right' ),
 	'img_left'              => array( '1', 'डावे', 'left' ),
 	'img_none'              => array( '1', 'कोणतेचनाही', 'नन्ना', 'none' ),
-	'img_width'             => array( '1', '$1अंश', '$1कणी', '$1पक्ष', '', '$1px' ),
+	'img_width'             => array( '1', '$1अंश', '$1कणी', '$1पक्ष', '$1px' ),
 	'img_center'            => array( '1', 'मध्यवर्ती', 'center', 'centre' ),
 	'img_framed'            => array( '1', 'चौकट', 'फ़्रेम', 'framed', 'enframed', 'frame' ),
 	'img_frameless'         => array( '1', 'विनाचौकट', 'विनाफ़्रेम', 'frameless' ),
@@ -237,7 +237,7 @@ $magicWords = array(
 	'revisiontimestamp'     => array( '1', 'आवृत्तीमुद्रा', 'आवृत्तीठसा', 'REVISIONTIMESTAMP' ),
 	'revisionuser'          => array( '1', 'आवृत्तीसदस्य', 'REVISIONUSER' ),
 	'plural'                => array( '0', 'बहुवचन:', 'PLURAL:' ),
-	'fullurl'               => array( '0', 'संपूर्णसंस्थळ', '', 'FULLURL:' ),
+	'fullurl'               => array( '0', 'संपूर्णसंस्थळ', 'FULLURL:' ),
 	'fullurle'              => array( '0', 'संपूर्णसंस्थली', 'संपूर्णसंस्थळी', 'FULLURLE:' ),
 	'raw'                   => array( '0', 'कच्चे:', 'RAW:' ),
 	'displaytitle'          => array( '1', 'शीर्षकदाखवा', 'DISPLAYTITLE' ),
@@ -250,9 +250,9 @@ $magicWords = array(
 	'currenttimestamp'      => array( '1', 'सद्यकालमुद्रा', 'CURRENTTIMESTAMP' ),
 	'localtimestamp'        => array( '1', 'स्थानिककालमुद्रा', 'LOCALTIMESTAMP' ),
 	'directionmark'         => array( '1', 'दिशाचिन्ह', 'दिशादर्शक', 'DIRECTIONMARK', 'DIRMARK' ),
-	'language'              => array( '0', '#भाषा:', '', '#LANGUAGE:' ),
+	'language'              => array( '0', '#भाषा:', '#LANGUAGE:' ),
 	'contentlanguage'       => array( '1', 'मसुदाभाषा', 'मजकुरभाषा', 'CONTENTLANGUAGE', 'CONTENTLANG' ),
-	'pagesinnamespace'      => array( '1', 'नामविश्वातीलपाने:', '', 'PAGESINNAMESPACE:', 'PAGESINNS:' ),
+	'pagesinnamespace'      => array( '1', 'नामविश्वातीलपाने:', 'PAGESINNAMESPACE:', 'PAGESINNS:' ),
 	'numberofadmins'        => array( '1', 'प्रचालकसंख्या', 'NUMBEROFADMINS' ),
 	'formatnum'             => array( '0', 'क्रमपद्धती', 'FORMATNUM' ),
 	'padleft'               => array( '0', 'डावाभरीव', 'भरीवडावा', 'PADLEFT' ),
@@ -942,9 +942,9 @@ $3ने ''$2'' कारण दिले आहे.",
 'rev-deleted-event'           => '(कार्य नोंद वगळली)',
 'rev-deleted-text-permission' => 'या पानाची आवृत्ती सार्वजनिक विदागारातून वगळण्यात आली आहे.
 
-[{{fullurl:Special:Log/delete|पान={{FULLPAGENAMEE}}}} वगळल्याच्या नोंदीत निर्देश असण्याची शक्यता आहे].',
+[{{fullurl:{{#Special:Log}}/suppress|पान={{FULLPAGENAMEE}}}} वगळल्याच्या नोंदीत निर्देश असण्याची शक्यता आहे].',
 'rev-deleted-text-view'       => 'पानाचे हे आवर्तन सार्वजनिक विदागारातून वगळण्यात आले आहे.
-{{SITENAME}}च्या प्रबंधक या नात्याने तुम्ही ते पाहू शकता; [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} वगळलेल्या नोंदीत] माहिती असण्याची शक्यता आहे .',
+{{SITENAME}}च्या प्रबंधक या नात्याने तुम्ही ते पाहू शकता; [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} वगळलेल्या नोंदीत] माहिती असण्याची शक्यता आहे .',
 'rev-delundel'                => 'दाखवा/लपवा',
 'revisiondelete'              => 'आवर्तने वगळा/पुनर्स्थापित करा',
 'revdelete-nooldid-title'     => 'अपेक्षीत आवृत्ती दिलेली नाही',
@@ -1478,8 +1478,8 @@ Input:contenttype/subtype, e.g. <tt>image/jpeg</tt>.',
 
 'brokenredirects'        => 'मोडके पुनर्निर्देशन',
 'brokenredirectstext'    => 'खालील पुनर्निर्देशने अस्तित्वात नसलेली पाने जोडतात:',
-'brokenredirects-edit'   => '(संपादा)',
-'brokenredirects-delete' => '(वगळा)',
+'brokenredirects-edit'   => 'संपादा',
+'brokenredirects-delete' => 'वगळा',
 
 'withoutinterwiki'         => 'आंतरविकि दुवे नसलेली पाने',
 'withoutinterwiki-summary' => 'खालील लेखात इतर भाषांमधील आवृत्तीला दुवे नाहीत:',

@@ -103,7 +103,8 @@ class EditPage {
 		$this->editFormTextBeforeContent =
 		$this->editFormTextAfterWarn =
 		$this->editFormTextAfterTools =
-		$this->editFormTextBottom = "";
+		$this->editFormTextBottom =
+		$this->mPreloadText = "";
 	}
 	
 	function getArticle() {
@@ -200,6 +201,11 @@ class EditPage {
 		wfProfileOut( __METHOD__ );
 		return $text;
 	}
+	
+	/** Use this method before edit() to preload some text into the edit box */
+	public function setPreloadedText( $text ) {
+		$this->mPreloadText = $text;
+	}
 
 	/**
 	 * Get the contents of a page from its title and remove includeonly tags
@@ -208,7 +214,9 @@ class EditPage {
 	 * @return string The contents of the page.
 	 */
 	protected function getPreloadedText( $preload ) {
-		if ( $preload === '' ) {
+		if ( !empty($this->mPreloadText) ) {
+			return $this->mPreloadText;
+		} elseif ( $preload === '' ) {
 			return '';
 		} else {
 			$preloadTitle = Title::newFromText( $preload );
@@ -1149,8 +1157,6 @@ class EditPage {
 
 		$sk = $wgUser->getSkin();
 
-		wfRunHooks( 'EditPage::showEditForm:initial', array( &$this ) ) ;
-
 		#need to parse the preview early so that we know which templates are used,
 		#otherwise users with "show preview after edit box" will get a blank list
 		#we parse this near the beginning so that setHeaders can do the title
@@ -1159,6 +1165,8 @@ class EditPage {
 		if ( $this->formtype == 'preview' ) {
 			$previewOutput = $this->getPreviewText();
 		}
+		
+		wfRunHooks( 'EditPage::showEditForm:initial', array( &$this ) ) ;
 
 		$this->setHeaders();
 
@@ -1291,7 +1299,7 @@ class EditPage {
 		$subject = wfMsgExt( 'subject', 'parseinline' );
 
 		$cancel = $sk->link(
-			$wgTitle->getPrefixedText(),
+			$wgTitle,
 			wfMsgExt( 'cancel', array( 'parseinline' ) ),
 			array(),
 			array(),
@@ -1312,6 +1320,8 @@ class EditPage {
 			$copywarnMsg = array( 'copyrightwarning2',
 				'[[' . wfMsgForContent( 'copyrightpage' ) . ']]' );
 		}
+		// Allow for site and per-namespace customization of contribution/copyright notice.
+		wfRunHooks( 'EditPageCopyrightWarning', array( $this->mTitle, &$copywarnMsg ) );
 
 		if ( $wgUser->getOption('showtoolbar') and !$this->isCssJsSubpage ) {
 			# prepare toolbar for edit buttons
@@ -1542,6 +1552,7 @@ END
 		$token = htmlspecialchars( $wgUser->editToken() );
 		$wgOut->addHTML( "\n<input type='hidden' value=\"$token\" name=\"wpEditToken\" />\n" );
 
+		$this->showTosSummary();
 		$this->showEditTools();
 
 		$wgOut->addHTML( <<<END
@@ -1690,6 +1701,24 @@ END
 			'"' . $liveAction . '"' . ")";
 	}
 
+	protected function showTosSummary() {
+		$msg = 'editpage-tos-summary';
+		// Give a chance for site and per-namespace customizations of
+		// terms of service summary link that might exist separately
+		// from the copyright notice.
+		//
+		// This will display between the save button and the edit tools,
+		// so should remain short!
+		wfRunHooks( 'EditPageTosSummary', array( $this->mTitle, &$msg ) );
+		$text = wfMsgForContent( $msg );
+		if( $text != '-' ) {
+			global $wgOut;
+			$wgOut->addHTML( '<div class="mw-tos-summary">' );
+			$wgOut->addWikiMsgArray( $msg, array(), array( 'content' ) );
+			$wgOut->addHTML( '</div>' );
+		}
+	}
+	
 	protected function showEditTools() {
 		global $wgOut;
 		$wgOut->addHTML( '<div class="mw-editTools">' );
@@ -1878,7 +1907,7 @@ END
 			$loginTitle,
 			wfMsgHtml( 'loginreqlink' ),
 			array(),
-			array( 'returnto' => $wgTitle->getPrefixedUrl() ),
+			array( 'returnto' => $wgTitle->getPrefixedText() ),
 			array( 'known', 'noclasses' )
 		);
 
@@ -2468,7 +2497,8 @@ END
 		global $wgUser;
 		$loglist = new LogEventsList( $wgUser->getSkin(), $out );
 		$pager = new LogPager( $loglist, array('move', 'delete'), false,
-			$this->mTitle->getPrefixedText(), '', array('log_action'=>'delete') );
+			$this->mTitle->getPrefixedText(), '', array( "log_action != 'revision'" ) );
+
 		$count = $pager->getNumRows();
 		if ( $count > 0 ) {
 			$pager->mLimit = 10;

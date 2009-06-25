@@ -154,6 +154,8 @@ $wgIgnoredMessages = array(
 	'upload-summary',
 	'newuserlogentry',
 	'wantedtemplates-summary',
+	'activeusers-summary',
+	'editpage-tos-summary',
 );
 
 /** Optional messages, which may be translated only if changed in the target language. */
@@ -332,8 +334,10 @@ $wgOptionalMessages = array(
 	'word-separator',
 	'ellipsis',
 	'percent',
+	'parentheses',
 	'autocomment-prefix',
 	'listgrouprights-right-display',
+	'listgrouprights-right-revoked',
 	'timezone-utc',
 	'whatlinkshere-backlink',
 	'recentchangeslinked-backlink',

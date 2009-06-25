@@ -355,7 +355,7 @@ Iskuday in aad [[Special:Search|karaadiso wikigan]] beyjaj laxiira oo cusub.',
 'preferences'          => 'Dooqyada',
 'mypreferences'        => 'Dooqyadeyda',
 'prefsnologin'         => 'Gudaha kuma jirtid',
-'prefsnologintext'     => 'Waa in aad <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} Gudaha ku jirtaa]</span> si aad dooqyadaada u dalbatid.',
+'prefsnologintext'     => 'Waa in aad <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} Gudaha ku jirtaa]</span> si aad dooqyadaada u dalbatid.',
 'skin-preview'         => 'Horfiirin',
 'prefs-math'           => 'Xisaab',
 'datedefault'          => "Ma'jiro dooq",
@@ -426,8 +426,8 @@ Waa in aysan ka badanin $1 {{PLURAL:$1|eray|erayo}}.',
 # Random page
 'randompage' => 'Ku nasiibso bog',
 
-'brokenredirects-edit'   => '(wax ka bedel)',
-'brokenredirects-delete' => '(tirtir)',
+'brokenredirects-edit'   => 'wax ka bedel',
+'brokenredirects-delete' => 'tirtir',
 
 # Miscellaneous special pages
 'lonelypages'       => 'Boggaga agoonta ah',

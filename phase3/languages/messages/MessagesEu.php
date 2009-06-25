@@ -272,6 +272,9 @@ $messages = array(
 'faq'            => 'Maiz egindako galderak',
 'faqpage'        => 'Project:Maiz egindako galderak',
 
+# Vector skin
+'vector-view-view' => 'Irakurri',
+
 # Metadata in edit box
 'metadata_help' => 'Metadatuak:',
 
@@ -291,7 +294,6 @@ $messages = array(
 'permalink'         => 'Lotura finkoa',
 'print'             => 'Inprimatu',
 'edit'              => 'Aldatu',
-'view'              => 'Irakurri',
 'create'            => 'Sortu',
 'editthispage'      => 'Orrialde hau aldatu',
 'create-this-page'  => 'Orrialde hau sortu',
@@ -801,11 +803,11 @@ Legenda: (orain) = oraingo bertsioarekiko ezberdintasuna,
 'rev-deleted-user'            => '(erabiltzailea ezabatu da)',
 'rev-deleted-event'           => '(log ekintza ezabatu da)',
 'rev-deleted-text-permission' => "Orrialdearen berrikuspen hau '''ezabatu''' egin da.
-Xehetasunak [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} ezabaketa erregistroan] ikus daitezke.",
+Xehetasunak [{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} ezabaketa erregistroan] ikus daitezke.",
 'rev-deleted-text-view'       => "Orrialdearen berrikuspen hau '''ezabatu''' egin da. 
-Guneko administratzaile bezala ikusteko aukera daukazu ordea; xehetasunak [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} ezabaketa erregistroan] ikus ditzakezu.",
+Guneko administratzaile bezala ikusteko aukera daukazu ordea; xehetasunak [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} ezabaketa erregistroan] ikus ditzakezu.",
 'rev-deleted-no-diff'         => "Ezin duzu ezberdintasun hau ikusi, berrikuspenetako bat '''ezabatua''' izan delako.
-Xehetasunak [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Ezabapen erregistroan] aurki ditzazkezu.",
+Xehetasunak [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Ezabapen erregistroan] aurki ditzazkezu.",
 'rev-delundel'                => 'erakutsi/ezkutatu',
 'revisiondelete'              => 'Berrikuspenak ezabatu/leheneratu',
 'revdelete-nooldid-title'     => 'Helburu berrikuspenik ez',
@@ -1012,6 +1014,9 @@ Saia zaitez zure eskeraren aurretik ''all:'' jartzen eduki guztien artean bilatz
 'powersearch-ns'                   => 'Bilatu honako izen-tartetan:',
 'powersearch-redir'                => 'Birzuzenketen zerrenda',
 'powersearch-field'                => 'Bilatu',
+'powersearch-togglelabel'          => 'Egiaztatu:',
+'powersearch-toggleall'            => 'Guztiak',
+'powersearch-togglenone'           => 'Bat ere',
 'search-external'                  => 'Kanpo bilaketa',
 'searchdisabled'                   => '{{SITENAME}}(e)n ezgaituta dago bilaketa. Dena dela, Google erabiliz ere egin dezakezu bilaketa. Kontuan izan bertan dituzten {{SITENAME}}(e)ko emaitzak zaharkituta egon daitezkeela.',
 
@@ -1028,7 +1033,7 @@ Saia zaitez zure eskeraren aurretik ''all:'' jartzen eduki guztien artean bilatz
 'mypreferences'             => 'Nire hobespenak',
 'prefs-edits'               => 'Aldaketa kopurua:',
 'prefsnologin'              => 'Saioa hasi gabe',
-'prefsnologintext'          => '<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} Izena eman] behar duzu zure hobespenak ezartzeko.',
+'prefsnologintext'          => '<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} Izena eman] behar duzu zure hobespenak ezartzeko.',
 'changepassword'            => 'Pasahitza aldatu',
 'prefs-skin'                => 'Itxura',
 'skin-preview'              => 'Aurrebista',
@@ -1433,6 +1438,7 @@ Zutabe baten goi-buruaren egin klik sailkatzeko era aldatzeko.',
 'filehist-dimensions'       => 'Neurriak',
 'filehist-filesize'         => 'Tamaina',
 'filehist-comment'          => 'Iruzkina',
+'filehist-missing'          => 'Fitxategia falta da',
 'imagelinks'                => 'Fitxategi loturak',
 'linkstoimage'              => 'Hurrengo {{PLURAL:$1|orrialdeak du|$1 orrialdeek dute}} fitxategi honetarako lotura:',
 'linkstoimage-more'         => '$1 {{PLURAL:$1|orri lotura|orri lotura}} baino gehiago daude fitxategira.
@@ -1531,8 +1537,8 @@ Ondorengo zerrendak fitxategira dauden {{PLURAL:$1|lehen lotura|lehen $1 loturak
 
 'brokenredirects'        => 'Hautsitako birzuzenketak',
 'brokenredirectstext'    => 'Jarraian zerrendatutako birzuzenketa loturak existitzen ez diren orrietara zuzenduta daude:',
-'brokenredirects-edit'   => '(aldatu)',
-'brokenredirects-delete' => '(ezabatu)',
+'brokenredirects-edit'   => 'aldatu',
+'brokenredirects-delete' => 'ezabatu',
 
 'withoutinterwiki'         => 'Hizkuntza loturarik gabeko orrialdeak',
 'withoutinterwiki-summary' => 'Orrialde hauek ez daukate beste hizkuntzetarako loturarik:',
@@ -2109,8 +2115,10 @@ Hala ere, $2-(r)en parte denez, blokeoa kendu daiteke.',
 # Move page
 'move-page'                    => '$1 mugitu',
 'move-page-legend'             => 'Orrialdea mugitu',
-'movepagetext'                 => 'Hurrengo pausoak jarraituz, artikulu edo orrialde baten izena aldatu daiteke. Izenburu zaharra, automatikoki izenburu berriari birzuzenduko zaio.
-Gogora ezazu, orrialdearen izena ez dela aldatuko, nahi duzun izena dagoeneko sortuta badago Wikipedian; birzuzenketa bat edo historiarik gabeko orrialde bat ez bada.
+'movepagetext'                 => 'Hurrengo pausoak jarraituz, artikulu edo orrialde baten izena aldatu daiteke.
+Izenburu zaharra, automatikoki izenburu berriari birzuzenduko zaio.
+Gogora ezazu, orrialdearen izena ez dela aldatuko, nahi duzun izena dagoeneko sortuta badago Wikipedian; 
+birzuzenketa bat edo historiarik gabeko orrialde bat ez bada.
 
 <b>KONTUZ!</b>
 Artikulu oso erabilia edo asko aldatzen denaren izenburua aldatzera bazoaz, mesedez, lehenbizi artikuluaren eztabaidan adierazi ezazu beste lankideen iritziak jasotzeko.',

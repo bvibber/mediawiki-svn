@@ -313,6 +313,23 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Adicionar tópico',
+'vector-action-delete'       => 'Eliminar',
+'vector-action-move'         => 'Mover',
+'vector-action-protect'      => 'Proteger',
+'vector-namespace-category'  => 'Categoria',
+'vector-namespace-image'     => 'Ficheiro',
+'vector-namespace-main'      => 'Página',
+'vector-namespace-mediawiki' => 'Mensagem',
+'vector-namespace-talk'      => 'Discussão',
+'vector-namespace-template'  => 'Predefinição',
+'vector-namespace-user'      => 'Página de utilizador',
+'vector-view-create'         => 'Criar',
+'vector-view-edit'           => 'Editar',
+'vector-view-view'           => 'Ler',
+'vector-view-viewsource'     => 'Ver fonte',
+
 # Metadata in edit box
 'metadata_help' => 'Metadados:',
 
@@ -332,7 +349,6 @@ $messages = array(
 'permalink'         => 'Ligação permanente',
 'print'             => 'Imprimir',
 'edit'              => 'Editar',
-'view'              => 'Ler',
 'create'            => 'Criar',
 'editthispage'      => 'Editar esta página',
 'create-this-page'  => 'Criar/iniciar esta página',
@@ -865,16 +881,16 @@ Tente [[Special:Search|pesquisar na wiki]] por páginas relevantes.',
 'rev-deleted-user'            => '(nome de utilizador removido)',
 'rev-deleted-event'           => '(entrada removida)',
 'rev-deleted-text-permission' => "Esta edição desta página foi '''eliminada'''.
-Poderão existir detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminação].",
+Poderão existir detalhes no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registo de supressão].",
 'rev-deleted-text-unhide'     => "Esta edição desta página foi '''eliminada'''.
-Poderão existir detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminação].
+Poderão existir detalhes no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registo de eliminação].
 Por ser um administrador você pode mesmo assim [$1 ver esta versão] se desejar prosseguir.",
 'rev-deleted-text-view'       => "Esta edição desta página foi '''eliminada'''.
-Por ser um administrador, você pode vê-la; poderão existir detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminação].",
+Por ser um administrador, você pode vê-la; poderão existir detalhes no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registo de supressão].",
 'rev-deleted-no-diff'         => "Você não pode ver estas diferenças porque uma das revisões foi '''eliminada'''.
-Poderá haver detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminações].",
+Poderá haver detalhes no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registo de supressão].",
 'rev-deleted-unhide-diff'     => "Uma das revisões destas diferenças foi '''eliminada'''.
-Poderá haver detalhes no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registo de eliminações].
+Poderá haver detalhes no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registo de supressão].
 Por ser um administrador, você pode mesmo assim [$1 ver estas diferenças], se desejar prosseguir.",
 'rev-delundel'                => 'mostrar/esconder',
 'revisiondelete'              => 'Eliminar/restaurar edições',
@@ -935,6 +951,8 @@ Você não tem acesso a ele.',
 Você não tem acesso a ele.',
 'revdelete-modify-missing'    => 'Erro ao modificar o item ID $1: está em falta na base de dados!',
 'revdelete-no-change'         => "'''Aviso:''' o item datado de $2, $1 já possui as configurações de visualização requeridas.",
+'revdelete-concurrent-change' => 'Erro ao modificar o item com data/hora $2, $1: o seu estado parece ter sido alterado por outra pessoa enquanto você tentava modificá-lo.
+Por favor, verifique os registos.',
 'revdelete-only-restricted'   => 'Não pode suprimir itens de serem visualizados por administradores sem também escolher uma das outras opções de supressão.',
 
 # Suppression log
@@ -1116,7 +1134,7 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desac
 'mypreferences'                 => 'Minhas preferências',
 'prefs-edits'                   => 'Número de edições:',
 'prefsnologin'                  => 'Não autenticado',
-'prefsnologintext'              => 'Precisa de estar <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} autenticado]</span> para definir as suas preferências.',
+'prefsnologintext'              => 'Precisa de estar <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} autenticado]</span> para definir as suas preferências.',
 'changepassword'                => 'Alterar palavra-chave',
 'prefs-skin'                    => 'Tema',
 'skin-preview'                  => 'Pré-visualizar',
@@ -1206,6 +1224,7 @@ Pode também escolher permitir que outros entrem em contacto consigo através da
 'prefs-i18n'                    => 'Internacionalização',
 'prefs-signature'               => 'Assinatura',
 'prefs-dateformat'              => 'Formato de data',
+'prefs-timeoffset'              => 'Desvio horário',
 'prefs-advancedediting'         => 'Opções avançadas',
 'prefs-advancedrc'              => 'Opções avançadas',
 'prefs-advancedrendering'       => 'Opções avançadas',
@@ -1657,8 +1676,8 @@ Uma página é considerada como de desambiguação se utilizar uma predefiniçã
 
 'brokenredirects'        => 'Redireccionamentos quebrados',
 'brokenredirectstext'    => 'Os seguintes redireccionamentos ligam para páginas inexistentes:',
-'brokenredirects-edit'   => '(editar)',
-'brokenredirects-delete' => '(eliminar)',
+'brokenredirects-edit'   => 'editar',
+'brokenredirects-delete' => 'eliminar',
 
 'withoutinterwiki'         => 'Páginas sem interwikis de idiomas',
 'withoutinterwiki-summary' => 'As seguintes páginas não possuem links para versões em outros idiomas.',
@@ -1773,8 +1792,9 @@ Veja também as [[Special:WantedCategories|categorias em falta]].',
 'special-categories-sort-abc'   => 'ordenar alfabeticamente',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Edições eliminadas',
-'deletedcontributions-title' => 'Edições eliminadas',
+'deletedcontributions'             => 'Edições eliminadas',
+'deletedcontributions-title'       => 'Edições eliminadas',
+'sp-deletedcontributions-contribs' => 'contribuições',
 
 # Special:LinkSearch
 'linksearch'       => 'Ligações externas',
@@ -1789,6 +1809,13 @@ Veja também as [[Special:WantedCategories|categorias em falta]].',
 'listusersfrom'      => 'Mostrar utilizadores começando em:',
 'listusers-submit'   => 'Exibir',
 'listusers-noresult' => 'Não foram encontrados utilizadores para a forma pesquisada.',
+'listusers-blocked'  => '({{GENDER:$1|bloqueado|bloqueada}})',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lista de utilizadore ativos',
+'activeusers-count'    => '$1 {{PLURAL:$1|edição recente|edições recentes}}',
+'activeusers-from'     => 'Mostrar utilizadores começando em:',
+'activeusers-noresult' => 'Nenhum utilizador encontrado.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Registo de criação de utilizadores',
@@ -1900,7 +1927,7 @@ wiki: $PAGEEDITOR_WIKI
 
 Não haverá mais notificações no caso de futuras alterações a não ser que visite esta página. Poderá também restaurar as bandeiras de notificação para todas as suas páginas vigiadas na sua lista de vigiados.
 
-             O seu amigável sistema de notificação da {{SITENAME}}
+             O seu amigável sistema de notificação de {{SITENAME}}
 
 --
 Para alterar as suas preferências da lista de vigiados, visite
@@ -2173,7 +2200,7 @@ Consulte a [[Special:IPBlockList|lista de IPs bloqueados]] para rever os bloquei
 'ipblocklist-submit'              => 'Pesquisar',
 'blocklistline'                   => '$1, $2 bloqueou $3 ($4)',
 'infiniteblock'                   => 'infinito',
-'expiringblock'                   => 'expira em $1 $2',
+'expiringblock'                   => 'expira em $1 às $2',
 'anononlyblock'                   => 'anón. apenas',
 'noautoblockblock'                => 'bloqueio automático desabilitado',
 'createaccountblock'              => 'criação de conta de utilizador bloqueada',
@@ -3113,7 +3140,7 @@ Entre com o nome de ficheiro sem fornecer o prefixo "{{ns:file}}:".',
 'dberr-cachederror' => 'A seguinte página é uma cópia em cache da página pedida e pode não estar atualizada.',
 
 # HTML forms
-'htmlform-invalid-input'       => 'Existem problemas com alguns do dados introduzidos',
+'htmlform-invalid-input'       => 'Existem problemas com alguns dos dados introduzidos',
 'htmlform-select-badoption'    => 'O valor que você especificou não é uma opção válida.',
 'htmlform-int-invalid'         => 'O valor que você especificou não é um inteiro.',
 'htmlform-int-toolow'          => 'O valor que você especificou está abaixo do mínimo de $1',

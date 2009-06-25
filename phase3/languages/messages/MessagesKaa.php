@@ -948,7 +948,7 @@ Barlıq mag'lıwmat tu'rin (sonın' ishinde sa'wbet betlerdi, shablonlardı h.t.
 'mypreferences'             => "Menin' sazlawlarım",
 'prefs-edits'               => "O'zgertiwler sanı:",
 'prefsnologin'              => 'Kirilmegen',
-'prefsnologintext'          => 'Sazlawların\'ızdı ornatıw ushın <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} kiriwin\'iz]</span> sha\'rt.',
+'prefsnologintext'          => 'Sazlawların\'ızdı ornatıw ushın <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} kiriwin\'iz]</span> sha\'rt.',
 'changepassword'            => "Paroldi o'zgertiw",
 'prefs-skin'                => "Sırtqı ko'rinis",
 'skin-preview'              => 'Korip al',
@@ -1320,8 +1320,8 @@ Siz ja'ne de basqa paydalanıwshılarg'a siz benen (adresin'izdi bilmegen halda)
 
 'brokenredirects'        => "Hesh betke bag'ıtlamaytug'ın burıwshılar",
 'brokenredirectstext'    => "To'mendegi qayta bag'ıtlawshı betler ele jaratılmag'an betlerge silteydi:",
-'brokenredirects-edit'   => "(o'zgertiw)",
-'brokenredirects-delete' => "(o'shiriw)",
+'brokenredirects-edit'   => "o'zgertiw",
+'brokenredirects-delete' => "o'shiriw",
 
 'withoutinterwiki'         => "Hesh tilge siltemeytug'ın betler",
 'withoutinterwiki-summary' => "To'mendegi betler basqa tillerdegi nusqalarına siltemeydi.",

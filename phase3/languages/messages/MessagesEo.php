@@ -317,6 +317,30 @@ $messages = array(
 'faq'            => 'Oftaj demandoj',
 'faqpage'        => 'Project:Oftaj demandoj',
 
+# Vector skin
+'vector-action-addsection'   => 'Aldoni temon',
+'vector-action-delete'       => 'Forigi',
+'vector-action-move'         => 'Alinomigi',
+'vector-action-protect'      => 'Protekti',
+'vector-action-undelete'     => 'Malforigi',
+'vector-action-unprotect'    => 'Malprotekti',
+'vector-namespace-category'  => 'Kategorio',
+'vector-namespace-help'      => 'Helpopaĝo',
+'vector-namespace-image'     => 'Dosiero',
+'vector-namespace-main'      => 'Paĝo',
+'vector-namespace-media'     => 'Dosiera paĝo',
+'vector-namespace-mediawiki' => 'Mesaĝo',
+'vector-namespace-project'   => 'Projekta paĝo',
+'vector-namespace-special'   => 'Speciala paĝo',
+'vector-namespace-talk'      => 'Diskuto',
+'vector-namespace-template'  => 'Ŝablono',
+'vector-namespace-user'      => 'Uzula paĝo',
+'vector-view-create'         => 'Krei',
+'vector-view-edit'           => 'Redakti',
+'vector-view-history'        => 'Vidi historion',
+'vector-view-view'           => 'Legi',
+'vector-view-viewsource'     => 'Vidi fonton',
+
 # Metadata in edit box
 'metadata_help' => 'Metadatenoj:',
 
@@ -336,7 +360,6 @@ $messages = array(
 'permalink'         => 'Konstanta ligilo',
 'print'             => 'Printi',
 'edit'              => 'Redakti',
-'view'              => 'Legi',
 'create'            => 'Krei',
 'editthispage'      => 'Redakti la paĝon',
 'create-this-page'  => 'Krei ĉi tiun paĝon',
@@ -437,7 +460,7 @@ $messages = array(
 'nstab-media'     => 'Media paĝo',
 'nstab-special'   => 'Speciala paĝo',
 'nstab-project'   => 'Projektpaĝo',
-'nstab-image'     => 'Bildo / dosiero',
+'nstab-image'     => 'Dosiero',
 'nstab-mediawiki' => 'Sistema mesaĝo',
 'nstab-template'  => 'Ŝablono',
 'nstab-help'      => 'Helpo',
@@ -867,16 +890,16 @@ Provu [[Special:Search|serĉi en la vikio]] por rilataj novaj paĝoj.',
 'rev-deleted-user'            => '(uzanto-nomo forigita)',
 'rev-deleted-event'           => '(protokola ago forigita)',
 'rev-deleted-text-permission' => "Ĉi tiu revizio de la paĝo estis '''forigita'''.
-Eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolo de forigoj].",
+Eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri subpremado].",
 'rev-deleted-text-unhide'     => "Ĉi tiu revizio de la paĝo estis '''forigita'''.
-Eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolo de forigoj].
+Eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri subpremado].
 Kiel administranto, vi ankoraŭ povas [$1 vidi ĉi tiun revizio] se vi volas kontinui.",
 'rev-deleted-text-view'       => "Ĉi tiu revizio de la paĝo estis '''forigita'''.
-Kiel administranto vi povas rigardi ĝin; eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolo pri forigoj].",
+Kiel administranto vi povas rigardi ĝin; eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri subpremado].",
 'rev-deleted-no-diff'         => "Vi ne povas vidi ĉi tiun diferencon ĉar unu el la revizioj estis '''forigitaj'''.
-Eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolo pri forigoj].",
+Eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri subpremado].",
 'rev-deleted-unhide-diff'     => "Unu el la revizioj de ĉi tiu diferenco estis '''forigita'''.
-Eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolo de forigoj].
+Eble estas detaloj en la [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolo pri subpremado].
 Kiel administranto vi povas ankoraŭ [$1 vidi ĉi tiun diferencon] se vi volas kontinui.",
 'rev-delundel'                => 'montri/kaŝi',
 'revisiondelete'              => 'Forigi/malforigi versiojn',
@@ -1121,7 +1144,7 @@ indekso pro troŝarĝita servilo. Intertempe, vi povas serĉi per <i>guglo</i> a
 'mypreferences'                 => 'Miaj preferoj',
 'prefs-edits'                   => 'Nombro de redaktoj:',
 'prefsnologin'                  => 'Ne jam salutis!',
-'prefsnologintext'              => 'Vi devas esti <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} ensalutita]</span> por fari viajn preferojn.',
+'prefsnologintext'              => 'Vi devas esti <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ensalutita]</span> por fari viajn preferojn.',
 'changepassword'                => 'Ŝanĝi pasvorton',
 'prefs-skin'                    => 'Etoso',
 'skin-preview'                  => 'Antaŭrigardo',
@@ -1528,7 +1551,7 @@ Klaku la kolumnan titolon por ŝanĝi la direkton de ordigo.',
 'listfiles_count'       => 'Versioj',
 
 # File description page
-'file-anchor-link'          => 'Bildo / dosiero',
+'file-anchor-link'          => 'Dosiero',
 'filehist'                  => 'Historio de dosiero',
 'filehist-help'             => 'Klaku daton/tempon por rigardi la dosieron kiel ĝin ŝajnitan tiame.',
 'filehist-deleteall'        => 'forigi ĉiujn',
@@ -1652,8 +1675,8 @@ Paĝo estas traktata kiel apartigilo se ĝi uzas ŝablonon kiu estas ligita de [
 
 'brokenredirects'        => 'Rompitaj alidirektadoj',
 'brokenredirectstext'    => 'La jenaj alidirektadoj ligas al neekzistantaj paĝoj:',
-'brokenredirects-edit'   => '(redakti)',
-'brokenredirects-delete' => '(forigi)',
+'brokenredirects-edit'   => 'redakti',
+'brokenredirects-delete' => 'forigi',
 
 'withoutinterwiki'         => 'Paĝoj sen lingvaj ligiloj',
 'withoutinterwiki-summary' => 'Jenaj paĝoj ne ligas al aliaj lingvoversioj:',
@@ -1772,8 +1795,9 @@ Vidu ankaŭ [[Special:WantedCategories|Dezirataj kategorioj]].',
 'special-categories-sort-abc'   => 'ordigi laŭ alfabeto',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Forigitaj kontribuoj de uzantoj',
-'deletedcontributions-title' => 'Forigitaj kontribuoj de uzantoj',
+'deletedcontributions'             => 'Forigitaj kontribuoj de uzantoj',
+'deletedcontributions-title'       => 'Forigitaj kontribuoj de uzantoj',
+'sp-deletedcontributions-contribs' => 'kontribuoj',
 
 # Special:LinkSearch
 'linksearch'       => 'Eksteraj ligiloj',
@@ -1788,6 +1812,13 @@ Vidu ankaŭ [[Special:WantedCategories|Dezirataj kategorioj]].',
 'listusersfrom'      => 'Montri uzantojn ekde:',
 'listusers-submit'   => 'Montri',
 'listusers-noresult' => 'Neniu uzanto trovita.',
+'listusers-blocked'  => '(forbarita)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Listo de aktivaj uzantoj',
+'activeusers-count'    => '$1 {{PLURAL:$1|lasta redakto|lastaj redaktoj}}',
+'activeusers-from'     => 'Montri uzantojn ekde:',
+'activeusers-noresult' => 'Neniuj uzantoj trovitaj.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Protokolo de uzanto-kreado',
@@ -1801,6 +1832,8 @@ Vidu ankaŭ [[Special:WantedCategories|Dezirataj kategorioj]].',
 'listgrouprights'                      => 'Gruprajtoj de uzantoj',
 'listgrouprights-summary'              => 'Jen listo de uzanto-grupoj difinitaj en ĉi tiu vikio, kun ties asociaj atingrajtoj.
 Estas [[{{MediaWiki:Listgrouprights-helppage}}|aldona informo]] pri individuaj rajtoj.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Donita rajto</span>
+* <span class="listgrouprights-revoked">Maldonita rajto</span>',
 'listgrouprights-group'                => 'Grupo',
 'listgrouprights-rights'               => 'Rajtoj',
 'listgrouprights-helppage'             => 'Help:Grupaj rajtoj',

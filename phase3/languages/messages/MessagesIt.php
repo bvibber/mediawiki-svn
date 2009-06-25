@@ -16,6 +16,7 @@
  * @author Cryptex
  * @author Darth Kule
  * @author Felis
+ * @author FollowTheMedia
  * @author Gianfranco
  * @author Martorell
  * @author Marzedu
@@ -370,6 +371,30 @@ I seguenti collegamenti sono in lingua inglese:
 'faq'            => 'Domande frequenti',
 'faqpage'        => 'Project:Domande frequenti',
 
+# Vector skin
+'vector-action-addsection'   => 'Aggiungi discussione',
+'vector-action-delete'       => 'Cancella',
+'vector-action-move'         => 'Sposta',
+'vector-action-protect'      => 'Proteggi',
+'vector-action-undelete'     => 'Recupera',
+'vector-action-unprotect'    => 'Sblocca',
+'vector-namespace-category'  => 'Categoria',
+'vector-namespace-help'      => 'Aiuto',
+'vector-namespace-image'     => 'File',
+'vector-namespace-main'      => 'Pagina',
+'vector-namespace-media'     => 'File multimediale',
+'vector-namespace-mediawiki' => 'Messaggio',
+'vector-namespace-project'   => 'Pagina di servizio',
+'vector-namespace-special'   => 'Pagina speciale',
+'vector-namespace-talk'      => 'Discussione',
+'vector-namespace-template'  => 'Template',
+'vector-namespace-user'      => 'Utente',
+'vector-view-create'         => 'Crea',
+'vector-view-edit'           => 'Modifica',
+'vector-view-history'        => 'Visualizza cronologia',
+'vector-view-view'           => 'Leggi',
+'vector-view-viewsource'     => 'Visualizza sorgente',
+
 # Metadata in edit box
 'metadata_help' => 'Metadati:',
 
@@ -389,7 +414,6 @@ I seguenti collegamenti sono in lingua inglese:
 'permalink'         => 'Link permanente',
 'print'             => 'Stampa',
 'edit'              => 'Modifica',
-'view'              => 'Leggi',
 'create'            => 'Crea',
 'editthispage'      => 'Modifica questa pagina',
 'create-this-page'  => 'Crea questa pagina',
@@ -896,16 +920,16 @@ Legenda: '''({{int:cur}})''' = differenze con la versione corrente, '''({{int:la
 'rev-deleted-user'            => '(nome utente rimosso)',
 'rev-deleted-event'           => '(azione del log rimossa)',
 'rev-deleted-text-permission' => "Questa versione della pagina è stata '''cancellata'''.
-Consultare il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.",
+Consultare il [{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} log di rimozione] per ulteriori dettagli.",
 'rev-deleted-text-unhide'     => "Questa versione della pagina è stata '''cancellata'''.
-Consultare il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.
+Consultare il [{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} log di rimozione] per ulteriori dettagli.
 Agli amministratori è ancora consentito [$1 visualizzare questa versione] se necessario.",
 'rev-deleted-text-view'       => "Questa versione della pagina è stata '''cancellata'''.
-Gli amministratori possono ancora visualizzarla; consultare il [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.",
+Gli amministratori possono ancora visualizzarla; consultare il [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log di rimozione] per ulteriori dettagli.",
 'rev-deleted-no-diff'         => "Non è possibile visualizzare questo confronto tra versioni perché una delle revisioni è stata '''cancellata'''.
-Consultare il [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.",
+Consultare il [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log di rimozione] per ulteriori dettagli.",
 'rev-deleted-unhide-diff'     => "Una delle revisioni di questo confronto tra versioni è stata '''cancellata'''.
-Consultare il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.
+Consultare il [{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} log di rimozione] per ulteriori dettagli.
 Agli amministratori è ancora consentito [$1 visualizzare il confronto] se necessario.",
 'rev-delundel'                => 'mostra/nascondi',
 'revisiondelete'              => 'Cancella o ripristina versioni',
@@ -1142,7 +1166,7 @@ $1",
 'mypreferences'                 => 'preferenze',
 'prefs-edits'                   => 'Modifiche effettuate:',
 'prefsnologin'                  => 'Accesso non effettuato',
-'prefsnologintext'              => 'Per poter personalizzare le preferenze è necessario effettuare l\'<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} accesso]</span>.',
+'prefsnologintext'              => 'Per poter personalizzare le preferenze è necessario effettuare l\'<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} accesso]</span>.',
 'changepassword'                => 'Cambia password',
 'prefs-skin'                    => 'Aspetto grafico (skin)',
 'skin-preview'                  => 'anteprima',
@@ -1672,8 +1696,8 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 
 'brokenredirects'        => 'Redirect errati',
 'brokenredirectstext'    => 'I seguenti redirect puntano a pagine inesistenti:',
-'brokenredirects-edit'   => '(modifica)',
-'brokenredirects-delete' => '(cancella)',
+'brokenredirects-edit'   => 'modifica',
+'brokenredirects-delete' => 'cancella',
 
 'withoutinterwiki'         => 'Pagine prive di interwiki',
 'withoutinterwiki-summary' => 'Le pagine indicate di seguito sono prive di collegamenti alle versioni in altre lingue:',
@@ -1788,8 +1812,9 @@ Vedi anche le [[Special:WantedCategories|categorie richieste]].',
 'special-categories-sort-abc'   => 'ordina alfabeticamente',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Contributi utente cancellati',
-'deletedcontributions-title' => 'Contributi utente cancellati',
+'deletedcontributions'             => 'Contributi utente cancellati',
+'deletedcontributions-title'       => 'Contributi utente cancellati',
+'sp-deletedcontributions-contribs' => 'contributi',
 
 # Special:LinkSearch
 'linksearch'       => 'Collegamenti esterni',
@@ -1805,6 +1830,13 @@ Protocolli supportati: <tt>$1</tt>',
 'listusersfrom'      => 'Mostra gli utenti a partire da:',
 'listusers-submit'   => 'Mostra',
 'listusers-noresult' => 'Nessun utente risponde ai criteri impostati.',
+'listusers-blocked'  => '(bloccato)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lista degli utenti attivi',
+'activeusers-count'    => '$1 {{PLURAL:$1|modifica recente|modifiche recenti}}',
+'activeusers-from'     => 'Mostra gli utenti a partire da:',
+'activeusers-noresult' => 'Nessun utente risponde ai criteri impostati.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Nuovi utenti',
@@ -1818,6 +1850,8 @@ Protocolli supportati: <tt>$1</tt>',
 'listgrouprights'                      => 'Diritti del gruppo utente',
 'listgrouprights-summary'              => "Di seguito sono elencati i gruppi utente definiti per questo sito, con i diritti d'accesso loro associati.
 Potrebbero esserci [[{{MediaWiki:Listgrouprights-helppage}}|ulteriori informazioni]] sui diritti individuali.",
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Diritto garantito</span>
+* <span class="listgrouprights-revoked">Diritto revocato</span>',
 'listgrouprights-group'                => 'Gruppo',
 'listgrouprights-rights'               => 'Diritti',
 'listgrouprights-helppage'             => 'Help:Diritti del gruppo',
@@ -3020,6 +3054,10 @@ Usare l\'anteprima standard.',
 'watchlisttools-view' => 'Visualizza le modifiche pertinenti',
 'watchlisttools-edit' => 'Visualizza e modifica la lista degli osservati speciali',
 'watchlisttools-raw'  => 'Modifica la lista in formato testo',
+
+# Hebrew month names
+'hebrew-calendar-m10'     => 'Tammuz',
+'hebrew-calendar-m10-gen' => 'Tammuz',
 
 # Core parser functions
 'unknown_extension_tag' => 'Tag estensione sconosciuto: "$1"',

@@ -710,10 +710,10 @@ Ippiegazioni: (curr) = diffarènzi cu la versioni currenti, (priz) = diffarènzi
 'rev-deleted-user'            => '(innòmu utenti buggaddu)',
 'rev-deleted-event'           => '(azioni di lu rigisthru buggadda)',
 'rev-deleted-text-permission' => "Chistha versioni di la pàgina è isthadda buggadda da l'archìbi visìbiri a lu pùbbriggu.
-Cunsulthà lu [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rigisthru di canzilladdura] pa althri dettàgli.",
+Cunsulthà lu [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rigisthru di canzilladdura] pa althri dettàgli.",
 'rev-deleted-text-view'       => "Chistha versioni di la pàgina è isthadda buggadda da l'archìbi visìbiri a lu pùbbriggu.
 Lu testhu pò assé visuarizzaddu soru da l'amministhradori di lu situ.
-Cunsulthà lu [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rigisthru di canzilladdura] pa althri dettàgli.",
+Cunsulthà lu [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rigisthru di canzilladdura] pa althri dettàgli.",
 'rev-delundel'                => 'musthra/cua',
 'revisiondelete'              => 'Canzella o ricùpara versioni',
 'revdelete-nooldid-title'     => 'Versioni nò ippizzificadda',
@@ -1119,8 +1119,8 @@ Pa piazeri verifigga si vói carriggà avveru chisthu file; inogghi v'è lu rigi
 
 'brokenredirects'        => 'Rinvii ibbagliaddi',
 'brokenredirectstext'    => 'Li rinvii sighenti puntani a pàgini inesisthenti:',
-'brokenredirects-edit'   => '(mudifigga)',
-'brokenredirects-delete' => '(canzella)',
+'brokenredirects-edit'   => 'mudifigga',
+'brokenredirects-delete' => 'canzella',
 
 'withoutinterwiki'         => "Pàgini chena cullegamenti p'althri linghi",
 'withoutinterwiki-summary' => 'Li sighenti pàgini so chena cullegamenti a versioni in althri linghi (interwiki):',

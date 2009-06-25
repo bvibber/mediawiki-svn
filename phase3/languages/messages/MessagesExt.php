@@ -630,10 +630,10 @@ Preba [[Special:Search|landeandu]] entri las nuevas páhinas de la güiqui.',
 'rev-deleted-user'            => '(nombri d´usuáriu esborrau)',
 'rev-deleted-event'           => '(entrá esborrá)',
 'rev-deleted-text-permission' => "La revisión desta páhina á siu esborrá.
-Es posibri qu'aiga detallis nel [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rustrihu d'esborrau].",
+Es posibri qu'aiga detallis nel [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rustrihu d'esborrau].",
 'rev-deleted-text-view'       => "Esta revisión de la páhina á siu esborrá enus archivus púbricus.
 Cumu alministraol d'esti güiqui, t'es posibri vela;
-puei bel detallis nel [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rustrihu d'esborrau].",
+puei bel detallis nel [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rustrihu d'esborrau].",
 'rev-delundel'                => 'muestral/açonchal',
 'revisiondelete'              => 'Esborral/arrecuperal revisionis',
 'revdelete-nooldid-title'     => 'Nu ai una revisión destinu',
@@ -1112,8 +1112,8 @@ Pursa nel entítulu la coluna pa chambal el ordin.',
 
 'brokenredirects'        => 'Redirecionis eschangás',
 'brokenredirectstext'    => 'Las siguientis redirecionis atihan a artículus que nu desistin:',
-'brokenredirects-edit'   => '(eital)',
-'brokenredirects-delete' => '(esborral)',
+'brokenredirects-edit'   => 'eital',
+'brokenredirects-delete' => 'esborral',
 
 'withoutinterwiki'         => 'Páhinas sin atihus "EntelGüiqui"',
 'withoutinterwiki-summary' => 'Las siguientis páhinas nu atihan a velsionis en otras palras:',

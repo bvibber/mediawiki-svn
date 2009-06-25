@@ -179,7 +179,7 @@ $magicWords = array(
 	'img_right'             => array( '1', 'dereita', 'right' ),
 	'img_left'              => array( '1', 'esquerda', 'left' ),
 	'img_none'              => array( '1', 'ningún', 'none' ),
-	'img_center'            => array( '1', 'centro', 'centro', 'center', 'centre' ),
+	'img_center'            => array( '1', 'centro', 'center', 'centre' ),
 	'img_page'              => array( '1', 'páxina=$1', 'páxina $1', 'page=$1', 'page $1' ),
 	'img_border'            => array( '1', 'borde', 'border' ),
 	'grammar'               => array( '0', 'GRAMÁTICA:', 'GRAMMAR:' ),
@@ -348,6 +348,30 @@ $messages = array(
 'faq'            => 'PMF',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Engadir un comentario',
+'vector-action-delete'       => 'Borrar',
+'vector-action-move'         => 'Mover',
+'vector-action-protect'      => 'Protexer',
+'vector-action-undelete'     => 'Restaurar',
+'vector-action-unprotect'    => 'Desprotexer',
+'vector-namespace-category'  => 'Categoría',
+'vector-namespace-help'      => 'Páxina de axuda',
+'vector-namespace-image'     => 'Ficheiro',
+'vector-namespace-main'      => 'Páxina',
+'vector-namespace-media'     => 'Páxina de multimedia',
+'vector-namespace-mediawiki' => 'Mensaxe',
+'vector-namespace-project'   => 'Páxina do proxecto',
+'vector-namespace-special'   => 'Páxina especial',
+'vector-namespace-talk'      => 'Conversa',
+'vector-namespace-template'  => 'Modelo',
+'vector-namespace-user'      => 'Páxina de usuario',
+'vector-view-create'         => 'Crear',
+'vector-view-edit'           => 'Editar',
+'vector-view-history'        => 'Ver o historial',
+'vector-view-view'           => 'Ler',
+'vector-view-viewsource'     => 'Ver o código fonte',
+
 # Metadata in edit box
 'metadata_help' => 'Metadatos:',
 
@@ -367,7 +391,6 @@ $messages = array(
 'permalink'         => 'Ligazón permanente',
 'print'             => 'Imprimir',
 'edit'              => 'Editar',
-'view'              => 'Ler',
 'create'            => 'Crear',
 'editthispage'      => 'Editar esta páxina',
 'create-this-page'  => 'Crear esta páxina',
@@ -405,7 +428,7 @@ $messages = array(
 'protectedpage'     => 'Páxina protexida',
 'jumpto'            => 'Ir a:',
 'jumptonavigation'  => 'navegación',
-'jumptosearch'      => 'procurar',
+'jumptosearch'      => 'procura',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Acerca de {{SITENAME}}',
@@ -425,8 +448,8 @@ $messages = array(
 'policy-url'           => 'Project:Política e normas',
 'portal'               => 'Portal da comunidade',
 'portal-url'           => 'Project:Portal da comunidade',
-'privacy'              => 'Política de privacidade',
-'privacypage'          => 'Project:Política de privacidade',
+'privacy'              => 'Política de protección de datos',
+'privacypage'          => 'Project:Política de protección de datos',
 
 'badaccess'        => 'Erro de permisos',
 'badaccess-group0' => 'Non ten os permisos necesarios para executar a acción que solicitou.',
@@ -682,7 +705,7 @@ Pode ser que xa cambiase o seu contrasinal ou que solicitase un novo contrasinal
 'image_tip'       => 'Ficheiro embelecido',
 'media_sample'    => 'Exemplo.ogg',
 'media_tip'       => 'Ligazón a un ficheiro',
-'sig_tip'         => 'A súa sinatura con selo temporal',
+'sig_tip'         => 'A súa sinatura con data e hora',
 'hr_tip'          => 'Liña horizontal (úsea con moderación)',
 
 # Edit pages
@@ -715,7 +738,7 @@ A razón que deu foi \'\'$2\'\'.
 * Pretendeuse bloquear: $7
 
 Pode contactar con $1 ou con calquera outro [[{{MediaWiki:Grouppage-sysop}}|administrador]] para discutir este bloqueo.
-Non pode empregar a característica "enviarlle un correo electrónico a este usuario" a non ser que dispoña dun enderezo electrónico válido rexistrado nas súas [[Special:Preferences|preferencias de usuario]] e que o seu uso non fose bloqueado.
+Non pode empregar a característica "Enviar un correo electrónico a este usuario" a non ser que dispoña dun enderezo electrónico válido rexistrado nas súas [[Special:Preferences|preferencias de usuario]] e que o seu uso non fose bloqueado.
 O seu enderezo IP actual é $3 e o ID do bloqueo é #$5.
 Por favor, inclúa eses datos nas consultas que faga.',
 'autoblockedtext'                  => 'O seu enderezo IP foi bloqueado automaticamente porque foi empregado por outro usuario que foi bloqueado por $1.
@@ -915,17 +938,17 @@ Probe a [[Special:Search|buscar no wiki]] para atopar as páxinas relacionadas.'
 'rev-deleted-comment'         => '(comentario eliminado)',
 'rev-deleted-user'            => '(nome de usuario eliminado)',
 'rev-deleted-event'           => '(rexistro de evento eliminado)',
-'rev-deleted-text-permission' => "Esta revisión da páxina foi '''eliminada'''.
-Pode ampliar os detalles no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rexistro de borrados].",
-'rev-deleted-text-unhide'     => "Esta revisión da páxina foi '''eliminada'''.
-Pode ampliar os detalles no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rexistro de borrados].
+'rev-deleted-text-permission' => "Esta revisión da páxina foi '''borrada'''.
+Pode ampliar os detalles no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rexistro de supresións].",
+'rev-deleted-text-unhide'     => "Esta revisión da páxina foi '''borrada'''.
+Pode ampliar os detalles no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rexistro de supresións].
 Como administrador aínda podería [$1 ver esta revisión] se quixese.",
-'rev-deleted-text-view'       => "Esta revisión da páxina foi '''eliminada'''.
-Como administrador pode vela; pode ampliar os detalles no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rexistro de borrados].",
-'rev-deleted-no-diff'         => "Non pode ver esta diferenza porque unha das revisións foi '''eliminada'''.
-Pode ampliar os detalles no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rexistro de borrados].",
-'rev-deleted-unhide-diff'     => "Unha das revisións desta diferenza foi '''eliminada'''.
-Pode ampliar os detalles no [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rexistro de borrados].
+'rev-deleted-text-view'       => "Esta revisión da páxina foi '''borrada'''.
+Como administrador pode vela; pode ampliar os detalles no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rexistro de supresións].",
+'rev-deleted-no-diff'         => "Non pode ver esta diferenza porque unha das revisións foi '''borrada'''.
+Pode ampliar os detalles no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rexistro de supresións].",
+'rev-deleted-unhide-diff'     => "Unha das revisións desta diferenza foi '''borrada'''.
+Pode ampliar os detalles no [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rexistro de supresións].
 Como administrador aínda podería [$1 ver esta diferenza] se quixese.",
 'rev-delundel'                => 'mostrar/agochar',
 'revisiondelete'              => 'Borrar/restaurar revisións',
@@ -1172,7 +1195,7 @@ Note que os seus índices do contido de {{SITENAME}} poden estar desactualizados
 'mypreferences'                 => 'As miñas preferencias',
 'prefs-edits'                   => 'Número de edicións:',
 'prefsnologin'                  => 'Non está dentro do sistema',
-'prefsnologintext'              => 'Debe <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} acceder ao sistema]</span> para modificar as preferencias de usuario.',
+'prefsnologintext'              => 'Debe <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} acceder ao sistema]</span> para modificar as preferencias de usuario.',
 'changepassword'                => 'Cambiar o meu contrasinal',
 'prefs-skin'                    => 'Aparencia',
 'skin-preview'                  => 'Vista previa',
@@ -1725,8 +1748,8 @@ Cada ringleira contén ligazóns cara á primeira e segunda redireccións, e tam
 
 'brokenredirects'        => 'Redireccións rotas',
 'brokenredirectstext'    => 'As seguintes redireccións ligan cara a páxinas que non existen:',
-'brokenredirects-edit'   => '(editar)',
-'brokenredirects-delete' => '(borrar)',
+'brokenredirects-edit'   => 'editar',
+'brokenredirects-delete' => 'borrar',
 
 'withoutinterwiki'         => 'Páxinas sen ligazóns interwiki',
 'withoutinterwiki-summary' => 'As seguintes páxinas non ligan con ningunha versión noutra lingua.',
@@ -1835,13 +1858,14 @@ Pode precisar máis a vista seleccionando o tipo de rexistro, o nome do usuario 
 'categoriespagetext'            => '{{PLURAL:$1|A seguinte categoría contén|As seguintes categorías conteñen}} páxinas ou contidos multimedia.
 Aquí non se amosan as [[Special:UnusedCategories|categorías sen uso]].
 Olle tamén as [[Special:WantedCategories|categorías requiridas]].',
-'categoriesfrom'                => 'Amosar as categorías comezando por:',
+'categoriesfrom'                => 'Mostrar as categorías que comecen por:',
 'special-categories-sort-count' => 'ordenar por número',
 'special-categories-sort-abc'   => 'ordenar alfabeticamente',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Contribucións borradas do usuario',
-'deletedcontributions-title' => 'Contribucións borradas do usuario',
+'deletedcontributions'             => 'Contribucións borradas do usuario',
+'deletedcontributions-title'       => 'Contribucións borradas do usuario',
+'sp-deletedcontributions-contribs' => 'contribucións',
 
 # Special:LinkSearch
 'linksearch'       => 'Ligazóns externas',
@@ -1853,9 +1877,16 @@ Olle tamén as [[Special:WantedCategories|categorías requiridas]].',
 'linksearch-error' => 'Os comodíns só poden aparecer ao principio do nome do servidor.',
 
 # Special:ListUsers
-'listusersfrom'      => 'Mostrar os usuarios comezando por:',
+'listusersfrom'      => 'Mostrar os usuarios que comecen por:',
 'listusers-submit'   => 'Amosar',
-'listusers-noresult' => 'Non se atopou ningún usuario. Comprobe tamén as variantes con maiúsculas e minúsculas.',
+'listusers-noresult' => 'Non se atopou ningún usuario.',
+'listusers-blocked'  => '(bloqueado)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lista de usuarios activos',
+'activeusers-count'    => '$1 {{PLURAL:$1|edición recente|edicións recentes}}',
+'activeusers-from'     => 'Mostrar os usuarios que comecen por:',
+'activeusers-noresult' => 'Non se atopou ningún usuario.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Rexistro de creación de usuarios',
@@ -1869,6 +1900,8 @@ Olle tamén as [[Special:WantedCategories|categorías requiridas]].',
 'listgrouprights'                      => 'Dereitos dun usuario segundo o seu grupo',
 'listgrouprights-summary'              => 'A seguinte lista mostra os grupos de usuario definidos neste wiki, cos seus dereitos de acceso asociados.
 Se quere máis información acerca dos dereitos individuais, pode atopala [[{{MediaWiki:Listgrouprights-helppage}}|aquí]].',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Dereito concedido</span>
+* <span class="listgrouprights-revoked">Dereito revogado</span>',
 'listgrouprights-group'                => 'Grupo',
 'listgrouprights-rights'               => 'Dereitos',
 'listgrouprights-helppage'             => 'Help:Dereitos do grupo',
@@ -2000,8 +2033,7 @@ No $2 pode ver unha lista dos borrados máis recentes.',
 'deletecomment'          => 'Razón para o borrado:',
 'deleteotherreason'      => 'Outro motivo:',
 'deletereasonotherlist'  => 'Outro motivo',
-'deletereason-dropdown'  => '
-*Motivos frecuentes para borrar
+'deletereason-dropdown'  => '*Motivos frecuentes para borrar
 ** Petición do autor
 ** Violación de copyright
 ** Vandalismo',
@@ -2200,8 +2232,7 @@ Explique a razón específica do bloqueo (por exemplo, citando as páxinas concr
 'ipbexpiry'                       => 'Remate:',
 'ipbreason'                       => 'Razón:',
 'ipbreasonotherlist'              => 'Outro motivo',
-'ipbreason-dropdown'              => '
-*Mensaxes de bloqueo comúns
+'ipbreason-dropdown'              => '*Mensaxes de bloqueo comúns
 ** Inserir información falsa
 ** Eliminar o contido de páxinas
 ** Ligazóns lixo a sitios externos

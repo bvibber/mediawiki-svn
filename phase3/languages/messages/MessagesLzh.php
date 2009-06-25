@@ -216,6 +216,30 @@ $messages = array(
 'faq'            => '頻答問',
 'faqpage'        => 'Project:頻答問',
 
+# Vector skin
+'vector-action-addsection'   => '入題',
+'vector-action-delete'       => '刪',
+'vector-action-move'         => '遷',
+'vector-action-protect'      => '緘',
+'vector-action-undelete'     => '覽刪',
+'vector-action-unprotect'    => '啟',
+'vector-namespace-category'  => '類',
+'vector-namespace-help'      => '助',
+'vector-namespace-image'     => '檔',
+'vector-namespace-main'      => '文',
+'vector-namespace-media'     => '雅',
+'vector-namespace-mediawiki' => '訊',
+'vector-namespace-project'   => '策',
+'vector-namespace-special'   => '奇',
+'vector-namespace-talk'      => '議',
+'vector-namespace-template'  => '模',
+'vector-namespace-user'      => '齋',
+'vector-view-create'         => '立',
+'vector-view-edit'           => '纂',
+'vector-view-history'        => '覽史',
+'vector-view-view'           => '閱',
+'vector-view-viewsource'     => '覽源',
+
 # Metadata in edit box
 'metadata_help' => '衍意：',
 
@@ -235,7 +259,6 @@ $messages = array(
 'permalink'         => '恆鏈',
 'print'             => '印',
 'edit'              => '纂',
-'view'              => '閱',
 'create'            => '立',
 'editthispage'      => '纂',
 'create-this-page'  => '立',
@@ -677,14 +700,14 @@ $2',
 'rev-deleted-comment'         => '（此註刪矣）',
 'rev-deleted-user'            => '（此簿刪矣）',
 'rev-deleted-event'           => '（此誌刪矣）',
-'rev-deleted-text-permission' => "此審'''刪'''矣，詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}}誌刪]。",
-'rev-deleted-text-unhide'     => "此審'''刪'''矣，詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}}誌刪]。
+'rev-deleted-text-permission' => "此審'''刪'''矣，詳見[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}}誌廢]。",
+'rev-deleted-text-unhide'     => "此審'''刪'''矣，詳見[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}}誌廢]。
 有秩仍看者，[$1 看此審]也。",
-'rev-deleted-text-view'       => "此審'''刪'''矣，惟有秩可見之，詳見[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 誌刪]。",
+'rev-deleted-text-view'       => "此審'''刪'''矣，惟有秩可見之，詳見[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 誌廢]。",
 'rev-deleted-no-diff'         => "此審'''刪'''矣，無視之審也。
-詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}}誌刪]。",
+詳見[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}}誌廢]。",
 'rev-deleted-unhide-diff'     => "此審'''刪'''矣，
-詳見[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}}誌刪]。
+詳見[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}}誌廢]。
 有秩仍看者，[$1 看此審]也。",
 'rev-delundel'                => '見/藏',
 'revisiondelete'              => '刪、還審',
@@ -912,7 +935,7 @@ $1",
 'mypreferences'                 => '簿註',
 'prefs-edits'                   => '數計：',
 'prefsnologin'                  => '未登簿',
-'prefsnologintext'              => '註記須<span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} 登簿]</span>。',
+'prefsnologintext'              => '註記須<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} 登簿]</span>。',
 'changepassword'                => '易符節',
 'prefs-skin'                    => '面版',
 'skin-preview'                  => '草覽',
@@ -1066,7 +1089,7 @@ $1",
 'right-move-subpages'         => '連遷子頁',
 'right-move-rootuserpages'    => '遷根齋',
 'right-movefile'              => '遷檔',
-'right-suppressredirect'      => '遷頁時無增轉',
+'right-suppressredirect'      => '遷頁時無增源之轉',
 'right-upload'                => '貢獻品物',
 'right-reupload'              => '蓋現之品物',
 'right-reupload-own'          => '蓋同簿之品物',
@@ -1388,8 +1411,8 @@ $1",
 
 'brokenredirects'        => '斷渡',
 'brokenredirectstext'    => '頁下斷渡。',
-'brokenredirects-edit'   => '(替)',
-'brokenredirects-delete' => '(刪)',
+'brokenredirects-edit'   => '替',
+'brokenredirects-delete' => '刪',
 
 'withoutinterwiki'         => '孤語',
 'withoutinterwiki-summary' => '頁下無鏈他語。',
@@ -1495,8 +1518,9 @@ $1",
 'special-categories-sort-abc'   => '排字',
 
 # Special:DeletedContributions
-'deletedcontributions'       => '已刪之積',
-'deletedcontributions-title' => '所棄之事',
+'deletedcontributions'             => '已刪之積',
+'deletedcontributions-title'       => '所棄之事',
+'sp-deletedcontributions-contribs' => '積',
 
 # Special:LinkSearch
 'linksearch'       => '尋網連',
@@ -1512,6 +1536,13 @@ $1",
 'listusersfrom'      => '始簿：',
 'listusers-submit'   => '見',
 'listusers-noresult' => '尋無簿。',
+'listusers-blocked'  => '(已禁)',
+
+# Special:ActiveUsers
+'activeusers'          => '躍簿',
+'activeusers-count'    => '$1次近易',
+'activeusers-from'     => '示簿始於：',
+'activeusers-noresult' => '無簿矣。',
 
 # Special:Log/newusers
 'newuserlogpage'              => '誌簿',
@@ -1524,6 +1555,8 @@ $1",
 # Special:ListGroupRights
 'listgrouprights'                      => '權任一覽',
 'listgrouprights-summary'              => '此所列述，諸職所司也，各有異同。欲知其詳，請閱[[{{MediaWiki:Listgrouprights-helppage}}|此文]]。',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">權授矣</span>
+* <span class="listgrouprights-revoked">權撤矣</span>',
 'listgrouprights-group'                => '組',
 'listgrouprights-rights'               => '權',
 'listgrouprights-helppage'             => 'Help:組權',
@@ -1645,8 +1678,7 @@ $NEWPAGE
 'deletecomment'          => '刪因：',
 'deleteotherreason'      => '另／附之因：',
 'deletereasonotherlist'  => '另因',
-'deletereason-dropdown'  => '
-*常刪之因
+'deletereason-dropdown'  => '*常刪之因
 ** 作者之求
 ** 侵版權
 ** 破壞',
@@ -1824,8 +1856,7 @@ $1',
 'ipbexpiry'                       => '限期',
 'ipbreason'                       => '指證',
 'ipbreasonotherlist'              => '常犯',
-'ipbreason-dropdown'              => '
-*如下道：
+'ipbreason-dropdown'              => '*如下道：
 ** 造假報
 ** 毀文貌
 ** 廣賈告
@@ -2004,8 +2035,8 @@ $1已被禁矣。爾是否改此置？',
 # Namespace 8 related
 'allmessages'               => '官話',
 'allmessagesname'           => '話',
-'allmessagesdefault'        => '慣文',
-'allmessagescurrent'        => '今文',
+'allmessagesdefault'        => '慣話文',
+'allmessagescurrent'        => '今話文',
 'allmessagestext'           => '此列MediaWiki官話。
 如貢正宗MediaWiki本地化，[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]與[http://translatewiki.net translatewiki.net]閱之。',
 'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages'''閉庫，'''無纂也。",

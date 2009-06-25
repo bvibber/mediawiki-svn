@@ -368,6 +368,30 @@ $messages = array(
 'faq'            => 'Preguntas Frecuentes (FAQ)',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Agregar tópico',
+'vector-action-delete'       => 'Borrar',
+'vector-action-move'         => 'Mover',
+'vector-action-protect'      => 'Proteger',
+'vector-action-undelete'     => 'Restaurar',
+'vector-action-unprotect'    => 'Desproteger',
+'vector-namespace-category'  => 'Categoría',
+'vector-namespace-help'      => 'Página de ayuda',
+'vector-namespace-image'     => 'Archivo',
+'vector-namespace-main'      => 'Página',
+'vector-namespace-media'     => 'Página de medios',
+'vector-namespace-mediawiki' => 'Mensaje',
+'vector-namespace-project'   => 'Página proyecto',
+'vector-namespace-special'   => 'Página especial',
+'vector-namespace-talk'      => 'Discusión',
+'vector-namespace-template'  => 'Plantilla',
+'vector-namespace-user'      => 'Página de usuario',
+'vector-view-create'         => 'Crear',
+'vector-view-edit'           => 'Editar',
+'vector-view-history'        => 'Ver historial',
+'vector-view-view'           => 'Leer',
+'vector-view-viewsource'     => 'Ver fuente',
+
 # Metadata in edit box
 'metadata_help' => 'Metadatos:',
 
@@ -387,7 +411,6 @@ $messages = array(
 'permalink'         => 'Enlace permanente',
 'print'             => 'Imprimir',
 'edit'              => 'Editar',
-'view'              => 'Leer',
 'create'            => 'Crear',
 'editthispage'      => 'Editar esta página',
 'create-this-page'  => 'Crear esta página',
@@ -401,7 +424,7 @@ $messages = array(
 'unprotectthispage' => 'Desproteger esta página',
 'newpage'           => 'Página nueva',
 'talkpage'          => 'Discutir esta página',
-'talkpagelinktext'  => 'Discutir',
+'talkpagelinktext'  => 'Discusión',
 'specialpage'       => 'Página Especial',
 'personaltools'     => 'Herramientas personales',
 'postcomment'       => 'Nueva sección',
@@ -558,7 +581,7 @@ Consulta: $2',
 'protectedpagetext'    => 'Esta página ha sido bloqueada para evitar su edición.',
 'viewsourcetext'       => 'Puedes ver y copiar el código fuente de esta página:',
 'protectedinterface'   => 'Esta página provee texto del interfaz del software, y está protegida para evitar vandalismos.',
-'editinginterface'     => "'''Aviso:''' Estás editando una página usada para proporcionar texto de interface para el software. Los cambios en esta página afectarán a la apariencia de la interfaz para los demás usuarios. Para traducciones, por favor considere usar [http://translatewiki.net/wiki/Main_Page?setlang=en translatewiki.net], el proyecto de localización MediaWiki.",
+'editinginterface'     => "'''Aviso:''' Estás editando una página usada para proporcionar texto de interfaz para el software. Los cambios en esta página afectarán a la apariencia de la interfaz para los demás usuarios. Para traducciones, por favor considere usar [http://translatewiki.net/wiki/Main_Page?setlang=en translatewiki.net], el proyecto de localización MediaWiki.",
 'sqlhidden'            => '(Consulta SQL oculta)',
 'cascadeprotected'     => 'Esta página ha sido protegida para su edición, porque está incluida en {{PLURAL:$1|la siguiente página|las siguientes páginas}}, que están protegidas con las opción de "cascada":
 $2',
@@ -828,7 +851,7 @@ El administrador que la bloqueó dio esta explicación: $1",
 Deberías considerar si es apropiado continuar editando esta página.
 El registro de borrado y traslados para esta página están proveídos aquí por conveniencia:",
 'moveddeleted-notice'              => 'Esta página ha sido borrada.
-El registro de borrado y traslados para la página estás proveídos abajo para referencia.',
+El registro de borrados y traslados para la página están proveídos debajo como referencia.',
 'log-fulllog'                      => 'Ver todo el registro',
 'edit-hook-aborted'                => 'Edición abortada por la extensión.
 No dió explicaciones.',
@@ -902,25 +925,25 @@ Prueba a [[Special:Search|buscar en el wiki]] nuevas páginas relevantes.',
 'rev-deleted-user'            => '(nombre de usuario eliminado)',
 'rev-deleted-event'           => '(entrada borrada)',
 'rev-deleted-text-permission' => "Esta revisión de la página ha sido '''borrada'''.
-Puede haber detalles en el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de borrado].",
+Puede haber detalles en el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de supresiones].",
 'rev-deleted-text-unhide'     => "Esta revisión de página ha sido '''borrada'''.
-Puede haber detalles en el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de borrado].
+Puede haber detalles en el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de supresiones].
 Como administrador todavía puedes [$1 ver esta revisión] si deseas proceder.",
 'rev-deleted-text-view'       => "Esta revisión de la página ha sido '''borrada'''.
 Como administrador en {{SITENAME}} puedes verla;
-puede haber detalles en el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de borrado].",
+puede haber detalles en el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de supresiones].",
 'rev-deleted-no-diff'         => "No puede visualizarse este cambio debido a que las revisiones han sido '''borradas'''.
-Puede haber detalles en el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de borrado].",
+Puede haber detalles en el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de supresiones].",
 'rev-deleted-unhide-diff'     => "Una de las revisiones de este cambio ha sido '''borrada'''.
-Puede haber detalles en el [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de borrado].
+Puede haber detalles en el [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de supresiones].
 Como administrador todavía puedes [$1 ver este cambio] si deseas proceder.",
 'rev-delundel'                => 'mostrar/ocultar',
-'revisiondelete'              => 'Borrar/deshacer borrado revisiones',
+'revisiondelete'              => 'Borrar/restaurar revisiones',
 'revdelete-nooldid-title'     => 'No hay revisión destino',
 'revdelete-nooldid-text'      => 'No se ha especificado una revisión o revisiones destino sobre las que realizar esta función.',
 'revdelete-nologtype-title'   => 'ningún nombre dado',
 'revdelete-nologtype-text'    => 'usted no ha especificado ningún nombre para ejecutar esta acción.',
-'revdelete-nologid-title'     => 'ingreso inválido',
+'revdelete-nologid-title'     => 'Entrada de registro inválida',
 'revdelete-nologid-text'      => 'Usted tampoco ha especificado un objetivo de eventos para ejecutar esta función o la entrada especificada no existe.',
 'revdelete-no-file'           => 'El fichero especificado no existe.',
 'revdelete-show-file-confirm' => '¿Está seguro de querer ver la revisión borrada del archivo "<nowiki>$1</nowiki>" del $2 a las $3?',
@@ -939,8 +962,8 @@ Por favor confirme que está intentando hacer esto, que usted entiende las conse
 'revdelete-hide-name'         => 'Ocultar acción y objetivo',
 'revdelete-hide-comment'      => 'Ocultar comentario de edición',
 'revdelete-hide-user'         => 'Ocultar el nombre/IP del editor',
-'revdelete-hide-restricted'   => 'Suprimir datos de los administradores tal como al resto',
-'revdelete-suppress'          => 'Eliminar datos de los administradores tal como al resto',
+'revdelete-hide-restricted'   => 'Suprimir datos a los administradores así como al resto',
+'revdelete-suppress'          => 'Suprimir datos a los administradores así como al resto',
 'revdelete-hide-image'        => 'Ocultar el contenido del archivo',
 'revdelete-unsuppress'        => 'Eliminar restricciones de revisiones restauradas',
 'revdelete-log'               => 'Comentario de registro:',
@@ -965,10 +988,13 @@ $1",
 'revdelete-unhid'             => 'mostrar $1',
 'revdelete-log-message'       => '$1 para $2 {{PLURAL:$2|revisión|revisiones}}',
 'logdelete-log-message'       => '$1 de $2 {{PLURAL:$2|evento|eventos}}',
+'revdelete-hide-current'      => 'Error al ocultar el objeto de fecha $1 a las $2: es la revisión actual.
+No puede ser ocultada.',
+'revdelete-no-change'         => "'''Atención:''' la revisión de fecha $1 a las $2 ya tiene las restricciones de visibilidad solicitadas.",
 'revdelete-only-restricted'   => 'No puede suprimir elementos a vista de los administradores sin seleccionar asímismo una de las otras opciones de supresión.',
 
 # Suppression log
-'suppressionlog'     => 'Log de supresiones',
+'suppressionlog'     => 'Registro de supresiones',
 'suppressionlogtext' => 'Debajo está una lista de borrados y bloqueos relacionados con contenido oculto a los sysops.
 Mira [[Special:IPBlockList|el registro de bloqueos]] para una lista de bloqueos activos.',
 
@@ -1332,7 +1358,7 @@ También puede permitir a otros usuarios que contacten con usted a través de su
 'right-editprotected'         => 'Editar páginas protegidas (sin la protección «en cascada»)',
 'right-editinterface'         => 'Editar la interfaz de usuario',
 'right-editusercssjs'         => 'Editar las páginas de CSS y JS de otros usuarios',
-'right-rollback'              => 'Rápidamente deshacer las ediciones del último usuario que modificó una página particular',
+'right-rollback'              => 'Revertir rápidamente las ediciones del último usuario que modificó una página particular',
 'right-markbotedits'          => 'Marcar ediciones deshechas como ediciones de un bot',
 'right-noratelimit'           => 'No afectado por límites de frecuencia',
 'right-import'                => 'Importar páginas desde otras wikis',
@@ -1500,7 +1526,7 @@ Si todavía quiere subir su archivo, por favor, regrese a la página anterior y 
 'successfulupload'            => 'Subida con éxito',
 'uploadwarning'               => 'Advertencia de subida de archivo',
 'savefile'                    => 'Guardar archivo',
-'uploadedimage'               => '«[[$1]]» subido.',
+'uploadedimage'               => 'subió «[[$1]]»',
 'overwroteimage'              => 'subida una nueva versión de «[[$1]]»',
 'uploaddisabled'              => 'Subida de archivos deshabilitada',
 'uploaddisabledtext'          => 'No es posible subir archivos.',
@@ -1587,8 +1613,8 @@ También puedes consultar la [[Special:WhatLinksHere/$2|lista completa]].',
 Por favor mira la [$2 página de descripción del archivo] para información adicional.',
 'sharedupload-desc-here'    => 'Este archivo es de $1 y puede ser usado por otros proyectos.
 La descripción en su [$2 página de descripción del archivo] está mostrada debajo.',
-'filepage-nofile'           => 'No existe archivo con este nombre.',
-'filepage-nofile-link'      => 'No existe archivo con este nombre, pero puedes [$1 cargarlo].',
+'filepage-nofile'           => 'No existe ningún archivo con este nombre.',
+'filepage-nofile-link'      => 'No existe ningún archivo con este nombre, pero puedes [$1 subirlo].',
 'uploadnewversion-linktext' => 'Subir una nueva versión de este archivo',
 'shared-repo-from'          => 'de $1',
 'shared-repo'               => 'un repositorio compartido',
@@ -1681,8 +1707,8 @@ Cada fila contiene enlaces al segundo y tercer redirect, así como la primera l�
 
 'brokenredirects'        => 'Redirecciones incorrectas',
 'brokenredirectstext'    => 'Las siguientes redirecciones enlazan a páginas que no existen:',
-'brokenredirects-edit'   => '(editar)',
-'brokenredirects-delete' => '(borrar)',
+'brokenredirects-edit'   => 'editar',
+'brokenredirects-delete' => 'borrar',
 
 'withoutinterwiki'         => 'Páginas sin interwikis',
 'withoutinterwiki-summary' => 'Las siguientes páginas no enlazan a versiones en otros idiomas:',
@@ -1796,8 +1822,9 @@ Véase también las [[Special:WantedCategories|categorías requeridas]].',
 'special-categories-sort-abc'   => 'ordenar alfabéticamente',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Contribuciones de usuario borradas',
-'deletedcontributions-title' => 'Contribuciones de usuario borradas',
+'deletedcontributions'             => 'Contribuciones de usuario borradas',
+'deletedcontributions-title'       => 'Contribuciones de usuario borradas',
+'sp-deletedcontributions-contribs' => 'contribuciones',
 
 # Special:LinkSearch
 'linksearch'       => 'Enlaces externos',
@@ -1813,6 +1840,10 @@ Protocolos soportados: <tt>$1</tt>',
 'listusersfrom'      => 'Mostrar usuarios que empiecen por:',
 'listusers-submit'   => 'Mostrar',
 'listusers-noresult' => 'No se encontró al usuario.',
+
+# Special:ActiveUsers
+'activeusers-from'     => 'Mostrando a los usuarios empezando por:',
+'activeusers-noresult' => 'No se encontraron usuarios.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Registro de creación de usuarios',
@@ -1954,7 +1985,7 @@ consecuencias, y que lo estás haciendo de acuerdo con [[{{MediaWiki:Policy-url}
 'deletedtext'            => '"<nowiki>$1</nowiki>" ha sido borrado.
 Véase $2 para un registro de los borrados recientes.',
 'deletedarticle'         => 'borró «[[$1]]»',
-'suppressedarticle'      => 'se ha suprimido «[[$1]]»',
+'suppressedarticle'      => 'suprimió «[[$1]]»',
 'dellogpage'             => 'Registro de borrados',
 'dellogpagetext'         => 'A continuación se muestra una lista de los borrados más recientes.',
 'deletionlog'            => 'registro de borrados',
@@ -2113,10 +2144,10 @@ $1',
 'sp-contributions-newbies'       => 'Mostrar solo las contribuciones de usuarios nuevos',
 'sp-contributions-newbies-sub'   => 'Para cuentas nuevas',
 'sp-contributions-newbies-title' => 'Contribuciones de usuarios nuevos',
-'sp-contributions-blocklog'      => 'Registro de bloqueos',
-'sp-contributions-deleted'       => 'Contribuciones de usuario borradas',
+'sp-contributions-blocklog'      => 'registro de bloqueos',
+'sp-contributions-deleted'       => 'contribuciones de usuario borradas',
 'sp-contributions-logs'          => 'registros',
-'sp-contributions-talk'          => 'discutir',
+'sp-contributions-talk'          => 'discusión',
 'sp-contributions-userrights'    => 'administración de derechos de usuarios',
 'sp-contributions-search'        => 'Buscar contribuciones',
 'sp-contributions-username'      => 'Dirección IP o nombre de usuario:',
@@ -2155,8 +2186,7 @@ las páginas en particular que han sido objeto de vandalismo).',
 'ipbexpiry'                       => 'Caduca dentro de',
 'ipbreason'                       => 'Motivo:',
 'ipbreasonotherlist'              => 'Otra razón',
-'ipbreason-dropdown'              => '
-*Motivos comunes de bloqueo
+'ipbreason-dropdown'              => '*Motivos comunes de bloqueo
 ** Añadir información falsa
 ** Eliminar contenido de las páginas
 ** Publicitar enlaces a otras páginas web
@@ -2165,7 +2195,7 @@ las páginas en particular que han sido objeto de vandalismo).',
 ** Abusar de múltiples cuentas
 ** Nombre de usuario inaceptable',
 'ipbanononly'                     => 'Bloquear usuarios anónimos solamente',
-'ipbcreateaccount'                => 'Prevenir creación de cuenta de usuario.',
+'ipbcreateaccount'                => 'Prevenir la creación de cuenta de usuario',
 'ipbemailban'                     => 'Prevenir que los usuarios envien correo electrónico',
 'ipbenableautoblock'              => 'Bloquear automáticamente la dirección IP usada por este usuario, y cualquier IP posterior desde la cual intente editar',
 'ipbsubmit'                       => 'Bloquear a este usuario',
@@ -2200,10 +2230,10 @@ las páginas en particular que han sido objeto de vandalismo).',
 'ipblocklist-submit'              => 'Buscar',
 'blocklistline'                   => '$1, $2 bloquea a $3 ($4)',
 'infiniteblock'                   => 'infinito',
-'expiringblock'                   => 'expira en $1 en $2',
+'expiringblock'                   => 'expira el $1 a las $2',
 'anononlyblock'                   => 'sólo anón.',
 'noautoblockblock'                => 'bloqueo automático deshabilitado',
-'createaccountblock'              => 'creación de cuenta bloqueada.',
+'createaccountblock'              => 'creación de cuenta bloqueada',
 'emailblock'                      => 'correo electrónico bloqueado',
 'blocklist-nousertalk'            => 'no puede editar su propia página de discusión',
 'ipblocklist-empty'               => 'La lista de bloqueos está vacía.',

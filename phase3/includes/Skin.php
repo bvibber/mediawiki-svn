@@ -1643,15 +1643,22 @@ END;
 
 		if ( $wgOut->isArticleRelated() ) {
 			if ( $this->mTitle->userIsWatching() ) {
-				$t = wfMsg( 'unwatchthispage' );
-				$q = 'action=unwatch';
+				$text = wfMsg( 'unwatchthispage' );
+				$query = array( 'action' => 'unwatch' );
 				$id = 'mw-unwatch-link' . $this->mWatchLinkNum;
 			} else {
-				$t = wfMsg( 'watchthispage' );
-				$q = 'action=watch';
+				$text = wfMsg( 'watchthispage' );
+				$query = array( 'action' => 'watch' );
 				$id = 'mw-watch-link' . $this->mWatchLinkNum;
 			}
-			$s = $this->makeKnownLinkObj( $this->mTitle, $t, $q, '', '', " id=\"$id\"" );
+
+			$s = $this->link(
+				$this->mTitle,
+				$text,
+				array( 'id' => $id ),
+				$query,
+				array( 'known', 'noclasses' )
+			);
 		} else {
 			$s = wfMsg( 'notanarticle' );
 		}

@@ -468,7 +468,7 @@ var mvJsLoader = {
 	 		}
 	 		mvJsLoader.doLoad(loadSet, callback);
 	 	}else{
-	 		//safair and IE tend to execute out of order so load with dependenciy checks
+	 		//safari and IE tend to execute out of order so load with dependenciy checks
 		 	mvJsLoader.doLoad(loadChain.shift(),function(){
 		 		if(loadChain.length!=0){
 		 			mvJsLoader.doLoadDepMode(loadChain, callback);

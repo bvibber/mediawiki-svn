@@ -241,6 +241,9 @@ $messages = array(
 'faq'            => 'FAG',
 'faqpage'        => 'Project:FAG',
 
+# Vector skin
+'vector-view-view' => 'Lenn',
+
 # Metadata in edit box
 'metadata_help' => 'Metaroadennoù :',
 
@@ -260,7 +263,6 @@ $messages = array(
 'permalink'         => "Chomlec'h ar stumm-mañ",
 'print'             => 'Moullañ',
 'edit'              => 'Kemmañ',
-'view'              => 'Lenn',
 'create'            => 'Krouiñ',
 'editthispage'      => 'Kemmañ ar bajenn-mañ',
 'create-this-page'  => 'Krouiñ ar bajenn-mañ',
@@ -768,17 +770,17 @@ Implijit [[Special:Search|klaskit er wiki]] evit kavout pajennoù all a c'hallfe
 'rev-deleted-user'            => '(anv implijer diverket)',
 'rev-deleted-event'           => '(elfenn dilamet)',
 'rev-deleted-text-permission' => "'''Diverket''' eo bet ar stumm-mañ eus ar bajenn.
-Marteze e kavot munudoù war [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} roll ar pajennoù diverket].",
+Marteze e kavot munudoù war [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} roll ar pajennoù diverket].",
 'rev-deleted-text-unhide'     => "'''Diverket''' eo bet ar stumm-mañ eus ar bajenn.
-Marteze e kavot munudo war [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} marilh ar pajennoù diverket].
+Marteze e kavot munudo war [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} marilh ar pajennoù diverket].
 Evel merour e c'hallit [$1 gwelet ar stumm-se] c'hoazh mar fell deoc'h kenderc'hel.",
 'rev-deleted-text-view'       => "'''Diverket''' eo bet ar stumm-mañ eus ar bajenn.
 Dre ma'z oc'h merour e c'hallit sellet outañ;
-Marteze e kavot munudoù all war [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} marilh ar pajennoù diverket].",
+Marteze e kavot munudoù all war [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} marilh ar pajennoù diverket].",
 'rev-deleted-no-diff'         => "N'hallit ket gwelet an diff-mañ rak '''diverket''' eo bet unan eus ar stummoù.
-Marteze ez eus muioc'h a vunudoù war [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} marilh an diverkadennoù].",
+Marteze ez eus muioc'h a vunudoù war [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} marilh an diverkadennoù].",
 'rev-deleted-unhide-diff'     => "'''Diverket''' eo bet unan eus stummoù an diforc'h-mañ. 
-Marteze e kavot muoic'h a ditouroù war [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} marilh an diverkadennoù].
+Marteze e kavot muoic'h a ditouroù war [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} marilh an diverkadennoù].
 Evel merour ez oc'h aotreet da [$1 sellet ouzh an diforc'h-mañ] ma karit.",
 'rev-delundel'                => 'diskouez/kuzhat',
 'revisiondelete'              => 'Diverkañ/diziverkañ stummoù',
@@ -1018,7 +1020,7 @@ Gwiriit ne vo ket torret red istor ar bajenn gant ar c'hemm-mañ.",
 'mypreferences'                 => 'penndibaboù',
 'prefs-edits'                   => 'Niver a gemmoù :',
 'prefsnologin'                  => 'Diluget',
-'prefsnologintext'              => 'Ret eo deoc\'h bezañ <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} luget]</span> a-benn kemmañ ho tibaboù implijer.',
+'prefsnologintext'              => 'Ret eo deoc\'h bezañ <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} luget]</span> a-benn kemmañ ho tibaboù implijer.',
 'changepassword'                => 'Kemmañ ar ger-tremen',
 'prefs-skin'                    => 'Gwiskadur',
 'skin-preview'                  => 'Rakwelet',
@@ -1561,8 +1563,8 @@ Sellet e vez ouzh ur bajenn evel ouzh ur bajenn digejañ ma ra gant ur patrom li
 
 'brokenredirects'        => 'Adkasoù torret',
 'brokenredirectstext'    => "Kas a ra an adkasoù-mañ da bajennoù n'eus ket anezho.",
-'brokenredirects-edit'   => '(kemmañ)',
-'brokenredirects-delete' => '(diverkañ)',
+'brokenredirects-edit'   => 'kemmañ',
+'brokenredirects-delete' => 'diverkañ',
 
 'withoutinterwiki'         => 'Pajennoù hep liammoù yezh',
 'withoutinterwiki-summary' => "Ar pajennoù da-heul n'int ket liammet ouzh yezh all ebet :",

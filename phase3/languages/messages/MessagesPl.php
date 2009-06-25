@@ -165,6 +165,7 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( 'Wyszukiwarka linków' ),
 	'DeletedContributions'      => array( 'Usunięty wkład' ),
 	'Tags'                      => array( 'Znaczniki' ),
+	'Activeusers'               => array( 'Aktywni użytkownicy' ),
 );
 
 $magicWords = array(
@@ -226,7 +227,7 @@ $messages = array(
 'tog-underline'               => 'Podkreślenie linków',
 'tog-highlightbroken'         => 'Oznacz <a href="" class="new">tak</a> linki do brakujących stron (alternatywa – dołączany znak zapytania<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Wyrównuj tekst w akapitach do obu stron',
-'tog-hideminor'               => 'Ukryj drobne poprawki w „Ostatnich zmianach”',
+'tog-hideminor'               => 'Ukryj drobne poprawki w ostatnich zmianach',
 'tog-hidepatrolled'           => 'Ukryj sprawdzone edycje w ostatnich zmianach',
 'tog-newpageshidepatrolled'   => 'Ukryj sprawdzone strony z listy nowych stron',
 'tog-extendwatchlist'         => 'Pokaż na liście obserwowanych wszystkie a nie tylko ostatnie zmiany',
@@ -373,6 +374,30 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Dodaj temat',
+'vector-action-delete'       => 'Usuń',
+'vector-action-move'         => 'Przenieś',
+'vector-action-protect'      => 'Zabezpiecz',
+'vector-action-undelete'     => 'Odtwórz',
+'vector-action-unprotect'    => 'Odbezpiecz',
+'vector-namespace-category'  => 'Kategoria',
+'vector-namespace-help'      => 'Strona pomocy',
+'vector-namespace-image'     => 'Plik',
+'vector-namespace-main'      => 'Strona',
+'vector-namespace-media'     => 'Strona pliku',
+'vector-namespace-mediawiki' => 'Komunikat',
+'vector-namespace-project'   => 'Strona projektu',
+'vector-namespace-special'   => 'Strona specjalna',
+'vector-namespace-talk'      => 'Dyskusja',
+'vector-namespace-template'  => 'Szablon',
+'vector-namespace-user'      => 'Strona użytkownika',
+'vector-view-create'         => 'Utwórz',
+'vector-view-edit'           => 'Edytuj',
+'vector-view-history'        => 'Wyświetl historię',
+'vector-view-view'           => 'Czytaj',
+'vector-view-viewsource'     => 'Tekst źródłowy',
+
 # Metadata in edit box
 'metadata_help' => 'Metadane:',
 
@@ -392,7 +417,6 @@ $messages = array(
 'permalink'         => 'Link do tej wersji',
 'print'             => 'Drukuj',
 'edit'              => 'Edytuj',
-'view'              => 'Czytaj',
 'create'            => 'Utwórz',
 'editthispage'      => 'Edytuj tę stronę',
 'create-this-page'  => 'Utwórz tę stronę',
@@ -939,17 +963,17 @@ Spróbuj [[Special:Search|poszukać]] tej strony.',
 'rev-deleted-user'            => '(użytkownik usunięty)',
 'rev-deleted-event'           => '(wpis usunięty)',
 'rev-deleted-text-permission' => "Ta wersja strony została '''usunięta'''.
-Szczegółowe informacje mogą znajdować się w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rejestrze usunięć].",
+Szczegółowe informacje mogą znajdować się w [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rejestrze usunięć].",
 'rev-deleted-text-unhide'     => "Ta wersja strony została '''usunięta'''.
-Szczegółowe informacje mogą znajdować się w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rejestrze usunięć].
-Jako administrator {{GRAMMAR:D.lp|{{SITENAME}}}} możesz [$1 obejrzeć tę wersję].",
+Szczegółowe informacje mogą znajdować się w [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rejestrze usunięć].
+Jako administrator możesz [$1 obejrzeć tę wersję].",
 'rev-deleted-text-view'       => "Ta wersja strony została '''usunięta'''.
-Jednak jako administrator możesz ją obejrzeć. Szczegółowe informacje mogą znajdować się w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rejestrze usunięć].",
-'rev-deleted-no-diff'         => "Nie możesz zobaczyć różnic pomiędzy wersjami, ponieważ jedna z tych wersji została '''usunięta'''.
-Szczegółowe informacje mogą znajdować się w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rejestrze usunięć].",
+Jako administrator możesz ją obejrzeć. Szczegółowe informacje mogą znajdować się w [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rejestrze usunięć].",
+'rev-deleted-no-diff'         => "Nie możesz zobaczyć porównania wersji, ponieważ jedna z nich została '''usunięta'''.
+Szczegółowe informacje mogą znajdować się w [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rejestrze usunięć].",
 'rev-deleted-unhide-diff'     => "Jedna z wersji tej strony została '''usunięta'''.
-Szczegółowe informacje mogą znajdować się w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rejestrze usunięć].
-Jako administrator {{GRAMMAR:D.lp|{{SITENAME}}}} możesz [$1 obejrzeć porównanie wersji].",
+Szczegółowe informacje mogą znajdować się w [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} rejestrze usunięć].
+Jako administrator możesz [$1 obejrzeć porównanie wersji].",
 'rev-delundel'                => 'pokaż/ukryj',
 'revisiondelete'              => 'Usuń/przywróć wersje',
 'revdelete-nooldid-title'     => 'Nieprawidłowa wersja do przeprowadzenia operacji',
@@ -1187,7 +1211,7 @@ Jednak informacje o treści {{GRAMMAR:D.lp|{{SITENAME}}}} mogą być w Google ni
 'mypreferences'                 => 'Preferencje',
 'prefs-edits'                   => 'Liczba edycji',
 'prefsnologin'                  => 'Nie jesteś zalogowany',
-'prefsnologintext'              => 'Musisz się <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} zalogować]</span> przed zmianą swoich preferencji.',
+'prefsnologintext'              => 'Musisz się <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} zalogować]</span> przed zmianą swoich preferencji.',
 'changepassword'                => 'Zmiana hasła',
 'prefs-skin'                    => 'Skórka',
 'skin-preview'                  => 'podgląd',
@@ -1208,7 +1232,7 @@ Jednak informacje o treści {{GRAMMAR:D.lp|{{SITENAME}}}} mogą być w Google ni
 'saveprefs'                     => 'Zapisz',
 'resetprefs'                    => 'Cofnij niezapisane zmiany',
 'restoreprefs'                  => 'Przywróć wszystkie domyślne preferencje',
-'prefs-editing'                 => 'Edytowanie',
+'prefs-editing'                 => 'Edycja',
 'prefs-edit-boxsize'            => 'Rozmiar okna edycji.',
 'rows'                          => 'Wiersze',
 'columns'                       => 'Kolumny',
@@ -1741,8 +1765,8 @@ Strona uznawana jest za ujednoznaczniającą, jeśli zawiera szablon linkowany p
 
 'brokenredirects'        => 'Zerwane przekierowania',
 'brokenredirectstext'    => 'Poniższe przekierowania wskazują na nieistniejące strony.',
-'brokenredirects-edit'   => '(edytuj)',
-'brokenredirects-delete' => '(usuń)',
+'brokenredirects-edit'   => 'edytuj',
+'brokenredirects-delete' => 'usuń',
 
 'withoutinterwiki'         => 'Strony bez odnośników do projektów w innych językach',
 'withoutinterwiki-summary' => 'Poniższe strony nie odwołują się do innych wersji językowych.',
@@ -1856,8 +1880,9 @@ Zobacz również [[Special:WantedCategories|brakujące kategorie]].',
 'special-categories-sort-abc'   => 'sortowanie alfabetyczne',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Usunięty wkład użytkownika',
-'deletedcontributions-title' => 'Usunięty wkład użytkownika',
+'deletedcontributions'             => 'Usunięty wkład użytkownika',
+'deletedcontributions-title'       => 'Usunięty wkład użytkownika',
+'sp-deletedcontributions-contribs' => 'wkład',
 
 # Special:LinkSearch
 'linksearch'       => 'Linki zewnętrzne',
@@ -1873,6 +1898,13 @@ Obsługiwane protokoły: <tt>$1</tt>',
 'listusersfrom'      => 'Pokaż użytkowników zaczynając od',
 'listusers-submit'   => 'Pokaż',
 'listusers-noresult' => 'Nie znaleziono żadnego użytkownika.',
+'listusers-blocked'  => '({{GENDER:$1|zablokowany|zablokowana|zablokowany}})',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lista aktywnych użytkowników',
+'activeusers-count'    => 'ostatnio {{GENDER:$2|wykonał|wykonała|wykonał}} $1 {{PLURAL:$1|edycję|edycje|edycji}}',
+'activeusers-from'     => 'Pokaż użytkowników zaczynając od',
+'activeusers-noresult' => 'Nie odnaleziono żadnego użytkownika.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Nowi użytkownicy',
@@ -1886,6 +1918,8 @@ Obsługiwane protokoły: <tt>$1</tt>',
 'listgrouprights'                      => 'Uprawnienia grup użytkowników',
 'listgrouprights-summary'              => 'Poniżej znajduje się spis zdefiniowanych na tej wiki grup użytkowników, z wyszczególnieniem przydzielonych im uprawnień.
 Sprawdź stronę z [[{{MediaWiki:Listgrouprights-helppage}}|dodatkowymi informacjami]] o uprawnieniach.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Przyznane uprawnienie</span>
+* <span class="listgrouprights-revoked">Odebrane uprawnienie</span>',
 'listgrouprights-group'                => 'Grupa',
 'listgrouprights-rights'               => 'Uprawnienia',
 'listgrouprights-helppage'             => 'Help:Uprawnienia grup użytkowników',

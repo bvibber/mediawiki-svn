@@ -301,6 +301,30 @@ $messages = array(
 'faq'            => 'FAQ (pšašanja a wótegrona)',
 'faqpage'        => 'Project:FAQ (pšašanja a wótegrona)',
 
+# Vector skin
+'vector-action-addsection'   => 'Temu pśidaś',
+'vector-action-delete'       => 'Wulašowaś',
+'vector-action-move'         => 'Pśesunuś',
+'vector-action-protect'      => 'Šćitaś',
+'vector-action-undelete'     => 'Wótnowiś',
+'vector-action-unprotect'    => 'Šćit wótpóraś',
+'vector-namespace-category'  => 'Kategorija',
+'vector-namespace-help'      => 'Bok pomocy',
+'vector-namespace-image'     => 'Dataja',
+'vector-namespace-main'      => 'Bok',
+'vector-namespace-media'     => 'Medijowy bok',
+'vector-namespace-mediawiki' => 'Powěźeńka',
+'vector-namespace-project'   => 'Projektowy bok',
+'vector-namespace-special'   => 'Specialny bok',
+'vector-namespace-talk'      => 'Diskusija',
+'vector-namespace-template'  => 'Pśedłoga',
+'vector-namespace-user'      => 'Wužywarski bok',
+'vector-view-create'         => 'Napóraś',
+'vector-view-edit'           => 'Wobźěłaś',
+'vector-view-history'        => 'Historiju se woglědaś',
+'vector-view-view'           => 'Cytaś',
+'vector-view-viewsource'     => 'Žrědło se woglědaś',
+
 # Metadata in edit box
 'metadata_help' => 'Metadaty:',
 
@@ -320,7 +344,6 @@ $messages = array(
 'permalink'         => 'Wobstawny wótkaz',
 'print'             => 'Śišćaś',
 'edit'              => 'wobźěłaś',
-'view'              => 'Cytaś',
 'create'            => 'Wuźěłaś',
 'editthispage'      => 'Bok wobźěłaś',
 'create-this-page'  => 'Bok wuźěłaś',
@@ -816,16 +839,16 @@ Snaź jo se z wiki wulašował abo hynac pómjenił.
 'rev-deleted-comment'         => '(Komentar wulašowany)',
 'rev-deleted-user'            => '(Wužywarske mě wulašowane)',
 'rev-deleted-event'           => '(protokolowa akcija wulašowana)',
-'rev-deleted-text-permission' => "Toś ta wersija boka jo se '''wulašowała'''. Ewentuelne drobnostki su w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].",
+'rev-deleted-text-permission' => "Toś ta wersija boka jo se '''wulašowała'''. Ewentuelne drobnostki su w [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].",
 'rev-deleted-text-unhide'     => "Toś ta wersija boka jo se '''wulašowała'''.
-Glědaj drobnostki w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].
+Glědaj drobnostki w [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].
 Ako administrator móžoš se hyšći [$1 toś tu wersiju woglědaś], jolic coš pókšacowaś.",
 'rev-deleted-text-view'       => "Toś ta wersija boka jo se '''wulašowała'''.
-Ako administrator móžoš se ju woglědaś; glědaj ewentuelne drobnostki w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].",
+Ako administrator móžoš se ju woglědaś; glědaj ewentuelne drobnostki w [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].",
 'rev-deleted-no-diff'         => "Njamóžoš se toś ten rozdźěl woglědaś, dokulaž jadna z wersijow jo se '''wulašowała'''.
-Glědaj ewentuelne drobnostki w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].",
+Glědaj ewentuelne drobnostki w [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].",
 'rev-deleted-unhide-diff'     => "Jadna z wersijow toś togo rozdźěla jo se '''wulašowała'''.
-Glědaj ewentuelne drobnostki w [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].
+Glědaj ewentuelne drobnostki w [{{fullurl:{{#special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].
 Ako administrator móžoš hyšći se [$1 toś ten rozdźěl woglědaś], jolic coš pókšacowaś.",
 'rev-delundel'                => 'pokazaś/schowaś',
 'revisiondelete'              => 'Wersije wulašowaś/wótnowiś',
@@ -1067,7 +1090,7 @@ Móžoš bok ale teke [[:$1|sam załožyś]].",
 'mypreferences'                 => 'móje nastajenja',
 'prefs-edits'                   => 'Licba wobźěłanjow:',
 'prefsnologin'                  => 'Njejsy pśizjawjony',
-'prefsnologintext'              => 'Musyš se <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} pśizjawiś]</span>, aby mógał swóje nastajenja změniś.',
+'prefsnologintext'              => 'Musyš se <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} pśizjawiś]</span>, aby mógał swóje nastajenja změniś.',
 'changepassword'                => 'Šćitne gronidło změniś',
 'prefs-skin'                    => 'Šat',
 'skin-preview'                  => 'Pśeglěd',
@@ -1600,8 +1623,8 @@ Bok wobjadnawa se ako bok wujasnjenja zapśimjeśa, gaž wótkazujo na nju [[Med
 
 'brokenredirects'        => 'Skóńcowane dalejpósrědnjenja',
 'brokenredirectstext'    => 'Slědujuce dalejpósrědnjenja wótkazuju na njeeksistěrujuce boki:',
-'brokenredirects-edit'   => '(wobźěłaś)',
-'brokenredirects-delete' => '(wulašowaś)',
+'brokenredirects-edit'   => 'wobźěłaś',
+'brokenredirects-delete' => 'wulašowaś',
 
 'withoutinterwiki'         => 'Boki na kótarychž njejsu žedne wótkaze na druge rěcy',
 'withoutinterwiki-summary' => 'Slědujuce boki njewótkazuju na druge rěcne wersije:',
@@ -1713,8 +1736,9 @@ Bok wobjadnawa se ako bok wujasnjenja zapśimjeśa, gaž wótkazujo na nju [[Med
 'special-categories-sort-abc'   => 'pśewuběrowaś pó alfabeśe',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Wulašowane wužywarske pśinoski',
-'deletedcontributions-title' => 'Wulašowane wužywarske pśinoski',
+'deletedcontributions'             => 'Wulašowane wužywarske pśinoski',
+'deletedcontributions-title'       => 'Wulašowane wužywarske pśinoski',
+'sp-deletedcontributions-contribs' => 'pśinoski',
 
 # Special:LinkSearch
 'linksearch'       => 'Eksterne wótkaze',
@@ -1730,6 +1754,13 @@ Pódpěrane protokole: <tt>$1</tt>',
 'listusersfrom'      => 'Pokaž wužywarjow wót:',
 'listusers-submit'   => 'Pokazaś',
 'listusers-noresult' => 'Žeden wužywaŕ njejo se namakał.',
+'listusers-blocked'  => '(blokěrowany)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lisćina aktiwnych wužywarjow',
+'activeusers-count'    => '$1 {{PLURAL:$1|nowa změna|nowej změnje|nowe změny|nowych změnow}}',
+'activeusers-from'     => 'Wužywarjow zwobrazniś, zachopinajucy z:',
+'activeusers-noresult' => 'Žedne wužywarje namakane.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Protokol nowych wužywarjow',
@@ -1742,6 +1773,8 @@ Pódpěrane protokole: <tt>$1</tt>',
 # Special:ListGroupRights
 'listgrouprights'                      => 'Pšawa wužywarskeje kupki',
 'listgrouprights-summary'              => 'To jo lisćina wužywarskich kupkow definěrowanych w toś tom wikiju z jich zwězanymi pśistupnymi pšawami. Móžo [[{{MediaWiki:Listgrouprights-helppage}}|pśidatne informacije]] wó jadnotliwych pšawach daś.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Zagarantěrowane pšawo</span>
+* <span class="listgrouprights-revoked">Slědk wzete pšawo</span>',
 'listgrouprights-group'                => 'Kupka',
 'listgrouprights-rights'               => 'Pšawa',
 'listgrouprights-helppage'             => 'Help:Kupkowe pšawa',

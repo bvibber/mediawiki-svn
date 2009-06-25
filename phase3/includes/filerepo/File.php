@@ -306,9 +306,6 @@ abstract class File {
 	 * or if it is an SVG image and SVG conversion is enabled.
 	 */
 	function canRender() {
-		if( $this->isMissing() ) {
-			return false;
-		}
 		if ( !isset( $this->canRender ) ) {
 			$this->canRender = $this->getHandler() && $this->handler->canRender( $this );
 		}
@@ -1080,7 +1077,7 @@ abstract class File {
 		if ( $renderUrl ) {
 			if ( $this->repo->descriptionCacheExpiry > 0 ) {
 				wfDebug("Attempting to get the description from cache...");
-				$key = wfMemcKey( 'RemoteFileDescription', 'url', $wgContLang->getCode(), 
+				$key = $this->repo->getLocalCacheKey( 'RemoteFileDescription', 'url', $wgContLang->getCode(), 
 									$this->getName() );
 				$obj = $wgMemc->get($key);
 				if ($obj) {

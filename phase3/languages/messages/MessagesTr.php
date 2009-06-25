@@ -299,11 +299,35 @@ $messages = array(
 'faq'            => 'SSS',
 'faqpage'        => 'Project:SSS',
 
+# Vector skin
+'vector-action-addsection'   => 'Konu ekle',
+'vector-action-delete'       => 'Sil',
+'vector-action-move'         => 'Taşı',
+'vector-action-protect'      => 'Koru',
+'vector-action-undelete'     => 'Silinmeyi geri al',
+'vector-action-unprotect'    => 'Korumayı kaldır',
+'vector-namespace-category'  => 'Kategori',
+'vector-namespace-help'      => 'Yardım sayfası',
+'vector-namespace-image'     => 'Dosya',
+'vector-namespace-main'      => 'Sayfa',
+'vector-namespace-media'     => 'Ortam sayfası',
+'vector-namespace-mediawiki' => 'İleti',
+'vector-namespace-project'   => 'Proje sayfası',
+'vector-namespace-special'   => 'Özel sayfa',
+'vector-namespace-talk'      => 'Tartışma',
+'vector-namespace-template'  => 'Şablon',
+'vector-namespace-user'      => 'Kullanıcı sayfası',
+'vector-view-create'         => 'Oluştur',
+'vector-view-edit'           => 'Değiştir',
+'vector-view-history'        => 'Geçmişi görüntüle',
+'vector-view-view'           => 'Oku',
+'vector-view-viewsource'     => 'Kaynağı gör',
+
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
 
 'errorpagetitle'    => 'Hata',
-'returnto'          => '$1.',
+'returnto'          => "$1'e dön.",
 'tagline'           => '{{SITENAME}} sitesinden',
 'help'              => 'Yardım',
 'search'            => 'ara',
@@ -318,7 +342,6 @@ $messages = array(
 'permalink'         => 'Bu hâline bağlantı',
 'print'             => 'Bastır',
 'edit'              => 'değiştir',
-'view'              => 'Oku',
 'create'            => 'oluştur',
 'editthispage'      => 'Sayfayı değiştir',
 'create-this-page'  => 'Bu sayfayı oluştur',
@@ -834,17 +857,17 @@ Konu ile alakalı diğer sayfaları bulmak için [[Special:Search|vikide arama y
 'rev-deleted-user'            => '(kullanıcı adı silindi)',
 'rev-deleted-event'           => '(kayıt işlemi silindi)',
 'rev-deleted-text-permission' => "Bu sayfa revizyonu '''silinmiş'''.
-[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Silme kayıtlarında] ayrıntıları bulunabilir.",
+[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Durdurma kayıtlarında] ayrıntıları bulunabilir.",
 'rev-deleted-text-unhide'     => "Bu sayfa revizyonu '''silinmiş'''.
-[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Silme kayıtlarında] ayrıntıları bulunabilir.
-Bir yönetici olarak eğer devam ederseniz [$1 bu revizyonu görebilirsiniz].",
+[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Durdurma kayıtlarında] ayrıntıları bulunabilir.
+Bir yönetici olarak eğer devam ederseniz [$1 bu revizyonu hala görebilirsiniz].",
 'rev-deleted-text-view'       => "Bu sayfa revizyonu '''silinmiş'''.
-Bir yönetici olarak sayfayı görebilirsiniz; [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} silme kayıtlarında] ayrıntılar bulunabilir.",
+Bir yönetici olarak sayfayı görebilirsiniz; [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} durdurma kayıtlarında] ayrıntılar bulunabilir.",
 'rev-deleted-no-diff'         => "Bu sayfa değişikliğini göremezsiniz çünkü revizyonlardan biri '''silinmiş'''.
-[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Silme günlüğünde] ayrıntılar bulunabilir.",
-'rev-deleted-unhide-diff'     => "Bu sayfa değişikliğinin revizyonlarından birisi '''silinmiş'''.
-[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Silme kayıtları]nda daha ayrıntılı bilgi bulunabilir.
-Bir yönetici olarak eğer devam ederseniz [$1 bu değişikliği görebilirsiniz].",
+[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Durdurma günlüğünde] ayrıntılar bulunabilir.",
+'rev-deleted-unhide-diff'     => "Bu değişikliğinin revizyonlarından birisi '''silinmiş'''.
+[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Durdurma günlüğünde] ayrıntılar bulunabilir.
+Bir yönetici olarak eğer devam ederseniz [$1 bu değişikliği hala görebilirsiniz].",
 'rev-delundel'                => 'göster/gizle',
 'revisiondelete'              => 'Sürümleri sil/geri getir',
 'revdelete-nooldid-title'     => 'Hedef sürüm geçersiz',
@@ -1089,7 +1112,7 @@ Aramanızın başına '''all:''' önekini ekleyerek tüm içeriği aramayı (tar
 'mypreferences'                 => 'tercihlerim',
 'prefs-edits'                   => 'Değişiklik sayısı:',
 'prefsnologin'                  => 'Oturum açık değil',
-'prefsnologintext'              => 'Kullanıcı tercihlerinizi ayarlamak için <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} giriş yapmalısınız]</span>.',
+'prefsnologintext'              => 'Kullanıcı tercihlerinizi ayarlamak için <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} giriş yapmalısınız]</span>.',
 'changepassword'                => 'Parola değiştir',
 'prefs-skin'                    => 'Motif',
 'skin-preview'                  => 'Ön izleme',
@@ -1635,8 +1658,8 @@ Sıradaki liste sadece bu dosyaya bağlantı veren {{PLURAL:$1|ilk dosyayı|ilk 
 
 'brokenredirects'        => 'Varolmayan maddeye yapılmış yönlendirmeler',
 'brokenredirectstext'    => 'Aşağıdaki yönlendirmeler varolmayan sayfalara bağlantı veriyor:',
-'brokenredirects-edit'   => '(değiştir)',
-'brokenredirects-delete' => '(sil)',
+'brokenredirects-edit'   => 'değiştir',
+'brokenredirects-delete' => 'sil',
 
 'withoutinterwiki'         => 'Diğer dillere bağlantısı olmayan sayfalar',
 'withoutinterwiki-summary' => 'Aşağıda listelenen sayfalar diğer dillere bağlantı içermemektedir:',
@@ -1750,8 +1773,9 @@ Ayrıca [[Special:WantedCategories|İstenen kategoriler]]'e bakınız.",
 'special-categories-sort-abc'   => 'alfabetik olarak sırala',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Silinen kullanıcı katkıları',
-'deletedcontributions-title' => 'Silinen kullanıcı katkıları',
+'deletedcontributions'             => 'Silinen kullanıcı katkıları',
+'deletedcontributions-title'       => 'Silinen kullanıcı katkıları',
+'sp-deletedcontributions-contribs' => 'katkılar',
 
 # Special:LinkSearch
 'linksearch'       => 'Dış bağlantılar',
@@ -1767,6 +1791,13 @@ Desteklenen iletişim kuralları: <tt>$1</tt>',
 'listusersfrom'      => 'Şununla başlayan kullanıcıları görüntüle:',
 'listusers-submit'   => 'Göster',
 'listusers-noresult' => 'Kullanıcı bulunamadı.',
+'listusers-blocked'  => '(engellenmiş)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Aktif kullanıcı listesi',
+'activeusers-count'    => 'Son $1 {{PLURAL:$1|değişiklik|değişiklik}}',
+'activeusers-from'     => 'Şununla başlayan kullanıcıları görüntüle:',
+'activeusers-noresult' => 'Kullanıcı bulunamadı.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Yeni kullanıcı kayıtları',
@@ -1780,6 +1811,8 @@ Desteklenen iletişim kuralları: <tt>$1</tt>',
 'listgrouprights'                      => 'Kullanıcı grubu hakları',
 'listgrouprights-summary'              => 'Aşağıdaki bu vikide tanımlanan kullanıcı gruplarının, ilgili erişim haklarıyla birlikte listesidir.
 Bireysel haklarla ilgili [[{{MediaWiki:Listgrouprights-helppage}}|daha fazla bilgi]] olabilir.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Verilen hak</span>
+* <span class="listgrouprights-revoked">Geri alınan hak</span>',
 'listgrouprights-group'                => 'grup',
 'listgrouprights-rights'               => 'Haklar',
 'listgrouprights-helppage'             => 'Help:Grup hakları',

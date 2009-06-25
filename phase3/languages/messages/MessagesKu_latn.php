@@ -616,7 +616,7 @@ Sedemê qedexekirinê ji $3 ev e: ''$2''",
 # Revision deletion
 'rev-deleted-comment'         => '(nivîs hate jêbirin)',
 'rev-deleted-user'            => '(navî bikarhêner hate jêbirin)',
-'rev-deleted-text-permission' => 'Ev verzyona vê rûpelê hatîye jêbirin. Belkî înformasyon di [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} reşahîya jêbirinê] da hebin.',
+'rev-deleted-text-permission' => 'Ev verzyona vê rûpelê hatîye jêbirin. Belkî înformasyon di [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} reşahîya jêbirinê] da hebin.',
 'rev-delundel'                => 'nîşan bide/veşêre',
 'revisiondelete'              => 'Rêvîsyona jêbibe/dîsa çêke',
 'revdelete-legend'            => 'Guherandina qebûlkirina dîtinê',
@@ -687,7 +687,7 @@ Sedemê qedexekirinê ji $3 ev e: ''$2''",
 'mypreferences'             => 'Tercihên min',
 'prefs-edits'               => 'Hejmarê guherandinan:',
 'prefsnologin'              => 'Xwe qeyd nekir',
-'prefsnologintext'          => 'Tu gireke xwe <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} qeydbikê]</span> ji bo guherandina tercihên bikarhêneran.',
+'prefsnologintext'          => 'Tu gireke xwe <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} qeydbikê]</span> ji bo guherandina tercihên bikarhêneran.',
 'changepassword'            => 'Şîfre biguherîne',
 'prefs-skin'                => 'Pêste',
 'skin-preview'              => 'Pêşdîtin',
@@ -965,8 +965,8 @@ Zanibe, ku ev barkirina kê were qebûlkirin ya na.
 'double-redirect-fixed-move' => "cihê [[$1]] hatîye gerandin, ew niha redirect'ek berve [[$2]] ye",
 
 'brokenredirects'        => 'Ragihandinên jê bûye',
-'brokenredirects-edit'   => '(biguherîne)',
-'brokenredirects-delete' => '(jêbibe)',
+'brokenredirects-edit'   => 'biguherîne',
+'brokenredirects-delete' => 'jêbibe',
 
 'withoutinterwiki'        => 'Rûpel vê lînkên berve zimanên din',
 'withoutinterwiki-submit' => 'Nîşan bide',
@@ -1163,12 +1163,10 @@ Eger tu dixazê lîstêya xwe yê şopandinê biguherînê, li
 'deletecomment'          => 'Sedema jêbirinê',
 'deleteotherreason'      => 'Sedemekî din:',
 'deletereasonotherlist'  => 'Sedemekî din',
-'deletereason-dropdown'  => "*Sedemên jêbirinê
-** vandalîzm
+'deletereason-dropdown'  => '*Sedemên jêbirinê
 ** vala
 ** ne girek e
-** ne gotarek e
-** ceribandina IP'yekê",
+** vandalîzm',
 'delete-edit-reasonlist' => 'Sedemên jêbirinê biguherîne',
 'delete-toobig'          => 'Dîroka vê rûpelê pir mezin e, zêdetirî $1 guherandin. Jêbirina van rûpelan hatîye sînorkirin, ji bo pir şaşbûn (error) di {{SITENAME}} da çênebin.',
 'delete-warning-toobig'  => "Dîroka vê rûpelê pir mezin e, zêdetirî $1 guherandin. Jêbirina van rûpelan dikarin şaşbûnan di database'ê {{SITENAME}} da çêkin; zandibe tu çi dikê!",

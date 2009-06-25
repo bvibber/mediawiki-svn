@@ -124,7 +124,7 @@ $magicWords = array(
 	'img_right'             => array( '1', 'ימין', 'right' ),
 	'img_left'              => array( '1', 'שמאל', 'left' ),
 	'img_none'              => array( '1', 'ללא', 'none' ),
-	'img_width'             => array( '1', '$1px' ),
+	'img_width'             => array( '1', '$1 פיקסלים', '$1px' ),
 	'img_center'            => array( '1', 'מרכז', 'center', 'centre' ),
 	'img_framed'            => array( '1', 'ממוסגר', 'מסגרת', 'framed', 'enframed', 'frame' ),
 	'img_frameless'         => array( '1', 'לא ממוסגר', 'ללא מסגרת', 'frameless' ),
@@ -292,6 +292,7 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( 'חיפוש_קישורים_חיצוניים' ),
 	'DeletedContributions'      => array( 'תרומות_מחוקות' ),
 	'Tags'                      => array( 'תגיות' ),
+	'Activeusers'               => array( 'משתמשים_פעילים' ),
 );
 
 $namespaceNames = array(
@@ -470,6 +471,30 @@ $messages = array(
 'faq'            => 'שאלות ותשובות',
 'faqpage'        => 'Project:שאלות ותשובות',
 
+# Vector skin
+'vector-action-addsection'   => 'הוספת נושא',
+'vector-action-delete'       => 'מחיקה',
+'vector-action-move'         => 'העברה',
+'vector-action-protect'      => 'הגנה',
+'vector-action-undelete'     => 'ביטול מחיקה',
+'vector-action-unprotect'    => 'הסרת הגנה',
+'vector-namespace-category'  => 'קטגוריה',
+'vector-namespace-help'      => 'דף עזרה',
+'vector-namespace-image'     => 'קובץ',
+'vector-namespace-main'      => 'דף',
+'vector-namespace-media'     => 'דף מדיה',
+'vector-namespace-mediawiki' => 'הודעה',
+'vector-namespace-project'   => 'דף מיזם',
+'vector-namespace-special'   => 'דף מיוחד',
+'vector-namespace-talk'      => 'שיחה',
+'vector-namespace-template'  => 'תבנית',
+'vector-namespace-user'      => 'דף משתמש',
+'vector-view-create'         => 'יצירה',
+'vector-view-edit'           => 'עריכה',
+'vector-view-history'        => 'הצגת היסטוריה',
+'vector-view-view'           => 'קריאה',
+'vector-view-viewsource'     => 'הצגת מקור',
+
 # Metadata in edit box
 'metadata_help' => 'מטא־דטה:',
 
@@ -489,7 +514,6 @@ $messages = array(
 'permalink'         => 'קישור קבוע',
 'print'             => 'גרסה להדפסה',
 'edit'              => 'עריכה',
-'view'              => 'קריאה',
 'create'            => 'יצירה',
 'editthispage'      => 'עריכת דף זה',
 'create-this-page'  => 'יצירת דף זה',
@@ -1029,16 +1053,16 @@ $2',
 'rev-deleted-user'            => '(שם המשתמש הוסתר)',
 'rev-deleted-event'           => '(פעולת היומן הוסתרה)',
 'rev-deleted-text-permission' => "גרסת הדף הזו '''נמחקה'''.
-ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].",
+ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} יומן ההסתרות].",
 'rev-deleted-text-unhide'     => "גרסת הדף הזו '''נמחקה'''.
-ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].
+ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} יומן ההסתרות].
 כיוון שאתם בעלי הרשאות מפעיל מערכת, באפשרותכם [$1 לצפות בגרסה] אם ברצונכם להמשיך.",
 'rev-deleted-text-view'       => "גרסת הדף הזו '''נמחקה'''.
-כיוון שאתם בעלי הרשאות מפעיל מערכת, באפשרותכם לצפות בגרסה; ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].",
+כיוון שאתם בעלי הרשאות מפעיל מערכת, באפשרותכם לצפות בגרסה; ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} יומן ההסתרות].",
 'rev-deleted-no-diff'         => "אינכם יכולים לצפות בהבדלים בין הגרסאות שציינתם משום שאחת מהן '''נמחקה'''.
-ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].",
+ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} יומן ההסתרות].",
 'rev-deleted-unhide-diff'     => "אחת מהגרסאות שציינתם '''נמחקה'''.
-ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].
+ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} יומן ההסתרות].
 כיוון שאתם בעלי הרשאות מפעיל מערכת, באפשרותכם [$1 לצפות בהבדלים בין הגרסאות] אם ברצונכם להמשיך.",
 'rev-delundel'                => 'הצגה/הסתרה',
 'revisiondelete'              => 'מחיקת ושחזור גרסאות',
@@ -1281,7 +1305,7 @@ $1",
 'mypreferences'                 => 'ההעדפות שלי',
 'prefs-edits'                   => 'מספר עריכות:',
 'prefsnologin'                  => 'לא נרשמת באתר',
-'prefsnologintext'              => 'עליכם <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} להיכנס לחשבון]</span> כדי לשנות העדפות משתמש.',
+'prefsnologintext'              => 'עליכם <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} להיכנס לחשבון]</span> כדי לשנות העדפות משתמש.',
 'changepassword'                => 'שינוי סיסמה',
 'prefs-skin'                    => 'עיצוב',
 'skin-preview'                  => 'תצוגה מקדימה',
@@ -1438,7 +1462,7 @@ $1",
 'right-move-subpages'         => 'העברת דפים עם דפי המשנה שלהם',
 'right-move-rootuserpages'    => 'העברת דפי משתמש שאינם דפי משנה',
 'right-movefile'              => 'העברת קבצים',
-'right-suppressredirect'      => 'הימנעות מיצירת הפניה משם הישן בעת העברת דף',
+'right-suppressredirect'      => 'הימנעות מיצירת הפניות מדפי המקור בעת העברת דפים',
 'right-upload'                => 'העלאת קבצים',
 'right-reupload'              => 'דריסת קבצים קיימים',
 'right-reupload-own'          => 'דריסת קבצים קיימים שהועלו על ידי אותו המשתמש',
@@ -1831,8 +1855,8 @@ PICT # שונות
 
 'brokenredirects'        => 'הפניות לא תקינות',
 'brokenredirectstext'    => 'ההפניות שלהלן מפנות לדפים שאינם קיימים:',
-'brokenredirects-edit'   => '(עריכה)',
-'brokenredirects-delete' => '(מחיקה)',
+'brokenredirects-edit'   => 'עריכה',
+'brokenredirects-delete' => 'מחיקה',
 
 'withoutinterwiki'         => 'דפים ללא קישורי שפה',
 'withoutinterwiki-summary' => 'הדפים הבאים אינם מקשרים לגרסאות שלהם בשפות אחרות:',
@@ -1947,8 +1971,9 @@ PICT # שונות
 'special-categories-sort-abc'   => 'סידור לפי סדר האלף בית',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'תרומות משתמש מחוקות',
-'deletedcontributions-title' => 'תרומות משתמש מחוקות',
+'deletedcontributions'             => 'תרומות משתמש מחוקות',
+'deletedcontributions-title'       => 'תרומות משתמש מחוקות',
+'sp-deletedcontributions-contribs' => 'תרומות',
 
 # Special:LinkSearch
 'linksearch'       => 'קישורים חיצוניים',
@@ -1963,6 +1988,13 @@ PICT # שונות
 'listusersfrom'      => 'הצגת משתמשים החל מ:',
 'listusers-submit'   => 'הצגה',
 'listusers-noresult' => 'לא נמצאו משתמשים.',
+'listusers-blocked'  => '(חסום)',
+
+# Special:ActiveUsers
+'activeusers'          => 'רשימת משתמשים פעילים',
+'activeusers-count'    => '{{PLURAL:$1|עריכה אחת לאחרונה|$1 עריכות לאחרונה}}',
+'activeusers-from'     => 'הצגת משתמשים החל מ:',
+'activeusers-noresult' => 'לא נמצאו משתמשים.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'יומן רישום משתמשים',
@@ -1976,18 +2008,20 @@ PICT # שונות
 'listgrouprights'                      => 'רשימת הרשאות לקבוצה',
 'listgrouprights-summary'              => 'זוהי רשימה של קבוצות המשתמש המוגדרות באתר זה, עם ההרשאות של כל אחת.
 מידע נוסף על ההרשאות ניתן למצוא [[{{MediaWiki:Listgrouprights-helppage}}|כאן]].',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">הרשאה שהוענקה</span>
+* <span class="listgrouprights-revoked">הרשאה שהוסרה</span>',
 'listgrouprights-group'                => 'קבוצה',
 'listgrouprights-rights'               => 'הרשאות',
 'listgrouprights-helppage'             => 'Help:הרשאות',
 'listgrouprights-members'              => '(רשימת חברים)',
-'listgrouprights-addgroup'             => 'הרשאה להוספת {{PLURAL:$2|הקבוצה|הקבוצות}}: $1',
-'listgrouprights-removegroup'          => 'הרשאה להסרת {{PLURAL:$2|הקבוצה|הקבוצות}}: $1',
-'listgrouprights-addgroup-all'         => 'הרשאה להוספת כל הקבוצות',
-'listgrouprights-removegroup-all'      => 'הרשאה להסרת כל הקבוצות',
-'listgrouprights-addgroup-self'        => 'הרשאה להוספת {{PLURAL:$2|הקבוצה|הקבוצות}} לחשבון האישי: $1',
-'listgrouprights-removegroup-self'     => 'הרשאה להסרת {{PLURAL:$2|הקבוצה|הקבוצות}} מהחשבון האישי: $1',
-'listgrouprights-addgroup-self-all'    => 'הרשאה להוספת כל הקבוצות לחשבון האישי',
-'listgrouprights-removegroup-self-all' => 'הרשאה להסרת כל הקבוצות מהחשבון האישי',
+'listgrouprights-addgroup'             => 'הוספת {{PLURAL:$2|הקבוצה|הקבוצות}}: $1',
+'listgrouprights-removegroup'          => 'הסרת {{PLURAL:$2|הקבוצה|הקבוצות}}: $1',
+'listgrouprights-addgroup-all'         => 'הוספת כל הקבוצות',
+'listgrouprights-removegroup-all'      => 'הסרת כל הקבוצות',
+'listgrouprights-addgroup-self'        => 'הוספת {{PLURAL:$2|הקבוצה|הקבוצות}} לחשבון האישי: $1',
+'listgrouprights-removegroup-self'     => 'הסרת {{PLURAL:$2|הקבוצה|הקבוצות}} מהחשבון האישי: $1',
+'listgrouprights-addgroup-self-all'    => 'הוספת כל הקבוצות לחשבון האישי',
+'listgrouprights-removegroup-self-all' => 'הסרת כל הקבוצות מהחשבון האישי',
 
 # E-mail user
 'mailnologin'      => 'אין כתובת לשליחה',
@@ -2109,8 +2143,7 @@ $NEWPAGE
 'deletecomment'          => 'סיבת המחיקה:',
 'deleteotherreason'      => 'סיבה נוספת/אחרת:',
 'deletereasonotherlist'  => 'סיבה אחרת',
-'deletereason-dropdown'  => '
-* סיבות מחיקה נפוצות
+'deletereason-dropdown'  => '* סיבות מחיקה נפוצות
 ** לבקשת הכותב
 ** הפרת זכויות יוצרים
 ** השחתה',
@@ -2303,8 +2336,7 @@ $1',
 'ipbexpiry'                       => 'פקיעה:',
 'ipbreason'                       => 'סיבה:',
 'ipbreasonotherlist'              => 'סיבה אחרת',
-'ipbreason-dropdown'              => "
-* סיבות חסימה נפוצות
+'ipbreason-dropdown'              => "* סיבות חסימה נפוצות
 ** הוספת מידע שגוי
 ** הסרת תוכן מדפים
 ** הצפת קישורים לאתרים חיצוניים
@@ -2518,8 +2550,8 @@ $1 כבר נחסם. האם ברצונכם לשנות את הגדרות החסי�
 # Namespace 8 related
 'allmessages'               => 'הודעות המערכת',
 'allmessagesname'           => 'שם',
-'allmessagesdefault'        => 'טקסט ברירת מחדל',
-'allmessagescurrent'        => 'טקסט נוכחי',
+'allmessagesdefault'        => 'טקסט ברירת המחדל של ההודעה',
+'allmessagescurrent'        => 'הטקסט הנוכחי של ההודעה',
 'allmessagestext'           => 'זוהי רשימת כל הודעות המערכת שבמרחב השם {{ns:mediawiki}}, המשמשות את ממשק האתר.
 
 מפעילי המערכת יכולים לערוך את ההודעות בלחיצה על שם ההודעה.',

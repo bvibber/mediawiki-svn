@@ -334,7 +334,7 @@ Fals dit nit die Fal is, hääst du eventuäl n Failer in ju Software fuunen.
 Mäld dit n [[Special:ListUsers/sysop|Administrator]] unner Naamenge fon ju URL.',
 'missingarticle-rev'   => '(Versionsnuumer: $1)',
 'missingarticle-diff'  => '(Unnerscheed twiske Versione: $1, $2)',
-'readonly_lag'         => 'Dät Spiekerjen fon Annerengen wuude foar ne kuute Tied automatisk speerd, uum doo Doatenboank-Servere fon dän Wikipedia Tied tou reeken, do Inhoolde unnernunner outouglieken. Fersäik dät jädden in n poor Minuten noch moal.',
+'readonly_lag'         => 'Dät Spiekerjen fon Annerengen wuude foar ne kuute Tied automatisk speerd, uum doo Doatenboank-Servere Tied tou reeken, do Inhoolde unnernunner outouglieken.',
 'internalerror'        => 'Interne Failer',
 'internalerror_info'   => 'Interne Failer: $1',
 'filecopyerror'        => 'Kuude Doatäi "$1" nit ätter "$2" kopierje.',
@@ -619,7 +619,7 @@ Jie fersicherje hiermäd uk, dät Jie dän Biedraach sälwen ferfoated hääbe b
 'longpagewarning'                  => "'''WOARSCHAUENGE: Disse Siede is $1 kb groot; eenige Browsere kuuden Probleme hääbe, Sieden tou beoarbaidjen, do der gratter as 32 kb sunt. Uurlääse Jou jädden, of ne Oudeelenge fon do Sieden in litjere Ousnitte muugelk is.'''",
 'longpageerror'                    => "'''FAILER: Die Text, dän du tou spiekerjen fersäkst, is $1 KB groot. Dät is gratter as dät ferlööwede Maximum fon $2 KB – Spiekerenge nit muugelk.'''",
 'readonlywarning'                  => "'''WOARSCHAUENGE: Ju Doatenboank wuude foar Wartengsoarbaiden speerd, so dät dien Annerengen apstuuns nit spiekerd wäide konnen. 
-Sicherje dän Text jädden lokoal ap dien Computer un fersäik tou n leeteren Tiedpunkt, do Annerengen in ju Wikipedia tou uurdreegen.'''
+Sicherje dän Text jädden lokoal ap dien Computer un fersäik tou n leeteren Tiedpunkt, do Annerengen tou uurdreegen.'''
 
 Gruund foar ju Speere: $1",
 'protectedpagewarning'             => "'''WOARSCHAUENGE: Disse Siede wuude speerd, so dät ju bloot truch Benutsere mäd Administrationsgjuchte beoarbeded wäide kon.'''",
@@ -710,12 +710,12 @@ Legende: (Aktuäl) = Unnerscheed tou ju aktuälle Version,
 'rev-deleted-user'            => '(Benutsernoome wächhoald)',
 'rev-deleted-event'           => '(Logbouk-Aktion wächhoald)',
 'rev-deleted-text-permission' => "Disse Version wuude läsked un is '''nit moor eepentelk ientousjoon'''.
-Naiere Angoawen toun Läskfoargong as uk ne Begründenge fiende sik in dät [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].",
+Naiere Angoawen toun Läskfoargong as uk ne Begründenge fiende sik in dät [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].",
 'rev-deleted-text-view'       => "Disse Version wuude läsked un is '''nit moor eepentelk ientousjoon'''.
 As Administrator koast du ju wieders ienkiekje.
-Naiere Angoawen toun Läskfoargong as uk ne Begründenge fiende sik in dät [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].",
+Naiere Angoawen toun Läskfoargong as uk ne Begründenge fiende sik in dät [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].",
 'rev-deleted-no-diff'         => "Du koast dissen Unnerscheed nit betrachtje, deer een fon do Versione '''uut do eepentelke Archive wächhoald wuud'''.
-Details stounde in dät [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].",
+Details stounde in dät [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Läsk-Logbouk].",
 'rev-delundel'                => 'wiese/ferbierge',
 'revisiondelete'              => 'Versione läskje/wier häärstaale',
 'revdelete-nooldid-title'     => 'Uunjäildige Siel-Beoarbaidenge',
@@ -933,7 +933,7 @@ Wan du die mäd dät Thema uutkoanst, koast du sälwen ju [[:$1|Siede ferfoatje]
 'mypreferences'             => 'Ienstaalengen',
 'prefs-edits'               => 'Antaal Beoarbaidengen:',
 'prefsnologin'              => 'Nit anmälded',
-'prefsnologintext'          => 'Du moast <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} anmälded]</span> weese, uum dien Ienstaalengen annerje tou konnen.',
+'prefsnologintext'          => 'Du moast <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} anmälded]</span> weese, uum dien Ienstaalengen annerje tou konnen.',
 'changepassword'            => 'Paaswoud annerje',
 'prefs-skin'                => 'Skin',
 'skin-preview'              => 'Foarschau',
@@ -1443,8 +1443,8 @@ Lääste schällen dan wächhoald wäide.',
 
 'brokenredirects'        => 'Ferkierde Fäärelaitengen',
 'brokenredirectstext'    => 'Disse Spezioalsiede liestet Truchferwiese ap nit existierjende Sieden:',
-'brokenredirects-edit'   => '(beoarbaidje)',
-'brokenredirects-delete' => '(läskje)',
+'brokenredirects-edit'   => 'beoarbaidje',
+'brokenredirects-delete' => 'läskje',
 
 'withoutinterwiki'         => 'Sieden sunner Ferbiendengen tou uur Sproaken',
 'withoutinterwiki-summary' => 'Do foulgjende Sieden ferlinkje nit ap uur Sproakversionen:',
@@ -2326,7 +2326,7 @@ $1',
 'visual-comparison' => 'Visuellen Fergliek',
 
 # Media information
-'mediawarning'         => "'''Warnung:''' Disse Oard fon Doatäi kon n schoadelken Programcode änthoolde. Truch dät Deelleeden of Eepenjen fon dissen Doatäi kon dän Computer Schoade toubroacht wäide. Al dät Anklikken fon dän Link kon deertou fiere, dät die Browser ju Doatäi eepen moaket un uunbekoande Programcode tou Uutfierenge kumt. Do Bedrieuwere fon ju Wikipedia uurnieme neen Feroantwoudenge foar dän Inhoold fon disse Doatäi! Schuul disse Doatäi wuddelk schoadelke Programcode änthoolde, schuul n Administrator informierd wäide.<hr />",
+'mediawarning'         => "'''Warnung:''' Disse Oard fon Doatäi kon n schoadelken Programcode änthoolde. Truch dät Deelleeden of Eepenjen fon dissen Doatäi kon dän Computer Schoade toubroacht wäide.<hr />",
 'imagemaxsize'         => 'Maximoale Bieldegrööte ap Bieldebeschrieuwengssieden:',
 'thumbsize'            => 'Grööte fon do Foarschaubielden (thumbnails):',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|1 Siede|$3 Sieden}}',

@@ -667,7 +667,7 @@ $messages = array(
 'mypreferences'             => 'زما غوره توبونه',
 'prefs-edits'               => 'د سمادونو شمېر:',
 'prefsnologin'              => 'غونډال کې نه ياست ننوتي',
-'prefsnologintext'          => 'د دې لپاره چې خپل غوره توبونه مو وټاکی، نو پکار ده چې لومړی تاسو غونډال کې <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} ننوځی]</span>.',
+'prefsnologintext'          => 'د دې لپاره چې خپل غوره توبونه مو وټاکی، نو پکار ده چې لومړی تاسو غونډال کې <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ننوځی]</span>.',
 'changepassword'            => 'پټنوم بدلول',
 'prefs-skin'                => 'بڼه',
 'skin-preview'              => 'مخکتنه',
@@ -904,8 +904,8 @@ $messages = array(
 'doubleredirects' => 'دوه ځلي ورګرځېدنې',
 
 'brokenredirects'        => 'ماتې ورګرځېدنې',
-'brokenredirects-edit'   => '(سمول)',
-'brokenredirects-delete' => '(ړنګول)',
+'brokenredirects-edit'   => 'سمول',
+'brokenredirects-delete' => 'ړنګول',
 
 'withoutinterwiki'        => 'د ژبې د تړنو بې برخې مخونه',
 'withoutinterwiki-submit' => 'ښکاره کول',

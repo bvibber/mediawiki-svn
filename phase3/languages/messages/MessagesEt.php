@@ -228,6 +228,9 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'faq'            => 'KKK',
 'faqpage'        => 'Project:KKK',
 
+# Vector skin
+'vector-view-view' => 'Loe',
+
 # Metadata in edit box
 'metadata_help' => 'Metaandmed:',
 
@@ -247,7 +250,6 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'permalink'         => 'Püsilink',
 'print'             => 'Prindi',
 'edit'              => 'redigeeri',
-'view'              => 'Loe',
 'create'            => 'Loo',
 'editthispage'      => 'Redigeeri seda artiklit',
 'create-this-page'  => 'Loo see lehekülg',
@@ -582,10 +584,9 @@ Teie praegune IP on $3 ning blokeeringu number on #$5. Lisage need andmed kõigi
 
 Seda parooli on võimalik muuta ''[[Special:ChangePassword|parooli muutmise lehel]]'' peale uuele kontole sisse logimist.",
 'newarticle'                       => '(Uus)',
-'newarticletext'                   => "Sellist lehekülge ei ole veel loodud. Lehekülje loomiseks hakake kirjutama all olevasse tekstikasti
-(lisainfo saamiseks vaadake [[{{MediaWiki:Helppage}}|juhendit]]).
+'newarticletext'                   => "Sellise pealkirjaga lehekülge ei ole veel loodud. Lehekülje loomiseks sisestage lehe tekst alljärgnevasse tekstikasti ja salvestage (lisainfo saamiseks vaadake [[{{MediaWiki:Helppage}}|juhendit]]).
 
-Kui sattusite siia kogemata, klõpsake lihtsalt brauseri ''tagasi''-nupule või lingile ''tühista''.",
+Kui sattusite siia kogemata, klõpsake lihtsalt brauseri ''tagasi''-nupule.",
 'anontalkpagetext'                 => "---- ''See on arutelulehekülg anonüümse kasutaja jaoks, kes ei ole loonud kontot või ei kasuta seda. Sellepärast tuleb meil kasutaja identifitseerimiseks kasutada tema IP-aadressi.
 Sellisel IP-aadressilt võib portaali kasutada mitu inimest.
 Kui oled osutatud IP kasutaja ning leiad, et siinsed kommentaarid ei puutu kuidagi sinusse, siis palun [[Special:UserLogin|loo konto või logi sisse]], et sind edaspidi teiste anonüümsete kasutajatega segi ei aetaks.''",
@@ -833,7 +834,7 @@ päringu ees prefiksit ''all:''. Konkreetsest nimeruumist otsimiseks kasuta pref
 'mypreferences'             => 'eelistused',
 'prefs-edits'               => 'Redigeerimiste arv:',
 'prefsnologin'              => 'Te ei ole sisse loginud',
-'prefsnologintext'          => 'Et oma eelistusi seada, peate olema <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} sisse logitud]</span>.',
+'prefsnologintext'          => 'Et oma eelistusi seada, peate olema <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} sisse logitud]</span>.',
 'changepassword'            => 'Muuda parool',
 'prefs-skin'                => 'Kujundus',
 'skin-preview'              => 'Eelvaade',
@@ -925,7 +926,7 @@ See ei tohi olla pikem kui $1 {{PLURAL:$1|sümbol|sümbolit}}.',
 'userrights-nologin'          => 'Kasutaja õiguste muutmiseks, pead sa administreerimis õigustega kontole [[Special:UserLogin|sisse logima]].',
 'userrights-notallowed'       => 'Sulle pole antud luba jagada kasutajatele õigusi.',
 'userrights-changeable-col'   => 'Grupid, mida sa saad muuta',
-'userrights-unchangeable-col' => 'Grupid, mida sa muuta ei saa',
+'userrights-unchangeable-col' => 'Grupid, mida sa ei saa muuta',
 
 # Groups
 'group'               => 'Grupp:',
@@ -1194,8 +1195,8 @@ Palun pöörduge tagasi ja laadige fail üles mõne teise nime all. [[File:$1|th
 
 'brokenredirects'        => 'Vigased ümbersuunamised',
 'brokenredirectstext'    => 'Järgmised leheküljed on ümber suunatud olematutele lehekülgedele:',
-'brokenredirects-edit'   => '(redigeeri)',
-'brokenredirects-delete' => '(kustuta)',
+'brokenredirects-edit'   => 'redigeeri',
+'brokenredirects-delete' => 'kustuta',
 
 'withoutinterwiki' => 'Keelelinkideta leheküljed',
 
@@ -1306,12 +1307,11 @@ Vaata ka [[Special:WantedCategories|puuduvaid kategooriaid]].',
 'newuserlog-autocreate-entry' => 'Konto loodud automaatselt',
 
 # Special:ListGroupRights
-'listgrouprights'               => 'Kasutajagrupi õigused',
-'listgrouprights-group'         => 'Grupp',
-'listgrouprights-rights'        => 'Õigused',
-'listgrouprights-helppage'      => 'Help:Grupi õigused',
-'listgrouprights-members'       => '(liikmete loend)',
-'listgrouprights-right-display' => '$1 ($2)',
+'listgrouprights'          => 'Kasutajagrupi õigused',
+'listgrouprights-group'    => 'Grupp',
+'listgrouprights-rights'   => 'Õigused',
+'listgrouprights-helppage' => 'Help:Grupi õigused',
+'listgrouprights-members'  => '(liikmete loend)',
 
 # E-mail user
 'mailnologintext' => 'Te peate olema [[Special:UserLogin|sisse logitud]] ja teil peab [[Special:Preferences|eelistustes]] olema kehtiv e-posti aadress, et saata teistele kasutajatele e-kirju.',

@@ -303,6 +303,9 @@ $messages = array(
 'faq'            => 'Soalan Lazim',
 'faqpage'        => 'Project:Soalan Lazim',
 
+# Vector skin
+'vector-view-view' => 'Baca',
+
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
 
@@ -322,7 +325,6 @@ $messages = array(
 'permalink'         => 'Pautan kekal',
 'print'             => 'Cetak',
 'edit'              => 'Sunting',
-'view'              => 'Baca',
 'create'            => 'Cipta',
 'editthispage'      => 'Sunting laman ini',
 'create-this-page'  => 'Cipta laman ini',
@@ -837,16 +839,16 @@ Cuba [[Special:Search|cari]] laman lain yang mungkin berkaitan.',
 'rev-deleted-user'            => '(nama pengguna dibuang)',
 'rev-deleted-event'           => '(entri dibuang)',
 'rev-deleted-text-permission' => "Semakan laman ini telah '''dihapuskan'''.
-Butiran lanjut mungkin boleh didapati dalam [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log penghapusan].",
+Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penghapusan].",
 'rev-deleted-text-unhide'     => "Semakan laman ini telah '''dihapuskan'''.
-Butiran lanjut mungkin boleh didapati dalam [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log penghapusan].
+Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penghapusan].
 Sebagai pentadbir anda masih boleh [$1 melihat semakan ini] jika anda ingin.",
 'rev-deleted-text-view'       => "Semakan laman ini telah '''dihapuskan'''.
-Sebagai seorang pentadbir anda boleh melihatnya; butiran lanjut mungkin boleh didapati dalam [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log penghapusan].",
+Sebagai seorang pentadbir anda boleh melihatnya; butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penghapusan].",
 'rev-deleted-no-diff'         => "Anda tidak boleh melihat perbezaan ini kerana satu daripada semakan yang dibandingkan telah '''dihapuskan'''.
-Butiran lanjut mungkin boleh didapati dalam [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log penghapusan].",
+Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penghapusan].",
 'rev-deleted-unhide-diff'     => "Salah satu semakan laman ini telah '''dihapuskan'''.
-Butiran lanjut mungkin boleh didapati dalam [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log penghapusan].
+Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penghapusan].
 Sebagai pentadbir anda masih boleh [$1 melihat semakan ini] jika anda ingin.",
 'rev-delundel'                => 'tunjuk/sembunyi',
 'revisiondelete'              => 'Hapus/nyahhapus semakan',
@@ -1072,7 +1074,7 @@ Cuba berikan awalan ''all:'' untuk menggelintar semua kandungan (termasuk laman 
 'mypreferences'             => 'Keutamaan saya',
 'prefs-edits'               => 'Jumlah suntingan:',
 'prefsnologin'              => 'Belum log masuk',
-'prefsnologintext'          => 'Anda hendaklah <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} log masuk]</span> terlebih dahulu untuk menetapkan keutamaan.',
+'prefsnologintext'          => 'Anda hendaklah <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} log masuk]</span> terlebih dahulu untuk menetapkan keutamaan.',
 'changepassword'            => 'Tukar kata laluan',
 'prefs-skin'                => 'Rupa',
 'skin-preview'              => 'Pratonton',
@@ -1573,8 +1575,8 @@ Penerangan pada [$2 laman penerangan failnya] di sana ditunjukkan di bawah.',
 
 'brokenredirects'        => 'Lencongan rosak',
 'brokenredirectstext'    => 'Lencongan-lencongan berikut menuju ke laman yang tidak wujud:',
-'brokenredirects-edit'   => '(sunting)',
-'brokenredirects-delete' => '(hapus)',
+'brokenredirects-edit'   => 'sunting',
+'brokenredirects-delete' => 'hapus',
 
 'withoutinterwiki'         => 'Laman tanpa pautan bahasa',
 'withoutinterwiki-summary' => 'Laman-laman berikut tidak mempunyai pautan ke versi bahasa lain:',
@@ -1855,8 +1857,7 @@ Sila lihat $2 untuk rekod penghapusan terkini.',
 'deletecomment'          => 'Sebab penghapusan:',
 'deleteotherreason'      => 'Sebab lain/tambahan:',
 'deletereasonotherlist'  => 'Sebab lain',
-'deletereason-dropdown'  => '
-* Sebab-sebab lazim
+'deletereason-dropdown'  => '* Sebab-sebab lazim
 ** Permintaan pengarang
 ** Melanggar hak cipta
 ** Vandalisme',
@@ -2050,8 +2051,7 @@ dirosakkan).',
 'ipbexpiry'                       => 'Tempoh:',
 'ipbreason'                       => 'Sebab:',
 'ipbreasonotherlist'              => 'Lain-lain',
-'ipbreason-dropdown'              => '
-*Sebab lazim
+'ipbreason-dropdown'              => '*Sebab lazim
 ** Memasukkan maklumat palsu
 ** Membuang kandungan daripada laman
 ** Memmasukkan pautan spam ke tapak web luar

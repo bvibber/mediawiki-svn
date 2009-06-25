@@ -394,6 +394,30 @@ $messages = array(
 'faq'            => 'Частыя пытаньні',
 'faqpage'        => 'Project:Частыя пытаньні',
 
+# Vector skin
+'vector-action-addsection'   => 'Дадаць тэму',
+'vector-action-delete'       => 'Выдаліць',
+'vector-action-move'         => 'Перанесьці',
+'vector-action-protect'      => 'Абараніць',
+'vector-action-undelete'     => 'Аднавіць',
+'vector-action-unprotect'    => 'Зьняць абарону',
+'vector-namespace-category'  => 'Катэгорыя',
+'vector-namespace-help'      => 'Старонка дапамогі',
+'vector-namespace-image'     => 'Файл',
+'vector-namespace-main'      => 'Старонка',
+'vector-namespace-media'     => 'Старонка мэдыя',
+'vector-namespace-mediawiki' => 'Паведамленьне',
+'vector-namespace-project'   => 'Старонка праекту',
+'vector-namespace-special'   => 'Спэцыяльная старонка',
+'vector-namespace-talk'      => 'Абмеркаваньне',
+'vector-namespace-template'  => 'Шаблён',
+'vector-namespace-user'      => 'Старонка удзельніка',
+'vector-view-create'         => 'Стварыць',
+'vector-view-edit'           => 'Рэдагаваць',
+'vector-view-history'        => 'Паказаць гісторыю',
+'vector-view-view'           => 'Чытаць',
+'vector-view-viewsource'     => 'Паказаць крыніцу',
+
 # Metadata in edit box
 'metadata_help' => 'Мэтазьвесткі:',
 
@@ -413,7 +437,6 @@ $messages = array(
 'permalink'         => 'Сталая спасылка',
 'print'             => 'Друкаваць',
 'edit'              => 'Рэдагаваць',
-'view'              => 'Чытаць',
 'create'            => 'Стварыць',
 'editthispage'      => 'Рэдагаваць гэтую старонку',
 'create-this-page'  => 'Стварыць гэтую старонку',
@@ -432,7 +455,7 @@ $messages = array(
 'personaltools'     => 'Асабістыя прылады',
 'postcomment'       => 'Новая сэкцыя',
 'articlepage'       => 'Паказаць старонку зьместу',
-'talk'              => 'Гутаркі',
+'talk'              => 'Абмеркаваньне',
 'views'             => 'Прагляды',
 'toolbox'           => 'Інструмэнты',
 'userpage'          => 'Паказаць старонку ўдзельніка',
@@ -941,17 +964,17 @@ $2',
 'rev-deleted-user'            => '(імя ўдзельніка выдаленае)',
 'rev-deleted-event'           => '(запіс з журнала падзеяў выдалены)',
 'rev-deleted-text-permission' => "Гэтая вэрсія старонкі была '''выдаленая'''.
-Магчыма, падрабязнасьці могуць быць знойдзеныя ў [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журнале выдаленьняў].",
+Магчыма, падрабязнасьці могуць быць знойдзеныя ў [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} журнале хаваньняў].",
 'rev-deleted-text-unhide'     => "Гэтая вэрсія старонкі была '''выдаленая'''.
-Магчыма, падрабязнасьці могуць быць знойдзеныя ў [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журнале выдаленьняў].
+Магчыма, падрабязнасьці могуць быць знойдзеныя ў [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} журнале хаваньняў].
 Як адміністратар, Вы можаце [$1 праглядзець гэтую вэрсію].",
 'rev-deleted-text-view'       => "Гэтая вэрсія старонкі была '''выдаленая'''.
 Як адміністратар, Вы можаце праглядзець яе.
-Магчыма, падрабязнасьці могуць быць знойдзеныя ў [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журнале выдаленьняў].",
+Магчыма, падрабязнасьці могуць быць знойдзеныя ў [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} журнале хаваньняў].",
 'rev-deleted-no-diff'         => "Вы ня можаце праглядаць гэтую розьніцу паміж вэрсіямі, таму што адна з вэрсіяў была '''выдалена'''.
-Магчыма, падрабязнасьці могуць быць знойдзеныя ў [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журнале выдаленьняў].",
+Магчыма, падрабязнасьці могуць быць знойдзеныя ў [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} журнале хаваньняў].",
 'rev-deleted-unhide-diff'     => "Адна з вэрсіяў гэтай старонкі была '''выдалена'''.
-Магчыма, падрабязнасьці могуць быць знойдзеныя ў [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} журнале выдаленьняў].
+Магчыма, падрабязнасьці могуць быць знойдзеныя ў [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} журнале хаваньняў].
 Як адміністратар, Вы можаце праглядзець [$1 адрозьненьні паміж вэрсіямі].",
 'rev-delundel'                => 'паказаць/схаваць',
 'revisiondelete'              => 'Выдаліць/аднавіць вэрсіі',
@@ -1196,7 +1219,7 @@ $1",
 'mypreferences'                 => 'Мае ўстаноўкі',
 'prefs-edits'                   => 'Колькасьць рэдагаваньняў:',
 'prefsnologin'                  => 'Вы не ўвайшлі ў сыстэму',
-'prefsnologintext'              => 'Вам трэба <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} ўвайсьці ў сыстэму]</span>, каб зьмяняць свае ўстаноўкі.',
+'prefsnologintext'              => 'Вам трэба <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} ўвайсьці ў сыстэму]</span>, каб зьмяняць свае ўстаноўкі.',
 'changepassword'                => 'Зьмяніць пароль',
 'prefs-skin'                    => 'Афармленьне',
 'skin-preview'                  => 'Папярэдні прагляд',
@@ -1734,8 +1757,8 @@ $1",
 
 'brokenredirects'        => 'Некарэктныя перанакіраваньні',
 'brokenredirectstext'    => 'Наступныя перанакіраваньні спасылаюцца на неіснуючыя старонкі:',
-'brokenredirects-edit'   => '(рэдагаваць)',
-'brokenredirects-delete' => '(выдаліць)',
+'brokenredirects-edit'   => 'рэдагаваць',
+'brokenredirects-delete' => 'выдаліць',
 
 'withoutinterwiki'         => 'Старонкі без спасылак на іншыя моўныя вэрсіі',
 'withoutinterwiki-summary' => 'Наступныя старонкі ня ўтрымліваюць спасылак на іншамоўныя вэрсіі:',
@@ -1849,8 +1872,9 @@ $1",
 'special-categories-sort-abc'   => 'сартаваць паводле альфабэту',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Выдалены ўнёсак удзельніка',
-'deletedcontributions-title' => 'Выдалены ўнёсак удзельніка',
+'deletedcontributions'             => 'Выдалены ўнёсак удзельніка',
+'deletedcontributions-title'       => 'Выдалены ўнёсак удзельніка',
+'sp-deletedcontributions-contribs' => 'унёсак',
 
 # Special:LinkSearch
 'linksearch'       => 'Вонкавыя спасылкі',
@@ -1866,6 +1890,13 @@ $1",
 'listusersfrom'      => 'Паказаць удзельнікаў, пачынаючы з:',
 'listusers-submit'   => 'Паказаць',
 'listusers-noresult' => 'Удзельнікі ня знойдзеныя.',
+'listusers-blocked'  => '({{GENDER:$1|заблякаваны|заблякаваная}})',
+
+# Special:ActiveUsers
+'activeusers'          => 'Сьпіс актыўных удзельнікаў',
+'activeusers-count'    => '$1 {{PLURAL:$1|апошняе рэдагаваньне|апошніх рэдагаваньня|апошніх рэдагаваньняў}}',
+'activeusers-from'     => 'Паказваць ўдзельнікаў, пачынаючы з:',
+'activeusers-noresult' => 'Удзельнікі ня знойдзеныя.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Журнал стварэньня рахункаў',
@@ -1879,6 +1910,8 @@ $1",
 'listgrouprights'                      => 'Правы групаў удзельнікаў',
 'listgrouprights-summary'              => 'Ніжэй пададзены сьпіс групаў удзельнікаў {{GRAMMAR:родны|{{SITENAME}}}}, разам зь іх правамі.
 Таксама можна паглядзець [[{{MediaWiki:Listgrouprights-helppage}}|дадатковую інфармацыю]] пра асабістыя правы.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Прызначаныя правы</span>
+* <span class="listgrouprights-revoked">Адабраныя правы</span>',
 'listgrouprights-group'                => 'Група',
 'listgrouprights-rights'               => 'Правы',
 'listgrouprights-helppage'             => 'Help:Правы групаў удзельнікаў',

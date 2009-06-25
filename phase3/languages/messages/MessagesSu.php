@@ -893,7 +893,7 @@ Coba susud dimimitian ku ''all:'' pikeun nyusud sakabéh kandunganana (kaasup ka
 'mypreferences'             => 'Préferénsi kuring',
 'prefs-edits'               => 'Jumlah éditan:',
 'prefsnologin'              => 'Can asup log',
-'prefsnologintext'          => 'Anjeun kudu <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} asup log]</span> pikeun ngatur préferénsi pamaké.',
+'prefsnologintext'          => 'Anjeun kudu <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} asup log]</span> pikeun ngatur préferénsi pamaké.',
 'changepassword'            => 'Robah sandi',
 'prefs-skin'                => 'Kulit',
 'skin-preview'              => 'Pramidang',
@@ -1256,8 +1256,8 @@ Sahiji kaca dianggap minangka kaca disambiguasi lamun kaca kasebut ngagunakeun c
 
 'brokenredirects'        => 'Alihan buntu',
 'brokenredirectstext'    => 'Alihan di handap numbu ka kaca nu teu aya.',
-'brokenredirects-edit'   => '(édit)',
-'brokenredirects-delete' => '(hapus)',
+'brokenredirects-edit'   => 'édit',
+'brokenredirects-delete' => 'hapus',
 
 'withoutinterwiki'         => 'Kaca-kaca tanpa tumbu basa',
 'withoutinterwiki-summary' => 'Kaca-kaca di handap ieu teu numbu ka vérsi basa séjén:',

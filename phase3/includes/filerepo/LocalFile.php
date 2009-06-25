@@ -133,11 +133,12 @@ class LocalFile extends File
 	}
 
 	/**
-	 * Get the memcached key
+	 * Get the memcached key for the main data for this file, or false if 
+	 * there is no access to the shared cache.
 	 */
 	function getCacheKey() {
 		$hashedName = md5($this->getName());
-		return wfMemcKey( 'file', $hashedName );
+		return $this->repo->getSharedCacheKey( 'file', $hashedName );
 	}
 
 	/**
@@ -590,8 +591,10 @@ class LocalFile extends File
 	function purgeHistory() {
 		global $wgMemc;
 		$hashedName = md5($this->getName());
-		$oldKey = wfMemcKey( 'oldfile', $hashedName );
-		$wgMemc->delete( $oldKey );
+		$oldKey = $this->repo->getSharedCacheKey( 'oldfile', $hashedName );
+		if ( $oldKey ) {
+			$wgMemc->delete( $oldKey );
+		}
 	}
 
 	/**
@@ -1411,7 +1414,7 @@ class LocalFileDeleteBatch {
 				array( 'oi_archive_name' ),
 				array( 'oi_name' => $this->file->getName(),
 					'oi_archive_name IN (' . $dbw->makeList( array_keys($oldRels) ) . ')',
-					'oi_deleted & ' . File::DELETED_FILE => File::DELETED_FILE ),
+					$dbw->bitAnd('oi_deleted', File::DELETED_FILE) => File::DELETED_FILE ),
 				__METHOD__ );
 			while( $row = $dbw->fetchObject( $res ) ) {
 				$privateFiles[$row->oi_archive_name] = 1;

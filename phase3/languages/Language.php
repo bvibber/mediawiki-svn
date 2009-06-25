@@ -59,7 +59,7 @@ class Language {
 
 	static public $mLocalisationKeys = array(
 		'fallback', 'namespaceNames', 'mathNames', 'bookstoreList',
-		'magicWords', 'messages', 'rtl', 'digitTransformTable',
+		'magicWords', 'messages', 'rtl', 'capitalizeAllNouns', 'digitTransformTable',
 		'separatorTransformTable', 'fallback8bitEncoding', 'linkPrefixExtension',
 		'defaultUserOptionOverrides', 'linkTrail', 'namespaceAliases',
 		'dateFormats', 'datePreferences', 'datePreferenceMigrationMap',
@@ -1595,6 +1595,16 @@ class Language {
 	}
 	
 	/**
+	 * Most writing systems use whitespace to break up words.
+	 * Some languages such as Chinese don't conventionally do this,
+	 * which requires special handling when breaking up words for
+	 * searching etc.
+	 */
+	function hasWordBreaks() {
+		return true;
+	}
+	
+	/**
 	 * Some languages have special punctuation to strip out
 	 * or characters which need to be converted for MySQL's
 	 * indexing to grok it correctly. Make such changes here.
@@ -1790,6 +1800,11 @@ class Language {
 	 */
 	function getDirMark() {
 		return $this->isRTL() ? "\xE2\x80\x8F" : "\xE2\x80\x8E";
+	}
+
+	function capitalizeAllNouns() {
+		$this->load();
+		return $this->capitalizeAllNouns;
 	}
 
 	/**
@@ -2482,7 +2497,7 @@ class Language {
 			$cache = compact( self::$mLocalisationKeys );
 			wfDebug( "Language::loadLocalisation(): got localisation for $code from source\n" );
 		}
-		
+
 		# Load magic word source file
 		global $IP;
 		$filename = "$IP/includes/MagicWord.php";

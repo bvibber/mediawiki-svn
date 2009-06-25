@@ -682,9 +682,9 @@ Alesané miturut $3 yaiku ''$2''",
 'rev-deleted-user'            => '(jeneng panganggo dibusak)',
 'rev-deleted-event'           => '(isi dibusak)',
 'rev-deleted-text-permission' => 'Riwayat revisi kaca iki wis dibusak saka arsip umum.
-Detil mbokmenawa kasedyakaké ing  [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log pambusakan].',
+Detil mbokmenawa kasedyakaké ing  [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log pambusakan].',
 'rev-deleted-text-view'       => 'Riwayat revisi kaca iki wis dibusak saka arsip umum.
-Minangka sawijning pangurus situs, panjenengan bisa mirsani; detil mbokmenawa kasedyakaké ing [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log pambusakan].',
+Minangka sawijning pangurus situs, panjenengan bisa mirsani; detil mbokmenawa kasedyakaké ing [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log pambusakan].',
 'rev-delundel'                => 'tuduhna/delikna',
 'revisiondelete'              => 'Busak/batal busak revisi',
 'revdelete-nooldid-title'     => 'Target revisi ora ditemokaké',
@@ -890,7 +890,7 @@ Gunakna tombol radio kanggo nggabungaké révisi-révisi sing digawé sadurungé
 'mypreferences'             => 'Préferènsiku',
 'prefs-edits'               => 'Gunggungé suntingan:',
 'prefsnologin'              => 'Durung mlebu log',
-'prefsnologintext'          => 'Panjenengan kudu <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}}| mlebu log]</span> kanggo ngowahin préferènsi njenengan.',
+'prefsnologintext'          => 'Panjenengan kudu <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}}| mlebu log]</span> kanggo ngowahin préferènsi njenengan.',
 'changepassword'            => 'Ganti tembung sandi',
 'prefs-skin'                => 'Kulit',
 'skin-preview'              => 'Pratilik',
@@ -1362,8 +1362,8 @@ Sawijining kaca dianggep minangka kaca disambiguasi yèn kaca iku nganggo cithak
 
 'brokenredirects'        => 'Pangalihan rusak',
 'brokenredirectstext'    => 'Pengalihanipun kaca punika mboten kepanggih sambunganipun.',
-'brokenredirects-edit'   => '(sunting)',
-'brokenredirects-delete' => '(busak)',
+'brokenredirects-edit'   => 'sunting',
+'brokenredirects-delete' => 'busak',
 
 'withoutinterwiki'         => 'Kaca tanpa pranala antarbasa',
 'withoutinterwiki-summary' => 'Kaca-kaca iki ora nduwé pranala menyang vèrsi ing  basa liyané:',

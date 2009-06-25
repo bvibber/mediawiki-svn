@@ -646,8 +646,8 @@ $2',
 'rev-deleted-comment'         => '(注釋挪吥嘞)',
 'rev-deleted-user'            => '(用戶名挪吥嘞)',
 'rev-deleted-event'           => '(項目挪吥嘞)',
-'rev-deleted-text-permission' => '箇頁嗰改動從共用文檔挪吥嘞。到[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 刪除日誌] 裡度倷話伓定有詳細嗰資料。',
-'rev-deleted-text-view'       => '箇頁嗰改動從共用文檔挪吥嘞。作為本站嗰管理員，倷查看得正；到[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 刪除日誌] 裡度有詳細嗰資料。',
+'rev-deleted-text-permission' => '箇頁嗰改動從共用文檔挪吥嘞。到[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 刪除日誌] 裡度倷話伓定有詳細嗰資料。',
+'rev-deleted-text-view'       => '箇頁嗰改動從共用文檔挪吥嘞。作為本站嗰管理員，倷查看得正；到[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 刪除日誌] 裡度有詳細嗰資料。',
 'rev-delundel'                => '顯示/弆到',
 'revisiondelete'              => '刪除/反刪除修改',
 'revdelete-nooldid-title'     => '冇目標修訂',
@@ -1063,8 +1063,8 @@ $2',
 
 'brokenredirects'        => '壞吥嗰重定向頁',
 'brokenredirectstext'    => '底下嗰重定向頁面指到嗰係伓存在嗰頁面:',
-'brokenredirects-edit'   => '(編寫)',
-'brokenredirects-delete' => '(刪吥)',
+'brokenredirects-edit'   => '編寫',
+'brokenredirects-delete' => '刪吥',
 
 'withoutinterwiki'         => '冇語言連結嗰頁面',
 'withoutinterwiki-summary' => '底下嗰頁面係冇語言連結到別嗰語言版本:',
@@ -2135,6 +2135,7 @@ $1',
 
 # Separators for various lists, etc.
 'comma-separator' => '、',
+'parentheses'     => '（$1）',
 
 # Multipage image navigation
 'imgmultipageprev' => '← 上頁',

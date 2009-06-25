@@ -289,6 +289,7 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'lang', $wgContLanguageCode );
 		$tpl->set( 'dir', $wgContLang->isRTL() ? 'rtl' : 'ltr' );
 		$tpl->set( 'rtl', $wgContLang->isRTL() );
+		$tpl->set( 'capitalizeallnouns', $wgLang->capitalizeAllNouns() ? ' capitalize-all-nouns' : '' );
 		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
 		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
 		$tpl->set( 'username', $wgUser->isAnon() ? NULL : $this->username );
@@ -674,7 +675,7 @@ class SkinTemplate extends Skin {
 	 * @private
 	 */
 	function buildContentActionUrls() {
-		global $wgContLang, $wgLang, $wgOut, $wgUser, $wgRequest;
+		global $wgContLang, $wgLang, $wgOut, $wgUser, $wgRequest, $wgArticle;
 
 		wfProfileIn( __METHOD__ );
 
@@ -717,15 +718,16 @@ class SkinTemplate extends Skin {
 					'href' => $this->mTitle->getLocalUrl( $this->editUrlOptions() )
 				);
 
-				if ( $istalk || $wgOut->showNewSectionLink() ) {
+				// adds new section link if page is a current revision of a talk page or 
+				if ( ( $wgArticle && $wgArticle->isCurrent() && $istalk ) || $wgOut->showNewSectionLink() ) {
 					if ( !$wgOut->forceHideNewSectionLink() ) {
 						$content_actions['addsection'] = array(
 							'class' => $section == 'new' ? 'selected' : false,
 							'text' => wfMsg( 'addsection' ),
 							'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
-						);
+						);					
 					}
-				}
+				}  
 			} elseif ( $this->mTitle->isKnown() ) {
 				$content_actions['viewsource'] = array(
 					'class' => ($action == 'edit') ? 'selected' : false,
@@ -954,8 +956,13 @@ class SkinTemplate extends Skin {
 
 			if( $id ) {
 				$logPage = SpecialPage::getTitleFor( 'Log' );
-				$nav_urls['log'] = array( 'href' => $logPage->getLocalUrl( 'user='
-					. $this->mTitle->getPartialUrl() ) );
+				$nav_urls['log'] = array(
+					'href' => $logPage->getLocalUrl(
+						array(
+							'user' => $this->mTitle->getText()
+						)
+					)
+				);
 			} else {
 				$nav_urls['log'] = false;
 			}

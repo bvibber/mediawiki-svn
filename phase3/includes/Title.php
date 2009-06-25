@@ -1447,7 +1447,7 @@ class Title {
 
 		if( $create_perm ) {
 			$params = array("[create=$create_perm] $expiry_description",'');
-			$log->addEntry( $this->mRestrictions['create'] ? 'modify' : 'protect', $this, trim( $reason ), $params );
+			$log->addEntry( ( isset( $this->mRestrictions['create'] ) && $this->mRestrictions['create'] ) ? 'modify' : 'protect', $this, trim( $reason ), $params );
 		} else {
 			$log->addEntry( 'unprotect', $this, $reason );
 		}
@@ -1483,7 +1483,33 @@ class Title {
 	 */
 	public function userCanRead() {
 		global $wgUser, $wgGroupPermissions;
+		
+		static $useShortcut = null;
 
+		# Initialize the $useShortcut boolean, to determine if we can skip quite a bit of code below
+		if( is_null( $useShortcut ) ) {
+			global $wgRevokePermissions;
+			$useShortcut = true;
+			if( empty( $wgGroupPermissions['*']['read'] ) ) {
+				# Not a public wiki, so no shortcut
+				$useShortcut = false;
+			} elseif( !empty( $wgRevokePermissions ) ) {
+				/*
+				 * Iterate through each group with permissions being revoked (key not included since we don't care
+				 * what the group name is), then check if the read permission is being revoked. If it is, then
+				 * we don't use the shortcut below since the user might not be able to read, even though anon
+				 * reading is allowed.
+				 */
+				foreach( $wgRevokePermissions as $perms ) {
+					if( !empty( $perms['read'] ) ) {
+						# We might be removing the read right from the user, so no shortcut
+						$useShortcut = false;
+						break;
+					}
+				}
+			}
+		}
+		
 		$result = null;
 		wfRunHooks( 'userCan', array( &$this, &$wgUser, 'read', &$result ) );
 		if ( $result !== null ) {
@@ -1491,7 +1517,7 @@ class Title {
 		}
 
 		# Shortcut for public wikis, allows skipping quite a bit of code
-		if ( !empty( $wgGroupPermissions['*']['read'] ) )
+		if ( $useShortcut )
 			return true;
 
 		if( $wgUser->isAllowed( 'read' ) ) {

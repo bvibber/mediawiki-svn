@@ -603,8 +603,8 @@ $2',
 'rev-deleted-comment'         => '(注释挪吥嘞)',
 'rev-deleted-user'            => '(用户名挪吥嘞)',
 'rev-deleted-event'           => '(项目挪吥嘞)',
-'rev-deleted-text-permission' => '个页𠮶改动从共用文档挪吥嘞。到[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 删除日志] 里度倷话伓定有详细𠮶资料。',
-'rev-deleted-text-view'       => '个页𠮶改动从共用文档挪吥嘞。作为本站𠮶管理员，倷查看得正；到[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 删除日志] 里度有详细𠮶资料。',
+'rev-deleted-text-permission' => '个页𠮶改动从共用文档挪吥嘞。到[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 删除日志] 里度倷话伓定有详细𠮶资料。',
+'rev-deleted-text-view'       => '个页𠮶改动从共用文档挪吥嘞。作为本站𠮶管理员，倷查看得正；到[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 删除日志] 里度有详细𠮶资料。',
 'rev-delundel'                => '显示/弆到',
 'revisiondelete'              => '删除/反删除修改',
 'revdelete-nooldid-title'     => '冇目标修订',
@@ -994,8 +994,8 @@ $2',
 
 'brokenredirects'        => '坏吥𠮶重定向页',
 'brokenredirectstext'    => '底下𠮶重定向页面指到𠮶系伓存在𠮶页面:',
-'brokenredirects-edit'   => '(编写)',
-'brokenredirects-delete' => '(删吥)',
+'brokenredirects-edit'   => '编写',
+'brokenredirects-delete' => '删吥',
 
 'withoutinterwiki'         => '冇语言链接𠮶页面',
 'withoutinterwiki-summary' => '底下𠮶页面系冇语言链接到别𠮶语言版本:',
@@ -2045,6 +2045,7 @@ $1',
 
 # Separators for various lists, etc.
 'comma-separator' => '、',
+'parentheses'     => '（$1）',
 
 # Multipage image navigation
 'imgmultipageprev' => '← 上页',

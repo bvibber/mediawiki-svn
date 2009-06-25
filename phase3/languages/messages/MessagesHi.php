@@ -708,10 +708,10 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 'rev-deleted-user'            => '(सदस्यनाम हटाया)',
 'rev-deleted-event'           => '(कार्यकी नोंद हटाई)',
 'rev-deleted-text-permission' => 'इस लेख का अवतरण सामान्य डाटाबेससे हटाया गया हैं।
-इसकी अधिक जानकारी [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} हटाने की सूची] में पाईं जा सकती हैं।',
+इसकी अधिक जानकारी [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} हटाने की सूची] में पाईं जा सकती हैं।',
 'rev-deleted-text-view'       => 'इस लेख का अवतरण सामान्य डाटाबेससे हटाया गया हैं।
 {{SITENAME}} पर प्रबंधक होनेके नाते आप इसे देख सकतें हैं।
-इसकी अधिक जानकारी [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} हटाने की सूची] में पाईं जा सकती हैं।',
+इसकी अधिक जानकारी [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} हटाने की सूची] में पाईं जा सकती हैं।',
 'rev-delundel'                => 'दिखायें/छुपायें',
 'revisiondelete'              => 'अवतरण हटायें/पुनर्स्थापित करें',
 'revdelete-nooldid-title'     => 'लक्ष्य अवतरण गलत',
@@ -1272,8 +1272,8 @@ PICT # misc.
 
 'brokenredirects'        => 'टूटे हुए अनुप्रेष',
 'brokenredirectstext'    => 'नीचे दी गई अनुप्रेषिते अस्तित्व में न होने वाले पन्ने दर्शाती हैं:',
-'brokenredirects-edit'   => '(संपादित करें)',
-'brokenredirects-delete' => '(हटायें)',
+'brokenredirects-edit'   => 'संपादित करें',
+'brokenredirects-delete' => 'हटायें',
 
 'withoutinterwiki'         => 'आंतरविकि कड़ियाँ न होनेवाले लेख',
 'withoutinterwiki-summary' => 'नीचे दिये गये पन्नोंमें अन्य भाषाओंके अवतरणोंसे जुडने वाली कड़ियाँ नहीं हैं:',

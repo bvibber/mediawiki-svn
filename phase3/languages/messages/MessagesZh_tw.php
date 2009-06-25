@@ -16,6 +16,21 @@
  * @author לערי ריינהארט
  */
 
+$specialPageAliases = array(
+	'Disambiguations'           => array( '消歧義頁' ),
+	'Blockme'                   => array( '封禁我' ),
+	'Blockip'                   => array( '查封用戶' ),
+	'Lockdb'                    => array( '鎖定數據庫' ),
+	'Unlockdb'                  => array( '解除數據庫鎖定' ),
+	'FileDuplicateSearch'       => array( '搜索重復文件' ),
+	'Unwatchedpages'            => array( '未被監視的頁面' ),
+	'Listredirects'             => array( '重定向頁面列表' ),
+	'Revisiondelete'            => array( '刪除或恢復版本' ),
+	'Randomredirect'            => array( '隨機重定向頁面' ),
+	'Withoutinterwiki'          => array( '沒有跨語言鏈接的頁面' ),
+	'LinkSearch'                => array( '搜索網頁鏈接' ),
+);
+
 $fallback = 'zh-hant';
 
 $namespaceNames = array(
@@ -267,9 +282,9 @@ $messages = array(
 'rev-deleted-user'            => '(使用者名已移除)',
 'rev-deleted-event'           => '(項目已移除)',
 'rev-deleted-text-permission' => '該頁面修訂已經被從公共文件中移除。
-在[{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。',
+在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。',
 'rev-deleted-text-view'       => '該頁面修訂已經被從公共文件中移除。作為此網站的管理員，您可以檢視它；
-在[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。',
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。',
 'revisiondelete'              => '刪除/復原刪除修訂',
 'revdelete-nooldid-title'     => '沒有目標修訂',
 'revdelete-nooldid-text'      => '您沒有指定此操作的目標修訂。',
@@ -601,8 +616,7 @@ $NEWPAGE
 # Block/unblock
 'blockip'                     => '封鎖使用者',
 'ipadressorusername'          => 'IP地址或使用者名:',
-'ipbreason-dropdown'          => '
-*一般的封鎖理由
+'ipbreason-dropdown'          => '*一般的封鎖理由
 ** 屢次增加不實資料
 ** 刪除頁面內容
 ** 外部連結廣告

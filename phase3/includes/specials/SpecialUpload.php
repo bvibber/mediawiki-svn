@@ -352,14 +352,15 @@ class UploadForm extends SpecialPage {
 			$lnk = $sk->makeKnownLinkObj( $file->getTitle(), '', 'redirect=no' );
 			$warning .= '<li>' . wfMsgExt( 'filepageexists', array( 'parseinline', 'replaceafter' ), $lnk ) . '</li>';
 		} elseif ( $existsType == 'exists-normalized' ) {
-			# Check if image with lowercase extension exists.
+			# Check if image with lowercase extension exists.			
 			# It's not forbidden but in 99% it makes no sense to upload the same filename with uppercase extension
-			$dlink = $sk->makeKnownLinkObj( $file->getTitle() );
-			if ( $file->allowInlineDisplay() ) {
-				$dlink2 = $sk->makeImageLinkObj( $file->getTitle(), wfMsgExt( 'fileexists-thumb', 'parseinline' ),
-					$file->getTitle()->getText(), $align, array(), false, true );
-			} elseif ( !$file->allowInlineDisplay() && $file->isSafeFile() ) {
-				$icon = $file->iconThumb();
+			$dlink = $sk->linkKnown( $nt_lc );
+			if ( $file_lc->allowInlineDisplay() ) {
+				// FIXME: replace deprecated makeImageLinkObj by link()
+				$dlink2 = $sk->makeImageLinkObj( $nt_lc, wfMsgExt( 'fileexists-thumb', 'parseinline' ),
+					$nt_lc->getText(), $align, array(), false, true );
+			} elseif ( !$file_lc->allowInlineDisplay() && $file_lc->isSafeFile() ) {
+				$icon = $file_lc->iconThumb();
 				$dlink2 = '<div style="float:' . $align . '" id="mw-media-icon">' .
 					$icon->toHtml( array( 'desc-link' => true ) ) . '<br />' . $dlink . '</div>';
 			} else {
@@ -371,23 +372,61 @@ class UploadForm extends SpecialPage {
 					$file->getTitle()->getPrefixedText(), $dlink ) .
 				'</li>' . $dlink2;
 
-		} elseif ( $existsType == 'thumb' ) {
-			# Check if an image without leading '180px-' (or similiar) exists
-			$dlink = $sk->makeKnownLinkObj( $file->getTitle() );
-			if ( $file->allowInlineDisplay() ) {
-				$dlink2 = $sk->makeImageLinkObj( $file->getTitle(),
-					wfMsgExt( 'fileexists-thumb', 'parseinline' ),
-					$file->getTitle()->getText(), $align, array(), false, true );
-			} elseif ( !$file->allowInlineDisplay() && $file->isSafeFile() ) {
-				$icon = $file->iconThumb();
-				$dlink2 = '<div style="float:' . $align . '" id="mw-media-icon">' .
-					$icon->toHtml( array( 'desc-link' => true ) ) . '<br />' .
-					$dlink . '</div>';
+		} elseif ( ( substr( $partname , 3, 3 ) == 'px-' || substr( $partname , 2, 3 ) == 'px-' )
+			&& preg_match( "/[0-9]{2}/" , substr( $partname , 0, 2 ) ) )
+		{
+			# Check for filenames like 50px- or 180px-, these are mostly thumbnails
+			$nt_thb = Title::newFromText( substr( $partname , strpos( $partname , '-' ) +1 ) . '.' . $rawExtension );
+			$file_thb = wfLocalFile( $nt_thb );
+			if ($file_thb->exists() ) {
+				# Check if an image without leading '180px-' (or similiar) exists
+				$dlink = $sk->linkKnown( $nt_thb );
+				if ( $file_thb->allowInlineDisplay() ) {
+					// FIXME: replace deprecated makeImageLinkObj by link()
+					$dlink2 = $sk->makeImageLinkObj( $nt_thb,
+						wfMsgExt( 'fileexists-thumb', 'parseinline' ),
+						$nt_thb->getText(), $align, array(), false, true );
+				} elseif ( !$file_thb->allowInlineDisplay() && $file_thb->isSafeFile() ) {
+					$icon = $file_thb->iconThumb();
+					$dlink2 = '<div style="float:' . $align . '" id="mw-media-icon">' .
+						$icon->toHtml( array( 'desc-link' => true ) ) . '<br />' .
+						$dlink . '</div>';
+				} else {
+					$dlink2 = '';
+				}
+
+				$warning .= '<li>' . wfMsgExt( 'fileexists-thumbnail-yes', 'parsemag', $dlink ) .
+					'</li>' . $dlink2;
 			} else {
-				$dlink2 = '';
+				# Image w/o '180px-' does not exists, but we do not like these filenames
+				$warning .= '<li>' . wfMsgExt( 'file-thumbnail-no', 'parseinline' ,
+					substr( $partname , 0, strpos( $partname , '-' ) +1 ) ) . '</li>';
 			}
-			$warning .= '<li>' . wfMsgExt( 'fileexists-thumbnail-yes', 'parsemag', $dlink ) .
-				'</li>' . $dlink2;
+		}
+
+		$filenamePrefixBlacklist = self::getFilenamePrefixBlacklist();
+		# Do the match
+		foreach( $filenamePrefixBlacklist as $prefix ) {
+			if ( substr( $partname, 0, strlen( $prefix ) ) == $prefix ) {
+				$warning .= '<li>' . wfMsgExt( 'filename-bad-prefix', 'parseinline', $prefix ) . '</li>';
+				break;
+			}
+		}
+
+		if ( $file->wasDeleted() && !$file->exists() ) {
+			# If the file existed before and was deleted, warn the user of this
+			# Don't bother doing so if the file exists now, however
+			$ltitle = SpecialPage::getTitleFor( 'Log' );
+			$llink = $sk->linkKnown(
+				$ltitle,
+				wfMsgHtml( 'deletionlog' ),
+				array(),
+				array(
+					'type' => 'delete',
+					'page' => $file->getTitle()->getPrefixedText()
+				)
+			);
+			$warning .= '<li>' . wfMsgWikiHtml( 'filewasdeleted', $llink ) . '</li>';
 		}
 		return $warning;
 	}

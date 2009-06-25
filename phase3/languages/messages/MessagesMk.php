@@ -412,6 +412,29 @@ $messages = array(
 'faq'            => 'ЧПП',
 'faqpage'        => 'Project:ЧПП',
 
+# Vector skin
+'vector-action-delete'       => 'Бриши',
+'vector-action-move'         => 'Премести',
+'vector-action-protect'      => 'Заштити',
+'vector-action-undelete'     => 'Врати',
+'vector-action-unprotect'    => 'Отстрани заштита',
+'vector-namespace-category'  => 'Категорија',
+'vector-namespace-help'      => 'Страница за помош',
+'vector-namespace-image'     => 'Податотека',
+'vector-namespace-main'      => 'Страница',
+'vector-namespace-media'     => 'Мултимедијална страница',
+'vector-namespace-mediawiki' => 'Порака',
+'vector-namespace-project'   => 'Проектна страница',
+'vector-namespace-special'   => 'Специјална страница',
+'vector-namespace-talk'      => 'Дискусија',
+'vector-namespace-template'  => 'Шаблон',
+'vector-namespace-user'      => 'Корисничка страница',
+'vector-view-create'         => 'Креирај',
+'vector-view-edit'           => 'Уреди',
+'vector-view-history'        => 'Види историја',
+'vector-view-view'           => 'Читај',
+'vector-view-viewsource'     => 'Види код',
+
 # Metadata in edit box
 'metadata_help' => 'Метаподатоци:',
 
@@ -431,7 +454,6 @@ $messages = array(
 'permalink'         => 'Перманентна врска',
 'print'             => 'Печати',
 'edit'              => 'Уреди',
-'view'              => 'Читај',
 'create'            => 'Создади',
 'editthispage'      => 'Уреди ја оваа страница',
 'create-this-page'  => 'Создади ја оваа страница',
@@ -975,17 +997,17 @@ $2',
 'rev-deleted-comment'         => '(избришан коментар)',
 'rev-deleted-user'            => '(избришано корисничко име)',
 'rev-deleted-event'           => '(избришан запис на акција)',
-'rev-deleted-text-permission' => "Ревизија на оваа страница е '''избришана'''.
-Можеби има детали во [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} дневникот на бришења].",
+'rev-deleted-text-permission' => "Ревизија на оваа страница била '''избришана'''.
+Можеби има детали во [{{fullurl:Special:Log/suppress|page={{FULLPAGENAMEE}}}} дневникот на бришења].",
 'rev-deleted-text-unhide'     => "Оваа ревизија на страница била '''избришана'''.
-Повеќе детали има во [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} дневникот на бришења].
+Повеќе детали има во [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} дневникот на супресии].
 Како администратор вие сеуште може [$1 да ја погледнете оваа ревизија] ако сакате да продолжите.",
 'rev-deleted-text-view'       => "Ревизија на оваа страница беше '''избришана'''.
-Како администратор вие можете да ја погледнете; можеби има повеќе детали во [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} дневникот на бришења].",
+Како администратор вие можете да ја погледнете; можеби има повеќе детали во [{{fullurl:Special:Log/suppress|page={{FULLPAGENAMEE}}}} дневникот на бришења].",
 'rev-deleted-no-diff'         => "Не може да ја погледнете оваа разлика бидејќи една од ревизиите била '''избришана'''.
-Може да најдете повеќе детали во [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} дневникот на бришења].",
+Може да најдете повеќе детали во [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} дневникот на супресии].",
 'rev-deleted-unhide-diff'     => "Една од ревизиите на оваа разлика била '''избришана'''.
-Можеби има детали во [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} дневникот на бришења].
+Можеби има детали во [{{fullurl:Special:Log/suppress|page={{FULLPAGENAMEE}}}} дневникот на бришења].
 Како администратор вие сеуште можете [$1 да ја видите оваа разлика] ако сакате да продолжите.",
 'rev-delundel'                => 'прикажи/сокриј',
 'revisiondelete'              => 'Избриши/врати ревизии',
@@ -1219,7 +1241,7 @@ $2',
 'mypreferences'               => 'Мои нагодувања',
 'prefs-edits'                 => 'Број на уредувања:',
 'prefsnologin'                => 'Не сте најавени',
-'prefsnologintext'            => 'Мора да бидете <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} најавени]</span> за промена на вашите кориснички нагодувања.',
+'prefsnologintext'            => 'Мора да бидете <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} најавени]</span> за промена на вашите кориснички нагодувања.',
 'changepassword'              => 'Промени лозинка',
 'prefs-skin'                  => 'Маска',
 'skin-preview'                => 'Прегледај',
@@ -1770,8 +1792,8 @@ PICT # misc.
 
 'brokenredirects'        => 'Прекинати пренасочувања',
 'brokenredirectstext'    => 'Следните пренасочувања водат до непостоечки страници.',
-'brokenredirects-edit'   => '(уреди)',
-'brokenredirects-delete' => '(бриши)',
+'brokenredirects-edit'   => 'уреди',
+'brokenredirects-delete' => 'бриши',
 
 'withoutinterwiki'         => 'Страници без интервики (јазични) врски',
 'withoutinterwiki-summary' => 'Следните страници немаат врски до други јазични верзии.',
@@ -1886,8 +1908,9 @@ PICT # misc.
 'special-categories-sort-abc'   => 'алфанумеричко подредување по',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Избришани кориснички придонеси',
-'deletedcontributions-title' => 'Избришани кориснички придонеси',
+'deletedcontributions'             => 'Избришани кориснички придонеси',
+'deletedcontributions-title'       => 'Избришани кориснички придонеси',
+'sp-deletedcontributions-contribs' => 'придонеси',
 
 # Special:LinkSearch
 'linksearch'       => 'Надворешни врски',
@@ -1903,6 +1926,12 @@ PICT # misc.
 'listusersfrom'      => 'Прикажни корисници почнувајќи од:',
 'listusers-submit'   => 'Прикажи',
 'listusers-noresult' => 'Не е пронајден корисник.',
+'listusers-blocked'  => '(блокиран)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Листа на активни корисници',
+'activeusers-from'     => 'Прикажува корисници кои почнуваат на:',
+'activeusers-noresult' => 'Нема пронајдено корисници.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Дневник на регистрирања на корисници',
@@ -1920,7 +1949,6 @@ PICT # misc.
 'listgrouprights-rights'               => 'Права',
 'listgrouprights-helppage'             => 'Help:Права на групи',
 'listgrouprights-members'              => '(листа на членови)',
-'listgrouprights-right-display'        => '$1 ($2)',
 'listgrouprights-addgroup'             => 'Може да додава {{PLURAL:$2|група|групи}}: $1',
 'listgrouprights-removegroup'          => 'Може да брише {{PLURAL:$2|група|групи}}: $1',
 'listgrouprights-addgroup-all'         => 'Може да ги додава сите групи',
@@ -2045,14 +2073,10 @@ $NEWPAGE
 'deletecomment'          => 'Причина за бришење:',
 'deleteotherreason'      => 'Друга/дополнителна причина:',
 'deletereasonotherlist'  => 'Друга причина',
-'deletereason-dropdown'  => '*Вообичаени причини
+'deletereason-dropdown'  => '*Вообичаени причини за бришење
 ** На барање на авторот
 ** Прекршување на авторски права
-** Страница создадена по грешка
-** Несоодветен наслов
-
-*Спам
-**Спам',
+** Вандализам',
 'delete-edit-reasonlist' => 'Уредување на причини за бришење',
 'delete-toobig'          => 'Оваа страница има долга историја на уредување, преку $1 {{PLURAL:$1|ревизија|ревизии}}.
 Бришењето на ваквии страници е забрането со цел да се заштити {{SITENAME}} од оштетувања.',

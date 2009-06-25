@@ -681,7 +681,7 @@ class UndeleteForm {
 				$undelete,
 				htmlspecialchars( $title->getPrefixedText() ),
 				array(),
-				array( 'target' => $title->getPrefixedUrl() )
+				array( 'target' => $title->getPrefixedText() )
 			);
 			$revs = wfMsgExt( 'undeleterevisions',
 				array( 'parseinline' ),
@@ -841,7 +841,7 @@ class UndeleteForm {
 			/// @fixme $rev->getTitle() is null for deleted revs...?
 			$targetPage = SpecialPage::getTitleFor( 'Undelete' );
 			$targetQuery = array(
-				'target' => $this->mTargetObj->getPrefixedUrl(),
+				'target' => $this->mTargetObj->getPrefixedText(),
 				'timestamp' => wfTimestamp( TS_MW, $rev->getTimestamp() )
 			);
 		} else {
@@ -945,7 +945,7 @@ class UndeleteForm {
 			$wgOut->setPagetitle( wfMsg( 'viewdeletedpage' ) );
 		}
 
-		$wgOut->addWikiMsg( 'undeletepagetitle', $this->mTargetObj->getPrefixedText() );
+		$wgOut->wrapWikiMsg(  "<div class='mw-undelete-pagetitle'>\n$1</div>\n", array ( 'undeletepagetitle', $this->mTargetObj->getPrefixedText() ) );
 
 		$archive = new PageArchive( $this->mTargetObj );
 		/*
@@ -955,12 +955,14 @@ class UndeleteForm {
 			return;
 		}
 		*/
+		$wgOut->addHTML( '<div class="mw-undelete-history">' );
 		if ( $this->mAllowed ) {
 			$wgOut->addWikiMsg( "undeletehistory" );
 			$wgOut->addWikiMsg( "undeleterevdel" );
 		} else {
 			$wgOut->addWikiMsg( "undeletehistorynoadmin" );
 		}
+		$wgOut->addHTML( '</div>' );
 
 		# List all stored revisions
 		$revisions = $archive->listRevisions();
@@ -1025,7 +1027,7 @@ class UndeleteForm {
 				Xml::fieldset( wfMsg( 'undelete-fieldset-title' ) ) .
 				Xml::openElement( 'table', array( 'id' => 'mw-undelete-table' ) ) .
 					"<tr>
-						<td colspan='2'>" .
+						<td colspan='2' class='mw-undelete-extrahelp'>" .
 							wfMsgWikiHtml( 'undeleteextrahelp' ) .
 						"</td>
 					</tr>
@@ -1120,7 +1122,7 @@ class UndeleteForm {
 					wfMsgHtml('diff'),
 					array(),
 					array(
-						'target' => $this->mTargetObj->getPrefixedUrl(),
+						'target' => $this->mTargetObj->getPrefixedText(),
 						'timestamp' => $ts,
 						'diff' => 'prev'
 					)
@@ -1218,7 +1220,7 @@ class UndeleteForm {
 				$time,
 				array(),
 				array(
-					'target' => $this->mTargetObj->getPrefixedUrl(),
+					'target' => $this->mTargetObj->getPrefixedText(),
 					'timestamp' => $ts
 				)
 			);
@@ -1243,7 +1245,7 @@ class UndeleteForm {
 				$wgLang->timeanddate( $ts, true ),
 				array(),
 				array(
-					'target' => $this->mTargetObj->getPrefixedUrl(),
+					'target' => $this->mTargetObj->getPrefixedText(),
 					'file' => $key,
 					'token' => $wgUser->editToken( $key )
 				)

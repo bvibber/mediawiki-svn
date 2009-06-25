@@ -441,7 +441,7 @@ class Parser
 		wfProfileIn( __METHOD__ );
 		wfRunHooks( 'ParserBeforeStrip', array( &$this, &$text, &$this->mStripState ) );
 		wfRunHooks( 'ParserAfterStrip', array( &$this, &$text, &$this->mStripState ) );
-		$text = $this->internalParse( $text );
+		$text = $this->internalParse( $text, false );
 		wfProfileOut( __METHOD__ );
 		return $text;
 	}
@@ -862,9 +862,10 @@ class Parser
 	 *
 	 * @private
 	 */
-	function internalParse( $text ) {
-		$isMain = true;
+	function internalParse( $text, $isMain = true ) {
 		wfProfileIn( __METHOD__ );
+		
+		$origText = $text;
 
 		# Hook to suspend the parser in this state
 		if ( !wfRunHooks( 'ParserBeforeInternalParse', array( &$this, &$text, &$this->mStripState ) ) ) {
@@ -899,7 +900,7 @@ class Parser
 		$text = str_replace($this->mUniqPrefix.'NOPARSE', '', $text);
 
 		$text = $this->doMagicLinks( $text );
-		$text = $this->formatHeadings( $text, $isMain );
+		$text = $this->formatHeadings( $text, $origText, $isMain );
 
 		wfProfileOut( __METHOD__ );
 		return $text;
@@ -1934,9 +1935,9 @@ class Parser
 		$result = $this->closeParagraph();
 
 		if ( '*' === $char ) { $result .= '<ul><li>'; }
-		else if ( '#' === $char ) { $result .= '<ol><li>'; }
-		else if ( ':' === $char ) { $result .= '<dl><dd>'; }
-		else if ( ';' === $char ) {
+		elseif ( '#' === $char ) { $result .= '<ol><li>'; }
+		elseif ( ':' === $char ) { $result .= '<dl><dd>'; }
+		elseif ( ';' === $char ) {
 			$result .= '<dl><dt>';
 			$this->mDTopen = true;
 		}
@@ -1947,7 +1948,7 @@ class Parser
 
 	/* private */ function nextItem( $char ) {
 		if ( '*' === $char || '#' === $char ) { return '</li><li>'; }
-		else if ( ':' === $char || ';' === $char ) {
+		elseif ( ':' === $char || ';' === $char ) {
 			$close = '</dd>';
 			if ( $this->mDTopen ) { $close = '</dt>'; }
 			if ( ';' === $char ) {
@@ -1963,8 +1964,8 @@ class Parser
 
 	/* private */ function closeList( $char ) {
 		if ( '*' === $char ) { $text = '</li></ul>'; }
-		else if ( '#' === $char ) { $text = '</li></ol>'; }
-		else if ( ':' === $char ) {
+		elseif ( '#' === $char ) { $text = '</li></ol>'; }
+		elseif ( ':' === $char ) {
 			if ( $this->mDTopen ) {
 				$this->mDTopen = false;
 				$text = '</dt></dl>';
@@ -1980,6 +1981,7 @@ class Parser
 	/**
 	 * Make lists from lines starting with ':', '*', '#', etc. (DBL)
 	 *
+	 * @param $linestart bool whether or not this is at the start of a line.
 	 * @private
 	 * @return string the lists rendered as HTML
 	 */
@@ -2004,16 +2006,24 @@ class Parser
 				$linestart = true;
 				continue;
 			}
+			// * = ul
+			// # = ol
+			// ; = dt
+			// : = dd
 
 			$lastPrefixLength = strlen( $lastPrefix );
 			$preCloseMatch = preg_match('/<\\/pre/i', $oLine );
 			$preOpenMatch = preg_match('/<pre/i', $oLine );
+			// If not in a <pre> element, scan for and figure out what prefixes are there.
 			if ( !$this->mInPre ) {
 				# Multiple prefixes may abut each other for nested lists.
 				$prefixLength = strspn( $oLine, '*#:;' );
 				$prefix = substr( $oLine, 0, $prefixLength );
 
 				# eh?
+				// ; and : are both from definition-lists, so they're equivalent
+				//  for the purposes of determining whether or not we need to open/close
+				//  elements.
 				$prefix2 = str_replace( ';', ':', $prefix );
 				$t = substr( $oLine, $prefixLength );
 				$this->mInPre = (bool)$preOpenMatch;
@@ -2042,17 +2052,24 @@ class Parser
 					}
 				}
 			} elseif( $prefixLength || $lastPrefixLength ) {
+				// We need to open or close prefixes, or both.
+				
 				# Either open or close a level...
 				$commonPrefixLength = $this->getCommon( $prefix, $lastPrefix );
 				$paragraphStack = false;
 
+				// Close all the prefixes which aren't shared.
 				while( $commonPrefixLength < $lastPrefixLength ) {
 					$output .= $this->closeList( $lastPrefix[$lastPrefixLength-1] );
 					--$lastPrefixLength;
 				}
+				
+				// Continue the current prefix if appropriate.
 				if ( $prefixLength <= $commonPrefixLength && $commonPrefixLength > 0 ) {
 					$output .= $this->nextItem( $prefix[$commonPrefixLength-1] );
 				}
+				
+				// Open prefixes where appropriate.
 				while ( $prefixLength > $commonPrefixLength ) {
 					$char = substr( $prefix, $commonPrefixLength, 1 );
 					$output .= $this->openList( $char );
@@ -2068,6 +2085,8 @@ class Parser
 				}
 				$lastPrefix = $prefix2;
 			}
+			
+			// If we have no prefixes, go to paragraph mode.
 			if( 0 == $prefixLength ) {
 				wfProfileIn( __METHOD__."-paragraph" );
 				# No prefix (not in list)--go to paragraph mode
@@ -3373,10 +3392,11 @@ class Parser
 	 * string and re-inserts the newly formatted headlines.
 	 *
 	 * @param string $text
+	 * @param string $origText Original, untouched wikitext
 	 * @param boolean $isMain
 	 * @private
 	 */
-	function formatHeadings( $text, $isMain=true ) {
+	function formatHeadings( $text, $origText, $isMain=true ) {
 		global $wgMaxTocLevel, $wgContLang, $wgEnforceHtmlIds;
 
 		$doNumberHeadings = $this->mOptions->getNumberHeadings();
@@ -3442,6 +3462,12 @@ class Parser
 		$prevtoclevel = 0;
 		$markerRegex = "{$this->mUniqPrefix}-h-(\d+)-" . self::MARKER_SUFFIX;
 		$baseTitleText = $this->mTitle->getPrefixedDBkey();
+		$oldType = $this->mOutputType;
+		$this->setOutputType( self::OT_WIKI );
+		$frame = $this->getPreprocessor()->newFrame();
+		$root = $this->preprocessToDom( $origText );
+		$node = $root->getFirstChild();
+		$byteOffset = 0;
 		$tocraw = array();
 
 		foreach( $matches[3] as $headline ) {
@@ -3463,64 +3489,61 @@ class Parser
 			}
 			$level = $matches[1][$headlineCount];
 
-			if( $doNumberHeadings || $enoughToc ) {
+			if ( $level > $prevlevel ) {
+				# Increase TOC level
+				$toclevel++;
+				$sublevelCount[$toclevel] = 0;
+				if( $toclevel<$wgMaxTocLevel ) {
+					$prevtoclevel = $toclevel;
+					$toc .= $sk->tocIndent();
+					$numVisible++;
+				}
+			}
+			elseif ( $level < $prevlevel && $toclevel > 1 ) {
+				# Decrease TOC level, find level to jump to
 
-				if ( $level > $prevlevel ) {
-					# Increase TOC level
-					$toclevel++;
-					$sublevelCount[$toclevel] = 0;
-					if( $toclevel<$wgMaxTocLevel ) {
+				for ($i = $toclevel; $i > 0; $i--) {
+					if ( $levelCount[$i] == $level ) {
+						# Found last matching level
+						$toclevel = $i;
+						break;
+					}
+					elseif ( $levelCount[$i] < $level ) {
+						# Found first matching level below current level
+						$toclevel = $i + 1;
+						break;
+					}
+				}
+				if( $i == 0 ) $toclevel = 1;
+				if( $toclevel<$wgMaxTocLevel ) {
+					if($prevtoclevel < $wgMaxTocLevel) {
+						# Unindent only if the previous toc level was shown :p
+						$toc .= $sk->tocUnindent( $prevtoclevel - $toclevel );
 						$prevtoclevel = $toclevel;
-						$toc .= $sk->tocIndent();
-						$numVisible++;
-					}
-				}
-				elseif ( $level < $prevlevel && $toclevel > 1 ) {
-					# Decrease TOC level, find level to jump to
-
-					for ($i = $toclevel; $i > 0; $i--) {
-						if ( $levelCount[$i] == $level ) {
-							# Found last matching level
-							$toclevel = $i;
-							break;
-						}
-						elseif ( $levelCount[$i] < $level ) {
-							# Found first matching level below current level
-							$toclevel = $i + 1;
-							break;
-						}
-					}
-					if( $i == 0 ) $toclevel = 1;
-					if( $toclevel<$wgMaxTocLevel ) {
-						if($prevtoclevel < $wgMaxTocLevel) {
-							# Unindent only if the previous toc level was shown :p
-							$toc .= $sk->tocUnindent( $prevtoclevel - $toclevel );
-							$prevtoclevel = $toclevel;
-						} else {
-							$toc .= $sk->tocLineEnd();
-						}
-					}
-				}
-				else {
-					# No change in level, end TOC line
-					if( $toclevel<$wgMaxTocLevel ) {
+					} else {
 						$toc .= $sk->tocLineEnd();
 					}
 				}
+			}
+			else {
+				# No change in level, end TOC line
+				if( $toclevel<$wgMaxTocLevel ) {
+					$toc .= $sk->tocLineEnd();
+				}
+			}
 
-				$levelCount[$toclevel] = $level;
+			$levelCount[$toclevel] = $level;
 
-				# count number of headlines for each level
-				@$sublevelCount[$toclevel]++;
-				$dot = 0;
-				for( $i = 1; $i <= $toclevel; $i++ ) {
-					if( !empty( $sublevelCount[$i] ) ) {
-						if( $dot ) {
-							$numbering .= '.';
-						}
-						$numbering .= $wgContLang->formatNum( $sublevelCount[$i] );
-						$dot = 1;
+			# count number of headlines for each level
+			@$sublevelCount[$toclevel]++;
+			$dot = 0;
+			for( $i = 1; $i <= $toclevel; $i++ ) {
+				if( !empty( $sublevelCount[$i] ) ) {
+					if( $dot ) {
+						$numbering .= '.';
 					}
+					$numbering .= $wgContLang->formatNum( $sublevelCount[$i] );
+					$dot = 1;
 				}
 			}
 
@@ -3620,9 +3643,33 @@ class Parser
 				$legacyAnchor .= '_' . $refers[$legacyArrayKey];
 			}
 			if( $enoughToc && ( !isset($wgMaxTocLevel) || $toclevel<$wgMaxTocLevel ) ) {
-				$toc .= $sk->tocLine($anchor, $tocline, $numbering, $toclevel);
-				$tocraw[] = array( 'toclevel' => $toclevel, 'level' => $level, 'line' => $tocline, 'number' => $numbering );
+				$toc .= $sk->tocLine($anchor, $tocline,
+					$numbering, $toclevel, ($isTemplate ? false : $sectionIndex));
 			}
+			
+			# Add the section to the section tree
+			# Find the DOM node for this header
+			while ( $node && !$isTemplate ) {
+				if ( $node->getName() === 'h' ) {
+					$bits = $node->splitHeading();
+					if ( $bits['i'] == $sectionIndex )
+						break;
+				}
+				$byteOffset += mb_strlen( $this->mStripState->unstripBoth( 
+					$frame->expand( $node, PPFrame::RECOVER_ORIG ) ) );
+				$node = $node->getNextSibling();
+			}
+			$tocraw[] = array( 
+				'toclevel' => $toclevel,
+				'level' => $level,
+				'line' => $tocline,
+				'number' => $numbering,
+				'index' => ($isTemplate ? 'T-' : '' ) . $sectionIndex,
+				'fromtitle' => $titleText,
+				'byteoffset' => ( $isTemplate ? null : $byteOffset ),
+				'anchor' => $anchor,
+			);
+			
 			# give headline the correct <h#> tag
 			if( $showEditLink && $sectionIndex !== false ) {
 				if( $isTemplate ) {
@@ -3642,7 +3689,7 @@ class Parser
 			$headlineCount++;
 		}
 
-		$this->mOutput->setSections( $tocraw );
+		$this->setOutputType( $oldType );
 
 		# Never ever show TOC if no headers
 		if( $numVisible < 1 ) {
@@ -3654,6 +3701,11 @@ class Parser
 				$toc .= $sk->tocUnindent( $prevtoclevel - 1 );
 			}
 			$toc = $sk->tocList( $toc );
+		}
+		
+		if ( $isMain ) {
+			$this->mOutput->setSections( $tocraw );
+			$this->mOutput->setTOCHTML( $toc );
 		}
 
 		# split up and insert constructed headlines
@@ -3686,6 +3738,96 @@ class Parser
 		} else {
 			return $full;
 		}
+	}
+	
+	/**
+	 * Merge $tree2 into $tree1 by replacing the section with index
+	 * $section in $tree1 and its descendants with the sections in $tree2.
+	 * Note that in the returned section tree, only the 'index' and
+	 * 'byteoffset' fields are guaranteed to be correct.
+	 * @param $tree1 array Section tree from ParserOutput::getSectons()
+	*  @param $tree2 array Section tree
+	 * @param $section int Section index
+	 * @param $title Title Title both section trees come from
+	 * @param $len2 int Length of the original wikitext for $tree2
+	 * @return array Merged section tree
+	 */
+	public static function mergeSectionTrees( $tree1, $tree2, $section, $title, $len2 ) {
+		global $wgContLang;
+		$newTree = array();
+		$targetLevel = false;
+		$merged = false;
+		$lastLevel = 1;
+		$nextIndex = 1;
+		$numbering = array( 0 );
+		$titletext = $title->getPrefixedDBkey();
+		foreach ( $tree1 as $s ) {
+			if ( $targetLevel !== false ) { 
+				if ( $s['level'] <= $targetLevel )
+					// We've skipped enough
+					$targetLevel = false;
+				else
+					continue;
+			}
+			if ( $s['index'] != $section ||
+					$s['fromtitle'] != $titletext ) {
+				self::incrementNumbering( $numbering,
+					$s['toclevel'], $lastLevel );
+				
+				// Rewrite index, byteoffset and number
+				if ( $s['fromtitle'] == $titletext ) {
+					$s['index'] = $nextIndex++;
+					if ( $merged )
+						$s['byteoffset'] += $len2;
+				}
+				$s['number']  = implode( '.', array_map(
+					array( $wgContLang, 'formatnum' ),
+					$numbering ) );
+				$lastLevel = $s['toclevel'];
+				$newTree[] = $s;
+			} else {
+				// We're at $section
+				// Insert sections from $tree2 here
+				foreach ( $tree2 as $s2 ) {
+					// Rewrite the fields in $s2
+					// before inserting it
+					$s2['toclevel'] += $s['toclevel'] - 1;
+					$s2['level'] += $s['level'] - 1;
+					$s2['index'] = $nextIndex++;
+					$s2['byteoffset'] += $s['byteoffset'];
+					
+					self::incrementNumbering( $numbering,
+						$s2['toclevel'], $lastLevel );
+					$s2['number']  = implode( '.', array_map(
+						array( $wgContLang, 'formatnum' ),
+						$numbering ) );
+					$lastLevel = $s2['toclevel'];
+					$newTree[] = $s2;
+				}
+				// Skip all descendants of $section in $tree1
+				$targetLevel = $s['level'];
+				$merged = true;
+			}
+		}
+		return $newTree;
+	}
+	
+	/**
+	 * Increment a section number. Helper function for mergeSectionTrees()
+	 * @param $number array Array representing a section number
+	 * @param $level int Current TOC level (depth)
+	 * @param $lastLevel int Level of previous TOC entry
+	 */
+	private static function incrementNumbering( &$number, $level, $lastLevel ) {
+		if ( $level > $lastLevel )
+			$number[$level - 1] = 1;
+		else if ( $level < $lastLevel ) {
+			foreach ( $number as $key => $unused )
+				if ( $key >= $level )
+					unset( $number[$key] );
+			$number[$level - 1]++;
+		} else
+			$number[$level - 1]++;
 	}
 	
 	/**
@@ -3812,7 +3954,7 @@ class Parser
 
 		$username = $user->getName();
 		$nickname = $user->getOption( 'nickname' );
-		$nickname = $nickname === '' ? $username : $nickname;
+		$nickname = $nickname === null ? $username : $nickname;
 
 		if( mb_strlen( $nickname ) > $wgMaxSigChars ) {
 			$nickname = $username;

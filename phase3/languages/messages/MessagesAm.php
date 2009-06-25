@@ -776,7 +776,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'mypreferences'             => 'ምርጫዎች፤',
 'prefs-edits'               => 'የለውጦች ቁጥር:',
 'prefsnologin'              => 'ገና አልገቡም',
-'prefsnologintext'          => 'ምርጫዎችዎን ለማስተካከል አስቀድሞ <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} መግባት]</span>  ያስፈልግዎታል።',
+'prefsnologintext'          => 'ምርጫዎችዎን ለማስተካከል አስቀድሞ <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} መግባት]</span>  ያስፈልግዎታል።',
 'changepassword'            => 'መግቢያ ቃልዎን ለመቀየር',
 'prefs-skin'                => 'የድህረ-ገጽ መልክ',
 'skin-preview'              => 'ቅድመ-ዕይታ',
@@ -1180,8 +1180,8 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 
 'brokenredirects'        => 'ሰባራ መምሪያ መንገዶች',
 'brokenredirectstext'    => 'እነዚህ መምሪያ መንገዶች ወደማይኖር ጽሑፍ ይመራሉ።',
-'brokenredirects-edit'   => '(ለማስተካከል)',
-'brokenredirects-delete' => '(ለማጥፋት)',
+'brokenredirects-edit'   => 'ለማስተካከል',
+'brokenredirects-delete' => 'ለማጥፋት',
 
 'withoutinterwiki'         => 'በሌሎች ቋንቋዎች ያልተያያዙ',
 'withoutinterwiki-summary' => 'እነዚህ ጽሑፎች «በሌሎች ቋንቋዎች» ሥር ወደሆኑት ሌሎች ትርጉሞች ገና አልተያያዙም።',

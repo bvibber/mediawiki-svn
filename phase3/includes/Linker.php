@@ -337,6 +337,7 @@ class Linker {
 		global $wgUser;
 		$threshold = intval( $wgUser->getOption( 'stubthreshold' ) );
 		$colour = ( $size < $threshold ) ? 'stub' : '';
+		// FIXME: replace deprecated makeColouredLinkObj by link()
 		return $this->makeColouredLinkObj( $nt, $colour, $text, $query, $trail, $prefix );
 	}
 
@@ -1046,7 +1047,8 @@ class Linker {
 		if( preg_match( '/^' . $medians . '(.*)$/i', $match[1], $submatch ) ) {
 			# Media link; trail not supported.
 			$linkRegexp = '/\[\[(.*?)\]\]/';
-			$thelink = $this->makeMediaLink( $submatch[1], "", $text );
+			$title = Title::makeTitleSafe( NS_FILE, $submatch[1] );
+			$thelink = $this->makeMediaLinkObj( $title, $text );
 		} else {
 			# Other kind of link
 			if( preg_match( $wgContLang->linkTrail(), $match[4], $submatch ) ) {
@@ -1140,8 +1142,11 @@ class Linker {
 	/**
 	 * parameter level defines if we are on an indentation level
 	 */
-	function tocLine( $anchor, $tocline, $tocnumber, $level ) {
-		return "\n<li class=\"toclevel-$level\"><a href=\"#" .
+	function tocLine( $anchor, $tocline, $tocnumber, $level, $sectionIndex = false ) {
+		$classes = "toclevel-$level";
+		if ( $sectionIndex !== false )
+			$classes .= " tocsection-$sectionIndex";
+		return "\n<li class=\"$classes\"><a href=\"#" .
 			$anchor . '"><span class="tocnumber">' .
 			$tocnumber . '</span> <span class="toctext">' .
 			$tocline . '</span></a>';
@@ -1170,6 +1175,32 @@ class Linker {
 		 . ' showTocToggle();'
 		 . ' } '
 		 . "</script>\n";
+	}
+	
+	/**
+	 * Generate a table of contents from a section tree
+	 * @param $tree Return value of ParserOutput::getSections()
+	 * @return string HTML
+	 */
+	public function generateTOC( $tree ) {
+		$toc = '';
+		$lastLevel = 0;
+		foreach ( $tree as $section ) {
+			if ( $section['toclevel'] > $lastLevel )
+				$toc .= $this->tocIndent();
+			else if ( $secton['toclevel'] < $lastLevel )
+				$toc .= $this->tocUnindent(
+					$lastLevel - $section['toclevel'] );
+			else
+				$toc .= $this->tocLineEnd();
+			
+			$toc .= $this->tocLine( $section['anchor'],
+				$section['line'], $section['number'],
+				$section['toclevel'], $section['index'] );
+			$lastLevel = $section['toclevel'];
+		}
+		$toc .= $this->tocLineEnd();
+		return $this->tocList( $toc );
 	}
 
 	/**
@@ -1740,6 +1771,7 @@ class Linker {
 		} else $style = '';
 		return $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix, '', $style );
 	}
+
 	/** Obsolete alias */
 	function makeImage( $url, $alt = '' ) {
 		wfDeprecated( __METHOD__ );
@@ -1795,6 +1827,7 @@ class Linker {
 	 * Used to generate section edit links that point to "other" pages
 	 * (sections that are really part of included pages).
 	 *
+	 * @deprecated use Linker::doEditSectionLink()
 	 * @param $title Title string.
 	 * @param $section Integer: section number.
 	 */
@@ -1805,6 +1838,7 @@ class Linker {
 	}
 
 	/**
+	 * @deprecated use Linker::doEditSectionLink()
 	 * @param $nt Title object.
 	 * @param $section Integer: section number.
 	 * @param $hint Link String: title, or default if omitted or empty

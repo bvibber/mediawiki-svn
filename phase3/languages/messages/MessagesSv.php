@@ -425,6 +425,30 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
+# Vector skin
+'vector-action-addsection'   => 'Nytt ämne',
+'vector-action-delete'       => 'Radera',
+'vector-action-move'         => 'Flytta',
+'vector-action-protect'      => 'Beskydda',
+'vector-action-undelete'     => 'Återställ',
+'vector-action-unprotect'    => 'Ta bort beskyddning',
+'vector-namespace-category'  => 'Kategori',
+'vector-namespace-help'      => 'Hjälpsida',
+'vector-namespace-image'     => 'Fil',
+'vector-namespace-main'      => 'Sida',
+'vector-namespace-media'     => 'Mediasida',
+'vector-namespace-mediawiki' => 'Systemmeddelande',
+'vector-namespace-project'   => 'Projektsida',
+'vector-namespace-special'   => 'Specialsida',
+'vector-namespace-talk'      => 'Diskussion',
+'vector-namespace-template'  => 'Mall',
+'vector-namespace-user'      => 'Användarsida',
+'vector-view-create'         => 'Skapa',
+'vector-view-edit'           => 'Redigera',
+'vector-view-history'        => 'Visa historik',
+'vector-view-view'           => 'Visa',
+'vector-view-viewsource'     => 'Visa källa',
+
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
 
@@ -444,7 +468,6 @@ $messages = array(
 'permalink'         => 'Permanent länk',
 'print'             => 'Skriv ut',
 'edit'              => 'Redigera',
-'view'              => 'Visa',
 'create'            => 'Skapa',
 'editthispage'      => 'Redigera denna sida',
 'create-this-page'  => 'Skapa denna sida',
@@ -968,16 +991,16 @@ Prova att [[Special:Search|söka på wikin]] för relevanta nya sidor.',
 'rev-deleted-user'            => '(användarnamn borttaget)',
 'rev-deleted-event'           => '(loggåtgärd borttagen)',
 'rev-deleted-text-permission' => "Denna version av sidan har '''raderats'''.
-Det kan finnas mer information i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} borttagningsloggen].",
+Det kan finnas mer information i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} undanhållandeloggen].",
 'rev-deleted-text-unhide'     => "Den här versionen av sidan har '''raderats'''.
-Det kan finnas mer information i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} borttagningsloggen].
+Det kan finnas mer information i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} undanhållandeloggen].
 Som administratör kan du fortfarande [$1 se den här versionen] om du önskar att fortsätta.",
 'rev-deleted-text-view'       => "Denna version av sidan har '''raderats'''.
-Som administratör kan du se den; det kan finnas mer information i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} borttagningsloggen].",
+Som administratör kan du se den; det kan finnas mer information i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} undanhållandeloggen].",
 'rev-deleted-no-diff'         => "Du kan inte se den här diffen på grund av att en av versionerna har '''raderats'''.
-Det kan finnas mer information i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} borttagningsloggen].",
+Det kan finnas mer information i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} undanhållandeloggen].",
 'rev-deleted-unhide-diff'     => "En av versionerna för den här diffen har '''raderats'''.
-Det kan finnas mer information i [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} borttagningsloggen].
+Det kan finnas mer information i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} undanhållandeloggen].
 Som administratör kan du fortfarande [$1 se den här diffen] om du önskar att fortsätta.",
 'rev-delundel'                => 'visa/göm',
 'revisiondelete'              => 'Ta bort/återställ versioner',
@@ -1032,6 +1055,16 @@ $1",
 'revdelete-unhid'             => 'synliggjorde $1',
 'revdelete-log-message'       => '$1 för $2 {{PLURAL:$2|sidversion|sidversioner}}',
 'logdelete-log-message'       => '$1 för $2 {{PLURAL:$2|åtgärd|åtgärder}}',
+'revdelete-hide-current'      => 'Fel vid döljande av objektet daterat $2, $1: detta är nuvarande version.
+Den kan inte döljas.',
+'revdelete-show-no-access'    => 'Fel vid visning av objektet daterat $2, $1: detta objekt har markerats "begränsat".
+Du har inte behörighet till det.',
+'revdelete-modify-no-access'  => 'Fel vid förändring av objektet daterat $2, $1: detta objekt har markerats "begränsat".
+Du har inte behörighet till det.',
+'revdelete-modify-missing'    => 'Fel vid förändring av objektet med ID $1: det saknas i databasen!',
+'revdelete-no-change'         => "'''Varning:''' objektet daterat $2, $1 hade redan de begärda synlighetsinställningarna.",
+'revdelete-concurrent-change' => 'Fel vid förändring av objektet daterat $2, $1: dess status verkar ha ändrats av någon annan medan du försökte förändra det.
+Vänligen kontrollera loggarna.',
 'revdelete-only-restricted'   => 'Du kan inte hindra visning av objekt av administratörer utan att också välja en av de övriga visningshindrande alternativen.',
 
 # Suppression log
@@ -1213,7 +1246,7 @@ Notera dock att deras indexering av {{SITENAME}} kan vara något föråldrad.',
 'mypreferences'                 => 'Mina inställningar',
 'prefs-edits'                   => 'Antal redigeringar:',
 'prefsnologin'                  => 'Inte inloggad',
-'prefsnologintext'              => 'Du måste vara <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} inloggad]</span> för att kunna ändra dina inställningar.',
+'prefsnologintext'              => 'Du måste vara <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} inloggad]</span> för att kunna ändra dina inställningar.',
 'changepassword'                => 'Byt lösenord',
 'prefs-skin'                    => 'Utseende',
 'skin-preview'                  => 'förhandsvisning',
@@ -1758,8 +1791,8 @@ En sida anses vara en förgreningssida om den inkluderar en mall som länkas til
 
 'brokenredirects'        => 'Trasiga omdirigeringar',
 'brokenredirectstext'    => 'Följande omdirigerar länkar till ej existerande sidor:',
-'brokenredirects-edit'   => '(redigera)',
-'brokenredirects-delete' => '(radera)',
+'brokenredirects-edit'   => 'redigera',
+'brokenredirects-delete' => 'radera',
 
 'withoutinterwiki'         => 'Sidor utan språklänkar',
 'withoutinterwiki-summary' => 'Följande sidor innehåller inte några länkar till andra språkversioner.',
@@ -1873,8 +1906,9 @@ Se även [[Special:WantedCategories|önskade kategorier]].',
 'special-categories-sort-abc'   => 'sortera alfabetiskt',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Raderade användarbidrag',
-'deletedcontributions-title' => 'Raderade användarbidrag',
+'deletedcontributions'             => 'Raderade användarbidrag',
+'deletedcontributions-title'       => 'Raderade användarbidrag',
+'sp-deletedcontributions-contribs' => 'bidrag',
 
 # Special:LinkSearch
 'linksearch'       => 'Externa länkar',
@@ -1890,6 +1924,13 @@ Stödda protokoll: <tt>$1</tt>',
 'listusersfrom'      => 'Visa användare från och med:',
 'listusers-submit'   => 'Visa',
 'listusers-noresult' => 'Ingen användare hittades.',
+'listusers-blocked'  => '(blockerad)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Lista över aktiva användare',
+'activeusers-count'    => '$1 {{PLURAL:$1|nylig redigering|nyliga redigeringar}}',
+'activeusers-from'     => 'Visa användare från och med:',
+'activeusers-noresult' => 'Inga användare funna.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Logg över nya användare',
@@ -1903,6 +1944,8 @@ Stödda protokoll: <tt>$1</tt>',
 'listgrouprights'                      => 'Behörigheter för användargrupper',
 'listgrouprights-summary'              => 'Följande lista visar vilka användargrupper som är definierade på den här wikin och vilka behörigheter grupperna har.
 Det kan finnas [[{{MediaWiki:Listgrouprights-helppage}}|ytterligare information]] om de olika behörigheterna.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Given rättighet</span>
+* <span class="listgrouprights-revoked">Tillbakatagen rättighet</span>',
 'listgrouprights-group'                => 'Grupp',
 'listgrouprights-rights'               => 'Behörigheter',
 'listgrouprights-helppage'             => 'Help:Gruppbehörigheter',
