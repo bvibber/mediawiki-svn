@@ -16,32 +16,14 @@ textarea#wpTextbox1 {
 	margin: 0;
 }
 /* ... */
+
 div#edittoolbar {
 	border: solid silver 1px;
 	border-bottom-width: 0;
 	background-color: #F3F3F3;
 }
-div#edittoolbar ul.tabs {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-div#edittoolbar ul.tabs,
-div#edittoolbar div.group {
-	float: left;
-	height: 26px;
-	margin: 3px;
-	padding-left: 3px;
-	border-left: solid 1px #DDDDDD;
-}
-body.rtl div#edittoolbar ul.tabs,
-body.rtl div#edittoolbar div.group {
-	float: right;
-	padding-left: 0;
-	padding-right: 3px;
-	border-left: none;
-	border-right: solid 1px #DDDDDD;
-}
+
+/* Sections */
 div#edittoolbar div.sections {
 	float: left;
 	width: 100%;
@@ -80,6 +62,79 @@ div#edittoolbar div.sections div.loading div.progress {
 	padding-right: 32px;
 	float: right;
 }
+
+/* Toolbar Groups and Tabs */
+div#edittoolbar ul.tabs,
+div#edittoolbar div.group {
+	float: left;
+	height: 26px;
+	margin: 3px;
+	padding: 0;
+	padding-left: 3px;
+	border-left: solid 1px #DDDDDD;
+}
+div#edittoolbar div.first {
+	border-left: none;
+}
+body.rtl div#edittoolbar ul.tabs,
+body.rtl div#edittoolbar div.group {
+	float: right;
+	padding-left: 0;
+	padding-right: 3px;
+	border-left: none;
+	border-right: solid 1px #DDDDDD;
+}
+body.rtl div#edittoolbar div.first {
+	border-right: none;
+}
+
+/* Tabs */
+div#edittoolbar ul.tabs {
+	list-style: none;
+}
+div#edittoolbar ul.tabs li.tab {
+	display: inline-block;
+	float: left;
+	line-height: 26px;
+}
+body.rtl div#edittoolbar ul.tabs li.tab {
+	float: right;
+}
+div#edittoolbar ul.tabs li.tab a,
+div#edittoolbar ul.tabs li.tab a:visited {
+	display: inline-block;
+	float: left;
+	padding-left: 18px;
+	padding-right: 12px;
+	height: 26px;
+	cursor: pointer;
+	color: #0645ad;
+	background-image: url(images/arrow-right.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+body.rtl div#edittoolbar ul.tabs li.tab a,
+body.rtl div#edittoolbar ul.tabs li.tab a:visited {
+	float: right;
+	padding-left: 12px;
+	padding-right: 18px;
+	background-image: url(images/arrow-left.png);
+	background-position: right center;
+}
+div#edittoolbar ul.tabs li.tab a.current,
+div#edittoolbar ul.tabs li.tab a.current:visited {
+	color: #333333;
+	background-image: url(images/arrow-down.png);
+}
+body.rtl div#edittoolbar ul.tabs li.tab a.current,
+body.rtl div#edittoolbar ul.tabs li.tab a.current:visited {
+	background-image: url(images/arrow-down.png);
+}
+div#edittoolbar ul.tabs li.tab a.current:hover {
+	text-decoration: none;
+}
+
+/* Toolbar */
 div#edittoolbar div.group div.label {
 	float: left;
 	border: 0px;
@@ -96,7 +151,7 @@ body.rtl div#edittoolbar div.group div.label {
 	margin-left: 8px;
 	margin-right: 5px;
 }
-div#edittoolbar div.group img.tool {
+div#edittoolbar div.group input.tool {
 	float: left;
 	border: 0px;
 	height: 22px;
@@ -104,7 +159,7 @@ div#edittoolbar div.group img.tool {
 	padding: 2px;
 	cursor: pointer;
 }
-body.rtl div#edittoolbar div.group img {
+body.rtl div#edittoolbar div.group input.tool {
 	float: right;
 }
 div#edittoolbar div.group select {
@@ -117,6 +172,8 @@ body.rtl div#edittoolbar div.group select {
 	float: right;
 	font-size: 0.9em;
 }
+
+/* Booklet */
 div#edittoolbar div.index {
 	float: left;
 	width: 20%;
@@ -141,9 +198,6 @@ div#edittoolbar div.index div.current {
 	color: #333333;
 	cursor: default;
 }
-div#edittoolbar div.index div:first-child {
-	border-top: none;
-}
 div#edittoolbar div.pages {
 	float: right;
 	width: 80%;
@@ -157,9 +211,6 @@ body.rtl div#edittoolbar div.pages {
 div#edittoolbar div.pages div.page {
 	display: none;
 }
-div#edittoolbar div.pages div.page:first-child {
-	display: block;
-}
 div#edittoolbar div.pages div.page table {
 	padding-left: 5px;
 	padding-right: 5px;
@@ -171,9 +222,6 @@ div#edittoolbar div.pages div.page table th {
 div#edittoolbar div.pages div.page table td {
 	color: black;
 	border-top: solid 1px #EEEEEE;
-}
-div#edittoolbar div.pages div.page table tr:first-child td {
-	border-top: solid 1px #DDDDDD;
 }
 div#edittoolbar div.pages div.page table th,
 div#edittoolbar div.pages div.page table td {
@@ -218,45 +266,4 @@ div#edittoolbar-section-characters div.page div a:hover {
 	background-color: white;
 	text-decoration: none;
 	border-color: #a8d7f9;
-}
-div#edittoolbar ul.tabs li.tab {
-	display: inline-block;
-	float: left;
-	line-height: 26px;
-}
-body.rtl div#edittoolbar ul.tabs li.tab {
-	float: right;
-}
-div#edittoolbar ul.tabs li.tab a,
-div#edittoolbar ul.tabs li.tab a:visited {
-	float: left;
-	padding-left: 18px;
-	padding-right: 12px;
-	display: block;
-	height: 26px;
-	cursor: pointer;
-	color: #0645ad;
-	background-image: url(images/arrow-right.png);
-	background-position: left center;
-	background-repeat: no-repeat;
-}
-body.rtl div#edittoolbar ul.tabs li.tab a,
-body.rtl div#edittoolbar ul.tabs li.tab a:visited {
-	float: right;
-	padding-left: 12px;
-	padding-right: 18px;
-	background-image: url(images/arrow-left.png);
-	background-position: right center;
-}
-div#edittoolbar ul.tabs li.tab a.current,
-div#edittoolbar ul.tabs li.tab a.current:visited {
-	color: #333333;
-	background-image: url(images/arrow-down.png);
-}
-body.rtl div#edittoolbar ul.tabs li.tab a.current,
-body.rtl div#edittoolbar ul.tabs li.tab a.current:visited {
-	background-image: url(images/arrow-down.png);
-}
-div#edittoolbar div.ul li.tab a.current:hover {
-	text-decoration: none;
 }
