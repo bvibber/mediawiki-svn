@@ -24,6 +24,14 @@ $messages['dsb'] = array(
 	'navigabletoc-desc' => 'Pśidawa zapis wopśimjeśa wobźěłowańskemu formularoju, kótaryž kula tekstowe pólo, gaž se na wótrězk kliknjo',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'navigabletoc' => 'Táboa de contidos navegable',
+	'navigabletoc-desc' => 'Engade unha táboa de contidos para editar o formulario que contrae o cadro de texto cando se preme nunha sección',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -40,6 +48,22 @@ $messages['hsb'] = array(
 	'navigabletoc-desc' => 'Přidawa zapis wobsaha wobdźěłowanskemu formularej, kotaryž tekstowe polo kula, hdyž so na wotrězk kliknje.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'navigabletoc' => 'Tabula de contento navigabile',
+	'navigabletoc-desc' => 'Adde un tabula de contento al formulario de modification que face rolar le quadro de texto quando on clicca super un section',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'navigabletoc' => 'Daftar isi yang dapat dinavigasi',
+	'navigabletoc-desc' => 'Menambahkan sebuah daftar isi pada formulir penyuntingan yang jika diklik dapat langsung menuju bagian yang dimaksud',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -54,6 +78,13 @@ $messages['ja'] = array(
 $messages['ksh'] = array(
 	'navigabletoc' => 'Ennhaltsverzeichnes beim Ändere',
 	'navigabletoc-desc' => 'Määt e Ennhaltsverzeichnes op de Sigge zom Ändere, wat dat Feld zom Ändere metnemmp, wann mer op enem Afschnett sing Övverschreff kleck.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'navigabletoc' => 'Inhaltsverzeechnis fir ze navigéieren',
 );
 
 /** Dutch (Nederlands)
