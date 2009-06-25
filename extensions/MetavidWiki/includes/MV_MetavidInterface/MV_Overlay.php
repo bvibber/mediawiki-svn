@@ -52,7 +52,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		*/
 		// get nav-interface links
 
-		$wgOut->addHTML( '<div id="mv_fd_mvd_cont" >' );
+		$wgOut->addHTML( '<div id="mv_fd_mvd_cont" style="position:relative;" >' );
 			$wgOut->addHTML( "<div id=\"mv_add_new_mvd\" style=\"display:none;\"></div>" );
 			$this->get_transcript_pages();
 		$wgOut->addHTML( "</div>" );
