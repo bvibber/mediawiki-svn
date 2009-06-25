@@ -24,7 +24,7 @@ $wgExtensionCredits[ 'specialpage' ][] = array(
 	'descriptionmsg' => 'mibbit-desc',
 	'author'         => 'Robert Leverington',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Mibbit',
-	'version'        => '1.4.1',
+	'version'        => '1.4.2',
 );
 
 $dir = dirname( __FILE__ ) . '/';
