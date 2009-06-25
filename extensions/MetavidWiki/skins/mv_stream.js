@@ -326,13 +326,19 @@ function mv_scroll2Time(sec_time){
             var pMvd_id=$j('.mv_fd_mvd:first').attr("id").split('_').pop();
             $j('.mv_fd_mvd').each(function(){        
                 var curTitle = get_titleObject($j(this).attr('name'));
-                if( curTitle.start_time >= sec_time ){
-                    //js_log('found mvd pos: ' + curTitle.start_time + ' for sec time: ' + sec_time);                
-                    if(previus_scrollMvd_id != pMvd_id){                                
-                        scroll_to_pos( pMvd_id ) ;
+                if( sec_time <= curTitle.start_time){
+                    js_log('found mvd pos: ' + curTitle.start_time + ' for sec time: ' + sec_time);                
+                    if(previus_scrollMvd_id != pMvd_id){
+                    	//do highlight / dehighlight:
+    					highlight_fd( pMvd_id );
+                    	de_highlight_fd( previus_scrollMvd_id );
+                    	                                
+                        scroll_to_pos( pMvd_id ) ;                        
                         previus_scrollMvd_id = pMvd_id;
                     }
                     return false;//break out of for loop:        
+                }else{
+               		js_log('Not found mvd pos: '+ $j(this).attr("id") +' ' +  curTitle.start_time + ' compared to: ' + sec_time);             
                 }    
                 pMvd_id = $j(this).attr("id").split('_').pop();
             });                
@@ -950,16 +956,17 @@ function mv_disp_play_controls(disp){
 //hackish globals .. needs a rewrite
 var mv_currently_scroll_to_pos=false;
 function scroll_to_pos(mvd_id){
-    js_log('scroll_to_pos:'+mvd_id);
+    js_log('scroll_to_pos:'+mvd_id); 
+    
     var speed = (mv_currently_scroll_to_pos)?'fast':'slow';
     if( $j('#mv_fd_mvd_'+mvd_id).get(0)){        
         //@@todo debug IE issues with scrolling
         $j('#selectionsBox').animate({
-            scrollTop: ($j('#mv_fd_mvd_'+mvd_id).get(0).offsetTop-40)
+            scrollTop: ($j('#mv_fd_mvd_'+mvd_id).get(0).offsetTop -100 )
             }, 
             speed,
             function(){
-                mv_currently_scroll_to_pos=false;
+                mv_currently_scroll_to_pos = false;
             });
     }    
 }
