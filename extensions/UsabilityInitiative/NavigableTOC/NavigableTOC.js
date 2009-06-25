@@ -112,33 +112,23 @@ $( document ).ready( function() {
 				.data( 'offset', $.sectionOffsets[i] );
 	} else if ( $.section != 'new' && $.section != 0 ) {
 		// Existing section edit
-		// Unlink all irrelevant section links
-		$.section = parseInt( $.section );
-		$( '.toc:last * li' ).not( '.tocsection-' + $.section + ' * li')
-			.not( '.tocsection-' + $.section ).each( function() {
-				link = $(this).children( 'a' );
-				if ( link.is( ':visible' ) ) {
-					link.hide();
-					$(this).prepend( link.html() );
-				}
-			});
-		
 		// Set adjusted offsets on the usable links
+		$.section = parseInt( $.section );
 		for ( i = 0; i < $.sectionOffsets.length; i++ )
 			$( '.tocsection-' + ( i + $.section ) ).children( 'a' )
 				.data( 'offset', $.sectionOffsets[i] -
 					$.sectionOffsets[0] );
-	} else {
-		// New section or section 0
-		// Unlink everything
-		$( '.toc:last * li' ).each( function() {
-			link = $(this).children( 'a' );
-			if ( link.visible() ) {
-				link.hide();
-				$(this).prepend( link.html() );
-			}
-		});
 	}
+	// Unlink all section links that didn't get an offset
+	$( '.toc:last * li' ).each( function() {
+		link = $(this).children( 'a' );
+		if ( typeof link.data( 'offset') == 'undefined' &&
+				link.is( ':visible' ) ) {
+			link.hide();
+			$(this).prepend( link.html() );
+		}
+	});
+
 	$( '.toc:last * li a' ).click( function(e) {
 		if( typeof jQuery(this).data( 'offset' ) != 'undefined' )
 			jQuery( '#wpTextbox1' ).scrollToPosition( jQuery(this).data( 'offset' ) );

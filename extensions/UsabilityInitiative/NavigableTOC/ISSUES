@@ -6,13 +6,3 @@
   7x15 (Linux), but these values should really be determined dynamically.
 ** Both of these can be avoided by determining the caret position properly,
    I'll ask Michael Dale about this.
-* When previewing, two TOCs may show up (one in the preview, one navigable),
-  in which case the first TOC gets two [hide] links and the second gets none
-* When previewing a section, both the section content and the entire page are
-  parsed, which is slow.
-** We're parsing the entire page solely for its TOC, maybe we can take the
-   old TOC from the parser cache and blend in the edited section?
-** Is it even desirable to show full context here? Showing the edited section
-   as top-level is less parser-intensive for section previews
-* TOC is only shown when it'd normally appear on the page (4 sections or
-  __TOC__ and no __NOTOC__), is this desirable?
