@@ -173,6 +173,13 @@ $messages['ia'] = array(
 	'mootools12core-desc' => 'Adde [http://mootools.net mootools-1.2-core-yc.js], un framework compacte de JavaScript, a cata pagina',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'mootools12core-desc' => 'Menambahkan [http://mootools.net mootools-1.2-core-yc.js], sebuah rangka kerja JavaScript yang padat, ke setiap halaman',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi

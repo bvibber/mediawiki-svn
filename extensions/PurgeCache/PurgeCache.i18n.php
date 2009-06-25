@@ -278,6 +278,13 @@ $messages['ia'] = array(
 	'right-purgecache' => 'Vacuar le tabella OBJECTCACHE',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'purgecache-button' => 'purgasi',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */
@@ -428,6 +435,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'purgecache' => 'Purgar a cache',
@@ -435,6 +443,7 @@ $messages['pt'] = array(
 	'purgecache-warning' => 'Isto irá purgar as tabelas de cache.',
 	'purgecache-purged' => 'A cache foi purgada.',
 	'purgecache-button' => 'Purgar',
+	'right-purgecache' => 'Limpar a tabela OBJECTCACHE',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

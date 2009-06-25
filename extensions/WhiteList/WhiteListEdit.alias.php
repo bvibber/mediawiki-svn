@@ -118,8 +118,8 @@ $aliases['ksh'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'WhiteList' => array( 'WhiteList' ),
-	'WhiteListEdit' => array( 'WhiteList änneren' ),
+	'WhiteList' => array( 'Wäiss Lëscht' ),
+	'WhiteListEdit' => array( 'Wäiss Lëscht änneren' ),
 );
 
 /** Macedonian (Македонски) */

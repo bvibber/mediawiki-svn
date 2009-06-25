@@ -246,6 +246,14 @@ $messages['ia'] = array(
 	'abcdownload' => 'Discargar:',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'abcdesc' => 'Tambahkan tag <tt>&lt;abc&gt;</tt> untuk format musik ABC',
+	'abcdownload' => 'Unduh:',
+);
+
 /** Italian (Italiano)
  * @author Melos
  */

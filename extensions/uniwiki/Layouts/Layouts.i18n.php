@@ -22,12 +22,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'layouts-desc' => 'Short description of this extension, shown on [[Special:Version]].',
+	'layouts_title' => '{{Identical|Createpage}}',
 	'layouts_continue' => '{{Identical|Continue}}',
 	'layouts_unknown' => '{{Identical|Unknown}}',
 );
@@ -353,6 +355,16 @@ $messages['ia'] = array(
 	'layouts_unknown' => 'Incognite',
 	'layouts_tagline' => "Iste pagina ha essite generate con le disposition '''$1'''.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Modificaretiquettasdepaginas',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'layouts_title' => 'Buat halaman',
+	'layouts_continue' => 'Lanjutkan',
+	'layouts_choosecategory' => 'Pilih kategori untuk $1:',
+	'layouts_unknown' => 'Tidak diketahui',
 );
 
 /** Italian (Italiano)

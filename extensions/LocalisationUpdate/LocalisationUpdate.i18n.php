@@ -31,6 +31,13 @@ $messages['ar'] = array(
 	'localisationupdate-desc' => 'يبقي الرسائل المترجمة محدثة كأفضل ما يكون',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'localisationupdate-desc' => "Lokalisiade Texte und Nåchrichtn so aktuell håidn wia's gråd gehd",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -101,6 +108,13 @@ $messages['ia'] = array(
 	'localisationupdate-desc' => 'Mantene le messages localisate tanto actual como possibile',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'localisationupdate-desc' => 'Mengusahakan agar pesan-pesan yang telah diterjemahkan tetap semutakhir mungkin',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -127,6 +141,13 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'localisationupdate-desc' => 'Houdt de gelokaliseerde berichten zo actueel mogelijk',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'localisationupdate-desc' => 'Held dei lokaliserte meldingane så oppdaterte som mogleg',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

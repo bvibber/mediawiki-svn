@@ -163,6 +163,8 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'GroupPermissions' => array( 'Permission dels gropes' ),
+	'RemoveUnusedGroups' => array( 'Levar gropes inutilizats', 'LevarGropesInutilizats' ),
+	'SortPermissions' => array( 'Triar las permissions' ),
 );
 
 /** Sanskrit (संस्कृत) */

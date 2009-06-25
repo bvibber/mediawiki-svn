@@ -277,7 +277,7 @@ $messages['frp'] = array(
 	'intersection_toomanycats' => 'Èrror : trop de catègories !',
 	'intersection_toofewcats' => 'Èrror : pas prod de catègories !',
 	'intersection_noresults' => 'Èrror : gins de rèsultat !',
-	'intersection_noincludecats' => 'Èrror : vos dête encllure u muens yona catègorie, ou ben spècefiar un èspâço de nom !',
+	'intersection_noincludecats' => 'Èrror : vos dête encllure u muens yona catègorie, ou ben spècefiar un èspâço de noms !',
 );
 
 /** Galician (Galego)

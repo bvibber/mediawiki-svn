@@ -115,6 +115,13 @@ $messages['ia'] = array(
 	'semanticgallery-desc' => 'Adde un formato de output de galeria al requestas in linea de SMW',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'semanticgallery-desc' => 'Menambahkan format output galeri kepada kueri inline SMW',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Hosiryuhosi

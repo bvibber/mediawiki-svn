@@ -269,6 +269,17 @@ $messages['ia'] = array(
 	'categoryintersection-results' => 'Le recerca retornava $1 {{PLURAL:$1|resultato|resultatos}}.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'categoryintersection' => 'Persimpangan kategori',
+	'categoryintersection-desc' => 'Membuat suatu tabel dengan nilai "hash" untuk [[Special:CategoryIntersection|persimpangan kategori]] di dalam suatu halaman',
+	'categoryintersection-doit' => 'Daftarkan semua halaman di kategori-kategori ini',
+	'categoryintersection-maxcategories' => 'Angka maksimal yang diijinkan untuk persimpangan kategori adalah $1.',
+	'categoryintersection-results' => 'Pencarian Anda menghasilkan $1 {{PLURAL:$1|hasil|hasil}}.',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

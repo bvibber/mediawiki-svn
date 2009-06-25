@@ -242,6 +242,18 @@ $messages['ia'] = array(
 	'right-userrights-shared' => 'Gerer derectos global de usatores',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'shareduserrights' => 'Pengelolaan Hak Pengguna Terbagi',
+	'gblrights-desc' => '[[Special:SharedUserRights|Pengelolaan hak pengguna global]] yang mudah',
+	'gblrights-logpage' => 'Log Hak Global',
+	'gblrights-pagetext' => 'Ini adalah log semua perubahan yang dibuat ke tabel hak globak keluarga wiki',
+	'gblrights-rights-entry' => 'mengubah keanggotaan kelompok global $1 dari $2 menjadi $3',
+	'right-userrights-shared' => 'Kelola hak pengguna yang dibagikan',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty

@@ -94,8 +94,8 @@ $messages['ar'] = array(
 	'refreshspecial-slave-lagged' => 'الخادم التابع تأخر، جاري الانتظار...',
 	'refreshspecial-reconnected' => 'تمت إعادة التوصيل.',
 	'refreshspecial-reconnecting' => 'التوصيل فشل، إعادة التوصيل خلال 10 ثواني...',
-	'refreshspecial-page-result' => 'حصل على $1 {{PLURAL:$1|صف|صف}} في',
-	'refreshspecial-total-display' => 'حدث $1 {{PLURAL:$1|صفحة|صفحة}} بإجمالي $2 {{PLURAL:$2|صف|صف}} في وقت $3 (الوقت الإجمالي لتشغيل السكريبت هو $4)',
+	'refreshspecial-page-result' => 'حصل على {{PLURAL:$1||صف واحد|صفين|$1 صفوف|$1 صفًا|$1 صف}} في',
+	'refreshspecial-total-display' => 'حدث {{PLURAL:$1||صفحة واحدة|صفحتين|$1 صفحات|$1 صفحة}} بإجمالي {{PLURAL:$2||صف واحد|صفين|$2 صفوف|$2 صفًا|$2 صف}} في زمن مقداره $3 (الوقت الإجمالي لتشغيل السكريبت هو $4)',
 	'right-refreshspecial' => 'إنعاش الصفحات الخاصة',
 );
 

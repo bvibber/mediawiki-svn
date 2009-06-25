@@ -624,7 +624,7 @@ $messages['fi'] = array(
 	'badimages-log-add' => 'lisäsi kuvan [[$1]] kiellettyjen kuvien luetteloon',
 	'badimages-log-remove' => 'poisti kuvan [[$1]] kiellettyjen kuvien luettelosta',
 	'badimages-page' => '{{ns:help}}:Kielletyt kuvat',
-	'right-badimages' => 'Päivitä huonojen kuvien lista',
+	'right-badimages' => 'Päivittää huonojen kuvien lista',
 );
 
 /** French (Français)
@@ -1001,30 +1001,33 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Ivan Lanin
  * @author Rex
  */
 $messages['id'] = array(
-	'badimages' => 'Daftar berkas tidak sah',
+	'badimages' => 'Daftar gambar buruk',
+	'badimages-desc' => 'Memperkaya kemampuan daftar gambar buruk MediaWiki',
 	'badimages-add-btn' => 'Tambahkan',
-	'badimages-added' => '$1 ditambahkan dalam daftar.',
-	'badimages-count' => "{{PLURAL:$1|Terdapat|Terdapat}} '''$1''' {{PLURAL:$1|berkas|berkas}} dalam daftar berkas tidak sah.",
+	'badimages-added' => '$1 telah ditambahkan ke dalam daftar.',
+	'badimages-count' => "{{PLURAL:$1|Terdapat|Terdapat}} '''$1''' {{PLURAL:$1|gambar|gambar}} di dalam daftar gambar buruk.",
 	'badimages-name' => 'Nama:',
-	'badimages-not-added' => 'Berkas tidak dapat ditambahkan.',
-	'badimages-not-removed' => 'Berkas tidak dapat dihapus.',
+	'badimages-not-added' => 'Gambar tidak dapat ditambahkan.',
+	'badimages-not-removed' => 'Gambar tidak dapat dihapus dari daftar.',
 	'badimages-reason' => 'Alasan:',
 	'badimages-remove' => '(hapus)',
 	'badimages-remove-btn' => 'Hapus',
-	'badimages-remove-confirm' => 'Harap konfirmasi bahwa Anda ingin menghapus $1 dari daftar:',
-	'badimages-removed' => '$1 dihapus dari daftar.',
+	'badimages-remove-confirm' => 'Harap mengkonfirmasi bahwa Anda ingin menghapus $1 dari daftar:',
+	'badimages-removed' => '$1 telah dihapuskan dari daftar.',
 	'badimages-subheading' => 'Daftar sekarang',
-	'badimages-unprivileged' => '(Anda tidak memiliki cukup hak untuk mengubah daftar)',
-	'badimages-log-name' => 'Daftar berkas tidak sah',
-	'badimages-log-header' => 'Berikut ini adalah log perubahanan untuk [[{{MediaWiki:Badimages-page}}|daftar berkas tidak sah]].',
-	'badimages-log-add' => 'menambahkan [[$1]] ke daftar berkas tidak sah',
-	'badimages-log-remove' => 'menghapus [[$1]] dari daftar berkas tidak sah',
-	'badimages-page' => '{{ns:help}}:Daftar berkas tidak sah',
+	'badimages-unprivileged' => '(Anda tidak memiliki hak untuk mengubah daftar)',
+	'badimages-log-name' => 'Daftar gambar buruk',
+	'badimages-log-header' => 'Berikut ini adalah log perubahanan untuk [[{{MediaWiki:Badimages-page}}|daftar gambar buruk]].',
+	'badimages-log-add' => 'menambahkan [[$1]] ke daftar gambar buruk',
+	'badimages-log-remove' => 'menghapus [[$1]] dari daftar gambar buruk',
+	'badimages-page' => '{{ns:help}}:Daftar gambar buruk',
+	'right-badimages' => 'Mutakhirkan daftar gambar buruk',
 );
 
 /** Ido (Ido)

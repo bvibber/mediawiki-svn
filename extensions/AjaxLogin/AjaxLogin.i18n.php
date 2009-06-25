@@ -232,6 +232,18 @@ Tu pote perder tu modificationes a iste pagina si tu quita iste pagina ora.',
 	'ajaxlogin-create' => 'Crear un conto',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'ajaxlogin-desc' => 'Kotak dinamis yang memungkinkan pengguna untuk log masuk dan mengingatkan kata sandi',
+	'ajaxLogin1' => 'Untuk masuk log in dengan benar, Anda perlu memasukkan kata sandi yang baru.
+Hal ini mengharuskan Anda untuk beranjak dari halaman suntingan ini dan Anda dapat kehilangan tulisan yang sedang Anda sunting saat ini.',
+	'ajaxLogin2' => 'Apa Anda yakin?
+Anda dapat kehilangan perubahan yang telah Anda buat di halaman ini jika Anda meninggalkan halaman ini sekarang.',
+	'ajaxlogin-create' => 'Buat akun',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Tommy6

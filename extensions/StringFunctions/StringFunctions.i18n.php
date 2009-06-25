@@ -192,6 +192,13 @@ $messages['ia'] = array(
 	'stringfunctions-desc' => 'Extende le analysator syntactic con functiones de texto',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'stringfunctions-desc' => 'Meningkatkan fungsi parser dengan fungsi-fungsi string',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

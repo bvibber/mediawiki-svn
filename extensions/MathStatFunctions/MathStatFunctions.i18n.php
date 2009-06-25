@@ -290,11 +290,14 @@ $messages['ia'] = array(
 	'msfunc_div_zero' => 'Division per zero',
 );
 
-/** Indonesian (Bahasa Indonesia) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
 $messages['id'] = array(
-	'msfunc_nan' => 'Nilai hasil tidak berupa angka',
-	'msfunc_inf' => 'Nilai hasil tak hingga',
-	'msfunc_div_zero' => 'Pembagian dengan nol',
+	'msfunc_desc' => 'Sebuah koleksi fungsi-fungsi matematika dan statistika',
+	'msfunc_nan' => 'Nilai hasil tidak berupa angka (NaN)',
+	'msfunc_inf' => 'Nilai hasil adalah tak hingga',
+	'msfunc_div_zero' => 'Pembagian oleh nol',
 );
 
 /** Ido (Ido)

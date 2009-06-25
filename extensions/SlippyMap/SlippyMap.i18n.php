@@ -166,6 +166,8 @@ $messages['be-tarask'] = array(
 	'slippymap_code' => 'Вікікод для прагляду гэтай мапы:',
 	'slippymap_button_code' => 'Атрымаць вікікод',
 	'slippymap_resetview' => 'Першапачатковы выгляд',
+	'slippymap_invalidmode' => "Няслушнае значэньне '%1' парамэтру 'mode'",
+	'slippymap_clicktoactivate' => 'Націсьніце, каб актывізаваць мапу',
 );
 
 /** Bulgarian (Български)
@@ -314,6 +316,8 @@ $messages['dsb'] = array(
 	'slippymap_code' => 'Wikikod za toś ten kórtowy naglěd:',
 	'slippymap_button_code' => 'Wikikod pokazaś',
 	'slippymap_resetview' => 'Naglěd slědk stajiś',
+	'slippymap_invalidmode' => "Njepłaśiwa gódnota 'mode' '$1'",
+	'slippymap_clicktoactivate' => 'Kliknuś, aby se kórta aktiwěrowała',
 );
 
 /** Esperanto (Esperanto)
@@ -404,7 +408,9 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Cedric31
+ * @author Crochet.david
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
 	'slippymap_desc' => 'Autorise l’utilisation de la balise <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> pour afficher une carte glissante d’OpenLayers. Les cartes proviennent de [http://openstreetmap.org openstreetmap.org]',
@@ -434,6 +440,8 @@ $messages['fr'] = array(
 	'slippymap_code' => 'Code Wiki pour le visionnement de cette cate :',
 	'slippymap_button_code' => 'Obtenir le code wiki',
 	'slippymap_resetview' => 'Réinitialiser le visionnement',
+	'slippymap_invalidmode' => 'Valeur « $1 » de « mode » invalide',
+	'slippymap_clicktoactivate' => 'Cliquez pour activer la carte',
 );
 
 /** Galician (Galego)
@@ -467,6 +475,8 @@ $messages['gl'] = array(
 	'slippymap_code' => 'Código wiki para o visionado deste mapa:',
 	'slippymap_button_code' => 'Obter o código wiki',
 	'slippymap_resetview' => 'Axustar a vista',
+	'slippymap_invalidmode' => 'Valor "$1" de "modo" inválido',
+	'slippymap_clicktoactivate' => 'Prema para activar o mapa',
 );
 
 /** Swiss German (Alemannisch)
@@ -500,6 +510,8 @@ $messages['gsw'] = array(
 	'slippymap_code' => 'Wikitäxt fir die Chartenaasicht:',
 	'slippymap_button_code' => 'Zeig Wikicode',
 	'slippymap_resetview' => 'Zruggsetze',
+	'slippymap_invalidmode' => "Uugiltige 'mode'-Wärt'$1'",
+	'slippymap_clicktoactivate' => 'Zum Aktiviere vu dr Charte drucke',
 );
 
 /** Hebrew (עברית)
@@ -567,6 +579,8 @@ $messages['hsb'] = array(
 	'slippymap_code' => 'Wikikod za tutón kartowy napohlad:',
 	'slippymap_button_code' => 'Wikikod pokazać',
 	'slippymap_resetview' => 'Napohlad wróćo stajić',
+	'slippymap_invalidmode' => "Njepłaćiwa hódnota 'mode' '$1'",
+	'slippymap_clicktoactivate' => 'Kliknyć, zo by so karta aktiwizowała',
 );
 
 /** Interlingua (Interlingua)
@@ -660,12 +674,14 @@ $messages['ja'] = array(
 	'slippymap_zoomsmall' => '拡大度 (z) の値は0より小さくはできません',
 	'slippymap_zoom18' => '拡大度 (z) の値は17より大きくはできません。なお、この MediaWiki 拡張機能がフックしている、OpenStreetMap の "osmarender" レイヤーは17を超す拡大度を利用できません。openstreetmap.org で利用可能な "Mapnik" レイヤーは18までの拡大度が利用できます。',
 	'slippymap_zoombig' => '拡大度 (z) の値は17より大きくはできません',
-	'slippymap_invalidlayer' => '"layer" の値 "%1" は無効',
+	'slippymap_invalidlayer' => '「layer」の値「%1」は無効',
 	'slippymap_maperror' => '地図エラー:',
 	'slippymap_osmtext' => 'この地図を OpenStreetMap.org で見る',
 	'slippymap_code' => 'この地図表示用のウィキマークアップ:',
 	'slippymap_button_code' => 'ウィキマークアップを取得',
 	'slippymap_resetview' => '表示を更新',
+	'slippymap_invalidmode' => '「mode」の値「$1」は無効',
+	'slippymap_clicktoactivate' => 'クリックして地図をアクティブにする',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -735,6 +751,8 @@ http://openstreetmap.org/ ze fenge, un dänne iere Zoom jeiht bes 18.',
 	'slippymap_code' => 'Dä Wiki-Kood för di Kaate-Aansesh es:',
 	'slippymap_button_code' => 'Donn dä Wiki-Kood zeije',
 	'slippymap_resetview' => 'Aansesh zeröcksetze',
+	'slippymap_invalidmode' => '„$1“ es ene onjöltije Wäät för <code lang="en">\'mode\'</code>.',
+	'slippymap_clicktoactivate' => 'Don klecke, öm di Kaat aanzemaache',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -797,6 +815,8 @@ $messages['nl'] = array(
 	'slippymap_code' => 'Wikicode voor deze kaart:',
 	'slippymap_button_code' => 'Wikicode',
 	'slippymap_resetview' => 'Terug',
+	'slippymap_invalidmode' => 'Ongeldige waarde "$1" voor "mode"',
+	'slippymap_clicktoactivate' => 'Klik om de kaart te activeren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -897,6 +917,8 @@ $messages['oc'] = array(
 	'slippymap_code' => "Còde Wiki pel visionament d'aquesta mapa :",
 	'slippymap_button_code' => 'Obténer lo còde wiki',
 	'slippymap_resetview' => 'Tornar inicializar lo visionament',
+	'slippymap_invalidmode' => 'Valor « $1 » de « mòde » invalida',
+	'slippymap_clicktoactivate' => 'Clicatz per activar la mapa',
 );
 
 /** Polish (Polski)
@@ -1041,6 +1063,8 @@ $messages['ru'] = array(
 	'slippymap_code' => 'Викикод для просмотра этой карты:',
 	'slippymap_button_code' => 'Получить викикод',
 	'slippymap_resetview' => 'Сбросить просмотр',
+	'slippymap_invalidmode' => 'Неправильное значение «mode» (режим) «$1»',
+	'slippymap_clicktoactivate' => 'Нажмите, чтобы активировать карту',
 );
 
 /** Slovak (Slovenčina)
@@ -1074,6 +1098,8 @@ $messages['sk'] = array(
 	'slippymap_code' => 'Wikikód tohto pohľadu na mapu:',
 	'slippymap_button_code' => 'Zobraziť zdrojový kód',
 	'slippymap_resetview' => 'Obnoviť zobrazenie',
+	'slippymap_invalidmode' => 'Neplatná hodnota „mode“ „$1“',
+	'slippymap_clicktoactivate' => 'Mapu aktivujete kliknutím',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

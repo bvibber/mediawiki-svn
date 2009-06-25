@@ -18,13 +18,6 @@ $messages['qqq'] = array(
 	'gnuplot-desc' => 'Shown in [[Special:Version]].',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Piotron
- */
-$messages['sli'] = array(
-	'gnuplot-desc' => 'Fiegt dan <code><nowiki><gnuplot></nowiki></code>-Tag hinzu, um Gnuplot zu varwenda',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -177,6 +170,13 @@ $messages['ia'] = array(
 	'gnuplot-desc' => 'Adde le etiquetta <code><nowiki><gnuplot></nowiki></code> pro usar Gnuplot',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'gnuplot-desc' => 'Menambahkan tag <code><nowiki><gnuplot></nowiki></code> untuk menggunakan Gnuplot',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -295,6 +295,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'gnuplot-desc' => 'Pridáva značku <code><nowiki><gnuplot></nowiki></code> pre použitie Gnuplot',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'gnuplot-desc' => 'Fiegt dan <code><nowiki><gnuplot></nowiki></code>-Tag hinzu, um Gnuplot zu varwenda',
 );
 
 /** Albanian (Shqip)

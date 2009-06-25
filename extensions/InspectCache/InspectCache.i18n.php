@@ -463,6 +463,13 @@ $messages['ia'] = array(
 	'inspectcache-list' => 'Listar',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'inspectcache-ok' => 'OK',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

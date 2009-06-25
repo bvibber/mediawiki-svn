@@ -150,6 +150,13 @@ $messages['ia'] = array(
 	'javascript-desc' => 'Adde uniwiki.js a cata pagina que contine codice JavaScript usate in commun per le extensiones Uniwiki',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'javascript-desc' => 'Menambahkan uniwiki.js ke setiap halaman yang mengandung kode JavaScript pada ekstensi-ekstensi Uniwiki',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */

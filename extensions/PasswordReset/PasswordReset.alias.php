@@ -140,6 +140,12 @@ $aliases['no'] = array(
 	'Disabledusers' => array( 'Inaktive kontoer' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'PasswordReset' => array( 'Reïnicializacion del senhal', 'ReïnicializacionDelSenhal' ),
+	'Disabledusers' => array( 'Utilizaires desactivats' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'PasswordReset' => array( 'सङ्केतशब्दपुन:प्रयु्क्ता' ),

@@ -608,6 +608,13 @@ Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
 	'imstatus_yahoo_style' => 'le stilo del button, de $1 (le plus parve) a $2 (le plus grande), $3 e $4 es pro le messages vocal.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'imstatus_default' => 'Baku',
+);
+
 /** Japanese (日本語)
  * @author Fievarsty
  * @author Fryed-peach

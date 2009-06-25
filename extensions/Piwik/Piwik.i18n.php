@@ -277,6 +277,17 @@ $messages['ia'] = array(
 	'right-viewpiwik' => 'Vider le [[Special:Piwik|statisticas de Piwik]]',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'piwik-desc' => 'Masukkan skrip Piwik ke halaman-halaman MediaWiki untuk pelacakan dan menambahkan [[Special:Piwik|beberapa statistik]]',
+	'piwik-lastvisits' => 'Kunjungan terakhir',
+	'piwik-countries' => 'Negara',
+	'piwik-browsers' => 'Penjelajah',
+	'right-viewpiwik' => 'Lihat [[Special:Piwik|statistik Piwik]]',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -404,6 +415,7 @@ $messages['pt'] = array(
 	'piwik-lastvisits' => 'Últimas visitas',
 	'piwik-countries' => 'Países',
 	'piwik-browsers' => 'Browsers',
+	'right-viewpiwik' => 'Ver [[Special:Piwik|estatísticas Piwik]]',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

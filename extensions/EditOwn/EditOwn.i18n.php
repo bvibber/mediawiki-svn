@@ -42,6 +42,13 @@ $messages['arz'] = array(
 	'editown-desc' => 'المستخدمون بدون الصلاحية editall يمكنهم تعديل الصفحات التى قاموا بإنشائها فقط',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'editown-desc' => "Benutza ohne's ''editall'-Recht kinan netta söiwa ãngfãngane Seitn beåawatn",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -182,6 +189,13 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'editown-desc' => 'Le usatores sin derecto "editall" pote solmente modificar le paginas que illes ha create',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'editown-desc' => 'Pengguna yang tidak memiliki hak sunting-semua hanya dapat menyunting halaman yang mereka buat',
 );
 
 /** Italian (Italiano)

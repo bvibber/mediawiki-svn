@@ -32,11 +32,12 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'minipreview-desc' => 'العرض المصغر يعرض، بجانب صورة، عروضا مسبقة صغيرة للميديا الأخرى في نفس التصنيفات أو المعروضة في نفس الصفحات',
-	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|ملف|ملف}} إجمالي في هذا التصنيف.",
-	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|ملف|ملف}} إجمالي في هذا المعرض.",
+	'minipreview-files_in_category' => "يحتوي هذا التصنيف {{PLURAL:$1||ملفًا واحدًا|ملفين|'''$1''' ملفات|'''$1''' ملفًا|'''$1''' ملف}}.",
+	'minipreview-files_in_gallery' => "يحتوي هذا المعرض {{PLURAL:$1||ملفًا واحدًا|ملفين|'''$1''' ملفات|'''$1''' ملفًا|'''$1''' ملف}}.",
 	'minipreview-no_more_files_here' => 'لا ملفات أخرى في هذا الاتجاه.',
 	'minipreview-no_category_gallery' => 'لا تصنيفات أو معارض!',
 	'minipreview-ignore_categories' => 'التالي قائمة بأسماء التصنيفات أو بدايات الأسماء. هذه التصنيفات لن يتم عرضها بواسطة العرض المصغر. على سبيل المثال، "* PD-" لن تعرض كل التصنيفات
@@ -349,6 +350,25 @@ $messages['ia'] = array(
 	'minipreview-no_more_files_here' => 'Il non ha plus files in iste direction.',
 	'minipreview-no_category_gallery' => 'Nulle categoria o galeria!',
 	'minipreview-ignore_categories' => 'Lo sequente es un lista de nomines de categoria o initios de nomines. Iste categorias non essera monstrate per MiniPreview. Per exemplo, "* PD-" impedira de esser monstrate tote le categorias que comencia con "PD-", como "PD-ancian".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'minipreview-desc' => 'MiniPreview menampilkan pratayang kecil, di sebelah gambar, media lain yang ditampilkan pada kategori atau halaman yang sama',
+	'minipreview-files_in_category' => "Kategori ini memiliki '''$1''' {{PLURAL:$1|berkas|berkas}}.",
+	'minipreview-files_in_gallery' => "Galeri ini memiliki '''$1''' {{PLURAL:$1|berkas|berkas}}.",
+	'minipreview-no_more_files_here' => 'Tidak ada berkas lain di arah ini.',
+	'minipreview-no_category_gallery' => 'Tidak ada kategori atau galeri!',
+	'minipreview-ignore_categories' => 'Berikut ini adalah daftar kategori atau awalan.
+Kategori ini tidak akan ditampilkan oleh MiniPreview.
+Contohnya, "* PD-" tidak akan menampilkan kategori-kategori yang berawalan dengan "PD-", seperti "PD-old". 
 * GFDL-
 * GFDL
 * CC-

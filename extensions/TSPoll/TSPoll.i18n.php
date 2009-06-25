@@ -132,6 +132,15 @@ $messages['ia'] = array(
 	'tspoll-id-error' => 'Nulle ID ha essite date!',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'tspoll-desc' => 'Masukkan [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] sebagai sebuah tag HTML',
+	'tspoll-fetch-error' => 'Terjadi kesalahan pada saat berusaha mengambil URL!',
+	'tspoll-id-error' => 'ID tidak diberikan!',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

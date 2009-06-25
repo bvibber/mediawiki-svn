@@ -225,10 +225,12 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'minnamelength-error' => 'Nama pengguna Anda terlalu pendek. Panjang minimum adalah $1.',
+	'minnamelength-error' => 'Nama pengguna Anda terlalu pendek. Panjangnya minimal $1.',
+	'minnamelength-desc' => 'Gunakan panjang minimal untuk nama pengguna',
 );
 
 /** Italian (Italiano)

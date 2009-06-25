@@ -305,6 +305,16 @@ $messages['ia'] = array(
 	'right-whatismyip' => 'Vider le [[Special:WhatIsMyIP|proprie adresse IP]]',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'whatismyip' => 'Apa IP saya',
+	'whatismyip-desc' => 'Tunjukkan [[Special:WhatIsMyIP|alamat IP]] pengguna saat ini',
+	'whatismyip-out' => 'Alamat IP Anda:',
+	'right-whatismyip' => 'Tunjukkan [[Special:WhatIsMyIP|IP saya sendiri]]',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

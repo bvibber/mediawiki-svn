@@ -2321,6 +2321,7 @@ Un nove version $2 es disponibile a http://pecl.php.net/package/APC/$2',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Rex
  */
@@ -2367,6 +2368,7 @@ APC kemungkinan tidak berjalan saat ini.',
 	'viewapc-memory-free' => 'Bebas: $1 ($2)',
 	'viewapc-display-info' => 'Nama',
 	'viewapc-ls-options-legend' => 'Pilihan',
+	'viewapc-ls-submit' => 'Tuju ke!',
 	'viewapc-ls-header-name' => 'Nama',
 	'viewapc-ls-sort-name' => 'Nama',
 	'viewapc-ls-limit-none' => 'Semua',

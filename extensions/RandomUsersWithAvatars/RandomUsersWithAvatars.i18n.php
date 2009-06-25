@@ -152,6 +152,14 @@ $messages['ia'] = array(
 	'random-users-avatars-desc' => 'Adde le etiquetta <tt>&lt;randomuserswithavatars&gt;</tt> pro monstrar le avatares de usatores seligite aleatorimente',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'random-users-avatars-title' => 'Jumpailah komunitas',
+	'random-users-avatars-desc' => 'Tambahkan tag <tt>&lt;randomuserswithavatars&gt;</tt> untuk menampilkan avatar pengguna secara acak',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */

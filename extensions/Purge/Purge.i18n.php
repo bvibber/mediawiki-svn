@@ -196,6 +196,13 @@ $messages['ia'] = array(
 	'purge-desc' => 'Adde un scheda "purgar" in tote le paginas normal, e contorna le verification de purga pro usatores anonyme permittente un purga rapide del cache',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'purge' => 'purgasi',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

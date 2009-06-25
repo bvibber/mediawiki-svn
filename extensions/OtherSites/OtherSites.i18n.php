@@ -204,6 +204,14 @@ $messages['ia'] = array(
 	'othersites-desc' => 'Displacia le ligamines interwiki altere que ligamines inter linguas verso un quadro separate',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'othersites' => 'Situs lain',
+	'othersites-desc' => 'Pindahkan pranala interwiki selain pranala bahasa ke modul tersendiri',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

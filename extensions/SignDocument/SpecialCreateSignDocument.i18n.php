@@ -756,6 +756,13 @@ Tu pote [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testar lo].',
 Isto non pote esser facite un secunde vice.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'createsigndoc-create' => 'Buat',
+);
+
 /** Icelandic (Íslenska) */
 $messages['is'] = array(
 	'createsigndoc-pagename' => 'Síða:',

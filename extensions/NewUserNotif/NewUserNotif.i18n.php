@@ -288,6 +288,17 @@ $messages['ia'] = array(
 Un nove conto de usator, $2, ha essite create in $3 le $4.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'newusernotifsubj' => 'Pemberitahuan pengguna baru untuk $1',
+	'newusernotif-desc' => 'Mengirimkan pemberitahuan lewat surel pada saat akun pengguna dibuat',
+	'newusernotifbody' => 'Halo $1,
+
+Sebuah akun pengguna baru, $2, telah dibuat di $3 pada $4.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

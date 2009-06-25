@@ -293,6 +293,17 @@ $messages['ia'] = array(
 	'pageby-anon' => '<i>anonyme</i>',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'pageby-desc' => 'Menampilkan kontributor secara transklusi pada sebuah halaman wiki dengan menggunakan tag <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Halaman dibuat oleh $1 pada $2',
+	'pageby-last' => '<a href="$3">Diubah</a> terakhir oleh $1 pada $2',
+	'pageby-contributors' => 'Kontributor:',
+	'pageby-anon' => '<i>anonim</i>',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Darth Kule

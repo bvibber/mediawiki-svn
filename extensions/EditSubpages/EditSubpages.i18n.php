@@ -292,6 +292,22 @@ $messages['ia'] = array(
   #</pre><!-- non modificar iste linea -->',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'editsubpages-desc' => 'Mengijinkan opsis untuk mengunci sebuah halaman dan upa-upa halamannya dari suntingan anonim melalui [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => '  #<!-- jangan mengubah baris ini --><pre>
+# Taruh halaman yang ingin dibuka kuncinya di bawah ini dengan menggunakan
+# * Nama halaman
+# Halaman yang dibuka kuncinya harus diawali dengan sebuah *,
+# semua yang tidak diawali dengan * akan dianggap sebagai komentar
+# Nama halaman dapat berupa [[pranala]] dan huruf besar/kecil berpengaruh
+# Halaman pembicaraannya juga akan otomatis terbuka kuncinya bersama-sama dengan halaman tersebut
+# Lebih lanjut lihat http://www.mediawiki.org/wiki/Extension:EditSubpages
+  #</pre><!-- jangan mengubah baris ini -->',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn

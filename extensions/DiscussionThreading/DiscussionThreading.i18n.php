@@ -279,6 +279,17 @@ $messages['ia'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Initiar un nove filo',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'discussionthreading-desc' => 'Tambahkan kemampuan "thread" di halaman pembicaraan',
+	'discussionthreading-replysection' => 'balas',
+	'discussionthreading-replysectionhint' => 'Balas posting ini',
+	'discussionthreading-threadnewsection' => 'baru',
+	'discussionthreading-threadnewsectionhint' => 'Mulai sebuah topik baru',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

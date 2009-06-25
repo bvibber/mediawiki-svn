@@ -359,6 +359,19 @@ Per favor usa le pagina [[MediaWiki:Number_of_watching_users_pageview]] pro defi
 	'specialwhoiswatchingaddbtn' => 'Adder le usatores seligite',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'whoiswatching' => 'Siapa yang memantau sebuah halaman wiki',
+	'whoiswatching-desc' => 'Menampilkan daftar pengguna yang memantau sebuah halaman wiki',
+	'specialwhoiswatchingthepage' => 'Siapa yang memantau %s',
+	'specialwhoiswatchingusage' => 'Ini adalah sebuah halaman istimewa yang tidak dapat digunakan sendirian.
+Gunakan halaman [[MediaWiki:Number_of_watching_users_pageview]] untuk menetapkan titik masuk ke halaman istimewa ini.',
+	'specialwhoiswatchingaddusers' => 'Tambahkan pengguna untuk memantau halaman',
+	'specialwhoiswatchingaddbtn' => 'Tambah pengguna yang dipilih',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Pietrodn

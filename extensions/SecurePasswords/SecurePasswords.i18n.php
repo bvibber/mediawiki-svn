@@ -293,6 +293,22 @@ Illo debe:',
 	'securepasswords-word' => 'non esser un parola',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'securepasswords-desc' => 'Membuat sebuah pengacakan kata sandi yang lebih aman dan menambah pemeriksaan kekuatan kata sandi',
+	'securepasswords-valid' => 'Kata sandi Anda tidak sah atau terlalu pendek.
+Kata sandi Anda harus:',
+	'securepasswords-minlength' => 'memiliki panjang paling tidak $1 {{PLURAL:$1|karakter|karakter}}',
+	'securepasswords-lowercase' => 'memiliki huruf kecil paling tidak 1',
+	'securepasswords-uppercase' => 'memiliki huruf besar paling tidak 1',
+	'securepasswords-digit' => 'memiliki angka paling tidak 1',
+	'securepasswords-special' => 'memiliki karakter istimewa ($1) paling tidak 1',
+	'securepasswords-username' => 'berbeda dari nama pengguna Anda',
+	'securepasswords-word' => 'tidak boleh sebuah kata (dalam bahasa Inggris)',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

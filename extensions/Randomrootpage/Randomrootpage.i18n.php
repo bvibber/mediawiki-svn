@@ -157,6 +157,14 @@ $messages['ia'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Pagina special]] que obtene un pagina-radice aleatori',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'randomrootpage' => 'Halaman dasar sembarang',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Halaman istimewa]] untuk mengunduh halaman dasar secara sembarang',
+);
+
 /** Japanese (日本語)
  * @author Fievarsty
  */

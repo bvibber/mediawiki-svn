@@ -122,6 +122,11 @@ $aliases['no'] = array(
 	'CountEdits' => array( 'Tell redigeringer' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'CountEdits' => array( "Comptador d'edicions", "ComptadorD'Edicions" ),
+);
+
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'CountEdits' => array( 'Licznik educji' ),

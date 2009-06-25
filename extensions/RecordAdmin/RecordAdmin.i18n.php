@@ -738,6 +738,15 @@ $messages['ia'] = array(
 	'right-recordadmin' => 'Cercar e modificar paginas de datos',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'recordadmin-submit' => 'Kirim',
+	'recordadmin-buttonsearch' => 'Cari',
+	'recordadmin-buttoncreate' => 'Buat',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

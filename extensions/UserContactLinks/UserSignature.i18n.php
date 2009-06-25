@@ -235,6 +235,14 @@ $messages['ia'] = array(
 	'usercontactlink-desc' => 'Permitte adder simple- e consistentemente altere nomines de usator con le syntaxe ^^^user^^^',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'usercontactlink-baduser' => 'nama pengguna salah',
+	'usercontactlink-desc' => 'Memampukan untuk menambahkan nama pengguna lain secara konsisten dengan menggunakan sintaks ^^^pengguna^^^',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */

@@ -92,6 +92,11 @@ $aliases['no'] = array(
 	'AccountManager' => array( 'Kontobehandling' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'AccountManager' => array( 'Gestionari de compte', 'GestionariDeCompte' ),
+);
+
 /** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
 	'AccountManager' => array( 'Gerenciador de contas' ),

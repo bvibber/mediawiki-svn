@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'editwarning-warning' => 'Leaving this page will cause you to lose any changes you have made.',
 );
 
+/** Message documentation (Message documentation)
+ * @author McDutchie
+ */
+$messages['qqq'] = array(
+	'editwarning' => "This is the name of an extension that warns people when they try to leave an edit form without saving. So it means something like \"warning about (your) edit\", '''not''' \"edit the warning\".",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -54,9 +61,19 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author McDutchie
  */
 $messages['es'] = array(
-	'editwarning' => 'Editar advertencia',
+	'editwarning' => 'Alerta de edición',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'editwarning' => 'Muokkausvaroitus',
+	'editwarning-desc' => 'Näyttää varoituksen kun käyttäjä yrittää poistua muokkaustilasta tallentamatta.',
+	'editwarning-warning' => 'Tältä sivulta poistuminen aiheuttaa kaikkien tekemiesi muutosten katoamisen.',
 );
 
 /** French (Français)
@@ -93,6 +110,15 @@ $messages['hsb'] = array(
 	'editwarning' => 'Wobdźěłowanske warnowanje',
 	'editwarning-desc' => 'Warnowanje pokazać, hdyž wužiwar pospytuje, wobdźěłowanski formular bjez składowanja wopušćić',
 	'editwarning-warning' => 'Hdyž so strona wopušća, so přewjedźene změny zhubja.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'editwarning' => 'Advertimento de modification',
+	'editwarning-desc' => 'Monstra un advertimento quando un usator tenta quitar un formulario de modification sin immagazinar',
+	'editwarning-warning' => 'Quitar iste pagina causara le perdita de omne modificationes que tu ha facite.',
 );
 
 /** Indonesian (Bahasa Indonesia)

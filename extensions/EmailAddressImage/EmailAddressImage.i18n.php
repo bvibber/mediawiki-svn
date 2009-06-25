@@ -175,6 +175,13 @@ $messages['ia'] = array(
 	'emailaddressimage-desc' => 'Adde <tt>&lt;email&gt;</tt> pro monstrar un adresse de e-mail como imagine',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'emailaddressimage-desc' => 'Tambahkan <tt>&lt;email&gt;</tt> untuk menampilkan sebuah alamat surel sebagai gambar',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

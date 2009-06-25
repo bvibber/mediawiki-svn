@@ -143,6 +143,13 @@ $messages['ia'] = array(
 	'navigationpopups-desc' => 'Carga in MediaWiki le scripts de Lupin pro fenestras de navigation',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'navigationpopups-desc' => 'Muatkan pop-up skrip navigasi Lupin di MediaWiki',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

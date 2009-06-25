@@ -112,6 +112,11 @@ $aliases['no'] = array(
 	'NewsChannel' => array( 'Nyhetskanal' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'NewsChannel' => array( 'Cadena d’informacion' ),
+);
+
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'NewsChannel' => array( 'خبري کانال' ),

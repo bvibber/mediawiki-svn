@@ -162,6 +162,13 @@ $messages['ia'] = array(
 	'pnghandler-desc' => "Redimensionar imagines PNG per medio de 'pngds'",
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'pnghandler-desc' => 'Besarkan atau kecilkan PNG menggunakan pngds',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

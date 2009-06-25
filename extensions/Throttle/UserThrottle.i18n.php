@@ -214,6 +214,17 @@ Per favor attende un momento e preme 'recargar' in tu navigator pro resubmitter 
 	'acct_creation_global_soft_throttle_hit-desc' => 'Limita le frequentia de creation de usatores',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Pembuatan akun telah dinon-aktifkan untuk beberapa saat karena terdapat usaha untuk log masuk dalam jumlah yang sangat besar.
+Coba lagi setelah beberapa menit.',
+	'acct_creation_global_hard_throttle_hit' => "Pembuatan akun telah dinon-aktifkan untuk beberapa detik untuk mengurangi serangan banjir pendaftaran.
+Coba lagi setelah beberapa saat dan klik 'reload' di penjelajah Anda untuk mengirim ulang.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Memblokir sesaat pembuatan akun',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

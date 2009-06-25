@@ -223,7 +223,7 @@ $messages['ar'] = array(
 	'whitelistoverviewrm' => '* إزالة الوصول إلى [[:$1|$1]]',
 	'whitelistoverviewna' => "* إضافة [[:$1|$1]] إلى القائمة البيضاء بوصول '''$2''' و '''$3''' تاريخ انتهاء",
 	'whitelistrequest' => 'طلب السماح لمزيد من الصفحات',
-	'whitelistrequestmsg' => '$1 طلب الوصول إلى {{PLURAL:$3||الصفحةالتالية|الصفحتين التاليتين|الصفحات التالية}}:
+	'whitelistrequestmsg' => '$1 طلب الوصول إلى {{PLURAL:$3||الصفحة التالية|الصفحتين التاليتين|الصفحات التالية}}:
 
 $2',
 	'whitelistrequestconf' => 'الطلب للصفحات الجديدة تم إرساله إلى $1',
@@ -1445,11 +1445,14 @@ Iste pagina es solmente applicabile al usatores restringite",
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
 	'whitelisttablemodifyall' => 'Semua',
 	'whitelisttablemodifynone' => 'Tidak ada',
+	'whitelisttableremove' => 'Hapus',
+	'whitelistnewtableprocess' => 'Proses',
 );
 
 /** Icelandic (Íslenska)

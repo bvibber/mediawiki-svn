@@ -54,7 +54,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'usabilityinitiative' => 'Iniciativa de usabilidade',
-	'usabilityinitiative-desc' => 'Características desenvolvidas pola iniciativa de usabilidade da Wikipedia para mellorar a usabilidade de MediaWiki',
+	'usabilityinitiative-desc' => 'Características desenvolvidas pola Iniciativa de usabilidade da Wikipedia para mellorar a usabilidade de MediaWiki',
 );
 
 /** Swiss German (Alemannisch)
@@ -87,6 +87,14 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'usabilityinitiative' => 'Proyek Inisiatif Kebergunaan',
 	'usabilityinitiative-desc' => 'Fitur-fitur yang dikembangkan oleh Proyek Inisiatif Kebergunaan Wikipedia untuk meningkatkan kebergunaan MediaWiki',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'usabilityinitiative' => 'Iniziativa di usabilità',
+	'usabilityinitiative-desc' => "Caratteristiche sviluppate dall'Iniziativa di usabilità Wikipedia per migliorare l'usabilità di MediaWiki",
 );
 
 /** Japanese (日本語)

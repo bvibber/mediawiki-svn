@@ -1824,7 +1824,9 @@ $4',
  */
 $messages['fi'] = array(
 	'code' => 'Koodintarkistus',
+	'code-rev-title' => 'r$1 – Koodintarkistus',
 	'code-comments' => 'Kommentit',
+	'code-references' => 'Myöhemmät versiot',
 	'code-change-status' => "muutti version $1 '''tilaa'''",
 	'code-change-tags' => "muutti version $1 '''merkintöjä'''",
 	'code-change-removed' => 'poistettu:',
@@ -1869,6 +1871,7 @@ $messages['fi'] = array(
 	'code-rev-modified-r' => 'korvattu',
 	'code-rev-modified-d' => 'poistettu',
 	'code-rev-modified-m' => 'muutettu',
+	'code-rev-imagediff' => 'Kuvamuutokset',
 	'code-rev-status' => 'Tila:',
 	'code-rev-status-set' => 'Vaihda tilaa',
 	'code-rev-tags' => 'Merkinnät:',
@@ -1891,7 +1894,15 @@ $messages['fi'] = array(
 	'code-pathsearch-path' => 'Polku',
 	'code-rev-submit' => 'Tallenna muutokset',
 	'code-rev-submit-next' => 'Tallenna ja seuraava avoin',
+	'code-batch-status' => 'Muuta tilaa',
+	'code-batch-tags' => 'Muuta tägejä',
+	'codereview-batch-title' => 'Muuta kaikkia valittuja versioita',
+	'codereview-batch-submit' => 'Lähetä',
 	'code-releasenotes' => 'julkaisutiedot',
+	'code-release-legend' => 'Luo julkaisuhuomautukset',
+	'code-release-startrev' => 'Ensimmäinen versio',
+	'code-release-endrev' => 'Viimeinen versio',
+	'codereview-subtitle' => 'Varastolle $1',
 	'codereview-reply-link' => 'vastaa',
 	'codereview-email-subj' => '[$1] [r$2]: Uusi kommentti lisätty',
 	'codereview-email-body' => 'Käyttäjä $1 jätti kommentin versioon r$3.
@@ -1899,6 +1910,14 @@ $messages['fi'] = array(
 Täydellinen osoite: $2
 
 Kommentti:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Myöhemmät muutokset',
+	'codereview-email-body2' => 'Käyttäjä ”$1” teki myöhemmän muutoksen versioon r$2.
+
+Täydellinen URL: $3
+
+Toimituksen yhteenveto:
 
 $4',
 	'repoadmin' => 'Varaston hallinta',
@@ -1912,6 +1931,7 @@ $4',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'Muutokset varastoon [[Special:Code/$1|$1]] on tehty.',
 	'right-repoadmin' => 'Hallita koodivarastoja',
+	'right-codereview-use' => 'Special:Code:n käyttö',
 	'right-codereview-add-tag' => 'Lisätä uusia merkintöjä versioihin',
 	'right-codereview-remove-tag' => 'Poistaa merkintöjä versioista',
 	'right-codereview-post-comment' => 'Lisätä kommentteja versioihin',
@@ -2989,6 +3009,18 @@ $4',
 	'right-codereview-set-status' => 'Cambiar le stato de versiones',
 	'right-codereview-link-user' => 'Ligar autores a usatores del wiki',
 	'specialpages-group-developer' => 'Instrumentos pro disveloppatores',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'code-field-author' => 'Pembuat',
+	'code-rev-author' => 'Pembuat:',
+	'code-status-ok' => 'ok',
+	'codereview-batch-submit' => 'Kirim',
+	'repoadmin-new-button' => 'Buat',
+	'repoadmin-edit-button' => 'OK',
 );
 
 /** Ido (Ido)

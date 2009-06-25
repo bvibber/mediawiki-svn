@@ -1116,6 +1116,14 @@ Per favor verifica que tu blocator de pop-up lo permitte.',
 	'ct_user_sample' => 'Nomine de usator',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$wgCustomToolbarMessages['id'] = array(
+	'ct_submit' => 'Kirim!',
+	'ct_user_sample' => 'Nama pengguna',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
@@ -1794,7 +1802,7 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_horizontal_tip' => 'Inserează o linie orizontală (folosiţi-o cumpătat)',
 	'ct_horizontal_caption' => 'Linie orizontală',
 	'ct_upload' => 'Încarcă $1',
-	'ct_select' => 'Selectează $1 pentru încărcare',
+	'ct_select' => 'Selectează $1 pentru încărcare:',
 	'ct_close' => 'Închide fereastra',
 	'ct_success' => 'Încărcare a fişierului cu succes!',
 	'ct_user_user' => 'Utilizator',

@@ -199,6 +199,11 @@ $aliases['no'] = array(
 	'ExpandTemplates' => array( 'Utvid maler' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'ExpandTemplates' => array( 'EspandimentDelsModèls' ),
+);
+
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'ExpandTemplates' => array( 'Rozwijanie szablonów' ),

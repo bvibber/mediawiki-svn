@@ -557,22 +557,24 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
-	'authorprotect' => 'Melindungi halaman dari non-penulis',
-	'authorprotect-desc' => 'Mengizinkan penulis suatu halaman untuk melindunginya dari pengguna lain',
-	'authorprotect-notauthor' => 'Anda bukan penulis halaman ini',
+	'authorprotect' => 'Melindungi halaman dari non-penulis pertama',
+	'authorprotect-desc' => 'Mengizinkan penulis pertama suatu halaman untuk melindunginya dari pengguna lain',
+	'authorprotect-notauthor' => 'Anda bukan penulis pertama halaman ini',
 	'authorprotect-confirm' => 'Mengganti tingkat perlindungan',
-	'authorprotect-edit' => 'Membatasi penyuntingan hanya untuk penulis',
-	'authorprotect-move' => 'Membatasi perpindahan ke penulis',
+	'authorprotect-edit' => 'Membatasi penyuntingan hanya untuk penulis pertama',
+	'authorprotect-move' => 'Membatasi pemindahan hanya untuk penulis pertama',
 	'authorprotect-expiry' => 'Waktu kadaluwarsa',
 	'authorprotect-reason' => 'Alasan',
-	'authorprotect-intro' => 'Gunakan formulir berikut untuk mengunci halaman ini dari non-penulis',
+	'authorprotect-intro' => 'Gunakan formulir berikut untuk mengunci halaman ini dari non-penulis pertama',
 	'authorprotect-success' => 'Perlindungan berhasil!',
 	'authorprotect-failure' => 'Perlindungan tidak berhasil',
-	'protect-level-author' => 'Melindungi dari non-penulis',
-	'restriction-level-author' => 'Khusus-penulis',
+	'protect-level-author' => 'Melindungi dari non-penulis pertama',
+	'restriction-level-author' => 'Dilindungi penulis pertama',
+	'right-authorprotect' => 'Lindungi halaman dengan penulis pertama',
 );
 
 /** Ido (Ido)

@@ -90,7 +90,7 @@ $messages['ar'] = array(
 	'povwatch_not_subscribed' => 'أنت غير مشترك في مراقبة بي أو في، لذا فلا يمكنك إلغاء الاشتراك.',
 	'povwatch_unsubscribed' => 'أنت الآن ألغيت الاشتراك في مراقبة بي أو في',
 	'povwatch_invalid_title' => 'العنوان المحدد كان غير صحيح',
-	'povwatch_pushed' => '[[$1]] تم دفعها بنجاح إلى $2 {{PLURAL:$2|قائمة مراقبة مستخدم|قائمة مراقبة مستخدم}}',
+	'povwatch_pushed' => 'تم دفع [[$1]] بنجاح إلى {{PLURAL:$2||قائمة مراقبة المستخدم|قائمة مراقبة المستخدمين|قائمة مراقبة ال$2 مستخدمين|قائمة مراقبة ال$2 مستخدمًا|قائمة مراقبة ال$2 مستخدم}}',
 	'povwatch_intro' => 'مراقبة بي أو في هي خدمة تسمح بإضافة صفحات معينة إلى قوائم مراقبة الإداريين المشتركين.
 
 السجل بعمليات دفع قوائم المراقبة الحديثة متوفر في [[Special:PovWatch/log]].',
@@ -1012,7 +1012,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'povwatch' => 'PovWatch',
+	'povwatch' => 'dä Wiki-Kontrolläti (<i lang="en">PovWatch</i>)',
 	'povwatch_desc' => 'Määt et müjjelesch, [[Special:PovWatch|Sigge op anderlüx Oppassleste ze donn]].',
 	'povwatch_no_session' => 'Fähler: De Date en dämm Fommulaa kunnte nicht beärbeidt wäde.
 De Date för Ding Setzung wohre fott. Versöhk et noch ens.',
@@ -1020,23 +1020,23 @@ De Date för Ding Setzung wohre fott. Versöhk et noch ens.',
 	'povwatch_already_subscribed' => 'Do bes ald för {{int:povwatch}} enjeschrevve.',
 	'povwatch_subscribed' => 'Do bes jez för {{int:povwatch}} enjeschrevve.',
 	'povwatch_not_subscribed' => 'Do bes nit för {{int:povwatch}} enjeschrevve, alsu kanns De Desch nit ußdraare.',
-	'povwatch_unsubscribed' => 'Do bes jez bei {{int:povwatch}} wider ußjedraare.',
+	'povwatch_unsubscribed' => 'Do bes jez bei „{{int:povwatch}}“ wider ußjedraare.',
 	'povwatch_invalid_title' => 'Dä aanjejovve Tettel es nit jöltesch',
 	'povwatch_pushed' => 'De Sigg „[[$1]]“ es jetz op {{PLURAL:$2|einem Metmaacher sing Oppassleß|$2 Metmaacher ier Oppassleste|keinem sing Oppassleß}} drop jesatz.',
-	'povwatch_intro' => '{{int:povwatch}} es ene Deens, dä et müjjelesch määt, Sigge op anderlüx Oppassleste ennzedraare.
+	'povwatch_intro' => '„{{ucfirst:{{int:povwatch}}}}“ es ene Deens, dä et müjjelesch määt, Sigge op anderlüx Oppassleste ennzedraare.
 Dat määt mer met Sigge, woh mer meint, dat dat nüüdesch wöhr.
 Wä esu Sigge op singe Oppassless enjedraare krijje well, moß dat extra zohlohße,
-un sesch doför beim {{int:povwatch}} enschriive.
+un sesch doför beim „{{int:povwatch}}“ enschriive.
 
 En Leß met de neußte Endraarunge op anderlüx Oppassleß kam_mer sesch
 op dä Sigg [[Special:PovWatch/log]] aanbekike.',
-	'povwatch_subscriber_list' => 'En [[Special:PovWatch/subscribers|Leß met de {{int:povwatch}}-Metmaachere]] jidd_et och.',
+	'povwatch_subscriber_list' => 'En [[Special:PovWatch/subscribers|Leß met {{int:povwatch}}-Metmaachere]] jidd_et och.',
 	'povwatch_subscriber_list_intro' => '<strong>Leß met de enjedraare Metmaacher</strong>',
-	'povwatch_not_allowed_subscribers' => 'Do häs nit dat Rääsch, Der de Leß met de bei {{int:povwatch}} enjeschrevve Metmaacher aanzeloore.',
+	'povwatch_not_allowed_subscribers' => 'Do häs nit dat Rääsch, Der de Leß met de bei„ {{int:povwatch}}“ enjeschrevve Metmaacher aanzeloore.',
 	'povwatch_unknown_subpage' => 'De Ungersigg jidd_et nit.',
 	'povwatch_push' => 'Loß Jonn! Dobeidonn!',
 	'povwatch_push_intro' => 'Met dämm Fommulaa unge kanns De Sigge op der Metmaacher ier Oppassleste
-donn, die sesch bei {{int:povwatch}} enjeschrevve han.
+donn, die sesch bei „{{int:povwatch}}“ enjeschrevve han.
 Beß vörseschtesch, wann de Tittele vun Sigge schrievs, selvs Tittele, wo
 et noch jaa kei Sigg för jitt, kanns De op anderlüx Oppassleste donn,
 un wat do eimohl drop esm kanns Do nit mieh dovun fott nämme.',
@@ -1044,10 +1044,10 @@ un wat do eimohl drop esm kanns Do nit mieh dovun fott nämme.',
 	'povwatch_comment' => 'Endraach för en et Logbooch:',
 	'povwatch_no_log' => 'En däm Logboch es nix dren.',
 	'povwatch_no_subscribers' => 'Et sin kein Metmaacher för {{int:povwatch}} enjedraare.',
-	'povwatch_unsubscribe_intro' => 'Do bes bei {{int:povwatch}} ennjeschrevve.
+	'povwatch_unsubscribe_intro' => 'Do bes bei „{{int:povwatch}}“ ennjeschrevve.
 Onge övver der Knopp kanns de Desch ußdraare lohße.',
 	'povwatch_unsubscribe' => 'Ußdraare!',
-	'povwatch_subscribe_intro' => 'Do bes noch nit bei {{int:povwatch}} ennjeschrevve.
+	'povwatch_subscribe_intro' => 'Do bes noch nit bei „{{int:povwatch}}“ ennjeschrevve.
 Onge övver der Knopp kanns de Desch endraare lohße.',
 	'povwatch_subscribe' => 'Ennschriive!',
 	'povwatch_added' => 'dobei jedonn',

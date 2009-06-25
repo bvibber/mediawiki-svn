@@ -181,9 +181,9 @@ $messages['ar'] = array(
 	'contrib-hist-anonymous' => 'مجهول',
 	'contributionstatistics' => 'إحصاءات المساهمة',
 	'contribstats-desc' => 'يعرض إحصاءات المساهمات لمؤسسة ويكيميديا',
-	'contribstats-daily-totals' => '{{PLURAL:$1|الإجمالي لليوم|الإجمالي اليومي لآخر $1 يوم}}',
-	'contribstats-monthly-totals' => '{{PLURAL:$1|الإجمالي لهذا الشهر|الإجمالي الشهري لآخر $1 شهر}}',
-	'contribstats-month-range-totals' => '{{PLURAL:$1|الإجمالي ل$1 شهر|الإجمالي الشهري ل$1 شهر}}',
+	'contribstats-daily-totals' => '{{PLURAL:$1||إجمالي اليوم|الإجمالي اليومي لليومين الماضيين|الإجمالي اليومي لل$1 أيام الماضية|الإجمالي اليومي لل$1 يومًا الماضية|الإجمالي اليومي لل$1 يوم الماضية}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1||إجمالي الشهر هذا|الإجمالي الشهري للشهرين الماضيين|الإجمالي الشهري لل$1 أشهر الماضية|الإجمالي الشهري لل$1 شهرًا الماضية|الإجمالي الشهري لل$1 شهر الماضية}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1||إجمالي شهر واحد|الإجمالي الشهري لشهرين|الإجمالي الشهري ل$1 أشهر|الإجمالي الشهري ل$1 شهرًا|الإجمالي ل$1 شهر}}',
 	'contribstats-currency-range-totals' => 'مجموع العملات (من $1 إلى $2)',
 	'contribstats-contribution-range-breakdown' => 'تفصيل المساهمات بواسطة القيمة (من $1 إلى $2)',
 	'contribstats-currency-totals' => 'مجموع العملات للسنة المالية ل$1',
@@ -1318,6 +1318,13 @@ $messages['ia'] = array(
 	'fundraiserstats-tab-averages' => 'Medias (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximos (USD)',
 	'specialpages-group-contribution' => 'Contributiones/Collecta de fundos',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'contrib-hist-name' => 'Nama',
 );
 
 /** Ido (Ido)

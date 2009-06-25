@@ -4543,11 +4543,15 @@ Saltar verso le vista del fluxo: $2',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
 	'mv_tool_search' => 'Cari',
+	'mv_remove' => 'hapus',
+	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
+	'mv_search_categories' => 'Kategori',
 	'mv_search_category' => 'Kategori',
 	'mv_search_and' => 'dan',
 	'mv_category' => 'kategori',
@@ -5226,6 +5230,11 @@ streams',
 	'mv_media_matches' => 'Jefonge Meedije',
 	'mv_play_inline' => '<i lang="en">inline</i> afshpelle',
 	'mv_view_wiki_page' => 'Sigg em Wiki aanloore',
+	'mv_error_mvd_not_found' => 'Ene Fähler es opjetrodde: <i lang="en">mvd</i> nit jefonge',
+	'mv_edit_sequence' => '
+De 
+sequence
+„$1“ aam Ändere',
 	'mv_sequence_add_manual' => 'Övver der Name dobei donn',
 	'mv_sequence_add_search' => 'Dobei donn övver et Söhke',
 	'mv_seq_add_end' => 'Aam Engk vun en 
@@ -7400,6 +7409,10 @@ $messages['ru'] = array(
 	'loading_plugin' => 'Загрузка плагина <blink>...</blink>',
 	'select_playback' => 'Установить настройки воспроизведения',
 	'link_back' => 'Обратная ссылка',
+	'error_load_lib' => 'mv_embed: невозможно загрузить требуемые библиотеки JavaScript.
+Включить скрипт через DOM не удалось.
+Попробовать перезагрузить?',
+	'error_swap_vid' => 'Ошибка: mv_embed не может поменять тег видео для интерфейса mv_embed',
 	'download_segment' => 'Выбор загрузки:',
 	'download_full' => 'Загрузить полный видео-файл:',
 	'download_clip' => 'Загрузить клип',
@@ -7408,6 +7421,8 @@ $messages['ru'] = array(
 	'mv_ogg-player-videoElement' => 'Встроенная поддержка Ogg Video',
 	'mv_ogg-player-oggPlugin' => 'Общий плагин Ogg',
 	'mv_ogg-player-selected' => '(выбранное)',
+	'mv_generic_missing_plugin' => 'Ваш браузер не поддерживает воспроизведение типа: <b>$1</b><br />
+Посетите страницу <a href="http://metavid.org/wiki/Client_Playback">методов воспроизведения</a> для загрузки программы.<br />',
 	'add_to_end_of_sequence' => 'Добавить в конец последовательности',
 	'missing_video_stream' => 'Видеофайл для этого потока отсутствует',
 	'select_transcript_set' => 'Выбор слоёв текста',
@@ -7418,13 +7433,22 @@ $messages['ru'] = array(
 	'prev_clip_msg' => 'Воспроизвести предыдущий клип',
 	'current_clip_msg' => 'Продолжить воспроизведение этого клипа',
 	'seek_to' => 'Перейти к',
-	'upload-enable-converter' => 'Включить видео-конвертёр.
+	'upload-enable-converter' => 'Включить видео-конвертер.
 Используйте эту опцию для загрузки исходного видео, не конвертированного в формат Theora.
-(<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">дополнительная информацию</a>)',
+(<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">дополнительная информация</a>)',
+	'upload-fogg_not_installed' => 'Если вы хотите загрузить видео, установите <a href="http://firefogg.org">Firefogg</a>.
+(<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">больше информации</a>)',
 	'upload-in-progress' => 'Перекодирование и загрузка (не закрывайте это окно)',
 	'upload-transcoded-status' => 'Перекодировано',
 	'uploaded-status' => 'Загружен',
 	'upload-select-file' => 'Выберите файл...',
+	'wgfogg_wrong_version' => 'Установленная вами версия Firefogg устарела.
+<a href="http://firefogg.org">Пожалуйста, обновите</a>.',
+	'wgfogg_waring_ogg_upload' => 'Вы выбрали файл .ogg для преобразования в Ogg.
+Это, вероятно, не нужно.
+Может быть, отключить видео-конвертер?',
+	'wgfogg_waring_bad_extension' => 'Вы выбрали файл с неподдерживаемым расширением.
+<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">Подробнее</a>.',
 	'mv_media_search' => 'Поиск медиа',
 	'rsd_box_layout' => 'Макет коробки',
 	'rsd_list_layout' => 'Макет списка',
@@ -7454,6 +7478,8 @@ $messages['ru'] = array(
 	'mv_preview_insert' => 'Предпросмотр включения',
 	'mv_cancel_image_insert' => 'Отменить включение',
 	'sc_fileopts' => 'Правка подробностей клипа',
+	'sc_inoutpoints' => 'Установить очки ввода-вывода',
+	'sc_panzoom' => 'Ограничение масштаба панорамы',
 	'sc_overlays' => 'Оверлеи',
 	'sc_audio' => 'Аудиоконтроль',
 	'sc_duration' => 'Длительность',
@@ -7462,6 +7488,7 @@ $messages['ru'] = array(
 	'mv_edit_properties' => 'Править свойства',
 	'mv_other_properties' => 'Другие свойства',
 	'mv_resource_page' => 'Страница источника',
+	'mv_set_in_out_points' => 'Установить очки ввода-вывода',
 	'menu_clipedit' => 'Править выбранный источник',
 	'menu_cliplib' => 'Добавить источник',
 	'menu_transition' => 'Эффекты переходов',
@@ -7492,6 +7519,7 @@ $messages['ru'] = array(
 	'metavid' => 'Страница Metavid',
 	'mv_missing_stream' => 'Ошибка в потоке: $1',
 	'specialpages-group-mv_group' => 'Служебные страницы MetaVidWiki',
+	'mv_warning_wiki' => '<i>Замечание. Стенограммы видео MetaVid [[Help:FAQ#How_accurate_is_the_information.3F|могут содержать неточности]], помогите создать [[Help:Participation#Improving_Archive_Accuracy|более совершенный архив]]</i>',
 	'mv_ogg_low_quality' => 'Для веба — Ogg Theora 300 Кбит/с',
 	'mv_ogg_high_quality' => 'Высококачественный — Ogg Theora 900 Кбит/с',
 	'mv_flash_low_quality' => 'Для веба — флеш-видео',

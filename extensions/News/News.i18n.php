@@ -133,6 +133,13 @@ $messages['ia'] = array(
 	'newsextension-desc' => 'Monstra modificationes recente in modo personalisate in un pagina wiki o como un syndication RSS o Atom',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'newsextension-desc' => 'Tampilkan perubahan terbaru yang dikustomisasi pada sebuah halaman wiki, atau sindikasi RSS atau Atom',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

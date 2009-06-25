@@ -176,6 +176,15 @@ $messages['ia'] = array(
 	'untidy' => 'Disnettar',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'tidy-desc' => 'Menambahkan tab "rapi" atau "takrapi" (tergantung dari $wgUseTidy) sebagai halaman biasa yang memungkinkan untuk seting global perapian HTML diacuhkan untuk tampilan tunggal',
+	'tidy' => 'Rapi',
+	'untidy' => 'Takrapi',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

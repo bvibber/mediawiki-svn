@@ -331,6 +331,16 @@ $messages['ia'] = array(
 	'searchbox-namespaces' => 'Spatios de nomines:',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'searchbox-desc' => 'Mengijinkan formulir pencarian disertakan',
+	'searchbox-search' => 'Cari',
+	'searchbox-go' => 'Tuju ke',
+	'searchbox-namespaces' => 'Ruang nama:',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi

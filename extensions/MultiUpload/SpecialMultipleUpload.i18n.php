@@ -33,13 +33,17 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'multipleupload' => '',
 	'multipleupload-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'multipleupload-text' => 'Plural is supported for $1.',
+	'multiupload-toolbox' => '{{Identical|Uploadmultiple}}',
 );
 
 /** Karelian (Karjala)
@@ -670,25 +674,28 @@ Le files inappropriate essera delite immediatemente; vide le [[{{MediaWiki:Multi
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
-	'multipleupload' => 'Muatkan berkas',
-	'multipleupload-desc' => 'Memungkinkan pengguna untuk [[Special:MultipleUpload|memuatkan beberapa berkas sekaligus]]',
+	'multipleupload' => 'Muatkan lebih dari satu berkas',
+	'multipleupload-desc' => 'Mengijinkan pengguna untuk [[Special:MultipleUpload|memuatkan beberapa berkas sekaligus]]',
 	'multipleupload-ignoreallwarnings' => "Abaikan '''semua peringatan''' dan langsung simpan semua berkas.",
 	'multipleupload-saveallfiles' => 'Simpan semua berkas',
-	'multipleupload-addresswarnings' => 'Silakan periksa terlebih dahulu pesan-pesan peringatan yang ditampilkan sebelum memuatkan kembali berkas.',
+	'multipleupload-addresswarnings' => 'Silakan periksa terlebih dahulu pesan-pesan peringatan yang ditampilkan sebelum memuat ulang berkas.',
 	'multipleupload-page' => '{{ns:project}}:Kebijakan penghapusan berkas',
-	'multipleupload-text' => "Anda dapat memuatkan banyak berkas sekaligus di sini.
+	'multipleupload-text' => "Anda dapat memuatkan lebih dari satu berkas di sini.
 
 Tekan 'Browse' dan pilih berkas-berkas yang ingin Anda muatkan.
 Anda dapat memuatkan 1 hingga $1 berkas sekaligus.
 
-Anda dapat memasukkan '''nama berkas tujuan''' yang berbeda dan memberikan '''Ikhtisar''' untuk mendeskripsikan berkas Anda.
+Anda dapat memasukkan '''Nama berkas tujuan''' yang berbeda dan memberikan '''Ringkasan''' untuk mendeskripsikan berkas Anda.
 
 Berkas-berkas yang tidak layak akan segera dihapuskan, lihat [[{{MediaWiki:Multipleupload-page}}|kebijakan penghapusan berkas]].",
-	'multiupload-fileuploaded' => 'Berkas dimuatkan.',
-	'multiupload-toolbox' => 'Memuat banyak berkas sekaligus',
+	'multiupload-fileuploaded' => 'Berkas telah dimuatkan.',
+	'multiupload-toolbox' => 'Muatkan lebih dari satu berkas',
+	'multiupload-no-files' => 'Tolong pilih paling tidak satu berkas untuk dimuatkan',
+	'multiupload-blank' => 'Tidak ada berkas yang dipilih',
 );
 
 /** Ido (Ido)

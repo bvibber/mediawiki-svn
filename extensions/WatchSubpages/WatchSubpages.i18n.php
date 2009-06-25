@@ -324,6 +324,10 @@ $messages['he'] = array(
  */
 $messages['hr'] = array(
 	'watchsubpages' => 'Prati podstranice',
+	'watchsubpages-addedtowatchlist' => 'Sljedeće je dodano na vaš popis praćenih stranica.',
+	'watchsubpages-addtitles' => 'Dodaj stranice',
+	'watchsubpages-addtitlestowatchlist' => 'Dodaj stranice na popis praćenja',
+	'watchsubpages-desc' => 'Brzo [[Special: WatchSubpages |dodaj sve podstranice]] stranice na popis praćenja',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -369,6 +373,21 @@ $messages['ia'] = array(
 Pro adder un pagina, marca le quadrato al latere de illo, e clicca "Adder paginas".
 
 Si tu vole marcar o dismarcar plure paginas, tu pote tener premite le clave Shift pro seliger quadratos consecutive per cliccar cata extremitate del intervallo a marcar.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'watchsubpages' => 'Pantau upa halaman',
+	'watchsubpages-addedtowatchlist' => 'Yang berikut ini telah ditambahkan ke daftar pantauan Anda.',
+	'watchsubpages-addtitles' => 'Tambahkan halaman',
+	'watchsubpages-addtitlestowatchlist' => 'Tambahkan halaman ke daftar pantauan',
+	'watchsubpages-desc' => 'Dengan cepat [[Special:WatchSubpages|tambahkan semua upa halaman]] ke daftar pantauan',
+	'watchsubpages-form' => 'Pilih halaman yang ingin Anda tambahkan ke daftar pantauan Anda.
+Untuk menambahkan halaman, tandai kotak di sebelahnya lalu tekan "Tambahkan halaman".
+
+Ketika menandai beberapa halaman sekaligus, dengan menekan tombol "Shift" Anda dapat menandai beberapa halaman yang berurutan sekaligus.',
 );
 
 /** Italian (Italiano)

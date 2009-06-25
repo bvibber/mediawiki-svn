@@ -2403,10 +2403,13 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
+	'deletequeue-vote-submit' => 'Kirim',
 	'deletequeue-list-search' => 'Cari',
+	'deletequeue-case-reason' => 'Alasan:',
 );
 
 /** Ido (Ido)
@@ -3988,9 +3991,14 @@ $messages['ru'] = array(
 	'deletequeue-action-queued' => 'Удаление',
 	'deletequeue-action' => 'Предложить удаление',
 	'deletequeue-action-title' => 'Предложить удаление "$1"',
+	'deletequeue-action-text' => "Эта вики имеет ряд процессов для удаления страниц:
+* Если вы считаете, что страница обязательно должна быть удалена, вы можете [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} предложить её к ''быстрому удалению''].
+* Если эта страница не обязательно должна быть быстроь удалена, но ''удаление, вероятно, будет бесспорным'', вы должны [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} предложить неспоренное удаление].
+* Если удаление этой страницы ''может быть оспорено'', вы должны [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} открыть обсуждение].",
 	'deletequeue-action-text-queued' => 'Вы можете просмотреть следующие страницы для этого запроса удаления:
 * [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Просмотреть текущих сторонников и противников].
 * [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Поддержать или отклонить удаление этой страницы].',
+	'deletequeue-permissions-noedit' => 'Вы должны иметь возможность редактировать страницы, чтобы иметь возможность влиять на их состояние удаления.',
 	'deletequeue-generic-reasons' => '* Типовые причины
   ** Вандализм
   ** Спам
@@ -4003,6 +4011,9 @@ $messages['ru'] = array(
 Администратор рассмотрит этот запрос и, если он обоснован, удалит эту страницу.
 Вам следует выбрать причину удаления из выпадающего списка, добавить любую другую существенную информацию.",
 	'deletequeue-prod-title' => 'Предложить удаление «$1»',
+	'deletequeue-prod-text' => "Вы можете использовать эту форму чтобы предложить на удаление '''«$1»'''
+
+Если по истечении пяти дней, никто не оспорит предложение по удалению, страница будет удалена после последней проверки администратором.",
 	'deletequeue-delnom-reason' => 'Причина номинации:',
 	'deletequeue-delnom-otherreason' => 'Другие причины',
 	'deletequeue-delnom-extra' => 'Дополнительная информация:',
@@ -4023,6 +4034,13 @@ $messages['ru'] = array(
 	'deletequeue-queue-deletediscuss' => 'Обсуждение удаления',
 	'deletequeue-page-speedy' => "Эта страница была номинирована на быстрое удаление.
 Причина для этого удаления - ''$1''.",
+	'deletequeue-page-prod' => "Было предложено удаление этой страницы.
+Указана следующая причина — ''$1''.
+Если это предложение не будет оспорено в течение ''$2'', эта страница может быть удалена.
+Вы можете прочитать обсуждение удалению этой страницы [{{fullurl:{{FULLPAGENAME}}|action=delvote}} сторонниками и противниками].",
+	'deletequeue-page-deletediscuss' => "Эта страница была предложена к удалению, и это предложение было оспорено.
+Указана следующая причина: ''$1''.
+Обсуждение продолжается на [[$5]], которое завершится в ''$2''.",
 	'deletequeue-notqueued' => 'Выбранная вами страница на данный момент не находится в очереди к удалению',
 	'deletequeue-review-action' => 'Принять меры:',
 	'deletequeue-review-delete' => 'Удалить страницу.',
@@ -4034,6 +4052,7 @@ $messages['ru'] = array(
 	'deletequeue-review-newextra' => 'Дополнительные сведения:',
 	'deletequeue-review-submit' => 'Сохранить досмотр',
 	'deletequeue-review-original' => 'Причина номинации',
+	'deletequeue-actiondisabled-involved' => 'Следующее действие отключено, так как вы приняли участие в данном предложении удаления в качестве $1:',
 	'deletequeue-actiondisabled-notexpired' => 'Следующее действие отключено, поскольку срок номинации на удаление ещё не истёк:',
 	'deletequeue-review-badaction' => 'Вы указали неправильное действие',
 	'deletequeue-review-actiondenied' => 'Вы указали действие, которое отключено для этой страницы',
@@ -4041,12 +4060,22 @@ $messages['ru'] = array(
 Пожалуйста, убедитесь, что ознакомились с этими возражениями перед удалением этой страницы.",
 	'deletequeue-reviewspeedy-tab' => 'Досмотр быстрого удаления',
 	'deletequeue-reviewspeedy-title' => 'Досмотр быстрого удаления номинации «$1»',
+	'deletequeue-reviewspeedy-text' => "Вы можете использовать эту форму для досмотра номинации «'''$1'''» к быстрому удалению.
+Пожалуйста, проверьте, что эта страница может быть быстро удалена в соответствии с правилами.",
 	'deletequeue-reviewprod-tab' => 'Просмотр предлагаемых удалений',
 	'deletequeue-reviewprod-title' => 'Просмотр предлагаемого удаления «$1»',
+	'deletequeue-reviewprod-text' => "Вы можете использовать эту форму для досмотра неоспоренного предложения удаления «'''$1'''».",
 	'deletequeue-reviewdeletediscuss-tab' => 'Досмотр удаления',
 	'deletequeue-reviewdeletediscuss-title' => 'Досмотр обсуждения удаления для «$1»',
+	'deletequeue-reviewdeletediscuss-text' => "Вы можете использовать эту форму для досмотра обсуждения удаления «'''$1'''».
+
+[{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Список] сторонников и противаников этого удаления доступен, и обсуждение может быть найдено на странице [[$2]].
+Пожалуйста, убедитесь, что вы принимаете решение согласно консенсусу в обсуждении.",
 	'deletequeue-review-success' => 'Вы успешно досмотрели удаление этой страницы',
 	'deletequeue-review-success-title' => 'Досмотр завершён',
+	'deletequeue-deletediscuss-discussionpage' => 'Это страница обсуждения удаления [[$1]].
+Сейчас есть $2 {{PLURAL:$2|участник, поддерживающий|участника, поддерживающих|участников, поддерживающих}} удаление и $3 {{PLURAL:$3|участник, отклоняющий|участника, отклоняющих|участников, отклоняющих}} удаление.
+Вы можете [{{fullurl:$1|action=delvote}} поддержать или отклонить] удаление, или [{{fullurl:$1|action=delviewvotes}} просмотреть всех сторонников и противников].',
 	'deletequeue-discusscreate-summary' => 'Создание обсуждения удаления [[$1]].',
 	'deletequeue-discusscreate-text' => 'Удаление предлагается по следующей причине: $2',
 	'deletequeue-role-nominator' => 'оригинальный номинатор к удалению',
@@ -4054,6 +4083,10 @@ $messages['ru'] = array(
 	'deletequeue-role-vote-object' => 'противники удаления',
 	'deletequeue-vote-tab' => 'Голос за удаление',
 	'deletequeue-vote-title' => 'Поддержать или отклонить удаление «$1»',
+	'deletequeue-vote-text' => "Вы можете использовать эту форму, чтобы поддержать или отклонить удаление «'''$1'''».
+Это действие переопределяет любые предыдущие поддержания/отклонения, которые вы высказывали об удалении этой страницы.
+Вы можете [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} просмотреть] существующих сторонников и противников.
+Причина, указанная в номинации к удалению — ''$2''.",
 	'deletequeue-vote-legend' => 'Одобрение/Отказ удаления',
 	'deletequeue-vote-action' => 'Рекомендация:',
 	'deletequeue-vote-endorse' => 'Одобрить удаление.',
@@ -4065,6 +4098,8 @@ $messages['ru'] = array(
 	'deletequeue-vote-requeued' => 'Вы успешно отклонили удаление этой страницы.
 После вашего отклонения, эта страница перенесена в очередь $1.',
 	'deletequeue-showvotes' => 'Сторонники и противники удаления «$1»',
+	'deletequeue-showvotes-text' => "Ниже приведены сторонники и противники удаления страницы «'''$1'''».
+Вы можете [{{fullurl:{{FULLPAGENAME}}|action=delvote}} поддержать или отклонить] это удаление.",
 	'deletequeue-showvotes-restrict-endorse' => 'Просмотр только сторонников',
 	'deletequeue-showvotes-restrict-object' => 'Просмотр только противников',
 	'deletequeue-showvotes-restrict-none' => 'Просмотр всех сторонников и противников',

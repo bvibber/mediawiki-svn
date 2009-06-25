@@ -210,6 +210,14 @@ $messages['ia'] = array(
 	'whosonline-desc' => 'Monstra [[Special:WhosOnline|un lista]] de usatores identificate e anonyme actualmente in linea',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'whosonline' => 'Siapa yang daring',
+	'whosonline-desc' => 'Menampilkan [[Special:WhosOnline|daftar]] pengguna, baik yang yang saat ini telah masuk log maupun yang anonim yang berada dalam jaringan (sedang terhubung)',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

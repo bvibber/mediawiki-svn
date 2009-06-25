@@ -17,11 +17,13 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'formatchanges-desc' => 'Short description of the extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
+	'formatchanges-anonymous' => '{{Identical/Anonymous}}',
 	'formatchanges-createdby' => '* $1 is a link to a page with the page title as link description
 * $2 is a link to a user page with the user name as link description
 * $3 is the time at which the page was created',
@@ -228,6 +230,16 @@ $messages['ia'] = array(
 	'formatchanges-anonymous' => 'Anonyme',
 	'formatchanges-createdby' => '$1 - create per $2 ($3)',
 	'formatchanges-editedby' => '$1 - modificate per $2 ($3)',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'formatchanges-desc' => 'Format ulang halaman [[Special:RecentChanges|perubahan terbaru]]',
+	'formatchanges-anonymous' => 'Anonim',
+	'formatchanges-createdby' => '$1 - dibuat oleh $2 ($3)',
+	'formatchanges-editedby' => '$1 - disunting oleh $2 ($3)',
 );
 
 /** Ido (Ido)

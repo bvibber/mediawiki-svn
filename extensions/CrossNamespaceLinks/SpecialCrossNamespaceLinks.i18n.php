@@ -299,9 +299,9 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'crossnamespacelinks' => 'Lims de vers d’ôtros èspâços de nom',
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Ènumère los lims de vers d’ôtros èspâços de nom]] que devriant pas ègzistar dessus {{SITENAME}}.',
-	'crossnamespacelinks-summary' => 'Ceta pâge balye una lista des lims dês una pâge de l’èspâço de nom principâl de vers d’ôtros èspâços de nom (èxcèptâs {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}) et que l’usâjo est dèconselyê.',
+	'crossnamespacelinks' => 'Lims de vers d’ôtros èspâços de noms',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Ènumère los lims de vers d’ôtros èspâços de noms]] que devriant pas ègzistar dessus {{SITENAME}}.',
+	'crossnamespacelinks-summary' => 'Ceta pâge balye una lista des lims dês una pâge de l’èspâço de noms principâl de vers d’ôtros èspâços de noms (èxcèptâs {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}) et que l’usâjo est dèconselyê.',
 	'crossnamespacelinkstext' => '$1 : contint $2 lim{{PLURAL:$2||s}} de vers l’èspâço de nom $3',
 );
 

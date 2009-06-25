@@ -207,6 +207,15 @@ $messages['ia'] = array(
 	'multiboilerplate-submit' => 'Cargar',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'multiboilerplate-desc' => 'Mengijikan untuk memilih sebuah pesan pembuka dari kotak yang terletak di atas formulir penyuntingan pada saat menyunting halaman',
+	'multiboilerplate-legend' => 'Pilih pesan pembuka',
+	'multiboilerplate-submit' => 'Muatkan',
+);
+
 /** Icelandic (Íslenska)
  * @author Sigurður Guðbrandsson <sg@ro.is>
  */

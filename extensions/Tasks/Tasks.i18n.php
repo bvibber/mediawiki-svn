@@ -1419,6 +1419,13 @@ $messages['ia'] = array(
 	'tasks-pref-showtaskcomments' => 'Inserer le pagina de commentos super le carga.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'tasks_search_form_title' => 'Cari',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn

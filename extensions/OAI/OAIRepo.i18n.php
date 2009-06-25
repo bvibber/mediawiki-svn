@@ -236,7 +236,7 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'oai-desc' => 'De [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] Schnettshtëll.',
-	'oairepository' => 'OAI Repository',
+	'oairepository' => 'et OAI Repositorijum',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

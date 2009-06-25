@@ -90,6 +90,11 @@ $aliases['no'] = array(
 	'RandomInCategory' => array( 'Tilfeldig fra kategori' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'RandomInCategory' => array( "Pagina a l'azard dins una categoria" ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'RandomInCategory' => array( 'अविशिष्टवर्ग' ),

@@ -237,6 +237,15 @@ $messages['ia'] = array(
 	'mediafunctions-not-exist' => '"$1" non existe',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'mediafunctions-desc' => 'Fungsi parser untuk memperoleh informasi mengenai berkas media',
+	'mediafunctions-invalid-title' => '"$1" bukan judul yang sah',
+	'mediafunctions-not-exist' => '"$1" tak ditemukan',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

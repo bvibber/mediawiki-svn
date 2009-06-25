@@ -240,6 +240,14 @@ $messages['ia'] = array(
 	'seealso-desc' => 'Capites "Vide etiam" localisate per medio del etiquetta <code><nowiki><seealso></nowiki></code>',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'seealso' => 'Lihat pula',
+	'seealso-desc' => "Judul bagian 'Lihat pula' yang telah diterjemahkan secara lokal dengan menggunakan tag <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Ido (Ido)
  * @author Malafaya
  * @author Wyvernoid

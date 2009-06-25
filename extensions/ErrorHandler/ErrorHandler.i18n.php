@@ -520,6 +520,13 @@ $messages['ia'] = array(
 	'errorhandler-trace-line-internal' => '[function interne]: $1',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'errorhandler-errors' => 'Galat:',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

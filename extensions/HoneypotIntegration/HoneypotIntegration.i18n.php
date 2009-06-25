@@ -137,6 +137,13 @@ $messages['ia'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Numero de eventos recente que iste adresse IP ha causate, secundo le projecto Honey Pot',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'honeypot-desc' => 'Menyediakan integrasi dengan [http://projecthoneypot.org/ Proyek Honey Pot] untuk situs-situs MediaWiki',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

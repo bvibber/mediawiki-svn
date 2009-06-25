@@ -556,12 +556,14 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
 	'player' => 'Pemain',
 	'player-title' => 'Pemain',
+	'player-invalid-title' => 'judul tidak sah',
 	'player-goto-player' => 'Pemain',
 	'player-goto-file' => 'berkas',
 );

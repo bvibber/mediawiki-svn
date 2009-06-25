@@ -30,6 +30,13 @@ $messages['arz'] = array(
 	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكي.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'breadcrumbs-desc' => "Zoagt in Weg vu dem Benutza duach's Wiki.",
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -195,6 +202,13 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'breadcrumbs-desc' => 'Monstra le cammino del usatores a transverso del wiki.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'breadcrumbs-desc' => 'Tampilkan jalan yang ditempuh pengguna di wiki.',
 );
 
 /** Icelandic (Íslenska)

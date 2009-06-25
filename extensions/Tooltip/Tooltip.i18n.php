@@ -180,6 +180,13 @@ $messages['ia'] = array(
 	'tooltip-desc' => 'Adde le etiquettas <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'tooltip-desc' => 'Menambahkan tag <tt><nowiki><tooltip></nowiki></tt> dan <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

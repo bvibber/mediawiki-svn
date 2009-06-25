@@ -513,14 +513,20 @@ $messages['ia'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Error de entrata!',
 );
 
-/** Indonesian (Bahasa Indonesia) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
 $messages['id'] = array(
 	'chemicalsources' => 'Rujukan kimia',
+	'chemicalsource-desc' => 'Menambahkan tag <nowiki><chemform></nowiki>, untuk formula kimia',
 	'chemFunctions_ListPage' => 'Rujukan kimia',
 	'chemFunctions_DataList' => 'Berikut adalah daftar pranala ke situs yang mungkin menyediakan informasi mengenai zat kimia yang Anda cari.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Senyawa $MIXCASNameFormula di NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS di Oxford University (UK) (tanpa fasilitas pencarian)</a><br />',
 	'chemFunctions_CAS' => 'Nomor CAS',
+	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECNumber',
+	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_Name' => 'Nama IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Kesalahan pada masukan!',
 );

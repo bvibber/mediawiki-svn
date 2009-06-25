@@ -143,6 +143,13 @@ $messages['ia'] = array(
 	'regexfunctions-desc' => 'Functiones del analysator syntactic pro expressiones regular',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'regexfunctions-desc' => 'Fungsi parser untuk "regular expression" (regex)',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

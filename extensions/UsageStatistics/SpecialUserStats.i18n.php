@@ -1470,6 +1470,8 @@ $messages['ro'] = array(
 	'usagestatisticsintervalday' => 'Zi',
 	'usagestatisticsintervalweek' => 'Săptămână',
 	'usagestatisticsintervalmonth' => 'Lună',
+	'usagestatisticscumulative' => 'Cumulativ',
+	'usagestatisticscumulative-text' => 'cumulativ',
 );
 
 /** Tarandíne (Tarandíne)

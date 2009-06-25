@@ -221,6 +221,17 @@ $messages['ia'] = array(
 	'stalkerlog-log-text' => 'Isto es un registro de apertura e clausura del sessiones de usatores.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'stalkerlog-desc' => 'Tambahkan [[Special:Log/stalkerlog|sebuah log]] untuk masuk log dan keluar log pengguna',
+	'stalkerlog-log-login' => 'telah masuk log.',
+	'stalkerlog-log-logout' => 'telah keluar log.',
+	'stalkerlog-log-type' => 'Log otentifikasi pengguna',
+	'stalkerlog-log-text' => 'Ini adalah log untuk masuk log dan keluar log pengguna.',
+);
+
 /** Italian (Italiano)
  * @author Melos
  */

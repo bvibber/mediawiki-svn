@@ -721,10 +721,14 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
+	'dt_viewxml_categories' => 'Kategori',
+	'dt_viewxml_namespaces' => 'Ruang nama',
+	'dt_xml_namespace' => 'Ruang nama',
 	'dt_xml_name' => 'Nama',
 	'dt_xml_title' => 'Judul',
 );
@@ -1029,6 +1033,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
  */
@@ -1049,10 +1054,12 @@ $messages['nn'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Fritekst',
 	'importxml' => 'Importer XML',
-	'dt_import_selectfile' => 'Vel $1-fila som skal verta importert:',
+	'dt_import_selectfile' => 'Ver venleg og vel $1-fila som skal verta importert:',
 	'dt_import_editsummary' => '$1-importering',
 	'dt_import_importing' => 'Importerer...',
-	'dt_import_success' => '{{PLURAL:$1|Éi side vil verta importert|$1 sider vil verta importerte}} frå $2-fila.',
+	'dt_import_success' => '$1 {{PLURAL:$1|Éi side vil verta importert|$1 sider vil verta importerte}} frå $2-fila.',
+	'importcsv' => 'Importer CSV',
+	'right-datatransferimport' => 'Importer data',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

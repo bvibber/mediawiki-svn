@@ -254,6 +254,15 @@ $messages['ia'] = array(
 	'right-forcepreviewexempt' => 'Pote publicar sin uso de "Monstrar previsualisation"',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'forcepreview' => 'Simpan halaman (gunakan pratayang dulu)',
+	'forcepreview-desc' => 'Paksa pratayang untuk pengguna yang belum otomatis dikonfirmasi',
+	'right-forcepreviewexempt' => 'Dapat menyimpan tanpa menggunakan Lihat pratayang',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

@@ -591,20 +591,22 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Ivan Lanin
  * @author Rex
  */
 $messages['id'] = array(
-	'contributors' => 'Kontributor utama',
+	'contributors' => 'Kontributor',
+	'contributors-desc' => 'Memberikan ringkasan kontributor utama untuk suatu halaman',
 	'contributors-toolbox' => 'Kontributor utama',
-	'contributors-legend' => 'Daftar kontributor utama untuk suatu artikel',
+	'contributors-legend' => 'Daftar kontributor utama untuk suatu halaman',
 	'contributors-target' => 'Judul:',
 	'contributors-submit' => 'Tampilkan',
 	'contributors-subtitle' => 'Kontributor utama untuk $1',
 	'contributors-others-long' => 'Terdapat {{PLURAL:$1|satu|$1}} kontributor lain untuk halaman ini.',
-	'contributors-others' => 'and {{PLURAL:$1|satu|$1}} lainnya',
+	'contributors-others' => 'dan {{PLURAL:$1|satu|$1}} lainnya',
 	'contributors-badtitle' => 'Judul tidak sah.',
-	'contributors-nosuchpage' => 'Artikel $1 tidak ditemukan.',
+	'contributors-nosuchpage' => 'Halaman $1 tidak ditemukan.',
 );
 
 /** Ido (Ido)

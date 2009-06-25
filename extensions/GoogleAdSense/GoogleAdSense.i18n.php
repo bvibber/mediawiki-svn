@@ -185,6 +185,13 @@ $messages['ia'] = array(
 	'googleadsense-desc' => 'Adde [http://www.google.com/adsense Google AdSense] al barra lateral',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'googleadsense-desc' => 'Tambahkan [http://www.google.com/adsense Google AdSense] ke kotak samping',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

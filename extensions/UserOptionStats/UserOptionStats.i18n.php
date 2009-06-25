@@ -30,6 +30,13 @@ $messages['qqq'] = array(
 	'uos-other' => '{{Identical|Other}}',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'uos-choose' => 'Suach da ane vu de Eistellungen aus: $1',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -181,6 +188,18 @@ $messages['ia'] = array(
 	'uos-unknown' => '*Predefinition',
 	'uos-other' => '*Altere',
 	'uos-title' => 'Distribution de valores del option de usator $1',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'useroptionstats' => 'Statistik pilihan pengguna',
+	'uos-warn' => 'PHPlot belum terpasang!',
+	'uos-choose' => 'Pilih salah satu dari pilihan pengguna berikut: $1',
+	'uos-unknown' => '*Baku',
+	'uos-other' => '*Lain-lain',
+	'uos-title' => 'Distribusi nilai pilihan pengguna $1',
 );
 
 /** Italian (Italiano)

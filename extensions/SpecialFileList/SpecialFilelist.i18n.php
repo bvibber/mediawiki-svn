@@ -19,12 +19,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Jon Harald Søby
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'filelist' => '{{Identical|File list}}',
 	'filelist-desc' => 'Short description of the Filelist extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'filelist-image-desc' => '{{Identical/Description}}',
 );
 
 /** Amharic (አማርኛ) */
@@ -357,6 +359,17 @@ $messages['ia'] = array(
 	'filelist-show-list' => 'Monstrar lista',
 	'filelist-show-gallery' => 'Monstrar galeria',
 	'filelist-image-desc' => 'desc',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'filelist' => 'Daftar berkas',
+	'filelist-desc' => '[[Special:Filelist|Halaman istimewa]] untuk mendaftarkan berkas-berkas yang diunggahkan',
+	'filelist-show-list' => 'Lihat daftar',
+	'filelist-show-gallery' => 'Lihat galeri',
+	'filelist-image-desc' => 'keterangan',
 );
 
 /** Italian (Italiano)

@@ -138,6 +138,16 @@ $messages['ia'] = array(
 	'right-getfamily' => 'Crear un file de familia pro pywikipediabot',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'getfamily-desc' => 'Buatkan sebuah berkas keluarga untuk pywikipediabot',
+	'getfamily' => 'Dapatkan keluarga pywikipediabot',
+	'getfamily-interwikierror' => 'Galat: pemasangan interwiki yang salah, hubungi admin lokal Anda.',
+	'right-getfamily' => 'Buatkan sebuah berkas keluarga untuk pywikipediabot',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

@@ -108,6 +108,14 @@ $messages['hsb'] = array(
 	'wikiarticlefeeds_combined_description' => 'To je kombinaciski kanal, kotryž zapiski z wjacorych kanalowych žórłow wobsahuje.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'wikiarticlefeeds-desc' => 'Menghasilkan sindikasi yang bersumber dari halaman-halaman MediaWiki',
+	'wikiarticlefeeds_combined_description' => 'Ini merupakan sindikasi gabungan yang berasal dari beberapa sumber sindikasi.',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

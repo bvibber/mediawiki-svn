@@ -831,6 +831,7 @@ Illo functiona per appellar le stadio relevante del analysator syntactic a parti
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author IvanLanin
  * @author Rex
  */
@@ -842,7 +843,7 @@ $messages['id'] = array(
 	'expand_templates_input' => 'Teks sumber:',
 	'expand_templates_output' => 'Hasil',
 	'expand_templates_xml_output' => 'Hasil XML',
-	'expand_templates_ok' => 'Jalankan',
+	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Buang komentar',
 	'expand_templates_generate_xml' => 'Tampilkan pohon parser XML',
 	'expand_templates_preview' => 'Pratayang',

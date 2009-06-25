@@ -386,10 +386,16 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
+	'randomincategory' => 'Halaman sembarang di kategori',
+	'randomincategory-desc' => '[[Special:Randomincategory|Halaman istimewa]] untuk melihat halaman sembarang di kategori',
+	'randomincategory-toolbox' => 'Halaman sembarang',
+	'randomincategory-nocategory' => 'Kategori $1 tidak ada atau kosong',
 	'randomincategory-label' => 'Kategori:',
+	'randomincategory-submit' => 'Cari',
 );
 
 /** Ido (Ido)

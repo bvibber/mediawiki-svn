@@ -148,6 +148,13 @@ $messages['ia'] = array(
 	'preloader-desc' => 'Permitte predefinir un modello de texto pro nove paginas, un pro cata spatio de nomines',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'preloader-desc' => 'Menyediakan teks pembuka yang dapat dikustomisasi per ruang nama untuk halaman-halaman baru',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

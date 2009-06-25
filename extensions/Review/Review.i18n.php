@@ -104,6 +104,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'review_sidebar_title' => 'مراجعة',
@@ -127,7 +128,7 @@ $messages['ar'] = array(
 	'review_total_statistics' => 'الإجمالي',
 	'review_statistics_left_corner' => 'المراجعة',
 	'review_version_link' => 'المراجعة #$1',
-	'review_statistic_cell' => 'المتوسط: $1 of $2<br />($4 سجل {{PLURAL:$4|مستخدم|مستخدم}}، $5 {{PLURAL:$5|مستخدم|مستخدم}} مجهول)',
+	'review_statistic_cell' => 'المتوسط: $1 من $2<br />({{PLURAL:$4|لا يوجد مستخدمون مسجلون|مستخدم مسجل واحد|مستخدمان مسجلان|$4 مستخدمين مسجلين|$4 مستخدمًا مسجلًا|$4 مستخدم مسجل}} و{{PLURAL:$5|لا يوجد مستخدمون مجهولون|مستخدم مجهول واحد|مستخدمان مجهولان|$5 مستخدمين مجهولين|$5 مستخدمًا مجهولًا|$5 مستخدم مجهول}})',
 	'review_version_statistic_cell' => '$1 من $2',
 	'review_version_reviews_link' => '<small>(مراجعات النسخة)</small>',
 	'review_concerns_page' => 'هذه المراجعة هي حول الصفحة "$1".',

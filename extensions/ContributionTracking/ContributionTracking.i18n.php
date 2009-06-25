@@ -26,10 +26,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Darth Kule
  */
 $messages['qqq'] = array(
 	'contrib-tracking-error' => '{{Identical|Error}}',
+	'contrib-tracking-button' => '{{Identical/Continue}}',
 );
 
 /** Aragonese (Aragonés)
@@ -341,6 +343,16 @@ $messages['ia'] = array(
 	'contrib-tracking-submitting' => 'In submission al processator de pagamentos...',
 	'contrib-tracking-continue' => 'Si tu non es automaticamente redirigite, clicca super le button pro completar tu donation con PayPal.',
 	'contrib-tracking-button' => 'Continuar',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'contributiontracking' => 'Pelacakan kontribusi',
+	'contrib-tracking-error' => 'Galat',
+	'contrib-tracking-error-text' => 'Pengiriman formulir tidak sah',
+	'contrib-tracking-button' => 'Lanjutkan',
 );
 
 /** Ido (Ido)

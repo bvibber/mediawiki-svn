@@ -112,6 +112,13 @@ $messages['ia'] = array(
 	'pipeescape-desc' => 'Function del analysator syntactic <code>#!</code> pro inserer le character de barra vertical ("pipe") qua character simple.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'pipeescape-desc' => 'Fungsi parser <code>#!</code> jika Anda menginginkan karakter pipa sebagaimana adanya',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

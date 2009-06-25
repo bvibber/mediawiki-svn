@@ -201,6 +201,15 @@ $messages['ia'] = array(
 	'spl3_nosubpages' => '$1 non ha subpaginas a listar.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'spl3-desc' => 'Membuat secara otomatis daftar upa halaman menggunakan tag <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Nilai paramater yang tidak diketahui untuk $1.',
+	'spl3_nosubpages' => '$1 tidak memiliki upa halaman untuk didaftarkan.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

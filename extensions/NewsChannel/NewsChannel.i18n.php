@@ -282,6 +282,18 @@ $messages['ia'] = array(
 	'newschannel_submit_button' => 'Crear syndication',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'newschannel' => 'Saluran berita',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Batas:',
+	'newschannel_include_category' => 'Kategori tambahan:',
+	'newschannel_exclude_category' => 'Jangan masukkan kategori:',
+	'newschannel_submit_button' => 'Buat sindikasi',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

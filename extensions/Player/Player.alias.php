@@ -87,6 +87,11 @@ $aliases['no'] = array(
 	'Player' => array( 'Medieavspiller' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Player' => array( 'Lector' ),
+);
+
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'Player' => array( 'غږونکی' ),

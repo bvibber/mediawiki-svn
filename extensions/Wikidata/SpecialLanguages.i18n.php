@@ -1808,6 +1808,14 @@ $wdMessages['ckb-arab'] = array(
 	'datasearch_language' => 'زمان:',
 	'datasearch_search_text' => 'گه‌ڕان بۆ ئه‌م ده‌قه‌:',
 	'datasearch_within_words' => 'بریتی بێت له‌م وشانه‌:',
+	'ow_importtsv_nothing_added' => 'هیچ‌شتێک زیاد نەکرا.',
+	'ow_importtsv_nothing_added_test' => 'هیچ‌شتێک زیاد نەکرا (تاکە تاقی‌کردنەوەیەکت کرد).',
+	'ow_impexptsv_unknown_lang' => '<p>$1: زمانێکی هەڵە یان نەناسراو.<br />
+زمانەکان دەبێ لە کۆدی زمانەکانی ISO 639-3 ببێت.</p>',
+	'ow_exporttsv_languages' => 'زمانەکان:',
+	'ow_exporttsv_export_failed' => 'هەناردن سەرکەوتوو نەبوو',
+	'ow_save' => 'پاشەکەوت‌کردن',
+	'ow_history' => 'مێژوو',
 );
 
 /** Czech (Česky)
@@ -3068,6 +3076,7 @@ $wdMessages['fi'] = array(
 	'languages' => 'Wikidata: kielten hallinta',
 	'langman_title' => 'Kielten hallinta',
 	'langman_langname' => 'Kielen nimi:',
+	'langman_wikimedia' => 'Wikimedia-koodi:',
 	'langman_addlang' => 'Lisää kieli',
 	'datasearch' => 'Wikidata: tiedon haku',
 	'ow_save' => 'Tallenna',
@@ -4642,6 +4651,7 @@ Per favor contacta le operator o administrator del servitor.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Rex
  */
@@ -4658,11 +4668,18 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'ow_uipref_datasets' => 'Tampilan baku',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Belum dipilih',
+	'ow_transaction_count' => 'Jumlah:',
+	'ow_transaction_user' => 'Nama pengguna:',
+	'ow_transaction_remove' => 'Hapus',
 	'ow_conceptmapping_no_action_specified' => 'Maaf, sistem tidak mengerti untuk "$1".',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'tidak dimasukkan',
 	'ow_Language' => 'Bahasa',
 	'ow_OptionAttributeOptions' => 'Pilihan',
+	'ow_Remove' => 'Hapus',
+	'ow_Source' => 'Sumber',
+	'ow_show' => 'Tampilkan',
+	'ow_create' => 'Buat',
 );
 
 /** Ido (Ido)
@@ -8083,10 +8100,13 @@ $wdMessages['ro'] = array(
 	'datasearch_meaning' => 'înţeles',
 	'datasearch_ext_identifier' => 'Identificator extern',
 	'datasearch_search_text' => 'Text de căutat:',
+	'ow_exporttsv_languages' => 'Limbi:',
 	'ow_save' => 'Salvează',
 	'ow_history' => 'Istoric',
 	'ow_noedit_title' => 'Fără permisiune de modificare',
-	'ow_conceptmapping_no_action_specified' => 'Scuze, nu ştiu cum să "$1".',
+	'ow_transaction_user' => 'Nume de utilizator:',
+	'ow_transaction_summary' => 'Rezumat',
+	'ow_conceptmapping_no_action_specified' => '!Acţiunea "$1" nu este suportată.',
 	'ow_dm_OK' => 'OK',
 	'ow_available_contexts' => 'Contexte disponibile',
 	'ow_AlternativeDefinition' => 'Definiţie alternativă',
@@ -8097,6 +8117,7 @@ $wdMessages['ro'] = array(
 	'ow_ClassAttributeLevel' => 'Nivel',
 	'ow_ClassAttributeType' => 'Tip',
 	'ow_Collection' => 'Colecţie',
+	'ow_Collection_colon' => 'Colecţie:',
 	'ow_Definition' => 'Definiţie',
 	'ow_DefinedMeaningAttributes' => 'Adnotare',
 	'ow_Expression' => 'Expresie',
@@ -8121,11 +8142,12 @@ $wdMessages['ro'] = array(
 	'ow_TranslatedTextAttributeValues' => 'Texte traductibile',
 	'ow_LinkAttribute' => 'Proprietate',
 	'ow_LinkAttributeValues' => 'Legături',
+	'ow_User' => 'Utilizator',
 	'ow_Property' => 'Proprietate',
 	'ow_Value' => 'Valoare',
 	'ow_Permission_denied' => '<h2>Permisiune refuzată</h2>',
 	'ow_copy_no_action_specified' => 'Vă rugăm să specificaţi o acţiune',
-	'ow_copy_help' => 'Într-o zi vă vom putea ajuta.',
+	'ow_copy_help' => 'Ajutorul nu este încă implementat.',
 	'ow_copy_successful' => '<h2>Copiere cu succes</h2>
 Datele par a fi fost copiate cu succes.
 Nu uitaţi să verificaţi pentru a fi siguri!',
@@ -8133,6 +8155,7 @@ Nu uitaţi să verificaţi pentru a fi siguri!',
 Nici o operaţie de copiere nu a avut loc.',
 	'ow_no_action_specified' => '<h3>Nici o acţiune nu a fost specificată</h3>
 Poate aţi ajuns la această pagină direct? În mod normal nu ar trebui să fiţi aici.',
+	'ow_history_transaction' => 'Tranzacţie:',
 );
 
 /** Tarandíne (Tarandíne)

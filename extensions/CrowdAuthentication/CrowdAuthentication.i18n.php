@@ -159,6 +159,13 @@ $messages['ia'] = array(
 	'crowdauthentication-desc' => 'Modulo de authentication pro Atlassian Crowd',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'crowdauthentication-desc' => 'Plug-in otentifikasi untuk Atlassian Crowd',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

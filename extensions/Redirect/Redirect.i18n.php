@@ -121,6 +121,13 @@ $messages['ia'] = array(
 	'redirect-desc' => 'Permitte le configuration facile del redirectiones al puncto del [[MediaWiki:Redirect-addnewaccount|creation de un conto]] e del [[MediaWiki:Redirect-userlogoutcomplete|clausura del session]]',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'redirect-desc' => 'Mempermudah konfigurasi pengalihan pada [[MediaWiki:Redirect-addnewaccount|pembuatan akun]] dan [[MediaWiki:Redirect-userlogoutcomplete|keluar log]]',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

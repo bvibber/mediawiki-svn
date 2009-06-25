@@ -275,6 +275,17 @@ $messages['ia'] = array(
 	'unicodeconverter-newtext' => 'Texto convertite:',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'unicodeconverter' => 'Pengubah Unicode',
+	'unicodeconverter-desc' => 'Contoh sederhana dari sebuah modul halaman istimewa. [[Special:UnicodeConverter|Dengan memasukkan sebuah string dalam format UTF-8]], modul ini akan mengubahnya menjadi entitas HTML yang layak ditampilkan di sebuah halaman web ISO 8859-1',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Teks asli:',
+	'unicodeconverter-newtext' => 'Teks ubahan:',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

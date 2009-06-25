@@ -308,6 +308,13 @@ Geef een tabelklassenaam op die korter is dan 255 karakters.',
 	'plotters-errors' => 'Er {{PLURAL:$1|is een plotterfout|zijn plotterfouten}} aangetroffen:',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'plotters-no-data' => 'Ingen data var tilrettelagt.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

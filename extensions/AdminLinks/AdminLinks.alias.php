@@ -38,6 +38,11 @@ $aliases['ksh'] = array(
 	'AdminLinks' => array( 'Lengks_för_Wiki_Köbesse' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'AdminLinks' => array( 'Linke fir Administrateuren' ),
+);
+
 /** Marathi (मराठी) */
 $aliases['mr'] = array(
 	'AdminLinks' => array( 'प्रचालकदुवे' ),

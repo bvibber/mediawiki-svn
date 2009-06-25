@@ -33,6 +33,13 @@ $messages['arz'] = array(
 	'didyoumean-desc' => 'يضيف وصلات إلى صفحات بعناوين "مشابهة"',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'didyoumean-desc' => 'Eagänzt auf Seitn Links zu ähliche Titl',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -194,6 +201,13 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'didyoumean-desc' => 'Adde ligamines a paginas con titulos "similar"',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'didyoumean-desc' => 'Tambahkan pranala untuk halaman-halaman dengan judul yang "mirip"',
 );
 
 /** Italian (Italiano)

@@ -54,6 +54,13 @@ $messages['ast'] = array(
 	'selectcategory-subtitle' => 'Caltén pulsada la tecla de mayúscules pa seleicionar entraes múltiples contigües, o la tecla CTRL pa seleicionar entraes non contigües.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'selectcategory-title' => 'Kategorien auswöihn',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -232,11 +239,13 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Ivan Lanin <ivanlanin@gmail.com>
  */
 $messages['id'] = array(
 	'selectcategory-title' => 'Pilih kategori',
-	'selectcategory-subtitle' => 'Shift-mouse untuk memilih entri yang berurutan, Ctrl-mouse untuk memilih entri yang tidak berurutan.',
+	'selectcategory-desc' => 'Mengijinkan pengguna pada saat menyunting suatu halaman untuk memilih dari kategori-kategori yang telah ada',
+	'selectcategory-subtitle' => 'Tekan "Shift"+klik untuk memilih entri yang berurutan, Tekan "Ctrl"+klik untuk memilih entri yang tidak berurutan.',
 );
 
 /** Italian (Italiano)

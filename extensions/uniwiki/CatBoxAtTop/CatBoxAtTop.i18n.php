@@ -212,6 +212,14 @@ $messages['ia'] = array(
 	'catboxattop-categories' => 'Categorias',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'catboxattop-desc' => 'Menambahkan sebuah kotak kategori di kanan atas halaman',
+	'catboxattop-categories' => 'Kategori',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */

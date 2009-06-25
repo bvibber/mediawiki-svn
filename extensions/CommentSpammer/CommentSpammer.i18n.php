@@ -30,13 +30,14 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'commentspammer-save-blocked' => 'عنوان الأيبي الخاص بك هو معلق سبام مشتبه، لذا لم يتم حفظ الصفحة.
 [[Special:UserLogin|ادخل أو سجل حسابا]] لتجنب هذا.',
 	'commentspammer-desc' => 'يرفض التعديلات من معلقي السبام المشتبه فيهم على قائمة DNS سوداء',
 	'commentspammer-log-msg' => 'تعديل من [[Special:Contributions/$1|$1]] ل[[:$2]].',
-	'commentspammer-log-msg-info' => 'آخر سبام منذ $1 {{PLURAL:$1|يوم|يوم}} ، مستوى التهديد هو $2، وكود الإساءة هو $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 عرض التفاصيل]، أو [[Special:Blockip/$4|منع]].',
+	'commentspammer-log-msg-info' => 'آخر سبام كان قبل| {{PLURAL:$1|أقل من يوم|يوم واحد|يومين|$1 أيام|$1 يومًا|$1 يوم}}، مستوى التهديد $2، وكود الإساءة $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 اعرض التفاصيل] أو [[Special:Blockip/$4|امنع]].',
 	'cspammerlogpagetext' => 'سجل التعديلات التي تم السماح بها أو رفضها بناء على ما إذا كان المصدر معلق سبام معروف.',
 	'cspammer-log-page' => 'سجل تعليق السبام',
 );
@@ -275,6 +276,20 @@ $messages['ia'] = array(
 	'commentspammer-log-msg-info' => 'Ultime spam $1 {{PLURAL:$1|die|dies}} retro, nivello de menacia es $2, e codice de offensa es $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Vider detalios], o [[Special:Blockip/$4|blocar]].',
 	'cspammerlogpagetext' => 'Registro de modificationes que ha essite permittite o refusate a base de si le origine esseva un cognoscite spammator de commentos.',
 	'cspammer-log-page' => 'Registro de spammatores de commentos',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'commentspammer-save-blocked' => 'Alamat IP dicurigai sebagai alamat spammer, maka halaman ini tidak disimpan.
+[[Special:UserLogin|Masuk log atau buat akun]] untuk menghindari hal ini.',
+	'commentspammer-desc' => 'Menolak suntingan dari alamat yang dicurigasi sebagai spammer atau berada di daftar hitam DNS',
+	'commentspammer-log-msg' => 'suntingan dari [[Special:Contributions/$1|$1]] ke [[:$2]].',
+	'commentspammer-log-msg-info' => 'Terakhir dispam pada $1 {{PLURAL:$1|hari|hari}} yang lalu, tingkat ancaman adalah $2, dan kode serangan adalah $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Lihat detil], atau [[Special:Blockip/$4|blok]].',
+	'cspammerlogpagetext' => 'Catatan suntingan yang telah diperbolehkan atau ditolak berdasarkan sumber alamat mereka dicurigai sebagai alamat spammer atau bukan.',
+	'cspammer-log-page' => 'Log spammer',
 );
 
 /** Italian (Italiano)

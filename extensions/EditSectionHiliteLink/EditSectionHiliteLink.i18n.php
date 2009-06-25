@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'Editsectionhilitelink-desc' => 'إظهار القسم المناسب لصفحة عندما تنقل الفأرة فوق وصلة التعديل',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'Editsectionhilitelink-desc' => "Hebt in entsprechadn Åbschnitt vu ana Seitn außa, wãnn'd Maus üwa'm „werkln“-Link is",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -110,6 +117,13 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'Editsectionhilitelink-desc' => 'Emphasar le section appropriate de un pagina quando tu placia le mouse super le ligamine "modificar"',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'Editsectionhilitelink-desc' => 'Tandai bagian halaman yang cocok pada saat Anda menggerakan tetikus ke atas pranala sunting',
 );
 
 /** Japanese (日本語)

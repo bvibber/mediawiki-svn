@@ -3695,10 +3695,14 @@ Per favor crea lo o cambia lo pro poter usar iste extension.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Aviator
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
-	'configure-section-search' => 'Gelintar',
+	'configure-desc-ns' => 'Ruang nama',
+	'configure-section-namespaces' => 'Ruang nama',
+	'configure-section-category' => 'Kategori',
+	'configure-section-search' => 'Cari',
 );
 
 /** Ido (Ido)
@@ -6352,6 +6356,7 @@ $messages['roa-tara'] = array(
  * @author Ferrer
  * @author Flrn
  * @author Innv
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -6364,10 +6369,10 @@ $messages['ru'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Расширения',
 	'configure-viewconfig-default-diff' => 'Изменения по сравнению с настройками по умолчанию',
-	'configure-ext-ext-dependencies' => "'''Внимание.''' Это расширение требует активировать {{PLURAL:$2|следующее расширение|следующие расширения}}: $1.",
+	'configure-ext-ext-dependencies' => "'''Внимание.''' Для этого расширения необходимо активировать {{PLURAL:$2|следующее расширение|следующие расширения}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Ошибка.''' Расширение $1 требует активации расширения $2.",
 	'configure-ext-doc' => 'Смотрите документацию в сети',
-	'configure-ext-schemachange' => "'''Внимание:''' это расширение требует обновление базы данных для корректной работы!",
+	'configure-ext-schemachange' => "'''Внимание.''' Для корректной работы этого расширения необходимо обновление базы данных!",
 	'configure-ext-settings' => 'Настройки',
 	'configure-ext-settings-dep-errors' => 'Это расширение не может быть включено из-за {{PLURAL:$1|следующей настройки с неприемлимым значением|следующих настроек с неприемлимыми значениеми}} :',
 	'configure-ext-settings-dep-error' => '$1: требуемое значение: $2, текущее значение: $3',
@@ -6490,8 +6495,8 @@ $messages['ru'] = array(
 	'right-extensions-interwiki' => 'Настройка расширений внешней вики',
 	'right-viewconfig' => 'Просмотреть настройки вики',
 	'right-viewconfig-all' => 'Просмотреть все настройки вики',
-	'right-viewconfig-interwiki' => 'Просмотр настройки внешней вики',
-	'viewconfig' => 'Просмотр настройки вики',
+	'right-viewconfig-interwiki' => 'Просмотр настроек внешней вики',
+	'viewconfig' => 'Просмотр настроек вики',
 	'configure-throttle-action-edit' => 'Правка',
 	'configure-throttle-action-move' => 'Переименование',
 	'configure-throttle-action-rollback' => 'Быстрый откат',

@@ -170,6 +170,13 @@ $messages['ia'] = array(
 	'formatsearch-desc' => 'Netta le pagina de resultatos de recerca',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'formatsearch-desc' => 'Membersihkan halaman hasil pencarian',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi

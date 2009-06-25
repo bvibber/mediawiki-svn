@@ -145,6 +145,14 @@ $messages['ia'] = array(
 Crea versiones pro uso in paginas, specialmente utile pro Wikinews.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'catfeed-desc' => 'Menggunakan bit dari sindikasi perubahan terbaru.
+Membuat versi halamannya, berguna terutama untuk Wikinews',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author JtFuruhata

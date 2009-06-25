@@ -235,6 +235,16 @@ $messages['ia'] = array(
 	'templatelink_newtitle' => '$1 (transcludite)',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'templatelink' => 'Pranala templat',
+	'templatelink_desc' => 'Pengaya ini dapat menampilkan sebuah templat sebagai sebuah halaman baru',
+	'templatelink_empty' => 'Anda perlu menambahkan sebuah parameter.',
+	'templatelink_newtitle' => '$1 (ditransklusikan)',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi

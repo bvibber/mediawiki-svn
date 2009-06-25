@@ -245,6 +245,18 @@ $messages['ia'] = array(
 	'right-createsigndocument' => 'Crear documentos que pote esser signate',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'signaturelogpage' => 'Log tanda tangan',
+	'signature-desc' => 'Memampukan [[Special:SignDocument|penandatanganan]] dokumen',
+	'signaturelogpagetext' => 'Ini adalah log [[Special:SignDocument|semua tanda tangan yang ditambahkan ke dokumen]].',
+	'signaturelogentry' => 'menandatangani dokumen $1',
+	'right-sigadmin' => 'Memimpin penandatangan dokumen',
+	'right-createsigndocument' => 'Buat dokumen yang dapat ditandatangani',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

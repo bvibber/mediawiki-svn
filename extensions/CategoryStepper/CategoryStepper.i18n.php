@@ -255,6 +255,15 @@ $messages['ia'] = array(
 	'categorystepper-start' => '(Initio del categoria)',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'categorystepper-desc' => 'Dengan menampilkan tangga kategori, seorang pengguna dapat bergerak maju atau mundur satu kategori secara alfabetis',
+	'categorystepper-end' => '(Akhir kategori)',
+	'categorystepper-start' => '(Awal kategori)',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

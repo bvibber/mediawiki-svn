@@ -1269,6 +1269,14 @@ $messages['ia'] = array(
 	'right-readold' => 'Vider le contento de ancian versiones e comparationes',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'grouppermissions-dosearch' => 'Cari',
+	'grouppermissions-sp-remove' => 'hapus',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn

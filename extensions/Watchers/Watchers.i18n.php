@@ -441,6 +441,20 @@ $messages['ia'] = array(
 	'watchers_less_than_x' => 'Minus de $1 {{PLURAL:$1|usator|usatores}} observa iste pagina.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'watchers' => 'Pemantau',
+	'watchers-desc' => 'Menunjukkan [[Special:Watchers|pengguna yang memiliki sebuah halaman di daftar pantauan mereka]]',
+	'watchers_link_title' => 'Siapa yang memantau halaman ini?',
+	'watchers_error_article' => "'''Galat:''' Halaman tidak ada.",
+	'watchers_header' => '{{PLURAL:$2|Pengguna|Pengguna}} yang memantau "$1"',
+	'watchers_noone_watches' => 'Tidak ada yang memantau halaman ini.',
+	'watchers_x_or_more' => '$1 orang {{PLURAL:$1|pengguna|pengguna}} atau lebih memantau halaman ini.',
+	'watchers_less_than_x' => 'Kurang dari $1 orang {{PLURAL:$1|pengguna|pengguna}} memantau halaman ini.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn

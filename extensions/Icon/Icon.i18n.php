@@ -263,6 +263,15 @@ $messages['ia'] = array(
 	'icon-desc' => 'Permitte usar imagines como icones e ligamines in forma de icone',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'icon-badimage' => 'Gambar salah',
+	'icon-badwidth' => 'Lebar salah',
+	'icon-desc' => 'Mengijinkan Anda untuk menggunakan gambar sebagai ikon dan pranala ikon',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

@@ -97,6 +97,11 @@ $aliases['no'] = array(
 	'Patroller' => array( 'Patruljør' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Patroller' => array( 'Patrolhaire' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'Patroller' => array( 'पॅटरोलर' ),

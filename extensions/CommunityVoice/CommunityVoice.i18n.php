@@ -40,6 +40,7 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'communityvoice' => 'صوت المجتمع',
@@ -48,7 +49,7 @@ $messages['ar'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'جاري الإرسال...',
 	'communityvoice-ratings-scale-status-error' => 'خطأ في الإرسال!',
 	'communityvoice-ratings-scale-status-thanks' => 'شكرا للتصويت!',
-	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|صوت|صوت}} حقيقي)',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2||صوت واحد|صوتان|$2 أصوات|$2 صوتًا|$2 صوت}})',
 	'communityvoice-ratings-error-no-category' => 'صفة التصنيف مفقودة في وسم التقييم.',
 	'communityvoice-ratings-error-no-title' => 'صفة العنوان مفقودة في وسم التقييم.',
 );
@@ -312,6 +313,21 @@ $messages['ia'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|voto|votos}} submittite)',
 	'communityvoice-ratings-error-no-category' => 'Le attributo "category" manca in le etiquetta "rating".',
 	'communityvoice-ratings-error-no-title' => 'Le attributo "title" manca in le etiquetta "rating".',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'communityvoice' => 'Suara Komunitas',
+	'communityvoice-desc' => 'Alat partisipasi komunitas',
+	'communityvoice-ratings' => 'Peringkat',
+	'communityvoice-ratings-scale-status-sending' => 'Mengirimkan...',
+	'communityvoice-ratings-scale-status-error' => 'Kesalahan pengiriman!',
+	'communityvoice-ratings-scale-status-thanks' => 'Terima kasih telah memberikan suara!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|suara|suara}} masuk)',
+	'communityvoice-ratings-error-no-category' => 'Atribut kategori tidak ditemukan pada tag peringkat.',
+	'communityvoice-ratings-error-no-title' => 'Atribut judul tidak ditemukan pada tag peringkat.',
 );
 
 /** Italian (Italiano)

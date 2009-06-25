@@ -240,6 +240,14 @@ $messages['ia'] = array(
 	'nstab-comments' => 'Commentario',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'commentpages-desc' => 'Halaman komentar untuk ruang nama utama',
+	'nstab-comments' => 'Komentar',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

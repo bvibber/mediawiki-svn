@@ -308,6 +308,20 @@ Etiam iste {{PLURAL:$2|pagina|paginas}} poterea haber beneficio de tu adjuta: $1
 	'tog-edit-similar' => 'Activar le suggestiones de paginas similar',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'editsimilar-desc' => 'Mengajak pengguna untuk menyunting halaman yang sejenis setelah menyimpan sebuah halaman',
+	'editsimilar-thanks' => 'Terima kasih untuk kontribusi Anda.
+Lihat pula {{PLURAL:$2|halaman|halaman}} yang berhubungan dengan ini: $1.',
+	'editsimilar-thanks-notsimilar' => 'Terima kasih untuk kontribusi Anda.
+{{PLURAL:$2|Halaman|Halaman}} ini mungkin juga memerlukan bantuan Anda: $1.',
+	'editsimilar-thankyou' => 'Terima kasih untuk kontribusi Anda, $1!',
+	'editsimilar-link-disable' => 'pasang preferensi',
+	'tog-edit-similar' => 'Nyalakan usulan halaman serupa',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -392,9 +406,9 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'editsimilar-desc' => 'Oppfordrar brukarar til å endra liknande sider etter å ha lagra ei sida',
 	'editsimilar-thanks' => 'Takk for bidraget ditt.
-Sjekk desse relaterte sidene: $1.',
+Sjekk {{PLURAL:$2|denne relaterte sida|desse relaterte sidene}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Takk for bidraget ditt.
-Desse sidene kan òg trenga hjelpa di: $1.',
+{{PLURAL:$2|Denne sida|Desse sidene}} kan òg trenga hjelpa di: $1.',
 	'editsimilar-thankyou' => 'Takk for bidraget ditt, $1!',
 	'editsimilar-link-disable' => 'endra innstillingar',
 	'tog-edit-similar' => 'Slå på forslag for liknande sider',

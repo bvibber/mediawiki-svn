@@ -174,6 +174,26 @@ Tu entrava: '''$1'''",
 	'rt-nomatches' => 'Nulle billet RT trovate que corresponde a iste criterios',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'rt-desc' => 'Antarmuka keren untuk RT (Request Tracker)',
+	'rt-inactive' => 'Pengaya RT tidak aktif',
+	'rt-badquery' => 'Pengaya RT menemui kesalahan pada saat berbicara dengan basis data RT',
+	'rt-badlimit' => "Argumen LIMIT (1) tidak sah: harus sebuah angka.
+Anda mencoba: '''$1'''",
+	'rt-badorderby' => "Argumen ORDER BY (ob) tidak sah: harus standar (lihat dokumentasi).
+Anda mencoba: '''$1'''",
+	'rt-badstatus' => "Argumen status (s) tidak sah: harus standar (lihat dokumentasi).
+Anda mencoba: '''$1'''",
+	'rt-badqueue' => "Argumen queue (q) tidak sah: harus kata sederhana.
+Anda mencoba: '''$1'''",
+	'rt-badowner' => "Argumen owner (o) tidak sah: harus nama pengguna yang sah
+Anda mencoba: '''$1'''",
+	'rt-nomatches' => 'Tidak ada tiket RT yang sesuai yang ditemukan',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

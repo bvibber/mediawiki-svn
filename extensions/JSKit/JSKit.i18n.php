@@ -141,6 +141,13 @@ $messages['ia'] = array(
 	'jskit-desc' => 'Integra le instrumentos js-kit in un pagina wiki',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'jskit-desc' => 'Integrasikan peralatan js-kit ke sebuah halaman wiki',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

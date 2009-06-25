@@ -339,6 +339,18 @@ $messages['ia'] = array(
 	'lua_overflow_time' => 'Durata maxime de execution excedite',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'lua_error' => 'Kesalahan pada baris $1',
+	'lua_extension_notfound' => 'Pengaya Lua belum dikonfigurasi',
+	'lua_error_internal' => 'Kesalahan internal',
+	'lua_overflow_recursion' => 'Batas rekursi telah dicapai',
+	'lua_overflow_loc' => 'Batas jumlah baris kode telah dicapai',
+	'lua_overflow_time' => 'Batas waktu eksekusi telah dicapai',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

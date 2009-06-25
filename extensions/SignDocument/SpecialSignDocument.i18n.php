@@ -1755,12 +1755,15 @@ $1',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
 	'sign-realname' => 'Nama:',
+	'sign-country' => 'Negara:',
 	'sign-viewfield-realname' => 'Nama',
+	'sign-viewfield-country' => 'Negara',
 	'sign-viewfield-agent' => 'Aplikasi pengguna',
 	'sign-viewfield-options' => 'Pilihan',
 );

@@ -174,6 +174,11 @@ $aliases['no'] = array(
 	'SiteMatrix' => array( 'Wikimedia-wikier' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'SiteMatrix' => array( 'Matritz dels sites', 'Wikis de Wikimèdia' ),
+);
+
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'SiteMatrix' => array( 'Lista projektów' ),

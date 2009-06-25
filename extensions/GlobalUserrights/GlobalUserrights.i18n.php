@@ -238,6 +238,18 @@ $messages['ia'] = array(
 	'right-userrights-global' => 'Gerer le derectos global de usatores',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'globaluserrights' => 'Pengelolaan Hak Pengguna Global',
+	'gur-desc' => 'Administrasi [[Special:GlobalUserRights|hak pengguna global]] yang mudah',
+	'gur-rightslog-name' => 'Log hak global',
+	'gur-rightslog-header' => 'Ini adalah log perubahan untuk hak global.',
+	'gur-rightslog-entry' => 'mengubah keanggotaan kelompok global untuk $1 dari $2 menjadi $3',
+	'right-userrights-global' => 'Mengelola Hak Pengguna Global',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

@@ -23,13 +23,15 @@ Would you like to edit the existing page?',
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Darth Kule
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'createpage' => 'Name of special page [[Special:CreatePage]] in [[Special:SpecialPages]] and its title.',
+	'createpage' => 'Name of special page [[Special:CreatePage]] in [[Special:SpecialPages]] and its title.
+{{Identical|Createpage}}',
 	'createpage-desc' => 'Short description of the extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 	'createpage_submitbutton' => '{{Identical|Submit}}',
 	'createpage-badtitle' => 'Error message displayed in CreatePage special page when is specified an invalid title. See for example [[Special:CreatePage/]]',
@@ -392,6 +394,22 @@ Vole tu modificar le pagina existente?',
 	'createpage_tryagain' => 'No. Io vole crear un nove pagina con un titulo distincte.',
 	'createpage_editexisting' => 'Si. Io vole contribuer al pagina existente.',
 	'createpage-badtitle' => '"$1" non pote esser usate qua titulo de pagina',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'createpage' => 'Buat halaman',
+	'createpage-desc' => 'Menambahkan sebuah [[Special:CreatePage|halaman istimewa]] untuk membuat halaman baru',
+	'createpage_submitbutton' => 'Kirim',
+	'createpage_instructions' => 'Masukkan judul halaman yang ingin Anda buat:',
+	'createpage_entertitle' => 'Masukkan sebuah judul untuk halaman Anda.',
+	'createpage_titleexists' => 'Sebuah halaman dengan judul [[$1]] sudah ada.
+Apakah Anda ingin menyunting halaman tersebut?',
+	'createpage_tryagain' => 'Tidak. Saya ingin membuat halaman baru dengan judul berbeda.',
+	'createpage_editexisting' => 'Ya, saya mau menyunting halaman tersebut.',
+	'createpage-badtitle' => '"$1" tidak dapat digunakan sebagai judul halaman',
 );
 
 /** Italian (Italiano)

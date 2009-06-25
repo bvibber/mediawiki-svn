@@ -154,6 +154,13 @@ $aliases['no'] = array(
 	'ContributionTotal' => array( 'Totale bidrag' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'ContributionHistory' => array( 'IstoricDeLasContribucions', 'Istoric de las contribucions' ),
+	'ContributionStatistics' => array( 'EstatisticasDeLasContribucions', 'Estatisticas de las contribucions' ),
+	'ContributionTotal' => array( 'ContribucionsTotalas', 'Contribucions totalas' ),
+);
+
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'ContributionHistory' => array( 'Historia darowizn' ),

@@ -21,9 +21,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Purodha
  */
 $messages['qqq'] = array(
+	'logentry-append' => '{{Identical/Append}}',
 	'logentry-parserhook-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
@@ -223,6 +225,18 @@ $messages['ia'] = array(
 	'logentry' => 'Entrata in registro',
 	'logentry-invalidpage' => 'Pagina invalide',
 	'logentry-invalidtoken' => 'Indicio invalide',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'logentry-append' => 'Tambah',
+	'logentry-parserhook-desc' => 'Pengaya tag ini menyediakan sebuah formulir untuk menambahkan catatan ke halaman log',
+	'logentry-specialpage-desc' => 'Pengaya tag ini menyediakan proses untuk menambahkan catatan ke halaman log',
+	'logentry' => 'LogEntry',
+	'logentry-invalidpage' => 'Halaman tidak sah',
+	'logentry-invalidtoken' => 'Token tidak sah',
 );
 
 /** Japanese (日本語)

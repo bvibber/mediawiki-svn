@@ -728,30 +728,34 @@ Le limite actual es $3.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Ivan Lanin
  * @author Rex
  */
 $messages['id'] = array(
-	'duplicator' => 'Duplikasikan suatu artikel',
-	'duplicator-toolbox' => 'Duplikasikan artikel ini',
-	'duplicator-header' => 'Halaman ini menyediakan fasilitas untuk membuat duplikat lengkap suatu artikel, membuat salinan independen dari semua versi terdahulu. Hal ini berguna untuk mencabangkan artikel, dll.',
+	'duplicator' => 'Salin suatu halaman',
+	'duplicator-desc' => 'Buat [[Special:Duplicate|salinan halaman]] yang berdiri sendiri dengan sejarah suntingan yang lengkap',
+	'duplicator-toolbox' => 'Salin halaman ini',
+	'duplicator-header' => 'Halaman ini menyediakan fasilitas untuk membuat duplikat lengkap suatu artikel, membuat salinan independen dari semua sejarah suntingan. Hal ini berguna untuk mencabangkan artikel, dll.',
 	'duplicator-options' => 'Pilihan',
 	'duplicator-source' => 'Sumber:',
 	'duplicator-dest' => 'Tujuan:',
-	'duplicator-dotalk' => 'Duplikasikan halaman pembicaraan (jika tersedia)',
-	'duplicator-submit' => 'Duplikasi',
+	'duplicator-dotalk' => 'Salin halaman pembicaraan (jika tersedia)',
+	'duplicator-submit' => 'Salin',
 	'duplicator-summary' => 'Disalin dari [[$1]]',
 	'duplicator-success' => "<big>'''[[$1]] telah disalin ke [[$2]].'''</big>",
 	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revisi|revisi}} telah disalin.',
 	'duplicator-success-talkcopied' => 'Halaman pembicaraan juga telah disalin.',
 	'duplicator-success-talknotcopied' => 'Halaman pembicaraan tidak dapat disalin.',
-	'duplicator-failed' => 'Halaman tidak dapat diduplikasi. Telah terjadi suatu kesalahan yang tak dikenal.',
+	'duplicator-failed' => 'Halaman tidak dapat disalin. 
+Telah terjadi suatu kesalahan yang tak dikenal.',
 	'duplicator-source-invalid' => 'Harap masukkan judul sumber yang sah.',
-	'duplicator-source-notexist' => '[[$1]] tidak ditemukan. Harap masukkan judul halaman yang sudah ada.',
+	'duplicator-source-notexist' => '[[$1]] tidak ditemukan. Harap berikan judul sumber yang halamannya sudah ada.',
 	'duplicator-dest-invalid' => 'Harap masukkan judul tujuan yang sah.',
 	'duplicator-dest-exists' => '[[$1]] telah ada. Harap berikan judul tujuan yang halamannya belum ada.',
 	'duplicator-toomanyrevisions' => '[[$1]] memiliki terlalu banyak ($2) revisi dan tidak dapat disalin. Limit saat ini adalah $3.',
+	'right-duplicate' => 'Salinan halaman',
 );
 
 /** Italian (Italiano)

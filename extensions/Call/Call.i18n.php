@@ -492,6 +492,19 @@ In caso de problemas, tu pote probar <b>{{#special:call}}/DebuG</b>",
 	'call-save-failed' => 'Le sequente texto NON ha essite immagazinate in le pagina <big>[[$1]]</big> proque iste pagina existe ja.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'call' => 'Panggilan',
+	'call-desc' => 'Buat sebuah pranala ke templat (atau halaman wiki biasa) dengan parameter. 
+Dapat digunakan pada baris perintah penjelajah web atau di antara teks wiki',
+	'call-text' => 'Pengaya Panggilan membutuhkan sebuah halaman wiki dan parameter opsional untuk halaman tersebut untuk digunakan sebagai argumen.',
+	'call-save' => "Keluaran untuk panggilan ini akan disimpan di sebuah halaman bernama ''$1''.",
+	'call-save-success' => 'Teks berikut ini telah disimpan ke halaman <big>[[$1]]</big>.',
+	'call-save-failed' => 'Teks berikut ini BELUM disimpan ke halaman <big>[[$1]]</big> karena halaman tersebut sudah ada.',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

@@ -102,6 +102,15 @@ $messages['ia'] = array(
 Usa: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'stockcharts-desc' => 'Menambahkan tag <nowiki><stockchart ticker="AAPL"/></nowiki> untuk bagan saham finansial interaktif',
+	'stockcharts-missingticker' => 'Untuk menampilkan sebuah bagan saham, Anda perlu mengisi parameter "ticker".
+Gunakan: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */

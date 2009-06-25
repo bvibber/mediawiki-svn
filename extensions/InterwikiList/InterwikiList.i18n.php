@@ -319,6 +319,18 @@ $messages['ia'] = array(
 	'interwikilist-prefix' => 'Prefixo interwiki:',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'interwikilist' => 'Daftar interwiki',
+	'interwikilist-desc' => 'Menambahkan sebuah [[Special:Interwikilist|halaman istimewa]] untuk melihat pranala interwiki yang tersedia',
+	'interwikilist-linkname' => 'Pranala interwiki',
+	'interwikilist-target' => 'URL tujuan',
+	'interwikilist-filter' => 'Daftar filter',
+	'interwikilist-prefix' => 'Prefiks interwiki:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

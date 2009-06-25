@@ -1158,11 +1158,13 @@ Probabilemente non existe tal usator.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
 	'regexblock-form-reason' => 'Alasan:',
 	'regexblock-view-all' => 'Semua',
+	'regexblock-view-go' => 'Tuju ke',
 );
 
 /** Ido (Ido)

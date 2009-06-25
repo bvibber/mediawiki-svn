@@ -179,6 +179,15 @@ $messages['ia'] = array(
 	'semanticgooglemaps-enteraddresshere' => 'Entra adresse hic',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Lihat koordinat',
+	'semanticgooglemaps-desc' => 'Mengijinkan pengguna untuk menyunting dan menampilkan data koordinat semantik menggunakan Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Masukkan alamat di sini',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi

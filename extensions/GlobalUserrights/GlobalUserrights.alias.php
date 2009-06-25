@@ -108,6 +108,11 @@ $aliases['no'] = array(
 	'GlobalUserrights' => array( 'Globale brukerrettigheter' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'GlobalUserrights' => array( 'Dreches dels utilizaires globals', 'DrechesDelsUtilizairesGlobals' ),
+);
+
 /** Romanian (Română) */
 $aliases['ro'] = array(
 	'GlobalUserrights' => array( 'Drepturi globale utilizator' ),

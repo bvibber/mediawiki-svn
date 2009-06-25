@@ -257,6 +257,17 @@ $messages['ia'] = array(
 	'right-protectsection' => 'Proteger sectiones de paginas',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'protectsection_desc' => 'Mengijinkan pengguna yang berhak untukmenlindungi bagian dari sebuah halaman dengan menggunakan tag <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'Anda berusaha untuk menambah atau menghilangkan bagian yang dilindungi',
+	'protectsection_modify' => 'Anda berusaha untuk mengubah teks yang dilindungi',
+	'protectsection_forbidden' => 'Terlarang',
+	'right-protectsection' => 'Lindungi bagian halaman',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

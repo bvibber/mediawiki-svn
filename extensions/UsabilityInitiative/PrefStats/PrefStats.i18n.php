@@ -70,6 +70,17 @@ $messages['eo'] = array(
 	'prefstats-title' => 'Statistikoj pri preferoj',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'prefstats' => 'Asetusten tilastot',
+	'prefstats-desc' => 'Kerää tilastoja siitä, kuinka moni käyttäjä on ottanut käyttöön erinäiset asetukset.',
+	'prefstats-title' => 'Asetusten tilastot',
+	'prefstats-list-intro' => 'Tällä hetkellä seuraavia asetuksia seurataan.
+Tilastot näkyvät painamalla asetusta.',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -88,6 +99,9 @@ Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
 $messages['gl'] = array(
 	'prefstats' => 'Preferencia de estatísticas',
 	'prefstats-desc' => 'Segue as estatísticas sobre cantos usuarios teñen determinadas preferencias activadas',
+	'prefstats-title' => 'Estatísticas das preferencias',
+	'prefstats-list-intro' => 'Actualmente as seguintes preferencias están sendo seguidas.
+Prema sobre unha para ver as estatísticas sobre ela.',
 );
 
 /** Swiss German (Alemannisch)
@@ -116,6 +130,10 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'prefstats' => 'Statisticas de preferentias',
+	'prefstats-desc' => 'Statistics super le numero de usatores que ha activate certe preferentias',
+	'prefstats-title' => 'Statisticas de preferentias',
+	'prefstats-list-intro' => 'Actualmente, le sequente preferentias es sequite.
+Clicca super un pro vider statisticas super illo.',
 );
 
 /** Indonesian (Bahasa Indonesia)

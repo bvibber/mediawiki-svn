@@ -267,6 +267,18 @@ $messages['ia'] = array(
 	'eval_code' => 'Codice',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => 'Menambahkan [[Special:Eval|sebuah antarmuka]] untuk fungsi <code>eval()</code>',
+	'eval_submit' => 'Evaluasi',
+	'eval_escape' => 'Keluaran "escape"',
+	'eval_out' => 'Keluaran',
+	'eval_code' => 'Kode',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

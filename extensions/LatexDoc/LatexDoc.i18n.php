@@ -381,6 +381,24 @@ $3',
 	'latexdoc-desc' => 'Modification collaborative de documentos LaTeX',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'latexdoc_no_text' => 'Halaman tidak mengandung teks, tidak dapat membuat DVI',
+	'latexdoc_cant_create_dir' => 'Tidak dapat membuat direktori sementara $1',
+	'latexdoc_cant_write' => 'Tidak dapat menulis ke berkas $1',
+	'latexdoc_error' => 'Galat LaTeX
+
+Perintah: $1
+
+Keluaran: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Unduh DVI',
+	'latexdoc_get_pdf' => 'Unduh PDF',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

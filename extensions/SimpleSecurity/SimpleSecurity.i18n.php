@@ -346,6 +346,14 @@ $messages['ia'] = array(
 	'security-restricttogroup' => 'Accesso al contento restringite al membros de "$1"',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'security-type-category' => 'kategori',
+	'security-type-namespace' => 'ruang nama',
+);
+
 /** Italian (Italiano)
  * @author Marco 27
  */

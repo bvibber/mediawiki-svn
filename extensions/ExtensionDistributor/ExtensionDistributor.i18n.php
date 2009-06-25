@@ -551,6 +551,7 @@ Pliparto de kromprogramoj funkcias trans pluraj versioj de MediaWiki, do se via 
 	'extdist-submit-version' => 'Daŭri',
 	'extdist-no-remote' => 'Ne eblas kontakti eksteran klienton de subversion.',
 	'extdist-remote-error' => 'Eraro de la ekstera kliento de subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Nevalida respondo de ekstera kliento de Subversion.',
 	'extdist-tar-error' => 'Tar donis elirkodon $1:',
 	'extdist-created' => "Statika kopio de versio <b>$2</b> de la <b>$1</b> kromprogramo por MediaWiki <b>$3</b> estis kreita. Via elŝuto komencos aŭtomate post 5 sekundoj.
 
@@ -1051,6 +1052,15 @@ Quando tu ha extrahite le files, tu debe registrar le extension in LocalSettings
 
 Si tu ha alcun questiones super iste systema de distribution de extensiones, per favor visita [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Obtener un altere extension',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'extensiondistributor' => 'Unduh pengaya MediaWiki',
+	'extdist-submit-extension' => 'Lanjutkan',
+	'extdist-submit-version' => 'Lanjutkan',
 );
 
 /** Italian (Italiano)

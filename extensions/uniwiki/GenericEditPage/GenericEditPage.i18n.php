@@ -597,6 +597,15 @@ Adde alcunes con le instrumentos in le barra de menu.',
 	'gep-categorypage' => 'MediaWiki:Modificaretiquettasdepaginas',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'gep-categories' => 'Kategori',
+	'gep-addcategorybutton' => 'Tambahkan',
+	'gep-addsectionbutton' => 'Tambahkan',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

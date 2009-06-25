@@ -191,6 +191,16 @@ $messages['ia'] = array(
 	'rightfunctions-ns' => '(ab le protection de spatios de nomines)',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'rightfunctions-desc' => 'Fungsi parser berdasarkan hak pengguna',
+	'rightfunctions-casc' => '(dari sumber beruntun)',
+	'rightfunctions-local' => '(dari halaman lokal)',
+	'rightfunctions-ns' => '(dari perlindungan ruang nama)',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

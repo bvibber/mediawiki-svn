@@ -410,6 +410,7 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
@@ -417,7 +418,8 @@ $messages['id'] = array(
 	'findspam-desc' => 'Menambahkan [[Special:FindSpam|halaman istimewa]] untuk mencari spam yang baru ditambahkan',
 	'findspam-ip' => 'Alamat IP:',
 	'findspam-ok' => 'OK',
-	'findspam-notextfound' => 'Tidak ada kontribusi ditemukan',
+	'findspam-notextfound' => 'Tidak ditemukan kontribusi apapun',
+	'right-findspam' => 'Cari spam yang baru ditambahkan',
 );
 
 /** Ido (Ido)

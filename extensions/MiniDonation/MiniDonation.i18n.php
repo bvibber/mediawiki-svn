@@ -220,9 +220,12 @@ $messages['ia'] = array(
 	'donationform-submit' => 'Donar per PayPal',
 );
 
-/** Indonesian (Bahasa Indonesia) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
 $messages['id'] = array(
-	'donationform-submit' => 'Donasi melalui PayPal',
+	'donationform-desc' => 'Tambahkan sebuah tag <tt>&lt;donateform&gt;</tt> untuk menyokong sumbangan lewat PayPal',
+	'donationform-submit' => 'Sumbangkan melalui PayPal',
 );
 
 /** Italian (Italiano)

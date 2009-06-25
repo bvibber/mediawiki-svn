@@ -16,12 +16,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'authors-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'authors_authors' => '{{Identical|Author}}',
+	'authors_anonymous' => '{{Identical/Anonymous}}',
 );
 
 /** Arabic (العربية)
@@ -216,6 +218,15 @@ $messages['ia'] = array(
 	'authors-desc' => 'Appende un lista de contributores a paginas',
 	'authors_authors' => 'Autores',
 	'authors_anonymous' => 'Anonyme',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'authors-desc' => 'Buat suatu daftar kontributor halaman',
+	'authors_authors' => 'Pembuat',
+	'authors_anonymous' => 'Anonim',
 );
 
 /** Japanese (日本語)

@@ -419,6 +419,13 @@ $messages['ia'] = array(
 	'nss-db-error' => 'Error durante le lection del base de datos de authentication',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'am-username' => 'nama pengguna',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

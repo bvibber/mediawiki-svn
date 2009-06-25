@@ -180,6 +180,13 @@ $messages['ia'] = array(
  # Omne occurrentias de $1 essera reimplaciate per le titulo del pagina actual.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'metakeywords-desc' => 'Mengijinkan konfigurasi tag <tt><nowiki><meta "keywords"></nowiki></tt> dan <tt><nowiki><meta "description"></nowiki></tt> per ruang nama',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

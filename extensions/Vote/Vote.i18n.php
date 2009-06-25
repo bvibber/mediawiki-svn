@@ -552,6 +552,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Mobe
+ * @author Nike
  * @author Str4nd
  * @author Varusmies
  * @author Vililikku
@@ -575,8 +576,8 @@ riddler|Arvuuttaja',
 	'vote-results-none' => 'Yhtään ääntä ei ole annettu.',
 	'vote-login' => 'Sinun tulee [$1 kirjautua sisään] äänestääksesi.',
 	'vote-invalid-choice' => 'Sinun tulee valita vaihtoehdoista yksi.',
-	'right-vote' => 'Äänestä',
-	'right-voteadmin' => 'Katso äänestystulokset',
+	'right-vote' => 'Äänestää',
+	'right-voteadmin' => 'Katsoa äänestystulokset',
 );
 
 /** French (Français)
@@ -778,6 +779,7 @@ sphinx|Sphinx',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Ivan Lanin
  * @author Rex
  */
@@ -796,7 +798,7 @@ riddler|Riddler',
 	'vote-view-results' => 'Lihat hasil',
 	'vote-results' => 'Hasil pemungutan suara',
 	'vote-results-choice' => 'Pilihan',
-	'vote-results-count' => 'Suara',
+	'vote-results-count' => 'Jumlah',
 	'vote-results-none' => 'Saat ini belum ada suara yang masuk.',
 	'vote-login' => 'Anda harus [$1 masuk log] untuk memberikan suara.',
 	'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',

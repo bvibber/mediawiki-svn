@@ -559,6 +559,13 @@ Amicalmente,
 Le systema de notification de %s',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'tasklistincorrectuser' => 'Nama pengguna salah',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

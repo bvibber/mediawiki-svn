@@ -31,11 +31,13 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'lookupuser-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'lookupuser-no-email' => '{{Identical/Notprovided}}',
 	'right-lookupuser' => '{{doc-right}}',
 );
 
@@ -551,15 +553,16 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
 	'lookupuser' => 'Mencari informasi pengguna',
-	'lookupuser-desc' => '[[Special:LookupUser|Menampilkan informasi]] seorang pengguna seperti surat-e dan ID',
+	'lookupuser-desc' => '[[Special:LookupUser|Menampilkan informasi]] seorang pengguna seperti alamat surel dan ID',
 	'lookupuser-intro' => 'Masukkan nama pengguna untuk melihat daftar preferensinya.',
-	'lookupuser-nonexistent' => 'Kesalahan: Pengguna tidak ditemukan',
-	'lookupuser-authenticated' => 'Konfirmasi surat-e: $1',
-	'lookupuser-not-authenticated' => 'tidak dikonfirmasi',
+	'lookupuser-nonexistent' => 'Galat: Pengguna tidak ditemukan',
+	'lookupuser-authenticated' => 'di-otentifikasi pada $1',
+	'lookupuser-not-authenticated' => 'tidak di-otentifikasi',
 	'lookupuser-id' => 'ID Pengguna: <tt>#$1</tt>',
 	'lookupuser-email' => 'Surat-e: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'tidak diberikan',
@@ -567,7 +570,9 @@ $messages['id'] = array(
 	'lookupuser-registration' => 'Tanggal pendaftaran: $1',
 	'lookupuser-no-registration' => 'tidak dicatat',
 	'lookupuser-touched' => 'Rekor terakhir yang tercapai: $1',
-	'lookupuser-useroptions' => 'Opsi pengguna:',
+	'lookupuser-info-authenticated' => 'Otentifikasi surel: $1',
+	'lookupuser-useroptions' => 'Pilihan pengguna:',
+	'right-lookupuser' => 'Lihat preferensi pengguna',
 );
 
 /** Ido (Ido)

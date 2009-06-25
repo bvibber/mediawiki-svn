@@ -167,6 +167,13 @@ $messages['ia'] = array(
 	'csshooks-desc' => 'Adde CSS al output HTML de paginas pro meliorar le disposition typographic',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'csshooks-desc' => 'Menambahkan CSS ke output halaman HTML agar tampak lebih bagus',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

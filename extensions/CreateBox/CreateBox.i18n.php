@@ -308,6 +308,19 @@ Tu non pote crear iste pagina, sed tu pote [{{fullurl:{{FULLPAGENAME}}|action=ed
 <createbox>break=no</createbox>",
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'createbox-desc' => '"Inputbox" khusus untuk pembuatan halaman',
+	'createbox-create' => 'Buat',
+	'createbox-exists' => "Maaf, \"'''{{FULLPAGENAME}}'''\" sudah ada.
+
+Anda tidak dapat membuat halaman ini, namun Anda dapat [{{fullurl:{{FULLPAGENAME}}|action=edit}} menyuntingnya], [{{fullurl:{{FULLPAGENAME}}}} membacanya], atau membuat halaman lainnya dengan menggunakan kotak di bawah ini.
+
+<createbox>break=no</createbox>",
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

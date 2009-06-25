@@ -122,6 +122,13 @@ $messages['ia'] = array(
 	'gotocategory-desc' => "Cerca parolas etiam in le spatio de nomines Categoria: a fin de possibilisar le function 'ir al pagina'",
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'gotocategory-desc' => "Mencari di ruang nama Kategori: untuk fungsionalitas Pergi 'lompat ke halaman'",
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

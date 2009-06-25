@@ -390,12 +390,14 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Ivan Lanin
  */
 $messages['id'] = array(
 	'profiling' => 'Profilisasi data',
-	'profiling-process' => 'Proses data:',
-	'profiling-wildcard' => 'Gunakan wildcard',
+	'profiling-desc' => '[[Special:Profiling|Halaman istimewa]] untuk mencari dan melakukan inspeksi profilisasi data',
+	'profiling-process' => 'Baris perintah:',
+	'profiling-wildcard' => 'Gunakan "wildcard"',
 	'profiling-ok' => 'OK',
 	'profiling-data' => 'Profilisasi data untuk `$1`',
 	'profiling-data-process' => 'Proses',

@@ -233,6 +233,18 @@ Hic es listate tote le paginas in le categoria "$1", e omne subcategoria existen
 	'autocreatecategorypages-editor' => 'Creator automatic de categorias',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'autocreatecategorypages-desc' => 'Buat secara otomatis saat disimpan halaman kategori yang belum dibuat',
+	'autocreatecategorypages-stub' => 'Ini adalah halaman kategori.
+
+Halaman ini mendaftarkan semua halaman di kategori "$1" dan juga semua upa kategori dari kategori "$1" yang ada.',
+	'autocreatecategorypages-createdby' => 'Dibuat secara otomatis dengan pengaya AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Pembuat kategori otomatis',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

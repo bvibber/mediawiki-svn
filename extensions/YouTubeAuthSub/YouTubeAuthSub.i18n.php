@@ -1108,6 +1108,7 @@ Sia patiente.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
@@ -1125,23 +1126,23 @@ $messages['id'] = array(
 	'youtubeauthsub_tokenerror' => 'Gagal menghasilkan token otorisasi, coba muat kembali.',
 	'youtubeauthsub_success' => "Selamat!
 Video Anda berhasil dimuatkan.
-Untuk melihat video Anda, klik <a href='http://www.youtube.com/watch?v=$1'>di sini</a>.
+<a href='http://www.youtube.com/watch?v=$1'>Lihat video Anda</a>.
 YouTube mungkin memerlukan beberapa saat untuk memproses video Anda, sehingga video tersebut mungkin belum siap pada saat ini.
 
-Untuk menampilkan video Anda di suatu halaman di wiki ini, gunakan kode berikut di halaman tersebut: <code>{{&#35;ev:youtube|$1}}</code>",
+Untuk menampilkan video Anda di suatu halaman wiki, gunakan kode berikut di halaman tersebut: <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Untuk mengunggah video, Anda harus masuk log terlebih dahulu di YouTube.',
-	'youtubeauthsub_uploadhere' => 'Unggah vide Anda dari sini:',
+	'youtubeauthsub_uploadhere' => 'Unggah video Anda dari sini:',
 	'youtubeauthsub_uploadbutton' => 'Unggah',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Video ini dapat dilihat [http://www.youtube.com/watch?v=$1 di sini]',
+[http://www.youtube.com/watch?v=$1 Lihat video ini]',
 	'youtubeauthsub_summary' => 'Sedang memuatkan video YouTube',
 	'youtubeauthsub_uploading' => 'Video Anda sedang dimuatkan.
 Silakan menunggu.',
-	'youtubeauthsub_viewpage' => 'Alternatifnya, Anda dapat menampilkan video Anda [[$1|di sini]].',
-	'youtubeauthsub_jserror_nokeywords' => 'Silakan masukkan 1 atau lebih kata kunci.',
-	'youtubeauthsub_jserror_notitle' => 'Silakan masukkan judul video tersebut.',
-	'youtubeauthsub_jserror_nodesc' => 'Silakan masukkan keterangan video tersebut.',
+	'youtubeauthsub_viewpage' => 'Pilihan lain, Anda dapat [[$1|melihat video Anda]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Silakan masukkan 1 kata kunci atau lebih.',
+	'youtubeauthsub_jserror_notitle' => 'Silakan masukkan judul untuk video tersebut.',
+	'youtubeauthsub_jserror_nodesc' => 'Silakan masukkan keterangan untuk video tersebut.',
 );
 
 /** Ido (Ido)

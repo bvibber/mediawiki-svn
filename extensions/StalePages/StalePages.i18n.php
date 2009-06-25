@@ -209,6 +209,15 @@ $messages['ia'] = array(
 	'stalepages-summary' => 'Isto es un lista de paginas que non ha essite modificate in le ultime $1 {{PLURAL:$1|die|dies}}.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'stalepages' => 'Halaman basi',
+	'stalepages-desc' => 'Membuat suatu [[Special:Stalepages|daftar halaman]] yang akhir-akhir ini tidak disunting',
+	'stalepages-summary' => 'Ini adalah daftar halaman yang tidak disunting dalam $1 {{PLURAL:$1|hari|hari}} terakhir.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
