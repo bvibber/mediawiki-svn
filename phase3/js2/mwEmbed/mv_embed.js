@@ -20,7 +20,7 @@ if( MV_EMBED_VERSION ){
 	MV_DO_INIT=false;	
 }
 //used to grab fresh copies of scripts. (should be changed on commit)  
-var MV_EMBED_VERSION = '1.0r16';
+var MV_EMBED_VERSION = '1.0r17';
 
 /*
  * Configuration variables (can be set from some precceding script) 
@@ -110,13 +110,16 @@ function lcPaths( path, gClasses , opt){
 		opt['j_replace'] = 'jquery.';	
 	if(!path)
 		path = '';	
-	for(var i in gClasses){
-		//check if its an array:
-		if( gClasses.length ){		
+	if(gClasses.length){
+		//do array loop: 
+		for(var i=0;i<gClasses.length;i++){
 			//setup normal replacement of j with jquery			
 			var jsName = ( gClasses[i].substr(0,3) == '$j.' ) ? opt['j_replace'] + gClasses[i].substr(3) : gClasses[i];							
 			mvClassPaths[ gClasses[i] ] = path + jsName + '.js';
-		}else{ 
+		}		
+	}else{
+		//do object loop: 
+		for(var i in gClasses){			
 			//assume object with key:path:
 			mvClassPaths[i] = path + gClasses[ i ];
 		}

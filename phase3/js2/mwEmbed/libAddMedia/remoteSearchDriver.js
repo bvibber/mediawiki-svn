@@ -991,15 +991,15 @@ remoteSearchDriver.prototype = {
 		//scale up image and to swap with high res version
 		$j('#rsd_edit_img').animate({
 			'opacity':1,
-			'top':'0px',
-			'left':'0px',
+			'top':'5px',
+			'left':'5px',
 			'width': maxWidth + 'px',
 			'height': parseInt( tRatio * maxWidth)  + 'px'
 		}, "slow"); // do it slow to give it a chance to finish loading the HQ version
 	
 		if( mediaType == 'image' ){
-			_this.loadHQImg(rObj, {'width':maxWidth}, 'rsd_edit_img', function(){
-				$j('.mv_img_loader').remove();
+			_this.loadHQImg(rObj, {'width':maxWidth}, 'rsd_edit_img', function(){				
+				$j('.mv_loading_img').remove();				
 			});
 		}
 		//also fade in the container:
@@ -1103,7 +1103,7 @@ remoteSearchDriver.prototype = {
 				//make sure we have the embedVideo libs:			
 				mvJsLoader.embedVideoCheck( function(){
 					js_log('append html: ' + rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'}) );
-					$j('#clip_edit_disp').append(
+					$j('#clip_edit_disp').html(
 						rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})
 					);
 					//rewrite by id
@@ -1247,7 +1247,8 @@ remoteSearchDriver.prototype = {
 																			
 								'</div>'+
 								//output the rendered and non-renderd version of description for easy swiching:
-						'</div>');		
+						'</div>');
+						//add hover:								
 						//update video tag
 						rewrite_by_id(_this.target_container + '_rsd_pv_vid');
 						//load the preview text:					
@@ -1265,7 +1266,7 @@ remoteSearchDriver.prototype = {
 								$j('#rsd_import_desc').html(o);
 							});
 						});
-						$j(_this.target_container + ' .rsd_import_doimport').click(function(){						
+						$j(_this.target_container + ' .rsd_import_doimport').btnBind().click(function(){						
 							//check import mode:
 							if(_this.import_url_mode=='form'){
 								_this.doImportSpecialPage( rObj, cir_callback );
@@ -1275,7 +1276,7 @@ remoteSearchDriver.prototype = {
 								js_log("Error: import mode is not form or API (can not copy asset)");
 							}			
 						});
-						$j( _this.target_container + ' .rsd_import_acancel').click(function(){
+						$j( _this.target_container + ' .rsd_import_acancel').btnBind().click(function(){
 							$j('#rsd_resource_import').fadeOut("fast",function(){
 								$j(this).remove();
 							});
