@@ -5,7 +5,6 @@ loadGM({
 	"close" : "close",
 	"improve_transcript" : "Improve",
 })
-
 // text interface object (for inline display captions) 
 var mvTextInterface = function( parentEmbed ){
 	return this.init( parentEmbed );
@@ -180,7 +179,7 @@ mvTextInterface.prototype = {
 					_this.pe.highlightPlaySection( {
 						'start'	: $j(this).parent().attr("start"),
 						'end'	: $j(this).parent().attr("end")
-						});
+					});
 				}, 
 				out:function () {	
 					  js_log('mvttseek: out');		  
@@ -288,7 +287,7 @@ mvTextInterface.prototype = {
 				}
 			};			
 			/*js_log('search_for_range:'+search_for_range +  ' for: '+ cur_time);*/
-			if(search_for_range){				
+			if( search_for_range ){				
 				//search for current time: add tt_scroll_highlight to clip		
 				// optimize:
 				//  should do binnary search not iterative 

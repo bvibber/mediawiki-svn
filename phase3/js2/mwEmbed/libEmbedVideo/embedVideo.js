@@ -392,8 +392,7 @@ var ctrlBuilder = {
 		$j('#mv_play_head_'+embedObj.id + ' .ui-slider-range').addClass('ui-corner-all').css('z-index', 2);
 		//extended class list for jQuery ui themeing (we can probably refactor this with custom buffering highliter) 
 		$j('#mv_play_head_'+embedObj.id).append( ctrlBuilder.getMvBufferHtml() );
-		
-		
+				
 		//videoOptions: 
 		$j('#mv_vid_options_'+ctrlBuilder.id+' .vo_selection').click(function(){
 			embedObj.selectPlaybackMethod();

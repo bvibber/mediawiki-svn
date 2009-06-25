@@ -84,6 +84,7 @@ var nativeEmbed = {
 				this.parent_doSeek(perc);
 			}			
 		}else if(this.vid && this.vid.duration ){	   
+			//(could also check bufferedPercent > perc seek (and issue oggz_chop request or not) 
 			this.doNativeSeek(perc);	
 		}else{
 			this.doPlayThenSeek(perc)
@@ -95,7 +96,7 @@ var nativeEmbed = {
 		this.parent_monitor();	
 	},
 	doPlayThenSeek:function(perc){
-		js_log('doPlayThenSeek Hack');
+		js_log('native::doPlayThenSeek::');
 		var _this = this;
 		this.play();
 		var rfsCount = 0;
