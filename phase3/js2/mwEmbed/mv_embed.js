@@ -466,7 +466,7 @@ var mvJsLoader = {
 	 				loadSet.push(loadChain[i][j]);
 	 			}
 	 		}
-	 		doLoad(loadSet, callback);
+	 		mvJsLoader.doLoad(loadSet, callback);
 	 	}else{
 	 		//safair and IE tend to execute out of order so load with dependenciy checks
 		 	mvJsLoader.doLoad(loadChain.shift(),function(){
