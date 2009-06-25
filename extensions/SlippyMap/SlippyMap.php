@@ -52,6 +52,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 * Property: Extension credits
 */
 $wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
         'name'           => 'OpenStreetMap Slippy Map',
         'author'         => array( '[http://harrywood.co.uk Harry Wood]', 'Jens Frank' ),
         'url'            => 'http://wiki.openstreetmap.org/index.php/Slippy_Map_MediaWiki_Extension',
@@ -66,7 +67,6 @@ $wgMapModes = array( 'osm', 'satellite' );
 $wgAutoLoadMaps = false;
 
 $wgExtensionMessagesFiles['SlippyMap'] = $dir . 'SlippyMap.i18n.php';
-$wgExtensionAliasesFiles['SlippyMap'] = $dir . 'SlippyMap.alias.php';
 
 $wgAutoloadClasses['SlippyMapHooks'] = $dir . 'SlippyMap.hooks.php';
 $wgAutoloadClasses['SlippyMap'] = $dir . 'SlippyMap.class.php';
