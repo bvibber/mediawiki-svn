@@ -54,7 +54,7 @@ if( MV_EMBED_VIDEO_HANDLER ){
 }
 
 //check if we are on a edit page:
-if( wgAction == 'edit' || wgAction == 'submit' ){
+if( wgAction == 'edit' || wgAction == 'submit' ){	
     //add onPage ready request:
     addOnloadHook( function(){                        
         var imE = document.createElement('img');

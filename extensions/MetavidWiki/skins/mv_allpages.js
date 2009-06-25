@@ -5,7 +5,7 @@ var mv_setup_allpage_flag=false;
 if( typeof wgServer!='undefined' && typeof  wgScript != 'undefined'){
     var base_roe_url = wgServer + wgScript + '?title=Special:MvExportStream&feed_format=roe&stream_name=';
 }else{
-    var base_roe_url='';
+    var base_roe_url = '';
 }
 //force wgScript path for blog support 
 if(typeof wgScript=='undefined')
