@@ -8,7 +8,7 @@
  *
  * @link http://www.mediawiki.org/wiki/Extension:Mibbit
  *
- * @author MinuteElectron <minuteelectron@googlemail.com>
+ * @author Robert Leverington <robert@rhl.me.uk>
  * @copyright Copyright © 2008 - 2009 Robert Leverington.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
@@ -24,11 +24,12 @@ $wgExtensionCredits[ 'specialpage' ][] = array(
 	'descriptionmsg' => 'mibbit-desc',
 	'author'         => 'Robert Leverington',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Mibbit',
-	'version'        => '1.4',
+	'version'        => '1.4.1',
 );
 
-// Register special page.
 $dir = dirname( __FILE__ ) . '/';
+
+// Register special page.
 $wgSpecialPages[ 'Mibbit' ] = 'Mibbit';
 $wgSpecialPageGroups[ 'Mibbit' ] = 'wiki';
 $wgAutoloadClasses[ 'Mibbit' ] = $dir . 'Mibbit_body.php';

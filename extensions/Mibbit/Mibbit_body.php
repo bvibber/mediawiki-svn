@@ -19,7 +19,7 @@ class Mibbit extends SpecialPage {
 		$this->setHeaders();
 
 		// Introduction message, explaining to users what this is etc.
-		$wgOut->addHTML( Xml::element( 'p', null, wfMsg( 'mibbit-header' ) ) );
+		$wgOut->addHTML( Xml::element( 'p', null, wfMsgExt(  'mibbit-header', array( 'parseinline' ) ) );
 
 		// Prepare query string to pass to widget.
 		$queryAssoc = array(
