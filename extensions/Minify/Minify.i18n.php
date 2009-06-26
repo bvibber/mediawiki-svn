@@ -19,5 +19,5 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'stringfunctions-desc' => 'Short description of the extension. Shown in [[Special:Version]].',
+	'minify-desc' => 'Short description of the extension. Shown in [[Special:Version]].',
 );
