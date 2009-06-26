@@ -30,6 +30,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Jon Harald Søby
  * @author Purodha
  */
@@ -37,6 +38,7 @@ $messages['qqq'] = array(
 	'player' => '{{Identical|Player}}',
 	'player-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'player-title' => '{{Identical|Player}}',
+	'player-playertitle' => '{{Identical|Player}}',
 	'player-file' => '{{Identical|Filename}}',
 	'player-play' => '{{Identical|Play}}',
 	'player-not-found' => '{{Identical|File not found}}',
@@ -561,10 +563,18 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
-	'player' => 'Pemain',
-	'player-title' => 'Pemain',
+	'player' => 'Pemutar media',
+	'player-desc' => 'Pemutar multimedia yang menggunakan plug-in penjelajah web, dan sebuah [[Special:Player|halaman istimewa]]',
+	'player-title' => 'Pemutar media',
+	'player-playertitle' => 'Pemutar media: $1',
+	'player-file' => 'Nama berkas',
+	'player-play' => 'Mainkan',
+	'player-not-allowed' => 'format tidak diijinkan',
+	'player-not-found' => 'berkas tidak ditemukan',
 	'player-invalid-title' => 'judul tidak sah',
-	'player-goto-player' => 'Pemain',
+	'player-clicktoplay' => 'Mainkan $1',
+	'player-goto-player' => 'pemutar media',
+	'player-goto-page' => 'Halaman',
 	'player-goto-file' => 'berkas',
 );
 

@@ -761,10 +761,12 @@ Per favor attende le completion del action in curso.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
+	'imagetagging-article' => 'Halaman:',
 	'imagetagging-imghistory' => 'Versi',
 	'imagetagging-tagcancel-button' => 'Batalkan',
 );

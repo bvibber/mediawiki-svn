@@ -185,9 +185,26 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'optin' => 'Käytettävyyshankkeen valinnanvarainen käyttöönotto',
+	'optin-desc' => 'Salli käyttäjien ottaa käyttöön käytettävyyshankkeen käytettävyyttä parantavat lisäykset',
+	'optin-title' => 'Käytettävyyshankkeen parannukset',
+	'optin-needlogin' => 'Sinun tulee [$1 kirjautua sisään] ottaaksesi käyttöön käytettävyyshankkeen käytettävyyttä lisäävät parannukset.',
+	'optin-intro' => 'Wikipedian käytettävyyshanke on kehittänyt uuden ulkonäön ja uuden työkalupalkin muokkaukseen Wikipedian käytettävyyden parantamiseksi. Nämä parannukset eivät ole vielä kaikilla käyttäjillä, mutta voit ottaa ne käyttöön ”{{int:optin-submit-in}}” -painikkeesta.',
+	'optin-success-in' => 'Olet ottanut onnistuneesti käyttöön käytettävyyshankkeen käytettävyyttä lisäävät parannukset.
+Voit poistaa parannukset käytöstä milloin tahansa ”{{int:optin-submit-out}}” -painikkeesta.',
+	'optin-success-out' => 'Olet onnistuneesti poistanut käytöstä käytettävyyshankkeen käytettävyyttä lisäävät parannukset.
+Voit ottaa parannukset käyttöön milloin tahansa ”{{int:optin-submit-in}}” -painikkeesta.',
+	'optin-submit-in' => 'Ota käyttöön',
+	'optin-submit-out' => 'Poista käytöstä',
+	'optin-survey-intro' => 'Kiitos käytettävyyshankkeen käytettävyyttä lisäävien parannusten kokeilusta.
+Voit ottaa parannukset pois käytöstä ”{{int:optin-submit-out}}” -painikkeella tämän sivun lopusta.
+
+Haluaisimme tietää mitä mieltä olet uudesta käyttöliittymästä, joten arvostaisimme jos täyttäisit vapaaehtoisen kyselyn ennen ”{{int:optin-submit-out}}” -painikkeen napsautusta.',
+	'optin-survey-question-whyoptout' => 'Miksi kytket tämän käyttöliittymän pois käytöstä?',
 	'optin-survey-answer-whyoptout-didntlike' => 'En pidä ulkoasusta.',
 	'optin-survey-answer-whyoptout-hard' => 'Sivun muokkaus oli liian vaikeaa.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Se ei toiminut oikein.',
@@ -197,6 +214,7 @@ $messages['fi'] = array(
 	'optin-survey-question-os' => 'Mitä käyttöjärjestelmää käytät?',
 	'optin-survey-answer-os-other' => 'Muu',
 	'optin-survey-question-res' => 'Mikä on näyttösi resoluutio?',
+	'optin-survey-question-feedback' => 'Anna meille palautetta',
 );
 
 /** French (Français)
@@ -387,6 +405,7 @@ Nos volerea saper lo que tu pensa super nostre nove interfacie, e nos appreciare
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
@@ -409,7 +428,7 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 	'optin-survey-answer-whyoptout-didntlike' => 'Saya tidak menyukai desainnya.',
 	'optin-survey-answer-whyoptout-hard' => 'Terlalu sulit untuk menyunting halaman.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Tidak berfungsi dengan baik.',
-	'optin-survey-answer-whyoptout-other' => 'Alasan lainnya:',
+	'optin-survey-answer-whyoptout-other' => 'Alasan lain:',
 	'optin-survey-question-browser' => 'Penjelajah web apa yang Anda gunakan?',
 	'optin-survey-answer-browser-other' => 'Penjelajah web lainnya:',
 	'optin-survey-question-os' => 'Sistem operasi apa yang Anda gunakan?',
@@ -560,6 +579,25 @@ We willen graag weten wat u vindt van deze nieuwe interface, dus wilt u alstubli
 	'optin-survey-answer-os-other' => 'Ander:',
 	'optin-survey-question-res' => 'Wat is uw beeldschermresolutie?',
 	'optin-survey-question-feedback' => 'Laat ons alstublieft weten wat u vindt:',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'optin-needlogin' => 'Du må [$1 logga inn] for å ta i bruk "Usability Initiative" sine utvidingar.',
+	'optin-survey-question-whyoptout' => 'Kvifor vel du å ikkje nytta dette oppsettet?',
+	'optin-survey-answer-whyoptout-didntlike' => 'Eg likar ikkje oppsettet.',
+	'optin-survey-answer-whyoptout-hard' => 'Det var for vanskeleg å redigera ei side.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Det fungerte ikkje på rett vis.',
+	'optin-survey-answer-whyoptout-other' => 'Anna årsak:',
+	'optin-survey-question-browser' => 'Kva for ein nettlesar nyttar du?',
+	'optin-survey-answer-browser-other' => 'Annan nettlesar:',
+	'optin-survey-question-os' => 'Kva for operativsystem nyttar du?',
+	'optin-survey-answer-os-other' => 'Anna:',
+	'optin-survey-question-res' => 'Kva er oppløysinga på skjermen din?',
+	'optin-survey-question-feedback' => 'Ver venleg og send ei tilbakemelding:',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

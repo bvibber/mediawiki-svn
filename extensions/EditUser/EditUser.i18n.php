@@ -550,12 +550,19 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
+	'edituser-desc' => 'Mengijinkan pengguna yang berhak untuk menyunting preferensi pengguna lain',
+	'edituser' => 'Sunting pengguna',
+	'edituser-logout' => 'Keluar-logkan pengguna',
 	'edituser-username' => 'Nama',
 	'edituser-dosearch' => 'Cari',
+	'edituser-nouser' => 'Pengguna yang dimaksud tidak ditemukan',
+	'edituser-exempt' => 'Pengguna yang dimaksud tidak dapat disunting',
+	'right-edituser-exempt' => 'Orang lain tidak dapat menyunting preferensi pengguna ini',
 );
 
 /** Ido (Ido)

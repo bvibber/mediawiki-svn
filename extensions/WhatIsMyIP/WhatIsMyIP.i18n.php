@@ -268,11 +268,13 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'whatismyip' => 'Moj IP',
-	'whatismyip-desc' => 'Pokazuje trenutačnu IP adresu suradnika na [[Special:WhatIsMyIP]]',
-	'whatismyip-out' => 'Tvoj IP:',
+	'whatismyip-desc' => 'Pokazuje trenutačnu suradnikovu [[Special:WhatIsMyIP|IP adresu]]',
+	'whatismyip-out' => 'Tvoja IP adresa:',
+	'right-whatismyip' => 'Pogledajte [[Special:WhatIsMyIP|vlastitu IP adresu]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

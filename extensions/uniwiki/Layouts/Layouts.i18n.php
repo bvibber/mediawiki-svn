@@ -361,10 +361,14 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'layouts-desc' => 'Tambahkan ke halaman yang baru dengan "layout" standar untuk menyeragamkan struktur halaman',
 	'layouts_title' => 'Buat halaman',
+	'layouts_chooselayout' => 'Pilih sebuah "layout" untuk $1:',
+	'layouts_nolayout' => '"Layout" tidak ada',
 	'layouts_continue' => 'Lanjutkan',
 	'layouts_choosecategory' => 'Pilih kategori untuk $1:',
 	'layouts_unknown' => 'Tidak diketahui',
+	'layouts_tagline' => "Halaman ini ditambahkan oleh \"layout\" '''\$1'''.",
 );
 
 /** Italian (Italiano)

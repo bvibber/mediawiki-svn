@@ -287,6 +287,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'newschannel' => 'Saluran berita',
+	'newschannel-desc' => 'Memasang sebuah saluran berita sebagai [[Special:NewsChannel|halaman istimewa]]',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Batas:',
 	'newschannel_include_category' => 'Kategori tambahan:',

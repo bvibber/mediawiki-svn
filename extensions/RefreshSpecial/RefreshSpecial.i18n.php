@@ -548,6 +548,16 @@ Attention: le refrescamento pote durar un poco de tempore in wikis plus grande.'
 	'right-refreshspecial' => 'Refrescar paginas special',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'refreshspecial' => 'Mutakhirkan halaman istimewa',
+	'refreshspecial-title' => 'Mutakhirkan halaman istimewa',
+	'refreshspecial-refreshing' => 'memutakhirkan halaman istimewa',
+	'refreshspecial-choice' => 'memutakhirkan halaman istimewa',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Darth Kule

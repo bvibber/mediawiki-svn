@@ -343,8 +343,10 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'lua_desc' => 'Perkaya parser dengan dukungan untuk kode [http://www.lua.org/ Lua]',
 	'lua_error' => 'Kesalahan pada baris $1',
 	'lua_extension_notfound' => 'Pengaya Lua belum dikonfigurasi',
+	'lua_interp_notfound' => 'Interpretasi Lua tidak ditemukan',
 	'lua_error_internal' => 'Kesalahan internal',
 	'lua_overflow_recursion' => 'Batas rekursi telah dicapai',
 	'lua_overflow_loc' => 'Batas jumlah baris kode telah dicapai',

@@ -1423,7 +1423,13 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'tasks_form_comment' => 'Komentar',
+	'tasks_noone' => 'Tak seorang pun',
+	'tasks_delete' => 'Hapus',
+	'tasks_table_header_page' => 'Halaman',
 	'tasks_search_form_title' => 'Cari',
+	'tasks_previous' => 'Sebelumnya',
+	'tasks_next' => 'Selanjutnya',
 );
 
 /** Italian (Italiano)

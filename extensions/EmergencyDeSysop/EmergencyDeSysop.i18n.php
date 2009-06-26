@@ -362,6 +362,13 @@ $messages['ia'] = array(
 	'right-emergencydesysop' => 'Pote "disadministratorar" mutualmente un altere usator',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'emergencydesysop-nogroups' => 'Tidak ada',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

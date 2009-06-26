@@ -224,6 +224,14 @@ $messages['eu'] = array(
 	'communityvoice-ratings-error-no-category' => 'Kategoria falta da balorazio etiketan.',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Lähetetään...',
+	'communityvoice-ratings-scale-status-thanks' => 'Kiitos äänestäsi!',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex

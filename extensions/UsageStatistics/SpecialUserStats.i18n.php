@@ -808,6 +808,7 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Dnik
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'specialuserstats' => 'Statistika upotrebe',
@@ -833,6 +834,7 @@ $messages['hr'] = array(
 	'usagestatisticscalselect' => 'Odabir',
 	'usagestatistics-editindividual' => 'Statistika uređivanja individualnog suradnika $1',
 	'usagestatistics-editpages' => 'Statistika stranica individualnog suradnika $1',
+	'right-viewsystemstats' => 'Pogledaj [[Special:UserStats|wiki statistike korištenja]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -893,6 +895,20 @@ $messages['ia'] = array(
 	'usagestatistics-editindividual' => 'Statisticas $1 super le modificationes del usator individual',
 	'usagestatistics-editpages' => 'Statisticas $1 super le paginas del usator individual',
 	'right-viewsystemstats' => 'Vider [[Special:UserStats|statisticas de uso del wiki]]',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'specialuserstats' => 'Statistik penggunaan',
+	'usagestatistics' => 'Statistik penggunaan',
+	'usagestatisticstype' => 'Tipe',
+	'usagestatisticsintervalmonth' => 'Bulan',
+	'usagestatisticsincremental' => 'Bertahap',
+	'usagestatisticsincremental-text' => 'bertahap',
+	'usagestatisticscumulative' => 'Kumulatif',
+	'usagestatisticscumulative-text' => 'kumulatif',
 );
 
 /** Ido (Ido)

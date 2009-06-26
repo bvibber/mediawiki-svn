@@ -629,6 +629,15 @@ Le file cargate debe continer in cata linea un nomine de pagina e un motivo facu
 	'right-deletebatch' => 'Deler paginas in lot',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'deletebatch-or' => '<b>atau</b>',
+	'deletebatch-reason' => 'Alasan penghapusan',
+	'deletebatch-success-subtitle' => 'untuk $1',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Melos

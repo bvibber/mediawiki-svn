@@ -364,6 +364,27 @@ Per favor reporta isto como un error in le software.',
 	'smoothgallery-javascript-disabled' => 'JavaScript es requirite pro vider iste galeria correctemente.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'Mengijinkan pengguna membuat galeri dengan berkas yang telah dimuat.',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-error' => '<b>Galat pada SmoothGallery:</b>',
+	'smoothgallery-gallery-not-found' => 'Galeri yang Anda cari tidak ditemukan.',
+	'smoothgallery-not-found' => 'Tidak ada gambar yang ditambahkan ke galeri.
+Tambahkan paling tidak sebuah gambar.',
+	'smoothgallery-no-images' => 'Tidak ada gambar yang ditemukan di galeri ini.
+Pastikan {{PLURAL:$3|gambar|gambar}} yang Anda cari ada.
+{{PLURAL:$2|Gambar|Gambar}} berikut tidak ditemukan: $1',
+	'smoothgallery-invalid-images' => 'Tipe {{PLURAL:$2|gambar|gambar}} yang diminta tidak sah: $1',
+	'smoothgallery-unexpected-error' => 'Terdapat kesalahan yang tidak terduga.
+Mohon kirimkan sebuah laporan bug.',
+	'smoothgallery-javascript-disabled' => 'Penjelajah Anda membutuhkan JavaScript untuk menampilkan galeri ini dengan benar.',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

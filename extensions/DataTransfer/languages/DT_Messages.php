@@ -729,8 +729,13 @@ $messages['id'] = array(
 	'dt_viewxml_categories' => 'Kategori',
 	'dt_viewxml_namespaces' => 'Ruang nama',
 	'dt_xml_namespace' => 'Ruang nama',
+	'dt_xml_pages' => 'Halaman',
+	'dt_xml_page' => 'Halaman',
+	'dt_xml_template' => 'Templat',
 	'dt_xml_name' => 'Nama',
 	'dt_xml_title' => 'Judul',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Teks Gratis',
 );
 
 /** Ido (Ido)
@@ -1059,6 +1064,7 @@ $messages['nn'] = array(
 	'dt_import_importing' => 'Importerer...',
 	'dt_import_success' => '$1 {{PLURAL:$1|Éi side vil verta importert|$1 sider vil verta importerte}} frå $2-fila.',
 	'importcsv' => 'Importer CSV',
+	'dt_importcsv_badheader' => "Feil: kolonneoverskrifta $1, '$2', må vera anten '$3', '$4' eller på forma 'malnamn[feltnamn]'",
 	'right-datatransferimport' => 'Importer data',
 );
 

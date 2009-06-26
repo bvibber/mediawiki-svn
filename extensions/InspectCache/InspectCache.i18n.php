@@ -21,6 +21,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
@@ -29,7 +30,8 @@ $messages['qqq'] = array(
 	'inspectcache-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'inspectcache-ok' => '{{Identical|OK}}',
 	'inspectcache-delete' => '{{Identical|Delete}}',
-	'inspectcache-list' => 'Text on button to have the keys listing shown.',
+	'inspectcache-list' => 'Text on button to have the keys listing shown.
+{{Identical/List}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -467,7 +469,16 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'inspectcache' => 'Inspeksi kas',
+	'inspectcache-desc' => 'Alat debug sederhana untuk melakukan inspeksi terhadap isi kas yang terbagi',
 	'inspectcache-ok' => 'OK',
+	'inspectcache-general' => 'Kas umum',
+	'inspectcache-parser' => 'Kas parser',
+	'inspectcache-message' => 'Kas pesan',
+	'inspectcache-get' => 'Ambil',
+	'inspectcache-delete' => 'Hapus',
+	'inspectcache-deleted' => 'Kas yang dihapus',
+	'inspectcache-list' => 'Daftar',
 );
 
 /** Italian (Italiano)

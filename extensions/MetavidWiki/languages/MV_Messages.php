@@ -1141,7 +1141,7 @@ $messages['be-tarask'] = array(
 	'loading_txt' => 'Загружаецца <blink>…</blink>',
 	'loading_plugin' => 'Загружаецца дапаўненьне <blink>…</blink>',
 	'select_playback' => 'Устанавіць настройкі прайграваньня',
-	'link_back' => 'Папярэдняя спасылка',
+	'link_back' => 'Адваротная спасылка',
 	'error_load_lib' => 'mv_embed: Немагчыма загрузіць патрэбныя бібліятэкі JavaScript.
 Устаўка скрыпту праз DOM не атрымалася.
 Паспрабаваць загрузіць ізноў?',
@@ -1805,7 +1805,7 @@ Bitte berichten Sie dieses Problem dem [[{{MediaWiki:Grouppage-sysop}}|Seitenadm
 	'mv_edit_stream_files' => 'Stream-Dateien bearbeiten',
 	'mv_path_type_url_anx' => 'komplette Medien-URL',
 	'mv_path_type_wiki_title' => 'Wiki-Medientitel',
-	'mv_path_type_url_file' => 'Für vollständige URL der Mediendatei benutze die lokale Suche',
+	'mv_path_type_url_file' => 'vollständige URL der Mediendatei über lokale Suche herausfinden',
 	'mv_path_type_mp4_stream' => 'MP4 Stream-Server',
 	'mv_path_type_label' => 'Pfad-Typ',
 	'mv_base_offset_label' => 'Basisausgleich',
@@ -4548,12 +4548,21 @@ Saltar verso le vista del fluxo: $2',
  * @author Rex
  */
 $messages['id'] = array(
+	'rsd_results_next' => 'selanjutnya',
+	'rsd_results_prev' => 'sebelumnya',
+	'mv_upload' => 'Unggah',
+	'mv_remove_reason' => 'Alasan penghapusan:',
+	'mv_upload_file' => 'Muatkan berkas',
 	'mv_tool_search' => 'Cari',
+	'mv_play' => 'Mainkan',
+	'mv_history' => 'Versi',
 	'mv_remove' => 'hapus',
 	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
 	'mv_search_categories' => 'Kategori',
 	'mv_search_category' => 'Kategori',
 	'mv_search_and' => 'dan',
+	'mv_search_date_range' => 'Rentang tanggal',
+	'mv_date_range' => 'rentang tanggal',
 	'mv_category' => 'kategori',
 );
 
@@ -7418,8 +7427,10 @@ $messages['ru'] = array(
 	'download_clip' => 'Загрузить клип',
 	'download_text' => 'Загрузить текст (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML):',
 	'clip_linkback' => 'Страница источника клипа',
+	'mv_ogg-player-vlc-mozilla' => 'Плагин VLC',
 	'mv_ogg-player-videoElement' => 'Встроенная поддержка Ogg Video',
 	'mv_ogg-player-oggPlugin' => 'Общий плагин Ogg',
+	'mv_ogg-player-quicktime-mozilla' => 'Плагин Quicktime',
 	'mv_ogg-player-selected' => '(выбранное)',
 	'mv_generic_missing_plugin' => 'Ваш браузер не поддерживает воспроизведение типа: <b>$1</b><br />
 Посетите страницу <a href="http://metavid.org/wiki/Client_Playback">методов воспроизведения</a> для загрузки программы.<br />',
@@ -7525,6 +7536,8 @@ $messages['ru'] = array(
 	'mv_flash_low_quality' => 'Для веба — флеш-видео',
 	'mv_archive_org_mp4' => 'Archive.org MP4, включающий поток H.264',
 	'mv_archive_org_link' => 'Ссылки на Archive.org mpeg2 оригиналы',
+	'ao_file_flash_flv' => 'Archive.org - Flash-видео',
+	'ao_file_Ogg_Video' => 'Archive.org - Ogg-видео',
 	'mv_error_stream_missing' => '<span class="error">Ошибка. Нет видео-файла, связанного с этим потоком.</span><br />
 Пожалуйста, сообщите об этом [[{{MediaWiki:Grouppage-sysop}}|администратору сайта]].',
 	'mv_stream_added' => 'Вы добавили поток $1',

@@ -2407,9 +2407,20 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
  * @author Rex
  */
 $messages['id'] = array(
+	'deletequeue-delnom-otherreason' => 'Alasan lain',
+	'deletequeue-delnom-extra' => 'Informasi tambahan:',
+	'deletequeue-review-reason' => 'Komentar:',
+	'deletequeue-review-newextra' => 'Informasi tambahan:',
+	'deletequeue-vote-reason' => 'Komentar:',
 	'deletequeue-vote-submit' => 'Kirim',
+	'deletequeue-list-queue' => 'Antrian:',
 	'deletequeue-list-search' => 'Cari',
+	'deletequeue-list-header-page' => 'Halaman',
+	'deletequeue-list-header-queue' => 'Antrian',
+	'deletequeue-list-header-expiry' => 'Kadaluwarsa',
+	'deletequeue-case-page' => 'Halaman:',
 	'deletequeue-case-reason' => 'Alasan:',
+	'deletequeue-case-expiry' => 'Kadaluwarsa:',
 );
 
 /** Ido (Ido)
@@ -3991,10 +4002,10 @@ $messages['ru'] = array(
 	'deletequeue-action-queued' => 'Удаление',
 	'deletequeue-action' => 'Предложить удаление',
 	'deletequeue-action-title' => 'Предложить удаление "$1"',
-	'deletequeue-action-text' => "Эта вики имеет ряд процессов для удаления страниц:
-* Если вы считаете, что страница обязательно должна быть удалена, вы можете [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} предложить её к ''быстрому удалению''].
-* Если эта страница не обязательно должна быть быстроь удалена, но ''удаление, вероятно, будет бесспорным'', вы должны [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} предложить неспоренное удаление].
-* Если удаление этой страницы ''может быть оспорено'', вы должны [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} открыть обсуждение].",
+	'deletequeue-action-text' => "В этой вики действуют следующие способы удаления страниц:
+* Если вы уверены, что страница должна быть удалена, вы можете [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} предложить её к ''быстрому удалению''].
+* Если эта страница не подходит под быстрое удаление, но её ''удаление, вероятно, не будет оспорено'', вам следует [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} предложить неспоренное удаление].
+* Если удаление этой страницы ''может быть оспорено'', вам следует [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} открыть обсуждение].",
 	'deletequeue-action-text-queued' => 'Вы можете просмотреть следующие страницы для этого запроса удаления:
 * [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Просмотреть текущих сторонников и противников].
 * [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Поддержать или отклонить удаление этой страницы].',
@@ -4060,16 +4071,16 @@ $messages['ru'] = array(
 Пожалуйста, убедитесь, что ознакомились с этими возражениями перед удалением этой страницы.",
 	'deletequeue-reviewspeedy-tab' => 'Досмотр быстрого удаления',
 	'deletequeue-reviewspeedy-title' => 'Досмотр быстрого удаления номинации «$1»',
-	'deletequeue-reviewspeedy-text' => "Вы можете использовать эту форму для досмотра номинации «'''$1'''» к быстрому удалению.
+	'deletequeue-reviewspeedy-text' => "Вы можете использовать эту форму для досмотра номинации '''«$1»''' к быстрому удалению.
 Пожалуйста, проверьте, что эта страница может быть быстро удалена в соответствии с правилами.",
 	'deletequeue-reviewprod-tab' => 'Просмотр предлагаемых удалений',
 	'deletequeue-reviewprod-title' => 'Просмотр предлагаемого удаления «$1»',
-	'deletequeue-reviewprod-text' => "Вы можете использовать эту форму для досмотра неоспоренного предложения удаления «'''$1'''».",
+	'deletequeue-reviewprod-text' => "Вы можете использовать эту форму для досмотра неоспоренного предложения на удаление '''«$1»'''.",
 	'deletequeue-reviewdeletediscuss-tab' => 'Досмотр удаления',
 	'deletequeue-reviewdeletediscuss-title' => 'Досмотр обсуждения удаления для «$1»',
-	'deletequeue-reviewdeletediscuss-text' => "Вы можете использовать эту форму для досмотра обсуждения удаления «'''$1'''».
+	'deletequeue-reviewdeletediscuss-text' => "Вы можете использовать эту форму для досмотра обсуждения удаления '''«$1»'''.
 
-[{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Список] сторонников и противаников этого удаления доступен, и обсуждение может быть найдено на странице [[$2]].
+Доступен [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} список] сторонников и противников этого удаления. Обсуждение удаления можно найти на странице [[$2]].
 Пожалуйста, убедитесь, что вы принимаете решение согласно консенсусу в обсуждении.",
 	'deletequeue-review-success' => 'Вы успешно досмотрели удаление этой страницы',
 	'deletequeue-review-success-title' => 'Досмотр завершён',
@@ -4083,8 +4094,8 @@ $messages['ru'] = array(
 	'deletequeue-role-vote-object' => 'противники удаления',
 	'deletequeue-vote-tab' => 'Голос за удаление',
 	'deletequeue-vote-title' => 'Поддержать или отклонить удаление «$1»',
-	'deletequeue-vote-text' => "Вы можете использовать эту форму, чтобы поддержать или отклонить удаление «'''$1'''».
-Это действие переопределяет любые предыдущие поддержания/отклонения, которые вы высказывали об удалении этой страницы.
+	'deletequeue-vote-text' => "Вы можете использовать эту форму, чтобы поддержать или отклонить удаление '''«$1»'''.
+Это действие переопределяет любые предыдущие поддержания/возрожения, которые вы высказывали об удалении этой страницы.
 Вы можете [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} просмотреть] существующих сторонников и противников.
 Причина, указанная в номинации к удалению — ''$2''.",
 	'deletequeue-vote-legend' => 'Одобрение/Отказ удаления',
@@ -4098,8 +4109,8 @@ $messages['ru'] = array(
 	'deletequeue-vote-requeued' => 'Вы успешно отклонили удаление этой страницы.
 После вашего отклонения, эта страница перенесена в очередь $1.',
 	'deletequeue-showvotes' => 'Сторонники и противники удаления «$1»',
-	'deletequeue-showvotes-text' => "Ниже приведены сторонники и противники удаления страницы «'''$1'''».
-Вы можете [{{fullurl:{{FULLPAGENAME}}|action=delvote}} поддержать или отклонить] это удаление.",
+	'deletequeue-showvotes-text' => "Ниже приведены сторонники и противники удаления страницы '''«$1»'''.
+Вы можете [{{fullurl:{{FULLPAGENAME}}|action=delvote}} поддержать это удаление или возразить против него].",
 	'deletequeue-showvotes-restrict-endorse' => 'Просмотр только сторонников',
 	'deletequeue-showvotes-restrict-object' => 'Просмотр только противников',
 	'deletequeue-showvotes-restrict-none' => 'Просмотр всех сторонников и противников',

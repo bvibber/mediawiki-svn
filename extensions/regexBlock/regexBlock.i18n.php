@@ -1162,9 +1162,14 @@ Probabilemente non existe tal usator.',
  * @author Rex
  */
 $messages['id'] = array(
+	'regexblock-already-blocked' => '$1 telah diblokir.',
+	'regexblock-expire-duration' => '1 jam,2 jam,4 jam,6 jam,1 hari,3 hari,1 minggu,2 minggu,1 bulan,3 bulan,6 bulan,1 tahun,selamanya',
 	'regexblock-form-reason' => 'Alasan:',
+	'regexblock-form-expiry' => 'Kadaluwarsa:',
+	'regexblock-form-match' => 'Pertandingan tepat',
 	'regexblock-view-all' => 'Semua',
 	'regexblock-view-go' => 'Tuju ke',
+	'regexblock-view-match' => '(pertandingan tepat)',
 );
 
 /** Ido (Ido)

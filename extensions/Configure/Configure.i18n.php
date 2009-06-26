@@ -906,6 +906,7 @@ $messages['bg'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Demicx
  */
 $messages['bs'] = array(
 	'configure' => 'Postavljanje wikija',
@@ -914,7 +915,7 @@ $messages['bs'] = array(
 	'configure-desc-key' => 'Ključ',
 	'configure-desc-ns' => 'Imenski prostor',
 	'configure-desc-val' => 'Vrijednost',
-	'configure-edit-core' => 'MedijaViki',
+	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Proširenja',
 	'configure-viewconfig-default-diff' => 'Promjene od pretpostavljenih postavki',
 	'configure-ext-ext-dependencies' => "'''Upozorenje:''' ovo proširenje zahtijeva da se {{PLURAL:$2|aktivira slijedeće proširenje|aktiviraju slijedeća proširenja}}: $1.",
@@ -3700,9 +3701,14 @@ Per favor crea lo o cambia lo pro poter usar iste extension.',
  */
 $messages['id'] = array(
 	'configure-desc-ns' => 'Ruang nama',
+	'configure-desc-val' => 'Nilai',
+	'configure-js-remove' => 'Hapus',
+	'configure-section-timezone' => 'Zona waktu',
 	'configure-section-namespaces' => 'Ruang nama',
 	'configure-section-category' => 'Kategori',
+	'configure-section-recentchanges' => 'Perubahan terbaru',
 	'configure-section-search' => 'Cari',
+	'configure-throttle-action-move' => 'Pindahkan',
 );
 
 /** Ido (Ido)
@@ -6444,6 +6450,7 @@ $messages['ru'] = array(
 	'configure-section-cache' => 'Кэш',
 	'configure-section-pcache' => 'Кэш парсера',
 	'configure-section-messagecache' => 'Кэш сообщений',
+	'configure-section-interwiki' => 'Интервики',
 	'configure-section-access' => 'Доступ',
 	'configure-section-groups' => 'Группы',
 	'configure-section-block' => 'Блокировки',

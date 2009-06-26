@@ -534,6 +534,7 @@ Pro facer isto, per favor obtene un clave API ab [http://www.flickr.com/services
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
@@ -546,7 +547,7 @@ Untuk melakukannya, Anda harus mendapatkan sebuah kunci API dari [http://www.fli
 	'importfreeimages_invalidurl' => 'URL "$1" bukanlah gambar Flickr yang valid.',
 	'importfreeimages_owner' => 'Pembuat',
 	'importfreeimages_importthis' => 'impor',
-	'importfreeimages_next' => 'Berikutnya $1',
+	'importfreeimages_next' => '$1 selanjutnya',
 	'importfreeimages_filefromflickr' => '$1 oleh pengguna <b>[$2]</b> dari flickr. URL asli',
 	'importfreeimages_promptuserforfilename' => 'Harap masukkan nama berkas tujuan:',
 	'importfreeimages_returntoform' => "Atau, klik <a href='$1'>di sini</a> untuk kembali ke hasil pencarian Anda",

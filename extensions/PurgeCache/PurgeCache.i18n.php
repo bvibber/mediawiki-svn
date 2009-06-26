@@ -282,7 +282,12 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'purgecache' => 'Purgasi kas',
+	'purgecache-desc' => '[[Special:PurgeCache|Halaman istimewa]] untuk menghapus tabel OBJECTCACHE',
+	'purgecache-warning' => 'Tindakan ini akan mempurgasi tabel kas.',
+	'purgecache-purged' => 'Kas telah dipurgasi.',
 	'purgecache-button' => 'purgasi',
+	'right-purgecache' => 'Hapus tabel OBJECTCACHE',
 );
 
 /** Italian (Italiano)

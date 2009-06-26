@@ -2381,6 +2381,7 @@ $wgGoogleMapsMessages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author IvanLanin
  * @author Rex
@@ -2420,7 +2421,7 @@ $wgGoogleMapsMessages['id'] = array(
 	'gm-selector-control' => 'Pemilih Peta/Satelit',
 	'gm-zoom-control' => 'Navigasi',
 	'gm-large' => 'Besar',
-	'gm-medium' => 'Sedang',
+	'gm-medium' => 'Menengah',
 	'gm-small' => 'Kecil',
 	'gm-no-zoom-control' => 'Tidak ada',
 	'gm-yes' => 'Ya',
@@ -2449,7 +2450,7 @@ $wgGoogleMapsMessages['id'] = array(
 	'gm-back' => 'kembali',
 	'gm-kml-include' => 'KML/GeoRSS eksternal:',
 	'gm-kml-include-link' => 'tambahkan ke peta',
-	'gm-kml-loading' => 'sedang mengambil…',
+	'gm-kml-loading' => 'memuat...',
 	'gm-kml-export' => 'Ekspor peta ini ke KML',
 	'gm-earth' => 'Bumi',
 	'gm-moon' => 'Bulan',

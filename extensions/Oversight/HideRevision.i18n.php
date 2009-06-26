@@ -1563,6 +1563,7 @@ Le divulgation de iste informationes pote resultar in le perdita permanente del 
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Borgx
  * @author Irwangatot
  * @author Meursault2004
@@ -1572,7 +1573,7 @@ $messages['id'] = array(
 	'hiderevision' => 'Sembunyikan revisi',
 	'hiderevision-desc' => 'Menyembunyikan revisi-revisi tertentu dari semua pengguna (termasuk Opsis) atas dasar alasan hukum, dan lain-lain.',
 	'group-oversight' => 'Pengawas suntingan',
-	'group-oversight-member' => 'Pengawas',
+	'group-oversight-member' => 'pengawas suntingan',
 	'grouppage-oversight' => '{{ns:project}}:Pengawas',
 	'right-oversight' => 'Melihat revisi yang telah disembunyikan',
 	'right-hiderevision' => 'Menyembunyikan revisi-revisi dari opsis',

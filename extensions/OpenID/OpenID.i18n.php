@@ -758,7 +758,7 @@ du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidchoosemanual' => 'Ein Name deiner Wahl:',
 	'openidchooseexisting' => 'Ein existierendes Benutzerkonto in diesem Wiki:',
 	'openidchoosepassword' => 'Passwort:',
-	'openidconvertinstructions' => 'Mit diesem Formular kannst du dein Benutzerkonto zur Benutzung einer OpenID-URL freigeben.',
+	'openidconvertinstructions' => 'Mit diesem Formular kannst du dein Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder weitere OpenID-URL hinzufügen',
 	'openidconvertsuccess' => 'Erfolgreich nach OpenID konvertiert',
 	'openidconvertsuccesstext' => 'Du hast die Konvertierung deiner OpenID nach $1 erfolgreich durchgeführt.',
 	'openidconvertyourstext' => 'Dies ist bereits deine OpenID.',
@@ -782,7 +782,7 @@ Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise hast 
 	'openidupdateuserinfo' => 'Persönliche Daten aktualisieren',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-Einstellungen',
 	'openid-pref-hide' => 'Verstecke deine OpenID auf deiner Benutzerseite, wenn du dich mit OpenID anmeldest.',
-	'openid-pref-update-userinfo-on-login' => 'Meine Daten anhand des OpenID-Kontos bei jeder Anmeldung aktualisieren',
+	'openid-pref-update-userinfo-on-login' => 'Nachfolgende Daten anhand des OpenID-Kontos bei jeder Anmeldung aktualisieren:',
 	'openidsigninorcreateaccount' => 'Anmelden oder ein neues Benutzerkonto erstellen',
 	'openid-provider-label-openid' => 'Gib deine OpenID-URL an',
 	'openid-provider-label-google' => 'Mit deinem Google-Benutzerkonto anmelden',
@@ -1852,6 +1852,7 @@ Il ha multe [http://openid.net/get/ providitores de OpenID], e tu pote ja dispon
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author IAlex
  * @author Rex
  */
@@ -1887,6 +1888,7 @@ Pesan kesalahan: "$1"',
 	'openidfullname' => 'Nama lengkap',
 	'openidemail' => 'Alamat surat-e',
 	'openidlanguage' => 'Bahasa',
+	'openidtimezone' => 'Zona waktu',
 	'openidnotavailable' => 'Nama panggilan yang Anda masukkan ($1) sudah digunakan oleh pengguna lain.',
 	'openidnotprovided' => 'Server OpenID Anda tidak menyediakan nama panggilan (entah karena server tersebut tidak bisa, atau Anda telah menspesifikasikan untuk tidak menyediakannya).',
 	'openidchooseinstructions' => 'Semua pengguna memerlukan sebuah nama panggilan;
@@ -1919,7 +1921,10 @@ Jika Anda telah memiliki akun di {{SITENAME}}, Anda dapat [[Special:UserLogin|ma
 Untuk menggunakan OpenID di masa yang akan datang, Anda dapat [[Special:OpenIDConvert|mengkonversi akun Anda menjadi OpenID]] setelah Anda masuk log seperti biasa.
 
 Ada banyak [http://openid.net/get penyedia OpenID], dan Anda mungkin telah memiliki akun OpenID di salah satu layanan situs lain.',
+	'openiddelete-button' => 'Konfirmasi',
 	'openid-pref-hide' => 'Sembunyikan URL OpenID Anda di halaman pengguna Anda, jika Anda masuk log dengan OpenID.',
+	'openid-urls-action' => 'Tindakan',
+	'openid-urls-delete' => 'Hapus',
 );
 
 /** Icelandic (Íslenska)

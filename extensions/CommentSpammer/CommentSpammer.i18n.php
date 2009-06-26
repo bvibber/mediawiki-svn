@@ -287,7 +287,7 @@ $messages['id'] = array(
 	'commentspammer-desc' => 'Menolak suntingan dari alamat yang dicurigasi sebagai spammer atau berada di daftar hitam DNS',
 	'commentspammer-log-msg' => 'suntingan dari [[Special:Contributions/$1|$1]] ke [[:$2]].',
 	'commentspammer-log-msg-info' => 'Terakhir dispam pada $1 {{PLURAL:$1|hari|hari}} yang lalu, tingkat ancaman adalah $2, dan kode serangan adalah $3.
-[http://www.projecthoneypot.org/search_ip.php?ip=$4 Lihat detil], atau [[Special:Blockip/$4|blok]].',
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Lihat rincian], atau [[Special:Blockip/$4|blok]].',
 	'cspammerlogpagetext' => 'Catatan suntingan yang telah diperbolehkan atau ditolak berdasarkan sumber alamat mereka dicurigai sebagai alamat spammer atau bukan.',
 	'cspammer-log-page' => 'Log spammer',
 );

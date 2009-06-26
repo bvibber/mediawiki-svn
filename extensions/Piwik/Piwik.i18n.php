@@ -96,9 +96,10 @@ $messages['bg'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Demicx
  */
 $messages['bs'] = array(
-	'piwik-desc' => 'Ubacuje Piwik skriptu na MedijaViki stranice za praćenje i dodavanje [[Special:Piwik|nekih statističkih podataka]]',
+	'piwik-desc' => 'Ubacuje Piwik skriptu na MediaWiki stranice za praćenje i dodavanje [[Special:Piwik|nekih statističkih podataka]]',
 	'piwik-lastvisits' => 'Zadnje posjete',
 	'piwik-countries' => 'Države',
 	'piwik-browsers' => 'Preglednici',

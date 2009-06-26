@@ -39,9 +39,10 @@ $messages['be-tarask'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Demicx
  */
 $messages['bs'] = array(
-	'navigationpopups-desc' => 'Učitava Lupinove navigacijske skripne popupove u MedijaViki',
+	'navigationpopups-desc' => 'Učitava Lupinove navigacijske skripne popupove u MediaWiki',
 );
 
 /** Catalan (Català)

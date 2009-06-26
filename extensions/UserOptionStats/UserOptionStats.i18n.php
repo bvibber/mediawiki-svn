@@ -195,6 +195,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'useroptionstats' => 'Statistik pilihan pengguna',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Halaman istimewa]] untuk melaporkan ke MediaWiki pemakaian pilihan pengguna',
 	'uos-warn' => 'PHPlot belum terpasang!',
 	'uos-choose' => 'Pilih salah satu dari pilihan pengguna berikut: $1',
 	'uos-unknown' => '*Baku',

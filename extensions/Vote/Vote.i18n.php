@@ -784,7 +784,7 @@ sphinx|Sphinx',
  * @author Rex
  */
 $messages['id'] = array(
-	'vote' => 'Pemilihan',
+	'vote' => 'Pilih',
 	'vote-desc' => 'Memberikan fungsi pemungutan suara sederhana',
 	'vote-header' => "Anda dapat memilih '''Penguasa Tertinggi Dunia''' di sini!",
 	'vote-current' => "Pilihan Anda saat ini adalah '''$1'''.",

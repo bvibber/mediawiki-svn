@@ -390,11 +390,20 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
+	'showprocesslist' => 'Tunjukkan daftar proses',
+	'showprocesslist-desc' => 'Menampilkan keluaran [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Pengguna',
+	'showprocesslist-host' => 'Host',
+	'showprocesslist-db' => 'Basis data',
+	'showprocesslist-command' => 'Perintah',
 	'showprocesslist-time' => 'Waktu',
+	'showprocesslist-state' => 'Keadaan',
+	'showprocesslist-info' => 'Info',
 );
 
 /** Italian (Italiano)

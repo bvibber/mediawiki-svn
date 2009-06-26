@@ -349,9 +349,12 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'contributiontracking-desc' => 'Pelacak kontribusi untuk penggalangan dana Wikimedia',
 	'contributiontracking' => 'Pelacakan kontribusi',
 	'contrib-tracking-error' => 'Galat',
 	'contrib-tracking-error-text' => 'Pengiriman formulir tidak sah',
+	'contrib-tracking-submitting' => 'Mengirimkan ke pemroses pembayaran...',
+	'contrib-tracking-continue' => 'Jika halaman ini tidak otomatis dialihkan, klik tombol ini untuk menyelesaikan sumbangan Anda lewat PayPal.',
 	'contrib-tracking-button' => 'Lanjutkan',
 );
 

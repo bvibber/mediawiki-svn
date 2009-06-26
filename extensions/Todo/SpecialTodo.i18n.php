@@ -778,9 +778,12 @@ $4',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  */
 $messages['id'] = array(
+	'todo-new-queue' => 'baru',
+	'todo-list-for' => 'Daftar tugas untuk %1',
 	'todo-list-cancel' => 'Batalkan',
 	'todo-form-details' => 'Rincian:',
 );

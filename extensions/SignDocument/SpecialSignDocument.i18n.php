@@ -1761,11 +1761,19 @@ $1',
  */
 $messages['id'] = array(
 	'sign-realname' => 'Nama:',
+	'sign-city' => 'Kota:',
 	'sign-country' => 'Negara:',
+	'sign-phone' => 'Nomor telepon:',
 	'sign-viewfield-realname' => 'Nama',
+	'sign-viewfield-city' => 'Kota',
 	'sign-viewfield-country' => 'Negara',
+	'sign-viewfield-ip' => 'Alamat IP',
 	'sign-viewfield-agent' => 'Aplikasi pengguna',
 	'sign-viewfield-options' => 'Pilihan',
+	'sig-private' => '<i>Pribadi</i>',
+	'sign-viewfield-reviewedby' => 'Peninjau',
+	'sign-viewfield-reviewcomment' => 'Komentar',
+	'sign-review-comment' => 'Komentar',
 );
 
 /** Ido (Ido)

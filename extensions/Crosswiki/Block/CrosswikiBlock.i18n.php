@@ -1014,12 +1014,19 @@ Retornar a:
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
 	'crosswikiblock-reason' => 'Alasan:',
+	'crosswikiblock-submit' => 'Blokir pengguna ini',
+	'crosswikiblock-anononly' => 'Hanya blokir pengguna anonim',
+	'crosswikiblock-nocreate' => 'Cegah pembuatan akun',
+	'crosswikiblock-autoblock' => 'Blokir alamat IP terakhir yang digunakan pengguna ini secara otomatis, dan semua alamat berikutnya yang mereka coba gunakan untuk menyunting.',
+	'crosswikiblock-noemail' => 'Cegah pengguna mengirimkan surel',
 	'crosswikiunblock-reason' => 'Alasan:',
 	'crosswikiblock-notoken' => 'Token penyuntingan tidak sah.',
+	'crosswikiblock-alreadyblocked' => 'Pengguna $1 telah diblokir.',
 );
 
 /** Ido (Ido)

@@ -397,6 +397,7 @@ Keluaran: $2
 $3',
 	'latexdoc_get_dvi' => 'Unduh DVI',
 	'latexdoc_get_pdf' => 'Unduh PDF',
+	'latexdoc-desc' => 'Penyuntingan kolaborasi dokumen LaTeX',
 );
 
 /** Japanese (日本語)

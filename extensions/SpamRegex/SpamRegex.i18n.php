@@ -674,6 +674,14 @@ Caution avisate: le expressiones non debe esser troppo curte o troppo commun.',
 	'right-spamregex' => 'Blocar phrases de spam per medio de [[Special:SpamRegex]]',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'spamregex-already-blocked' => '"$1" telah diblokir',
+	'spamregex-text' => '(Teks)',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

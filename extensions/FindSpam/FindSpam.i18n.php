@@ -484,6 +484,18 @@ $messages['km'] = array(
 	'findspam-notextfound' => 'ការរួមចំណែកមិនត្រូវបានរកមិនឃើញទេ',
 );
 
+/** Korean (한국어)
+ * @author Gapo
+ */
+$messages['ko'] = array(
+	'findspam' => '스팸 찾기',
+	'findspam-desc' => '최근에 추가된 스팸을 찾게 해주는 [[Special:FindSpam|특수문서]]를 추가',
+	'findspam-ip' => 'IP 주소:',
+	'findspam-ok' => '확인',
+	'findspam-notextfound' => '기여 없음',
+	'right-findspam' => '최근에 추가된 스팸 검색',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

@@ -1325,6 +1325,8 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'contrib-hist-name' => 'Nama',
+	'contrib-hist-date' => 'Waktu dan tanggal',
+	'fundraiserstats-date' => 'Tanggal',
 );
 
 /** Ido (Ido)

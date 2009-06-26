@@ -996,12 +996,16 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
+	'review_sidebar_title' => 'Tinjau',
 	'review_total_statistics' => 'Total',
+	'review_statistics_left_corner' => 'Revisi',
 	'review_user_details_link' => '(rincian)',
+	'review_comment' => 'Komentar',
 );
 
 /** Italian (Italiano)

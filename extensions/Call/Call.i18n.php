@@ -184,6 +184,7 @@ V případě problémů můžete zkusit <b>{{#special:call}}/DebuG</b>",
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'call' => 'Parameteraufruf',
@@ -191,17 +192,17 @@ $messages['de'] = array(
 Kann in der Eingabeaufforderung des Browser oder im Wiki-Text verwendet werden.',
 	'call-text' => "Die Parameteraufruf-Erweiterung erwartet eine Wiki-Seite und optionale Parameter für diese Seite als Argument.
 
-Beispiel 1: &nbsp; <tt>[[{{ns:special}}:Call/Meine Vorlage,parm1=wert1]]</tt><br />
-Beispiel 2: &nbsp; <tt>[[{{ns:special}}:Call/Diskussion:Meine Diskussion,parm1=wert1]]</tt><br />
-Beispiel 3: &nbsp; <tt>[[{{ns:special}}:Call/:My Page,parm1=wert1,parm2=wert2]]</tt><br />
-Beispiel 4 (URL im Browser): &nbsp; <tt>http://meinedomain/meinwiki/index.php?{{#special:call}}/:My Page,parm1=wert1</tt>
+Beispiel 1: &nbsp; <tt>[[{{#special:call}}/Meine Vorlage,parm1=wert1]]</tt><br />
+Beispiel 2: &nbsp; <tt>[[{{#special:call}}/Diskussion:Meine Diskussion,parm1=wert1]]</tt><br />
+Beispiel 3: &nbsp; <tt>[[{{#special:call}}/:Meine Seite,parm1=wert1,parm2=wert2]]</tt><br />
+Beispiel 4 (URL im Browser): &nbsp; <tt>http://meinedomain/meinwiki/index.php?{{#special:call}}/:Meine Seite,parm1=wert1</tt>
 
 Die <i>Parameteraufruf-Erweiterung</i> wird die angegebene Seite aufrufen und die Parameter übergeben.<br />
 Es werden der Inhalt und der Titel der aufgerufenen Seite angezeigt, aber der Seitentyp wird der einer Spezialseite sein, daher kann so eine Seite z.B. nicht bearbeitet werden.<br />Der angezeigte Inhalt kann unterschiedlich sein, abhängig von den übergebenen Parameterwerten.
 
 Die <i>Parameteraufruf-Erweiterung</i> ist praktisch, um interaktive Anwendungen mit MediaWiki zu erstellen.<br />
 Ein Beispiel hierfür ist die <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br />
-Für Probleme gibt es <b>{{ns:special}}:Call/DebuG</b>",
+Für Probleme gibt es <b>{{#special:call}}/DebuG</b>",
 	'call-save' => "Die Ausgabe dieses Aufrufs würde als Seite ''$1'' gespeichert werden.",
 	'call-save-success' => 'Der folgende Text wurde auf Seite <big>[[$1]]</big> gespeichert.',
 	'call-save-failed' => 'Der folgende Text wurde NICHT auf Seite <big>[[$1]]</big> gespeichert, weil diese Seite bereits existiert.',
@@ -876,12 +877,12 @@ Príklad 3: &nbsp; <tt>[[{{#special:call}}/:Moja stránka,parm1=value1,parm2=val
 Príklad 4 (URL prehliadača): &nbsp; <tt>http://mojadoména/mojawiki/index.php?{{#special:call}}/:Moja stránka,parm1=value1</tt><br /><br />
 
 <i>Rozšírenie Call</i> zavolá danú stránku a odovzdá jej parametre.<br />
-Uvidiíte obsah zavolanej stránky a jej názov, ale jej ''typ'' bude špeciálna stránka,<br />
+Uvidíte obsah zavolanej stránky a jej názov, ale jej ''typ'' bude špeciálna stránka,<br />
 t.j. takú stránku nie je možné upravovať.<br />
 Obsah, ktorý uvidíte sa môže líšiť v závislosti od parametrov, ktoré ste odovzdali.<br /><br />
 <i>Rozšírenie Call</i> je užitočné pri budovaní interaktívnych aplikácií pomocou MediaWiki.<br />
 Ako príklad si môžete pozrieť <a href='http://semeb.com/dpldemo/Template:Catlist'>GUI DPL</a> ..<br />
-V prípade problémov môžete skúsuť <b>{{#special:call}}/DebuG</b>",
+V prípade problémov môžete skúsiť <b>{{#special:call}}/DebuG</b>",
 	'call-save' => "Výstup tejto stránky by bol uložený na stránku s názvom ''$1''.",
 	'call-save-success' => 'Nasledovný text bol uložený na stránku <big>[[$1]]</big>.',
 	'call-save-failed' => "Nasledovný text NEBOL uložený na stránku ''$1'', pretože taká stránka už existuje.",

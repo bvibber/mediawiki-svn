@@ -760,6 +760,10 @@ Isto non pote esser facite un secunde vice.',
  * @author Bennylin
  */
 $messages['id'] = array(
+	'createsigndoc-pagename' => 'Halaman:',
+	'createsigndoc-phone' => 'Nomor telepon:',
+	'createsigndoc-hidden' => 'Tersembunyi',
+	'createsigndoc-optional' => 'Opsional',
 	'createsigndoc-create' => 'Buat',
 );
 

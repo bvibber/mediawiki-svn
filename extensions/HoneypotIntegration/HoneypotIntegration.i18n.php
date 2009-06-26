@@ -57,9 +57,10 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Demicx
  */
 $messages['bs'] = array(
-	'honeypot-desc' => 'Omogućuje intergraciju sa [http://projecthoneypot.org/ projektom Honey Pot] za MedijaViki sajtove',
+	'honeypot-desc' => 'Omogućuje intergraciju sa [http://projecthoneypot.org/ projektom Honey Pot] za MediaWiki stranice',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Broj nedavnih događaja koja je IP adresa pokrenula, u skladu s projektom Honey Pot',
 );
 

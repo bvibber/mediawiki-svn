@@ -1121,6 +1121,7 @@ Per favor verifica que tu blocator de pop-up lo permitte.',
  */
 $wgCustomToolbarMessages['id'] = array(
 	'ct_submit' => 'Kirim!',
+	'ct_user_user' => 'Pengguna',
 	'ct_user_sample' => 'Nama pengguna',
 );
 

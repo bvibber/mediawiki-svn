@@ -743,8 +743,12 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'recordadmin-submit' => 'Kirim',
+	'recordadmin-invert' => 'Balikkan pilihan',
 	'recordadmin-buttonsearch' => 'Cari',
 	'recordadmin-buttoncreate' => 'Buat',
+	'recordadmin-buttonreset' => 'Reset',
+	'recordadmin-editlink' => 'sunting',
+	'recordadmin-actions' => 'Tindakan',
 );
 
 /** Japanese (日本語)

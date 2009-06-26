@@ -1287,6 +1287,7 @@ Per favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author IvanLanin
  * @author Rex
  */
@@ -1300,7 +1301,7 @@ $messages['id'] = array(
 	'ogg-long-multiplexed' => '(Berkas audio/video multiplexed ogg, $1, panjang $2, $4×$5 piksel, $3 keseluruhan)',
 	'ogg-long-general' => '(Berkas media ogg, panjang $2, $3)',
 	'ogg-long-error' => '(Berkas ogg tak valid: $1)',
-	'ogg-play' => 'Putar',
+	'ogg-play' => 'Mainkan',
 	'ogg-pause' => 'Jeda',
 	'ogg-stop' => 'Berhenti',
 	'ogg-play-video' => 'Putar video',

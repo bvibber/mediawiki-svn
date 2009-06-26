@@ -502,9 +502,17 @@ $messages['fa'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|Luettelo tilaajista]] on saatavilla.',
+	'povwatch_subscriber_list_intro' => '<strong>Luettelo tilaajista</strong>',
 	'povwatch_unknown_subpage' => 'Tuntematon alasivu.',
+	'povwatch_comment' => 'Lokimerkintä',
+	'povwatch_no_log' => 'Lokitapahtumia ei ole.',
+	'povwatch_no_subscribers' => 'Tilaajia ei ole.',
+	'povwatch_unsubscribe' => 'Peruuta tilaus',
 	'povwatch_subscribe' => 'Tilaa',
 	'povwatch_added' => 'lisätty',
+	'right-povwatch_admin' => 'ylläpitää muiden käyttäjien tarkkailusivuille lisäämisen käyttöoikeuksia',
+	'right-povwatch_user' => 'lisätä sivuja muiden käyttäjien tarkkailulistoille',
 );
 
 /** French (Français)
@@ -840,10 +848,13 @@ Clicca le button infra pro inscriber te.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
 	'povwatch_title' => 'Judul:',
+	'povwatch_comment' => 'Komentar log:',
+	'povwatch_added' => 'telah ditambahkan',
 );
 
 /** Ido (Ido)

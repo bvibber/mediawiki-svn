@@ -355,6 +355,19 @@ Iste message es pro notificar te que, le $3, le usator $4 $5.',
 	'categorywatch-autocat' => 'Automaticamente observate per $1',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'categorywatch-desc' => 'Memperkaya fungsi pemantauan dengan menambahkan pemberitahuan tentang keanggotaan kategori yang dipantau yang berubah',
+	'categorywatch-emailsubject' => 'Aktivitas yang berhubungan dengan memantau kategori "$1"',
+	'categorywatch-catmovein' => '$1 telah dipindahkan ke $2 dari $3',
+	'categorywatch-catmoveout' => '$1 telah dipindahkan dari $2 ke $3',
+	'categorywatch-catadd' => '$1 telah ditambahkan ke $2',
+	'categorywatch-catsub' => '$1 telah disingkirkan dari $2',
+	'categorywatch-autocat' => 'Otomatis dipantau oleh $1',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Darth Kule

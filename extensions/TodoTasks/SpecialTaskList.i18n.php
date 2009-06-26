@@ -564,6 +564,7 @@ Le systema de notification de %s',
  */
 $messages['id'] = array(
 	'tasklistincorrectuser' => 'Nama pengguna salah',
+	'tasklistbyname' => '== Daftar tugas untuk %s ==',
 );
 
 /** Japanese (日本語)

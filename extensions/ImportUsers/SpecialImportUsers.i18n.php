@@ -749,10 +749,17 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
+	'importusers-uploadfile' => 'Muatkan berkas',
+	'importusers-form-button' => 'Impor',
 	'importusers-log-summary-all' => 'Semua',
+	'importusers-log-summary-added' => 'Telah ditambahkan',
+	'importusers-log-summary-updated' => 'Dimutakhirkan',
+	'importusers-password' => 'kata sandi',
+	'importusers-realname' => 'nama asli',
 );
 
 /** Icelandic (Íslenska)

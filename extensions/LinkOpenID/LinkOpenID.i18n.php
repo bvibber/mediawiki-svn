@@ -236,6 +236,7 @@ $messages['id'] = array(
 	'linkopenid-desc' => 'Mengijinkan pengguna untuk menautkan akun mereka dengan OpenID',
 	'linkopenid-prefstext-pre' => 'Jika Anda memiliki sebuah OpenID dari situs lain Anda dapat memasukkannya ke sini.
 Hal ini mengijinkan Anda untuk menggunakakn halaman pengguna Anda sebagai OpenID juga.',
+	'linkopenid-prefstext-openid' => 'OpenID Anda:',
 	'linkopenid-prefstext-v1url' => 'URL-Peladen untuk OpenID Versi 1.1:',
 	'linkopenid-prefstext-v2url' => 'URL-Peladen untuk OpenID Versi 2:',
 );

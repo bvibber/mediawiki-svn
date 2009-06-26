@@ -28,12 +28,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'adminlinks-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate link targets.',
 	'adminlinks_documentation' => 'The label for a link to documentation for a certain extension, whose name is passed in.',
+	'adminlinks_users' => '{{Identical/User}}',
 	'right-adminlinks' => '{{doc-right}}',
 );
 
@@ -271,6 +273,24 @@ $messages['hsb'] = array(
 	'right-adminlinks' => 'Hlej wotkaz k [[Special:AdminLinks|wotkazam za administratorow]]',
 );
 
+/** Hungarian (Magyar)
+ * @author Tgr
+ */
+$messages['hu'] = array(
+	'adminlinks' => 'Adminlinkek',
+	'adminlinks-desc' => 'Létrehoz egy [[Special:AdminLinks|speciális lapot]], ami az adminisztrátorok számára hasznos linkeket tartalmaz',
+	'adminlinks_documentation' => '$1 dokumentáció',
+	'adminlinks_general' => 'Általános',
+	'adminlinks_editsidebar' => 'Oldalsó menü szerkesztése',
+	'adminlinks_editcss' => 'CSS fájl szerkesztése',
+	'adminlinks_editmainpagename' => 'Főoldal nevének szerkesztése',
+	'adminlinks_users' => 'Felhasználók',
+	'adminlinks_createuser' => 'Felhasználó létrehozása',
+	'adminlinks_browsesearch' => 'Böngészés és keresés',
+	'adminlinks_importexport' => 'Importálás és exportálás',
+	'right-adminlinks' => 'látja az [[Special:AdminLinks|adminlinkeket]]',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -287,6 +307,24 @@ $messages['ia'] = array(
 	'adminlinks_browsesearch' => 'Navigation e recerca',
 	'adminlinks_importexport' => 'Importation e exportation',
 	'right-adminlinks' => 'Vider le ligamine verso [[Special:AdminLinks|Ligamines pro administratores]]',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'adminlinks' => 'Pranala admin',
+	'adminlinks-desc' => 'Menambahkan sebuah [[Special:AdminLinks|halaman istimewa]] yang berisi pranala-pranala yang berguna untuk admin',
+	'adminlinks_documentation' => 'Dokumentasi $1',
+	'adminlinks_general' => 'Umum',
+	'adminlinks_editsidebar' => 'Sunting kotak samping',
+	'adminlinks_editcss' => 'Sunting berkas CSS',
+	'adminlinks_editmainpagename' => 'Sunting nama halaman utama',
+	'adminlinks_users' => 'Pengguna',
+	'adminlinks_createuser' => 'Buat pengguna',
+	'adminlinks_browsesearch' => 'Menjelajah dan mencari',
+	'adminlinks_importexport' => 'Mengimpor dan ekspor',
+	'right-adminlinks' => 'Lihat pranala ke [[Special:AdminLinks|Pranala admin]]',
 );
 
 /** Italian (Italiano)

@@ -1113,6 +1113,13 @@ $1',
 	'webstore_no_handler' => 'Nulle gestor pro transformar iste typo de MIME',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'webstore_404' => 'Berkas tidak ditemukan.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

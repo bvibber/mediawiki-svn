@@ -327,7 +327,7 @@ $messages['hr'] = array(
 	'watchsubpages-addedtowatchlist' => 'Sljedeće je dodano na vaš popis praćenih stranica.',
 	'watchsubpages-addtitles' => 'Dodaj stranice',
 	'watchsubpages-addtitlestowatchlist' => 'Dodaj stranice na popis praćenja',
-	'watchsubpages-desc' => 'Brzo [[Special: WatchSubpages |dodaj sve podstranice]] stranice na popis praćenja',
+	'watchsubpages-desc' => 'Brzo [[Special:WatchSubpages|dodaj sve podstranice]] stranice na popis praćenja',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

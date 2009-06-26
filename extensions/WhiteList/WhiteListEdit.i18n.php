@@ -1449,10 +1449,15 @@ Iste pagina es solmente applicabile al usatores restringite",
  * @author Rex
  */
 $messages['id'] = array(
+	'mywhitelistpages' => 'Halaman saya',
 	'whitelisttablemodifyall' => 'Semua',
 	'whitelisttablemodifynone' => 'Tidak ada',
+	'whitelisttableexpires' => 'Kadaluwarsa pada',
+	'whitelisttableedit' => 'Sunting',
 	'whitelisttableremove' => 'Hapus',
 	'whitelistnewtableprocess' => 'Proses',
+	'whitelistnewtablereview' => 'Tinjau',
+	'whitelistnever' => 'tidak pernah',
 );
 
 /** Icelandic (Íslenska)

@@ -3015,10 +3015,22 @@ $4',
  * @author Bennylin
  */
 $messages['id'] = array(
+	'code-comments' => 'Komentar',
+	'code-field-id' => 'Revisi',
 	'code-field-author' => 'Pembuat',
+	'code-field-timestamp' => 'Tanggal',
+	'code-field-comments' => 'Catatan',
+	'code-field-path' => 'Jalan',
 	'code-rev-author' => 'Pembuat:',
+	'code-rev-date' => 'Tanggal:',
+	'code-rev-message' => 'Komentar:',
+	'code-rev-rev' => 'Revisi:',
+	'code-rev-comment-preview' => 'Pratayang',
+	'code-status-new' => 'baru',
 	'code-status-ok' => 'ok',
+	'code-pathsearch-path' => 'Jalan:',
 	'codereview-batch-submit' => 'Kirim',
+	'codereview-subtitle' => 'Untuk $1',
 	'repoadmin-new-button' => 'Buat',
 	'repoadmin-edit-button' => 'OK',
 );

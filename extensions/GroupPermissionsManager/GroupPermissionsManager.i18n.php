@@ -1273,7 +1273,11 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'grouppermissions-search' => 'Kelompok:',
+	'grouppermissions-dologin' => 'Masuk log',
 	'grouppermissions-dosearch' => 'Cari',
+	'grouppermissions-comment' => 'Komentar:',
+	'grouppermissions-never' => 'Tidak pernah',
 	'grouppermissions-sp-remove' => 'hapus',
 );
 

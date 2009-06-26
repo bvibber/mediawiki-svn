@@ -675,8 +675,11 @@ $messages['fi'] = array(
 	'extdist-choose-extension' => 'Valitse mitkä laajennukset haluat ladata:',
 	'extdist-submit-extension' => 'Jatka',
 	'extdist-current-version' => 'Kehitysversio (trunk)',
+	'extdist-no-versions' => 'Valitusta laajennuksesta ($1) ei ole saatavilla yhtään versiota!',
 	'extdist-submit-version' => 'Jatka',
 	'extdist-no-remote' => 'Subversion-asiakasohjelmaan ei saatu yhteyttä.',
+	'extdist-remote-error' => 'Virhe ulkoisesta subversion-asiakasohjelmasta: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Kelpaamaton vastaus ulkoiselta subversion-asiakasohjelmalta.',
 	'extdist-svn-error' => 'Subversion kohtasi virheen: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar-ohjelman suoritus päättyi paluuarvoon $1:',
 );
