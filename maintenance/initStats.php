@@ -16,8 +16,8 @@ class InitStats extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Re-initialise the site statistics tables";
-		$this->addParam( 'update', 'Update the existing statistics (preserves the ss_total_views field)' );
-		$this->addParam( 'noviews', "Don't update the page view counter" );
+		$this->addOption( 'update', 'Update the existing statistics (preserves the ss_total_views field)' );
+		$this->addOption( 'noviews', "Don't update the page view counter" );
 	}
 
 	public function execute() {

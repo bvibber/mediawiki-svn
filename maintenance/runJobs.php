@@ -17,9 +17,9 @@ class RunJobs extends Maintenance {
 		global $wgUseNormalUser;
 		parent::__construct();
 		$this->mDescription = "Run pending jobs";
-		$this->addParam( 'maxjobs', 'Maximum number of jobs to run', false, true );
-		$this->addParam( 'type', 'Type of job to run', false, true );
-		$this->addParam( 'procs', 'Number of processes to use', false, true );
+		$this->addOption( 'maxjobs', 'Maximum number of jobs to run', false, true );
+		$this->addOption( 'type', 'Type of job to run', false, true );
+		$this->addOption( 'procs', 'Number of processes to use', false, true );
 		$wgUseNormalUser = true;
 	}
 

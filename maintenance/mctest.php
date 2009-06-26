@@ -15,7 +15,7 @@ class mcTest extends Maintenance {
 		parent::__construct();
 		$this->mDescription = "Makes several 'set', 'incr' and 'get' requests on every"
 							  . " memcached server and shows a report";
-		$this->addParam( 'i', 'Number of iterations', false, true );
+		$this->addOption( 'i', 'Number of iterations', false, true );
 		$this->addArgs( array( 'server' ) );
 	}
 

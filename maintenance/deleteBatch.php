@@ -20,9 +20,9 @@ class DeleteBatch extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Deletes a batch of pages";
-		$this->addParam( 'u', "User to perform deletion", false, true );
-		$this->addParam( 'r', "Reason to delete page", false, true );
-		$this->addParam( 'i', "Interval to sleep between deletions" );
+		$this->addOption( 'u', "User to perform deletion", false, true );
+		$this->addOption( 'r', "Reason to delete page", false, true );
+		$this->addOption( 'i', "Interval to sleep between deletions" );
 		$this->addArgs( array( 'listfile' ) );
 	}
 	

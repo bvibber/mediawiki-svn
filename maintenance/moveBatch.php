@@ -24,9 +24,9 @@ class MoveBatch extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Moves a batch of pages";
-		$this->addParam( 'u', "User to perform move", false, true );
-		$this->addParam( 'r', "Reason to move page", false, true );
-		$this->addParam( 'i', "Interval to sleep between moves" );
+		$this->addOption( 'u', "User to perform move", false, true );
+		$this->addOption( 'r', "Reason to move page", false, true );
+		$this->addOption( 'i', "Interval to sleep between moves" );
 		$this->addArgs( array( 'listfile' ) );
 	}
 	

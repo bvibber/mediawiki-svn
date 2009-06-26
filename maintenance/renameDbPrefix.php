@@ -12,8 +12,8 @@ require_once( "Maintenance.php" );
 class RenameDbPrefix extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->addParam( "old", "Old db prefix [0 for none]", true, true );
-		$this->addParam( "new", "New db prefix [0 for none]", true, true );
+		$this->addOption( "old", "Old db prefix [0 for none]", true, true );
+		$this->addOption( "new", "New db prefix [0 for none]", true, true );
 	}
 	
 	public function execute() {

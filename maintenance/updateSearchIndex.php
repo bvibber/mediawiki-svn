@@ -19,10 +19,10 @@ class UpdateSearchIndex extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Script for periodic off-peak updating of the search index";
-		$this->addParam( 's', 'starting timestamp', false, true );
-		$this->addParam( 'e', 'Ending timestamp', false, true );
-		$this->addParam( 'p', 'File for saving/loading timestamps, searchUpdate.WIKI_ID.pos by default', false, true );
-		$this->addParam( 'l', 'How long the searchindex and revision tables will be locked for', false, true );
+		$this->addOption( 's', 'starting timestamp', false, true );
+		$this->addOption( 'e', 'Ending timestamp', false, true );
+		$this->addOption( 'p', 'File for saving/loading timestamps, searchUpdate.WIKI_ID.pos by default', false, true );
+		$this->addOption( 'l', 'How long the searchindex and revision tables will be locked for', false, true );
 	}
 
 	public function execute() {

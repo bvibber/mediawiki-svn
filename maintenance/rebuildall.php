@@ -8,35 +8,36 @@
  * @ingroup Maintenance
  */
 
-/** */
-require_once( "commandLine.inc" );
+require_once( "Maintenance.php" );
 
-#require_once( "rebuildlinks.inc" );
-require_once( "refreshLinks.inc" );
-require_once( "rebuildtextindex.inc" );
-require_once( "rebuildrecentchanges.inc" );
+class RebuildAll extends Maintenance {
+	public function __construct() {
+		parent::__construct();
+		$this->mDescription = "Rebuild links, text index and recent changes";
+	}
 
-$dbclass = 'Database' . ucfirst( $wgDBtype ) ;
-$database = new $dbclass( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname );
+	public function execute() {
+		global $wgDBtype;
+		// Rebuild the text index
+		if ( $wgDBtype == 'mysql' ) {
+			$this->output( "** Rebuilding fulltext search index (if you abort this will break searching; run this script again to fix):\n" );
+			$rebuildText = $this->spawnChild( 'RebuildTextIndex', 'rebuildtextindex.php' );
+			$rebuildText->execute();
+		}
 
-if ($wgDBtype == 'mysql') {
-	print "** Rebuilding fulltext search index (if you abort this will break searching; run this script again to fix):\n";
-	dropTextIndex( $database );
-	rebuildTextIndex( $database );
-	createTextIndex( $database );
+		// Rebuild RC
+		$this->output( "\n\n** Rebuilding recentchanges table:\n" );
+		$rebuildRC = $this->spawnChild( 'RebuildRecentchanges', 'rebuildrecentchanges.php' );
+		$rebuildRC->execute();
+
+		// Rebuild link tables
+		$this->output( "\n\n** Rebuilding links tables -- this can take a long time. It should be safe to abort via ctrl+C if you get bored.\n" );
+//		$rebuildLinks = $this->spawnChild( 'RefreshLinks', 'refreshLinks.php' );
+//		$rebuildLinks->execute();
+		
+		$this->output( "Done.\n" );
+	}
 }
 
-print "\n\n** Rebuilding recentchanges table:\n";
-rebuildRecentChangesTable();
-
-# Doesn't work anymore
-# rebuildLinkTables();
-
-# Use the slow incomplete one instead. It's designed to work in the background
-print "\n\n** Rebuilding links tables -- this can take a long time. It should be safe to abort via ctrl+C if you get bored.\n";
-refreshLinks( 1 );
-
-print "Done.\n";
-exit(0);
-
-
+$maintClass = "RebuildAll";
+require_once( DO_MAINTENANCE );

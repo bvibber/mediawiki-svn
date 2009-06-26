@@ -12,9 +12,9 @@ require_once( "Maintenance.php" );
 class UpdateSpecialPages extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->addParam( 'list', 'List special page names' );
-		$this->addParam( 'only', 'Only update "page". Ex: --only=BrokenRedirects', false, true );
-		$this->addParam( 'override', 'Also update pages that have updates disabled' );
+		$this->addOption( 'list', 'List special page names' );
+		$this->addOption( 'only', 'Only update "page". Ex: --only=BrokenRedirects', false, true );
+		$this->addOption( 'override', 'Also update pages that have updates disabled' );
 	}
 
 	public function execute() {

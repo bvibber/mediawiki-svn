@@ -11,7 +11,7 @@ require_once( "Maintenance.php" );
 class GetSlaveServer extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->addParam( "group", "Query group to check specifically" );
+		$this->addOption( "group", "Query group to check specifically" );
 		$this->mDescription = "Report the hostname of a slave server";
 	}
 	public function execute() {

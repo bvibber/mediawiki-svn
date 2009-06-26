@@ -17,7 +17,7 @@ class UpdateArticleCount extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Count of the number of articles and update the site statistics table";
-		$this->addParam( 'update', 'Update the site_stats table with the new count' );
+		$this->addOption( 'update', 'Update the site_stats table with the new count' );
 	}
 
 	public function execute() {

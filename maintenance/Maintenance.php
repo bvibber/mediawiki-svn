@@ -72,7 +72,7 @@ abstract class Maintenance {
 	 * @param $required boolean Is the param required?
 	 * @param $withArg Boolean Is an argument required with this option?
 	 */
-	protected function addParam( $name, $description, $required = false, $withArg = false ) {
+	protected function addOption( $name, $description, $required = false, $withArg = false ) {
 		$this->mParams[ $name ] = array( 'desc' => $description, 'require' => $required, 'withArg' => $withArg );
 	}
 	
@@ -204,13 +204,13 @@ abstract class Maintenance {
 	 * Add the default parameters to the scripts
 	 */
 	private function addDefaultParams() {
-		$this->addParam( 'help', "Display this help message" );
-		$this->addParam( 'quiet', "Whether to supress non-error output" );
-		$this->addParam( 'conf', "Location of LocalSettings.php, if not default", false, true );
-		$this->addParam( 'wiki', "For specifying the wiki ID", false, true );
+		$this->addOption( 'help', "Display this help message" );
+		$this->addOption( 'quiet', "Whether to supress non-error output" );
+		$this->addOption( 'conf', "Location of LocalSettings.php, if not default", false, true );
+		$this->addOption( 'wiki', "For specifying the wiki ID", false, true );
 		if( $this->getDbType() > 0 ) {
-			$this->addParam( 'dbuser', "The DB user to use for this script", false, true );
-			$this->addParam( 'dbpass', "The password to use for this script", false, true );
+			$this->addOption( 'dbuser', "The DB user to use for this script", false, true );
+			$this->addOption( 'dbpass', "The password to use for this script", false, true );
 		}
 	}
 

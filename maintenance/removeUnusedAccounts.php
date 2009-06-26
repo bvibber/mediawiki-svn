@@ -13,9 +13,9 @@ require_once( "Maintenance.php" );
 class RemoveUnusedAccounts extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->addParam( 'delete', 'Actually delete the account' );
-		$this->addParam( 'ignore-groups', 'List of comma-separated groups to exclude', false, true );
-		$this->addParam( 'ignore-touched', 'Skip accounts touched in last N days', false, true );
+		$this->addOption( 'delete', 'Actually delete the account' );
+		$this->addOption( 'ignore-groups', 'List of comma-separated groups to exclude', false, true );
+		$this->addOption( 'ignore-touched', 'Skip accounts touched in last N days', false, true );
 	}
 
 	public function execute() {

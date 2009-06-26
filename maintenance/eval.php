@@ -24,7 +24,7 @@ class EvalPrompt extends Maintenance {
 		parent::__construct();
 		$this->mDescription = "This script lets a command-line user start up the wiki engine and then poke\n" .
 								"about by issuing PHP commands directly.";
-		$this->addParam( 'd', "Enable MediaWiki debug output", false, true );
+		$this->addOption( 'd', "Enable MediaWiki debug output", false, true );
 	}
 	
 	public function execute() {

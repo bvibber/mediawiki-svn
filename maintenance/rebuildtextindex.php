@@ -34,7 +34,7 @@ class RebuildTextIndex extends Maintenance {
 		$wgTitle = Title::newFromText( "Rebuild text index script" );
 	
 		$this->dropTextIndex( $database );
-		$this->rebuildTextIndex( $database );
+		$this->doRebuildTextIndex( $database );
 		$this->createTextIndex( $database );
 	
 		$this->output( "Done.\n" );
@@ -57,7 +57,7 @@ class RebuildTextIndex extends Maintenance {
 		$database->query($sql, "createTextIndex" );
 	}
 	
-	private function rebuildTextIndex( &$database ) {
+	private function doRebuildTextIndex( &$database ) {
 		list ($page, $revision, $text, $searchindex) = $database->tableNamesN( 'page', 'revision', 'text', 'searchindex' );
 
 		$sql = "SELECT MAX(page_id) AS count FROM $page";

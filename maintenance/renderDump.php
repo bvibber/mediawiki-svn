@@ -38,7 +38,7 @@ class DumpRenderer extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Take page text out of an XML dump file and render basic HTML out to files";
-		$this->addParam( 'output-dir', 'The directory to output the HTML files to', true, true );
+		$this->addOption( 'output-dir', 'The directory to output the HTML files to', true, true );
 	}
 
 	public function execute() {

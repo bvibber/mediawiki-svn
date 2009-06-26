@@ -1,41 +1,53 @@
 <?php
-require( './commandLine.inc' );
+/**
+ * Do each user sequentially, since accounts can't be deleted
+ * @ingroup Maintenance
+ */
 
-// Do each user sequentially, since accounts can't be deleted
+require_once( "Maintenance.php" );
 
-print "Beginning batch conversion of user options.\n";
+class ConvertUserOptions extends Maintenance {
 
-$id = 0;
-$dbw = wfGetDB( DB_MASTER );
-$conversionCount = 0;
+	private $mConversionCount = 0;
 
-while ($id !== null) {
-	$idCond = 'user_id>'.$dbw->addQuotes( $id );
-	$optCond = "user_options!=".$dbw->addQuotes( '' ); // For compatibility
-	$res = $dbw->select( 'user', '*',
-			array( $optCond, $idCond ), __METHOD__,
-			array( 'LIMIT' => 50, 'FOR UPDATE' ) );
-	$id = convertOptionBatch( $res, $dbw );
-	$dbw->commit();
-	
-	wfWaitForSlaves( 1 );
-	
-	if ($id)
-		print "--Converted to ID $id\n";
-}
-print "Conversion done. Converted $conversionCount user records.\n";
-
-function convertOptionBatch( $res, $dbw ) {
-	$id = null;
-	while ($row = $dbw->fetchObject( $res ) ) {
-		global $conversionCount;
-		$conversionCount++;
-		
-		$u = User::newFromRow( $row );
-		
-		$u->saveSettings();
-		$id = $row->user_id;
+	public function __construct() {
+		parent::__construct();
+		$this->mDescription = "Convert user options from old to new system";
 	}
 	
-	return $id;
+	public function execute() {
+		$this->output( "Beginning batch conversion of user options.\n" );
+		$id = 0;
+		$dbw = wfGetDB( DB_MASTER );
+
+		while ($id !== null) {
+			$idCond = 'user_id>'.$dbw->addQuotes( $id );
+			$optCond = "user_options!=".$dbw->addQuotes( '' ); // For compatibility
+			$res = $dbw->select( 'user', '*',
+					array( $optCond, $idCond ), __METHOD__,
+					array( 'LIMIT' => 50, 'FOR UPDATE' ) );
+			$id = $this->convertOptionBatch( $res, $dbw );
+			$dbw->commit();
+	
+			wfWaitForSlaves( 1 );
+	
+			if ($id)
+				$this->output( "--Converted to ID $id\n" );
+		}
+		$this->output( "Conversion done. Converted " . $this->mConversionCount . " user records.\n" );
+	}
+
+	function convertOptionBatch( $res, $dbw ) {
+		$id = null;
+		while ($row = $dbw->fetchObject( $res ) ) {
+			$this->mConversionCount++;
+	
+			$u = User::newFromRow( $row );
+	
+			$u->saveSettings();
+			$id = $row->user_id;
+		}
+	
+		return $id;
+	}
 }

@@ -12,7 +12,7 @@ class nextJobDB extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Pick a database that has pending jobs";
-		$this->addParam( 'type', "The type of job to search for", false, true );
+		$this->addOption( 'type', "The type of job to search for", false, true );
 	}
 	public function execute() {
 		global $wgMemc;

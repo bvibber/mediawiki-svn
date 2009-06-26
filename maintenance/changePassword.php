@@ -15,8 +15,8 @@ require_once( "Maintenance.php" );
 class ChangePassword extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->addParam( "user", "The username to operate on", true, true );
-		$this->addParam( "password", "The password to use", true, true );
+		$this->addOption( "user", "The username to operate on", true, true );
+		$this->addOption( "password", "The password to use", true, true );
 		$this->mDescription = "Change a user's password";
 	}
 	

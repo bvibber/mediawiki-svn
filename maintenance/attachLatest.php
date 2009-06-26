@@ -31,7 +31,7 @@ class AttachLatest extends Maintenance {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->addParam( "fix", "Actually fix the entries, will dry run otherwise" );
+		$this->addOption( "fix", "Actually fix the entries, will dry run otherwise" );
 		$this->mDescription = "Fix page_latest entries in the page table";
 	}
 	

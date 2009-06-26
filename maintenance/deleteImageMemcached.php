@@ -15,8 +15,8 @@ class DeleteImageCache extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Delete image information from memcached";
-		$this->addParam( 'sleep', 'How many seconds to sleep between deletions', true, true );
-		$this->addParam( 'until', 'Timestamp to delete all entries prior to', true, true );
+		$this->addOption( 'sleep', 'How many seconds to sleep between deletions', true, true );
+		$this->addOption( 'until', 'Timestamp to delete all entries prior to', true, true );
 	}
 
 	public function execute() {

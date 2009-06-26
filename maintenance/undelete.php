@@ -12,8 +12,8 @@ class Undelete extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Undelete a page";
-		$this->addParam( 'u', 'The user to perform the undeletion', false, true );
-		$this->addParam( 'r', 'The reason to undelete', false, true );
+		$this->addOption( 'u', 'The user to perform the undeletion', false, true );
+		$this->addOption( 'r', 'The reason to undelete', false, true );
 		$this->addArgs( array( 'pagename' ) );
 	}
 

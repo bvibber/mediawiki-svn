@@ -7,6 +7,8 @@
  * we'll kinda fake it, and do the requires() inline. <3 PHP
  */
 
+error_reporting( E_ALL | E_STRICT );
+
 if( !isset( $maintClass ) || !class_exists( $maintClass ) ) {
 	echo "\$maintClass is not set or is set to a non-existent class.";
 	die();
@@ -21,6 +23,10 @@ $maintenance = new $maintClass();
 
 // Basic sanity checks and such
 $maintenance->setup();
+
+// We used to call this variable $self, but it was moved
+// to $maintenance->mSelf. Keep that here for b/c
+$self = $maintenance->getName();
 
 # Setup the profiler
 if ( file_exists( "$IP/StartProfiler.php" ) ) {

@@ -25,8 +25,8 @@ class NukeNS extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Remove pages with only 1 revision from any namespace";
-		$this->addParam( 'delete', "Actually delete the page" );
-		$this->addParam( 'ns', 'Namespace to delete from, default NS_MEDIAWIKI', false, true );
+		$this->addOption( 'delete', "Actually delete the page" );
+		$this->addOption( 'ns', 'Namespace to delete from, default NS_MEDIAWIKI', false, true );
 	}
 
 	public function execute() {
