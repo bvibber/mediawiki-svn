@@ -606,6 +606,7 @@ SemanticForms
 file = includes/SF_Settings.php
 settings[] = sfgMaxAutocompleteValues: int
 settings[] = sfgRenameEditTabs: bool
+settings[] = sfgRenameMainEditTab: bool
 settings[] = sfgListSeparator: text
 settings[] = sfgYUIBase: text
 settings[] = sfg24HourTime: bool
