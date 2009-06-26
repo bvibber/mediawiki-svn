@@ -14,7 +14,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 
-define( 'TREEANDMENU_VERSION','1.0.9, 2009-02-15' );
+define( 'TREEANDMENU_VERSION','1.1.0, 2009-06-26' );
 
 # Set any unset images to default titles
 if ( !isset( $wgTreeViewImages ) || !is_array( $wgTreeViewImages ) ) $wgTreeViewImages = array();
