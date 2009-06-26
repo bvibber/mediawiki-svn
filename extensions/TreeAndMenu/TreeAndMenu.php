@@ -43,6 +43,7 @@ class TreeAndMenu {
 	var $uniqname = 'tam';   # input name for uniqid
 	var $id       = '';      # id for specific tree
 	var $baseDir  = '';      # internal absolute path to treeview directory
+	var $baseRelDir = '';    # internal relative path to treeview directory
 	var $baseUrl  = '';      # external URL to treeview directory (relative to domain)
 	var $images   = '';      # internal JS to update dTree images
 	var $useLines = true;    # internal variable determining whether to render connector lines
@@ -63,6 +64,9 @@ class TreeAndMenu {
 		
 		# Update general tree paths and properties
 		$this->baseDir  = dirname( __FILE__ );
+		$this->baseRelDir = strstr( $this->baseDir, 'extensions');
+		$this->baseRelDir = str_replace( '\\', '/',$this->baseRelDir );
+		$this->baseRelDir = $wgScriptPath . '/' . $this->baseRelDir;
 		$this->baseUrl  = str_replace( '\\', '/', $this->baseDir );
 		$this->baseUrl  = preg_replace( '|^.+(?=/ext)|', $wgScriptPath, $this->baseDir );
 		$this->useLines = $wgTreeViewShowLines ? 'true' : 'false';
@@ -77,7 +81,7 @@ class TreeAndMenu {
 		}
 
 		# Add link to output to load dtree.js script
-		$wgOut->addScript( "<script type=\"$wgJsMimeType\" src=\"{$this->baseUrl}/dtree.js\"><!-- TreeAndMenu --></script>\n" );
+		$wgOut->addScript( "<script type=\"$wgJsMimeType\" src=\"{$this->baseRelDir}/dtree.js\"><!-- TreeAndMenu --></script>\n" );
 	}
 
 
@@ -229,7 +233,7 @@ class TreeAndMenu {
 								<script type=\"$wgJsMimeType\">/*<![CDATA[*/
 									// TreeAndMenu{$this->version}
 									tree = new dTree('$objid');
-									for (i in tree.icon) tree.icon[i] = '{$this->baseUrl}/'+tree.icon[i];{$this->images}
+									for (i in tree.icon) tree.icon[i] = '{$this->baseRelDir}/'+tree.icon[i];{$this->images}
 									tree.config.useLines = {$this->useLines};
 									$add
 									$objid = tree;
