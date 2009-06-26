@@ -103,6 +103,15 @@ $messages['gsw'] = array(
 	'editwarning-warning' => 'Wänn Du die Syte verlosch, no verliersch alli Bearbeitige, wu Du do dra gmacht hesch.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'editwarning' => 'אזהרת עריכה',
+	'editwarning-desc' => 'הצגת אזהרה כאשר משתמש מנסה לעזוב את טופס העריכה בלי לשמור',
+	'editwarning-warning' => 'עזיבת דף זה תגרום לך לאבד את כל השינויים שביצעת.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

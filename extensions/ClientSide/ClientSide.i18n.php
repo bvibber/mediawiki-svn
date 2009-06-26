@@ -17,3 +17,10 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'clientside-desc' => 'Short description of the extension. Shown in [[Special:Version]].',
 );
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'clientside-desc' => 'הוספת פונקציות ליצירת קוד בפורמטים הפועלים בצד הלקוח, כגון שפת HTML, שפת CSS ושפת JavaScript',
+);

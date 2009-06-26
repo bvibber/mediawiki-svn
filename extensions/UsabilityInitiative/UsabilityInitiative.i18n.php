@@ -65,6 +65,14 @@ $messages['gsw'] = array(
 	'usabilityinitiative-desc' => 'Features entwicklet dur d Wikipedia-Benutzerfrejndligkeits-Initiative go d Benutzerfrejndligkeit vu MediWiki verbessere',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'usabilityinitiative' => 'יוזמת השימושיות',
+	'usabilityinitiative-desc' => 'תכונות שפותחו על ידי יוזמת השימושית של ויקיפדיה, כדי לשפר את השימושיות של מדיה־ויקי',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

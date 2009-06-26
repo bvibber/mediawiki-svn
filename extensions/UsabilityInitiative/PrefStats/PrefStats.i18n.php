@@ -115,6 +115,17 @@ $messages['gsw'] = array(
 Druck uf eini go Statischtike iber si aaluege.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'prefstats' => 'סטטיסטיקת העדפות',
+	'prefstats-desc' => 'בדיקה כמה משתמשים הפעילו העדפה מסוימת',
+	'prefstats-title' => 'סטטיסטיקת העדפות',
+	'prefstats-list-intro' => 'כרגע, ההעדפות הבאות נמצאות במעקב.
+לחצו על אחת כדי לצפות בסטטיסטיקות אודותיה.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
