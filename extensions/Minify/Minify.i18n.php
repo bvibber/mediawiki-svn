@@ -12,7 +12,7 @@ $messages = array();
  * @author Robert Rohde
  */
 $messages['en'] = array(
-	'minify-desc' => 'Shrinks CSS and Javascript output from action=raw.',
+	'minify-desc' => 'Shrinks CSS and Javascript output from action=raw',
 );
 
 /** Message documentation (Message documentation)
