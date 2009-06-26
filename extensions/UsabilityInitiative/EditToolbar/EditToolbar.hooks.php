@@ -91,10 +91,9 @@ class EditToolbarHooks {
 				'edittoolbar-tool-superscript-example',
 				'edittoolbar-tool-subscript',
 				'edittoolbar-tool-subscript-example',
-				'edittoolbar-group-media',
+				'edittoolbar-group-insert',
 				'edittoolbar-tool-gallery',
 				'edittoolbar-tool-gallery-example',
-				'edittoolbar-group-whitespace',
 				'edittoolbar-tool-newline',
 				/* Special Characters Section */
 				'edittoolbar-section-characters',
