@@ -4,11 +4,11 @@
 form#editform {
 	margin: 0;
 	padding: 0;
-	padding-right: 2px;
+	margin-right: 5px;
 }
 body.rtl form#editform {
 	padding-right: 0;
-	padding-left: 2px;
+	margin-left: 5px;
 }
 textarea#wpTextbox1 {
 	border: solid silver 1px;
@@ -64,7 +64,7 @@ div#edittoolbar div.sections div.loading div.progress {
 }
 
 /* Toolbar Groups and Tabs */
-div#edittoolbar ul.tabs,
+div#edittoolbar div.tabs,
 div#edittoolbar div.group {
 	float: left;
 	height: 26px;
@@ -76,7 +76,7 @@ div#edittoolbar div.group {
 div#edittoolbar div.first {
 	border-left: none;
 }
-body.rtl div#edittoolbar ul.tabs,
+body.rtl div#edittoolbar div.tabs,
 body.rtl div#edittoolbar div.group {
 	float: right;
 	padding-left: 0;
@@ -89,19 +89,20 @@ body.rtl div#edittoolbar div.first {
 }
 
 /* Tabs */
-div#edittoolbar ul.tabs {
+div#edittoolbar div.tabs {
 	list-style: none;
 }
-div#edittoolbar ul.tabs li.tab {
+div#edittoolbar div.tabs span.tab {
 	display: inline-block;
 	float: left;
 	line-height: 26px;
 }
-body.rtl div#edittoolbar ul.tabs li.tab {
+/* IGNORED BY IE6 */
+body.rtl div#edittoolbar div.tabs > span.tab {
 	float: right;
 }
-div#edittoolbar ul.tabs li.tab a,
-div#edittoolbar ul.tabs li.tab a:visited {
+div#edittoolbar div.tabs span.tab a,
+div#edittoolbar div.tabs span.tab a:visited {
 	display: inline-block;
 	float: left;
 	padding-left: 18px;
@@ -113,24 +114,30 @@ div#edittoolbar ul.tabs li.tab a:visited {
 	background-position: left center;
 	background-repeat: no-repeat;
 }
-body.rtl div#edittoolbar ul.tabs li.tab a,
-body.rtl div#edittoolbar ul.tabs li.tab a:visited {
-	float: right;
+body.rtl div#edittoolbar div.tabs span.tab a,
+body.rtl div#edittoolbar div.tabs span.tab a:visited {
 	padding-left: 12px;
 	padding-right: 18px;
 	background-image: url(images/arrow-left.png);
 	background-position: right center;
 }
-div#edittoolbar ul.tabs li.tab a.current,
-div#edittoolbar ul.tabs li.tab a.current:visited {
+/* IGNORED BY IE6 */
+body.rtl div#edittoolbar div.tabs > span.tab > a,
+body.rtl div#edittoolbar div.tabs > pan.tab > a:visited {
+	float: right;
+}
+div#edittoolbar div.tabs span.tab a.current,
+div#edittoolbar div.tabs span.tab a.current:visited {
 	color: #333333;
 	background-image: url(images/arrow-down.png);
 }
-body.rtl div#edittoolbar ul.tabs li.tab a.current,
-body.rtl div#edittoolbar ul.tabs li.tab a.current:visited {
+/*
+body.rtl div#edittoolbar div.tabs span.tab a.current,
+body.rtl div#edittoolbar div.tabs span.tab a.current:visited {
 	background-image: url(images/arrow-down.png);
 }
-div#edittoolbar ul.tabs li.tab a.current:hover {
+*/
+div#edittoolbar div.tabs span.tab a.current:hover {
 	text-decoration: none;
 }
 
@@ -146,7 +153,8 @@ div#edittoolbar div.group div.label {
 	color: #777777;
 	cursor: default;
 }
-body.rtl div#edittoolbar div.group div.label {
+/* IGNORED BY IE6 */
+body.rtl div#edittoolbar div.group > div.label {
 	float: right;
 	margin-left: 8px;
 	margin-right: 5px;
@@ -159,7 +167,8 @@ div#edittoolbar div.group input.tool {
 	padding: 2px;
 	cursor: pointer;
 }
-body.rtl div#edittoolbar div.group input.tool {
+/* IGNORED BY IE6 */
+body.rtl div#edittoolbar div.group > input.tool {
 	float: right;
 }
 div#edittoolbar div.group select {
@@ -168,7 +177,8 @@ div#edittoolbar div.group select {
 	height: 22px;
 	cursor: pointer;
 }
-body.rtl div#edittoolbar div.group select {
+/* IGNORED BY IE6 */
+body.rtl div#edittoolbar div.group > select {
 	float: right;
 	font-size: 0.9em;
 }
@@ -256,7 +266,7 @@ div#edittoolbar-section-characters div.page div a {
 	color: black;
 	text-decoration: none;
 }
-body.rtl div#edittoolbar-section-characters div.page div a {
+body.rtl div#edittoolbar-section-characters div.page > div > a {
 	direction: rtl;
 	float: right;
 	margin-left: 0;

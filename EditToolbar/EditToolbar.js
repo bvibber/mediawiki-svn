@@ -21,7 +21,7 @@
 					$(this).addToolbarSection( tools.main, textbox, 'main' );
 				}
 				// Appends additional section tabs
-				var tabUl = $( '<ul />' )
+				var tabDiv = $( '<div />' )
 					.attr( 'class', 'tabs' )
 					.appendTo( $(this) );
 				// Appends additional section
@@ -29,7 +29,7 @@
 					.attr( 'class', 'sections' )
 					.appendTo( $(this) );
 				// Appends float-clearing div
-				$(this).append( $( '<div style="clear:both"></div>' ) );
+				$(this).append( $( '<div style="clear:both;"></div>' ) );
 				// Cookie name for storing section state
 				var sectionCookie = 'edittoolbar-' + $(this).attr( 'id' ) + '-section';
 				// Queue for sections to be built asynchonously
@@ -64,8 +64,8 @@
 						'textbox': textbox
 					};
 					// Appends section tab
-					tabUl.append(
-						$( '<li />' )
+					tabDiv.append(
+						$( '<span />' )
 							.attr( 'class', 'tab' )
 							.append(
 								$( '<a />' )
@@ -705,8 +705,8 @@ var editToolbarConfiguration = {
 					}
 				}
 			},
-			'media': {
-				labelMsg: 'edittoolbar-group-media',
+			'insert': {
+				labelMsg: 'edittoolbar-group-insert',
 				tools: {
 					'gallery': {
 						labelMsg: 'edittoolbar-tool-gallery',
@@ -720,12 +720,7 @@ var editToolbarConfiguration = {
 								post: "\n</gallery>"
 							}
 						}
-					}
-				}
-			},
-			'whitespace': {
-				labelMsg: 'edittoolbar-group-whitespace',
-				tools: {
+					},
 					'newline': {
 						labelMsg: 'edittoolbar-tool-newline',
 						type: 'button',
