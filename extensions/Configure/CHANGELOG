@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.14.7 - 26 June 2009
+  Updated Semantic Forms extension.
+
 0.14.6 - 18 June 2009
   Added support for PageCSS, PageNotice, PhpHighlight and PurgeCache extensions.
 
