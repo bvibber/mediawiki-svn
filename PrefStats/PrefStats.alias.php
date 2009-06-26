@@ -6,15 +6,20 @@
  * @ingroup Extensions
  */
 
- $aliases = array();
+$aliases = array();
 
- $aliases['en'] = array(
- 	'PrefStats' => array( 'PrefStats' ),
+$aliases['en'] = array(
+	'PrefStats' => array( 'PrefStats' ),
 );
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
 	'PrefStats' => array( 'إحصاءات التفضيلات' ),
+);
+
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'PrefStats' => array( 'סטטיסטיקת_העדפות' ),
 );
 
 /** Japanese (日本語) */

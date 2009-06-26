@@ -293,6 +293,38 @@ Mir wisste gärn, was Du iber di nej Benutzeroberflächi dänksch. Wäge däm de
 	'optin-survey-question-feedback' => 'Gib is bitte e Ruckmäldig:',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'optin' => 'הרשמה ליוזמת השימושיות',
+	'optin-desc' => 'אפשרות למשתמשים להירשם כדי לקבל את שיפורי השימושיות של יוזמת השימושיות',
+	'optin-title' => 'השיפורים של יוזמת השימושיות',
+	'optin-needlogin' => 'עליכם [$1 להיכנס לחשבון] כדי להירשם לקבלת שיפורי השימושיות של יוזמת השימושיות.',
+	'optin-intro' => 'יוזמת השימושיות של ויקיפדיה פיתחה עיצוב חדש וסרגל עריכה חדש כדי לשפר את השימושיות של ויקיפדיה. שיפורים אלה טרם הופעלו לכל המשתמשים, אבל באפשרותכם להירשם אליהם באמצעות לחיצה על הכפתור "{{int:optin-submit-in}}" שלהלן.',
+	'optin-success-in' => 'נרשמתם בהצלחה לקבלת שיפורי השימושיות של יוזמת השימושיות.
+באפשרותכם לבטל את הרשמתכם בכל זמן באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" שלהלן.',
+	'optin-success-out' => 'ביטלתם בהצלחה את הרשמתכם לקבלת שיפורי השימושיות של יוזמת השימושיות.
+באפשרותכם להירשם שוב בכל זמן באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" שלהלן.',
+	'optin-submit-in' => 'הרשמה',
+	'optin-submit-out' => 'ביטול הרשמה',
+	'optin-survey-intro' => 'תודה לכם על שאתם מנסים את שיפורי השימושיות של יוזמת השימושיות.
+באפשרותכם לבטל את הרשמתכם באמצעות לחיצה על הכפתור "{{int:optin-submit-out}}" בתחתית הדף.
+
+נרצה לדעת מה אתם חושבים על הממשק החדש, לכן נעריך זאת אם תמלאו את הסקר האופציונלי שלהלן לפני לחיצה על הכפתור "{{int:optin-submit-out}}".',
+	'optin-survey-question-whyoptout' => 'למה אתם מבטלים את הרשמתכם לממשק זה?',
+	'optin-survey-answer-whyoptout-didntlike' => 'הממשק לא מצא חן בעיני.',
+	'optin-survey-answer-whyoptout-hard' => 'היה קשה מדי לערוך דף.',
+	'optin-survey-answer-whyoptout-didntwork' => 'הוא לא פעל כפי שצריך.',
+	'optin-survey-answer-whyoptout-other' => 'סיבה אחרת:',
+	'optin-survey-question-browser' => 'באיזה דפדפן אתם משתמשים?',
+	'optin-survey-answer-browser-other' => 'דפדפן אחר:',
+	'optin-survey-question-os' => 'באיזו מערכת הפעלה אתם משתמשים?',
+	'optin-survey-answer-os-other' => 'אחרת:',
+	'optin-survey-question-res' => 'מהי רזולוציית המסך שלכם?',
+	'optin-survey-question-feedback' => 'אנא העבירו לנו משוב:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
