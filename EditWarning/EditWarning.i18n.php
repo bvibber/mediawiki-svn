@@ -62,6 +62,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author McDutchie
+ * @author XalD
  */
 $messages['es'] = array(
 	'editwarning' => 'Alerta de edición',
