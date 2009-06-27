@@ -467,7 +467,11 @@ public class ConceptImporter extends AbstractImporter {
 				} else {
 						out.debug("processing category redirect "+rcName+" -> "+link);
 						storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_REDIRECT );
-						storeConceptAlias(rcId, conceptId, name, -1, link.getPage().toString(), AliasScope.REDIRECT);
+						String tgtConcept = link.getPage().toString();
+						
+						if (!name.equals(tgtConcept)) {
+							storeConceptAlias(rcId, conceptId, name, -1, tgtConcept, AliasScope.REDIRECT);
+						}
 				}
 			} else {
 					out.info("skipped inter-namespace redirect "+rcName+" -> "+link);
