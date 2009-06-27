@@ -180,7 +180,7 @@ class SiteStats {
 	 * @param $update bool Whether to update the current stats write fresh
 	 * @param $noViews bool When true, do not update the number of page views
 	 */
-	function init( $update, $noViews = false ) {
+	public static function init( $update, $noViews = false ) {
 		$dbr = wfGetDB( DB_SLAVE );
 	
 		wfOut( "Counting total edits..." );

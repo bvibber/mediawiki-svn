@@ -32,8 +32,8 @@ class RebuildAll extends Maintenance {
 
 		// Rebuild link tables
 		$this->output( "\n\n** Rebuilding links tables -- this can take a long time. It should be safe to abort via ctrl+C if you get bored.\n" );
-//		$rebuildLinks = $this->spawnChild( 'RefreshLinks', 'refreshLinks.php' );
-//		$rebuildLinks->execute();
+		$rebuildLinks = $this->spawnChild( 'RefreshLinks', 'refreshLinks.php' );
+		$rebuildLinks->execute();
 		
 		$this->output( "Done.\n" );
 	}

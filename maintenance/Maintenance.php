@@ -18,9 +18,9 @@ abstract class Maintenance {
 	 * Constants for DB access type
 	 * @see Maintenance::getDbType()
 	 */
-	const NO_DB     = 0;
-	const NORMAL_DB = 1;
-	const ADMIN_DB  = 2;
+	const DB_NONE  = 0;
+	const DB_STD   = 1;
+	const DB_ADMIN = 2;
 
 	// This is the desired params
 	private $mParams = array();
@@ -47,8 +47,9 @@ abstract class Maintenance {
 	// Have we already loaded our user input?
 	private $inputLoaded = false;
 	
-	// Batch size
-	protected $mBatchSize = 100;
+	// Batch size. If a script supports this, they should set
+	// a default with setBatchSize()
+	protected $mBatchSize = null;
 
 	/**
 	 * Default constructor. Children should call this if implementing
@@ -124,7 +125,7 @@ abstract class Maintenance {
 	 * @return mixed
 	 */
 	protected function getArg( $argId = 0, $default = null ) {
-		return $this->hasArg($name) ? $this->mArgs[$name] : $default;
+		return $this->hasArg($argId) ? $this->mArgs[$argId] : $default;
 	}
 
 	/**
@@ -191,13 +192,13 @@ abstract class Maintenance {
 	 * scripts admin rights to the DB (when available). Sometimes, a script needs
 	 * normal access for a reason and sometimes they want no access. Subclasses 
 	 * should override and return one of the following values, as needed:
-	 *    Maintenance::NO_DB      -  For no DB access at all
-	 *    Maintenance::NORMAL_DB  -  For normal DB access
-	 *    Maintenance::ADMIN_DB   -  For admin DB access, default
+	 *    Maintenance::DB_NONE  -  For no DB access at all
+	 *    Maintenance::DB_STD   -  For normal DB access
+	 *    Maintenance::DB_ADMIN -  For admin DB access, default
 	 * @return int
 	 */
 	protected function getDbType() {
-		return Maintenance :: ADMIN_DB;
+		return Maintenance :: DB_ADMIN;
 	}
 
 	/**
@@ -208,9 +209,16 @@ abstract class Maintenance {
 		$this->addOption( 'quiet', "Whether to supress non-error output" );
 		$this->addOption( 'conf', "Location of LocalSettings.php, if not default", false, true );
 		$this->addOption( 'wiki', "For specifying the wiki ID", false, true );
+		$this->addOption( 'globals', "Output globals at the end of processing for debugging" );
+		// If we support a DB, show the options
 		if( $this->getDbType() > 0 ) {
 			$this->addOption( 'dbuser', "The DB user to use for this script", false, true );
 			$this->addOption( 'dbpass', "The password to use for this script", false, true );
+		}
+		// If we support $mBatchSize, show the option
+		if( $this->mBatchSize ) {
+			$this->addOption( 'batch-size', 'Run this many operations ' .
+				'per batch, default: ' . $this->mBatchSize , false, true );
 		}
 	}
 
@@ -504,7 +512,17 @@ abstract class Maintenance {
 	
 		$wgProfiling = false; // only for Profiler.php mode; avoids OOM errors
 	}
-	
+
+	/**
+	 * Potentially debug globals. Originally a feature only
+	 * for refreshLinks
+	 */
+	public function globals() {
+		if( $this->hasOption( 'globals' ) ) {
+			print_r( $GLOBALS );
+		}
+	}
+
 	/**
 	 * Do setup specific to WMF
 	 */

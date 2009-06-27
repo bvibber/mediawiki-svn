@@ -1,15 +1,15 @@
 <?php
 /**
- * Show statistics from memcached
+ * Show statistics from the cache
  * @ingroup Maintenance
  */
 
 require_once( "Maintenance.php" );
 
-class MemcachedStats extends Maintenance {
+class CacheStats extends Maintenance {
 
 	public function __construct() {
-		$this->mDescription = "Show statistics from memcached";
+		$this->mDescription = "Show statistics from the cache";
 	}
 
 	public function execute() {
@@ -23,7 +23,7 @@ class MemcachedStats extends Maintenance {
 		$noSession = intval($wgMemc->get(wfMemcKey('stats','request_without_session')));
 		$total = $session + $noSession;
 		if ( $total == 0 ) {
-			$this->error( "You either have no stats or memcached isn't running. Aborting.\n", true );
+			$this->error( "You either have no stats or the cache isn't running. Aborting.\n", true );
 		}
 		$this->output( "Requests\n" );
 		$this->output( sprintf( "with session:      %-10d %6.2f%%\n", $session, $session/$total*100 ) );
@@ -65,7 +65,7 @@ class MemcachedStats extends Maintenance {
 	}
 }
 
-$maintClass = "MemcachedStats";
+$maintClass = "CacheStats";
 require_once( DO_MAINTENANCE );
 
 

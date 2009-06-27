@@ -1,7 +1,7 @@
 <?php
 /**
  * This script is used to clear the interwiki links for ALL languages in
- * memcached.
+ * the cache.
  *
  * @ingroup Maintenance
  */

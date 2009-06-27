@@ -94,7 +94,7 @@ installations.
 	Immediately complete all jobs in the job queue
 
 	stats.php
-	Show all statistics stored in memcached
+	Show all statistics stored in the cache
 
 	undelete.php
 	Undelete all revisions of a page

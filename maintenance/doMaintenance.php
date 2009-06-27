@@ -57,10 +57,15 @@ if( file_exists( dirname(__FILE__).'/wikimedia-mode' ) ) {
 require_once( "$IP/includes/Setup.php" );
 require_once( "$IP/install-utils.inc" );
 
-$wgTitle = null; # Much much faster startup than creating a title object
+// Much much faster startup than creating a title object
+$wgTitle = null; 
 
+// Do the work
 try {
 	$maintenance->execute();
 } catch( MWException $mwe ) {
 	echo( $mwe->getText() );
 }
+
+// Potentially debug globals
+$maintenance->globals();

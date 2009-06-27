@@ -1,6 +1,6 @@
 <?php
 /**
- * This script remove all statistics tracking from memcached
+ * This script remove all statistics tracking from the cache
  * 
  * @file
  * @ingroup Maintenance
@@ -12,7 +12,7 @@ class clear_stats extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Remove all statistics tracking from memcached";
+		$this->mDescription = "Remove all statistics tracking from the cache";
 	}
 
 	public function execute() {

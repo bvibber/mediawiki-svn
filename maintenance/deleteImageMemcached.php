@@ -1,6 +1,6 @@
 <?php
 /**
- * This script delete image information from memcached.
+ * This script delete image information from the cache.
  *
  * Usage example:
  * php deleteImageMemcached.php --until "2005-09-05 00:00:00" --sleep 0
@@ -14,7 +14,7 @@ require_once( "Maintenance.php" );
 class DeleteImageCache extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Delete image information from memcached";
+		$this->mDescription = "Delete image information from the cache";
 		$this->addOption( 'sleep', 'How many seconds to sleep between deletions', true, true );
 		$this->addOption( 'until', 'Timestamp to delete all entries prior to', true, true );
 	}
