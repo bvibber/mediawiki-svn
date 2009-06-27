@@ -21,6 +21,10 @@ public class ImportProperties extends ImportDump<LocalConceptStoreBuilder> {
 		baseTasks = new String[] {"ImportProperties", "ImportConcepts", "BuildStatistics", "BuildConceptInfo", };
 	}
 
+	protected boolean getPurgeData() {
+		return super.getPurgeData() && !args.isSet("attach");
+	}
+	
 	@Override
 	protected void createStores(WikiWordStoreFactory<? extends LocalConceptStoreBuilder> factory) throws IOException, PersistenceException {
 		super.createStores(factory);

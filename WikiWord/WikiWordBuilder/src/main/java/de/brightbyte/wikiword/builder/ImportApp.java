@@ -215,6 +215,9 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 						p.println("### performing FRESH import!");
 					}
 				}
+				else if (operation==Operation.ATTACH) {
+					p.println("### previous run complete, performing ATTACHING import!");
+				}
 				else {
 					p.println("### the last run FINISHED: "+root.task);
 					operation = Operation.FRESH;
