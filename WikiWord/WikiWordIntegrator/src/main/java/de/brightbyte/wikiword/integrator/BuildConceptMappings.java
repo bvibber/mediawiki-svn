@@ -49,8 +49,8 @@ public class BuildConceptMappings extends AbstractIntegratorApp<AssociationFeatu
 		am.addMapping(AssociationFeature2ConceptMappingStoreBuilder.ASSOCIATION_WEIGHT, sourceDescriptor, "association-weight-field", Double.class, Functors.Double.sum);
 
 		if (!am.hasAccessor(AssociationFeature2ConceptMappingStoreBuilder.ASSOCIATION_WEIGHT) 
-				&& sourceDescriptor.getTweak("optimization-field", null)!=null) 
-			am.addMapping(AssociationFeature2ConceptMappingStoreBuilder.ASSOCIATION_WEIGHT, sourceDescriptor, "optimization-field", Double.class, Functors.Double.sum);
+				&& sourceDescriptor.getTweak("mapping-filter-field", null)!=null) 
+			am.addMapping(AssociationFeature2ConceptMappingStoreBuilder.ASSOCIATION_WEIGHT, sourceDescriptor, "mapping-filter-field", Double.class, Functors.Double.sum);
 		
 		return new AssociationFeature2ConceptMappingStoreBuilder.Factory<DatabaseConceptMappingStoreBuilder>(
 				mappingStoreFactory,
