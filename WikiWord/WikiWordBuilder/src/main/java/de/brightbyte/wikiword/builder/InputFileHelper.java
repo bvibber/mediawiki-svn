@@ -41,7 +41,7 @@ public class InputFileHelper {
 		else return m.group(1).toLowerCase();
 	}
 	
-	public URL getBaseURL(String n) {
+	public URL getURL(String n) {
 		if (n.equals("-")) n = new File(".").getAbsolutePath();
 		
 		try {
