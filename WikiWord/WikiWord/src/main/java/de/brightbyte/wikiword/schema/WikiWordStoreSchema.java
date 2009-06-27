@@ -121,6 +121,7 @@ public class WikiWordStoreSchema extends DatabaseSchema {
 		this.setLogLevel(tweaks.getTweak("dbstore.logLevel", LOG_INFO));
 		
 		this.dataset = dataset;
+		open();
 
 		logTable = DatabaseAgendaPersistor.makeTableSpec(this, "log");
 		addTable(logTable);
