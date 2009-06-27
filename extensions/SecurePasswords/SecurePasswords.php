@@ -239,37 +239,37 @@ function efSecurePasswordsValidate( $password, &$result, $user ) {
 	
 	// check password length
 	if( strlen( $password ) < $wgValidPasswords['minlength'] ) {
-		$result = false;
+		$result = 'securepasswords-valid';
 		return false;
 	}
 	
 	// check for a lowercase letter, if needed
 	if( $wgValidPasswords['lowercase'] && !preg_match( '/[a-z]/', $password ) ) {
-		$result = false;
+		$result = 'securepasswords-lowercase';
 		return false;
 	}
 	
 	// check for an uppercase letter, if needed
 	if( $wgValidPasswords['uppercase'] && !preg_match( '/[A-Z]/', $password ) ) {
-		$result = false;
+		$result = 'securepasswords-uppercase';
 		return false;
 	}
 	
 	// check for a digit, if needed
 	if( $wgValidPasswords['digit'] && !preg_match( '/[0-9]/', $password ) ) {
-		$result = false;
+		$result = 'securepasswords-digit';
 		return false;
 	}
 	
 	// check for a special character, if needed
 	if( $wgValidPasswords['special'] && !preg_match( '/[' . $wgSecurePasswordsSpecialChars . ']/', $password ) ) {
-		$result = false;
+		$result = 'securepasswords-special';
 		return false;
 	}
 	
 	// check for the username, if needed
 	if( $wgValidPasswords['usercheck'] && $wgContLang->lc( $password ) == $wgContLang->lc( $user->getName() ) ) {
-		$result = false;
+		$result = 'securepasswords-username';
 		return false;
 	}
 	
@@ -278,7 +278,7 @@ function efSecurePasswordsValidate( $password, &$result, $user ) {
 		$link = pspell_new( $lang );
 		if( $link ) {
 			if( pspell_check( $link, $password ) ) {
-				$result = false;
+				$result = 'securepasswords-word';
 				return false;
 			}
 		}
@@ -286,7 +286,7 @@ function efSecurePasswordsValidate( $password, &$result, $user ) {
 			$link = pspell_new( 'en' );
 			if( $link ) {
 				if( pspell_check( $link, $password ) ) {
-					$result = false;
+					$result = 'securepasswords-word';
 					return false;
 				}
 			}
