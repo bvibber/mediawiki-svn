@@ -758,7 +758,7 @@ du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidchoosemanual' => 'Ein Name deiner Wahl:',
 	'openidchooseexisting' => 'Ein existierendes Benutzerkonto in diesem Wiki:',
 	'openidchoosepassword' => 'Passwort:',
-	'openidconvertinstructions' => 'Mit diesem Formular kannst du dein Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder weitere OpenID-URL hinzufügen',
+	'openidconvertinstructions' => 'Mit diesem Formular kannst du dein Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen',
 	'openidconvertsuccess' => 'Erfolgreich nach OpenID konvertiert',
 	'openidconvertsuccesstext' => 'Du hast die Konvertierung deiner OpenID nach $1 erfolgreich durchgeführt.',
 	'openidconvertyourstext' => 'Dies ist bereits deine OpenID.',
@@ -978,6 +978,7 @@ Se ne, klaku la butonon "Continue" (Daŭri).',
  * @author Drini
  * @author IAlex
  * @author Imre
+ * @author McDutchie
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -1021,7 +1022,7 @@ puedes escoger uno de las opciones debajo.',
 	'openidchoosemanual' => 'Un nombre de su preferencia:',
 	'openidchooseexisting' => 'Una cuenta existente en este wiki:',
 	'openidchoosepassword' => 'contraseña:',
-	'openidconvertinstructions' => 'Este formulario permite cambiar tu cuenta de usuario para que use una URL de OpenID.',
+	'openidconvertinstructions' => 'Este formulario te permite cambiar tu cuenta de usuario para usar una URL de OpenID o agregar más URLs de OpenID.',
 	'openidconvertsuccess' => 'Convertido exitosamente a OpenID',
 	'openidconvertsuccesstext' => 'Usted ha convertido exitosamente su OpenID a $1.',
 	'openidconvertyourstext' => 'Esto ya es su OpenID.',
@@ -1045,7 +1046,7 @@ Hay muchos [http://openid.net/get proveedores de OpenID] y quizás ya dispongas 
 	'openidupdateuserinfo' => 'Actualizar mi información personal',
 	'openid-prefstext' => 'Preferencias de [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ocultar su OpenID en su página de usuario, si usted ingresa con OpenID.',
-	'openid-pref-update-userinfo-on-login' => 'Actualizar mi información desde mi perfil OpenID cada vez que ingreso.',
+	'openid-pref-update-userinfo-on-login' => 'Actualizar la siguiente información desde mi perfil OpenID cada vez que ingreso:',
 	'openidsigninorcreateaccount' => 'Ingresar o Crear una nueva cuenta',
 	'openid-provider-label-openid' => 'Ingresar tu URL OpenID',
 	'openid-provider-label-google' => 'Iniciar sesión usando tu cuenta Google',
@@ -1807,6 +1808,7 @@ Per favor contacta un [[Special:ListUsers/sysop|administrator]].',
 	'openidfullname' => 'Nomine integre',
 	'openidemail' => 'Adresse de e-mail',
 	'openidlanguage' => 'Lingua',
+	'openidtimezone' => 'Fuso horari',
 	'openidnotavailable' => 'Tu pseudonymo preferite ($1) ja es in uso per un altere usator.',
 	'openidnotprovided' => 'Tu servitor OpenID non forniva un pseudonymo (o proque illo non lo pote, o proque tu lo diceva de non facer lo).',
 	'openidchooseinstructions' => 'Tote le usatores require un pseudonymo;
@@ -1817,7 +1819,8 @@ tu pote seliger un del optiones in basso.',
 	'openidchoosemanual' => 'Un nomine de tu preferentia:',
 	'openidchooseexisting' => 'Un conto existente in iste wiki:',
 	'openidchoosepassword' => 'contrasigno:',
-	'openidconvertinstructions' => 'Iste formulario te permitte cambiar tu conto de usator pro usar un adresse URL de OpenID.',
+	'openidconvertinstructions' => 'Iste formulario te permitte cambiar tu conto de usator pro usar un URL de OpenID o adder altere URL de OpenID.',
+	'openidconvertoraddmoreids' => 'Converter in OpenID o adder un altere URL de OpenID',
 	'openidconvertsuccess' => 'Conversion a OpenID succedite',
 	'openidconvertsuccesstext' => 'Tu ha convertite con successo tu OpenID a $1.',
 	'openidconvertyourstext' => 'Isto es ja tu OpenID.',
@@ -1840,9 +1843,19 @@ Pro usar OpenID in le futuro, tu pote [[Special:OpenIDConvert|converter tu conto
 
 Il ha multe [http://openid.net/get/ providitores de OpenID], e tu pote ja disponer de un conto con capacitate OpenID in un altere servicio.',
 	'openidupdateuserinfo' => 'Actualisar mi informationes personal',
+	'openiddelete' => 'Deler OpenID',
+	'openiddelete-text' => 'Per cliccar le button "{{int:openiddelete-button}}", tu removera le OpenID $1 de tu conto.
+Tu non potera plus aperir un session con iste OpenID.',
+	'openiddelete-button' => 'Confirmar',
+	'openiddelete-sucess' => 'Le OpenID ha essite removite de tu conto con successo.',
+	'openiddelete-error' => 'Un error occurreva durante le remotion del OpenID de tu conto.',
 	'openid-prefstext' => 'Prreferentias de [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Celar tu OpenID in tu pagina de usator, si tu aperi un session con OpenID.',
-	'openid-pref-update-userinfo-on-login' => 'Actualisar mi informationes ab mi personage OpenID cata vice que io aperi un session',
+	'openid-pref-update-userinfo-on-login' => 'Actualisar le sequente informationes ab mi personage OpenID cata vice que io aperi un session:',
+	'openid-urls-desc' => 'OpenIDs associate con tu conto:',
+	'openid-urls-action' => 'Action',
+	'openid-urls-delete' => 'Deler',
+	'openid-add-url' => 'Adder un nove OpenID',
 	'openidsigninorcreateaccount' => 'Aperir session o crear nove conto',
 	'openid-provider-label-openid' => 'Entra le URL de tu OpenID',
 	'openid-provider-label-google' => 'Aperir session con tu conto de Google',
@@ -2138,6 +2151,13 @@ panjenengan bisa milih salah siji saka opsi ing ngisor iki.',
 	'openidchooseauto' => 'Jeneng ($1) sing digawé sacara otomatis',
 	'openidchoosemanual' => 'Jeneng miturut pilihan panjenengan:',
 	'openidchoosepassword' => 'tembung sandhi:',
+);
+
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'openidtimezone' => 'სასაათო სარტყელი',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -4210,10 +4230,15 @@ Nếu bạn đã có một tài khoản tại {{SITENAME}}, bạn có thể [[Sp
 Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp OpenID Công cộng], và có thể bạn đã có một tài khoản kích hoạt OpenID tại dịch vụ khác.',
 	'openidupdateuserinfo' => 'Cập nhật thông tin cá nhân của tôi',
 	'openiddelete' => 'Xóa OpenID',
+	'openiddelete-text' => 'Khi bấm nút “{{int:openiddelete-button}}”, bạn sẽ dời OpenID $1 khỏi tài khoản của bạn.
+Bạn sẽ không đăng nhập được dùng OpenID này.',
 	'openiddelete-button' => 'Xác nhận',
+	'openiddelete-sucess' => 'Đã dời OpenID thành công khỏi tài khoản của bạn.',
+	'openiddelete-error' => 'Đã gặp lỗi khi dời OpenID khỏi tài khoản của bạn.',
 	'openid-prefstext' => 'Tùy chỉnh [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ẩn OpenID của bạn khỏi trang thành viên, nếu bạn đăng nhập bằng ID Mở.',
 	'openid-pref-update-userinfo-on-login' => 'Cập nhật thông tin sau từ persona OpenID mỗi khi tôi đăng nhập:',
+	'openid-urls-desc' => 'Các OpenID được gắn vào tài khoản của bạn:',
 	'openid-urls-action' => 'Tác vụ',
 	'openid-urls-delete' => 'Xóa',
 	'openid-add-url' => 'Thêm OpenID mới',

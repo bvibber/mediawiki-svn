@@ -2274,6 +2274,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'ogg-desc' => 'Manuseador para ficheiros Ogg Theora e Vorbis, com reprodutor JavaScript',
@@ -2292,7 +2293,7 @@ $messages['pt'] = array(
 	'ogg-play-sound' => 'Reproduzir som',
 	'ogg-no-player' => 'Lamentamos, mas seu sistema aparenta não ter um player suportado. Por gentileza, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">faça o download de um player</a>.',
 	'ogg-no-xiphqt' => 'Aparentemente você não tem o componente XiphQT para QuickTime. Não será possível reproduzir ficheiros Ogg pelo QuickTime sem tal componente. Por gentileza, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">faça o download do XiphQT</a> ou escolha outro reprodutor.',
-	'ogg-player-videoElement' => 'Suporte interno do browser',
+	'ogg-player-videoElement' => 'Suporte nativo do navegador',
 	'ogg-player-oggPlugin' => 'Plugin do browser',
 	'ogg-player-thumbnail' => 'Apenas imagem estática',
 	'ogg-player-soundthumb' => 'Sem player',

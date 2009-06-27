@@ -502,6 +502,7 @@ $messages['fa'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'povwatch_invalid_title' => 'Annetun sivun nimi oli virheellinen',
 	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|Luettelo tilaajista]] on saatavilla.',
 	'povwatch_subscriber_list_intro' => '<strong>Luettelo tilaajista</strong>',
 	'povwatch_unknown_subpage' => 'Tuntematon alasivu.',

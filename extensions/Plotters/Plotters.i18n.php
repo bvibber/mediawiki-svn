@@ -310,8 +310,12 @@ Geef een tabelklassenaam op die korter is dan 255 karakters.',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
+ * @author Harald Khan
  */
 $messages['nn'] = array(
+	'plotters-desc' => 'Lèt brukarar nytta eigendefinerte JavaScript i jsplot-merke.',
+	'plotters-missing-script' => 'Inkje skript var definert.',
+	'plotters-missing-arguments' => 'Ingen argument spesifiserte.',
 	'plotters-no-data' => 'Ingen data var tilrettelagt.',
 );
 

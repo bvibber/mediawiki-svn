@@ -682,6 +682,7 @@ $messages['fi'] = array(
 	'extdist-remote-invalid-response' => 'Kelpaamaton vastaus ulkoiselta subversion-asiakasohjelmalta.',
 	'extdist-svn-error' => 'Subversion kohtasi virheen: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar-ohjelman suoritus päättyi paluuarvoon $1:',
+	'extdist-want-more' => 'Hae toinen laajennus',
 );
 
 /** French (Français)

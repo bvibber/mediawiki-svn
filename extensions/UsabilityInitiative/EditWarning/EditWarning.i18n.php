@@ -185,11 +185,21 @@ $messages['nl'] = array(
 	'editwarning-warning' => 'Als u deze pagina verlaat verliest u eventuele wijzigingen die u hebt gemaakt.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'editwarning' => 'Endringsåtvaring',
+	'editwarning-desc' => 'Vis ei åtvaring nå ein brukar freistar å navigera vekk frå eit endringsområde utan å lagra',
+	'editwarning-warning' => 'Gjennom å navigera vekk frå denne sida vil du mista alle endringane du måtte ha gjort.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'editwarning' => 'Rediger advarsel',
+	'editwarning' => 'Redigeringsadvarsel',
 	'editwarning-desc' => 'Vis en advarsel når en bruker prøver å forlate et redigeringsskjema uten å lagre',
 	'editwarning-warning' => 'Ved å forlate siden vil du miste alle endringer du har utført.',
 );
@@ -246,5 +256,14 @@ $messages['uk'] = array(
 	'editwarning' => 'Редакторне попередження',
 	'editwarning-desc' => 'Показує попередження, якщо користувач покидає форму редагування без збереження',
 	'editwarning-warning' => 'Перехід на іншу сторінку призведе до втрати ваших змін.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'editwarning' => 'Cảnh báo sửa đổi',
+	'editwarning-desc' => 'Hiện cảnh báo khi người dùng rời khỏi trang sửa đổi mà chưa lưu trang',
+	'editwarning-warning' => 'Tất cả các sửa đổi của bạn sẽ bị hủy nếu rời khỏi trang này.',
 );
 

@@ -526,6 +526,7 @@ $messages['lb'] = array(
 	'optin' => 'Benotzerfrëndlechkeets-Initiative matmaachen',
 	'optin-desc' => "Erlaabt et de Benotzer fir d'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative ze benotzen",
 	'optin-title' => "Verbesserungen duerch d'Benotzerfrëndlechkeets-Initiative",
+	'optin-needlogin' => "Dir musst Iech [$1 aloggen] fir d'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative notzen ze kënnen.",
 	'optin-submit-in' => 'Matmaachen',
 	'optin-submit-out' => 'Net méi matmaachen',
 	'optin-survey-question-whyoptout' => 'Firwat wëllt Dir dësen Interface net méi benotzen?',
@@ -837,5 +838,20 @@ $messages['uk'] = array(
 	'optin-survey-answer-os-other' => 'Інша:',
 	'optin-survey-question-res' => 'Яка роздільність вашого монітора?',
 	'optin-survey-question-feedback' => 'Будь ласка, висловіть своє судження:',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'optin-survey-answer-whyoptout-didntlike' => 'Tôi không thích thiết kế.',
+	'optin-survey-answer-whyoptout-hard' => 'Khó sửa đổi trang quá.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Nó bị trục trặc.',
+	'optin-survey-answer-whyoptout-other' => 'Lý do khác:',
+	'optin-survey-question-browser' => 'Bạn sử dụng trình duyệt nào?',
+	'optin-survey-answer-browser-other' => 'Trình duyệt khác:',
+	'optin-survey-question-os' => 'Bạn sử dụng hệ điều hành nào?',
+	'optin-survey-answer-os-other' => 'Khác:',
+	'optin-survey-question-res' => 'Màn hình của bạn có độ phân tích nào?',
 );
 

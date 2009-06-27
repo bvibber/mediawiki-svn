@@ -4147,6 +4147,13 @@ $messages['jv'] = array(
 	'right-configure-all' => 'Konfigurasi kabèh sètting wiki',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'configure-section-timezone' => 'სასაათო სარტყელი',
+);
+
 /** Kara-Kalpak (Qaraqalpaqsha)
  * @author Jiemurat
  */

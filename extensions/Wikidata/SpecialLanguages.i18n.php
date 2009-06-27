@@ -1820,6 +1820,7 @@ $wdMessages['ckb-arab'] = array(
 	'ow_uipref_datasets' => 'نمای بنەڕەت:',
 	'ow_none_selected' => 'هیچ هەڵنەبژێردراوە',
 	'ow_transaction_user' => 'ناوی بەکارهێنەر:',
+	'ow_transaction_previous_version' => 'وەشانی پێشوو',
 );
 
 /** Czech (Česky)

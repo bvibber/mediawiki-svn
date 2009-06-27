@@ -53,11 +53,25 @@ $messages['hsb'] = array(
 	'clientside-desc' => 'Skići funkcije za płodźenje koda w klientowych formatach kaž HTML, CSS a JavaScript',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'clientside-desc' => 'Provide functiones pro generar codice in formatos pro execution in le navigator, como HTML, CSS e JavaScript',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */
 $messages['id'] = array(
 	'clientside-desc' => 'Menyediakan fungsi untuk membuat kode seperti HTML, CSS dan JavaScript',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'clientside-desc' => 'HTMLやCSS、JavaScriptのようなクライアント側フォーマットのコードを生成する機能を提供します',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -86,5 +100,19 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'clientside-desc' => 'Poskytuje funkcie na tvorbu kódu v klientských formátoch ako HTML, CSS a JavaScript',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'clientside-desc' => 'HTML, CSS ve JavaScript gibi istemci-tarafındaki formatlarda kod oluşturmak için fonksiyonlar sağlar',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'clientside-desc' => 'Cung cấp các hàm để cho ra mã trong định dạng trình khác như là HTML, CSS, và JavaScript',
 );
 

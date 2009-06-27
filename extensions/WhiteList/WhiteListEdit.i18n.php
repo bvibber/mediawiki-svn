@@ -3052,13 +3052,23 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'whitelist' => 'Trang trong danh sách trắng',
+	'mywhitelistpages' => 'Trang cá nhân',
+	'whitelisttablemodify' => 'Sửa đổi',
 	'whitelisttablemodifyall' => 'Tất cả',
 	'whitelisttablemodifynone' => 'Không có',
+	'whitelisttablepage' => 'Trang wiki',
+	'whitelisttabletype' => 'Kiểu truy cập',
+	'whitelisttableexpires' => 'Hết hạn vào',
+	'whitelisttablemodby' => 'Sửa đổi lần cuối bởi',
+	'whitelisttablemodon' => 'Sửa đổi lần cuối vào',
 	'whitelisttableedit' => 'Sửa',
+	'whitelisttableview' => 'Xem',
 	'whitelisttablenewdate' => 'Ngày tháng mới:',
 	'whitelisttablechangedate' => 'Thay đổi ngày hạn',
 	'whitelisttableremove' => 'Dời',
 	'whitelistnewtabledate' => 'Ngày hạn:',
+	'whitelistnewtablereview' => 'Duyệt',
 	'whitelistoverviewna' => "* Thêm [[:$1|$1]] vào danh sách trắng với quyền truy cập '''$2''' và ngày hạn '''$3'''",
 	'whitelistnever' => 'không bao giờ',
 );

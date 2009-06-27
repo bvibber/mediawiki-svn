@@ -136,6 +136,17 @@ $messages['hsb'] = array(
 	'prefstats-list-intro' => 'Tuchwilu so slědowace nastajenja sćěhuja. Klikń na jedne z nich, zo by sej statistiku wo nim wobhladał.',
 );
 
+/** Hungarian (Magyar)
+ * @author Tgr
+ */
+$messages['hu'] = array(
+	'prefstats' => 'Beállítás-statisztikák',
+	'prefstats-desc' => 'Statisztikák készítése arról, hány felhasználó kapcsolt be bizonyos beállításokat',
+	'prefstats-title' => 'Beállítás-statisztikák',
+	'prefstats-list-intro' => 'Jelenleg az alábbi beállításokról készül statisztika.
+Kattints rá valamelyikre a róla gyűjtött adatok megtekintéséhez.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -213,6 +224,17 @@ $messages['nl'] = array(
 Klik op een voorkeur om de statistieken te bekijken.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'prefstats' => 'Statistikk over innstillingar',
+	'prefstats-desc' => 'Statistikk over talet på brukarar som har visse innstillingar',
+	'prefstats-title' => 'Statistikk over innstillingar',
+	'prefstats-list-intro' => 'For tida vert dei fylgjande innstillingane spora.
+Trykk på éi for å sjå statistikk for ho.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -286,5 +308,16 @@ $messages['uk'] = array(
 	'prefstats-title' => 'Статистика налаштувань',
 	'prefstats-list-intro' => 'Зараз відстежуються такі налаштування.
 Натисніть на якомусь, щоб побачити його статистику.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'prefstats' => 'Thống kê tùy chọn',
+	'prefstats-desc' => 'Theo dõi số người dùng đã bật lên những tùy chọn',
+	'prefstats-title' => 'Thống kê tùy chọn',
+	'prefstats-list-intro' => 'Hiện đang theo dõi các tùy chọn sau.
+Hãy nhấn vào một tùy chọn để xem thống kê về nó.',
 );
 

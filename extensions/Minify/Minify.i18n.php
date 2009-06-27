@@ -51,11 +51,25 @@ $messages['hsb'] = array(
 	'minify-desc' => 'Pomjeńšuje wudaće CSS a JavaScript z action=raw',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'minify-desc' => 'Reduce le output CSS e JavaScript de action=raw',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */
 $messages['id'] = array(
 	'minify-desc' => 'Mengecilkan keluaran CSS dan JavaScript dari action=raw',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'minify-desc' => 'action=rawで作られるCSSとJavascriptの出力を圧縮する',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -84,5 +98,12 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'minify-desc' => 'Zmenší výstup CSS a JavaScript z action=raw',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'minify-desc' => 'Nén mã CSS và JavaScript được cho ra từ action=raw',
 );
 

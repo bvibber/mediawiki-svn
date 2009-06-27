@@ -614,6 +614,8 @@ $messages['ia'] = array(
 	'slippymap_code' => 'Codice Wiki pro iste vista del carta:',
 	'slippymap_button_code' => 'Obtener codice wiki',
 	'slippymap_resetview' => 'Reinitialisar vista',
+	'slippymap_invalidmode' => "Valor de 'mode' invalide: '$1'",
+	'slippymap_clicktoactivate' => 'Clicca pro activar le carta',
 );
 
 /** Italian (Italiano)
@@ -1233,6 +1235,8 @@ $messages['vi'] = array(
 	'slippymap_code' => 'Mã wiki để nhúng phần bản đồ này:',
 	'slippymap_button_code' => 'Xem mã wiki',
 	'slippymap_resetview' => 'Mặc định lại bản đồ',
+	'slippymap_invalidmode' => 'Giá trị “mode” không hợp lệ: “$1”',
+	'slippymap_clicktoactivate' => 'Nhấn để khởi động bản đồ',
 );
 
 /** Volapük (Volapük)

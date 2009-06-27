@@ -133,6 +133,7 @@ $messages['bar'] = array(
 	'countedits-resultheader' => 'Eagebnis fia $1',
 	'countedits-resulttext' => '$1 håd $2 {{PLURAL:$2|Beåaweitung|Beåaweitungen}}',
 	'countedits-mostactive' => 'De aktivstn Benutza',
+	'countedits-nocontribs' => "Im Projekt {{ns:project}} gibt's nu kane Beåawatungen.",
 );
 
 /** Bikol Central (Bikol Central)

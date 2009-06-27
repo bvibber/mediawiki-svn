@@ -168,6 +168,13 @@ $messages['ksh'] = array(
 	'right-getfamily' => 'En Wikki_Famillije_Dateij (<code lang="en">family file</code>) för dä <code lang="en">pywikipediabot</code> ußjävve',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'getfamily-desc' => 'E Familjefichier fir Pywikipediabot generéieren',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
