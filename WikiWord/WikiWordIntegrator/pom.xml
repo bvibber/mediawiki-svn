@@ -80,6 +80,12 @@
 		    <version>2.0b4</version>
         <scope>runtime</scope>
 		</dependency>
+		<dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-jdk14</artifactId>
+        <scope>test</scope>
+       <version>1.5.6</version>
+		</dependency>
     </dependencies>
     
   <build>
@@ -92,7 +98,7 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-      <plugin>
+      <!--<plugin>
 			  <groupId>maven-plugins</groupId>
 			  <artifactId>maven-docbook-plugin</artifactId>
 	  	  <configuration>
@@ -104,7 +110,7 @@
             <phase>doc</phase>
           </execution>
         </executions>
-      </plugin>
+      </plugin>-->
       <plugin>
 			  <artifactId>docbook-maven-plugin</artifactId>
     		<groupId>org.codehaus.mojo</groupId>
