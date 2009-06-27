@@ -1055,6 +1055,7 @@ $messages['he'] = array(
 	'edittoolbar-tool-superscript-example' => 'טקסט מוגבה',
 	'edittoolbar-tool-subscript' => 'הנמכה',
 	'edittoolbar-tool-subscript-example' => 'טקסט מונמך',
+	'edittoolbar-group-insert' => 'הוספה',
 	'edittoolbar-tool-gallery' => 'גלריית תמונות',
 	'edittoolbar-tool-gallery-example' => 'קובץ:דוגמה.jpg|כותרת 1
 קובץ:דוגמה.jpg|כותרת 2',
