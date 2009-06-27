@@ -22,8 +22,10 @@ import de.brightbyte.db.DatabaseAccess;
 import de.brightbyte.db.DatabaseDataSet;
 import de.brightbyte.db.DatabaseField;
 import de.brightbyte.db.DatabaseTable;
+import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.Inserter;
+import de.brightbyte.db.MySqlDialect;
 import de.brightbyte.db.ReferenceField;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
@@ -192,12 +194,17 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}	
 	
 	protected DataCursor<Pair<String, Integer>> getConceptIdCursor() throws PersistenceException {
+		final boolean binaryText = database.getHints().getHint(MySqlDialect.HINT_USE_BINARY_TEXT, false);
+		
 		String sql = "SELECT name, id from " + conceptTable.getSQLName();
-		ResultSet rs = executeQuery("getConceptIdCursor", sql);
+		ResultSet rs = executeBigQuery("getConceptIdCursor", sql);
 		
 		DatabaseDataSet.Factory<Pair<String, Integer>> f = new DatabaseDataSet.Factory<Pair<String, Integer>>() {
 			public Pair<String, Integer> newInstance(ResultSet row) throws Exception {
-				return new Pair<String, Integer>(row.getString(1), row.getInt(2));
+				Object n = binaryText ? row.getBytes(1) : row.getString(1);
+				String name = DatabaseUtil.asString(n, "UTF-8");
+				int id = DatabaseUtil.asInt(row.getObject(2));
+				return new Pair<String, Integer>(name, id);
 			}
 		};
 		

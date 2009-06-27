@@ -176,6 +176,14 @@ public class DatabaseWikiWordStore implements WikiWordStore {
 			throw new PersistenceException(e);
 		}
 	}
+	
+	protected ResultSet executeBigQuery(String name, String sql) throws PersistenceException {
+		try {
+			return database.executeBigQuery(name, sql);
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
 
 	/*
 	protected ResultSet executeBigQuery(String name, String sql) throws PersistenceException {
