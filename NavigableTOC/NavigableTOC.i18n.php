@@ -48,6 +48,14 @@ $messages['hsb'] = array(
 	'navigabletoc-desc' => 'Přidawa zapis wobsaha wobdźěłowanskemu formularej, kotaryž tekstowe polo kula, hdyž so na wotrězk kliknje.',
 );
 
+/** Hungarian (Magyar)
+ * @author Tgr
+ */
+$messages['hu'] = array(
+	'navigabletoc' => 'Navigálható tartalomjegyzék',
+	'navigabletoc-desc' => 'Egy tartalomjegyzéket ad a szerkesztési űrlaphoz, amivel a szerkesztőablakban az egyes szakaszok elejére lehet ugrani',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
