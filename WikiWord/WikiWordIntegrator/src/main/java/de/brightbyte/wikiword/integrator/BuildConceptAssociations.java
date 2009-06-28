@@ -91,8 +91,8 @@ public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationF
 		String associationValueField = sourceDescriptor.getTweak("association-value-field", terms ? "term_text" : "value");
 		
 		String fields = StringUtils.join(", ", getDefaultFields(dialect));
-		String sql = "SELECT " + fields + " FROM " + dialect.quoteName(getQualifiedTableName(table)) + " as F ";
-		sql += " JOIN " + dialect.quoteName(getQualifiedTableName(associationPropertyTable)) +" as P ";
+		String sql = "SELECT " + fields + " FROM " + dialect.quoteQualifiedName(getQualifiedTableName(table)) + " as F ";
+		sql += " JOIN " + dialect.quoteQualifiedName(getQualifiedTableName(associationPropertyTable)) +" as P ";
 		sql += " ON F."+ foreignValueField + " = P." +  associationValueField;
 		if (foreignProperty!=null && foreignPropertyField!=null) sql += " AND " + foreignPropertyField + " = " + dialect.quoteString(foreignProperty);
 		if (associationProperty!=null && associationPropertyField!=null) sql += " AND " + associationPropertyField + " = " + dialect.quoteString(associationProperty);

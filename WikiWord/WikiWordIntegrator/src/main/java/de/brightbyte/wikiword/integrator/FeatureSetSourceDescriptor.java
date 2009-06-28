@@ -63,7 +63,7 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 
 	
 	public void setBaseURL(URL baseURL) {
-		parameters.put(".baseURL", baseURL);
+		setTweak(".baseURL", baseURL);
 	}
 	
 	public URL getBaseURL() {
@@ -89,7 +89,7 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 	}
 	
 	public String getPropertyValueField() {
-		return getTweak("property-value-field", null);
+		return requireTweak("property-value-field");
 	}
 
 	public String getPropertyNameField() {
@@ -97,11 +97,11 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 	}
 
 	public String getPropertySubjectField() {
-		return getTweak("property-subject-field", null);
+		return requireTweak("property-subject-field");
 	}
 
 	public String getPropertySubjectNameField() {
-		return getTweak("property-subject-name-field", null);
+		return requireTweak("property-subject-name-field");
 	}
 
 	public boolean getSkipHeader() {

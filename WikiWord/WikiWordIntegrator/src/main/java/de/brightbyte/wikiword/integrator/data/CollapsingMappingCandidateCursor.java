@@ -11,15 +11,18 @@ public class CollapsingMappingCandidateCursor implements DataCursor<MappingCandi
 	protected DataCursor<Association> cursor;
 	protected Association prev;
 	
+	protected String foreignAuthorityField;
 	protected String foreignKeyField;
 	protected String conceptKeyField;
 	
-	public CollapsingMappingCandidateCursor(DataCursor<Association> cursor, String foreignKeyField, String conceptKeyField) {
+	public CollapsingMappingCandidateCursor(DataCursor<Association> cursor, String foreignAuthorityField, String foreignKeyField, String conceptKeyField) {
 		if (cursor==null) throw new NullPointerException();
+		if (foreignAuthorityField==null) throw new NullPointerException();
 		if (foreignKeyField==null) throw new NullPointerException();
 		if (conceptKeyField==null) throw new NullPointerException();
 		
 		this.cursor = cursor;
+		this.foreignAuthorityField = foreignAuthorityField;
 		this.foreignKeyField = foreignKeyField;
 		this.conceptKeyField = conceptKeyField;
 	}
@@ -42,6 +45,7 @@ public class CollapsingMappingCandidateCursor implements DataCursor<MappingCandi
 				prev = cursor.next();
 				if (prev==null) break;
 				
+				if (!prev.getSourceItem().overlaps(s, foreignAuthorityField)) break;
 				if (!prev.getSourceItem().overlaps(s, foreignKeyField)) break;
 				if (!prev.getTargetItem().overlaps(t, conceptKeyField)) break;
 				
@@ -51,6 +55,7 @@ public class CollapsingMappingCandidateCursor implements DataCursor<MappingCandi
 			candidates.add(t);
 			
 			if (prev==null || !prev.getSourceItem().overlaps(s, foreignKeyField)) break;
+			if (prev==null || !prev.getSourceItem().overlaps(s, foreignAuthorityField)) break;
 			
 			s = FeatureSets.merge(s, prev.getSourceItem());
 		}

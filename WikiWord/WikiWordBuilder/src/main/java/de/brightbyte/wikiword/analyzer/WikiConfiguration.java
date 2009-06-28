@@ -231,7 +231,7 @@ public class WikiConfiguration {
 	 * Categories may be considered aliases for their main article, because they represent
 	 * the same concept.
 	 */ 
-	public boolean useCategoryAliases; //use main articles as alias to resolve plural category names
+	public boolean useCategoryAliases = true; //use main articles as alias to resolve plural category names
 	
 	/**
 	 * Pattern matching the special sort keys used for placing "main articles" in "their" 
@@ -262,13 +262,13 @@ public class WikiConfiguration {
 	/**
 	 * Switch to enable or disable the use of title suffixes as categories.
 	 */ 
-	public boolean useSuffixAsCategory; 
+	public boolean useSuffixAsCategory = false; 
 
 	/** Flag indication wether extraction of plain prose text is supported for this wiki **/
-	public boolean flatTextSupported; 
+	public boolean flatTextSupported = true; 
 	
 	/** Flag indication wether extraction of definitions is supported for this wiki **/
-	public boolean definitionsSupported; 
+	public boolean definitionsSupported = true; 
 	
 	public TemplateExtractor.Factory templateExtractorFactory;
 

@@ -24,7 +24,8 @@ public class AssociationCursor implements DataCursor<Association> {
 	
 	public AssociationCursor(DataCursor<FeatureSet> source, Iterable<String> sourceFields, Iterable<String> targetFields, Iterable<String> propertyFields) {
 		if (source==null) throw new NullPointerException();
-		this.source = source;
+		this.source = source; 
+		//FIXME: use FeatureMappings or at least lists of accessors!
 		this.foreignFields = CollectionUtils.toCleanIterable(sourceFields, false, false);
 		this.conceptFields = CollectionUtils.toCleanIterable(targetFields, false, false);
 		this.propertyFields = CollectionUtils.toCleanIterable(propertyFields, false, false);

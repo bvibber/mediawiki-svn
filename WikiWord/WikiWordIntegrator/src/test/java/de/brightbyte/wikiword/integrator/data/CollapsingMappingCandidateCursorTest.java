@@ -19,15 +19,19 @@ public class CollapsingMappingCandidateCursorTest extends TestCase {
 
 	public void testNext() throws PersistenceException {
 		FeatureSet a = new DefaultFeatureSet("name");
+		a.put("authority", "ACME");
 		a.put("name", "A");
 
 		FeatureSet b = new DefaultFeatureSet("name");
+		b.put("authority", "ACME");
 		b.put("name", "B");
 		
 		FeatureSet x = new DefaultFeatureSet("name");
+		x.put("authority", "ACME");
 		x.put("name", "X");
 
 		FeatureSet y = new DefaultFeatureSet("name");
+		y.put("authority", "ACME");
 		y.put("name", "Y");
 		
 		FeatureSet p = new DefaultFeatureSet("foo");
@@ -50,7 +54,7 @@ public class CollapsingMappingCandidateCursorTest extends TestCase {
 		exp.add(new MappingCandidates(a, FeatureSets.merge(y, q)));
 
 		DataCursor<Association> sourceCursor = new IteratorCursor<Association>(source.iterator());
-		DataCursor<MappingCandidates> cursor = new CollapsingMappingCandidateCursor(sourceCursor, "name", "name");
+		DataCursor<MappingCandidates> cursor = new CollapsingMappingCandidateCursor(sourceCursor, "authority", "name", "name");
 		
 		assertEquals(exp, slurp(cursor));
 	}

@@ -170,6 +170,12 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 			
 		}
 		catch (Throwable ex) {
+			if (keepAlive) { //NOTE: if keepAlive is true, we are running as a slave. in that case, propagate any exceptions.
+				if (ex instanceof Exception) throw (Exception)ex;
+				else if (ex instanceof Error) throw (Error)ex;
+				else new  Error("unexpected exception in app scope", ex);
+			}
+			
 			error("uncaught throwable", ex);
 			closeStores(false);
 		}

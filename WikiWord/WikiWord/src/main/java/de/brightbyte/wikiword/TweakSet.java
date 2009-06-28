@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +21,7 @@ import de.brightbyte.util.SystemUtils;
  * to optimize utilization of the available hardware.
  */
 public class TweakSet {
-	protected Map<String, Object> parameters = new HashMap<String, Object>();
+	private Map<String, Object> parameters = new HashMap<String, Object>();
 	
 	private TweakSet parent;
 	private String prefix;
@@ -100,12 +101,33 @@ public class TweakSet {
 		setTweaks(tweaks.parameters);
 	}
 	
+	protected String normalizeKey(String key) {
+		key = key.trim();
+		key = key.replace(' ', '-');
+		key = key.replace('_', '-');
+		return key;
+	}
+	
 	public void setTweak(String key, Object value) {
+		key = normalizeKey(key);
+		
+		if (value!=null && value instanceof Object[]) {
+			value = Arrays.asList((Object[])value);
+		}
+		
 		parameters.put(key, value);
+	}
+
+	public <T>T requireTweak(String key) {
+		T v = getTweak(key, (T)null);
+		if (v==null) throw new IllegalArgumentException("option not defined: "+key);
+		return v;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public <T>T getTweak(String key, T def) {
+		key = normalizeKey(key);
+
 		if (!parameters.containsKey(key)) {
 			if (parent==null) return def;
 			else return parent.getTweak(prefix==null ? key : prefix + key, def);

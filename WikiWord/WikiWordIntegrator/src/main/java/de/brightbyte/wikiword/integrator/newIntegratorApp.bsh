@@ -18,6 +18,11 @@ newIntegratorApp( type, table, source ) {
 							
 							source = d;
 					}
+					else if (source instanceof java.util.Map) {
+							FeatureSetSourceDescriptor d = new FeatureSetSourceDescriptor();
+							d.setTweaks(source);
+							source = d;
+					}
 					
 					source = app.getAugmentedSourceDescriptor(source);
 	  	   }

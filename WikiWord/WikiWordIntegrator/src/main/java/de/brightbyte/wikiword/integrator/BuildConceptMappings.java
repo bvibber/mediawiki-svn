@@ -1,10 +1,12 @@
 package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import de.brightbyte.data.Functors;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.db.SqlDialect;
+import de.brightbyte.util.CollectionUtils;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.integrator.data.Association;
@@ -68,6 +70,7 @@ public class BuildConceptMappings extends AbstractIntegratorApp<AssociationFeatu
 
 		DataCursor<MappingCandidates> cursor = 
 			new CollapsingMappingCandidateCursor(asc, 
+					sourceDescriptor.getTweak("foreign-authority-field", (String)null), 
 					sourceDescriptor.getTweak("foreign-id-field", (String)null), 
 					sourceDescriptor.getTweak("concept-id-field", (String)null) );
 		
@@ -83,9 +86,22 @@ public class BuildConceptMappings extends AbstractIntegratorApp<AssociationFeatu
 	@Override
 	protected String getSqlQuery(String table, FeatureSetSourceDescriptor sourceDescriptor, SqlDialect dialect) {
 		String fields = StringUtils.join(", ", getDefaultFields(dialect));
-		return "SELECT " + fields + " FROM " + dialect.quoteName(getQualifiedTableName(table)) ;
+		String order  = StringUtils.join(", ", getOrderFields(dialect));
+		if (order.length()>0) order = " ORDER BY " + order;
+		return "SELECT " + fields + " FROM " + dialect.quoteQualifiedName(getQualifiedTableName(table)) + order;
 	}
 
+	protected Iterable<String> getOrderFields(SqlDialect dialect) {
+		ArrayList<String> fields = new ArrayList<String>();
+		
+		fields.add(dialect.quoteQualifiedName(sourceDescriptor.getTweak("foreign-authority-field", (String)null)));
+		fields.add(dialect.quoteQualifiedName(sourceDescriptor.getTweak("foreign-id-field", (String)null)));
+		fields.add(dialect.quoteQualifiedName(sourceDescriptor.getTweak("concept-id-field", (String)null)));
+		
+		return CollectionUtils.toCleanIterable(fields, false, false);
+	}
+	
+	
 	@Override
 	protected ConceptMappingProcessor createProcessor(AssociationFeatureStoreBuilder conceptStore) throws InstantiationException {
 		return instantiate(sourceDescriptor, "conceptMappingProcessorClass", AssociationFeaturePassThrough.class, conceptStore);

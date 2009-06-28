@@ -38,6 +38,7 @@ public class FilterConceptMappings extends BuildConceptMappings {
 
 		DataCursor<MappingCandidates> cursor = 
 			new CollapsingMappingCandidateCursor(asc, 
+					sourceDescriptor.getTweak("foreign-authority-field", (String)null), 
 					sourceDescriptor.getTweak("foreign-id-field", (String)null), 
 					sourceDescriptor.getTweak("concept-id-field", (String)null) );
 		
@@ -92,46 +93,15 @@ public class FilterConceptMappings extends BuildConceptMappings {
 		if (filter==null && selector!=null) filter = new MappingCandidateSelectorFilter(selector);
 		
 		return filter;
-		
-		/*
-		Functor<Number, ? extends Collection<? extends Number>> aggregator = sourceDescriptor.getTweak("optimization-aggregator", null);
-		
-		if (aggregator==null) {
-			String f = sourceDescriptor.getTweak("optimization-aggregator-function", "sum");
-			if (f.equals("sum")) aggregator = Functors.Double.sum;
-			else if (f.equals("max")) aggregator = Functors.Double.max;
-			else throw new IllegalArgumentException("unknwon aggregator function: "+f);
-		}
-		
-		Class<? extends Number> type = sourceDescriptor.getTweak("optimization-class", null);
-
-		if (type==null) {
-			String c = sourceDescriptor.getTweak("optimization-type", "double");
-			if (c.equals("double")) type = Double.class;
-			else if (c.equals("int")) type = Integer.class;
-			else if (c.equals("long")) type = Long.class;
-			else if (c.equals("bigint")) type = BigInteger.class;
-			else if (c.equals("decimal") || c.equals("bigdecimal")) type = BigDecimal.class;
-			else throw new IllegalArgumentException("unknwon comparator type: "+c);
-		}
-		
-		Comparator<? extends Number> comp = sourceDescriptor.getTweak("optimization-comparator", null);
-
-		if (comp==null) {
-			if (type==Double.class) comp = Functors.Double.comparator;
-			else if (type==Integer.class) comp = Functors.Integer.comparator;
-			else if (type==Long.class) comp = Functors.Long.comparator;
-			else if (type==BigInteger.class) comp = Functors.BigInteger.comparator;
-			else if (type==BigDecimal.class) comp = Functors.BigDecimal.comparator;
-			else throw new IllegalArgumentException("unknwon comparator function: "+type);
-		}*/
 	}
 	
 
 	@Override
 	protected String getSqlQuery(String table, FeatureSetSourceDescriptor sourceDescriptor, SqlDialect dialect) {
 		String fields = StringUtils.join(", ", getDefaultFields(dialect));
-		return "SELECT " + fields + " FROM " + dialect.quoteName(getQualifiedTableName(table)) ;
+		String order  = StringUtils.join(", ", getOrderFields(dialect));
+		if (order.length()>0) order = " ORDER BY " + order;
+		return "SELECT " + fields + " FROM " + dialect.quoteQualifiedName(getQualifiedTableName(table)) + order;
 	}
 
 	public static void main(String[] argv) throws Exception {

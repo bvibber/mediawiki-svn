@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.integrator;
 
 import java.beans.IntrospectionException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -83,6 +84,11 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		else return super.getConfiguredDatasetName();
 	}
 	
+	public String getConfiguredCollectionName() {
+		if (configuredDataset!=null) return configuredDataset.getCollection();
+		else return super.getConfiguredCollectionName();
+	}
+	
 	public void slaveInit(DataSource dataSource, DatasetIdentifier dataset, TweakSet tweaks, FeatureSetSourceDescriptor sourceDescriptor, String targetTableName) {
 		if (this.sourceDescriptor!=null) throw new IllegalStateException("application already initialized");
 		
@@ -96,6 +102,15 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 	public void slaveLaunch() throws Exception {
 		setKeepAlive(true);
 		launchExecute();
+	}
+	
+	
+	@Override
+	protected void execute() throws Exception {
+		S store = getStoreBuilder();
+		store.initialize(false, false);
+		
+		run();
 	}
 	
 	protected InputFileHelper getInputHelper() {
@@ -159,15 +174,16 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		return cursor;
 	}
 	
-	protected List<String> getDefaultFields(SqlDialect dialect) {
+	protected Iterable<String> getDefaultFields(SqlDialect dialect) {
 		ArrayList<String> fields = new ArrayList<String>();
 		
-		for (String f: getDefaultForeignFields()) if (f!=null) fields.add(dialect.quoteName(f));
-		for (String f: getDefaultConceptFields()) if (f!=null) fields.add(dialect.quoteName(f));
-		for (String f: getDefaultPropertyFields()) if (f!=null) fields.add(dialect.quoteName(f));
+		for (String f: getDefaultForeignFields()) if (f!=null) fields.add(dialect.quoteQualifiedName(f));
+		for (String f: getDefaultConceptFields()) if (f!=null) fields.add(dialect.quoteQualifiedName(f));
+		for (String f: getDefaultPropertyFields()) if (f!=null) fields.add(dialect.quoteQualifiedName(f));
 		
 		return fields;
 	}
+	
 	protected List<String> getDefaultForeignFields() {
 		return Arrays.asList(new String[] {
 				(sourceDescriptor.getTweak("foreign-authority-field", null) == null) ? 
@@ -199,6 +215,11 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		});
 	}
 	
+	public static URL getBuiltinScriptUrl(String name, String ext) {
+		URL u =RunIntegratorSql.class.getResource(name+ext);
+		return u;
+	}
+		
 	protected DataCursor<FeatureSet> openFeatureSetCursor() throws IOException, SQLException, PersistenceException {
 		FeatureSetSourceDescriptor sourceDescriptor = getSourceDescriptor();
 
@@ -220,6 +241,11 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 							in = null;
 						}
 				}
+		} else {
+			if (sql.matches("[-\\w+\\d]+")) { //plain name
+				URL u = getBuiltinScriptUrl(sql, ".sql");
+				if (u!=null) sql = IOUtil.slurp(u);
+			} 
 		}
 		
 		Connection con = null;
@@ -308,9 +334,14 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 			u = getInputHelper().getURL(name);
 		}
 
-		d.setBaseURL(getInputHelper().getURL(name));
-		d.loadTweaks(in);
-		in.close();
+		if (in!=null) {
+			info("loading source descriptor from "+u);
+			d.setBaseURL(u);
+			d.loadTweaks(in);
+			in.close();
+		} else {
+			throw new FileNotFoundException("source descriptor not found: "+name);
+		}
 		
 		if (u!=null) d.setBaseURL(u);
 				

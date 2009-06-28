@@ -73,15 +73,13 @@ public class InputFileHelper {
 			//ignore and continue
 		}
 		
-		File f;
+		File f = new File(n);
 		
-		if (base!=null && base.getProtocol().equals("file")) {
+		if (!f.isAbsolute() && base!=null && base.getProtocol().equals("file")) {
 			File b = new File(base.getPath());
 			if (b.isFile()) b = b.getParentFile();
 			f = new File(b, n);
-		} else { 
-			f = new File(n);
-		}
+		} 
 		
 		return openFile(f);
 	}

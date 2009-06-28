@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS /* wikiword_prefix *//* wikiword_mapping_table */;

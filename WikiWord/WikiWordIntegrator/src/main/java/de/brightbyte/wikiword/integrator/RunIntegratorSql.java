@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.sql.DataSource;
@@ -20,13 +21,14 @@ import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.db.SqlResultDumper;
 import de.brightbyte.db.SqlScriptRunner;
 import de.brightbyte.db.file.TsvWriter;
+import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.CliApp;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.InputFileHelper;
 
-public class RunIntgratorSql extends CliApp {
+public class RunIntegratorSql extends CliApp {
 	
 	public class Dumper extends SqlResultDumper {
 		protected Writer writer;
@@ -58,7 +60,7 @@ public class RunIntgratorSql extends CliApp {
 					tsv.writeRow(row);
 				}
 				
-				tsv.close();
+				tsv.flush();
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
@@ -95,6 +97,7 @@ public class RunIntgratorSql extends CliApp {
 	protected String substitutionFileName;
 	private DataSource configuredDataSource;
 	private DatasetIdentifier configuredDataset;
+	private ArrayList<Functor<String, String>> subsitutions;
 	
 	public void slaveInit(DataSource dataSource, DatasetIdentifier dataset, TweakSet tweaks, 
 			String sqlScriptName, String mappingTableName, String foreignTableName, 
@@ -105,6 +108,31 @@ public class RunIntgratorSql extends CliApp {
 		this.foreignTableName = foreignTableName;
 		this.outputFileName = outputFileName;
 		this.substitutionFileName = substitutionFileName;
+		
+		this.configuredDataSource = dataSource;
+		this.configuredDataset = dataset;
+		this.tweaks = tweaks;
+	}
+
+	public void slaveInit(DataSource dataSource, DatasetIdentifier dataset, TweakSet tweaks, 
+			String sqlScriptName,  
+			String outputFileName, Map<Object, String>  subst) {
+		
+		if (subst!=null) {
+				this.subsitutions = new ArrayList<Functor<String, String>>(subst.size());
+				
+				for (Map.Entry<Object, String> e: subst.entrySet()) {
+					Object o = e.getKey();
+					Pattern p;
+					if (o instanceof Pattern)  p = (Pattern)o;
+					else p = Pattern.compile("/\\* *"+o+"* \\*/");
+					
+					this.subsitutions.add(new SqlScriptRunner.RegularExpressionMangler(p, e.getValue()));
+				}
+		}
+		
+		this.sqlScriptName = sqlScriptName;
+		this.outputFileName = outputFileName;
 		
 		this.configuredDataSource = dataSource;
 		this.configuredDataset = dataset;
@@ -125,6 +153,16 @@ public class RunIntgratorSql extends CliApp {
 		return configuredDataset;
 	}
 	
+	public String getConfiguredDatasetName() {
+		if (configuredDataset!=null) return configuredDataset.getName();
+		else return super.getConfiguredDatasetName();
+	}
+	
+	public String getConfiguredCollectionName() {
+		if (configuredDataset!=null) return configuredDataset.getCollection();
+		else return super.getConfiguredCollectionName();
+	}
+
 	public void slaveLaunch() throws Exception {
 		setKeepAlive(true);
 		launchExecute();
@@ -147,27 +185,22 @@ public class RunIntgratorSql extends CliApp {
 	}
 
 	protected String getOutputFileName() {
-		if (outputFileName!=null) outputFileName = args.getOption("outfile", null);
+		if (outputFileName==null) outputFileName = args.getOption("outfile", null);
 		return outputFileName;
 	}
 
 	protected String getSubstitutionFileName() {
-		if (substitutionFileName!=null) substitutionFileName = args.getOption("substfile", null);
+		if (substitutionFileName==null) substitutionFileName = args.getOption("substfile", null);
 		return substitutionFileName;
 	}
 
-	protected URL getDefaultSqlScriptUrl(String name) {
-		URL u =RunIntgratorSql.class.getResource(name+".sql");
-		return u;
-	}
-	
 	@Override
 	protected void run() throws Exception {
 		String n = getSqlScriptName();
 		URL u = null;
 		
 		if (n.matches("[-\\w+\\d]+")) { //plain name
-			u = getDefaultSqlScriptUrl(n);
+			u = AbstractIntegratorApp.getBuiltinScriptUrl(n, ".sql");
 		} 
 		
 		if (u==null) {
@@ -178,15 +211,18 @@ public class RunIntgratorSql extends CliApp {
 		
 		Writer out;
 		String o = getOutputFileName();
+		boolean doClose;
+		
 		if (o==null || o.equals("-")) {
-			out = new OutputStreamWriter(System.out, enc);
+			out = ConsoleIO.writer;
+			doClose = false;
 		} else {
 			FileOutputStream fout = new FileOutputStream(new File(o));
 			out = new OutputStreamWriter(fout, enc);
+			out = new BufferedWriter(out);
+			doClose = true;
 		}
 		
-		out = new BufferedWriter(out);
-
 		SqlResultDumper dumper = new Dumper(out);
 		SqlScriptRunner runner = new SqlScriptRunner(getConfiguredDataSource(), dumper);
 		runner.addManglers(getSqlScriptManglers());
@@ -195,7 +231,9 @@ public class RunIntgratorSql extends CliApp {
 		if (subst!=null) runner.loadCommentSubstitutions(new File(subst));
 		
 		runner.runScript(u, null);
-		out.close();
+		
+		out.flush();
+		if (doClose) out.close();
 	}	
 
 	public String getQualifiedTableName(String table) {
@@ -206,16 +244,19 @@ public class RunIntgratorSql extends CliApp {
 	protected Collection<Functor<String, String>> getSqlScriptManglers() throws IOException {
 		ArrayList<Functor<String, String>> list = new ArrayList<Functor<String, String>>();
 		
+		if (this.subsitutions!=null) list.addAll(this.subsitutions);
+		
 		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_prefix* \\*/"), getConfiguredDataset().getDbPrefix()) );
 		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_db* \\*/"), getConfiguredDatasetName()) );
-		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_mapping_table* \\*/"), getQualifiedTableName(getMappingTableName())) );
-		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_foreign_table* \\*/"), getQualifiedTableName(getForeignTableName())) );
+		
+		if (getMappingTableName()!=null) list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_mapping_table* \\*/"), getMappingTableName()) );
+		if (getForeignTableName()!=null) list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_foreign_table* \\*/"), getForeignTableName()) );
 		
 		return list;
 	}
 	
 	public static void main(String[] argv) throws Exception {
-		RunIntgratorSql app = new RunIntgratorSql();
+		RunIntegratorSql app = new RunIntegratorSql();
 		app.launch(argv);
 	}
 }

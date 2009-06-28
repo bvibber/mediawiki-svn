@@ -60,7 +60,7 @@ public abstract class AbstractProcessor<E> {
 	public void tracerStep() {
 		itemTracker.step();
 		progressTicks++;
-		if (progressTicks>progressInterval) {
+		if (progressTicks>=progressInterval) {
 			trackerChunk();
 		}
 	}

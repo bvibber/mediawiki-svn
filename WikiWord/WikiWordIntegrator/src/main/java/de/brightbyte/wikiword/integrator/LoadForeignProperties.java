@@ -43,7 +43,7 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 	@Override
 	protected String getSqlQuery(String table, FeatureSetSourceDescriptor sourceDescriptor, SqlDialect dialect) {
 		String fields = StringUtils.join(", ", getDefaultFields(dialect));
-		return "SELECT " + fields + " FROM " + dialect.quoteName(getQualifiedTableName(table));
+		return "SELECT " + fields + " FROM " + dialect.quoteQualifiedName(getQualifiedTableName(table));
 	}
 
 	@Override

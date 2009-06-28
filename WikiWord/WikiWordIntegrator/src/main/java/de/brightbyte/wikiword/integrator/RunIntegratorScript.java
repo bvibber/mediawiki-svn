@@ -14,10 +14,11 @@ import bsh.Interpreter;
 import de.brightbyte.data.Functor;
 import de.brightbyte.db.SqlScriptRunner;
 import de.brightbyte.io.ConsoleIO;
+import de.brightbyte.io.OutputPrintStream;
 import de.brightbyte.wikiword.CliApp;
 import de.brightbyte.wikiword.builder.InputFileHelper;
 
-public class RunIntgratorScript extends CliApp {
+public class RunIntegratorScript extends CliApp {
 	
 	protected InputFileHelper inputHelper;
 	
@@ -86,6 +87,10 @@ public class RunIntgratorScript extends CliApp {
 			i = new Interpreter();  
 		}
 		
+		PrintStream pout = new OutputPrintStream(out);
+		i.setOut(pout);
+		i.setErr(pout);
+		
 		i.set("integrator", this);                    
 		i.set("tweaks", tweaks);                    
 		i.set("inputHelper", getInputHelper());                    
@@ -93,6 +98,7 @@ public class RunIntgratorScript extends CliApp {
 		i.set("dataset", getConfiguredDataset());                    
 		i.set("datasource", getConfiguredDataSource());                    
 		i.set("scriptManglers", getSqlScriptManglers());                    
+		i.set("tablePrefix", getConfiguredDataset().getDbPrefix());                    
 
 		i.eval("import java.util.*;");                    
 		i.eval("import de.brightbyte.wikiword.*;");                    
@@ -121,7 +127,7 @@ public class RunIntgratorScript extends CliApp {
 	}
 	
 	public static void main(String[] argv) throws Exception {
-		RunIntgratorScript app = new RunIntgratorScript();
+		RunIntegratorScript app = new RunIntegratorScript();
 		app.launch(argv);
 	}
 }

@@ -1,1 +1,1 @@
-SELECT * FROM /* wikiword_mapping_table */;
+SELECT * FROM /* wikiword_prefix *//* wikiword_mapping_table */ /* list_order */ /* list_limit */;
