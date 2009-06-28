@@ -70,6 +70,14 @@ $messages['eo'] = array(
 	'prefstats-title' => 'Statistikoj pri preferoj',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'prefstats' => 'Estadísticas de preferencia',
+	'prefstats-title' => 'Estadísticas de preferencia',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

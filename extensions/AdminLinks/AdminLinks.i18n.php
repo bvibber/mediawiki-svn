@@ -536,6 +536,15 @@ $messages['pt'] = array(
 	'right-adminlinks' => 'Ver o link para [[Special:AdminLinks]]',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'adminlinks_users' => 'Utilizatori',
+	'adminlinks_createuser' => 'Creează un utilizator',
+	'adminlinks_importexport' => 'Importare şi exportare',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

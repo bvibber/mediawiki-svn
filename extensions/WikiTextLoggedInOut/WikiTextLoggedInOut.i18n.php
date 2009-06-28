@@ -15,13 +15,6 @@ $messages['qqq'] = array(
 	'wikitextloggedinout-desc' => 'Short description of the Wikitextloggedinout extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Jonny84
- */
-$messages['sli'] = array(
-	'wikitextloggedinout-desc' => 'Zwei Parser-Hooks, <tt>&lt;loggedin&gt;</tt> und <tt>&lt;loggedout&gt;</tt>, um unterschiedlichen Text für an- bzw. abgemeldete Benutzer anzuzeigen',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -232,7 +225,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'wikitextloggedinout-desc' => "Dos croquets de parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt>, per mostrar un tèxte diferent en foncion de l'estatut de connexion de l’utilizaire",
+	'wikitextloggedinout-desc' => "Dos croquets de parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt>, per far veire un tèxte diferent en foncion de l'estatut de connexion de l’utilizaire",
 );
 
 /** Polish (Polski)
@@ -282,6 +275,13 @@ $messages['scn'] = array(
  */
 $messages['sk'] = array(
 	'wikitextloggedinout-desc' => 'Dva prípojné body syntaktického analyzátora, <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt> na zobrazenie odlišného textu v závslosti na stave prihlásenia používateľa',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'wikitextloggedinout-desc' => 'Zwei Parser-Hooks, <tt>&lt;loggedin&gt;</tt> und <tt>&lt;loggedout&gt;</tt>, um unterschiedlichen Text für an- bzw. abgemeldete Benutzer anzuzeigen',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

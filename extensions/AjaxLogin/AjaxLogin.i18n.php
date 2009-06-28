@@ -131,9 +131,11 @@ Podrías perder tus ediciones si abandonas esta página ahora.',
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jack Phoenix <jack@countervandalism.net>
  */
 $messages['fi'] = array(
+	'ajaxlogin-desc' => 'Dynaaminen laatikko, jonka avulla käyttäjät voivat kirjautua sisään ja palauttaa salasanan.',
 	'ajaxLogin1' => 'Suorittaaksesi sisäänkirjautumisesi loppuun, sinun tulee antaa uusi salasana.
 Tämä vie sinut pois tältä muokkaussivulta ja saatat menettää nykyisen muokkauksesi.',
 	'ajaxLogin2' => 'Oletko varma?

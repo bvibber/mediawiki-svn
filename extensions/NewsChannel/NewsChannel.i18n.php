@@ -451,6 +451,16 @@ $messages['pt-br'] = array(
 	'newschannel_submit_button' => 'Criar "feed"',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Limită:',
+	'newschannel_include_category' => 'Categorie adiţională:',
+	'newschannel_exclude_category' => 'Exclude categoria:',
+);
+
 /** Russian (Русский)
  * @author Iaroslav Vassiliev
  * @author Александр Сигачёв

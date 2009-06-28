@@ -425,6 +425,14 @@ $messages['pt-br'] = array(
 	'right-forcepreviewexempt' => 'Pode salvar páginas sem mostrar a previsão antes',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'forcepreview' => 'Salvează pagina (foloseşte previzualizare întâi)',
+	'forcepreview-desc' => 'Forţează previzualizare pentru utilizatori neprivilegiaţi',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

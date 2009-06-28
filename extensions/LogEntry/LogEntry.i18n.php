@@ -357,6 +357,13 @@ $messages['pt-br'] = array(
 	'logentry-invalidtoken' => 'Token inválido',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'logentry-invalidpage' => 'Pagină nevalidă',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

@@ -501,6 +501,16 @@ Este email foi enviado pelo sistema de email de {{SITENAME}} por $1.
 $2',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+Acest e-mail a fost trimis de către $1 prin sistemul de e-mail de la {{SITENAME}}.
+
+$2',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

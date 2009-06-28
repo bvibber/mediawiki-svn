@@ -365,6 +365,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jack Phoenix
  */
 $messages['fi'] = array(
@@ -381,7 +382,8 @@ $messages['fi'] = array(
 	'formarticleexiststext' => 'Sivu [[$1]] on jo olemassa.',
 	'formbadpagename' => 'Huono sivun nimi',
 	'formbadpagenametext' => 'Antamasi lomakkeen tiedot tekevät huonon sivun nimen, "$1".',
-	'formrequiredfielderror' => 'Kenttä $1 on pakollinen tälle lomakkeelle. Ole hyvä ja täytä se.',
+	'formrequiredfielderror' => '{{PLURAL:$2|Kenttä $1 on|Kentät $1 ovat}} pakollisia tässä lomakkeessa.
+Ole hyvä ja täytä {{PLURAL:$2|se|ne}}.',
 	'formsavesummary' => 'Uusi sivu käyttäen [[Special:Form/$1]]',
 	'formsaveerror' => 'Virhe lomaketta tallennettaessa',
 	'formsaveerrortext' => "Tuntematon virhe tapahtui sivua '$1' tallennettaessa.",

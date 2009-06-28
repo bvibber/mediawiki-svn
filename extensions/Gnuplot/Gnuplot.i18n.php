@@ -276,6 +276,13 @@ $messages['pt-br'] = array(
 	'gnuplot-desc' => 'Adiciona a marca <code><nowiki><gnuplot></nowiki></code> para utilizar o Gnuplot',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'gnuplot-desc' => 'Adaugă marcajul <code><nowiki><gnuplot></nowiki></code> pentru a folosi Gnuplot',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

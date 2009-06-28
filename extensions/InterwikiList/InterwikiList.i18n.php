@@ -479,6 +479,15 @@ $messages['pt-br'] = array(
 	'interwikilist-prefix' => 'Prefixo interwiki:',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'interwikilist' => 'Listă interwiki',
+	'interwikilist-linkname' => 'Legătură interwiki',
+	'interwikilist-prefix' => 'Prefix interwiki:',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

@@ -856,6 +856,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'amazonplus-nores' => 'ستونزه: پايلې و نه موندل شوې!',
 	'amazonplus-used' => 'کارېدلی',
 	'amazonplus-german' => 'آلماني',
 	'amazonplus-french' => 'فرانسوي',

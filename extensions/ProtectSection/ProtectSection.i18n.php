@@ -153,6 +153,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Vililikku
  */
@@ -161,6 +162,7 @@ $messages['fi'] = array(
 	'protectsection_add_remove' => 'Yritit lisätä tai poistaa suojatun osion.',
 	'protectsection_modify' => 'Yritit muokata suojattua tekstiä.',
 	'protectsection_forbidden' => 'Estetty',
+	'right-protectsection' => 'Suojata sivun osiot',
 );
 
 /** French (Français)

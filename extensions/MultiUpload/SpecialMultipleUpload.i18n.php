@@ -1088,7 +1088,7 @@ Nieprawidłowe pliki będą natychmiast usuwane, zobacz [[{{MediaWiki:Multipleup
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'multipleupload' => 'دوتنې پورته کول',
+	'multipleupload' => 'څو دوتنې پورته کول',
 	'multipleupload-desc' => 'کارونکي په دې توانوي چې [[Special:MultipleUpload|په يو وخت کې ګڼ شمېر دوتنې پورته کړي]]',
 	'multipleupload-ignoreallwarnings' => "'''ټول ګواښونه''' بابېزه وګڼه او په هر ډول چې وي دوتنې خوندي کړه.",
 	'multipleupload-saveallfiles' => 'ټولې دوتنې خوندي کول',
@@ -1159,8 +1159,11 @@ Arquivos impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Multi
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'multipleupload' => 'Încarcă fişiere',
+	'multipleupload' => 'Încarcă fişiere multiple',
+	'multipleupload-saveallfiles' => 'Salvează toate fişierele',
 	'multiupload-fileuploaded' => 'Fişier încărcat.',
+	'multiupload-toolbox' => 'Încarcă fişiere multiple',
+	'multiupload-blank' => 'Nici un fişier selectat',
 );
 
 /** Tarandíne (Tarandíne)

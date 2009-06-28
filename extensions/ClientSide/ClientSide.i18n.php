@@ -18,11 +18,32 @@ $messages['qqq'] = array(
 	'clientside-desc' => 'Short description of the extension. Shown in [[Special:Version]].',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'clientside-desc' => 'Уводзіць функцыі для стварэньня коду у кліенцкіх фарматах, такіх як HTML, CSS і JavaScript',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'clientside-desc' => 'Poskytuje funkce pro generování kódu v klientských formátech, jako jsou HTML, CSS a JavaScript',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
 	'clientside-desc' => 'Dawa funkcije za napóranje koda w klientowych formatach ako HTML, CSS a JavaScript',
+);
+
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'clientside-desc' => 'Fournit des fonctions pour générer du code dans des formats côté client comme HTML, CSS et JavaScript',
 );
 
 /** Galician (Galego)
@@ -86,6 +107,20 @@ $messages['ksh'] = array(
  */
 $messages['nl'] = array(
 	'clientside-desc' => 'Biedt functies voor het genereren van code in client-sideformaten zoals HTML, CSS en JavaScript',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'clientside-desc' => 'Provesís de fonctions per generar de còde dins de formats costat client coma HTML, CSS e JavaScript',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'clientside-desc' => 'Udostępnia funkcje generujące kod po stronie klienta w formatach takich jak HTML, CSS i JavaScript',
 );
 
 /** Russian (Русский)

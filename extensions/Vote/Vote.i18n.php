@@ -1269,8 +1269,10 @@ $messages['ps'] = array(
 	'vote-results-choice' => 'خوښه',
 	'vote-results-count' => 'شمېرل',
 	'vote-results-none' => 'تر دم مهاله هېڅ کومه رايه نه ده ورکړ شوې.',
-	'vote-login' => 'ددې لپاره چې تاسو رايه ورکړی نو پکار ده چې [$1 ننوتل].',
+	'vote-login' => 'د رايې ورکولو لپاره بايد [$1 غونډال ته ننوځۍ].',
 	'vote-invalid-choice' => 'بايد چې د شتو خوښو نه يوه وټاکۍ.',
+	'right-vote' => 'رايه ورکول',
+	'right-voteadmin' => 'د رايو پايلې کتل',
 );
 
 /** Portuguese (Português)

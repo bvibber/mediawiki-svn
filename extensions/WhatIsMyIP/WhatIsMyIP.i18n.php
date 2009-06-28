@@ -485,8 +485,9 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'whatismyip' => 'زما IP څه دی',
-	'whatismyip-desc' => 'د اوسني کارونکي IP پته په [[Special:WhatIsMyIP]] ښکاره کوي',
-	'whatismyip-out' => 'ستاسو IP:',
+	'whatismyip-desc' => 'د اوسني کارونکي [[Special:WhatIsMyIP|IP پته]] ښکاره کوي',
+	'whatismyip-out' => 'ستاسې IP پته:',
+	'right-whatismyip' => '[[Special:WhatIsMyIP|خپله IP پته]] کتل',
 );
 
 /** Portuguese (Português)
@@ -514,8 +515,9 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'whatismyip' => 'Care este adresa mea IP',
-	'whatismyip-desc' => 'Arată adresa IP a utilizatorului curent la [[Special:WhatIsMyIP]]',
+	'whatismyip-desc' => 'Arată [[Special:WhatIsMyIP|adresa IP]] a utilizatorului curent',
 	'whatismyip-out' => 'Adresa ta IP:',
+	'right-whatismyip' => 'Vizualizează [[Special:WhatIsMyIP|adresa IP proprie]]',
 );
 
 /** Tarandíne (Tarandíne)

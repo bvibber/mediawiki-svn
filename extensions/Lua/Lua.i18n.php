@@ -510,6 +510,17 @@ $messages['pt-br'] = array(
 	'lua_overflow_time' => 'Tempo máximo de execução atingido',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'lua_error' => 'Eroare la linia $1',
+	'lua_error_internal' => 'Eroare internă',
+	'lua_overflow_recursion' => 'Limita de recursie a fost atinsă',
+	'lua_overflow_loc' => 'Numărul maxim de linii de cod a fost atins',
+	'lua_overflow_time' => 'Timpul maxim de execuţie a fost atins',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

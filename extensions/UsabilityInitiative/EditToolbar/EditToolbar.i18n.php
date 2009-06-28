@@ -221,6 +221,7 @@ $messages['be-tarask'] = array(
 	'edittoolbar-tool-superscript-example' => 'Тэкст верхняга індэксу',
 	'edittoolbar-tool-subscript' => 'Ніжні індэкс',
 	'edittoolbar-tool-subscript-example' => 'Тэкст ніжняга індэксу',
+	'edittoolbar-group-insert' => 'Устаўка',
 	'edittoolbar-tool-gallery' => 'Галерэя выяваў',
 	'edittoolbar-tool-gallery-example' => 'File:Example.jpg|Подпіс1
 File:Example.jpg|Подпіс2',
@@ -316,7 +317,10 @@ $messages['de'] = array(
 	'edittoolbar-tool-bold-example' => 'Fetter Text',
 	'edittoolbar-tool-italic' => 'Kursiv',
 	'edittoolbar-tool-italic-example' => 'Kursiver Text',
+	'edittoolbar-tool-file-example' => 'Beispiel.jpg',
 	'edittoolbar-group-size' => 'Größe',
+	'edittoolbar-section-help' => 'Hilfe',
+	'edittoolbar-help-heading-description' => 'Beschreibung',
 	'edittoolbar-help-content-italic-description' => 'Kursiv',
 	'edittoolbar-help-content-italic-syntax' => "''Kursiver Text''",
 	'edittoolbar-help-content-italic-result' => '<em>Kursiver Text</em>',
@@ -326,6 +330,8 @@ $messages['de'] = array(
 	'edittoolbar-help-content-bolditalic-description' => 'Fett &amp; kursiv',
 	'edittoolbar-help-content-bolditalic-syntax' => "'''''Fetter &amp; kursiver Text'''''",
 	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Fetter &amp; kursiver Text</em></strong>',
+	'edittoolbar-help-content-ilink-description' => 'Interner Link',
+	'edittoolbar-help-content-xlink-description' => 'Externer Link',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -499,7 +505,33 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'edittoolbar-loading' => 'Cargando...',
+	'edittoolbar-tool-bold' => 'Negrita',
 	'edittoolbar-tool-bold-example' => 'Texto en negrita',
+	'edittoolbar-tool-italic' => 'Itálico',
+	'edittoolbar-tool-italic-example' => 'Texto itálico',
+	'edittoolbar-tool-ilink' => 'Vínculo interno',
+	'edittoolbar-tool-reference' => 'Referencia',
+	'edittoolbar-section-advanced' => 'Avanzado',
+	'edittoolbar-tool-heading-1' => 'Nivel 1',
+	'edittoolbar-tool-heading-2' => 'Nivel 2',
+	'edittoolbar-tool-heading-3' => 'Nivel 3',
+	'edittoolbar-tool-heading-4' => 'Nivel 4',
+	'edittoolbar-tool-heading-5' => 'Nivel 5',
+	'edittoolbar-group-list' => 'Lista',
+	'edittoolbar-group-size' => 'Tamaño',
+	'edittoolbar-tool-big' => 'Grande',
+	'edittoolbar-tool-big-example' => 'Texto grande',
+	'edittoolbar-tool-small' => 'Pequeño',
+	'edittoolbar-tool-small-example' => 'Texto pequeño',
+	'edittoolbar-group-insert' => 'Insertar',
+	'edittoolbar-section-help' => 'Ayuda',
+	'edittoolbar-help-heading-description' => 'Descripción',
+	'edittoolbar-help-page-link' => 'Vínculos',
+	'edittoolbar-help-page-list' => 'Listas',
+	'edittoolbar-help-page-file' => 'Archivos',
+	'edittoolbar-help-page-reference' => 'Referencias',
+	'edittoolbar-help-page-discussion' => 'Discusión',
+	'edittoolbar-help-content-showreferences-description' => 'Mostrar referencias',
 );
 
 /** Finnish (Suomi)
@@ -1717,6 +1749,13 @@ $messages['ja'] = array(
 	'edittoolbar-help-content-indent-result' => '通常の文章<dl><dd>インデントされた文章<dl><dd>インデントされた文章</dd></dl></dd></dl>',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'edittoolbar-help-content-italic-syntax' => "''기울인 글씨''",
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -2256,6 +2295,7 @@ $messages['oc'] = array(
 	'edittoolbar-tool-reference' => 'Referéncia',
 	'edittoolbar-tool-reference-example' => 'Inserir lo tèxte de la nòta en bas de pagina aicí',
 	'edittoolbar-tool-signature' => 'Signatura e data',
+	'edittoolbar-section-advanced' => 'Avançat',
 	'edittoolbar-tool-heading' => 'Títol',
 	'edittoolbar-tool-heading-1' => 'Nivèl 1',
 	'edittoolbar-tool-heading-2' => 'Nivèl 2',
@@ -2278,7 +2318,10 @@ $messages['oc'] = array(
 	'edittoolbar-tool-superscript-example' => 'Tèxte en expausant',
 	'edittoolbar-tool-subscript' => 'Indici',
 	'edittoolbar-tool-subscript-example' => 'Tèxte en indici',
+	'edittoolbar-group-insert' => 'Inserir',
 	'edittoolbar-tool-gallery' => 'Galariá de fichièrs',
+	'edittoolbar-tool-gallery-example' => 'Fichièr:Exemple.jpg|Descripcion 1
+Fichièr:Exemple.jpg|Descripcion 2',
 	'edittoolbar-tool-newline' => 'Saut de linha',
 	'edittoolbar-section-characters' => 'Caractèrs especials',
 	'edittoolbar-section-help' => 'Ajuda',
@@ -2474,6 +2517,13 @@ Plik:Example.jpg|Podpis2',
 	'edittoolbar-help-content-indent-description' => 'Wcięcie',
 	'edittoolbar-help-content-indent-syntax' => 'Zwykły tekst<br />:Tekst wcięty<br />::Tekst wcięty',
 	'edittoolbar-help-content-indent-result' => 'Zwykły tekst<dl><dd>Tekst wcięty<dl><dd>Tekst wcięty</dd></dl></dd></dl>',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'edittoolbar-help-page-file' => 'دوتنې',
 );
 
 /** Portuguese (Português)
@@ -2784,6 +2834,13 @@ Súbor:Príklad.jpg|Popis2',
 $messages['stq'] = array(
 	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Fatten &amp; kursiven Text</em></strong>',
 	'edittoolbar-help-content-ilink-description' => 'Internen Link',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'edittoolbar' => 'Redigeringsverktygsrad',
 );
 
 /** Telugu (తెలుగు)

@@ -240,6 +240,15 @@ $messages['sk'] = array(
 	'editwarning-warning' => 'Ak opustíte túto stránku, stratíte tým všetky vykonané zmeny.',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'editwarning' => 'Redigeringsvarning',
+	'editwarning-desc' => 'Visar en varning när en användare försöker att lämna redigeringsformuläret utan att spara',
+	'editwarning-warning' => 'Genom att lämna den här sidan kommer du att förlora alla ändringar du har gjort.',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

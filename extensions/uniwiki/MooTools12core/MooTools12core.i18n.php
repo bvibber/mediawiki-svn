@@ -278,7 +278,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'mootools12core-desc' => 'Adaugă [http://mootools.net mootools-1.2-core-yc.js] la fiecare pagină',
+	'mootools12core-desc' => 'Adaugă [http://mootools.net mootools-1.2-core-yc.js], un framework compact JavaScript, la fiecare pagină',
 );
 
 /** Tarandíne (Tarandíne)

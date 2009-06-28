@@ -184,6 +184,16 @@ $messages['eo'] = array(
 	'optin-survey-question-feedback' => 'Bonvolu diri al ni viajn rimarkojn:',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'optin-survey-answer-whyoptout-didntlike' => 'No me gusta el diseño',
+	'optin-survey-answer-whyoptout-other' => 'Otra razón:',
+	'optin-survey-answer-browser-other' => 'Otro navegador:',
+	'optin-survey-answer-os-other' => 'Otro:',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Str4nd
@@ -470,6 +480,13 @@ $messages['ja'] = array(
 	'optin-survey-question-feedback' => 'フィードバックをお願いします:',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'optin-survey-answer-browser-other' => '다른 브라우저:',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -527,6 +544,10 @@ $messages['lb'] = array(
 	'optin-desc' => "Erlaabt et de Benotzer fir d'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative ze benotzen",
 	'optin-title' => "Verbesserungen duerch d'Benotzerfrëndlechkeets-Initiative",
 	'optin-needlogin' => "Dir musst Iech [$1 aloggen] fir d'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative notzen ze kënnen.",
+	'optin-success-in' => 'Dir hutt Iech elo fir d\'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative ugemellt.
+Dir kënnt dës zu jidder Zäit nees ausschalten an deem datt Dir op "{{int:optin-submit-out}}" hei ënnendrënner klickt.',
+	'optin-success-out' => 'ir hutt Iech elo fir d\'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative ofgemellt.
+Dir kënnt dës zu jidder Zäit nees aschalten an deem datt Dir op "{{int:optin-submit-in}}" hei ënnendrënner klickt.',
 	'optin-submit-in' => 'Matmaachen',
 	'optin-submit-out' => 'Net méi matmaachen',
 	'optin-survey-question-whyoptout' => 'Firwat wëllt Dir dësen Interface net méi benotzen?',
@@ -678,6 +699,16 @@ $messages['pl'] = array(
 	'optin-survey-answer-os-linux' => 'Linux',
 	'optin-survey-answer-os-other' => 'Inny',
 	'optin-survey-question-res' => 'Z jakiej rozdzielczości ekranu korzystasz?',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'optin-survey-answer-whyoptout-other' => 'بل سبب:',
+	'optin-survey-question-browser' => 'تاسې کوم کتنمل کاروۍ؟',
+	'optin-survey-answer-browser-other' => 'بل کتنمل:',
+	'optin-survey-question-os' => 'تاسې کوم چليز غونډال کاروۍ؟',
 );
 
 /** Portuguese (Português)

@@ -98,9 +98,10 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
-	'contributionseditcount' => 'Dieser Benutzer hat $1 Bearbeitungen.',
+	'contributionseditcount' => 'Dieser Benutzer hat {{PLURAL:$1|eine Bearbeitung|$1 Bearbeitungen}}.',
 	'contributionseditcount-desc' => 'Zeigt einen Beitragszähler auf der [[Special:Contributions|Beitragsseite des Benutzers]] an',
 );
 
@@ -368,7 +369,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'contributionseditcount' => 'Deze gebruiker heeft $1 bewerkingen.',
+	'contributionseditcount' => 'Deze gebruiker heeft {{PLURAL:$1|één bewerking|$1 bewerkingen}} gemaakt.',
 	'contributionseditcount-desc' => 'Geeft een bewerkingsteller weer op [[Special:Contributions|Bijdragen gebruiker]]',
 );
 

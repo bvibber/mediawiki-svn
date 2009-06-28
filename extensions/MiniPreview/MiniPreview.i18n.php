@@ -638,6 +638,16 @@ Por exemplo, "* PD-" não mostrará todas as categorias que começam com "PD-", 
 * Self',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'minipreview-files_in_category' => "Această categorie conţine '''$1''' {{PLURAL:$1|fişier|fişiere}}.",
+	'minipreview-files_in_gallery' => "Această galerie conţine '''$1''' {{PLURAL:$1|fişier|fişiere}}.",
+	'minipreview-no_more_files_here' => 'Nici un alt fişier în această direcţie.',
+	'minipreview-no_category_gallery' => 'Nici o categorie sau categorie!',
+);
+
 /** Russian (Русский)
  * @author Kaganer
  * @author Александр Сигачёв

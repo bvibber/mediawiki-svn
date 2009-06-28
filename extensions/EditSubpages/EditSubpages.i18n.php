@@ -513,6 +513,13 @@ $messages['pt-br'] = array(
    #</pre><!-- deixe esta linha como está -->",
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'editsubpages-desc' => 'Permite administratorilor să deblocheze o pagină şi toate subpaginile ei pentru modificare anonimă via [[MediaWiki:Unlockedpages]]',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

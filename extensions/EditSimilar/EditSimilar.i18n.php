@@ -187,13 +187,14 @@ Verifica {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Mobe
+ * @author Varusmies
  */
 $messages['fi'] = array(
 	'editsimilar-desc' => 'Rohkaisee käyttäjiä muokkaamaan samankaltaista sivua tallennuksen jälkeen.',
 	'editsimilar-thanks' => 'Kiitos muokkauksestasi.
-Katso nämä aiheeseen liittyvät sivut: $1.',
+Katso {{PLURAL:$2|tämä aiheeseen liittyvä sivu|nämä aiheeseen liittyvät sivut}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Kiitos muokkauksestasi.
-Nämä sivut voisivat myös kaivata apuasi: $1.',
+{{PLURAL:$2|Tämä sivu|Nämä sivut}} voisivat kaivata apuasi: $1.',
 	'editsimilar-thankyou' => 'Kiitos muokkauksestasi, $1!',
 	'editsimilar-link-disable' => 'aseta asetukset',
 	'tog-edit-similar' => 'Ota käyttöön samanlaisten sivujen ehdotukset',
@@ -493,10 +494,10 @@ Estas páginas também poderiam ser beneficiadas por sua ajuda: $1.',
  */
 $messages['ro'] = array(
 	'editsimilar-desc' => 'Încurajează utilizatorii să modifice o pagină similară după salvearea unei pagini',
-	'editsimilar-thanks' => 'Vă mulţumim pentru contribuţia dumneavoastră.
-Vizitaţi şi paginile conexe: $1.',
-	'editsimilar-thanks-notsimilar' => 'Vă mulţumim pentru contribuţia dumneavoastră.
-Şi aceste pagini ar avea nevoie de ajutorul dumneavoastră: $1.',
+	'editsimilar-thanks' => 'Mulţumim pentru contribuţie.
+Vizitează şi {{PLURAL:$2|această pagină conexă|aceste pagini conexe}}: $1.',
+	'editsimilar-thanks-notsimilar' => 'Mulţumim pentru contribuţie.
+Şi {{PLURAL:$2|această pagină|aceste pagini}} ar avea nevoie de ajutor: $1.',
 	'editsimilar-thankyou' => 'Mulţumim pentru contribuţia dumneaovastră, $1!',
 	'tog-edit-similar' => 'Activează sugestiile paginilor similare',
 );

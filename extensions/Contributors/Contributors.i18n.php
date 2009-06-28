@@ -1126,8 +1126,8 @@ $messages['ro'] = array(
 	'contributors-target' => 'Titlu:',
 	'contributors-submit' => 'Arată',
 	'contributors-subtitle' => 'Contribuitori principali la $1',
-	'contributors-others-long' => 'Mai sunt $1 alţi contribuitori la această pagină.',
-	'contributors-others' => 'şi alţii $1',
+	'contributors-others-long' => 'Mai {{PLURAL:$1|este încă un contributor|sunt $1 alţi contribuitori}} la această pagină.',
+	'contributors-others' => 'şi {{PLURAL:$1|încă o persoană|alţii $1}}',
 	'contributors-badtitle' => 'Titlu nevalid.',
 	'contributors-nosuchpage' => 'Pagina $1 nu există.',
 );

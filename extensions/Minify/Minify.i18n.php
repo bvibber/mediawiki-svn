@@ -30,6 +30,13 @@ $messages['dsb'] = array(
 	'minify-desc' => 'Pómjeńšujo wudaśe CSS a JavaScript z action=raw',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'minify-desc' => 'Rétrécit la sortie de CSS et JavaScript de action=raw',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -84,6 +91,13 @@ $messages['ksh'] = array(
  */
 $messages['nl'] = array(
 	'minify-desc' => 'Verkleint CSS- en JavaScript-uitvoer van action=raw',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'minify-desc' => 'Estrechís la sortida de CSS e JavaScript de action=raw',
 );
 
 /** Russian (Русский)

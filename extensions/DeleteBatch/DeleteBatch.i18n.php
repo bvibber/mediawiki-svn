@@ -1042,12 +1042,10 @@ O arquivo carregado deverá conter o nome da página e um motivo opcional, separ
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'deletebatch-caption' => 'Lista de pagini:',
 	'deletebatch-or' => '<b>sau</b>',
-	'deletebatch-page' => 'Pagini de şters',
+	'deletebatch-page' => 'Pagini de şters:',
 	'deletebatch-reason' => 'Motiv pentru ştergere',
-	'deletebatch-processing' => 'ştergere pagini $1',
-	'deletebatch-from-file' => 'din lista de fişiere',
-	'deletebatch-from-form' => 'din formular',
 	'deletebatch-success-subtitle' => 'pentru $1',
 	'deletebatch-file-missing' => 'Nu se poate citi fişierul dat',
 );

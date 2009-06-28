@@ -529,6 +529,14 @@ $messages['pt-br'] = array(
 	'communityvoice-ratings-error-no-title' => 'Atributo título em falta na etiqueta de classificação.',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'communityvoice-ratings-scale-status-error' => 'Eroare la trimitere!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vot exprimat|voturi exprimate}})',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
