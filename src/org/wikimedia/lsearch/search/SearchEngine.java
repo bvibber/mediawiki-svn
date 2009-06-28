@@ -920,6 +920,8 @@ public class SearchEngine {
 		logRequest(iid,"search",searchterm, q, numhits, searchStart, s);
 		
 		int size = min(limit+offset,MAXOFFSET,numhits) - offset;
+		if( size < 0 )
+			size = 0;
 		int[] docids = new int[size]; 
 		float[] scores = new float[size];
 		// fetch documents

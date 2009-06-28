@@ -246,7 +246,7 @@ public class RMIMessengerClient {
 			return r.getTerms(dbrole,wildcard,exactCase);
 		} catch(Exception e){
 			recheckRemote(dbrole,host);
-			e.printStackTrace();
+			log.warn("Exception getting terms for wildcard="+wildcard+" on host="+host, e);
 			return new ArrayList<String>();
 		}
 	}
@@ -256,8 +256,8 @@ public class RMIMessengerClient {
 			RMIMessenger r = messengerFromCache(host);
 			return r.highlight(hits,dbrole,terms,df,maxDoc,words,exactCase,sortByPhrases,alwaysIncludeFirst);
 		} catch(Exception e){
-			recheckRemote(dbrole,host);
-			e.printStackTrace();
+			log.warn("Exception highligthing words="+words+" on host="+host, e);
+			recheckRemote(dbrole,host);			
 			return new Highlight.ResultSet(new HashMap<String,HighlightResult>(),new HashSet<String>(),new HashSet<String>(),false,0,new HashSet<String>(),false);
 		}		
 	}
@@ -271,7 +271,6 @@ public class RMIMessengerClient {
 				log.warn("Cannot find title host for "+dbrole,e);
 				return new SearchResults();
 			}
-			e.printStackTrace();
 			recheckRemote(dbrole,host);
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Error searching titles: "+e.getMessage());			

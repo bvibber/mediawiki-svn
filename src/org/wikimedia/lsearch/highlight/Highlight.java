@@ -658,7 +658,7 @@ public class Highlight {
 						phraseScore = phraseWeight;
 						phraseStart = phraseIndex;
 						phraseCount = 1;
-					} else if(inx != null && lastInx != null){
+					} else if(inx != null && lastInx != null && phraseStart != -1){
 						if(lastInx + 1 != inx){
 							// end of last phrase, begin of new
 							addToScore(fs,boostPhrase(phraseScore,phraseCount),phraseStart,phraseIndex,phraseCount);
