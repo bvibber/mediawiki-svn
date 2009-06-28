@@ -14,9 +14,10 @@ $messages = array();
 $messages['en'] = array(
 	'deletebatch' => 'Delete batch of pages',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Delete a batch of pages]]',
-	'deletebatch-help' => 'Delete a batch of pages. You can either perform a single delete, or delete pages listed in a file.
+	'deletebatch-help' => 'Delete a batch of pages.
+You can either perform a single delete, or delete pages listed in a file.
 Choose a user that will be shown in deletion logs.
-Uploaded file should contain page name and optional reason separated by a "|" character in each line.',
+Uploaded files should contain page name and optional reason, separated by a "|" character in each line.',
 	'deletebatch-caption' => 'Page list:',
 	'deletebatch-title' => 'Delete batch',
 	'deletebatch-link-back' => 'Go back to the special page',
@@ -32,9 +33,9 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 	'deletebatch-omitting-invalid' => 'Omitting invalid page $1.',
 	'deletebatch-file-bad-format' => 'The file should be plain text',
 	'deletebatch-file-missing' => 'Unable to read given file',
-	'deletebatch-select-script' => 'delete page script',
-	'deletebatch-select-yourself' => 'you',
-	'deletebatch-no-page' => 'Please specify at least one page to delete OR choose a file containing page list.',
+	'deletebatch-select-script' => 'Delete page script',
+	'deletebatch-select-yourself' => 'You',
+	'deletebatch-no-page' => 'Please specify at least one page to delete or choose a file containing page list.',
 	'right-deletebatch' => 'Batch delete pages',
 );
 
