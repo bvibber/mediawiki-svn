@@ -776,6 +776,14 @@ $messages['sk'] = array(
 	'postcomment_nopostingtoadd' => 'Niet pridať aký príspevok.',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Schläsinger
+ */
+$messages['sli'] = array(
+	'postcomment_post' => 'Senda',
+	'postcomment_on' => 'Oam',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

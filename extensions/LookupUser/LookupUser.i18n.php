@@ -1066,6 +1066,16 @@ $messages['sk'] = array(
 	'right-lookupuser' => 'Zistiť nastavenia používateľa',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Schläsinger
+ */
+$messages['sli'] = array(
+	'lookupuser-id' => 'Benutzer-ID: <tt>$1</tt>',
+	'lookupuser-email' => 'E-Mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'nee vurhanda',
+	'lookupuser-realname' => 'Wirklicher Noame: $1',
+);
+
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Михајло Анђелковић
  */

@@ -93,6 +93,30 @@ $messages['be-tarask'] = array(
 	'tog-riched_toggle_remember_state' => 'Памятаць апошні стан пераключальніка',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'textrichditor' => 'Разширен редактор',
+	'tog-riched_disable' => 'Изключване на разширения редактор',
+	'tog-riched_disable_ns_main' => 'Изключване на разширения редактор в основното именно пространство',
+	'tog-riched_disable_ns_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:Talk}}“',
+	'tog-riched_disable_ns_user' => 'Изключване на разширения редактор в именно пространство „{{ns:User}}“',
+	'tog-riched_disable_ns_user_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:User_talk}}“',
+	'tog-riched_disable_ns_project' => 'Изключване на разширения редактор в именно пространство „{{ns:Project}}“',
+	'tog-riched_disable_ns_project_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:Project_talk}}“',
+	'tog-riched_disable_ns_image' => 'Изключване на разширения редактор в именно пространство „{{ns:Image}}“',
+	'tog-riched_disable_ns_image_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:Image_talk}}“',
+	'tog-riched_disable_ns_mediawiki' => 'Изключване на разширения редактор в именно пространство „{{ns:MediaWiki}}“',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:MediaWiki_talk}}“',
+	'tog-riched_disable_ns_template' => 'Изключване на разширения редактор в именно пространство „{{ns:Template}}“',
+	'tog-riched_disable_ns_template_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:Template_talk}}“',
+	'tog-riched_disable_ns_help' => 'Изключване на разширения редактор в именно пространство „{{ns:Help}}“',
+	'tog-riched_disable_ns_help_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:Help_talk}}“',
+	'tog-riched_disable_ns_category' => 'Изключване на разширения редактор в именно пространство „{{ns:Category}}“',
+	'tog-riched_disable_ns_category_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:Category_talk}}“',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -572,6 +596,30 @@ $messages['lb'] = array(
 	'tog-riched_use_popup' => 'Editeur mat erweiderte Fonctiounen an engem Popup opmaachen',
 );
 
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'textrichditor' => 'वाढीव संपादक',
+	'tog-riched_disable' => 'वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_main' => 'मुख्य नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_talk' => '"{{ns:Talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_user' => '"{{ns:User}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_user_talk' => '"{{ns:User_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_project' => '"{{ns:Project}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_project_talk' => '"{{ns:Project_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_image' => '"{{ns:Image}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_image_talk' => '"{{ns:Image_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_mediawiki' => '"{{ns:MediaWiki}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_mediawiki_talk' => '"{{ns:MediaWiki_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_template' => '"{{ns:Template}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_template_talk' => '"{{ns:Template_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_help' => '"{{ns:Help}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_help_talk' => '"{{ns:Help_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_category' => '"{{ns:Category}}" नामविश्वात वाढीव संपादक रद्द करा',
+	'tog-riched_disable_ns_category_talk' => '"{{ns:Category_talk}}" नामविश्वात वाढीव संपादक रद्द करा',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -829,6 +877,14 @@ $messages['sv'] = array(
 	'tog-riched_use_popup' => 'Öppna det grafiska läget i ett popupfönster',
 	'tog-riched_use_toggle' => 'Använd växla mellan wikitext och det grafiska läget (byter textruta mot grafiskt läge)',
 	'tog-riched_toggle_remember_state' => 'Kom ihåg senaste val (i den grafiska editorn)',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'textrichditor' => 'సిరి కూర్పరి',
+	'tog-riched_disable' => 'సిరి కూర్పరిని అచేతనం చేయండి',
 );
 
 /** Vietnamese (Tiếng Việt)

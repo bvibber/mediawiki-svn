@@ -139,14 +139,14 @@ $messages['es'] = array(
  * @author IAlex
  */
 $messages['fr'] = array(
-	'plotters-desc' => "Permet aux utilisateurs d'utiliser du javascript personnalisé dans les balises jsplot",
+	'plotters-desc' => 'Permet aux utilisateurs d’utiliser du javascript personnalisé dans les balises jsplot',
 	'plotters' => 'traceurs',
 	'plotters-title' => 'traceurs',
-	'plotters-pagetext' => "Ci-dessou s la liste des traceurs spéciaux que les utilisateurs peuvent utiliser dans leurs balises jsplot, comme définies sur [[MediaWiki:Plotters-definition]].
-Cette vue d'ensemble permet d'accéder facilement aux messages système qui définissent le code et la description de chaque traceur.",
+	'plotters-pagetext' => 'Ci-dessou s la liste des traceurs spéciaux que les utilisateurs peuvent utiliser dans leurs balises jsplot, comme définies sur [[MediaWiki:Plotters-definition]].
+Cette vue d’ensemble permet d’accéder facilement aux messages système qui définissent le code et la description de chaque traceur.',
 	'plotters-uses' => 'Utilise',
 	'plotters-missing-script' => 'Aucun script n’a été défini.',
-	'plotters-missing-arguments' => "Aucun argument n'a été spécifié.",
+	'plotters-missing-arguments' => 'Aucun argument n’a été spécifié.',
 	'plotters-excessively-long-scriptname' => 'Le nom du script est trop long. Veuillez définir un script qui a de moins de 255 caractères.',
 	'plotters-excessively-long-preprocessorname' => 'Le nom du préprocesseur est trop long. Définissez un préprocesseur qui fait moins de 255 caractères.',
 	'plotters-excessively-long-name' => 'Le nom du graphe est trop long. Définissez un nom de graphe qui fait moins de 255 caractères.',

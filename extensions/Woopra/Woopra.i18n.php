@@ -17,13 +17,6 @@ $messages['qqq'] = array(
 	'woopra-desc' => 'Short description of this extension, shown on [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Jonny84
- */
-$messages['sli'] = array(
-	'woopra-desc' => 'Ermöglicht der [http://www.woopra.com/ „Woopra Live Tracking Software“] die Zusammenarbeit mit MediaWiki',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -320,6 +313,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'woopra-desc' => 'Umožňuje fungovanie [http://www.woopra.com/ Woopra Live Tracking Software] v rámci vašej MediaWiki',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'woopra-desc' => 'Ermöglicht der [http://www.woopra.com/ „Woopra Live Tracking Software“] die Zusammenarbeit mit MediaWiki',
 );
 
 /** Albanian (Shqip)

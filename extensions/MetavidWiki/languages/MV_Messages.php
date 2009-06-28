@@ -1525,8 +1525,6 @@ $messages['bg'] = array(
 	'mv_search_or' => 'или',
 	'mv_category' => 'категория',
 	'mv_remove_filter' => 'премахване на филтър',
-	'mv_match_text' => '~  $1 съвпадения',
-	'mv_match_text_one' => '~ 1 съвпадение',
 	'mv_mang_layers' => 'Управление на слоевете',
 );
 
@@ -3054,30 +3052,12 @@ Saltar á vista do fluxo: $2',
 );
 
 /** Gothic
+ * @author Crazymadlover
  * @author Jocke Pirat
+ * @author Omnipaedista
  */
 $messages['got'] = array(
 	'mv_edit' => 'Máidjan',
-);
-/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
- * @author Crazymadlover
- * @author Omnipaedista
- */
-$messages['grc'] = array(
-	'mv_duration_label' => 'Διάρκεια',
-	'mv_upload_file' => 'Ἐπιφορτίζειν ἀρχεῖον',
-	'mv_tool_search' => 'Ζητεῖν',
-	'mv_tool_export' => 'ἐξάγειν',
-	'mv_tool_embed' => 'Ἐμβαπτίζειν',
-	'mv_edit' => 'Μεταγράφειν',
-	'mv_history' => 'Αἱ προτέραι',
-	'mv_remove' => 'ἀφαιρεῖν',
-	'mv_search_categories' => 'Κατηγορίαι',
-	'mv_search_category' => 'Κατηγορία',
-	'mv_search_and' => 'καὶ',
-	'mv_search_or' => 'ἢ',
-	'mv_search_not' => 'οὐ',
-	'mv_category' => 'κατηγορία',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -7197,8 +7177,6 @@ $messages['pl'] = array(
 	'mv_date_last_week' => 'Ostatni tydzień',
 	'mv_most_viewed' => 'Najczęściej oglądane',
 	'mv_category' => 'kategoria',
-	'mv_match_text' => '~  $1 trafień',
-	'mv_match_text_one' => '~ 1 trafienie',
 );
 
 /** Pashto (پښتو)
@@ -8521,10 +8499,7 @@ $messages['su'] = array(
 	'mv_search_and' => 'jeung',
 	'mv_search_or' => 'atawa',
 	'mv_search_not' => 'lain',
-	'mv_match' => 'sarua',
 	'mv_category' => 'kategori',
-	'mv_match_text' => '~  $1 sarua',
-	'mv_match_text_one' => '~ 1 sarua',
 );
 
 /** Swedish (Svenska)
@@ -8880,7 +8855,6 @@ $messages['tg-cyrl'] = array(
 	'mv_remove_filter' => 'бардоштани филтр',
 	'mv_advaced_search' => 'Ҷустуҷӯи пешрафтаи расона',
 	'mv_view_wiki_page' => 'Намоиши саҳифаи вики',
-	'mv_match_text_one' => '~ 1 мутобиқ',
 	'mv_edit_sequence' => 'Дар ҳоли вироиши тартиб:$1',
 	'mv_sequence_player_title' => 'пахшкунандаи тартиб',
 	'mv_save_sequence' => 'Захираи Тартиб',
@@ -8896,8 +8870,8 @@ $messages['tg-cyrl'] = array(
 	'mv_edithelpsequence' => 'Help:Вироиши_Тартиб',
 	'mv_seq_summary' => 'Хулосаи вироиши тартиб',
 	'mv_add_clip_by_name' => 'Иловаи клип тавассути ном',
-	'mv_search_stream' => 'Ҷустуҷӯи ҷараён',
 	'mv_stream_tool_heading' => 'Абзорҳои ҷараён',
+	'mv_search_stream' => 'Ҷустуҷӯи ҷараён',
 	'mv_new_ht_en' => 'Рӯнавишти ҷадид',
 );
 

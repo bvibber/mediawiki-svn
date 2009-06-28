@@ -66,6 +66,7 @@ $messages['ar'] = array(
  * @author McDutchie
  */
 $messages['be-tarask'] = array(
+	'rt-desc' => 'Палепшаны інтэрфэйс для RT (адсочваньне запытаў)',
 	'rt-inactive' => 'Пашырэньне RT не ўключана',
 	'rt-badquery' => 'У пашырэньні RT узьнікла памылка пад час абмену зьвесткамі з базай зьвестак RT',
 	'rt-badlimit' => "Няслушны аргумэнт LIMIT (l): ён павінен быць лікай.
@@ -101,6 +102,51 @@ Vi ste pokušali: '''$1'''",
 	'rt-nomatches' => 'Nisu pronađeni odgovarajući RT kuponi',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'rt-desc' => 'Pěkny interfejs za RT (Request Tracker)',
+	'rt-inactive' => 'Rozšyrjenje RT njejo aktiwne',
+	'rt-badquery' => 'Rozšyrjenje RT jo namakało zmólku pśi komunikaciji z datoweju banku RT',
+	'rt-badlimit' => "Njepłaśiwy argument LIMIT (l): musy licba byś.
+Sy wopytał: '''$1'''",
+	'rt-badorderby' => "Njepłaśiwy argument ORDER BY (ob): musy standardne pólo byś (glědaj dokumentaciju).
+Sy wopytał: '''$1'''",
+	'rt-badstatus' => "Njepłaśiwy argument status (s): musy standardne pólo byś (glědaj dokumentaciju).
+Sy wopytał: '''$1'''",
+	'rt-badqueue' => "Njepłaśiwy argument queue (q): musy jadnore słowo byś.
+Sy wopytał: '''$1'''",
+	'rt-badowner' => "Njepłaśiwy argument owner (o): musy płaśiwe wužywarske mě byś.
+Sy wopytał: '''$1'''",
+	'rt-nomatches' => 'Wótpowědne nastupnosće RT njejsu se namakali',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'rt-inactive' => 'La extensión RT no está activa',
+	'rt-badquery' => 'La extensión RT encontró un error cuando se comunicaba con la base de datos RT',
+	'rt-badlimit' => "LIMITE inválido (l) arg: debe ser un número.
+Intentaste: '''$1'''",
+	'rt-badorderby' => "ORDEN inválido por (ob) arg: debe ser un campo estándar (ver documentación).
+Intentaste: '''$1'''",
+	'rt-badstatus' => "status inválido (s) arg: debe ser un campo estándar (ver documentación).
+Intentaste: '''$1'''",
+	'rt-badqueue' => "cola inválida (q) arg: debe ser una palabra simple.
+Intentaste: '''$1'''",
+	'rt-badowner' => "propietario inválido (o) arg: debe ser un nombre de usuario.
+Intentaste: '''$1'''",
+);
+
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'rt-desc' => 'Hieno käyttöliittymä RT-ohjelmistolle',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -108,7 +154,7 @@ Vi ste pokušali: '''$1'''",
 $messages['fr'] = array(
 	'rt-desc' => 'Interface pour RT (Request Tracker)',
 	'rt-inactive' => 'L’extension RT n’est pas active',
-	'rt-badquery' => "L'extension RT a rencontré une erreur lors d'une requête sur la base de données de RT",
+	'rt-badquery' => 'L’extension RT a rencontré une erreur lors d’une requête sur la base de données de RT',
 	'rt-badlimit' => "Argument LIMIT (l) invalide : il doit être un nombre.
 Vous avez essayé : '''$1'''",
 	'rt-badorderby' => "Argument ORDER BY (ob) invalide : il doit être un champ standard (voir la documentation).
@@ -117,9 +163,9 @@ Vous avez essayé : '''$1'''",
 Vous avez essayé : '''$1'''",
 	'rt-badqueue' => "Argument queue (q) invalide : il doit être un mot simple.
 Vous avez essayé : '''$1'''",
-	'rt-badowner' => "Argument owner (o) invalide : il doit être un nom d'utilisateur valide.
+	'rt-badowner' => "Argument owner (o) invalide : il doit être un nom d’utilisateur valide.
 Vous avez essayé : '''$1'''",
-	'rt-nomatches' => "Aucun ticket RT n'a été trouvé",
+	'rt-nomatches' => 'Aucun ticket RT n’a été trouvé',
 );
 
 /** Galician (Galego)
@@ -143,6 +189,26 @@ Vostede tentou: '''$1'''",
 	'rt-nomatches' => 'Non se atoparon boletos RT que coincidisen',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'rt-desc' => 'Uusgfalle Interface fir RT (Request Tracker)',
+	'rt-inactive' => 'D RT-Erwyterig isch nit aktiv',
+	'rt-badquery' => 'D RT-Erwyterig het e Fähler gfunde bim Kontakt zue dr RT-Datebank',
+	'rt-badlimit' => "Nit giltig LIMIT (l)-Argumänt: muess e Zahl syy.
+Du hesch yygee: '''$1'''",
+	'rt-badorderby' => "Nit giltig ORDER BY (ob)-Argumänt: muess e Standardfäld syy (lueg Dokumäntation).
+Du hesch yygee: '''$1'''",
+	'rt-badstatus' => "Nit giltig status (s)-Argumänt: muess e Standard fäld syy (lueg Dokumäntation).
+Du hesch yygee: '''$1'''",
+	'rt-badqueue' => "Nit giltig queue (q)-Argumänt: muess e eifach Wort syy.
+Du hesch yygee: '''$1'''",
+	'rt-badowner' => "Nit giltig owner (o)-Argumänt: muess e giltige Benutzername Wort syy.
+Du hesch yygee: '''$1'''",
+	'rt-nomatches' => 'S sin kei RT-Tickets gfunde wore',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -152,6 +218,26 @@ $messages['he'] = array(
 	'rt-inactive' => 'הרחבת ה־RT אינה פעילה',
 	'rt-badquery' => 'הרחבת ה־RT נתקלה בשגיאה בעת ההתקשרות עם בסיס הנתונים של RT',
 	'rt-nomatches' => 'לא נמצאו כרטיסיות RT תואמות',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'rt-desc' => 'Šikwany interfejs za RT (Request Tracker)',
+	'rt-inactive' => 'Rozšěrjenje RT aktiwne njeje',
+	'rt-badquery' => 'Rozšěrjenje RT je při komunikaciji z datowej banku RT zmylk namakało',
+	'rt-badlimit' => "Njepłaćiwy argument LIMIT (l): dyrbi ličba być.
+Sy spytał: '''$1'''",
+	'rt-badorderby' => "Njepłaćiwy argument ORDER BY (ob): dyrbi standardne polo być (hlej dokumentaciju).
+Sy spytał: '''$1'''",
+	'rt-badstatus' => "Njepłaćiwy argument status (s): dyrbi standardne polo być (hlej dokumentaciju).
+Sy spytał: '''$1'''",
+	'rt-badqueue' => "Njepłaćiwy argument queue (q): dyrbi jednore słowo być.
+Sy spytał: '''$1'''",
+	'rt-badowner' => "Njepłaćiwy argument owner (o): dyrbi płaćiwe wužiwarske mjeno być.
+Sy spytał: '''$1'''",
+	'rt-nomatches' => 'Wotpowědne naležnosće RT njebuchu namakane',
 );
 
 /** Interlingua (Interlingua)
@@ -275,6 +361,46 @@ Du prøvde: '''$1'''",
 Du prøvde: '''$1'''",
 	'rt-badowner' => "Ugyldig owner (o) argument: må være et gyldig brukernavn.
 Du prøvde: '''$1'''",
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'rt-desc' => 'Interfàcia per RT (Request Tracker)',
+	'rt-inactive' => 'L’extension RT es pas activa',
+	'rt-badquery' => "L'extension RT a rencontrat una error al moment d'una requèsta sus la banca de donadas de RT",
+	'rt-badlimit' => "Argument LIMIT (l) invalid : deu èsser un nombre.
+Avètz ensajat : '''$1'''",
+	'rt-badorderby' => "Argument ORDER BY (ob) invalid : deu èsser un camp estandard (vejatz la documentacion).
+Avètz ensajat : '''$1'''",
+	'rt-badstatus' => "Argument status (s) invalid : deu èsser un camp estandard (vejatz la documentacion).
+Avètz ensajat : '''$1'''",
+	'rt-badqueue' => "Argument queue (q) invalid : deu èsser un mot simple.
+Avètz ensajat : '''$1'''",
+	'rt-badowner' => "Argument owner (o) invalid : deu èsser un nom d'utilizaire valid.
+Avètz ensajat : '''$1'''",
+	'rt-nomatches' => 'Cap de ticket RT es pas estat trobat',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'rt-desc' => 'Specjalny interfejs systemu obsługi zgłoszeń',
+	'rt-inactive' => 'Rozszerzenie „system obsługi zgłoszeń” nie jest aktywne',
+	'rt-badquery' => 'Wystąpił błąd podczas komunikacji z bazą danych rozszerzenia „systemu obsługi zgłoszeń”',
+	'rt-badlimit' => "Nieprawidłowe LIMIT (l) – argument musi być liczbą.
+Próbowałeś '''$1'''",
+	'rt-badorderby' => "Nieprawidłowe ORDER BY (ob) – argument musi być standardowym polem (sprawdź w dokumentacji).
+Próbowałeś '''$1'''",
+	'rt-badstatus' => "Nieprawidłowe status (s) – argument musi być standardowym polem (sprawdź w dokumentacji).
+Próbowałeś '''$1'''",
+	'rt-badqueue' => "Nieprawidłowe queue (s) – argument musi być prostym słowem.
+Próbowałeś '''$1'''",
+	'rt-badowner' => "Nieprawidłowe owner (o) – argument musi być poprawną nazwą użytkownika.
+Próbowałeś '''$1'''",
+	'rt-nomatches' => 'Brak pasujących zgłoszeń w „systemie obsługi zgłoszeń”',
 );
 
 /** Portuguese (Português)

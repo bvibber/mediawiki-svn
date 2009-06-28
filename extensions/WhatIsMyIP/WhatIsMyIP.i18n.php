@@ -560,6 +560,15 @@ $messages['sk'] = array(
 	'right-whatismyip' => 'Zobraziť [[Special:WhatIsMyIP|vlastnú IP adresu]]',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'whatismyip' => 'Wie lautet meine IP-Adresse',
+	'whatismyip-desc' => 'Zeigt de derzeite IP-Adresse des Benutzers uff [[Special:WhatIsMyIP]] oan',
+	'whatismyip-out' => 'Deine IP-Adresse:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

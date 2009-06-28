@@ -121,6 +121,14 @@ $messages['dsb'] = array(
 	'whosonline-desc' => 'Pokazujo [[Special:WhosOnline|lisćinu]] pśizjawjonych a anonymnych wužywarjow, kótarež su tuchylu online',
 );
 
+/** Greek (Ελληνικά)
+ * @author K sal 15
+ */
+$messages['el'] = array(
+	'whosonline' => 'Ποιοι είναι συνδεδεμένοι',
+	'whosonline-desc' => 'Εμφανίζει [[Special:WhosOnline|μια λίστα]] με τους συνδεδεμένους και ανώνυμους χρήστες που είναι οn-line αυτή τη στιγμή',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -159,6 +167,13 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'whosonline' => 'Qui est en ligne',
 	'whosonline-desc' => 'Affiche [[Special:WhosOnline|une liste]] des utilisateurs connectés ou anonymes actuellement en ligne',
+);
+
+/** Irish (Gaeilge)
+ * @author D.de.loinsigh
+ */
+$messages['ga'] = array(
+	'whosonline' => 'Cé atá ar líne',
 );
 
 /** Galician (Galego)
@@ -454,10 +469,12 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'whosonline' => 'Kimler çevrimiçi',
+	'whosonline-desc' => 'Şuanda çevrimiçi olan anonim ve giriş yapmış kullanıcıların [[Special:WhosOnline|bir listesini]] görüntüler',
 );
 
 /** Vèneto (Vèneto)

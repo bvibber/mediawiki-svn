@@ -3546,6 +3546,14 @@ Nebudete sa už pomocou tohto OpenID prihlasovať.',
 	'openid-provider-label-other-username' => 'Zadajte svoje prihlasovacie meno na $1',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Schläsinger
+ */
+$messages['sli'] = array(
+	'openidxrds' => 'Yadis-Datei',
+	'openidemail' => 'E-Mail-Atresse:',
+);
+
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић

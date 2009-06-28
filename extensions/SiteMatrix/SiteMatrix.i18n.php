@@ -1429,6 +1429,14 @@ $messages['sk'] = array(
 	'sitematrix-fishbowl' => 'úpravy obmedzené',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Schläsinger
+ */
+$messages['sli'] = array(
+	'sitematrix-sitetotal' => 'Gesamt',
+	'sitematrix-private' => 'Privat',
+);
+
 /** Albanian (Shqip)
  * @author לערי ריינהארט
  */

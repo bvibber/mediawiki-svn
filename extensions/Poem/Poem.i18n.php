@@ -18,13 +18,6 @@ $messages['qqq'] = array(
 	'poem-desc' => 'Extension description displayed on [[Special:Version]]',
 );
 
-/** Lower Silesian (Schläsch)
- * @author Piotron
- */
-$messages['sli'] = array(
-	'poem-desc' => 'Fiegt is <tt>&lt;poem&gt;</tt>-Tag zur Furmatierung voo Gedichta hinzu',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -451,6 +444,13 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'poem-desc' => 'Pridáva značku <tt>&lt;poem&gt;</tt> pre formátovanie básní',
+);
+
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'poem-desc' => 'Fiegt is <tt>&lt;poem&gt;</tt>-Tag zur Furmatierung voo Gedichta hinzu',
 );
 
 /** Albanian (Shqip)

@@ -16,12 +16,29 @@ $messages['en'] = array(
 	'navigabletoc-desc' => 'Adds a table of contents to the edit form that scrolls the text box when a section is clicked',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'navigabletoc' => 'Табліца зьместу з навігацыяй',
+	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
 	'navigabletoc' => 'Nawigěrujobny zapis wopśimjeśa',
 	'navigabletoc-desc' => 'Pśidawa zapis wopśimjeśa wobźěłowańskemu formularoju, kótaryž kula tekstowe pólo, gaž se na wótrězk kliknjo',
+);
+
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'navigabletoc' => 'Sommaire navigable',
+	'navigabletoc-desc' => 'Ajoute le sommaire au formulaire de modification qui défile le texte quand une section est cliquée',
 );
 
 /** Galician (Galego)
@@ -103,12 +120,28 @@ $messages['nl'] = array(
 	'navigabletoc-desc' => 'Voegt een inhoudsopgave toe aan het bewerkingsformulier waarmee het tekstvak verschoven kan worden als er op een kopje wordt geklikt',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'navigabletoc' => 'Navigerbar innholdsfortegnelse',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'navigabletoc' => 'Somari navigable',
+	'navigabletoc-desc' => 'Apond lo somari al formulari de modificacion que desfila lo tèxte quand una seccion es clicada',
+);
+
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'navigabletoc' => 'Навигационное содержание',
-	'navigabletoc-desc' => 'Добавляет содержание в форму правки, просматривающее до секции при нажатии.',
+	'navigabletoc' => 'Оглавление с навигацией',
+	'navigabletoc-desc' => 'Добавляет на форму правки оглавление, прокручивающее текст в поле редактирования при выборе названия раздела',
 );
 
 /** Slovak (Slovenčina)

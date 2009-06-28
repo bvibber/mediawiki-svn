@@ -108,6 +108,14 @@ $messages['hsb'] = array(
 	'wikiarticlefeeds_combined_description' => 'To je kombinaciski kanal, kotryž zapiski z wjacorych kanalowych žórłow wobsahuje.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wikiarticlefeeds-desc' => 'Produce syndicationes generate ab paginas MediaWiki',
+	'wikiarticlefeeds_combined_description' => 'Isto es un syndication combinate, continente entratas de plure origines de syndicationes.',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */
@@ -149,9 +157,10 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
+ * @author Harald Khan
  */
 $messages['nn'] = array(
-	'wikiarticlefeeds-desc' => 'Produserer feed generert frå MediaWiki-sider',
+	'wikiarticlefeeds-desc' => 'Produserer mating generert frå MediaWiki-sider',
 	'wikiarticlefeeds_combined_description' => 'Dette er ein kombinert feed, som inneheld delar frå fleire feed-kjelder.',
 );
 

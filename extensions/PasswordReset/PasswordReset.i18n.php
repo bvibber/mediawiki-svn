@@ -278,7 +278,7 @@ $messages['dsb'] = array(
 	'passwordreset-submit' => 'Gronidło slědk stajiś',
 	'passwordreset-success' => 'Gronidło jo se slědk stajiło za wužywarski ID: $1',
 	'passwordreset-disableuser' => 'Wužywarske konto znjemóžniś?',
-	'passwordreset-disableuserexplain' => ')staja njepłaśiwy gronidłowy haš - wužywaŕ njamóžo se pśizjawiś)',
+	'passwordreset-disableuserexplain' => '(staja njepłaśiwy gronidłowy haš - wužywaŕ njamóžo se pśizjawiś)',
 	'passwordreset-disablesuccess' => 'Wužywarske konto jo se znjemóžniło za wužywarski ID: $1',
 	'passwordreset-accountdisabled' => 'Konto jo se znjemóžniło',
 	'disabledusers' => 'Znjemóžnjone wužywarje',
@@ -323,6 +323,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Imre
  * @author Kobazulo
  */
@@ -338,7 +339,7 @@ $messages['es'] = array(
 	'passwordreset-confirmpass' => 'Confirmar contraseña:',
 	'passwordreset-submit' => 'Reestablecer contraseña',
 	'passwordreset-success' => 'Contraseña ha sido reestablecida para ID de usuario: $1',
-	'passwordreset-disableuser' => 'Deshabilitar cuenta de usuario?',
+	'passwordreset-disableuser' => '¿Deshabilitar cuenta de usuario?',
 	'passwordreset-disablesuccess' => 'Cuenta de usuario ha sido deshabilitado para ID de usuario: $1',
 	'passwordreset-accountdisabled' => 'Cuenta ha sido deshabilitada',
 	'disabledusers' => 'Usuarios deshabilitados',
@@ -384,6 +385,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Dereckson
  * @author Grondin
  * @author IAlex
@@ -393,11 +395,11 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'passwordreset' => 'Remise à zéro du mot de passe',
 	'passwordreset-desc' => '[[Special:PasswordReset|Réinitialise le mot de passe wiki d’un utilisateur]] - nécessite les droits de « passwordreset »',
-	'passwordreset-invalidusername' => "Nom d'usager inconnu",
-	'passwordreset-emptyusername' => "Nom d'usager vide",
+	'passwordreset-invalidusername' => 'Nom d’usager inconnu',
+	'passwordreset-emptyusername' => 'Nom d’usager vide',
 	'passwordreset-nopassmatch' => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
 	'passwordreset-badtoken' => 'Jeton de modification inconnu',
-	'passwordreset-username' => "Nom d'utilisateur :",
+	'passwordreset-username' => 'Nom d’utilisateur :',
 	'passwordreset-newpass' => 'Nouveau mot de passe :',
 	'passwordreset-confirmpass' => 'Confirmez le mot de passe :',
 	'passwordreset-submit' => 'Remise à zéro du mot de passe',
@@ -651,11 +653,14 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
 	'passwordreset-badtoken' => 'Token penyuntingan tidak sah',
 	'passwordreset-username' => 'Nama pengguna:',
+	'passwordreset-newpass' => 'Kata sandi baru:',
+	'passwordreset-submit' => 'Buat ulang kata sandi',
 );
 
 /** Interlingue (Interlingue) */

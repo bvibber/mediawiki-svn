@@ -2321,6 +2321,16 @@ Buďte prosím trpezliví.',
 	'youtubeauthsub_jserror_nodesc' => 'Prosím, zadajte popis videa.',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Schläsinger
+ */
+$messages['sli'] = array(
+	'youtubeauthsub_title' => 'Tittel',
+	'youtubeauthsub_password' => 'YouTube-Passwurt',
+	'youtubeauthsub_username' => 'YouTube-Benutzernoame',
+	'youtubeauthsub_category' => 'Kategorie',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

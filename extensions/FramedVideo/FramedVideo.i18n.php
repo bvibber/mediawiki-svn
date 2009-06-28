@@ -93,6 +93,28 @@ $messages['arz'] = array(
 	'framedvideo-desc' => 'يسمح بتضمين الفيديو من مواقع ويب متعددة باستخدام الوسم <tt><nowiki><video></nowiki></tt>',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'framedvideo_errors' => 'Узьніклі шматлікія памылкі!',
+	'framedvideo_error' => 'Узьнікла памылка!',
+	'framedvideo_error_unknown_type' => 'Невядомы ідэнтыфікатар відэа-сэрвісу («$1»): праверце парамэтар «type».',
+	'framedvideo_error_no_id_given' => 'Няма парамэтру «id».',
+	'framedvideo_error_height_required' => 'Тып відэа «$1» патрабуе парамэтар «height».',
+	'framedvideo_error_height_required_not_only_width' => 'Тып відэа «$1» патрабуе парамэтар «height», ня толькі парамэтар «width».',
+	'framedvideo_error_width_too_big' => 'Пададзенае значэньне парамэтру «width» занадта вялікае.',
+	'framedvideo_error_height_too_big' => 'Пададзенае значэньне парамэтру «height» занадта вялікае.',
+	'framedvideo_error_no_integer' => 'Пададзенае значэньне «$1» не зьяўляецца дадатным лікам.',
+	'framedvideo_error_limit' => 'Самым вялікім дазволеным значэньнем зьяўляецца $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Значэньне «full» для парамэтру «size» недапушчальнае для відэа-сэрвісу з ідэнтыфікатарам «$1».',
+	'framedvideo_helppage' => 'Help:Відэа',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Падрабязьней пра сынтаксіс]].',
+	'framedvideo_error_height_and_width_required' => 'Тып відэа «$1» патрабуе парамэтры «height» і «width2» ці «width».',
+	'framedvideo-desc' => 'Дазваляе убудоўваць відэа з розных сайтаў з дапамогай тэга <tt><nowiki><video></nowiki></tt>',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -556,6 +578,15 @@ $messages['pt-br'] = array(
 	'framedvideo-desc' => 'Permite incorporar vídeos de vários sítios web, usando a marca <tt><nowiki><video></nowiki></tt>',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'framedvideo_errors' => 'Au avut loc mai multe erori!',
+	'framedvideo_error' => 'A avut loc o eroare!',
+	'framedvideo_error_limit' => 'Valoarea maximă permisă este $1.',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -660,5 +691,27 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'framedvideo_helppage' => 'Help:Video',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'framedvideo_errors' => 'Có nhiều lỗi xảy ra!',
+	'framedvideo_error' => 'Có một lỗi xảy ra!',
+	'framedvideo_error_unknown_type' => 'Không hiểu mã số dịch vụ video (“$1”): kiểm tra thông số “type”.',
+	'framedvideo_error_no_id_given' => 'Không có tham số “id”.',
+	'framedvideo_error_height_required' => 'Loại video “$1” cần tham số “height”.',
+	'framedvideo_error_height_required_not_only_width' => 'Loại video “$1” cần tham số “height”, chứ không chỉ tham số “width”.',
+	'framedvideo_error_width_too_big' => 'Giá trị tham số “width” quá lớn.',
+	'framedvideo_error_height_too_big' => 'Giá trị tham số “height” quá lớn.',
+	'framedvideo_error_no_integer' => 'Giá trị “$1” không phải số dương.',
+	'framedvideo_error_limit' => 'Giá trị cao nhất là $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Không cho phép giá trị “full” dành cho thông số “size” trong mã số dịch vụ video “$1”.',
+	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Thêm về cú pháp]].',
+	'framedvideo_error_height_and_width_required' => 'Kiểu video “$1” bắt buộc phải có thoong số “height” và “width2” hoặc “width”.',
+	'framedvideo-desc' => 'Cho phép nhúng video từ nhiều website khác nhau bằng cách dùng thẻ <tt><nowiki><video></nowiki></tt>',
 );
 

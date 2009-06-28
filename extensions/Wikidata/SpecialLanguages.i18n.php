@@ -1851,6 +1851,10 @@ $wdMessages['ckb-arab'] = array(
 	'ow_Value' => 'نرخ',
 	'ow_added' => 'زیادکرا',
 	'ow_removed' => 'لابردرا',
+	'ow_copy_help' => 'یارمەتی ئێستا بە ئاستی دڵخواز نەگەیشتە.',
+	'ow_copy_successful' => '<h2>ڕوونووسین سەرکەوتوو بوو</h2><br />
+لەوە دەچی دراوەت بە سەرکەوتوویی ڕوونووسین کرا.<br />
+لە یادمەکە بۆ ئەرخەیان بوون، دیسان چاوی لێ‌بکەیتەوە!',
 );
 
 /** Czech (Česky)
@@ -5383,6 +5387,11 @@ $wdMessages['ka'] = array(
 	'ow_suggest_next' => 'შემდეგი',
 );
 
+/** Kazakh (Қазақша) */
+$wdMessages['kk'] = array(
+	'langman_title' => 'Тілдерді меңгеру',
+);
+
 /** Kazakh (China) (‫قازاقشا (جۇنگو)‬) */
 $wdMessages['kk-cn'] = array(
 	'langman_title' => 'تٴىلدەردٴى مەڭگەرۋ',
@@ -5823,6 +5832,14 @@ Wi et ußsüht, es de Datebangk nit mieh konsistent. Wikidata kunnt kein jöltij
 	'ow_nstab_definedmeaning' => 'explizeete Bedüggdeniß',
 	'ow_nstab_edit_copy' => 'en Koppi ändere',
 	'right-addlanguage' => 'Enstellunge för Shprooche dobei donn udder ändere',
+);
+
+/** Kurdish (Kurdî / كوردی)
+ * @author Bangin
+ */
+$wdMessages['ku'] = array(
+	'ow_history' => 'Dîrok',
+	'ow_Source' => 'Çavkanî',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -8724,6 +8741,22 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 	'right-addlanguage' => 'Pridať a zmeniť jazykové nastavenia pomocou',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Schläsinger
+ */
+$wdMessages['sli'] = array(
+	'langman_title' => 'Sproacha-Manager',
+	'langman_iso639-3' => 'ISO-639-3-Code:',
+	'langman_iso639-2' => 'ISO-639-2-Code:',
+	'langman_wikimedia' => 'Wikimedia-Code:',
+	'langman_field_optional' => '(optional)',
+	'langman_addlang' => 'Sproache hinzufiega',
+	'importlangnames' => 'Wikidata: Sproachanoama importiera',
+	'importlangnames_title' => 'Sproachanoama importiera',
+	'datasearch_language' => 'Sproache:',
+	'datasearch_search_text' => 'Suchtext:',
+);
+
 /** Somali (Soomaaliga)
  * @author Yariiska
  */
@@ -10313,6 +10346,27 @@ $wdMessages['vo'] = array(
 	'ow_show' => 'Jonolöd',
 );
 
+/** Yue (粵語) */
+$wdMessages['yue'] = array(
+	'languages' => 'Wikidata: 語言管理員',
+	'langman_title' => '語言管理員',
+	'datasearch' => 'Wikidata: 資料搜尋',
+);
+
+/** Chinese (中文) */
+$wdMessages['zh'] = array(
+	'languages' => 'Wikidata: 语言管理员',
+	'langman_title' => '语言管理员',
+	'datasearch' => 'Wikidata: 数据搜寻',
+);
+
+/** Chinese (China) (‪中文(中国大陆)‬) */
+$wdMessages['zh-cn'] = array(
+	'languages' => 'Wikidata: 语言管理员',
+	'langman_title' => '语言管理员',
+	'datasearch' => 'Wikidata: 数据搜寻',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  * @author Gaoxuewei
@@ -10387,5 +10441,33 @@ $wdMessages['zh-hant'] = array(
 	'datasearch_within_words' => '與字元：',
 	'datasearch_within_ext_ids' => '與外部辨識器：',
 	'importtsv' => 'Wikidata: 匯入分頁分割資料',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬) */
+$wdMessages['zh-hk'] = array(
+	'languages' => 'Wikidata: 語言管理員',
+	'langman_title' => '語言管理員',
+	'datasearch' => 'Wikidata: 資料搜尋',
+);
+
+/** Chinese (Singapore) (‪中文(新加坡)‬) */
+$wdMessages['zh-sg'] = array(
+	'languages' => 'Wikidata: 语言管理员',
+	'langman_title' => '语言管理员',
+	'datasearch' => 'Wikidata: 数据搜寻',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬) */
+$wdMessages['zh-tw'] = array(
+	'languages' => 'Wikidata: 語言管理員',
+	'langman_title' => '語言管理員',
+	'datasearch' => 'Wikidata: 資料搜尋',
+);
+
+/** Yue (粵語) */
+$wdMessages['zh-yue'] = array(
+	'languages' => 'Wikidata: 語言管理員',
+	'langman_title' => '語言管理員',
+	'datasearch' => 'Wikidata: 資料搜尋',
 );
 
