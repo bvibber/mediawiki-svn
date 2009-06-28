@@ -479,7 +479,6 @@ $messages['eo'] = array(
 	'edittoolbar-tool-big-example' => 'Granda teksto',
 	'edittoolbar-tool-small' => 'Malgranda',
 	'edittoolbar-tool-small-example' => 'Malgranda teksto',
-	'edittoolbar-group-whitespace' => 'Blankaspaco',
 	'edittoolbar-tool-newline' => 'Nova linio',
 	'edittoolbar-section-characters' => 'Specialaj signoj',
 	'edittoolbar-section-help' => 'Helpo',
@@ -913,7 +912,6 @@ $messages['grc'] = array(
 	'edittoolbar-tool-big-example' => 'Μέγα κείμενον',
 	'edittoolbar-tool-small' => 'Σμικρόν',
 	'edittoolbar-tool-small-example' => 'Σμικρόν κείμενον',
-	'edittoolbar-group-media' => 'Μέσα',
 	'edittoolbar-tool-newline' => 'Νέα γραμμή',
 	'edittoolbar-section-help' => 'Βοήθεια',
 	'edittoolbar-help-heading-description' => 'Περιγραφή',
@@ -2026,7 +2024,6 @@ $messages['nds-nl'] = array(
 	'edittoolbar-tool-superscript' => 'Superscript',
 	'edittoolbar-tool-superscript-example' => 'Tekse in superscript',
 	'edittoolbar-tool-subscript' => 'Subscript',
-	'edittoolbar-group-media' => 'Media',
 );
 
 /** Dutch (Nederlands)
@@ -3020,9 +3017,7 @@ $messages['uk'] = array(
 	'edittoolbar-tool-superscript-example' => 'Надрядковий текст',
 	'edittoolbar-tool-subscript' => 'Підрядковий',
 	'edittoolbar-tool-subscript-example' => 'Підрядковий текст',
-	'edittoolbar-group-media' => 'Медіа',
 	'edittoolbar-tool-gallery' => 'Галерея',
-	'edittoolbar-group-whitespace' => 'Пробіл',
 	'edittoolbar-tool-newline' => 'Новий рядок',
 	'edittoolbar-section-characters' => 'Спеціальні символи',
 	'edittoolbar-section-help' => 'Довідка',
