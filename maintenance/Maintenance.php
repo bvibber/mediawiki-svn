@@ -396,7 +396,7 @@ abstract class Maintenance {
 				# Short options
 				for ( $p=1; $p<strlen( $arg ); $p++ ) {
 					$option = $arg{$p};
-					if ( isset( $this->mParams[$option]['withArg'] ) ) {
+					if ( $this->mParams[$option]['withArg'] ) {
 						$param = next( $argv );
 						if ( $param === false ) {
 							$this->error( "$arg needs a value after it\n", true );
@@ -444,6 +444,8 @@ abstract class Maintenance {
 			$this->mDbPass = $this->getOption( 'dbpass' );
 		if( $this->hasOption( 'quiet' ) )
 			$this->mQuiet = true;
+		if( $this->hasOption( 'batch-size' ) )
+			$this->mBatchSize = $this->getOption( 'batch-size' );
 	}
 
 	/**
@@ -454,7 +456,7 @@ abstract class Maintenance {
 		if( $this->hasOption('help') || in_array( 'help', $this->mArgs ) || $force ) {
 			$this->mQuiet = false;
 			if( $this->mDescription ) {
-				$this->output( $this->mDescription . "\n" );
+				$this->output( "\n" . $this->mDescription . "\n" );
 			}
 			$this->output( "\nUsage: php " . $this->mSelf );
 			if( $this->mParams ) {

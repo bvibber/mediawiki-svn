@@ -4,34 +4,36 @@
  * @ingroup Maintenance
  */
 
-require_once 'commandLine.inc';
+require_once( "Maintenance.php" );
 
-class UploadDumper {
-	function __construct( $args ) {
+class UploadDumper extends Maintenance {
+	public function __construct() {
+		parent::__construct();
+		$this->mDescription = "Generates list of uploaded files which can be fed to tar or similar.
+By default, outputs relative paths against the parent directory of \$wgUploadDirectory.";
+		$this->addOption( 'base', 'Set base relative path instead of wiki include root', false, true );
+		$this->addOption( 'local', 'List all local files, used or not. No shared files included' );
+		$this->addOption( 'used', 'Skip local images that are not used' );
+		$this->addOption( 'shared', 'Include images used from shared repository' );
+	}
+
+	public function execute() {
 		global $IP, $wgUseSharedUploads;
 		$this->mAction = 'fetchLocal';
-		$this->mBasePath = $IP;
+		$this->mBasePath = $this->getOption( 'base', $IP );
 		$this->mShared = false;
 		$this->mSharedSupplement = false;
-		
-		if( isset( $args['help'] ) ) {
-			$this->mAction = 'help';
-		}
-		
-		if( isset( $args['base'] ) ) {
-			$this->mBasePath = $args['base'];
-		}
-		
-		if( isset( $args['local'] ) ) {
+
+		if( $this->hasOption('local') ) {
 			$this->mAction = 'fetchLocal';
 		}
 		
-		if( isset( $args['used'] ) ) {
+		if( $this->hasOption('used') ) {
 			$this->mAction = 'fetchUsed';
 		}
 		
-		if( isset( $args['shared'] ) ) {
-			if( isset( $args['used'] ) ) {
+		if( $this->hasOption('shared') ) {
+			if( $this->hasOption('used') ) {
 				// Include shared-repo files in the used check
 				$this->mShared = true;
 			} else {
@@ -39,34 +41,12 @@ class UploadDumper {
 				$this->mSharedSupplement = true;
 			}
 		}
-	}
-	
-	function run() {
 		$this->{$this->mAction}( $this->mShared );
 		if( $this->mSharedSupplement ) {
 			$this->fetchUsed( true );
 		}
 	}
-	
-	function help() {
-		echo <<<END
-Generates list of uploaded files which can be fed to tar or similar.
-By default, outputs relative paths against the parent directory of
-\$wgUploadDirectory.
 
-Usage:
-php dumpUploads.php [options] > list-o-files.txt
-
-Options:
---base=<path>  Set base relative path instead of wiki include root
-
---local        List all local files, used or not. No shared files included.
---used         Skip local images that are not used
---shared       Include images used from shared repository
-
-END;
-	}
-	
 	/**
 	 * Fetch a list of all or used images from a particular image source.
 	 * @param string $table
@@ -89,7 +69,7 @@ END;
 		}
 		$dbr->freeResult( $result );
 	}
-	
+
 	function fetchLocal( $shared ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select( 'image',
@@ -108,17 +88,16 @@ END;
 		if( $file && $this->filterItem( $file, $shared ) ) {
 			$filename = $file->getFullPath();
 			$rel = wfRelativePath( $filename, $this->mBasePath );
-			echo "$rel\n";
+			$this->output( "$rel\n" );
 		} else {
 			wfDebug( __METHOD__ . ": base file? $name\n" );
 		}
 	}
-	
+
 	function filterItem( $file, $shared ) {
 		return $shared || $file->isLocal();
 	}
 }
 
-$dumper = new UploadDumper( $options );
-$dumper->run();
-
+$maintClass = "UploadDumper";
+require_once( DO_MAINTENANCE );

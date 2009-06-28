@@ -14,7 +14,7 @@ require_once( "Maintenance.php" );
 class UpdateRestrictions extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "";
+		$this->mDescription = "Updates page_restrictions table from old page_restriction column";
 		$this->setBatchSize( 100 );
 	}
 

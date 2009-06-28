@@ -7,28 +7,35 @@
  * @ingroup Maintenance
  */
 
-require_once( 'commandLine.inc' );
+require_once( "Maintenance.php" );
 
-$fname = 'fixUserRegistration.php';
+class FixUserRegistration extends Maintenance {
+	public function __construct() {
+		parent::__construct();
+		$this->mDescription = "Fix the user_registration field";
+	}
 
-$dbr = wfGetDB( DB_SLAVE );
-$dbw = wfGetDB( DB_MASTER );
+	public function execute() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
 
-// Get user IDs which need fixing
-$res = $dbr->select( 'user', 'user_id', 'user_registration IS NULL', $fname );
-
-while ( $row = $dbr->fetchObject( $res ) ) {
-	$id = $row->user_id;
-	// Get first edit time
-	$timestamp = $dbr->selectField( 'revision', 'MIN(rev_timestamp)', array( 'rev_user' => $id ), $fname );
-	// Update
-	if ( !empty( $timestamp ) ) {
-		$dbw->update( 'user', array( 'user_registration' => $timestamp ), array( 'user_id' => $id ), $fname );
-		print "$id $timestamp\n";
-	} else {
-		print "$id NULL\n";
+		// Get user IDs which need fixing
+		$res = $dbr->select( 'user', 'user_id', 'user_registration IS NULL', __METHOD__ );
+		while ( $row = $dbr->fetchObject( $res ) ) {
+			$id = $row->user_id;
+			// Get first edit time
+			$timestamp = $dbr->selectField( 'revision', 'MIN(rev_timestamp)', array( 'rev_user' => $id ), __METHOD__ );
+			// Update
+			if ( !empty( $timestamp ) ) {
+				$dbw->update( 'user', array( 'user_registration' => $timestamp ), array( 'user_id' => $id ), __METHOD__ );
+				$this->output( "$id $timestamp\n" );
+			} else {
+				$this->output( "$id NULL\n" );
+			}
+		}
+		$this->output( "\n" );
 	}
 }
-print "\n";
 
-
+$maintClass = "FixUserRegistration";
+require_once( DO_MAINTENANCE );

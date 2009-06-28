@@ -98,4 +98,6 @@ class RebuildFileCache extends Maintenance {
 			unset($wgArticle);
 	}
 }
-require_once( "commandLine.inc" );
+
+$maintClass = "RebuildFileCache";
+require_once( DO_MAINTENANCE );
