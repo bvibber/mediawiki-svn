@@ -8,13 +8,10 @@
 require_once( "Maintenance.php" );
 
 class PopulateParentId extends Maintenance {
-
-	// Batch size
-	const BATCH_SIZE = 200;
-
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Populates rev_parent_id";
+		$this->setBatchSize( 200 );
 	}
 
 	public function execute() {
@@ -29,14 +26,14 @@ class PopulateParentId extends Maintenance {
 			$this->output( "...revision table seems to be empty.\n" );
 			$db->insert( 'updatelog',
 				array( 'ul_key' => 'populate rev_parent_id' ),
-				__FUNCTION__,
+				__METHOD__,
 				'IGNORE' );
 			return;
 		}
 		# Do remaining chunk
-		$end += self::BATCH_SIZE - 1;
+		$end += $this->mBatchSize - 1;
 		$blockStart = intval( $start );
-		$blockEnd = intval( $start ) + self::BATCH_SIZE - 1;
+		$blockEnd = intval( $start ) + $this->mBatchSize - 1;
 		$count = 0;
 		$changed = 0;
 		while( $blockEnd <= $end ) {
@@ -44,7 +41,7 @@ class PopulateParentId extends Maintenance {
 			$cond = "rev_id BETWEEN $blockStart AND $blockEnd";
 			$res = $db->select( 'revision', 
 				array('rev_id','rev_page','rev_timestamp','rev_parent_id'), 
-				$cond, __FUNCTION__ );
+				$cond, __METHOD__ );
 			# Go through and update rev_parent_id from these rows.
 			# Assume that the previous revision of the title was
 			# the original previous revision of the title when the
@@ -56,20 +53,20 @@ class PopulateParentId extends Maintenance {
 				$previousID = $db->selectField( 'revision', 'rev_id', 
 					array( 'rev_page' => $row->rev_page, 'rev_timestamp' => $row->rev_timestamp,
 						"rev_id < " . intval( $row->rev_id ) ), 
-					__FUNCTION__,
+					__METHOD__,
 					array( 'ORDER BY' => 'rev_id DESC' ) );
 				# If there are none, check the the highest ID with a lower timestamp
 				if( !$previousID ) {
 					# Get the highest older timestamp
 					$lastTimestamp = $db->selectField( 'revision', 'rev_timestamp', 
 						array( 'rev_page' => $row->rev_page, "rev_timestamp < " . $db->addQuotes( $row->rev_timestamp ) ), 
-						__FUNCTION__,
+						__METHOD__,
 						array( 'ORDER BY' => 'rev_timestamp DESC' ) );
 					# If there is one, let the highest rev ID win
 					if( $lastTimestamp ) {
 						$previousID = $db->selectField( 'revision', 'rev_id', 
 							array( 'rev_page' => $row->rev_page, 'rev_timestamp' => $lastTimestamp ), 
-							__FUNCTION__,
+							__METHOD__,
 							array( 'ORDER BY' => 'rev_id DESC' ) );
 					}
 				}
@@ -80,16 +77,16 @@ class PopulateParentId extends Maintenance {
 				$db->update( 'revision',
 					array( 'rev_parent_id' => $previousID ),
 					array( 'rev_id' => $row->rev_id ),
-					__FUNCTION__ );
+					__METHOD__ );
 				$count++;
 			}
-			$blockStart += self::BATCH_SIZE - 1;
-			$blockEnd += self::BATCH_SIZE - 1;
+			$blockStart += $this->mBatchSize - 1;
+			$blockEnd += $this->mBatchSize - 1;
 			wfWaitForSlaves( 5 );
 		}
 		$logged = $db->insert( 'updatelog',
 			array( 'ul_key' => 'populate rev_parent_id' ),
-			__FUNCTION__,
+			__METHOD__,
 			'IGNORE' );
 		if( $logged ) {
 			$this->output( "rev_parent_id population complete ... {$count} rows [{$changed} changed]\n" );

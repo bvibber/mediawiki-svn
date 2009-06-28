@@ -9,10 +9,10 @@ class CheckImages extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Check images to see if they exist, are readable, etc";
+		$this->setBatchSize( 1000 );
 	}
 	
 	public function execute() {
-		$batchSize = 1000;
 		$start = '';
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -21,7 +21,7 @@ class CheckImages extends Maintenance {
 	
 		do {
 			$res = $dbr->select( 'image', '*', array( 'img_name > ' . $dbr->addQuotes( $start ) ), 
-				__METHOD__, array( 'LIMIT' => $batchSize ) );
+				__METHOD__, array( 'LIMIT' => $this->mBatchSize ) );
 			foreach ( $res as $row ) {
 				$numImages++;
 				$start = $row->img_name;

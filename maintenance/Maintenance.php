@@ -313,6 +313,7 @@ abstract class Maintenance {
 
 		$this->loadParamsAndArgs();
 		$this->maybeHelp();
+		$this->validateParamsAndArgs();
 	}
 
 	/**
@@ -410,22 +411,27 @@ abstract class Maintenance {
 			}
 		}
 
+		$this->mOptions = $options;
+		$this->mArgs = $args;
+		$this->loadSpecialVars();
+		$this->inputLoaded = true;
+	}
+
+	/**
+	 * Run some validation checks on the params, etc
+	 */
+	private function validateParamsAndArgs() {
 		# Check to make sure we've got all the required ones
 		foreach( $this->mParams as $opt => $info ) {
 			if( $info['require'] && !$this->hasOption($opt) ) {
 				$this->error( "Param $opt required.\n", true );
 			}
 		}
-		
+
 		# Also make sure we've got enough arguments
-		if ( count( $args ) < count( $this->mArgList ) ) {
+		if ( count( $this->mArgs ) < count( $this->mArgList ) ) {
 			$this->error( "Not enough arguments passed", true );
 		}
-
-		$this->mOptions = $options;
-		$this->mArgs = $args;
-		$this->loadSpecialVars();
-		$this->inputLoaded = true;
 	}
 	
 	/**

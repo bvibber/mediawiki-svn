@@ -21,9 +21,6 @@ class ChangePassword extends Maintenance {
 	}
 	
 	public function execute() {
-		if( !$this->hasOption('user') || !$this->hasOption('password') ) {
-			$this->error( "Username or password not provided, halting.", true );
-		}
 		$user = User::newFromName( $this->getOption('user') );
 		if( !$user->getId() ) {
 			$this->error( "No such user: " . $this->getOption('user') . "\n", true );
