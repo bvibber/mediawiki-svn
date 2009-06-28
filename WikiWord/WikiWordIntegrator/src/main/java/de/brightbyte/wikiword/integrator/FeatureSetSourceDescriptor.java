@@ -102,7 +102,7 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 	}
 
 	public String getPropertySubjectNameField() {
-		return requireTweak("property-subject-name-field");
+		return getTweak("property-subject-name-field", null);
 	}
 
 	public boolean getSkipHeader() {
