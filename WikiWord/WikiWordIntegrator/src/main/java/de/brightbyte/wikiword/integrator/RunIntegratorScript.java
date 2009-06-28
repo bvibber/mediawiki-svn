@@ -99,6 +99,7 @@ public class RunIntegratorScript extends CliApp {
 		i.set("datasource", getConfiguredDataSource());                    
 		i.set("scriptManglers", getSqlScriptManglers());                    
 		i.set("tablePrefix", getConfiguredDataset().getDbPrefix());                    
+		i.set("scriptBaseUrl", getInputHelper().getURL(n));                    
 
 		i.eval("import java.util.*;");                    
 		i.eval("import de.brightbyte.wikiword.*;");                    
@@ -120,8 +121,8 @@ public class RunIntegratorScript extends CliApp {
 	protected Collection<Functor<String, String>> getSqlScriptManglers() {
 		ArrayList<Functor<String, String>> list = new ArrayList<Functor<String, String>>();
 		
-		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_prefix* \\*/"), getConfiguredDataset().getDbPrefix()) );
-		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_db* \\*/"), getConfiguredDatasetName()) );
+		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_prefix", getConfiguredDataset().getDbPrefix()) );
+		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_db", getConfiguredDatasetName()) );
 		
 		return list;
 	}

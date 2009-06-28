@@ -1,0 +1,3 @@
+scriptURL( path ) {
+	return new java.net.URL(scriptBaseUrl, path).toString();
+}

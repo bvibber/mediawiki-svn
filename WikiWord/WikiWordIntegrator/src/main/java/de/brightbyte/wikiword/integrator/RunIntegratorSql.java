@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.sql.DataSource;
@@ -123,11 +124,15 @@ public class RunIntegratorSql extends CliApp {
 				
 				for (Map.Entry<Object, String> e: subst.entrySet()) {
 					Object o = e.getKey();
-					Pattern p;
-					if (o instanceof Pattern)  p = (Pattern)o;
-					else p = Pattern.compile("/\\* *"+o+"* \\*/");
+					Functor<String, String> f;
+					if (o instanceof Pattern)  {
+						f = new SqlScriptRunner.RegularExpressionMangler((Pattern)o, Matcher.quoteReplacement(e.getValue()));
+					}
+					else {
+						f = SqlScriptRunner.makeCommentSubstitutionMangler(e.getKey().toString(), e.getValue());
+					}
 					
-					this.subsitutions.add(new SqlScriptRunner.RegularExpressionMangler(p, e.getValue()));
+					this.subsitutions.add(f);
 				}
 		}
 		
@@ -246,11 +251,11 @@ public class RunIntegratorSql extends CliApp {
 		
 		if (this.subsitutions!=null) list.addAll(this.subsitutions);
 		
-		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_prefix* \\*/"), getConfiguredDataset().getDbPrefix()) );
-		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_db* \\*/"), getConfiguredDatasetName()) );
+		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_prefix", getConfiguredDataset().getDbPrefix()) );
+		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_db", getConfiguredDatasetName()) );
 		
-		if (getMappingTableName()!=null) list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_mapping_table* \\*/"), getMappingTableName()) );
-		if (getForeignTableName()!=null) list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_foreign_table* \\*/"), getForeignTableName()) );
+		if (getMappingTableName()!=null) list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_mapping_table", getMappingTableName()) );
+		if (getForeignTableName()!=null) list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_foreign_table", getForeignTableName()) );
 		
 		return list;
 	}

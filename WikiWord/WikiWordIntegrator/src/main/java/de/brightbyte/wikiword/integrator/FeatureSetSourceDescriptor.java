@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import de.brightbyte.data.Functor;
+import de.brightbyte.db.SqlScriptRunner;
 import de.brightbyte.db.SqlScriptRunner.RegularExpressionMangler;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.text.CsvLineChunker;
@@ -144,9 +145,7 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 		Map<String, String>  subst = getTweak("sql-comment-subst", Collections.<String, String>emptyMap());
 		
 		for (Map.Entry<String, String>e: subst.entrySet()) {
-			Pattern p = Pattern.compile("/\\* *"+e.getKey()+" *\\*/");
-			RegularExpressionMangler m = new RegularExpressionMangler(p, e.getValue());
-			manglers.add(m);
+			manglers.add(SqlScriptRunner.makeCommentSubstitutionMangler(e.getKey(), e.getValue()));
 		}
 		
 		return manglers;

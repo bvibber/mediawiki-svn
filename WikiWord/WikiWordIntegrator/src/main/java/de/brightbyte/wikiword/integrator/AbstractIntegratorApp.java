@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import javax.sql.DataSource;
 
@@ -389,9 +388,9 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		List<Functor<String, String>> more = sourceDescriptor.getScriptManglers();
 		if (more!=null) list.addAll(more);
 		
-		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_prefix* \\*/"), getConfiguredDataset().getDbPrefix()) );
-		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_db* \\*/"), getConfiguredDatasetName()) );
-		list.add( new SqlScriptRunner.RegularExpressionMangler(Pattern.compile("/\\* *wikiword_target_table* \\*/"), getTargetTableName()) );
+		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_prefix", getConfiguredDataset().getDbPrefix()) );
+		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_db", getConfiguredDatasetName()) );
+		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_target_table", getTargetTableName()) );
 		
 		return list;
 	}
