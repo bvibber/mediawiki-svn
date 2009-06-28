@@ -456,14 +456,29 @@ class User {
 			# Illegal name
 			return null;
 		}
+		
+		static $cache = array();
+		
+		if ( isset($cache[$name]) ) {
+			return $cache[$name];
+		}
+		
 		$dbr = wfGetDB( DB_SLAVE );
 		$s = $dbr->selectRow( 'user', array( 'user_id' ), array( 'user_name' => $nt->getText() ), __METHOD__ );
 
 		if ( $s === false ) {
-			return 0;
+			$result = 0;
 		} else {
-			return $s->user_id;
+			$result = $s->user_id;
 		}
+		
+		$cache[$name] = $result;
+		
+		if ( count($cache) > 1000 ) {
+			$cache = array();
+		}
+		
+		return $result;
 	}
 
 	/**
@@ -601,21 +616,23 @@ class User {
 	/**
 	 * Is the input a valid password for this user?
 	 *
-	 * @param $password \string Desired password
-	 * @return \bool True or false
+	 * @param $password String Desired password
+	 * @return mixed: true on success, string of error message on failure
 	 */
 	function isValidPassword( $password ) {
 		global $wgMinimalPasswordLength, $wgContLang;
 
-		$result = null;
 		if( !wfRunHooks( 'isValidPassword', array( $password, &$result, $this ) ) )
 			return $result;
-		if( $result === false )
-			return false;
 
-		// Password needs to be long enough, and can't be the same as the username
-		return strlen( $password ) >= $wgMinimalPasswordLength
-			&& $wgContLang->lc( $password ) !== $wgContLang->lc( $this->mName );
+		// Password needs to be long enough
+		if( strlen( $password ) < $wgMinimalPasswordLength ) {
+			return 'passwordtooshort';
+		} elseif( $wgContLang->lc( $password ) == $wgContLang->lc( $this->mName ) ) {
+			return 'password-name-match';
+		} else {
+			return true;
+		}
 	}
 
 	/**
@@ -1699,9 +1716,10 @@ class User {
 				throw new PasswordError( wfMsg( 'password-change-forbidden' ) );
 			}
 
-			if( !$this->isValidPassword( $str ) ) {
+			$valid = $this->isValidPassword( $str );
+			if( $valid !== true ) {
 				global $wgMinimalPasswordLength;
-				throw new PasswordError( wfMsgExt( 'passwordtooshort', array( 'parsemag' ),
+				throw new PasswordError( wfMsgExt( $valid, array( 'parsemag' ),
 					$wgMinimalPasswordLength ) );
 			}
 		}
@@ -2710,7 +2728,7 @@ class User {
 		// to. Certain authentication plugins do NOT want to save
 		// domain passwords in a mysql database, so we should
 		// check this (incase $wgAuth->strict() is false).
-		if( !$this->isValidPassword( $password ) ) {
+		if( $this->isValidPassword( $password ) !== true ) {
 			return false;
 		}
 

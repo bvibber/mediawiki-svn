@@ -460,7 +460,7 @@ $messages = array(
 'nstab-media'     => 'Media paĝo',
 'nstab-special'   => 'Speciala paĝo',
 'nstab-project'   => 'Projektpaĝo',
-'nstab-image'     => 'Bildo / dosiero',
+'nstab-image'     => 'Dosiero',
 'nstab-mediawiki' => 'Sistema mesaĝo',
 'nstab-template'  => 'Ŝablono',
 'nstab-help'      => 'Helpo',
@@ -1551,7 +1551,7 @@ Klaku la kolumnan titolon por ŝanĝi la direkton de ordigo.',
 'listfiles_count'       => 'Versioj',
 
 # File description page
-'file-anchor-link'          => 'Bildo / dosiero',
+'file-anchor-link'          => 'Dosiero',
 'filehist'                  => 'Historio de dosiero',
 'filehist-help'             => 'Klaku daton/tempon por rigardi la dosieron kiel ĝin ŝajnitan tiame.',
 'filehist-deleteall'        => 'forigi ĉiujn',
@@ -2810,7 +2810,7 @@ Sekvaj ligilo en la sama linio estas konsiderata kiel esceptoj (paĝoj kiel la b
 'exif-meteringmode-6'   => 'Parta',
 'exif-meteringmode-255' => 'Alia',
 
-'exif-lightsource-0'   => 'Nesciata',
+'exif-lightsource-0'   => 'Nekonata',
 'exif-lightsource-1'   => 'Taglumo',
 'exif-lightsource-2'   => 'Fluoreska',
 'exif-lightsource-3'   => 'Volframa (inkandeska lumo)',

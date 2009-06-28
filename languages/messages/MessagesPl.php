@@ -656,8 +656,9 @@ Sprawdź poprawność pisowni.',
 'nouserspecified'            => 'Musisz podać nazwę użytkownika.',
 'wrongpassword'              => 'Podane hasło jest nieprawidłowe. Spróbuj jeszcze raz.',
 'wrongpasswordempty'         => 'Wprowadzone hasło jest puste. Spróbuj ponownie.',
-'passwordtooshort'           => 'Twoje hasło jest błędne lub za krótkie.
-Musi mieć co najmniej $1 {{PLURAL:$1|znak|znaki|znaków}} i być inne, niż Twoja nazwa użytkownika.',
+'passwordtooshort'           => 'Twoje hasło jest za krótkie.
+Musi mieć co najmniej $1 {{PLURAL:$1|znak|znaki|znaków}}.',
+'password-name-match'        => 'Twoje hasło musi być inne niż Twoja nazwa użytkownika.',
 'mailmypassword'             => 'Wyślij mi nowe hasło poprzez e‐mail',
 'passwordremindertitle'      => 'Nowe tymczasowe hasło do {{GRAMMAR:D.lp|{{SITENAME}}}}',
 'passwordremindertext'       => 'Ktoś (prawdopodobnie Ty, spod adresu IP $1)
@@ -1946,7 +1947,7 @@ Adres e‐mailowy, który został przez Ciebie wprowadzony w [[Special:Preferenc
 'noemailtext'      => 'Ten użytkownik nie podał poprawnego adresu e‐mail.',
 'nowikiemailtitle' => 'Brak zezwolenia na otrzymywanie e‐maili',
 'nowikiemailtext'  => 'Ten użytkownik nie chce otrzymywać wiadomości e‐mail od innych użytkowników.',
-'email-legend'     => 'Wyślij e‐mail do innego użytkownika {{GRAMMAR:MS.lp|{{SITENAME}}}}',
+'email-legend'     => 'Wyślij e‐mail do innego użytkownika {{GRAMMAR:D.lp|{{SITENAME}}}}',
 'emailfrom'        => 'Od:',
 'emailto'          => 'Do:',
 'emailsubject'     => 'Temat:',

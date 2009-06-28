@@ -27,6 +27,7 @@
  * @author Muttley
  * @author Mzm5zbC3
  * @author Suisui
+ * @author Whym
  * @author לערי ריינהארט
  */
 
@@ -1270,7 +1271,7 @@ $1",
 'gender-unknown'                => '未指定',
 'gender-male'                   => '男',
 'gender-female'                 => '女',
-'prefs-help-gender'             => '任意: 対象の性別によって表現が変わる言語での使用を念頭に、性を考慮したユーザインタフェースを実現するために使われます。この情報は公開されます。',
+'prefs-help-gender'             => '省略可能: 対象の文法的性によって表現が変わる言語での使用を念頭に、文法的性を考慮したユーザインタフェースを実現するために使われます。この情報は公開されます。',
 'email'                         => 'メールアドレス',
 'prefs-help-realname'           => '本名登録は任意です。本名を登録した場合、あなたの著作物の帰属表示に用いられます。',
 'prefs-help-email'              => 'メールアドレスの設定は任意ですが、設定しておけばパスワードを忘れた際に新しいパスワードを電子メールで受け取ることができます。
@@ -1915,8 +1916,8 @@ PICT # misc.
 'removedwatchtext'     => 'ページ「[[:$1]]」を[[Special:Watchlist|ウォッチリスト]]から削除しました。',
 'watch'                => '監視',
 'watchthispage'        => 'このページを監視する',
-'unwatch'              => '監視をやめる',
-'unwatchthispage'      => '監視をやめる',
+'unwatch'              => '監視停止',
+'unwatchthispage'      => '監視停止',
 'notanarticle'         => '記事ではありません',
 'notvisiblerev'        => 'この版は削除されました',
 'watchnochange'        => 'ウォッチリストに登録しているページに指定期間内に編集されたものはありません。',
@@ -3189,7 +3190,7 @@ $1',
 'fileduplicatesearch-result-n' => '「$1」と重複するファイルが$2{{PLURAL:$2|個}}あります。',
 
 # Special:SpecialPages
-'specialpages'                   => '特別ページ',
+'specialpages'                   => '特別ページ一覧',
 'specialpages-note'              => '----
 *通常の特別ページ。
 * <strong class="mw-specialpagerestricted">制限されている特別ページ。</strong>',

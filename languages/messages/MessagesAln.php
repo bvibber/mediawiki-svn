@@ -27,7 +27,7 @@ $messages = array(
 'tog-hideminor'               => 'Mshef redaktimet e vogla të bâme së voni',
 'tog-hidepatrolled'           => 'Mshef redaktimet e mbikëqyruna në ndryshimet e fundit',
 'tog-newpageshidepatrolled'   => 'Mshef redaktimet e mbikëqyruna prej listës së faqeve të reja',
-'tog-extendwatchlist'         => "Zgjâno listën mbikëqyrëse me i pa të tâna ndryshimet, jo veç ato t'fundit",
+'tog-extendwatchlist'         => 'Zgjâno listën e mbikëqyrjeve që me i pa tâna ndryshimet, jo veç ato mâ të fresktat',
 'tog-usenewrc'                => 'Përdor ndryshimet e mëdha të bâme së voni (JavaScript)',
 'tog-numberheadings'          => 'Numëro automatikisht mbititujt',
 'tog-showtoolbar'             => 'Trego butonat për redaktim (JavaScript)',
@@ -45,7 +45,7 @@ $messages = array(
 'tog-previewontop'            => 'Vendose parapamjen përpara kutisë redaktuese',
 'tog-previewonfirst'          => 'Shfaqe parapamjen në redaktimin e parë',
 'tog-nocache'                 => 'Mos ruej kopje të faqeve',
-'tog-enotifwatchlistpages'    => 'Njoftomë me email kur ndryshojnë faqet nën mbikëqyrje',
+'tog-enotifwatchlistpages'    => 'Njoftomë me email, kur ndryshojnë faqet e mbikëqyruna',
 'tog-enotifusertalkpages'     => 'Njoftomë me email kur ndryshon faqja ime e diskutimit',
 'tog-enotifminoredits'        => 'Njoftomë me email për redaktime të vogla të faqeve',
 'tog-enotifrevealaddr'        => 'Shfaqe adresën time në emailat njoftues',
@@ -623,9 +623,69 @@ Ju mundeni [[Special:Search/{{PAGENAME}}|me kërkue këtë titull]] në faqe tje
 apo [{{fullurl:{{FULLPAGENAME}}|action=edit}} me redaktue këtë faqe]</span>.',
 'userpage-userdoesnotexist' => 'Llogaria e përdoruesit "$1" nuk âsht regjistrue.
 Ju lutemi kontrolloni nëse doni me krijue/redaktue këtë faqe.',
-'editing'                   => 'Tuj redaktue $1',
-'copyrightwarning'          => "Kontributet te {{SITENAME}} janë të konsiderueme të dhana nën licensën $2 (shikoni $1 për hollësirat).<br />
-'''NDALOHET DHËNIA E PUNIMEVE PA PAS LEJE NGA AUTORI NË MOSPËRPUTHJE ME KËTË LICENSË!'''<br />",
+'clearyourcache'            => "'''Shenim - Mbas ruejtjes, ka mundësi që duheni me shmângë memorizimin në cache për me i pâ ndryshimet.'''
+'''Mozilla / Firefox / Safari:''' mbani ''Shift'' tue klikue në ''Reload'', ose trusni ''Ctrl-F5'' ose ''Ctrl-R'' (''Command-R'' në Macintosh);
+'''Konqueror: '''klikoni ''Reload'' ose trusni ''F5'';
+'''Opera:''' fshini cachein në ''Tools → Preferences'';
+'''Internet Explorer:''' mbani ''Ctrl'' tue klikue në ''Refresh,'' ose trusni ''Ctrl-F5''.",
+'usercssjsyoucanpreview'    => "'''Këshillë:''' Përdorni butonin 'Trego parapâmjen' për me testue CSS/JS para se me i regjistrue ndryshimet.",
+'usercsspreview'            => "'''Vini re, jeni tue pâ veç parapâmjen e CSSit tuej.'''
+'''Ende nuk e keni ruejtë!'''",
+'userjspreview'             => "'''Vini re, jeni tue testue/pâ veç parapâmjen e JavaScriptit tuej.'''
+'''Ende nuk e keni ruejtë!'''",
+'userinvalidcssjstitle'     => "'''Kujdes:''' Nuk ka pâmje me emën \"\$1\".
+Vini re që faqet .css dhe .js përdorin vetëm titull me germa të vogla, psh. {{ns:user}}:Foo/monobook.css për dallim prej {{ns:user}}:Foo/Monobook.css.",
+'updated'                   => '(E ndryshueme)',
+'note'                      => "'''Shenim:'''",
+'previewnote'               => "'''Kjo âsht vetëm parapâmje.'''
+Ndryshimet tueja nuk janë ruejtë ende!",
+'previewconflict'           => 'Kjo parapâmje pasqyron tekstin në kutinë e sipërme të redaktimit, njashtu si do të duket nëse e rueni.',
+'session_fail_preview'      => "'''Na vjen keq! Nuk mujtëm me ruejtë redaktimin tuej për shkak të hupjes së sesionit.'''
+Ju lutemi provoni prap.
+Nëse prap nuk funksionon, provoni me u [[Special:UserLogout|çkyçë]] dhe me u kyçë prap.",
+'session_fail_preview_html' => "'''Na vjen keq! Nuk mujtëm me i ruejtë ndryshimet tueja për shkak të hupjes së sesionit.'''
+
+''Tue qenë se {{SITENAME}} ka të aktivizuem HTML të papërpunuem, parapâmja âsht e msheftë si preventivë kundër sulmeve me JavaScript.''
+
+'''Nëse kjo ishte redaktim legjitim, ju lutemi provoni prap.'''
+Nëse prap nuk funksionon, provoni me u [[Special:UserLogout|çkyçë]] edhe me u kyçë prap.",
+'token_suffix_mismatch'     => "'''Redaktimi juej u refuzue meqenëse shfletuesi juej i ka përzî shêjat e pikësimit në tekstin e redaktuem.'''
+Redaktimi âsht refuzue për me parandalue korruptimin e tekstit.
+Kjo ndodh nganjiherë, kur jeni tue përdorë shërbime ndërmjetësash anonimizues që përmbajnë gabime.",
+'editing'                   => 'Tue redaktue $1',
+'editingsection'            => 'Tue redaktue (sekcionin) $1',
+'editingcomment'            => 'Tue redaktue (sekcionin e ri) $1',
+'editconflict'              => 'Konflikt redaktues: $1',
+'explainconflict'           => "Dikush tjetër e ka ndryshue këtë faqe derisa e redaktojshit ju.
+Kutia e sipërme tregon tekstin aktual të faqes.
+Ndryshimet tueja gjinden në kutinë e poshtme redaktuese.
+Ju duheni me i bashkue ndryshimet tueja në tekstin aktual.
+'''Vetëmse''' nëse shtypni \"Regjistro faqen\" ka me u ruejtë teksti në kutinë e sipërme redaktuese.",
+'yourtext'                  => 'Teksti juej',
+'storedversion'             => 'Rishikim i ruejtun',
+'nonunicodebrowser'         => "'''Kujdes: Shfletuesi juej nuk e përkrah unicodein.'''
+Për me ju lejue me redaktue faqen pa gabime aplikohet nji opcion shtesë: germat jashta ASCII kodit paraqiten me kod heksadecimal.",
+'editingold'                => "'''Kujdes: Jeni tue redaktue nji verzion të vjetër të faqes.'''
+Nëse e rueni, tâna rishikimet e mâvonshme të faqes kanë me hupë.",
+'yourdiff'                  => 'Dallimet',
+'copyrightwarning'          => "Ju lutemi vini re se tâna kontributet në {{SITENAME}} konsiderohen me qenë të lidhuna me licencën $2 (shih $1 për detaje).
+Nëse nuk doni që shkrimet tueja me u redaktue pamëshirshëm dhe me u shpërnda arbitrarisht, atëherë mâ mirë mos publikoni këtu.<br />
+Gjithashtu po premtoni se këtë e keni shkrue vetë, ose e keni kopjue prej domenës publike apo ndonji burimi tjetër të lirë.
+'''Mos publikoni vepra që janë e drejtë autoriale pa leje!'''",
+'copyrightwarning2'         => "Ju lutemi vini re se tâna kontributet në {{SITENAME}} mujnë me u rishkrue, ndryshue, apo fshi prej kontribuusve tjerë.
+Nëse nuk doni që shkrimet tueja me u redaktue pamëshirshëm dhe me u shpërnda arbitrarisht, atëherë mâ mirë mos publikoni këtu.<br />
+Gjithashtu po premtoni se këtë e keni shkrue vetë, ose e keni kopjue prej domenës publike apo ndonji burimi tjetër të lirë (shih $1 për detaje).
+'''Mos publikoni vepra që janë e drejtë autoriale pa leje!'''",
+'longpagewarning'           => "'''Kujdes:''' Kjo faqe i ka $1 kilobyte;
+disa shfletues mujnë me pasë problem me redaktue faqe që janë afër apo mâ shumë se 32kb.
+Konsideroni mundësinë me dâ faqen në sekcione mâ të vogla.",
+'longpageerror'             => "'''Gabim: Teksti që po redaktoni i ka $1 kilobyte, që âsht mâ shumë se maksimumi prej $2 kilobytësh.'''
+Nuk mundet me u ruejtë.",
+'readonlywarning'           => "'''Kujdes: Baza e të dhânave âsht mshelë për mirëmbajtje, kështuqë tashpërtash nuk keni me mujtë me i ruejtë redaktimet tueja.'''
+Mundeni me kopju dhe ruejtë tekstin në nji skedë për mâ vonë.
+
+Administruesi që e ka mshelë e ka dhânë këtë shpjegim: $1",
+'protectedpagewarning'      => "'''Kujdes: Kjo faqe âsht mshelë ashtu që vetëm përdoruesit me tagër administrues mujnë me redaktue.'''",
 'template-protected'        => '(e mbrojtme)',
 
 # History pages
@@ -641,27 +701,128 @@ Ju lutemi kontrolloni nëse doni me krijue/redaktue këtë faqe.',
 'editundo'                => 'ktheje',
 
 # Search results
-'noexactmatch'   => 'Faqja me atë titull nuk asht krijue
+'noexactmatch'              => 'Faqja me atë titull nuk asht krijue
 
 Muneni me [[$1|fillu një artikull]] me kët titull.
 
 Ju lutem kërkoni {{SITENAME}}-n para se me krijue një artikull të ri se munet me kánë nën një titull tjetër.',
-'viewprevnext'   => 'Shikoni ($1) ($2) ($3).',
-'searchhelp-url' => 'Help:Ndihmë',
-'powersearch'    => 'Kërko',
+'viewprevnext'              => 'Shikoni ($1) ($2) ($3).',
+'searchhelp-url'            => 'Help:Ndihmë',
+'search-result-size'        => '$1 ({{PLURAL:$2|1 fjalë|$2 fjalë}})',
+'search-result-score'       => 'Relevanca: $1%',
+'search-redirect'           => '(përcjellje $1)',
+'search-mwsuggest-enabled'  => 'me sygjerime',
+'search-mwsuggest-disabled' => "s'ka sygjerime",
+'search-relatedarticle'     => 'Të ngjajshme',
+'mwsuggest-disable'         => 'Deaktivizo sygjerimet me AJAX',
+'searcheverything-enable'   => 'Kërko në tâna hapësinat',
+'searchrelated'             => 'të ngjajshme',
+'searchall'                 => 'tâna',
+'showingresults'            => "Mâ poshtë {{PLURAL:$1|tregohet '''1''' rezultat|tregohen '''$1''' rezultate}} që nisin me #'''$2'''.",
+'showingresultsnum'         => "Mâ poshtë {{PLURAL:$3|tregohet '''1''' rezultat|tregohen '''$3''' rezultate}} që nisin me #'''$2'''.",
+'showingresultstotal'       => "Mâ poshtë {{PLURAL:$4|tregohet rezultati '''$1''' prej '''$3'''|tregohen rezultatet '''$1 - $2''' prej '''$3'''}}",
+'showingresultsheader'      => "{{PLURAL:$5|Rezultati '''$1''' prej '''$3'''|Rezultatet '''$1 - $2''' prej '''$3'''}} për '''$4'''",
+'nonefound'                 => "'''Shenim''': Vetëm disa hapësina kërkohen me t'lême.
+Provoni me ia parashtue kërkesës tuej ''tâna:'' që me lypë tânë përmbajtjen (përfshî edhe diskutimet, shabllonat, etj.), ose përdorni hapësinën e dëshirueme si parashtesë.",
+'search-nonefound'          => 'Nuk ka rezultate që përputhen me kërkesën.',
+'powersearch'               => 'Kërkimi i detajshëm',
+'powersearch-legend'        => 'Kërkimi i detajshëm',
+'powersearch-ns'            => 'Kërkimi në hapësina:',
+'powersearch-redir'         => 'Listo përcjelljet',
+'powersearch-field'         => 'Kërko',
+'powersearch-togglelabel'   => 'Zgjedh:',
+'powersearch-toggleall'     => 'Tâna',
+'powersearch-togglenone'    => 'Asnji',
+'search-external'           => 'Kërkim jashtë',
+'searchdisabled'            => '{{SITENAME}} kërkimi âsht deaktivue.
+Ndërkohë mundeni me lypë me Google.
+Vini re se indeksat e tyne të përmbajtjes së {{SITENAME}} munden me qenë të vjetëruem.',
+
+# Quickbar
+'qbsettings'               => 'Vegla të shpejta',
+'qbsettings-none'          => 'Asnji',
+'qbsettings-fixedleft'     => 'Lidhun majtas',
+'qbsettings-fixedright'    => 'Lidhun djathtas',
+'qbsettings-floatingleft'  => 'Pezull majtas',
+'qbsettings-floatingright' => 'Pezull djathtas',
 
 # Preferences page
-'mypreferences' => 'Parapëlqimet',
-'skin-preview'  => 'Parapamje',
-'youremail'     => 'Adresa e email-it*',
-'username'      => 'Nofka e përdoruesit:',
-'uid'           => 'Nr. i identifikimit:',
-'yourrealname'  => 'Emri juej i vërtetë*',
-'yourlanguage'  => 'Ndërfaqja gjuhësore',
-'yournick'      => 'Nofka :',
-'badsig'        => 'Sintaksa e nënshkrimit asht e pavlefshme, kontrolloni HTML-n.',
-'badsiglength'  => 'Emri i zgjedhun asht shumë i gjatë; duhet me pas ma pak se $1 shkronja',
-'email'         => 'Email',
+'preferences'                   => 'Parapëlqimet',
+'mypreferences'                 => 'Parapëlqimet e mija',
+'prefs-edits'                   => 'Numri i redaktimeve:',
+'prefsnologin'                  => 'Nuk jeni kyçë',
+'prefsnologintext'              => 'Duheni me qenë <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} i kyçun]</span> për me i caktue parapëlqimet.',
+'changepassword'                => 'Ndërrimi i fjalëkalimit',
+'prefs-skin'                    => 'Doka',
+'skin-preview'                  => 'Parapâmja',
+'prefs-math'                    => 'Formulë',
+'datedefault'                   => "S'ka parapëlqim",
+'prefs-datetime'                => 'Data dhe ora',
+'prefs-personal'                => 'Profili i përdoruesit',
+'prefs-rc'                      => 'Ndryshimet e freskëta',
+'prefs-watchlist'               => 'Lista e mbikëqyrjeve',
+'prefs-watchlist-days'          => 'Numri i ditëve me i tregue në listën e mbikëqyrjeve:',
+'prefs-watchlist-days-max'      => '(maksimalisht 7 ditë)',
+'prefs-watchlist-edits'         => 'Numri maksimal i ndryshimeve që tregohen në listën e zgjânueme të mbikëqyrjes:',
+'prefs-watchlist-edits-max'     => '(numri maksimal: 1000)',
+'prefs-misc'                    => 'Të ndryshme',
+'prefs-resetpass'               => 'Ndryshimi i fjalëkalimit',
+'prefs-email'                   => 'Opcionet për email',
+'prefs-rendering'               => 'Pâmja',
+'saveprefs'                     => 'Regjistro',
+'resetprefs'                    => 'Fshij ndryshimet e paruejtuna',
+'restoreprefs'                  => 'Kthe tâna përcaktimet si në fillim',
+'prefs-editing'                 => 'Tue redaktue',
+'prefs-edit-boxsize'            => 'Madhësia e dritares redaktuese.',
+'rows'                          => 'Rreshta:',
+'columns'                       => 'Kolona:',
+'searchresultshead'             => 'Kërkimi',
+'resultsperpage'                => 'Gjetje për faqe:',
+'contextlines'                  => 'Rreshta për gjetje:',
+'contextchars'                  => 'Konteksti për rresht:',
+'stub-threshold'                => 'Pragu për formatimin e <a href="#" class="stub">vegzave të cungueme</a> në (byte):',
+'recentchangesdays'             => 'Numri i ditëve për me i tregue te ndryshimet e freskëta:',
+'recentchangesdays-max'         => '(maksimum $1 {{PLURAL:$1|ditë|ditë}})',
+'recentchangescount'            => 'Numri i redaktimeve me u tregue:',
+'prefs-help-recentchangescount' => 'Kjo përfshin ndryshimet e freskëta, historikun e faqes dhe regjistrat.',
+'savedprefs'                    => 'Parapëlqimet tueja janë ruejtë.',
+'timezonelegend'                => 'Zona kohore:',
+'localtime'                     => 'Ora lokale:',
+'timezoneuseserverdefault'      => 'Përdor të paracaktuemen e serverit',
+'timezoneuseoffset'             => 'Tjetër (specifiko kcimin)',
+'timezoneoffset'                => 'Kcimi¹:',
+'servertime'                    => 'Ora e serverit:',
+'guesstimezone'                 => 'Mbush prej shfletuesit:',
+'timezoneregion-africa'         => 'Afrikë',
+'timezoneregion-america'        => 'Amerikë',
+'timezoneregion-antarctica'     => 'Antarktik',
+'timezoneregion-arctic'         => 'Arktik',
+'timezoneregion-asia'           => 'Azi',
+'timezoneregion-atlantic'       => 'Oqeani Atlantik',
+'timezoneregion-australia'      => 'Australi',
+'timezoneregion-europe'         => 'Europë',
+'timezoneregion-indian'         => 'Oqeani Indian',
+'timezoneregion-pacific'        => 'Oqeani Paqësor',
+'allowemail'                    => 'Lejo emaila prej përdoruesve tjerë',
+'prefs-searchoptions'           => 'Opcionet e kërkimit',
+'prefs-namespaces'              => 'Hapësinat',
+'defaultns'                     => 'Përndryshe kërko në këto hapësina:',
+'default'                       => 'e paracaktueme',
+'prefs-files'                   => 'Skedat',
+'prefs-custom-css'              => 'CSS i përpunuem',
+'prefs-custom-js'               => 'JavaScripti i përpunuem',
+'prefs-reset-intro'             => 'Mundeni me përdorë këtë faqe për me i kthy parapëlqimet tueja në ato të paracaktuemet e faqes.
+Kjo nuk mundet me u zhbâ.',
+'prefs-emailconfirm-label'      => 'Konfirmimi i emailit:',
+'youremail'                     => 'Adresa e email-it*',
+'username'                      => 'Nofka e përdoruesit:',
+'uid'                           => 'Nr. i identifikimit:',
+'yourrealname'                  => 'Emri juej i vërtetë*',
+'yourlanguage'                  => 'Ndërfaqja gjuhësore',
+'yournick'                      => 'Nofka :',
+'badsig'                        => 'Sintaksa e nënshkrimit asht e pavlefshme, kontrolloni HTML-n.',
+'badsiglength'                  => 'Emri i zgjedhun asht shumë i gjatë; duhet me pas ma pak se $1 shkronja',
+'email'                         => 'Email',
 
 # Recent changes
 'recentchanges'   => 'Ndryshimet e fundit',
@@ -807,13 +968,17 @@ Ju lutem kërkoni {{SITENAME}}-n para se me krijue një artikull të ri se munet
 'tooltip-ca-move'                 => 'Zhvendose faqen',
 'tooltip-ca-watch'                => 'Shtoje kët faqe në lisën e faqeve nën mbikqyrje',
 'tooltip-search'                  => 'Kërko në projekt',
-'tooltip-n-mainpage'              => 'Vizitojeni Faqen kryesore',
-'tooltip-n-portal'                => 'Mbi projektin, çka muneni me bá për të dhe ku gjénden faqet.',
-'tooltip-n-currentevents'         => 'Informacion rreth ngjarjeve aktuale.',
-'tooltip-n-recentchanges'         => 'Lista e ndryshimeve të fundme në projekt',
-'tooltip-n-randompage'            => 'Shikoni një artikull të rastit.',
-'tooltip-n-help'                  => 'Vendi ku muneni me gjetë ndihmë.',
-'tooltip-t-whatlinkshere'         => 'Lista e faqeve qi lidhen te kjo faqe',
+'tooltip-search-go'               => 'Shko te faqja me emën të njêjtë nëse ekziston',
+'tooltip-search-fulltext'         => 'Kërko faqet me këtë tekst',
+'tooltip-p-logo'                  => 'Shko te faqja kryesore',
+'tooltip-n-mainpage'              => 'Shko te faqja kryesore',
+'tooltip-n-portal'                => 'Rreth projektit, çka mundeni me bâ, ku gjinden gjânat.',
+'tooltip-n-currentevents'         => 'Informacion mâ i thukët rreth ndodhive aktuale',
+'tooltip-n-recentchanges'         => 'Lista e ndryshimeve të freskëta në wiki',
+'tooltip-n-randompage'            => 'Shikoni nji artikull të rastit.',
+'tooltip-n-help'                  => 'Vendi ku mundeni me gjetë ndihmë.',
+'tooltip-t-whatlinkshere'         => 'Lista e faqeve të wikit që lidhen këtu',
+'tooltip-t-recentchangeslinked'   => 'Ndryshimet e freskëta në faqet që lidhen te kjo faqe',
 'tooltip-t-upload'                => 'Ngarkoni figura ose skeda tjera',
 'tooltip-t-specialpages'          => 'Lista e krejt faqeve speciale.',
 'tooltip-ca-nstab-image'          => 'Shikoni faqen e figurës',

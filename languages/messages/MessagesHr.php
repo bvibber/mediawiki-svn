@@ -899,7 +899,7 @@ Također nam obećavate da ste ovo sami napisali, ili da ste to prepisali iz ne�
 'copyrightwarning2'                => "Svi doprinosi {{SITENAME}} mogu biti mijenjani od strane svih suradnika. Ako ne želite da se vaše pisanje nemilosrdno uređuje, nemojte ga slati ovdje.<br /> Također nam obećavate da ste ovo sami napisali, ili da ste to prepisali iz nečeg što je u javnom vlasništvu ili pod sličnom slobodnom licencijom (vidi $1 za detalje). '''NE STAVLJAJTE ZAŠTIĆENE RADOVE BEZ DOPUŠTENJA!'''",
 'longpagewarning'                  => 'PAŽNJA: Ova stranica je dugačka $1 kilobajta; neki bi preglednici mogli imati problema pri uređivanju stranica koje se približavaju ili su duže od 32 kb.
 Molimo razmislite o rastavljanju stranice na manje odjeljke.',
-'longpageerror'                    => "'''POGRJEŠKA: Tekst koji ste unijeli dug je $1 kilobajta, što je više od maksimalnih $2 kilobajta. Nije ga moguće snimiti.'''",
+'longpageerror'                    => "'''GREŠKA: Tekst koji ste unijeli dug je $1 kilobajta, što je više od maksimalnih $2 kilobajta. Nije ga moguće snimiti.'''",
 'readonlywarning'                  => "'''UPOZORENJE: Baza podataka je zaključana zbog održavanja, pa trenutačno ne možete sačuvati svoje
 promjene. Najbolje je da kopirate i zaljepite tekst u tekstualnu datoteku te je snimite za kasnije.'''
 
@@ -998,12 +998,15 @@ Pokušajte [[Special:Search|pretražiti]] važnije nove stranice na wikiju.',
 'rev-deleted-user'            => '(suradničko ime uklonjeno)',
 'rev-deleted-event'           => '(zapis uklonjen)',
 'rev-deleted-text-permission' => "Ova izmjena je '''izbrisana'''.
-Detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji brisanja].",
+Detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja].",
+'rev-deleted-text-unhide'     => "Ova izmjena je '''izbrisana.'''
+Detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja]. Kao administrator, možete i dalje [$1 vidjeti ovu izmjenu] ukoliko želite nastaviti.",
 'rev-deleted-text-view'       => "Ova izmjena je '''izbrisana'''.
-Kao administrator na ovom projektu možete ju vidjeti;
-detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji brisanja].",
+Kao administrator na ovom projektu možete ju vidjeti; detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja].",
 'rev-deleted-no-diff'         => "Ne možete vidjeti ovu inačicu zbog toga što je jedna od izmjena '''izbrisana'''.
-Možda postoji više informacija u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji brisanja].",
+Možda postoji više informacija u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja].",
+'rev-deleted-unhide-diff'     => "Jedna od inačica ove izmjene je '''izbrisana'''. 
+Detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja]. Kao administrator, možete i dalje [$1 vidjeti ovu izmjenu] ukoliko želite nastaviti.",
 'rev-delundel'                => 'pokaži/skrij',
 'revisiondelete'              => 'Izbriši/vrati izmjene',
 'revdelete-nooldid-title'     => 'Nema tražene izmjene',
@@ -1056,7 +1059,15 @@ $1",
 'revdelete-log-message'       => '$1 za $2 {{PLURAL:$2|izmjenu|izmjene}}',
 'logdelete-log-message'       => '$1 za $2 {{PLURAL:$2|slučaj|slučaja}}',
 'revdelete-hide-current'      => 'Greška u skrivanju stavke datirane $2, $1: ovo je trenutačna inačica. Ne može biti skrivena.',
+'revdelete-show-no-access'    => 'Greška u prikazivanju stavke od $2, $1: ova stavka je označena kao "ograničeno".
+Nemate pristup do nje.',
+'revdelete-modify-no-access'  => 'Greška pri izmjeni stavke od $2, $1: ova stavka je označena kao "ograničeno". 
+Nemate pristup do nje.',
 'revdelete-modify-missing'    => 'Greška pri izmjeni izmjene broj $1: nedostaje u bazi!',
+'revdelete-no-change'         => "'''Upozorenje:''' stavka od $2, $1 već ima tražene postavke vidljivosti.",
+'revdelete-concurrent-change' => 'Greška pri izmjeni stavke od $2, $1: izgleda da je njen status promijenio netko drugi dok ste ju pokušavali mijenjati. 
+Provjerite evidencije.',
+'revdelete-only-restricted'   => 'Ne možete sakriti stavke od pregleda administratora bez odabira još jedne od drugih mogućnosti skrivanja.',
 
 # Suppression log
 'suppressionlog'     => 'Evidencije sakrivanja',
@@ -1895,6 +1906,13 @@ Također pogledajte [[Special:WantedCategories|tražene kategorije]].',
 'listusersfrom'      => 'Prikaži suradnike počevši od:',
 'listusers-submit'   => 'Prikaži',
 'listusers-noresult' => 'Nema takvih suradnika.',
+'listusers-blocked'  => '(blokiran)',
+
+# Special:ActiveUsers
+'activeusers'          => 'Popis aktivnih suradnika',
+'activeusers-count'    => 'Nedavno $1 {{PLURAL:$1|uređivanje|uređivanja|uređivanja}}',
+'activeusers-from'     => 'Prikaži suradnike počevši od:',
+'activeusers-noresult' => 'Niti jedan suradnik nije nađen.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Evidencija novih suradnika',
@@ -2462,12 +2480,13 @@ U potonjem slučaju možete koristiti i poveznicu, npr. [[{{#Special:Export}}/{{
 # Thumbnails
 'thumbnail-more'           => 'Povećaj',
 'filemissing'              => 'Nedostaje datoteka',
-'thumbnail_error'          => 'Pogrješka pri izradbi sličice: $1',
+'thumbnail_error'          => 'Pogreška pri izradbi sličice: $1',
 'djvu_page_error'          => "DjVu stranica nije dohvatljiva (''out of range'')",
 'djvu_no_xml'              => 'Ne mogu dohvatiti XML za DjVu datoteku',
 'thumbnail_invalid_params' => "Nevaljani parametri za smanjenu sliku (''thumbnail'')",
 'thumbnail_dest_directory' => 'Ne mogu stvoriti ciljni direktorij',
 'thumbnail_image-type'     => 'Tip slike nije podržan',
+'thumbnail_gd-library'     => 'Nepotpune konfiguracija GD knjižnice: nedostaje funkcija $1',
 'thumbnail_image-missing'  => 'Čini se da datoteka nedostaje: $1',
 
 # Special:Import

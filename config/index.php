@@ -703,7 +703,7 @@ if( $conf->SysopName ) {
 		# Various password checks
 		if( $conf->SysopPass != '' ) {
 			if( $conf->SysopPass == $conf->SysopPass2 ) {
-				if( !$u->isValidPassword( $conf->SysopPass ) ) {
+				if( $u->isValidPassword( $conf->SysopPass ) !== true ) {
 					$errs['SysopPass'] = "Bad password";
 				}
 			} else {
@@ -1935,6 +1935,11 @@ if ( \$wgCommandLineMode ) {
 ## If you have the appropriate support software installed
 ## you can enable inline LaTeX equations:
 \$wgUseTeX           = false;
+
+## Set \$wgCacheDirectory to a writable directory on the web server
+## to make your wiki go slightly faster. The directory should not
+## be publically accessible from the web.
+#\$wgCacheDirectory = \"\$IP/cache\";
 
 \$wgLocalInterwiki   = strtolower( \$wgSitename );
 

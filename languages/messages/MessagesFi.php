@@ -696,7 +696,9 @@ Käyttäjätunnuksesi on luotu.
 'nouserspecified'            => 'Käyttäjätunnusta ei ole määritelty.',
 'wrongpassword'              => 'Syöttämäsi salasana ei ole oikein. Ole hyvä ja yritä uudelleen.',
 'wrongpasswordempty'         => 'Et voi antaa tyhjää salasanaa.',
-'passwordtooshort'           => 'Salasanasi on ei kelpaa. Salasanan pitää olla vähintään {{PLURAL:$1|yhden merkin pituinen|$1 merkkiä pitkä}} ja eri kuin käyttäjätunnuksesi.',
+'passwordtooshort'           => 'Salasanasi on liian lyhyt.
+Salasanan täytyy olla vähintään {{PLURAL:$1|yhden merkin pituinen|$1 merkkiä pitkä}}.',
+'password-name-match'        => 'Salasanasi täytyy olla eri kuin käyttäjätunnuksesi.',
 'mailmypassword'             => 'Lähetä uusi salasana sähköpostitse',
 'passwordremindertitle'      => 'Salasanamuistutus {{GRAMMAR:elative|{{SITENAME}}}}',
 'passwordremindertext'       => 'Joku IP-osoitteesta $1 pyysi {{GRAMMAR:partitive|{{SITENAME}}}} ($4) lähettämään uuden salasanan. Väliaikainen salasana käyttäjälle $2 on nyt $3. Kirjaudu sisään ja vaihda salasana. Väliaikainen salasana vanhenee {{PLURAL:$5|yhden päivän|$5 päivän}} kuluttua.
@@ -1020,7 +1022,11 @@ $1",
 'revdelete-unhid'             => 'palautti näkyviin $1',
 'revdelete-log-message'       => '$1 koskien $2 {{PLURAL:$2|versiota}}',
 'logdelete-log-message'       => '$1 koskien $2 {{PLURAL:$2|tapahtumaa}}',
+'revdelete-hide-current'      => 'Virhe tapahtui $2, $1 päivätyn kohteen piilottamisessa: tämä on nykyinen versio. Sitä ei voi piilottaa.',
+'revdelete-modify-no-access'  => 'Virhe tapahtui $2, $1 kohteen muokkauksessa: tämä kohde on merkitty "rajoitetuksi". Sinulla ei ole oikeuksia sen muokkaukseen.',
 'revdelete-modify-missing'    => 'Virhe muuttaessa kohdetta, jonka tunnus on $1: Se puuttuu tietokannasta.',
+'revdelete-concurrent-change' => 'Virhe $2, $1 päivätyn kohteen muokkauksessa: sen tilan on näköjään muuttanut joku sillä aikaa kun yritit muokata sitä. Ole hyvä ja tarkista lokit.',
+'revdelete-only-restricted'   => 'Et voi poistaa kohteita ylläpitäjien näkyviltä valitsematta myös jonkun muun näkyviltä poistovaihtoehdon.',
 
 # Suppression log
 'suppressionlog'     => 'Häivytysloki',

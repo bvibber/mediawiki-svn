@@ -77,10 +77,14 @@ dj'artìcol ancó pa scrit",
 'tog-watchlisthideown'        => 'Stërma mie modìfiche ant la ròba che im ten-o sot euj',
 'tog-watchlisthidebots'       => 'Stërma le modìfiche faite daj trigomiro ant la lista dle ròbe che im ten-o sot euj',
 'tog-watchlisthideminor'      => "Scond le modìfiche cite da 'nt lòn che im ten-o sot euj",
+'tog-watchlisthideliu'        => "Stërma le modìfiche fàite da j'utent registrà ant la lista dle ròbe che im ten-o sot euj",
+'tog-watchlisthideanons'      => "Scond le modìfiche fàite da j'utent anònim da 'nt lòn che im ten-o sot euj",
+'tog-watchlisthidepatrolled'  => "Stërma le modìfiche verifià da 'nt la ròba che im ten-o sot euj",
 'tog-nolangconversion'        => 'Fërma la conversion antra variant lenghìstiche',
 'tog-ccmeonemails'            => "Mand-me còpia dij messagi ëd pòsta eletrònica che i-j mando a j'àotri utent",
 'tog-diffonly'                => 'Smon pa ël contnù dla pàgina dapress a le diferense',
 'tog-showhiddencats'          => 'Smon le categorìe stërmà',
+'tog-norollbackdiff'          => "Fa nen vëdde le diferense d'apress d'avèj fàit rollback",
 
 'underline-always'  => 'Sempe',
 'underline-never'   => 'Mai',
@@ -155,10 +159,9 @@ dj'artìcol ancó pa scrit",
 'listingcontinuesabbrev'         => ' anans',
 
 'mainpagetext'      => "<big>'''MediaWiki a l'é staita anstalà a la perfession.'''</big>",
-'mainpagedocfooter' => "Che a varda la [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] (belavans për adess a-i é mach n'anglèis) për avej dj'anformassion suplementar ant sël coma dovré ël programa dla wiki.
+'mainpagedocfooter' => "Che a varda la [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] për avej dj'anformassion ant sël coma dovré ël programa dla wiki.
 
 == Për anandiesse a travajé ==
-
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
@@ -220,14 +223,14 @@ dj'artìcol ancó pa scrit",
 'talkpagelinktext'  => 'discussion',
 'specialpage'       => 'Pàgina Special',
 'personaltools'     => 'Utiss personaj',
-'postcomment'       => 'Gionta un coment',
+'postcomment'       => 'Session neuva',
 'articlepage'       => "Che a varda l'articol",
 'talk'              => 'Discussion',
 'views'             => 'vìsite',
 'toolbox'           => 'utiss',
 'userpage'          => 'Che a varda la pàgina Utent',
 'projectpage'       => 'Che a varda la pàgina ëd servissi',
-'imagepage'         => 'Pàgina dla figura',
+'imagepage'         => 'Varda la pàgina dël file',
 'mediawikipage'     => 'Mostra ël messagi',
 'templatepage'      => 'Mostra lë stamp',
 'viewhelppage'      => "Smon la pàgina d'agiut",
@@ -266,7 +269,7 @@ dj'artìcol ancó pa scrit",
 
 'badaccess'        => 'Përmess nen giust',
 'badaccess-group0' => "A l'ha pa ij përmess dont a fa dë manca për fé st'operassion-sì.",
-'badaccess-groups' => "Costa funsion-sì a l'é riservà a j'utent che a sio almanch ant un-a dle partìe: $1.",
+'badaccess-groups' => "Costa funsion-sì a l'é riservà a j'utent che a sio almanch ant {{PLURAL:$2|la partìa|un-a dle partìe}}: $1.",
 
 'versionrequired'     => 'A-i va për fòrsa la version $1 ëd MediaWiki',
 'versionrequiredtext' => 'Për dovrè sta pàgina-sì a-i va la version $1 dël programa MediaWiki. Che a varda [[Special:Version]]',
@@ -279,6 +282,7 @@ dj'artìcol ancó pa scrit",
 'youhavenewmessagesmulti' => "A l'ha dij neuv messagi an $1",
 'editsection'             => 'modìfica',
 'editold'                 => 'modìfica',
+'viewsourceold'           => 'fà vëdde ël còdes sorzent',
 'editlink'                => 'modìfica',
 'viewsourcelink'          => 'fà vëdde ël còdes sorzent',
 'editsectionhint'         => 'I soma dapress a modifiché la session: $1',
@@ -290,7 +294,7 @@ dj'artìcol ancó pa scrit",
 'restorelink'             => '{{PLURAL:$1|na modìfica scancelà|$1 modìfiche scancelà}}',
 'feedlinks'               => 'Fluss:',
 'feed-invalid'            => 'Modalità ëd sotoscrission dël fluss nen vàlida.',
-'feed-unavailable'        => 'Ij fluss ëd neuve a son nen disponìbij ansima a {{SITENAME}}',
+'feed-unavailable'        => 'Ij fluss ëd neuve a son nen disponìbij',
 'site-rss-feed'           => 'Emission RSS $1',
 'site-atom-feed'          => 'Emission Atom $1',
 'page-rss-feed'           => 'Emission RSS "$1"',
@@ -311,7 +315,9 @@ dj'artìcol ancó pa scrit",
 
 # Main script and global functions
 'nosuchaction'      => 'Operassione nen arconossùa',
-'nosuchactiontext'  => "L'operassion che a l'ha ciamà a l'é nen arconossùa dal programa MediaWiki",
+'nosuchactiontext'  => "L'operassion che a l'ha ciamà ant l'anliura a l'é nen arconossùa.
+A peul esse che it l'abie batù mal l'URL, o che it l'abie andàit daré a n'anliura nen giusta.
+Son-sì a podrìa ëdcò esse un bug an drinta al software dovrà da {{SITENAME}}.",
 'nosuchspecialpage' => "A-i é pa gnun-a pàgina special tan-me cola che chiel a l'ha ciamà.",
 'nospecialpagetext' => "A l'ha ciamà na pàgina special che a l'é pa staita arconossùa dal programa MediaWiki, ò pura a l'é nen disponibila.",
 
@@ -341,6 +347,7 @@ Sossì ëd sòlit a l'é causà përché a l'é ciamasse na diferensa o n'anliur
 Se cost a l'é nen ël cas, it podrìe avèj trovà un bug ant ël software.
 Për piasì, fa rapòrt a n'[[Special:ListUsers/sysop|aministrador]], pijand nòta ëd la URL.",
 'missingarticle-rev'   => '(revision#: $1)',
+'missingarticle-diff'  => '(Diff: $1, $2)',
 'readonly_lag'         => "La base dat a l'é staita blocà n'automàtich antramentr che che le màchine dël circuito secondari (slave) as buto an pari con cole dël prinsipal (master)",
 'internalerror'        => 'Eror intern',
 'internalerror_info'   => 'Eror antern: $1',
@@ -378,6 +385,11 @@ Query: $2',
 'titleprotected'       => "La creassion ëd pàgine con ës tìtol-sì a l'é stàita proibìa da [[User:$1|$1]].
 Coma rason a l'ha butà: ''$2''.",
 
+# Virus scanner
+'virus-badscanner'     => "Configurassion falà: antivirus nen conossù: ''$1''",
+'virus-scanfailed'     => 'scansion falìa (còdes $1)',
+'virus-unknownscanner' => 'antivirus nen conossù:',
+
 # Login and logout pages
 'logouttext'                 => "A l'é sortù da 'nt ël sistema.
 A peul tiré anans a dovré {{SITENAME}} coma Utent anonim, ò pura a peul rintré torna ant ël sistema con l'istess stranòm che a dovrava prima, ò con un diferent.",
@@ -395,15 +407,15 @@ A peul tiré anans a dovré {{SITENAME}} coma Utent anonim, ò pura a peul rintr
 'logout'                     => "Seurte da 'nt ël sistema",
 'userlogout'                 => 'seurte dal sistema',
 'notloggedin'                => "a l'é pa ant ël sistema",
-'nologin'                    => 'Ha-lo ancó nen sò cont? $1.',
+'nologin'                    => 'Ha-lo ancó nen un cont? $1.',
 'nologinlink'                => 'creésse un cont.',
 'createaccount'              => 'Crea un cont neuv',
 'gotaccount'                 => 'Ha-lo già un sò cont? $1.',
 'gotaccountlink'             => 'Rintré ant ël sistema',
 'createaccountmail'          => 'për pòsta eletrònica',
 'badretype'                  => "Le doe ciav che a l'ha scrivù a resto diferente antra lor, e a venta che a sio mideme.",
-'userexists'                 => "An dëspias.<br />Lë stranòm che a l'ha sërnusse a l'é già dovrà da n'àutr Utent.<br />
-Për son i-j ciamoma dë sërn-se në stranòm diferent.",
+'userexists'                 => "Lë stranòm anserì a l'é già dovrà.
+Për piasì, sërn në stranòm diferent.",
 'loginerror'                 => 'Eror ën rintrand ant ël sistema',
 'nocookiesnew'               => "Sò cont a l'é doèrt, ma chiel (ò chila) a l'ha nen podù rintré ant ël sistema.
 {{SITENAME}} a dòvra ij cookies për fé rintré la gent ant sò sistema. Belavans chiel a l'ha pa ij cookies abilità.
@@ -412,8 +424,9 @@ Për piasì, che as j'abìlita e peuj che a preuva torna a rintré con sò stran
 'noname'                     => "Lë stranòm che a l'ha batù as peul pa dovresse, as peul nen creésse un cont Utent con ës nòm-sì.",
 'loginsuccesstitle'          => "Compliment! A l'é pen-a rintrà ant ël sistema. A-i é pa staje gnun eror.",
 'loginsuccess'               => 'A l\'ha avù ël përmess ëd conession al server ëd {{SITENAME}} con lë stranòm utent ëd "$1".',
-'nosuchuser'                 => 'Atension<br /><br /> dapress a na verìfica, a n\'arsulta pa gnin Utent che a l\'abia stranòm "$1".<br /><br />
-Për piasì, che a contròla ël nòm che a l\'ha batù, ò pura che a dòvra la domanda ambelessì sota për fé un cont Utent neuv.',
+'nosuchuser'                 => 'A-i é pa gnun utent con ël nòm "$1".
+I nòm ëd j\'utent a son sensìbij a le maiùscole.
+Controla ël nòm che it l\'has batù, o [[Special:UserLogin/signup|fà un neuv cont]].',
 'nosuchusershort'            => 'A-i é pa gnun utent che as ciama "<nowiki>$1</nowiki>". Për piasì, che a contròla se a l\'ha scrit tut giust.',
 'nouserspecified'            => 'A venta che a specìfica në stranòm utent',
 'wrongpassword'              => "La ciav batùa a l'é pa giusta.<br /><br />Che a preuva torna, për piasì.",
@@ -826,14 +839,23 @@ për podej specifiché ij sò gust.',
 'youremail'                 => 'Soa adrëssa ëd pòsta eletrònica',
 'username'                  => 'Stranòm:',
 'uid'                       => "ID dl'utent:",
+'prefs-memberingroups'      => 'Mèmber {{PLURAL:$1|dla partìa|djë partìe}}:',
 'yourrealname'              => 'Nòm vèir *',
 'yourlanguage'              => 'Lenga:',
 'yournick'                  => 'Sò stranòm (për firmé)',
 'badsig'                    => "Soa forma a l'é nen giusta, che a controla le istrussion HTML.",
-'badsiglength'              => 'Stranòm esagerà longh; a dev esse pì curt che $1 caràter.',
+'badsiglength'              => "Tò stranòm a l'é tròp longh.
+A deuv nen esse pì longh che $1 {{PLURAL:$1|caràter|caràter}}.",
+'yourgender'                => 'Géner:',
+'gender-unknown'            => 'Nen spessificà',
+'gender-male'               => 'Masculin',
+'gender-female'             => 'Feminin',
+'prefs-help-gender'         => "Opsional: a l'é dovrà për adaté ël software al géner.
+Costa anformassion a sarà pùblica.",
 'email'                     => 'pòsta eletrònica',
 'prefs-help-realname'       => '* Nòm vèir (opsional): se i sërne da butelo ambelessì a sarà dovrà për deve mérit ëd vòstr travaj.',
-'prefs-help-email'          => "* Adrëssa ëd pòsta eletrònica (opsional): ën butandlo i feve an manera che la gent a peula contateve passand për vòstra pàgina dle ciaciarade sensa dë manca che a sapia chi i seve e che adrëssa che i l'eve.",
+'prefs-help-email'          => "L'adrëssa ëd pòsta eletrònica a l'é opsional: ma a lassa che na neuva ciav a sia spedìa se it dësmentie toa ciav.
+Ti it peule ëdcò serne ëd lassé che j'àutri at contato al sël tò utent o ans toa pàgina ëd ciaciarade sensa ël dabzògn ëd rivelé toa identità.",
 'prefs-help-email-required' => "A-i va l'adrëssa ëd pòsta eletrònica.",
 
 # User rights

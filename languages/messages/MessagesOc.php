@@ -282,7 +282,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Apondre las paginas que suprimissi de ma lista de seguit',
 'tog-minordefault'            => 'Considerar mas modificacions coma menoras per defaut',
 'tog-previewontop'            => 'Mostrar la previsualizacion al dessús de la zòna de modificacion',
-'tog-previewonfirst'          => 'Mostrar la previsualizacion al moment de la primièra edicion',
+'tog-previewonfirst'          => 'Far veire la previsualizacion al moment de la primièra edicion',
 'tog-nocache'                 => "Desactivar l'amagatal de paginas",
 'tog-enotifwatchlistpages'    => 'M’avertir per corrièr electronic quand una pagina de ma lista de seguit es modificada',
 'tog-enotifusertalkpages'     => 'M’avertir per corrièr electronic en cas de modificacion de ma pagina de discussion',
@@ -1507,7 +1507,7 @@ Tanben podètz causir de permetre a d’autres de vos contactar amb l'ajuda de v
 
 # Upload
 'upload'                      => 'Importar un fichièr',
-'uploadbtn'                   => 'Importar lo fichièr',
+'uploadbtn'                   => 'Importar un fichièr',
 'reupload'                    => 'Importar tornarmai',
 'reuploaddesc'                => 'Anullar lo cargament e tornar al formulari.',
 'uploadnologin'               => 'Vos sètz pas identificat(ada)',

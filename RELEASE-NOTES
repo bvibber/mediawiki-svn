@@ -41,6 +41,15 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   appropriate privileges. Creating this user with web-install page requires
   oci8.privileged_connect set to On in php.ini.
 * Removed UserrightsChangeableGroups hook introduced in 1.14
+* Added $wgCacheDirectory, to replace $wgFileCacheDirectory, 
+  $wgLocalMessageCache, and any other local caches which need a place to put 
+  files. 
+* $wgFileCacheDirectory is no longer set to anything by default, and so either
+  needs to be set explicitly, or $wgCacheDirectory needs to be set instead. 
+* $wgLocalMessageCache has been removed. Instead, set $wgUseLocalMessageCache
+  to true
+* Removed $wgEnableSerializedMessages and $wgCheckSerialized. Similar 
+  functionality is now available via $wgLocalisationCacheConf.
 
 === New features in 1.16 ===
 
@@ -91,7 +100,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   stripped from them.
 * Added a PHP port of CDB (constant database), for improved local caching when
   the DBA extension is not available.
-
+* (bug 14611) Added support showing the version of the image thumbnailing 
+  engine and diff/diff3 engine.
+* Introduced a new system for localisation caching. The system is based around 
+  fast fetches of individual messages, minimising memory overhead and startup 
+  time in the typical case. The database backend will be used by default, but 
+  set $wgCacheDirectory to get a faster CDB-based implementation.
+* Expanded the number of variables which can be set in the extension messages 
+  files.
 
 === Bug fixes in 1.16 ===
 
@@ -200,6 +216,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 19294) Always show Sp-contributions-footer(-anon)
 * Attempts to restrict reading of pages while anonymous viewing is allowed
   via extensions not using the userCan hook and via $wgRevokePermissions now work.
+* (bug 8445) Multiple-character search terms are now handled properly for Chinese
 
 == API changes in 1.16 ==
 
@@ -236,6 +253,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 19313) action=rollback returns wrong revid on master/slave setups
 * (bug 19323) action=parse doesn't return section tree on pages with Cite
   warnings
+* (bug 18720) Add anchor field to action=parse&prop=sections output
 
 === Languages updated in 1.16 ===
 
