@@ -180,34 +180,40 @@ class SiteStats {
 	 * @param $update bool Whether to update the current stats write fresh
 	 * @param $noViews bool When true, do not update the number of page views
 	 */
-	public static function init( $update, $noViews = false ) {
+	public static function init( $update, $noViews = false, $activeUsers = false ) {
 		$dbr = wfGetDB( DB_SLAVE );
-	
+
 		wfOut( "Counting total edits..." );
 		$edits = $dbr->selectField( 'revision', 'COUNT(*)', '', __METHOD__ );
 		$edits += $dbr->selectField( 'archive', 'COUNT(*)', '', __METHOD__ );
 		wfOut( "{$edits}\nCounting number of articles..." );
-	
+
 		global $wgContentNamespaces;
 		$good  = $dbr->selectField( 'page', 'COUNT(*)', array( 'page_namespace' => $wgContentNamespaces, 'page_is_redirect' => 0, 'page_len > 0' ), __METHOD__ );
 		wfOut( "{$good}\nCounting total pages..." );
-	
+
 		$pages = $dbr->selectField( 'page', 'COUNT(*)', '', __METHOD__ );
 		wfOut( "{$pages}\nCounting number of users..." );
 	
 		$users = $dbr->selectField( 'user', 'COUNT(*)', '', __METHOD__ );
 		wfOut( "{$users}\nCounting number of admins..." );
-	
+
 		$admin = $dbr->selectField( 'user_groups', 'COUNT(*)', array( 'ug_group' => 'sysop' ), __METHOD__ );
 		wfOut( "{$admin}\nCounting number of images..." );
 	
 		$image = $dbr->selectField( 'image', 'COUNT(*)', '', __METHOD__ );
 		wfOut( "{$image}\n" );
-	
+
 		if( !$noViews ) {
 			wfOut( "Counting total page views..." );
 			$views = $dbr->selectField( 'page', 'SUM(page_counter)', '', __METHOD__ );
 			wfOut( "{$views}\n" );
+		}
+		
+		if( $activeUsers ) {
+			wfOut( "Counting active users..." );
+			$active = SiteStatsUpdate::cacheUpdate();
+			wfOut( "{$active}\n" );
 		}
 	
 		wfOut( "\nUpdating site statistics..." );
@@ -296,5 +302,6 @@ class SiteStatsUpdate {
 			array( 'ss_active_users' => intval($activeUsers) ),
 			array( 'ss_row_id' => 1 ), __METHOD__
 		);
+		return $activeUsers;
 	}
 }
