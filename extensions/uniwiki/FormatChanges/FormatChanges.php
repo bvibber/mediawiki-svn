@@ -8,7 +8,7 @@ if ( !defined( "MEDIAWIKI" ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'FormatChanges',
-	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
+	'author'         => array( 'Merrick Schaefer', 'Mark Johnston', 'Evan Wheeler', 'Adam Mckaig (at UNICEF)' ),
 	'description'    => 'Reformats the [[Special:RecentChanges|recent changes]]',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Format_Changes',
 	'descriptionmsg' => 'formatchanges-desc',

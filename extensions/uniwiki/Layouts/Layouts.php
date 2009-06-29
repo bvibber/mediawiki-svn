@@ -9,7 +9,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Layouts',
-	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
+	'author'         => array( 'Merrick Schaefer', 'Mark Johnston', 'Evan Wheeler', 'Adam Mckaig (at UNICEF)' ),
 	'description'    => 'Populate newly-created pages with editable "layouts" to encourage a common structure for pages',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Layouts',
 	'descriptionmsg' => 'layouts-desc',

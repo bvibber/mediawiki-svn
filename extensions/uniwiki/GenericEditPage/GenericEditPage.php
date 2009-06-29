@@ -9,7 +9,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'GenericEditPage',
-	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
+	'author'         => array( 'Merrick Schaefer', 'Mark Johnston', 'Evan Wheeler', 'Adam Mckaig (at UNICEF)' ),
 	'description'    => 'Supplements the edit page with something more usable',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Generic_Edit_Page',
 	'descriptionmsg' => 'gep-desc',

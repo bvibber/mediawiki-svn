@@ -10,7 +10,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'AutoCreateCategoryPages',
-	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
+	'author'         => array ( 'Merrick Schaefer', 'Mark Johnston', 'Evan Wheeler', 'Adam Mckaig (at UNICEF)' ),
 	'description'    => 'Create stub Category pages automatically',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Auto_Create_Category_Pages',
 	'descriptionmsg' => 'autocreatecategorypages-desc',

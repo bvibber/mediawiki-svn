@@ -8,7 +8,7 @@ if ( !defined( "MEDIAWIKI" ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'FormatSearch',
-	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
+	'author'         => array( 'Merrick Schaefer', 'Mark Johnston', 'Evan Wheeler', 'Adam Mckaig (at UNICEF)' ),
 	'description'    => 'Changes to clean up the search results page',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Format_Search',
 	'descriptionmsg' => 'formatsearch-desc',

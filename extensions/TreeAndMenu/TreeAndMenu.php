@@ -28,7 +28,7 @@ $wgHooks['LanguageGetMagic'][] = 'wfTreeAndMenuLanguageGetMagic';
 $wgExtensionCredits['parserhook'][] = array(
 	'path'        => __FILE__,
 	'name'        => 'TreeAndMenu',
-	'author'      => '[http://www.organicdesign.co.nz/nad Nad], [http://www.organicdesign.co.nz/User:Sven Sven]',
+	'author'      => array( '[http://www.organicdesign.co.nz/User:Nad Nad]', '[http://www.organicdesign.co.nz/User:Sven Sven]' ),
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Treeview',
 	'description' => 'Adds #tree and #menu parser functions which contain bullet-lists to be rendered as collapsible treeview\'s or dropdown menus.
 	                  The treeview\'s use the [http://www.destroydrop.com/javascripts/tree dTree] JavaScript tree menu,
