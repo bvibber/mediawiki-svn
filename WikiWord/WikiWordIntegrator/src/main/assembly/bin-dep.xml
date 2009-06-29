@@ -22,27 +22,23 @@
         <exclude>local-*</exclude>
       </excludes>
     </fileSet>
-	<fileSet>
-      <directory>src/main/</directory>
-      <outputDirectory></outputDirectory>
+    <fileSet>
+      <directory>doc</directory>
+    </fileSet>
+	  <fileSet>
+      <directory>src/doc</directory>
+      <outputDirectory>doc</outputDirectory>
       <includes>
-        <include>*.rdf</include>
+        <include>*.pdf</include>
       </includes>
     </fileSet>    
-    <!--<fileSet>
-      <directory>doc</directory>
-    </fileSet>-->
-    <!--<fileSet>
-      <directory>target</directory>
-      <outputDirectory></outputDirectory>
+	  <fileSet>
+      <directory>src/docbook</directory>
+      <outputDirectory>doc</outputDirectory>
       <includes>
-        <include>*.jar</include>
+        <include>*.pdf</include>
       </includes>
-    </fileSet>-->
-    <fileSet>
-      <directory>lib</directory>
-   		<outputDirectory>/lib</outputDirectory>
-    </fileSet>
+    </fileSet>    
   </fileSets>
   <dependencySets>
     <dependencySet>

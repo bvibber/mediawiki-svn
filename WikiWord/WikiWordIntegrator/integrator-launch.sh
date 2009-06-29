@@ -32,5 +32,5 @@ fi
 
 java=`which java`
 
-echo $java $vmopt $class $wwopt "$@"
+#echo $java $vmopt $class $wwopt "$@"
 $java $vmopt $class $wwopt "$@"

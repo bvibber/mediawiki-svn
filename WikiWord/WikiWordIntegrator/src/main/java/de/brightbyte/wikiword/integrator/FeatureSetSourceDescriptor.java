@@ -51,7 +51,7 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 		String sql = getTweak("query", null);
 		
 		if (sql==null) {
-			SqlQueryGenerator generator = getTweak("queryGenerator", null);
+			SqlQueryGenerator generator = getTweak("query-generator", null);
 			if (generator!=null) sql = generator.makewQuery(this); 
 		}
 		

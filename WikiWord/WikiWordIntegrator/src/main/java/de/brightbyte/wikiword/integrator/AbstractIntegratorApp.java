@@ -399,7 +399,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_prefix", getConfiguredDataset().getDbPrefix()) );
 		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_db", getConfiguredDatasetName()) );
 		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_target_table", getTargetTableName()) );
-		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_mapping_table", getSourceDescriptor().getTweak("source-table", (String)null)) );
+		list.add( SqlScriptRunner.makeCommentSubstitutionMangler("wikiword_mapping_table", getSourceDescriptor().getSourceTable()) );
 		
 		return list;
 	}
