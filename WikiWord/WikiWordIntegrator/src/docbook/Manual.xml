@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="en-US">
+<title>WikiWord: Integrator</title>
+
+  <para>WikiWord is a system for extracting a theraurus from Wikipedia. 
+  The Integrator module is desigend top use this data as a glue between
+  different data sets, that is, to map between different vocabularies, 
+  standardized or natural.</param>
+
+<sect1>
+  <title>Process</title>
+  <para>This section outlines the process of semantic vocabulary integration using WikiWord.</para>
+<sect2>
+  <title>Building the WikiWord Thesaurus</title>
+  <para>The WikiWord thesaurus is extracted from Wikipedia's XML dumps.</para>
+  <para>Building the WikiWord thesaurus is a long-running task, best performed centrally on appropriately powerful hardware. It is assumed that this will be performed as a service by Wikimedia.</para>
+<sect3>
+  <title>Thesaurus Extraction</title>
+  <para>For each Wikipedia dump (I.e. for each Language), a thesaurus is extracted,</para>
+</sect3>
+<sect3>
+  <title>Thesaurus Merging</title>
+  <para>The thesauri are then merged into a multi-lingual thesaurus.</para>
+</sect3>
+<sect3>
+  <title>Building Concept Properties</title>
+  <para>Semantic integration means mapping concepts from one vocabulary to another. In the context of this document, concepts from a foreign authority are mapped to WikiWord concepts.</para>
+  <para>Concept properties are the basis for mapping concepts. Properties include information supplied from the foreign authority, properties extracted from Wikipedia articles as well as the information in the thesaurus proper, that is, the terms/labels used to refer to a given concept.</para>
+</sect3>
+<sect3>
+  <title>Property Extraction</title>
+  <para>WikiWord allows for additional properties to be extracted from Wikipedia pages to be attached to an existing thesaurus. This way, a generic thesaurus can be used for a variety of domains, while the properties extracted can be tailored to the desired domain. Concept properties are most often extracted from so called &quot;infobox&quot; templates contained in Wikipedia articles, but also from other special purpose templates and categorization tags.</para>
+</sect3>
+<sect3>
+  <title>Property Import</title>
+  <para>Concepts defined by a third party authority are imported into the WikiWord database as sets of properties attached to a concept id. They are represented in the database as generic triples of concept id, property name and property value.</para>
+  <para>External concepts can be imported directly from CSV/TSV files or from the result of an SQL query.</para>
+</sect3>
+</sect2>
+
+<sect2>
+  <title>Mapping Concepts</title>
+<sect3>
+<title>Building Concept Associations</title>
+<para>Concept <emphasis>associations</emphasis> represent individual links between foreign authority concepts and WikiWord concepts. There may be several such associations between the same pair of concepts. Associations may be annotated with a variety of information about how the association was derived and how it is weighted.</para>
+</sect3>
+<sect3>
+<title>Building Concept Mappings</title>
+<para>Concept <emphasis>mappings</emphasis> represent aggregated links between foreign authority concepts and WikiWord concepts. There may be only one mapping between a given pair of concepts. However, the same foreign concept may be mapped to several WikiWord concepts, and a single WikiWord concept may be mapped to several different foreign concepts.</para>
+<para>Mappings are generally derived from associations by a kind of &quot;grouping&quot; operation: all associations between a given pair of concepts are grouped into a single mapping entry. Annotation of the mappings are reduced to figures aggregated from the associations that defined the respective mappings.</para>
+</sect3>
+<sect3>
+<title>Filtering Concept Mappings</title>
+<para>To get the mappings that are desired for a given purpose,  different kind of filters can be applied. One very common filter uses a threshold: all mappings that are below a given value according to some measure (often, the value of a specific &quot;weight&quot; annotation) are ignored.</para>
+<para>Often, it is desired to get <emphasis>unique </emphasis>mappings, that is, to have a given foreign concept map to only one WikiWord concept. There are two default ways to achieve this: either by using the <emphasis>best</emphasis> available mapping for a given foreign concept, according to some measure. Or my simply ignoring all ambiguous mappings; This of course reduces the amount of mappings, but it also improved the level of confidence in the mappings.</para>
+<para>Sometimes, it is desired to only get <emphasis>exact, exclusive</emphasis> matches &mdash; that is, not only to exclude any foreign concept for which there exists more than one mapping to  WikiWord, but to also to exclude all WikiWord concepts mapped to more than one foreign concept. This yields a strict 1:1 relationship and avoids any mismatches in scope or granularity. This is particularly useful when transferring definitions from one authority to another.</para>
+</sect3>
+</sect2>
+
+<sect1>
+<title>Architecture</title>
+
+<sect2>
+<title>Classes</title>
+<orderedlist>
+<listitem>
+<para>The entry point the the Application</para>
+</listitem>
+<listitem>
+<para>The Application sets up the Store (target) and DataCursor (source)</para>
+</listitem>
+<listitem>
+<para>The Application then creates a Processor around the Store and calls it on the DataCursor.</para>
+</listitem>
+<listitem>
+<para>The Processor fetches on entry after another from the DataCursor and passes it to the StoreBuilder. Note that any logic for filtering, grouping and converting of entries is usually implemented in the DataCursor, not in the Processor.</para>
+</listitem>
+</orderedlist>
+<para>Application</para>
+<para>DB Configuration, Tweaks, SourceDescriptor</para>
+<para>Store, StoreBuilder</para>
+<para>FeatureSet</para>
+<para>DataCursor</para>
+<para>FeatureSetSourceDescriptor</para>
+<para>Processor</para>
+<para>Associations</para>
+<para>MappingCandidates</para>
+<para>Filter, Selector</para>
+<para>Scorer</para>
+<para>Aggregator, Accessor</para>
+</sect2>
+
+
+<sect2>
+<title>Database</title>
+</sect2>
+
+</sect1>
+
+<sect1>
+<title>Environment</title>
+
+<sect2>
+<title>Configuration files</title>
+</sect2>
+
+<sect2>
+<title>Command Line</title>
+</sect2>
+
+<sect2>
+<title>BeanShell Commands</title>
+</sect2>
+
+<sect2>
+<title>Parameters</title>
+
+<sect3>
+<title>Database</title>
+</sect3>
+
+<sect3>
+<title>Tweaks</title>
+</sect3>
+
+<sect3>
+<title>Source Descriptor</title>
+</sect3>
+
+<sect3>
+<title>Source Descriptor Defaults</title>
+</sect3>
+
+<sect3>
+<title>Built-In Scripts</title>
+</sect3>
+
+</sect2>
+
+
+</sect1>
+
+</article>
