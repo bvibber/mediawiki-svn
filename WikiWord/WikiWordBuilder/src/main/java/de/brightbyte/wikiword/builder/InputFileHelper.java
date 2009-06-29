@@ -42,7 +42,7 @@ public class InputFileHelper {
 	}
 	
 	public URL getURL(String n) {
-		if (n.equals("-")) n = new File(".").getAbsolutePath();
+		if (n==null || n.equals("-")) n = new File(".").getAbsolutePath();
 		
 		try {
 			URL u = new URL(n);

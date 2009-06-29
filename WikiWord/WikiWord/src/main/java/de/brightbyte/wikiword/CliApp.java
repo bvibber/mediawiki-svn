@@ -306,11 +306,24 @@ public abstract class CliApp {
 	
 	public static File findConfigFile(Arguments args, String prefix) {
 		File f = null;
+		File d = null;
 
-		//use explicit config
+		//use explicit config fiole
 		String p = args.getStringOption(prefix, null);
 		if (p!=null) f = new File(p);
 		
+		//use explicit config dir
+		p = args.getStringOption("config-dir", null);
+		if (p!=null) d = new File(p);
+		
+		//look in config dir
+		if (f==null && d!=null) {
+				if (f==null) {
+					f = new File(d+"/"+prefix+".properties");
+					if (!f.exists()) f = null;
+				}
+		}
+
 		//look in home dir
 		if (f==null) {
 			String u = SystemUtils.getPropertySafely("user.home", null);
@@ -379,6 +392,7 @@ public abstract class CliApp {
 		args.declareHelp("<file>", "the file to process.");
 		args.declare("db", null, true, String.class, "the db info file to read database connection info from");
 		args.declare("help", "h", false, Boolean.class, "shows this help page");
+		args.declare("config-dir", "C", true, String.class, "base directory for config files");
 		args.declare("dbtest", null, false, String.class, "perform an echo test on the database. " +
 				"If a value is assigned, that value is used for the ping test.");
 		args.declare("loglevel", "v", true, Integer.class, "sets log level (verbosity): 0 shows all messages, " +

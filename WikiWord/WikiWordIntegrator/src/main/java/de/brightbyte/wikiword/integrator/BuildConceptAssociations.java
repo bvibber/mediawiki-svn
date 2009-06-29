@@ -76,28 +76,7 @@ public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationF
 
 	@Override
 	protected String getSqlQuery(String table, FeatureSetSourceDescriptor sourceDescriptor, SqlDialect dialect) {
-		String foreignIdField = sourceDescriptor.getTweak("foreign-id-field", (String)null);  //XXX: require!
-		String conceptIdField = sourceDescriptor.getTweak("concept-id-field", (String)null); //XXX: require!
-
-		String foreignProperty = sourceDescriptor.getTweak("foreign-property", null); //XXX: require!
-		String foreignPropertyField = sourceDescriptor.getTweak("association-property-field", "property");
-		String foreignValueField = sourceDescriptor.getTweak("association-value-field", "value");
-		
-		String associationProperty = sourceDescriptor.getTweak("association-property", (String)null);
-		boolean terms = associationProperty == null; 
-		
-		String associationPropertyTable = sourceDescriptor.getTweak("association-property-table", terms ? "meaning" : "property");
-		String associationPropertyField = sourceDescriptor.getTweak("association-property-field", terms ? null : "property");
-		String associationValueField = sourceDescriptor.getTweak("association-value-field", terms ? "term_text" : "value");
-		
-		String fields = StringUtils.join(", ", getDefaultFields(dialect));
-		String sql = "SELECT " + fields + " FROM " + dialect.quoteQualifiedName(getQualifiedTableName(table)) + " as F ";
-		sql += " JOIN " + dialect.quoteQualifiedName(getQualifiedTableName(associationPropertyTable)) +" as P ";
-		sql += " ON F."+ foreignValueField + " = P." +  associationValueField;
-		if (foreignProperty!=null && foreignPropertyField!=null) sql += " AND " + foreignPropertyField + " = " + dialect.quoteString(foreignProperty);
-		if (associationProperty!=null && associationPropertyField!=null) sql += " AND " + associationPropertyField + " = " + dialect.quoteString(associationProperty);
-		
-		return sql;
+				return null;
 	}
 
 	@Override
