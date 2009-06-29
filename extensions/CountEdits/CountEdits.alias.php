@@ -77,6 +77,11 @@ $aliases['ia'] = array(
 	'CountEdits' => array( 'Contar modificationes' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'CountEdits' => array( 'Hitung suntingan', 'HitungSuntingan' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'CountEdits' => array( '編集回数の集計' ),

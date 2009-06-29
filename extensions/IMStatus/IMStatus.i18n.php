@@ -216,6 +216,7 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'imstatus-desc' => 'Přidává značky zobrazující stav přítomnosti uživatelů různých IM sítí (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo!)',
@@ -237,7 +238,7 @@ $messages['cs'] = array(
 	'imstatus_gtalk_height' => 'výška okraje v pixelech',
 	'imstatus_gtalk_width' => 'šířka okraje v pixelech',
 	'imstatus_icq_id' => 'váš ICQ identifikátor',
-	'imstatus_icq_style' => 'číslo v rozsahu 0-26 (ano, je dostupných 27 stylů...).',
+	'imstatus_icq_style' => 'číslo v rozsahu 0–26 (ano, je dostupných 27 stylů).',
 	'imstatus_live_code' => 'váš identifikátor na webu Live Messenger',
 	'imstatus_live_get_code' => 'váš identifikátor na webu Live Messenger: <strong>toto není vaše emailová adresa</strong>, musíte si ji vytvořit <a href="$1">ve svých nastaveních Live Messenger</a>.
 Indentifikítor, který musíte zadat, jsou písmena a číslice mezi $2 a $3.',
@@ -270,7 +271,7 @@ $messages['de'] = array(
 	'imstatus_gtalk_height' => 'Höhe der Box in Pixel.',
 	'imstatus_gtalk_width' => 'Breite der Box in Pixel.',
 	'imstatus_icq_id' => 'deine ICQ-UIN',
-	'imstatus_icq_style' => 'eine Zahl zwischen 0 und 26 (ja, es gibt 27 verschiedene Stile ...).',
+	'imstatus_icq_style' => 'eine Zahl zwischen 0 und 26 (ja, es gibt 27 verschiedene Stile …).',
 	'imstatus_live_code' => 'deine Live Messenger Website-ID',
 	'imstatus_live_get_code' => 'deine Live Messenger Website-ID: <strong>Das ist nicht deine E-Mail-Adresse</strong>.
 Du musst dir eine in den <a href="$1">Live Messenger Optionen</a> erstellen.

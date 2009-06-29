@@ -61,6 +61,11 @@ $aliases['ia'] = array(
 	'EmergencyDeSysop' => array( 'Disadmin de urgentia' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'EmergencyDeSysop' => array( 'Demutasi opsis darurat', 'DemutasiOpsisDarurat' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'EmergencyDeSysop' => array( '緊急管理者解任' ),

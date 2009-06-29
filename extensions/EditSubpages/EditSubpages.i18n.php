@@ -454,7 +454,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'editsubpages-desc' => 'Permet als administrators de desvarrolhar una pagina e totas sas sospaginas per las modificacions anonimas gràcia a [[MediaWiki:Unlockedpages]]',
-	'unlockedpages' => '  #<!-- Daissatz aquesta linha tala coma es --><pre>
+	'unlockedpages' => ' #<!-- Daissatz aquesta linha tala coma es --><pre>
 # Indicatz, çaijós, las paginas que desiratz desvarrolhar en utilizant
 # * Nomdelapagina
 # Las paginas desvarrolhadas devon començar per una piuse per èsser presas en compte,

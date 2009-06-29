@@ -94,6 +94,11 @@ $aliases['ia'] = array(
 	'RepoAdmin' => array( 'Admin repo' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Code' => array( 'Kode', 'Tinjauan kode', 'TinjauanKode' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Code' => array( 'コード', 'コードレビュー' ),

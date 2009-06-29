@@ -755,6 +755,7 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'importusers-uploadfile' => 'Muatkan berkas',
 	'importusers-form-button' => 'Impor',
+	'importusers-log-summary' => 'Ringkasan',
 	'importusers-log-summary-all' => 'Semua',
 	'importusers-log-summary-added' => 'Telah ditambahkan',
 	'importusers-log-summary-updated' => 'Dimutakhirkan',

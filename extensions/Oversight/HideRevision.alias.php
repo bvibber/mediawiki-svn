@@ -109,8 +109,8 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'HideRevision' => array( 'Sembunyikan revisi' ),
-	'Oversight' => array( 'Pengawas revisi' ),
+	'HideRevision' => array( 'Sembunyikan revisi', 'SembunyikanRevisi' ),
+	'Oversight' => array( 'Pemantau', 'Pengawas revisi', 'PengawasRevisi' ),
 );
 
 /** Italian (Italiano) */

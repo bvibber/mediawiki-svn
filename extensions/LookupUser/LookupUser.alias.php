@@ -42,6 +42,11 @@ $aliases['ia'] = array(
 	'LookupUser' => array( 'Cercar usator' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'LookupUser' => array( 'Lihat pengguna', 'LihatPengguna' ),
+);
+
 /** Italian (Italiano) */
 $aliases['it'] = array(
 	'LookupUser' => array( 'ControllaUtente' ),

@@ -495,6 +495,13 @@ $messages['ia'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Cambiar mi stato a foras de linea quando io claude mi session',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'onlinestatus-tab' => 'Status',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

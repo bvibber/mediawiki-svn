@@ -1418,10 +1418,11 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  */
 $messages['no'] = array(
 	'review_sidebar_title' => 'Gå gjennom',
-	'review-desc' => 'Den gjenoppståtte [[Special:Review|valideringsfunksjonen]].',
+	'review-desc' => 'Tillater brukere å [[Special:Review|vurdere]] sider',
 	'review_topics' => '# Følgende er en liste over emner og verdier for valideringsutvidelse.
 # Hvert emne defineres av en linje på fem verdier, skilt fra hverandre med «:» (alle andre linjer ignoreres).
 # Rekkeølgen er: Numerisk verdi (>0), navn, maksimum verdi (>1; 2=yes/no), betydning av laveste verdi (f.eks. «dårlig»), betydning av høyeste verdi (f.eks. «bra»).
@@ -1441,7 +1442,7 @@ $messages['no'] = array(
 	'review_total_statistics' => 'Totalt',
 	'review_statistics_left_corner' => 'Revisjon',
 	'review_version_link' => 'Revisjon #$1',
-	'review_statistic_cell' => 'Gjennomsnitt: $1 av $2<br />($4 registrerte, $5 uregistrerte)',
+	'review_statistic_cell' => 'Gjennomsnitt: $1 av $2<br />({{PLURAL:$4|registrert|registrerte}}, $5 {{PLURAL:$5|uregistrert bruker|uregistrerte brukere}})',
 	'review_version_statistic_cell' => '$1 av $2',
 	'review_version_reviews_link' => '<small>(versjonsgjennomganger)</small>',
 	'review_concerns_page' => 'Denne gjennomgangen gjelder siden «$1».',
@@ -1453,7 +1454,7 @@ $messages['no'] = array(
 	'review_has_been_stored' => 'Gjennomgangen din har blitt lagret!',
 	'revision_review_this_page_version_link' => 'Gå gjennom denne versjonen av siden.',
 	'review_page_review' => 'Gjennomgang av siden «$1»',
-	'review_blocked' => 'Du er blokkert, gå vekk.',
+	'review_blocked' => 'Du er blokkert, og kan ikke delta i vurderinger.',
 	'review_wrong_namespace' => 'Kan ikke gå gjennom sider i dette navnerommet.',
 	'review_topic' => 'Emne',
 	'review_no_opinion' => 'Ingen mening',

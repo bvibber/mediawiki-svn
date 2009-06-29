@@ -49,6 +49,11 @@ $aliases['dv'] = array(
 	'Vote' => array( 'ވޯޓް' ),
 );
 
+/** Greek (Ελληνικά) */
+$aliases['el'] = array(
+	'Vote' => array( 'Ψηφοφορία' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'Vote' => array( 'Votar' ),
@@ -111,7 +116,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'Vote' => array( 'Beri suara' ),
+	'Vote' => array( 'Voting', 'Beri suara', 'BeriSuara' ),
 );
 
 /** Japanese (日本語) */

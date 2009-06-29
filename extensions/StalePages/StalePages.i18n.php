@@ -239,10 +239,11 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'stalepages' => 'Kaca-kaca sing kalalèkaké',
-	'stalepages-summary' => 'Ing ngisor iki kapacak daftar kaca-kaca sing ora disunting ing $1 dina pungkasan.',
+	'stalepages-summary' => 'Ing ngisor iki kapacak dhaptar kaca-kaca sing ora disunting ing $1 {{PLURAL:$1|dina|dina}} pungkasan.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

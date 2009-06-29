@@ -39,6 +39,11 @@ $aliases['ia'] = array(
 	'ProfileMonitor' => array( 'Analyse de rendimento' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ProfileMonitor' => array( 'Monitor profil', 'MonitorProfil' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ProfileMonitor' => array( 'プロファイリングデータ', 'プロファイルモニター' ),

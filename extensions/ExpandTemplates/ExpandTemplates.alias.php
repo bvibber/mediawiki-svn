@@ -124,7 +124,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'ExpandTemplates' => array( 'Kembangkan templat' ),
+	'ExpandTemplates' => array( 'Kembangkan templat', 'KembangkanTemplat' ),
 );
 
 /** Italian (Italiano) */

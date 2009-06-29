@@ -83,6 +83,12 @@ $aliases['ia'] = array(
 	'Disabledusers' => array( 'Usatores disactivate' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'PasswordReset' => array( 'Reset sandi', 'ResetSandi' ),
+	'Disabledusers' => array( 'Pengguna nonaktif', 'PenggunaNonaktif' ),
+);
+
 /** Italian (Italiano) */
 $aliases['it'] = array(
 	'PasswordReset' => array( 'ReimpostaPassword' ),

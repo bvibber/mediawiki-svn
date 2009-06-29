@@ -1278,6 +1278,7 @@ $messages['id'] = array(
 	'grouppermissions-dosearch' => 'Cari',
 	'grouppermissions-comment' => 'Komentar:',
 	'grouppermissions-never' => 'Tidak pernah',
+	'grouppermissions-sp-save' => 'Simpan',
 	'grouppermissions-sp-remove' => 'hapus',
 );
 

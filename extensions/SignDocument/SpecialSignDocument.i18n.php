@@ -1760,20 +1760,26 @@ $1',
  * @author Rex
  */
 $messages['id'] = array(
+	'signdocument' => 'Tandatangani dokumen',
 	'sign-realname' => 'Nama:',
 	'sign-city' => 'Kota:',
+	'sign-state' => 'Keadaan:',
 	'sign-country' => 'Negara:',
 	'sign-phone' => 'Nomor telepon:',
+	'sign-submit' => 'Tandatangani dokumen',
 	'sign-viewfield-realname' => 'Nama',
 	'sign-viewfield-city' => 'Kota',
+	'sign-viewfield-state' => 'Keadaan',
 	'sign-viewfield-country' => 'Negara',
 	'sign-viewfield-ip' => 'Alamat IP',
 	'sign-viewfield-agent' => 'Aplikasi pengguna',
 	'sign-viewfield-options' => 'Pilihan',
+	'sign-signatures' => 'Tanda tangan',
 	'sig-private' => '<i>Pribadi</i>',
 	'sign-viewfield-reviewedby' => 'Peninjau',
 	'sign-viewfield-reviewcomment' => 'Komentar',
 	'sign-review-comment' => 'Komentar',
+	'sign-submitreview' => 'Kirim tinjauan',
 );
 
 /** Ido (Ido)

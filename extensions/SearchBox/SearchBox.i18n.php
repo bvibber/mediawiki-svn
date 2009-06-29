@@ -64,6 +64,7 @@ $messages['ar'] = array(
 $messages['arc'] = array(
 	'searchbox-search' => 'ܒܨܝ',
 	'searchbox-go' => 'ܙܠ',
+	'searchbox-namespaces' => 'ܚܩܠܬ̈ܐ:',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

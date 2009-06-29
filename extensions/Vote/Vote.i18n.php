@@ -875,7 +875,7 @@ riddler|Riddler',
 	'vote-results-choice' => 'Pilihan',
 	'vote-results-count' => 'Cacah swara',
 	'vote-results-none' => 'Wektu iki durung ana swara/pilihan sing mlebu.',
-	'vote-login' => 'Panjenengan kudu [$1 mlebu log] kanggo nyoblos.',
+	'vote-login' => 'Panjenengan kudu [$1 mlebu log] kanggo mènèhi swara.',
 	'vote-invalid-choice' => 'Panjenengan kudu milih salah siji pilihan sing ana.',
 );
 

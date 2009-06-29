@@ -76,7 +76,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'InspectCache' => array( 'Inspeksi tembolok' ),
+	'InspectCache' => array( 'Periksa tembolok', 'PeriksaTembolok', 'Periksa kas', 'PeriksaKas' ),
 );
 
 /** Italian (Italiano) */

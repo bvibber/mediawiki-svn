@@ -55,6 +55,11 @@ $aliases['ia'] = array(
 	'RandomInCategory' => array( 'Aleatori in categoria' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'RandomInCategory' => array( 'Sembarang di kategori', 'SembarangDiKategori' ),
+);
+
 /** Italian (Italiano) */
 $aliases['it'] = array(
 	'RandomInCategory' => array( 'CasualeInCategoria' ),

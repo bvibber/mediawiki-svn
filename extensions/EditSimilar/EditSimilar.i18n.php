@@ -467,9 +467,9 @@ Te artykuły również mogą potrzebować twojej pomocy: $1.',
 $messages['pt'] = array(
 	'editsimilar-desc' => 'Encoraja os utilizadores a editarem uma página semelhante depois de gravar uma página',
 	'editsimilar-thanks' => 'Obrigado pela sua contribuição.
-Espreite estas páginas relacionadas: $1.',
+Espreite {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Obrigado pela sua contribuição.
-Estas páginas também poderiam beneficiar da sua ajuda: $1.',
+{{PLURAL:$2|Esta página poderia|Estas páginas poderiam}} também beneficiar da sua ajuda: $1.',
 	'editsimilar-thankyou' => 'Obrigado pela sua contribuição, $1!',
 	'editsimilar-link-disable' => 'configurar preferências',
 	'tog-edit-similar' => 'Activar sugestões de páginas semelhantes',

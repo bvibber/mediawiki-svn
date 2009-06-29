@@ -16,6 +16,13 @@ $messages['qqq'] = array(
 	'breadcrumbs-desc' => 'Short description of the Breadcrumbs extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Bresta
+ */
+$messages['aln'] = array(
+	'breadcrumbs-desc' => 'Tregon shtegun e përdoruesit nëpër wiki.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -45,6 +45,11 @@ $aliases['ia'] = array(
 	'RegexBlock' => array( 'Blocar con regex' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'RegexBlock' => array( 'Blok regex', 'BlokRegex' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'RegexBlock' => array( '正規表現ブロック' ),

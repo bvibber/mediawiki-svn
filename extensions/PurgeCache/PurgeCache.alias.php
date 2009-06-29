@@ -71,7 +71,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'PurgeCache' => array( 'Pembersihan tembolok' ),
+	'PurgeCache' => array( 'Pembersihan tembolok', 'PembersihanTembolok', 'Purgasi kas', 'PurgasiKas' ),
 );
 
 /** Japanese (日本語) */

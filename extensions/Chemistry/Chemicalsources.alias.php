@@ -67,6 +67,11 @@ $aliases['ia'] = array(
 	'ChemicalSources' => array( 'Fontes chimic' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ChemicalSources' => array( 'Rujukan kimia', 'RujukanKimia' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ChemicalSources' => array( '化学関連の検索' ),

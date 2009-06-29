@@ -82,6 +82,11 @@ $aliases['ia'] = array(
 	'CloseWiki' => array( 'Clauder wiki' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'CloseWiki' => array( 'Tutup wiki', 'TutupWiki' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'CloseWiki' => array( 'ウィキ閉鎖', 'ウィキを閉鎖する' ),

@@ -559,6 +559,13 @@ $messages['ia'] = array(
 	'amazonplus-less' => 'minus',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'amazonplus-nores' => 'Galat: Tidak ditemukan hasilnya!',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

@@ -1428,6 +1428,7 @@ $messages['id'] = array(
 	'tasks_delete' => 'Hapus',
 	'tasks_table_header_page' => 'Halaman',
 	'tasks_search_form_title' => 'Cari',
+	'tasks_search_status' => 'Status',
 	'tasks_previous' => 'Sebelumnya',
 	'tasks_next' => 'Selanjutnya',
 );

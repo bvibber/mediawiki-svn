@@ -1249,6 +1249,7 @@ YouTubeがあなたの動画を処理するまで、いくらかの時間を必�
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'youtubeauthsub' => 'Ngunggahaké vidéo YouTube',
@@ -1264,22 +1265,22 @@ $messages['jv'] = array(
 	'youtubeauthsub_clickhere' => 'Klik ing kéné kanggo log mlebu ing YouTube',
 	'youtubeauthsub_tokenerror' => 'Ana sing salah nalika nggawé token otorisasi, tulung coba direfresh.',
 	'youtubeauthsub_success' => "Slamet!
-Vidéo panjenengan wis diunggahaké.
-Kanggo mirsani vidéo panjenengan klik<a href='http://www.youtube.com/watch?v=$1'>ing kéné</a>.
-YouTube mbok-menawa merlokaké sawetara wektu kanggo prosès vidéo panjenengan, dadi mbok-menawa saiki durung cumepak.
+Vidéo panjenengan wis kasil diunggahaké.
+<a href='http://www.youtube.com/watch?v=$1'>Pirsani vidéo panjenengan</a>.
+YouTube manawa merlokaké sawetara wektu kanggo mrosès vidéo panjenengan, dadi mbokmanawa saiki durung cumepak.
 
-Kanggo ndokok vidéo panjenengan ing sawijining wiki, lebokna kode sing kapacak ing ngisor iki ing sawijining kaca:
+Kanggo masang vidéo panjenengan ing kaca wiki, lebokna kodhe sing kapacak ing ngisor iki jroning kaca kasebut:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Kanggo ngunggahaké vidéo, panjenengan kudu log mlebu dhisik ing YouTube.',
 	'youtubeauthsub_uploadhere' => 'Unggahna vidéo panjenengan saka kéné:',
 	'youtubeauthsub_uploadbutton' => 'Unggah',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Vidéo iki bisa dideleng ing [http://www.youtube.com/watch?v=$1 kéné]',
+[http://www.youtube.com/watch?v=$1 Pirsani vidéo iki]',
 	'youtubeauthsub_summary' => 'Ngunggahaké vidéo YouTube',
 	'youtubeauthsub_uploading' => 'Vidéo panjenengan lagi diunggahaké.
 Tulung sabar dhisik.',
-	'youtubeauthsub_viewpage' => 'Sacara alternatif, panjenengan bisa mirsani vidéo panjenengan ing [[$1|kéné]].',
+	'youtubeauthsub_viewpage' => 'Pilihan liya, panjenengan bisa [[S1|mirsani vidéo panjenengan]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Mangga lebokna 1 utawa luwih tembung kunci.',
 	'youtubeauthsub_jserror_notitle' => 'Mangga lebokna irah-irahan (judhul) kanggo vidéo iki.',
 	'youtubeauthsub_jserror_nodesc' => 'Mangga lebokna dèskripsi kanggo vidéo iki.',

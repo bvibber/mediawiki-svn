@@ -85,6 +85,13 @@ $aliases['ia'] = array(
 	'ContributionTotal' => array( 'Total de contributiones' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ContributionHistory' => array( 'Riwayat kontribusi', 'RiwayatKontribusi' ),
+	'ContributionStatistics' => array( 'Statistik kontribusi', 'StatistikKontribusi' ),
+	'ContributionTotal' => array( 'Total kontribusi', 'TotalKontribusi' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ContributionHistory' => array( '寄付履歴' ),

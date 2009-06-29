@@ -790,7 +790,7 @@ Het bestand dat u uploadt moet op iedere regel een paginanaam en een reden bevat
 	'deletebatch-link-back' => 'Teruggaan naar de speciale pagina',
 	'deletebatch-as' => 'Script uitvoeren als:',
 	'deletebatch-both-modes' => "Kies een bepaalde pagina of geef een list met pagina's op.",
-	'deletebatch-or' => '<b>OF</b>',
+	'deletebatch-or' => '<b>Of</b>',
 	'deletebatch-page' => "Te verwijderen pagina's:",
 	'deletebatch-reason' => 'Reden voor verwijderen',
 	'deletebatch-processing-from-file' => "bezig met het verwijderen van pagina's uit een bestandslijst",

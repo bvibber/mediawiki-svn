@@ -93,6 +93,11 @@ $aliases['ia'] = array(
 	'Watchers' => array( 'Observatores' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Watchers' => array( 'Pemantau' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Watchers' => array( 'ウォッチしている利用者' ),

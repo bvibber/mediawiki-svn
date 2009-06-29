@@ -38,6 +38,11 @@ $aliases['ia'] = array(
 	'CommunityVoice' => array( 'Voce del communitate' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'CommunityVoice' => array( 'Suara komunitas', 'SuaraKomunitas' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'CommunityVoice' => array( 'コミュニティー・ボイス', 'コミュニティの声' ),

@@ -2414,6 +2414,7 @@ $messages['id'] = array(
 	'deletequeue-vote-reason' => 'Komentar:',
 	'deletequeue-vote-submit' => 'Kirim',
 	'deletequeue-list-queue' => 'Antrian:',
+	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Cari',
 	'deletequeue-list-header-page' => 'Halaman',
 	'deletequeue-list-header-queue' => 'Antrian',

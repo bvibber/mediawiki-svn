@@ -77,6 +77,11 @@ $aliases['ia'] = array(
 	'ImportFreeImages' => array( 'Importar imagines libere' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ImportFreeImages' => array( 'Impor gambar gratis', 'ImporGambarGratis' ),
+);
+
 /** Italian (Italiano) */
 $aliases['it'] = array(
 	'ImportFreeImages' => array( 'ImportaImmaginiLibere' ),

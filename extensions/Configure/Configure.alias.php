@@ -182,8 +182,8 @@ $aliases['ia'] = array(
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Configure' => array( 'Konfigurasi' ),
-	'Extensions' => array( 'Ekstensi' ),
-	'ViewConfig' => array( 'Lihat konfigurasi', 'Lihatkonfigurasi' ),
+	'Extensions' => array( 'Pengaya', 'Ekstensi' ),
+	'ViewConfig' => array( 'Lihat konfigurasi', 'LihatKonfigurasi' ),
 );
 
 /** Italian (Italiano) */

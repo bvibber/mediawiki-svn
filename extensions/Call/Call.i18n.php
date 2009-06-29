@@ -500,7 +500,19 @@ $messages['id'] = array(
 	'call' => 'Panggilan',
 	'call-desc' => 'Buat sebuah pranala ke templat (atau halaman wiki biasa) dengan parameter. 
 Dapat digunakan pada baris perintah penjelajah web atau di antara teks wiki',
-	'call-text' => 'Pengaya Panggilan membutuhkan sebuah halaman wiki dan parameter opsional untuk halaman tersebut untuk digunakan sebagai argumen.',
+	'call-text' => "Pengaya Panggilan membutuhkan sebuah halaman wiki dan parameter opsional untuk halaman tersebut untuk digunakan sebagai argumen.
+
+Contoh 1: &nbsp; <tt>[[{{#special:call}}/Templat Saya,parm1=value1]]</tt><br />
+Contoh 2: &nbsp; <tt>[[{{#special:call}}/Pembicaraan:Diskusi Saya,parm1=value1]]</tt><br />
+Contoh 3: &nbsp; <tt>[[{{#special:call}}/:Halaman Saya,parm1=value1,parm2=value2]]</tt><br />
+Contoh 4 (URL Penjelajah): &nbsp; <tt>http://domain/wiki/index.php?{{#special:call}}/:Halaman Saya,parm1=value1</tt><br /><br />
+
+<i>Ekstensi Call</i> akan memanggil halaman yang dimaksud dan mengirimkan parameternya.<br />
+Anda akan melihat isi dari halaman tersebut dan judulnya, tapi 'tipe'nya akan seperti halaman istimewa, yakni halaman tersebut tidak bisa disunting.<br />Isi yang Anda lihat akan bervariasi tergantung dari parameter yang dikirimkan.<br /><br />
+
+<i>Ekstensi Call</i> berguna untuk membuat aplikasi interaktif dengan MediaWiki.<br />
+Contohnya: <a href='http://semeb.com/dpldemo/Template:Catlist'>GUI DPL</a> ..<br />
+Jika ada masalah, lihat <b>{{#special:call}}/DebuG</b>",
 	'call-save' => "Keluaran untuk panggilan ini akan disimpan di sebuah halaman bernama ''$1''.",
 	'call-save-success' => 'Teks berikut ini telah disimpan ke halaman <big>[[$1]]</big>.',
 	'call-save-failed' => 'Teks berikut ini BELUM disimpan ke halaman <big>[[$1]]</big> karena halaman tersebut sudah ada.',

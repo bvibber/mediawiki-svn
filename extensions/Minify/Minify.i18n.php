@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 Do not translate "<code>action=raw</code>".',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'minify-desc' => 'Скарачае вывад CSS і JavaScript ад action=raw',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

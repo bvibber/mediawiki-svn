@@ -70,6 +70,11 @@ $aliases['ia'] = array(
 	'CreatePage' => array( 'Crear pagina' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'CreatePage' => array( 'Buat halaman', 'BuatHalaman' ),
+);
+
 /** Italian (Italiano) */
 $aliases['it'] = array(
 	'CreatePage' => array( 'CreaPagina' ),

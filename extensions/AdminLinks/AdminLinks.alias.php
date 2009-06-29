@@ -28,6 +28,11 @@ $aliases['ia'] = array(
 	'AdminLinks' => array( 'Ligamines pro administratores' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'AdminLinks' => array( 'Pranala admin', 'PranalaAdmin' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'AdminLinks' => array( '管理者用リンク集' ),

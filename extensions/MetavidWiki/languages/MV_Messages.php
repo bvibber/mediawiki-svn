@@ -1918,7 +1918,7 @@ Zur Stream-Ansicht springen: $2',
 	'mv_viewprevnext' => 'Zeige ($1) ($2)',
 	'mediasearch' => 'Mediensuche',
 	'mv_search_sel_t' => 'Suchfunktion auswählen',
-	'mv_do_media_search' => 'Metavid-Medien-Suche für $1',
+	'mv_do_media_search' => 'Metavid-Medien-Suche nach $1',
 	'mv_results_for' => 'Ergebnisse für $1',
 	'mv_video_search' => 'Video-Suche',
 	'mv_page_search' => 'Wikiseiten-Suche für $1',
@@ -4538,11 +4538,13 @@ $messages['id'] = array(
 	'mv_history' => 'Versi',
 	'mv_remove' => 'hapus',
 	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
+	'mv_search_spoken_by' => 'Dibacakan oleh',
 	'mv_search_categories' => 'Kategori',
 	'mv_search_category' => 'Kategori',
 	'mv_search_and' => 'dan',
 	'mv_search_date_range' => 'Rentang tanggal',
 	'mv_date_range' => 'rentang tanggal',
+	'mv_spoken_by' => 'dibacakan oleh',
 	'mv_category' => 'kategori',
 );
 
@@ -4832,7 +4834,7 @@ $1のカテゴリ範囲検索の全メタデータ',
 	'mv_search_bill' => '目録',
 	'mv_bill' => '目録',
 	'mv_search_category' => 'カテゴリ',
-	'mv_search_smw_property' => '意味特徴',
+	'mv_search_smw_property' => '意味プロパティ',
 	'mv_search_smw_property_numeric' => '数値',
 	'mv_search_and' => 'と',
 	'mv_search_or' => 'か',
@@ -5321,12 +5323,35 @@ dobei ze donn',
 	'edit_stream_missing' => '!!FIZZY!!Dä Name för dä Date-Schtrom es nit aanjejovve',
 	'mv_missing_req_time' => '!!FIZZY!!De Zick för de Aanforderung es nit aanjejovve',
 	'mv_missing_cat' => 'Dä Name för die Saachjrupp es nit aanjejovve',
+	'mv_stream_already_exists' => '
+Dä 
+stream
+„<a href="$2">$1</a>“ jidd_et alld',
+	'mv_summary_add_stream' => ' Dä 
+stream 
+wood övver e Fommulaa dobei jedonn',
+	'mv_error_stream_insert' => ' dä 
+stream 
+kunnt nit enjeföösh wääde',
 	'mv_redirect_and_delete_reason' => 'Ömleidungssigg fott jeschmeße',
 	'mv_remove_reason' => 'Dä Jrond för et fottschmiiße:',
+	'mv_stream_delete_warrning' => "'''Dä
+stream
+heh fott ze schmiiße määt och {{PLURAL:$1|eij Shtöck|$1 Shtöcke|kei}}
+associative metadata
+fott.
+'''<br />",
+	'mv_label_stream_type' => '
+stream
+Zoot',
 	'mv_metavid_file' => 'Die Dattei jit et ald op hee däm Server',
 	'mv_upload_file' => 'Dattei huhlaade',
 	'mv_external_file' => 'En Dattei ußerhallef',
 	'mv_tool_search' => 'Sööke',
+	'mv_tool_search_title' => '
+En däm 
+stream
+söhke',
 	'mv_search_transcripts_for' => 'Söhk en de Viddejos noh $1 (donn dä Kaßte verschteische)',
 	'mv_tool_export' => 'Expotteere',
 	'mv_tool_embed' => 'Enbenge',
@@ -5367,9 +5392,14 @@ Et jitt kei
 streams',
 	'mv_play' => 'Afshpelle',
 	'mv_edit' => 'Ändere',
+	'mv_history' => 'Versione',
 	'mv_edit_title' => 'Tex ändere',
 	'mv_edit_adjust_title' => 'Tex un Viddejo-Aanpassung ändere',
 	'mv_remove' => 'fott nämme',
+	'mv_remove_title' => '
+donn heh dä Afschnett
+meta data
+fott schmiiße',
 	'mv_adjust' => 'Aanpasse',
 	'mv_adjust_submit' => 'Aanpassung faßhallde',
 	'mv_adjust_title' => 'Aanfangs- un Engk-Zick aanpasse',
@@ -5383,6 +5413,10 @@ streams',
 	'mv_existing_categories' => '{{PLURAL:$1|{{ns:category}}|{{int:categories}}|{{int:categories}}}}:',
 	'mv_viewnext' => 'Zeish ($1)',
 	'mv_viewprevnext' => 'Zeish ($1) ($2)',
+	'mv_results_for' => 'Wat för „$1“ erus kohm',
+	'mv_video_search' => 'Viddejo söhke',
+	'mv_page_search' => 'Donn en de Wiki_Sigge noh „$1“ söhke',
+	'mv_add_filter' => 'Donn ene Fellter dobei',
 	'mv_search_match' => 'Noh Tex söhke',
 	'mv_search_spoken_by' => 'Jeshproche vum',
 	'mv_search_categories' => 'Saachjruppe',
@@ -7299,7 +7333,8 @@ Todas as mudanças serão perdidas.',
 	'mv_flash_low_quality' => 'Stream para Web - vídeo Flash',
 	'mv_archive_org_mp4' => 'Fluxo H.264 encapsulado em MP4 de Archive.org',
 	'mv_archive_org_link' => 'Liga para os originais mpeg2 de Archive.org',
-	'mv_error_stream_missing' => '<span class="error">Erro: Não há um ficheiro de vídeo associado com este stream.</span><br />Por favor, reporte este facto ao administrador do sítio.',
+	'mv_error_stream_missing' => '<span class="error">Erro: Não há nenhum ficheiro de vídeo associado com este stream.</span><br />
+Por favor, reporte este facto ao [[{{MediaWiki:Grouppage-sysop}}|administrador do sítio]].',
 	'mv_stream_added' => 'Você adicionou a stream $1',
 	'mv_stream_meta' => 'Página de stream',
 	'mv_add_stream' => 'Adicionar stream Metavid',
@@ -7389,7 +7424,7 @@ $mvMVDTypeDefaultDisp deverá ser um subconjunto de $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 para $2 de $3',
 	'mv_time_separator' => '$1 a $2',
 	'mv_list_streams' => 'Streams da lista Metavid',
-	'mv_list_streams_page' => 'Listar streams mv',
+	'mv_list_streams_page' => 'Listar streams Metavid',
 	'mv_list_streams_docu' => 'Os seguintes streams se encontram disponíveis:',
 	'mv_list_streams_none' => 'Não há streams disponíveis',
 	'mvvideofeed' => 'Exportação de fluxo de vídeo Metavid',

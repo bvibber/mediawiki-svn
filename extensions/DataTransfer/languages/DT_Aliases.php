@@ -72,6 +72,11 @@ $aliases['ia'] = array(
 	'ViewXML' => array( 'Visualisar XML' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ViewXML' => array( 'Lihat XML', 'LihatXML' ),
+);
+
 /** Italian (Italiano) */
 $aliases['it'] = array(
 	'ViewXML' => array( 'VediXML' ),

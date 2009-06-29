@@ -59,6 +59,11 @@ $aliases['ia'] = array(
 	'TemplateLink' => array( 'Ligamine verso patrono' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'TemplateLink' => array( 'Pranala templat', 'PranalaTemplat' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'TemplateLink' => array( 'テンプレートリンク' ),

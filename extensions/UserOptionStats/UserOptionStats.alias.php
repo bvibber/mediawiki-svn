@@ -19,6 +19,11 @@ $aliases['ar'] = array(
 	'UserOptionStats' => array( 'إحصاءات_خيارات_المستخدم' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'UserOptionStats' => array( 'Statistik opsi pengguna', 'StatistikOpsiPengguna' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'UserOptionStats' => array( '利用者オプション統計' ),

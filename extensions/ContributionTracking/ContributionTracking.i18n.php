@@ -130,7 +130,7 @@ $messages['cs'] = array(
 	'contributiontracking' => 'Sledování příspěvků',
 	'contrib-tracking-error' => 'Chyba',
 	'contrib-tracking-error-text' => 'Odeslaný formulář nebyl správně vyplněn',
-	'contrib-tracking-submitting' => 'Platba se odesílá ke zpracování...',
+	'contrib-tracking-submitting' => 'Platba se odesílá ke zpracování…',
 	'contrib-tracking-continue' => 'Pokud nebudete automaticky přesměrován(a), klikněte na tlačítko, abyste mohl(a) dokončit svůj příspěvek pomocí služby PayPal.',
 	'contrib-tracking-button' => 'Pokračovat',
 );
@@ -141,7 +141,7 @@ $messages['de'] = array(
 	'contributiontracking' => 'Spendenverfolgung',
 	'contrib-tracking-error' => 'Fehler',
 	'contrib-tracking-error-text' => 'Ungültiges Übertragungsformular',
-	'contrib-tracking-submitting' => 'Übertragung an den Zahlungsprovider ...',
+	'contrib-tracking-submitting' => 'Übertragung an den Zahlungsprovider …',
 	'contrib-tracking-continue' => 'Wenn Sie nicht automatisch weitergeleitet werden, klicken Sie bitte auf „Weiter“, um Ihre Spende über PayPal zu abzuschließen.',
 	'contrib-tracking-button' => 'Weiter',
 );
@@ -652,7 +652,7 @@ $messages['ru'] = array(
 	'contributiontracking' => 'Отслеживание сбора пожертвований',
 	'contrib-tracking-error' => 'Ошибка',
 	'contrib-tracking-error-text' => 'Неправильное подчинение формы',
-	'contrib-tracking-submitting' => 'Отправка обработчику платежей...',
+	'contrib-tracking-submitting' => 'Отправка обработчику платежей…',
 	'contrib-tracking-continue' => 'Если вы не были автоматически перенаправлены, нажмите на кнопку, чтобы завершить ваше пожертвование на сайте PayPal.',
 	'contrib-tracking-button' => 'Продолжить',
 );

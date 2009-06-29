@@ -645,8 +645,8 @@ $messages['jv'] = array(
 	'formarticleexists' => 'Kacané ana',
 	'formarticleexiststext' => 'Kaca [[$1]] wis ana.',
 	'formbadpagename' => 'Jeneng kaca ala',
-	'formrequiredfielderror' => 'Lapangan $1 diperlokaké kanggo formulir iki.
-Tulung diisi.',
+	'formrequiredfielderror' => '{{PLURAL:$2|Field $1 |Fields $1 }} diperlokaké kanggo formulir iki.
+Mangga diisi {{PLURAL:$2|iki|iki}}.',
 	'formsavesummary' => 'Kaca anyar nganggo [[Special:Form/$1|formulir $1]]',
 	'formsaveerror' => 'Ana kaluputan nalika nyimpen formulir',
 	'formsaveerrortext' => "Ana kaluputan sing ora dimangertèni nalika nyimpen kaca '$1'.",

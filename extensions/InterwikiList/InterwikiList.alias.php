@@ -105,7 +105,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'InterwikiList' => array( 'Daftar interwiki' ),
+	'InterwikiList' => array( 'Daftar interwiki', 'DaftarInterwiki' ),
 );
 
 /** Italian (Italiano) */

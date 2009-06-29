@@ -71,7 +71,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'ShowProcesslist' => array( 'Daftar proses' ),
+	'ShowProcesslist' => array( 'Daftar proses', 'DaftarProses' ),
 );
 
 /** Italian (Italiano) */

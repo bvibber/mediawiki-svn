@@ -94,7 +94,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'Badimages' => array( 'Berkas dilarang' ),
+	'Badimages' => array( 'Berkas yang buruk', 'BerkasBuruk' ),
 );
 
 /** Ido (Ido) */

@@ -75,7 +75,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'MultiUpload' => array( 'Multi unggah' ),
+	'MultiUpload' => array( 'Multi unggah', 'MultiUnggah' ),
 );
 
 /** Japanese (日本語) */

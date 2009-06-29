@@ -94,6 +94,11 @@ $aliases['ia'] = array(
 	'WatchSubpages' => array( 'Observar subpaginas' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'WatchSubpages' => array( 'Pantau upa halaman', 'PantauUpaHalaman' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'WatchSubpages' => array( 'サブページのウォッチ' ),

@@ -651,8 +651,8 @@ $messages['jv'] = array(
 	'gep-addsectionbutton' => 'Tambahaké',
 	'gep-classicmode' => 'Cara klasik',
 	'gep-genericmode' => 'Cara generik',
-	'gep-nosectioninstructions' => "Ora ana bagéan ing kaca iki.
-Tambahaké kanthi migunakaké piranti (''tools'') sing ana ing tengen.",
+	'gep-nosectioninstructions' => 'Ora ana bagéan ing kaca iki.
+Tambahaké nganggo piranti sing ana ing menu bar.',
 	'gep-nocategories' => 'Pilih saora-orané siji kategori sadurungé nyimpen',
 	'gep-categorypage' => 'MediaWiki:Tagkacasunting',
 );

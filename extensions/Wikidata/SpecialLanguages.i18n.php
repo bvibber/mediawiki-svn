@@ -2556,6 +2556,7 @@ $wdMessages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Jagwar
  * @author Malafaya
  * @author Yekrats
  */
@@ -2588,9 +2589,11 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_uipref_datasets' => 'Defaŭlta vido:',
 	'ow_uiprefs' => 'Vikidatenoj',
 	'ow_none_selected' => 'Nenio elektita',
+	'ow_transaction_from_transaction' => 'el transakcio:',
 	'ow_transaction_previous_version' => 'Antaŭa versio',
+	'ow_transaction_restore' => 'ripari',
 	'ow_transaction_summary' => 'Resumo',
-	'ow_conceptmapping_no_action_specified' => 'Bedaŭrinde, mi ne scias kiel "$1".',
+	'ow_conceptmapping_no_action_specified' => 'Oni ne konas la "$1"',
 	'ow_dm_OK' => 'Ek!',
 	'ow_dm_not_present' => 'ne enigita',
 	'ow_dm_not_found' => 'ne trovis en datenbazo aŭ estis misformita',
@@ -2639,6 +2642,7 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_Text' => 'Teksto',
 	'ow_TextAttribute' => 'Eco',
 	'ow_TextAttributeValues' => 'Ordinaraj tekstoj',
+	'ow_Time' => 'Tempo',
 	'ow_TranslatedTextAttribute' => 'Eco',
 	'ow_TranslatedText' => 'Tradukita teksto',
 	'ow_TranslatedTextAttributeValue' => 'Teksto',
@@ -2646,6 +2650,7 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_Link' => 'Ligilo',
 	'ow_LinkAttribute' => 'Eco',
 	'ow_LinkAttributeValues' => 'Ligiloj',
+	'ow_User' => 'Uzanto',
 	'ow_Property' => 'Eco',
 	'ow_Value' => 'Valuto',
 	'ow_added' => 'Aldonita',
@@ -4705,13 +4710,16 @@ $wdMessages['id'] = array(
 	'ow_noedit_title' => 'Tidak memiliki hak untuk menyunting',
 	'ow_noedit' => 'Anda tidak diizinkan menyunting halaman-halaman di set data "$1".
 Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
-	'ow_uipref_datasets' => 'Tampilan baku',
+	'ow_uipref_datasets' => 'Tampilan baku:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Tidak ada yang dipilih',
 	'ow_transaction_count' => 'Jumlah:',
 	'ow_transaction_user' => 'Nama pengguna:',
+	'ow_transaction_rollback_button' => 'Kembalikan',
+	'ow_transaction_rollback_header' => 'Kembalikan',
 	'ow_transaction_remove' => 'Hapus',
-	'ow_conceptmapping_no_action_specified' => 'Maaf, sistem tidak mengerti untuk "$1".',
+	'ow_transaction_summary' => 'Ringkasan',
+	'ow_conceptmapping_no_action_specified' => 'Tindakan "$1" tidak didukung.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'tidak dimasukkan',
 	'ow_Annotation' => 'Anotasi',
@@ -5178,7 +5186,7 @@ $wdMessages['jv'] = array(
 	'ow_noedit_title' => 'Ora ana idin kanggo nyunting',
 	'ow_noedit' => 'Panjenengan ora diparengaké nyunting kaca-kaca ing dataset "$1".
 Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan kita]].',
-	'ow_uipref_datasets' => 'Pamandhangan baku',
+	'ow_uipref_datasets' => 'Tampilan baku',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ora ana sing disèlèksi',
 	'ow_conceptmapping_help' => "<p>tumindak sing bisa diayahi: <ul>
@@ -5189,12 +5197,12 @@ Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan k
 <li>&action=help  Tuduhaké pitulung.</li>
 </ul></p>",
 	'ow_conceptmapping_uitext' => '<p>Pamétaan konsèp agawé panjenengan bisa ngenali makna  endi jroning sèt-data  padha karo makna jroning sèt-data liya.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Nuwun sèwu, aku ora ngerti carané "$1".',
+	'ow_conceptmapping_no_action_specified' => 'Tindakan "$1" ora didhukung.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'ora dilebokaké',
 	'ow_dm_not_found' => 'ora ditemokaké ing basis data utawa rusak',
 	'ow_mapping_successful' => "Métakaké kabèh kothak (''field'') sing ditndhani [OK]<br />",
-	'ow_mapping_unsuccessful' => 'Kudu duwé saora-orané loro makna sadurungé bisa disambungaké',
+	'ow_mapping_unsuccessful' => 'Saora-orané kudu duwé loro makna sing diajokaké sadurungé bisa disambungaké',
 	'ow_will_insert' => 'Bakal nyisipaké:',
 	'ow_contents_of_mapping' => "Isi pamétaan (''mapping'')",
 	'ow_available_contexts' => 'Kontèks sing ana',
@@ -5256,7 +5264,7 @@ Mangga priksa alamat wèb.',
 	'ow_meaningsofsubtitle' => '<em>Pranala wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>IDIN DITOLAK</h2>',
 	'ow_copy_no_action_specified' => 'Tulung rincèkna sawijining aksi',
-	'ow_copy_help' => 'Ing sawijining dina ing tembé, kita mbok-menawa bisa nulungi panjenengan.',
+	'ow_copy_help' => 'Pitulung durung dipatrapaké.',
 	'ow_please_proved_dmid' => 'Katonané input panjenengan kakurangan "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
 Mangga ngubungi administrator server.',
 	'ow_please_proved_dc1' => 'Katonané input panjenengan kakuranagan "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />

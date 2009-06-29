@@ -45,6 +45,11 @@ $aliases['ia'] = array(
 	'SpamRegex' => array( 'Regex antispam', 'Regex anti-spam' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'SpamRegex' => array( 'Regex spam', 'RegexSpam' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'SpamRegex' => array( 'スパム正規表現フィルター' ),

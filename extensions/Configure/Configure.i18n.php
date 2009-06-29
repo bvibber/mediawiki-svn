@@ -3702,13 +3702,16 @@ Per favor crea lo o cambia lo pro poter usar iste extension.',
 $messages['id'] = array(
 	'configure-desc-ns' => 'Ruang nama',
 	'configure-desc-val' => 'Nilai',
+	'configure-ext-settings' => 'Seting',
 	'configure-js-remove' => 'Hapus',
 	'configure-section-timezone' => 'Zona waktu',
 	'configure-section-namespaces' => 'Ruang nama',
 	'configure-section-category' => 'Kategori',
+	'configure-section-specialpages' => 'Halaman istimewa',
 	'configure-section-recentchanges' => 'Perubahan terbaru',
 	'configure-section-search' => 'Cari',
 	'configure-throttle-action-move' => 'Pindahkan',
+	'configure-throttle-action-rollback' => 'Kembalikan',
 );
 
 /** Ido (Ido)

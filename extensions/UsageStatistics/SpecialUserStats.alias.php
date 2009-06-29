@@ -89,7 +89,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'SpecialUserStats' => array( 'Statistik pengguna' ),
+	'SpecialUserStats' => array( 'Statistik pengguna', 'StatistikPengguna' ),
 );
 
 /** Italian (Italiano) */

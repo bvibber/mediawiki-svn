@@ -22,6 +22,11 @@ $aliases['he'] = array(
 	'PrefStats' => array( 'סטטיסטיקת_העדפות' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'PrefStats' => array( 'Statistik preferensi', 'StatistikPreferensi' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'PrefStats' => array( '設定統計' ),

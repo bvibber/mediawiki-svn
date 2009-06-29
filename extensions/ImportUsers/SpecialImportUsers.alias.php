@@ -102,7 +102,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'ImportUsers' => array( 'Impor pengguna' ),
+	'ImportUsers' => array( 'Impor pengguna', 'ImporPengguna' ),
 );
 
 /** Italian (Italiano) */

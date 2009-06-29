@@ -100,6 +100,11 @@ $aliases['ia'] = array(
 	'EditUser' => array( 'Modificar usator' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'EditUser' => array( 'Sunting pengguna', 'SuntingPengguna' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'EditUser' => array( '利用者情報の編集' ),

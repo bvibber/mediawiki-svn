@@ -62,6 +62,11 @@ $aliases['ia'] = array(
 	'DeleteQueue' => array( 'Deler cauda' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'DeleteQueue' => array( 'Hapus antrian', 'HapusAntrian' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'DeleteQueue' => array( '削除キュー' ),

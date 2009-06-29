@@ -62,6 +62,11 @@ $aliases['ia'] = array(
 	'AccountManager' => array( 'Gestion de contos' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'AccountManager' => array( 'Pengelola akun', 'PengelolaAkun' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'AccountManager' => array( 'アカウント管理', 'アカウントマネージャー' ),

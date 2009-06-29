@@ -192,7 +192,7 @@ $messages['ja'] = array(
  * @author Pras
  */
 $messages['jv'] = array(
-	'mootools12core-desc' => 'Tambahaké [http://mootools.net mootools-1.2-core-yc.js] ing saben kaca',
+	'mootools12core-desc' => 'Nambahaké [http://mootools.net mootools-1.2-core-yc.js], sawijining rangka kerja Javascript sing padhet, ing saben kaca',
 );
 
 /** Khmer (ភាសាខ្មែរ)

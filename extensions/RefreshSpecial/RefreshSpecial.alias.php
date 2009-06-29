@@ -57,6 +57,11 @@ $aliases['ia'] = array(
 	'RefreshSpecial' => array( 'Refrescar special' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'RefreshSpecial' => array( 'Perbarui halaman istimewa', 'PerbaruiHalamanIstimewa' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'RefreshSpecial' => array( '特別ページの更新' ),

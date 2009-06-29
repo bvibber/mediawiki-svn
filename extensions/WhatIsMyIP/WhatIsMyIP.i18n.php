@@ -342,8 +342,8 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'whatismyip' => 'Apa IP ku',
-	'whatismyip-desc' => 'Nuduhaké alamat IP panganggo ing [[Special:WhatIsMyIP]]',
-	'whatismyip-out' => 'IP panjenengan:',
+	'whatismyip-desc' => 'Tuduhna [[Special:WhatIsMyIP|alamat IP]] panganggo wektu iki',
+	'whatismyip-out' => 'Alamat IP panjenengan:',
 );
 
 /** Georgian (ქართული)

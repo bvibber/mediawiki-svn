@@ -102,6 +102,11 @@ $aliases['ia'] = array(
 	'WhatIsMyIP' => array( 'Que es mi IP' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'WhatIsMyIP' => array( 'IP saya', 'IPSaya' ),
+);
+
 /** Italian (Italiano) */
 $aliases['it'] = array(
 	'WhatIsMyIP' => array( 'IlMioIP' ),

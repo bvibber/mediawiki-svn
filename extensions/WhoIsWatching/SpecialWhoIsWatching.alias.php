@@ -85,6 +85,11 @@ $aliases['ia'] = array(
 	'WhoIsWatching' => array( 'Qui observa' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'WhoIsWatching' => array( 'Siapa yang memantau', 'SiapaPantau' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'WhoIsWatching' => array( 'ページをウォッチしている利用者' ),

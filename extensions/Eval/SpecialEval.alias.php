@@ -80,6 +80,11 @@ $aliases['ht'] = array(
 	'Eval' => array( 'Evalye' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'Eval' => array( 'Evaluasi' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Eval' => array( '評価', 'PHPコードとして評価' ),

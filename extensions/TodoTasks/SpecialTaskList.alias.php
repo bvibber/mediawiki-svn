@@ -75,6 +75,12 @@ $aliases['ia'] = array(
 	'TaskListByProject' => array( 'Lista de cargas per projecto' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'TaskList' => array( 'Daftar tugas', 'DaftarTugas' ),
+	'TaskListByProject' => array( 'Daftar tugas menurut proyek', 'DaftarTugasMenurutProyek' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'TaskList' => array( '課題リスト', 'タスクリスト' ),

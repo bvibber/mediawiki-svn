@@ -94,6 +94,11 @@ $aliases['ia'] = array(
 	'WhosOnline' => array( 'Qui es in linea' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'WhosOnline' => array( 'Siapa yang daring', 'SiapaDaring' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'WhosOnline' => array( 'オンラインの利用者', 'オンライン利用者' ),

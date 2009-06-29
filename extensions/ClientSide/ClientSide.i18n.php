@@ -19,10 +19,11 @@ $messages['qqq'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'clientside-desc' => 'Уводзіць функцыі для стварэньня коду у кліенцкіх фарматах, такіх як HTML, CSS і JavaScript',
+	'clientside-desc' => 'Дадае функцыі для стварэньня коду ў кліенцкіх фарматах, такіх як HTML, CSS і JavaScript',
 );
 
 /** Czech (Česky)

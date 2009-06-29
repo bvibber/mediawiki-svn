@@ -49,6 +49,11 @@ $aliases['ia'] = array(
 	'PovWatch' => array( 'Observa PdV' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'PovWatch' => array( 'Pantau POV', 'PantauPOV' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'PovWatch' => array( '編集合戦の監視' ),

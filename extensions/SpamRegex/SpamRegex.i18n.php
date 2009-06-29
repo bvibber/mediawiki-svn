@@ -680,6 +680,7 @@ Caution avisate: le expressiones non debe esser troppo curte o troppo commun.',
 $messages['id'] = array(
 	'spamregex-already-blocked' => '"$1" telah diblokir',
 	'spamregex-text' => '(Teks)',
+	'spamregex-summary-log' => '(Ringkasan)',
 );
 
 /** Icelandic (Íslenska)

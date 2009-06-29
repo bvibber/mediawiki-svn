@@ -267,8 +267,8 @@ $messages['ja'] = array(
 $messages['jv'] = array(
 	'formatchanges-desc' => 'Format ulang kaca [[Special:RecentChanges|owah-owahan pungkasan]]',
 	'formatchanges-anonymous' => 'Tanpa aran / anonim',
-	'formatchanges-createdby' => '$1 - kacipta déning $2 ($3)',
-	'formatchanges-editedby' => '$1 - kasunting déning $2 ($3)',
+	'formatchanges-createdby' => '$1 - digawé déning $2 ($3)',
+	'formatchanges-editedby' => '$1 - disunting déning $2 ($3)',
 );
 
 /** Khmer (ភាសាខ្មែរ)

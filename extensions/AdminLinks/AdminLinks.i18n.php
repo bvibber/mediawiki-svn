@@ -161,6 +161,18 @@ $messages['dsb'] = array(
 	'right-adminlinks' => 'Glědaj wótkaz k [[Special:AdminLinks|wótkazam za administratorow]]',
 );
 
+/** Esperanto (Esperanto)
+ * @author Jagwar
+ */
+$messages['eo'] = array(
+	'adminlinks_editsidebar' => 'eldoni iltrabon',
+	'adminlinks_editcss' => 'eldoni dosieron CSS',
+	'adminlinks_users' => 'uzantoj',
+	'adminlinks_createuser' => 'krei uzanton',
+	'adminlinks_browsesearch' => 'Tralego kaj Serĉo',
+	'adminlinks_importexport' => 'Importi kaj Eksporti',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -409,7 +421,7 @@ $messages['lzz'] = array(
  */
 $messages['mg'] = array(
 	'adminlinks' => 'rohy ny fandrindràna',
-	'adminlinks-desc' => "Manampy [[special:AdminLinks|pejy manokana]] misy ny rohy ilain'ny mpandrindra",
+	'adminlinks-desc' => "Manampy [[Special:AdminLinks|special page]] misy ny rohy ilain'ny mpandrindra",
 	'adminlinks_documentation' => "fanoroan'ny $1",
 	'adminlinks_general' => 'ankabiazany/jeneraly',
 	'adminlinks_editsidebar' => 'ovay ny bara sisiny',
@@ -520,6 +532,7 @@ $messages['pl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -533,7 +546,7 @@ $messages['pt'] = array(
 	'adminlinks_createuser' => 'Criar um utilizador',
 	'adminlinks_browsesearch' => 'Navegação e pesquisa',
 	'adminlinks_importexport' => 'Importação e exportação',
-	'right-adminlinks' => 'Ver o link para [[Special:AdminLinks]]',
+	'right-adminlinks' => 'Ver a ligação para [[Special:AdminLinks|ligações Admin]]',
 );
 
 /** Romanian (Română)

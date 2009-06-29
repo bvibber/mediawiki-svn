@@ -40,6 +40,11 @@ $aliases['ia'] = array(
 	'RecordAdmin' => array( 'Gestion de datos' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'RecordAdmin' => array( 'Catat admin', 'CatatAdmin' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'RecordAdmin' => array( '記録管理' ),

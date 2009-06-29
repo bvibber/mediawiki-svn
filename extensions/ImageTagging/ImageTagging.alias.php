@@ -57,6 +57,11 @@ $aliases['ia'] = array(
 	'ImageTagging' => array( 'Etiquettage de imagines' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ImageTagging' => array( 'Tag gambar', 'TagGambar' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ImageTagging' => array( '画像のラベル付け', 'ラベル付画像' ),

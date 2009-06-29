@@ -97,6 +97,11 @@ $aliases['ia'] = array(
 	'ChangeAuthor' => array( 'Cambiar autor' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'ChangeAuthor' => array( 'Ganti penulis pertama', 'GantiPenulisPertama' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ChangeAuthor' => array( '著者変更' ),

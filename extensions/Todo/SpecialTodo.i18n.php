@@ -786,6 +786,7 @@ $messages['id'] = array(
 	'todo-list-for' => 'Daftar tugas untuk %1',
 	'todo-list-cancel' => 'Batalkan',
 	'todo-form-details' => 'Rincian:',
+	'todo-form-submit' => 'Kirim kueri',
 );
 
 /** Italian (Italiano)

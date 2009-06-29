@@ -68,6 +68,11 @@ $aliases['ia'] = array(
 	'GlobalUserrights' => array( 'Derectos global de usatores' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'GlobalUserrights' => array( 'Hak pengguna global', 'HakPenggunaGlobal' ),
+);
+
 /** Italian (Italiano) */
 $aliases['it'] = array(
 	'GlobalUserrights' => array( 'DirittiUtenteGlobale' ),

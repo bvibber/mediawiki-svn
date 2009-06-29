@@ -92,6 +92,11 @@ $aliases['ia'] = array(
 	'CrossNamespaceLinks' => array( 'Ligamines trans spatios de nomines' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'CrossNamespaceLinks' => array( 'Pranala antar ruang nama', 'PranalaAntarRuangNama' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'CrossNamespaceLinks' => array( '名前空間をまたぐリンク' ),

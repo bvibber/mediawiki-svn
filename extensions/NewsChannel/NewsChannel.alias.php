@@ -79,7 +79,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'NewsChannel' => array( 'Saluran berita' ),
+	'NewsChannel' => array( 'Saluran berita', 'SaluranBerita' ),
 );
 
 /** Italian (Italiano) */

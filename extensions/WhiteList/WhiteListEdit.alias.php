@@ -98,6 +98,12 @@ $aliases['ia'] = array(
 	'WhiteListEdit' => array( 'Modificar lista blanc' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'WhiteList' => array( 'Daftar putih', 'DaftarPutih' ),
+	'WhiteListEdit' => array( 'Suntingan daftar putih', 'SuntinganDaftarPutih' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'WhiteList' => array( 'ホワイトリスト' ),

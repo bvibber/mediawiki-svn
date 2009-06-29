@@ -559,6 +559,7 @@ Iste function frequentemente adde un carga considerabile al servitor, ergo usa l
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Ivan Lanin
  * @author Rex
  */
@@ -568,7 +569,7 @@ $messages['id'] = array(
 	'asksqltext' => "Gunakan isian berikut untuk melakukan kueri langsung ke basis data. Gunakan kutip tunggal ('seperti ini') untuk membatasi literal string. Hal ini cukup membebani server, jadi gunakanlah fungsi ini secukupnya.",
 	'sqlislogged' => 'Ingatlah bahwa semua kueri akan dicatat.',
 	'sqlquery' => 'Masukkan kueri',
-	'querybtn' => 'Kirim',
+	'querybtn' => 'Kirim kueri',
 	'selectonly' => 'Hanya kueri baca-saja yang diijinkan.',
 	'querysuccessful' => 'Kueri berhasil',
 	'right-asksql' => 'Melakukan kueri SQL',

@@ -44,6 +44,11 @@ $aliases['ia'] = array(
 	'StalePages' => array( 'Paginas stagnate' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$aliases['id'] = array(
+	'StalePages' => array( 'Halaman basi', 'HalamanBasi' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'StalePages' => array( '古くなったページ' ),

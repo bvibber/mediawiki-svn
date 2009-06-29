@@ -166,7 +166,7 @@ $messages['be-tarask'] = array(
 	'slippymap_code' => 'Вікікод для прагляду гэтай мапы:',
 	'slippymap_button_code' => 'Атрымаць вікікод',
 	'slippymap_resetview' => 'Першапачатковы выгляд',
-	'slippymap_invalidmode' => "Няслушнае значэньне '%1' парамэтру 'mode'",
+	'slippymap_invalidmode' => "Няслушнае значэньне '$1' парамэтру 'mode'",
 	'slippymap_clicktoactivate' => 'Націсьніце, каб актывізаваць мапу',
 );
 
