@@ -3,10 +3,13 @@
 <article lang="en-US">
 <title>WikiWord: Integrator</title>
 
+<sect1>
+  <title>Intro</title>
   <para>WikiWord is a system for extracting a theraurus from Wikipedia. 
   The Integrator module is desigend top use this data as a glue between
   different data sets, that is, to map between different vocabularies, 
-  standardized or natural.</param>
+  standardized or natural.</para>
+</sect1>
 
 <sect1>
   <title>Process</title>
@@ -57,9 +60,10 @@
 <para>Sometimes, it is desired to only get <emphasis>exact, exclusive</emphasis> matches &mdash; that is, not only to exclude any foreign concept for which there exists more than one mapping to  WikiWord, but to also to exclude all WikiWord concepts mapped to more than one foreign concept. This yields a strict 1:1 relationship and avoids any mismatches in scope or granularity. This is particularly useful when transferring definitions from one authority to another.</para>
 </sect3>
 </sect2>
+</sect1>
 
 <sect1>
-<title>Architecture</title>
+  <title>Architecture</title>
 
 <sect2>
 <title>Classes</title>
@@ -76,26 +80,53 @@
 <listitem>
 <para>The Processor fetches on entry after another from the DataCursor and passes it to the StoreBuilder. Note that any logic for filtering, grouping and converting of entries is usually implemented in the DataCursor, not in the Processor.</para>
 </listitem>
-</orderedlist>
+<listitem>
 <para>Application</para>
+</listitem>
+<listitem>
 <para>DB Configuration, Tweaks, SourceDescriptor</para>
+</listitem>
+<listitem>
 <para>Store, StoreBuilder</para>
+</listitem>
+<listitem>
 <para>FeatureSet</para>
+</listitem>
+<listitem>
 <para>DataCursor</para>
+</listitem>
+<listitem>
 <para>FeatureSetSourceDescriptor</para>
+</listitem>
+<listitem>
 <para>Processor</para>
+</listitem>
+<listitem>
 <para>Associations</para>
+</listitem>
+<listitem>
 <para>MappingCandidates</para>
+</listitem>
+<listitem>
 <para>Filter, Selector</para>
+</listitem>
+<listitem>
 <para>Scorer</para>
+</listitem>
+<listitem>
 <para>Aggregator, Accessor</para>
+</listitem>
+<listitem>
+<para>Aggregator, Accessor</para>
+</listitem>
+</orderedlist>
 </sect2>
 
 
 <sect2>
 <title>Database</title>
+<para>...</para>
 </sect2>
-
 </sect1>
 
 <sect1>
@@ -103,14 +134,17 @@
 
 <sect2>
 <title>Configuration files</title>
+<para>...</para>
 </sect2>
 
 <sect2>
 <title>Command Line</title>
+<para>...</para>
 </sect2>
 
 <sect2>
 <title>BeanShell Commands</title>
+<para>...</para>
 </sect2>
 
 <sect2>
@@ -118,27 +152,440 @@
 
 <sect3>
 <title>Database</title>
+<para>...</para>
 </sect3>
 
 <sect3>
 <title>Tweaks</title>
+<para>...</para>
 </sect3>
 
 <sect3>
 <title>Source Descriptor</title>
+<para>...syntax...</para>
+<para>...syntax in beanshell...</para>
+  <note><para>In parameter names, "-" and "_" are interchangable.</para></note>
+  <variablelist><title>Source Descriptor Parameters</title>
+
+      <varlistentry>
+      <term>
+      <parameter>association-annotation-field</parameter>
+      </term>
+      <listitem>
+      <para>The field/column that contains the annotation string. The annotation could be any additional info attached to a mapping. Used with <classname>BuildConceptMappings</classname>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>association-value-field</parameter>
+      </term>
+      <listitem>
+      <para>The field/column that contains the association value. That is the value that was used to derive the association. Used with <classname>BuildConceptAssociations</classname>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>association-weight-field</parameter>
+      </term>
+      <listitem>
+      <para>The field/column that contains the association weight. The weight may be used for filtering. Used with <classname>BuildConceptAssociations</classname> as well as <classname>BuildConceptMappings</classname> and <classname>FilterConceptMappings</classname>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>authority</parameter>
+      </term>
+      <listitem>
+      <para>The name of an external authority; the authority name serves as the namespace for foreign property names and foreign entity IDs. Instead of setting  <parameter>authority</parameter> to a fixed value, it can also be taken from a data field/column spcified by <parameter>foreign-authority-field</parameter>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>concept-fields</parameter>
+      </term>
+      <listitem>
+      <para>The list of fields names that will be taken to belong to the concept (mapping target resp. object) when building an <classname>Association</classname> from a single <classname>FeatureSet</classname> instance. Used with <classname>BuildConceptAssociations</classname>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>concept-id-field</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>concept-name-field</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>concept-property-field</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>concept-property-freq-field</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>concept-property-source-field</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>console-encoding</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>csv-backslash-escape</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>csv-chunker</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>csv-separator</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>csv-skip-bad-rows</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>csv-skip-header</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>defaults</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>encoding</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>field-chunkers</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>fields</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>file</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>file-format</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>foreign-authority-field</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>foreign-fields</parameter>
+      </term>
+      <listitem>
+      <para>The list of fields names that will be taken to belong to the foreign entity (mapping source resp. subject) when building an <classname>Association</classname> from a single <classname>FeatureSet</classname> instance. Used with <classname>BuildConceptAssociations</classname>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>foreign-id-field</parameter>
+      </term>
+      <listitem>
+      <para>Field containing an ID unique in the context of the foreign authority, used to identify foreign entities.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>foreign-name-field</parameter>
+      </term>
+      <listitem>
+      <para>Field containing a display name for foreign entities. Defaults to the value of <parameter>foreign-id-field</parameter>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>foreign-property-field</parameter>
+      </term>
+      <listitem>
+      <para>Field containing the name of the property of a foreign entity. Used with <classname>BuildConceptAssociations</classname>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>mapping-filter</parameter>
+      </term>
+      <listitem>
+      <para>Instance of <classname>MappingCandidateFilter</classname> to use for filtering. Used with <classname>FilterConceptMappings</classname>.
+      Overrides <property>mapping-filter-aggregator</property>, <property>mapping-filter-field</property>, <property>mapping-filter-scorer</property>, <property>mapping-filter-selector</property>, etc.
+      </para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>mapping-filter-aggregator</parameter>
+      </term>
+      <listitem>
+      <para>Instance of <classname>Functor2</classname> to use as an aggregator to aggregate multiple score values into one. Overridden by <property>mapping-filter</property>, <property>mapping-selector</property>, <parameter>mapping-filter-scorer</parameter> and <parameter>mapping-filter-accessor</parameter>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>mapping-filter-aggregator-function</parameter>
+      </term>
+      <listitem>
+      <para>Name of the aggregator function used to merge multiple score values into one; Must be either "max" or "sum", default is "sum". Used with <classname>FilterConceptMappings</classname>. Overridden by <property>mapping-filter</property>, <property>mapping-selector</property>, <parameter>mapping-filter-scorer</parameter>, <parameter>mapping-filter-accessor</parameter> and <parameter>mapping-filter-aggregator</parameter>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>mapping-filter-field</parameter>
+      </term>
+      <listitem>
+      <para>The field to take the score for a candidate <classname>FeatureSet</classname> from. Used with <classname>FilterConceptMappings</classname>. Used with <classname>FilterConceptMappings</classname>. Overridden by <property>mapping-filter</property>, <property>mapping-selector</property>, <parameter>mapping-filter-scorer</parameter> and <parameter>mapping-filter-accessor</parameter>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>mapping-filter-field-accessor</parameter>
+      </term>
+      <listitem>
+      <para>Instance of <classname>PropertyAccessor</classname> to extract the score from a candidate <classname>FeatureSet</classname>. Used with <classname>FilterConceptMappings</classname>. Overridden by <property>mapping-filter</property>, <property>mapping-selector</property> and <parameter>mapping-filter-scorer</parameter>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>mapping-filter-scorer</parameter>
+      </term>
+      <listitem>
+      <para>Instance of <classname>MappingCandidateScorer</classname> to use when filtering (for best candidate, or by threshold). Used with <classname>FilterConceptMappings</classname>. Overridden by <property>mapping-filter</property> and <property>mapping-selector</property>,
+      overrides <property>mapping-filter-aggregator</property>, <property>mapping-filter-field</property> etc.
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>mapping-filter-threshold</parameter>
+      </term>
+      <listitem>
+      <para>Threshold value to use when filtering mapping candidates. If set, all candidates with a score equal to or better than the threshold will pass.
+      Otherwise, the one candidate with the best score will pass. Used with <classname>FilterConceptMappings</classname>. 
+      Overridden by <property>mapping-filter</property> and <property>mapping-selector</property>.
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>mapping-selector</parameter>
+      </term>
+      <listitem>
+      <para>Instance of <classname>MappingCandidateSelector</classname> to use for filtering. Used with <classname>FilterConceptMappings</classname>.
+      Overridden by <property>mapping-filter</property>, overrides <property>mapping-filter-aggregator</property>, <property>mapping-filter-field</property>, <property>mapping-filter-scorer</property> etc.
+      </para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>property-fields</parameter>
+      </term>
+      <listitem>
+      <para>The list of fields names that will be taken to belong to the association itself (mapping properties) when building an <classname>Association</classname> from a single <classname>FeatureSet</classname> instance. Used with <classname>BuildConceptAssociations</classname>.</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>property-name-field</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>property-qualifier</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>property-subject-name-field</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>query</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      queryGenerator
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>source-table</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>sql-comment-subst</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+
+      <varlistentry>
+      <term>
+      <parameter>sql-manglers</parameter>
+      </term>
+      <listitem>
+      <para>???</para>
+      </listitem>
+      </varlistentry>
+  </variablelist>
+
 </sect3>
 
 <sect3>
 <title>Source Descriptor Defaults</title>
+<para>...</para>
 </sect3>
 
 <sect3>
 <title>Built-In Scripts</title>
+<para>...</para>
 </sect3>
 
 </sect2>
 
 
-</sect1>
+</sect1> 
 
 </article>
