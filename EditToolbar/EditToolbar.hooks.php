@@ -95,6 +95,8 @@ class EditToolbarHooks {
 				'edittoolbar-tool-gallery',
 				'edittoolbar-tool-gallery-example',
 				'edittoolbar-tool-newline',
+				'edittoolbar-tool-table',
+				'edittoolbar-tool-table-example',
 				/* Special Characters Section */
 				'edittoolbar-section-characters',
 				/* Help Section */
