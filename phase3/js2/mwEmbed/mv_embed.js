@@ -112,10 +112,12 @@ function lcPaths( path, gClasses , opt){
 		path = '';	
 	if(gClasses.length){
 		//do array loop: 
-		for(var i=0;i<gClasses.length;i++){
-			//setup normal replacement of j with jquery			
-			var jsName = ( gClasses[i].substr(0,3) == '$j.' ) ? opt['j_replace'] + gClasses[i].substr(3) : gClasses[i];							
-			mvClassPaths[ gClasses[i] ] = path + jsName + '.js';
+		for(var i=0; i<gClasses.length; i++){
+			if(typeof gClasses[i] != 'undefined'){
+				//setup normal replacement of j with jquery			
+				var jsName = ( gClasses[i].substr(0,3) == '$j.' ) ? opt['j_replace'] + gClasses[i].substr(3) : gClasses[i];							
+				mvClassPaths[ gClasses[i] ] = path + jsName + '.js';
+			}
 		}		
 	}else{
 		//do object loop: 
@@ -773,8 +775,9 @@ function mv_jqueryBindings(){
 				], function(){
 					iObj['instance_name']= 'rsdMVRS';
 					_global['rsdMVRS'] = new remoteSearchDriver( iObj );	   
-					if( callback )
-					   callback(); 
+					if( callback ){
+					   callback( _global['rsdMVRS'] );
+					}
 				}); 			
 			});
 		}

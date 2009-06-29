@@ -2404,10 +2404,8 @@ mediaPlayers.prototype =
 		this.default_players['video/h264'] = ['flash', 'vlc'];
 		
 		this.default_players['video/ogg'] = ['native','vlc','java', 'generic'];		
-		this.default_players['application/ogg'] = ['native','vlc','java', 'generic'];
-		
-		this.default_players['audio/ogg'] = ['native','vlc', 'omtk', 'java' ];
-		
+		this.default_players['application/ogg'] = ['native','vlc','java', 'generic'];		
+		this.default_players['audio/ogg'] = ['native','vlc', 'java', 'omtk' ];		
 		this.default_players['video/mp4'] = ['vlc'];
 		
 		this.default_players['text/html'] = ['html'];
