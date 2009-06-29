@@ -6,6 +6,12 @@ import java.util.Collection;
 import de.brightbyte.data.Functor2;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 
+/**
+ * MappingCandidateScorer that accumulates the scores from multiple MappingCandidateScorers into a single score,
+ * using a aggregator functor (usually the sum or maximum, as implemented by Functors.Integer.sum resp. Functors.Integer.max).
+ * 
+ * @author daniel
+ */
 public class MappingCandidateMultiScorer implements MappingCandidateScorer {
 
 	protected Collection<MappingCandidateScorer> scorers = new ArrayList<MappingCandidateScorer>();

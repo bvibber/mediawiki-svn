@@ -1,9 +1,9 @@
 package de.brightbyte.wikiword.integrator;
 
 import de.brightbyte.data.cursor.DataCursor;
+import de.brightbyte.data.filter.Filter;
 import de.brightbyte.wikiword.integrator.data.Association;
 import de.brightbyte.wikiword.integrator.data.FilteredAssociationCursor;
-import de.brightbyte.wikiword.integrator.data.filter.ConceptAssociationFilter;
 import de.brightbyte.wikiword.integrator.store.AssociationFeatureStoreBuilder;
 
 public class FilterConceptAssociations extends BuildConceptAssociations {
@@ -28,7 +28,7 @@ public class FilterConceptAssociations extends BuildConceptAssociations {
 	}	
 
 	
-	protected ConceptAssociationFilter createAssociationFilter(FeatureSetSourceDescriptor sourceDescriptor) {
+	protected Filter<Association> createAssociationFilter(FeatureSetSourceDescriptor sourceDescriptor) {
 		throw new UnsupportedOperationException("no implementations of ConceptAssociationFilter are implemented yet."); //TODO: implement filters
 	}
 

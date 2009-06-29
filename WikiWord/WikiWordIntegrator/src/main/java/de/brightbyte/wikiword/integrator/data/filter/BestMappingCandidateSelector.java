@@ -3,6 +3,12 @@ package de.brightbyte.wikiword.integrator.data.filter;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 
+/**
+ * MappingCandidateSelector selecting the candidate with the highest score, as determined
+ * by a given MappingCandidateScorer.
+ * 
+ * @author daniel
+ */
 public class BestMappingCandidateSelector implements MappingCandidateSelector {
 
 	protected MappingCandidateScorer scorer; 

@@ -281,7 +281,9 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 			
 			fsc = new TsvFeatureSetCursor(lines, chunker);
 			
-			if (sourceDescriptor.getSkipBadRows()) ((TsvFeatureSetCursor)fsc).setParseErrorHandler( new LoggingErrorHandler<ChunkingCursor, ParseException, PersistenceException>(out));
+			if (sourceDescriptor.getSkipBadRows()) {
+				((TsvFeatureSetCursor)fsc).setParseErrorHandler( new LoggingErrorHandler<ChunkingCursor, ParseException, PersistenceException>(out));
+			}
 			
 			if (fields!=null) {
 				if (sourceDescriptor.getSkipHeader()) ((TsvFeatureSetCursor)fsc).readFields();

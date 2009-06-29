@@ -6,6 +6,12 @@ import java.util.Collections;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 
+/**
+ * MappingCandidateFilter using a MappingCandidateSelector to reduce the set of 
+ * candidate mappings to a single "best" candidate (or possibly none). 
+ * 
+ * @author daniel
+ */
 public class MappingCandidateSelectorFilter implements MappingCandidateFilter {
 
 	protected MappingCandidateSelector selector;

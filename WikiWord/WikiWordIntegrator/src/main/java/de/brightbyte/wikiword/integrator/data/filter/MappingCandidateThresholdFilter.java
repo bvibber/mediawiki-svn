@@ -6,6 +6,12 @@ import java.util.Collection;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 
+/**
+ * MappingCandidateFilter using a MappingCandidateScorer to reduce the set of 
+ * candidate mappings to those who's score pass a given threshold. 
+ * 
+ * @author daniel
+ */
 public class MappingCandidateThresholdFilter implements MappingCandidateFilter {
 
 	protected MappingCandidateScorer scorer;

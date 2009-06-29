@@ -7,7 +7,7 @@ import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.filter.BestMappingCandidateSelector;
 import de.brightbyte.wikiword.integrator.data.filter.MappingCandidateFilter;
-import de.brightbyte.wikiword.integrator.data.filter.MappingCandidatePropertyScorer;
+import de.brightbyte.wikiword.integrator.data.filter.MappingCandidateFeatureScorer;
 import de.brightbyte.wikiword.integrator.data.filter.MappingCandidateScorer;
 import de.brightbyte.wikiword.integrator.data.filter.MappingCandidateSelector;
 import de.brightbyte.wikiword.integrator.data.filter.MappingCandidateSelectorFilter;
@@ -27,11 +27,11 @@ public class FilteredMappingCandidateCursor implements DataCursor<MappingCandida
 	}
 	
 	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, PropertyAccessor<FeatureSet, ? extends Number> accessor) {
-		this(cursor, new MappingCandidatePropertyScorer(accessor));
+		this(cursor, new MappingCandidateFeatureScorer(accessor));
 	}
 	
 	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, PropertyAccessor<FeatureSet, ? extends Number> accessor, int threshold) {
-		this(cursor, new MappingCandidatePropertyScorer(accessor), threshold);
+		this(cursor, new MappingCandidateFeatureScorer(accessor), threshold);
 	}
 	
 	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, MappingCandidateScorer scorer) {

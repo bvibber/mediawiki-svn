@@ -19,7 +19,7 @@ import de.brightbyte.wikiword.integrator.data.FilteredMappingCandidateCursor;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 import de.brightbyte.wikiword.integrator.data.filter.BestMappingCandidateSelector;
 import de.brightbyte.wikiword.integrator.data.filter.MappingCandidateFilter;
-import de.brightbyte.wikiword.integrator.data.filter.MappingCandidatePropertyScorer;
+import de.brightbyte.wikiword.integrator.data.filter.MappingCandidateFeatureScorer;
 import de.brightbyte.wikiword.integrator.data.filter.MappingCandidateScorer;
 import de.brightbyte.wikiword.integrator.data.filter.MappingCandidateSelector;
 import de.brightbyte.wikiword.integrator.data.filter.MappingCandidateSelectorFilter;
@@ -78,7 +78,7 @@ public class FilterConceptMappings extends BuildConceptMappings {
 		}
 		
 		if (filter==null && selector==null && scorer==null && accessor!=null) {
-			scorer = new MappingCandidatePropertyScorer(accessor);
+			scorer = new MappingCandidateFeatureScorer(accessor);
 		}
 		
 		if (filter==null && selector==null && scorer!=null) {

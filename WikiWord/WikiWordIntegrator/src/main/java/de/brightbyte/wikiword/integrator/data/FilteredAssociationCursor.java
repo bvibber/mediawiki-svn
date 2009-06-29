@@ -1,15 +1,15 @@
 package de.brightbyte.wikiword.integrator.data;
 
 import de.brightbyte.data.cursor.DataCursor;
+import de.brightbyte.data.filter.Filter;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.integrator.data.filter.ConceptAssociationFilter;
 
 public class FilteredAssociationCursor implements DataCursor<Association> {
 
 	protected DataCursor<Association> cursor;
-	protected ConceptAssociationFilter filter;
+	protected Filter<Association> filter;
 	
-	public FilteredAssociationCursor(DataCursor<Association> cursor, ConceptAssociationFilter filter) {
+	public FilteredAssociationCursor(DataCursor<Association> cursor, Filter<Association> filter) {
 		if (filter==null) throw new NullPointerException();
 		if (cursor==null) throw new NullPointerException();
 		
@@ -26,7 +26,7 @@ public class FilteredAssociationCursor implements DataCursor<Association> {
 		while (true) {
 			a = cursor.next();
 			if (a==null) return null;
-			if (!filter.acceptAssociation(a)) continue;
+			if (!filter.matches(a)) continue;
 			
 			break;
 		}
