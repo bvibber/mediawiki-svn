@@ -1,3 +1,5 @@
+/* defines the buildConceptAssociations command */
+
 import de.brightbyte.wikiword.integrator.*;
 
 buildConceptAssociations( table, source ) {

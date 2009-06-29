@@ -1,3 +1,5 @@
+/* defines the runSQL() command */
+
 import de.brightbyte.db.*;
 import de.brightbyte.wikiword.integrator.*;
 

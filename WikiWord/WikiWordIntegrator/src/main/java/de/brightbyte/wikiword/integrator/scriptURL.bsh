@@ -1,3 +1,9 @@
+/* 
+* defines the scriptURL command. scriptURL converts a relative path to a URL, using 
+* the value of the global variable scriptBaseUrl as the basis. scriptBaseUrl is automatically
+* set to the location of the original script which is run from RunIntegratorScript.
+*/
+
 scriptURL( path ) {
 	return new java.net.URL(scriptBaseUrl, path).toString();
 }

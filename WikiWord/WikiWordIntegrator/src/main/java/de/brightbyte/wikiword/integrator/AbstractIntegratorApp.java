@@ -359,6 +359,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		
 		String def = d.getTweak("defaults", (String)null);
 		if (def!=null) {
+			if (!def.endsWith(".properties")) def += ".properties";
 			FeatureSetSourceDescriptor dd = loadSourceDescriptor(def, false, true, null);
 			dd.setTweaks(d);
 			d = dd;

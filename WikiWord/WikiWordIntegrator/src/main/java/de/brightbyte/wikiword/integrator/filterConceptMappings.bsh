@@ -1,3 +1,5 @@
+/* defines the command filterConceptMappings() */
+
 import de.brightbyte.wikiword.integrator.*;
 
 filterConceptMappings( table, source ) {

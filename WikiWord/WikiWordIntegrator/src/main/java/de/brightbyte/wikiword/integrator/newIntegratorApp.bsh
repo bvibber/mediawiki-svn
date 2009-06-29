@@ -1,3 +1,5 @@
+/* defines the newIntegratorApp command, which is used internally to instantiate and initialize application objects */
+
 import de.brightbyte.wikiword.integrator.*;
 
 newIntegratorApp( type, table, source ) {

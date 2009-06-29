@@ -1,3 +1,5 @@
+/* defines the buildConceptMeanings() command */
+
 import de.brightbyte.wikiword.integrator.*;
 
 buildConceptMappings( table, source ) {
