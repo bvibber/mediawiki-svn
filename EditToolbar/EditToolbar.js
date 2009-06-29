@@ -220,16 +220,20 @@
 					var indexDiv = $( '<div />' )
 						.attr( 'class', 'index' )
 						.appendTo( $(this) );
-
+					// Builds name name of booklet state cookie
 					var bookletCookie = 'edittoolbar-' + $(this).attr( 'id' ) + '-booklet-' + id;
+					// Gets ID of selected page
 					var selectedID = $.cookie( bookletCookie ); 
-					
 					// Loops over each page
 					for ( page in section.pages ) {
+						// Fallback to current (first) page for selectedID
+						if ( selectedID === null ) {
+							selectedID = page;
+						}
 						// Appends index entry
 						indexDiv.append(
 							$( '<div />' )
-								.attr( 'class', page == selectedID ? 'current' : null )
+								.attr( 'class', page === selectedID ? 'current' : null )
 								.text( msg( section.pages[page], 'label' ) )
 								.data( 'page', page )
 								.data( 'cookie', bookletCookie )
@@ -252,6 +256,7 @@
 						// Appends page
 						var pageDiv = $( '<div />' )
 							.attr( 'class', 'page page-' + page )
+							.css( 'display', page === selectedID ? 'block' : 'none' )
 							.appendTo( pagesDiv );
 						// Checks if there's content for this page
 						switch ( section.pages[page].layout ) {
@@ -721,17 +726,6 @@ var editToolbarConfiguration = {
 							}
 						}
 					},
-					'newline': {
-						labelMsg: 'edittoolbar-tool-newline',
-						type: 'button',
-						icon: 'insert-newline.png',
-						action: {
-							type: 'encapsulate',
-							options: {
-								pre: "<br />\n"
-							}
-						}
-					},
 					'table': {
 						labelMsg: 'edittoolbar-tool-table',
 						type: 'button',
@@ -742,6 +736,17 @@ var editToolbarConfiguration = {
 								pre: "{| class=\"wikitable\" border=\"1\"\n|",
 								periMsg: 'edittoolbar-tool-table-example',
 								post: "\n|}"
+							}
+						}
+					},
+					'newline': {
+						labelMsg: 'edittoolbar-tool-newline',
+						type: 'button',
+						icon: 'insert-newline.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<br />\n"
 							}
 						}
 					}
