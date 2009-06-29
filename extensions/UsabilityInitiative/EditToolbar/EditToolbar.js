@@ -731,6 +731,19 @@ var editToolbarConfiguration = {
 								pre: "<br />\n"
 							}
 						}
+					},
+					'table': {
+						labelMsg: 'edittoolbar-tool-table',
+						type: 'button',
+						icon: 'insert-table.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "{| class=\"wikitable\" border=\"1\"\n|",
+								periMsg: 'edittoolbar-tool-table-example',
+								post: "\n|}"
+							}
+						}
 					}
 				}
 			}
