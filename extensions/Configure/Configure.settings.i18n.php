@@ -434,6 +434,7 @@ $messages['en'] = array(
 	'configure-setting-wgMessageCacheType' => 'Message cache type',
 	'configure-setting-wgLocalisationCacheConf' => 'Localisation cache configuration',
 	'configure-setting-wgUseLocalMessageCache' => 'Make a local copy of the message cache, in addition to memcached',
+	'configure-setting-wgLocalMessageCacheSerialized' => 'Use PHP serialized format for the local message cache',
 	'configure-setting-wgMsgCacheExpiry' => 'Message Cache Expiry',
 	'configure-setting-wgMaxMsgCacheEntrySize' => 'Maximum entry size in the message cache, in bytes',
 	'configure-setting-wgParserCacheType' => 'Parser cache type',

@@ -356,6 +356,7 @@ $settings = array(
 			                               1 => 'DB', 2 => 'Memcached',
 			                               3 => 'Accel', 4 => 'DBA' ),
 			'wgUseLocalMessageCache' => 'bool',
+			'wgLocalMessageCacheSerialized' => 'bool',
 			'wgMsgCacheExpiry' => 'int',
 			'wgMaxMsgCacheEntrySize' => 'int',
 		),
