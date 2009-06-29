@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.util.List;
 
 import de.brightbyte.data.cursor.DataCursor;
@@ -11,6 +12,8 @@ import de.brightbyte.io.LineCursor;
 import de.brightbyte.io.ChunkingCursor;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.text.CsvLineChunker;
+import de.brightbyte.util.ErrorHandler;
+import de.brightbyte.util.LoggingErrorHandler;
 import de.brightbyte.util.PersistenceException;
 
 public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {
@@ -44,6 +47,14 @@ public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {
 	public TsvFeatureSetCursor(DataCursor<List<String>> source) {
 		if (source==null) throw new NullPointerException();
 		this.source = source;
+	}
+	
+	public void setParseErrorHandler(ErrorHandler<ChunkingCursor, ParseException, PersistenceException> errorHandler) {
+		if (source instanceof ChunkingCursor) {
+			((ChunkingCursor)source).setParseErrorHandler(errorHandler);
+		} else {
+			throw new IllegalStateException("source is not a ChunkingCursor, can't set error handler");
+		}
 	}
 	
 	public void setFields(String[] fields) {

@@ -106,7 +106,7 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 	}
 
 	public boolean getSkipHeader() {
-		return getTweak("skip-header", false);
+		return getTweak("csv-skip-header", false);
 	}
 
 	public String getSourceFileFormat() {
@@ -153,6 +153,10 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 
 	public String getSourceTable() {
 		return getTweak("source-table", null);
+	}
+
+	public boolean getSkipBadRows() {
+		return getTweak("csv-skip-bad-rows", false);
 	}
 
 }

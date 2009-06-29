@@ -9,6 +9,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,10 +23,12 @@ import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.db.DatabaseSchema;
 import de.brightbyte.db.SqlDialect;
 import de.brightbyte.db.SqlScriptRunner;
+import de.brightbyte.io.ChunkingCursor;
 import de.brightbyte.io.IOUtil;
 import de.brightbyte.io.LineCursor;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.util.BeanUtils;
+import de.brightbyte.util.LoggingErrorHandler;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.StoreBackedApp;
@@ -277,6 +280,8 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 			Chunker chunker = sourceDescriptor.getCsvLineChunker();
 			
 			fsc = new TsvFeatureSetCursor(lines, chunker);
+			
+			if (sourceDescriptor.getSkipBadRows()) ((TsvFeatureSetCursor)fsc).setParseErrorHandler( new LoggingErrorHandler<ChunkingCursor, ParseException, PersistenceException>(out));
 			
 			if (fields!=null) {
 				if (sourceDescriptor.getSkipHeader()) ((TsvFeatureSetCursor)fsc).readFields();
