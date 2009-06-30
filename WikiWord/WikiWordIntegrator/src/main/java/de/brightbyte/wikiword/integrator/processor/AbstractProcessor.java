@@ -9,7 +9,7 @@ import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.processor.ImportProgressTracker;
 
-public abstract class AbstractProcessor<E> {
+public abstract class AbstractProcessor<E> implements  WikiWordProcessor {
 	private ImportProgressTracker itemTracker;
 	private int progressTicks = 0;
 	private int progressInterval = 1000;
