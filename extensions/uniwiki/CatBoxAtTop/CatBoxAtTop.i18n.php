@@ -40,6 +40,13 @@ $messages['ar'] = array(
 	'catboxattop-categories' => 'تصنيفات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'catboxattop-categories' => 'ܣܕܪ̈ܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II

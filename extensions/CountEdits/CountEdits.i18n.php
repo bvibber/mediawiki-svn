@@ -674,6 +674,7 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'countedits' => 'Cacahé suntingan',
@@ -683,7 +684,7 @@ Aja mbiji para kontributor amerga cacah suntingané.",
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Ora ana panganggo mawa jeneng $1.',
 	'countedits-resultheader' => 'Pituwas kanggo $1',
-	'countedits-resulttext' => '$1 wis nggawé $2 suntingan',
+	'countedits-resulttext' => '$1 wis gawé $2 {{PLURAL:$2|suntingan|suntingan}}',
 	'countedits-mostactive' => 'Kontributor paling aktif',
 );
 

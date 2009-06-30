@@ -241,6 +241,13 @@ $2',
 	'group-manager-member' => 'مدير',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'whitelistnever' => 'ܠܐ ܡܡܬܘܡ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

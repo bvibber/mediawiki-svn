@@ -50,6 +50,13 @@ $messages['ar'] = array(
 	'unicodeconverter-newtext' => 'النص المحول:',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'unicodeconverter-ok' => 'ܛܒ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

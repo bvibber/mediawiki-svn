@@ -55,6 +55,13 @@ $messages['ar'] = array(
 	'createpage-badtitle' => '"$1" لا يمكن استخدامها كعنوان صفحة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'createpage' => 'ܒܪܝ ܦܐܬܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ouda

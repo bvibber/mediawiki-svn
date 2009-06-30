@@ -58,6 +58,14 @@ $messages['ar'] = array(
 	'right-adminlinks' => 'انظر الوصلة إلى [[Special:AdminLinks|وصلات الإدارة]]',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'adminlinks' => 'ܐܣܘܪ̈ܐ ܕܡܕܒܪ̈ܢܐ',
+	'adminlinks_users' => 'ܡܦܠܚܢ̈ܐ',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -229,6 +237,13 @@ $messages['gl'] = array(
 	'adminlinks_browsesearch' => 'Navegación e procura',
 	'adminlinks_importexport' => 'Importación e exportación',
 	'right-adminlinks' => 'Ver a ligazón cara á páxina especial [[Special:AdminLinks|Ligazóns de administrador]]',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'adminlinks_users' => 'Χρώμενοι',
 );
 
 /** Swiss German (Alemannisch)

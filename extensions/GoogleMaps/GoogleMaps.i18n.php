@@ -1198,6 +1198,7 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-tab-title' => 'Τίτλος καρτέλας',
 	'gm-tab' => 'Καρτέλα',
 	'gm-trace-area' => 'εντοπισμός μίας περιοχής',
+	'gm-save-point' => 'αποθήκευση &amp; κλείσιμο',
 	'gm-load-map-from-article' => 'Φορτώστε ένα χάρτη από τη σελίδα:',
 	'gm-refresh-list' => 'Ανανέωση λίστας',
 	'gm-load-map' => 'Επιφόρτωση χάρτη',

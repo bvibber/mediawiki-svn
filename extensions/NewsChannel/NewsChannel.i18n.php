@@ -229,6 +229,14 @@ $messages['gl'] = array(
 	'newschannel_submit_button' => 'Crear a fonte de novas',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'newschannel_format' => 'Μορφή:',
+	'newschannel_limit' => 'Ὅριον:',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

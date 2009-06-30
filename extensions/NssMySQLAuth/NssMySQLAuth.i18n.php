@@ -325,10 +325,12 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'am-username' => 'Ὄνομα χρωμένου',
 	'am-email' => 'Ἠλεκτρονικαὶ ἐπιστολαί',
+	'am-active' => 'ἐνεργός',
 );
 
 /** Swiss German (Alemannisch)

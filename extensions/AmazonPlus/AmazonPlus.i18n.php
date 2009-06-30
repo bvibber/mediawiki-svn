@@ -412,11 +412,14 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'amazonplus-german' => 'Γερμανιστί',
 	'amazonplus-french' => 'Φραγκογαλλιστί',
 	'amazonplus-japanese' => 'Ἰαπωνιστί',
+	'amazonplus-new' => 'νέα',
+	'amazonplus-cp-none' => 'Οὐδέν',
 );
 
 /** Swiss German (Alemannisch)

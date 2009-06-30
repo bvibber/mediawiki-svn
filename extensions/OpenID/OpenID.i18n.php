@@ -974,12 +974,14 @@ Se ne, klaku la butonon "Continue" (Daŭri).',
 );
 
 /** Spanish (Español)
+ * @author Ascánder
  * @author Crazymadlover
  * @author Drini
  * @author IAlex
  * @author Imre
  * @author McDutchie
  * @author Sanbec
+ * @author XalD
  */
 $messages['es'] = array(
 	'openid-desc' => 'Ingresa a la wiki con un [http://openid.net OpenID] e ingresa a los otros sitios que aceptan OpenID con una cuenta de usuario wiki.',
@@ -1024,6 +1026,7 @@ puedes escoger uno de las opciones debajo.',
 	'openidchooseexisting' => 'Una cuenta existente en este wiki:',
 	'openidchoosepassword' => 'contraseña:',
 	'openidconvertinstructions' => 'Este formulario te permite cambiar tu cuenta de usuario para usar una URL de OpenID o agregar más URLs de OpenID.',
+	'openidconvertoraddmoreids' => 'Convertir a OpenID o agregar otro URL OpenID',
 	'openidconvertsuccess' => 'Convertido exitosamente a OpenID',
 	'openidconvertsuccesstext' => 'Usted ha convertido exitosamente su OpenID a $1.',
 	'openidconvertyourstext' => 'Esto ya es su OpenID.',
@@ -1046,10 +1049,15 @@ Si ya dispones de una cuenta en {{SITENAME}} puedes [[Special:UserLogin|ingresar
 Hay muchos [http://openid.net/get proveedores de OpenID] y quizás ya dispongas de una cuenta OpenID en otro servicio.',
 	'openidupdateuserinfo' => 'Actualizar mi información personal',
 	'openiddelete' => 'Borrar OpenID',
+	'openiddelete-text' => 'Al presionar el botón "{{int:openiddelete-button}}", eliminarás el OpenID $1 de tu cuenta.
+Ya no podrás conectarte más con este OpenID.',
 	'openiddelete-button' => 'Confirmar',
+	'openiddelete-sucess' => 'El OpenID fue eliminado exitosamente de tu cuenta.',
+	'openiddelete-error' => 'Ocurrió un error al eliminar el OpenID de tu cuenta.',
 	'openid-prefstext' => 'Preferencias de [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ocultar su OpenID en su página de usuario, si usted ingresa con OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Actualizar la siguiente información desde mi perfil OpenID cada vez que ingreso:',
+	'openid-urls-desc' => 'Los OpenID asociados con tu cuenta:',
 	'openid-urls-action' => 'Acción',
 	'openid-urls-delete' => 'Borrar',
 	'openid-add-url' => 'Agregar un nuevo OpenID',
@@ -1373,6 +1381,7 @@ $messages['grc'] = array(
 	'openidemail' => 'Ἡλεκτρονικὴ διεύθυνσις',
 	'openidlanguage' => 'Γλῶττα',
 	'openidchoosepassword' => 'σύνθημα:',
+	'openid-urls-delete' => 'Σβεννύναι',
 );
 
 /** Swiss German (Alemannisch)

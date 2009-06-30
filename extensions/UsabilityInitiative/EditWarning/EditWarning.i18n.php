@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 	'editwarning' => "This is the name of an extension that warns people when they try to leave an edit form without saving. So it means something like \"warning about (your) edit\", '''not''' \"edit the warning\".",
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'editwarning' => 'ܙܘܗܪܐ ܥܠ ܫܚܠܦܬܐ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -50,6 +57,13 @@ $messages['dsb'] = array(
 	'editwarning' => 'Wobźěłowańske warnowanje',
 	'editwarning-desc' => 'Warnowanje pokazaś, gaž wužywaŕ wopytujo wobźěłowański formular bźeze składowanja spušćiś',
 	'editwarning-warning' => 'Gaž toś ten bok se spušća, budu se změny zgubowaś.',
+);
+
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'editwarning' => 'Προειδοποίηση επεξεργασίας',
 );
 
 /** Esperanto (Esperanto)

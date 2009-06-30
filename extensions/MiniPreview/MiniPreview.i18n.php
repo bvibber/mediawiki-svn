@@ -413,10 +413,11 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
-	'minipreview-files_in_category' => 'Gunggungé ana $1 berkas ing kategori iki.',
-	'minipreview-files_in_gallery' => 'gunggungé ana $1 berkas ing galeri iki.',
+	'minipreview-files_in_category' => "Kategori iki ngandhut '''$1''' {{PLURAL:$1|berkas|berkas}}.",
+	'minipreview-files_in_gallery' => "Galeri iki ngandhut '''$1''' {{PLURAL:$1|berkas|berkas}}.",
 	'minipreview-no_category_gallery' => 'Ora ana kategori utawa galeri!',
 );
 

@@ -560,8 +560,10 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'recordadmin-select' => 'Ἐπιλέγειν',
 	'recordadmin-submit' => 'Ὑποβάλλειν',
 	'recordadmin-buttoncreate' => 'Ποιεῖν',
 	'recordadmin-buttonreset' => 'Ἀνατιθέναι',

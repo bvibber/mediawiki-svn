@@ -758,9 +758,10 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
-	'multipleupload' => 'Ngunggahaké berkas',
+	'multipleupload' => 'Unggahna berkas luwih saka siji',
 	'multipleupload-ignoreallwarnings' => "Lirwakna '''kabèh pèngetan''' lan simpenen berkas-berkasé kepriyé waé.",
 	'multipleupload-saveallfiles' => 'Simpen kabèh berkas',
 	'multipleupload-page' => '{{ns:project}}:Kawicaksanan pambusakan berkas',

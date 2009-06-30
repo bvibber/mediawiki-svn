@@ -177,6 +177,29 @@ $messages['qqq'] = array(
 	'edittoolbar-help-content-signature-description' => '{{Identical|Signature}}',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'edittoolbar-tool-bold' => 'ܥܒܝܬܐ',
+	'edittoolbar-tool-bold-example' => 'ܟܬܒܬܐ ܥܒܝܬܐ',
+	'edittoolbar-tool-italic' => 'ܦܠܝܡܬܐ',
+	'edittoolbar-tool-italic-example' => 'ܟܬܒܬܐ ܦܠܝܡܬܐ',
+	'edittoolbar-tool-ilink' => 'ܐܣܘܪܐ ܓܘܝܐ',
+	'edittoolbar-tool-xlink' => 'ܐܣܘܪܐ ܒܪܝܐ (ܕܟܘܪ http:// ܩܕܡܝܬܐ)',
+	'edittoolbar-tool-table' => 'ܠܘܚܝܬܐ',
+	'edittoolbar-section-help' => 'ܥܘܕܪܢܐ',
+	'edittoolbar-help-page-file' => 'ܠܦܦ̈ܐ',
+	'edittoolbar-help-content-italic-description' => 'ܦܠܝܡܬܐ',
+	'edittoolbar-help-content-italic-syntax' => "''ܟܬܒܬܐ ܦܠܝܡܬܐ''",
+	'edittoolbar-help-content-italic-result' => '<em>ܟܬܒܬܐ ܦܠܝܡܬܐ</em>',
+	'edittoolbar-help-content-bold-description' => 'ܥܒܝܬܐ',
+	'edittoolbar-help-content-bold-syntax' => "'''ܟܬܒܬܐ ܥܒܝܬܐ'''",
+	'edittoolbar-help-content-bold-result' => '<strong>ܟܬܒܬܐ ܥܒܝܬܐ</strong>',
+	'edittoolbar-help-content-ilink-description' => 'ܐܣܘܪܐ ܓܘܝܐ',
+	'edittoolbar-help-content-xlink-description' => 'ܐܣܘܪܐ ܒܪܝܐ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -228,6 +251,7 @@ $messages['be-tarask'] = array(
 	'edittoolbar-tool-gallery-example' => 'File:Example.jpg|Подпіс1
 File:Example.jpg|Подпіс2',
 	'edittoolbar-tool-newline' => 'Новы радок',
+	'edittoolbar-tool-table' => 'Табліца',
 	'edittoolbar-section-characters' => 'Спэцыяльныя сымбалі',
 	'edittoolbar-section-help' => 'Дапамога',
 	'edittoolbar-help-heading-description' => 'Апісаньне',
@@ -455,6 +479,97 @@ File:Example.jpg|Pópisanje2',
 	'edittoolbar-help-content-indent-result' => 'Normalny tekst<dl><dd>Zasunjony tekst<dl><dd>Zasunjony tekst</dd></dl></dd></dl>',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'edittoolbar' => 'Επεξεργασία εργαλειοθήκης',
+	'edittoolbar-loading' => 'Φόρτωση...',
+	'edittoolbar-tool-bold' => 'Έντονα',
+	'edittoolbar-tool-bold-example' => 'Έντονο κείμενο',
+	'edittoolbar-tool-italic' => 'Πλάγια',
+	'edittoolbar-tool-italic-example' => 'Κείμενο με πλάγιους χαρακτήρες',
+	'edittoolbar-tool-ilink' => 'Εσωτερικός σύνδεσμος',
+	'edittoolbar-tool-ilink-example' => 'Τίτλος συνδέσμου',
+	'edittoolbar-tool-xlink' => 'Εξωτερικός σύνδεσμος (μην ξεχάστε το πρόθεμα http:// )',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com τίτλος συνδέσμου',
+	'edittoolbar-tool-file' => 'Ενσωματωμένο αρχείο',
+	'edittoolbar-tool-file-pre' => '$1Αρχείο:',
+	'edittoolbar-tool-file-example' => 'Paradeigma.jpg',
+	'edittoolbar-tool-reference' => 'Παραπομπή',
+	'edittoolbar-section-advanced' => 'Προχωρημένο',
+	'edittoolbar-tool-heading' => 'Τίτλος',
+	'edittoolbar-tool-heading-1' => 'Επίπεδο 1',
+	'edittoolbar-tool-heading-2' => 'Επίπεδο 2',
+	'edittoolbar-tool-heading-3' => 'Επίπεδο 3',
+	'edittoolbar-tool-heading-4' => 'Επίπεδο 4',
+	'edittoolbar-tool-heading-5' => 'Επίπεδο 5',
+	'edittoolbar-tool-heading-example' => 'Κείμενο τίτλου',
+	'edittoolbar-group-list' => 'Λίστα',
+	'edittoolbar-group-size' => 'Μέγεθος',
+	'edittoolbar-tool-big' => 'Μεγάλα',
+	'edittoolbar-tool-big-example' => 'Κείμενο με μεγάλους χαρακτήρες',
+	'edittoolbar-tool-small' => 'Μικρά',
+	'edittoolbar-tool-small-example' => 'Κείμενο με μικρούς χαρακτήρες',
+	'edittoolbar-group-baseline' => 'Υπογεγραμμένο',
+	'edittoolbar-group-insert' => 'Εισαγωγή',
+	'edittoolbar-tool-newline' => 'Νέα γραμμή',
+	'edittoolbar-tool-table' => 'Πίνακας',
+	'edittoolbar-section-characters' => 'Ειδικοί χαρακτήρες',
+	'edittoolbar-section-help' => 'Βοήθεια',
+	'edittoolbar-help-heading-description' => 'Περιγραφή',
+	'edittoolbar-help-heading-syntax' => 'Τι πληκτρολογείς',
+	'edittoolbar-help-heading-result' => 'Τι αποτέλεσμα λαμβάνεις',
+	'edittoolbar-help-page-format' => 'Μορφοποίηση',
+	'edittoolbar-help-page-link' => 'Σύνδεσμοι',
+	'edittoolbar-help-page-heading' => 'Τίτλοι',
+	'edittoolbar-help-page-list' => 'Λίστες',
+	'edittoolbar-help-page-file' => 'Αρχεία',
+	'edittoolbar-help-page-reference' => 'Παραπομπές',
+	'edittoolbar-help-page-discussion' => 'Συζήτηση',
+	'edittoolbar-help-content-italic-description' => 'Πλάγια',
+	'edittoolbar-help-content-italic-syntax' => "''Κείμενο με πλάγιους χαρακτήρες''",
+	'edittoolbar-help-content-italic-result' => '<em>Κείμενο με πλάγιους χαρακτήρες</em>',
+	'edittoolbar-help-content-bold-description' => 'Έντονα',
+	'edittoolbar-help-content-bold-syntax' => "'''Έντονο κείμενο'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Έντονο κείμενο</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Έντονα &amp; πλάγια',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Έντονο &amp; πλάγιο κείμενο'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Έντονο &amp; πλάγιο κείμενο</em></strong>',
+	'edittoolbar-help-content-ilink-description' => 'Εσωτερικός σύνδεσμος',
+	'edittoolbar-help-content-ilink-result' => "<a href='#'>Τίτλος συνδέσμου</a><br /><a href='#'>Τίτλος σελίδας</a>",
+	'edittoolbar-help-content-xlink-description' => 'Εξωτερικοί σύνδεσμοι',
+	'edittoolbar-help-content-heading1-description' => 'Επικεφαλίδα 1ου επιπέδου',
+	'edittoolbar-help-content-heading1-syntax' => '= Κείμενο επικεφαλίδας =',
+	'edittoolbar-help-content-heading1-result' => '<h1>Κείμενο επικεφαλίδας</h1>',
+	'edittoolbar-help-content-heading2-description' => 'Επικεφαλίδα 2ου επιπέδου',
+	'edittoolbar-help-content-heading2-syntax' => '== Κείμενο επικεφαλίδας ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>Κείμενο επικεφαλίδας</h2>',
+	'edittoolbar-help-content-heading3-description' => 'Επικεφαλίδα 3ου επιπέδου',
+	'edittoolbar-help-content-heading3-syntax' => '=== Κείμενο επικεφαλίδας ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>Κείμενο επικεφαλίδας</h3>',
+	'edittoolbar-help-content-heading4-description' => 'Επικεφαλίδα 4ου επιπέδου',
+	'edittoolbar-help-content-heading4-syntax' => '==== Κείμενο επικεφαλίδας ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>Κείμενο επικεφαλίδας</h4>',
+	'edittoolbar-help-content-heading5-description' => 'Επικεφαλίδα 5ου επιπέδου',
+	'edittoolbar-help-content-heading5-syntax' => '===== Κείμενο επικεφαλίδας =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>Κείμενο επικεφαλίδας</h5>',
+	'edittoolbar-help-content-ulist-description' => 'Λίστα με τελείες',
+	'edittoolbar-help-content-ulist-syntax' => '* Στοιχείο της λίστας<br />* Στοιχείο της λίστας',
+	'edittoolbar-help-content-olist-description' => 'Αριθμημένη λίστα',
+	'edittoolbar-help-content-olist-syntax' => '# Αντικείμενο της λίστας<br /># Αντικείμενο της λίστας',
+	'edittoolbar-help-content-file-description' => 'Ενσωματωμένο αρχείο',
+	'edittoolbar-help-content-reference-description' => 'Παραπομπή',
+	'edittoolbar-help-content-reference-result' => "Κείμενο σελίδας.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-showreferences-description' => 'Εμφάνιση παραπομπών',
+	'edittoolbar-help-content-showreferences-syntax' => '&lt;references /&gt; ή {<!-- -->{Reflist}}',
+	'edittoolbar-help-content-signaturetimestamp-description' => 'Υπογραφή με σφραγίδα χρόνου',
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Όνομα χρήστη</a> (<a href='#' title='{{#special:mytalk}}'>συζήτηση</a>) 10 Ιουνίου 2009 15:54 (UTC)",
+	'edittoolbar-help-content-signature-description' => 'Υπογραφή',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Όνομα χρήστη</a> (<a href='#' title='{{#special:mytalk}}'>συζήτηση</a>)",
+	'edittoolbar-help-content-indent-description' => 'Οδόντωση',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -469,15 +584,18 @@ $messages['eo'] = array(
 	'edittoolbar-tool-xlink' => 'Ekstera ligilo (Memoru prefikson http://)',
 	'edittoolbar-tool-xlink-example' => 'http://www.ekzemplo.com ligila titolo',
 	'edittoolbar-tool-file' => 'Enmetata dosiero',
+	'edittoolbar-tool-file-pre' => '$1Dosiero:',
 	'edittoolbar-tool-file-example' => 'Ekzemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referenco',
 	'edittoolbar-tool-reference-example' => 'Enmetu tekston de piednoto ĉi tien',
+	'edittoolbar-section-advanced' => 'Progresa',
 	'edittoolbar-tool-heading-1' => 'Nivelo 1',
 	'edittoolbar-tool-heading-2' => 'Nivelo 2',
 	'edittoolbar-tool-heading-3' => 'Nivelo 3',
 	'edittoolbar-tool-heading-4' => 'Nivelo 4',
 	'edittoolbar-tool-heading-5' => 'Nivelo 5',
 	'edittoolbar-group-list' => 'Listo',
+	'edittoolbar-group-size' => 'Grandeco',
 	'edittoolbar-tool-big' => 'Granda',
 	'edittoolbar-tool-big-example' => 'Granda teksto',
 	'edittoolbar-tool-small' => 'Malgranda',
@@ -494,8 +612,14 @@ $messages['eo'] = array(
 	'edittoolbar-help-page-file' => 'Dosieroj',
 	'edittoolbar-help-page-reference' => 'Referencoj',
 	'edittoolbar-help-page-discussion' => 'Diskuto',
+	'edittoolbar-help-content-italic-description' => 'Kursiva',
+	'edittoolbar-help-content-italic-syntax' => "''Kursiva teksto''",
+	'edittoolbar-help-content-italic-result' => '<em>Kursiva teksto</em>',
+	'edittoolbar-help-content-bold-description' => 'Grasa',
 	'edittoolbar-help-content-bold-syntax' => "'''Grasa teksto'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Grasa teksto</strong>',
 	'edittoolbar-help-content-bolditalic-description' => 'Grasa &amp; kursiva',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Grasa &amp; kursiva teksto'''''",
 	'edittoolbar-help-content-ilink-description' => 'Interna ligilo',
 	'edittoolbar-help-content-xlink-description' => 'Ekstera ligilo',
 	'edittoolbar-help-content-reference-description' => 'Referenco',
@@ -506,19 +630,28 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'edittoolbar' => 'Editando barra de herramientas',
 	'edittoolbar-loading' => 'Cargando...',
 	'edittoolbar-tool-bold' => 'Negrita',
 	'edittoolbar-tool-bold-example' => 'Texto en negrita',
 	'edittoolbar-tool-italic' => 'Itálico',
 	'edittoolbar-tool-italic-example' => 'Texto itálico',
 	'edittoolbar-tool-ilink' => 'Vínculo interno',
+	'edittoolbar-tool-ilink-example' => 'Título del vínculo',
+	'edittoolbar-tool-xlink' => 'Vínculo externo (recordar prefijo http://)',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com título del vínculo',
+	'edittoolbar-tool-file-pre' => '$1 Archivo:',
+	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Referencia',
+	'edittoolbar-tool-reference-example' => 'Insertar nota a pie de página aquí',
 	'edittoolbar-section-advanced' => 'Avanzado',
+	'edittoolbar-tool-heading' => 'Encabezado',
 	'edittoolbar-tool-heading-1' => 'Nivel 1',
 	'edittoolbar-tool-heading-2' => 'Nivel 2',
 	'edittoolbar-tool-heading-3' => 'Nivel 3',
 	'edittoolbar-tool-heading-4' => 'Nivel 4',
 	'edittoolbar-tool-heading-5' => 'Nivel 5',
+	'edittoolbar-tool-heading-example' => 'Texto de encabezado',
 	'edittoolbar-group-list' => 'Lista',
 	'edittoolbar-group-size' => 'Tamaño',
 	'edittoolbar-tool-big' => 'Grande',
@@ -526,14 +659,44 @@ $messages['es'] = array(
 	'edittoolbar-tool-small' => 'Pequeño',
 	'edittoolbar-tool-small-example' => 'Texto pequeño',
 	'edittoolbar-group-insert' => 'Insertar',
+	'edittoolbar-tool-gallery' => 'Galería de fotos',
+	'edittoolbar-tool-newline' => 'Nueva línea',
+	'edittoolbar-tool-table' => 'Tabla',
+	'edittoolbar-section-characters' => 'Carácteres especiales',
 	'edittoolbar-section-help' => 'Ayuda',
 	'edittoolbar-help-heading-description' => 'Descripción',
+	'edittoolbar-help-page-format' => 'Formateando',
 	'edittoolbar-help-page-link' => 'Vínculos',
+	'edittoolbar-help-page-heading' => 'Encabezados',
 	'edittoolbar-help-page-list' => 'Listas',
 	'edittoolbar-help-page-file' => 'Archivos',
 	'edittoolbar-help-page-reference' => 'Referencias',
 	'edittoolbar-help-page-discussion' => 'Discusión',
+	'edittoolbar-help-content-italic-description' => 'Itálico',
+	'edittoolbar-help-content-italic-syntax' => "''Texto itálico''",
+	'edittoolbar-help-content-italic-result' => '<em>Texto itálico</em>',
+	'edittoolbar-help-content-bold-description' => 'Negrita',
+	'edittoolbar-help-content-bold-syntax' => "'''Texto en negrita'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Texto en negrita</strong>',
+	'edittoolbar-help-content-ilink-description' => 'Vínculo interno',
+	'edittoolbar-help-content-xlink-description' => 'Vínculo externo',
+	'edittoolbar-help-content-heading1-syntax' => '= Texto de encabezado =',
+	'edittoolbar-help-content-heading1-result' => '<h1>Texto de encabezado</h1>',
+	'edittoolbar-help-content-heading2-syntax' => '== Texto de encabezado ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>Texto de encabezado</h2>',
+	'edittoolbar-help-content-heading3-syntax' => '=== Texto de encabezado ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>Texto de encabezado</h3>',
+	'edittoolbar-help-content-heading4-syntax' => '==== Texto de encabezado ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>Texto de encabezado</h4>',
+	'edittoolbar-help-content-heading5-syntax' => '===== Texto de encabezado =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>Texto de encabezado</h5>',
+	'edittoolbar-help-content-reference-description' => 'Referencia',
+	'edittoolbar-help-content-rereference-description' => 'Uso adicional de la misma referencia',
 	'edittoolbar-help-content-showreferences-description' => 'Mostrar referencias',
+	'edittoolbar-help-content-signaturetimestamp-description' => 'Firma con fechero',
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Nombre de usuario</a> (<a href='#' title='{{#special:mytalk}}'>discusión</a>) 15:54, 10 June 2009 (UTC)",
+	'edittoolbar-help-content-signature-description' => 'Firma',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Nombre de usuario</a> (<a href='#' title='{{#special:mytalk}}'>discusión</a>)",
 );
 
 /** Finnish (Suomi)
@@ -586,6 +749,19 @@ $messages['fi'] = array(
 	'edittoolbar-tool-gallery-example' => 'Tiedosto:Esimerkki.jpg|Kuvateksti1
 Tiedosto:Esimerkki.jpg|Kuvateksti2',
 	'edittoolbar-tool-newline' => 'Uusi rivi',
+	'edittoolbar-tool-table' => 'Taulukko',
+	'edittoolbar-tool-table-example' => '-
+! otsikko 1
+! otsikko 2
+! otsikko 3
+|-
+| rivi 1, sarake 1
+| rivi 1, sarake 2
+| rivi 1, sarake 3
+|-
+| rivi 2, sarake 1
+| rivi 2, sarake 2
+| rivi 2, sarake 3',
 	'edittoolbar-section-characters' => 'Erikoismerkit',
 	'edittoolbar-section-help' => 'Ohje',
 	'edittoolbar-help-heading-description' => 'Kuvaus',
@@ -905,6 +1081,7 @@ $messages['grc'] = array(
 	'edittoolbar-tool-bold-example' => 'Γράμματα παχέα',
 	'edittoolbar-tool-italic' => 'πλάγιον',
 	'edittoolbar-tool-italic-example' => 'Γράμματα πλάγια',
+	'edittoolbar-tool-ilink' => 'Ἐσωτερικός σύνδεσμος',
 	'edittoolbar-tool-heading' => 'Ἐπικεφαλίς',
 	'edittoolbar-tool-heading-1' => 'Ἐπίπεδον 1',
 	'edittoolbar-tool-heading-2' => 'Ἐπίπεδον 2',
@@ -917,10 +1094,13 @@ $messages['grc'] = array(
 	'edittoolbar-tool-big-example' => 'Μέγα κείμενον',
 	'edittoolbar-tool-small' => 'Σμικρόν',
 	'edittoolbar-tool-small-example' => 'Σμικρόν κείμενον',
+	'edittoolbar-group-insert' => 'Εἰσάγειν',
 	'edittoolbar-tool-newline' => 'Νέα γραμμή',
+	'edittoolbar-tool-table' => 'Πίναξ',
 	'edittoolbar-section-help' => 'Βοήθεια',
 	'edittoolbar-help-heading-description' => 'Περιγραφή',
 	'edittoolbar-help-page-link' => 'σύνδεσμοι',
+	'edittoolbar-help-page-heading' => 'Ἐπικεφαλίδες',
 	'edittoolbar-help-page-list' => 'Κατάλογοι',
 	'edittoolbar-help-page-file' => 'Ἀρχεῖα',
 	'edittoolbar-help-page-reference' => 'Ἀναφοραί',
@@ -933,6 +1113,21 @@ $messages['grc'] = array(
 	'edittoolbar-help-content-bold-result' => '<strong>Γράμματα παχέα</strong>',
 	'edittoolbar-help-content-ilink-description' => 'Ἐσωτερικός σύνδεσμος',
 	'edittoolbar-help-content-xlink-description' => 'Ἐξωτερικός σύνδεσμος',
+	'edittoolbar-help-content-heading1-description' => 'Ἐπικεφαλὶς 1ου ἐπιπέδου',
+	'edittoolbar-help-content-heading1-syntax' => '= Κείμενον ἐπικεφαλίδος =',
+	'edittoolbar-help-content-heading1-result' => '<h1>Κείμενον ἐπικεφαλίδος</h1>',
+	'edittoolbar-help-content-heading2-description' => 'Ἐπικεφαλὶς 2ου ἐπιπέδου',
+	'edittoolbar-help-content-heading2-syntax' => '== Κείμενον ἐπικεφαλίδος ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>Κείμενον ἐπικεφαλίδος</h2>',
+	'edittoolbar-help-content-heading3-description' => 'Ἐπικεφαλὶς 3ου ἐπιπέδου',
+	'edittoolbar-help-content-heading3-syntax' => '=== Κείμενον ἐπικεφαλίδος ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>Κείμενον ἐπικεφαλίδος</h3>',
+	'edittoolbar-help-content-heading4-description' => 'Ἐπικεφαλὶς 4ου ἐπιπέδου',
+	'edittoolbar-help-content-heading4-syntax' => '==== Κείμενον ἐπικεφαλίδος ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>Κείμενον ἐπικεφαλίδος</h4>',
+	'edittoolbar-help-content-heading5-description' => 'Ἐπικεφαλὶς 5ου ἐπιπέδου',
+	'edittoolbar-help-content-heading5-syntax' => '===== Κείμενον ἐπικεφαλίδος =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>Κείμενον ἐπικεφαλίδος</h5>',
 	'edittoolbar-help-content-reference-description' => 'Ἀναφορά',
 	'edittoolbar-help-content-signature-description' => 'Ὑπογραφή',
 );
@@ -1343,6 +1538,7 @@ $messages['ia'] = array(
 	'edittoolbar-tool-gallery-example' => 'File:Exemplo.jpg|Legenda1
 File:Exemplo.jpg|Legenda2',
 	'edittoolbar-tool-newline' => 'Nove linea',
+	'edittoolbar-tool-table' => 'Tabella',
 	'edittoolbar-section-characters' => 'Characteres special',
 	'edittoolbar-section-help' => 'Adjuta',
 	'edittoolbar-help-heading-description' => 'Description',
@@ -1686,6 +1882,19 @@ $messages['ja'] = array(
 	'edittoolbar-tool-gallery-example' => '{{ns:file}}:Example.jpg|キャプション1
 {{ns:file}}:Example.jpg|キャプション2',
 	'edittoolbar-tool-newline' => '改行',
+	'edittoolbar-tool-table' => '表',
+	'edittoolbar-tool-table-example' => '-
+! ヘッダー1
+! ヘッダー2
+! ヘッダー3
+|-
+| 行1、セル1
+| 行1、セル2
+| 行1、セル3
+|-
+| 行2、セル1
+| 行2、セル2
+| 行2、セル3',
 	'edittoolbar-section-characters' => '特殊文字',
 	'edittoolbar-section-help' => 'ヘルプ',
 	'edittoolbar-help-heading-description' => '解説',
@@ -1928,6 +2137,7 @@ $messages['lb'] = array(
 	'edittoolbar-tool-gallery-example' => 'File:Example.jpg|Beschreiwung1
 File:Example.jpg|Beschreiwung2',
 	'edittoolbar-tool-newline' => 'Nei Linn',
+	'edittoolbar-tool-table' => 'Tabell',
 	'edittoolbar-section-characters' => 'Spezialzeechen',
 	'edittoolbar-section-help' => 'Hellëf',
 	'edittoolbar-help-heading-description' => 'Beschreiwung',
@@ -2084,6 +2294,19 @@ $messages['nl'] = array(
 	'edittoolbar-tool-gallery-example' => '{{ns:file}}:Voorbeeld1|Bijschrift1
 {{ns:file}}:Voorbeeld2|Bijschrift2',
 	'edittoolbar-tool-newline' => 'Nieuwe regel',
+	'edittoolbar-tool-table' => 'Tabel',
+	'edittoolbar-tool-table-example' => '-
+! kolomkop 1
+! kolomkop 2
+! kolomkop 3
+|-
+| rij 1, cel 1
+| rij 1, cel 2
+| rij 1, cel 3
+|-
+| rij 2, cel 1
+| rij 2, cel 2
+| rij 2, cel 3',
 	'edittoolbar-section-characters' => 'Speciale tekens',
 	'edittoolbar-section-help' => 'Hulp',
 	'edittoolbar-help-heading-description' => 'Beschrijving',
@@ -2456,6 +2679,7 @@ $messages['pl'] = array(
 	'edittoolbar-tool-gallery-example' => 'Plik:Example.jpg|Podpis1
 Plik:Example.jpg|Podpis2',
 	'edittoolbar-tool-newline' => 'Nowy wiersz',
+	'edittoolbar-tool-table' => 'Tabela',
 	'edittoolbar-section-characters' => 'Znaki specjalne',
 	'edittoolbar-section-help' => 'Pomoc',
 	'edittoolbar-help-heading-description' => 'Opis',
@@ -2535,9 +2759,19 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'edittoolbar-tool-reference' => 'Referência',
+	'edittoolbar-tool-heading-1' => 'Nível 1',
+	'edittoolbar-tool-heading-2' => 'Nível 2',
+	'edittoolbar-tool-heading-3' => 'Nível 3',
+	'edittoolbar-tool-heading-4' => 'Nível 4',
+	'edittoolbar-tool-heading-5' => 'Nível 5',
+	'edittoolbar-tool-heading-example' => 'Texto de cabeçalho',
+	'edittoolbar-group-list' => 'Lista',
+	'edittoolbar-section-help' => 'Ajuda',
 	'edittoolbar-help-heading-description' => 'Descrição',
 	'edittoolbar-help-page-list' => 'Listas',
 	'edittoolbar-help-page-file' => 'Ficheiros',
+	'edittoolbar-help-content-xlink-description' => 'Ligação externa',
 );
 
 /** Romanian (Română)
@@ -2766,6 +3000,7 @@ $messages['sk'] = array(
 	'edittoolbar-tool-gallery-example' => 'Súbor:Príklad.jpg|Popis1
 Súbor:Príklad.jpg|Popis2',
 	'edittoolbar-tool-newline' => 'Nový riadok',
+	'edittoolbar-tool-table' => 'Tabuľka',
 	'edittoolbar-section-characters' => 'Špeciálne znaky',
 	'edittoolbar-section-help' => 'Pomocník',
 	'edittoolbar-help-heading-description' => 'Popis',
@@ -2892,11 +3127,28 @@ $messages['sv'] = array(
 	'edittoolbar-tool-gallery-example' => 'Fil:Exempel.jpg|Bildtext1
 Fil:Exempel.jpg|Bildtext2',
 	'edittoolbar-tool-newline' => 'Ny rad',
+	'edittoolbar-tool-table' => 'Tabell',
 	'edittoolbar-section-characters' => 'Specialtecken',
 	'edittoolbar-section-help' => 'Hjälp',
 	'edittoolbar-help-heading-description' => 'Beskrivning',
 	'edittoolbar-help-heading-syntax' => 'Vad du skriver',
 	'edittoolbar-help-heading-result' => 'Vad du får',
+	'edittoolbar-help-page-format' => 'Formatering',
+	'edittoolbar-help-page-link' => 'Länkar',
+	'edittoolbar-help-page-heading' => 'Rubriker',
+	'edittoolbar-help-page-list' => 'Listor',
+	'edittoolbar-help-page-file' => 'Filer',
+	'edittoolbar-help-page-reference' => 'Referenser',
+	'edittoolbar-help-page-discussion' => 'Diskussion',
+	'edittoolbar-help-content-italic-description' => 'Kursiv',
+	'edittoolbar-help-content-italic-syntax' => "''Kursiv text''",
+	'edittoolbar-help-content-italic-result' => '<em>Kursiv text</em>',
+	'edittoolbar-help-content-bold-description' => 'Fet',
+	'edittoolbar-help-content-bold-syntax' => "'''Fet text'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Fet text</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Fet &amp; kursiv',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Fet &amp; kursiv text'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Fet &amp; kursiv text</em></strong>',
 );
 
 /** Telugu (తెలుగు)

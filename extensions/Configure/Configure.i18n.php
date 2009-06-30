@@ -2728,8 +2728,16 @@ $messages['grc'] = array(
 	'configure-section-misc' => 'Λοιπά',
 	'configure-section-mw-extensions' => 'Ἐπεκτάσεις MediaWiki',
 	'configure-select-wiki' => 'Ϝικι-επιλογή',
+	'configure-select-wiki-submit' => 'Ἐπιλέγειν',
+	'configure-view' => 'Ὁρᾶν',
+	'configure-throttle-action-edit' => 'Μεταγράφειν',
 	'configure-throttle-action-move' => 'Κινεῖν',
 	'configure-throttle-action-rollback' => 'Ἀναστροφή',
+	'configure-throttle-group' => 'Τύπος',
+	'configure-throttle-limit' => 'Ὅριον',
+	'configure-condition-operator-or' => 'Ἢ',
+	'configure-condition-operator-and' => 'Καὶ',
+	'configure-condition-name' => 'Κατάστασις',
 );
 
 /** Swiss German (Alemannisch)

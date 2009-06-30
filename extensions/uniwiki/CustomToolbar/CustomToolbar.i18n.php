@@ -135,6 +135,24 @@ $wgCustomToolbarMessages['ar'] = array(
 	'ct_user_sample' => 'أسم المستخدم',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$wgCustomToolbarMessages['arc'] = array(
+	'ct_bold_sample' => 'ܟܬܒܬܐ ܥܒܝܬܐ',
+	'ct_bold_caption' => 'ܥܒܝܬܐ',
+	'ct_italic_sample' => 'ܟܬܒܬܐ ܦܠܝܡܬܐ',
+	'ct_italic_caption' => 'ܦܠܝܡܬܐ',
+	'ct_internal_caption' => 'ܐܣܘܪܐ ܓܘܝܐ',
+	'ct_external_caption' => 'ܐܣܘܪܐ ܒܪܝܐ',
+	'ct_image_caption' => 'ܐܘܣܦ ܠܦܦܐ',
+	'ct_nowiki_caption' => 'ܠܐ ܘܝܩܝ',
+	'ct_upload' => 'ܐܣܩ $1',
+	'ct_submit' => 'ܙܠ!',
+	'ct_user_user' => 'ܡܦܠܚܢܐ',
+	'ct_user_sample' => 'ܫܡܐ ܕܡܦܠܚܢܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

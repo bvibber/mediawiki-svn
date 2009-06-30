@@ -35,6 +35,13 @@ $messages['ar'] = array(
 	'authors_anonymous' => 'المجهولون',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'authors_anonymous' => 'ܠܐ ܝܕܝܥܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II

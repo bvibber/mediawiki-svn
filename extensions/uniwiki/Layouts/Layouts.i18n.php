@@ -49,6 +49,14 @@ $messages['ar'] = array(
 	'layouts_tagline' => "هذه الصفحة تم توليدها بواسطة هيئة '''$1'''.",
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'layouts_title' => 'ܒܪܝ ܦܐܬܐ',
+	'layouts_unknown' => 'ܠܐ ܝܕܝܥܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ouda

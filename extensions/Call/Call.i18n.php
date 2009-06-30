@@ -507,10 +507,10 @@ Contoh 2: &nbsp; <tt>[[{{#special:call}}/Pembicaraan:Diskusi Saya,parm1=value1]]
 Contoh 3: &nbsp; <tt>[[{{#special:call}}/:Halaman Saya,parm1=value1,parm2=value2]]</tt><br />
 Contoh 4 (URL Penjelajah): &nbsp; <tt>http://domain/wiki/index.php?{{#special:call}}/:Halaman Saya,parm1=value1</tt><br /><br />
 
-<i>Ekstensi Call</i> akan memanggil halaman yang dimaksud dan mengirimkan parameternya.<br />
+Pengaya <i>Panggilan</i> akan memanggil halaman yang dimaksud dan mengirimkan parameternya.<br />
 Anda akan melihat isi dari halaman tersebut dan judulnya, tapi 'tipe'nya akan seperti halaman istimewa, yakni halaman tersebut tidak bisa disunting.<br />Isi yang Anda lihat akan bervariasi tergantung dari parameter yang dikirimkan.<br /><br />
 
-<i>Ekstensi Call</i> berguna untuk membuat aplikasi interaktif dengan MediaWiki.<br />
+Pengaya <i>Panggilan</i> berguna untuk membuat aplikasi interaktif dengan MediaWiki.<br />
 Contohnya: <a href='http://semeb.com/dpldemo/Template:Catlist'>GUI DPL</a> ..<br />
 Jika ada masalah, lihat <b>{{#special:call}}/DebuG</b>",
 	'call-save' => "Keluaran untuk panggilan ini akan disimpan di sebuah halaman bernama ''$1''.",

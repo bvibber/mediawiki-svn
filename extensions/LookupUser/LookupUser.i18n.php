@@ -248,6 +248,7 @@ $messages['el'] = array(
 	'lookupuser-email' => 'Ηλεκτρονικό μήνυμα: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'μη διαθέσιμο',
 	'lookupuser-realname' => 'Πραγματικό όνομα: $1',
+	'lookupuser-registration' => 'Ημερομηνία εγγραφής: $1',
 	'lookupuser-no-registration' => 'μη καταγεγραμμένο',
 	'lookupuser-useroptions' => 'Επιλογές χρήστη:',
 );
@@ -569,7 +570,7 @@ $messages['id'] = array(
 	'lookupuser-realname' => 'Nama asli: $1',
 	'lookupuser-registration' => 'Tanggal pendaftaran: $1',
 	'lookupuser-no-registration' => 'tidak dicatat',
-	'lookupuser-touched' => 'Rekor terakhir yang tercapai: $1',
+	'lookupuser-touched' => 'Catatan pengguna terakhir dilihat: $1',
 	'lookupuser-info-authenticated' => 'Otentifikasi surel: $1',
 	'lookupuser-useroptions' => 'Pilihan pengguna:',
 	'right-lookupuser' => 'Lihat preferensi pengguna',

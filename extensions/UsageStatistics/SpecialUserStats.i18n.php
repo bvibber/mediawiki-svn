@@ -132,6 +132,16 @@ $messages['ar'] = array(
 	'right-viewsystemstats' => 'رؤية [[Special:UserStats|إحصاءات استخدام الويكي]]',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'usagestatisticstype' => 'ܐܕܫܐ',
+	'usagestatisticsintervalday' => 'ܝܘܡܐ',
+	'usagestatisticsintervalweek' => 'ܫܒܘܥܐ',
+	'usagestatisticsintervalmonth' => 'ܝܪܚܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

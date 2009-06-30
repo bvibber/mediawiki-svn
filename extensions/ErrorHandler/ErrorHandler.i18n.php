@@ -407,6 +407,8 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'errorhandler-errors' => 'Σφάλματα:',
+	'errorhandler-error-notice' => 'Σημείωμα',
 	'errorhandler-trace' => 'ἴχνος:',
 );
 

@@ -807,13 +807,14 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'importusers-uploadfile' => 'Unggahna berkas',
 	'importusers-form-button' => 'Impor',
 	'importusers-user-added' => "Panganggo '''$1''' wis ditambah.",
 	'importusers-user-present-not-update' => "Panganggo '''$1''' wis ana. Ora di-update.",
-	'importusers-log' => 'Log impor',
+	'importusers-log' => 'Impor log panganggo',
 	'importusers-log-summary' => 'Ringkesan',
 	'importusers-log-summary-all' => 'Kabèh',
 	'importusers-log-summary-added' => 'Ditambah',
@@ -1090,6 +1091,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  * @author Nghtwlkr
  */
 $messages['no'] = array(

@@ -47,6 +47,13 @@ $messages['ar'] = array(
 	'whatismyip-out' => 'الأيبي الخاص بك:',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'whatismyip' => 'ܡܐ ܗܘ ܐܝ ܦܝ (IP) ܕܝܠܝ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

@@ -3688,6 +3688,7 @@ Por favor, póñase en contacto cun operador ou administrador do servidor.',
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
  * @author LeighvsOptimvsMaximvs
+ * @author Omnipaedista
  */
 $wdMessages['grc'] = array(
 	'langman_langname' => 'Ὄνομα γλώττης:',
@@ -3703,6 +3704,7 @@ $wdMessages['grc'] = array(
 	'ow_transaction_rollback_button' => 'Ἀναστροφή',
 	'ow_transaction_rollback_header' => 'Ἀναστροφή',
 	'ow_transaction_remove' => 'Άφαιρεῖν',
+	'ow_transaction_object' => 'Χρῆμα',
 	'ow_transaction_summary' => 'Σύνοψις',
 	'ow_dm_OK' => 'εἶεν',
 	'ow_ClassAttributeType' => 'Τύπος',

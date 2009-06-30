@@ -47,6 +47,14 @@ $messages['ar'] = array(
 عند تعليم أو إزالة تعليم صفحات متعددة، الإمساك بمفتاح شيفت يسمح لك باختيار صناديق متتالية بواسطة الضغط على كل نهاية للنطاق المراد تعليمه.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'watchsubpages-addtitles' => 'ܐܘܣܦ ܦܐܬܘܬ̈ܐ',
+	'watchsubpages-addtitlestowatchlist' => 'ܐܘܣܦ ܦܐܬܘܬ̈ܐ  ܠܪ̈ܗܝܬܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

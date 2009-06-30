@@ -44,6 +44,13 @@ $messages['ar'] = array(
 	'formatchanges-editedby' => '$1 - تم تعديلها بواسطة $2 ($3)',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'formatchanges-anonymous' => 'ܠܐ ܝܕܝܥܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

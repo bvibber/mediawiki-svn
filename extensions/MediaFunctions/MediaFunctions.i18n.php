@@ -398,7 +398,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'mediafunctions-desc' => 'Funções do analisador (parser) para obter informação sobre ficheiros de mídia.',
+	'mediafunctions-desc' => 'Funções do analisador (parser) para obter informação sobre ficheiros multimédia.',
 	'mediafunctions-invalid-title' => '"$1" não é um título válido',
 	'mediafunctions-not-exist' => '"$1" não existe',
 );

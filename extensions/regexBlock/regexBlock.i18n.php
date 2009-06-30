@@ -796,9 +796,11 @@ $messages['got'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'regexblock-form-reason' => 'Αἰτία:',
+	'regexblock-form-expiry' => 'Λῆξις:',
 	'regexblock-view-all' => 'ἅπασαι',
 	'regexblock-view-go' => 'Ἱέναι',
 );
@@ -1251,6 +1253,7 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'regexblock-already-blocked' => '$1 wis diblokir',
@@ -1272,7 +1275,7 @@ Yèn ora ana alesan sing diwènèhaké, sawijining alesan umum baku bakal diengg
 	'regexblock-view-reason-default' => 'alesan umum',
 	'regexblock-view-block-infinite' => 'blokade permanèn',
 	'regexblock-view-block-expired' => 'KADALUWARSA ing',
-	'regexblock-view-block-by' => 'diblokir déning',
+	'regexblock-view-block-by' => 'diblokir déning:',
 );
 
 /** Georgian (ქართული)

@@ -413,7 +413,7 @@ $messages['de'] = array(
 	'review_sidebar_explanation' => 'Das ganz linke Auswahlkästchen bedeutet immer „keine Meinung“.',
 	'review_save' => 'Prüfung speichern',
 	'review_your_review' => 'Deine Prüfung dieser Seite/Version:',
-	'review_sidebar_you_have_other_reviews_for_this_article' => "Du hast schon andere Versionen dieser Seite geprüft. Deine anderen Bewertungen werden mit dieser Prüfung verschmolzen wo du 'keine Meinung' ausgewählt hast.",
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Du hast schon andere Versionen dieser Seite geprüft. Deine anderen Bewertungen werden mit dieser Prüfung verschmolzen wo du „keine Meinung“ ausgewählt hast.',
 	'review_page_link' => 'Prüfungsstatistiken',
 	'review_sidebar_final' => 'Für die Prüfungsdaten dieser Seite, siehe ihre $1',
 	'review_for_page' => 'Prüfung der Seite „$1“',
@@ -1065,6 +1065,7 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'review_error' => 'Ana sing salah!',
@@ -1073,7 +1074,7 @@ $messages['jv'] = array(
 	'review_version_link' => 'Révisi #$1',
 	'review_version_statistic_cell' => '$1 saka $2',
 	'review_user_details_link' => '(détail)',
-	'review_blocked' => 'Panjenengan iku diblokir, mangga lungaa.',
+	'review_blocked' => 'Panjenengan diblokir lan ora bisa mèlu ngowahi.',
 	'review_topic' => 'Topik',
 	'review_no_opinion' => 'Ora ana komentar',
 	'review_comment' => 'Komentar',

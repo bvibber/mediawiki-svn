@@ -82,6 +82,14 @@ $messages['ar'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'gep-addcategorybutton' => 'ܐܘܣܦ',
+	'gep-addsectionbutton' => 'ܐܘܣܦ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -962,6 +970,7 @@ Adicione algumas utilizando as ferramentas na barra de menu.',
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
@@ -979,7 +988,7 @@ $messages['ro'] = array(
 	'gep-classicmode' => 'Mod clasic',
 	'gep-genericmode' => 'Mod generic',
 	'gep-nosectioninstructions' => 'Nu există secţiuni pe această pagină.
-Adăugaţi unele folosind uneltele din dreapta.',
+Adăugaţi unele folosind uneltele din bara de meniu.',
 	'gep-nocategories' => 'Vă rugăm să selectaţi cel puţin o categorie înainte de salvare',
 );
 

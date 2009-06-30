@@ -1304,6 +1304,7 @@ $1',
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'sign-realname' => 'Ὄνομα:',
@@ -1312,7 +1313,9 @@ $messages['grc'] = array(
 	'sign-viewfield-realname' => 'Ὄνομα',
 	'sign-viewfield-ip' => 'IP-διεύθυνσις',
 	'sign-viewfield-agent' => 'Χρώμενος πράκτωρ',
+	'sign-viewfield-phone' => 'Τηλέφωνον',
 	'sign-viewfield-email' => 'Ἠλεκτρονικαὶ ἐπιστολαί',
+	'sign-viewfield-age' => 'Ἡλικία',
 	'sign-viewfield-options' => 'Ἐπιλογαί',
 	'sig-private' => '<ι>Ἰδιωτική</ι>',
 	'sign-viewfield-reviewedby' => 'ἐπιθεωρητής',

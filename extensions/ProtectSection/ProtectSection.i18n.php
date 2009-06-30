@@ -190,6 +190,13 @@ $messages['gl'] = array(
 	'right-protectsection' => 'Protexer seccións de páxinas',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'protectsection_forbidden' => 'Ἀπηγορευμένον',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

@@ -1028,6 +1028,8 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'ogg-long-error' => '(Ἄκυρα ἀρχεῖα ogg: $1)',
+	'ogg-play' => 'Ἀναπαράγειν',
 	'ogg-player-selected' => '(ἐπειλεγμένη)',
 	'ogg-more' => 'πλέον...',
 	'ogg-dismiss' => 'Κλῄειν',
