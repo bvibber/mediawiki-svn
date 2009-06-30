@@ -473,38 +473,38 @@ mvClipEdit.prototype = {
 				case 'insert_seq':
 					$j(b_target).append( $j.btnHtml(gM('mv_insert_into_sequence'), 'mv_insert_sequence', 'check' ) + ' ' )
 						.children('.mv_insert_sequence')
+						.btnBind()
 						.click(function(){
 							_this.applyEdit();							
 							_this.controlActionsCb['insert_seq'](  _this.rObj );		
 						});
-					$j('.mv_insert_sequence').btnBind();
 				break;				
 				case 'insert': 
 					$j(b_target).append(  $j.btnHtml(gM('mv_insert_image_page'), 'mv_insert_image_page', 'check' ) + ' ' )
 						.children('.mv_insert_image_page')
+						.btnBind()
 						.click(function(){
 							_this.applyEdit();
 							_this.controlActionsCb['insert'](  _this.rObj );																		
-						}).show('slow');
-					$j('.mv_insert_image_page').btnBind();
+						}).show('slow');					
 				break;
 				case 'preview':
 					$j(b_target).append( $j.btnHtml( gM('mv_preview_insert'), 'mv_preview_insert', 'refresh') + ' ' )
 						.children('.mv_preview_insert')
+						.btnBind()
 						.click(function(){	
 							_this.applyEdit();
 							_this.controlActionsCb['preview'](  _this.rObj );
-						}).show('slow');
-					$j('.mv_preview_insert').btnBind();
+						}).show('slow');					
 				break;		
 				case 'cancel':
 					$j(b_target).append( $j.btnHtml( gM('mv_cancel_image_insert'), 'mv_cancel_img_edit', 'close') + ' ')
 						.children('.mv_cancel_img_edit')
+						.btnBind()
 						.click(function(){
 							//no cancel action; 
 							_this.controlActionsCb['cancel'](  _this.rObj );							
-						}).show('slow');
-					$j('.mv_cancel_img_edit').btnBind();
+						}).show('slow');					
 				break;
 			}				
 		}		

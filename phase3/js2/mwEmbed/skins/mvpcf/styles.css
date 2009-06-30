@@ -488,8 +488,8 @@ div.floatleft, table.floatleft {
 	z-index:3;
 }
 
-.rsd_control_container{
-	padding-bottom: 4px;
+.rsd_control_container{	
+	margin:10px;
 }
 
 #SEQUENCER CSS:

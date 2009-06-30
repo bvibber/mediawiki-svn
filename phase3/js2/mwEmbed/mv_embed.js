@@ -886,8 +886,8 @@ function mv_jqueryBindings(){
 				   msg + '</a>';						  
 		}		   
 		//shortcut to bind hover state:		
-		$.fn.btnBind = function(){
-			$j(this.selector).hover(
+		$.fn.btnBind = function(){			
+			$j(this).hover(
 				function(){
 					$j(this).addClass('ui-state-hover');
 				},

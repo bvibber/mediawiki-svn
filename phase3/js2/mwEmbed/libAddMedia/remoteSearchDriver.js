@@ -31,7 +31,7 @@ loadGM({
 	"cc_sa_title": "Share Alike",
 	"cc_pd_title": "Public Domain",
 	"unknown_license": "Unknown License",	
-	"no_import_by_url": "This User or Wiki <b>can not</b> import assets from remote URLs. <br><br> Do you need to Login? <br><br>If permissions are set you may have to enable $wgAllowCopyUploads, <a href=\"http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads\">more info</a>"
+	"no_import_by_url": "This User or Wiki <b>can not</b> import assets from remote URLs. </p><p> Do you need to Login? </p><p> If permissions are set you may have to enable $wgAllowCopyUploads, <a href=\"http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads\">more info</a></p>"
 });
 var default_remote_search_options = {
 	'profile':'mediawiki_edit',
@@ -423,8 +423,8 @@ remoteSearchDriver.prototype = {
 				autoOpen: true,		  
 				modal: true,
 				buttons: {		
-					'Cancel': function() {
-						$j(this).dialog('close');
+					'_': function() {
+						//just a place-holder
 					}
 				},
 				close: function() {
@@ -448,7 +448,9 @@ remoteSearchDriver.prototype = {
 				'right':'0px',
 				'bottom':'0px'
 			});
-			js_log('done setup of target_container: '+ $j(_this.target_container +'~ .ui-dialog-buttonpane').length);
+			//re add cancel button 
+			_this.cancelClipEditCB();
+			js_log('done setup of target_container: ' + $j(_this.target_container +'~ .ui-dialog-buttonpane').length);
 			
 			
 			/*var resizeTimer = false;
@@ -1050,16 +1052,17 @@ remoteSearchDriver.prototype = {
 			});	
 	},
 	cancelClipEditCB:function(){		
-		var _this = this;
-		js_log('RSD:cancelClipEditCB');		
+		var _this = this;		
 		var b_target =   _this.target_container + '~ .ui-dialog-buttonpane';
 		$j('#rsd_resource_edit').remove();
 		js_log("should update: " + b_target + ' with: cancel');
 		$j(b_target).html( $j.btnHtml( 'Cancel' , 'mv_cancel_rsd', 'close'))
 			.children('.mv_cancel_rsd')
+			.btnBind()
 			.click(function(){
 				$j( _this.target_container).dialog('close');	
-			}) 										
+			})
+											
 	},
 	/*set-up the control actions for clipEdit with relevent callbacks */
 	getClipEditControlActions:function(){

@@ -134,7 +134,7 @@ seqRemoteSearchDriver.prototype = {
 			'insert_seq':function(rObj){
 				_this.insertResource( rObj )
 			},
-			'cancel'	:function(rObj){
+			'cancel':function(rObj){
 				_this.cancelClipEditCB( rObj )
 			}
 		};
