@@ -1,0 +1,8 @@
+/* defines the buildConceptAssociations command */
+
+import de.brightbyte.wikiword.integrator.*;
+
+buildConceptAssociations( table, source ) {
+			AbstractIntegratorApp app = newIntegratorApp(BuildConceptAssociations.class, table, source);
+			app.slaveLaunch();
+}

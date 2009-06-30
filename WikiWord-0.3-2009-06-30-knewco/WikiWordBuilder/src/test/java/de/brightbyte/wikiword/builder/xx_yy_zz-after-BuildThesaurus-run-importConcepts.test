@@ -1,0 +1,91 @@
+#
+# DB-State just after importing
+#
+Concepts
+
+select name, type
+from /*prefix*/xx_yy_zz_concept 
+order by name;
+-------------------------------------------
+"xx:Xaa_Yaa_Zaa",	0
+"xx:Xar",	0
+"xx:Xar_(Xiro)", 	90
+"xx:Xiro",	0
+"xx:Xofos",	0
+"xx:Xoo", 			90
+"xx:Xoo_too", 		90
+"xx:Xotos",	0
+"xx:Xulka",	0
+"xx:Xyyzz_fyyzz",	0
+"xx:Xyz_(x)",	0
+"xx:Xyzzy",	0
+"yy:Yar",	90
+"yy:Yofos", 	0
+"yy:Yoo", 	90
+"yy:Yoo#yay", 	0
+"yy:Yoo_yoo", 	90
+"zz:Fooz",	0
+"zz:XYZ",	90
+"zz:Zar", 	90
+"zz:Zoo", 	90
+"zz:Zooz",	0
+"zz:Zyzzy",	0
+"zz:Zürülü",	0
+-------------------------------------------
+
+Origin
+
+select name, lang, local_concept_name
+from /*prefix*/xx_yy_zz_origin 
+join /*prefix*/xx_yy_zz_concept on global_concept = id
+order by name;
+-------------------------------------------
+"xx:Xaa_Yaa_Zaa",	"xx",	"Xaa_Yaa_Zaa"
+"xx:Xar",	"xx",	"Xar"
+"xx:Xar_(Xiro)", 	"xx",	"Xar_(Xiro)"
+"xx:Xiro", 	"xx",	"Xiro"
+"xx:Xofos", 	"xx",	"Xofos"
+"xx:Xoo", 	"xx",	"Xoo"
+"xx:Xoo_too", 	"xx",	"Xoo_too"
+"xx:Xotos", 	"xx",	"Xotos"
+"xx:Xulka", 	"xx",	"Xulka"
+"xx:Xyyzz_fyyzz", 	"xx",	"Xyyzz_fyyzz"
+"xx:Xyz_(x)", 	"xx",	"Xyz_(x)"
+"xx:Xyzzy", 	"xx",	"Xyzzy"
+"yy:Yar", 	"yy",	"Yar"
+"yy:Yofos", 	"yy",	"Yofos"
+"yy:Yoo", 	"yy",	"Yoo"
+"yy:Yoo#yay", 	"yy",	"Yoo#yay"
+"yy:Yoo_yoo", 	"yy",	"Yoo_yoo"
+"zz:Fooz", 	"zz",	"Fooz"
+"zz:XYZ", 	"zz",	"XYZ"
+"zz:Zar", 	"zz",	"Zar"
+"zz:Zoo", 	"zz",	"Zoo"
+"zz:Zooz", 	"zz",	"Zooz"
+"zz:Zyzzy", 	"zz",	"Zyzzy"
+"zz:Zürülü", 	"zz",	"Zürülü"
+-------------------------------------------
+
+Langlink
+
+select C.name, language, target
+from /*prefix*/xx_yy_zz_langlink as LL
+join /*prefix*/xx_yy_zz_concept as C on C.id = LL.concept
+order by C.name, language, target;
+-------------------------------------------
+"xx:Xar_(Xiro)",	"yy", "Yar"
+"xx:Xar_(Xiro)",	"zz", "Zar"
+"xx:Xoo",	"yy", "Yoo"
+"xx:Xoo",	"zz", "Zoo"
+"xx:Xoo_too",	"ww", "Woo"
+"xx:Xoo_too",	"yy", "Yoo"
+"xx:Xoo_too",	"zz", "Zoo"
+"yy:Yar",	"xx", "Xar_(Xiro)"
+"yy:Yoo",	"xx", "Xoo"
+"yy:Yoo",	"zz", "Zoo"
+"yy:Yoo_yoo",	"ww", "Woo"
+"zz:XYZ",	"xx", "XYZ"
+"zz:Zar",	"yy", "Yar"
+"zz:Zoo",	"xx", "Xoo_too"
+"zz:Zoo",	"yy", "Yoo"
+-------------------------------------------

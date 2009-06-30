@@ -1,0 +1,8 @@
+/* defines the buildConceptMeanings() command */
+
+import de.brightbyte.wikiword.integrator.*;
+
+buildConceptMappings( table, source ) {
+			AbstractIntegratorApp app = newIntegratorApp(BuildConceptMappings.class, table, source);
+			app.slaveLaunch();
+}

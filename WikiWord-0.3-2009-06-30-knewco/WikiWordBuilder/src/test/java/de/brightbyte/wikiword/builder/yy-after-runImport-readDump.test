@@ -1,0 +1,160 @@
+#
+# DB status just after reading the dump
+#
+Resource
+
+select name, type 
+from /*prefix*/yy_resource
+order by name;
+-------------------------------------------
+"Category:Yoos",	50
+"Yar",	10
+"Yoo",	10
+"Yoo_yoo",	10
+-------------------------------------------
+
+Concepts
+
+select name, type 
+from /*prefix*/yy_concept 
+order by name;
+-------------------------------------------
+"Yar",	90
+"Yoo", 	90
+"Yoo_yoo", 	90
+-------------------------------------------
+
+Definition
+
+select name, definition
+from /*prefix*/yy_definition
+join /*prefix*/yy_concept on concept = id
+order by name;
+-------------------------------------------
+"Yar",	"Yar is yar on yoo yay."
+"Yoo",	"Yoo is yoo."
+"Yoo_yoo",	"Yoo yoo gooy roo."
+-------------------------------------------
+
+Link
+
+select anchor_name, target_name, term_text
+from /*prefix*/yy_link
+order by anchor_name, target_name, term_text;
+-------------------------------------------
+null,	"Yar",	"Yar"
+null,	"Yar",	"yar"
+null,	"Yoo", "YOO"
+null,	"Yoo", "Yoo"
+null,	"Yoo", "Yoos"
+null,	"Yoo_yoo", "Yoo yoo"
+"Yar",	"Yoo#yay",	"yoo yay"
+"Yoo",	"Yoo#yay",	"yay"
+"Yoo",	"Yoo_yoo",	"yoo^2"
+"Yoo_yoo",	"Yoo",	"Yoo"
+-------------------------------------------
+
+Broader
+
+select narrow_name, broad_name
+from /*prefix*/yy_broader
+order by narrow_name, broad_name;
+-------------------------------------------
+"Yar",	"Yoos"
+"Yoo",	"Yofos"
+-------------------------------------------
+
+Langlink
+
+select concept_name, language, target
+from /*prefix*/yy_langlink
+order by concept_name, language, target;
+-------------------------------------------
+"Yar",	"xx", "Xar_(Xiro)"
+"Yoo",	"xx", "Xo"
+"Yoo",	"zz", "Zoo"
+"Yoo_yoo",	"ww", "Woo"
+-------------------------------------------
+
+Section
+
+select concept_name, section_name
+from /*prefix*/yy_section
+order by concept_name, section_name;
+-------------------------------------------
+"Yoo", "Yoo#yay"
+"Yoo", "Yoo#yay"
+-------------------------------------------
+
+Alias
+
+select source_name, target_name, scope
+from /*prefix*/yy_alias
+order by source_name, target_name;
+-------------------------------------------
+"Yoos",	"Yoo",	1
+-------------------------------------------
+
+
+#########################################################################
+#########################################################################
+
+Link: anchor pair integrity
+
+select L.anchor_name, L.anchor, C.name
+from /*prefix*/yy_link as L
+join /*prefix*/yy_concept as C on L.anchor = C.id
+where L.anchor IS NOT NULL AND L.anchor_name != C.name
+order by anchor_name;
+-------------------------------------------
+-------------------------------------------
+
+Link: target pair integrity
+
+select L.target_name, L.target, C.name
+from /*prefix*/yy_link as L
+join /*prefix*/yy_concept as C on L.target = C.id
+where L.target IS NOT NULL AND L.target_name != C.name
+order by target_name;
+-------------------------------------------
+-------------------------------------------
+
+Alias: source pair integrity
+
+select L.source_name, L.source, C.name
+from /*prefix*/yy_alias as L
+join /*prefix*/yy_concept as C on L.source = C.id
+where L.source IS NOT NULL AND L.source_name != C.name
+order by source_name;
+-------------------------------------------
+-------------------------------------------
+
+Alias: target pair integrity
+
+select L.target_name, L.target, C.name
+from /*prefix*/yy_alias as L
+join /*prefix*/yy_concept as C on L.target = C.id
+where L.target IS NOT NULL AND L.target_name != C.name
+order by target_name;
+-------------------------------------------
+-------------------------------------------
+
+Broader: broad pair integrity
+
+select L.broad_name, L.broad, C.name
+from /*prefix*/yy_broader as L
+join /*prefix*/yy_concept as C on L.broad = C.id
+where L.broad IS NOT NULL AND L.broad_name != C.name
+order by broad_name;
+-------------------------------------------
+-------------------------------------------
+
+Broader: narrow pair integrity
+
+select L.narrow_name, L.narrow, C.name
+from /*prefix*/yy_broader as L
+join /*prefix*/yy_concept as C on L.narrow = C.id
+where L.narrow IS NOT NULL AND L.narrow_name != C.name
+order by narrow_name;
+-------------------------------------------
+-------------------------------------------

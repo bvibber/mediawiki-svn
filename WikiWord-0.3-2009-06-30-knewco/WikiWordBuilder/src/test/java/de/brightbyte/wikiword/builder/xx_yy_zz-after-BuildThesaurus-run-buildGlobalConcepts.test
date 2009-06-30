@@ -1,0 +1,148 @@
+#
+# DB-State just after merging
+#
+Concepts
+
+select name, type, language_count 
+from /*prefix*/xx_yy_zz_concept 
+order by name;
+-------------------------------------------
+"xx:Xaa_Yaa_Zaa",	0,	1
+"xx:Xar",	0,	1
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar", 	90, 3
+"xx:Xiro",	0,	1
+"xx:Xofos",	0,	1
+"xx:Xoo_too|zz:Zoo", 	90, 2
+"xx:Xoo|yy:Yoo", 	90, 2
+"xx:Xotos",	0,	1
+"xx:Xulka",	0,	1
+"xx:Xyyzz_fyyzz",	0,	1
+"xx:Xyz_(x)",	0,	1
+"xx:Xyzzy",	0,	1
+"yy:Yofos", 	0,	1
+"yy:Yoo#yay", 	0,	1
+"yy:Yoo_yoo", 	90,	1
+"zz:Fooz",	0,	1
+"zz:XYZ",	90,	1
+"zz:Zooz",	0,	1
+"zz:Zyzzy",	0,	1
+"zz:Zürülü",	0,	1
+-------------------------------------------
+
+Origin
+
+select name, lang, local_concept_name
+from /*prefix*/xx_yy_zz_origin 
+join /*prefix*/xx_yy_zz_concept on global_concept = id
+order by name, lang;
+-------------------------------------------
+"xx:Xaa_Yaa_Zaa",	"xx",	"Xaa_Yaa_Zaa"
+"xx:Xar",	"xx",	"Xar"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar", 	"xx",	"Xar_(Xiro)"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar", 	"yy",	"Yar"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar", 	"zz",	"Zar"
+"xx:Xiro", 	"xx",	"Xiro"
+"xx:Xofos", 	"xx",	"Xofos"
+"xx:Xoo_too|zz:Zoo", 	"xx",	"Xoo_too"
+"xx:Xoo_too|zz:Zoo", 	"zz",	"Zoo"
+"xx:Xoo|yy:Yoo", 	"xx",	"Xoo"
+"xx:Xoo|yy:Yoo", 	"yy",	"Yoo"
+"xx:Xotos", 	"xx",	"Xotos"
+"xx:Xulka", 	"xx",	"Xulka"
+"xx:Xyyzz_fyyzz", 	"xx",	"Xyyzz_fyyzz"
+"xx:Xyz_(x)", 	"xx",	"Xyz_(x)"
+"xx:Xyzzy", 	"xx",	"Xyzzy"
+"yy:Yofos", 	"yy",	"Yofos"
+"yy:Yoo#yay", 	"yy",	"Yoo#yay"
+"yy:Yoo_yoo", 	"yy",	"Yoo_yoo"
+"zz:Fooz", 	"zz",	"Fooz"
+"zz:XYZ", 	"zz",	"XYZ"
+"zz:Zooz", 	"zz",	"Zooz"
+"zz:Zyzzy", 	"zz",	"Zyzzy"
+"zz:Zürülü", 	"zz",	"Zürülü"
+-------------------------------------------
+
+Broader
+
+select N.name, B.name
+from /*prefix*/xx_yy_zz_broader as R
+join /*prefix*/xx_yy_zz_concept as N on N.id = R.narrow
+join /*prefix*/xx_yy_zz_concept as B on B.id = R.broad
+order by N.name, B.name;
+-------------------------------------------
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"xx:Xofos"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"xx:Xoo|yy:Yoo"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"zz:Fooz"
+"xx:Xofos",	"xx:Xiro"
+"xx:Xoo_too|zz:Zoo",	"xx:Xofos"
+"xx:Xoo_too|zz:Zoo",	"xx:Xoo|yy:Yoo"
+"xx:Xoo_too|zz:Zoo",	"zz:Fooz"
+"xx:Xoo_too|zz:Zoo",	"zz:Zooz"
+"xx:Xoo|yy:Yoo",	"xx:Xofos"
+"xx:Xoo|yy:Yoo",	"xx:Xulka"
+"xx:Xoo|yy:Yoo",	"yy:Yofos"
+"xx:Xotos",	"xx:Xofos" 
+"yy:Yoo#yay",	"xx:Xoo|yy:Yoo"
+"yy:Yoo#yay",	"xx:Xoo|yy:Yoo"
+-------------------------------------------
+
+Links
+
+select A.name, T.name
+from /*prefix*/xx_yy_zz_link as R
+join /*prefix*/xx_yy_zz_concept as A on A.id = R.anchor
+join /*prefix*/xx_yy_zz_concept as T on T.id = R.target
+order by A.name, T.name;
+-------------------------------------------
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"xx:Xoo|yy:Yoo"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"xx:Xyzzy"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"yy:Yoo#yay"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"zz:Zyzzy"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"zz:Zürülü"
+"xx:Xoo_too|zz:Zoo",	"xx:Xar"
+"xx:Xoo_too|zz:Zoo",	"xx:Xar_(Xiro)|yy:Yar|zz:Zar"
+"xx:Xoo_too|zz:Zoo",	"xx:Xoo|yy:Yoo"
+"xx:Xoo|yy:Yoo",	"xx:Xar"
+"xx:Xoo|yy:Yoo",	"xx:Xoo_too|zz:Zoo"
+"xx:Xoo|yy:Yoo",	"yy:Yoo#yay"
+"xx:Xoo|yy:Yoo",	"yy:Yoo_yoo"
+"yy:Yoo_yoo",	"xx:Xoo|yy:Yoo"
+-------------------------------------------
+
+Relation
+
+select A.name, B.name, langref, langmatch, bilink
+from /*prefix*/xx_yy_zz_relation as R
+join /*prefix*/xx_yy_zz_concept as A on A.id = R.concept1
+join /*prefix*/xx_yy_zz_concept as B on B.id = R.concept2
+where langref > 0 or langmatch > 0 or bilink > 0
+order by A.name, B.name;
+-------------------------------------------
+"xx:Xoo_too|zz:Zoo",	"xx:Xoo|yy:Yoo",		4,	4,	1
+"xx:Xoo_too|zz:Zoo",	"yy:Yoo_yoo",			0,	1,	0
+"xx:Xoo|yy:Yoo",		"xx:Xoo_too|zz:Zoo",	4,	4,	1
+"xx:Xoo|yy:Yoo",		"yy:Yoo_yoo",			0,	0,	1
+"yy:Yoo_yoo",			"xx:Xoo_too|zz:Zoo",	0,	1,	0
+"yy:Yoo_yoo",			"xx:Xoo|yy:Yoo",		0,	0,	1
+-------------------------------------------
+
+Langlink
+
+select C.name, language, target
+from /*prefix*/xx_yy_zz_langlink as LL
+join /*prefix*/xx_yy_zz_concept as C on C.id = LL.concept
+order by C.name, language, target;
+-------------------------------------------
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"xx", "Xar_(Xiro)"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"yy", "Yar"
+"xx:Xar_(Xiro)|yy:Yar|zz:Zar",	"zz", "Zar"
+"xx:Xoo_too|zz:Zoo",	"ww", "Woo"
+"xx:Xoo_too|zz:Zoo",	"xx", "Xoo_too"
+"xx:Xoo_too|zz:Zoo",	"yy", "Yoo"
+"xx:Xoo_too|zz:Zoo",	"zz", "Zoo"
+"xx:Xoo|yy:Yoo",	"xx", "Xoo"
+"xx:Xoo|yy:Yoo",	"yy", "Yoo"
+"xx:Xoo|yy:Yoo",	"zz", "Zoo"
+"yy:Yoo_yoo",	"ww", "Woo"
+"zz:XYZ",	"xx", "XYZ"
+-------------------------------------------

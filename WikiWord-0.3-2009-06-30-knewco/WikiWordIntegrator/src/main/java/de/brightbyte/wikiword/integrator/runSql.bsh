@@ -1,0 +1,19 @@
+/* defines the runSQL() command */
+
+import de.brightbyte.db.*;
+import de.brightbyte.wikiword.integrator.*;
+
+runSql( script, table, outfile ) {
+			RunIntegratorSql app = new de.brightbyte.wikiword.integrator.RunIntegratorSql();
+			app.setKeepAlive(true);
+			app.setTweaks(tweaks);
+			
+			if ( table instanceof Map )			
+				app.slaveInit(datasource, dataset, tweaks, script, outfile, (Map)table); 
+			else
+				app.slaveInit(datasource, dataset, tweaks, script, table, null, outfile, null); //TODO: load mappings...
+			
+			app.slaveLaunch(); 
+
+			if (outfile!=null) print("---> result of script '"+script+"' was written to "+outfile);
+}

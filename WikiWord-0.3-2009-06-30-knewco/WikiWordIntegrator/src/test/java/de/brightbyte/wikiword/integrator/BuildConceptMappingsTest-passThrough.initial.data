@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <TEST_xx_assoc foreign_authority="acme" foreign_id="FooBar" foreign_name="FooBar" concept="10" concept_name="Bar Foo" value="B.F." foreign_property="alias" weight="10.0" concept_property="term" concept_property_source="10" concept_property_freq="1"/>
+  <TEST_xx_assoc foreign_authority="acme" foreign_id="FooBar" foreign_name="FooBar" concept="10" concept_name="Bar Foo" value="Bar Foo" foreign_property="fullName" weight="360.0" concept_property="term" concept_property_source="60" concept_property_freq="6"/>
+  <TEST_xx_assoc foreign_authority="acme" foreign_id="FooBar" foreign_name="FooBar" concept="10" concept_name="Bar Foo" value="Foo, Bar" foreign_property="sortName" weight="50.0" concept_property="term" concept_property_source="50" concept_property_freq="1"/>
+  <TEST_xx_assoc foreign_authority="acme" foreign_id="FooBar" foreign_name="FooBar" concept="12" concept_name="Bar Foo (soap)" value="Bar Foo" foreign_property="fullName" weight="60.0" concept_property="term" concept_property_source="60" concept_property_freq="1"/>
+
+  <TEST_xx_assoc foreign_authority="acme" foreign_id="XyzzyQuux" foreign_name="XyzzyQuux" concept="20" concept_name="Quux Xyzzy" value="QX" foreign_property="alias" weight="80.0" concept_property="term" concept_property_source="40" concept_property_freq="2"/>
+  <TEST_xx_assoc foreign_authority="acme" foreign_id="XyzzyQuux" foreign_name="XyzzyQuux" concept="20" concept_name="Quux Xyzzy" value="Quux Xyzzy" foreign_property="fullName" weight="360.0" concept_property="term" concept_property_source="60" concept_property_freq="6"/>
+  <TEST_xx_assoc foreign_authority="acme" foreign_id="XyzzyQuux" foreign_name="XyzzyQuux" concept="21" concept_name="Quality Xchange" value="QX" foreign_property="alias" weight="10.0" concept_property="term" concept_property_source="10" concept_property_freq="1"/>
+</dataset>
+

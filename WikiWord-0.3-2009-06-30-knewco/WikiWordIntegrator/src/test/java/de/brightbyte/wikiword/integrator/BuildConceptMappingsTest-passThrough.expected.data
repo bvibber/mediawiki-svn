@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <TEST_xx_passThrough foreign_authority="acme" foreign_id="FooBar" foreign_name="FooBar" concept="10" concept_name="Bar Foo" weight="420.0" />
+  <TEST_xx_passThrough foreign_authority="acme" foreign_id="FooBar" foreign_name="FooBar" concept="12" concept_name="Bar Foo (soap)" weight="60.0" />
+  <TEST_xx_passThrough foreign_authority="acme" foreign_id="XyzzyQuux" foreign_name="XyzzyQuux" concept="20" concept_name="Quux Xyzzy" weight="440.0"/>
+  <TEST_xx_passThrough foreign_authority="acme" foreign_id="XyzzyQuux" foreign_name="XyzzyQuux" concept="21" concept_name="Quality Xchange" weight="10.0"/>
+</dataset>
+

@@ -1,0 +1,62 @@
+#
+# DB status just after establishing id references
+#
+Link: anchor pair integrity
+
+select L.anchor_name, L.anchor, C.name
+from /*prefix*/xx_link as L
+join /*prefix*/xx_concept as C on L.anchor = C.id
+where L.anchor IS NOT NULL AND L.anchor_name != C.name
+order by anchor_name;
+-------------------------------------------
+-------------------------------------------
+
+Link: target pair integrity
+
+select L.target_name, L.target, C.name
+from /*prefix*/xx_link as L
+join /*prefix*/xx_concept as C on L.target = C.id
+where L.target IS NOT NULL AND L.target_name != C.name
+order by target_name;
+-------------------------------------------
+-------------------------------------------
+
+Alias: source pair integrity
+
+select L.source_name, L.source, C.name
+from /*prefix*/xx_alias as L
+join /*prefix*/xx_concept as C on L.source = C.id
+where L.source IS NOT NULL AND L.source_name != C.name
+order by source_name;
+-------------------------------------------
+-------------------------------------------
+
+Alias: target pair integrity
+
+select L.target_name, L.target, C.name
+from /*prefix*/xx_alias as L
+join /*prefix*/xx_concept as C on L.target = C.id
+where L.target IS NOT NULL AND L.target_name != C.name
+order by target_name;
+-------------------------------------------
+-------------------------------------------
+
+Broader: broad pair integrity
+
+select L.broad_name, L.broad, C.name
+from /*prefix*/xx_broader as L
+join /*prefix*/xx_concept as C on L.broad = C.id
+where L.broad IS NOT NULL AND L.broad_name != C.name
+order by broad_name;
+-------------------------------------------
+-------------------------------------------
+
+Broader: narrow pair integrity
+
+select L.narrow_name, L.narrow, C.name
+from /*prefix*/xx_broader as L
+join /*prefix*/xx_concept as C on L.narrow = C.id
+where L.narrow IS NOT NULL AND L.narrow_name != C.name
+order by narrow_name;
+-------------------------------------------
+-------------------------------------------

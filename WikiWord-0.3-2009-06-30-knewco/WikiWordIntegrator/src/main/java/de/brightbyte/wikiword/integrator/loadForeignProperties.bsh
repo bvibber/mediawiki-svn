@@ -1,0 +1,8 @@
+/* defines the loadForeignProperties() command */
+
+import de.brightbyte.wikiword.integrator.*;
+
+loadForeignProperties( table, source ) {
+			AbstractIntegratorApp app = newIntegratorApp(LoadForeignProperties.class, table, source);
+			app.slaveLaunch();
+}

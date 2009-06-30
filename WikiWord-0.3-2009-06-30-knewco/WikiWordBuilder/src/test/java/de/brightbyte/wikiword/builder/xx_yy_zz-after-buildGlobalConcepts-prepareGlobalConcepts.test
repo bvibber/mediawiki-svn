@@ -1,0 +1,32 @@
+#
+# Database state after preparing concept data
+#
+Relation
+
+select A.name, B.name, langref, langmatch, bilink
+from /*prefix*/xx_yy_zz_relation as R
+join /*prefix*/xx_yy_zz_concept as A on A.id = R.concept1
+join /*prefix*/xx_yy_zz_concept as B on B.id = R.concept2
+where langref > 0 or langmatch > 0 or bilink > 0
+order by A.name, B.name;
+-------------------------------------------
+"xx:Xar_(Xiro)",	"yy:Yar",			1,	0,	0
+"xx:Xar_(Xiro)",	"zz:Zar",			1,	1,	0
+"xx:Xoo",			"xx:Xoo_too",		0,	2,	0
+"xx:Xoo",			"yy:Yoo",			1,	1,	0
+"xx:Xoo",			"zz:Zoo",			1,	1,	0
+"xx:Xoo_too",		"xx:Xoo",			0,	2,	0
+"xx:Xoo_too",		"yy:Yoo",			1,	1,	0
+"xx:Xoo_too",		"yy:Yoo_yoo",		0,	1,	0
+"xx:Xoo_too",		"zz:Zoo",			1,	1,	0
+"yy:Yar",			"xx:Xar_(Xiro)",	1,	0,	0
+"yy:Yoo",			"xx:Xoo",			1,	1,	0
+"yy:Yoo",			"xx:Xoo_too",		0,	1,	0
+"yy:Yoo",			"zz:Zoo",			1,	0,	0
+"yy:Yoo_yoo",		"xx:Xoo_too",		0,	1,	0
+"zz:Zar",			"xx:Xar_(Xiro)",	0,	1,	0
+"zz:Zar",			"yy:Yar",			1,	0,	0
+"zz:Zoo",			"xx:Xoo",			0,	1,	0
+"zz:Zoo",			"xx:Xoo_too",		1,	1,	0
+"zz:Zoo",			"yy:Yoo",			1,	0,	0
+----------------------------------------------
