@@ -41,6 +41,14 @@ $messages['dsb'] = array(
 	'usabilityinitiative-desc' => 'Funkcije wuwite pśez iniciatiwu wužywajobnosći Wikipedije za pólěpšenje wužywajobnosći MediaWiki',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'usabilityinitiative' => 'Iniciativa de usabilidad',
+	'usabilityinitiative-desc' => 'Características desarrolladas por la iniciativa de usabilidad de Wikipedia para mejorar la usabilidad de MediaWiki',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

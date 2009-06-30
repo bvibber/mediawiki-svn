@@ -62,6 +62,14 @@ $messages['dsb'] = array(
 Klikni na jadne z nich, aby se statistiku wó nim woglědał.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'prefstats' => 'Στατιστικά προτίμησης',
+	'prefstats-title' => 'Στατιστικά προτίμησης',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -243,6 +251,17 @@ $messages['nn'] = array(
 Trykk på éi for å sjå statistikk for ho.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'prefstats' => 'Statistikk over innstillinger',
+	'prefstats-desc' => 'Statistikk over tallet på brukere som har visse innstillinger',
+	'prefstats-title' => 'Statistikk over innstillinger',
+	'prefstats-list-intro' => 'For tiden blir følgende innstillinger sporet.
+Klikk på en for å se statistikk om den.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -263,6 +282,17 @@ $messages['pl'] = array(
 	'prefstats-title' => 'Statystyki dla preferencji',
 	'prefstats-list-intro' => 'Obecnie następujące preferencje są analizowane.
 Kliknij na jednej aby zobaczyć statystyki jej dotyczące.',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'prefstats' => 'Estatísticas de preferências',
+	'prefstats-desc' => 'Monitorize estatísticas sobre quantos utilizadores têm certas preferências ativadas',
+	'prefstats-title' => 'Estatísticas de preferências',
+	'prefstats-list-intro' => 'Atualmente, as seguintes preferência estão a ser monitorizadas.
+Clique numa para ver as estatísticas sobre ela.',
 );
 
 /** Tarandíne (Tarandíne)

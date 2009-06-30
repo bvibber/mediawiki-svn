@@ -66,6 +66,13 @@ $messages['qqq'] = array(
 	'optin-survey-answer-os-other' => '{{Identical|Other}}',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'optin-survey-answer-os-other' => 'ܐܚܪܢܐ:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -146,8 +153,12 @@ My by rady wěźeli, co mysliš wó našem nowem wužywarskem pówjerchu, togodl
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'optin-submit-in' => 'Συμμετοχή',
+	'optin-submit-out' => 'Μη συμμετοχή',
+	'optin-survey-answer-whyoptout-other' => 'Άλλος λόγος:',
 	'optin-survey-answer-browser-ie5' => 'Internet Explorer 5',
 	'optin-survey-answer-browser-ie6' => 'Internet Explorer 6',
 	'optin-survey-answer-browser-ie7' => 'Internet Explorer 7',
@@ -162,9 +173,11 @@ $messages['el'] = array(
 	'optin-survey-answer-browser-o9' => 'Opera 9',
 	'optin-survey-answer-browser-o9.5' => 'Opera 9.5',
 	'optin-survey-answer-browser-o10' => 'Opera 10',
+	'optin-survey-answer-browser-other' => 'Άλλος περιηγητής:',
 	'optin-survey-answer-os-windows' => 'Windows',
 	'optin-survey-answer-os-macos' => 'Mac OS',
 	'optin-survey-answer-os-linux' => 'Linux',
+	'optin-survey-answer-os-other' => 'Άλλο',
 );
 
 /** Esperanto (Esperanto)
@@ -189,9 +202,14 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'optin-survey-answer-whyoptout-didntlike' => 'No me gusta el diseño',
+	'optin-survey-answer-whyoptout-hard' => 'Fue muy difícil editar una página.',
+	'optin-survey-answer-whyoptout-didntwork' => 'No funcionó apropiadamente.',
 	'optin-survey-answer-whyoptout-other' => 'Otra razón:',
+	'optin-survey-question-browser' => 'Cuál navegador usas?',
 	'optin-survey-answer-browser-other' => 'Otro navegador:',
+	'optin-survey-question-os' => 'Cuál sistema operativo usas?',
 	'optin-survey-answer-os-other' => 'Otro:',
+	'optin-survey-question-res' => 'Cuál es la resolución de tu pantalla?',
 );
 
 /** Finnish (Suomi)
@@ -289,6 +307,13 @@ Gustaríanos saber o que pensa sobre a nosa nova interface, de forma que lle agr
 	'optin-survey-answer-os-other' => 'Outros:',
 	'optin-survey-question-res' => 'Cal é a resolución da súa pantalla?',
 	'optin-survey-question-feedback' => 'Por favor, déixenos a súa opinión:',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'optin-survey-answer-os-other' => 'Ἄλλον:',
 );
 
 /** Swiss German (Alemannisch)
@@ -473,6 +498,7 @@ $messages['ja'] = array(
 	'optin-survey-answer-whyoptout-didntwork' => 'それは正常に機能しませんでした。',
 	'optin-survey-answer-whyoptout-other' => 'その他の理由:',
 	'optin-survey-question-browser' => '利用しているブラウザはどれですか？',
+	'optin-survey-answer-browser-cb' => 'Google Chrome ベータ',
 	'optin-survey-answer-browser-other' => 'その他のブラウザ:',
 	'optin-survey-question-os' => '利用しているOSはどれですか？',
 	'optin-survey-answer-os-other' => 'その他:',
@@ -717,6 +743,8 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'optin-survey-answer-whyoptout-hard' => 'Foi demasiado difícil editar uma página.',
 	'optin-survey-answer-whyoptout-other' => 'Outro motivo:',
+	'optin-survey-question-browser' => 'Que navegador utiliza?',
+	'optin-survey-answer-browser-other' => 'Outro navegador:',
 	'optin-survey-question-os' => 'Que sistema operativo utiliza?',
 	'optin-survey-answer-os-other' => 'Outro:',
 	'optin-survey-question-res' => 'Qual é a resolução do seu ecrã?',
