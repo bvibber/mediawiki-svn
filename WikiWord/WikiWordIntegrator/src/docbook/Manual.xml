@@ -5,8 +5,9 @@
 
 <sect1>
   <title>Intro</title>
-  <para>WikiWord is a system for extracting a theraurus from Wikipedia. 
-  The Integrator module is desigend top use this data as a glue between
+  <para>WikiWord is a system for extracting a thesaurus from Wikipedia. It was originally developed by Daniel Kinzler as part of his diploma thesis at the University of Leipzig in 2007 and 2008. In 2008 and 2009, development was continued for Wikimedia Deutschland and as part of contract work for Knewco, Inc. WikiWord is free software released under the LGPL.</para>
+  
+  <para>WikiWord's Integrator module is designed top use this data as a glue between
   different data sets, that is, to map between different vocabularies, 
   standardized or natural.</para>
 </sect1>
@@ -44,6 +45,26 @@
 
 <sect2>
   <title>Mapping Concepts</title>
+
+<para>Mapping concepts is the task of the Integrator module. "Integrator" because it is designed to integrate vocabularies from different source, using the WikiWord thesaurus as a kind of glue between them. All entry points for loading properties, building associations, building mappings and filtering mappings follow the same pattern: a stream of records (depending on task, of <classname>FeatureSet</classname>s, <classname>Association</classname>s, or <classname>MappingCandidates</classname>) is generated from a data source (generally a CSV file or a database query). The stream is represented by an instance of <classname>DataCursor</classname>, which also implements most of the logic of transforming, merging, and filtering records. A processor (<classname>WikiWordProcessor</classname>) steps through each record from the cursor and passes it to storage, implemented by an instance of an interface derived from <classname>WikiWordStoreBuilder</classname>. The store is generally backed by one or more database tables.</para>
+
+<para>The process performed by an Integrator application looks roughly like this:</para>
+<orderedlist>
+<listitem>
+<para>The application is invoked, from the command line for from the BeanShell environment.</para>
+</listitem>
+<listitem>
+<para>The application sets up the Store (target) and DataCursor (source)</para>
+</listitem>
+<listitem>
+<para>The application then creates a Processor around the Store and calls it on the DataCursor.</para>
+</listitem>
+<listitem>
+<para>The Processor fetches on entry after another from the DataCursor and passes it to the StoreBuilder. Note that any logic for filtering, grouping and converting of entries is usually implemented in the DataCursor, not in the Processor.</para>
+</listitem>
+</orderedlist>
+
+
 <sect3>
 <title>Building Concept Associations</title>
 <para>Concept <emphasis>associations</emphasis> represent individual links between foreign authority concepts and WikiWord concepts. There may be several such associations between the same pair of concepts. Associations may be annotated with a variety of information about how the association was derived and how it is weighted.</para>
@@ -66,72 +87,371 @@
   <title>Architecture</title>
 
 <sect2>
+<title>Modules</title>
+  <sect3>
+  <title>BrightByteUtil</title>
+  <para>This library contains basic utilities.</para>
+    <variablelist>
+      <varlistentry>
+	<term>de.brightbyte.abstraction
+	</term>
+	<listitem><para>Abstract access to properties of objects, be it bean properties, map entries, or something else.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.application
+	</term>
+	<listitem><para>Utilities for top level applications, such as command line parameter handling.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.audit
+	</term>
+	<listitem><para>Debugging and introspection utilities.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.data
+	</term>
+	<listitem><para>Data structures and processing. Matrices, sparse vectors, multi-maps, etc.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.data.cursor
+	</term>
+	<listitem><para>Data cursor implementations</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.data.filter
+	</term>
+	<listitem><para>Generic filtering framework</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.data.measure
+	</term>
+	<listitem><para>Generic measuring framework, especially for similarity resp. distance.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.io
+	</term>
+	<listitem><para>I/O utilities</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.job
+	</term>
+	<listitem><para>Concurrent job handling utilities.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.text
+	</term>
+	<listitem><para>Text handling and parsing utilities.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.util
+	</term>
+	<listitem><para>General system level utilities.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.xml
+	</term>
+	<listitem><para>XML utilities and convenience functions.</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect3>
+
+  <sect3>
+  <title>BrightByteDB</title>
+  <para>This library contains classes for database access.</para>
+    <variablelist>
+      <varlistentry>
+	<term>de.brightbyte.db
+	</term>
+	<listitem><para>Database utilities and abstraction.</para></listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>de.brightbyte.db.testing
+	</term>
+	<listitem><para>Database test case utilities</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect3>
+
+  <sect3>
+  <title>WikiWord</title>
+  <para>Base module for WikiWord.</para>
+    <variablelist>
+      <varlistentry>
+	<term>de.brightbyte.wikiword
+	</term>
+	<listitem><para>Base classes for application level entry points. Some entity classes for commons entities like Dataset or Namespace.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.disambig
+	</term>
+	<listitem><para>Automated disambiguation</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.model
+	</term>
+	<listitem><para>Data beans for WikiWord concepts</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.rdf
+	</term>
+	<listitem><para>RDF export and bindings</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.schema
+	</term>
+	<listitem><para>Database schema definitions</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.store
+	</term>
+	<listitem><para>Read-only DAO interfaces and implementations</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect3>
+
+  <sect3>
+  <title>WikiWordBuilder</title>
+  <para>Builder module for WikiWord, used to generate thesauri from Wikipedia dumps.</para>
+    <variablelist>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.analyzer
+	</term>
+	<listitem><para>WikiText analysis code</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.analyzer.extractor
+	</term>
+	<listitem><para>Extractor framework, for determining high level properties of a wiki article.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.analyzer.mangler
+	</term>
+	<listitem><para>Code for processing and converting wiki text</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.analyzer.matcher
+	</term>
+	<listitem><para>Code for finding and extracting features of wiki text.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.analyzer.sensor
+	</term>
+	<listitem><para>Code for detecting features of wiki text.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.analyzer.template
+	</term>
+	<listitem><para>Template parameter parsing framework</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.builder
+	</term>
+	<listitem><para>Application level entry points for building thesauri in the database.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.extract
+	</term>
+	<listitem><para>Application level entry points for extracting data from dumps into files.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.output
+	</term>
+	<listitem><para>Serial output abstraction, for use by applications in de.brightbyte.wikiword.extract</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.processor
+	</term>
+	<listitem><para>Processors for stepping through the pages of a dump and processing their contents.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.store.builder
+	</term>
+	<listitem><para>Thesaurus stores (DAO layer)</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.wikis
+	</term>
+	<listitem><para>Wiki-specific knowledge, encoded in subclasses of <classname>WikiConfiguration</classname>.</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect3>
+
+  <sect3>
+  <title>WikiWordIntegrator </title>
+  <para>The Integrator module uses the WikiWord data to extend and match vocabularies for external sources. 
+  Integrator applications are based on a data stream of records, read from a data source, which are processed and then written to a store.</para>
+    <variablelist>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.integrator
+	</term>
+	<listitem><para>Application level entry points to the Integrator module.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.integrator.data
+	</term>
+	<listitem><para>Entity classes representing the various types of data used in the data streams.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.integrator.data.filter
+	</term>
+	<listitem><para>Code for filtering data streams</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.integrator.processor
+	</term>
+	<listitem><para>Code for processing data streams and handing records to the appropriate store</para></listitem>
+      </varlistentry>
+      <varlistentry>
+	<term>de.brightbyte.wikiword.integrator.store
+	</term>
+	<listitem><para>DAO layer for storing properties, associations and mappings.</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect3>
+
+</sect2>
+
+<sect2>
 <title>Classes</title>
-<orderedlist>
-<listitem>
-<para>The entry point the the Application</para>
-</listitem>
-<listitem>
-<para>The Application sets up the Store (target) and DataCursor (source)</para>
-</listitem>
-<listitem>
-<para>The Application then creates a Processor around the Store and calls it on the DataCursor.</para>
-</listitem>
-<listitem>
-<para>The Processor fetches on entry after another from the DataCursor and passes it to the StoreBuilder. Note that any logic for filtering, grouping and converting of entries is usually implemented in the DataCursor, not in the Processor.</para>
-</listitem>
-<listitem>
-<para>Application</para>
-</listitem>
-<listitem>
-<para>DB Configuration, Tweaks, SourceDescriptor</para>
-</listitem>
-<listitem>
-<para>Store, StoreBuilder</para>
-</listitem>
-<listitem>
-<para>FeatureSet</para>
-</listitem>
-<listitem>
-<para>DataCursor</para>
-</listitem>
-<listitem>
-<para>FeatureSetSourceDescriptor</para>
-</listitem>
-<listitem>
-<para>Processor</para>
-</listitem>
-<listitem>
-<para>Associations</para>
-</listitem>
-<listitem>
-<para>MappingCandidates</para>
-</listitem>
-<listitem>
-<para>Filter, Selector</para>
-</listitem>
-<listitem>
-<para>Scorer</para>
-</listitem>
-<listitem>
-<para>Aggregator, Accessor</para>
-</listitem>
-<listitem>
-<para>Aggregator, Accessor</para>
-</listitem>
-</orderedlist>
+
+  <variablelist>
+    <varlistentry>
+	  <term>Applications</term>
+      <listitem><para>Top level entry points, may be called directly or from BeanShell.</para></listitem>
+    </varlistentry>
+    <varlistentry>
+	  <term><classname>DatabaseInfo</classname>, <classname>TweakSet</classname>, <classname>FeatureSetSourceDescriptor</classname></term>
+      <listitem><para>Configuration records, see the section on configuration.</para></listitem>
+    </varlistentry>
+    <varlistentry>
+	  <term><classname>WikiWordStore</classname>, <classname>WikiWordStoreBuilder</classname></term>
+      <listitem><para>DAO interfaces, generally wrapping a database</para></listitem>
+    </varlistentry>
+    <varlistentry>
+	  <term><classname>FeatureSet</classname></term>
+      <listitem><para>Represents the features (properties) of an arbitrary entity, as a multi-map. This is the basic data unit
+      of all processes in the Integrator module, it is used to represent concepts, foreign entities, attributes of mappings, etc.</para></listitem>
+    </varlistentry>
+    <varlistentry>
+	  <term><classname>DataCursor</classname></term>
+      <listitem><para>A cursor represents a record stream. It is similar to a ResultSet or an Iterator. It is used to step through the input data on record at a time. Most of the logic for manipulating, converting, merging and filtering records is implemented in the various cursor classes.</para></listitem>
+    </varlistentry>
+    <varlistentry>
+	  <term><classname>WikiWordProcessor</classname></term>
+      <listitem><para>Processors are the <quote>pumps</quote> that read records from a cursor and pass the data to a store. Since most of the logic is implemented in the cursors, usually trivial pass-through implementations are used for processors.</para></listitem>
+    </varlistentry>
+    <varlistentry>
+	  <term><classname>Association</classname></term>
+      <listitem><para>An association object represents a link between a foreign entity and a WikiWord concept. It is made up of three FeatureSet objects: one representing the foreign entity (the subject), one representing the concept (object), and one holding the properties of the association itself (fir example, a weight).</para></listitem>
+    </varlistentry>
+    <varlistentry>
+	  <term><classname>MappingCandidates</classname></term>
+      <listitem><para>Mapping candidates are all the WikiWord concepts that have been associated to a given subject entity. A MappingCandidates object contains one FeatureSet representing the subject, and a list of FeatureSets representing the different objects of the mapping. Disambiguation is the process of picking one of the object as the correct mapping.</para></listitem>
+    </varlistentry>
+    <varlistentry>
+	  <term><classname>MappingCandidateFilter</classname>, <classname>MappingCandidateSelector</classname></term>
+      <listitem><para>A MappingCandidateFilter reduces the set of candidates in a MappingCandidates object according to some rule. A special kind of filter is based on a selector, which picks a single candidate as the "correct" mapping. This is also called disambiguation, because it removes ambiguity from the mapping.</para></listitem>
+    </varlistentry>
+    <varlistentry>
+	  <term><classname>MappingCnadidateScorer</classname></term>
+      <listitem><para>A scorer assigns a score value to a given mapping candidate, in the context of the mapping's subject. That is, it measures how good the mapping is. Scores are typically used for filtering, either with a threshold or by simply selecting the candidate with the highest score.</para></listitem>
+    </varlistentry>
+    <varlistentry>
+	  <term><classname>PropertyAccessor</classname>, Aggregator</term>
+      <listitem><para>A property accessor retrieves some value from an object in some way. In the most common case, it simply takes the value of a specific property/feature from a FeatureSet. An Aggregator function is used to combine multiple values of a property into one. Typical aggregators are <wordasword>sum</wordasword>, <wordasword>max</wordasword>, <wordasword>concat</wordasword> and <wordasword>first</wordasword>.</para></listitem>
+    </varlistentry>
+  </variablelist>
+
 </sect2>
 
 
 <sect2>
 <title>Database</title>
-<para>...</para>
+<para>Access to the database is handled by DAO objects descendant from <classname>WikiWordStore</classname> or, for write access, <classname>WikiWordStoreBuilder</classname>. When addressing tables directly through the store object, the logical table name must be used. The logical name is then converted to the physical name by prepending the table prefix associated with the current data set.</para>
+
+<sect3>
+<title>Data Sets</title>
+<para>A data set (internally represented by a <classname>Dataset</classname> object) represents one thesaurus (monolingual or multilingual), with all the associated data. Any data generated by the Integrator module will also become part of the data set is was derived from. The data set identifier is made up of two parts, separated by a colon: the first part is the <parameter>collection</parameter>, the second part is the <parameter>language code</parameter> (or <wordasword>thesaurus</wordasword> for a multilingual thesaurus). The collection indicates the scope of the thesaurus: <wordasword>full</wordasword> is generally used to indicate a collection of thesauri covering the entire Wikipedia. <wordasword>health</wordasword> might be a collection or thesauri covering health topics, etc.
+</para>
+<para>The data set is specified as the first parameter of any WikiWord entry point, in the form <parameter>collection</parameter>:<parameter>language</parameter>. It is used to define the database table prefix used to generate table names for the data set, using the pattern <parameter>collection</parameter>_<parameter>language</parameter>_. This way, several data sets can be stored in the same database.</para>
+</sect3>
+
+<sect3>
+<title>Tables</title>
+<para>The database tables most relevant to WikiWord's integrator module (using logical table names):</para>
+  <variablelist>
+      
+      <varlistentry>
+      <term>concept</term>
+      <listitem><para>Contains the individual concepts represented by the thesaurus.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+      <term>meaning</term>
+      <listitem><para>Associates terms with concepts, that is, phrases with their meanings. Weighting information is also contained in this table.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+      <term>property</term>
+      <listitem><para>Associates values of arbitrary properties to concepts. For mapping, properties that contain some sort of authoritative external ID are useful.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+      <term>definition</term>
+      <listitem><para>Associates definitions with concepts.</para></listitem>
+      </varlistentry>
+  </variablelist>
+  <para>For the purposes of the Integrator module, it is assumed that these tables already exist. They are generated from Wikipedia dumps by the Build module.</para>
+
+  <para>The tables generated by the Integrator module are usually named after the following convention:</para>
+  <variablelist>
+      
+      <varlistentry>
+      <term><replaceable>authority</replaceable></term>
+      <listitem><para>The table named after an foreign authority contains the properties imported from that authority.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+      <term><replaceable>authority</replaceable>_assoc</term>
+      <listitem><para>Contains associations between foreign entities and WikiWord concepts. Any pair may have multiple associations resulting from different kinds of mappings.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+      <term><replaceable>authority</replaceable>_mapped</term>
+      <listitem><para>Contains mappings condensed from the association table. Each pair of foreign entity and WikiWord concept may occur only once, though a foreign entity may be associated with several WikiWord concepts, and vice versa.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+      <term><replaceable>authority</replaceable>_good</term>
+      <listitem><para>Contains a filtered version of the original mapping table, usually by some threshold.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+      <term><replaceable>authority</replaceable>_best</term>
+      <listitem><para>Contains a disambiguated version of the original mapping table, with only the "best" mapping remaining for each external entity.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+      <term><replaceable>authority</replaceable>_unique</term>
+      <listitem><para>Contains a reduced version of the original mapping table, with only the unambiguous mappings from <replaceable>authority</replaceable>_good remaining.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+      <term><replaceable>authority</replaceable>_exclusive</term>
+      <listitem><para>Contains a reduced version of the unique mapping table, with only those mappings from <replaceable>authority</replaceable>_unique that are unambiguous both ways. That is, any foreign entity and WikiWord concept may only occur once in this table.</para></listitem>
+      </varlistentry>
+  </variablelist>
+  <para>The actual, physical table names will be derived from the logical names given above by prepending the data set's table prefix, <parameter>collection</parameter>_<parameter>language</parameter>_, as described in the previous sections.</para>
+
+</sect3>
 </sect2>
+
 </sect1>
 
 <sect1>
 <title>Environment</title>
-<para>WikiWord's Integrator module installes into a self-contained directory. All JAR files needed are located in the <filename>lib</filename> directory.
+<para>WikiWord's Integrator module installs into a self-contained directory. All JAR files needed are located in the <filename>lib</filename> directory.
 </para>
 
 <sect2>
@@ -141,8 +461,8 @@
       
       <varlistentry>
       <term>Java 6</term>
-      <listitem><para>Sun's JRE version 6 muste be installed. For memory intensive operations, it may be required to use the 64 bit version.
-      This is however generally only the case for the Builder module, the Integrator does not normally use mauch heap space.</para></listitem>
+      <listitem><para>Sun's JRE version 6 must be installed. For memory intensive operations, it may be required to use the 64 bit version.
+      This is however generally only the case for the Builder module, the Integrator does not normally use much heap space.</para></listitem>
       </varlistentry>
       
       <varlistentry>
@@ -157,7 +477,7 @@
       
       <varlistentry>
       <term>A WikiWord thesaurus</term>
-      <listitem><para>It is assumed that a WikiWord thesaurus is already present in the database. This would be generated by WikiWords Builder module. 
+      <listitem><para>It is assumed that a WikiWord thesaurus is already present in the database. This would be generated by WikiWord's Builder module. 
       While the Integrator module contains all the classes needed to build a thesaurus, doing so is not subject of this manual.</para></listitem>
       </varlistentry>
   </variablelist>
@@ -195,7 +515,7 @@
       </cmdsynopsis>
       <para><parameter>collection</parameter>:<parameter>language</parameter> specify the thesaurus to operate on (in effect, 
       they defined the database table prefix to be used). The <parameter>script-file</parameter> is the BeanShell script to run. If omitted,
-      the shell starts in interactive mode. Any furhter arguments may be handeled by the script.</para>
+      the shell starts in interactive mode. Any further arguments may be handled by the script.</para>
       </listitem>
       </varlistentry>
       
@@ -216,7 +536,7 @@
     <programlisting format="linespecific">
       url=jdbc:mysql://<replaceable>the-server</replaceable>/<replaceable>the-database</replaceable>?characterEncoding=utf8
       driver=com.mysql.jdbc.Driver
-      user=<replaceable>your-login</replaceable>
+      user=<replaceable>your-log-in</replaceable>
       password=<replaceable>your-password</replaceable>
     </programlisting>
   </sect3>
@@ -245,14 +565,14 @@
       <varlistentry>
       <term><function>runSql(script, source-table, target-file)</function></term>
       <listitem><para>Runs the given SQL script. If the script is a plain name with not file extension, 
-      it is interpretet as the name of a built in script from the package <classname>de.brightbyte.wikiwird.integrator.</classname>.
-      Otherwise, it is interpretet as the path or URL to an SQL file.</para></listitem>
+      it is interpreted as the name of a built in script from the package <classname>de.brightbyte.wikiwird.integrator.</classname>.
+      Otherwise, it is interpreted as the path or URL to an SQL file.</para></listitem>
       </varlistentry>
       
       <varlistentry>
       <term><function>scriptURL(name)</function></term>
       <listitem><para>Utility function to generate a URL relative to the BeanShell script's location.
-      Useful for referencing files that are stoired along with the script.</para></listitem>
+      Useful for referencing files that are stored along with the script.</para></listitem>
       </varlistentry>
       
       <varlistentry>
@@ -307,14 +627,14 @@
 <title>Source Descriptors</title>
 
 <para>A source descriptor describes where the input data should be obtained from, what columns exist, what special meaning they have
-and how they are going to be processed. Internally, a source descriptior is represented as an instance of <classname>FeatureSetSourceDescriptor</classname>.
+and how they are going to be processed. Internally, a source descriptor is represented as an instance of <classname>FeatureSetSourceDescriptor</classname>.
 Externally, a source descriptor is usually defined by a java property file, in which the values follow a special syntax, similar to the JASON notation. Most importantly:</para>
 
 <itemizedlist>
 <listitem>
 <para>There is no semicolon at the end of the line. </para>
 </listitem><listitem>
-<para>String values <emphasis>must</emphasis> be enclused in quotes. </para>
+<para>String values <emphasis>must</emphasis> be enclosed in quotes. </para>
 </listitem><listitem>
 <para>Literals for <constant>true</constant>, <constant>false</constant> and <constant>null</constant> are accepted.</para>
 </listitem><listitem>
@@ -322,15 +642,15 @@ Externally, a source descriptor is usually defined by a java property file, in w
 </listitem><listitem>
 <para>Lists can be defined in square brackets, maps in curly braces, with ":" for separating key and value.</para>
 </listitem><listitem>
-<para>the keyowrd <wordasword>new</wordasword> followed by a fully qualified path name, optionaly followed by a parameter list, instantiates a Java object.</para>
+<para>the keyword <wordasword>new</wordasword> followed by a fully qualified path name, optionally followed by a parameter list, instantiates a Java object.</para>
 </listitem>
 </itemizedlist>
 
-<para>In the BeanShell environment, a source descriptor may be defined as a blank object created by calling <function>object()</function>. The indvidual parameters 
+<para>In the BeanShell environment, a source descriptor may be defined as a blank object created by calling <function>object()</function>. The individual parameters 
 can then be defined by setting members on that object (i.e. defining variables in the object's scope). Lists may be given as arrays or instances of <classname>List</classname>. 
 </para>
 
-  <note><para>In parameter names, "-" and "_" are interchangable. By convention, "-" is used ion property files, 
+  <note><para>In parameter names, "-" and "_" are interchangeable. By convention, "-" is used ion property files, 
   but "_" must be used in the BeanShell environment.</para></note>
   
   <variablelist><title>Source Descriptor Parameters</title>
@@ -367,7 +687,7 @@ can then be defined by setting members on that object (i.e. defining variables i
       <parameter>authority</parameter>
       </term>
       <listitem>
-      <para>The name of an external authority; the authority name serves as the namespace for foreign property names and foreign entity IDs. Instead of setting  <parameter>authority</parameter> to a fixed value, it can also be taken from a data field/column spcified by <parameter>foreign-authority-field</parameter>.</para>
+      <para>The name of an external authority; the authority name serves as the namespace for foreign property names and foreign entity IDs. Instead of setting  <parameter>authority</parameter> to a fixed value, it can also be taken from a data field/column specified by <parameter>foreign-authority-field</parameter>.</para>
       </listitem>
       </varlistentry>
 
@@ -412,7 +732,7 @@ can then be defined by setting members on that object (i.e. defining variables i
       <parameter>concept-property-freq-field</parameter>
       </term>
       <listitem>
-      <para>Field that contains a frequency value of a WikiWord property. When matching terms from the <constant>meaning</constant> thable, this is usually <wordasword>freq</wordasword>, otherwise it remains unused.</para>
+      <para>Field that contains a frequency value of a WikiWord property. When matching terms from the <constant>meaning</constant> table, this is usually <wordasword>freq</wordasword>, otherwise it remains unused.</para>
       </listitem>
       </varlistentry>
 
@@ -421,7 +741,7 @@ can then be defined by setting members on that object (i.e. defining variables i
       <parameter>concept-property-source-field</parameter>
       </term>
       <listitem>
-      <para>Field that contains a source ID of a WikiWord property. When matching terms from the <constant>meaning</constant> thable, this is usually <wordasword>rule</wordasword>, otherwise it remains unused.</para>
+      <para>Field that contains a source ID of a WikiWord property. When matching terms from the <constant>meaning</constant> table, this is usually <wordasword>rule</wordasword>, otherwise it remains unused.</para>
       </listitem>
       </varlistentry>
 
@@ -468,7 +788,7 @@ can then be defined by setting members on that object (i.e. defining variables i
       <listitem>
       <para>Boolean indicating if the first row of the CSV file is to be skipped. This defaults to <constant>true</constant> 
       if <parameter>fields</parameter> is set, to <constant>false</constant> otherwise. If <parameter>fields</parameter> is 
-      set but the file contains a herader row, <parameter>csv-skip-header</parameter> must be set to true explicitly.</para>
+      set but the file contains a header row, <parameter>csv-skip-header</parameter> must be set to true explicitly.</para>
       </listitem>
       </varlistentry>
 
@@ -575,7 +895,7 @@ can then be defined by setting members on that object (i.e. defining variables i
       <parameter>file</parameter>
       </term>
       <listitem>
-      <para>The name of the input file. May be a full URL. If the file name ends in <wordasword>.gz</wordasword> or <wordasword>.bz2</wordasword>, the file is automatically decompressed on the fly. If the file extension (ignoring any <wordasword>.gz</wordasword> or <wordasword>.bz2</wordasword>) is <wordasword>.sql</wordasword>, the fiel's content is executed as an SQL script (the file format detection can be overridden using <parameter>file-format</parameter>). Otherwise, it is assumed to contain CSV data. The dialect (CSV or TSV) is also determined from the file extension. Alternatively to specifying <parameter>file</parameter>, you may give the input data source via <parameter>query</parameter>.</para>
+      <para>The name of the input file. May be a full URL. If the file name ends in <wordasword>.gz</wordasword> or <wordasword>.bz2</wordasword>, the file is automatically decompressed on the fly. If the file extension (ignoring any <wordasword>.gz</wordasword> or <wordasword>.bz2</wordasword>) is <wordasword>.sql</wordasword>, the file's content is executed as an SQL script (the file format detection can be overridden using <parameter>file-format</parameter>). Otherwise, it is assumed to contain CSV data. The dialect (CSV or TSV) is also determined from the file extension. Alternatively to specifying <parameter>file</parameter>, you may give the input data source via <parameter>query</parameter>.</para>
       </listitem>
       </varlistentry>
 
@@ -735,7 +1055,7 @@ can then be defined by setting members on that object (i.e. defining variables i
       <parameter>query</parameter>
       </term>
       <listitem>
-      <para>SQL query to generate the input data. If the query is a single identifier with no whitespace, it is interpretet as the name of a built-in script.
+      <para>SQL query to generate the input data. If the query is a single identifier with no white-space, it is interpreted as the name of a built-in script.
       Built-in scripts are located in the package <classname>de.brightbyte.wikiword.integrator</classname> and have the file extension .sql.
       Alternatively, use <parameter>file</parameter> or <parameter>query-generator</parameter>.</para>
       <!-- TODO: document script parameters! -->
@@ -807,7 +1127,7 @@ can then be defined by setting members on that object (i.e. defining variables i
       </term>
       <listitem>
       <para>A <classname>Map</classname> of substitutions to perform on the SQL script before it is executed. The keys are the names of placeholders. 
-      Placeholders in the SQL code are formatted as comments, like <wordasword>/* foo */</wordasword> and may specify defualts, like <wordasword>/* foo | bar */</wordasword>. Overridden by <parameter>sql-manglers</parameter>.</para>
+      Placeholders in the SQL code are formatted as comments, like <wordasword>/* foo */</wordasword> and may specify defaults, like <wordasword>/* foo | bar */</wordasword>. Overridden by <parameter>sql-manglers</parameter>.</para>
       </listitem>
       </varlistentry>
 
@@ -824,8 +1144,32 @@ can then be defined by setting members on that object (i.e. defining variables i
 </sect3>
 
 </sect2>
-
-
 </sect1> 
+
+<sect1>
+  <title>Appendix</title>
+
+  <sect2>
+    <title>Links</title>
+	<variablelist>
+	    <varlistentry>
+	    <term>WikiWord project page</term>
+	    <listitem><para><ulink url="http://brightbyte.de/page/WikiWord">http://brightbyte.de/page/WikiWord</ulink></para></listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	    <term>WikiWord download page</term>
+	    <listitem><para><ulink url="http://brightbyte.de/download/WikiWord">http://brightbyte.de/download/WikiWord</ulink></para></listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	    <term>WikiWord SVN repository</term>
+	    <listitem><para><ulink url="http://svn.wikimedia.org/svnroot/mediawiki/trunk/WikiWord/">http://svn.wikimedia.org/svnroot/mediawiki/trunk/WikiWord/</ulink></para></listitem>
+	    </varlistentry>
+	    
+	    <!-- TODO: brightbyte SVN repos -->
+	</variablelist>
+  </sect2>
+</sect1>
 
 </article>
