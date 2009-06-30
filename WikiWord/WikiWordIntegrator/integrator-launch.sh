@@ -24,10 +24,10 @@ if [ -f "$dir/vm.options" ]; then
 	vmopt=`cat "$dir/vm.options"`
 fi
 
-wwopt="--config-dir '$dir'"
+wwopt="--config-dir $dir"
 
 if [ ! -z "$cp" ]; then
-	vmopt="$vmopt -classpath '$cp'"
+	vmopt="$vmopt -classpath $cp"
 fi
 
 java=`which java`
