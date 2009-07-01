@@ -509,6 +509,7 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'deletebatch' => 'Izbriši skupinu stranica',
@@ -516,13 +517,13 @@ $messages['hr'] = array(
 	'deletebatch-help' => 'Brisanje skupine stranica. Možete izbrisati samo jednu stranicu, ili izbrisati stranice s popisa.
 Odaberite suradnika koje će biti prikazan u evidencijama.
 Postavljena datoteka treba sadržavati nazive stranica, a dodatno razlog odvojen kosom crtom "|", u svakom redu.',
-	'deletebatch-caption' => 'Popis stranica',
+	'deletebatch-caption' => 'Popis stranica:',
 	'deletebatch-title' => 'Skupno brisanje',
-	'deletebatch-link-back' => 'Možete se vratiti nazad na ekstenziju',
-	'deletebatch-as' => 'Pokreni skriptu kao',
+	'deletebatch-link-back' => 'Vrati se na posebnu stranicu',
+	'deletebatch-as' => 'Pokreni skriptu kao:',
 	'deletebatch-both-modes' => 'Molimo vas odaberiti ili jednu određenu stranicu ili popis stranica.',
 	'deletebatch-or' => '<b>ili</b>',
-	'deletebatch-page' => 'Stranice za brisanje',
+	'deletebatch-page' => 'Stranice za brisanje:',
 	'deletebatch-reason' => 'Razlog za brisanje',
 	'deletebatch-success-subtitle' => 'za $1',
 	'deletebatch-omitting-nonexistant' => 'Izostavljanje nepostojeće stranice $1.',

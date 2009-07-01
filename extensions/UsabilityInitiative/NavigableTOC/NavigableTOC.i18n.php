@@ -142,6 +142,14 @@ $messages['oc'] = array(
 	'navigabletoc-desc' => 'Apond lo somari al formulari de modificacion que desfila lo tèxte quand una seccion es clicada',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'navigabletoc' => 'Tabela de conteúdo navegável',
+	'navigabletoc-desc' => 'Adiciona uma tabela de conteúdo ao formulário de edição que desloca a caixa de texto quando a secção é clicada',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
