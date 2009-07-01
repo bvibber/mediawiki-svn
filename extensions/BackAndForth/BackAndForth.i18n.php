@@ -251,10 +251,12 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  */
 $messages['fi'] = array(
 	'backforth-next' => 'Seuraava ($1)',
+	'backforth-desc' => 'Lisää aakkosjärjestystä noudattavat "Seuraava" ja "Edellinen" linkitykset sivun ylälaitaan',
 	'backforth-prev' => 'Edellinen ($1)',
 );
 

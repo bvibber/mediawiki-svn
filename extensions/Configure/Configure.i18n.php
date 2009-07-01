@@ -217,6 +217,7 @@ Please create it or change it to use this extension.',
  * @author AnakngAraw
  * @author Aotake
  * @author Darth Kule
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author IAlex
  * @author Jon Harald Søby
@@ -300,6 +301,8 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'viewconfig' => 'Name of special page displayed in [[Special:SpecialPages]].',
 	'configure-throttle-action-move' => '{{Identical|Move}}',
 	'configure-throttle-action-rollback' => '{{Identical|Rollback}}',
+	'configure-condition-operator-or' => '{{Identical|Or}}',
+	'configure-condition-operator-and' => '{{Identical|And}}',
 	'configure-condition-operator-xor' => 'Means "one or the other but not both"',
 	'configure-condition-name-3' => '{{Identical|E-mail confirmed}}',
 	'configure-condition-description-1' => '* $1 is the number of edits, <nowiki>{{PLURAL:}}</nowiki> supported if you need it',
@@ -3202,13 +3205,14 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'configure' => 'Konfiguracija wikija',
 	'configure-desc' => 'Omogućava ovlaštenim suradnicima [[Special:Configure|konfiguriranje]] wikija preko web sučelja',
-	'configure-desc-group' => 'Skupine',
+	'configure-desc-group' => 'Skupina',
 	'configure-desc-key' => 'Ključ',
-	'configure-desc-ns' => 'Imenski prostori',
+	'configure-desc-ns' => 'Imenski prostor',
 	'configure-desc-val' => 'Vrijednost',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Ekstenzije',
@@ -3224,7 +3228,7 @@ Molimo stvorite ju i dodajte configure.sql ili popravite ime.',
 	'configure-db-table-error' => 'Baza podataka koju ste odredili nema potrebne tablice. Molimo uključite configure.sql u bazu podataka.',
 	'configure-directory-not-writable' => 'Mapa korištena za spremanje postavki, <tt>$1</tt>, nije omogućena za pisanje.
 Molimo postavite ju za pisanje za PHP kako biste koristili ekstenziju.',
-	'configure-edit-old' => 'Upozorenje: uređujete <strong>staru</strong> inačicu konfiguracije.',
+	'configure-edit-old' => "'''Upozorenje''': uređujete <strong>staru</strong> inačicu konfiguracije (kao kod $1).",
 	'configure-error' => 'Konfiguracija nije mogla biti spremljena',
 	'configure-js-add' => 'Dodaj novi unos',
 	'configure-js-group-exists' => 'Greška: skupina već postoji.',
@@ -3291,9 +3295,9 @@ Molimo stvorite ju ili promijenite za korištenje ekstenzije.',
 	'configure-section-mw-extensions' => 'Ekstenzije MediaWiki',
 	'configure-select-wiki' => 'Wiki odabir',
 	'configure-select-wiki-desc' => 'Odaberite wiki koji želite konfigurirati',
-	'configure-select-wiki-submit' => 'Potvrdi',
+	'configure-select-wiki-submit' => 'Odaberi',
 	'configure-setting-not-available' => 'Postavka nije dostupna u ovoj inačici MediaWiki',
-	'configure-transwiki-not-in-range' => 'Traženi wiki, $1, nije u dopuštenim vrijednostima ($2).',
+	'configure-transwiki-not-in-range' => 'Traženi wiki, $1, nije u {{PLURAL:$3|dopuštenoj vrijednosti|dopuštenim vrijednostima}}: $2.',
 	'configure-view' => 'Vidi',
 	'configure-view-all-versions' => 'Puni popis inačica',
 	'configure-view-not-allowed' => 'Niste ovlašteni za gledanje ove postavke',
@@ -4119,14 +4123,15 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'configure' => 'Konfigurasi wiki iki',
 	'configure-desc-key' => 'Kunci',
-	'configure-desc-ns' => 'Bilik-bilik nama',
+	'configure-desc-ns' => 'Bilik jeneng',
 	'configure-desc-val' => 'Bijih',
 	'configure-btn-save' => 'Simpen setting',
-	'configure-edit-old' => 'Pènget: panjenengan nyunting vèrsi <strong>lawas</strong> konfigurasi.',
+	'configure-edit-old' => "'''Pènget''': panjenengan nyunting konfigurasi vèrsi <strong>lawas</strong> (kaya ing $1).",
 	'configure-error' => 'Konfigurasiné ora bisa disimpen',
 	'configure-saved' => 'Konfigurasiné wis disimpen',
 	'configure-section-general' => 'Sètting umum',

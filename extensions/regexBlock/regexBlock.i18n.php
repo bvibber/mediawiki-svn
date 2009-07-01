@@ -1001,6 +1001,7 @@ $messages['hil'] = array(
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'regexblock' => 'Blokiranje pomoću regularnih izraza',
@@ -1014,9 +1015,10 @@ $messages['hr'] = array(
 
 ''Ova stranica omogućava vam blokiranje suradničkih imena prema uzorku (postojećih i novih), npr. ako blokirate « Test 2», blokirat ćete i « Test » itd. Možete također blokirati IP adrese, što znači da nitko tko se prijavi s njih neće moći uređivati. Napomena: djelomične IP adrese bit će analizirane prema suradničkim imenima u određivanju trajanja bloka. Ukoliko razlog nije dan, bit će navedeno generičko objašnjenje.''",
 	'regexblock-page-title-1' => 'Blokiraj adresu koristeći regularni izraz',
-	'regexblock-reason-ip' => 'Ova IP adresa je blokirana (tj. nemoguće je uređivati stranice) zbog vandalizma ili nekog drugog vašeg prekršaja (ili nekog s kim dijelite IP adresu). Ukoliko mislite da je posrijedi greška, molimo $1',
-	'regexblock-reason-name' => 'Ovo suradničko ime je blokirano (tj. spriječeno mu je uređivanje članaka) zbog vandalizma ili nekog drugog prekršaja. Ukoliko mislite da se radi o grešci, molimo $1',
-	'regexblock-reason-regex' => 'Ovo suradničko ime je blokirano (tj. spriječeno mu je uređivanje članaka) zbog vandalizma ili nekog drugog prekršaja suradnika s istim (ili sličnem) imenom. Ukoliko mislite da se radi o grešci, molimo $1',
+	'regexblock-reason-ip' => 'Ova IP adresa je spriječena uređivati stranice zbog vandalizma ili drugog vašeg prekršaja ili nekog s kim dijelite IP adresu. 
+Ukoliko mislite da je posrijedi greška, molimo [[$1|kontaktirajte nas]]',
+	'regexblock-reason-name' => 'Ovo je suradničko ime spriječeno uređivati zbog vandalizma ili nekog drugog prekršaja. Ukoliko mislite da je posrijedi greška, molimo [[$1|kontaktirajte nas]]',
+	'regexblock-reason-regex' => 'Ovo je suradničko ime spriječeno uređivati zbog vandalizma ili nekog drugog prekršaja suradnika sličnog imena. Molimo stvorite drugo suradničko ime ili nas [[$1|kontaktirajte]] o problemu',
 	'regexblock-form-username' => 'IP-adresa ili ime suradnika:',
 	'regexblock-form-reason' => 'Razlog:',
 	'regexblock-form-expiry' => 'Istek bloka:',
@@ -1040,9 +1042,9 @@ $messages['hr'] = array(
 	'regexblock-view-reason-default' => 'uobičajeni razlog',
 	'regexblock-view-block-infinite' => 'trajna blokada',
 	'regexblock-view-block-expired' => 'ISTEKLO u',
-	'regexblock-view-block-by' => 'blokiran od',
+	'regexblock-view-block-by' => 'blokiran od:',
 	'regexblock-view-block-unblock' => 'deblokiraj',
-	'regexblock-view-stats' => '(statistika)',
+	'regexblock-view-stats' => 'statistika',
 	'regexblock-view-empty' => 'Popis blokiranih imena i adresa je prazan.',
 	'regexblock-view-time' => 'u $1',
 );

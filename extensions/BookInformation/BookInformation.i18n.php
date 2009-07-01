@@ -826,10 +826,11 @@ $messages['jut'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'bookinfo-header' => 'Informasi buku',
-	'bookinfo-desc' => 'Ngembangaké [[Special:Booksources]] mawa informasi saka sumber-sumber buku',
+	'bookinfo-desc' => 'Kembangna [[Special:Booksources|kaca mligi sumber buku]] mawa informasi saka sawijining peladèn wèb',
 	'bookinfo-result-title' => 'Irah-irahan (judhul):',
 	'bookinfo-result-author' => 'Pangripta:',
 	'bookinfo-result-publisher' => 'Panerbit:',

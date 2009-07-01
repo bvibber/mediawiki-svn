@@ -139,6 +139,7 @@ $messages['en'] = array(
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author McDutchie
+ * @author Minh Nguyen
  * @author Siebrand
  */
 $messages['qqq'] = array(
@@ -174,6 +175,7 @@ $messages['qqq'] = array(
 	'edittoolbar-help-content-heading5-result' => '{{Identical|Heading text}}',
 	'edittoolbar-help-content-file-result' => 'Do not translate anything except "Caption text" (twice).',
 	'edittoolbar-help-content-reference-description' => '{{Identical|Reference}}',
+	'edittoolbar-help-content-showreferences-result' => 'For the <code><nowiki><li></nowiki></code> tag’s <code>id</code> attribute, non-ASCII characters are URL-encoded as follows: a period (<code>.</code>) followed by a capital hexadecimal code. For example, <code><nowiki><ref name="thử"></nowiki></code> produces <code><nowiki><li id="cite_note-th.E1.BB.AD-0"></nowiki></code>.',
 	'edittoolbar-help-content-signature-description' => '{{Identical|Signature}}',
 );
 
@@ -574,6 +576,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'edittoolbar' => 'Redakta ilobreto',
 	'edittoolbar-loading' => 'Ŝarĝante...',
 	'edittoolbar-tool-bold' => 'Grasa',
 	'edittoolbar-tool-bold-example' => 'Grasa teksto',
@@ -640,10 +643,12 @@ $messages['es'] = array(
 	'edittoolbar-tool-ilink-example' => 'Título del vínculo',
 	'edittoolbar-tool-xlink' => 'Vínculo externo (recordar prefijo http://)',
 	'edittoolbar-tool-xlink-example' => 'http://www.example.com título del vínculo',
+	'edittoolbar-tool-file' => 'Archivo empotrado',
 	'edittoolbar-tool-file-pre' => '$1 Archivo:',
 	'edittoolbar-tool-file-example' => 'Example.jpg',
 	'edittoolbar-tool-reference' => 'Referencia',
 	'edittoolbar-tool-reference-example' => 'Insertar nota a pie de página aquí',
+	'edittoolbar-tool-signature' => 'Firma y fechero',
 	'edittoolbar-section-advanced' => 'Avanzado',
 	'edittoolbar-tool-heading' => 'Encabezado',
 	'edittoolbar-tool-heading-1' => 'Nivel 1',
@@ -653,6 +658,7 @@ $messages['es'] = array(
 	'edittoolbar-tool-heading-5' => 'Nivel 5',
 	'edittoolbar-tool-heading-example' => 'Texto de encabezado',
 	'edittoolbar-group-list' => 'Lista',
+	'edittoolbar-tool-olist' => 'Lista numerada',
 	'edittoolbar-group-size' => 'Tamaño',
 	'edittoolbar-tool-big' => 'Grande',
 	'edittoolbar-tool-big-example' => 'Texto grande',
@@ -665,6 +671,8 @@ $messages['es'] = array(
 	'edittoolbar-section-characters' => 'Carácteres especiales',
 	'edittoolbar-section-help' => 'Ayuda',
 	'edittoolbar-help-heading-description' => 'Descripción',
+	'edittoolbar-help-heading-syntax' => 'Lo que escribes',
+	'edittoolbar-help-heading-result' => 'Lo que obtienes',
 	'edittoolbar-help-page-format' => 'Formateando',
 	'edittoolbar-help-page-link' => 'Vínculos',
 	'edittoolbar-help-page-heading' => 'Encabezados',
@@ -690,6 +698,7 @@ $messages['es'] = array(
 	'edittoolbar-help-content-heading4-result' => '<h4>Texto de encabezado</h4>',
 	'edittoolbar-help-content-heading5-syntax' => '===== Texto de encabezado =====',
 	'edittoolbar-help-content-heading5-result' => '<h5>Texto de encabezado</h5>',
+	'edittoolbar-help-content-file-description' => 'Archivo empotrado',
 	'edittoolbar-help-content-reference-description' => 'Referencia',
 	'edittoolbar-help-content-rereference-description' => 'Uso adicional de la misma referencia',
 	'edittoolbar-help-content-showreferences-description' => 'Mostrar referencias',
@@ -1968,6 +1977,7 @@ $messages['ja'] = array(
  */
 $messages['ko'] = array(
 	'edittoolbar-help-content-italic-syntax' => "''기울인 글씨''",
+	'edittoolbar-help-content-ilink-description' => '내부 링크',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -2551,6 +2561,7 @@ $messages['oc'] = array(
 	'edittoolbar-tool-gallery-example' => 'Fichièr:Exemple.jpg|Descripcion 1
 Fichièr:Exemple.jpg|Descripcion 2',
 	'edittoolbar-tool-newline' => 'Saut de linha',
+	'edittoolbar-tool-table' => 'Tablèu',
 	'edittoolbar-section-characters' => 'Caractèrs especials',
 	'edittoolbar-section-help' => 'Ajuda',
 	'edittoolbar-help-heading-description' => 'Descripcion',
@@ -2759,6 +2770,8 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'edittoolbar-loading' => 'A carregar...',
+	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referência',
 	'edittoolbar-tool-heading-1' => 'Nível 1',
 	'edittoolbar-tool-heading-2' => 'Nível 2',
@@ -2767,11 +2780,18 @@ $messages['pt'] = array(
 	'edittoolbar-tool-heading-5' => 'Nível 5',
 	'edittoolbar-tool-heading-example' => 'Texto de cabeçalho',
 	'edittoolbar-group-list' => 'Lista',
+	'edittoolbar-tool-newline' => 'Nova linha',
+	'edittoolbar-section-characters' => 'Carateres especiais',
 	'edittoolbar-section-help' => 'Ajuda',
 	'edittoolbar-help-heading-description' => 'Descrição',
+	'edittoolbar-help-page-link' => 'Ligações',
 	'edittoolbar-help-page-list' => 'Listas',
 	'edittoolbar-help-page-file' => 'Ficheiros',
+	'edittoolbar-help-content-ilink-description' => 'Ligação interna',
 	'edittoolbar-help-content-xlink-description' => 'Ligação externa',
+	'edittoolbar-help-content-olist-description' => 'Lista numerada',
+	'edittoolbar-help-content-signaturetimestamp-description' => 'Assinatura com data e hora',
+	'edittoolbar-help-content-signature-description' => 'Assinatura',
 );
 
 /** Romanian (Română)
@@ -3425,6 +3445,7 @@ $messages['vi'] = array(
 	'edittoolbar-tool-gallery-example' => 'Tập tin:Ví dụ.jpg|Chú thích 1
 Tập tin:Ví dụ.jpg|Chú thích 2',
 	'edittoolbar-tool-newline' => 'Dòng mới',
+	'edittoolbar-tool-table' => 'Bảng',
 	'edittoolbar-section-characters' => 'Ký tự đặc biệt',
 	'edittoolbar-section-help' => 'Trợ giúp',
 	'edittoolbar-help-heading-description' => 'Miêu tả',
@@ -3477,9 +3498,19 @@ Tập tin:Ví dụ.jpg|Chú thích 2',
 	'edittoolbar-help-content-file-syntax' => '[[Tập tin:Ví dụ.png|nhỏ|Văn bản chú thích]]',
 	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Văn bản chú thích' class='image' href='/wiki/File:Wiki.png'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/EditToolbar/images/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Phóng lớn' class='internal' href='/wiki/File:Wiki.png'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Văn bản chú thích</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Tham khảo',
+	'edittoolbar-help-content-reference-syntax' => 'Nội dung trang.&lt;ref name="thử"&gt;[http://www.example.org Văn bản liên kết], thêm văn bản.&lt;/ref&gt;',
+	'edittoolbar-help-content-reference-result' => "Nội dung trang.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-rereference-description' => 'Sử dụng chú thích lần nữa',
+	'edittoolbar-help-content-rereference-result' => "Nội dung trang.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-showreferences-description' => 'Liệt kê các chú thích',
+	'edittoolbar-help-content-showreferences-syntax' => '&lt;references /&gt; hoặc {<!-- -->{Tham khảo}}',
+	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-th.E1.BB.AD-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Văn bản liên kết</a>, thêm văn bản.</li></ol>",
 	'edittoolbar-help-content-signaturetimestamp-description' => 'Chữ ký có ngày',
 	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Tên đăng ký</a> (<a href='#' title='{{#special:mytalk}}'>thảo luận</a>) 15:54, ngày 10 tháng 6 năm 2009 (UTC)",
 	'edittoolbar-help-content-signature-description' => 'Chữ ký',
 	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Tên đăng ký</a> (<a href='#' title='{{#special:mytalk}}'>thảo luận</a>)",
+	'edittoolbar-help-content-indent-description' => 'Tăng lề',
+	'edittoolbar-help-content-indent-syntax' => 'Văn bản thường<br />:Văn bản được tăng lề<br />::Văn bản được tăng lề',
+	'edittoolbar-help-content-indent-result' => 'Văn bản thường<dl><dd>Văn bản được tăng lề<dl><dd>Văn bản được tăng lề</dd></dl></dd></dl>',
 );
 

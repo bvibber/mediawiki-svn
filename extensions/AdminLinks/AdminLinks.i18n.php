@@ -661,6 +661,23 @@ $messages['te'] = array(
 	'adminlinks_users' => 'వాడుకరులు',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'adminlinks' => 'باشقۇرغۇچى ئۇلانمىسى',
+	'adminlinks_documentation' => '$1 پۈتۈك',
+	'adminlinks_general' => 'ئادەتتىكى',
+	'adminlinks_editsidebar' => 'يان ستون تەھرىر',
+	'adminlinks_editcss' => 'CSS ھۆججەت تەھرىر',
+	'adminlinks_editmainpagename' => 'باش بەت ئاتىنى تەھرىرلەش',
+	'adminlinks_users' => 'ئىشلەتكۈچىلەر',
+	'adminlinks_createuser' => 'ئىشلەتكۈچىدىن بىرنى قۇر',
+	'adminlinks_browsesearch' => 'تور زىيارىتى ۋە ئىزدەش',
+	'adminlinks_importexport' => 'ئەكىرىش ۋە چىقىرىش',
+	'right-adminlinks' => '[[Special:AdminLinks|باشقۇرغۇچى ئۇلاىمىسى]]نى كۆرۈڭ',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

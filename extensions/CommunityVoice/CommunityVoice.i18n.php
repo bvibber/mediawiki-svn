@@ -377,6 +377,7 @@ $messages['ko'] = array(
 	'communityvoice' => '공동체 알림',
 	'communityvoice-desc' => '공동체 참가 도구',
 	'communityvoice-ratings' => '평가',
+	'communityvoice-ratings-scale-status-sending' => '전송 중...',
 	'communityvoice-ratings-scale-status-error' => '오류를 보냅니다!',
 	'communityvoice-ratings-scale-status-thanks' => '투표에 감사드립니다!',
 );

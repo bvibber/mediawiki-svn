@@ -112,6 +112,7 @@ $messages['cs'] = array(
 	'gblrights-logpage' => 'Záznam globálních práv',
 	'gblrights-pagetext' => 'Toto je záznam všech změn v tabulce globálních práv této rodiny wiki',
 	'gblrights-rights-entry' => 'změněné globální členství ve skupině uživatele $1 z $2 na $3',
+	'right-userrights-shared' => 'Spravovat sdílená uživatelská práva',
 );
 
 /** German (Deutsch)

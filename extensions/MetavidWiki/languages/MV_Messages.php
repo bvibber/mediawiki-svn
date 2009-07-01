@@ -2124,6 +2124,7 @@ $messages['eo'] = array(
  * @author Feten7
  * @author Imre
  * @author Jatrobat
+ * @author Locos epraix
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -2199,10 +2200,14 @@ Todos los cambios se perderán.',
 	'mv_click_to_edit' => 'hacer click para editar',
 	'ht_en' => 'Transcribir',
 	'thomas_en' => 'Transcripcion oficial',
+	'mv_time_separator' => '$1 a $2',
 	'mv_play' => 'Reproducir',
 	'mv_edit' => 'Editar',
 	'mv_history' => 'Historial',
 	'mv_remove' => 'eliminar',
+	'mv_edit_metadata' => 'Editar metadatos',
+	'mv_advanced_edit' => 'Edición avanzada',
+	'mv_basic_edit' => 'Edición básica',
 	'mv_add_filter' => 'Agregar filtro',
 	'mv_search_spoken_by' => 'Hablado por',
 	'mv_search_categories' => 'Categorías',
@@ -5926,6 +5931,13 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
 	'mv_mang_layers' => 'स्तर व्यवस्थापन',
 	'mv_mang_layers_title' => 'सद्य स्ट्रीम साठीच्या स्तर-प्रदर्शन प्रणालीचे व्यवस्थापन करा',
 	'mv_protect_source_material' => 'मूळ स्रोत साहित्य संपादनांपासून सुरक्षित केले',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
 );
 
 /** Maltese (Malti)

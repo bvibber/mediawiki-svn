@@ -131,6 +131,13 @@ $messages['pt'] = array(
 	'clientside-desc' => 'Providencia funções para gerar código em formatos "client-side", tais como HTML, CSS e JavaScript',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'clientside-desc' => "Prevede funziune pe generà 'u codece in formate late utende cumme HTML, CSS e JavaScript",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -63,7 +63,7 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'plotters-desc' => 'Дазваляе ўдзельнікам выкарыстоўваць уласны JavaScript у тэгах jsplot',
-	'plotters' => 'Плотэры',
+	'plotters' => 'Графастваральнікі',
 	'plotters-title' => 'Плотэры',
 	'plotters-missing-script' => 'Скрыпт ня вызначаны.',
 	'plotters-missing-arguments' => 'Аргумэнты не пазначаныя.',

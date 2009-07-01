@@ -584,9 +584,10 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
-	'multipleupload' => 'Postavi datoteke',
+	'multipleupload' => 'Postavi višestruke datoteke',
 	'multipleupload-desc' => 'Omogućava suradnicima [[Special:MultipleUpload|postavljanje više datoteka od jednom]]',
 	'multipleupload-ignoreallwarnings' => "Ignoriraj '''sva upozorenja''' i svejedno postavi datoteku.",
 	'multipleupload-saveallfiles' => 'Postavi sve datoteke',

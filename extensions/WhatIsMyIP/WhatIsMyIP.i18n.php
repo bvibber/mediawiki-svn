@@ -479,12 +479,14 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Airwolf
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'whatismyip' => 'Jaki jest mój adres IP',
-	'whatismyip-desc' => 'Pokazuje na [[Special:WhatIsMyIP|specjalnej stronie]] aktualny adres IP użytkownika',
-	'whatismyip-out' => 'Twój IP:',
+	'whatismyip-desc' => 'Pokazuje aktualny [[Special:WhatIsMyIP|adres IP]] użytkownika',
+	'whatismyip-out' => 'Twój adres IP:',
+	'right-whatismyip' => 'Zobaczyć [[Special:WhatIsMyIP|własny adres IP]]',
 );
 
 /** Pashto (پښتو)

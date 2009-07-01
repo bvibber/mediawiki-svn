@@ -1056,6 +1056,7 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'changeauthor' => 'Ngganti révisi pangripta',
@@ -1064,7 +1065,7 @@ $messages['jv'] = array(
 	'changeauthor-pagename-or-revid' => 'ID jeneng kaca utawa révisi:',
 	'changeauthor-pagenameform-go' => 'Tumuju',
 	'changeauthor-comment' => 'Komentar:',
-	'changeauthor-changeauthors-multi' => 'Ganti (para) pangripta',
+	'changeauthor-changeauthors-multi' => 'Ganti {{PLURAL:$1|penulis|penulis}}',
 	'changeauthor-changeauthors-single' => 'Ganti pangripta',
 	'changeauthor-invalid-username' => 'Jeneng panganggo "$1" ora absah.',
 	'changeauthor-nosuchuser' => 'Ora ana panganggo "$1".',

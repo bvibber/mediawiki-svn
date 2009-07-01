@@ -66,6 +66,13 @@ $messages['dsb'] = array(
 	'localisationupdate-desc' => 'Źaržy lokalizěrowane powěźeńki tak aktualne ako móžno',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'localisationupdate-desc' => 'Mantener los mensajes localizados tan actualizados como sean posibles',
+);
+
 /** French (Français)
  * @author Crochet.david
  */

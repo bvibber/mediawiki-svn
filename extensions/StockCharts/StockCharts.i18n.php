@@ -154,6 +154,15 @@ $messages['oc'] = array(
 Utilizacion : &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'stockcharts-desc' => 'Adiciona a marca <nowiki><stockchart ticker="AAPL"/></nowiki> para um gráfico de títulos financeiros interativo',
+	'stockcharts-missingticker' => 'Para imbutir um gráfico de títulos, precisa pelo menos de especificar a sigla ("ticker").
+Use: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

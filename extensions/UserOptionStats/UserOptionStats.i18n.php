@@ -315,6 +315,13 @@ $messages['pdc'] = array(
 	'uos-other' => '*Annere',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Strona specjalna]] przedstawiająca użycie opcji dostępnych dla użytkowników MediaWiki',
+);
+
 /** Portuguese (Português)
  * @author Lijealso
  */

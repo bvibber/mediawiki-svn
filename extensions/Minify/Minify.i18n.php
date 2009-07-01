@@ -107,6 +107,13 @@ $messages['oc'] = array(
 	'minify-desc' => 'Estrechís la sortida de CSS e JavaScript de action=raw',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'minify-desc' => "Combatte le resultate CSS e JavaScript da l'azione = grezze",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

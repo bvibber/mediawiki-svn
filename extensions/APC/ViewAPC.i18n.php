@@ -2562,11 +2562,12 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'viewapc' => 'Informasi APC',
 	'viewapc-desc' => "[[Special:ViewAPC|Ndeleng lan ngurusi ''cache'' APC]] karo MediaWiki",
-	'right-apc' => 'Nganggo kabèh fitur ing Special:APC',
+	'right-apc' => 'Nganggo kabèh fitur ing [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => "Ora ana info ''cache'' sing kacepakaké.
 APC katoné ora mlaku.",
 	'viewapc-clear-confirm' => 'Panjenengan kepéngin ngosongaké cache?',

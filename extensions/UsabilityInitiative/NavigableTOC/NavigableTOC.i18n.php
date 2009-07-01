@@ -33,6 +33,13 @@ $messages['dsb'] = array(
 	'navigabletoc-desc' => 'Pśidawa zapis wopśimjeśa wobźěłowańskemu formularoju, kótaryž kula tekstowe pólo, gaž se na wótrězk kliknjo',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'navigabletoc' => 'Tabla de contenidos navegable',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -133,6 +140,14 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'navigabletoc' => 'Somari navigable',
 	'navigabletoc-desc' => 'Apond lo somari al formulari de modificacion que desfila lo tèxte quand una seccion es clicada',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'navigabletoc' => 'Taggele de le condenute navigabbile',
+	'navigabletoc-desc' => "Aggiunge 'na taggelle de condenute a 'a schermata de cangiamende ca face muvè 'a sckatole de teste  quanne 'na seziona è cazzate",
 );
 
 /** Russian (Русский)

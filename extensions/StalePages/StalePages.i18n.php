@@ -176,6 +176,7 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'stalepages' => 'Umrtvljene stranice',

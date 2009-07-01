@@ -433,6 +433,13 @@ $messages['lb'] = array(
 	'security-type-namespace' => 'Nummraum',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'security-type-category' => 'kategori',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -558,6 +558,13 @@ $messages['mr'] = array(
 	'randomincategory-submit' => 'चला',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'randomincategory-label' => 'Kategori:',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

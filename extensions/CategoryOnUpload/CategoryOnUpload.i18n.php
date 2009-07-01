@@ -330,6 +330,13 @@ $messages['mk'] = array(
 	'categoryonupload-label' => 'Категорија:',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'categoryonupload-label' => 'Kategori:',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

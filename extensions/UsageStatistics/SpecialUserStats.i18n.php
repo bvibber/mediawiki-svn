@@ -1453,6 +1453,7 @@ $messages['pt'] = array(
 	'usagestatisticscalselect' => 'Escolher',
 	'usagestatistics-editindividual' => 'Estatísticas $1 de edição de utilizador individual',
 	'usagestatistics-editpages' => 'Estatísticas $1 de páginas de utilizador individual',
+	'right-viewsystemstats' => 'Ver [[Special:UserStats|estatísticas de utilização do wiki]]',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
