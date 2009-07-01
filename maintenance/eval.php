@@ -28,7 +28,7 @@ class EvalPrompt extends Maintenance {
 	}
 	
 	public function execute() {
-		global $wgUseNormalUser;
+		global $wgUseNormalUser, $wgDebugFunctionEntry, $wgDebugLogFile;
 		$wgUseNormalUser = (bool)getenv('MW_WIKIUSER');
 		if ( $this->hasOption('d') ) {
 			$d = $this->getOption('d');

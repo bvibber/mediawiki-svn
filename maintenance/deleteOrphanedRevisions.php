@@ -9,48 +9,67 @@
  * @author Rob Church <robchur@gmail.com>
  * @todo More efficient cleanup of text records
  */
- 
-$options = array( 'report', 'help' );
-require_once( 'commandLine.inc' );
-require_once( 'deleteOrphanedRevisions.inc' );
-echo( "Delete Orphaned Revisions\n" );
 
-if( isset( $options['help'] ) ) {
-	showUsage();
-	exit(1);
+require_once( "Maintenance.php" );
+
+class DeleteOrphanedRevisions extends Maintenance {
+	public function __construct() {
+		parent::__construct();
+		$this->mDescription = "Maintenance script to delete revisions which refer to a nonexisting page";
+		$this->addOption( 'report', 'Prints out a count of affected revisions but doesn\'t delete them' );
+	}
+
+	public function execute() {
+		$this->output( "Delete Orphaned Revisions\n" );
+
+		$report = $this->hasOption('report');
+
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->immediateBegin();
+		list( $page, $revision ) = $dbw->tableNames( 'page', 'revision' );
+
+		# Find all the orphaned revisions
+		$this->output( "Checking for orphaned revisions..." );
+		$sql = "SELECT rev_id FROM {$revision} LEFT JOIN {$page} ON rev_page = page_id WHERE page_namespace IS NULL";
+		$res = $dbw->query( $sql, 'deleteOrphanedRevisions' );
+	
+		# Stash 'em all up for deletion (if needed)
+		while( $row = $dbw->fetchObject( $res ) )
+			$revisions[] = $row->rev_id;
+		$dbw->freeResult( $res );
+		$count = count( $revisions );
+		$this->output( "found {$count}.\n" );
+	
+		# Nothing to do?
+		if( $report || $count == 0 ) {
+			$dbw->immediateCommit();
+			exit(0);
+		}
+	
+		# Delete each revision
+		$this->output( "Deleting..." );
+		$this->deleteRevs( $revisions, $dbw );
+		$this->output( "done.\n" );
+	
+		# Close the transaction and call the script to purge unused text records
+		$dbw->immediateCommit();
+		$this->purgeRedundantText( true );
+	}
+	
+	/**
+	 * Delete one or more revisions from the database
+	 * Do this inside a transaction
+	 *
+	 * @param $id Array of revision id values
+	 * @param $db Database class (needs to be a master)
+	 */
+	private function deleteRevs( $id, &$dbw ) {
+		if( !is_array( $id ) )
+			$id = array( $id );
+		$dbw->delete( 'revision', array( 'rev_id' => $id ), __METHOD__ );
+	}
 }
 
-$report = isset( $options['report'] );
-
-$dbw = wfGetDB( DB_MASTER );
-$dbw->immediateBegin();
-extract( $dbw->tableNames( 'page', 'revision' ) );
-
-# Find all the orphaned revisions
-echo( "Checking for orphaned revisions..." );
-$sql = "SELECT rev_id FROM {$revision} LEFT JOIN {$page} ON rev_page = page_id WHERE page_namespace IS NULL";
-$res = $dbw->query( $sql, 'deleteOrphanedRevisions' );
-
-# Stash 'em all up for deletion (if needed)
-while( $row = $dbw->fetchObject( $res ) )
-	$revisions[] = $row->rev_id;
-$dbw->freeResult( $res );
-$count = count( $revisions );
-echo( "found {$count}.\n" );
-
-# Nothing to do?
-if( $report || $count == 0 ) {
-	$dbw->immediateCommit();
-	exit(0);
-}
-
-# Delete each revision
-echo( "Deleting..." );
-deleteRevisions( $revisions, $dbw );
-echo( "done.\n" );
-
-# Close the transaction and call the script to purge unused text records
-$dbw->immediateCommit();
-require_once( 'purgeOldText.inc' );
-PurgeRedundantText( true );
+$maintClass = "DeleteOrphanedRevisions";
+require_once( DO_MAINTENANCE );
 
