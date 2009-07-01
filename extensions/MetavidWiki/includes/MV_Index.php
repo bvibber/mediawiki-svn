@@ -158,8 +158,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				$ret_ary[$cat_row->cl_from]->category[] = $cat_row->cl_to;
 			}
 		}
-		// slow especially for lots of query results but join Query is crazy complicated for SMW >= 1.2
-		// (and I have not been able to construct it without hitting expensive number of rows in the EXPLIN)
+		// slow epecialy for lots of query results but join Query is crazy complicated for SMW >= 1.2
+		// (and I have not been able to construct it without hitting exessive number of rows in the EXPLIN)
 		// @@todo these queries should be merged with semantic wiki Ask with some ~special~ keywords for fulltext search
 		if ( $do_smw_lookup ) {
 			$smwStore =& smwfGetStore();
@@ -626,6 +626,9 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
                 	}
                 }
 			}
+		}
+		foreach($ret_ary as $k => $v){
+			$ret_ary[$k]->text = str_replace(array('u800','u82e'),'', $v->text);
 		}
 
 		return $ret_ary;

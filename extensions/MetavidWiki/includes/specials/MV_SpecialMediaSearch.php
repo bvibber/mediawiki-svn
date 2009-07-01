@@ -262,6 +262,7 @@ class MV_SpecialMediaSearch {
 		global $wgRequest;
 
 		$this->results = $mvIndex->doUnifiedFiltersQuery( $this->filters );
+
 		$this->num = $mvIndex->numResults();
 		$this->numResultsFound = $mvIndex->numResultsFound();
 		if ( isset ( $mvIndex->offset ) )
@@ -270,6 +271,8 @@ class MV_SpecialMediaSearch {
 			$this->limit = $mvIndex->limit;
 		if ( isset ( $mvIndex->order ) )
 			$this->order = $mvIndex->order;
+		//fix replace text:
+
 
 		// do search digest (if global config, function req and num_results fit criteria)
 		if ( $mvEnableSearchDigest &&
@@ -479,7 +482,6 @@ class MV_SpecialMediaSearch {
 				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( 0 ) );
 			}
 			// $mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
-			$mvd_text = str_replace(array('u800','u82e'),'', $mvd->text);
 
 			$o .= '<li class="result">
 					<span class="vid_img" id="mvimg_' . htmlspecialchars( $mvd->id ) . '">
@@ -493,7 +495,7 @@ class MV_SpecialMediaSearch {
 							$sk->makeKnownLinkObj( $mvStreamTitle, $mvTitle->getStreamNameText() .
 								 ' :: ' . $mvTitle->getTimeDesc() ) .
 						'</h4>
-						<p>Matching Phrase:' . $this->termHighlight( $mvd_text, implode( '|', $this->getTerms() ), 1, 100 ) . ' </p>
+						<p>Matching Phrase:' . $this->termHighlight( $mvd->text, implode( '|', $this->getTerms() ), 1, 100 ) . ' </p>
 						<span class="by">' . $mvd_cnt_links . '</span>
 						<span class="by">' . $mvd_cat_links . '</span>
 						<span class="by">' . $mvd_bill_links . '</span>
@@ -1073,6 +1075,7 @@ class MV_SpecialMediaSearch {
 			$v = current(current($v)->getContent());
 			array_push( $results, $v->getXSDValue());
 		}
+		//replace result text:
 		return $results;
 	}
 	function getPersonImageURL( $person_name ) {
