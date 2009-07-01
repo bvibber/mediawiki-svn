@@ -3,7 +3,7 @@
 $( document ).ready( function() {
 	$( 'textarea#wpTextbox1, input#wpSummary' )
 		.bind(
-			'change select paste cut keydown',
+			'change paste cut keydown',
 			function () {
 				if ( !( 'onbeforeunload' in window ) ) {
 					window.onbeforeunload = function() {
