@@ -754,11 +754,13 @@ var editToolbarConfiguration = {
 			}
 		}
 	},
+	/*
 	'characters': {
 		labelMsg: 'edittoolbar-section-characters',
 		type: 'booklet',
 		pages: {} // Set by the document.ready handler
 	},
+	*/
 	'help': {
 		labelMsg: 'edittoolbar-section-help',
 		type: 'booklet',
