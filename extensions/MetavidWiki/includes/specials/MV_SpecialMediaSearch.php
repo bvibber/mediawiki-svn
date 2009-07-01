@@ -479,7 +479,7 @@ class MV_SpecialMediaSearch {
 				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( 0 ) );
 			}
 			// $mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
-			$mvd_text = $mvd->text;
+			$mvd_text = str_replace(array('u800','u82e'),'', $mvd->text);
 
 			$o .= '<li class="result">
 					<span class="vid_img" id="mvimg_' . htmlspecialchars( $mvd->id ) . '">
@@ -493,7 +493,7 @@ class MV_SpecialMediaSearch {
 							$sk->makeKnownLinkObj( $mvStreamTitle, $mvTitle->getStreamNameText() .
 								 ' :: ' . $mvTitle->getTimeDesc() ) .
 						'</h4>
-						<p>Matching Phrase:' . $this->termHighlight( $mvd->text, implode( '|', $this->getTerms() ), 1, 100 ) . ' </p>
+						<p>Matching Phrase:' . $this->termHighlight( $mvd_text, implode( '|', $this->getTerms() ), 1, 100 ) . ' </p>
 						<span class="by">' . $mvd_cnt_links . '</span>
 						<span class="by">' . $mvd_cat_links . '</span>
 						<span class="by">' . $mvd_bill_links . '</span>

@@ -30,7 +30,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		if ( $mvTitle != null )
 			$this->mvTitle = $mvTitle;
 	}
-	
+
 	function countMVDInRange( $stream_id, $start_time = null, $end_time = null, $mvd_type = 'all' ) {
 		global $mvDefaultClipLength;
 		$dbr =& wfGetDB( DB_SLAVE );
@@ -51,7 +51,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$dbr =& wfGetDB( DB_SLAVE );
 		// set up select vars:
 		$conds = $vars = array();
-		$from_tables = '';	
+		$from_tables = '';
 		//
 		// set mvd_type if empty:
 		if ( $mvd_type == null )$mvd_type = 'all';
@@ -61,7 +61,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		// add in base from:
 		$from_tables .= $dbr->tableName( 'mv_mvd_index' );
 		$conds = array( 'stream_id' => $stream_id );
-		// print_r($smw_properties);				
+		// print_r($smw_properties);
 		if ( $mvd_type != 'all' ) {
 			$mvd_type = ( is_object( $mvd_type ) ) ? get_object_vars( $mvd_type ):$mvd_type;
 			if ( is_array( $mvd_type ) ) {
@@ -80,25 +80,25 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		// print "Start time: $start_time END TIME: $end_time\n";
 		if ( $end_time != null )
 			$conds[] = 'start_time <= ' . $dbr->addQuotes( $end_time );
-			
+
 		if ( $start_time != null )
 			$conds[] = 'end_time >= ' . $dbr->addQuotes( $start_time );
-			
+
 		// add in ordering
 		if ( !isset( $options['ORDER BY'] ) )
 			$options['ORDER BY'] = 'start_time ASC';
-			
+
 		// add in limit
 		if ( !isset( $options['LIMIT'] ) )
 			$options['LIMIT'] = 200;
-						
+
 		// run query:
 		$result = $dbr->select( $from_tables,
 			$vars,
 			$conds,
 			__METHOD__,
 			$options );
-		
+
 		//print $dbr->lastQuery();
 		//die;
 		return MV_Index::getMVDMeta( $result, $getText, $smw_properties);
@@ -106,19 +106,19 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	function getMVDMeta( &$result, $getText = false, $smw_properties = ''){
 		$dbr =& wfGetDB( DB_SLAVE );
 		if ( $dbr->numRows( $result ) == 0 )return array();
-		
+
 		$do_cat_lookup = $do_smw_lookup = false;
 		if( !is_array($smw_properties) ){
 			$smw_properties = explode( ',', $smw_properties );
-		}	
+		}
 		foreach($smw_properties as $propKey){
 			if($propKey == 'category')
 				$do_cat_lookup=true;
-				
+
 			if($propKey=='Speech_by'|| $propKey=='Bill')
 				$do_smw_lookup=true;
-				
-		}		
+
+		}
 		//get the results with meta
 		$ret_ary = array();
 		$from_tables = $vars = $options = array();
@@ -126,7 +126,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$or = '';
 		while ( $row = $dbr->fetchObject( $result ) ) {
 			$ret_ary[$row->id] = $row;
-			// init array:			
+			// init array:
 			if ( $do_cat_lookup ) {
 				if ( !isset( $ret_ary[$row->id]->category ) )
 					$ret_ary[$row->id]->category = array();
@@ -143,23 +143,23 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 								 $dbr->tableName( 'categorylinks' ) . '.cl_from = ' .
 								 $dbr->tableName( 'mv_mvd_index' ) . '.mv_page_id' .
 							' ) ';
-						
+
 			$vars = array( 'cl_from', 'cl_to' );
-			
+
 			$options['LIMIT'] = 2000; // max average 5 categories per page
 
 			$result_cat = $dbr->select( $from_tables,
 				$vars,
 				$conds,
 				__METHOD__,
-				$options );			
-							
+				$options );
+
 			while ( $cat_row = $dbr->fetchObject( $result_cat ) ) {
 				$ret_ary[$cat_row->cl_from]->category[] = $cat_row->cl_to;
 			}
-		}		
-		// slow epecialy for lots of query results but join Query is crazy complicated for SMW >= 1.2 
-		// (and I have not been able to construct it without hitting exessive number of rows in the EXPLIN) 
+		}
+		// slow especially for lots of query results but join Query is crazy complicated for SMW >= 1.2
+		// (and I have not been able to construct it without hitting expensive number of rows in the EXPLIN)
 		// @@todo these queries should be merged with semantic wiki Ask with some ~special~ keywords for fulltext search
 		if ( $do_smw_lookup ) {
 			$smwStore =& smwfGetStore();
@@ -167,7 +167,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
                 $rowTitle = Title::newFromText( $row->wiki_title, MV_NS_MVD );
                 foreach ( $smw_properties as $propKey ) {
                 	if ( $propKey != 'category' ) {
-	                	// init property: 
+	                	// init property:
 	                	$row->$propKey = '';
 	                	$propTitle = Title::newFromText( $propKey, SMW_NS_PROPERTY );
 		                $smwProps = $smwStore->getPropertyValues( $rowTitle, $propTitle );
@@ -183,59 +183,59 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		// print_r($ret_ary);
 		// die;
 
-		
+
 		// print $dbr->lastQuery();
 		// die;
 		// echo $sql;
 		// $result =& $dbr->query( $sql, 'MV_Index:time_index_query');
 		return $ret_ary;
-	}	
- 	//gets an Annotative layer that encapsulates the mvTilte  
+	}
+ 	//gets an Annotative layer that encapsulates the mvTilte
 	static function getParentAnnotativeLayers(& $mvTitle){
-		//first check if we are in range of the cache: 
+		//first check if we are in range of the cache:
 		if(count(self::$annoCache)!=0){
 			foreach(self::$annoCache as $aMVD){
-				if(	$aMVD->start_time <=  $mvTitle->getStartTimeSeconds() && 
-					$aMVD->start_time <=  $mvTitle->getEndTimeSeconds() && 
-					$aMVD->end_time >= $mvTitle->getEndTimeSeconds() && 
-					$aMVD->end_time >= $mvTitle->getEndTimeSeconds() && 
+				if(	$aMVD->start_time <=  $mvTitle->getStartTimeSeconds() &&
+					$aMVD->start_time <=  $mvTitle->getEndTimeSeconds() &&
+					$aMVD->end_time >= $mvTitle->getEndTimeSeconds() &&
+					$aMVD->end_time >= $mvTitle->getEndTimeSeconds() &&
 					$aMVD->stream_id ==  $mvTitle->getStreamId() ){
-						//just return the cached result (faster than the set of db queries below)			
+						//just return the cached result (faster than the set of db queries below)
 						return $aMVD;
 				}
 			}
 		}
-		
+
 		$dbr =& wfGetDB( DB_SLAVE );
 		$from_tables =  $dbr->tableName( 'mv_mvd_index' );
 		$vars = '`mv_page_id` as `id`, `wiki_title`,`mvd_type`,	`stream_id`, `start_time`,`end_time`,`view_count`';
 		$cond = array( 'stream_id' =>   $mvTitle->getStreamId()  ,
-						 'mvd_type' =>   'Anno_en' 						 
+						 'mvd_type' =>   'Anno_en'
 						);
-		
+
 		$cond[] = ' `start_time` <= '	. $mvTitle->getStartTimeSeconds() ;
 		$cond[] = ' `start_time` <= '	. $mvTitle->getEndTimeSeconds() ;
-					
+
 		$cond[] = ' `end_time` 	  >= '	. $mvTitle->getStartTimeSeconds() ;
-		$cond[] = ' `end_time`    >= '	. $mvTitle->getEndTimeSeconds() ;			
-		
+		$cond[] = ' `end_time`    >= '	. $mvTitle->getEndTimeSeconds() ;
+
 		$res = $dbr->select( $from_tables,
 			$vars,
 			$cond,
-			__METHOD__,	
-			array( 'LIMIT' => 1 ) //just get one result			
+			__METHOD__,
+			array( 'LIMIT' => 1 ) //just get one result
 		);
 		//print $dbr->lastQuery();
 		//die;
 		$aMvd_rows = MV_Index::getMVDMeta($res, false, 'Speech_by,Bill,category');
-		//returns the result in array set to current: 
-		$aMvd = end($aMvd_rows );		
+		//returns the result in array set to current:
+		$aMvd = end($aMvd_rows );
 		if(!isset(self::$annoCache[ $aMvd->id ])){
 			self::$annoCache[ $aMvd->id ] = $aMvd;
-		};		
+		};
 		return $aMvd;
 	}
-	
+
 	/*@@todo figure another way to get at this data...this is not a very fast query: */
 	function getMVDTypeInRange( $stream_id, $start_time = null, $end_time = null ) {
 		$dbr =& wfGetDB( DB_SLAVE );
@@ -274,8 +274,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		 $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvMediaSearchResultsLimit;
 
 		global $mvSpokenByInSearchResult, $mvCategoryInSearchResult, $mvBillInSearchResult;
-		
-		
+
+
 		// init vars
 		$from_tables = '';
 		$vars =	$conds = $options = array();
@@ -284,7 +284,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$vars_top =	$conds_top = $options_top = array();
 
 		$do_top_range_query = false;
-	
+
 
 		$dbr =& wfGetDB( DB_SLAVE );
 		// organize the queries (group full-text searches and category/attributes)
@@ -292,7 +292,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$ftq_match_asql = $last_person_aon = $ftq_match = $ftq = $snq = $toplq = $toplq_cat = $date_range_join = $date_range_where = $asql = ''; // top query and full text query =''
 		if ( $filters == '' )return array();
 		$ftq_match_asql = $date_cond = '';
-		
+
 		$date_range_join = true;
 
 		// $selOpt = ($mvDo_SQL_CALC_FOUND_ROWS)?'SQL_CALC_FOUND_ROWS':'';
@@ -321,9 +321,9 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 			// add to the fulltext query:
 			switch( $f['t'] ) {
-				case 'speech_by':		
+				case 'speech_by':
 				case 'spoken_by':
-					$skey = str_replace('_', ' ', $f['t']);					
+					$skey = str_replace('_', ' ', $f['t']);
 					// skip if empty value:
 					if ( trim( $f['v'] ) == '' )continue;
 					// if we have an OR set prev to OR
@@ -444,7 +444,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					$dbr->tableName( 'mv_stream_files' ) . '.stream_id ' .
 					' AND (' . $dbr->tableName( 'mv_stream_files' ) . '.file_desc_msg = ' .
 						$dbr->addQuotes( $mvDefaultVideoQualityKey ) .
-					//' OR '. $dbr->tableName( 'mv_stream_files' ) .'.file_desc_msg = ' . 
+					//' OR '. $dbr->tableName( 'mv_stream_files' ) .'.file_desc_msg = ' .
 					//	$dbr->addQuotes( $mvDefaultFlashQualityKey ) .
 					')'.
 				') ';
@@ -462,7 +462,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					' AND ' . $dbr->tableName( 'smw_relations' ) . '.relation_title = \'Spoken_By\'' .
 				 ') ';
 		}*/
-		
+
 		// add conditions to last condition element (cuz we have to manually mannage and or):
 
 		$conds[count( $conds )] = ' ' . $dbr->tableName( 'mv_mvd_index' ) . '.mvd_type = \'ht_en\' ' .
@@ -551,18 +551,18 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				MV_Index::insert_merge_range( $stream_groups[$row->stream_id], $stream_groups, $row );
 			}
 		}
-		
+
 		if( $mvCategoryInSearchResult){
 			$or='';
 			$conds='';
 			$options=array();
-			//build the category query conditions: 
+			//build the category query conditions:
 			foreach($ret_ary as $row){
 				if ( !isset( $ret_ary[$row->id]->category ) )
 					$ret_ary[$row->id]->categories = array();
-				
+
 				$conds .= $or . ' cl_from =' . $dbr->addQuotes( $row->id );
-				$or = ' OR ';				
+				$or = ' OR ';
 			}
 			//do the lookup:
 			$from_tables = $dbr->tableName( 'categorylinks' );
@@ -571,8 +571,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 								 $dbr->tableName( 'categorylinks' ) . '.cl_from = ' .
 								 $dbr->tableName( 'mv_mvd_index' ) . '.mv_page_id' .
 							' ) ';
-						
-			$vars = array( 'cl_from', 'cl_to' );				
+
+			$vars = array( 'cl_from', 'cl_to' );
 			$options['LIMIT'] = 2000; // max avarage 5 categories per page
 
 			$result_cat = $dbr->select( $from_tables,
@@ -584,30 +584,30 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				$ret_ary[$cat_row->cl_from]->categories[$cat_row->cl_to] = true;
 			}
 		}
-		
-		if( $mvSpokenByInSearchResult || $mvBillInSearchResult ){		
-		// slow especially for lots of query results but join Query is crazy complicated for SMW >= 1.2 
-		// (and I have not been able to construct it without hitting exessive number of rows in the EXPLIN) 
-		// @@todo these queries should be merged with semantic wiki Ask with some ~special~ keywords for fulltext search					
+
+		if( $mvSpokenByInSearchResult || $mvBillInSearchResult ){
+		// slow especially for lots of query results but join Query is crazy complicated for SMW >= 1.2
+		// (and I have not been able to construct it without hitting exessive number of rows in the EXPLIN)
+		// @@todo these queries should be merged with semantic wiki Ask with some ~special~ keywords for fulltext search
 			$smwStore =& smwfGetStore();
 			foreach ( $ret_ary as & $row ) {
 				//@@todo this is all very hackish but this is because SMW changed the db schema causing a few hacks:
-				// obviously this should be rewritten to use some SMW based query system. 
+				// obviously this should be rewritten to use some SMW based query system.
 				$smw_properties=array();
 				if($mvSpokenByInSearchResult && strtolower(substr($row->wiki_title,0,2))=='ht')
 					$smw_properties[]='Spoken_By';
-					
+
 				if($mvSpokenByInSearchResult && strtolower(substr($row->wiki_title,0,4))=='anno')
 					$smw_properties[]='Speech_by';
-				
+
 				if($mvBillInSearchResult)
-					$smw_properties[]='Bill';				
-				
-				
-                $rowTitle = Title::newFromText( $row->wiki_title, MV_NS_MVD );               
+					$smw_properties[]='Bill';
+
+
+                $rowTitle = Title::newFromText( $row->wiki_title, MV_NS_MVD );
                 foreach ( $smw_properties as $propKey ) {
-                	if ( $propKey != 'category' ) {	         
-                		//print "on key: $propKey";     
+                	if ( $propKey != 'category' ) {
+                		//print "on key: $propKey";
 	                	$propTitle = Title::newFromText( $propKey, SMW_NS_PROPERTY );
 		                $smwProps = $smwStore->getPropertyValues( $rowTitle, $propTitle );
 						// just a temp hack .. we need to think about this abstraction a bit..
@@ -618,18 +618,18 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 								$row->spoken_by = $v->getXSDValue();
 							}else if($propKey=='Bill'){
 								$row->bills=array();
-								foreach($smwProps as $v){				
+								foreach($smwProps as $v){
 									$row->bills[$v->getXSDValue()] = true;
-								}							
+								}
 							}
 						}
                 	}
-                }                			                 
+                }
 			}
 		}
-		
+
 		return $ret_ary;
-	}	
+	}
 	function numResultsFound() {
 		if ( isset( $this->numResultsFound ) ) {
 			return $this->numResultsFound;
