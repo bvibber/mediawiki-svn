@@ -199,8 +199,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  */
 $messages['es'] = array(
+	'optin-title' => 'Mejoras para la Iniciativa de Usabilidad',
 	'optin-survey-answer-whyoptout-didntlike' => 'No me gusta el diseño',
 	'optin-survey-answer-whyoptout-hard' => 'Fue muy difícil editar una página.',
 	'optin-survey-answer-whyoptout-didntwork' => 'No funcionó apropiadamente.',
@@ -510,6 +512,7 @@ $messages['ja'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'optin-survey-answer-whyoptout-other' => '다른 이유:',
 	'optin-survey-answer-browser-other' => '다른 브라우저:',
 );
 
