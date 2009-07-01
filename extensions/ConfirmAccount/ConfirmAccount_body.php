@@ -663,7 +663,7 @@ class ConfirmAccountsPage extends SpecialPage
 				$utalk->doEdit( $welcome . ' ~~~~', wfMsg('confirmaccount-wsum'), EDIT_MINOR );
 			}
 			# Finally, done!!!
-			$this->showSuccess( $this->submitType, $user->getName(), $error );
+			$this->showSuccess( $this->submitType, $user->getName(), array($error) );
 		} else if( $this->submitType === 'hold' ) {
 			global $wgUser;
 			# Make proxy user to email a message
