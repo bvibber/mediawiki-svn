@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Delete Batch',
-	'version' => '1.2.1',
+	'version' => '1.3',
 	'author' => 'Bartek Łapiński',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DeleteBatch',
 	'description' => 'Deletes a batch of pages',

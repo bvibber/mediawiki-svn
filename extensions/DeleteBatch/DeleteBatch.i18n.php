@@ -24,6 +24,7 @@ Uploaded files should contain page name and optional reason, separated by a "|" 
 	'deletebatch-as' => 'Run the script as:',
 	'deletebatch-both-modes' => 'Please choose either one specified page or a given list of pages.',
 	'deletebatch-or' => '<b>or</b>',
+	'deletebatch-delete' => 'Delete',
 	'deletebatch-page' => 'Pages to be deleted:',
 	'deletebatch-reason' => 'Reason for deletion',
 	'deletebatch-processing-from-file' => 'deleting pages from file list',
