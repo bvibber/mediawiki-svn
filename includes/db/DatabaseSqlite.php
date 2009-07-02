@@ -455,7 +455,7 @@ class DatabaseSqlite extends DatabaseBase {
 	/** No-op */
 	public function setBigSelects( $value = true ) {}
 
-	public function lockTables( $read, $write, $method ) {}
+	public function lockTables( $read, $write, $method, $lowPriority = true ) {}
 
 	public function unlockTables( $method ) {}
 

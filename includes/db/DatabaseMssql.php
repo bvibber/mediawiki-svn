@@ -981,6 +981,12 @@ class DatabaseMssql extends DatabaseBase {
 	public function unlock( $lockName, $method ) {
 		return true;
 	}
+	public function lockTables( $read, $write, $method, $lowPriority = true ) {
+		return true;
+	}
+	public function unlockTables( $method ) {
+		return true;
+	}
 	
 	public function getSearchEngine() {
 		return "SearchEngineDummy";

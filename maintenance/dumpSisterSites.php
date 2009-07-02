@@ -25,25 +25,33 @@
  * @ingroup SpecialPage
  */
 
-require_once( 'commandLine.inc' );
+require_once( "Maintenance.php" );
 
-$dbr = wfGetDB( DB_SLAVE );
-$dbr->bufferResults( false );
-$result = $dbr->select( 'page',
-	array( 'page_namespace', 'page_title' ),
-	array(
-		'page_namespace'   => NS_MAIN,
-		'page_is_redirect' => 0,
-	),
-	'dumpSisterSites' );
+class DumpSisterSites extends Maintenance {
+	public function __construct() {
+		parent::__construct();
+		$this->mDescription = "Quickie page name dump script for SisterSites usage";
+	}
+	
+	public function execute() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$dbr->bufferResults( false );
+		$result = $dbr->select( 'page',
+			array( 'page_namespace', 'page_title' ),
+			array( 'page_namespace'   => NS_MAIN,
+				   'page_is_redirect' => 0,
+			),
+			__METHOD__ );
 
-while( $row = $dbr->fetchObject( $result ) ) {
-	$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-	$url = $title->getFullUrl();
-	$text = $title->getPrefixedText();
-	echo "$url $text\n";
+		while( $row = $dbr->fetchObject( $result ) ) {
+			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+			$url = $title->getFullUrl();
+			$text = $title->getPrefixedText();
+			$this->output( "$url $text\n" );
+		}
+		$dbr->freeResult( $result );
+	}
 }
 
-$dbr->freeResult( $result );
-
-
+$maintClass = "DumpSisterSites";
+require_once( DO_MAINTENANCE );

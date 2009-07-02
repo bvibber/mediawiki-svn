@@ -2206,8 +2206,9 @@ abstract class DatabaseBase {
 	 * @param $read Array of tables to lock for read access
 	 * @param $write Array of tables to lock for write access
 	 * @param $method String name of caller
+	 * @param $lowPriority bool Whether to indicate writes to be LOW PRIORITY
 	 */
-	abstract public function lockTables( $read, $write, $method );
+	abstract public function lockTables( $read, $write, $method, $lowPriority = true );
 	
 	/**
 	 * Unlock specific tables
