@@ -215,6 +215,8 @@ $messages['bs'] = array(
 	'slippymap_code' => 'Wikikod za pogled ove mape:',
 	'slippymap_button_code' => 'Preuzmi wikikod',
 	'slippymap_resetview' => 'Poništi pogled',
+	'slippymap_invalidmode' => "Nevaljan 'mode' vrijednost '$1'",
+	'slippymap_clicktoactivate' => 'Kliknite za aktivaciju mape',
 );
 
 /** Czech (Česky)

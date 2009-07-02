@@ -169,6 +169,13 @@ $messages['pl'] = array(
 	'usabilityinitiative-desc' => 'Funkcje rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'usabilityinitiative' => 'Iniciativa de Usabilidade',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

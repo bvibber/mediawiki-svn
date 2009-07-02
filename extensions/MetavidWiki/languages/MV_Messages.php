@@ -2134,6 +2134,8 @@ $messages['es'] = array(
 	'download_clip' => 'Descargar el clip',
 	'download_text' => 'Descargar texto (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML):',
 	'clip_linkback' => 'Página fuente de clip',
+	'mv_ogg-player-videoElement' => 'Soporte nativo para video Ogg',
+	'mv_ogg-player-oggPlugin' => 'Plugin Ogg genérico',
 	'mv_ogg-player-selected' => '(seleccionado)',
 	'add_to_end_of_sequence' => 'Agregar al final de la secuencia',
 	'close' => 'cerrar',
@@ -2147,8 +2149,10 @@ $messages['es'] = array(
 	'rsd_results_next' => 'siguiente',
 	'rsd_results_prev' => 'anterior',
 	'mv_upload' => 'Cargar',
+	'cc_title' => 'Creative Commons',
 	'cc_by_title' => 'Atribución',
 	'cc_nc_title' => 'No comercial',
+	'cc_sa_title' => 'CompartirIgual',
 	'cc_pd_title' => 'Dominio público',
 	'unknown_license' => 'Licencia desconocida',
 	'mv_preview_insert' => 'Previsualisar inserción',
@@ -7578,6 +7582,7 @@ Saltar para vista de stream: $2',
 	'mv_mang_layers' => 'Gerir Camadas',
 	'mv_mang_layers_title' => "Gerir o conjunto de visualização de camadas para a 'stream' actual",
 	'mv_protect_source_material' => 'Material fonte original protegido contra edições',
+	'right-mv_delete_mvd' => 'Apagar metadados MetaVid',
 );
 
 /** Tarifit (Tarifit)

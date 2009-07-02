@@ -223,11 +223,13 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Mobe
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'randomincategory' => 'Satunnainen sivu luokassa',
+	'randomincategory-desc' => '[[Special:Randomincategory|Toimintosivu]] josta saa luokkakohtaisen satunnaisen sivun',
 	'randomincategory-toolbox' => 'Satunnainen sivu',
 	'randomincategory-nocategory' => 'Luokkaa $1 ei ole tai se on tyhjä.',
 	'randomincategory-label' => 'Luokka',

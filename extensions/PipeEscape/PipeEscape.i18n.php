@@ -77,6 +77,13 @@ $messages['es'] = array(
 	'pipeescape-desc' => 'Función del analizador sintáctico <code>#!</code> para insertar el carácter de barra vertical «|» como tal carácter y sin significado especial,',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'pipeescape-desc' => 'Parser toiminto <code>#!</code> Kun haluat "|" -merkin olevan vain "|" -merkin',
+);
+
 /** French (Français)
  * @author Grondin
  */

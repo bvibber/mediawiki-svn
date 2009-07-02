@@ -606,6 +606,16 @@ $messages['tr'] = array(
 	'pageby-anon' => '<i>anonim</i>',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'pageby-first' => 'بەت قۇرغۇچى $1, $2',
+	'pageby-last' => 'ئاخىرقى <a href="$3">ئۆزگەرتكۈچى</a> $1, $2',
+	'pageby-contributors' => 'تۆھپىكارلار',
+	'pageby-anon' => '<i>ئاتسىز</i>',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

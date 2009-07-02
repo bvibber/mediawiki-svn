@@ -195,11 +195,13 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'unicodeconverter' => 'Unicode-muunnin',
+	'unicodeconverter-desc' => 'Yksinkertainen esimerkki toimintosivu-moduulista. [[Special:UnicodeConverter|Kun tälle antaa UTF-8 merkkijonon]], se muuntaa sen HTML entiteetiksi jota voi käyttää ISO 8859-1 verkkosivulla',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Alkuperäinen teksti',
 	'unicodeconverter-newtext' => 'Muunnettu teksti',

@@ -26,6 +26,13 @@ $messages['be-tarask'] = array(
 	'clientside-desc' => 'Дадае функцыі для стварэньня коду ў кліенцкіх фарматах, такіх як HTML, CSS і JavaScript',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'clientside-desc' => 'Omogućuje funkcije za generisanje koda u formatu za klijenta poput HTML, CSS i JavaScript',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

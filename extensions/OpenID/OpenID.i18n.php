@@ -3167,9 +3167,13 @@ Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua c
 
 Existems vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID], e você poderá já ter uma conta ativada para OpenID noutro serviço.',
 	'openidupdateuserinfo' => 'Atualizar a minha informação pessoal',
+	'openiddelete-button' => 'Confirmar',
 	'openid-prefstext' => 'Preferências do [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Esconder o seu OpenID na sua página de utilizador, se se autenticar com OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Atualizar a seguinte informação a partir da minha "persona" OpenID de cada vez que me autentico:',
+	'openid-urls-action' => 'Acção',
+	'openid-urls-delete' => 'Apagar',
+	'openid-add-url' => 'Adicionar novo OpenID',
 	'openidsigninorcreateaccount' => 'Entrar ou Criar Nova Conta',
 	'openid-provider-label-openid' => 'Introduza a sua URL OpenID',
 	'openid-provider-label-google' => 'Entrar usando a sua conta do Google',

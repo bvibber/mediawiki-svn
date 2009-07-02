@@ -896,6 +896,18 @@ $messages['tr'] = array(
 	'talkhere-addcomment' => 'Yorumu ekle',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'talkhere-talkpage' => 'مۇنازىرە بېتى',
+	'talkhere-notalk' => "''(تېخى تەكلىپ يوق)''",
+	'talkhere-addcomment' => 'تەكلىپ قوش',
+	'talkhere-beforeinput' => 'تۆۋەندە تەكلىپ قوشالايسىز',
+	'talkhere-loading' => 'تەھرىرلىگۈچ يۈكلەۋاتىدۇ…',
+	'talkhere-collapse' => 'تەھرىرلىگۈچ يوشۇر',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

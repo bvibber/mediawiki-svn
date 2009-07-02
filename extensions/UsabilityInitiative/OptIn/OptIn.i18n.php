@@ -110,13 +110,23 @@ $messages['be-tarask'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'optin' => 'Prijava na Inicijativu upotrebljivosti',
+	'optin-desc' => 'Omogućuje korisnicima prijavu na poboljšanje upotrebljivosti putem Inicijative upotrebljivosti',
+	'optin-title' => 'Poboljšanje Inicijative upotrebljivosti',
+	'optin-needlogin' => 'Morate se [$1 prijaviti] da biste mogli početi koristiti poboljšanje Inicijative upotrebljivosti.',
+	'optin-submit-in' => 'Prijava',
+	'optin-submit-out' => 'Odjava',
+	'optin-survey-question-whyoptout' => 'Zašto se odjavljujete s ovog interfejsa?',
 	'optin-survey-answer-whyoptout-didntlike' => 'Ne sviđa mi se dizajn.',
 	'optin-survey-answer-whyoptout-hard' => 'Isuviše je teško uređivati stranicu.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Nije pravilno funkcioniralo.',
 	'optin-survey-answer-whyoptout-other' => 'Ostali preglednici:',
 	'optin-survey-question-browser' => 'Koji preglednik koristite?',
 	'optin-survey-answer-browser-other' => 'Ostali preglednici:',
+	'optin-survey-question-os' => 'Koji operativni sistem koristite?',
 	'optin-survey-answer-os-other' => 'Ostalo:',
+	'optin-survey-question-res' => 'Koja je rezolucija Vašeg monitora?',
+	'optin-survey-question-feedback' => 'Molimo pošaljite nam Vaš odgovor:',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -573,6 +583,7 @@ $messages['lb'] = array(
 	'optin-desc' => "Erlaabt et de Benotzer fir d'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative ze benotzen",
 	'optin-title' => "Verbesserungen duerch d'Benotzerfrëndlechkeets-Initiative",
 	'optin-needlogin' => "Dir musst Iech [$1 aloggen] fir d'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative notzen ze kënnen.",
+	'optin-intro' => 'D\'Benotzerfrëndlechkeets-Initiative vu Wikipedia huet en neit Ausgesinn an eng nei ännerungs-Toolbar ëntwéckelt fir d\'Benotzerfrëndlechkeet vu Wikipedia ze verbesseren. Dës Verbesserunge sinn net fir all Benotzer aktiviéiert, Dir kënnt Iech awer dofir entscheeden se ze benotzen an demm Dir op "{{int:optin-submit-in}}" hei ënnendrënner klickt.',
 	'optin-success-in' => 'Dir hutt Iech elo fir d\'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative ugemellt.
 Dir kënnt dës zu jidder Zäit nees ausschalten an deem datt Dir op "{{int:optin-submit-out}}" hei ënnendrënner klickt.',
 	'optin-success-out' => 'ir hutt Iech elo fir d\'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative ofgemellt.
@@ -700,10 +711,29 @@ Nos agradariá de saber çò que pensatz de nòstra interfàcia novèla, nos agr
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'optin' => 'Włączenie Inicjatywy Użyteczności',
+	'optin-desc' => 'Pozwala użytkownikom włączyć ulepszenia zrealizowane w ramach Inicjatywy Użyteczności',
+	'optin-title' => 'Ulepszenia Inicjatywy Użyteczności',
+	'optin-needlogin' => 'Musisz [$1 zalogować się] by móc włączyć ulepszenia zrealizowane w ramach Inicjatywy Użyteczności.',
+	'optin-intro' => 'Zamierzając poprawić użyteczność Wikipedii utworzono nowy wygląd strony oraz nowy pasek z narzędziami edycyjnymi. Te ulepszenia jeszcze nie są dostępne dla wszystkich użytkowników, ale Ty możesz je włączyć poprzez kliknięcie poniżej „{{int:optin-submit-in}}”.',
+	'optin-success-in' => 'Udało Ci się włączyć ulepszenia zrealizowane w ramach Inicjatywy Użyteczności.
+W każdej chwili możesz je wyłączyć poprzez kliknięcie poniżej „{{int:optin-submit-out}}”.',
+	'optin-success-out' => 'Udało Ci się wyłączyć ulepszenia zrealizowane w ramach Inicjatywy Użyteczności.
+W każdej chwili możesz je przywrócić poprzez kliknięcie poniżej „{{int:optin-submit-in}}”.',
+	'optin-submit-in' => 'Włącz',
+	'optin-submit-out' => 'Wyłącz',
+	'optin-survey-intro' => 'Dziękujemy za wypróbowanie ulepszeń zrealizowanych w ramach Inicjatywy Użyteczności.
+Możesz wyłączyć ulepszenia poprzez kliknięcie na dole strony „{{int:optin-submit-out}}”.
+
+Chcielibyśmy poznać Twoją opinię dotyczącą nowego interfejsu, w związku z tym będziemy wdzięczni za wypełnienie poniższej nieobowiązkowej ankiety, zanim klikniesz „{{int:optin-submit-out}}”.',
+	'optin-survey-question-whyoptout' => 'Dlaczego wyłączasz ten interfejs?',
 	'optin-survey-answer-whyoptout-didntlike' => 'Nie podoba mi się wygląd strony.',
+	'optin-survey-answer-whyoptout-hard' => 'Edytowanie strony było zbyt trudne.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Nie działał poprawnie.',
 	'optin-survey-answer-whyoptout-other' => 'Inny powód',
 	'optin-survey-question-browser' => 'Z jakiej korzystasz przeglądarki?',
 	'optin-survey-answer-browser-ie5' => 'Internet Explorer 5',
@@ -728,6 +758,7 @@ $messages['pl'] = array(
 	'optin-survey-answer-os-linux' => 'Linux',
 	'optin-survey-answer-os-other' => 'Inny',
 	'optin-survey-question-res' => 'Z jakiej rozdzielczości ekranu korzystasz?',
+	'optin-survey-question-feedback' => 'Napisz nam swoją opinię',
 );
 
 /** Pashto (پښتو)

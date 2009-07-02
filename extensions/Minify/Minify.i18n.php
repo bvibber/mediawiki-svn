@@ -30,6 +30,13 @@ $messages['be-tarask'] = array(
 	'minify-desc' => 'Скарачае вывад CSS і JavaScript ад action=raw',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'minify-desc' => 'Smanjuje CSS i JavaScript izlaz od action=raw',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

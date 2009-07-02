@@ -1566,6 +1566,7 @@ $wdMessages['bs'] = array(
 	'datasearch_ext_identifier' => 'Vanjski identifikatori',
 	'datasearch_search_text' => 'Traži tekst:',
 	'datasearch_within_words' => 'Unutar riječi:',
+	'datasearch_within_ext_ids' => 'Unutar vanjskih identifikatora:',
 	'datasearch_showing_only' => 'Prikazuj samo najviše $1 {{PLURAL:$1|rezultat|rezultata}}.',
 	'datasearch_match_words' => 'Riječi koje odgovaraju <i>$1</i> i povezana značenja',
 	'datasearch_match_words_lang' => 'Riječi u <i>$1</i> odgovaraju <i>$2</i> i povezanim značenjima',

@@ -1174,6 +1174,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1197,6 +1198,7 @@ $messages['pt'] = array(
 	'duplicator-dest-invalid' => 'Por favor, forneça um título de destino válido.',
 	'duplicator-dest-exists' => '[[$1]] já existe. Por favor, forneça um título de destino que ainda não exista.',
 	'duplicator-toomanyrevisions' => '[[$1]] possui demasiadas ($2) revisões e não pode ser copiada. O limite actual é $3.',
+	'right-duplicate' => 'Duplicar páginas',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

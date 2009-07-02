@@ -1037,11 +1037,13 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Diagramma Della Verita
  * @author Zamwan
  */
 $messages['ms'] = array(
 	'vote' => 'Undi',
+	'vote-desc' => 'Menyediakan keupayaan undian ringkas',
 	'vote-current' => "Undian terkini anda adalah untuk '''$1'''.",
 	'vote-caption' => 'Pilihan anda:',
 	'vote-submit' => 'Undi',
@@ -1050,6 +1052,7 @@ $messages['ms'] = array(
 	'vote-results' => 'Keputusan undian',
 	'vote-results-choice' => 'Pilihan',
 	'vote-results-count' => 'Kira',
+	'vote-login' => 'Anda perlu [$1 log masuk] untuk mengundi.',
 	'vote-invalid-choice' => 'Anda mesti memilih salah satu dari pilihan yang ada.',
 );
 
