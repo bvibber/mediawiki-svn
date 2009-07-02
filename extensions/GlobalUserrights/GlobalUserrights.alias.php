@@ -10,7 +10,7 @@ $aliases = array();
 
 /** English */
 $aliases['en'] = array(
-	'GlobalUserrights' => array( 'GlobalUserRights' ),
+	'GlobalUserrights' => array( 'GlobalUserRights', 'GlobalGroupMembership' ),
 );
 
 /** Arabic (العربية) */
