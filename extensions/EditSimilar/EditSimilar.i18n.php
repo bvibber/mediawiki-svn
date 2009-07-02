@@ -185,7 +185,7 @@ Verifica {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.
 );
 
 /** Finnish (Suomi)
- * @author Jack Phoenix
+ * @author Jack Phoenix <jack@countervandalism.net>
  * @author Mobe
  * @author Varusmies
  */
@@ -194,7 +194,7 @@ $messages['fi'] = array(
 	'editsimilar-thanks' => 'Kiitos muokkauksestasi.
 Katso {{PLURAL:$2|tämä aiheeseen liittyvä sivu|nämä aiheeseen liittyvät sivut}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Kiitos muokkauksestasi.
-{{PLURAL:$2|Tämä sivu|Nämä sivut}} voisivat kaivata apuasi: $1.',
+{{PLURAL:$2|Tämä sivu voisi|Nämä sivut voisivat}} myös kaivata apuasi: $1.',
 	'editsimilar-thankyou' => 'Kiitos muokkauksestasi, $1!',
 	'editsimilar-link-disable' => 'aseta asetukset',
 	'tog-edit-similar' => 'Ota käyttöön samanlaisten sivujen ehdotukset',
