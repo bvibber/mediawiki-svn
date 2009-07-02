@@ -1,7 +1,7 @@
 <?php
 
 class NssUser {
-	static $passwdFields = array( 'pwd_uid', 'pwd_gid', 'pwd_home', 'pwd_active', 'pwd_email' );
+	static $passwdFields = array( 'pwd_name', 'pwd_uid', 'pwd_gid', 'pwd_home', 'pwd_active', 'pwd_email' );
 	
 	function __construct( $name ) {
 		$this->name = $name;
@@ -119,6 +119,21 @@ class NssUser {
 			$names[] = $row->pwd_name;
 		return $names;
 	}
+	public static function fetchByActive() {
+		global $wgAuth;
+		$dbr = $wgAuth->getDB( DB_READ );
+		
+		$res = $dbr->select( 'passwd', array( 'pwd_name', 'pwd_active' ), array(), __METHOD__ );
+		
+		$actives = array();
+		while ( $row = $res->fetchObject() ) {
+			if ( !isset( $actives[$row->pwd_active] ) )
+				$actives[$row->pwd_active] = array();
+			
+			$actives[$row->pwd_active] = $row->pwd_name;
+		}
+		return $actives;		
+	}
 	
 	public static function fetchAll() {
 		global $wgAuth;
@@ -129,6 +144,7 @@ class NssUser {
 		while ( $row = $res->fetchObject() ) {
 			$user = new self( $row->pwd_name );
 			$user->loadFromRow( $row );
+			$users[$row->pwd_name] = $user; 
 		}
 		return $users;
 	}

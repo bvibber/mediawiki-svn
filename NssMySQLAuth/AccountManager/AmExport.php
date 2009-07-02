@@ -14,14 +14,16 @@ class AmExport {
 		global $wgOut;
 		$wgOut->disable();
 		wfResetOutputBuffers();
-		header( 'Content-Type: application/octet-stream' );
 		echo $result;
 		return true;
 	}
 	
-	static $formats = array('csv');
+	static $formats = array('csv', 'csvexcel' );
 	
-	function formatCsv( $data ) {
+	function formatCsvexcel( $data ) {
+		return $this->formatCsv( $data, ';' );
+	}
+	function formatCsv( $data, $separator = ',' ) {
 		$props = NssProperties::getAll();
 		$users = NssUser::fetchAll();
 		
@@ -32,6 +34,8 @@ class AmExport {
 				$field = isset( $line[$name] ) ? $line[$name] : '';
 				
 				if ( !$field && in_array( $name, array( 'username', 'home', 'active', 'email' ) ) ) {
+					if ( !isset( $users[$username] ) )
+						continue;
 					$field = $users[$username]->get( $name );
 				}
 				
@@ -50,8 +54,10 @@ class AmExport {
 				else
 					$dataline[] = $field;
 			}
-			$result .= implode( ',', $dataline )."\r\n";
+			$result .= implode( $separator, $dataline )."\r\n";
 		}
+		
+		header( "Content-Disposition: inline;filename*=utf-8'en'export.csv" );
 		return $result;
 	}
 }
