@@ -465,6 +465,11 @@ class File_Ogg
                 
             }
         }
+        
+		print "Memory used: " . memory_get_usage() . "\n";
+		print "Size of _streamList is " . count( $this->_streamList, COUNT_RECURSIVE )."\n";
+        file_put_contents( '/Users/andrew/streamList-2', print_r( $this->_streamList, true ) );
+        
         $this->_groupLengths = $groupLengths;
         $this->_totalLength = array_sum( $groupLengths );
         unset($this->_streamList);
