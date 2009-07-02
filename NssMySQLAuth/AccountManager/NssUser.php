@@ -130,7 +130,7 @@ class NssUser {
 			if ( !isset( $actives[$row->pwd_active] ) )
 				$actives[$row->pwd_active] = array();
 			
-			$actives[$row->pwd_active] = $row->pwd_name;
+			$actives[$row->pwd_active][] = $row->pwd_name;
 		}
 		return $actives;		
 	}
