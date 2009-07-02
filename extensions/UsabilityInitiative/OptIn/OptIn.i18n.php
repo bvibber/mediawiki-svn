@@ -14,7 +14,7 @@ $messages = array();
 $messages['en'] = array(
 	'optin' => 'Usability Initiative opt in',
 	'optin-desc' => 'Allow users to opt in to the Usability Initiative\'s usability enhancements',
-	'optin-title' => 'Usability Intitiative enhancements',
+	'optin-title' => 'Usability Initiative enhancements',
 	'optin-needlogin' => 'You need to [$1 log in] to opt in to the Usability Initiative\'s usability enhancements.',
 	'optin-intro' => 'The Wikipedia Usability Initiative has developed a new skin and a new edit toolbar intended to enhance the usability of Wikipedia. These enhancements have not been enabled for all users yet, but you can opt in to them by clicking "{{int:optin-submit-in}}" below.',
 	'optin-success-in' => 'You have successfully opted in to the Usability Initiative\'s usability enhancements.
@@ -492,8 +492,8 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 $messages['ja'] = array(
 	'optin' => 'ユーザビリティー改善への参加',
 	'optin-desc' => 'Usability Initiative を使って利用者参加型のユーザビリティー改善を行う',
-	'optin-title' => 'Usability Intitiative による改善',
-	'optin-needlogin' => 'Usability Intitiative によるユーザビリティー改善に参加するには[$1 ログイン]している必要があります。',
+	'optin-title' => 'Usability Initiative による改善',
+	'optin-needlogin' => 'Usability Initiative によるユーザビリティー改善に参加するには[$1 ログイン]している必要があります。',
 	'optin-intro' => 'Wikipedia Usability Initiative は、ウィキペディアのユーザビリティーを改善させるための新しいスキンと編集ツールバーを開発しました。これらの改善はまだ全ての利用者に対して有効化されてはいませんが、以下の「{{int:optin-submit-in}}」をクリックすると個別に有効化できます。',
 	'optin-success-in' => 'Usability Initiative のユーザビリティー改善への参加に成功しました。
 以下の「{{int:optin-submit-out}}」をクリックすると、いつでも参加を取りやめることができます。',
