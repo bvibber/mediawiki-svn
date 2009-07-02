@@ -38,6 +38,9 @@ $messages['be-tarask'] = array(
 $messages['bs'] = array(
 	'prefstats' => 'Statistike postavki',
 	'prefstats-desc' => 'Praćenje statistika o tome kako korisnici imaju postavljene određene postavke',
+	'prefstats-title' => 'Statistike postavki',
+	'prefstats-list-intro' => 'Trenutno, slijedeće postavke se prate.
+Kliknite na jednu od njih da pogledate njene statistike.',
 );
 
 /** Czech (Česky)

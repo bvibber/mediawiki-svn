@@ -173,7 +173,7 @@ $messages['qqq'] = array(
 	'edittoolbar-help-content-heading4-result' => '{{Identical|Heading text}}',
 	'edittoolbar-help-content-heading5-syntax' => '{{Identical|Heading text}}',
 	'edittoolbar-help-content-heading5-result' => '{{Identical|Heading text}}',
-	'edittoolbar-help-content-file-result' => 'Do not translate anything except "Caption text" (twice).',
+	'edittoolbar-help-content-file-result' => 'Do not translate anything except "Caption text" (twice) and "Enlarge".',
 	'edittoolbar-help-content-reference-description' => '{{Identical|Reference}}',
 	'edittoolbar-help-content-showreferences-result' => 'For the <code><nowiki><li></nowiki></code> tag’s <code>id</code> attribute, non-ASCII characters are URL-encoded as follows: a period (<code>.</code>) followed by a capital hexadecimal code. For example, <code><nowiki><ref name="thử"></nowiki></code> produces <code><nowiki><li id="cite_note-th.E1.BB.AD-0"></nowiki></code>.',
 	'edittoolbar-help-content-signature-description' => '{{Identical|Signature}}',
@@ -337,15 +337,48 @@ $messages['bg'] = array(
 	'edittoolbar-group-list' => 'Списък',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'edittoolbar' => 'Uređivanje alatne trake',
+	'edittoolbar-desc' => 'Alatna traka stranice za uređivanje sa poboljšanom upotrebljivošću',
+	'edittoolbar-loading' => 'Punjenje...',
+	'edittoolbar-tool-ilink-example' => 'Naslov linka',
+	'edittoolbar-tool-file-pre' => '$1Datoteka:',
+	'edittoolbar-section-advanced' => 'Napredno',
+	'edittoolbar-tool-heading-1' => 'Nivo 1',
+	'edittoolbar-tool-heading-2' => 'Nivo 2',
+	'edittoolbar-tool-heading-3' => 'Nivo 3',
+	'edittoolbar-tool-heading-4' => 'Nivo 4',
+	'edittoolbar-tool-heading-5' => 'Nivo 5',
+	'edittoolbar-tool-heading-example' => 'Tekst naslova',
+	'edittoolbar-group-list' => 'Spisak',
+	'edittoolbar-group-size' => 'Veličina',
+	'edittoolbar-tool-small-example' => 'Smanjen tekst',
+	'edittoolbar-tool-newline' => 'Nova linija',
+	'edittoolbar-section-help' => 'Pomoć',
+	'edittoolbar-help-page-link' => 'Linkovi',
+	'edittoolbar-help-page-file' => 'Datoteke',
+	'edittoolbar-help-content-ilink-description' => 'Unutrašnji link',
+	'edittoolbar-help-content-reference-description' => 'Reference',
+	'edittoolbar-help-content-reference-result' => "Tekst stranice.<sup><a href='#'>[1]</a></sup>",
+	'edittoolbar-help-content-signaturetimestamp-description' => 'Potpis s trenutnim vremenom',
+	'edittoolbar-help-content-signature-description' => 'Potpis',
+);
+
 /** German (Deutsch)
  * @author Lukas9950
+ * @author Merlissimo
  */
 $messages['de'] = array(
 	'edittoolbar-tool-bold' => 'Fett',
 	'edittoolbar-tool-bold-example' => 'Fetter Text',
 	'edittoolbar-tool-italic' => 'Kursiv',
 	'edittoolbar-tool-italic-example' => 'Kursiver Text',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com Link-Text',
 	'edittoolbar-tool-file-example' => 'Beispiel.jpg',
+	'edittoolbar-tool-heading' => 'Überschrift',
 	'edittoolbar-group-size' => 'Größe',
 	'edittoolbar-section-help' => 'Hilfe',
 	'edittoolbar-help-heading-description' => 'Beschreibung',
@@ -360,6 +393,17 @@ $messages['de'] = array(
 	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Fetter &amp; kursiver Text</em></strong>',
 	'edittoolbar-help-content-ilink-description' => 'Interner Link',
 	'edittoolbar-help-content-xlink-description' => 'Externer Link',
+	'edittoolbar-help-content-heading1-syntax' => '= Überschrift =',
+	'edittoolbar-help-content-heading1-result' => '<h1>Überschrift</h1>',
+	'edittoolbar-help-content-heading2-syntax' => '== Überschrift ==',
+	'edittoolbar-help-content-heading2-result' => '<h2>Überschrift</h2>',
+	'edittoolbar-help-content-heading3-syntax' => '=== Überschrift ===',
+	'edittoolbar-help-content-heading3-result' => '<h3>Überschrift</h3>',
+	'edittoolbar-help-content-heading4-syntax' => '==== Überschrift ====',
+	'edittoolbar-help-content-heading4-result' => '<h4>Überschrift</h4>',
+	'edittoolbar-help-content-heading5-syntax' => '===== Überschrift =====',
+	'edittoolbar-help-content-heading5-result' => '<h5>Überschrift</h5>',
+	'edittoolbar-help-content-file-syntax' => '[[File:Beispiel.png|thumb|Beschreibung]]',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -631,6 +675,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'edittoolbar' => 'Editando barra de herramientas',
@@ -666,6 +711,8 @@ $messages['es'] = array(
 	'edittoolbar-tool-small-example' => 'Texto pequeño',
 	'edittoolbar-group-insert' => 'Insertar',
 	'edittoolbar-tool-gallery' => 'Galería de fotos',
+	'edittoolbar-tool-gallery-example' => 'Archivo:Ejemplo.jpg|Descripción1
+Archivo:Ejemplo.jpg|Descripción2',
 	'edittoolbar-tool-newline' => 'Nueva línea',
 	'edittoolbar-tool-table' => 'Tabla',
 	'edittoolbar-section-characters' => 'Carácteres especiales',
@@ -686,6 +733,9 @@ $messages['es'] = array(
 	'edittoolbar-help-content-bold-description' => 'Negrita',
 	'edittoolbar-help-content-bold-syntax' => "'''Texto en negrita'''",
 	'edittoolbar-help-content-bold-result' => '<strong>Texto en negrita</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Negrita &amp; cursiva',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Text en negrita & cursiva'''''",
+	'edittoolbar-help-content-bolditalic-result' => '<strong><em>Text en negrita & cursiva</em></strong>',
 	'edittoolbar-help-content-ilink-description' => 'Vínculo interno',
 	'edittoolbar-help-content-xlink-description' => 'Vínculo externo',
 	'edittoolbar-help-content-heading1-syntax' => '= Texto de encabezado =',
@@ -706,6 +756,7 @@ $messages['es'] = array(
 	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Nombre de usuario</a> (<a href='#' title='{{#special:mytalk}}'>discusión</a>) 15:54, 10 June 2009 (UTC)",
 	'edittoolbar-help-content-signature-description' => 'Firma',
 	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Nombre de usuario</a> (<a href='#' title='{{#special:mytalk}}'>discusión</a>)",
+	'edittoolbar-help-content-indent-description' => 'Indentado',
 );
 
 /** Finnish (Suomi)
@@ -842,6 +893,7 @@ Tiedosto:Esimerkki.jpg|Kuvateksti2',
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author Guillom
  * @author IAlex
  * @author McDutchie
  */
@@ -882,7 +934,7 @@ $messages['fr'] = array(
 	'edittoolbar-tool-big-example' => 'Texte en gras',
 	'edittoolbar-tool-small' => 'Petit',
 	'edittoolbar-tool-small-example' => 'Petit texte',
-	'edittoolbar-group-baseline' => 'Souligné',
+	'edittoolbar-group-baseline' => 'Niveau',
 	'edittoolbar-tool-superscript' => 'Exposant',
 	'edittoolbar-tool-superscript-example' => 'Texte en exposant',
 	'edittoolbar-tool-subscript' => 'Indice',
@@ -1774,6 +1826,7 @@ $messages['it'] = array(
 	'edittoolbar-tool-superscript-example' => 'Testo in apice',
 	'edittoolbar-tool-subscript' => 'Pedice',
 	'edittoolbar-tool-subscript-example' => 'Testo in pedice',
+	'edittoolbar-group-insert' => 'Inserisci',
 	'edittoolbar-tool-gallery' => 'Galleria di immagini',
 	'edittoolbar-tool-newline' => 'Nuova riga',
 	'edittoolbar-section-characters' => 'Caratteri speciali',
@@ -2367,7 +2420,7 @@ $messages['nl'] = array(
 	'edittoolbar-help-content-olist-result' => '<ol><li>Regel in genummerde lijst</li><li>Regel in genummerde lijst</li></ol>',
 	'edittoolbar-help-content-file-description' => 'Ingebed bestand',
 	'edittoolbar-help-content-file-syntax' => '[[File:Voorbeeld.png|thumb|Bijschrift]]',
-	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bijschrift' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/EditToolbar/images/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Bijschrift</div></div>",
+	'edittoolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Bijschrift' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/EditToolbar/images/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Vergroten' class='internal' href='#'><img height='11' width='15' alt='' src='skins/common/images/magnify-clip.png'/></a></div>Bijschrift</div></div>",
 	'edittoolbar-help-content-reference-description' => 'Referentie',
 	'edittoolbar-help-content-reference-syntax' => 'Paginatekst.&lt;ref name="test"&gt;[http://www.example.org Verwijzingstekst], additionele tekst.&lt;/ref&gt;',
 	'edittoolbar-help-content-reference-result' => "Paginatekst <sup><a href='#'>[1]</a></sup>",
@@ -2642,6 +2695,7 @@ $messages['pdc'] = array(
 /** Polish (Polski)
  * @author Leinad
  * @author Sp5uhe
+ * @author ToSter
  */
 $messages['pl'] = array(
 	'edittoolbar' => 'Pasek narzędzi edycyjnych',
@@ -2654,7 +2708,7 @@ $messages['pl'] = array(
 	'edittoolbar-tool-italic-example' => 'Tekst pochyłą czcionką',
 	'edittoolbar-tool-ilink' => 'Link wewnętrzny',
 	'edittoolbar-tool-ilink-example' => 'Tytuł linku',
-	'edittoolbar-tool-xlink' => 'Link zewnętrzny (pamiętaj o predrostku http://)',
+	'edittoolbar-tool-xlink' => 'Link zewnętrzny (pamiętaj o przedrostku http://)',
 	'edittoolbar-tool-xlink-example' => 'http://www.przyklad.com opis linku',
 	'edittoolbar-tool-file' => 'Plik osadzony',
 	'edittoolbar-tool-file-pre' => '$1Plik:',
@@ -2767,12 +2821,23 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'edittoolbar-loading' => 'A carregar...',
+	'edittoolbar-tool-bold' => 'Negrito',
+	'edittoolbar-tool-bold-example' => 'Texto a negrito',
+	'edittoolbar-tool-italic' => 'Itálico',
+	'edittoolbar-tool-italic-example' => 'Texto em itálico',
+	'edittoolbar-tool-ilink' => 'Ligação interna',
+	'edittoolbar-tool-ilink-example' => 'Título da ligação',
+	'edittoolbar-tool-xlink-example' => 'http://www.example.com ligação externa',
+	'edittoolbar-tool-file' => 'Ficheiro embutido',
+	'edittoolbar-tool-file-pre' => '$1Ficheiro:',
 	'edittoolbar-tool-file-example' => 'Exemplo.jpg',
 	'edittoolbar-tool-reference' => 'Referência',
+	'edittoolbar-section-advanced' => 'Edição avançada',
 	'edittoolbar-tool-heading-1' => 'Nível 1',
 	'edittoolbar-tool-heading-2' => 'Nível 2',
 	'edittoolbar-tool-heading-3' => 'Nível 3',
@@ -2780,13 +2845,34 @@ $messages['pt'] = array(
 	'edittoolbar-tool-heading-5' => 'Nível 5',
 	'edittoolbar-tool-heading-example' => 'Texto de cabeçalho',
 	'edittoolbar-group-list' => 'Lista',
+	'edittoolbar-tool-olist' => 'Lista numerada',
+	'edittoolbar-group-size' => 'Tamanho',
+	'edittoolbar-tool-big' => 'Grande',
+	'edittoolbar-tool-big-example' => 'Texto grande',
+	'edittoolbar-tool-small' => 'Pequeno',
+	'edittoolbar-tool-small-example' => 'Texto pequeno',
+	'edittoolbar-group-insert' => 'Inserir',
+	'edittoolbar-tool-gallery' => 'Galeria de imagens',
 	'edittoolbar-tool-newline' => 'Nova linha',
+	'edittoolbar-tool-table' => 'Tabela',
 	'edittoolbar-section-characters' => 'Carateres especiais',
 	'edittoolbar-section-help' => 'Ajuda',
 	'edittoolbar-help-heading-description' => 'Descrição',
+	'edittoolbar-help-heading-syntax' => 'O que digita',
+	'edittoolbar-help-heading-result' => 'Resultado',
 	'edittoolbar-help-page-link' => 'Ligações',
 	'edittoolbar-help-page-list' => 'Listas',
 	'edittoolbar-help-page-file' => 'Ficheiros',
+	'edittoolbar-help-page-reference' => 'Referências',
+	'edittoolbar-help-page-discussion' => 'Discussão',
+	'edittoolbar-help-content-italic-description' => 'Itálico',
+	'edittoolbar-help-content-italic-syntax' => "''Texto em itálico''",
+	'edittoolbar-help-content-italic-result' => '<em>Texto em itálico</em>',
+	'edittoolbar-help-content-bold-description' => 'Negrito',
+	'edittoolbar-help-content-bold-syntax' => "'''Texto a negrito'''",
+	'edittoolbar-help-content-bold-result' => '<strong>Texto a negrito</strong>',
+	'edittoolbar-help-content-bolditalic-description' => 'Negrito &amp; itálico',
+	'edittoolbar-help-content-bolditalic-syntax' => "'''''Negrito &amp; texto em itálico'''''",
 	'edittoolbar-help-content-ilink-description' => 'Ligação interna',
 	'edittoolbar-help-content-xlink-description' => 'Ligação externa',
 	'edittoolbar-help-content-olist-description' => 'Lista numerada',

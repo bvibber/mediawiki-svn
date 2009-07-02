@@ -236,6 +236,13 @@ $messages['pl'] = array(
 	'editwarning-warning' => 'Opuszczenie tej strony spowoduje utratę wprowadzonych przez Ciebie zmian.',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'editwarning' => 'Avido de edição',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
