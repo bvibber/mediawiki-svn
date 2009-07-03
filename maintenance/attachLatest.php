@@ -80,5 +80,3 @@ class AttachLatest extends Maintenance {
 
 $maintClass = "AttachLatest";
 require_once( DO_MAINTENANCE );
-
-ascu9a0scia-0cka,;m x;mm xm; {}lcascas
