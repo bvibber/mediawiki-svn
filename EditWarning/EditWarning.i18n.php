@@ -50,6 +50,24 @@ $messages['bs'] = array(
 	'editwarning-warning' => 'Napuštanjem ove stranice će se izgubiti sve promjene koje ste načinili.',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'editwarning' => 'Upozornění na změny',
+	'editwarning-desc' => 'Zobrazí upozornění, pokud se uživatel pokusí opustit editaci bez uložení změn',
+	'editwarning-warning' => 'Opuštěním této stránky se veškeré provedené změny ztratí.',
+);
+
+/** German (Deutsch)
+ * @author Metalhead64
+ * @author Umherirrender
+ */
+$messages['de'] = array(
+	'editwarning' => 'Bearbeitungswarnung',
+	'editwarning-desc' => 'Eine Warnung anzeigen, wenn ein Benutzer versucht, den Bearbeitungsvorgang ohne speichern zu verlassen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

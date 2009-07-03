@@ -30,3 +30,8 @@ $aliases['nl'] = array(
 	'OptIn' => array( 'BruikbaarheidsinitiatiefOptin' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'OptIn' => array( 'Włączenie Inicjatywy Użyteczności' ),
+);
+

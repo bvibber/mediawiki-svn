@@ -129,6 +129,23 @@ $messages['bs'] = array(
 	'optin-survey-question-feedback' => 'Molimo pošaljite nam Vaš odgovor:',
 );
 
+/** German (Deutsch)
+ * @author Benzen
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'optin-survey-answer-whyoptout-didntlike' => 'Mir gefällt das Design nicht.',
+	'optin-survey-answer-whyoptout-hard' => 'Es war zu schwer eine Seite zu bearbeiten',
+	'optin-survey-answer-whyoptout-didntwork' => 'Es funktioniert nicht einwandfrei.',
+	'optin-survey-answer-whyoptout-other' => 'Andere Begründung:',
+	'optin-survey-question-browser' => 'Welchen Browser verwendest du?',
+	'optin-survey-answer-browser-other' => 'Anderer Browser:',
+	'optin-survey-question-os' => 'Welches Betriebssystem verwendest du?',
+	'optin-survey-answer-os-other' => 'Andere:',
+	'optin-survey-question-res' => 'Was ist deine Bildschirmauflösung?',
+	'optin-survey-question-feedback' => 'Bitte gib uns dein Feedback:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
