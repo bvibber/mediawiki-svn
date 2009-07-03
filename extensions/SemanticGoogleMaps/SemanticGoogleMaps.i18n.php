@@ -193,6 +193,7 @@ $messages['id'] = array(
  * @author Mizusumashi
  */
 $messages['ja'] = array(
+	'semanticgooglemaps_printername' => 'Google マップ',
 	'semanticgooglemaps_lookupcoordinates' => '座標を調べる',
 	'semanticgooglemaps-desc' => '利用者が Google マップを使って意味的な座標データを編集・表示できるようにする',
 	'semanticgooglemaps-enteraddresshere' => 'アドレスをここに入力します',

@@ -49,6 +49,11 @@ $aliases['fa'] = array(
 	'WatchSubpages' => array( 'پی‌گیری_زیرصفحه‌ها' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'WatchSubpages' => array( 'Tarkkaile alasivuja' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'WatchSubpages' => array( 'Voir les sous-pages', 'VoirSousPages' ),

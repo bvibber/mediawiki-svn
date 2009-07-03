@@ -47,6 +47,20 @@ $messages['dsb'] = array(
 	'clientside-desc' => 'Dawa funkcije za napóranje koda w klientowych formatach ako HTML, CSS a JavaScript',
 );
 
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'clientside-desc' => 'Provee funciones para generar código en formatos cliente como HTML, CSS y JavaScript',
+);
+
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'clientside-desc' => 'Tarjoaa HTML:n, CSS:n ja JavaScriptin tapaisiin klientti-puolen formaattien muotoon koodaavat toiminnot',
+);
+
 /** French (Français)
  * @author IAlex
  */

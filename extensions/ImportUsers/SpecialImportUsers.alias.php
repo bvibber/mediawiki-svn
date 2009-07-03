@@ -135,6 +135,11 @@ $aliases['mk'] = array(
 	'ImportUsers' => array( 'УвизНаКорисници' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'ImportUsers' => array( 'ഉപയോക്തൃഇറക്കുമതി' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'ImportUsers' => array( 'Import pengguna' ),

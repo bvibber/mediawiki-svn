@@ -324,11 +324,14 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'useroptionstats' => 'Estatísticas de opções de usuário',
 	'uos-warn' => 'PHPlot não está instalado!',
 	'uos-choose' => 'Escolha uma das seguintes opções de usuário: $1',
+	'uos-unknown' => '*Padrão',
+	'uos-other' => '*Outro',
 );
 
 /** Russian (Русский)

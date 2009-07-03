@@ -1939,6 +1939,7 @@ $messages['eo'] = array(
  * @author Academo
  * @author Crazymadlover
  * @author Imre
+ * @author Locos epraix
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -2011,6 +2012,7 @@ Por favor, créelo o cámbielo para usar esta extensión.',
 	'configure-section-localization' => 'Localización',
 	'configure-section-timezone' => 'Zona horaria',
 	'configure-section-zh-conversion' => 'Conversión china',
+	'configure-section-css-js' => 'CSS y JavaScript',
 	'configure-section-namespaces' => 'Espacios de nombres',
 	'configure-section-stats' => 'Estadísticas del sitio',
 	'configure-section-skin' => 'Pieles',
@@ -2967,9 +2969,13 @@ $messages['he'] = array(
 	'configure-edit-core' => 'מדיה־ויקי',
 	'configure-edit-ext' => 'הרחבות',
 	'configure-viewconfig-default-diff' => 'שינויים מהגדרות ברירת המחדל',
+	'configure-ext-ext-dependencies' => "'''אזהרה:''' הרחבה זו דורשת את הפעלת ה{{PLURAL:$2|הרחבה הבאה|הרחבות הבאות}}: $1.",
+	'configure-ext-ext-dependency-err' => "'''שגיאה:''' ההרחבה $1 דורשת את הפעלת ההרחבה $2.",
 	'configure-ext-doc' => 'עיון בתיעוד מקוון',
 	'configure-ext-schemachange' => "'''אזהרה:''' הרחבה זו דורשת עדכון בבסיס הנתונים כדי לעבוד כראוי!",
 	'configure-ext-settings' => 'הגדרות',
+	'configure-ext-settings-dep-errors' => 'לא ניתן להפעיל הרחבה זו כיוון שלהגדר{{PLURAL:$1|ה הבאה|ות הבאות}} יש ערך בלתי מקובל:',
+	'configure-ext-settings-dep-error' => '$1: ערך נדרש: $2, ערך נוכחי: $3',
 	'configure-ext-use-extension' => 'הפעלת הרחבה זו',
 	'configure-ext-use' => 'הפעלה',
 	'configure-form-reason' => 'הסיבה לשינוי:',
@@ -3012,6 +3018,7 @@ $messages['he'] = array(
 	'configure-saved' => 'התצורה נשמרה',
 	'configure-backlink' => 'חזרה לטופס',
 	'configure-image-url-explanation' => 'כתבו את הכתובת לתמונה, או את שם התמונה באתר ויקי זה (ללא מרחב השם). תצוגה מקדימה תופיע בעת עזיבת השדה.',
+	'configure-section-robots' => 'רובוטי גלישה',
 	'configure-section-features' => 'תכונות',
 	'configure-section-general' => 'הגדרות כלליות',
 	'configure-section-pages' => 'דפים',
@@ -3083,7 +3090,7 @@ $messages['he'] = array(
 	'configure-select-wiki-view-specific' => 'אתר ויקי מסויים:',
 	'configure-select-wiki-submit' => 'בחירה',
 	'configure-setting-not-available' => 'הגדרה זו אינה זמינה בגרסה זו של מדיה־ויקי',
-	'configure-transwiki-not-in-range' => 'הוויקי הנבחר, $1, אינו בערכים המורשים ($2).',
+	'configure-transwiki-not-in-range' => 'הוויקי הנבחר, $1, אינו בער{{PLURAL:$3|ך המורשה|כים המורשים}}: $2.',
 	'configure-view' => 'צפייה',
 	'configure-view-all-versions' => 'רשימת הגרסאות המלאה',
 	'configure-view-default' => 'הגדרות ברירת המחדל',
@@ -3142,6 +3149,9 @@ $messages['he'] = array(
 	'configure-boolop-description-or' => 'לפחות אחד מהתנאים חייב להתקיים',
 	'configure-boolop-description-xor' => 'בדיוק אחד מהתנאים חייב להתקיים',
 	'configure-boolop-description-not' => 'התנאים חייבים לא להתקיים',
+	'configure-farmer-settings' => '[[Special:Configure|הגדרת ויקי זה]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|הגדרת הרחבות עבור ויקי זה]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|רשימת ההרחבות הזמינה עבור ויקי זה]].',
 );
 
 /** Hindi (हिन्दी)
@@ -7593,6 +7603,7 @@ $messages['uk'] = array(
 	'configure-section-debug' => 'Налагодження',
 	'configure-section-profiling' => 'Профілювання',
 	'configure-section-css-js' => 'CSS і JavaScript',
+	'configure-condition-operator-xor' => 'Виключне АБО',
 );
 
 /** Vèneto (Vèneto)

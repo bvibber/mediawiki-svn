@@ -44,6 +44,13 @@ $messages['dsb'] = array(
 	'minify-desc' => 'Pómjeńšujo wudaśe CSS a JavaScript z action=raw',
 );
 
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'minify-desc' => 'Contraer salida de CSS y JavaScript de action=raw',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -63,6 +70,13 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'minify-desc' => 'Verchleineret d CSS- un JavaScript-Uusgab vu action=raw',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'minify-desc' => 'כיווץ פלט CSS ו־JavaScript מ־action=raw',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

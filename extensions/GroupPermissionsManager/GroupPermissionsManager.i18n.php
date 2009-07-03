@@ -200,6 +200,30 @@ $messages['ar'] = array(
 	'right-readold' => 'رؤية محتوى المراجعات والفروقات القديمة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'grouppermissions-search' => 'ܟܢܘܫܝܐ:',
+	'grouppermissions-dologin' => 'ܥܘܠ',
+	'grouppermissions-dosearch' => 'ܙܠ',
+	'grouppermissions-searchlabel' => 'ܒܨܝ ܥܠ ܟܢܘܫܝܐ',
+	'grouppermissions-deletelabel' => 'ܫܘܦ ܟܢܘܫܝܐ',
+	'grouppermissions-add' => 'ܐܘܣܦ ܟܢܘܫܝܐ',
+	'grouppermissions-delete' => 'ܫܘܦ ܟܢܘܫܝܐ',
+	'grouppermissions-never' => 'ܠܐ ܡܡܬܘܡ',
+	'grouppermissions-sort-edit' => 'ܫܚܠܦܬܐ',
+	'grouppermissions-sort-admin' => 'ܡܕܒܪܢܘܬܐ',
+	'grouppermissions-log-name' => 'ܣܓܠܐ ܕܦܣܣ̈ܐ ܕܟܢܘܫܝܐ',
+	'grouppermissions-sp-save' => 'ܢܛܘܪ',
+	'grouppermissions-sp-addperm' => 'ܐܘܣܦ ܦܣܣܐ',
+	'right-history' => 'ܚܙܝ ܦܐܬܐ ܕܬܫܥܝܬ̈ܐ',
+	'right-search' => 'ܒܨܝܐ ܒܘܝܩܝ',
+	'right-contributions' => 'ܚܙܝ ܦܐܬܐ ܕܫܘܬܦܘܝܬ̈ܐ',
+	'right-recentchanges' => 'ܚܙܝ ܫܘܚܠܦ̈ܐ ܚܕܬ̈ܐ',
+	'right-edittalk' => 'ܫܚܠܦ ܦܐܬܘܬ̈ܐ ܕܕܘܪܫܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

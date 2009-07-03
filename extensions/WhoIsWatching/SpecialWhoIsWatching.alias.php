@@ -45,6 +45,11 @@ $aliases['fa'] = array(
 	'WhoIsWatching' => array( 'چه_کسی_پی‌گیری_می‌کند' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'WhoIsWatching' => array( 'Ketkä tarkkailevat' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'WhoIsWatching' => array( 'Qui a en suivi', 'QuiAEnSuivi' ),

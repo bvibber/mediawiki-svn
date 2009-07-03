@@ -42,6 +42,11 @@ $aliases['eo'] = array(
 	'Patroller' => array( 'Patrolanto' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'Patroller' => array( 'Muokkausten tarkistaja' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'Patroller' => array( 'Patrouilleur' ),

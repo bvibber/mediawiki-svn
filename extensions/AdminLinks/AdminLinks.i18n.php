@@ -64,6 +64,7 @@ $messages['ar'] = array(
 $messages['arc'] = array(
 	'adminlinks' => 'ܐܣܘܪ̈ܐ ܕܡܕܒܪ̈ܢܐ',
 	'adminlinks_users' => 'ܡܦܠܚܢ̈ܐ',
+	'adminlinks_importexport' => 'ܡܥܠܢܘܬܐ ܘܡܦܩܢܘܬܐ',
 );
 
 /** Bavarian (Boarisch)
@@ -280,6 +281,24 @@ $messages['gv'] = array(
 	'adminlinks_browsesearch' => 'Femblal as ronsaghey',
 	'adminlinks_importexport' => 'Ymmyrkey stiagh as assphurtal',
 	'right-adminlinks' => 'Jeeagh er y chiangley dys [[Special:AdminLinks|kianglaghyn reirey]]',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'adminlinks' => 'קישורים למנהלים',
+	'adminlinks-desc' => 'הוספת [[Special:AdminLinks|דף מיוחד]] המכיל קישורים שימושיים למנהלים',
+	'adminlinks_documentation' => 'תיעוד $1',
+	'adminlinks_general' => 'כללי',
+	'adminlinks_editsidebar' => 'עריכת סרגל הצד',
+	'adminlinks_editcss' => 'עריכת קובץ CSS',
+	'adminlinks_editmainpagename' => 'עריכת שם הדף הראשי',
+	'adminlinks_users' => 'משתמשים',
+	'adminlinks_createuser' => 'יצירת משתמש',
+	'adminlinks_browsesearch' => 'עיון וחיפוש',
+	'adminlinks_importexport' => 'ייבוא וייצוא',
+	'right-adminlinks' => 'עיינו בקישור אל [[Special:AdminLinks|קישורי מנהלים]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

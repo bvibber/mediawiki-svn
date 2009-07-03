@@ -73,6 +73,13 @@ $messages['es'] = array(
 	'localisationupdate-desc' => 'Mantener los mensajes localizados tan actualizados como sean posibles',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'localisationupdate-desc' => 'Pitää käännetyt viestit niin ajantasaisina kuin mahdollista',
+);
+
 /** French (Français)
  * @author Crochet.david
  */

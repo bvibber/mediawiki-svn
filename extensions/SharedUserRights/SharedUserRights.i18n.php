@@ -151,6 +151,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'shareduserrights' => 'Administración de derechos de usuario compartido',
@@ -158,6 +159,7 @@ $messages['es'] = array(
 	'gblrights-logpage' => 'Registro de derechos global',
 	'gblrights-pagetext' => 'Este es un registro de todos los cambios que son hechas a la tabla de derechos globales de la familia wiki',
 	'gblrights-rights-entry' => 'cambiado membresía de grupo global para $1 de $2 a $3',
+	'right-userrights-shared' => 'Administrar derechos de usuario compartido',
 );
 
 /** French (Français)

@@ -316,6 +316,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Drini
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'asksql' => 'Consulta SQL',
@@ -326,7 +327,7 @@ Esto puede añadir una carga considerable al servidor, por lo que úsalo esporá
 	'sqlislogged' => 'Por favor nota que todas las consultas quedan registradas',
 	'sqlquery' => 'Ingresar pregunta',
 	'querybtn' => 'Enviar pregunta',
-	'selectonly' => 'Sólo se permiten consultas de lectura solamente.',
+	'selectonly' => 'Sólo se permiten consultas de solo-lectura.',
 	'querysuccessful' => 'Consulta exitosa',
 	'right-asksql' => 'Realiza consultas SQL',
 );

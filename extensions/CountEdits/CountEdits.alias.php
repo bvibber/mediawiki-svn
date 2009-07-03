@@ -47,6 +47,11 @@ $aliases['es'] = array(
 	'CountEdits' => array( 'Contador_de_Ediciones' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'CountEdits' => array( 'Laske muokkaukset' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'CountEdits' => array( "Compteur d'éditions", "CompteurD'Editions" ),

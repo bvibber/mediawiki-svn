@@ -1280,7 +1280,7 @@ Kanggo masang vidéo panjenengan ing kaca wiki, lebokna kodhe sing kapacak ing n
 	'youtubeauthsub_summary' => 'Ngunggahaké vidéo YouTube',
 	'youtubeauthsub_uploading' => 'Vidéo panjenengan lagi diunggahaké.
 Tulung sabar dhisik.',
-	'youtubeauthsub_viewpage' => 'Pilihan liya, panjenengan bisa [[S1|mirsani vidéo panjenengan]].',
+	'youtubeauthsub_viewpage' => 'Pilihan liya, panjenengan bisa [[$1|mirsani vidéo panjenengan]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Mangga lebokna 1 utawa luwih tembung kunci.',
 	'youtubeauthsub_jserror_notitle' => 'Mangga lebokna irah-irahan (judhul) kanggo vidéo iki.',
 	'youtubeauthsub_jserror_nodesc' => 'Mangga lebokna dèskripsi kanggo vidéo iki.',

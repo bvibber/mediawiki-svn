@@ -341,6 +341,7 @@ $messages['fi'] = array(
 	'lookupuser-touched' => 'Käyttäjätietoja viimeksi muutettu: $1',
 	'lookupuser-info-authenticated' => 'Sähköpostitunnistus: $1',
 	'lookupuser-useroptions' => 'Käyttäjävalinnat:',
+	'right-lookupuser' => 'Hakea käyttäjän asetuksia',
 );
 
 /** French (Français)

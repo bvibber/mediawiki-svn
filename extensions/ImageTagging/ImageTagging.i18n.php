@@ -134,6 +134,18 @@ $messages['ar'] = array(
 	'tag-logpagetext' => 'هذا سجل بكل عمليات إضافة وإزالة وسم الصور.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'imagetagging-article' => 'ܦܐܬܐ:',
+	'imagetagging-imghistory' => 'ܬܫܥܝܬܐ',
+	'imagetagging-images' => 'ܨܘܪ̈ܬܐ',
+	'imagetagging-inthisimage' => 'ܒܗܕܐ ܨܘܪܬܐ: $1',
+	'imagetagging-tagcancel-button' => 'ܒܛܘܠ',
+	'imagetagging-taggedimages-title' => 'ܨܘܪ̈ܬܐ ܕ "$1"',
+);
+
 /** Araucanian (Mapudungun)
  * @author Remember the dot
  */

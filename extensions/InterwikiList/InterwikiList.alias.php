@@ -143,6 +143,11 @@ $aliases['mk'] = array(
 	'InterwikiList' => array( 'ИнтервикиЛиста' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'InterwikiList' => array( 'അന്തര്‍വിക്കിപട്ടിക' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'InterwikiList' => array( 'ListaInterwiki' ),

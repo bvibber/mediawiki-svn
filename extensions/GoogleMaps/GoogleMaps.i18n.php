@@ -310,6 +310,33 @@ $wgGoogleMapsMessages['ar'] = array(
 	'gm-mars' => 'المريخ',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$wgGoogleMapsMessages['arc'] = array(
+	'gm-searching' => 'ܒܨܝܐ...',
+	'gm-clear-all-points' => 'ܡܫܝ ܟܠ ܢܘܩܙ̈ܐ',
+	'gm-width' => 'ܦܬܘܐ',
+	'gm-zoom-control' => 'ܐܠܦܪܘܬܐ',
+	'gm-large' => 'ܪܒܐ',
+	'gm-medium' => 'ܡܨܥܝܐ',
+	'gm-small' => 'ܙܥܘܪܐ',
+	'gm-no-zoom-control' => 'ܠܐ ܡܕܡ',
+	'gm-yes' => 'ܐܝܢ',
+	'gm-no' => 'ܠܐ',
+	'gm-search' => 'ܒܨܝ',
+	'gm-clear-search' => 'ܡܫܝ ܦܠܛ̈ܐ ܕܒܘܨܝܐ',
+	'gm-miles' => 'ܡܝܠ̈ܐ',
+	'gm-save-path' => 'ܢܛܘܪ',
+	'gm-edit-path' => 'ܐܘܣܦ ܢܘܩܙ̈ܐ',
+	'gm-show-path' => 'ܚܘܝ ܢܘܩܙ̈ܐ',
+	'gm-color-path' => 'ܫܚܠܦ ܓܘܢܐ',
+	'gm-line-width' => 'ܦܬܘܐ',
+	'gm-back' => 'ܦܢܝܐ',
+	'gm-earth' => 'ܐܪܥܐ',
+	'gm-moon' => 'ܣܗܪܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -1244,6 +1271,7 @@ $wgGoogleMapsMessages['el'] = array(
  * @author Yekrats
  */
 $wgGoogleMapsMessages['eo'] = array(
+	'gm-desc' => 'Facile krei mapojn kun vikiiga marklingvo',
 	'gm-incompatible-browser' => 'Por rigardi la mapon kiu aperus en ĉi tiu spaco, vi bezonus kongruan retumilon.',
 	'gm-incompatible-browser-link' => 'Klaku ĉi tien por vidi liston de konguaj retumiloj',
 	'gm-no-editor' => 'Bedaŭrinde, via retumilo ne subtenas la interaktivajn map-farantajn ecojn.
@@ -1576,11 +1604,13 @@ $wgGoogleMapsMessages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Str4nd
  * @author Tarmo
  */
 $wgGoogleMapsMessages['fi'] = array(
+	'gm-desc' => 'Yksinkertaisella tavalla luoda karttoja jotka käyttävät wikitettyjä markkereita.',
 	'gm-incompatible-browser' => 'Tässä oleva kartta näkyy vain yhteensopivilla selaimilla.',
 	'gm-incompatible-browser-link' => 'Saat listan yhteensopivista selaimista napsauttamalla tästä.',
 	'gm-no-editor' => 'Valitettavasti selaimesi ei tue interaktiivisia kartanlaatimistoimintoja. Yritä uusinta versiota <a href="http://www.microsoft.com/ie">Internet Explorerista</a> (Windows) tai <a href="http://www.mozilla.org/products/firefox">Firefoxista</a> (Windows, Mac ja Linux).',

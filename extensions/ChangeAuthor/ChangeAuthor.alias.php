@@ -47,6 +47,11 @@ $aliases['dsb'] = array(
 	'ChangeAuthor' => array( 'Awtora změniś' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'ChangeAuthor' => array( 'VaihdaTekijännimi' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'ChangeAuthor' => array( "Modifier l'auteur", 'ModifierAuteur', 'Changer auteur', 'ChangerAuteur' ),

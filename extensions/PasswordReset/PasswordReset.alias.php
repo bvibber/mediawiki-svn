@@ -48,6 +48,12 @@ $aliases['dsb'] = array(
 	'Disabledusers' => array( 'Znjemóžnjone wužywarje' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'PasswordReset' => array( 'Salasanan pyyhkiminen' ),
+	'Disabledusers' => array( 'Käytöstäpoistetut käyttäjätilit' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'PasswordReset' => array( 'Réinitialisation du mot de passe', 'RéinitialisationDuMotDePasse' ),

@@ -34,6 +34,13 @@ $aliases['arz'] = array(
 	'OpenIDXRDS' => array( 'إكسردس_الهوية_المفتوحة' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'OpenIDLogin' => array( 'OpenID sisäänkirjautuminen' ),
+	'OpenIDConvert' => array( 'OpenID konversio' ),
+	'OpenIDServer' => array( 'OpenID palvelin' ),
+);
+
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
 	'OpenIDLogin' => array( 'Aperir session OpenID' ),

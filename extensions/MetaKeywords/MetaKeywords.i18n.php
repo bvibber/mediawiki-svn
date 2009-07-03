@@ -192,9 +192,9 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'metakeywords-desc' => '名前空間ごとに <tt><nowiki><meta "keywords"></nowiki></tt> および <tt><nowiki><meta "description"></nowiki></tt> タグの設定を可能にする',
-	'metakeywords' => ' # このページに "namespace|comma separated,keywords,to,add" という形式で行を追加します
+	'metakeywords' => ' # このページに「名前空間|追加する,コンマ,区切りの,キーワード」という形式で行を追加します
  # 名前空間識別子 (all) と (main) はそれぞれ、全名前空間と標準名前空間のデフォルトを指定します。',
-	'metadescription' => ' # このページに "namespace|description tag to set" という形式で行を追加します
+	'metadescription' => ' # このページに「名前空間|設定する説明」という形式で行を追加します
  # 名前空間識別子 (all) と (main) はそれぞれ、全名前空間と標準名前空間のデフォルトを指定します。
  # $1 は現在のページの名前に置換されます。',
 );

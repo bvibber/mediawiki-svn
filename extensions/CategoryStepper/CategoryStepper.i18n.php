@@ -163,9 +163,11 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Silvonen
  */
 $messages['fi'] = array(
+	'categorystepper-desc' => 'Näyttää luokkia selaavan askelluskentän joka mahdollistaa liikkumisen eteen- ja taaksepäin aakkosjärjestyksessä yhden tai useamman luokan läpi, mihin sivu kuuluu',
 	'categorystepper-end' => '(Luokan loppu)',
 	'categorystepper-start' => '(Luokan alku)',
 );

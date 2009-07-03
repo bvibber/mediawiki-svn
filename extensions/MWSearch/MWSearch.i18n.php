@@ -286,6 +286,13 @@ $messages['li'] = array(
 	'mwsearch-desc' => 'MWZeuk ingaef',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'mwsearch-desc' => 'MWSearch spraudnis',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

@@ -530,6 +530,7 @@ Reen:
  * @author Crazymadlover
  * @author Dferg
  * @author Imre
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'crosswikiblock-desc' => 'Permite bloquear a usuarios en otras wikis usando una [[Special:Crosswikiblock|página especial]]',
@@ -571,6 +572,7 @@ Retorne a:
 * [[Special:CrosswikiBlock|Formulario de bloqueo]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Desbloqueos locales no están soportados a través de esta interface. Usar [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Bloquear o desbloquear usuarios en otras wikis',
 );
 
 /** Estonian (Eesti)

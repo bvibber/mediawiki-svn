@@ -91,6 +91,14 @@ $messages['eu'] = array(
 Wikinewserako bereziki erabilgarria den in-page bertsioa sortzen du.',
 );
 
+/** Finnish (Suomi)
+ * @author Cimon Avaro
+ */
+$messages['fi'] = array(
+	'catfeed-desc' => 'Hyödyntää palasia tuoreet muutokset feedistä.
+Luo sivunsisäisen version, joka on erityisen hyödyllinen Wikinewsissä',
+);
+
 /** French (Français)
  * @author McDutchie
  */

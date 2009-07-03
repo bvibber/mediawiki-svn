@@ -217,8 +217,11 @@ $messages['dsb'] = array(
 	'tog-riched_toggle_remember_state' => 'Šaltowańsku poziciju se spomnjeś',
 );
 
-/** Spanish (Español) */
+/** Spanish (Español)
+ * @author Locos epraix
+ */
 $messages['es'] = array(
+	'fckeditor-desc' => 'Permitir edición usando el editor WYSIWYG FCKeditor',
 	'textrichditor' => 'Editor enriquecido',
 	'tog-riched_disable' => 'Desactivar editor enriquecido',
 	'tog-riched_disable_ns_main' => 'Desactivar editor enriquecido en el espacio de nombres principal',
@@ -389,9 +392,13 @@ $messages['gsw'] = array(
 	'tog-riched_toggle_remember_state' => 'Di letscht Stellig vum Schaltchnopf bhalte',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
 $messages['he'] = array(
+	'fckeditor-desc' => 'מתן האפשרות לעריכה באמצעות עורך תצוגת האמת FCKeditor',
 	'textrichditor' => 'עורך עשיר',
+	'prefs-fckeditor' => 'עורך עשיר',
 	'tog-riched_disable' => 'כבה את העורך העשיר',
 	'tog-riched_disable_ns_main' => 'כבה את העורך העשיר במרחב השם הראשי',
 	'tog-riched_disable_ns_talk' => 'כבה את העורך העשיר במרחב השם "{{ns:talk}}"',

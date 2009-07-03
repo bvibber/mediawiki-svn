@@ -139,10 +139,11 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Locos epraix
  * @author Sanbec
  */
 $messages['es'] = array(
-	'contributionseditcount' => 'Este usuario tiene $1 ediciones.',
+	'contributionseditcount' => 'Este usuario tiene {{PLURAL:$1|una edición|$1 ediciones}}.',
 	'contributionseditcount-desc' => 'Muestra un contador de ediciones en la [[Special:Contributions|página de contribuciones del usuario]]',
 );
 

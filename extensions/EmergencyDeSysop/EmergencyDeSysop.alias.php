@@ -31,6 +31,11 @@ $aliases['dsb'] = array(
 	'EmergencyDeSysop' => array( 'Zajmjeśe administratorowych pšawach w nuznem paźe' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'EmergencyDeSysop' => array( 'Poikkeuksellinen ylläpitäjyyden poisto kriisitilanteessa' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'EmergencyDeSysop' => array( 'Désysoppage d’urgence', 'DeSysopageUrgent' ),

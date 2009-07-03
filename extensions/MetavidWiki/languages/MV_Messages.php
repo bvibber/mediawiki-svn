@@ -867,6 +867,15 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_protect_source_material' => 'المادة المصدر الأصلية محمية من التعديلات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'mv_move_delete_msg' => 'ܫܢܐ ܠ $1',
+	'mv_tool_export' => 'ܡܦܩܢܘܬܐ',
+	'mv_export_cmml' => 'ܡܦܩܢܘܬܐ CMML',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -2200,6 +2209,7 @@ Todos los cambios se perderán.',
 	'mv_tool_navigate' => 'Navegar',
 	'mv_tool_navigate_title' => 'Navegar el stream completo',
 	'mv_tool_export' => 'Exportar',
+	'mv_tool_embed' => 'Embebido',
 	'mv_close_clip' => 'Cerrar clip',
 	'mv_click_to_edit' => 'hacer click para editar',
 	'ht_en' => 'Transcribir',
@@ -2212,6 +2222,7 @@ Todos los cambios se perderán.',
 	'mv_edit_metadata' => 'Editar metadatos',
 	'mv_advanced_edit' => 'Edición avanzada',
 	'mv_basic_edit' => 'Edición básica',
+	'mv_results_for' => 'Resultados para $1',
 	'mv_add_filter' => 'Agregar filtro',
 	'mv_search_spoken_by' => 'Hablado por',
 	'mv_search_categories' => 'Categorías',
@@ -4599,8 +4610,11 @@ $messages['ja'] = array(
 	'download_clip' => 'クリップをダウンロード',
 	'download_text' => 'テキストのダウンロード (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML):',
 	'clip_linkback' => 'クリップの出所ページ',
+	'mv_ogg-player-vlc-mozilla' => 'VLC プラグイン',
 	'mv_ogg-player-videoElement' => 'ネイティブOgg動画のサポート',
+	'mv_ogg-player-oggPlay' => 'Annodex OggPlay プラグイン',
 	'mv_ogg-player-oggPlugin' => '汎用のOggプラグイン',
+	'mv_ogg-player-quicktime-mozilla' => 'QuickTime プラグイン',
 	'mv_ogg-player-selected' => '(選択済み)',
 	'mv_generic_missing_plugin' => 'ご使用のブラウザは以下の再生形式をサポートしていないようです: <b>$1</b><br />
 プレーヤーをダウンロードするには<a href="http://metavid.org/wiki/Client_Playback">再生方法</a>のページをご利用ください。<br />',

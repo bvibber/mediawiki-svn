@@ -98,11 +98,12 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Jack Phoenix
  */
 $messages['fi'] = array(
 	'random-users-avatars-title' => 'Tapaa yhteisö',
-	'random-users-avatars-desc' => 'Lisää <tt>&lt;randomuserswithavatars&gt;</tt> tag joka esittää satunnaisesti valitun käyttäjän avatarin',
+	'random-users-avatars-desc' => 'Lisää <tt>&lt;randomuserswithavatars&gt;</tt>-elementin, joka esittää satunnaisesti valitun käyttäjän avatarin.',
 );
 
 /** French (Français)

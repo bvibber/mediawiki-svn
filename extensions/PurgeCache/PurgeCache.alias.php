@@ -39,6 +39,11 @@ $aliases['es'] = array(
 	'PurgeCache' => array( 'Purgar_caché' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'PurgeCache' => array( 'Pyyhi sivun välimuistiversio' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'PurgeCache' => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),

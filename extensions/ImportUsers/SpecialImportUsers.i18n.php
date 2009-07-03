@@ -118,6 +118,20 @@ $messages['ar'] = array(
 	'right-import_users' => 'استيراد المستخدمين بشكل كمي',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'importusers-uploadfile' => 'ܐܣܩ ܠܦܦܐ',
+	'importusers-log-summary' => 'ܦܣܝܩܬ̈ܐ',
+	'importusers-log-summary-all' => 'ܟܠ',
+	'importusers-log-summary-added' => 'ܐܬܬܘܣܦ',
+	'importusers-log-summary-updated' => 'ܐܬܚܕܬ',
+	'importusers-login-name' => 'ܫܡܐ ܕܥܠܠܐ',
+	'importusers-password' => 'ܡܠܬܐ ܕܥܠܠܐ',
+	'importusers-realname' => 'ܫܡܐ ܫܪܝܪܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

@@ -189,6 +189,7 @@ $messages['es'] = array(
 );
 
 /** Persian (فارسی)
+ * @author BlueDevil
  * @author Huji
  */
 $messages['fa'] = array(

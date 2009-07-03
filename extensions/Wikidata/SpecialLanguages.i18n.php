@@ -652,6 +652,13 @@ $wdMessages['ar'] = array(
 	'right-addlanguage' => 'إضافة وتغيير إعدادات اللغات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$wdMessages['arc'] = array(
+	'ow_suggest_clear' => 'ܡܫܝ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -6025,6 +6032,8 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_copy_successful' => '<h2>Kopie ass gemaach</h2>
 Är Donnéeë schenge kopéiert ginn ze sinn.
 Vergiesst net Iech ze vergewësseren fir sécherzegoen!',
+	'ow_copy_unsuccessful' => '<h3>Kopéieren huet net geklappt</h3>
+Et gouf näischt kopéiert.',
 	'ow_no_action_specified' => '<h3>Et gouf keng Aktioun uginn</h3>
 Vläicht koumt Dir direkt op dës Säit: Normalerweis braucht Dir net hei ze sinn.',
 	'ow_history_transaction' => 'Transaktioun:',

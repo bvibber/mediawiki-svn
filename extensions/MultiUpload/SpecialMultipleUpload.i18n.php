@@ -353,7 +353,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'multipleupload' => 'Alŝuti dosierojn',
+	'multipleupload' => 'Alŝuti plurajn dosierojn',
 	'multipleupload-desc' => 'Permesas al uzanto [[Special:MultipleUpload|alŝuti plurajn dosierojn samtempe]]',
 	'multipleupload-ignoreallwarnings' => "Ignori '''ĉiuj avertoj''' kaj konservi la dosierojn malgraŭ tioj.",
 	'multipleupload-saveallfiles' => 'Konservu ĉiujn dosierojn',
@@ -399,6 +399,7 @@ Los archivos inapropiados se eliminarán inmediatamente: mira la [[{{MediaWiki:M
 );
 
 /** Persian (فارسی)
+ * @author BlueDevil
  * @author Huji
  */
 $messages['fa'] = array(

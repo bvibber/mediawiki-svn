@@ -54,6 +54,11 @@ $aliases['fa'] = array(
 	'WhosOnline' => array( 'چه_کسی_بر_خط_است' ),
 );
 
+/** Finnish (Suomi) */
+$aliases['fi'] = array(
+	'WhosOnline' => array( 'Ketkä ovat yhteydessä täällä' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'WhosOnline' => array( 'Qui est en ligne', 'QuiEstEnLigne' ),

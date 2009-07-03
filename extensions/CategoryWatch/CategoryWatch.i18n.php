@@ -197,15 +197,18 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'categorywatch-desc' => 'Laajennettu seurantalistatoiminnallisuus, joka sisältää huomautukset seurattujen luokkien jäsenyysmuutoksista.',
+	'categorywatch-emailsubject' => 'Tapahtumia, jotka liittyvät tarkkailtuun luokkaan ”$1”',
 	'categorywatch-catmovein' => 'siirrettiin $1 luokkaan $2 luokkaan $3',
 	'categorywatch-catmoveout' => 'siirrettiin $1 luokasta $2 luokkaan $3',
 	'categorywatch-catadd' => 'lisättiin sivu $1 luokkaan $2',
 	'categorywatch-catsub' => 'poistettiin sivu $1 luokasta $2',
+	'categorywatch-autocat' => 'Automaattisesti tarkkailee $1',
 );
 
 /** French (Français)

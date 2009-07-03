@@ -535,6 +535,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'review_sidebar_title' => 'Revisar',
@@ -551,6 +552,7 @@ $messages['es'] = array(
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Revisión',
 	'review_version_link' => 'Revisión #$1',
+	'review_statistic_cell' => 'Promedio: $1 de $2<br />($4 {{PLURAL:$4|usuario|usuario}} {{PLURAL:$4|registrado|registrados}}, $5 {{PLURAL:$5|usuario|usuario}} {{PLURAL:$5|anónimo|anónimos}})',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_version_reviews_link' => '<small>(revisiones de versión)</small>',
 	'review_concerns_page' => 'Esta revisión es acerca de la página "$1".',
@@ -1177,6 +1179,8 @@ $messages['lb'] = array(
 	'review_sidebar_explanation' => "Déi éischt Këscht fir unzeklicken heescht ëmmer 'keng Meenung'.",
 	'review_save' => 'Versioun späicheren',
 	'review_your_review' => 'Är Bewertung vun dëser Säit/Versioun:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Dir hutt schonn aner Versioune vun dëser Säit bewert.
+Är aner Bewertunge gi mat dëser zesummegeluecht do wou Dir 'Keng Meenung' erausgewielt hutt.",
 	'review_page_link' => 'Statistike vum Nokucken',
 	'review_for_page' => 'Nokucke vun der Säit "$1"',
 	'review_for_user' => 'Bewertung fir de Benotzer "$1"',

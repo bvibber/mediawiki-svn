@@ -298,6 +298,17 @@ $messages['pt'] = array(
 Clique numa para ver as estatísticas sobre ela.',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'prefstats' => 'Statistici despre preferinţe',
+	'prefstats-desc' => 'Urmăiţi statistici despre câţi utilizatori au o anumită preferinţă activată',
+	'prefstats-title' => 'Statistici despre preferinţe',
+	'prefstats-list-intro' => 'În prezent, sunt urmărite următoarele preferinţe.
+Apăsaţi pe ele pentru a vizualiza statistici despre ele.',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -317,6 +328,17 @@ $messages['ru'] = array(
 	'prefstats-title' => 'Статистика настроек',
 	'prefstats-list-intro' => 'Сейчас отслеживаются следующие настройки.
 Выберите одну из них для просмотра статистики.',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'prefstats' => 'Туруоруулар статиистикалара',
+	'prefstats-desc' => 'Хас киһи ханнык эмит туруорууну талбыттарын көрүү',
+	'prefstats-title' => 'Туруоруулар статиистикалара',
+	'prefstats-list-intro' => 'Билигин маннык туруоруулар ааҕыллыахтарын сөп.
+Статиистикатын көрөргө ханныгы эмит биири тал.',
 );
 
 /** Slovak (Slovenčina)
