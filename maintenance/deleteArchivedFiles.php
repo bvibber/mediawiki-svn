@@ -18,6 +18,10 @@ class DeleteArchivedFiles extends Maintenance {
 		$this->addOption( 'delete', 'Perform the deletion' );
 	}
 
+	/**
+	 * @todo @fixme FSTransaction/FileStore crap needs removing. Does
+	 * not work on trunk
+	 */
 	public function execute() {
 		$this->output( "Delete Archived Images\n\n" );
 
