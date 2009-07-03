@@ -31,4 +31,5 @@ class RebuildMessages extends Maintenance {
 	}
 }
 
-
+$maintClass = "RebuildMessages";
+require_once( DO_MAINTENANCE );

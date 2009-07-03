@@ -61,3 +61,5 @@ class CheckImages extends Maintenance {
 	}
 }
 
+$maintClass = "CheckImages";
+require_once( DO_MAINTENANCE );

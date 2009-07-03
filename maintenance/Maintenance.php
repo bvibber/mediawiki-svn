@@ -45,11 +45,18 @@ abstract class Maintenance {
 	protected $mDescription = '';
 	
 	// Have we already loaded our user input?
-	private $inputLoaded = false;
+	private $mInputLoaded = false;
 	
 	// Batch size. If a script supports this, they should set
 	// a default with setBatchSize()
 	protected $mBatchSize = null;
+	
+	/**
+	 * List of all the core maintenance scripts. This is added
+	 * to scripts added by extensions in $wgMaintenanceScripts
+	 * and returned by getMaintenanceScripts()
+	 */
+	protected static $mCoreScripts = null;
 
 	/**
 	 * Default constructor. Children should call this if implementing
@@ -322,7 +329,7 @@ abstract class Maintenance {
 	public function clearParamsAndArgs() {
 		$this->mOptions = array();
 		$this->mArgs = array();
-		$this->inputLoaded = false;
+		$this->mInputLoaded = false;
 	}
 
 	/**
@@ -338,21 +345,21 @@ abstract class Maintenance {
 		# If we were given opts or args, set those and return early
 		if( $self ) {
 			$this->mSelf = $self;
-			$this->inputLoaded = true;
+			$this->mInputLoaded = true;
 		}
 		if( $opts ) {
 			$this->mOptions = $opts;
-			$this->inputLoaded = true;
+			$this->mInputLoaded = true;
 		}
 		if( $args ) {
 			$this->mArgs = $args;
-			$this->inputLoaded = true;
+			$this->mInputLoaded = true;
 		}
 
 		# If we've already loaded input (either by user values or from $argv)
 		# skip on loading it again. The array_shift() will corrupt values if
 		# it's run again and again
-		if( $this->inputLoaded ) {
+		if( $this->mInputLoaded ) {
 			$this->loadSpecialVars();
 			return;
 		}
@@ -414,7 +421,7 @@ abstract class Maintenance {
 		$this->mOptions = $options;
 		$this->mArgs = $args;
 		$this->loadSpecialVars();
-		$this->inputLoaded = true;
+		$this->mInputLoaded = true;
 	}
 
 	/**
@@ -667,7 +674,98 @@ abstract class Maintenance {
 
 		# Done
 		$dbw->commit();
+	}
+
+	/**
+	 * Get the list of available maintenance scripts. Note
+	 * that if you call this _before_ calling doMaintenance
+	 * you won't have any extensions in it yet
+	 * @return array
+	 */
+	public static function getMaintenanceScripts() {
+		global $wgMaintenanceScripts;
+		return $wgMaintenanceScripts + self::getCoreScripts();
+	}
 	
+	/**
+	 * Return all of the core maintenance scripts
+	 * @return array
+	 */
+	private static function getCoreScripts() {
+		if( !self::$mCoreScripts ) {
+			$d = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
+			self::$mCoreScripts = array(
+				'AttachLatest'             => $d . 'attachLatest.php',
+				'BenchmarkPurge'           => $d . 'benchmarkPurge.php',
+				'ChangePassword'           => $d . 'changePassword.php',
+				'CheckAutoLoader'          => $d . 'checkAutoLoader.php',
+				'CheckBadRedirects'        => $d . 'checkBadRedirects.php',
+				'CheckImages'              => $d . 'checkImages.php',
+				'CheckSyntax'              => $d . 'checkSyntax.php',
+				'CheckUsernames'           => $d . 'checkUsernames.php',
+				'CleanupSpam'              => $d . 'cleanupSpam.php',
+				'ClearInterwikiCache'      => $d . 'clear_interwiki_cache.php',
+				'clear_stats'              => $d . 'clear_stats.php',
+				'ConvertLinks'             => $d . 'convertLinks.php',
+				'ConvertUserOptions'       => $d . 'convertUserOptions.php',
+				'CreateAndPromote'         => $d . 'createAndPromote.php',
+				'DeleteArchivedFiles'      => $d . 'deleteArchivedFiles.php',
+				'DeleteArchivedRevisions'  => $d . 'deleteArchivedRevisions.php',
+				'DeleteBatch'              => $d . 'deleteBatch.php',
+				'DeleteDefaultMessages'    => $d . 'deleteDefaultMessages.php',
+				'DeleteImageCache'         => $d . 'deleteImageMemcached.php',
+				'DeleteOldRevisions'       => $d . 'deleteOldRevisions.php',
+				'DeleteOrphanedRevisions'  => $d . 'deleteOrphanedRevisions.php',
+				'DeleteRevision'           => $d . 'deleteRevision.php',
+				'DumpLinks'                => $d . 'dumpLinks.php',
+				'DumpSisterSites'          => $d . 'dumpSisterSites.php',
+				'UploadDumper'             => $d . 'dumpUploads.php',
+				'EditCLI'                  => $d . 'edit.php',
+				'EvalPrompt'               => $d . 'eval.php',
+				'FetchText'                => $d . 'fetchText.php',
+				'FixUserRegistration'      => $d . 'fixUserRegistration.php',
+				'GenerateSitemap'          => $d . 'generateSitemap.php',
+				'GetLagTimes'              => $d . 'getLagTimes.php',
+				'GetSlaveServer'           => $d . 'getSlaveServer.php',
+				'InitEditCount'            => $d . 'initEditCount.php',
+				'InitStats'                => $d . 'initStats.php',
+				'mcTest'                   => $d . 'mctest.php',
+				'MoveBatch'                => $d . 'moveBatch.php',
+				'nextJobDb'                => $d . 'nextJobDB.php',
+				'NukeNS'                   => $d . 'nukeNS.php',
+				'NukePage'                 => $d . 'nukePage.php',
+				'Orphans'                  => $d . 'orphans.php',
+				'PopulateCategory'         => $d . 'populateCategory.php',
+				'PopulateLogSearch'        => $d . 'populateLogSearch.php',
+				'PopulateParentId'         => $d . 'populateParentId.php',
+				'Protect'                  => $d . 'protect.php',
+				'PurgeList'                => $d . 'purgeList.php',
+				'PurgeOldText'             => $d . 'purgeOldText.php',
+				'ReassignEdits'            => $d . 'reassignEdits.php',
+				'RebuildAll'               => $d . 'rebuildall.php',
+				'RebuildFileCache'         => $d . 'rebuildFileCache.php',
+				'RebuildLocalisationCache' => $d . 'rebuildLocalisationCache.php',
+				'RebuildMessages'          => $d . 'rebuildmessages.php',
+				'RebuildRecentchanges'     => $d . 'rebuildrecentchanges.php',
+				'RebuildTextIndex'         => $d . 'rebuildtextindex.php',
+				'RefreshImageCount'        => $d . 'refreshImageCount.php',
+				'RefreshLinks'             => $d . 'refreshLinks.php',
+				'RemoveUnusedAccounts'     => $d . 'removeUnusedAccounts.php',
+				'RenameDbPrefix'           => $d . 'renameDbPrefix.php',
+				'DumpRenderer'             => $d . 'renderDump.php',
+				'RunJobs'                  => $d . 'runJobs.php',
+				'ShowJobs'                 => $d . 'showJobs.php',
+				'ShowStats'                => $d . 'showStats.php',
+				'MwSql'                    => $d . 'sql.php',
+				'CacheStats'               => $d . 'stats.php',
+				'Undelete'                 => $d . 'undelete.php',
+				'UpdateArticleCount'       => $d . 'updateArticleCount.php',
+				'UpdateRestrictions'       => $d . 'updateRestrictions.php',
+				'UpdateSearchIndex'        => $d . 'updateSearchIndex.php',
+				'UpdateSpecialPages'       => $d . 'updateSpecialPages.php',
+				'WaitForSlave'             => $d . 'waitForSlave.php',
+			);
+		}
+		return self::$mCoreScripts;
 	}
 }
-

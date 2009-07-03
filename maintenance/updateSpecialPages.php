@@ -117,3 +117,5 @@ class UpdateSpecialPages extends Maintenance {
 	}
 }
 
+$maintClass = "UpdateSpecialPages";
+require_once( DO_MAINTENANCE );

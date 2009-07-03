@@ -45,3 +45,5 @@ class PurgeList extends Maintenance {
 	}
 }
 
+$maintClass = "PurgeList";
+require_once( DO_MAINTENANCE );

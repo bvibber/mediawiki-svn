@@ -62,3 +62,6 @@ class RenameDbPrefix extends Maintenance {
 		$this->output( "Done! [$count tables]\n" );
 	}
 }
+
+$maintClass = "RenameDbPrefix";
+require_once( DO_MAINTENANCE );

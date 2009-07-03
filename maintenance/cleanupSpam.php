@@ -111,3 +111,6 @@ class CleanupSpam extends Maintenance {
 		}
 	}
 }
+
+$maintClass = "CleanupSpam";
+require_once( DO_MAINTENANCE );

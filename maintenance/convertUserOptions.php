@@ -51,3 +51,6 @@ class ConvertUserOptions extends Maintenance {
 		return $id;
 	}
 }
+
+$maintClass = "ConvertUserOptions";
+require_once( DO_MAINTENANCE );

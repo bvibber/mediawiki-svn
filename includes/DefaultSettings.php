@@ -3867,3 +3867,10 @@ $wgInvalidUsernameCharacters = '@';
  * modify the user rights of those users via Special:UserRights
  */
 $wgUserrightsInterwikiDelimiter = '@';
+
+/**
+ * Array for extensions to register their maintenance scripts with the
+ * system. The key is the name of the class and the value is the full
+ * path to the file
+ */
+$wgMaintenanceScripts = array();
