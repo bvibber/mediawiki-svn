@@ -29,7 +29,7 @@ class ReassignEdits extends Maintenance {
 			if( $to->getId() || $this->hasOption('force') ) {
 				# Reassign the edits
 				$report = $this->hasOption('report');
-				$count = $this->reassignEdits( $from, $to, !$this->hasOption('norc'), $report );
+				$count = $this->doReassignEdits( $from, $to, !$this->hasOption('norc'), $report );
 				# If reporting, and there were items, advise the user to run without --report	
 				if( $report )
 					$this->output( "Run the script again without --report to update.\n" );
@@ -49,7 +49,7 @@ class ReassignEdits extends Maintenance {
 	 * @param $report Don't change things; just echo numbers
 	 * @return integer Number of entries changed, or that would be changed
 	 */
-	private function reassignEdits( &$from, &$to, $rc = false, $report = false ) {
+	private function doReassignEdits( &$from, &$to, $rc = false, $report = false ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->immediateBegin();
 

@@ -18,7 +18,7 @@ class UpdateRestrictions extends Maintenance {
 		$this->setBatchSize( 100 );
 	}
 
-	private function execute() {
+	public function execute() {
 		$db = wfGetDB( DB_MASTER );
 		if( !$db->tableExists( 'page_restrictions' ) ) {
 			$this->error( "page_restrictions table does not exist\n", true );

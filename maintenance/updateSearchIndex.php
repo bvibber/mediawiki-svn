@@ -43,13 +43,13 @@ class UpdateSearchIndex extends Maintenance {
 		}
 		$lockTime = $this->getOption( 'l', 20 );
 		
-		$this->updateSearchIndex( $start, $end, $lockTime );
+		$this->doUpdateSearchIndex( $start, $end, $lockTime );
 		$file = fopen( $posFile, 'w' );
 		fwrite( $file, $end );
 		fclose( $file );
 	}
 	
-	private function updateSearchIndex( $start, $end, $maxLockTime ) {
+	private function doUpdateSearchIndex( $start, $end, $maxLockTime ) {
 		global $wgDisableSearchUpdate;
 
 		$wgDisableSearchUpdate = false;

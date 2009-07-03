@@ -45,7 +45,7 @@ TEXT;
 		$this->doPopulateCategory( $begin, $maxSlaveLag, $throttle, $force );
 	}
 
-	private function populateCategory( $begin, $maxlag, $throttle, $force ) {
+	private function doPopulateCategory( $begin, $maxlag, $throttle, $force ) {
 		$dbw = wfGetDB( DB_MASTER );
 	
 		if( !$force ) {
