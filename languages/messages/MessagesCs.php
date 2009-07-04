@@ -318,7 +318,7 @@ $messages = array(
 'tog-extendwatchlist'         => 'Na seznamu sledovaných stránek zobrazovat všechny změny, ne jen tu poslední',
 'tog-usenewrc'                => 'Používat zdokonalené poslední změny (vyžaduje JavaScript)',
 'tog-numberheadings'          => 'Automaticky číslovat nadpisy',
-'tog-showtoolbar'             => 'Ukázat lištu s nástroji při editaci',
+'tog-showtoolbar'             => 'Zobrazit panel nástrojů (vyžaduje JavaScript)',
 'tog-editondblclick'          => 'Editovat dvojklikem (JavaScript)',
 'tog-editsection'             => 'Zapnout možnost editace části stránky pomocí odkazu [editovat]',
 'tog-editsectiononrightclick' => 'Zapnout možnost editace části stránky pomocí kliknutí pravým tlačítkem na nadpisy stránky (JavaScript)',
@@ -354,6 +354,7 @@ $messages = array(
 'tog-ccmeonemails'            => 'Zasílat mi kopie e-mailů, které pošlu jiným uživatelům',
 'tog-diffonly'                => 'Nezobrazovat obsah stránky pod rozdílem verzí',
 'tog-showhiddencats'          => 'Zobrazit skryté kategorie',
+'tog-noconvertlink'           => 'Vypnout konverzi názvů',
 'tog-norollbackdiff'          => 'Po vrácení změny nezobrazovat porovnání rozdílů',
 
 'underline-always'  => 'Vždy',
@@ -726,8 +727,9 @@ Nezapomeňte si upravit [[Special:Preferences|nastavení {{grammar:2sg|{{SITENAM
 'nouserspecified'            => 'Musíte zadat uživatelské jméno.',
 'wrongpassword'              => 'Vámi uvedené heslo nesouhlasí. Zkuste to znovu.',
 'wrongpasswordempty'         => 'Bylo zadáno prázdné heslo. Zkuste to znovu.',
-'passwordtooshort'           => 'Vaše heslo není validní nebo je příliš krátké.
-Musí obsahovat nejméně $1 {{plural:$1|znak|znaky|znaků}} a nesmí být stejné jako uživatelské jméno.',
+'passwordtooshort'           => 'Vaše heslo je příliš krátké.
+Musí obsahovat nejméně $1 {{PLURAL:$1|znak|znaky|znaků}}.',
+'password-name-match'        => 'Vaše heslo nesmí být stejné jako uživatelské jméno.',
 'mailmypassword'             => 'Poslat e-mailem nové heslo',
 'passwordremindertitle'      => 'Nové dočasné heslo na {{grammar:4sg|{{SITENAME}}}}',
 'passwordremindertext'       => 'Někdo (patrně Vy, z IP adresy $1) požádal, abychom Vám poslali nové heslo
@@ -801,7 +803,7 @@ Možná jste si již úspěšně heslo změnili, nebo jste si vyžádali nové d
 'image_tip'       => 'Vložený soubor',
 'media_sample'    => 'Příklad.ogg',
 'media_tip'       => 'Odkaz na mediální soubor',
-'sig_tip'         => 'Váš podpis s časovým údajem',
+'sig_tip'         => 'Váš podpis s datem a časem',
 'hr_tip'          => 'Vodorovná čára (používejte střídmě)',
 
 # Edit pages

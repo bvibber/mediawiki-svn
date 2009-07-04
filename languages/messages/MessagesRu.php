@@ -2235,7 +2235,7 @@ $1',
 'whatlinkshere-hideredirs' => '$1 перенаправления',
 'whatlinkshere-hidetrans'  => '$1 включения',
 'whatlinkshere-hidelinks'  => '$1 ссылки',
-'whatlinkshere-hideimages' => '$1 ссылки с изображений',
+'whatlinkshere-hideimages' => '$1 ссылки для изображений',
 'whatlinkshere-filters'    => 'Фильтры',
 
 # Block/unblock
@@ -2642,6 +2642,7 @@ The wiki server can't provide data in a format your client can read.",
 'skinname-chick'       => 'Цыпа',
 'skinname-simple'      => 'Простое',
 'skinname-modern'      => 'Современное',
+'skinname-vector'      => 'Вектор',
 
 # Math options
 'mw_math_png'    => 'Всегда генерировать PNG',

@@ -185,6 +185,9 @@ $messages = array(
 'faq'            => 'ብጊየጥ (ብዙ ጊዜ የሚጠየቁ ጥያቀዎች)',
 'faqpage'        => 'Project:ብጊየጥ',
 
+# Vector skin
+'vector-action-addsection' => 'ርዕስ ጨምር',
+
 # Metadata in edit box
 'metadata_help' => 'ተጨማሪ መረጃ:',
 
@@ -296,7 +299,7 @@ $messages = array(
 'site-atom-feed'          => '$1 አቶም Feed',
 'page-rss-feed'           => '"$1" R.S.S. Feed',
 'page-atom-feed'          => '"$1" አቶም Feed',
-'red-link-title'          => '$1 (ገና አልተጻፈም)',
+'red-link-title'          => '$1 (ገጹ ገና አልተጻፈም)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'ገጽ',
@@ -1472,7 +1475,7 @@ $NEWPAGE
 'protect-otherreason'         => 'ሌላ/ተጨማሪ ምክንያት፦',
 'protect-otherreason-op'      => 'ሌላ/ተጨማሪ ምክንያት',
 'protect-edit-reasonlist'     => "'ተራ የመቆለፍ ምክንያቶች' ለማዘጋጀት",
-'protect-expiry-options'      => '2 ሰዓቶች:2 hours,1 ቀን:1 day,3 ቀን:3 days,1 ሳምንት:1 week,2 ሳምንት:2 weeks,1 ወር:1 month,3 ወር:3 months,6 ወር:6 months,1 አመት:1 year,ዘላለም:infinite',
+'protect-expiry-options'      => '2 ሰዓቶች:2 hours,1 ቀን:1 day,1 ሳምንት:1 week,2 ሳምንት:2 weeks,1 ወር:1 month,3 ወር:3 months,6 ወር:6 months,1 አመት:1 year,ዘላለም:infinite',
 'restriction-type'            => 'ፈቃድ፦',
 'restriction-level'           => 'የመቆለፍ ደረጃ፦',
 'minimum-size'                => 'ቢያንስ',

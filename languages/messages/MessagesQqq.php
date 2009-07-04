@@ -683,7 +683,17 @@ The text "Save" is in {{msg-mw|savearticle}}.',
 'missingcommentheader'             => '
 The text "Save" is in {{msg-mw|savearticle}}.',
 'summary-preview'                  => 'Preview of the edit summary, shown under the edit summary itself.',
-'blockedtext'                      => 'Text displayed to blocked users',
+'blockedtext'                      => 'Text displayed to blocked users.
+
+Parameters:
+* <tt>$1</tt> is the blocking sysop (with a link to his/her userpage)
+* <tt>$2</tt> is the reason for the block
+* <tt>$3</tt> is the current IP address of the blocked user
+* <tt>$4</tt> is the blocking sysop’s username (plain text, without the link)
+* <tt>$5</tt> is the unique numeric identifier of the applied autoblock
+* <tt>$6</tt> is the expiry of the block
+* <tt>$7</tt> is the intended target of the block (what the blocking user specified in the blocking form)
+* <tt>$8</tt> is the timestamp when the block started',
 'autoblockedtext'                  => 'Text displayed to automatically blocked users.
 
 Parameters:
@@ -892,7 +902,7 @@ Please note that the parameters in a log entry will appear in the log only in th
 
 # Suppression log
 'suppressionlog'     => 'Title of the suppression log. Shown in the drop down menu at [[Special:log]] and as header of [[Special:log/suppress]].',
-'suppressionlogtext' => 'Description text of the suppression log. Shown at top of of [[Special:log/suppress]].',
+'suppressionlogtext' => 'Description text of the suppression log. Shown at top of [[Special:log/suppress]].',
 
 # History merging
 'mergehistory-autocomment'      => 'This message is used as an edit summary when a redirect is automatically created after an entire page history is merged into another page history, and the user who did the merge wrote no comment.

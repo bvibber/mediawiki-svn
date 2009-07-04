@@ -50,6 +50,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   to true
 * Removed $wgEnableSerializedMessages and $wgCheckSerialized. Similar 
   functionality is now available via $wgLocalisationCacheConf.
+* $wgMessageCache->addMessages() is deprecated. Messages added via this 
+  interface will not appear in Special:AllMessages.
 
 === New features in 1.16 ===
 
@@ -101,7 +103,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Added a PHP port of CDB (constant database), for improved local caching when
   the DBA extension is not available.
 * (bug 14611) Added support showing the version of the image thumbnailing 
-  engine and diff/diff3 engine.
+  engine, diff/diff3 engine and TeX engine.
 * Introduced a new system for localisation caching. The system is based around 
   fast fetches of individual messages, minimising memory overhead and startup 
   time in the typical case. The database backend will be used by default, but 
@@ -217,6 +219,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Attempts to restrict reading of pages while anonymous viewing is allowed
   via extensions not using the userCan hook and via $wgRevokePermissions now work.
 * (bug 8445) Multiple-character search terms are now handled properly for Chinese
+* (bug 19450) Use formatNum for "Number of edits" in Special:Preferences
+* (bug 11242) Check for MySQL storage engines during installation now checks
+  whether the engines are actually available
+* (bug 19390) Omit the "printable version" link on the printable version
+* (bug 18394) img_auth.php now respects userCan
 
 == API changes in 1.16 ==
 
@@ -254,6 +261,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 19323) action=parse doesn't return section tree on pages with Cite
   warnings
 * (bug 18720) Add anchor field to action=parse&prop=sections output
+* (bug 19423) The initial file description page used caption in user lang
+  rather than UI lang
 
 === Languages updated in 1.16 ===
 
@@ -274,6 +283,7 @@ changes to languages because of MediaZilla reports.
 * (bug 18308) Updated date formatting in Occitan (oc)
 * (bug 19080) Added ăâîşţșțĂÂÎŞŢȘȚ to Romanion (ro) linktrail
 * (bug 19286) Correct commafying function in Polish (pl)
+* (bug 19441) Updated date formatting for Lithuanian
 
 == Compatibility ==
 

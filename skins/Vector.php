@@ -35,8 +35,13 @@ class SkinVector extends SkinTemplate {
 	 * @param object $out Output page to add styles to
 	 */
 	public function setupSkinUserCss( OutputPage $out ) {
+		global $wgContLang;
 		// Append to the default screen common & print styles...
-		$out->addStyle( 'vector/main.css', 'screen' );
+		if ( $wgContLang->isRTL() ) {
+			$out->addStyle( 'vector/main-rtl.css', 'screen' );
+		} else {
+			$out->addStyle( 'vector/main-ltr.css', 'screen' );
+		}
 		// Add common styles
 		parent::setupSkinUserCss( $out );
 	}
@@ -80,7 +85,7 @@ class SkinVector extends SkinTemplate {
 			}
 			$talkId = "{$subjectId}_talk";
 			$currentId = $isTalk ? $talkId : $subjectId;
-
+			
 			// Adds namespace links
 			$links['namespaces'][$subjectId] = $this->tabAction(
 				$subjectPage, 'vector-namespace-' . $subjectId, !$isTalk, '', true
@@ -287,7 +292,10 @@ class SkinVector extends SkinTemplate {
 					);
 				}
 			}
-
+			
+			// This is instead of SkinTemplateTabs - which uses a flat array
+			wfRunHooks( 'SkinTemplateNavigation', array( &$this, &$links ) );
+		
 		// If it's not content, it's got to be a special page
 		} else {
 			$links['namespaces']['special'] = array(

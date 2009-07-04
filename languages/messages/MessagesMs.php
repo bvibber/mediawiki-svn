@@ -304,7 +304,20 @@ $messages = array(
 'faqpage'        => 'Project:Soalan Lazim',
 
 # Vector skin
-'vector-view-view' => 'Baca',
+'vector-action-addsection'   => 'Tambah topik',
+'vector-action-delete'       => 'Hapus',
+'vector-action-move'         => 'Pindah',
+'vector-action-protect'      => 'Lindungi',
+'vector-action-undelete'     => 'Batal hapus',
+'vector-action-unprotect'    => 'Nyahlindung',
+'vector-namespace-category'  => 'Kategori',
+'vector-namespace-help'      => 'Laman bantuan',
+'vector-namespace-image'     => 'Fail',
+'vector-namespace-main'      => 'Laman',
+'vector-namespace-media'     => 'Laman media',
+'vector-namespace-mediawiki' => 'Pesanan',
+'vector-namespace-project'   => 'Laman projek',
+'vector-view-view'           => 'Baca',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -545,7 +558,8 @@ Akaun anda telah dibuka. Jangan lupa untuk mengubah [[Special:Preferences|keutam
 'nouserspecified'            => 'Sila nyatakan nama pengguna.',
 'wrongpassword'              => 'Kata laluan yang dimasukkan adalah salah. Sila cuba lagi.',
 'wrongpasswordempty'         => 'Kata laluan yang dimasukkan adalah kosong. Sila cuba lagi.',
-'passwordtooshort'           => 'Kata laluan anda tidak sah atau terlalu pendek. Panjangnya mestilah sekurang-kurangnya $1 aksara dan berbeza daripada nama pengguna anda.',
+'passwordtooshort'           => 'Kata laluan anda terlalu pendek. Panjangnya mestilah sekurang-kurangnya {{PLURAL:$1|1 aksara|$1 aksara}} dan berbeza daripada nama pengguna.',
+'password-name-match'        => 'Kata laluan anda mesti berbeza daripada nama pengguna anda.',
 'mailmypassword'             => 'E-melkan kata laluan baru',
 'passwordremindertitle'      => 'Pengingat kata laluan daripada {{SITENAME}}',
 'passwordremindertext'       => 'Seseorang (mungkin anda, dari alamat IP $1) telah meminta kata laluan baru untuk {{SITENAME}} ($4). Kata laluan sementara baru untuk pengguna "$2" ialah "$3". Untuk menamatkan prosedur ini, anda perlu log masuk dan tetapkan kata laluan yang baru dengan segera. Kata laluan sementara anda akan luput dalam $5 hari.
@@ -839,16 +853,16 @@ Cuba [[Special:Search|cari]] laman lain yang mungkin berkaitan.',
 'rev-deleted-user'            => '(nama pengguna dibuang)',
 'rev-deleted-event'           => '(entri dibuang)',
 'rev-deleted-text-permission' => "Semakan laman ini telah '''dihapuskan'''.
-Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penghapusan].",
+Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penyelindungan].",
 'rev-deleted-text-unhide'     => "Semakan laman ini telah '''dihapuskan'''.
-Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penghapusan].
+Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penyelindungan].
 Sebagai pentadbir anda masih boleh [$1 melihat semakan ini] jika anda ingin.",
 'rev-deleted-text-view'       => "Semakan laman ini telah '''dihapuskan'''.
-Sebagai seorang pentadbir anda boleh melihatnya; butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penghapusan].",
+Sebagai seorang pentadbir anda boleh melihatnya; butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penyelindungan].",
 'rev-deleted-no-diff'         => "Anda tidak boleh melihat perbezaan ini kerana satu daripada semakan yang dibandingkan telah '''dihapuskan'''.
-Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penghapusan].",
+Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penyelindungan].",
 'rev-deleted-unhide-diff'     => "Salah satu semakan laman ini telah '''dihapuskan'''.
-Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penghapusan].
+Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penyelindungan].
 Sebagai pentadbir anda masih boleh [$1 melihat semakan ini] jika anda ingin.",
 'rev-delundel'                => 'tunjuk/sembunyi',
 'revisiondelete'              => 'Hapus/nyahhapus semakan',
@@ -858,6 +872,7 @@ Sebagai pentadbir anda masih boleh [$1 melihat semakan ini] jika anda ingin.",
 'revdelete-nologtype-text'    => 'Anda tidak menyatakan jenis log untuk tindakan ini.',
 'revdelete-nologid-title'     => 'Entri log tidak sah',
 'revdelete-nologid-text'      => 'Anda tidak menyatakan peristiwa log sasaran perkara untuk melakukan fungsi ini atau entri ynag dinyatakan tidak wujud.',
+'revdelete-show-file-submit'  => 'Ya',
 'revdelete-selected'          => "'''{{PLURAL:$2|Versi|Versi-versi}} '''$1''' yang dipilih:'''",
 'logdelete-selected'          => "'''{{PLURAL:$1|Peristiwa|Peristiwa-peristiwa}} log yang dipilih:'''",
 'revdelete-text'              => "'''Semakan dan peristiwa yang dihapuskan akan tetap muncul dalam sejarah laman dan log,
@@ -883,7 +898,8 @@ Sila sahkan bahawa anda hendak lakukan ini dan memahami akibatnya, dan anda mema
 'revdelete-logentry'          => 'menukar kebolehnampakan semakan [[$1]]',
 'logdelete-logentry'          => 'menukar kebolehnampakan peristiwa bagi [[$1]]',
 'revdelete-success'           => 'Kebolehnampakan semakan ditetapkan.',
-'revdelete-failure'           => "'''Keterlihatan semakan tidak dapat ditetapkan.'''",
+'revdelete-failure'           => "'''Keterlihatan semakan tidak dapat ditetapkan:'''
+$1",
 'logdelete-success'           => 'Kebolehnampakan peristiwa ditetapkan.',
 'revdel-restore'              => 'Tukar kebolehnampakan',
 'pagehist'                    => 'Sejarah laman',
@@ -1024,7 +1040,7 @@ Sila pastikan bahawa perubahan ini akan mengekalkan kesinambungan sejarah laman.
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Senarai laman dengan awalan ini]]',
 'searchprofile-articles'           => 'Laman kandungan',
 'searchprofile-project'            => 'Laman bantuan dan projek',
-'searchprofile-images'             => 'Fail',
+'searchprofile-images'             => 'Multimedia',
 'searchprofile-everything'         => 'Semua',
 'searchprofile-advanced'           => 'Maju',
 'searchprofile-articles-tooltip'   => 'Cari dalam $1',
@@ -1044,11 +1060,13 @@ Sila pastikan bahawa perubahan ini akan mengekalkan kesinambungan sejarah laman.
 'search-mwsuggest-disabled'        => 'tiada cadangan',
 'search-relatedarticle'            => 'Berkaitan',
 'mwsuggest-disable'                => 'Matikan ciri cadangan AJAX',
+'searcheverything-enable'          => 'Gelintar semua ruang nama',
 'searchrelated'                    => 'berkaitan',
 'searchall'                        => 'semua',
 'showingresults'                   => "Yang berikut ialah '''$1''' hasil bermula daripada yang {{PLURAL:$2|pertama|ke-'''$2'''}}.",
 'showingresultsnum'                => "Yang berikut ialah '''$3''' hasil bermula daripada yang {{PLURAL:$2|pertama|ke-'''$2'''}}.",
 'showingresultstotal'              => "Yang berikut ialah {{PLURAL:$4|hasil '''$1'''|hasil '''$1 - $2'''}} daripada '''$3'''",
+'showingresultsheader'             => "{{PLURAL:$5|Keputusan '''$1''' daripada '''$3'''|Keputusan '''$1 - $2''' daripada '''$3'''}} untuk '''$4'''",
 'nonefound'                        => "'''Catatan''': Ketika lalai, hanya sesetengah ruang nama digelintar.
 Cuba berikan awalan ''all:'' untuk menggelintar semua kandungan (termasuk laman perbincangan, templat, dan lain-lain), atau gunakan ruang nama yang dikehendaki sebagai awalan.",
 'search-nonefound'                 => 'Tiada hasil yang sepadan dengan pertanyaan tersebut.',
@@ -1127,7 +1145,7 @@ Cuba berikan awalan ''all:'' untuk menggelintar semua kandungan (termasuk laman 
 'allowemail'                => 'Benarkan e-mel daripada pengguna lain',
 'prefs-searchoptions'       => 'Pilihan gelintar',
 'prefs-namespaces'          => 'Ruang nama',
-'defaultns'                 => 'Cari dalam ruang nama ini secara lalai:',
+'defaultns'                 => 'Jika tidak cari dalam ruang nama ini:',
 'default'                   => 'lalai',
 'prefs-files'               => 'Fail',
 'prefs-custom-css'          => 'CSS tempahan',
@@ -1158,6 +1176,7 @@ Cuba berikan awalan ''all:'' untuk menggelintar semua kandungan (termasuk laman 
 'prefs-dateformat'          => 'Format tarikh',
 'prefs-advancedediting'     => 'Pilihan terperinci',
 'prefs-display'             => 'Papar pilihan',
+'prefs-diffs'               => 'Beza',
 
 # User rights
 'userrights'                  => 'Pengurusan hak pengguna',
@@ -1692,8 +1711,9 @@ Lihat juga [[Special:WantedCategories|senarai kategori dikehendaki]].',
 'special-categories-sort-abc'   => 'susun mengikut tertib abjad',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Sumbangan dihapuskan',
-'deletedcontributions-title' => 'Sumbangan dihapuskan',
+'deletedcontributions'             => 'Sumbangan dihapuskan',
+'deletedcontributions-title'       => 'Sumbangan dihapuskan',
+'sp-deletedcontributions-contribs' => 'sumbangan',
 
 # Special:LinkSearch
 'linksearch'       => 'Pautan luar',
@@ -2096,7 +2116,7 @@ dirosakkan).',
 'ipblocklist-submit'              => 'Cari',
 'blocklistline'                   => '$1, $2 menyekat $3 ($4)',
 'infiniteblock'                   => 'selama-lamanya',
-'expiringblock'                   => 'sehingga $1 $2',
+'expiringblock'                   => 'sehingga $1 pada $2',
 'anononlyblock'                   => 'pengguna tanpa nama sahaja',
 'noautoblockblock'                => 'sekatan automatik dipadamkan',
 'createaccountblock'              => 'pembukaan akaun baru disekat',

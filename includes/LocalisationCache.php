@@ -78,6 +78,12 @@ class LocalisationCache {
 	var $recachedLangs = array();
 
 	/**
+	 * Data added by extensions using the deprecated $wgMessageCache->addMessages() 
+	 * interface.
+	 */
+	var $legacyData = array();
+
+	/**
 	 * All item keys
 	 */
 	static public $allKeys = array(
@@ -137,10 +143,7 @@ class LocalisationCache {
 		global $wgCacheDirectory;
 
 		$this->conf = $conf;
-		$this->data = array();
-		$this->loadedItems = array();
-		$this->loadedSubitems = array();
-		$this->initialisedLangs = array();
+		$storeConf = array();
 		if ( !empty( $conf['storeClass'] ) ) {
 			$storeClass = $conf['storeClass'];
 		} else {
@@ -162,7 +165,11 @@ class LocalisationCache {
 		}
 
 		wfDebug( get_class( $this ) . ": using store $storeClass\n" );
-		$this->store = new $storeClass;
+		if ( !empty( $conf['storeDirectory'] ) ) {
+			$storeConf['directory'] = $conf['storeDirectory'];
+		}
+
+		$this->store = new $storeClass( $storeConf );
 		foreach ( array( 'manualRecache', 'forceRecache' ) as $var ) {
 			if ( isset( $conf[$var] ) ) {
 				$this->$var = $conf[$var];
@@ -208,6 +215,9 @@ class LocalisationCache {
 	 * Get a subitem, for instance a single message for a given language.
 	 */
 	public function getSubitem( $code, $key, $subkey ) {
+		if ( isset( $this->legacyData[$code][$key][$subkey] ) ) {
+			return $this->legacyData[$code][$key][$subkey];
+		}
 		if ( !isset( $this->loadedSubitems[$code][$key][$subkey] ) ) {
 			if ( isset( $this->loadedItems[$code][$key] ) ) {
 				if ( isset( $this->data[$code][$key][$subkey] ) ) {
@@ -500,7 +510,7 @@ class LocalisationCache {
 			$data = $this->readPHPFile( $fileName, 'extension' );
 			$used = false;
 			foreach ( $data as $key => $item ) {
-				$used = $used || 
+				$used = $used |
 					$this->mergeExtensionItem( $codeSequence, $key, $allData[$key], $item );
 			}
 			if ( $used ) {
@@ -619,11 +629,36 @@ class LocalisationCache {
 		unset( $this->loadedItems[$code] );
 		unset( $this->loadedSubitems[$code] );
 		unset( $this->initialisedLangs[$code] );
+		// We don't unload legacyData because there's no way to get it back 
+		// again, it's not really a cache
 		foreach ( $this->shallowFallbacks as $shallowCode => $fbCode ) {
 			if ( $fbCode === $code ) {
 				$this->unload( $shallowCode );
 			}
 		}
+	}
+
+	/**
+	 * Add messages to the cache, from an extension that has not yet been 
+	 * migrated to $wgExtensionMessages or the LocalisationCacheRecache hook. 
+	 * Called by deprecated function $wgMessageCache->addMessages(). 
+	 */
+	public function addLegacyMessages( $messages ) {
+		foreach ( $messages as $lang => $langMessages ) {
+			if ( isset( $this->legacyData[$lang]['messages'] ) ) {
+				$this->legacyData[$lang]['messages'] = 
+					$langMessages + $this->legacyData[$lang]['messages'];
+			} else {
+				$this->legacyData[$lang]['messages'] = $langMessages;
+			}
+		}
+	}
+
+	/**
+	 * Disable the storage backend
+	 */
+	public function disableBackend() {
+		$this->store = new LCStore_Null;
 	}
 }
 
@@ -745,8 +780,17 @@ class LCStore_DB implements LCStore {
  * See Cdb.php and http://cr.yp.to/cdb.html
  */
 class LCStore_CDB implements LCStore {
-	var $readers, $writer, $currentLang;
-	
+	var $readers, $writer, $currentLang, $directory;
+
+	function __construct( $conf = array() ) {
+		global $wgCacheDirectory;
+		if ( isset( $conf['directory'] ) ) {
+			$this->directory = $conf['directory'];
+		} else {
+			$this->directory = $wgCacheDirectory;
+		}
+	}
+
 	public function get( $code, $key ) {
 		if ( !isset( $this->readers[$code] ) ) {
 			$fileName = $this->getFileName( $code );
@@ -768,6 +812,12 @@ class LCStore_CDB implements LCStore {
 	}
 
 	public function startWrite( $code ) {
+		if ( !file_exists( $this->directory ) ) {
+			if ( !wfMkdirParents( $this->directory ) ) {
+				throw new MWException( "Unable to create the localisation store " . 
+					"directory \"{$this->directory}\"" );
+			}
+		}
 		$this->writer = CdbWriter::open( $this->getFileName( $code ) );
 		$this->currentLang = $code;
 	}
@@ -793,12 +843,24 @@ class LCStore_CDB implements LCStore {
 	}
 
 	protected function getFileName( $code ) {
-		global $wgCacheDirectory;
 		if ( !$code || strpos( $code, '/' ) !== false ) {
 			throw new MWException( __METHOD__.": Invalid language \"$code\"" );
 		}
-		return "$wgCacheDirectory/l10n_cache-$code.cdb";
+		return "{$this->directory}/l10n_cache-$code.cdb";
 	}
+}
+
+/**
+ * Null store backend, used to avoid DB errors during install
+ */
+class LCStore_Null implements LCStore {
+	public function get( $code, $key ) {
+		return null;
+	}
+
+	public function startWrite( $code ) {}
+	public function finishWrite() {}
+	public function set( $key, $value ) {}
 }
 
 /**

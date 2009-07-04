@@ -657,6 +657,7 @@ class EditPage {
 			}
 		}
 
+		// FIXME: unused variable?
 		$this->oldid = $request->getInt( 'oldid' );
 
 		$this->live = $request->getCheck( 'live' );
@@ -1707,15 +1708,15 @@ END
 		// This will display between the save button and the edit tools,
 		// so should remain short!
 		wfRunHooks( 'EditPageTosSummary', array( $this->mTitle, &$msg ) );
-		$text = wfMsgForContent( $msg );
-		if( $text != '-' ) {
+		$text = wfMsg( $msg );
+		if( !wfEmptyMsg( $msg, $text ) && $text !== '-' ) {
 			global $wgOut;
 			$wgOut->addHTML( '<div class="mw-tos-summary">' );
-			$wgOut->addWikiMsgArray( $msg, array(), array( 'content' ) );
+			$wgOut->addWikiMsgArray( $msg, array() );
 			$wgOut->addHTML( '</div>' );
 		}
 	}
-	
+
 	protected function showEditTools() {
 		global $wgOut;
 		$wgOut->addHTML( '<div class="mw-editTools">' );
