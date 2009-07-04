@@ -352,6 +352,16 @@ $messages['sk'] = array(
 Po kliknutí na niektoré z nich zobrazíte štatistiku o ňom.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'prefstats' => 'అభిరుచుల గణాంకాలు',
+	'prefstats-title' => 'అభిరుచుల గణాంకాలు',
+	'prefstats-list-intro' => 'ప్రస్తుతం, ఈ క్రింది అభిరుచులను గమనిస్తున్నాం.
+ఒక్కోదాని గణాంకాలు చూడడానికి దానిపై నొక్కండి.',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
@@ -372,6 +382,17 @@ $messages['uk'] = array(
 	'prefstats-title' => 'Статистика налаштувань',
 	'prefstats-list-intro' => 'Зараз відстежуються такі налаштування.
 Натисніть на якомусь, щоб побачити його статистику.',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'prefstats' => 'Statìsteghe de le preferense',
+	'prefstats-desc' => 'Statìsteghe sirca el nùmaro de utenti che ga ativà serte preferense',
+	'prefstats-title' => 'Statìsteghe de le preferense',
+	'prefstats-list-intro' => 'Al momento, vien tegnù tràcia de le seguenti preferense.
+Strucando su de una te vedi le so statìsteghe.',
 );
 
 /** Vietnamese (Tiếng Việt)

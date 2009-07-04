@@ -38,6 +38,7 @@ $messages['dsb'] = array(
  */
 $messages['es'] = array(
 	'navigabletoc' => 'Tabla de contenidos navegable',
+	'navigabletoc-desc' => 'Añade una tabla de contenido al formulario de edición que desplaza el cuadro de texto cuando se hace clic en una sección',
 );
 
 /** French (Français)
