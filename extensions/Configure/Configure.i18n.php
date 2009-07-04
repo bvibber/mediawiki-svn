@@ -4426,6 +4426,7 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-section-cache' => 'Zwescheshpeisher',
 	'configure-section-pcache' => 'Dem Paarser singe Zwescheshpeisher',
 	'configure-section-messagecache' => 'Zwescheshpeisher för dem Wiki sing Nohreschte',
+	'configure-section-interwiki' => 'Engerwikki',
 	'configure-section-access' => 'Zojreff',
 	'configure-section-groups' => 'Jruppe',
 	'configure-section-block' => 'Sperre',

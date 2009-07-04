@@ -723,6 +723,27 @@ $messages['li'] = array(
 	'amazonplus-japanese' => 'Japans',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'amazonplus-desc' => 'Keičiamas priedas, skirtas rodyti Amazon informaciją',
+	'amazonplus-nores' => 'Klaida: Nerasta rezultatų!',
+	'amazonplus-noidres' => 'Klaida: Nerasta produkto ID!',
+	'amazonplus-fgcerr' => 'Klaida: Negalima gauti duomenų iš Amazon!',
+	'amazonplus-slserr' => 'Klaida: Negalima nagrinėti duomenų iš Amazon!',
+	'amazonplus-used' => 'naudojamas',
+	'amazonplus-german' => 'Vokiečių',
+	'amazonplus-french' => 'Prancūzų',
+	'amazonplus-japanese' => 'Japonų',
+	'amazonplus-amazon' => 'amazon kaina',
+	'amazonplus-new' => 'naujas',
+	'amazonplus-none' => 'Šio daikto kopijų pardavime nėra.',
+	'amazonplus-cp-none' => 'Nieko',
+	'amazonplus-more' => 'daugiau',
+	'amazonplus-less' => 'mažiau',
+);
+
 /** Mongolian (Монгол)
  * @author E.shijir
  */

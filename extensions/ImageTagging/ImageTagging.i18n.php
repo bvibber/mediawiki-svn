@@ -931,7 +931,9 @@ Donn drop wade, bes dä Vörjang fädesch es, dä jraad em Jang es.',
  * @author Robby
  */
 $messages['lb'] = array(
+	'taggedimages' => 'Markéiert Biller',
 	'imagetagging-article' => 'Säit:',
+	'imagetagging-canteditothermessage' => "Dir kënnt dës Säit net änneren enteseder well Dir net déi néideg Rechter hutt oder well d'Säit aus anere Grënn gespaart ass.",
 	'imagetagging-imghistory' => 'Versiounen',
 	'imagetagging-images' => 'Biller',
 	'imagetagging-inthisimage' => 'Op dësem Bild: $1',

@@ -326,6 +326,7 @@ $messages['eo'] = array(
  * @author Dferg
  * @author Imre
  * @author Kobazulo
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'passwordreset' => 'Restablecimiento de contraseña',
@@ -340,6 +341,7 @@ $messages['es'] = array(
 	'passwordreset-submit' => 'Reestablecer contraseña',
 	'passwordreset-success' => 'Contraseña ha sido reestablecida para ID de usuario: $1',
 	'passwordreset-disableuser' => '¿Deshabilitar cuenta de usuario?',
+	'passwordreset-disableuserexplain' => '(especifica un hash de contraseña inválido - el usuario no puede iniciar sesión)',
 	'passwordreset-disablesuccess' => 'Cuenta de usuario ha sido deshabilitado para ID de usuario: $1',
 	'passwordreset-accountdisabled' => 'Cuenta ha sido deshabilitada',
 	'disabledusers' => 'Usuarios deshabilitados',

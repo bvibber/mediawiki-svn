@@ -495,6 +495,7 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'backforth-next' => 'Kitas ($1)',
+	'backforth-desc' => 'Prideda "Kitas" ir "Ankstesnis" alfabetiniam nuorodų rašymui puslapių viršuje',
 	'backforth-prev' => 'Ankstesnis ($1)',
 );
 

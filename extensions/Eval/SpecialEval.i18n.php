@@ -141,8 +141,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  */
 $messages['es'] = array(
+	'eval' => 'Evaluar',
 	'eval-desc' => 'Agrega [[Special:Eval|una interface]] a la función <code>eval()</code>',
 	'eval_submit' => 'Evaluar',
 	'eval_out' => 'Salida',

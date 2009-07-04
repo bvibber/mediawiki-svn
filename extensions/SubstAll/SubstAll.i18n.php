@@ -213,6 +213,13 @@ $messages['lb'] = array(
 	'substall-desc' => 'Erstellt en <nowiki><substall></nowiki>-Tag, den all Schablounen a Wikisyntax ëmwandelt',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'substall-desc' => 'Sukuria <nowiki><substall></nowiki> žymę, kuri išplečia visus šablonus į wikisintaksę',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -281,6 +288,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'substall-desc' => 'Создаёт тег <nowiki><substall></nowiki>, который разворачивает все шаблоны в вики-разметку',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'substall-desc' => 'Туох баар халыыптары биики-бэлиэтээһиҥҥэ тэнитэр <nowiki><substall></nowiki> тиэги суруйан биэрэр',
 );
 
 /** Slovak (Slovenčina)

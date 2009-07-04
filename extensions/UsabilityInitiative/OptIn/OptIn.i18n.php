@@ -860,6 +860,25 @@ $messages['ru'] = array(
 	'optin-survey-question-feedback' => 'Пожалуйста, сообщите нам своё мнение:',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'optin-submit-in' => 'Холбоһорго',
+	'optin-submit-out' => 'Арахсарга',
+	'optin-survey-question-whyoptout' => 'Тоҕо бу туруорууну араарарга сананныҥ?',
+	'optin-survey-answer-whyoptout-didntlike' => 'Тас көстүүтүн сөбүлээбэтим.',
+	'optin-survey-answer-whyoptout-hard' => 'Сирэйдэри уларытарга наһаа ыарахан.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Сатаан үлэлээбэт.',
+	'optin-survey-answer-whyoptout-other' => 'Атын төрүөт:',
+	'optin-survey-question-browser' => 'Ханнык браузерынан туһанаҕын?',
+	'optin-survey-answer-browser-other' => 'Атын браузер:',
+	'optin-survey-question-os' => 'Ханнык операционнай систиэмэни туһанаҕын?',
+	'optin-survey-answer-os-other' => 'Атын:',
+	'optin-survey-question-res' => 'Эн мониторуҥ разрешениета төһөнүй?',
+	'optin-survey-question-feedback' => 'Бука диэн, бэйэҥ санааҕын эт эрэ:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -896,8 +915,11 @@ Chceli by sme vedieť, čo si myslíte o novom rozhraní, takže by sme ocenili 
  * @author Veeven
  */
 $messages['te'] = array(
+	'optin-survey-answer-whyoptout-hard' => 'ఒక పేజీని మార్చడం చాలా కష్టంగా ఉంది.',
 	'optin-survey-answer-whyoptout-other' => 'ఇతర కారణం:',
+	'optin-survey-question-browser' => 'మీరు ఏ విహారిణిని వాడుతున్నారు?',
 	'optin-survey-answer-browser-other' => 'ఇతర విహారిణి:',
+	'optin-survey-question-os' => 'మీరు వాడుతున్న నిర్వాహక వ్యవస్థ ఏది?',
 	'optin-survey-answer-os-other' => 'ఇతర:',
 );
 

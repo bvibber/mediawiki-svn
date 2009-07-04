@@ -240,6 +240,15 @@ $messages['ru'] = array(
 	'tspoll-id-error' => 'Не указан ID!',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'tspoll-desc' => 'Маны [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] HTML-тиэк курдук эбэр',
+	'tspoll-fetch-error' => 'URL алҕаһа таҕыста!',
+	'tspoll-id-error' => 'ID ыйыллыбатах!',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

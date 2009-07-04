@@ -399,6 +399,16 @@ $messages['lb'] = array(
 	'right-whatismyip' => '[[Special:WhatIsMyIP|Meng IP-Adress]] weisen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'whatismyip' => 'Koks mano IP',
+	'whatismyip-desc' => 'Rodo esamą naudotojo [[Special:WhatIsMyIP|IP adresą]]',
+	'whatismyip-out' => 'Jūsų IP adresas:',
+	'right-whatismyip' => 'Žiūrėti [[Special:WhatIsMyIP|savo IP adresą]]',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

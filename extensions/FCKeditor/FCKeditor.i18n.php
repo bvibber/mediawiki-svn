@@ -223,6 +223,7 @@ $messages['dsb'] = array(
 $messages['es'] = array(
 	'fckeditor-desc' => 'Permitir edición usando el editor WYSIWYG FCKeditor',
 	'textrichditor' => 'Editor enriquecido',
+	'prefs-fckeditor' => 'Editor enriquecido',
 	'tog-riched_disable' => 'Desactivar editor enriquecido',
 	'tog-riched_disable_ns_main' => 'Desactivar editor enriquecido en el espacio de nombres principal',
 	'tog-riched_disable_ns_talk' => 'Desactivar editor enriquecido en el espacio de nombres "{{ns:talk}}"',

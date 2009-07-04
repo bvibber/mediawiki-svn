@@ -417,6 +417,16 @@ $messages['ru'] = array(
 	'templatelink_newtitle' => '$1 (включение)',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'templatelink' => 'Халыыпка сигэ',
+	'templatelink_desc' => 'Бу кэтирэтии халыыптары саҥа сирэйдэр курдук көрдөрөр',
+	'templatelink_empty' => 'Кээмэйин ыйыахтааххын.',
+	'templatelink_newtitle' => '$1 (киллэрии)',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

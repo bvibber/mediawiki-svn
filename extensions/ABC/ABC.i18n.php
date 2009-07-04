@@ -324,6 +324,14 @@ $messages['li'] = array(
 	'abcdownload' => 'Downloade:',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'abcdesc' => 'Prideda <tt>&lt;abc&gt;</tt> žymę prie formato ABC music',
+	'abcdownload' => 'Atsisiųsti:',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

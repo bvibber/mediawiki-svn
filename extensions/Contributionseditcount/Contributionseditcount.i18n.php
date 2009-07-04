@@ -257,6 +257,14 @@ $messages['id'] = array(
 	'contributionseditcount-desc' => 'Menampilkan jumlah suntingan di [[Special:Contributions|halaman kontribusi pengguna]]',
 );
 
+/** Ido (Ido)
+ * @author Wyvernoid
+ */
+$messages['io'] = array(
+	'contributionseditcount' => 'Ica uzanto facabas {{PLURAL:$1|un redakto|$1 redakti}}.',
+	'contributionseditcount-desc' => 'Montrez redakto-konto che la [[Special:Contributions|uzanto kontributaji pagino]]',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

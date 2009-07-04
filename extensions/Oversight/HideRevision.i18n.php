@@ -2193,6 +2193,9 @@ trökgezat waere door databasebeheerders es geer 'n fout maak.",
  */
 $messages['lt'] = array(
 	'hiderevision-continue' => 'Tęsti',
+	'hiderevision-noreason' => 'Privalote nurodyti trynimo pražastį',
+	'hiderevision-status' => 'Versija $1: $2',
+	'hiderevision-success' => 'Sėkmingai archyvuota ir ištrinta',
 	'hiderevision-error-missing' => 'Nerasta duomenų bazėje',
 	'oversight-view' => 'detalės',
 );

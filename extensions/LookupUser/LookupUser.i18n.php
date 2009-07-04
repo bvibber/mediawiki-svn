@@ -914,7 +914,7 @@ $messages['pl'] = array(
 	'lookupuser-registration' => 'Zarejestrowany $1',
 	'lookupuser-no-registration' => 'taki użytkownik nie istnieje',
 	'lookupuser-touched' => 'Ostatnią aktywność użytkownika zanotowano $1',
-	'lookupuser-info-authenticated' => 'Uwierzytelnienie e‐mailem: $1',
+	'lookupuser-info-authenticated' => 'Uwierzytelnienie e-mailem: $1',
 	'lookupuser-useroptions' => 'Opcje użytkownika:',
 	'right-lookupuser' => 'Przeglądanie ustawień preferencji użytkowników',
 );

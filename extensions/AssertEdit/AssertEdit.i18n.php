@@ -405,6 +405,15 @@ $messages['li'] = array(
 	'assert_edit_message' => 'De gevraogde bevestiging ($1) mislökde.',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'assert_edit_title' => 'Tvirtinimas atšauktas',
+	'assert_edit_desc' => 'Prideda redagavimo tvirtinimus naudojimui su botais',
+	'assert_edit_message' => 'Nurodytas tvirtinimas ($1) atšauktas.',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

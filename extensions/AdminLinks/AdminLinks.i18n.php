@@ -184,10 +184,14 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'adminlinks' => 'Administrar vínculos',
+	'adminlinks-desc' => 'Añade una [[Special:AdminLinks|página especial]] con enlaces útiles para administradores',
+	'adminlinks_documentation' => 'documentación de $1',
 	'adminlinks_general' => 'General',
+	'adminlinks_editsidebar' => 'Editar barra lateral',
 	'adminlinks_editcss' => 'Editar archivo CSS',
 	'adminlinks_editmainpagename' => 'Editar nombre de página principal',
 	'adminlinks_users' => 'Usuarios',

@@ -293,13 +293,14 @@ $messages['he'] = array(
 	'security-info' => 'ישנם $1 בדף זה',
 	'security-info-toggle' => 'הגבלות אבטחה',
 	'security-inforestrict' => 'הפעולה $1 מוגבלת לקבוצה $2',
-	'security-desc-LS' => "''(חל כיוון שדף זה נמצא ב'''$2 $1''')''",
-	'security-desc-PR' => "''(הוגדר דרך '''לשונית ההגנה''')''",
-	'security-infosysops' => "לא חלות הגבלות כלשהן כיוון שיש לכם הרשאות '''מפעיל המערכת'''",
+	'security-desc-LS' => '(חל כיוון שדף זה נמצא ב"$2 $1")',
+	'security-desc-PR' => '(הוגדר דרך לשונית ה"הגנה")',
+	'security-infosysops' => 'לא חלות הגבלות כלשהן כיוון שיש לכם הרשאות "מפעיל המערכת"',
 	'security-manygroups' => 'הקבוצות $1 ו־$2',
 	'security-unchain' => 'שינוי פעולות בנפרד',
 	'security-type-category' => 'קטגוריה',
 	'security-type-namespace' => 'מרחב השם',
+	'security-restricttogroup' => 'הגישה לתוכן מוגבלת לחברים שב־"$1"',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

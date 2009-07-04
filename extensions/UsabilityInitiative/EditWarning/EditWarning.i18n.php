@@ -98,6 +98,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'editwarning' => 'Alerta de edición',
+	'editwarning-desc' => 'Mostrar una advertencia cuando un usuario intente dejar el formulario de edición sin grabar',
+	'editwarning-warning' => 'Dejar esta página le causará pérdida de los cambios que ha hecho.',
 );
 
 /** Finnish (Suomi)
@@ -270,6 +272,15 @@ $messages['ru'] = array(
 	'editwarning-warning' => 'Переход на другую страницу приведёт к потере сделанных вами изменений.',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'editwarning' => 'Уларытыы сэрэтиитэ',
+	'editwarning-desc' => 'Кыттааччы көннөрбүтүн бигэргэппэккэ эрэ тахсан эрэрин сэрэтэр',
+	'editwarning-warning' => 'Атын сирэйгэ көстөххүнэ билигин оҥорбут уларытыыларыҥ сүтэн хаалыахтара.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -304,6 +315,15 @@ $messages['uk'] = array(
 	'editwarning' => 'Редакторне попередження',
 	'editwarning-desc' => 'Показує попередження, якщо користувач покидає форму редагування без збереження',
 	'editwarning-warning' => 'Перехід на іншу сторінку призведе до втрати ваших змін.',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'editwarning' => 'Ocio a le modìfeghe',
+	'editwarning-desc' => "Fà vedar n'avertimento co che un utente el vole lassar la casèla de modìfega sensa ver salvà le so modìfeghe",
+	'editwarning-warning' => 'Se te vè via da sta pagina te perdi tute le modìfeghe che te ghè fato.',
 );
 
 /** Vietnamese (Tiếng Việt)

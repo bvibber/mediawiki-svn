@@ -693,8 +693,10 @@ $messages['he'] = array(
 	'vote-results-choice' => 'אפשרות',
 	'vote-results-count' => 'מספר מצביעים',
 	'vote-results-none' => 'עד כה טרם נשלחו הצבעות.',
-	'vote-login' => 'עליכם [$1 כניסה לחשבון] כדי להצביע.',
+	'vote-login' => 'עליכם [$1 להכנס לחשבון] כדי להצביע.',
 	'vote-invalid-choice' => 'יש לבחור באחת האפשרויות הזמינות.',
+	'right-vote' => 'הצבעה',
+	'right-voteadmin' => 'צפייה בתוצאות ההצבעה',
 );
 
 /** Hindi (हिन्दी)
@@ -980,6 +982,7 @@ riddler|Riddler',
 
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
+ * @author Matasg
  * @author Tomasdd
  */
 $messages['lt'] = array(
@@ -990,6 +993,9 @@ $messages['lt'] = array(
 	'vote-registered' => 'Jūsų balsas buvo užregistruotas.',
 	'vote-view-results' => 'Žiūrėti rezultatus',
 	'vote-results' => 'Balsavimo rezultatai',
+	'vote-login' => 'Norėdami balsuoti, privalote būti [$1 prisijungęs].',
+	'right-vote' => 'Balsuoti',
+	'right-voteadmin' => 'Žiūrėti balsavimo rezultatus',
 );
 
 /** Malagasy (Malagasy)

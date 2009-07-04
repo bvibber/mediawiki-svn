@@ -275,6 +275,13 @@ $messages['li'] = array(
 	'ajax-qp-desc' => "Voog get AJAX bie aan QueryPAges wie [[Special:Shortpages|kórte pazjena's]]",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'ajax-qp-desc' => 'Pridėkite AJAX norėdami užklausti puslapius tokius kaip [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

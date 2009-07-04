@@ -333,6 +333,15 @@ $messages['li'] = array(
 Kan gebroek waere es [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] om 'n willekeurig etalage-artikel weer te gaeve of es [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] om 'n willekeurig GFDL gelicenseerd bestandj weer te gaeve",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'advancedrandom' => 'Išplėstas atsitiktinis puslapis',
+	'advancedrandom-desc' => 'Gaukite atsitiktinį puslapį iš bet kurios vardų srities, aptarimą ar sub-puslapį, kuris nurodo į duotą puslapį.
+Gali būti naudojamas kaip [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] norint gauti atsitiktinį pavyzdinio straipsnio aptarimą, ar kaip [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] norint gauti atsitiktinį GFDL failą',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

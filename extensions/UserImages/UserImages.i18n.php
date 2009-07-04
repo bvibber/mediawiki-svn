@@ -373,8 +373,10 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
+ * @author Matasg
  */
 $messages['lt'] = array(
+	'userimages-desc' => 'Generuoja naudotojo įkeltų paveikslėlių galerijas su <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Iliustracijos, įkeltos $1',
 	'userimages-noname' => 'Neteisingas naudotojo vardas arba netiekiama.',
 	'userimages-noimages' => '$1 nėra įkėlęs iliustracijų.',

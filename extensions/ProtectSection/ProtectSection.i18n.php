@@ -216,6 +216,7 @@ $messages['he'] = array(
 	'protectsection_add_remove' => 'ניסיתם להוסיף או להסיר קטע מוגן',
 	'protectsection_modify' => 'ניסיתם לשנות טקסט מוגן',
 	'protectsection_forbidden' => 'אסור',
+	'right-protectsection' => 'הגנה על פסקאות בדף',
 );
 
 /** Hindi (हिन्दी)

@@ -261,6 +261,13 @@ $messages['li'] = array(
 	'antibot-desc' => 'Sumnpel framework veur controle op spambots en trigger payloads',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'antibot-desc' => 'Paprasta sustena spamboto patikroms ir trigerio užkrovoms',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jyothis
  */

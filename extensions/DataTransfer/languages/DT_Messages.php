@@ -612,7 +612,10 @@ $messages['he'] = array(
 	'dt_import_selectfile' => 'אנא בחרו את קובץ ה־$1 לייבוא:',
 	'dt_import_editsummary' => 'ייבוא $1',
 	'dt_import_importing' => 'בתהליכי ייבוא...',
-	'dt_import_success' => '{{PLURAL:$1|דף אחד ייובא|$1 דפים ייובאו}} מקובץ ה־$2.',
+	'dt_import_success' => '{{PLURAL:$1|דף אחד ייוצר|$1 דפים ייוצרו}} מקובץ ה־$2.',
+	'importcsv' => 'ייבוא CSV',
+	'dt_importcsv_badheader' => "שגיאה: כותרת העמודה $1, '$2', חייבת להיות או '$3', '$4' או מהצורה 'שם_התבנית[שם_השדה]'",
+	'right-datatransferimport' => 'ייבוא נתונים',
 );
 
 /** Hindi (हिन्दी)

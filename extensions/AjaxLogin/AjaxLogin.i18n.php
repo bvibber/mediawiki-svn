@@ -294,6 +294,18 @@ Dir kënnt Är Ännerunge vun dëser Säit verléieren wann Dir elo vun dëser S
 	'ajaxlogin-create' => 'E Benotzerkont uleeën',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'ajaxlogin-desc' => 'Dinaminis laukas, leidžiantis naudotojams prisijungti ir atsiminti slaptažodį',
+	'ajaxLogin1' => 'Norėdami užbaigti prisijungimą, jūs turite įvesti naują slaptažodį.
+Jūs paliksite šį redaguojamą puslapį ir galite prarasti tai, ką pataisėte.',
+	'ajaxLogin2' => 'Ar esate įsitikinęs?
+Jūs prarasite pakeitimus, atliktus šiame puslapyje, jei jį dabar paliksite.',
+	'ajaxlogin-create' => 'Sukurti sąskaitą',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Zamwan
  */

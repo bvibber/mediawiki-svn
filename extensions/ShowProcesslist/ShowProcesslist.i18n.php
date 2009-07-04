@@ -212,11 +212,14 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'showprocesslist' => 'Mostrar lista de procesos',
+	'showprocesslist-desc' => 'Mostrar la salida de [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Usuario',
+	'showprocesslist-host' => 'Host',
 	'showprocesslist-db' => 'Base de datos',
 	'showprocesslist-command' => 'Comando',
 	'showprocesslist-time' => 'Tiempo',

@@ -3731,6 +3731,7 @@ $messages['lb'] = array(
 	'code-rev-message' => 'Bemierkung:',
 	'code-rev-rev' => 'Versioun:',
 	'code-rev-rev-viewvc' => 'op ViewVC',
+	'code-rev-paths' => 'Geännert Pied:',
 	'code-rev-modified-a' => 'derbäigesat',
 	'code-rev-modified-r' => 'ersat',
 	'code-rev-modified-d' => 'geläscht',

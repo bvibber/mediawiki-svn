@@ -360,6 +360,14 @@ $messages['lmo'] = array(
 	'absenteelandlord-desc' => 'Auto-bloca la basa de data deò wiki se cas che i administradour i en inativ per vargun temp',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'absenteelandlord-reason' => 'Ši duomenų bazė buvo automatiškai užrakinta dėl administratorių neaktyvumo.',
+	'absenteelandlord-desc' => 'Automatiškai užrakina wiki duomenų bazę jei administratoriai yra tam tikrą laiką neaktyvūs',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */
