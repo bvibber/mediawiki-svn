@@ -816,6 +816,15 @@ mediaElement.prototype =
 				 return true; 
 			}															
 		}	   
+		//set basic flash
+		for(var source=0; source < playable_sources.length; source++){  
+			var mime_type =playable_sources[source].mime_type;										
+			if( mime_type=='video/x-flv' ){
+				js_log('set via by player preference normal flash')
+				this.selected_source = playable_sources[source];
+				return true;
+			}						
+		}
 		//set Ogg via player support		
 		for(var source=0; source < playable_sources.length; source++){
 			js_log('f:autoSelectSource:' + playable_sources[source].mime_type);
@@ -841,15 +850,6 @@ mediaElement.prototype =
 				return true;
 			}			   
 		}		
-		//set basic flash
-		for(var source=0; source < playable_sources.length; source++){  
-			var mime_type =playable_sources[source].mime_type;										
-			if( mime_type=='video/x-flv' ){
-				js_log('set via by player preference normal flash')
-				this.selected_source = playable_sources[source];
-				return true;
-			}						
-		}	
 		//select first source		
 		if (!this.selected_source)
 		{
