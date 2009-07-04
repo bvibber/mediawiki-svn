@@ -25,7 +25,6 @@ function efConfigureAjax( $setting, $group ) {
 	if ( $settings->getSettingType( $setting ) != 'array' )
 		return '<err#>';
 
-	wfLoadExtensionMessages( 'Configure' );
 	$type = $settings->getArrayType( $setting );
 	switch( $type ) {
 	case 'group-bool':
@@ -141,7 +140,6 @@ function efConfigureFarmerAdminSkin( $farmer ) {
 function efConfigureFarmerAdminExtensions( $farmer ) {
 	global $wgOut;
 
-	wfLoadExtensionMessages( 'Configure' );
 	$wgOut->wrapWikiMsg( '== $1 ==', 'farmer-extensions' );
 	$wgOut->addWikiMsg( 'configure-farmer-extensions' );
 
@@ -154,7 +152,6 @@ function efConfigureFarmerAdminExtensions( $farmer ) {
 function efConfigureFarmerManageExtensions( $farmer ) {
 	global $wgOut;
 
-	wfLoadExtensionMessages( 'Configure' );
 	$wgOut->wrapWikiMsg( '== $1 ==', 'farmer-extensions-available' );
 	$wgOut->addWikiMsg( 'configure-farmer-extensions-list' );
 

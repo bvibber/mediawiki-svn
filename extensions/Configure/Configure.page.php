@@ -17,7 +17,6 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Constructor
 	 */
 	public function __construct( $name, $right ) {
-		wfLoadExtensionMessages( 'Configure' );
 		$this->mConfSettings = ConfigurationSettings::singleton( $this->getSettingMask() );
 		# Reload data WITHOUT CACHE
 		global $wgConf;
@@ -379,22 +378,23 @@ abstract class ConfigurationPage extends SpecialPage {
 		foreach ( $versions as $data ) {
 			$ts = $data['timestamp'];
 			$count++;
-			$link = $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" );
+			$link = $skin->linkKnown( $title, $wgLang->timeAndDate( $ts ), array(), array( 'version' => $ts ) );
 			$diffLink = '';
 			if ( $prev )
-				$diffLink =  '(' . $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'ViewConfig' ), wfMsg( 'configure-old-changes' ), "version=$ts&diff=$prev" ) . ')';
+				$diffLink =  '(' . $skin->linkKnown( SpecialPage::getTitleFor( 'ViewConfig' ),
+					wfMsgHtml( 'configure-old-changes' ), array(), array( 'version' => $ts, 'diff' => $prev ) ) . ')';
 
 			## Make user link...
 			$userLink = '';
 			if( !$data['userwiki'] || !$data['username'] ) {
 				$userLink = '';
 			} else if ( $data['userwiki'] == wfWikiId() ) {
-				$userLink = $skin->link( Title::makeTitle( NS_USER, $data['username'] ), $data['username'] );
-			} elseif ( class_exists( 'WikiMap' ) && ($wiki = WikiMap::getWiki( $data['userwiki'] ) ) ) {
-				$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$data['username'] ), $data['username'].'@'.$data['userwiki'] );
+				$userLink = $skin->link( Title::makeTitle( NS_USER, $data['username'] ), htmlspecialchars( $data['username'] ) );
+			} elseif ( $wiki = WikiMap::getWiki( $data['userwiki'] ) ) {
+				$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$data['username'] ), htmlspecialchars( $data['username'].'@'.$data['userwiki'] ) );
 			} else {
 				## Last-ditch
-				$userLink = $data['username'].'@'.$data['userwiki'];
+				$userLink = htmlspecialchars( $data['username'].'@'.$data['userwiki'] );
 			}
 
 			$comment = $data['reason'] ? $skin->commentBlock( $data['reason'] ) : '';
@@ -875,7 +875,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected function buildSearchForm() {
 		$form = wfMsgExt( 'configure-js-search-prompt', 'parseinline' ) . wfMsgExt( 'word-separator', array( 'escapenoentities' ) ) .
 			Xml::element( 'input', array( 'id' => 'configure-search-input', 'size' => 45 ) );
-		$form = Xml::tags( 'p', null, $form ) . "\n" . Xml::openElement( 'ul', array('id' => 'configure-search-results') ) . '</ul>';
+		$form = Xml::tags( 'p', null, $form ) . "\n" . Xml::openElement( 'ul', array( 'id' => 'configure-search-results' ) ) . '</ul>';
 		$form = Xml::fieldset( wfMsg( 'configure-js-search-legend' ), $form, array( 'style' => 'display: none;', 'id' => 'configure-search-form' ) );
 		return $form;
 	}
@@ -1498,8 +1498,6 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return xhtml
 	 */
 	protected function buildSettings( $settings, $param = array() ) {
-		wfLoadExtensionMessages( 'ConfigureSettings' );
-
 		global $wgConf;
 		$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
 
