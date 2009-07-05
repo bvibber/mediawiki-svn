@@ -335,3 +335,30 @@ $messages['vi'] = array(
 	'editwarning-warning' => 'Tất cả các sửa đổi của bạn sẽ bị hủy nếu rời khỏi trang này.',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'editwarning' => '編輯警告',
+	'editwarning-desc' => '當用戶試吓離開未保存編輯嗰陣顯示警告',
+	'editwarning-warning' => '離開呢一版會令到你嘅修改唔見咗。',
+);
+
+/** Chinese Simplified
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'editwarning' => '编辑警告',
+	'editwarning-desc' => '当用户尝试离开未保存的编辑时显示警告',
+	'editwarning-warning' => '离开这个页面会令到您所作的更改遗失。',
+);
+
+/** Chinese Traditional
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'editwarning' => '編輯警告',
+	'editwarning-desc' => '當用戶嘗試離開未保存的編輯時顯示警告',
+	'editwarning-warning' => '離開這個頁面會令到您所作的更改遺失。',
+);
+

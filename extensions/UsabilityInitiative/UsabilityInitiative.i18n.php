@@ -208,3 +208,26 @@ $messages['tr'] = array(
 	'usabilityinitiative-desc' => "Vikipedi Kullanılabilirlik Girişimi tarafından MedyaViki'nin kullanılabilirliğini artırmak için geliştirilen özellikler",
 );
 
+/** Cantinese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'usabilityinitiative' => '可用性倡議',
+	'usabilityinitiative-desc' => '由維基百科可用性小組加強MediaWiki嘅可用性',
+);
+
+/** Chinese Simplified
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'usabilityinitiative' => '可用性倡议',
+	'usabilityinitiative-desc' => '由维基百科可用性小组增强MediaWiki的可用性',
+);
+
+/** Chinese Traditional
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'usabilityinitiative' => '可用性倡議',
+	'usabilityinitiative-desc' => '由維基百科可用性小組增強MediaWiki的可用性',
+);

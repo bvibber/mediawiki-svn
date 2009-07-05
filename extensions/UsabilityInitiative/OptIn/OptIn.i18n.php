@@ -987,3 +987,99 @@ $messages['vi'] = array(
 	'optin-survey-question-res' => 'Màn hình của bạn có độ phân tích nào?',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'optin' => '可用性倡議選入',
+	'optin-desc' => '容許用戶選擇性去加入可用性倡議嘅可用性加強',
+	'optin-title' => '可用性倡議加強',
+	'optin-needlogin' => '你需要[$1 登入]去加入可用性倡議嘅可用性加強。',
+	'optin-intro' => '維基百科可用性小組開發咗一個新皮同埋一個新編輯工具去加強維基百科嘅可用性。呢啲加強重未響全部用戶開晒，但係你可以撳下面嘅"{{int:optin-submit-in}}"選入。',
+	'optin-success-in' => '你已經成功噉選入到可用性小組嘅可用性加強。
+你可以響任何時間撳下面嘅"{{int:optin-submit-out}}"去選出番去。',
+	'optin-success-out' => '你已經成功噉選出到可用性小組嘅可用性加強。
+你可以響任何時間撳下面嘅"{{int:optin-submit-in}}"去選入番去。',
+	'optin-submit-in' => '選入',
+	'optin-submit-out' => '選出',
+	'optin-survey-intro' => "多謝你去試用可用性小組嘅可用性加強。
+你可以響任何時間響呢版下面撳\"{{int:optin-submit-out}}\"去選出。
+
+我哋想知道你對呢個新界面嘅諗法，因此我哋會好高興如果你撳\"{{int:optin-submit-out}}\"之前完成一個可選嘅調查。",
+	'optin-survey-question-whyoptout' => '點解你會選出呢個界面？',
+	'optin-survey-answer-whyoptout-didntlike' => '我唔鍾意呢個設計。',
+	'optin-survey-answer-whyoptout-hard' => '太難去編輯一版。',
+	'optin-survey-answer-whyoptout-didntwork' => '唔能夠正確噉操作。',
+	'optin-survey-answer-whyoptout-other' => '其它原因：',
+	'optin-survey-question-browser' => '你用邊隻瀏覽器？',
+	'optin-survey-answer-browser-other' => '其它瀏覽器：',
+	'optin-survey-question-os' => '你用邊套操作系統？',
+	'optin-survey-answer-os-other' => '其它：',
+	'optin-survey-question-res' => '你個螢光幕嘅解像度有幾大？',
+	'optin-survey-question-feedback' => '請畀我哋知道你嘅反饋：',
+);
+
+/** Chinese Simplified
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'optin' => '可用性倡议加入',
+	'optin-desc' => '容许用户选择性去加入可用性倡议的可用性增强',
+	'optin-title' => '可用性倡议增强',
+	'optin-needlogin' => '您需要[$1 登入]去加入可用性倡议的可用性增强。',
+	'optin-intro' => '维基百科可用性小组开发了一个新皮肤和一个新的编辑工具去加强维基百科的可用性。这些增强还未对全部用户开放，但是您可以点击下面的"{{int:optin-submit-in}}"加入。',
+	'optin-success-in' => '您已经成功地加入到可用性小组的可用性增强。
+您可以随时点击下面的"{{int:optin-submit-out}}"去退出。',
+	'optin-success-out' => '您已经成功地退出自可用性小组的可用性增强。
+您可以随时点击下面的"{{int:optin-submit-in}}"去加入。',
+	'optin-submit-in' => '加入',
+	'optin-submit-out' => '退出',
+	'optin-survey-intro' => "多谢您去试用可用性小组的可用性增强。
+您可以随时点击下面的\"{{int:optin-submit-out}}\"去退出。
+
+我们想知道您对这个新接口的想法，因此我们会好高兴如果您在点击\"{{int:optin-submit-out}}\"之前完成一个可选的调查。",
+	'optin-survey-question-whyoptout' => '为什么您会退出这个接口？',
+	'optin-survey-answer-whyoptout-didntlike' => '我不喜欢个设计。',
+	'optin-survey-answer-whyoptout-hard' => '太难去编辑一个页面。',
+	'optin-survey-answer-whyoptout-didntwork' => '不能正确地操作。',
+	'optin-survey-answer-whyoptout-other' => '其它原因：',
+	'optin-survey-question-browser' => '您用那款浏览器？',
+	'optin-survey-answer-browser-other' => '其它浏览器：',
+	'optin-survey-question-os' => '您用哪套操作系统？',
+	'optin-survey-answer-os-other' => '其它：',
+	'optin-survey-question-res' => '您的屏幕解像度之大小有多大？',
+	'optin-survey-question-feedback' => '请给我们知道您的反馈：',
+);
+
+/** Chinese Traditional
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'optin' => '可用性倡議加入',
+	'optin-desc' => '容許用戶選擇性去加入可用性倡議的可用性增強',
+	'optin-title' => '可用性倡議增強',
+	'optin-needlogin' => '您需要[$1 登入]去加入可用性倡議的可用性增強。',
+	'optin-intro' => '維基百科可用性小組開發了一個新皮膚和一個新的編輯工具去加強維基百科的可用性。這些增強還未對全部用戶開放，但是您可以點擊下面的"{{int:optin-submit-in}}"加入。',
+	'optin-success-in' => '您已經成功地加入到可用性小組的可用性增強。
+您可以隨時點擊下面的"{{int:optin-submit-out}}"去退出。',
+	'optin-success-out' => '您已經成功地退出自可用性小組的可用性增強。
+您可以隨時點擊下面的"{{int:optin-submit-in}}"去加入。',
+	'optin-submit-in' => '加入',
+	'optin-submit-out' => '退出',
+	'optin-survey-intro' => "多謝您去試用可用性小組的可用性增強。
+您可以隨時點擊下面的\"{{int:optin-submit-out}}\"去退出。
+
+我們想知道您對這個新界面的想法，因此我們會好高興如果您在點擊\"{{int:optin-submit-out}}\"之前完成一個可選的調查。",
+	'optin-survey-question-whyoptout' => '為什麼您會退出這個界面？',
+	'optin-survey-answer-whyoptout-didntlike' => '我不喜歡個設計。',
+	'optin-survey-answer-whyoptout-hard' => '太難去編輯一個頁面。',
+	'optin-survey-answer-whyoptout-didntwork' => '不能正確地操作。',
+	'optin-survey-answer-whyoptout-other' => '其它原因：',
+	'optin-survey-question-browser' => '您用那款瀏覽器？',
+	'optin-survey-answer-browser-other' => '其它瀏覽器：',
+	'optin-survey-question-os' => '您用哪套操作系統？',
+	'optin-survey-answer-os-other' => '其它：',
+	'optin-survey-question-res' => '您的屏幕解像度之大小有多大？',
+	'optin-survey-question-feedback' => '請給我們知道您的反饋：',
+);
+
