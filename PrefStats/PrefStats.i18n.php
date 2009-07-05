@@ -406,3 +406,37 @@ $messages['vi'] = array(
 Hãy nhấn vào một tùy chọn để xem thống kê về nó.',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'prefstats' => '喜好統計',
+	'prefstats-desc' => '追蹤統計，有幾多用戶開咗特定設定',
+	'prefstats-title' => '喜好統計',
+	'prefstats-list-intro' => '直到而家，下面嘅喜好設定會追蹤落來。
+撳其中一樣去睇有關佢嘅統計。',
+);
+
+
+/** Chinese Simplified
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'prefstats' => '喜好统计',
+	'prefstats-desc' => '追踪统计，有多少用户启用了特定的设置',
+	'prefstats-title' => '喜好统计',
+	'prefstats-list-intro' => '直到现时，以下的喜好设置会追踪下来。
+点击其中一种设置去查看有关它的统计。',
+);
+
+/** Chinese Traditional
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'prefstats' => '喜好統計',
+	'prefstats-desc' => '追蹤統計，有多少用戶啟用了特定的設定',
+	'prefstats-title' => '喜好統計',
+	'prefstats-list-intro' => '直到現時，以下的喜好設定會追蹤下來。
+點擊其中一種設定去查看有關它的統計。',
+);
+

@@ -184,3 +184,27 @@ $messages['tr'] = array(
 	'navigabletoc-desc' => 'Değişiklik formuna, bir bölüm tıklandığında metin kutusunu kaydıran, bir içindekiler listesi ekler',
 );
 
+/** Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'navigabletoc' => '導航目錄',
+	'navigabletoc-desc' => '加入目錄到編輯表格，當一小節揀咗嗰陣捲動文字盒',
+);
+
+/** Chinese Simplified
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'navigabletoc' => '导航目录',
+	'navigabletoc-desc' => '加入目录至编辑表格，当一段落点击以后卷动文字方块',
+);
+
+/** Chinese Traditional
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'navigabletoc' => '導航目錄',
+	'navigabletoc-desc' => '加入目錄至編輯表格，當一段落點擊以後捲動文字方塊',
+);
+
