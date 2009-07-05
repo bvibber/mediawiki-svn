@@ -66,6 +66,7 @@ $messages['cs'] = array(
 $messages['de'] = array(
 	'editwarning' => 'Bearbeitungswarnung',
 	'editwarning-desc' => 'Eine Warnung anzeigen, wenn ein Benutzer versucht, den Bearbeitungsvorgang ohne speichern zu verlassen',
+	'editwarning-warning' => 'Das Verlassen dieser Seite führt dazu, dass jede gemachte Änderung verloren geht.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -335,7 +336,7 @@ $messages['vi'] = array(
 	'editwarning-warning' => 'Tất cả các sửa đổi của bạn sẽ bị hủy nếu rời khỏi trang này.',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -344,7 +345,7 @@ $messages['yue'] = array(
 	'editwarning-warning' => '離開呢一版會令到你嘅修改唔見咗。',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -353,7 +354,7 @@ $messages['zh-hans'] = array(
 	'editwarning-warning' => '离开这个页面会令到您所作的更改遗失。',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
