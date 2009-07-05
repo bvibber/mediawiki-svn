@@ -253,6 +253,13 @@ $messages['jv'] = array(
 	'ajax-qp-desc' => 'Nambahaké sawetara AJAX ing QueryPages kayata [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'ajax-qp-desc' => 'បន្ថែម AJAX ខ្លះៗ​ទៅកាន់​ទំព័រ​សំនួរ ដូចជា [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

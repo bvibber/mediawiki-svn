@@ -369,6 +369,16 @@ $messages['ja'] = array(
 	'communityvoice-ratings-error-no-title' => 'rating タグに title 属性が欠けています。',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'communityvoice' => 'សំលេង​សហគមន៍',
+	'communityvoice-desc' => 'ឧបករណ៍​ចូលរួម​សហគមន៍​',
+	'communityvoice-ratings-scale-status-sending' => 'កំពុងផ្ញើ​…',
+	'communityvoice-ratings-scale-status-error' => 'កំហុសកំឡុងពេល​ផ្ញើ​!',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  * @author Yknok29
@@ -565,6 +575,14 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'communityvoice' => 'Бар-дьон куолаһа',
+	'communityvoice-desc' => 'Бар-дьон үлэтин үнүстүрүмүөнэ',
+	'communityvoice-ratings' => 'Рейтиннэр',
+	'communityvoice-ratings-scale-status-sending' => 'Ыытыы...',
+	'communityvoice-ratings-scale-status-error' => 'Ыытыы сатаммата!',
+	'communityvoice-ratings-scale-status-thanks' => 'Куоластаабыккар махтал!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|куолас бэрилиннэ|куолас бэриллибит}})',
+	'communityvoice-ratings-error-no-category' => 'Рейтин тиэгэр категориятын атрибуута суох.',
+	'communityvoice-ratings-error-no-title' => 'Рейтиҥ тиэгэр аатын атрибуута суох.',
 );
 
 /** Slovak (Slovenčina)

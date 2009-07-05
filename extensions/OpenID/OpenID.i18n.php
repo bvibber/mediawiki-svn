@@ -716,6 +716,7 @@ $messages['da'] = array(
  * @author Church of emacs
  * @author IAlex
  * @author Leithian
+ * @author Tbleher
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -749,6 +750,7 @@ Bitte benachrichtige einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidfullname' => 'Vollständiger Name',
 	'openidemail' => 'E-Mail-Adresse:',
 	'openidlanguage' => 'Sprache',
+	'openidtimezone' => 'Zeitzone',
 	'openidnotavailable' => 'Dein bevorzugter Benutzername ($1) wird bereits von einem anderen Benutzer verwendet.',
 	'openidnotprovided' => 'Dein OpenID-Server unterstützt keine Nicknamen (entweder, weil er es nicht kann, oder weil du es ihm nicht erlaubt hast).',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
@@ -1544,7 +1546,7 @@ $messages['he'] = array(
 	'openidchoosemanual' => 'השם הנבחר:',
 	'openidchooseexisting' => 'חשבון קיים בוויקי זה:',
 	'openidchoosepassword' => 'סיסמה:',
-	'openidconvertinstructions' => 'טופס זה מאפשר לכם לשנות את חשבון המשתמשים שלכם לשימוש בכתובת OpenID או להוסיף כתובות OpenID',
+	'openidconvertinstructions' => 'טופס זה מאפשר לכם לשנות את חשבון המשתמש שלכם לשימוש בכתובת OpenID או להוסיף כתובות OpenID נוספות',
 	'openidconvertoraddmoreids' => 'המרה ל־OpenID או הוספת כתובת OpenID נוספת',
 	'openidconvertsuccess' => 'הומר בהצלחה ל־OpenID',
 	'openidconvertsuccesstext' => 'המרתם בהצלחה את ה־OpenID שלכם ל־$1.',
@@ -1569,15 +1571,15 @@ OpenID מאפשר לכם להיכנס לחשבון במגוון אתרים מב�
 ישנם [http://wiki.openid.net/Public_OpenID_providers ספקי OpenID ציבוריים] רבים, ויתכן שכבר יש לכם חשבון התומך ב־OpenID בשירות אחר.',
 	'openidupdateuserinfo' => 'עדכון המידע האישי שלי',
 	'openiddelete' => 'מחיקת OpenID',
-	'openiddelete-text' => 'על ידי לחיצה על הלחצן "{{int:openiddelete-button}}", חשבון ה־OpenID $1 יוסר מחשבונכם.
-לא תוכלו עוד להכנס עם OpenID זה.',
+	'openiddelete-text' => 'אם תלחצו על הכפתור "{{int:openiddelete-button}}", חשבון ה־OpenID בשם $1 יוסר מחשבונכם.
+לא תוכלו יותר להכנס עם OpenID זה.',
 	'openiddelete-button' => 'אישור',
-	'openiddelete-sucess' => 'ה־OpenID הוסר בהצלחה מחשבוכנם.',
+	'openiddelete-sucess' => 'ה־OpenID הוסר בהצלחה מחשבונכם.',
 	'openiddelete-error' => 'ארעה שגיאה בעת הסרת ה־OpenID מחשבונכם.',
 	'openid-prefstext' => 'העדפות [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'הסתרת כתובת ה־OpenID בדף המשתמש, במקרה של כניסה לחשבון עם OpenID.',
-	'openid-pref-update-userinfo-on-login' => 'עדכון המידע שלי מכרטיס ה־OpenID עם כל כניסה לחשבון:',
-	'openid-urls-desc' => 'כתובות OpenID המשויכות עם חשבונכם:',
+	'openid-pref-update-userinfo-on-login' => 'עדכון המידע הבא מכרטיס ה־OpenID עם כל כניסה לחשבון:',
+	'openid-urls-desc' => 'כתובות OpenID המשויכות לחשבונכם:',
 	'openid-urls-action' => 'פעולה',
 	'openid-urls-delete' => 'מחיקה',
 	'openid-add-url' => 'הוספת OpenID חדש',

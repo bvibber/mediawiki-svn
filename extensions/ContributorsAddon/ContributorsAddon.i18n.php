@@ -167,6 +167,13 @@ $messages['ja'] = array(
 	'contributorsaddon-desc' => 'JavaScript を用いて、「主な投稿者」へのリンクをポップアップする',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'contributorsaddon-desc' => 'បន្ថែម JavaScript popups ទៅតំណភ្ជាប់ "Main contributors"',
+);
+
 /** Korean (한국어)
  * @author Yknok29
  */

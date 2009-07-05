@@ -134,6 +134,22 @@ $messages['bs'] = array(
  * @author Metalhead64
  */
 $messages['de'] = array(
+	'optin' => 'Anmeldung bei der Benutzerfreundlichkeitsinitiative',
+	'optin-desc' => 'Erlaubt Benutzern, sich bei der Benutzerfreundlichkeitsverbesserungsinitiative anzumelden',
+	'optin-title' => 'Benutzerfreundlichkeitsverbesserungen',
+	'optin-needlogin' => 'Du musst dich [$1 anmelden], um an der Benutzerfreundlichkeitsverbesserungsinitiative teilzunehmen.',
+	'optin-intro' => 'Die Wikipedia-Benutzerfreundlichkeitsinitiative hat einen neuen Skin und eine neue Bearbeitungs-Werkzeugleiste entwickelt, um eine Verbesserung der Benutzerfreundlichkeit von Wikipedia anzustreben. Diese Verbesserungen wurden noch nicht für alle Benutzer aktiviert, aber du kannst sie aktivieren, in dem du unten auf „{{int:optin-submit-in}}“ klickst.',
+	'optin-success-in' => 'Du hast dich erfolgreich bei der Benutzerfreundlichkeitsverbesserungsinitiative angemeldet.
+Du kannst dich jederzeit wieder abmelden, in dem du unten auf „{{int:optin-submit-out}}“ klickst.',
+	'optin-success-out' => 'Du hast dich erfolgreich von der Benutzerfreundlichkeitsverbesserungsinitiative abgemeldet.
+Du kannst dich jederzeit wieder anmelden, in dem du unten auf „{{int:optin-submit-in}}“ klickst.',
+	'optin-submit-in' => 'Anmelden',
+	'optin-submit-out' => 'Abmelden',
+	'optin-survey-intro' => 'Danke, dass du die Benutzerfreundlichkeitsverbesserungsinitiative ausprobierst.
+Du kannst dich wieder abmelden, indem du auf „{{int:optin-submit-out}}“ unten auf dieser Seite klickst.
+
+Wir möchten gerne erfahren, was du über diese neue Schnittstelle denkst. Bitte beantworte die optionale Umfrage, bevor du auf „{{int:optin-submit-out}}“ klickst.',
+	'optin-survey-question-whyoptout' => 'Warum meldest du dich von dieser Schnittstelle ab?',
 	'optin-survey-answer-whyoptout-didntlike' => 'Mir gefällt das Design nicht.',
 	'optin-survey-answer-whyoptout-hard' => 'Es war zu schwer eine Seite zu bearbeiten',
 	'optin-survey-answer-whyoptout-didntwork' => 'Es funktioniert nicht einwandfrei.',
@@ -607,6 +623,10 @@ Dir kënnt dës zu jidder Zäit nees ausschalten an deem datt Dir op "{{int:opti
 Dir kënnt dës zu jidder Zäit nees aschalten an deem datt Dir op "{{int:optin-submit-in}}" hei ënnendrënner klickt.',
 	'optin-submit-in' => 'Matmaachen',
 	'optin-submit-out' => 'Net méi matmaachen',
+	'optin-survey-intro' => 'Merci datt Dir d\'Verbesserunge vun der Benotzerfrëndlechkeets-Initiative ausprobéiert.
+Dir kënnt dës nees ausschalten andeem Dir op "{{int:optin-submit-out}}" he ënnen op dëser Säit klickt.
+
+Mir wiere frou fir ze wëssen wat Dir vun deem neien Interface denkt, dofir wiere mir frou wann Dir déi fräiwëlleg Ëmfro hei ënnedrënner déift ausfëllen ier Dir op "{{int:optin-submit-out}}" klickt.',
 	'optin-survey-question-whyoptout' => 'Firwat wëllt Dir dësen Interface net méi benotzen?',
 	'optin-survey-answer-whyoptout-didntlike' => 'Ech hunn deen Design net gären.',
 	'optin-survey-answer-whyoptout-hard' => "Et war ze komplizéiert fir eng Säit z'änneren.",
@@ -987,7 +1007,7 @@ $messages['vi'] = array(
 	'optin-survey-question-res' => 'Màn hình của bạn có độ phân tích nào?',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -1002,10 +1022,10 @@ $messages['yue'] = array(
 你可以響任何時間撳下面嘅"{{int:optin-submit-in}}"去選入番去。',
 	'optin-submit-in' => '選入',
 	'optin-submit-out' => '選出',
-	'optin-survey-intro' => "多謝你去試用可用性小組嘅可用性加強。
-你可以響任何時間響呢版下面撳\"{{int:optin-submit-out}}\"去選出。
+	'optin-survey-intro' => '多謝你去試用可用性小組嘅可用性加強。
+你可以響任何時間響呢版下面撳"{{int:optin-submit-out}}"去選出。
 
-我哋想知道你對呢個新界面嘅諗法，因此我哋會好高興如果你撳\"{{int:optin-submit-out}}\"之前完成一個可選嘅調查。",
+我哋想知道你對呢個新界面嘅諗法，因此我哋會好高興如果你撳"{{int:optin-submit-out}}"之前完成一個可選嘅調查。',
 	'optin-survey-question-whyoptout' => '點解你會選出呢個界面？',
 	'optin-survey-answer-whyoptout-didntlike' => '我唔鍾意呢個設計。',
 	'optin-survey-answer-whyoptout-hard' => '太難去編輯一版。',
@@ -1019,7 +1039,7 @@ $messages['yue'] = array(
 	'optin-survey-question-feedback' => '請畀我哋知道你嘅反饋：',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -1034,10 +1054,10 @@ $messages['zh-hans'] = array(
 您可以随时点击下面的"{{int:optin-submit-in}}"去加入。',
 	'optin-submit-in' => '加入',
 	'optin-submit-out' => '退出',
-	'optin-survey-intro' => "多谢您去试用可用性小组的可用性增强。
-您可以随时点击下面的\"{{int:optin-submit-out}}\"去退出。
+	'optin-survey-intro' => '多谢您去试用可用性小组的可用性增强。
+您可以随时点击下面的"{{int:optin-submit-out}}"去退出。
 
-我们想知道您对这个新接口的想法，因此我们会好高兴如果您在点击\"{{int:optin-submit-out}}\"之前完成一个可选的调查。",
+我们想知道您对这个新接口的想法，因此我们会好高兴如果您在点击"{{int:optin-submit-out}}"之前完成一个可选的调查。',
 	'optin-survey-question-whyoptout' => '为什么您会退出这个接口？',
 	'optin-survey-answer-whyoptout-didntlike' => '我不喜欢个设计。',
 	'optin-survey-answer-whyoptout-hard' => '太难去编辑一个页面。',
@@ -1051,7 +1071,7 @@ $messages['zh-hans'] = array(
 	'optin-survey-question-feedback' => '请给我们知道您的反馈：',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
@@ -1066,10 +1086,10 @@ $messages['zh-hant'] = array(
 您可以隨時點擊下面的"{{int:optin-submit-in}}"去加入。',
 	'optin-submit-in' => '加入',
 	'optin-submit-out' => '退出',
-	'optin-survey-intro' => "多謝您去試用可用性小組的可用性增強。
-您可以隨時點擊下面的\"{{int:optin-submit-out}}\"去退出。
+	'optin-survey-intro' => '多謝您去試用可用性小組的可用性增強。
+您可以隨時點擊下面的"{{int:optin-submit-out}}"去退出。
 
-我們想知道您對這個新界面的想法，因此我們會好高興如果您在點擊\"{{int:optin-submit-out}}\"之前完成一個可選的調查。",
+我們想知道您對這個新界面的想法，因此我們會好高興如果您在點擊"{{int:optin-submit-out}}"之前完成一個可選的調查。',
 	'optin-survey-question-whyoptout' => '為什麼您會退出這個界面？',
 	'optin-survey-answer-whyoptout-didntlike' => '我不喜歡個設計。',
 	'optin-survey-answer-whyoptout-hard' => '太難去編輯一個頁面。',

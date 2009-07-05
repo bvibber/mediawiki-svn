@@ -22,7 +22,7 @@ $aliases['arz'] = array(
 
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'WhoIsWatching' => array( 'TkoPregleda' ),
+	'WhoIsWatching' => array( 'KoPregleda' ),
 );
 
 /** German (Deutsch) */

@@ -1538,6 +1538,7 @@ Datei:Byschpil.jpg|Bschriftig2',
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'edittoolbar' => 'סרגל עריכה',
@@ -1586,6 +1587,7 @@ $messages['he'] = array(
 	'edittoolbar-tool-gallery-example' => 'קובץ:דוגמה.jpg|כותרת 1
 קובץ:דוגמה.jpg|כותרת 2',
 	'edittoolbar-tool-newline' => 'שורה חדשה',
+	'edittoolbar-tool-table' => 'טבלה',
 	'edittoolbar-section-characters' => 'תווים מיוחדים',
 	'edittoolbar-section-help' => 'עזרה',
 	'edittoolbar-help-heading-description' => 'תיאור',
@@ -2254,7 +2256,9 @@ $messages['ja'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'edittoolbar' => '편집 툴바',
 	'edittoolbar-preference' => '개선된 편집 툴바 켜기',
+	'edittoolbar-section-help' => '도움말',
 	'edittoolbar-help-content-italic-syntax' => "''기울인 글씨''",
 	'edittoolbar-help-content-ilink-description' => '내부 링크',
 );
@@ -3386,6 +3390,11 @@ File:Example.jpg|Сурук2',
 	'edittoolbar-help-content-rereference-result' => "Сирэй тиэкиһэ.<sup><a href='#'>[1]</a></sup>",
 	'edittoolbar-help-content-showreferences-description' => 'Быһаарыылары көрдөрүү',
 	'edittoolbar-help-content-showreferences-syntax' => '&lt;references /&gt; эбэтэр {<!-- -->{Reflist}}',
+	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Сигэ быһаарыыта</a>, эбии быһаарыы.</li></ol>",
+	'edittoolbar-help-content-signaturetimestamp-description' => 'Илии батааһын кэмин кытта',
+	'edittoolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Кытааччы аата</a> (<a href='#' title='{{#special:mytalk}}'>ырытыы</a>) 15:54, Бэс ыйын 10, 2009 (UTC)",
+	'edittoolbar-help-content-signature-description' => 'Илии баттааһын',
+	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Кыттааччы аата</a> (<a href='#' title='{{#special:mytalk}}'>ырытыы</a>)",
 );
 
 /** Slovak (Slovenčina)
@@ -4036,7 +4045,7 @@ Tập tin:Ví dụ.jpg|Chú thích 2',
 	'edittoolbar-help-content-indent-result' => 'Văn bản thường<dl><dd>Văn bản được tăng lề<dl><dd>Văn bản được tăng lề</dd></dl></dd></dl>',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -4044,7 +4053,6 @@ $messages['yue'] = array(
 	'edittoolbar-desc' => '加強可用性嘅編輯版工具',
 	'edittoolbar-preference' => '開着加強編輯工具列',
 	'edittoolbar-loading' => '載入緊...',
-	/* Main Section */
 	'edittoolbar-tool-bold' => '粗體',
 	'edittoolbar-tool-bold-example' => '粗體字',
 	'edittoolbar-tool-italic' => '斜體',
@@ -4057,7 +4065,6 @@ $messages['yue'] = array(
 	'edittoolbar-tool-reference' => '參考',
 	'edittoolbar-tool-reference-example' => '響呢度插入底文字',
 	'edittoolbar-tool-signature' => '簽名加時間印',
-	/* Advanced Section */
 	'edittoolbar-section-advanced' => '進階',
 	'edittoolbar-tool-heading' => '標題',
 	'edittoolbar-tool-heading-1' => '1級',
@@ -4083,13 +4090,23 @@ $messages['yue'] = array(
 	'edittoolbar-tool-subscript-example' => '下標字',
 	'edittoolbar-group-insert' => '插入',
 	'edittoolbar-tool-gallery' => '畫廊',
-	'edittoolbar-tool-gallery-example' => "File:Example.jpg|標題1\nFile:Example.jpg|標題2",
+	'edittoolbar-tool-gallery-example' => 'File:Example.jpg|標題1
+File:Example.jpg|標題2',
 	'edittoolbar-tool-newline' => '新行',
 	'edittoolbar-tool-table' => '表',
-	'edittoolbar-tool-table-example' => "-\n! 表頭 1\n! 表頭 2\n! 表頭 3\n|-\n| 行 1, 格 1\n| 行 1, 格 2\n| 行 1, 格 3\n|-\n| 行 2, 格 1\n| 行 2, 格 2\n| 行 2, 格 3",
-	/* Special characters Section */
+	'edittoolbar-tool-table-example' => '-
+! 表頭 1
+! 表頭 2
+! 表頭 3
+|-
+| 行 1, 格 1
+| 行 1, 格 2
+| 行 1, 格 3
+|-
+| 行 2, 格 1
+| 行 2, 格 2
+| 行 2, 格 3',
 	'edittoolbar-section-characters' => '特別字',
-	/* Help Section */
 	'edittoolbar-section-help' => '幫手',
 	'edittoolbar-help-heading-description' => '描述',
 	'edittoolbar-help-heading-syntax' => '你輸入啲乜',
@@ -4155,18 +4172,17 @@ $messages['yue'] = array(
 	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>用戶名</a> (<a href='#' title='{{#special:mytalk}}'>討論</a>)",
 	'edittoolbar-help-content-indent-description' => '縮排',
 	'edittoolbar-help-content-indent-syntax' => '標準字<br />:縮排字<br />::縮排字',
-	'edittoolbar-help-content-indent-result' => '標準字<dl><dd>縮排字<dl><dd>縮排字</dd></dl></dd></dl>'
+	'edittoolbar-help-content-indent-result' => '標準字<dl><dd>縮排字<dl><dd>縮排字</dd></dl></dd></dl>',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
- */	
+ */
 $messages['zh-hans'] = array(
 	'edittoolbar' => '编辑工具列',
 	'edittoolbar-desc' => '加强可用性的编辑页面工具',
 	'edittoolbar-preference' => '启用加强编辑工具列',
 	'edittoolbar-loading' => '载入中...',
-	/* Main Section */
 	'edittoolbar-tool-bold' => '粗体',
 	'edittoolbar-tool-bold-example' => '粗体文字',
 	'edittoolbar-tool-italic' => '斜体',
@@ -4179,7 +4195,6 @@ $messages['zh-hans'] = array(
 	'edittoolbar-tool-reference' => '参考',
 	'edittoolbar-tool-reference-example' => '在这里插入页底文字',
 	'edittoolbar-tool-signature' => '签名加时间截记',
-	/* Advanced Section */
 	'edittoolbar-section-advanced' => '高级',
 	'edittoolbar-tool-heading' => '标题',
 	'edittoolbar-tool-heading-1' => '1级',
@@ -4205,13 +4220,23 @@ $messages['zh-hans'] = array(
 	'edittoolbar-tool-subscript-example' => '下标文字',
 	'edittoolbar-group-insert' => '插入',
 	'edittoolbar-tool-gallery' => '画廊',
-	'edittoolbar-tool-gallery-example' => "File:Example.jpg|标题1\nFile:Example.jpg|标题2",
+	'edittoolbar-tool-gallery-example' => 'File:Example.jpg|标题1
+File:Example.jpg|标题2',
 	'edittoolbar-tool-newline' => '换行',
 	'edittoolbar-tool-table' => '表格',
-	'edittoolbar-tool-table-example' => "-\n! 表头 1\n! 表头 2\n! 表头 3\n|-\n| 行 1, 格 1\n| 行 1, 格 2\n| 行 1, 格 3\n|-\n| 行 2, 格 1\n| 行 2, 格 2\n| 行 2, 格 3",
-	/* Special characters Section */
+	'edittoolbar-tool-table-example' => '-
+! 表头 1
+! 表头 2
+! 表头 3
+|-
+| 行 1, 格 1
+| 行 1, 格 2
+| 行 1, 格 3
+|-
+| 行 2, 格 1
+| 行 2, 格 2
+| 行 2, 格 3',
 	'edittoolbar-section-characters' => '特殊文字',
-	/* Help Section */
 	'edittoolbar-section-help' => '帮手',
 	'edittoolbar-help-heading-description' => '描述',
 	'edittoolbar-help-heading-syntax' => '您输入什么',
@@ -4277,18 +4302,15 @@ $messages['zh-hans'] = array(
 	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>用户名</a> (<a href='#' title='{{#special:mytalk}}'>讨论</a>)",
 	'edittoolbar-help-content-indent-description' => '缩排',
 	'edittoolbar-help-content-indent-syntax' => '标准文字<br />:缩排文字<br />::缩排文字',
-	'edittoolbar-help-content-indent-result' => '标准文字<dl><dd>缩排文字<dl><dd>缩排文字</dd></dl></dd></dl>'
-);	
-	
-/** Chinese Traditional
- * @author Shinjiman
- */	
+	'edittoolbar-help-content-indent-result' => '标准文字<dl><dd>缩排文字<dl><dd>缩排文字</dd></dl></dd></dl>',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'edittoolbar' => '編輯工具列',
 	'edittoolbar-desc' => '加強可用性的編輯頁面工具',
 	'edittoolbar-preference' => '啟用加強編輯工具列',
 	'edittoolbar-loading' => '載入中...',
-	/* Main Section */
 	'edittoolbar-tool-bold' => '粗體',
 	'edittoolbar-tool-bold-example' => '粗體文字',
 	'edittoolbar-tool-italic' => '斜體',
@@ -4301,7 +4323,6 @@ $messages['zh-hant'] = array(
 	'edittoolbar-tool-reference' => '參考',
 	'edittoolbar-tool-reference-example' => '在這裏插入頁底文字',
 	'edittoolbar-tool-signature' => '簽名加時間截記',
-	/* Advanced Section */
 	'edittoolbar-section-advanced' => '進階',
 	'edittoolbar-tool-heading' => '標題',
 	'edittoolbar-tool-heading-1' => '1級',
@@ -4327,13 +4348,23 @@ $messages['zh-hant'] = array(
 	'edittoolbar-tool-subscript-example' => '下標文字',
 	'edittoolbar-group-insert' => '插入',
 	'edittoolbar-tool-gallery' => '畫廊',
-	'edittoolbar-tool-gallery-example' => "File:Example.jpg|標題1\nFile:Example.jpg|標題2",
+	'edittoolbar-tool-gallery-example' => 'File:Example.jpg|標題1
+File:Example.jpg|標題2',
 	'edittoolbar-tool-newline' => '換行',
 	'edittoolbar-tool-table' => '表格',
-	'edittoolbar-tool-table-example' => "-\n! 表頭 1\n! 表頭 2\n! 表頭 3\n|-\n| 行 1, 格 1\n| 行 1, 格 2\n| 行 1, 格 3\n|-\n| 行 2, 格 1\n| 行 2, 格 2\n| 行 2, 格 3",
-	/* Special characters Section */
+	'edittoolbar-tool-table-example' => '-
+! 表頭 1
+! 表頭 2
+! 表頭 3
+|-
+| 行 1, 格 1
+| 行 1, 格 2
+| 行 1, 格 3
+|-
+| 行 2, 格 1
+| 行 2, 格 2
+| 行 2, 格 3',
 	'edittoolbar-section-characters' => '特殊文字',
-	/* Help Section */
 	'edittoolbar-section-help' => '幫手',
 	'edittoolbar-help-heading-description' => '描述',
 	'edittoolbar-help-heading-syntax' => '您輸入什麼',
@@ -4399,6 +4430,6 @@ $messages['zh-hant'] = array(
 	'edittoolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>用戶名</a> (<a href='#' title='{{#special:mytalk}}'>討論</a>)",
 	'edittoolbar-help-content-indent-description' => '縮排',
 	'edittoolbar-help-content-indent-syntax' => '標準文字<br />:縮排文字<br />::縮排文字',
-	'edittoolbar-help-content-indent-result' => '標準文字<dl><dd>縮排文字<dl><dd>縮排文字</dd></dl></dd></dl>'
+	'edittoolbar-help-content-indent-result' => '標準文字<dl><dd>縮排文字<dl><dd>縮排文字</dd></dl></dd></dl>',
 );
 

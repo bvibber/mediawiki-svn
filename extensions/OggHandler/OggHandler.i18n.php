@@ -1720,7 +1720,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'ogg-desc' => 'Steierungsprogramm fir Ogg Theora a Vorbis Fichieren, att engem JavaScript-Player-Software',
+	'ogg-desc' => 'Steierungsprogramm fir Ogg Theora a Vorbis Fichieren, mat enger JavaScript-Player-Software',
 	'ogg-short-audio' => 'Ogg-$1-Tounfichier, $2',
 	'ogg-short-video' => 'Ogg-$1-Videofichier, $2',
 	'ogg-short-general' => 'Ogg-$1-Mediefichier, $2',
@@ -1734,6 +1734,7 @@ $messages['lb'] = array(
 	'ogg-stop' => 'Stopp',
 	'ogg-play-video' => 'Video ofspillen',
 	'ogg-play-sound' => 'Tounfichier ofspillen',
+	'ogg-no-player' => 'Pardon, Äre Betriibssystem schengt keng Software ze hunn fir d\'Fichieren ofzespillen. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Lued w.e.g. esou eng Software erof</a> an installéiert se w.e.g. .',
 	'ogg-no-xiphqt' => 'Dir hutt anscheinend d\'Komponent  XiphQT fir QuickTime net installéiert.
 QuickTime kann Ogg-Fichiere net ouni dës Komponent spillen.
 <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Lued XiphQT w.e.g. erof</a> oder wielt eng aner Software.',

@@ -295,12 +295,12 @@ $messages['he'] = array(
 	'security-inforestrict' => 'הפעולה $1 מוגבלת לקבוצה $2',
 	'security-desc-LS' => '(חל כיוון שדף זה נמצא ב"$2 $1")',
 	'security-desc-PR' => '(הוגדר דרך לשונית ה"הגנה")',
-	'security-infosysops' => 'לא חלות הגבלות כלשהן כיוון שיש לכם הרשאות "מפעיל המערכת"',
+	'security-infosysops' => 'לא חלות הגבלות כלשהן כיוון שאתם חברים בקבוצה "מפעילי מערכת"',
 	'security-manygroups' => 'הקבוצות $1 ו־$2',
 	'security-unchain' => 'שינוי פעולות בנפרד',
 	'security-type-category' => 'קטגוריה',
 	'security-type-namespace' => 'מרחב השם',
-	'security-restricttogroup' => 'הגישה לתוכן מוגבלת לחברים שב־"$1"',
+	'security-restricttogroup' => 'הגישה לתוכן מוגבלת לחברים בקבוצה "$1"',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

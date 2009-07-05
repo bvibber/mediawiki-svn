@@ -65,6 +65,14 @@ $messages['gsw'] = array(
 	'navigabletoc-desc' => 'Fiegt e Inhalts-Tabälle zue in s Bearbeitigsformat, wu ne Tekschtchaschte gscrollt wird, wänn e abschitt aaklickt wird.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'navigabletoc' => 'תוכן עניינים עם אפשרות ניווט',
+	'navigabletoc-desc' => 'הוספת תוכן עניינים לדף העריכה, המאפשר לגלול את תיבת הטקסט בעת לחיצה על פסקה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -184,7 +192,7 @@ $messages['tr'] = array(
 	'navigabletoc-desc' => 'Değişiklik formuna, bir bölüm tıklandığında metin kutusunu kaydıran, bir içindekiler listesi ekler',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -192,7 +200,7 @@ $messages['yue'] = array(
 	'navigabletoc-desc' => '加入目錄到編輯表格，當一小節揀咗嗰陣捲動文字盒',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -200,7 +208,7 @@ $messages['zh-hans'] = array(
 	'navigabletoc-desc' => '加入目录至编辑表格，当一段落点击以后卷动文字方块',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

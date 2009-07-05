@@ -288,12 +288,13 @@ $messages['gv'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'adminlinks' => 'קישורים למנהלים',
-	'adminlinks-desc' => 'הוספת [[Special:AdminLinks|דף מיוחד]] המכיל קישורים שימושיים למנהלים',
-	'adminlinks_documentation' => 'תיעוד $1',
+	'adminlinks' => 'קישורים למפעילי מערכת',
+	'adminlinks-desc' => 'הוספת [[Special:AdminLinks|דף מיוחד]] המכיל קישורים שימושיים למפעילי מערכת',
+	'adminlinks_documentation' => 'התיעוד של $1',
 	'adminlinks_general' => 'כללי',
 	'adminlinks_editsidebar' => 'עריכת סרגל הצד',
 	'adminlinks_editcss' => 'עריכת קובץ CSS',
@@ -302,7 +303,7 @@ $messages['he'] = array(
 	'adminlinks_createuser' => 'יצירת משתמש',
 	'adminlinks_browsesearch' => 'עיון וחיפוש',
 	'adminlinks_importexport' => 'ייבוא וייצוא',
-	'right-adminlinks' => 'עיינו בקישור אל [[Special:AdminLinks|קישורי מנהלים]]',
+	'right-adminlinks' => 'הצגת הקישור לדף [[Special:AdminLinks|קישורים למפעילי מערכת]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -409,6 +410,19 @@ $messages['ja'] = array(
 	'adminlinks_browsesearch' => '閲覧と検索',
 	'adminlinks_importexport' => '取り込みと書き出し',
 	'right-adminlinks' => '[[Special:AdminLinks|管理者用リンク集]]へのリンクが表示される',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'adminlinks' => 'តំណភ្ជាប់ រដ្ឋបាល​',
+	'adminlinks_general' => 'ទូទៅ​',
+	'adminlinks_editsidebar' => 'កែសម្រួល​របារ​ចំហៀង​',
+	'adminlinks_editcss' => 'កែសម្រួល​ឯកសារ CSS',
+	'adminlinks_editmainpagename' => 'កែសម្រួល​ឈ្មោះ​នៃ​ទំព័រ​ដើម​',
+	'adminlinks_users' => 'អ្នកប្រើប្រាស់',
+	'adminlinks_createuser' => 'បង្កើតអ្នកប្រើប្រាស់',
 );
 
 /** Ripoarisch (Ripoarisch)

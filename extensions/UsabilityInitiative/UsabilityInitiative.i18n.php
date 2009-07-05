@@ -33,6 +33,14 @@ $messages['bs'] = array(
 	'usabilityinitiative-desc' => 'Mogućnost koju je razvila Wikipedia inicijativa upotrebljivosti da bi se poboljšala upotrebljivost MediaWiki',
 );
 
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'usabilityinitiative' => 'Benutzerfreundlichkeitsinitiative',
+	'usabilityinitiative-desc' => 'Von der Wikipedia-Benutzerfreundlichkeitsinitiative entwickelte Features, um die Benutzerfreundlichkeit von MediaWiki zu verbessern',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -208,7 +216,7 @@ $messages['tr'] = array(
 	'usabilityinitiative-desc' => "Vikipedi Kullanılabilirlik Girişimi tarafından MedyaViki'nin kullanılabilirliğini artırmak için geliştirilen özellikler",
 );
 
-/** Cantinese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -216,7 +224,7 @@ $messages['yue'] = array(
 	'usabilityinitiative-desc' => '由維基百科可用性小組加強MediaWiki嘅可用性',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -224,10 +232,11 @@ $messages['zh-hans'] = array(
 	'usabilityinitiative-desc' => '由维基百科可用性小组增强MediaWiki的可用性',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'usabilityinitiative' => '可用性倡議',
 	'usabilityinitiative-desc' => '由維基百科可用性小組增強MediaWiki的可用性',
 );
+

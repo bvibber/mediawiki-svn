@@ -1160,6 +1160,7 @@ $messages['ka'] = array(
  * @author Chhorran
  * @author Lovekhmer
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'badimages' => 'បញ្ជីរូបភាពមិនល្អ',
@@ -1182,6 +1183,7 @@ $messages['km'] = array(
 	'badimages-log-add' => 'បានបន្ថែម [[$1]] ទៅ បញ្ជី រូបភាពអន់',
 	'badimages-log-remove' => 'បានដកចេញ [[$1]] ពី បញ្ជី រូបភាពអន់',
 	'badimages-page' => '{{ns:help}}:បញ្ជីរូបភាពមិនល្អ',
+	'right-badimages' => 'បន្ទាន់សម័យ​បញ្ជីរូបភាពអន់​',
 );
 
 /** Korean (한국어)

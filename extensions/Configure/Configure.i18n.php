@@ -2974,7 +2974,7 @@ $messages['he'] = array(
 	'configure-ext-doc' => 'עיון בתיעוד מקוון',
 	'configure-ext-schemachange' => "'''אזהרה:''' הרחבה זו דורשת עדכון בבסיס הנתונים כדי לעבוד כראוי!",
 	'configure-ext-settings' => 'הגדרות',
-	'configure-ext-settings-dep-errors' => 'לא ניתן להפעיל הרחבה זו כיוון שלהגדר{{PLURAL:$1|ה הבאה|ות הבאות}} יש ערך בלתי מקובל:',
+	'configure-ext-settings-dep-errors' => 'לא ניתן להפעיל הרחבה זו כיוון של{{PLURAL:$1|הגדרה הבאה|הגדרות הבאות}} יש ערך בלתי תקין:',
 	'configure-ext-settings-dep-error' => '$1: ערך נדרש: $2, ערך נוכחי: $3',
 	'configure-ext-use-extension' => 'הפעלת הרחבה זו',
 	'configure-ext-use' => 'הפעלה',
@@ -3090,7 +3090,7 @@ $messages['he'] = array(
 	'configure-select-wiki-view-specific' => 'אתר ויקי מסויים:',
 	'configure-select-wiki-submit' => 'בחירה',
 	'configure-setting-not-available' => 'הגדרה זו אינה זמינה בגרסה זו של מדיה־ויקי',
-	'configure-transwiki-not-in-range' => 'הוויקי הנבחר, $1, אינו בער{{PLURAL:$3|ך המורשה|כים המורשים}}: $2.',
+	'configure-transwiki-not-in-range' => 'אתר הוויקי שנבחר, $1, אינו ב{{PLURAL:$3|ערך המורשה|ערכים המורשים}}: $2.',
 	'configure-view' => 'צפייה',
 	'configure-view-all-versions' => 'רשימת הגרסאות המלאה',
 	'configure-view-default' => 'הגדרות ברירת המחדל',
@@ -3149,9 +3149,9 @@ $messages['he'] = array(
 	'configure-boolop-description-or' => 'לפחות אחד מהתנאים חייב להתקיים',
 	'configure-boolop-description-xor' => 'בדיוק אחד מהתנאים חייב להתקיים',
 	'configure-boolop-description-not' => 'התנאים חייבים לא להתקיים',
-	'configure-farmer-settings' => '[[Special:Configure|הגדרת ויקי זה]].',
-	'configure-farmer-extensions' => '[[Special:Extensions|הגדרת הרחבות עבור ויקי זה]].',
-	'configure-farmer-extensions-list' => '[[Special:Extensions|רשימת ההרחבות הזמינה עבור ויקי זה]].',
+	'configure-farmer-settings' => '[[Special:Configure|הגדרת אתר ויקי זה]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|הגדרת הרחבות עבור אתר ויקי זה]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|רשימת ההרחבות הזמינה עבור אתר ויקי זה]].',
 );
 
 /** Hindi (हिन्दी)

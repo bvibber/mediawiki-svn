@@ -26,7 +26,7 @@ $aliases['arz'] = array(
 
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'WhosOnline' => array( 'TkoJeNaMrezi' ),
+	'WhosOnline' => array( 'KoJeNaMreži' ),
 );
 
 /** German (Deutsch) */

@@ -394,12 +394,13 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'fckeditor-desc' => 'מתן האפשרות לעריכה באמצעות עורך תצוגת האמת FCKeditor',
+	'fckeditor-desc' => 'מתן האפשרות לעריכה באמצעות עורך WYSIWYG בשם FCKeditor',
 	'textrichditor' => 'עורך עשיר',
-	'prefs-fckeditor' => 'עורך עשיר',
+	'prefs-fckeditor' => 'עורך לטקסט מעוצב',
 	'tog-riched_disable' => 'כבה את העורך העשיר',
 	'tog-riched_disable_ns_main' => 'כבה את העורך העשיר במרחב השם הראשי',
 	'tog-riched_disable_ns_talk' => 'כבה את העורך העשיר במרחב השם "{{ns:talk}}"',

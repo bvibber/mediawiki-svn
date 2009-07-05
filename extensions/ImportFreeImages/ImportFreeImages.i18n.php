@@ -612,12 +612,14 @@ $messages['jv'] = array(
  * @author Chhorran
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'importfreeimages' => 'នាំចូល រូបភាព សេរី',
 	'importfreeimages-desc' => 'ផ្ដល់នូវរបៀបមួយក្នុងការ[[Special:ImportFreeImages|នាំចូលរូបភាពដែលមានអាជ្ញាប័ណ្ណត្រឹមត្រូវ]] ពី [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'ទំព័រនេះផ្ដល់លទ្ឋភាពឱ្យអ្នកស្វែងរករូបភាពដែលមានអាជ្ញាប័ណ្ណត្រឹមត្រូវពី flickr ហើយនាំចូលពូកវាមកក្នុងវិគីរបស់អ្នក។',
 	'importfreeimages_noapikey' => 'អ្នកមិនបាន​ធ្វើទម្រង់​សោ Flickr API របស់អ្នក​។ ដើម្បីធ្វើវា, ត្រូវយក​សោ​ API ពី [http://www.flickr.com/services/api/misc.api_keys.html here] រួច​កំណត់​ wgFlickrAPIKey ក្នុង ImportFreeImages.php ។',
+	'importfreeimages_nophotosfound' => "គ្មាន​រូបថត​ត្រូវបានរកឃើញ​សម្រាប់ការ​ស្វែងរក '$1' របស់អ្នក សូមព្យាយាម​ម្តងទៀត។​",
 	'importfreeimages_invalidurl' => 'URL "$1" មិនមែនជា​រូបភាព​ត្រឹមត្រូវ​របស់ Flickr ។',
 	'importfreeimages_owner' => 'អ្នកនិពន្ធ',
 	'importfreeimages_importthis' => 'នាំចូល នេះ',

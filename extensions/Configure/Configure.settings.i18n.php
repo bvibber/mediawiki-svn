@@ -1443,9 +1443,28 @@ $messages['bar'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'configure-setting-wgSitename' => 'Назва сайта',
 	'configure-setting-wgActionPaths-key' => 'Дзеяньне',
+	'configure-setting-wgActionPaths-value' => 'Шаблён URL-адрасу',
+	'configure-setting-wgAllDBsAreLocalhost' => 'Перанакіроўваць усе злучэньні з базай зьвестак на лякальны кампутар без камэнтараў',
+	'configure-setting-wgCheckDBSchema' => 'Правяраць абнаўленьні базы зьвестак пад час кожнага прагляду старонкі (састарэлая)',
+	'configure-setting-wgDBAvgStatusPoll' => 'Сярэдні час паміж запытамі SHOW STATUS ва ўмовах перагрузкі',
+	'configure-setting-wgDBerrorLog' => 'Файл журнала для запісу памылак базы зьвестак',
+	'configure-setting-wgDBname' => 'Назва базы зьвестак, якая будзе выкарыстоўвацца',
+	'configure-setting-wgDBpassword' => 'Пароль для $wgDBuser',
+	'configure-setting-wgDBport' => 'Порт сэрвэра базы зьвестак',
+	'configure-setting-wgDBserver' => 'Назва кампутара альбо IP-адрас сэрвэра базы зьвестак',
+	'configure-setting-wgDBtype' => 'Тып выкарыстоўваемай базы зьвестак',
+	'configure-setting-wgDBuser' => 'Рахунак для ўваходу ў базу зьвестак',
+	'configure-setting-wgLocalDatabases' => 'Іншыя базы зьвестак, якія могуць адміністравацца з гэтага сэрвэра',
+	'configure-setting-wgSearchType' => 'Тып выкарыстоўваемай базы зьвестак пошуку. Устанавіце назву клясы, каб выкарыстоўваць нестандартнае праграмнае забесьпячэньне пошуку',
+	'configure-setting-wgSharedDB' => 'Назва агульнай базы зьвестак',
+	'configure-setting-wgSharedPrefix' => 'Прэфікс агульнай базы зьвестак',
+	'configure-setting-wgSharedTables' => 'Табліцы для агульнага доступу',
+	'configure-setting-wgAllowImageMoving' => 'Дазволіць перайменаваньне файлаў',
 	'configure-setting-wgExtraLanguageNames-key' => 'Код мовы',
 	'configure-setting-wgEnableUploads' => 'Дазволіць загрузку файлаў',
 	'configure-setting-wgVersion' => 'Вэрсія MediaWiki',
@@ -5899,15 +5918,19 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'configure-setting-wgSitename' => 'ឈ្មោះ​តំបន់បណ្ដាញ',
+	'configure-setting-wgActionPaths-key' => 'សកម្មភាព',
+	'configure-setting-wgActionPaths-value' => 'គំរូ URL',
 	'configure-setting-wgDBname' => 'ឈ្មោះ​​មូលដ្ឋានទិន្នន័យ​ដែល​ត្រូវ​ប្រើ',
 	'configure-setting-wgDBpassword' => 'ពាក្យសំងាត់​សម្រាប់ $wgDBuser',
 	'configure-setting-wgDBport' => 'ទ្វារ​សម្រាប់​ម៉ាស៊ីនបម្រើ​មូលដ្ឋានទិន្នន័យ',
 	'configure-setting-wgDBserver' => 'ឈ្មោះ​ម៉ាស៊ីន ឬ អាសយដ្ឋាន IP នៃ​ម៉ាស៊ីនបម្រើ​មូលដ្ឋានទិន្នន័យ',
 	'configure-setting-wgDBtype' => 'ប្រភេទ​មូលដ្ឋានទិន្នន័យ​ដែល​ត្រូវ​ប្រើ',
 	'configure-setting-wgMediaHandlers-key' => 'ប្រភេទ MIME',
+	'configure-setting-wgLanguageCode' => 'កូដភាសាតំបន់​',
 	'configure-setting-wgTranslateNumerals' => 'ចំនួន​ពាក្យ​សរសេរ​អក្សរ​ភាសាផ្សេង',
 	'configure-setting-wgArticleRobotPolicies-key' => 'ចំណងជើង​ទំព័រ',
 	'configure-setting-wgExtraLanguageNames-key' => 'កូដ​ភាសា',
@@ -5916,6 +5939,7 @@ $messages['km'] = array(
 	'configure-setting-wgEnableUploads' => 'អនុញ្ញាត​ឱ្យ​ផ្ទុកឡើង',
 	'configure-setting-wgMaxUploadSize' => 'ទំហំ​អតិបរមារ​ដែល​ត្រូវ​បាន​អនុញ្ញាត​ឱ្យ​ផ្ទុកឡើង',
 	'configure-setting-wgHTTPProxy' => 'ប្រូកស៊ី HTTP ដែល​ត្រូវ​ប្រើ',
+	'configure-setting-wgLogRestrictions-key' => 'ប្រភេទ​កំណត់ហេតុ​',
 	'configure-setting-wgSpecialPageGroups' => 'ក្រុម​ទំព័រ​ពិសេសៗ',
 	'configure-setting-wgSpecialPageGroups-key' => 'ក្រុម',
 	'configure-setting-wgDebugLogGroups-value' => 'ឯកសារ',
@@ -6592,6 +6616,7 @@ $messages['lb'] = array(
 	'configure-setting-wgDebugRedirects' => "Viruleedungszil uweisen an net direkt op d'Zil URL viruleeden",
 	'configure-setting-wgShowSQLErrors' => "D'Datebankfeeler op de Säite weisen",
 	'configure-setting-wgDisableQueryPageUpdate' => 'Spezialsäiten déi ausgeschalt sinn',
+	'configure-setting-wgDisableSearchUpdate' => 'Aktualisatioun vun der Sich ausschalten',
 	'configure-setting-wgDisableTextSearch' => 'Volltext-Sich ausschalten',
 	'configure-setting-wgEdititis' => 'De Compteur vun de Benotzerkontributiounen op verschiddene bekannte Plazen weisen',
 	'configure-setting-wgFixDoubleRedirects' => 'Duebel Viruleedungen nom Réckel vun enger Säit flécken',

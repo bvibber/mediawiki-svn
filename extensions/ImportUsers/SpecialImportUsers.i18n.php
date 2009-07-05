@@ -856,6 +856,7 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'importusers' => 'នាំចូលអ្នកប្រើប្រាស់',
@@ -865,7 +866,7 @@ $messages['km'] = array(
 	'importusers-user-added' => "បានបន្ថែមហើយ អ្នកប្រើប្រាស់ '''$1''' ។",
 	'importusers-user-present-update' => "អ្នកប្រើប្រាស់ '''$1''' មានហើយ។ បានបន្ទាន់សម័យ។",
 	'importusers-user-present-not-update' => "អ្នកប្រើប្រាស់ '''$1''' មានហើយ។ មិនទាន់បានបន្ទាន់សម័យ។",
-	'importusers-log' => 'កំណត់ហេតុនៃការនាំចូល',
+	'importusers-log' => 'នាំចូលកំណត់ហេតុអ្នកប្រើប្រាស់​',
 	'importusers-log-summary' => 'សេចក្តីសង្ខេប',
 	'importusers-log-summary-all' => 'ទាំងអស់',
 	'importusers-log-summary-added' => 'បានបន្ថែម',

@@ -359,6 +359,14 @@ $messages['ja'] = array(
 	'categorywatch-autocat' => '$1 により自動的にウォッチされました',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'categorywatch-emailsubject' => 'សកម្មភាព​ពាក់ពិន​នឹង​ចំណាត់ថ្នាក់ក្រុមដែល​តាមដាន ​"$1"',
+	'categorywatch-catmovein' => '$1 បានផ្លាស់ប្តូរ​ទីតាំងទៅកាន់ $2 ពី $3',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  * @author Yknok29

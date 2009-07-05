@@ -198,6 +198,13 @@ Die Ibersicht isch e eifach Zuegang zue dr Syschtemnochrichte, wu d Bschrybig un
 	'plotters-errors' => '{{PLURAL:$1|Plotterfähler|Plotterfähler}}:',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'plotters-desc' => 'מתן אפשרות לשימוש ב־JavaScript מותאם אישית בתגיות jsplot',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

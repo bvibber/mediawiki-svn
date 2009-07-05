@@ -548,6 +548,7 @@ $messages['he'] = array(
 	'slippymap_code' => 'קוד הוויקי להצגת מפה זו:',
 	'slippymap_button_code' => 'איחזור קוד הוויקי',
 	'slippymap_resetview' => 'איפוס התצוגה',
+	'slippymap_clicktoactivate' => 'לחצו כדי להפעיל את המפה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -1735,6 +1735,7 @@ $messages['da'] = array(
  * @author MichaelFrey
  * @author Purodha
  * @author Revolus
+ * @author Tbleher
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -1774,6 +1775,8 @@ Besuche die <a href="http://metavid.org/wiki/Client_Playback">MetaVid-Projektsei
 	'cc_pd_title' => 'Gemeinfrei',
 	'unknown_license' => 'Lizenz unbekannt',
 	'mv_stream_title' => '$1 (von $2 bis $3)',
+	'mv_crop' => 'Bild zuschneiden',
+	'sc_duration' => 'Dauer',
 	'menu_options' => 'Optionen',
 	'loading_timeline' => 'Zeitleiste laden <blink>…</blink>',
 	'loading_user_rights' => 'Benutzerrechte laden <blink>…</blink>',
@@ -1991,6 +1994,7 @@ Zur Stream-Ansicht springen: $2',
 	'mv_sequence_edit_visual_editor' => 'Zum visuellen Editor wechseln',
 	'mv_other_options' => 'Andere Optionen',
 	'mv_contextmenu_opt' => 'Kontextmenüs aktivieren',
+	'mv_days' => '$1 {{PLURAL:$1|Tag|Tage}}',
 	'mv_hours' => '$1 {{PLURAL:$1|Stunde|Stunden}}',
 	'mv_hours_singular' => '$1 Stunde',
 	'mv_minutes' => '$1 {{PLURAL:$1|Minute|Minuten}}',
@@ -3509,6 +3513,9 @@ $messages['haw'] = array(
  */
 $messages['he'] = array(
 	'mv_media_search' => 'חיפוש מדיה',
+	'mv_upload' => 'העלאה',
+	'rsd_layout' => 'פריסה:',
+	'rsd_resource_edit' => 'עריכת משאב: $1',
 	'mv_duration_label' => 'משך',
 	'mv_save_changes' => 'שמירת השינויים',
 	'mv_remove_reason' => 'סיבת המחיקה:',
@@ -5526,11 +5533,14 @@ $messages['ku-latn'] = array(
  */
 $messages['lb'] = array(
 	'loading_txt' => 'Lueden <blink>...</blink>',
+	'loading_plugin' => 'Plugin lueden <blink>...</blink>',
 	'link_back' => 'Zrécklinken',
 	'download_segment' => 'Dat Erausgesichten eroflueden',
 	'download_full' => 'De ganze Fichier vum Video eroflueden:',
 	'download_clip' => 'De Clip eroflueden',
+	'clip_linkback' => 'Quellsäit vum Clip',
 	'mv_ogg-player-selected' => '(erausgesicht)',
+	'missing_video_stream' => 'De Vieo-Fichier fir dëse Stream feelt',
 	'close' => 'zoumaachen',
 	'next_clip_msg' => 'Nächste Clip spillen',
 	'prev_clip_msg' => 'Virege Clip spillen',
@@ -5566,8 +5576,10 @@ All Ännerunge sinn da verluer',
 	'cut_clip' => 'Clippe schneiden',
 	'rmclip' => 'Clip ewechhuelen',
 	'metavid' => 'Metavid-Säit',
+	'mv_missing_stream' => 'De Stream $1 feelt',
 	'specialpages-group-mv_group' => 'MetaVidWiki Spezialsäiten',
 	'mv_stream_added' => 'Dir hutt de Stream $1 derbäigesat',
+	'mv_stream_meta' => 'Stream-Säit',
 	'mvexportsearch' => 'MetaVid-Export',
 	'mv_move_delete_msg' => 'op $1 geréckelt',
 	'mv_add_stream_submit' => 'Stream derbäisetzen',
@@ -5575,6 +5587,8 @@ All Ännerunge sinn da verluer',
 	'mv_path_type_wiki_title' => 'Wiki-Medientitel',
 	'mv_duration_label' => 'Dauer',
 	'mv_save_changes' => 'Ännerunge späicheren',
+	'mv_add_stream_file' => 'Stream-Fichier derbäisetzen',
+	'mv_file_list' => 'Stream-Fichieren',
 	'mv_label_stream_name' => "Numm vum ''Stream''",
 	'mv_label_stream_desc' => 'Beschreiwung vum Stream',
 	'add_stream_permission' => 'Dir hutt net déi néideg Rechter fir e Stream derbäizesetzen',

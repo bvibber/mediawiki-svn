@@ -1693,6 +1693,7 @@ $messages['ka'] = array(
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'voctrain_Hello_World' => 'សួស្ដីវីគី!',
@@ -1703,6 +1704,7 @@ $messages['km'] = array(
 	'voctrain_User_added' => 'អ្នកប្រើប្រាស់ត្រូវបានបន្ថែម',
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'សួស្ដី%username! ស្វាគមន៍ការមកដល់ កម្មវិធីហ្វឹកហ្វឺនភាសាអូមេហ្គា (omega language trainer)',
 	'voctrain_continue' => 'បន្ត',
+	'voctrain_hello_place' => 'សួស្ដីទៅកាន់​ %place',
 	'voctrain_bye' => 'លាហើយ',
 	'voctrain_Set_up_your_exercise' => 'ដំឡើង​លំហាត់​របស់​អ្នក',
 	'voctrain_Number_of_questions' => 'ចំនួន​សំណួរ',
@@ -1753,6 +1755,8 @@ $messages['km'] = array(
 	'voctrain_unhide_definition' => 'បើកបង្ហាញនិយមន័យ',
 	'voctrain_unhide_words' => 'បើកបង្ហាញពាក្យ',
 	'voctrain_hiding' => 'លាក់',
+	'voctrain_hide_definitions_in_question_language' => 'លាក់​អត្ថន័យ​ក្នុងភាសា​សំនួរ​',
+	'voctrain_hide_words_in_question_language' => 'លាក់ពាក្យក្នុង​ភាសាសំនួរ​',
 	'voctrain_other' => 'ផ្សេងទៀត',
 );
 

@@ -117,6 +117,13 @@ $messages['ja'] = array(
 	'clientside-desc' => 'HTMLやCSS、JavaScriptのようなクライアント側フォーマットのコードを生成する機能を提供します',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'clientside-desc' => 'ផ្គត់ផ្គង​មុខងារ​ក្នុងការ​បង្កើត​កូដ​ក្នុងទម្រង់​ client-side ដូចជា HTML, CSS និង JavaScript',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

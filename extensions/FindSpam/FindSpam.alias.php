@@ -92,6 +92,11 @@ $aliases['ja'] = array(
 	'FindSpam' => array( 'スパムを探す' ),
 );
 
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'FindSpam' => array( '스팸찾기' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'FindSpam' => array( 'SPAM fenge' ),

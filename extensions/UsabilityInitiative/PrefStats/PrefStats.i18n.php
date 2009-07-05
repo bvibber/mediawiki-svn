@@ -54,6 +54,17 @@ $messages['cs'] = array(
 Kliknutím zobrazíte příslušné statistiky.',
 );
 
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'prefstats' => 'Einstellungsstatistiken',
+	'prefstats-desc' => 'Statistiken, wie viele Benutzer bestimmte Einstellungen aktiviert haben',
+	'prefstats-title' => 'Einstellungsstatistiken',
+	'prefstats-list-intro' => 'Derzeit werden die folgenden Einstellungen aufgezeichnet.
+Klicke auf eine, um Statistiken darüber zu erhalten.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -406,7 +417,7 @@ $messages['vi'] = array(
 Hãy nhấn vào một tùy chọn để xem thống kê về nó.',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -417,8 +428,7 @@ $messages['yue'] = array(
 撳其中一樣去睇有關佢嘅統計。',
 );
 
-
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -429,7 +439,7 @@ $messages['zh-hans'] = array(
 点击其中一种设置去查看有关它的统计。',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

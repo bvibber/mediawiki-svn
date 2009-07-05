@@ -249,9 +249,30 @@ $messages['ca'] = array(
 
 /** Danish (Dansk)
  * @author Jon Harald Søby
+ * @author Masz
  */
 $messages['da'] = array(
+	'patrol-endorse' => 'Godkendt',
+	'patrol-revert' => 'Tilbagerul',
 	'patrol-revert-reason' => 'Begrundelse:',
+	'patrol-skip' => 'Spring over.',
+	'patrol-reverting' => 'Tilbageruller: $1',
+	'patrol-nonefound' => 'Ingen passende redigeringer kunne findes til at blive patruljeret.',
+	'patrol-endorsed-ok' => 'Redigeringen blev markeret som patruljeret.',
+	'patrol-endorsed-failed' => 'Denne redigering kunne ikke blive markeret som patruljeret.',
+	'patrol-reverted-ok' => 'Redigerinen er blevet tilbagestillet.',
+	'patrol-reverted-failed' => 'Dene redigering kunne ikke tilbagestilles.',
+	'patrol-skipped-ok' => 'Ignorér redigering.',
+	'patrol-reasons' => '* Enkelt vandalisme
+* Nybegynder-test
+* Se diskussionssiden',
+	'patrol-another' => 'Vis en anden redigering, hvis det er tilgængeligt.',
+	'patrol-stopped' => 'Du har valgt ikke at patruljere en anden ændring. $1',
+	'patrol-resume' => 'Tryk her for at fortsætte.',
+	'group-patroller' => 'Patruljanter',
+	'group-patroller-member' => 'patruljant',
+	'grouppage-patroller' => '{{ns:project}}:Patruljanter',
+	'right-patroller' => 'Patruljere ssider',
 );
 
 /** German (Deutsch)

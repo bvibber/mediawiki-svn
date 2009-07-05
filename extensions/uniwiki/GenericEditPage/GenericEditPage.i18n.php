@@ -96,7 +96,7 @@ $messages['arc'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'gep-desc' => 'يدعم نافذة التعديل لتكون أفضل للمستخدم',
+	'gep-desc' => 'يدعم صفحة التعديل علشان تكون أفضل لليوزر',
 	'gep-emailsubject' => '[$1] اقتراح التصنيف: $2',
 	'gep-emailbody' => 'اليوزر "$1" اقترح التصنيف"$2" للموقع"$3".',
 	'gep-emailfailure' => 'متاسفين،الاقتراح بتاعك ماينفعش يتنفذ',

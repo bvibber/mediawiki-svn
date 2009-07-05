@@ -259,6 +259,15 @@ $messages['ja'] = array(
 	'ajaxlogin-create' => 'アカウント作成',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'ajaxLogin2' => 'តើអ្នកប្រាដកដែរទេ?
+អ្នកនឹងអាចបាត់បងបំលាស់ប្តូរលើទំព័រនេះ​ ប្រសិនបើ​អ្នក​ចាកចេញពីទំព័រនេះ​ឥឡូវ។​',
+	'ajaxlogin-create' => 'បង្កើតគណនី',
+);
+
 /** Korean (한국어)
  * @author Yknok29
  */

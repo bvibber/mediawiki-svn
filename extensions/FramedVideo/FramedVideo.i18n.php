@@ -385,6 +385,13 @@ $messages['ja'] = array(
 	'framedvideo-desc' => '<tt><nowiki><video></nowiki></tt> タグを使って、様々なウェブサイトからの動画を埋め込めるようにする',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'framedvideo_helppage' => 'Help: វិដេអូ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

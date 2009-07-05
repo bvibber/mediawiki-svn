@@ -776,6 +776,7 @@ $messages['jv'] = array(
  * @author Lovekhmer
  * @author Thearith
  * @author គីមស៊្រុន
+ * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'multipleupload' => 'ផ្ទុកឡើងឯកសារ',
@@ -794,6 +795,8 @@ $messages['km'] = array(
 ឯកសារដែលមិនសមគួរនឹងត្រូវលុបចេញភ្លាមៗ សូមមើល[[{{MediaWiki:Multipleupload-page}}|គោលការណ៍នៃការលុបឯកសារ]]។",
 	'multiupload-fileuploaded' => 'ឯកសារ​ត្រូវបានផ្ទុកឡើង​។',
 	'multiupload-toolbox' => 'ផ្ទុកឡើងពហុឯកសារ',
+	'multiupload-no-files' => 'សូម​ជ្រើសរើស​យ៉ាងហោចណាស់ឯកសារ​​មួយដើម្បីផ្ទុកឡើង​',
+	'multiupload-blank' => 'គ្មានឯកសារ​ត្រូវបានជ្រើសរើស',
 );
 
 /** Korean (한국어)

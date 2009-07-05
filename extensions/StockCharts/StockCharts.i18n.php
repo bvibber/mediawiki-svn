@@ -80,6 +80,7 @@ Verwänd: &lt;stockchart ticker="AAPL"/&gt;',
  * @author Rotemliss
  */
 $messages['he'] = array(
+	'stockcharts-desc' => 'הוספת תגית <nowiki><stockchart ticker="AAPL"/></nowiki> עבור גרף מניה פיננסית אינטראקטיבי',
 	'stockcharts-missingticker' => 'כדי לכלול בדף את גרף המניה, עליכם לציין לפחות את הסימול.
 השתמשו בקוד: &lt;stockchart ticker="TEVA"/&gt;',
 );

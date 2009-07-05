@@ -158,6 +158,13 @@ $messages['ja'] = array(
 	'right-getfamily' => 'pywikipediabot 用のファミリーファイルを作成する',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'right-getfamily' => 'បង្កើត​ឯកសារ​មេ​/គ្រួសារ សម្រាប់ pywikipediabot',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

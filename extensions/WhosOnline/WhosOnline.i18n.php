@@ -24,11 +24,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'whosonline' => 'من موجود',
-	'whosonline-desc' => 'يعرض [[Special:WhosOnline|قائمة]] للمستخدمين المسجلين والمجهولين الموجودين حاليا على الشبكة',
+	'whosonline-desc' => 'يعرض [[Special:WhosOnline|لستة]] لليوزرات المتسجلين والمجهولين الموجودين دلوقتى على الشبكة',
 );
 
 /** Asturian (Asturianu)

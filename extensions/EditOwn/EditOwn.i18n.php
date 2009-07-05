@@ -212,6 +212,13 @@ $messages['ja'] = array(
 	'editown-desc' => '全編集（editall）権限がない利用者に対し、自分の作成したページ以外は編集できないようにする',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'editown-desc' => 'អ្នកប្រើប្រាស់​ដែលគ្មាន​សិទ្ធិ editall អាចកែប្រែ​ទំព័រទាំងឡាយណាដែលខ្លួនបានបង្កើត​',
+);
+
 /** Korean (한국어)
  * @author Yknok29
  */

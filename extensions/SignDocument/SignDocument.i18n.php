@@ -220,6 +220,8 @@ $messages['he'] = array(
 	'signature-desc' => 'ההרחבה מאפשרת [[Special:SignDocument|חתימה]] על מסמכים',
 	'signaturelogpagetext' => 'זהו יומן המעקב של [[Special:SignDocument|כל החתימות שנוספו למסמכים]].',
 	'signaturelogentry' => 'חתם על המסמך $1',
+	'right-sigadmin' => 'ניהול חתימת מסמכים',
+	'right-createsigndocument' => 'יצירת מסמכים הניתנים לחתימה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

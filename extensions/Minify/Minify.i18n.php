@@ -73,10 +73,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'minify-desc' => 'כיווץ פלט CSS ו־JavaScript מ־action=raw',
+	'minify-desc' => 'כיווץ פלט CSS ו־JavaScript ב־action=raw',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -112,6 +113,13 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'minify-desc' => 'Deiht de <i lang="en">CSS</i>- un JavaSkep-Datteije zosammeshtauche, wann mer <code lang="en">action=raw</code> aanjitt.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'minify-desc' => "Reduzéiert d'Resultat vum CSS a JavaScript bäi acrtion=raw",
 );
 
 /** Dutch (Nederlands)
