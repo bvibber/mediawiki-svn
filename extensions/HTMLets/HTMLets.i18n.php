@@ -278,3 +278,15 @@ $messages['vi'] = array(
 	'htmlets-desc' => 'Cho phép bạn nhúng những đoạn HTML từ tập tin dùng thẻ <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+$messages['yue'] = array(
+	'htmlets-desc' => '令你可以用<tt><nowiki><htmlet></nowiki></tt>標籤響檔案度用HTML插件',
+);
+
+$messages['zh-hans'] = array(
+	'htmlets-desc' => '令您可以利用<tt><nowiki><htmlet></nowiki></tt>标签于文件中使用HTML插件',
+);
+
+$messages['zh-hant'] = array(
+	'htmlets-desc' => '令您可以利用<tt><nowiki><htmlet></nowiki></tt>標籤於檔案中使用HTML插件',
+);
+
