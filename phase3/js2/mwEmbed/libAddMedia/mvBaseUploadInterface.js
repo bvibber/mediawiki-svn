@@ -12,6 +12,8 @@ loadGM({
 	"wgfogg_wrong_version": "You have firefogg installed but its outdated, <a href=\"http://firefogg.org\">please upgrade</a> ",
 	"upload-stats-fileprogres": "$1 of $2",
 	
+	"mv_upload_completed":  "Your upload is complete",
+	
 	"mv_upload_done" 	  : "Your upload <i>should be</i> accessible <a href=\"$1\">here</a>",
 	"upload-unknown-size": "Unknown size",	
 	

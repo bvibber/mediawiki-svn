@@ -2515,8 +2515,8 @@ $wgDefaultUserOptions = array(
 	'disablemail'			  => 0,
 );
 
-/** 
- * Whether or not to allow and use real name fields. 
+/**
+ * Whether or not to allow and use real name fields.
  * @deprecated in 1.16, use $wgHiddenPrefs[] = 'realname' below to disable real
  * names
  */
@@ -2635,7 +2635,7 @@ $wgMwEmbedDirectory = "js2/mwEmbed/";
 
 /*
  * wgDebugJavaScript used to turn on debuging for the javascript script-loader
- * & forces fresh copies of javascript if the script loader is offf
+ * & forces fresh copies of javascript
  */
 
 $wgDebugJavaScript = false;

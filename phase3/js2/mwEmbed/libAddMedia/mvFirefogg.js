@@ -489,7 +489,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		js_log('::encodeDone::');
 		//send to the post url:				 
 		if( _this.form_rewrite && _this.upload_mode == 'post' ){
-			js_log('done with encoding do POST upload:' + _this.editForm.action);					
+			js_log('done with encoding do POST upload:' + _this.editForm.action);								
 			// ignore warnings & set source type 
 			//_this.formData[ 'wpIgnoreWarning' ]='true';
 			_this.formData[ 'wpSourceType' ] = 'upload';		
