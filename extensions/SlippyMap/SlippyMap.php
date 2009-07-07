@@ -52,12 +52,12 @@ if ( !defined( 'MEDIAWIKI' ) )
 * Property: Extension credits
 */
 $wgExtensionCredits['parserhook'][] = array(
-	'path'           => __FILE__,
-        'name'           => 'OpenStreetMap Slippy Map',
-        'author'         => array( '[http://harrywood.co.uk Harry Wood]', 'Jens Frank' ),
-        'url'            => 'http://wiki.openstreetmap.org/index.php/Slippy_Map_MediaWiki_Extension',
-        'description'    => 'Allows the use of the &lt;slippymap&gt; tag to display an OpenLayers slippy map. Maps are from [http://openstreetmap.org openstreetmap.org]',
-        'descriptionmsg' => 'slippymap_desc',
+	'path'				=> __FILE__,
+	'name'				=> 'OpenStreetMap Slippy Map',
+	'author'			=> array( '[http://harrywood.co.uk Harry Wood]', 'Jens Frank' ),
+	'url'				=> 'http://wiki.openstreetmap.org/index.php/Slippy_Map_MediaWiki_Extension',
+	'description'		=> 'Allows the use of the &lt;slippymap&gt; tag to display an OpenLayers slippy map. Maps are from [http://openstreetmap.org openstreetmap.org]',
+	'descriptionmsg'	=> 'slippymap_desc',
 );
 
 $dir = dirname( __FILE__ ) . '/';
@@ -73,10 +73,9 @@ $wgAutoloadClasses['SlippyMap'] = $dir . 'SlippyMap.class.php';
 $wgAutoloadClasses['WorldWind'] = $dir . 'SlippyMap.worldwind.php';
 
 if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-        $wgHooks['ParserFirstCallInit'][] = 'SlippyMapHooks::onParserFirstCallInit';
+	$wgHooks['ParserFirstCallInit'][] = 'SlippyMapHooks::onParserFirstCallInit';
 } else {
-        $wgExtensionFunctions[] = 'SlippyMapHooks::onParserFirstCallInit';
+	$wgExtensionFunctions[] = 'SlippyMapHooks::onParserFirstCallInit';
 }
 
 $wgHooks['ParserAfterTidy'][] = 'SlippyMapHooks::wfSlippyMapParserAfterTidy';
-
