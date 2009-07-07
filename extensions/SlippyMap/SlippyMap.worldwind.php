@@ -66,9 +66,9 @@ class WorldWind extends SlippyMap {
 		global $wgOut, $wgUser, $wgThumbLimits;
 		wfLoadExtensionMessages( 'SlippyMap' );
 
-                $this->errors = $this->validate();
+		$this->errors = $this->validate();
 		if ( ! $this->errors ) 
-                        return false;
+			return false;
 		
 		self::initMap( $mapParams );	
 		self::setSize();
@@ -78,37 +78,37 @@ class WorldWind extends SlippyMap {
 	}
 
 	public function initMap( $mapParams ) {
-                $this->mapId = $mapParams['mapId'];
-                $this->lat = $mapParams['lat'];
-                $this->lon = $mapParams['lon'];
-                $this->width = $mapParams['w'];
-                $this->height = $mapParams['h'];
-                $this->mode = $mapParams['mode'];
-                $this->zoom = $mapParams['zoom'];
-                $this->caption = $mapParams['caption'];
-                $this->layer = isset( $mapParams['layer'] ) ? strtolower($mapParams['layer']) : WorldWind::$MAP_OPTIONS['defaultLayer'];
-                $this->marker = ($mapParams['marker'] != '' && $mapParams['marker'] != '0' ? 1 : 0);
+		$this->mapId = $mapParams['mapId'];
+		$this->lat = $mapParams['lat'];
+		$this->lon = $mapParams['lon'];
+		$this->width = $mapParams['w'];
+		$this->height = $mapParams['h'];
+		$this->mode = $mapParams['mode'];
+		$this->zoom = $mapParams['zoom'];
+		$this->caption = $mapParams['caption'];
+		$this->layer = isset( $mapParams['layer'] ) ? strtolower($mapParams['layer']) : WorldWind::$MAP_OPTIONS['defaultLayer'];
+		$this->marker = ($mapParams['marker'] != '' && $mapParams['marker'] != '0' ? 1 : 0);
 
-                // see if the 'z' paramater is used rather than 'zoom' (and allow it)
-                if ( $this->zoom == '' && isset( $mapParams['z'] ) ) {
-                        $this->zoom = $mapParams['z'];
-                }
+		// see if the 'z' paramater is used rather than 'zoom' (and allow it)
+		if ( $this->zoom == '' && isset( $mapParams['z'] ) ) {
+			$this->zoom = $mapParams['z'];
+		}
 	}
 	
 	public function getMap() {
 		global $wgOut, $wgJsMimeType;
 
-                $mapCode .= <<<EOT
-                        <script type="{$wgJsMimeType}">slippymaps.push(new slippymap_map({$this->mapId}, {
-                                mode: '{$this->mode}',
-                                layer: '{$this->layer}',
-                                lat: {$this->lat},
-                                lon: {$this->lon},
-                                zoom: {$this->zoom},
-                                width: {$this->width},
-                                height: {$this->height},
-                                marker: {$this->marker}
-                        }));</script>
+		$mapCode .= <<<EOT
+			<script type="{$wgJsMimeType}">slippymaps.push(new slippymap_map({$this->mapId}, {
+				mode: '{$this->mode}',
+				layer: '{$this->layer}',
+				lat: {$this->lat},
+				lon: {$this->lon},
+				zoom: {$this->zoom},
+				width: {$this->width},
+				height: {$this->height},
+				marker: {$this->marker}
+			}));</script>
 EOT;
 
 		$mapCode .= self::getDynamicMap();
@@ -117,26 +117,26 @@ EOT;
 	}
 
 	public function getDynamicMap() {
-                $mapCode .= <<<EOT
-                         <div class="mapframe" style="width:{$this->width}px">
-                                <div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
-                                        <script type="{$wgJsMimeType}">slippymaps[{$this->mapId}].init();</script>
-                                </div>
+		$mapCode .= <<<EOT
+			 <div class="mapframe" style="width:{$this->width}px">
+				<div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
+					<script type="{$wgJsMimeType}">slippymaps[{$this->mapId}].init();</script>
+				</div>
 EOT;
-                if ( $this->caption ) {
-                        $mapcode .= <<<EOT
-                               <div class="mapcaption">{$this->caption}</div>
+		if ( $this->caption ) {
+			$mapcode .= <<<EOT
+			       <div class="mapcaption">{$this->caption}</div>
 EOT;
-                }
+		}
 
-                $mapCode .= <<<EOT
-                </div>
+		$mapCode .= <<<EOT
+		</div>
 EOT;
 		return $mapCode;
 	}
 
 	public function setZoom( $zoom = null ) {
 		global $wgOut;
-                if ( $this->zoom == '' ) $this->zoom = WorldWind::$MAP_OPTIONS['defaultZoomLevel'];
+		if ( $this->zoom == '' ) $this->zoom = WorldWind::$MAP_OPTIONS['defaultZoomLevel'];
 	}
 }

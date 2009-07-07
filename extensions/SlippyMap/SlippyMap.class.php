@@ -72,12 +72,12 @@ class SlippyMap {
 	 * Supported map modes and their layer types
 	 */
 	public static $MAP_MODES = array( 
-				"mapnik", "osmarender", "maplint", "cycle"
-			 	);
+		"mapnik", "osmarender", "maplint", "cycle"
+	);
 	
 	protected static $MAP_OPTIONS = array ( 
 		'staticRenderService' => 'http://tile.openstreetmap.org/cgi-bin/export?bbox=##bbox##&scale=##scale##&format=##format##',
-//		'staticRenderService' => null,
+		//'staticRenderService' => null,
 		'defaultZoomLevel' => 14,
 		
 		/* from OpenLayers XYZ.js */
@@ -104,9 +104,9 @@ class SlippyMap {
 		global $wgOut, $wgUser, $wgThumbLimits;
 		wfLoadExtensionMessages( 'SlippyMap' );
 
-                $this->errors = $this->validate();
+		$this->errors = $this->validate();
 		if ( ! $this->errors ) 
-                        return false;
+			return false;
 		
 		self::initMap( $mapParams );	
 		self::setSize();
@@ -116,27 +116,27 @@ class SlippyMap {
 	}
 
 	public function initMap( $mapParams ) {
-                $this->mapId = $mapParams['mapId'];
-                $this->lat = $mapParams['lat'];
-                $this->lon = $mapParams['lon'];
-                $this->width = $mapParams['w'];
-                $this->height = $mapParams['h'];
-                $this->mode = $mapParams['mode'];
-                $this->zoom = $mapParams['zoom'];
-                $this->caption = $mapParams['caption'];
-                $this->layer = isset( $mapParams['layer'] ) ? strtolower($mapParams['layer']) : SlippyMap::$MAP_OPTIONS['defaultLayer'];
-                $this->marker = ($mapParams['marker'] != '' && $mapParams['marker'] != '0' ? 1 : 0);
+		$this->mapId = $mapParams['mapId'];
+		$this->lat = $mapParams['lat'];
+		$this->lon = $mapParams['lon'];
+		$this->width = $mapParams['w'];
+		$this->height = $mapParams['h'];
+		$this->mode = $mapParams['mode'];
+		$this->zoom = $mapParams['zoom'];
+		$this->caption = $mapParams['caption'];
+		$this->layer = isset( $mapParams['layer'] ) ? strtolower($mapParams['layer']) : SlippyMap::$MAP_OPTIONS['defaultLayer'];
+		$this->marker = ($mapParams['marker'] != '' && $mapParams['marker'] != '0' ? 1 : 0);
 
-                // see if the 'z' paramater is used rather than 'zoom' (and allow it)
-                if ( $this->zoom == '' && isset( $mapParams['z'] ) ) {
-                        $this->zoom = $mapParams['z'];
-                }
+		// see if the 'z' paramater is used rather than 'zoom' (and allow it)
+		if ( $this->zoom == '' && isset( $mapParams['z'] ) ) {
+			$this->zoom = $mapParams['z'];
+		}
 	}
-	
+
 	public function getMap() {
 		global $wgOut, $wgJsMimeType;
 
-		$mapCode .= <<<EOT
+		$mapCode = <<<EOT
 			<script type="{$wgJsMimeType}">slippymaps.push(new slippymap_map({$this->mapId}, {
 				mode: '{$this->mode}',
 				layer: '{$this->layer}',
@@ -159,46 +159,46 @@ EOT;
 	}
 
 	public function getDynamicMap() {
-                $mapCode .= <<<EOT
-                         <div class="mapframe" style="width:{$this->width}px">
-                                <div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
-                                        <script type="{$wgJsMimeType}">slippymaps[{$this->mapId}].init();</script>
-                                </div>
+		$mapCode .= <<<EOT
+			 <div class="mapframe" style="width:{$this->width}px">
+				<div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
+					<script type="{$wgJsMimeType}">slippymaps[{$this->mapId}].init();</script>
+				</div>
 EOT;
-                if ( $this->caption ) {
-                        $mapcode .= <<<EOT
-                               <div class="mapcaption">{$this->caption}</div>
+		if ( $this->caption ) {
+			$mapcode .= <<<EOT
+			       <div class="mapcaption">{$this->caption}</div>
 EOT;
-                }
+		}
 
-                $mapCode .= <<<EOT
-                </div>
+		$mapCode .= <<<EOT
+		</div>
 EOT;
 		return $mapCode;
 	}
 
 	public function getStaticMap() {
-                        $clickToActivate = wfMsg('slippymap_clicktoactivate');
-                        $staticmap = <<<EOT
-                                <div class="mapframe" style="width:{$this->width}px;">
-                                        <div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
-                                                <!-- Static preview -->
-                                                <img
-                                                        id="mapPreview{$this->mapId}"
-                                                        class="mapPreview"
-                                                        src="{$this->getImgSrc()}"
-                                                        onclick="slippymaps[{$this->mapId}].init();"
-                                                        width="{$this->width}"
-                                                        height="{$this->height}"
-                                                        alt="Slippy Map"
-                                                        title="{$clickToActivate}"/>
-                                        </div>
+			$clickToActivate = wfMsg('slippymap_clicktoactivate');
+			$staticmap = <<<EOT
+				<div class="mapframe" style="width:{$this->width}px;">
+					<div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
+						<!-- Static preview -->
+						<img
+							id="mapPreview{$this->mapId}"
+							class="mapPreview"
+							src="{$this->getImgSrc()}"
+							onclick="slippymaps[{$this->mapId}].init();"
+							width="{$this->width}"
+							height="{$this->height}"
+							alt="Slippy Map"
+							title="{$clickToActivate}"/>
+					</div>
 				</div>
 EOT;
 
-                        if ( $this->caption ) {
-	                        $staticmap .= '<div class="mapcaption">{$this->caption}</div>';
-        	                $staticmap .= '</div>';
+			if ( $this->caption ) {
+				$staticmap .= '<div class="mapcaption">{$this->caption}</div>';
+				$staticmap .= '</div>';
 			}
 
 			return $staticmap;
@@ -206,56 +206,56 @@ EOT;
 
 	public function setZoom( $zoom = null ) {
 		global $wgOut;
-                if ( $this->zoom == '' ) $this->zoom = SlippyMap::$MAP_OPTIONS['defaultZoomLevel'];
+		if ( $this->zoom == '' ) $this->zoom = SlippyMap::$MAP_OPTIONS['defaultZoomLevel'];
 	}
 			
 	public function setSize( $w = null, $h = null ) {
 		global $wgUser, $wgOut, $wgThumbLimits;	
-                // set thumbsize based on user preferences
-                $thumbsize = $wgThumbLimits[$wgUser->getOption( 'thumbsize' )];
+		// set thumbsize based on user preferences
+		$thumbsize = $wgThumbLimits[$wgUser->getOption( 'thumbsize' )];
 
-                // default values (meaning these parameters can be missed out)
-                if ( $this->width == '' ) $this->width = $thumbsize;
-                if ( $this->height == '' ) $this->height = round( $thumbsize * .72 );
+		// default values (meaning these parameters can be missed out)
+		if ( $this->width == '' ) $this->width = $thumbsize;
+		if ( $this->height == '' ) $this->height = round( $thumbsize * .72 );
 
-                // trim off the 'px' on the end of pixel measurement numbers (ignore if present)
-                if ( substr( $this->width, -2 ) == 'px' )
-                        $this->width = (int) substr( $this->width, 0, -2 );
+		// trim off the 'px' on the end of pixel measurement numbers (ignore if present)
+		if ( substr( $this->width, -2 ) == 'px' )
+			$this->width = (int) substr( $this->width, 0, -2 );
 
-                if ( substr( $this->height, - 2 ) == 'px' )
-                        $this->height = (int) substr( $this->height, 0, -2 );
+		if ( substr( $this->height, - 2 ) == 'px' )
+			$this->height = (int) substr( $this->height, 0, -2 );
 
 	}
 
 	public function setBounds() {
 
-                /* Determine scale and map bounds for static render request */
-                $this->resolution = $this->resolutions[round( $this->zoom )];
-                $this->scale = self::getScaleFromResolution( $this->resolution );
+		/* Determine scale and map bounds for static render request */
+		$this->resolution = $this->resolutions[round( $this->zoom )];
+		$this->scale = self::getScaleFromResolution( $this->resolution );
 
-                /*
-                 * Calculate width for Mapnik output using a standard pixel size of 0.00028m
-                 * @see http://trac.mapnik.org/wiki/ScaleAndPpi
-                 */
-                $w_deg = $this->width * SlippyMap::$PIXEL_SIZE * $this->scale;
-                $h_deg = $this->height * SlippyMap::$PIXEL_SIZE * $this->scale;
+		/*
+		 * Calculate width for Mapnik output using a standard pixel size of 0.00028m
+		 * @see http://trac.mapnik.org/wiki/ScaleAndPpi
+		 */
+		$w_deg = $this->width * SlippyMap::$PIXEL_SIZE * $this->scale;
+		$h_deg = $this->height * SlippyMap::$PIXEL_SIZE * $this->scale;
 
-                $center = array( $this->lon, $this->lat );
-                if ( SlippyMap::$MAP_OPTIONS['sphericalMercator'] ) {
-                        // Calculate bounds within a spherical mercator projection if that is what the scale is based on
-                        $mercatorCenter = SlippyMap::forwardMercator( $center );
-                        $mbounds = array( 
+		$center = array( $this->lon, $this->lat );
+		if ( SlippyMap::$MAP_OPTIONS['sphericalMercator'] ) {
+			// Calculate bounds within a spherical mercator projection if that is what the scale is based on
+			$mercatorCenter = SlippyMap::forwardMercator( $center );
+			$mbounds = array( 
 				$mercatorCenter[0] - $w_deg / 2, 
 				$mercatorCenter[1] - $h_deg / 2, 
 				$mercatorCenter[0] + $w_deg / 2, 
 				$mercatorCenter[1] + $h_deg / 2 
 			);
-                        $this->bounds = SlippyMap::inverseMercator( $mbounds );
-                }
-                else {
-                        // Calculate bounds within WGS84
-                        $this->bounds = array( $center[0] - $w_deg / 2, $center[1] - $h_deg / 2, $center[0] + $w_deg / 2, $center[1] + $h_deg / 2 );
-                }
+			$this->bounds = SlippyMap::inverseMercator( $mbounds );
+		}
+		else {
+			// Calculate bounds within WGS84
+			$this->bounds = array( $center[0] - $w_deg / 2, $center[1] - $h_deg / 2, $center[0] + $w_deg / 2, $center[1] + $h_deg / 2 );
+		}
 	}
 	
 	public function getImgSrc() {
@@ -309,7 +309,7 @@ EOT;
 	protected function initResolutionsAndScales() {
        		$this->resolutions = array();
 	    	$base = 2;
-                
+		
     		for ( $i = 0; $i < SlippyMap::$MAP_OPTIONS['numZoomLevels']; $i++ ) {
     			$this->resolutions[$i] = SlippyMap::$MAP_OPTIONS['maxResolution'] / pow( $base, $i );
 			$this->scales[$i] = $this->getScaleFromResolution( $this->resolutions[$i] );
@@ -352,7 +352,7 @@ EOT;
 		$this->errors = '';
 		
 		if ( ! in_array( $mode, $wgMapModes ) ) {
-                        $this->errors .= wfMsg( 'slippymap_invalidmode',  htmlspecialchars( $this->mode ) );
+			$this->errors .= wfMsg( 'slippymap_invalidmode',  htmlspecialchars( $this->mode ) );
 			return false;
 		}
 
