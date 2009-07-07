@@ -325,26 +325,8 @@ var ctrlBuilder = {
 			$j('#' + embedObj.id).get(0).play();
 		});		
 		
-		//add recomend firefox if non-native playback:		
-		var doGetNativeWarning = true;		
-		if( $j.cookie('dismissNativeWarn') && $j.cookie('dismissNativeWarn')===true){
-			doGetNativeWarning = false;
-		}else{
-			for(var i in embedObj.media_players){
-				if(embedObj.media_players[i].id == 'videoElement'){
-					doGetNativeWarning=false;
-				}			
-			}	
-			var playable_sources = embedObj.media_element.getPlayableSources();
-			for(var source=0; source <playable_sources.length; source++){  
-				var mime_type = playable_sources[source].mime_type;
-				if( mime_type=='video/h264' || mime_type=='video/x-flv'){
-					//they  have flash / h.264 fallback no need to push firefox :( 
-					doGetNativeWarning = false;
-				}
-			}	
-		}							
-		if( doGetNativeWarning ){
+		//add recomend firefox if non-native playback:											
+		if( embedObj.doNativeWarningCheck() ){
 			$j('#dc_'+ embedObj.id).hover(
 				function(){					
 					if($j('gnp_' + embedObj.id).length==0){
@@ -1282,6 +1264,29 @@ embedVideo.prototype = {
 			this.selected_player = player;
 			this.inheritEmbedObj();
 		}			
+	},
+	doNativeWarningCheck:function(){			
+		if( $j.cookie('dismissNativeWarn') && $j.cookie('dismissNativeWarn')===true){
+			return false;
+		}else{			
+			//see if we have native support for ogg: 
+			var supporting_players = embedTypes.players.getMIMETypePlayers( 'video/ogg' );		
+			for(var i=0; i < supporting_players.length; i++){
+				if(supporting_players[i].id == 'videoElement'){
+					return false;
+				}			
+			}	
+			//see if we are using a fallback (in which case it does not matter) 
+			var playable_sources = this.media_element.getPlayableSources();
+			for(var source=0; source <playable_sources.length; source++){  
+				var mime_type = playable_sources[source].mime_type;
+				if( mime_type=='video/h264' || mime_type=='video/x-flv'){
+					//they  have flash / h.264 fallback no need to push firefox :( 
+					return false;
+				}
+			}	
+		}
+		return true;	
 	},
 	getTimeReq:function(){
 		//js_log('f:getTimeReq:'+ this.getDurationNTP());

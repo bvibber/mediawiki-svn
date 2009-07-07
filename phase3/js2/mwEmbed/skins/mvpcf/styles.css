@@ -784,5 +784,6 @@ ui-widget-overlay{
 	cursor : pointer;
 	width:10px;
 	height:10px;	
-	margin-left:3px;		
+	position:absolute;
+	left:-1px;		
 }
