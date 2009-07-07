@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.analyzer;
 
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +38,7 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 	protected class TestWikiTextAnalyzer extends WikiTextAnalyzer {
 		//TODO: check coverage!
 
-		public TestWikiTextAnalyzer(PlainTextAnalyzer language) {
+		public TestWikiTextAnalyzer(PlainTextAnalyzer language) throws IOException {
 			super(language);
 		}
 		
@@ -199,8 +200,8 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 		}
 
 		public void testExtractRedirectLink() {
-			String text = "#REDIREcT [[bar]][[Category:Orf]]";
-			WikiTextAnalyzer.WikiLink link = extractRedirectLink("Foo", text);
+			WikiPage page = testAnalyzer.makeTestPage("Foo", "#REDIREcT [[bar]][[Category:Orf]]");
+			WikiTextAnalyzer.WikiLink link = extractRedirectLink(page);
 
 			assertEquals("Bar", link.getPage());
 		}
@@ -644,7 +645,7 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 	protected TestWikiTextAnalyzer testAnalyzer;
 	
 	@Override
-	public void setUp() throws URISyntaxException {		
+	public void setUp() throws URISyntaxException, IOException {		
 		LanguageConfiguration lconfig = new LanguageConfiguration();
 
 		corpus = new Corpus("TEST", "generic", "generic", "generic", "generic", "xx", "generic", null);
@@ -653,16 +654,16 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 		language.initialize();
 
 		WikiConfiguration config = new WikiConfiguration();
-		config.resourceTypeSensors.add( new TitleSensor(ResourceType.DISAMBIG, ".*_\\(Disambiguation\\)", 0) );
-		config.resourceTypeSensors.add( new HasTemplateSensor(ResourceType.DISAMBIG, "Disambiguation", null) );
-		config.resourceTypeSensors.add( new HasTemplateSensor(ResourceType.BAD, "Delete", null) );
+		config.resourceTypeSensors.add( new TitleSensor<ResourceType>(ResourceType.DISAMBIG, ".*_\\(Disambiguation\\)", 0) );
+		config.resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.DISAMBIG, "Disambiguation", null) );
+		config.resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "Delete", null) );
 
-		config.conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.PERSON, "^Died_|^Born_", 0) );
-		config.conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.NAME, "(^N|_n)ames?$", 0) );
-		config.conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.PLACE, "^Town_in_|^Country_in_|^Region_in_", 0) );
-		config.conceptTypeSensors.add( new HasTemplateSensor(ConceptType.LIFEFORM, "Taxobox", null) );
-		config.conceptTypeSensors.add( new TitleSensor(ConceptType.TIME, "-?\\d+", 0) );
-		config.conceptTypeSensors.add( new HasSectionSensor(ConceptType.PERSON, "Life") );
+		config.conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PERSON, "^Died_|^Born_", 0) );
+		config.conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.NAME, "(^N|_n)ames?$", 0) );
+		config.conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PLACE, "^Town_in_|^Country_in_|^Region_in_", 0) );
+		config.conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox", null) );
+		config.conceptTypeSensors.add( new TitleSensor<ConceptType>(ConceptType.TIME, "-?\\d+", 0) );
+		config.conceptTypeSensors.add( new HasSectionSensor<ConceptType>(ConceptType.PERSON, "Life") );
 		
 		config.disambigStripSectionPattern = WikiConfiguration.sectionPattern("see also|external links", Pattern.CASE_INSENSITIVE);
 		
