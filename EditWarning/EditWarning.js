@@ -1,6 +1,9 @@
 /* JavaScript for EditWarning extension */
 
 $( document ).ready( function() {
+	if( skin != 'vector' )
+		return;
+	
 	$( '#wpTextbox1, #wpSummary' ).each( function() {
 		$(this).data( 'origtext', $(this).val() );
 	});
