@@ -40,7 +40,8 @@ loadGM({
 	"mv_ogg-player-omtkplayer" : "OMTK Flash Vorbis",
 	"mv_generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://commons.wikimedia.org/wiki/Commons:Media_help\">Playback Methods</a> page to download a player<br>",
 	
-	"mv_for_best_experience": "For best video playback experience we recomend <a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=mv_embed\">Firefox 3.5</a><br><input type=\"checkbox\">Do not warn me again."	
+	"mv_for_best_experience": "For best video playback experience we recomend <a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=mv_embed\">Firefox 3.5</a>",
+	"mv_do_not_warn_again": "Do not warn me again."	
 		
 });
 
@@ -324,30 +325,47 @@ var ctrlBuilder = {
 			$j('#' + embedObj.id).get(0).play();
 		});		
 		
-		//add recomend firefox if non-native playback:
-		var doGetFFWarning = true;
-		for(var i in embedObj.media_players){
-			if(embedObj.media_players[i].id == 'videoElement'){
-				doGetFFWarning=false;
-			}			
-		}	
-		for(var source=0; source < playable_sources.length; source++){  
-			var mime_type =playable_sources[source].mime_type;
-			if( mime_type=='video/h264' || mime_type=='video/x-flv'){
-				//they  have flash / h.264 fallback no need to push firefox :( 
-				doGetFFWarning = false;
-			} 
-		}						
-		if(doGetFFWarning){
+		//add recomend firefox if non-native playback:		
+		var doGetNativeWarning = true;		
+		if( $j.cookie('dismissNativeWarn') && $j.cookie('dismissNativeWarn')===true){
+			doGetNativeWarning = false;
+		}else{
+			for(var i in embedObj.media_players){
+				if(embedObj.media_players[i].id == 'videoElement'){
+					doGetNativeWarning=false;
+				}			
+			}	
+			var playable_sources = embedObj.media_element.getPlayableSources();
+			for(var source=0; source <playable_sources.length; source++){  
+				var mime_type = playable_sources[source].mime_type;
+				if( mime_type=='video/h264' || mime_type=='video/x-flv'){
+					//they  have flash / h.264 fallback no need to push firefox :( 
+					doGetNativeWarning = false;
+				}
+			}	
+		}							
+		if( doGetNativeWarning ){
 			$j('#dc_'+ embedObj.id).hover(
-				function(){
+				function(){					
 					if($j('gnp_' + embedObj.id).length==0){
 						$j(this).append('<div id="gnp_' + embedObj.id + '" class="ui-state-highlight ui-corner-all" ' +
 							'style="position:absolute;display:none;background:#FFF;top:10px;left:10px;right:10px;height:60px;">' +
-							gM('mv_for_best_experience') +
-						'</div>');								
+							gM('mv_for_best_experience') + 
+						'<br><input id="ffwarn_'+embedObj.id+'" type=\"checkbox\">' + 
+							gM('mv_do_not_warn_again') + 
+						'</div>');							
+						$j('#ffwarn_'+embedObj.id).click(function(){
+							if( $j(this).checked ){
+								$j.cookie('dismissNativeWarn', true);
+							}else{
+								$j.cookie('dismissNativeWarn', false);
+							}
+							
+						});	
 					}
-					$j('#gnp_' + embedObj.id).fadeIn('slow');
+					if( $j.cookie('dismissNativeWarn')!== true){
+						$j('#gnp_' + embedObj.id).fadeIn('slow');
+					}
 				},
 				function(){
 					$j('#gnp_' + embedObj.id).fadeOut('slow');
@@ -2192,15 +2210,19 @@ embedVideo.prototype = {
 		}
 	},
 	toggleMute:function(){
-		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
-		js_log('f:toggleMute');		
+		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;	
 		if(this.muted){
 			this.muted=false;
 			$j('#volume_control_'+this_id + ' span').removeClass('ui-icon-volume-off').addClass('ui-icon-volume-on');
+			$j('#volume_bar_'+this_id).slider('value', 100); 
+			this.updateVolumen(1);
 		}else{
 			this.muted=true;
 			$j('#volume_control_'+this_id + ' span').removeClass('ui-icon-volume-on').addClass('ui-icon-volume-off');
+			$j('#volume_bar_'+this_id).slider('value', 0);
+			this.updateVolumen(0); 
 		}
+		js_log('f:toggleMute::' + this.muted);		
 	},
 	updateVolumen:function(perc){
 		js_log('update volume not supported with current playback type');

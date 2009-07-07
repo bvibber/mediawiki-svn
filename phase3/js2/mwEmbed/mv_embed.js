@@ -414,10 +414,12 @@ var mvJsLoader = {
 				//do many requests:
 				for(var i=0; i< loadLibs.length; i++){
 				     var curLib = loadLibs[i];
-				     var libLoc = mvGetClassPath(curLib);
-					 // do a direct load of the file (pass along unique request id from request or mv_embed Version ) 
-					 var qmark = (libLoc.indexOf('?')!==true)?'?':'&';
-					 this.libs[curLib] =  mv_embed_path + libLoc + qmark + 'urid='+ getMvUniqueReqId(); 
+				     if(curLib){
+					     var libLoc = mvGetClassPath(curLib);
+						 // do a direct load of the file (pass along unique request id from request or mv_embed Version ) 
+						 var qmark = (libLoc.indexOf('?')!==true)?'?':'&';
+						 this.libs[curLib] =  mv_embed_path + libLoc + qmark + 'urid='+ getMvUniqueReqId();
+				     } 
 				 }					 
 			}
 		}
@@ -478,13 +480,12 @@ var mvJsLoader = {
 		 			callback();
 		 		}
 		 	});	 
-	 	}	
-	 },
+	 	}		 },
 	 checkLoading:function(){		  
 		  var loading=0;
 		 var i=null;
-		 for(var i in this.libs){ //for in loop oky on object					  
-			 if( ! this.checkObjPath( i ) ){				 
+		 for(var i in this.libs){ //for in loop oky on object		 	 					  
+			 if( !this.checkObjPath( i ) ){				 
 				 if(!this.libreq[i]){ 
 				 	loadExternalJs( this.libs[i] );
 				 }
@@ -497,18 +498,20 @@ var mvJsLoader = {
 		 return loading;
 	},
 	checkObjPath:function( libVar ){
-		  var objPath = libVar.split('.')
-		 var cur_path ='';		 
-		 for(var p=0; p < objPath.length; p++){
+		if(!libVar)
+			return false;
+		var objPath = libVar.split('.')
+		var cur_path ='';		 
+		for(var p=0; p < objPath.length; p++){
 			 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];
 			 eval( 'var ptest = typeof ( '+ cur_path + ' ); ');				 
 			 if( ptest == 'undefined'){							 
 				  this.missing_path = cur_path;
 				 return false;
 			 }			 
-		  }
-		 this.cur_path = cur_path;
-		 return true;
+		}
+		this.cur_path = cur_path;
+		return true;
 	},
 	/**
 	 * checks for jQuery and adds the $j noConflict var
