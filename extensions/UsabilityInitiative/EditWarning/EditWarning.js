@@ -1,18 +1,16 @@
 /* JavaScript for EditWarning extension */
 
 $( document ).ready( function() {
-	$( 'textarea#wpTextbox1, input#wpSummary' )
-		.bind(
-			'change paste cut keydown',
-			function () {
-				if ( !( 'onbeforeunload' in window ) ) {
-					window.onbeforeunload = function() {
-						return gM('editwarning-warning' );
-					}
-				}
-			}
-		);
+	$( '#wpTextbox1, #wpSummary' ).each( function() {
+		$(this).data( 'origtext', $(this).val() );
+	});
+	if( !( 'onbeforeunload' in window ) )
+		window.onbeforeunload = function() {
+			if( $( '#wpTextbox1' ).data( 'origtext' ) != $( '#wpTextbox1' ).val() ||
+					$( '#wpSummary' ).data( 'origtext' ) != $( '#wpSummary' ).val() )
+				return gM( 'editwarning-warning' );
+	};
 	$( 'form' ).submit( function() {
-		window.onbeforeunload = function () {};
+		window.onbeforeunload = function() {};
 	});
 });
