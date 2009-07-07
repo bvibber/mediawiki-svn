@@ -1,7 +1,6 @@
 package de.brightbyte.wikiword.wikis;
 
 import java.util.HashMap;
-import java.util.regex.Pattern;
 
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
@@ -60,13 +59,13 @@ public class WikiConfiguration_frwiki extends WikiConfiguration {
 		
 		resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.BAD, "^Suppression[ _/]", 0));
 		
-		resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.DISAMBIG, "^Homonymie(_|$)|_homonymes$|^Paronymie$|^Patronyme$|^Internationalisation$", 0) );
+		//resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.DISAMBIG, "^Homonymie(_|$)|_homonymes$|^Paronymie$|^Patronyme$|^Internationalisation$", 0) );
 		resourceTypeSensors.add( new HasCategoryLikeSensor(ResourceType.LIST, "^Liste(_|$)", 0));
 
 		disambigStripSectionPattern = sectionPattern("^(Voir aussi|Liens internes)$", 0);  
 		
-		displayTitlePattern = Pattern.compile("DISPLAYTITLE|AFFICHERTITRE", Pattern.CASE_INSENSITIVE);
-		defaultSortKeyPattern = Pattern.compile("DEFAULT(SORT(KEY)?|CATEGORYSORT)|CLEFDETRI|CLEDETRI", Pattern.CASE_INSENSITIVE);
+		//displayTitlePattern = Pattern.compile("DISPLAYTITLE|AFFICHERTITRE", Pattern.CASE_INSENSITIVE);
+		//defaultSortKeyPattern = Pattern.compile("DEFAULT(SORT(KEY)?|CATEGORYSORT)|CLEFDETRI|CLEDETRI", Pattern.CASE_INSENSITIVE);
 	}
 
 }

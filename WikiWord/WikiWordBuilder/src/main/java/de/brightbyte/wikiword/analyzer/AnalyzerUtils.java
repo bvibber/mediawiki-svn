@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import de.brightbyte.data.MultiMap;
@@ -14,6 +15,19 @@ import de.brightbyte.wikiword.analyzer.extractor.PropertyExtractor;
 import de.brightbyte.wikiword.analyzer.sensor.Sensor;
 
 public class AnalyzerUtils {
+	
+	protected static final Pattern classNameSuffixPattern = Pattern.compile(".*_(\\w+)$");
+	
+	public static String getClassNameSuffix(Class cls) {
+		String n = cls.getName();
+		Matcher m = classNameSuffixPattern.matcher(n);
+		
+		if (m.matches()) {
+			return m.group(1);
+		} else {
+			return null;
+		}
+	}
 
 	public static <V> Set<V> addToSet(Set<V> set, V... values) {
 		if (values==null) return set;

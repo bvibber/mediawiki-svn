@@ -2,6 +2,7 @@
 
 import sys, urllib2
 import json
+from SpyTools import *
 
 lang = sys.argv[1]
 
@@ -40,5 +41,6 @@ for r in data["query"]["namespacealiases"]:
 for n in ns:
   names = "|".join(ns[n])
   names = names.replace(" ", "_")
+  names = escape(names)
   print "%d=%s" % (n, names)
 

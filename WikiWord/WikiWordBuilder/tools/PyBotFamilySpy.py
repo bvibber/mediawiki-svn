@@ -1,33 +1,7 @@
 #!/usr/bin/python
 
 import sys
-
-def escape(text):
-
-  if isinstance(text, str):
-    text = text.decode("UTF-8")
-
-  text = text.replace( u'\n', u'\\n' );
-  text = text.replace( u'\r', u'\\r' );
-  text = text.replace( u'\t', u'\\t' );
-
-  s = ""
-
-  for ch in text:
-    n = ord(ch)
-    hi = n / 256
-    lo = n % 256
-
-    if hi == 0:
-	if lo<32 or lo>127:
-	  s += '\\u00%0x' % lo
-	else: 
-	  s += ch;
-    else:
-	s += '\\u%0x%0x' % (hi, lo)
-
-  return s;
-
+from SpyTools import *
 
 pybotdir = sys.argv[1]
 lang = sys.argv[2]
@@ -59,5 +33,6 @@ for m in family.__dict__:
   if isinstance(v, list) or isinstance(v, tuple):
     v = "|".join(v)
 
+  v = v.replace(" ", "_");
   print "%s=%s" % (m, escape(v))
     

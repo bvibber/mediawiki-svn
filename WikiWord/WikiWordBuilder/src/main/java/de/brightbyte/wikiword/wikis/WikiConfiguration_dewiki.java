@@ -75,14 +75,14 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "Urheberrecht_ungekl\u00e4rt", null));
 		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "Falschschreibung", null));
 		
-		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.DISAMBIG, "Begriffskl\u00e4rung", null) );
+		//resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.DISAMBIG, "Begriffskl\u00e4rung", null) );
 		resourceTypeSensors.add( new HasCategoryLikeSensor<ResourceType>(ResourceType.LIST, "^(Teill|L)iste$|^(Teill|L)iste_\\(.+\\)$", 0));
 
-		redirectPattern = Pattern.compile("^#(?:REDIRECT(?:ION)?|WEITERLEITUNG)"+REDIRECT_LINK, Pattern.CASE_INSENSITIVE);
 		disambigStripSectionPattern = sectionPattern("Siehe auch", 0);  
 
-		displayTitlePattern = Pattern.compile("DISPLAYTITLE|SEITENTITEL", Pattern.CASE_INSENSITIVE);
-		defaultSortKeyPattern = Pattern.compile("DEFAULT(SORT(KEY)?|CATEGORYSORT)|SORTIERUNG", Pattern.CASE_INSENSITIVE);
+		//redirectPattern = Pattern.compile("^#(?:REDIRECT(?:ION)?|WEITERLEITUNG)"+REDIRECT_LINK, Pattern.CASE_INSENSITIVE);
+		//displayTitlePattern = Pattern.compile("DISPLAYTITLE|SEITENTITEL", Pattern.CASE_INSENSITIVE);
+		//defaultSortKeyPattern = Pattern.compile("DEFAULT(SORT(KEY)?|CATEGORYSORT)|SORTIERUNG", Pattern.CASE_INSENSITIVE);
 	}
 
 }

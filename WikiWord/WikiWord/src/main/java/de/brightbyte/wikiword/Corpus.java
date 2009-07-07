@@ -20,6 +20,7 @@ public class Corpus extends DatasetIdentifier {
 	protected String classSuffix;
 	protected URL url;
 	protected String domain;
+	protected String wikiName;
 	protected String family;
 	protected String language;
 	
@@ -35,6 +36,7 @@ public class Corpus extends DatasetIdentifier {
 		this.classSuffix = classSuffix;
 		this.language = language;
 		this.family = family;
+		this.wikiName = language + "wiki";
 		
 		this.configPackages = configPackages==null ? new String[] {} : configPackages;
 
@@ -237,6 +239,10 @@ public class Corpus extends DatasetIdentifier {
 	
 	public URL getURL() {
 		return url;
+	}
+
+	public String getWikiName() {
+		return wikiName;
 	}
 	
 }

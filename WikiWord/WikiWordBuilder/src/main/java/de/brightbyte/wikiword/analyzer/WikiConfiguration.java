@@ -1,7 +1,11 @@
 package de.brightbyte.wikiword.analyzer;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.regex.Pattern;
 
 import de.brightbyte.data.measure.Measure;
@@ -13,6 +17,8 @@ import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.DefaultLinkSimilarityMea
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.LinkSimilarityMeasureFactory;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiLink;
 import de.brightbyte.wikiword.analyzer.extractor.PropertyExtractor;
+import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterValueExtractor;
+import de.brightbyte.wikiword.analyzer.extractor.TextPatternExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.ValueExtractor;
 import de.brightbyte.wikiword.analyzer.mangler.Armorer;
 import de.brightbyte.wikiword.analyzer.mangler.BoxStripMangler;
@@ -21,6 +27,8 @@ import de.brightbyte.wikiword.analyzer.mangler.Mangler;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionArmorer;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
 import de.brightbyte.wikiword.analyzer.mangler.SuccessiveMangler;
+import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
+import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.Sensor;
 import de.brightbyte.wikiword.analyzer.template.FlatTemplateExtractor;
 import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
@@ -91,6 +99,11 @@ public class WikiConfiguration {
 	public List<ValueExtractor> pageTermExtractors = new ArrayList<ValueExtractor>();
 	
 	/**
+	 * List of extractors for determining redirect targets. 
+	 */
+	public List<ValueExtractor> redirectExtractors = new ArrayList<ValueExtractor>();
+	
+	/**
 	 * List of extractors for determining the name of supplement pages. 
 	 */
 	public List<ValueExtractor> supplementNameExtractors = new ArrayList<ValueExtractor>();
@@ -127,14 +140,8 @@ public class WikiConfiguration {
 	 * form or part of the page's name. Other magic variables are stripped or handeled
 	 * as templates.
 	 */ 
-	public Pattern magicPattern = null;
+	public Map<String, Pattern> magicPatterns = new HashMap<String, Pattern>();
 	
-	/**
-	 * Pattern for identifying redirect pages. Should match the (localized) magic
-	 * words for redirect pages followed by the REDIRECT_LINK pattern.
-	 */ 
-	public Pattern redirectPattern = null;
-
 	/**
 	 * Pattern for a sequence if characters that, if it immediatly follows a link,
 	 * is appended to the link text; This allows liks of the form "[[dog]]s".
@@ -273,8 +280,22 @@ public class WikiConfiguration {
 	public TemplateExtractor.Factory templateExtractorFactory;
 
 	protected WikiTextAnalyzer analyzer;
+	
+	protected String wikiName;
+	
+	protected WikiConfiguration() {
+		this(null);
+	}
+	
+	public WikiConfiguration(String wikiName) {
+		if (wikiName==null) {
+			wikiName = AnalyzerUtils.getClassNameSuffix(getClass());
+		}
+		
+		this.wikiName = wikiName;
+	}
 
-	public void defaults() {
+	public void defaults() throws IOException {
 		String img =  StringUtils.join("|", Namespace.canonicalNamespaces.getNamespace(Namespace.IMAGE).getNames());
 		Pattern imagePattern = Pattern.compile("\\[\\[ *("+img+") *:(?>[^\\|\\]]+)(\\|((?>[^\\[\\]]+)|\\[\\[(?>[^\\]]+)\\]\\]|\\[(?>[^\\]]+)\\])*)?\\]\\]", Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
 		
@@ -347,10 +368,6 @@ public class WikiConfiguration {
 		
 		this.maxWordFormDistance = 1.0/3.0; 
 		
-		this.displayTitlePattern = Pattern.compile("DISPLAYTITLE", Pattern.CASE_INSENSITIVE);
-		this.defaultSortKeyPattern = Pattern.compile("DEFAULT(SORT(KEY)?|CATEGORYSORT)", Pattern.CASE_INSENSITIVE);
-		this.magicPattern = Pattern.compile("\\{\\{\\s*((FULL|SUB|BASE)?PAGENAMEE?|NAMESPACEE?)\\s*\\}\\}", Pattern.CASE_INSENSITIVE);
-		this.redirectPattern = Pattern.compile("^(?:#REDIRECT(?:ION)?)"+REDIRECT_LINK, Pattern.CASE_INSENSITIVE);
 		this.badTitlePattern = Pattern.compile("^$|''|[|{}<>\\]\\[]|^\\w+://");
 		this.badLinkPattern = Pattern.compile("^[^\\d]+:[^ _]|^\\.\\.?$");
 		this.titleSuffixPattern = Pattern.compile("^(.*)[ _]\\((.*?)\\)$");
@@ -385,9 +402,62 @@ public class WikiConfiguration {
 		this.useSuffixAsCategory = false;
 		this.definitionsSupported = true;
 		this.flatTextSupported = true;
+		
+		//defaults from external knowledge....
+		
+		Properties pyBotFamily = AuxilliaryWikiProperties.loadProperties("PyBotFamily", wikiName);
+		Properties messages = AuxilliaryWikiProperties.loadProperties("Messages", wikiName);
+		Properties magicWords = AuxilliaryWikiProperties.loadProperties("MagicWords", wikiName);
+
+		List<String> disambig = AuxilliaryWikiProperties.loadList("DisambiguationTemplates", wikiName);
+		
+		String disambiguationTemplates = pyBotFamily.getProperty("disambiguationTemplates");
+		if (disambiguationTemplates!=null) resourceTypeSensors.add( new HasTemplateLikeSensor<ResourceType>(ResourceType.DISAMBIG, "^"+disambiguationTemplates.replace(' ', '_')+"$", 0) );
+		
+		if (disambig!=null && disambig.size()>0) {
+			String d = StringUtils.join("|", disambig);
+			d = d.replace(' ', '_');
+			resourceTypeSensors.add( new HasTemplateLikeSensor<ResourceType>(ResourceType.DISAMBIG, "^"+d+"$", 0) );
+		}
+		
+		String disambcatname = pyBotFamily.getProperty("disambcatname");
+		if (disambcatname!=null) resourceTypeSensors.add( new HasCategoryLikeSensor<ResourceType>(ResourceType.DISAMBIG, "^"+disambcatname.replace(' ', '_')+"$", 0) );
+
+		String linktrail = messages.getProperty("linktrail");
+		if (linktrail==null) linktrail = pyBotFamily.getProperty("linktrails");
+		if (linktrail!=null) this.linkTrail = linktrail;
+		
+		//XXX: msg,msgnw,int,raw...
+		//TODO: formatnum, formatdate, padleft, padright: pass through
+		
+		String displaytitle = magicWords.getProperty("displaytitle", "DISPLAYTITLE");
+		this.displayTitlePattern = Pattern.compile(displaytitle, Pattern.CASE_INSENSITIVE);
+		
+		String defaultsort = magicWords.getProperty("defaultsort", "DEFAULT(SORT(KEY)?|CATEGORYSORT)");
+		defaultsort = defaultsort.replace(":", ""); //XXX: nasty hack
+		this.defaultSortKeyPattern = Pattern.compile(defaultsort, Pattern.CASE_INSENSITIVE);
+		
+		String[] magicNames = { 
+				"pagename", "pagenamee", 
+				"fullpagename", "fullpagenamee", 
+				"subpagename", "subpagenamee", 
+				"basepagename", "basepagenamee", 
+				"namespace", "namespacee", 
+				};
+		
+		for (String n: magicNames) {
+			Pattern p = Pattern.compile("\\{\\{\\s*("+magicWords.getProperty(n)+")\\s*\\}\\}", Pattern.CASE_INSENSITIVE); 
+			magicPatterns.put(n, p);
+		}
+		
+		String redirect = magicWords.getProperty("redirect", "#REDIRECT(?:ION)?");
+		this.redirectExtractors.add( new TextPatternExtractor("^(?:"+redirect+")"+REDIRECT_LINK, Pattern.CASE_INSENSITIVE | Pattern.MULTILINE, 1) );
+		
+		String category_redirect_templates = pyBotFamily.getProperty("category_redirect_templates");
+		if (category_redirect_templates!=null) this.redirectExtractors.add( new TemplateParameterValueExtractor(category_redirect_templates.replace(' ', '_'), Pattern.CASE_INSENSITIVE, "1").setPrefix("Category:") );
 	}
 	
-	public void prepareFor(WikiTextAnalyzer analyzer) {
+	public void attach(WikiTextAnalyzer analyzer) {
 		if (this.analyzer!=null) {
 			if (this.analyzer==analyzer) return;
 			else throw new IllegalStateException("WikiConfiguration already attached to a WikiTextAnalyzer");
@@ -408,6 +478,7 @@ public class WikiConfiguration {
 		conceptTypeSensors.addAll(with.conceptTypeSensors);
 		propertyExtractors.addAll(with.propertyExtractors);
 		pageTermExtractors.addAll(with.pageTermExtractors);
+		redirectExtractors.addAll(with.redirectExtractors);
 		supplementNameExtractors.addAll(with.supplementNameExtractors);
 		supplementedConceptExtractors.addAll(with.supplementedConceptExtractors);
 		
@@ -421,8 +492,7 @@ public class WikiConfiguration {
 
 		if (with.displayTitlePattern!=null) displayTitlePattern = with.displayTitlePattern;
 		if (with.defaultSortKeyPattern!=null) defaultSortKeyPattern = with.defaultSortKeyPattern;
-		if (with.magicPattern!=null) magicPattern = with.magicPattern;
-		if (with.redirectPattern!=null) redirectPattern = with.redirectPattern;
+		if (with.magicPatterns!=null) magicPatterns.putAll(with.magicPatterns);
 
 		if (with.extractParagraphMangler!=null) extractParagraphMangler = with.extractParagraphMangler;
 		if (with.titleSuffixPattern!=null) titleSuffixPattern = with.titleSuffixPattern;

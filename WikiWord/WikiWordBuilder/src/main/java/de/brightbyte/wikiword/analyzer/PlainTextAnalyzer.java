@@ -22,7 +22,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer {
 	public PlainTextAnalyzer(Corpus corpus) {
 		this.corpus = corpus;
 		
-		config = new LanguageConfiguration(); 
+		config = new LanguageConfiguration(corpus.getLanguage()); 
 		config.defaults();
 	}
 	
@@ -34,9 +34,18 @@ public class PlainTextAnalyzer extends AbstractAnalyzer {
 			Constructor ctor = acc[0].getConstructor(new Class[] { Corpus.class });
 			PlainTextAnalyzer analyzer = (PlainTextAnalyzer)ctor.newInstance(new Object[] { corpus } );
 			
-			for (int i = ccc.length-1; i >= 0; i--) { //NOTE: most specific last, because last write wins. 
-				ctor = ccc[i].getConstructor(new Class[] { });
-				LanguageConfiguration conf = (LanguageConfiguration)ctor.newInstance(new Object[] { } );
+			for (int i = ccc.length-1; i >= 0; i--) { //NOTE: most specific last, because last write wins.
+				LanguageConfiguration conf ;
+			
+				try {
+					ctor = ccc[i].getConstructor(new Class[] { });
+					conf = (LanguageConfiguration)ctor.newInstance(new Object[] { } );
+				} 
+				catch (NoSuchMethodException ex) {
+					ctor = ccc[i].getConstructor(new Class[] { String.class });
+					conf = (LanguageConfiguration)ctor.newInstance(new Object[] { corpus.getLanguage() } );
+				}
+				
 				analyzer.configure(conf, tweaks);
 			}
 			

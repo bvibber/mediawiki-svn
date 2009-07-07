@@ -45,16 +45,16 @@ public class WikiConfiguration_nlwiki extends WikiConfiguration {
 		
 		resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.BAD, "^(Weg|Ne)$|weg$", 0));
 		resourceTypeSensors.add( new HasTemplateSensor(ResourceType.DISAMBIG, "Dp", null) );
-		resourceTypeSensors.add( new TitleSensor(ResourceType.DISAMBIG, ".*\\(doorverwijspagina\\)", 0) );
+		//resourceTypeSensors.add( new TitleSensor(ResourceType.DISAMBIG, ".*\\(doorverwijspagina\\)", 0) );
 		resourceTypeSensors.add( new HasCategoryLikeSensor(ResourceType.LIST, "^Lijsten_|lijsten$", 0) );
 		resourceTypeSensors.add( new TitleSensor(ResourceType.LIST, "Lijst_.*|.*lijst", 0) );
 		//resourceTypeSensors.add( new WikiTextAnalyzer.RegularExpressionTitleSensor("^Lijst_", 0) ); //NOTE: too broad. some concrete concepts have a name matching this.
 		
 		disambigStripSectionPattern = sectionPattern("Zie ook", 0); 
 
-		redirectPattern = Pattern.compile("^#(?:REDIRECT(?:ION)?|DOORVERWIJZING)"+REDIRECT_LINK, Pattern.CASE_INSENSITIVE);
-		displayTitlePattern = Pattern.compile("DISPLAYTITLE|TOONTITEL|TITELTONEN", Pattern.CASE_INSENSITIVE);
-		defaultSortKeyPattern = Pattern.compile("DEFAULT(SORT(KEY)?|CATEGORYSORT)|STANDAARDSORTERING", Pattern.CASE_INSENSITIVE);
+		//redirectPattern = Pattern.compile("^#(?:REDIRECT(?:ION)?|DOORVERWIJZING)"+REDIRECT_LINK, Pattern.CASE_INSENSITIVE);
+		//displayTitlePattern = Pattern.compile("DISPLAYTITLE|TOONTITEL|TITELTONEN", Pattern.CASE_INSENSITIVE);
+		//defaultSortKeyPattern = Pattern.compile("DEFAULT(SORT(KEY)?|CATEGORYSORT)|STANDAARDSORTERING", Pattern.CASE_INSENSITIVE);
 	}
 
 }

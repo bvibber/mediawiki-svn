@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -426,6 +427,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		protected Set<CharSequence> titleTerms = null;
 		protected Set<CharSequence> pageTerms = null;
 		protected WikiLink redirect = null;
+		protected boolean redirectKnown = false;
 		
 		protected CharSequence cleaned = null;
 		protected CharSequence flat = null;
@@ -801,8 +803,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getRedirect()
 		 */
 		public WikiLink getRedirect() {
-			if (redirect==null) {
-				redirect = extractRedirectLink( getName(), getCleanedText(true) );
+			if (!redirectKnown) {
+				redirect = extractRedirectLink( this );
+				redirectKnown = true;
 			}
 			
 			return redirect;
@@ -908,8 +911,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 
 	private Matcher defaultSortKeyMatcher; //set up in initialize
 	private Matcher displayTitleMatcher; //set up in initialize
-	private Matcher magicMatcher; //set up in initialize
-	private Matcher redirectMatcher; //set up in initialize
+	private Map<String, Matcher> magicMatchers; //set up in initialize
 	private Matcher linkMatcher; //set up in initialize()
 	private boolean titleCase; //set up in initialize()
 	
@@ -931,13 +933,13 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	private WikiTextSniffer sniffer = new WikiTextSniffer();
 	private Map<String, String> languageNames;
 	
-	public WikiTextAnalyzer(PlainTextAnalyzer language) {
+	public WikiTextAnalyzer(PlainTextAnalyzer language) throws IOException {
 		this.language = language;
 		this.corpus = language.getCorpus();
 		this.namespaces = corpus.getNamespaces();
 		this.conceptTypes = corpus.getConceptTypes();
 		
-		config = new WikiConfiguration();
+		config = new WikiConfiguration( language.getCorpus().getWikiName() );
 		config.defaults();
 	}
 	
@@ -963,7 +965,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 		this.tweaks = tweaks;
 		
-		config.prepareFor(this);
+		config.attach(this);
 		this.config.merge(config);
 	}
 	
@@ -1016,8 +1018,6 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 
 		defaultSortKeyMatcher = config.defaultSortKeyPattern.matcher("");
 		displayTitleMatcher = config.displayTitlePattern.matcher("");
-		magicMatcher = config.magicPattern.matcher("");
-		redirectMatcher = config.redirectPattern.matcher("");
 		titleSuffixMatcher = config.titleSuffixPattern.matcher("");
 		titlePrefixMatcher = config.titlePrefixPattern.matcher("");
 		badLinkMatcher = config.badLinkPattern.matcher("");
@@ -1025,7 +1025,12 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		disambigLineMatcher = config.disambigLinePattern.matcher("");
 		mainArtikeMarkerMatcher = config.mainArtikeMarkerPattern == null ? null : config.mainArtikeMarkerPattern.matcher("");
 		disambigStripSectionMatcher = config.disambigStripSectionPattern == null ? null : config.disambigStripSectionPattern.matcher("");
-		
+
+		magicMatchers = new HashMap<String, Matcher>(config.magicPatterns.size());
+		for (Map.Entry<String, Pattern> e: config.magicPatterns.entrySet()) {
+				magicMatchers.put(e.getKey(), e.getValue().matcher(""));
+		}
+
 		disambigLinkMatchers = new ArrayList<Matcher>();
 		for (Pattern p: config.disambigLinkPatterns) {
 			Matcher m = p.matcher("");
@@ -1044,6 +1049,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 					config.conceptTypeSensors,
 					config.propertyExtractors,
 					config.pageTermExtractors,
+					config.redirectExtractors,
 					extraTemplateUsers
 				);
 		
@@ -1078,24 +1084,38 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
 	
 	protected CharSequence resolveMagic(CharSequence text, int namespace, CharSequence title) {
-		magicMatcher.reset(text);
-		
-		StringBuffer s = new StringBuffer(text.length());
-		while(magicMatcher.find()) {
-			CharSequence value = evaluateMagic(magicMatcher, namespace, title);
-			
-			magicMatcher.appendReplacement(s, Matcher.quoteReplacement(value.toString()));
+		for(Map.Entry<String, Matcher> e: magicMatchers.entrySet()) {
+			text = resolveMagic(e.getKey(), e.getValue(), text, namespace, title);
 		}
 		
-		magicMatcher.appendTail(s);
-		return s;
+		return text;
+	}
+	
+	protected CharSequence resolveMagic(String name, Matcher m, CharSequence text, int namespace, CharSequence title) {
+		m.reset(text);
 		
+		StringBuffer s =  null;
+		while(m.find()) {
+			CharSequence value = evaluateMagic(name, namespace, title);
+			
+			if (s==null) s = new StringBuffer(text.length());
+			
+			if (value==null) m.appendReplacement(s, Matcher.quoteReplacement(m.group(0)));
+			else m.appendReplacement(s, Matcher.quoteReplacement(value.toString()));
+		}
+		
+		if (s==null) {
+			return text;
+		} else {
+			m.appendTail(s);
+			return s;
+		}
 	}
 	
 	protected static final Matcher subpageMatcher = Pattern.compile("^(.+)/([^/]+)$").matcher("");
 	
-	private CharSequence evaluateMagic(Matcher matcher, int namespace, CharSequence title) {
-		String name = matcher.group(1).toUpperCase();
+	private CharSequence evaluateMagic(String name, int namespace, CharSequence title) {
+		name = name.toUpperCase(); //XXX: ugly...
 		
 		if (name.equals("PAGENAME")) {
 			return AnalyzerUtils.replaceUnderscoreBySpace(title);
@@ -1134,7 +1154,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return AnalyzerUtils.replaceSpaceByUnderscore(title);
 		}
 		else {
-			return matcher.group(0);
+			return null;
 		}
 	}
 
@@ -1166,8 +1186,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 		if (page.getNamespace() != Namespace.MAIN) return ResourceType.OTHER;
 		
-		redirectMatcher.reset(page.getCleanedText(true));
-		if (redirectMatcher.find()) return ResourceType.REDIRECT;
+		WikiLink redirect = page.getRedirect();
+		if (redirect!=null) return ResourceType.REDIRECT;
 		
 		return (ResourceType)AnalyzerUtils.evalSensors(config.resourceTypeSensors, page, ResourceType.ARTICLE);
 	}
@@ -1233,23 +1253,25 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
 
 	public Set<CharSequence> evalExtractors(Collection<ValueExtractor> extractors, WikiPage page) {
-		Set<CharSequence> terms = null;
+		Set<CharSequence> values = null;
 		
 		if (extractors==null) return Collections.emptySet();
 		
 		for (ValueExtractor extractor : extractors) {
-			terms = extractor.extract(page, terms);
+			values = extractor.extract(page, values);
 		}
 		
-		if (terms==null) return Collections.emptySet();
-		return terms;
+		if (values==null) return Collections.emptySet();
+		return values;
 	}
 
-	protected WikiLink extractRedirectLink(CharSequence title, CharSequence text) {
-		redirectMatcher.reset(text);
-		if (!redirectMatcher.find()) return null;
+	protected WikiLink extractRedirectLink(WikiPage page) {
+		Set<CharSequence> t = evalExtractors(config.redirectExtractors, page);
+		if (t==null || t.isEmpty()) return null;
 		
-		return makeLink(title, redirectMatcher.group(1), null, null);
+		CharSequence target = t.iterator().next(); //first item
+		
+		return makeLink(page.getName(), target, null, null);
 	}
 	
 	/** Link targets in MediaWiki may be given in url-encoded form, that is,
@@ -1788,7 +1810,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	protected List<WikiLink> extractLinks(CharSequence title, CharSequence text) {
 		List<WikiLink> links = new ArrayList<WikiLink>();
 		
-		//FIXME: make sure link-text gets trimmed. or not? beware sort-keys. 
+		//TODO: make special LinkExtractor interface
 		
 		linkMatcher.reset(text);
 		while (linkMatcher.find()) {

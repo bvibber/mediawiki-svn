@@ -59,6 +59,24 @@ public class LanguageConfiguration {
 	 */
 	public Pattern wordPattern;
 
+	protected String languageName;
+	
+	public LanguageConfiguration() {
+		this(null);
+	}
+	
+	public LanguageConfiguration(String languageName) {
+		if (languageName==null) {
+			languageName = AnalyzerUtils.getClassNameSuffix(getClass());
+		}
+ 
+		this.languageName = languageName;
+	}
+
+	public String getLanguageName() {
+		return languageName;
+	}
+	
 	public void defaults() {
 		if (this.wordPattern==null) this.wordPattern = Pattern.compile("\\p{L}+|\\p{Nd}+"); 
 

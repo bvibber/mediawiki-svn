@@ -158,8 +158,8 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		
 		resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.BAD, "^(Afd[mx]?|Vfd|Rfd|Prod|Copyvio|Delete|Del|Speedy|Db-[-\\w\\d]+)$", Pattern.CASE_INSENSITIVE));
 		
-		resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.DISAMBIG, "^(Dis(amb(ig(uation)?)?)?)$|^(Geo|Hn|Hospital|POW|Road|School)dis$|^(Mountain|Ship)index$|^(Math)dab$", 0) );
-		resourceTypeSensors.add( new HasCategoryLikeSensor(ResourceType.DISAMBIG, "^Disambiguation(_|$)", 0) );
+		//resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.DISAMBIG, "^(Dis(amb(ig(uation)?)?)?)$|^(Geo|Hn|Hospital|POW|Road|School)dis$|^(Mountain|Ship)index$|^(Math)dab$", 0) );
+		//resourceTypeSensors.add( new HasCategoryLikeSensor(ResourceType.DISAMBIG, "^Disambiguation(_|$)", 0) );
 		
 		resourceTypeSensors.add( new HasCategoryLikeSensor(ResourceType.LIST, "^Lists($|_of_)|_lists$", 0));
 		resourceTypeSensors.add( new TitleSensor(ResourceType.LIST, "List_of_-*|.*_list", 0));

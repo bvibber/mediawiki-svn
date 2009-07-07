@@ -267,6 +267,8 @@ public class ConceptImporter extends AbstractImporter {
 			List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
 			linkTracker.step(links.size());
 			
+			//FIXME: category redirects
+			
 			int conceptId = store.storeAbout(rcId, name);
 			
 			for (WikiTextAnalyzer.WikiLink link : links) {
