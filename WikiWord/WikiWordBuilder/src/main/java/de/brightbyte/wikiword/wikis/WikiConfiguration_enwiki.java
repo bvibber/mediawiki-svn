@@ -128,41 +128,45 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		//cruft regarding english/welsh census templates
 		stripClutterManglers.add( new RegularExpressionMangler("rank\\s*=\\s*\\[\\[List[ _]of[ _][-\\w\\d\\s]+?\\|\\s*Ranked\\s+\\{\\{[-\\w\\d\\s]+?counties\\s*\\|\\s*\\w+=[-\\w\\d\\s]+\\}\\}\\]\\]", "", 0));
 		
-		conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.PLACE, 
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PLACE, 
 				"^(Geography_of|Places|Villages|Towns|Cities|Counties|Countries|Municipalities|States|Provinces|Territories|Federal_states|Islands|Regions|Domains|Communes|Districts)" +
 				       "(_|$)|_(places|villages|towns|cities|counties|countries|municipalities|states|provinces|territories|federal_states|islands|regions|domains|communes|districts)$", 0));
 		
 		
-		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.PLACE, "Geobox", null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.PLACE, "Geobox", null));
 		
-		conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.PERSON, "^(Male|Female|People)_|_(people|man|woman|birth|death)$", 0));
-		conceptTypeSensors.add( new HasTemplateLikeSensor(ConceptType.PERSON, "^(Persondata|Lifetime|BD|BIRTH-DEATH-SORT)$", 0));
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PERSON, "^(Male|Female|People)_|_(people|man|woman|birth|death)$", 0));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PERSON, "^(Persondata|Lifetime|BD|BIRTH-DEATH-SORT)$", 0));
 		
-		conceptTypeSensors.add( new HasCategorySensor(ConceptType.NAME, "Given_names"));
-		conceptTypeSensors.add( new HasCategorySensor(ConceptType.NAME, "Surnames"));
-		conceptTypeSensors.add( new TitleSensor(ConceptType.NAME, ".*\\(name\\)", 0));
+		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.NAME, "Given_names"));
+		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.NAME, "Surnames"));
+		conceptTypeSensors.add( new TitleSensor<ConceptType>(ConceptType.NAME, ".*\\(name\\)", 0));
 
-		conceptTypeSensors.add( new HasCategorySensor(ConceptType.TIME, "Centuries"));
-		conceptTypeSensors.add( new HasCategorySensor(ConceptType.TIME, "Millennia"));
-		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.TIME, "Year_nav", null));
-		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.TIME, "Decadebox", null));
-		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.TIME, "Day", null));
+		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.TIME, "Centuries"));
+		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.TIME, "Millennia"));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.TIME, "Year_nav", null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.TIME, "Decadebox", null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.TIME, "Day", null));
 
-		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.LIFEFORM, "Taxobox", null));
-		conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.NUMBER, "^Integers$|(^N|_n)umbers$", 0));
-		conceptTypeSensors.add( new TitleSensor(ConceptType.NUMBER, ".*\\(number\\)", 0));
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.WORK, "(^|_)(statue|work|play|album|song|painting|opera|novel|musical|novel|composition)s?(_|$)", Pattern.CASE_INSENSITIVE));
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.EVENT, "(^|_)(event|war|battle|siege|treaties|flood|famine|fire|conflict|crisis|disaster|riot|assasination|execution|crime)s?(_|$)", Pattern.CASE_INSENSITIVE));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.EVENT, "^Infobox_Military_Conflict$", Pattern.CASE_INSENSITIVE));
+
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox", null));
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.NUMBER, "^Integers$|(^N|_n)umbers$", 0));
+		conceptTypeSensors.add( new TitleSensor<ConceptType>(ConceptType.NUMBER, ".*\\(number\\)", 0));
 		//TODO: cooperations & organizations
 		
-		resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.LIST, "^Year_nav_", 0));
-		resourceTypeSensors.add( new HasCategoryLikeSensor(ResourceType.LIST, "^Year_in_", 0));
+		resourceTypeSensors.add( new HasTemplateLikeSensor<ResourceType>(ResourceType.LIST, "^Year_nav_", 0));
+		resourceTypeSensors.add( new HasCategoryLikeSensor<ResourceType>(ResourceType.LIST, "^Year_in_", 0));
 		
-		resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.BAD, "^(Afd[mx]?|Vfd|Rfd|Prod|Copyvio|Delete|Del|Speedy|Db-[-\\w\\d]+)$", Pattern.CASE_INSENSITIVE));
+		resourceTypeSensors.add( new HasTemplateLikeSensor<ResourceType>(ResourceType.BAD, "^(Afd[mx]?|Vfd|Rfd|Prod|Copyvio|Delete|Del|Speedy|Db-[-\\w\\d]+)$", Pattern.CASE_INSENSITIVE));
 		
-		//resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.DISAMBIG, "^(Dis(amb(ig(uation)?)?)?)$|^(Geo|Hn|Hospital|POW|Road|School)dis$|^(Mountain|Ship)index$|^(Math)dab$", 0) );
-		//resourceTypeSensors.add( new HasCategoryLikeSensor(ResourceType.DISAMBIG, "^Disambiguation(_|$)", 0) );
+		//resourceTypeSensors.add( new HasTemplateLikeSensor<ResourceType>(ResourceType.DISAMBIG, "^(Dis(amb(ig(uation)?)?)?)$|^(Geo|Hn|Hospital|POW|Road|School)dis$|^(Mountain|Ship)index$|^(Math)dab$", 0) );
+		//resourceTypeSensors.add( new HasCategoryLikeSensor<ResourceType>(ResourceType.DISAMBIG, "^Disambiguation(_|$)", 0) );
 		
-		resourceTypeSensors.add( new HasCategoryLikeSensor(ResourceType.LIST, "^Lists($|_of_)|_lists$", 0));
-		resourceTypeSensors.add( new TitleSensor(ResourceType.LIST, "List_of_-*|.*_list", 0));
+		resourceTypeSensors.add( new HasCategoryLikeSensor<ResourceType>(ResourceType.LIST, "^Lists($|_of_)|_lists$", 0));
+		resourceTypeSensors.add( new TitleSensor<ResourceType>(ResourceType.LIST, "List_of_-*|.*_list", 0));
 
 		disambigStripSectionPattern = sectionPattern("See also", 0);  
 		//FIXME: disambig pages marked with {{shipindex}} are tabular!

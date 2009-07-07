@@ -60,6 +60,10 @@ public class ConceptType {
 	 **/
 	public static final ConceptType EVENT;
 
+	/** A work of art, like a book, a painting, an opera, a music album, etc.
+	 **/
+	public static final ConceptType WORK;
+
 	/** Unknown concept type. Generic catch all type, expected to occurr frequently. **/
 	public static final ConceptType OTHER;
 
@@ -93,7 +97,8 @@ public class ConceptType {
 			NUMBER = canonicalConceptTypes.getType(60);
 			LIFEFORM = canonicalConceptTypes.getType(70);
 			EVENT = canonicalConceptTypes.getType(80);
-			OTHER = canonicalConceptTypes.getType(90);
+			WORK = canonicalConceptTypes.getType(90);
+			OTHER = canonicalConceptTypes.getType(1000);
 			//NONE = canonicalConceptTypes.getType(100000);
 			ALIAS = canonicalConceptTypes.getType(100010);
 		}
