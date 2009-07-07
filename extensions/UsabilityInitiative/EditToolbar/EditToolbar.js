@@ -533,7 +533,7 @@ var editToolbarConfiguration = {
 					},
 					'signature': {
 						labelMsg: 'edittoolbar-tool-signature',
-						filters: [ 'body.ns-talk' ],
+						filters: [ 'body:not(.ns-0)' ],
 						type: 'button',
 						icon: 'insert-signature.png',
 						action: {
