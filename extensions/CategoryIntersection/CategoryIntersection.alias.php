@@ -69,7 +69,7 @@ $aliases['eo'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'CategoryIntersection' => array( 'Luokkien välinen leikkaus' ),
+	'CategoryIntersection' => array( 'Luokkaleikkaus' ),
 );
 
 /** French (Français) */

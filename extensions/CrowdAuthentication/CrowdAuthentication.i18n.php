@@ -320,21 +320,21 @@ $messages['vi'] = array(
 	'crowdauthentication-desc' => 'Phần bổ sung xác minh cho Atlassian Crowd',
 );
 
-/** Cantonese
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'crowdauthentication-desc' => 'Atlassian Crowd嘅認證插件',
 );
 
-/** Chinese Simplified
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'crowdauthentication-desc' => 'Atlassian Crowd的认证插件',
 );
 
-/** Chinese Traditional
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(

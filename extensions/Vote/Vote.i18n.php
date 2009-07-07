@@ -518,8 +518,10 @@ riddler|Riddlerra',
 	'vote-results-choice' => 'Aukeratu',
 	'vote-results-count' => 'Kontatu',
 	'vote-results-none' => 'Ez dago bozkarik oraindik ordu honetan.',
-	'vote-login' => '[$1 Sartu] behar duzu bozkatzeko.',
+	'vote-login' => '[$1 Saioa hasi] behar duzu bozkatzeko.',
 	'vote-invalid-choice' => 'Eskuragarri dauden aukeretako bat aukeratu behar duzu.',
+	'right-vote' => 'Bozkatu',
+	'right-voteadmin' => 'Ikusi bozketaren emaitzak',
 );
 
 /** Extremaduran (Estremeñu)

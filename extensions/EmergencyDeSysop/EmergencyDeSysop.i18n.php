@@ -302,6 +302,13 @@ $messages['gsw'] = array(
 	'right-emergencydesysop' => 'S Rächt eme andre Ammann dr Status ewägzneh (gegesytig)',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'emergencydesysop-submit' => 'שליחה',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

@@ -896,6 +896,16 @@ $messages['mr'] = array(
  */
 $messages['mt'] = array(
 	'contributors' => 'Kontributuri',
+	'contributors-desc' => "Agħmel taqsira tal-awturi priniċplai ta' paġna",
+	'contributors-toolbox' => 'Awturi prinċipali',
+	'contributors-legend' => "Elenka l-awturi prinċipali ta' paġna",
+	'contributors-target' => 'Titlu:',
+	'contributors-submit' => 'Uri',
+	'contributors-subtitle' => "Awturi prinċipali ta' $1",
+	'contributors-others-long' => 'Il-paġna ġiet modifikata wkoll minn {{PLURAL:$1|awtur ieħor|$1 awtur ieħor}}.',
+	'contributors-others' => 'u {{PLURAL:$1|ieħor|$1 oħra}}',
+	'contributors-badtitle' => 'Titlu invalidu.',
+	'contributors-nosuchpage' => 'Il-paġna $1 ma teżistix.',
 );
 
 /** Erzya (Эрзянь)

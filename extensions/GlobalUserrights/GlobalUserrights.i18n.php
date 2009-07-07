@@ -331,6 +331,17 @@ $messages['mk'] = array(
 	'right-userrights-global' => 'Управување со глобални кориснички права',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'gur-desc' => 'Amministrazzjoni ħafifa tad-[[Special:GlobalUserRights|drittijiet globali tal-utent]]',
+	'gur-rightslog-name' => 'Reġistru tad-drittijiet globali',
+	'gur-rightslog-header' => "Dan huwa reġistru ta' tibdil tad-drittijiet globali.",
+	'gur-rightslog-entry' => "biddel l-isħubija għall-gruppi globali ta' $1 minn $2 għal $3",
+	'right-userrights-global' => 'Amministra d-drittijiet globali tal-utent',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

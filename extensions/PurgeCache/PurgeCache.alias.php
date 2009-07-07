@@ -41,7 +41,7 @@ $aliases['es'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'PurgeCache' => array( 'Pyyhi sivun välimuistiversio' ),
+	'PurgeCache' => array( 'Pyyhi_välimuistiversio' ),
 );
 
 /** French (Français) */

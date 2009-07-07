@@ -49,6 +49,15 @@ $messages['dsb'] = array(
 Wužyj: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'stockcharts-desc' => 'Añade la etiqueta <nowiki><stockchart ticker="AAPL"/></nowiki> para un gráfico interactivo de valores financieros',
+	'stockcharts-missingticker' => 'Para incrustar una tabla de valores, es necesario especificar al menos una ticker.
+Usa: &lt;stockchart ticker=&quot;AAPL&quot;/&gt;',
+);
+
 /** French (Français)
  * @author IAlex
  */

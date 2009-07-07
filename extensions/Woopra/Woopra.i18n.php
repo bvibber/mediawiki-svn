@@ -73,6 +73,13 @@ $messages['cs'] = array(
 	'woopra-desc' => 'Umožňuje fungování [http://www.woopra.com/ Woopra Live Tracking Software] v rámci vaší wiki',
 );
 
+/** Danish (Dansk)
+ * @author Masz
+ */
+$messages['da'] = array(
+	'woopra-desc' => 'Gør, så [http://www.woopra.com/ Woopra Live Tracking Software] virker med MediaWiki-installationen',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

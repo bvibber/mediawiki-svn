@@ -199,8 +199,9 @@ $messages['et'] = array(
  */
 $messages['eu'] = array(
 	'whatismyip' => 'Zein da nire IP',
-	'whatismyip-desc' => '[[Special:WhatIsMyIP]] orrialdean lankidearen momentuko IP helbidea erakusten du',
-	'whatismyip-out' => 'Zure IPa:',
+	'whatismyip-desc' => 'Lankidearen momentuko [[Special:WhatIsMyIP|IP helbidea]] erakusten du',
+	'whatismyip-out' => 'Zure IP helbidea:',
+	'right-whatismyip' => 'Ikusi [[Special:WhatIsMyIP|norbere IP helbidea]]',
 );
 
 /** Persian (فارسی)

@@ -405,9 +405,11 @@ Próbowałeś '''$1'''",
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
+	'rt-desc' => 'Interface bonita para o RT (Request Tracker)',
 	'rt-inactive' => 'A extensão RT não está ativa',
 	'rt-badquery' => 'A extensão RT encontrou um erro ao comunicar-se com a base de dados RT',
 	'rt-nomatches' => 'Não foram encontrados bilhetes RT correspondentes',

@@ -56,7 +56,7 @@ $aliases['fa'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'WhosOnline' => array( 'Ketkä ovat yhteydessä täällä' ),
+	'WhosOnline' => array( 'Paikalla' ),
 );
 
 /** French (Français) */

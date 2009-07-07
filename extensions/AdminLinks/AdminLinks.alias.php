@@ -48,6 +48,11 @@ $aliases['lb'] = array(
 	'AdminLinks' => array( 'Linke fir Administrateuren' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'AdminLinks' => array( 'കാര്യനിര്‍വാഹകകണ്ണികള്‍' ),
+);
+
 /** Marathi (मराठी) */
 $aliases['mr'] = array(
 	'AdminLinks' => array( 'प्रचालकदुवे' ),

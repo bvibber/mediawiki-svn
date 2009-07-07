@@ -67,6 +67,14 @@ $messages['dsb'] = array(
 	'wikiarticlefeeds_combined_description' => 'To jo kombinaciski kanal, kótaryž wopśimujo zapiski z někotrych kanalowych žrědłow.',
 );
 
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'wikiarticlefeeds-desc' => 'Produce feeds generados a partir de páginas MediaWiki',
+	'wikiarticlefeeds_combined_description' => 'Este es un feed combinado, que contiene elementos de varias fuentes.',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

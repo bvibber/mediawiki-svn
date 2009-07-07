@@ -36,9 +36,9 @@ $aliases['arz'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'OpenIDLogin' => array( 'OpenID sisäänkirjautuminen' ),
-	'OpenIDConvert' => array( 'OpenID konversio' ),
-	'OpenIDServer' => array( 'OpenID palvelin' ),
+	'OpenIDLogin' => array( 'OpenID-kirjautuminen' ),
+	'OpenIDConvert' => array( 'OpenID-muunnos' ),
+	'OpenIDServer' => array( 'OpenID-palvelin' ),
 );
 
 /** Interlingua (Interlingua) */

@@ -51,7 +51,7 @@ $aliases['dsb'] = array(
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'PasswordReset' => array( 'Salasanan pyyhkiminen' ),
-	'Disabledusers' => array( 'Käytöstäpoistetut käyttäjätilit' ),
+	'Disabledusers' => array( 'Käytöstä_poistetut_käyttäjät' ),
 );
 
 /** French (Français) */

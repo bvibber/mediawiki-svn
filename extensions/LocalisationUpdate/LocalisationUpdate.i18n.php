@@ -185,6 +185,13 @@ $messages['pl'] = array(
 	'localisationupdate-desc' => 'Uaktualnia lokalne komunikaty w miarę możliwości na bieżąco',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'localisationupdate-desc' => 'Mantém as mensagens localizadas tão atualizadas quanto possível',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

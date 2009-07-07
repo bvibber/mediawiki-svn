@@ -225,9 +225,13 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Malafaya
  */
 $messages['pt'] = array(
-	'getfamily-interwikierror' => 'Erro: configuração de interwikis incorrecta. Contacte o administrador.',
+	'getfamily-desc' => 'Gera um ficheiro de família para o pywikipediabot',
+	'getfamily' => 'Obter família pywikipediabot',
+	'getfamily-interwikierror' => 'Erro: configuração de interwikis incorreta. Contacte o administrador.',
+	'right-getfamily' => 'Criar um ficheiro de família para o pywikipediabot',
 );
 
 /** Russian (Русский)

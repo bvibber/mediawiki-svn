@@ -1188,6 +1188,7 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author ToePeu
  * @author Yknok29
  */
 $messages['ko'] = array(
@@ -1204,7 +1205,7 @@ $messages['ko'] = array(
 	'badimages-remove-confirm' => '사용자께서 원하시는 대로 $1이 목록에서 삭제되었는지 다시 한번 확인해 주시길 부탁드립니다:',
 	'badimages-removed' => '$1이 목록으로부터 삭제되었습니다.',
 	'badimages-subheading' => '현재 항목',
-	'badimages-unprivileged' => '(사용자께서는 목록을 변경할 수 있는 권한이 없습니다)',
+	'badimages-unprivileged' => '(목록을 바꿀 권한이 없습니다)',
 	'badimages-log-name' => '나쁜 이미지 목록',
 	'badimages-log-add' => '[[$1]]을 나쁜 이미지 목록에 추가했습니다.',
 	'badimages-log-remove' => '[[$1]]을 나쁜 이미지 목록에서 삭제했습니다',
@@ -1750,6 +1751,7 @@ $messages['pt'] = array(
 	'badimages-log-add' => 'adicionada [[$1]] na lista de imagens problemáticas',
 	'badimages-log-remove' => 'removida [[$1]] da lista de imagens problemáticas',
 	'badimages-page' => '{{ns:help}}:Lista de imagens problemáticas',
+	'right-badimages' => 'Atualizar a lista de imagens problemáticas',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

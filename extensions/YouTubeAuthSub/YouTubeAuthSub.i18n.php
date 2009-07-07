@@ -450,11 +450,40 @@ $messages['cu'] = array(
 
 /** Danish (Dansk)
  * @author Jon Harald Søby
+ * @author Masz
  */
 $messages['da'] = array(
+	'youtubeauthsub' => 'Læg en YouTube-video op',
+	'youtubeauthsub-desc' => 'Giver brugere mulighed for at [[Special:YouTubeAuthSub|lægge videoer op]] på YouTube.',
+	'youtubeauthsub_info' => 'For at lægge en video op på YouTube, skal du udfylde de nedenstående informationer:',
 	'youtubeauthsub_title' => 'Titel',
 	'youtubeauthsub_description' => 'Beskrivelse',
+	'youtubeauthsub_password' => 'YouTube-adgangskode',
+	'youtubeauthsub_username' => 'YouTube-brugernavn',
+	'youtubeauthsub_keywords' => 'Nøgleord',
 	'youtubeauthsub_category' => 'Kategori',
+	'youtubeauthsub_submit' => 'Læg op',
+	'youtubeauthsub_clickhere' => 'Tryk her for at logge ind på YouTube',
+	'youtubeauthsub_tokenerror' => 'Fejl under oprettelse af autorisationstoken; prøv at opdatere.',
+	'youtubeauthsub_success' => "Tillykk!
+Din video er blevet lagt op.
+<a href='http://www.youtube.com/watch?v=$1'>Se din video</a>.
+Det kan tage lidt tid før YouTube har behandlet din video, så den er måske ikke klar endnu.
+For at vise din video på en side på denne wiki, skal du indsætte følgende kode:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Du skal først logge ind på YouTube, før du kan lægge videoer op.',
+	'youtubeauthsub_uploadhere' => 'Læg din video op herfra:',
+	'youtubeauthsub_uploadbutton' => 'Læg op',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Vis denne video]',
+	'youtubeauthsub_summary' => 'Lægger YouTube-video op',
+	'youtubeauthsub_uploading' => 'Din video bliver lagt op.
+Vær tålmodig.',
+	'youtubeauthsub_viewpage' => 'Alternativt kan du [[$1|vise din video]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Skriv 1 eller flere nøgleord.',
+	'youtubeauthsub_jserror_notitle' => 'Vælg en titel for videoen.',
+	'youtubeauthsub_jserror_nodesc' => 'Skriv en beskrivelse af videoen.',
 );
 
 /** German (Deutsch)
@@ -2930,6 +2959,14 @@ $messages['yi'] = array(
 	'youtubeauthsub_title' => 'קעפל',
 	'youtubeauthsub_category' => 'קאַטעגאריע',
 	'youtubeauthsub_uploadbutton' => 'ארויפֿלאָדן',
+);
+
+/** Zhuang (Vahcuengh)
+ * @author Biŋhai
+ */
+$messages['za'] = array(
+	'youtubeauthsub_title' => 'Daezmoeg',
+	'youtubeauthsub_category' => 'Feandingz',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬)

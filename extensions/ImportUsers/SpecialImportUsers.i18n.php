@@ -413,6 +413,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Locos epraix
  * @author Piolinfax
  */
 $messages['es'] = array(
@@ -421,10 +422,12 @@ $messages['es'] = array(
 	'importusers-form-replace-present' => 'Reemplazar usuarios existentes',
 	'importusers-form-button' => 'Importar',
 	'importusers-user-added' => "Usuario '''$1''' ha sido agregado.",
+	'importusers-log' => 'Importar registro de usuarios',
 	'importusers-log-summary' => 'Sumario',
 	'importusers-log-summary-all' => 'Todos',
 	'importusers-log-summary-added' => 'Agregado',
 	'importusers-log-summary-updated' => 'Actualizado',
+	'importusers-login-name' => 'Nombre de usuario',
 	'importusers-password' => 'contraseña',
 	'importusers-email' => 'correo electrónico',
 	'importusers-realname' => 'nombre real',

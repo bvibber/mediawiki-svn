@@ -51,6 +51,13 @@ $messages['es'] = array(
 	'minify-desc' => 'Contraer salida de CSS y JavaScript de action=raw',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'minify-desc' => 'Kutistaa CSS- ja JavaScript-tulosteen action=raw:sta.',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -134,6 +141,13 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'minify-desc' => 'Estrechís la sortida de CSS e JavaScript de action=raw',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'minify-desc' => 'Encolhe a saída CSS e JavaScript de action=raw',
 );
 
 /** Tarandíne (Tarandíne)

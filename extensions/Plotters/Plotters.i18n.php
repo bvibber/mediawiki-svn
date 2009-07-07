@@ -125,13 +125,21 @@ Pšosym definěruj plotowe mě, kótarež ma maksimalnje 255 znamuškow.',
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'plotters-desc' => 'Deja a los usuarios usar JavaScript personalizada en etiquetas jsplot',
 	'plotters' => 'Plotters',
 	'plotters-title' => 'Plotters',
 	'plotters-uses' => 'Usos',
+	'plotters-missing-script' => 'No se definió el script.',
+	'plotters-missing-arguments' => 'No se especificaron argumentos.',
+	'plotters-excessively-long-scriptname' => 'El nombre del script es demasiado largo.
+Por favor define un script, cuyo nombre tenga 255 caracteres de longitud como máximo.',
+	'plotters-excessively-long-preprocessorname' => 'El nombre del preprocesador es demasiado largo.
+Por favor define un preprocesador, cuyo nombre tenga 255 caracteres de longitud como máximo.',
 	'plotters-no-data' => 'sin datos proveídos',
+	'plotters-invalid-renderer' => 'Se seleccionó un renderizador inválido.',
 );
 
 /** French (Français)

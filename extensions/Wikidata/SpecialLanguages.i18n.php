@@ -3119,6 +3119,7 @@ $wdMessages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Cimon Avaro
  * @author Crt
  * @author Mobe
  * @author Nike
@@ -3127,11 +3128,54 @@ $wdMessages['fa'] = array(
  */
 $wdMessages['fi'] = array(
 	'languages' => 'Wikidata: kielten hallinta',
+	'langman-desc' => 'Lisää ja muuta kieliasetuksia [[Special:Languages|toimintosivun avulla]].',
 	'langman_title' => 'Kielten hallinta',
+	'langman_not_allowed' => 'Sinulla ei ole lupaa vaihtaa kieliasetuksia.',
+	'langman_header' => 'Kirjoita kielikoodi ja sen englanninkielinen nimi alempana olevaan kenttään:',
+	'langman_req_fields' => 'Kielen nimi ja ISO 639-3 -koodi ovat pakollisia!',
 	'langman_langname' => 'Kielen nimi:',
+	'langman_iso639-3' => 'ISO 639-3 -koodi:',
+	'langman_iso639-2' => 'ISO 639-2 -koodi:',
 	'langman_wikimedia' => 'Wikimedia-koodi:',
+	'langman_field_optional' => '(valinnainen)',
 	'langman_addlang' => 'Lisää kieli',
+	'importlangnames' => 'Wikidata: Tuo kielten nimet',
+	'importlangnames_title' => 'Tuo kielten nimet',
+	'importlangnames_not_allowed' => 'Sinulla ei ole lupaa tuoda kielten nimiä.',
 	'datasearch' => 'Wikidata: tiedon haku',
+	'datasearch_language' => 'Kieli:',
+	'datasearch_found_word' => 'Löytynyt sana',
+	'datasearch_meaning' => 'Merkitys',
+	'datasearch_ext_identifier' => 'Ulkoinen tunniste',
+	'datasearch_search_text' => 'Haettava teksti:',
+	'datasearch_within_words' => 'Sanojen sisäisinä:',
+	'datasearch_within_ext_ids' => 'Ulkoisten tunnisteitten sisäisinä:',
+	'datasearch_showing_only' => 'Näytetään enintään $1 {{PLURAL:$1|osuma|osumaa}}.',
+	'datasearch_match_ext_ids' => 'Ulkoiset tunnisteet, jotka vastaavat <i>$1</i>',
+	'datasearch_match_words' => 'Sanat, jotka vastaavat <i>$1</i> ja niihin liittyvät merkitykset',
+	'datasearch_match_words_lang' => 'Sanat, jotka ovat kohteessa <i>$1</i> ja vastaavat hakua <i>$2</i> ja niihin liittyvät merkitykset',
+	'importtsv' => 'Wikidata: Tuo TSV',
+	'ow_importtsv_title2' => 'Tuo määritelmiä ja käännöksiä',
+	'ow_importtsv_not_allowed' => 'Sinulla ei ole lupaa tehdä TSV-tuontia.',
+	'ow_importtsv_importing' => 'TSV-tietueitten tuonti',
+	'ow_importtsv_import_failed' => 'Tuonti ei onnistunut',
+	'ow_importtsv_file' => 'TSV-tiedosto:',
+	'ow_importtsv_test_run' => 'Koetuonti:',
+	'ow_importtsv_not_utf8' => '<p> Tämä ei näytä olevan UTF-8-koodattu tiedosto. Tiedoston <i>täytyy</i> olla UTF-8-koodattu. Varmista että sovellusohjelmasi on tallentanut tai vienyt tiedoston oikein. </p>',
+	'ow_importtsv_not_tsv' => '<p> Tämä ei näytä olevan toimiva TSV-tiedosto. </p>',
+	'ow_importtsv_bad_columns' => "<p>Väärä sarakkeen nimi '$1'. <br /> Sarakkeet kuuluu nimetä 'definition_iso' tai 'translations_iso', jossa iso on kielikoodi.</p>",
+	'ow_importtsv_test_run_title' => 'TSV-tietueitten koetuonti',
+	'ow_importtsv_nothing_added_test' => 'Mitään ei lisätty (koetuonti).',
+	'ow_importtsv_results' => 'Lisätty $1 {{PLURAL:$1|määritelmä|määritelmää}} ja $2 {{PLURAL:$2|käännös|käännöstä}}.',
+	'ow_impexptsv_unknown_lang' => '<p>Tuntematon tai virheellinen kieli: $1. <br /> 
+Kielten pitää olla ISO 639-3 kielten koodeilla.</p>',
+	'ow_exporttsv_title' => 'Vie kokoelma TSV:lle',
+	'ow_exporttsv_header' => "<p>Vie kokoelma sarkaimin erotetussa teksti-muodossa jonka voit tuoda OpenOffice.org, Excel tai muuhun taulukkolaskentaohjelmistoon. <br /> 
+Valitse kokoelma vietäväksi. Syötä kielten tekstikenttään pilkuilla eroteltu luettelo ISO 639-3 kielikoodeista. Aloita kielistä joista tulet kääntämään (valitse niin monta kuin haluat), ja lisää lopuksi ne joihin sinä käännät. Napsauta sitten 'Create' luodaksesi tiedoston.</p>",
+	'ow_exporttsv_languages' => 'Kielet:',
+	'ow_exporttsv_not_allowed' => 'Sinulla ei ole lupaa tehdä TSV-vientiä.',
+	'ow_exporttsv_export_failed' => 'Vienti epäonnistui',
+	'addcollection' => 'Wikidata: Lisää kokoelma',
 	'ow_save' => 'Tallenna',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Tietojoukon valinta',
@@ -3141,6 +3185,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
 	'ow_uipref_datasets' => 'Oletusnäkymä',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ei yhtään valittu',
+	'ow_transaction_user' => 'Käyttäjätunnus:',
 	'ow_transaction_no_action' => 'Älä tee mitään',
 	'ow_conceptmapping_no_action_specified' => 'Tuntematon toiminto: $1.',
 	'ow_dm_OK' => 'OK',

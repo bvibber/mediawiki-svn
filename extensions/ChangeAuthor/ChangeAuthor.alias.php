@@ -49,7 +49,7 @@ $aliases['dsb'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'ChangeAuthor' => array( 'VaihdaTekijännimi' ),
+	'ChangeAuthor' => array( 'Vaihda_tekijänimi' ),
 );
 
 /** French (Français) */

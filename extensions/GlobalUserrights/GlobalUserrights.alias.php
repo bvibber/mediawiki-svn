@@ -93,6 +93,11 @@ $aliases['lb'] = array(
 	'GlobalUserrights' => array( 'Global Benotzerrechter' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'GlobalUserrights' => array( 'ആഗോളാംഗത്വാവകാശങ്ങള്‍' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'GlobalUserrights' => array( 'Globle_gebrukersrechen' ),

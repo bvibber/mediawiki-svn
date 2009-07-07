@@ -381,6 +381,13 @@ $messages['ksh'] = array(
 	'searchbox-namespaces' => 'Appachtemengs:',
 );
 
+/** Latin (Latina)
+ * @author UV
+ */
+$messages['la'] = array(
+	'searchbox-namespaces' => 'Spatia nominalia:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

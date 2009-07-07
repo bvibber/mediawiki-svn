@@ -53,6 +53,11 @@ $aliases['ksh'] = array(
 	'CommunityVoice' => array( 'Metmaacherstemme' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'CommunityVoice' => array( 'സമൂഹശബ്ദം' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'CommunityVoice' => array( 'VuċiKomunità', 'VuċiKomunitarja' ),

@@ -93,6 +93,11 @@ $aliases['lb'] = array(
 	'MultipleUpload' => array( 'Vill Fichieren eroplueden' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'MultipleUpload' => array( 'വിവിധ അപ്‌ലോഡുകള്‍' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'MultipleUpload' => array( 'Meerdere_bestanen_toevoegen' ),

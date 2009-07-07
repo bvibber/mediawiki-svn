@@ -18,6 +18,11 @@ $aliases['ar'] = array(
 	'Mibbit' => array( 'ميبيت' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'Mibbit' => array( 'മിബിറ്റ്' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'Mibbit' => array( 'Mibbit' ),

@@ -221,7 +221,7 @@ $messages['arc'] = array(
 	'right-search' => 'ܒܨܝܐ ܒܘܝܩܝ',
 	'right-contributions' => 'ܚܙܝ ܦܐܬܐ ܕܫܘܬܦܘܝܬ̈ܐ',
 	'right-recentchanges' => 'ܚܙܝ ܫܘܚܠܦ̈ܐ ܚܕܬ̈ܐ',
-	'right-edittalk' => 'ܫܚܠܦ ܦܐܬܘܬ̈ܐ ܕܕܘܪܫܐ',
+	'right-edittalk' => 'ܫܚܠܦ ܦܐܬܬ̈ܐ ܕܕܘܪܫܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

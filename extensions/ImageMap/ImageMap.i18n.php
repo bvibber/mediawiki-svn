@@ -640,6 +640,7 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Dani
  * @author KossuthRad
+ * @author Tgr
  */
 $messages['hu'] = array(
 	'imagemap_desc' => 'Lehetővé teszi kliensoldali imagemap-ek létrehozását a <tt><nowiki><imagemap></nowiki></tt> tag segítségével',
@@ -647,11 +648,11 @@ $messages['hu'] = array(
 	'imagemap_invalid_image' => 'Error: érvénytelen vagy nem létező kép',
 	'imagemap_bad_image' => 'Hiba: a kép feketelistán van ezen az oldalon',
 	'imagemap_no_link' => 'Error: nincs érvényes link a(z) $1. sor végén',
-	'imagemap_invalid_title' => 'Error: érvénytelen cím a linkben a $1 vonalban',
+	'imagemap_invalid_title' => 'Hiba: érvénytelen cím a linkben, a(z) $1. sorban',
 	'imagemap_missing_coord' => 'Error: nincs elég koordináta az alakításhoz a $1 sorban',
 	'imagemap_unrecognised_shape' => 'Error: ismeretlen alakzat a(z) $1. sorban, mindegyiknek ezek valamelyikével kell kezdődnie: default, rect, circle vagy poly',
 	'imagemap_no_areas' => 'Error: Legalább egy terület előírást hozzá kell adni',
-	'imagemap_invalid_coord' => 'Error: érvénytelen koordináta a $1 vonalban, számnak kell lennie',
+	'imagemap_invalid_coord' => 'Hiba: érvénytelen koordináta a(z) $1. sorban, számnak kell lennie',
 	'imagemap_invalid_desc' => 'Error: hibás desc leírás, ezek egyike kell: <tt>$1</tt>',
 	'imagemap_description' => 'Kép leírása',
 	'imagemap_poly_odd' => 'Hiba: az $1. sorban páratlan számú koordináta található',

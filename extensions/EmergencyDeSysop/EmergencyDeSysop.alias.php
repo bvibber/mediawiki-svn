@@ -33,7 +33,7 @@ $aliases['dsb'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'EmergencyDeSysop' => array( 'Poikkeuksellinen ylläpitäjyyden poisto kriisitilanteessa' ),
+	'EmergencyDeSysop' => array( 'Ylläpitäjyyden_hätäpoisto' ),
 );
 
 /** French (Français) */

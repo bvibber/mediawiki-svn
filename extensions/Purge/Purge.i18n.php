@@ -77,6 +77,14 @@ $messages['ca'] = array(
 	'purge' => 'purga',
 );
 
+/** Danish (Dansk)
+ * @author Masz
+ */
+$messages['da'] = array(
+	'purge' => 'nulstil cachen',
+	'purge-desc' => "Tilføjer et 'tøm cachen-faneblad' til alle normale sider, og gør det muligt for anonyme brugere, ikke at skulle bekræfte tømningen.",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

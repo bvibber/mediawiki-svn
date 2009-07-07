@@ -133,6 +133,24 @@ $messages['ca'] = array(
 	'right-adminlinks' => "Veure l'enllaç a [[Special:AdminLinks|enllaços d'administrador]]",
 );
 
+/** Danish (Dansk)
+ * @author Masz
+ */
+$messages['da'] = array(
+	'adminlinks' => 'Administrationslinks',
+	'adminlinks-desc' => 'Tilføjer en [[Special:AdminLinks|specialside]], som indeholder nyttige links for administratorer.',
+	'adminlinks_documentation' => 'dokumentation for $1',
+	'adminlinks_general' => 'Generelt',
+	'adminlinks_editsidebar' => 'Redigér sidemenuen',
+	'adminlinks_editcss' => 'Redigér CSS-fil',
+	'adminlinks_editmainpagename' => 'Ændre navnet på forsiden',
+	'adminlinks_users' => 'Brugere',
+	'adminlinks_createuser' => 'Opret en bruger',
+	'adminlinks_browsesearch' => 'Navigering og søgning',
+	'adminlinks_importexport' => 'Importering og eksportering',
+	'right-adminlinks' => 'Se linket til [[Special:AdminLinks|administrationslinkene]]',
+);
+
 /** German (Deutsch)
  * @author Purodha
  * @author Umherirrender
@@ -590,6 +608,7 @@ $messages['pl'] = array(
 $messages['pt'] = array(
 	'adminlinks' => 'Links para Admins',
 	'adminlinks-desc' => 'Adiciona uma [[Special:AdminLinks|página especial]] que possui links úteis para administradores',
+	'adminlinks_documentation' => 'Documentação sobre $1',
 	'adminlinks_general' => 'Geral',
 	'adminlinks_editsidebar' => 'Editar barra lateral',
 	'adminlinks_editcss' => 'Editar ficheiro CSS',

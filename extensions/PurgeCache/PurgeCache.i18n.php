@@ -368,6 +368,16 @@ $messages['mr'] = array(
 	'purgecache-button' => 'स्वच्छ करा',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'purgecache' => 'Żvojta l-cache',
+	'purgecache-warning' => "Din se tiżvojta t-tabelli ta' cache.",
+	'purgecache-purged' => 'Il-cache ġiet imġedda.',
+	'purgecache-button' => "Erġa' ġedded",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

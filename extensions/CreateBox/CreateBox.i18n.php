@@ -68,13 +68,14 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'createbox-desc' => 'Спэцыялізаванае поле ўводу для стварэньня старонак',
 	'createbox-create' => 'Стварыць',
 	'createbox-exists' => "Прабачце, «'''{{FULLPAGENAME}}'''» ужо існуе.
 
-Вы ня можаце стварыць гэту старонку, але Вы можаце [{{fullurl:{{FULLPAGENAME}}|action=edit}} яе рэдагаваць], [{{fullurl:{{FULLPAGENAME}}}} яе чытаць] альбо стварыць іншую старонку з дапамогай поля ніжэй.
+Вы ня можаце стварыць гэту старонку, але Вы можаце [{{fullurl:{{FULLPAGENAME}}|action=edit}} рэдагаваць яе], [{{fullurl:{{FULLPAGENAME}}}} чытаць яе] альбо стварыць іншую старонку з дапамогай поля ніжэй.
 
 <createbox>break=no</createbox>",
 );

@@ -51,8 +51,8 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
-	'watchsubpages-addtitles' => 'ܐܘܣܦ ܦܐܬܘܬ̈ܐ',
-	'watchsubpages-addtitlestowatchlist' => 'ܐܘܣܦ ܦܐܬܘܬ̈ܐ  ܠܪ̈ܗܝܬܐ',
+	'watchsubpages-addtitles' => 'ܐܘܣܦ ܦܐܬܬ̈ܐ',
+	'watchsubpages-addtitlestowatchlist' => 'ܐܘܣܦ ܦܐܬܬ̈ܐ  ܠܪ̈ܗܝܬܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
