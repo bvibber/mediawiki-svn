@@ -189,6 +189,10 @@ mvPlayList.prototype = {
 				 }
 		}			   
 	},
+	doNativeWarningCheck:function(){
+		var clip =	 this.default_track.clips[0];
+		return clip.embed.doNativeWarningCheck();
+	},
 	doWhenParseDone:function(){				
 		js_log('f:doWhenParseDone');
 		//do additional init for clips: 
@@ -1212,8 +1216,7 @@ PlMvEmbed.prototype = {
 			//string -> boolean:
 			if(this[method]=="false")this[method]=false;
 			if(this[method]=="true")this[method]=true;
-		}
-		debugger;						
+		}						
 	},	
 	onClipDone:function(){
 		js_log('pl onClipDone (should go to next)');

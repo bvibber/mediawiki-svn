@@ -320,14 +320,18 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				js_log(" should update: " + _this.target_input_file_name + ' to: ' + _this.fogg.sourceFilename );				 
 				$j(_this.target_input_file_name).val(_this.fogg.sourceFilename).show();
 				
-				if(_this.new_source_cb){								
-				    var oggExt = (_this.isSourceAudio())?'oga':'ogg';
-                    oggExt = (_this.isSourceVideo())?'ogv':oggExt;
-                    oggExt = (_this.isUnknown())?'ogg':oggExt;
-				    oggName = _this.fogg.sourceFilename.substr(0,
-				                  _this.fogg.sourceFilename.lastIndexOf('.'));
-				         
-					_this.new_source_cb( _this.fogg.sourceFilename , oggName +'.'+ oggExt);
+				if(_this.new_source_cb){											 	
+					if(_this.encoder_settings['passthrough']){
+						var fName = _this.fogg.sourceFilename
+					}else{	
+					    var oggExt = (_this.isSourceAudio())?'oga':'ogg';
+	                    oggExt = (_this.isSourceVideo())?'ogv':oggExt;
+	                    oggExt = (_this.isUnknown())?'ogg':oggExt;
+					    oggName = _this.fogg.sourceFilename.substr(0,
+					                  _this.fogg.sourceFilename.lastIndexOf('.'));
+					    var fName = oggName +'.'+ oggExt              
+					}
+					_this.new_source_cb( _this.fogg.sourceFilename , fName);
 				}
 			}													
 		}else{
@@ -354,8 +358,8 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			ext = sf.substring( sf.lastIndexOf('.')+1 ).toLowerCase();
 		}	
 				  
-		//set to passthrough by default (images, arbitrary files that we want to send with http chunks) 
-		this.encoder_settings['passthrough'] = false;
+		//set to passthrough to true by default (images, arbitrary files that we want to send with http chunks) 
+		this.encoder_settings['passthrough'] = true;
 		
 		//see if we have video or audio:  
 		if(  _this.isSourceAudio() || _this.isSourceVideo() ){
@@ -420,7 +424,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		if(	sf.lastIndexOf('.') != -1){
 			ext = sf.substring( sf.lastIndexOf('.') ).toLowerCase();
 		}
-		if(!_this.passthrough && $j.inArray(ext.substr(1), _this.ogg_extensions) == -1 ){		
+		if(!_this.encoder_settings['passthrough'] && $j.inArray(ext.substr(1), _this.ogg_extensions) == -1 ){		
 			var extreg = new RegExp(ext + '$', 'i');
 			_this.formData['wpDestFile'] = sf.replace(extreg, '.ogg');
 		}

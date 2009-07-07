@@ -60,8 +60,7 @@ var default_remote_search_options = {
 	'cFileNS':'File', //what is the cannonical namespace for images
 					  //@@todo (should get that from the api or inpage vars)
 					 
-	'enable_upload_tab':true, // if we want to enable an uploads tab:
-	
+	'enable_upload_tab':true // if we want to enable an uploads tab:	
 }
 if(typeof wgServer == 'undefined')
 	wgServer = '';

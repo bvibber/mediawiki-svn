@@ -40,7 +40,7 @@ loadGM({
 	"mv_ogg-player-omtkplayer" : "OMTK Flash Vorbis",
 	"mv_generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://commons.wikimedia.org/wiki/Commons:Media_help\">Playback Methods</a> page to download a player<br>",
 	
-	"mv_for_best_experience": "For best video playback experience we recomend <a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=mv_embed\">Firefox 3.5</a>",
+	"mv_for_best_experience": "For best video playback experience we recomend <b><a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=mv_embed\">Firefox 3.5</a></b>",
 	"mv_do_not_warn_again": "Do not warn me again."	
 		
 });
@@ -325,10 +325,10 @@ var ctrlBuilder = {
 			$j('#' + embedObj.id).get(0).play();
 		});		
 		
-		//add recomend firefox if non-native playback:												
-		if( embedObj.doNativeWarningCheck() ){
+		//add recomend firefox if non-native playback:
+		if( embedObj.doNativeWarningCheck() ){															
 			$j('#dc_'+ embedObj.id).hover(
-				function(){					
+				function(){										
 					if($j('#gnp_' + embedObj.id).length==0){
 						$j(this).append('<div id="gnp_' + embedObj.id + '" class="ui-state-highlight ui-corner-all" ' +
 							'style="position:absolute;display:none;background:#FFF;top:10px;left:10px;right:10px;height:60px;">' +
@@ -1277,14 +1277,16 @@ embedVideo.prototype = {
 				}			
 			}	
 			//see if we are using a fallback (in which case it does not matter) 
-			var playable_sources = this.media_element.getPlayableSources();
-			for(var source=0; source <playable_sources.length; source++){  
-				var mime_type = playable_sources[source].mime_type;
-				if( mime_type=='video/h264' || mime_type=='video/x-flv'){
-					//they  have flash / h.264 fallback no need to push firefox :( 
-					return false;
-				}
-			}	
+			if(this.media_element && this.media_element.sources){
+				var playable_sources = this.media_element.getPlayableSources();
+				for(var sInx=0; sInx < playable_sources.length; sInx++){  
+					var mime_type = playable_sources[sInx].mime_type;
+					if( mime_type=='video/h264' || mime_type=='video/x-flv'){
+						//they  have flash / h.264 fallback no need to push firefox :( 
+						return false;
+					}
+				}	
+			}
 		}
 		return true;	
 	},
