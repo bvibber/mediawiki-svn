@@ -339,12 +339,7 @@ var ctrlBuilder = {
 		//fullscreen binding: 
 		$j('#fullscreen_'+embedObj.id).unbind().btnBind().click(function(){
 			$j('#' +embedObj.id).get(0).fullscreen();
-		});		
-		
-		//volume binding: 
-		$j('#volume_control_'+embedObj.id).unbind().btnBind().click(function(){
-			$j('#' +embedObj.id).get(0).toggleMute();
-		});
+		});				
 		
 		js_log(" should add slider binding: " + $j('#mv_play_head_'+embedObj.id).length) ;
 		$j('#mv_play_head_'+embedObj.id).slider({
@@ -409,8 +404,61 @@ var ctrlBuilder = {
 			$j('#mv_vid_options_'+ctrlBuilder.id).hide();
 			return false;
 		});		
+			
+		//volume binding:
+		var hoverOverDelay=false;
+		$j('#volume_control_'+embedObj.id).unbind().btnBind().click(function(){
+			$j('#' +embedObj.id).get(0).toggleMute();
+		}).hover(
+			function(){			
+				$j('#vol_container_' + embedObj.id).addClass('vol_container_top');
+				//set to "below" if playing and embedType != native
+				if(embedObj.isPlaying() && !embedObj.supports['overlays']){
+					$j('#vol_container_' + embedObj.id).removeClass('vol_container_top').addClass('vol_container_below');
+				}
+				
+				$j('#vol_container_' + embedObj.id).fadeIn('fast');
+				hoverOverDelay = true;
+			},
+			function(){		
+				hoverOverDelay= false;		
+				setTimeout(function doHideVolume(){
+					if(!hoverOverDelay){
+						$j('#vol_container_' + embedObj.id).fadeOut('fast');
+					}
+				}, 500);	
+			}
+		);
+		//Volumen Slider
+		$j('#volume_bar_'+embedObj.id).slider({
+			orientation: "vertical",			
+			range: "min",
+			value: 80,
+			min: 0,
+			max: 100,			
+			slide: function(event, ui) {									
+				var perc = ui.value/100;		
+				//js_log('update volume:' + perc);
+				embedObj.updateVolumen(perc);								
+			},
+			change:function(event, ui){
+				var perc = ui.value/100;	
+				if (perc==0) {
+					$j('#volume_control_'+embedObj.id + ' span').removeClass('ui-icon-volume-on').addClass('ui-icon-volume-off');								
+				}else{					
+					$j('#volume_control_'+embedObj.id + ' span').removeClass('ui-icon-volume-off').addClass('ui-icon-volume-on');
+				}
+				//only run the onChange event if done by a user slide: 
+				if(embedObj.userSlide){
+					embedObj.userSlide=false;
+					embedObj.seeking=true;							
+					var perc = ui.value/100;														  
+					embedObj.updateVolumen(perc);					
+				}
+			}		  
+		});					
 		
-	},
+	},	
 	getMvBufferHtml:function(){
 		return '<div class="ui-slider-range ui-slider-range-min ui-widget-header ' +
 				'ui-state-highlight ui-corner-all '+
@@ -475,7 +523,12 @@ var ctrlBuilder = {
 		'volume_control':{
 			'w':23,
 			'o':function(){
-				return '<div id="volume_control_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-volume-on"></span></div>'
+					return '<div id="volume_control_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton">' +
+								'<span class="ui-icon ui-icon-volume-on"></span>' +
+								'<div style="position:absolute;display:none;" id="vol_container_'+ctrlBuilder.id+'" class="vol_container ui-corner-all">' +
+									'<div class="volume_bar" id="volume_bar_' + ctrlBuilder.id + '"></div>' +
+								'</div>'+
+							'</div>';														
 			}
 		},
 		'time_display':{
@@ -2115,8 +2168,11 @@ embedVideo.prototype = {
 			$j('#volume_control_'+this_id + ' span').removeClass('ui-icon-volume-on').addClass('ui-icon-volume-off');
 		}
 	},
+	updateVolumen:function(perc){
+		js_log('update volume not supported with current playback type');
+	},
 	fullscreen:function(){
-		js_log('fullscreen not supported for this plugin type');
+		js_log('fullscreen not supported with current playback type');
 	},
 	/* returns bool true if playing or paused, false if stooped
 	 */

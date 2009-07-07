@@ -278,6 +278,18 @@ var vlcEmbed = {
 		if(this.vlc)
 			this.vlc.audio.toggleMute();
     },	
+    //@@ Suport UpDateVolumen 
+    updateVolumen:function(perc){
+    	this.getVLC();
+		if(this.vlc)
+			this.vlc.audio.volume = perc*100;			    
+    },	
+    //@@ Get Volumen
+    getVolumen:function(){
+    	this.getVLC();
+    	if(this.vlc) 
+    		return this.vlc.audio.volume / 100;
+    },	
 	fullscreen : function(){
 		if(this.vlc){
 			if(this.vlc.video)

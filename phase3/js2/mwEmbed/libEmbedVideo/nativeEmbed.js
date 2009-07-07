@@ -224,7 +224,17 @@ var nativeEmbed = {
 		this.getVID();
 		if(this.vid)
 			this.vid.muted = this.muted;
-	},
+	},	
+	updateVolumen:function(perc){
+		this.getVID();		
+		if(this.vid)
+			this.vid.volume(perc);			    
+	},	   	
+    getVolumen:function(){
+		this.getVID();		
+		if(this.vid)
+			return this.vid.volume();			   
+	},	
 	load:function(){
 		this.getVID();
 		if( !this.vid ){

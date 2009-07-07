@@ -549,10 +549,10 @@ var mvJsLoader = {
 				[
 					'$j.ui', 
 					'embedVideo',   				
-					'$j.cookie'	   																
+					'$j.cookie'					 															
 				], 
 				[
-					'$j.ui.slider'
+					'$j.ui.slider',					
 				]
 			];				
 			//add png fix if needed:

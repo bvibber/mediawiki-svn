@@ -1562,7 +1562,7 @@ var flashEmbed = {
 		'stop':true, 
 		//'fullscreen':true, 
 		'time_display':true, 
-		//'volume_control':true,
+		'volume_control':true,
 		'overlay':false,
 		'fullscreen':false
 	},
@@ -1652,6 +1652,18 @@ var flashEmbed = {
 			}
 		}
 	},
+	//@@ Suport UpDateVolumen 
+	updateVolumen:function(perc){
+		this.getFLA();		
+		if(this.fla)this.fla.setVolume(perc*100);
+			    
+    },	
+    //@@ Get Volumen
+  	getVolumen:function(){
+		this.getFLA();		
+		if(this.fla)
+			return this.fla.getVolume() / 100;			   
+    },	
 	fullscreen:function(){
 		if(this.fla){
 			this.fla.fullscreen();
