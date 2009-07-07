@@ -26,7 +26,7 @@ class Mibbit extends SpecialPage {
 			'server'  => $wgMibbitServer,
 			'channel' => $wgMibbitChannel
 		);
-		if ( $wgUser->isLoggedIn() ) $queryAssoc[ 'nick' ] = $wgUser->getName();
+		if ( $wgUser->isLoggedIn() ) $queryAssoc[ 'nick' ] = str_replace( ' ', '_', $wgUser->getName() );
 		if ( $wgMibbitExtraParameters ) {
 			$queryAssoc = array_merge( $queryAssoc, $wgMibbitExtraParameters );
 		}
