@@ -88,7 +88,6 @@
 											$(this).data( 'sectionCookie' ),
 											show ? $(this).data( 'sectionDiv' ).attr( 'id' ) : null
 										);
-										/*$(this).data( 'textbox' ).focus();*/
 										return false;
 									})
 							)

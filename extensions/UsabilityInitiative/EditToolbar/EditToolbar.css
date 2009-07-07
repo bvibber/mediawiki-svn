@@ -45,7 +45,8 @@ body.rtl div#edittoolbar div.sections div.section {
 	float: right;
 }
 div#edittoolbar div.sections div.loading {
-	padding: 10px;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 }
 div#edittoolbar div.sections div div.progress {
 	display: none;
@@ -56,13 +57,16 @@ div#edittoolbar div.sections div.loading div.progress {
 	background-position: left center;
 	background-repeat: no-repeat;
 	padding-left: 32px;
+	margin-left: 1em;
 	float: left;
 	color: #666666;
 }
-div#edittoolbar div.sections div.loading div.progress {
+body.rtl div#edittoolbar div.sections div.loading div.progress {
 	background-position: right center;
 	padding-left: 0;
 	padding-right: 32px;
+	margin-left: 0;
+	margin-right: 1em;
 	float: right;
 }
 /* Toolbar Groups and Tabs */
