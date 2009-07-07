@@ -675,6 +675,13 @@ abstract class Maintenance {
 		# Done
 		$dbw->commit();
 	}
+	
+	/**
+	 * Get the maintenance directory.
+	 */
+	protected function getDir() {
+		return dirname( __FILE__ );
+	}
 
 	/**
 	 * Get the list of available maintenance scripts. Note
@@ -695,6 +702,7 @@ abstract class Maintenance {
 		if( !self::$mCoreScripts ) {
 			$d = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
 			self::$mCoreScripts = array(
+				'AddWiki'                  => $d . 'addwiki.php',
 				'AttachLatest'             => $d . 'attachLatest.php',
 				'BenchmarkPurge'           => $d . 'benchmarkPurge.php',
 				'ChangePassword'           => $d . 'changePassword.php',
@@ -723,6 +731,8 @@ abstract class Maintenance {
 				'EditCLI'                  => $d . 'edit.php',
 				'EvalPrompt'               => $d . 'eval.php',
 				'FetchText'                => $d . 'fetchText.php',
+				'FixSlaveDesync'           => $d . 'fixSlaveDesync.php',
+				'FixTimestamps'            => $d . 'fixTimestamps.php',
 				'FixUserRegistration'      => $d . 'fixUserRegistration.php',
 				'GenerateSitemap'          => $d . 'generateSitemap.php',
 				'GetLagTimes'              => $d . 'getLagTimes.php',
@@ -752,6 +762,7 @@ abstract class Maintenance {
 				'RefreshLinks'             => $d . 'refreshLinks.php',
 				'RemoveUnusedAccounts'     => $d . 'removeUnusedAccounts.php',
 				'RenameDbPrefix'           => $d . 'renameDbPrefix.php',
+				'RenameWiki'               => $d . 'renamewiki.php',
 				'DumpRenderer'             => $d . 'renderDump.php',
 				'RunJobs'                  => $d . 'runJobs.php',
 				'ShowJobs'                 => $d . 'showJobs.php',

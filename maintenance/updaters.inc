@@ -215,7 +215,7 @@ function rename_table( $from, $to, $patch ) {
 			wfOut( "...can't move table $from to $to, $to already exists.\n" );
 		} else {
 			wfOut( "Moving table $from to $to..." );
-			dbsource( archive($patch), $wgDatabase );
+			$wgDatabase->sourceFile( archive($patch) );
 			wfOut( "ok\n" );
 		}
 	} else {
@@ -232,9 +232,9 @@ function add_table( $name, $patch, $fullpath=false ) {
 	} else {
 		wfOut( "Creating $name table..." );
 		if( $fullpath ) {
-			dbsource( $patch, $wgDatabase );
+			$wgDatabase->sourceFile( $patch );
 		} else {
-			dbsource( archive($patch), $wgDatabase );
+			$wgDatabase->sourceFile( archive($patch) );
 		}
 		wfOut( "ok\n" );
 	}
@@ -249,9 +249,9 @@ function add_field( $table, $field, $patch, $fullpath=false ) {
 	} else {
 		wfOut( "Adding $field field to table $table..." );
 		if( $fullpath ) {
-			dbsource( $patch, $wgDatabase );
+			$wgDatabase->sourceFile( $patch );
 		} else {
-			dbsource( archive($patch), $wgDatabase );
+			$wgDatabase->sourceFile( archive($patch) );
 		}
 		wfOut( "ok\n" );
 	}
@@ -264,9 +264,9 @@ function add_index( $table, $index, $patch, $fullpath=false ) {
 	} else {
 		wfOut( "Adding $index key to table $table... " );
 		if( $fullpath ) {
-			dbsource( $patch, $wgDatabase );
+			$wgDatabase->sourceFile( $patch );
 		} else {
-			dbsource( archive($patch), $wgDatabase );
+			$wgDatabase->sourceFile( archive($patch) );
 		}
 		wfOut( "ok\n" );
 	}
@@ -280,10 +280,10 @@ function do_interwiki_update() {
 		return true;
 	}
 	wfOut( "Creating interwiki table: " );
-	dbsource( archive("patch-interwiki.sql") );
+	$wgDatabase->sourceFile( archive("patch-interwiki.sql") );
 	wfOut( "ok\n" );
 	wfOut( "Adding default interwiki definitions: " );
-	dbsource( "$IP/maintenance/interwiki.sql" );
+	$wgDatabase->sourceFile( "$IP/maintenance/interwiki.sql" );
 	wfOut( "ok\n" );
 }
 
@@ -293,7 +293,7 @@ function do_index_update() {
 	$meta = $wgDatabase->fieldInfo( "recentchanges", "rc_timestamp" );
 	if( !$meta->isMultipleKey() ) {
 		wfOut( "Updating indexes to 20031107: " );
-		dbsource( archive("patch-indexes.sql") );
+		$wgDatabase->sourceFile( archive("patch-indexes.sql") );
 		wfOut( "ok\n" );
 		return true;
 	}
@@ -307,7 +307,7 @@ function do_image_index_update() {
 	$meta = $wgDatabase->fieldInfo( "image", "img_major_mime" );
 	if( !$meta->isMultipleKey() ) {
 		wfOut( "Updating indexes to 20050912: " );
-		dbsource( archive("patch-mimesearch-indexes.sql") );
+		$wgDatabase->sourceFile( archive("patch-mimesearch-indexes.sql") );
 		wfOut( "ok\n" );
 		return true;
 	}
@@ -321,7 +321,7 @@ function do_image_name_unique_update() {
 		wfOut( "...image primary key already set.\n" );
 	} else {
 		wfOut( "Making img_name the primary key... " );
-		dbsource( archive("patch-image_name_primary.sql"), $wgDatabase );
+		$wgDatabase->sourceFile( archive("patch-image_name_primary.sql") );
 		wfOut( "ok\n" );
 	}
 }
@@ -332,7 +332,7 @@ function do_logging_timestamp_index() {
 		wfOut( "...timestamp key on logging already exists.\n" );
 	} else {
 		wfOut( "Adding timestamp key on logging table... " );
-		dbsource( archive("patch-logging-times-index.sql"), $wgDatabase );
+		$wgDatabase->sourceFile( archive("patch-logging-times-index.sql") );
 		wfOut( "ok\n" );
 	}
 }
@@ -343,7 +343,7 @@ function do_archive_user_index() {
 		wfOut( "...usertext,timestamp key on archive already exists.\n" );
 	} else {
 		wfOut( "Adding usertext,timestamp key on archive table... " );
-		dbsource( archive("patch-archive-user-index.sql"), $wgDatabase );
+		$wgDatabase->sourceFile( archive("patch-archive-user-index.sql") );
 		wfOut( "ok\n" );
 	}
 }
@@ -354,7 +354,7 @@ function do_image_user_index() {
 		wfOut( "...usertext,timestamp key on image already exists.\n" );
 	} else {
 		wfOut( "Adding usertext,timestamp key on image table... " );
-		dbsource( archive("patch-image-user-index.sql"), $wgDatabase );
+		$wgDatabase->sourceFile( archive("patch-image-user-index.sql") );
 		wfOut( "ok\n" );
 	}
 }
@@ -365,7 +365,7 @@ function do_oldimage_user_index() {
 		wfOut( "...usertext,timestamp key on oldimage already exists.\n" );
 	} else {
 		wfOut( "Adding usertext,timestamp key on oldimage table... " );
-		dbsource( archive("patch-oldimage-user-index.sql"), $wgDatabase );
+		$wgDatabase->sourceFile( archive("patch-oldimage-user-index.sql") );
 		wfOut( "ok\n" );
 	}
 }
@@ -378,7 +378,7 @@ function do_watchlist_update() {
 	} else {
 		wfOut( "Adding wl_notificationtimestamp field for email notification management." );
 		/* ALTER TABLE watchlist ADD (wl_notificationtimestamp varchar(14) binary NOT NULL default '0'); */
-		dbsource( archive( 'patch-email-notification.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-email-notification.sql' ) );
 		wfOut( "ok\n" );
 	}
 	# Check if we need to add talk page rows to the watchlist
@@ -444,7 +444,7 @@ function do_user_update() {
 	global $wgDatabase;
 	if( $wgDatabase->fieldExists( 'user', 'user_emailauthenticationtimestamp' ) ) {
 		wfOut( "User table contains old email authentication field. Dropping... " );
-		dbsource( archive( 'patch-email-authentication.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-email-authentication.sql' ) );
 		wfOut( "ok\n" );
 	} else {
 		wfOut( "...user table does not contain old email authentication field.\n" );
@@ -468,7 +468,7 @@ function check_bin( $table, $field, $patchFile ) {
 		wfOut( "$table table has correct $field encoding.\n" );
 	} else {
 		wfOut( "Fixing $field encoding on $table table... " );
-		dbsource( archive( $patchFile ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( $patchFile ) );
 		wfOut( "ok\n" );
 	}
 }
@@ -643,7 +643,7 @@ function do_inverse_timestamp() {
 	global $wgDatabase;
 	if( $wgDatabase->fieldExists( 'revision', 'inverse_timestamp' ) ) {
 		wfOut( "Removing revision.inverse_timestamp and fixing indexes... " );
-		dbsource( archive( 'patch-inverse_timestamp.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-inverse_timestamp.sql' ) );
 		wfOut( "ok\n" );
 	} else {
 		wfOut( "revision timestamp indexes already up to 2005-03-13\n" );
@@ -656,7 +656,7 @@ function do_text_id() {
 		wfOut( "...rev_text_id already in place.\n" );
 	} else {
 		wfOut( "Adding rev_text_id field... " );
-		dbsource( archive( 'patch-rev_text_id.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-rev_text_id.sql' ) );
 		wfOut( "ok\n" );
 	}
 }
@@ -705,7 +705,7 @@ function do_pagelinks_update() {
 		wfOut( "...already have pagelinks table.\n" );
 	} else {
 		wfOut( "Converting links and brokenlinks tables to pagelinks... " );
-		dbsource( archive( 'patch-pagelinks.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-pagelinks.sql' ) );
 		wfOut( "ok\n" );
 		flush();
 
@@ -744,7 +744,7 @@ function do_drop_img_type() {
 
 	if( $wgDatabase->fieldExists( 'image', 'img_type' ) ) {
 		wfOut( "Dropping unused img_type field in image table... " );
-		dbsource( archive( 'patch-drop_img_type.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-drop_img_type.sql' ) );
 		wfOut( "ok\n" );
 	} else {
 		wfOut( "No img_type field in image table; Good.\n" );
@@ -766,7 +766,7 @@ function fix_ancient_imagelinks() {
 	if ( $info && $info->type() === 'string' ) {
 		wfOut( "Fixing ancient broken imagelinks table.\n" );
 		wfOut( "NOTE: you will have to run maintenance/refreshLinks.php after this.\n" );
-		dbsource( archive( 'patch-fix-il_from.sql' ) );
+		$wgDatabase->sourceFile( archive( 'patch-fix-il_from.sql' ) );
 		wfOut( "ok\n" );
 	} else {
 		wfOut( "...il_from OK\n" );
@@ -783,7 +783,7 @@ function do_user_unique_update() {
 			wfOut( "WARNING: This next step will probably fail due to unfixed duplicates...\n" );
 		}
 		wfOut( "Adding unique index on user_name... " );
-		dbsource( archive( 'patch-user_nameindex.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-user_nameindex.sql' ) );
 		wfOut( "ok\n" );
 	}
 }
@@ -798,13 +798,13 @@ function do_user_groups_update() {
 	}
 
 	wfOut( "Adding user_groups table... " );
-	dbsource( archive( 'patch-user_groups.sql' ), $wgDatabase );
+	$wgDatabase->sourceFile( archive( 'patch-user_groups.sql' ) );
 	wfOut( "ok\n" );
 
 	if( !$wgDatabase->tableExists( 'user_rights' ) ) {
 		if( $wgDatabase->fieldExists( 'user', 'user_rights' ) ) {
 			wfOut( "Upgrading from a 1.3 or older database? Breaking out user_rights for conversion..." );
-			dbsource( archive( 'patch-user_rights.sql' ), $wgDatabase );
+			$wgDatabase->sourceFile( archive( 'patch-user_rights.sql' ) );
 			wfOut( "ok\n" );
 		} else {
 			wfOut( "*** WARNING: couldn't locate user_rights table or field for upgrade.\n" );
@@ -850,7 +850,7 @@ function do_user_groups_reformat() {
 		wfOut( "ok\n" );
 
 		wfOut( "Re-adding fresh user_groups table... " );
-		dbsource( archive( 'patch-user_groups.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-user_groups.sql' ) );
 		wfOut( "ok\n" );
 
 		wfOut( "***\n" );
@@ -871,7 +871,7 @@ function do_watchlist_null() {
 
 	if( !$info->nullable() ) {
 		wfOut( "Making wl_notificationtimestamp nullable... " );
-		dbsource( archive( 'patch-watchlist-null.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-watchlist-null.sql' ) );
 		wfOut( "ok\n" );
 	} else {
 		wfOut( "...wl_notificationtimestamp is already nullable.\n" );
@@ -903,7 +903,7 @@ function do_templatelinks_update() {
 		return;
 	}
 	wfOut( "Creating templatelinks table...\n" );
-	dbsource( archive('patch-templatelinks.sql'), $wgDatabase );
+	$wgDatabase->sourceFile( archive('patch-templatelinks.sql') );
 	wfOut( "Populating...\n" );
 	if ( isset( $wgLoadBalancer ) && $wgLoadBalancer->getServerCount() > 1 ) {
 		// Slow, replication-friendly update
@@ -959,7 +959,7 @@ function do_rc_indices_update() {
 		$info = $wgDatabase->indexInfo( 'recentchanges', $index, __METHOD__ );
 		if( !$info ) {
 			wfOut( "...index `{$index}` not found; adding..." );
-			dbsource( archive( $patch ) );
+			$wgDatabase->sourceFile( archive( $patch ) );
 			wfOut( "done.\n" );
 		} else {
 			wfOut( "...index `{$index}` seems ok.\n" );
@@ -989,7 +989,7 @@ function do_backlinking_indices_update() {
 		!index_has_field('templatelinks', 'tl_namespace', 'tl_from') ||
 		!index_has_field('imagelinks', 'il_to', 'il_from'))
 	{	
-		dbsource( archive( 'patch-backlinkindexes.sql' ) );
+		$wgDatabase->sourceFile( archive( 'patch-backlinkindexes.sql' ) );
 		wfOut( "...backlinking indices updated\n" );
 	}
 }
@@ -998,7 +998,7 @@ function do_categorylinks_indices_update() {
 	wfOut( "Checking for categorylinks indices...\n" );
 	if (!index_has_field('categorylinks', 'cl_sortkey', 'cl_from'))
 	{	
-		dbsource( archive( 'patch-categorylinksindex.sql' ) );
+		$wgDatabase->sourceFile( archive( 'patch-categorylinksindex.sql' ) );
 		wfOut( "...categorylinks indices updated\n" );
 	}
 }
@@ -1009,7 +1009,7 @@ function do_filearchive_indices_update() {
 	$info = $wgDatabase->indexInfo( 'filearchive', 'fa_user_timestamp', __METHOD__ );
 	if ( !$info )
 	{	
-		dbsource( archive( 'patch-filearchive-user-index.sql' ) );
+		$wgDatabase->sourceFile( archive( 'patch-filearchive-user-index.sql' ) );
 		wfOut( "...filearchive indices updated\n" );
 	}
 }
@@ -1022,7 +1022,7 @@ function maybe_do_profiling_memory_update() {
 		wfOut( "profiling table has pf_memory field.\n" );
 	} else {
 		wfOut( "Adding pf_memory field to table profiling..." );
-		dbsource( archive( 'patch-profiling-memory.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-profiling-memory.sql' ) );
 		wfOut( "ok\n" );
 	}
 }
@@ -1146,8 +1146,8 @@ function do_restrictions_update() {
 		wfOut( "...$name table already exists.\n" );
 	} else {
 		wfOut( "Creating $name table..." );
-		dbsource( archive($patch), $wgDatabase );
-		dbsource( archive($patch2), $wgDatabase );
+		$wgDatabase->sourceFile( archive($patch) );
+		$wgDatabase->sourceFile( archive($patch2) );
 		wfOut( "ok\n" );
 
 		wfOut( "Migrating old restrictions to new table..." );
@@ -1249,7 +1249,7 @@ function do_unique_pl_tl_il() {
 		wfOut( "...pl_namespace, tl_namespace, il_to indices are already UNIQUE.\n" );
 	} else {
 		wfOut( "Making pl_namespace, tl_namespace and il_to indices UNIQUE... " );
-		dbsource( archive( 'patch-pl-tl-il-unique.sql' ), $wgDatabase );
+		$wgDatabase->sourceFile( archive( 'patch-pl-tl-il-unique.sql' ) );
 		wfOut( "ok\n" );
 	}
 }
@@ -1619,7 +1619,7 @@ function do_postgres_updates() {
 		}
 
 		wfOut( "Creating table \"$nt[0]\"\n" );
-		dbsource(archive($nt[1]));
+		$wgDatabase->sourceFile(archive($nt[1]));
 	}
 
 	## Needed before newcols
@@ -1633,7 +1633,7 @@ function do_postgres_updates() {
 			wfOut( "Dropping rule \"archive_delete\"\n" );
 			$wgDatabase->query("DROP RULE archive_delete ON archive");
 		}
-		dbsource(archive("patch-remove-archive2.sql"));
+		$wgDatabase->sourceFile(archive("patch-remove-archive2.sql"));
 	}
 	else
 		wfOut( "... obsolete table \"archive2\" does not exist\n" );
@@ -1728,7 +1728,7 @@ function do_postgres_updates() {
 			continue;
 		}
 		wfOut( "Adding rule \"$nr[1]\" to table \"$nr[0]\"\n" );
-		dbsource(archive($nr[2]));
+		$wgDatabase->sourceFile(archive($nr[2]));
 	}
 
 	if ($wgDatabase->hasConstraint("oldimage_oi_name_fkey")) {
@@ -1742,7 +1742,7 @@ function do_postgres_updates() {
 
 	if (!$wgDatabase->triggerExists("page", "page_deleted")) {
 		wfOut( "Adding function and trigger \"page_deleted\" to table \"page\"\n" );
-		dbsource(archive('patch-page_deleted.sql'));
+		$wgDatabase->sourceFile(archive('patch-page_deleted.sql'));
 	}
 	else
 		wfOut( "... table \"page\" has \"page_deleted\" trigger\n" );
@@ -1750,7 +1750,7 @@ function do_postgres_updates() {
 	$fi = $wgDatabase->fieldInfo("recentchanges", "rc_cur_id");
 	if (!$fi->nullable()) {
 		wfOut( "Removing NOT NULL constraint from \"recentchanges.rc_cur_id\"\n" );
-		dbsource(archive('patch-rc_cur_id-not-null.sql'));
+		$wgDatabase->sourceFile(archive('patch-rc_cur_id-not-null.sql'));
 	}
 	else
 		wfOut( "... column \"recentchanges.rc_cur_id\" has a NOT NULL constraint\n" );
@@ -1776,7 +1776,7 @@ function do_postgres_updates() {
 	}
 	else {
 		wfOut( "Changing constraint \"revision_rev_user_fkey\" to ON DELETE RESTRICT\n" );
-		dbsource(archive('patch-revision_rev_user_fkey.sql'));
+		$wgDatabase->sourceFile(archive('patch-revision_rev_user_fkey.sql'));
 	}
 
 	# Fix ipb_address index
@@ -1789,7 +1789,7 @@ function do_postgres_updates() {
 	}
 	else {
 		wfOut( "Adding ipb_address_unique index\n" );
-		dbsource(archive('patch-ipb_address_unique.sql'));
+		$wgDatabase->sourceFile(archive('patch-ipb_address_unique.sql'));
 	}
 
 	global $wgExtNewTables, $wgExtPGNewFields, $wgExtPGAlteredFields, $wgExtNewIndexes;
@@ -1800,7 +1800,7 @@ function do_postgres_updates() {
 			continue;
 		}
 		wfOut( "Creating table \"$nt[0]\"\n" );
-		dbsource($nt[1]);
+		$wgDatabase->sourceFile($nt[1]);
 	}
 	# Add missing extension fields
 	foreach ( $wgExtPGNewFields as $nc ) {
@@ -1843,18 +1843,18 @@ function do_postgres_updates() {
 			$wgDatabase->query( "CREATE INDEX $ni[1] ON $ni[0] $ni[2]" );
 		}
 		else {
-			dbsource($ni[2]);
+			$wgDatabase->sourceFile($ni[2]);
 		}
 	}
 
 	# Tweak the page_title tsearch2 trigger to filter out slashes
 	# This is create or replace, so harmless to call if not needed
-	dbsource(archive('patch-ts2pagetitle.sql'));
+	$wgDatabase->sourceFile(archive('patch-ts2pagetitle.sql'));
 
 	## If the server is 8.3 or higher, rewrite the tsearch2 triggers
 	## in case they have the old 'default' versions
 	if ( $numver >= 8.3 )
-		dbsource(archive('patch-tsearch2funcs.sql'));
+		$wgDatabase->sourceFile(archive('patch-tsearch2funcs.sql'));
 
 	## Put a new row in the mediawiki_version table
 	$wgDatabase->insert( 'mediawiki_version',

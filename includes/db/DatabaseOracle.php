@@ -881,7 +881,7 @@ class DatabaseOracle extends DatabaseBase {
 		global $wgVersion, $wgDBmwschema, $wgDBts2schema, $wgDBport, $wgDBuser;
 		
 		echo "<li>Creating DB objects</li>\n";
-		$res = dbsource( "../maintenance/ora/tables.sql", $this);
+		$res = $this->sourceFile( "../maintenance/ora/tables.sql" );
 		
 		// Avoid the non-standard "REPLACE INTO" syntax
 		echo "<li>Populating table interwiki</li>\n";

@@ -983,7 +983,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 						if ($wgDatabase->isOpen()) {
 							$wgDBOracleDefTS = $conf->DBdefTS_ora;
 							$wgDBOracleTempTS = $conf->DBtempTS_ora;
-							dbsource( "../maintenance/ora/user.sql", $wgDatabase );
+							$wgDatabase->fileSource( "../maintenance/ora/user.sql",  );
 						} else {
 							echo "<li>Invalid database superuser, please supply a valid superuser account.</li>";
 							echo "<li>ERR: ".print_r(oci_error(), true)."</li>";
@@ -1156,7 +1156,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 							print " <b class='error'>If the next step fails, see <a href='http://dev.mysql.com/doc/mysql/en/old-client.html'>http://dev.mysql.com/doc/mysql/en/old-client.html</a> for help.</b>";
 						}
 						print "</li>\n";
-						dbsource( "../maintenance/users.sql", $wgDatabase );
+						$wgDatabase->fileSource( "../maintenance/users.sql" );
 					}
 				}
 			}
@@ -1190,8 +1190,8 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			# FIXME: Check for errors
 			print "<li>Creating tables...";
 			if ($conf->DBtype == 'mysql') {
-				dbsource( "../maintenance/tables.sql", $wgDatabase );
-				dbsource( "../maintenance/interwiki.sql", $wgDatabase );
+				$wgDatabase->fileSource( "../maintenance/tables.sql" );
+				$wgDatabase->fileSource( "../maintenance/interwiki.sql" );
 			} elseif (is_callable(array($wgDatabase, 'setup_database'))) {
 				$wgDatabase->setup_database();
 			}
@@ -1224,7 +1224,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				} else {
 					# Yes, so run the grants
 					echo( "<li>" . htmlspecialchars( "Granting user permissions to $wgDBuser on $wgDBname..." ) );
-					dbsource( "../maintenance/users.sql", $wgDatabase );
+					$wgDatabase->fileSource( "../maintenance/users.sql" );
 					echo( "success.</li>\n" );
 				}
 			}

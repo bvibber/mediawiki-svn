@@ -1232,7 +1232,7 @@ END;
 		}
 		$this->doQuery("DROP TABLE $safeschema.$ctest");
 
-		$res = dbsource( "../maintenance/postgres/tables.sql", $this);
+		$res = $this->sourceFile( "../maintenance/postgres/tables.sql" );
 
 		## Update version information
 		$mwv = $this->addQuotes($wgVersion);
