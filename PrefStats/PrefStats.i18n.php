@@ -94,10 +94,14 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'prefstats' => 'Estadísticas de preferencia',
+	'prefstats-desc' => 'Seguimiento de las estadísticas sobre cuántos usuarios tienen ciertas preferencias habilitadas',
 	'prefstats-title' => 'Estadísticas de preferencia',
+	'prefstats-list-intro' => 'De momento, las siguientes preferencias están siendo seguidas.
+Selecciona una para ver estadísticas acerca de ella.',
 );
 
 /** Finnish (Suomi)
