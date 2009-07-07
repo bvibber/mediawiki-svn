@@ -31,6 +31,8 @@ loadGM({
 	"ignorewarning" : "Ignore warning and save file anyway",
 	"file-thumbnail-no" :  "The filename begins with <b><tt>$1</tt></b>",
 	"go-to-resource" : "Go to Resource Page",
+
+	"wgfogg_waring_bad_extension" : "You have selected a file with an unsuported extension (<a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">more information</a>).",
 	
 	"cancel-button"  : "Cancel",	
 	"ok-button"	  : "OK"
@@ -320,15 +322,16 @@ mvBaseUploadInterface.prototype = {
 		}
 		uploadStatus();
 	},
-	processApiResult: function( apiRes ){	
-		var _this = this;			
-		js_log('processApiResult::');
-		//check for upload api error:
-		// {"upload":{"result":"Failure","error":"unknown-error","code":{"status":5,"filtered":"NGC2207%2BIC2163.jpg"}}}
+	apiUpdateErrorCheck:function( apiRes ){
+		var _this = this;
 		if( apiRes.error || ( apiRes.upload && apiRes.upload.result == "Failure" ) ){
-			
+			//gennerate the error button:		
+			var bObj = {};
+			bObj[ gM('return-to-form') ] = 	function(){
+					$j(this).dialog('close');
+			 };  		
 			//check a few places for the error code: 
-			var error_code=0;
+			var error_code=0;			
 			if( apiRes.error && apiRes.error.code ){				
 				error_code = apiRes.error.code;
 			}else if( apiRes.upload.code ){
@@ -337,7 +340,7 @@ mvBaseUploadInterface.prototype = {
 						error_code = apiRes.upload.code[0];
 					}
 					if(apiRes.upload.code['status']){
-						error_code = apiRes.upload['status'];
+						error_code = apiRes.upload.code['status'];
 					}
 				}else{
 					apiRes.upload.code;
@@ -352,68 +355,44 @@ mvBaseUploadInterface.prototype = {
 			if(!error_code || error_code == 'unknown-error'){
 				if(typeof JSON != 'undefined'){
 					js_log('Error: apiRes: ' + JSON.stringify( apiRes) );
-				}		
-				var bObj = {};
-				bObj[ gM('return-to-form') ] = 	function(){
-						$j(this).dialog('close');
-				 };  	
+				}			
+				js_log('should update win::');			
 				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg, bObj);
-				return ;	
+				return false;	
 			}else{
-				if( apiRes.error.info ){
+				if(apiRes.error && apiRes.error.info ){					
 					_this.updateProgressWin(  gM('uploaderror'), apiRes.error.info ,bObj);
-					return ;
+					return false;
 				}else{
-					gMsgLoadRemote(error_code, function(){
-						js_log('send msg: ' + gM( error_code ));
-						var bObj = {};
-						bObj[gM('return-to-form')] = function(){
-								$(this).dialog('close');
-						};
-						_this.updateProgressWin(  gM('uploaderror'), gM( error_code ),bObj);
-					});		
-					js_log("api.erorr");		
-					return ;	
+					if(typeof error_code == 'number'){
+						if(apiRes.upload.code.finalExt){
+						_this.updateProgressWin(  gM('uploaderror'), gM('wgfogg_waring_bad_extension',apiRes.upload.code.finalExt) , bObj);
+						}else{
+							_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + ' : ' + error_code, bObj);
+						}
+					}else{
+						gMsgLoadRemote(error_code, function(){
+							js_log('send msg: ' + gM( error_code ));
+							var bObj = {};
+							bObj[gM('return-to-form')] = function(){
+									$(this).dialog('close');
+							};
+							_this.updateProgressWin(  gM('uploaderror'), gM( error_code ),bObj);
+						});		
+						js_log("api.erorr");		
+					}
+					return false;	
 				}
 			}	
-		}
-		//check for upload_session key for async upload:
-		if( apiRes.upload && apiRes.upload.upload_session_key ){							
-			//set the session key
-			_this.upload_session_key = apiRes.upload.upload_session_key;
-			
-			//do ajax upload status: 
-			_this.doAjaxUploadStatus();		
-			js_log("set upload_session_key: " + _this.upload_session_key);	
-			return ;
-		}		
-		
-		if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){	
-			var url = apiRes.upload.imageinfo.descriptionurl;
-			//check done action: 
-			if(_this.done_upload_cb){
-				//close up shop: 
-				$j('#upProgressDialog').dialog('close');	
-				//call the callback: 			
-				_this.done_upload_cb( url );
-			}else{		   
-				var bObj = {};
-				bObj[ gM('go-to-resource') ] = function(){
-						window.location = url;
-				};
-				_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done', url), bObj);
-				js_log('apiRes.upload.imageinfo::'+url);
-			}
-			return ;
-		}		
-				
-		//check for upload error: 
+		}						
+		//check for upload.error type erros.  
 		if( apiRes.upload && apiRes.upload.error){
 			js_log(' apiRes.upload.error: ' +  apiRes.upload.error );
-			return ;
+			_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>', bObj);
+			return false;
 		}
 		//check for known warnings: 
-		if( apiRes.upload.warnings ){
+		if(apiRes.upload && apiRes.upload.warnings ){
 			//debugger;	
 			var wmsg = '<ul>';
 			for(var wtype in apiRes.upload.warnings){
@@ -449,16 +428,48 @@ mvBaseUploadInterface.prototype = {
 			_this.updateProgressWin(  gM('uploadwarning'),  '<h3>' + gM('uploadwarning') + '</h3>' +msg + '<p>',bObj);
 			return false;
 		}							
-		
-		//nothing fits assume unkown error:
-		js_log('could not parse upload api request result');
-		var return_to_form_msg = gM('return-to-form');
-		var bObj = {};
-		bObj[ gM('return-to-form')] =  function(){
-				$(this).dialog('close');
-			 };  
-		_this.updateProgressWin( gM('uploaderror'), gM('unknown-error'),bObj);
-		return false; 		
+		//should be "OK"		
+		return true; 	
+	},
+	processApiResult: function( apiRes ){	
+		var _this = this;			
+		js_log('processApiResult::');
+		//check for upload api error:
+		// {"upload":{"result":"Failure","error":"unknown-error","code":{"status":5,"filtered":"NGC2207%2BIC2163.jpg"}}}
+		if( _this.apiUpdateErrorCheck(apiRes) === false){
+			//error returned false (updated and 
+			return false;
+		}else{
+			//check for upload_session key for async upload:
+			if( apiRes.upload && apiRes.upload.upload_session_key ){							
+				//set the session key
+				_this.upload_session_key = apiRes.upload.upload_session_key;
+				
+				//do ajax upload status: 
+				_this.doAjaxUploadStatus();		
+				js_log("set upload_session_key: " + _this.upload_session_key);	
+				return ;
+			}		
+			
+			if( apiRes.upload.imageinfo &&  apiRes.upload.imageinfo.descriptionurl ){	
+				var url = apiRes.upload.imageinfo.descriptionurl;
+				//check done action: 
+				if(_this.done_upload_cb){
+					//close up shop: 
+					$j('#upProgressDialog').dialog('close');	
+					//call the callback: 			
+					_this.done_upload_cb( url );
+				}else{		   
+					var bObj = {};
+					bObj[ gM('go-to-resource') ] = function(){
+							window.location = url;
+					};
+					_this.updateProgressWin( gM('successfulupload'),  gM( 'mv_upload_done', url), bObj);
+					js_log('apiRes.upload.imageinfo::'+url);
+				}
+				return ;	
+			}
+		}			
 	},
 	updateProgressWin:function(title_txt, msg, buttons){
 		var _this = this;
@@ -473,10 +484,10 @@ mvBaseUploadInterface.prototype = {
 		 }else{			 
 			 //@@todo should convice the jquery ui people to not use object keys as user msg's
 			 var bObj = {};
-			  bObj[ gM('ok-button') ] =  function(){
+			 bObj[ gM('ok-button') ] =  function(){
 				  $j(this).dialog('close');
-			  }; 
-			  $j('#upProgressDialog').dialog('option','buttons', bObj);
+			 }; 
+			 $j('#upProgressDialog').dialog('option','buttons', bObj);
 		 }		 
 	},		
 	getProgressTitle:function(){

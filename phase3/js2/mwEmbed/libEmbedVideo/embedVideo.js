@@ -325,11 +325,11 @@ var ctrlBuilder = {
 			$j('#' + embedObj.id).get(0).play();
 		});		
 		
-		//add recomend firefox if non-native playback:											
+		//add recomend firefox if non-native playback:												
 		if( embedObj.doNativeWarningCheck() ){
 			$j('#dc_'+ embedObj.id).hover(
 				function(){					
-					if($j('gnp_' + embedObj.id).length==0){
+					if($j('#gnp_' + embedObj.id).length==0){
 						$j(this).append('<div id="gnp_' + embedObj.id + '" class="ui-state-highlight ui-corner-all" ' +
 							'style="position:absolute;display:none;background:#FFF;top:10px;left:10px;right:10px;height:60px;">' +
 							gM('mv_for_best_experience') + 

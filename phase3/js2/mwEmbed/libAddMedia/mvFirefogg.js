@@ -10,7 +10,7 @@ loadGM({
 	"fogg-installed"			: "Firefogg is Installed",
 	"fogg-for_improved_uplods"	: "For Improved uploads: ",
 	"fogg-please_install"		: "<a href=\"$1\">Install Firefogg</a>. More <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">about firefogg</a>",	
-	"fogg-use_latest_fox"		: "Please first install <a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=mv_embed\">Firefox 3.5</a>. <i>then revisit this page to install the <b>firefogg</b> extention</i>",	
+	"fogg-use_latest_fox"		: "Please first install <a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg\">Firefox 3.5</a>. <i>then revisit this page to install the <b>firefogg</b> extention</i>",	
 	"fogg-passthrough_mode"	    : "Your selected file is already ogg or not a video file",
 	"fogg-transcoding"			: "Encoding Video to Ogg",
 	"fogg-encoding-done"		: "Encoding Done"
@@ -495,8 +495,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			_this.formData[ 'wpSourceType' ] = 'upload';		
 			_this.formData[ 'action' ]		 = 'submit';
 			//wpUploadFile is set by firefogg
-			delete _this.formData[ 'wpUploadFile' ];
-            
+			delete _this.formData[ 'wpUploadFile' ];           
 
 			_this.fogg.post( _this.editForm.action, 'wpUploadFile', JSON.stringify( _this.formData ) );				
 			//update upload status:						
@@ -515,7 +514,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 		var uploadStatus = function(){			
 			//get the response text: 
 			var response_text =  _this.fogg.responseText;
-			if( !response_text){
+			if(!response_text){
 				   try{
 					   var pstatus = JSON.parse( _this.fogg.uploadstatus() );
 					   response_text = pstatus["responseText"];
@@ -527,16 +526,31 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			if( _this.oldResponseText != response_text){																											  
 				js_log('new result text:' + response_text + ' state:' + _this.fogg.state);
 				_this.oldResponseText = response_text;				
-				//try and pare the response see if we need to take action:				   
-			}		
+				//try and parse the response text and check for errors			
+				try{
+					var apiResult = JSON.parse( response_text );					
+				}catch(e){
+					js_log("could not parse response_text::" + response_text + ' ...for now try with eval...');
+					try{
+						var apiResult = eval( response_text );
+					}catch(e){
+						var apiResult = null;
+					}
+				}						
+				if(apiResult && _this.apiUpdateErrorCheck( apiResult ) === false){					
+					//stop status update we have an error
+					_this.fogg.cancel();
+					return false; 
+				}		
+			}	
 			//update progress bar
 			_this.updateProgress( _this.fogg.progress() );
 						
 			//loop to get new status if still uploading (could also be encoding if we are in chunk upload mode) 
 			if( _this.fogg.state == 'encoding' || _this.fogg.state == 'uploading') {
 				setTimeout(uploadStatus, 100);
-			}
-			//check upload state
+				
+			}//check upload state
 			else if( _this.fogg.state == 'upload done' || 
 						 _this.fogg.state == 'done' ||
 						 _this.fogg.state == 'encoding done' ) {	

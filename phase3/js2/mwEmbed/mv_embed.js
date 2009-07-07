@@ -275,8 +275,10 @@ function gMsgLoadRemote(msgSet, callback){
 	}else if(typeof msgSet == 'string'){
 		ammessages += msgSet;
 	}
-	if(ammessages=='')
-		return js_log('gMsgLoadRemote::no msg set requested');
+	if(ammessages=''){
+		js_log('gMsgLoadRemote::no msg set requested');
+		return false;
+	}		
 		
 	do_api_req({
 		'data':{'meta':'allmessages', 'ammessages':ammessages}		
@@ -762,10 +764,10 @@ function mv_jqueryBindings(){
 			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css' );			
 			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );																								
 			//load all the req libs: 
-			mvJsLoader.jQueryCheck(function(){
+			mvJsLoader.jQueryCheck(function(){				
 				//load with staged dependeinces (for ie and safari that don't execute in order) 
 				mvJsLoader.doLoadDepMode([
-					['remoteSearchDriver',
+					[	'remoteSearchDriver',
 						'$j.cookie',
 						'$j.ui'
 					],[		

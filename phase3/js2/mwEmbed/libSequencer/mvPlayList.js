@@ -1208,11 +1208,12 @@ PlMvEmbed.prototype = {
 				}else{
 					this[method]=videoInterface[method];
 				}
-			}
+			}			
 			//string -> boolean:
 			if(this[method]=="false")this[method]=false;
 			if(this[method]=="true")this[method]=true;
-		}						
+		}
+		debugger;						
 	},	
 	onClipDone:function(){
 		js_log('pl onClipDone (should go to next)');
