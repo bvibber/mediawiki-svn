@@ -11,6 +11,8 @@ import de.brightbyte.data.MultiMap;
 
 public class AnyNameMatcher implements NameMatcher {
 	
+	public static final AnyNameMatcher instance = new AnyNameMatcher();
+	
 	public AnyNameMatcher() {
 		//noop
 	}

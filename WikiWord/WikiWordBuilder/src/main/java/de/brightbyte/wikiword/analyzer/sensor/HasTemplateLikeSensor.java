@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import de.brightbyte.data.MultiMap;
 import de.brightbyte.wikiword.analyzer.WikiPage;
+import de.brightbyte.wikiword.analyzer.matcher.AnyNameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.NameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
 import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
@@ -23,16 +24,20 @@ public class HasTemplateLikeSensor<V> extends AbstractSensor<V> implements Templ
 	//TODO: provide an OR mode, so this triggers if *any* param matches
 	
 	public HasTemplateLikeSensor(V value, String pattern, int flags) {
-		this(value, new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false), null);
+		this(value, pattern==null ? AnyNameMatcher.instance : new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false), null);
 	}
 	
-	public HasTemplateLikeSensor(V value, String pattern, int flags, String[] params) {
-		this(value, new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false), HasTemplateLikeSensor.<NameMatcher>paramKeyMap(params));
+	public HasTemplateLikeSensor(V value, String pattern, int flags, String... params) {
+		this(value, pattern==null ? AnyNameMatcher.instance : new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false), HasTemplateLikeSensor.<NameMatcher>paramKeyMap(params));
 	}
 	
 	public HasTemplateLikeSensor(V value, NameMatcher matcher, Map<String, NameMatcher> params) {
 		super(value);
+		if (matcher==null) throw new NullPointerException();
+		
+		
 		this.matcher = matcher;
+		this.params = params;
 	}
 
 	@Override
@@ -77,6 +82,7 @@ public class HasTemplateLikeSensor<V> extends AbstractSensor<V> implements Templ
 	
 	protected static <V> Map<String, V> paramKeyMap(String[] params) {
 		if (params==null) return null;
+		if (params.length==0) return null;
 		
 		HashMap<String, V> m = new HashMap<String, V>();
 		for (String p: params) {
