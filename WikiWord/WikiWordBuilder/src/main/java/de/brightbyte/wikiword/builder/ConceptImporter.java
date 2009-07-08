@@ -16,8 +16,8 @@ import de.brightbyte.wikiword.ExtractionRule;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiPage;
+import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.processor.ImportProgressTracker;
 import de.brightbyte.wikiword.schema.AliasScope;
@@ -264,31 +264,36 @@ public class ConceptImporter extends AbstractImporter {
 		}
 		
 		if (rcType == ResourceType.CATEGORY) {
-			List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
-			linkTracker.step(links.size());
+			WikiTextAnalyzer.WikiLink redir = analyzerPage.getRedirect();
 			
-			//FIXME: category redirects
-			
-			int conceptId = store.storeAbout(rcId, name);
-			
-			for (WikiTextAnalyzer.WikiLink link : links) {
-				WikiTextAnalyzer.LinkMagic m = link.getMagic();
+			if (redir!=null) {
+				out.info("storing category redirect "+rcName+" -> "+redir);
+				storeAlias(analyzerPage, rcId);
+			} else {
+				int conceptId = store.storeAbout(rcId, name);
+
+				List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
+				linkTracker.step(links.size());
 				
-				if (m==WikiTextAnalyzer.LinkMagic.CATEGORY) {
-					//FIXME: store this also as a reference to the categorie's concept under it's original title!
-					storeConceptBroader(rcId, name, link.getPage().toString(), ExtractionRule.BROADER_FROM_CAT);
+				for (WikiTextAnalyzer.WikiLink link : links) {
+					WikiTextAnalyzer.LinkMagic m = link.getMagic();
+					
+					if (m==WikiTextAnalyzer.LinkMagic.CATEGORY) {
+						//FIXME: store this also as a reference to the categorie's concept under it's original title!
+						storeConceptBroader(rcId, name, link.getPage().toString(), ExtractionRule.BROADER_FROM_CAT);
+					}
+					
+					if (m==WikiTextAnalyzer.LinkMagic.LANGUAGE) {
+						//FIXME: language links point to *resource* names. resolve accordingly.
+						storeLanguageLink(rcId, conceptId, name, link.getInterwiki().toString(), link.getTarget().toString());
+					}
 				}
 				
-				if (m==WikiTextAnalyzer.LinkMagic.LANGUAGE) {
-					//FIXME: language links point to *resource* names. resolve accordingly.
-					storeLanguageLink(rcId, conceptId, name, link.getInterwiki().toString(), link.getTarget().toString());
-				}
+				
+				//TODO: langlinks from category!
+				//      need resolve-ids on langling, then!
+				//      beware aliased categories!
 			}
-			
-			
-			//TODO: langlinks from category!
-			//      need resolve-ids on langling, then!
-			//      beware aliased categories!
 		}
 		else if (rcType == ResourceType.ARTICLE || rcType == ResourceType.SUPPLEMENT) {
 			conceptTracker.step();
@@ -453,7 +458,7 @@ public class ConceptImporter extends AbstractImporter {
 
 		WikiTextAnalyzer.WikiLink link = analyzerPage.getRedirect();
 		
-		int conceptId  = 0;
+		int conceptId = 0;
 		
 		if (link==null) {
 			warn(rcId, "bad redirect (no link)", "Text: "+StringUtils.clipString(text, 256, "..."), null);
@@ -467,12 +472,15 @@ public class ConceptImporter extends AbstractImporter {
 				if ( StringUtils.equals(link.getPage(), analyzerPage.getTitle()) ) {
 						out.debug("ignored redundant category redirect "+rcName+" -> "+link);
 				} else {
-						out.debug("processing category redirect "+rcName+" -> "+link);
+						out.debug("processing redirect to category "+rcName+" -> "+link);
 						storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_REDIRECT );
 						String tgtConcept = link.getPage().toString();
 						
 						if (!name.equals(tgtConcept)) {
+							conceptId = store.storeAbout(rcId, name);
 							storeConceptAlias(rcId, conceptId, name, -1, tgtConcept, AliasScope.REDIRECT);
+						} else {
+							out.debug("skipping redirect to category with the same name");
 						}
 				}
 			} else {

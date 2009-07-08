@@ -494,7 +494,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				aboutInserter.updateInt("concept", concept);
 			}
 			
-			aliasInserter.updateRow();
+			aboutInserter.updateRow();
 			return concept;
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
