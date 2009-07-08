@@ -40,6 +40,7 @@ class EditToolbarHooks {
 
 		// Add JS and CSS
 		global $wgEditToolbarStyleVersion;
+		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript(
 			'EditToolbar/EditToolbar.js', $wgEditToolbarStyleVersion
 		);
