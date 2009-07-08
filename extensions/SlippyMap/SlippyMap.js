@@ -112,9 +112,7 @@ slippymap_map.prototype.init = function() {
 	if (this.marker) {
 		var markers = new OpenLayers.Layer.Markers( "Markers" );
 		this.map.addLayer(markers);
-		var size = new OpenLayers.Size(20,34);
-		var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-		var icon = new OpenLayers.Icon('http://boston.openguides.org/markers/YELLOW.png', size, offset);
+		var icon = OpenLayers.Marker.defaultIcon();
 		markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(this.lon, this.lat).transform(new OpenLayers.Projection('EPSG:4326'), this.map.getProjectionObject()), icon));
 	}
 }
