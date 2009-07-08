@@ -64,7 +64,7 @@ public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 	protected void putTemplate(String prefix, String name, TemplateData data) {
 		if (prefix!=null) name = prefix+"::"+name;
 		
-		if (data==null) data = TemplateData.empty;
+		if (data==null) data = new TemplateData(name);
 		if (templates==null) templates = new ValueListMultiMap<String, TemplateData>();
 		templates.put(name, data);
 	}
@@ -85,7 +85,7 @@ public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 			if (n!=null) {
 				CharSequence v = AnalyzerUtils.trim( name.substring(idx+1) );
 				
-				data = new TemplateData();
+				data = new TemplateData(name);
 
 				v = HtmlEntities.decodeEntities(v);
 				data.setParameter("0", v);
@@ -111,8 +111,8 @@ public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 			
 			if (interresting) {
 				if (data==null) {
-					if (m==2) data = TemplateData.empty;
-					else data = new TemplateData();
+					if (m==2) data = new TemplateData(name);
+					else data = new TemplateData(name);
 					
 					putTemplate(prefix, name, data);
 				}

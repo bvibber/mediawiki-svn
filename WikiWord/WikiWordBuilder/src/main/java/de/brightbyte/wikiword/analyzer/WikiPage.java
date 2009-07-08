@@ -7,8 +7,8 @@ import de.brightbyte.data.MultiMap;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiLink;
+import de.brightbyte.wikiword.analyzer.template.TemplateData;
 import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
-import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.TemplateData;
 
 public interface WikiPage {
 

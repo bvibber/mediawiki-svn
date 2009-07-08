@@ -3,73 +3,61 @@
  */
 package de.brightbyte.wikiword.analyzer.sensor;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import de.brightbyte.data.MultiMap;
+import de.brightbyte.util.CollectionUtils;
 import de.brightbyte.wikiword.analyzer.WikiPage;
-import de.brightbyte.wikiword.analyzer.matcher.AnyNameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.NameMatcher;
-import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
-import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
+import de.brightbyte.wikiword.analyzer.matcher.TemplateMatcher;
+import de.brightbyte.wikiword.analyzer.matcher.TemplateMultiMatcher;
+import de.brightbyte.wikiword.analyzer.matcher.TemplateNameMatcher;
+import de.brightbyte.wikiword.analyzer.matcher.TemplateParameterMatcher;
+import de.brightbyte.wikiword.analyzer.template.TemplateData;
 import de.brightbyte.wikiword.analyzer.template.TemplateUser;
-import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.TemplateData;
 
 public class HasTemplateLikeSensor<V> extends AbstractSensor<V> implements TemplateUser {
-	protected NameMatcher matcher;
-	protected Map<String, NameMatcher> params;
-	
-	//TODO: provide an OR mode, so this triggers if *any* param matches
+	protected TemplateMatcher matcher;
 	
 	public HasTemplateLikeSensor(V value, String pattern, int flags) {
-		this(value, pattern==null ? AnyNameMatcher.instance : new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false), null);
+		this(value, new TemplateNameMatcher(pattern, flags, false));
+	}
+	
+	public HasTemplateLikeSensor(V value, Map<String, NameMatcher> params) {
+		this(value, new TemplateParameterMatcher(params));
 	}
 	
 	public HasTemplateLikeSensor(V value, String pattern, int flags, String... params) {
-		this(value, pattern==null ? AnyNameMatcher.instance : new PatternNameMatcher(pattern, flags | Pattern.MULTILINE, false), HasTemplateLikeSensor.<NameMatcher>paramKeyMap(params));
+		this(value, pattern==null ? null : new TemplateNameMatcher(pattern, flags, false), new TemplateParameterMatcher(params));
 	}
 	
-	public HasTemplateLikeSensor(V value, NameMatcher matcher, Map<String, NameMatcher> params) {
+	public HasTemplateLikeSensor(V value, String pattern, int flags, Map<String, NameMatcher> params) {
+		this(value, pattern==null ? null : new TemplateNameMatcher(pattern, flags, false), new TemplateParameterMatcher(params));
+	}
+	
+	public HasTemplateLikeSensor(V value, TemplateMatcher... matchers) {
 		super(value);
-		if (matcher==null) throw new NullPointerException();
+		if (matchers==null) throw new NullPointerException();
 		
+		matchers = CollectionUtils.toCleanArray(matchers, TemplateMatcher.class, false, false);
 		
-		this.matcher = matcher;
-		this.params = params;
+		if (matchers.length==0) throw new IllegalArgumentException("at least one TemplateMatcher must be provided");
+		if (matchers.length==1) this.matcher = matchers[0];
+		else this.matcher = new TemplateMultiMatcher(matchers);
 	}
 
 	@Override
 	public boolean sense(WikiPage page) {
-		if (params==null) {
-			CharSequence t = page.getTemplatesString();
-			return matcher.matchesLine(t.toString());
-		}
+		CharSequence t = page.getTemplatesString();
+		if (!matcher.lineMatchPassed(t)) return false;
 		
 		MultiMap<String, TemplateData, List<TemplateData>> templates = page.getTemplates();
 		if (templates.size()==0) return false;
 		
-		templateLoop : for (List<TemplateExtractor.TemplateData> ll: matcher.matches(templates)) {
-				if (params==null) return true;
-			
-				for (TemplateExtractor.TemplateData tpl: ll) {
-					for (Map.Entry<String, NameMatcher> f: params.entrySet()) {
-						String key = f.getKey();
-						NameMatcher valueMatcher = f.getValue();
-						
-						CharSequence value = tpl.getParameter(key);
-						if (value!=null) {
-							if (valueMatcher==null) ;
-							else {
-								if (valueMatcher.matches(value)) ;
-								else continue templateLoop;
-							}
-						}
-						else continue templateLoop;
-					}
-					
-					return true;
+		for (List<TemplateData> ll: templates.values()) {
+				for (TemplateData td: ll) {
+					if (matcher.matches(td)) return true;
 				}
 		}
 		
@@ -77,19 +65,7 @@ public class HasTemplateLikeSensor<V> extends AbstractSensor<V> implements Templ
 	}
 
 	public String getTemplateNamePattern() {
-		return matcher.getRegularExpression();
-	}
-	
-	protected static <V> Map<String, V> paramKeyMap(String[] params) {
-		if (params==null) return null;
-		if (params.length==0) return null;
-		
-		HashMap<String, V> m = new HashMap<String, V>();
-		for (String p: params) {
-			m.put(p, null);
-		}
-		
-		return m;
+		return matcher.getTemplateNamePattern();
 	}
 	
 	

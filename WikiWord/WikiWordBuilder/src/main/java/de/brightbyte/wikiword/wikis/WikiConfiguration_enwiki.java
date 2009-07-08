@@ -133,7 +133,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				       "(_|$)|_(places|villages|towns|cities|counties|countries|municipalities|states|provinces|territories|federal_states|islands|regions|domains|communes|districts)$", 0));
 		
 		
-		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.PLACE, "Geobox", null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.PLACE, "Geobox"));
 		
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PERSON, "^(Male|Female|People)_|_(people|man|woman|birth|death)$", 0));
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PERSON, "^(Persondata|Lifetime|BD|BIRTH-DEATH-SORT)$", 0));
@@ -144,9 +144,9 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.TIME, "Centuries"));
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.TIME, "Millennia"));
-		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.TIME, "Year_nav", null));
-		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.TIME, "Decadebox", null));
-		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.TIME, "Day", null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.TIME, "Year_nav"));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.TIME, "Decadebox"));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.TIME, "Day"));
 
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.WORK, "(^|_)(statue|work|play|album|song|painting|opera|novel|musical|novel|composition)s?(_|$)", Pattern.CASE_INSENSITIVE));
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.EVENT, "^Infobox_.*$", Pattern.CASE_INSENSITIVE, "artist"));
@@ -157,7 +157,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.EVENT, "^Infobox_.*$", Pattern.CASE_INSENSITIVE, "date"));
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.EVENT, "^Infobox_.*$", Pattern.CASE_INSENSITIVE, "year"));
 
-		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox", null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox"));
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.NUMBER, "^Integers$|(^N|_n)umbers$", 0));
 		conceptTypeSensors.add( new TitleSensor<ConceptType>(ConceptType.NUMBER, ".*\\(number\\)", 0));
 		//TODO: cooperations & organizations

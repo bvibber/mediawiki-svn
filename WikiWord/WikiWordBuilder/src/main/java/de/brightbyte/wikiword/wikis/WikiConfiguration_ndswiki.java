@@ -29,14 +29,14 @@ public class WikiConfiguration_ndswiki extends WikiConfiguration {
 		conceptTypeSensors.add( new HasCategorySensor(ConceptType.TIME, "Dag"));
 		conceptTypeSensors.add( new HasCategorySensor(ConceptType.TIME, "Johrhunnert"));
 
-		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.LIFEFORM, "Taxobox", null));
+		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.LIFEFORM, "Taxobox"));
 		//TODO: cooperations & organizations
 		
-		resourceTypeSensors.add( new HasTemplateSensor(ResourceType.BAD, "Delete", null));
-		resourceTypeSensors.add( new HasTemplateSensor(ResourceType.BAD, "Gauweg", null));
-		resourceTypeSensors.add( new HasTemplateSensor(ResourceType.BAD, "Wegsmieten", null));
+		resourceTypeSensors.add( new HasTemplateSensor(ResourceType.BAD, "Delete"));
+		resourceTypeSensors.add( new HasTemplateSensor(ResourceType.BAD, "Gauweg"));
+		resourceTypeSensors.add( new HasTemplateSensor(ResourceType.BAD, "Wegsmieten"));
 		
-		//resourceTypeSensors.add( new HasTemplateSensor(ResourceType.DISAMBIG, "Mehrd\u00fcdig_Begreep", null) );
+		//resourceTypeSensors.add( new HasTemplateSensor(ResourceType.DISAMBIG, "Mehrd\u00fcdig_Begreep") );
 		resourceTypeSensors.add( new TitleSensor(ResourceType.LIST, "Lieste?_(van|mit).*", 0));
 
 		disambigStripSectionPattern = sectionPattern("Kiek ok( bi)?:?", 0); //FIXME: often not as a section, but plain text! 

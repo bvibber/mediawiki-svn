@@ -50,7 +50,7 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 		
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.PERSON, "Mann"));
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.PERSON, "Frau"));
-		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.PERSON, "Personendaten", null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.PERSON, "Personendaten"));
 
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.NAME, "M\u00e4nnlicher_Vorname"));
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.NAME, "Weiblicher_Vorname"));
@@ -62,18 +62,18 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.TIME, "Jahrhundert"));
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.TIME, "Jahrtausend"));
 
-		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox", null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox"));
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.NUMBER, "[Zz]ahl$", 0));
 
 		//XXX: find only *instances*, not *classes* of organizations! (tricky...)
 		//conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor(ConceptType.ORGANISATION, "(Agentur|Amt|Beh\u00f6rde|Ministerium|Unternehmen|Organisation|Partei|Dienst)([_)/]|$)|(Hersteller|Institut|Universität|Schule|Verein|Verband|Klub|Team)(_\\(|[)/]|$)", Pattern.CASE_INSENSITIVE));
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.ORGANISATION, "^Infobox_.*([Vv]erein|[Uu]nternehmen|[Kk]lub)$|^Navi.*([Vv]erein|[Uu]nternehmen|[Oo]rganisation|[Mm]inisterien|[Kk]lubs?|[Tt]eams?)$", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.ORGANISATION, "^Infobox_.*([Vv]erein|[Uu]nternehmen|[Kk]lub)$|^Navi.*([Vv]erein|[Uu]nternehmen|[Oo]rganisation|[Mm]inisterien|[Kk]lubs?|[Tt]eams?)$", 0));
 		
-		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "L\u00f6schen", null));
-		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "L\u00f6schantragstext", null));
-		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "URV", null));
-		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "Urheberrecht_ungekl\u00e4rt", null));
-		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "Falschschreibung", null));
+		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "L\u00f6schen"));
+		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "L\u00f6schantragstext"));
+		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "URV"));
+		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "Urheberrecht_ungekl\u00e4rt"));
+		resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "Falschschreibung"));
 		
 		//resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.DISAMBIG, "Begriffskl\u00e4rung", null) );
 		resourceTypeSensors.add( new HasCategoryLikeSensor<ResourceType>(ResourceType.LIST, "^(Teill|L)iste$|^(Teill|L)iste_\\(.+\\)$", 0));

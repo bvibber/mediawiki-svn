@@ -12,6 +12,7 @@ import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategorySensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
+import de.brightbyte.wikiword.analyzer.sensor.HasTemplateSensor;
 
 public class WikiConfiguration_frwiki extends WikiConfiguration {
 
@@ -44,17 +45,17 @@ public class WikiConfiguration_frwiki extends WikiConfiguration {
 				templatePattern("lang(?:\\s*\\|\\s*(?:rtl|ltr)\\s*)?", 2, true), "$3"));
 		
 		conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.PLACE, "^(Pays|Territoire|R\u00e9publique|Subdivision|Ville|Municipalit\u00e9s|Ocean)(_|$)", 0));
-		conceptTypeSensors.add( new HasTemplateLikeSensor(ConceptType.PLACE, new ExactNameMatcher("ODP"), new HashMap<String, NameMatcher>() { { put("1", new PatternNameMatcher("Regional/.*", 0, true)); } }));
-		conceptTypeSensors.add( new HasTemplateLikeSensor(ConceptType.PLACE, "^(Infobox_)?(Pays|Continent|Commune_)(_|$)", 0, null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.PLACE, "ODP", new HashMap<String, NameMatcher>() { { put("1", new PatternNameMatcher("Regional/.*", 0, true)); } }));
+		conceptTypeSensors.add( new HasTemplateLikeSensor(ConceptType.PLACE, "^(Infobox_)?(Pays|Continent|Commune_)(_|$)", 0));
 		
 		conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.PERSON, "(^Homme$|^Femme$|^Naissance_en|D\u00e9c\u00e8s_en)", 0));
 
 		conceptTypeSensors.add( new HasCategorySensor(ConceptType.NAME, "Pr\u00e9nom"));
 		conceptTypeSensors.add( new HasCategorySensor(ConceptType.NAME, "Patronyme"));
 
-		conceptTypeSensors.add( new HasTemplateLikeSensor(ConceptType.TIME, "^(Ann\u00e9es|Portail_ann\u00e9es_\\d+|Portails_?I+er?_mill\u00e9naire(_av\\._J\\.-C\\.)?|Portails_d\u00e9cennies)$", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor(ConceptType.TIME, "^(Ann\u00e9es|Portail_ann\u00e9es_\\d+|Portails_?I+er?_mill\u00e9naire(_av\\._J\\.-C\\.)?|Portails_d\u00e9cennies)$", 0));
 
-		conceptTypeSensors.add( new HasTemplateLikeSensor(ConceptType.LIFEFORM, "^Taxobox_", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor(ConceptType.LIFEFORM, "^Taxobox_", 0));
 		//TODO: cooperations & organizations
 		
 		resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.BAD, "^Suppression[ _/]", 0));

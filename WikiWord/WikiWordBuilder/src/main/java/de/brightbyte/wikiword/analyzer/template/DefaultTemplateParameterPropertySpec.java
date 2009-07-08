@@ -105,7 +105,7 @@ public class DefaultTemplateParameterPropertySpec implements TemplateParameterPr
 		return this;
 	}
 
-	public Set<CharSequence> getPropertyValues(WikiPage page, TemplateExtractor.TemplateData params, Set<CharSequence> values) {
+	public Set<CharSequence> getPropertyValues(WikiPage page, TemplateData params, Set<CharSequence> values) {
 		CharSequence v = params.getParameter(parameter);
 		if (v==null) return values;
 		if (v.length()==0) return values;

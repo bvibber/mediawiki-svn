@@ -20,7 +20,7 @@ public abstract class AbstractTemplateParameterPropertySpec implements TemplateP
 		return propertyName;
 	}
 
-	public Set<CharSequence> getPropertyValues(WikiPage page, TemplateExtractor.TemplateData params, Set<CharSequence> values) {
+	public Set<CharSequence> getPropertyValues(WikiPage page, TemplateData params, Set<CharSequence> values) {
 		CharSequence v = getPropertyValue(page, params); 
 		if (v==null) return values;
 		
@@ -30,6 +30,6 @@ public abstract class AbstractTemplateParameterPropertySpec implements TemplateP
 		return values;
 	}
 
-	protected abstract CharSequence getPropertyValue(WikiPage page, TemplateExtractor.TemplateData params);
+	protected abstract CharSequence getPropertyValue(WikiPage page, TemplateData params);
 	
 }

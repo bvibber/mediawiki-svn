@@ -47,9 +47,9 @@ import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
 import de.brightbyte.wikiword.analyzer.mangler.TextArmor;
 import de.brightbyte.wikiword.analyzer.sensor.Sensor;
 import de.brightbyte.wikiword.analyzer.template.DummyTemplateUser;
+import de.brightbyte.wikiword.analyzer.template.TemplateData;
 import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
 import de.brightbyte.wikiword.analyzer.template.TemplateUser;
-import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.TemplateData;
 import de.brightbyte.wikiword.builder.InputFileHelper;
 import de.brightbyte.xml.HtmlEntities;
 
@@ -752,7 +752,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		public String getTemplatesString() {
 			if (templatesString == null) {
 				StringBuilder s = new StringBuilder();
-				MultiMap<String, TemplateExtractor.TemplateData, List<TemplateExtractor.TemplateData>> templates = getTemplates();
+				MultiMap<String, TemplateData, List<TemplateData>> templates = getTemplates();
 				for (CharSequence t : templates.keySet()) {
 					s.append(t);
 					s.append('\n');
@@ -850,9 +850,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		 */
 		public CharSequence getDisplayTitle() {
 			if (displayTitle == null) {
-				TemplateExtractor.TemplateData dt;
-				MultiMap<String, TemplateExtractor.TemplateData, List<TemplateExtractor.TemplateData>> tpl = getTemplates();
-				List<TemplateExtractor.TemplateData> lst = tpl.get("DISPLAYTITLE");
+				TemplateData dt;
+				MultiMap<String, TemplateData, List<TemplateData>> tpl = getTemplates();
+				List<TemplateData> lst = tpl.get("DISPLAYTITLE");
 				dt = lst==null || lst.size()==0 ? null : lst.get(0);
 				
 				if (dt!=null) displayTitle = dt.getParameter("0");
@@ -868,9 +868,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		 */
 		public CharSequence getDefaultSortKey() {
 			if (defaultSortKey == null) {
-				TemplateExtractor.TemplateData dst;
-				MultiMap<String, TemplateExtractor.TemplateData, List<TemplateExtractor.TemplateData>> tpl = getTemplates();
-				List<TemplateExtractor.TemplateData> lst = tpl.get("DEFAULTSORT");
+				TemplateData dst;
+				MultiMap<String, TemplateData, List<TemplateData>> tpl = getTemplates();
+				List<TemplateData> lst = tpl.get("DEFAULTSORT");
 				dst = lst==null || lst.size()==0 ? null : lst.get(0);
 				
 				if (dst!=null) defaultSortKey = dst.getParameter("0");

@@ -10,7 +10,7 @@ import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.NameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
-import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
+import de.brightbyte.wikiword.analyzer.template.TemplateData;
 import de.brightbyte.wikiword.analyzer.template.TemplateUser;
 
 public class TemplateParameterValueExtractor implements ValueExtractor, TemplateUser {
@@ -41,10 +41,10 @@ public class TemplateParameterValueExtractor implements ValueExtractor, Template
 	}
 
 	public Set<CharSequence> extract(WikiPage page, Set<CharSequence> into) {
-		MultiMap<String, TemplateExtractor.TemplateData, List<TemplateExtractor.TemplateData>> tpl = page.getTemplates();
+		MultiMap<String, TemplateData, List<TemplateData>> tpl = page.getTemplates();
 		
-		for (Iterable<TemplateExtractor.TemplateData> list : template.matches(tpl)) {
-			for (TemplateExtractor.TemplateData m: list) {
+		for (Iterable<TemplateData> list : template.matches(tpl)) {
+			for (TemplateData m: list) {
 				CharSequence v = m.getParameter(parameter);
 				if (prefix!=null) v = prefix+v;
 				if (v!=null) AnalyzerUtils.addToSet(into, v);

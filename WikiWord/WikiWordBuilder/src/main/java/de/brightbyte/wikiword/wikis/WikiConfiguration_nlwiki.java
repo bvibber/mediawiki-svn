@@ -25,8 +25,8 @@ public class WikiConfiguration_nlwiki extends WikiConfiguration {
 		conceptTypeSensors.add( new HasTemplateLikeSensor(ConceptType.PLACE, "^(Landtabel|Gemeente|Plaats)($|_)|(^|_)plaats$", 0));
 		conceptTypeSensors.add( new HasCategoryLikeSensor(ConceptType.PLACE, "^(Gemeente|Stad|Land|Plaats)(_|$)", 0));
 
-		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.TIME, "Jaarbox", null));
-		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.TIME, "Kalenders", null));
+		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.TIME, "Jaarbox"));
+		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.TIME, "Kalenders"));
 		conceptTypeSensors.add( new HasCategorySensor(ConceptType.TIME, "Datum"));
 		conceptTypeSensors.add( new TitleSensor(ConceptType.TIME, "(\\d{1,4}|\\d{1,2}e_eeuw)(_v\\._Chr\\.)?", 0));
 		
@@ -40,11 +40,11 @@ public class WikiConfiguration_nlwiki extends WikiConfiguration {
 		conceptTypeSensors.add( new HasCategorySensor(ConceptType.NAME, "Meisjesnaam"));
 		conceptTypeSensors.add( new HasCategorySensor(ConceptType.NAME, "Achternaam"));
 		
-		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.LIFEFORM, "Taxobox_end", null));
+		conceptTypeSensors.add( new HasTemplateSensor(ConceptType.LIFEFORM, "Taxobox_end"));
 		//TODO: cooperations & organizations
 		
 		resourceTypeSensors.add( new HasTemplateLikeSensor(ResourceType.BAD, "^(Weg|Ne)$|weg$", 0));
-		resourceTypeSensors.add( new HasTemplateSensor(ResourceType.DISAMBIG, "Dp", null) );
+		resourceTypeSensors.add( new HasTemplateSensor(ResourceType.DISAMBIG, "Dp") );
 		//resourceTypeSensors.add( new TitleSensor(ResourceType.DISAMBIG, ".*\\(doorverwijspagina\\)", 0) );
 		resourceTypeSensors.add( new HasCategoryLikeSensor(ResourceType.LIST, "^Lijsten_|lijsten$", 0) );
 		resourceTypeSensors.add( new TitleSensor(ResourceType.LIST, "Lijst_.*|.*lijst", 0) );

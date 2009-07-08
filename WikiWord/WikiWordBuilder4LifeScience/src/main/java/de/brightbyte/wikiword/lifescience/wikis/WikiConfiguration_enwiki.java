@@ -27,6 +27,7 @@ import de.brightbyte.wikiword.analyzer.sensor.TitleSensor;
 import de.brightbyte.wikiword.analyzer.template.AbstractTemplateParameterPropertySpec;
 import de.brightbyte.wikiword.analyzer.template.DeepTemplateExtractor;
 import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
+import de.brightbyte.wikiword.analyzer.template.TemplateData;
 import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
 import de.brightbyte.wikiword.analyzer.template.TemplateParameterPropertySpec;
 import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.Context;
@@ -225,7 +226,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 			private Matcher validator = Pattern.compile("["+upperAlphaNumericChars+"]+").matcher("");
 			
 			@Override
-			public CharSequence getPropertyValue(WikiPage page, TemplateExtractor.TemplateData params) {
+			public CharSequence getPropertyValue(WikiPage page, TemplateData params) {
 				CharSequence code= params.getParameter("ATCCode");
 				if (code!=null) {
 					if (code.length()==0) return null;
@@ -274,7 +275,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 			private Matcher topicValidator = Pattern.compile("["+numericChars+"]+").matcher("");
 			
 			@Override
-			public CharSequence getPropertyValue(WikiPage page, TemplateExtractor.TemplateData params) {
+			public CharSequence getPropertyValue(WikiPage page, TemplateData params) {
 				CharSequence pre= params.getParameter("eMedicineSubj");
 				CharSequence suf= params.getParameter("eMedicineTopic");
 				if (pre==null || suf==null) return null;
@@ -297,7 +298,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 			private Matcher sufValidator = Pattern.compile("["+numericChars+"]+").matcher("");
 			
 			@Override
-			public CharSequence getPropertyValue(WikiPage page, TemplateExtractor.TemplateData params) {
+			public CharSequence getPropertyValue(WikiPage page, TemplateData params) {
 				CharSequence pre= params.getParameter("DorlandsPre");
 				CharSequence suf= params.getParameter("DorlandsSuf");
 				if (pre==null || suf==null) return null;
@@ -318,7 +319,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 			private Matcher numValidator = Pattern.compile("["+numericChars+"]+").matcher("");
 			
 			@Override
-			public CharSequence getPropertyValue(WikiPage page, TemplateExtractor.TemplateData params) {
+			public CharSequence getPropertyValue(WikiPage page, TemplateData params) {
 				CharSequence type= params.getParameter("BrainInfoType");
 				CharSequence num= params.getParameter("BrainInfoNumber");
 				if (type==null || num==null) return null;

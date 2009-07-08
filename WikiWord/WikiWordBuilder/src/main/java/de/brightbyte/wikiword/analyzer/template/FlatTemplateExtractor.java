@@ -81,7 +81,7 @@ public class FlatTemplateExtractor extends AbstractTemplateExtractor {
 								if (n!=null) {
 									CharSequence v = AnalyzerUtils.trim( name.substring(idx+1) );
 									
-									data = new TemplateData();
+									data = new TemplateData(n);
 									data.setParameter("0", v);
 									
 									name = n;
@@ -93,11 +93,11 @@ public class FlatTemplateExtractor extends AbstractTemplateExtractor {
 							//process only relevant templates
 							if (data != null || isRelevantTemplate(name)) {
 								if (buff.length()>0) {
-									if (data==null) data = new TemplateData();
+									if (data==null) data = new TemplateData(name);
 									splitTemplateParams(buff.substring(1), data);
 								}
 								else {
-									if (data==null) data = TemplateData.empty;
+									if (data==null) data = new TemplateData(name);
 								}
 								
 								templates.put(name, data);
