@@ -152,6 +152,7 @@ class SlippyMap {
 		global $wgOut, $wgJsMimeType;
 
 		$mapcode = <<<EOT
+
 			<script type="{$wgJsMimeType}">slippymaps.push(new slippymap_map({$this->mapId}, {
 				mode: '{$this->mode}',
 				layer: '{$this->layer}',
@@ -163,7 +164,7 @@ class SlippyMap {
 				marker: {$this->marker}
 			}));</script>
 			 
-			<!-- mapframe //-->
+			<!-- mapframe -->
 			<div class="mapframe" style="width:{$this->width}px">
 EOT;
 
@@ -179,6 +180,7 @@ EOT;
 		}
 
 		$mapcode .= <<<EOT
+
 		<!-- /mapframe -->
 		</div>
 EOT;
@@ -211,6 +213,7 @@ EOT;
 	protected function getStaticMap() {
 			$clickToActivate = wfMsg('slippymap_clicktoactivate');
 			$mapcode = <<<EOT
+
 					<!-- map div -->
 					<div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
 						<!-- Static preview -->
