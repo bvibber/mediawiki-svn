@@ -63,7 +63,7 @@ class WorldWind extends SlippyMap {
 	);
 	
 	public function __construct( $mapParams ) {
-		global $wgOut, $wgUser, $wgThumbLimits;
+		global $wgOut, $wgUser;
 		wfLoadExtensionMessages( 'SlippyMap' );
 
 		$this->errors = $this->validate();
@@ -136,7 +136,6 @@ EOT;
 	}
 
 	public function setZoom( $zoom = null ) {
-		global $wgOut;
 		if ( $this->zoom == '' ) $this->zoom = WorldWind::$MAP_OPTIONS['defaultZoomLevel'];
 	}
 }
