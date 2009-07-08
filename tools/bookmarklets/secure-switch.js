@@ -1,4 +1,5 @@
 function swapUrl(base) {
+	var specials = "meta|commons|office|internal|collab";
 	if (base[4] == 's') {
 		base = base.replace(
 			/^https:\/\/secure\.wikimedia\.org\/(.*?)\/(.*?)\/(.*)$/,
@@ -7,14 +8,14 @@ function swapUrl(base) {
 			"http://mediawiki.wikipedia",
 			"http://www.mediawiki");
 		base = base.replace(
-			/http:\/\/(meta|commons|office|internal)\.wikipedia/,
+			new RegExp("^http:\/\/(" + specials + ")\.wikipedia"),
 			"http://$1.wikimedia");
 	} else {
 		base = base.replace(
 			"http://www.mediawiki",
 			"http://mediawiki.wikipedia");
 		base = base.replace(
-			/http:\/\/(meta|commons|office|internal)\.wikimedia/,
+			new RegExp("^http:\/\/(" + specials + ")\.wikimedia"),
 			"http://$1.wikipedia");
 		base = base.replace(
 			/^http:\/\/(.*?)\.(.*?)\.org\/(.*)$/,
