@@ -101,7 +101,7 @@ class SlippyMap {
 	protected static $PIXEL_SIZE = 0.00028;
         
 	public function __construct( $mapParams ) {
-		global $wgOut, $wgUser, $wgThumbLimits;
+		global $wgOut, $wgUser;
 		wfLoadExtensionMessages( 'SlippyMap' );
 
 		$this->errors = $this->validate();
@@ -117,15 +117,15 @@ class SlippyMap {
 
 	public function initMap( $mapParams ) {
 		$this->mapId = $mapParams['mapId'];
-		$this->lat = $mapParams['lat'];
-		$this->lon = $mapParams['lon'];
-		$this->width = $mapParams['w'];
-		$this->height = $mapParams['h'];
-		$this->mode = $mapParams['mode'];
-		$this->zoom = $mapParams['zoom'];
-		$this->caption = $mapParams['caption'];
+		$this->lat = isset( $mapParams['lat'] ) ? $mapParams['lat'] : null;
+		$this->lon = isset( $mapParams['lat'] ) ? $mapParams['lat'] : null;
+		$this->width = isset( $mapParams['w'] ) ? $mapParams['w'] : null;
+		$this->height = isset( $mapParams['h'] ) ? $mapParams['h'] : null;
+		$this->mode = isset( $mapParams['mode'] ) ? $mapParams['mode'] : null;
+		$this->zoom = isset( $mapParams['zoom'] ) ? $mapParams['zoom'] : null;
+		$this->caption = isset( $mapParams['caption'] ) ? $mapParams['caption'] : null;
 		$this->layer = isset( $mapParams['layer'] ) ? strtolower($mapParams['layer']) : SlippyMap::$MAP_OPTIONS['defaultLayer'];
-		$this->marker = ($mapParams['marker'] != '' && $mapParams['marker'] != '0' ? 1 : 0);
+		$this->marker = ( ( isset( $mapParams['marker'] ) && $mapParams['marker'] != '' && $mapParams['marker'] != '0' ) ? 1 : 0 );
 
 		// see if the 'z' paramater is used rather than 'zoom' (and allow it)
 		if ( $this->zoom == '' && isset( $mapParams['z'] ) ) {
@@ -205,7 +205,6 @@ EOT;
 	}
 
 	public function setZoom( $zoom = null ) {
-		global $wgOut;
 		if ( $this->zoom == '' ) $this->zoom = SlippyMap::$MAP_OPTIONS['defaultZoomLevel'];
 	}
 			
@@ -415,37 +414,5 @@ EOT;
 			$output .= htmlspecialchars( $input );
 			return $output;
 		}
-	}
-
-	public function getMapId() {
-		return $this->mapId;
-	}
-
-	public function getLat() {
-		return $this->lat;
-	}
-
-	public function getLon() {
-		return $this->lon;
-	}
-
-	public function getWidth() {
-		return $this->width;
-	}
-
-	public function getHeight() {
-		return $this->height;
-	}
-
-	public function getMode() {
-		return $this->mode;
-	}
-
-	public function getZoom() {
-		return $this->zoom;
-	}
-
-	public function getLayer() {
-		return $this->layer;
 	}
 }
