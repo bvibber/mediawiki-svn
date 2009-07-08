@@ -310,7 +310,7 @@ mvAdvFirefogg.prototype = {
 			var icon = (target=='target_btn_save_local_file')?'ui-icon-video':'ui-icon-folder-open';
 			return	 '<a class="ui-state-default ui-corner-all ui-icon_link '+
 						target +'" href="#"><span class="ui-icon ' + icon + '"/>' + 
-						gM( 'fogg-' + target.substring(11)) +
+						gM( 'fogg-' + target.substring(11) ) +
 					'</a>';
 		}else if(	target=='target_use_latest_fox' || 
 					target=='target_please_install' || 
@@ -320,7 +320,7 @@ mvAdvFirefogg.prototype = {
 					'<p><span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-alert"/>'+ 
 					gM( 'fogg-' + target.substring(7)) +'</p>'+
 				'</div>';	
-		}else if(target=='target_input_file_name'){
+		}else if( target == 'target_input_file_name'){
 			return '<input style="" class="text ui-widget-content ui-corner-all ' + target + '" '+
 					'type="text" value="' + gM( 'fogg-' + target.substring(11)) + '"/> ';
 		}else{
@@ -415,10 +415,10 @@ mvAdvFirefogg.prototype = {
 		js_log('tw:' + $j(this.selector).width() + 
 				'ssf:' + $j(this.target_btn_select_new_file).width() + 
 				'sf:' +	 $j(this.target_btn_save_local_file).width() );
-		$j(this.target_input_file_name).width( 
-			$j(this.selector).width() - ( $j(this.target_btn_select_new_file).width() +
-			$j(this.target_btn_save_local_file).width() + 50 )
-		)
+			
+		var tiwidth = $j(this.selector).width() - ( $j(this.target_btn_select_new_file).width() +
+			$j(this.target_btn_save_local_file).width() + 80 );	
+		$j(this.target_input_file_name).width( tiwidth );
 		
 		//special preset action: 
 		$j(this.selector + ' ._preset_select').change(function(){
