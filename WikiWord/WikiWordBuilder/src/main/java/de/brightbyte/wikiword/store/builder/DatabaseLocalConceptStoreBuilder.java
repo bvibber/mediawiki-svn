@@ -13,6 +13,7 @@ import java.util.Random;
 import javax.sql.DataSource;
 
 import de.brightbyte.application.Agenda;
+import de.brightbyte.data.ChunkyBitSet;
 import de.brightbyte.data.Pair;
 import de.brightbyte.data.PersistentIdManager;
 import de.brightbyte.data.cursor.CursorProcessor;
@@ -83,6 +84,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	protected TweakSet tweaks;
 	
 	protected PersistentIdManager idManager;
+	protected ChunkyBitSet conceptDedupe; 
+	
 
 	/**
 	 * Constructs a DatabaseWikiStore, soring information from/about the given Corpus
@@ -143,6 +146,10 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		
 		aboutInserter =  configureTable("about", 1024, 64);
 		aboutTable =    (RelationTable)aboutInserter.getTable();
+		
+		if (tweaks.getTweak("dbstore.conceptDedupe", false)) {
+			conceptDedupe = new ChunkyBitSet();
+		}
 		
 		long seed = tweaks.getTweak("dbstore.randomSeed", -1); //TODO: doc
 		if (seed>0) random = new Random(seed);
@@ -333,6 +340,10 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			if (idManager!=null) {
 				id = idManager.aquireId(name);
 				conceptInserter.updateInt("id", id);
+			}
+			
+			if (id>0 && conceptDedupe!=null) {
+				if (!conceptDedupe.add(id)) throw new IllegalArgumentException("duplicate concept: id= "+id+", name= "+name+", rc= "+rcId);
 			}
 			
 			conceptInserter.updateDouble("random", random.nextDouble());

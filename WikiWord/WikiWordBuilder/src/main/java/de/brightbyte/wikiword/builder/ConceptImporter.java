@@ -491,7 +491,7 @@ public class ConceptImporter extends AbstractImporter {
 			warn(rcId, "bad redirect (self-link)", "page "+name, null);
 		}
 		else {
-			conceptId = storeConcept(rcId, name, ConceptType.ALIAS); 
+			conceptId = store.storeAbout(rcId, name); 
 			storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_REDIRECT );
 			storeConceptAlias(rcId, conceptId, name, -1, link.getPage().toString(), AliasScope.REDIRECT); 
 			
