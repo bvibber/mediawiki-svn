@@ -631,23 +631,23 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				.addCondition( new HasCategorySensor<ResourceType>(ResourceType.SUPPLEMENT, "Periodic_table_infobox_templates") ) );
 		
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.DRUG, "_(treatments|therapies)$", 0));
-		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(LifeScienceConceptType.DRUG, "Drugbox", null));
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DRUG, "^Drugs_|^DrugsNav$", 0, null));
-		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(LifeScienceConceptType.DRUG, "Major_Drug_Groups", null));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(LifeScienceConceptType.DRUG, "Drugbox"));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DRUG, "^Drugs_|^DrugsNav$", 0));
+		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(LifeScienceConceptType.DRUG, "Major_Drug_Groups"));
 		
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "EC_\\d+(\\.\\d+)*", 0)); //FIXME: too much meta-stuff!
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "^(Enzyme_links|PBB|Protein|GNF_.*_box)$", 0, null) ); 
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "^(Enzyme_links|PBB|Protein|GNF_.*_box)$", 0) ); 
 		
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "^Chembox|^NatOrganicBox$|^ICSC$|^Elementbox|^(Complex_)?Enzymatic_Reaction", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "^Chembox|^NatOrganicBox$|^ICSC$|^Elementbox|^(Complex_)?Enzymatic_Reaction", 0));
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "Chemical_elements"));
 
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "^(Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox)$", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "^(Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox)$", 0));
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "(_diseases|_disorders)$", 0, false));
 		
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "^Infobox_(Brain|Nerve|Muscle|Vein|Artery|Bone|Anatomy|Ligament|Lymph)$", 0, null));
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "_glands$|^SUNYAnatomy|^(BUHistology|AnatomyAtlasesMicroscopic|Gray's|Anatomy-stub)$", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "^Infobox_(Brain|Nerve|Muscle|Vein|Artery|Bone|Anatomy|Ligament|Lymph)$", 0));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "_glands$|^SUNYAnatomy|^(BUHistology|AnatomyAtlasesMicroscopic|Gray's|Anatomy-stub)$", 0));
 
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.FOOD, "Nutritional_value", 0, null));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.FOOD, "Nutritional_value", 0));
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.FOOD, "(_|$)([Ff]oods|[Vv]egetables|[Ff]ruits)", 0, false));
 		
 		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox"));
