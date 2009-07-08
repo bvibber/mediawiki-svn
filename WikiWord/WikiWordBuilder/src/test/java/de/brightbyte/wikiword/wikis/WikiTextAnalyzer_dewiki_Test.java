@@ -11,7 +11,7 @@ import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzerTestBase;
-import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.TemplateData;
+import de.brightbyte.wikiword.analyzer.template.TemplateData;
 
 
 public class WikiTextAnalyzer_dewiki_Test extends WikiTextAnalyzerTestBase {
@@ -41,7 +41,7 @@ public class WikiTextAnalyzer_dewiki_Test extends WikiTextAnalyzerTestBase {
 		categories.add("Berg_in_Hawaii");
 		assertTestCase(page, "categories", categories);
 		
-		TemplateData infobox = new TemplateData();
+		TemplateData infobox = new TemplateData("TEST");
 		infobox.setParameter("NAME", "K\u012blauea");
 		infobox.setParameter("BILD", "Kilauea map.gif");
 		infobox.setParameter("BILDBESCHREIBUNG", "Lage des K\u012blauea, schematischer \u00dcberblick mit Caldera (Krater) und Riftzonen");

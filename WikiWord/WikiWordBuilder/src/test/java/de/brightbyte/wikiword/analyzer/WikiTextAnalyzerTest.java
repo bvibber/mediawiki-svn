@@ -22,7 +22,7 @@ import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasSectionSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateSensor;
 import de.brightbyte.wikiword.analyzer.sensor.TitleSensor;
-import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.TemplateData;
+import de.brightbyte.wikiword.analyzer.template.TemplateData;
 
 /**
  * Unit tests for WikiTextAnalyzer
@@ -528,19 +528,19 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			MultiMap<String, TemplateData, List<TemplateData>> exp = new ValueListMultiMap<String, TemplateData>();
 			TemplateData params;
 			
-			params = new TemplateData();
+			params = new TemplateData("TEST");
 			exp.put("Simple_thing", params );
 			
-			params = new TemplateData();
+			params = new TemplateData("TEST");
 			params.setParameter("1", "x y");
 			exp.put("Trivial", params);
 
-			params = new TemplateData();
+			params = new TemplateData("TEST");
 			params.setParameter("1", "y z");
 			params.setParameter("foo", "23");
 			exp.put("Easy", params);
 
-			params = new TemplateData();
+			params = new TemplateData("TEST");
 			params.setParameter("1", "yummy");
 			params.setParameter("2", "foo  x");
 			params.setParameter("3", "foo");
@@ -553,10 +553,10 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			params.setParameter("fugly", "barf");
 			exp.put("Nasty_stuff", params);
 
-			params = new TemplateData();
+			params = new TemplateData("TEST");
 			exp.put("Ping", params);
 
-			params = new TemplateData();
+			params = new TemplateData("TEST");
 			params.setParameter("0", "x"); 
 			exp.put("DEFAULTSORT", params);
 
@@ -648,20 +648,20 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 	public void setUp() throws URISyntaxException, IOException {		
 		LanguageConfiguration lconfig = new LanguageConfiguration();
 
-		corpus = new Corpus("TEST", "generic", "generic", "generic", "generic", "xx", "generic", null);
+		corpus = new Corpus("TEST", "generic", "generic", "generic", "generic", "en", "wikipedia", null);
 		PlainTextAnalyzer language = new PlainTextAnalyzer(corpus);
 		language.configure(lconfig, tweaks);
 		language.initialize();
 
 		WikiConfiguration config = new WikiConfiguration();
 		config.resourceTypeSensors.add( new TitleSensor<ResourceType>(ResourceType.DISAMBIG, ".*_\\(Disambiguation\\)", 0) );
-		config.resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.DISAMBIG, "Disambiguation", null) );
-		config.resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "Delete", null) );
+		config.resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.DISAMBIG, "Disambiguation") );
+		config.resourceTypeSensors.add( new HasTemplateSensor<ResourceType>(ResourceType.BAD, "Delete") );
 
 		config.conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PERSON, "^Died_|^Born_", 0) );
 		config.conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.NAME, "(^N|_n)ames?$", 0) );
 		config.conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PLACE, "^Town_in_|^Country_in_|^Region_in_", 0) );
-		config.conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox", null) );
+		config.conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.LIFEFORM, "Taxobox") );
 		config.conceptTypeSensors.add( new TitleSensor<ConceptType>(ConceptType.TIME, "-?\\d+", 0) );
 		config.conceptTypeSensors.add( new HasSectionSensor<ConceptType>(ConceptType.PERSON, "Life") );
 		
