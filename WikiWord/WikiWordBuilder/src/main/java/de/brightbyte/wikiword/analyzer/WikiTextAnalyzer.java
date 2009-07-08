@@ -50,6 +50,7 @@ import de.brightbyte.wikiword.analyzer.template.DummyTemplateUser;
 import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
 import de.brightbyte.wikiword.analyzer.template.TemplateUser;
 import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.TemplateData;
+import de.brightbyte.wikiword.builder.InputFileHelper;
 import de.brightbyte.xml.HtmlEntities;
 
 /**
@@ -1929,15 +1930,17 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		String name = args.getParameter(1);
 		String file = args.getParameter(2);
 		
-		String text = IOUtil.slurp(new File(file), "UTF-8");
-		
 		TweakSet tweaks = new TweakSet();
 
 		String tf = args.getStringOption("tweaks", null);
 		if (tf!=null) tweaks.loadTweaks(new File(tf));
+
 		
 		tweaks.setTweaks(System.getProperties(), "wikiword.tweak."); //XXX: doc
 		tweaks.setTweaks(args, "tweak."); //XXX: doc
+		
+		InputFileHelper input = new InputFileHelper(tweaks);
+		String text = IOUtil.slurp(input.open(file), "UTF-8");
 		
 		Corpus corpus = Corpus.forName("TEST", lang, tweaks);
 		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus, tweaks);

@@ -104,12 +104,9 @@ public class InputFileHelper {
 				validateBZ2(in);
 				return new CBZip2InputStream(in);
 			}
-			else if (mime.equals("application/xml")) {
+			else {
 				return in;
 			}
-			
-			in.close();
-			throw new IOException("MIME type not suitable for a wiki dump: "+mime);
 		}
 	}
 	

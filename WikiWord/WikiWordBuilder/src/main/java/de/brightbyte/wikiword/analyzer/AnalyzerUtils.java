@@ -78,7 +78,7 @@ public class AnalyzerUtils {
 	}
 
 	public static <V> V evalSensors(Collection<Sensor<V>> sensors, WikiPage page, V defValue) {
-		if (sensors==null) return null;
+		if (sensors==null) return defValue;
 		
 		for (Sensor<V> sensor : sensors) {
 			if (sensor.sense(page)) return sensor.getValue();
