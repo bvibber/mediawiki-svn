@@ -40,6 +40,8 @@
  *
  */
 
+OpenLayers.Lang.setCode(wgSlippyMapLanguageCode);
+
 var slippymaps = new Array();
 var mapId = 0;
 var layer = null;

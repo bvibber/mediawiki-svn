@@ -36,7 +36,7 @@ class SlippyMapHooks {
 	 */
 
 	public static function onParserFirstCallInit( ) {
-		global $wgArticle, $wgOut, $wgParser, $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgAutoLoadMaps;
+		global $wgArticle, $wgOut, $wgLang, $wgParser, $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgAutoLoadMaps;
 
 		$smh = new SlippyMapHooks();
 
@@ -62,6 +62,7 @@ class SlippyMapHooks {
 				"var wgSlippyMapCode = " . Xml::encodeJsVar( wfMsg( 'slippymap_code' ) ) . ";",
 				"var wgSlippyMapButtonCode = " . Xml::encodeJsVar( wfMsg( 'slippymap_button_code' ) ) . ";",
 				"var wgSlippyMapResetview = " . Xml::encodeJsVar( wfMsg( 'slippymap_resetview' ) ) . ";",
+				"var wgSlippyMapLanguageCode = " . Xml::encodeJsVar( $wgLang->getCode() ) . ";",
 				"var autoInitMaps = {$autoload};",
 				"/*]]>*/</script>",
 			);
