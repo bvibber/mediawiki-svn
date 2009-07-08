@@ -9,7 +9,7 @@ class PoolCounter_ConnectionManager {
 		$this->hostNames = $conf['servers'];
 		$this->timeout = isset( $conf['timeout'] ) ? $conf['timeout'] : 0.1;
 		if ( !count( $this->hostNames ) ) {
-			throw new MWException( __METHOD__.': no servers configured' );
+			throw new MWException( __METHOD__ . ': no servers configured' );
 		}
 	}
 

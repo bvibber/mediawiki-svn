@@ -4,8 +4,18 @@
  * MediaWiki client for the pool counter daemon poolcounter.py.
  */
 
+$wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'Pool Counter Client',
+	'author'         => 'Tim Starling',
+	'description'    => 'MediaWiki client for the pool counter daemon poolcounter.py',
+	'descriptionmsg' => 'poolcounter-desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:PoolCounter',
+);
+
+
 /**
- * Configuration array for the connection manager. 
+ * Configuration array for the connection manager.
  * Use $wgPoolCounterConf to configure the pools.
  */
 $wgPoolCountClientConf = array(
@@ -22,14 +32,15 @@ $wgPoolCountClientConf = array(
 
 /**
  * Sample pool configuration:
- *   $wgPoolCounterConf = array( 'Article::view' => array( 
+ *   $wgPoolCounterConf = array( 'Article::view' => array(
  *     'class' => 'PoolCounter_Client',
  *     'waitTimeout' => 15, // wait timeout in seconds
  *     'maxThreads' => 5, // maximum number of threads in each pool
  *   ) );
  */
 
-$wgAutoloadClasses['PoolCounter_ConnectionManager'] 
-	= $wgAutoloadClasses['PoolCounter_Client'] 
-	= dirname(__FILE__).'/PoolCounterClient_body.php';
-$wgExtensionMessagesFiles['PoolCounterClient'] = dirname(__FILE__).'/PoolCounterClient.i18n.php';
+$dir = dirname( __FILE__ ) . '/';
+$wgAutoloadClasses['PoolCounter_ConnectionManager']
+	= $wgAutoloadClasses['PoolCounter_Client']
+	= $dir . 'PoolCounterClient_body.php';
+$wgExtensionMessagesFiles['PoolCounterClient'] = $dir . 'PoolCounterClient.i18n.php';
