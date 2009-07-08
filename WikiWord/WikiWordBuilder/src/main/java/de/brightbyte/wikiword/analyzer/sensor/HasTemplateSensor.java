@@ -22,7 +22,7 @@ public class HasTemplateSensor<V> extends HasTemplateLikeSensor<V> {
 	}
 	
 	public HasTemplateSensor(V value, String name, String... params) {
-		this(value, name==null ? null : new TemplateNameMatcher(name), new TemplateParameterMatcher(params));
+		this(value, name==null ? null : new TemplateNameMatcher(name), params==null || params.length==0 ? null : new TemplateParameterMatcher(params));
 	}
 	
 	public HasTemplateSensor(V value, String name, String param, NameMatcher paramMatcher) {
@@ -36,7 +36,7 @@ public class HasTemplateSensor<V> extends HasTemplateLikeSensor<V> {
 	}
 	
 	public HasTemplateSensor(V value, String name, Map<String, NameMatcher> params) {
-		this(value, name==null ? null : new TemplateNameMatcher(name), new TemplateParameterMatcher(params));
+		this(value, name==null ? null : new TemplateNameMatcher(name), params==null || params.size()==0 ? null : new TemplateParameterMatcher(params));
 	}
 
 	public HasTemplateSensor(V value, TemplateMatcher... matchers) {

@@ -9,6 +9,7 @@ import de.brightbyte.wikiword.analyzer.template.TemplateData;
 
 public class TemplateNameMatcher extends AbstractAttributeMatcher<TemplateData> implements TemplateMatcher {
 	protected NameMatcher matcher;
+	protected boolean lineMatchSupported = true;
 	
 	public TemplateNameMatcher(String name) {
 		this(new ExactNameMatcher(name));
@@ -36,7 +37,12 @@ public class TemplateNameMatcher extends AbstractAttributeMatcher<TemplateData> 
 	}
 
 	public boolean lineMatchPassed(CharSequence lines) {
-		return matcher.matchesLine(lines.toString());
+		try {
+			return !lineMatchSupported || matcher.matchesLine(lines.toString());
+		}  catch (UnsupportedOperationException ex) {
+			lineMatchSupported = false;
+			return true;
+		}
 	}
 	
 }

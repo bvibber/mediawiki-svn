@@ -16,7 +16,7 @@ public class PatternNameMatcher extends AbstractAttributeMatcher<CharSequence> i
 	protected boolean anchored;
 
 	public PatternNameMatcher(String p, int flags, boolean anchored) {
-		this(Pattern.compile(p, flags), anchored);
+		this(Pattern.compile(p, flags | Pattern.MULTILINE), anchored);
 	}
 	
 	public PatternNameMatcher(Pattern p, boolean anchored) {
