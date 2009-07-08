@@ -161,7 +161,7 @@
 			$lTitle = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
 			$loginLink = $lTitle->getFullURL('returnto=' . MWNamespace::getCanonicalName( MV_NS_STREAM ) . ':' . $stream_name );
 
-			$wgOut->addWikiText( wfMsg( 'mv_user_cant_edit', $loginLink, $cancel ) );
+			$wgOut->addHTML( wfMsg( 'mv_user_cant_edit', $loginLink, $cancel ) );
 			$wgOut->readOnlyPage(  $this->mArticle->getContent(), true, $permErrors );
 			$wgUser->setOption( 'rows', $non_ajax_rows );
 			wfProfileOut( $fname );

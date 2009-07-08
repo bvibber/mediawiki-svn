@@ -165,8 +165,8 @@ function mv_ext(inx){
         $j('#mvd_link_im_'+inx).replaceWith('<div style="height:300px;width:400px;">' +
                     '<video roe="'+base_roe_url + gMvd[inx]['sn']+'&t='+gMvd[inx]['st']+'/'+gMvd[inx]['et']+'" ' +
                     'autoplay="true" id="mvd_vid_'+inx +'"></video>' +
-                '</div>');        
-        init_mv_embed(true);
+                '</div><div style="height:10px;clear:both"/>');        
+        rewrite_by_id('mvd_vid_'+inx );
     });
     $j('#mv_mvd_ex_'+inx).css('background', 'url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/opened.png\')');
     $j('#mv_mvd_ex_'+inx).unbind();
