@@ -63,18 +63,24 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'plotters-desc' => 'Дазваляе ўдзельнікам выкарыстоўваць уласны JavaScript у тэгах jsplot',
-	'plotters' => 'Графастваральнікі',
-	'plotters-title' => 'Плотэры',
+	'plotters' => 'Плотары',
+	'plotters-title' => 'Плотары',
+	'plotters-pagetext' => 'Ніжэй пададзены сьпіс спэцыяльных плотараў, якія ўдзельнікі могуць выкарыстоўваць у тэгах jsplot, як вызначана ў [[MediaWiki:Plotters-definition]].
+Гэта дазваляе атрымаць доступ да старонак з сыстэмнымі паведамленьнямі, якія вызначаюць апісаньне і код кожнага плотара.',
+	'plotters-uses' => 'Выкарыстаньні',
 	'plotters-missing-script' => 'Скрыпт ня вызначаны.',
 	'plotters-missing-arguments' => 'Аргумэнты не пазначаныя.',
 	'plotters-excessively-long-scriptname' => 'Назва скрыпта занадта доўгая.
 Калі ласка, вызначце скрыпт, назва якога ня больш за 255 сымбаляў.',
 	'plotters-excessively-long-preprocessorname' => 'Назва прэпрацэсара занадта доўгая.
 Калі ласка, вызначце прэпрацэсар, назва якога ня больш за 255 сымбаляў.',
+	'plotters-excessively-long-name' => 'Назва плотара занадта доўгая.
+Калі ласка, прызначце назву плотара даўжынёй ня болей 255 сымбаляў.',
 	'plotters-excessively-long-tableclass' => 'Назва клясы табліцы занадта доўгая.
 Калі ласка, вызначце клясу табліцы, назва якой ня больш за 255 сымбаляў.',
 	'plotters-no-data' => 'Зьвесткі не пададзеныя.',
 	'plotters-invalid-renderer' => 'Выбраны няслушны генэратар выяваў.',
+	'plotters-errors' => '{{PLURAL:$1|Памылка плотара|Памылкі плотара}}:',
 );
 
 /** Bosnian (Bosanski)

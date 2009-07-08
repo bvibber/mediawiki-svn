@@ -2021,7 +2021,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'contributionreporting-desc' => 'Rapòrt en dirècte a prepaus de la collècta de fonses de Wikimèdia',
+	'contributionreporting-desc' => 'Rapòrt en dirècte a prepaus de la collècta de fonses de Wikimedia',
 	'contributiontotal' => 'Contribucions totalas',
 	'contributionhistory' => 'Istoric de las contribucions',
 	'contrib-hist-header' => 'Comentaris en dirècte dels donators a travèrs lo mond',

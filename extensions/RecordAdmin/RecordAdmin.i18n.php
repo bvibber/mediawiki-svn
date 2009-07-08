@@ -413,6 +413,7 @@ $messages['es'] = array(
 	'recordadmin-createsuccess' => '$1 creado',
 	'recordadmin-createerror' => 'Un error ocurrió cuando se intentaba crear el $1!',
 	'recordadmin-badtitle' => 'Mal título!',
+	'recordadmin-recordid' => 'ID de registro/nombre:',
 	'recordadmin-invert' => 'Invertir selección',
 	'recordadmin-buttonsearch' => 'Buscar',
 	'recordadmin-buttoncreate' => 'Crear',

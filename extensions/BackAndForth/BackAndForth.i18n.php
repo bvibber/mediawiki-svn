@@ -256,7 +256,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'backforth-next' => 'Seuraava ($1)',
-	'backforth-desc' => 'Lisää aakkosjärjestystä noudattavat "Seuraava" ja "Edellinen" linkitykset sivun ylälaitaan',
+	'backforth-desc' => 'Lisää aakkosjärjestystä noudattavat ”Seuraava”- ja ”Edellinen”-linkitykset sivujen ylälaitaan.',
 	'backforth-prev' => 'Edellinen ($1)',
 );
 

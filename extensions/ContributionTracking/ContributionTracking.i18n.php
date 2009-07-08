@@ -572,7 +572,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'contributiontracking-desc' => 'Seguit de las contribucions per la levada de fonses de Wikimèdia',
+	'contributiontracking-desc' => 'Seguit de las contribucions per la levada de fonses de Wikimedia',
 	'contributiontracking' => 'Seguit de las contribucions',
 	'contrib-tracking-error' => 'Error',
 	'contrib-tracking-error-text' => 'Error dins lo formulari',

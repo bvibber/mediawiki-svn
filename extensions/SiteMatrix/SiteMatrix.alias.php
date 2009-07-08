@@ -176,7 +176,7 @@ $aliases['no'] = array(
 
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'SiteMatrix' => array( 'Matritz dels sites', 'Wikis de Wikimèdia' ),
+	'SiteMatrix' => array( 'Matritz dels sites', 'Wikis de Wikimedia' ),
 );
 
 /** Polish (Polski) */

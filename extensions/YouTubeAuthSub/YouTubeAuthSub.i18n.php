@@ -1544,10 +1544,11 @@ $messages['mg'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'youtubeauthsub' => 'Подигни YouTube видео запис',
+	'youtubeauthsub' => 'Подигни YouTube видеоснимка',
 	'youtubeauthsub-desc' => 'Овозможување корисниците да [[Special:YouTubeAuthSub|подигнуваат видео записи]] директно на YouTube',
 	'youtubeauthsub_info' => 'За подигнување на видео запис на YouTube вгнезден во страница, пополнете ги следните информации:',
 	'youtubeauthsub_title' => 'Наслов',

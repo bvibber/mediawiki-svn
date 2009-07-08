@@ -1216,9 +1216,9 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'sitematrix' => 'Lista dels wikis de Wikimèdia',
-	'sitematrix-summary' => 'Aquesta pagina especiala aficha totes los wikis de la Fondacion Wikimèdia.',
-	'sitematrix-desc' => 'Aficha una [[Special:SiteMatrix|tièra de wikis de la Fondacion Wikimèdia]]',
+	'sitematrix' => 'Lista dels wikis de Wikimedia',
+	'sitematrix-summary' => 'Aquesta pagina especiala aficha totes los wikis de la Fondacion Wikimedia.',
+	'sitematrix-desc' => 'Aficha una [[Special:SiteMatrix|tièra de wikis de la Fondacion Wikimedia]]',
 	'sitematrix-language' => 'Lenga',
 	'sitematrix-project' => 'Nom del projècte, ligam interprojècte e ligam interwiki',
 	'sitematrix-others' => 'Autres projèctes de Wikimedia Foundation',

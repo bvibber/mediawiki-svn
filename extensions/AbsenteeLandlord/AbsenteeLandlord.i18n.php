@@ -547,6 +547,14 @@ $messages['sv'] = array(
 	'absenteelandlord-desc' => 'Låser automatiskt wikins databas om alla administratörer är frånvarande under en viss tid',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'absenteelandlord-reason' => 'అధికారుల నుంచి ఎటువంటి పని జరగనందువల్ల డేటాబేసుకి దాని అంతట అదే తాళము పడినది.',
+	'absenteelandlord-desc' => 'అధికారులందరూ అచేతనముగా వున్నప్పుడు వికి డాటాబేసుకి దాని అంతట అదే తాళము పడుతుంది.',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

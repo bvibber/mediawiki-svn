@@ -2215,6 +2215,7 @@ $messages['mdf'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
@@ -2248,7 +2249,7 @@ $messages['mk'] = array(
 	'oversight-hidden' => 'Скриена ревизија',
 	'oversight-header' => 'Следи листа на ревизии кои биле трајно сокриени од јавноста.
 Оддавањето на овие информации може да резултира со губење на надгледувачките привилегии.',
-	'oversight-legend' => 'Пребарување низ дневникот на скриени ревизии',
+	'oversight-legend' => 'Пребарување низ дневникот на скриени промени',
 	'oversight-oversighter' => 'Надгледувач:',
 	'oversight-offender' => 'Прекршител:',
 );

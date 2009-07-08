@@ -269,7 +269,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'globaluserrights' => 'グローバル利用者権限管理',
-	'gur-desc' => '簡単な[[Special:GlobalUserRights|グローバル利用者権限]]を管理する',
+	'gur-desc' => '[[Special:GlobalUserRights|グローバル利用者権限]]の簡易管理',
 	'gur-rightslog-name' => 'グローバル権限変更記録',
 	'gur-rightslog-header' => 'これはグローバル権限の変更記録です。',
 	'gur-rightslog-entry' => 'が$1 のグローバルグループ所属を $2 から $3 へ変更しました',
@@ -320,15 +320,16 @@ $messages['lb'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'globaluserrights' => 'Управување со глобални кориснички права',
+	'globaluserrights' => 'Раководење со глобални кориснички права',
 	'gur-desc' => 'Лесна администрација на [[Special:GlobalUserRights|глобални кориснички права]]',
 	'gur-rightslog-name' => 'Дневник на глобални кориснички права',
 	'gur-rightslog-header' => 'Ова е дневник на промени на глобални кориснички права.',
 	'gur-rightslog-entry' => 'променета припадност на глобална група за $1 од $2 во $3',
-	'right-userrights-global' => 'Управување со глобални кориснички права',
+	'right-userrights-global' => 'Раководење со глобални кориснички права',
 );
 
 /** Maltese (Malti)
