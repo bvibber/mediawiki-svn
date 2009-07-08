@@ -331,6 +331,8 @@ $messages['roa-tara'] = array(
 	'prefstats' => 'Statistece de preferenze',
 	'prefstats-desc' => 'Traccie le statisteche sus a quanda utinde onne certe preferenze abbilitate',
 	'prefstats-title' => 'Statisteche de le preferenze',
+	'prefstats-list-intro' => 'Pe mò, le seguende preferenze stonne avènene tracciate.
+Cazze sus a une de le statisteche da vedè.',
 );
 
 /** Russian (Русский)

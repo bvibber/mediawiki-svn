@@ -114,8 +114,17 @@ $messages['bs'] = array(
 	'optin-desc' => 'Omogućuje korisnicima prijavu na poboljšanje upotrebljivosti putem Inicijative upotrebljivosti',
 	'optin-title' => 'Poboljšanje Inicijative upotrebljivosti',
 	'optin-needlogin' => 'Morate se [$1 prijaviti] da biste mogli početi koristiti poboljšanje Inicijative upotrebljivosti.',
+	'optin-intro' => 'Wikipedia Inicijativa upotrebljivosti je razvila novu kožu i novu alatnu traku za uređivanje koja ima za cilj povećanje upotrebljivosti Wikipedije. Ova poboljšanja nisu još omogućena za sve korisnike, ali se možete prijaviti na njim putem klika na "{{int:optin-submit-in}}".',
+	'optin-success-in' => 'Uspješno ste se prijavili na podrušku Inicijative upotrebljivosti.
+Možete se bilo kada odjaviti putem klikanja na "{{int:optin-submit-out}}".',
+	'optin-success-out' => 'Uspješno ste se odjavili sa podrške Inicijativi upotrebljivosti.
+Možete se bilo kada ponovno prijaviti putem klika na {{int:optin-submit-in}}.',
 	'optin-submit-in' => 'Prijava',
 	'optin-submit-out' => 'Odjava',
+	'optin-survey-intro' => 'Hvala Vam za isprobavanje podrške Inicijativi upotrebljivosti.
+Možete se odjaviti putem klikanja na "{{int:optin-submit-out}}" na dnu ove stranice.
+
+Željeli bismo da nam opišete šta mislite o našem novom interfejsu, tako Vas ljubazno molimo da popunite neobavezni upitnik koji se nalazi ispod prije nego što kliknete na "{{int:optin-submit-out}}".',
 	'optin-survey-question-whyoptout' => 'Zašto se odjavljujete s ovog interfejsa?',
 	'optin-survey-answer-whyoptout-didntlike' => 'Ne sviđa mi se dizajn.',
 	'optin-survey-answer-whyoptout-hard' => 'Isuviše je teško uređivati stranicu.',

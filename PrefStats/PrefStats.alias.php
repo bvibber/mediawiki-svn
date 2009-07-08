@@ -32,6 +32,11 @@ $aliases['ja'] = array(
 	'PrefStats' => array( '設定統計' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'PrefStats' => array( 'Statistike vun den Astellungen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'PrefStats' => array( 'Voorkeurenstatistieken' ),
