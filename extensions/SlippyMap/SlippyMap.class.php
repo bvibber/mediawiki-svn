@@ -100,6 +100,11 @@ class SlippyMap {
 	/** pixel size in meters */
 	protected static $PIXEL_SIZE = 0.00028;
         
+        /**
+         * This constructs the map object
+         *
+         * @param $mapParams array of map parameters
+         */
 	public function __construct( $mapParams ) {
 		global $wgOut, $wgUser;
 		wfLoadExtensionMessages( 'SlippyMap' );
@@ -115,6 +120,11 @@ class SlippyMap {
 		self::setBounds();
 	}
 
+        /**
+         * This initializes the map object, with parameters
+         *
+         * @param $mapParams array of map parameters
+         */
 	public function initMap( $mapParams ) {
 		$this->mapId = $mapParams['mapId'];
 		$this->lat = isset( $mapParams['lat'] ) ? $mapParams['lat'] : null;
@@ -133,6 +143,11 @@ class SlippyMap {
 		}
 	}
 
+        /**
+         * This generates map html code
+         *
+         * @return string: containing map html code
+         */
 	public function getMap() {
 		global $wgOut, $wgJsMimeType;
 
@@ -147,6 +162,9 @@ class SlippyMap {
 				height: {$this->height},
 				marker: {$this->marker}
 			}));</script>
+			 
+			<!-- mapframe //-->
+                        <div class="mapframe" style="width:{$this->width}px">
 EOT;
 
 		// TODO: NOSCRIPT support
@@ -155,32 +173,44 @@ EOT;
 		} else {
 			$mapCode .= self::getDynamicMap();
 		}
+
+                if ( $this->caption ) {
+                        $mapcode .= '<div class="mapcaption">{$this->caption}</div>';
+                }
+
+                $mapCode .= <<<EOT
+		<!-- /mapframe -->
+                </div>
+EOT;
+
 		return $mapCode;
 	}
 
-	public function getDynamicMap() {
+        /**
+         * This generates dynamic map code
+         *
+         * @return string: containing dynamic map html code
+         */
+	protected function getDynamicMap() {
 		$mapCode .= <<<EOT
-			 <div class="mapframe" style="width:{$this->width}px">
+				<!-- map div -->
 				<div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
 					<script type="{$wgJsMimeType}">slippymaps[{$this->mapId}].init();</script>
+				<!-- /map div -->
 				</div>
-EOT;
-		if ( $this->caption ) {
-			$mapcode .= <<<EOT
-			       <div class="mapcaption">{$this->caption}</div>
-EOT;
-		}
-
-		$mapCode .= <<<EOT
-		</div>
 EOT;
 		return $mapCode;
 	}
 
-	public function getStaticMap() {
+        /**
+         * This generates static map code
+         *
+         * @return string: containing static map html code
+         */	
+	protected function getStaticMap() {
 			$clickToActivate = wfMsg('slippymap_clicktoactivate');
-			$staticmap = <<<EOT
-				<div class="mapframe" style="width:{$this->width}px;">
+			$mapcode = <<<EOT
+					<!-- map div -->
 					<div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
 						<!-- Static preview -->
 						<img
@@ -192,23 +222,27 @@ EOT;
 							height="{$this->height}"
 							alt="Slippy Map"
 							title="{$clickToActivate}"/>
+                                        <!-- /map div -->
 					</div>
-				</div>
 EOT;
 
-			if ( $this->caption ) {
-				$staticmap .= '<div class="mapcaption">{$this->caption}</div>';
-				$staticmap .= '</div>';
-			}
-
-			return $staticmap;
+		return $mapcode;
 	}
 
+        /**
+         * This sets the zoom level
+         *
+         * @param $zoom optional
+         */
 	public function setZoom( $zoom = null ) {
 		if ( $this->zoom == '' ) $this->zoom = SlippyMap::$MAP_OPTIONS['defaultZoomLevel'];
 	}
-			
-	public function setSize( $w = null, $h = null ) {
+
+        /**
+         * This sets the map size
+         *
+         */			
+	public function setSize() {
 		global $wgUser, $wgOut, $wgThumbLimits;	
 		// set thumbsize based on user preferences
 		$thumbsize = $wgThumbLimits[$wgUser->getOption( 'thumbsize' )];
@@ -226,6 +260,10 @@ EOT;
 
 	}
 
+        /**
+         * This sets the map bounds
+         *
+         */
 	public function setBounds() {
 
 		/* Determine scale and map bounds for static render request */
@@ -256,7 +294,11 @@ EOT;
 			$this->bounds = array( $center[0] - $w_deg / 2, $center[1] - $h_deg / 2, $center[0] + $w_deg / 2, $center[1] + $h_deg / 2 );
 		}
 	}
-	
+
+        /**
+         * This retreives the image source
+         *
+         */	
 	public function getImgSrc() {
 		if ( isset( SlippyMap::$MAP_OPTIONS['staticRenderService'] ) ) {
 			return $this->parameterize( SlippyMap::$MAP_OPTIONS['staticRenderService'], 
@@ -346,6 +388,11 @@ EOT;
 		return $lonlat;
 	}
 
+        /**
+         * This checks that the map mode is valid
+         *
+         * @param $mode string
+         */
 	public function validMode( $mode ) {
 		global $wgMapModes;
 		$this->errors = '';
@@ -358,6 +405,10 @@ EOT;
 		return true;
 	}
 	
+        /**
+         * This validates the map parameters
+         *
+         */
 	public function validate() {
 		wfLoadExtensionMessages( 'SlippyMap' );
 		$errors = null;
@@ -406,6 +457,11 @@ EOT;
 		return $errors;
 	}
 	
+        /**
+         * This outputs the errors
+         *
+         * @return string error
+         */
 	public function getErrors() {
 		if ( $this->errors != "" ) {
 			// Something was wrong. Spew the error message and input text.
