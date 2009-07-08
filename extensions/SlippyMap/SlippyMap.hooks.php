@@ -109,7 +109,7 @@ class SlippyMapHooks {
 		/**
 		 * If using old style params, turn them into a mapParams array
 		 */
-		if ( ( count( $mapParams ) == 0 ) && ( count( $oldStyleParams ) > 0 ) ) {
+		if ( ( isset( $mapParams ) && ( count( $mapParams ) == 0 ) ) && ( isset( $oldStyleParams ) && ( count( $oldStyleParams ) > 0 ) ) ) {
 			foreach ( $oldStyleParams as $key => $val ) {
 				// Receive new style args: <slippymap aaa=bbb ccc=ddd></slippymap>
 				if ( isset( $val ) ) {
@@ -123,13 +123,14 @@ class SlippyMapHooks {
 		 *  Give the map a unique id, so there can be multiple maps
 		 */
 		$mapParams['mapId'] = $this->mapId;
+		$mode = isset( $mapParams['mode'] ) ? $mapParams['mode'] : null;
 	
-		if ( ! in_array( $mapParams['mode'], $wgMapModes ) ) {
+		if ( $mode && ! in_array( $mode, $wgMapModes ) ) {
 			$errors = wfMsg( 'slippymap_invalidmode',  htmlspecialchars( $this->mode ) );
-			$wgOut->addHTML( '<h3>' . $mapParams['mode'] . ' is an invalid map mode</h3>' );	
+			$wgOut->addHTML( '<h3>' . $mode . ' is an invalid map mode</h3>' );	
 		} else {	
 			$output = '';
-			switch ( $mapParams['mode'] ) {
+			switch ( $mode ) {
 				case 'satellite':
 					$map = new WorldWind( $mapParams );
 					break;
