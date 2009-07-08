@@ -1,6 +1,7 @@
 window.cortadoDomainLocations = {
-	'upload.wikimedia.org'  :   'http://upload.wikimedia.org/jars/cortado.jar',
-	'tinyvid.tv'			:   'http://tinyvid.tv/static/cortado.jar'
+	'upload.wikimedia.org'  : 'http://upload.wikimedia.org/jars/cortado.jar',
+	'tinyvid.tv'			: 'http://tinyvid.tv/static/cortado.jar',
+	'media.tinyvid.tv'		: 'http://media.tinyvid.tv/cortado.jar'
 } 
 
 var javaEmbed = {

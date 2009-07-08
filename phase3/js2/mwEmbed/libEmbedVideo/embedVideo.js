@@ -1287,7 +1287,7 @@ embedVideo.prototype = {
 						foundOgg = true;
 					}
 				}
-				//no ogg no point in download firefox :(
+				//no ogg no point in download firefox
 				if(!foundOgg)
 					return false;
 										
@@ -1346,8 +1346,7 @@ embedVideo.prototype = {
 	//do seek function (should be overwritten by implementing embedLibs)
 	// first check if seek can be done on locally downloaded content. 
 	doSeek : function( perc ){		
-		if( this.supportsURLTimeEncoding() ){
-			
+		if( this.supportsURLTimeEncoding() ){			
 			//make sure this.seek_time_sec is up-to-date:
 			this.seek_time_sec = npt2seconds( this.start_ntp ) + parseFloat( perc * this.getDuration() );
 			js_log('updated seek_time_sec: ' + seconds2npt ( this.seek_time_sec) );

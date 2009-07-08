@@ -77,7 +77,7 @@ var nativeEmbed = {
 		//@@todo check if the clip is loaded here (if so we can do a local seek)
 		if( this.supportsURLTimeEncoding() || !this.vid){			
 			//make sure we could not do a local seek instead:
-			if( perc < this.bufferedPercent && this.vid.duration ){
+			if( perc < this.bufferedPercent && this.vid.duration && !this.didSeekJump ){
 				js_log("do local seek " + perc + ' is already buffered < ' + this.bufferedPercent);
 				this.doNativeSeek(perc);
 			}else{
@@ -170,10 +170,13 @@ var nativeEmbed = {
 	 */
 	oncanplaythrough : function(){		
 		js_log('f:oncanplaythrough');
+		this.getVID();
+		if( ! this.paused )
+			this.vid.play();
 	},
 	onloadedmetadata: function(){
 		this.getVID();
-		js_log('f:onloadedmetadata metadata ready (update duration)');		
+		js_log('f:onloadedmetadata metadata ready (update duration)');	
 		//update duration if not set (for now trust the getDuration more than this.vid.duration		
 		if( this.getDuration()==0  &&  !isNaN( this.vid.duration )){
 			js_log('updaed duration via native video duration: '+ this.vid.duration)
