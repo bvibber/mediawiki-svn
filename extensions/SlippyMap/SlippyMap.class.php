@@ -151,7 +151,7 @@ class SlippyMap {
 	public function getMap() {
 		global $wgOut, $wgJsMimeType;
 
-		$mapCode = <<<EOT
+		$mapcode = <<<EOT
 			<script type="{$wgJsMimeType}">slippymaps.push(new slippymap_map({$this->mapId}, {
 				mode: '{$this->mode}',
 				layer: '{$this->layer}',
@@ -169,21 +169,21 @@ EOT;
 
 		// TODO: NOSCRIPT support
 		if ( isset( SlippyMap::$MAP_OPTIONS['staticRenderService'] ) ) {
-			$mapCode .= self::getStaticMap();
+			$mapcode .= self::getStaticMap();
 		} else {
-			$mapCode .= self::getDynamicMap();
+			$mapcode .= self::getDynamicMap();
 		}
 
 		if ( $this->caption ) {
 			$mapcode .= '<div class="mapcaption">{$this->caption}</div>';
 		}
 
-		$mapCode .= <<<EOT
+		$mapcode .= <<<EOT
 		<!-- /mapframe -->
 		</div>
 EOT;
 
-		return $mapCode;
+		return $mapcode;
 	}
 
 	/**
@@ -192,14 +192,15 @@ EOT;
 	 * @return string: containing dynamic map html code
 	 */
 	protected function getDynamicMap() {
-		$mapCode .= <<<EOT
+		global $wgJsMimeType;
+		$mapcode = <<<EOT
 				<!-- map div -->
 				<div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
 					<script type="{$wgJsMimeType}">slippymaps[{$this->mapId}].init();</script>
 				<!-- /map div -->
 				</div>
 EOT;
-		return $mapCode;
+		return $mapcode;
 	}
 
 	/**
