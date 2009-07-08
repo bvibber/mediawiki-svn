@@ -1276,16 +1276,21 @@ embedVideo.prototype = {
 					return false;
 				}			
 			}	
-			//see if we are using a fallback (in which case it does not matter) 
+			//see if we are using mv_embed without a ogg source in which case no point in promoting firefox :P			
 			if(this.media_element && this.media_element.sources){
+				var foundOgg = false;
 				var playable_sources = this.media_element.getPlayableSources();
 				for(var sInx=0; sInx < playable_sources.length; sInx++){  
 					var mime_type = playable_sources[sInx].mime_type;
-					if( mime_type=='video/h264' || mime_type=='video/x-flv'){
+					if( mime_type=='video/ogg' ){
 						//they  have flash / h.264 fallback no need to push firefox :( 
-						return false;
+						foundOgg = true;
 					}
-				}	
+				}
+				//no ogg no point in download firefox :(
+				if(!foundOgg)
+					return false;
+										
 			}
 		}
 		return true;	
