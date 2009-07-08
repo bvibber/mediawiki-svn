@@ -53,10 +53,10 @@ if ( !defined( 'MEDIAWIKI' ) )
 */
 $wgExtensionCredits['parserhook'][] = array(
 	'path'				=> __FILE__,
-	'name'				=> 'OpenStreetMap Slippy Map',
-	'author'			=> array( '[http://harrywood.co.uk Harry Wood]', 'Jens Frank' ),
-	'url'				=> 'http://wiki.openstreetmap.org/index.php/Slippy_Map_MediaWiki_Extension',
-	'description'		=> 'Allows the use of the &lt;slippymap&gt; tag to display an OpenLayers slippy map. Maps are from [http://openstreetmap.org openstreetmap.org]',
+	'name'				=> 'Slippy Map',
+	'author'			=> array( '[http://harrywood.co.uk Harry Wood]', 'Jens Frank', 'Aude', 'Ævar Arnfjörð Bjarmason'),
+	'url'				=> 'http://www.mediawiki.org/wiki/Extension:SlippyMap',
+	'description'		=> 'Adds a &lt;slippymap&gt; which allows for embedding of static & dynamic maps. Supports multiple map services including [http://openstreetmap.org OpenStreetMap] and NASA Worldwind',
 	'descriptionmsg'	=> 'slippymap_desc',
 );
 
