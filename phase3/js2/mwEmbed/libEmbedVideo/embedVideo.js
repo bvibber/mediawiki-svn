@@ -15,6 +15,13 @@ loadGM({
 	
 	"missing_video_stream" : "The video file for this stream is missing",	
 	
+	"play_clip" : "Play Clip",
+	"pause_clip": "Pause Clip",
+	"volume_control": "Volume Control",
+	"player_options": "Player Options",
+	"closed_captions": "Close Captions",
+	"player_fullscreen": "Fullscreen",	
+
 	"next_clip_msg" : "Play Next Clip",
 	"prev_clip_msg" : "Play Previous Clip",
 	"current_clip_msg" : "Continue Playing this Clip",	
@@ -40,7 +47,7 @@ loadGM({
 	"mv_ogg-player-omtkplayer" : "OMTK Flash Vorbis",
 	"mv_generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://commons.wikimedia.org/wiki/Commons:Media_help\">Playback Methods</a> page to download a player<br>",
 	
-	"mv_for_best_experience": "For best video playback experience we recomend <b><a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=mv_embed\">Firefox 3.5</a></b>",
+	"mv_for_best_experience": "For best video playback experience we recommend <b><a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=mv_embed\">Firefox 3.5</a></b>",
 	"mv_do_not_warn_again": "Do not warn me again."	
 		
 });
@@ -533,31 +540,31 @@ var ctrlBuilder = {
 		'fullscreen':{
 			'w':20,
 			'o':function(){
-				return '<div id="fullscreen_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-arrow-4-diag"></span></div>'
+				return '<div title="' + gM('player_fullscreen') + '" id="fullscreen_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-arrow-4-diag"></span></div>'
 			}
 		},
 		'options':{
 			'w':26,
 			'o':function(){
-				return '<div id="options_button_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-wrench"></span></div>';						 
+				return '<div title="'+ gM('player_options') + '" id="options_button_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-wrench"></span></div>';						 
 			}
 		},
 		'pause':{
 			'w':24,
 			'o':function(){
-				return '<div id="mv_play_pause_button_' + ctrlBuilder.id + '" class="ui-state-default ui-corner-all ui-icon_link lButton"><span class="ui-icon ui-icon-play"/></div>';
+				return '<div title="' + gM('play_clip') + '" id="mv_play_pause_button_' + ctrlBuilder.id + '" class="ui-state-default ui-corner-all ui-icon_link lButton"><span class="ui-icon ui-icon-play"/></div>';
 			}
 		},
 		'closed_captions':{
 			'w':23,
 			'o':function(){
-				return '<div id="timed_text_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-comment"></span></div>'
+				return '<div title="' + gM('closed_captions') + '" id="timed_text_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton"><span class="ui-icon ui-icon-comment"></span></div>'
 			}			
 		},
 		'volume_control':{
 			'w':23,
 			'o':function(){
-					return '<div id="volume_control_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton">' +
+					return '<div title="' + gM('volume_control') + '" id="volume_control_'+ctrlBuilder.id+'" class="ui-state-default ui-corner-all ui-icon_link rButton">' +
 								'<span class="ui-icon ui-icon-volume-on"></span>' +
 								'<div style="position:absolute;display:none;" id="vol_container_'+ctrlBuilder.id+'" class="vol_container ui-corner-all">' +
 									'<div class="volume_bar" id="volume_bar_' + ctrlBuilder.id + '"></div>' +
@@ -1845,7 +1852,7 @@ embedVideo.prototype = {
 	},
 	getPlayButton:function(id){
 		if(!id)id=this.id;
-		return '<div id="big_play_link_'+id+'" class="large_play_button" '+
+		return '<div title="' + gM('play_clip') + '" id="big_play_link_'+id+'" class="large_play_button" '+
 			'style="left:'+((this.playerPixelWidth()-130)/2)+'px;'+
 			'top:' + ((this.playerPixelHeight()-96)/2) + 'px;">'+
 			'<img src="' + mv_skin_img_path + 'player_big_play_button.png">'+
@@ -2152,7 +2159,7 @@ embedVideo.prototype = {
 		 $j("#mv_play_pause_button_" + this_id + ' span').removeClass('ui-icon-play').addClass('ui-icon-pause');			   
 		 $j("#mv_play_pause_button_" + this_id).unbind().btnBind().click(function(){					
 		   $j('#' + this_id ).get(0).pause();
-	   });
+	   	  }).attr('title', gM('pause_clip'));
 		   
 	},
 	load:function(){
@@ -2176,7 +2183,7 @@ embedVideo.prototype = {
 		$j("#mv_play_pause_button_" + this_id + ' span').removeClass('ui-icon-pause').addClass('ui-icon-play');
 		$j("#mv_play_pause_button_" + this_id).unbind().btnBind().click(function(){							 
 				$j('#'+this_id).get(0).play();
-			});
+		}).attr('title', gM('play_clip'));
 	},	
 	/*
 	 * base embed stop (can be overwritten by the plugin)

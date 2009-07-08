@@ -42,7 +42,7 @@ loadGM({
 	"cut_clip" : "Cut Clips",
 	"expand_track" : "Expand Track",
 	"colapse_track" : "Collapse Track",
-	"play_clip" : "Play From Playline Position",
+	"play_from_position" : "Play From Playline Position",
 	"pixle2sec" : "pixles to seconds",
 	"rmclip" : "Remove Clip",
 	"clip_in" : "clip in",
@@ -381,7 +381,7 @@ mvSequencer.prototype = {
 			$j('#'+this.timeline_id).html(''+
 				'<div id="'+this.timeline_id+'_left_cnt" class="mv_tl_left_cnt">'+
 					'<div id="'+this.timeline_id+'_head_control" style="position:absolute;top:0px;left:0px;right:0px;height:30px;">' +
-						'<a title="'+gM('play_clip')+'" href="javascript:'+this.instance_name+'.play_jt()">'+
+						'<a title="'+gM('play_from_position')+'" href="javascript:'+this.instance_name+'.play_jt()">'+
 							'<img style="width:16px;height:16px;border:0" src="' + mv_embed_path + 'images/control_play_blue.png">'+												
 						'</a>'+
 						'<a title="'+gM('zoom_in')+'" href="javascript:'+this.instance_name+'.zoom_in()">'+

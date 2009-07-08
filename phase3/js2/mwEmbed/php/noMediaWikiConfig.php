@@ -19,7 +19,11 @@ $wgUseFileCache = true;
 
 $wgEnableScriptLoaderJsFile = false;
 
-$wgEnableScriptLocalization = false;
+
+/*Localization:*/
+$wgEnableScriptLocalization = true;
+$mwLanguageCode = 'en';
+
 $wgContLanguageCode ='';
 
 $wgStyleVersion = '218';
@@ -38,6 +42,9 @@ $wgJsMimeType = 'text/javascript';
 
 //get the autoLoadClasses
 require_once( realpath( dirname(__FILE__) ) . '/jsAutoloadLocalClasses.php' );
+
+//get the messages file:
+require_once( realpath( dirname(__FILE__) ) . '/languages/mwEmbed.i18n.php' );
 
 //get the JSmin class:
 require_once( realpath( dirname(__FILE__) ) . '/minify/JSMin.php' );
@@ -85,5 +92,14 @@ function wfMkdirParents( $dir, $mode = null, $caller = null ) {
 		$mode = $wgDirectoryMode;
 
 	return @mkdir( $dir, $mode, true );  // PHP5 <3
+}
+function wfMsgNoTrans($msgKey){
+    global $messages, $mwLanguageCode;
+
+    if(isset($messages[$mwLanguageCode]) && isset($messages[$mwLanguageCode][$msgKey]) ){
+        return $messages[$mwLanguageCode][$msgKey];
+    }else{
+        return '&lt;' . $msgKey . '&gt;';
+    }
 }
 ?>

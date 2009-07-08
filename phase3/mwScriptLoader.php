@@ -24,12 +24,12 @@
 
 /*
  * mvwScriptLoader:
- * 
+ *
  * some documentation about script-loader:
  * http://www.mediawiki.org/wiki/ScriptLoader
  */
 
-//include WebStart.php 
+//include WebStart.php
 require_once('includes/WebStart.php');
 
 wfProfileIn('mvwScriptLoader.php');
@@ -40,20 +40,25 @@ if( isset( $_SERVER['SCRIPT_URL'] ) ) {
 	$url = $_SERVER['PHP_SELF'];
 }
 
-
 if( strpos($url, "mwScriptLoader$wgScriptExtension") === false){
 	wfHttpError( 403, 'Forbidden',
 		'mvwScriptLoader must be accessed through the primary script entry point.' );
 	return ;
 }
-//Verify the script loader is on: 
+//Verify the script loader is on:
 if (!$wgEnableScriptLoader) {
 	echo '/*ScriptLoader is not enabled for this site. To enable add the following line to your LocalSettings.php';
 	echo '<pre><b>$wgEnableScriptLoader=true;</b></pre>*/';
 	echo 'alert(\'Script loader is disabled\');';
 	die(1);
 }
-//run jsScriptLoader action: 
+
+//load the mwEmbed language file:
+$wgExtensionMessagesFiles['mwEmbed'] = "{$IP}/js2/mwEmbed/php/languages/mwEmbed.i18n.php";
+//enable the msgs before we go on:
+wfLoadExtensionMessages( 'mwEmbed' );
+
+//run jsScriptLoader action:
 $myScriptLoader = new jsScriptLoader();
 $myScriptLoader->doScriptLoader();
 

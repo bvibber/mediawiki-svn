@@ -7,8 +7,10 @@ if ( !defined( 'MEDIAWIKI' ) ){
 
 	//run the main action:
 	$myScriptLoader = new jsScriptLoader();
-	//preset request values via normal $_GET opperation:
+	//preset request values via normal $_GET operation:
 	$myScriptLoader->doScriptLoader();
+}else{
+    $wgExtensionMessagesFiles['mwEmbed'] =  realpath( dirname(__FILE__) ) .'/php/mwEmbed.i18n.php';
 }
 
 //setup page output hook
@@ -359,5 +361,4 @@ class simpleFileCache{
 		}
 	}
 }
-
 ?>
