@@ -118,7 +118,7 @@ class SlippyMap {
 	public function initMap( $mapParams ) {
 		$this->mapId = $mapParams['mapId'];
 		$this->lat = isset( $mapParams['lat'] ) ? $mapParams['lat'] : null;
-		$this->lon = isset( $mapParams['lat'] ) ? $mapParams['lat'] : null;
+		$this->lon = isset( $mapParams['lon'] ) ? $mapParams['lon'] : null;
 		$this->width = isset( $mapParams['w'] ) ? $mapParams['w'] : null;
 		$this->height = isset( $mapParams['h'] ) ? $mapParams['h'] : null;
 		$this->mode = isset( $mapParams['mode'] ) ? $mapParams['mode'] : null;
