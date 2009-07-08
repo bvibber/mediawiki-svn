@@ -24,11 +24,11 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:DelayedDefinition',
 	'author'         => 'Robert Rohde',
 	'description'    => 'Allow for wikicode to be defined separately from where it is displayed',
-	'descriptionmsg' => 'delaydef_desc',
+	'descriptionmsg' => 'delaydef-desc',
 );
-
-$wgAutoloadClasses['ExtDelayedDefinition'] = dirname( __FILE__ ) . '/DelayedDefinition_body.php';
-$wgExtensionMessagesFiles['DelayedDefinition'] = dirname( __FILE__ ) . '/DelayedDefinition.i18n.php';
+$dir = dirname( __FILE__ );
+$wgAutoloadClasses['ExtDelayedDefinition'] = $dir . '/DelayedDefinition_body.php';
+$wgExtensionMessagesFiles['DelayedDefinition'] = $dir . '/DelayedDefinition.i18n.php';
 
 // Load the classes, which then attaches the parser hooks, etc.
 function wfDelayedDefinition() {
