@@ -13,10 +13,7 @@ class UsabilityInitiativeHooks {
 	private static $messages = array();
 	private static $styles = array();
 	private static $scripts = array(
-		array( 'src' => 'Resources/jquery.textSelection.js', 'version' => 1 ),
-		array( 'src' => 'Resources/jquery.cookie.js', 'version' => 1 ),
-		array( 'src' => 'Resources/jquery.async.js', 'version' => 1 ),
-		array( 'src' => 'Resources/jquery.browser.js', 'version' => 1 ),
+		array( 'src' => 'Resources/jquery.combined.js', 'version' => 1 ),
 	);
 	
 	
@@ -35,7 +32,6 @@ class UsabilityInitiativeHooks {
 		if ( !$wgUsabilityInitiativeCoesxistWithMvEmbed ) {
 			self::$scripts = array_merge(
 				array(
-					array( 'src' => 'Resources/jquery.js', 'version' => 1 ),
 					array( 'src' => 'Resources/messages.js', 'version' => 1 ),
 				),
 				self::$scripts
