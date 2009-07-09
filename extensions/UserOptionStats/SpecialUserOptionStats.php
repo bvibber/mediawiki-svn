@@ -21,6 +21,10 @@ class SpecialUserOptionStats extends SpecialPage {
 		global $wgRequest, $wgUser, $wgOut, $wgLang, $wgAutoloadClasses;
 
 		wfLoadExtensionMessages( 'UserOptionStats' );
+
+		$this->setHeaders();
+		$this->outputHeader();
+
 		if ( !class_exists( 'PHPlot' ) && !isset($wgAutoloadClasses['PHPlot'] ) ) {
 			$wgOut->addWikiMsg( 'uos-warn' );
 			return;
