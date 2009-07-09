@@ -7,56 +7,23 @@
  */
 
 class SpecialOptIn extends SpecialPage {
-	
-	/* Static Functions */
-	
-	public static function isOptedIn( $user ) {
-		global $wgOptInPrefs;
-		
-		foreach ( $wgOptInPrefs as $pref => $value ) {
-			if ( $user->getOption( $pref ) != $value ) {
-				return false;
-			}
-		}
-		return true;
-	}
-	
-	public static function optIn( $user ) {
-		global $wgOptInPrefs;
-		
-		foreach ( $wgOptInPrefs as $pref => $value ) {
-			$user->setOption( $pref, $value );
-		}
-		$user->saveSettings();
-	}
-	
-	public static function optOut( $user ) {
-		global $wgOptInPrefs;
-		
-		foreach ( $wgOptInPrefs as $pref => $value ) {
-			$user->setOption( $pref, null );
-		}
-		$user->saveSettings();
-	}
-	
-	/* Functions */
-	
-	public function __construct() {
+	function __construct() {
 		parent::__construct( 'OptIn' );
 		wfLoadExtensionMessages( 'OptIn' );
 	}
-	
-	public function execute( $par ) {
+
+	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
-		
 		$this->setHeaders();
 		$wgOut->setPageTitle( wfMsg( 'optin-title' ) );
+
 		if ( $wgUser->isAnon() ) {
 			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
 				array( 'returnto' => $this->getTitle()->getPrefixedUrl() ) );
 			$wgOut->wrapWikiMsg( "<div class='plainlinks'>\n$1\n</div>", array( 'optin-needlogin', $url ) );
 			return;
 		}
+
 		if ( $wgRequest->wasPosted() ) {
 			if ( $wgRequest->getVal( 'opt' ) === 'in' ) {
 				self::optIn( $wgUser );
@@ -70,16 +37,13 @@ class SpecialOptIn extends SpecialPage {
 		$this->showForm();
 	}
 
-	/* Private Functions */
-	
-	private function showForm() {
+	function showForm() {
 		global $wgUser, $wgOut;
-		
 		$wgOut->addHTML( Xml::openElement( 'form', array(
 			'method' => 'post',
 			'action' => $this->getTitle()->getLinkURL()
 		) ) );
-		$opt = ( self::isOptedIn( $wgUser ) ? 'out' : 'in' );
+		$opt = ( self::( $wgUser ) ? 'out' : 'in' );
 		if ( $opt == 'out' ) {
 			$wgOut->addWikiMsg( 'optin-survey-intro' );
 			$this->showSurvey();
@@ -97,9 +61,8 @@ class SpecialOptIn extends SpecialPage {
 		$wgOut->addWikiMsg( 'optin-improvements' );
 	}
 	
-	private function showOptInButtons() {
+	function showOptInButtons() {
 		global $wgOut, $wgOptInStyleVersion;
-		
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addStyle( 'OptIn/OptIn.css',
 				$wgOptInStyleVersion );
@@ -144,12 +107,38 @@ class SpecialOptIn extends SpecialPage {
 		);
 	}
 
-	private function showSurvey() {
+	static function isOptedIn( $user ) {
+		global $wgOptInPrefs;
+		foreach ( $wgOptInPrefs as $pref => $value ) {
+			if ( $user->getOption( $pref ) != $value ) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	static function optIn( $user ) {
+		global $wgOptInPrefs;
+		foreach ( $wgOptInPrefs as $pref => $value ) {
+			$user->setOption( $pref, $value );
+		}
+		$user->saveSettings();
+	}
+
+	static function optOut( $user ) {
+		global $wgOptInPrefs;
+		foreach ( $wgOptInPrefs as $pref => $value ) {
+			$user->setOption( $pref, null );
+		}
+		$user->saveSettings();
+	}
+
+	function showSurvey() {
 		global $wgOptInSurvey, $wgOut, $wgOptInStyleVersion;
-		
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
 			$wgOptInStyleVersion );
+
 		$retval = Xml::openElement( 'table' );
 		foreach ( $wgOptInSurvey as $id => $question ) {
 			switch ( $question['type'] ) {
@@ -247,9 +236,8 @@ class SpecialOptIn extends SpecialPage {
 		$wgOut->addHTML( $retval );
 	}
 
-	private function saveSurvey() {
+	function saveSurvey() {
 		global $wgRequest, $wgUser, $wgOptInSurvey;
-		
 		$dbw = wfGetDb( DB_MASTER );
 		$now = $dbw->timestamp( wfTimestamp() );
 		// var_dump($wgRequest->data); die();
