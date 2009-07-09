@@ -39,7 +39,9 @@ div.optin-accept div div div div a {
 	background-repeat: no-repeat;
 	display: block;
 	text-align: center;
-	padding: 1em;
+	padding-top: 1em;
+	padding-left: 1.25em;
+	padding-right: 1.25em;
 	padding-bottom: 0.75em;
 	margin: 0;
 	cursor: pointer;
@@ -76,7 +78,9 @@ div.optin-deny div div div div a {
 	background-repeat: no-repeat;
 	display: block;
 	text-align: center;
-	padding: 1em;
+	padding-top: 1em;
+	padding-left: 1.25em;
+	padding-right: 1.25em;
 	padding-bottom: 0.75em;
 	margin: 0;
 	cursor: pointer;
