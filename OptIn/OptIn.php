@@ -93,3 +93,6 @@ $wgSpecialPages['OptIn'] = 'SpecialOptIn';
 $wgSpecialPageGroups['OptIn'] = 'wiki';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'OptInHooks::schema';
+
+$wgHooks['PersonalUrls'][] = 'OptInHooks::personalUrls';
+

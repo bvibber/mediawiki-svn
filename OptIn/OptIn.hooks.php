@@ -11,8 +11,17 @@ class OptInHooks {
 	/* Static Functions */
 	public static function schema() {
 		global $wgExtNewTables;
-		$wgExtNewTables[] = array( 'optin_survey',
-			dirname( __FILE__ ) . '/OptIn.sql' );
+		$wgExtNewTables[] = array(
+			'optin_survey',
+			dirname( __FILE__ ) . '/OptIn.sql'
+		);
+		return true;
+	}
+	
+	public static function personalUrls( &$personal_urls, &$title ) {
+		
+		
+		
 		return true;
 	}
 }
