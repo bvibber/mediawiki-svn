@@ -49,7 +49,8 @@ class SpecialOptIn extends SpecialPage {
 			$this->showSurvey();
 		}
 		else
-			$wgOut->addWikiMsg( 'optin-intro' );
+			$wgOut->addHTML( Xml::tags( 'div', array( 'class' => 'optin-intro' ),
+				wfMsg( 'optin-intro' ) ) );
 		$wgOut->addHTML( Xml::hidden( 'opt', $opt ) );
 		// Uses the optin-submit-in or optin-submit-out message
 		if ( $opt == 'in' )
