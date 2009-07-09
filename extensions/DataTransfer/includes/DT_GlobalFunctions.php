@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('DT_VERSION','0.3.1');
+define('DT_VERSION','0.3.2');
 
 // constants for special properties
 define('DT_SP_HAS_XML_GROUPING', 1);
@@ -36,6 +36,7 @@ $wgJobClasses['dtImport'] = 'DTImportJob';
 $wgAutoloadClasses['DTImportJob'] = $dtgIP . '/includes/DT_ImportJob.php';
 $wgAutoloadClasses['DTXMLParser'] = $dtgIP . '/includes/DT_XMLParser.php';
 $wgHooks['AdminLinks'][] = 'dtfAddToAdminLinks';
+$wgHooks['smwInitProperties'][] = 'dtfInitProperties';
 
 require_once($dtgIP . '/languages/DT_Language.php');
 $wgExtensionMessagesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Messages.php';
@@ -99,6 +100,15 @@ function dtfInitUserLanguage($langcode) {
 /**********************************************/
 /***** other global helpers               *****/
 /**********************************************/
+
+function dtfInitProperties() {
+	global $dtgContLang;
+	$dt_props = $dtgContLang->getPropertyLabels();
+	SMWPropertyValue::registerProperty('_DT_XG', '_str', $dt_props[DT_SP_HAS_XML_GROUPING], true);
+	// TODO - this should set a "backup" English value as well,
+	// so that the phrase "Has XML grouping" works in all languages
+	return true;
+}
 
 /**
  * Add links to the 'AdminLinks' special page, defined by the Admin Links
