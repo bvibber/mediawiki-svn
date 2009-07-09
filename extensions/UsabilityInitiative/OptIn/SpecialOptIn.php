@@ -58,7 +58,11 @@ class SpecialOptIn extends SpecialPage {
 		if ( $this->mOriginTitle )
 			$this->mOrigin = $this->mOriginTitle->getPrefixedText();
 		$this->setHeaders();
-		$wgOut->setPageTitle( wfMsg( 'optin-title' ) );
+		
+		if ( self::isOptedIn( $wgUser ) )
+			$wgOut->setPageTitle( wfMsg( 'optin-title-optedin' ) );
+		else
+			$wgOut->setPageTitle( wfMsg( 'optin-title-optedout' ) );
 
 		if ( $wgUser->isAnon() ) {
 			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(

@@ -14,7 +14,8 @@ $messages = array();
 $messages['en'] = array(
 	'optin' => 'Usability Initiative opt in',
 	'optin-desc' => 'Allow users to opt in to the Usability Initiative\'s usability enhancements',
-	'optin-title' => 'Opt-in for improved usability',
+	'optin-title-optedout' => 'Opt-in to improved usability',
+	'optin-title-optedin' => 'Opt-out of improved usability',
 	'optin-needlogin' => 'You need to [$1 log in] to opt in to the Usability Initiative\'s usability enhancements.',
 	'optin-intro' => 'The Wikipedia Usability Initiative has been working hard to improve the usability of Wikipedia.
 To try some of the new enhancements, click below.',
