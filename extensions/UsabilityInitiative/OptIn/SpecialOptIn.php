@@ -7,20 +7,56 @@
  */
 
 class SpecialOptIn extends SpecialPage {
+	
+	/* Members */
+	
 	private $mOrigin = '';
 	private $mOriginTitle = null;
 	
-	function __construct() {
+	/* Static Functions */
+	
+	public static function isOptedIn( $user ) {
+		global $wgOptInPrefs;
+		
+		foreach ( $wgOptInPrefs as $pref => $value ) {
+			if ( $user->getOption( $pref ) != $value ) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static function optIn( $user ) {
+		global $wgOptInPrefs;
+		
+		foreach ( $wgOptInPrefs as $pref => $value ) {
+			$user->setOption( $pref, $value );
+		}
+		$user->saveSettings();
+	}
+
+	public static function optOut( $user ) {
+		global $wgOptInPrefs;
+		
+		foreach ( $wgOptInPrefs as $pref => $value ) {
+			$user->setOption( $pref, null );
+		}
+		$user->saveSettings();
+	}
+	
+	/* Functions */
+	
+	public function __construct() {
 		parent::__construct( 'OptIn' );
 		wfLoadExtensionMessages( 'OptIn' );
 	}
 
-	function execute( $par ) {
+	public function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
+		
 		$this->mOriginTitle = Title::newFromText( $par );
 		if ( $this->mOriginTitle )
 			$this->mOrigin = $this->mOriginTitle->getPrefixedText();
-		
 		$this->setHeaders();
 		$wgOut->setPageTitle( wfMsg( 'optin-title' ) );
 
@@ -48,9 +84,12 @@ class SpecialOptIn extends SpecialPage {
 		else
 			$this->showForm();
 	}
+	
+	/* Private Functions */
 
-	function showForm() {
+	private function showForm() {
 		global $wgUser, $wgOut;
+		
 		$wgOut->addHTML( Xml::openElement( 'form', array(
 			'method' => 'post',
 			'action' => $this->getTitle()->getLinkURL()
@@ -75,6 +114,7 @@ class SpecialOptIn extends SpecialPage {
 	
 	function showOptInButtons() {
 		global $wgOut, $wgOptInStyleVersion;
+		
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addStyle( 'OptIn/OptIn.css',
 				$wgOptInStyleVersion );
@@ -119,38 +159,12 @@ class SpecialOptIn extends SpecialPage {
 		);
 	}
 
-	function isOptedIn( $user ) {
-		global $wgOptInPrefs;
-		foreach ( $wgOptInPrefs as $pref => $value ) {
-			if ( $user->getOption( $pref ) != $value ) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	function optIn( $user ) {
-		global $wgOptInPrefs;
-		foreach ( $wgOptInPrefs as $pref => $value ) {
-			$user->setOption( $pref, $value );
-		}
-		$user->saveSettings();
-	}
-
-	function optOut( $user ) {
-		global $wgOptInPrefs;
-		foreach ( $wgOptInPrefs as $pref => $value ) {
-			$user->setOption( $pref, null );
-		}
-		$user->saveSettings();
-	}
-
-	function showSurvey() {
+	private function showSurvey() {
 		global $wgOptInSurvey, $wgOut, $wgOptInStyleVersion;
+		
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
 			$wgOptInStyleVersion );
-
 		$retval = Xml::openElement( 'table' );
 		foreach ( $wgOptInSurvey as $id => $question ) {
 			switch ( $question['type'] ) {
@@ -248,8 +262,9 @@ class SpecialOptIn extends SpecialPage {
 		$wgOut->addHTML( $retval );
 	}
 
-	function saveSurvey() {
+	private function saveSurvey() {
 		global $wgRequest, $wgUser, $wgOptInSurvey;
+		
 		$dbw = wfGetDb( DB_MASTER );
 		$now = $dbw->timestamp( wfTimestamp() );
 		// var_dump($wgRequest->data); die();
