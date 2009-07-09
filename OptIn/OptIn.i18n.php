@@ -29,6 +29,7 @@ You can opt back in at any time by clicking {{int:optin-submit-in}} below.',
 	'optin-deny-short' => 'No thank you',
 	'optin-deny-long' => 'return to previous page',
 	'optin-submit-out' => 'Opt out',
+	'optin-leave' => 'Opt-out of Beta',
 	'optin-survey-intro' => "Thank you for trying the Usability Initiative's usability enhancements.
 You can opt out by clicking \"{{int:optin-submit-out}}\" at the bottom of this page.
 

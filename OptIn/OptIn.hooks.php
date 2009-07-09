@@ -19,9 +19,20 @@ class OptInHooks {
 	}
 	
 	public static function personalUrls( &$personal_urls, &$title ) {
+		global $wgUser;
 		
-		
-		
+		if ( SpecialOptIn::isOptedIn( $wgUser ) ) {
+			wfLoadExtensionMessages( 'OptIn' );
+			$personal_urls = array_merge(
+				array(
+					'optout' => array(
+						'text' => wfMsg( 'optin-leave' ),
+						'href' => SpecialPage::getTitleFor( 'UsabilityInitiativeOptIn' )->getFullURL()
+					)
+				),
+				$personal_urls
+			);
+		}
 		return true;
 	}
 }
