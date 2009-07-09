@@ -415,10 +415,9 @@ mvAdvFirefogg.prototype = {
 		js_log('tw:' + $j(this.selector).width() + 
 				'ssf:' + $j(this.target_btn_select_new_file).width() + 
 				'sf:' +	 $j(this.target_btn_save_local_file).width() );
-			
-		var tiwidth = $j(this.selector).width() - ( $j(this.target_btn_select_new_file).width() +
-			$j(this.target_btn_save_local_file).width() + 80 );	
-		$j(this.target_input_file_name).width( tiwidth );
+		
+		//set width to 250
+		$j(this.target_input_file_name).width( 250 );
 		
 		//special preset action: 
 		$j(this.selector + ' ._preset_select').change(function(){
