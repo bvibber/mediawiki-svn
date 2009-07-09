@@ -59,10 +59,22 @@ class SpecialOptIn extends SpecialPage {
 			$this->mOrigin = $this->mOriginTitle->getPrefixedText();
 		$this->setHeaders();
 		
-		if ( self::isOptedIn( $wgUser ) )
-			$wgOut->setPageTitle( wfMsg( 'optin-title-optedin' ) );
+		if ( self::isOptedIn( $wgUser ) ) {
+			if ( $wgRequest->getVal( 'opt' ) == 'out' )
+				// Just opted out
+				$wgOut->setPageTitle( wfMsg( 'optin-title-justoptedout' ) );
+			else
+				// About to opt out
+				$wgOut->setPageTitle( wfMsg( 'optin-title-optedin' ) );
+		}
 		else
-			$wgOut->setPageTitle( wfMsg( 'optin-title-optedout' ) );
+		{
+			if ( $wgRequest->getVal( 'opt' ) == 'in' )
+				// Just opted in
+				$wgOut->setPageTitle( wfMsg( 'optin-title-justoptedin' ) );
+			else
+				$wgOut->setPageTitle( wfMsg( 'optin-title-optedout' ) );
+		}
 
 		if ( $wgUser->isAnon() ) {
 			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
@@ -82,7 +94,6 @@ class SpecialOptIn extends SpecialPage {
 				self::optOut( $wgUser );
 				$this->saveSurvey();
 				$wgOut->addWikiMsg( 'optin-success-out' );
-				$this->showForm();
 			}
 		}
 		else
