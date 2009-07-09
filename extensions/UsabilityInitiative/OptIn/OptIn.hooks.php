@@ -46,7 +46,8 @@ class OptInHooks {
 									wfMsg( 'optin-try' ),
 						'href' => SpecialPage::getTitleFor(
 							'UsabilityInitiativeOptIn', $title->getFullText()
-						)->getLocalUrl()
+						)->getLocalUrl(),
+						'class' => 'no-text-transform'
 					)
 				),
 				$personal_urls
