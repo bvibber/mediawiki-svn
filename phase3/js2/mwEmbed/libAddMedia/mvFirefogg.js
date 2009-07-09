@@ -413,7 +413,8 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	},
 	//doChunkUpload does both uploading and encoding at the same time and uploads one meg chunks as they are ready
 	doChunkUpload : function(){
-		var _this = this;						
+		var _this = this;			
+		_this.action_done = false;			
 		
 		//extension should already be ogg but since its user editable,
 		//check again
@@ -461,6 +462,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	//doEncode and monitor progress:
 	doEncode : function(){	
 		var _this = this;
+		_this.action_done = false;
 		_this.dispProgressOverlay();				
 		js_log('doEncode: with: ' +  JSON.stringify( _this.encoder_settings ) );
 		_this.fogg.encode( JSON.stringify( _this.encoder_settings ) );			  
@@ -548,6 +550,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				}						
 				if(apiResult && _this.apiUpdateErrorCheck( apiResult ) === false){					
 					//stop status update we have an error
+					_this.action_done = true;
 					_this.fogg.cancel();
 					return false; 
 				}		
@@ -594,10 +597,13 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	  	    if(navigator.oscpu && navigator.oscpu.search('Win') >= 0){
 	  	         alert( 'sorry we do not yet support cancel on windows' );
 	  	    }else{
+	  	    	this.action_done = true;
 	  	        this.fogg.cancel();
 	  	        $j(dlElm).dialog('close');
 	  	    }
-	  	}  
+	  	} else{	 	  		
+	  		return false;
+	  	} 
 	},
 	/**
 	* procPageResponse should be faded out in favor of the upload api soon.. 

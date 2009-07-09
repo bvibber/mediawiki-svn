@@ -522,9 +522,9 @@ mvBaseUploadInterface.prototype = {
 		  modal: true,
 		  width:400,
 		  heigh:200,
-		  beforeclose: function(event, ui) {	 			  
-			  if( event.button==0 || _this.action_done===false){			   				  
-				_this.cancel_action();
+		  beforeclose: function(event, ui) {	 			  	   
+			  if( event.button==0 && _this.action_done === false){					  		   				 
+				return _this.cancel_action();
 			  }else{
 				 //click on button (dont do close action);
 				 return true; 
@@ -554,16 +554,19 @@ mvBaseUploadInterface.prototype = {
 	   var _this = this;
 	   var cancelBtn = new Array();
 	   cancelBtn[ gM('cancel-button') ] =  function(){  
-	   		_this.cancel_action(this); 
+	   		return _this.cancel_action(this) 
 	   };
 	   return cancelBtn;
 	},	
 	cancel_action:function(dlElm){
 		//confirm:	
 		if( confirm( gM('mv-cancel-confim') )){
+			alert("do dialog close:: cancel_action mvbase");
 			//@@todo (cancel the encode / upload)
-			//$j(dlElm).dialog('close');
-			alert('(sorry we do not yet support cancel)');
+			$j(dlElm).dialog('close');
+			return false;			
+		}else{
+			return true;
 		}  
 	}
 };
