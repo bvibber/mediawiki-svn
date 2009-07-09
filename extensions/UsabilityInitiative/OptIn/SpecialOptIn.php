@@ -52,8 +52,57 @@ class SpecialOptIn extends SpecialPage {
 			$wgOut->addWikiMsg( 'optin-intro' );
 		$wgOut->addHTML( Xml::hidden( 'opt', $opt ) );
 		// Uses the optin-submit-in or optin-submit-out message
-		$wgOut->addHTML( Xml::submitButton( wfMsg( "optin-submit-$opt" ) ) );
+		if ( $opt == 'in' )
+			$this->showOptInButtons();
+		else
+			$wgOut->addHTML( Xml::submitButton( wfMsg( "optin-submit-out" ) ) );
 		$wgOut->addHTML( Xml::closeElement( 'form' ) );
+		$wgOut->addWikiMsg( 'optin-improvements' );
+	}
+	
+	function showOptInButtons() {
+		global $wgOut, $wgOptInStyleVersion;
+		UsabilityInitiativeHooks::initialize();
+		UsabilityInitiativeHooks::addStyle( 'OptIn/OptIn.css',
+				$wgOptInStyleVersion );
+		$wgOut->addHTML(
+			Xml::tags( 'div', array( 'class' => 'optin-accept' ),
+				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
+					Xml::tags( 'a', array(), // TODO: target
+						Xml::element( 'span',
+							array( 'class' => 'optin-button-shorttext' ),
+							wfMsg( 'optin-accept-short' )
+						) .
+						Xml::element( 'br' ) .
+						Xml::element( 'span',
+							array( 'class' => 'optin-button-longtext' ),
+							wfMsg( 'optin-accept-long' )
+						)
+					)
+				) ) ) )
+			) . "&nbsp; " .
+			Xml::tags( 'div', array( 'class' => 'optin-deny' ),
+				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
+					Xml::tags( 'a', array(), // TODO: target
+						Xml::element( 'span',
+							array( 'class' => 'optin-button-shorttext' ),
+							wfMsg( 'optin-deny-short' )
+						) .
+						Xml::element( 'br' ) .
+						Xml::element( 'span',
+							array( 'class' => 'optin-button-longtext' ),
+							wfMsg( 'optin-deny-long' )
+						)
+					)
+				) ) ) )
+			)
+		);
 	}
 
 	function isOptedIn( $user ) {
@@ -84,6 +133,7 @@ class SpecialOptIn extends SpecialPage {
 
 	function showSurvey() {
 		global $wgOptInSurvey, $wgOut, $wgOptInStyleVersion;
+		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
 			$wgOptInStyleVersion );
 
