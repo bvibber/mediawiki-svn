@@ -74,7 +74,7 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-answer-os-windows' => 'Windows',
 	'optin-survey-answer-os-macos' => 'Mac OS',
 	'optin-survey-answer-os-linux' => 'Linux',
-	'optin-survey-answer-os-other' => 'Other:',
+	'optin-survey-answer-os-other' => 'Other operating system:',
 	'optin-survey-question-res' => 'What is the resolution of your screen?',
 	'optin-improvements' => "== What has been improved? ==
 [[File:UsabilityNavigation.png|right]]
