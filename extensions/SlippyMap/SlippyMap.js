@@ -48,7 +48,6 @@ var layer = null;
 
 if (autoInitMaps) {
 	addOnloadHook(slippymap_init);
-	addOnloadHook(prepPopupMap);
 }
 	
 function slippymap_init() {
