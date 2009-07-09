@@ -8,7 +8,7 @@ $( document ).ready( function() {
 		else
 			$( '#' + $(this).attr( 'id' ) + '-other' ).hide();
 	});
-	$( '.optin-other-radios' ).click( function() {
+	$( '.optin-other-radios, .optin-other-checks' ).click( function() {
 		$(this).prev().prev().click();
 	});
 	// Detect screen resolution

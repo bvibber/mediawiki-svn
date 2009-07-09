@@ -239,6 +239,32 @@ class SpecialOptIn extends SpecialPage {
 				$retval .= Xml::closeElement( 'td' );
 				$retval .= Xml::closeElement( 'tr' );
 			break;
+			case 'checkboxes':
+				$retval .= Xml::openElement( 'tr' );
+				$retval .= Xml::tags( 'td',
+					array( 'valign' => 'top' ),
+					wfMsgWikiHtml( $question['question'] ) );
+				$retval .= Xml::openElement( 'td',
+					array( 'valign' => 'top' ) );
+				$checkboxes = array();
+				foreach ( $question['answers'] as $aid => $answer ) {
+					$checkboxes[] = Xml::checkLabel( wfMsg( $answer ),
+						"survey-{$id}[]", "survey-$id-$aid", false,
+						array( 'value' => $aid ) );
+				}
+				if ( isset( $question['other'] ) ) {
+					$checkboxes[] = Xml::checkLabel( wfMsg( $question['other'] ),
+						"survey-{$id}[]", "survey-$id-other-check", false,
+						array( 'value' => 'other' ) ) .
+						'&nbsp;' .
+						Xml::input( "survey-$id-other",
+							false, false,
+							array( 'class' => 'optin-other-checks' ) );
+				}
+				$retval .= implode( Xml::element( 'br' ), $checkboxes );
+				$retval .= Xml::closeElement( 'td' );
+				$retval .= Xml::closeElement( 'tr' );
+			break;
 			case 'resolution':
 				$retval .= Xml::openElement( 'tr' );
 				$retval .= Xml::tags( 'td',
@@ -305,6 +331,11 @@ class SpecialOptIn extends SpecialPage {
 					$insert['ois_answer'] = intval( $answer );
 					$insert['ois_answer_data'] = null;
 				}
+			break;
+			case 'checkboxes':
+				$checked = array_map( 'intval', $wgRequest->getArray( "survey-$id" ) );
+				$insert['ois_answer'] = ( count( $checked ) ? implode( ',', $checked ) : null );
+				$insert['ois_answer_data'] = ( in_array( 'other', $checked ) ? $wgRequest->getVal( "survey-$id-other" ) : null );
 			break;
 			case 'resolution':
 				$x = $wgRequest->getVal( "survey-$id-x" );

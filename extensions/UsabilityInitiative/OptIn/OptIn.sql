@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS /*_*/optin_survey (
 	ois_question int unsigned NOT NULL,
 
 	-- Answer ID (key in $wgOptInSurvey[ois_question]['answers'])
-	ois_answer int unsigned NULL,
+	ois_answer text NULL,
 
 	-- Optional text associated with the answer
 	ois_answer_data text NULL
