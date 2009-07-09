@@ -83,7 +83,7 @@ class SpecialOptIn extends SpecialPage {
 						)
 					)
 				) ) ) )
-			) . "&nbsp; " .
+			) .
 			Xml::tags( 'div', array( 'class' => 'optin-deny' ),
 				Xml::tags( 'div', array(),
 				Xml::tags( 'div', array(),
@@ -102,7 +102,7 @@ class SpecialOptIn extends SpecialPage {
 					)
 				) ) ) )
 			) .
-			Xml::element( 'div', array( 'style' => 'clear: both; ' ) )
+			Xml::element( 'div', array( 'style' => 'clear: both; ' ), '', false )
 		);
 	}
 
