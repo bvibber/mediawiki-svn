@@ -42,7 +42,7 @@ $wgOptInPrefs = array( 'skin' => 'vector', 'usebetatoolbar' => 1 );
 // Survey questions to ask when users opt out
 $wgOptInSurvey = array(
 	array(	'question' => 'optin-survey-question-whyoptout',
-		'type' => 'radios',
+		'type' => 'checkboxes',
 		'answers' => array(
 			'optin-survey-answer-whyoptout-didntlike',
 			'optin-survey-answer-whyoptout-hard',
@@ -70,7 +70,6 @@ $wgOptInSurvey = array(
 	array(	'question' => 'optin-survey-question-os',
 		'type' => 'dropdown',
 		'answers' => array(
-			// TODO: Add more
 			'optin-survey-answer-os-windows',
 			'optin-survey-answer-os-macos',
 			'optin-survey-answer-os-linux' ),
