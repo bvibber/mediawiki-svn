@@ -24,3 +24,7 @@ $wgAvailableRights[] = 'datatransferimport';
 
 // load global functions
 require_once('DT_GlobalFunctions.php');
+
+// initialize content language
+global $wgLanguageCode;
+dtfInitContentLanguage($wgLanguageCode);
