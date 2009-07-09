@@ -14,16 +14,17 @@ $messages = array();
 $messages['en'] = array(
 	'optin' => 'Usability Initiative opt in',
 	'optin-desc' => 'Allow users to opt in to the Usability Initiative\'s usability enhancements',
-	'optin-title' => 'Opt-in for Improved Usability',
+	'optin-title' => 'Opt-in for improved usability',
 	'optin-needlogin' => 'You need to [$1 log in] to opt in to the Usability Initiative\'s usability enhancements.',
-	'optin-intro' => 'The Wikipedia Usability Initiative has been working hard to improve the usability of Wikipedia. To try some of the new enhancements, click below.',
+	'optin-intro' => 'The Wikipedia Usability Initiative has been working hard to improve the usability of Wikipedia.
+To try some of the new enhancements, click below.',
 	'optin-success-in' => 'You have successfully opted in to the Usability Initiative\'s usability enhancements.
 You can opt back out at any time by clicking "{{int:optin-submit-out}}" below.',
 	'optin-success-out' => 'You have successfully opted out of the Usability Initiative\'s usability enhancements.
 You can opt back in at any time by clicking {{int:optin-submit-in}} below.',
 	'optin-accept-short' => 'Let\'s do it!',
 	'optin-accept-long' => 'opt-in to beta',
-	'optin-deny-short' => 'No thanks',
+	'optin-deny-short' => 'No thank you',
 	'optin-deny-long' => 'return to previous page',
 	'optin-submit-out' => 'Opt out',
 	'optin-survey-intro' => "Thank you for trying the Usability Initiative's usability enhancements.
@@ -59,7 +60,27 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-answer-os-other' => 'Other:',
 	'optin-survey-question-res' => 'What is the resolution of your screen?',
 	'optin-survey-question-feedback' => 'Please let us know your feedback:',
-	'optin-improvements' => "== What's been improved? ==\n[[File:UsabilityNavigation.png|right]]\n;Enhanced navigation\nClear indication of the state of \"read\" and \"edit\" whether you are on an article or a discussion page. The search box is moved from the left navigation bar to the top right corner for easier access and quicker searching.\n<div style=\"clear:both;\"></div>\n\n[[File:UsabilityToolbar.png|right]]\n;Edit toolbar improvements\nAn expandable edit toolbar hides infrequently used tool icons. Power users can expand the toolbar to access specialized icons. Help references (cheat sheet) are built into the toolbar. Toolbar icons were redesigned by using Tango and Gnome icons.\n<div style=\"clear:both;\"></div>\n\n[[File:UsabilitySearch.png|right]]\n;Improved search interface\nAs the search result page is often the entry point to an article, titles of results are laid out to increase visibility and infrequently needed information is reduced.\n<div style=\"clear:both;\"></div>\n\n;General aesthetic improvements\nMinimal aesthetic improvements have been applied for visual enhancements and redundant information has been removed.",
+	'optin-improvements' => "== What has been improved? ==
+[[File:UsabilityNavigation.png|right]]
+;Enhanced navigation
+Clear indication of the state of \"read\" and \"edit\" whether you are on an article or a discussion page.
+The search box is moved from the left navigation bar to the top right corner for easier access and quicker searching.
+<div style=\"clear:both;\"></div>
+
+[[File:UsabilityToolbar.png|right]]
+;Edit toolbar improvements
+An expandable edit toolbar hides infrequently used tool icons.
+Power users can expand the toolbar to access specialized icons.
+Help references (cheat sheet) are built into the toolbar.
+Toolbar icons were redesigned by using Tango and Gnome icons.
+<div style=\"clear:both;\"></div>
+
+[[File:UsabilitySearch.png|right]]
+;Improved search interface\nAs the search result page is often the entry point to an article, titles of results are laid out to increase visibility and infrequently needed information is reduced.
+<div style=\"clear:both;\"></div>
+
+;General aesthetic improvements
+Minimal aesthetic improvements have been applied for visual enhancements and redundant information has been removed.",
 );
 
 /** Message documentation (Message documentation)
