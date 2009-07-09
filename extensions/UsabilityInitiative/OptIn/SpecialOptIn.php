@@ -97,7 +97,7 @@ class SpecialOptIn extends SpecialPage {
 		$wgOut->addHTML( Xml::openElement( 'form', array(
 			'method' => 'post',
 			'action' => $this->getTitle()->getLinkURL(),
-			'class' => 'optin-survey',
+			'id' => 'optin-survey',
 		) ) );
 		$opt = ( self::isOptedIn( $wgUser ) ? 'out' : 'in' );
 		if ( $opt == 'out' ) {
