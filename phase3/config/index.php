@@ -720,7 +720,7 @@ if( $conf->SysopName ) {
 		# Various password checks
 		if( $conf->SysopPass != '' ) {
 			if( $conf->SysopPass == $conf->SysopPass2 ) {
-				if( !$u->isValidPassword( $conf->SysopPass ) ) {
+				if( $u->isValidPassword( $conf->SysopPass ) !== true ) {
 					$errs['SysopPass'] = "Bad password";
 				}
 			} else {
@@ -849,6 +849,8 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			define( 'STDERR', fopen("php://stderr", "wb"));
 		$wgUseDatabaseMessages = false; /* FIXME: For database failure */
 		require_once( "$IP/includes/Setup.php" );
+		Language::getLocalisationCache()->disableBackend();
+		
 		chdir( "config" );
 
 		$wgTitle = Title::newFromText( "Installation script" );
@@ -1188,7 +1190,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				$res = $wgDatabase->query( 'SHOW ENGINES' );
 				$found = false;
 				while ( $row = $wgDatabase->fetchObject( $res ) ) {
-					if ( $row->Engine == $conf->DBengine ) {
+					if ( $row->Engine == $conf->DBengine && ( $row->Support == 'YES' || $row->Support == 'DEFAULT' ) ) {
 						$found = true;
 						break;
 					}
@@ -1361,7 +1363,7 @@ if( count( $errs ) ) {
 		<ul class="plain">
 		<li><?php aField( $conf, "License", "No license metadata", "radio", "none" ); ?></li>
 		<li><?php aField( $conf, "License", "Public Domain", "radio", "pd" ); ?></li>
-		<li><?php aField( $conf, "License", "GNU Free Documentation License 1.2 (Wikipedia-compatible)", "radio", "gfdl1_2" ); ?></li>
+		<li><?php aField( $conf, "License", "GNU Free Documentation License 1.2", "radio", "gfdl1_2" ); ?></li>
 		<li><?php aField( $conf, "License", "GNU Free Documentation License 1.3", "radio", "gfdl1_3" ); ?></li>
 		<li><?php
 			aField( $conf, "License", "A Creative Commons license - ", "radio", "cc" );
@@ -1941,6 +1943,11 @@ if ( \$wgCommandLineMode ) {
 ## If you have the appropriate support software installed
 ## you can enable inline LaTeX equations:
 \$wgUseTeX           = false;
+
+## Set \$wgCacheDirectory to a writable directory on the web server
+## to make your wiki go slightly faster. The directory should not
+## be publically accessible from the web.
+#\$wgCacheDirectory = \"\$IP/cache\";
 
 \$wgLocalInterwiki   = strtolower( \$wgSitename );
 

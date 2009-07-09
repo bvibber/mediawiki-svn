@@ -73,7 +73,7 @@ function doJsonMerge($json_txt){
 }
 
 //rebuild and output to file
-if( file_put_contents($mwLangFilePath, trim($preFile) . "\n" . trim($msgSet) . "\n" . trim($postFile) . "\n\n")){
+if( file_put_contents($mwLangFilePath, trim($preFile) . "\n" . trim($msgSet) . "\n" . trim($postFile))){
     print "updated $mwLangFilePath file\n";
     exit();
 }

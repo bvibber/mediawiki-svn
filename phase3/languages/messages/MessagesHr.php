@@ -713,7 +713,8 @@ Provjerite jeste li točno upisali, ili [[Special:UserLogin/signup|otvorite novi
 'nouserspecified'            => 'Molimo navedite suradničko ime.',
 'wrongpassword'              => 'Lozinka koju ste unijeli nije ispravna. Pokušajte ponovno.',
 'wrongpasswordempty'         => 'Niste unijeli lozinku. Pokušajte ponovno.',
-'passwordtooshort'           => 'Vaša je lozinka nevaljana ili prekratka. Lozinka mora sadržavati najmanje {{PLURAL:$1|1 znak|$1 znakova}} i mora biti različita od imena.',
+'passwordtooshort'           => 'Vaša je lozinka prekratka. Lozinka mora sadržavati najmanje {{PLURAL:$1|1 znak|$1 znakova}}.',
+'password-name-match'        => 'Vaša lozinka mora biti različita od vašeg suradničkog imena.',
 'mailmypassword'             => 'Pošalji mi novu lozinku',
 'passwordremindertitle'      => '{{SITENAME}}: nova lozinka.',
 'passwordremindertext'       => 'Netko je (vjerojatno vi, s IP adrese $1) zatražio novu lozinku za projekt {{SITENAME}} ($4).
@@ -899,7 +900,7 @@ Također nam obećavate da ste ovo sami napisali, ili da ste to prepisali iz ne�
 'copyrightwarning2'                => "Svi doprinosi {{SITENAME}} mogu biti mijenjani od strane svih suradnika. Ako ne želite da se vaše pisanje nemilosrdno uređuje, nemojte ga slati ovdje.<br /> Također nam obećavate da ste ovo sami napisali, ili da ste to prepisali iz nečeg što je u javnom vlasništvu ili pod sličnom slobodnom licencijom (vidi $1 za detalje). '''NE STAVLJAJTE ZAŠTIĆENE RADOVE BEZ DOPUŠTENJA!'''",
 'longpagewarning'                  => 'PAŽNJA: Ova stranica je dugačka $1 kilobajta; neki bi preglednici mogli imati problema pri uređivanju stranica koje se približavaju ili su duže od 32 kb.
 Molimo razmislite o rastavljanju stranice na manje odjeljke.',
-'longpageerror'                    => "'''POGRJEŠKA: Tekst koji ste unijeli dug je $1 kilobajta, što je više od maksimalnih $2 kilobajta. Nije ga moguće snimiti.'''",
+'longpageerror'                    => "'''GREŠKA: Tekst koji ste unijeli dug je $1 kilobajta, što je više od maksimalnih $2 kilobajta. Nije ga moguće snimiti.'''",
 'readonlywarning'                  => "'''UPOZORENJE: Baza podataka je zaključana zbog održavanja, pa trenutačno ne možete sačuvati svoje
 promjene. Najbolje je da kopirate i zaljepite tekst u tekstualnu datoteku te je snimite za kasnije.'''
 
@@ -998,12 +999,15 @@ Pokušajte [[Special:Search|pretražiti]] važnije nove stranice na wikiju.',
 'rev-deleted-user'            => '(suradničko ime uklonjeno)',
 'rev-deleted-event'           => '(zapis uklonjen)',
 'rev-deleted-text-permission' => "Ova izmjena je '''izbrisana'''.
-Detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji brisanja].",
+Detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja].",
+'rev-deleted-text-unhide'     => "Ova izmjena je '''izbrisana.'''
+Detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja]. Kao administrator, možete i dalje [$1 vidjeti ovu izmjenu] ukoliko želite nastaviti.",
 'rev-deleted-text-view'       => "Ova izmjena je '''izbrisana'''.
-Kao administrator na ovom projektu možete ju vidjeti;
-detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji brisanja].",
+Kao administrator na ovom projektu možete ju vidjeti; detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja].",
 'rev-deleted-no-diff'         => "Ne možete vidjeti ovu inačicu zbog toga što je jedna od izmjena '''izbrisana'''.
-Možda postoji više informacija u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji brisanja].",
+Možda postoji više informacija u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja].",
+'rev-deleted-unhide-diff'     => "Jedna od inačica ove izmjene je '''izbrisana'''. 
+Detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja]. Kao administrator, možete i dalje [$1 vidjeti ovu izmjenu] ukoliko želite nastaviti.",
 'rev-delundel'                => 'pokaži/skrij',
 'revisiondelete'              => 'Izbriši/vrati izmjene',
 'revdelete-nooldid-title'     => 'Nema tražene izmjene',
@@ -1056,7 +1060,15 @@ $1",
 'revdelete-log-message'       => '$1 za $2 {{PLURAL:$2|izmjenu|izmjene}}',
 'logdelete-log-message'       => '$1 za $2 {{PLURAL:$2|slučaj|slučaja}}',
 'revdelete-hide-current'      => 'Greška u skrivanju stavke datirane $2, $1: ovo je trenutačna inačica. Ne može biti skrivena.',
+'revdelete-show-no-access'    => 'Greška u prikazivanju stavke od $2, $1: ova stavka je označena kao "ograničeno".
+Nemate pristup do nje.',
+'revdelete-modify-no-access'  => 'Greška pri izmjeni stavke od $2, $1: ova stavka je označena kao "ograničeno". 
+Nemate pristup do nje.',
 'revdelete-modify-missing'    => 'Greška pri izmjeni izmjene broj $1: nedostaje u bazi!',
+'revdelete-no-change'         => "'''Upozorenje:''' stavka od $2, $1 već ima tražene postavke vidljivosti.",
+'revdelete-concurrent-change' => 'Greška pri izmjeni stavke od $2, $1: izgleda da je njen status promijenio netko drugi dok ste ju pokušavali mijenjati. 
+Provjerite evidencije.',
+'revdelete-only-restricted'   => 'Ne možete sakriti stavke od pregleda administratora bez odabira još jedne od drugih mogućnosti skrivanja.',
 
 # Suppression log
 'suppressionlog'     => 'Evidencije sakrivanja',
@@ -1191,7 +1203,7 @@ Primijetite da uporaba navigacijskih poveznica resetira vaše izbore u koloni.',
 'searchprofile-project-tooltip'    => 'Traži u $1',
 'searchprofile-images-tooltip'     => 'Traži datoteke',
 'searchprofile-everything-tooltip' => 'Pretraži sav sadržaj (uključujući i stranice za razgovor)',
-'searchprofile-advanced-tooltip'   => 'Traži u korisničkom imenskom prostoru',
+'searchprofile-advanced-tooltip'   => 'Traži u zadanom imenskom prostoru',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 riječ|$2 riječi}})',
 'search-result-score'              => 'Povezanost: $1%',
 'search-redirect'                  => '(preusmjeravanje $1)',
@@ -2475,6 +2487,7 @@ U potonjem slučaju možete koristiti i poveznicu, npr. [[{{#Special:Export}}/{{
 'thumbnail_invalid_params' => "Nevaljani parametri za smanjenu sliku (''thumbnail'')",
 'thumbnail_dest_directory' => 'Ne mogu stvoriti ciljni direktorij',
 'thumbnail_image-type'     => 'Tip slike nije podržan',
+'thumbnail_gd-library'     => 'Nepotpune konfiguracija GD knjižnice: nedostaje funkcija $1',
 'thumbnail_image-missing'  => 'Čini se da datoteka nedostaje: $1',
 
 # Special:Import

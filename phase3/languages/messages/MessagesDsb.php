@@ -68,7 +68,7 @@ $specialPageAliases = array(
 	'CreateAccount'             => array( 'Wužywarske konto załožyś' ),
 	'Preferences'               => array( 'Nastajenja' ),
 	'Watchlist'                 => array( 'Wobglědowańka' ),
-	'Recentchanges'             => array( 'Slědne změny' ),
+	'Recentchanges'             => array( 'Aktualne změny' ),
 	'Upload'                    => array( 'Uploadowaś' ),
 	'Listfiles'                 => array( 'Lisćina datajow' ),
 	'Newimages'                 => array( 'Nowe dataje' ),
@@ -147,6 +147,7 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( 'Pytanje wótkazow' ),
 	'DeletedContributions'      => array( 'Wulašowane pśinoski' ),
 	'Tags'                      => array( 'Toflicki' ),
+	'Activeusers'               => array( 'Aktiwne wužywarje' ),
 );
 
 $messages = array(
@@ -564,7 +565,8 @@ Pśeglěduj pšawopis abo [[Special:UserLogin/signup|załož nowe konto]].',
 'nouserspecified'            => 'Pšosym pódaj wužywarske mě.',
 'wrongpassword'              => 'Zapódane šćitne gronidło njejo pšawe. Pšosym wopytaj hyšći raz.',
 'wrongpasswordempty'         => 'Šćitne gronidło jo było prozne. Pšosym zapódaj jo hyšći raz.',
-'passwordtooshort'           => 'Twójo gronidło jo njepłaśiwe abo pśeliš krotke. Wóno dej nanejmjenjej {{PLURAL:$|1 pismik|$1 pismika|$1 pismiki|$1 pismikow}} měś a njesmějo se z wužywarskim mjenim makaś.',
+'passwordtooshort'           => 'Twójo gronidło jo njepłaśiwe abo pśeliš krotke. Dej nanejmjenjej {{PLURAL:$|1 znamuško|$1 znamušce|$1 znamuška|$1 znamuškow}} měś.',
+'password-name-match'        => 'Twójo gronidło musy se wót swójogo wužywarskego mjenja rozeznaś.',
 'mailmypassword'             => 'Nowe gronidło pśipósłaś',
 'passwordremindertitle'      => 'Nowe nachylne pótajmne słowo za {{SITENAME}}',
 'passwordremindertext'       => 'Něchten z IP-adresu $1 (nejskerjej ty) jo se wupšosył nowe gronidło za {{SITENAME}} ($4).

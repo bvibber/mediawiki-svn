@@ -281,7 +281,7 @@ class ParserTest {
 	private function runFile( $filename ) {
 		$infile = fopen( $filename, 'rt' );
 		if( !$infile ) {
-			wfDie( "Couldn't open $filename\n" );
+			wfDie( "Couldn't open file '$filename'\n" );
 		} else {
 			global $IP;
 			$relative = wfRelativePath( $filename, $IP );
@@ -611,7 +611,7 @@ class ParserTest {
 			'categorylinks', 'templatelinks', 'externallinks', 'langlinks',
 			'site_stats', 'hitcounter',	'ipblocks', 'image', 'oldimage',
 			'recentchanges', 'watchlist', 'math', 'interwiki',
-			'querycache', 'objectcache', 'job', 'redirect', 'querycachetwo',
+			'querycache', 'objectcache', 'job', 'l10n_cache', 'redirect', 'querycachetwo',
 			'archive', 'user_groups', 'page_props', 'category'
 		);
 

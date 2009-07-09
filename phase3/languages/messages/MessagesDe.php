@@ -12,6 +12,7 @@
  * @author Church of emacs
  * @author Duesentrieb
  * @author Jimmy Collins <jimmy.collins@web.de>
+ * @author Khaledelmansoury
  * @author Li-sung
  * @author MF-Warburg
  * @author Melancholie
@@ -344,7 +345,7 @@ $messages = array(
 'tog-rememberpassword'        => 'Benutzer soll auf diesem Computer dauerhaft angemeldet bleiben',
 'tog-editwidth'               => 'Eingabefeld erweitern, um den ganzen Bildschirm auszufüllen',
 'tog-watchcreations'          => 'Selbst erstellte Seiten automatisch beobachten',
-'tog-watchdefault'            => 'Selbst geänderte und neu erstellte Seiten automatisch beobachten',
+'tog-watchdefault'            => 'Selbst geänderte Seiten automatisch beobachten',
 'tog-watchmoves'              => 'Selbst verschobene Seiten automatisch beobachten',
 'tog-watchdeletion'           => 'Selbst gelöschte Seiten automatisch beobachten',
 'tog-minordefault'            => 'Eigene Änderungen standardmäßig als geringfügig markieren',
@@ -354,7 +355,7 @@ $messages = array(
 'tog-enotifwatchlistpages'    => 'Bei Änderungen an beobachteten Seiten E-Mails senden',
 'tog-enotifusertalkpages'     => 'Bei Änderungen an meiner Benutzer-Diskussionsseite E-Mails senden',
 'tog-enotifminoredits'        => 'Auch bei kleinen Änderungen an beobachteten Seiten E-Mails senden',
-'tog-enotifrevealaddr'        => 'Deine E-Mail-Adresse wird in Benachrichtigungs-E-Mails angezeigt',
+'tog-enotifrevealaddr'        => 'Meine E-Mail-Adresse in Benachrichtigungs-E-Mails anzeigen',
 'tog-shownumberswatching'     => 'Anzahl der beobachtenden Benutzer anzeigen',
 'tog-fancysig'                => 'Signatur als Wikitext behandeln (ohne automatische Verlinkung)',
 'tog-externaleditor'          => 'Externen Editor als Standard benutzen (nur für Experten, es müssen spezielle Einstellungen auf dem eigenen Computer vorgenommen werden)',
@@ -362,11 +363,11 @@ $messages = array(
 'tog-showjumplinks'           => '„Wechseln zu“-Links aktivieren',
 'tog-uselivepreview'          => 'Live-Vorschau nutzen (benötigt JavaScript) (experimentell)',
 'tog-forceeditsummary'        => 'Warnen, wenn beim Speichern die Zusammenfassung fehlt',
-'tog-watchlisthideown'        => 'Eigene Bearbeitungen ausblenden',
-'tog-watchlisthidebots'       => 'Bearbeitungen durch Bots ausblenden',
-'tog-watchlisthideminor'      => 'Kleine Bearbeitungen ausblenden',
-'tog-watchlisthideliu'        => 'Bearbeitungen angemeldeter Benutzer ausblenden',
-'tog-watchlisthideanons'      => 'Bearbeitungen anonymer Benutzer (IP-Adressen) ausblenden',
+'tog-watchlisthideown'        => 'Eigene Bearbeitungen in der Beobachtungsliste ausblenden',
+'tog-watchlisthidebots'       => 'Bearbeitungen durch Bots in der Beobachtungsliste ausblenden',
+'tog-watchlisthideminor'      => 'Kleine Bearbeitungen in der Beobachtungsliste ausblenden',
+'tog-watchlisthideliu'        => 'Bearbeitungen angemeldeter Benutzer in der Beobachtungsliste ausblenden',
+'tog-watchlisthideanons'      => 'Bearbeitungen anonymer Benutzer (IP-Adressen) in der Beobachtungsliste ausblenden',
 'tog-watchlisthidepatrolled'  => 'Kontrollierte Änderungen in der Beobachtungsliste ausblenden',
 'tog-nolangconversion'        => 'Konvertierung von Sprachvarianten deaktivieren',
 'tog-ccmeonemails'            => 'Schicke mir Kopien der E-Mails, die ich anderen Benutzern sende',
@@ -501,6 +502,9 @@ $messages = array(
 'vector-view-history'        => 'Versionsgeschichte',
 'vector-view-view'           => 'Lesen',
 'vector-view-viewsource'     => 'Quelltext betrachten',
+'actions'                    => 'Aktionen',
+'namespaces'                 => 'Namensräume',
+'variants'                   => 'Varianten',
 
 # Metadata in edit box
 'metadata_help' => 'Metadaten:',
@@ -515,10 +519,10 @@ $messages = array(
 'searcharticle'     => 'Seite',
 'history'           => 'Versionen',
 'history_short'     => 'Versionen/Autoren',
-'updatedmarker'     => '(geändert)',
+'updatedmarker'     => 'geändert seit meinem letztem Besuch',
 'info_short'        => 'Information',
 'printableversion'  => 'Druckversion',
-'permalink'         => 'Permanentlink',
+'permalink'         => 'Permanenter Link',
 'print'             => 'Drucken',
 'edit'              => 'Bearbeiten',
 'create'            => 'Erstellen',
@@ -533,24 +537,24 @@ $messages = array(
 'unprotect'         => 'Freigeben',
 'unprotectthispage' => 'Schutz aufheben',
 'newpage'           => 'Neue Seite',
-'talkpage'          => 'Diskussion',
+'talkpage'          => 'Diese Seite diskutieren',
 'talkpagelinktext'  => 'Diskussion',
 'specialpage'       => 'Spezialseite',
 'personaltools'     => 'Persönliche Werkzeuge',
 'postcomment'       => 'Neuer Abschnitt',
-'articlepage'       => 'Seite',
+'articlepage'       => 'Inhaltsseite anzeigen',
 'talk'              => 'Diskussion',
 'views'             => 'Ansichten',
 'toolbox'           => 'Werkzeuge',
-'userpage'          => 'Benutzerseite',
-'projectpage'       => 'Meta-Text',
-'imagepage'         => 'Dateiseite',
+'userpage'          => 'Benutzerseite anzeigen',
+'projectpage'       => 'Projektseite anzeigen',
+'imagepage'         => 'Dateiseite anzeigen',
 'mediawikipage'     => 'Meldungsseite anzeigen',
 'templatepage'      => 'Vorlagenseite anzeigen',
 'viewhelppage'      => 'Hilfeseite anzeigen',
 'categorypage'      => 'Kategorieseite anzeigen',
 'viewtalkpage'      => 'Diskussion',
-'otherlanguages'    => 'Andere Sprachen',
+'otherlanguages'    => 'In anderen Sprachen',
 'redirectedfrom'    => '(Weitergeleitet von $1)',
 'redirectpagesub'   => 'Weiterleitung',
 'lastmodifiedat'    => 'Diese Seite wurde zuletzt am $1 um $2 Uhr geändert.',
@@ -559,25 +563,30 @@ $messages = array(
 'jumpto'            => 'Wechseln zu:',
 'jumptonavigation'  => 'Navigation',
 'jumptosearch'      => 'Suche',
+'view-pool-error'   => 'Entschuldigung, die Server sind im Moment überlastet.
+Zu viele Benutzer versuchen diese Seite zu besuchen.
+Bitte warte einige Minuten, bevor du es noch einmal versuchst.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Über {{SITENAME}}',
-'aboutpage'            => 'Project:Über_{{SITENAME}}',
+'aboutpage'            => 'Project:Über',
 'copyright'            => 'Inhalt ist verfügbar unter der $1.',
 'copyrightpagename'    => '{{SITENAME}} Urheberrecht',
-'copyrightpage'        => '{{ns:project}}:Urheberrecht',
+'copyrightpage'        => '{{ns:project}}:Urheberrechte',
 'currentevents'        => 'Aktuelle Ereignisse',
 'currentevents-url'    => 'Project:Aktuelle Ereignisse',
 'disclaimers'          => 'Impressum',
 'disclaimerpage'       => 'Project:Impressum',
 'edithelp'             => 'Bearbeitungshilfe',
-'edithelppage'         => 'Help:Bearbeitungshilfe',
-'helppage'             => 'Help:Hilfe',
+'edithelppage'         => 'Help:Bearbeiten',
+'helppage'             => 'Help:Inhaltsverzeichnis',
 'mainpage'             => 'Hauptseite',
 'mainpage-description' => 'Hauptseite',
-'policy-url'           => 'Project:Leitlinien',
-'portal'               => '{{SITENAME}}-Portal',
-'portal-url'           => 'Project:Portal',
+'policy-url'           => 'Project:Richtlinien',
+'portal'               => 'Gemeinschafts-Portal',
+'portal-url'           => 'Project:Gemeinschafts-Portal',
 'privacy'              => 'Datenschutz',
 'privacypage'          => 'Project:Datenschutz',
 
@@ -586,20 +595,21 @@ $messages = array(
 'badaccess-groups' => 'Diese Aktion ist beschränkt auf Benutzer, die {{PLURAL:$2|der Gruppe|einer der Gruppen}} „$1“ angehören.',
 
 'versionrequired'     => 'Version $1 von MediaWiki ist erforderlich',
-'versionrequiredtext' => 'Version $1 von MediaWiki ist erforderlich, um diese Seite zu nutzen. Siehe die [[Special:Version|Versionsseite]]',
+'versionrequiredtext' => 'Version $1 von MediaWiki ist erforderlich, um diese Seite zu nutzen.
+Siehe die [[Special:Version|Versionsseite]]',
 
 'ok'                      => 'OK',
 'pagetitle'               => '$1 – {{SITENAME}}',
 'retrievedfrom'           => 'Von „$1“',
 'youhavenewmessages'      => 'Du hast $2 auf deiner $1.',
-'newmessageslink'         => 'Diskussionsseite',
-'newmessagesdifflink'     => 'neue Nachrichten',
+'newmessageslink'         => 'Neue Nachrichten',
+'newmessagesdifflink'     => 'Letzte Änderung',
 'youhavenewmessagesmulti' => 'Du hast neue Nachrichten: $1',
 'editsection'             => 'Bearbeiten',
 'editold'                 => 'Bearbeiten',
-'viewsourceold'           => 'Quelltext zeigen',
+'viewsourceold'           => 'Quelltext anzeigen',
 'editlink'                => 'bearbeiten',
-'viewsourcelink'          => 'Quelltext einsehen',
+'viewsourcelink'          => 'Quelltext anzeigen',
 'editsectionhint'         => 'Abschnitt bearbeiten: $1',
 'toc'                     => 'Inhaltsverzeichnis',
 'showtoc'                 => 'Anzeigen',
@@ -619,11 +629,11 @@ $messages = array(
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Seite',
 'nstab-user'      => 'Benutzerseite',
-'nstab-media'     => 'Media',
+'nstab-media'     => 'Medienseite',
 'nstab-special'   => 'Spezialseite',
 'nstab-project'   => 'Projektseite',
 'nstab-image'     => 'Datei',
-'nstab-mediawiki' => 'MediaWiki-Systemtext',
+'nstab-mediawiki' => 'MediaWiki-Systemnachricht',
 'nstab-template'  => 'Vorlage',
 'nstab-help'      => 'Hilfeseite',
 'nstab-category'  => 'Kategorie',
@@ -632,7 +642,7 @@ $messages = array(
 'nosuchaction'      => 'Diese Aktion gibt es nicht',
 'nosuchactiontext'  => 'Die in der URL angegebene Aktion wird von MediaWiki nicht unterstützt.
 Es kann ein Schreibfehler in der URL vorliegen oder es wurde ein fehlerhafter Link angeklickt.
-Es kann sich auch um einen Bug auf {{SITENAME}} handeln.',
+Es kann sich auch um einen Programmierfehler in der Software, die auf {{SITENAME}} benutzt wird, handeln.',
 'nosuchspecialpage' => 'Spezialseite nicht vorhanden',
 'nospecialpagetext' => "<big>'''Die aufgerufene Spezialseite ist nicht vorhanden.'''</big>
 
@@ -640,16 +650,16 @@ Alle verfügbaren Spezialseiten sind in der [[Special:SpecialPages|Liste der Spe
 
 # General errors
 'error'                => 'Fehler',
-'databaseerror'        => 'Fehler in der Datenbank',
+'databaseerror'        => 'Datenbankfehler',
 'dberrortext'          => 'Es ist ein Datenbankfehler aufgetreten.
-Der Grund kann ein Timeout sein, der Ausfall eines Servers oder auch ein Programmierfehler.
+Der Grund kann ein Programmierfehler sein.
 Die letzte Datenbankabfrage lautete: <blockquote><tt>$1</tt></blockquote> aus der Funktion „<tt>$2</tt>“.
 MySQL meldete den Fehler „<tt>$3: $4</tt>“.',
 'dberrortextcl'        => 'Es gab einen Syntaxfehler in der Datenbankabfrage.
 Die letzte Datenbankabfrage lautete: „$1“ aus der Funktion „<tt>$2</tt>“.
 MySQL meldete den Fehler: „<tt>$3: $4</tt>“.',
-'laggedslavemode'      => 'Achtung: Die angezeigte Seite enthält unter Umständen nicht die jüngsten Bearbeitungen.',
-'readonly'             => 'Datenbanksperre',
+'laggedslavemode'      => "'''Achtung:''' Die angezeigte Seite könnte unter Umständen nicht die letzten Bearbeitungen enthalten.",
+'readonly'             => 'Datenbank gesperrt',
 'enterlockreason'      => 'Bitte gib einen Grund ein, warum die Datenbank gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung',
 'readonlytext'         => 'Die Datenbank ist vorübergehend für Neueinträge und Änderungen gesperrt. Bitte versuche es später noch einmal.
 
@@ -747,14 +757,16 @@ Vergiss nicht, deine [[Special:Preferences|{{SITENAME}}-Einstellungen]] anzupass
 'nouserspecified'            => 'Bitte gib einen Benutzernamen an.',
 'wrongpassword'              => 'Das Passwort ist falsch (oder fehlt). Bitte versuche es erneut.',
 'wrongpasswordempty'         => 'Es wurde kein Passwort eingegeben. Bitte versuche es erneut.',
-'passwordtooshort'           => 'Fehler bei der Wahl des Passwortes: Es muss mindestens {{PLURAL:$1|1 Zeichen|$1 Zeichen}} lang sein und darf nicht mit dem Benutzernamen identisch sein.',
+'passwordtooshort'           => 'Dein Passwort ist zu kurz.
+Es muss mindestens {{PLURAL:$1|1 Zeichen|$1 Zeichen}} lang sein.',
+'password-name-match'        => 'Dein Passwort muss sich von deinem Benutzernamen unterscheiden.',
 'mailmypassword'             => 'Neues Passwort zusenden',
 'passwordremindertitle'      => 'Neues Passwort für ein {{SITENAME}}-Benutzerkonto',
 'passwordremindertext'       => 'Jemand mit der IP-Adresse $1, wahrscheinlich du selbst, hat ein neues Passwort für die Anmeldung bei {{SITENAME}} ($4) angefordert.
 
 Das automatisch generierte Passwort für Benutzer „$2“ lautet nun: $3
 
-Du solltest dich jetzt anmelden und das Passwort ändern: {{fullurl:{{ns:special}}:Userlogin}}
+Falls du dies wirklich gewünscht hast, solltest du dich jetzt anmelden und das Passwort ändern.
 Das neue Passwort ist {{PLURAL:$5|1 Tag|$5 Tage}} gültig.
 
 Bitte ignoriere diese E-Mail, falls du sie nicht selbst angefordert hast. Das alte Passwort bleibt weiterhin gültig.',
@@ -840,47 +852,34 @@ Möglicherweise hast du dein Passwort bereits erfolgreich geändert oder ein neu
 'summary-preview'                  => 'Vorschau der Zusammenfassungszeile:',
 'subject-preview'                  => 'Vorschau des Betreffs:',
 'blockedtitle'                     => 'Benutzer ist gesperrt',
-'blockedtext'                      => 'Dein Benutzername oder deine IP-Adresse wurde von $1 gesperrt. Als Grund wurde angegeben:
+'blockedtext'                      => "<big>'''Dein Benutzername oder deine IP-Adresse wurde gesperrt.'''</big>
 
-:\'\'$2\'\' (<span class="plainlinks">[{{fullurl:Special:IPBlockList|&action=search&limit=&ip=%23}}$5 Logbucheintrag]</span>)
+Die Sperrung wurde von $1 durchgeführt.
+Als Grund wurde ''$2'' angegeben.
 
-<p style="border-style: solid; border-color: red; border-width: 1px; padding:5px;"><b>Ein Lesezugriff ist weiterhin möglich,</b>
-nur die Bearbeitung und Erstellung von Seiten in {{SITENAME}} wurde gesperrt.
-Sollte diese Nachricht angezeigt werden, obwohl nur lesend zugriffen wurde, bist du einem (roten) Link auf eine noch nicht existente Seite gefolgt.</p>
+* Beginn der Sperre: $8
+* Ende der Sperre: $6
+* Sperre betrifft: $7
 
 Du kannst $1 oder einen der anderen [[{{MediaWiki:Grouppage-sysop}}|Administratoren]] kontaktieren, um über die Sperre zu diskutieren.
-
-<div style="border-style: solid; border-color: red; border-width: 1px; padding:5px;">
-\'\'\'Bitte gib folgende Daten in jeder Anfrage an:\'\'\'
-*Sperrender Administrator: $1
-*Sperrgrund: $2
-*Beginn der Sperre: $8
-*Sperr-Ende: $6
-*IP-Adresse: $3
-*Sperre betrifft: $7
-*Sperr-ID: #$5
-</div>',
-'autoblockedtext'                  => 'Deine IP-Adresse wurde automatisch gesperrt, da sie von einem anderen Benutzer genutzt wurde, der durch $1 gesperrt wurde.
+Du kannst die „E-Mail an diesen Benutzer“-Funktion nicht nutzen, solange keine gültige E-Mail-Adresse in deinen [[Special:Preferences|Benutzerkonto-Einstellungen]] eingetragen ist, oder diese Funktion für dich gesperrt wurde.
+Deine aktuelle IP-Adresse ist $3, und die Sperr-ID ist $5.
+Bitte füge alle Informationen jeder Anfrage hinzu, die du stellt.",
+'autoblockedtext'                  => "Deine IP-Adresse wurde automatisch gesperrt, da sie von einem anderen Benutzer genutzt wurde, der von $1 gesperrt wurde.
 Als Grund wurde angegeben:
 
-:\'\'$2\'\' (<span class="plainlinks">[{{fullurl:Special:IPBlockList|&action=search&limit=&ip=%23}}$5 Logbucheintrag]</span>)
+:''$2''
 
-<p style="border-style: solid; border-color: red; border-width: 1px; padding:5px;"><b>Ein Lesezugriff ist weiterhin möglich,</b>
-nur die Bearbeitung und Erstellung von Seiten in {{SITENAME}} wurde gesperrt.
-Sollte diese Nachricht angezeigt werden, obwohl nur lesend zugriffen wurde, bist du einem (roten) Link auf eine noch nicht existente Seite gefolgt.</p>
+* Beginn der Sperre: $8
+* Ende der Sperre: $6
+* Sperre betrifft: $7
 
 Du kannst $1 oder einen der anderen [[{{MediaWiki:Grouppage-sysop}}|Administratoren]] kontaktieren, um über die Sperre zu diskutieren.
 
-<div style="border-style: solid; border-color: red; border-width: 1px; padding:5px;">
-\'\'\'Bitte gib folgende Daten in jeder Anfrage an:\'\'\'
-*Sperrender Administrator: $1
-*Sperrgrund: $2
-*Beginn der Sperre: $8
-*Sperr-Ende: $6
-*IP-Adresse: $3
-*Sperre betrifft: $7
-*Sperr-ID: #$5
-</div>',
+Du kannst die „E-Mail an diesen Benutzer“-Funktion nicht nutzen, solange keine gültige E-Mail-Adresse in deinen [[Special:Preferences|Benutzerkonto-Einstellungen]] eingetragen ist, oder diese Funktion für dich gesperrt wurde.
+
+Deine aktuelle IP-Adresse ist $3, und die Sperr-ID ist $5.
+Bitte füge alle Informationen jeder Anfrage hinzu, die du stellt.",
 'blockednoreason'                  => 'keine Begründung angegeben',
 'blockedoriginalsource'            => "Der Quelltext von '''$1''' wird hier angezeigt:",
 'blockededitsource'                => "Der Quelltext '''deiner Änderungen''' an '''$1''':",
@@ -897,7 +896,9 @@ Du kannst $1 oder einen der anderen [[{{MediaWiki:Grouppage-sysop}}|Administrato
 
 Das Passwort für dieses neue Benutzerkonto kann auf der Spezialseite „[[Special:ChangePassword|Passwort ändern]]“ geändert werden.',
 'newarticle'                       => '(Neu)',
-'newarticletext'                   => 'Hier den Text der neuen Seite eintragen. Bitte nur in ganzen Sätzen schreiben und keine urheberrechtsgeschützten Texte anderer kopieren.',
+'newarticletext'                   => "Du bist einem Link zu einer Seite gefolgt, die nicht vorhanden ist.
+Um die Seite anzulegen, trage deinen Text in die untenstehende Box ein (siehe die [[{{MediaWiki:Helppage}}|Hilfeseite]] für mehr Informationen).
+Bist du fälschigerweise hier, klicke die '''Zurück'''-Schaltfläche deines Browsers.",
 'anontalkpagetext'                 => "----''Diese Seite dient dazu, einem nicht angemeldeten Benutzer Nachrichten zu hinterlassen. Es wird seine IP-Adresse zur Identifizierung verwendet. IP-Adressen können von mehreren Benutzern gemeinsam verwendet werden. Wenn du mit den Kommentaren auf dieser Seite nichts anfangen kannst, richten sie sich vermutlich an einen früheren Inhaber deiner IP-Adresse und du kannst sie ignorieren. Du kannst dir auch ein [[Special:UserLogin/signup|Benutzerkonto erstellen]] oder dich [[Special:UserLogin|anmelden]], um künftig Verwechslungen mit anderen anonymen Benutzern zu vermeiden.''",
 'noarticletext'                    => 'Diese Seite enthält momentan noch keinen Text.
 Du kannst diesen Titel auf den anderen Seiten [[Special:Search/{{PAGENAME}}|suchen]],
@@ -1121,7 +1122,8 @@ Bitte prüfe die Logbücher.',
 
 # Suppression log
 'suppressionlog'     => 'Oversight-Logbuch',
-'suppressionlogtext' => 'Dies ist das Logbuch der Oversight-Aktionen (Änderungen der Sichtbarkeit von Versionen, Bearbeitungskommentaren, Benutzernamen und Benutzersperren).',
+'suppressionlogtext' => 'Dies ist das Logbuch der Oversight-Aktionen (Änderungen der Sichtbarkeit von Versionen, Bearbeitungskommentaren, Benutzernamen und Benutzersperren).
+Siehe die [[Special:IPBlockList|Liste der gesperrten IP-Adressen und Benutzernamen]] für aktuelle Sperren.',
 
 # History merging
 'mergehistory'                     => 'Versionsgeschichten vereinen',
@@ -1237,7 +1239,7 @@ Wenn du dich mit dem Thema auskennst, kannst du selbst [[:$1|die Seite verfassen
 'shown-title'                      => 'Zeige $1 {{PLURAL:$1|Ergebnis|Ergebnisse}} pro Seite',
 'viewprevnext'                     => 'Zeige ($1) ($2) ($3)',
 'searchmenu-legend'                => 'Suchoptionen',
-'searchmenu-exists'                => "* Seite '''[[$1]]'''",
+'searchmenu-exists'                => "'''Es gibt eine Seite, die den Namen „[[:$1]]“ hat'''",
 'searchmenu-new'                   => "'''Erstelle die Seite „[[:$1|$1]]“ in diesem Wiki.'''",
 'searchhelp-url'                   => 'Help:Hilfe',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Zeige alle Seiten, die mit dem Suchbegriff anfangen]]',
@@ -2044,12 +2046,12 @@ Als Absender wird die E-Mail-Adresse aus deinen [[Special:Preferences|Einstellun
 'watchnologin'         => 'Du bist nicht angemeldet',
 'watchnologintext'     => 'Du musst [[Special:UserLogin|angemeldet]] sein, um deine Beobachtungsliste zu bearbeiten.',
 'addedwatch'           => 'Zur Beobachtungsliste hinzugefügt',
-'addedwatchtext'       => 'Die Seite „<nowiki>$1</nowiki>“ wurde zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzugefügt.
+'addedwatchtext'       => 'Die Seite „[[:$1]]“ wurde zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzugefügt.
 
 Spätere Änderungen an dieser Seite und der dazugehörigen Diskussionsseite werden dort gelistet und
 in der Übersicht der [[Special:RecentChanges|letzten Änderungen]] in Fettschrift dargestellt.
 
-Wenn du die Seite wieder von deiner Beobachtungsliste entfernen möchtest, klicke auf der jeweiligen Seite auf „nicht mehr beobachten“.',
+Wenn du die Seite wieder von deiner Beobachtungsliste entfernen möchtest, klicke auf der jeweiligen Seite auf „{{int:Unwatch}}“.',
 'removedwatch'         => 'Von der Beobachtungsliste entfernt',
 'removedwatchtext'     => 'Die Seite „[[:$1]]“ wurde von deiner [[Special:Watchlist|Beobachtungsliste]] entfernt.',
 'watch'                => 'Beobachten',
@@ -2103,7 +2105,9 @@ Es werden solange keine weiteren Benachrichtigungs-E-Mails gesendet, bis du die 
              Dein freundliches {{SITENAME}}-Benachrichtigungssystem
 
 --
-Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Special:Watchlist/edit}}',
+Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:{{#special:Watchlist}}/edit}}
+
+Rückmeldungen und weitere Hilfe: {{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete
 'deletepage'             => 'Seite löschen',
@@ -2383,7 +2387,7 @@ Zur Aufhebung der Sperre siehe die [[Special:IPBlockList|Liste aller aktiven Spe
 'reblock-logentry'                => 'änderte die Sperre für „[[$1]]“ für den Zeitraum: $2 $3',
 'blocklogtext'                    => 'Dies ist das Logbuch über Sperrungen und Entsperrungen von Benutzern und IP-Adressen.
 Automatisch gesperrte IP-Adressen werden nicht erfasst.
-Siehe die [[Special:IPBlockList|{{int:ipblocklist}}]] für alle aktiven Sperren.',
+Siehe die [[Special:IPBlockList|Liste der gesperrten IP-Adressen und Benutzernamen]] für alle aktiven Sperren.',
 'unblocklogentry'                 => 'hat die Sperre von „[[$1]]“ aufgehoben',
 'block-log-flags-anononly'        => 'nur Anonyme',
 'block-log-flags-nocreate'        => 'Erstellung von Benutzerkonten gesperrt',
@@ -2409,7 +2413,7 @@ Siehe die [[Special:IPBlockList|{{int:ipblocklist}}]] für alle aktiven Sperren.
 'proxyblocksuccess'               => 'Fertig.',
 'sorbsreason'                     => 'Die IP-Adresse ist in der DNSBL von {{SITENAME}} als offener PROXY gelistet.',
 'sorbs_create_account_reason'     => 'Die IP-Adresse ist in der DNSBL von {{SITENAME}} als offener PROXY gelistet. Das Anlegen neuer Benutzer ist nicht möglich.',
-'cant-block-while-blocked'        => 'Du darfst keine anderen Benutzer sperren, während du selber gesperrt bist.',
+'cant-block-while-blocked'        => 'Du kannst keine anderen Benutzer sperren, während du selbst gesperrt bist.',
 
 # Developer tools
 'lockdb'              => 'Datenbank sperren',

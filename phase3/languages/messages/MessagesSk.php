@@ -357,6 +357,9 @@ $messages = array(
 'vector-view-history'        => 'Zobraziť históriu',
 'vector-view-view'           => 'Čítať',
 'vector-view-viewsource'     => 'Zobraziť zdroj',
+'actions'                    => 'Operácie',
+'namespaces'                 => 'Menné priestory',
+'variants'                   => 'Varianty',
 
 # Metadata in edit box
 'metadata_help' => 'Metadáta:',
@@ -610,7 +613,8 @@ Skontrolujte preklepy alebo sa [[Special:UserLogin/signup|zaregistrujte ako nov�
 'wrongpassword'              => 'Zadané heslo je nesprávne. Skúste  znovu.',
 'wrongpasswordempty'         => 'Zadané heslo bolo prázdne. Skúste prosím znova.',
 'passwordtooshort'           => 'Vaše heslo je neplatné alebo príliš krátke.
-Musí mať dĺžku aspoň {{PLURAL:$1|$1 znak|$1 znaky|$1 znakov}} a líšiť sa od vášho používateľského mena.',
+Musí mať dĺžku aspoň {{PLURAL:$1|$1 znak|$1 znaky|$1 znakov}}.',
+'password-name-match'        => 'Vaše heslo musí byť iné ako vaše používateľské meno.',
 'mailmypassword'             => 'Pošlite mi e-mailom dočasné heslo',
 'passwordremindertitle'      => 'Nové dočasné heslo pre {{GRAMMAR:akuzatív|{{SITENAME}}}}',
 'passwordremindertext'       => 'Niekto (pravdepodobne vy, z IP adresy $1)
@@ -1411,7 +1415,7 @@ Musí obsahovať menej ako $1 {{PLURAL:$1|znak|znaky|znakov}}.',
 'nchanges'                          => '$1 {{PLURAL:$1|zmena|zmeny|zmien}}',
 'recentchanges'                     => 'Posledné úpravy',
 'recentchanges-legend'              => 'Možnosti posledných zmien',
-'recentchangestext'                 => 'Pomocou tejto stránky sledujete posledné úpravy stránok {{GRAMMAR:genitív|{{SITENAME}}}}.',
+'recentchangestext'                 => 'Pomocou tejto stránky sledujete posledné úpravy wiki.',
 'recentchanges-feed-description'    => 'Sledovať posledné úpravy tejto wiki týmto kanálom.',
 'rcnote'                            => "Tu {{PLURAL:$1|je posledná úprava|sú posledné '''$1''' úpravy|je posledných '''$1''' úprav}} počas {{PLURAL:$2|posledného dňa|posledných '''$2''' dní}} z $4, $5.",
 'rcnotefrom'                        => "Nižšie sú zobrazené úpravy od '''$2''' (do '''$1''').",

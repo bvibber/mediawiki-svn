@@ -643,7 +643,8 @@ Udder donn_[[Special:UserLogin/signup|ene neue Metmaacher aanmelde]].',
 'nouserspecified'            => 'Dat jeiht nit als ene Metmaacher Name',
 'wrongpassword'              => 'Dat Passwood oder dä Metmaacher Name wor verkihrt. Jetz muss De et noch ens versöke.',
 'wrongpasswordempty'         => "Dat Passwood ka'mer nit fottlooße. Jetz muss De et noch ens versöke.",
-'passwordtooshort'           => 'Dat Passwood es jet koot - et mööte ald winnichstens <strong>$1</strong> Zeiche, Zeffer{{PLURAL:$1||e|e}}, un Buchstave do dren sin.',
+'passwordtooshort'           => 'Dat Passwood es ze koot - et mööte ald winnichstens <strong>$1</strong> Zeiche, Zeffer{{PLURAL:$1||e|e}}, un Bochstave dren sin.',
+'password-name-match'        => 'Ding Poßwoot moß anders wi Dinge Name als ene Metmaacher sin.',
 'mailmypassword'             => 'Passwood verjesse?',
 'passwordremindertitle'      => 'Enlogge op {{SITENAME}}',
 'passwordremindertext'       => 'Jod müjjelich, Do wors et selver,
@@ -841,7 +842,7 @@ zwesche de ungerscheidlichste IP Adresse wähßele, womöchlich ohne dat hä et 
 Metmaacher bes, un fings, dat hee Saache an Dich jeschrevve wääde, wo Do jar nix met am Hot häs, dann bes Do 
 wahrscheinlich och nit jemeint. Denk villeich ens drüvver noh, datte Dich [[Special:UserLogin/signup|anmelde]] deis, 
 domet De dann donoh nit mieh met esu en Ömständ ze dun häs, wie de andere namenlose Metmaacher hee. Wann de aanjemelldt bes un deis [[Special:UserLogin|enlogge]], dann kam_mer Desch och dun alle andere Metmaacher ongerschejde.</i>',
-'noarticletext'                    => '<span class="plainlinks">Em Momang es keine Tex op dä Sigg. Jangk en de Texte vun ander Sigge [[Special:Search/{{PAGENAME}}|noh däm Titel söke]], odder [{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} donn en de Logböcher doför loore], oder [{{FULLURL:{{FULLPAGENAME}}|action=edit}} fang die Sigg aan] ze schrieve, oder jangk zeröck wo de her koms. Do hät Dinge Brauser ene Knopp för.</span>',
+'noarticletext'                    => '<span class="plainlinks">Em Momang es keine Tex op dä Sigg. Jangk en de Texte vun ander Sigge [[Special:Search/{{PAGENAME}}|noh däm Titel söke]], odder [{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} donn en de Logböcher donoh loore], oder [{{FULLURL:{{FULLPAGENAME}}|action=edit}} fang die Sigg aan] ze schrieve, oder jangk zeröck wo de her koms. Do hät Dinge Brauser ene Knopp för.</span>',
 'userpage-userdoesnotexist'        => 'Enne Metmaacher „$1“ hammer nit, beß De secher, dat De die Metmaachersigg ändere oder aanläje wellss?.',
 'clearyourcache'                   => "<br clear=\"all\" style=\"clear:both\">
 '''Opjepass:'''
@@ -855,7 +856,7 @@ Beim '''Internet Explorer''' dröck op ''Ctrl'' / ''Strg'' un Klick op ''Refresh
 ''Ctrl-F5'' / ''Strg+F5''.
 Beim '''Konqueror:''' klick dä ''Reload''-Knopp oder dröck dä ''F5''-Knopp.
 Beim  '''Opera''' kanns De üvver et Menue jonn un 
-däm janze Cache singe Enhald üvver ''Tools?Preferences'' fottschmieße.",
+däm janze Cache singe Enhald üvver ''Tools?Preferences'' fottschmieße, neuerdings jeiht et och met ''Alt+F5''.",
 'usercssjsyoucanpreview'           => '<b>Tipp:</b> Dun met däm <b style="padding:2px; background-color:#ddd; 
 color:black">Vör-Aansich Zeije</b>-Knopp usprobeere, wat Ding neu 
 Metmaacher_CSS/Java_Skripp mäht, ih dat et avspeichere deis!',
@@ -950,8 +951,7 @@ Nävvebei, dä Datenbank-Köbes hät för et Sperre och ene Jrund aanjejovve: $1
 'nocreate-loggedin'                => 'Do häs nit dat Rääch, neu Sigge aanzelääje.',
 'permissionserrors'                => 'Dat jeit nit, dat darfs de nit.',
 'permissionserrorstext'            => 'Do häs nit dat Rääch, dat ze maache, {{PLURAL:$1|dä Jrund es:|de Jründe sin:|oohne Jrund.}}',
-'permissionserrorstext-withaction' => 'Do häs nit dat Rääch för dä Opdraach „<code>action=$2</code>“,
-{{PLURAL:$1|dä Jrund es:|de Jründe sin:|oohne Jrund.}}',
+'permissionserrorstext-withaction' => 'Do häs nit dat Rääch $2, {{PLURAL:$1|dä Jrund es:|de Jründe sin:|oohne Jrund.}}',
 'recreate-moveddeleted-warn'       => "'''Opjepaß:''' Do bes om bäste Wääsh, en Sigg neu aanzelääje, di doför ald ens fottjeschmeße woode wohr.
 
 Bes förseschtesch un övverlääsch Der, of dat en joode Idee es, di Sigg widder opzemaache. Domet De Bescheid weiß, hee de Endrääsh em Logboch vum Sigge-Ömnänne, un em Logboch vum Sigge-Fottschmieße mem Jrond, woröm di Sigg dohmohls fottjeschmesse woode es:",
@@ -3461,7 +3461,7 @@ Der Name moß ohne der Försatz „{{ns:file}}:“ aanjejovve wääde.',
 die De häs han welle. Se künnt jet ällder un nit mieh aktoäll sin.',
 
 # HTML forms
-'htmlform-invalid-input'       => 'Mer han e Problems met jet wat De enjejovve häß',
+'htmlform-invalid-input'       => 'Mer han e Problem met jet wat De enjejovve häß',
 'htmlform-select-badoption'    => 'Dinge aanjejovve Wäät es kein müjjelesche Ußwahl.',
 'htmlform-int-invalid'         => 'Dinge aanjejovve Wäät eß kein janze Zahl.',
 'htmlform-int-toolow'          => 'Dinge aanjejovve Wäät litt onger dämm winnischßde, wat müjjelesch es, un dat es $1.',

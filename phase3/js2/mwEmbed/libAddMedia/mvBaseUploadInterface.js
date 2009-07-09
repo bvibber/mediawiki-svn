@@ -57,6 +57,7 @@ mvBaseUploadInterface.prototype = {
 	warnings_sessionkey:null,
 	chunks_supported:false,
 	form_post_override:false,
+	action_done:false,
 	//the edit token:
 	etoken:false,
 	init: function( iObj ){
@@ -522,7 +523,7 @@ mvBaseUploadInterface.prototype = {
 		  width:400,
 		  heigh:200,
 		  beforeclose: function(event, ui) {	 			  
-			  if( event.button==0 ){			   				  
+			  if( event.button==0 || _this.action_done===false){			   				  
 				_this.cancel_action();
 			  }else{
 				 //click on button (dont do close action);

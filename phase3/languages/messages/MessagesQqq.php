@@ -291,6 +291,8 @@ This can also appear in the credits page if the credits feature is enabled,for e
 'vector-view-view'           => 'Tab label in the Vector skin (verb). See for example http://translatewiki.net/w/i.php?title=Main_Page&useskin=vector',
 'vector-view-viewsource'     => 'Tab label in the Vector skin.
 {{Identical|View source}}',
+'actions'                    => '{{Identical|Action}}',
+'namespaces'                 => '{{Identical|Namespace}}',
 
 # Metadata in edit box
 'metadata_help' => '{{Identical|Metadata}}',
@@ -456,6 +458,8 @@ The format is: "{{int:youhavenewmessages| [[MediaWiki:Newmessageslink/{{SUBPAGEN
 'hidetoc'                 => 'This is the link used to hide the table of contents
 
 {{Identical|Hide}}',
+'thisisdeleted'           => 'Message shown on a deleted page when the user has the undelete right. $1 is a link to [[Special:Undelete]], with {{msg-mw|restorelink}} as the text. See also {{msg-mw|viewdeleted}}.',
+'viewdeleted'             => 'Message shown on a deleted page when the user does not have the undelete right (but has the deletedhistory right). $1 is a link to [[Special:Undelete]], with {{msg-mw|restorelink}} as the text. See also {{msg-mw|thisisdeleted}}.',
 'restorelink'             => "This text is always displayed in conjunction with the {{msg-mw|thisisdeleted}} message (View or restore $1?). The user will see
 View or restore <nowiki>{{PLURAL:$1|one deleted edit|$1 deleted edits}}</nowiki>?    i.e ''View or restore one deleted edit?''     or 
 ''View or restore n deleted edits?''",
@@ -681,7 +685,17 @@ The text "Save" is in {{msg-mw|savearticle}}.',
 'missingcommentheader'             => '
 The text "Save" is in {{msg-mw|savearticle}}.',
 'summary-preview'                  => 'Preview of the edit summary, shown under the edit summary itself.',
-'blockedtext'                      => 'Text displayed to blocked users',
+'blockedtext'                      => 'Text displayed to blocked users.
+
+Parameters:
+* <tt>$1</tt> is the blocking sysop (with a link to his/her userpage)
+* <tt>$2</tt> is the reason for the block
+* <tt>$3</tt> is the current IP address of the blocked user
+* <tt>$4</tt> is the blocking sysop’s username (plain text, without the link)
+* <tt>$5</tt> is the unique numeric identifier of the applied autoblock
+* <tt>$6</tt> is the expiry of the block
+* <tt>$7</tt> is the intended target of the block (what the blocking user specified in the blocking form)
+* <tt>$8</tt> is the timestamp when the block started',
 'autoblockedtext'                  => 'Text displayed to automatically blocked users.
 
 Parameters:
@@ -890,7 +904,7 @@ Please note that the parameters in a log entry will appear in the log only in th
 
 # Suppression log
 'suppressionlog'     => 'Title of the suppression log. Shown in the drop down menu at [[Special:log]] and as header of [[Special:log/suppress]].',
-'suppressionlogtext' => 'Description text of the suppression log. Shown at top of of [[Special:log/suppress]].',
+'suppressionlogtext' => 'Description text of the suppression log. Shown at top of [[Special:log/suppress]].',
 
 # History merging
 'mergehistory-autocomment'      => 'This message is used as an edit summary when a redirect is automatically created after an entire page history is merged into another page history, and the user who did the merge wrote no comment.
@@ -2023,6 +2037,7 @@ Shown as subtitle of the protection form. $1 is the title of the page to be (un)
 {{Identical|Restore}}',
 'undeletelink'               => 'Display name of link to undelete a page used on [[Special:Log/delete]]
 
+{{Identical|View}}
 {{Identical|Restore}}',
 'undeleteviewlink'           => 'First part of {{msg-mw|undeletelink}}',
 'undeletereset'              => 'Shown on [[Special:Undelete]] as button caption.
@@ -2340,7 +2355,8 @@ Related messages: {{msg|right-importupload|pl=yes}} (the user right for this).',
 'tooltip-search'                  => 'The tooltip when hovering over the search menu.',
 'tooltip-search-go'               => 'This is the text of the tooltip displayed when hovering the mouse over the “[[MediaWiki:Go|Go]]” button next to the search box.',
 'tooltip-search-fulltext'         => 'This is the text of the tooltip displayed when hovering the mouse over the “[[MediaWiki:Search|Search]]” button under the search box.',
-'tooltip-p-logo'                  => 'Tool tip shown when hovering the mouse over the logo that links to [[Main Page]].',
+'tooltip-p-logo'                  => 'Tool tip shown when hovering the mouse over the logo that links to [[Main Page]].
+{{Identical|Main page}}',
 'tooltip-n-mainpage'              => 'Tool tip shown when hovering the mouse over the link to [[{{MediaWiki:Mainpage}}]].',
 'tooltip-n-portal'                => "Tooltip shown when hovering over the link to 'Community portal' shown in the side bar menu on all pages.",
 'tooltip-n-currentevents'         => 'Tooltip shown when hovering over {{msg|currentevents}} in the sidebar.',

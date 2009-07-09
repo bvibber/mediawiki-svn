@@ -431,7 +431,28 @@ $messages = array(
 'faqpage'        => 'Project:GyIK',
 
 # Vector skin
-'vector-view-view' => 'Olvasás',
+'vector-action-addsection'   => 'Új szakasz nyitása',
+'vector-action-delete'       => 'Törlés',
+'vector-action-move'         => 'Átnevezés',
+'vector-action-protect'      => 'Lapvédelem',
+'vector-action-undelete'     => 'Visszaállítás',
+'vector-action-unprotect'    => 'Védelem feloldása',
+'vector-namespace-category'  => 'Kategória',
+'vector-namespace-help'      => 'Segítség oldal',
+'vector-namespace-image'     => 'Fájl',
+'vector-namespace-main'      => 'Szócikk',
+'vector-namespace-media'     => 'Médiaoldal',
+'vector-namespace-mediawiki' => 'Üzenet',
+'vector-namespace-project'   => 'Projektlap',
+'vector-namespace-special'   => 'Speciális lap',
+'vector-namespace-talk'      => 'Megbeszélés',
+'vector-namespace-template'  => 'Sablon',
+'vector-namespace-user'      => 'Szerkesztői lap',
+'vector-view-create'         => 'Létrehozás',
+'vector-view-edit'           => 'Szerkesztés',
+'vector-view-history'        => 'Laptörténet megtekintése',
+'vector-view-view'           => 'Olvasás',
+'vector-view-viewsource'     => 'Lapforrás megtekintése',
 
 # Metadata in edit box
 'metadata_help' => 'Metaadatok:',
@@ -2593,10 +2614,18 @@ Valamennyi transwiki importálási művelet az [[Special:Log/import|importálás
 # Stylesheets
 'common.css'   => '/* Közös CSS az összes felszínnek */',
 'monobook.css' => '/* Az ide elhelyezett CSS hatással lesz a Monobook felület használóira */',
+'vector.css'   => '/******************************************************************************************\\
+*                   Ezek a stílusok csak a Vector felületre vonatkoznak                    *
+*    A nem kifejezetten Vector-specifikus stílusokat a [[MediaWiki:Common.css]]-be írd!    *
+\\******************************************************************************************/',
 
 # Scripts
 'common.js'   => '/* Az ide elhelyezett JavaScript kód minden felhasználó számára lefut az oldalak betöltésekor. */',
 'monobook.js' => '/* A Monobook felületet használó szerkesztők számára betöltendő JavaScriptek */',
+'vector.js'   => '/******************************************************************************************\\
+*                   Ezek a szkriptek csak a Vector skin alatt futnak le.                   *
+*    A nem kifejezetten Vector-specifikus szkripteket a [[MediaWiki:Common.js]]-be írd!    *
+\\******************************************************************************************/',
 
 # Metadata
 'nodublincore'      => 'Ezen a kiszolgálón a Dublin Core RDF metaadatok használata letiltott.',

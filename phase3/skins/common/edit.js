@@ -37,6 +37,7 @@ function mwInsertEditButton(parent, item) {
 }
 
 function mwSetupToolbar() {
+	
 	var toolbar = document.getElementById('toolbar');
 	if (!toolbar) { return false; }
 
@@ -55,7 +56,7 @@ function mwSetupToolbar() {
 	}
 	for (var i = 0; i < mwCustomEditButtons.length; i++) {
 		mwInsertEditButton(toolbar, mwCustomEditButtons[i]);
-	}
+	}	
 	return true;
 }
 

@@ -43,9 +43,6 @@ $wgJsMimeType = 'text/javascript';
 //get the autoLoadClasses
 require_once( realpath( dirname(__FILE__) ) . '/jsAutoloadLocalClasses.php' );
 
-//get the messages file:
-require_once( realpath( dirname(__FILE__) ) . '/languages/mwEmbed.i18n.php' );
-
 //get the JSmin class:
 require_once( realpath( dirname(__FILE__) ) . '/minify/JSMin.php' );
 
@@ -95,6 +92,8 @@ function wfMkdirParents( $dir, $mode = null, $caller = null ) {
 }
 function wfMsgNoTrans($msgKey){
     global $messages, $mwLanguageCode;
+    //make sure we have the messages file:
+    require_once( realpath( dirname(__FILE__) ) . '/languages/mwEmbed.i18n.php' );
 
     if(isset($messages[$mwLanguageCode]) && isset($messages[$mwLanguageCode][$msgKey]) ){
         return $messages[$mwLanguageCode][$msgKey];

@@ -187,6 +187,9 @@ $wgMessageStructure = array(
 		'vector-view-history',
 		'vector-view-view',
 		'vector-view-viewsource',
+		'actions',
+		'namespaces',
+		'variants',
 	),
 	'metadata_help' => array(
 		'metadata_help',
@@ -248,6 +251,7 @@ $wgMessageStructure = array(
 		'jumpto',
 		'jumptonavigation',
 		'jumptosearch',
+		'view-pool-error',
 	),
 	'links' => array(
 		'aboutsite',
@@ -422,6 +426,7 @@ $wgMessageStructure = array(
 		'wrongpassword',
 		'wrongpasswordempty',
 		'passwordtooshort',
+		'password-name-match',
 		'mailmypassword',
 		'passwordremindertitle',
 		'passwordremindertext',

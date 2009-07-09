@@ -193,6 +193,9 @@ $messages = array(
 'vector-view-history'        => "Vide 'u cunde",
 'vector-view-view'           => 'Ligge',
 'vector-view-viewsource'     => "Vide 'u sorgende",
+'actions'                    => 'Aziune',
+'namespaces'                 => 'Namespace',
+'variants'                   => 'Variande',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -251,6 +254,11 @@ $messages = array(
 'jumpto'            => 'Zumbe a:',
 'jumptonavigation'  => 'navighesce',
 'jumptosearch'      => 'cirche',
+'view-pool-error'   => "Ne dispiace, le server stonne sovraccarecate jndr'à stu mumende.
+Troppe utinde stonne a provene a vedè sta pàgene.
+Pe piacere aspitte 'nu picche e pò pruève 'n'otra vote a trasè jndr'à sta pàgene.
+
+$1",
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Sus a {{SITENAME}}',
@@ -463,8 +471,9 @@ Condrolle accume l\'è scritte.',
 Prueve n'otra vote.",
 'wrongpasswordempty'         => "'A passuord 'nzerite jè vianghe.
 Mitta n'otra vota.",
-'passwordtooshort'           => "'A passuord ca è mise o non g'è valida o jè troppe piccenne.
-Tu a mettere almene {{PLURAL:$1|1 carattere|$1 carattere}} e adda essere diverse da 'u nome utende.",
+'passwordtooshort'           => "'A password ca è mise jè troppe piccenne.
+Tu a mettere almene {{PLURAL:$1|1 carattere|$1 carattere}}.",
+'password-name-match'        => "'A password toje adda essere diverse da 'u nome utende tue.",
 'mailmypassword'             => 'Passuord nova pe e-mail',
 'passwordremindertitle'      => 'Passuord temboranea nova pe {{SITENAME}}',
 'passwordremindertext'       => "Quacchedune (pò essere tu, da quiste indirizze IP \$1) ha cerchete 'na nova password pe {{SITENAME}} (\$4). 
@@ -784,9 +793,15 @@ Puè acchijà cchiù 'mbormaziune sus a [{{fullurl:{{#Special:Log}}/suppress|pag
 Cumme a 'n'amministratore tu puè angore [$1 vedè sta revisiona] ce tu avveramende a vuè ccù vide.",
 'rev-deleted-text-view'       => "Sta revisione d'a pàgene ha state '''scangellate'''.
 Cumme a 'n'amministratore tu a puè vedè angore; stonne cchiù 'mbormaziune jndr'à l'[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} archiviè de le scangellaminde].",
+'rev-deleted-no-diff'         => "Tu non ge piè vedè sta differenze purcè une de le revisiune ha state '''scagillate'''.
+Pò essere ca jacchie quacche dettaglie jndr'à l'[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} archiviè de le scangellaminde].",
+'rev-deleted-unhide-diff'     => "Une de le revisiune de sta differenza ha state '''scangellate'''.
+Pò essere ca iacchije quacche dettaglie jndr'à l'[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} archiviè de le scangellaminde]..
+Cumme a 'n'amministratore tu puè angore [$1 vedè sta differenze] ce tu proprie si inderessate.",
 'rev-delundel'                => 'fa vedè/scunne',
 'revisiondelete'              => 'Scangille/Repristine revisiune',
 'revdelete-nooldid-title'     => 'Revisione de destinazione invalida',
+'revdelete-nooldid-text'      => "Tu non g'è specificate 'na revisione da arrivà pe abbilità sta funzione. 'A specifica revisione non g'esiste oppure tu stè pruève a scunnè 'a revisona corrende.",
 'revdelete-nologtype-title'   => 'Nisciune tipe de archivije ha state specifichete',
 'revdelete-nologtype-text'    => "Tu non g'è specificate 'u tipe de l'archivije pe eseguì st'aziona.",
 'revdelete-nologid-title'     => "Richieste jndr'à l'archivije invalide",
@@ -1099,6 +1114,7 @@ Tu puè pure scacchià de lassà otre condatte ausanne l'utende tue o le pàggen
 'prefs-i18n'                  => 'Indernazzionalizzazzione',
 'prefs-signature'             => 'Firme',
 'prefs-dateformat'            => "Formate d'a data",
+'prefs-timeoffset'            => "Differenze d'orarie",
 'prefs-advancedediting'       => 'Opzione avanzate',
 'prefs-advancedrc'            => 'Opzione avanzate',
 'prefs-advancedrendering'     => 'Opzione avanzate',
@@ -1565,6 +1581,7 @@ Mò s'avène redirette a [[$2]].",
 'notargettitle'           => 'Nisciuna destinazione',
 'notargettext'            => "Tu non g'è specificate 'na pàgene o 'n'utende de destinazione sus a 'u quale vuè ccu face l'operazione.",
 'nopagetitle'             => 'Nisciuna pàgene de destinazione',
+'nopagetext'              => "'A pàgene de destinazione ca tu è specificate non g'esiste.",
 'pager-newer-n'           => '{{PLURAL:$1|cchiù nueve 1|cchiù nueve $1}}',
 'pager-older-n'           => '{{PLURAL:$1|cchiù vecchie 1|cchiù vicchie $1}}',
 
@@ -2084,7 +2101,10 @@ Pe piacere scacchie n'otre nome.",
 Videta tu 'a màne a 'ngollà 'a pàgena vecchie cu quedda nova.'''",
 'movedto'                   => 'spustete a',
 'movetalk'                  => "Spuéste 'a pàgene de le 'ngazzaminde associete",
+'move-subpages'             => 'Spuèste le sottopàggene (fine a $1)',
+'movepage-page-exists'      => "'A vôsce $1 già esiste e non ge pò essere sovrascritte automaticamende.",
 'movepage-page-moved'       => "'A pàgene $1 ha state spustete sus a $2.",
+'movepage-page-unmoved'     => "'A pàgene $1 non ge pò essere spustate sus a $2.",
 '1movedto2'                 => "[[$1]] spustete jndr'à [[$2]]",
 '1movedto2_redir'           => "spustete [[$1]] jndr'à [[$2]] sus a 'nu ridirezionamende",
 'movelogpage'               => 'Archivije de le spustaminde',
@@ -2260,6 +2280,7 @@ Permette de aggiungere 'nu mutive jndr'à 'u riepileghe",
 'mw_math_png'    => "Fà sembre 'u render de le PNG",
 'mw_math_simple' => 'HTML ce jè avveramende facile oppure PNG',
 'mw_math_html'   => 'HTML ce jè possibbile oppure PNG',
+'mw_math_source' => "Lassele cumme a 'nu TeX (pe le browser de teste)",
 'mw_math_mathml' => 'MathML ce possibbile (sperimendele)',
 
 # Math errors

@@ -110,22 +110,19 @@ class SkinTemplate extends Skin {
 	 */
 	function setupSkinUserCss( OutputPage $out ){
 		$out->addStyle( 'common/shared.css', 'screen' );
-		$out->addStyle( 'common/commonPrint.css', 'print' );	
-		
-		//@depricated  pagecss is depricated can remove once skins are updated
-		$this->pagecss = $this->setupPageCss();
+		$out->addStyle( 'common/commonPrint.css', 'print' );
 	}
 	/* add specific javascript the base Skin class */
-	function setupSkinUserJs( OutputPage $out ){	
-		global $wgUseSiteJs;			
-		//use site js: 		
-		if( $wgUseSiteJs ) {			
+	function setupSkinUserJs( OutputPage $out ){
+		global $wgUseSiteJs;
+		//use site js:
+		if( $wgUseSiteJs ) {
 			$jsCache = $this->loggedin ? '&smaxage=0' : '';
 			$siteGenScriptFile =  self::makeUrl( '-',
 					"action=raw$jsCache&gen=js&useskin=" .
-						urlencode( $this->getSkinName() ) ) ;									
-			$this->jsvarurl = $siteGenScriptFile;			
-		}	
+						urlencode( $this->getSkinName() ) ) ;
+			$this->jsvarurl = $siteGenScriptFile;
+		}
 	}
 
 	/**
@@ -193,11 +190,11 @@ class SkinTemplate extends Skin {
 		}
 
 		$this->userjs = $this->userjsprev = false;
-			
+
 		$this->setupUserCss( $out );
-		
+
 		$this->setupUserJs( $out );
-		
+
 		$this->titletxt = $this->mTitle->getPrefixedText();
 		wfProfileOut( __METHOD__ . '-stuff' );
 
@@ -259,10 +256,10 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'mimetype', $wgMimeType );
 		$tpl->setRef( 'jsmimetype', $wgJsMimeType );
 		$tpl->setRef( 'charset', $wgOutputEncoding );
-		$tpl->set( 'headlinks', $out->getHeadLinks() );			
-		
+		$tpl->set( 'headlinks', $out->getHeadLinks() );
+
 		$tpl->set( 'csslinks', $out->buildCssLinks() );
-		
+
 		$tpl->setRef( 'wgScript', $wgScript );
 		$tpl->setRef( 'skinname', $this->skinname );
 		$tpl->set( 'skinclass', get_class( $this ) );
@@ -300,7 +297,7 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'pagecss', $this->setupPageCss() );
 		$tpl->setRef( 'usercss', $this->usercss );
 		$tpl->setRef( 'userjs', $this->userjs );
-		$tpl->setRef( 'userjsprev', $this->userjsprev );	
+		$tpl->setRef( 'userjsprev', $this->userjsprev );
 		if( $wgUseSiteJs ) {
 			$jsCache = $this->loggedin ? '&smaxage=0' : '';
 			$tpl->set( 'jsvarurl',
@@ -470,11 +467,11 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'body_onload', false );
 		$tpl->set( 'sidebar', $this->buildSidebar() );
 		$tpl->set( 'nav_urls', $this->buildNavUrls() );
-		
-		//set the head script near the end: 
+
+		//set the head script near the end:
 		$tpl->set( 'headscripts', $out->getScript() );
-		
-		
+
+
 		// original version by hansm
 		if( !wfRunHooks( 'SkinTemplateOutputPageBeforeExec', array( &$this, &$tpl ) ) ) {
 			wfDebug( __METHOD__ . ": Hook SkinTemplateOutputPageBeforeExec broke outputPage execution!\n" );
@@ -483,8 +480,8 @@ class SkinTemplate extends Skin {
 		// allow extensions adding stuff after the page content.
 		// See Skin::afterContentHook() for further documentation.
 		$tpl->set( 'dataAfterContent', $this->afterContentHook() );
-		wfProfileOut( __METHOD__ . '-stuff5' );		
-		
+		wfProfileOut( __METHOD__ . '-stuff5' );
+
 		// execute template
 		wfProfileIn( __METHOD__ . '-execute' );
 		$res = $tpl->execute();
@@ -611,7 +608,7 @@ class SkinTemplate extends Skin {
 				);
 			}
 		}
-		
+
 		wfRunHooks( 'PersonalUrls', array( &$personal_urls, &$title ) );
 		wfProfileOut( __METHOD__ );
 		return $personal_urls;
@@ -718,16 +715,16 @@ class SkinTemplate extends Skin {
 					'href' => $this->mTitle->getLocalUrl( $this->editUrlOptions() )
 				);
 
-				// adds new section link if page is a current revision of a talk page or 
+				// adds new section link if page is a current revision of a talk page or
 				if ( ( $wgArticle && $wgArticle->isCurrent() && $istalk ) || $wgOut->showNewSectionLink() ) {
 					if ( !$wgOut->forceHideNewSectionLink() ) {
 						$content_actions['addsection'] = array(
 							'class' => $section == 'new' ? 'selected' : false,
 							'text' => wfMsg( 'addsection' ),
 							'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
-						);					
+						);
 					}
-				}  
+				}
 			} elseif ( $this->mTitle->isKnown() ) {
 				$content_actions['viewsource'] = array(
 					'class' => ($action == 'edit') ? 'selected' : false,
@@ -987,6 +984,298 @@ class SkinTemplate extends Skin {
 		}
 		wfProfileOut( __METHOD__ );
 		return $nav_urls;
+	}
+
+	/**
+	 * Builds a structured array of links used for tabs and menus
+	 * @return array
+	 * @private
+	 */
+	function buildNavigationUrls() {
+		global $wgContLang, $wgLang, $wgOut, $wgUser, $wgRequest, $wgArticle;
+		global $wgDisableLangConversion;
+
+		wfProfileIn( __METHOD__ );
+
+		$links = array(
+			'namespaces' => array(),
+			'views' => array(),
+			'actions' => array(),
+			'variants' => array()
+		);
+
+		// Detects parameters
+		$action = $wgRequest->getVal( 'action', 'view' );
+		$section = $wgRequest->getVal( 'section' );
+
+		// Checks if page is some kind of content
+		if( $this->iscontent ) {
+
+			// Gets page objects for the related namespaces
+			$subjectPage = $this->mTitle->getSubjectPage();
+			$talkPage = $this->mTitle->getTalkPage();
+
+			// Determines if this is a talk page
+			$isTalk = $this->mTitle->isTalkPage();
+
+			// Generates XML IDs from namespace names
+			$subjectId = $this->mTitle->getNamespaceKey( '' );
+
+			if ( $subjectId == 'main' ) {
+				$talkId = 'talk';
+			} else {
+				$talkId = "{$subjectId}_talk";
+			}
+			$currentId = $isTalk ? $talkId : $subjectId;
+
+			// Adds namespace links
+			$links['namespaces'][$subjectId] = $this->tabAction(
+				$subjectPage, 'vector-namespace-' . $subjectId, !$isTalk, '', true
+			);
+			$links['namespaces'][$subjectId]['context'] = 'subject';
+			$links['namespaces'][$talkId] = $this->tabAction(
+				$talkPage, 'vector-namespace-talk', $isTalk, '', true
+			);
+			$links['namespaces'][$talkId]['context'] = 'talk';
+
+			// Adds view view link
+			if ( $this->mTitle->exists() ) {
+				$links['views']['view'] = $this->tabAction(
+					$isTalk ? $talkPage : $subjectPage,
+						'vector-view-view', ( $action == 'view' ), '', true
+				);
+			}
+
+			wfProfileIn( __METHOD__ . '-edit' );
+
+			// Checks if user can...
+			if (
+				// edit the current page
+				$this->mTitle->quickUserCan( 'edit' ) &&
+				(
+					// if it exists
+					$this->mTitle->exists() ||
+					// or they can create one here
+					$this->mTitle->quickUserCan( 'create' )
+				)
+			) {
+				// Builds CSS class for talk page links
+				$isTalkClass = $isTalk ? ' istalk' : '';
+
+				// Determines if we're in edit mode
+				$selected = (
+					( $action == 'edit' || $action == 'submit' ) &&
+					( $section != 'new' )
+				);
+				$links['views']['edit'] = array(
+					'class' => ( $selected ? 'selected' : '' ) . $isTalkClass,
+					'text' => $this->mTitle->exists()
+						? wfMsg( 'vector-view-edit' )
+						: wfMsg( 'vector-view-create' ),
+					'href' =>
+						$this->mTitle->getLocalUrl( $this->editUrlOptions() )
+				);
+				// Checks if this is a current rev of talk page and we should show a new
+				// section link
+				if ( ( $isTalk && $wgArticle->isCurrent() ) || ( $wgOut->showNewSectionLink() ) ) {
+					// Checks if we should ever show a new section link
+					if ( !$wgOut->forceHideNewSectionLink() ) {
+						// Adds new section link
+						$links['actions']['addsection'] = array(
+							'class' => $section == 'new' ? 'selected' : false,
+							'text' => wfMsg( 'vector-action-addsection' ),
+							'href' => $this->mTitle->getLocalUrl(
+								'action=edit&section=new'
+							)
+						);
+					}
+				}
+			// Checks if the page is known (some kind of viewable content)
+			} elseif ( $this->mTitle->isKnown() ) {
+				// Adds view source view link
+				$links['views']['viewsource'] = array(
+					'class' => ( $action == 'edit' ) ? 'selected' : false,
+					'text' => wfMsg( 'vector-view-viewsource' ),
+					'href' =>
+						$this->mTitle->getLocalUrl( $this->editUrlOptions() )
+				);
+			}
+			wfProfileOut( __METHOD__ . '-edit' );
+
+			wfProfileIn( __METHOD__ . '-live' );
+
+			// Checks if the page exists
+			if ( $this->mTitle->exists() ) {
+				// Adds history view link
+				$links['views']['history'] = array(
+					'class' => ($action == 'history') ? 'selected' : false,
+					'text' => wfMsg( 'vector-view-history' ),
+					'href' => $this->mTitle->getLocalUrl( 'action=history' ),
+					'rel' => 'archives',
+				);
+
+				if( $wgUser->isAllowed( 'delete' ) ) {
+					$links['actions']['delete'] = array(
+						'class' => ($action == 'delete') ? 'selected' : false,
+						'text' => wfMsg( 'vector-action-delete' ),
+						'href' => $this->mTitle->getLocalUrl( 'action=delete' )
+					);
+				}
+				if ( $this->mTitle->quickUserCan( 'move' ) ) {
+					$moveTitle = SpecialPage::getTitleFor(
+						'Movepage', $this->thispage
+					);
+					$links['actions']['move'] = array(
+						'class' => $this->mTitle->isSpecial( 'Movepage' ) ?
+										'selected' : false,
+						'text' => wfMsg( 'vector-action-move' ),
+						'href' => $moveTitle->getLocalUrl()
+					);
+				}
+
+				if (
+					$this->mTitle->getNamespace() !== NS_MEDIAWIKI &&
+					$wgUser->isAllowed( 'protect' )
+				) {
+					if ( !$this->mTitle->isProtected() ){
+						$links['actions']['protect'] = array(
+							'class' => ($action == 'protect') ?
+											'selected' : false,
+							'text' => wfMsg( 'vector-action-protect' ),
+							'href' =>
+								$this->mTitle->getLocalUrl( 'action=protect' )
+						);
+
+					} else {
+						$links['actions']['unprotect'] = array(
+							'class' => ($action == 'unprotect') ?
+											'selected' : false,
+							'text' => wfMsg( 'vector-action-unprotect' ),
+							'href' =>
+								$this->mTitle->getLocalUrl( 'action=unprotect' )
+						);
+					}
+				}
+			} else {
+				// article doesn't exist or is deleted
+				if (
+					$wgUser->isAllowed( 'deletedhistory' ) &&
+					$wgUser->isAllowed( 'undelete' )
+				) {
+					if( $n = $this->mTitle->isDeleted() ) {
+						$undelTitle = SpecialPage::getTitleFor( 'Undelete' );
+						$links['actions']['undelete'] = array(
+							'class' => false,
+							'text' => wfMsgExt(
+								'vector-action-undelete',
+								array( 'parsemag' ),
+								$wgLang->formatNum( $n )
+							),
+							'href' => $undelTitle->getLocalUrl(
+								'target=' . urlencode( $this->thispage )
+							)
+						);
+					}
+				}
+
+				if (
+					$this->mTitle->getNamespace() !== NS_MEDIAWIKI &&
+					$wgUser->isAllowed( 'protect' )
+				) {
+					if ( !$this->mTitle->getRestrictions( 'create' ) ) {
+						$links['actions']['protect'] = array(
+							'class' => ($action == 'protect') ?
+											'selected' : false,
+							'text' => wfMsg( 'vector-action-protect' ),
+							'href' =>
+								$this->mTitle->getLocalUrl( 'action=protect' )
+						);
+
+					} else {
+						$links['actions']['unprotect'] = array(
+							'class' => ($action == 'unprotect') ?
+											'selected' : false,
+							'text' => wfMsg( 'vector-action-unprotect' ),
+							'href' =>
+								$this->mTitle->getLocalUrl( 'action=unprotect' )
+						);
+					}
+				}
+			}
+			wfProfileOut( __METHOD__ . '-live' );
+
+			/**
+			 * The following actions use messages which, if made particular to
+			 * the Vector skin, would break the Ajax code which makes this
+			 * action happen entirely inline. Skin::makeGlobalVariablesScript
+			 * defines a set of messages in a javascript object - and these
+			 * messages are assumed to be global for all skins. Without making
+			 * a change to that procedure these messages will have to remain as
+			 * the global versions.
+			 */
+			// Checks if the user is logged in
+			if( $this->loggedin ) {
+				// Checks if the user is watching this page
+				if( !$this->mTitle->userIsWatching() ) {
+					// Adds watch action link
+					$links['actions']['watch'] = array(
+						'class' =>
+							( $action == 'watch' or $action == 'unwatch' ) ?
+								'selected' : false,
+						'text' => wfMsg( 'watch' ),
+						'href' => $this->mTitle->getLocalUrl( 'action=watch' )
+					);
+				} else {
+					// Adds unwatch action link
+					$links['actions']['unwatch'] = array(
+						'class' =>
+							($action == 'unwatch' or $action == 'watch') ?
+								'selected' : false,
+						'text' => wfMsg( 'unwatch' ),
+						'href' => $this->mTitle->getLocalUrl( 'action=unwatch' )
+					);
+				}
+			}
+
+			// This is instead of SkinTemplateTabs - which uses a flat array
+			wfRunHooks( 'SkinTemplateNavigation', array( &$this, &$links ) );
+
+		// If it's not content, it's got to be a special page
+		} else {
+			$links['namespaces']['special'] = array(
+				'class' => 'selected',
+				'text' => wfMsg( 'vector-namespace-special' ),
+				'href' => $wgRequest->getRequestURL()
+			);
+		}
+
+		// Gets list of language variants
+		$variants = $wgContLang->getVariants();
+		// Checks that language conversion is enabled and variants exist
+		if( !$wgDisableLangConversion && count( $variants ) > 1 ) {
+			// Gets preferred variant
+			$preferred = $wgContLang->getPreferredVariant();
+			// Loops over each variant
+			foreach( $variants as $code ) {
+				// Gets variant name from language code
+				$varname = $wgContLang->getVariantname( $code );
+				// Checks if the variant is marked as disabled
+				if( $varname == 'disable' ) {
+					// Skips this variant
+					continue;
+				}
+				// Appends variant link
+				$links['variants'][] = array(
+					'class' => ( $code == $preferred ) ? 'selected' : false,
+					'text' => $varname,
+					'href' => $this->mTitle->getLocalURL( '', $code )
+				);
+			}
+		}
+
+		wfProfileOut( __METHOD__ );
+
+		return $links;
 	}
 
 	/**

@@ -149,9 +149,9 @@ $wgUpdates = array(
 		array( 'add_field', 'site_stats',     'ss_active_users',  'patch-ss_active_users.sql' ),
 		array( 'do_active_users_init' ),
 		array( 'add_field', 'ipblocks',     'ipb_allow_usertalk',  'patch-ipb_allow_usertalk.sql' ),
-		array( 'do_unique_pl_tl_il' ),
 
 		// 1.15
+		array( 'do_unique_pl_tl_il' ),
 		array( 'add_table', 'change_tag',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'tag_summary',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'valid_tag',			   'patch-change_tag.sql' ),
@@ -161,6 +161,7 @@ $wgUpdates = array(
 		array( 'add_table', 'log_search',		   	   'patch-log_search.sql' ),
 		array( 'do_log_search_population' ),
 		array( 'add_field', 'logging',       'log_user_text',  'patch-log_user_text.sql' ),
+		array( 'add_table', 'l10n_cache',              'patch-l10n_cache.sql' ),
 	),
 
 	'sqlite' => array(
@@ -180,6 +181,7 @@ $wgUpdates = array(
 		array( 'add_table', 'log_search',		   	   'patch-log_search.sql' ),
 		array( 'do_log_search_population' ),
 		array( 'add_field', 'redirect',	'rd_interwiki', 'patch-rd_interwiki.sql' ),
+		array( 'add_table', 'l10n_cache',              'patch-l10n_cache.sql' ),
 	),
 );
 
@@ -1487,6 +1489,7 @@ function do_postgres_updates() {
 		array('valid_tag',         'patch-change_tag.sql'),
 		array('user_properties',   'patch-user_properties.sql'),
 		array('log_search',        'patch-log_search.sql'),
+		array('l10n_cache',        'patch-l10n_cache.sql'),
 	);
 
 	$newcols = array(

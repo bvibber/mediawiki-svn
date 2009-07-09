@@ -2951,42 +2951,9 @@ function wfBoolToStr( $value ) {
 
 /**
  * Load an extension messages file
- *
- * @param string $extensionName Name of extension to load messages from\for.
- * @param string $langcode Language to load messages for, or false for default
- *                         behvaiour (en, content language and user language).
- * @since r24808 (v1.11) Using this method of loading extension messages will not work
- * on MediaWiki prior to that
+ * @deprecated
  */
 function wfLoadExtensionMessages( $extensionName, $langcode = false ) {
-	global $wgExtensionMessagesFiles, $wgMessageCache, $wgLang, $wgContLang;
-
-	#For recording whether extension message files have been loaded in a given language.
-	static $loaded = array();
-
-	if( !array_key_exists( $extensionName, $loaded ) ) {
-		$loaded[$extensionName] = array();
-	}
-
-	if ( !isset($wgExtensionMessagesFiles[$extensionName]) ) {
-		throw new MWException( "Messages file for extensions $extensionName is not defined" );
-	}
-
-	if( !$langcode && !array_key_exists( '*', $loaded[$extensionName] ) ) {
-		# Just do en, content language and user language.
-		$wgMessageCache->loadMessagesFile( $wgExtensionMessagesFiles[$extensionName], false );
-		# Mark that they have been loaded.
-		$loaded[$extensionName]['en'] = true;
-		$loaded[$extensionName][$wgLang->getCode()] = true;
-		$loaded[$extensionName][$wgContLang->getCode()] = true;
-		# Mark that this part has been done to avoid weird if statements.
-		$loaded[$extensionName]['*'] = true;
-	} elseif( is_string( $langcode ) && !array_key_exists( $langcode, $loaded[$extensionName] ) ) {
-		# Load messages for specified language.
-		$wgMessageCache->loadMessagesFile( $wgExtensionMessagesFiles[$extensionName], $langcode );
-		# Mark that they have been loaded.
-		$loaded[$extensionName][$langcode] = true;
-	}
 }
 
 /**
@@ -3027,7 +2994,11 @@ function wfMaxlagError( $host, $lag, $maxLag ) {
  * @return null
  */
 function wfDeprecated( $function ) {
-	wfWarn( "Use of $function is deprecated.", 2 );
+	static $functionsWarned = array();
+	if ( !isset( $functionsWarned[$function] ) ) {
+		$functionsWarned[$function] = true;
+		wfWarn( "Use of $function is deprecated.", 2 );
+	}
 }
 
 function wfWarn( $msg, $callerOffset = 1, $level = E_USER_NOTICE ) {

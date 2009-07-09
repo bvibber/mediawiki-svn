@@ -283,6 +283,9 @@ $messages = array(
 'vector-view-history'        => 'Versionsgschicht',
 'vector-view-view'           => 'Läse',
 'vector-view-viewsource'     => 'Quälltext aaluege',
+'actions'                    => 'Aktione',
+'namespaces'                 => 'Namensryym',
+'variants'                   => 'Variante',
 
 # Metadata in edit box
 'metadata_help' => 'Metadate:',
@@ -341,6 +344,11 @@ $messages = array(
 'jumpto'            => 'Gump zue:',
 'jumptonavigation'  => 'Navigation',
 'jumptosearch'      => 'Suech',
+'view-pool-error'   => 'Excusez, d Server sin zur Zyt iberlaschtet.
+S versueche grad zvyl Benutzer die Syte aazluege.
+Bitte wart e paar Minute, voreb Du s nomol versuechsch.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Über {{GRAMMAR:akkusativ|{{SITENAME}}}}',
@@ -530,8 +538,9 @@ Iberprief d Schrybwys, oder mäld Di as [[Special:UserLogin/signup|neje Benutzer
 'nouserspecified'            => 'Bitte gib e Benutzername yy.',
 'wrongpassword'              => 'Des Passwort isch falsch (oder fählt). Bitte versuech s nomol.',
 'wrongpasswordempty'         => 'Du hesch vergässe dyy Passwort yyzgee. Bitte versuech s nomol.',
-'passwordtooshort'           => 'Dys Passwort isch ungültig oder z churz.
-Es mues mindischtens {{PLURAL:$1|1 Zeiche|$1 Zeiche}} ha u sech vom Benutzernamen underscheide.',
+'passwordtooshort'           => 'Dyy Passwort isch uugiltig oder z churz.
+S muess zmindescht {{PLURAL:$1|1 Zeiche|$1 Zeiche}} haa.',
+'password-name-match'        => 'Dyy Passwort muess sich vu Dyynem Benutzername unterscheide.',
 'mailmypassword'             => 'Es nöis Passwort schicke',
 'passwordremindertitle'      => 'Nei Passwort fir {{SITENAME}}',
 'passwordremindertext'       => 'Ebber mit dr IP-Adress $1 het e nej Passwort fir d Aamäldig bi {{SITENAME}} ($4) aagfordert, wahrschyyns Du sälber.

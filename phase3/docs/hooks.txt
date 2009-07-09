@@ -621,6 +621,12 @@ new pages
 saved, that is before insertNewArticle() is called
 &$editpage_Obj: the current EditPage object
 
+'EditPage::importFormData': allow extensions to read additional data
+posted in the form
+$editpage: EditPage instance 
+$request: Webrequest
+return value is ignored (should always return true)
+
 'EditPage::showEditForm:fields': allows injection of form field into edit form
 &$editor: the EditPage instance for reference
 &$out: an OutputPage instance to write to
@@ -653,6 +659,10 @@ textarea in the edit form
 &$editpage: The current EditPage object
 &$checks: Array of edit checks like "watch this page"/"minor edit"
 &$tabindex: HTML tabindex of the last edit check/button
+
+'EditPageBeforeEditToolbar': allows modifying the edit toolbar above the
+textarea in the edit form
+&$toolbar: The toolbar HTMl
 
 'EditPageCopyrightWarning': Allow for site and per-namespace customization of contribution/copyright notice.
 $title: title of page being edited
@@ -830,16 +840,18 @@ $addr: The e-mail address entered by the user
 
 'isValidPassword': Override the result of User::isValidPassword()
 $password: The password entered by the user
-&$result: Set this and return false to override the internal checks
+&$result: Set this to either true (passes) or the key for a message error
 $user: User the password is being validated for
 
-'LanguageGetMagic': Use this to define synonyms of magic words depending
-of the language
+'LanguageGetMagic': DEPRECATED, use $magicWords in a file listed in 
+$wgExtensionMessagesFiles instead. 
+Use this to define synonyms of magic words depending of the language
 $magicExtensions: associative array of magic words synonyms
 $lang: laguage code (string)
 
-'LanguageGetSpecialPageAliases': Use to define aliases of special pages
-names depending of the language
+'LanguageGetSpecialPageAliases': DEPRECATED, use $specialPageAliases in a file
+listed in $wgExtensionMessagesFiles instead.
+Use to define aliases of special pages names depending of the language
 $specialPageAliases: associative array of magic words synonyms
 $lang: laguage code (string)
 
@@ -899,10 +911,6 @@ completed
 
 'ListDefinedTags': When trying to find all defined tags.
 &$tags: The list of tags.
-
-'LoadAllMessages': called by MessageCache::loadAllMessages() to load extensions
-messages
-&$messageCache: The MessageCache object
 
 'LoadExtensionSchemaUpdates': called by maintenance/updaters.inc when upgrading
 database schema
@@ -999,13 +1007,6 @@ $message: value (string), change it to the message you want to define
 Useful for updating caches.
 $title: name of the page changed.
 $text: new contents of the page.
-
-'MessageNotInMwNs': When trying to get a message that isn't found in the
-MediaWiki namespace (but before checking the message files)
-&$message: message's content; can be changed
-$lckey: message's name
-$langcode: language code
-$isFullKey: specifies whether $lckey is a two part key "msg/lang"
 
 'MonoBookTemplateToolboxEnd': Called by Monobook skin after toolbox links have
 been rendered (useful for adding more)
@@ -1262,6 +1263,11 @@ $nav_urls: array of tabs
 &$content_actions: Content actions
 [See http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/examples/Content_action.php
 for an example]
+
+'SkinTemplateNavigation': Alter the structured navigation links in SkinTemplates
+&$sktemplate: SkinTemplate object
+&$links: Structured navigation links
+This is used to alter the navigation for skins which use buildNavigationUrls such as Vector.
 
 'SkinTemplateOutputPageBeforeExec': Before SkinTemplate::outputPage()
 starts page output
@@ -1539,7 +1545,7 @@ $template: SimpleTemplate instance for the form
 
 'UserLoginMailPassword': Block users from emailing passwords
 $name: the username to email the password of.
-&$error: out-param ÐÊthe error message to return.
+&$error: out-param - the error message to return.
 
 'UserLogout': before a user logs out
 $user: the user object that is about to be logged out
@@ -1584,6 +1590,13 @@ authentification timestamp
 'UserToggles': called when initialising User::$mToggles, use this to add
 new toggles
 $toggles: array of toggles to add
+
+'VectorTemplateToolboxEnd': Called by Vector skin after toolbox links have
+been rendered (useful for adding more)
+Note: this is only run for the Vector skin.  To add items to the toolbox
+for all 'SkinTemplate'-type skins, use the SkinTemplateToolboxEnd hook
+instead.
+$tools: array of tools
 
 'WantedPages::getSQL': called in WantedPagesPage::getSQL(), can be used to
 alter the SQL query which gets the list of wanted pages

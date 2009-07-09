@@ -58,6 +58,23 @@ li span.deleted, span.history-deleted {
 }
 
 /**
+ * Patrol stuff
+ */
+.not-patrolled {
+	background-color: #ffa;
+}
+
+span.unpatrolled {
+	font-weight: bold;
+	color: red;
+}
+
+div.patrollink {
+	font-size: 75%;
+	text-align: right;
+}
+
+/**
  * Forms
  */
 body.ltr td.mw-label { text-align: right; }
@@ -68,6 +85,8 @@ body.rtl td.mw-input { text-align: right; }
 body.rtl td.mw-submit { text-align: right; }
 
 td.mw-label { vertical-align: top; }
+.prefsection td.mw-label { width: 20%; }
+.prefsection table { width: 100%; }
 td.mw-submit { white-space: nowrap; }
 
 table.mw-htmlform-nolabel td.mw-label { width: 0 !important; }

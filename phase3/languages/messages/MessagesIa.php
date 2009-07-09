@@ -304,6 +304,9 @@ $messages = array(
 'vector-view-history'        => 'Vider historia',
 'vector-view-view'           => 'Leger',
 'vector-view-viewsource'     => 'Vider texto fonte',
+'actions'                    => 'Actiones',
+'namespaces'                 => 'Spatios de nomines',
+'variants'                   => 'Variantes',
 
 # Metadata in edit box
 'metadata_help' => 'Metadatos:',
@@ -362,6 +365,11 @@ $messages = array(
 'jumpto'            => 'Saltar a:',
 'jumptonavigation'  => 'navigation',
 'jumptosearch'      => 'cercar',
+'view-pool-error'   => 'Pardono, le servitores es supercargate in iste momento.
+Troppo de usatores tenta vider iste pagina.
+Per favor attende un momento ante que tu essaya acceder novemente a iste pagina.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'A proposito de {{SITENAME}}',
@@ -500,7 +508,7 @@ Per favor reprova post alcun minutas.',
 'protectedpagetext'    => 'Iste pagina ha essite protegite contra modificationes.',
 'viewsourcetext'       => 'Tu pote vider e copiar le codice-fonte de iste pagina:',
 'protectedinterface'   => 'Iste pagina contine texto pro le interfacie del software, e es protegite pro impedir le abuso.',
-'editinginterface'     => "'''Attention:''' Tu va modificar un pagina que se usa pro texto del interfacie pro le software.
+'editinginterface'     => "'''Attention:''' Le texto de iste pagina face parte del interfacie pro le software.
 Omne modification a iste pagina cambiara le apparentia del interfacie pro altere usatores.
 Pro traductiones, per favor considera usar [http://translatewiki.net/wiki/Main_Page?setlang=ia translatewiki.net], le projecto pro localisar MediaWiki.",
 'sqlhidden'            => '(Consulta SQL celate)',
@@ -566,8 +574,9 @@ Verifica le orthographia.',
 'nouserspecified'            => 'Tu debe specificar un nomine de usator.',
 'wrongpassword'              => 'Le contrasigno que tu entrava es incorrecte. Per favor reprova.',
 'wrongpasswordempty'         => 'Tu non entrava un contrasigno. Per favor reprova.',
-'passwordtooshort'           => 'Tu contrasigno es invalide o troppo curte.
-Illo debe haber al minus {{PLURAL:$1|1 character|$1 characteres}} e debe differer de tu nomine de usator.',
+'passwordtooshort'           => 'Tu contrasigno es troppo curte.
+Illo debe haber al minus {{PLURAL:$1|1 character|$1 characteres}}.',
+'password-name-match'        => 'Tu contrasigno debe esser differente de tu nomine de usator.',
 'mailmypassword'             => 'Inviar un nove contrasigno in e-mail',
 'passwordremindertitle'      => 'Nove contrasigno temporari pro {{SITENAME}}',
 'passwordremindertext'       => 'Alcuno (probabilemente tu, ab le adresse IP $1) requestava un nove

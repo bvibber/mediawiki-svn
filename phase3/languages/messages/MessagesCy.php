@@ -263,6 +263,30 @@ $messages = array(
 'faq'            => 'Cwestiynau cyffredin',
 'faqpage'        => 'Project:Cwestiynau cyffredin',
 
+# Vector skin
+'vector-action-addsection'   => 'Ychwanegu adran',
+'vector-action-delete'       => 'Dileu',
+'vector-action-move'         => 'Symud',
+'vector-action-protect'      => 'Diogelu',
+'vector-action-undelete'     => 'Adfer',
+'vector-action-unprotect'    => 'Dad-ddiogelu',
+'vector-namespace-category'  => 'Categori',
+'vector-namespace-help'      => 'Tudalen gymorth',
+'vector-namespace-image'     => 'Ffeil',
+'vector-namespace-main'      => 'Tudalen',
+'vector-namespace-media'     => 'Tudalen cyfrwng',
+'vector-namespace-mediawiki' => 'Neges',
+'vector-namespace-project'   => 'Tudalen brosiect',
+'vector-namespace-special'   => 'Tudalen arbennig',
+'vector-namespace-talk'      => 'Sgwrs',
+'vector-namespace-template'  => 'Nodyn',
+'vector-namespace-user'      => 'Tudalen defnyddiwr',
+'vector-view-create'         => 'Dechrau',
+'vector-view-edit'           => 'Golygu',
+'vector-view-history'        => 'Gweld yr hanes',
+'vector-view-view'           => 'Darllen',
+'vector-view-viewsource'     => 'Dagos côd y dudalen',
+
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
 
@@ -415,7 +439,7 @@ Rhoddwyd y côd gwall "$3: $4<" gan MySQL.',
 'laggedslavemode'      => "Rhybudd: hwyrach nad yw'r dudalen yn cynnwys diwygiadau diweddar.",
 'readonly'             => 'Databas ar glo',
 'enterlockreason'      => "Rhowch eglurhad dros gloi'r databas, ac amcangyfrif hyd at pa bryd y bydd y databas dan glo",
-'readonlytext'         => "Mae databas ar glo; nid yw'n bosib cadw erthyglau newydd na gwneud unrhyw newid arall. Mae'n debygol fod hyn er mwyn cynnal a chadw'r databas -- fe fydd ar gael eto cyn bo hir.
+'readonlytext'         => "Mae'r databas ar glo; nid yw'n bosib cadw erthyglau newydd na gwneud unrhyw newid arall. Mae'n debygol fod hyn er mwyn cynnal a chadw'r databas -- fe fydd ar gael eto cyn bo hir.
 
 Rhoddwyd y rheswm canlynol gan y gweinyddwr a'i glodd: $1",
 'missing-article'      => 'Ni lwyddodd y databas i ddod o hyd i destun tudalen yr oedd disgwyl iddo ei gael, sef "$1" $2.
@@ -512,7 +536,9 @@ Sicrhewch eich bod chi wedi sillafu'r enw'n gywir, neu [[Special:UserLogin/signu
 'nouserspecified'            => "Mae'n rhaid nodi enw defnyddiwr.",
 'wrongpassword'              => "Nid yw'r cyfrinair a deipiwyd yn gywir. Rhowch gynnig arall arni, os gwelwch yn dda.",
 'wrongpasswordempty'         => 'Roedd y cyfrinair yn wag. Rhowch gynnig arall arni.',
-'passwordtooshort'           => "Mae eich cyfrinair yn rhy fyr neu'n annilys. Mae'n rhaid iddo gynnwys o leia $1 {{PLURAL:$1|nod|nod|nod|nod|nod|nod}} a bod yn wahanol i'ch enw defnyddiwr.",
+'passwordtooshort'           => "Mae'ch cyfrinair yn rhy fyr. 
+Mae'n rhaid iddo gynnwys o leia $1 {{PLURAL:$1|nod}}.",
+'password-name-match'        => "Rhaid i'ch cyfrinair a'ch enw defnyddiwr fod yn wahanol i'w gilydd.",
 'mailmypassword'             => 'Anfoner cyfrinair newydd ataf trwy e-bost',
 'passwordremindertitle'      => 'Hysbysu cyfrinair dros dro newydd ar gyfer {{SITENAME}}',
 'passwordremindertext'       => 'Mae rhywun (chi mwy na thebyg, o\'r cyfeiriad IP $1) wedi gofyn i ni anfon cyfrinair newydd atoch ar gyfer {{SITENAME}} ($4).
@@ -791,14 +817,15 @@ Gallwch [[Special:Search|chwilio'r]] wici am dudalennau eraill perthnasol.",
 'rev-deleted-user'            => '(enw defnyddiwr wedi ei ddiddymu)',
 'rev-deleted-event'           => '(tynnwyd gweithred y lòg)',
 'rev-deleted-text-permission' => "'''Dilewyd''' y diwygiad hon o'r dudalen.
-Hwyrach bod manylion pellach ar y [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} lòg dileu].",
-'rev-deleted-text-view'       => "'''Dilewyd''' y diwygiad o'r dudalen.
-Gan eich bod yn weinyddwr gallwch ei weld; gall fod manylion yn y [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} lòg dileu].",
+Hwyrach bod manylion pellach ar y [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} lòg cuddio].",
+'rev-deleted-text-view'       => "'''Dilewyd''' y diwygiad hwn o'r dudalen.
+Gan eich bod yn weinyddwr gallwch ei weld; gall fod manylion yn y [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} lòg cuddio].",
 'rev-delundel'                => 'dangos/cuddio',
 'revisiondelete'              => 'Dileu/dad-ddileu diwygiadau',
 'revdelete-nooldid-title'     => 'Anelwyd at olygiad annilys',
 'revdelete-nologtype-title'   => 'Ni nodwyd y math o lòg',
 'revdelete-nologid-title'     => 'Cofnod lòg annilys',
+'revdelete-show-file-submit'  => 'Ydw',
 'revdelete-selected'          => "'''Y {{PLURAL:$2|golygiad|golygiad|golygiadau|golygiadau|golygiadau|golygiadau}} dewisedig o [[:$1]]:'''",
 'logdelete-selected'          => "'''{{PLURAL:$1|Digwyddiad|Digwyddiad|Digwyddiadau|Digwyddiadau|Digwyddiadau|Digwyddiadau}} a ddewiswyd o'r lòg:'''",
 'revdelete-text'              => "'''Fe fydd y golygiadau a'r digwyddiadau sydd wedi eu diddymu i'w gweld o hyd yn hanes y dudalen ac yn y logiau, ond ni fydd y cyhoedd yn gallu gweld y cynnwys i gyd.'''
@@ -832,6 +859,8 @@ Byddwch gystal â chadarnhau eich bod yn bwriadu gwneud hyn, eich bod yn deall y
 'revdelete-unhid'             => 'datguddiwyd $1',
 'revdelete-log-message'       => '$1 $2 {{PLURAL:$2|golygiad|golygiad|olygiad|golygiad|golygiad|golygiad|}}',
 'logdelete-log-message'       => '$1 $2 {{PLURAL:$2||digywddiad|ddigwyddiad|digwyddiad|digwyddiad|digwyddiad}}',
+'revdelete-hide-current'      => "Cafwyd gwall wrth geisio cuddio'r eitem a'r dyddiad $2, $1 arno: hwn yw'r diwygiad presennol.
+Ni ellir ei guddio.",
 
 # Suppression log
 'suppressionlog'     => 'Lòg cuddio',
@@ -965,6 +994,7 @@ Pan yn gwneud hyn dylid sicrhau nad yw dilyniant hanes tudalennau yn cael ei ddi
 'search-mwsuggest-disabled'        => 'dim awgrymiadau',
 'search-relatedarticle'            => 'Cysylltiedig',
 'mwsuggest-disable'                => 'Analluogi awgrymiadau AJAX',
+'searcheverything-enable'          => 'Chwilio pob parth',
 'searchrelated'                    => 'cysylltiedig',
 'searchall'                        => 'oll',
 'showingresults'                   => "Yn dangos $1 {{PLURAL:$1|canlyniad|canlyniad|ganlyniad|chanlyniad|chanlyniad|canlyniad}} isod gan ddechrau gyda rhif '''$2'''.",
@@ -978,6 +1008,9 @@ Pan yn gwneud hyn dylid sicrhau nad yw dilyniant hanes tudalennau yn cael ei ddi
 'powersearch-ns'                   => 'Chwilio yn y parthau:',
 'powersearch-redir'                => 'Rhestru ailgyfeiriadau',
 'powersearch-field'                => 'Chwilier am',
+'powersearch-togglelabel'          => 'Dewis:',
+'powersearch-toggleall'            => 'Oll',
+'powersearch-togglenone'           => 'Dim un',
 'search-external'                  => 'Chwiliad allanol',
 'searchdisabled'                   => "Mae'r teclyn chwilio ar {{SITENAME}} wedi'i analluogi dros dro.
 Yn y cyfamser gallwch chwilio drwy Google.
@@ -1049,7 +1082,7 @@ Cofiwch y gall mynegeion Google o gynnwys {{SITENAME}} fod ar ei hôl hi.",
 'timezoneregion-indian'         => 'Cefnfor yr India',
 'timezoneregion-pacific'        => 'Y Môr Tawelt',
 'allowemail'                    => 'Galluogi e-bost oddi wrth ddefnyddwyr eraill',
-'prefs-searchoptions'           => 'Dewisiadau chwilio',
+'prefs-searchoptions'           => 'Chwilio',
 'prefs-namespaces'              => 'Parthau',
 'defaultns'                     => 'Fel arall, chwiliwch y parthau isod:',
 'default'                       => 'rhagosodyn',
@@ -1416,6 +1449,7 @@ Gallwch newid trefn y rhestr trwy bwyso ar bennawd colofn.",
 'filehist-dimensions'       => 'Hyd a lled',
 'filehist-filesize'         => 'Maint y ffeil',
 'filehist-comment'          => 'Sylw',
+'filehist-missing'          => 'Y ffeil yn eisiau',
 'imagelinks'                => "Cysylltiadau'r ffeil",
 'linkstoimage'              => "Mae'r {{PLURAL:$1|tudalen|dudalen|tudalennau|tudalennau|tudalennau|tudalennau}} isod yn cysylltu i'r ddelwedd hon:",
 'linkstoimage-more'         => "Mae rhagor na $1 {{PLURAL:$1|tudalen yn|dudalen yn|dudalen yn|o dudalennau'n|o dudalennau'n|o dudalennau'n}} cysylltu at y ffeil hon.
@@ -1430,7 +1464,7 @@ Am wybodaeth pellach gwelwch y disgrifiad ohoni sydd ar [$2 dudalen ddisgrifio'r
 'sharedupload-desc-here'    => "Daw'r ffeil hon o $1 a gellir ei defnyddio gan brosiectau eraill.
 Dangosir isod y disgrifiad sydd ar [$2 dudalen ddisgrifio'r ffeil] yno.",
 'filepage-nofile'           => "Does dim ffeil o'r enw hwn ar gael.",
-'filepage-nofile-link'      => "Does dim ffeil o'r enw hwn ar gael, ond gallwch [%1 ei huwchlwytho].",
+'filepage-nofile-link'      => "Does dim ffeil o'r enw hwn ar gael, ond gallwch [$1 ei huwchlwytho].",
 'uploadnewversion-linktext' => "Uwchlwytho fersiwn newydd o'r ffeil hon",
 'shared-repo-from'          => 'oddi ar $1',
 'shared-repo'               => 'storfa cyfrannol',
@@ -1637,8 +1671,9 @@ Gweler hefyd [[Special:WantedCategories|categorïau sydd eu hangen]].",
 'special-categories-sort-abc'   => 'trefnu yn ôl yr wyddor',
 
 # Special:DeletedContributions
-'deletedcontributions'       => 'Cyfraniadau defnyddiwr i dudalennau dilëedig',
-'deletedcontributions-title' => 'Cyfraniadau defnyddiwr i dudalennau dilëedig',
+'deletedcontributions'             => 'Cyfraniadau defnyddiwr i dudalennau dilëedig',
+'deletedcontributions-title'       => 'Cyfraniadau defnyddiwr i dudalennau dilëedig',
+'sp-deletedcontributions-contribs' => 'cyfraniadau',
 
 # Special:LinkSearch
 'linksearch'       => 'Cysylltiadau allanol',
@@ -1654,6 +1689,9 @@ Protocoliau sy\'n cael eu cynnal: <tt>$1</tt>',
 'listusersfrom'      => 'Dangos y defnyddwyr gan ddechrau â:',
 'listusers-submit'   => 'Dangos',
 'listusers-noresult' => "Dim defnyddiwr i'w gael.",
+
+# Special:ActiveUsers
+'activeusers-noresult' => "Dim defnyddwyr i'w cael.",
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Lòg creu cyfrifon defnyddwyr newydd',
@@ -1910,6 +1948,7 @@ Mae'n bosib bod nam ar y cyswllt, neu fod y diwygiad eisoes wedi ei adfer neu we
 'undelete-nodiff'              => 'Ni chafwyd hyd i olygiad cynharach.',
 'undeletebtn'                  => 'Adfer!',
 'undeletelink'                 => 'gweld/adfer',
+'undeleteviewlink'             => 'gweld',
 'undeletereset'                => 'Ailosod',
 'undeleteinvert'               => "Troi'r dewis tu chwith",
 'undeletecomment'              => 'Sylwadau:',
@@ -2226,7 +2265,7 @@ Os ydych am gyfrannu at y gwaith o gyfieithu ar gyfer holl prosiectau MediaWiki 
 'importinterwiki'            => 'Mewnforiad traws-wici',
 'import-interwiki-text'      => "Dewiswch wici a thudalen i'w mewnforio.
 Fe gedwir dyddiadau ac enwau'r golygwyr ar gyfer y diwygiadau i'r dudalen.
-Mae cofnod o bob weithred o fewnforio i'w gweld ar y [[Special:Log/inport|lòg mewnforio]].",
+Mae cofnod o bob weithred o fewnforio i'w gweld ar y [[Special:Log/import|lòg mewnforio]].",
 'import-interwiki-source'    => 'Wici/tudalen y gwreiddiol:',
 'import-interwiki-history'   => 'Copïer yr holl fersiynau yn hanes y dudalen hon',
 'import-interwiki-templates' => 'Cynhwyser pob nodyn',

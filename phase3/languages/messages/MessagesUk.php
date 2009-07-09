@@ -92,7 +92,7 @@ $magicWords = array(
 	'forcetoc'              => array( '0', '__ОБОВ_ЗМІСТ__', '__ОБЯЗ_ОГЛ__', '__FORCETOC__' ),
 	'toc'                   => array( '0', '__ЗМІСТ__', '__ОГЛ__', '__TOC__' ),
 	'noeditsection'         => array( '0', '__БЕЗ_РЕДАГУВ_РОЗДІЛУ__', '__БЕЗ_РЕДАКТИРОВАНИЯ_РАЗДЕЛА__', '__NOEDITSECTION__' ),
-	'currentmonth'          => array( '1', 'ПОТОЧНИЙ_МІСЯЦЬ', 'ТЕКУЩИЙ_МЕСЯЦ', 'CURRENTMONTH', 'CURRENTMONTH2' ),
+	'currentmonth'          => array( '1', 'ПОТОЧНИЙ_МІСЯЦЬ', 'ТЕКУЩИЙ_МЕСЯЦ', 'ТЕКУЩИЙ_МЕСЯЦ_2', 'CURRENTMONTH', 'CURRENTMONTH2' ),
 	'currentmonthname'      => array( '1', 'НАЗВА_ПОТОЧНОГО_МІСЯЦЯ', 'НАЗВАНИЕ_ТЕКУЩЕГО_МЕСЯЦА', 'CURRENTMONTHNAME' ),
 	'currentmonthnamegen'   => array( '1', 'НАЗВА_ПОТОЧНОГО_МІСЯЦЯ_РОД', 'НАЗВАНИЕ_ТЕКУЩЕГО_МЕСЯЦА_РОД', 'CURRENTMONTHNAMEGEN' ),
 	'currentmonthabbrev'    => array( '1', 'НАЗВА_ПОТОЧНОГО_МІСЯЦЯ_АБР', 'НАЗВАНИЕ_ТЕКУЩЕГО_МЕСЯЦА_АБР', 'CURRENTMONTHABBREV' ),
@@ -102,7 +102,7 @@ $magicWords = array(
 	'currentyear'           => array( '1', 'ПОТОЧНИЙ_РІК', 'ТЕКУЩИЙ_ГОД', 'CURRENTYEAR' ),
 	'currenttime'           => array( '1', 'ПОТОЧНИЙ_ЧАС', 'ТЕКУЩЕЕ_ВРЕМЯ', 'CURRENTTIME' ),
 	'currenthour'           => array( '1', 'ПОТОЧНА_ГОДИНА', 'ТЕКУЩИЙ_ЧАС', 'CURRENTHOUR' ),
-	'localmonth'            => array( '1', 'ЛОКАЛЬНИЙ_МІСЯЦЬ', 'МЕСТНЫЙ_МЕСЯЦ', 'LOCALMONTH', 'LOCALMONTH2' ),
+	'localmonth'            => array( '1', 'ЛОКАЛЬНИЙ_МІСЯЦЬ', 'МЕСТНЫЙ_МЕСЯЦ', 'МЕСТНЫЙ_МЕСЯЦ_2', 'LOCALMONTH', 'LOCALMONTH2' ),
 	'localmonthname'        => array( '1', 'НАЗВА_ЛОКАЛЬНОГО_МІСЯЦЯ', 'НАЗВАНИЕ_МЕСТНОГО_МЕСЯЦА', 'LOCALMONTHNAME' ),
 	'localmonthnamegen'     => array( '1', 'НАЗВА_ЛОКАЛЬНОГО_МІСЯЦЯ_РОД', 'НАЗВАНИЕ_МЕСТНОГО_МЕСЯЦА_РОД', 'LOCALMONTHNAMEGEN' ),
 	'localmonthabbrev'      => array( '1', 'НАЗВА_ЛОКАЛЬНОГО_МІСЯЦЯ_АБР', 'НАЗВАНИЕ_МЕСТНОГО_МЕСЯЦА_АБР', 'LOCALMONTHABBREV' ),
@@ -138,8 +138,8 @@ $magicWords = array(
 	'msg'                   => array( '0', 'ПОВІД:', 'СООБЩ:', 'MSG:' ),
 	'subst'                 => array( '0', 'ПІДСТ:', 'ПОДСТ:', 'SUBST:' ),
 	'msgnw'                 => array( '0', 'ПОВІД_БЕЗ_ВІКІ:', 'СООБЩ_БЕЗ_ВИКИ:', 'MSGNW:' ),
-	'img_thumbnail'         => array( '1', 'міні', 'мини', 'thumbnail', 'thumb' ),
-	'img_manualthumb'       => array( '1', 'міні=$1', 'мини=$1', 'thumbnail=$1', 'thumb=$1' ),
+	'img_thumbnail'         => array( '1', 'міні', 'мини', 'миниатюра', 'thumbnail', 'thumb' ),
+	'img_manualthumb'       => array( '1', 'міні=$1', 'мини=$1', 'миниатюра=$1', 'thumbnail=$1', 'thumb=$1' ),
 	'img_right'             => array( '1', 'праворуч', 'справа', 'right' ),
 	'img_left'              => array( '1', 'ліворуч', 'слева', 'left' ),
 	'img_none'              => array( '1', 'без', 'none' ),
@@ -393,6 +393,9 @@ $messages = array(
 'vector-view-history'        => 'Показати історію',
 'vector-view-view'           => 'Читання',
 'vector-view-viewsource'     => 'Показати сирець',
+'actions'                    => 'Дії',
+'namespaces'                 => 'Простори назв',
+'variants'                   => 'Варіанти',
 
 # Metadata in edit box
 'metadata_help' => 'Метадані:',
@@ -451,6 +454,11 @@ $messages = array(
 'jumpto'            => 'Перейти до:',
 'jumptonavigation'  => 'навігація',
 'jumptosearch'      => 'пошук',
+'view-pool-error'   => 'Вибачте, сервери були перевантажені в цей момент.
+Дуже багато користувачів запитали перегляд цієї сторінки.
+Будь ласка, почекайте і повторіть спробу отримати доступ пізніше.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Про {{grammar:accusative|{{SITENAME}}}}',
@@ -652,7 +660,8 @@ MySQL повернув помилку «$3: $4».',
 'wrongpassword'              => 'Ви ввели хибний пароль. Спробуйте ще раз.',
 'wrongpasswordempty'         => 'Ви не ввели пароль. Будь ласка, спробуйте ще раз.',
 'passwordtooshort'           => 'Ваш пароль неправильний або занадто короткий.
-Він має містити принаймні $1 {{PLURAL:$1|символ|символи|символів}} і відрізнятися від імені користувача.',
+Він має містити принаймні $1 {{PLURAL:$1|символ|символи|символів}}.',
+'password-name-match'        => 'Уведений пароль має відрізнятися від імені користувача.',
 'mailmypassword'             => 'Надіслати новий пароль',
 'passwordremindertitle'      => "Пам'ятка пароля користувача {{grammar:genitive|{{SITENAME}}}}",
 'passwordremindertext'       => 'Хтось (можливо, ви, з IP-адреси $1) зробив запит

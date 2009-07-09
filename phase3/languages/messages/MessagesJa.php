@@ -27,6 +27,7 @@
  * @author Muttley
  * @author Mzm5zbC3
  * @author Suisui
+ * @author Whym
  * @author לערי ריינהארט
  */
 
@@ -81,12 +82,12 @@ $specialPageAliases = array(
 	'CreateAccount'             => array( 'アカウント作成', 'アカウントの作成' ),
 	'Preferences'               => array( '個人設定', 'オプション' ),
 	'Watchlist'                 => array( 'ウォッチリスト' ),
-	'Recentchanges'             => array( '最近更新したページ' ),
+	'Recentchanges'             => array( '最近の更新', '最近更新したページ' ),
 	'Upload'                    => array( 'アップロード' ),
-	'Listfiles'                 => array( 'ファイルリスト', 'ファイル一覧' ),
+	'Listfiles'                 => array( 'ファイル一覧', 'ファイルリスト' ),
 	'Newimages'                 => array( '新着ファイル', '新しいファイルの一覧', '新着画像展示室' ),
-	'Listusers'                 => array( '登録利用者の一覧' ),
-	'Listgrouprights'           => array( '利用者グループの権限一覧', '利用者権限一覧' ),
+	'Listusers'                 => array( '登録利用者一覧', '登録利用者の一覧' ),
+	'Listgrouprights'           => array( '利用者グループ権限', '利用者グループの権限一覧', '利用者権限一覧' ),
 	'Statistics'                => array( '統計' ),
 	'Randompage'                => array( 'おまかせ表示' ),
 	'Lonelypages'               => array( '孤立しているページ' ),
@@ -119,7 +120,7 @@ $specialPageAliases = array(
 	'Ipblocklist'               => array( 'ブロック一覧', 'ブロックの一覧' ),
 	'Specialpages'              => array( '特別ページ一覧' ),
 	'Contributions'             => array( '投稿記録' ),
-	'Emailuser'                 => array( 'ウィキメール' ),
+	'Emailuser'                 => array( 'メール送信', 'ウィキメール' ),
 	'Confirmemail'              => array( 'メールアドレスの確認' ),
 	'Whatlinkshere'             => array( 'リンク元' ),
 	'Recentchangeslinked'       => array( '関連ページの更新状況', 'リンク先の更新状況' ),
@@ -140,7 +141,7 @@ $specialPageAliases = array(
 	'MIMEsearch'                => array( 'MIME検索', 'MIMEタイプ検索' ),
 	'FileDuplicateSearch'       => array( '重複ファイル検索' ),
 	'Unwatchedpages'            => array( 'ウォッチされていないページ' ),
-	'Listredirects'             => array( 'リダイレクトの一覧', 'リダイレクトリスト', 'リダイレクト一覧' ),
+	'Listredirects'             => array( 'リダイレクト一覧', 'リダイレクトの一覧', 'リダイレクトリスト' ),
 	'Revisiondelete'            => array( '特定版削除' ),
 	'Unusedtemplates'           => array( '使われていないテンプレート', '未使用テンプレート' ),
 	'Randomredirect'            => array( 'おまかせリダイレクト' ),
@@ -155,11 +156,12 @@ $specialPageAliases = array(
 	'Withoutinterwiki'          => array( '言語間リンクを持たないページ', '言語間リンクのないページ' ),
 	'MergeHistory'              => array( '履歴統合' ),
 	'Filepath'                  => array( 'パスの取得' ),
-	'Invalidateemail'           => array( 'ウィキメール無効' ),
+	'Invalidateemail'           => array( 'メール無効', 'ウィキメール無効' ),
 	'Blankpage'                 => array( '白紙ページ' ),
 	'LinkSearch'                => array( '外部リンク検索' ),
 	'DeletedContributions'      => array( '削除された投稿記録', '削除された投稿履歴', '削除歴' ),
 	'Tags'                      => array( 'タグ一覧' ),
+	'Activeusers'               => array( '活動中の利用者', '活動中の利用者一覧' ),
 );
 
 $magicWords = array(
@@ -171,6 +173,7 @@ $magicWords = array(
 	'noeditsection'         => array( '0', '__セクション編集非表示__', '＿＿セクション編集非表示＿＿', '__NOEDITSECTION__' ),
 	'noheader'              => array( '0', '__見出し非表示__', '＿＿見出し非表示＿＿', '__NOHEADER__' ),
 	'currentmonth'          => array( '1', '協定月', 'CURRENTMONTH', 'CURRENTMONTH2' ),
+	'currentmonth1'         => array( '1', '協定月1', '協定月１', 'CURRENTMONTH1' ),
 	'currentmonthname'      => array( '1', '協定月名', 'CURRENTMONTHNAME' ),
 	'currentmonthabbrev'    => array( '1', '省略協定月', '協定月省略', '協定月省略形', 'CURRENTMONTHABBREV' ),
 	'currentday'            => array( '1', '協定日', 'CURRENTDAY' ),
@@ -180,6 +183,7 @@ $magicWords = array(
 	'currenttime'           => array( '1', '協定時間', '協定時刻', 'CURRENTTIME' ),
 	'currenthour'           => array( '1', '協定時', 'CURRENTHOUR' ),
 	'localmonth'            => array( '1', '現地月', 'LOCALMONTH', 'LOCALMONTH2' ),
+	'localmonth1'           => array( '1', '現地月1', '現地月１', 'LOCALMONTH1' ),
 	'localmonthname'        => array( '1', '現地月名', 'LOCALMONTHNAME' ),
 	'localmonthabbrev'      => array( '1', '省略現地月', 'LOCALMONTHABBREV' ),
 	'localday'              => array( '1', '現地日', 'ローカルデイ', 'LOCALDAY' ),
@@ -199,10 +203,10 @@ $magicWords = array(
 	'pagenamee'             => array( '1', 'ページ名E', 'ページ名エンコード', 'PAGENAMEE' ),
 	'namespace'             => array( '1', '名前空間', 'NAMESPACE' ),
 	'namespacee'            => array( '1', '名前空間E', '名前空間エンコード', 'NAMESPACEE' ),
-	'talkspace'             => array( '1', '会話空間', 'トークスペース', 'TALKSPACE' ),
-	'talkspacee'            => array( '1', '会話空間E', 'トークスペースE', 'TALKSPACEE' ),
+	'talkspace'             => array( '1', 'ノート空間', '会話空間', 'トークスペース', 'TALKSPACE' ),
+	'talkspacee'            => array( '1', 'ノート空間', '会話空間E', 'トークスペースE', 'トークスペースＥ', 'TALKSPACEE' ),
 	'subjectspace'          => array( '1', '標準空間', 'SUBJECTSPACE', 'ARTICLESPACE' ),
-	'subjectspacee'         => array( '1', '標準空間E', 'SUBJECTSPACEE', 'ARTICLESPACEE' ),
+	'subjectspacee'         => array( '1', '標準空間E', '名前空間Ｅ', 'SUBJECTSPACEE', 'ARTICLESPACEE' ),
 	'fullpagename'          => array( '1', 'フルページ名', '完全なページ名', 'FULLPAGENAME' ),
 	'fullpagenamee'         => array( '1', 'フルページ名E', '完全なページ名E', '完全なページ名エンコード', 'FULLPAGENAMEE' ),
 	'subpagename'           => array( '1', 'サブページ名', 'SUBPAGENAME' ),
@@ -248,6 +252,7 @@ $magicWords = array(
 	'revisionmonth'         => array( '1', 'リビジョン月', '差分月', 'REVISIONMONTH' ),
 	'revisionyear'          => array( '1', 'リビジョン年', '差分年', 'REVISIONYEAR' ),
 	'revisiontimestamp'     => array( '1', 'リビジョンタイムスタンプ', 'REVISIONTIMESTAMP' ),
+	'revisionuser'          => array( '1', 'リビジョンユーザー', 'リビジョンユーザ', 'リビジョン利用者', '差分利用者', 'REVISIONUSER' ),
 	'plural'                => array( '0', '複数:', 'PLURAL:' ),
 	'fullurl'               => array( '0', '完全なURL:', 'フルURL:', 'FULLURL:' ),
 	'fullurle'              => array( '0', '完全なURLE:', 'フルURLE:', 'FULLURLE:' ),
@@ -451,6 +456,9 @@ $messages = array(
 'vector-view-history'        => '履歴表示',
 'vector-view-view'           => '閲覧',
 'vector-view-viewsource'     => 'ソース表示',
+'actions'                    => '操作',
+'namespaces'                 => '名前空間',
+'variants'                   => '変種',
 
 # Metadata in edit box
 'metadata_help' => 'メタデータ:',
@@ -509,6 +517,9 @@ $messages = array(
 'jumpto'            => '移動:',
 'jumptonavigation'  => 'メニュー',
 'jumptosearch'      => '検索',
+'view-pool-error'   => '申し訳ありません。ただいま、サーバーに過大な負荷がかかっています。このページを閲覧しようとする利用者が多すぎます。しばらく時間を置いてから、もう一度このページにアクセスしてみてください。
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}}について',
@@ -533,7 +544,7 @@ $messages = array(
 
 'badaccess'        => '権限がありません',
 'badaccess-group0' => '要求した操作を行うことは許可されていません。',
-'badaccess-groups' => 'この操作は、$1 {{PLURAL:$2|の|のいずれかの}}グループに属する利用者のみが実行できます。',
+'badaccess-groups' => 'この操作は、$1{{PLURAL:$2|の|のいずれかの}}グループに属する利用者のみが実行できます。',
 
 'versionrequired'     => 'MediaWiki バージョン $1 が必要',
 'versionrequiredtext' => 'このページの利用には MediaWiki バージョン $1 が必要です。[[Special:Version|バージョン情報]]を確認してください。',
@@ -697,7 +708,8 @@ $2',
 'nouserspecified'            => '利用者名を指定してください。',
 'wrongpassword'              => 'パスワードが間違っています。再度入力してください。',
 'wrongpasswordempty'         => 'パスワードを空にすることはできません。再度入力してください。',
-'passwordtooshort'           => 'パスワードが無効、または短すぎます。パスワードは{{PLURAL:$1|$1文字}}以上の文字列でなければなりません。また利用者名と同じものは使えません。',
+'passwordtooshort'           => 'パスワードが短すぎます。パスワードは{{PLURAL:$1|$1文字}}以上でなければなりません。',
+'password-name-match'        => '利用者名と同じパスワードは使えません。',
 'mailmypassword'             => '新しいパスワードをメールで送る',
 'passwordremindertitle'      => '{{SITENAME}} 仮パスワード通知',
 'passwordremindertext'       => 'どなたか ($1 のIPアドレスの使用者) が {{SITENAME}} ($4) のログイン用パスワードの再発行を申請しました。利用者「$2」の仮パスワードは "$3" です。もしあなたがパスワードの発行を依頼したのであれば、ログインして別のパスワードに変更してください。この仮パスワードは{{PLURAL:$5|1日|$5日間}}で有効期限が切れます。
@@ -823,9 +835,9 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'newarticletext'                   => 'あなたがクリックしたリンク先のページはまだ存在していません。このページを新規に作成するには、下のボックスに内容を書き込んでください (詳しくは[[{{MediaWiki:Helppage}}|ヘルプページ]]を参照してください)。ページを作成するつもりがない場合には、ブラウザの「戻る」ボタンを使って前のページに戻ってください。',
 'anontalkpagetext'                 => "----
 ''これはアカウントをまだ作成していないか、あるいは使っていない匿名利用者のための会話ページです。匿名利用者の識別は利用者名のかわりにIPアドレスを用います。IPアドレスは何人かで共有されることがあります。もしあなたが匿名利用者で無関係なコメントが寄せられているとお考えの場合は、[[Special:UserLogin/signup|アカウントを作成する]]か[[Special:UserLogin|ログインして]]他の匿名利用者と間違えられないようにしてくださるようお願いします。''",
-'noarticletext'                    => '現在このページには内容がありません。他のページに含まれる[[Special:Search/{{PAGENAME}}|このページ名を検索する]]か、もしくは<span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} 関連記録を検索する]か、[{{fullurl:{{FULLPAGENAME}}|action=edit}} このページを編集]</span>することができます。',
+'noarticletext'                    => '現在このページには内容がありません。他のページに含まれる[[Special:Search/{{PAGENAME}}|このページ名を検索する]]か、もしくは<span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} 関連記録を検索する]か、[{{fullurl:{{FULLPAGENAME}}|action=edit}} このページを作成]</span>することができます。',
 'userpage-userdoesnotexist'        => '「$1」という名前のアカウントは登録されていません。このページを編集することが適切かどうか確認してください。',
-'clearyourcache'                   => "'''お知らせ:''' 保存した後、ブラウザのキャッシュをクリアする必要があります。
+'clearyourcache'                   => "'''注意:''' 保存した後、ブラウザのキャッシュをクリアする必要があります。
 * '''Mozilla / Firefox / Safari:''' [Shift] を押しながら [再読み込み] をクリック、または [Ctrl]-[F5] か [Ctrl]-[R] (Macintoshでは [Cmd]-[Shift]-[R])
 * '''IE:''' [Ctrl] を押しながら [更新] をクリック、または [Ctrl]-[F5]
 * '''Konqueror:''' [再読み込み] をクリック、または [F5]
@@ -1270,7 +1282,7 @@ $1",
 'gender-unknown'                => '未指定',
 'gender-male'                   => '男',
 'gender-female'                 => '女',
-'prefs-help-gender'             => '任意: 対象の性別によって表現が変わる言語での使用を念頭に、性を考慮したユーザインタフェースを実現するために使われます。この情報は公開されます。',
+'prefs-help-gender'             => '省略可能: 対象の文法的性によって表現が変わる言語での使用を念頭に、文法的性を考慮したユーザインタフェースを実現するために使われます。この情報は公開されます。',
 'email'                         => 'メールアドレス',
 'prefs-help-realname'           => '本名登録は任意です。本名を登録した場合、あなたの著作物の帰属表示に用いられます。',
 'prefs-help-email'              => 'メールアドレスの設定は任意ですが、設定しておけばパスワードを忘れた際に新しいパスワードを電子メールで受け取ることができます。

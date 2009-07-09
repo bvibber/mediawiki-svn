@@ -259,7 +259,7 @@ function gM( key , args ) {
 		 return ms;
 	} else{
 		//key is missing return indication: 
-		return '[' + key + ']';
+		return '&lt;' + key + '&gt;';
 	}	 
 }
 /*

@@ -47,7 +47,7 @@ loadGM({
 	"mv_ogg-player-omtkplayer" : "OMTK Flash Vorbis",
 	"mv_generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://commons.wikimedia.org/wiki/Commons:Media_help\">Playback Methods</a> page to download a player<br>",
 	
-	"mv_for_best_experience": "For best video playback experience we recommend <b><a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=mv_embed\">Firefox 3.5</a></b>",
+	"mv_for_best_experience": "For better video playback experience we recommend <b><a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=mv_embed\">Firefox 3.5</a></b>",
 	"mv_do_not_warn_again": "Do not warn me again."	
 		
 });

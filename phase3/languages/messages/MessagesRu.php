@@ -426,6 +426,9 @@ $messages = array(
 'vector-view-history'        => 'Просмотр истории',
 'vector-view-view'           => 'Чтение',
 'vector-view-viewsource'     => 'Просмотр разметки',
+'actions'                    => 'Действия',
+'namespaces'                 => 'Пространства имён',
+'variants'                   => 'Варианты',
 
 # Metadata in edit box
 'metadata_help' => 'Метаданные:',
@@ -484,6 +487,11 @@ $messages = array(
 'jumpto'            => 'Перейти к:',
 'jumptonavigation'  => 'навигация',
 'jumptosearch'      => 'поиск',
+'view-pool-error'   => 'Извините, серверы были перезагружены в этот момент.
+Слишком много участников запросили просмотр этой страницы.
+Пожалуйста, подождите и повторите попытку получить доступ позже.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Описание {{grammar:genitive|{{SITENAME}}}}',
@@ -679,8 +687,9 @@ $2',
 'nouserspecified'            => 'Вы должны указать имя участника.',
 'wrongpassword'              => 'Введённый вами пароль неверен. Попробуйте ещё раз.',
 'wrongpasswordempty'         => 'Пожалуйста, введите непустой пароль.',
-'passwordtooshort'           => 'Введённый пароль недействителен или слишком короткий.
-Пароль должен состоять не менее чем из $1 {{PLURAL:$1|символа|символов|символов}} и отличаться от имени участника.',
+'passwordtooshort'           => 'Введённый пароль слишком короток.
+Пароль должен состоять не менее чем из $1 {{PLURAL:$1|символа|символов|символов}}.',
+'password-name-match'        => 'Введённый пароль должен отличаться от имени участника.',
 'mailmypassword'             => 'Выслать новый пароль',
 'passwordremindertitle'      => 'Напоминание пароля участника {{grammar:genitive|{{SITENAME}}}}',
 'passwordremindertext'       => 'Кто-то (вероятно, вы, с IP-адреса $1) запросил создать
@@ -1242,7 +1251,7 @@ $1",
 'prefs-resetpass'               => 'Изменить пароль',
 'prefs-email'                   => 'Параметры электронной почты',
 'prefs-rendering'               => 'Внешний вид',
-'saveprefs'                     => 'Записать',
+'saveprefs'                     => 'Сохранить',
 'resetprefs'                    => 'Сбросить',
 'restoreprefs'                  => 'Восстановить настройки по умолчанию',
 'prefs-editing'                 => 'Редактирование',
@@ -2234,7 +2243,7 @@ $1',
 'whatlinkshere-hideredirs' => '$1 перенаправления',
 'whatlinkshere-hidetrans'  => '$1 включения',
 'whatlinkshere-hidelinks'  => '$1 ссылки',
-'whatlinkshere-hideimages' => '$1 ссылки с изображений',
+'whatlinkshere-hideimages' => '$1 ссылки для изображений',
 'whatlinkshere-filters'    => 'Фильтры',
 
 # Block/unblock
@@ -2539,7 +2548,7 @@ $1',
 'tooltip-pt-mycontris'            => 'Список ваших правок',
 'tooltip-pt-login'                => 'Здесь можно зарегистрироваться в системе, но это необязательно.',
 'tooltip-pt-anonlogin'            => 'Здесь можно зарегистрироваться в системе, но это необязательно.',
-'tooltip-pt-logout'               => 'Завершить зарегистрированный сеанс',
+'tooltip-pt-logout'               => 'Завершить сеанс работы',
 'tooltip-ca-talk'                 => 'Обсуждение содержания страницы',
 'tooltip-ca-edit'                 => 'Эту страницу можно изменять. Используйте, пожалуйста, предварительный просмотр перед сохранением',
 'tooltip-ca-addsection'           => 'Создать новый раздел',
@@ -2641,6 +2650,7 @@ The wiki server can't provide data in a format your client can read.",
 'skinname-chick'       => 'Цыпа',
 'skinname-simple'      => 'Простое',
 'skinname-modern'      => 'Современное',
+'skinname-vector'      => 'Вектор',
 
 # Math options
 'mw_math_png'    => 'Всегда генерировать PNG',

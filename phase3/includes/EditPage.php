@@ -106,7 +106,7 @@ class EditPage {
 		$this->editFormTextBottom =
 		$this->mPreloadText = "";
 	}
-	
+
 	function getArticle() {
 		return $this->mArticle;
 	}
@@ -166,7 +166,7 @@ class EditPage {
 					$undorev->getPage() == $this->mArticle->getID() &&
 					!$undorev->isDeleted( Revision::DELETED_TEXT ) &&
 					!$oldrev->isDeleted( Revision::DELETED_TEXT ) ) {
-					
+
 					$undotext = $this->mArticle->getUndoText( $undorev, $oldrev );
 					if ( $undotext === false ) {
 						# Warn the user that something went wrong
@@ -201,7 +201,7 @@ class EditPage {
 		wfProfileOut( __METHOD__ );
 		return $text;
 	}
-	
+
 	/** Use this method before edit() to preload some text into the edit box */
 	public function setPreloadedText( $text ) {
 		$this->mPreloadText = $text;
@@ -323,7 +323,7 @@ class EditPage {
 		$this->mMetaData = $s;
 	}
 
-	/* 
+	/*
 	 * Check if a page was deleted while the user was editing it, before submit.
 	 * Note that we rely on the logging table, which hasn't been always there,
 	 * but that doesn't matter, because this only applies to brand new
@@ -388,9 +388,9 @@ class EditPage {
 		}
 
 		$wgOut->addScriptFile( 'edit.js' );
-		
+
 		$wgOut->addScriptClass( 'editPage' );
-		
+
 		$permErrors = $this->getEditPermissionErrors();
 		if ( $permErrors ) {
 			wfDebug( __METHOD__.": User can't edit\n" );
@@ -414,7 +414,7 @@ class EditPage {
 				}
 			}
 		}
-		
+
 		// If they used redlink=1 and the page exists, redirect to the main article
 		if ( $wgRequest->getBool( 'redlink' ) && $this->mTitle->exists() ) {
 			$wgOut->redirect( $this->mTitle->getFullURL() );
@@ -481,7 +481,7 @@ class EditPage {
 		wfProfileOut( __METHOD__."-business-end" );
 		wfProfileOut( __METHOD__ );
 	}
-	
+
 	protected function getEditPermissionErrors() {
 		global $wgUser;
 		$permErrors = $this->mTitle->getUserPermissionsErrors( 'edit', $wgUser );
@@ -493,7 +493,7 @@ class EditPage {
 		# Ignore some permissions errors when a user is just previewing/viewing diffs
 		$remove = array();
 		foreach( $permErrors as $error ) {
-			if ( ($this->preview || $this->diff) && 
+			if ( ($this->preview || $this->diff) &&
 				($error[0] == 'blockedtext' || $error[0] == 'autoblockedtext') )
 			{
 				$remove[] = $error;
@@ -622,8 +622,8 @@ class EditPage {
 			$this->watchthis = $request->getCheck( 'wpWatchthis' );
 
 			# Don't force edit summaries when a user is editing their own user or talk page
-			if ( ( $this->mTitle->mNamespace == NS_USER || $this->mTitle->mNamespace == NS_USER_TALK ) && 
-				$this->mTitle->getText() == $wgUser->getName() ) 
+			if ( ( $this->mTitle->mNamespace == NS_USER || $this->mTitle->mNamespace == NS_USER_TALK ) &&
+				$this->mTitle->getText() == $wgUser->getName() )
 			{
 				$this->allowBlankSummary = true;
 			} else {
@@ -654,18 +654,22 @@ class EditPage {
 			elseif ( $this->section != 'new' && $request->getVal( 'summary' ) ) {
 				$this->summary = $request->getText( 'summary' );
 			}
-			
+
 			if ( $request->getVal( 'minor' ) ) {
 				$this->minoredit = true;
 			}
 		}
 
+		// FIXME: unused variable?
 		$this->oldid = $request->getInt( 'oldid' );
 
 		$this->live = $request->getCheck( 'live' );
 		$this->editintro = $request->getText( 'editintro' );
 
 		wfProfileOut( $fname );
+
+		// Allow extensions to modify form data
+		wfRunHooks( 'EditPage::importFormData', array( &$this, $request ) );
 	}
 
 	/**
@@ -881,7 +885,7 @@ class EditPage {
 				wfProfileOut( $fname );
 				return self::AS_HOOK_ERROR;
 			}
-			
+
 			# Handle the user preference to force summaries here. Check if it's not a redirect.
 			if ( !$this->allowBlankSummary && !Title::newFromRedirect( $this->textbox1 ) ) {
 				if ( md5( $this->summary ) == $this->autoSumm ) {
@@ -924,7 +928,7 @@ class EditPage {
 			}
 		}
 		$userid = $wgUser->getId();
-		
+
 		# Suppress edit conflict with self, except for section edits where merging is required.
 		if ( $this->isConflict && $this->section == '' && $this->userWasLastToEdit($userid,$this->edittime) ) {
 			wfDebug( "EditPage::editForm Suppressing edit conflict, same user.\n" );
@@ -971,7 +975,7 @@ class EditPage {
 		}
 
 		# Handle the user preference to force summaries here, but not for null edits
-		if ( $this->section != 'new' && !$this->allowBlankSummary && 0 != strcmp($oldtext,$text) 
+		if ( $this->section != 'new' && !$this->allowBlankSummary && 0 != strcmp($oldtext,$text)
 			&& !Title::newFromRedirect( $text ) ) # check if it's not a redirect
 		{
 			if ( md5( $this->summary ) == $this->autoSumm ) {
@@ -1035,7 +1039,7 @@ class EditPage {
 
 		# update the article here
 		if ( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
-			$this->watchthis, $bot, $sectionanchor ) ) 
+			$this->watchthis, $bot, $sectionanchor ) )
 		{
 			wfProfileOut( $fname );
 			return self::AS_SUCCESS_UPDATE;
@@ -1045,7 +1049,7 @@ class EditPage {
 		wfProfileOut( $fname );
 		return self::AS_END;
 	}
-	
+
 	/**
 	 * Check if no edits were made by other users since
 	 * the time a user started editing the page. Limit to
@@ -1056,7 +1060,7 @@ class EditPage {
 		$dbw = wfGetDB( DB_MASTER );
 		$res = $dbw->select( 'revision',
 			'rev_user',
-			array( 
+			array(
 				'rev_page' => $this->mArticle->getId(),
 				'rev_timestamp > '.$dbw->addQuotes( $dbw->timestamp($edittime) )
 			),
@@ -1069,7 +1073,7 @@ class EditPage {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Check given input text against $wgSpamRegex, and return the text of the first match.
 	 * @return mixed -- matching string or false
@@ -1080,7 +1084,7 @@ class EditPage {
 		$regexes = (array)$wgSpamRegex;
 		return self::matchSpamRegexInternal( $text, $regexes );
 	}
-	
+
 	/**
 	 * Check given input text against $wgSpamRegex, and return the text of the first match.
 	 * @return mixed -- matching string or false
@@ -1090,7 +1094,7 @@ class EditPage {
 		$regexes = (array)$wgSummarySpamRegex;
 		return self::matchSpamRegexInternal( $text, $regexes );
 	}
-	
+
 	protected static function matchSpamRegexInternal( $text, $regexes ) {
 		foreach( $regexes as $regex ) {
 			$matches = array();
@@ -1165,7 +1169,7 @@ class EditPage {
 		if ( $this->formtype == 'preview' ) {
 			$previewOutput = $this->getPreviewText();
 		}
-		
+
 		wfRunHooks( 'EditPage::showEditForm:initial', array( &$this ) ) ;
 
 		$this->setHeaders();
@@ -1330,6 +1334,7 @@ class EditPage {
 			$toolbar = '';
 		}
 
+
 		// activate checkboxes if user wants them to be always active
 		if ( !$this->preview && !$this->diff ) {
 			# Sort out the "watch" checkbox
@@ -1343,7 +1348,7 @@ class EditPage {
 				# Already watched
 				$this->watchthis = true;
 			}
-			
+
 			# May be overriden by request parameters
 			if( $wgRequest->getBool( 'watchthis' ) ) {
 				$this->watchthis = true;
@@ -1593,25 +1598,25 @@ END
 <input type='hidden' value=\"{$this->edittime}\" name=\"wpEdittime\" />\n
 <input type='hidden' value=\"{$this->scrolltop}\" name=\"wpScrolltop\" id=\"wpScrolltop\" />\n" );
 	}
-	
+
 	protected function showTextbox1( $classes ) {
 		$attribs = array( 'tabindex' => 1 );
-		
+
 		if ( $this->wasDeletedSinceLastEdit() )
 			$attribs['type'] = 'hidden';
 		if ( !empty($classes) )
 			$attribs['class'] = implode(' ',$classes);
-		
+
 		$this->showTextbox( $this->textbox1, 'wpTextbox1', $attribs );
 	}
-	
+
 	protected function showTextbox2() {
 		$this->showTextbox( $this->textbox2, 'wpTextbox2', array( 'tabindex' => 6 ) );
 	}
-	
+
 	protected function showTextbox( $content, $name, $attribs = array() ) {
 		global $wgOut, $wgUser;
-		
+
 		$wikitext = $this->safeUnicodeOutput( $content );
 		if ( $wikitext !== '' ) {
 			// Ensure there's a newline at the end, otherwise adding lines
@@ -1620,13 +1625,13 @@ END
 			// mode will show an extra newline. A bit annoying.
 			$wikitext .= "\n";
 		}
-		
+
 		$attribs['accesskey'] = ',';
 		$attribs['id'] = $name;
-		
+
 		if ( $wgUser->getOption( 'editwidth' ) )
 			$attribs['style'] = 'width: 100%';
-		
+
 		$wgOut->addHTML( Xml::textarea(
 			$name,
 			$wikitext,
@@ -1710,15 +1715,15 @@ END
 		// This will display between the save button and the edit tools,
 		// so should remain short!
 		wfRunHooks( 'EditPageTosSummary', array( $this->mTitle, &$msg ) );
-		$text = wfMsgForContent( $msg );
-		if( $text != '-' ) {
+		$text = wfMsg( $msg );
+		if( !wfEmptyMsg( $msg, $text ) && $text !== '-' ) {
 			global $wgOut;
 			$wgOut->addHTML( '<div class="mw-tos-summary">' );
-			$wgOut->addWikiMsgArray( $msg, array(), array( 'content' ) );
+			$wgOut->addWikiMsgArray( $msg, array() );
 			$wgOut->addHTML( '</div>' );
 		}
 	}
-	
+
 	protected function showEditTools() {
 		global $wgOut;
 		$wgOut->addHTML( '<div class="mw-editTools">' );
@@ -1850,7 +1855,7 @@ END
 		wfProfileOut( __METHOD__ );
 		return $previewhead . $previewHTML;
 	}
-	
+
 	function getTemplates() {
 		if ( $this->preview || $this->section != '' ) {
 			$templates = array();
@@ -2037,7 +2042,7 @@ END
 	 * Shows a bulletin board style toolbar for common editing functions.
 	 * It can be disabled in the user preferences.
 	 * The necessary JavaScript code can be found in skins/common/edit.js.
-	 * 
+	 *
 	 * @return string
 	 */
 	static function getEditToolbar() {
@@ -2179,9 +2184,9 @@ END
 
 		$toolbar.="/*]]>*/\n</script>";
 		$toolbar.="\n</div>";
-		
+
 		wfRunHooks( 'EditPageBeforeEditToolbar', array( &$toolbar ) );
-		
+
 		return $toolbar;
 	}
 
@@ -2519,7 +2524,7 @@ END
 			$out->addHTML( '</div>' );
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -2594,7 +2599,7 @@ END
 				return false;
 		}
 	}
-	
+
 	function getBaseRevision() {
 		if ( $this->mBaseRevision == false ) {
 			$db = wfGetDB( DB_MASTER );

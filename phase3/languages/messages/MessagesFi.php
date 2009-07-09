@@ -87,7 +87,11 @@ $bookstoreList = array(
 
 $magicWords = array(
 	'redirect'              => array( '0', '#OHJAUS', '#UUDELLEENOHJAUS', '#REDIRECT' ),
+	'notoc'                 => array( '0', '__EISISLUETT__', '__NOTOC__' ),
+	'forcetoc'              => array( '0', '__SISLUETTPAKOTUS__', '__FORCETOC__' ),
 	'toc'                   => array( '0', '__SISÄLLYSLUETTELO__', '__TOC__' ),
+	'noeditsection'         => array( '0', '__EIOSIOMUOKKAUSTA__', '__NOEDITSECTION__' ),
+	'noheader'              => array( '0', '__EIOTSIKKOA__', '__NOHEADER__' ),
 	'currentmonth'          => array( '1', 'KULUVAKUU', 'CURRENTMONTH', 'CURRENTMONTH2' ),
 	'currentmonthname'      => array( '1', 'KULUVAKUUNIMI', 'CURRENTMONTHNAME' ),
 	'currentmonthnamegen'   => array( '1', 'KULUVAKUUNIMIGEN', 'CURRENTMONTHNAMEGEN' ),
@@ -113,6 +117,7 @@ $magicWords = array(
 	'numberoffiles'         => array( '1', 'TIEDOSTOMÄÄRÄ', 'NUMBEROFFILES' ),
 	'numberofusers'         => array( '1', 'KÄYTTÄJÄMÄÄRÄ', 'NUMBEROFUSERS' ),
 	'numberofedits'         => array( '1', 'MUOKKAUSMÄÄRÄ', 'NUMBEROFEDITS' ),
+	'numberofviews'         => array( '1', 'SIVUHAKUMÄÄRÄ', 'NUMBEROFVIEWS' ),
 	'pagename'              => array( '1', 'SIVUNIMI', 'PAGENAME' ),
 	'pagenamee'             => array( '1', 'SIVUNIMIE', 'PAGENAMEE' ),
 	'namespace'             => array( '1', 'NIMIAVARUUS', 'NAMESPACE' ),
@@ -182,7 +187,8 @@ $magicWords = array(
 	'filepath'              => array( '0', 'TIEDOSTOPOLKU:', 'FILEPATH:' ),
 	'hiddencat'             => array( '1', '__PIILOLUOKKA__', '__HIDDENCAT__' ),
 	'pagesize'              => array( '1', 'SIVUKOKO', 'PAGESIZE' ),
-	'formatdate'            => array( '0', 'abba', 'formatdate', 'dateformat' ),
+	'noindex'               => array( '1', '__HAKUKONEKIELTO__', '__NOINDEX__' ),
+	'protectionlevel'       => array( '1', 'SUOJAUSTASO', 'PROTECTIONLEVEL' ),
 );
 
 $specialPageAliases = array(
@@ -272,6 +278,7 @@ $specialPageAliases = array(
 	'Blankpage'                 => array( 'Tyhjä_sivu' ),
 	'LinkSearch'                => array( 'Linkkihaku' ),
 	'DeletedContributions'      => array( 'Poistetut_muokkaukset' ),
+	'Activeusers'               => array( 'AktiivisetKäyttäjät' ),
 );
 
 $linkTrail = '/^([a-zäö]+)(.*)$/sDu';
@@ -461,6 +468,9 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'vector-view-history'        => 'Näytä historia',
 'vector-view-view'           => 'Lue',
 'vector-view-viewsource'     => 'Näytä lähdekoodi',
+'actions'                    => 'Toiminnot',
+'namespaces'                 => 'Nimiavaruudet',
+'variants'                   => 'Muuttujat',
 
 # Metadata in edit box
 'metadata_help' => 'Sisältökuvaukset:',
@@ -519,6 +529,11 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'jumpto'            => 'Loikkaa:',
 'jumptonavigation'  => 'valikkoon',
 'jumptosearch'      => 'hakuun',
+'view-pool-error'   => 'Valitettavasti palvelimet ovat ylikuormittuneet tällä hetkellä.
+Liian monta käyttäjää yrittää tarkastella tätä sivua.
+Odota hetki ennen kuin yrität uudelleen.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Tietoja {{GRAMMAR:elative|{{SITENAME}}}}',
@@ -696,7 +711,9 @@ Käyttäjätunnuksesi on luotu.
 'nouserspecified'            => 'Käyttäjätunnusta ei ole määritelty.',
 'wrongpassword'              => 'Syöttämäsi salasana ei ole oikein. Ole hyvä ja yritä uudelleen.',
 'wrongpasswordempty'         => 'Et voi antaa tyhjää salasanaa.',
-'passwordtooshort'           => 'Salasanasi on ei kelpaa. Salasanan pitää olla vähintään {{PLURAL:$1|yhden merkin pituinen|$1 merkkiä pitkä}} ja eri kuin käyttäjätunnuksesi.',
+'passwordtooshort'           => 'Salasanasi on liian lyhyt.
+Salasanan täytyy olla vähintään {{PLURAL:$1|yhden merkin pituinen|$1 merkkiä pitkä}}.',
+'password-name-match'        => 'Salasanasi täytyy olla eri kuin käyttäjätunnuksesi.',
 'mailmypassword'             => 'Lähetä uusi salasana sähköpostitse',
 'passwordremindertitle'      => 'Salasanamuistutus {{GRAMMAR:elative|{{SITENAME}}}}',
 'passwordremindertext'       => 'Joku IP-osoitteesta $1 pyysi {{GRAMMAR:partitive|{{SITENAME}}}} ($4) lähettämään uuden salasanan. Väliaikainen salasana käyttäjälle $2 on nyt $3. Kirjaudu sisään ja vaihda salasana. Väliaikainen salasana vanhenee {{PLURAL:$5|yhden päivän|$5 päivän}} kuluttua.
@@ -1020,7 +1037,14 @@ $1",
 'revdelete-unhid'             => 'palautti näkyviin $1',
 'revdelete-log-message'       => '$1 koskien $2 {{PLURAL:$2|versiota}}',
 'logdelete-log-message'       => '$1 koskien $2 {{PLURAL:$2|tapahtumaa}}',
+'revdelete-hide-current'      => 'Virhe tapahtui $2, $1 päivätyn kohteen piilottamisessa: tämä on nykyinen versio. Sitä ei voi piilottaa.',
+'revdelete-show-no-access'    => 'Virhe näyttäessä kohtaa $2 kello $1: kohta on merkitty ”rajoitetuksi”.
+Sinulla ei ole oikeutta siihen.',
+'revdelete-modify-no-access'  => 'Virhe tapahtui $2, $1 kohteen muokkauksessa: tämä kohde on merkitty "rajoitetuksi". Sinulla ei ole oikeuksia sen muokkaukseen.',
 'revdelete-modify-missing'    => 'Virhe muuttaessa kohdetta, jonka tunnus on $1: Se puuttuu tietokannasta.',
+'revdelete-no-change'         => "'''Varoitus:''' kohdalle $2 kello $1 on asetettu valmiiksi näkyvyysasetuksia.",
+'revdelete-concurrent-change' => 'Virhe $2, $1 päivätyn kohteen muokkauksessa: sen tilan on näköjään muuttanut joku sillä aikaa kun yritit muokata sitä. Ole hyvä ja tarkista lokit.',
+'revdelete-only-restricted'   => 'Et voi poistaa kohteita ylläpitäjien näkyviltä valitsematta myös jonkun muun näkyviltä poistovaihtoehdon.',
 
 # Suppression log
 'suppressionlog'     => 'Häivytysloki',

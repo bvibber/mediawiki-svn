@@ -1,5 +1,5 @@
 <?php
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文(简化字)‬)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -11,6 +11,7 @@
  * @author Gaoxuewei
  * @author Gzdavidwong
  * @author Jidanni
+ * @author Jimmy xu wrk
  * @author Liangent
  * @author O
  * @author Philip
@@ -364,6 +365,9 @@ $messages = array(
 'vector-view-history'        => '查看历史',
 'vector-view-view'           => '阅读',
 'vector-view-viewsource'     => '查看源代码',
+'actions'                    => '动作',
+'namespaces'                 => '名字空间',
+'variants'                   => '变换',
 
 # Metadata in edit box
 'metadata_help' => '元数据：',
@@ -422,6 +426,11 @@ $messages = array(
 'jumpto'            => '跳转到：',
 'jumptonavigation'  => '导航',
 'jumptosearch'      => '搜索',
+'view-pool-error'   => '抱歉，服务器在这段时间中已经超出负荷。
+太多用户尝试查看这个页面。
+在尝试访问这个页面之前请再稍等一会。
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '关于{{SITENAME}}',
@@ -608,7 +617,8 @@ $2',
 'nouserspecified'            => '{{GENDER:你|妳|你}}需要指定一个用户名。',
 'wrongpassword'              => '您输入的密码错误，请再试一次。',
 'wrongpasswordempty'         => '您没有输入密码，请重试！',
-'passwordtooshort'           => '您的密码不正确或太短，不能少于$1个字元，而且必须跟用户名不同。',
+'passwordtooshort'           => '您的密碼太短，不能少於$1個字元。',
+'password-name-match'        => '您的密碼必須跟您的用戶名不相同。',
 'mailmypassword'             => '将新密码寄给我',
 'passwordremindertitle'      => '{{SITENAME}}的新临时密码',
 'passwordremindertext'       => '有人(可能是您，来自IP地址$1)已请求{{SITENAME}}的新密码 ($4)。
@@ -735,16 +745,16 @@ $2',
 'accmailtext'                      => "'$1'的密码已经被发送到$2。",
 'newarticle'                       => '(新)',
 'newarticletext'                   => '您进入了一个尚未创建的页面。
-要创建该页面，请在下面的编辑框中输入内容(详情参见[[Help:帮助|帮助]])。
+要创建该页面，请在下面的编辑框中输入内容(详情参见[[{{MediaWiki:Helppage}}|帮助]])。
 如果您是不小心来到此页面，直接点击您浏览器中的"返回"按钮返回。',
 'anontalkpagetext'                 => "---- ''这是一个还未建立账户的匿名用户的讨论页, 因此我们只能用IP地址来与他或她联络。该IP地址可能由几名用户共享。如果您是一名匿名用户并认为此页上的评语与您无关，请[[Special:UserLogin/signup|创建新账户]]或[[Special:UserLogin|登录]]以避免在未来与其他匿名用户混淆。''",
 'noarticletext'                    => '此页目前没有内容，您可以在其它页[[Special:Search/{{PAGENAME}}|搜索此页标题]]或[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} 编辑此页]。',
 'userpage-userdoesnotexist'        => '用户账户“$1”未曾创建。请在创建／编辑这个页面前先检查一下。',
-'clearyourcache'                   => "'''注意 - 在保存以後, 您必須清除瀏覽器的緩存才能看到所作出的改變。'''
-'''Mozilla / Firefox / Safari：'''按住''Shift''再点击''刷新''，或按下''Ctrl-F5''或''Ctrl-R''，（在Macintosh上按下''Command-R''）；
-'''Konqueror：'''只需点击''刷新''或按下''F5''；
-'''Opera：'''在''工具→首选项''中完整清除它们的缓存；
-'''Internet Explorer：'''按住''Ctrl''再点击''刷新''，或按下''Ctrl-F5''。",
+'clearyourcache'                   => "'''注意 - 在保存以后，您必须清除浏览器的缓存才能看到所作出的改变。'''
+'''Mozilla / Firefox / Safari'''：按住''Shift''再点击''刷新''，或按下''Ctrl-F5''或''Ctrl-R''（在Macintosh上按下''Command-R''）；
+'''Konqueror'''：只需点击''刷新''或按下''F5''；
+'''Opera'''：在''工具→首选项''中完整清除它们的缓存，或按下''Alt-F5''；
+'''Internet Explorer'''：按住''Ctrl''再点击''刷新''，或按下''Ctrl-F5''。",
 'usercssjsyoucanpreview'           => "'''提示：''' 在保存前请用“显示预览”按钮来测试您新的 CSS/JS 。",
 'usercsspreview'                   => "'''注意您只是在预览您的个人 CSS。'''
 '''还没有保存！'''",
@@ -910,7 +920,7 @@ $2',
 'revdelete-no-file'           => '指定的檔案不存在。',
 'revdelete-show-file-confirm' => '你是否真的是想去查看於$2 $3刪除 "$1" 的檔案修訂？',
 'revdelete-show-file-submit'  => '是',
-'revdelete-selected'          => "'''选取'''$1'''的$2次修订：'''",
+'revdelete-selected'          => "'''选取'''[[:$1]]'''的$2次修订：'''",
 'logdelete-selected'          => "'''选取'''$1'''的日志项目：'''",
 'revdelete-text'              => "'''删除的修订仍将显示在页面历史中, 但它们的文本内容已不能被公众访问。'''
 在{{SITENAME}}的其他管理员将仍能访问隐藏的内容并通过与此相同的界面恢复删除，除非站点工作者进行了一些附加的限制。
@@ -2022,7 +2032,7 @@ $NEWPAGE
 ** 反生产性编辑战
 ** 高流量页面',
 'protect-edit-reasonlist'     => '编辑保护理由',
-'protect-expiry-options'      => '1小时:1 hour,1天:1 day,3天:3 days,1周:1 week,2周:2 weeks,1个月:1 month,3个月:3 months,6个月:6 months,1年:1 year,永久:infinite',
+'protect-expiry-options'      => '1小时:1 hour,1天:1 day,1周:1 week,2周:2 weeks,1个月:1 month,3个月:3 months,6个月:6 months,1年:1 year,永久:infinite',
 'restriction-type'            => '权限：',
 'restriction-level'           => '限制级别：',
 'minimum-size'                => '最小大小',

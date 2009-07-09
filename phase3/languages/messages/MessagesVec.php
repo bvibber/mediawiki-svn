@@ -305,6 +305,9 @@ I seguenti cołegamenti i xe en lengua inglese:
 'vector-view-history'        => 'Varda el stòrico',
 'vector-view-view'           => 'Lèzi',
 'vector-view-viewsource'     => 'Varda el còdese',
+'actions'                    => 'Azioni',
+'namespaces'                 => 'Namespace',
+'variants'                   => 'Varianti',
 
 # Metadata in edit box
 'metadata_help' => 'Metadati:',
@@ -363,6 +366,11 @@ I seguenti cołegamenti i xe en lengua inglese:
 'jumpto'            => 'Và a:',
 'jumptonavigation'  => 'navigassion',
 'jumptosearch'      => 'serca',
+'view-pool-error'   => 'Ne dispiase, ma i server in sto momento i xe soracaricà.
+Ghe xe massa utenti che serca de vardar sta pagina.
+Par piaser, speta un fià e dopo próa de novo.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Se parla de {{SITENAME}}',
@@ -553,8 +561,9 @@ Verifica che el nome inserìo el sia giusto o [[Special:UserLogin/signup|crea na
 'nouserspecified'            => 'Bisogna specificar un nome utente.',
 'wrongpassword'              => "La password che te ghe messo no l'è mia giusta.<br /><br />Riproa, par piaser.",
 'wrongpasswordempty'         => 'La password inseria la xè voda. Ripróa da novo.',
-'passwordtooshort'           => 'La to password no la xe mìa valida o la xe massa curta.
-La gà da contegner almanco {{PLURAL:$1|$1 caràtere|$1 caràteri}} e la gà da essar difarente dal to nome utente.',
+'passwordtooshort'           => 'La to password la xe massa curta.
+La gà da èssar longa almanco {{PLURAL:$1|$1 caràtere|$1 caràteri}}.',
+'password-name-match'        => 'La to password la ga da èssar difarente dal to nome utente.',
 'mailmypassword'             => 'Màndeme na password nova par posta eletronica',
 'passwordremindertitle'      => 'Servizio Password Reminder de {{SITENAME}}',
 'passwordremindertext'       => 'Qualcheduni (probabilmente ti, da l\'indirizo IP $1) el gà domandà che ghe vegna mandà na nova password par {{SITENAME}} ($4).

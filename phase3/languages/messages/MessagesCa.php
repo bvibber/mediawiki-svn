@@ -334,7 +334,12 @@ $messages = array(
 'vector-action-delete'      => 'Esborra',
 'vector-action-move'        => 'Reanomena',
 'vector-action-protect'     => 'Protegeix',
+'vector-action-undelete'    => 'Restaura',
+'vector-action-unprotect'   => 'Desprotegeix',
 'vector-namespace-category' => 'Categoria',
+'vector-namespace-help'     => 'Ajuda',
+'vector-namespace-image'    => 'Fitxer',
+'vector-namespace-main'     => 'Pàgina',
 'vector-view-view'          => 'Llegeix',
 
 # Metadata in edit box
@@ -582,8 +587,9 @@ Reviseu-ne l'ortografia (recordeu que es distingeixen les majúscules i minúscu
 'nouserspecified'            => "Heu d'especificar un nom d'usuari.",
 'wrongpassword'              => 'La contrasenya que heu introduït és incorrecta. Torneu-ho a provar.',
 'wrongpasswordempty'         => "La contrasenya que s'ha introduït estava en blanc. Torneu-ho a provar.",
-'passwordtooshort'           => "La contrasenya és massa curta o invàlida.
-Ha de tenir un mínim {{PLURAL:$1|d'un caràcter|de $1 caràcters}} i ésser diferent del vostre nom d'usuari.",
+'passwordtooshort'           => "La contrasenya és massa curta.
+Ha de tenir un mínim {{PLURAL:$1|d'un caràcter|de $1 caràcters}}.",
+'password-name-match'        => "La contrasenya ha de ser diferent al vostre nom d'usuari.",
 'mailmypassword'             => "Envia'm una nova contrasenya per correu electrònic",
 'passwordremindertitle'      => 'Nova contrasenya temporal per al projecte {{SITENAME}}',
 'passwordremindertext'       => "Algú (vós mateix segurament, des de l'adreça l'IP $1) ha soŀlicitat que us enviéssim una nova contrasenya per a iniciar la sessió al projecte {{SITENAME}} ($4).
@@ -1388,6 +1394,7 @@ També podeu contactar amb altres usuaris a través de la vostra pàgina d'usuar
 
 # Recent changes linked
 'recentchangeslinked'          => "Seguiment d'enllaços",
+'recentchangeslinked-toolbox'  => "Seguiment d'enllaços",
 'recentchangeslinked-title'    => 'Canvis relacionats amb «$1»',
 'recentchangeslinked-noresult' => 'No ha hagut cap canvi a les pàgines enllaçades durant el període de temps.',
 'recentchangeslinked-summary'  => "A continuació trobareu una llista dels canvis recents a les pàgines enllaçades des de la pàgina donada (o entre els membres d'una categoria especificada).
@@ -1769,6 +1776,7 @@ Vegeu també [[Special:WantedCategories|les categories soŀlicitades]].",
 'listusersfrom'      => 'Mostra usuaris començant per:',
 'listusers-submit'   => 'Mostra',
 'listusers-noresult' => "No s'han trobat coincidències de noms d'usuaris. Si us plau, busqueu també amb variacions per majúscules i minúscules.",
+'listusers-blocked'  => '({{GENDER:$1|blocat|blocada}})',
 
 # Special:Log/newusers
 'newuserlogpage'              => "Registre de creació de l'usuari",

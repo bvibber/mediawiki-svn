@@ -684,8 +684,9 @@ $2',
 'nouserspecified'            => '사용자 이름을 입력하지 않았습니다.',
 'wrongpassword'              => '암호가 틀립니다. 다시 시도해 주세요.',
 'wrongpasswordempty'         => '비밀번호가 비었습니다. 다시 시도해 주세요.',
-'passwordtooshort'           => '암호가 부적절하거나 너무 짧습니다.
-암호 길이는 적어도 $1 자보다 길고 사용자 이름과 달라야 합니다.',
+'passwordtooshort'           => '암호가 너무 짧습니다.
+암호 길이는 적어도 {{PLURAL:$1|$1}}자보다 길어야 합니다.',
+'password-name-match'        => '당신의 암호는 반드시 계정 이름과 달라야 합니다.',
 'mailmypassword'             => '새 암호를 이메일로 보내기',
 'passwordremindertitle'      => '{{SITENAME}}에서 보내는 새 임시 암호',
 'passwordremindertext'       => 'IP 주소 $1에게서 당신에게 {{SITENAME}} ($4)의 새 암호를 보내달라는 요청이 왔습니다.
@@ -958,15 +959,15 @@ $1, 또는 [[{{MediaWiki:Grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'rev-deleted-comment'         => '(편집 요약 삭제됨)',
 'rev-deleted-user'            => '(계정 이름 삭제됨)',
 'rev-deleted-event'           => '(로그 삭제됨)',
-'rev-deleted-text-permission' => "이 문서의 편집은 문서 역사에서 '''제거'''되었습니다.
+'rev-deleted-text-permission' => "이 문서의 편집은 문서 역사에서 '''삭제'''되었습니다.
 [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 삭제 기록]에서 자세한 내용을 볼 수 있습니다..",
 'rev-deleted-text-unhide'     => "이 페이지의 판은 '''삭제되었습니다.'''
-자세한 내용은 [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 삭제기록]에 있을 것입니다.
+자세한 내용은 [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 삭제 기록]에서 볼 수 있습니다.
 관리자로서 확인을 원한다면 [$1 특정판 보기]를 할 수 있습니다.",
-'rev-deleted-text-view'       => "이 문서의 편집은 문서 역사에서 '''제거'''되었습니다.
+'rev-deleted-text-view'       => "이 문서의 편집은 문서 역사에서 '''삭제'''되었습니다.
 당신은 관리자로서 삭제된 편집을 볼 수 있습니다.
 [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 삭제 기록]에서 자세한 내용을 볼 수 있습니다.",
-'rev-deleted-no-diff'         => "특정 판이 문서 역사에서 '''제거'''되었기 때문에 비교할 수 없습니다.
+'rev-deleted-no-diff'         => "특정 판이 문서 역사에서 '''삭제'''되었기 때문에 비교할 수 없습니다.
 [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 삭제 기록]에서 자세한 내용을 볼 수 있습니다.",
 'rev-deleted-unhide-diff'     => "특정판의 비교가 문서 역사에서 '''삭제'''되었습니다.
 [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 삭제 기록]에서 자세한 내용을 볼 수 있습니다.
@@ -1055,7 +1056,7 @@ $1",
 'mergehistory-no-destination'      => '대상인 $1 문서가 존재하지 않습니다.',
 'mergehistory-invalid-source'      => '원본 문서 이름에는 반드시 유효한 제목을 입력해야 합니다.',
 'mergehistory-invalid-destination' => '대상 문서 이름에는 반드시 유효한 제목을 입력해야 합니다.',
-'mergehistory-autocomment'         => '[[:$1]] 문서를 [[:$2]]로 합침',
+'mergehistory-autocomment'         => '[[:$1]] 문서를 [[:$2]] 문서로 합침',
 'mergehistory-comment'             => '[[:$1]] 문서를 [[:$2]] 문서로 합침: $3',
 'mergehistory-same-destination'    => '원본 문서 이름과 새 문서 이름은 달라야 합니다',
 'mergehistory-reason'              => '이유:',
@@ -1096,7 +1097,7 @@ $1",
 'diff-h2'                  => "'''2단계 제목'''",
 'diff-h3'                  => "'''3단계 제목'''",
 'diff-h4'                  => "'''4단계 제목'''",
-'diff-h5'                  => '5단계 제목',
+'diff-h5'                  => "'''5단계 제목'''",
 'diff-pre'                 => "'''미리 보기 블록'''",
 'diff-div'                 => "'''구역'''",
 'diff-ul'                  => "'''순서 없는 목록'''",
@@ -1531,7 +1532,7 @@ $1",
 'filetype-badmime'            => '‘$1’ MIME을 가진 파일은 올릴 수 없습니다.',
 'filetype-bad-ie-mime'        => '인터넷 익스플로러가 잠재적으로 위험한 파일 형식으로 판단되어 사용이 금지된 "$1"로 인식할 수 있기 때문에 이 파일을 올릴 수 없습니다.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' 확장자는 추천하지 않습니다. 추천하는 {{PLURAL:\$3|파일 확장자}}는 \$2입니다.",
-'filetype-banned-type'        => "‘'''.$1'''’ 확장자는 올릴 수 없습니다. $2 {{PLURAL:$3|확장자|확장자}}만이 사용 가능합니다.",
+'filetype-banned-type'        => "{{plural:$3}}‘'''.$1'''’ 형식의 파일은 올릴 수 없습니다. $2 형식만 사용할 수 있습니다.",
 'filetype-missing'            => '파일에 확장자(‘.jpg’ 등)가 없습니다.',
 'large-file'                  => '파일 크기는 $1을 넘지 않는 것을 추천합니다. 이 파일의 크기는 $2입니다.',
 'largefileserver'             => '이 파일의 크기가 서버에서 허용된 설정보다 큽니다.',
@@ -1555,7 +1556,7 @@ $1",
 그래도 파일을 올리시려면, 뒤로 돌아가서 다른 이름으로 시도해 주시기 바랍니다. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => '같은 이름의 파일이 이미 위키미디어 공용에 있습니다.
 파일을 업로드하길 원하신다면 뒤로 돌아가서 다른 이름으로 시도해 주시기 바랍니다. [[File:$1|thumb|center|$1]]',
-'file-exists-duplicate'       => '현재 올리고 있는 파일이 아래 {{PLURAL:$1|파일|파일}}과 중복됩니다:',
+'file-exists-duplicate'       => '{{PLURAL:$1}}현재 올리고 있는 파일이 아래 파일과 중복됩니다:',
 'file-deleted-duplicate'      => '이 파일과 같은 파일 ([[$1]])이 이전에 삭제된 적이 있습니다. 파일을 다시 올리기 전에 문서의 삭제 기록을 확인해 주시기 바랍니다.',
 'successfulupload'            => '올리기 성공',
 'uploadwarning'               => '올리기 경고',
@@ -1861,7 +1862,7 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 
 # Special:Categories
 'categories'                    => '분류',
-'categoriespagetext'            => '문서나 자료를 담고 있는 {{PLURAL:$1|분류|분류}} 목록입니다.
+'categoriespagetext'            => '{{PLURAL:$1}}문서나 자료를 담고 있는 분류 목록입니다.
 [[Special:UnusedCategories|사용되지 않는 분류]]는 여기에 보이지 않습니다.
 [[Special:WantedCategories|필요한 분류]]도 참고하세요.',
 'categoriesfrom'                => '다음으로 시작하는 분류들을 보여주기:',
@@ -1910,7 +1911,7 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'listgrouprights-rights'               => '권한',
 'listgrouprights-helppage'             => 'Help:사용자 권한 그룹',
 'listgrouprights-members'              => '(사용자 목록)',
-'listgrouprights-addgroup'             => '{{PLURAL:$2|권한|권한}}을 부여: $1',
+'listgrouprights-addgroup'             => '{{PLURAL:$2}}권한 부여: $1',
 'listgrouprights-removegroup'          => '{{PLURAL:$2|권한}}을 회수: $1',
 'listgrouprights-addgroup-all'         => '모든 권한을 부여',
 'listgrouprights-removegroup-all'      => '모든 권한을 회수',
@@ -2608,6 +2609,7 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'skinname-chick'       => '치크',
 'skinname-simple'      => '심플',
 'skinname-modern'      => '모던',
+'skinname-vector'      => '벡터',
 
 # Math options
 'mw_math_png'    => '항상 PNG로 표시',

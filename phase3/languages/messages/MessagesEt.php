@@ -94,6 +94,7 @@ $messages = array(
 'tog-justify'                 => 'Lõikude rööpjoondus',
 'tog-hideminor'               => 'Peida pisiparandused viimastes muudatustes',
 'tog-hidepatrolled'           => 'Peida viimaste muudatuste loetelus jälgimisloendis esitatavad muudatused',
+'tog-newpageshidepatrolled'   => 'Peida uute lehtede loendis jälgitavad lehed',
 'tog-extendwatchlist'         => 'Laienda jälgimisloendit, et näha kõiki muudatusi, mitte vaid kõige värskemaid',
 'tog-usenewrc'                => 'Laiendatud viimased muudatused (nõutav JavaScripti olemasolu)',
 'tog-numberheadings'          => 'Pealkirjade automaatnummerdus',
@@ -103,7 +104,7 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Peatükkide redigeerimine paremklõpsuga alampealkirjadel (JavaScript)',
 'tog-showtoc'                 => 'Näita sisukorda (lehtedel, millel on rohkem kui 3 pealkirja)',
 'tog-rememberpassword'        => 'Parooli meeldejätmine tulevasteks seanssideks',
-'tog-editwidth'               => 'Redaktoriaknal on täislaius',
+'tog-editwidth'               => 'Laienda redaktoriaken kogu ekraani täitma',
 'tog-watchcreations'          => 'Lisa minu loodud lehed jälgimisloendisse',
 'tog-watchdefault'            => 'Jälgi uusi ja muudetud artikleid',
 'tog-watchmoves'              => 'Lisa minu teisaldatud artiklid jälgimisloendisse',
@@ -229,7 +230,18 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'faqpage'        => 'Project:KKK',
 
 # Vector skin
-'vector-view-view' => 'Loe',
+'vector-action-addsection'  => 'Lisa teema',
+'vector-action-delete'      => 'Kustuta',
+'vector-action-move'        => 'teisalda',
+'vector-action-protect'     => 'Kaitse',
+'vector-action-unprotect'   => 'Tühista kaitse',
+'vector-namespace-category' => 'Kategooria',
+'vector-namespace-talk'     => 'Arutelu',
+'vector-namespace-user'     => 'Kasutaja leht',
+'vector-view-create'        => 'Loo',
+'vector-view-edit'          => 'Toimeta',
+'vector-view-view'          => 'Loe',
+'namespaces'                => 'Nimeruumid',
 
 # Metadata in edit box
 'metadata_help' => 'Metaandmed:',
@@ -467,7 +479,8 @@ Kontrollige kirjapilti või [[Special:UserLogin/signup|looge uus kasutajakonto]]
 'nouserspecified'            => 'Kasutajanimi puudub.',
 'wrongpassword'              => 'Vale parool. Proovige uuesti.',
 'wrongpasswordempty'         => 'Parool jäi sisestamata. Palun proovi uuesti.',
-'passwordtooshort'           => 'Sisestatud parool on vigane või liiga lühike. See peab koosnema vähemalt {{PLURAL:$1|ühest|$1}} tähemärgist ning peab erinema kasutajanimest.',
+'passwordtooshort'           => 'Parool on liiga lühike.
+See peab koosnema vähemalt {{PLURAL:$1|ühest|$1}} tähemärgist.',
 'mailmypassword'             => 'Saada mulle meili teel uus parool',
 'passwordremindertitle'      => '{{SITENAME}} - unustatud salasõna',
 'passwordremindertext'       => 'Keegi (tõenäoliselt Teie ise, IP-aadressilt $1), palus, et me saadaksime Teile uue parooli
@@ -796,6 +809,7 @@ Legend: (viim) = erinevused võrreldes viimase redaktsiooniga,
 'searchprofile-project'        => 'Abi- ja projektilehed',
 'searchprofile-images'         => 'Multimeedia',
 'searchprofile-everything'     => 'Kõik',
+'searchprofile-advanced'       => 'Detailne otsing',
 'searchprofile-images-tooltip' => 'Failiotsing',
 'search-result-size'           => '$1 ({{PLURAL:$2|1 sõna|$2 sõna}})',
 'search-redirect'              => '(ümbersuunamine $1)',
@@ -814,6 +828,7 @@ Legend: (viim) = erinevused võrreldes viimase redaktsiooniga,
 'nonefound'                    => "'''Märkus''': Otsing hõlmab vaikimisi vaid osasid nimeruume.
 Kui soovid otsida ühekorraga kõigist nimeruumidest (kaasa arvatud arutelulehed, mallid, jne) kasuta
 päringu ees prefiksit ''all:''. Konkreetsest nimeruumist otsimiseks kasuta prefiksina sele nimeruumi nime.",
+'search-nonefound'             => 'Päringule ei leitud vasteid.',
 'powersearch'                  => 'Otsi',
 'powersearch-legend'           => 'Detailne otsing',
 'powersearch-ns'               => 'Otsing nimeruumidest:',
@@ -906,6 +921,7 @@ See ei tohi olla pikem kui $1 {{PLURAL:$1|sümbol|sümbolit}}.',
 'prefs-help-email-required' => 'E-posti aadress on vajalik.',
 'prefs-signature'           => 'Allkiri',
 'prefs-dateformat'          => 'Kuupäeva vorming',
+'prefs-timeoffset'          => 'Ajanihe',
 
 # User rights
 'userrights'                  => 'Kasutaja õiguste muutmine',

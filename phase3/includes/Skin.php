@@ -339,7 +339,6 @@ class Skin extends Linker {
 			$r[] = "var $name = $encValue;";
 		}
 		$r[] = "/*]]>*/</script>\n";
-
 		return implode( "\n\t\t", $r );
 	}
 
@@ -445,9 +444,31 @@ class Skin extends Linker {
 
 		return self::makeVariablesScript( $vars );
 	}
-
-	function getHeadScripts( $allowUserJs, OutputPage $out ) {
-		global $wgStylePath, $wgUser, $wgJsMimeType, $wgStyleVersion;
+	/**
+	 * Return a random selection of the scripts we want in the header,
+	 * according to no particular rhyme or reason.  Various other scripts are
+	 * returned from a haphazard assortment of other functions scattered over
+	 * various files.  This entire hackish system needs to be burned to the
+	 * ground and rebuilt.
+	 *
+	 * Script-server wise we should output everything with $wgOut->addScriptFile
+	 * rather than building lots of strings and passing them around all the time)
+	 * @@dale
+	 *
+	 * @var $allowUserJs bool Should probably be identical to $wgAllowUserJs,
+	 *                        but is passed as a local variable for some
+	 *                        obscure reason.
+	 * @var $extraHtml string A bunch of raw HTML to jam into some arbitrary
+	 *                        place where MonoBook has historically wanted it.
+	 *                        Old-style skins formerly put it in a different
+	 *                        place, but if either of those is broken it's
+	 *                        likely to be the old-style skins.
+	 * @return string Raw HTML to output in some location in the <head> that's
+	 *                entirely arbitrary but which will probably break
+	 *                everything if you put it someplace else.
+	 */
+	function getHeadScripts( $allowUserJs, $extraHtml = '' ) {
+		global $wgStylePath, $wgUser, $wgJsMimeType, $wgStyleVersion, $wgOut;
 
 		$vars = self::makeGlobalVariablesScript( array( 'skinname' => $this->getSkinName() ) );
 
@@ -457,18 +478,20 @@ class Skin extends Linker {
 		global $wgUseSiteJs;
 		if( $wgUseSiteJs ) {
 			$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';
-			$out->addScriptFile( htmlspecialchars( self::makeUrl( '-',
+			$wgOut->addScriptFile( htmlspecialchars( self::makeUrl( '-',
 					"action=raw$jsCache&gen=js&useskin=" .
-					urlencode( $this->getSkinName() ) ) ) );
+					urlencode( $this->getSkinName() ) )
+					)
+				);
 		}
 		if( $allowUserJs && $wgUser->isLoggedIn() ) {
 			$userpage = $wgUser->getUserPage();
 			$userjs = htmlspecialchars( self::makeUrl(
 				$userpage->getPrefixedText().'/'.$this->getSkinName().'.js',
 				'action=raw&ctype='.$wgJsMimeType ) );
-			$out->addScriptFile( $userjs );
+			$wgOut->addScriptFile( $userjs );
 		}
-		return true;
+		return $vars . "\t" . implode ( "\n\t", $r ) . $extraHtml;
 	}
 
 	/**
@@ -1425,7 +1448,8 @@ END;
 
 		$out = '';
 		if( $wgRightsPage ) {
-			$link = $this->makeKnownLink( $wgRightsPage, $wgRightsText );
+			$title = Title::newFromText( $wgRightsPage );
+			$link = $this->linkKnown( $title, $wgRightsText );
 		} elseif( $wgRightsUrl ) {
 			$link = $this->makeExternalLink( $wgRightsUrl, $wgRightsText );
 		} elseif( $wgRightsText ) {
@@ -1434,6 +1458,10 @@ END;
 			# Give up now
 			return $out;
 		}
+		// Allow for site and per-namespace customization of copyright notice.
+		if( isset($wgArticle) )
+			wfRunHooks( 'SkinCopyrightFooter', array( $wgArticle->getTitle(), $type, &$msg, &$link ) );
+
 		$out .= wfMsgForContent( $msg, $link );
 		return $out;
 	}

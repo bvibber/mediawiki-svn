@@ -1805,6 +1805,8 @@ Za lokalizacijo in prevajanje obiščite [http://www.mediawiki.org/wiki/Localisa
 'tooltip-watch'                   => 'Dodajte stran na svoj spisek nadzorov.',
 'tooltip-recreate'                => 'Ta stran je namenoma (skoraj) prazna.',
 'tooltip-upload'                  => 'Naložite slikovno ali večpredstavno gradivo [alt-u]',
+'tooltip-undo'                    => '"Razveljavi" vrne to urejanje in odpre predogled v oknu za urejanje.
+Omogoča vnos pojasnila v povzetku urejanja.',
 
 # Metadata
 'nodublincore'      => 'Metapodatki Dublin Core RDF so na tem strežniku onemogočeni.',

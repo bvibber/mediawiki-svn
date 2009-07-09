@@ -414,7 +414,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	//doChunkUpload does both uploading and encoding at the same time and uploads one meg chunks as they are ready
 	doChunkUpload : function(){
 		var _this = this;						
-						
+		
 		//extension should already be ogg but since its user editable,
 		//check again
 		//we are transcoding so we know it will be an ogg
@@ -491,6 +491,7 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 	encodeDone:function(){
 		var _this = this;
 		js_log('::encodeDone::');
+		_this.action_done = true;
 		//send to the post url:				 
 		if( _this.form_rewrite && _this.upload_mode == 'post' ){
 			js_log('done with encoding do POST upload:' + _this.editForm.action);								
@@ -505,8 +506,12 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 			//update upload status:						
 			_this.doUploadStatus();
 		}else{
-			js_log("done with encoding (no upload) ")
-		   _this.updateProgressWin(gM('fogg-encoding-done'), gM('fogg-encoding-done'));
+			js_log("done with encoding (no upload) ");
+			//set stuats to 100% for one second:
+			_this.updateProgress( 1 );		
+			setTimeout(function(){
+				_this.updateProgressWin(gM('fogg-encoding-done'), gM('fogg-encoding-done'));
+			}, 1000);	
 		}
 	},
 	doUploadStatus:function() {	

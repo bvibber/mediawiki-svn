@@ -165,6 +165,16 @@ $wgUploadBaseUrl    = "";
 /**@}*/
 
 /**
+ * Directory for caching data in the local filesystem. Should not be accessible
+ * from the web. Set this to false to not use any local caches.
+ *
+ * Note: if multiple wikis share the same localisation cache directory, they
+ * must all have the same set of extensions. You can set a directory just for
+ * the localisation cache using $wgLocalisationCacheConf['storeDirectory'].
+ */
+$wgCacheDirectory = false;
+
+/**
  * Default value for chmoding of new directories.
  */
 $wgDirectoryMode = 0777;
@@ -783,6 +793,33 @@ $wgLocalMessageCache = false;
  * false - PHP source file (Warning - security risk)
  */
 $wgLocalMessageCacheSerialized = true;
+/**
+ * Localisation cache configuration. Associative array with keys:
+ *     class:       The class to use. May be overridden by extensions.
+ *
+ *     store:       The location to store cache data. May be 'files', 'db' or
+ *                  'detect'. If set to "files", data will be in CDB files. If set
+ *                  to "db", data will be stored to the database. If set to
+ *                  "detect", files will be used if $wgCacheDirectory is set,
+ *                  otherwise the database will be used.
+ *
+ *     storeClass:  The class name for the underlying storage. If set to a class
+ *                  name, it overrides the "store" setting.
+ *
+ *     storeDirectory:  If the store class puts its data in files, this is the
+ *                      directory it will use. If this is false, $wgCacheDirectory
+ *                      will be used.
+ *
+ *     manualRecache:   Set this to true to disable cache updates on web requests.
+ *                      Use maintenance/rebuildLocalisationCache.php instead.
+ */
+$wgLocalisationCacheConf = array(
+	'class' => 'LocalisationCache',
+	'store' => 'detect',
+	'storeClass' => false,
+	'storeDirectory' => false,
+	'manualRecache' => false,
+);
 
 # Language settings
 #
@@ -1505,7 +1542,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '224';
+$wgStyleVersion = '229';
 
 
 # Server-side caching:

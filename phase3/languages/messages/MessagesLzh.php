@@ -239,6 +239,9 @@ $messages = array(
 'vector-view-history'        => '覽史',
 'vector-view-view'           => '閱',
 'vector-view-viewsource'     => '覽源',
+'actions'                    => '動',
+'namespaces'                 => '名集',
+'variants'                   => '變字',
 
 # Metadata in edit box
 'metadata_help' => '衍意：',
@@ -297,6 +300,11 @@ $messages = array(
 'jumpto'            => '往：',
 'jumptonavigation'  => '嚮',
 'jumptosearch'      => '尋',
+'view-pool-error'   => '歉也，伺服器超負矣。
+多簿查頁。
+欲試候之。
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '述{{SITENAME}}',
@@ -466,7 +474,8 @@ $2',
 'nouserspecified'            => '簿名須也',
 'wrongpassword'              => '符節不合，惠核之。',
 'wrongpasswordempty'         => '缺符節，惠補之。',
-'passwordtooshort'           => '符節短錯哉，莫逾$1字，且與簿名異也。',
+'passwordtooshort'           => '符節短哉，莫逾$1字。',
+'password-name-match'        => '符節與簿名異也。',
 'mailmypassword'             => '遣吾符節',
 'passwordremindertitle'      => '新臨符節自{{SITENAME}}',
 'passwordremindertext'       => '$1求遣{{SITENAME}}（$4）："$2"之臨符節為"$3"。日到有$5。
