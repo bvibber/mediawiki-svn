@@ -101,7 +101,8 @@ class SpecialOptIn extends SpecialPage {
 						)
 					)
 				) ) ) )
-			)
+			) .
+			Xml::element( 'div', array( 'style' => 'clear: both; ' ) )
 		);
 	}
 
