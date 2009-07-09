@@ -1,0 +1,94 @@
+div.optin-accept {
+	float: left;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	background-image: url(images/accept-border.png);
+}
+div.optin-deny {
+	float: left;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	background-image: url(images/deny-border.png);
+}
+div.optin-accept div {
+	float: left;
+	background-image: url(images/accept-base.png);
+	margin: 4px;
+}
+div.optin-accept div div {
+	background-image: url(images/accept-tl.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	margin: -4px;
+}
+div.optin-accept div div div {
+	background-image: url(images/accept-tr.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+	margin: 0;
+}
+div.optin-accept div div div div {
+	background-image: url(images/accept-bl.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	margin: 0;
+}
+div.optin-accept div div div div a {
+	background-image: url(images/accept-br.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	display: block;
+	text-align: center;
+	padding: 1em;
+	padding-bottom: 0.75em;
+	margin: 0;
+	cursor: pointer;
+}
+div.optin-accept div div div div a:hover {
+	text-decoration: none;
+}
+div.optin-deny div {
+	float: left;
+	background-image: url(images/deny-base.png);
+	margin: 4px;
+}
+div.optin-deny div div {
+	background-image: url(images/deny-tl.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	margin: -4px;
+}
+div.optin-deny div div div {
+	background-image: url(images/deny-tr.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+	margin: 0;
+}
+div.optin-deny div div div div {
+	background-image: url(images/deny-bl.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	margin: 0;
+}
+div.optin-deny div div div div a {
+	background-image: url(images/deny-br.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	display: block;
+	text-align: center;
+	padding: 1em;
+	padding-bottom: 0.75em;
+	margin: 0;
+	cursor: pointer;
+}
+div.optin-deny div div div div a:hover {
+	text-decoration: none;
+}
+span.optin-button-shorttext {
+	font-size: large;
+	font-weight: bold;
+	color: white;
+}
+span.optin-button-longtext {
+	color: white;
+}
