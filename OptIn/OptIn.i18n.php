@@ -69,20 +69,18 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-improvements' => "== What has been improved? ==
 [[File:UsabilityNavigation.png|right]]
 ;Enhanced navigation
-Clear indication of the state of \"read\" and \"edit\" whether you are on an article or a discussion page.
-The search box is moved from the left navigation bar to the top right corner for easier access and quicker searching.
+The new navigation sytem makes it easier to see where you are at and what you are doing, as well as where you can go and how to get there. With the search box located at the top right corner searching is easier to find and quicker to use.
 <div style=\"clear:both;\"></div>
 
 [[File:UsabilityToolbar.png|right]]
 ;Edit toolbar improvements
-An expandable edit toolbar hides infrequently used tool icons.
-Power users can expand the toolbar to access specialized icons.
-Help references (cheat sheet) are built into the toolbar.
-Toolbar icons were redesigned by using Tango and Gnome icons.
+New-and-improved icons make it clearer what action each tool performs. Expandable sections reduce clutter while keeping infrequently used tools just a click away.
+The help section provides quick access to a reference for common uses of wiki-markup.
 <div style=\"clear:both;\"></div>
 
 [[File:UsabilitySearch.png|right]]
-;Improved search interface\nAs the search result page is often the entry point to an article, titles of results are laid out to increase visibility and infrequently needed information is reduced.
+;Improved search interface
+When using search, title matches are shown first, helping you to find the most relevant articles quickly. Search profiles make searching for different kinds of content easier, while the new advanced search interface makes light-work of complex searches.
 <div style=\"clear:both;\"></div>",
 );
 
