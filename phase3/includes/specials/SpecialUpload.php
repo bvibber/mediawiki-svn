@@ -352,7 +352,7 @@ class UploadForm extends SpecialPage {
 			$lnk = $sk->makeKnownLinkObj( $file->getTitle(), '', 'redirect=no' );
 			$warning .= '<li>' . wfMsgExt( 'filepageexists', array( 'parseinline', 'replaceafter' ), $lnk ) . '</li>';
 		} elseif ( $existsType == 'exists-normalized' ) {
-			# Check if image with lowercase extension exists.			
+			# Check if image with lowercase extension exists.
 			# It's not forbidden but in 99% it makes no sense to upload the same filename with uppercase extension
 			$dlink = $sk->linkKnown( $nt_lc );
 			if ( $file_lc->allowInlineDisplay() ) {
@@ -645,7 +645,9 @@ wgUploadAutoFill = {$autofill};
 		//$wgOut->addScriptFile( 'edit.js' ); // For <charinsert> support
 
 		//add javascript phase 2 upload script (will completely replace upload.js shortly)
-		$wgOut->addScriptClass( 'uploadPage' );
+		if( $wgEnableJS2system )
+		    $wgOut->addScriptClass( 'uploadPage' );
+
 
 
 		if( !wfRunHooks( 'UploadForm:initial', array( &$this ) ) )

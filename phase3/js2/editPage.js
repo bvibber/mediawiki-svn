@@ -1,6 +1,5 @@
 /*
- * js2 style replacement for mediaWiki edit.js
- * 
+ * js2 style replacement for mediaWiki edit.js 
  */
 
 //setup configuration vars: 

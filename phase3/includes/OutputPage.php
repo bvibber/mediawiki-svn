@@ -168,9 +168,14 @@ class OutputPage {
 	 *  different page load types (edit, upload, view, etc)
 	 */
 	function addCoreScripts2Top(){
-		global $wgEnableScriptLoader, $wgStyleVersion,$wgJSAutoloadLocalClasses, $wgJsMimeType, $wgScriptPath ;
+		global $wgEnableScriptLoader, $wgStyleVersion,$wgJSAutoloadLocalClasses, $wgJsMimeType, $wgScriptPath, $wgEnableJS2system ;
 		//@@todo we should depricate wikibits in favor of mv_embed and native jQuery functions
-		$core_classes = array('window.jQuery', 'mv_embed', 'wikibits');
+
+		if( $wgEnableJS2system ){
+		    $core_classes = array('window.jQuery', 'mv_embed', 'wikibits');
+		}else{
+		    $core_classes = array('wikibits');
+		}
 		if( $wgEnableScriptLoader ){
 			$this->mScripts = $this->getScriptLoaderJs( $core_classes ) . $this->mScripts;
 		}else{

@@ -2651,6 +2651,12 @@ $wgJSAutoloadClasses = array();
 $wgEnableScriptLoader = false;
 
 /*
+ * enable js2 Script System
+ * if enabled we include jquery, mv_embed and js2 versions of editPage.js
+ */
+$wgEnableJS2system = false;
+
+/*
  * boolean; if relative file paths can be used (in addition to the autoload js classes listed in: $wgJSAutoloadClasses
  */
 $wgEnableScriptLoaderJsFile = false;

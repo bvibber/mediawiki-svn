@@ -389,7 +389,8 @@ class EditPage {
 
 		$wgOut->addScriptFile( 'edit.js' );
 
-		$wgOut->addScriptClass( 'editPage' );
+		if($wgEnableJS2system)
+		    $wgOut->addScriptClass( 'editPage' );
 
 		$permErrors = $this->getEditPermissionErrors();
 		if ( $permErrors ) {
