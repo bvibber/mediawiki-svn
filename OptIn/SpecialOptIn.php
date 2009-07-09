@@ -168,6 +168,8 @@ class SpecialOptIn extends SpecialPage {
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
 			$wgOptInStyleVersion );
+		UsabilityInitiativeHooks::addStyle( 'OptIn/OptIn.css',
+				$wgOptInStyleVersion );
 		$retval = Xml::openElement( 'table' );
 		foreach ( $wgOptInSurvey as $id => $question ) {
 			switch ( $question['type'] ) {

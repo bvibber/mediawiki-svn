@@ -122,15 +122,12 @@ form#optin-survey table {
 form#optin-survey table td {
 	margin: 0;
 	padding: 0.5em;
+	line-height: 2em;
 }
-form#optin-survey table table {
+form#optin-survey table td p {
 	margin: 0;
-	margin-top: -0.5em;
-	margin-left: -0.5em;
-}
-form#optin-survey table table td {
-	margin: 0;
-	padding: 0.5em;
+	padding: 0;
+	line-height: 2em;
 }
 form#optin-survey table td.optin-survey-submit {
 	text-align: right;
