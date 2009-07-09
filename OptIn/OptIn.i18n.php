@@ -20,7 +20,7 @@ $messages['en'] = array(
 	'optin-title-justoptedout' => 'Thank you for trying Acai Beta',
 	'optin-needlogin' => 'You need to [$1 log in] to try Acai Beta',
 	'optin-intro' => 'The Wikipedia Usability Initiative has been working hard to improve the usability of Wikipedia.
-To try some of the new enhancements, click below.',
+Would you like to try Acai Beta?',
 	'optin-success-in' => 'You are now trying out Acai Beta.
 You can opt back out at any time by clicking the "Leave Acai Beta" link on the top right of the screen.',
 	'optin-success-in-return' => 'Return to [[$1]]',
@@ -31,6 +31,7 @@ You can try it out again at anytime by clicking the "Try Acai Beta" link on the 
 	'optin-deny-short' => 'No thank you',
 	'optin-deny-long' => 'Return to previous page',
 	'optin-submit-out' => 'Leave Acai Beta',
+	'optin-try' => 'Try Acai Beta',
 	'optin-leave' => 'Leave Acai Beta',
 	'optin-survey-intro' => "Thank you for trying Acai Beta.
 You can leave Acai Beta by clicking \"{{int:optin-submit-out}}\" at the bottom of this page.
