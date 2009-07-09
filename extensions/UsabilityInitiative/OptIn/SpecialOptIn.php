@@ -150,27 +150,31 @@ class SpecialOptIn extends SpecialPage {
 						)
 					)
 				) ) ) )
-			) .
-			Xml::tags( 'div', array( 'class' => 'optin-deny' ),
-				Xml::tags( 'div', array(),
-				Xml::tags( 'div', array(),
-				Xml::tags( 'div', array(),
-				Xml::tags( 'div', array(),
-					Xml::tags( 'a', array(), // TODO: target
-						Xml::element( 'span',
-							array( 'class' => 'optin-button-shorttext' ),
-							wfMsg( 'optin-deny-short' )
-						) .
-						Xml::element( 'br' ) .
-						Xml::element( 'span',
-							array( 'class' => 'optin-button-longtext' ),
-							wfMsg( 'optin-deny-long' )
-						)
-					)
-				) ) ) )
-			) .
-			Xml::element( 'div', array( 'style' => 'clear: both; ' ), '', false )
+			)
 		);
+		if ( $this->mOriginTitle instanceof Title ) {
+			$wgOut->addHTML(
+				Xml::tags( 'div', array( 'class' => 'optin-deny' ),
+					Xml::tags( 'div', array(),
+					Xml::tags( 'div', array(),
+					Xml::tags( 'div', array(),
+					Xml::tags( 'div', array(),
+						Xml::tags( 'a', array( 'href' => $this->mOriginTitle->getFullURL() ),
+							Xml::element( 'span',
+								array( 'class' => 'optin-button-shorttext' ),
+								wfMsg( 'optin-deny-short' )
+							) .
+							Xml::element( 'br' ) .
+							Xml::element( 'span',
+								array( 'class' => 'optin-button-longtext' ),
+								wfMsg( 'optin-deny-long' )
+							)
+						)
+					) ) ) )
+				)
+			);
+		}
+		$wgOut->addHTML( Xml::element( 'div', array( 'style' => 'clear: both; ' ), '', false ) );
 	}
 
 	private function showSurvey() {
