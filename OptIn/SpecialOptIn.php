@@ -45,6 +45,8 @@ class SpecialOptIn extends SpecialPage {
 				$this->showForm();
 			}
 		}
+		else
+			$this->showForm();
 	}
 
 	function showForm() {
