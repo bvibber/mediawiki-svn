@@ -12,28 +12,28 @@ $messages = array();
  * @author Roan Kattouw
  */
 $messages['en'] = array(
-	'optin' => 'Usability Initiative opt in',
-	'optin-desc' => 'Allow users to opt in to the Usability Initiative\'s usability enhancements',
-	'optin-title-optedout' => 'Opt-in to beta',
-	'optin-title-optedin' => 'Opt-out of beta',
-	'optin-title-justoptedin' => 'Welcome to beta',
-	'optin-title-justoptedout' => 'Thanks for trying beta',
-	'optin-needlogin' => 'You need to [$1 log in] to opt in to the Usability Initiative\'s usability enhancements.',
+	'optin' => 'Usability Initiative opt-in',
+	'optin-desc' => 'Allow users to try Acai Beta, the Usability Initiative\'s latest usability enhancements.',
+	'optin-title-optedout' => 'Try Acai Beta',
+	'optin-title-optedin' => 'Leave Acai Beta',
+	'optin-title-justoptedin' => 'Welcome to Acai Beta',
+	'optin-title-justoptedout' => 'Thank you for trying Acai Beta',
+	'optin-needlogin' => 'You need to [$1 log in] to try Acai Beta',
 	'optin-intro' => 'The Wikipedia Usability Initiative has been working hard to improve the usability of Wikipedia.
 To try some of the new enhancements, click below.',
-	'optin-success-in' => 'You have successfully opted in to the Usability Initiative\'s usability enhancements.
-You can opt back out at any time by clicking the link on the top right of the screen.',
+	'optin-success-in' => 'You are now trying out Acai Beta.
+You can opt back out at any time by clicking the "Leave Acai Beta" link on the top right of the screen.',
 	'optin-success-in-return' => 'Return to [[$1]]',
-	'optin-success-out' => 'You have successfully opted out of the Usability Initiative\'s usability enhancements.
-You can opt back in at any time by clicking the link on the top right of the screen.',
+	'optin-success-out' => 'You have successfully left Acai Beta.
+You can try it out again at anytime by clicking the "Try Acai Beta" link on the top right of the screen.',
 	'optin-accept-short' => 'Let\'s do it!',
-	'optin-accept-long' => 'opt-in to beta',
+	'optin-accept-long' => 'Try out Acai Beta',
 	'optin-deny-short' => 'No thank you',
-	'optin-deny-long' => 'return to previous page',
-	'optin-submit-out' => 'Opt out',
-	'optin-leave' => 'Opt-out of Beta',
-	'optin-survey-intro' => "Thank you for trying the Usability Initiative's usability enhancements.
-You can opt out by clicking \"{{int:optin-submit-out}}\" at the bottom of this page.
+	'optin-deny-long' => 'Return to previous page',
+	'optin-submit-out' => 'Leave Acai Beta',
+	'optin-leave' => 'Leave Acai Beta',
+	'optin-survey-intro' => "Thank you for trying Acai Beta.
+You can leave Acai Beta by clicking \"{{int:optin-submit-out}}\" at the bottom of this page.
 
 We would like to know what you think about our new interface, so we would appreciate it if you filled out the optional survey below before clicking \"{{int:optin-submit-out}}\".",
 	'optin-survey-question-whyoptout' => 'Why are you opting out of this interface?',
