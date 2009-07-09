@@ -269,6 +269,50 @@ class SpecialOptIn extends SpecialPage {
 				$retval .= Xml::closeElement( 'td' );
 				$retval .= Xml::closeElement( 'tr' );
 			break;
+			case 'yesno':
+				$retval .= Xml::openElement( 'tr' );
+				$retval .= Xml::tags( 'td',
+						array( 'valign' => 'top' ),
+								wfMsgWikiHtml( $question['question'] ) );
+				$retval .= Xml::openElement( 'td',
+						array( 'valign' => 'top' ) );
+				$retval .= Xml::radioLabel( wfMsg( 'optin-survey-yes' ),
+						"survey-$id", 'yes', "survey-$id-yes",
+						false, array( 'class' => 'survey-yes' ) );
+				$retval .= Xml::element( 'br' );
+				$retval .= Xml::radioLabel( wfMsg( 'optin-survey-no' ),
+						"survey-$id", 'no', "survey-$id-no",
+						false, array( 'class' => 'survey-no' ) );
+				$retval .= Xml::closeElement( 'td' );
+				$retval .= Xml::closeElement( 'tr' );
+				
+				if ( isset( $question['ifyes'] ) ) {
+					$retval .= Xml::openElement( 'tr',
+						array(	'class' => 'survey-ifno',
+							'id' => "survey-$id-ifyes-row" ) );
+					$retval .= Xml::tags( 'td',
+						array( 'valign' => 'top' ),
+						wfMsgWikiHtml( $question['ifyes'] ) );
+					$retval .= Xml::openElement( 'td',
+						array( 'valign' => 'top' ) );
+					$retval .= Xml::textarea( "survey-$id-ifyes", '' );
+					$retval .= Xml::closeElement( 'td' );
+					$retval .= Xml::closeElement( 'tr' );
+				}
+				if ( isset( $question['ifno'] ) ) {
+					$retval .= Xml::openElement( 'tr',
+						array(	'class' => 'survey-ifno',
+							'id' => "survey-$id-ifno-row" ) );
+					$retval .= Xml::tags( 'td',
+						array( 'valign' => 'top' ),
+						wfMsgWikiHtml( $question['ifno'] ) );
+					$retval .= Xml::openElement( 'td',
+						array( 'valign' => 'top' ) );
+					$retval .= Xml::textarea( "survey-$id-ifno", '' );
+					$retval .= Xml::closeElement( 'td' );
+					$retval .= Xml::closeElement( 'tr' );
+				}
+			break;
 			case 'resolution':
 				$retval .= Xml::openElement( 'tr' );
 				$retval .= Xml::tags( 'td',
@@ -337,9 +381,18 @@ class SpecialOptIn extends SpecialPage {
 				}
 			break;
 			case 'checkboxes':
-				$checked = array_map( 'intval', $wgRequest->getArray( "survey-$id" ) );
+				$checked = array_map( 'intval', $wgRequest->getArray( "survey-$id", array() ) );
 				$insert['ois_answer'] = ( count( $checked ) ? implode( ',', $checked ) : null );
 				$insert['ois_answer_data'] = ( in_array( 'other', $checked ) ? $wgRequest->getVal( "survey-$id-other" ) : null );
+			break;
+			case 'yesno':
+				$insert['ois_answer'] = $wgRequest->getVal( "survey-$id", null );
+				$data = '';
+				if ( $insert['ois_answer'] == 'yes' )
+					$data += $wgRequest->getVal( "survey-$id-ifyes", '' );
+				if ( $insert['ois_answer'] == 'no' )
+					$data += $wgRequest->getVal( "survey-$id-ifno", '' );
+				$insert['ois_answer_data'] = ( $data ? $data : null );
 			break;
 			case 'resolution':
 				$x = $wgRequest->getVal( "survey-$id-x" );

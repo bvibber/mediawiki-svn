@@ -8,9 +8,24 @@ $( document ).ready( function() {
 		else
 			$( '#' + $(this).attr( 'id' ) + '-other' ).hide();
 	});
+	
 	$( '.optin-other-radios, .optin-other-checks' ).click( function() {
 		$(this).prev().prev().click();
 	});
+	
+	$( '.survey-ifyes, .survey-ifno' ).hide();
+	$( '.survey-yes, .survey-no' ).change( function() {
+		yesrow = $( '#' + $(this).attr( 'name' ) + '-ifyes-row' );
+		norow = $( '#' + $(this).attr( 'name' ) + '-ifno-row' );
+		if( $(this).is( '.survey-yes:checked' ) ) {
+			yesrow.show();
+			norow.hide();
+		} else if( $(this).is( '.survey-no:checked' ) ) {
+			yesrow.hide();
+			norow.show();
+		}
+	});
+	
 	// Detect screen resolution
 	if ( screen.width && screen.height ) {
 		$( '.optin-resolution-x' ).val( screen.width );
@@ -58,12 +73,12 @@ $( document ).ready( function() {
 	}
 
 	if ( browserIndex == -1 )
-		$( '#survey-1' ).val( 'other' );
+		$( '#survey-7' ).val( 'other' );
 	else
-		$( '#survey-1' ).val( parseInt( browserIndex ) );
+		$( '#survey-7' ).val( parseInt( browserIndex ) );
 	if ( osIndex == -1 )
-		$( '#survey-2' ).val( 'other' );
+		$( '#survey-8' ).val( 'other' );
 	else
-		$( '#survey-2' ).val( osIndex );
+		$( '#survey-8' ).val( osIndex );
 
 });

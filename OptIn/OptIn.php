@@ -33,7 +33,7 @@ if ( !isset( $wgOptInNeverShowPersonalLink ) ) {
 	$wgOptInNeverShowPersonalLink = false;
 }
 
-$wgOptInStyleVersion = 3;
+$wgOptInStyleVersion = 4;
 
 // Preferences to set when users opt in
 // array( prefname => value )
@@ -41,13 +41,30 @@ $wgOptInPrefs = array( 'skin' => 'vector', 'usebetatoolbar' => 1 );
 
 // Survey questions to ask when users opt out
 $wgOptInSurvey = array(
+	array(	'question' => 'optin-survey-question-likedislike',
+		'type' => 'textarea' ),
 	array(	'question' => 'optin-survey-question-whyoptout',
 		'type' => 'checkboxes',
 		'answers' => array(
-			'optin-survey-answer-whyoptout-didntlike',
 			'optin-survey-answer-whyoptout-hard',
-			'optin-survey-answer-whyoptout-didntwork' ),
+			'optin-survey-answer-whyoptout-didntwork',
+			'optin-survey-answer-whyoptout-notpredictable',
+			'optin-survey-answer-whyoptout-didntlike-look',
+			'optin-survey-answer-whyoptout-didntlike-layout',
+			'optin-survey-answer-whyoptout-didntlike-toolbar' ),
 		'other' => 'optin-survey-answer-whyoptout-other' ),
+	array(	'question' => 'optin-survey-question-explain',
+		'type' => 'textarea' ),
+	array(	'question' => 'optin-survey-question-techfail',
+		'type' => 'yesno',
+		'ifyes' => 'optin-survey-question-techfail-ifyes' ),
+	array(	'question' => 'optin-survey-question-usedtoolbar',
+		'type' => 'yesno',
+		'ifyes' => 'optin-survey-question-usedtoolbar-ifyes' ),
+	array(	'question' => 'optin-survey-question-different',
+		'type' => 'textarea' ),
+	array(	'question' => 'optin-survey-question-feedback',
+		'type' => 'textarea' ),
 	array(	'question' => 'optin-survey-question-browser',
 		'type' => 'dropdown',
 		'answers' => array(
@@ -76,8 +93,6 @@ $wgOptInSurvey = array(
 		'other' => 'optin-survey-answer-os-other' ),
 	array(	'question' => 'optin-survey-question-res',
 		'type' => 'resolution' ),
-	array(	'question' => 'optin-survey-question-feedback',
-		'type' => 'textarea' )
 );
 
 /* Setup */
