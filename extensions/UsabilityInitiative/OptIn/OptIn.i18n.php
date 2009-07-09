@@ -77,10 +77,7 @@ Toolbar icons were redesigned by using Tango and Gnome icons.
 
 [[File:UsabilitySearch.png|right]]
 ;Improved search interface\nAs the search result page is often the entry point to an article, titles of results are laid out to increase visibility and infrequently needed information is reduced.
-<div style=\"clear:both;\"></div>
-
-;General aesthetic improvements
-Minimal aesthetic improvements have been applied for visual enhancements and redundant information has been removed.",
+<div style=\"clear:both;\"></div>",
 );
 
 /** Message documentation (Message documentation)
