@@ -73,13 +73,13 @@ class SpecialOptIn extends SpecialPage {
 
 		if ( $wgRequest->getCheck( 'opt' ) ) {
 			if ( $wgRequest->getVal( 'opt' ) === 'in' ) {
-				$this->optIn( $wgUser );
+				self::optIn( $wgUser );
 				$wgOut->addWikiMsg( 'optin-success-in' );
 				if ( $this->mOriginTitle )
 					$wgOut->addWikiMsg( 'optin-success-in-return',
 						$this->mOriginTitle->getPrefixedText() );
 			} else {
-				$this->optOut( $wgUser );
+				self::optOut( $wgUser );
 				$this->saveSurvey();
 				$wgOut->addWikiMsg( 'optin-success-out' );
 				$this->showForm();
@@ -96,24 +96,23 @@ class SpecialOptIn extends SpecialPage {
 		
 		$wgOut->addHTML( Xml::openElement( 'form', array(
 			'method' => 'post',
-			'action' => $this->getTitle()->getLinkURL()
+			'action' => $this->getTitle()->getLinkURL(),
+			'class' => 'optin-survey',
 		) ) );
-		$opt = ( $this->isOptedIn( $wgUser ) ? 'out' : 'in' );
+		$opt = ( self::isOptedIn( $wgUser ) ? 'out' : 'in' );
 		if ( $opt == 'out' ) {
 			$wgOut->addWikiMsg( 'optin-survey-intro' );
 			$this->showSurvey();
 		}
 		else
+		{
 			$wgOut->addHTML( Xml::tags( 'div', array( 'class' => 'optin-intro' ),
 				wfMsg( 'optin-intro' ) ) );
-		$wgOut->addHTML( Xml::hidden( 'opt', $opt ) );
-		// Uses the optin-submit-in or optin-submit-out message
-		if ( $opt == 'in' )
 			$this->showOptInButtons();
-		else
-			$wgOut->addHTML( Xml::submitButton( wfMsg( "optin-submit-out" ) ) );
+			$wgOut->addWikiMsg( 'optin-improvements' );
+		}
+		$wgOut->addHTML( Xml::hidden( 'opt', $opt ) );
 		$wgOut->addHTML( Xml::closeElement( 'form' ) );
-		$wgOut->addWikiMsg( 'optin-improvements' );
 	}
 	
 	function showOptInButtons() {
@@ -262,6 +261,9 @@ class SpecialOptIn extends SpecialPage {
 			break;
 			}
 		}
+		$retval .= Xml::tags( 'tr', array(),
+			Xml::tags( 'td', array( 'colspan' => 2, 'class' => 'optin-survey-submit' ),
+				Xml::submitButton( wfMsg( 'optin-submit-out' ) ) ) );
 		$retval .= Xml::closeElement( 'table' );
 		$wgOut->addHTML( $retval );
 	}
@@ -271,7 +273,6 @@ class SpecialOptIn extends SpecialPage {
 		
 		$dbw = wfGetDb( DB_MASTER );
 		$now = $dbw->timestamp( wfTimestamp() );
-		// var_dump($wgRequest->data); die();
 		foreach ( $wgOptInSurvey as $id => $question ) {
 			$insert = array(
 				'ois_user' => $wgUser->getId(),
