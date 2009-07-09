@@ -57,7 +57,7 @@ $messages['en'] = array(
 	'poll-no-dis' => 'No Description!',
 	'poll-create-allow-more' => 'Allow Multi-Vote',
 	'poll-vote-changed' => 'Vote has been changed!',
-	'poll-vote-other' => 'Other answers: ',
+	'poll-vote-other' => 'Other answers:',
 	'poll-ip-error' => 'Unregistered person can not vote at this poll!',
 	'poll-create-allow-ip' => 'Allow unregistered users to vote',
 );
@@ -111,7 +111,7 @@ $messages['de'] = array(
 	'poll-no-dis' => 'Keine Beschreibung vorhanden!',
 	'poll-create-allow-more' => 'Mehfachabstimmung erlaubt',
 	'poll-vote-changed' => 'Stimme wurde geändert!',
-	'poll-vote-other' => 'Andere Antworten: ',
-	'poll-ip-error' => 'Nicht regestrierte Benutzer können bei dieser Umfrage nicht abstimmen!',
+	'poll-vote-other' => 'Andere Antworten:',
+	'poll-ip-error' => 'Nicht registrierte Benutzer können bei dieser Umfrage nicht abstimmen!',
 	'poll-create-allow-ip' => 'Erlaube nicht registrierten Benutzer abzustimmen',
 );

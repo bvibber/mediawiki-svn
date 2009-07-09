@@ -150,7 +150,7 @@ class Poll extends SpecialPage {
 				if($alternative_4 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '4').' '.$alternative_4.'</td></tr>' ); }
 				if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '5').' '.$alternative_5.'</td></tr>' ); }
 				if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::radio('vote', '6').' '.$alternative_6.'</td></tr>' ); }
-				$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-vote-other' ).'</td><td>'.Xml::input('vote_other').'</td></tr>' );
+				$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-vote-other' ).' '.Xml::input('vote_other').'</td></tr>' );
 			}
 			if( $multi == 1 ) {
 				$wgOut->addHtml( '<tr><td>'.Xml::check('vote_1').' '.$alternative_1.'</td></tr>' );
@@ -158,9 +158,10 @@ class Poll extends SpecialPage {
 				if($alternative_3 != "") { $wgOut->addHtml( '<tr><td>'.Xml::check('vote_3').' '.$alternative_3.'</td></tr>' ); }
 				if($alternative_4 != "") { $wgOut->addHtml( '<tr><td>'.Xml::check('vote_4').' '.$alternative_4.'</td></tr>' ); }
 				if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.Xml::check('vote_5').' '.$alternative_5.'</td></tr>' ); }
-				if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::check('vote_6').' '.$alternative_6.'</td></tr>' ); }			
+				if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::check('vote_6').' '.$alternative_6.'</td></tr>' ); }
+				$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-vote-other' ).' '.Xml::input('vote_other').'</td></tr>' );				
 			}
-			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'vote').''.Xml::hidden('multi', $multi).'</td><td><a href="'.$this->getTitle()->getFullURL( 'action=score&id='.$vid ).'">'.wfMsg( 'poll-title-score' ).'</a></td></tr>' );
+			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'vote').''.Xml::hidden('multi', $multi).' <a href="'.$this->getTitle()->getFullURL( 'action=score&id='.$vid ).'">'.wfMsg( 'poll-title-score' ).'</a></td></tr>' );
 			$wgOut->addHtml( '<tr><td>' );
 			$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created', $creater ).'</small>' );
 			$wgOut->addHtml( '</td></tr>' );
@@ -249,7 +250,7 @@ class Poll extends SpecialPage {
 		}
 		$score_other_out = "";
 		foreach($score_other as $name => $value) {
-			$score_other_out .= '<tr><td>'.$name.'</td><td>'.$value['number'].'</td></tr>';
+			$score_other_out .= '<tr><td>'.htmlentities( $name, ENT_QUOTES, 'UTF-8'  ).'</td><td>'.htmlentities( $value['number'], ENT_QUOTES, 'UTF-8'  ).'</td></tr>';
 		}
 
 		$wgOut->addHtml( Xml::openElement( 'table' ) );
@@ -260,7 +261,7 @@ class Poll extends SpecialPage {
 		if($alternative_4 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_4.'</td><td>'.$query_num_4.'</td></tr>' ); }
 		if($alternative_5 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_5.'</td><td>'.$query_num_5.'</td></tr>' ); }
 		if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.$alternative_6.'</td><td>'.$query_num_6.'</td></tr>' ); }
-		if($score_other_out != "") { $wgOut->addHtml( '<tr><td colspan="2">'.wfMsg( 'poll-vote-other' ).'</td></tr>'. $score_other_out ); }
+		if($score_other_out != "") { $wgOut->addHtml( '<tr><td colspan="2">'.wfMsg( 'poll-vote-other' ).' </td></tr>'. $score_other_out ); }
 		$wgOut->addHtml( '<tr><td>' );
 		$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created', $creater ).'</small>' );
 		$wgOut->addHtml( '</td></tr>' );
