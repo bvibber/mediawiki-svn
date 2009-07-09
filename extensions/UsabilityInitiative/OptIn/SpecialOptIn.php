@@ -7,6 +7,9 @@
  */
 
 class SpecialOptIn extends SpecialPage {
+	private $mOrigin = '';
+	private $mOriginTitle = null;
+	
 	function __construct() {
 		parent::__construct( 'OptIn' );
 		wfLoadExtensionMessages( 'OptIn' );
@@ -14,27 +17,34 @@ class SpecialOptIn extends SpecialPage {
 
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
+		$this->mOriginTitle = Title::newFromText( $par );
+		if ( $this->mOriginTitle )
+			$this->mOrigin = $this->mOriginTitle->getPrefixedText();
+		
 		$this->setHeaders();
 		$wgOut->setPageTitle( wfMsg( 'optin-title' ) );
 
 		if ( $wgUser->isAnon() ) {
 			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
-				array( 'returnto' => $this->getTitle()->getPrefixedUrl() ) );
+				array( 'returnto' => $this->getTitle( $par )->getPrefixedUrl() ) );
 			$wgOut->wrapWikiMsg( "<div class='plainlinks'>\n$1\n</div>", array( 'optin-needlogin', $url ) );
 			return;
 		}
 
-		if ( $wgRequest->wasPosted() ) {
+		if ( $wgRequest->getCheck( 'opt' ) ) {
 			if ( $wgRequest->getVal( 'opt' ) === 'in' ) {
-				self::optIn( $wgUser );
+				$this->optIn( $wgUser );
 				$wgOut->addWikiMsg( 'optin-success-in' );
+				if ( $this->mOriginTitle )
+					$wgOut->addWikiMsg( 'optin-success-in-return',
+						$this->mOriginTitle->getPrefixedText() );
 			} else {
-				self::optOut( $wgUser );
+				$this->optOut( $wgUser );
 				$this->saveSurvey();
 				$wgOut->addWikiMsg( 'optin-success-out' );
+				$this->showForm();
 			}
 		}
-		$this->showForm();
 	}
 
 	function showForm() {
@@ -43,7 +53,7 @@ class SpecialOptIn extends SpecialPage {
 			'method' => 'post',
 			'action' => $this->getTitle()->getLinkURL()
 		) ) );
-		$opt = ( self::( $wgUser ) ? 'out' : 'in' );
+		$opt = ( $this->isOptedIn( $wgUser ) ? 'out' : 'in' );
 		if ( $opt == 'out' ) {
 			$wgOut->addWikiMsg( 'optin-survey-intro' );
 			$this->showSurvey();
@@ -72,7 +82,7 @@ class SpecialOptIn extends SpecialPage {
 				Xml::tags( 'div', array(),
 				Xml::tags( 'div', array(),
 				Xml::tags( 'div', array(),
-					Xml::tags( 'a', array(), // TODO: target
+					Xml::tags( 'a', array( 'href' => $this->getTitle( $this->mOrigin )->getFullURL( 'opt=in' ) ),
 						Xml::element( 'span',
 							array( 'class' => 'optin-button-shorttext' ),
 							wfMsg( 'optin-accept-short' )
@@ -107,7 +117,7 @@ class SpecialOptIn extends SpecialPage {
 		);
 	}
 
-	static function isOptedIn( $user ) {
+	function isOptedIn( $user ) {
 		global $wgOptInPrefs;
 		foreach ( $wgOptInPrefs as $pref => $value ) {
 			if ( $user->getOption( $pref ) != $value ) {
@@ -117,7 +127,7 @@ class SpecialOptIn extends SpecialPage {
 		return true;
 	}
 
-	static function optIn( $user ) {
+	function optIn( $user ) {
 		global $wgOptInPrefs;
 		foreach ( $wgOptInPrefs as $pref => $value ) {
 			$user->setOption( $pref, $value );
@@ -125,7 +135,7 @@ class SpecialOptIn extends SpecialPage {
 		$user->saveSettings();
 	}
 
-	static function optOut( $user ) {
+	function optOut( $user ) {
 		global $wgOptInPrefs;
 		foreach ( $wgOptInPrefs as $pref => $value ) {
 			$user->setOption( $pref, null );

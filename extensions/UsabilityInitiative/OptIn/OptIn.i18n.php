@@ -20,6 +20,7 @@ $messages['en'] = array(
 To try some of the new enhancements, click below.',
 	'optin-success-in' => 'You have successfully opted in to the Usability Initiative\'s usability enhancements.
 You can opt back out at any time by clicking "{{int:optin-submit-out}}" below.',
+	'optin-success-in-return' => 'Return to [[$1]]',
 	'optin-success-out' => 'You have successfully opted out of the Usability Initiative\'s usability enhancements.
 You can opt back in at any time by clicking {{int:optin-submit-in}} below.',
 	'optin-accept-short' => 'Let\'s do it!',
