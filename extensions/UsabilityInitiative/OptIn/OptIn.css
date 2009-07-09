@@ -1,24 +1,22 @@
 div.optin-accept {
 	float: left;
-	margin-right: 1em;
-	margin-bottom: 1em;
 	background-image: url(images/accept-border.png);
-}
-div.optin-deny {
-	float: left;
+	margin: 0;
 	margin-right: 1em;
 	margin-bottom: 1em;
-	background-image: url(images/deny-border.png);
+	padding: 4px;
 }
 div.optin-accept div {
 	float: left;
 	background-image: url(images/accept-base.png);
-	margin: 4px;
+	margin: 0;
+	padding: 0;
 }
 div.optin-accept div div {
 	background-image: url(images/accept-tl.png);
 	background-position: top left;
 	background-repeat: no-repeat;
+	margin: 0;
 	margin: -4px;
 }
 div.optin-accept div div div {
@@ -49,15 +47,25 @@ div.optin-accept div div div div a {
 div.optin-accept div div div div a:hover {
 	text-decoration: none;
 }
+div.optin-deny {
+	float: left;
+	background-image: url(images/deny-border.png);
+	margin: 0;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	padding: 4px;
+}
 div.optin-deny div {
 	float: left;
 	background-image: url(images/deny-base.png);
-	margin: 4px;
+	margin: 0;
+	padding: 0;
 }
 div.optin-deny div div {
 	background-image: url(images/deny-tl.png);
 	background-position: top left;
 	background-repeat: no-repeat;
+	margin: 0;
 	margin: -4px;
 }
 div.optin-deny div div div {
