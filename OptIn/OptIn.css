@@ -111,3 +111,27 @@ div.optin-intro {
 #content, #p-cactions li a:hover, #p-cactions li.selected a, #content div.thumb {
 	background-color:#FFFFFF !important;
 }
+form#optin-survey {
+	margin: 0;
+	padding: 0;
+}
+form#optin-survey table {
+	margin: 0;
+	padding: 0;
+}
+form#optin-survey table td {
+	margin: 0;
+	padding: 0.5em;
+}
+form#optin-survey table table {
+	margin: 0;
+	margin-top: -0.5em;
+	margin-left: -0.5em;
+}
+form#optin-survey table table td {
+	margin: 0;
+	padding: 0.5em;
+}
+form#optin-survey table td.optin-survey-submit {
+	text-align: right;
+}
