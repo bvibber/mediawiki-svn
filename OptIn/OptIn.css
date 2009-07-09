@@ -108,3 +108,6 @@ div.optin-intro {
 	font-size: large;
 	margin-bottom: 1em;
 }
+#content, #p-cactions li a:hover, #p-cactions li.selected a, #content div.thumb {
+	background-color:#FFFFFF !important;
+}
