@@ -47,6 +47,15 @@ div.optin-accept div div div div a {
 div.optin-accept div div div div a:hover {
 	text-decoration: none;
 }
+div.optin-accept span.optin-button-shorttext {
+	font-size: large;
+	font-weight: bold;
+	color: #41aa1e;
+}
+div.optin-accept span.optin-button-longtext {
+	color: #41aa1e;
+	font-style: italic;
+}
 div.optin-deny {
 	float: left;
 	background-image: url(images/deny-border.png);
@@ -96,13 +105,14 @@ div.optin-deny div div div div a {
 div.optin-deny div div div div a:hover {
 	text-decoration: none;
 }
-span.optin-button-shorttext {
+div.optin-deny span.optin-button-shorttext {
 	font-size: large;
 	font-weight: bold;
-	color: white;
+	color: #e95229;
 }
-span.optin-button-longtext {
-	color: white;
+div.optin-deny span.optin-button-longtext {
+	color: #e95229;
+	font-style: italic;
 }
 div.optin-intro {
 	font-size: large;
