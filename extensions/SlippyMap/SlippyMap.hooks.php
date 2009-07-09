@@ -47,7 +47,9 @@ class SlippyMapHooks {
 		 * otherwise, do not add slippymap and openlayers js
 		 * where unnecessary and will slow page load time.
 		 */
-		if ( isset( $wgArticle ) && strstr($wgArticle->getRawText(), SlippyMapHooks::$WIKITEXT_PATTERN ) ) { 
+		if ( ( isset( $wgArticle ) && strstr($wgArticle->getRawText(), SlippyMapHooks::$WIKITEXT_PATTERN ) )
+			 // Horrible hack. But it'll go away in time when this whole if () is replaced by delayed loading of OL
+			 || class_exists("ParserTest") ) { 
 
 			wfLoadExtensionMessages( 'SlippyMap' );
 
