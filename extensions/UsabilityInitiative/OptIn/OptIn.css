@@ -104,3 +104,7 @@ span.optin-button-shorttext {
 span.optin-button-longtext {
 	color: white;
 }
+div.optin-intro {
+	font-size: large;
+	margin-bottom: 1em;
+}
