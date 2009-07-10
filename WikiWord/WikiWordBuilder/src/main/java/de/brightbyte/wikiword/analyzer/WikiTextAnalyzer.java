@@ -1900,9 +1900,17 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			
 			for (int i = ccc.length-1; i >= 0; i--) { //NOTE: most specific last, because last write wins.
 				if (!stop.add(ccc[i])) continue;
+				WikiConfiguration conf;
 				
-				ctor = ccc[i].getConstructor(new Class[] { });
-				WikiConfiguration conf = (WikiConfiguration)ctor.newInstance(new Object[] { } );
+				try {
+					ctor = ccc[i].getConstructor(new Class[] { });
+					conf = (WikiConfiguration)ctor.newInstance(new Object[] { } );
+				} 
+				catch (NoSuchMethodException ex) {
+					ctor = ccc[i].getConstructor(new Class[] { String.class });
+					conf = (WikiConfiguration)ctor.newInstance(new Object[] { language.getCorpus().getLanguage() } );
+				}
+				
 				analyzer.configure(conf, language.tweaks);
 			}
 			
