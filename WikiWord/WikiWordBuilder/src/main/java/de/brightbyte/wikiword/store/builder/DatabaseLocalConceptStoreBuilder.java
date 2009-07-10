@@ -303,7 +303,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	 */
 	public int storeResourceAbout(String name, ResourceType ptype, Date time, int conceptId, String conceptName) throws PersistenceException {
 		int rcId = storeResource(name, ptype, time);
-		storeAbout(rcId, conceptId, conceptName);
+		storeAbout(rcId, name, conceptId, conceptName);
 		return rcId;
 	}
 	
@@ -355,7 +355,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				id = conceptInserter.getLastId();
 			}
 			
-			if (rcId>=0) storeAbout(rcId, id, name); 
+			if (rcId>=0) storeAbout(rcId, name, id, name); //XXX: really here? do prior to calling this method?!
 			
 			return id;
 		} catch (SQLException e) {
@@ -484,14 +484,14 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeAbout(int, String)
 	 */
-	public int storeAbout(int rcId, String conceptName) throws PersistenceException {
-		return storeAbout(rcId, -1, conceptName);
+	public int storeAbout(int rcId, String rcName, String conceptName) throws PersistenceException {
+		return storeAbout(rcId, rcName, -1, conceptName);
 	}
 	
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeAbout(int, int, String)
 	 */
-	public int storeAbout(int rcId, int concept, String conceptName) throws PersistenceException {
+	public int storeAbout(int rcId, String rcName, int concept, String conceptName) throws PersistenceException {
 		try {
 			if (rcId<0) throw new IllegalArgumentException("bad resource id "+rcId);
 			conceptName = checkName(rcId, conceptName, "concept name (resource #{0})", rcId);

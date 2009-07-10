@@ -270,7 +270,7 @@ public class ConceptImporter extends AbstractImporter {
 				out.info("storing category redirect "+rcName+" -> "+redir);
 				storeAlias(analyzerPage, rcId);
 			} else {
-				int conceptId = store.storeAbout(rcId, name);
+				int conceptId = store.storeAbout(rcId, rcName, name);
 
 				List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
 				linkTracker.step(links.size());
@@ -477,7 +477,7 @@ public class ConceptImporter extends AbstractImporter {
 						String tgtConcept = link.getPage().toString();
 						
 						if (!name.equals(tgtConcept)) {
-							conceptId = store.storeAbout(rcId, name);
+							conceptId = store.storeAbout(rcId, rcName, name);
 							storeConceptAlias(rcId, conceptId, name, -1, tgtConcept, AliasScope.REDIRECT);
 						} else {
 							out.debug("skipping redirect to category with the same name");
@@ -491,7 +491,7 @@ public class ConceptImporter extends AbstractImporter {
 			warn(rcId, "bad redirect (self-link)", "page "+name, null);
 		}
 		else {
-			conceptId = store.storeAbout(rcId, name); 
+			conceptId = store.storeAbout(rcId, rcName, name); 
 			storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_REDIRECT );
 			storeConceptAlias(rcId, conceptId, name, -1, link.getPage().toString(), AliasScope.REDIRECT); 
 			

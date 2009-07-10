@@ -509,7 +509,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
 	public int storeResourceAbout(String name, ResourceType ptype, Date time, int conceptId, String conceptName)  {
 		int resourceId = storeResource(name, ptype, time);
-		storeAbout(resourceId, conceptId, conceptName);
+		storeAbout(resourceId, name, conceptId, conceptName);
 		return resourceId;
 	}
 
@@ -712,13 +712,13 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		return 0;
 	}
 
-	public int storeAbout(int resource, String conceptName)  {
-		trace("+ storeAbout: resource = "+resource+", conceptName =  "+conceptName);
+	public int storeAbout(int resource, String rcName, String conceptName)  {
+		trace("+ storeAbout: resource = "+resource+", resourceName = "+rcName+", conceptName =  "+conceptName);
 		return -1;
 	}
 
-	public int storeAbout(int resource, int concept, String conceptName) {
-		trace("+ storeAbout: resource = "+resource+", concept =  "+concept+", conceptName =  "+conceptName);
+	public int storeAbout(int resource, String rcName, int concept, String conceptName) {
+		trace("+ storeAbout: resource = "+resource+", resourceName = "+rcName+", concept =  "+concept+", conceptName =  "+conceptName);
 		return -1;
 	}
 

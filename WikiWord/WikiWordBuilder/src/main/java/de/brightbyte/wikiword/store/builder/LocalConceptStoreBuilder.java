@@ -55,11 +55,11 @@ public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<Lo
 			throws PersistenceException;
 
 	/* returns concept ID, of known; -1 otherwise */
-	public abstract int storeAbout(int resource, String conceptName)
+	public abstract int storeAbout(int resource, String rcName, String conceptName)
 		throws PersistenceException;
 
 	/* returns concept ID, of known; -1 otherwise */
-	public abstract int storeAbout(int resource, int concept, String conceptName)
+	public abstract int storeAbout(int resource, String rcName, int concept, String conceptName)
 			throws PersistenceException;
 
 	//public abstract void storeConceptReference(int rcId, int source,
