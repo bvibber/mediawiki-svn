@@ -49,9 +49,7 @@ class SiteStats {
 			// clean schema with mwdumper.
 			wfDebug( __METHOD__ . ": initializing damaged or missing site_stats\n" );
 
-			ob_start();
-			self::init( false );
-			ob_end_clean();
+			SiteStatsInit::doAllAndCommit( wfGetDB( DB_SLAVE ), false );
 
 			$row = self::doLoad( wfGetDB( DB_MASTER ) );
 		}
@@ -174,69 +172,6 @@ class SiteStats {
 		}
 		return true;
 	}
-
-	/**
-	 * Ported from initStats.inc.
-	 * @param $update bool Whether to update the current stats write fresh
-	 * @param $noViews bool When true, do not update the number of page views
-	 */
-	public static function init( $update, $noViews = false, $activeUsers = false ) {
-		$dbr = wfGetDB( DB_SLAVE );
-
-		wfOut( "Counting total edits..." );
-		$edits = $dbr->selectField( 'revision', 'COUNT(*)', '', __METHOD__ );
-		$edits += $dbr->selectField( 'archive', 'COUNT(*)', '', __METHOD__ );
-		wfOut( "{$edits}\nCounting number of articles..." );
-
-		global $wgContentNamespaces;
-		$good  = $dbr->selectField( 'page', 'COUNT(*)', array( 'page_namespace' => $wgContentNamespaces, 'page_is_redirect' => 0, 'page_len > 0' ), __METHOD__ );
-		wfOut( "{$good}\nCounting total pages..." );
-
-		$pages = $dbr->selectField( 'page', 'COUNT(*)', '', __METHOD__ );
-		wfOut( "{$pages}\nCounting number of users..." );
-	
-		$users = $dbr->selectField( 'user', 'COUNT(*)', '', __METHOD__ );
-		wfOut( "{$users}\nCounting number of admins..." );
-
-		$admin = $dbr->selectField( 'user_groups', 'COUNT(*)', array( 'ug_group' => 'sysop' ), __METHOD__ );
-		wfOut( "{$admin}\nCounting number of images..." );
-	
-		$image = $dbr->selectField( 'image', 'COUNT(*)', '', __METHOD__ );
-		wfOut( "{$image}\n" );
-
-		if( !$noViews ) {
-			wfOut( "Counting total page views..." );
-			$views = $dbr->selectField( 'page', 'SUM(page_counter)', '', __METHOD__ );
-			wfOut( "{$views}\n" );
-		}
-		
-		if( $activeUsers ) {
-			wfOut( "Counting active users..." );
-			$active = SiteStatsUpdate::cacheUpdate();
-			wfOut( "{$active}\n" );
-		}
-	
-		wfOut( "\nUpdating site statistics..." );
-	
-		$dbw = wfGetDB( DB_MASTER );
-		$values = array( 'ss_total_edits' => $edits,
-						'ss_good_articles' => $good,
-						'ss_total_pages' => $pages,
-						'ss_users' => $users,
-						'ss_admins' => $admin,
-						'ss_images' => $image );
-		$conds = array( 'ss_row_id' => 1 );
-		$views = array( 'ss_total_views' => isset( $views ) ? $views : 0 );
-	
-		if( $update ) {
-			$dbw->update( 'site_stats', $values, $conds, __METHOD__ );
-		} else {
-			$dbw->delete( 'site_stats', $conds, __METHOD__ );
-			$dbw->insert( 'site_stats', array_merge( $values, $conds, $views ), __METHOD__ );
-		}
-	
-		wfOut( "done.\n" );
-	}
 }
 
 
@@ -303,5 +238,148 @@ class SiteStatsUpdate {
 			array( 'ss_row_id' => 1 ), __METHOD__
 		);
 		return $activeUsers;
+	}
+}
+
+/**
+ * Class designed for counting of stats.
+ */
+class SiteStatsInit {
+
+	// Db connection
+	private $db;
+
+	// Various stats
+	private $mEdits, $mArticles, $mPages, $mUsers, $mViews, $mFiles = 0;
+
+	/**
+	 * Constructor
+	 * @param $useMaster bool Whether to use the master db
+	 */
+	public function __construct( $useMaster = false ) {
+		$this->db = wfGetDB( $useMaster ? DB_MASTER : DB_SLAVE );
+	}
+
+	/**
+	 * Count the total number of edits
+	 * @return int
+	 */
+	public function edits() {
+		$this->mEdits = $this->db->selectField( 'revision', 'COUNT(*)', '', __METHOD__ );
+		$this->mEdits += $this->db->selectField( 'archive', 'COUNT(*)', '', __METHOD__ );
+		return $this->mEdits;
+	}
+
+	/**
+	 * Count pages in article space
+	 * @return int
+	 */
+	public function articles() {
+		global $wgContentNamespaces;
+		$this->mArticles = $this->db->selectField( 'page', 'COUNT(*)', array( 'page_namespace' => $wgContentNamespaces, 'page_is_redirect' => 0, 'page_len > 0' ), __METHOD__ );
+		return $this->mArticles;
+	}
+
+	/**
+	 * Count total pages
+	 * @return int
+	 */
+	public function pages() {
+		$this->mPages = $this->db->selectField( 'page', 'COUNT(*)', '', __METHOD__ );
+		return $this->mPages;
+	}
+	
+	/**
+	 * Count total users
+	 * @return int
+	 */
+	public function users() {
+		$this->mUsers = $this->db->selectField( 'user', 'COUNT(*)', '', __METHOD__ );
+		return $this->mUsers;
+	}
+	
+	/**
+	 * Count views
+	 * @return int
+	 */
+	public function views() {
+		$this->mViews = $this->db->selectField( 'page', 'SUM(page_counter)', '', __METHOD__ );
+		return $this->mViews;
+	}
+
+	/**
+	 * Count total files
+	 * @return int
+	 */
+	public function files() {
+		$this->mFiles = $this->db->selectField( 'image', 'COUNT(*)', '', __METHOD__ );
+		return $this->mFiles;
+	}
+
+	/**
+	 * Do all updates and commit them. More or less a replacement
+	 * for the original initStats, but without the calls to wfOut()
+	 * @param $update bool Whether to update the current stats or write fresh
+	 * @param $noViews bool When true, do not update the number of page views
+	 * @param $activeUsers Whether to update the number of active users
+	 */
+	public static function doAllAndCommit( $update, $noViews = false, $activeUsers = false ) {
+		// Grab the object and count everything
+		$counter = new InitStats( false );
+		$counter->edits();
+		$counter->articles();
+		$counter->pages();
+		$counter->users();
+		$counter->files();
+
+		// Only do views if we don't want to not count them
+		if( !$noViews )
+			$counter->views();
+
+		// Update/refresh
+		if( $update )
+			$counter->update();
+		else
+			$counter->refresh();
+
+		// Count active users if need be
+		if( $activeUsers )
+			SiteStatsUpdate::cacheUpdate( wfGetDB( DB_MASTER ) );
+	}
+
+	/**
+	 * Update the current row with the selected values
+	 */
+	public function update() {
+		list( $values, $conds ) = $this->getDbParams();
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->update( 'site_stats', $values, $conds, __METHOD__ );
+	}
+
+	/**
+	 * Refresh site_stats. Erase the current record and save all
+	 * the new values.
+	 */
+	public function refresh() {
+		list( $values, $conds, $views ) = $this->getDbParams();
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete( 'site_stats', $conds, __METHOD__ );
+		$dbw->insert( 'site_stats', array_merge( $values, $conds, $views ), __METHOD__ );
+	}
+
+	/**
+	 * Return three arrays of params for the db queries
+	 * @return array
+	 */
+	private function getDbParams() {
+		$values = array( 'ss_total_edits' => $this->mEdits,
+						'ss_good_articles' => $this->mArticles,
+						'ss_total_pages' => $this->mPages,
+						'ss_users' => $this->mUsers,
+						'ss_admins' => SiteStats::numberingroup( 'sysop' ), // @todo make this go away
+						'ss_images' => $this->mFiles );
+		$conds = array( 'ss_row_id' => 1 );
+		$views = array( 'ss_total_views' => $this->mViews );
+		return array( $values, $conds, $views );
 	}
 }

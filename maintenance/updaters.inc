@@ -1040,7 +1040,7 @@ function do_stats_init() {
 		wfOut( "ok.\n" );
 		return;
 	}
-	SiteStats::init( false );
+	SiteStatsInit::doAllAndUpdate( false );
 }
 
 function do_active_users_init() {

@@ -702,6 +702,7 @@ abstract class Maintenance {
 		if( !self::$mCoreScripts ) {
 			$d = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
 			self::$mCoreScripts = array(
+				# Main script list
 				'AddWiki'                  => $d . 'addwiki.php',
 				'AttachLatest'             => $d . 'attachLatest.php',
 				'BenchmarkPurge'           => $d . 'benchmarkPurge.php',
@@ -731,6 +732,7 @@ abstract class Maintenance {
 				'EditCLI'                  => $d . 'edit.php',
 				'EvalPrompt'               => $d . 'eval.php',
 				'FetchText'                => $d . 'fetchText.php',
+				'FindHooks'                => $d . 'findhooks.php',
 				'FixSlaveDesync'           => $d . 'fixSlaveDesync.php',
 				'FixTimestamps'            => $d . 'fixTimestamps.php',
 				'FixUserRegistration'      => $d . 'fixUserRegistration.php',
@@ -775,6 +777,9 @@ abstract class Maintenance {
 				'UpdateSearchIndex'        => $d . 'updateSearchIndex.php',
 				'UpdateSpecialPages'       => $d . 'updateSpecialPages.php',
 				'WaitForSlave'             => $d . 'waitForSlave.php',
+
+				# Language scripts
+				'AllTrans' => $d . 'language/alltrans.php',
 			);
 		}
 		return self::$mCoreScripts;
