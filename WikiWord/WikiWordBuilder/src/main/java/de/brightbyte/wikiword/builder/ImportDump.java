@@ -1,6 +1,5 @@
 package de.brightbyte.wikiword.builder;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -18,31 +17,35 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		super(agendaTask, false, true);
 	}
 
-	protected URL dumpFile;
+	private URL dumpFile;
 
 	@Override
 	protected boolean applyArguments() {
 		String d = getTargetFileName();
 		if (d==null) return false;
 		
-		if (args.isSet("url")) {
-			try {
-				dumpFile = new URL(d);
-			} catch (MalformedURLException e) {
-				throw new IllegalArgumentException("bad url: "+d, e);
-			}
-		}
-		else {
-			try {
-				dumpFile = new File(d).toURI().toURL();
-			} catch (MalformedURLException e) {
-				throw new RuntimeException("failed to generate local file url for `"+d+"`");
-			}
-		}
-		
 		return true;
 	}
 
+	protected URL getDumpFileURL() {
+		String d = getTargetFileName();
+		
+		if (dumpFile==null) {
+				if (args.isSet("url")) {
+					try {
+						dumpFile = new URL(d);
+					} catch (MalformedURLException e) {
+						throw new IllegalArgumentException("bad url: "+d, e);
+					}
+				}
+				else {
+						dumpFile = inputHelper.getInputURL(d);
+				}
+		}
+
+		return dumpFile;
+	}
+	
 	@Override
 	protected void declareOptions() {
 		super.declareOptions();
@@ -104,7 +107,7 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		
 		///////////////////////// main import run ////////////////////////////////////
 		if (agenda.beginTask("ImportDump.run", "analysis")) {
-			DataSourceDriver driver = new XmlDumpDriver(dumpFile, getLogOutput(), tweaks);
+			DataSourceDriver driver = new XmlDumpDriver(getDumpFileURL(), inputHelper, getLogOutput(), tweaks);
 			
 			importer.reset();
 			importer.prepare();

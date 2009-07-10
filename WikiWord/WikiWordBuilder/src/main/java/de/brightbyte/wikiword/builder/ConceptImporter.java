@@ -484,7 +484,7 @@ public class ConceptImporter extends AbstractImporter {
 						}
 				}
 			} else {
-					out.info("skipped inter-namespace redirect "+rcName+" -> "+link);
+				warn(rcId, "bad redirect (inter-namespace)", rcName+" -> "+link, null);
 			}
 		}
 		else if (name.equals(link.getPage().toString())) {

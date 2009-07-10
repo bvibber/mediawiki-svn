@@ -9,8 +9,8 @@ import java.util.logging.Level;
 import de.brightbyte.application.Agenda;
 import de.brightbyte.application.Agenda.Record;
 import de.brightbyte.application.Agenda.State;
-import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.data.cursor.CursorProcessor;
+import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
@@ -24,12 +24,27 @@ import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.store.GroupNameTranslator;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
+import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
 /**
  * Dummy implementation of WikiStoreBuilder for testing and debugging
  */
 public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
+	public static class Factory implements WikiWordStoreFactory<DebugLocalConceptStoreBuilder> {
+		protected Output out;
+		protected Corpus corpus;
+		
+		public Factory(Corpus corpus, Output out) {
+			this.out = out;
+			this.corpus = corpus;
+		}
+		
+		public DebugLocalConceptStoreBuilder newStore() throws PersistenceException {
+			return new DebugLocalConceptStoreBuilder(corpus, out);
+		}
+	}
+	
 	public class DebugTextStoreBuilder implements TextStoreBuilder {
 
 		public void storePlainText(int rcId, String name, String text) throws PersistenceException {
@@ -408,14 +423,14 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		@Override
 		public Record logStart(int level, String context, String task, Map<String, Object> parameters, boolean complex) {
 			Record rec = super.logStart(level, context, task, parameters, complex);
-			trace("+ logStart: level = "+level+", task = "+task+", parameters = "+parameters+", complex = "+complex);
+			log("+ logStart: level = "+level+", task = "+task+", parameters = "+parameters+", complex = "+complex);
 			return rec;
 		}
 
 		@Override
 		public void logTerminated(int start, int end, long duration, State state, String result) {
 			super.logTerminated(start, end, duration, state, result);
-			trace("+ logStart: start = "+start+", end = "+end+", duration = "+duration+", state = "+state+", result = "+result);
+			log("+ logStart: start = "+start+", end = "+end+", duration = "+duration+", state = "+state+", result = "+result);
 		}
 
 	}
@@ -436,11 +451,12 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 	protected int sectionCounter = 0;
 	
 	private Agenda agenda;
-	private DatasetIdentifier dataset = DatasetIdentifier.forName("DEBUG", "dummy");
+	private DatasetIdentifier dataset;
 	
-	public DebugLocalConceptStoreBuilder(Output out) {
+	public DebugLocalConceptStoreBuilder(Corpus corpus, Output out) {
 		super();
 		this.out = out;
+		this.dataset = corpus;
 		
 		try {
 			this.agenda = new Agenda( new DebugAgendaPersistor() );
@@ -497,13 +513,13 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
 	public int storeConcept(int rcId, String name, ConceptType ctype)  {
 		conceptCounter++;
-		trace("+ storeConcept: rc = "+rcId+", name = "+name+", type = "+ctype);
+		log("+ storeConcept: rc = "+rcId+", name = "+name+", type = "+ctype);
 		return conceptCounter;
 	}
 	
 	public int storeResource(String name, ResourceType ptype, Date time)  {
 		resourceCounter++;
-		trace("+ resourceCounter: id = "+resourceCounter+", name = "+name+", type = "+ptype+", timestamp = "+time);
+		log("+ storeResource: id = "+resourceCounter+", name = "+name+", type = "+ptype+", timestamp = "+time);
 		return resourceCounter;
 	}
 
@@ -516,84 +532,84 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
 	public void storeDefinition(int rcId, int conceptId, String definition)  {
 		definitionCounter++;
-		trace("+ storeDefinition: conceptId = "+conceptId+": "+definition);
+		log("+ storeDefinition: conceptId = "+conceptId+": "+definition);
 	}
 
 	public int storePlainText(int rcId, String text)  {
 		plainTextCounter++;
-		trace("+ storePlainText: resource = "+rcId+": ");
-		trace("---------------------------------");
-		trace(text);
-		trace("\n---------------------------------");
+		log("+ storePlainText: resource = "+rcId+": ");
+		log("---------------------------------");
+		log(text);
+		log("\n---------------------------------");
 		return plainTextCounter;
 	}
 
 	public int storeRawText(int rcId, String text)  {
 		rawTextCounter++;
-		trace("+ storeRawText: resource = "+rcId+": ");
-		trace("---------------------------------");
-		trace(text);
-		trace("\n---------------------------------");
+		log("+ storeRawText: resource = "+rcId+": ");
+		log("---------------------------------");
+		log(text);
+		log("\n---------------------------------");
 		return rawTextCounter;
 	}
 
 
 	public void storeConceptBroader(int rcId, int narrowId, String narrowName, String broadName, ExtractionRule rule)  {
 		conceptBroaderCounter++;
-		trace("+ storeConceptBroader: rc = "+rcId+", narrow ("+narrowId+") =  "+narrowName+", broad = "+broadName+", rule = "+rule);
+		log("+ storeConceptBroader: rc = "+rcId+", narrow ("+narrowId+") =  "+narrowName+", broad = "+broadName+", rule = "+rule);
 	}
 
 	public void storeConceptBroader(int rcId, String narrowName, String broadName, ExtractionRule rule)  {
 		conceptBroaderCounter++;
-		trace("+ storeConceptBroader: rc = "+rcId+", narrow =  "+narrowName+", broad = "+broadName+", rule = "+rule);
+		log("+ storeConceptBroader: rc = "+rcId+", narrow =  "+narrowName+", broad = "+broadName+", rule = "+rule);
 	}
 
 	public void storeConceptAlias(int rcId, int left, String leftName, int right, String rightName, AliasScope scope)  {
 		conceptEquivalentCounter++;
-		trace("+ storeConceptEquivalent: rc = "+rcId+", left ("+left+") =  "+leftName+", right ("+right+") = "+rightName+", scope = "+scope);
+		log("+ storeConceptEquivalent: rc = "+rcId+", left ("+left+") =  "+leftName+", right ("+right+") = "+rightName+", scope = "+scope);
 	}
 
 	public void storeConceptReference(int rcId, int source, String sourceName, String target)  {
 		conceptReferenceCounter++;
-		trace("+ storeConceptReference: rc = "+rcId+", source ("+source+") =  "+sourceName+", target = "+target+"");
+		log("+ storeConceptReference: rc = "+rcId+", source ("+source+") =  "+sourceName+", target = "+target+"");
 	}
 
 	public void storeLanguageLink(int rcId, int concept, String conceptName, String lang, String target)  {
 		languageLinkCounter++;
-		trace("+ storeLanguageLink: rc = "+rcId+", concept ("+concept+") =  "+conceptName+", language = "+lang+", target = "+target+"");
+		log("+ storeLanguageLink: rc = "+rcId+", concept ("+concept+") =  "+conceptName+", language = "+lang+", target = "+target+"");
 	}
 
 	public void storeLink(int rcId, int anchorId, String anchorName, 
 			String term, String targetName, ExtractionRule rule)  {
 		linkCounter++;
-		trace("+ storeTermUse: rc = "+rcId+", anchor ("+anchorId+") =  "+anchorName+", term = "+term+", target =  "+targetName+", rule = "+rule+"");
+		log("+ storeTermUse: rc = "+rcId+", anchor ("+anchorId+") =  "+anchorName+", term = "+term+", target =  "+targetName+", rule = "+rule+"");
 	}
 
 	public void storeReference(int rcId, String term, int targetId, String targetName, 
 			ExtractionRule rule)  {
 		linkCounter++;
-		trace("+ storeTermUse: rc = "+rcId+", target ("+targetId+") =  "+targetName+", term = "+term+", rule = "+rule+"");
+		log("+ storeTermUse: rc = "+rcId+", target ("+targetId+") =  "+targetName+", term = "+term+", rule = "+rule+"");
 	}
 
 	public void storeSection(int rcId, String name, String page)  {
 		sectionCounter++;
-		trace("+ section: rc = "+rcId+", name ("+name+") =  "+page);
+		log("+ section: rc = "+rcId+", name ("+name+") =  "+page);
 	}
 
 	public void checkConsistency()  {
-		trace("* checkConsistency *");
+		log("* checkConsistency *");
 	}
 
 	public void flush()  {
-		trace("* flush *");
+		log("* flush *");
 	}
 
 	public void deleteDataFrom(int rcId)  {
-		trace("- delete data from resource "+rcId);
+		log("- delete data from resource "+rcId);
 	}
 
 	public void deleteDataAfter(int rcId, boolean inclusive)  {
-		trace("- delete data after resource "+rcId);
+		log("- delete data after resource "+rcId);
 	}
 
 	public Agenda getAgenda() {
@@ -605,7 +621,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 	}
 
 	public void optimize() {
-		trace("- optimize");
+		log("- optimize");
 	}
 
 	public void dumpTableStats(PrintStream out, String table)  {
@@ -621,10 +637,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 	}
 
 	public void buildStatistics() {
-		trace("- build stats");
+		log("- build stats");
 	}
 	public void clearStatistics() {
-		trace("- clear stats");
+		log("- clear stats");
 	}
 
 	public int getNumberOfWarnings()  {
@@ -713,12 +729,12 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 	}
 
 	public int storeAbout(int resource, String rcName, String conceptName)  {
-		trace("+ storeAbout: resource = "+resource+", resourceName = "+rcName+", conceptName =  "+conceptName);
+		log("+ storeAbout: resource = "+resource+", resourceName = "+rcName+", conceptName =  "+conceptName);
 		return -1;
 	}
 
 	public int storeAbout(int resource, String rcName, int concept, String conceptName) {
-		trace("+ storeAbout: resource = "+resource+", resourceName = "+rcName+", concept =  "+concept+", conceptName =  "+conceptName);
+		log("+ storeAbout: resource = "+resource+", resourceName = "+rcName+", concept =  "+concept+", conceptName =  "+conceptName);
 		return -1;
 	}
 

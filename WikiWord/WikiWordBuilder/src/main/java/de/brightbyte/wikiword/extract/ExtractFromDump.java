@@ -6,6 +6,7 @@ import java.net.URL;
 
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
+import de.brightbyte.wikiword.builder.InputFileHelper;
 import de.brightbyte.wikiword.output.DataOutput;
 import de.brightbyte.wikiword.processor.DataSourceDriver;
 import de.brightbyte.wikiword.processor.WikiWordPageProcessor;
@@ -60,7 +61,7 @@ public abstract class ExtractFromDump<S extends DataOutput> extends ExtractorApp
 		processor.setLogOutput(getLogOutput());
 		processor.configure(args);
 		
-		DataSourceDriver driver = new XmlDumpDriver(dumpFile, getLogOutput(), tweaks);
+		DataSourceDriver driver = new XmlDumpDriver(dumpFile, inputHelper, getLogOutput(), tweaks);
 		
 		processor.reset();
 		processor.prepare();

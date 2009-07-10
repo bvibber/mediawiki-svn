@@ -2,9 +2,12 @@ package de.brightbyte.wikiword.builder;
 
 import java.io.IOException;
 
+import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
+import de.brightbyte.wikiword.store.builder.DebugLocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
@@ -22,7 +25,12 @@ public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 	public ImportConcepts() {
 		super("ImportConcepts");
 	}
-
+	
+	protected WikiWordStoreFactory<? extends LocalConceptStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
+		if (args.isSet("debug"))  return new DebugLocalConceptStoreBuilder.Factory((Corpus)getConfiguredDataset(), ConsoleIO.output);
+		else return super.createConceptStoreFactory();
+	}
+	
 	@Override
 	protected void createStores(WikiWordStoreFactory<? extends LocalConceptStoreBuilder> factory) throws IOException, PersistenceException {
 		super.createStores(factory);
@@ -52,6 +60,8 @@ public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 	@Override
 	protected void declareOptions() {
 		super.declareOptions();
+
+		args.declare("debug", null, false, Boolean.class, "debug mode, don't write to store.");
 
 		ConceptImporter.declareOptions(args);
 	}

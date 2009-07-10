@@ -12,6 +12,7 @@ import java.io.Writer;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.CliApp;
+import de.brightbyte.wikiword.builder.InputFileHelper;
 import de.brightbyte.wikiword.output.DataOutput;
 
 /**
@@ -20,11 +21,12 @@ import de.brightbyte.wikiword.output.DataOutput;
 public abstract class ExtractorApp<S extends DataOutput> extends CliApp {
 	
 	protected S output;
+	protected InputFileHelper inputHelper;	
 	
 	public ExtractorApp() { 
 		super();
 	}
-	
+		
 	@Override
 	protected void declareOptions() {
 		super.declareOptions();
@@ -84,6 +86,10 @@ public abstract class ExtractorApp<S extends DataOutput> extends CliApp {
 	@Override
 	protected void prepareApp() throws Exception {
 		super.prepareApp();
+		
+		inputHelper = new InputFileHelper(
+				tweaks.getTweak("dumpdriver.externalGunzip", tweaks.getTweak("input.externalGunzip", (String)null)),
+				tweaks.getTweak("dumpdriver.externalBunzip", tweaks.getTweak("input.externalBunzip", (String)null)));
 		
 		output = createOutput();
 	}

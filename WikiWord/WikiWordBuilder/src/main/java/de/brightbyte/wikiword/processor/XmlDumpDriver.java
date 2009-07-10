@@ -199,33 +199,31 @@ public class XmlDumpDriver implements DataSourceDriver {
 		
 	}
 	
-	public XmlDumpDriver(URL dump, LeveledOutput log, TweakSet tweaks) {
+	public XmlDumpDriver(URL dump, InputFileHelper inputHelper, LeveledOutput log, TweakSet tweaks) {
 		if (dump==null) throw new NullPointerException();
 		this.dump= dump;
-		init(log, tweaks);
+		init(inputHelper, log, tweaks);
 	}
 	
 	public XmlDumpDriver(InputStream in, LeveledOutput log, TweakSet tweaks) {
 		if (in==null) throw new NullPointerException();
 		this.in= in;
-		init(log, tweaks);
+		init(null, log, tweaks);
 	}
 	
 	private int importQueueCapacity = 0;
 	private InputFileHelper inputHelper;
 	
-	private void init(LeveledOutput log, TweakSet tweaks) {
+	private void init(InputFileHelper inputHelper, LeveledOutput log, TweakSet tweaks) {
 		if (log==null) throw new NullPointerException();
 		if (tweaks==null) throw new NullPointerException();
+		if (inputHelper==null && in==null) throw new NullPointerException();
 		
 		this.tweaks = tweaks;
 		this.log = log;
+		this.inputHelper = inputHelper;
 		
 		importQueueCapacity = tweaks.getTweak("dumpdriver.pageImportQueue", 8);
-		
-		inputHelper = new InputFileHelper(
-				tweaks.getTweak("dumpdriver.externalGunzip", tweaks.getTweak("input.externalGunzip", (String)null)),
-				tweaks.getTweak("dumpdriver.externalBunzip", tweaks.getTweak("input.externalBunzip", (String)null))); 
 	}
 	
 	public void run(WikiWordPageProcessor importer) throws IOException, SQLException, InterruptedException, PersistenceException {

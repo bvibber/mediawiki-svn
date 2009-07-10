@@ -35,7 +35,8 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 	
 	protected Operation operation = null;
 	private Monitor agendaMonitor;
-	protected  String[] baseTasks  = new String[] {};	
+	protected  String[] baseTasks  = new String[] {};
+	protected InputFileHelper inputHelper;	
 	
 	public ImportApp(String agendaTask, boolean allowGlobal, boolean allowLocal) { //TODO: agenda-params!
 		super(allowGlobal, allowLocal);
@@ -45,7 +46,7 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 		
 	@SuppressWarnings("unchecked")
 	@Override
-	protected WikiWordStoreFactory<S> createConceptStoreFactory() throws IOException, PersistenceException {
+	protected WikiWordStoreFactory<? extends S> createConceptStoreFactory() throws IOException, PersistenceException {
 		return new DatabaseConceptStoreBuilders.Factory(getConfiguredDataSource(), getConfiguredDataset(), tweaks, null, true, true);
 	}
 
@@ -58,7 +59,6 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 		args.declare("dbstats", null, false, Boolean.class, "calculate and dumps database table statistics");
 		args.declare("noimport", null, false, Boolean.class, "do not import pages");
 		args.declare("wiki", null, true, String.class, "sets the wiki name");
-		args.declare("dummy", null, false, Boolean.class, "use a dummy store (benchmarking mode). In this case, <db-info-file> is ignored");
 		//args.declare("buildstats", null, false, Boolean.class, "generate corpus statistics");
 		//args.declare("noimport", null, false, Boolean.class, "do not import anything");
 		args.declare("optimize", null, false, Boolean.class, "optimizes tables for later queries - this may take very long");
@@ -273,6 +273,13 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 		if (!noimport && useAgenda) {
 				agenda = conceptStore.createAgenda();
 		}
+	}
+	
+	@Override
+	protected void prepareApp() {
+			inputHelper = new InputFileHelper(
+					tweaks.getTweak("dumpdriver.externalGunzip", tweaks.getTweak("input.externalGunzip", (String)null)),
+					tweaks.getTweak("dumpdriver.externalBunzip", tweaks.getTweak("input.externalBunzip", (String)null)));
 	}
 	
 	@Override

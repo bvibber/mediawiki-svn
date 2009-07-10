@@ -59,6 +59,27 @@ public class InputFileHelper {
 		}
 	}	
 	
+
+	public URL getInputURL(String d) {
+		return getInputURL(null, d);
+	}
+
+	public URL getInputURL(URL base, String n) {
+		try {
+				URL u = base == null || base.getProtocol().equals("file") ? new URL(n) : new URL(base, n);
+				return u;
+		} catch (MalformedURLException e) {
+			//ignore and continue
+		}
+		
+		try {
+			File f = new File(n);
+			return f.toURI().toURL();
+		} catch (MalformedURLException e) {
+			throw new RuntimeException("failed to create file URL", e);
+		}
+	}
+	
 	public InputStream open(String n) throws IOException {
 		return open(null, n);
 	}
