@@ -33,7 +33,9 @@ class OptInHooks {
 				$wgOptInAlwaysShowPersonalLink
 			) &&
 			// And the link is allowed to be shown
-			!$wgOptInNeverShowPersonalLink
+			!$wgOptInNeverShowPersonalLink &&
+			// We're not at the OptIn page
+			current( explode( '/', $title->getText() ) ) !== SpecialPage::getLocalNameFor( 'OptIn' )
 		) {
 			// Loads opt-in messages
 			wfLoadExtensionMessages( 'OptIn' );
