@@ -1,0 +1,28 @@
+# Force the test runner to ensure the extension is loaded
+!! hooks
+slippymap
+!! endhooks
+
+!! test
+SlippyMap FIXME: add tests
+!! input
+<p>FIXME: add tests</p>
+!! result
+<p>FIXME: add tests</p>
+
+!! end
+
+
+!! test
+SlippyMap: {{#tag:}}
+!! input
+{{#tag:slippymap
+|Blah blah
+|mode = osm
+|lat = 64.64
+|lon = -21.21
+|layer = mapnik
+}}
+!! result
+
+!! end

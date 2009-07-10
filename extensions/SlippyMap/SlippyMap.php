@@ -1,76 +1,27 @@
-<?php 
+<?php
+if ( ! defined( 'MEDIAWIKI' ) )
+	die();
 /**
-* @file
-*
-* @section DESCRIPTION
-*
-* OpenStreetMap SlippyMap - MediaWiki extension
-*
-* This defines what happens when <slippymap> tag is placed in the wikitext
-*
-* We show a map based on the lat/lon/zoom data passed in. This extension brings in
-* the OpenLayers javascript, to show a slippy map.
-*
-* Usage example:
-* <slippymap lat=51.485 lon=-0.15 z=11 w=300 h=200 layer=osmarender></slippymap>
-*
-* Tile images are not cached local to the wiki.
-* To acheive this (remove the OSM dependency) you might set up a squid proxy,
-* and modify the requests URLs here accordingly.
-*
-* This file should be placed in the mediawiki 'extensions' directory
-* ...and then it needs to be 'included' within LocalSettings.php
-*
-* @section LICENSE
-*
-* Copyright 2008 Harry Wood, Jens Frank, Grant Slater, Raymond Spekking and others
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*
+ * SlippyMap extension
+ *
+ * @file
+ * @ingroup Extension
+ *
+ * This file contains the main include file for the SlippyMap
+ * extension of MediaWiki.
+ *
+ * Usage: Add the following line in LocalSettings.php:
+ * require_once( "$IP/extensions/SlippyMap/SlippyMap.php" );
+ *
+ * See the SlippyMap documenation on mediawiki.org for further usage
+ * information.
+ *
+ * @link http://www.mediawiki.org/wiki/Extension:SlippyMap Documentation
+ *
+ * Copyright 2008 Harry Wood, Jens Frank, Grant Slater, Raymond Spekking and others
+ *
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
 */
-
-/**
- * Checks if the file is being executed within MediaWiki
- */
-if ( !defined( 'MEDIAWIKI' ) )
-        die();
-
-
-/**
-* Property: Extension credits
-*/
-$wgExtensionCredits['parserhook'][] = array(
-	'path'				=> __FILE__,
-	'name'				=> 'Slippy Map',
-	'author'			=> array( '[http://harrywood.co.uk Harry Wood]', 'Jens Frank', 'Aude', 'Ævar Arnfjörð Bjarmason'),
-	'url'				=> 'http://www.mediawiki.org/wiki/Extension:SlippyMap',
-	'description'		=> 'Adds a &lt;slippymap&gt; which allows for embedding of static & dynamic maps. Supports multiple map services including [http://openstreetmap.org OpenStreetMap] and NASA Worldwind',
-	'descriptionmsg'	=> 'slippymap_desc',
-);
-
-$dir = dirname( __FILE__ ) . '/';
-
-$wgMapModes = array( 'osm', 'satellite' );
-
-$wgAutoLoadMaps = false;
-
-$wgExtensionMessagesFiles['SlippyMap'] = $dir . 'SlippyMap.i18n.php';
-
-$wgAutoloadClasses['SlippyMapHooks'] = $dir . 'SlippyMap.hooks.php';
-$wgAutoloadClasses['SlippyMap'] = $dir . 'SlippyMap.class.php';
-$wgAutoloadClasses['WorldWind'] = $dir . 'SlippyMap.worldwind.php';
 
 if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 	$wgHooks['ParserFirstCallInit'][] = 'SlippyMapHooks::onParserFirstCallInit';
@@ -78,4 +29,39 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 	$wgExtensionFunctions[] = 'SlippyMapHooks::onParserFirstCallInit';
 }
 
-$wgHooks['ParserAfterTidy'][] = 'SlippyMapHooks::wfSlippyMapParserAfterTidy';
+$wgExtensionCredits['parserhook'][] = array(
+	'path'				=> __FILE__,
+	'name'				=> 'Slippy Map',
+	'author'			=> array('[http://harrywood.co.uk Harry Wood]', 'Jens Frank', 'Aude', 'Ævar Arnfjörð Bjarmason'),
+	'url'				=> 'http://www.mediawiki.org/wiki/Extension:SlippyMap',
+	'description'		=> 'Adds a &lt;slippymap&gt; which allows for embedding of static & dynamic maps.Supports multiple map services including [http://openstreetmap.org OpenStreetMap] and NASA Worldwind',
+	'descriptionmsg'	=> 'slippymap_desc',
+);
+
+/* Shortcut to this extension directory */
+$dir = dirname( __FILE__ ) . '/';
+
+/* i18n messages */
+$wgExtensionMessagesFiles['SlippyMap']	= $dir . 'SlippyMap.i18n.php';
+
+/* The classes which make up our extension*/
+$wgAutoloadClasses['SlippyMapHooks']	= $dir . 'SlippyMap.hooks.php';
+$wgAutoloadClasses['SlippyMap']			= $dir . 'SlippyMap.class.php';
+$wgAutoloadClasses['WorldWind']			= $dir . 'SlippyMap.worldwind.php';
+
+/* Parser tests */
+$wgParserTestFiles[]                    = $dir . '/slippyMapParserTests.txt';
+
+/*
+ * Configuration variables
+ */
+
+/* Allowed mode= values on this server */
+$wgMapModes = array( 'osm', 'satellite' );
+
+/*
+ * If true the a JS slippy map will be shown by default to supporting
+ * clients, otherwise they'd have to click on the static image to
+ * enable the slippy map.
+ */
+$wgAutoLoadMaps = false;

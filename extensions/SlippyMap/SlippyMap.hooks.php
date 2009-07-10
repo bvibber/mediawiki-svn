@@ -37,6 +37,7 @@ class SlippyMapHooks {
 
 	public static function onParserFirstCallInit( ) {
 		global $wgArticle, $wgOut, $wgLang, $wgParser, $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgAutoLoadMaps;
+		global $wgHooks;
 
 		$smh = new SlippyMapHooks();
 
@@ -73,7 +74,7 @@ class SlippyMapHooks {
 			$wgOut->addScript( "<script type='$wgJsMimeType' src='" . $wgScriptPath . "/extensions/SlippyMap/OpenLayers/public/OpenLayers.js?{$wgStyleVersion}'></script>" );
 			$wgOut->addScript( "<script type='$wgJsMimeType' src='" . $wgScriptPath . "/extensions/SlippyMap/SlippyMap.js?{$wgStyleVersion}'></script>" );
 			$wgOut->addLink( array( 'rel'   => 'stylesheet','type'  => 'text/css','href'  => $wgScriptPath . '/extensions/SlippyMap/SlippyMap.css' ) );
-			
+			$wgHooks['ParserAfterTidy'][] = 'SlippyMapHooks::wfSlippyMapParserAfterTidy';
 		  	$wgParser->setHook( 'slippymap', array( $smh, 'wfParseMapAttributes' ) );
 		}
 
