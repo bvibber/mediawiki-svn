@@ -1,12 +1,12 @@
 /* JavaScript for OptIn extension */
 
 $( document ).ready( function() {
-	$( '.optin-other-select' ).hide();
+	$( '.optin-other-select' ).parent().hide();
 	$( 'select.optin-need-other' ).change( function() {
 		if( $(this).val() == 'other' )
-			$( '#' + $(this).attr( 'id' ) + '-other' ).slideDown( 'fast' );
+			$( '#' + $(this).attr( 'id' ) + '-other' ).parent().slideDown( 'fast' );
 		else
-			$( '#' + $(this).attr( 'id' ) + '-other' ).slideUp( 'fast' );
+			$( '#' + $(this).attr( 'id' ) + '-other' ).parent().slideUp( 'fast' );
 	});
 	
 	$( '.optin-other-radios, .optin-other-checks' ).click( function() {
