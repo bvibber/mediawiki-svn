@@ -126,10 +126,6 @@ SlippyMap Valid/Invalid zoom arguments
 </p>
 !! end
 
-##
-## width/height value checking
-##
-
 !! test
 SlippyMap error: Valid/Invalid width/height arguments
 !! input
