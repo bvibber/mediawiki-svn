@@ -380,7 +380,8 @@ class SpecialOptIn extends SpecialPage {
 		$retval .= Xml::tags(
 			'dt',
 			array( 'class' => 'optin-survey-submit' ),
-			Xml::submitButton( wfMsg( 'optin-submit-out' ) )
+			Xml::element( 'a', array( 'name' => 'leave' ) ) .
+				Xml::submitButton( wfMsg( 'optin-submit-out' ) )
 		);
 		$retval .= Xml::closeElement( 'dl' );
 		$wgOut->addHTML( $retval );

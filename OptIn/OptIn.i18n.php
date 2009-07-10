@@ -36,7 +36,7 @@ You can try it out again at anytime by clicking the "Try Acai Beta" link on the 
 	'optin-survey-yes' => 'Yes',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => "Thank you for trying Acai Beta.
-We would like to know what you think about our new interface, so we would appreciate it if you filled out the optional survey below before clicking \"{{int:optin-submit-out}}\".",
+We would like to know what you think about our new interface, so we would appreciate it if you filled out the optional survey below before clicking \"[[#leave|{{int:optin-submit-out}}]]\".",
 	'optin-survey-question-likedislike' => 'What did you like about the Acai Beta? What did you dislike about the Acai Beta?',
 	'optin-survey-question-whyoptout' => 'Why are you leaving this Beta? (please select all that apply) ',
 	'optin-survey-answer-whyoptout-hard' => 'It was too hard to use.',
