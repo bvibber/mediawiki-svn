@@ -23,7 +23,8 @@ $messages['en'] = array(
 Would you like to try Acai Beta?',
 	'optin-success-in' => 'You are now trying out Acai Beta.
 You can opt back out at any time by clicking the "Leave Acai Beta" link on the top right of the screen.',
-	'optin-success-in-return' => 'Return to [[$1]]',
+	'optin-success-return' => 'Return to [[$1]]',
+	'optin-leave-cancel' => 'If you would like to continue using Acai Beta, you can return to [[$1]]',
 	'optin-success-out' => 'You have successfully left Acai Beta.
 You can try it out again at anytime by clicking the "Try Acai Beta" link on the top right of the screen.',
 	'optin-accept-short' => 'Let\'s do it!',
