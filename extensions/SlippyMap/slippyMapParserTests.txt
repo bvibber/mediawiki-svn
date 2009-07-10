@@ -163,3 +163,30 @@ SlippyMap error: Valid/Invalid width/height arguments
 <strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>0x666</tt> is not valid for the <tt>width</tt> attribute, the given value must be a valid number.</li><li class="error">The value <tt>0x666</tt> is not valid for the <tt>height</tt> attribute, the given value must be a valid number.</li></ul></strong>
 
 !! end
+
+
+!! test
+SlippyMap error: Valid/Invalid mode arguments
+!! input
+== Valid ==
+
+<slippymap lat=61 lon=95 zoom=1 mode=osm dummy/>
+
+<slippymap lat=61 lon=95 zoom=1 mode=satellite dummy/>
+
+== Invalid ==
+
+<slippymap lat=61 lon=95 zoom=1 mode=foo dummy/>
+
+<slippymap lat=61 lon=95 zoom=1 mode=bar dummy/>
+
+!! result
+<a name="Valid" id="Valid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Valid">edit</a>]</span> <span class="mw-headline"> Valid </span></h2>
+<p>A dummy map
+</p><p>A dummy map
+</p>
+<a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
+<p><strong class="error">SlippyMap error: The value <tt>foo</tt> is not valid for the <tt>mode</tt> attribute, valid modes are osm and satellite.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>bar</tt> is not valid for the <tt>mode</tt> attribute, valid modes are osm and satellite.</strong>
+</p>
+!! end
