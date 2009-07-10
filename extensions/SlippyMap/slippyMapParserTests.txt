@@ -139,3 +139,45 @@ SlippyMap error: Valid/Invalid zoom arguments
 </p><p><strong class="error">SlippyMap error: The value <tt>0x55</tt> is not valid for the <tt>zoom</tt> attribute, the given value must be a valid number.</strong>
 </p>
 !! end
+
+##
+## width/height value checking
+##
+
+!! test
+SlippyMap error: Valid/Invalid width/height arguments
+!! input
+== Valid ==
+
+<slippymap lat=61 lon=95 zoom=0 width=100 height=100 dummy/>
+
+<slippymap lat=61 lon=95 zoom=1 width=1000 height=1000 dummy/>
+
+<slippymap lat=61 lon=95 zoom=18 width=123 height=123 dummy/>
+
+== Invalid ==
+<slippymap lat=61 lon=95 zoom=12 width=99 height=99 dummy/>
+
+<slippymap lat=61 lon=95 zoom=12 width=1001 height=1001 dummy/>
+
+<slippymap lat=61 lon=95 zoom=12 width=a heighth=b dummy/>
+
+<slippymap lat=61 lon=95 zoom=12 width=100.0 height=100.0 dummy />
+
+<slippymap lat=61 lon=95 zoom=12 width=0x666 height=0x666 dummy/>
+
+!! result
+<a name="Valid" id="Valid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Valid">edit</a>]</span> <span class="mw-headline"> Valid </span></h2>
+<p>A dummy map
+</p><p>A dummy map
+</p><p>A dummy map
+</p>
+<a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
+<strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>99</tt> is not valid for the <tt>width</tt> attribute. Width levels must be between 100 and 1000.</li><li class="error">The value <tt>99</tt> is not valid for the <tt>height</tt> attribute. Height levels must be between 100 and 1000.</li></ul></strong>
+<strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>1001</tt> is not valid for the <tt>width</tt> attribute. Width levels must be between 100 and 1000.</li><li class="error">The value <tt>1001</tt> is not valid for the <tt>height</tt> attribute. Height levels must be between 100 and 1000.</li></ul></strong>
+<p><strong class="error">SlippyMap error: The value <tt>a</tt> is not valid for the <tt>width</tt> attribute, the given value must be a valid number.</strong>
+</p>
+<strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>100.0</tt> is not valid for the <tt>width</tt> attribute, the given value must be a valid number.</li><li class="error">The value <tt>100.0</tt> is not valid for the <tt>height</tt> attribute, the given value must be a valid number.</li></ul></strong>
+<strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>0x666</tt> is not valid for the <tt>width</tt> attribute, the given value must be a valid number.</li><li class="error">The value <tt>0x666</tt> is not valid for the <tt>height</tt> attribute, the given value must be a valid number.</li></ul></strong>
+
+!! end
