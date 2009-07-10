@@ -10,7 +10,7 @@ $( document ).ready( function() {
 	});
 	
 	$( '.optin-other-radios, .optin-other-checks' ).click( function() {
-		$(this).prev().prev().click();
+		$(this).prev().prev().attr( 'checked', true );
 	});
 	
 	$( '.survey-ifyes, .survey-ifno' ).hide();
