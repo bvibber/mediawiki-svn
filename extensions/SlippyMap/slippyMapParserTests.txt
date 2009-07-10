@@ -81,6 +81,7 @@ SlippyMap error: Valid/Invalid lat/lon arguments
 <slippymap lat=x lon=y zoom=z/>
 
 <slippymap lat=0060 lon=0006 zoom=12/>
+<slippymap lat=60.0000000000000000000000000000000000 lon=20.000000000000000000000000011 zoom=12/>
 
 !! result
 <a name="Valid" id="Valid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Valid">edit</a>]</span> <span class="mw-headline"> Valid </span></h2>
@@ -91,5 +92,50 @@ SlippyMap error: Valid/Invalid lat/lon arguments
 <a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
 <strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>x</tt> is not valid for the <tt>lat</tt> (latitude) attribute, the given value must be a valid number.</li><li class="error">The value <tt>y</tt> is not valid for the <tt>lon</tt> (longitude) attribute, the given value must be a valid number.</li><li class="error">The value <tt>z</tt> is not valid for the <tt>zoom</tt> attribute, the given value must be a valid number.</li></ul></strong>
 <strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>0060</tt> is not valid for the <tt>lat</tt> (latitude) attribute, the given value must be a valid number.</li><li class="error">The value <tt>0006</tt> is not valid for the <tt>lon</tt> (longitude) attribute, the given value must be a valid number.</li></ul></strong>
+<strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>60.0000000000000000000000000000000000</tt> is not valid for the <tt>lat</tt> (latitude) attribute, the given value must be a valid number.</li><li class="error">The value <tt>20.000000000000000000000000011</tt> is not valid for the <tt>lon</tt> (longitude) attribute, the given value must be a valid number.</li></ul></strong>
 
+!! end
+
+
+##
+## zoom value checking
+##
+
+!! test
+SlippyMap error: Valid/Invalid zoom arguments
+!! input
+== Valid ==
+
+<slippymap lat=61 lon=95 zoom=0 dummy/>
+
+<slippymap lat=61 lon=95 zoom=1 dummy/>
+
+<slippymap lat=61 lon=95 zoom=18 dummy/>
+
+== Invalid ==
+<slippymap lat=61 lon=95 zoom=-1 dummy/>
+
+<slippymap lat=61 lon=95 zoom=19 dummy/>
+
+<slippymap lat=61 lon=95 zoom=55 dummy/>
+
+<slippymap lat=61 lon=95 zoom=-1. dummy/>
+
+<slippymap lat=61 lon=95 zoom=19.0 dummy/>
+
+<slippymap lat=61 lon=95 zoom=0x55 dummy/>
+!! result
+<a name="Valid" id="Valid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Valid">edit</a>]</span> <span class="mw-headline"> Valid </span></h2>
+<p>A dummy map
+</p><p>A dummy map
+</p><p>A dummy map
+</p>
+<a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
+<p><strong class="error">SlippyMap error: The value <tt>-1</tt> is not valid for the <tt>zoom</tt> attribute, the given value must be a valid number.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>19</tt> is not valid for the <tt>zoom</tt> attribute. Zoom levels must be between 0 and 18.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>55</tt> is not valid for the <tt>zoom</tt> attribute. Zoom levels must be between 0 and 18.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>-1.</tt> is not valid for the <tt>zoom</tt> attribute, the given value must be a valid number.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>19.0</tt> is not valid for the <tt>zoom</tt> attribute, the given value must be a valid number.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>0x55</tt> is not valid for the <tt>zoom</tt> attribute, the given value must be a valid number.</strong>
+</p>
 !! end
