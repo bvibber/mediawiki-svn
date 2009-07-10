@@ -14,15 +14,58 @@ SlippyMap FIXME: add tests
 
 
 !! test
-SlippyMap: {{#tag:}}
+SlippyMap error: Terminated empty element
 !! input
-{{#tag:slippymap
-|Blah blah
-|mode = osm
-|lat = 64.64
-|lon = -21.21
-|layer = mapnik
-}}
+<slippymap/>
+!! result
+<p><strong class="error">SlippyMap error: You didn't supply any attributes to the &lt;slippymap&gt; tag, see <a href="http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax" class="external text" title="http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax" rel="nofollow">usage information</a> for how to call it.</strong>
+</p>
+!! end
+
+!! test
+SlippyMap error: Empty $input and no arguments
+!! input
+<slippymap></slippymap>
+!! result
+<strong class="error">SlippyMap errors:<ul><li class="error">Call SlippyMap as &lt;slippymap [...]/&gt;, not &lt;slippymap [...]&gt;&lt;slippymap&gt;</li><li class="error">You didn't supply any attributes to the &lt;slippymap&gt; tag, see <a href="http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax" class="external text" title="http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax" rel="nofollow">usage information</a> for how to call it.</li></ul></strong>
+
+!! end
+
+
+!! test
+SlippyMap error: Invalid lat/lon/zoom arguments
+!! input
+<slippymap lat=x lon=y zoom=z/>
 !! result
 
+!! end
+
+
+!! test
+SlippyMap error: Missing lat argument
+!! input
+<slippymap lon=-21 zoom=12/>
+!! result
+<p><strong class="error">SlippyMap error: Missing <tt>lat</tt> attribute (for the latitude).</strong>
+</p>
+!! end
+
+
+!! test
+SlippyMap error: Missing lon argument
+!! input
+<slippymap lat=64 zoom=12/>
+!! result
+<p><strong class="error">SlippyMap error: Missing <tt>lon</tt> attribute (for the longitude).</strong>
+</p>
+!! end
+
+
+!! test
+SlippyMap error: Missing zoom argument
+!! input
+<slippymap lat=64 lon=-21 />
+!! result
+<p><strong class="error">SlippyMap error: Missing <tt>zoom</tt> attribute (for the zoom level).</strong>
+</p>
 !! end
