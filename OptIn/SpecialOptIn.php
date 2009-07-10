@@ -205,7 +205,7 @@ class SpecialOptIn extends SpecialPage {
 		$retval .= Xml::openElement(
 			'form', array(
 				'method' => 'post',
-				'action' => $this->getTitle()->getLinkURL(),
+				'action' => $this->getTitle( $this->mOrigin )->getLinkURL(),
 				'id' => 'optin-survey',
 			)
 		);
