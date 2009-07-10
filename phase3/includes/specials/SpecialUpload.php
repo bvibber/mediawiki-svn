@@ -406,7 +406,7 @@ class UploadForm extends SpecialPage {
 			}
 		}
 
-		$filenamePrefixBlacklist = self::getFilenamePrefixBlacklist();
+		$filenamePrefixBlacklist = UploadBase::getFilenamePrefixBlacklist();
 		# Do the match
 		foreach( $filenamePrefixBlacklist as $prefix ) {
 			if ( substr( $partname, 0, strlen( $prefix ) ) == $prefix ) {
