@@ -49,7 +49,7 @@ class SiteStats {
 			// clean schema with mwdumper.
 			wfDebug( __METHOD__ . ": initializing damaged or missing site_stats\n" );
 
-			SiteStatsInit::doAllAndCommit( wfGetDB( DB_SLAVE ), false );
+			SiteStatsInit::doAllAndCommit( false );
 
 			$row = self::doLoad( wfGetDB( DB_MASTER ) );
 		}
