@@ -8,7 +8,7 @@ slippymap
 ###
 
 !! test
-SlippyMap error: Terminated empty element
+SlippyMap: error: Terminated empty element
 !! input
 <slippymap/>
 !! result
@@ -17,7 +17,7 @@ SlippyMap error: Terminated empty element
 !! end
 
 !! test
-SlippyMap error: Empty $input and no arguments
+SlippyMap: error: Empty $input and no arguments
 !! input
 <slippymap></slippymap>
 !! result
@@ -27,7 +27,7 @@ SlippyMap error: Empty $input and no arguments
 
 
 !! test
-SlippyMap Missing lat/lon/zoom argument
+SlippyMap: Missing lat/lon/zoom argument
 !! input
 == Valid ==
 <slippymap lat=64 lon=-21 zoom=12 dummy/>
@@ -49,7 +49,7 @@ SlippyMap Missing lat/lon/zoom argument
 
 
 !! test
-SlippyMap Valid/Invalid lat/lon arguments
+SlippyMap: Valid/Invalid lat/lon arguments
 !! input
 == Valid ==
 
@@ -88,7 +88,7 @@ SlippyMap Valid/Invalid lat/lon arguments
 
 
 !! test
-SlippyMap Valid/Invalid zoom arguments
+SlippyMap: Valid/Invalid zoom arguments
 !! input
 == Valid ==
 
@@ -127,7 +127,7 @@ SlippyMap Valid/Invalid zoom arguments
 !! end
 
 !! test
-SlippyMap error: Valid/Invalid width/height arguments
+SlippyMap: Valid/Invalid width/height arguments
 !! input
 == Valid ==
 
