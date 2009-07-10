@@ -8,7 +8,8 @@
  * This file contains the include file for the NavigableTOC portion of the
  * UsabilityInitiative extension of MediaWiki.
  *
- * Usage: This file is included automatically by ../UsabilityInitiative.php
+ * Usage: Include the following line in your LocalSettings.php
+ * require_once( "$IP/extensions/UsabilityInitiative/NavigableTOC/NavigableTOC.php" );
  *
  * @author Roan Kattouw <roan.kattouw@gmail.com>
  * @license GPL v2 or later
@@ -31,6 +32,9 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'navigabletoc-desc',
 );
+
+// Includes parent extension
+require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 
 // Adds Autoload Classes
 $wgAutoloadClasses['NavigableTOCHooks'] =
