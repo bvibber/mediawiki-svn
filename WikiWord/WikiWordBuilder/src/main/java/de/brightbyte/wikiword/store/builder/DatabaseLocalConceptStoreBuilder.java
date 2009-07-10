@@ -497,6 +497,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			conceptName = checkName(rcId, conceptName, "concept name (resource #{0})", rcId);
 			
 			aboutInserter.updateInt("resource", rcId);
+			aboutInserter.updateString("resource_name", rcName);
 			aboutInserter.updateString("concept_name", conceptName);
 			
 			if (concept>0) aboutInserter.updateInt("concept", concept);
