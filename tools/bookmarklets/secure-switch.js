@@ -1,5 +1,5 @@
 function swapUrl(base) {
-	var specials = "meta|commons|office|internal|collab";
+	var specials = "meta|commons|office|internal|collab|usability";
 	if (base[4] == 's') {
 		base = base.replace(
 			/^https:\/\/secure\.wikimedia\.org\/(.*?)\/(.*?)\/(.*)$/,
