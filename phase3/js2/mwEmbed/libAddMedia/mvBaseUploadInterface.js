@@ -36,6 +36,7 @@ loadGM({
 	
 	"cancel-button"  : "Cancel",	
 	"ok-button"	  : "OK"
+		
 });
  
  
@@ -83,7 +84,7 @@ mvBaseUploadInterface.prototype = {
 				_this.org_onsubmit = _this.editForm.onsubmit;
 			
 			//have to define the onsubmit function inline or its hard to pass the "_this" instance
-			_this.editForm.onsubmit = function(){								
+			_this.editForm.onsubmit = function(){									
 				//run the original onsubmit (if not run yet set flag to avoid excessive chaining ) 
 				if( typeof( _this.org_onsubmit ) == 'function' ){										  
 					if( ! _this.org_onsubmit() ){
@@ -112,7 +113,9 @@ mvBaseUploadInterface.prototype = {
 					
 					//select upload mode: 				
 					_this.detectUploadMode();
-				}catch(e){}
+				}catch(e){
+					
+				}
 				 
 				//don't submit the form we will do the post in ajax
 				return false;	
@@ -121,7 +124,7 @@ mvBaseUploadInterface.prototype = {
 					
 	},	
 	detectUploadMode:function( callback ){
-		var _this = this;	
+		var _this = this;		
 		//check the upload mode: 
 		if( _this.upload_mode == 'autodetect' ){
 			js_log('detectUploadMode::' + _this.upload_mode + ' api:' + _this.api_url);
@@ -331,8 +334,12 @@ mvBaseUploadInterface.prototype = {
 			bObj[ gM('return-to-form') ] = 	function(){
 					$j(this).dialog('close');
 			 };  		
+			 
+			//@@TODO should be refactored to more specialUpload page type error handling
+			
 			//check a few places for the error code: 
-			var error_code=0;			
+			var error_code=0;	
+			var errorReplaceArg='';		
 			if( apiRes.error && apiRes.error.code ){				
 				error_code = apiRes.error.code;
 			}else if( apiRes.upload.code ){
@@ -342,6 +349,8 @@ mvBaseUploadInterface.prototype = {
 					}
 					if(apiRes.upload.code['status']){
 						error_code = apiRes.upload.code['status'];
+						if(apiRes.upload.code['filtered'])
+							errorReplaceArg =apiRes.upload.code['filtered']; 
 					}
 				}else{
 					apiRes.upload.code;
@@ -352,40 +361,57 @@ mvBaseUploadInterface.prototype = {
 			if(typeof apiRes.error == 'string')
 				error_msg = apiRes.error;		
 			//error space is too large so we don't front load it
+			//this upload error space replicates code in: SpecialUpload.php::processUpload()
+			//would be nice if we refactored that to the upload api.(problem is some need special actions)			
+			var error_msg_key = {	
+				'2' : 'largefileserver',			
+				'3' : 'emptyfile',
+				'4' : 'minlength1',
+				'5' : 'illegalfilename'				
+			};
+			//@@todo: need to write conditionals that mirror SpecialUpload for handling these error types: 	
+			var error_onlykey = {
+				'1': 'BEFORE_PROCESSING',
+				'6': 'PROTECTED_PAGE',
+				'7': 'OVERWRITE_EXISTING_FILE',
+				'8': 'FILETYPE_MISSING',
+				'9': 'FILETYPE_BADTYPE',
+				'10': 'VERIFICATION_ERROR',
+				'11': 'UPLOAD_VERIFICATION_ERROR',
+				'12': 'UPLOAD_WARNING',
+				'13': 'INTERNAL_ERROR',
+				'14': 'MIN_LENGHT_PARTNAME'
+			}			
 			//do a remote call to get the error msg: 		
 			if(!error_code || error_code == 'unknown-error'){
 				if(typeof JSON != 'undefined'){
 					js_log('Error: apiRes: ' + JSON.stringify( apiRes) );
-				}			
-				js_log('should update win::');			
-				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg, bObj);
-				return false;	
+				}
+				js_log('should update win::');
+				_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + '<br>' + error_msg, bObj );
+				return false;
 			}else{
 				if(apiRes.error && apiRes.error.info ){					
 					_this.updateProgressWin(  gM('uploaderror'), apiRes.error.info ,bObj);
 					return false;
 				}else{
-					if(typeof error_code == 'number'){
+					if(typeof error_code == 'number' && typeof error_msg_key[error_code] == 'undefined' ){
 						if(apiRes.upload.code.finalExt){
-						_this.updateProgressWin(  gM('uploaderror'), gM('wgfogg_waring_bad_extension',apiRes.upload.code.finalExt) , bObj);
+							_this.updateProgressWin(  gM('uploaderror'), gM('wgfogg_waring_bad_extension', apiRes.upload.code.finalExt) , bObj);
 						}else{
 							_this.updateProgressWin( gM('uploaderror'), gM('unknown-error') + ' : ' + error_code, bObj);
 						}
 					}else{
-						gMsgLoadRemote(error_code, function(){
-							js_log('send msg: ' + gM( error_code ));
-							var bObj = {};
-							bObj[gM('return-to-form')] = function(){
-									$(this).dialog('close');
-							};
-							_this.updateProgressWin(  gM('uploaderror'), gM( error_code ),bObj);
+						js_log('get key: ' + error_msg_key[ error_code ])
+						gMsgLoadRemote( error_msg_key[ error_code ], function(){												
+							_this.updateProgressWin(  gM('uploaderror'), gM(  error_msg_key[ error_code ], errorReplaceArg ), bObj);
 						});		
 						js_log("api.erorr");		
 					}
 					return false;	
 				}
-			}	
-		}						
+			}
+		}				
 		//check for upload.error type erros.  
 		if( apiRes.upload && apiRes.upload.error){
 			js_log(' apiRes.upload.error: ' +  apiRes.upload.error );

@@ -266,22 +266,24 @@ function gM( key , args ) {
  * msgSet is either a string corresponding to a single msg to load
  * or msgSet is an array with set of msg to load
  */
-function gMsgLoadRemote(msgSet, callback){
+function gMsgLoadRemote(msgSet, callback){	
 	var ammessages = '';
 	if(typeof msgSet == 'object' ){
 		for(var i in msgSet){			
-			ammessages +=  msgSet[i];
+			ammessages +=  msgSet[i] + '|';
 		}
 	}else if(typeof msgSet == 'string'){
 		ammessages += msgSet;
 	}
-	if(ammessages=''){
+	if(ammessages == ''){
 		js_log('gMsgLoadRemote::no msg set requested');
 		return false;
-	}		
-		
+	}			
 	do_api_req({
-		'data':{'meta':'allmessages', 'ammessages':ammessages}		
+		'data':{
+			'meta':'allmessages', 
+			'ammessages':ammessages
+		}		
 	},function(data){
 		if(data.query.allmessages){
 			var msgs = data.query.allmessages;
@@ -825,14 +827,37 @@ function mv_jqueryBindings(){
         		});
         	});
 		}
+		/*
+		 * the firefogg jquery function:
+		 * @@note this firefogg envocation could be made to work more like real jquery plugins
+		 */			 
 		$.fn.firefogg = function( iObj, callback ) {
 			if(!iObj)
 				iObj={};
 			//add base theme css:
 			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
-			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );			
-			// @@todo should refactor  mvAdvFirefogg as jQuery plugin
-			iObj['selector'] = this.selector;				
+			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );						
+			
+			//check if we already have firefogg loaded
+			var sElm = $j(this.selector).get(0);			
+			if(sElm['firefogg']){
+				if(sElm['firefogg']=='loading'){
+					js_log("Error: called firefogg operations on Firefogg selector that is not done loading");
+					return false;
+				}
+				//update properties: 
+				for(var i in iObj){
+					js_log("updated: "+ i + ' to '+ iObj[i]);
+					sElm['firefogg'][i] = iObj[i];
+				}
+				return sElm['firefogg'];
+			}else{
+				//avoid concurency
+				sElm['firefogg'] = 'loading';
+			}
+			//add the selector: 
+			iObj['selector'] = this.selector;
+					
 			var loadSet = [
 				[				
 					'mvBaseUploadInterface',
@@ -846,11 +871,11 @@ function mv_jqueryBindings(){
 			];	
 			if( iObj.encoder_interface ){
 				loadSet.push([
-						'mvAdvFirefogg',
-						'$j.cookie',			  
-						'$j.ui.accordion',
-						'$j.ui.slider',	   
-						'$j.ui.datepicker'
+					'mvAdvFirefogg',
+					'$j.cookie',			  
+					'$j.ui.accordion',
+					'$j.ui.slider',	   
+					'$j.ui.datepicker'
 				]);
 			}		
 			//make sure we have everything loaded that we need: 
@@ -862,8 +887,11 @@ function mv_jqueryBindings(){
 					}else{
 						var myFogg = new mvFirefogg( iObj );
 					}							   
-					if(myFogg)
+					if(myFogg){
 						myFogg.doRewrite( callback );
+						var selectorElement = $j( iObj.selector ).get(0);	
+						selectorElement['firefogg']=myFogg;
+					}
 			});		
 		}
 		

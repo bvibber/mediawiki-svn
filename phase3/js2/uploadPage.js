@@ -67,6 +67,11 @@ var mwUploadHelper = {
 		
 		$j('#wpSourceTypeURL').attr('checked', !set);
 		$j('#wpUploadFileURL').attr('disabled', set);
+		
+		//update firefogg mode: 
+		$j('#wpUploadFile').firefogg({
+				'fogg_enabled': $j('#wpSourceTypeFile').attr('checked')
+		});
 	},   
 	/**
 	 * doDestCheck checks the destination

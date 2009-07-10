@@ -159,6 +159,8 @@ class UploadForm extends SpecialPage {
 	 * Checks are made in SpecialUpload::execute()
 	 *
 	 * FIXME this should really use the standard Status class (instead of associative array)
+	 * FIXME would be nice if we refactored this into the upload api.
+	 * 			(the special upload page is not the only response point that needs clean localized error msgs)
 	 *
 	 * @access private
 	 */
@@ -624,6 +626,7 @@ class UploadForm extends SpecialPage {
 		global $wgUseCopyrightUpload, $wgUseAjax, $wgAjaxUploadDestCheck, $wgAjaxLicensePreview;
 		global $wgRequest;
 		global $wgStylePath, $wgStyleVersion;
+		global $wgEnableJS2system;
 
 		$useAjaxDestCheck = $wgUseAjax && $wgAjaxUploadDestCheck;
 		$useAjaxLicensePreview = $wgUseAjax && $wgAjaxLicensePreview;
@@ -640,15 +643,15 @@ wgAjaxLicensePreview = {$alp};
 wgEnableFirefogg = {$uef};
 wgUploadAutoFill = {$autofill};
 </script>" );
-		//legacy upload code:
-		//$wgOut->addScriptFile( 'upload.js' );
-		//$wgOut->addScriptFile( 'edit.js' ); // For <charinsert> support
 
-		//add javascript phase 2 upload script (will completely replace upload.js shortly)
-		if( $wgEnableJS2system )
+		if( $wgEnableJS2system ){
+			//js2version of upload page:
 		    $wgOut->addScriptClass( 'uploadPage' );
-
-
+		}else{
+			//legacy upload code:
+			$wgOut->addScriptFile( 'upload.js' );
+			$wgOut->addScriptFile( 'edit.js' ); // For <charinsert> support
+		}
 
 		if( !wfRunHooks( 'UploadForm:initial', array( &$this ) ) )
 		{
@@ -778,13 +781,35 @@ wgUploadAutoFill = {$autofill};
 		// Prepare form for upload or upload/copy
 		//javascript moved from inline calls to setup:
 		if( UploadFromUrl::isEnabled() && $wgUser->isAllowed( 'upload_by_url' ) ) {
-			$filename_form =
+		    if($wgEnableJS2system){
+		        $filename_form =
 				"<input type='radio' id=\"wpSourceTypeFile\" name='wpSourceType' value='upload' checked='checked' />" .
 				 "<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' size='60' />" .
 				wfMsgHTML( 'upload_source_file' ) . "<br/>" .
 				"<input type='radio' id='wpSourceTypeURL' name='wpSourceType' value='url' />" .
 				"<input tabindex='1' type='text' name='wpUploadFileURL' id='wpUploadFileURL' size='60' />" .
 				wfMsgHtml( 'upload_source_url' ) ;
+		    }else{
+		         //@@todo depreciate (only support  JS2system)
+                $filename_form =
+				"<input type='radio' id='wpSourceTypeFile' name='wpSourceType' value='file' " .
+				   "onchange='toggle_element_activation(\"wpUploadFileURL\",\"wpUploadFile\")' checked='checked' />" .
+				 "<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' " .
+				   "onfocus='" .
+				     "toggle_element_activation(\"wpUploadFileURL\",\"wpUploadFile\");" .
+				     "toggle_element_check(\"wpSourceTypeFile\",\"wpSourceTypeURL\")' " .
+				     "onchange='fillDestFilename(\"wpUploadFile\")' size='60' />" .
+				wfMsgHTML( 'upload_source_file' ) . "<br/>" .
+				"<input type='radio' id='wpSourceTypeURL' name='wpSourceType' value='web' " .
+				  "onchange='toggle_element_activation(\"wpUploadFile\",\"wpUploadFileURL\")' />" .
+				"<input tabindex='1' type='text' name='wpUploadFileURL' id='wpUploadFileURL' " .
+				  "onfocus='" .
+				    "toggle_element_activation(\"wpUploadFile\",\"wpUploadFileURL\");" .
+				    "toggle_element_check(\"wpSourceTypeURL\",\"wpSourceTypeFile\")' " .
+				    "onchange='fillDestFilename(\"wpUploadFileURL\")' size='60' disabled='disabled' />" .
+				wfMsgHtml( 'upload_source_url' ) ;
+
+		    }
 		} else {
 			$filename_form =
 				"<input tabindex='1' type='file' name='wpUploadFile' id='wpUploadFile' size='60' />" .

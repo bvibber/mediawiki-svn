@@ -51,7 +51,10 @@ var default_firefogg_options = {
 	'target_please_install'	: false,
 	'target_use_latest_fox': false,
 	//status: 
-	'target_passthrough_mode':false
+	'target_passthrough_mode':false,
+	
+	//allows to switch to baseUpload interface (mostly mediaWiki specific) 
+	'do_base_upload':false
 }	
 
 
@@ -174,14 +177,14 @@ mvFirefogg.prototype = { //extends mvBaseUploadInterface
 				$j(this.target_input_file_name).show();
 			
 			//show select file: 
-			$j(this.target_btn_select_file).unbind(
+			$j( this.target_btn_select_file ).unbind(
 				).attr('disabled', false
 				).css({'display':'inline'}
-				).click(function(){									
+				).click(function(){					
 					_this.selectFogg();
 				});				
 		    //also setup the text file display on Click to select file:  
-		    $j(this.target_input_file_name).unbind().attr('readonly', 'readonly').click(function(){
+		    $j(this.target_input_file_name).unbind().attr('readonly', 'readonly').click(function(){		    	
 		        _this.selectFogg();
 		    })		
 			
