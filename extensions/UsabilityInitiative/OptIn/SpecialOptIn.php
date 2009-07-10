@@ -118,12 +118,9 @@ class SpecialOptIn extends SpecialPage {
 		}
 		else
 		{
-			$wgOut->addHTML(
-				Xml::tags(
-					'div',
-					array( 'class' => 'optin-intro' ),
-					wfMsg( 'optin-intro' )
-				)
+			$wgOut->wrapWikiMsg(
+				"<div class='optin-intro'>\n$1\n</div>",
+				array( 'optin-intro' )
 			);
 			$this->showOptInButtons();
 			$wgOut->addWikiMsg( 'optin-improvements' );
