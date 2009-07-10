@@ -78,8 +78,14 @@ class SpecialOptIn extends SpecialPage {
 
 		if ( $wgUser->isAnon() ) {
 			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
-				array( 'returnto' => $this->getTitle( $par )->getPrefixedUrl() ) );
-			$wgOut->wrapWikiMsg( "<div class='plainlinks'>\n$1\n</div>", array( 'optin-needlogin', $url ) );
+				array(
+					'returnto' => $this->getTitle( $par )->getPrefixedUrl()
+				)
+			);
+			$wgOut->wrapWikiMsg(
+				"<div class='plainlinks'>\n$1\n</div>",
+				array( 'optin-needlogin', $url )
+			);
 			return;
 		}
 
@@ -105,11 +111,6 @@ class SpecialOptIn extends SpecialPage {
 	private function showForm() {
 		global $wgUser, $wgOut;
 		
-		$wgOut->addHTML( Xml::openElement( 'form', array(
-			'method' => 'post',
-			'action' => $this->getTitle()->getLinkURL(),
-			'id' => 'optin-survey',
-		) ) );
 		$opt = ( self::isOptedIn( $wgUser ) ? 'out' : 'in' );
 		if ( $opt == 'out' ) {
 			$wgOut->addWikiMsg( 'optin-survey-intro' );
@@ -117,13 +118,17 @@ class SpecialOptIn extends SpecialPage {
 		}
 		else
 		{
-			$wgOut->addHTML( Xml::tags( 'div', array( 'class' => 'optin-intro' ),
-				wfMsg( 'optin-intro' ) ) );
+			$wgOut->addHTML(
+				Xml::tags(
+					'div',
+					array( 'class' => 'optin-intro' ),
+					wfMsg( 'optin-intro' )
+				)
+			);
 			$this->showOptInButtons();
 			$wgOut->addWikiMsg( 'optin-improvements' );
 		}
 		$wgOut->addHTML( Xml::hidden( 'opt', $opt ) );
-		$wgOut->addHTML( Xml::closeElement( 'form' ) );
 	}
 	
 	function showOptInButtons() {
@@ -138,7 +143,13 @@ class SpecialOptIn extends SpecialPage {
 				Xml::tags( 'div', array(),
 				Xml::tags( 'div', array(),
 				Xml::tags( 'div', array(),
-					Xml::tags( 'a', array( 'href' => $this->getTitle( $this->mOrigin )->getFullURL( 'opt=in' ) ),
+					Xml::tags(
+						'a',
+						array(
+							'href' => $this->getTitle(
+								$this->mOrigin
+							)->getFullURL( 'opt=in' )
+						),
 						Xml::element( 'span',
 							array( 'class' => 'optin-button-shorttext' ),
 							wfMsg( 'optin-accept-short' )
@@ -159,7 +170,11 @@ class SpecialOptIn extends SpecialPage {
 					Xml::tags( 'div', array(),
 					Xml::tags( 'div', array(),
 					Xml::tags( 'div', array(),
-						Xml::tags( 'a', array( 'href' => $this->mOriginTitle->getFullURL() ),
+						Xml::tags(
+							'a',
+							array(
+								'href' => $this->mOriginTitle->getFullURL()
+							),
 							Xml::element( 'span',
 								array( 'class' => 'optin-button-shorttext' ),
 								wfMsg( 'optin-deny-short' )
@@ -174,7 +189,11 @@ class SpecialOptIn extends SpecialPage {
 				)
 			);
 		}
-		$wgOut->addHTML( Xml::element( 'div', array( 'style' => 'clear: both; ' ), '', false ) );
+		$wgOut->addHTML(
+			Xml::element(
+				'div', array( 'style' => 'clear: both; ' ), '', false
+			)
+		);
 	}
 
 	private function showSurvey() {
@@ -185,7 +204,15 @@ class SpecialOptIn extends SpecialPage {
 			$wgOptInStyleVersion );
 		UsabilityInitiativeHooks::addStyle( 'OptIn/OptIn.css',
 				$wgOptInStyleVersion );
-		$retval = Xml::openElement( 'dl' );
+		
+		$retval .= Xml::openElement(
+			'form', array(
+				'method' => 'post',
+				'action' => $this->getTitle()->getLinkURL(),
+				'id' => 'optin-survey',
+			)
+		);
+		$retval .= Xml::openElement( 'dl' );
 		foreach ( $wgOptInSurvey as $id => $question ) {
 			switch ( $question['type'] ) {
 			case 'dropdown':
@@ -384,6 +411,7 @@ class SpecialOptIn extends SpecialPage {
 				Xml::submitButton( wfMsg( 'optin-submit-out' ) )
 		);
 		$retval .= Xml::closeElement( 'dl' );
+		$retval .= Xml::closeElement( 'form' );
 		$wgOut->addHTML( $retval );
 	}
 
@@ -403,7 +431,8 @@ class SpecialOptIn extends SpecialPage {
 				$answer = $wgRequest->getVal( "survey-$id", '' );
 				if ( $answer === 'other' ) {
 					$insert['ois_answer'] = null;
-					$insert['ois_answer_data'] = $wgRequest->getVal( "survey-$id-other" );
+					$insert['ois_answer_data'] =
+						$wgRequest->getVal( "survey-$id-other" );
 				} else if ( $answer === '' ) {
 					$insert['ois_answer'] = null;
 					$insert['ois_answer_data'] = null;
@@ -413,12 +442,18 @@ class SpecialOptIn extends SpecialPage {
 				}
 			break;
 			case 'checkboxes':
-				$checked = array_map( 'intval', $wgRequest->getArray( "survey-$id", array() ) );
-				$insert['ois_answer'] = ( count( $checked ) ? implode( ',', $checked ) : null );
-				$insert['ois_answer_data'] = ( in_array( 'other', $checked ) ? $wgRequest->getVal( "survey-$id-other" ) : null );
+				$checked = array_map(
+					'intval', $wgRequest->getArray( "survey-$id", array() )
+				);
+				$insert['ois_answer'] =
+					( count( $checked ) ? implode( ',', $checked ) : null );
+				$insert['ois_answer_data'] = ( in_array( 'other', $checked ) ?
+					$wgRequest->getVal( "survey-$id-other" ) : null
+				);
 			break;
 			case 'yesno':
-				$insert['ois_answer'] = $wgRequest->getVal( "survey-$id", null );
+				$insert['ois_answer'] =
+					$wgRequest->getVal( "survey-$id", null );
 				$data = '';
 				if ( $insert['ois_answer'] == 'yes' )
 					$data += $wgRequest->getVal( "survey-$id-ifyes", '' );
