@@ -190,3 +190,18 @@ SlippyMap error: Valid/Invalid mode arguments
 </p><p><strong class="error">SlippyMap error: The value <tt>bar</tt> is not valid for the <tt>mode</tt> attribute, valid modes are osm and satellite.</strong>
 </p>
 !! end
+
+!! test
+SlippyMap error: Valid caption arguments
+!! input
+== Valid ==
+
+<slippymap lat=61 lon=95 zoom=1 caption="2134aoe huashu 1234g 'h,p1`309432324cg1`032" dummy/>
+<slippymap lat=61 lon=95 zoom=1 caption="<<<<<" dummy/>
+
+!! result
+<a name="Valid" id="Valid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Valid">edit</a>]</span> <span class="mw-headline"> Valid </span></h2>
+<p>A dummy map
+A dummy map
+</p>
+!! end
