@@ -195,13 +195,15 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		//first check if we are in range of the cache:
 		if(count(self::$annoCache)!=0){
 			foreach(self::$annoCache as $aMVD){
-				if(	$aMVD->start_time <=  $mvTitle->getStartTimeSeconds() &&
-					$aMVD->start_time <=  $mvTitle->getEndTimeSeconds() &&
-					$aMVD->end_time >= $mvTitle->getEndTimeSeconds() &&
-					$aMVD->end_time >= $mvTitle->getEndTimeSeconds() &&
-					$aMVD->stream_id ==  $mvTitle->getStreamId() ){
-						//just return the cached result (faster than the set of db queries below)
-						return $aMVD;
+				if(is_object($aMVD)){
+					if(	$aMVD->start_time <=  $mvTitle->getStartTimeSeconds() &&
+						$aMVD->start_time <=  $mvTitle->getEndTimeSeconds() &&
+						$aMVD->end_time >= $mvTitle->getEndTimeSeconds() &&
+						$aMVD->end_time >= $mvTitle->getEndTimeSeconds() &&
+						$aMVD->stream_id ==  $mvTitle->getStreamId() ){
+							//just return the cached result (faster than the set of db queries below)
+							return $aMVD;
+					}
 				}
 			}
 		}

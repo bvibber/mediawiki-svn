@@ -77,7 +77,7 @@ Visit the <a href=\"http://metavid.org/wiki/Client_Playback\">Playback methods</
 This is probably unnecessary.
 Maybe disable the video converter?',
 	'wgfogg_waring_bad_extension'=> 'You have selected a file with an unsuported extension.
-<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">More help</a>.', 
+<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">More help</a>.',
 
 	# remoteSearchDriver.js
 	'mv_media_search' => 'Media search',
@@ -91,7 +91,7 @@ Maybe disable the video converter?',
 	'rsd_layout' => 'Layout:',
 	'rsd_resource_edit' => 'Edit resource: $1',
 	'resource_description_page'=> "Resource Description Page",
-	
+
 	'cc_title' => 'Creative Commons',
 	'cc_by_title' => 'Attribution',
 	'cc_nc_title' => 'Noncommercial',
@@ -103,7 +103,7 @@ Maybe disable the video converter?',
 	'no_import_by_url' => 'This user or wiki <b>can not</b> import assets via URLs.
 
 If permissions are correct; you may have to enable $wgAllowCopyUploads, <a href="http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads">more info</a>',
-	#metavidSearch.js	
+	#metavidSearch.js
 	'mv_stream_title' => '$1 $2 to $3', # $stream name $start time to $end time
 
 	# mvClipEdit.js
@@ -125,7 +125,7 @@ If permissions are correct; you may have to enable $wgAllowCopyUploads, <a href=
 	'mv_custom_title' => 'Custom title',
 	'mv_edit_properties' => 'Edit properties',
 	'mv_other_properties' => 'Other properties',
-	'mv_resource_page' => 'Resource page',	
+	'mv_resource_page' => 'Resource page',
 	'mv_set_in_out_points' => 'Set in-out points',
 
 	# mvSequencer.js
@@ -151,7 +151,6 @@ All changes will be lost.',
 	'cut_clip' => 'Cut clips',
 	'expand_track' => 'Expand track',
 	'colapse_track' => 'Collapse track',
-	'play_clip' => 'Play from playline position',
 	'pixle2sec' => 'pixles to seconds',
 	'rmclip' => 'Remove clip',
 	'clip_in' => 'clip in',
@@ -5152,7 +5151,7 @@ clip
 eronger laade',
 	'download_text' => 'Tex erungerlaade (<i lang="en"><a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML</i>):',
 	'clip_linkback' => '
-Däm 
+Däm
 clip
 sing Quell-Sigg',
 	'mv_ogg-player-videoElement' => 'Et ennjeboute Projramm för <i lang="en">Ogg</i> Viddejos afzeshpelle',
@@ -5164,7 +5163,7 @@ Loor op dä Sigg <i lang="en"><a href="http://metavid.org/wiki/Client_Playback">
 Aam Engk vun dä
 sequence
 aanhange',
-	'missing_video_stream' => ' De Viddejo-Dattei för he dä 
+	'missing_video_stream' => ' De Viddejo-Dattei för he dä
 stream
 is nit doh',
 	'select_transcript_set' => 'Donn de Nivvohs vum Täx ußwähle',
@@ -5174,15 +5173,15 @@ is nit doh',
 transcript
 verbessere',
 	'next_clip_msg' => '
-Dä nächste 
+Dä nächste
 clip
 afshpelle',
 	'prev_clip_msg' => '
-Dä vörijje 
+Dä vörijje
 clip
 afshpelle',
 	'current_clip_msg' => '
-Heh dä  
+Heh dä
 clip
 wigger afshpelle',
 	'seek_to' => 'Söhk bes',
@@ -5216,14 +5215,14 @@ Wann et nit aan Dinge Rääschte litt, künnd et sin, dat De <code lang="en">$wg
 	'mv_custom_title' => 'Eije Tittel',
 	'mv_edit_properties' => 'Eijeschaffte ändere',
 	'mv_other_properties' => 'Ander Eijeschaffte',
-	'menu_clipedit' => 'Donn de ußjewählte 
+	'menu_clipedit' => 'Donn de ußjewählte
 Ressource
 ändere',
-	'menu_cliplib' => 'En 
+	'menu_cliplib' => 'En
 Ressource
 dobei donn',
 	'menu_transition' => 'Effäkte för der Övverjang',
-	'menu_resource_overview' => '!FUZZY!!Övverbleck övver de 
+	'menu_resource_overview' => '!FUZZY!!Övverbleck övver de
 Resource',
 	'menu_options' => 'Ußwahle',
 	'loading_timeline' => 'Ben de timeline am laade <blink>…</blink>',
@@ -5232,7 +5231,7 @@ Resource',
 sequence
 afzeseschere.',
 	'edit_clip' => '
-Dä  
+Dä
 clip
 ändere',
 	'edit_save' => 'De Änderunge afseschere',
@@ -5252,7 +5251,7 @@ ußsöke, öm dä ze ändere',
 	'metavid' => 'Metavid Sigg',
 	'mv_missing_stream' => '
 Dä
-stream 
+stream
 „$1“ fäählt',
 	'specialpages-group-mv_group' => 'MetaVidWiki Söndersigge',
 	'mv_warning_wiki' => '<i>Opjepaß: <i lang="en">MetaVid</i> Viddejo Protokolle [[Help:FAQ#How_accurate_is_the_information.3F|künne unjenou sin]], donn uns hellfe, [[Help:Participation#Improving_Archive_Accuracy|noch e besser Aschiif opzeboue]]</i>',
@@ -5263,52 +5262,52 @@ stream
 	'mv_archive_org_link' => 'Lengks op ojinaal MPEG2-Dateije vun Archive.org',
 	'mv_error_stream_missing' => '<span class="error">Fähler: För dä Shtroom jidd_et kein Viddejo_Dattei.</span><br />Beß esu joot, un donn dat eenem [[{{MediaWiki:Grouppage-sysop}}|Wiki_Kööbeß]] verzälle.',
 	'mv_stream_added' => '
-Do häs dä 
-stream 
+Do häs dä
+stream
 „$1“ dobei jedonn',
 	'mv_stream_meta' => '
-stream  
+stream
 Sigg',
 	'mv_add_stream' => '
-<i lang="en">MetaVid</i> 
-stream  
+<i lang="en">MetaVid</i>
+stream
 dobei donn',
 	'mv_edit_stream' => '
-<i lang="en">MetaVid</i> 
-stream  
+<i lang="en">MetaVid</i>
+stream
 ändere',
 	'mvexportsearch' => '<i lang="en">MetaVid</i> Expoot',
 	'mvexportsequence' => '
-<i lang="en">MetaVid</i> 
-sequence  
+<i lang="en">MetaVid</i>
+sequence
 expoteere',
 	'mvexportstream' => '
-<i lang="en">MetaVid</i> 
-stream  
+<i lang="en">MetaVid</i>
+stream
 expooteere',
 	'mv_move_delete_msg' => 'op $1 ömjenannt',
 	'mv_add_stream_page' => '
-<i lang="en">MetaVid</i> Stream 
+<i lang="en">MetaVid</i> Stream
 dobei donn',
 	'mv_edit_strea_docu' => '
 <p>Stream ändere als <b>Wiki-Köbes</b><br />
 De Aansich för der nommaale Metmaacher es op dä Sigg: $1',
 	'mv_add_stream_docu' => '
-<p>Donn ene neue 
-stream 
+<p>Donn ene neue
+stream
 dobei, övver dat Feld heh dronger.</p>
-<p>Mieh Enfommazjuhne fingk mer op dä <a href="$1">Hülp-Sigg övver et 
+<p>Mieh Enfommazjuhne fingk mer op dä <a href="$1">Hülp-Sigg övver et
 stream-
 Dobei-Donn</a>.</p>',
 	'mv_add_stream_submit' => '
 stream
 dobei donn',
 	'mv_no_stream_files' => '
-Mer han kei 
-stream  
+Mer han kei
+stream
 Datteije',
 	'mv_edit_stream_files' => '
-stream  
+stream
 Datteije ändere',
 	'mv_path_type_url_anx' => 'kumplätte Medije-URL',
 	'mv_path_type_wiki_title' => 'Medije-Tittel em Wiki',
@@ -5322,7 +5321,7 @@ Datteije ändere',
 	'mv_removed_file_stream' => '
 stream
 Dattei „$1“ fottjeschmeße',
-	'mv_missing_stream_text' => 'Dä jewönschte 
+	'mv_missing_stream_text' => 'Dä jewönschte
 stream
 <b>$1</b> es nit ze han.<br />
 Looer ens op dä <a href="$2">Leß met de
@@ -5415,10 +5414,10 @@ Enfommazjuhne als Aanmerkunge dobei don, die nit jekallt sin.',
 	'mv_data_page_title' => '$1 för $2 vun $3 aan',
 	'mv_time_separator' => 'vun $1 bes $2',
 	'mv_list_streams_docu' => '
-Et jitt hee di  
+Et jitt hee di
 streams',
 	'mv_list_streams_none' => '
-Et jitt kei 
+Et jitt kei
 streams',
 	'mv_play' => 'Afshpelle',
 	'mv_edit' => 'Ändere',
@@ -5482,7 +5481,7 @@ sequence
 „$1“ aam Ändere',
 	'mv_sequence_add_manual' => 'Övver der Name dobei donn',
 	'mv_sequence_add_search' => 'Dobei donn övver et Söhke',
-	'mv_seq_add_end' => 'Aam Engk vun en 
+	'mv_seq_add_end' => 'Aam Engk vun en
 <i lang="en">sequence</i>
 dobei donn',
 	'mv_sequence_edit_text' => 'Op dat Täxprojramm zom Beärbeide ömschallde',
