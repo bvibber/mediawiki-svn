@@ -4,9 +4,9 @@ $( document ).ready( function() {
 	$( '.optin-other-select' ).hide();
 	$( 'select.optin-need-other' ).change( function() {
 		if( $(this).val() == 'other' )
-			$( '#' + $(this).attr( 'id' ) + '-other' ).show();
+			$( '#' + $(this).attr( 'id' ) + '-other' ).slideDown( 'fast' );
 		else
-			$( '#' + $(this).attr( 'id' ) + '-other' ).hide();
+			$( '#' + $(this).attr( 'id' ) + '-other' ).slideUp( 'fast' );
 	});
 	
 	$( '.optin-other-radios, .optin-other-checks' ).click( function() {
@@ -18,11 +18,11 @@ $( document ).ready( function() {
 		yesrow = $( '#' + $(this).attr( 'name' ) + '-ifyes-row' );
 		norow = $( '#' + $(this).attr( 'name' ) + '-ifno-row' );
 		if( $(this).is( '.survey-yes:checked' ) ) {
-			yesrow.show();
-			norow.hide();
+			yesrow.slideDown( 'fast' );
+			norow.slideUp( 'fast' );
 		} else if( $(this).is( '.survey-no:checked' ) ) {
-			yesrow.hide();
-			norow.show();
+			yesrow.slideUp( 'fast' );
+			norow.slideDown( 'fast' );
 		}
 	});
 	

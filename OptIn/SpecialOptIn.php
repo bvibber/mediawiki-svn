@@ -185,17 +185,17 @@ class SpecialOptIn extends SpecialPage {
 			$wgOptInStyleVersion );
 		UsabilityInitiativeHooks::addStyle( 'OptIn/OptIn.css',
 				$wgOptInStyleVersion );
-		$retval = Xml::openElement( 'table' );
+		$retval = Xml::openElement( 'dl' );
 		foreach ( $wgOptInSurvey as $id => $question ) {
 			switch ( $question['type'] ) {
 			case 'dropdown':
-				$retval .= Xml::openElement( 'tr' );
-				$retval .= Xml::tags( 'td', array( 'valign' => 'top' ),
-					wfMsgWikiHtml( $question['question'] ) );
-				$retval .= Xml::openElement( 'td',
-					array( 'valign' => 'top' ) );
-				$attrs = array(	'id' => "survey-$id",
-						'name' => "survey-$id" );
+				$retval .= Xml::tags(
+					'dt', null, wfMsgWikiHtml( $question['question'] )
+				);
+				$retval .= Xml::openElement( 'dd' );
+				$attrs = array(
+					'id' => "survey-$id", 'name' => "survey-$id"
+				);
 				if ( isset( $question['other'] ) ) {
 					$attrs['class'] = 'optin-need-other';
 				}
@@ -205,153 +205,184 @@ class SpecialOptIn extends SpecialPage {
 					$retval .= Xml::option(	wfMsg( $answer ), $aid );
 				}
 				if ( isset( $question['other'] ) ) {
-					$retval .= Xml::option( wfMsg( $question['other'] ),
-						'other' );
+					$retval .= Xml::option(
+						wfMsg( $question['other'] ), 'other'
+					);
 				}
 				$retval .= Xml::closeElement( 'select' );
 				if ( isset( $question['other'] ) ) {
 					$retval .= ' ';
-					$retval .= Xml::input( "survey-$id-other",
-						false, false,
-						array(	'class' => 'optin-other-select',
-							'id' => "survey-$id-other" ) );
+					$retval .= Xml::input(
+						"survey-$id-other",
+						false,
+						false,
+						array(
+							'class' => 'optin-other-select',
+							'id' => "survey-$id-other"
+						)
+					);
 				}
-				$retval .= Xml::closeElement( 'td' );
-				$retval .= Xml::closeElement( 'tr' );
+				$retval .= Xml::closeElement( 'dd' );
 			break;
 			case 'radios':
-				$retval .= Xml::openElement( 'tr' );
-				$retval .= Xml::tags( 'td',
-					array( 'valign' => 'top' ),
-					wfMsgWikiHtml( $question['question'] ) );
-				$retval .= Xml::openElement( 'td',
-					array( 'valign' => 'top' ) );
+				$retval .= Xml::tags(
+					'dt', null, wfMsgWikiHtml( $question['question'] )
+				);
+				$retval .= Xml::openElement( 'dd' );
 				$radios = array();
 				foreach ( $question['answers'] as $aid => $answer ) {
-					$radios[] = Xml::radioLabel( wfMsg( $answer ),
-						"survey-$id", $aid, "survey-$id-$aid" );
+					$radios[] = Xml::radioLabel(
+						wfMsg( $answer ), "survey-$id", $aid, "survey-$id-$aid"
+					);
 				}
 				if ( isset( $question['other'] ) ) {
-					$radios[] = Xml::radioLabel( wfMsg( $question['other'] ),
-						"survey-$id", 'other', "survey-$id-other-radio" ) .
-						'&nbsp;' .
-						Xml::input( "survey-$id-other",
-							false, false,
-							array( 'class' => 'optin-other-radios' ) );
+					$radios[] = Xml::radioLabel(
+						wfMsg( $question['other'] ),
+						"survey-$id",
+						'other',
+						"survey-$id-other-radio"
+					) .
+					'&nbsp;' .
+					Xml::input(
+						"survey-$id-other",
+						false,
+						false,
+						array( 'class' => 'optin-other-radios' )
+					);
 				}
 				$retval .= implode( Xml::element( 'br' ), $radios );
-				$retval .= Xml::closeElement( 'td' );
-				$retval .= Xml::closeElement( 'tr' );
+				$retval .= Xml::closeElement( 'dd' );
 			break;
 			case 'checkboxes':
-				$retval .= Xml::openElement( 'tr' );
-				$retval .= Xml::tags( 'td',
-					array( 'valign' => 'top' ),
-					wfMsgWikiHtml( $question['question'] ) );
-				$retval .= Xml::openElement( 'td',
-					array( 'valign' => 'top' ) );
+				$retval .= Xml::tags(
+					'dt', null, wfMsgWikiHtml( $question['question'] )
+				);
+				$retval .= Xml::openElement( 'dd' );
 				$checkboxes = array();
 				foreach ( $question['answers'] as $aid => $answer ) {
-					$checkboxes[] = Xml::checkLabel( wfMsg( $answer ),
-						"survey-{$id}[]", "survey-$id-$aid", false,
-						array( 'value' => $aid ) );
+					$checkboxes[] = Xml::checkLabel(
+						wfMsg( $answer ),
+						"survey-{$id}[]",
+						"survey-$id-$aid",
+						false,
+						array( 'value' => $aid )
+					);
 				}
 				if ( isset( $question['other'] ) ) {
-					$checkboxes[] = Xml::checkLabel( wfMsg( $question['other'] ),
-						"survey-{$id}[]", "survey-$id-other-check", false,
-						array( 'value' => 'other' ) ) .
-						'&nbsp;' .
-						Xml::input( "survey-$id-other",
-							false, false,
-							array( 'class' => 'optin-other-checks' ) );
+					$checkboxes[] = Xml::checkLabel(
+						wfMsg( $question['other'] ),
+						"survey-{$id}[]",
+						"survey-$id-other-check",
+						false,
+						array( 'value' => 'other' )
+					) .
+					'&nbsp;' .
+					Xml::input(
+						"survey-$id-other",
+						false,
+						false,
+						array( 'class' => 'optin-other-checks' )
+					);
 				}
 				$retval .= implode( Xml::element( 'br' ), $checkboxes );
-				$retval .= Xml::closeElement( 'td' );
-				$retval .= Xml::closeElement( 'tr' );
+				$retval .= Xml::closeElement( 'dd' );
 			break;
 			case 'yesno':
-				$retval .= Xml::openElement( 'tr' );
-				$retval .= Xml::tags( 'td',
-						array( 'valign' => 'top' ),
-								wfMsgWikiHtml( $question['question'] ) );
-				$retval .= Xml::openElement( 'td',
-						array( 'valign' => 'top' ) );
-				$retval .= Xml::radioLabel( wfMsg( 'optin-survey-yes' ),
-						"survey-$id", 'yes', "survey-$id-yes",
-						false, array( 'class' => 'survey-yes' ) );
+				$retval .= Xml::tags(
+					'dt', null, wfMsgWikiHtml( $question['question'] )
+				);
+				$retval .= Xml::openElement( 'dd' );
+				$retval .= Xml::radioLabel(
+					wfMsg( 'optin-survey-yes' ),
+					"survey-$id",
+					'yes',
+					"survey-$id-yes",
+					false,
+					array( 'class' => 'survey-yes' )
+				);
 				$retval .= Xml::element( 'br' );
-				$retval .= Xml::radioLabel( wfMsg( 'optin-survey-no' ),
-						"survey-$id", 'no', "survey-$id-no",
-						false, array( 'class' => 'survey-no' ) );
-				$retval .= Xml::closeElement( 'td' );
-				$retval .= Xml::closeElement( 'tr' );
-				
+				$retval .= Xml::radioLabel(
+					wfMsg( 'optin-survey-no' ),
+					"survey-$id",
+					'no',
+					"survey-$id-no",
+					false,
+					array( 'class' => 'survey-no' )
+				);
+				$retval .= Xml::closeElement( 'dd' );
 				if ( isset( $question['ifyes'] ) ) {
-					$retval .= Xml::openElement( 'tr',
-						array(	'class' => 'survey-ifno',
-							'id' => "survey-$id-ifyes-row" ) );
-					$retval .= Xml::tags( 'td',
-						array( 'valign' => 'top' ),
-						wfMsgWikiHtml( $question['ifyes'] ) );
-					$retval .= Xml::openElement( 'td',
-						array( 'valign' => 'top' ) );
-					$retval .= Xml::textarea( "survey-$id-ifyes", '' );
-					$retval .= Xml::closeElement( 'td' );
-					$retval .= Xml::closeElement( 'tr' );
+					$retval .= Xml::openElement(
+						'blockquote', array(
+							'id' => "survey-$id-ifyes-row",
+							'class' => 'survey-ifyes',
+						)
+					);
+					$retval .= Xml::tags(
+						'dt', null, wfMsgWikiHtml( $question['ifyes'] )
+					);
+					$retval .= Xml::tags(
+						'dd', null, Xml::textarea( "survey-$id-ifyes", '' )
+					);
+					$retval .= Xml::closeElement( 'blockquote' );
 				}
 				if ( isset( $question['ifno'] ) ) {
-					$retval .= Xml::openElement( 'tr',
-						array(	'class' => 'survey-ifno',
-							'id' => "survey-$id-ifno-row" ) );
-					$retval .= Xml::tags( 'td',
-						array( 'valign' => 'top' ),
-						wfMsgWikiHtml( $question['ifno'] ) );
-					$retval .= Xml::openElement( 'td',
-						array( 'valign' => 'top' ) );
-					$retval .= Xml::textarea( "survey-$id-ifno", '' );
-					$retval .= Xml::closeElement( 'td' );
-					$retval .= Xml::closeElement( 'tr' );
+					$retval .= Xml::openElement(
+						'blockquote', array(
+							'id' => "survey-$id-ifno-row",
+							'class' => 'survey-ifyes',
+						)
+					);
+					$retval .= Xml::tags(
+						'dt', null, wfMsgWikiHtml( $question['ifno'] )
+					);
+					$retval .= Xml::tags(
+						'dd', null, Xml::textarea( "survey-$id-ifno", '' )
+					);
+					$retval .= Xml::closeElement( 'blockquote' );
 				}
 			break;
 			case 'resolution':
-				$retval .= Xml::openElement( 'tr' );
-				$retval .= Xml::tags( 'td',
-					array( 'valign' => 'top' ),
-					wfMsgWikiHtml( $question['question'] ) );
-				$retval .= Xml::openElement( 'td',
-					array( 'valign' => 'top' ) );
-				$retval .= Xml::input( "survey-$id-x",
-						5, false, array(
-							'class' => 'optin-resolution-x',
-							'id' => "survey-$id-x",
-						)
+				$retval .= Xml::tags(
+					'dt', null, wfMsgWikiHtml( $question['question'] )
+				);
+				$retval .= Xml::openElement( 'dd' );
+				$retval .= Xml::input(
+					"survey-$id-x",
+					5,
+					false,
+					array(
+						'class' => 'optin-resolution-x',
+						'id' => "survey-$id-x",
+					)
 				);
 				$retval .= ' x ';
-				$retval .= Xml::input( "survey-$id-y",
-						5, false, array(
-							'class' => 'optin-resolution-y',
-							'id' => "survey-$id-y",
-						)
+				$retval .= Xml::input(
+					"survey-$id-y",
+					5,
+					false,
+					array(
+						'class' => 'optin-resolution-y',
+						'id' => "survey-$id-y",
+					)
 				);
-				$retval .= Xml::closeElement( 'td' );
-				$retval .= Xml::closeElement( 'tr' );
+				$retval .= Xml::closeElement( 'dd' );
 			break;
 			case 'textarea':
-				$retval .= Xml::openElement( 'tr' );
-				$retval .= Xml::tags( 'td',
-					array( 'valign' => 'top' ),
-					wfMsgWikiHtml( $question['question'] ) );
-				$retval .= Xml::tags( 'td',
-					array( 'valign' => 'top' ),
-					Xml::textarea( "survey-$id", '' ) );
-				$retval .= Xml::closeElement( 'tr' );
+				$retval .= Xml::tags(
+					'dt', null, wfMsgWikiHtml( $question['question'] )
+				);
+				$retval .= Xml::tags(
+					'dd', null, Xml::textarea( "survey-$id", '' )
+				);
 			break;
 			}
 		}
-		$retval .= Xml::tags( 'tr', array(),
-			Xml::tags( 'td', array( 'colspan' => 2, 'class' => 'optin-survey-submit' ),
-				Xml::submitButton( wfMsg( 'optin-submit-out' ) ) ) );
-		$retval .= Xml::closeElement( 'table' );
+		$retval .= Xml::tags(
+			'dt',
+			array( 'class' => 'optin-survey-submit' ),
+			Xml::submitButton( wfMsg( 'optin-submit-out' ) )
+		);
+		$retval .= Xml::closeElement( 'dl' );
 		$wgOut->addHTML( $retval );
 	}
 
