@@ -240,15 +240,16 @@ class SpecialOptIn extends SpecialPage {
 					);
 				}
 				$retval .= Xml::closeElement( 'select' );
-				if ( isset( $question['other'] ) ) {
-					$retval .= ' ';
-					$retval .= Xml::input(
-						"survey-$id-other",
-						false,
-						false,
-						array(
-							'class' => 'optin-other-select',
-							'id' => "survey-$id-other"
+				if ( isset( $question['other'] ) ) {;
+					$retval .= Xml::tags( 'div', array(),
+						Xml::input(
+							"survey-$id-other",
+							false,
+							false,
+							array(
+								'class' => 'optin-other-select',
+								'id' => "survey-$id-other"
+							)
 						)
 					);
 				}
