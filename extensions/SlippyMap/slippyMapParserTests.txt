@@ -142,7 +142,7 @@ SlippyMap error: Valid/Invalid width/height arguments
 
 <slippymap lat=61 lon=95 zoom=12 width=1001 height=1001 dummy/>
 
-<slippymap lat=61 lon=95 zoom=12 width=a heighth=b dummy/>
+<slippymap lat=61 lon=95 zoom=12 width=a height=b dummy/>
 
 <slippymap lat=61 lon=95 zoom=12 width=100.0 height=100.0 dummy />
 
@@ -157,8 +157,7 @@ SlippyMap error: Valid/Invalid width/height arguments
 <a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
 <strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>99</tt> is not valid for the <tt>width</tt> attribute. Width levels must be between 100 and 1000.</li><li class="error">The value <tt>99</tt> is not valid for the <tt>height</tt> attribute. Height levels must be between 100 and 1000.</li></ul></strong>
 <strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>1001</tt> is not valid for the <tt>width</tt> attribute. Width levels must be between 100 and 1000.</li><li class="error">The value <tt>1001</tt> is not valid for the <tt>height</tt> attribute. Height levels must be between 100 and 1000.</li></ul></strong>
-<p><strong class="error">SlippyMap error: The value <tt>a</tt> is not valid for the <tt>width</tt> attribute, the given value must be a valid number.</strong>
-</p>
+<strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>a</tt> is not valid for the <tt>width</tt> attribute, the given value must be a valid number.</li><li class="error">The value <tt>b</tt> is not valid for the <tt>height</tt> attribute, the given value must be a valid number.</li></ul></strong>
 <strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>100.0</tt> is not valid for the <tt>width</tt> attribute, the given value must be a valid number.</li><li class="error">The value <tt>100.0</tt> is not valid for the <tt>height</tt> attribute, the given value must be a valid number.</li></ul></strong>
 <strong class="error">SlippyMap errors:<ul><li class="error">The value <tt>0x666</tt> is not valid for the <tt>width</tt> attribute, the given value must be a valid number.</li><li class="error">The value <tt>0x666</tt> is not valid for the <tt>height</tt> attribute, the given value must be a valid number.</li></ul></strong>
 
@@ -166,7 +165,7 @@ SlippyMap error: Valid/Invalid width/height arguments
 
 
 !! test
-SlippyMap error: Valid/Invalid mode arguments
+SlippyMap: Valid/Invalid mode arguments
 !! input
 == Valid ==
 
@@ -186,13 +185,13 @@ SlippyMap error: Valid/Invalid mode arguments
 </p><p>A dummy map
 </p>
 <a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
-<p><strong class="error">SlippyMap error: The value <tt>foo</tt> is not valid for the <tt>mode</tt> attribute, valid modes are osm and satellite.</strong>
-</p><p><strong class="error">SlippyMap error: The value <tt>bar</tt> is not valid for the <tt>mode</tt> attribute, valid modes are osm and satellite.</strong>
+<p><strong class="error">SlippyMap error: The value <tt>foo</tt> is not valid for the <tt>mode</tt> attribute, valid modes are <tt>osm</tt> and <tt>satellite</tt>.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>bar</tt> is not valid for the <tt>mode</tt> attribute, valid modes are <tt>osm</tt> and <tt>satellite</tt>.</strong>
 </p>
 !! end
 
 !! test
-SlippyMap error: Valid caption arguments
+SlippyMap: Valid caption arguments
 !! input
 == Valid ==
 
@@ -204,4 +203,19 @@ SlippyMap error: Valid caption arguments
 <p>A dummy map
 A dummy map
 </p>
+!! end
+
+!! test
+SlippyMap: Invalid extra arguments
+!! input
+== Invalid ==
+
+<slippymap lat=61 lon=95 zoom=1 1=2 3=4 dummy/>
+<slippymap lat=61 lon=95 zoom=1 foo=bar zar=gar dummy/>
+
+!! result
+<a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
+<strong class="error">SlippyMap errors:<ul><li class="error">The attribute <tt>1</tt> is unknown.</li><li class="error">The attribute <tt>3</tt> is unknown.</li></ul></strong>
+<strong class="error">SlippyMap errors:<ul><li class="error">The attribute <tt>foo</tt> is unknown.</li><li class="error">The attribute <tt>zar</tt> is unknown.</li></ul></strong>
+
 !! end
