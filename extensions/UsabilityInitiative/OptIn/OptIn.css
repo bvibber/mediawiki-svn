@@ -131,6 +131,7 @@ form#optin-survey dl {
 	padding: 0;
 	margin-top: 1em;
 	padding-top: 1em;
+	width: 32em;
 }
 form#optin-survey dl dt,
 form#optin-survey dl dd {
@@ -138,14 +139,26 @@ form#optin-survey dl dd {
 	margin-bottom: 0.5em;
 }
 form#optin-survey dl dt {
+	margin-top: 1em;
 	font-size: 1.1em;
 }
 form#optin-survey dl dd {
 	margin-left: 2em;
 }
-form#optin-survey dl dd textarea {
+form#optin-survey dl dt textarea {
 	width: 30em;
 	height: 4em;
+}
+form#optin-survey dl blockquote {
+	padding: 0em;
+	margin: 0em;
+	margin-left: 2em;
+}
+form#optin-survey dl blockquote dd {
+	margin-left: 2em;
+}
+form#optin-survey dl blockquote dd textarea {
+	width: 28em;
 }
 form#optin-survey dl dt p {
 	margin: 0;
