@@ -271,7 +271,7 @@ var wgOggPlayer = {
 				// Note: Totem and KMPlayer also use this pluginName, which is 
 				// why we check for them first
 				player = 'quicktime-mozilla';
-			} else if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
+			} else if ( (pluginName.toLowerCase() == 'vlc multimedia plugin') || (pluginName.toLowerCase() == 'vlc multimedia plug-in') ) {
 				player = 'vlc-mozilla';
 			} else if ( type == 'application/ogg' ) {
 				player = 'oggPlugin';
