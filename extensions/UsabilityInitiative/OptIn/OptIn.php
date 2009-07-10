@@ -24,15 +24,9 @@
  * out at any time. Using the following global configuration variables you can
  * make the link always show, resulting in a link that invites them to opt-in
  * when they aren't opted-in, or never show, even if they are opted in.
- * 
- * These variables can be set before or after inclusion of this file.
  */
-if ( !isset( $wgOptInAlwaysShowPersonalLink ) ) {
-	$wgOptInAlwaysShowPersonalLink = false;
-}
-if ( !isset( $wgOptInNeverShowPersonalLink ) ) {
-	$wgOptInNeverShowPersonalLink = false;
-}
+$wgOptInAlwaysShowPersonalLink = false;
+$wgOptInNeverShowPersonalLink = false;
 
 $wgOptInStyleVersion = 4;
 
