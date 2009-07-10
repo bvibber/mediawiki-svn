@@ -125,7 +125,6 @@ class SpecialOptIn extends SpecialPage {
 			$this->showOptInButtons();
 			$wgOut->addWikiMsg( 'optin-improvements' );
 		}
-		$wgOut->addHTML( Xml::hidden( 'opt', $opt ) );
 	}
 	
 	function showOptInButtons() {
@@ -202,13 +201,14 @@ class SpecialOptIn extends SpecialPage {
 		UsabilityInitiativeHooks::addStyle( 'OptIn/OptIn.css',
 				$wgOptInStyleVersion );
 		
-		$retval .= Xml::openElement(
+		$retval = Xml::openElement(
 			'form', array(
 				'method' => 'post',
 				'action' => $this->getTitle( $this->mOrigin )->getLinkURL(),
 				'id' => 'optin-survey',
 			)
 		);
+		$retval .= Xml::hidden( 'opt', 'out' );
 		$retval .= Xml::openElement( 'dl' );
 		foreach ( $wgOptInSurvey as $id => $question ) {
 			switch ( $question['type'] ) {
