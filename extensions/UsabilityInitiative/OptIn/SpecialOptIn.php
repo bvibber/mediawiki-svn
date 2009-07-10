@@ -94,12 +94,15 @@ class SpecialOptIn extends SpecialPage {
 				self::optIn( $wgUser );
 				$wgOut->addWikiMsg( 'optin-success-in' );
 				if ( $this->mOriginTitle )
-					$wgOut->addWikiMsg( 'optin-success-in-return',
+					$wgOut->addWikiMsg( 'optin-success-return',
 						$this->mOriginTitle->getPrefixedText() );
 			} else {
 				self::optOut( $wgUser );
 				$this->saveSurvey();
 				$wgOut->addWikiMsg( 'optin-success-out' );
+				if ( $this->mOriginTitle )
+					$wgOut->addWikiMsg( 'optin-success-return',
+						$this->mOriginTitle->getPrefixedText() );
 			}
 		}
 		else
@@ -114,6 +117,9 @@ class SpecialOptIn extends SpecialPage {
 		$opt = ( self::isOptedIn( $wgUser ) ? 'out' : 'in' );
 		if ( $opt == 'out' ) {
 			$wgOut->addWikiMsg( 'optin-survey-intro' );
+			if ( $this->mOriginTitle )
+				$wgOut->addWikiMsg( 'optin-leave-cancel',
+					$this->mOriginTitle->getPrefixedText() );
 			$this->showSurvey();
 		}
 		else
