@@ -29,6 +29,9 @@ $messages['en'] = array(
 	'inlinescripts-exception-unexceptedop' => 'Unexpected operator $2',
 	'inlinescripts-exception-notenoughargs' => 'Not enough arguments for function at char $1',
 	'inlinescripts-exception-notenoughopargs' => 'Not enough aruments for operator at char $1',
+	'inlinescripts-exception-dividebyzero' => 'Division by zero at char $1',
+	'inlinescripts-exception-break' => '"break" called outside of foreach at char $1',
+	'inlinescripts-exception-continue' => '"continue" called outside of foreach at char $1',
 );
 
 // == Magic words ==

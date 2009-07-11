@@ -36,6 +36,7 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['InlineScripts'] = $dir . 'InlineScripts.i18n.php';
 $wgAutoloadClasses['InlineScriptInterpreter'] = $dir . 'interpreter/Interpreter.php';
 $wgAutoloadClasses['ISCodeParserShuntingYard'] = $dir . 'interpreter/ParserShuntingYard.php';
+$wgParserTestFiles[] = $dir . 'interpreterTests.txt';
 $wgHooks['ParserFirstCallInit'][] = 'InlineScriptsHooks::setupParserHook';
 $wgHooks['ParserClearState'][] = 'InlineScriptsHooks::clearState';
 $wgHooks['ParserLimitReport'][] = 'InlineScriptsHooks::reportLimits';
@@ -50,12 +51,12 @@ $wgInlineScriptsParserParams = array(
 		 * Maximal amount of tokens (strings, keywords, numbers, operators,
 		 * but not whitespace) to be parsed.
 		 */
-		'tokens' => 20000,
+		'tokens' => 25000,
 		/**
 		 * Maximal amount of operations (multiplications, comarsionss, function
 		 * calls) to be done.
 		 */
-		'evaluations' => 5000,
+		'evaluations' => 10000,
 		/**
 		 * Maximal depth of recursion when evaluating the parser tree. For
 		 * example 2 + 2 * 2 ** 2 is parsed to (2 + (2 * (2 ** 2))) and needs
@@ -72,7 +73,7 @@ class InlineScriptsHooks {
 	 * Register parser hook
 	 */
 	public static function setupParserHook( &$parser ) {
-		$parser->setFunctionHook( 'script', 'InlineScriptsHooks::scriptHook', SFH_OBJECT_ARGS );
+		$parser->setFunctionTagHook( 'wikiscript', 'InlineScriptsHooks::scriptHook', SFH_OBJECT_ARGS );
 		$parser->setFunctionHook( 'inline', 'InlineScriptsHooks::inlineHook', SFH_OBJECT_ARGS );
 		return true;
 	}
@@ -85,26 +86,34 @@ class InlineScriptsHooks {
 	}
 
 	public static function inlineHook( &$parser, $frame, $args ) {
+		wfProfileIn( __METHOD__ );
 		$scriptParser = self::getParser();
 		try {
 			$result = $scriptParser->evaluate( $parser->mStripState->unstripBoth( $args[0] ),
 				$parser, $frame );
 		} catch( ISException $e ) {
 			$msg = nl2br( htmlspecialchars( $e->getMessage() ) );
+			wfProfileOut( __METHOD__ );
 			return "<strong class=\"error\">{$msg}</strong>";
 		}
+		wfProfileOut( __METHOD__ );
 		return trim( $result );
 	}
 
-	public static function scriptHook( &$parser, $frame, $args ) {
+	public static function scriptHook( &$parser, $frame, $code, $attribs ) {
+		wfProfileIn( __METHOD__ );
 		$scriptParser = self::getParser();
 		try {
-			$result = $scriptParser->evaluateForOutput( $parser->mStripState->unstripBoth( $args[0] ),
-				$parser, $frame );
+			$result = $scriptParser->evaluateForOutput( $code, $parser, $frame );
 		} catch( ISException $e ) {
 			$msg = nl2br( htmlspecialchars( $e->getMessage() ) );
+			wfProfileOut( __METHOD__ );
 			return "<strong class=\"error\">{$msg}</strong>";
 		}
+		if( !(isset( $attribs['noparse'] ) && $attribs['noparse']) ) {
+			$result = $parser->replaceVariables( $result, $frame );
+		}
+		wfProfileOut( __METHOD__ );
 		return trim( $result );
 	}
 
@@ -119,9 +128,8 @@ class InlineScriptsHooks {
 	}
 
 	public static function getParser() {
-		global $wgInlineScriptsParserParams;
 		if( !self::$scriptParser )
-			self::$scriptParser = new InlineScriptInterpreter( $wgInlineScriptsParserParams );
+			self::$scriptParser = new InlineScriptInterpreter();
 		return self::$scriptParser;
 	}
 }

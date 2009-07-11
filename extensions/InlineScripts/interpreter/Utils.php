@@ -60,6 +60,12 @@ class ISOperatorNode extends ISASTNode {
 	const OElse = 'else';
 	const ODo = 'do';
 	const OForeach = 'foreach';
+	const OTry = 'try';
+	const OCatch = 'catch';
+	const OBreak = 'break';
+	const OContinue = 'continue';
+	const OIsset = 'isset';
+	const OUnset = 'unset';
 	const OIn = 'in';
 	const OInvert = '!';
 	const OPow = '**';
@@ -82,13 +88,17 @@ class ISOperatorNode extends ISASTNode {
 	const OTrinary = '?';
 	const OColon = ':';
 	const OSet = '=';
+	const OSetAdd = '+=';
+	const OSetSub = '-=';
+	const OSetMul = '*=';
+	const OSetDiv = '/=';
 	const OComma = ',';
 	const OStatementSeperator = ';';
 	const OLeftBrace = '(';
 	const OLeftCurly = '{';
 
 	static $precedence = array(
-		self::OFunction => 20,
+		self::OFunction => 20, self::OIsset => 20, self::OUnset => 20,
 		self::OArrayElement => 19, self::OPositive => 19, self::ONegative => 19,
 		self::OIn => 18,
 		self::OInvert => 17, self::OPow => 17,
@@ -98,27 +108,30 @@ class ISOperatorNode extends ISASTNode {
 		self::ONotEqualsToStrict => 13, self::OGreater => 13, self::OLess => 13,
 		self::OGreaterOrEq => 13, self::OLessOrEq => 13,
 		self::OAnd => 12, self::OOr => 12, self::OXor => 12,
-		self::OColon => 11, self::OTrinary => 10, self::OSet => 9,
+		self::OColon => 11, self::OTrinary => 10,
+		self::OSet => 9, self::OSetAdd => 9, self::OSetSub => 9,
+		self::OSetMul => 9, self::OSetDiv => 9,
 		self::OIf => 6, self::OThen => 7, self::OElse => 8,
 		self::OForeach => 6, self::ODo => 7,
+		self::OTry => 6, self::OCatch => 7,
 		self::OComma => 8, self::OStatementSeperator => 0,
 	);
 
 	static $unaryOperators = array(
-		self::OPositive, self::ONegative, self::OFunction, self::OArray,
+		self::OPositive, self::ONegative, self::OFunction, self::OArray, self::OTry,
 		self::OIf, self::OForeach, self::OInvert, self::OArrayElementSingle,
+		self::OIsset, self::OUnset
 	);
 
 	static function parseOperator( $op, $expecting, $pos ) {
 		if( $expecting == ISCodeParserShuntingYard::ExpectingData ) {
+			$ops = array( '(', '{', 'if', '!', 'try', 'break', 'continue',
+				'isset', 'unset' );
 			if( $op == '+' ) return new self( self::OPositive, $pos );
 			if( $op == '-' ) return new self( self::ONegative, $pos );
-			if( $op == self::OLeftBrace ||
-				$op == self::OLeftCurly ||
-				$op == self::OIf ||
-				$op == self::OInvert )
-					return new self( $op, $pos );
 			if( $op == '[' ) return new self( self::OArray, $pos );
+			if( in_array( $op, $ops ) )
+					return new self( $op, $pos );
 			return null;
 		} else {
 			if( $op == '+' ) return new self( self::OSum, $pos );
@@ -155,12 +168,19 @@ class ISOperatorNode extends ISASTNode {
 			return $this->mNumArgs;
 		if( in_array( $this->mOperator, self::$unaryOperators ) )
 			return 1;
+		elseif( $this->mOperator == self::OBreak ||
+			$this->mOperator == self::OContinue )
+			return 0;
 		else
 			return 2;
 	}
 
 	public function setArgsNumber( $num ) {
 		$this->mNumArgs = $num;
+	}
+
+	public function setData( $data ) {
+		$this->mData = $data;
 	}
 
 	public function isRightAssociative() {
@@ -224,16 +244,16 @@ class ISDataNode extends ISASTNode {
 
 class ISData {
 	// Data types
-	const DInt = 'int';
+	const DInt    = 'int';
 	const DString = 'string';
 	const DNull   = 'null';
 	const DBool   = 'bool';
 	const DFloat  = 'float';
 	const DList   = 'list';
-	
+
 	var $type;
 	var $data;
-	
+
 	public function __construct( $type = self::DNull, $val = null ) {
 		$this->type = $type;
 		$this->data = $val;
@@ -350,7 +370,7 @@ class ISData {
 	
 	public static function equals( $d1, $d2 ) {
 		return $d1->type != self::DList && $d2->type != self::DList &&
-			$d1->toString() === $d2->toString();
+			$d1->data == $d2->data;
 	}
 
 	public static function unaryMinus( $data ) {
@@ -436,6 +456,37 @@ class ISData {
 			return new ISData( self::DFloat, $a->toFloat() - $b->toFloat() );
 	}
 	
+	public function setValueByIndices( $val, $indices ) {
+		if( $this->type == self::DNull && $indices[0] === null ) {
+			$this->type = self::DList;
+			$this->value = array();
+			$this->setValueByIndices( $val, $indices );
+		} elseif( $this->type == self::DList ) {
+			if( $indices[0] === null ) {
+				$this->data[] = $val;
+			} else {
+				$idx = $indices[0]->toInt();
+				if( $idx < 0 || $idx >= count( $this->data ) )
+					throw new ISUserVisibleException( 'outofbounds', 0, array( count( $this->data ), $index ) );
+				if( count( $indices ) > 1 )
+					$this->data[$idx]->setValueByIndices( $val, array_slice( $indices, 1 ) );
+				else
+					$this->data[$idx] = $val;
+			}
+		}
+	}
+
+	public function checkIssetByIndices( $indices ) {
+		if( $indices ) {
+			$idx = array_shift( $indices );
+			if( $this->type != self::DList || $idx >= count( $this->data ) )
+				return false;
+			return $this->checkIssetByIndices( $indices );
+		} else {
+			return true;
+		}
+	}
+
 	/** Convert shorteners */
 	public function toBool() {
 		return self::castTypes( $this, self::DBool )->data;
@@ -476,9 +527,10 @@ class ISParserOutput {
 	}
 
 	public function appendTokenCount( &$interpr ) {
+		global $wgInlineScriptsParserParams;
 		$interpr->mParser->is_tokensCount += $this->mTokensCount;
-		if( $interpr->mParser->is_tokensCount > $interpr->mLimits['tokens'] )
-			throw new ISUserVisibleException( 'toomanytokens', $ast->getPos() );
+		if( $interpr->mParser->is_tokensCount > $wgInlineScriptsParserParams['limits']['tokens'] )
+			throw new ISUserVisibleException( 'toomanytokens', 0 );
 	}
 }
 
@@ -494,5 +546,9 @@ class ISUserVisibleException extends ISException {
 		$this->mExceptionID = $exception_id;
 		$this->mPosition = $position;
 		$this->mParams = $params;
+	}
+
+	public function getExceptionID() {
+		return $this->mExceptionID;
 	}
 }

@@ -38,8 +38,8 @@ class ISCodeParserShuntingYard {
 
 		// Comments
 		if ( substr($this->mCode, $this->mPos, 2) == '/*' ) {
-			$end = strpos( $this->mCode, '*/', $this->mPos );
-			return self::nextToken( $this->mCode, $end + 2 );
+			$this->mPos = strpos( $this->mCode, '*/', $this->mPos ) + 2;
+			return self::nextToken();
 		}
 
 		// Braces
@@ -222,7 +222,7 @@ class ISCodeParserShuntingYard {
 		if( $type != ISToken::TNone ) {
 			$this->mTokensCount++;
 			if( !$this->mInterpreter->increaseTokensCount() )
-				throw new ISUserVisibleException( 'toomanytokens', $ast->getPos() );
+				throw new ISUserVisibleException( 'toomanytokens', $this->mPos );
 		}
 
 		$token = new ISToken( $type, $val, $this->mPos );
@@ -295,8 +295,21 @@ class ISCodeParserShuntingYard {
 							break;
 					}
 				}
-				array_push( $opStack, $op1 );
-				$expecting = self::ExpectingData;
+
+				if( $this->mCur->isOp( 'catch' ) ) {
+					$this->move();
+					if( $this->mCur->type != ISToken::TID )
+						throw new ISUserVisibleException( 'cantchangeconst', $pos );
+					$op1->setData( $this->mCur->value );
+				}
+
+				if( $op1->getArgsNumber() ) {
+					array_push( $opStack, $op1 );
+					$expecting = self::ExpectingData;
+				} else {
+					$outputQueue[] = $op1;
+					$expecting = self::ExpectingOperator;
+				}
 			}
 
 			/* Functions */
@@ -316,7 +329,7 @@ class ISCodeParserShuntingYard {
 						$this->pushOp( $outputQueue, $opStack );
 					} else {
 						$outputQueue[] = new ISDataNode(
-							new ISData( ISData::DList, array() ) );
+							new ISData( ISData::DList, array() ), $this->mPos );
 					}
 					$expecting = self::ExpectingOperator;
 					continue;
