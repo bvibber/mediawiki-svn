@@ -45,7 +45,7 @@ $wgAutoloadClasses['SlippyMapExportCgiBin']		= $dir . 'SlippyMapExportCgiBin.cla
 $wgAutoloadClasses['WorldWind']					= $dir . 'SlippyMap.worldwind.php';
 
 /* Parser tests */
-$wgParserTestFiles[]                    = $dir . '/slippyMapParserTests.txt';
+$wgParserTestFiles[]							= $dir . '/slippyMapParserTests.txt';
 
 /* Parser hook */
 if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
@@ -61,16 +61,21 @@ function wfSlippyMapHook() {
 }
 
 /*
- * Configuration variables
+ * Configuration variables for the SlippyMap extension.
  */
 
-/* Allowed mode= values on this server */
+/**
+ * $wgSlippyMapModes
+ *
+ * The keys in the array are allowed "mode=" values as passed to the
+ * <slippymap> tag, and the values are the configuration for the mode.
+ */
 $wgSlippyMapModes = array(
 	'osm' => array(
 		// First layer = default
 		'layers' => array( 'mapnik', 'osmarender', 'maplint', 'cycle' ),
 
-		// Default zoom
+		// Default "zoom=" argument
 		'defaultZoomLevel' => 14,
 
 		'static_rendering' => array(
@@ -109,11 +114,11 @@ $wgSlippyMapSizeRestrictions = array(
 	'height' => array( 100, 1000 ),
 );
 
-
 /**
  * If true the a JS slippy map will be shown by default to supporting
  * clients, otherwise they'd have to click on the static image to
- * enable the slippy map.
+ * enable the slippy map. On non-JS enabled browsers will continue to
+ * see see the static map and nothing else.
  */
 $wgSlippyMapAutoLoadMaps = false;
 
