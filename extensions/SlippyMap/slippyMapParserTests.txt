@@ -254,34 +254,3 @@ SlippyMap: Valid/Invalid marker arguments
 </p><p><strong class="error">SlippyMap error: The value <tt>false</tt> is not valid for the <tt>marker</tt> attribute, valid markers are <tt>0</tt> and <tt>1</tt>.</strong>
 </p>
 !! end
-
-
-!! test
-SlippyMap: Valid caption arguments
-!! input
-== Valid ==
-
-<slippymap lat=61 lon=95 zoom=1 caption="2134aoe huashu 1234g 'h,p1`309432324cg1`032" dummy/>
-<slippymap lat=61 lon=95 zoom=1 caption="<<<<<" dummy/>
-
-!! result
-<a name="Valid" id="Valid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Valid">edit</a>]</span> <span class="mw-headline"> Valid </span></h2>
-<p>A dummy map
-A dummy map
-</p>
-!! end
-
-!! test
-SlippyMap: Invalid extra arguments
-!! input
-== Invalid ==
-
-<slippymap lat=61 lon=95 zoom=1 1=2 3=4 dummy/>
-<slippymap lat=61 lon=95 zoom=1 foo=bar zar=gar dummy/>
-
-!! result
-<a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
-<strong class="error">SlippyMap errors:<ul><li class="error">The attribute <tt>1</tt> is unknown.</li><li class="error">The attribute <tt>3</tt> is unknown.</li></ul></strong>
-<strong class="error">SlippyMap errors:<ul><li class="error">The attribute <tt>foo</tt> is unknown.</li><li class="error">The attribute <tt>zar</tt> is unknown.</li></ul></strong>
-
-!! end

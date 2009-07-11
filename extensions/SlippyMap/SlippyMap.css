@@ -19,13 +19,6 @@
 	border: none;
 }
 
-.mapcaption {
-	position:relative;	
-	clear:right;
-	float:right;
-	width: 100%;
-}
-
 /*
  * Force override of delay-loaded styles from openlayers/theme/default/style.css
  * TODO In the long run, we should probably create a MediaWiki theme

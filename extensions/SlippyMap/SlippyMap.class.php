@@ -32,7 +32,6 @@ class SlippyMap {
 		'width',
 		'height',
 
-		'caption',
 		'marker'
 	);
 
@@ -286,10 +285,6 @@ class SlippyMap {
 					}
 				}
 			}
-
-			if ( $key == 'caption' ) {
-				$this->caption = "foo";
-			}
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -340,10 +335,6 @@ EOT;
 			$mapcode .= self::getStaticMap( $id, $static_rendering );
 		} else {
 			$mapcode .= self::getDynamicMap( $id );
-		}
-
-		if ( $this->caption ) {
-			$mapcode .= "<div class='mapcaption'>" . $this->parser->recursiveTagParse($this->caption) . "</div>";
 		}
 
 		$mapcode .= <<<EOT
