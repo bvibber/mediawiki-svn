@@ -89,6 +89,7 @@
    // The second column of the array is the localised language word for 'Error'.
    var LanguageDetails = new Array();
    LanguageDetails['ar'] = new Array( "مؤسسة ويكيميديا", "خطأ" );
+   LanguageDetails['bg'] = new Array( "Фондация Уикимедия", "Грешка" );
    LanguageDetails['cs'] = new Array( "Wikimedia Foundation", "Chyba" );
    LanguageDetails['da'] = new Array( "Wikimedia Foundation", "Fejl" );
    LanguageDetails['de'] = new Array( "Wikimedia Foundation", "Fehler" );
@@ -251,6 +252,7 @@
 
    <a href="#Arabic" class="BottomLinks" onclick="ShowLanguage('ar')">العربية</a>
    <a href="#Indonesian" class="BottomLinks" onclick="ShowLanguage('id')">Bahasa Indonesia</a>
+   <a href="#Bulgarian" class="BottomLinks" onclick="ShowLanguage('bg')">Български</a>
    <a href="#Czech" class="BottomLinks" onclick="ShowLanguage('cs')">Česky</a>
    <a href="#Danish" class="BottomLinks" onclick="ShowLanguage('da')">Dansk</a>
    <a href="#German" class="BottomLinks" onclick="ShowLanguage('de')">Deutsch</a>
@@ -330,6 +332,27 @@
     <hr noshade="noshade" size="1px" width="80%" />
     <div class="TechnicalStuff" style="font-style:normal">
      إذا أردت إبلاغ هذا الخطأ إلى إداريي ويكيميديا، من فضلك ضمن التفاصيل بالأسفل.<br/>
+    </div>
+    <div class="TechnicalStuff">
+     <bdo dir="ltr">
+      Request: %M %U, from %i via %h (%s) to %H (%I)<br/>
+      Error: %c, errno %E at %T
+     </bdo>
+     <div id="AdditionalTechnicalStuff"></div>
+    </div>
+   </div>
+
+   <div id="bg" lang="bg">
+    <h3 id="bg_head" class="LanguageHeading">
+     <a name="Bulgarian">Български</a>
+    </h3>
+    <p>Сървърите ни в момента изпитват технически проблем. Вероятно той е временен и скоро ще бъде отстранен. Моля, <a href="%U" onclick="RefreshPage(); return false">опитайте отново</a> след няколко минути.</p>
+    <p>канал <a href="irc://chat.freenode.net/wikipedia">#wikipedia</a> на IRC-мрежата на <a href="http://www.freenode.net">Freenode</a>.</p>
+    <p>Фондация Уикимедия е нестопанска организация, която поддържа някои от най-популярните сайтове в Интернет, сред които и Уикипедия. Тя непрекъснато има
+потребност от закупуването на ново оборудване. Ако желаете да помогнете, можете да <a href="http://wikimediafoundation.org/wiki/%D0%94%D0%B0%D1%80%D0%B5%D0%BD%D0%B8%D1%8F">направите дарение</a>.</p>
+    <hr noshade="noshade" size="1px" width="80%" />
+    <div class="TechnicalStuff">
+     Ако искате да съобщите за тази грешка на системните администратори на Уикимедия, моля включете в доклада си следните данни.<br/>
     </div>
     <div class="TechnicalStuff">
      <bdo dir="ltr">
@@ -1078,6 +1101,7 @@
   <div class="BottomStrip">
    <a href="#Arabic" class="BottomLinks" id="ar_link" onclick="ShowLanguage('ar')">العربية</a>
    <a href="#Indonesian" class="BottomLinks" id="id_link" onclick="ShowLanguage('id')">Bahasa Indonesia</a>
+   <a href="#Bulgarian" class="BottomLinks" id="id_link" onclick="ShowLanguage('bg')">Български</a>
    <a href="#Czech" class="BottomLinks" id="cs_link" onclick="ShowLanguage('cs')">Česky</a>
    <a href="#Danish" class="BottomLinks" id="da_link" onclick="ShowLanguage('da')">Dansk</a>
    <a href="#German" class="BottomLinks" id="de_link" onclick="ShowLanguage('de')">Deutsch</a>
