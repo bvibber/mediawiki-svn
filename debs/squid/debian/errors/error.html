@@ -100,6 +100,7 @@
    LanguageDetails['fi'] = new Array( "Wikimedia Foundation", "Virhe" );
    LanguageDetails['fr'] = new Array( "Wikimedia Foundation", "Erreur" );
    LanguageDetails['he'] = new Array( "קרן ויקימדיה", "שגיאה" );
+   LanguageDetails['hu'] = new Array( "Wikimedia Foundation", "Hiba" );
    LanguageDetails['id'] = new Array( "Wikimedia Foundation", "Error" );
    LanguageDetails['it'] = new Array( "Wikimedia Foundation", "Errore" );
    LanguageDetails['ja'] = new Array( "ウィキメディア財団", "エラー" );
@@ -260,6 +261,7 @@
    <a href="#Persian" class="BottomLinks" onclick="ShowLanguage('fa')">فارسی</a>
    <a href="#French" class="BottomLinks" onclick="ShowLanguage('fr')">Français</a>
    <a href="#Hebrew" class="BottomLinks" onclick="ShowLanguage('he')">עברית</a>
+   <a href="#Hungarian" class="BottomLinks" onclick="ShowLanguage('hu')">Magyar</a>
    <a href="#Italian" class="BottomLinks" onclick="ShowLanguage('it')">Italiano</a>
    <a href="#Japanese" class="BottomLinks" onclick="ShowLanguage('ja')">日本語</a>
    <a href="#Korean" class="BottomLinks" onclick="ShowLanguage('ko')">한국어</a>
@@ -587,6 +589,31 @@
      <div id="AdditionalTechnicalStuff"></div>
     </div>
    </div>
+
+<div id="hu" lang="hu">
+    <div id="hu_head">
+	 <hr noshade="noshade" size="1px" width="100%"/>
+	 <h3 class="LanguageHeading">
+      <a name="Hungarian">
+	   Magyar
+	  </a>
+     </h3>
+	</div>
+    <p>Pillanatnyilag műszaki problémák miatt nem tudjuk megjeleníteni az oldalt. A hiba valószínűleg átmeneti, kérlek, <a href="%U" onclick="RefreshPage(); return false">próbáld újra</a> pár perc múlva.</p>
+    <p>Részletesebb információkat <a href="http://www.freenode.net">a Freenode IRC-hálózat</a> <a href="irc://chat.freenode.net/wikipedia">#wikipedia-hu</a> csatornáján kaphatsz.
+    <p>A Wikipédiát üzemeltető Wikimedia Foundation nonprofit szervezet, amely folyamatosan új hardverek vásárlására szorul. <a href="http://wikimediafoundation.org/wiki/Fundraising">A támogatásod</a> segíthet elkerülni az ilyen hibákat.
+    <hr noshade="noshade" size="1px" width="80%" />
+    <div class="TechnicalStuff">
+     Ha jelented ezt a hibát a Wikimedia rendszer-adminisztrátorainak, ne felejtsd el mellékelni az alábbi információkat:<br/>
+    </div>
+    <div class="TechnicalStuff">
+     <bdo dir="ltr">
+      Request: %M %U, from %i via %h (%s) to %H (%I)<br/>
+      Error: %c, errno %E at %T
+     </bdo>
+     <div id="AdditionalTechnicalStuff"></div>
+    </div>
+   </div>  
 
    <div id="id" lang="id">
     <div id="id_head">
@@ -1063,6 +1090,7 @@
    <a href="#Korean" class="BottomLinks" id="ko_link" onclick="ShowLanguage('ko')">한국어</a>
    <a href="#Italian" class="BottomLinks" id="it_link" onclick="ShowLanguage('it')">Italiano</a>
    <a href="#Hebrew" class="BottomLinks" id="he_link" onclick="ShowLanguage('he')">עברית</a>
+   <a href="#Hungarian" class="BottomLinks" id="hu_link" onclick="ShowLanguage('hu')">Magyar</a>
    <a href="#Dutch" class="BottomLinks" id="nl_link" onclick="ShowLanguage('nl')">Nederlands</a>
   </div>
 
