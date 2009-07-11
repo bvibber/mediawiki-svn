@@ -1,10 +1,10 @@
 <?php
 if ( !defined( 'MEDIAWIKI' ) ) {
-	echo "FlaggedRevs extension\n";
+	echo "ReaderFeedback extension\n";
 	exit( 1 );
 }
 
-class ReaderFeedback extends UnlistedSpecialPage
+class ReaderFeedbackPage extends UnlistedSpecialPage
 {
 	// Initialize to handle incomplete AJAX input
 	var $page = null;
@@ -15,7 +15,7 @@ class ReaderFeedback extends UnlistedSpecialPage
 	
     public function __construct() {
         UnlistedSpecialPage::UnlistedSpecialPage( 'ReaderFeedback', 'feedback' );
-		wfLoadExtensionMessages( 'FlaggedRevs' );
+		wfLoadExtensionMessages( 'ReaderFeedback' );
     }
 
     public function execute( $par ) {
@@ -43,14 +43,14 @@ class ReaderFeedback extends UnlistedSpecialPage
 		}
 		# Revision ID
 		$this->oldid = $wgRequest->getIntOrNull( 'oldid' );
-		if( !$this->oldid || !FlaggedRevs::isPageRateable( $this->page ) ) {
+		if( !$this->oldid || !ReaderFeedback::isPageRateable( $this->page ) ) {
 			$wgOut->addHTML( wfMsgExt('readerfeedback-main',array('parse')) );
 			return;
 		}
 		# Get our rating dimensions
 		$this->dims = array();
 		$unsureCount = 0;
-		foreach( FlaggedRevs::getFeedbackTags() as $tag => $weight ) {
+		foreach( ReaderFeedback::getFeedbackTags() as $tag => $weight ) {
 			$this->dims[$tag] = $wgRequest->getIntOrNull( "wp$tag" );
 			if( $this->dims[$tag] === NULL ) { // nothing sent at all :(
 				$wgOut->redirect( $this->page->getLocalUrl() );
@@ -100,9 +100,9 @@ class ReaderFeedback extends UnlistedSpecialPage
 		if( wfReadOnly() ) {
 			return '<err#><strong>' . wfMsg('formerror') . '</<strong>';
 		}
-		$tags = FlaggedRevs::getFeedbackTags();
+		$tags = ReaderFeedback::getFeedbackTags();
 		// Make review interface object
-		$form = new ReaderFeedback();
+		$form = new ReaderFeedbackPage();
 		$form->dims = array();
 		$unsureCount = 0;
 		$bot = false;
@@ -118,7 +118,7 @@ class ReaderFeedback extends UnlistedSpecialPage
 			{
 				case "target":
 					$form->page = Title::newFromUrl( $val );
-					if( is_null($form->page) || !FlaggedRevs::isPageRateable( $form->page ) ) {
+					if( is_null($form->page) || !ReaderFeedback::isPageRateable( $form->page ) ) {
 						return '<err#>' . wfMsg('formerror');
 					}
 					break;
@@ -165,7 +165,7 @@ class ReaderFeedback extends UnlistedSpecialPage
 		$talk = $form->page->getTalkPage();
 		
 		wfLoadExtensionMessages( 'RatingHistory' );
-		$tallyTable = FlaggedRevs::getVoteAggregates( $form->page, 31, $form->dims );
+		$tallyTable = ReaderFeedback::getVoteAggregates( $form->page, 31, $form->dims );
 		
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
@@ -310,7 +310,7 @@ class ReaderFeedback extends UnlistedSpecialPage
 				__METHOD__
 			);
 			# Get effective tag values for this page..
-			list($aveVal,$n) = FlaggedRevs::getAverageRating( $article, $tag, true );
+			list($aveVal,$n) = ReaderFeedback::getAverageRating( $article, $tag, true );
 			$insertRows[] = array( 
 				'rfp_page_id' => $rev->getPage(),
 				'rfp_tag'     => $tag,

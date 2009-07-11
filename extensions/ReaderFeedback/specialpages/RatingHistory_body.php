@@ -1,6 +1,6 @@
 <?php
 if( !defined( 'MEDIAWIKI' ) ) {
-	echo "FlaggedRevs extension\n";
+	echo "ReaderFeedback extension\n";
 	exit( 1 );
 }
 
@@ -9,7 +9,7 @@ class RatingHistory extends UnlistedSpecialPage
 	public function __construct() {
 		parent::__construct( 'RatingHistory', 'feedback' );
 		wfLoadExtensionMessages( 'RatingHistory' );
-		wfLoadExtensionMessages( 'FlaggedRevs' );
+		wfLoadExtensionMessages( 'ReaderFeedback' );
 	}
 
 	public function execute( $par ) {
@@ -37,12 +37,12 @@ class RatingHistory extends UnlistedSpecialPage
 		if( is_null($this->page) ) {
 			$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
 			return;
-		} elseif( !FlaggedRevs::isPageRateable( $this->page ) ) {
+		} elseif( !ReaderFeedback::isPageRateable( $this->page ) ) {
 			$wgOut->addHTML( wfMsgExt('readerfeedback-main',array('parse')) );
 			return;
 		}
 		# Thank people who voted...
-		if( ReaderFeedback::userAlreadyVoted( $this->page ) ) {
+		if( ReaderFeedbackPage::userAlreadyVoted( $this->page ) ) {
 			$wgOut->setSubtitle( wfMsgExt('ratinghistory-thanks','parseinline') );
 		}
 		$period = $wgRequest->getInt( 'period' );
@@ -72,7 +72,7 @@ class RatingHistory extends UnlistedSpecialPage
 	protected function showTable() {
 		global $wgOut;
 		# Show latest month of results
-		$html = FlaggedRevs::getVoteAggregates( $this->page, $this->period, array(),
+		$html = ReaderFeedback::getVoteAggregates( $this->page, $this->period, array(),
 			$this->doPurge ? 'skipCache' : 'useCache'
 		);
 		if( $html ) {
@@ -116,7 +116,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$data = false;
 		$html = '';
 		// Do each graphs for said time period
-		foreach( FlaggedRevs::getFeedbackTags() as $tag => $weight ) {
+		foreach( ReaderFeedback::getFeedbackTags() as $tag => $weight ) {
 			// Check if cached version is available.
 			// If not, then generate a new one.
 			$filePath = $this->getFilePath( $tag );
@@ -577,7 +577,7 @@ class RatingHistory extends UnlistedSpecialPage
 		if( $this->period > 93 ) {
 			return ''; // too big
 		}
-		$key = wfMemcKey( 'flaggedrevs', 'ratingusers', $this->page->getArticleId(), $this->period );
+		$key = wfMemcKey( 'feedback', 'ratingusers', $this->page->getArticleId(), $this->period );
 		// Check cache
 		if( !$this->doPurge ) {
 			$set = $wgMemc->get($key);
@@ -641,7 +641,7 @@ class RatingHistory extends UnlistedSpecialPage
 	
 	public function purgePage() {
 		global $wgUploadDirectory;
-		foreach( FlaggedRevs::getFeedbackTags() as $tag => $weight ) {
+		foreach( ReaderFeedback::getFeedbackTags() as $tag => $weight ) {
 			$dir = "{$wgUploadDirectory}/graphs/".$this->page->getArticleId()."/{$tag}/";
 			if( is_dir( $dir ) ) {
 				$handle = opendir( $dir );

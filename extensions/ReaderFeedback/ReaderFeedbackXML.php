@@ -6,7 +6,7 @@ class ReaderFeedbackXML {
 	 * @param int $selected, selected level
 	 */
 	public static function getTagMenu( $selected = '' ) {
-		wfLoadExtensionMessages( 'FlaggedRevs' );
+		wfLoadExtensionMessages( 'ReaderFeedback' );
 		$s  = "<label for='wpRatingTag'>" . wfMsgHtml('revreview-tagfilter') . "</label>&nbsp;";
 		$s .= Xml::openElement( 'select', array('name' => 'ratingtag', 'id' => 'wpRatingTag') );
 		foreach( FlaggedRevs::getFeedbackTags() as $tag => $weight ) {

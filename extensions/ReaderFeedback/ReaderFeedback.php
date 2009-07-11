@@ -59,11 +59,15 @@ $wgFeedbackAge = 7 * 24 * 3600;
 # How long before stats page is updated?
 $wgFeedbackStatsAge = 2 * 3600; // 2 hours
 
+# URL location for readerfeedback.css and readerfeedback.js
+# Use a literal $wgScriptPath as a placeholder for the runtime value of $wgScriptPath
+$wgFeedbackStylePath = '$wgScriptPath/extensions/ReaderFeedback';
+
 # End of configuration variables.
 #########
 
 # Bump this number every time you change readerfeedback.css/readerfeedback.js
-$wgFeedbackStyleVersion = 60;
+$wgFeedbackStyleVersion = 1;
 
 $dir = dirname(__FILE__) . '/';
 $langDir = $dir . 'language/';
@@ -73,9 +77,10 @@ $wgPHPlotDir = $dir . 'phplot-5.0.5';
 
 $wgAutoloadClasses['ReaderFeedback'] = $dir.'ReaderFeedback.class.php';
 $wgAutoloadClasses['ReaderFeedbackHooks'] = $dir.'ReaderFeedback.hooks.php';
+$wgExtensionMessagesFiles['ReaderFeedback'] = $langDir . 'ReaderFeedback.i18n.php';
 
 # Load reader feedback UI
-$wgAutoloadClasses['ReaderFeedback'] = $dir . 'specialpages/ReaderFeedback_body.php';
+$wgAutoloadClasses['ReaderFeedbackPage'] = $dir . 'specialpages/ReaderFeedback_body.php';
 
 # Page rating history
 $wgAutoloadClasses['RatingHistory'] = $dir . 'specialpages/RatingHistory_body.php';
@@ -93,7 +98,11 @@ $wgSpecialPageGroups['LikedPages'] = 'quality';
 ######### Hook attachments #########
 
 # Add review form and visiblity settings link
-$wgHooks['SkinAfterContent'][] = 'ReaderFeedbackHooks::onSkinAfterContent';
+$wgHooks['SkinAfterContent'][] = 'ReaderFeedbackHooks::addFeedbackForm';
+
+# Rating link
+$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'ReaderFeedbackHooks::addRatingLink';
+$wgHooks['SkinTemplateToolboxEnd'][] = 'ReaderFeedbackHooks::ratingToolboxLink';
 
 # Add CSS/JS as needed
 $wgHooks['BeforePageDisplay'][] = 'ReaderFeedbackHooks::injectStyleAndJS';
@@ -113,7 +122,7 @@ $wgHooks['SpecialPage_initList'][] = 'efLoadReaderFeedbackSpecialPages';
 function efLoadReaderFeedbackSpecialPages( &$list ) {
 	global $wgSpecialPages, $wgFeedbackNamespaces;
 	if( !empty($wgFeedbackNamespaces) ) {
-		$list['ReaderFeedback'] = $wgSpecialPages['ReaderFeedback'] = 'ReaderFeedback';
+		$list['ReaderFeedback'] = $wgSpecialPages['ReaderFeedback'] = 'ReaderFeedbackPage';
 		$list['RatingHistory'] = $wgSpecialPages['RatingHistory'] = 'RatingHistory';
 		$list['ProblemPages'] = $wgSpecialPages['ProblemPages'] = 'ProblemPages';
 		$list['LikedPages'] = $wgSpecialPages['LikedPages'] = 'LikedPages';
@@ -122,7 +131,7 @@ function efLoadReaderFeedbackSpecialPages( &$list ) {
 }
 
 # AJAX functions
-$wgAjaxExportList[] = 'ReaderFeedback::AjaxReview';
+$wgAjaxExportList[] = 'ReaderFeedbackPage::AjaxReview';
 
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efReaderFeedbackSchemaUpdates';

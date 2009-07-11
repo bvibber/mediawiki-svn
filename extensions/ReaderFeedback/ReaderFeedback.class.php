@@ -6,13 +6,13 @@ class ReaderFeedback {
 	protected static $loaded = false;
 
 	public static function load() {
-		global $wgFlaggedRevsFeedbackTags;
+		global $wgFeedbackTags;
 		if( self::$loaded ) return true;
-		foreach( $wgFlaggedRevsFeedbackTags as $tag => $weight ) {
+		foreach( $wgFeedbackTags as $tag => $weight ) {
 			# Tag names used as part of file names. "Overall" tag is a
 			# weighted aggregate, so it cannot be used either.
 			if( !preg_match('/^[a-zA-Z]{1,20}$/',$tag) || $tag === 'overall' ) {
-				throw new MWException( 'FlaggedRevs given invalid tag name!' );
+				throw new MWException( 'ReaderFeedback given invalid tag name!' );
 			}
 			self::$feedbackTagWeight[$tag] = $weight;
 			for( $i=0; $i <= 4; $i++ ) {
@@ -42,6 +42,8 @@ class ReaderFeedback {
 		self::load();
 		return self::$feedbackTagWeight[$tag];
 	}
+	
+	################# Utility functions #################
 
 	/**
 	 * @param string $val
@@ -76,8 +78,8 @@ class ReaderFeedback {
 	 * Get article rating for this tag for the last few days
 	 */
 	public static function getAverageRating( $article, $tag, $forUpdate=false ) {
-		global $wgFlaggedRevsFeedbackAge;
-		$cutoff_unixtime = time() - $wgFlaggedRevsFeedbackAge;
+		global $wgFeedbackAge;
+		$cutoff_unixtime = time() - $wgFeedbackAge;
 		$db = $forUpdate ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
 		$row = $db->selectRow( 'reader_feedback_history', 
 			array('SUM(rfh_total)/SUM(rfh_count) AS ave, SUM(rfh_count) AS count'),
@@ -94,11 +96,11 @@ class ReaderFeedback {
 	* @return bool
 	*/
 	public static function isPageRateable( $title ) {
-		global $wgFeedbackNamespaces, $wgFlaggedRevsWhitelist;
+		global $wgFeedbackNamespaces;
 		# FIXME: Treat NS_MEDIA as NS_FILE
 		$ns = ( $title->getNamespace() == NS_MEDIA ) ? NS_FILE : $title->getNamespace();
 		# Check for MW: pages and whitelist for exempt pages
-		if( $ns == NS_MEDIAWIKI || in_array( $title->getPrefixedDBKey(), $wgFlaggedRevsWhitelist ) ) {
+		if( $ns == NS_MEDIAWIKI ) {
 			return false;
 		}
 		return ( in_array($ns,$wgFeedbackNamespaces) && !$title->isTalkPage() );
@@ -136,7 +138,7 @@ class ReaderFeedback {
 		}
 		$votes = null;
 		$now = time();
-		$key = wfMemcKey( 'flaggedrevs', 'ratingtally', $page->getArticleId(), $period );
+		$key = wfMemcKey( 'feedback', 'ratingtally', $page->getArticleId(), $period );
 		// Check cache
 		if( $cache == 'useCache' ) {
 			$set = $wgMemc->get($key);
@@ -178,12 +180,12 @@ class ReaderFeedback {
 				array( 'USE INDEX' => array('revision' => 'page_timestamp') )
 			);
 			$votes = array();
-			foreach( FlaggedRevs::getFeedbackTags() as $tag => $w ) {
+			foreach( ReaderFeedback::getFeedbackTags() as $tag => $w ) {
 				$votes[$tag] = array( 0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0 );
 			}
 			// Read votes and tally the numbers
 			while( $row = $dbr->fetchObject($res) ) {
-				$dims = FlaggedRevs::expandRatings( $row->rfb_ratings );
+				$dims = ReaderFeedback::expandRatings( $row->rfb_ratings );
 				foreach( $dims as $tag => $val ) {
 					if( isset($votes[$tag]) && isset($votes[$tag][$val]) ) {
 						$votes[$tag][$val]++;
@@ -200,7 +202,7 @@ class ReaderFeedback {
 		}
 		// Output multi-column list
 		$html = "<table class='fr_reader_feedback_table' cellspacing='0'><tr>";
-		foreach( FlaggedRevs::getFeedbackTags() as $tag => $w ) {
+		foreach( ReaderFeedback::getFeedbackTags() as $tag => $w ) {
 			// Get tag average...
 			$dist = isset($votes[$tag]) ? $votes[$tag] : array();
 			$count = array_sum($dist);
@@ -253,8 +255,8 @@ class ReaderFeedback {
 	public static function getJSFeedbackParams() {
 		self::load();
 		# Param to pass to JS function to know if tags are at quality level
-		global $wgFlaggedRevsFeedbackTags;
-		$params = array( 'tags' => (object)$wgFlaggedRevsFeedbackTags );
+		global $wgFeedbackTags;
+		$params = array( 'tags' => (object)$wgFeedbackTags );
 		return Xml::encodeJsVar( (object)$params );
 	}
 

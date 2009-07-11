@@ -9,7 +9,7 @@ function updateFeedbackForm() {
 	var allzero = true;
 	var ratingform = document.getElementById('mw-feedbackselects');
 	if( !ratingform ) return;
-	for( tag in wgFlaggedRevsParams2.tags ) {
+	for( tag in wgFeedbackParams.tags ) {
 		var controlName = "wp" + tag;
 		var levels = document.getElementsByName(controlName);
 		var selectedlevel = 2; // default
@@ -89,7 +89,7 @@ wgAjaxFeedback.ajaxCall = function() {
 		selects[i].disabled = "disabled";
 	}
 	// Send!
-	sajax_do_call( "ReaderFeedback::AjaxReview", args, wgAjaxFeedback.processResult );
+	sajax_do_call( "ReaderFeedbackPage::AjaxReview", args, wgAjaxFeedback.processResult );
 	// If the request isn't done in 10 seconds, allow user to try again
 	wgAjaxFeedback.timeoutID = window.setTimeout(
 		function() { wgAjaxFeedback.inprogress = false; wgAjaxFeedback.unlockForm(); },
