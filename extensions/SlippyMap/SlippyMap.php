@@ -39,7 +39,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['SlippyMap']	= $dir . 'SlippyMap.i18n.php';
 
 /* The classes which make up our extension*/
-$wgAutoloadClasses['SlippyMapHook']				= $dir . 'SlippyMap.hooks.php';
+$wgAutoloadClasses['SlippyMapHook']				= $dir . 'SlippyMap.hook.php';
 $wgAutoloadClasses['SlippyMap']					= $dir . 'SlippyMap.class.php';
 $wgAutoloadClasses['SlippyMapExportCgiBin']		= $dir . 'SlippyMapExportCgiBin.class.php';
 $wgAutoloadClasses['WorldWind']					= $dir . 'SlippyMap.worldwind.php';
