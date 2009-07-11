@@ -1,182 +1,333 @@
 <?php
-/** 
-* 
-* @file
-* 
-* @description
-* OpenStreetMap SlippyMap - MediaWiki extension
-*
-* This defines what happens when <slippymap> tag is placed in the wikitext
-*
-* We show a map based on the lat/lon/zoom data passed in. This extension brings in
-* the OpenLayers javascript, to show a slippy map.
-*
-* Usage example:
-* <slippymap lat="51.485" lon="-0.15" z="11" w="300" h="200" layer="osmarender" marker="0" />
-*
-* Tile images are not cached local to the wiki.
-* To acheive this (remove the OSM dependency) you might set up a squid proxy,
-* and modify the requests URLs here accordingly.
-*
-* This file should be placed in the mediawiki 'extensions' directory
-* ...and then it needs to be 'included' within LocalSettings.php
-*
-* @license
-* 
-* Copyright 2008 Harry Wood, Jens Frank, Grant Slater, Raymond Spekking and others
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*
-*/
+/**
+ * Classes for SlippyMap extension
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 class SlippyMap {
 
-	var $mapId;
-	var $lat;
-	var $lon;
-	var $width;
-	var $height;
-	var $mode;
-	var $layer;
-	var $zoom;
-	var $caption;
-	var $scale;
-	var $resolution;
-	var $resolutions;
-	var $scales;
+	/* Fields */
 	
 	/**
-	 * minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude
+	 * @var object
 	 */
-	var $bounds;
-	
-	/*
-	 * Constants
-	 * Using static members instead of constants because arrays can't be const
-	 */	
-	protected static $DEFAULT_IMAGE_FORMAT = "png";
-	
-	/**
-	 * Supported map modes and their layer types
-	 */
-	public static $MAP_MODES = array( 
-		"mapnik", "osmarender", "maplint", "cycle"
-	);
-	
-	protected static $MAP_OPTIONS = array ( 
-		'staticRenderService' => 'http://tile.openstreetmap.org/cgi-bin/export?bbox=##bbox##&scale=##scale##&format=##format##',
-		//'staticRenderService' => null,
-		'defaultZoomLevel' => 14,
-		
-		/* from OpenLayers XYZ.js */
-		'defaultLayer' => 'mapnik',
-		'numZoomLevels' => 19,
-		'maxResolution' => 156543.0339,
-		'unit' => 'm',
-		'sphericalMercator' => true
-	);
-	
-	/** borrowed from OpenLayers.DOTS_PER_UNIT */
-	protected static $INCHES_PER_UNIT = array (
-	   	'dd' => 4374754,
-	   	'm' => 39.3701
-	);
-    
-	/** borrowed from OpenLayers.DOTS_PER_INCH */
-	protected static $DOTS_PER_INCH = 72;
-    
-	/** pixel size in meters */
-	protected static $PIXEL_SIZE = 0.00028;
-	
-	/**
-	 * This constructs the map object
-	 *
-	 * @param $mapParams array of map parameters
-	 */
-	public function __construct( $mapParams ) {
-		global $wgOut, $wgUser;
-		wfLoadExtensionMessages( 'SlippyMap' );
+	protected $mParser;
 
-		$this->errors = $this->validate();
-		if ( ! $this->errors ) 
-			return false;
-		
-		self::initMap( $mapParams );	
-		self::setSize();
-		self::setZoom();		
-		self::initResolutionsAndScales();
-		self::setBounds();
+	/**
+	 *
+	 */
+	protected $mArgsRequired = array(
+		'lat',
+		'lon'
+	);
+
+	protected $mArgsList = array(
+		'lat' => 'mLat',
+		'lon' => 'mLon',
+		'zoom' => 'mZoom',
+		'width' => 'mWidth',
+		'height' => 'mHeight',
+		'mode' => 'mMode',
+		'layer' => 'mLayer',
+		'caption' => 'mCaption',
+	);
+
+	/**
+	 * An array of error messages that apply to our arguments as
+	 * extracted from extractOptions.
+	 *
+	 * Here because we want to announce all problems with the
+     * extension usage at once to the user instead of playing the fix
+     * one parameter error at a time game.
+	 *
+	 * @var array
+	 */
+	protected $mArgsError = array();
+
+	/**
+	 */
+	protected $mArgs = array();
+
+	/* Functions */
+
+	/**
+	 * Constructor
+	 *
+	 * @param object $parser Parser instance
+	 */
+	public function __construct( $parser ) {
+		$this->mParser = $parser;
+		$this->mMode = 'osm';
 	}
 
 	/**
-	 * This initializes the map object, with parameters
+	 * Extract and validate options from input and argv.
 	 *
-	 * @param $mapParams array of map parameters
+     * Returns a boolean indicating whether there were any errors
+	 * during argument processing.
+	 *
+	 * @param string $input Parser hook input
+	 * @param string $argv Parser hook arguments
+	 * @return boolean
 	 */
-	public function initMap( $mapParams ) {
-		$this->mapId = $mapParams['mapId'];
-		$this->lat = isset( $mapParams['lat'] ) ? $mapParams['lat'] : null;
-		$this->lon = isset( $mapParams['lon'] ) ? $mapParams['lon'] : null;
-		$this->width = isset( $mapParams['w'] ) ? $mapParams['w'] : null;
-		$this->height = isset( $mapParams['h'] ) ? $mapParams['h'] : null;
-		$this->mode = isset( $mapParams['mode'] ) ? $mapParams['mode'] : null;
-		$this->zoom = isset( $mapParams['zoom'] ) ? $mapParams['zoom'] : null;
-		$this->caption = isset( $mapParams['caption'] ) ? $mapParams['caption'] : null;
-		$this->layer = isset( $mapParams['layer'] ) ? strtolower($mapParams['layer']) : SlippyMap::$MAP_OPTIONS['defaultLayer'];
-		$this->marker = ( ( isset( $mapParams['marker'] ) && $mapParams['marker'] != '' && $mapParams['marker'] != '0' ) ? 1 : 0 );
+	public function extractOptions( $input, $args ) {
+		wfProfileIn( __METHOD__ );
 
-		// see if the 'z' paramater is used rather than 'zoom' (and allow it)
-		if ( $this->zoom == '' && isset( $mapParams['z'] ) ) {
-			$this->zoom = $mapParams['z'];
+		/* <slippymap></slippymap> */
+		if ( $input === '' ) {
+			$this->mArgsError[] = wfMsg( 'slippymap_error_empty_element', wfMsg( 'slippymap_extname' ), wfMsg( 'slippymap_tagname' ) );
+		}
+
+		/* No arguments */
+		if ( count( $args ) == 0 ) {
+			$this->mArgsError[] = wfMsg( 'slippymap_error_missing_arguments', wfMSg( 'slippymap_tagname' ) );
+
+		/* Some arguments */
+		} else {
+
+			/* Make sure we have lat/lon/zoom */
+			foreach ($this->mArgsRequired as $requiredArg) {
+				if ( ! isset( $args[$requiredArg] ) ) {
+					$this->mArgsError[] = wfMsg( 'slippymap_error_missing_attribute_' . $requiredArg );
+				}
+			}
+
+			/* Keys that the user made up, this is a fatal error since
+			 * we want to protect our namespace
+			 */
+			foreach ( array_keys( $args ) as $user_key ) {
+				if ( ! isset( $this->mArgsList[$user_key] ) )
+					$this->mArgsError[] = wfMsg( 'slippymap_error_unknown_attribute', $user_key );
+			}
+
+			/**
+			 *  Go through the list of options and add them to our
+			 * fields if they validate.
+			 */
+			foreach ( $this->mArgsList as $key => $classVar ) {
+				if ( isset( $args[$key] ) ) {
+					$val = $args[$key];
+
+					if ( $this->validateArgument($key, $val) ) {
+						$this->$classVar = $args[$key];
+					} else {
+						/* Invalid value */
+					}
+				}
+			}
+		}
+
+		if ( count( $this->mArgsError ) == 0 ) {
+			$this->defaultOptions();
+			wfProfileOut( __METHOD__ );
+			return true;
+		} else {
+			return false;
 		}
 	}
 
 	/**
-	 * This generates map html code
-	 *
-	 * @return string: containing map html code
+	 * Fill in defaults for those options for those options that
+	 * weren't set during extractOptions()
 	 */
-	public function getMap() {
+	public function defaultOptions( ) {
+		global $wgSlippyMapModes;
+
+		if ( ! isset( $this->mMode ) ) {
+			$modes = array_keys( $wgSlippyMapModes );
+			$default_mode = $modes[0];
+
+			$this->mMode = $default_mode;
+		}
+
+		if ( ! isset( $this->mLayer ) ) {
+			$this->mLayer = $wgSlippyMapModes[$this->mMode]['layers'][0];
+		}
+
+		if ( ! isset( $this->mZoom ) ) {
+			$this->mZoom = $wgSlippyMapModes[$this->mMode]['defaultZoomLevel'];
+		}
+
+		if ( ! isset( $this->mMarker ) ) {
+			$this->mMarker = 0;
+		}
+
+		if ( ! isset( $this->mCaption ) ) {
+			$this->mCaption = '';
+		}
+
+		if ( ! isset( $this->mWidth ) || ! isset( $this->mHeight ) ) {
+			$thumbsize = self::getUserThumbSize();
+
+			if ( ! isset( $this->mWidth ) )
+				$this->mWidth = $thumbsize;
+			if ( ! isset( $this->mHeight ) )
+				$this->mHeight = $thumbsize * .72;
+
+			// trim off the 'px' on the end of pixel measurement numbers (ignore if present)
+			if ( substr( $this->mWidth, -2 ) == 'px' )
+				$this->mWidth = (int) substr( $this->width, 0, -2 );
+
+			if ( substr( $this->mHeight, - 2 ) == 'px' )
+				$this->mHeight = (int) substr( $this->height, 0, -2 );
+		}
+	}
+
+	private static function getUserThumbSize() {
+		global $wgUser, $wgOut, $wgThumbLimits;
+
+		return $wgThumbLimits[$wgUser->getOption( 'thumbsize' )];
+	}
+
+	/**
+	 * Validate the values of a keys listed in $this->mArgsList.
+	 *
+	 * @param string $key A key we know to be good
+	 * @param string $val A user supplied value to validate for the key
+	 */
+	private function validateArgument( $key, $val ) {
+		global $wgSlippyMapSizeRestrictions;
+		global $wgSlippyMapModes;
+		global $wgLang;
+
+		wfProfileIn( __METHOD__ );
+
+		$ok = false;
+
+		switch ( $key ) {
+			case 'lat':
+			case 'lon':
+				if ( ! preg_match( '~^ -? [0-9]{1,3} (?: \\. [0-9]{1,20} )? $~x', $val ) ) {
+					$this->mArgsError[] = wfMsg( 'slippymap_error_invalid_attribute_' . $key . '_value_nan', $val );
+				} else {
+					/* Note: I'm not calling $wgLang->formatNum( $val ) here on purpose */
+					if ( $key === 'lat' && ( $val > 90 || $val < -90 ) ) {
+						$this->mArgsError[] = wfMsg( 'slippymap_error_invalid_attribute_' . $key . '_value_out_of_range', $val );
+					} else if ( $key === 'lon' && ( $val > 180 || $val < -180 ) ) {
+						$this->mArgsError[] = wfMsg( 'slippymap_error_invalid_attribute_' . $key . '_value_out_of_range', $val );
+					} else {
+						$ok = true;
+					}
+				}
+				break;
+
+			case 'zoom':
+				if ( ! preg_match( '~^ [0-9]{1,2} $~x', $val ) ) {
+					$this->mArgsError[] = wfMsg( 'slippymap_error_invalid_attribute_' . $key . '_value_nan', $val );
+				} else {
+					/* TODO: Make configurable depending on layer settings */
+					$min_zoom = 0;
+					$max_zoom = 18;
+
+					/* Note: I'm not calling $wgLang->formatNum( $val ) here on purpose */
+					if ( ( $val > $max_zoom || $val < $min_zoom ) ) {
+						$this->mArgsError[] = wfMsg( 'slippymap_error_invalid_attribute_' . $key . '_value_out_of_range', $val, $min_zoom, $max_zoom );
+					} else {
+						$ok = true;
+					}
+				}
+				break;
+
+			case 'width':
+			case 'height':
+				if ( ! preg_match( '~^ [0-9]{1,20} $~x', $val ) ) {
+					$this->mArgsError[] = wfMsg( 'slippymap_error_invalid_attribute_' . $key . '_value_nan', $val );
+				} else {
+					list ($min_width, $max_width)   = $wgSlippyMapSizeRestrictions['width'];
+					list ($min_height, $max_height) = $wgSlippyMapSizeRestrictions['height'];
+
+					if ( $key == 'width' && ( $val > $max_width || $val < $min_width ) ) {
+						$this->mArgsError[] = wfMsg(
+							'slippymap_error_invalid_attribute_' . $key . '_value_out_of_range',
+							$val,
+							$min_width,
+							$max_width
+						);
+					} else if ( $key == 'height' && ( $val > $max_height || $val < $min_height ) ) {
+						$this->mArgsError[] = wfMsg(
+							'slippymap_error_invalid_attribute_' . $key . '_value_out_of_range',
+							$val,
+							$min_width,
+							$max_width
+						);
+					} else {
+						$ok = true;
+					}
+				}
+				break;
+
+			case 'mode':
+				$modes = array_keys( $wgSlippyMapModes );
+				if ( ! in_array( $val, $modes ) ) {
+					$this->mArgsError[] = wfMsg(
+						'slippymap_error_invalid_attribute_' . $key . '_value_not_a_mode',
+						$val,
+						$wgLang->listToText( array_map( array( &$this, 'addHtmlTT' ), $modes ) )
+					);
+				} else {
+					$ok = true;
+				}
+				break;
+			case 'layer':
+				/* TODO validate */
+			case 'caption':
+				/* Anything goes as far as the caption is concerned. It's the parser's problem if it's not OK */
+				$ok = true;
+				break;
+
+			default:
+				die("internal error: Unknown parameter");
+		}
+
+		wfProfileOut( __METHOD__ );
+		return $ok;
+	}
+
+	/**
+	 * Callback function for array_map to add <tt> to array elements.
+	 */
+	private static function addHtmlTT( $str ) {
+		return "<tt>$str</tt>";
+	}
+
+	/**
+	 * Return HTML output for the parser tag, hopefully a rendered map
+	 * but if we've had any errors return an error message instead.
+	 *
+	 * @param int id
+	 */
+	public function render( $id ) {
 		global $wgOut, $wgJsMimeType;
+		global $wgSlippyMapModes;
 
 		$mapcode = <<<EOT
 
-			<script type="{$wgJsMimeType}">slippymaps.push(new slippymap_map({$this->mapId}, {
-				mode: '{$this->mode}',
-				layer: '{$this->layer}',
-				lat: {$this->lat},
-				lon: {$this->lon},
-				zoom: {$this->zoom},
-				width: {$this->width},
-				height: {$this->height},
-				marker: {$this->marker}
+			<script type="{$wgJsMimeType}">slippymaps.push(new slippymap_map($id, {
+				mode: '{$this->mMode}',
+				layer: '{$this->mLayer}',
+				lat: {$this->mLat},
+				lon: {$this->mLon},
+				zoom: {$this->mZoom},
+				width: {$this->mWidth},
+				height: {$this->mHeight},
+				marker: {$this->mMarker}
 			}));</script>
 			 
 			<!-- mapframe -->
-			<div class="mapframe" style="width:{$this->width}px">
+			<div class="mapframe" style="width:{$this->mWidth}px">
 EOT;
 
-		// TODO: NOSCRIPT support
-		if ( isset( SlippyMap::$MAP_OPTIONS['staticRenderService'] ) ) {
-			$mapcode .= self::getStaticMap();
+		$static_rendering = $wgSlippyMapModes[$this->mMode]['static_rendering'];
+		if ( isset( $static_rendering ) ) {
+			$mapcode .= self::getStaticMap( $id, $static_rendering );
 		} else {
-			$mapcode .= self::getDynamicMap();
+			$mapcode .= self::getDynamicMap( $id );
 		}
 
-		if ( $this->caption ) {
-			$mapcode .= '<div class="mapcaption">{$this->caption}</div>';
+		if ( $this->mCaption ) {
+			$mapcode .= "<div class='mapcaption'>" . $this->mParser->recursiveTagParse($this->mCaption) . "</div>";
 		}
 
 		$mapcode .= <<<EOT
@@ -188,17 +339,18 @@ EOT;
 		return $mapcode;
 	}
 
+
 	/**
 	 * This generates dynamic map code
 	 *
 	 * @return string: containing dynamic map html code
 	 */
-	protected function getDynamicMap() {
+	protected function getDynamicMap( $id ) {
 		global $wgJsMimeType;
 		$mapcode = <<<EOT
 				<!-- map div -->
-				<div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
-					<script type="{$wgJsMimeType}">slippymaps[{$this->mapId}].init();</script>
+				<div id="map{$id}" class="map" style="width:{$this->mWidth}px; height:{$this->mHeight}px;">
+					<script type="{$wgJsMimeType}">slippymaps[{$id}].init();</script>
 				<!-- /map div -->
 				</div>
 EOT;
@@ -210,269 +362,77 @@ EOT;
 	 *
 	 * @return string: containing static map html code
 	 */	
-	protected function getStaticMap() {
-			$clickToActivate = wfMsg('slippymap_clicktoactivate');
-			$mapcode = <<<EOT
+	protected function getStaticMap( $id, $static_rendering ) {
+		$staticType				= $static_rendering['type'];
+		$staticOptions			= $static_rendering['options'];
 
-					<!-- map div -->
-					<div id="map{$this->mapId}" class="map" style="width:{$this->width}px; height:{$this->height}px;">
-						<!-- Static preview -->
-						<img
-							id="mapPreview{$this->mapId}"
-							class="mapPreview"
-							src="{$this->getImgSrc()}"
-							onclick="slippymaps[{$this->mapId}].init();"
-							width="{$this->width}"
-							height="{$this->height}"
-							alt="Slippy Map"
-							title="{$clickToActivate}"/>
-					<!-- /map div -->
-					</div>
+		$static = new $staticType($this->mLat, $this->mLon, $this->mZoom, $this->mWidth, $this->mHeight, $staticOptions);
+		$rendering_url = $static->getUrl();
+
+		$clickToActivate = wfMsgHtml('slippymap_clicktoactivate');
+		$mapcode = <<<EOT
+
+				<!-- map div -->
+				<div id="map{$id}" class="map" style="width:{$this->mWidth}px; height:{$this->mHeight}px;">
+					<!-- Static preview -->
+					<img
+						id="mapPreview{$id}"
+						class="mapPreview"
+						src="{$rendering_url}"
+						onclick="slippymaps[{$id}].init();"
+						width="{$this->mWidth}"
+						height="{$this->mHeight}"
+						alt="Slippy Map"
+						title="{$clickToActivate}"/>
+				<!-- /map div -->
+				</div>
 EOT;
 
 		return $mapcode;
 	}
 
+	/* /AIDS */
+
 	/**
-	 * This sets the zoom level
-	 *
-	 * @param $zoom optional
+	 * Reads $this->mArgsError and returns HTML explaining what the
+	 * user did wrong.
 	 */
-	public function setZoom( $zoom = null ) {
-		if ( $this->zoom == '' ) $this->zoom = SlippyMap::$MAP_OPTIONS['defaultZoomLevel'];
+	public function renderErrors() {
+		return $this->mParser->recursiveTagParse( $this->errorHtml() );
 	}
 
-	/**
-	 * This sets the map size
-	 *
-	 */			
-	public function setSize() {
-		global $wgUser, $wgOut, $wgThumbLimits;	
-		// set thumbsize based on user preferences
-		$thumbsize = $wgThumbLimits[$wgUser->getOption( 'thumbsize' )];
-
-		// default values (meaning these parameters can be missed out)
-		if ( $this->width == '' ) $this->width = $thumbsize;
-		if ( $this->height == '' ) $this->height = round( $thumbsize * .72 );
-
-		// trim off the 'px' on the end of pixel measurement numbers (ignore if present)
-		if ( substr( $this->width, -2 ) == 'px' )
-			$this->width = (int) substr( $this->width, 0, -2 );
-
-		if ( substr( $this->height, - 2 ) == 'px' )
-			$this->height = (int) substr( $this->height, 0, -2 );
-
-	}
-
-	/**
-	 * This sets the map bounds
-	 *
-	 */
-	public function setBounds() {
-
-		/* Determine scale and map bounds for static render request */
-		$this->resolution = $this->resolutions[round( $this->zoom )];
-		$this->scale = self::getScaleFromResolution( $this->resolution );
-
-		/*
-		 * Calculate width for Mapnik output using a standard pixel size of 0.00028m
-		 * @see http://trac.mapnik.org/wiki/ScaleAndPpi
-		 */
-		$w_deg = $this->width * SlippyMap::$PIXEL_SIZE * $this->scale;
-		$h_deg = $this->height * SlippyMap::$PIXEL_SIZE * $this->scale;
-
-		$center = array( $this->lon, $this->lat );
-		if ( SlippyMap::$MAP_OPTIONS['sphericalMercator'] ) {
-			// Calculate bounds within a spherical mercator projection if that is what the scale is based on
-			$mercatorCenter = SlippyMap::forwardMercator( $center );
-			$mbounds = array( 
-				$mercatorCenter[0] - $w_deg / 2, 
-				$mercatorCenter[1] - $h_deg / 2, 
-				$mercatorCenter[0] + $w_deg / 2, 
-				$mercatorCenter[1] + $h_deg / 2 
-			);
-			$this->bounds = SlippyMap::inverseMercator( $mbounds );
-		}
-		else {
-			// Calculate bounds within WGS84
-			$this->bounds = array( $center[0] - $w_deg / 2, $center[1] - $h_deg / 2, $center[0] + $w_deg / 2, $center[1] + $h_deg / 2 );
-		}
-	}
-
-	/**
-	 * This retreives the image source
-	 *
-	 */	
-	public function getImgSrc() {
-		if ( isset( SlippyMap::$MAP_OPTIONS['staticRenderService'] ) ) {
-			return $this->parameterize( SlippyMap::$MAP_OPTIONS['staticRenderService'], 
-					array( 'bbox' => implode( ',', $this->bounds ),
-					  'scale' => $this->scale,
-					  'lat' => $this->lat,
-					  'long' => $this->lon,
-					  'z' => $this->zoom,
-					  'w' => $this->width,
-					  'h' => $this->height,
-					  'format' => SlippyMap::$DEFAULT_IMAGE_FORMAT 
-				)
-			);
-		}
-	}
-	
-	/**
-	 * Substitutes parameters in a template using double hash sign delimiters, for example: 
-	 * 
-	 * <code>
-	 *      <tag xml:lang="##lang##"/>
-	 * </code>
-	 * 
-	 * A corresponding parameter "lang" may then be used to provide a replacement that is
-	 * transparently substituted.
-	 *
-	 * @param string $template	The template text
-	 * @param array $params		A map with parameter names as keys and their replacements as values
-	 * @return string	Parameterized text
-	 */
-	protected static function parameterize( $template, $params ) {
-		foreach ( $params as $key => $value ) {
-			$template = str_replace( "##{$key}##", $value, $template );
-		}
-		return $template;
-	}
-	
-	/**
-	* Borrowed from OpenLayers.Util.getScaleFromResolution
-	*/
-	protected function getScaleFromResolution( $resolution ) {
-		return $resolution * SlippyMap::$INCHES_PER_UNIT[SlippyMap::$MAP_OPTIONS['unit']] * SlippyMap::$DOTS_PER_INCH;
-	}
-    
-	/**
-	* Determines resolutions and scales based on a maximum resolution and number of zoom levels
-	* Borrowed from OpenLayers.Layer.initResolutions
-	*/
-	protected function initResolutionsAndScales() {
-       		$this->resolutions = array();
-	    	$base = 2;
-		
-    		for ( $i = 0; $i < SlippyMap::$MAP_OPTIONS['numZoomLevels']; $i++ ) {
-    			$this->resolutions[$i] = SlippyMap::$MAP_OPTIONS['maxResolution'] / pow( $base, $i );
-			$this->scales[$i] = $this->getScaleFromResolution( $this->resolutions[$i] );
-		}
-	}
-    
-	/**
-	 * Convert from WGS84 to spherical mercator
-	 */
-	protected static function forwardMercator($lonlat) {
-		for ($i=0; $i<count($lonlat); $i+=2) {
-			/* lon */
-			$lonlat[$i] = $lonlat[$i] * (2 * M_PI * 6378137 / 2.0) / 180.0;
-			
-			/* lat */
-			$lonlat[$i+1] = log(tan((90 + $lonlat[$i+1]) * M_PI / 360.0)) / (M_PI / 180.0);
-			$lonlat[$i+1] = $lonlat[$i+1] * (2 * M_PI * 6378137 / 2.0) / 180.0;
-		}		
-		return $lonlat;
-	}
-	
-	/**
-	 * Convert from spherical mercator to WGS84
-	 */
-	protected static function inverseMercator($lonlat) {
-		for ($i=0; $i<count($lonlat); $i+=2) {
-			/* lon */
-			$lonlat[$i] = $lonlat[$i] / ((2 * M_PI * 6378137 / 2.0) / 180.0);
-			
-			/* lat */
-			$lonlat[$i+1] = $lonlat[$i+1] / ((2 * M_PI * 6378137 / 2.0) / 180.0);
-			$lonlat[$i+1] = 180.0 / M_PI * (2 * atan(exp($lonlat[$i+1] * M_PI / 180.0)) - M_PI / 2);
-		}		
-		
-		return $lonlat;
-	}
-
-	/**
-	 * This checks that the map mode is valid
-	 *
-	 * @param $mode string
-	 */
-	public function validMode( $mode ) {
-		global $wgMapModes;
-		$this->errors = '';
-		
-		if ( ! in_array( $mode, $wgMapModes ) ) {
-			$this->errors .= wfMsg( 'slippymap_invalidmode',  htmlspecialchars( $this->mode ) );
-			return false;
-		}
-
-		return true;
-	}
-	
-	/**
-	 * This validates the map parameters
-	 *
-	 */
-	public function validate() {
-		wfLoadExtensionMessages( 'SlippyMap' );
-		$errors = null;
-		
-		if ( $this->lat == '' ) $errors .= wfMsg( 'slippymap_latmissing' ) . ' ';
-		if ( $this->lon == '' ) $errors .= wfMsg( 'slippymap_lonmissing' ) . ' ';
-		if ( $this->zoom == '' ) $errors .= wfMsg( 'slippymap_zoommissing' ) . ' ';
-
-		if ( $errors == '' ) {
-			// no errors so far. Now check the values
-			if ( !is_numeric( $this->width ) ) {
-				$errors = wfMsg( 'slippymap_widthnan', $this->width );
-			} else if ( !is_numeric( $this->height ) ) {
-				$errors = wfMsg( 'slippymap_heightnan', $this->height );
-			} else if ( !is_numeric( $this->zoom ) ) {
-				$errors = wfMsg( 'slippymap_zoomnan', $this->zoom );
-			} else if ( !is_numeric( $this->lat ) ) {
-				$errors = wfMsg( 'slippymap_latnan', $this->lat );
-			} else if ( !is_numeric( $this->lon ) ) {
-				$errors = wfMsg( 'slippymap_lonnan', $this->lon );
-			} else if ( $this->width > 1000 ) {
-				$errors = wfMsg( 'slippymap_widthbig' );
-			} else if ( $this->width < 100 ) {
-				$errors = wfMsg( 'slippymap_widthsmall' );
-			} else if ( $this->height > 1000 ) {
-				$errors = wfMsg( 'slippymap_heightbig' );
-			} else if ( $this->height < 100 ) {
-				$errors = wfMsg( 'slippymap_heightsmall' );
-			} else if ( $this->lat > 90 ) {
-				$errors = wfMsg( 'slippymap_latbig' );
-			} else if ( $this->lat < -90 ) {
-				$errors = wfMsg( 'slippymap_latsmall' );
-			} else if ( $this->lon > 180 ) {
-				$errors = wfMsg( 'slippymap_lonbig' );
-			} else if ( $this->lon < -180 ) {
-				$errors = wfMsg( 'slippymap_lonsmall' );
-			} else if ( $this->zoom < 0 ) {
-				$errors = wfMsg( 'slippymap_zoomsmall' );
-			} else if ( $this->zoom == 18 ) {
-				$errors = wfMsg( 'slippymap_zoom18' );
-			} else if ( $this->zoom > 17 ) {
-				$errors = wfMsg( 'slippymap_zoombig' );
+	protected function errorHtml() {
+		if ( count( $this->mArgsError ) == 1 ) {
+			return
+				Xml::tags(
+					'strong',
+					array( 'class' => 'error' ),
+					wfMsg( 'slippymap_error',
+						   wfMsg( 'slippymap_extname' ),
+						   $this->mArgsError[0]
+					)
+				);
+		} else {
+			$li = '';
+			foreach ($this->mArgsError as $error) {
+				$li .= Xml::tags(
+					'li',
+					array( 'class' => 'error' ),
+					$error
+				);
 			}
-		}
-	
-		return $errors;
-	}
-	
-	/**
-	 * This outputs the errors
-	 *
-	 * @return string error
-	 */
-	public function getErrors() {
-		if ( $this->errors != "" ) {
-			// Something was wrong. Spew the error message and input text.
-			$output  = '';
-			$output .= "<span class=\"error\">" . wfMsg( 'slippymap_maperror' ) . ' ' . $this->errors . "</span><br />";
-			$output .= htmlspecialchars( $input );
-			return $output;
+			return
+				Xml::tags(
+					'strong',
+					array( 'class' => 'error' ),
+					wfMsgNoTrans( 'slippymap_errors', wfMsgNoTrans( 'slippymap_extname' ) )
+					. 
+					Xml::tags(
+						'ul',
+						null,
+						$li
+					)
+				);
 		}
 	}
 }

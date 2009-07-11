@@ -46,7 +46,7 @@ var slippymaps = new Array();
 var mapId = 0;
 var layer = null;
 
-if (autoInitMaps) {
+if (wgSlippyMapSlippyByDefault) {
 	addOnloadHook(slippymap_init);
 }
 	
@@ -164,7 +164,6 @@ slippymap_map.prototype.ww_create = function(mapId, lon, lat, zoom, layer) {
         		{T:"104"}, { tileSize: new OpenLayers.Size(512,512) });
 	// TODO
 	} else if (this.layer  == 'landsat') {
-
 	// TODO
 	} else if (this.layer == 'bluemarble') {
 
@@ -206,7 +205,7 @@ slippymap_map.prototype.getWikicode = function() {
 	
 	prompt(
 	    wgSlippyMapCode,
-	    "<slippymap h=" + size.h + " w=" + size.w + " z=" + Z + " lat=" + LL.lat + " lon=" + LL.lon + " mode=" + this.mode + " layer=" + this.layer + " marker=" + this.marker + " />"
+	    "<slippymap lat=" + LL.lat + " lon=" + LL.lon + " zoom=" + Z + " width=" + size.w + " height=" + size.h + " mode=" + this.mode + " layer=" + this.layer + (this.marker == 0 ? "" : " marker=" + this.marker) + " />"
 	);
 }
 
