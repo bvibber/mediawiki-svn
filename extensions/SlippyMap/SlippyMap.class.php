@@ -80,9 +80,17 @@ class SlippyMap {
 	public function extractOptions( $input, $args ) {
 		wfProfileIn( __METHOD__ );
 
-		/* <slippymap></slippymap> */
-		if ( $input === '' ) {
-			$this->argsError[] = wfMsg( 'slippymap_error_empty_element', wfMsg( 'slippymap_extname' ), wfMsg( 'slippymap_tagname' ) );
+		if ( isset( $input ) ) {
+			/* <slippymap> .*? </slippymap> or {{#tag:slippymap}}, not <slippymap/> */
+
+			if ( ! preg_match( '~^ \s* $~x', $input ) ) {
+				/**
+				 * Only allow whitespace, we may want to do something
+				 * with the content being passed to us in the
+				 * future
+				 */
+				$this->argsError[] = wfMsg( 'slippymap_error_tag_content_given', wfMsg( 'slippymap_tagname' ) );
+			}
 		}
 
 		/* No arguments */

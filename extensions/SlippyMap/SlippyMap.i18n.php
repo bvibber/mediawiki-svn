@@ -20,7 +20,7 @@ $messages['en'] = array(
 	'slippymap_error' => "$1 error: $2",
 	'slippymap_errors' => "$1 errors:",
 
-	'slippymap_error_empty_element' => 'Call $1 as &lt;$2 [...]/&gt;, not &lt;$2 [...]&gt;&lt;$2&gt;',
+	'slippymap_error_tag_content_given' => 'The <tt>&lt;$1&gt;</tt> tag only takes attribute arguments (&lt;$1 [...]/&gt;), not input text (&lt;$1&gt; ... &lt;/$1&gt;)',
 
 	// Required parameters
 	'slippymap_error_missing_arguments' => "You didn't supply any attributes to the &lt;$1&gt; tag, see [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax usage information] for how to call it.",

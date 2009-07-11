@@ -19,10 +19,37 @@ SlippyMap: error: Terminated empty element
 !! test
 SlippyMap: error: Empty $input and no arguments
 !! input
-<slippymap></slippymap>
-!! result
-<strong class="error">SlippyMap errors:<ul><li class="error">Call SlippyMap as &lt;slippymap [...]/&gt;, not &lt;slippymap [...]&gt;&lt;slippymap&gt;</li><li class="error">You didn't supply any attributes to the &lt;slippymap&gt; tag, see <a href="http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax" class="external text" title="http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax" rel="nofollow">usage information</a> for how to call it.</li></ul></strong>
+== Valid ==
+<slippymap lat=1 lon=2 dummy></slippymap>
+<slippymap lat=1 lon=2 dummy> </slippymap>
+<slippymap lat=1 lon=2 dummy>
 
+</slippymap>
+
+{{#tag:slippymap||lat=1|lon=2|dummy=dummy}}
+
+== Invalid ==
+<slippymap lat=1 lon=2 dummy>foo</slippymap>
+<slippymap lat=1 lon=2 dummy>bar</slippymap>
+<slippymap lat=1 lon=2 dummy>
+lat = 1
+lon = 2
+</slippymap>
+
+{{#tag:slippymap|input text|lat=1|lon=2|dummy=dummy}}
+!! result
+<a name="Valid" id="Valid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Valid">edit</a>]</span> <span class="mw-headline"> Valid </span></h2>
+<p>A dummy map
+A dummy map
+A dummy map
+</p><p>A dummy map
+</p>
+<a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
+<p><strong class="error">SlippyMap error: The <tt>&lt;slippymap&gt;</tt> tag only takes attribute arguments (&lt;slippymap [...]/&gt;), not input text (&lt;slippymap&gt; ... &lt;/slippymap&gt;)</strong>
+<strong class="error">SlippyMap error: The <tt>&lt;slippymap&gt;</tt> tag only takes attribute arguments (&lt;slippymap [...]/&gt;), not input text (&lt;slippymap&gt; ... &lt;/slippymap&gt;)</strong>
+<strong class="error">SlippyMap error: The <tt>&lt;slippymap&gt;</tt> tag only takes attribute arguments (&lt;slippymap [...]/&gt;), not input text (&lt;slippymap&gt; ... &lt;/slippymap&gt;)</strong>
+</p><p><strong class="error">SlippyMap error: The <tt>&lt;slippymap&gt;</tt> tag only takes attribute arguments (&lt;slippymap [...]/&gt;), not input text (&lt;slippymap&gt; ... &lt;/slippymap&gt;)</strong>
+</p>
 !! end
 
 
