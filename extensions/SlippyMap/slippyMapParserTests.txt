@@ -35,7 +35,7 @@ SlippyMap: Missing lat/lon/zoom argument
 == Invalid ==
 <slippymap lon=-21 zoom=12/>
 <slippymap lat=64 zoom=12/>
-<slippymap lat=64 lon=-21 />
+<slippymap lat=64 lon=-21 dummy/>
 !! result
 <a name="Valid" id="Valid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Valid">edit</a>]</span> <span class="mw-headline"> Valid </span></h2>
 <p>A dummy map
@@ -43,7 +43,7 @@ SlippyMap: Missing lat/lon/zoom argument
 <a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
 <p><strong class="error">SlippyMap error: Missing <tt>lat</tt> attribute (for the latitude).</strong>
 <strong class="error">SlippyMap error: Missing <tt>lon</tt> attribute (for the longitude).</strong>
-<strong class="error">SlippyMap error: Missing <tt>zoom</tt> attribute (for the zoom level).</strong>
+A dummy map
 </p>
 !! end
 
