@@ -124,7 +124,7 @@ EOT;
 		$action = $reviewTitle->getLocalUrl( 'action=submit' );
 		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action,
 			'id' => 'mw-feedbackform' ) );
-		$form .= Xml::openElement( 'fieldset', array('class' => 'flaggedrevs_reviewform noprint') );
+		$form .= Xml::openElement( 'fieldset', array('class' => 'feedback_reviewform noprint') );
 		$form .= "<legend><strong>" . wfMsgHtml( 'readerfeedback' ) . "</strong></legend>\n";
 		# Avoid clutter
 		if( !$wgUser->isAllowed('review') ) {
@@ -141,7 +141,7 @@ EOT;
 			$form .= '&nbsp;' . Xml::openElement( 'select', $attribs );
 			$levels = array_reverse($levels,true);
 			foreach( $levels as $i => $name ) {
-				$optionClass = array( 'class' => "fr-rating-option-$i" );
+				$optionClass = array( 'class' => "rfb-rating-option-$i" );
 				$form .= Xml::option( wfMsg("readerfeedback-level-$i"), $i, ($i == $selected), $optionClass ) ."\n";
 			}
 			$form .= Xml::option( wfMsg("readerfeedback-level-none"), -1, (-1 == $selected) ) ."\n";

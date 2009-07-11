@@ -81,6 +81,7 @@ $wgExtensionMessagesFiles['ReaderFeedback'] = $langDir . 'ReaderFeedback.i18n.ph
 
 # Load reader feedback UI
 $wgAutoloadClasses['ReaderFeedbackPage'] = $dir . 'specialpages/ReaderFeedback_body.php';
+$wgAutoloadClasses['ReaderFeedbackXML'] = $dir.'ReaderFeedbackXML.php';
 
 # Page rating history
 $wgAutoloadClasses['RatingHistory'] = $dir . 'specialpages/RatingHistory_body.php';

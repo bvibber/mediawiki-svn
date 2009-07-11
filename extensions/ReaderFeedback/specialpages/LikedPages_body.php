@@ -1,6 +1,6 @@
 <?php
 if ( !defined( 'MEDIAWIKI' ) ) {
-	echo "FlaggedRevs extension\n";
+	echo "ReaderFeedback extension\n";
 	exit( 1 );
 }
 
@@ -9,7 +9,7 @@ class LikedPages extends SpecialPage
     public function __construct() {
         SpecialPage::SpecialPage( 'LikedPages' );
 		wfLoadExtensionMessages( 'LikedPages' );
-		wfLoadExtensionMessages( 'FlaggedRevs' );
+		wfLoadExtensionMessages( 'ReaderFeedback' );
     }
 
     public function execute( $par ) {
@@ -37,16 +37,16 @@ class LikedPages extends SpecialPage
 	}
 
 	protected function showForm() {
-		global $wgOut, $wgTitle, $wgScript, $wgFlaggedRevsNamespaces;
+		global $wgOut, $wgTitle, $wgScript, $wgFeedbackNamespaces;
 		$form = Xml::openElement( 'form',
 			array( 'name' => 'reviewedpages', 'action' => $wgScript, 'method' => 'get' ) );
 		$form .= "<fieldset><legend>".wfMsgHtml('likedpages-leg')."</legend>\n";
 		$form .= Xml::hidden( 'title', $wgTitle->getPrefixedDBKey() );
-		if( count($wgFlaggedRevsNamespaces) > 1 ) {
-			$form .= FlaggedRevsXML::getNamespaceMenu( $this->namespace ) . '&nbsp;';
+		if( count($wgFeedbackNamespaces) > 1 ) {
+			$form .= ReaderFeedbackXML::getNamespaceMenu( $this->namespace ) . '&nbsp;';
 		}
-		if( count( FlaggedRevs::getFeedbackTags() ) > 0 ) {
-			$form .= FlaggedRevsXML::getTagMenu( $this->tag );
+		if( count( ReaderFeedback::getFeedbackTags() ) > 0 ) {
+			$form .= ReaderFeedbackXML::getTagMenu( $this->tag );
 		}
 		$form .= " ".Xml::submitButton( wfMsg( 'go' ) );
 		$form .= "</fieldset></form>\n";
@@ -55,7 +55,7 @@ class LikedPages extends SpecialPage
 
 	protected function showPageList() {
 		global $wgOut;
-		$tags = FlaggedRevs::getFeedbackTags();
+		$tags = ReaderFeedback::getFeedbackTags();
 		$pager = new LikedPagesPager( $this, array(), $this->namespace, $this->tag );
 		if( isset($tags[$this->tag]) && $pager->getNumRows() ) {
 			$wgOut->addHTML( wfMsgExt('likedpages-list', array('parse') ) );
@@ -97,12 +97,12 @@ class LikedPagesPager extends AlphabeticPager {
 		$this->mForm = $form;
 		$this->mConds = $conds;
 		# Must be a content page...
-		global $wgFlaggedRevsNamespaces;
+		global $wgFeedbackNamespaces;
 		if( !is_null($namespace) ) {
 			$namespace = intval($namespace);
 		}
-		if( is_null($namespace) || !in_array($namespace,$wgFlaggedRevsNamespaces) ) {
-			$namespace = empty($wgFlaggedRevsNamespaces) ? -1 : $wgFlaggedRevsNamespaces[0]; 	 
+		if( is_null($namespace) || !in_array($namespace,$wgFeedbackNamespaces) ) {
+			$namespace = empty($wgFeedbackNamespaces) ? -1 : $wgFeedbackNamespaces[0]; 	 
 		}
 		$this->namespace = $namespace;
 		$this->tag = $tag;
