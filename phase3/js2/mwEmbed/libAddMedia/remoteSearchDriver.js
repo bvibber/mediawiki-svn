@@ -493,9 +493,9 @@ remoteSearchDriver.prototype = {
 		o+='</div>';
 	
 		//search provider tabs based on "checked" and "enabled" and "combined tab"
-		o+='<div id="rsd_results_container" style="top:0px;bottom:0px;left:0px;right:0px;></div>';
-		js_log('should set: ' + this.target_container + ' to: ' + o);
+		o+='<div id="rsd_results_container" style="top:0px;bottom:0px;left:0px;right:0px;"></div>';				
 		$j(this.target_container).html( o );
+				
 		//add simple styles:
 		$j(this.target_container + ' .rms_search_button').btnBind().click(function(){
 			_this.runSearch();
@@ -660,7 +660,7 @@ remoteSearchDriver.prototype = {
 	/*
 	* checkForCopyURLPermission:
 	* not really nessesary the api request to upload will return apopprirate error if the user lacks permission. or $wgAllowCopyUploads is set to false
-	* (just here in case we want to issue a warning up front)
+	* (use this function if we want to issue a warning up front)
 	*/ 
 	checkForCopyURLPermission:function( callback ){
 		var _this = this;
@@ -669,7 +669,7 @@ remoteSearchDriver.prototype = {
 				'data':{ 'action' : 'query', 'meta' : 'userinfo', 'uiprop' : 'rights' },
 				'url': _this.local_wiki_api_url,
 				'userinfo' : true
-		}, function(data){		
+		}, function(data){			
 			for( var i in data.query.userinfo.rights){	
 				var right = data.query.userinfo.rights[i];
 				//js_log('checking: ' + right ) ;		
@@ -696,6 +696,7 @@ remoteSearchDriver.prototype = {
 				//combined results are harder to error handle just ignore that repo
 				cp.sObj.loading = false;
 			}else{			
+				alert("should set tab to no-good");
 				$j('#tab-' + this.disp_item).html( '<div style="padding:10px">'+ gM('no_import_by_url') +'</div>');			
 			}
 			return false;

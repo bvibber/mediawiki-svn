@@ -1,7 +1,6 @@
 /*
  * js2 style replacement for mediaWiki edit.js 
  */
-
 //setup configuration vars: 
 if(!mwAddMediaConfig)
 	var mwAddMediaConfig = {
@@ -25,7 +24,7 @@ var mwEditPageHelper = {
 	init:function(){
 		var _this = this;
 		//@@todo check for new version of toolbar and add properly:
-		if(typeof $j.fn.toolbar == 'undefined'){
+		if(typeof $j.fn.toolbar == 'undefined'){			
 			//add the add-media-wizard button for old toolbar: 
 			$j('#toolbar').append('<img style="cursor:pointer" id="btn-add-media-wiz" src="' + mv_skin_img_path + 'Button_add_media.png">');
 			$j('#btn-add-media-wiz').addMediaWiz( 

@@ -234,7 +234,7 @@ lcPaths( 'libTimedText/', [
 
 //depencency mapping for css files for self contained included plugins:
 lcCssPath({
-	'$j.Jcrop'		: 'libClipEdit/jCrop/css/jquery.Jcrop.css',
+	'$j.Jcrop'		: 'libClipEdit/Jcrop/css/jquery.Jcrop.css',
 	'$j.fn.ColorPicker': 'libClipEdit/colorpicker/css/colorpicker.css'
 })
 
@@ -649,7 +649,7 @@ function mwAddOnloadHook( func ) {
 		//if using mwAddOnloadHook we need to get jQuery into place (if its not already included)
 		mvJsLoader.jQueryCheckFlag = true;
 		mvJsLoader.addLoadEvent( func );
-	};
+	};		
 }
 /*
  * this function allows for targeted rewriting 
