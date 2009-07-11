@@ -19,4 +19,5 @@ If you create this page, remove this title from the <nowiki>{{#index:}}</nowiki>
 	'index-disambig-start' => "'''$1''' may refer to several pages:",
 	'index-exclude-categories' => '', # List of categories to exclude from the auto-disambig pages
 	'index-missing-param' => 'This page cannot be used with no parameters',
+	'index-emptylist' => 'There are no pages associated with "$1"',
 );

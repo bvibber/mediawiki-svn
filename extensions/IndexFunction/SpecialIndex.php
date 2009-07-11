@@ -38,7 +38,6 @@ class SpecialIndex extends SpecialPage {
 		global $wgOut, $wgUser;
 		$sk = $wgUser->getSkin();
 		$wgOut->setPagetitle( $t1->getPrefixedText() );
-		$wgOut->addWikiMsg( 'index-disambig-start', $t1->getPrefixedText() );
 		$dbr = wfGetDB( DB_SLAVE );
 		$pages = $dbr->select( array('page', 'indexes'),
 			array( 'page_id', 'page_namespace', 'page_title' ),
@@ -53,6 +52,14 @@ class SpecialIndex extends SpecialPage {
 			$t = Title::newFromRow( $row );
 			$list[strval($row->page_id)] = array( 'title' => $t, 'cats' => array() );
 		}
+		if (count($list) == 0) {
+			$wgOut->addWikiMsg( 'index-emptylist', $t1->getPrefixedText() );
+			return;
+		} elseif (count($list) == 1) {
+			$target = reset( $list );
+			$wgOut->redirect( $target['title']->getLocalURL() );
+		} 
+		$wgOut->addWikiMsg( 'index-disambig-start', $t1->getPrefixedText() );
 		$keys = array_keys( $list );
 		$set = '(' . implode(',', $keys) . ')';
 		
