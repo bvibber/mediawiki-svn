@@ -115,6 +115,7 @@
    LanguageDetails['th'] = new Array( "มูลนิธิวิกิมีเดีย", "เกิดความผิดพลาด" );
    LanguageDetails['tr'] = new Array( "Wikimedia Foundation", "Hata" );
    LanguageDetails['vi'] = new Array( "Wikimedia Foundation", "Lỗi" );
+   LanguageDetails['yue'] = new Array( "Wikimedia Foundation", "錯誤" );
    LanguageDetails['zh-Hant'] = new Array( "維基媒體基金會", "錯誤" );
    LanguageDetails['zh-Hans'] = new Array( "维基媒体基金会", "错误" );
 
@@ -275,6 +276,7 @@
    <a href="#Thai" class="BottomLinks" onclick="ShowLanguage('th')">ไทย</a>
    <a href="#Vietnamese" class="BottomLinks" onclick="ShowLanguage('vi')">Tiếng Việt</a>
    <a href="#Turkish" class="BottomLinks" onclick="ShowLanguage('tr')">Türkçe</a>
+   <a href="#Turkish" class="BottomLinks" onclick="ShowLanguage('yue')">廣東話</a>
    <a href="#TraditionalChinese" class="BottomLinks" onclick="ShowLanguage('zh-Hant')">繁體中文</a>
    <a href="#SimplifiedChinese" class="BottomLinks" onclick="ShowLanguage('zh-Hans')">简体中文</a>
   </div>
@@ -960,6 +962,31 @@
     </div>
    </div>
 
+   <div id="yue" lang="yue">
+    <div id="yue">
+     <hr noshade="noshade" size="1px" width="100%"/>
+     <h3 class="LanguageHeading">
+      <a name="Cantonese">
+       廣東話
+      </a>
+     </h3>
+    </div>
+    <p>Wikimedia Foundation嘅伺服器而家發生緊技術性問題。呢個問題都係暫時性嘅同埋將會盡快修復。請等多幾分鐘之後<a href="%U" onclick="RefreshPage(); return false">再試</a>。</p>
+    <p>你可以響<a href="http://www.freenode.net">Freenode IRC網絡</a>嘅<a href="irc://chat.freenode.net/wikipedia">#wikipedia</a>頻道度拎到更加詳細嘅資料。</p>
+    <p>Wikimedia Foundation係一個非牟利機構，代理響互聯網度一啲最著名嘅網站，包埋維基百科。佢有持續性需要去買新嘅硬件。如果你想去幫手，請<a href="http://wikimediafoundation.org/wiki/%E6%8D%90%E5%8A%A9(%E7%B2%B5%E8%AA%9E)">慷慨解囊</a>。</p>
+    <hr noshade="noshade" size="1px" width="80%"/>
+    <div class="TechnicalStuff" style="font-style:normal">
+     如果你回報呢個錯誤畀Wikimedia嘅系統管理員，請包埋下面嘅資料。<br/>
+    </div>
+    <div class="TechnicalStuff">
+     <bdo dir="ltr">
+      Request: %M %U, from %i via %h (%s) to %H (%I)<br/>
+      Error: %c, errno %E at %T
+     </bdo>
+     <div id="AdditionalTechnicalStuff"></div>
+    </div>
+   </div>
+
    <div id="zh-Hant" lang="zh-Hant">
     <div id="zh-Hant_head">
      <hr noshade="noshade" size="1px" width="100%"/>
@@ -969,9 +996,9 @@
       </a>
      </h3>
     </div>
-    <p>維基媒體基金會伺服器現在發生技術問題。</p>
-    <p>此問題應為暫時狀況，我們將盡快修復，<a href="%U" onclick="RefreshPage(); return false">請稍後再試</a>。</p>
-    <p>如果您願意協助非營利的維基媒體基金會，請考慮<a href="http://wikimediafoundation.org/wiki/%E8%B5%84%E5%8A%A9">捐款資助</a>。</p>
+    <p>維基媒體基金會伺服器現在發生技術問題。此問題應為暫時狀況，我們將盡快修復，<a href="%U" onclick="RefreshPage(); return false">請稍後再試</a>。</p>
+    <p>您可以從<a href="http://www.freenode.net">Freenode IRC網絡</a>的<a href="irc://chat.freenode.net/wikipedia-zh">#wikipedia-zh</a>頻道中取得更多的資料。</p>
+    <p>維基媒體基金會是一個非牟利機構，代理在互聯網上一些最著名的網站，包括維基百科。她有持續性需要去購買新的硬件。如果您願意協助，請考慮<a href="http://wikimediafoundation.org/wiki/%E8%B5%84%E5%8A%A9">捐款資助</a>。</p>
     <hr noshade="noshade" size="1px" width="80%"/>
     <div class="TechnicalStuff" style="font-style:normal">
      如欲匯報此錯誤予維基媒體的系統管理員，請附上以下詳細資料。<br/>
@@ -994,9 +1021,9 @@
       </a>
      </h3>
     </div>
-    <p>维基媒体基金会服务器现在发生技术问题。</p>
-    <p>此问题应为暂时状况，我们将尽快修复，<a href="%U" onclick="RefreshPage(); return false">请稍后再试</a>。</p>
-    <p>如果您愿意协助非营利的维基媒体基金会，请考虑<a href="http://wikimediafoundation.org/wiki/%E8%B5%84%E5%8A%A9">捐款资助</a>。</p>
+    <p>维基媒体基金会服务器现在发生技术问题。此问题应为暂时状况，我们将尽快修复，<a href="%U" onclick="RefreshPage(); return false">请稍后再试</a>。</p>
+    <p>您可以從<a href="http://www.freenode.net">Freenode IRC網絡</a>的<a href="irc://chat.freenode.net/wikipedia-zh">#wikipedia-zh</a>頻道中取得更多的資料。</p>
+    <p>维基媒体基金会是一个非牟利机构，代理在互联网上一些最着名的网站，包括维基百科。她有持续性需要去购买新的硬件。如果您愿意协助，请考虑<a href="http://wikimediafoundation.org/wiki/%E8%B3%87%E5%8A%A9">捐款资助</a>。</p>
     <hr noshade="noshade" size="1px" width="80%"/>
     <div class="TechnicalStuff" style="font-style:normal">
      如欲汇报此错误予维基媒体的系统管理员，请附上以下详细数据。<br/>
@@ -1059,6 +1086,7 @@
    <a href="#Thai" class="BottomLinks" id="th_link" onclick="ShowLanguage('th')">ไทย</a>
    <a href="#Vietnamese" class="BottomLinks" id="vi_link" onclick="ShowLanguage('vi')">Tiếng Việt</a>
    <a href="#Turkish" class="BottomLinks" id="tr_link" onclick="ShowLanguage('tr')">Türkçe</a>
+   <a href="#Cantonese" class="BottomLinks" id="yue_link" onclick="ShowLanguage('yue')">廣東話</a>
    <a href="#TraditionalChinese" class="BottomLinks" id="zh-Hant_link" onclick="ShowLanguage('zh-Hant')">繁體中文</a>
    <a href="#SimplifiedChinese" class="BottomLinks" id="zh-Hans_link" onclick="ShowLanguage('zh-Hans')">简体中文</a>
   </div>
