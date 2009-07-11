@@ -52,3 +52,22 @@
 	height:19px;
 	background-image:url('reset-button.png');
 }
+
+@media print {
+    .olControlLayerSwitcher {
+        display: none;
+    }
+
+    .olControlAttribution {
+        display: none !important;
+    }
+
+    .buttonsPanel .getWikiCodeButtonItemInactive {
+        display: none;
+    } 
+
+    .buttonsPanel .resetButtonItemInactive {
+        display: none;
+    }
+}
+
