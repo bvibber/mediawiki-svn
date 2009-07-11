@@ -86,7 +86,8 @@ class ReaderFeedback {
 			array( 'rfh_page_id' => $article->getId(), 'rfh_tag' => $tag,
 				"rfh_date >= {$cutoff_unixtime}" ),
 			__METHOD__ );
-		$data = $row ? array($row->ave,$row->count) : array(0,0);
+		$data = $row && $row->count ?
+			array($row->ave,$row->count) : array(0,0);
 		return $data;
 	}
 	
@@ -201,7 +202,7 @@ class ReaderFeedback {
 			$wgMemc->set( $key, array( $votes, $now ), 24*3600 );
 		}
 		// Output multi-column list
-		$html = "<table class='fr_reader_feedback_table' cellspacing='0'><tr>";
+		$html = "<table class='rfb-reader_feedback_table' cellspacing='0'><tr>";
 		foreach( ReaderFeedback::getFeedbackTags() as $tag => $w ) {
 			// Get tag average...
 			$dist = isset($votes[$tag]) ? $votes[$tag] : array();
@@ -220,7 +221,7 @@ class ReaderFeedback {
 			$html .= '<td><table>';
 			$html .= '<tr><th align="left">'.wfMsgHtml('ratinghistory-table-rating').'</th>';
 			for( $i = 1; $i <= 5; $i++ ) {
-				$html .= "<td align='center' class='fr-rating-option-".($i-1)."'>$i</td>";
+				$html .= "<td align='center' class='rfb-rating-option-".($i-1)."'>$i</td>";
 			}
 			$html .= '</tr><tr>';
 			$html .= '<th align="left">'.wfMsgHtml("ratinghistory-table-votes").'</th>';

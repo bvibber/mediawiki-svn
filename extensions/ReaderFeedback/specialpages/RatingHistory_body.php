@@ -77,7 +77,7 @@ class RatingHistory extends UnlistedSpecialPage
 		);
 		if( $html ) {
 			$wgOut->addHTML( '<h2>'.wfMsgHtml('ratinghistory-table')."</h2>\n".
-				"<div class='fr_reader_feedback_ratings'>$html</div>" );
+				"<div class='rfb-reader_feedback_ratings'>$html</div>" );
 		}
 	}
 	
@@ -138,9 +138,9 @@ class RatingHistory extends UnlistedSpecialPage
 			case 'svg':
 				if( $exists ) {
 					$html .= "<h3>" . wfMsgHtml("readerfeedback-$tag") . "</h3>\n" .
-						Xml::openElement( 'div', array('class' => 'fr_reader_feedback_graph') ) .
+						Xml::openElement( 'div', array('class' => 'rfb-reader_feedback_graph') ) .
 						Xml::element( 'embed', array('src' => $url, 'type' => 'image/svg+xml',
-							'class' => 'fr_reader_feedback_plot', 'width' => '1000', 'height' => '410') ) .
+							'class' => 'rfb-reader_feedback_plot', 'width' => '1000', 'height' => '410') ) .
 						Xml::closeElement( 'div' ) . "\n";
 				}
 				break;
@@ -154,7 +154,7 @@ class RatingHistory extends UnlistedSpecialPage
 							wfMsgHtml("readerfeedback-svg")."</a>]</small>";
 					}
 					$html .= "<h3>" . wfMsgHtml("readerfeedback-$tag") . "$viewLink</h3>\n" .
-						Xml::openElement( 'div', array('class' => 'fr_reader_feedback_graph') ) .
+						Xml::openElement( 'div', array('class' => 'rfb-reader_feedback_graph') ) .
 						Xml::openElement( 'img', array('src' => $url,'alt' => $tag) ) . 
 						Xml::closeElement( 'img' ) .
 						Xml::closeElement( 'div' ) . "\n";
@@ -186,7 +186,7 @@ class RatingHistory extends UnlistedSpecialPage
 			$userTable = $this->getUserList();
 			if( $userTable ) {
 				$html .= '<h2>' . wfMsgHtml('ratinghistory-users') . '</h2>' .
-					Xml::openElement( 'div', array('class' => 'fr_reader_feedback_users') ) .
+					Xml::openElement( 'div', array('class' => 'rfb-reader_feedback_users') ) .
 					$userTable . Xml::closeElement( 'div' ) . "\n";
 			}
 		} else {
@@ -624,7 +624,7 @@ class RatingHistory extends UnlistedSpecialPage
 			return ''; // don't give away votes that easily
 		$columns = 4;
 		$count = 0;
-		$html = "<table class='fr_reader_feedback_users'><tr>";
+		$html = "<table class='rfb-reader_feedback_users'><tr>";
 		while( $row = $res->fetchObject() ) {
 			$title = Title::makeTitleSafe( NS_USER, $row->name );
 			if( is_null($title) ) continue; // bad IP?
