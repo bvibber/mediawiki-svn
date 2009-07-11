@@ -9,7 +9,7 @@ class RandomPageInCategory extends SpecialPage {
 	private $category = null;
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'Randomincategory' );
+		SpecialPage::SpecialPage( 'RandomInCategory' );
 	}
 
 	function getDescription() {

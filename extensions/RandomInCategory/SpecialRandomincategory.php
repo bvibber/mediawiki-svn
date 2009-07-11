@@ -25,5 +25,5 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['RandomInCategory'] = $dir . 'SpecialRandomincategory.i18n.php';
 $wgExtensionAliasesFiles['RandomInCategory'] = $dir . 'SpecialRandomincategory.alias.php';
 
-$wgSpecialPages['Randomincategory'] = 'RandomPageInCategory';
+$wgSpecialPages['RandomInCategory'] = 'RandomPageInCategory';
 $wgAutoloadClasses['RandomPageInCategory'] = $dir . 'SpecialRandomincategory.body.php';
