@@ -191,6 +191,45 @@ SlippyMap: Valid/Invalid mode arguments
 !! end
 
 !! test
+SlippyMap: Valid/Invalid marker arguments
+!! input
+== Valid ==
+
+<slippymap lat=61 lon=95 zoom=1 marker=0 dummy/>
+
+<slippymap lat=61 lon=95 zoom=1 marker=1 dummy/>
+
+== Invalid ==
+
+<slippymap lat=61 lon=95 zoom=1 marker=on dummy/>
+
+<slippymap lat=61 lon=95 zoom=1 marker=off dummy/>
+
+<slippymap lat=61 lon=95 zoom=1 marker=11 dummy/>
+
+<slippymap lat=61 lon=95 zoom=1 marker=00 dummy/>
+
+<slippymap lat=61 lon=95 zoom=1 marker=true dummy/>
+
+<slippymap lat=61 lon=95 zoom=1 marker=false dummy/>
+
+!! result
+<a name="Valid" id="Valid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Valid">edit</a>]</span> <span class="mw-headline"> Valid </span></h2>
+<p>A dummy map
+</p><p>A dummy map
+</p>
+<a name="Invalid" id="Invalid"></a><h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: Invalid">edit</a>]</span> <span class="mw-headline"> Invalid </span></h2>
+<p><strong class="error">SlippyMap error: The value <tt>on</tt> is not valid for the <tt>marker</tt> attribute, valid markers are <tt>0</tt> and <tt>1</tt>.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>off</tt> is not valid for the <tt>marker</tt> attribute, valid markers are <tt>0</tt> and <tt>1</tt>.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>11</tt> is not valid for the <tt>marker</tt> attribute, valid markers are <tt>0</tt> and <tt>1</tt>.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>00</tt> is not valid for the <tt>marker</tt> attribute, valid markers are <tt>0</tt> and <tt>1</tt>.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>true</tt> is not valid for the <tt>marker</tt> attribute, valid markers are <tt>0</tt> and <tt>1</tt>.</strong>
+</p><p><strong class="error">SlippyMap error: The value <tt>false</tt> is not valid for the <tt>marker</tt> attribute, valid markers are <tt>0</tt> and <tt>1</tt>.</strong>
+</p>
+!! end
+
+
+!! test
 SlippyMap: Valid caption arguments
 !! input
 == Valid ==

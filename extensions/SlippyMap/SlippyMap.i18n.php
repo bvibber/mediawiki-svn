@@ -37,6 +37,8 @@ $messages['en'] = array(
 	'slippymap_error_invalid_attribute_width_value_nan' => "The value <tt>$1</tt> is not valid for the <tt>width</tt> attribute, the given value must be a valid number.",
 	'slippymap_error_invalid_attribute_height_value_nan' => "The value <tt>$1</tt> is not valid for the <tt>height</tt> attribute, the given value must be a valid number.",
 	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => "The value <tt>$1</tt> is not valid for the <tt>mode</tt> attribute, valid modes are $2.",
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => "The value <tt>$1</tt> is not valid for the <tt>layer</tt> attribute, valid layers are $2.",
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => "The value <tt>$1</tt> is not valid for the <tt>marker</tt> attribute, valid markers are $2.",
 	'slippymap_error_unknown_attribute' => "The attribute <tt>$1</tt> is unknown.",
 
 	// Value out of range
