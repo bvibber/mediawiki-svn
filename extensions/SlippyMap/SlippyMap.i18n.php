@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'slippymap_desc' => 'Adds a <tt>&lt;slippymap&gt;</tt> tag which allows for embedding of static & dynamic maps.Supports multiple map services including [http://openstreetmap.org OpenStreetMap] and NASA Worldwind',
+	'slippymap_desc' => 'Adds a <tt>&lt;slippymap&gt;</tt> tag which allows for embedding of static & dynamic maps. Supports multiple map services including [http://openstreetmap.org OpenStreetMap] and NASA Worldwind',
 
 	// The name of the extension, for use in error messages
 	'slippymap_extname' => 'SlippyMap',
@@ -42,11 +42,11 @@ $messages['en'] = array(
 	'slippymap_error_unknown_attribute' => "The attribute <tt>$1</tt> is unknown.",
 
 	// Value out of range
-	'slippymap_error_invalid_attribute_lat_value_out_of_range' => "The value <tt>$1</tt> is not valid for the <tt>lat</tt> (latitude) attribute. Latitutes bust be between -90 and 90 degrees.",
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => "The value <tt>$1</tt> is not valid for the <tt>lat</tt> (latitude) attribute. Latitutes must be between -90 and 90 degrees.",
 	'slippymap_error_invalid_attribute_lon_value_out_of_range' => "The value <tt>$1</tt> is not valid for the <tt>lon</tt> (longitude) attribute. Longitudes must be between -180 and 180 degrees.",
 	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => "The value <tt>$1</tt> is not valid for the <tt>zoom</tt> attribute. Zoom levels must be between $2 and $3.",
-	'slippymap_error_invalid_attribute_width_value_out_of_range' => "The value <tt>$1</tt> is not valid for the <tt>width</tt> attribute. Width levels must be between $2 and $3.",
-	'slippymap_error_invalid_attribute_height_value_out_of_range' => "The value <tt>$1</tt> is not valid for the <tt>height</tt> attribute. Height levels must be between $2 and $3.",
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => "The value <tt>$1</tt> is not valid for the <tt>width</tt> attribute. Widths must be between $2 and $3.",
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => "The value <tt>$1</tt> is not valid for the <tt>height</tt> attribute. Heights must be between $2 and $3.",
 
 	'slippymap_code'    => 'Wikicode for this map view:',
 	'slippymap_button_code' => 'Get wikicode',
