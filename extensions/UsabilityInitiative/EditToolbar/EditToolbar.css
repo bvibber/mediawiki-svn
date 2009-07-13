@@ -8,7 +8,8 @@ form#editform {
 }
 body.rtl form#editform {
 	padding-right: 0;
-	margin-left: 5px;
+	margin-right: auto !important;
+	margin-left: 2px !important;
 }
 textarea#wpTextbox1 {
 	border: solid silver 1px;
@@ -44,6 +45,8 @@ div#edittoolbar div.sections div.section {
 }
 body.rtl div#edittoolbar div.sections div.section {
 	float: right;
+	margin-left: auto;
+	margin-right: -1px;
 }
 div#edittoolbar div.sections div.loading {
 	padding-top: 0.5em;
