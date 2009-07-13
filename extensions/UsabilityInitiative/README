@@ -1,0 +1,14 @@
+#Some lines to add to LocalSettings.php to get these extensions up and running:
+
+# UsabilityInitiative extension
+require_once("$IP/extensions/UsabilityInitiative/UsabilityInitiative.php");
+
+#pref stats: 
+require_once("$IP/extensions/UsabilityInitiative/PrefStats/PrefStats.php");
+$wgPrefStatsTrackPrefs = array( 'skin' => 'vector', 'usebetatoolbar' => 1 );
+$wgGroupPermissions['sysop']['prefstats'] = true;
+$wgPrefStatsTimeUnit = 60*60*24;
+ 
+ 
+#enable the toolbar global: 
+$wgEditToolbarGlobalEnable
