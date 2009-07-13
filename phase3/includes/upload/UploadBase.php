@@ -52,7 +52,7 @@ class UploadBase {
 	}
 
 	// Upload handlers. Should probably just be a global
-	static $uploadHandlers = array( 'Stash', 'Upload', 'Url' );
+	static $uploadHandlers = array( 'Stash', 'File', 'Url' );
 	/**
 	 * Create a form of UploadBase depending on wpSourceType and initializes it
 	 */
@@ -64,6 +64,7 @@ class UploadBase {
 
 		$type = ucfirst($type);
 		$className = 'UploadFrom'.$type;
+
 		if( !in_array( $type, self::$uploadHandlers ) )
 			return null;
 

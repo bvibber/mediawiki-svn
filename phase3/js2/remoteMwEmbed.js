@@ -8,37 +8,43 @@ var urlparts =  getRemoteEmbedPath();
 var mwEmbedHostPath =urlparts[0];
 var reqAguments =urlparts[1];
 
-//add media wizard:
-if( wgAction == 'edit' || wgAction == 'submit' ){
-	load_mv_embed( function(){  
-		importScriptURI(mwEmbedHostPath + '/editPage.js' + reqAguments);
-	});
-}
+//check if mvEmbed is already loaded (ie the js2 branch is active) in which case do nothing
+if( typeof MV_EMBED_VERSION == 'undefined' ){
+	doPageSpecificRewrite();
+}	
 
-//firefogg integration:
-if( wgPageName== "Special:Upload" ){    
-	load_mv_embed( function(){  
-		importScriptURI(mwEmbedHostPath + '/uploadPage.js' +reqAguments);
-	});
-}
+function doPageSpecificRewrite(){	
+	//add media wizard:
+	if( wgAction == 'edit' || wgAction == 'submit' ){
+		load_mv_embed( function(){  
+			importScriptURI(mwEmbedHostPath + '/editPage.js' + reqAguments);
+		});
+	}
 	
-//oggHandler rewrite: 
-var vidIdList = []; 
-var divs = document.getElementsByTagName('div');    
-for(var i = 0; i < divs.length; i++){        
-    if( divs[i].id && divs[i].id.substring(0,11) == 'ogg_player_'){
-        vidIdList.push( divs[i].getAttribute("id") );
-    } 
-}            
-if( vidIdList.length > 0){
-    load_mv_embed( function(){
-        mvJsLoader.embedVideoCheck(function(){                                                    
-            //do utilty rewrite of oggHanlder content: 
-            rewrite_for_oggHanlder( vidIdList );                    
-        });
-    });
+	//firefogg integration:
+	if( wgPageName== "Special:Upload" ){    
+		load_mv_embed( function(){  
+			importScriptURI(mwEmbedHostPath + '/uploadPage.js' +reqAguments);
+		});
+	}
+		
+	//oggHandler rewrite: 
+	var vidIdList = []; 
+	var divs = document.getElementsByTagName('div');    
+	for(var i = 0; i < divs.length; i++){        
+	    if( divs[i].id && divs[i].id.substring(0,11) == 'ogg_player_'){
+	        vidIdList.push( divs[i].getAttribute("id") );
+	    } 
+	}            
+	if( vidIdList.length > 0){
+	    load_mv_embed( function(){
+	        mvJsLoader.embedVideoCheck(function(){                                                    
+	            //do utilty rewrite of oggHanlder content: 
+	            rewrite_for_oggHanlder( vidIdList );                    
+	        });
+	    });
+	}
 }
-
 function getRemoteEmbedPath(){           
     for(var i=0; i < document.getElementsByTagName('script').length; i++){    	
         var s = document.getElementsByTagName('script')[i];       

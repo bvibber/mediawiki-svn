@@ -1349,6 +1349,15 @@ $wgGroupPermissions['bureaucrat']['noratelimit'] = true;
  */
 # $wgGroupPermissions['developer']['siteadmin'] = true;
 
+/**
+ * Permission keys revoked from users in each group.
+ * This acts the same way as wgGroupPermissions above, except that
+ * if the user is in a group here, the permission will be removed from them.
+ *
+ * Improperly setting this could mean that your users will be unable to perform
+ * certain essential tasks, so use at your own risk!
+ */
+$wgRevokePermissions = array();
 
 /**
  * Implicit groups, aren't shown on Special:Listusers or somewhere else

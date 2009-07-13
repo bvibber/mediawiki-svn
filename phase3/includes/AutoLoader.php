@@ -221,11 +221,11 @@ $wgAutoloadLocalClasses = array(
 	'TransformParameterError' => 'includes/MediaTransformOutput.php',
 	'TurckBagOStuff' => 'includes/BagOStuff.php',
 	'UnlistedSpecialPage' => 'includes/SpecialPage.php',
-	'UploadBase' => 'includes/UploadBase.php',
-	'UploadFromStash' => 'includes/UploadFromStash.php',
-	'UploadFromUpload' => 'includes/UploadFromUpload.php',
-	'UploadFromUrl' => 'includes/UploadFromUrl.php',
-	'UploadFromChunks' => 'includes/UploadFromChunks.php',
+	'UploadBase' => 'includes/upload/UploadBase.php',
+	'UploadFromStash' => 'includes/upload/UploadFromStash.php',
+	'UploadFromFile' => 'includes/upload/UploadFromFile.php',
+	'UploadFromUrl' => 'includes/upload/UploadFromUrl.php',
+	'UploadFromChunks' => 'includes/upload/UploadFromChunks.php',
 	'User' => 'includes/User.php',
 	'UserArray' => 'includes/UserArray.php',
 	'UserArrayFromResult' => 'includes/UserArray.php',
@@ -359,7 +359,7 @@ $wgAutoloadLocalClasses = array(
 	'PostgresField' => 'includes/db/DatabasePostgres.php',
 	'ResultWrapper' => 'includes/db/Database.php',
 	'SQLiteField' => 'includes/db/DatabaseSqlite.php',
-	
+
 	'DatabaseIbm_db2' => 'includes/db/DatabaseIbm_db2.php',
 	'IBM_DB2Field' => 'includes/db/DatabaseIbm_db2.php',
 	'IBM_DB2SearchResultSet' => 'includes/SearchIBM_DB2.php',
@@ -579,9 +579,9 @@ $wgAutoloadLocalClasses = array(
 
 );
 
-//autoloader for javascript files (path is from the mediawiki folder    
-global $wgJSAutoloadLocalClasses; 
-$wgJSAutoloadLocalClasses = array(	
+//autoloader for javascript files (path is from the mediawiki folder
+global $wgJSAutoloadLocalClasses;
+$wgJSAutoloadLocalClasses = array(
 	'ajax' =>  'skins/common/ajax.js',
     'ajaxwatch' => 'skins/common/ajaxwatch.js',
     'allmessages' => 'skins/common/allmessages.js',
@@ -591,7 +591,7 @@ $wgJSAutoloadLocalClasses = array(
 	'edit' => 'skins/common/edit.js',
 	'enhancedchanges.js' => 'skins/common/enhancedchanges.js',
 	'history' => 'skins/common/history.js',
-	'IEFixes' => 'skins/common/IEFixes.js',	
+	'IEFixes' => 'skins/common/IEFixes.js',
 	'metadata' => 'skins/common/metadata.js',
 	'mwsuggest' => 'skins/common/mwsuggest.js',
 	'prefs' => 'skins/common/prefs.js',
@@ -600,16 +600,16 @@ $wgJSAutoloadLocalClasses = array(
 	'rightclickedit' => 'skins/common/rightclickedit.js',
 	'sticky'	=> 'skins/common/sticky.js',
 	'upload' => 'skins/common/upload.js',
-	'wikibits' => 'skins/common/wikibits.js',	
-	
-	//phase 2 javascript: 
+	'wikibits' => 'skins/common/wikibits.js',
+
+	//phase 2 javascript:
 	'uploadPage' => 'js2/uploadPage.js',
 	'editPage'	=>	'js2/editPage.js',
 );
 
 //add the mwEmbed set of classes that we want to expose: (could be conditional)
 //@@todo move jsAutoloadLocalClasses.php to post Setup so we have $wgMwEmbedDirectory var
-$wgMwEmbedDirectory = "js2/mwEmbed/"; 
+$wgMwEmbedDirectory = "js2/mwEmbed/";
 require_once("$IP/js2/mwEmbed/php/jsAutoloadLocalClasses.php");
 
 class AutoLoader {
@@ -639,7 +639,7 @@ class AutoLoader {
 				}
 			}
 			if ( !$filename ) {
-				if( function_exists( 'wfDebug' ) ) 	
+				if( function_exists( 'wfDebug' ) )
 					wfDebug( "Class {$className} not found; skipped loading\n" );
 				# Give up
 				return false;

@@ -836,18 +836,18 @@ function mv_jqueryBindings(){
 				iObj={};
 			//add base theme css:
 			loadExternalCss( mv_jquery_skin_path + 'jquery-ui-1.7.1.custom.css');
-			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );						
-			
-			//check if we already have firefogg loaded
-			var sElm = $j(this.selector).get(0);			
-			if(sElm['firefogg']){
+			loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css' );
+						
+			//check if we already have firefogg loaded (the call just updates properties for that element) 
+			var sElm = $j(this.selector).get(0);									
+			if(sElm['firefogg']){				
 				if(sElm['firefogg']=='loading'){
 					js_log("Error: called firefogg operations on Firefogg selector that is not done loading");
 					return false;
 				}
 				//update properties: 
 				for(var i in iObj){
-					js_log("updated: "+ i + ' to '+ iObj[i]);
+					js_log("firefogg::updated: "+ i + ' to '+ iObj[i]);
 					sElm['firefogg'][i] = iObj[i];
 				}
 				return sElm['firefogg'];
