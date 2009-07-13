@@ -736,49 +736,49 @@ array[] = wgTranslateEC: simple, wgTranslateCC: assoc
 array[] = wgTranslateTasks: assoc
 url = http://www.mediawiki.org/wiki/Extension:Translate
 
-UW Authors
+Uniwiki - Authors
 dir = uniwiki/Authors
 file = Authors.php
 settings[] = wgShowAuthorsNamespaces: array, wgShowAuthors: bool
 array[] = wgShowAuthorsNamespaces: ns-simple
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_Authors
 
-UW AutoCreateCategoryPages
+Uniwiki - AutoCreateCategoryPages
 dir = uniwiki/AutoCreateCategoryPages
 file = AutoCreateCategoryPages.php
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_Auto_Create_Category_Pages
 
-UW CatBoxAtTop
+Uniwiki - CatBoxAtTop
 dir = uniwiki/CatBoxAtTop
 file = CatBoxAtTop.php
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_Category_Box_at_Top
 
-UW CreatePage
+Uniwiki - CreatePage
 dir = uniwiki/CreatePage
 file = CreatePage.php
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_CreatePage
 
-UW CssHooks
+Uniwiki - CssHooks
 dir = uniwiki/CssHooks
 file = CssHooks.php
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_CSS_Hooks
 
-UW CustomToolbar
+Uniwiki - CustomToolbar
 dir = uniwiki/CustomToolbar
 file = CustomToolbar.php
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_Toolbar
 
-UW FormatChanges
+Uniwiki - FormatChanges
 dir = uniwiki/FormatChanges
 file = FormatChanges.php
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_Format_Changes
 
-UW FormatSearch
+Uniwiki - FormatSearch
 dir = uniwiki/FormatSearch
 file = FormatSearch.php
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_Format_FormatSearch
 
-UW GenericEditPage
+Uniwiki - GenericEditPage
 dir = uniwiki/GenericEditPage
 file = GenericEditPage.php
 settings[] = wgSectionBox: bool, wgCategoryBox: bool
@@ -789,12 +789,12 @@ settings[] = wgSuggestCategoryRecipient: text, wgGenericEditPageWhiteList: array
 array[] = wgGenericEditPageWhiteList: ns-simple
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_Generic_Edit_Page
 
-UW Javascript
+Uniwiki - Javascript
 dir = uniwiki/Javascript
 file = Javascript.php
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_Javascript
 
-UW Layouts
+Uniwiki - Layouts
 dir = uniwiki/Layouts
 file = Layouts.php
 settings[] = wgAddLayoutLink: bool, wgLayoutCategories: bool
@@ -803,7 +803,7 @@ settings[] = wgLayoutWhiteList: array, wgLayoutCategoryNSWhiteList: array
 array[] = wgLayoutWhiteList: ns-simple, wgLayoutCategoryNSWhiteList: ns-simple
 url = http://www.mediawiki.org/wiki/Extension:Uniwiki_Layouts
 
-UW MooTools12core
+Uniwiki - MooTools12core
 dir = uniwiki/MooTools12core
 file = MooTools12core.php
 url = http://www.mediawiki.org/wiki/Extension:MooTools_1.2_Core
