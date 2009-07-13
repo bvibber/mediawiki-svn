@@ -60,6 +60,7 @@ $messages['en'] = array(
 	'poll-vote-other' => 'Other answers:',
 	'poll-ip-error' => 'Unregistered person can not vote at this poll!',
 	'poll-create-allow-ip' => 'Allow unregistered users to vote',
+	'poll-vote-error-ip-change' => 'Unregistered users can not change his vote!',
 );
 
 /** German (Deutsch)
@@ -114,4 +115,5 @@ $messages['de'] = array(
 	'poll-vote-other' => 'Andere Antworten:',
 	'poll-ip-error' => 'Nicht registrierte Benutzer können bei dieser Umfrage nicht abstimmen!',
 	'poll-create-allow-ip' => 'Erlaube nicht registrierten Benutzer abzustimmen',
+	'poll-vote-error-ip-change' => 'Leider können nicht registrierten Benutzer ihr Stimme nicht nachträglich ändern!',
 );

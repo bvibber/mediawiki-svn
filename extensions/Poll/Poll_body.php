@@ -480,15 +480,20 @@ class Poll extends SpecialPage {
 						$dbw->insert( 'poll_answer', array( 'pid' => $pid, 'uid' => $uid, 'vote' => $vote, 'user' => $wgUser->getName(), 'isset_vote_other' => $isset_vote_other, 'vote_other' => $vote_other, 'ip' => $user  ) );
 					}
 					else {
-						$dbw->insert( 'poll_answer', array( 'pid' => $pid, 'uid' => $uid, 'vote' => $vote, 'user' => $wgUser->getName(), 'isset_vote_other' => $isset_vote_other, 'vote_other' => $vote_other  ) );
+						$dbw->insert( 'poll_answer', array( 'pid' => $pid, 'uid' => $uid, 'vote' => $vote, 'user' => $wgUser->getName(), 'isset_vote_other' => $isset_vote_other, 'vote_other' => $vote_other ) );
 					}
 					
 					$wgOut->addWikiMsg( 'poll-vote-pass' );
 					$wgOut->addHtml( '<a href="'.$this->getTitle()->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 				}
 				else {
-					$dbw->update( 'poll_answer', array( 'vote' => $vote, 'isset_vote_other' => $isset_vote_other, 'vote_other' => $vote_other ), array( 'uid' => $uid, 'pid' => $pid ) );
-					
+					if($ip == 1 && $uid == 0) {
+						$wgOut->addWikiMsg( 'poll-vote-error-ip-change' );
+						return;
+					}
+					else {
+						$dbw->update( 'poll_answer', array( 'vote' => $vote, 'isset_vote_other' => $isset_vote_other, 'vote_other' => $vote_other ), array( 'uid' => $uid, 'pid' => $pid ) );
+					}
 					$wgOut->addWikiMsg( 'poll-vote-changed' );
 					$wgOut->addHtml( '<a href="'.$this->getTitle()->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>' );
 				}
