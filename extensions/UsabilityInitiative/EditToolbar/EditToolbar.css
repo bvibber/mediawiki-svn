@@ -4,7 +4,7 @@
 form#editform {
 	margin: 0;
 	padding: 0;
-	margin-right: 5px;
+	margin-right: 2px !important;
 }
 body.rtl form#editform {
 	padding-right: 0;
@@ -12,8 +12,9 @@ body.rtl form#editform {
 }
 textarea#wpTextbox1 {
 	border: solid silver 1px;
-	padding: 0;
-	margin: 0;
+	padding: 0 !important;
+	margin: 0 !important;
+	width: 100%;
 }
 /* ... */
 div#edittoolbar {
