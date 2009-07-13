@@ -233,6 +233,9 @@ class BackupDumper {
 	}
 
 	function backupDb() {
+		## Live-hack to support LB --Andrew 2009-05-26
+		return wfGetDB( DB_SLAVE );
+
 		global $wgDBadminuser, $wgDBadminpassword;
 		global $wgDBname, $wgDebugDumpSql, $wgDBtype;
 		$flags = ($wgDebugDumpSql ? DBO_DEBUG : 0) | DBO_DEFAULT; // god-damn hack

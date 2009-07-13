@@ -13,16 +13,17 @@ class UsabilityInitiativeHooks {
 	private static $messages = array();
 	private static $styles = array();
 	private static $scripts = array(
-		array( 'src' => 'Resources/jquery.textSelection.js', 'version' => 1 ),
-		array( 'src' => 'Resources/jquery.cookie.js', 'version' => 1 ),
-		array( 'src' => 'Resources/jquery.async.js', 'version' => 1 ),
-		array( 'src' => 'Resources/jquery.browser.js', 'version' => 1 ),
+		array( 'src' => 'Resources/jquery.combined.js', 'version' => 1 ),
 	);
-	
-	
+	private static $doOutput = false;
+
 
 	/* Static Functions */
 
+	public static function initialize() {
+		self::$doOutput = true;
+	}
+	
 	/**
 	 * AjaxAddScript hook
 	 * Adds scripts
@@ -31,11 +32,13 @@ class UsabilityInitiativeHooks {
 		global $wgScriptPath, $wgJsMimeType;
 		global $wgUsabilityInitiativeCoesxistWithMvEmbed;
 		
+		if ( !self::$doOutput )
+			return true;
+		
 		// Play nice with mv_embed
 		if ( !$wgUsabilityInitiativeCoesxistWithMvEmbed ) {
 			self::$scripts = array_merge(
 				array(
-					array( 'src' => 'Resources/jquery.js', 'version' => 1 ),
 					array( 'src' => 'Resources/messages.js', 'version' => 1 ),
 				),
 				self::$scripts
@@ -86,7 +89,10 @@ class UsabilityInitiativeHooks {
 	 */
 	public static function addCss( $out ) {
 		global $wgScriptPath, $wgJsMimeType;
-
+		
+		if ( !self::$doOutput )
+			return true;
+		
 		// Loops over each style
 		foreach ( self::$styles as $style ) {
 			// Add css for various styles

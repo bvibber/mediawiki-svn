@@ -864,3 +864,4 @@ function os_MWSuggestInit() {
 }
 
 hookEvent("load", os_MWSuggestInit);
+

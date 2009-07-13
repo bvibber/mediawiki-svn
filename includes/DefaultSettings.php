@@ -2154,6 +2154,11 @@ $wgIgnoreImageErrors = false;
  */
 $wgGenerateThumbnailOnParse = true;
 
+/**
+ * Show thumbnails for old images on the image description page
+ */
+$wgShowArchiveThumbnails = true;
+
 /** Whether or not to use image resizing */
 $wgUseImageResize = true;
 
@@ -3706,6 +3711,12 @@ $wgParserConf = array(
  * For debugging
  */
 $wgLinkHolderBatchSize = 1000;
+
+/**
+ * By default MediaWiki does not register links pointing to same server in externallinks dataset,
+ * use this value to override:
+ */
+$wgRegisterInternalExternals = false;
 
 /**
  * Hooks that are used for outputting exceptions.  Format is:

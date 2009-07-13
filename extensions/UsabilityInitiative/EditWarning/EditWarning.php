@@ -41,4 +41,4 @@ $wgExtensionMessagesFiles['EditWarning'] =
 	dirname( __FILE__ ) . '/EditWarning.i18n.php';
 
 // Registers Hooks
-$wgHooks['AjaxAddScript'][] = 'EditWarningHooks::initialize';
+$wgHooks['EditPage::showEditForm:initial'][] = 'EditWarningHooks::initialize';

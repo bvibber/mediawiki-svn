@@ -203,7 +203,7 @@ class SpecialSearch {
 			)
 		);
 		$wgOut->addHtml(
-			Xml::openElement( 'table', array( 'border'=>0, 'cellpadding'=>0, 'cellspacing'=>0 ) ) .
+			Xml::openElement( 'table', array( 'id'=>'mw-search-top-table', 'border'=>0, 'cellpadding'=>0, 'cellspacing'=>0 ) ) .
 			Xml::openElement( 'tr' ) .
 			Xml::openElement( 'td' ) . "\n"	.
 			$this->shortDialog( $term ) .
@@ -225,8 +225,8 @@ class SpecialSearch {
 			$wgOut->addHTML( $this->formHeader($term, 0, 0));
 			if( $this->searchAdvanced ) {
 				$wgOut->addHTML( $this->powerSearchBox( $term ) );
-			} else
-				$wgOut->addHTML( '</form>' );
+			} 
+			$wgOut->addHTML( '</form>' );
 			// Empty query -- straight view of search form
 			wfProfileOut( __METHOD__ );
 			return;

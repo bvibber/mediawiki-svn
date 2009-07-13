@@ -14,6 +14,8 @@ $optionsWithArgs = array( 'maxjobs', 'type', 'procs' );
 $wgUseNormalUser = true;
 require_once( 'commandLine.inc' );
 
+ini_set( 'memory_limit', 150*1024*1024 );
+
 if ( isset( $options['procs'] ) ) {
 	$procs = intval( $options['procs'] );
 	if ( $procs < 1 || $procs > 1000 ) {

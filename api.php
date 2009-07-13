@@ -56,9 +56,18 @@ if( isset( $_SERVER['SCRIPT_NAME'] ) ) {
 } else {
 	$url = $_SERVER['URL'];
 }
+
+// Live-hack to let api.php work with secure.wikimedia.org
+// Andrew 2009-06-17
+if ($secure) {
+	$url = "/$site/$lang$url";
+}
+// End live hack
+
 if( strcmp( "$wgScriptPath/api$wgScriptExtension", $url ) ) {
 	wfHttpError( 403, 'Forbidden',
-		'API must be accessed through the primary script entry point.' );
+		'API must be accessed through the primary script entry point. Expected '.
+		"$wgScriptPath/api$wgScriptExtension but got $url" );
 	return;
 }
 

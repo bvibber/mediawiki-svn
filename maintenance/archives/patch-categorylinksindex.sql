@@ -8,4 +8,5 @@
 
 ALTER TABLE /*$wgDBprefix*/categorylinks
    DROP INDEX cl_sortkey,
-   ADD INDEX cl_sortkey(cl_to, cl_sortkey, cl_from);
+   ADD INDEX cl_sortkey(cl_to, cl_sortkey, cl_from),
+   TYPE=InnoDB;

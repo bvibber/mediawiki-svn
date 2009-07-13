@@ -90,7 +90,7 @@ class LuceneSearch extends SearchEngine {
 		
 		global $wgCanonicalNamespaceNames, $wgNamespaceAliases;
 		$nsNamesRaw = array_merge($wgContLang->getNamespaces(), $wgCanonicalNamespaceNames, 
-			array_keys( array_merge($wgNamespaceAliases, $wgContLang->getNamespaceAliases()) ) );
+			array_keys( array_merge($wgNamespaceAliases, $wgContLang->namespaceAliases) ) );
 			
 		# add all namespace names w/o spaces
 		$nsNames = array();

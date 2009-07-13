@@ -195,10 +195,16 @@ class SecurePoll_LocalAuth extends SecurePoll_Auth {
 	 */
 	static function getUserParams( $user ) {
 		global $wgServer;
+		if ( substr( $wgServer, 0, 5 ) == 'https' ) {
+			global $site, $lang;
+			$server = "$lang.$site.org";
+		} else {
+			$server = preg_replace( '!.*/(.*)$!', '$1', $wgServer );
+		}
 		return array(
 			'name' => $user->getName(),
 			'type' => 'local',
-			'domain' => preg_replace( '!.*/(.*)$!', '$1', $wgServer ),
+			'domain' => $server,
 			'url' => $user->getUserPage()->getFullURL(),
 			'properties' => array(
 				'wiki' => wfWikiID(),
