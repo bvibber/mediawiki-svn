@@ -149,8 +149,8 @@ EOT;
 		}
 		$form .= Xml::closeElement( 'span' );
 		$form .= Xml::submitButton( wfMsg('readerfeedback-submit'),
-			array('id' => 'submitfeedback','accesskey' => wfMsg('revreview-ak-review'),
-			'title' => wfMsg('revreview-tt-review').' ['.wfMsg('revreview-ak-review').']' )
+			array('id' => 'submitfeedback','accesskey' => wfMsg('readerfeedback-ak-review'),
+			'title' => wfMsg('readerfeedback-tt-review').' ['.wfMsg('readerfeedback-ak-review').']' )
 		);
 		# Hidden params
 		$form .= Xml::hidden( 'title', $reviewTitle->getPrefixedText() ) . "\n";
