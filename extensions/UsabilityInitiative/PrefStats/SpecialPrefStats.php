@@ -11,27 +11,27 @@ class SpecialPrefStats extends SpecialPage {
 		parent::__construct( 'PrefStats', 'prefstats' );
 		wfLoadExtensionMessages( 'PrefStats' );
 	}
-	
+
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser, $wgPrefStatsTrackPrefs;
 		$this->setHeaders();
-		
+
 		// Check permissions
 		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
 			return;
 		}
-		
+
 		$wgOut->setPageTitle( wfMsg( 'prefstats-title' ) );
-		
-		if( !isset( $wgPrefStatsTrackPrefs[$par] ) ) {
+
+		if ( !isset( $wgPrefStatsTrackPrefs[$par] ) ) {
 			$this->displayTrackedPrefs();
 			return;
 		}
-		
+
 		$this->displayPrefStats( $par );
 	}
-	
+
 	function displayTrackedPrefs() {
 		global $wgOut, $wgUser, $wgPrefStatsTrackPrefs;
 		$wgOut->addWikiMsg( 'prefstats-list-intro' );
@@ -45,7 +45,7 @@ class SpecialPrefStats extends SpecialPage {
 		}
 		$wgOut->addHTML( Xml::closeElement( 'ul' ) );
 	}
-	
+
 	function displayPrefStats( $pref ) {
 		global $wgOut, $wgRequest, $wgPrefStatsTrackPrefs;
 		$max = $this->getMaxDuration( $pref );
@@ -54,10 +54,10 @@ class SpecialPrefStats extends SpecialPage {
 		$wgOut->addHTML( Xml::element( 'img', array( 'src' =>
 			$this->getGoogleChartParams( $stats ) ) ) );
 	}
-	
+
 	function getGoogleChartParams( $stats ) {
 		global $wgPrefStatsChartDimensions;
-		return "http://chart.apis.google.com/chart?" . wfArrayToCGI( 
+		return "http://chart.apis.google.com/chart?" . wfArrayToCGI(
 		array(
 			'chs' => $wgPrefStatsChartDimensions,
 			'cht' => 'bvs',
@@ -65,18 +65,18 @@ class SpecialPrefStats extends SpecialPage {
 			'chd' => 't:' . implode( ',', $stats ),
 			'chxt' => 'x,y',
 			'chxr' => '1,' . min( $stats ) . ',' . max( $stats ),
-			'chxl' => '0:|'. implode( '|', array_keys( $stats ) ),
-			'chm' => 'N*f0zy*,000000,0,-1,11' 
+			'chxl' => '0:|' . implode( '|', array_keys( $stats ) ),
+			'chm' => 'N*f0zy*,000000,0,-1,11'
 		) );
 	}
-	
+
 	function getPrefStats( $pref, $inc = null ) {
 		global $wgPrefStatsTimeUnit;
 		$max = ceil( $this->getMaxDuration( $pref ) /
 			$wgPrefStatsTimeUnit );
 		$inc = max( 1, ( is_null( $inc ) ? ceil( $max / 10 ) : $inc ) );
 		$retval = array();
-		for( $i = 0; $i <= $max; $i += $inc ) {
+		for ( $i = 0; $i <= $max; $i += $inc ) {
 			$end = min( $max, $i + $inc );
 			$key = $i . '-' . $end;
 			$retval[$key] = $this->countBetween( $pref,
@@ -85,7 +85,7 @@ class SpecialPrefStats extends SpecialPage {
 		}
 		return $retval;
 	}
-	
+
 	/**
 	 * Get the highest duration in the database
 	 */
@@ -99,7 +99,7 @@ class SpecialPrefStats extends SpecialPage {
 		$max2 = wfTimestamp( TS_UNIX ) - wfTimestamp( TS_UNIX, $minTS );
 		return max( $max1, $max2 );
 	}
-	
+
 	/**
 	 * Count the number of users having $pref enabled between
 	 * $min and $max seconds
@@ -114,6 +114,7 @@ class SpecialPrefStats extends SpecialPage {
 		$maxTS = wfTimestamp( TS_UNIX ) - $min;
 		$minTS = wfTimestamp( TS_UNIX ) - $max;
 		$count2 = $dbr->selectField( 'prefstats', 'COUNT(*)', array(
+				'ps_pref' => $pref,
 				'ps_duration IS NULL',
 				'ps_start <' . $dbr->timestamp( $maxTS ),
 				'ps_start >=' . $dbr->timestamp( $minTS )

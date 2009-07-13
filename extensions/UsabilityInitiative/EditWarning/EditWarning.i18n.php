@@ -17,6 +17,20 @@ $messages['en'] = array(
 	'editwarning-warning' => 'Leaving this page will cause you to lose any changes you have made.',
 );
 
+/** Message documentation (Message documentation)
+ * @author McDutchie
+ */
+$messages['qqq'] = array(
+	'editwarning' => "This is the name of an extension that warns people when they try to leave an edit form without saving. So it means something like \"warning about (your) edit\", '''not''' \"edit the warning\".",
+);
+
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'editwarning' => 'ܙܘܗܪܐ ܥܠ ܫܚܠܦܬܐ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -31,7 +45,9 @@ $messages['be-tarask'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'editwarning' => 'Upozorenje uređivanja',
 	'editwarning-desc' => 'Prikazuje upozorenje kada korisnik pokušava napustiti obrazac za uređivanje bez spremanja',
+	'editwarning-warning' => 'Napuštanjem ove stranice će se izgubiti sve promjene koje ste načinili.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -41,6 +57,38 @@ $messages['dsb'] = array(
 	'editwarning' => 'Wobźěłowańske warnowanje',
 	'editwarning-desc' => 'Warnowanje pokazaś, gaž wužywaŕ wopytujo wobźěłowański formular bźeze składowanja spušćiś',
 	'editwarning-warning' => 'Gaž toś ten bok se spušća, budu se změny zgubowaś.',
+);
+
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'editwarning' => 'Προειδοποίηση επεξεργασίας',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'editwarning' => 'Redakta averto',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ * @author McDutchie
+ * @author XalD
+ */
+$messages['es'] = array(
+	'editwarning' => 'Alerta de edición',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'editwarning' => 'Muokkausvaroitus',
+	'editwarning-desc' => 'Näyttää varoituksen kun käyttäjä yrittää poistua muokkaustilasta tallentamatta.',
+	'editwarning-warning' => 'Tältä sivulta poistuminen aiheuttaa kaikkien tekemiesi muutosten katoamisen.',
 );
 
 /** French (Français)
@@ -70,6 +118,15 @@ $messages['gsw'] = array(
 	'editwarning-warning' => 'Wänn Du die Syte verlosch, no verliersch alli Bearbeitige, wu Du do dra gmacht hesch.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'editwarning' => 'אזהרת עריכה',
+	'editwarning-desc' => 'הצגת אזהרה כאשר משתמש מנסה לעזוב את טופס העריכה בלי לשמור',
+	'editwarning-warning' => 'עזיבת דף זה תגרום לך לאבד את כל השינויים שביצעת.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -77,6 +134,33 @@ $messages['hsb'] = array(
 	'editwarning' => 'Wobdźěłowanske warnowanje',
 	'editwarning-desc' => 'Warnowanje pokazać, hdyž wužiwar pospytuje, wobdźěłowanski formular bjez składowanja wopušćić',
 	'editwarning-warning' => 'Hdyž so strona wopušća, so přewjedźene změny zhubja.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'editwarning' => 'Advertimento de modification',
+	'editwarning-desc' => 'Monstra un advertimento quando un usator tenta quitar un formulario de modification sin immagazinar',
+	'editwarning-warning' => 'Quitar iste pagina causara le perdita de omne modificationes que tu ha facite.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'editwarning' => 'Peringatan suntingan',
+	'editwarning-desc' => 'Menampilkan sebuah peringatan jika pengguna hendak meninggalkan penyuntingan tanpa menyimpan',
+	'editwarning-warning' => 'Semua perubahan yang Anda lakukan akan hilang jika Anda meninggalkan halaman ini',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'editwarning' => 'Avviso di modifica',
+	'editwarning-desc' => 'Visualizza un avviso quando un utente cerca di lasciare il modulo di modifica senza salvare',
+	'editwarning-warning' => 'Lasciare questa pagina provoca la perdita di tutti i cambiamenti effettuati.',
 );
 
 /** Japanese (日本語)
@@ -115,6 +199,25 @@ $messages['nl'] = array(
 	'editwarning-warning' => 'Als u deze pagina verlaat verliest u eventuele wijzigingen die u hebt gemaakt.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'editwarning' => 'Endringsåtvaring',
+	'editwarning-desc' => 'Vis ei åtvaring nå ein brukar freistar å navigera vekk frå eit endringsområde utan å lagra',
+	'editwarning-warning' => 'Gjennom å navigera vekk frå denne sida vil du mista alle endringane du måtte ha gjort.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'editwarning' => 'Redigeringsadvarsel',
+	'editwarning-desc' => 'Vis en advarsel når en bruker prøver å forlate et redigeringsskjema uten å lagre',
+	'editwarning-warning' => 'Ved å forlate siden vil du miste alle endringer du har utført.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -122,6 +225,15 @@ $messages['oc'] = array(
 	'editwarning' => 'Avertiment de modificacion',
 	'editwarning-desc' => 'Afichar un avertiment quora l’utilizaire tempta de quitar lo formulari sens enregistrar las modificacions',
 	'editwarning-warning' => "Quitar aquesta pagina vos farà pèrdre totas las modificacions qu'avètz facha.",
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'editwarning' => 'Edycja – ostrzeżenie',
+	'editwarning-desc' => 'Wyświetla ostrzeżenie gdy użytkownik próbuje opuścić formularz edycji bez zapisania',
+	'editwarning-warning' => 'Opuszczenie tej strony spowoduje utratę wprowadzonych przez Ciebie zmian.',
 );
 
 /** Russian (Русский)
@@ -140,5 +252,41 @@ $messages['sk'] = array(
 	'editwarning' => 'Upozornenie pri úprave',
 	'editwarning-desc' => 'Zobrazí upozornenie, keď sa používateľ pokúsi opustiť formulár na úpravy bez uloženia',
 	'editwarning-warning' => 'Ak opustíte túto stránku, stratíte tým všetky vykonané zmeny.',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'editwarning' => 'Redigeringsvarning',
+	'editwarning-desc' => 'Visar en varning när en användare försöker att lämna redigeringsformuläret utan att spara',
+	'editwarning-warning' => 'Genom att lämna den här sidan kommer du att förlora alla ändringar du har gjort.',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'editwarning' => 'Değişiklik uyarısı',
+	'editwarning-desc' => 'Bir kullanıcı kaydetmeden değişiklik formundan çıkmaya çalışırsa bir uyarı göster',
+	'editwarning-warning' => 'Bu sayfadan ayrılmak yaptığınız herhangi bir değişikliği kaybetmenize sebep olacaktır.',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'editwarning' => 'Редакторне попередження',
+	'editwarning-desc' => 'Показує попередження, якщо користувач покидає форму редагування без збереження',
+	'editwarning-warning' => 'Перехід на іншу сторінку призведе до втрати ваших змін.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'editwarning' => 'Cảnh báo sửa đổi',
+	'editwarning-desc' => 'Hiện cảnh báo khi người dùng rời khỏi trang sửa đổi mà chưa lưu trang',
+	'editwarning-warning' => 'Tất cả các sửa đổi của bạn sẽ bị hủy nếu rời khỏi trang này.',
 );
 

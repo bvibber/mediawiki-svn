@@ -29,7 +29,7 @@ $wgPrefStatsTrackPrefs = array();
 $wgPrefStatsChartDimensions = '1000x300';
 
 // Time unit to use for the graph on Special:PrefStats
-$wgPrefStatsTimeUnit = 60*60*24; // one day
+$wgPrefStatsTimeUnit = 60 * 60 * 24; // one day
 
 /* Setup */
 
@@ -47,15 +47,16 @@ $wgExtensionCredits['other'][] = array(
 $wgAutoloadClasses['PrefStatsHooks'] =
 	dirname( __FILE__ ) . '/PrefStats.hooks.php';
 $wgAutoloadClasses['SpecialPrefStats'] =
-	dirname( __FILE__ ). '/SpecialPrefStats.php';
+	dirname( __FILE__ ) . '/SpecialPrefStats.php';
 
 $wgSpecialPages['PrefStats'] = 'SpecialPrefStats';
+$wgSpecialPageGroups['PrefStats'] = 'wiki';
 
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['PrefStats'] =
 	dirname( __FILE__ ) . '/PrefStats.i18n.php';
 $wgExtensionAliasesFiles['PrefStats'] =
-	dirname( __FILE__ ). '/PrefStats.alias.php';
+	dirname( __FILE__ ) . '/PrefStats.alias.php';
 
 // Registers Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'PrefStatsHooks::schema';

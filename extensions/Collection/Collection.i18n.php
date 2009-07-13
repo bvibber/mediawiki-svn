@@ -133,6 +133,8 @@ Please contact your MediaWiki administrator.',
 	'coll-more_info'                  => 'Show more information',
 	'coll-hide_info'                  => 'Hide information',
 	'coll-order_info_article'         => '{{MediaWiki:Coll-helppage}}/PediaPress order information',
+	'right-collectionsaveasuserpage'  => 'Save books as user page',
+	'right-collectionsaveascommunitypage' => 'Save books as community page',
 );
 
 /** Message documentation (Message documentation)
@@ -178,6 +180,8 @@ $1 is a placeholder and will be replaced by content during the rendering process
 	'coll-return_to' => '{{Identical|Return to $1}}',
 	'coll-order_info_article' => '{{doc-important|Do not translate "<nowiki>{{MediaWiki:Coll-helppage}}/</nowiki>"}}
 Sub page of {{msg-mw|coll-helppage}} ({{int:coll-helppage}})',
+	'right-collectionsaveasuserpage' => '{{doc-right|collectionsaveasuserpage}}',
+	'right-collectionsaveascommunitypage' => '{{doc-right|collectionsaveascommunitypage}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -902,6 +906,10 @@ $messages['cs'] = array(
 	'coll-print_template_pattern' => '$1/Tisk',
 	'coll-unknown_subpage_title' => 'Neznámá podstránka',
 	'coll-unknown_subpage_text' => 'Tato podstránka [[Special:Book|knihy]] neexistuje',
+	'coll-couldnotaddarticle_title' => 'Nepodařilo se přidat stránku',
+	'coll-couldnotaddarticle_msg' => 'Stránka nemohla být přidána.',
+	'coll-couldnotremovearticle_title' => 'Stránka nemohla být odebrána',
+	'coll-couldnotremovearticle_msg' => 'Nepodařilo se odebrat stránku.',
 	'coll-download_as' => 'Stáhnout jako $1',
 	'coll-noscript_text' => '<h1>Je vyžadován JavaScript!</h1>
 <strong>Váš prohlížeč nepodporuje JavaScript nebo máte JavaScript vypnutý.
@@ -1120,6 +1128,8 @@ Hinweise:
 	'coll-more_info' => 'Weitere Informationen zeigen',
 	'coll-hide_info' => 'Informationen verstecken',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress Bestellinformation',
+	'right-collectionsaveasuserpage' => 'Bücher als Benutzerseite speichern',
+	'right-collectionsaveascommunitypage' => 'Bücher als Gemeinschaftsseite speichern',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -1272,6 +1282,8 @@ Skontaktuj pšosym swójogo administratora MediaWiki',
 	'coll-more_info' => 'Dalšne informacije pokazaś',
 	'coll-hide_info' => 'Informacije schowaś',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress skazańske informacije',
+	'right-collectionsaveasuserpage' => 'Knigły ako wužywarski bok składowaś',
+	'right-collectionsaveascommunitypage' => 'Knigły ako bok zgromaźeństwa składowaś',
 );
 
 /** Ewe (Eʋegbe)
@@ -2078,6 +2090,8 @@ Veuillez contacter votre administrateur MediaWiki.',
 	'coll-more_info' => 'Afficher d’autres informations',
 	'coll-hide_info' => 'Masquer les informations',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress commander des informations',
+	'right-collectionsaveasuserpage' => 'Sauvegarder des livres sur des pages utilisateur',
+	'right-collectionsaveascommunitypage' => 'Sauvegarder des livres sur des pages communautaires',
 );
 
 /** Western Frisian (Frysk)
@@ -2329,6 +2343,8 @@ Hiiwyys:
 	'coll-more_info' => 'Meh Informatione zeige',
 	'coll-hide_info' => 'Informatione verstecke',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress Bstellinformation',
+	'right-collectionsaveasuserpage' => 'Biecher as Benutzersyte spychere',
+	'right-collectionsaveascommunitypage' => 'Biecher as Gmeinschaftssyte spychere',
 );
 
 /** Gujarati (ગુજરાતી)
@@ -2807,6 +2823,8 @@ Skontaktuj prošu swojeho administratora MediaWiki.',
 	'coll-more_info' => 'Dalše informacije pokazać',
 	'coll-hide_info' => 'Informacije schować',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress skazanske informacije',
+	'right-collectionsaveasuserpage' => 'Knihi jako wužiwarsku stronu składować',
+	'right-collectionsaveascommunitypage' => 'Knihi jako stronu zhromadźenstwa składować',
 );
 
 /** Hungarian (Magyar)
@@ -3135,7 +3153,7 @@ Per favor contacta tu administrator de MediaWiki.',
  * @author Rex
  */
 $messages['id'] = array(
-	'coll-desc' => '[[Special:Book|Buat buku]]',
+	'coll-desc' => '[[Special:Book|Membuat buku koleksi artikel]]',
 	'coll-collection' => 'Buku',
 	'coll-collections' => 'Buku',
 	'coll-exclusion_category_title' => 'Halaman yang tidak turut dicetak',
@@ -3241,6 +3259,8 @@ Silakan hubungi pengelola MediaWiki Anda.',
 	'coll-more_info' => 'Tampilkan informasi lebih lanjut',
 	'coll-hide_info' => 'Sembunyikan informasi',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/Informasi pemesanan dari PediaPress',
+	'right-collectionsaveasuserpage' => 'Menyimpan koleksi buku sebagai halaman pengguna',
+	'right-collectionsaveascommunitypage' => 'Menyimpan koleksi buku sebagai halaman komunitas',
 );
 
 /** Ido (Ido)
@@ -3505,6 +3525,8 @@ $messages['ja'] = array(
 	'coll-more_info' => '詳細を表示',
 	'coll-hide_info' => '詳細を非表示',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress注文情報',
+	'right-collectionsaveasuserpage' => 'ブックを利用者ページとして保存',
+	'right-collectionsaveascommunitypage' => 'ブックを共有ページとして保存',
 );
 
 /** Javanese (Basa Jawa)
@@ -3936,6 +3958,8 @@ Don dat enem Wikki-Köbes obb et Bruut schmiere.',
 	'coll-more_info' => 'Mieh Enfommazjuhne aanzeije',
 	'coll-hide_info' => 'Winnijer Enfommazjuhne aanzeije',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/Wie mer bei <i lang="en">PediaPress</i> beshtelle kann',
+	'right-collectionsaveasuserpage' => 'E Boch als enem Metmaacher sing Sigg avspeichere',
+	'right-collectionsaveascommunitypage' => 'E Boch als en Jemeinschaffß_Sigg avspeichere',
 );
 
 /** Cornish (Kernewek)
@@ -3958,6 +3982,10 @@ $messages['lb'] = array(
 	'coll-print_template_pattern' => '$1/Drock',
 	'coll-unknown_subpage_title' => 'Onbekannten Ënnersäit',
 	'coll-unknown_subpage_text' => 'Dës Ënnersäit vum [[Special:Book|Buch]] gëtt et net',
+	'coll-couldnotaddarticle_title' => 'Wikisäit konnt net derbäigesat ginn',
+	'coll-couldnotaddarticle_msg' => "D'Wikisäit konnt net derbäigesat ginn.",
+	'coll-couldnotremovearticle_title' => 'Wikisäit konnt net ewechgeholl ginn',
+	'coll-couldnotremovearticle_msg' => "D'Wikisäit konnt net ewechgeholl ginn.",
 	'coll-download_as' => 'Als $1 eroflueden',
 	'coll-noscript_text' => '<h1>JavaScript gëtt gebraucht!</h1>
 <strong>Äre Browser ënnerstëtzt Java Script net oder JavaScript ass ausgeschalt.
@@ -4045,6 +4073,8 @@ Opgepasst:
 	'coll-more_info' => 'Méi Informatioune weisen',
 	'coll-hide_info' => 'Informatioune verstoppen',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress Bestellinformatiounen',
+	'right-collectionsaveasuserpage' => 'Bicher als Benotzersäit späicheren',
+	'right-collectionsaveascommunitypage' => 'Bicher als Gemeinschaftssäit späicheren',
 );
 
 /** Limburgish (Limburgs)
@@ -4698,6 +4728,8 @@ Neem contact op met uw MediaWiki-beheerder.',
 	'coll-more_info' => 'Meer informatie weergeven',
 	'coll-hide_info' => 'Informatie verbergen',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/Bestelinformatie PediaPress',
+	'right-collectionsaveasuserpage' => 'Boeken opslaan als gebruikerspagina',
+	'right-collectionsaveascommunitypage' => 'Boeken opslaan als gemeenschapspagina',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -5050,7 +5082,17 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'coll-collection' => 'Buch',
+	'coll-collections' => 'Bicher',
+	'coll-your_book' => 'Dei Buch',
+	'coll-remove' => 'Lösche',
+	'coll-rename' => 'Naame ennere',
+	'coll-empty_collection' => 'Leeres Buch',
+	'coll-revision' => 'Version: $1',
+	'coll-yes' => 'Ya',
+	'coll-overwrite' => 'Iwwerschreiwe',
 	'coll-about_pp' => 'Iwwer $1',
+	'coll-return_to' => 'Zerick zu [[:$1]]',
 );
 
 /** Polish (Polski)
@@ -5073,9 +5115,9 @@ $messages['pl'] = array(
 	'coll-unknown_subpage_title' => 'Nieznana podstrona',
 	'coll-unknown_subpage_text' => 'Podstrona należąca do [[Special:Book|książki]] nie istnieje',
 	'coll-couldnotaddarticle_title' => 'Nie można było dodać strony wiki',
-	'coll-couldnotaddarticle_msg' => 'Wiki strona nie może zostać dodana.',
-	'coll-couldnotremovearticle_title' => 'Nie można było usunąć strony wiki',
-	'coll-couldnotremovearticle_msg' => 'Wiki strona nie może zostać usunięta.',
+	'coll-couldnotaddarticle_msg' => 'Strona wiki nie może zostać dodana.',
+	'coll-couldnotremovearticle_title' => 'Nie można usunąć strony wiki',
+	'coll-couldnotremovearticle_msg' => 'Strona wiki nie może zostać usunięta.',
 	'coll-download_as' => 'Pobierz jako $1',
 	'coll-noscript_text' => '<h1>Potrzebny JavaScript!</h1>
 <strong>Twoja przeglądarka nie obsługuje JavaScriptu lub został on wyłączony.
@@ -5169,6 +5211,8 @@ Skontaktuj się z administratorem tego serwisu MediaWiki.',
 	'coll-more_info' => 'Pokaż więcej informacji',
 	'coll-hide_info' => 'Ukryj informacje',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/Zamawianie PediaPress',
+	'right-collectionsaveasuserpage' => 'Zapisywanie książek jako stronę użytkownika',
+	'right-collectionsaveascommunitypage' => 'Zapisywanie książek jako wspólną stronę',
 );
 
 /** Pashto (پښتو)
@@ -5476,6 +5520,7 @@ $messages['roa-tara'] = array(
  * @author Ferrer
  * @author Innv
  * @author Kaganer
+ * @author Lockal
  * @author MaxSem
  * @author Sergey kudryavtsev
  * @author Александр Сигачёв
@@ -5530,7 +5575,7 @@ $messages['ru'] = array(
 	'coll-empty_collection' => 'Пустая книга',
 	'coll-revision' => 'Версия: $1',
 	'coll-save_collection_title' => 'Сохранить книгу и открыть к ней доступ',
-	'coll-save_collection_text' => 'Выберите местоположение:',
+	'coll-save_collection_text' => 'Выберите местоположение для Вашей книги:',
 	'coll-login_to_save' => 'Чтобы сохранить книгу для дальнейшего использования, пожалуйста, [[Special:UserLogin|представьтесь системе или создайте учётную запись]].',
 	'coll-personal_collection_label' => 'Личная книга:',
 	'coll-community_collection_label' => 'Книга сообщества:',
@@ -5586,6 +5631,8 @@ $messages['ru'] = array(
 	'coll-more_info' => 'Показать больше информации',
 	'coll-hide_info' => 'Скрыть информацию',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/Информация о заказе PediaPress',
+	'right-collectionsaveasuserpage' => 'сохранение книг, как страницу участника',
+	'right-collectionsaveascommunitypage' => 'сохранение книг, как страницу сообщества',
 );
 
 /** Yakut (Саха тыла)
@@ -5812,6 +5859,8 @@ Prosím, kontaktujte svojho správcu MediaWiki.',
 	'coll-more_info' => 'Zobraziť viac informácií',
 	'coll-hide_info' => 'Skryť informácie',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/Informácie o objednávkach PediaPress',
+	'right-collectionsaveasuserpage' => 'Uložiť knihy ako používateľskú stránku',
+	'right-collectionsaveascommunitypage' => 'Uložiť knihy ako komunitnú stránku',
 );
 
 /** Slovenian (Slovenščina)
@@ -6249,7 +6298,7 @@ $messages['te'] = array(
 	'coll-collection' => 'పుస్తకం',
 	'coll-collections' => 'పుస్తకాలు',
 	'coll-your_book' => 'మీ పుస్తకం',
-	'coll-download_title' => 'సేకరణని PDFగా దిగుమతి చేసుకోండి',
+	'coll-download_title' => 'దింపుకోండి',
 	'coll-download_text' => 'మీ పేజీ సేకరణ నుండి ఆటోమెటిగ్గా తయారయిన PDF ఫైలుని దిగుమతిచేసుకోడానికి, ఈ బొత్తాన్ని నొక్కండి.',
 	'coll-download' => 'దిగుమతి',
 	'coll-remove' => 'తొలగించు',
@@ -6692,6 +6741,8 @@ Lütfen MedyaViki yöneticinizle irtibat kurun.',
 	'coll-more_info' => 'Daha fazla bilgi göster',
 	'coll-hide_info' => 'Bilgiyi gizle',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress sipariş bilgisi',
+	'right-collectionsaveasuserpage' => 'Kitapları kullanıcı sayfası olarak kaydet',
+	'right-collectionsaveascommunitypage' => 'Kitapları topluluk sayfası olarak kaydet',
 );
 
 /** Ukrainian (Українська)
@@ -6810,6 +6861,10 @@ $messages['vec'] = array(
 	'coll-print_template_pattern' => '$1/Stanpa',
 	'coll-unknown_subpage_title' => 'Sotopàxena sconossiùa',
 	'coll-unknown_subpage_text' => 'Sta sotopàxena de [[Special:Book|Libro]] no la esiste mia',
+	'coll-couldnotaddarticle_title' => 'No se riesse a inserir la pagina wiki',
+	'coll-couldnotaddarticle_msg' => 'La pagina wiki no se gà podesto inserirla.',
+	'coll-couldnotremovearticle_title' => 'No se riesse a cavar la pagina wiki',
+	'coll-couldnotremovearticle_msg' => 'La pagina wiki no se gà podesto cavarla.',
 	'coll-download_as' => 'Descarga come $1',
 	'coll-noscript_text' => "<h1>Ghe vole el JavaScript!</h1>
 <strong>El to browser no'l suporta JavaScript opure JavaScript el xe stà disativà.
@@ -6902,6 +6957,8 @@ Note:
 	'coll-more_info' => 'Mostra piasè informasion',
 	'coll-hide_info' => 'Scondi informasion',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/Informassion par ordinar con PediaPress',
+	'right-collectionsaveasuserpage' => 'Salva na colezion come pagina utente',
+	'right-collectionsaveascommunitypage' => 'Salva na colezion come pagina comunitaria',
 );
 
 /** Veps (Vepsan kel')

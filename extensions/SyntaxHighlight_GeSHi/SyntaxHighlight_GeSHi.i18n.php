@@ -161,7 +161,7 @@ $messages['ca'] = array(
 	'syntaxhighlight-supported' => 'Llenguatges admesos per al ressaltament sintàctic:',
 	'syntaxhighlight-err-loading' => '(error en carregar la llista de llenguatges)',
 	'syntaxhighlight-err-language' => 'Llenguatge invàlid.',
-	'geshi.css' => '/* El CSS ubicat aquí serà aplicat al ressaltat de la sintaxis de GeSHi */',
+	'geshi.css' => '/* El CSS ubicat aquí serà aplicat al ressaltat de sintaxi de GeSHi */',
 );
 
 /** Czech (Česky)
@@ -470,6 +470,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author JtFuruhata
  */
@@ -477,7 +478,7 @@ $messages['ja'] = array(
 	'syntaxhighlight-desc' => '[http://qbnz.com/highlighter/ GeSHi 構文ハイライト機能] を利用したタグ <tt><nowiki><source></nowiki></tt> を提供する',
 	'syntaxhighlight-specify' => '以下のように言語を指定する必要があります:',
 	'syntaxhighlight-supported' => '構文ハイライト機能に対応している言語は以下の通りです:',
-	'syntaxhighlight-err-loading' => '(対応言語の読み込み時にエラーが発生しました)',
+	'syntaxhighlight-err-loading' => '(対応言語一覧の読み込み時にエラーが発生しました)',
 	'syntaxhighlight-err-language' => '不正な言語名です。',
 	'geshi.css' => '/* ここへ、GeShi 構文ハイライト機能に適用する CSS を記述してください */',
 );

@@ -442,6 +442,9 @@ class SpecialCollection extends SpecialPage {
 	}
 
 	static function removeItem( $index ) {
+		if (!is_int( $index ) ) {
+			return false;
+		}
 		if ( !CollectionSession::hasSession() ) {
 			return false;
 		}
@@ -495,12 +498,20 @@ class SpecialCollection extends SpecialPage {
 			$articleTitle = trim( substr( $line, 1 ) );
 			if ( preg_match( '/\[\[:?(.*?)(\|(.*?))?\]\]/', $articleTitle, $match ) ) {
 				$articleTitle = $match[1];
-				$displayTitle = $match[3];
+				if ( isset( $match[3] ) ) {
+					$displayTitle = $match[3];
+				} else {
+					$displayTitle = null;
+				}
 				$oldid = -1;
 				$currentVersion = 1;
 			} elseif ( preg_match( '/\[\{\{fullurl:(.*?)\|oldid=(.*?)\}\}\s+(.*?)\]/', $articleTitle, $match ) ) {
 				$articleTitle = $match[1];
-				$displayTitle = $match[3];
+				if ( isset( $match[3] ) ) {
+					$displayTitle = $match[3];
+				} else {
+					$displayTitle = null;
+				}
 				$oldid = $match[2];
 				$currentVersion = 0;
 			}

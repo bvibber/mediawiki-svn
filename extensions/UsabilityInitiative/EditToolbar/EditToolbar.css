@@ -4,11 +4,11 @@
 form#editform {
 	margin: 0;
 	padding: 0;
-	padding-right: 2px;
+	margin-right: 5px;
 }
 body.rtl form#editform {
 	padding-right: 0;
-	padding-left: 2px;
+	margin-left: 5px;
 }
 textarea#wpTextbox1 {
 	border: solid silver 1px;
@@ -20,16 +20,62 @@ div#edittoolbar {
 	border: solid silver 1px;
 	border-bottom-width: 0;
 	background-color: #F3F3F3;
+	height: 32px;
 }
+/* Sections */
+div#edittoolbar div.sections {
+	float: left;
+	width: 100%;
+	clear: both;
+}
+body.rtl div#edittoolbar div.sections {
+	float: right;
+}
+div#edittoolbar div.sections div.section {
+	display: none;
+	float: left;
+	width: 100%;
+	margin-left: -1px;
+	border-top: solid 1px #DDDDDD;
+	border-left: solid silver 1px;
+	border-right: solid silver 1px;
+	background-color: #F3F3F3;
+}
+body.rtl div#edittoolbar div.sections div.section {
+	float: right;
+}
+div#edittoolbar div.sections div.loading {
+	padding: 10px;
+}
+div#edittoolbar div.sections div div.progress {
+	display: none;
+}
+div#edittoolbar div.sections div.loading div.progress {
+	display: block;
+	background-image: url(images/loading.gif);
+	background-position: left center;
+	background-repeat: no-repeat;
+	padding-left: 32px;
+	float: left;
+	color: #666666;
+}
+div#edittoolbar div.sections div.loading div.progress {
+	background-position: right center;
+	padding-left: 0;
+	padding-right: 32px;
+	float: right;
+}
+/* Toolbar Groups and Tabs */
 div#edittoolbar div.tabs,
 div#edittoolbar div.group {
 	float: left;
 	height: 26px;
 	margin: 3px;
+	padding: 0;
 	padding-left: 3px;
 	border-left: solid 1px #DDDDDD;
 }
-div#edittoolbar div.group:first-child {
+div#edittoolbar div.first {
 	border-left: none;
 }
 body.rtl div#edittoolbar div.tabs,
@@ -40,48 +86,61 @@ body.rtl div#edittoolbar div.group {
 	border-left: none;
 	border-right: solid 1px #DDDDDD;
 }
-body.rtl div.group:first-child {
+body.rtl div#edittoolbar div.first {
 	border-right: none;
 }
-div#edittoolbar div.sections {
-	float: left;
-	width: 100%;
-	clear: both;
+/* Tabs */
+div#edittoolbar div.tabs {
+	list-style: none;
 }
-body.rtl div#edittoolbar div.sections {
+div#edittoolbar div.tabs span.tab {
+	display: inline-block;
+	float: left;
+	line-height: 26px;
+}
+/* IGNORED BY IE6 */
+body.rtl div#edittoolbar div.tabs > span.tab {
 	float: right;
 }
-div#edittoolbar div.sections > div.section {
-	display: none;
+div#edittoolbar div.tabs span.tab a,
+div#edittoolbar div.tabs span.tab a:visited {
+	display: inline-block;
 	float: left;
-	width: 100%;
-	border-top: solid 1px #DDDDDD;
-}
-body.rtl div#edittoolbar div.sections > div.section {
-	float: right;
-}
-div#edittoolbar div.sections > div.loading {
-	padding: 10px;
-}
-div#edittoolbar div.sections > div > div.progress {
-	display: none;
-}
-div#edittoolbar div.sections > div.loading > div.progress {
-	display: block;
-	background-image: url(images/loading.gif);
+	padding-left: 18px;
+	padding-right: 12px;
+	height: 26px;
+	cursor: pointer;
+	color: #0645ad;
+	background-image: url(images/arrow-right.png);
 	background-position: left center;
 	background-repeat: no-repeat;
-	padding-left: 32px;
-	float: left;
-	color: #666666;
 }
-div#edittoolbar div.sections > div.loading > div.progress {
+body.rtl div#edittoolbar div.tabs span.tab a,
+body.rtl div#edittoolbar div.tabs span.tab a:visited {
+	padding-left: 12px;
+	padding-right: 18px;
+	background-image: url(images/arrow-left.png);
 	background-position: right center;
-	padding-left: 0;
-	padding-right: 32px;
+}
+/* IGNORED BY IE6 */
+body.rtl div#edittoolbar div.tabs > span.tab > a,
+body.rtl div#edittoolbar div.tabs > pan.tab > a:visited {
 	float: right;
 }
-div#edittoolbar div.group > div.label {
+div#edittoolbar div.tabs span.tab a.current,
+div#edittoolbar div.tabs span.tab a.current:visited {
+	color: #333333;
+	background-image: url(images/arrow-down.png);
+}
+body.rtl div#edittoolbar div.tabs span.tab a.current,
+body.rtl div#edittoolbar div.tabs span.tab a.current:visited {
+	background-image: url(images/arrow-down.png);
+}
+div#edittoolbar div.tabs span.tab a.current:hover {
+	text-decoration: none;
+}
+/* Toolbar */
+div#edittoolbar div.group div.label {
 	float: left;
 	border: 0px;
 	height: 22px;
@@ -92,12 +151,13 @@ div#edittoolbar div.group > div.label {
 	color: #777777;
 	cursor: default;
 }
+/* IGNORED BY IE6 */
 body.rtl div#edittoolbar div.group > div.label {
 	float: right;
 	margin-left: 8px;
 	margin-right: 5px;
 }
-div#edittoolbar div.group > img {
+div#edittoolbar div.group input.tool {
 	float: left;
 	border: 0px;
 	height: 22px;
@@ -105,19 +165,22 @@ div#edittoolbar div.group > img {
 	padding: 2px;
 	cursor: pointer;
 }
-body.rtl div#edittoolbar div.group > img {
+/* IGNORED BY IE6 */
+body.rtl div#edittoolbar div.group > input.tool {
 	float: right;
 }
-div#edittoolbar div.group > select {
+div#edittoolbar div.group select {
 	float: left;
 	margin: 2px;
 	height: 22px;
 	cursor: pointer;
 }
+/* IGNORED BY IE6 */
 body.rtl div#edittoolbar div.group > select {
 	float: right;
 	font-size: 0.9em;
 }
+/* Booklet */
 div#edittoolbar div.index {
 	float: left;
 	width: 20%;
@@ -127,23 +190,20 @@ div#edittoolbar div.index {
 body.rtl div#edittoolbar div.index {
 	float: right;
 }
-div#edittoolbar div.index > div {
+div#edittoolbar div.index div {
 	padding: 4px;
 	padding-left: 6px;
 	cursor: pointer;
 	color: #0645ad;
 }
-body.rtl div#edittoolbar div.index > div {
+body.rtl div#edittoolbar div.index div {
 	padding-left: 4px;
 	padding-right: 6px;
 }
-div#edittoolbar div.index > div.current {
+div#edittoolbar div.index div.current {
 	background-color: #FAFAFA;
 	color: #333333;
 	cursor: default;
-}
-div#edittoolbar div.index > div:first-child {
-	border-top: none;
 }
 div#edittoolbar div.pages {
 	float: right;
@@ -155,48 +215,42 @@ div#edittoolbar div.pages {
 body.rtl div#edittoolbar div.pages {
 	float: left;
 }
-div#edittoolbar div.pages > div.page {
+div#edittoolbar div.pages div.page {
 	display: none;
 }
-div#edittoolbar div.pages > div.page:first-child {
-	display: block;
-}
-div#edittoolbar div.pages > div.page > table {
+div#edittoolbar div.pages div.page table {
 	padding-left: 5px;
 	padding-right: 5px;
 	background: none;
 }
-div#edittoolbar div.pages > div.page > table th {
+div#edittoolbar div.pages div.page table th {
 	color: #999999;
 }
-div#edittoolbar div.pages > div.page > table td {
+div#edittoolbar div.pages div.page table td {
 	color: black;
 	border-top: solid 1px #EEEEEE;
 }
-div#edittoolbar div.pages > div.page > table tr:first-child > td {
-	border-top: solid 1px #DDDDDD;
-}
-div#edittoolbar div.pages > div.page > table th,
-div#edittoolbar div.pages > div.page > table td {
+div#edittoolbar div.pages div.page table th,
+div#edittoolbar div.pages div.page table td {
 	text-align: left;
 	padding: 5px;
 	margin: 0px;
 }
-body.rtl div#edittoolbar div.pages > div.page > table th,
-body.rtl div#edittoolbar div.pages > div.page > table td {
+body.rtl div#edittoolbar div.pages div.page table th,
+body.rtl div#edittoolbar div.pages div.page table td {
 	text-align: right;
 }
-div#edittoolbar div.pages > div.page > table td.syntax {
+div#edittoolbar div.pages div.page table td.syntax {
 	font-family: monospace;
 }
-div#edittoolbar-section-help div.page > table td.syntax,
-div#edittoolbar-section-help div.page > table td.result {
+div#edittoolbar-section-help div.page table td.syntax,
+div#edittoolbar-section-help div.page table td.result {
 	width: 40%;
 }
-div#edittoolbar-section-help div.page > table td.description {
+div#edittoolbar-section-help div.page table td.description {
 	width: 20%;
 }
-div#edittoolbar-section-characters div.page > div > a {
+div#edittoolbar-section-characters div.page div a {
 	border: solid 1px #DDDDDD;
 	padding: 5px;
 	padding-left: 8px;
@@ -215,46 +269,8 @@ body.rtl div#edittoolbar-section-characters div.page > div > a {
 	margin-left: 0;
 	margin-right: 5px;
 }
-div#edittoolbar-section-characters div.page > div > a:hover {
+div#edittoolbar-section-characters div.page div a:hover {
 	background-color: white;
 	text-decoration: none;
 	border-color: #a8d7f9;
-}
-div#edittoolbar div.tabs > div.tab {
-	float: left;
-	line-height: 26px;
-}
-body.rtl div#edittoolbar div.tabs > div.tab {
-	float: right;
-}
-div#edittoolbar div.tabs > div.tab > a,
-div#edittoolbar div.tabs > div.tab > a:visited {
-	padding-left: 18px;
-	padding-right: 12px;
-	display: block;
-	height: 26px;
-	cursor: pointer;
-	color: #0645ad;
-	background-image: url(images/arrow-right.png);
-	background-position: left center;
-	background-repeat: no-repeat;
-}
-body.rtl div#edittoolbar div.tabs > div.tab > a,
-body.rtl div#edittoolbar div.tabs > div.tab > a:visited {
-	padding-left: 12px;
-	padding-right: 18px;
-	background-image: url(images/arrow-left.png);
-	background-position: right center;
-}
-div#edittoolbar div.tabs > div.tab > a.current,
-div#edittoolbar div.tabs > div.tab > a.current:visited {
-	color: #333333;
-	background-image: url(images/arrow-down.png);
-}
-body.rtl div#edittoolbar div.tabs > div.tab > a.current,
-body.rtl div#edittoolbar div.tabs > div.tab > a.current:visited {
-	background-image: url(images/arrow-down.png);
-}
-div#edittoolbar div.tabs > div.tab > a.current:hover {
-	text-decoration: none;
 }

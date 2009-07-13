@@ -29,7 +29,7 @@
 					.attr( 'class', 'sections' )
 					.appendTo( $(this) );
 				// Appends float-clearing div
-				$(this).append( $( '<div style="clear:both"></div>' ) );
+				$(this).append( $( '<div style="clear:both;"></div>' ) );
 				// Cookie name for storing section state
 				var sectionCookie = 'edittoolbar-' + $(this).attr( 'id' ) + '-section';
 				// Queue for sections to be built asynchonously
@@ -65,7 +65,7 @@
 					};
 					// Appends section tab
 					tabDiv.append(
-						$( '<div />' )
+						$( '<span />' )
 							.attr( 'class', 'tab' )
 							.append(
 								$( '<a />' )
@@ -77,10 +77,10 @@
 									.click( function() {
 										$(this).blur();
 										var show = ( $(this).data( 'sectionDiv' ).css( 'display' ) == 'none' );
-										$(this).data( 'sectionDiv' ).parent().children().hide('fast');
+										$(this).data( 'sectionDiv' ).parent().children().hide();
 										$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 										if ( show ) {
-											$(this).data( 'sectionDiv' ).show('fast');
+											$(this).data( 'sectionDiv' ).show();
 											$(this).addClass( 'current' );
 										}
 										// Sets or deletes cookie when sections are shown or hidden
@@ -88,7 +88,7 @@
 											$(this).data( 'sectionCookie' ),
 											show ? $(this).data( 'sectionDiv' ).attr( 'id' ) : null
 										);
-										$(this).data( 'textbox' ).focus();
+										/*$(this).data( 'textbox' ).focus();*/
 										return false;
 									})
 							)
@@ -132,12 +132,17 @@
 					if ( !( 'groups' in section ) ) {
 						return;
 					}
+					var first = true;
 					// Loops over each group
 					for ( group in section.groups ) {
 						// Appends group
 						var groupDiv = $( '<div />' )
 							.attr( 'class', 'group' )
 							.appendTo( $(this) );
+						if ( first ) {
+							groupDiv.addClass( 'first' );
+							first = false;
+						}
 						// Checks if there's a label for this group
 						if ( msgSet( section.groups[group], 'label' ) ) {
 							groupDiv.append(
@@ -171,11 +176,13 @@
 								case 'button':
 									// Appends button
 									groupDiv.append(
-										$( '<img />' )
+										$( '<input />' )
 										.attr( {
 											src: imagePath + section.groups[group].tools[tool].icon,
 											alt: label,
-											title: label
+											title: label,
+											'class': 'tool',
+											'type': 'image'
 										} )
 										.data( 'context', context )
 										.click( action )
@@ -213,16 +220,20 @@
 					var indexDiv = $( '<div />' )
 						.attr( 'class', 'index' )
 						.appendTo( $(this) );
-
+					// Builds name name of booklet state cookie
 					var bookletCookie = 'edittoolbar-' + $(this).attr( 'id' ) + '-booklet-' + id;
+					// Gets ID of selected page
 					var selectedID = $.cookie( bookletCookie ); 
-					
 					// Loops over each page
 					for ( page in section.pages ) {
+						// Fallback to current (first) page for selectedID
+						if ( selectedID === null ) {
+							selectedID = page;
+						}
 						// Appends index entry
 						indexDiv.append(
 							$( '<div />' )
-								.attr( 'class', page == selectedID ? 'current' : null )
+								.attr( 'class', page === selectedID ? 'current' : null )
 								.text( msg( section.pages[page], 'label' ) )
 								.data( 'page', page )
 								.data( 'cookie', bookletCookie )
@@ -245,6 +256,7 @@
 						// Appends page
 						var pageDiv = $( '<div />' )
 							.attr( 'class', 'page page-' + page )
+							.css( 'display', page === selectedID ? 'block' : 'none' )
 							.appendTo( pagesDiv );
 						// Checks if there's content for this page
 						switch ( section.pages[page].layout ) {
@@ -433,14 +445,14 @@ var editToolbarConfiguration = {
 			'format': {
 				tools: {
 					'bold': {
-						labelMsg: 'edittoolbar-tool-format-bold',
+						labelMsg: 'edittoolbar-tool-bold',
 						type: 'button',
 						icon: 'format-bold.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "'''",
-								periMsg: 'edittoolbar-tool-format-bold-example',
+								periMsg: 'edittoolbar-tool-bold-example',
 								post: "'''"
 							}
 						}
@@ -449,14 +461,14 @@ var editToolbarConfiguration = {
 						section: 'main',
 						group: 'format',
 						id: 'italic',
-						labelMsg: 'edittoolbar-tool-format-italic',
+						labelMsg: 'edittoolbar-tool-italic',
 						type: 'button',
 						icon: 'format-italic.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "''",
-								periMsg: 'edittoolbar-tool-format-italic-example',
+								periMsg: 'edittoolbar-tool-italic-example',
 								post: "''"
 							}
 						}
@@ -466,47 +478,47 @@ var editToolbarConfiguration = {
 			'insert': {
 				tools: {
 					'xlink': {
-						labelMsg: 'edittoolbar-tool-insert-xlink',
+						labelMsg: 'edittoolbar-tool-xlink',
 						type: 'button',
 						icon: 'insert-xlink.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "[",
-								periMsg: 'edittoolbar-tool-insert-xlink-example',
+								periMsg: 'edittoolbar-tool-xlink-example',
 								post: "]"
 							}
 						}
 					},
 					'ilink': {
-						labelMsg: 'edittoolbar-tool-insert-ilink',
+						labelMsg: 'edittoolbar-tool-ilink',
 						type: 'button',
 						icon: 'insert-ilink.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "[[",
-								periMsg: 'edittoolbar-tool-insert-ilink-example',
+								periMsg: 'edittoolbar-tool-ilink-example',
 								post: "]]"
 							}
 						}
 					},
 					'file': {
-						labelMsg: 'edittoolbar-tool-insert-file',
+						labelMsg: 'edittoolbar-tool-file',
 						type: 'button',
 						icon: 'insert-file.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "[[",
-								preMsg: 'edittoolbar-tool-insert-file-pre',
-								periMsg: 'edittoolbar-tool-insert-file-example',
+								preMsg: 'edittoolbar-tool-file-pre',
+								periMsg: 'edittoolbar-tool-file-example',
 								post: "]]"
 							}
 						}
 					},
 					'reference': {
-						labelMsg: 'edittoolbar-tool-insert-reference',
+						labelMsg: 'edittoolbar-tool-reference',
 						filters: [ 'body.ns-subject' ],
 						type: 'button',
 						icon: 'insert-reference.png',
@@ -514,13 +526,13 @@ var editToolbarConfiguration = {
 							type: 'encapsulate',
 							options: {
 								pre: "<ref>",
-								periMsg: 'edittoolbar-tool-insert-reference-example',
+								periMsg: 'edittoolbar-tool-reference-example',
 								post: "</ref>"
 							}
 						}
 					},
 					'signature': {
-						labelMsg: 'edittoolbar-tool-insert-signature',
+						labelMsg: 'edittoolbar-tool-signature',
 						filters: [ 'body.ns-talk' ],
 						type: 'button',
 						icon: 'insert-signature.png',
@@ -536,67 +548,67 @@ var editToolbarConfiguration = {
 		}
 	},
 	// Format section
-	'format': {
-		labelMsg: 'edittoolbar-section-format',
+	'advanced': {
+		labelMsg: 'edittoolbar-section-advanced',
 		type: 'toolbar',
 		groups: {
 			'heading': {
 				tools: {
 					'heading': {
-						labelMsg: 'edittoolbar-tool-format-heading',
+						labelMsg: 'edittoolbar-tool-heading',
 						type: 'select',
 						list: {
 							'heading-1' : {
-								labelMsg: 'edittoolbar-tool-format-heading-1',
+								labelMsg: 'edittoolbar-tool-heading-1',
 								action: {
 									type: 'encapsulate',
 									options: {
 										pre: "=",
-										periMsg: 'edittoolbar-tool-format-heading-example',
+										periMsg: 'edittoolbar-tool-heading-example',
 										post: "="
 									}
 								}
 							},
 							'heading-2' : {
-								labelMsg: 'edittoolbar-tool-format-heading-2',
+								labelMsg: 'edittoolbar-tool-heading-2',
 								action: {
 									type: 'encapsulate',
 									options: {
 										pre: "==",
-										periMsg: 'edittoolbar-tool-format-heading-example',
+										periMsg: 'edittoolbar-tool-heading-example',
 										post: "=="
 									}
 								}
 							},
 							'heading-3' : {
-								labelMsg: 'edittoolbar-tool-format-heading-3',
+								labelMsg: 'edittoolbar-tool-heading-3',
 								action: {
 									type: 'encapsulate',
 									options: {
 										pre: "===",
-										periMsg: 'edittoolbar-tool-format-heading-example',
+										periMsg: 'edittoolbar-tool-heading-example',
 										post: "==="
 									}
 								}
 							},
 							'heading-4' : {
-								labelMsg: 'edittoolbar-tool-format-heading-4',
+								labelMsg: 'edittoolbar-tool-heading-4',
 								action: {
 									type: 'encapsulate',
 									options: {
 										pre: "====",
-										periMsg: 'edittoolbar-tool-format-heading-example',
+										periMsg: 'edittoolbar-tool-heading-example',
 										post: "===="
 									}
 								}
 							},
 							'heading-5' : {
-								labelMsg: 'edittoolbar-tool-format-heading-5',
+								labelMsg: 'edittoolbar-tool-heading-5',
 								action: {
 									type: 'encapsulate',
 									options: {
 										pre: "=====",
-										periMsg: 'edittoolbar-tool-format-heading-example',
+										periMsg: 'edittoolbar-tool-heading-example',
 										post: "====="
 									}
 								}
@@ -606,30 +618,30 @@ var editToolbarConfiguration = {
 				}
 			},
 			'list': {
-				labelMsg: 'edittoolbar-group-format-list',
+				labelMsg: 'edittoolbar-group-list',
 				tools: {
 					'ulist': {
-						labelMsg: 'edittoolbar-tool-format-ulist',
+						labelMsg: 'edittoolbar-tool-ulist',
 						type: 'button',
 						icon: 'format-ulist.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "* ",
-								periMsg: 'edittoolbar-tool-format-ulist-example',
+								periMsg: 'edittoolbar-tool-ulist-example',
 								post: ""
 							}
 						}
 					},
 					'olist': {
-						labelMsg: 'edittoolbar-tool-format-olist',
+						labelMsg: 'edittoolbar-tool-olist',
 						type: 'button',
 						icon: 'format-olist.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "# ",
-								periMsg: 'edittoolbar-tool-format-olist-example',
+								periMsg: 'edittoolbar-tool-olist-example',
 								post: ""
 							}
 						}
@@ -637,30 +649,30 @@ var editToolbarConfiguration = {
 				}
 			},
 			'size': {
-				labelMsg: 'edittoolbar-group-format-size',
+				labelMsg: 'edittoolbar-group-size',
 				tools: {
 					'big': {
-						labelMsg: 'edittoolbar-tool-format-big',
+						labelMsg: 'edittoolbar-tool-big',
 						type: 'button',
 						icon: 'format-big.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<big>",
-								periMsg: 'edittoolbar-tool-format-big-example',
+								periMsg: 'edittoolbar-tool-big-example',
 								post: "</big>"
 							}
 						}
 					},
 					'small': {
-						labelMsg: 'edittoolbar-tool-format-small',
+						labelMsg: 'edittoolbar-tool-small',
 						type: 'button',
 						icon: 'format-small.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<small>",
-								periMsg: 'edittoolbar-tool-format-small-example',
+								periMsg: 'edittoolbar-tool-small-example',
 								post: "</small>"
 							}
 						}
@@ -668,80 +680,67 @@ var editToolbarConfiguration = {
 				}
 			},
 			'baseline': {
-				labelMsg: 'edittoolbar-group-format-baseline',
+				labelMsg: 'edittoolbar-group-baseline',
 				tools: {
 					'superscript': {
-						labelMsg: 'edittoolbar-tool-format-superscript',
+						labelMsg: 'edittoolbar-tool-superscript',
 						type: 'button',
 						icon: 'format-superscript.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<sup>",
-								periMsg: 'edittoolbar-tool-format-superscript-example',
+								periMsg: 'edittoolbar-tool-superscript-example',
 								post: "</sup>"
 							}
 						}
 					},
 					'subscript': {
-						labelMsg: 'edittoolbar-tool-format-subscript',
+						labelMsg: 'edittoolbar-tool-subscript',
 						type: 'button',
 						icon: 'format-subscript.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<sub>",
-								periMsg: 'edittoolbar-tool-format-subscript-example',
+								periMsg: 'edittoolbar-tool-subscript-example',
 								post: "</sub>"
 							}
 						}
 					}
 				}
-			}
-		}
-	},
-	// Insert section
-	'insert': {
-		labelMsg: 'edittoolbar-section-insert',
-		type: 'toolbar',
-		groups: {
-			'media': {
-				labelMsg: 'edittoolbar-group-insert-media',
+			},
+			'insert': {
+				labelMsg: 'edittoolbar-group-insert',
 				tools: {
-					'file': {
-						labelMsg: 'edittoolbar-tool-insert-file',
-						type: 'button',
-						icon: 'insert-file.png',
-						action: {
-							type: 'encapsulate',
-							options: {
-								pre: "[[",
-								preMsg: 'edittoolbar-tool-insert-file-pre',
-								periMsg: 'edittoolbar-tool-insert-file-example',
-								post: "]]"
-							}
-						}
-					},
 					'gallery': {
-						labelMsg: 'edittoolbar-tool-insert-gallery',
+						labelMsg: 'edittoolbar-tool-gallery',
 						type: 'button',
 						icon: 'insert-gallery.png',
 						action: {
 							type: 'encapsulate',
 							options: {
 								pre: "<gallery>\n",
-								periMsg: 'edittoolbar-tool-insert-gallery-example',
+								periMsg: 'edittoolbar-tool-gallery-example',
 								post: "\n</gallery>"
 							}
 						}
-					}
-				}
-			},
-			'whitespace': {
-				labelMsg: 'edittoolbar-group-insert-whitespace',
-				tools: {
+					},
+					'table': {
+						labelMsg: 'edittoolbar-tool-table',
+						type: 'button',
+						icon: 'insert-table.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "{| class=\"wikitable\" border=\"1\"\n|",
+								periMsg: 'edittoolbar-tool-table-example',
+								post: "\n|}"
+							}
+						}
+					},
 					'newline': {
-						labelMsg: 'edittoolbar-tool-insert-newline',
+						labelMsg: 'edittoolbar-tool-newline',
 						type: 'button',
 						icon: 'insert-newline.png',
 						action: {
@@ -755,11 +754,13 @@ var editToolbarConfiguration = {
 			}
 		}
 	},
+	/*
 	'characters': {
 		labelMsg: 'edittoolbar-section-characters',
 		type: 'booklet',
 		pages: {} // Set by the document.ready handler
 	},
+	*/
 	'help': {
 		labelMsg: 'edittoolbar-section-help',
 		type: 'booklet',
