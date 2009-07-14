@@ -1,8 +1,8 @@
 <?php
-// quick hackjob to fix damages imports on wikisource
-// page records have page_latest wrong
-
 /**
+ * quick hackjob to fix damages imports on wikisource
+ * page records have page_latest wrong
+ *
  * Copyright (C) 2005 Brion Vibber <brion@pobox.com>
  * http://www.mediawiki.org/
  *
@@ -21,7 +21,6 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @file
  * @ingroup Maintenance
  */
 

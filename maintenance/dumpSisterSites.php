@@ -21,8 +21,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @file
- * @ingroup SpecialPage
+ * @ingroup Maintenance
  */
 
 require_once( "Maintenance.php" );

@@ -1,29 +1,28 @@
 <?php
-# Copyright (C) 2005 Brion Vibber <brion@pobox.com>
-# http://www.mediawiki.org/
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-# http://www.gnu.org/copyleft/gpl.html
-
 /**
  * Look for 'orphan' revisions hooked to pages which don't exist
  * And 'childless' pages with no revisions.
  * Then, kill the poor widows and orphans.
  * Man this is depressing.
  *
- * @file
+ * Copyright (C) 2005 Brion Vibber <brion@pobox.com>
+ * http://www.mediawiki.org/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @author <brion@pobox.com>
  * @ingroup Maintenance
  */
@@ -55,7 +54,7 @@ class Orphans extends Maintenance {
 	 * @param $extraTable String The name of any extra tables to lock (eg: text)
 	 */
 	private function lockTables( &$db, $extraTable = null ) {
-		$tbls = array( 'page', 'revision' );
+		$tbls = array( 'page', 'revision', 'redirect' );
 		if( $extraTable )
 			$tbls[] = $extraTable;
 		$db->lockTables( array(), $tbls, __METHOD__, false );
