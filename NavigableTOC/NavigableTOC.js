@@ -33,7 +33,7 @@
 				}
 				return caretPos;
 			}
-						
+			
 			return getCaret( this.get( 0 ) );
 		},
 
@@ -147,7 +147,7 @@ $( document ).ready( function() {
 	function styleCurrentSection() {
 		// TODO: optimize
 		// Find the section we're in
-		bytePos = $('#wpTextbox1').bytePos();
+		bytePos = $( '#wpTextbox1' ).bytePos();
 		i = 0;
 		while ( i < $.sectionOffsets.length &&
 				$.sectionOffsets[i] <= bytePos )
