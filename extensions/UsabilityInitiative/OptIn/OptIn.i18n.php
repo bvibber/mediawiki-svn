@@ -18,15 +18,15 @@ $messages['en'] = array(
 	'optin-title-optedin' => 'Leave Açai Beta',
 	'optin-title-justoptedin' => 'Welcome to Açai Beta',
 	'optin-title-justoptedout' => 'Thank you for trying Açai Beta',
-	'optin-needlogin' => 'You need to [$1 log in] to try Açai Beta',
+	'optin-needlogin' => 'You need to [$1 log in] to try Açai Beta.',
 	'optin-intro' => 'The Wikipedia Usability Initiative has been working hard to improve the usability of Wikipedia.
 Would you like to try Açai Beta?',
 	'optin-success-in' => 'You are now trying out Açai Beta.
-You can opt back out at any time by clicking the "Leave Açai Beta" link on the top right of the screen.',
-	'optin-success-return' => 'Return to [[$1]]',
-	'optin-leave-cancel' => 'If you would like to continue using Açai Beta, you can return to [[$1]]',
+You can opt back out at any time by clicking the "{{int:optin-leave}}" link on the top of the screen.',
+	'optin-success-return' => 'Return to [[$1]].',
+	'optin-leave-cancel' => 'If you would like to continue using Açai Beta, you can return to [[$1]].',
 	'optin-success-out' => 'You have successfully left Açai Beta.
-You can try it out again at anytime by clicking the "Try Açai Beta" link on the top right of the screen.',
+You can try it out again at anytime by clicking the "{{int:optin-try}}" link on the top right of the screen.',
 	'optin-accept-short' => 'Let\'s do it!',
 	'optin-accept-long' => 'Try out Açai Beta',
 	'optin-deny-short' => 'No thank you',
@@ -38,8 +38,8 @@ You can try it out again at anytime by clicking the "Try Açai Beta" link on the
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => "Thank you for trying Açai Beta.
 We would like to know what you think about our new interface, so we would appreciate it if you filled out the optional survey below before clicking \"[[#leave|{{int:optin-submit-out}}]]\".",
-	'optin-survey-question-likedislike' => 'What did you like about the Açai Beta? What did you dislike about the Açai Beta?',
-	'optin-survey-question-whyoptout' => 'Why are you leaving this Beta? (please select all that apply) ',
+	'optin-survey-question-likedislike' => 'What did you like about Açai Beta? What did you dislike about Açai Beta?',
+	'optin-survey-question-whyoptout' => 'Why are you leaving Açai Beta? (Please select all that apply.) ',
 	'optin-survey-answer-whyoptout-hard' => 'It was too hard to use.',
 	'optin-survey-answer-whyoptout-didntwork' => 'It did not function properly.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'It did not perform predictably.',
@@ -48,10 +48,10 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'I did not like the new toolbar.',
 	'optin-survey-answer-whyoptout-other' => 'Other reason:',
 	'optin-survey-question-explain' => 'Please explain or elaborate on your answer above:',
-	'optin-survey-question-techfail' => 'Did you experience any technical failures while using the Açai Beta?',
+	'optin-survey-question-techfail' => 'Did you experience any technical failures while using Açai Beta?',
 	'optin-survey-question-techfail-ifyes' => 'If yes, please elaborate or explain:',
 	'optin-survey-question-usedtoolbar' => 'Did you use the new expandable toolbar to edit a page?',
-	'optin-survey-question-usedtoolbar-ifyes' => 'If yes, what did you like about it? Dislike about it?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'If yes, what did you like about it? What did you dislike about it?',
 	'optin-survey-question-different' => 'What could we have done differently to keep you using our Beta?',
 	'optin-survey-question-feedback' => 'Please let us know about any other comments, concerns or thoughts you have for us - all feedback is useful!:',
 	'optin-survey-question-browser' => 'Which browser do you use?',
@@ -80,7 +80,7 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-improvements' => "== What has been improved? ==
 [[File:UsabilityNavigation.png|right]]
 ;Enhanced navigation
-The new navigation sytem makes it easier to see where you are at and what you are doing, as well as where you can go and how to get there. With the search box located at the top right corner searching is easier to find and quicker to use.
+The new navigation sytem makes it easier to see where you are and what you are doing, as well as where you can go and how to get there. With the search box located in the top right corner, the search feature is easier to find and quicker to use.
 <div style=\"clear:both;\"></div>
 
 [[File:UsabilityToolbar.png|right]]
@@ -91,7 +91,7 @@ The help section provides quick access to a reference for common uses of wiki-ma
 
 [[File:UsabilitySearch.png|right]]
 ;Improved search interface
-When using search, title matches are shown first, helping you to find the most relevant articles quickly. Search profiles make searching for different kinds of content easier, while the new advanced search interface makes light-work of complex searches.
+When using search, title matches are shown first, helping you to find the most relevant articles quickly. Search profiles make searching for different kinds of content easier, while the new advanced search interface makes light work of complex searches.
 <div style=\"clear:both;\"></div>",
 );
 
@@ -100,6 +100,20 @@ When using search, title matches are shown first, helping you to find the most r
  * @author Fryed-peach
  */
 $messages['qqq'] = array(
+	'optin-desc' => 'Açai is the name of the release, do not translate. In this context, "Beta" is a stage in software development.',
+	'optin-title-optedout' => 'Title of Special:UsabilityOptIn when the user is opted out',
+	'optin-title-optedin' => 'Title of Special:UsabilityOptIn when the user is opted in',
+	'optin-title-justoptedin' => 'Title of Special:UsabilityOptIn when the user has just opted in',
+	'optin-title-justoptedout' => 'Title of Special:UsabilityOptIn when the user has just opted out',
+	'optin-improvements' => 'A few paragraphs of wikitext describing the improvements made in Açai Beta. The referenced images have been uploaded to Commons',
+	'optin-try' => 'Caption for the link left of the user tools with which people can opt in',
+	'optin-leave' => 'Caption for the link left of the user tools with which people can opt out',
+	'optin-accept-short' => 'Upper half of caption for Yes button on opt-in form',
+	'optin-accept-long' => 'Bottom half of caption for Yes button on opt-in form',
+	'optin-deny-short' => 'Upper half of caption for No button on opt-in form',
+	'optin-deny-long' => 'Bottom half of caption for No button on opt-in form',
+	'optin-submit-out' => 'Caption for submit button on opt-out/survey form',
+	'optin-survey-intro' => 'Do not translate #leave',
 	'optin-survey-yes' => '{{Identical|Yes}}',
 	'optin-survey-no' => '{{Identical|No}}',
 	'optin-survey-answer-whyoptout-other' => '{{Identical|Other reason}}',
