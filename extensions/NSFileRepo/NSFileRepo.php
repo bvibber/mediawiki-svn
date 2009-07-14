@@ -25,10 +25,10 @@ $wgExtensionCredits['media'][] = array(
 	'path' => __FILE__,
 	'name' => 'NSFileRepo',
 	'author' => 'Jack D. Pond',
-	'version' => '0.0',
+	'version' => '0.0.1',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:NSFileRepo',
-	'description' => 'Provide NameSpace-based features to uploaded files',
-	'descriptionmsg' => 'NSFileRepo-desc'
+	'description' => 'Provide namespace based features to uploaded files',
+	'descriptionmsg' => 'nsfilerepo-desc'
 );
 
 

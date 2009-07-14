@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation file for DiscussionThreading extension.
+ * Internationalisation file for NSFileRepo extension.
  *
  * @addtogroup Extensions
 */
@@ -11,14 +11,13 @@ $messages = array();
  * @author Jack D. Pond
  */
 $messages['en'] = array(
-	'NSFileRepo-desc' 			=> 'Add threading to talk pages'
+	'nsfilerepo-desc' => 'Provide namespace based features to uploaded files'
 );
 
 /** Message documentation (Message documentation)
- * @author Fryed-peach
- * @author Purodha
+ * @author Raymond
  */
 $messages['qqq'] = array(
-	'NSFileRepo-desc' => 'Provide NameSpace-based features to uploaded files and images.'
+	'nsfilerepo-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links or tag names.'
 );
 
