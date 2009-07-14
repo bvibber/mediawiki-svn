@@ -1,10 +1,15 @@
 <?php
+/**
+ * Internationalisation file for IndexFunction extension.
+ *
+ * @addtogroup Extensions
+*/
 
 $messages = array();
 
 $messages['en'] = array(
 	'indexfunc-desc' => 'Parser function to create automatic redirects and disambiguation pages',
-	
+
 	'indexfunc-badtitle' => 'Invalid title: "$1"',
 	'indexfunc-editwarn' => 'Warning: This title is an index title for [[$1]].
 Be sure the page you are about to create does not already exist under a different title.
@@ -14,10 +19,18 @@ If you create this page, remove this title from the <nowiki>{{#index:}}</nowiki>
 
 	'index' => 'Index',
 	'index-legend' => 'Search the index',
-	'index-search' => 'Search: ',
+	'index-search' => 'Search:',
 	'index-submit' => 'Submit',
 	'index-disambig-start' => "'''$1''' may refer to several pages:",
 	'index-exclude-categories' => '', # List of categories to exclude from the auto-disambig pages
 	'index-missing-param' => 'This page cannot be used with no parameters',
 	'index-emptylist' => 'There are no pages associated with "$1"',
 );
+
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'indexfunc-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links or tag names.'
+);
+
