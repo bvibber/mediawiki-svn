@@ -80,7 +80,7 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-improvements' => "== What has been improved? ==
 [[File:UsabilityNavigation.png|right]]
 ;Enhanced navigation
-The new navigation sytem makes it easier to see where you are and what you are doing, as well as where you can go and how to get there. With the search box located in the top right corner, the search feature is easier to find and quicker to use.
+The new navigation system makes it easier to see where you are and what you are doing, as well as where you can go and how to get there. With the search box located in the top right corner, the search feature is easier to find and quicker to use.
 <div style=\"clear:both;\"></div>
 
 [[File:UsabilityToolbar.png|right]]
