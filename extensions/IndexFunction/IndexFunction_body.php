@@ -128,7 +128,7 @@ class IndexFunction {
 	}
 
 	// Called after parse, updates the index table
-	static function doIndexes( &$out, &$parseroutput ) {
+	static function doIndexes( &$out, $parseroutput ) {
 		global $wgTitle;
 		if ( !isset($parseroutput->mIndexes) ) {
 			return true;
