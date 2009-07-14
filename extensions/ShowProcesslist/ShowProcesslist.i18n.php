@@ -53,6 +53,13 @@ $messages['ar'] = array(
 	'showprocesslist-info' => 'معلومات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'showprocesslist-time' => 'ܙܒܢܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

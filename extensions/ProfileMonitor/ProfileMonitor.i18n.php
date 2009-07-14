@@ -232,6 +232,7 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'profiling-ok' => 'Ados',
+	'profiling-data-count' => 'Zenbaketa',
 );
 
 /** Finnish (Suomi)

@@ -181,9 +181,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
 	'security-type-category' => 'κατηγορία',
+	'security-type-namespace' => 'περιοχή ονομάτων',
 );
 
 /** Spanish (Español)
@@ -203,6 +205,16 @@ $messages['es'] = array(
 	'security-unchain' => 'modificar acciones individualmente',
 	'security-type-category' => 'categoría',
 	'security-type-namespace' => 'espacio de nombre',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'security' => 'Segurtasun erregistroa',
+	'security-logpage' => 'Segurtasun erregistroa',
+	'security-manygroups' => '$1 eta $2 taldeak',
+	'security-type-category' => 'kategoria',
 );
 
 /** French (Français)

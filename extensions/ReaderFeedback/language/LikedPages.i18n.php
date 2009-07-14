@@ -69,7 +69,10 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'likedpages' => 'Visoko ocijenjene stranice',
+	'likedpages-leg' => 'Nađi visoko ocijenjene stranice',
+	'likedpages-list' => 'Ispod je spisak stranica poredanih po rejtingu poslanom od strane čitaoca.',
 	'likedpages-none' => 'Nema stranica na ovom spisku',
+	'likedpages-graphs' => 'podaci rejtinga',
 );
 
 /** German (Deutsch)

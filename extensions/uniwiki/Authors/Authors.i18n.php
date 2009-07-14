@@ -39,6 +39,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'authors_authors' => 'ܣܝܘܡ̈ܐ',
 	'authors_anonymous' => 'ܠܐ ܝܕܝܥܐ',
 );
 
@@ -189,6 +190,13 @@ $messages['gl'] = array(
 	'authors-desc' => 'Adxunta unha lista dos contribuíntes ás páxinas',
 	'authors_authors' => 'Autores',
 	'authors_anonymous' => 'Anónimos',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'authors_anonymous' => 'Άνώνυμος',
 );
 
 /** Swiss German (Alemannisch)

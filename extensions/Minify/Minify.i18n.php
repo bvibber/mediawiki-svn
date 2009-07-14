@@ -37,6 +37,13 @@ $messages['bs'] = array(
 	'minify-desc' => 'Smanjuje CSS i JavaScript izlaz od action=raw',
 );
 
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
+$messages['de'] = array(
+	'minify-desc' => 'Reduziert die Ausgabe von CSS und JavaScript bei action=raw',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

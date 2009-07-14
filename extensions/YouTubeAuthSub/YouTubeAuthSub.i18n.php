@@ -916,6 +916,7 @@ $messages['grc'] = array(
 	'youtubeauthsub_description' => 'Περιγραφή',
 	'youtubeauthsub_password' => 'Σύνθημα ἐν τῷ YouTube',
 	'youtubeauthsub_username' => 'Ὄνομα χρωμένου ἐν τῷ YouTube',
+	'youtubeauthsub_keywords' => 'Λέξεις κλειδία',
 	'youtubeauthsub_category' => 'Κατηγορία',
 	'youtubeauthsub_submit' => 'Ὑποβάλλειν',
 	'youtubeauthsub_uploadbutton' => 'Ἐπιφόρτισις',
@@ -1952,6 +1953,14 @@ $messages['os'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'Дæ хорзæхæй, дæ видео сфысс.',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'youtubeauthsub_password' => 'YouTube-Paesswatt',
+	'youtubeauthsub_keywords' => 'Keywadde',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Wpedzich
@@ -2582,6 +2591,7 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(

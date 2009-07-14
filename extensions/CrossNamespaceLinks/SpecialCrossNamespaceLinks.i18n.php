@@ -495,6 +495,16 @@ $messages['jv'] = array(
 	'crossnamespacelinkstext' => '$1: $2 nyambung menyang $3',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'crossnamespacelinks' => 'ბმულები სახელთა სივრცეებს შორის',
+	'crossnamespacelinks-desc' => 'გამოყავს [[Special:CrossNamespaceLinks|სახელთა სივრცეებს შორის ბმულების სია]], რომლებიც არ უნდა იყოს{{grammar:genitive|{{SITENAME}}}}',
+	'crossnamespacelinks-summary' => 'ამ გვერდზე წარმოდგენილია ბმულების სია სახელთა ძირითად სივრცეში სხვა სახელთა სივრცეებში ({{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}})).ამგვარი ბმულების დაყენება რეკომენდირებული არ არის',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|ბმული|ბმულები|ბმულების}} $3-ზე',
+);
+
 /** Kara-Kalpak (Qaraqalpaqsha)
  * @author AlefZet
  */

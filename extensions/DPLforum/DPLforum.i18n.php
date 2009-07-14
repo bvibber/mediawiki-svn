@@ -114,7 +114,7 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'dplforum-desc' => 'Rozšíření DPL fórum',
-	'dplforum-by' => ', $1',
+	'dplforum-by' => 'napsal $1',
 	'dplforum-edited' => '- poslední úprava',
 	'dplforum-never' => 'Nikdy',
 	'dplforum-toofew' => 'DPL fórum: Příliš málo kategorií!',

@@ -408,9 +408,16 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author Malafaya
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'contributiontracking-desc' => 'ვიკიმედიის ფონდის სასარგებლოდ შეწირულებების კონტროლი',
+	'contributiontracking' => 'შეწირულობების შეგროვების კონტროლი',
 	'contrib-tracking-error' => 'შეცდომა',
+	'contrib-tracking-error-text' => 'არასწორი ფორმის ნებართვა',
+	'contrib-tracking-submitting' => 'მიმდინარეობს გადახდების დამმუშავებლისდამი გაგზავნა...',
+	'contrib-tracking-continue' => 'თუ თქვენ არ იყავით ავტომატურად გადამისამართებული, დააჭირეთ ღილაკს რათა დაასრულოთ თქვენი შემოწირულობა  PayPal-ზე.',
+	'contrib-tracking-button' => 'გაგრძელება',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -585,6 +592,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'contrib-tracking-error' => 'Mischteek',
 	'contrib-tracking-button' => 'Weiter',
 );
 

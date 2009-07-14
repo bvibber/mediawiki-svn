@@ -1151,6 +1151,7 @@ $messages['grc'] = array(
 	'whitelisttablemodifyall' => 'Ἅπασαι',
 	'whitelisttablemodifynone' => 'Οὐδέν',
 	'whitelisttableedit' => 'Μεταγράφειν',
+	'whitelisttableview' => 'Ὁρᾶν',
 	'whitelisttableremove' => 'Άφαιρεῖν',
 	'whitelistnewtablereview' => 'Ἐπισκόπησις',
 	'whitelistnever' => 'οὔποτε',
@@ -2220,7 +2221,10 @@ $messages['pa'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'whitelisttablemodify' => 'Tscheensche',
+	'whitelisttablemodifyall' => 'All',
 	'whitelisttablemodifynone' => 'Nix tscheensche',
+	'whitelisttablepage' => 'Blatt',
 	'whitelisttableedit' => 'Ennere',
 	'whitelistnever' => 'nie net',
 );

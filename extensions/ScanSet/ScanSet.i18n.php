@@ -681,6 +681,15 @@ $messages['jv'] = array(
 	'scanset_prev' => '&lt; Sadurungé',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'scanset-desc' => 'სკანირებული გამოსახულებების ხილვა ანდრეას გროსის (Andreas Grosz) CD/DVD კოლექციდან',
+	'scanset_no_name' => 'შეცდომა: თქვენ უნდა წარმოადგინოთ ფოტოსურათების კოლექციის ზუსტი სახელი, მაგ. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'შეცდომა:სურათების კომპლექსში შეცდომაა, ან ამგვარი კომპლექსი არ არსებობს',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Thearith

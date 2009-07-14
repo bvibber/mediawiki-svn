@@ -601,9 +601,11 @@ Det måste:',
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
+	'securepasswords-desc' => 'మరికొన్ని సంరక్షిత పాసువార్డు హాషులను సృష్టించి, పాసువార్డు బలము చూసే పనిముట్టుని కలుపుతుంది',
 	'securepasswords-valid' => 'మీ సంకేతపదం సరైనది కాదు లేదా మరీ చిన్నగా ఉంది.
 అది:',
 	'securepasswords-minlength' => 'కనీసం $1 {{PLURAL:$1|అక్షరం|అక్షరాల}} పొడవుండాలి',

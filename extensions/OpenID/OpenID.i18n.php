@@ -658,6 +658,7 @@ Prosím, poraďte se se [[Special:ListUsers/sysop|správcem]].',
 	'openidfullname' => 'Celé jméno',
 	'openidemail' => 'E-mailová adresa:',
 	'openidlanguage' => 'Jazyk',
+	'openidtimezone' => 'Časové pásmo',
 	'openidnotavailable' => 'Vaši preferovanou přezdívku ($1) už používá jiný uživatel.',
 	'openidnotprovided' => 'Váš OpenID server neposkytnul přezdívku (buď protože nemůže, nebo protože jste mu určili aby ji neposkytoval).',
 	'openidchooseinstructions' => 'Kyždý uživatel musí mít přezdívku; můžete si vybrat z níže uvedených možností.',
@@ -762,6 +763,7 @@ du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidchooseexisting' => 'Ein existierendes Benutzerkonto in diesem Wiki:',
 	'openidchoosepassword' => 'Passwort:',
 	'openidconvertinstructions' => 'Mit diesem Formular kannst du dein Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen',
+	'openidconvertoraddmoreids' => 'Zu OpenID konvertieren oder eine andere OpenID-URL hinzufügen',
 	'openidconvertsuccess' => 'Erfolgreich nach OpenID konvertiert',
 	'openidconvertsuccesstext' => 'Du hast die Konvertierung deiner OpenID nach $1 erfolgreich durchgeführt.',
 	'openidconvertyourstext' => 'Dies ist bereits deine OpenID.',
@@ -783,9 +785,19 @@ Wenn du in Zukunft OpenID verwenden möchtest, kannst du [[Special:OpenIDConvert
 
 Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise hast du bereits ein Benutzerkonto mit aktiviertem OpenID bei einem anderen Anbieter.',
 	'openidupdateuserinfo' => 'Persönliche Daten aktualisieren',
+	'openiddelete' => 'OpenID löschen',
+	'openiddelete-text' => 'Wenn du auf den Button „{{int:openiddelete-button}}“ klickst, löschst du die OpenID $1 von deinem Benutzerkonto.
+Du wirst dich nicht mehr mit dieser OpenID anmelden können.',
+	'openiddelete-button' => 'Bestätigen',
+	'openiddelete-sucess' => 'Die OpenID wurde erfolgreich von deinem Benutzerkonto entfernt.',
+	'openiddelete-error' => 'Beim Entfernen der OpenID von deinem Benutzerkonto ist ein Fehler aufgetreten.',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-Einstellungen',
 	'openid-pref-hide' => 'Verstecke deine OpenID auf deiner Benutzerseite, wenn du dich mit OpenID anmeldest.',
 	'openid-pref-update-userinfo-on-login' => 'Nachfolgende Daten anhand des OpenID-Kontos bei jeder Anmeldung aktualisieren:',
+	'openid-urls-desc' => 'Mit deinem Benutzerkonto verbundene OpenIDs:',
+	'openid-urls-action' => 'Aktion',
+	'openid-urls-delete' => 'Löschen',
+	'openid-add-url' => 'Eine neue OpenID hinzufügen',
 	'openidsigninorcreateaccount' => 'Anmelden oder ein neues Benutzerkonto erstellen',
 	'openid-provider-label-openid' => 'Gib deine OpenID-URL an',
 	'openid-provider-label-google' => 'Mit deinem Google-Benutzerkonto anmelden',
@@ -795,9 +807,15 @@ Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise hast 
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author ChrisiPK
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'openiddelete-text' => 'Wenn Sie auf den Button „{{int:openiddelete-button}}“ klicken, löschen Sie die OpenID $1 von Ihrem Benutzerkonto.
+Sie werden sich nicht mehr mit dieser OpenID anmelden können.',
+	'openiddelete-sucess' => 'Die OpenID wurde erfolgreich von Ihrem Benutzerkonto entfernt.',
+	'openiddelete-error' => 'Beim Entfernen der OpenID von Ihrem Benutzerkonto ist ein Fehler aufgetreten.',
+	'openid-urls-desc' => 'Mit Ihrem Benutzerkonto verbundene OpenIDs:',
 	'openid-provider-label-openid' => 'Geben Sie Ihre OpenID-URL an',
 	'openid-provider-label-google' => 'Mit Ihrem Google-Benutzerkonto anmelden',
 	'openid-provider-label-yahoo' => 'Mit Ihrem Yahoo-Benutzerkonto anmelden',
@@ -909,6 +927,7 @@ $messages['el'] = array(
 	'openidchoosefull' => 'Το πλήρες όνομά σας ($1)',
 	'openidchoosemanual' => 'Ένα όνομα της επιλογής σας:',
 	'openidchoosepassword' => 'κωδικός:',
+	'openid-urls-action' => 'Ενέργεια',
 );
 
 /** Esperanto (Esperanto)
@@ -1386,10 +1405,15 @@ Non será capaz de volver acceder ao sistema con este OpenID.',
  */
 $messages['grc'] = array(
 	'openidoptional' => 'Προαιρετικόν',
+	'openidrequired' => 'Ἀπαιτούμενον',
 	'openidnickname' => 'Ψευδώνυμον',
+	'openidfullname' => 'Πλῆρες ὄνομα',
 	'openidemail' => 'Ἡλεκτρονικὴ διεύθυνσις',
 	'openidlanguage' => 'Γλῶττα',
+	'openidtimezone' => 'Χρονικὴ ζώνη:',
 	'openidchoosepassword' => 'σύνθημα:',
+	'openiddelete-button' => 'Κυροῦν',
+	'openid-urls-action' => 'Δρᾶσις',
 	'openid-urls-delete' => 'Σβεννύναι',
 );
 
@@ -2582,6 +2606,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Aviator
  * @author Diagramma Della Verita
  */
@@ -2620,6 +2645,7 @@ Sekiranya anda inign menggunakan OpenID untuk log masuk pada masa hadapan, sila 
 	'openidnousername' => 'Nama pengguna tidak dinyatakan.',
 	'openidbadusername' => 'Nama pengguna yang dinyatakan tidak sah.',
 	'openidloginlabel' => 'URL OpenID',
+	'openid-urls-action' => 'Tindakan',
 );
 
 /** Maltese (Malti)
@@ -3011,6 +3037,14 @@ $messages['os'] = array(
 	'openidnickname' => 'Фæсномыг',
 	'openidlanguage' => 'Æвзаг',
 	'openidchoosepassword' => 'пароль:',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'openidlanguage' => 'Schprooch',
+	'openidchoosepassword' => 'Paesswatt:',
 );
 
 /** Plautdietsch (Plautdietsch)
@@ -3820,9 +3854,11 @@ Det finns många [http://openid.net/get/ leverantörer av OpenID], och du kan re
 );
 
 /** Telugu (తెలుగు)
+ * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
+	'openidlogin' => 'ఓపెన్ ఐడీతో లాగిన్ అవ్వండి',
 	'openidpermission' => 'ఓపెన్ఐడీ అనుమతుల పొరపాటు',
 	'openidcancel' => 'తనిఖీ రద్దయింది',
 	'openidfailure' => 'తనిఖీ విఫలమైంది',

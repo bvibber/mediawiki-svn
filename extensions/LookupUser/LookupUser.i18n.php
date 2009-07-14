@@ -163,6 +163,7 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'lookupuser' => 'Vyhledat informace o uživateli',
@@ -180,6 +181,7 @@ $messages['cs'] = array(
 	'lookupuser-touched' => 'Poslední záznam uživatele: $1',
 	'lookupuser-info-authenticated' => 'Ověření emailu: $1',
 	'lookupuser-useroptions' => 'Nastavení uživatele:',
+	'right-lookupuser' => 'Prohlížení nastavení jiných uživatelů',
 );
 
 /** German (Deutsch)
@@ -296,6 +298,14 @@ $messages['es'] = array(
 	'lookupuser-info-authenticated' => 'Autenticación de correo electrónico: $1',
 	'lookupuser-useroptions' => 'Opciones de usuario:',
 	'right-lookupuser' => 'Ver preferencias de usuario',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'lookupuser-realname' => 'Benetako izena: $1',
+	'lookupuser-registration' => 'Erregistratzeko unea: $1',
 );
 
 /** Persian (فارسی)
@@ -914,7 +924,7 @@ $messages['pl'] = array(
 	'lookupuser-registration' => 'Zarejestrowany $1',
 	'lookupuser-no-registration' => 'taki użytkownik nie istnieje',
 	'lookupuser-touched' => 'Ostatnią aktywność użytkownika zanotowano $1',
-	'lookupuser-info-authenticated' => 'Uwierzytelnienie e-mailem: $1',
+	'lookupuser-info-authenticated' => 'Uwierzytelnienie e‐mailem: $1',
 	'lookupuser-useroptions' => 'Opcje użytkownika:',
 	'right-lookupuser' => 'Przeglądanie ustawień preferencji użytkowników',
 );

@@ -1297,6 +1297,7 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Chaduvari
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
@@ -1307,8 +1308,8 @@ $messages['te'] = array(
 	'contributors-target' => 'శీర్షిక:',
 	'contributors-submit' => 'చూపించు',
 	'contributors-subtitle' => '$1 యొక్క ముఖ్య రచయితలు',
-	'contributors-others-long' => 'ఈ పేజీకి ఇంకా $1గురు ఇతర రచయితలు ఉన్నారు.',
-	'contributors-others' => 'మరియు $1గురు ఇతరులు',
+	'contributors-others-long' => 'ఈ పేజీకి ఇంకా {{PLURAL:$1|ఒక ఇతర రచయిత|$1 గురు ఇతర రచయితలు}} ఉన్నారు.',
+	'contributors-others' => 'మరియు {{PLURAL:$1|ఒక ఇతర|$1 గురు ఇతరులు}}',
 	'contributors-badtitle' => 'తప్పుడు శీర్షిక.',
 	'contributors-nosuchpage' => '$1 అనే పేజీ లేనే లేదు.',
 );

@@ -148,6 +148,15 @@ $messages['ar'] = array(
 	'review_comment' => 'تعليق',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'review_statistics_left_corner' => 'ܬܢܝܬܐ',
+	'review_version_link' => 'ܬܢܝܬܐ #$1',
+	'review_version_statistic_cell' => '$1 ܡܢ $2',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II

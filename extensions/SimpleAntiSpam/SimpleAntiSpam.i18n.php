@@ -414,6 +414,13 @@ Vol dit veld '''NEET''' in!",
 	'simpleantispam-desc' => 'Veug ein einvaawdife spem/botcontrole aan formulere',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'simpleantispam-desc' => 'Prideda paprastą reklaminių šiukšlių botą formų tikrinimui',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */

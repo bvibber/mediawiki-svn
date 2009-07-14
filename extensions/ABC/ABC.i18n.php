@@ -36,6 +36,14 @@ $messages['qqq'] = array(
 	'abcvorbis' => '{{optional}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Bresta
+ */
+$messages['aln'] = array(
+	'abcdesc' => "Shton tag'un <tt>&lt;abc&gt;</tt> me formatu muzikën ABC",
+	'abcdownload' => 'Shkarko:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

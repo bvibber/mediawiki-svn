@@ -1037,12 +1037,15 @@ $messages['loz'] = array(
  */
 $messages['lt'] = array(
 	'sitematrix' => 'Wikimedia projektų sąrašas',
+	'sitematrix-summary' => 'Šis specialus puslapis rodo Wikimedia wiki sąrašą.',
+	'sitematrix-desc' => 'Rodomas [[Specialus:Sitematrix|Wikimedia wiki sąrašas]]',
 	'sitematrix-language' => 'Kalba',
 	'sitematrix-project' => 'Projekto pavadinimas, interprojektinė nuoroda ir interwiki nuoroda.',
 	'sitematrix-others' => 'Kiti Vikimedijos projektai',
 	'sitematrix-total' => "'''Viso: $1'''",
 	'sitematrix-sitetotal' => 'Viso',
 	'sitematrix-private' => 'privatus',
+	'sitematrix-fishbowl' => 'redagavimas apribotas',
 );
 
 /** Latvian (Latviešu)

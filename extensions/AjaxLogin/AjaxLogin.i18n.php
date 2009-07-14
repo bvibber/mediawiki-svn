@@ -130,6 +130,13 @@ Podrías perder tus ediciones si abandonas esta página ahora.',
 	'ajaxlogin-create' => 'Crear una cuenta',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'ajaxlogin-create' => 'Kontua sortu',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix <jack@countervandalism.net>
@@ -487,6 +494,19 @@ Detta kommer att föra dig bort från den här redigeringssidan och du kan komma
 	'ajaxLogin2' => 'Är du säker?
 Du kan förlora din redigering om du lämnar den här sidan nu.',
 	'ajaxlogin-create' => 'Skapa ett konto',
+);
+
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'ajaxlogin-desc' => 'అప్పటికప్పుడు వాడుకరులను లాగిన్ అవ్వమని మరియు సంకేత పదం గుర్తు చేయమనేందుకు వాడే పెట్టె',
+	'ajaxLogin1' => 'మీరు లోనికి ప్రవేశించాలంటే కొత్త సంకేత పదమును ఎన్నుకోవాలి. 
+ఈ చర్య మిమ్మలిని మార్చు పేజీ నుంచి అవతలకు తీసుకేడుతుంది. మీరు చేసిన మార్పులు చేరిగిపోవచ్చు.',
+	'ajaxLogin2' => 'మీకు సమ్మతమేనా?
+మీరు ఈ పేజీని వదిలి వెళితే ఇప్పటి దాకా ఈ పేజీకి చేసిన మార్పులను కోల్పోవచ్చు.',
+	'ajaxlogin-create' => 'ఖాతాని సృష్టించుకోండి',
 );
 
 /** Thai (ไทย)

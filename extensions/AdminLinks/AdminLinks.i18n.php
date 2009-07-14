@@ -39,6 +39,24 @@ $messages['qqq'] = array(
 	'right-adminlinks' => '{{doc-right}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Bresta
+ */
+$messages['aln'] = array(
+	'adminlinks' => 'Vegzat e administrimit',
+	'adminlinks-desc' => 'Shton nji [[Special:AdminLinks|faqe speciale]] që i mban vegzat e nevojshme për administrues',
+	'adminlinks_documentation' => '$1 dokumentimi',
+	'adminlinks_general' => 'Të përgjithshme',
+	'adminlinks_editsidebar' => 'Redakto shtyllën anësore',
+	'adminlinks_editcss' => 'Redakto CSSin',
+	'adminlinks_editmainpagename' => 'Redakto emnin e faqes kryesore',
+	'adminlinks_users' => 'Përdoruesit',
+	'adminlinks_createuser' => 'Krijo përdorues',
+	'adminlinks_browsesearch' => 'Shfletimi dhe kërkimi',
+	'adminlinks_importexport' => 'Importimi dhe eksportimi',
+	'right-adminlinks' => 'Shih vegzën te [[Special:AdminLinks|Vegzat e administrimit]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -217,6 +235,21 @@ $messages['es'] = array(
 	'adminlinks_browsesearch' => 'Exploración y búsqueda',
 	'adminlinks_importexport' => 'Importación y exportación',
 	'right-adminlinks' => 'Ver el vínculo a [[Special:AdminLinks|Administrar vínculos]]',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'adminlinks' => 'Administratzaile loturak',
+	'adminlinks_documentation' => '$1 dokumentazioa',
+	'adminlinks_general' => 'Orokorra',
+	'adminlinks_editsidebar' => 'Ezkerreko barra aldatu',
+	'adminlinks_editcss' => 'CSS fitxategia aldatu',
+	'adminlinks_editmainpagename' => 'Azalaren izena aldatu',
+	'adminlinks_users' => 'Lankideak',
+	'adminlinks_createuser' => 'Lankidea sortu',
+	'adminlinks_importexport' => 'Inportatu eta esportatu',
 );
 
 /** Finnish (Suomi)

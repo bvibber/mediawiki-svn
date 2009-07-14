@@ -1500,6 +1500,13 @@ $messages['os'] = array(
 	'povwatch_title' => 'Сæргонд:',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'povwatch_added' => 'dezu geduh',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

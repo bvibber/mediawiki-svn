@@ -176,6 +176,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'searchbox-search' => 'Αναζήτηση',
+	'searchbox-namespaces' => 'Περιοχές ονομάτων:',
 );
 
 /** Esperanto (Esperanto)

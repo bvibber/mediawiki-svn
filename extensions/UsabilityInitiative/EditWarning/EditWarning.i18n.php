@@ -193,6 +193,15 @@ $messages['ja'] = array(
 	'editwarning-warning' => 'このページを離れると、あなたが行った変更はすべて失われてしまいます。',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'editwarning' => 'რედაქტირების გაფრთხილება',
+	'editwarning-desc' => 'გამოჰყავს გაფრთხილება, როდესაც მომხმარებელი ტოვებს ფორმას შენახვის გარეშე',
+	'editwarning-warning' => 'სხვა გვერდზე გადასვლა გამოიწვევს ცვლილებების დაკარგვას.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -209,6 +218,15 @@ $messages['lb'] = array(
 	'editwarning' => 'Warnung virun enger Ännerung',
 	'editwarning-desc' => 'Weist eng Warnung wann e Benotzer versicht den Ännerungsformulaire ze verloossen ouni ofzespàicheren',
 	'editwarning-warning' => 'Wann Dir dës Säit verloosst da verléiert Dir all Ännerungen déi Dir gemaach hutt.',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'editwarning' => 'Redagavimo pranešimas',
+	'editwarning-desc' => 'Rodyti pranešimą kai naudotojas bando palikti redagavimo langą neišsaugojęs',
+	'editwarning-warning' => 'Palikdamas šį puslapį jūs prarasite visus padarytus pakeitimus.',
 );
 
 /** Dutch (Nederlands)

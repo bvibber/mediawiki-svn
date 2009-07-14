@@ -225,6 +225,17 @@ $messages['ja'] = array(
 	'prefstats-list-intro' => '現在、以下の個人設定について追跡調査を行っています。調査結果を見るにはそれぞれをクリックしてください。',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'prefstats' => 'კონფიგურაციათა სტატისტიკა',
+	'prefstats-desc' => 'გარკვეული კონფიგურაციების ჩამრთველ მომხმარელთა სტატისტიკის კონტროლი',
+	'prefstats-title' => 'კონფიგურაციათა სტატისტიკა',
+	'prefstats-list-intro' => 'ეხლა მიმდინარეობს შემდეგ კონფიგურაციათა კონტროლი
+აირჩიეთ რომელიმე მათგანი სტატისტიკის სანახავად',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -245,6 +256,17 @@ $messages['lb'] = array(
 	'prefstats-title' => 'Statistike vun den Astellungen',
 	'prefstats-list-intro' => 'Elo ginn dës Astellungen iwwerwaacht.
 Klickt op eng fir Statistiken iwwer hire Gebrauch ze gesinn.',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'prefstats' => 'Nustatymų statistika',
+	'prefstats-desc' => 'Rinkite statistiką apie naudotojus, pasirinkusius šiuos nustatymus',
+	'prefstats-title' => 'Nustatymų statistika',
+	'prefstats-list-intro' => 'Šiuo metu yra sekami šie pasirinkimai.
+Pasirinkite vieną iš jų, norėdami pamatyti statistiką.',
 );
 
 /** Dutch (Nederlands)

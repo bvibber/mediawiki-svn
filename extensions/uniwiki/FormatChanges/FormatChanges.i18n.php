@@ -198,6 +198,13 @@ $messages['gl'] = array(
 	'formatchanges-editedby' => '$1 - editado por $2 ($3)',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'formatchanges-anonymous' => 'Άνώνυμος',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

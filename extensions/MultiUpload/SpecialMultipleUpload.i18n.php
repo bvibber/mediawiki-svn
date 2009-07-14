@@ -226,9 +226,10 @@ $messages['ch'] = array(
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
-	'multipleupload' => 'Nahrát soubory',
+	'multipleupload' => 'Nahrát více souborů',
 	'multipleupload-desc' => 'Umožňuje uživatelům [[Special:MultipleUpload|nahrávat více souborů najednou]]',
 	'multipleupload-ignoreallwarnings' => "Ignorovat '''všechna upozornění''' a bez ohledu na ně soubor uložit.",
 	'multipleupload-saveallfiles' => 'Uložit všechny soubory',
@@ -243,6 +244,8 @@ Můžete zadat volitelný '''cílový název souboru''' a poskytnout '''shrnutí
 Nevhodné soubory budou okmažitě smazány, vizte [[{{MediaWiki:Multipleupload-page}}|pravidla mazání souborů]].",
 	'multiupload-fileuploaded' => 'Soubor byl nahrán.',
 	'multiupload-toolbox' => 'Nahrát více souborů',
+	'multiupload-no-files' => 'Prosím, vyberte alespoň jeden soubor, který se má načíst',
+	'multiupload-blank' => 'Nebyl vybrán žádný soubor',
 );
 
 /** Danish (Dansk)
@@ -396,6 +399,14 @@ Los archivos inapropiados se eliminarán inmediatamente: mira la [[{{MediaWiki:M
 	'multiupload-toolbox' => 'Subir varios archivos',
 	'multiupload-no-files' => 'Por favor seleccione al menos un archivo a cargar',
 	'multiupload-blank' => 'Ningún archivo seleccionado',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'multipleupload-saveallfiles' => 'Fitxategi guztiak gorde',
+	'multiupload-fileuploaded' => 'Fitxategia igota.',
 );
 
 /** Persian (فارسی)
@@ -779,7 +790,7 @@ $messages['jv'] = array(
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
-	'multipleupload' => 'ផ្ទុកឡើងឯកសារ',
+	'multipleupload' => 'ផ្ទុកឡើងពហុឯកសារ',
 	'multipleupload-desc' => 'អនុញ្ញាត​ឱ្យអ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង​ច្រើនឯកសារ]]',
 	'multipleupload-ignoreallwarnings' => "មិនខ្វល់​'''គ្រប់ការព្រមាន''' ហើយ​រក្សាទុក​ឯកសារ​ទាំងអស់​។",
 	'multipleupload-saveallfiles' => 'រក្សាទុកគ្រប់ឯកសារ',

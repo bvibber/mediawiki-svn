@@ -647,6 +647,7 @@ $messages['el'] = array(
 	'grouppermissions-true' => 'Αληθινός',
 	'grouppermissions-false' => 'Ψεύτικος',
 	'grouppermissions-never' => 'Ποτέ',
+	'grouppermissions-sort-edit' => 'Επεξεργασία',
 	'grouppermissions-sort-manage' => 'Διαχείριση',
 	'grouppermissions-sort-admin' => 'Διοίκηση',
 	'grouppermissions-sort-misc' => 'Διάφορα',
@@ -759,6 +760,28 @@ $messages['es'] = array(
 	'right-recentchanges' => 'Ver cambios recientes',
 	'right-edittalk' => 'Editar páginas de discusión',
 	'right-edit-new' => 'Editar páginas (las cuales no sean páginas de discusión)',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'grouppermissions-search' => 'Taldea:',
+	'grouppermissions-dologin' => 'Saioa hasi',
+	'grouppermissions-dosearch' => 'Joan',
+	'grouppermissions-searchlabel' => 'Taldeak bilatu',
+	'grouppermissions-deletelabel' => 'Taldea ezabatu',
+	'grouppermissions-add' => 'Taldea gehitu',
+	'grouppermissions-delete' => 'Taldea ezabatu',
+	'grouppermissions-comment' => 'Iruzkina:',
+	'grouppermissions-true' => 'Egia',
+	'grouppermissions-false' => 'Gezurra',
+	'grouppermissions-never' => 'Inoiz',
+	'grouppermissions-sort-manage' => 'Kudeaketa',
+	'grouppermissions-sort-admin' => 'Administrazioa',
+	'grouppermissions-sort-tech' => 'Teknikoa',
+	'grouppermissions-sp-save' => 'Gorde',
+	'grouppermissions-sp-remove' => 'kendu',
 );
 
 /** Finnish (Suomi)

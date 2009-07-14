@@ -141,6 +141,13 @@ $messages['et'] = array(
 	'donationform-submit' => "Anneta läbi PayPal'i",
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'donationform-submit' => 'Dohaintza egin PayPalen bidez',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

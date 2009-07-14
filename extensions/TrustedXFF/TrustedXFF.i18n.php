@@ -194,6 +194,13 @@ $messages['jv'] = array(
 	'trustedxff-desc' => 'Pananganan dhaptar alamat proxy kapercaya ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'trustedxff-desc' => 'ნებადართული პროქსი მისამართების სიის დამუშავება ([http://meta.wikimedia.org/wiki/XFF_project პროექტი XFF])',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

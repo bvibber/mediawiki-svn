@@ -122,6 +122,18 @@ $messages['ar'] = array(
 	'right-recordadmin' => 'أبحث و عدل صفحات السجل',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'recordadmin-invert' => 'ܐܗܦܟ ܠܓܘܒܝܐ',
+	'recordadmin-buttonsearch' => 'ܒܨܝ',
+	'recordadmin-buttoncreate' => 'ܒܪܝ',
+	'recordadmin-buttonsave' => 'ܢܛܘܪ',
+	'recordadmin-viewlink' => 'ܚܙܝ',
+	'recordadmin-editlink' => 'ܫܚܠܦ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -374,6 +386,7 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'recordadmin-submit' => 'Υποβολή',
 	'recordadmin-buttonsearch' => 'Αναζήτηση',
+	'recordadmin-actions' => 'Ενέργειες',
 );
 
 /** Esperanto (Esperanto)
@@ -569,6 +582,7 @@ $messages['grc'] = array(
 	'recordadmin-buttoncreate' => 'Ποιεῖν',
 	'recordadmin-buttonreset' => 'Ἀνατιθέναι',
 	'recordadmin-buttonsave' => 'Γράφειν',
+	'recordadmin-actions' => 'Δράσεις',
 );
 
 /** Swiss German (Alemannisch)
@@ -909,6 +923,13 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'recordadmin-invert' => 'Ómgedriejde selectie',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'recordadmin-actions' => 'Tindakan',
 );
 
 /** Erzya (Эрзянь)

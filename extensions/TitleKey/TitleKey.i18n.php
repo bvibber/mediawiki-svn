@@ -229,6 +229,13 @@ $messages['jv'] = array(
 	'titlekey-desc' => 'Backend prosès panggolèkan irah-irahan préfiks',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'titlekey-desc' => 'საძიება დახმარებათა ძრავა სიტყვების პირველი ასოების გამოყენებით',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

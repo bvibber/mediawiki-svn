@@ -1420,6 +1420,7 @@ Puedes [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registrar tu propio apoyo, u
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
@@ -1460,7 +1461,7 @@ $messages['eu'] = array(
 	'deletequeue-list-status' => 'Egoera:',
 	'deletequeue-list-search' => 'Bilatu',
 	'deletequeue-list-anyqueue' => '(edozein)',
-	'deletequeue-list-votes' => 'Bozen zerrenda',
+	'deletequeue-list-votes' => 'Bozken zerrenda',
 	'deletequeue-list-header-page' => 'Orrialdea',
 	'deletequeue-list-header-queue' => 'Ilara',
 	'deletequeue-list-header-expiry' => 'Epemuga',
@@ -2079,21 +2080,21 @@ $messages['he'] = array(
 	'deletequeue-action' => 'הצעת מחיקה',
 	'deletequeue-action-title' => 'הצעת מחיקה של "$1"',
 	'deletequeue-generic-reasons' => '* סיבות כלליות
-** השחתה
-** פרסום
-** תחזוקה
-** מחוץ לטווח המיזם',
-	'deletequeue-nom-alreadyqueued' => 'דף זה כבר נמצא בתור למחיקה.',
-	'deletequeue-prod-title' => 'הסיבה למחיקת "$1"',
-	'deletequeue-delnom-reason' => 'הסיבה להגשת המועמדות:',
+  ** השחתה
+  ** ספאם
+  ** תחזוקה
+  ** מחוץ לטווח המיזם',
+	'deletequeue-nom-alreadyqueued' => 'דף זה נמצא כבר בתור המחיקה.',
+	'deletequeue-prod-title' => 'הצעת מחיקה של "$1"',
+	'deletequeue-delnom-reason' => 'הסיבה להצעת המחיקה:',
 	'deletequeue-delnom-otherreason' => 'סיבה אחרת',
-	'deletequeue-delnom-extra' => 'נתונים נוספים:',
-	'deletequeue-delnom-submit' => 'הגשת מועמדות',
-	'right-prod-nominate' => 'הצעת מחיקת הדף',
+	'deletequeue-delnom-extra' => 'מידע נוסף:',
+	'deletequeue-delnom-submit' => 'הגשת הצעה',
+	'right-prod-nominate' => 'הצעת מחיקה של דף',
 	'deletequeue-review-delete' => 'מחיקת הדף.',
 	'deletequeue-review-reason' => 'הערות:',
 	'deletequeue-review-newreason' => 'סיבה חדשה:',
-	'deletequeue-review-newextra' => 'נתונים נוספים:',
+	'deletequeue-review-newextra' => 'מידע נוסף:',
 	'deletequeue-review-submit' => 'שמירת הסקירה',
 	'deletequeue-review-original' => 'הסיבה להצעת המחיקה',
 	'deletequeue-review-badaction' => 'ציינתם פעולה בלתי חוקית',
@@ -2101,28 +2102,29 @@ $messages['he'] = array(
 	'deletequeue-review-success-title' => 'הסקירה הושלמה',
 	'deletequeue-role-vote-endorse' => 'בעד המחיקה',
 	'deletequeue-role-vote-object' => 'נגד המחיקה',
-	'deletequeue-vote-tab' => 'הצבעה למחיקה',
+	'deletequeue-vote-tab' => 'הצבעה על המחיקה',
 	'deletequeue-vote-action' => 'המלצה:',
 	'deletequeue-vote-object' => 'פריט למחיקה.',
 	'deletequeue-vote-reason' => 'הערות:',
 	'deletequeue' => 'תור המחיקות',
-	'deletequeue-list-search-legend' => 'חיפוש אחר דפים',
+	'deletequeue-list-search-legend' => 'חיפוש דפים',
 	'deletequeue-list-queue' => 'תור:',
 	'deletequeue-list-status' => 'מצב:',
 	'deletequeue-list-search' => 'חיפוש',
 	'deletequeue-list-votes' => 'רשימת ההצבעות',
+	'deletequeue-list-votecount' => '{{PLURAL:$1|הסכמה אחת|$1 הסכמות}}, {{PLURAL:$2|התנגדות אחת|$2 התנגדויות}}',
 	'deletequeue-list-header-page' => 'דף',
 	'deletequeue-list-header-queue' => 'תור',
-	'deletequeue-list-header-votes' => 'המלצות והתנגדויות',
+	'deletequeue-list-header-votes' => 'הסכמות והתנגדויות',
 	'deletequeue-list-header-expiry' => 'תפוגה',
 	'deletequeue-list-header-discusspage' => 'דף השיחה',
-	'deletequeue-case-votes' => 'המלצות/התנגדויות:',
-	'deletequeue-case-title' => 'פרטי העילה למחיקה',
+	'deletequeue-case-votes' => 'הסכמות/התנגדויות:',
+	'deletequeue-case-title' => 'פרטי מקרה המחיקה',
 	'deletequeue-case-details' => 'פרטים בסיסיים',
 	'deletequeue-case-page' => 'דף:',
 	'deletequeue-case-reason' => 'סיבה:',
 	'deletequeue-case-expiry' => 'תפוגה:',
-	'deletequeue-case-needs-review' => 'עילה זו דורשת [[$1|סקירה]].',
+	'deletequeue-case-needs-review' => 'מקרה זה דורש [[$1|סקירה]].',
 );
 
 /** Croatian (Hrvatski)
@@ -3051,6 +3053,13 @@ $messages['li'] = array(
  */
 $messages['mhr'] = array(
 	'deletequeue-delnom-otherreason' => 'Вес амал',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'deletequeue-case-reason' => 'Sebab:',
 );
 
 /** Mirandese (Mirandés)

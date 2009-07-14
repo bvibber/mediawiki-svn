@@ -295,6 +295,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'layouts_continue' => 'Συνεχίζειν',
 	'layouts_unknown' => 'Ἄγνωτος',
 );
 

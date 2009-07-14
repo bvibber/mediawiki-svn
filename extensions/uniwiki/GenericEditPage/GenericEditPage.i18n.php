@@ -470,6 +470,7 @@ Engada algunha usando as ferramentas da barra de menú.',
 $messages['grc'] = array(
 	'gep-categories' => 'Κατηγορίαι',
 	'gep-addcategorybutton' => 'Προστιθέναι',
+	'gep-suggestcategorybutton' => 'Ὑποβάλλειν',
 	'gep-addsectionbutton' => 'Προστιθέναι',
 );
 

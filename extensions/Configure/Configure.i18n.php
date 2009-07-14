@@ -231,8 +231,10 @@ $messages['qqq'] = array(
 	'configure-desc' => 'Extension description displayed on [[Special:Version]].
 
 {{Identical|Authorised user}}',
+	'configure-desc-group' => '{{Identical|Group}}',
 	'configure-desc-ns' => '{{Identical|Namespaces}}',
 	'configure-desc-val' => '{{Identical|Value}}',
+	'configure-edit-ext' => '{{Identical|Extensions}}',
 	'configure-ext-ext-dependencies' => '* $1 is a list of extensions
 * $2 is the number of extensions in $1',
 	'configure-ext-settings' => '{{Identical|Settings}}',
@@ -260,6 +262,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 * $2 is an internal or external link the user who made the version with the user name as the link anchor, or empty, or a text identifying the user without a link
 * $3 is a link to the diff page of this version and the version preceeding it, or empty
 * $4 is the comment, as provided by the user, which may be empty',
+	'configure-section-pages' => '{{Identical|Pages}}',
 	'configure-section-email' => '{{Identical|E-mail}}',
 	'configure-section-timezone' => '{{Identical|Time zone}}',
 	'configure-section-html' => '{{optional}}',
@@ -268,7 +271,10 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'configure-section-category' => '{{Identical|Categories}}',
 	'configure-section-memcached' => '{{optional}}',
 	'configure-section-interwiki' => '{{optional}}',
+	'configure-section-groups' => '{{Identical|Group}}',
 	'configure-section-squid' => '{{optional}}',
+	'configure-section-upload' => '{{Identical|Upload}}',
+	'configure-section-images' => '{{Identical|File}}',
 	'configure-section-djvu' => '{{optional}}',
 	'configure-section-imagemagick' => '{{optional}}',
 	'configure-section-svg' => '{{optional}}',
@@ -276,11 +282,13 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'configure-section-tidy' => '{{optional}}',
 	'configure-section-specialpages' => '{{Identical|Special pages}}',
 	'configure-section-recentchanges' => '{{Identical|Recent changes}}',
+	'configure-section-extension' => '{{Identical|Extensions}}',
 	'configure-section-search' => '{{Identical|Search}}',
 	'configure-section-htcp' => 'See Wikipedia articles on [[:wikipedia:HTCP|HTCP]] and [[:wikipedia:multicast|multicast]].',
 	'configure-transwiki-not-in-range' => '* $1 is the wiki, as given by the user
 * $2 is the list of allowed wikis
 * $3 is the number of items in $2',
+	'configure-view' => '{{Identical|View}}',
 	'configure-viewconfig-line' => '* $1 may be two radio buttons, as in history pages, or empty
 * $2 is the time and date of the version
 * $3 is a link to the user who made the version, or a text, or empty
@@ -301,6 +309,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'viewconfig' => 'Name of special page displayed in [[Special:SpecialPages]].',
 	'configure-throttle-action-move' => '{{Identical|Move}}',
 	'configure-throttle-action-rollback' => '{{Identical|Rollback}}',
+	'configure-throttle-group' => '{{Identical|Type}}',
 	'configure-condition-operator-or' => '{{Identical|Or}}',
 	'configure-condition-operator-and' => '{{Identical|And}}',
 	'configure-condition-operator-xor' => 'Means "one or the other but not both"',
@@ -778,14 +787,34 @@ $messages['as'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'configure-desc-group' => 'Група',
 	'configure-desc-ns' => 'Прасторы назваў',
 	'configure-desc-val' => 'Значэньне',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Пашырэньні',
 	'configure-js-remove' => 'Выдаліць',
+	'configure-js-biglist-show' => '[паказаць падрабязнасьці]',
+	'configure-js-biglist-hide' => '[схаваць падрабязнасьці]',
+	'configure-js-search-prompt' => 'Запыт:',
 	'configure-no-old' => 'Няма даступнай старай вэрсіі канфігурацыі.',
+	'configure-section-pages' => 'Старонкі',
+	'configure-section-db' => 'База зьвестак',
 	'configure-section-email' => 'Адрас электроннай пошты',
 	'configure-section-timezone' => 'Часавы пояс',
 	'configure-section-namespaces' => 'Прасторы назваў',
 	'configure-section-category' => 'Катэгорыі',
+	'configure-section-groups' => 'Групы',
+	'configure-section-upload' => 'Загрузка',
+	'configure-section-images' => 'Файлы',
+	'configure-section-specialpages' => 'Спэцыяльныя старонкі',
+	'configure-section-recentchanges' => 'Апошнія зьмены',
+	'configure-section-extension' => 'Пашырэньні',
+	'configure-select-wiki-submit' => 'Выбраць',
+	'configure-view' => 'Паказаць',
+	'configure-throttle-group' => 'Тып',
+	'configure-condition-operator' => 'Апэратар:',
+	'configure-condition-name' => 'Умова',
+	'configure-condition-requirement' => 'Патрабаваньне',
 );
 
 /** Bulgarian (Български)
@@ -1809,9 +1838,11 @@ Pšosym napóraj jen abo změń jen, aby wužywał rozšyrjenje.',
  */
 $messages['el'] = array(
 	'configure-desc-group' => 'Ομάδα',
+	'configure-desc-ns' => 'Περιοχή ονομάτων',
 	'configure-ext-settings' => 'Ρυθμίσεις',
 	'configure-js-prompt-group' => 'Εισάγετε το όνομα της νέας ομάδας:',
 	'configure-section-timezone' => 'Ζώνη ώρας',
+	'configure-section-namespaces' => 'Περιοχές ονομάτων',
 	'configure-section-category' => 'Κατηγορίες',
 	'configure-section-search' => 'Αναζήτηση',
 );
@@ -4573,11 +4604,13 @@ $messages['lb'] = array(
 	'configure-btn-save' => 'Confuguratioun späicheren',
 	'configure-edit-old' => "'''Passt op''': Dir ännert eng <strong>al</strong> Versioun vun der Configuratioun (sou wéi den $1).",
 	'configure-error' => "D'Configuration konnt net gespäichert ginn",
+	'configure-js-add' => 'Eng nei Entrée derbäisetzen',
 	'configure-js-group-exists' => 'Feeler: de Grupp gëtt et schonn.',
 	'configure-js-prompt-group' => 'Gitt de Numm vum Grupp an:',
 	'configure-js-remove' => 'Läschen',
 	'configure-js-remove-row' => 'Dës Donnée läschen',
 	'configure-js-get-image-url' => 'De Fichiersnumm an eng URL ëmwandelen',
+	'configure-js-image-error' => 'Beim Oprufe vun der URL ass e Feeler geschitt. Kuckt w.e.g. no ob et de Fichier och gëtt.',
 	'configure-js-biglist-shown' => 'Astellung datt Detailer kënne verstoppt ginn',
 	'configure-js-biglist-hidden' => 'Astellung Detailer verstoppt',
 	'configure-js-biglist-show' => '[Detailer weisen]',
@@ -4608,6 +4641,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-localization' => 'Lokalisatioun',
 	'configure-section-timezone' => 'Zäitzon',
 	'configure-section-zh-conversion' => 'Chinesesch Konversioun',
+	'configure-section-debug' => 'Debugging',
 	'configure-section-site' => 'Personalisatioun vum Site',
 	'configure-section-css-js' => 'CSS a JavaScript',
 	'configure-section-namespaces' => 'Nummraim',
@@ -4638,6 +4672,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-filter' => 'Filter',
 	'configure-section-mw-extensions' => 'MediaWiki-Erweiderungen',
 	'configure-section-external-tools' => 'Extern Toolen',
+	'configure-section-thumbnail' => 'Bild miniaturiséieren',
 	'configure-section-output' => 'Resultat',
 	'configure-select-wiki' => 'Wiki-Auswiel',
 	'configure-select-wiki-desc' => 'Wielt déi Wiki aus déi Dir astelle wëllt.',
@@ -4679,6 +4714,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-throttle-group' => 'Typ',
 	'configure-throttle-limit' => 'Limit',
 	'configure-throttle-none' => 'Keng Limit',
+	'configure-condition-operator' => 'Operateur:',
 	'configure-condition-operator-or' => 'Oder',
 	'configure-condition-operator-and' => 'Ann',
 	'configure-condition-operator-xor' => 'Entweder oder',
@@ -5882,6 +5918,7 @@ $messages['pdc'] = array(
 	'configure-js-remove' => 'Lösche',
 	'configure-section-specialpages' => 'Besunnere Bledder',
 	'configure-throttle-action-move' => 'Ziehe',
+	'configure-condition-operator-and' => 'Unn',
 );
 
 /** Polish (Polski)

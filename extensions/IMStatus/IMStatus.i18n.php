@@ -315,9 +315,11 @@ ID, kótaryž musyš pódaś, su licby a pismiki mjazy "$2 a "$3".',
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'imstatus_default' => 'Προεπιλογή',
+	'imstatus_or' => 'ή',
 );
 
 /** Esperanto (Esperanto)

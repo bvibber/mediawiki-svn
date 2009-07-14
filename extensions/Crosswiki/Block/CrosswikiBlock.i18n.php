@@ -1461,6 +1461,14 @@ $messages['mr'] = array(
 	'crosswikiunblock-local' => 'स्थानिक अनब्लॉक इथे बदलता येत नाहीत. [[Special:IPBlockList|{{int:ipblocklist}}]] चा उपयोग करा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'crosswikiblock-reason' => 'Sebab:',
+	'crosswikiunblock-reason' => 'Sebab:',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */

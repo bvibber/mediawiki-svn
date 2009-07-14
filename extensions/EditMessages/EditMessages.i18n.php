@@ -1250,11 +1250,24 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Mach
  */
 $messages['tr'] = array(
+	'editmessages-desc' => 'Fazla sayıda Messages*.php dosyasının [[Special:EditMessages|Web-tabanlı düzenlenmesi]]',
+	'editmessages' => 'Mesajları düzenle',
+	'editmsg-target' => 'Hedef mesaj:',
 	'editmsg-search' => 'Ara',
+	'editmsg-show-list' => '"$1" mesaj adı için değerler gösteriliyor',
+	'editmsg-get-patch' => 'Yama oluştur',
 	'editmsg-new-search' => 'Yeni arama',
+	'editmsg-warning-parse1' => '* Mesaj ismi düzenli ifadesi eşleşmedi: $1',
+	'editmsg-warning-parse2' => '* Oktan sonra alıntı karakteri bekleniyor: $1',
+	'editmsg-warning-parse3' => '* Değer sonu katarı bulunamadı: $1',
+	'editmsg-apply-patch' => 'Yamayı uygula',
+	'editmsg-no-patch' => '"Yama" komutu çalıştırılamıyor',
+	'editmsg-patch-failed' => 'Yama $1 çıkış durumu ile başarısız oldu',
+	'editmsg-patch-success' => 'Başarıyla yamalandı.',
 );
 
 /** Ukrainian (Українська)

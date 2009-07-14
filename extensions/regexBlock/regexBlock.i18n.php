@@ -206,6 +206,18 @@ $messages['ar'] = array(
 	'right-regexblock' => 'منع المستخدمين من التعديل في كل الويكيات في مزرعة الويكي',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'regexblock-form-reason' => 'ܥܠܬܐ:',
+	'regexblock-view-all' => 'ܟܠ',
+	'regexblock-view-go' => 'ܙܠ',
+	'regexblock-view-reason' => 'ܥܠܬܐ: $1',
+	'regexblock-view-block-by' => 'ܚܪܝܡܐ ܒܝܕ:',
+	'regexblock-view-block-unblock' => 'ܫܩܘܠ ܚܪܡܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -1547,6 +1559,13 @@ $messages['mr'] = array(
 	'regexblock-view-stats' => '(सांख्यिकी)',
 	'regexblock-view-empty' => 'ब्लॉक केलेल्या सदस्यनाव तसेच आयपी अंकपत्त्यांची यादी रिकामी आहे.',
 	'regexblock-view-time' => '$1 वर',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'regexblock-form-reason' => 'Sebab:',
 );
 
 /** Maltese (Malti)

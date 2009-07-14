@@ -64,6 +64,16 @@ $messages['arz'] = array(
 	'whatismyip-out' => 'الأيبى الخاص بك:',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'whatismyip' => "Wås is'n gråd mei IP-Adress",
+	'whatismyip-desc' => 'Zoagt de momentane [[Special:WhatIsMyIP|IP-Adress]] vu am Benutza ãn.',
+	'whatismyip-out' => 'Dei IP-Adress:',
+	'right-whatismyip' => "d'[[Special:WhatIsMyIP|eigene IP-Adress]] ãuschau",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

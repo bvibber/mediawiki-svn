@@ -641,6 +641,19 @@ $messages['tl'] = array(
 	'categorywatch-autocat' => 'Kusang minatyagan ni $1',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'categorywatch-desc' => 'Дозволяє спостерігати за змінами приналженості сторінок до певної категорії',
+	'categorywatch-emailsubject' => 'Зміни, пов\'язані зі спостережуваною категорією "$1"',
+	'categorywatch-catmovein' => 'переніс $1 з $3 до $2',
+	'categorywatch-catmoveout' => 'переніс $1 з $2 до $3',
+	'categorywatch-catadd' => 'додав $1 в категорію $2',
+	'categorywatch-catsub' => 'вилучив $1 з $2',
+	'categorywatch-autocat' => 'Автоматично спостерігається $1',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

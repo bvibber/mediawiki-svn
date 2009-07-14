@@ -1420,6 +1420,13 @@ $messages['mr'] = array(
 	'badimages-page' => '{{ns:help}}:चुकीच्या चित्रांची यादी',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'badimages-reason' => 'Sebab:',
+);
+
 /** Maltese (Malti)
  * @author Giangian15
  */
@@ -2127,6 +2134,7 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Mpradeep
  * @author Veeven
  * @author వైజాసత్య
@@ -2152,6 +2160,7 @@ $messages['te'] = array(
 	'badimages-log-add' => '[[$1]]ని చెడు బొమ్మల జాబితాలో చేర్చారు',
 	'badimages-log-remove' => '[[$1]]ని చెడు బొమ్మల జాబితా నుండి తీసివేసారు',
 	'badimages-page' => '{{ns:help}}:చెడు బొమ్మల జాబితా',
+	'right-badimages' => 'బాగోలేని బొమ్మల జాబితాను సరిచూడండి',
 );
 
 /** Tetum (Tetun)

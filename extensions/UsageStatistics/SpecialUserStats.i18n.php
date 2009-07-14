@@ -714,7 +714,9 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'usagestatisticstype' => 'Τύπος',
+	'usagestatisticsintervalday' => 'Ἡμέρα',
 	'usagestatisticsintervalmonth' => 'Μήν',
+	'usagestatisticscalselect' => 'Ἐπιλέγειν',
 );
 
 /** Swiss German (Alemannisch)
@@ -1375,6 +1377,15 @@ $messages['os'] = array(
 	'usagestatisticsintervalday' => 'Бон',
 	'usagestatisticsintervalweek' => 'Къуыри',
 	'usagestatisticsintervalmonth' => 'Мæй',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'usagestatisticsintervalday' => 'Daag',
+	'usagestatisticsintervalweek' => 'Woch',
+	'usagestatisticsintervalmonth' => 'Munet',
 );
 
 /** Polish (Polski)

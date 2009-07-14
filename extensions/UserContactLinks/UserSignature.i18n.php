@@ -60,6 +60,14 @@ $messages['avk'] = array(
 	'usercontactlink-baduser' => 'Favesikyoltaj',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'usercontactlink-baduser' => 'fåischa Benutzanãm',
+	'usercontactlink-desc' => 'Eamöglicht, dass Benutzanãmen oafåch mid ^^^Benutza^^^ valinkt wean',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

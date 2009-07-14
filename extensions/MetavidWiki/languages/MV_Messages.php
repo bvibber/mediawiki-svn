@@ -1220,7 +1220,7 @@ $messages['be-tarask'] = array(
 	'mv_cancel_image_insert' => 'Адмяніць устаўку',
 	'sc_fileopts' => 'Адсекчы падрабязнасьці рэдагаваньня',
 	'sc_inoutpoints' => 'Устанавіць пункты уводу-вываду',
-	'sc_panzoom' => 'Пракруціць маштаб сьціску',
+	'sc_panzoom' => 'Пракруціць маштаб панарамы',
 	'sc_overlays' => 'Накладаньні',
 	'sc_audio' => 'Кантроль аўдэё',
 	'sc_duration' => 'Працягласьць',
@@ -1247,7 +1247,6 @@ $messages['be-tarask'] = array(
 	'zoom_out' => 'Паменшыць маштаб',
 	'expand_track' => 'Пашырыць канал',
 	'colapse_track' => 'Звузіць канал',
-	'play_clip' => 'Прайграваць з цяперашняй пазыцыі',
 	'pixle2sec' => 'піксэляў за сэкунду',
 	'rmclip' => 'Выдаліць частку файла',
 	'no_selected_resource' => '<h3>Рэсурс не выбраны</h3>
@@ -1597,6 +1596,7 @@ Koristite ovo da biste postavili izvorni video koji nije pretvoren u Theora form
 	'sc_duration' => 'Trajanje',
 	'mv_template_properties' => 'Svojstva šablona',
 	'mv_custom_title' => 'Prilagođeni naslov',
+	'mv_edit_properties' => 'Uredi svojstva',
 	'mv_other_properties' => 'Ostala svojstva',
 	'menu_cliplib' => 'Dodaj izvor',
 	'menu_options' => 'Opcije',
@@ -2143,6 +2143,7 @@ $messages['es'] = array(
 	'loading_txt' => 'Cargando <blink>...</blink>',
 	'loading_plugin' => 'Cargando plugin <blink>...</blink>',
 	'download_segment' => 'Descargar selección:',
+	'download_full' => 'Descargar archivo de video totalmente:',
 	'download_clip' => 'Descargar el clip',
 	'download_text' => 'Descargar texto (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML):',
 	'clip_linkback' => 'Página fuente de clip',
@@ -2150,17 +2151,22 @@ $messages['es'] = array(
 	'mv_ogg-player-oggPlugin' => 'Plugin Ogg genérico',
 	'mv_ogg-player-selected' => '(seleccionado)',
 	'add_to_end_of_sequence' => 'Agregar al final de la secuencia',
+	'select_transcript_set' => 'Seleccionar capas de texto',
 	'close' => 'cerrar',
 	'improve_transcript' => 'Mejorar transcripción',
 	'next_clip_msg' => 'Reproducir siguiente clip',
 	'prev_clip_msg' => 'Reproducir clip anterior',
 	'current_clip_msg' => 'Continuar reproduciendo este clip',
+	'seek_to' => 'Buscar',
+	'upload-in-progress' => 'Transcodificando y cargando (no cierre esta ventana)',
+	'upload-transcoded-status' => 'Transcodificado',
 	'uploaded-status' => 'Cargado',
 	'upload-select-file' => 'Seleccione archivo',
 	'rsd_results_desc' => 'Resultados',
 	'rsd_results_next' => 'siguiente',
 	'rsd_results_prev' => 'anterior',
 	'mv_upload' => 'Cargar',
+	'rsd_resource_edit' => 'Editar recurso: $1',
 	'cc_title' => 'Creative Commons',
 	'cc_by_title' => 'Atribución',
 	'cc_nc_title' => 'No comercial',
@@ -2175,6 +2181,7 @@ $messages['es'] = array(
 	'mv_custom_title' => 'Personalizar título',
 	'mv_edit_properties' => 'Editar propiedades',
 	'mv_other_properties' => 'Otras propiedades',
+	'mv_resource_page' => 'Página recurso',
 	'menu_clipedit' => 'Editar recurso seleccionado',
 	'menu_cliplib' => 'Agregar recurso',
 	'menu_transition' => 'Efectos de transición',
@@ -2187,6 +2194,8 @@ $messages['es'] = array(
 Todos los cambios se perderán.',
 	'cut_clip' => 'Cortar clips',
 	'rmclip' => 'Remover clip',
+	'mv_stream_added' => 'Has agregado el stream $1',
+	'mv_stream_meta' => 'Página stream',
 	'mv_move_delete_msg' => 'movido a $1',
 	'mv_add_stream_submit' => 'Agregar stream',
 	'mv_no_stream_files' => 'archivos stream inexistentes',
@@ -2198,38 +2207,68 @@ Todos los cambios se perderán.',
 	'mv_duration_label' => 'Duración',
 	'mv_delete_stream_file' => 'borrar referencia de archivo stream',
 	'mv_save_changes' => 'Grabar cambios',
+	'mv_updated_stream_files' => 'Actualizad registro de archivos stream',
 	'mv_removed_file_stream' => 'Archivo stream removido: $1',
+	'mv_user_cant_edit' => 'Puedes haber [$1 login] para editar, $2',
 	'mv_add_stream_file' => 'Agregar archivo stream',
 	'mv_file_list' => 'Archivos stream',
 	'mv_label_stream_name' => 'Nombre de stream',
 	'mv_label_stream_desc' => 'Descripción de stream',
 	'add_stream_permission' => 'usted carece de permiso para agregar un nuevo stream',
+	'edit_stream_missing' => 'Nombre de stream perdido',
+	'mv_missing_cat' => 'Nombre de categoría perdida',
 	'mv_stream_already_exists' => 'El stream <a href="$2">$1</a> ya existe',
+	'mv_summary_add_stream' => 'Stream agregado por formulario',
+	'mv_error_stream_insert' => 'Fracasaste en insertar stream',
+	'mv_redirect_and_delete_reason' => 'Removido página de redirección',
 	'mv_remove_reason' => 'Razon para borrado:',
+	'mv_label_stream_type' => 'Tipo de stream',
+	'mv_metavid_file' => 'Archivo existente en servidor',
 	'mv_upload_file' => 'Subir archivo',
 	'mv_external_file' => 'Archivo externo',
 	'mv_tool_search' => 'Buscar',
+	'mv_tool_search_title' => 'Buscar dentro de ese stream',
 	'mv_tool_navigate' => 'Navegar',
 	'mv_tool_navigate_title' => 'Navegar el stream completo',
 	'mv_tool_export' => 'Exportar',
 	'mv_tool_embed' => 'Embebido',
+	'mv_results_found' => 'Resultados de video <b>$1</b> a <b>$2</b> de <b>$3</b>',
+	'mv_tool_mang_layers' => 'Gestionar capas',
+	'mv_update_layers' => 'Actualizar capas',
+	'mv_watch_clip' => 'Ver clip',
 	'mv_close_clip' => 'Cerrar clip',
+	'mv_improve_transcript' => 'Mejorar transcripción',
 	'mv_click_to_edit' => 'hacer click para editar',
 	'ht_en' => 'Transcribir',
+	'anno_en' => 'Anotaciones y categorías',
 	'thomas_en' => 'Transcripcion oficial',
 	'mv_time_separator' => '$1 a $2',
+	'mv_list_streams_docu' => 'Los siguientes streams existen:',
+	'mv_list_streams_none' => 'No existe streams',
+	'mv-category-media-count' => '$1 {{PLURAL:$1|segmento|segmentos}} media en categoría',
 	'mv_play' => 'Reproducir',
 	'mv_edit' => 'Editar',
 	'mv_history' => 'Historial',
+	'mv_edit_title' => 'Editar texto',
+	'mv_edit_adjust_title' => 'Editar texto y alineamiento de video',
 	'mv_remove' => 'eliminar',
+	'mv_adjust' => 'ajustar',
+	'mv_adjust_submit' => 'Grabar ajuste',
+	'mv_adjust_preview' => 'Ver previamente ajuste',
+	'mv_adjust_preview_stop' => 'Detener prevista',
 	'mv_edit_metadata' => 'Editar metadatos',
 	'mv_advanced_edit' => 'Edición avanzada',
 	'mv_basic_edit' => 'Edición básica',
+	'mv_add_category' => 'Agregar una categorización',
+	'mv_viewnext' => 'Ver ($1)',
+	'mv_viewprevnext' => 'Ver ($1) ($2)',
 	'mv_results_for' => 'Resultados para $1',
 	'mv_add_filter' => 'Agregar filtro',
+	'mv_search_match' => 'Buscar texto',
 	'mv_search_spoken_by' => 'Hablado por',
 	'mv_search_categories' => 'Categorías',
 	'mv_search_category' => 'Categoría',
+	'mv_search_smw_property' => 'Propiedades semánticas',
 	'mv_search_and' => 'y',
 	'mv_search_or' => 'o',
 	'mv_search_not' => 'no',
@@ -2254,7 +2293,9 @@ Todos los cambios se perderán.',
 	'mv_save_sequence' => 'Grabar secuencia',
 	'mv_sequence_page_desc' => 'Grabar la secuencia actual',
 	'mv_sequence_add' => 'Agregar clips',
+	'mv_seq_add_end' => 'Agregar al final de la secuencia',
 	'mv_other_options' => 'Otras opciones',
+	'mv_contextmenu_opt' => 'Habilitar menús de contexto',
 	'mv_days' => '$1 {{PLURAL:$1|dia|dias}}',
 	'mv_hours' => '$1 {{PLURAL:$1|hora|horas}}',
 	'mv_hours_singular' => '$1 hora',
@@ -2262,8 +2303,16 @@ Todos los cambios se perderán.',
 	'mv_minutes_singular' => '$1 minuto',
 	'mv_seconds' => '$1 {{PLURAL:$1|segundo|segundos}}',
 	'mv_seconds_singular' => '$1 segundo',
+	'mv_stream_length' => 'Largo de video total:',
+	'mv_sequence_timeline' => 'Línea de tiempo de secuencia:',
+	'mv_edit_sequence_desc_help' => 'Descripción de secuencia',
+	'mv_add_clip_by_name' => 'Agregar clip por nombre',
+	'mv_export_cmml' => 'Exportar CMML',
+	'mv_edit_time' => 'Editar tiempo',
+	'mv_stream_tool_heading' => 'Herramientas stream',
 	'mv_prev_cat' => 'Anterior categoría: $1',
 	'mv_next_cat' => 'Siguiente categoría: $1',
+	'right-mv_edit_stream' => 'Editar archivos stream',
 );
 
 /** Basque (Euskara)
@@ -4700,7 +4749,6 @@ $messages['ja'] = array(
 	'cut_clip' => 'クリップをカット',
 	'expand_track' => 'トラックを展開する',
 	'colapse_track' => 'トラックを折り畳む',
-	'play_clip' => '再生ラインの位置から再生',
 	'pixle2sec' => 'ピクセルから秒へ',
 	'rmclip' => 'クリップをとり除く',
 	'clip_in' => 'クリップイン',
@@ -5151,7 +5199,7 @@ clip
 eronger laade',
 	'download_text' => 'Tex erungerlaade (<i lang="en"><a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> XML</i>):',
 	'clip_linkback' => '
-Däm
+Däm 
 clip
 sing Quell-Sigg',
 	'mv_ogg-player-videoElement' => 'Et ennjeboute Projramm för <i lang="en">Ogg</i> Viddejos afzeshpelle',
@@ -5163,7 +5211,7 @@ Loor op dä Sigg <i lang="en"><a href="http://metavid.org/wiki/Client_Playback">
 Aam Engk vun dä
 sequence
 aanhange',
-	'missing_video_stream' => ' De Viddejo-Dattei för he dä
+	'missing_video_stream' => ' De Viddejo-Dattei för he dä 
 stream
 is nit doh',
 	'select_transcript_set' => 'Donn de Nivvohs vum Täx ußwähle',
@@ -5173,15 +5221,15 @@ is nit doh',
 transcript
 verbessere',
 	'next_clip_msg' => '
-Dä nächste
+Dä nächste 
 clip
 afshpelle',
 	'prev_clip_msg' => '
-Dä vörijje
+Dä vörijje 
 clip
 afshpelle',
 	'current_clip_msg' => '
-Heh dä
+Heh dä  
 clip
 wigger afshpelle',
 	'seek_to' => 'Söhk bes',
@@ -5195,6 +5243,7 @@ wigger afshpelle',
 	'mv_media_search' => 'Meedijje Söhke',
 	'rsd_box_layout' => 'Als ene Kaßte',
 	'rsd_list_layout' => 'Als en Leß',
+	'rsd_results_desc' => 'Eruß kohm',
 	'rsd_results_next' => 'näx',
 	'rsd_results_prev' => 'vörijje',
 	'mv_upload' => 'Huh laade',
@@ -5210,19 +5259,21 @@ Wann et nit aan Dinge Rääschte litt, künnd et sin, dat De <code lang="en">$wg
 	'mv_insert_image_page' => 'En en Sigg ennfööje',
 	'mv_preview_insert' => 'Vör_Aansich för et Ennfööje',
 	'mv_cancel_image_insert' => 'Et Enfööje avbreche!',
+	'sc_panzoom' => 'Pannoraama Eraanholle Ußschnigge',
+	'sc_audio' => 'Enschtellunge för der Ton',
 	'sc_duration' => 'Duur',
 	'mv_template_properties' => 'Eijescahffte vun en Schabloon',
 	'mv_custom_title' => 'Eije Tittel',
 	'mv_edit_properties' => 'Eijeschaffte ändere',
 	'mv_other_properties' => 'Ander Eijeschaffte',
-	'menu_clipedit' => 'Donn de ußjewählte
+	'menu_clipedit' => 'Donn de ußjewählte 
 Ressource
 ändere',
-	'menu_cliplib' => 'En
+	'menu_cliplib' => 'En 
 Ressource
 dobei donn',
 	'menu_transition' => 'Effäkte för der Övverjang',
-	'menu_resource_overview' => '!FUZZY!!Övverbleck övver de
+	'menu_resource_overview' => '!FUZZY!!Övverbleck övver de 
 Resource',
 	'menu_options' => 'Ußwahle',
 	'loading_timeline' => 'Ben de timeline am laade <blink>…</blink>',
@@ -5231,7 +5282,7 @@ Resource',
 sequence
 afzeseschere.',
 	'edit_clip' => '
-Dä
+Dä  
 clip
 ändere',
 	'edit_save' => 'De Änderunge afseschere',
@@ -5251,7 +5302,7 @@ ußsöke, öm dä ze ändere',
 	'metavid' => 'Metavid Sigg',
 	'mv_missing_stream' => '
 Dä
-stream
+stream 
 „$1“ fäählt',
 	'specialpages-group-mv_group' => 'MetaVidWiki Söndersigge',
 	'mv_warning_wiki' => '<i>Opjepaß: <i lang="en">MetaVid</i> Viddejo Protokolle [[Help:FAQ#How_accurate_is_the_information.3F|künne unjenou sin]], donn uns hellfe, [[Help:Participation#Improving_Archive_Accuracy|noch e besser Aschiif opzeboue]]</i>',
@@ -5262,52 +5313,52 @@ stream
 	'mv_archive_org_link' => 'Lengks op ojinaal MPEG2-Dateije vun Archive.org',
 	'mv_error_stream_missing' => '<span class="error">Fähler: För dä Shtroom jidd_et kein Viddejo_Dattei.</span><br />Beß esu joot, un donn dat eenem [[{{MediaWiki:Grouppage-sysop}}|Wiki_Kööbeß]] verzälle.',
 	'mv_stream_added' => '
-Do häs dä
-stream
+Do häs dä 
+stream 
 „$1“ dobei jedonn',
 	'mv_stream_meta' => '
-stream
+stream  
 Sigg',
 	'mv_add_stream' => '
-<i lang="en">MetaVid</i>
-stream
+<i lang="en">MetaVid</i> 
+stream  
 dobei donn',
 	'mv_edit_stream' => '
-<i lang="en">MetaVid</i>
-stream
+<i lang="en">MetaVid</i> 
+stream  
 ändere',
 	'mvexportsearch' => '<i lang="en">MetaVid</i> Expoot',
 	'mvexportsequence' => '
-<i lang="en">MetaVid</i>
-sequence
+<i lang="en">MetaVid</i> 
+sequence  
 expoteere',
 	'mvexportstream' => '
-<i lang="en">MetaVid</i>
-stream
+<i lang="en">MetaVid</i> 
+stream  
 expooteere',
 	'mv_move_delete_msg' => 'op $1 ömjenannt',
 	'mv_add_stream_page' => '
-<i lang="en">MetaVid</i> Stream
+<i lang="en">MetaVid</i> Stream 
 dobei donn',
 	'mv_edit_strea_docu' => '
 <p>Stream ändere als <b>Wiki-Köbes</b><br />
 De Aansich för der nommaale Metmaacher es op dä Sigg: $1',
 	'mv_add_stream_docu' => '
-<p>Donn ene neue
-stream
+<p>Donn ene neue 
+stream 
 dobei, övver dat Feld heh dronger.</p>
-<p>Mieh Enfommazjuhne fingk mer op dä <a href="$1">Hülp-Sigg övver et
+<p>Mieh Enfommazjuhne fingk mer op dä <a href="$1">Hülp-Sigg övver et 
 stream-
 Dobei-Donn</a>.</p>',
 	'mv_add_stream_submit' => '
 stream
 dobei donn',
 	'mv_no_stream_files' => '
-Mer han kei
-stream
+Mer han kei 
+stream  
 Datteije',
 	'mv_edit_stream_files' => '
-stream
+stream  
 Datteije ändere',
 	'mv_path_type_url_anx' => 'kumplätte Medije-URL',
 	'mv_path_type_wiki_title' => 'Medije-Tittel em Wiki',
@@ -5321,7 +5372,7 @@ Datteije ändere',
 	'mv_removed_file_stream' => '
 stream
 Dattei „$1“ fottjeschmeße',
-	'mv_missing_stream_text' => 'Dä jewönschte
+	'mv_missing_stream_text' => 'Dä jewönschte 
 stream
 <b>$1</b> es nit ze han.<br />
 Looer ens op dä <a href="$2">Leß met de
@@ -5414,11 +5465,16 @@ Enfommazjuhne als Aanmerkunge dobei don, die nit jekallt sin.',
 	'mv_data_page_title' => '$1 för $2 vun $3 aan',
 	'mv_time_separator' => 'vun $1 bes $2',
 	'mv_list_streams_docu' => '
-Et jitt hee di
+Et jitt hee di  
 streams',
 	'mv_list_streams_none' => '
-Et jitt kei
+Et jitt kei 
 streams',
+	'mvBadMVDtitle' => 'de Zoot fählt, der
+stream
+fählt, udder et Fomaat vun de Zick eß Jedreße',
+	'mvMVDFormat' => 'De MVD Tittelle sullte esu opjebout sin: 
+mvd:Zoot:stream_Name/Aanfangs_Zick/Engk_Zick',
 	'mv_play' => 'Afshpelle',
 	'mv_edit' => 'Ändere',
 	'mv_history' => 'Versione',
@@ -5434,14 +5490,24 @@ fott schmiiße',
 	'mv_adjust_title' => 'Aanfangs- un Engk-Zick aanpasse',
 	'mv_adjust_preview' => 'Aanpassung aanloore',
 	'mv_adjust_preview_stop' => 'Vör-Aansich aanhallde',
+	'mv_adjust_default_reason' => 'Enshtällunge för de <i lang="en">MetaVid</i> Schnetshtäll',
+	'mv_adjust_old_title_missing' => 'Di Sigg „$1“, woh De vun ömnänne wells, di jidd_et jaanit.',
+	'mv_adjust_ok_move' => 'Jelonge, ben am Aanpasse&nbsp;…',
 	'mv_start_desc' => 'Aanfangszick',
 	'mv_end_desc' => 'Zick vum Engk',
 	'mv_of' => '&#32;vun&#32;',
 	'mv_edit_metadata' => 'Metta_Daate ändere',
+	'mv_advanced_edit' => 'Et opwändijje Beärbeijde',
+	'mv_basic_edit' => 'Et eijfaache Beärbeijde',
 	'mv_remove_category' => 'Saachjrupp fottnämme',
 	'mv_existing_categories' => '{{PLURAL:$1|{{ns:category}}|{{int:categories}}|{{int:categories}}}}:',
+	'mv_add_category' => 'Donn en Saachjropp derbei',
+	'mv_basic_text_desc' => 'Met Täx beschrevve (kam_mer fottlohße)',
 	'mv_viewnext' => 'Zeish ($1)',
 	'mv_viewprevnext' => 'Zeish ($1) ($2)',
+	'mediasearch' => 'Noh Meedije söhke',
+	'mv_search_sel_t' => 'Wi sull jesöhk wähde?',
+	'mv_do_media_search' => 'Donn de <i lang="en">MetaVid</i> Meedije Söhke noh „$1“',
 	'mv_results_for' => 'Wat för „$1“ erus kohm',
 	'mv_video_search' => 'Viddejo söhke',
 	'mv_page_search' => 'Donn en de Wiki_Sigge noh „$1“ söhke',
@@ -5481,7 +5547,7 @@ sequence
 „$1“ aam Ändere',
 	'mv_sequence_add_manual' => 'Övver der Name dobei donn',
 	'mv_sequence_add_search' => 'Dobei donn övver et Söhke',
-	'mv_seq_add_end' => 'Aam Engk vun en
+	'mv_seq_add_end' => 'Aam Engk vun en 
 <i lang="en">sequence</i>
 dobei donn',
 	'mv_sequence_edit_text' => 'Op dat Täxprojramm zom Beärbeide ömschallde',
@@ -7220,6 +7286,9 @@ $messages['pdc'] = array(
 	'rsd_results_prev' => 'zerick',
 	'mv_remove_reason' => 'Grund fers Lösche:',
 	'mv_history' => 'Gschicht',
+	'mv_search_and' => 'unn',
+	'mv_days' => '$1 {{PLURAL:$1|Daag|Daage}}',
+	'mv_hours_singular' => '$1 Schtund',
 );
 
 /** Polish (Polski)

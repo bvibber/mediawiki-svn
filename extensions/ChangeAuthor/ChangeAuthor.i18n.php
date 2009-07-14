@@ -568,11 +568,13 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
 	'changeauthor-pagenameform-go' => 'Joan',
 	'changeauthor-comment' => 'Iruzkina:',
+	'changeauthor-changeauthors-single' => 'Egilea aldatu',
 );
 
 /** Finnish (Suomi)

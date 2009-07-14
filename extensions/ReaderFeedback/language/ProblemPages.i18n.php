@@ -79,7 +79,11 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'problempages' => 'Slabo ocijenjene stranice',
+	'problempages-leg' => 'Nađi nisko ocijenjene stranice',
+	'problempages-list' => 'Ispod je spisak stranica poredanih po rejtingu poslanom od strane čitaoca.',
 	'problempages-none' => 'Nema stranica na ovom spisku',
+	'problempages-graphs' => 'podaci rejtinga',
 );
 
 /** German (Deutsch)

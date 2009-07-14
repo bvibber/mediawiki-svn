@@ -311,6 +311,7 @@ $messages['el'] = array(
 	'ratinghistory' => 'Ιστορικό βαθμολογίας σελίδας',
 	'ratinghistory-tab' => 'βαθμολογία',
 	'ratinghistory-link' => 'Σελίδα βαθμολογίας',
+	'ratinghistory-period' => 'Χρονική περίοδος:',
 	'ratinghistory-month' => 'τελευταίος μήνας',
 	'ratinghistory-3months' => 'τελευταίοι 3 μήνες',
 	'ratinghistory-year' => 'πέρυσι',

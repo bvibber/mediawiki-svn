@@ -353,6 +353,13 @@ $messages['pt-br'] = array(
 	'multiboilerplate-submit' => 'Carregar',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'multiboilerplate-submit' => 'Careche',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

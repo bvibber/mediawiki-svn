@@ -497,6 +497,17 @@ $messages['pt-br'] = array(
 Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'newusernotifsubj' => "Notifiche de 'n'utende nuève pe $1",
+	'newusernotif-desc' => "Manne 'na mail de notifiche quanne avènene ccrejate le cunde utende",
+	'newusernotifbody' => "Cià $1,
+
+'Nu cunde utende nuève, $2, ha state ccrejate sus a $3 'u $4.",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

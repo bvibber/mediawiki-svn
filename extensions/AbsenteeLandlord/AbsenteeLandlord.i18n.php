@@ -20,6 +20,14 @@ $messages['qqq'] = array(
 	'absenteelandlord-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Bresta
+ */
+$messages['aln'] = array(
+	'absenteelandlord-reason' => 'Baza e të dhânave âsht bllokue automatikisht për shkak të mosaktivitetit të administruesve.',
+	'absenteelandlord-desc' => 'E vetë-bllokon bazën e të dhânave nëse administruesit janë joaktiv për nji kohë të caktueme.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

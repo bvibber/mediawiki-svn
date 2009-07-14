@@ -72,6 +72,15 @@ $messages['ar'] = array(
 	'randomincategory-submit' => 'اذهب',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'randomincategory' => 'ܦܐܬܐ ܚܘܚܬܐ ܒܣܕܪܐ',
+	'randomincategory-label' => 'ܣܕܪܐ:',
+	'randomincategory-submit' => 'ܙܠ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

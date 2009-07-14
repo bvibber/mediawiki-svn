@@ -383,9 +383,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'importusers-log-summary' => 'Περίληψη',
+	'importusers-log-summary-all' => 'Όλα',
 	'importusers-password' => 'κωδικός',
 );
 
@@ -1177,6 +1179,13 @@ $messages['os'] = array(
 	'importusers-uploadfile' => 'Ног файл сæвæр',
 	'importusers-password' => 'пароль',
 	'importusers-email' => 'эл. посты адрис',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'importusers-password' => 'Paesswatt',
 );
 
 /** Plautdietsch (Plautdietsch)

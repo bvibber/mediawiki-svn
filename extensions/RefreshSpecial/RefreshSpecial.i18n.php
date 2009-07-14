@@ -99,6 +99,13 @@ $messages['ar'] = array(
 	'right-refreshspecial' => 'إنعاش الصفحات الخاصة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'refreshspecial-select-all-pages' => 'ܓܒܝ ܟܠ ܦܐܬܬ̈ܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

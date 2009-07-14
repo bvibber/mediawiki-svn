@@ -321,6 +321,13 @@ $messages['te'] = array(
 	'tab0-desc' => 'పేజీ లోని మొదటి భాగాన్ని మార్చడానికి లింకుతో "0" ట్యాబుని చేరుస్తుంది',
 );
 
+/** Thai (ไทย)
+ * @author Harley Hartwell
+ */
+$messages['th'] = array(
+	'tab0-desc' => 'เพิ่มแท็บ "0" เพื่อลิงก์ไปยังแบบฟอร์มแก้ไขย่อหน้าแรกของหน้า',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

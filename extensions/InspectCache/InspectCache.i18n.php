@@ -219,9 +219,11 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'inspectcache-ok' => 'Εντάξει',
+	'inspectcache-list' => 'Λίστα',
 );
 
 /** Esperanto (Esperanto)

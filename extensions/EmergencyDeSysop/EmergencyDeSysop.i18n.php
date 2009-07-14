@@ -187,8 +187,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'emergencydesysop-submit' => 'Υποβολή',
 	'emergencydesysop-nogroups' => 'Κανένα',
 );
 

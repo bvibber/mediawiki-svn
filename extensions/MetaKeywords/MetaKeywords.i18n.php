@@ -267,10 +267,10 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'metakeywords-desc' => 'Permet la configuracion de las balisas <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> per espaci de nom',
 	'metakeywords' => '  # Apondètz de linhas a aquesta pagina jos la forma "espaciDeNoms|lista,de,mots,separats per de virgulas,a,apondre"
- # Los identificators d’espacis de noms (all) e (main) indican respectivament la valor per defaut per totes los espacis de noms e per l’espaci principal numèro 0.',
+  # Los identificators d’espacis de noms (all) e (main) indican respectivament la valor per defaut per totes los espacis de noms e per l’espaci principal numèro 0.',
 	'metadescription' => '  # Apondètz de linhas a aquesta pagina jos la forma "espaciDeNoms|Libellat de descripcion de definir"
- # Los identificators d’espacis de noms (all) e (main) indican respectivament la valor per defaut per totes los espacis de noms e per l’espaci principal numèro 0.
- # Totas las occurréncias de $1 seràn remplaçadas pel títol de la pagina actuala.',
+  # Los identificators d’espacis de noms (all) e (main) indican respectivament la valor per defaut per totes los espacis de noms e per l’espaci principal numèro 0.
+  # Totas las occurréncias de $1 seràn remplaçadas pel títol de la pagina actuala.',
 );
 
 /** Polish (Polski)

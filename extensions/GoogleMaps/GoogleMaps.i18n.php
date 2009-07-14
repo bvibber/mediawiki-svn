@@ -807,6 +807,7 @@ $wgGoogleMapsMessages['ch'] = array(
  * @author Matěj Grabovský
  */
 $wgGoogleMapsMessages['cs'] = array(
+	'gm-desc' => 'Snadné vytváření map s wiki značkami',
 	'gm-incompatible-browser' => 'Abyste mohli vidět mapu, které patří do této oblasti, museli byste použít <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatibilní webový prohlížeč</a>.',
 	'gm-incompatible-browser-link' => 'Kliknutím sem zobrazíte seznam kompatibilních prohlížečů.',
 	'gm-no-editor' => 'Bohužel váš webový prohlížeč nepodporuje interaktivní možnosti tvorby map. Zkuste nějnovější verzi prohlížeče <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) nebo <a href="http://www.mozilla.org/products/firefox">Mozilla Firefox</a> (Windows, Mac a Linux).',
@@ -1822,7 +1823,7 @@ $wgGoogleMapsMessages['gl'] = array(
 Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) ou o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac e Linux).',
 	'gm-balloon-title' => 'Título:',
 	'gm-balloon-link-article' => 'Ligazón a este artigo (opcional):',
-	'gm-make-marker' => 'Pé de foto (notación wiki OK):',
+	'gm-make-marker' => 'Pé de foto (formato wiki OK):',
 	'gm-remove' => 'borrar',
 	'gm-caption' => 'Pé de foto',
 	'gm-tab-title' => 'Título da lapela',
@@ -3675,8 +3676,10 @@ Subukan me ing pekabayung bersion ning <a href="http://www.microsoft.com/ie">Int
  * @author Xqt
  */
 $wgGoogleMapsMessages['pdc'] = array(
+	'gm-height' => 'Heeh',
 	'gm-zoom-control' => 'Faahre-Gnepp',
 	'gm-yes' => 'Ya',
+	'gm-no' => 'Nee',
 );
 
 /** Polish (Polski)

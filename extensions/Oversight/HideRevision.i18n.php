@@ -1216,6 +1216,7 @@ Os elementos eliminados non serán visíbeis para calquera persoa que visite a p
  */
 $messages['grc'] = array(
 	'group-oversight-member' => 'παρόραμα',
+	'hiderevision-continue' => 'Συνεχίζειν',
 	'oversight' => 'παρόραμα',
 	'oversight-view' => 'λεπτομέρειαι',
 	'oversight-oversighter' => 'Παρόραμα:',
@@ -2249,7 +2250,7 @@ $messages['mk'] = array(
 	'oversight-hidden' => 'Скриена ревизија',
 	'oversight-header' => 'Следи листа на ревизии кои биле трајно сокриени од јавноста.
 Оддавањето на овие информации може да резултира со губење на надгледувачките привилегии.',
-	'oversight-legend' => 'Пребарување низ дневникот на скриени промени',
+	'oversight-legend' => 'Пребарување низ дневникот на скриени ревизија',
 	'oversight-oversighter' => 'Надгледувач:',
 	'oversight-offender' => 'Прекршител:',
 );
@@ -2486,7 +2487,8 @@ teruggezet worden door databasebeheerders als u een fout maakt.",
 	'hiderevision-status' => 'Versie $1: $2',
 	'hiderevision-success' => 'Archiveren en verwijderen uitgevoerd.',
 	'hiderevision-error-missing' => 'Niet gevonden in database.',
-	'hiderevision-error-current' => 'De laatste bewerkin van een pagina kan niet verwijderd worden. Draai de bewerking eerst terug.',
+	'hiderevision-error-current' => 'De laatste bewerking van een pagina kan niet verwijderd worden.
+Draai de bewerking eerst terug.',
 	'hiderevision-error-delete' => 'Archiveren mislukt; waren de gegevens al verwijderd?',
 	'hiderevision-archive-status' => 'Verwijderde versie van $1: $2',
 	'oversight-nodiff' => 'Niet in staat om de wijzigingen weer te geven omdat er geen eerdere versie van de pagina aanwezig is, omdat:
@@ -2690,7 +2692,7 @@ Usunięte elementy nie będą widoczne dla nikogo na stronach serwisu. Wszystkie
 	'hiderevision-reason' => 'Powód (nie będzie widoczny publicznie)',
 	'hiderevision-submit' => 'Trwale ukryj te dane',
 	'hiderevision-tab' => 'Ukryj tę wersję',
-	'hiderevision-link' => 'Ukryty wkład użytkownika',
+	'hiderevision-link' => 'ukryty wkład użytkownika',
 	'hiderevision-norevisions' => 'Nie określono wersji do usunięcia',
 	'hiderevision-noreason' => 'Musisz wpisać powód usunięcia.',
 	'hiderevision-status' => 'Wersja $1: $2',

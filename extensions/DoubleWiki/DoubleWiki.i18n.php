@@ -264,6 +264,13 @@ $messages['jv'] = array(
 	'doublewiki-desc' => 'Nuduhaké sawijining kaca lan pretalané saka wiki liya ing rong kolom ing kaca sing padha',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'doublewiki-desc' => 'აჩვენეთ სტატია და მისი თარგმანი სხვა ვიკიდან ორი ტაბულის სახით',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

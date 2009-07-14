@@ -20,6 +20,15 @@ $messages['qqq'] = array(
 	'advancedrandom-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Bresta
+ */
+$messages['aln'] = array(
+	'advancedrandom' => 'Kërkim i detajshëm i rastësishëm',
+	'advancedrandom-desc' => 'Gjej nji faqe të rastësishme prej çfarëdo hapësine, diskutimi apo tema e të cilit lidhet me faqen e dhânë.
+Mundet me u përdorë si [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] për me gjetë nji artikull të rastit të diskutimit, apo si [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] për me gjetë nji skedë GFDL',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

@@ -40,6 +40,11 @@ $messages['cs'] = array(
 	'clientside-desc' => 'Poskytuje funkce pro generování kódu v klientských formátech, jako jsou HTML, CSS a JavaScript',
 );
 
+/** German (Deutsch) */
+$messages['de'] = array(
+	'clientside-desc' => 'Stellt Funktionen zur Erzeugung von Code in clientseitigen Formaten wie HTML, CSS und JavaScript bereit',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -178,6 +183,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'clientside-desc' => 'Poskytuje funkcie na tvorbu kódu v klientských formátoch ako HTML, CSS a JavaScript',
+);
+
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'clientside-desc' => 'క్లయింట్ వైపు వాడే హెచ్టిఎంఎల్, జావాస్క్రిప్ట్, సిఎసెస్ వంటి సాప్టువేరుకి కోడుని తయ్యరు చేసే ఫంక్షనులను చూపిస్తుంది',
 );
 
 /** Turkish (Türkçe)

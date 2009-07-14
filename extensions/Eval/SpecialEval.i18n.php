@@ -151,6 +151,15 @@ $messages['es'] = array(
 	'eval_code' => 'Código',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'eval' => 'Ebaluatu',
+	'eval_submit' => 'Ebaluatu',
+	'eval_code' => 'Kodea',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

@@ -241,6 +241,13 @@ $messages['jv'] = array(
 	'skinperpage-desc' => 'Tambahna tag <tt>&lt;skin&gt;</tt> kanggo nganggo kulit-kulit sing séjé-séjé per kaca',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'skinperpage-desc' => 'მატებს თეგ <tt>&lt;skin&gt;</tt> გვერდის გაფორმების მისათითებლად',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

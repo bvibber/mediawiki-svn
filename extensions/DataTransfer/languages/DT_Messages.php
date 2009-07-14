@@ -365,6 +365,8 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'dt_viewxml_categories' => 'Κατηγορίες',
+	'dt_viewxml_namespaces' => 'Περιοχές ονομάτων',
+	'dt_xml_namespace' => 'Περιοχή ονομάτων',
 	'dt_xml_page' => 'Σελίδα',
 	'dt_xml_template' => 'Πρότυπο',
 	'dt_xml_field' => 'Πεδίο',

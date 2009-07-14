@@ -143,6 +143,13 @@ $messages['es'] = array(
 	'right-forcepreviewexempt' => 'Puede grabar sin usar Mostrar prevista',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'forcepreview' => 'Orrialdea gorde (aurretik aurreikuspena ikusiz)',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

@@ -444,6 +444,14 @@ $messages['jv'] = array(
 	'sitenotice-desc' => 'Marengaké para panganggo nutup wara-wara situs',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'sitenotice_close' => 'დამალვა',
+	'sitenotice-desc' => 'აძლევს მომხმარებლებს ნებართვას დამალონ საიტის შეტყობინება',
+);
+
 /** Kara-Kalpak (Qaraqalpaqsha)
  * @author Atabek
  */

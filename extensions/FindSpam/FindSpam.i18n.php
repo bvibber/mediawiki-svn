@@ -163,6 +163,7 @@ $messages['cs'] = array(
 	'findspam-ip' => 'IP adresa:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nebyly nalezeny žádné editace',
+	'right-findspam' => 'Hledat nedávno přidaný spam',
 );
 
 /** Danish (Dansk)
