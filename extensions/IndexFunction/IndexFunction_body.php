@@ -182,7 +182,7 @@ class IndexFunction {
 	}
 
 	// When creating an article, delete its title from the index table
-	static function onCreate( &$article, &$user, &$text, &$summary, &$minoredit, &$watchthis, &$sectionanchor, &$flags, &$revision ) {
+	static function onCreate( &$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision ) {
 		$t = $article->mTitle;
 		$ns = $t->getNamespace();
 		$dbkey = $t->getDBkey();
