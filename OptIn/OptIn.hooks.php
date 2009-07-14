@@ -20,41 +20,41 @@ class OptInHooks {
 	}
 	
 	public static function personalUrls( &$personal_urls, &$title ) {
-		global $wgUser;
-		global $wgOptInAlwaysShowPersonalLink, $wgOptInNeverShowPersonalLink;
+		global $wgUser, $wgOptInAlwaysShowPersonalLink;
+		global $wgOptInNeverShowPersonalLink;
 		
-		// Checks if...
-		if (
-			// This should be shown because...
-			(
-				// The user is opted in
-				SpecialOptIn::isOptedIn( $wgUser ) ||
-				// Or the link should always be shown
-				$wgOptInAlwaysShowPersonalLink
-			) &&
-			// And the link is allowed to be shown
-			!$wgOptInNeverShowPersonalLink &&
-			// We're not at the OptIn page
-			current( explode( '/', $title->getText() ) ) !== SpecialPage::getLocalNameFor( 'OptIn' )
-		) {
-			// Loads opt-in messages
-			wfLoadExtensionMessages( 'OptIn' );
-			// Inserts a link into personal tools
-			$personal_urls = array_merge(
-				array(
-					'acaibeta' => array(
-						'text' => SpecialOptIn::isOptedIn( $wgUser ) ?
-									wfMsg( 'optin-leave' ) :
-									wfMsg( 'optin-try' ),
-						'href' => SpecialPage::getTitleFor(
-							'UsabilityInitiativeOptIn', $title->getFullText()
-						)->getLocalUrl(),
-						'class' => 'no-text-transform'
-					)
-				),
-				$personal_urls
-			);
-		}
+		if ( $wgOptInNeverShowPersonalLink ||
+				( !SpecialOptIn::isOptedIn( $wgUser ) &&
+				!$wgOptInAlwaysShowPersonalLink ) )
+			// Don't show the link
+			return true;
+		
+		// Loads opt-in messages
+		wfLoadExtensionMessages( 'OptIn' );
+		
+		// Make sure we don't create links that return to
+		// Special:UsabilityOptIn itself
+		$titleParts = explode( '/', $title->getText() );
+		if ( $titleParts[0] == SpecialPage::getLocalNameFor( 'OptIn' ) )
+			$link = $title->getLocalUrl();
+		else
+			$link = SpecialPage::getTitleFor(
+					'OptIn', $title->getFullText()
+				)->getLocalUrl();
+		
+		// Inserts a link into personal tools
+		$personal_urls = array_merge(
+			array(
+				'acaibeta' => array(
+					'text' => SpecialOptIn::isOptedIn( $wgUser ) ?
+						wfMsg( 'optin-leave' ) :
+						wfMsg( 'optin-try' ),
+					'href' => $link,
+					'class' => 'no-text-transform'
+				)
+			),
+			$personal_urls
+		);
 		return true;
 	}
 }
