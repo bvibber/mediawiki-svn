@@ -33,6 +33,8 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efIndexUpdateSchema';
 
 # Setup the special page
 $wgSpecialPages['Index'] = 'SpecialIndex';
+$wgSpecialPageGroups['Index'] = 'maintenance';
+$wgExtensionAliasesFiles['IndexFunction'] = $dir . 'IndexFunction.alias.php';
 $wgAutoloadClasses['SpecialIndex'] = $dir . 'SpecialIndex.php';
 
 $wgExtensionMessagesFiles['IndexFunction'] = $dir . 'IndexFunction.i18n.php';
