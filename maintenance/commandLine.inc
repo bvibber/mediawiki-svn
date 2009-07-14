@@ -116,14 +116,15 @@ if (!isset( $wgUseNormalUser ) ) {
 	$wgUseNormalUser = false;
 }
 
-if ( file_exists( dirname(__FILE__).'/wikimedia-mode' ) ) {
+// Fixme: replace this hack with general farm-friendly code
+if ( file_exists( "$IP/wmf-config/wikimedia-mode" ) ) {
 	$wgWikiFarm = true;
 	$cluster = 'pmtpa';
 	require_once( "$IP/includes/AutoLoader.php" );
 	require_once( "$IP/includes/SiteConfiguration.php" );
 
 	# Get $wgConf
-	require( "$IP/wgConf.php" );
+	require( "$IP/wmf-config/wgConf.php" );
 
 	if ( empty( $wgNoDBParam ) ) {
 		# Check if we were passed a db name
@@ -170,7 +171,7 @@ if ( file_exists( dirname(__FILE__).'/wikimedia-mode' ) ) {
 	
 	#require_once( $IP.'/includes/ProfilerStub.php' );
 	require( $IP.'/includes/Defines.php' );
-	require( $IP.'/CommonSettings.php' );
+	require( $IP.'/wmf-config/CommonSettings.php' );
 	if ( !$wgUseNormalUser ) {
 		require( $IP.'/AdminSettings.php' );
 	}
