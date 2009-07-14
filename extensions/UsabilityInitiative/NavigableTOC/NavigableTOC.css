@@ -1,0 +1,5 @@
+/* CSS for NavigableTOC extension */
+
+.currentSection {
+	color: red !important;
+}

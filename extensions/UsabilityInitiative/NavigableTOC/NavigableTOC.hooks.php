@@ -19,8 +19,12 @@ class NavigableTOCHooks {
 		global $wgEnableParserCache;
 
 		// Adds script to document
+		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript(
 			'NavigableTOC/NavigableTOC.js', $wgNavigableTOCStyleVersion
+		);
+		UsabilityInitiativeHooks::addStyle(
+			'NavigableTOC/NavigableTOC.css', $wgNavigableTOCStyleVersion
 		);
 
 		// Try the parser cache first
