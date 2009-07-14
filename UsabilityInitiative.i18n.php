@@ -126,7 +126,7 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'usabilityinitiative' => 'Iniziativa di usabilità',
-	'usabilityinitiative-desc' => "Caratteristiche sviluppate dall'Iniziativa di usabilità Wikipedia per migliorare l'usabilità di MediaWiki",
+	'usabilityinitiative-desc' => "Caratteristiche sviluppate dall'Iniziativa di usabilità di Wikipedia per migliorare l'usabilità di MediaWiki",
 );
 
 /** Japanese (日本語)
@@ -135,6 +135,14 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'usabilityinitiative' => 'ユーザビリティ・イニシアティブ',
 	'usabilityinitiative-desc' => 'ウィキペディア・ユーザビリティ・イニシアティブによって MediaWiki の使いやすさを向上させるために開発された各種機能',
+);
+
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'usabilityinitiative' => 'шгяфишдшЕшы штшсшфешмф',
+	'usabilityinitiative-desc' => 'MediaWiki ძრავის შესაძლებლობები, რომლებიც შეიქმნა ვიკიპედიის იუზაბილითი ინიციატივის ფარგლებში და რომლის მიზანია გამოყენების გამარტივება.',
 );
 
 /** Ripoarisch (Ripoarisch)
