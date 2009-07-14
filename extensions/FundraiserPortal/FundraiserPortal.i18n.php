@@ -13,6 +13,6 @@ $messages = array();
  */
 $messages['en'] = array(
 	'fundraiserportal' => 'Fundraiser Portal',
-	'fundraiserportal-desc' => 'Adds a please donate portal to the top of the sidebar.',
+	'fundraiserportal-desc' => 'Adds a "please donate" portal to the top of the sidebar.',
 	'fundraiserportal-donate' => 'Support Wikipedia!'
 );
