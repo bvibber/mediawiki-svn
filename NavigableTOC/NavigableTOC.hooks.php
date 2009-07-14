@@ -79,6 +79,8 @@ class NavigableTOCHooks {
 		} else {
 			$sectionTree = $p_result->getSections();
 			$toc = $p_result->getTOCHTML();
+			if ( !$toc )
+				$toc = $wgUser->getSkin()->generateTOC( $sectionTree );
 		}
 
 		$js = "\$.section = '" . Xml::escapeJsString( $ep->section ) . "';";
