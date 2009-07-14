@@ -12,11 +12,17 @@ class SpecialOptIn extends SpecialPage {
 	
 	private $mOrigin = '';
 	private $mOriginTitle = null;
+	private $mOriginQuery = '';
+	private $mOriginLink = '';
+	private $mOriginURL = '';
 	
 	/* Static Functions */
 	
 	public static function isOptedIn( $user ) {
 		global $wgOptInPrefs;
+		
+		if ( $user->isAnon() )
+			return false;
 		
 		foreach ( $wgOptInPrefs as $pref => $value ) {
 			if ( $user->getOption( $pref ) != $value ) {
@@ -54,9 +60,17 @@ class SpecialOptIn extends SpecialPage {
 	public function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
 		
+		$par = $wgRequest->getVal( 'from', $par );
 		$this->mOriginTitle = Title::newFromText( $par );
-		if ( $this->mOriginTitle )
-			$this->mOrigin = $this->mOriginTitle->getPrefixedText();
+		if ( $this->mOriginTitle ) {
+			$this->mOrigin = $this->mOriginTitle->getPrefixedDBKey();
+			$this->mOriginQuery = $wgRequest->getVal( 'fromquery' );
+			$this->mOriginLink = $wgUser->getSkin()->link(
+				$this->mOriginTitle, null, array(),
+				$this->mOriginQuery );
+			$this->mOriginURL = $this->mOriginTitle->getFullURL(
+				$this->mOriginQuery );
+		}
 		$this->setHeaders();
 		
 		if ( self::isOptedIn( $wgUser ) ) {
@@ -73,37 +87,22 @@ class SpecialOptIn extends SpecialPage {
 				// Just opted in
 				$wgOut->setPageTitle( wfMsg( 'optin-title-justoptedin' ) );
 			else
+				// About to opt in
 				$wgOut->setPageTitle( wfMsg( 'optin-title-optedout' ) );
-		}
-
-		if ( $wgUser->isAnon() ) {
-			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
-				array(
-					'returnto' => $this->getTitle( $par )->getPrefixedUrl()
-				)
-			);
-			$wgOut->wrapWikiMsg(
-				"<div class='plainlinks'>\n$1\n</div>",
-				array( 'optin-needlogin', $url )
-			);
-			return;
 		}
 
 		if ( $wgRequest->getCheck( 'opt' ) ) {
 			if ( $wgRequest->getVal( 'opt' ) === 'in' ) {
 				self::optIn( $wgUser );
 				$wgOut->addWikiMsg( 'optin-success-in' );
-				if ( $this->mOriginTitle )
-					$wgOut->addWikiMsg( 'optin-success-return',
-						$this->mOriginTitle->getPrefixedText() );
 			} else {
 				self::optOut( $wgUser );
 				$this->saveSurvey();
 				$wgOut->addWikiMsg( 'optin-success-out' );
-				if ( $this->mOriginTitle )
-					$wgOut->addWikiMsg( 'optin-success-return',
-						$this->mOriginTitle->getPrefixedText() );
 			}
+			if ( $this->mOriginTitle )
+				$wgOut->addHTML( wfMsg( 'returnto',
+					$this->mOriginLink ) );
 		}
 		else
 			$this->showForm();
@@ -118,8 +117,8 @@ class SpecialOptIn extends SpecialPage {
 		if ( $opt == 'out' ) {
 			$wgOut->addWikiMsg( 'optin-survey-intro' );
 			if ( $this->mOriginTitle )
-				$wgOut->addWikiMsg( 'optin-leave-cancel',
-					$this->mOriginTitle->getPrefixedText() );
+				$wgOut->addHTML( wfMsg( 'optin-leave-cancel',
+					$this->mOriginLink ) );
 			$this->showSurvey();
 		}
 		else
@@ -134,11 +133,24 @@ class SpecialOptIn extends SpecialPage {
 	}
 	
 	function showOptInButtons() {
-		global $wgOut, $wgOptInStyleVersion;
+		global $wgUser, $wgOut, $wgOptInStyleVersion;
 		
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addStyle( 'OptIn/OptIn.css',
 				$wgOptInStyleVersion );
+		
+		$query = array(	'opt' => 'in',
+				'from' => $this->mOrigin,
+				'fromquery' => $this->mOriginQuery
+		);
+		if ( $wgUser->isLoggedIn() )
+			$url = $this->getTitle()->getFullURL( $query );
+		else
+			$url = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
+				array(	'returnto' => $this->getTitle(),
+					'returntoquery' => wfArrayToCGI( $query )
+				) );
+		
 		$wgOut->addHTML(
 			Xml::tags( 'div', array( 'class' => 'optin-accept' ),
 				Xml::tags( 'div', array(),
@@ -147,11 +159,7 @@ class SpecialOptIn extends SpecialPage {
 				Xml::tags( 'div', array(),
 					Xml::tags(
 						'a',
-						array(
-							'href' => $this->getTitle(
-								$this->mOrigin
-							)->getFullURL( 'opt=in' )
-						),
+						array( 'href' => $url ),
 						Xml::element( 'span',
 							array( 'class' => 'optin-button-shorttext' ),
 							wfMsg( 'optin-accept-short' )
@@ -159,13 +167,15 @@ class SpecialOptIn extends SpecialPage {
 						Xml::element( 'br' ) .
 						Xml::element( 'span',
 							array( 'class' => 'optin-button-longtext' ),
-							wfMsg( 'optin-accept-long' )
+							$wgUser->isLoggedIn() ?
+							wfMsg( 'optin-accept-long' ) :
+							wfMsg( 'optin-accept-long-anon' )
 						)
 					)
 				) ) ) )
 			)
 		);
-		if ( $this->mOriginTitle instanceof Title ) {
+		if ( $this->mOriginTitle ) {
 			$wgOut->addHTML(
 				Xml::tags( 'div', array( 'class' => 'optin-deny' ),
 					Xml::tags( 'div', array(),
@@ -175,7 +185,7 @@ class SpecialOptIn extends SpecialPage {
 						Xml::tags(
 							'a',
 							array(
-								'href' => $this->mOriginTitle->getFullURL()
+								'href' => $this->mOriginURL
 							),
 							Xml::element( 'span',
 								array( 'class' => 'optin-button-shorttext' ),
@@ -207,10 +217,13 @@ class SpecialOptIn extends SpecialPage {
 		UsabilityInitiativeHooks::addStyle( 'OptIn/OptIn.css',
 				$wgOptInStyleVersion );
 		
+		$query = array(	'from' => $this->mOrigin,
+				'fromquery' => $this->mOriginQuery
+		);
 		$retval = Xml::openElement(
 			'form', array(
 				'method' => 'post',
-				'action' => $this->getTitle( $this->mOrigin )->getLinkURL(),
+				'action' => $this->getTitle()->getLinkURL( $query ),
 				'id' => 'optin-survey',
 			)
 		);

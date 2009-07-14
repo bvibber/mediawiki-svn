@@ -21,7 +21,7 @@ class OptInHooks {
 	
 	public static function personalUrls( &$personal_urls, &$title ) {
 		global $wgUser, $wgOptInAlwaysShowPersonalLink;
-		global $wgOptInNeverShowPersonalLink;
+		global $wgOptInNeverShowPersonalLink, $wgRequest;
 		
 		if ( $wgOptInNeverShowPersonalLink ||
 				( !SpecialOptIn::isOptedIn( $wgUser ) &&
@@ -32,15 +32,18 @@ class OptInHooks {
 		// Loads opt-in messages
 		wfLoadExtensionMessages( 'OptIn' );
 		
+		$fromquery = $wgRequest->data;
+		unset( $fromquery['title'] );
+		$query = array(	'from' => $title->getPrefixedDBKey(),
+				'fromquery' => wfArrayToCGI( $fromquery )
+		);
 		// Make sure we don't create links that return to
 		// Special:UsabilityOptIn itself
-		$titleParts = explode( '/', $title->getText() );
-		if ( $titleParts[0] == SpecialPage::getLocalNameFor( 'OptIn' ) )
-			$link = $title->getLocalUrl();
-		else
-			$link = SpecialPage::getTitleFor(
-					'OptIn', $title->getFullText()
-				)->getLocalUrl();
+		if ( $title->equals( SpecialPage::getTitleFor( 'OptIn' ) ) ) {
+			$query['from'] = $wgRequest->getVal( 'from' );
+			$query['fromquery'] = $wgRequest->getVal( 'fromquery' );
+		}
+		$link = SpecialPage::getTitleFor( 'OptIn' )->getFullURL( $query );
 		
 		// Inserts a link into personal tools
 		$personal_urls = array_merge(
