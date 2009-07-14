@@ -30,7 +30,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'FundraiserPortal',
 	'author' => 'Trevor Parscal',
 	'version' => '0.1.1',
-	'url' => 'http://www.mediawiki.org/wiki/FundraiserPortal',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:FundraiserPortal',
 	'descriptionmsg' => 'fundraiserportal-desc',
 );
 
