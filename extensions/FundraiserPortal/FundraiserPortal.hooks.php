@@ -23,6 +23,8 @@ class FundraiserPortalHooks {
 		
 		wfLoadExtensionMessages( 'FundraiserPortal' );
 		
+		// Define CSS to make portal fit in with the 3 SkinTemplate based
+		// skins used on our projects
 		$css = <<<CSS
 /* Monobook Style */
 body.skin-monobook div#p-DONATE h5 {
@@ -30,6 +32,19 @@ body.skin-monobook div#p-DONATE h5 {
 }
 body.skin-monobook div#p-DONATE div.pBody a {
 	display: block;
+	margin: 0.5em;
+	margin-bottom: 0.25em;
+}
+/* Modern Style */
+body.skin-modern div#p-DONATE {
+	padding-top: 0.25em;
+}
+body.skin-modern div#p-DONATE h5 {
+	display: none;
+}
+body.skin-modern div#p-DONATE div.pBody a {
+	display: block;
+	padding: 0;
 	margin: 0.5em;
 	margin-bottom: 0.25em;
 }
