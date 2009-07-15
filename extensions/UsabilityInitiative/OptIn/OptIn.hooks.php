@@ -32,7 +32,7 @@ class OptInHooks {
 		// Loads opt-in messages
 		wfLoadExtensionMessages( 'OptIn' );
 		
-		$fromquery = $wgRequest->data;
+		$fromquery = $wgRequest->getValues();
 		unset( $fromquery['title'] );
 		$query = array(	'from' => $title->getPrefixedDBKey(),
 				'fromquery' => wfArrayToCGI( $fromquery )
@@ -46,18 +46,29 @@ class OptInHooks {
 		$link = SpecialPage::getTitleFor( 'OptIn' )->getFullURL( $query );
 		
 		// Inserts a link into personal tools
-		$personal_urls = array_merge(
-			array(
-				'acaibeta' => array(
-					'text' => SpecialOptIn::isOptedIn( $wgUser ) ?
-						wfMsg( 'optin-leave' ) :
-						wfMsg( 'optin-try' ),
-					'href' => $link,
-					'class' => 'no-text-transform'
-				)
-			),
-			$personal_urls
+		$addLinks = array(
+			'acaibeta' => array(
+				'text' => SpecialOptIn::isOptedIn( $wgUser ) ?
+					wfMsg( 'optin-leave' ) :
+					wfMsg( 'optin-try' ),
+				'href' => $link,
+				'class' => 'no-text-transform'
+			)
 		);
+		
+		// For opted-in users, add a feedback link
+		if ( SpecialOptIn::isOptedIn( $wgUser ) ) {
+			$query['opt'] = 'feedback';
+			$link = SpecialPage::getTitleFor( 'OptIn' )->getFullURL( $query );
+			$addLinks['betafeedback'] = array(
+				'text' => wfMsg( 'optin-feedback' ),
+				'href' => $link,
+				'class' => 'no-text-transform'
+			);
+		}
+		
+		// Add the links
+		$personal_urls = array_merge( $addLinks, $personal_urls ); 
 		return true;
 	}
 }

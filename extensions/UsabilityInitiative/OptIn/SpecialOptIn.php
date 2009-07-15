@@ -58,7 +58,8 @@ class SpecialOptIn extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgRequest, $wgOut, $wgUser;
+		global $wgRequest, $wgOut, $wgUser, $wgOptInSurvey;
+		global $wgOptInFeedBackSurvey;
 		
 		$par = $wgRequest->getVal( 'from', $par );
 		$this->mOriginTitle = Title::newFromText( $par );
@@ -77,6 +78,9 @@ class SpecialOptIn extends SpecialPage {
 			if ( $wgRequest->getVal( 'opt' ) == 'out' )
 				// Just opted out
 				$wgOut->setPageTitle( wfMsg( 'optin-title-justoptedout' ) );
+			else if ( $wgRequest->getVal( 'opt' ) == 'feedback' )
+				// Giving feedback
+				$wgOut->setPageTitle( wfMsg( 'optin-title-feedback' ) );
 			else
 				// About to opt out
 				$wgOut->setPageTitle( wfMsg( 'optin-title-optedin' ) );
@@ -95,9 +99,16 @@ class SpecialOptIn extends SpecialPage {
 			if ( $wgRequest->getVal( 'opt' ) === 'in' ) {
 				self::optIn( $wgUser );
 				$wgOut->addWikiMsg( 'optin-success-in' );
+			} else if ( $wgRequest->getVal( 'opt' ) == 'feedback' ) {
+				if ( $wgRequest->wasPosted() ) {
+					$this->saveSurvey( $wgOptInFeedBackSurvey,
+						'feedback' );
+					$wgOut->addWikiMsg( 'optin-success-feedback' );
+				} else
+					$this->showForm( 'feedback' );
 			} else {
 				self::optOut( $wgUser );
-				$this->saveSurvey();
+				$this->saveSurvey( $wgOptInSurvey, 'out' );
 				$wgOut->addWikiMsg( 'optin-success-out' );
 			}
 			if ( $this->mOriginTitle )
@@ -105,24 +116,30 @@ class SpecialOptIn extends SpecialPage {
 					$this->mOriginLink ) );
 		}
 		else
-			$this->showForm();
+			$this->showForm( self::isOptedIn( $wgUser ) ?
+				'out' : 'in' );
 	}
 	
 	/* Private Functions */
 
-	private function showForm() {
-		global $wgUser, $wgOut;
+	private function showForm( $opt ) {
+		global $wgUser, $wgOut, $wgOptInSurvey, $wgOptInFeedBackSurvey;
 		
-		$opt = ( self::isOptedIn( $wgUser ) ? 'out' : 'in' );
 		if ( $opt == 'out' ) {
 			$wgOut->addWikiMsg( 'optin-survey-intro' );
 			if ( $this->mOriginTitle )
 				$wgOut->addHTML( wfMsg( 'optin-leave-cancel',
 					$this->mOriginLink ) );
-			$this->showSurvey();
-		}
-		else
-		{
+			$this->showSurvey( $wgOptInSurvey,
+				'optin-submit-out', 'out' );
+		} else if ( $opt == 'feedback' ) {
+			$wgOut->addWikiMsg( 'optin-feedback-intro' );
+			if ( $this->mOriginTitle )
+				$wgOut->addHTML( wfMsg( 'optin-feedback-back',
+					$this->mOriginLink ) );
+			$this->showSurvey( $wgOptInFeedBackSurvey,
+				'optin-submit-feedback', 'feedback', true );
+		} else {
 			$wgOut->wrapWikiMsg(
 				"<div class='optin-intro'>\n$1\n</div>",
 				array( 'optin-intro' )
@@ -208,14 +225,29 @@ class SpecialOptIn extends SpecialPage {
 		);
 	}
 
-	private function showSurvey() {
-		global $wgOptInSurvey, $wgOut, $wgOptInStyleVersion;
+	private function showSurvey( $survey, $submitMsg, $opt, $loadFromDB = false ) {
+		global $wgUser, $wgOut, $wgOptInStyleVersion;
 		
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'OptIn/OptIn.js',
 			$wgOptInStyleVersion );
 		UsabilityInitiativeHooks::addStyle( 'OptIn/OptIn.css',
 				$wgOptInStyleVersion );
+		
+		$loaded = array();
+		if ( $loadFromDB ) {
+			$dbr = wfGetDb( DB_SLAVE );
+			$res = $dbr->select( 'optin_survey', array(
+				'ois_question',
+				'ois_answer',
+				'ois_answer_data' ), array(
+				'ois_user' => $wgUser->getID(),
+				'ois_type' => $opt ), __METHOD__ );
+			foreach( $res as $row )
+				$loaded[$row->ois_question] = array(
+					$row->ois_answer, $row->ois_answer_data
+				);
+		}
 		
 		$query = array(	'from' => $this->mOrigin,
 				'fromquery' => $this->mOriginQuery
@@ -227,9 +259,12 @@ class SpecialOptIn extends SpecialPage {
 				'id' => 'optin-survey',
 			)
 		);
-		$retval .= Xml::hidden( 'opt', 'out' );
+		$retval .= Xml::hidden( 'opt', $opt );
 		$retval .= Xml::openElement( 'dl' );
-		foreach ( $wgOptInSurvey as $id => $question ) {
+		foreach ( $survey as $id => $question ) {
+			$answer = isset( $loaded[$id] ) ? $loaded[$id][0] : null;
+			$answerdata = isset( $loaded[$id] )
+				? $loaded[$id][1] : null;
 			switch ( $question['type'] ) {
 			case 'dropdown':
 				$retval .= Xml::tags(
@@ -245,11 +280,14 @@ class SpecialOptIn extends SpecialPage {
 				$retval .= Xml::openElement( 'select', $attrs );
 				$retval .= Xml::option( '', '' );
 				foreach ( $question['answers'] as $aid => $answer ) {
-					$retval .= Xml::option(	wfMsg( $answer ), $aid );
+					$retval .= Xml::option(
+						wfMsg( $answer ), $aid,
+						$answer === $aid );
 				}
 				if ( isset( $question['other'] ) ) {
 					$retval .= Xml::option(
-						wfMsg( $question['other'] ), 'other'
+						wfMsg( $question['other'] ),
+						'other', $answer === 'other'
 					);
 				}
 				$retval .= Xml::closeElement( 'select' );
@@ -258,7 +296,8 @@ class SpecialOptIn extends SpecialPage {
 						Xml::input(
 							"survey-$id-other",
 							false,
-							false,
+							$answer === 'other' ?
+							$answerdata : false,
 							array(
 								'class' => 'optin-other-select',
 								'id' => "survey-$id-other"
@@ -276,7 +315,9 @@ class SpecialOptIn extends SpecialPage {
 				$radios = array();
 				foreach ( $question['answers'] as $aid => $answer ) {
 					$radios[] = Xml::radioLabel(
-						wfMsg( $answer ), "survey-$id", $aid, "survey-$id-$aid"
+						wfMsg( $answer ), "survey-$id",
+						$aid, "survey-$id-$aid",
+						$answer === $aid
 					);
 				}
 				if ( isset( $question['other'] ) ) {
@@ -284,13 +325,15 @@ class SpecialOptIn extends SpecialPage {
 						wfMsg( $question['other'] ),
 						"survey-$id",
 						'other',
-						"survey-$id-other-radio"
+						"survey-$id-other-radio",
+						$answer === 'other'
 					) .
 					'&nbsp;' .
 					Xml::input(
 						"survey-$id-other",
 						false,
-						false,
+						$answer === 'other' ?
+						$answerdata : false,
 						array( 'class' => 'optin-other-radios' )
 					);
 				}
@@ -298,6 +341,7 @@ class SpecialOptIn extends SpecialPage {
 				$retval .= Xml::closeElement( 'dd' );
 			break;
 			case 'checkboxes':
+				$answers = explode( ',', $answer );
 				$retval .= Xml::tags(
 					'dt', null, wfMsgWikiHtml( $question['question'] )
 				);
@@ -308,7 +352,7 @@ class SpecialOptIn extends SpecialPage {
 						wfMsg( $answer ),
 						"survey-{$id}[]",
 						"survey-$id-$aid",
-						false,
+						in_array( $aid, $answers, true ),
 						array( 'value' => $aid )
 					);
 				}
@@ -317,14 +361,15 @@ class SpecialOptIn extends SpecialPage {
 						wfMsg( $question['other'] ),
 						"survey-{$id}[]",
 						"survey-$id-other-check",
-						false,
+						in_array( 'other', $answers, true ),
 						array( 'value' => 'other' )
 					) .
 					'&nbsp;' .
 					Xml::input(
 						"survey-$id-other",
 						false,
-						false,
+						in_array( 'other', $answers, true ) ?
+						$answerdata : false,
 						array( 'class' => 'optin-other-checks' )
 					);
 				}
@@ -341,7 +386,7 @@ class SpecialOptIn extends SpecialPage {
 					"survey-$id",
 					'yes',
 					"survey-$id-yes",
-					false,
+					$answer === 'yes',
 					array( 'class' => 'survey-yes' )
 				);
 				$retval .= Xml::element( 'br' );
@@ -350,7 +395,7 @@ class SpecialOptIn extends SpecialPage {
 					"survey-$id",
 					'no',
 					"survey-$id-no",
-					false,
+					$answer === 'no',
 					array( 'class' => 'survey-no' )
 				);
 				$retval .= Xml::closeElement( 'dd' );
@@ -365,7 +410,10 @@ class SpecialOptIn extends SpecialPage {
 						'dt', null, wfMsgWikiHtml( $question['ifyes'] )
 					);
 					$retval .= Xml::tags(
-						'dd', null, Xml::textarea( "survey-$id-ifyes", '' )
+						'dd', null, Xml::textarea(
+							"survey-$id-ifyes",
+							$answerdata ?
+							$answerdata : '' )
 					);
 					$retval .= Xml::closeElement( 'blockquote' );
 				}
@@ -373,19 +421,26 @@ class SpecialOptIn extends SpecialPage {
 					$retval .= Xml::openElement(
 						'blockquote', array(
 							'id' => "survey-$id-ifno-row",
-							'class' => 'survey-ifyes',
+							'class' => 'survey-ifno',
 						)
 					);
 					$retval .= Xml::tags(
 						'dt', null, wfMsgWikiHtml( $question['ifno'] )
 					);
 					$retval .= Xml::tags(
-						'dd', null, Xml::textarea( "survey-$id-ifno", '' )
+						'dd', null, Xml::textarea(
+							"survey-$id-ifno",
+							$answerdata ?
+							$answerdata : '' )
 					);
 					$retval .= Xml::closeElement( 'blockquote' );
 				}
 			break;
 			case 'resolution':
+				if ( $answerdata )
+					list( $x, $y ) = explode( 'x', $answerdata );
+				else
+					$x = $y = false;
 				$retval .= Xml::tags(
 					'dt', null, wfMsgWikiHtml( $question['question'] )
 				);
@@ -393,7 +448,7 @@ class SpecialOptIn extends SpecialPage {
 				$retval .= Xml::input(
 					"survey-$id-x",
 					5,
-					false,
+					$x,
 					array(
 						'class' => 'optin-resolution-x',
 						'id' => "survey-$id-x",
@@ -403,7 +458,7 @@ class SpecialOptIn extends SpecialPage {
 				$retval .= Xml::input(
 					"survey-$id-y",
 					5,
-					false,
+					$y,
 					array(
 						'class' => 'optin-resolution-y',
 						'id' => "survey-$id-y",
@@ -416,7 +471,8 @@ class SpecialOptIn extends SpecialPage {
 					'dt', null, wfMsgWikiHtml( $question['question'] )
 				);
 				$retval .= Xml::tags(
-					'dd', null, Xml::textarea( "survey-$id", '' )
+					'dd', null, Xml::textarea( "survey-$id",
+						$answerdata ? $answerdata : '' )
 				);
 			break;
 			}
@@ -425,22 +481,23 @@ class SpecialOptIn extends SpecialPage {
 			'dt',
 			array( 'class' => 'optin-survey-submit' ),
 			Xml::element( 'a', array( 'id' => 'leave' ), '', false ) .
-				Xml::submitButton( wfMsg( 'optin-submit-out' ) )
+				Xml::submitButton( wfMsg( $submitMsg ) )
 		);
 		$retval .= Xml::closeElement( 'dl' );
 		$retval .= Xml::closeElement( 'form' );
 		$wgOut->addHTML( $retval );
 	}
 
-	private function saveSurvey() {
-		global $wgRequest, $wgUser, $wgOptInSurvey;
+	private function saveSurvey( $survey, $type ) {
+		global $wgRequest, $wgUser;
 		
 		$dbw = wfGetDb( DB_MASTER );
 		$now = $dbw->timestamp( wfTimestamp() );
-		foreach ( $wgOptInSurvey as $id => $question ) {
+		foreach ( $survey as $id => $question ) {
 			$insert = array(
 				'ois_user' => $wgUser->getId(),
 				'ois_timestamp' => $now,
+				'ois_type' => $type,
 				'ois_question' => $id );
 			switch ( $question['type'] ) {
 			case 'dropdown':
@@ -459,9 +516,7 @@ class SpecialOptIn extends SpecialPage {
 				}
 			break;
 			case 'checkboxes':
-				$checked = array_map(
-					'intval', $wgRequest->getArray( "survey-$id", array() )
-				);
+				$checked = $wgRequest->getArray( "survey-$id", array() );
 				$insert['ois_answer'] =
 					( count( $checked ) ? implode( ',', $checked ) : null );
 				$insert['ois_answer_data'] = ( in_array( 'other', $checked ) ?
@@ -473,9 +528,9 @@ class SpecialOptIn extends SpecialPage {
 					$wgRequest->getVal( "survey-$id", null );
 				$data = '';
 				if ( $insert['ois_answer'] == 'yes' )
-					$data += $wgRequest->getVal( "survey-$id-ifyes", '' );
+					$data .= $wgRequest->getVal( "survey-$id-ifyes", '' );
 				if ( $insert['ois_answer'] == 'no' )
-					$data += $wgRequest->getVal( "survey-$id-ifno", '' );
+					$data .= $wgRequest->getVal( "survey-$id-ifno", '' );
 				$insert['ois_answer_data'] = ( $data ? $data : null );
 			break;
 			case 'resolution':
