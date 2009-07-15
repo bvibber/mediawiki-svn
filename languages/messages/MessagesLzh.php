@@ -9,6 +9,7 @@
  *
  * @author Itsmine
  * @author Omnipaedista
+ * @author Shinjiman
  */
 
 /**
@@ -239,6 +240,9 @@ $messages = array(
 'vector-view-history'        => '覽史',
 'vector-view-view'           => '閱',
 'vector-view-viewsource'     => '覽源',
+'actions'                    => '動',
+'namespaces'                 => '名集',
+'variants'                   => '變字',
 
 # Metadata in edit box
 'metadata_help' => '衍意：',
@@ -297,6 +301,11 @@ $messages = array(
 'jumpto'            => '往：',
 'jumptonavigation'  => '嚮',
 'jumptosearch'      => '尋',
+'view-pool-error'   => '歉也，伺服器超負矣。
+多簿查頁。
+欲試候之。
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '述{{SITENAME}}',
@@ -395,6 +404,7 @@ MySQL報有誤"$3: $4"',
 'missingarticle-diff'  => '（異：$1，$2）',
 'internalerror'        => '家誤',
 'internalerror_info'   => '家誤：$1',
+'fileappenderror'      => '無附$1至$2也',
 'filecopyerror'        => '"$1"謄"$2"，未可為也。',
 'filerenameerror'      => '"$2"替"$1"名，未可為也。',
 'filedeleteerror'      => '"$1"未可刪也。',
@@ -513,24 +523,25 @@ $2',
 'resetpass-temp-password'   => '臨符節:',
 
 # Edit page toolbar
-'bold_sample'     => '粗體',
-'bold_tip'        => '粗體',
-'italic_sample'   => '斜體',
-'italic_tip'      => '斜體',
-'link_sample'     => '鏈',
-'link_tip'        => '鏈內',
-'extlink_sample'  => 'http://www.example.com 鍵 題',
-'extlink_tip'     => '冠http://以鏈外',
-'headline_sample' => '題',
-'headline_tip'    => '二題',
-'math_sample'     => '此書方程式',
-'math_tip'        => '數學方程式（LaTeX）',
-'nowiki_sample'   => '此不排版',
-'nowiki_tip'      => '不排維基之版',
-'image_tip'       => '嵌檔',
-'media_tip'       => '鏈檔',
-'sig_tip'         => '署名刻時',
-'hr_tip'          => '縱線，慎用之',
+'bold_sample'      => '粗體',
+'bold_tip'         => '粗體',
+'italic_sample'    => '斜體',
+'italic_tip'       => '斜體',
+'link_sample'      => '鏈',
+'link_tip'         => '鏈內',
+'extlink_sample'   => 'http://www.example.com 鍵 題',
+'extlink_tip'      => '冠http://以鏈外',
+'headline_sample'  => '題',
+'headline_tip'     => '二題',
+'math_sample'      => '此書方程式',
+'math_tip'         => '數學方程式（LaTeX）',
+'nowiki_sample'    => '此不排版',
+'nowiki_tip'       => '不排維基之版',
+'image_tip'        => '嵌檔',
+'media_tip'        => '鏈檔',
+'sig_tip'          => '署名刻時',
+'hr_tip'           => '縱線，慎用之',
+'add_media_wizard' => '加媒導',
 
 # Edit pages
 'summary'                          => '概:',
@@ -631,9 +642,9 @@ $2',
 'permissionserrorstext'            => '子權未逮，有{{PLURAL:$1|因|因}}如下：',
 'permissionserrorstext-withaction' => '子權未逮，有{{PLURAL:$1|因|因}}如$2：',
 'recreate-moveddeleted-warn'       => "'''留意：刪文復造，惠慎纂。'''
-誌刪如下：",
+誌刪遷如下：",
 'moveddeleted-notice'              => '此頁刪矣。
-此頁之誌參留之。',
+此頁之誌刪遷參留之。',
 'log-fulllog'                      => '閱誌全',
 'edit-hook-aborted'                => '鈎纂消矣。
 無解也。',
@@ -888,7 +899,7 @@ $1",
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|查此首之頁]]',
 'searchprofile-articles'           => '容',
 'searchprofile-project'            => '助題',
-'searchprofile-images'             => '檔',
+'searchprofile-images'             => '媒',
 'searchprofile-everything'         => '全',
 'searchprofile-advanced'           => '進',
 'searchprofile-articles-tooltip'   => '在$1中尋',
@@ -1278,6 +1289,10 @@ $1",
 誌刪如下：",
 'filename-bad-prefix'        => "獻檔以'''「$1」'''首，常由相機瞎造，惠更述之。",
 
+'upload-too-many-redirects' => '網址含多轉',
+'upload-unknown-size'       => '未知之積',
+'upload-http-error'         => '發一HTTP之錯：$1',
+
 'license-nopreview' => '（謝草覽）',
 
 # Special:ListFiles
@@ -1319,7 +1334,7 @@ $1",
 'nolinkstoimage'            => '無頁連本檔也。',
 'morelinkstoimage'          => '閱檔[[Special:WhatLinksHere/$1|接]]。',
 'redirectstofile'           => '下檔轉到此檔有$1：',
-'duplicatesoffile'          => '下檔重此檔有$1：',
+'duplicatesoffile'          => '下檔重此檔有$1（[[Special:FileDuplicateSearch/$2|詳]]）：',
 'sharedupload'              => '此檔為$1之共傳，可另項用也。',
 'sharedupload-desc-there'   => '此檔為$1之共傳，可另項用也。
 詳閱[$2 檔述]。',
@@ -1406,7 +1421,8 @@ $1",
 'disambiguations-text' => '頁下引[[MediaWiki:Disambiguationspage]]模，求釋義，宜正題之。',
 
 'doubleredirects'            => '窮渡',
-'doubleredirectstext'        => '頁下窮渡，迭列以示。首尾宿合，宜正渡之。',
+'doubleredirectstext'        => '頁下窮渡，迭列以示。首尾宿合，宜正渡之。
+<s>劃</s>已解之。',
 'double-redirect-fixed-move' => '[[$1]]遷畢，現渡至[[$2]]',
 'double-redirect-fixer'      => '修渡',
 
@@ -1511,7 +1527,7 @@ $1",
 
 # Special:Categories
 'categories'                    => '類',
-'categoriespagetext'            => '大典有頁或媒。
+'categoriespagetext'            => '大典{{PLURAL:$1|類中}}有頁或媒。
 [[Special:UnusedCategories|未類]]無示之。
 閱[[Special:WantedCategories|需類]]也。',
 'categoriesfrom'                => '示此項起之類：',
@@ -1719,7 +1735,7 @@ $NEWPAGE
 'protect-locked-dblock'       => "庫鎖，'''$1'''緘昔如下：",
 'protect-locked-access'       => "未准，'''$1'''緘昔如下：",
 'protect-cascadeon'           => '取佐緘焉，迭牽此頁；{{PLURAL:$1|此|此}}頁啟篋，無反累焉。',
-'protect-default'             => '（慣）',
+'protect-default'             => '允全簿',
 'protect-fallback'            => "須''$1''准",
 'protect-level-autoconfirmed' => '禁無簿',
 'protect-level-sysop'         => '惟有秩',
@@ -2034,15 +2050,18 @@ $1已被禁矣。爾是否改此置？',
 'export-templates'  => '含模',
 
 # Namespace 8 related
-'allmessages'               => '官話',
-'allmessagesname'           => '話',
-'allmessagesdefault'        => '慣話文',
-'allmessagescurrent'        => '今話文',
-'allmessagestext'           => '此列MediaWiki官話。
+'allmessages'                   => '官話',
+'allmessagesname'               => '話',
+'allmessagesdefault'            => '慣話文',
+'allmessagescurrent'            => '今話文',
+'allmessagestext'               => '此列MediaWiki官話。
 如貢正宗MediaWiki本地化，[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]與[http://translatewiki.net translatewiki.net]閱之。',
-'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages'''閉庫，'''無纂也。",
-'allmessagesfilter'         => '含辭：',
-'allmessagesmodified'       => '見易',
+'allmessagesnotsupportedDB'     => "'''\$wgUseDatabaseMessages'''閉庫，'''無纂也。",
+'allmessages-filter'            => '以易濾：',
+'allmessages-filter-unmodified' => '無易',
+'allmessages-filter-all'        => '全',
+'allmessages-filter-modified'   => '有易',
+'allmessages-prefix'            => '以前綴濾：',
 
 # Thumbnails
 'thumbnail-more'           => '展',
@@ -2275,7 +2294,7 @@ $1已被禁矣。爾是否改此置？',
 
 # Media information
 'mediawarning'         => "'''警'''日：此檔疑惡，行之恐諜也。<hr />",
-'imagemaxsize'         => '述檔頁惟列：',
+'imagemaxsize'         => "述檔頁惟列：<br />''（用於檔）''",
 'thumbsize'            => '縮圖幅',
 'widthheight'          => '$1矩$2',
 'widthheightpage'      => '$1矩$2，共$3頁',

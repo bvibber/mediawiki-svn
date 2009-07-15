@@ -494,6 +494,9 @@ $messages = array(
 'vector-view-history'        => 'הצגת היסטוריה',
 'vector-view-view'           => 'קריאה',
 'vector-view-viewsource'     => 'הצגת מקור',
+'actions'                    => 'פעולות',
+'namespaces'                 => 'מרחבי שם',
+'variants'                   => 'גרסאות שפה',
 
 # Metadata in edit box
 'metadata_help' => 'מטא־דטה:',
@@ -552,6 +555,11 @@ $messages = array(
 'jumpto'            => 'קפיצה אל:',
 'jumptonavigation'  => 'ניווט',
 'jumptosearch'      => 'חיפוש',
+'view-pool-error'   => 'מצטערים, השרתים עמוסים כרגע.
+יותר מדי משתמשים מנסים לצפות בדף זה.
+אנא המתינו זמן מה לפני שתנסו שנית לצפות בדף.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'אודות {{SITENAME}}',

@@ -445,6 +445,8 @@ $messages = array(
 'vector-view-history'        => '역사',
 'vector-view-view'           => '읽기',
 'vector-view-viewsource'     => '내용 보기',
+'actions'                    => '행위',
+'namespaces'                 => '이름공간',
 
 # Metadata in edit box
 'metadata_help' => '메타데이터:',
@@ -1532,7 +1534,7 @@ $1",
 'filetype-badmime'            => '‘$1’ MIME을 가진 파일은 올릴 수 없습니다.',
 'filetype-bad-ie-mime'        => '인터넷 익스플로러가 잠재적으로 위험한 파일 형식으로 판단되어 사용이 금지된 "$1"로 인식할 수 있기 때문에 이 파일을 올릴 수 없습니다.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' 확장자는 추천하지 않습니다. 추천하는 {{PLURAL:\$3|파일 확장자}}는 \$2입니다.",
-'filetype-banned-type'        => "‘'''.$1'''’ 확장자는 올릴 수 없습니다. $2 {{PLURAL:$3|확장자|확장자}}만이 사용 가능합니다.",
+'filetype-banned-type'        => "{{plural:$3}}‘'''.$1'''’ 형식의 파일은 올릴 수 없습니다. $2 형식만 사용할 수 있습니다.",
 'filetype-missing'            => '파일에 확장자(‘.jpg’ 등)가 없습니다.',
 'large-file'                  => '파일 크기는 $1을 넘지 않는 것을 추천합니다. 이 파일의 크기는 $2입니다.',
 'largefileserver'             => '이 파일의 크기가 서버에서 허용된 설정보다 큽니다.',
@@ -1556,7 +1558,7 @@ $1",
 그래도 파일을 올리시려면, 뒤로 돌아가서 다른 이름으로 시도해 주시기 바랍니다. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => '같은 이름의 파일이 이미 위키미디어 공용에 있습니다.
 파일을 업로드하길 원하신다면 뒤로 돌아가서 다른 이름으로 시도해 주시기 바랍니다. [[File:$1|thumb|center|$1]]',
-'file-exists-duplicate'       => '현재 올리고 있는 파일이 아래 {{PLURAL:$1|파일|파일}}과 중복됩니다:',
+'file-exists-duplicate'       => '{{PLURAL:$1}}현재 올리고 있는 파일이 아래 파일과 중복됩니다:',
 'file-deleted-duplicate'      => '이 파일과 같은 파일 ([[$1]])이 이전에 삭제된 적이 있습니다. 파일을 다시 올리기 전에 문서의 삭제 기록을 확인해 주시기 바랍니다.',
 'successfulupload'            => '올리기 성공',
 'uploadwarning'               => '올리기 경고',
@@ -1862,7 +1864,7 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 
 # Special:Categories
 'categories'                    => '분류',
-'categoriespagetext'            => '문서나 자료를 담고 있는 {{PLURAL:$1|분류|분류}} 목록입니다.
+'categoriespagetext'            => '{{PLURAL:$1}}문서나 자료를 담고 있는 분류 목록입니다.
 [[Special:UnusedCategories|사용되지 않는 분류]]는 여기에 보이지 않습니다.
 [[Special:WantedCategories|필요한 분류]]도 참고하세요.',
 'categoriesfrom'                => '다음으로 시작하는 분류들을 보여주기:',
@@ -1891,7 +1893,10 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'listusers-blocked'  => '(차단됨)',
 
 # Special:ActiveUsers
-'activeusers-count' => '{{PLURAL:$1|$1}}개의 최근 편집',
+'activeusers'          => '활동 중인 사용자 목록',
+'activeusers-count'    => '{{PLURAL:$1|$1}}개의 최근 편집',
+'activeusers-from'     => '다음으로 시작하는 사용자를 보기:',
+'activeusers-noresult' => '사용자가 없습니다.',
 
 # Special:Log/newusers
 'newuserlogpage'              => '사용자 등록 기록',
@@ -1911,7 +1916,7 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'listgrouprights-rights'               => '권한',
 'listgrouprights-helppage'             => 'Help:사용자 권한 그룹',
 'listgrouprights-members'              => '(사용자 목록)',
-'listgrouprights-addgroup'             => '{{PLURAL:$2|권한|권한}}을 부여: $1',
+'listgrouprights-addgroup'             => '{{PLURAL:$2}}권한 부여: $1',
 'listgrouprights-removegroup'          => '{{PLURAL:$2|권한}}을 회수: $1',
 'listgrouprights-addgroup-all'         => '모든 권한을 부여',
 'listgrouprights-removegroup-all'      => '모든 권한을 회수',
@@ -2431,7 +2436,7 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'allmessagesname'           => '이름',
 'allmessagesdefault'        => '기본 내용',
 'allmessagescurrent'        => '현재 내용',
-'allmessagestext'           => '미디어위키 이름공간에 있는 모든 시스템 메시지의 목록입니다. 미디어위키의 번역 작업에 관심이 있으시다면 [http://www.mediawiki.org/wiki/Localisation 미디어위키 지역화]나 [http://translatewiki.net 베타위키]에 참가해주세요.',
+'allmessagestext'           => '미디어위키 이름공간에 있는 모든 시스템 메시지의 목록입니다. 미디어위키의 번역 작업에 관심이 있으면 [http://www.mediawiki.org/wiki/Localisation 미디어위키 지역화]나 [http://translatewiki.net 베타위키]에 참가해주세요.',
 'allmessagesnotsupportedDB' => "'''\$wgUseDatabaseMessages'''가 해제되어 있어서 이 문서는 쓸 수 없습니다.",
 'allmessagesfilter'         => '다음 메시지만 보이기:',
 'allmessagesmodified'       => '변경된 것만 보여주기',
@@ -2609,6 +2614,7 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'skinname-chick'       => '치크',
 'skinname-simple'      => '심플',
 'skinname-modern'      => '모던',
+'skinname-vector'      => '벡터',
 
 # Math options
 'mw_math_png'    => '항상 PNG로 표시',

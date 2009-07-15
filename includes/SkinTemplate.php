@@ -110,9 +110,21 @@ class SkinTemplate extends Skin {
 	 */
 	function setupSkinUserCss( OutputPage $out ){
 		$out->addStyle( 'common/shared.css', 'screen' );
-		$out->addStyle( 'common/commonPrint.css', 'print' );	
+		$out->addStyle( 'common/commonPrint.css', 'print' );
 	}
-	
+	/* add specific javascript the base Skin class */
+	function setupSkinUserJs( OutputPage $out ){
+		global $wgUseSiteJs;
+		//use site js:
+		if( $wgUseSiteJs ) {
+			$jsCache = $this->loggedin ? '&smaxage=0' : '';
+			$siteGenScriptFile =  self::makeUrl( '-',
+					"action=raw$jsCache&gen=js&useskin=" .
+						urlencode( $this->getSkinName() ) ) ;
+			$this->jsvarurl = $siteGenScriptFile;
+		}
+	}
+
 	/**
 	 * Create the template engine object; we feed it a bunch of data
 	 * and eventually it spits out some HTML. Should have interface
@@ -164,6 +176,9 @@ class SkinTemplate extends Skin {
 		wfProfileIn( __METHOD__ . '-stuff' );
 		$this->thispage = $this->mTitle->getPrefixedDBkey();
 		$this->thisurl = $this->mTitle->getPrefixedURL();
+		$query = $wgRequest->getValues();
+		unset( $query['title'] );
+		$this->thisquery = wfUrlencode( wfArrayToCGI( $query ) );
 		$this->loggedin = $wgUser->isLoggedIn();
 		$this->iscontent = ( $this->mTitle->getNamespace() != NS_SPECIAL );
 		$this->iseditable = ( $this->iscontent and !( $action == 'edit' or $action == 'submit' ) );
@@ -242,7 +257,9 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'jsmimetype', $wgJsMimeType );
 		$tpl->setRef( 'charset', $wgOutputEncoding );
 		$tpl->set( 'headlinks', $out->getHeadLinks() );
-		$tpl->set( 'headscripts', $out->getScript() );
+
+		//moved headscripts to near end of template header output
+
 		$tpl->set( 'csslinks', $out->buildCssLinks() );
 		$tpl->setRef( 'wgScript', $wgScript );
 		$tpl->setRef( 'skinname', $this->skinname );
@@ -324,6 +341,7 @@ class SkinTemplate extends Skin {
 				$out->setSquidMaxage( 0 );
 			}
 		} else if( count( $newtalks ) ) {
+			// _>" " for BC <= 1.16
 			$sep = str_replace( '_', ' ', wfMsgHtml( 'newtalkseparator' ) );
 			$msgs = array();
 			foreach( $newtalks as $newtalk ) {
@@ -463,6 +481,9 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'sidebar', $this->buildSidebar() );
 		$tpl->set( 'nav_urls', $this->buildNavUrls() );
 
+		//set the head script near the end (in case above actions result in adding scripts)
+		$tpl->set( 'headscripts', $out->getScript() );
+
 		// original version by hansm
 		if( !wfRunHooks( 'SkinTemplateOutputPageBeforeExec', array( &$this, &$tpl ) ) ) {
 			wfDebug( __METHOD__ . ": Hook SkinTemplateOutputPageBeforeExec broke outputPage execution!\n" );
@@ -561,7 +582,7 @@ class SkinTemplate extends Skin {
 			$personal_urls['logout'] = array(
 				'text' => wfMsg( 'userlogout' ),
 				'href' => self::makeSpecialUrl( 'Userlogout',
-					$title->isSpecial( 'Preferences' ) ? '' : "returnto={$this->thisurl}"
+					$title->isSpecial( 'Preferences' ) ? '' : "returnto={$this->thisurl}&returntoquery={$this->thisquery}"
 				),
 				'active' => false
 			);
@@ -588,18 +609,18 @@ class SkinTemplate extends Skin {
 				);
 				$personal_urls['anonlogin'] = array(
 					'text' => wfMsg( $loginlink ),
-					'href' => self::makeSpecialUrl( 'Userlogin', 'returnto=' . $this->thisurl ),
+					'href' => self::makeSpecialUrl( 'Userlogin', "returnto={$this->thisurl}&returntoquery={$this->thisquery}" ),
 					'active' => $title->isSpecial( 'Userlogin' )
 				);
 			} else {
 				$personal_urls['login'] = array(
 					'text' => wfMsg( $loginlink ),
-					'href' => self::makeSpecialUrl( 'Userlogin', 'returnto=' . $this->thisurl ),
+					'href' => self::makeSpecialUrl( 'Userlogin', "returnto={$this->thisurl}&returntoquery={$this->thisquery}" ),
 					'active' => $title->isSpecial( 'Userlogin' )
 				);
 			}
 		}
-		
+
 		wfRunHooks( 'PersonalUrls', array( &$personal_urls, &$title ) );
 		wfProfileOut( __METHOD__ );
 		return $personal_urls;
@@ -706,16 +727,16 @@ class SkinTemplate extends Skin {
 					'href' => $this->mTitle->getLocalUrl( $this->editUrlOptions() )
 				);
 
-				// adds new section link if page is a current revision of a talk page or 
+				// adds new section link if page is a current revision of a talk page or
 				if ( ( $wgArticle && $wgArticle->isCurrent() && $istalk ) || $wgOut->showNewSectionLink() ) {
 					if ( !$wgOut->forceHideNewSectionLink() ) {
 						$content_actions['addsection'] = array(
 							'class' => $section == 'new' ? 'selected' : false,
 							'text' => wfMsg( 'addsection' ),
 							'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
-						);					
+						);
 					}
-				}  
+				}
 			} elseif ( $this->mTitle->isKnown() ) {
 				$content_actions['viewsource'] = array(
 					'class' => ($action == 'edit') ? 'selected' : false,
@@ -988,7 +1009,6 @@ class SkinTemplate extends Skin {
 	 */
 	function setupUserJs( $allowUserJs ) {
 		global $wgRequest, $wgJsMimeType;
-
 		wfProfileIn( __METHOD__ );
 
 		$action = $wgRequest->getVal( 'action', 'view' );
@@ -1016,6 +1036,10 @@ class SkinTemplate extends Skin {
 		wfRunHooks( 'SkinTemplateSetupPageCss', array( &$out ) );
 		wfProfileOut( __METHOD__ );
 		return $out;
+	}
+
+	public function commonPrintStylesheet() {
+		return false;
 	}
 }
 

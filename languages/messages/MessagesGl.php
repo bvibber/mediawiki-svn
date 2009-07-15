@@ -371,6 +371,9 @@ $messages = array(
 'vector-view-history'        => 'Ver o historial',
 'vector-view-view'           => 'Ler',
 'vector-view-viewsource'     => 'Ver o código fonte',
+'actions'                    => 'Accións',
+'namespaces'                 => 'Espazos de nomes',
+'variants'                   => 'Variantes',
 
 # Metadata in edit box
 'metadata_help' => 'Metadatos:',
@@ -429,6 +432,11 @@ $messages = array(
 'jumpto'            => 'Ir a:',
 'jumptonavigation'  => 'navegación',
 'jumptosearch'      => 'procura',
+'view-pool-error'   => 'Sentímolo, os servidores están sobrecargados nestes intres.
+Hai moitos usuarios intentando ver esta páxina.
+Por favor, agarde un anaco antes de intentar acceder á páxina de novo.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Acerca de {{SITENAME}}',
@@ -647,8 +655,8 @@ continuar a utilizar o seu contrasinal vello.',
 'passwordsent'               => 'Envióuselle un contrasinal novo ao enderezo de correo electrónico rexistrado de "$1".
 Por favor, acceda ao sistema de novo tras recibilo.',
 'blocked-mailpassword'       => 'O seu enderezo IP está bloqueado e ten restrinxida a edición de artigos. Tampouco se lle permite usar a función de recuperación do contrasinal para evitar abusos do sistema.',
-'eauthentsent'               => 'Envióuselle un correo electrónico de configuración ao enderezo mencionado.
-Antes de enviar outro a esta conta terá que seguir as instrucións que aparecen nese correo para confirmar que a conta é realmente súa.',
+'eauthentsent'               => 'Envióuselle un correo electrónico de confirmación ao enderezo mencionado.
+Antes de que se lle envíe calquera outro correo a esta conta terá que seguir as instrucións que aparecen nesa mensaxe para confirmar que a conta é realmente súa.',
 'throttled-mailpassword'     => 'Enviouse un aviso co contrasinal {{PLURAL:$1|na última hora|nas últimas $1 horas}}.
 Para evitar o abuso do sistema só se envía unha mensaxe cada {{PLURAL:$1|hora|$1 horas}}.',
 'mailerror'                  => 'Produciuse un erro ao enviar o correo electrónico: $1',
@@ -893,7 +901,7 @@ Estes argumentos serán omitidos.',
 # "Undo" feature
 'undo-success' => 'A edición pode ser desfeita.
 Por favor, comprobe a comparación que aparece a continuación para confirmar que isto é o que desexa facer, despois, garde os cambios para desfacer a edición.',
-'undo-failure' => 'A edición non pode ser desfeita debido a un conflito con algunha das edicións intermedias.',
+'undo-failure' => 'Non se pode desfacer a edición debido a un conflito con algunha das edicións intermedias.',
 'undo-norev'   => 'A edición non se pode desfacer porque non existe ou foi eliminada.',
 'undo-summary' => 'Desfíxose a edición $1 de [[Special:Contributions/$2|$2]] ([[User talk:$2|conversa]])',
 
@@ -3040,7 +3048,7 @@ para cancelar a confirmación do enderezo de correo electrónico:
 
 $5
 
-Este código de confirmación caducará ás $4.',
+Este código de confirmación caducará o $6 ás $7.',
 'confirmemail_invalidated' => 'A confirmación do enderezo de correo electrónico foi cancelada',
 'invalidateemail'          => 'Cancelar a confirmación do correo electrónico',
 

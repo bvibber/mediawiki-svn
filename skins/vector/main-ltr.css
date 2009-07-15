@@ -1,3 +1,19 @@
+/*
+ * main-rtl.css is automatically generated using CSSJanus, a python script for
+ * creating RTL versions of otherwise LTR stylesheets.
+ * 
+ * You may download the tool to rebuild this stylesheet
+ * http://code.google.com/p/cssjanus/
+ * 
+ * An online version of this tool can be used at:
+ * http://cssjanus.commoner.com/
+ * 
+ * The following command is used to generate the RTL version of this file
+ * ./cssjanus.py --swap_ltr_rtl_in_url < main-ltr.css > main-rtl.css 
+ *
+ * Any rules which should not be flipped should be prepended with @noflip in
+ * a comment block.
+ */
 /* Framework */
 html,
 body {
@@ -5,16 +21,17 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	font-size: small;
+	font-size: 9.75pt;
 }
 body {
+	background-color: #f3f3f3;
 	background-image: url(images/page-base.png);
 }
 /* Content */
 div#content {
 	margin-left: 12em;
 	padding: 1em;
-	background-image: url(images/content-base.png);
+	background-image: url(images/border.png);
 	background-position: top left;
 	background-repeat: repeat-y;
 	background-color: white;
@@ -31,7 +48,7 @@ div#head-base {
 	margin-top: -6em;
 	margin-left: 12em;
 	height: 6em;
-	background-image: url(images/head-base.png);
+	background-image: url(images/border.png);
 	background-position: bottom left;
 	background-repeat: repeat-x;
 }
@@ -41,31 +58,34 @@ div#head {
 	right: 0;
 	width: 100%;
 }
-div#head ul,
-div#head li {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
 div#head h5 {
 	margin: 0;
 	padding: 0;
 }
 	/* Personal */
-	div#personal {
+	div#p-personal {
 		position: absolute;
 		top: 0;
 		right: 0.75em;
 	}
-	div#personal h5 {
+	div#p-personal h5 {
 		display: none;
 	}
-	div#personal li {
+	div#p-personal ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	/* @noflip */
+	div#p-personal li {
 		float: left;
+	}
+	div#p-personal li {
 		margin-left: 0.75em;
 		margin-top: 0.5em;
 		font-size: 0.9em;
 	}
+	/* Navigation Containers */
 	div#left-navigation {
 		position: absolute;
 		left: 12em;
@@ -76,49 +96,55 @@ div#head h5 {
 		margin-top: 3em;
 	}
 	/* Navigation Labels */
-	div#namespaces h5,
-	div#variants h5,
-	div#views h5,
-	div#actions h5 span,
-	div#search h5 {
+	div.vectorTabs h5,
+	div.vectorMenu h5 span {
 		display: none;
 	}
 	/* Namespaces and Views */
-	div#namespaces,
-	div#views {
+	/* @noflip */
+	div.vectorTabs {
 		float: left;
+	}
+	div.vectorTabs {
 		background-image: url(images/tab-break.png);
 		background-position: bottom left;
 		background-repeat: no-repeat;
 		padding-left: 1px;
 	}
-	div#namespaces ul,
-	div#views ul {
+	/* @noflip */
+	div.vectorTabs ul {
 		float: left;
+	}
+	div.vectorTabs ul {
 		height: 100%;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	/* @noflip */
+	div.vectorTabs ul li {
+		float: left;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div#namespaces ul li,
-	div#views ul li {
+	div.vectorTabs ul li {
 		display: inline-block;
-		float: left;
 		height: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: #f3f3f3;
 		background-image: url(images/tab-normal-fade.png);
 		background-position: bottom left;
 		background-repeat: repeat-x;
 	}
 	/* IGNORED BY IE6 */
-	div#namespaces ul > li,
-	div#views ul > li {
+	div.vectorTabs ul > li {
 		display: block;
 	}
-	div#namespaces li.selected,
-	div#views li.selected {
+	div.vectorTabs li.selected {
 		background-image: url(images/tab-current-fade.png);
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div#namespaces li a,
-	div#views li a {
+	div.vectorTabs li a {
 		display: inline-block;
 		height: 3em;
 		padding-left: 0.5em;
@@ -127,50 +153,58 @@ div#head h5 {
 		background-position: bottom right;
 		background-repeat: no-repeat;
 	}
-	/* IGNORED BY IE6 */
-	div#namespaces li > a,
-	div#views li > a {
-		display: block;
-	}
-	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div#namespaces a span,
-	div#views a span {
+	div.vectorTabs li a,
+	div.vectorTabs li a span {
 		color: #0645ad;
-		display: inline-block;
-		padding-top: 1.25em;
 		cursor: pointer;
 	}
 	/* IGNORED BY IE6 */
-	div#namespaces a > span,
-	div#views a > span {
+	div.vectorTabs li > a {
+		display: block;
+	}
+	/* OVERRIDDEN BY COMPLIANT BROWSERS */
+	div.vectorTabs a span {
+		display: inline-block;
+		padding-top: 1.25em;
+	}
+	/* IGNORED BY IE6 */
+	/* @noflip */
+	div.vectorTabs a > span {
 		float: left;
 		display: block;
 	}
-	div#namespaces li.selected a span,
-	div#views li.selected a:visited span {
+	div.vectorTabs li.selected a,
+	div.vectorTabs li.selected a span,
+	div.vectorTabs li.selected a:visited
+	div.vectorTabs li.selected a:visited span {
 		color: #333333;
 		cursor: default;
 		text-decoration: none;
 	}
-	div#namespaces li.new a span,
-	div#namespaces li.new a:visited span{
+	div.vectorTabs li.new a,
+	div.vectorTabs li.new a span,
+	div.vectorTabs li.new a:visited,
+	div.vectorTabs li.new a:visited span {
 		color: #a55858;
 	}
 	/* Variants and Actions */
-	div#variants,
-	div#actions {
+	/* @noflip */
+	div.vectorMenu {
+		direction: ltr;
 		float: left;
 		background-image: url(images/arrow-down-icon.png);
 		background-position: center center;
 		background-repeat: no-repeat;
 	}
-	div#variants h5,
-	div#actions h5 {
+	body.rtl div.vectorMenu {
+		direction: rtl;
+	}
+	/* @noflip */
+	div.vectorMenu h5 {
 		float: left;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div#variants h5 a,
-	div#actions h5 a {
+	div.vectorMenu h5 a {
 		display: inline-block;
 		width: 24px;
 		height: 3em;
@@ -180,49 +214,96 @@ div#head h5 {
 		background-repeat: no-repeat;
 	}
 	/* IGNORED BY IE6 */
-	div#variants h5 > a,
-	div#actions h5 > a {
+	div.vectorMenu h5 > a {
 		display: block;
 	}
-	div#variants div.menu,
-	div#actions div.menu {
+	div.vectorMenu div.menu {
+		position: relative;
 		display: none;
 		clear: both;
+		text-align: left;
 	}
-	div#variants:hover div.menu,
-	div#actions:hover div.menu {
+	/* OVERRIDDEN BY COMPLIANT BROWSERS */
+	body.rtl div.vectorMenu div.menu {
+		margin-right: 24px;
+	}
+	/* IGNORED BY IE6 */
+	body.rtl div.vectorMenu > div.menu {
+		margin-right: auto;
+	}
+	/* Fixes old versions of FireFox */
+	body.rtl div.vectorMenu > div.menu,
+	x:-moz-any-link {
+		margin-right: 24px;
+	}
+	div.vectorMenu:hover div.menu {
 		display: block;
 	}
-	div#variants ul,
-	div#actions ul {
+	div.vectorMenu ul {
 		position: absolute;
 		background-color: white;
 		border: solid 1px silver;
 		border-top-width: 0;
+		list-style: none;
 		padding: 0;
 		margin: 0;
 		margin-left: -1px;
+		text-align: left;
+	}
+	/* Fixes old versions of FireFox */
+	div.vectorMenu ul,
+	x:-moz-any-link {
+		min-width: 6em;
+	}
+	/* Returns things back to normal in modern versions of FireFox */
+	div.vectorMenu ul,
+	x:-moz-any-link,
+	x:default {
+		min-width: 0;
+	}
+	div.vectorMenu li {
+		padding: 0;
+		margin: 0;
+		text-align: left;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div#variants:hover li a,
-	div#actions li a {
+	div.vectorMenu li a {
 		display: inline-block;
 		padding: 0.5em;
 	}
 	/* IGNORED BY IE6 */
-	div#variants:hover li > a,
-	div#actions li > a {
+	div.vectorMenu li > a {
 		display: block;
 	}
 	/* Search */
-	div#search {
-		float: left;
-		margin-right: 0.75em;
+	div#p-search h5 {
+		display: none;
 	}
-	div#search form,
-	div#search input {
+	/* @noflip */
+	div#p-search {
 		float: left;
+	}
+	div#p-search {
+		margin-right: 0.5em;
+		margin-left: 0.5em;
+	}
+	div#p-search form,
+	div#p-search input {
+		margin: 0;
 		margin-top: 0.4em;
+	}
+	div#p-search div#simpleSearch input#searchInput {
+		margin-top: 0.33em;
+		border: solid 1px #AAAAAA;
+		height: 1.25em;
+		width: 10em;
+		padding: 0.33em;
+		background-image: url(images/search-fade.png);
+		background-repeat: repeat-x;
+		background-position: top left;
+	}
+	div#p-search div#simpleSearch input#searchButton {
+		border: none;
 		margin-left: 0.25em;
 	}
 /* Panel */
@@ -237,7 +318,7 @@ div#panel {
 	}
 	div#panel div.portal h5 {
 		font-weight: normal;
-		color: #666666;
+		color: #444444;
 		padding: 0.5em;
 		padding-top: 0;
 		padding-left: 1.25em;
@@ -276,7 +357,7 @@ div#foot {
 	margin-left: 12em;
 	margin-top: 0;
 	padding: 0.75em;
-	background-image: url(images/foot-base.png);
+	background-image: url(images/border.png);
 	background-position: top left;
 	background-repeat: repeat-x;
 }
@@ -313,14 +394,14 @@ div#foot ul#foot-places li {
 	line-height: 2em;
 }
 /* Logo */
-div#logo {
+div#p-logo {
 	position: absolute;
 	top: 0;
 	left: 0;
 	height: 12em;
 	width: 12em;
 }
-div#logo a {
+div#p-logo a {
 	display: block;
 	width: 12em;
 	height: 12em;
@@ -339,11 +420,11 @@ div#logo a {
 /* Preferences */
 #preftoc {
 	/* Tabs */
+	width: 100%;
 	float: left;
 	clear: both;
 	margin: 0 !important;
 	padding: 0 !important;
-	height: 2.25em;
 	background-image: url(images/preferences-break.png);
 	background-position: bottom left;
 	background-repeat: no-repeat;
@@ -374,6 +455,7 @@ div#logo a {
 		padding: 0.5em;
 		text-decoration: none;
 		background-image: none;
+		font-size: 0.9em;
 	}
 	#preftoc a:hover {
 		text-decoration: underline;
@@ -389,9 +471,9 @@ div#logo a {
 	}
 #preferences {
 	float: left;
-	zoom: 1;
 	width: 100%;
 	margin: 0;
+	margin-top: -2px;
 	clear: both;
 	border: solid 1px #cccccc;
 	background-color: #f9f9f9;
@@ -573,7 +655,7 @@ div#content dd {
 	margin-bottom: .1em;
 }
 /* Tables */
-div#content table {
+table {
 	font-size: 100%;
 	color: black;
 	/* we don't want the bottom borders of <h2>s to be visible through
@@ -633,8 +715,8 @@ div#content select {
 .toc .toctitle {
 	text-align: center;
 }
-#toc ul,
-.toc ul {
+div#content #toc ul,
+div#content .toc ul {
 	list-style-type: none;
 	list-style-image: none;
 	margin-left: 0;
@@ -738,7 +820,7 @@ img.thumbborder {
 #siteNotice {
 	text-align: center;
 	font-size: 95%;
-	padding-top: 0.9em;
+	margin-bottom: 0.9em;
 }
 	#siteNotice p {
 		margin: 0;
@@ -883,3 +965,20 @@ li#pt-login {
 	padding-left: 15px !important;
 	text-transform: none;
 }
+
+span.newpage, span.minor, span.bot {
+	font-weight: bold;
+}
+
+.toccolours {
+	border: 1px solid #aaa;
+	background-color: #f9f9f9;
+	padding: 5px;
+	font-size: 95%;
+}
+
+div#bodyContent {
+	position: relative;
+	width: 100%;
+}
+

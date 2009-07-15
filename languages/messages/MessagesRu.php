@@ -17,6 +17,7 @@
  * @author Ferrer
  * @author Flrn
  * @author HalanTul
+ * @author IAlex
  * @author Illusion
  * @author Innv
  * @author Kaganer
@@ -426,6 +427,9 @@ $messages = array(
 'vector-view-history'        => 'Просмотр истории',
 'vector-view-view'           => 'Чтение',
 'vector-view-viewsource'     => 'Просмотр разметки',
+'actions'                    => 'Действия',
+'namespaces'                 => 'Пространства имён',
+'variants'                   => 'Варианты',
 
 # Metadata in edit box
 'metadata_help' => 'Метаданные:',
@@ -484,6 +488,11 @@ $messages = array(
 'jumpto'            => 'Перейти к:',
 'jumptonavigation'  => 'навигация',
 'jumptosearch'      => 'поиск',
+'view-pool-error'   => 'Извините, сейчас серверы перегружены.
+Поступило слишком много запросов на просмотр этой страницы.
+Пожалуйста, подождите и повторите попытку обращения к странице позже.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Описание {{grammar:genitive|{{SITENAME}}}}',
@@ -828,7 +837,7 @@ $2',
 'noarticletext'                    => "В настоящий момент текст на данной странице отсутствует.
 Вы можете [[Special:Search/{{PAGENAME}}|найти упоминание данного названия]] в других статьях,
 <span class=\"plainlinks\">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} найти соответствующие записи журналов],
-или '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} создать страницу с таким названием]'''.",
+или '''[{{fullurl:{{FULLPAGENAME}}|action=edit}} создать страницу с таким названием]'''</span>.",
 'userpage-userdoesnotexist'        => 'Учётной записи «$1» не существует. Убедитесь, что вы действительно желаете создать или изменить эту страницу.',
 'clearyourcache'                   => "'''Замечание:''' Чтобы после сохранения увидеть сделанные изменения, очистите кеш своего браузера: '''Mozilla / Firefox''': ''Ctrl+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Safari''': ''Cmd+Shift+R'', '''Konqueror''': ''F5'', '''Opera''': через меню ''Tools→Preferences''.",
 'usercssjsyoucanpreview'           => "'''Подсказка.''' Нажмите кнопку «Предварительный просмотр», чтобы проверить ваш новый CSS- или JS-файл перед сохранением.",
@@ -1166,7 +1175,7 @@ $1",
 'shown-title'                      => 'Показывать $1 {{PLURAL:$1|запись|записи|записей}} на странице',
 'viewprevnext'                     => 'Просмотреть ($1) ($2) ($3)',
 'searchmenu-legend'                => 'Настройки поиска',
-'searchmenu-exists'                => "* Страница '''[[$1]]'''",
+'searchmenu-exists'                => "'''В этом вики-проекте есть страница «[[:$1]]»'''",
 'searchmenu-new'                   => "'''Создать страницу «[[$1]]» в этой вики!'''",
 'searchhelp-url'                   => 'Help:Содержание',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Показать страницы с этим префиксом]]',
@@ -2540,7 +2549,7 @@ $1',
 'tooltip-pt-mycontris'            => 'Список ваших правок',
 'tooltip-pt-login'                => 'Здесь можно зарегистрироваться в системе, но это необязательно.',
 'tooltip-pt-anonlogin'            => 'Здесь можно зарегистрироваться в системе, но это необязательно.',
-'tooltip-pt-logout'               => 'Завершить зарегистрированный сеанс',
+'tooltip-pt-logout'               => 'Завершить сеанс работы',
 'tooltip-ca-talk'                 => 'Обсуждение содержания страницы',
 'tooltip-ca-edit'                 => 'Эту страницу можно изменять. Используйте, пожалуйста, предварительный просмотр перед сохранением',
 'tooltip-ca-addsection'           => 'Создать новый раздел',

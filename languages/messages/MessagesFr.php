@@ -489,6 +489,9 @@ $messages = array(
 'vector-view-history'        => 'Afficher l’historique',
 'vector-view-view'           => 'Lire',
 'vector-view-viewsource'     => 'Voir la source',
+'actions'                    => 'Actions',
+'namespaces'                 => 'Espaces de noms',
+'variants'                   => 'Variantes',
 
 # Metadata in edit box
 'metadata_help' => 'Métadonnées :',
@@ -547,6 +550,11 @@ $messages = array(
 'jumpto'            => 'Aller à :',
 'jumptonavigation'  => 'Navigation',
 'jumptosearch'      => 'rechercher',
+'view-pool-error'   => 'Désolé, les serveurs sont surchargés en ce moment.
+Trop d’utilisateurs cherchent à accéder à cette page.
+Veuillez attendre un moment avant que vous essayez d’accéder à cette page.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'À propos de {{SITENAME}}',
@@ -748,7 +756,7 @@ Il doit contenir au moins $1 caractère{{PLURAL:$1||s}}.',
 'mailmypassword'             => 'Recevoir un nouveau mot de passe par courriel',
 'passwordremindertitle'      => 'Nouveau mot de passe temporaire pour {{SITENAME}}',
 'passwordremindertext'       => 'Quelqu’un (probablement vous, ayant l’adresse IP $1) a demandé un nouveau mot de
-passe pour {{SITENAME}} ($4). Un mot de passe temporaire a été créé pour
+passe pour {{SITENAME}} ($4 ). Un mot de passe temporaire a été créé pour
 l’utilisateur « $2 » et est « $3 ». Si cela était votre intention, vous devrez
 vous connecter et choisir un nouveau mot de passe.
 Votre mot de passe temporaire expirera dans $5 jour{{PLURAL:$5||s}}.

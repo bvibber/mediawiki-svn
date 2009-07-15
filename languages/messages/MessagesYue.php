@@ -1,5 +1,5 @@
 <?php
-/** Yue (粵語)
+/** Cantonese (粵語/廣東話)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -313,6 +313,9 @@ $messages = array(
 'vector-view-history'        => '睇吓歷史',
 'vector-view-view'           => '閱',
 'vector-view-viewsource'     => '睇吓原始碼',
+'actions'                    => '動作',
+'namespaces'                 => '空間名',
+'variants'                   => '變換',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata',
@@ -371,6 +374,11 @@ $messages = array(
 'jumpto'            => '跳去:',
 'jumptonavigation'  => '定向',
 'jumptosearch'      => '搵嘢',
+'view-pool-error'   => '對唔住，個伺服器響呢段時間超出咗負荷。
+太多用戶試過去睇呢一版。
+響再睇呢一版之前請等多一陣。
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '關於{{SITENAME}}',
@@ -480,6 +488,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'readonly_lag'         => '當從伺服器追緊主伺服器時，資料庫會自動被鎖',
 'internalerror'        => '內部錯誤',
 'internalerror_info'   => '內部錯誤: $1',
+'fileappenderror'      => '唔可以附加 $1 去 $2',
 'filecopyerror'        => '檔案 "$1" 抄唔到去 "$2"。',
 'filerenameerror'      => '檔案 "$1" 唔改得做 "$2"。',
 'filedeleteerror'      => '檔案 "$1" 唔刪得。',
@@ -612,24 +621,25 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'resetpass-temp-password'   => '臨時密碼:',
 
 # Edit page toolbar
-'bold_sample'     => '粗體字',
-'bold_tip'        => '粗體字',
-'italic_sample'   => '斜體字',
-'italic_tip'      => '斜體字',
-'link_sample'     => '連結標題',
-'link_tip'        => '內部連結',
-'extlink_sample'  => 'http://www.example.com 連結標題',
-'extlink_tip'     => '連出去（記住加 http:// 開頭）',
-'headline_sample' => '標題文字',
-'headline_tip'    => '二級標題',
-'math_sample'     => '喺呢度插入方程式',
-'math_tip'        => '數學方程（LaTeX）',
-'nowiki_sample'   => '喺呢度插入非格式代文字',
-'nowiki_tip'      => '唔理 wiki 格式',
-'image_tip'       => '嵌入檔案',
-'media_tip'       => '檔案連結',
-'sig_tip'         => '你嘅簽名同埋時間戳',
-'hr_tip'          => '橫線（請小心用）',
+'bold_sample'      => '粗體字',
+'bold_tip'         => '粗體字',
+'italic_sample'    => '斜體字',
+'italic_tip'       => '斜體字',
+'link_sample'      => '連結標題',
+'link_tip'         => '內部連結',
+'extlink_sample'   => 'http://www.example.com 連結標題',
+'extlink_tip'      => '連出去（記住加 http:// 開頭）',
+'headline_sample'  => '標題文字',
+'headline_tip'     => '二級標題',
+'math_sample'      => '喺呢度插入方程式',
+'math_tip'         => '數學方程（LaTeX）',
+'nowiki_sample'    => '喺呢度插入非格式代文字',
+'nowiki_tip'       => '唔理 wiki 格式',
+'image_tip'        => '嵌入檔案',
+'media_tip'        => '檔案連結',
+'sig_tip'          => '你嘅簽名同埋時間戳',
+'hr_tip'           => '橫線（請小心用）',
+'add_media_wizard' => '加入媒體精靈',
 
 # Edit pages
 'summary'                          => '摘要:',
@@ -701,7 +711,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'clearyourcache'                   => "'''注意 - 喺儲存之後，你可能要先略過你嘅瀏覽器快取去睇到更改。'''
 '''Mozilla / Firefox / Safari:''' 㩒住''Shift''掣再撳''重新載入''，又或者㩒''Ctrl-F5''或者''Ctrl-R''（喺Macintosh㩒''Command-R''掣）；
 '''Konqueror:''' 就咁以撳個''重載''掣，又或者㩒''F5''；
-'''Opera:'''喺''工具→喜好設定''之中清佢哋嘅快取；
+'''Opera:'''喺''工具→喜好設定''之中清佢哋嘅快取，又或者㩒''Alt-F5''；
 '''Internet Explorer:''' 㩒住''Ctrl''掣再撳''重新整理''，又或者㩒''Ctrl-F5''掣。",
 'usercssjsyoucanpreview'           => "'''提示：'''響儲存前，用「顯示預覽」個掣嚟測試你嘅新CSS/JS。",
 'usercsspreview'                   => "'''請注意你而家只係預覽緊你嘅用戶CSS樣式表。'''
@@ -1466,12 +1476,15 @@ $1",
 為咗方便起見，呢個檔案嘅刪除記錄已經響下面提供:",
 'filename-bad-prefix'         => "你上載嘅檔名係以'''\"\$1\"'''做開頭，通常呢種無含意嘅檔名係響數碼相機度自動編排。請響你個檔案度揀過一個更加有意義嘅檔名。",
 
-'upload-proto-error'      => '唔正確嘅協議',
-'upload-proto-error-text' => '遙遠上載需要一個以 <code>http://</code> 或者 <code>ftp://</code> 作為開頭嘅URL。',
-'upload-file-error'       => '內部錯誤',
-'upload-file-error-text'  => '當響伺服器度建立一個暫存檔時發生咗一個內部錯誤。請聯絡一位[[Special:ListUsers/sysop|管理員]]。',
-'upload-misc-error'       => '未知嘅上載錯誤',
-'upload-misc-error-text'  => '響上載時發生咗未知嘅錯誤。請確認輸入咗嘅URL係可以訪問嘅，之後再試多一次。如果重有問題嘅話，請聯絡一位[[Special:ListUsers/sysop|管理員]]。',
+'upload-proto-error'        => '唔正確嘅協議',
+'upload-proto-error-text'   => '遙遠上載需要一個以 <code>http://</code> 或者 <code>ftp://</code> 作為開頭嘅URL。',
+'upload-file-error'         => '內部錯誤',
+'upload-file-error-text'    => '當響伺服器度建立一個暫存檔時發生咗一個內部錯誤。請聯絡一位[[Special:ListUsers/sysop|管理員]]。',
+'upload-misc-error'         => '未知嘅上載錯誤',
+'upload-misc-error-text'    => '響上載時發生咗未知嘅錯誤。請確認輸入咗嘅URL係可以訪問嘅，之後再試多一次。如果重有問題嘅話，請聯絡一位[[Special:ListUsers/sysop|管理員]]。',
+'upload-too-many-redirects' => '個URL有太多跳轉',
+'upload-unknown-size'       => '未知嘅大細',
+'upload-http-error'         => '一個HTTP錯誤發生咗: $1',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => '唔可以到嗰個URL',
@@ -1616,7 +1629,8 @@ Template:搞清楚',
 'disambiguations-text' => "以下呢啲頁面連結去一個'''搞清楚頁'''。佢哋先至應該指去正確嘅主題。<br />如果一個頁面連結自[[MediaWiki:Disambiguationspage]]，噉就會當佢係搞清楚頁。",
 
 'doubleredirects'            => '雙重跳轉',
-'doubleredirectstext'        => '呢一版列出咗全部跳轉頁跳轉到另一版跳轉頁嘅版。每一行包括指去第一個同第二個跳轉嘅連結，以及第二個跳轉嘅目標。呢行文字通常畀出咗第一個跳轉應該指去嘅嗰個「真正」嘅目標頁面。',
+'doubleredirectstext'        => '呢一版列出咗全部跳轉頁跳轉到另一版跳轉頁嘅版。每一行包括指去第一個同第二個跳轉嘅連結，以及第二個跳轉嘅目標。呢行文字通常畀出咗第一個跳轉應該指去嘅嗰個「真正」嘅目標頁面。
+<s>劃咗</s>嘅項目係已經解決咗嘅。',
 'double-redirect-fixed-move' => '[[$1]]已經搬好咗，佢而家跳轉過去[[$2]]。',
 'double-redirect-fixer'      => '跳轉修正器',
 
@@ -1728,7 +1742,7 @@ Template:搞清楚',
 
 # Special:Categories
 'categories'                    => '類',
-'categoriespagetext'            => '下面嘅類有版或媒體。
+'categoriespagetext'            => '下面嘅{{PLURAL:$1|類}}有版或媒體。
 [[Special:UnusedCategories|未用類]]唔會響呢度列示。
 請同時參閱[[Special:WantedCategories|需要嘅分類]]。',
 'categoriesfrom'                => '顯示由呢項起嘅類:',
@@ -2295,15 +2309,18 @@ $1已經被封鎖。你係咪想更改呢個設定？',
 'export-pagelinks'  => '包含到一個深度嘅連結版:',
 
 # Namespace 8 related
-'allmessages'               => '系統信息',
-'allmessagesname'           => '名稱',
-'allmessagesdefault'        => '預設訊息文字',
-'allmessagescurrent'        => '現時訊息文字',
-'allmessagestext'           => '以下係 MediaWiki 空間名入邊現有系統信息嘅清單。
+'allmessages'                   => '系統信息',
+'allmessagesname'               => '名稱',
+'allmessagesdefault'            => '預設訊息文字',
+'allmessagescurrent'            => '現時訊息文字',
+'allmessagestext'               => '以下係 MediaWiki 空間名入邊現有系統信息嘅清單。
 如果想貢獻正宗嘅MediaWiki本地化嘅話，請參閱[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]同埋[http://translatewiki.net translatewiki.net]。',
-'allmessagesnotsupportedDB' => "呢一版唔可以用，因為'''\$wgUseDatabaseMessages'''已經閂咗。",
-'allmessagesfilter'         => '信息名過濾（器）：',
-'allmessagesmodified'       => '只顯示修改過嘅',
+'allmessagesnotsupportedDB'     => "呢一版唔可以用，因為'''\$wgUseDatabaseMessages'''已經閂咗。",
+'allmessages-filter'            => '以自定狀況過濾：',
+'allmessages-filter-unmodified' => '未改過',
+'allmessages-filter-all'        => '全部',
+'allmessages-filter-modified'   => '改過',
+'allmessages-prefix'            => '以前綴過濾：',
 
 # Thumbnails
 'thumbnail-more'           => '放大',

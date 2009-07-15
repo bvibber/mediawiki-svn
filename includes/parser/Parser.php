@@ -92,7 +92,8 @@ class Parser
 	# Persistent:
 	var $mTagHooks, $mTransparentTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables,
 		$mImageParams, $mImageParamsMagicArray, $mStripList, $mMarkerIndex, $mPreprocessor,
-		$mExtLinkBracketedRegex, $mUrlProtocols, $mDefaultStripList, $mVarCache, $mConf;
+		$mExtLinkBracketedRegex, $mUrlProtocols, $mDefaultStripList, $mVarCache, $mConf,
+		$mFunctionTagHooks;
 
 
 	# Cleared with clearState():
@@ -127,6 +128,7 @@ class Parser
 		$this->mTagHooks = array();
 		$this->mTransparentTagHooks = array();
 		$this->mFunctionHooks = array();
+		$this->mFunctionTagHooks = array();
 		$this->mFunctionSynonyms = array( 0 => array(), 1 => array() );
 		$this->mDefaultStripList = $this->mStripList = array( 'nowiki', 'gallery' );
 		$this->mUrlProtocols = wfUrlProtocols();
@@ -959,7 +961,7 @@ class Parser
 			}
 			$url = wfMsg( $urlmsg, $id);
 			$sk = $this->mOptions->getSkin();
-			$la = $sk->getExternalLinkAttributes( $url, $keyword.$id );
+			$la = $sk->getExternalLinkAttributes();
 			return "<a href=\"{$url}\"{$la}>{$keyword} {$id}</a>";
 		} elseif ( isset( $m[5] ) && $m[5] !== '' ) {
 			# ISBN
@@ -1947,7 +1949,7 @@ class Parser
 		elseif ( ';' === $char ) {
 			$result .= '<dl><dt>';
 			$this->mDTopen = true;
-		}
+		} elseif ( '>' === $char ) { $result .= "<blockquote><p>"; }
 		else { $result = '<!-- ERR 1 -->'; }
 
 		return $result;
@@ -1955,6 +1957,7 @@ class Parser
 
 	/* private */ function nextItem( $char ) {
 		if ( '*' === $char || '#' === $char ) { return '</li><li>'; }
+		elseif ( '>' === $char ) { return "</p><p>"; }
 		elseif ( ':' === $char || ';' === $char ) {
 			$close = '</dd>';
 			if ( $this->mDTopen ) { $close = '</dt>'; }
@@ -1972,6 +1975,7 @@ class Parser
 	/* private */ function closeList( $char ) {
 		if ( '*' === $char ) { $text = '</li></ul>'; }
 		elseif ( '#' === $char ) { $text = '</li></ol>'; }
+		elseif ( '>' === $char ) { $text = "</p></blockquote>"; }
 		elseif ( ':' === $char ) {
 			if ( $this->mDTopen ) {
 				$this->mDTopen = false;
@@ -2017,14 +2021,23 @@ class Parser
 			// # = ol
 			// ; = dt
 			// : = dd
+			// > = blockquote
 
 			$lastPrefixLength = strlen( $lastPrefix );
 			$preCloseMatch = preg_match('/<\\/pre/i', $oLine );
 			$preOpenMatch = preg_match('/<pre/i', $oLine );
+			
+			// Need to decode &gt; --> > for blockquote syntax. Re-encode later.
+			// To avoid collision with real >s, we temporarily convert them to &gt;
+			// This is a weird choice of armouring, but it's totally resistant to any
+			//  collision.
+			$orig = $oLine;
+			$oLine = strtr( $oLine, array( '&gt;' => '>', '>' => '&gt;' ) );
+			
 			// If not in a <pre> element, scan for and figure out what prefixes are there.
 			if ( !$this->mInPre ) {
 				# Multiple prefixes may abut each other for nested lists.
-				$prefixLength = strspn( $oLine, '*#:;' );
+				$prefixLength = strspn( $oLine, '*#:;>' );
 				$prefix = substr( $oLine, 0, $prefixLength );
 
 				# eh?
@@ -2040,6 +2053,9 @@ class Parser
 				$prefix = $prefix2 = '';
 				$t = $oLine;
 			}
+			
+			// Re-encode >s now
+			$t = strtr( $t, array( '&gt;' => '>', '>' => '&gt;' ) );
 
 			# List generation
 			if( $prefixLength && $lastPrefix === $prefix2 ) {
@@ -3241,9 +3257,10 @@ class Parser
 
 		$marker = "{$this->mUniqPrefix}-$name-" . sprintf('%08X', $this->mMarkerIndex++) . self::MARKER_SUFFIX;
 
-		if ( $this->ot['html'] ) {
+		$isFunctionTag = isset( $this->mFunctionTagHooks[strtolower($name)] ) &&
+			( $this->ot['html'] || $this->ot['pre'] );
+		if ( $this->ot['html'] || $isFunctionTag ) {
 			$name = strtolower( $name );
-
 			$attributes = Sanitizer::decodeTagAttributes( $attrText );
 			if ( isset( $params['attributes'] ) ) {
 				$attributes = $attributes + $params['attributes'];
@@ -3275,6 +3292,13 @@ class Parser
 						}
 						$output = call_user_func_array( $this->mTagHooks[$name],
 							array( $content, $attributes, $this ) );
+					} elseif( isset( $this->mFunctionTagHooks[$name] ) ) {
+						list( $callback, $flags ) = $this->mFunctionTagHooks[$name];
+						if( !is_callable( $callback ) )
+							throw new MWException( "Tag hook for $name is not callable\n" );
+
+						$output = call_user_func_array( $callback,
+							array( &$this, $frame, $content, $attributes ) );
 					} else {
 						$output = '<span class="error">Invalid tag extension name: ' .
 							htmlspecialchars( $name ) . '</span>';
@@ -3298,7 +3322,9 @@ class Parser
 			}
 		}
 
-		if ( $name === 'html' || $name === 'nowiki' ) {
+		if( $isFunctionTag ) {
+			return $output;
+		} elseif ( $name === 'html' || $name === 'nowiki' ) {
 			$this->mStripState->nowiki->setPair( $marker, $output );
 		} else {
 			$this->mStripState->general->setPair( $marker, $output );
@@ -3708,11 +3734,11 @@ class Parser
 				$toc .= $sk->tocUnindent( $prevtoclevel - 1 );
 			}
 			$toc = $sk->tocList( $toc );
+			$this->mOutput->setTOCHTML( $toc );
 		}
 		
 		if ( $isMain ) {
 			$this->mOutput->setSections( $tocraw );
-			$this->mOutput->setTOCHTML( $toc );
 		}
 
 		# split up and insert constructed headlines
@@ -4217,6 +4243,24 @@ class Parser
 	 */
 	function getFunctionHooks() {
 		return array_keys( $this->mFunctionHooks );
+	}
+
+	/**
+	 * Create a tag function, e.g. <test>some stuff</test>.
+	 * Unlike tag hooks, tag functions are parsed at preprocessor level.
+	 * Unlike parser functions, their content is not preprocessed.
+	 */
+	function setFunctionTagHook( $tag, $callback, $flags ) {
+		$tag = strtolower( $tag );
+		$old = isset( $this->mFunctionTagHooks[$tag] ) ?
+			$this->mFunctionTagHooks[$tag] : null;
+		$this->mFunctionTagHooks[$tag] = array( $callback, $flags );
+
+		if( !in_array( $tag, $this->mStripList ) ) {
+			$this->mStripList[] = $tag;
+		}
+
+		return $old;
 	}
 
 	/**

@@ -76,6 +76,7 @@ class ApiMain extends ApiBase {
 		'unblock' => 'ApiUnblock',
 		'move' => 'ApiMove',
 		'edit' => 'ApiEditPage',
+		'upload' => 'ApiUpload',
 		'emailuser' => 'ApiEmailUser',
 		'watch' => 'ApiWatch',
 		'patrol' => 'ApiPatrol',
@@ -312,9 +313,7 @@ class ApiMain extends ApiBase {
 				//
 				// User entered incorrect parameters - print usage screen
 				//
-				$errMessage = array (
-				'code' => $e->getCodeString(),
-				'info' => $e->getMessage());
+				$errMessage = $e->getMessageArray();
 
 				// Only print the help message when this is for the developer, not runtime
 				if ($this->mPrinter->getWantsHelp() || $this->mAction == 'help')
@@ -396,7 +395,7 @@ class ApiMain extends ApiBase {
 			if (!$wgUser->isAllowed('writeapi'))
 				$this->dieUsageMsg(array('writerequired'));
 			if (wfReadOnly())
-				$this->dieUsageMsg(array('readonlytext'));
+				$this->dieReadOnly();
 		}
 
 		if (!$this->mInternalMode) {
@@ -703,13 +702,24 @@ class ApiMain extends ApiBase {
 class UsageException extends Exception {
 
 	private $mCodestr;
+	private $mExtraData;
 
-	public function __construct($message, $codestr, $code = 0) {
+	public function __construct($message, $codestr, $code = 0, $extradata = null) {
 		parent :: __construct($message, $code);
 		$this->mCodestr = $codestr;
+		$this->mExtraData = $extradata;
 	}
 	public function getCodeString() {
 		return $this->mCodestr;
+	}
+	public function getMessageArray() {
+		$result = array (
+				'code' => $this->mCodestr,
+				'info' => $this->getMessage()
+		);
+		if ( is_array( $this->mExtraData ) )
+			$result = array_merge( $result, $this->mExtraData );
+		return $result;
 	}
 	public function __toString() {
 		return "{$this->getCodeString()}: {$this->getMessage()}";

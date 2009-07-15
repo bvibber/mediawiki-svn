@@ -87,7 +87,11 @@ $bookstoreList = array(
 
 $magicWords = array(
 	'redirect'              => array( '0', '#OHJAUS', '#UUDELLEENOHJAUS', '#REDIRECT' ),
+	'notoc'                 => array( '0', '__EISISLUETT__', '__NOTOC__' ),
+	'forcetoc'              => array( '0', '__SISLUETTPAKOTUS__', '__FORCETOC__' ),
 	'toc'                   => array( '0', '__SISÄLLYSLUETTELO__', '__TOC__' ),
+	'noeditsection'         => array( '0', '__EIOSIOMUOKKAUSTA__', '__NOEDITSECTION__' ),
+	'noheader'              => array( '0', '__EIOTSIKKOA__', '__NOHEADER__' ),
 	'currentmonth'          => array( '1', 'KULUVAKUU', 'CURRENTMONTH', 'CURRENTMONTH2' ),
 	'currentmonthname'      => array( '1', 'KULUVAKUUNIMI', 'CURRENTMONTHNAME' ),
 	'currentmonthnamegen'   => array( '1', 'KULUVAKUUNIMIGEN', 'CURRENTMONTHNAMEGEN' ),
@@ -113,6 +117,7 @@ $magicWords = array(
 	'numberoffiles'         => array( '1', 'TIEDOSTOMÄÄRÄ', 'NUMBEROFFILES' ),
 	'numberofusers'         => array( '1', 'KÄYTTÄJÄMÄÄRÄ', 'NUMBEROFUSERS' ),
 	'numberofedits'         => array( '1', 'MUOKKAUSMÄÄRÄ', 'NUMBEROFEDITS' ),
+	'numberofviews'         => array( '1', 'SIVUHAKUMÄÄRÄ', 'NUMBEROFVIEWS' ),
 	'pagename'              => array( '1', 'SIVUNIMI', 'PAGENAME' ),
 	'pagenamee'             => array( '1', 'SIVUNIMIE', 'PAGENAMEE' ),
 	'namespace'             => array( '1', 'NIMIAVARUUS', 'NAMESPACE' ),
@@ -182,6 +187,8 @@ $magicWords = array(
 	'filepath'              => array( '0', 'TIEDOSTOPOLKU:', 'FILEPATH:' ),
 	'hiddencat'             => array( '1', '__PIILOLUOKKA__', '__HIDDENCAT__' ),
 	'pagesize'              => array( '1', 'SIVUKOKO', 'PAGESIZE' ),
+	'noindex'               => array( '1', '__HAKUKONEKIELTO__', '__NOINDEX__' ),
+	'protectionlevel'       => array( '1', 'SUOJAUSTASO', 'PROTECTIONLEVEL' ),
 );
 
 $specialPageAliases = array(
@@ -271,6 +278,7 @@ $specialPageAliases = array(
 	'Blankpage'                 => array( 'Tyhjä_sivu' ),
 	'LinkSearch'                => array( 'Linkkihaku' ),
 	'DeletedContributions'      => array( 'Poistetut_muokkaukset' ),
+	'Activeusers'               => array( 'AktiivisetKäyttäjät' ),
 );
 
 $linkTrail = '/^([a-zäö]+)(.*)$/sDu';
@@ -460,6 +468,9 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'vector-view-history'        => 'Näytä historia',
 'vector-view-view'           => 'Lue',
 'vector-view-viewsource'     => 'Näytä lähdekoodi',
+'actions'                    => 'Toiminnot',
+'namespaces'                 => 'Nimiavaruudet',
+'variants'                   => 'Muuttujat',
 
 # Metadata in edit box
 'metadata_help' => 'Sisältökuvaukset:',
@@ -518,6 +529,11 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'jumpto'            => 'Loikkaa:',
 'jumptonavigation'  => 'valikkoon',
 'jumptosearch'      => 'hakuun',
+'view-pool-error'   => 'Valitettavasti palvelimet ovat ylikuormittuneet tällä hetkellä.
+Liian monta käyttäjää yrittää tarkastella tätä sivua.
+Odota hetki ennen kuin yrität uudelleen.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Tietoja {{GRAMMAR:elative|{{SITENAME}}}}',

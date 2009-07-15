@@ -12,6 +12,7 @@
  * @author Church of emacs
  * @author Duesentrieb
  * @author Jimmy Collins <jimmy.collins@web.de>
+ * @author Khaledelmansoury
  * @author Li-sung
  * @author MF-Warburg
  * @author Melancholie
@@ -344,7 +345,7 @@ $messages = array(
 'tog-rememberpassword'        => 'Benutzer soll auf diesem Computer dauerhaft angemeldet bleiben',
 'tog-editwidth'               => 'Eingabefeld erweitern, um den ganzen Bildschirm auszufüllen',
 'tog-watchcreations'          => 'Selbst erstellte Seiten automatisch beobachten',
-'tog-watchdefault'            => 'Selbst geänderte und neu erstellte Seiten automatisch beobachten',
+'tog-watchdefault'            => 'Selbst geänderte Seiten automatisch beobachten',
 'tog-watchmoves'              => 'Selbst verschobene Seiten automatisch beobachten',
 'tog-watchdeletion'           => 'Selbst gelöschte Seiten automatisch beobachten',
 'tog-minordefault'            => 'Eigene Änderungen standardmäßig als geringfügig markieren',
@@ -354,19 +355,19 @@ $messages = array(
 'tog-enotifwatchlistpages'    => 'Bei Änderungen an beobachteten Seiten E-Mails senden',
 'tog-enotifusertalkpages'     => 'Bei Änderungen an meiner Benutzer-Diskussionsseite E-Mails senden',
 'tog-enotifminoredits'        => 'Auch bei kleinen Änderungen an beobachteten Seiten E-Mails senden',
-'tog-enotifrevealaddr'        => 'Deine E-Mail-Adresse wird in Benachrichtigungs-E-Mails angezeigt',
+'tog-enotifrevealaddr'        => 'Meine E-Mail-Adresse in Benachrichtigungs-E-Mails anzeigen',
 'tog-shownumberswatching'     => 'Anzahl der beobachtenden Benutzer anzeigen',
 'tog-fancysig'                => 'Signatur als Wikitext behandeln (ohne automatische Verlinkung)',
 'tog-externaleditor'          => 'Externen Editor als Standard benutzen (nur für Experten, es müssen spezielle Einstellungen auf dem eigenen Computer vorgenommen werden)',
-'tog-externaldiff'            => 'Externes Diff-Programm als Standard benutzen (nur für Experten, es müssen spezielle Einstellungen auf dem eigenen Computer vorgenommen werden)',
+'tog-externaldiff'            => 'Externes Programm für Versionsunterschiede als Standard benutzen (nur für Experten, es müssen spezielle Einstellungen auf dem eigenen Computer vorgenommen werden)',
 'tog-showjumplinks'           => '„Wechseln zu“-Links aktivieren',
 'tog-uselivepreview'          => 'Live-Vorschau nutzen (benötigt JavaScript) (experimentell)',
 'tog-forceeditsummary'        => 'Warnen, wenn beim Speichern die Zusammenfassung fehlt',
-'tog-watchlisthideown'        => 'Eigene Bearbeitungen ausblenden',
-'tog-watchlisthidebots'       => 'Bearbeitungen durch Bots ausblenden',
-'tog-watchlisthideminor'      => 'Kleine Bearbeitungen ausblenden',
-'tog-watchlisthideliu'        => 'Bearbeitungen angemeldeter Benutzer ausblenden',
-'tog-watchlisthideanons'      => 'Bearbeitungen anonymer Benutzer (IP-Adressen) ausblenden',
+'tog-watchlisthideown'        => 'Eigene Bearbeitungen in der Beobachtungsliste ausblenden',
+'tog-watchlisthidebots'       => 'Bearbeitungen durch Bots in der Beobachtungsliste ausblenden',
+'tog-watchlisthideminor'      => 'Kleine Bearbeitungen in der Beobachtungsliste ausblenden',
+'tog-watchlisthideliu'        => 'Bearbeitungen angemeldeter Benutzer in der Beobachtungsliste ausblenden',
+'tog-watchlisthideanons'      => 'Bearbeitungen anonymer Benutzer (IP-Adressen) in der Beobachtungsliste ausblenden',
 'tog-watchlisthidepatrolled'  => 'Kontrollierte Änderungen in der Beobachtungsliste ausblenden',
 'tog-nolangconversion'        => 'Konvertierung von Sprachvarianten deaktivieren',
 'tog-ccmeonemails'            => 'Schicke mir Kopien der E-Mails, die ich anderen Benutzern sende',
@@ -501,6 +502,9 @@ $messages = array(
 'vector-view-history'        => 'Versionsgeschichte',
 'vector-view-view'           => 'Lesen',
 'vector-view-viewsource'     => 'Quelltext betrachten',
+'actions'                    => 'Aktionen',
+'namespaces'                 => 'Namensräume',
+'variants'                   => 'Varianten',
 
 # Metadata in edit box
 'metadata_help' => 'Metadaten:',
@@ -515,10 +519,10 @@ $messages = array(
 'searcharticle'     => 'Seite',
 'history'           => 'Versionen',
 'history_short'     => 'Versionen/Autoren',
-'updatedmarker'     => '(geändert)',
+'updatedmarker'     => 'geändert seit meinem letztem Besuch',
 'info_short'        => 'Information',
 'printableversion'  => 'Druckversion',
-'permalink'         => 'Permanentlink',
+'permalink'         => 'Permanenter Link',
 'print'             => 'Drucken',
 'edit'              => 'Bearbeiten',
 'create'            => 'Erstellen',
@@ -533,24 +537,24 @@ $messages = array(
 'unprotect'         => 'Freigeben',
 'unprotectthispage' => 'Schutz aufheben',
 'newpage'           => 'Neue Seite',
-'talkpage'          => 'Diskussion',
+'talkpage'          => 'Diese Seite diskutieren',
 'talkpagelinktext'  => 'Diskussion',
 'specialpage'       => 'Spezialseite',
 'personaltools'     => 'Persönliche Werkzeuge',
 'postcomment'       => 'Neuer Abschnitt',
-'articlepage'       => 'Seite',
+'articlepage'       => 'Inhaltsseite anzeigen',
 'talk'              => 'Diskussion',
 'views'             => 'Ansichten',
 'toolbox'           => 'Werkzeuge',
-'userpage'          => 'Benutzerseite',
-'projectpage'       => 'Meta-Text',
-'imagepage'         => 'Dateiseite',
+'userpage'          => 'Benutzerseite anzeigen',
+'projectpage'       => 'Projektseite anzeigen',
+'imagepage'         => 'Dateiseite anzeigen',
 'mediawikipage'     => 'Meldungsseite anzeigen',
 'templatepage'      => 'Vorlagenseite anzeigen',
 'viewhelppage'      => 'Hilfeseite anzeigen',
 'categorypage'      => 'Kategorieseite anzeigen',
 'viewtalkpage'      => 'Diskussion',
-'otherlanguages'    => 'Andere Sprachen',
+'otherlanguages'    => 'In anderen Sprachen',
 'redirectedfrom'    => '(Weitergeleitet von $1)',
 'redirectpagesub'   => 'Weiterleitung',
 'lastmodifiedat'    => 'Diese Seite wurde zuletzt am $1 um $2 Uhr geändert.',
@@ -559,25 +563,30 @@ $messages = array(
 'jumpto'            => 'Wechseln zu:',
 'jumptonavigation'  => 'Navigation',
 'jumptosearch'      => 'Suche',
+'view-pool-error'   => 'Entschuldigung, die Server sind im Moment überlastet.
+Zu viele Benutzer versuchen diese Seite zu besuchen.
+Bitte warte einige Minuten, bevor du es noch einmal versuchst.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Über {{SITENAME}}',
-'aboutpage'            => 'Project:Über_{{SITENAME}}',
+'aboutpage'            => 'Project:Über',
 'copyright'            => 'Inhalt ist verfügbar unter der $1.',
 'copyrightpagename'    => '{{SITENAME}} Urheberrecht',
-'copyrightpage'        => '{{ns:project}}:Urheberrecht',
+'copyrightpage'        => '{{ns:project}}:Urheberrechte',
 'currentevents'        => 'Aktuelle Ereignisse',
 'currentevents-url'    => 'Project:Aktuelle Ereignisse',
 'disclaimers'          => 'Impressum',
 'disclaimerpage'       => 'Project:Impressum',
 'edithelp'             => 'Bearbeitungshilfe',
-'edithelppage'         => 'Help:Bearbeitungshilfe',
-'helppage'             => 'Help:Hilfe',
+'edithelppage'         => 'Help:Bearbeiten',
+'helppage'             => 'Help:Inhaltsverzeichnis',
 'mainpage'             => 'Hauptseite',
 'mainpage-description' => 'Hauptseite',
-'policy-url'           => 'Project:Leitlinien',
-'portal'               => '{{SITENAME}}-Portal',
-'portal-url'           => 'Project:Portal',
+'policy-url'           => 'Project:Richtlinien',
+'portal'               => 'Gemeinschafts-Portal',
+'portal-url'           => 'Project:Gemeinschafts-Portal',
 'privacy'              => 'Datenschutz',
 'privacypage'          => 'Project:Datenschutz',
 
@@ -586,20 +595,21 @@ $messages = array(
 'badaccess-groups' => 'Diese Aktion ist beschränkt auf Benutzer, die {{PLURAL:$2|der Gruppe|einer der Gruppen}} „$1“ angehören.',
 
 'versionrequired'     => 'Version $1 von MediaWiki ist erforderlich',
-'versionrequiredtext' => 'Version $1 von MediaWiki ist erforderlich, um diese Seite zu nutzen. Siehe die [[Special:Version|Versionsseite]]',
+'versionrequiredtext' => 'Version $1 von MediaWiki ist erforderlich, um diese Seite zu nutzen.
+Siehe die [[Special:Version|Versionsseite]]',
 
 'ok'                      => 'OK',
 'pagetitle'               => '$1 – {{SITENAME}}',
 'retrievedfrom'           => 'Von „$1“',
 'youhavenewmessages'      => 'Du hast $2 auf deiner $1.',
-'newmessageslink'         => 'Diskussionsseite',
-'newmessagesdifflink'     => 'neue Nachrichten',
+'newmessageslink'         => 'Neue Nachrichten',
+'newmessagesdifflink'     => 'Letzte Änderung',
 'youhavenewmessagesmulti' => 'Du hast neue Nachrichten: $1',
 'editsection'             => 'Bearbeiten',
 'editold'                 => 'Bearbeiten',
-'viewsourceold'           => 'Quelltext zeigen',
+'viewsourceold'           => 'Quelltext anzeigen',
 'editlink'                => 'bearbeiten',
-'viewsourcelink'          => 'Quelltext einsehen',
+'viewsourcelink'          => 'Quelltext anzeigen',
 'editsectionhint'         => 'Abschnitt bearbeiten: $1',
 'toc'                     => 'Inhaltsverzeichnis',
 'showtoc'                 => 'Anzeigen',
@@ -619,11 +629,11 @@ $messages = array(
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Seite',
 'nstab-user'      => 'Benutzerseite',
-'nstab-media'     => 'Media',
+'nstab-media'     => 'Medienseite',
 'nstab-special'   => 'Spezialseite',
 'nstab-project'   => 'Projektseite',
 'nstab-image'     => 'Datei',
-'nstab-mediawiki' => 'MediaWiki-Systemtext',
+'nstab-mediawiki' => 'MediaWiki-Systemnachricht',
 'nstab-template'  => 'Vorlage',
 'nstab-help'      => 'Hilfeseite',
 'nstab-category'  => 'Kategorie',
@@ -632,7 +642,7 @@ $messages = array(
 'nosuchaction'      => 'Diese Aktion gibt es nicht',
 'nosuchactiontext'  => 'Die in der URL angegebene Aktion wird von MediaWiki nicht unterstützt.
 Es kann ein Schreibfehler in der URL vorliegen oder es wurde ein fehlerhafter Link angeklickt.
-Es kann sich auch um einen Bug auf {{SITENAME}} handeln.',
+Es kann sich auch um einen Programmierfehler in der Software, die auf {{SITENAME}} benutzt wird, handeln.',
 'nosuchspecialpage' => 'Spezialseite nicht vorhanden',
 'nospecialpagetext' => "<big>'''Die aufgerufene Spezialseite ist nicht vorhanden.'''</big>
 
@@ -640,16 +650,16 @@ Alle verfügbaren Spezialseiten sind in der [[Special:SpecialPages|Liste der Spe
 
 # General errors
 'error'                => 'Fehler',
-'databaseerror'        => 'Fehler in der Datenbank',
+'databaseerror'        => 'Datenbankfehler',
 'dberrortext'          => 'Es ist ein Datenbankfehler aufgetreten.
-Der Grund kann ein Timeout sein, der Ausfall eines Servers oder auch ein Programmierfehler.
+Der Grund kann ein Programmierfehler sein.
 Die letzte Datenbankabfrage lautete: <blockquote><tt>$1</tt></blockquote> aus der Funktion „<tt>$2</tt>“.
 MySQL meldete den Fehler „<tt>$3: $4</tt>“.',
 'dberrortextcl'        => 'Es gab einen Syntaxfehler in der Datenbankabfrage.
 Die letzte Datenbankabfrage lautete: „$1“ aus der Funktion „<tt>$2</tt>“.
 MySQL meldete den Fehler: „<tt>$3: $4</tt>“.',
-'laggedslavemode'      => 'Achtung: Die angezeigte Seite enthält unter Umständen nicht die jüngsten Bearbeitungen.',
-'readonly'             => 'Datenbanksperre',
+'laggedslavemode'      => "'''Achtung:''' Die angezeigte Seite könnte unter Umständen nicht die letzten Bearbeitungen enthalten.",
+'readonly'             => 'Datenbank gesperrt',
 'enterlockreason'      => 'Bitte gib einen Grund ein, warum die Datenbank gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung',
 'readonlytext'         => 'Die Datenbank ist vorübergehend für Neueinträge und Änderungen gesperrt. Bitte versuche es später noch einmal.
 
@@ -1463,7 +1473,7 @@ Mit anderen Benutzern kannst du auch über die Benutzerdiskussionsseiten Kontakt
 'right-suppressionlog'        => 'Ansehen privater Logbücher',
 'right-block'                 => 'Benutzer sperren (Schreibrecht)',
 'right-blockemail'            => 'Benutzer am Versenden von E-Mails hindern',
-'right-hideuser'              => 'Sperre und verberge einen Benutzernamen',
+'right-hideuser'              => 'Benutzernamen sperren und verbergen',
 'right-ipblock-exempt'        => 'Ausnahme von IP-Sperren, Autoblocks und Rangesperren',
 'right-proxyunbannable'       => 'Ausnahme von automatischen Proxysperren',
 'right-protect'               => 'Seitenschutzstatus ändern',
@@ -3325,7 +3335,7 @@ Die Eingabe muss ohne den Zusatz „{{ns:file}}:“ erfolgen.',
 'dberr-again'       => 'Warte einige Minuten und versuche dann neu zuladen.',
 'dberr-info'        => '(Kann keine Verbindung zum Datenbank-Server herstellen: $1)',
 'dberr-usegoogle'   => 'Du könntest in der Zwischenzeit mit Google suchen.',
-'dberr-outofdate'   => 'Beachte, dass der Suchindex unserer Inhalte veraltet sein kann.',
+'dberr-outofdate'   => 'Beachte, dass der Suchindex unserer Inhalte bei Google veraltet sein kann.',
 'dberr-cachederror' => 'Folgendes ist ein Kopie des Caches der angeforderten Seite und kann veraltet sein.',
 
 # HTML forms

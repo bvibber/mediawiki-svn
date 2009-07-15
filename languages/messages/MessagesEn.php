@@ -783,6 +783,9 @@ XHTML id names.
 'vector-view-history'        => 'View history',
 'vector-view-view'           => 'Read',
 'vector-view-viewsource'     => 'View source',
+'actions'                    => 'Actions',
+'namespaces'                 => 'Namespaces',
+'variants'                   => 'Variants',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -843,6 +846,11 @@ XHTML id names.
 'jumpto'            => 'Jump to:',
 'jumptonavigation'  => 'navigation',
 'jumptosearch'      => 'search',
+'view-pool-error'   => 'Sorry, the servers are overloaded at the moment.
+Too many users are trying to view this page.
+Please wait a while before you try to access this page again.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'About {{SITENAME}}',
@@ -881,7 +889,7 @@ See [[Special:Version|version page]].',
 'newmessageslink'              => 'new messages',
 'newmessagesdifflink'          => 'last change',
 'youhavenewmessagesmulti'      => 'You have new messages on $1',
-'newtalkseparator'             => ',_', # do not translate or duplicate this message to other languages
+'newtalkseparator'             => ',&#32;', # do not translate or duplicate this message to other languages
 'editsection'                  => 'edit',
 'editsection-brackets'         => '[$1]', # only translate this message to other languages if you have to change it
 'editold'                      => 'edit',
@@ -962,6 +970,7 @@ Please report this to an [[Special:ListUsers/sysop|administrator]], making note 
 'readonly_lag'         => 'The database has been automatically locked while the slave database servers catch up to the master',
 'internalerror'        => 'Internal error',
 'internalerror_info'   => 'Internal error: $1',
+'fileappenderror'      => 'Could not append $1 to $2',
 'filecopyerror'        => 'Could not copy file "$1" to "$2".',
 'filerenameerror'      => 'Could not rename file "$1" to "$2".',
 'filedeleteerror'      => 'Could not delete file "$1".',
@@ -2094,6 +2103,11 @@ Please contact an [[Special:ListUsers/sysop|administrator]].',
 'upload-misc-error-text'  => 'An unknown error occurred during the upload.
 Please verify that the URL is valid and accessible and try again.
 If the problem persists, contact an [[Special:ListUsers/sysop|administrator]].',
+'upload-too-many-redirects' => 'The URL contained too many redirects',
+'upload-unknown-size'       => 'Unknown size',
+
+// Idealy we map out all the http errors and translations else just call this with the http resposne:
+'upload-http-error' => "An HTTP error occured: $1",
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Could not reach URL',
@@ -2256,7 +2270,8 @@ A page is treated as disambiguation page if it uses a template which is linked f
 'doubleredirects'            => 'Double redirects',
 'doubleredirects-summary'    => '', # do not translate or duplicate this message to other languages
 'doubleredirectstext'        => 'This page lists pages which redirect to other redirect pages.
-Each row contains links to the first and second redirect, as well as the target of the second redirect, which is usually "real" target page, which the first redirect should point to.',
+Each row contains links to the first and second redirect, as well as the target of the second redirect, which is usually the "real" target page, which the first redirect should point to.
+<s>Crossed out</s> entries have been solved.',
 'double-redirect-fixed-move' => '[[$1]] has been moved.
 It now redirects to [[$2]].',
 'double-redirect-fixer'      => 'Redirect fixer',
@@ -2372,7 +2387,7 @@ It now redirects to [[$2]].',
 
 # Magic words
 'rfcurl'    => 'http://tools.ietf.org/html/rfc$1', # do not translate or duplicate this message to other languages
-'pubmedurl' => 'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1', # do not translate or duplicate this message to other languages
+'pubmedurl' => 'http://www.ncbi.nlm.nih.gov/pubmed/$1?dopt=Abstract', # do not translate or duplicate this message to other languages
 
 # Special:Log
 'specialloguserlabel'  => 'User:',
@@ -3031,8 +3046,11 @@ In the latter case you can also use a link, for example [[{{#Special:Export}}/{{
 'allmessagestext'           => 'This is a list of system messages available in the MediaWiki namespace.
 Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net translatewiki.net] if you wish to contribute to the generic MediaWiki localisation.',
 'allmessagesnotsupportedDB' => "This page cannot be used because '''\$wgUseDatabaseMessages''' has been disabled.",
-'allmessagesfilter'         => 'Message name filter:',
-'allmessagesmodified'       => 'Show only modified',
+'allmessages-filter'            => 'Filter by customisation state:',
+'allmessages-filter-unmodified' => 'Unmodified',
+'allmessages-filter-all'        => 'All',
+'allmessages-filter-modified'   => 'Modified',
+'allmessages-prefix'            => 'Filter by prefix:',
 
 # Thumbnails
 'thumbnail-more'           => 'Enlarge',

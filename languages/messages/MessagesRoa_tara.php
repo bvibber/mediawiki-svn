@@ -193,6 +193,9 @@ $messages = array(
 'vector-view-history'        => "Vide 'u cunde",
 'vector-view-view'           => 'Ligge',
 'vector-view-viewsource'     => "Vide 'u sorgende",
+'actions'                    => 'Aziune',
+'namespaces'                 => 'Namespace',
+'variants'                   => 'Variande',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -251,6 +254,11 @@ $messages = array(
 'jumpto'            => 'Zumbe a:',
 'jumptonavigation'  => 'navighesce',
 'jumptosearch'      => 'cirche',
+'view-pool-error'   => "Ne dispiace, le server stonne sovraccarecate jndr'à stu mumende.
+Troppe utinde stonne a provene a vedè sta pàgene.
+Pe piacere aspitte 'nu picche e pò pruève 'n'otra vote a trasè jndr'à sta pàgene.
+
+$1",
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Sus a {{SITENAME}}',
@@ -1106,6 +1114,7 @@ Tu puè pure scacchià de lassà otre condatte ausanne l'utende tue o le pàggen
 'prefs-i18n'                  => 'Indernazzionalizzazzione',
 'prefs-signature'             => 'Firme',
 'prefs-dateformat'            => "Formate d'a data",
+'prefs-timeoffset'            => "Differenze d'orarie",
 'prefs-advancedediting'       => 'Opzione avanzate',
 'prefs-advancedrc'            => 'Opzione avanzate',
 'prefs-advancedrendering'     => 'Opzione avanzate',
@@ -1173,6 +1182,7 @@ Tu puè pure scacchià de lassà otre condatte ausanne l'utende tue o le pàggen
 'right-reupload-own'         => "Sovrascrive 'nu file esistende carichete da quacchedune",
 'right-upload_by_url'        => "Careche 'nu file da l'indirizze URL",
 'right-autoconfirmed'        => 'Cange le pàggene prutette a metà',
+'right-bot'                  => 'Adda essere trattate cumme a nu processe automateche',
 'right-apihighlimits'        => "Ause 'nu limite cchiù ierte jndr'à l'inderrogaziune de le API",
 'right-writeapi'             => 'Ause de le API scritte',
 'right-delete'               => 'Scangille le pàggene',
@@ -1575,6 +1585,7 @@ Mò s'avène redirette a [[$2]].",
 'nopagetext'              => "'A pàgene de destinazione ca tu è specificate non g'esiste.",
 'pager-newer-n'           => '{{PLURAL:$1|cchiù nueve 1|cchiù nueve $1}}',
 'pager-older-n'           => '{{PLURAL:$1|cchiù vecchie 1|cchiù vicchie $1}}',
+'suppress'                => 'Supervisione',
 
 # Book sources
 'booksources'               => 'Sorgende de le libbre',
@@ -1616,6 +1627,7 @@ Pò condenè une  cchiù carattere ca non ge ponne essere ausate jndr'à le tite
 'categoriespagetext'            => "{{PLURAL:$1|'A seguende categorije tène|Le seguende categorije tènene}} pàggene o media.
 [[Special:UnusedCategories|Categorije non ausate]] non ge se vèdene aqquà.
 Vide pure [[Special:WantedCategories|Categorije cercate]].",
+'categoriesfrom'                => 'Fà vedè le categorije partenne da:',
 'special-categories-sort-count' => 'ordere pe condegge',
 'special-categories-sort-abc'   => 'ordere alfabbeticamende',
 
@@ -1972,6 +1984,7 @@ Mitte pure 'nu mutive specifiche aqquà sotte (pe esembije, nnomene 'a pàgene a
 'ipbotheroption'               => 'otre',
 'ipbotherreason'               => 'Otre mutive:',
 'ipbhidename'                  => 'Scunne le nome utinde da le cangiaminde e da le liste',
+'ipbwatchuser'                 => "Vide a pàgena utende e quedde de le 'ngazzaminde de stu utende",
 'badipaddress'                 => 'Indirizze IP invalide',
 'blockipsuccesssub'            => 'Blocche effettuate',
 'blockipsuccesstext'           => "[[Special:Contributions/$1|$1]] ha state bloccate.<br />
@@ -2092,7 +2105,10 @@ Pe piacere scacchie n'otre nome.",
 Videta tu 'a màne a 'ngollà 'a pàgena vecchie cu quedda nova.'''",
 'movedto'                   => 'spustete a',
 'movetalk'                  => "Spuéste 'a pàgene de le 'ngazzaminde associete",
+'move-subpages'             => 'Spuèste le sottopàggene (fine a $1)',
+'movepage-page-exists'      => "'A vôsce $1 già esiste e non ge pò essere sovrascritte automaticamende.",
 'movepage-page-moved'       => "'A pàgene $1 ha state spustete sus a $2.",
+'movepage-page-unmoved'     => "'A pàgene $1 non ge pò essere spustate sus a $2.",
 '1movedto2'                 => "[[$1]] spustete jndr'à [[$2]]",
 '1movedto2_redir'           => "spustete [[$1]] jndr'à [[$2]] sus a 'nu ridirezionamende",
 'movelogpage'               => 'Archivije de le spustaminde',

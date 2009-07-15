@@ -86,6 +86,16 @@ class ApiEditPage extends ApiBase {
 				$content = '';
 			else
 				$content = $articleObj->getContent();
+			
+			if (!is_null($params['section'])) 
+			{
+				// Process the content for section edits
+				global $wgParser;
+				$section = intval($params['section']);
+				$content = $wgParser->getSection($content, $section, false);
+				if ($content === false)
+					$this->dieUsage("There is no section {$section}.", 'nosuchsection');
+			}
 			$params['text'] = $params['prependtext'] . $content . $params['appendtext'];
 			$toMD5 = $params['prependtext'] . $params['appendtext'];
 		}
@@ -159,18 +169,37 @@ class ApiEditPage extends ApiBase {
 		else
 			$reqArr['wpSection'] = '';
 
-		if($params['watch'])
+		// Handle watchlist settings
+		switch ($params['watchlist']) 
+		{
+			case 'watch':
+				$watch = true;
+				break;
+			case 'unwatch':
+				$watch = false;
+				break;
+			case 'preferences':
+				if ($titleObj->exists())
+					$watch = $wgUser->getOption('watchdefault');
+				else
+					$watch = $wgUser->getOption('watchcreations');
+				break;
+			case 'nochange':
+			default:
+				$watch = $titleObj->userIsWatching();
+		}
+		// Deprecated parameters
+		if ($params['watch']) 
+		{
 			$watch = true;
-		else if($params['unwatch'])
+			$this->setWarning('The watch parameter has been deprecated.');
+		}
+		elseif ($params['unwatch']) 
+		{
 			$watch = false;
-		else if($titleObj->userIsWatching())
-			$watch = true;
-		else if($wgUser->getOption('watchdefault'))
-			$watch = true;
-		else if($wgUser->getOption('watchcreations') && !$titleObj->exists())
-			$watch = true;
-		else
-			$watch = false;
+			$this->setWarning('The unwatch parameter has been deprecated.');
+		}
+		
 		if($watch)
 			$reqArr['wpWatchthis'] = '';
 
@@ -231,7 +260,7 @@ class ApiEditPage extends ApiBase {
 			case EditPage::AS_READ_ONLY_PAGE_LOGGED:
 				$this->dieUsageMsg(array('noedit'));
 			case EditPage::AS_READ_ONLY_PAGE:
-				$this->dieUsageMsg(array('readonlytext'));
+				$this->dieReadOnly();
 			case EditPage::AS_RATE_LIMITED:
 				$this->dieUsageMsg(array('actionthrottledtext'));
 			case EditPage::AS_ARTICLE_WAS_DELETED:
@@ -308,6 +337,15 @@ class ApiEditPage extends ApiBase {
 			'captchaid' => null,
 			'watch' => false,
 			'unwatch' => false,
+			'watchlist' => array(
+				ApiBase :: PARAM_DFLT => 'preferences',
+				ApiBase :: PARAM_TYPE => array(
+					'watch', 
+					'unwatch', 
+					'preferences', 
+					'nochange'
+				),
+			),
 			'md5' => null,
 			'prependtext' => null,
 			'appendtext' => null,
@@ -339,14 +377,14 @@ class ApiEditPage extends ApiBase {
 			'recreate' => 'Override any errors about the article having been deleted in the meantime',
 			'createonly' => 'Don\'t edit the page if it exists already',
 			'nocreate' => 'Throw an error if the page doesn\'t exist',
-			'watch' => 'Add the page to your watchlist',
-			'unwatch' => 'Remove the page from your watchlist',
+			'watch' => 'DEPRECATED! Add the page to your watchlist',
+			'unwatch' => 'DEPRECATED! Remove the page from your watchlist',
+			'watchlist' => 'Unconditionally add or remove the page from your watchlist, use preferences or do not change watch',
 			'captchaid' => 'CAPTCHA ID from previous request',
 			'captchaword' => 'Answer to the CAPTCHA',
 			'md5' => array(	'The MD5 hash of the text parameter, or the prependtext and appendtext parameters concatenated.',
 				 	'If set, the edit won\'t be done unless the hash is correct'),
-			'prependtext' => array( 'Add this text to the beginning of the page. Overrides text.',
-						'Don\'t use together with section: that won\'t do what you expect.'),
+			'prependtext' => 'Add this text to the beginning of the page. Overrides text.',
 			'appendtext' => 'Add this text to the end of the page. Overrides text',
 			'undo' => 'Undo this revision. Overrides text, prependtext and appendtext',
 			'undoafter' => 'Undo all revisions from undo to this one. If not set, just undo one revision',

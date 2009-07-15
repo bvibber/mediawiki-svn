@@ -17,7 +17,7 @@
  */
 
 $namespaceNames = array(
-	NS_MEDIA            => 'Medija',
+	NS_MEDIA            => 'Mediji',
 	NS_SPECIAL          => 'Posebno',
 	NS_TALK             => 'Razgovor',
 	NS_USER             => 'Korisnik',
@@ -25,8 +25,8 @@ $namespaceNames = array(
 	NS_PROJECT_TALK     => 'Razgovor_{{grammar:instrumental|$1}}',
 	NS_FILE             => 'Datoteka',
 	NS_FILE_TALK        => 'Razgovor_o_datoteci',
-	NS_MEDIAWIKI        => 'MedijaViki',
-	NS_MEDIAWIKI_TALK   => 'Razgovor_o_MedijaVikiju',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_razgovor',
 	NS_TEMPLATE         => 'Šablon',
 	NS_TEMPLATE_TALK    => 'Razgovor_o_šablonu',
 	NS_HELP             => 'Pomoć',
@@ -36,45 +36,48 @@ $namespaceNames = array(
 );
 
 $namespaceAliases = array(
+	'Medija' => NS_MEDIA,
 	'Slika' => NS_FILE,
 	'Razgovor_o_datoteci' => NS_FILE_TALK,
+	'MedijaViki' => NS_MEDIAWIKI,
+	'Razgovor_o_MedijaVikiju' => NS_MEDIAWIKI_TALK,
 );
 
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'DvostrukaPreusmjerenja' ),
-	'BrokenRedirects'           => array( 'NedovrsenaPreusmjerenja' ),
-	'Disambiguations'           => array( 'Cvor' ),
-	'Userlogin'                 => array( 'KorisnickaPrijava' ),
-	'Userlogout'                => array( 'KorisnickaOdjava' ),
-	'CreateAccount'             => array( 'NapraviRacun' ),
+	'BrokenRedirects'           => array( 'NedovršenaPreusmjerenja' ),
+	'Disambiguations'           => array( 'Čvor' ),
+	'Userlogin'                 => array( 'KorisničkaPrijava' ),
+	'Userlogout'                => array( 'KorisničkaOdjava' ),
+	'CreateAccount'             => array( 'NapraviRačun' ),
 	'Preferences'               => array( 'Postavke' ),
-	'Watchlist'                 => array( 'ListaPracenja' ),
+	'Watchlist'                 => array( 'ListaPraćenja' ),
 	'Recentchanges'             => array( 'NedavneIzmjene' ),
-	'Upload'                    => array( 'Postavljanje' ),
-	'Listfiles'                 => array( 'ListaSlika' ),
-	'Newimages'                 => array( 'NoveSlike' ),
+	'Upload'                    => array( 'Postavi_datoteku' ),
+	'Listfiles'                 => array( 'Datoteke', 'Slike' ),
+	'Newimages'                 => array( 'Nove_datoteke', 'Nove_slike' ),
 	'Listusers'                 => array( 'ListaKorisnika' ),
-	'Listgrouprights'           => array( 'ListaKorisnickihPrava' ),
+	'Listgrouprights'           => array( 'ListaKorisničkihPrava' ),
 	'Statistics'                => array( 'Statistike' ),
-	'Randompage'                => array( 'SlucajniClanak' ),
-	'Lonelypages'               => array( 'Siromasci' ),
+	'Randompage'                => array( 'Slučajna_stranica' ),
+	'Lonelypages'               => array( 'Siročad' ),
 	'Uncategorizedpages'        => array( 'StraniceBezKategorije' ),
 	'Uncategorizedcategories'   => array( 'KategorijeBezKategorije' ),
 	'Uncategorizedimages'       => array( 'SlikeBezKategorije' ),
 	'Uncategorizedtemplates'    => array( 'SabloniBezKategorije' ),
-	'Unusedcategories'          => array( 'NekoristeneKategorije' ),
-	'Unusedimages'              => array( 'NekoristeneSlike' ),
-	'Wantedpages'               => array( 'ZatrazeneStranice', 'ZatrazeniClanci' ),
-	'Wantedcategories'          => array( 'ZatrazeneKategorije' ),
-	'Wantedfiles'               => array( 'ZatrazeneDatoteke' ),
-	'Wantedtemplates'           => array( 'ZatrazeniSabloni' ),
-	'Mostlinked'                => array( 'NajcesceLinkovano' ),
-	'Mostlinkedcategories'      => array( 'NajcesceLinkovaneKategorije', 'NajcesceKoristeneKategorije' ),
-	'Mostlinkedtemplates'       => array( 'NajcesceLinkovaniSabloni', 'NajcesceKoristeniSabloni' ),
-	'Mostimages'                => array( 'NajcesceSlike' ),
-	'Mostcategories'            => array( 'NajcesceKategorije' ),
-	'Mostrevisions'             => array( 'NajcesceRevizije' ),
-	'Fewestrevisions'           => array( 'NajmanjeRevizija' ),
+	'Unusedcategories'          => array( 'NekorišteneKategorije' ),
+	'Unusedimages'              => array( 'Nekorištene_datoteke', 'Nekorištene_slike' ),
+	'Wantedpages'               => array( 'Tražene_stranice' ),
+	'Wantedcategories'          => array( 'Tražene_kategorije' ),
+	'Wantedfiles'               => array( 'Tražene_datoteke' ),
+	'Wantedtemplates'           => array( 'Traženi_šabloni' ),
+	'Mostlinked'                => array( 'Najviše_povezane_stranice' ),
+	'Mostlinkedcategories'      => array( 'Najviše_povezane_kategorije' ),
+	'Mostlinkedtemplates'       => array( 'Najviše_povezani_šabloni' ),
+	'Mostimages'                => array( 'Najviše_povezane_datoteke', 'Najviše_povezane_slike' ),
+	'Mostcategories'            => array( 'Najviše_kategorija' ),
+	'Mostrevisions'             => array( 'Najviše_uređivane_stranice' ),
+	'Fewestrevisions'           => array( 'Najmanje_uređivane_stranice' ),
 	'Shortpages'                => array( 'KratkeStranice' ),
 	'Longpages'                 => array( 'DugeStranice' ),
 	'Newpages'                  => array( 'NoveStranice' ),
@@ -303,7 +306,7 @@ $messages = array(
 
 # Dates
 'sunday'        => 'nedelja',
-'monday'        => 'ponedeljak',
+'monday'        => 'ponedjeljak',
 'tuesday'       => 'utorak',
 'wednesday'     => 'srijeda',
 'thursday'      => 'četvrtak',
@@ -422,6 +425,9 @@ $messages = array(
 'vector-view-history'        => 'Vidi historiju',
 'vector-view-view'           => 'Čitati',
 'vector-view-viewsource'     => 'Pogledaj izvor',
+'actions'                    => 'Akcije',
+'namespaces'                 => 'Imenski prostori',
+'variants'                   => 'Varijante',
 
 # Metadata in edit box
 'metadata_help' => 'Metapodaci:',
@@ -480,6 +486,11 @@ $messages = array(
 'jumpto'            => 'Idi na:',
 'jumptonavigation'  => 'navigacija',
 'jumptosearch'      => 'traži',
+'view-pool-error'   => 'Žao nam je, serveris u trenutno preopterećeni.
+Previše korisnika pokušava da pregleda ovu stranicu.
+Molimo pričekajte trenutak prije nego što ponovno pokušate pristupiti ovoj stranici.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O projektu {{SITENAME}}',

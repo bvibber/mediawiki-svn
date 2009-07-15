@@ -476,7 +476,10 @@ $messages = array(
 'vector-view-edit'           => 'Bewerken',
 'vector-view-history'        => 'Geschiedenis bekijken',
 'vector-view-view'           => 'Lezen',
-'vector-view-viewsource'     => 'Broktekst bekijken',
+'vector-view-viewsource'     => 'Brontekst bekijken',
+'actions'                    => 'Handelingen',
+'namespaces'                 => 'Naamruimten',
+'variants'                   => 'Varianten',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -535,6 +538,11 @@ $messages = array(
 'jumpto'            => 'Ga naar:',
 'jumptonavigation'  => 'navigatie',
 'jumptosearch'      => 'zoeken',
+'view-pool-error'   => 'Sorry, de servers zijn op het moment overbelast.
+Te veel gebruikers proberen deze pagina te bekijken.
+Wacht alstublieft even voordat u opnieuw toegang probeert te krijgen tot deze pagina.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Over {{SITENAME}}',

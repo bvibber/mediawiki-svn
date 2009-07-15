@@ -57,7 +57,7 @@ class Preferences {
 			} elseif( $field->validate( $globalDefault, $user->mOptions ) === true ) {
 				$info['default'] = $globalDefault;
 			} else {
-				throw new MWException( "Global default $globalDefault is invalid for field $name" );
+				throw new MWException( "Global default '$globalDefault' is invalid for field $name" );
 			}
 		}
 
@@ -143,7 +143,7 @@ class Preferences {
 					array(
 						'type' => 'info',
 						'label-message' => 'prefs-registration',
-						'default' => $wgLang->timeanddate( $user->getRegistration() ),
+						'default' => $wgLang->timeanddate( $user->getRegistration(), true ),
 						'section' => 'personal/info',
 					);
 		}
@@ -217,6 +217,7 @@ class Preferences {
 				);
 
 		global $wgContLang, $wgDisableLangConversion;
+		global $wgDisableTitleConversion;
 		/* see if there are multiple language variants to choose from*/
 		$variantArray = array();
 		if( !$wgDisableLangConversion ) {
@@ -355,28 +356,36 @@ class Preferences {
 							'disabled' => $disableEmailPrefs,
 						);
 			}
-
-			$defaultPreferences['enotifwatchlistpages'] =
-					array(
-						'type' => 'toggle',
-						'section' => 'personal/email',
-						'label-message' => 'tog-enotifwatchlistpages',
-						'disabled' => $disableEmailPrefs,
-					);
-			$defaultPreferences['enotifusertalkpages'] =
-					array(
-						'type' => 'toggle',
-						'section' => 'personal/email',
-						'label-message' => 'tog-enotifusertalkpages',
-						'disabled' => $disableEmailPrefs,
-					);
-			$defaultPreferences['enotifminoredits'] =
-					array(
-						'type' => 'toggle',
-						'section' => 'personal/email',
-						'label-message' => 'tog-enotifminoredits',
-						'disabled' => $disableEmailPrefs,
-					);
+			
+			global $wgEnotifWatchlist;
+			if ( $wgEnotifWatchlist ) {
+				$defaultPreferences['enotifwatchlistpages'] =
+						array(
+							'type' => 'toggle',
+							'section' => 'personal/email',
+							'label-message' => 'tog-enotifwatchlistpages',
+							'disabled' => $disableEmailPrefs,
+						);
+			}
+			global $wgEnotifUserTalk;
+			if( $wgEnotifUserTalk ) {
+				$defaultPreferences['enotifusertalkpages'] =
+						array(
+							'type' => 'toggle',
+							'section' => 'personal/email',
+							'label-message' => 'tog-enotifusertalkpages',
+							'disabled' => $disableEmailPrefs,
+						);
+			}
+			if( $wgEnotifUserTalk || $wgEnotifWatchlist ) {
+				$defaultPreferences['enotifminoredits'] =
+						array(
+							'type' => 'toggle',
+							'section' => 'personal/email',
+							'label-message' => 'tog-enotifminoredits',
+							'disabled' => $disableEmailPrefs,
+						);
+			}
 			$defaultPreferences['enotifrevealaddr'] =
 					array(
 						'type' => 'toggle',

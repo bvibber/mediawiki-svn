@@ -149,9 +149,9 @@ $wgUpdates = array(
 		array( 'add_field', 'site_stats',     'ss_active_users',  'patch-ss_active_users.sql' ),
 		array( 'do_active_users_init' ),
 		array( 'add_field', 'ipblocks',     'ipb_allow_usertalk',  'patch-ipb_allow_usertalk.sql' ),
-		array( 'do_unique_pl_tl_il' ),
 
 		// 1.15
+		array( 'do_unique_pl_tl_il' ),
 		array( 'add_table', 'change_tag',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'tag_summary',			   'patch-change_tag.sql' ),
 		array( 'add_table', 'valid_tag',			   'patch-change_tag.sql' ),
@@ -1529,6 +1529,8 @@ function do_postgres_updates() {
 		array("revision",      "rev_parent_id",        "INTEGER DEFAULT NULL"),
 		array("site_stats",    "ss_active_users",      "INTEGER DEFAULT '-1'"),
 		array("user_newtalk",  "user_last_timestamp",  "TIMESTAMPTZ"),
+		array("logging",       "log_user_text",        "TEXT NOT NULL DEFAULT ''"),
+		array("logging",       "log_page",             "INTEGER"),
 	);
 
 
@@ -1597,6 +1599,8 @@ function do_postgres_updates() {
 		array("recentchanges", "rc_timestamp_bot",   "(rc_timestamp) WHERE rc_bot = 0"),
 		array("templatelinks", "templatelinks_from", "(tl_from)"),
 		array("watchlist",     "wl_user",            "(wl_user)"),
+		array("logging",       "logging_user_type_time", "(log_user, log_type, log_timestamp)"),
+		array("logging",       "logging_page_id_time",   "(log_page,log_timestamp)"),
 	);
 
 	$newrules = array(

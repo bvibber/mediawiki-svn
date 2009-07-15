@@ -621,6 +621,12 @@ new pages
 saved, that is before insertNewArticle() is called
 &$editpage_Obj: the current EditPage object
 
+'EditPage::importFormData': allow extensions to read additional data
+posted in the form
+$editpage: EditPage instance 
+$request: Webrequest
+return value is ignored (should always return true)
+
 'EditPage::showEditForm:fields': allows injection of form field into edit form
 &$editor: the EditPage instance for reference
 &$out: an OutputPage instance to write to
@@ -653,6 +659,10 @@ textarea in the edit form
 &$editpage: The current EditPage object
 &$checks: Array of edit checks like "watch this page"/"minor edit"
 &$tabindex: HTML tabindex of the last edit check/button
+
+'EditPageBeforeEditToolbar': allows modifying the edit toolbar above the
+textarea in the edit form
+&$toolbar: The toolbar HTMl
 
 'EditPageCopyrightWarning': Allow for site and per-namespace customization of contribution/copyright notice.
 $title: title of page being edited
@@ -1254,6 +1264,11 @@ $nav_urls: array of tabs
 [See http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/examples/Content_action.php
 for an example]
 
+'SkinTemplateNavigation': Alter the structured navigation links in SkinTemplates
+&$sktemplate: SkinTemplate object
+&$links: Structured navigation links
+This is used to alter the navigation for skins which use buildNavigationUrls such as Vector.
+
 'SkinTemplateOutputPageBeforeExec': Before SkinTemplate::outputPage()
 starts page output
 &$sktemplate: SkinTemplate object
@@ -1530,7 +1545,7 @@ $template: SimpleTemplate instance for the form
 
 'UserLoginMailPassword': Block users from emailing passwords
 $name: the username to email the password of.
-&$error: out-param ÐÊthe error message to return.
+&$error: out-param - the error message to return.
 
 'UserLogout': before a user logs out
 $user: the user object that is about to be logged out
@@ -1575,6 +1590,13 @@ authentification timestamp
 'UserToggles': called when initialising User::$mToggles, use this to add
 new toggles
 $toggles: array of toggles to add
+
+'VectorTemplateToolboxEnd': Called by Vector skin after toolbox links have
+been rendered (useful for adding more)
+Note: this is only run for the Vector skin.  To add items to the toolbox
+for all 'SkinTemplate'-type skins, use the SkinTemplateToolboxEnd hook
+instead.
+$tools: array of tools
 
 'WantedPages::getSQL': called in WantedPagesPage::getSQL(), can be used to
 alter the SQL query which gets the list of wanted pages

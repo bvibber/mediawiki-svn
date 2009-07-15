@@ -452,12 +452,16 @@ class DatabaseSqlite extends DatabaseBase {
 		return $s;
 	}
 
-	/** No-op */
-	public function setBigSelects( $value = true ) {}
-
 	public function lockTables( $read, $write, $method, $lowPriority = true ) {}
 
 	public function unlockTables( $method ) {}
+	
+	/*
+	 * Build a concatenation list to feed into a SQL query
+	 */
+	function buildConcat( $stringList ) {
+		return '(' . implode( ') || (', $stringList ) . ')';
+	}
 
 } // end DatabaseSqlite class
 

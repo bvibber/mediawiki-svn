@@ -187,6 +187,9 @@ $wgMessageStructure = array(
 		'vector-view-history',
 		'vector-view-view',
 		'vector-view-viewsource',
+		'actions',
+		'namespaces',
+		'variants',
 	),
 	'metadata_help' => array(
 		'metadata_help',
@@ -248,6 +251,7 @@ $wgMessageStructure = array(
 		'jumpto',
 		'jumptonavigation',
 		'jumptosearch',
+		'view-pool-error',
 	),
 	'links' => array(
 		'aboutsite',
@@ -350,6 +354,7 @@ $wgMessageStructure = array(
 		'readonly_lag',
 		'internalerror',
 		'internalerror_info',
+		'fileappenderror',
 		'filecopyerror',
 		'filerenameerror',
 		'filedeleteerror',
@@ -486,6 +491,7 @@ $wgMessageStructure = array(
 		'media_tip',
 		'sig_tip',
 		'hr_tip',
+		'add_media_wizard',
 	),
 	'edit' => array(
 		'summary',
@@ -1242,6 +1248,9 @@ $wgMessageStructure = array(
 		'upload-file-error-text',
 		'upload-misc-error',
 		'upload-misc-error-text',
+		'upload-too-many-redirects',
+		'upload-unknown-size',
+		'upload-http-error',
 	),
 	'upload-curl-errors' => array(
 		'upload-curl-error6',
@@ -2054,8 +2063,11 @@ $wgMessageStructure = array(
 		'allmessagescurrent',
 		'allmessagestext',
 		'allmessagesnotsupportedDB',
-		'allmessagesfilter',
-		'allmessagesmodified',
+		'allmessages-filter',
+		'allmessages-filter-unmodified',
+		'allmessages-filter-all',
+		'allmessages-filter-modified',
+		'allmessages-prefix',
 	),
 	'thumbnails' => array(
 		'thumbnail-more',

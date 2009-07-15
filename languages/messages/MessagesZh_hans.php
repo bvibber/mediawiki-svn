@@ -1,5 +1,5 @@
 <?php
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文(简化字)‬)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -365,6 +365,9 @@ $messages = array(
 'vector-view-history'        => '查看历史',
 'vector-view-view'           => '阅读',
 'vector-view-viewsource'     => '查看源代码',
+'actions'                    => '动作',
+'namespaces'                 => '名字空间',
+'variants'                   => '变换',
 
 # Metadata in edit box
 'metadata_help' => '元数据：',
@@ -423,6 +426,11 @@ $messages = array(
 'jumpto'            => '跳转到：',
 'jumptonavigation'  => '导航',
 'jumptosearch'      => '搜索',
+'view-pool-error'   => '抱歉，服务器在这段时间中已经超出负荷。
+太多用户尝试查看这个页面。
+在尝试访问这个页面之前请再稍等一会。
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '关于{{SITENAME}}',
@@ -531,6 +539,7 @@ MySQL返回错误“$3: $4”。',
 'readonly_lag'         => '附属数据库服务器正在将缓存更新到主服务器，数据库已被自动锁定',
 'internalerror'        => '内部错误',
 'internalerror_info'   => '内部错误：$1',
+'fileappenderror'      => '不能附加$1到$2',
 'filecopyerror'        => '无法复制文件"$1"到"$2"。',
 'filerenameerror'      => '无法重命名文件"$1" 到"$2"。',
 'filedeleteerror'      => '无法删除文件 "$1"。',
@@ -660,24 +669,25 @@ $2',
 'resetpass-temp-password'   => '临时密码：',
 
 # Edit page toolbar
-'bold_sample'     => '粗体文字',
-'bold_tip'        => '粗体文字',
-'italic_sample'   => '斜体文字',
-'italic_tip'      => '斜体文字',
-'link_sample'     => '链接标题',
-'link_tip'        => '内部链接',
-'extlink_sample'  => 'http://www.example.com 链接标题',
-'extlink_tip'     => '外部链接(加前缀 http://)',
-'headline_sample' => '大标题文字',
-'headline_tip'    => '2级标题文字',
-'math_sample'     => '在此插入数学公式',
-'math_tip'        => '插入数学公式 (LaTeX)',
-'nowiki_sample'   => '在此插入非格式文本',
-'nowiki_tip'      => '插入非格式文本',
-'image_tip'       => '嵌入文件',
-'media_tip'       => '文件链接',
-'sig_tip'         => '带有时间的签名',
-'hr_tip'          => '水平线 (小心使用)',
+'bold_sample'      => '粗体文字',
+'bold_tip'         => '粗体文字',
+'italic_sample'    => '斜体文字',
+'italic_tip'       => '斜体文字',
+'link_sample'      => '链接标题',
+'link_tip'         => '内部链接',
+'extlink_sample'   => 'http://www.example.com 链接标题',
+'extlink_tip'      => '外部链接(加前缀 http://)',
+'headline_sample'  => '大标题文字',
+'headline_tip'     => '2级标题文字',
+'math_sample'      => '在此插入数学公式',
+'math_tip'         => '插入数学公式 (LaTeX)',
+'nowiki_sample'    => '在此插入非格式文本',
+'nowiki_tip'       => '插入非格式文本',
+'image_tip'        => '嵌入文件',
+'media_tip'        => '文件链接',
+'sig_tip'          => '带有时间的签名',
+'hr_tip'           => '水平线 (小心使用)',
+'add_media_wizard' => '加入媒体向导',
 
 # Edit pages
 'summary'                          => '摘要：',
@@ -737,7 +747,7 @@ $2',
 'accmailtext'                      => "'$1'的密码已经被发送到$2。",
 'newarticle'                       => '(新)',
 'newarticletext'                   => '您进入了一个尚未创建的页面。
-要创建该页面，请在下面的编辑框中输入内容(详情参见[[Help:帮助|帮助]])。
+要创建该页面，请在下面的编辑框中输入内容(详情参见[[{{MediaWiki:Helppage}}|帮助]])。
 如果您是不小心来到此页面，直接点击您浏览器中的"返回"按钮返回。',
 'anontalkpagetext'                 => "---- ''这是一个还未建立账户的匿名用户的讨论页, 因此我们只能用IP地址来与他或她联络。该IP地址可能由几名用户共享。如果您是一名匿名用户并认为此页上的评语与您无关，请[[Special:UserLogin/signup|创建新账户]]或[[Special:UserLogin|登录]]以避免在未来与其他匿名用户混淆。''",
 'noarticletext'                    => '此页目前没有内容，您可以在其它页[[Special:Search/{{PAGENAME}}|搜索此页标题]]或[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} 编辑此页]。',
@@ -817,7 +827,7 @@ $2',
 {{GENDER:你|妳|你}}应该要考虑一下继续编辑这一个页面是否合适。
 为方便起见，这一个页面的删除记录已经在下面提供:",
 'moveddeleted-notice'              => '这个页面已经删除。
-这个页面的删除日志已在下面提供以便参考。',
+这个页面的删除和移动日志已在下面提供以便参考。',
 'log-fulllog'                      => '查看完整日志',
 'edit-hook-aborted'                => '编辑被钩取消。
 它并无给出解释。',
@@ -1168,7 +1178,7 @@ $1",
 'stub-threshold'                => '<a href="#" class="stub">短页面链接</a>格式门槛值（字节）：',
 'recentchangesdays'             => '最近更改中的显示日数：',
 'recentchangesdays-max'         => '(最大 $1 日)',
-'recentchangescount'            => '最近更改、页面历史及日志页面中的默认编辑数：',
+'recentchangescount'            => '默认显示的编辑数：',
 'prefs-help-recentchangescount' => '这个包括最近更改、页面历史以及日志。',
 'savedprefs'                    => '您的个人参数设置已经保存。',
 'timezonelegend'                => '时区：',
@@ -1506,12 +1516,15 @@ $1",
 为方便起见，这一个文件的删除记录已经在下面提供:",
 'filename-bad-prefix'         => '您上传的文件名称是以<strong>“$1”</strong>作为开头，通常这种没有含意的文件名称是由数码相机中自动编排。请在您的文件中重新选择一个更加有意义的文件名称。',
 
-'upload-proto-error'      => '协议错误',
-'upload-proto-error-text' => '远程上传要求 URL 以 <code>http://</code> 或 <code>ftp://</code> 开头。',
-'upload-file-error'       => '内部错误',
-'upload-file-error-text'  => '当试图在服务器上创建临时文件时发生内部错误。请与[[Special:ListUsers/sysop|管理员]]联系。',
-'upload-misc-error'       => '未知的上传错误',
-'upload-misc-error-text'  => '在上传时发生未知的错误。请确认您使用了正确并可访问的URL，然后进行重试。如果问题仍然存在，请与[[Special:ListUsers/sysop|管理员]]联系。',
+'upload-proto-error'        => '协议错误',
+'upload-proto-error-text'   => '远程上传要求 URL 以 <code>http://</code> 或 <code>ftp://</code> 开头。',
+'upload-file-error'         => '内部错误',
+'upload-file-error-text'    => '当试图在服务器上创建临时文件时发生内部错误。请与[[Special:ListUsers/sysop|管理员]]联系。',
+'upload-misc-error'         => '未知的上传错误',
+'upload-misc-error-text'    => '在上传时发生未知的错误。请确认您使用了正确并可访问的URL，然后进行重试。如果问题仍然存在，请与[[Special:ListUsers/sysop|管理员]]联系。',
+'upload-too-many-redirects' => '在网址中有太多重新定向',
+'upload-unknown-size'       => '未知的大小',
+'upload-http-error'         => '已发生一个HTTP错误：$1',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => '无法访问 URL',
@@ -1661,7 +1674,8 @@ Template:消除歧義',
 'disambiguations-text' => '以下的页面都有到<b>消歧义页</b>的链接, 但它们应该是链到适当的标题。<br />一个页面会被视为消歧义页如果它是链自[[MediaWiki:Disambiguationspage]]。',
 
 'doubleredirects'            => '双重重定向页面',
-'doubleredirectstext'        => '这一页列出所有重定向页面重定向到另一个重定向页的页面。每一行都包含到第一和第二个重定向页面的链接，以及第二个重定向页面的目标，通常显示的都会是"真正"的目标页面，也就是第一个重定向页面应该指向的页面。',
+'doubleredirectstext'        => '这一页列出所有重定向页面重定向到另一个重定向页的页面。每一行都包含到第一和第二个重定向页面的链接，以及第二个重定向页面的目标，通常显示的都会是"真正"的目标页面，也就是第一个重定向页面应该指向的页面。
+<s>已划去</s>的为已经解决之项目。',
 'double-redirect-fixed-move' => '[[$1]]已经完成移动，它现在重定向到[[$2]]。',
 'double-redirect-fixer'      => '重定向修正器',
 
@@ -1774,7 +1788,7 @@ Template:消除歧義',
 
 # Special:Categories
 'categories'                    => '页面分类',
-'categoriespagetext'            => '以下的分类中包含了页面或媒体。
+'categoriespagetext'            => '以下的{{PLURAL:$1|分类}}中包含了页面或媒体。
 [[Special:UnusedCategories|未用分类]]不会在这里列示。
 请同时参阅[[Special:WantedCategories|需要的分类]]。',
 'categoriesfrom'                => '显示由此项起之分类：',
@@ -2358,15 +2372,18 @@ $1已经被封锁。您是否想更改这个设置？',
 'export-pagelinks'  => '包含链接页面的搜索深度：',
 
 # Namespace 8 related
-'allmessages'               => '系统界面',
-'allmessagesname'           => '名称',
-'allmessagesdefault'        => '默认的信息文字',
-'allmessagescurrent'        => '现时的信息文字',
-'allmessagestext'           => '这里列出所有可定制的系统界面。
+'allmessages'                   => '系统界面',
+'allmessagesname'               => '名称',
+'allmessagesdefault'            => '默认的信息文字',
+'allmessagescurrent'            => '现时的信息文字',
+'allmessagestext'               => '这里列出所有可定制的系统界面。
 如果想贡献正宗的MediaWiki本地化的话，请参阅[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]以及[http://translatewiki.net translatewiki.net]。',
-'allmessagesnotsupportedDB' => "这个页面无法使用，因为'''\$wgUseDatabaseMessages'''已被设置关闭。",
-'allmessagesfilter'         => '按消息名称筛选：',
-'allmessagesmodified'       => '仅显示已修改的',
+'allmessagesnotsupportedDB'     => "这个页面无法使用，因为'''\$wgUseDatabaseMessages'''已被设置关闭。",
+'allmessages-filter'            => '以自定状况过滤：',
+'allmessages-filter-unmodified' => '未修改',
+'allmessages-filter-all'        => '所有',
+'allmessages-filter-modified'   => '曾修改',
+'allmessages-prefix'            => '以前缀过滤：',
 
 # Thumbnails
 'thumbnail-more'           => '放大',

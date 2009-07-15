@@ -115,7 +115,8 @@ $magicWords = array(
 	'forcetoc'              => array( '0', '__VŽDYOBSAH__', '__FORCETOC__' ),
 	'toc'                   => array( '0', '__OBSAH__', '__TOC__' ),
 	'noeditsection'         => array( '0', '__BEZEDITOVATČÁST__', '__NOEDITSECTION__' ),
-	'currentmonth'          => array( '1', 'AKTUÁLNÍMĚSÍC', 'CURRENTMONTH', 'CURRENTMONTH2' ),
+	'currentmonth'          => array( '1', 'AKTUÁLNÍMĚSÍC', 'AKTUÁLNÍMĚSÍC2', 'CURRENTMONTH', 'CURRENTMONTH2' ),
+	'currentmonth1'         => array( '1', 'AKTUÁLNÍMĚSÍC1', 'CURRENTMONTH1' ),
 	'currentmonthname'      => array( '1', 'AKTUÁLNÍMĚSÍCJMÉNO', 'CURRENTMONTHNAME' ),
 	'currentmonthnamegen'   => array( '1', 'AKTUÁLNÍMĚSÍCGEN', 'CURRENTMONTHNAMEGEN' ),
 	'currentmonthabbrev'    => array( '1', 'AKTUÁLNÍMĚSÍCZKR', 'CURRENTMONTHABBREV' ),
@@ -125,7 +126,8 @@ $magicWords = array(
 	'currentyear'           => array( '1', 'AKTUÁLNÍROK', 'CURRENTYEAR' ),
 	'currenttime'           => array( '1', 'AKTUÁLNÍČAS', 'CURRENTTIME' ),
 	'currenthour'           => array( '1', 'AKTUÁLNÍHODINA', 'CURRENTHOUR' ),
-	'localmonth'            => array( '1', 'MÍSTNÍMĚSÍC', 'LOCALMONTH', 'LOCALMONTH2' ),
+	'localmonth'            => array( '1', 'MÍSTNÍMĚSÍC', 'MÍSTNÍMĚSÍC2', 'LOCALMONTH', 'LOCALMONTH2' ),
+	'localmonth1'           => array( '1', 'MÍSTNÍMĚSÍC1', 'LOCALMONTH1' ),
 	'localmonthname'        => array( '1', 'MÍSTNÍMĚSÍCJMÉNO', 'LOCALMONTHNAME' ),
 	'localmonthnamegen'     => array( '1', 'MÍSTNÍMĚSÍCGEN', 'LOCALMONTHNAMEGEN' ),
 	'localmonthabbrev'      => array( '1', 'MÍSTNÍMĚSÍCZKR', 'LOCALMONTHABBREV' ),
@@ -139,6 +141,7 @@ $magicWords = array(
 	'numberofarticles'      => array( '1', 'POČETČLÁNKŮ', 'NUMBEROFARTICLES' ),
 	'numberoffiles'         => array( '1', 'POČETSOUBORŮ', 'NUMBEROFFILES' ),
 	'numberofusers'         => array( '1', 'POČETUŽIVATELŮ', 'NUMBEROFUSERS' ),
+	'numberofactiveusers'   => array( '1', 'POČETAKTIVNÍCHUŽIVATELŮ', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'         => array( '1', 'POČETEDITACÍ', 'NUMBEROFEDITS' ),
 	'pagename'              => array( '1', 'NÁZEVSTRANY', 'PAGENAME' ),
 	'pagenamee'             => array( '1', 'NÁZEVSTRANYE', 'PAGENAMEE' ),
@@ -214,6 +217,9 @@ $magicWords = array(
 	'defaultsort'           => array( '1', 'KLÍČŘAZENÍ:', 'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),
 	'filepath'              => array( '0', 'CESTAKSOUBORU', 'FILEPATH:' ),
 	'hiddencat'             => array( '1', '__SKRÝTKAT__', '__HIDDENCAT__' ),
+	'pagesincategory'       => array( '1', 'STRÁNEKVKATEGORII', 'STRÁNEKVKAT', 'PAGESINCATEGORY', 'PAGESINCAT' ),
+	'pagesize'              => array( '1', 'VELIKOSTSTRÁNKY', 'PAGESIZE' ),
+	'protectionlevel'       => array( '1', 'ÚROVEŇZAMČENÍ', 'PROTECTIONLEVEL' ),
 );
 
 /**
@@ -483,6 +489,9 @@ $messages = array(
 'vector-view-history'        => 'Zobrazit historii',
 'vector-view-view'           => 'Číst',
 'vector-view-viewsource'     => 'Zobrazit zdrojový kód',
+'actions'                    => 'Akce',
+'namespaces'                 => 'Jmenné prostory',
+'variants'                   => 'Varianty',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -541,6 +550,11 @@ $messages = array(
 'jumpto'            => 'Přejít na:',
 'jumptonavigation'  => 'navigace',
 'jumptosearch'      => 'hledání',
+'view-pool-error'   => 'Promiňte, servery jsou momentálně přetíženy.
+Tuto stránku si právě prohlíží příliš mnoho uživatelů.
+Před tím, než ji zkusíte načíst znovu, chvíli počkejte.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O&nbsp;{{grammar:6sg|{{SITENAME}}}}',
@@ -1212,7 +1226,7 @@ Ujistěte se, že tato změna udrží souvislost a posloupnost verzí v historii
 'searchprofile-project'            => 'Nápověda a projektové stránky',
 'searchprofile-images'             => 'Multimédia',
 'searchprofile-everything'         => 'Všechno',
-'searchprofile-advanced'           => 'Pokročilé',
+'searchprofile-advanced'           => 'Rozšířené',
 'searchprofile-articles-tooltip'   => 'Prohledávat: $1',
 'searchprofile-project-tooltip'    => 'Prohledávat: $1',
 'searchprofile-images-tooltip'     => 'Hledat obrázky a další soubory',

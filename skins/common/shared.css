@@ -3,7 +3,11 @@
  * careful what you put in here, since what looks good in one skin may not in
  * another, but don't ignore the poor non-Monobook users either.
  */
-.mw-plusminus-null { color: #aaa; }
+
+/* Colored watchlist and recent changes numbers */
+.mw-plusminus-pos { color: #006400; } /* dark green */
+.mw-plusminus-neg { color: #8b0000; } /* dark red */
+.mw-plusminus-null { color: #aaa; } /* gray */
 
 .texvc { direction: ltr; unicode-bidi: embed; }
 img.tex { vertical-align: middle; }
@@ -55,6 +59,23 @@ li span.deleted, span.history-deleted {
 	text-decoration: line-through;
 	color: #888;
 	font-style: italic;
+}
+
+/**
+ * Patrol stuff
+ */
+.not-patrolled {
+	background-color: #ffa;
+}
+
+span.unpatrolled {
+	font-weight: bold;
+	color: red;
+}
+
+div.patrollink {
+	font-size: 75%;
+	text-align: right;
 }
 
 /**
@@ -138,6 +159,9 @@ div.searchresult {
 	float:left;
 	padding-left: 0.25em;
 }
+.rtl .mw-search-formheader div.search-types {
+	float: right;
+}
 .mw-search-formheader div.search-types ul {
 	margin: 0 !important;
 	padding: 0 !important;
@@ -193,9 +217,16 @@ fieldset#mw-searchoptions h4 {
 	margin: 0;
 	float: left;
 }
+.rtl fieldset#mw-searchoptions h4 {
+	float: right;
+}
 fieldset#mw-searchoptions div#mw-search-togglebox {
 	float: right;
 }
+.rtl fieldset#mw-searchoptions div#mw-search-togglebox {
+	float: left;
+}
+
 fieldset#mw-searchoptions div#mw-search-togglebox label {
 	margin-right: 0.25em;
 }
@@ -209,7 +240,13 @@ fieldset#mw-searchoptions table {
 fieldset#mw-searchoptions table td {
 	padding-right: 1em;
 }
+.rtl fieldset#mw-searchoptions table td {
+	padding-left: 1em;
+	padding-right: 0;
+}
 body.rtl fieldset#mw-searchoptions table {
+	margin-right: 0;
+	margin-left: 3em;
 	float: right;
 }
 fieldset#mw-searchoptions div.divider {
@@ -515,6 +552,11 @@ table.wikitable {
     font-weight: bold;
 }
 
+/* hide initially collapsed collapsable tables */
+table.collapsed tr.collapsable {
+	display: none;
+}
+
 /* success and error messages */
 .success {
 	color: green;
@@ -552,6 +594,12 @@ table.wikitable {
 	clear: both;
 }
 
+#mw_trackbacks {
+	border: solid 1px #bbbbff;
+	background-color: #eeeeff;
+	padding: 0.2em;
+}
+
 /*
   Table pager (e.g. Special:Imagelist)
   - remove underlines from the navigation link
@@ -575,3 +623,78 @@ table.wikitable {
 .imagelist .TablePager_col_links { background-color: #eeeeff }
 .imagelist .TablePager_col_img_description { white-space: normal }
 .imagelist th.TablePager_sort { background-color: #ccccff }
+
+ /* Allmessages table */
+#allmessagestable .allmessages-customised td.am_default {
+	background-color: #fcffc4;
+}
+
+#allmessagestable tr.allmessages-customised:hover td.am_default {
+	background-color: #faff90;
+}
+
+#allmessagestable td.am_actual {
+	background-color: #e2ffe2;
+}
+
+#allmessagestable tr.allmessages-customised:hover + tr.allmessages-customised td.am_actual {
+	background-color: #b1ffb1;
+}
+
+/* filetoc */
+ul#filetoc {
+	text-align: center;
+	border: 1px solid #aaaaaa;
+	background-color: #f9f9f9;
+	padding: 5px;
+	font-size: 95%;
+	margin-bottom: 0.5em;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#filetoc li {
+	display: inline;
+	list-style-type: none;
+	padding-right: 2em;
+}
+
+/* Classes for EXIF data display */
+table.mw_metadata {
+	font-size: 0.8em;
+	margin-left: 0.5em;
+	margin-bottom: 0.5em;
+	width: 300px;
+}
+
+table.mw_metadata caption {
+	font-weight: bold;
+}
+
+table.mw_metadata th {
+	font-weight: normal;
+}
+
+table.mw_metadata td {
+	padding: 0.1em;
+}
+
+table.mw_metadata {
+	border: none;
+	border-collapse: collapse;
+}
+
+table.mw_metadata td, table.mw_metadata th {
+	text-align: center;
+	border: 1px solid #aaaaaa;
+	padding-left: 0.1em;
+	padding-right: 0.1em;
+}
+
+table.mw_metadata th {
+	background-color: #f9f9f9;
+}
+
+table.mw_metadata td {
+	background-color: #fcfcfc;
+}

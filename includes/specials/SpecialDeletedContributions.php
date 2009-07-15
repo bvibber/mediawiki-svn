@@ -71,9 +71,10 @@ class DeletedContribsPager extends IndexPager {
 		if ( isset( $this->mNavigationBar ) ) {
 			return $this->mNavigationBar;
 		}
+		$fmtLimit = $wgLang->formatNum( $this->mLimit );
 		$linkTexts = array(
-			'prev' => wfMsgHtml( 'pager-newer-n', $this->mLimit ),
-			'next' => wfMsgHtml( 'pager-older-n', $this->mLimit ),
+			'prev' => wfMsgExt( 'pager-newer-n', array( 'escape', 'parsemag' ), $fmtLimit ),
+			'next' => wfMsgExt( 'pager-older-n', array( 'escape', 'parsemag' ), $fmtLimit ),
 			'first' => wfMsgHtml( 'histlast' ),
 			'last' => wfMsgHtml( 'histfirst' )
 		);
@@ -323,7 +324,7 @@ class DeletedContributionsPage extends SpecialPage {
 		$sk = $wgUser->getSkin();
 
 		if ( 0 == $id ) {
-			$user = $nt->getText();
+			$user = htmlspecialchars( $nt->getText() );
 		} else {
 			$user = $sk->link( $nt, htmlspecialchars( $nt->getText() ) );
 		}

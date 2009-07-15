@@ -417,6 +417,9 @@ $messages = array(
 'vector-view-history'        => 'Паказаць гісторыю',
 'vector-view-view'           => 'Чытаць',
 'vector-view-viewsource'     => 'Паказаць крыніцу',
+'actions'                    => 'Дзеяньні',
+'namespaces'                 => 'Прасторы назваў',
+'variants'                   => 'Варыянты',
 
 # Metadata in edit box
 'metadata_help' => 'Мэтазьвесткі:',
@@ -475,6 +478,11 @@ $messages = array(
 'jumpto'            => 'Перайсьці да:',
 'jumptonavigation'  => 'навігацыя',
 'jumptosearch'      => 'пошук',
+'view-pool-error'   => 'Прабачце, у цяперашні момант сэрвэры перагружаныя.
+Занадта шмат удзельнікаў спрабуюць праглядзець гэтую старонку.
+Калі ласка, пачакайце і паспрабуйце атрымаць доступ пазьней.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Пра {{GRAMMAR:вінавальны|{{SITENAME}}}}',
@@ -1178,7 +1186,7 @@ $1",
 'search-result-score'              => 'Адпаведнасьць: $1%',
 'search-redirect'                  => '(перанакіраваньне $1)',
 'search-section'                   => '(сэкцыя $1)',
-'search-suggest'                   => 'Вы мелі на ўвазе: $1',
+'search-suggest'                   => 'Магчыма, вы мелі на ўвазе: $1',
 'search-interwiki-caption'         => 'Сумежныя праекты',
 'search-interwiki-default'         => 'вынікі з $1:',
 'search-interwiki-more'            => '(яшчэ)',

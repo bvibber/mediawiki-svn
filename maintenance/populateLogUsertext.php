@@ -79,3 +79,4 @@ class PopulateLogUsertext extends Maintenance {
 
 $maintClass = "PopulateLogUsertext";
 require_once( DO_MAINTENANCE );
+

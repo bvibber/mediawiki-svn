@@ -516,6 +516,24 @@ if( !( $conf->turck || $conf->eaccel || $conf->apc || $conf->xcache ) ) {
 		cannot use these for object caching.</li>' );
 }
 
+$conf->phpCliPath = false;
+$phpClilocations = array_merge(
+	array(
+		"/usr/bin",
+		"/usr/local/bin",
+		"/opt/csw/bin",
+		"/usr/gnu/bin",
+		"/usr/sfw/bin" ),
+	explode( PATH_SEPARATOR, getenv( "PATH" ) ) );
+$phpClinames = array( "php", "php.exe" );
+foreach ($phpClilocations as $loc) {
+	$exe = locate_executable($loc, $phpClinames);
+	if ($exe !== false) {
+		$conf->phpCliPath= $exe;
+		break;
+	}
+}
+
 $conf->diff3 = false;
 $diff3locations = array_merge(
 	array(
@@ -1346,7 +1364,7 @@ if( count( $errs ) ) {
 		<ul class="plain">
 		<li><?php aField( $conf, "License", "No license metadata", "radio", "none" ); ?></li>
 		<li><?php aField( $conf, "License", "Public Domain", "radio", "pd" ); ?></li>
-		<li><?php aField( $conf, "License", "GNU Free Documentation License 1.2 (Wikipedia-compatible)", "radio", "gfdl1_2" ); ?></li>
+		<li><?php aField( $conf, "License", "GNU Free Documentation License 1.2", "radio", "gfdl1_2" ); ?></li>
 		<li><?php aField( $conf, "License", "GNU Free Documentation License 1.3", "radio", "gfdl1_3" ); ?></li>
 		<li><?php
 			aField( $conf, "License", "A Creative Commons license - ", "radio", "cc" );
@@ -1964,6 +1982,8 @@ if ( \$wgCommandLineMode ) {
 # \$wgRightsCode = \"{$slconf['RightsCode']}\"; # Not yet used
 
 \$wgDiff3 = \"{$slconf['diff3']}\";
+
+\$wgPhpCliPath = \"{$slconf['phpCliPath']}\";
 
 # When you make changes to this configuration file, this will make
 # sure that cached pages are cleared.

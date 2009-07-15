@@ -83,7 +83,15 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		$this->addWhere('cl_from=page_id');
 		$this->setContinuation($params['continue'], $params['dir']);
 		$this->addWhereFld('cl_to', $categoryTitle->getDBkey());
-		$this->addWhereFld('page_namespace', $params['namespace']);
+		# Scanning large datasets for rare categories sucks, and I already told 
+		# how to have efficient subcategory access :-) ~~~~ (oh well, domas)
+		global $wgMiserMode;
+		$miser_ns = array();
+		if ($wgMiserMode) { 
+			$miser_ns = $params['namespace'];
+		} else {
+			$this->addWhereFld('page_namespace', $params['namespace']);
+		}
 		if($params['sort'] == 'timestamp')
 			$this->addWhereRange('cl_timestamp', ($params['dir'] == 'asc' ? 'newer' : 'older'), $params['start'], $params['end']);
 		else
@@ -111,6 +119,13 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 					$this->setContinueEnumParameter('continue', $this->getContinueStr($row, $lastSortKey));
 				break;
 			}
+
+			// Since domas won't tell anyone what he told long ago, apply 
+			// cmnamespace here. This means the query may return 0 actual 
+			// results, but on the other hand it could save returning 5000 
+			// useless results to the client. ~~~~
+			if (count($miser_ns) && !in_array($row->page_namespace, $miser_ns))
+				continue;
 
 			if (is_null($resultPageSet)) {
 				$vals = array();
@@ -233,7 +248,8 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 	}
 
 	public function getParamDescription() {
-		return array (
+		global $wgMiserMode;
+		$desc = array (
 			'title' => 'Which category to enumerate (required). Must include Category: prefix',
 			'prop' => 'What pieces of information to include',
 			'namespace' => 'Only include pages in these namespaces',
@@ -246,6 +262,14 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 			'continue' => 'For large categories, give the value retured from previous query',
 			'limit' => 'The maximum number of pages to return.',
 		);
+		if ($wgMiserMode) {
+			$desc['namespace'] = array(
+				$desc['namespace'],
+				'NOTE: Due to $wgMiserMode, using this may result in fewer than "limit" results',
+				'returned before continuing; in extreme cases, zero results may be returned.',
+			);
+		}
+		return $desc;
 	}
 
 	public function getDescription() {

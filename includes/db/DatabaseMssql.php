@@ -991,9 +991,6 @@ class DatabaseMssql extends DatabaseBase {
 	public function getSearchEngine() {
 		return "SearchEngineDummy";
 	}
-
-	/** No-op */
-	public function setBigSelects( $value = true ) {}
 }
 
 /**
