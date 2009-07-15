@@ -29,11 +29,11 @@ public class WikiTextAnalyzer_yywiki_Test extends WikiTextAnalyzerTestBase {
 		assertTestCase(page, "conceptType", ConceptType.OTHER);
 
 		List<WikiTextAnalyzer.WikiLink> links = new ArrayList<WikiTextAnalyzer.WikiLink>();
-		links.add(analyzer.newLink(null, Namespace.MAIN, "Yar", null, "Yar", true, LinkMagic.NONE));
-		links.add(analyzer.newLink(null, Namespace.CATEGORY, "Yoo", null, "*", false, LinkMagic.CATEGORY));
-		links.add(analyzer.newLink(null, Namespace.CATEGORY, "Yofos", null, "Yoo", true, LinkMagic.CATEGORY));
-		links.add(analyzer.newLink("xx", Namespace.MAIN, "Xo", null, "xx:Xo", true, LinkMagic.LANGUAGE));
-		links.add(analyzer.newLink("zz", Namespace.MAIN, "Zoo", null, "zz:Zoo", true, LinkMagic.LANGUAGE));
+		links.add(analyzer.newLink(null, "Yar", Namespace.MAIN, "Yar", null, "Yar", true, LinkMagic.NONE));
+		links.add(analyzer.newLink(null, "Category:Yoo", Namespace.CATEGORY, "Yoo", null, "*", false, LinkMagic.CATEGORY));
+		links.add(analyzer.newLink(null, "Category:Yofos", Namespace.CATEGORY, "Yofos", null, "Yoo", true, LinkMagic.CATEGORY));
+		links.add(analyzer.newLink("xx", "Xo", Namespace.MAIN, "Xo", null, "xx:Xo", true, LinkMagic.LANGUAGE));
+		links.add(analyzer.newLink("zz", "Zoo", Namespace.MAIN, "Zoo", null, "zz:Zoo", true, LinkMagic.LANGUAGE));
 		assertTestCase(page, "links", links);
 		
 		Set<String> categories = new HashSet<String>();

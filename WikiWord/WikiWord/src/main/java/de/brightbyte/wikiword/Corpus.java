@@ -85,14 +85,10 @@ public class Corpus extends DatasetIdentifier {
 	 * as supplied at http://download.wikimedia.org, this method should return a Corpus instance
 	 * appropriate for the wiki the dump was generated for.
 	 **/
-	public static Corpus forFile(String collection, File f, String[] configPackages) {
-		return forName(collection, guessCorpusName(f), configPackages);
+	public static Corpus forFile(String collection, File f, TweakSet tweaks) {
+		return forName(collection, guessCorpusName(f), tweaks);
 	}
 
-	public static Corpus forName(String collection, String name, TweakSet tweaks) {
-		return forName(collection, name, getConfigPackages(tweaks));
-	}
-	
 	/**
 	 * returns a new Corpus instance corresponding to the wiki project
 	 * with the given name. The name may be given as a domain name following
@@ -103,27 +99,29 @@ public class Corpus extends DatasetIdentifier {
 	 * the language code "de", the family "wikipedia", the domain "de.wikipedia.org"
 	 * and the URI "http://de.wikipedia.org".
 	 */
-	public static Corpus forName(String collection, String name, String[] configPackages) {
+	public static Corpus forName(String collection, String name, TweakSet tweaks) {
+		String[] configPackages = getConfigPackages(tweaks);
+
 		String domain = name;
-		if (domain.indexOf('.')<0) domain = guessCorpusDomain(domain);
+		if (domain.indexOf('.')<0) domain = guessCorpusDomain(domain, tweaks);
 		
 		String[] ss = domain.split("\\.");
 		if (ss.length<2) throw new IllegalArgumentException("bad domain: "+domain);
 		
-		String language = guessCorpusLanguage(ss[0]);
-		String family = guessCorpusFamily(ss[1]);
+		String language = guessCorpusLanguage(ss[0], tweaks);
+		String family = guessCorpusFamily(ss[1], tweaks);
 		
-		String classSuffix = family.equals("wikipedia") ? language + "wiki" : language + family;
+		String classSuffix = family.equals("wikipedia") || family.equals("wikimedia") ? ss[0] + "wiki" : ss[0] + family;
 		
 		String dbPrefix = dbPrefix(collection, ss[0]);
 		
 		//TODO: cache!
 		//NOTE: force domain as name
-		return new Corpus(collection, language, dbPrefix, domain, classSuffix, language, family, configPackages);
+		return new Corpus(collection, name, dbPrefix, domain, classSuffix, language, family, configPackages);
 	}
 	
-	public static Corpus forDataset(DatasetIdentifier dataset, String[] configPackages) {
-		return forName(dataset.getCollection(), dataset.getName(), configPackages);
+	public static Corpus forDataset(DatasetIdentifier dataset, TweakSet tweaks) {
+		return forName(dataset.getCollection(), dataset.getName(), tweaks);
 	}
 
 	protected static String[] getConfigPackages(TweakSet tweaks) {
@@ -131,12 +129,8 @@ public class Corpus extends DatasetIdentifier {
 		return pkg.toArray(new String[pkg.size()]);
 	}
 	
-	public static Corpus forDataset(DatasetIdentifier dataset, TweakSet tweaks) {
-		return forDataset(dataset, getConfigPackages(tweaks));
-	}
-
 	/** guesses the wiki family from a name as used for dump files **/
-	protected static String guessCorpusFamily(String n) {
+	protected static String guessCorpusFamily(String n, TweakSet tweaks) {
 		if (n.matches(".*commonswiki$")) return "commons";
 		else if (n.matches(".*meta(wiki)?$")) return "meta";
 		else if (n.matches(".*wiki$")) return "wikipedia";
@@ -147,25 +141,26 @@ public class Corpus extends DatasetIdentifier {
 	}
 	
 	/** guesses the wiki language from a name as used for dump files **/
-	protected static String guessCorpusLanguage(String n) {
+	protected static String guessCorpusLanguage(String n, TweakSet tweaks) {
 		String lang = n.replaceAll("^(.*?)(wiki|wikt).*$", "$1");
 		
-		if (lang.equals("commons")) return "en";
-		else if (lang.equals("meta")) return "en";
+		if (lang.equals("commons")) return tweaks.getTweak("languages.commonsAsLanguage", false) ? lang : "en";
+		else if (lang.equals("meta")) return tweaks.getTweak("languages.metaAsLanguage", false) ? lang : "en";
+		else if (lang.equals("simple")) return tweaks.getTweak("languages.simpleAsLanguage", true) ? lang : "en";
 		else return lang;
 	}
 	
 	/** guesses the wiki subdomain from a name as used for dump files **/
-	protected static String guessCorpusSubdomain(String n) {
+	protected static String guessCorpusSubdomain(String n, TweakSet tweaks) {
 		String sd = n.replaceAll("^(.*?)(wiki|wikt).*$", "$1");
 		
 		return sd;
 	}
 	
 	/** guesses the wiki domain from a name as used for dump files **/
-	protected static String guessCorpusDomain(String n) {
-		String sub =  guessCorpusSubdomain(n);
-		String fam =  guessCorpusFamily(n);
+	protected static String guessCorpusDomain(String n, TweakSet tweaks) {
+		String sub =  guessCorpusSubdomain(n, tweaks);
+		String fam =  guessCorpusFamily(n, tweaks);
 		
 		if (!fam.matches("^(wiki.*|wiktionary)$")) {
 			sub = fam;

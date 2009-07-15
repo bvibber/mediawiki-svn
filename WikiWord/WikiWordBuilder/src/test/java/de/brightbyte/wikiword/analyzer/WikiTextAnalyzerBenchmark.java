@@ -15,14 +15,14 @@ public class WikiTextAnalyzerBenchmark {
 	protected TweakSet tweaks;
 	
 	public WikiTextAnalyzerBenchmark(String wikiName) throws InstantiationException {
-		corpus = Corpus.forName("TEST", wikiName, (String[])null);
+		tweaks = new TweakSet();
+		corpus = Corpus.forName("TEST", wikiName, tweaks);
 
 		//site.Base = "http://"+corpus.getDomain()+"/wiki/";
 		//site.Sitename = corpus.getFamily();
 		
 		titleCase = true;
 		namespaces = corpus.getNamespaces();
-		tweaks = new TweakSet();
 
 		analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus, tweaks);
 		analyzer.initialize(namespaces, titleCase);

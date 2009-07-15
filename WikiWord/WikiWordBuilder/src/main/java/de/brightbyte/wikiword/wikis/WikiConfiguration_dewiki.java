@@ -32,8 +32,8 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 				")\\s*\\|(?:\\s*rtl\\s*\\|)?.*?\\|\\s*(.*?)\\s*\\}\\}", "$1", Pattern.DOTALL | Pattern.CASE_INSENSITIVE));
 		*/
 		
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons", 1, true), "[[commons:$1]]"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commonscat", 1, true), "[[commons:Category:$1]]"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons", 1, true), "[[commons:$2]]"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commonscat", 1, true), "[[commons:Category:$2]]"));
 		stripClutterManglers.add( new RegularExpressionMangler("\\[\\[:commons:", "[[commons:", Pattern.CASE_INSENSITIVE));
 		
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Okina", 0, false), "\u02BB"));

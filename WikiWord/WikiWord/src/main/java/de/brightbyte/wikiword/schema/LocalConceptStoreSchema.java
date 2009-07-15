@@ -107,7 +107,7 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		aboutTable.addField( new ReferenceField(this, "resource_name", getTextType(255), null, true, KeyType.INDEX, "resource", "name", null ) );
 		aboutTable.addField( new ReferenceField(this, "concept", "INT", null, false, KeyType.INDEX, "concept", "id", null ) );
 		aboutTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
-		aboutTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "about", new String[] {"resource", "concept"}) );
+		aboutTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "about", new String[] {"resource", "concept_name"}) );
 		addTable(aboutTable);
 
 		meaningTable = new RelationTable(this, "meaning", getDefaultTableAttributes());

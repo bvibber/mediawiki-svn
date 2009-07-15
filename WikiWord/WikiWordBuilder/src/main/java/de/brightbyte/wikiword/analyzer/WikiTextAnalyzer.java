@@ -263,7 +263,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		private CharSequence lenientSection;
 		private CharSequence lenientText;
 		
-		public WikiLink(CharSequence interwiki, int namespace, CharSequence page, CharSequence section, CharSequence text, boolean impliedText, LinkMagic magic) {
+		public WikiLink(CharSequence interwiki, CharSequence target, int namespace, CharSequence page, CharSequence section, CharSequence text, boolean impliedText, LinkMagic magic) {
 			super();
 			this.magic = magic;
 			this.interwiki = interwiki;
@@ -272,8 +272,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			this.section = section;
 			this.text = text;
 			this.impliedText = impliedText;
-			this.target = page;
-			if (section!=null && section.length()>0) this.target = this.target + "#" + section; 
+			this.target = target;
 		}
 
 		public CharSequence getInterwiki() {
@@ -284,15 +283,25 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return namespace;
 		}
 
-		public CharSequence getPage() {
+		public CharSequence getTitle() {
 			return page;
 		}
 
-		@Deprecated
 		public CharSequence getTarget() {
 			return target;
 		}
 
+
+		public CharSequence getTargetPage() {
+			CharSequence t = getTarget();
+			if (section==null) return t;
+				
+			int idx = StringUtils.indexOf('#', t);
+			if (idx<0) return t;
+			
+			return t.subSequence(idx+1, t.length());
+		}
+		
 		public CharSequence getSection() {
 			return section;
 		}
@@ -403,7 +412,6 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 				return false;
 			return true;
 		}
-
 		
 	}
 		
@@ -690,7 +698,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 				
 				for (WikiLink link : links) {
 					if (link.getMagic() == LinkMagic.CATEGORY) {
-						c.add(link.getPage().toString());
+						c.add(link.getTitle().toString());
 					}
 				}
 				categories = Collections.unmodifiableSet( c );
@@ -1376,46 +1384,55 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		LinkMagic magic = LinkMagic.NONE;
 		CharSequence interwiki = null;
 		int namespace = Namespace.MAIN;
-		CharSequence page = target;
 		CharSequence section = null;
 		boolean esc = false;
 		
-		while (page.length()>0 && page.charAt(0)==':') {
-			page = page.subSequence(1, page.length());
+		while (target.length()>0 && target.charAt(0)==':') {
+			target = target.subSequence(1, target.length());
 			esc = true;
 		}
 		
-		if (page.length()==0) return null;
+		if (target.length()==0) return null;
+		
+		CharSequence title = target;
 		
 		//handle section links ------------------------
-		int idx = StringUtils.indexOf('#', page);
-		if (idx==page.length()-1) {
-			page = page.subSequence(0, page.length()-1);
+		int idx = StringUtils.indexOf('#', title);
+		if (idx==title.length()-1) {
+			title = title.subSequence(0, title.length()-1);
+			target = title;
 			section = null;
 		}
 		else if (idx==0) {
-			section = page.subSequence(1, page.length());
-			page = context;
+			section = title.subSequence(1, title.length());
+			title = context;
+			target = null; //restored later
 		}
 		else if (idx>0) {
-			section = page.subSequence(idx+1, page.length());
-			page = target.subSequence(0, idx);
+			section = title.subSequence(idx+1, title.length());
+			title = target.subSequence(0, idx);
 		}
+		
+		//TODO: subpages starting with "/"...
 		
 		if (section!=null) { //handle special encoded chars in section ref
 			section = decodeSectionName(AnalyzerUtils.trim(section));
 			section = AnalyzerUtils.replaceSpaceByUnderscore(section);
+			if (target==null) target = context + "#" + section;
 		}
 		
 		//handle qualifiers ------------------------
-		idx = StringUtils.indexOf(':', page);
+		boolean setTargetToTitle = false;
+		idx = StringUtils.indexOf(':', title);
 		if (idx>=0) {
-			CharSequence pre = AnalyzerUtils.trim(page.subSequence(0, idx));
+			CharSequence pre = AnalyzerUtils.trim(title.subSequence(0, idx));
 			pre = normalizeTitle(pre);
 			int ns = getNamespaceId(pre);
 			if (ns!=Namespace.NONE) {
 				namespace = ns;
-				page = page.subSequence(idx+1, page.length());
+				title = title.subSequence(idx+1, title.length());
+				target = target.subSequence(idx+1, target.length());
+				target = getNamespaceName(ns) + ":" + normalizeTitle(target);
 				
 				if (!esc) {
 					if (ns==Namespace.IMAGE) magic = LinkMagic.IMAGE;
@@ -1423,9 +1440,19 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 				}
 			}
 			else if (isInterwikiPrefix(pre)) {
-				page = page.subSequence(idx+1, page.length());
+				if (target==title) setTargetToTitle = true;
+				title = title.subSequence(idx+1, title.length());
+				
+				if (!setTargetToTitle) {
+						idx = StringUtils.indexOf(':', target);
+						target = target.subSequence(idx+1, target.length());
+						target = normalizeTitle(target);
+				}
+				
+				//FIXME: normalize target title *namespace*, so it can be joined against the about table!
+				
 				interwiki = AnalyzerUtils.toLowerCase(pre);
-
+				
 				if (isInterlanguagePrefix(pre) && !esc) {
 					magic = LinkMagic.LANGUAGE;
 				}
@@ -1449,14 +1476,17 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			}
 		}
 		
-		if (tail!=null && magic != LinkMagic.CATEGORY) text = text.toString() + tail;
+		if (tail!=null && magic == LinkMagic.NONE) text = text.toString() + tail;
 		if (!implied) text = stripMarkup(text); //XXX: this can get pretty expensive...
 		text = HtmlEntities.decodeEntities(text);
 		
-		if (page.length()==0) return null;
+		if (title.length()==0) return null;
 		
-		page = normalizeTitle(page);
-		return new WikiLink(interwiki, namespace, page, section, text, implied, magic); 
+		title = normalizeTitle(title);
+		if (setTargetToTitle) 
+			target = title;
+			
+		return new WikiLink(interwiki, title, namespace, title, section, text, implied, magic); 
 	}
 
 	public boolean isInterlanguagePrefix(CharSequence pre) {
@@ -1483,6 +1513,12 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		if (name.length()==0) return Namespace.MAIN;
 		
 		return namespaces.getNumber(name.toString());
+	}
+	
+	public String getNamespaceName(int id) {
+		if (id==0) return "";
+		
+		return namespaces.getNamespace(id).getLocalName();
 	}
 	
 	public CharSequence normalizeTitle(CharSequence title) {
@@ -1815,9 +1851,13 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 		linkMatcher.reset(text);
 		while (linkMatcher.find()) {
-			WikiLink link = makeLink(title, linkMatcher.group(1), linkMatcher.group(3), linkMatcher.group(4));
+			String target = linkMatcher.group(1);
+			String label = linkMatcher.group(3);
+			String trail = linkMatcher.group(4);
+			
+			WikiLink link = makeLink(title, target, label, trail);
 			if (link==null) continue;
-			if (isBadLinkTarget(link.getPage())) continue; 
+			if (isBadLinkTarget(link.getTarget())) continue; 
 				
 			links.add(link);
 		}
@@ -1873,8 +1913,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		return d <= config.maxWordFormDistance;
 	}
 
-	public WikiLink newLink(String interwiki, int namespace, String page, String section, String text, boolean impliedText, LinkMagic magic) {
-		return new WikiLink(interwiki, namespace, page, section, text, impliedText, magic);
+	public WikiLink newLink(String interwiki, String target, int namespace, String title, String section, String text, boolean impliedText, LinkMagic magic) {
+		return new WikiLink(interwiki, target, namespace, title, section, text, impliedText, magic);
 	}
 
 	public static WikiTextAnalyzer getWikiTextAnalyzer(Corpus corpus, TweakSet tweaks) throws InstantiationException {

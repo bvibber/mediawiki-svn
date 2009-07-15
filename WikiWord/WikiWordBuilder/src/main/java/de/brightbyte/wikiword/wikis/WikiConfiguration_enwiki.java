@@ -69,9 +69,9 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new RegularExpressionMangler("^"+templatePatternString("wrapper", 0, true), "{|", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
 		stripClutterManglers.add( new RegularExpressionMangler("^"+templatePatternString("end|col-end", 0, true), "|}", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
 
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons(-inline|[ _]left|show\\d)?", 1, true), "[[commons:$1]]"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons[ _+]?cat(-inline|[ _]left|show\\d)?", 1, true), "[[commons:Category:$1]]"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("wikimedia", 1, true), "[[commons:$1]]")); //FIXME: named params: commons=
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons(?:-inline|[ _]left|show\\d)?", 1, true), "[[commons:$2]]"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons[ _+]?cat(?:-inline|[ _]left|show\\d)?", 1, true), "[[commons:Category:$2]]"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("wikimedia", 1, true), "[[commons:$2]]")); //FIXME: named params: commons=
 		//FIXME: Commonscat-N, Commons_cat_multi...
 		stripClutterManglers.add( new RegularExpressionMangler("\\[\\[:commons:", "[[commons:", Pattern.CASE_INSENSITIVE));
 

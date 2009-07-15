@@ -203,7 +203,7 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			WikiPage page = testAnalyzer.makeTestPage("Foo", "#REDIREcT [[bar]][[Category:Orf]]");
 			WikiTextAnalyzer.WikiLink link = extractRedirectLink(page);
 
-			assertEquals("Bar", link.getPage());
+			assertEquals("Bar", link.getTarget());
 		}
 
 		public void testIsInterlanguagePrefix() {
@@ -354,9 +354,9 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 				+"end\n";
 			
 			List<WikiLink> exp = new ArrayList<WikiLink>();
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Bla", null, "bla", true, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Foxo", null, "foxo", true, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Quux", null, "quux", true, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Bla", Namespace.MAIN, "Bla", null, "bla", true, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Foxo", Namespace.MAIN, "Foxo", null, "foxo", true, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Quux", Namespace.MAIN, "Quux", null, "quux", true, LinkMagic.NONE));
 
 			WikiPage page = testAnalyzer.makeTestPage("Foo", text);
 			List<WikiLink> links = extractDisambigLinks(page.getTitle(), page.getCleanedText(true));
@@ -374,11 +374,11 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			text += "Foo [[bar]]s!\n";
 			text += "check [[this|that]] out, [[simple thing]]\n";
 			text += "this [[pipe | pipes]], this [[ blow|blows ]]\n";
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Bar", null, "bars", true, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "This", null, "that", false, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Simple_thing", null, "simple thing", true, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Pipe", null, "pipes", false, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Blow", null, "blows", false, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Bar", Namespace.MAIN, "Bar", null, "bars", true, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "This", Namespace.MAIN, "This", null, "that", false, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Simple_thing", Namespace.MAIN, "Simple_thing", null, "simple thing", true, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Pipe", Namespace.MAIN, "Pipe", null, "pipes", false, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Blow", Namespace.MAIN, "Blow", null, "blows", false, LinkMagic.NONE));
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);
@@ -389,11 +389,11 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			text += "[[first]] and [[:last]]\n";
 			text += "[[give me some space|some space| and time]]\n";
 			text += "[[odd#|stuff>]]\n";
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Inch", null, "\"", false, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "First", null, "first", true, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Last", null, "last", true, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Give_me_some_space", null, "some space| and time", false, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Odd", null, "stuff>", false, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Inch", Namespace.MAIN, "Inch", null, "\"", false, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "First", Namespace.MAIN, "First", null, "first", true, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Last", Namespace.MAIN, "Last", null, "last", true, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Give_me_some_space", Namespace.MAIN, "Give_me_some_space", null, "some space| and time", false, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null,  "Odd", Namespace.MAIN, "Odd", null, "stuff>", false, LinkMagic.NONE));
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);
@@ -412,9 +412,9 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			text += "[[this|''works'' {{too}}]]\n";
 			text += "[[quite'ok']]\n";
 			text += "[[section# link thing...]]\n";
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "This", null, "works {{too}}", false, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Quite'ok'", null, "quite'ok'", true, LinkMagic.NONE));
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Section", "link_thing...", "section# link thing...", true, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "This", Namespace.MAIN, "This", null, "works {{too}}", false, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Quite'ok'", Namespace.MAIN, "Quite'ok'", null, "quite'ok'", true, LinkMagic.NONE));
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Section", Namespace.MAIN, "Section", "link_thing...", "section# link thing...", true, LinkMagic.NONE));
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);
@@ -426,11 +426,11 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			text += "[[URL%23Encoding]]\n"; //url-encoded link (yes the # may also be encoded, this does not act as an escape)
 			text += "[[HTML&amp;entities]]\n"; //html-entities
 			text += "[[no%special&stuff]]\n"; //no special stuff
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "Section", "\u00c4.C.ASX.Y&.4", "section#.C3.84.C.ASX.Y.0B.26.05.4", true, LinkMagic.NONE)); 
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "\u00c4%C%ASX%Y&%4", null, "\u00c4%C%ASX%Y&%4", true, LinkMagic.NONE)); 
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "URL", "Encoding", "URL#Encoding", true, LinkMagic.NONE)); 
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "HTML&entities", null, "HTML&entities", true, LinkMagic.NONE)); 
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.MAIN, "No%special&stuff", null, "no%special&stuff", true, LinkMagic.NONE)); 
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Section", Namespace.MAIN, "Section", "\u00c4.C.ASX.Y&.4", "section#.C3.84.C.ASX.Y.0B.26.05.4", true, LinkMagic.NONE)); 
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "\u00c4%C%ASX%Y&%4", Namespace.MAIN, "\u00c4%C%ASX%Y&%4", null, "\u00c4%C%ASX%Y&%4", true, LinkMagic.NONE)); 
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "URL", Namespace.MAIN, "URL", "Encoding", "URL#Encoding", true, LinkMagic.NONE)); 
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "HTML&entities", Namespace.MAIN, "HTML&entities", null, "HTML&entities", true, LinkMagic.NONE)); 
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "No%special&stuff", Namespace.MAIN, "No%special&stuff", null, "no%special&stuff", true, LinkMagic.NONE)); 
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);
@@ -438,10 +438,10 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			exp = new ArrayList<WikiLink>();
 			text = "";
 			text += "\nimage: [[Image:test.jpg]], [[Image:test.jpg|thumb]], [[Image:test.jpg|the [[test]] image]], [[Image:test.jpg|the {{test}} image]];"; //NOTE: stripped as clutter
-			text += "namespace: [[User:foo]], [[User talk:foo|talk]], [[:User:foo]]bar;\n";			
-			exp.add(new WikiLink(null, Namespace.USER, "Foo", null, "User:foo", true, LinkMagic.NONE));
-			exp.add(new WikiLink(null, Namespace.USER_TALK, "Foo", null, "talk", false, LinkMagic.NONE));
-			exp.add(new WikiLink(null, Namespace.USER, "Foo", null, "User:foobar", true, LinkMagic.NONE));
+			text += "namespace: [[User:foo]], [[user talk :foo|talk]], [[:User:foo]]bar;\n";			
+			exp.add(new WikiLink(null, "User:Foo", Namespace.USER, "Foo", null, "User:foo", true, LinkMagic.NONE));
+			exp.add(new WikiLink(null, "User_talk:Foo", Namespace.USER_TALK, "Foo", null, "talk", false, LinkMagic.NONE));
+			exp.add(new WikiLink(null, "User:Foo", Namespace.USER, "Foo", null, "User:foobar", true, LinkMagic.NONE));
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);
@@ -452,20 +452,20 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			text += "[[Category:Foo]]\n"; //category
 			text += "[[:Category:Foo|Bar]]\n"; //category link
 			text += "[[Category:Foo|Bar]]\n"; //category sortkey
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.CATEGORY, "Foo", null, "", false, LinkMagic.CATEGORY)); 
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.CATEGORY, "Foo", null, "Foo", true, LinkMagic.CATEGORY)); 
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.CATEGORY, "Foo", null, "Bar", false, LinkMagic.NONE)); 
-			exp.add(new WikiTextAnalyzer.WikiLink(null, Namespace.CATEGORY, "Foo", null, "Bar", false, LinkMagic.CATEGORY)); 
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Category:Foo", Namespace.CATEGORY, "Foo", null, "", false, LinkMagic.CATEGORY)); 
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Category:Foo", Namespace.CATEGORY, "Foo", null, "Foo", true, LinkMagic.CATEGORY)); 
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Category:Foo", Namespace.CATEGORY, "Foo", null, "Bar", false, LinkMagic.NONE)); 
+			exp.add(new WikiTextAnalyzer.WikiLink(null, "Category:Foo", Namespace.CATEGORY, "Foo", null, "Bar", false, LinkMagic.CATEGORY)); 
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);
 			
 			exp = new ArrayList<WikiLink>();
-			text = "category: [[Category: z]], [[Category: z|zz]], [[:Category: z]], [[:Category: z|z]];\n";
-			exp.add(new WikiLink(null, Namespace.CATEGORY, "Z", null, "Foo", true, LinkMagic.CATEGORY));
-			exp.add(new WikiLink(null, Namespace.CATEGORY, "Z", null, "zz", false, LinkMagic.CATEGORY));
-			exp.add(new WikiLink(null, Namespace.CATEGORY, "Z", null, "Category: z", true, LinkMagic.NONE));
-			exp.add(new WikiLink(null, Namespace.CATEGORY, "Z", null, "z", false, LinkMagic.NONE));
+			text = "category: [[Category: Z]], [[category: z|zz]], [[:Category: z]], [[:Category: z|z]];\n";
+			exp.add(new WikiLink(null, "Category:Z", Namespace.CATEGORY, "Z", null, "Foo", true, LinkMagic.CATEGORY));
+			exp.add(new WikiLink(null, "Category:Z", Namespace.CATEGORY, "Z", null, "zz", false, LinkMagic.CATEGORY));
+			exp.add(new WikiLink(null, "Category:Z", Namespace.CATEGORY, "Z", null, "Category: z", true, LinkMagic.NONE));
+			exp.add(new WikiLink(null, "Category:Z", Namespace.CATEGORY, "Z", null, "z", false, LinkMagic.NONE));
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);
@@ -476,35 +476,35 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			text += "[[xyz:zeug|zeug]]\n"; //interwiki
 			text += "[[de:Zeug]]\n"; //interlanguage
 			text += "[[:de:Zeug]]\n"; //interwiki
-			exp.add(new WikiTextAnalyzer.WikiLink("xyz", Namespace.MAIN, "Zeug", null, "zeug", false, LinkMagic.NONE)); 
-			exp.add(new WikiTextAnalyzer.WikiLink("de", Namespace.MAIN, "Zeug", null, "de:Zeug", true, LinkMagic.LANGUAGE)); 
-			exp.add(new WikiTextAnalyzer.WikiLink("de", Namespace.MAIN, "Zeug", null, "de:Zeug", true, LinkMagic.NONE)); 
+			exp.add(new WikiTextAnalyzer.WikiLink("xyz", "Zeug", Namespace.MAIN, "Zeug", null, "zeug", false, LinkMagic.NONE)); 
+			exp.add(new WikiTextAnalyzer.WikiLink("de", "Zeug", Namespace.MAIN, "Zeug", null, "de:Zeug", true, LinkMagic.LANGUAGE)); 
+			exp.add(new WikiTextAnalyzer.WikiLink("de", "Zeug", Namespace.MAIN, "Zeug", null, "de:Zeug", true, LinkMagic.NONE)); 
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);
 			
 			exp = new ArrayList<WikiLink>();
 			text = "language: [[nl: z]], [[zh-yue: z|z]], [[:de: z|z]];\n";
-			exp.add(new WikiLink("nl", Namespace.MAIN, "Z", null, "nl: z", true, LinkMagic.LANGUAGE));
-			exp.add(new WikiLink("zh-yue", Namespace.MAIN, "Z", null, "z", false, LinkMagic.LANGUAGE));
-			exp.add(new WikiLink("de", Namespace.MAIN, "Z", null, "z", false, LinkMagic.NONE));
+			exp.add(new WikiLink("nl", "Z", Namespace.MAIN, "Z", null, "nl: z", true, LinkMagic.LANGUAGE));
+			exp.add(new WikiLink("zh-yue", "Z", Namespace.MAIN, "Z", null, "z", false, LinkMagic.LANGUAGE));
+			exp.add(new WikiLink("de", "Z", Namespace.MAIN, "Z", null, "z", false, LinkMagic.NONE));
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);
 			
 			exp = new ArrayList<WikiLink>();
 			text = "interwiki: [[ixy: z]], [[ixy: z|z]], [[:ixy: z|z]];\n";
-			exp.add(new WikiLink("ixy", Namespace.MAIN, "Z", null, "ixy: z", true, LinkMagic.NONE));
-			exp.add(new WikiLink("ixy", Namespace.MAIN, "Z", null, "z", false, LinkMagic.NONE));
-			exp.add(new WikiLink("ixy", Namespace.MAIN, "Z", null, "z", false, LinkMagic.NONE));
+			exp.add(new WikiLink("ixy", "Z", Namespace.MAIN, "Z", null, "ixy: z", true, LinkMagic.NONE));
+			exp.add(new WikiLink("ixy", "Z", Namespace.MAIN, "Z", null, "z", false, LinkMagic.NONE));
+			exp.add(new WikiLink("ixy", "Z", Namespace.MAIN, "Z", null, "z", false, LinkMagic.NONE));
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);
 			
 			exp = new ArrayList<WikiLink>();
 			text = "prefix: [[x y: z]], [[x y: z|z ]];\n";
-			exp.add(new WikiLink(null, Namespace.MAIN, "X_y:_z", null, "x y: z", true, LinkMagic.NONE));
-			exp.add(new WikiLink(null, Namespace.MAIN, "X_y:_z", null, "z", false, LinkMagic.NONE));
+			exp.add(new WikiLink(null, "X_y:_z", Namespace.MAIN, "X_y:_z", null, "x y: z", true, LinkMagic.NONE));
+			exp.add(new WikiLink(null, "X_y:_z", Namespace.MAIN, "X_y:_z", null, "z", false, LinkMagic.NONE));
 			page = testAnalyzer.makeTestPage("Foo", text);
 			links = extractLinks(page.getTitle(), page.getCleanedText(true));
 			assertEquals(exp, links);

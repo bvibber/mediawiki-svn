@@ -45,6 +45,12 @@ public class Languages {
 				ln.remove("simple");
 			}
 			
+			if (tweaks.getTweak("languages.metaAsLanguage", true)) {
+				ln.put("meta", "Meta-Wiki");
+			} else {
+				ln.remove("meta");
+			}
+			
 			return Collections.unmodifiableMap(ln);
 		}
 		catch (IOException ex) {

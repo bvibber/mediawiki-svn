@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -18,6 +19,7 @@ import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ConceptTypeSet;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
+import de.brightbyte.wikiword.Languages;
 import de.brightbyte.wikiword.TweakSet;
 
 public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
@@ -188,6 +190,16 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		return cc;
 	}
 	
+	private Map<String, String> languageNames;
+	
+	protected Map<String, String> getLanguageNames() {
+		if (this.languageNames==null) {
+			this.languageNames = Languages.load(this.tweaks);
+		}
+		
+		return this.languageNames;
+	}
+	
 	public Corpus[] getLanguages() throws SQLException {
 		if (languages!=null) return languages;
 		
@@ -199,6 +211,10 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		
 		int i = 0;
 		for (String l: ll) {
+			if (!getLanguageNames().containsKey(l)) {
+				throw new SQLException("database inconsistency: encountered bad corpus prefix: "+l+" is not a language name. Hint: check tweaks languages.*AsLanguage"); 
+			}
+			
 			cc[i++] = Corpus.forName(getCollectionName(), l, tweaks);
 		}
 		

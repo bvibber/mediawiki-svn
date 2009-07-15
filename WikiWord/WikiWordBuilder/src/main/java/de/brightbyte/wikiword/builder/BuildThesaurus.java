@@ -66,7 +66,25 @@ public class BuildThesaurus extends ImportApp {
 	@Override
 	protected void run() throws Exception {
 		section("-- importConcepts --------------------------------------------------");
+		if (languages==null) {
+			String lang = args.getStringOption("languages", null); 
+			if (lang!=null) {
+				String[] ll = lang.split("[,;/|\\s+]+");
+				languages = new Corpus[ll.length];
+				
+				int i = 0;
+				for (String l: ll) {
+					languages[i++] = Corpus.forName(getConfiguredCollectionName(), l, tweaks);
+				}
+			}
+			
+			if (languages==null) {
+				languages = ((GlobalConceptStoreBuilder)this.conceptStore).detectLanguages();
+			}
+		}
+		
 		info("Using languages: "+Arrays.toString(languages));
+		((GlobalConceptStoreBuilder)this.conceptStore).setLanguages(languages);
 		
 		if (agenda.beginTask("BuildThesaurus.run", "importConcepts")) {
 			((GlobalConceptStoreBuilder)this.conceptStore).importConcepts();

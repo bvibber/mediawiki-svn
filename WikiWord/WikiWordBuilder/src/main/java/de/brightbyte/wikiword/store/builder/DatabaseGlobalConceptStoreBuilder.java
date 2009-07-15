@@ -135,7 +135,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	//-------------------------------
 	public Corpus[] detectLanguages() throws PersistenceException {
 		try {
-			return ((GlobalConceptStoreSchema)database).getLanguages();
+			Corpus[] languages = ((GlobalConceptStoreSchema)database).getLanguages();
+			return languages;
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}

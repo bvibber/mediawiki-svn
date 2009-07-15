@@ -212,7 +212,7 @@ public class ConceptImporter extends AbstractImporter {
 				if (link.getInterwiki()!=null) continue;
 			
 				storeReference(rcId, link.getText().toString(), -1, link.getTarget().toString(), ExtractionRule.TERM_FROM_LINK);
-				if (link.getSection()!=null) storeSection(rcId, link.getTarget().toString(), link.getPage().toString());
+				if (link.getSection()!=null) storeSection(rcId, link.getTarget().toString(), link.getTargetPage().toString());
 			}
 		}
 	}
@@ -222,11 +222,11 @@ public class ConceptImporter extends AbstractImporter {
 			WikiTextAnalyzer.LinkMagic m = link.getMagic();
 			
 			if (m==WikiTextAnalyzer.LinkMagic.NONE) {
-				if (link.getNamespace()!=Namespace.MAIN) continue;
+				if (link.getNamespace()!=Namespace.MAIN  && link.getNamespace()!=Namespace.CATEGORY) continue;
 				if (link.getInterwiki()!=null) continue;
 			
 				storeLink(rcId, conceptId, conceptName, link.getText().toString(), link.getTarget().toString(), ExtractionRule.TERM_FROM_LINK);
-				if (link.getSection()!=null) storeSection(rcId, link.getTarget().toString(), link.getPage().toString());
+				if (link.getSection()!=null) storeSection(rcId, link.getTarget().toString(), link.getTargetPage().toString());
 			}
 		}
 	}
@@ -254,7 +254,7 @@ public class ConceptImporter extends AbstractImporter {
 		String rcName = analyzerPage.getResourceName();
 		String text = analyzerPage.getText().toString();
 		//int namespace = analyzerPage.getNamespace();
-		//String title = analyzerPage.getTitle().toString();
+		String title = analyzerPage.getTitle().toString();
 		
 		//TODO: check if page is stored. if up to date, skip. if older, update. if missing, create. optionally force update.
 		int rcId = storeResource(rcName, rcType, timestamp);
@@ -280,7 +280,7 @@ public class ConceptImporter extends AbstractImporter {
 					
 					if (m==WikiTextAnalyzer.LinkMagic.CATEGORY) {
 						//FIXME: store this also as a reference to the categorie's concept under it's original title!
-						storeConceptBroader(rcId, name, link.getPage().toString(), ExtractionRule.BROADER_FROM_CAT);
+						storeConceptBroader(rcId, name, link.getTarget().toString(), ExtractionRule.BROADER_FROM_CAT);
 					}
 					
 					if (m==WikiTextAnalyzer.LinkMagic.LANGUAGE) {
@@ -367,16 +367,15 @@ public class ConceptImporter extends AbstractImporter {
 					if ( sortKey!=null && analyzer.isMainArticleMarker(sortKey) ) {
 						if (analyzer.useCategoryAliases()) {
 							//XXX: if there's more than one "main article", this breaks.
-							String cat = link.getPage().toString();
 							
-							if (!cat.equals(name) &&  analyzer.mayBeFormOf(link.getLenientPage(), analyzerPage.getTitleBaseName())) {
-								Set<CharSequence> terms = analyzer.determineTitleTerms(link.getPage());
+							if (analyzer.mayBeFormOf(link.getLenientPage(), analyzerPage.getTitleBaseName())) {
+								Set<CharSequence> terms = analyzer.determineTitleTerms(link.getTitle());
 								storePageTerms(rcId, terms, conceptId, name, ExtractionRule.TERM_FROM_CAT_NAME);
 								
 								//NOTE: the alias is preliminary: if a article with the name of the category 
 								//      exists, the alias will be ignored. See DatabaseLocalConceptBuilder.finishBadLinks
 								
-								storeConceptAlias(rcId, -1, cat, conceptId, name, AliasScope.CATEGORY);  
+								storeConceptAlias(rcId, -1, link.getTarget().toString(), conceptId, name, AliasScope.CATEGORY);  
 								categorize = false;
 							}
 						}
@@ -390,13 +389,11 @@ public class ConceptImporter extends AbstractImporter {
 							storeReference(rcId, sortKey, conceptId, name, ExtractionRule.TERM_FROM_SORTKEY); //sort key is a name for this page
 						}
 
-						if ( !link.getPage().toString().equals(name) ) { //NOTE: need the toString, CharSequences doen't "equal" strings :(
-							storeConceptBroader(rcId, conceptId, name, link.getPage().toString(), ExtractionRule.BROADER_FROM_CAT);
-						}
+						storeConceptBroader(rcId, conceptId, name, link.getTarget().toString(), ExtractionRule.BROADER_FROM_CAT);
 					}
 				}
 				else if (m==WikiTextAnalyzer.LinkMagic.LANGUAGE) {
-					storeLanguageLink(rcId, conceptId, name, link.getInterwiki().toString(), link.getPage().toString()); //XXX: consider target? consider both??
+					storeLanguageLink(rcId, conceptId, name, link.getInterwiki().toString(), link.getTarget().toString()); //XXX: consider target? consider both??
 				}				
 			}
 			
@@ -421,7 +418,7 @@ public class ConceptImporter extends AbstractImporter {
 					if (link.getInterwiki()!=null) continue;
 				
 					for (CharSequence term : terms) {
-						storeReference(rcId, term.toString(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_DISAMBIG);
+						storeReference(rcId, term.toString(), -1, link.getTarget().toString(), ExtractionRule.TERM_FROM_DISAMBIG);
 					}
 				}
 			}
@@ -469,12 +466,12 @@ public class ConceptImporter extends AbstractImporter {
 		}
 		else if (link.getNamespace()!=analyzerPage.getNamespace()) {
 			if (link.getNamespace()==Namespace.CATEGORY && analyzerPage.getNamespace()==Namespace.MAIN) {
-				if ( StringUtils.equals(link.getPage(), analyzerPage.getTitle()) ) {
+				if ( StringUtils.equals(link.getTarget(), rcName) ) {
 						out.debug("ignored redundant category redirect "+rcName+" -> "+link);
 				} else {
 						out.debug("processing redirect to category "+rcName+" -> "+link);
-						storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_REDIRECT );
-						String tgtConcept = link.getPage().toString();
+						storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getTarget().toString(), ExtractionRule.TERM_FROM_REDIRECT );
+						String tgtConcept = link.getTarget().toString();
 						
 						if (!name.equals(tgtConcept)) {
 							conceptId = store.storeAbout(rcId, rcName, name);
@@ -487,13 +484,13 @@ public class ConceptImporter extends AbstractImporter {
 				warn(rcId, "bad redirect (inter-namespace)", rcName+" -> "+link, null);
 			}
 		}
-		else if (name.equals(link.getPage().toString())) {
+		else if (rcName.equals(link.getTarget().toString())) {
 			warn(rcId, "bad redirect (self-link)", "page "+name, null);
 		}
 		else {
 			conceptId = store.storeAbout(rcId, rcName, name); 
-			storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getPage().toString(), ExtractionRule.TERM_FROM_REDIRECT );
-			storeConceptAlias(rcId, conceptId, name, -1, link.getPage().toString(), AliasScope.REDIRECT); 
+			storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getTarget().toString(), ExtractionRule.TERM_FROM_REDIRECT );
+			storeConceptAlias(rcId, conceptId, name, -1, link.getTarget().toString(), AliasScope.REDIRECT); 
 			
 			//FIXME: redir to section!
 		}

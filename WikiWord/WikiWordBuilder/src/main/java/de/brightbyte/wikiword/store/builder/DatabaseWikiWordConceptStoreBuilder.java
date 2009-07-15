@@ -401,7 +401,7 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		String sql = "insert ignore into "+relationTable.getSQLName()+" (concept1, concept2, bilink)" +
 		" select A.anchor, A.target, 1 from "+linkTable.getSQLName()+" as A " + 
 		" join "+linkTable.getSQLName()+" as B " + 
-		" force index (anchor_target) " + //NOTE: avoid table scan!
+		" force index (target_anchor) " + //NOTE: avoid table scan!
 		" on A.anchor = B.target AND B.anchor = A.target ";
 		String suffix = " on duplicate key update bilink = bilink + values(bilink)"; 
 

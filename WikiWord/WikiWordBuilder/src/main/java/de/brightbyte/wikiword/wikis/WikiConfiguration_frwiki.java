@@ -6,7 +6,6 @@ import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
-import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.NameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
@@ -18,9 +17,9 @@ public class WikiConfiguration_frwiki extends WikiConfiguration {
 
 	public WikiConfiguration_frwiki() {
 		super();
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons", 1, true), "[[commons:$1]]"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons[ _]?cat?", 1, true), "[[commons:Category:$1]]"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Autres[ _]projets", 1, true), "[[commons:$1]]")); //FIXME: named params: commons=
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons", 1, true), "[[commons:$2]]"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons[ _]?cat?", 1, true), "[[commons:Category:$2]]"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Autres[ _]projets", 1, true), "[[commons:$2]]")); //FIXME: named params: commons=
 
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("er?|\u00e8?re|(?:mini[ _])?[IVXCM]+(?:e|re|er)?|\\d+r?er?|Mlle|Mme|elle", 0, true), "$1"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("romain|rom|rom-min|rom-maj|APIb|IPA", 1, true), "$2"));

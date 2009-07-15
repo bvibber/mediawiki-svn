@@ -20,8 +20,8 @@ public abstract class PlainTextAnalyzerTestBase extends TestCase {
 	protected PlainTextAnalyzer analyzer;
 	
 	public PlainTextAnalyzerTestBase(String wikiName) {
-		corpus = Corpus.forName("TEST", wikiName, (String[])null);
 		tweaks = new TweakSet();
+		corpus = Corpus.forName("TEST", wikiName, tweaks);
 	}
 
 	@Override

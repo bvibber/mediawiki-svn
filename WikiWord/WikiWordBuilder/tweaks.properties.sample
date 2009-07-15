@@ -6,6 +6,9 @@ console.encoding = "UTF-8"
 # treat "commons" as a language code
 languages.commonsAsLanguage = false
 
+# treat "meta" as a language code
+languages.metaAsLanguage = false
+
 # treat "simple" as a language code
 languages.simpleAsLanguage = true
 

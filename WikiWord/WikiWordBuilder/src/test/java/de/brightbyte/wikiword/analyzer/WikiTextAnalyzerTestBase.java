@@ -34,8 +34,8 @@ public abstract class WikiTextAnalyzerTestBase extends TestCase {
 	protected TweakSet tweaks;
 	
 	public WikiTextAnalyzerTestBase(String wikiName) {
-		corpus = Corpus.forName("TEST", wikiName, (String[])null);
 		tweaks = new TweakSet();
+		corpus = Corpus.forName("TEST", wikiName, tweaks);
 
 		//site.Base = "http://"+corpus.getDomain()+"/wiki/";
 		//site.Sitename = corpus.getFamily();

@@ -25,8 +25,8 @@ public class WikiConfiguration_eswiki extends WikiConfiguration {
 		stripClutterManglers.add( new RegularExpressionMangler( templatePattern("C", 0, true), "\u00a9"));
 		stripClutterManglers.add( new RegularExpressionMangler( templatePattern("E", 1, true), "\u00d710^$2"));
 		
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons", 1, true), "[[commons:$1]]"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commonscat", 1, true), "[[commons:Category:$1]]"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commons", 1, true), "[[commons:$2]]"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("commonscat", 1, true), "[[commons:Category:$2]]"));
 		
 		//reduce to third param
 		stripClutterManglers.add( new RegularExpressionMangler(

@@ -369,7 +369,8 @@ public class WikiConfiguration {
 		this.maxWordFormDistance = 1.0/3.0; 
 		
 		this.badTitlePattern = Pattern.compile("^$|''|[|{}<>\\]\\[]|^\\w+://");
-		this.badLinkPattern = Pattern.compile("^[^\\d]+:[^ _]|^\\.\\.?$");
+		//this.badLinkPattern = Pattern.compile("^[^\\d]+:[^ _]|^\\.\\.?$"); //disallow namespace/interlang
+		this.badLinkPattern = Pattern.compile("^\\.\\.?$"); 
 		this.titleSuffixPattern = Pattern.compile("^(.*)[ _]\\((.*?)\\)$");
 		this.titlePrefixPattern = Pattern.compile("^(.*?)#(.+)$");
 		this.disambigStripSectionPattern = null; 
