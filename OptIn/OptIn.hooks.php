@@ -10,12 +10,18 @@ class OptInHooks {
 
 	/* Static Functions */
 	public static function schema() {
-		global $wgExtNewTables;
+		global $wgExtNewTables, $wgExtNewFields;
 		
 		$wgExtNewTables[] = array(
 			'optin_survey',
 			dirname( __FILE__ ) . '/OptIn.sql'
 		);
+		$wgExtNewFields[] = array(
+			'optin_survey',
+			'ois_type',
+			dirname( __FILE__ ) . '/OptIn.patch.ois_type.sql'
+		);
+		
 		return true;
 	}
 	
