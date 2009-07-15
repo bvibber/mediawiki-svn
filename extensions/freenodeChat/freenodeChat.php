@@ -19,8 +19,8 @@ $wgExtensionCredits[ 'specialpage' ][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Freenode Chat',
 	'description'    => 'Adds a special page used to chat in real time with other wiki users (using freenode web IRC client).',
-	'descriptionmsg' => 'freenode-chat-desc',
-	'version'        => '0.1',
+	'descriptionmsg' => 'freenodechat-desc',
+	'version'        => '0.1.1',
 	'author'         => array( 'Robert Leverington', 'Marco 27' )
 );
 
@@ -36,7 +36,7 @@ $wgExtensionMessagesFiles[ 'FreenodeChat' ] =  $dir . 'freenodeChat.i18n.php';
 $wgExtensionAliasesFiles[ 'FreenodeChat' ] =  $dir . 'freenodeChat.alias.php';
 
 // Permissions.
-$wgAvailableRights[] = 'freenode-chat';
-$wgGroupPermissions[ '*'     ][ 'freenode-chat' ] = true;
-$wgGroupPermissions[ 'user'  ][ 'freenode-chat' ] = true;
-$wgGroupPermissions[ 'sysop' ][ 'freenode-chat' ] = true;
+$wgAvailableRights[] = 'freenodechat';
+$wgGroupPermissions[ '*'     ][ 'freenodechat' ] = true;
+$wgGroupPermissions[ 'user'  ][ 'freenodechat' ] = true;
+$wgGroupPermissions[ 'sysop' ][ 'freenodechat' ] = true;

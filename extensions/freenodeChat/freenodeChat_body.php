@@ -19,7 +19,7 @@ class FreenodeChat extends SpecialPage {
 		$this->setHeaders();
 
 		// Introduction message, explaining to users what this is etc.
-		$wgOut->addWikiMsg( 'freenode-chat-header' );
+		$wgOut->addWikiMsg( 'freenodechat-header' );
 
 		// Prepare query string to pass to widget.
 		$queryAssoc = array(
