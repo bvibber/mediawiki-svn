@@ -45,7 +45,7 @@ public class Languages {
 				ln.remove("simple");
 			}
 			
-			if (tweaks.getTweak("languages.metaAsLanguage", true)) {
+			if (tweaks.getTweak("languages.metaAsLanguage", false)) {
 				ln.put("meta", "Meta-Wiki");
 			} else {
 				ln.remove("meta");
