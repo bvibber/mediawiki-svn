@@ -3,7 +3,7 @@
 $wgUseNormalUser = true;
 require_once('commandLine.inc');
 
-if ( $options['r'] ) {
+if ( isset( $options['r'] ) ) {
 	print 'time     ';
 	foreach( $wgDBservers as $i => $server ) {
 		$hostname = gethostbyaddr( $wgDBservers[$i]['host'] );
