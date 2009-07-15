@@ -18,22 +18,29 @@ $messages['en'] = array(
 	'optin-title-optedin' => 'Leave Beta',
 	'optin-title-justoptedin' => 'Welcome to Beta',
 	'optin-title-justoptedout' => 'Thank you for trying Beta',
+	'optin-title-feedback' => 'Give feedback',
 	'optin-needlogin' => 'You need to [$1 log in] to try Beta.',
 	'optin-intro' => 'The Wikipedia Usability Initiative has been working hard to improve the usability of Wikipedia.
 Would you like to try Beta?',
+	'optin-feedback-intro' => "Thank you for trying Beta.
+We would like to know what you think of our new interface, so we would appreciate it if you filled out the optional survey below.",
+	'optin-feedback-back' => 'If you do not want to fill out the survey, you can return to $1.',
 	'optin-success-in' => 'You are now trying out Beta.
 You can opt back out at any time by clicking the "{{int:optin-leave}}" link on the top of the screen.',
 	'optin-leave-cancel' => 'If you would like to continue using Beta, you can return to $1.',
 	'optin-success-out' => 'You have successfully left Beta.
 You can try it out again at anytime by clicking the "{{int:optin-try}}" link on the top right of the screen.',
+	'optin-success-feedback' => 'Thank you for your feedback!',
 	'optin-accept-short' => 'Let\'s do it!',
 	'optin-accept-long' => 'Try out Beta',
 	'optin-accept-long-anon' => 'Log in and try out Beta',
 	'optin-deny-short' => 'No thank you',
 	'optin-deny-long' => 'Return to previous page',
 	'optin-submit-out' => 'Leave Beta',
+	'optin-submit-feedback' => 'Give feedback',
 	'optin-try' => 'Try Beta',
 	'optin-leave' => 'Leave Beta',
+	'optin-feedback' => 'Give feedback',
 	'optin-survey-yes' => 'Yes',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => "Thank you for trying Beta.
@@ -52,6 +59,7 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-question-techfail-ifyes' => 'If yes, please elaborate or explain:',
 	'optin-survey-question-usedtoolbar' => 'Did you use the new expandable toolbar to edit a page?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'If yes, what did you like about it? What did you dislike about it?',
+	'optin-survey-question-usedtoolbar-ifno' => 'If no, why not? Will you in the future? Please explain.',
 	'optin-survey-question-different' => 'What could we have done differently to keep you using our Beta?',
 	'optin-survey-question-feedback' => 'Please let us know about any other comments, concerns or thoughts you have for us - all feedback is useful!:',
 	'optin-survey-question-browser' => 'Which browser do you use?',
@@ -77,6 +85,15 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-answer-os-linux' => 'Linux',
 	'optin-survey-answer-os-other' => 'Other operating system:',
 	'optin-survey-question-res' => 'What is the resolution of your screen?',
+	'optin-survey-question-changes' => 'What changes would you like to see in the Beta in the future (select up to three)?',
+	'optin-survey-answer-changes-nav' => 'Make the overall navigation of the site easier to use.',
+	'optin-survey-answer-changes-edittools' => 'Increase and enhance the editing tools.',
+	'optin-survey-answer-changes-upload' => 'Improve content and media uploads.',
+	'optin-survey-answer-changes-richtext' => 'Develop editing tools similar to rich-text editors.',
+	'optin-survey-answer-changes-lookfeel' => 'Update the "look and feel" of the site.',
+	'optin-survey-answer-changes-predictability' => 'Improve predictability of performance.',
+	'optin-survey-answer-changes-compat' => 'Improve compatibility with local wiki.',
+	'optin-survey-answer-changes-other' => 'Other:',
 	'optin-improvements' => "== What has been improved? ==
 [[File:UsabilityNavigation.png|right]]
 ;Enhanced navigation

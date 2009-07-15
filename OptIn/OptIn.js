@@ -25,6 +25,8 @@ $( document ).ready( function() {
 			norow.slideDown( 'fast' );
 		}
 	});
+	// Load initial state
+	$( '.survey-yes, .survey-no' ).change();
 	
 	// Detect screen resolution
 	if ( screen.width && screen.height ) {

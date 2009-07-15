@@ -28,7 +28,7 @@
 $wgOptInAlwaysShowPersonalLink = false;
 $wgOptInNeverShowPersonalLink = false;
 
-$wgOptInStyleVersion = 5;
+$wgOptInStyleVersion = 6;
 
 // Preferences to set when users opt in
 // array( prefname => value )
@@ -88,6 +88,24 @@ $wgOptInSurvey = array(
 		'other' => 'optin-survey-answer-os-other' ),
 	array(	'question' => 'optin-survey-question-res',
 		'type' => 'resolution' ),
+);
+
+$wgOptInFeedBackSurvey = $wgOptInSurvey;
+unset( $wgOptInFeedBackSurvey[1] );
+unset( $wgOptInFeedBackSurvey[2] );
+$wgOptInFeedBackSurvey[4]['ifno'] = 'optin-survey-question-usedtoolbar-ifno';
+$wgOptInFeedBackSurvey[5] = array(
+	'question' => 'optin-survey-question-changes',
+	'type' => 'checkboxes',
+	'answers' => array(
+		'optin-survey-answer-changes-nav',
+		'optin-survey-answer-changes-edittools',
+		'optin-survey-answer-changes-upload',
+		'optin-survey-answer-changes-richtext',
+		'optin-survey-answer-changes-lookfeel',
+		'optin-survey-answer-changes-predictability',
+		'optin-survey-answer-changes-compat' ),
+	'other' => 'optin-survey-answer-changes-other'
 );
 
 /* Setup */
