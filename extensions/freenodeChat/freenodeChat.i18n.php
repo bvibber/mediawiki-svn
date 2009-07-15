@@ -23,7 +23,7 @@ $messages['it'] = array(
 	'freenodechat-desc' => 'Aggiunge una [[Special:FreenodeChat|pagina speciale]] usata per chattare in tempo reale con altri utenti wiki (usando il client web IRC di freenode)',
 	'freenodechat-header' => 'Questa pagina speciale ti permette di collaborare in tempo reale con altri utenti della wiki.
 Per connetterti premi semplicemente il pulsante "Connect".
-Se sei giÃƒÂ  loggato il tuo nickname sarÃƒÂ  preinserito.
+Se sei già loggato il tuo nickname sarà  preinserito.
 Gli utenti anonimi devono inserirne uno a loro scelta nel campo "Nickname"',
 	'right-freenodechat' => 'Autorizzato a usare la chat',
 );

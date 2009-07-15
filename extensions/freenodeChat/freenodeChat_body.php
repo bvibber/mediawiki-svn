@@ -7,7 +7,7 @@
 class FreenodeChat extends SpecialPage {
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'FreenodeChat', 'freenode-chat' );
+		SpecialPage::SpecialPage( 'FreenodeChat', 'freenodechat' );
 	}
 
 	function execute( $par ) {
