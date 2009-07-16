@@ -11,7 +11,7 @@
  * Usage: Include the following line in your LocalSettings.php
  * require_once( "$IP/extensions/UsabilityInitiative/EditToolbar/EditToolbar.php" );
  *
- * @author Trevor Parscal <tparscal@wikimedia.org>
+ * @author Trevor Parscal <tparscal@wikimedia.org>, Roan Kattouw <roan.kattouw@gmail.com>
  * @license GPL v2 or later
  * @version 0.1.1
  */
