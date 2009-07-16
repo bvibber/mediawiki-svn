@@ -135,8 +135,6 @@ div#fundraiserportal-message div div div div p {
 	margin: 0;
 	padding: 0.5em 0.75em;
 }
-div#fundraiserportal-close {
-}
 div#fundraiserportal-close a {
 	float: right;
 	margin-top: -11px;

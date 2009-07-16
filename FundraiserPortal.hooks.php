@@ -12,7 +12,7 @@ class FundraiserPortalHooks {
 	
 	// Only one of these templates will be allowed
 	static $mTemplates = array(
-		'Plain', 'Ruby', 'RubyText', 'Sapphire'
+		'Plain', 'Ruby', 'RubyText', 'Sapphire', 'Tourmaline',
 	);
 	
 	/* Static Functions */
