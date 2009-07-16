@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
+import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterValueExtractor;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategorySensor;
@@ -177,6 +178,10 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 
 		disambigStripSectionPattern = sectionPattern("See also", 0);  
 		//FIXME: disambig pages marked with {{shipindex}} are tabular!
+		
+		aliasExtractors.add( new TemplateParameterValueExtractor("Catmore?", 0, "1") ); //FIXME: testme
+		aliasExtractors.add( new TemplateParameterValueExtractor("Catmore1", 0, "1").setManger( new RegularExpressionMangler("^.*\\[\\[ *(.+?) *(\\||\\]\\])", "$1", 0) ) );
+		//TODO: Catmoresub
 		
 		useCategoryAliases = true; //enwiki uses plural category names. resolve them.
 	}

@@ -74,6 +74,8 @@ public interface WikiPage {
 
 	public WikiLink getRedirect();
 
+	public WikiLink getAliasFor();
+
 	public CharSequence getTitleSuffix();
 
 	public CharSequence getTitlePrefix();

@@ -103,6 +103,11 @@ public class WikiConfiguration {
 	/**
 	 * List of extractors for determining redirect targets. 
 	 */
+	public List<ValueExtractor> aliasExtractors = new ArrayList<ValueExtractor>();
+	
+	/**
+	 * List of extractors for determining redirect targets. 
+	 */
 	public List<ValueExtractor> redirectExtractors = new ArrayList<ValueExtractor>();
 	
 	/**
@@ -286,7 +291,7 @@ public class WikiConfiguration {
 	protected String wikiName;
 
 	public Set<Integer> conceptNamespacecs  = new HashSet<Integer>();
-	
+
 	protected WikiConfiguration() {
 		this(null);
 	}

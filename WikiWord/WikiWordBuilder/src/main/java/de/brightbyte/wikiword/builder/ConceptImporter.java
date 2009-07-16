@@ -276,6 +276,10 @@ public class ConceptImporter extends AbstractImporter {
 			} else {
 				int conceptId = store.storeAbout(rcId, rcName, name);
 
+				//if the cat page contains a reference to the main topic page, store it.
+				WikiTextAnalyzer.WikiLink aliasFor = analyzerPage.getAliasFor();
+				storeConceptAlias(rcId, conceptId, name, -1, aliasFor.getTargetConcept().toString(), AliasScope.CATEGORY);  
+
 				List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
 				linkTracker.step(links.size());
 				
@@ -292,7 +296,6 @@ public class ConceptImporter extends AbstractImporter {
 						storeLanguageLink(rcId, conceptId, name, link.getInterwiki().toString(), link.getTarget().toString());
 					}
 				}
-				
 				
 				//TODO: langlinks from category!
 				//      need resolve-ids on langling, then!

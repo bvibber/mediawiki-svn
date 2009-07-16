@@ -446,8 +446,11 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 
 		protected Set<CharSequence> titleTerms = null;
 		protected Set<CharSequence> pageTerms = null;
+
 		protected WikiLink redirect = null;
 		protected boolean redirectKnown = false;
+		protected WikiLink aliasFor = null;
+		protected boolean aliasForKnown = false;
 		
 		protected CharSequence cleaned = null;
 		protected CharSequence flat = null;
@@ -461,7 +464,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		protected MultiMap<String, CharSequence, Set<CharSequence>> properties = null;
 		protected Set<CharSequence> supplementLinks = null; 
 		protected Holder<CharSequence> supplementedConcept = null; 
-		protected List<WikiLink> links = null; 
+		protected List<WikiLink> links = null;
 		protected List<WikiLink> disambig = null; 
 		protected Set<String> categories = null;
 		protected Set<String> sections = null;
@@ -832,6 +835,18 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		}
 
 		/* (non-Javadoc)
+		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getAliasFor()
+		 */
+		public WikiLink getAliasFor() {
+			if (!aliasForKnown) {
+				aliasFor = extractRedirectLink( this );
+				aliasForKnown = true;
+			}
+			
+			return aliasFor;
+		}
+
+		/* (non-Javadoc)
 		 * @see de.brightbyte.wikiword.analyzer.WikiPage#getTitleSuffix()
 		 */
 		public CharSequence getTitleSuffix() {
@@ -1070,6 +1085,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 					config.propertyExtractors,
 					config.pageTermExtractors,
 					config.redirectExtractors,
+					config.aliasExtractors,
 					extraTemplateUsers
 				);
 		
@@ -1287,6 +1303,15 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 
 	protected WikiLink extractRedirectLink(WikiPage page) {
 		Set<CharSequence> t = evalExtractors(config.redirectExtractors, page);
+		if (t==null || t.isEmpty()) return null;
+		
+		CharSequence target = t.iterator().next(); //first item
+		
+		return makeLink(page.getName(), target, null, null);
+	}
+
+	protected WikiLink extractAliasLink(WikiPage page) {
+		Set<CharSequence> t = evalExtractors(config.aliasExtractors, page);
 		if (t==null || t.isEmpty()) return null;
 		
 		CharSequence target = t.iterator().next(); //first item
