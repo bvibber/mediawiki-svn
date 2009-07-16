@@ -19,7 +19,7 @@
 /* Configuration */
 
 // Bump the version number every time you change any of the .css/.js files
-$wgNavigableTOCStyleVersion = 2;
+$wgNavigableTOCStyleVersion = 3;
 
 /* Setup */
 
