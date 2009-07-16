@@ -265,7 +265,7 @@ class SvnRevTablePager extends TablePager {
 					$this->mView->mSkin->link(
 					SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/path' ),
 					$wgLang->truncate( (string)$value, 30 ),
-					array(),
+					array( 'title' => (string)$value ),
 					array( 'path' => (string)$value ) ) . "</div>";
 		}
 	}
