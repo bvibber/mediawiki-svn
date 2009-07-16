@@ -179,7 +179,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		disambigStripSectionPattern = sectionPattern("See also", 0);  
 		//FIXME: disambig pages marked with {{shipindex}} are tabular!
 		
-		aliasExtractors.add( new TemplateParameterValueExtractor("Catmore?", 0, "1") ); //FIXME: testme
+		aliasExtractors.add( new TemplateParameterValueExtractor("Catmore2?", 0, "1") ); //FIXME: testme
 		aliasExtractors.add( new TemplateParameterValueExtractor("Catmore1", 0, "1").setManger( new RegularExpressionMangler("^.*\\[\\[ *(.+?) *(\\||\\]\\])", "$1", 0) ) );
 		//TODO: Catmoresub
 		

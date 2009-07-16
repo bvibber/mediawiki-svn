@@ -839,7 +839,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		 */
 		public WikiLink getAliasFor() {
 			if (!aliasForKnown) {
-				aliasFor = extractRedirectLink( this );
+				aliasFor = extractAliasLink( this );
 				aliasForKnown = true;
 			}
 			

@@ -8,7 +8,6 @@ import de.brightbyte.data.MultiMap;
 import de.brightbyte.wikiword.analyzer.AnalyzerUtils;
 import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.mangler.Mangler;
-import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.NameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
 import de.brightbyte.wikiword.analyzer.template.TemplateData;
@@ -22,7 +21,7 @@ public class TemplateParameterValueExtractor implements ValueExtractor, Template
 	protected Mangler mangler = null;
 	
 	public TemplateParameterValueExtractor(String template, int flags, String parameter) {
-		this(new ExactNameMatcher(template), parameter);
+		this(new PatternNameMatcher(template, flags, true), parameter);
 	}
 	
 	public TemplateParameterValueExtractor(Pattern template, String parameter) {
@@ -56,7 +55,7 @@ public class TemplateParameterValueExtractor implements ValueExtractor, Template
 				if (prefix!=null) v = prefix+v;
 				if (v!=null) {
 					if (mangler!=null) v = mangler.mangle(v);
-					AnalyzerUtils.addToSet(into, v);
+					into = AnalyzerUtils.addToSet(into, v);
 				}
 			}
 		}

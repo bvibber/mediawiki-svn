@@ -492,6 +492,7 @@ public class WikiConfiguration {
 		propertyExtractors.addAll(with.propertyExtractors);
 		pageTermExtractors.addAll(with.pageTermExtractors);
 		redirectExtractors.addAll(with.redirectExtractors);
+		aliasExtractors.addAll(with.aliasExtractors);
 		supplementNameExtractors.addAll(with.supplementNameExtractors);
 		supplementedConceptExtractors.addAll(with.supplementedConceptExtractors);
 		
