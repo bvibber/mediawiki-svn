@@ -28,7 +28,7 @@ class UsabilityInitiativeHooks {
 	 * AjaxAddScript hook
 	 * Adds scripts
 	 */
-	public static function addJs( $out ) {
+	public static function addResources( $out ) {
 		global $wgScriptPath, $wgJsMimeType;
 		global $wgUsabilityInitiativeCoesxistWithMvEmbed;
 		
@@ -79,19 +79,6 @@ class UsabilityInitiativeHooks {
 				"loadGM({{$messagesList}});"
 			)
 		);
-		// Continue
-		return true;
-	}
-
-	/**
-	 * BeforePageDisplay hook
-	 * Adds styles
-	 */
-	public static function addCss( $out ) {
-		global $wgScriptPath, $wgJsMimeType;
-		
-		if ( !self::$doOutput )
-			return true;
 		
 		// Loops over each style
 		foreach ( self::$styles as $style ) {

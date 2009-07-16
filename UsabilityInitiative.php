@@ -44,5 +44,4 @@ $wgExtensionMessagesFiles['UsabilityInitiative'] =
 	dirname( __FILE__ ) . "/UsabilityInitiative.i18n.php";
 
 // Registers Hooks
-$wgHooks['AjaxAddScript'][] = 'UsabilityInitiativeHooks::addJs';
-$wgHooks['BeforePageDisplay'][] = 'UsabilityInitiativeHooks::addCss';
+$wgHooks['BeforePageDisplay'][] = 'UsabilityInitiativeHooks::addResources';
