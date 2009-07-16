@@ -121,7 +121,7 @@ $messages['en'] = array(
 	'edittoolbar-help-content-rereference-syntax' => '&lt;ref name="test" /&gt;',
 	'edittoolbar-help-content-rereference-result' => "Page text.<sup><a href='#'>[1]</a></sup>",
 	'edittoolbar-help-content-showreferences-description' => 'Display references',
-	'edittoolbar-help-content-showreferences-syntax' => '&lt;references /&gt; or {<!-- -->{Reflist}}',
+	'edittoolbar-help-content-showreferences-syntax' => '&lt;references /&gt;',
 	'edittoolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Link text</a>, additional text.</li></ol>",
 	'edittoolbar-help-content-signaturetimestamp-description' => 'Signature with timestamp',
 	'edittoolbar-help-content-signaturetimestamp-syntax' => '~~~~',
