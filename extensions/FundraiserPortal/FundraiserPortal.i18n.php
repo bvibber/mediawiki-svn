@@ -20,4 +20,7 @@ $messages['en'] = array(
 	'fundraiserportal-rubytext-message' => 'Every donation helps us to keep Wikipedia free for everyone.',
 	'fundraiserportal-rubytext-close' => 'Hide this from now on',
 	'fundraiserportal-sapphire-button' => 'Donate Now',
+	'fundraiserportal-tourmaline-button' => 'Donate Now',
+	'fundraiserportal-tourmaline-message' => 'Every donation helps us to keep Wikipedia free for everyone.',
+	'fundraiserportal-tourmaline-close' => 'Hide this from now on',
 );
