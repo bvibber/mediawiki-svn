@@ -254,6 +254,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		private CharSequence interwiki;
 		private int namespace;
 		private CharSequence target;
+		private CharSequence targetConcept;
+		private CharSequence targetConceptPage;
 		private CharSequence title;
 		private CharSequence section;
 		private CharSequence text;
@@ -399,7 +401,29 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 				return false;
 			return true;
 		}
-		
+
+		public CharSequence getTargetConcept() {
+			if (targetConcept==null) {
+				targetConcept = getTargetConceptPage();
+				if (section!=null) targetConcept = targetConcept + "#" + section; 
+			}
+			
+			return targetConcept;
+		}
+
+		public CharSequence getTargetConceptPage() {
+			if (targetConceptPage==null) {
+				if (namespace!=Namespace.MAIN && !isConceptNamespace(namespace)) {
+					targetConceptPage = target;
+					int idx = StringUtils.indexOf('#', targetConceptPage);
+					if (idx>=0) targetConceptPage= targetConceptPage.subSequence(0, idx); 
+				} else {
+					targetConceptPage = title;
+				}
+			}
+			
+			return targetConceptPage;
+		}
 	}
 		
 	protected class Page implements WikiPage {
@@ -1889,6 +1913,15 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		//XXX: make this work for leading spaces too: " foo";
 		mainArtikeMarkerMatcher.reset(sortKey);
 		return mainArtikeMarkerMatcher.matches();
+	}
+	
+	/**
+	 * returns true of the given namespace ID identifies a namespace
+	 * that contains pages about concepts. This is usually the main namespace
+	 * and the category namespace.
+	 */
+	public boolean isConceptNamespace(int ns) {
+		return config.conceptNamespacecs.contains(ns);
 	}
 	
 	public boolean mayBeFormOf(CharSequence form, CharSequence base) {

@@ -16,6 +16,8 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 	public WikiConfiguration_dewiki() {
 		super();
 		
+		//conceptNamespacecs.add(Namespace.PORTAL); //FIXME: how to add portal namespace?!
+		
 		/*
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("\\{\\{[Oo]kina\\}\\}", "\u02BB", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("\\{\\{\\s*(IPA(?:-Text)|IAST|Unicode|Musik)\\s*\\|\\s*([^|}]+)\\s*(\\|.*?)?\\s*(\\|.*?)?\\}\\}", "$2", Pattern.CASE_INSENSITIVE));

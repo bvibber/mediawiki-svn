@@ -3,9 +3,11 @@ package de.brightbyte.wikiword.analyzer;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import de.brightbyte.data.measure.Measure;
@@ -282,6 +284,8 @@ public class WikiConfiguration {
 	protected WikiTextAnalyzer analyzer;
 	
 	protected String wikiName;
+
+	public Set<Integer> conceptNamespacecs  = new HashSet<Integer>();
 	
 	protected WikiConfiguration() {
 		this(null);
@@ -456,6 +460,9 @@ public class WikiConfiguration {
 		
 		String category_redirect_templates = pyBotFamily.getProperty("category_redirect_templates");
 		if (category_redirect_templates!=null) this.redirectExtractors.add( new TemplateParameterValueExtractor(category_redirect_templates.replace(' ', '_'), Pattern.CASE_INSENSITIVE, "1").setPrefix("Category:") );
+		
+		conceptNamespacecs.add(Namespace.MAIN);
+		conceptNamespacecs.add(Namespace.CATEGORY);
 	}
 	
 	public void attach(WikiTextAnalyzer analyzer) {

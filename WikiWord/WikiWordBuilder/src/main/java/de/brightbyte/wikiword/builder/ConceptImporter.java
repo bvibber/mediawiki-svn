@@ -210,9 +210,11 @@ public class ConceptImporter extends AbstractImporter {
 			if (m==WikiTextAnalyzer.LinkMagic.NONE) {
 				if (link.getNamespace()!=Namespace.MAIN) continue;
 				if (link.getInterwiki()!=null) continue;
+				
+				String tgt = link.getTargetConcept().toString();
 			
-				storeReference(rcId, link.getText().toString(), -1, link.getTarget().toString(), ExtractionRule.TERM_FROM_LINK);
-				if (link.getSection()!=null) storeSection(rcId, link.getTarget().toString(), link.getTargetPage().toString());
+				storeReference(rcId, link.getText().toString(), -1, tgt, ExtractionRule.TERM_FROM_LINK);
+				if (link.getSection()!=null) storeSection(rcId, tgt, link.getTargetPage().toString());
 			}
 		}
 	}
@@ -224,9 +226,11 @@ public class ConceptImporter extends AbstractImporter {
 			if (m==WikiTextAnalyzer.LinkMagic.NONE) {
 				if (link.getNamespace()!=Namespace.MAIN  && link.getNamespace()!=Namespace.CATEGORY) continue;
 				if (link.getInterwiki()!=null) continue;
+
+				String tgt = link.getTargetConcept().toString();
 			
-				storeLink(rcId, conceptId, conceptName, link.getText().toString(), link.getTarget().toString(), ExtractionRule.TERM_FROM_LINK);
-				if (link.getSection()!=null) storeSection(rcId, link.getTarget().toString(), link.getTargetPage().toString());
+				storeLink(rcId, conceptId, conceptName, link.getText().toString(), tgt, ExtractionRule.TERM_FROM_LINK);
+				if (link.getSection()!=null) storeSection(rcId, tgt, link.getTargetConceptPage().toString());
 			}
 		}
 	}
@@ -280,7 +284,7 @@ public class ConceptImporter extends AbstractImporter {
 					
 					if (m==WikiTextAnalyzer.LinkMagic.CATEGORY) {
 						//FIXME: store this also as a reference to the categorie's concept under it's original title!
-						storeConceptBroader(rcId, name, link.getTarget().toString(), ExtractionRule.BROADER_FROM_CAT);
+						storeConceptBroader(rcId, name, link.getTitle().toString(), ExtractionRule.BROADER_FROM_CAT);
 					}
 					
 					if (m==WikiTextAnalyzer.LinkMagic.LANGUAGE) {
@@ -375,7 +379,7 @@ public class ConceptImporter extends AbstractImporter {
 								//NOTE: the alias is preliminary: if a article with the name of the category 
 								//      exists, the alias will be ignored. See DatabaseLocalConceptBuilder.finishBadLinks
 								
-								storeConceptAlias(rcId, -1, link.getTarget().toString(), conceptId, name, AliasScope.CATEGORY);  
+								storeConceptAlias(rcId, -1, link.getTargetConcept().toString(), conceptId, name, AliasScope.CATEGORY);  
 								categorize = false;
 							}
 						}
@@ -388,8 +392,10 @@ public class ConceptImporter extends AbstractImporter {
 							//XXX: if {{DEFAULTSORT}} is handled for PageTerms, apply for each category again? 
 							storeReference(rcId, sortKey, conceptId, name, ExtractionRule.TERM_FROM_SORTKEY); //sort key is a name for this page
 						}
-
-						storeConceptBroader(rcId, conceptId, name, link.getTarget().toString(), ExtractionRule.BROADER_FROM_CAT);
+						
+						if (!StringUtils.equals(link.getTitle(),name) ) {    
+							storeConceptBroader(rcId, conceptId, name, link.getTitle().toString(), ExtractionRule.BROADER_FROM_CAT);
+						}
 					}
 				}
 				else if (m==WikiTextAnalyzer.LinkMagic.LANGUAGE) {
@@ -414,11 +420,11 @@ public class ConceptImporter extends AbstractImporter {
 				WikiTextAnalyzer.LinkMagic m = link.getMagic();
 				
 				if (m==WikiTextAnalyzer.LinkMagic.NONE) {
-					if (link.getNamespace()!=Namespace.MAIN) continue;
+					if (!analyzer.isConceptNamespace(link.getNamespace())) continue;
 					if (link.getInterwiki()!=null) continue;
 				
 					for (CharSequence term : terms) {
-						storeReference(rcId, term.toString(), -1, link.getTarget().toString(), ExtractionRule.TERM_FROM_DISAMBIG);
+						storeReference(rcId, term.toString(), -1, link.getTitle().toString(), ExtractionRule.TERM_FROM_DISAMBIG);
 					}
 				}
 			}
@@ -452,8 +458,9 @@ public class ConceptImporter extends AbstractImporter {
 		String name = analyzerPage.getConceptName();
 		String rcName = analyzerPage.getResourceName();
 		String text = analyzerPage.getText().toString();
-
+		
 		WikiTextAnalyzer.WikiLink link = analyzerPage.getRedirect();
+		String tgtConcept = link.getTargetConcept().toString();
 		
 		int conceptId = 0;
 		
@@ -465,34 +472,39 @@ public class ConceptImporter extends AbstractImporter {
 			out.info("skipped interwiki redirect "+rcName+" -> "+link);
 		}
 		else if (link.getNamespace()!=analyzerPage.getNamespace()) {
-			if (link.getNamespace()==Namespace.CATEGORY && analyzerPage.getNamespace()==Namespace.MAIN) {
-				if ( StringUtils.equals(link.getTarget(), rcName) ) {
-						out.debug("ignored redundant category redirect "+rcName+" -> "+link);
+			if ( analyzer.isConceptNamespace(link.getNamespace()) ) {
+				if ( StringUtils.equals(tgtConcept, name) ) {
+						out.debug("ignored redundant inter-namespace redirect "+rcName+" -> "+link);
 				} else {
 						out.debug("processing redirect to category "+rcName+" -> "+link);
-						storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getTarget().toString(), ExtractionRule.TERM_FROM_REDIRECT );
-						String tgtConcept = link.getTarget().toString();
+						
+						storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, tgtConcept, ExtractionRule.TERM_FROM_REDIRECT );
 						
 						if (!name.equals(tgtConcept)) {
 							conceptId = store.storeAbout(rcId, rcName, name);
 							storeConceptAlias(rcId, conceptId, name, -1, tgtConcept, AliasScope.REDIRECT);
 						} else {
-							out.debug("skipping redirect to category with the same name");
+							out.debug("skipping inter-namespace redirect to page with the same title");
 						}
 				}
 			} else {
 				warn(rcId, "bad redirect (inter-namespace)", rcName+" -> "+link, null);
 			}
 		}
-		else if (rcName.equals(link.getTarget().toString())) {
-			warn(rcId, "bad redirect (self-link)", "page "+name, null);
+		else if (StringUtils.equals(rcName, link.getTarget().toString())) {
+			warn(rcId, "bad redirect (self-link)", "page "+rcName, null);
 		}
-		else {
-			conceptId = store.storeAbout(rcId, rcName, name); 
-			storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, link.getTarget().toString(), ExtractionRule.TERM_FROM_REDIRECT );
-			storeConceptAlias(rcId, conceptId, name, -1, link.getTarget().toString(), AliasScope.REDIRECT); 
-			
-			//FIXME: redir to section!
+		else if ( analyzer.isConceptNamespace(link.getNamespace()) ) {
+			if (StringUtils.equals(name, tgtConcept)) {
+				warn(rcId, "bad redirect (self-link)", "page "+rcName, null);
+			} else {
+				conceptId = store.storeAbout(rcId, rcName, name); 
+				storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, tgtConcept, ExtractionRule.TERM_FROM_REDIRECT );
+				storeConceptAlias(rcId, conceptId, name, -1, tgtConcept, AliasScope.REDIRECT);
+				if (link.getSection()!=null) storeSection(rcId, link.getTargetConcept().toString(), link.getTargetConceptPage().toString());
+			}
+		} else if (link.getInterwiki()!=null ) {
+			out.info("skipped uninterresting redirect "+rcName+" -> "+link);
 		}
 		
 		return conceptId;

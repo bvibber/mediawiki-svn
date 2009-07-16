@@ -17,6 +17,8 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 	public WikiConfiguration_enwiki() {
 		super();
 		
+		//conceptNamespacecs.add(Namespace.PORTAL); //FIXME: how to add portal namespace?!
+		
 		/*
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("^\\{\\{(wrapper)\\s*(\\|[^\\}\\r\\n]*)?\\}\\}\\s*$", "{|", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("^\\{\\{(end|col-end)\\s*\\}\\}\\s*$", "|}", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
