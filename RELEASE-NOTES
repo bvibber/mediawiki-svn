@@ -92,6 +92,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Add $wgRevokePermissions as a means of restricting a group's rights. The syntax is
   identical to $wgGroupPermissions, but users in these groups will have these rights
   stripped from them.
+* Added FSRepo configuration properties thumbUrl and thumbDir, to allow the 
+  thumbnails to be stored in a separate location to the source images.
 
 === Bug fixes in 1.16 ===
 
