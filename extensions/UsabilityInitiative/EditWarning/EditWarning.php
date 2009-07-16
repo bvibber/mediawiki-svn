@@ -11,7 +11,7 @@
  * Usage: Include the following line in your LocalSettings.php
  * require_once( "$IP/extensions/UsabilityInitiative/EditWarning/EditWarning.php" );
  *
- * @author Roan Kattouw <roan.kattouw@gmail.com>
+ * @author Roan Kattouw <roan.kattouw@gmail.com>, Trevor Parscal <tparscal@wikimedia.org>
  * @license GPL v2 or later
  * @version 0.1.1
  */
