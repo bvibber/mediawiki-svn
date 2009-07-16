@@ -21,6 +21,8 @@
 
 $wgFundraiserPortalShow = true;
 $wgFundraiserPortalURL = 'http://wikimediafoundation.org/wiki/Donate/Now/en';
+// Allowable templates: Plain, Ruby, RubyText, Sapphire
+$wgFundraiserPortalTemplate = 'Sapphire';
 
 /* Setup */
 
