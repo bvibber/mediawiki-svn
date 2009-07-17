@@ -3863,3 +3863,6 @@ $wgInvalidUsernameCharacters = '@';
  * modify the user rights of those users via Special:UserRights
  */
 $wgUserrightsInterwikiDelimiter = '@';
+
+// to disable image delete/restore temporarily
+$wgUploadMaintenance = false;
