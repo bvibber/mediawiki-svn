@@ -88,7 +88,6 @@
 											$(this).data( 'sectionCookie' ),
 											show ? $(this).data( 'sectionDiv' ).attr( 'id' ) : null
 										);
-										/*$(this).data( 'textbox' ).focus();*/
 										return false;
 									})
 							)
@@ -533,7 +532,7 @@ var editToolbarConfiguration = {
 					},
 					'signature': {
 						labelMsg: 'edittoolbar-tool-signature',
-						filters: [ 'body.ns-talk' ],
+						filters: [ 'body:not(.ns-0)' ],
 						type: 'button',
 						icon: 'insert-signature.png',
 						action: {

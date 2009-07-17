@@ -58,6 +58,23 @@ li span.deleted, span.history-deleted {
 }
 
 /**
+ * Patrol stuff
+ */
+.not-patrolled {
+	background-color: #ffa;
+}
+
+span.unpatrolled {
+	font-weight: bold;
+	color: red;
+}
+
+div.patrollink {
+	font-size: 75%;
+	text-align: right;
+}
+
+/**
  * Forms
  */
 body.ltr td.mw-label { text-align: right; }
@@ -516,6 +533,11 @@ table.wikitable {
     font-weight: bold;
 }
 
+/* hide initially collapsed collapsable tables */
+table.collapsed tr.collapsable {
+	display: none;
+}
+
 /* success and error messages */
 .success {
 	color: green;
@@ -599,4 +621,44 @@ ul#filetoc {
 	display: inline;
 	list-style-type: none;
 	padding-right: 2em;
+}
+
+/* Classes for EXIF data display */
+table.mw_metadata {
+	font-size: 0.8em;
+	margin-left: 0.5em;
+	margin-bottom: 0.5em;
+	width: 300px;
+}
+
+table.mw_metadata caption {
+	font-weight: bold;
+}
+
+table.mw_metadata th {
+	font-weight: normal;
+}
+
+table.mw_metadata td {
+	padding: 0.1em;
+}
+
+table.mw_metadata {
+	border: none;
+	border-collapse: collapse;
+}
+
+table.mw_metadata td, table.mw_metadata th {
+	text-align: center;
+	border: 1px solid #aaaaaa;
+	padding-left: 0.1em;
+	padding-right: 0.1em;
+}
+
+table.mw_metadata th {
+	background-color: #f9f9f9;
+}
+
+table.mw_metadata td {
+	background-color: #fcfcfc;
 }
