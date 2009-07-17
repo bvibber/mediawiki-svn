@@ -38,6 +38,7 @@ import de.brightbyte.wikiword.integrator.data.AssemblingFeatureSetCursor;
 import de.brightbyte.wikiword.integrator.data.Association;
 import de.brightbyte.wikiword.integrator.data.AssociationCursor;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
+import de.brightbyte.wikiword.integrator.data.FeatureSetMangler;
 import de.brightbyte.wikiword.integrator.data.FeatureSetValueSplitter;
 import de.brightbyte.wikiword.integrator.data.MangelingFeatureSetCursor;
 import de.brightbyte.wikiword.integrator.data.ResultSetFeatureSetCursor;
@@ -301,9 +302,15 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 			fsc = new AssemblingFeatureSetCursor(fsc, subjectField, propField, valueField);
 		}
 		
-		Map<String, Chunker> splitters = sourceDescriptor.getDataFieldChunkers();
-		if (splitters!=null) {
-			fsc = new MangelingFeatureSetCursor(fsc, FeatureSetValueSplitter.multiFromChunkerMap(splitters));
+		FeatureSetMangler mangler = sourceDescriptor.getRowMangler();
+		
+		if (mangler==null) {
+			Map<String, Chunker> splitters = sourceDescriptor.getDataFieldChunkers();
+			if (splitters!=null) mangler = FeatureSetValueSplitter.multiFromChunkerMap(splitters);
+		}
+		
+		if (mangler!=null) {
+			fsc = new MangelingFeatureSetCursor(fsc, mangler);
 		}
 		
 		return fsc;

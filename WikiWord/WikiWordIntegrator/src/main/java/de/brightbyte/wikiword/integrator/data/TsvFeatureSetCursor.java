@@ -8,12 +8,11 @@ import java.text.ParseException;
 import java.util.List;
 
 import de.brightbyte.data.cursor.DataCursor;
-import de.brightbyte.io.LineCursor;
 import de.brightbyte.io.ChunkingCursor;
+import de.brightbyte.io.LineCursor;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.util.ErrorHandler;
-import de.brightbyte.util.LoggingErrorHandler;
 import de.brightbyte.util.PersistenceException;
 
 public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {

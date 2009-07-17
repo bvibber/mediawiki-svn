@@ -37,5 +37,24 @@ public class DefaultFeatureSet extends ValueListMultiMap<String, Object> impleme
 			List<Object> list = get(key);
 			return FeatureSets.histogram(list);
 		}
+
+		@Override
+		public boolean put(String key, Object value) {
+			boolean changed = false;
+			if (value instanceof Object[]) {
+				for(Object w: (Object[])value) {
+					changed = put(key, w) | changed;
+				}
+			} if (value instanceof Iterable) {
+				for(Object w: (Iterable)value) {
+					changed = put(key, w) | changed;
+				}
+			} else {
+				changed = super.put(key, value);
+			}
+			
+			return changed;
+		}
+		
 		
 }

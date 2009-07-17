@@ -8,15 +8,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import de.brightbyte.data.Functor;
 import de.brightbyte.db.SqlScriptRunner;
-import de.brightbyte.db.SqlScriptRunner.RegularExpressionMangler;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.InputFileHelper;
+import de.brightbyte.wikiword.integrator.data.FeatureSetMangler;
 
 public class FeatureSetSourceDescriptor extends TweakSet {
 	
@@ -87,6 +86,10 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 
 	public Map<String, Chunker> getDataFieldChunkers() { 
 		return getTweak("field-chunkers", (Map<String, Chunker>)null);
+	}
+	
+	public FeatureSetMangler getRowMangler() { 
+		return getTweak("row-mangler", (FeatureSetMangler)null);
 	}
 	
 	public String getPropertyValueField() {
