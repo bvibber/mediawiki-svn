@@ -358,6 +358,13 @@ $messages['pl'] = array(
 	'breadcrumbs-desc' => 'Pokazuje ścieżki poruszania się użytkowników poprzez wiki.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'breadcrumbs-desc' => "A mosta ël përcors ëd j'utent ant la wiki.",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -212,6 +212,13 @@ $messages['pl'] = array(
 	'jskit-desc' => 'Integruje narzędzia js-kit ze stroną wiki',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'jskit-desc' => 'A ìntegra lë strument js-kit an dzora a na pàgina wiki',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

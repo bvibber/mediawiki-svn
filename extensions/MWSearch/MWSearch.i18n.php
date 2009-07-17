@@ -286,6 +286,13 @@ $messages['li'] = array(
 	'mwsearch-desc' => 'MWZeuk ingaef',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'mwsearch-desc' => 'MWSearch įskiepis',
+);
+
 /** Latvian (Latviešu)
  * @author Papuass
  */
@@ -362,6 +369,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'mwsearch-desc' => 'Wtyczka MWSearch',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
 /** Portuguese (Português)

@@ -426,9 +426,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'contributionseditcount' => "St'utent-sì a l'ha fait $1 modìfiche.",
+	'contributionseditcount-desc' => "A fa vëdde an contator ëd modìfiche an sla [[Special:Contributions|pàgina dle contribussion ëd l'utent]]",
 );
 
 /** Pashto (پښتو)

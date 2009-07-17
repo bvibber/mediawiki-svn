@@ -2225,13 +2225,13 @@ $messages['grc'] = array(
 	'code-status' => 'κατάστασις',
 	'code-tags' => 'προσαρτήματα',
 	'code-authors-text' => 'Κάτωθι ἐστὶ καταλογή τις δημιουργῶν τῆς ἀποθήκης κατατάξει τῶν πλείω προσφάτων καταθέσεων.',
-	'code-author-haslink' => 'Ὅδε ὁ δημιουργὸς συνδεδεμένος ἐστὶ μετὰ τοῦ ϝίκι-χρωμένου $1',
-	'code-author-orphan' => 'Ὅδε ὁ χρώμενος οὐκ ἔχει σύνδεσμον μετὰ ϝίκι-λογισμοῦ τινός',
-	'code-author-dolink' => 'Συνδεῖσθαι τόνδε τὸν δημιουργὸν μετὰ ϝικι-χρωμένου τινὸς:',
-	'code-author-alterlink' => 'Ἀλλάττειν ϝίκι-χρώμενον τὸν συνδεδεμένον μετὰ τοῦδε τοῦ χρωμένου:',
+	'code-author-haslink' => 'Ὅδε ὁ δημιουργὸς συνδεδεμένος ἐστὶ μετὰ τοῦ βικι-χρωμένου $1',
+	'code-author-orphan' => 'Ὅδε ὁ χρώμενος οὐκ ἔχει σύνδεσμον μετὰ βικι-λογισμοῦ τινός',
+	'code-author-dolink' => 'Συνδεῖσθαι τόνδε τὸν δημιουργὸν μετὰ βικι-χρωμένου τινός:',
+	'code-author-alterlink' => 'Ἀλλάττειν βικι-χρώμενον τὸν συνδεδεμένον μετὰ τοῦδε τοῦ χρωμένου:',
 	'code-author-orunlink' => 'Ἢ ἀποδιασυνδεῖσθαι τόνδε τὸν χρώμενον:',
 	'code-author-name' => 'Εὶσάγειν ὄνομα χρωμένου τι:',
-	'code-author-success' => 'Ὁ δημιουργὸς $1 διασυνδεδεμένος ἐστὶ μετὰ τοῦ ϝικι-χρωμένου $2',
+	'code-author-success' => 'Ὁ δημιουργὸς $1 διασυνδεδεμένος ἐστὶ μετὰ τοῦ βικι-χρωμένου $2',
 	'code-author-link' => 'συνδεῖσθαι;',
 	'code-author-unlink' => 'ἀσυνδεῖσθαι;',
 	'code-author-unlinksuccess' => 'Ὁ δημιουργὸς $1 ἀποδιασυνδεδεμένος ἐστίν',
@@ -2303,7 +2303,7 @@ $4',
 	'right-codereview-remove-tag' => 'Ἀφαιρεῖν προσαρτήματα ὑπὸ τὰς ἀναθεωρήσεις',
 	'right-codereview-post-comment' => 'Προστιθέναι νέα σχόλια ταῖς ἀναθεωρήσεσιν',
 	'right-codereview-set-status' => 'Μεταβάλλειν τὸ καθεστὼς τῶν ἀναθεωρήσεων',
-	'right-codereview-link-user' => 'Συνδεῖσθαι τοὺς δημιουργοὺς μετὰ ϝικι-χρωμένων',
+	'right-codereview-link-user' => 'Συνδεῖσθαι τοὺς δημιουργοὺς μετὰ βικι-χρωμένων',
 	'specialpages-group-developer' => 'Ἐργαλεῖα ἀναπτυκτῶν',
 );
 
@@ -3922,6 +3922,14 @@ $4',
 	'right-codereview-set-status' => 'Anger versiestaat',
 	'right-codereview-link-user' => 'Koppel sjrievers aan wikigebroekers',
 	'specialpages-group-developer' => 'Hölpmiddele veur óntwikkeleers',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'repoadmin-new-button' => 'Sukurti',
+	'repoadmin-edit-button' => 'Gerai',
 );
 
 /** Macedonian (Македонски)
@@ -6784,7 +6792,7 @@ $4',
  */
 $messages['vo'] = array(
 	'code-comments' => 'Küpets',
-	'code-change-status' => "evotükon '''stadi''' revida at",
+	'code-change-status' => "evotükon '''stadi''' ela r$1",
 	'code-change-removed' => 'pemoükon:',
 	'code-change-added' => 'peläükon:',
 	'code-no-repo' => 'No dabinon kipedöp labü paramets pegivülöl!',

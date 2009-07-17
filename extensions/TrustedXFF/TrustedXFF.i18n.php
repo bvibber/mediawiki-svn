@@ -229,6 +229,13 @@ $messages['li'] = array(
 	'trustedxff-desc' => 'Hanjele einer lies mit gooje proxy addresse ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'trustedxff-desc' => 'Patikrintų proxy adresų sąrašas ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

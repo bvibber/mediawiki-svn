@@ -617,6 +617,7 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
@@ -626,6 +627,7 @@ $messages['te'] = array(
 	'categorywatch-catmoveout' => '$1 పేజీని $2 వర్గం నుండి $3కి మార్చారని',
 	'categorywatch-catadd' => '$1 పేజీని $2 వర్గంలో చేర్చారని',
 	'categorywatch-catsub' => '$1 పేజీని $2 వర్గం నుండి తొలగించారని',
+	'categorywatch-autocat' => '$1ద్వారా అసంకల్పిత నిఘా',
 );
 
 /** Tagalog (Tagalog)

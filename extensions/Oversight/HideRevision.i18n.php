@@ -204,6 +204,15 @@ $messages['ar'] = array(
 	'oversight-offender' => 'مسيء:',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'group-oversight' => 'ܚܝܘܪ̈ܐ',
+	'group-oversight-member' => 'ܚܝܘܪܐ',
+	'hiderevision-tab' => 'ܛܫܝ ܬܢܝܬܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

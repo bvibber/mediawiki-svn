@@ -207,6 +207,13 @@ $messages['pl'] = array(
 	'htmlets-desc' => 'Umożliwia włączanie kodu HTML z plików przy użyciu znacznika <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'htmlets-desc' => 'At përmëtt d\'anserì djë "snippet" HTML da file an dovrand ël tag <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

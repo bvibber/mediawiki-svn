@@ -643,9 +643,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'backforth-next' => 'Anans ($1)',
+	'backforth-desc' => 'A gionta an testa a la pàgina le anliure ëd paginassion "A ven-o d\'apress" e "A ven-o prima"',
 	'backforth-prev' => 'André ($1)',
 );
 

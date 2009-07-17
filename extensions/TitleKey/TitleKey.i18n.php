@@ -264,6 +264,13 @@ $messages['li'] = array(
 	'titlekey-desc' => 'Backend veur zeuksuggesties veur paginanaamveurvoegsels',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'titlekey-desc' => 'Pavadinimo prefikso paieška pasiūlymo sugrąžinimui',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

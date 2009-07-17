@@ -414,7 +414,7 @@ $messages['eu'] = array(
  * @author Huji
  */
 $messages['fa'] = array(
-	'multipleupload' => 'بارگذاری پرونده‌ها',
+	'multipleupload' => 'بارگذاری چندین پرونده',
 	'multipleupload-desc' => 'به کاربران اجازهٔ [[Special:MultipleUpload|بارگذاری چندین پرونده به طور همزمان]] را می‌دهد',
 	'multipleupload-ignoreallwarnings' => "را نادیده بگیر '''تمامی هشدارها''' و پرونده‌ها را در هر حال ذخیره کن.",
 	'multipleupload-saveallfiles' => 'ذخیره کردن تمامی پرونده‌ها',

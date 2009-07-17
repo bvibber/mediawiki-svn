@@ -280,6 +280,13 @@ $messages['pl'] = array(
 	'metakeywords-desc' => 'Pozwala na konfigurację znaczników <tt><nowiki><meta "keywords"></nowiki></tt> oraz <tt><nowiki><meta "description"></nowiki></tt> dla przestrzeni nazw',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'metakeywords-desc' => 'A përmëtt la configurassion ëd <tt><nowiki><meta "keywords"></nowiki></tt> e ël tag <tt><nowiki><meta "description"></nowiki></tt> për namespace',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

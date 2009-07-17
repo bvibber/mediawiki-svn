@@ -145,6 +145,16 @@ $messages['ca'] = array(
 	'layouts_tagline' => "Aquesta pàgina va ser generada pel format '''$1'''.",
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'layouts_title' => 'دروست‌کردنی لاپەڕەیەک',
+	'layouts_continue' => 'درێژەدان',
+	'layouts_choosecategory' => 'هاوپۆلێک هەڵبژێرە بۆ $1:',
+	'layouts_unknown' => 'نەناسراو',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

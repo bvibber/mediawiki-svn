@@ -262,6 +262,13 @@ $messages['pl'] = array(
 	'substall-desc' => 'Tworzy znacznik <nowiki><substall></nowiki>, który rozwija wszystkie szablony na wikiskładnię',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'substall-desc' => 'A crea un tag <nowiki><substall></nowiki> che a espand tùit jë stamp a wikisyntax',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

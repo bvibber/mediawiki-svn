@@ -370,6 +370,13 @@ $messages['pl'] = array(
 	'doublewiki-desc' => 'Wyświetla w dwu kolumnach treść oraz pochodzące z wiki w innym języku tłumaczenie',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'doublewiki-desc' => "A presenta na pàgina e soa tradussion da n'àutra wiki an doe colone ëd la midema pàgina",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

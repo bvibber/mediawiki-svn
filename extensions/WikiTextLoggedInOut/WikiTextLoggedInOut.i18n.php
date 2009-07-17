@@ -319,6 +319,13 @@ $messages['szl'] = array(
 	'wikitextloggedinout-desc' => 'Dodowo dwa haki parsera <tt>&lt;loggedin&gt;</tt> a tyż <tt>&lt;loggedout&gt;</tt> kere dozwalajům wyśwjetlać roztůmajte teksty zależńy uod statusa zalugwańo śe użytkowńika',
 );
 
+/** Telugu (తెలుగు)
+ * @author Kiranmayee
+ */
+$messages['te'] = array(
+	'wikitextloggedinout-desc' => 'వాడుకరి యొక్క ప్రవేసపు స్థితి ని అనుసరించి సందేశములు చూపించుటకు రెండు పర్సేర్ హుక్స్, <tt>&lt;ప్రవేశించెను&gt;</tt> and <tt>&lt;నిష్క్రమించెను&gt;</tt>',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

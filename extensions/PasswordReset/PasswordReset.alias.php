@@ -114,7 +114,7 @@ $aliases['km'] = array(
 
 /** Korean (한국어) */
 $aliases['ko'] = array(
-	'PasswordReset' => array( '비밀번호변경', '비밀번호바꾸기', '암호바꾸기' ),
+	'PasswordReset' => array( '암호변경' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

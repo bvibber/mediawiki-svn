@@ -373,6 +373,13 @@ $messages['pl'] = array(
 	'ajax-qp-desc' => 'Dodaje technologię AJAX do stron zapytań, takich jak [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'ajax-qp-desc' => "Gionta ëd l'AJAX a pàgine d'arserca com [[Special:Shortpages|{{int:shortpages}}]]",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

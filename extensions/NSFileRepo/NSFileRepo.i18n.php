@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'nsfilerepo-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links or tag names.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'nsfilerepo-desc' => 'Дадае дадатковыя магчымасьці для загружаных файлаў у залежнасьці ад прасторы назваў',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -28,11 +35,53 @@ $messages['bs'] = array(
 	'nsfilerepo-desc' => 'Omogućuje osobine zasnovane na imenskim prostorima za postavljene datoteke',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'nsfilerepo-desc' => 'Proveer características basadas en espacio de nombre a archivos cargados',
+);
+
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'nsfilerepo-desc' => 'Ajoute des fonctionnalités aux fichiers téléversés par espace de nom',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'nsfilerepo-desc' => 'Proporciona características baseadas en espazos de nomes para ficheiros cargados',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'nsfilerepo-desc' => 'Z Verfiegig gstellti Features, wu uf Namensryym basiere, go Dateie uffelade',
+	'nsfilerepo-desc' => 'Features z Verfiegig stelle, wu uf Namensryym basiere, go Dateie uffelade',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'nsfilerepo-desc' => 'Funkcije na zakładźe mjenjoweho ruma za nahrate dataje zmóžnić',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'nsfilerepo-desc' => 'Provide functiones a base de spatios de nomines pro files cargate',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'nsfilerepo-desc' => 'Menyediakan fitur berbasis ruang nama untuk memuat berkas',
 );
 
 /** Japanese (日本語)
@@ -54,6 +103,13 @@ $messages['ksh'] = array(
  */
 $messages['nl'] = array(
 	'nsfilerepo-desc' => 'Biedt op naamruimte gebaseerde mogelijkheden voor geüploade bestanden',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'nsfilerepo-desc' => 'Fornì fonsion basà an dzora a namespace për carié dij file',
 );
 
 /** Russian (Русский)

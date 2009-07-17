@@ -362,9 +362,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'minnamelength-error' => "Sò stranòm a l'é tròp curt. A venta ch'al sia longh almanch $1 caràter.",
+	'minnamelength-desc' => 'Òbliga na lunghëssa mìnima dlë stranòm',
 );
 
 /** Pashto (پښتو)

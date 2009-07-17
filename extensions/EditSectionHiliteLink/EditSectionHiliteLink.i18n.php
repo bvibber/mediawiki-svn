@@ -183,6 +183,13 @@ $messages['pl'] = array(
 	'Editsectionhilitelink-desc' => 'Podświetla odpowiednią sekcję na stronie po przesunięciu kursora myszy nad link edytuj',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'Editsectionhilitelink-desc' => 'A evidensia la session aproprià dla pàgina quand che it boge ël rat an dzora al colegament ëd modìfica',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

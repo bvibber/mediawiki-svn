@@ -440,8 +440,10 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'msfunc_desc' => "N'ansema ëd fonsion matemàtiche e statìstiche",
 	'msfunc_nan' => "L'arzultà a l'é nen un nùmer",
 	'msfunc_inf' => 'Arzultà anfinì',
 	'msfunc_div_zero' => 'Division për zero',

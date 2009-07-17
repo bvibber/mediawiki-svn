@@ -761,6 +761,7 @@ Isto non pote esser facite un secunde vice.',
  */
 $messages['id'] = array(
 	'createsigndoc-pagename' => 'Halaman:',
+	'createsigndoc-email' => 'Alamat surel:',
 	'createsigndoc-phone' => 'Nomor telepon:',
 	'createsigndoc-hidden' => 'Tersembunyi',
 	'createsigndoc-optional' => 'Opsional',

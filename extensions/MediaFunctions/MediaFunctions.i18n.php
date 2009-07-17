@@ -379,8 +379,10 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'mediafunctions-desc' => 'Parser functions për avèj anformassion an dzora ai file multimediaj',
 	'mediafunctions-invalid-title' => '"$1" a va nen bin për tìtol',
 	'mediafunctions-not-exist' => '"$1" a-i é pa',
 );

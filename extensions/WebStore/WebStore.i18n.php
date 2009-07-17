@@ -1751,6 +1751,7 @@ $1',
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'inplace_access_disabled' => "Ës servissi-sì a l'é stàit dësmortà për tuti ij client.",
@@ -1762,6 +1763,7 @@ $messages['pms'] = array(
 	'inplace_scaler_no_handler' => "A-i manca l'utiss (handler) për ardimensioné sta sòrt MIME-sì",
 	'inplace_scaler_no_output' => "La trasformassion a l'ha nen dàit gnun archivi d'arzultà.",
 	'inplace_scaler_zero_size' => "La transformassion a l'ha dàit n'archivi d'arzultà veujd.",
+	'webstore-desc' => "Middleware d'archiviassion dij file mach Web (pa NFS)",
 	'webstore_access' => "Ës servissi-sì a l'é limità a sconda dl'adrëssa IP dël client.",
 	'webstore_path_invalid' => "Ël nòm dl'archivi a l'é nen bon.",
 	'webstore_dest_open' => 'As peul nen deurbe l\'archivi ëd destinassion "$1".',

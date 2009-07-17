@@ -359,8 +359,10 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'donationform-desc' => 'Gionta un tag <tt>&lt;donateform&gt;</tt> për sostnì le donassion via PayPal',
 	'donationform-submit' => 'Fé na donassion con PayPal',
 );
 

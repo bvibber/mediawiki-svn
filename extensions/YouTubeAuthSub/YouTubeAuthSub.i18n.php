@@ -1527,6 +1527,7 @@ $messages['li'] = array(
  * @author Matasg
  */
 $messages['lt'] = array(
+	'youtubeauthsub' => 'Įkelti YouTube video',
 	'youtubeauthsub_summary' => 'Įkeliamas YouTube video',
 );
 

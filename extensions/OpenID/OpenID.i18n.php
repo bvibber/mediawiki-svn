@@ -267,6 +267,13 @@ $messages['ar'] = array(
 	'openid-provider-label-other-username' => 'أدخل اسم مستخدم $1 الخاص بك',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'openiddelete-button' => 'ܚܬܬ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author IAlex
@@ -1961,7 +1968,7 @@ Pesan kesalahan: "$1"',
 	'openidrequired' => 'Diperlukan',
 	'openidnickname' => 'Nama panggilan',
 	'openidfullname' => 'Nama lengkap',
-	'openidemail' => 'Alamat surat-e',
+	'openidemail' => 'Alamat surel',
 	'openidlanguage' => 'Bahasa',
 	'openidtimezone' => 'Zona waktu',
 	'openidnotavailable' => 'Nama panggilan yang Anda masukkan ($1) sudah digunakan oleh pengguna lain.',
@@ -3875,6 +3882,7 @@ $messages['te'] = array(
 	'openidchoosepassword' => 'సంకేతపదం:',
 	'openidconvertyourstext' => 'అది ఇప్పటికే మీ ఓపెన్ఐడీ.',
 	'openidnousername' => 'వాడుకరిపేరు ఇవ్వలేదు.',
+	'openid-urls-delete' => 'తొలగించు',
 );
 
 /** Tetum (Tetun)

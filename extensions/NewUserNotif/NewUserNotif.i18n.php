@@ -458,9 +458,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'newusernotifsubj' => "Notìfica d'utent neuv për $1",
+	'newusernotif-desc' => "A manda n'e-mail ëd notìfica quand che ij cont utent a son creà",
 	'newusernotifbody' => "Bondì $1, un neuv utent, $2, a l'é stait creà ansima a $3 dël $4.",
 );
 

@@ -62,6 +62,14 @@ $messages['ar'] = array(
 	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'nss-rights' => 'ܙܕܩ̈ܐ',
+	'nss-create-account-header' => 'ܒܪܝ ܚܘܫܒܢܐ ܚܕܬܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -426,6 +434,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'am-username' => 'nama pengguna',
+	'am-email' => 'surel',
 );
 
 /** Japanese (日本語)

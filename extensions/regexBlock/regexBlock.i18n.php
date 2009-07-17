@@ -676,6 +676,40 @@ $messages['eu'] = array(
 	'regexblock-view-go' => 'Joan',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Option
+ */
+$messages['fi'] = array(
+	'regexblock-already-blocked' => '$1 on jo estetty.',
+	'regexblock-block-log' => "Käyttäjätunnus tai IP-osoite '''$1''' on nyt estetty.",
+	'regexblock-block-success' => 'Estäminen onnistui',
+	'regexblock-currently-blocked' => 'Tällä hetkellä estetyt osoitteet:',
+	'regexblock-expire-duration' => '1 tunti,2 tuntia,4 tuntia,6 tuntia,1 vuorokausi,3 vuorokautta,1 viikko,2 viikkoa,1 kuukausi,3 kuukautta,6 kuukautta,1 vuosi,ikuinen',
+	'regexblock-form-username' => 'IP-osoite tai käyttäjätunnus:',
+	'regexblock-form-reason' => 'Syy:',
+	'regexblock-form-expiry' => 'Kesto:',
+	'regexblock-form-match' => 'Tarkka osuma',
+	'regexblock-form-account-block' => 'Estä uusien tunnusten luonti',
+	'regexblock-form-submit' => 'Estä tämä käyttäjä',
+	'regexblock-form-submit-empty' => 'Anna estettävän käyttäjätunnus tai IP-osoite.',
+	'regexblock-nodata-found' => 'Tietoja ei löytynyt',
+	'regexblock-unblock-success' => 'Eston poisto onnistui',
+	'regexblock-unblock-log' => "Eston poistaminen käyttäjätunnukselta tai IP-osoitteelta '''$1''' on onnistunut.",
+	'regexblock-unblock-error' => 'Virhe purkaessa estoa $1.
+Todennäköisesti kyseistä käyttäjää ei ole olemassa.',
+	'regexblock-view-all' => 'Kaikki',
+	'regexblock-view-go' => 'Siirry',
+	'regexblock-view-match' => '(tarkka osuma)',
+	'regexblock-view-account' => '(tunnusten luominen estetty)',
+	'regexblock-view-reason' => 'syy: $1',
+	'regexblock-view-block-infinite' => 'pysyvä esto',
+	'regexblock-view-block-by' => 'estänyt:',
+	'regexblock-view-block-unblock' => 'poista esto',
+	'regexblock-view-stats' => 'tilastot',
+	'regexblock-view-empty' => 'Estettyjen käyttäjätunnuksien sekä osoitteiden lista on tyhjä.',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -2326,7 +2360,7 @@ $messages['te'] = array(
 	'regexblock-view-reason-default' => 'సాధారణ కారణం',
 	'regexblock-view-block-infinite' => 'శాశ్వత నిరోధం',
 	'regexblock-view-block-expired' => 'కాలంచెల్లింది',
-	'regexblock-view-block-by' => 'నిరోధించినది',
+	'regexblock-view-block-by' => 'నిరోధించినది:',
 	'regexblock-view-block-unblock' => 'నిరోధం ఎత్తివేయండి',
 	'regexblock-view-stats' => 'గణాంకాలు',
 	'regexblock-view-empty' => 'నిరోధించిన పేర్లు మరియు చిరునామాల జాబితా ఖాళీగా ఉంది.',

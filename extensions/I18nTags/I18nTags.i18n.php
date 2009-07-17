@@ -242,6 +242,13 @@ $messages['pl'] = array(
 	'i18ntags-desc' => 'Dostęp do funkcji i18n formatowania liczb, grammar i plural we wszystkich dostępnych językach',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'i18ntags-desc' => 'Dòvra le funsion i18n për formaté ij nùmer, la gramàtica e ij pluraj an minca lenga possìbil',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

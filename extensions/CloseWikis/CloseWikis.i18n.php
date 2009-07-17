@@ -501,12 +501,12 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'closewikis-page-close-wiki' => 'Ϝίκι:',
+	'closewikis-page-close-wiki' => 'Βίκι:',
 	'closewikis-page-close-submit' => 'Κλῄειν',
-	'closewikis-page-reopen-wiki' => 'Ϝίκι:',
+	'closewikis-page-reopen-wiki' => 'Βίκι:',
 	'closewikis-page-reopen-reason' => 'Αἰτία:',
 	'closewikis-page-reopen-submit' => 'Ἀνοίγειν πάλιν',
-	'closewikis-list-header-wiki' => 'Ϝίκι',
+	'closewikis-list-header-wiki' => 'Βίκι',
 );
 
 /** Swiss German (Alemannisch)

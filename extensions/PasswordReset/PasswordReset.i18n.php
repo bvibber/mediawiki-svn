@@ -96,6 +96,16 @@ $messages['ar'] = array(
 	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:PasswordReset|صفحة خاصة]])',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'passwordreset-nopassmatch' => 'ܡܠܬܐ ܕܥܠܠܐ ܠܐ ܐܘܝܢܬܐ',
+	'passwordreset-username' => 'ܫܡܐ ܕܡܦܠܚܢܐ:',
+	'passwordreset-newpass' => 'ܡܠܬܐ ܕܥܠܠܐ ܚܕܬܐ:',
+	'passwordreset-confirmpass' => 'ܚܬܬ ܡܠܬܐ ܕܥܠܠܐ:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II

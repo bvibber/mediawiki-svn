@@ -150,6 +150,13 @@ $messages['oc'] = array(
 	'minify-desc' => 'Estrechís la sortida de CSS e JavaScript de action=raw',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'minify-desc' => "A strenz l'output dij CSS e dël JavaScripts con action=raw",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

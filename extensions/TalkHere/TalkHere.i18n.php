@@ -701,8 +701,10 @@ Administratorzy tej strony nie mogą brać odpowiedzialności za zawartość tak
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'talkhere-desc' => 'A buta la pàgina dle ciaciarade ant la pàgina',
 	'talkhere-foottext' => "Ij coment ambelessì dzora a podrìo esse stàit lassà da dij visitator.
 
 J'operator d'ës sit-sì a peulo nen pijesse la responsabilità dël contnù dë sti coment.",

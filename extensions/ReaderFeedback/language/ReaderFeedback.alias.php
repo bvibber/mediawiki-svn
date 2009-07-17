@@ -87,7 +87,6 @@ $aliases['fa'] = array(
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'LikedPages' => array( 'Laatusivut' ),
-	'ProblemChanges' => array( 'Ongelmalliset_muutokset' ),
 	'ProblemPages' => array( 'Ongelmalliset_sivut' ),
 	'ReaderFeedback' => array( 'Lukijapalaute' ),
 );
@@ -132,6 +131,7 @@ $aliases['gsw'] = array(
 $aliases['gu'] = array(
 	'LikedPages' => array( 'જોડાયેલપાનાં' ),
 	'ProblemPages' => array( 'સંદિગ્ધપાનાઓ' ),
+	'ReaderFeedback' => array( 'વાચકનોફીડબેક' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
@@ -163,7 +163,6 @@ $aliases['ia'] = array(
  */
 $aliases['id'] = array(
 	'LikedPages' => array( 'Halaman yang digemari', 'HalamanDigemari' ),
-	'ProblemChanges' => array( 'Perubahan masalah', 'PerubahanMasalah' ),
 	'ProblemPages' => array( 'Halaman bermasalah', 'HalamanBermasalah' ),
 	'RatingHistory' => array( 'Riwayat penilaian', 'RiwayatPenilaian' ),
 	'ReaderFeedback' => array( 'Umpan balik pembaca', 'UmpanBalikPembaca' ),
@@ -172,7 +171,6 @@ $aliases['id'] = array(
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'LikedPages' => array( '評価の高いページ' ),
-	'ProblemChanges' => array( '問題の修正' ),
 	'ProblemPages' => array( '問題のあるページ', '評価の低いページ' ),
 	'RatingHistory' => array( '評価履歴', 'ページ評価履歴' ),
 	'ReaderFeedback' => array( '読者評価' ),
@@ -246,7 +244,6 @@ $aliases['nds-nl'] = array(
  */
 $aliases['nl'] = array(
 	'LikedPages' => array( 'HoogGewaardeerdePaginas' ),
-	'ProblemChanges' => array( 'ProblematischeWijzigingen' ),
 	'ProblemPages' => array( 'LaagGewaardeerdePaginas', 'ProbleemPaginas', "ProbleemPagina's" ),
 	'RatingHistory' => array( 'Waarderingsgeschiedenis' ),
 	'ReaderFeedback' => array( 'Lezersterugkoppeling' ),
@@ -283,7 +280,6 @@ $aliases['oc'] = array(
  */
 $aliases['pl'] = array(
 	'LikedPages' => array( 'Wysoko oceniane strony' ),
-	'ProblemChanges' => array( 'Wątpliwe zmiany' ),
 	'ProblemPages' => array( 'Nisko oceniane strony' ),
 	'RatingHistory' => array( 'Historia oceniania strony' ),
 	'ReaderFeedback' => array( 'Ocena czytelnika' ),
@@ -360,3 +356,4 @@ $aliases['tl'] = array(
 	'RatingHistory' => array( 'Kasaysayan ng pag-aantas' ),
 	'ReaderFeedback' => array( 'Balik-ulat ng mambabasa' ),
 );
+

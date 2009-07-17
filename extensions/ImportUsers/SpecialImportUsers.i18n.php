@@ -779,6 +779,7 @@ $messages['id'] = array(
 	'importusers-log-summary-added' => 'Telah ditambahkan',
 	'importusers-log-summary-updated' => 'Dimutakhirkan',
 	'importusers-password' => 'kata sandi',
+	'importusers-email' => 'surel',
 	'importusers-realname' => 'nama asli',
 );
 

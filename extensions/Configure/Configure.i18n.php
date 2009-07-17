@@ -580,6 +580,34 @@ $messages['ar'] = array(
 	'configure-farmer-extensions-list' => '[[Special:Extensions|عرض الامتدادات المتوفرة لهذا الويكي]].',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'configure-desc-group' => 'ܟܢܘܫܝܐ',
+	'configure-desc-key' => 'ܩܠܝܕܐ',
+	'configure-desc-ns' => 'ܚܩܠܐ',
+	'configure-desc-val' => 'ܛܝܡܐ',
+	'configure-ext-settings' => 'ܛܘܝܒ̈ܐ',
+	'configure-btn-save' => 'ܢܛܘܪ ܛܘܝܒ̈ܐ',
+	'configure-js-remove' => 'ܫܘܦ',
+	'configure-js-summary-none' => 'ܠܐ ܛܘܝܒ̈ܐ',
+	'configure-js-search-legend' => 'ܛܘܝܒ̈ܐ ܕܒܘܨܝܐ',
+	'configure-section-general' => 'ܛܘܝܒ̈ܐ ܓܘܢܝ̈ܐ',
+	'configure-section-pages' => 'ܦܐܬܬ̈ܐ',
+	'configure-section-paths' => 'ܫܒܝܠ̈ܐ',
+	'configure-section-email' => 'ܒܝܠܕܪܐ ܐܠܟܬܪܘܢܝܐ',
+	'configure-section-upload' => 'ܐܣܩ',
+	'configure-section-images' => 'ܠܦܦ̈ܐ',
+	'configure-select-wiki-view-all' => 'ܟܠ ܘܝܩܝ̈',
+	'configure-view' => 'ܚܘܝ',
+	'configure-throttle-action-edit' => 'ܫܚܠܦ',
+	'configure-throttle-action-move' => 'ܫܢܝ',
+	'configure-condition-operator-or' => 'ܐܘ',
+	'configure-condition-operator-and' => 'ܘ',
+	'configure-condition-operator-xor' => 'ܚܕ ܒܠܚܘܕ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -2767,7 +2795,7 @@ $messages['grc'] = array(
 	'configure-section-search' => 'Ζητεῖν',
 	'configure-section-misc' => 'Λοιπά',
 	'configure-section-mw-extensions' => 'Ἐπεκτάσεις MediaWiki',
-	'configure-select-wiki' => 'Ϝικι-επιλογή',
+	'configure-select-wiki' => 'Βικι-επιλογή',
 	'configure-select-wiki-submit' => 'Ἐπιλέγειν',
 	'configure-view' => 'Ὁρᾶν',
 	'configure-throttle-action-edit' => 'Μεταγράφειν',
@@ -3759,16 +3787,24 @@ Per favor crea lo o cambia lo pro poter usar iste extension.',
 $messages['id'] = array(
 	'configure-desc-ns' => 'Ruang nama',
 	'configure-desc-val' => 'Nilai',
+	'configure-edit-ext' => 'Pengaya',
 	'configure-ext-settings' => 'Seting',
 	'configure-js-remove' => 'Hapus',
+	'configure-section-pages' => 'Halaman',
+	'configure-section-email' => 'Surel',
 	'configure-section-timezone' => 'Zona waktu',
 	'configure-section-namespaces' => 'Ruang nama',
 	'configure-section-category' => 'Kategori',
+	'configure-section-upload' => 'Unggah',
 	'configure-section-specialpages' => 'Halaman istimewa',
 	'configure-section-recentchanges' => 'Perubahan terbaru',
+	'configure-section-extension' => 'Pengaya',
 	'configure-section-search' => 'Cari',
+	'configure-view' => 'Lihat',
 	'configure-throttle-action-move' => 'Pindahkan',
 	'configure-throttle-action-rollback' => 'Kembalikan',
+	'configure-condition-name-3' => 'Surel terkonfirmasi',
+	'configure-condition-description-3' => 'Surel terkonfirmasi',
 );
 
 /** Ido (Ido)
@@ -4631,6 +4667,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-old-summary' => '$1 vum Benotzer:$2 $4 Bemierkung:$3',
 	'configure-saved' => "D'Configuratioun gouf gespäichert",
 	'configure-backlink' => 'Zréck op de Formulaire',
+	'configure-section-robots' => 'Webcrawler',
 	'configure-section-features' => 'Fonctiounen',
 	'configure-section-general' => 'Allgemeng Astellungen',
 	'configure-section-pages' => 'Säiten',
@@ -7248,6 +7285,7 @@ $messages['sw'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  * @author వైజాసత్య
  */
@@ -7297,6 +7335,7 @@ $messages['te'] = array(
 	'configure-setting-not-available' => 'ఈ మీడియావికీ సంచికలో ఆ అమరిక అందుబాటులో  లేదు',
 	'configure-view' => 'చూడండి',
 	'configure-view-not-allowed' => 'ఈ అమరికని చూడడానికి మీకు అనుమతి లేదు',
+	'configure-throttle-action-rollback' => 'వెనక్కుతిప్పు',
 	'configure-throttle-group-anon' => 'అందరు అజ్ఞాత వాడుకరులు',
 	'configure-throttle-group' => 'రకం',
 	'configure-throttle-limit' => 'పరిమితి',

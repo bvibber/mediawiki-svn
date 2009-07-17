@@ -614,9 +614,11 @@ $messages['sw'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
+	'createbox-desc' => 'వ్యాసమును సృష్టించుటకు ఒక ప్రత్యేక ఇన్పుట్ బాక్స్',
 	'createbox-create' => 'సృష్టించు',
 	'createbox-exists' => "క్షమించండి, \"'''{{FULLPAGENAME}}'''\" ఇప్పటికే ఉంది.
 

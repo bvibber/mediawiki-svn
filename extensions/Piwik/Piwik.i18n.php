@@ -51,6 +51,13 @@ $messages['ar'] = array(
 	'right-viewpiwik' => 'رؤية [[Special:Piwik|إحصاءات بيويك]]',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'piwik-browsers' => 'ܡܦܐܬܢ̈ܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

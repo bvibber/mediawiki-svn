@@ -262,6 +262,13 @@ $messages['pl'] = array(
 	'gnuplot-desc' => 'Dodaje tag <code><nowiki><gnuplot></nowiki></code> do użycia przez Gnuplot',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'gnuplot-desc' => 'A gionta ël tag <code><nowiki><gnuplot></nowiki></code> për dovré Gnuplot',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

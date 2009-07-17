@@ -157,6 +157,13 @@ $messages['pl'] = array(
 	'clientside-desc' => 'Udostępnia funkcje generujące kod po stronie klienta w formatach takich jak HTML, CSS i JavaScript',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'clientside-desc' => 'A dà fonsion për generé còdes an formà "client-side" com HTML, CSS e JavaScript',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

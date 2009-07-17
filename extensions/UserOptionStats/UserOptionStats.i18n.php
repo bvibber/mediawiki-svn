@@ -64,6 +64,14 @@ $messages['bs'] = array(
 	'uos-title' => 'Raspored vrijednosti korisničke opcije $1',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'uos-unknown' => '*بنچینەیی',
+	'uos-other' => '*دیکە',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -365,6 +373,7 @@ $messages['sk'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'useroptionstats' => 'వాడుకరి ఎంపికల గణాంకాలు',
 	'uos-other' => '*ఇతర',
 );
 

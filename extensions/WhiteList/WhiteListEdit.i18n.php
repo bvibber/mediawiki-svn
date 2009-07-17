@@ -245,6 +245,12 @@ $2',
  * @author Basharh
  */
 $messages['arc'] = array(
+	'mywhitelistpages' => 'ܦܐܬܬ̈ܐ ܕܝܠܝ',
+	'whitelisttablemodifyall' => 'ܟܠ',
+	'whitelisttablemodifynone' => 'ܠܐ ܡܕܡ',
+	'whitelisttableedit' => 'ܫܚܠܦ',
+	'whitelisttableview' => 'ܚܙܝ',
+	'whitelistnewtableprocess' => 'ܥܡܠܝܬܐ',
 	'whitelistnever' => 'ܠܐ ܡܡܬܘܡ',
 );
 
@@ -566,12 +572,35 @@ $messages['ch'] = array(
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
  * @author رزگار
  */
 $messages['ckb-arab'] = array(
+	'whitelist-desc' => 'دەستکاری‌کردنی ڕێگەدان بۆ دەست‌پێ‌گەیشتنی بەکارهێنەرانی سنووردار کراو',
 	'mywhitelistpages' => 'پەڕەکانی من',
+	'whitelisttablemodify' => 'پێداچوونەوە',
 	'whitelisttablemodifyall' => 'هه‌مو',
+	'whitelisttablepage' => 'لاپەڕەی ویکی',
+	'whitelisttabletype' => 'جۆری دەست‌پێگەیشتن',
+	'whitelisttableexpires' => 'بەسەرهاتنی کات لە',
+	'whitelisttablemodby' => 'دوایین پێداچوونەوە لە لایەن',
+	'whitelisttablemodon' => 'دوایین پێداچوونەوە لە',
 	'whitelisttableedit' => 'گۆڕانکاری',
+	'whitelisttableview' => 'پیشان‌دان',
+	'whitelisttablenewdate' => 'ڕێکەوتی نوێ:',
+	'whitelisttablechangedate' => 'گۆڕانی ڕێکەوتی بەسەرهاتنی کات',
+	'whitelisttableremove' => 'لابردن',
+	'whitelistnewtabledate' => 'ڕێکەوتی بەسەرهاتنی کات:',
+	'whitelistnewtableprocess' => 'پرۆسە',
+	'whitelistnewtablereview' => 'پێداچوونەوە',
+	'whitelistselectrestricted' => '== دیاری‌کردنی ناوی بەکارهێنەری سنووردارکراو ==',
+	'whitelistrequest' => 'داوای دەستپێگەیشتنی لاپەڕەی زیاتر',
+	'whitelistrequestconf' => 'داخوازی بۆ لاپەڕە نوێکان بۆ $1 ناردرا',
+	'whitelistnever' => 'هیچ‌کات',
+	'group-restricted' => 'بەکارهێنەرانی سنووردارکراو',
+	'group-restricted-member' => 'بەکارهێنەری سنووردارکراو',
+	'group-manager' => 'جێبە‌جێکەران',
+	'group-manager-member' => 'جێبەجێکەر',
 );
 
 /** Czech (Česky)

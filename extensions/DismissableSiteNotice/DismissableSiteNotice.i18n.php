@@ -629,9 +629,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'sitenotice_close' => 'stërma',
+	'sitenotice-desc' => "A përmëtt a j'utent ëd saré ël sitenotice",
 );
 
 /** Pashto (پښتو)

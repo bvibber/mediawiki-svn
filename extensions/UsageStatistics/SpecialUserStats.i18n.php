@@ -377,6 +377,21 @@ $messages['ca'] = array(
 	'right-viewsystemstats' => "Veure [[Special:UserStats|estadístiques d'ús de la wiki]]",
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'usagestatisticstype' => 'جۆر',
+	'usagestatisticsstart' => 'ڕێکەوتی دەستپێک',
+	'usagestatisticsend' => 'ڕێکەوتی کۆتایی',
+	'usagestatisticsnostart' => 'تکایە ڕێکەوتێکی دەستپێک دیاری بکە',
+	'usagestatisticsnoend' => 'تکایە ڕێکەوتێکی کۆتایی دیاری بکە',
+	'usagestatisticsbadstartend' => '<b>ڕێکەوتی <i>دەستپێک</i> یا \\ و <i>کۆتایی</i> ناساز!</b>',
+	'usagestatisticsintervalday' => 'ڕۆژ',
+	'usagestatisticsintervalweek' => 'حەوتوو',
+	'usagestatisticsintervalmonth' => 'مانگ',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

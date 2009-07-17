@@ -238,12 +238,12 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'interwikilist' => 'Καταλογή διαϝίκι',
-	'interwikilist-desc' => 'Προσθέτει [[Special:Interwikilist|εἰδικὴν δέλτον]] τινὰ διὰ τὸ ὁρᾶν τοὺς διαθέσιμους διαϝικι-συνδέσμους',
-	'interwikilist-linkname' => 'Σύνδεσμος διαϝίκι:',
+	'interwikilist' => 'Καταλογή διαβίκι',
+	'interwikilist-desc' => 'Προσθέτει [[Special:Interwikilist|εἰδικὴν δέλτον]] τινὰ διὰ τὸ ὁρᾶν τοὺς διαθέσιμους διαβικι-συνδέσμους',
+	'interwikilist-linkname' => 'Σύνδεσμος διαβίκι:',
 	'interwikilist-target' => 'URL-στόχος',
 	'interwikilist-filter' => 'Κατάλογος διηθητηρίων',
-	'interwikilist-prefix' => 'Πρόθεμα διαϝίκι:',
+	'interwikilist-prefix' => 'Πρόθεμα διαβίκι:',
 );
 
 /** Swiss German (Alemannisch)

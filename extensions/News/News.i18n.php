@@ -241,6 +241,13 @@ $messages['pl'] = array(
 	'newsextension-desc' => 'Wyświetla dostosowane ostatnie zmiany na stronie wiki, jako kanały RSS lub Atom',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'newsextension-desc' => 'A mosta j\'ùltime modìfiche përsonalisà an dzora a na pàgina wiki, o com "feed" RSS o Atom',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

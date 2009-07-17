@@ -245,6 +245,13 @@ $messages['pl'] = array(
 	'contributorsaddon-desc' => 'Dodaje dymki do łącz „główni edytorzy”',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'contributorsaddon-desc' => 'A gionta dij "popup" JavaScript a le anliure "Contributor prinsipaj"',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

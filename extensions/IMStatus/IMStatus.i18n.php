@@ -314,11 +314,13 @@ ID, kótaryž musyš pódaś, su licby a pismiki mjazy "$2 a "$3".',
 );
 
 /** Greek (Ελληνικά)
+ * @author Consta
  * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['el'] = array(
 	'imstatus_default' => 'Προεπιλογή',
+	'imstatus_example' => 'Παράδειγμα',
 	'imstatus_or' => 'ή',
 );
 

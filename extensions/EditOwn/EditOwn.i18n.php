@@ -296,6 +296,13 @@ $messages['pl'] = array(
 	'editown-desc' => 'Użytkownicy bez uprawnienia do edycji wszystkich stron mogą edytować tylko te strony, które sami utworzyli',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'editown-desc' => 'J\'utent sensa ël drit "editall" a peulo mach modifiché pàgine creà da lor midem',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

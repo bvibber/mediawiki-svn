@@ -290,6 +290,13 @@ $messages['pl'] = array(
 	'googleadsense-desc' => 'Dodaje [http://www.google.com/adsense Google AdSense] do paska bocznego',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'googleadsense-desc' => 'A gionta [http://www.google.com/adsense Google AdSense] a la "sidebar"',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

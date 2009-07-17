@@ -646,6 +646,7 @@ $messages['sk'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'security-info-toggle' => 'భద్రతా నియంత్రణలు',
 	'security-type-category' => 'వర్గం',
 );
 

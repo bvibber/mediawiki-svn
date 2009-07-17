@@ -199,6 +199,13 @@ $messages['oc'] = array(
 	'gotocategory-desc' => "Marcar los tèrmes de las recèrcas a l’endrech de la categoria : nom d'espaci per « Anar » a partir de la foncionalitat « anar a la pagina »",
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'gotocategory-desc' => 'A controla ij termo d\'arserca ant le Categorìe: namespace për "Andé" a la funsionalità "Và a la pàgina"',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

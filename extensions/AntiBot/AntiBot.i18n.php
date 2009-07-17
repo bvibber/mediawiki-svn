@@ -346,6 +346,13 @@ $messages['pl'] = array(
 	'antibot-desc' => 'Proste mechanizmy ochrony przed spamującymi i wywołującymi przeciążenie serwera robotami',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'antibot-desc' => 'Sempiframework për verìfiche djë spambot e dij payload.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

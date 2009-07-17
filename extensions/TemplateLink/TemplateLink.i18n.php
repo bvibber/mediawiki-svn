@@ -372,9 +372,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'templatelink' => 'Anliura dlë stamp',
+	'templatelink_desc' => 'Sta estension-sì a peul mosté në stamp com na pàgina',
 	'templatelink_empty' => "A venta ch'a buta un paràmetr.",
 	'templatelink_newtitle' => '$1 (an transclusion)',
 );

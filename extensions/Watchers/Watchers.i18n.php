@@ -75,6 +75,13 @@ $messages['ar'] = array(
 	'watchers_less_than_x' => 'أقل من $1 {{PLURAL:$1|مستخدم|مستخدم}} لديهم هذه الصفحة في قائمة مراقبتهم.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'watchers' => 'ܪ̈ܗܝܢܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

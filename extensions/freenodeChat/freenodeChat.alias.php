@@ -11,7 +11,8 @@ $aliases['en'] = array(
 	'FreenodeChat' => array( 'FreenodeChat' ),
 );
 
-/** Italiano */
+/** Italian (Italiano) */
 $aliases['it'] = array(
 	'FreenodeChat' => array( 'FreenodeChat' ),
 );
+

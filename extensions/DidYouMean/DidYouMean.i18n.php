@@ -331,6 +331,13 @@ $messages['pl'] = array(
 	'didyoumean-desc' => 'Dodaje linki do stron o „podobnych” tytułach',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'didyoumean-desc' => "A gionta anliure a pàgine con tìtoj ch'a jë smijo",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

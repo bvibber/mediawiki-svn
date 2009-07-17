@@ -185,6 +185,13 @@ $messages['pl'] = array(
 	'localisationupdate-desc' => 'Uaktualnia lokalne komunikaty w miarę możliwości na bieżąco',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'localisationupdate-desc' => 'A manten i messagi localisà ël pì agiornà possìbil',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

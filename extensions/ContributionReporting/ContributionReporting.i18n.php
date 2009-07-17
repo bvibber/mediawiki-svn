@@ -216,6 +216,13 @@ $messages['ar'] = array(
 	'specialpages-group-contribution' => 'المساهمات/جمع التبرعات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'contrib-hist-name' => 'ܫܡܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -1745,6 +1752,36 @@ $messages['li'] = array(
 	'specialpages-group-contribution' => 'Gifte/Fónswèrvingsaksie',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'contributionreporting-desc' => 'Gyva Wikimedia aukojimų ataskaita',
+	'contributiontotal' => 'Viso įnašų',
+	'contributionhistory' => 'Įnašų istorija',
+	'contrib-hist-header' => 'Realaus laiko aukotojų komentarai iš viso pasaulio',
+	'contrib-hist-name' => 'Vardas',
+	'contrib-hist-date' => 'Laikas ir data',
+	'contrib-hist-amount' => 'Suma',
+	'contrib-hist-next' => 'Ankstesni aukojimai',
+	'contrib-hist-previous' => 'Naujesni aukojimai',
+	'contrib-hist-anonymous' => 'Anonimas',
+	'contributionstatistics' => 'Aukojimų statistika',
+	'contribstats-desc' => 'Rodo aukojimų Wikimedia Foundation statistiką',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Viso šiandien|Viso per pastarasias $1 dienas}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Viso šį mėnesį|Viso per pastaruosius $1 mėnesius}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Viso $1 mėnesį|Viso $1 mėnesiams}}',
+	'contribstats-currency-range-totals' => 'Viso valiutos (nuo $1 iki $2)',
+	'contribstats-contribution-range-breakdown' => 'Aukojimų suskirstymas pagal reikšmę (nuo $1 iki $2)',
+	'contribstats-currency-totals' => 'Valiutos suma fiskaliniams metams $1',
+	'contribstats-contribution-breakdown' => 'Aukojimų suskirstymas pagal įnašų vertę finansiniams metams $1',
+	'contribstats-day' => 'Diena',
+	'contribstats-month' => 'Mėnuo',
+	'contribstats-currency' => 'Valiuta',
+	'contribstats-amount' => 'Suma (USD)',
+	'contribstats-contributions' => 'Aukojimai',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  * @author Izzudin
@@ -2529,6 +2566,8 @@ $messages['te'] = array(
 	'fundraiserstats-total' => 'మొత్తం (USD)',
 	'fundraiserstats-avg' => 'సగటు (USD)',
 	'fundraiserstats-max' => 'గరిష్ఠం (USD)',
+	'fundraiserstats-tab-averages' => 'సగటులు (USD)',
+	'fundraiserstats-tab-maximums' => 'గరిష్ఠాలు (USD)',
 );
 
 /** Tetum (Tetun)

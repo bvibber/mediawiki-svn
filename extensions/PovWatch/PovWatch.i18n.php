@@ -1157,6 +1157,8 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'povwatch_title' => 'Pavadinimas:',
+	'povwatch_unsubscribe' => 'Atsisakyti',
+	'povwatch_subscribe' => 'Prenumeruoti',
 	'povwatch_added' => 'pridėta',
 );
 

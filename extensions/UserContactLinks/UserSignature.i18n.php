@@ -106,6 +106,13 @@ $messages['ca'] = array(
 	'usercontactlink-baduser' => "nom d'usuari incorrecte",
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'usercontactlink-baduser' => 'ناوی بەکارهێنەری هەڵە',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -470,10 +477,12 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'usercontactlink-baduser' => 'తప్పుడు వాడుకరిపేరు',
+	'usercontactlink-desc' => '^^^వాడుకరి^^^ నమూనా ద్వారా మిగతా వాడుకరుల పేర్లను తేలికగా మరియు నిర్ణీత పద్ధతిలో కలుపు వీలును కలిగించును',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

@@ -60,6 +60,13 @@ $messages['ar'] = array(
 	'pageby-anon' => '<i>مجهول</i>',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'pageby-contributors' => 'ܫܘܬܦܢ̈ܐ:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -465,8 +472,10 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
+	'pageby-desc' => 'A mosta i contribudor an linia ans na pàgina wiki an dovrand ël tag <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Pàgina creà da $1, $2',
 	'pageby-last' => 'Ùltima <a href="$3">modìfica</a> faita da $1, $2',
 	'pageby-contributors' => "A l'han contribuì:",

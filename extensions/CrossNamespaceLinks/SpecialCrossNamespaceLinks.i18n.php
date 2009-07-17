@@ -748,9 +748,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'crossnamespacelinks' => 'Anliure antra spassi nominaj diferent',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lista dle anliure an tra namespace]] che a dovrìo pa esiste an dzora a {{SITENAME}}',
 	'crossnamespacelinks-summary' => "Sta pàgina-sì a la smon na lista d'anliure ch'a men-o da na pàgina d'un chèich ëspassi nominal a na pàgina ch'a la sta ant n'àotr. (Sòn gavà jë spassi {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), sòn a l'é mej nen felo.",
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|anliura|anliure}} anvers a $3',
 );

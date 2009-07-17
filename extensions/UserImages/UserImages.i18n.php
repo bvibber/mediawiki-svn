@@ -133,6 +133,13 @@ $messages['ca'] = array(
 	'userimages-noimages' => '$1 no ha carregat imatges.',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'userimages-caption' => 'وێنەکانی بارکراو لە لایەن $1',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -198,6 +198,13 @@ $messages['ar'] = array(
 	'ogg-desc-link' => 'حول هذا الملف',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'ogg-more' => 'ܝܬܝܪ…',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -1795,6 +1802,7 @@ $messages['li'] = array(
  * @author Matasg
  */
 $messages['lt'] = array(
+	'ogg-desc' => 'Įrankis groti Ogg Theora ir Vorbis failus su JavaScript grotuvu',
 	'ogg-short-audio' => 'Ogg $1 garso byla, $2',
 	'ogg-short-video' => 'Ogg $1 video byla, $2',
 	'ogg-short-general' => 'Ogg $1 medija byla, $2',
@@ -1810,7 +1818,7 @@ $messages['lt'] = array(
 	'ogg-play-sound' => 'Groti garsą',
 	'ogg-no-player' => 'Atsiprašome, neatrodo, kad jūsų sistema turi palaikomą grotuvą. Prašome <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">jį atsisiųsti</a>.',
 	'ogg-no-xiphqt' => 'Neatrodo, kad jūs turite XiphQT komponentą QuickTime grotuvui. QuickTime negali groti Ogg bylų be šio komponento. Prašome <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">atsisiųsti XiphQT</a> arba pasirinkti kitą grotuvą.',
-	'ogg-player-videoElement' => '<video> elementas',
+	'ogg-player-videoElement' => 'Pagrindinės naršyklės palaikymas',
 	'ogg-player-oggPlugin' => 'Naršyklės priedas',
 	'ogg-player-thumbnail' => 'Tik paveikslėlis',
 	'ogg-player-soundthumb' => 'Nėra grotuvo',

@@ -236,6 +236,13 @@ $messages['pl'] = array(
 	'crowdauthentication-desc' => 'Wtyczka logowania dla Atlassian Crowd',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'crowdauthentication-desc' => "Plugin d'autenticassion për Atlassian Crowd",
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

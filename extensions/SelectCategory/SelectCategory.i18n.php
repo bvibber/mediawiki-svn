@@ -367,9 +367,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'selectcategory-title' => 'Selession për categorìe',
+	'selectcategory-desc' => "A përmëtt a l'utent ëd selessioné da categorìe esistente quand ch'a modìfica na pàgina",
 	'selectcategory-subtitle' => "Ch'a dòvra sò rat con la ciav dlë Shift sgnacà për sërne ëd categorìe ch'as ven-o l'un-a dapress a l'àotra, ò pura con ën sgmacand la ciav Ctrl për pieje un-a pr'un-a.",
 );
 

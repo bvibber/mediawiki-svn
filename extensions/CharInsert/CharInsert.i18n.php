@@ -374,6 +374,13 @@ $messages['pl'] = array(
 	'charinsert-desc' => 'Umożliwia stworzenie z użyciem JavaScriptu ramki z linkami [[MediaWiki:Edittools|wstawiającymi niestandardowe znaki]]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'charinsert-desc' => 'A përmëtt la creassion dë fneste JavaScripts për [[MediaWiki:Edittools|anserì caràter pa standard]]',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -403,10 +410,11 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'charinsert-desc' => 'Позволяет создать JavaScript-поле для [[MediaWiki:Edittools|вставки необычных символов]]',
+	'charinsert-desc' => 'Позволяет создать JavaScript-поле для [[MediaWiki:Edittools|вставки нестандартных символов]]',
 );
 
 /** Yakut (Саха тыла)

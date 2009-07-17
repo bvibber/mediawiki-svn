@@ -326,6 +326,13 @@ $messages['pl'] = array(
 	'fixedimage-desc' => 'Dodaje znacznik zbiórki funduszy <tt><nowiki><fundraising></nowiki></tt> jako obrazek',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'fixedimage-desc' => 'A gionta ël tag <tt><nowiki><fundraising></nowiki></tt> com na figura',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

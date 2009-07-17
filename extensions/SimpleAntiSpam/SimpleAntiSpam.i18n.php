@@ -418,6 +418,9 @@ Vol dit veld '''NEET''' in!",
  * @author Matasg
  */
 $messages['lt'] = array(
+	'simpleantispam' => 'Jūsų redagavimas paleido anti-spam mechanizmą',
+	'simpleantispam-label' => "Anti-spam patikra.
+'''NE'''pildykite!",
 	'simpleantispam-desc' => 'Prideda paprastą reklaminių šiukšlių botą formų tikrinimui',
 );
 

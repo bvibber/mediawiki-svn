@@ -235,6 +235,13 @@ $messages['pl'] = array(
 	'navigationpopups-desc' => 'Ładuje napisane przez Lupina skrypty nawigacyjne wyskakujących okienek dla MediaWiki',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'navigationpopups-desc' => 'A caria ij "popup" djë script ëd navigassion ëd Lupin an MediaWiki',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

@@ -488,6 +488,17 @@ $messages['li'] = array(
 	'contrib-tracking-button' => 'Doorgaon',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'contrib-tracking-error' => 'Klaida',
+	'contrib-tracking-error-text' => 'Neteisingas formos pateikimas',
+	'contrib-tracking-submitting' => 'Pateikiama mokėjimo procesoriui...',
+	'contrib-tracking-continue' => 'Jei nebūsite automatiškai nukreiptas, paspauskite mygtuką, kad galėtumėte užbaigti savo aukojimą PayPal.',
+	'contrib-tracking-button' => 'Tęsti',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

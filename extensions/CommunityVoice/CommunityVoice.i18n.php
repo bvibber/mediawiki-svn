@@ -192,6 +192,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'communityvoice' => 'Komunuma Voĉo',
+	'communityvoice-ratings' => 'Taksoj',
 	'communityvoice-ratings-scale-status-sending' => 'Sendante...',
 	'communityvoice-ratings-scale-status-error' => 'Eraris sendante!',
 	'communityvoice-ratings-scale-status-thanks' => 'Dankon pro via voĉdono!',

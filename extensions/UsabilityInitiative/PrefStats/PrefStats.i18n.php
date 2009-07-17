@@ -89,7 +89,10 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'prefstats' => 'Statistikoj pri preferoj',
+	'prefstats-desc' => 'Atenti statistikojn pri kiom da uzantoj ŝaltas certajn agordojn',
 	'prefstats-title' => 'Statistikoj pri preferoj',
+	'prefstats-list-intro' => 'Nune, la jenaj agordoj estas atentitaj.
+Klaku por vidi statistikojn pri ĝxi.',
 );
 
 /** Spanish (Español)

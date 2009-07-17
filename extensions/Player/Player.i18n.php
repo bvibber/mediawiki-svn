@@ -98,6 +98,14 @@ $messages['ar'] = array(
 	'player-goto-file' => 'ملف',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'player-goto-page' => 'ܦܐܬܐ',
+	'player-goto-file' => 'ܠܦܦܐ',
+);
+
 /** Araucanian (Mapudungun)
  * @author Remember the dot
  */
@@ -962,9 +970,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'player' => 'Esecutor',
+	'player-desc' => 'Playback multimedia antëgrà an dovrand i plugin comun dël browser, e na [[Special:Player|pàgina special]]',
 	'player-title' => 'Esecutor',
 	'player-playertitle' => 'Esecutor: $1',
 	'player-file' => "Nòm dl'archivi",

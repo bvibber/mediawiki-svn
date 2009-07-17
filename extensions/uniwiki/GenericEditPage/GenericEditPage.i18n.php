@@ -237,7 +237,11 @@ $messages['ca'] = array(
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
+	'gep-emailsuccess' => 'سپاس بۆ پێشنیار کردنی هاوپۆلەکان: $1.',
+	'gep-addcategorybutton' => 'زیاد کردن',
 	'gep-suggestcategorybutton' => 'ناردن',
+	'gep-addsectionbutton' => 'زیاد کردن',
+	'gep-nocategories' => 'تکایە پێش پاشەکەوت کردن بەلانیکەم هاوپۆلێک هەڵبژێرە',
 );
 
 /** Czech (Česky)

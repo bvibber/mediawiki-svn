@@ -53,6 +53,7 @@ $messages['de'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'delaydef-error-no-name' => 'Error: Nombre de parámetro no especificado.',
 	'delaydef-error-redef' => 'Error: Redefinición intentada de $1.',
 );
 
@@ -104,6 +105,16 @@ $messages['ia'] = array(
 	'delaydef-error-missing-def' => 'Error: Le definition necessari pro &lt;display name="$1"&gt; non esseva trovate.',
 	'delaydef-error-no-name' => 'Error: Nulle parametro "name" ha essite specificate.',
 	'delaydef-error-redef' => 'Error: Redefinition tentate de $1.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'delaydef-desc' => 'Menambahkan &lt;define&gt; dan &lt;display&gt; yang memungkinkan kode untuk dipindah posisinya',
+	'delaydef-error-missing-def' => 'Galat: Definisi yang diperlukan untuk &lt;display name="$1"&gt; tidak ditemukan.',
+	'delaydef-error-no-name' => 'Galat: Paramater tidak diberikan.',
+	'delaydef-error-redef' => 'Galat: Mencoba untuk mendefinisi ulang $1.',
 );
 
 /** Japanese (日本語)

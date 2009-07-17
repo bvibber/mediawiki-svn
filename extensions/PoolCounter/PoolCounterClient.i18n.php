@@ -18,6 +18,16 @@ $messages['en'] = array(
 	'poolcounter-remote-error' => 'Pool counter server error: $1',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'poolcounter-connection-error' => 'Error conectando al servidor contador de encuestas: $1',
+	'poolcounter-read-error' => 'Error leyendo del servidor contador de encuestas',
+	'poolcounter-write-error' => 'Error escribiendo al servidor contador de encuestas',
+	'poolcounter-remote-error' => 'Error del servidor contador de encuestas: $1',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -40,6 +50,17 @@ $messages['gsw'] = array(
 	'poolcounter-remote-error' => 'Poolcounter-Server-Fähler: $1',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'poolcounter-desc' => 'Klien MediaWiki untuk daemon poolcounter.py',
+	'poolcounter-connection-error' => 'Kesalahan pada saat berusaha menghubungi peladen pool counter: $1',
+	'poolcounter-read-error' => 'Kesalahan pada saat berusaha membaca peladen pool counter',
+	'poolcounter-write-error' => 'Kesalahan pada saat berusaha menulis peladen pool counter',
+	'poolcounter-remote-error' => 'Kesalahan peladen pool server: $1',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -49,6 +70,17 @@ $messages['ja'] = array(
 	'poolcounter-read-error' => 'プールカウンター・サーバーからの読み込み中にエラー',
 	'poolcounter-write-error' => 'プールカウンター・サーバーへの書き込み中にエラー',
 	'poolcounter-remote-error' => 'プールカウンター・サーバーのエラー: $1',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'poolcounter-desc' => 'Ene MediaWiki <i lang="en">client</i> för dat Hengerjrondprojramm <code>poolcounter.py</code> för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde.',
+	'poolcounter-connection-error' => 'Beim Verbendung Opnämme met däm ßööver för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde: $1',
+	'poolcounter-read-error' => 'Beim Lässe vum ßööver för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde.',
+	'poolcounter-write-error' => 'Beim Schriive noh däm ßööver för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde.',
+	'poolcounter-remote-error' => 'Dä ßööver för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde hät dä Fähler „$1“ jemeldt.',
 );
 
 /** Dutch (Nederlands)

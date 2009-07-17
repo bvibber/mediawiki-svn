@@ -1275,9 +1275,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'bookinfo-header' => 'Anformassion ant sëj lìber',
+	'bookinfo-desc' => 'A espand la [[Special:Booksources|pàgina special dle sorziss sij lìber]] con anformassion pijà da un sërvissi Web',
 	'bookinfo-result-title' => 'Tìtol:',
 	'bookinfo-result-author' => 'Aotor:',
 	'bookinfo-result-publisher' => 'Editor:',

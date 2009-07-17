@@ -102,6 +102,13 @@ $messages['bs'] = array(
 	'formatchanges-editedby' => '$1 - {{GENDER:$2|uredio korisnik|uredila korisnica}} $2 ($3)',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'formatchanges-anonymous' => 'نەناسراو',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

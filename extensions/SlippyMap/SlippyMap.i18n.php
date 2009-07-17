@@ -79,6 +79,14 @@ $messages['ar'] = array(
 	'slippymap_resetview' => 'إعادة ضبط الرؤية',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'slippymap_error' => '$1 ܦܘܕܐ: $2',
+	'slippymap_errors' => '$1 ܦܘܕ̈ܐ:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -100,6 +108,7 @@ $messages['be-tarask'] = array(
 	'slippymap_tagname' => 'slippymap',
 	'slippymap_error' => 'Памылка $1: $2',
 	'slippymap_errors' => 'Памылкі $1:',
+	'slippymap_error_tag_content_given' => 'Тэг  <tt>&lt;$1&gt;</tt> прымае толькі аргумэнты атрыбутаў (&lt;$1 [...]/&gt;), а не ўваходны тэкст (&lt;$1&gt; ... &lt;/$1&gt;)',
 	'slippymap_error_missing_arguments' => 'Вы не пазначылі ніякіх атрыбутаў тэга &lt;$1&gt;, глядзіце як выклікаць у [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax інфармацыі па выкарыстаньню]',
 	'slippymap_error_missing_attribute_lat' => 'Адсутнічае атрыбут <tt>lat</tt> (для шыраты).',
 	'slippymap_error_missing_attribute_lon' => 'Адсутнічае атрыбут <tt>lon</tt> (для даўгаты).',
@@ -155,9 +164,11 @@ $messages['cs'] = array(
 	'slippymap_resetview' => 'Obnovit zobrazení',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Umherirrender
+ */
 $messages['de'] = array(
-	'slippymap_desc' => 'Ermöglicht die Nutzung des <tt><nowiki>&lt;slippymap&gt;</nowiki></tt>-Tags zur Anzeige einer OpenLayer-SlippyMap. Die Karten stammen von [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_desc' => 'Ergänzt ein <tt>&lt;slippymap&gt;</tt>-Tag zum Einbinden von statischen und dynamischen Karten. Unterstützt werden mehrere Kartendienste einschließlich [http://openstreetmap.org OpenStreetMap] und NASA Worldwind',
 	'slippymap_code' => 'Wikitext für diese Kartenansicht:',
 	'slippymap_button_code' => 'Zeige Wikicode',
 	'slippymap_resetview' => 'Zurücksetzen',
@@ -204,9 +215,31 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'slippymap_desc' => 'Autorise l’utilisation de la balise <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> pour afficher une carte glissante d’OpenLayers. Les cartes proviennent de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_desc' => 'Ajoute une balise <tt>&lt;slippymap&gt;</tt> qui autorise l’affichage d’une carte statique & dynamique. Supportant plusieurs services de cartes tel que [http://openstreetmap.org OpenStreetMap] et NASA Worldwind',
+	'slippymap_error' => 'Erreur $1 : $2',
+	'slippymap_errors' => 'Erreurs $1 :',
+	'slippymap_error_tag_content_given' => 'La balise <tt>&lt;$1&gt;</tt> ne prend que des arguments en attribut (&lt;$1 [...]/&gt;), pas de texte (&lt;$1&gt; ... &lt;/$1&gt;)',
+	'slippymap_error_missing_arguments' => 'Vous n’avez fournis aucun attributs de la balise &lt;$1&gt;, voir les [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax informations d’utilisation ] pour savoir comment l’appeler.',
+	'slippymap_error_missing_attribute_lat' => 'Attribut <tt>lat</tt> manquant (pour la latitude).',
+	'slippymap_error_missing_attribute_lon' => 'Attribut <tt>lon</tt> manquant (pour la longitude).',
+	'slippymap_error_missing_attribute_zoom' => 'Attribut <tt>zoom</tt> manquant (pour le niveau de zoom).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attribut <tt>lat</tt> (latitude), la valeur donnée doit être un nombre valide.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attribut <tt>lon</tt> (longitude), la valeur donnée doit être un nombre valide.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attribut <tt>zoom</tt>, la valeur donnée doit être un nombre valide.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attribut <tt>width</tt>, la valeur donnée doit être un nombre valide.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attribut <tt>height</tt>, la valeur donnée doit être un nombre valide.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attribut <tt>mode</tt>, ceux valides sont $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attribut <tt>layer</tt>, les couches valides sont $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attribut <tt>marker</tt>, ceux valides sont $2.',
+	'slippymap_error_unknown_attribute' => 'L’attribut <tt>$1</tt> est inconnue.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attribut <tt>lat</tt> (latitude). Les latitudes doivent être comprise entre -90 et 90 degrés.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'La valeur de <tt>$1</tt> est invalide pour l’attribut <tt>lon</tt> (longitude). Les longitudes doivent être comprises entre -180 et 180 degrés.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attribut <tt>zoom</tt>. Les niveaux de zoom doivent être comprises entre $2 et $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'La valeur de <tt>$1</tt> n’est pas valide pour l’attribut <tt>widht</tt>. Les largeurs doivent être comprises entre $2 et $3.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'La valeur de <tt>$1</tt> n’est pas valable pour l’attibut <tt>height</tt>. Les hauteurs doivent être comprises entre $2 et $3.',
 	'slippymap_code' => 'Code Wiki pour le visionnement de cette cate :',
 	'slippymap_button_code' => 'Obtenir le code wiki',
 	'slippymap_resetview' => 'Réinitialiser le visionnement',
@@ -217,15 +250,30 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'slippymap_desc' => 'Permite o uso da etiqueta <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> para amosar un mapa slippy. Os mapas son de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_desc' => 'Engade unha etiqueta <tt>&lt;slippymap&gt;</tt> que permite engadir un mapa estático e dinámico. Soporta múltiples servizos de mapa como [http://openstreetmap.org OpenStreetMap] e NASA Worldwind',
 	'slippymap_extname' => 'SlippyMap',
 	'slippymap_tagname' => 'slippymap',
 	'slippymap_error' => 'Erro na extensión $1: $2',
 	'slippymap_errors' => 'Erros na extensión $1:',
+	'slippymap_error_tag_content_given' => 'A etiqueta <tt>&lt;$1&gt;</tt> só toma argumentos como atributo (&lt;$1 [...]/&gt;), e non texto de entrada (&lt;$1&gt; ... &lt;/$1&gt;)',
+	'slippymap_error_missing_arguments' => 'Non lle proporcionou ningún atributo á etiqueta &lt;$1&gt;, olle a [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax información de uso] para aprender a facer chamadas.',
 	'slippymap_error_missing_attribute_lat' => 'Falta o atributo <tt>lat</tt> (para a latitude).',
 	'slippymap_error_missing_attribute_lon' => 'Falta o atributo <tt>lon</tt> (para a lonxitude).',
 	'slippymap_error_missing_attribute_zoom' => 'Falta o atributo <tt>zoom</tt> (para o nivel de zoom).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>lat</tt> (latitude), o valor dado debe ser un número válido.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>lon</tt> (lonxitude), o valor dado debe ser un número válido.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>zoom</tt>, o valor dado debe ser un número válido.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>width</tt> (largo), o valor dado debe ser un número válido.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>height</tt> (altura), o valor dado debe ser un número válido.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>mode</tt>, os modos válidos son $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>layer</tt>, as capas válidas son $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>marker</tt>, os marcadores válidos son $2.',
 	'slippymap_error_unknown_attribute' => 'Descoñécese o atributo <tt>$1</tt>.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>lat</tt> (latitude). As latitudes deben estar entre os -90 e 90 graos.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>lon</tt> (lonxitude). As lonxitudes deben estar entre os -180 e 180 graos.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>zoom</tt>. Os niveis de zoom deben estar entre $2 e $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>width</tt> (largo). Os largos deben estar entre $2 e $3.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>height</tt> (altura). As alturas deben estar entre $2 e $3.',
 	'slippymap_code' => 'Código wiki para o visionado deste mapa:',
 	'slippymap_button_code' => 'Obter o código wiki',
 	'slippymap_resetview' => 'Axustar a vista',
@@ -241,6 +289,7 @@ $messages['gsw'] = array(
 	'slippymap_tagname' => 'slippymap',
 	'slippymap_error' => '$1 Fähler: $2',
 	'slippymap_errors' => '$1 Fähler:',
+	'slippymap_error_tag_content_given' => 'Dr <tt>&lt;$1&gt;</tt>-Tag nimmt nume Eigeschafte-Argumänt (&lt;$1 [...]/&gt;), kei Yygabe-Tekscht (&lt;$1&gt; ... &lt;/$1&gt;)',
 	'slippymap_error_missing_arguments' => 'Du hesch keini Eigeschafte zum &lt;$1&gt;-Tag zuegfiegt, lueg [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax Gebruchsinformatione] wie Du s chasch ufruefe.',
 	'slippymap_error_missing_attribute_lat' => '<tt>lat</tt>-Eigeschaft fählt (fir d Breiti).',
 	'slippymap_error_missing_attribute_lon' => '<tt>lon</tt>-Eigeschaft fählt (fir d Lengi).',
@@ -300,6 +349,7 @@ $messages['ia'] = array(
 	'slippymap_tagname' => 'cartaglissante',
 	'slippymap_error' => '$1 error: $2',
 	'slippymap_errors' => '$1 errores:',
+	'slippymap_error_tag_content_given' => 'Le etiquetta <tt>&lt;$1&gt;</tt> accepta como parametros solmente attributos (&lt;$1 [...]/&gt;), non texto de entrata (&lt;$1&gt; ... &lt;/$1&gt;)',
 	'slippymap_error_missing_arguments' => 'Tu non forniva alcun attributo al etiquetta &lt;$1&gt;, vide [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax usage information] pro leger como appellar lo.',
 	'slippymap_error_missing_attribute_lat' => 'Le attributo <tt>lat</tt> manca (pro le latitude).',
 	'slippymap_error_missing_attribute_lon' => 'Le attributo <tt>lon</tt> manca (pro le longitude).',
@@ -370,11 +420,31 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'slippymap_desc' => 'Deit dä Befääl <tt> <nowiki>&lt;slippymap&gt;</nowiki> </tt> em Wiki dobei, öm en <i lang="en">OpenLayers slippy map</i> Kaat aanzezeije. De Landkaate-Date kumme dobei fun <i lang="en">[http://openstreetmap.org openstreetmap.org]</i> her.',
+	'slippymap_desc' => 'Deit dä Befääl <tt>&lt;slippymap&gt;</tt> em Wiki dobei, öm en Landkaat faßt udder bewääschlesh aanzezeije. Deiht met ongerscheidlijje ßöövere för Kaate fungxjeneehre, doh dronger di fun <i lang="en">[http://openstreetmap.org OpenStreetMap]</i> un <i lang="en">NASA Worldwind</i>.',
 	'slippymap_extname' => 'SlippyMap',
 	'slippymap_tagname' => 'slippymap',
-	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>width</tt> jeiht nit. De Breede ier Nivvohs möße zwesche $2 un $3 lijje.',
-	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>height</tt> jeiht nit. De Hühde ier Nivvohs möße zwesche $2 un $3 lijje.',
+	'slippymap_error' => 'Fähler en $1: $2',
+	'slippymap_errors' => 'Fähler en $1:',
+	'slippymap_error_tag_content_given' => 'Dä Befähl <tt>&lt;$1&gt;</tt> nimmp bloß Parrameeter met Name un Wääte aan (<tt>&lt;$1 [</tt> … <tt>] /&gt;</tt>), ävver keine Täx dozwesche (<tt>&lt;$1&gt;</tt> … <tt>&lt;/$1&gt;</tt>)',
+	'slippymap_error_missing_arguments' => 'Do häß keine Parrameeter aan dä Befähl <tt>&lt;$1&gt;</tt> jejovve.
+Loor Der aan, wi dä [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax jebruch wääde] moß.',
+	'slippymap_error_missing_attribute_lat' => 'De Eijeschaff <tt>lon</tt> för de Breed om Jloobus fäählt.',
+	'slippymap_error_missing_attribute_lon' => 'De Eijeschaff <tt>lon</tt> för de Läng om Jloobus fäählt.',
+	'slippymap_error_missing_attribute_zoom' => 'De Eijeschaff <tt>zoom</tt> för em Zoom sing Nivoh fäählt.',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>lat</tt> jeiht nit. De Breed om Jloobus moß met en reeschtijje Zahl aanjejovve wääde.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>lon</tt> jeiht nit. De Läng om Jloobus moß met en reeschtijje Zahl aanjejovve wääde.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>zoom</tt> jeiht nit. Et Nivvoh vum Zoom moß met en reeschtijje Zahl aanjejovve wääde.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>width</tt> jeiht nit. De Breede of Wickde moß met en reeschtijje Zahl aanjejovve wääde.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>height</tt> jeiht nit. De Hühde moß met en reeschtijje Zahl aanjejovve wääde.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>mode</tt> jeiht nit. De jöltijje Aate sin $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>Layer</tt> jeiht nit. De jöltijje Nivvohs sin $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>marker</tt> jeiht nit. De jöltijje Makeerunge sin: $2.',
+	'slippymap_error_unknown_attribute' => 'En Eijeschaff <tt>$1</tt> känne mer nit.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>lat</tt> jeiht nit. De Breed om Jlohbus moß zwesche -90 un +90 Jrahd lijje.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>lon</tt> jeiht nit. De Läng om Jlohbus moß zwesche -180 un +180 Jrahd lijje.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>zoom</tt> jeiht nit. Et Nivoh vum Zoom moß zwesche $2 un $3 lijje.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>width</tt> jeiht nit. De Breed of Wickde moß zwesche $2 un $3 lijje.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Dä Wäät <tt>$1</tt> för de Eijeschaff <tt>height</tt> jeiht nit. De Hühde moß zwesche $2 un $3 lijje.',
 	'slippymap_code' => 'Dä Wiki-Kood för di Kaate-Aansesh es:',
 	'slippymap_button_code' => 'Donn dä Wiki-Kood zeije',
 	'slippymap_resetview' => 'Aansesh zeröcksetze',
@@ -402,6 +472,7 @@ Biedt ondersteuning voor meerdere kaartdiensten zoals [http://openstreetmap.org 
 	'slippymap_tagname' => 'slippymap',
 	'slippymap_error' => '$1-fout: $2',
 	'slippymap_errors' => '$1-fouten:',
+	'slippymap_error_tag_content_given' => 'De tag <tt>&lt;$1&gt;</tt> accepteert alleen attribuutargumenten (&lt;$1 [...]/&gt;), geen tekstinvoer (&lt;$1&gt; ... &lt;/$1&gt;)',
 	'slippymap_error_missing_arguments' => 'U hebt niet geen attributen opgegeven voor de tag &lt;$1&gt;.
 Zie de [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax gebruikershandleiding] voor meer informatie.',
 	'slippymap_error_missing_attribute_lat' => 'Het attribuut <tt>lat</tt> mist (voor de breedtegraad)',
@@ -464,7 +535,28 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'slippymap_desc' => 'Autoriza l’utilizacion de la balisa <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> per afichar una mapa lisanta d’OpenLayers. Las mapas provenon de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_desc' => "Apond una balisa <tt>&lt;slippymap&gt;</tt> qu'autoriza l’afichatge d’una mapa estatica & dinamica. Suportant mai d'un servici de mapas coma [http://openstreetmap.org OpenStreetMap] e NASA Worldwind",
+	'slippymap_error' => 'Error $1 : $2',
+	'slippymap_errors' => 'Errors $1 :',
+	'slippymap_error_tag_content_given' => "La balisa <tt>&lt;$1&gt;</tt> pren pas que d'arguments en atribut (&lt;$1 [...]/&gt;), pas de tèxte (&lt;$1&gt; ... &lt;/$1&gt;)",
+	'slippymap_error_missing_arguments' => "Avètz pas provesit cap d'atributs de la balisa &lt;$1&gt;, vejatz las [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax informacions d’utilizacion ] per saber cossí l’apelar.",
+	'slippymap_error_missing_attribute_lat' => 'Atribut <tt>lat</tt> mancant (per la latitud).',
+	'slippymap_error_missing_attribute_lon' => 'Atribut <tt>lon</tt> mancant (per la longitud).',
+	'slippymap_error_missing_attribute_zoom' => 'Atribut <tt>zoom</tt> mancant (pel nivèl de zoom).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>lat</tt> (latitud), la valor balhada deu èsser un nombre valid.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>lon</tt> (longitud), la valor balhada deu èsser un nombre valid.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>zoom</tt>, la valor balhada deu èsser un nombre valid.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>width</tt>, la valor balhada deu èsser un nombre valid.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>height</tt>, la valor balhada deu èsser un nombre valid.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>mode</tt>, los valids son $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>layer</tt>, los jaces valids son $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>marker</tt>, los valids son $2.',
+	'slippymap_error_unknown_attribute' => 'L’atribut <tt>$1</tt> es desconegut.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>lat</tt> (latitud). Las latituds devon èsser compresas entre -90 e 90 graus.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>lon</tt> (longitud). Las longituds devon èsser compresas entre -180 e 180 graus.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>zoom</tt>. Los nivèls de zoom devon èsser compresas entre $2 e $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'La valor de <tt>$1</tt> es pas valida per l’atribut <tt>widht</tt>. Las largors devon èsser compresas entre $2 e $3.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'La valor de <tt>$1</tt> es pas valabla per l’atribut <tt>height</tt>. Las nautors devon èsser compresas entre $2 e $3.',
 	'slippymap_code' => "Còde Wiki pel visionament d'aquesta mapa :",
 	'slippymap_button_code' => 'Obténer lo còde wiki',
 	'slippymap_resetview' => 'Tornar inicializar lo visionament',
@@ -486,7 +578,7 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'slippymap_desc' => 'Permite o uso da marca <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> para apresentar um mapa corrediço OpenLayers. Os mapas provêm de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_desc' => 'Adiciona uma marca <tt>&lt;slippymap&gt;</tt> que permite a incorporação de mapas estáticos & dinâmicos. Suporta múltiplos serviços de mapas incluindo [http://openstreetmap.org OpenStreetMap] e NASA Worldwind',
 	'slippymap_code' => 'Código wiki para esta vista do mapa:',
 	'slippymap_button_code' => 'Buscar código wiki',
 	'slippymap_resetview' => 'Repor vista',
@@ -513,6 +605,7 @@ $messages['ru'] = array(
 	'slippymap_tagname' => 'slippymap',
 	'slippymap_error' => 'Ошибка $1: $2',
 	'slippymap_errors' => 'Ошибки $1:',
+	'slippymap_error_tag_content_given' => 'Тег <tt>&lt;$1&gt;</tt> принимает только аргументы атрибутов (&lt;$1 [...]/&gt;), не вводимый текст (&lt;$1&gt; ... &lt;/$1&gt;)',
 	'slippymap_error_missing_arguments' => 'Вы не указали атрибуты для тега &lt;$1&gt;, подробнее см. [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax информацию об использовании].',
 	'slippymap_error_missing_attribute_lat' => 'Отсутствует атрибут <tt>lat</tt> (для широты).',
 	'slippymap_error_missing_attribute_lon' => 'Отсутствует атрибут <tt>lon</tt> (для долготы).',

@@ -288,6 +288,13 @@ $messages['pl'] = array(
 	'emailaddressimage-desc' => 'Dodaje znacznik <tt>&lt;email&gt;</tt> pozwalający wyświetlić adres e‐mail jako obrazek.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'emailaddressimage-desc' => "A gionta <tt>&lt;email&gt;</tt> për visualisé n'adrëssa e-mail con figura",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

@@ -14,7 +14,7 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'SharedUserRights' => array( 'صلاحيات_المستخدم_المشتركة', 'صلاحيات_المستخدم_العامة' ),
+	'SharedUserRights' => array( 'صلاحيات_المستخدم_المشتركة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */

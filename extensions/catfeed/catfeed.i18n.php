@@ -270,6 +270,14 @@ $messages['pl'] = array(
 	'catfeed-desc' => 'Wykorzystując informacje z listy ostatnich zmian tworzy wersję umieszczaną wewnątrz treści strony. Szczególnie użyteczne dla Wikinews.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'catfeed-desc' => 'A dòvra dij "bit" da dij "feed" pen-e cambià.
+A crea vërsion anpaginà, utij dzortut për Wikinews',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

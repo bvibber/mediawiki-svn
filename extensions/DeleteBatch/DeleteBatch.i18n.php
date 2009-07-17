@@ -158,9 +158,8 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'deletebatch-as' => 'Стартиране на скрипта като:',
 	'deletebatch-or' => '<b>ИЛИ</b>',
+	'deletebatch-delete' => 'Изтриване',
 	'deletebatch-page' => 'Страници за изтриване:',
-	'deletebatch-reason' => 'Причина за изтриването',
-	'deletebatch-success-subtitle' => 'за $1',
 	'deletebatch-file-bad-format' => 'Необходимо е файлът да съдържа само текст',
 	'deletebatch-file-missing' => 'Предоставеният файл не може да бъде прочетен',
 );
@@ -313,10 +312,12 @@ Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "
 $messages['es'] = array(
 	'deletebatch-caption' => 'Lista de páginas:',
 	'deletebatch-link-back' => 'Regresar a la página especial',
+	'deletebatch-both-modes' => 'Por favor escoger ya sea una página específica o una lista dada de páginas.',
 	'deletebatch-or' => '<b>o</b>',
+	'deletebatch-delete' => 'Borrar',
 	'deletebatch-page' => 'Páginas a ser borradas:',
-	'deletebatch-reason' => 'Razón para borrado',
-	'deletebatch-success-subtitle' => 'Para $1',
+	'deletebatch-processing-from-file' => 'borrando páginas de la lista de archivos',
+	'deletebatch-processing-from-form' => 'borrando páginas del formulario',
 	'deletebatch-omitting-nonexistant' => 'Omitiendo página no existente $1.',
 	'deletebatch-omitting-invalid' => 'Omitiendo página inválida $1.',
 	'deletebatch-file-bad-format' => 'El archivo debería ser texto simple',
@@ -598,8 +599,7 @@ Le file cargate debe continer in cata linea un nomine de pagina e un motivo facu
  */
 $messages['id'] = array(
 	'deletebatch-or' => '<b>atau</b>',
-	'deletebatch-reason' => 'Alasan penghapusan',
-	'deletebatch-success-subtitle' => 'untuk $1',
+	'deletebatch-delete' => 'Hapus',
 );
 
 /** Italian (Italiano)

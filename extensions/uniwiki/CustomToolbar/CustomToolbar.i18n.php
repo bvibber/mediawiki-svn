@@ -149,7 +149,9 @@ $wgCustomToolbarMessages['arc'] = array(
 	'ct_nowiki_caption' => 'ܠܐ ܘܝܩܝ',
 	'ct_upload' => 'ܐܣܩ $1',
 	'ct_submit' => 'ܙܠ!',
+	'ct_close' => 'ܣܟܪ ܟܘܬܐ',
 	'ct_user_user' => 'ܡܦܠܚܢܐ',
+	'ct_user_caption' => 'ܐܣܘܪܐ ܕܡܦܠܚܢܐ',
 	'ct_user_sample' => 'ܫܡܐ ܕܡܦܠܚܢܐ',
 );
 
@@ -2342,8 +2344,8 @@ $wgCustomToolbarMessages['vo'] = array(
 	'ct_horizontal_tip' => 'Nüpladön lieni horitätik (no gebolös tusuvo)',
 	'ct_horizontal_caption' => 'Lien horitätik',
 	'ct_upload' => 'Löpükön $1',
-	'ct_select' => 'Välön $1 ad palöpükön',
-	'ct_link' => 'Läükön yümanemi (no paflagöl)',
+	'ct_select' => 'Välön $1 ad palöpükön:',
+	'ct_link' => 'Läükön yümanemi (no paflagöl):',
 	'ct_submit' => 'Ledunön',
 	'ct_close' => 'Färmükön fenäti',
 	'ct_success' => 'Ragivalöpükam benosekik!',

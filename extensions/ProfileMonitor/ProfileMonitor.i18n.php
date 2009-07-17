@@ -663,9 +663,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'profiling' => "Antramentr ch'as càlcola ël profil da 'nt ij dat",
+	'profiling-desc' => "[[Special:Profiling|Pàgina special]] për l'arserca e l'ispession dle anformassion ëd profilassion",
 	'profiling-process' => 'Espression processà:',
 	'profiling-wildcard' => 'Dovré ël ciapatut',
 	'profiling-ok' => 'Bin parej',

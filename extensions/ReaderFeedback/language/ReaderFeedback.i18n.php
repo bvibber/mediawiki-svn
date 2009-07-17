@@ -305,6 +305,7 @@ $messages['de'] = array(
 [$3 Kommentare oder Fragen?]",
 	'readerfeedback-submitting' => 'Übertragung …',
 	'readerfeedback-finished' => 'Dankeschön!',
+	'readerfeedback-tagfilter' => 'Markierung:',
 	'tooltip-ca-ratinghist' => 'Leserbewertungen dieser Seite',
 );
 
@@ -545,6 +546,7 @@ $messages['fr'] = array(
 	'readerfeedback-voted' => "'''Il semble que vous ayez déjà évalué cette page'''. ([$3 Des questions ou des commentaires ?])",
 	'readerfeedback-submitting' => 'Soumission…',
 	'readerfeedback-finished' => 'Merci !',
+	'readerfeedback-tagfilter' => 'Balise:',
 	'tooltip-ca-ratinghist' => 'Évaluations de cette page par les lecteurs',
 );
 
@@ -599,6 +601,7 @@ $messages['gl'] = array(
 	'readerfeedback-voted' => "'''Parece que xa valorou esta páxina''' ([$3 Ten comentarios ou preguntas?]).",
 	'readerfeedback-submitting' => 'Enviando...',
 	'readerfeedback-finished' => 'Grazas!',
+	'readerfeedback-tagfilter' => 'Etiqueta:',
 	'tooltip-ca-ratinghist' => 'Valoracións dos lectores desta páxina',
 );
 
@@ -708,6 +711,7 @@ $messages['hsb'] = array(
 	'readerfeedback-voted' => "'''Zda so, zo sy tutu stronu hižo pohódnoćił''' ([$3 Komentary abo prašenja?]).",
 	'readerfeedback-submitting' => 'Sćele so...',
 	'readerfeedback-finished' => 'Wutrobny dźak!',
+	'readerfeedback-tagfilter' => 'Taflička:',
 	'tooltip-ca-ratinghist' => 'Pohódnoćenja čitarjow tuteje strony',
 );
 
@@ -769,6 +773,7 @@ $messages['ia'] = array(
 	'readerfeedback-voted' => "'''Il pare que tu ha ja judicate iste pagina.''' ([$3 Commentos o questiones?])",
 	'readerfeedback-submitting' => 'Invio in curso…',
 	'readerfeedback-finished' => 'Gratias!',
+	'readerfeedback-tagfilter' => 'Etiquetta:',
 	'tooltip-ca-ratinghist' => 'Evalutationes de iste pagina per le lectores',
 );
 
@@ -781,7 +786,7 @@ $messages['id'] = array(
 	'readerfeedback-text' => "''Silakan menilai halaman di bawah ini. Umpan balik Anda sangat berharga dan membantu meningkatkan situs web ini.''",
 	'readerfeedback-reliability' => 'Reliabilitas',
 	'readerfeedback-completeness' => 'Kelengkapan',
-	'readerfeedback-npov' => 'Netralitas',
+	'readerfeedback-npov' => 'Kenetralan',
 	'readerfeedback-presentation' => 'Penyajian',
 	'readerfeedback-overall' => 'Keseluruhan',
 	'readerfeedback-level-none' => '(tidak yakin)',
@@ -796,6 +801,7 @@ $messages['id'] = array(
 	'readerfeedback-voted' => "'''Tampaknya Anda sudah memberikan peringkat untuk halaman ini'''. ([$3 Komentar atau pertanyaan?])",
 	'readerfeedback-submitting' => 'Mengirimkan...',
 	'readerfeedback-finished' => 'Terima kasih!',
+	'readerfeedback-tagfilter' => 'Tag:',
 	'tooltip-ca-ratinghist' => 'Penilaian pembaca atas halaman ini:',
 );
 
@@ -933,6 +939,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'readerfeedback' => 'Wat haalt Dir vun dëser Säit?',
+	'readerfeedback-text' => "''Huelt Iech w.e.g. e Moment fir dës Säit ze bewerten. Äre Feedback ass wertvoll an hëlleft eis eisen Internet-Site ze verbesseren.''",
 	'readerfeedback-reliability' => 'Zouverlässigkeet',
 	'readerfeedback-completeness' => 'Vollständegkeet',
 	'readerfeedback-npov' => 'Neutralitéit',
@@ -946,10 +953,12 @@ $messages['lb'] = array(
 	'readerfeedback-level-4' => 'Exzellent',
 	'readerfeedback-submit' => 'Späicheren',
 	'readerfeedback-main' => 'Nëmme Säite mat Inhalt kënne bewert ginn.',
+	'readerfeedback-success' => "'''Merci datt Dir dës Säit bewert hutt!''' ([$3 Bemierkungen oder Froen?]).",
 	'readerfeedback-voted' => "'''Et schéngt wéi wann Dir dës Säit scho bewert hutt''' ([$3 Bemierkungen oder Froen?]).",
 	'readerfeedback-submitting' => 'Späicheren ...',
 	'readerfeedback-finished' => 'Merci!',
-	'tooltip-ca-ratinghist' => 'Lieserbewertunge vun vun dëser Säit',
+	'readerfeedback-tagfilter' => 'Tag:',
+	'tooltip-ca-ratinghist' => 'Lieserbewertunge vun dëser Säit',
 );
 
 /** Macedonian (Македонски)
@@ -1129,6 +1138,7 @@ $messages['oc'] = array(
 	'readerfeedback-voted' => "'''Apareis que ja avètz notat aquesta pagina'''. ([$3 De questions o de comentaris ?]).",
 	'readerfeedback-submitting' => 'Somission…',
 	'readerfeedback-finished' => 'Mercés !',
+	'readerfeedback-tagfilter' => 'Balisa :',
 	'tooltip-ca-ratinghist' => "Apreciacions dels lectors d'aquesta pagina",
 );
 
@@ -1164,6 +1174,7 @@ $messages['pl'] = array(
 	'readerfeedback-voted' => "'''Tę stronę prawdopodobnie już oceniałeś''' ([$3 Komentarze lub pytania?]).",
 	'readerfeedback-submitting' => 'Zapisywanie...',
 	'readerfeedback-finished' => 'Dziękujemy!',
+	'readerfeedback-tagfilter' => 'Znacznik',
 	'tooltip-ca-ratinghist' => 'Oceny czytelników tej strony',
 );
 
@@ -1377,6 +1388,7 @@ $messages['sv'] = array(
  * @author వైజాసత్య
  */
 $messages['te'] = array(
+	'readerfeedback' => 'ఈ పేజీ గురించి మీరేమనుకుంటున్నారు?',
 	'readerfeedback-completeness' => 'సంపూర్ణత',
 	'readerfeedback-npov' => 'తటస్థత',
 	'readerfeedback-success' => "'''ఈ పేజీని సమీక్షించినందుకు కృతజ్ఞతలు!''' ([$3 సందేహాలు లేదా సూచనలున్నాయా?]).",
