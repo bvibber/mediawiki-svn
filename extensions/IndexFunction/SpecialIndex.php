@@ -154,21 +154,6 @@ class SpecialIndex extends UnlistedSpecialPage {
 		}
 		
 		$wgOut->addHtml($out);
-		//$wgOut->addHTML( Xml::openElement( 'ul' ) );
-		# TODO: Group into sections based on most used categories.
-		# When iterating over the category results above, use another array
-		# to record the most frequently used ones and add some h2's in the
-		# list for some (all?)
-		//foreach( $list as $pageid => $info ) {
-		//	$link = $sk->link( $info['title'], null, array(), array(), array( 'known', 'noclasses' ) );
-		//	if ( $info['cats'] ) {
-		//		$line = $link . '&nbsp;&ndash&nbsp;' . implode( ', ', $info['cats'] );
-		//	} else {
-		//		$line = $link;
-		//	}
-		//	$wgOut->addHtml( Xml::tags( 'li', array(), $line) );
-		//}
-		//$wgOut->addHTML( Xml::closeElement('ul') );
 	}
 }
 
