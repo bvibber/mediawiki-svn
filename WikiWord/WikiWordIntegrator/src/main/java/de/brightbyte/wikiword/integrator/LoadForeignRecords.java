@@ -11,20 +11,21 @@ import de.brightbyte.wikiword.integrator.data.ForeignEntity;
 import de.brightbyte.wikiword.integrator.data.ForeignEntityCursor;
 import de.brightbyte.wikiword.integrator.processor.ForeignPropertyPassThrough;
 import de.brightbyte.wikiword.integrator.processor.ForeignEntityProcessor;
-import de.brightbyte.wikiword.integrator.store.DatabaseForeignPropertyStoreBuilder;
-import de.brightbyte.wikiword.integrator.store.ForeignPropertyStoreBuilder;
+import de.brightbyte.wikiword.integrator.processor.ForeignRecordPassThrough;
+import de.brightbyte.wikiword.integrator.store.DatabaseForeignRecordStoreBuilder;
+import de.brightbyte.wikiword.integrator.store.ForeignRecordStoreBuilder;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
-public class LoadForeignProperties extends AbstractIntegratorApp<ForeignPropertyStoreBuilder, ForeignEntityProcessor, ForeignEntity> {
+public class LoadForeignRecords extends AbstractIntegratorApp<ForeignRecordStoreBuilder, ForeignEntityProcessor, ForeignEntity> {
 	
 	@Override
-	protected WikiWordStoreFactory<? extends ForeignPropertyStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
-		return new DatabaseForeignPropertyStoreBuilder.Factory(getTargetTableName(), getConfiguredDataset(), getConfiguredDataSource(), tweaks);
+	protected WikiWordStoreFactory<? extends ForeignRecordStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
+		return new DatabaseForeignRecordStoreBuilder.Factory(getTargetTableName(), getConfiguredDataset(), getConfiguredDataSource(), tweaks);
 	}
 
 	@Override
 	protected void run() throws Exception {
-		ForeignPropertyStoreBuilder store = getStoreBuilder();
+		ForeignRecordStoreBuilder store = getStoreBuilder();
 		this.propertyProcessor = createProcessor(store); //FIXME
 		
 		section("-- fetching properties --------------------------------------------------");
@@ -47,19 +48,15 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 	}
 
 	@Override
-	protected ForeignEntityProcessor createProcessor(ForeignPropertyStoreBuilder conceptStore) throws InstantiationException {
-		ForeignEntityProcessor processor = instantiate(sourceDescriptor, "foreignPropertyProcessorClass", ForeignPropertyPassThrough.class, conceptStore);
+	protected ForeignEntityProcessor createProcessor(ForeignRecordStoreBuilder conceptStore) throws InstantiationException {
+		//	FIXME: need to pass mappings (aggregators) 
+		ForeignEntityProcessor processor = instantiate(sourceDescriptor, "foreignRecordProcessorClass", ForeignRecordPassThrough.class, conceptStore);
 
-		if (processor instanceof ForeignPropertyPassThrough) {
-			String qualifier = sourceDescriptor.getTweak("property-qualifier", null);
-			if (qualifier!=null) ((ForeignPropertyPassThrough)processor).setQualifier(qualifier);
-		}
-		
 		return processor;
 	}
 
 	public static void main(String[] argv) throws Exception {
-		LoadForeignProperties app = new LoadForeignProperties();
+		LoadForeignRecords app = new LoadForeignRecords();
 		app.launch(argv);
 	}
 }

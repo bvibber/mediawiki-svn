@@ -4,6 +4,6 @@ import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.ForeignEntity;
 
-public interface ForeignPropertyProcessor extends WikiWordProcessor {
-		public void processProperties(DataCursor<ForeignEntity> cursor) throws PersistenceException;
+public interface ForeignEntityProcessor extends WikiWordProcessor {
+		public void processEntites(DataCursor<ForeignEntity> cursor) throws PersistenceException;
 }

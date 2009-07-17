@@ -8,7 +8,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.ForeignEntity;
 import de.brightbyte.wikiword.integrator.store.ForeignPropertyStoreBuilder;
 
-public class ForeignPropertyPassThrough extends AbstractForeignPropertyProcessor {
+public class ForeignPropertyPassThrough extends AbstractForeignEntityProcessor {
 	protected ForeignPropertyStoreBuilder store;
 	protected String qualifier;
 	
