@@ -5,6 +5,7 @@ import java.util.Collection;
 import de.brightbyte.abstraction.MultiMapAbstractor;
 import de.brightbyte.abstraction.PropertyAccessor;
 import de.brightbyte.data.Functor;
+import de.brightbyte.data.Functors;
 import de.brightbyte.wikiword.integrator.FeatureSetSourceDescriptor;
 
 public class FeatureMapping extends PropertyMapping<FeatureSet> {
@@ -20,5 +21,9 @@ public class FeatureMapping extends PropertyMapping<FeatureSet> {
 	public <T>void addMapping(String field, FeatureSetSourceDescriptor source, String option, Class<T> type, Functor<?, ? extends Collection<?>> aggregator) {
 		String feature = source.getTweak(option, null);		
 		if (feature!=null) addMapping(field, feature, type, aggregator);
+	}
+
+	public void addMapping(String field, String feature) {
+		addMapping(field, feature, Object.class, Functors.<String>firstElement());
 	}
 }

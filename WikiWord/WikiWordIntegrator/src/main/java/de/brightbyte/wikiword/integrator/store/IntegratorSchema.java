@@ -1,7 +1,6 @@
 package de.brightbyte.wikiword.integrator.store;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
@@ -9,7 +8,6 @@ import javax.sql.DataSource;
 import de.brightbyte.db.DatabaseField;
 import de.brightbyte.db.DatabaseKey;
 import de.brightbyte.db.DatabaseTable;
-import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.KeyType;
 import de.brightbyte.db.ReferenceField;
 import de.brightbyte.db.RelationTable;
