@@ -161,6 +161,14 @@ $messages['lb'] = array(
 	'usabilityinitiative-desc' => "Fonctinnalitéiten déi vun der Wikipedia Benotzerfrëndlechkeets-Initiative entwécklet goufe fir d'Benotzerfrëndleckeetvu MediWiki ze verbesseren",
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'usabilityinitiative' => 'Naudojimo iniciatyva',
+	'usabilityinitiative-desc' => 'Priedai, rengiami Wikipedia Naudojimo Iniciatyvos, siekiant padidinti MediaWiki naudojimą.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

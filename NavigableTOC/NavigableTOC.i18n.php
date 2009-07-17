@@ -25,6 +25,14 @@ $messages['be-tarask'] = array(
 	'navigabletoc-desc' => 'Дадае табліцу зьместу для рэдагаваньня формы якая пракручвае тэкставае поле пад час выбару сэкцыі',
 );
 
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
+$messages['de'] = array(
+	'navigabletoc' => 'Navigierbares Inhaltsverzeichnis',
+	'navigabletoc-desc' => 'Fügt ein Inhaltsverzeichnis zum Bearbeitungsfenster hinzu, das den Text scrollt, wenn ein Abschnitt angeklickt wird',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

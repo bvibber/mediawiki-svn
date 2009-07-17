@@ -50,6 +50,15 @@ $messages['bs'] = array(
 	'editwarning-warning' => 'Napuštanjem ove stranice će se izgubiti sve promjene koje ste načinili.',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'editwarning' => 'دەستکاری پەیامی ئاگاداری',
+	'editwarning-desc' => 'کاتێ بەکارهێنەر بێ پاشەکەوت کردن هەوڵی‌دا بۆ جێ‌هێشتنی فۆڕمی دەستکاری، ئاگاداری نیشان بده',
+	'editwarning-warning' => 'بەجێ‌هێشتنی ئەم لاپەڕەیە دەبێتە هۆی لە‌دەست چوونی هەموو ئەو گۆڕانکاریانەی کردووتە.',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
