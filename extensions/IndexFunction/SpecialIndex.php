@@ -1,6 +1,6 @@
 <?php
 
-class SpecialIndex extends SpecialPage {
+class SpecialIndex extends UnlistedSpecialPage {
 	function __construct() {
 		parent::__construct( 'Index' );
 		wfLoadExtensionMessages('IndexFunction');
