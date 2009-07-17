@@ -1274,25 +1274,6 @@ table.collapsed tr.collapsable {
 	display: none;
 }
 
-
-/* filetoc */
-ul#filetoc {
-	text-align: center;
-	border: 1px solid #aaaaaa;
-	background-color: #f9f9f9;
-	padding: 5px;
-	font-size: 95%;
-	margin-bottom: 0.5em;
-	margin-left: 0;
-	margin-right: 0;
-}
-
-#filetoc li {
-	display: inline;
-	list-style-type: none;
-	padding-right: 2em;
-}
-
 input#wpSummary {
 	width: 80%;
 }
@@ -1329,13 +1310,6 @@ p.revision_saved {
 	color: green;
 	font-weight:bold;
 }
-
-#mw_trackbacks {
-	border: solid 1px #bbbbff;
-	background-color: #eeeeff;
-	padding: 0.2em;
-}
-
 
 /* Allmessages table */
 
@@ -1418,31 +1392,6 @@ div.multipageimagenavbox hr {
 table.multipageimage td {
    text-align: center;
 }
-
-
-/*
-  Table pager (e.g. Special:Imagelist)
-  - remove underlines from the navigation link
-  - collapse borders
-  - set the borders to outsets (similar to Special:Allmessages)
-  - remove line wrapping for all td and th, set background color
-  - restore line wrapping for the last two table cells (description and size)
-*/
-.TablePager { min-width: 80%; }
-.TablePager_nav a { text-decoration: none; }
-.TablePager { border-collapse: collapse; }
-.TablePager, .TablePager td, .TablePager th { 
-	border: 1px solid #aaaaaa;
-	padding: 0 0.15em 0 0.15em;
-}
-.TablePager th { background-color: #eeeeff }
-.TablePager td { background-color: #ffffff }
-.TablePager tr:hover td { background-color: #eeeeff }
-
-.imagelist td, .imagelist th { white-space: nowrap }
-.imagelist .TablePager_col_links { background-color: #eeeeff }
-.imagelist .TablePager_col_img_description { white-space: normal }
-.imagelist th.TablePager_sort { background-color: #ccccff }
 
 .templatesUsed { margin-top: 1.5em; }
 

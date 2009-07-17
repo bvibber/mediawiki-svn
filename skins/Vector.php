@@ -79,21 +79,21 @@ class SkinVector extends SkinTemplate {
 			$isTalk = $this->mTitle->isTalkPage();
 
 			// Generates XML IDs from namespace names
-			$subjectId = $wgContLang->lc( $this->mTitle->getSubjectNsText() );
-			if ( $subjectId == '' ) {
-				$subjectId = 'main';
-			}
+			$subjectId = $this->mTitle->getNamespaceKey( '' );
+			
 			$talkId = "{$subjectId}_talk";
 			$currentId = $isTalk ? $talkId : $subjectId;
-
+			
 			// Adds namespace links
 			$links['namespaces'][$subjectId] = $this->tabAction(
 				$subjectPage, 'vector-namespace-' . $subjectId, !$isTalk, '', true
 			);
+			$links['namespaces'][$subjectId]['context'] = 'subject';
 			$links['namespaces'][$talkId] = $this->tabAction(
 				$talkPage, 'vector-namespace-talk', $isTalk, '', true
 			);
-
+			$links['namespaces'][$talkId]['context'] = 'talk';
+			
 			// Adds view view link
 			if ( $this->mTitle->exists() ) {
 				$links['views']['view'] = $this->tabAction(
@@ -292,7 +292,10 @@ class SkinVector extends SkinTemplate {
 					);
 				}
 			}
-
+			
+			// This is instead of SkinTemplateTabs - which uses a flat array
+			wfRunHooks( 'SkinTemplateNavigation', array( &$this, &$links ) );
+		
 		// If it's not content, it's got to be a special page
 		} else {
 			$links['namespaces']['special'] = array(
@@ -366,8 +369,12 @@ class VectorTemplate extends QuickTemplate {
 		$nav = $this->skin->buildNavigationUrls();
 		foreach ( $nav as $section => $links ) {
 			foreach ( $links as $key => $link ) {
+				$insert = '';
+				if ( isset( $link['context'] ) && $link['context'] == 'subject' ) {
+					$insert = 'nstab-';
+				}
 				$nav[$section][$key]['attributes'] =
-					' id="' . Sanitizer::escapeId( "ca-$key" ) . '"';
+					' id="' . Sanitizer::escapeId( "ca-{$insert}{$key}" ) . '"';
 			 	if ( $nav[$section][$key]['class'] ) {
 					$nav[$section][$key]['attributes'] .=
 						' class="' . htmlspecialchars( $link['class'] ) . '"';
@@ -382,10 +389,10 @@ class VectorTemplate extends QuickTemplate {
 					in_array( $key, array( 'edit', 'watch', 'unwatch' ) )
 				) {
 			 		$nav[$section][$key]['key'] =
-						$this->skin->tooltip( "ca-$key" );
+						$this->skin->tooltip( "ca-{$insert}{$key}" );
 			 	} else {
 			 		$nav[$section][$key]['key'] =
-						$this->skin->tooltipAndAccesskey( "ca-$key" );
+						$this->skin->tooltipAndAccesskey( "ca-{$insert}{$key}" );
 			 	}
 			}
 		}
@@ -546,7 +553,7 @@ class VectorTemplate extends QuickTemplate {
 		<!-- header -->
 		<div id="head" class="noprint">
 			<!-- personal -->
-			<div id="personal">
+			<div id="p-personal">
 				<h5><?php $this->msg('personaltools') ?></h5>
 				<ul <?php $this->html('userlangattributes') ?>>
 					<?php foreach($this->data['personal_urls'] as $key => $item): ?>

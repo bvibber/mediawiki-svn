@@ -65,20 +65,21 @@ div#head h5 {
 	padding: 0;
 }
 	/* Personal */
-	div#personal {
+	div#p-personal {
 		position: absolute;
 		top: 0;
 		left: 0.75em;
 	}
-	div#personal h5 {
+	div#p-personal h5 {
 		display: none;
 	}
-	div#personal li {
+	div#p-personal li {
 		float: right;
 		margin-right: 0.75em;
 		margin-top: 0.5em;
 		font-size: 0.9em;
 	}
+	/* Navigation Containers */
 	div#left-navigation {
 		position: absolute;
 		right: 12em;
@@ -90,7 +91,7 @@ div#head h5 {
 	}
 	/* Navigation Labels */
 	div#namespaces h5,
-	div#variants h5,
+	div#variants h5 span,
 	div#views h5,
 	div#actions h5 span,
 	div#search h5 {
@@ -264,6 +265,7 @@ div#panel {
 		background-image: url(images/portal-break-rtl.png);
 		background-repeat: no-repeat;
 		background-position: top right;
+		font-size: 0.9em;
 	}
 	div#panel div.portal div.body ul {
 		list-style: none;
@@ -275,6 +277,7 @@ div#panel {
 		padding-bottom: 0.5em;
 		margin: 0;
 		overflow: hidden;
+		font-size: 0.9em;
 	}
 	div#panel div.portal div.body ul li a {
 		color: #0645ad;
@@ -893,3 +896,8 @@ li#pt-login {
 	padding-right: 15px !important;
 	text-transform: none;
 }
+
+span.newpage, span.minor, span.bot {
+	font-weight: bold;
+}
+

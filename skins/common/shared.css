@@ -67,7 +67,9 @@ body.rtl td.mw-label { text-align: left; }
 body.rtl td.mw-input { text-align: right; }
 body.rtl td.mw-submit { text-align: right; }
 
-td.mw-label { vertical-align: top; width: 30%; }
+td.mw-label { vertical-align: top; }
+.prefsection td.mw-label { width: 20%; }
+.prefsection table { width: 100%; }
 td.mw-submit { white-space: nowrap; }
 
 table.mw-htmlform-nolabel td.mw-label { width: 0 !important; }
@@ -136,25 +138,25 @@ div.searchresult {
 	float:left;
 	padding-left: 0.25em;
 }
-.mw-search-formheader div.search-types > ul {
+.mw-search-formheader div.search-types ul {
 	margin: 0 !important;
 	padding: 0 !important;
 	list-style: none !important;
 }
-.mw-search-formheader div.search-types > ul > li {
+.mw-search-formheader div.search-types ul li {
 	float: left;
 	margin: 0;
 	padding: 0;
 }
-.mw-search-formheader div.search-types > ul > li > a {
+.mw-search-formheader div.search-types ul li a {
 	display: block;
 	padding: 0.5em;
 }
-.mw-search-formheader div.search-types > ul > li.current > a {
+.mw-search-formheader div.search-types ul li.current a {
 	color: #333333;
 	cursor: default;
 }
-.mw-search-formheader div.search-types > ul > li.current > a:hover {
+.mw-search-formheader div.search-types ul li.current a:hover {
 	text-decoration: none;
 }
 .mw-search-formheader div.results-info {
@@ -162,12 +164,12 @@ div.searchresult {
 	padding: 0.5em;
 	padding-right: 0.75em;
 }
-.mw-search-formheader div.results-info > ul {
+.mw-search-formheader div.results-info ul {
 	margin: 0 !important;
 	padding: 0 !important;
 	list-style: none !important;
 }
-.mw-search-formheader div.results-info > ul > li {
+.mw-search-formheader div.results-info ul li {
 	float: right;
 	margin: 0;
 	padding: 0;
@@ -181,33 +183,33 @@ fieldset#mw-searchoptions {
 	border: none;
 	background-color: #f9f9f9;
 	border: 1px solid silver !important;
-	border-top: none !important;
+	border-top-width: 0 !important;
 }
-fieldset#mw-searchoptions > legend {
+fieldset#mw-searchoptions legend {
 	display: none;
 }
-fieldset#mw-searchoptions > h4 {
+fieldset#mw-searchoptions h4 {
 	padding: 0;
 	margin: 0;
 	float: left;
 }
-fieldset#mw-searchoptions > div#mw-search-togglebox {
+fieldset#mw-searchoptions div#mw-search-togglebox {
 	float: right;
 }
-fieldset#mw-searchoptions > div#mw-search-togglebox > label {
+fieldset#mw-searchoptions div#mw-search-togglebox label {
 	margin-right: 0.25em;
 }
-fieldset#mw-searchoptions > div#mw-search-togglebox > input {
+fieldset#mw-searchoptions div#mw-search-togglebox input {
 	margin-left: 0.25em;
 }
-fieldset#mw-searchoptions > table {
+fieldset#mw-searchoptions table {
 	float: left;
 	margin-right: 3em;
 }
-fieldset#mw-searchoptions > table td {
+fieldset#mw-searchoptions table td {
 	padding-right: 1em;
 }
-body.rtl fieldset#mw-searchoptions > table {
+body.rtl fieldset#mw-searchoptions table {
 	float: right;
 }
 fieldset#mw-searchoptions div.divider {
@@ -549,4 +551,52 @@ table.wikitable {
 
 .visualClear {
 	clear: both;
+}
+
+#mw_trackbacks {
+	border: solid 1px #bbbbff;
+	background-color: #eeeeff;
+	padding: 0.2em;
+}
+
+/*
+  Table pager (e.g. Special:Imagelist)
+  - remove underlines from the navigation link
+  - collapse borders
+  - set the borders to outsets (similar to Special:Allmessages)
+  - remove line wrapping for all td and th, set background color
+  - restore line wrapping for the last two table cells (description and size)
+*/
+.TablePager { min-width: 80%; }
+.TablePager_nav a { text-decoration: none; }
+.TablePager { border-collapse: collapse; }
+.TablePager, .TablePager td, .TablePager th { 
+	border: 1px solid #aaaaaa;
+	padding: 0 0.15em 0 0.15em;
+}
+.TablePager th { background-color: #eeeeff }
+.TablePager td { background-color: #ffffff }
+.TablePager tr:hover td { background-color: #eeeeff }
+
+.imagelist td, .imagelist th { white-space: nowrap }
+.imagelist .TablePager_col_links { background-color: #eeeeff }
+.imagelist .TablePager_col_img_description { white-space: normal }
+.imagelist th.TablePager_sort { background-color: #ccccff }
+
+/* filetoc */
+ul#filetoc {
+	text-align: center;
+	border: 1px solid #aaaaaa;
+	background-color: #f9f9f9;
+	padding: 5px;
+	font-size: 95%;
+	margin-bottom: 0.5em;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#filetoc li {
+	display: inline;
+	list-style-type: none;
+	padding-right: 2em;
 }
