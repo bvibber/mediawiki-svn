@@ -174,27 +174,36 @@ class SpecialOptIn extends SpecialPage {
 				Xml::tags( 'div', array(),
 				Xml::tags( 'div', array(),
 				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
+				Xml::tags( 'div', array(),
 					Xml::tags(
 						'a',
 						array( 'href' => $url ),
 						Xml::element( 'span',
 							array( 'class' => 'optin-button-shorttext' ),
 							wfMsg( 'optin-accept-short' )
-						) .
-						Xml::element( 'br' ) .
-						Xml::element( 'span',
-							array( 'class' => 'optin-button-longtext' ),
-							$wgUser->isLoggedIn() ?
-							wfMsg( 'optin-accept-long' ) :
-							wfMsg( 'optin-accept-long-anon' )
 						)
 					)
-				) ) ) )
+				) ) ) ) ) ) ) ) ) .
+				Xml::element( 'span',
+					array( 'class' => 'optin-button-longtext' ),
+					$wgUser->isLoggedIn() ?
+					wfMsg( 'optin-accept-long' ) :
+					wfMsg( 'optin-accept-long-anon' )
+				)
 			)
 		);
 		if ( $this->mOriginTitle ) {
 			$wgOut->addHTML(
 				Xml::tags( 'div', array( 'class' => 'optin-deny' ),
+					Xml::tags( 'div', array(),
+					Xml::tags( 'div', array(),
+					Xml::tags( 'div', array(),
+					Xml::tags( 'div', array(),
+					Xml::tags( 'div', array(),
 					Xml::tags( 'div', array(),
 					Xml::tags( 'div', array(),
 					Xml::tags( 'div', array(),
@@ -207,14 +216,13 @@ class SpecialOptIn extends SpecialPage {
 							Xml::element( 'span',
 								array( 'class' => 'optin-button-shorttext' ),
 								wfMsg( 'optin-deny-short' )
-							) .
-							Xml::element( 'br' ) .
-							Xml::element( 'span',
-								array( 'class' => 'optin-button-longtext' ),
-								wfMsg( 'optin-deny-long' )
 							)
 						)
-					) ) ) )
+					) ) ) ) ) ) ) ) ) .
+					Xml::element( 'span',
+						array( 'class' => 'optin-button-longtext' ),
+						wfMsg( 'optin-deny-long' )
+					)
 				)
 			);
 		}

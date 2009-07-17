@@ -1,118 +1,131 @@
 div.optin-accept {
 	float: left;
-	background-image: url(images/accept-border.png);
-	margin: 0;
 	margin-right: 1em;
-	margin-bottom: 1em;
-	padding: 4px;
+	margin-bottom: 2em;
 }
 div.optin-accept div {
 	float: left;
-	background-image: url(images/accept-base.png);
-	margin: 0;
-	padding: 0;
+	background-image: url(images/accept-c.png);
 }
 div.optin-accept div div {
+	background-image: url(images/accept-t.png);
+	background-position: top;
+	background-repeat: repeat-x;
+}
+div.optin-accept div div div {
+	background-image: url(images/accept-b.png);
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+div.optin-accept div div div div {
+	background-image: url(images/accept-l.png);
+	background-position: left;
+	background-repeat: repeat-y;
+}
+div.optin-accept div div div div div {
+	background-image: url(images/accept-r.png);
+	background-position: right;
+	background-repeat: repeat-y;
+}
+div.optin-accept div div div div div div {
 	background-image: url(images/accept-tl.png);
 	background-position: top left;
 	background-repeat: no-repeat;
-	margin: 0;
-	margin: -4px;
 }
-div.optin-accept div div div {
-	background-image: url(images/accept-tr.png);
-	background-position: top right;
-	background-repeat: no-repeat;
-	margin: 0;
-}
-div.optin-accept div div div div {
+div.optin-accept div div div div div div div {
 	background-image: url(images/accept-bl.png);
 	background-position: bottom left;
 	background-repeat: no-repeat;
-	margin: 0;
 }
-div.optin-accept div div div div a {
+div.optin-accept div div div div div div div div {
+	background-image: url(images/accept-tr.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+div.optin-accept div div div div div div div div div {
 	background-image: url(images/accept-br.png);
 	background-position: bottom right;
 	background-repeat: no-repeat;
+}
+div.optin-accept a {
 	display: block;
-	text-align: center;
-	padding-top: 1em;
-	padding-left: 1.25em;
-	padding-right: 1.25em;
-	padding-bottom: 0.75em;
-	margin: 0;
-	cursor: pointer;
-}
-div.optin-accept div div div div a:hover {
-	text-decoration: none;
-}
-div.optin-accept span.optin-button-shorttext {
-	font-size: large;
+	padding: 0.75em;
+	padding-bottom: 0.5em;
+	color: white;
 	font-weight: bold;
-	color: #41aa1e;
 }
-div.optin-accept span.optin-button-longtext {
-	color: #41aa1e;
-	font-style: italic;
+div.optin-accept a:hover {
+	text-decoration: none;
 }
 div.optin-deny {
 	float: left;
-	background-image: url(images/deny-border.png);
-	margin: 0;
 	margin-right: 1em;
-	margin-bottom: 1em;
-	padding: 4px;
+	margin-bottom: 2em;
 }
 div.optin-deny div {
 	float: left;
-	background-image: url(images/deny-base.png);
-	margin: 0;
-	padding: 0;
+	background-image: url(images/deny-c.png);
 }
 div.optin-deny div div {
+	background-image: url(images/deny-t.png);
+	background-position: top;
+	background-repeat: repeat-x;
+}
+div.optin-deny div div div {
+	background-image: url(images/deny-b.png);
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+div.optin-deny div div div div {
+	background-image: url(images/deny-l.png);
+	background-position: left;
+	background-repeat: repeat-y;
+}
+div.optin-deny div div div div div {
+	background-image: url(images/deny-r.png);
+	background-position: right;
+	background-repeat: repeat-y;
+}
+div.optin-deny div div div div div div {
 	background-image: url(images/deny-tl.png);
 	background-position: top left;
 	background-repeat: no-repeat;
-	margin: 0;
-	margin: -4px;
 }
-div.optin-deny div div div {
-	background-image: url(images/deny-tr.png);
-	background-position: top right;
-	background-repeat: no-repeat;
-	margin: 0;
-}
-div.optin-deny div div div div {
+div.optin-deny div div div div div div div {
 	background-image: url(images/deny-bl.png);
 	background-position: bottom left;
 	background-repeat: no-repeat;
-	margin: 0;
 }
-div.optin-deny div div div div a {
+div.optin-deny div div div div div div div div {
+	background-image: url(images/deny-tr.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+div.optin-deny div div div div div div div div div {
 	background-image: url(images/deny-br.png);
 	background-position: bottom right;
 	background-repeat: no-repeat;
-	display: block;
-	text-align: center;
-	padding-top: 1em;
-	padding-left: 1.25em;
-	padding-right: 1.25em;
-	padding-bottom: 0.75em;
-	margin: 0;
-	cursor: pointer;
 }
-div.optin-deny div div div div a:hover {
+div.optin-deny a {
+	display: block;
+	padding: 0.75em;
+	padding-bottom: 0.5em;
+	color: white;
+	font-weight: bold;
+}
+div.optin-deny a:hover {
 	text-decoration: none;
 }
-div.optin-deny span.optin-button-shorttext {
-	font-size: large;
+span.optin-button-shorttext {
+	font-size: 1.1em;
 	font-weight: bold;
-	color: #e95229;
 }
-div.optin-deny span.optin-button-longtext {
-	color: #e95229;
+span.optin-button-longtext {
+	display: block;
+	color: #666666;
+	clear: both;
 	font-style: italic;
+	font-weight: normal;
 }
 div.optin-intro {
 	font-size: large;

@@ -95,18 +95,18 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-answer-changes-compat' => 'Improve compatibility with local wiki.',
 	'optin-survey-answer-changes-other' => 'Other:',
 	'optin-improvements' => "== What has been improved? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Enhanced navigation
 The new navigation system makes it easier to see where you are and what you are doing, as well as where you can go and how to get there. With the search box located in the top right corner, the search feature is easier to find and quicker to use.
 <div style=\"clear:both;\"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Edit toolbar improvements
 New-and-improved icons make it clearer what action each tool performs. Expandable sections reduce clutter while keeping infrequently used tools just a click away.
 The help section provides quick access to a reference for common uses of wiki-markup.
 <div style=\"clear:both;\"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Improved search interface
 When using search, title matches are shown first, helping you to find the most relevant articles quickly. Search profiles make searching for different kinds of content easier, while the new advanced search interface makes light work of complex searches.
 <div style=\"clear:both;\"></div>",
@@ -198,13 +198,13 @@ $messages['be-tarask'] = array(
 	'optin-survey-answer-os-other' => 'Іншая апэрацыйная сыстэма:',
 	'optin-survey-question-res' => 'Якое разрозьненьне Вашага манітора?',
 	'optin-improvements' => '== Што было палепшана? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Паляпшэньне навігацыі
 Ясна пазначаны стан «чытаньне» ці «рэдагаваньне» старонкі на якой Вы знаходзіцеся.
 Поле пошуку перанесена з левай навігацыйнай панэлі ў верхні правы вугал для палягчэньня і паскарэньня пошуку.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Паляпшэньне панэлі рэдагаваньняў
 Адчыняемая панэль рэдагаваньня хавае значкі рэдка выкарыстоўваемых прыладаў.
 Вопытныя ўдзельнікі могуць адчыніць панэльдля доступу да спэцыяльных значкоў.
@@ -212,7 +212,7 @@ $messages['be-tarask'] = array(
 Значкі панэлі дапрацаваныя з выкарыстаньнем значкоў Tango і Gnome.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Паляпшэньне інтэрфэйсу пошуку
 У выніку таго, што старонка вынікаў пошуку часта зьяўляецца ўваходнай кропкай у артыкул, палепшана нагляднасьць загалоўкаў вынікаў пошуку, выдалена рэдка выкарыстоўваемая інфармацыя.
 <div style="clear:both;"></div>',
@@ -261,19 +261,19 @@ Možete se bilo kada ponovno prijaviti putem klika na link "Try Beta" na gornjem
 	'optin-survey-answer-os-other' => 'Drugi operativni sistemi:',
 	'optin-survey-question-res' => 'Koja je rezolucija Vašeg monitora?',
 	'optin-improvements' => '== Šta je poboljšano? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Poboljšana navigacija
 Jasna naznaka stanja "čitanja" i "uređivanja" kada ste na stranici članka ili stranici za razgovor. Kutija za pretaživanje je uklonjena iz navigacione trake sa lijeve strane u gornji desni ugao zbog lakšeg pristupa i bržeg traženja.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Poboljšanja trake za uređivanje
 Traka za uređivanje koja se može sakriti može sakriti ikone alata koji se ne upotrebljavaju često. Potvrđeni korisnici mogu proširiti alatnu traku i pristupiti posebnim ikonama.
 Pomoćne informacije (prečice) su ugrađene u alatnu traku.
 Ikone alatne trake su nanovo dizajnirane koristeći ikone Tango i Gnome.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Poboljšan interfejs pretrage
 Pošto je stranica pretrage vrlo često put pristupa nekom članku, naslovi rezultata su istaknuti s poboljšanom preglednošću, a nepotrebne i manje korištene informacije su smanjene.
 <div style="clear:both;"></div>',
@@ -332,18 +332,18 @@ Wir möchten gerne erfahren, was du über unsere neue Schnittstelle denkst. Wir 
 	'optin-survey-answer-os-other' => 'Anderes Betriebssystem:',
 	'optin-survey-question-res' => 'Was ist deine Bildschirmauflösung?',
 	'optin-improvements' => '== Was wurde verbessert? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Erweiterte Navigation
 Das neue Navigationssystem macht es nicht nur einfacher zu sehen, wo du bist und was du tust, sondern auch wohin du wie gehen kannst. Mit der Suchbox in der oberen rechten Ecke wird das Finden einfacher und schneller.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Verbesserungen der Bearbeiten-Werkzeugleiste
 Neue und verbesserte Symbole machen es klarer, welche Aktion hinter jedem Tool steckt. Expandierbare Abschnitte reduzieren Verwirrungen, während selten verwendete Tools nur einen Klick entfernt sind.
 Der Hilfeabschnitt sorgt für schnellen Zugriff auf häufig verwendete Wikisyntax.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Verbesserte Suchoberfläche
 Wenn du die Suche verwendest, werden die Titeltreffer zuerst angezeigt. Sie hilft dir, die relevantesten Artikel schnell zu finden. Suchprofile machen das Suchen für verschiedene Arten von Inhalt einfacher, während die neue erweiterte Suchoberflächen komplexe Suchen einfacher macht.
 <div style="clear:both;"></div>',
@@ -499,18 +499,18 @@ Puedes probarlo nuevamente en cualquier momento haciendo click en el vínculo "P
 	'optin-survey-answer-os-other' => 'Otro sistema operativo:',
 	'optin-survey-question-res' => 'Cuál es la resolución de tu pantalla?',
 	'optin-improvements' => '== Qué ha sido mejorado? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Navegación mejorada
 El nuevo sistema de navegación hace más fácil ver en donde estás y qué estás haciendo, también como dónde puedes ir y cómo ir. Con la tabla de búsqueda localizada en la esquina superior izquierda la búsqueda es más fácil de encontrar y más rápida de usar.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Mejoramientos de la barra de herramientas de edición
 Nuevos-y-mejorados íconos hacen más claro qué acción cada herramienta realiza. Secciones expandibles reducen abarrotamiento mientras mantienen herramientas usuadas infrecuentemente solo a un clic de distancia.
 La sección de ayuda provee acceso rápido a una referencia para usos comunes del lenguaje wiki.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Interfaz de búsqueda mejorada
 Cuando use la búsqueda, Coincidencias de título son mostradas primero, Ayudándote a encontrar los artículos más relevantes rápidamente. Buscar perfiles hace la búsqueda de diferentes tipos de contenido más fácil, Mientras la nueva interfaz de búsqueda avanzada facilita las búsquedas complejas.
 <div style="clear:both;"></div>',
@@ -675,18 +675,18 @@ Gustaríanos saber o que pensa sobre a nosa nova interface, de forma que lle agr
 	'optin-survey-answer-os-other' => 'Outros sistemas operativos:',
 	'optin-survey-question-res' => 'Cal é a resolución da súa pantalla?',
 	'optin-improvements' => '== Que se mellorou? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Navegación realzada
 O novo sistema de navegación fai máis doado ver onde se está e que se está facendo, así como onde se pode ir e como chegar ata alí. Co cadro de procuras localizado no canto superior dereito obtense un acceso máis fácil para así poder realizar unha busca máis rápida.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Melloras na barra de ferramentas de edición
 As novas e melloradas iconas fan máis clara a identificación da acción que realiza cada unha. As seccións expansibles reducen a desorde á vez que manteñen as ferramentas menos usadas a só un clic de distancia.
 A sección de axuda proporciona un acceso rápido a unha referencia cos usos comúns do formato wiki.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Interface de busca mellorada
 Ao usar a procura, as coincidencias cos títulos de páxinas aparecen primeiro, axudando a atopar rapidamente os artigos máis relevantes. Os tipos de procura fan máis doadas as buscas de diferentes tipos de contido, mentres que a nova interface avanzada facilita tamén as buscas complexas.
 <div style="clear:both;"></div>',
@@ -755,12 +755,12 @@ Mir wisste gärn, was Du iber di nej Benutzeroberflächi dänksch. Wäge däm de
 	'optin-survey-answer-os-other' => 'Anders Betribssyschtem:',
 	'optin-survey-question-res' => 'Was fir e Uflesig het Dyy Bildschirm?',
 	'optin-improvements' => '== Was isch verbesseret wore? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Verbessereti Navigation
 Di nej Navigation macht s eifacher z säh, wu du grad bisch un was du machsch un au wu Du chasch ane goh un wie du dert ane chunnsch. S Suechfäld isch jetz im obere rächte Ecke un eso hscnäller z finde un eifacher z bruche.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Verbesserige am Wärchzygchäschtli
 
 Fortgschritteni Benutzer chenne s Wärchzygchäschtli uusklappe go speziälleri Wärchzyg uuswehle.
@@ -770,7 +770,7 @@ Neji un verbessereti Grafike mache s klarer, was du chasch mache mit dr einzelne
 D Hilf-Sektion stellt e schnölle zuegang z Verfiegig zuen ere Quälle vu gängige Aawändige vu Wiki-Zueschläg 
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Verbessereti Suechoberflächi
 Wänn Du d Suechi bruchsch, no wäre d Titel zerscht aazeigt go Dir hälfe bim schnälle Finde vu dr relevanteschte Artikel. Suechprofil mache s Sueche vu verschidene Inhalt eifacher, derwylscht di nej Suechoberflächi kompläxeri Suechine eifacher macht.
 <div style="clear:both;"></div>',
@@ -897,18 +897,18 @@ Nos volerea saper lo que tu pensa super nostre nove interfacie, e nos appreciare
 	'optin-survey-answer-os-other' => 'Altere systema de operation:',
 	'optin-survey-question-res' => 'Qual es le resolution de tu schermo?',
 	'optin-improvements' => '== Que ha essite meliorate? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Navigation plus efficace
 Le nove systema de navigation rende plus facile vider ubi tu es e lo que tu face, e tamben a ubi tu pote ir e como arrivar. Con le quadro de recerca situate in alto a derecta, le facilitate de recerca es plus facile de trovar e plus rapide de usar.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Meliorationes del instrumentario de modification
 Le icones nove e melior clarifica le action que cata instrumento exeque. Le sectiones expansibile simplifica le apparentia, durante que le instrumentos usate infrequentemente resta disponibile a solo un clic de distantia.
 Le section de adjuta provide accesso rapide a un referentia pro usos commun del marcation wiki.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Interfacie de recerca meliorate
 Quando tu usa le recerca, le correspondentias de titulo es monstrate primo, adjutante te a trovar le articulos plus relevante rapidemente. Con profilos de recerca, il es plus facile cercar differente typos de contento. E con le nove interfacie de recerca avantiate, il es un mer divertimento facer cercas complexe.
 <div style="clear:both;"></div>',
@@ -1030,17 +1030,17 @@ $messages['ja'] = array(
 	'optin-survey-answer-os-other' => 'その他のオペレーティングシステム:',
 	'optin-survey-question-res' => '画面の解像度はいくつですか？',
 	'optin-improvements' => '== 何が改良されたのですか？ ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;ナビゲーションの向上
 新しいナビゲーションシステムでは、現在見ているページがどこか、現在行っている作業なにかがわかりやすくなりました。また、どのページにアクセスでき、どうやってそれらのページにアクセスすればよいかも分かりやすくなりました。画面右上に検索ボックスを置くことで、検索バーを見つけやすく、より素早く利用できるようになりました。
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;編集ツールバーの改良
 新しく改良されたアイコンにより、各ツールの機能をより明確に表現できるようになりました。編集ツールバーの各部分について表示・非表示を切り替えられるようにすることで、ツールバーのデザインを簡潔に保ちつつ、散発的に使用される機能にもすぐアクセスできるようにしました。ツールバーにヘルプを組み込むことで、一般的なウィキ・マークアップの説明を素早く参照できるようにしました。
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;検索インタフェースの改良
 検索機能では、まずページ名との一致を表示することで、検索語と関連の深い記事を素早く見つけられるようにしました。検索画面の表示を改善してページの種類ごとの検索が簡単にできるようにすると同時に、「高度な検索」の画面では複雑な検索を素早く行えるようにしました。
 <div style="clear:both;"></div>',
@@ -1098,18 +1098,18 @@ $messages['ka'] = array(
 	'optin-survey-answer-os-other' => 'სხვა:',
 	'optin-survey-question-res' => 'თქვენი მონიტორის გაფართოება:',
 	'optin-improvements' => '== რა გაუმჯობესდა? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ; ნავიგაციის გაუმჯობესება
 ახალი ნავიგაციის სისტემა გაძლევთ საშალებას უფრო მარტივად გაერკვეთ სად ხართ, სად შეგიძიათ გადახვიდეთ და როგორ. ძიების ვეით, რომელიც ეკრანის კუთხეშია განლაგებული, ძიება უფრო მარტივი და ჩქარია.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ; რედაქტირების პანელის გაუმჯობესება
 ახალი და გაუმჯობესებული ხატულები უფრო ზუსტად აჩვენეენ რა ინსტრუმენტები რა ფუნქციას ატარებენ. გახსნადი ნაწილები აკლებენ  Expandable sections reduce clutter while keeping infrequently used tools just a click away.
 The help section provides quick access to a reference for common uses of wiki-markup.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Improved search interface
 When using search, title matches are shown first, helping you to find the most relevant articles quickly. Search profiles make searching for different kinds of content easier, while the new advanced search interface makes light-work of complex searches.
 <div style="clear:both;"></div>',
@@ -1188,13 +1188,13 @@ Wat hät Der aam <i lang="en">Beta</i> nit jefalle?',
 	'optin-survey-answer-os-other' => 'En ander Zoot Bedriifßsüßtehm:',
 	'optin-survey-question-res' => 'Wie es Dingem Beldscherrem sing Oplüüsung?',
 	'optin-improvements' => '== Wat es bäßer jemaat woode? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ; verbäßert Eöm_jonn
 Kloh Aanzeije vöm Zohshtand vum „Lässe“ udder „Ändere“, un of De op enem Atikel singe Sigg udder op en Klaafsigg bes.
 Dä Kaßte zom Söhke es vun däm lengke Käßte noh bove räähß verschovve för dä bäßer ze fenge un flöcker ze Söhke.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ; bäßer Wärkzüsch zom Ändere
 En verfüüßerbaa Wärkzüsch_Leß vershtish de sällde jebruch Wärkzüsch ier Mini-Beldsche.
 Metmaacher künne de Leß verjrüüßere, öm op de mieh spezjälle Sache zohzejriife.
@@ -1202,7 +1202,7 @@ Bezösh op Hölp — Spekzäddel — sin doh ennjebout.
 Wärkzüsh Minnibeldscher sin neujemoohlt woode un bruche <i lang="en">Tango</i> un <i lang="en">Gnome</i> Belldscher.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ; bäßer Söhke
 De Sigg, di beij em Söhke eruß kütt es öff der Wääsch noh enem Atikel,
 de Tittelle sin esu verdeijlt, dat se joot ze sin sin, un de winnisch jebruchte Ennfommazjuhne sin kleijner.
@@ -1261,18 +1261,18 @@ Mir wiere frou fir ze wëssen wat Dir vun deem neien Interface denkt, dofir wier
 	'optin-survey-answer-os-other' => 'Anere Betriibssystem:',
 	'optin-survey-question-res' => "Wéi ass d'Opléisung vun ärem Ecran?",
 	'optin-improvements' => '== Wat gouf verbessert? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Erweidert Navigatioun
 Dat neit Navigatiounssystem mécht et net nëmme méi einfacher fir ze gesinn, wou een ass a wat ee mécht, mee e weist och wuer ee goe kann. Mat der Sichbox uewe riets am Eck gëtt d\'Fanne méi einfach a méi séier.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Verbesserunge vun der Ännerungs-Toolbar
 Nei a verbessert Symboler maachen et méi kloer, watfireng Aktioun hanner all Tool stécht. Abschnitter déi opgeklappt kënne ginn reduzéieren den Duercherneen, während sele benotzten Toolen nëmmen ee Klick ewech sinn.
 Den Abschnitt mat der Hëllef erlaabt e séieren Zougrëff mat déi am dackste benotzte Wikisyntax.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Verbessert Sichuewerfläch
 Wann Dir d\'Sich benotzt, ginn all Titeltreffer fir d\'éischt gewisen. Dat hëlleft, déi relevantesten Artikel séier ze fannen. Sichprofiler maachen d\'Siche fir verschidden Zorte vun Inhalt méi einfach, während déi nei erweidert Sichuewerfläche komplext Siche méi einfach mécht.
 <div style="clear:both;"></div>',
@@ -1366,20 +1366,20 @@ Selecteer alstublieft alle redenen die van toepassing zijn.',
 	'optin-survey-answer-os-other' => 'Ander besturingssysteem:',
 	'optin-survey-question-res' => 'Wat is uw beeldschermresolutie?',
 	'optin-improvements' => '== Wat is er verbeterd?==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Verbeterde navigatie
 Het nieuwe navigatiesysteem maakt het makkelijker om te zien waar u bent en op wat u doet, als ook waar u heen kunt gaan en hoe er te komen.
 Met het zoekvak in de rechterbovenhoek is de zoekfunctie makkelijker te vinden en sneller te gebruiken.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Verbeterde bewerkingswerkbalk
 Nieuwe en verbeterde pictogrammen maken het duidelijker wat ieder hulpmiddel doet.
 Uitklapbare onderdelen verminderen een rommelig uiterlijk, terwijl minder vaak gebruikte functies wel bereikbaar blijven.
 De hulpfunctie biedt snelle toegang tot uitleg over veelgebruikte functies van de wikiopmaaktaal.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Verbeterde zoekinterface
 Bij het gebruiken van de zoekfunctie worden gevonden pagina\'s eerst weergegeven, zodat u relevante pagina\'s eerst ziet.
 Via zoekprofielen is het vinden van verschillende soorten inhoud eenvoudiger, terwijl via de gevorderde zoekinterface complexe zoekdrachten eenvoudig te maken zijn.
@@ -1534,13 +1534,13 @@ Chcielibyśmy poznać Twoją opinię dotyczącą nowego interfejsu, w związku z
 	'optin-survey-answer-os-other' => 'Inny system operacyjny',
 	'optin-survey-question-res' => 'Z jakiej rozdzielczości ekranu korzystasz?',
 	'optin-improvements' => '== Co zostało poprawione? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Ulepszono nawigację
 Wyraźne wskazanie stanu „czytanie” czy „pisanie” na stronie artykułu oraz dyskusji.
 Pole wyszukiwania jest przeniesione z lewego paska nawigacyjnego do prawego górnego rogu aby ułatwić i przyspieszyć dostęp do wyszukiwania.
 <div style="clear:both;"></div> 
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Zmodyfikowano pasek narzędzi edycyjnych
 Rozszerzalny pasek narzędzi ukrywa ikony rzadko wykorzystywanych narzędzi.
 Doświadczeni użytkownicy mogą rozwinąć pasek, aby uzyskać dostęp do ikon narzędzi specjalistycznych.
@@ -1548,7 +1548,7 @@ Odniesienia do stron pomocy są wbudowane w pasek narzędzi.
 Jako ikony paska narzędzi zostały wykorzystane ikony środowisk Tango oraz Gnome.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Ulepszono interfejs wyszukiwania
 Jako wynik wyszukiwania zazwyczaj wyświetlany jest artykuł; tytuły wyników ułożone są w kolejności zwiększającej przejrzystość, a mniej przydatne informacje są niżej umieszczane.
 <div style="clear:both;"></div>',
@@ -1657,17 +1657,17 @@ $messages['ru'] = array(
 	'optin-survey-answer-os-other' => 'Другая операционная система:',
 	'optin-survey-question-res' => 'Каково разрешение вашего монитора?',
 	'optin-improvements' => '== Что было улучшено? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ; Усовершенствование навигации 
 Новая навигационная система позволяет проще понять где вы находитесь и что делаете, а также куда вы можете перейти и как туда попасть. С полем поиска, расположенным в верхнем правом углу, искать становится проще и быстрее.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ; Улучшение панели редактирования
 Новые и улучшенные значки более точно показывают какие инструменты какие действия выполняют. Раскрываемые разделы уменьшают беспорядок, сохраняя при этом редко используемые инструменты на расстоянии щелчка мыши. Справочный раздел обеспечивает быстрый доступ к примерам по наиболее используемым типам вики-разметки.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ; Улучшение интерфейса поиска
 В результатах поиска совпадения с названиями страниц будут показаны вверху, что поможет вам быстро найти подходящие статьи. Профили поиска делают проще поиск различных видов информации, а новый интерфейс расширенного поиска упрощает работу со сложными запросами.
 <div style="clear:both;"></div>',
@@ -1741,19 +1741,19 @@ Chceli by sme vedieť, čo si myslíte o novom rozhraní, takže by sme ocenili 
 	'optin-survey-answer-os-other' => 'Iný operačný systém:',
 	'optin-survey-question-res' => 'Aké je rozlíšenie vašej obrazovky?',
 	'optin-improvements' => '== Čo bolo zlepšené? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Rozšírená navigácia
 Vďaka novému navigačnému systému je jednoduchšie rozlíšiť, kde sa nachádzate a tiež kam a ako sa môžete dostať. Vďaka vyhľadávaciemu poľu v pravom hornom rohu je prístup jednoduchší a vyhľadávanie rýchlejšie.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Vylepšenia panelu úprav
 Nové a vylepšené ikony vyjasňujú čo ktorý nástroj robí.
 Rozbaliteľné časti skrývajú zriedka používané nástroje, pričom sú stále len o jedno kliknutie ďalej.
 Časť Pomocník poskytuje rýchly prístup do referenčnej dokumentácie bežného ppoužitia wiki syntaxe.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Vylepšené vyhľadávacie rozhranie
 Vo výsledkoch vyhľadávania sa ako prvé zobrazujú zhody v názvoch článkov, čo pomáha rýchlejšie nájsť najrelevantnejšie výsledky.
 Vyhľadávacie profily uľahčujú vyhľadávanie rôznych druhov obsahu.
@@ -1826,18 +1826,18 @@ Yeni arayüzümüz konusunda ne düşündüğünüzü bilmek isteriz, o yüzden 
 	'optin-survey-answer-os-other' => 'Diğer işletim sistemi:',
 	'optin-survey-question-res' => 'Ekran çözünürlüğünüz nedir?',
 	'optin-improvements' => '== Neler geliştirildi? ==
-[[File:UsabilityNavigation.png|right]]
+[[File:UsabilityNavigation.png|left]]
 ;Geliştirilmiş dolaşım
 Yeni dolaşım sistemi, nerede olduğunuzu ve ne yaptığınızı görmenizi, ayrıca nereye gidebileceğinizi ve oraya nasıl ulaşacağınızı kolaylaştırır. Sağ üst köşede yer alan yeni arama kutusu ile bulmak daha kolay ve kullanmak daha hızlı.
 <div style="clear:both;"></div>
 
-[[File:UsabilityToolbar.png|right]]
+[[File:UsabilityToolbar.png|left]]
 ;Değiştirme araç çubuğu geliştirmeleri
 Yeni-ve-geliştirilmiş simgeler her aracın ne eylemi yaptığını daha netleştirir. Genişletilebilir bölümler dağınıklığı azaltırken az kullanılan araçları sadece bir tık ötesinde saklar.
 Yardım bölümü, viki-biçimlendirmesinin genel kullanımı için bir referansa kolay erişim sağlar.
 <div style="clear:both;"></div>
 
-[[File:UsabilitySearch.png|right]]
+[[File:UsabilitySearch.png|left]]
 ;Geliştirilmiş arama arayüzü
 Arama kullanılırken, eşleşen başlıklar önce gösterilir, en alakalı maddeleri hızlıca bulmanıza yardımcı olur. Yeni gelişmiş arama arayüzü karmaşık aramaları kolay bir iş yaparken, arama profilleri farklı türdeki içerikleri aramayı kolaylaştırır.
 <div style="clear:both;"></div>',
