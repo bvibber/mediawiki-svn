@@ -432,17 +432,6 @@ $messages['es'] = array(
 	'tooltip-ca-ratinghist' => 'Valoraciones de los lectores de esta página',
 );
 
-/** Estonian (Eesti)
- * @author Silvar
- */
-$messages['et'] = array(
-	'revreview-patrol' => 'Märgi see muudatus patrullituks',
-	'revreview-patrol-title' => 'Märgi patrullituks',
-	'revreview-style-1' => 'Vastuvõetav',
-	'revreview-revnotfound' => 'Teie poolt päritud vana redaktsiooni ei leitud.
-Palun kontrollige aadressi, millel Te seda lehekülge leida püüdsite.',
-);
-
 /** Basque (Euskara)
  * @author An13sa
  * @author Bengoa
@@ -1011,6 +1000,17 @@ Keputusan maklum balas pembaca bagi laman '''$1''' boleh dilihat di $2.",
 	'readerfeedback-submitting' => 'Menyerah...',
 	'readerfeedback-finished' => 'Terima kasih!',
 	'tooltip-ca-ratinghist' => 'Penilaian pembaca',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'readerfeedback-level-0' => 'Лавшо',
+	'readerfeedback-level-1' => 'Алкыне',
+	'readerfeedback-level-2' => 'А берянь',
+	'readerfeedback-level-3' => 'Вадря-паро',
+	'readerfeedback-level-4' => 'Эйне вадря',
 );
 
 /** Nahuatl (Nāhuatl)
