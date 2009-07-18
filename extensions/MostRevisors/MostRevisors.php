@@ -5,7 +5,7 @@
  */
 
 // If this is run directly from the web die as this is not a valid entry point.
-if( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
+if ( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 
 // Extension credits.
 $wgExtensionCredits['specialpage'][] = array(

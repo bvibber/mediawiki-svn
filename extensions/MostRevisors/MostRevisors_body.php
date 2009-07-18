@@ -1,26 +1,25 @@
 ﻿<?php
 class MostRevisors extends IncludableSpecialPage {
-
 	private $limit = NULL;
 	private $namespace = NULL;
 	private $redirects = NULL;
 
-    public function __construct() {
-        parent::__construct( 'MostRevisors' );
+	public function __construct() {
+		parent::__construct( 'MostRevisors' );
 		$this->mIncludable = true;
-    }
+	}
 
-    public function execute( $par ) {
-        global $wgOut, $wgRequest, $wgLang, $wgContLang, $wgUser, $wgArticle, $wgTitle;
-        wfLoadExtensionMessages( 'MostRevisors' );
-		
+	public function execute( $par ) {
+		global $wgOut, $wgRequest, $wgLang, $wgContLang, $wgUser, $wgArticle, $wgTitle;
+		wfLoadExtensionMessages( 'MostRevisors' );
+
 		# Decipher input passed to the page
 		$this->decipherParams( $par );
 		$this->setOptions( $wgRequest );
-		
-	###debug
-		#$wgOut->addWikiText( "DEBUG thisNS: $this->namespace" );
-		
+
+		# ##debug
+		# $wgOut->addWikiText( "DEBUG thisNS: $this->namespace" );
+
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$conds = array();
@@ -31,32 +30,34 @@ class MostRevisors extends IncludableSpecialPage {
 			$qns = "WHERE page_namespace=" . $this->namespace;
 			if ( !$this->redirects ) $qns .= " AND page_is_redirect=0";
 		}
-	###debug
-		#$wgOut->addWikiText( "DEBUG qns: $qns" );
-		$limitfewrevisors = wfMsg( 'mostrevisors-limit-few-revisors');
+		# ##debug
+		# $wgOut->addWikiText( "DEBUG qns: $qns" );
+		$limitfewrevisors = wfMsg( 'mostrevisors-limit-few-revisors' );
 		list( $revision, $page ) = $dbr->tableNamesN( 'revision', 'page' );
 		$sql = "
-			SELECT
-				page_title as title, page_is_redirect, page_namespace as namespace,
-				COUNT(distinct rev_user) as value
-			FROM $revision
-			JOIN $page ON page_id = rev_page
-			" . $dbr->strencode($qns) . "
-			GROUP BY page_namespace, page_title
-			HAVING COUNT(distinct rev_user) >=$limitfewrevisors
-			ORDER BY value DESC
-			LIMIT "."{$this->limit}
-			";
-	###debug
-		#$wgOut->addWikiText( "DEBUG sql: $sql" );
+		SELECT
+			page_title as title,
+			page_is_redirect,
+			page_namespace as namespace,
+			COUNT(distinct rev_user) as value
+		FROM $revision
+		JOIN $page ON page_id = rev_page
+		" . $dbr->strencode( $qns ) . "
+		GROUP BY page_namespace, page_title
+		HAVING COUNT(distinct rev_user) >=$limitfewrevisors
+		ORDER BY value DESC
+		LIMIT " . "{$this->limit}
+		";
+		# ##debug
+		# $wgOut->addWikiText( "DEBUG sql: $sql" );
 		$res = $dbr->query( $sql, __METHOD__ );
 		$count = $dbr->numRows( $res );
 
 		# Don't show the navigation if we're including the page
-		if( !$this->mIncluding ) {
+		if ( !$this->mIncluding ) {
 			$this->setHeaders();
 			$limit = $wgLang->formatNum( $this->limit );
-			if( $this->namespace > 0 ) {
+			if ( $this->namespace > 0 ) {
 				$wgOut->addWikiMsg( 'mostrevisors-ns-header', $limit, $wgContLang->getFormattedNsText( $this->namespace ) );
 			} else {
 				$wgOut->addWikiMsg( 'mostrevisors-header', $limit );
@@ -66,10 +67,10 @@ class MostRevisors extends IncludableSpecialPage {
 			$wgOut->addHTML( '<br />' . $this->makeRedirectToggle() . '</p>' );
 		}
 
-		if( $count > 0 ) {
+		if ( $count > 0 ) {
 			# Make list
-			if( !$this->mIncluding )
-				$wgOut->addWikiMsg( 'mostrevisors-showing', $wgLang->formatNum($count) );
+			if ( !$this->mIncluding )
+			$wgOut->addWikiMsg( 'mostrevisors-showing', $wgLang->formatNum( $count ) );
 			$wgOut->addHTML( "<ol>" );
 			foreach ( $res as $row ) {
 				$wgOut->addHTML( $this->makeListItem( $row ) );
@@ -78,25 +79,27 @@ class MostRevisors extends IncludableSpecialPage {
 		} else {
 			$wgOut->addWikiMsg( 'mostrevisors-none' );
 		}
-	}	
-	
+	}
+
 	private function setOptions( &$req ) {
 		global $wgMostRevisorsPagesLimit;
-		if( !isset( $this->limit ) )
-			$this->limit = $this->sanitiseLimit( $req->getInt( 'limit', $wgMostRevisorsPagesLimit ) );
-		if( !isset( $this->namespace ) )
-			$this->namespace = $this->extractNamespace( $req->getVal( 'namespace', 0 ) );
-		if( !isset( $this->redirects ) )
-			$this->redirects = (bool)$req->getInt( 'redirects', 1 );
+		if ( !isset( $this->limit ) )
+		$this->limit = $this->sanitiseLimit( $req->getInt( 'limit', $wgMostRevisorsPagesLimit ) );
+		if ( !isset( $this->namespace ) )
+		$this->namespace = $this->extractNamespace( $req->getVal( 'namespace', 0 ) );
+		if ( !isset( $this->redirects ) )
+		$this->redirects = (bool)$req->getInt( 'redirects', 1 );
 	}
+
 	private function sanitiseLimit( $limit ) {
 		return min( (int)$limit, 5000 );
 	}
+
 	private function decipherParams( $par ) {
-		if( $par ) {
+		if ( $par ) {
 			$bits = explode( '/', $par );
-			foreach( $bits as $bit ) {
-				if( is_numeric( $bit ) ) {
+			foreach ( $bits as $bit ) {
+				if ( is_numeric( $bit ) ) {
 					$this->limit = $this->sanitiseLimit( $bit );
 				} else {
 					$this->namespace = $this->extractNamespace( $bit );
@@ -104,42 +107,45 @@ class MostRevisors extends IncludableSpecialPage {
 			}
 		}
 	}
+
 	private function extractNamespace( $namespace ) {
 		global $wgContLang;
-		if( is_numeric( $namespace ) ) {
+		if ( is_numeric( $namespace ) ) {
 			return $namespace;
-		} elseif( $wgContLang->getNsIndex( $namespace ) !== false ) {
+		} elseif ( $wgContLang->getNsIndex( $namespace ) !== false ) {
 			return $wgContLang->getNsIndex( $namespace );
-		} elseif( $namespace == '-' ) {
+		} elseif ( $namespace == '-' ) {
 			return NS_MAIN;
-		} elseif( $namespace == 'all' ) {
+		} elseif ( $namespace == 'all' ) {
 			return 'all';
 		} else {
 			return 'all';
 		}
 	}
+
 	private function makeListItem( $row ) {
 		global $wgUser, $wgMostRevisorsLinkContributors;
 		$title = Title::makeTitleSafe( $row->namespace, $row->title );
-		if( !is_null( $title ) ) {
+		if ( !is_null( $title ) ) {
 			$skin = $wgUser->getSkin();
 			$link = $row->page_is_redirect
-					? '<span class="allpagesredirect">' . $skin->makeKnownLinkObj( $title ) . '</span>'
-					: $skin->makeKnownLinkObj( $title );
-			$link .= " - $row->value ". wfMsg('mostrevisors-users');
-			if ( $wgMostRevisorsLinkContributors == True ) $link .= " (".$skin->makeKnownLinkObj( Title::makeTitleSafe( -1, 'Contributors/'.$title ), wfMsg('mostrevisors-viewcontributors') ).")";
+			? '<span class="allpagesredirect">' . $skin->makeKnownLinkObj( $title ) . '</span>'
+			: $skin->makeKnownLinkObj( $title );
+			$link .= " - $row->value " . wfMsg( 'mostrevisors-users' );
+			if ( $wgMostRevisorsLinkContributors == True ) $link .= " (" . $skin->makeKnownLinkObj( Title::makeTitleSafe( - 1, 'Contributors/' . $title ), wfMsg( 'mostrevisors-viewcontributors' ) ) . ")";
 			return( "<li>{$link}</li>\n" );
 		} else {
 			return( "<!-- Invalid title " . htmlspecialchars( $row->title ) . " in namespace " . htmlspecialchars( $row->page_namespace ) . " -->\n" );
 		}
 	}
+
 	private function makeLimitLinks() {
 		global $wgLang;
 
 		$limits = array( 10, 20, 30, 50, 100, 150 );
-		foreach( $limits as $limit ) {
-			if( $limit != $this->limit ) {
-				$links[] = $this->makeSelfLink( $wgLang->formatNum($limit), 'limit', $limit );
+		foreach ( $limits as $limit ) {
+			if ( $limit != $this->limit ) {
+				$links[] = $this->makeSelfLink( $wgLang->formatNum( $limit ), 'limit', $limit );
 			} else {
 				$links[] = (string)$limit;
 			}
@@ -151,20 +157,22 @@ class MostRevisors extends IncludableSpecialPage {
 		$label = wfMsgHtml( $this->redirects ? 'mostrevisors-hideredir' : 'mostrevisors-showredir' );
 		return $this->makeSelfLink( $label, 'redirects', (int)!$this->redirects );
 	}
+
 	private function makeSelfLink( $label, $oname = false, $oval = false ) {
 		global $wgUser;
 		$skin =& $wgUser->getSkin();
 		$self = $this->getTitle();
 		$attr['limit'] = $this->limit;
 		$attr['namespace'] = $this->namespace;
-		if( !$this->redirects )
-			$attr['redirects'] = 0;
-		if( $oname )
-			$attr[$oname] = $oval;
-		foreach( $attr as $aname => $aval )
-			$attribs[] = "{$aname}={$aval}";
+		if ( !$this->redirects )
+		$attr['redirects'] = 0;
+		if ( $oname )
+		$attr[$oname] = $oval;
+		foreach ( $attr as $aname => $aval )
+		$attribs[] = "{$aname}={$aval}";
 		return $skin->makeKnownLinkObj( $self, $label, implode( '&', $attribs ) );
 	}
+
 	private function makeNamespaceForm() {
 		$self = $this->getTitle();
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
