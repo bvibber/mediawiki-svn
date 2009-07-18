@@ -1,0 +1,28 @@
+Index: EditPage.php
+===================================================================
+--- EditPage.php	(revision 19773)
++++ EditPage.php	(revision 22410)
+@@ -342,6 +342,23 @@
+ 			wfProfileOut( $fname );
+ 			return;
+ 		}
++		
++		global $wgWikiDataHandlerClasses, $wgWikiDataHandlerPath;
++		$namespaceId = $this->mTitle->getNamespace();
++		if( array_key_exists( $namespaceId, $wgWikiDataHandlerClasses ) ) {
++		$handlerClass = $wgWikiDataHandlerClasses[ $namespaceId ];
++			$handlerFile = $wgWikiDataHandlerPath . $handlerClass . '.php';
++			if( file_exists( $handlerFile ) ) {
++                        	require_once $handlerFile;
++	                        $handlerInstance = new $handlerClass();
++        	                $handlerInstance->edit();
++				return;
++			} else {
++				$wgOut->showErrorPage( 'namespace_handler_not_found', 'namespace_handler_not_found_error',
++				$handlerFile, $wgContLang->getFormattedNsText( $namespaceId ) );
++			}
++                }
++
+ 		if ( wfReadOnly() ) {
+ 			wfDebug( "$fname: read-only mode is engaged\n" );
+ 			if( $this->save || $this->preview ) {

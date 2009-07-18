@@ -1,0 +1,58 @@
+Index: includes/SkinTemplate.php
+===================================================================
+--- includes/SkinTemplate.php	(revision 22407)
++++ includes/SkinTemplate.php	(revision 22408)
+@@ -631,6 +631,7 @@
+ 	 */
+ 	function buildContentActionUrls () {
+ 		global $wgContLang, $wgOut;
++
+ 		$fname = 'SkinTemplate::buildContentActionUrls';
+ 		wfProfileIn( $fname );
+ 
+@@ -691,10 +692,11 @@
+ 			wfProfileIn( "$fname-live" );
+ 			if ( $this->mTitle->getArticleId() ) {
+ 
++				wfRunHooks( 'GetHistoryLinkTrail', array( &$trail ) );
+ 				$content_actions['history'] = array(
+ 					'class' => ($action == 'history') ? 'selected' : false,
+ 					'text' => wfMsg('history_short'),
+-					'href' => $this->mTitle->getLocalUrl( 'action=history')
++					'href' => $this->mTitle->getLocalUrl( 'action=history' . $trail )
+ 				);
+ 
+ 				if ( $this->mTitle->getNamespace() !== NS_MEDIAWIKI && $wgUser->isAllowed( 'protect' ) ) {
+Index: includes/Skin.php
+===================================================================
+--- includes/Skin.php	(revision 22407)
++++ includes/Skin.php	(revision 22408)
+@@ -1242,11 +1242,12 @@
+ 	 */
+ 	function editUrlOptions() {
+ 		global $wgArticle;
+-
++		$trail = '';
++		wfRunHooks( 'GetEditLinkTrail', array( &$trail ) );
+ 		if( $this->mRevisionId && ! $wgArticle->isCurrent() ) {
+-			return "action=edit&oldid=" . intval( $this->mRevisionId );
++			return 'action=edit' . $trail . '&oldid=' . intval( $this->mRevisionId );
+ 		} else {
+-			return "action=edit";
++			return 'action=edit' . $trail;
+ 		}
+ 	}
+ 
+@@ -1318,9 +1319,10 @@
+ 
+ 	function historyLink() {
+ 		global $wgTitle;
+-
++		$trail = '';
++		wfRunHooks( 'GetHistoryLinkTrail', array( &$trail ) );
+ 		return $this->makeKnownLinkObj( $wgTitle,
+-		  wfMsg( 'history' ), 'action=history' );
++		  wfMsg( 'history' ), 'action=history' . $trail );
+ 	}
+ 
+ 	function whatLinksHere() {

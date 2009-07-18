@@ -1,0 +1,27 @@
+Index: includes/PageHistory.php
+===================================================================
+--- includes/PageHistory.php	(revision 19783)
++++ includes/PageHistory.php	(revision 19784)
+@@ -59,6 +59,22 @@
+ 		$fname = 'PageHistory::history';
+ 		wfProfileIn( $fname );
+ 
++		global $wgWikiDataHandlerClasses, $wgWikiDataHandlerPath;
++		$namespaceId = $this->mTitle->getNamespace();
++		if( array_key_exists( $namespaceId, $wgWikiDataHandlerClasses ) ) {
++		$handlerClass = $wgWikiDataHandlerClasses[ $namespaceId ];
++			$handlerFile = $wgWikiDataHandlerPath . $handlerClass . '.php';
++			if( file_exists( $handlerFile ) ) {
++                        	require_once $handlerFile;
++	                        $handlerInstance = new $handlerClass();
++        	                $handlerInstance->history();
++				return;
++			} else {
++				$wgOut->showErrorPage( 'namespace_handler_not_found', 'namespace_handler_not_found_error',
++				$handlerFile, $wgContLang->getFormattedNsText( $namespaceId ) );
++			}
++                }
++
+ 		/*
+ 		 * Setup page variables.
+ 		 */

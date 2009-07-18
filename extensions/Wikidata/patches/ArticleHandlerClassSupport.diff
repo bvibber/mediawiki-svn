@@ -1,0 +1,35 @@
+Index: includes/Article.php
+===================================================================
+--- includes/Article.php	(revision 19783)
++++ includes/Article.php	(revision 19784)
+@@ -604,13 +604,28 @@
+ 	function view()	{
+ 		global $wgUser, $wgOut, $wgRequest, $wgContLang;
+ 		global $wgEnableParserCache, $wgStylePath, $wgUseRCPatrol, $wgParser;
+-		global $wgUseTrackbacks, $wgNamespaceRobotPolicies;
++		global $wgUseTrackbacks, $wgNamespaceRobotPolicies, $wgTitle;
+ 		$sk = $wgUser->getSkin();
+ 
+ 		wfProfileIn( __METHOD__ );
+ 
++		global $wgWikiDataHandlerClasses, $wgWikiDataHandlerPath;
++		$namespaceId = $this->mTitle->getNamespace();
++		if( array_key_exists( $namespaceId, $wgWikiDataHandlerClasses ) ) {
++		$handlerClass = $wgWikiDataHandlerClasses[ $namespaceId ];
++			$handlerFile = $wgWikiDataHandlerPath . $handlerClass . '.php';
++			if( file_exists( $handlerFile ) ) {
++                        	require_once $handlerFile;
++	                        $handlerInstance = new $handlerClass();
++        	                $handlerInstance->view();
++				return;
++			} else {
++				$wgOut->showErrorPage( 'namespace_handler_not_found', 'namespace_handler_not_found_error',
++				$handlerFile, $wgContLang->getFormattedNsText( $namespaceId ) );
++			}
++                }
++
+ 		$parserCache =& ParserCache::singleton();
+-		$ns = $this->mTitle->getNamespace(); # shortcut
+ 
+ 		# Get variables from query string
+ 		$oldid = $this->getOldID();

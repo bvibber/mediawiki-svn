@@ -1,0 +1,74 @@
+Index: includes/SearchEngine.php
+===================================================================
+--- includes/SearchEngine.php	(revision 19784)
++++ includes/SearchEngine.php	(revision 19785)
+@@ -49,7 +49,7 @@
+ 	 * @private
+ 	 */
+ 	function getNearMatch( $searchterm ) {
+-		global $wgContLang;
++		global $wgContLang, $wgDefaultGoPrefix;
+ 
+ 		$allSearchTerms = array($searchterm);
+ 
+@@ -68,6 +68,10 @@
+ 				return $title;
+ 			}
+ 
++	                if( !empty( $wgDefaultGoPrefix ) && $title->getNamespace == NS_MAIN ) {
++	                	$term = $wgDefaultGoPrefix . $term;
++			}
++                                                                                
+ 			# Now try all lower case (i.e. first letter capitalized)
+ 			#
+ 			$title = Title::newFromText( $wgContLang->lc( $term ) );
+Index: includes/DefaultSettings.php
+===================================================================
+--- includes/DefaultSettings.php	(revision 19784)
++++ includes/DefaultSettings.php	(revision 19785)
+@@ -2476,5 +2476,11 @@
+  * 
+  */
+ $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/");
++
++/*
++ * Prefix to be added before "Go" searches, e.g. point to a different
++ * namespace.
++ */
++$wgDefaultGoPrefix = '';
+  
+ ?>
+Index: includes/SearchEngine.php
+===================================================================
+--- includes/SearchEngine.php	(revision 49948)
++++ includes/SearchEngine.php	(revision 49949)
+@@ -63,15 +63,24 @@
+ 			$title = Title::newFromText( $term );
+ 			if (is_null($title))
+ 				return NULL;
++			if ( $title->exists() ) {
++				return $title;
++			}
+ 
+-			if ( $title->getNamespace() == NS_SPECIAL || $title->exists() ) {
++			if ( $title->getNamespace() == NS_SPECIAL ) {
+ 				return $title;
+ 			}
+ 
+-	                if(!empty($wgDefaultGoPrefix) && $title->getNamespace() == NS_MAIN ) {
+-	                	$term=$wgDefaultGoPrefix.$term;
+-			}
+-                                                                                
++			if( !empty($wgDefaultGoPrefix) && $title->getNamespace() == NS_MAIN ) {
++				# if no NS was specified in the query : search the "Expression:" NS
++				$term = $wgDefaultGoPrefix . $term;
++
++				$title = Title::newFromText( $term );
++				if( $title->exists() ) {
++					return $title;
++				}
++ 			}
++
+ 			# Now try all lower case (i.e. first letter capitalized)
+ 			#
+ 			$title = Title::newFromText( $wgContLang->lc( $term ) );
