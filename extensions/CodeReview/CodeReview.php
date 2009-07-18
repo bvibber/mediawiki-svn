@@ -119,3 +119,18 @@ $wgCodeReviewENotif = false;
 
 // What images can be used for client-side side-by-side comparisons?
 $wgCodeReviewImgRegex = '/\.(png|jpg|jpeg|gif)$/i';
+
+# Schema changes
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
+
+function efCodeReviewSchemaUpdates() {
+	global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables;
+	$base = dirname(__FILE__);
+	if( $wgDBtype == 'mysql' ) {
+		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" ); // Initial install tables
+	} elseif( $wgDBtype == 'postgres' ) {
+		// TODO
+	}
+	return true;
+}
+
