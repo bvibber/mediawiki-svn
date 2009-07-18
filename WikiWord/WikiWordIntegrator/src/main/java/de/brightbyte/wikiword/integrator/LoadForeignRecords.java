@@ -7,8 +7,8 @@ import de.brightbyte.db.SqlDialect;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
-import de.brightbyte.wikiword.integrator.data.ForeignEntity;
-import de.brightbyte.wikiword.integrator.data.ForeignEntityCursor;
+import de.brightbyte.wikiword.integrator.data.ForeignEntityRecord;
+import de.brightbyte.wikiword.integrator.data.ForeignEntityFeatureSetCursor;
 import de.brightbyte.wikiword.integrator.processor.ForeignPropertyPassThrough;
 import de.brightbyte.wikiword.integrator.processor.ForeignEntityProcessor;
 import de.brightbyte.wikiword.integrator.processor.ForeignRecordPassThrough;
@@ -16,7 +16,7 @@ import de.brightbyte.wikiword.integrator.store.DatabaseForeignRecordStoreBuilder
 import de.brightbyte.wikiword.integrator.store.ForeignRecordStoreBuilder;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
-public class LoadForeignRecords extends AbstractIntegratorApp<ForeignRecordStoreBuilder, ForeignEntityProcessor, ForeignEntity> {
+public class LoadForeignRecords extends AbstractIntegratorApp<ForeignRecordStoreBuilder, ForeignEntityProcessor, ForeignEntityRecord> {
 	
 	@Override
 	protected WikiWordStoreFactory<? extends ForeignRecordStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
@@ -30,7 +30,7 @@ public class LoadForeignRecords extends AbstractIntegratorApp<ForeignRecordStore
 		
 		section("-- fetching properties --------------------------------------------------");
 		DataCursor<FeatureSet> fsc = openFeatureSetCursor();
-		DataCursor<ForeignEntity> cursor = new ForeignEntityCursor(fsc, sourceDescriptor.getAuthorityName(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField());
+		DataCursor<ForeignEntityRecord> cursor = new ForeignEntityFeatureSetCursor(fsc, sourceDescriptor.getAuthorityName(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField());
 		
 		section("-- process properties --------------------------------------------------");
 		store.prepareImport();

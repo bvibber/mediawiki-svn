@@ -11,15 +11,15 @@ import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.db.DatabaseDataSet.Factory;
 import de.brightbyte.util.CollectionUtils;
 
-public class ResultSetFeatureSetFactory implements Factory<FeatureSet> {
+public class ResultSetRecordFactory implements Factory<Record> {
 	protected String[] fields;
 	
-	public ResultSetFeatureSetFactory(String... fields) {
+	public ResultSetRecordFactory(String... fields) {
 		this.fields = CollectionUtils.toCleanArray(fields, String.class, false, false);
 	}
 
-	public FeatureSet newInstance(ResultSet row) throws Exception {
-		FeatureSet f = new DefaultFeatureSet();
+	public Record newInstance(ResultSet row) throws Exception {
+		Record rec = new DefaultRecord();
 		
 		for (String k: fields) {
 			Object v = row.getObject(k);
@@ -29,10 +29,10 @@ public class ResultSetFeatureSetFactory implements Factory<FeatureSet> {
 				v = DatabaseUtil.asString(v, "UTF-8");
 			}
 			
-			f.put(k, v);
+			rec.add(k, v);
 		}
 		
-		return f;
+		return rec;
 	}
 
 }

@@ -40,9 +40,9 @@ import de.brightbyte.wikiword.integrator.data.AssociationCursor;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.FeatureSetMangler;
 import de.brightbyte.wikiword.integrator.data.FeatureSetValueSplitter;
-import de.brightbyte.wikiword.integrator.data.MangelingFeatureSetCursor;
-import de.brightbyte.wikiword.integrator.data.ResultSetFeatureSetCursor;
-import de.brightbyte.wikiword.integrator.data.TsvFeatureSetCursor;
+import de.brightbyte.wikiword.integrator.data.MangelingCursor;
+import de.brightbyte.wikiword.integrator.data.ResultSetRecordCursor;
+import de.brightbyte.wikiword.integrator.data.TsvRecordCursor;
 import de.brightbyte.wikiword.integrator.processor.WikiWordProcessor;
 import de.brightbyte.wikiword.store.WikiWordConceptStoreBase;
 import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
@@ -274,24 +274,24 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 			
 			//DatabaseUtil.dumpData(rs, ConsoleIO.output, " | ");
 			
-			fsc = new ResultSetFeatureSetCursor(rs, fields);
+			fsc = new ResultSetRecordCursor(rs, fields);
 		} else {
 			LineCursor lines = new LineCursor(in, enc);
 			
 			Chunker chunker = sourceDescriptor.getCsvLineChunker();
 			
-			fsc = new TsvFeatureSetCursor(lines, chunker);
+			fsc = new TsvRecordCursor(lines, chunker);
 			
 			if (sourceDescriptor.getSkipBadRows()) {
-				((TsvFeatureSetCursor)fsc).setParseErrorHandler( new LoggingErrorHandler<ChunkingCursor, ParseException, PersistenceException>(out));
+				((TsvRecordCursor)fsc).setParseErrorHandler( new LoggingErrorHandler<ChunkingCursor, ParseException, PersistenceException>(out));
 			}
 			
 			if (fields!=null) {
-				if (sourceDescriptor.getSkipHeader()) ((TsvFeatureSetCursor)fsc).readFields();
-				((TsvFeatureSetCursor)fsc).setFields(fields);
+				if (sourceDescriptor.getSkipHeader()) ((TsvRecordCursor)fsc).readFields();
+				((TsvRecordCursor)fsc).setFields(fields);
 			} else {
-				((TsvFeatureSetCursor)fsc).readFields();
-				fields = ((TsvFeatureSetCursor)fsc).getFields();
+				((TsvRecordCursor)fsc).readFields();
+				fields = ((TsvRecordCursor)fsc).getFields();
 			}
 		}
 		
@@ -310,7 +310,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		}
 		
 		if (mangler!=null) {
-			fsc = new MangelingFeatureSetCursor(fsc, mangler);
+			fsc = new MangelingCursor(fsc, mangler);
 		}
 		
 		return fsc;

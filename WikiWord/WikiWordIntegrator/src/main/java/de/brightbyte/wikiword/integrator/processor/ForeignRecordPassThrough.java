@@ -5,7 +5,7 @@ import java.util.Map;
 
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.FeatureMapping;
-import de.brightbyte.wikiword.integrator.data.ForeignEntity;
+import de.brightbyte.wikiword.integrator.data.ForeignEntityRecord;
 import de.brightbyte.wikiword.integrator.store.ForeignRecordStoreBuilder;
 
 public class ForeignRecordPassThrough extends AbstractForeignEntityProcessor {
@@ -18,7 +18,7 @@ public class ForeignRecordPassThrough extends AbstractForeignEntityProcessor {
 	}
 	
 	@Override
-	protected  void processForeignEntity(ForeignEntity e) throws PersistenceException {
+	protected  void processForeignEntity(ForeignEntityRecord e) throws PersistenceException {
 		Map<String, Object> rec = new HashMap<String, Object>(); //TODO: recycle!
 		
 		for (String f : mapping.fields()) {

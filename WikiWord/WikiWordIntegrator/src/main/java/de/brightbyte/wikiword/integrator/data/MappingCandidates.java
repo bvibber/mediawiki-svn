@@ -2,29 +2,27 @@ package de.brightbyte.wikiword.integrator.data;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 
 import de.brightbyte.util.CollectionUtils;
 
-
 public class MappingCandidates {
-		protected FeatureSet subject;
-		protected Collection<FeatureSet> candidates;
+		protected ForeignEntityRecord subject;
+		protected Collection<ConceptEntityRecord> candidates;
 		
-		public MappingCandidates(FeatureSet subject, FeatureSet... candidates) {
+		public MappingCandidates(ForeignEntityRecord subject, ConceptEntityRecord... candidates) {
 			this(subject, Arrays.asList(candidates));
 		}
 		
-		public MappingCandidates(FeatureSet subject, Collection<FeatureSet> candidates) {
+		public MappingCandidates(ForeignEntityRecord subject, Collection<ConceptEntityRecord> candidates) {
 			this.subject = subject;
 			this.candidates = candidates;
 		}
 
-		public Collection<FeatureSet> getCandidates() {
+		public Collection<ConceptEntityRecord> getCandidates() {
 			return candidates;
 		}
 
-		public FeatureSet getSubject() {
+		public ForeignEntityRecord getSubject() {
 			return subject;
 		}
 

@@ -7,15 +7,15 @@ import de.brightbyte.db.SqlDialect;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
-import de.brightbyte.wikiword.integrator.data.ForeignEntity;
-import de.brightbyte.wikiword.integrator.data.ForeignEntityCursor;
+import de.brightbyte.wikiword.integrator.data.ForeignEntityRecord;
+import de.brightbyte.wikiword.integrator.data.ForeignEntityFeatureSetCursor;
 import de.brightbyte.wikiword.integrator.processor.ForeignPropertyPassThrough;
 import de.brightbyte.wikiword.integrator.processor.ForeignEntityProcessor;
 import de.brightbyte.wikiword.integrator.store.DatabaseForeignPropertyStoreBuilder;
 import de.brightbyte.wikiword.integrator.store.ForeignPropertyStoreBuilder;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
-public class LoadForeignProperties extends AbstractIntegratorApp<ForeignPropertyStoreBuilder, ForeignEntityProcessor, ForeignEntity> {
+public class LoadForeignProperties extends AbstractIntegratorApp<ForeignPropertyStoreBuilder, ForeignEntityProcessor, ForeignEntityRecord> {
 	
 	@Override
 	protected WikiWordStoreFactory<? extends ForeignPropertyStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
@@ -29,7 +29,7 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 		
 		section("-- fetching properties --------------------------------------------------");
 		DataCursor<FeatureSet> fsc = openFeatureSetCursor();
-		DataCursor<ForeignEntity> cursor = new ForeignEntityCursor(fsc, sourceDescriptor.getAuthorityName(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField());
+		DataCursor<ForeignEntityRecord> cursor = new ForeignEntityFeatureSetCursor(fsc, sourceDescriptor.getAuthorityName(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField());
 		
 		section("-- process properties --------------------------------------------------");
 		store.prepareImport();

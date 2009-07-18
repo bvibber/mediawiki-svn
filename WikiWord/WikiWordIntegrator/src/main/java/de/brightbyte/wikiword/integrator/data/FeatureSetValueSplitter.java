@@ -12,12 +12,12 @@ import de.brightbyte.text.RegularExpressionChunker;
 
 public class FeatureSetValueSplitter implements FeatureSetMangler {
 	
-	public static FeatureSetMultiMangler multi(FeatureSetValueSplitter... splitters) {
-		return new FeatureSetMultiMangler((FeatureSetMangler[])splitters);
+	public static MultiMangler multi(FeatureSetValueSplitter... splitters) {
+		return new MultiMangler((FeatureSetMangler[])splitters);
 	}
 
-	public static FeatureSetMultiMangler multiFromSplitters(Iterable<FeatureSetValueSplitter> splitters) {
-		FeatureSetMultiMangler m = new FeatureSetMultiMangler();
+	public static MultiMangler multiFromSplitters(Iterable<FeatureSetValueSplitter> splitters) {
+		MultiMangler m = new MultiMangler();
 		
 		for (FeatureSetValueSplitter s: splitters) {
 			m.addMangler(s);
@@ -26,8 +26,8 @@ public class FeatureSetValueSplitter implements FeatureSetMangler {
 		return m;
 	}
 
-	public static FeatureSetMultiMangler multiFromPatternMap(Map<String, Pattern> splitters) {
-		FeatureSetMultiMangler m = new FeatureSetMultiMangler();
+	public static MultiMangler multiFromPatternMap(Map<String, Pattern> splitters) {
+		MultiMangler m = new MultiMangler();
 		
 		for (Map.Entry<String, Pattern>e: splitters.entrySet()) {
 			m.addMangler(new FeatureSetValueSplitter(e.getKey(), e.getValue()));
@@ -36,8 +36,8 @@ public class FeatureSetValueSplitter implements FeatureSetMangler {
 		return m;
 	}
 
-	public static FeatureSetMultiMangler multiFromChunkerMap(Map<String, Chunker> splitters) {
-		FeatureSetMultiMangler m = new FeatureSetMultiMangler();
+	public static MultiMangler multiFromChunkerMap(Map<String, Chunker> splitters) {
+		MultiMangler m = new MultiMangler();
 		
 		for (Map.Entry<String, Chunker>e: splitters.entrySet()) {
 			m.addMangler(new FeatureSetValueSplitter(e.getKey(), e.getValue()));
@@ -46,8 +46,8 @@ public class FeatureSetValueSplitter implements FeatureSetMangler {
 		return m;
 	}
 
-	public static FeatureSetMultiMangler multiFromStringMap(Map<String, String> splitters, int flags) {
-		FeatureSetMultiMangler m = new FeatureSetMultiMangler();
+	public static MultiMangler multiFromStringMap(Map<String, String> splitters, int flags) {
+		MultiMangler m = new MultiMangler();
 		
 		for (Map.Entry<String, String>e: splitters.entrySet()) {
 			m.addMangler(new FeatureSetValueSplitter(e.getKey(), e.getValue(), flags));

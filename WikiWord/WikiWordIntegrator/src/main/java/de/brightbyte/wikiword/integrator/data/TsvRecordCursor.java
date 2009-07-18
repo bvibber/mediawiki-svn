@@ -15,35 +15,35 @@ import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.util.ErrorHandler;
 import de.brightbyte.util.PersistenceException;
 
-public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {
+public class TsvRecordCursor implements DataCursor<Record> {
 	protected DataCursor<List<String>> source;
 	private String[] fields;
 	
-	public TsvFeatureSetCursor(InputStream in, String enc) throws UnsupportedEncodingException {
+	public TsvRecordCursor(InputStream in, String enc) throws UnsupportedEncodingException {
 		this( new ChunkingCursor(in, enc) );
 	}
 
-	public TsvFeatureSetCursor(Reader rd) {
+	public TsvRecordCursor(Reader rd) {
 		this(new ChunkingCursor(rd));
 	}
 	
-	public TsvFeatureSetCursor(BufferedReader reader) {
+	public TsvRecordCursor(BufferedReader reader) {
 		this(new ChunkingCursor(reader));
 	}
 
-	public TsvFeatureSetCursor(LineCursor lines) {
+	public TsvRecordCursor(LineCursor lines) {
 		this(new ChunkingCursor(lines));
 	}
 
-	public TsvFeatureSetCursor(LineCursor lines, char separator, boolean esc) {
+	public TsvRecordCursor(LineCursor lines, char separator, boolean esc) {
 		this(new ChunkingCursor(lines, new CsvLineChunker(separator, esc)));
 	}
 
-	public TsvFeatureSetCursor(LineCursor lines, Chunker chunker) {
+	public TsvRecordCursor(LineCursor lines, Chunker chunker) {
 		this(new ChunkingCursor(lines, chunker));
 	}
 
-	public TsvFeatureSetCursor(DataCursor<List<String>> source) {
+	public TsvRecordCursor(DataCursor<List<String>> source) {
 		if (source==null) throw new NullPointerException();
 		this.source = source;
 	}
@@ -77,24 +77,24 @@ public class TsvFeatureSetCursor implements DataCursor<FeatureSet> {
 			source.close();
 	}
 
-	public FeatureSet next() throws PersistenceException {
+	public Record next() throws PersistenceException {
 		List<String> s = source.next();
 		if (s==null) return null;
 		return record(s);
 	}
 
-	protected FeatureSet record(List<String> s) {
+	protected Record record(List<String> s) {
 		if (fields==null) throw new IllegalStateException("call setFields() or readFields() first!");
 		
-		FeatureSet ft = new DefaultFeatureSet();
+		Record rec = new DefaultRecord();
 		
 		for (int i=0; i<fields.length; i++) {
 			String f = fields[i];
 			String v = s.get(i);
-			ft.put(f, v);
+			rec.add(f, v);
 		}
 
-		return ft;
+		return rec;
 	}
 
 	protected void finalize() {

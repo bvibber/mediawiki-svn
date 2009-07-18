@@ -12,6 +12,7 @@ import de.brightbyte.data.Functors;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledVector;
 import de.brightbyte.data.MultiMap;
+import de.brightbyte.wikiword.integrator.data.FeatureSet.Feature;
 
 public class FeatureSets {
 		public static FeatureSet merge(FeatureSet... sets) {
@@ -21,16 +22,17 @@ public class FeatureSets {
 			FeatureSet f = new DefaultFeatureSet();
 			
 			for (int i = 0; i<sets.length; i++) {
-				f.putAll(sets[i]);
+				f.addAll(sets[i]);
 			}
 			
 			return f;
 		}
 		
-		public static <T>LabeledVector<T> histogram(Iterable<T> list) {
+		public static <T>LabeledVector<T> histogram(List<? extends Feature<? extends T>> list) {
 			LabeledVector<T> v = new MapLabeledVector<T>();
 			
-			for (T obj: list) {
+			for (FeatureSet.Feature<? extends T> f: list) {
+				T obj = f.getValue();
 				v.add(obj, 1);
 			}
 			

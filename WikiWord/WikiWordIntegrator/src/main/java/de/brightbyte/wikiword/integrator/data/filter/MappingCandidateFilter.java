@@ -2,7 +2,7 @@ package de.brightbyte.wikiword.integrator.data.filter;
 
 import java.util.Collection;
 
-import de.brightbyte.wikiword.integrator.data.FeatureSet;
+import de.brightbyte.wikiword.integrator.data.ConceptEntityRecord;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 
 /**
@@ -12,5 +12,5 @@ import de.brightbyte.wikiword.integrator.data.MappingCandidates;
  * @author daniel
  */
 public interface MappingCandidateFilter {
-	public Collection<FeatureSet> filterCandidates(MappingCandidates candidates);
+	public Collection<ConceptEntityRecord> filterCandidates(MappingCandidates candidates);
 }

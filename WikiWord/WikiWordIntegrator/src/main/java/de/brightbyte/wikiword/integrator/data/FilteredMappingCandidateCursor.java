@@ -64,7 +64,7 @@ public class FilteredMappingCandidateCursor implements DataCursor<MappingCandida
 			m = cursor.next();
 			if (m==null) return null;
 
-			Collection<FeatureSet> filtered = filter.filterCandidates(m);
+			Collection<ConceptEntityRecord> filtered = filter.filterCandidates(m);
 			if (filtered==null || filtered.size()==0) continue;
 			
 			if (filtered!=m.getCandidates()) 

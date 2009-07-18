@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.integrator.data.ForeignEntity;
+import de.brightbyte.wikiword.integrator.data.ForeignEntityRecord;
 import de.brightbyte.wikiword.integrator.store.ForeignPropertyStoreBuilder;
 
 public class ForeignPropertyPassThrough extends AbstractForeignEntityProcessor {
@@ -18,7 +18,7 @@ public class ForeignPropertyPassThrough extends AbstractForeignEntityProcessor {
 	}
 	
 	@Override
-	protected  void processForeignEntity(ForeignEntity e) throws PersistenceException {
+	protected  void processForeignEntity(ForeignEntityRecord e) throws PersistenceException {
 		Set<Entry<String, List<Object>>> entries = e.getProperties().entrySet();
 		for (Entry<String, List<Object>> p: entries) {
 			String prop = p.getKey();

@@ -5,26 +5,72 @@ import java.util.List;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.ValueListMultiMap;
 
-public class DefaultFeatureSet extends ValueListMultiMap<String, Object> implements FeatureSet {
+public class DefaultFeatureSet implements FeatureSet {
 
-		protected String nameField;
+	public static class DefaultFeature<V> implements  FeatureSet.Feature {
+		protected V value;
+		protected Record qualifiers;
 		
-		public DefaultFeatureSet() {
-			this(null);
+		public DefaultFeature(V value, Record qualifiers) {
+			super();
+			this.value = value;
+			this.qualifiers = qualifiers;
 		}
 		
-		public DefaultFeatureSet(String nameField) {
-			this.nameField = nameField;
+		@Override
+		public int hashCode() {
+			final int PRIME = 31;
+			int result = 1;
+			result = PRIME * result + ((qualifiers == null) ? 0 : qualifiers.hashCode());
+			result = PRIME * result + ((value == null) ? 0 : value.hashCode());
+			return result;
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final DefaultFeature other = (DefaultFeature) obj;
+			if (qualifiers == null) {
+				if (other.qualifiers != null)
+					return false;
+			} else if (!qualifiers.equals(other.qualifiers))
+				return false;
+			if (value == null) {
+				if (other.value != null)
+					return false;
+			} else if (!value.equals(other.value))
+				return false;
+			return true;
+		}
+
+		public Record getQualifiers() {
+			return qualifiers;
+		}
+
+		public V getValue() {
+			return value;
+		}
+
+	
+	}
+	
+		protected ValueListMultiMap<String, FeatureSet.Feature<?>> data = new ValueListMultiMap<String, FeatureSet.Feature<?>>();
+		
+		public DefaultFeatureSet() {
 		}
 		
 		public String toString() {
-			/*if (nameField != null) return String.valueOf(get(nameField));
-			else*/ return super.toString();
+			return data.toString();
 		}
 
 		public boolean overlaps(FeatureSet item, String feature) {
-			List<Object> a = get(feature);
-			List<Object> b = item.get(feature);
+			List<? extends FeatureSet.Feature<?>> a = getFeatures(feature);
+			List<? extends FeatureSet.Feature<?>> b = item.getFeatures(feature);
 			
 			for (Object obj: a) {
 				if (b.contains(obj)) return true;
@@ -34,26 +80,37 @@ public class DefaultFeatureSet extends ValueListMultiMap<String, Object> impleme
 		}
 		
 		public LabeledVector<Object> getHistogram(String key) {
-			List<Object> list = get(key);
-			return FeatureSets.histogram(list);
+			List<? extends Feature<? extends Object>> list = this.<Object>getFeatures(key);
+			return FeatureSets.<Object>histogram(list);
 		}
 
-		@Override
-		public boolean put(String key, Object value) {
-			boolean changed = false;
+		public <V>void addFeature(String key, V value, Record qualifiers) {
 			if (value instanceof Object[]) {
 				for(Object w: (Object[])value) {
-					changed = put(key, w) | changed;
+					addFeature(key, w, qualifiers);
 				}
 			} if (value instanceof Iterable) {
 				for(Object w: (Iterable)value) {
-					changed = put(key, w) | changed;
+					addFeature(key, w, qualifiers);
 				}
 			} else {
-				changed = super.put(key, value);
+				Feature f = new DefaultFeature<V>(value, qualifiers);
+				data.put(key, f);
 			}
+		}
+
+		public void addAll(FeatureSet other) {
+			// TODO Auto-generated method stub
 			
-			return changed;
+		}
+
+		public <V> List<? extends Feature<? extends V>> getFeatures(String key) {
+			List<FeatureSet.Feature<?>> features = data.get(key);
+			return (List<? extends Feature<? extends V>>)features; //XXX: unmodifiable?!
+		}
+
+		public Iterable<String> keys() {
+			return data.keySet();
 		}
 		
 		

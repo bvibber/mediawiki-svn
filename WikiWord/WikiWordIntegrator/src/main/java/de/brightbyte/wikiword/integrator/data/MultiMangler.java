@@ -4,20 +4,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import de.brightbyte.data.Functor;
 
-public class FeatureSetMultiMangler implements FeatureSetMangler {
 
-	protected List<FeatureSetMangler> manglers;
+public class MultiMangler<R> implements Functor<R, R> {
+
+	protected List<Functor<R, R>> manglers;
 	
-	public FeatureSetMultiMangler(FeatureSetMangler... manglers) {
-		this(new ArrayList<FeatureSetMangler>(Arrays.asList(manglers))); //NOTE: must be a modifyable list
+	public MultiMangler(Functor<R, R>... manglers) {
+		this(new ArrayList<Functor<R, R>>(Arrays.asList(manglers))); //NOTE: must be a modifyable list
 	}
 	
-	public FeatureSetMultiMangler(List<FeatureSetMangler> manglers) {
+	public MultiMangler(List<Functor<R, R>> manglers) {
 		this.manglers = manglers;
 	}
 	
-	public void addMangler(FeatureSetMangler m) {
+	public void addMangler(Functor<R, R> m) {
 		manglers.add(m);
 	}
 
@@ -37,7 +39,7 @@ public class FeatureSetMultiMangler implements FeatureSetMangler {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final FeatureSetMultiMangler other = (FeatureSetMultiMangler) obj;
+		final MultiMangler other = (MultiMangler) obj;
 		if (manglers == null) {
 			if (other.manglers != null)
 				return false;
@@ -46,8 +48,8 @@ public class FeatureSetMultiMangler implements FeatureSetMangler {
 		return true;
 	}
 
-	public FeatureSet apply(FeatureSet fts) {
-		for (FeatureSetMangler m: manglers) {
+	public R apply(R fts) {
+		for (Functor<R, R> m: manglers) {
 			fts = m.apply(fts);
 		}
 		

@@ -1,7 +1,6 @@
 package de.brightbyte.wikiword.integrator.data;
 
-public interface ForeignEntity  {
-	public String getAuthority();
+public interface ConceptEntity  {
 	public String getID();
 	public String getName();
 }
