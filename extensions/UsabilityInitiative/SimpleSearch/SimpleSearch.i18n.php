@@ -12,7 +12,7 @@ $messages = array();
  * @author Trevor Parscal
  */
 $messages['en'] = array(
-	'simplesearch' => 'Simple Search',
-	'simplesearch-desc' => 'Adds extra functionality to the Vector\'s simplified search.',
+	'simplesearch' => 'Simple search',
+	'simplesearch-desc' => "Adds extra functionality to the Vector's simplified search",
 	'simplesearch-search' => 'Search',
 );
