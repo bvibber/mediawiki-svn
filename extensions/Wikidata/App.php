@@ -120,7 +120,7 @@ function addWikidataHeader() {
 
 function wdIsWikidataNs() {
 	global $wgTitle;
-	$ns=MWNamespace::get($wgTitle->getNamespace());	
+	$ns=Namespace::get($wgTitle->getNamespace());	
 	return
 	($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning' || $ns->getHandlerClass()=='ExpressionPage');
 
@@ -155,7 +155,7 @@ function addHistoryLinkTrail(&$trail) {
 function modifyTabs($skin, $content_actions) {
 	global $wgUser, $wgTitle, $wdTesting, $wgCommunity_dc, $wdShowEditCopy;
 	$dc=wdGetDataSetContext();
-	$ns=MWNamespace::get($wgTitle->getNamespace());
+	$ns=Namespace::get($wgTitle->getNamespace());
 	$editChanged = false;
 	if($ns->getHandlerClass()=='DefinedMeaning') {
 	

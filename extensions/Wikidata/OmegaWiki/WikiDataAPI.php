@@ -28,7 +28,7 @@ class Expression {
 	}
 	
 	function createPage() {
-		$expressionNameSpaceId = MWNamespace::getIndexForName('expression');
+		$expressionNameSpaceId = Namespace::getIndexForName('expression');
 		wfDebug("NS ID: $expressionNameSpaceId \n");
 		return createPage($expressionNameSpaceId, getPageTitle($this->spelling));
 	}
@@ -768,7 +768,7 @@ function addCollection($definedMeaningId, $collectionType) {
 }
 
 function addDefinedMeaning($definingExpressionId) {
-	$definedMeaningNameSpaceId = MWNamespace::getIndexForName('definedmeaning');
+	$definedMeaningNameSpaceId = Namespace::getIndexForName('definedmeaning');
 	$dc=wdGetDataSetContext();
 	
 	$definedMeaningId = newObjectId("{$dc}_defined_meaning"); 
