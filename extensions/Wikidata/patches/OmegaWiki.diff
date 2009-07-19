@@ -1,0 +1,253 @@
+Index: maintenance/updaters.inc
+===================================================================
+--- maintenance/updaters.inc	(revision 40000)
++++ maintenance/updaters.inc	(working copy)
+@@ -864,7 +864,7 @@
+  * @bug 3946
+  */
+ function do_page_random_update() {
+-	global $wgDatabase;
++	/*global $wgDatabase;
+ 
+ 	echo "Setting page_random to a random value on rows where it equals 0...";
+ 
+@@ -872,7 +872,7 @@
+ 	$wgDatabase->query( "UPDATE $page SET page_random = RAND() WHERE page_random = 0", 'do_page_random_update' );
+ 	$rows = $wgDatabase->affectedRows();
+ 
+-	echo "changed $rows rows\n";
++	echo "changed $rows rows\n";*/
+ }
+ 
+ function do_templatelinks_update() {
+@@ -1172,7 +1172,7 @@
+ }
+ 
+ function do_category_population() {
+-	if( update_row_exists( 'populate category' ) ) {
++	/*if( update_row_exists( 'populate category' ) ) {
+ 		echo "...category table already populated.\n";
+ 		return;
+ 	}
+@@ -1182,7 +1182,7 @@
+ "may want to hit Ctrl-C and do this manually with maintenance/\n".
+ "populateCategory.php.\n";
+ 	populateCategory( '', 10, 0, true );
+-	echo "Done populating category table.\n";
++	echo "Done populating category table.\n";*/
+ }
+ 
+ function do_populate_parent_id() {
+Index: includes/Article.php
+===================================================================
+--- includes/Article.php	(revision 40000)
++++ includes/Article.php	(working copy)
+@@ -684,14 +684,29 @@
+ 	function view() {
+ 		global $wgUser, $wgOut, $wgRequest, $wgContLang;
+ 		global $wgEnableParserCache, $wgStylePath, $wgParser;
+-		global $wgUseTrackbacks, $wgNamespaceRobotPolicies, $wgArticleRobotPolicies;
++		global $wgUseTrackbacks, $wgNamespaceRobotPolicies, $wgArticleRobotPolicies, $wgTitle;
+ 		global $wgDefaultRobotPolicy;
+ 		$sk = $wgUser->getSkin();
+ 
+ 		wfProfileIn( __METHOD__ );
+ 
++		global $wgWikiDataHandlerClasses, $wgWikiDataHandlerPath;
++		$ns = $this->mTitle->getNamespace();
++		if( array_key_exists( $ns, $wgWikiDataHandlerClasses ) ) {
++		$handlerClass = $wgWikiDataHandlerClasses[ $ns ];
++			$handlerFile = $wgWikiDataHandlerPath . $handlerClass . '.php';
++			if( file_exists( $handlerFile ) ) {
++                        	require_once $handlerFile;
++	                        $handlerInstance = new $handlerClass();
++        	                $handlerInstance->view();
++				return;
++			} else {
++				$wgOut->showErrorPage( 'namespace_handler_not_found', 'namespace_handler_not_found_error',
++				$handlerFile, $wgContLang->getFormattedNsText( $ns ) );
++			}
++                }
++
+ 		$parserCache = ParserCache::singleton();
+-		$ns = $this->mTitle->getNamespace(); # shortcut
+ 
+ 		# Get variables from query string
+ 		$oldid = $this->getOldID();
+Index: includes/SearchEngine.php
+===================================================================
+--- includes/SearchEngine.php	(revision 40000)
++++ includes/SearchEngine.php	(working copy)
+@@ -51,7 +51,7 @@
+ 	 * @return Title
+ 	 */
+ 	public static function getNearMatch( $searchterm ) {
+-		global $wgContLang;
++		global $wgContLang, $wgDefaultGoPrefix;
+ 
+ 		$allSearchTerms = array($searchterm);
+ 
+@@ -71,6 +71,16 @@
+ 				return $title;
+ 			}
+ 
++			# Attempt search with default go prefix.
++			if( !empty($wgDefaultGoPrefix) && $title->getNamespace() == NS_MAIN ) {
++				$term = $wgDefaultGoPrefix . $term;
++				$title = Title::newFromText( $term );
++				if( $title->exists() ) {
++					return $title;
++				}
++			}
++
++
+ 			# Now try all lower case (i.e. first letter capitalized)
+ 			#
+ 			$title = Title::newFromText( $wgContLang->lc( $term ) );
+Index: includes/EditPage.php
+===================================================================
+--- includes/EditPage.php	(revision 40000)
++++ includes/EditPage.php	(working copy)
+@@ -422,6 +422,24 @@
+ 			wfProfileOut( __METHOD__ );
+ 			return;
+ 		} else {
++
++			global $wgWikiDataHandlerClasses, $wgWikiDataHandlerPath;
++			$namespaceId = $this->mTitle->getNamespace();
++	                if( array_key_exists( $namespaceId, $wgWikiDataHandlerClasses ) ) {
++				$handlerClass = $wgWikiDataHandlerClasses[ $namespaceId ];
++				$handlerFile = $wgWikiDataHandlerPath . $handlerClass . '.php';
++				if( file_exists( $handlerFile ) ) {
++					require_once $handlerFile;
++					$handlerInstance = new $handlerClass();
++					$handlerInstance->edit();
++					return;
++				} else {
++					$wgOut->showErrorPage( 'namespace_handler_not_found', 'namespace_handler_not_found_error',
++					$handlerFie, $wgContLang->getFormattedNsText( $namespaceId ) );
++				}
++			}
++
++
+ 			if ( $this->save ) {
+ 				$this->formtype = 'save';
+ 			} else if( $this->preview ) {
+Index: includes/api/ApiMain.php
+===================================================================
+--- includes/api/ApiMain.php	(revision 40000)
++++ includes/api/ApiMain.php	(working copy)
+@@ -62,7 +62,9 @@
+ 		'expandtemplates' => 'ApiExpandTemplates',
+ 		'parse' => 'ApiParse',
+ 		'opensearch' => 'ApiOpenSearch',
++		'query' => 'ApiQuery',
+ 		'feedwatchlist' => 'ApiFeedWatchlist',
++		'wikidata' => 'ApiWikiData',
+ 		'help' => 'ApiHelp',
+ 		'paraminfo' => 'ApiParamInfo',
+ 	);
+Index: includes/Namespace.php
+===================================================================
+--- includes/Namespace.php	(revision 40000)
++++ includes/Namespace.php	(working copy)
+@@ -52,7 +52,9 @@
+ 	 * @return bool
+ 	 */
+ 	public static function isMovable( $index ) {
+-		global $wgAllowImageMoving;
++		global $wgAllowImageMoving, $wgWikiDataHandlerClasses;
++		# FIXME: This means that namespaces with custom handlers are assumed to never be movable.
++		if( array_key_exists( $index, $wgWikiDataHandlerClasses ) ) return false; 
+ 		return !( $index < NS_MAIN || ($index == NS_IMAGE && !$wgAllowImageMoving)  || $index == NS_CATEGORY );
+ 	}
+ 
+Index: includes/SkinTemplate.php
+===================================================================
+--- includes/SkinTemplate.php	(revision 40000)
++++ includes/SkinTemplate.php	(working copy)
+@@ -706,10 +706,11 @@
+ 			wfProfileIn( __METHOD__."-live" );
+ 			if ( $this->mTitle->exists() ) {
+ 
++				wfRunHooks( 'GetHistoryLinkTrail', array( &$trail ) );
+ 				$content_actions['history'] = array(
+ 					'class' => ($action == 'history') ? 'selected' : false,
+ 					'text' => wfMsg('history_short'),
+-					'href' => $this->mTitle->getLocalUrl( 'action=history')
++					'href' => $this->mTitle->getLocalUrl( 'action=history' . $trail )
+ 				);
+ 
+ 				if( $wgUser->isAllowed('delete') ) {
+Index: includes/DefaultSettings.php
+===================================================================
+--- includes/DefaultSettings.php	(revision 40000)
++++ includes/DefaultSettings.php	(working copy)
+@@ -3389,3 +3389,9 @@
+  * Requires memcached.
+  */
+ $wgPasswordAttemptThrottle = array( 'count' => 5, 'seconds' => 300 );
++
++/*
++ * Prefix to be added before "Go" searches, e.g. point to a different
++ * namespace.
++ */
++$wgDefaultGoPrefix = '';
+Index: includes/PageHistory.php
+===================================================================
+--- includes/PageHistory.php	(revision 40000)
++++ includes/PageHistory.php	(working copy)
+@@ -79,6 +79,22 @@
+ 
+ 		wfProfileIn( __METHOD__ );
+ 
++		global $wgWikiDataHandlerClasses, $wgWikiDataHandlerPath;
++		$namespaceId = $this->mTitle->getNamespace();
++		if( array_key_exists( $namespaceId, $wgWikiDataHandlerClasses ) ) {
++		$handlerClass = $wgWikiDataHandlerClasses[ $namespaceId ];
++			$handlerFile = $wgWikiDataHandlerPath . $handlerClass . '.php';
++			if( file_exists( $handlerFile ) ) {
++                        	require_once $handlerFile;
++	                        $handlerInstance = new $handlerClass();
++        	                $handlerInstance->history();
++				return;
++			} else {
++				$wgOut->showErrorPage( 'namespace_handler_not_found', 'namespace_handler_not_found_error',
++				$handlerFile, $wgContLang->getFormattedNsText( $namespaceId ) );
++			}
++                }
++
+ 		/*
+ 		 * Setup page variables.
+ 		 */
+Index: includes/Skin.php
+===================================================================
+--- includes/Skin.php	(revision 40000)
++++ includes/Skin.php	(working copy)
+@@ -1465,10 +1465,12 @@
+ 	function editUrlOptions() {
+ 		global $wgArticle;
+ 
++		$trail = '';
++		wfRunHooks( 'GetEditLinkTrail', array( &$trail ) );
+ 		if( $this->mRevisionId && ! $wgArticle->isCurrent() ) {
+-			return "action=edit&oldid=" . intval( $this->mRevisionId );
++			return 'action=edit' . $trail . '&oldid=' . intval( $this->mRevisionId );
+ 		} else {
+-			return "action=edit";
++			return 'action=edit' . $trail;
+ 		}
+ 	}
+ 
+@@ -1541,8 +1543,10 @@
+ 	function historyLink() {
+ 		global $wgTitle;
+ 
++		$trail = '';
++		wfRunHooks( 'GetHistoryLinkTrail', array( &$trail ) );
+ 		return $this->makeKnownLinkObj( $wgTitle,
+-		  wfMsg( 'history' ), 'action=history' );
++		  wfMsg( 'history' ), 'action=history' . $trail );
+ 	}
+ 
+ 	function whatLinksHere() {

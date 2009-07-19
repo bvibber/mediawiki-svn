@@ -1,13 +1,5 @@
-This is a set of patches that will allow you to run the Wikidata extension on
-MediaWiki trunk r19772 (i.e. outside of the Wikidata branch).  This enables the
-extension to be gradually upgraded to the latest version of MediaWiki.
-
-Currently the API is not working, however when the code is in a state where when
-it is run on latest trunk the API stuff will essentially "fix itself".
-
-The following will also need to be added to LocalSettings.php on OmegaWiki (to
-replace the database namespace manager).  $wgNamespaceAliases will begin
-working when the core code reaches r21720.
+This is a patch that will allow you to run the Wikidata extension on MediaWiki
+trunk r32000 (i.e. outside of the Wikidata branch).
 
 $wgExtraNamespaces = array(
 	16 => 'Expression',
