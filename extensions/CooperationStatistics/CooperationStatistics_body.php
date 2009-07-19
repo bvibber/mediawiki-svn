@@ -2,6 +2,7 @@
 /**
  * Special:CooperationStatistics
  */
+
 class CooperationStatistics extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'CooperationStatistics' );
@@ -12,24 +13,24 @@ class CooperationStatistics extends SpecialPage {
 
 		wfLoadExtensionMessages( 'CooperationStatistics' );
 		$nb_of_revuser = wfMsg( 'cooperationstatistics-limit-few-revisors' );
-		$nbpages = $this->getNbOfPages($nb_of_revuser,'<=');
+		$nbpages = $this->getNbOfPages( $nb_of_revuser, '<=' );
 		$this->OutputTableRaw( $nbpages, $nb_of_revuser, 'init' );
-		
-		$retval = array();		
-		$retval[$nb_of_revuser] = $this->getNbOfPages($nb_of_revuser,'=');
+
+		$retval = array();
+		$retval[$nb_of_revuser] = $this->getNbOfPages( $nb_of_revuser, '=' );
 		$nb_of_revuser++;
-		$range = 1 + wfMsg( 'cooperationstatistics-limit-many-revisors' ) - $nb_of_revuser;			
+		$range = 1 + wfMsg( 'cooperationstatistics-limit-many-revisors' ) - $nb_of_revuser;
 		for ( $j = 0; $j < $range; $j++ ) {
-			$nbpages = $this->getNbOfPages($nb_of_revuser,'=');
-			$this->OutputTableRaw( $nbpages, $nb_of_revuser, '=' );	
+			$nbpages = $this->getNbOfPages( $nb_of_revuser, '=' );
+			$this->OutputTableRaw( $nbpages, $nb_of_revuser, '=' );
 			$retval[$nb_of_revuser] = $nbpages;
 			$nb_of_revuser++;
 		}
-		
-		$nbpages = $this->getNbOfPages($nb_of_revuser,'>=');
+
+		$nbpages = $this->getNbOfPages( $nb_of_revuser, '>=' );
 		$this->OutputTableRaw( $nbpages, $nb_of_revuser, 'end' );
 		$retval[$nb_of_revuser] = $nbpages;
-		
+
 		if ( $wgCooperationStatsGoogleCharts == True ) {
 			$wgOut->addHTML( Xml::element( 'img', array( 'src' =>
 				$this->getGoogleChartBarParams( $retval ) ) )
@@ -37,9 +38,9 @@ class CooperationStatistics extends SpecialPage {
 				$this->getGoogleChartParams( $retval ) ) ) );
 		}
 	}
-	
+
 	private function getGoogleChartBarParams( $stats ) {
-		global $wgCoopStatsChartBarDimensions;		
+		global $wgCoopStatsChartBarDimensions;
 		return "http://chart.apis.google.com/chart?" . wfArrayToCGI(
 		array(
 			'chs' => $wgCoopStatsChartBarDimensions,
@@ -51,58 +52,68 @@ class CooperationStatistics extends SpecialPage {
 			'chl' => implode( '|', array_keys( $stats ) ) . "++"
 		) );
 	}
+
 	private function getGoogleChartParams( $stats ) {
-		global $wgCoopStatsChartDimensions;		
+		global $wgCoopStatsChartDimensions;
 		return "http://chart.apis.google.com/chart?" . wfArrayToCGI(
 		array(
 			'chs' => $wgCoopStatsChartDimensions,
 			'cht' => 'p3',
 			'chd' => 't:' . implode( ',', $stats ),
-			'chl' => implode( ' '.wfMsg( 'cooperationstatistics-users' ) . ' |', array_keys( $stats ) ) . wfMsg('cooperationstatistics-legendmore')
+			'chl' => implode( ' ' . wfMsg( 'cooperationstatistics-users' ) . ' |', array_keys( $stats ) ) . wfMsg( 'cooperationstatistics-legendmore' )
 		) );
 	}
-	
+
 	private function InitPageAndHtmlTable( ) {
 		global $wgOut;
-        $this->setHeaders();
-        $wgOut->setPagetitle( wfMsg( "cooperationstatistics" ) );
+		$this->setHeaders();
+		$wgOut->setPagetitle( wfMsg( "cooperationstatistics" ) );
 		$wgOut->addWikiMsg( "cooperationstatistics-text" );
-		$wgOut->addHTML( "<table class=\"wikitable sortable\"><tr><td>");
+		$wgOut->addHTML( "<table class=\"wikitable sortable\"><tr><td>" );
 		$wgOut->addWikiMsg( "cooperationstatistics-tablearticle" );
-		$wgOut->addHTML("</td>
-		<td>");
+		$wgOut->addHTML( "</td>
+		<td>" );
 		$wgOut->addWikiMsg( "cooperationstatistics-tablevalue" );
-		$wgOut->addHTML("</td>
-		</tr>");
+		$wgOut->addHTML( "</td>
+		</tr>" );
 	}
+
 	private function OutputTableRaw( $nbpages, $nb_of_revuser, $msg ) {
-		global $wgOut;	
-			if ($msg == 'init') $this->InitPageAndHtmlTable();	
-		$wgOut->addHTML("
-<tr>
- <td align='left'>");
-			$wgOut->addWikiMsg( 'cooperationstatistics-articles', $nbpages );
-			$wgOut->addHTML("</td>
- <td align='left'>");
-			if ($msg == 'init') $wgOut->addWikiMsg( 'cooperationstatistics-nblessusers', $nb_of_revuser );
-			if ($msg == '=' ) $wgOut->addWikiMsg( 'cooperationstatistics-nbusers', $nb_of_revuser );
-			if ($msg == 'end') $wgOut->addWikiMsg( 'cooperationstatistics-nbmoreusers', $nb_of_revuser );
-			$wgOut->addHTML("</td>
-</tr>");
-			if ($msg == 'end')	$wgOut->addHTML("</table>");
+		global $wgOut;
+
+		if ( $msg == 'init' ) $this->InitPageAndHtmlTable();
+
+		$wgOut->addHTML( "	<tr>
+		<td align='left'>" );
+		$wgOut->addWikiMsg( 'cooperationstatistics-articles', $nbpages );
+		$wgOut->addHTML( "			</td>
+		<td align='left'>" );
+
+		if ( $msg == 'init' ) $wgOut->addWikiMsg( 'cooperationstatistics-nblessusers', $nb_of_revuser );
+		if ( $msg == '=' ) $wgOut->addWikiMsg( 'cooperationstatistics-nbusers', $nb_of_revuser );
+		if ( $msg == 'end' ) $wgOut->addWikiMsg( 'cooperationstatistics-nbmoreusers', $nb_of_revuser );
+
+		$wgOut->addHTML( "			</td>
+	</tr>" );
+
+		if ( $msg == 'end' )	$wgOut->addHTML( "</table>" );
 	}
 
 	private function getNbOfPages( $nb, $relation ) {
-		if ($relation == '<=') $sql = self::getSQLlower($nb);
-		if ($relation == '=') $sql = self::getSQL($nb);
-		if ($relation == '>=') $sql = self::getSQLupper($nb);
-		$db = wfGetDB( DB_SLAVE );		
+		if ( $relation == '<=' ) $sql = self::getSQLlower( $nb );
+		if ( $relation == '=' ) $sql = self::getSQL( $nb );
+		if ( $relation == '>=' ) $sql = self::getSQLupper( $nb );
+
+		$db = wfGetDB( DB_SLAVE );
 		$res = $db->query( $sql, __METHOD__ );
+
 		return $db->numRows( $res );
 	}
-	private function getSQL($nb_of_revuser) {
+
+	private function getSQL( $nb_of_revuser ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		list( $revision, $page ) = $dbr->tableNamesN( 'revision', 'page' );
+
 		return
 			"
 			SELECT
@@ -115,9 +126,11 @@ class CooperationStatistics extends SpecialPage {
 			HAVING COUNT(distinct rev_user)=$nb_of_revuser
 			";
 	}
-	private function getSQLupper($nb_of_revuser) {
+
+	private function getSQLupper( $nb_of_revuser ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		list( $revision, $page ) = $dbr->tableNamesN( 'revision', 'page' );
+
 		return
 			"
 			SELECT
@@ -130,9 +143,11 @@ class CooperationStatistics extends SpecialPage {
 			HAVING COUNT(distinct rev_user)>=$nb_of_revuser
 			";
 	}
-	private function getSQLlower($nb_of_revuser) {
+
+	private function getSQLlower( $nb_of_revuser ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		list( $revision, $page ) = $dbr->tableNamesN( 'revision', 'page' );
+
 		return
 			"
 			SELECT
