@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class MostRevisors extends IncludableSpecialPage {
 	private $limit = NULL;
 	private $namespace = NULL;

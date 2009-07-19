@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * A special page to show pages with most revisors.
  *
