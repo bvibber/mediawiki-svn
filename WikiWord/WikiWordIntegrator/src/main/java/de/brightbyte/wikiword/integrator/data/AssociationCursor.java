@@ -1,63 +1,40 @@
 package de.brightbyte.wikiword.integrator.data;
 
-import java.util.Arrays;
-import java.util.List;
-
 import de.brightbyte.data.cursor.DataCursor;
-import de.brightbyte.util.CollectionUtils;
 import de.brightbyte.util.PersistenceException;
 
 public class AssociationCursor implements DataCursor<Association> {
 
-	private DataCursor<FeatureSet> source;
+	private DataCursor<Record> source;
 
-	protected Iterable<String> foreignFields;
-	protected Iterable<String> conceptFields;
-	protected Iterable<String> propertyFields;
+	protected String foreignAuthorityField;
+	protected String foreignIdField;
+	protected String foreignNameField; 
+	protected String conceptIdField;
+	protected String conceptNameField;
 	
-	public AssociationCursor(DataCursor<FeatureSet> source, String[] sourceFields, String[] targetFields, String[] propertyFields) {
-		this(source, 
-				Arrays.asList(sourceFields), 
-				Arrays.asList(targetFields), 
-				Arrays.asList(propertyFields));
-	}
-	
-	public AssociationCursor(DataCursor<FeatureSet> source, Iterable<String> sourceFields, Iterable<String> targetFields, Iterable<String> propertyFields) {
-		if (source==null) throw new NullPointerException();
-		this.source = source; 
-		//FIXME: use FeatureMappings or at least lists of accessors!
-		this.foreignFields = CollectionUtils.toCleanIterable(sourceFields, false, false);
-		this.conceptFields = CollectionUtils.toCleanIterable(targetFields, false, false);
-		this.propertyFields = CollectionUtils.toCleanIterable(propertyFields, false, false);
+	public AssociationCursor(DataCursor<Record> source, String foreignAuthorityField, String foreignIdField, String foreignNameField, String conceptIdField, String conceptNameField) {
+		super();
+		this.source = source;
+		this.foreignAuthorityField = foreignAuthorityField;
+		this.foreignIdField = foreignIdField;
+		this.foreignNameField = foreignNameField;
+		this.conceptIdField = conceptIdField;
+		this.conceptNameField = conceptNameField;
 	}
 
 	public Association next() throws PersistenceException {
-		FeatureSet row = source.next();
+		Record row = source.next();
 		if (row==null) return null;
 		
 		return newAssociation(row);
 	}
 
-	public Association newAssociation(FeatureSet row) throws PersistenceException {
-		FeatureSet source = foreignFields==null ? row : newFeatureSet(row, foreignFields);
-		FeatureSet target = conceptFields==null ? row : newFeatureSet(row, conceptFields);
-		FeatureSet props = propertyFields==null ? row : newFeatureSet(row, propertyFields);
+	public Association newAssociation(Record row) throws PersistenceException {
 		
-		return new Association(source, target, props);
+		return new DefaultAssociation(row, foreignAuthorityField, foreignIdField, foreignNameField, conceptIdField, conceptNameField);
 	}
 	
-	protected FeatureSet newFeatureSet(FeatureSet row, Iterable<String> fields) {
-		FeatureSet m = new DefaultFeatureSet();
-		
-		for (String f: fields) {
-			if (f==null) continue;
-			List<Object> values = row.get(f);
-			m.putAll(f, values); 
-		}
-		
-		return m;
-	}
-
 	public void close() {
 		source.close();
 	}

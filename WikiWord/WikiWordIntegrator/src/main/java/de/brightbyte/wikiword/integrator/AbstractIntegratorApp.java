@@ -34,7 +34,7 @@ import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.StoreBackedApp;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.InputFileHelper;
-import de.brightbyte.wikiword.integrator.data.AssemblingFeatureSetCursor;
+import de.brightbyte.wikiword.integrator.data.FeatureAssemblingCursor;
 import de.brightbyte.wikiword.integrator.data.Association;
 import de.brightbyte.wikiword.integrator.data.AssociationCursor;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
@@ -299,7 +299,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		if (propField!=null) {
 			String valueField = sourceDescriptor.getPropertyValueField();
 			String subjectField = sourceDescriptor.getPropertySubjectField();
-			fsc = new AssemblingFeatureSetCursor(fsc, subjectField, propField, valueField);
+			fsc = new FeatureAssemblingCursor(fsc, subjectField, propField, valueField);
 		}
 		
 		FeatureSetMangler mangler = sourceDescriptor.getRowMangler();

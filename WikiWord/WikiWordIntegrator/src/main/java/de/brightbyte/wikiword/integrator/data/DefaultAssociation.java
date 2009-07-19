@@ -1,62 +1,31 @@
 package de.brightbyte.wikiword.integrator.data;
 
 
-public class DefaultAssociation extends DefaultRecord implements  ConceptEntityRecord{
+public class DefaultAssociation extends DefaultRecord implements  Association {
 
-	protected String idField;
-	protected String nameField;
+	protected ConceptEntityRecord conceptEntity;
+	protected ForeignEntityRecord foreignEntity;
 	
-	public DefaultAssociation(String idField, String nameField, FeatureSet properties) {
-		if (idField==null) throw new NullPointerException();
-		if (nameField==null) nameField = idField;
-		if (properties==null) properties = new DefaultFeatureSet();
+	public DefaultAssociation(Record data, 
+					String foreignAuthorityField, String foreignIdField, String foreignNameField, 
+					String conceptIdField, String conceptNameField) {
 		
-		this.idField = idField;
-		this.nameField = nameField;
+		addAll(data);
+		
+		foreignEntity = new DefaultForeignEntityRecord(this.data, foreignAuthorityField, foreignIdField, foreignNameField);
+		conceptEntity = new DefaultConceptEntityRecord(this.data, conceptIdField, conceptNameField);
 	}
 
-	public String getID() {
-		return idField==null ? null : getStringProperty(idField);
+	public ConceptEntityRecord getConceptEntity() {
+		return conceptEntity;
 	}
 
-	public String getName() {
-		return nameField==null ? null : getStringProperty(nameField);
+	public ForeignEntityRecord getForeignEntity() {
+		return foreignEntity;
 	}
-
-	private String getStringProperty(String field) {
-		Object v = get(field);
-		return String.valueOf(v);
-	}
-
-	@Override
-	public int hashCode() {
-		final int PRIME = 31;
-		int result = super.hashCode();
-		result = PRIME * result + ((idField == null) ? 0 : idField.hashCode());
-		result = PRIME * result + ((nameField == null) ? 0 : nameField.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		final DefaultAssociation other = (DefaultAssociation) obj;
-		if (idField == null) {
-			if (other.idField != null)
-				return false;
-		} else if (!idField.equals(other.idField))
-			return false;
-		if (nameField == null) {
-			if (other.nameField != null)
-				return false;
-		} else if (!nameField.equals(other.nameField))
-			return false;
-		return super.equals(obj);
+	
+	public String toString() {
+		return foreignEntity + " <-> " + conceptEntity;
 	}
 
 }

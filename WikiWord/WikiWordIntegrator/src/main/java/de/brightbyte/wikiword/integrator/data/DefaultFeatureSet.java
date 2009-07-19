@@ -1,9 +1,10 @@
 package de.brightbyte.wikiword.integrator.data;
 
-import java.util.List;
+import java.util.Collection;
 
 import de.brightbyte.data.LabeledVector;
-import de.brightbyte.data.ValueListMultiMap;
+import de.brightbyte.data.MultiMap;
+import de.brightbyte.data.ValueSetMultiMap;
 
 public class DefaultFeatureSet implements FeatureSet {
 
@@ -59,7 +60,8 @@ public class DefaultFeatureSet implements FeatureSet {
 	
 	}
 	
-		protected ValueListMultiMap<String, FeatureSet.Feature<?>> data = new ValueListMultiMap<String, FeatureSet.Feature<?>>();
+		protected MultiMap<String, FeatureSet.Feature<?>, ? extends Collection<? extends FeatureSet.Feature<?>>> data 
+				= new ValueSetMultiMap<String, FeatureSet.Feature<?>>();
 		
 		public DefaultFeatureSet() {
 		}
@@ -69,8 +71,8 @@ public class DefaultFeatureSet implements FeatureSet {
 		}
 
 		public boolean overlaps(FeatureSet item, String feature) {
-			List<? extends FeatureSet.Feature<?>> a = getFeatures(feature);
-			List<? extends FeatureSet.Feature<?>> b = item.getFeatures(feature);
+			Collection<? extends FeatureSet.Feature<?>> a = getFeatures(feature);
+			Collection<? extends FeatureSet.Feature<?>> b = item.getFeatures(feature);
 			
 			for (Object obj: a) {
 				if (b.contains(obj)) return true;
@@ -80,7 +82,7 @@ public class DefaultFeatureSet implements FeatureSet {
 		}
 		
 		public LabeledVector<Object> getHistogram(String key) {
-			List<? extends Feature<? extends Object>> list = this.<Object>getFeatures(key);
+			Collection<? extends Feature<? extends Object>> list = this.<Object>getFeatures(key);
 			return FeatureSets.<Object>histogram(list);
 		}
 
@@ -104,9 +106,9 @@ public class DefaultFeatureSet implements FeatureSet {
 			
 		}
 
-		public <V> List<? extends Feature<? extends V>> getFeatures(String key) {
-			List<FeatureSet.Feature<?>> features = data.get(key);
-			return (List<? extends Feature<? extends V>>)features; //XXX: unmodifiable?!
+		public <V> Collection<? extends Feature<? extends V>> getFeatures(String key) {
+			Collection<FeatureSet.Feature<?>> features = data.get(key);
+			return (Collection<? extends Feature<? extends V>>)features; //XXX: unmodifiable?!
 		}
 
 		public Iterable<String> keys() {

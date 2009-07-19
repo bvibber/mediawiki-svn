@@ -3,7 +3,7 @@ package de.brightbyte.wikiword.integrator.data;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 
-public class CollapsingAssociationCursor implements DataCursor<Association> {
+public class AggregatingAssociationCursor implements DataCursor<Association> {
 
 	protected DataCursor<Association> cursor;
 	protected Association prev;
@@ -11,7 +11,7 @@ public class CollapsingAssociationCursor implements DataCursor<Association> {
 	protected String sourceKeyField;
 	protected String targetKeyField;
 	
-	public CollapsingAssociationCursor(DataCursor<Association> cursor,  String sourceKeyField, String targetKeyField) {
+	public AggregatingAssociationCursor(DataCursor<Association> cursor,  String sourceKeyField, String targetKeyField) {
 		if (cursor==null) throw new NullPointerException();
 		if (sourceKeyField==null) throw new NullPointerException();
 		if (targetKeyField==null) throw new NullPointerException();

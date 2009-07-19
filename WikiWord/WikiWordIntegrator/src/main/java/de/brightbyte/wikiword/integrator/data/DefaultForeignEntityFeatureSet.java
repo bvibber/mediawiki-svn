@@ -1,6 +1,6 @@
 package de.brightbyte.wikiword.integrator.data;
 
-import java.util.List;
+import java.util.Collection;
 
 
 public class DefaultForeignEntityFeatureSet extends DefaultFeatureSet implements  ForeignEntityFeatureSet {
@@ -32,9 +32,10 @@ public class DefaultForeignEntityFeatureSet extends DefaultFeatureSet implements
 	}
 
 	private String getStringProperty(String field) {
-		List<? extends Feature<? extends Object>> features = getFeatures(field);
+		Collection<? extends Feature<? extends Object>> features = getFeatures(field);
 		if (features==null || features.isEmpty()) return null;
-		Object v = features.iterator().next().getValue();
+		Feature<? extends Object> f = features.iterator().next();
+		Object v = f.getValue();
 		return v==null ? null : String.valueOf(v);
 	}
 

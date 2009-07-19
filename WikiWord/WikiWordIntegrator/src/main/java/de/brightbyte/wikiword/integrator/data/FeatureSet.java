@@ -1,6 +1,6 @@
 package de.brightbyte.wikiword.integrator.data;
 
-import java.util.List;
+import java.util.Collection;
 
 import de.brightbyte.data.LabeledVector;
 
@@ -15,7 +15,7 @@ public interface FeatureSet {
 
 	public <V>void addFeature(String key, V value, Record qualifiers);
 
-	public <V>List<? extends Feature<? extends V>> getFeatures(String key);
+	public <V>Collection<? extends Feature<? extends V>> getFeatures(String key);
 
 	public Iterable<String> keys();
 	

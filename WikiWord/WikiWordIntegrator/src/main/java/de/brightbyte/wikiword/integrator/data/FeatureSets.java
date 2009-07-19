@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.integrator.data;
 
+import java.util.Collection;
 import java.util.List;
 
 import de.brightbyte.abstraction.AbstractedAccessor;
@@ -28,7 +29,7 @@ public class FeatureSets {
 			return f;
 		}
 		
-		public static <T>LabeledVector<T> histogram(List<? extends Feature<? extends T>> list) {
+		public static <T>LabeledVector<T> histogram(Collection<? extends Feature<? extends T>> list) {
 			LabeledVector<T> v = new MapLabeledVector<T>();
 			
 			for (FeatureSet.Feature<? extends T> f: list) {
