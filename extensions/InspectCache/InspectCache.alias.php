@@ -94,6 +94,11 @@ $aliases['ksh'] = array(
 	'InspectCache' => array( 'Cache_beloore', 'Cache_Beloore', 'CacheBeloore' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'InspectCache' => array( 'Cache iwwerpréifen' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'InspectCache' => array( 'Kas_naokieken' ),

@@ -1982,6 +1982,7 @@ Anda dapat memilih dari salah satu opsi berikut.',
 	'openidchooseexisting' => 'Akun telah ada di wiki ini:',
 	'openidchoosepassword' => 'kata sandi:',
 	'openidconvertinstructions' => 'Formulir ini mengijinkan Anda untuk mengganti akun pengguna Anda menjadi OpenID atau menambahkan pranala OpenID',
+	'openidconvertoraddmoreids' => 'Konversi ke OpenID atau tambahkan URL OpenID yang lain',
 	'openidconvertsuccess' => 'Berhasil dikonversi menjadi OpenID',
 	'openidconvertsuccesstext' => 'Anda telah berhasil mengkonversi OpenID Anda menjadi $1.',
 	'openidconvertyourstext' => 'Sudah merupakan OpenID Anda.',
@@ -2003,10 +2004,26 @@ Jika Anda telah memiliki akun di {{SITENAME}}, Anda dapat [[Special:UserLogin|ma
 Untuk menggunakan OpenID di masa yang akan datang, Anda dapat [[Special:OpenIDConvert|mengkonversi akun Anda menjadi OpenID]] setelah Anda masuk log seperti biasa.
 
 Ada banyak [http://openid.net/get penyedia OpenID], dan Anda mungkin telah memiliki akun OpenID di salah satu layanan situs lain.',
+	'openidupdateuserinfo' => 'Mutakhirkan informasi pribadi saya',
+	'openiddelete' => 'Hapus OpenID',
+	'openiddelete-text' => 'Dengan menekan tombol "{{int:openiddelete-button}}", Anda akan menghapuskan OpenID $1 dari akun Anda.
+Anda tidak akan dapat masuk log lagi dengan OpenID ini.',
 	'openiddelete-button' => 'Konfirmasi',
+	'openiddelete-sucess' => 'OpenID telah dihapus dari akun Anda.',
+	'openiddelete-error' => 'Terjadi kesalahan saat berusaha menghapus OpenID dari akun Anda.',
+	'openid-prefstext' => 'Preferensi [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Sembunyikan URL OpenID Anda di halaman pengguna Anda, jika Anda masuk log dengan OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Mutakhirkan informasi dari persona OpenID berikut setiap kali saya masuk log:',
+	'openid-urls-desc' => 'OpenID yang dihubungkan dengan akun Anda:',
 	'openid-urls-action' => 'Tindakan',
 	'openid-urls-delete' => 'Hapus',
+	'openid-add-url' => 'Tambahkan OpenID baru',
+	'openidsigninorcreateaccount' => 'Log Masuk atau Daftarkan Akun Baru',
+	'openid-provider-label-openid' => 'Masukkan URL OpenID Anda',
+	'openid-provider-label-google' => 'Log masuk mengunakan akun Google Anda',
+	'openid-provider-label-yahoo' => 'Log masuk mengunakan akun Yahoo Anda',
+	'openid-provider-label-aol' => 'Masukkan nama pengguna AOL Anda',
+	'openid-provider-label-other-username' => 'Masukkan nama pengguna $1 Anda',
 );
 
 /** Icelandic (Íslenska)

@@ -35,6 +35,13 @@ $messages['bs'] = array(
 	'nsfilerepo-desc' => 'Omogućuje osobine zasnovane na imenskim prostorima za postavljene datoteke',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'nsfilerepo-desc' => 'Pśidawa nagratym datajam funkcije na zakłaźe mjenjowych rumow',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -103,6 +110,13 @@ $messages['ksh'] = array(
  */
 $messages['nl'] = array(
 	'nsfilerepo-desc' => 'Biedt op naamruimte gebaseerde mogelijkheden voor geüploade bestanden',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'nsfilerepo-desc' => 'Apond de foncionalitats als fichièrs telecargats per espaci de nom',
 );
 
 /** Piedmontese (Piemontèis)

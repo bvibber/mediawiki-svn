@@ -212,12 +212,16 @@ $messages['bg'] = array(
 	'dt_viewxml_namespaces' => 'Именни пространства',
 	'dt_viewxml_simplifiedformat' => 'Опростен формат',
 	'dt_xml_namespace' => 'Именно пространство',
+	'dt_xml_pages' => 'Страници',
 	'dt_xml_page' => 'Страница',
+	'dt_xml_template' => 'Шаблон',
 	'dt_xml_field' => 'Поле',
 	'dt_xml_name' => 'Име',
 	'dt_xml_title' => 'Заглавие',
 	'dt_xml_id' => 'Номер',
 	'dt_xml_freetext' => 'Свободен текст',
+	'importxml' => 'Внасяне на XML',
+	'dt_import_importing' => 'Внасяне...',
 );
 
 /** Bosnian (Bosanski)
@@ -444,6 +448,7 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author PieRRoMaN
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'dt-desc' => 'Permet l’import et l’export de données contenues dans des appels de modèles',
@@ -465,7 +470,7 @@ $messages['fr'] = array(
 	'dt_import_selectfile' => 'Veuillez sélectionner le fichier $1 à importer :',
 	'dt_import_editsummary' => 'Importation $1',
 	'dt_import_importing' => 'Import en cours...',
-	'dt_import_success' => '$1 {{PLURAL:$1|page sera crée|pages seront crées}} depuis le fichier $2.',
+	'dt_import_success' => '$1 {{PLURAL:$1|page sera créée|pages seront créées}} depuis le fichier $2.',
 	'importcsv' => 'Import CSV',
 	'dt_importcsv_badheader' => 'Erreur : le titre de colonne $1, « $2 », doit être soit « $3 », « $4 » ou de la forme « nom_du_modèle[nom_du_champ] »',
 	'right-datatransferimport' => 'Importer des données',

@@ -250,8 +250,12 @@ Wann De heh di Sigg aanlääß, donn dä iere Tittel uß dämm <code lang="en"><
  * @author Robby
  */
 $messages['lb'] = array(
+	'indexfunc-desc' => 'Parser-Fonctioun fir Viruleedungen an Homonymie-Säiten automatesch unzeleeën',
 	'indexfunc-badtitle' => 'Net valabelen Titel: "$1"',
 	'indexfunc-index-exists' => 'D\'Säit "$1" gëtt et schonn',
+	'indexfunc-index-taken' => '"$1" gëtt schonn als Index vum "$2" benotzt',
+	'index' => 'Index',
+	'index-legend' => 'Am Index sichen',
 	'index-search' => 'Sichen:',
 	'index-missing-param' => 'Dës Säit kann net ouni Parameter benotzt ginn',
 	'index-emptylist' => 'Et gëtt keng Säiten déi mat "$1" assoziéiert sinn',
@@ -281,6 +285,7 @@ Als u deze pagina aanmaakt, verwijder deze pagina dan uit de <nowiki>{{#index:}}
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'indexfunc-desc' => "Foncion del parser per crear de paginas de redireccion e d'omonimia automaticament",
 	'indexfunc-badtitle' => 'Títol invalid : « $1»',
 	'indexfunc-editwarn' => 'Atencion : Aqueste títol es un títol d’indèx per [[$1]].
 Asseguratz-vos que la pagina que sètz a mand de crear existís pas ja jos un autre títol.
@@ -291,6 +296,7 @@ Se creatz aquesta pagina, suprimissètz aqueste títol de la <nowiki>{{#index:}}
 	'index-legend' => 'Recercar dins l’indèx',
 	'index-search' => 'Cercar :',
 	'index-submit' => 'Mandar',
+	'index-disambig-start' => "'''$1''' se pòt referir a mai d'una pagina :",
 	'index-missing-param' => 'Aquesta pagina pòt pas èsser utilizada sens paramètre',
 	'index-emptylist' => 'I a pas de paginas ligadas a « $1 »',
 );

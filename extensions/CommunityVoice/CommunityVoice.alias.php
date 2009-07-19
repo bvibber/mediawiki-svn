@@ -53,6 +53,11 @@ $aliases['ksh'] = array(
 	'CommunityVoice' => array( 'Metmaacherstemme' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'CommunityVoice' => array( 'Stëmm vun der Gemeinschaft' ),
+);
+
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
 	'CommunityVoice' => array( 'സമൂഹശബ്ദം' ),

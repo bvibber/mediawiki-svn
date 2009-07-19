@@ -675,13 +675,40 @@ $messages['fi'] = array(
 	'extdist-choose-extension' => 'Valitse mitkä laajennukset haluat ladata:',
 	'extdist-submit-extension' => 'Jatka',
 	'extdist-current-version' => 'Kehitysversio (trunk)',
+	'extdist-choose-version' => '<big>Olet lataamassa laajennusta ”<b>$1</b>”.</big>
+
+Valitse MediaWikisi versio.
+
+Useimmat laajennukset toimivat useiden MediaWikin versioiden välillä. Jos MediaWikisi versiota ei ole täällä tai tarvit viimeisimpiä ominaisuuksia laajennuksesta, kokeile nykyistä versiota.',
 	'extdist-no-versions' => 'Valitusta laajennuksesta ($1) ei ole saatavilla yhtään versiota!',
 	'extdist-submit-version' => 'Jatka',
 	'extdist-no-remote' => 'Subversion-asiakasohjelmaan ei saatu yhteyttä.',
 	'extdist-remote-error' => 'Virhe ulkoisesta subversion-asiakasohjelmasta: <pre>$1</pre>',
 	'extdist-remote-invalid-response' => 'Kelpaamaton vastaus ulkoiselta subversion-asiakasohjelmalta.',
 	'extdist-svn-error' => 'Subversion kohtasi virheen: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'XML-dataa ei voitu käsitellä ”svn info” -komennosta: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar-ohjelman suoritus päättyi paluuarvoon $1:',
+	'extdist-created' => "Tilannevedos laajennuksen <b>$1</b> versiosta <b>$2</b> MediaWikin versiolle <b>$3</b> on luotu. Latauksesi pitäisi alkaa automaattisesti viiden sekunnin kuluttua.
+
+URL tälle tilannevedokselle on
+:$4
+Osoitetta voi käyttää välittömään lataukseen palvelimelle, mutta älä laita sitä kirjanmerkiksi, koska sen sisältö ei päivity ja se saatetaan poistaa.
+
+Tar-paketti pitäisi purkaa extensions-hakemistoon. Esimerkiksi unix-tyylisessä käyttöjärjestelmässä se tapahtuu seuraavalla komennolla:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Windowsissa voit käyttää [http://www.7-zip.org/ 7-zip]-ohjelmaa tiedostojen purkamiseen.
+
+Jos wikisi on etäpalvelimella, pura tiedostot väliaikaishakemistoon paikalliselle tietokoneelle ja tämän jälkeen lähetä '''kaikki''' puretut tiedostot extensions-hakemistoon etäpalvelimelle.
+
+Huomaa, että jotkin laajennukset vaativat tiedoston ''ExtensionFunctions.php'', jonka sijainti on <tt>extensions/ExtensionFunctions.php</tt>. Tiedosto sijaitsee varsinaisen laajennushakemiston ''ylähakemistossa''. Näille laajennuksille luotu tilannevedos sisältää tämän tiedoston tar-pommina, purettuna juuressa ./ExtensionFunctions.php. Älä jätä lähettämättä tätä tiedostoa etäpalvelimellesi.
+
+Kun olet purkanut tiedostot, sinun tulee rekisteröidä laajennus LocalSettings.php-tiedostoon. Laajennuksen ohjeissa pitäisi olla ohjeet siihen.
+
+Jos sinulla on kysymyksiä tähän jakelujärjestelmään liittyen, sivulla [[Extension talk:ExtensionDistributor]] voi keskustella aiheesta.",
 	'extdist-want-more' => 'Hae toinen laajennus',
 );
 

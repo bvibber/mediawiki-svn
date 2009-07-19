@@ -195,9 +195,11 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'usabilityinitiative' => 'Iniciativa de Usabilidade',
+	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Wikipedia Usability Initiative, para melhorar a usabilidade do MediaWiki',
 );
 
 /** Tarandíne (Tarandíne)

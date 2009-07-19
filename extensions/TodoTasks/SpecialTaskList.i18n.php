@@ -203,6 +203,13 @@ Da pogledate Vaš cijeli spisak zadataka idite na %s.
 Vaš prijateljski %s sistem obavijesti',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'tasklistprojdisp' => 'پیشاندان',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

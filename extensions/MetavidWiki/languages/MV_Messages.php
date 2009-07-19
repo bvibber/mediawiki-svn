@@ -1736,9 +1736,11 @@ $messages['da'] = array(
  * @author MF-Warburg
  * @author Melancholie
  * @author MichaelFrey
+ * @author Pill
  * @author Purodha
  * @author Revolus
  * @author Tbleher
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -1764,8 +1766,10 @@ Besuche die <a href="http://metavid.org/wiki/Client_Playback">MetaVid-Projektsei
 	'upload-transcoded-status' => 'Transcodiert',
 	'uploaded-status' => 'Hochgeladen',
 	'upload-select-file' => 'Datei auswählen …',
+	'wgfogg_wrong_version' => 'Du besitzt eine veraltete Version von Firefogg. <a href="http://firefogg.org">Bitte führe ein Update durch.</a>.',
 	'mv_media_search' => 'Mediensuche',
 	'rsd_results_desc' => 'Ergebnisse',
+	'rsd_no_results' => 'Keine Suchergebnisse für <b>$1</b>',
 	'rsd_results_next' => 'weiter',
 	'rsd_results_prev' => 'zurück',
 	'mv_upload' => 'Hochladen',

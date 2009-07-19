@@ -2104,7 +2104,7 @@ $wdMessages['de'] = array(
 	'datasearch_within_words' => 'Innerhalb der Wörter:',
 	'datasearch_within_ext_ids' => 'Innerhalb des externen Identifikators:',
 	'datasearch_showing_only' => 'Es wird nur ein Maximum von {{PLURAL:$1|einer Übereinstimmung|$1 Übereinstimmungen}} gezeigt.',
-	'datasearch_match_ext_ids' => 'Externer Identifikator passt zu <i>$1</i>',
+	'datasearch_match_ext_ids' => 'Externe Identifikatoren passend zu <i>$1</i>',
 	'datasearch_match_words' => 'Zu <i>$1</i> passende Wörter und zugehörige Bedeutungen',
 	'datasearch_match_words_lang' => 'Zu <i>$2</i> passende Wörter in <i>$1</i> und zugehörige Bedeutungen',
 	'importtsv' => 'Wikidata: TSV importieren',
@@ -5814,9 +5814,12 @@ $wdMessages['ksh'] = array(
 	'datasearch_language' => 'Shprooch:',
 	'datasearch_found_word' => 'Jefonge Woot',
 	'datasearch_meaning' => 'Bedüggdeniß',
+	'datasearch_ext_identifier' => ' Identifier vun ußerhallef',
 	'datasearch_search_text' => 'Tex zem Söke:',
 	'datasearch_within_words' => 'En Wööter dren:',
+	'datasearch_within_ext_ids' => 'Ennerhallef vun Identifyer vun ußerhallef:',
 	'datasearch_showing_only' => 'Mer zeije nur {{PLURAL:$1|jenou eine|bes $1|keine}} Treffer.',
+	'datasearch_match_ext_ids' => 'Identifier vun ußerhallef, di op <i>$1</i> paße donn',
 	'datasearch_match_words' => 'Wööter, di op <i>$1</i> passe donn, un dänne ier Bedüggdeniß',
 	'datasearch_match_words_lang' => 'Wööter en <i>$1</i>, di op <i>$2</i> passe donn, un dänne ier Bedüggdeniß',
 	'importtsv' => 'Wikidata: En Datei uß Reije met Wääte met Tabulatore dozwesche empoteere',
@@ -5858,29 +5861,30 @@ Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es z
 	'ow_transaction_from_transaction' => 'Vun de Transakßjuhn:',
 	'ow_transaction_count' => 'Aanzahl:',
 	'ow_transaction_user' => 'Metmaacher-Name:',
-	'ow_transaction_show_rollback' => 'De Knöpp zom Retuur maache aanzeije:',
+	'ow_transaction_show_rollback' => 'De Knöpp zom retuur Maache aanzeije:',
 	'ow_transaction_rollback_button' => 'Lohß Jonn!',
 	'ow_transaction_rollback_header' => 'Retuur maache',
 	'ow_transaction_no_action' => 'Donn nix',
 	'ow_transaction_previous_version' => 'Vörijje Version',
 	'ow_transaction_restore' => 'Wider zerök holle',
 	'ow_transaction_remove' => 'Fott nämme',
+	'ow_transaction_operation' => ' Operazjuhn',
 	'ow_transaction_is_latest' => 'Es et Letzte',
 	'ow_transaction_class_member' => 'En dä Klaß',
 	'ow_transaction_object' => 'Objäk',
 	'ow_transaction_first_dm' => 'Eezte faßjelaate un explizeete Bedüggdeniß',
 	'ow_transaction_second_dm' => 'Zweite faßjelaate un explizeete Bedüggdeniß',
 	'ow_transaction_summary' => 'Zosammejefaß, Quelle',
-	'conceptmapping' => 'Wikidata: Konzäp-Zohoodenung',
+	'conceptmapping' => 'Wikidata: {{int:ow_conceptmapping_title}}',
 	'ow_conceptmapping_title' => 'Konzäp-Zohoodenung',
 	'ow_conceptmapping_help' => '<p>Müjjelesche Akßjuhne: <ul>
-<li><code>&action=insert&<data_context_prefix>=<defined_id>& </code>{{int:ellipsis}} — donn en Afbelldung dobei</li>
-<li><code>&action=get&concept=<concept_id> </code> — liß en Afbelldung zerök</li>
-<li><code>&action=list_sets </code> — jif en Leß met müjjelesche data context prefixes uß, un woh se sesch drop betrecke.</li>
+<li><code>&action=insert&<data_context_prefix>=<defined_id>& </code>{{int:ellipsis}} — donn en Zoh_Oodenung dobei</li>
+<li><code>&action=get&concept=<concept_id> </code> — liß en Zoh_Oodenung zerök</li>
+<li><code>&action=list_sets </code> — jif en Leß met müjjelesche <code lang="en">>data context prefixes</code> uß, un woh se sesch drop betrecke.</li>
 <li><code>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> </code> — jif all de övverijje faßjelaate un explizeete Bedüggdeniße uß för ein bestemmpte faßjelaate un explizeete Bedüggdeniß en enem Konzep</li>
-<li><code>&action=help </code> — Zeich Hülp.</li>
+<li><code>&action=help </code> — Zeich Hülp aan.</li>
 </ul></p>',
-	'ow_conceptmapping_uitext' => '<p>Met em <i lang="en">Concept Mapping</i> läsch mer faß, wat för en faßjelaate un explizeete Bedüggdeniß en einem <i lang="en">Dataset</i> desellve sin, wi ander faßjelaate un explizeete Bedüggdeniße en andere <i lang="en">Datasets</i>.</p>',
+	'ow_conceptmapping_uitext' => '<p>Pär „{{int:ow_conceptmapping_title}}“ läsch mer faß, wat för en faßjelaate un explizeete Bedüggdeniß em eine <i lang="en">Dataset</i> desellve sin, wi ander faßjelaate un explizeete Bedüggdeniße en andere <i lang="en">Datasets</i>.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Deit mer leid, en Akziun „$1“ kenne mer nit.',
 	'ow_dm_OK' => 'Lohß Jonn!',
 	'ow_dm_not_present' => 'nit enjejovve',

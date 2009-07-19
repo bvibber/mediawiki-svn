@@ -12,3 +12,9 @@ $aliases = array();
 $aliases['en'] = array(
 	'MostRevisors' => array( 'MostRevisors' ),
 );
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'MostRevisors' => array( 'MeesteBewerkers' ),
+);
+

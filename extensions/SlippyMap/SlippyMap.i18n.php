@@ -56,10 +56,13 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'slippymap_desc' => 'Short description of the Slippymap extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'slippymap_extname' => '{{Optional}}',
+	'slippymap_tagname' => '{{Optional}}',
 	'slippymap_error' => '* $1 is the name of the extension
 * $2 is an error message
 
@@ -165,10 +168,12 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'slippymap_desc' => 'Ergänzt ein <tt>&lt;slippymap&gt;</tt>-Tag zum Einbinden von statischen und dynamischen Karten. Unterstützt werden mehrere Kartendienste einschließlich [http://openstreetmap.org OpenStreetMap] und NASA Worldwind',
+	'slippymap_error_unknown_attribute' => 'Das Attribut <tt>$1</tt> ist unbekannt.',
 	'slippymap_code' => 'Wikitext für diese Kartenansicht:',
 	'slippymap_button_code' => 'Zeige Wikicode',
 	'slippymap_resetview' => 'Zurücksetzen',
@@ -216,13 +221,14 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author Grondin
  * @author PieRRoMaN
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'slippymap_desc' => 'Ajoute une balise <tt>&lt;slippymap&gt;</tt> qui autorise l’affichage d’une carte statique & dynamique. Supportant plusieurs services de cartes tel que [http://openstreetmap.org OpenStreetMap] et NASA Worldwind',
 	'slippymap_error' => 'Erreur $1 : $2',
 	'slippymap_errors' => 'Erreurs $1 :',
 	'slippymap_error_tag_content_given' => 'La balise <tt>&lt;$1&gt;</tt> ne prend que des arguments en attribut (&lt;$1 [...]/&gt;), pas de texte (&lt;$1&gt; ... &lt;/$1&gt;)',
-	'slippymap_error_missing_arguments' => 'Vous n’avez fournis aucun attributs de la balise &lt;$1&gt;, voir les [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax informations d’utilisation ] pour savoir comment l’appeler.',
+	'slippymap_error_missing_arguments' => 'Vous n’avez fourni aucun attribut de la balise &lt;$1&gt;, voir les [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax informations d’utilisation ] pour savoir comment l’appeler.',
 	'slippymap_error_missing_attribute_lat' => 'Attribut <tt>lat</tt> manquant (pour la latitude).',
 	'slippymap_error_missing_attribute_lon' => 'Attribut <tt>lon</tt> manquant (pour la longitude).',
 	'slippymap_error_missing_attribute_zoom' => 'Attribut <tt>zoom</tt> manquant (pour le niveau de zoom).',

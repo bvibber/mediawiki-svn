@@ -570,6 +570,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'inspectcache-ok' => 'Lass',
+	'inspectcache-message' => 'Tëschespäicher (Cache) vun de Messagen',
 	'inspectcache-get' => 'Kréien',
 	'inspectcache-delete' => 'Läschen',
 	'inspectcache-deleted' => 'Cache läschen',

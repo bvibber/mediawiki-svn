@@ -709,6 +709,7 @@ $messages['bg'] = array(
 	'code-field-comments' => 'Бележки',
 	'code-field-path' => 'Път',
 	'code-field-text' => 'Бележка',
+	'code-field-select' => 'Избиране',
 	'code-rev-author' => 'Автор:',
 	'code-rev-date' => 'Дата:',
 	'code-rev-message' => 'Коментар:',

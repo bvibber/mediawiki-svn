@@ -206,6 +206,13 @@ $messages['tr'] = array(
 	'clientside-desc' => 'HTML, CSS ve JavaScript gibi istemci-tarafındaki formatlarda kod oluşturmak için fonksiyonlar sağlar',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'clientside-desc' => 'El fornisse dele funsion par generar codice in formati client-side come HTML, CSS e JavaScript',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

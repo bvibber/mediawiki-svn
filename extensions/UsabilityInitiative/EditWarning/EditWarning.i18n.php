@@ -286,9 +286,12 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'editwarning' => 'Avido de edição',
+	'editwarning-desc' => 'Exibir um aviso quando um utilizador tenta deixar a caixa de edição sem gravar',
+	'editwarning-warning' => 'Abandonar esta página fará com que você perca todas as alterações que fez.',
 );
 
 /** Russian (Русский)

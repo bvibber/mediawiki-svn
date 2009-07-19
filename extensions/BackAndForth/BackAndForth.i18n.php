@@ -201,9 +201,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'backforth-next' => 'Επόμενο ($1)',
+	'backforth-desc' => 'Προσθέτει τους σύνδεσμους αλφαβητικής σελιδοποίησης "Προηγούμενο" και "Επόμενο" στο πάνω μέρος των σελίδων',
 	'backforth-prev' => 'Προηγούμενο ($1)',
 );
 

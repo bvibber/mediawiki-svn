@@ -156,6 +156,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'deletebatch-link-back' => 'Връщане към специалната страница',
 	'deletebatch-as' => 'Стартиране на скрипта като:',
 	'deletebatch-or' => '<b>ИЛИ</b>',
 	'deletebatch-delete' => 'Изтриване',

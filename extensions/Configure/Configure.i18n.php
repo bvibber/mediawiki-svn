@@ -962,6 +962,8 @@ $messages['bg'] = array(
 	'configure-condition-operator-or' => 'Или',
 	'configure-condition-operator-and' => 'И',
 	'configure-condition-operator-not' => 'Не',
+	'configure-condition-name-4' => 'В групи',
+	'configure-condition-name-5' => 'Потребителски IP адрес',
 );
 
 /** Bosnian (Bosanski)

@@ -345,6 +345,7 @@ $messages['dsb'] = array(
 	'readerfeedback-voted' => "'''Zda se, až sy južo pógódnośił toś ten bok''' ([$3 Komentary abo pšašanja?]).",
 	'readerfeedback-submitting' => 'Wótpósćeła se...',
 	'readerfeedback-finished' => 'Źěkujomy se!',
+	'readerfeedback-tagfilter' => 'Toflicka:',
 	'tooltip-ca-ratinghist' => 'Pógódnośenja cytarjow za toś ten bok',
 );
 
