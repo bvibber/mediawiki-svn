@@ -11,7 +11,7 @@ $messages['en'] = array(
 	'cooperationstatistics' => 'Cooperation statistics',
 	'cooperationstatistics-desc' => 'Show [[Special:CooperationStatistics|cooperation statistics on main namespace]].',
 	'cooperationstatistics-text' => 'Show cooperation statistics on main namespace.
-From [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] to [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revisors)<br />
+From [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] to [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revisors.<br />
 See also the [[Special:MostRevisors|\'\'\'pages with the most revisors\'\'\']] and [[Special:MostRevisions|pages with the most revisions]].',
 	'cooperationstatistics-tablearticle' => 'Page count',
 	'cooperationstatistics-tablevalue' => 'Number of editors',
