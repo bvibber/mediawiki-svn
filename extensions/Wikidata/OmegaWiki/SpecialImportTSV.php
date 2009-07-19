@@ -9,9 +9,6 @@
 	$wgExtensionFunctions[] = 'wfSpecialImportTSV';
 
 	function wfSpecialImportTSV() {
-	        #global $wgMessageCache;
-            #    $wgMessageCache->addMessages(array('importtsv'=>'Wikidata: Import TSV'),'en');
-                        
 		class SpecialImportTSV extends SpecialPage {
 			
 			function SpecialImportTSV() {

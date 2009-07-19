@@ -15,7 +15,6 @@ if (!defined('MEDIAWIKI')) die();
  * @license GPLv2 or later.
  */
 
-
 $wgExtensionFunctions[] = 'wfSpecialCopy';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'SpecialCopy',
@@ -23,12 +22,6 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 function wfSpecialCopy() {
-	# Add messages
-	#require_once "$IP/includes/SpecialPage.php";
-
-        global $wgMessageCache;
-        $wgMessageCache->addMessages(array('Copy'=>'Wikidata: Copy'),'en');
-                
 	require_once("Wikidata.php");
 	require_once("WikiDataAPI.php");
 	require_once("Utilities.php");

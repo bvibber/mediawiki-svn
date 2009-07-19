@@ -9,9 +9,6 @@
 	$wgExtensionFunctions[] = 'wfSpecialExportTSV';
 
 	function wfSpecialExportTSV() {
-	        #global $wgMessageCache;
-            #    $wgMessageCache->addMessages(array('exporttsv'=>'Wikidata: Export TSV'),'en');
-                        
 		class SpecialExportTSV extends SpecialPage {
 			
 			function SpecialExportTSV() {

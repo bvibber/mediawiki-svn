@@ -9,10 +9,6 @@
 	$wgExtensionFunctions[] = 'wfSpecialAddCollection';
 
 	function wfSpecialAddCollection() {
-	# Moved to SpecialLanguages.i18n.php
-	#        global $wgMessageCache;
-    #            $wgMessageCache->addMessages(array('addcollection'=>'Wikidata: Add collection'),'en');
-                        
 		class SpecialAddCollection extends SpecialPage {
 			function SpecialAddCollection() {
 				SpecialPage::SpecialPage('AddCollection');

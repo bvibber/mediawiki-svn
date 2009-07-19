@@ -5,250 +5,251 @@
  * @addtogroup Extensions
  */
 
-$wdMessages = array();
+$messages = array();
 
 /** English
  */
-$wdMessages['en'] = array(
-	'languages'                             => 'Wikidata: Language manager',
-	'langman-desc'                          => 'Add and change language settings with [[Special:Languages]]',
-	'langman_title'                         => 'Language manager',
-	'langman_not_allowed'					=> 'You do not have permission to change language settings.',
-	'langman_header'						=> 'Type the language code and its English name below:',
-	'langman_req_fields'					=> 'Both language name and ISO 639-3 code are required!',
-	'langman_adding'						=> 'Adding language $1 with key $2.',
-	'langman_langname'						=> 'Language name:',
-	'langman_iso639-3'						=> 'ISO 639-3 code:',
-	'langman_iso639-2'						=> 'ISO 639-2 code:',
-	'langman_wikimedia'						=> 'Wikimedia code:',
-	'langman_field_optional'				=> '(optional)',
-	'langman_addlang'						=> 'Add language',
+$messages['en'] = array(
+	'languages' => 'Wikidata: Language manager',
+	'langman-desc' => 'Add and change language settings with [[Special:Languages]]',
+	'langman_title' => 'Language manager',
+	'langman_not_allowed' => 'You do not have permission to change language settings.',
+	'langman_header' => 'Type the language code and its English name below:',
+	'langman_req_fields' => 'Both language name and ISO 639-3 code are required!',
+	'langman_adding' => 'Adding language $1 with key $2.',
+	'langman_langname' => 'Language name:',
+	'langman_iso639-3' => 'ISO 639-3 code:',
+	'langman_iso639-2' => 'ISO 639-2 code:',
+	'langman_wikimedia' => 'Wikimedia code:',
+	'langman_field_optional' => '(optional)',
+	'langman_addlang' => 'Add language',
 
-	'importlangnames'						=> 'Wikidata: Import language names',
-	'importlangnames_title'					=> 'Import Language Names',
-	'importlangnames_not_allowed'			=> 'You do not have permission to import language names.',
-	'importlangnames_added'					=> 'Language names for "$1" added.',
-	'importlangnames_not_found'				=> '<strong>No language entry for "$1" found!</strong>',
+	'importlangnames' => 'Wikidata: Import language names',
+	'importlangnames_title' => 'Import language names',
+	'importlangnames_not_allowed' => 'You do not have permission to import language names.',
+	'importlangnames_added' => 'Language names for "$1" added.',
+	'importlangnames_not_found' => '<strong>No language entry for "$1" found!</strong>',
 
-	'datasearch'                            => 'Wikidata: Data search',
-	'datasearch_language'					=> 'Language:',
-	'datasearch_found_word'					=> 'Found word',
-	'datasearch_meaning'					=> 'Meaning',
-	'datasearch_ext_identifier'				=> 'External identifier',
-	'datasearch_search_text'				=> 'Search text:',
-	'datasearch_within_words'				=> 'Within words:',
-	'datasearch_within_ext_ids'				=> 'Within external identifiers:',
-	'datasearch_showing_only'				=> 'Showing only a maximum of $1 {{PLURAL:$1|match|matches}}.',
-	'datasearch_match_ext_ids'				=> 'External identifiers matching <i>$1</i>',
-	'datasearch_match_words'				=> 'Words matching <i>$1</i> and associated meanings',
-	'datasearch_match_words_lang'			=> 'Words in <i>$1</i> matching <i>$2</i> and associated meanings',
-	
-	'importtsv'								=> 'Wikidata: Import TSV',
-	'ow_importtsv_title1'					=> 'Import TSV',
-	'ow_importtsv_title2'					=> 'Import definitions and translations',
-	'ow_importtsv_header'					=> '<p>Import definitions and translations from a tab delimited text file that you may have exported from OpenOffice.org, Excel or other spreadsheet software.</p>
+	'datasearch' => 'Wikidata: Data search',
+	'datasearch_language' => 'Language:',
+	'datasearch_found_word' => 'Found word',
+	'datasearch_meaning' => 'Meaning',
+	'datasearch_ext_identifier' => 'External identifier',
+	'datasearch_search_text' => 'Search text:',
+	'datasearch_within_words' => 'Within words:',
+	'datasearch_within_ext_ids' => 'Within external identifiers:',
+	'datasearch_showing_only' => 'Showing only a maximum of $1 {{PLURAL:$1|match|matches}}.',
+	'datasearch_match_ext_ids' => 'External identifiers matching <i>$1</i>',
+	'datasearch_match_words' => 'Words matching <i>$1</i> and associated meanings',
+	'datasearch_match_words_lang' => 'Words in <i>$1</i> matching <i>$2</i> and associated meanings',
+
+	'importtsv' => 'Wikidata: Import TSV',
+	'ow_importtsv_title1' => 'Import TSV',
+	'ow_importtsv_title2' => 'Import definitions and translations',
+	'ow_importtsv_header' => '<p>Import definitions and translations from a tab delimited text file that you may have exported from OpenOffice.org, Excel or other spreadsheet software.</p>
 <p>The format of the file must be the same as the files exported on the [[Special:ExportTSV|ExportTSV]] page. If you\'ve changed the column names, the import will fail. If you\'ve changed the id or the defining expression of any defined meaning, that line will be ignored. If you\'ve added columns, they must be in the form \'definitions_iso\' or \'translations_iso\', where iso is an ISO 639-3 language code.</p>
 <p>If the \'test run\' box is checked, any actions that would be taken are reported, but no changes are actually made. You are encouraged to do a test run before you do an actual import.</p>',
-	'ow_importtsv_not_allowed'				=> 'You do not have permission to do a TSV import.',
-	'ow_importtsv_importing'				=> 'Importing TSV data',
-	'ow_importtsv_import_failed'			=> 'Import failed',
-	'ow_importtsv_file'						=> 'TSV File:',
-	'ow_importtsv_test_run'					=> 'Test run:',
-	'ow_importtsv_not_utf8'					=> "<p>This doesn't appear to be a UTF-8 encoded file. The file <i>must</i> be UTF-8 encoded.
+	'ow_importtsv_not_allowed' => 'You do not have permission to do a TSV import.',
+	'ow_importtsv_importing' => 'Importing TSV data',
+	'ow_importtsv_import_failed' => 'Import failed',
+	'ow_importtsv_file' => 'TSV File:',
+	'ow_importtsv_test_run' => 'Test run:',
+	'ow_importtsv_not_utf8' => "<p>This doesn't appear to be a UTF-8 encoded file. The file <i>must</i> be UTF-8 encoded.
 Make sure your application has saved or exported the file correctly.</p>",
-	'ow_importtsv_not_tsv'					=> '<p>This does not appear to be a valid TSV file.</p>',
-	'ow_importtsv_bad_columns'				=> "<p>Incorrect column name '$1'.<br />
-Columns should be named 'definition_iso' or 'translations_iso', 
+	'ow_importtsv_not_tsv' => '<p>This does not appear to be a valid TSV file.</p>',
+	'ow_importtsv_bad_columns' => "<p>Incorrect column name '$1'.<br />
+Columns should be named 'definition_iso' or 'translations_iso',
 where iso is the language code.</p>",
-	'ow_importtsv_test_run_title'			=> 'Test run for importing TSV data',
-	'ow_importtsv_nothing_added'			=> 'Nothing added.',
-	'ow_importtsv_nothing_added_test'		=> 'Nothing added (you did a test run).',
-	'ow_importtsv_results'					=> 'Added $1 {{PLURAL:$1|definition|definitions}} and $2 {{PLURAL:$2|translation|translations}}.',
-	'ow_impexptsv_unknown_lang'				=> '<p>Unknown or incorrect language: $1.<br />
+	'ow_importtsv_test_run_title' => 'Test run for importing TSV data',
+	'ow_importtsv_nothing_added' => 'Nothing added.',
+	'ow_importtsv_nothing_added_test' => 'Nothing added (you did a test run).',
+	'ow_importtsv_results' => 'Added $1 {{PLURAL:$1|definition|definitions}} and $2 {{PLURAL:$2|translation|translations}}.',
+	'ow_impexptsv_unknown_lang' => '<p>Unknown or incorrect language: $1.<br />
 Languages must be ISO 639-3 language codes.</p>',
 
-	'exporttsv'								=> 'Wikidata: Export TSV',
-	'ow_exporttsv_title'					=> 'Export a collection to TSV',
-	'ow_exporttsv_header'					=> "<p>Export a collection to a tab separated text format that you can import in OpenOffice.org, Excel or other spreadsheet software.<br />
+	'exporttsv' => 'Wikidata: Export TSV',
+	'ow_exporttsv_title' => 'Export a collection to TSV',
+	'ow_exporttsv_header' => "<p>Export a collection to a tab separated text format that you can import in OpenOffice.org, Excel or other spreadsheet software.<br />
 	Select a collection to export. In the languages text box, enter a comma separated list of ISO 639-3 languages codes. Start with the languages that you will be translating from (pick as many as you like) and finish with the ones you'll be translating to. Then click 'Create' to create the file.</p>",
-	'ow_exporttsv_languages'				=> 'Languages:',
-	'ow_exporttsv_not_allowed'				=> 'You do not have permission to do a TSV export.',
-	'ow_exporttsv_export_failed'			=> 'Export failed',
-		
-	'addcollection'							=> 'Wikidata: Add collection',
-	'ow_save'                               => 'Save',
-	'ow_history'                            => 'History',
-	'ow_datasets'                           => 'Data-set selection',
-	'ow_noedit_title'                       => 'No permission to edit',
-	'ow_noedit'                             => 'You are not permitted to edit pages in the dataset "$1".
+	'ow_exporttsv_languages' => 'Languages:',
+	'ow_exporttsv_not_allowed' => 'You do not have permission to do a TSV export.',
+	'ow_exporttsv_export_failed' => 'Export failed',
+
+	'addcollection' => 'Wikidata: Add collection',
+	'ow_save' => 'Save',
+	'ow_history' => 'History',
+	'ow_datasets' => 'Data-set selection',
+	'ow_noedit_title' => 'No permission to edit',
+	'ow_noedit' => 'You are not permitted to edit pages in the dataset "$1".
 Please see [[{{MediaWiki:Ow editing policy url}}|our editing policy]].',
-	'ow_editing_policy_url'                 => 'Project:Permission policy',
-	'ow_uipref_datasets'                    => 'Default view:',
-	'ow_uiprefs'                            => 'Wikidata',
-	'ow_none_selected'                      => 'None selected',
+	'ow_editing_policy_url' => 'Project:Permission policy',
+	'ow_uipref_datasets' => 'Default view:',
+	'ow_uiprefs' => 'Wikidata',
+	'ow_none_selected' => 'None selected',
 
-	'transaction'							=> 'Wikidata: Transaction log',
-	'ow_transaction_from_transaction'		=> 'From transaction:',
-	'ow_transaction_count'					=> 'Count:',
-	'ow_transaction_user'					=> 'User name:',
-	'ow_transaction_show_rollback'			=> 'Show roll back controls:',
-	'ow_transaction_rollback_button'		=> 'Roll back',
-	'ow_transaction_rollback_header'		=> 'Roll back',
-	'ow_transaction_no_action'				=> 'Do nothing',
-	'ow_transaction_previous_version'		=> 'Previous version',
-	'ow_transaction_restore'				=> 'Restore',
-	'ow_transaction_remove'					=> 'Remove',
-	'ow_transaction_operation'				=> 'Operation',
-	'ow_transaction_is_latest'				=> 'Is latest',
-	'ow_transaction_class_member'      		=> 'Class member',
-	'ow_transaction_object'	      			=> 'Object',
-	'ow_transaction_first_dm'      			=> 'First defined meaning',
-	'ow_transaction_second_dm'      		=> 'Second defined meaning',
-	'ow_transaction_summary'				=> 'Summary',
+	'transaction' => 'Wikidata: Transaction log',
+	'ow_transaction_from_transaction' => 'From transaction:',
+	'ow_transaction_count' => 'Count:',
+	'ow_transaction_user' => 'User name:',
+	'ow_transaction_show_rollback' => 'Show roll back controls:',
+	'ow_transaction_rollback_button' => 'Roll back',
+	'ow_transaction_rollback_header' => 'Roll back',
+	'ow_transaction_no_action' => 'Do nothing',
+	'ow_transaction_previous_version' => 'Previous version',
+	'ow_transaction_restore' => 'Restore',
+	'ow_transaction_remove' => 'Remove',
+	'ow_transaction_operation' => 'Operation',
+	'ow_transaction_is_latest' => 'Is latest',
+	'ow_transaction_class_member' => 'Class member',
+	'ow_transaction_object'	 	=> 'Object',
+	'ow_transaction_first_dm' => 'First defined meaning',
+	'ow_transaction_second_dm' => 'Second defined meaning',
+	'ow_transaction_summary' => 'Summary',
 
-	'conceptmapping'						=> 'Wikidata: Concept mapping',
-	'ow_conceptmapping_title'				=> 'Concept Mapping',
-	'ow_conceptmapping_help'                => '<p>possible actions: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
-<li>&action=get&concept=<concept_id>  read a mapping back</li>
-<li>&action=list_sets  return a list of possible data context prefixes and what they refer to.</li>
+	'conceptmapping' => 'Wikidata: Concept mapping',
+	'ow_conceptmapping_title' => 'Concept Mapping',
+	'ow_conceptmapping_help' => '<p>possible actions: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... insert a mapping</li>
+<li>&action=get&concept=<concept_id> read a mapping back</li>
+<li>&action=list_sets return a list of possible data context prefixes and what they refer to.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> for one defined meaning in a concept, return all others</li>
-<li>&action=help   Show helpful help.</li>
+<li>&action=help Show helpful help.</li>
 </ul></p>',
-	'ow_conceptmapping_uitext'              => '<p>Concept Mapping allows you to identify which defined meaning in one dataset is identical	to defined meanings in other datasets.</p>',
+	'ow_conceptmapping_uitext' => '<p>Concept Mapping allows you to identify which defined meaning in one dataset is identical	to defined meanings in other datasets.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Action "$1" is not supported.',
-	'ow_dm_OK'                              => 'OK',
-	'ow_dm_not_present'                     => 'not entered',
-	'ow_dm_not_found'                       => 'not found in database or malformed',
-	'ow_mapping_successful'                 => 'Mapped all fields marked with [OK]<br />',
-	'ow_mapping_unsuccessful'               => 'Need to have at least two defined meanings before they can be linked.',
-	'ow_will_insert'                        => 'Will insert the following:',
-	'ow_contents_of_mapping'                => 'Contents of mapping',
-	'ow_available_contexts'                 => 'Available contexts',
-	'ow_add_concept_link'                   => 'Add link to other concepts',
-	'ow_concept_panel'                      => 'Concept Panel',
-	'ow_dm_badtitle'                        => 'This page does not point to any DefinedMeaning (concept).
+	'ow_dm_OK' => 'OK',
+	'ow_dm_not_present' => 'not entered',
+	'ow_dm_not_found' => 'not found in database or malformed',
+	'ow_mapping_successful' => 'Mapped all fields marked with [OK]<br />',
+	'ow_mapping_unsuccessful' => 'Need to have at least two defined meanings before they can be linked.',
+	'ow_will_insert' => 'Will insert the following:',
+	'ow_contents_of_mapping' => 'Contents of mapping',
+	'ow_available_contexts' => 'Available contexts',
+	'ow_add_concept_link' => 'Add link to other concepts',
+	'ow_concept_panel' => 'Concept Panel',
+	'ow_dm_badtitle' => 'This page does not point to any DefinedMeaning (concept).
 Please check the web address.',
-	'ow_dm_missing'                         => 'This page seems to point to a non-existent DefinedMeaning (concept).
+	'ow_dm_missing' => 'This page seems to point to a non-existent DefinedMeaning (concept).
 Please check the web address.',
 
-	'ow_AddHint'   							=> 'Enter new rows to add',
-	'ow_AlternativeDefinition'              => 'Alternative definition',
-	'ow_AlternativeDefinitions'             => 'Alternative definitions',
-	'ow_Annotation'                         => 'Annotation',
-	'ow_ApproximateMeanings'                => 'Approximate meanings',
-	'ow_Class'  			                => 'Class',
-	'ow_ClassAttributeAttribute'            => 'Attribute',
-	'ow_ClassAttributes'                    => 'Class attributes',
-	'ow_ClassAttributeLevel'                => 'Level',
-	'ow_ClassAttributeType'                 => 'Type',
-	'ow_ClassMembership'                    => 'Class membership',
-	'ow_Collection'                         => 'Collection',
-	'ow_Collection_colon'					=> 'Collection:',
-	'ow_CollectionMember'					=> 'Collection member',
-	'ow_CollectionMembership'               => 'Collection membership',
-	'ow_Definition'                         => 'Definition',
-	'ow_DefinedMeaningAttributes'           => 'Annotation',
-	'ow_DefinedMeaning'                     => 'Defined meaning',
-	'ow_DefinedMeaningReference'            => 'Defined meaning',
-	'ow_ExactMeanings'                      => 'Exact meanings',
-	'ow_Expression'                         => 'Expression',
-	'ow_ExpressionMeanings'                 => 'Expression meanings',
-	'ow_Expressions'                        => 'Expressions',
-	'ow_IdenticalMeaning'                   => 'Identical meaning?',
-	'ow_IncomingRelations'                  => 'Incoming relations',
-	'ow_GotoSource'                         => 'Go to source',
-	'ow_ID'                         		=> 'ID',
-	'ow_Language'                           => 'Language',
-	'ow_LevelAnnotation'                    => 'Annotation',
-	'ow_LinkAttributeHeader'                => 'Link attribute',
-	'ow_Multiple_meanings' 					=> 'Multiple meanings:',
-	'ow_NewExactMeaning'					=> 'New exact meaning',
-	'ow_OptionAttribute'                    => 'Property',
-	'ow_OptionAttributeHeader'              => 'Option attribute',
-	'ow_OptionAttributeOption'              => 'Option',
-	'ow_OptionAttributeOptions'             => 'Options',
-	'ow_OptionAttributeValues'              => 'Option values',
-	'ow_OtherDefinedMeaning'                => 'Other defined meaning',
-	'ow_PopupAnnotation'                    => 'Annotation',
-	'ow_RecordLifeSpan'						=> 'Record life span',
-	'ow_Relations'                          => 'Relations',
-	'ow_RelationType'                       => 'Relation type',
-	'ow_Remove'								=> 'Remove',
-	'ow_RemoveHint'							=> 'Mark rows to remove',
-	'ow_Spelling'                           => 'Spelling',
-	'ow_SuggestHint'						=> 'Click to change selection',
-	'ow_Synonyms'                           => 'Synonyms',
-	'ow_SynonymsAndTranslations'            => 'Synonyms and translations',
-	'ow_Source'                             => 'Source',
-	'ow_SourceIdentifier'                   => 'Source identifier',
-	'ow_Text'                               => 'Text',
-	'ow_TextAttribute'                      => 'Property',
-	'ow_TextAttributeHeader'                => 'Text attribute',
-	'ow_TextAttributeValues'                => 'Plain texts',
-	'ow_Time'                               => 'Time',
-	'ow_TranslatedTextAttribute'            => 'Property',
-	'ow_TranslatedText'                     => 'Translated text',
-	'ow_TranslatedTextAttributeValue'       => 'Text',
-	'ow_TranslatedTextAttributeValues'      => 'Translatable texts',
-	'ow_Label'                				=> 'Label',
-	'ow_Link'                				=> 'Link',
-	'ow_LinkAttribute'                      => 'Property',
-	'ow_LinkAttributeValues'                => 'Links',
-	'ow_URL'								=> 'URL',
-	'ow_User'								=> 'User',
-	'ow_Property'                           => 'Property',
-	'ow_Value'                              => 'Value',
-	'ow_added'								=> 'Added',
-	'ow_removed'							=> 'Removed',
-	'ow_meaningsoftitle'                    => 'Meanings of "$1"',
-	'ow_meaningsofsubtitle'                 => '<em>Wiki link:</em> [[$1]]',
-	'ow_Permission_denied'                  => '<h2>Permission denied</h2>',
-	'ow_copy_no_action_specified'           => 'Please specify an action',
-	'ow_copy_help'                          => 'Help is not implemented yet.',
-	'ow_please_proved_dmid'                 => 'It seems your input is missing a "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
+	'ow_AddHint' => 'Enter new rows to add',
+	'ow_AlternativeDefinition' => 'Alternative definition',
+	'ow_AlternativeDefinitions' => 'Alternative definitions',
+	'ow_Annotation' => 'Annotation',
+	'ow_ApproximateMeanings' => 'Approximate meanings',
+	'ow_Class' => 'Class',
+	'ow_ClassAttributeAttribute' => 'Attribute',
+	'ow_ClassAttributes' => 'Class attributes',
+	'ow_ClassAttributeLevel' => 'Level',
+	'ow_ClassAttributeType' => 'Type',
+	'ow_ClassMembership' => 'Class membership',
+	'ow_Collection' => 'Collection',
+	'ow_Collection_colon' => 'Collection:',
+	'ow_CollectionMember' => 'Collection member',
+	'ow_CollectionMembership' => 'Collection membership',
+	'ow_Definition' => 'Definition',
+	'ow_DefinedMeaningAttributes' => 'Annotation',
+	'ow_DefinedMeaning' => 'Defined meaning',
+	'ow_DefinedMeaningReference' => 'Defined meaning',
+	'ow_ExactMeanings' => 'Exact meanings',
+	'ow_Expression' => 'Expression',
+	'ow_ExpressionMeanings' => 'Expression meanings',
+	'ow_Expressions' => 'Expressions',
+	'ow_IdenticalMeaning' => 'Identical meaning?',
+	'ow_IncomingRelations' => 'Incoming relations',
+	'ow_GotoSource' => 'Go to source',
+	'ow_ID' => 'ID',
+	'ow_Language' => 'Language',
+	'ow_LevelAnnotation' => 'Annotation',
+	'ow_LinkAttributeHeader' => 'Link attribute',
+	'ow_Multiple_meanings' => 'Multiple meanings:',
+	'ow_NewExactMeaning' => 'New exact meaning',
+	'ow_OptionAttribute' => 'Property',
+	'ow_OptionAttributeHeader' => 'Option attribute',
+	'ow_OptionAttributeOption' => 'Option',
+	'ow_OptionAttributeOptions' => 'Options',
+	'ow_OptionAttributeValues' => 'Option values',
+	'ow_OtherDefinedMeaning' => 'Other defined meaning',
+	'ow_PopupAnnotation' => 'Annotation',
+	'ow_RecordLifeSpan' => 'Record life span',
+	'ow_Relations' => 'Relations',
+	'ow_RelationType' => 'Relation type',
+	'ow_Remove' => 'Remove',
+	'ow_RemoveHint' => 'Mark rows to remove',
+	'ow_Spelling' => 'Spelling',
+	'ow_SuggestHint' => 'Click to change selection',
+	'ow_Synonyms' => 'Synonyms',
+	'ow_SynonymsAndTranslations' => 'Synonyms and translations',
+	'ow_Source' => 'Source',
+	'ow_SourceIdentifier' => 'Source identifier',
+	'ow_Text' => 'Text',
+	'ow_TextAttribute' => 'Property',
+	'ow_TextAttributeHeader' => 'Text attribute',
+	'ow_TextAttributeValues' => 'Plain texts',
+	'ow_Time' => 'Time',
+	'ow_TranslatedTextAttribute' => 'Property',
+	'ow_TranslatedText' => 'Translated text',
+	'ow_TranslatedTextAttributeValue' => 'Text',
+	'ow_TranslatedTextAttributeValues' => 'Translatable texts',
+	'ow_Label' => 'Label',
+	'ow_Link' => 'Link',
+	'ow_LinkAttribute' => 'Property',
+	'ow_LinkAttributeValues' => 'Links',
+	'ow_URL' => 'URL',
+	'ow_User' => 'User',
+	'ow_Property' => 'Property',
+	'ow_Value' => 'Value',
+	'ow_added' => 'Added',
+	'ow_removed' => 'Removed',
+	'ow_meaningsoftitle' => 'Meanings of "$1"',
+	'ow_meaningsofsubtitle' => '<em>Wiki link:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>Permission denied</h2>',
+	'copy' => 'Wikidata: Copy',
+	'ow_copy_no_action_specified' => 'Please specify an action',
+	'ow_copy_help' => 'Help is not implemented yet.',
+	'ow_please_proved_dmid' => 'It seems your input is missing a "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
 Please contact a server administrator.',
-	'ow_please_proved_dc1'                  => 'It seems your input is missing a "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
+	'ow_please_proved_dc1' => 'It seems your input is missing a "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
 Please contact a server administrator.',
-	'ow_please_proved_dc2'                  => 'It seems your input is missing a "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO)<br />
+	'ow_please_proved_dc2' => 'It seems your input is missing a "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO)<br />
 Please contact a server administrator.',
-	'ow_copy_successful'                    => "<h2>Copy successful</h2>
+	'ow_copy_successful' => "<h2>Copy successful</h2>
 Your data appears to have been copied successfully.
 Do not forget to doublecheck to make sure!",
-	'ow_copy_unsuccessful'                  => '<h3>Copy unsuccessful</h3>
+	'ow_copy_unsuccessful' => '<h3>Copy unsuccessful</h3>
 No copy operation has taken place.',
-	'ow_no_action_specified'                => "<h3>No action was specified</h3>
+	'ow_no_action_specified' => "<h3>No action was specified</h3>
 Perhaps you came to this page directly? Normally you do not need to be here.",
-	'ow_db_consistency_not_found'           => "<h2>Error</h2>
+	'ow_db_consistency_not_found' => "<h2>Error</h2>
 There is an issue with database consistency, wikidata cannot find valid data connected to this defined meaning ID.
 It might be lost.
 Please contact the server operator or administrator.",
-	'ow_history_transaction'                => 'Transaction:',
-	'ow_history_show_life_span'             => 'Show record life span:',
+	'ow_history_transaction' => 'Transaction:',
+	'ow_history_show_life_span' => 'Show record life span:',
 
-	'ow_class_attr_type_dm'				=> 'Defined meaning',
-	'ow_class_attr_type_xlate'			=> 'Translatable text',
-	'ow_class_attr_type_plain'			=> 'Plain text',
-	'ow_class_attr_type_link'			=> 'Link',
-	'ow_class_attr_type_option'			=> 'Option list',
+	'ow_class_attr_type_dm' => 'Defined meaning',
+	'ow_class_attr_type_xlate' => 'Translatable text',
+	'ow_class_attr_type_plain' => 'Plain text',
+	'ow_class_attr_type_link' => 'Link',
+	'ow_class_attr_type_option' => 'Option list',
 
-	'needstranslation'					=> 'Wikidata: Expressions needing translation',
-	'ow_needs_xlation_title'			=> 'Expressions needing translation',
-	'ow_needs_xlation_source_lang'		=> 'Source language:',
-	'ow_needs_xlation_dest_lang'		=> 'Destination language:',
-	'ow_needs_xlation_no_dest_lang'		=> 'Please specify a destination language.',
+	'needstranslation' => 'Wikidata: Expressions needing translation',
+	'ow_needs_xlation_title' => 'Expressions needing translation',
+	'ow_needs_xlation_source_lang' => 'Source language:',
+	'ow_needs_xlation_dest_lang' => 'Destination language:',
+	'ow_needs_xlation_no_dest_lang' => 'Please specify a destination language.',
 
-	'ow_show'							=> 'Show',
-	'ow_upload'							=> 'Upload',
-	'ow_create'							=> 'Create',
-	'ow_collection_added'				=> '<strong>Collection $1 added.</strong>',
-	'ow_suggest_previous'				=> 'Previous',
-	'ow_suggest_next'					=> 'Next',
-	'ow_suggest_clear'					=> 'Clear',
-	
-	'ow_nstab_definedmeaning'			=> 'defined meaning',
-	'ow_nstab_edit_copy'				=> 'edit copy',
-	'right-addlanguage'				=> 'Add and change language settings',
+	'ow_show' => 'Show',
+	'ow_upload' => 'Upload',
+	'ow_create' => 'Create',
+	'ow_collection_added' => '<strong>Collection $1 added.</strong>',
+	'ow_suggest_previous' => 'Previous',
+	'ow_suggest_next' => 'Next',
+	'ow_suggest_clear' => 'Clear',
+
+	'ow_nstab_definedmeaning' => 'defined meaning',
+	'ow_nstab_edit_copy' => 'edit copy',
+	'right-addlanguage' => 'Add and change language settings',
 );
 
 /** Message documentation (Message documentation)
@@ -261,7 +262,7 @@ Please contact the server operator or administrator.",
  * @author Purodha
  * @author Siebrand
  */
-$wdMessages['qqq'] = array(
+$messages['qqq'] = array(
 	'languages' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
 	'langman-desc' => 'A short description of this extension shown in [[Special:Version]].
 {{doc-important|Do not translate tag names.}}
@@ -349,14 +350,14 @@ Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki pag
 /** Karelian (Karjala)
  * @author Flrn
  */
-$wdMessages['krl'] = array(
+$messages['krl'] = array(
 	'ow_LinkAttributeValues' => 'Viippaukset',
 );
 
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
-$wdMessages['niu'] = array(
+$messages['niu'] = array(
 	'ow_history' => 'Liu onoono atu ki tua',
 );
 
@@ -365,7 +366,7 @@ $wdMessages['niu'] = array(
  * @author Naudefj
  * @author SPQRobin
  */
-$wdMessages['af'] = array(
+$messages['af'] = array(
 	'langman_title' => 'Taalbestuurder',
 	'ow_save' => 'Stoor',
 	'ow_history' => 'Geskiedenis',
@@ -401,7 +402,7 @@ $wdMessages['af'] = array(
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
-$wdMessages['am'] = array(
+$messages['am'] = array(
 	'ow_history' => 'ታሪክ',
 	'ow_dm_OK' => 'እሺ',
 	'ow_ClassAttributeLevel' => 'ደረጃ',
@@ -414,7 +415,7 @@ $wdMessages['am'] = array(
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
-$wdMessages['an'] = array(
+$messages['an'] = array(
 	'datasearch' => 'Wikidata: Mirar datos',
 	'ow_dm_OK' => 'OK',
 );
@@ -423,7 +424,7 @@ $wdMessages['an'] = array(
  * @author Meno25
  * @author OsamaK
  */
-$wdMessages['ar'] = array(
+$messages['ar'] = array(
 	'languages' => 'ويكي داتا: مدير اللغة',
 	'langman-desc' => 'إضافة وتغيير إعدادات اللغات مع [[Special:Languages]]',
 	'langman_title' => 'مدير اللغة',
@@ -450,7 +451,7 @@ $wdMessages['ar'] = array(
 	'datasearch_search_text' => 'ابحث في النص:',
 	'datasearch_within_words' => 'في الكلمات:',
 	'datasearch_within_ext_ids' => 'في المعرفات الخارجية:',
-	'datasearch_showing_only' => 'عرض  {{PLURAL:$1||مطابقة واحدة|مطابقتين|$1 مطابقات|$1 مطابقة|$1 مطابقة}} فقط كحد أقصى.',
+	'datasearch_showing_only' => 'عرض {{PLURAL:$1||مطابقة واحدة|مطابقتين|$1 مطابقات|$1 مطابقة|$1 مطابقة}} فقط كحد أقصى.',
 	'datasearch_match_ext_ids' => 'المعرفات الخارجية تطابق <i>$1</i>',
 	'datasearch_match_words' => 'الكلمات التي تطابق <i>$1</i> والمعاني المصاحبة',
 	'datasearch_match_words_lang' => 'الكلمات باللغة <i>$1</i> التي تطابق <i>$2</i> والمعاني المصاحبة',
@@ -458,7 +459,7 @@ $wdMessages['ar'] = array(
 	'ow_importtsv_title1' => 'استيراد تي إس في',
 	'ow_importtsv_title2' => 'استيراد التعريفات والترجمات',
 	'ow_importtsv_header' => "<p>استورد التعريفات والترجمات من ملف نص محدد بألسنة ربما تكون صدرته من OpenOffice.org، إكسل أو برنامج صحائف آخر.</p>
-<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة في صفحة [[Special:ExportTSV|ExportTSV]]. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف  لأي معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
+<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة في صفحة [[Special:ExportTSV|ExportTSV]]. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف لأي معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
 <p>لو أن صندوق 'تشغيل تجربة' معلم، فأي أفعال ستتخذ سيتم إبلاغها، لكن لا تغييرات سيتم عملها فعلا. أنت مشجع على عمل تشغيل تجربة قبل عمل استيراد فعلي.</p>",
 	'ow_importtsv_not_allowed' => 'أنت لا تمتلك السماح لعمل استيراد TSV.',
 	'ow_importtsv_importing' => 'استيراد بيانات TSV',
@@ -469,7 +470,7 @@ $wdMessages['ar'] = array(
 تأكد من أن تطبيقك حفظ أو صدر الملف بطريقة صحيحة.</p>',
 	'ow_importtsv_not_tsv' => '<p>هذا لا يبدو ملف TSV صحيح.</p>',
 	'ow_importtsv_bad_columns' => "<p>اسم عامود غير صحيح '$1'.<br />
-العواميد ينبغي أن تسمى 'definition_iso' أو 'translations_iso'،  
+العواميد ينبغي أن تسمى 'definition_iso' أو 'translations_iso'،
 حيث iso هو كود اللغة.</p>",
 	'ow_importtsv_test_run_title' => 'تشغيل تجربة لاستيراد بيانات TSV',
 	'ow_importtsv_nothing_added' => 'لا شيء تمت إضافته.',
@@ -515,11 +516,11 @@ $wdMessages['ar'] = array(
 	'conceptmapping' => 'ويكي داتا: تخطيط المبدأ',
 	'ow_conceptmapping_title' => 'تخطيط المبدأ',
 	'ow_conceptmapping_help' => '<p>الأفعال الممكنة: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  إدراج رابطة</li>
-<li>&action=get&concept=<concept_id>  قراءة رابطة</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... إدراج رابطة</li>
+<li>&action=get&concept=<concept_id> قراءة رابطة</li>
 <li>&action=list_sets عرض قائمة لبوادىء سياقات البيانات الممكنة وما الذي تشير إليه.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> لمعنى معرف واحد في مبدأ، يعرض الآخرون كلهم</li>
-<li>&action=help  عرض مساعدة مفيدة.</li>
+<li>&action=help عرض مساعدة مفيدة.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>ربط المبدأ يسمح لك بتعرف أي معنى معرف في مجموعة بيانات مطابق لمعاني معرفة في مجموعات بيانات أخرى.</p>',
 	'ow_conceptmapping_no_action_specified' => 'الفعل "$1" غير مدعوم.',
@@ -611,11 +612,11 @@ $wdMessages['ar'] = array(
 	'ow_Permission_denied' => '<h2>السماح مرفوض</h2>',
 	'ow_copy_no_action_specified' => 'من فضلك حدد فعلا',
 	'ow_copy_help' => 'المساعدة ليست مطبقة حاليا.',
-	'ow_please_proved_dmid' => 'على ما يبدو دخلك يفقد ?dmid=<something>  (dmid=رقم المعنى المعرف)<br />
+	'ow_please_proved_dmid' => 'على ما يبدو دخلك يفقد ?dmid=<something> (dmid=رقم المعنى المعرف)<br />
 من فضلك اتصل بإداري خادم.',
-	'ow_please_proved_dc1' => 'على ما يبدو دخلك يفقد ?dc1=<something>  (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />
+	'ow_please_proved_dc1' => 'على ما يبدو دخلك يفقد ?dc1=<something> (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />
 من فضلك اتصل بإداري خادم.',
-	'ow_please_proved_dc2' => 'على ما يبدو فدخلك يفقد ?dc2=<something>  (dc2=سياق مجموعة البيانات 2، مجموعة البيانات للنسخ منها)<br />
+	'ow_please_proved_dc2' => 'على ما يبدو فدخلك يفقد ?dc2=<something> (dc2=سياق مجموعة البيانات 2، مجموعة البيانات للنسخ منها)<br />
 من فضلك اتصل بإداري خادم.',
 	'ow_copy_successful' => '<h2>النسخ نجح</h2>
 بياناتك يبدو أنها قد تم نسخها بنجاح.
@@ -655,7 +656,7 @@ $wdMessages['ar'] = array(
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */
-$wdMessages['arc'] = array(
+$messages['arc'] = array(
 	'langman_title' => 'ܡܕܒܪܢܐ ܕܠܫܢܐ',
 	'langman_langname' => 'ܫܡܐ ܕܠܫܢܐ:',
 	'langman_addlang' => 'ܐܘܣܦ ܠܫܢܐ',
@@ -703,7 +704,7 @@ $wdMessages['arc'] = array(
  * @author Meno25
  * @author Ramsis II
  */
-$wdMessages['arz'] = array(
+$messages['arz'] = array(
 	'languages' => 'ويكى داتا: مدير اللغة',
 	'langman_title' => 'مدير اللغة',
 	'langman_not_allowed' => 'أنت لا تمتلك السماح لتغيير إعدادات اللغة.',
@@ -737,7 +738,7 @@ $wdMessages['arz'] = array(
 	'ow_importtsv_title1' => 'استيراد تى إس فى',
 	'ow_importtsv_title2' => 'استيراد التعريفات والترجمات',
 	'ow_importtsv_header' => "<p>استورد التعريفات والترجمات من ملف نص محدد بألسنة ربما تكون صدرته من OpenOffice.org، إكسل أو برنامج صحائف آخر.</p>
-<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة فى صفحة [[Special:ExportTSV|ExportTSV]]. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف  لأى معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
+<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة فى صفحة [[Special:ExportTSV|ExportTSV]]. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف لأى معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
 <p>لو أن صندوق 'تشغيل تجربة' معلم، فأى أفعال ستتخذ سيتم إبلاغها، لكن لا تغييرات سيتم عملها فعلا. أنت مشجع على عمل تشغيل تجربة قبل عمل استيراد فعلى.</p>",
 	'ow_importtsv_not_allowed' => 'أنت لا تمتلك السماح لعمل استيراد TSV.',
 	'ow_importtsv_importing' => 'استيراد بيانات TSV',
@@ -748,7 +749,7 @@ $wdMessages['arz'] = array(
 تأكد من أن تطبيقك حفظ أو صدر الملف بطريقة صحيحة.</p>',
 	'ow_importtsv_not_tsv' => '<p>هذا لا يبدو ملف TSV صحيح.</p>',
 	'ow_importtsv_bad_columns' => "<p>اسم عامود غير صحيح '$1'.<br />
-العواميد ينبغى أن تسمى 'definition_iso' أو 'translations_iso'،   
+العواميد ينبغى أن تسمى 'definition_iso' أو 'translations_iso'،
 حيث iso هو كود اللغة.</p>",
 	'ow_importtsv_test_run_title' => 'تشغيل تجربة لاستيراد بيانات TSV',
 	'ow_importtsv_nothing_added' => 'ا شىء تمت إضافته.',
@@ -794,11 +795,11 @@ $wdMessages['arz'] = array(
 	'conceptmapping' => 'ويكى داتا: تخطيط المبدأ',
 	'ow_conceptmapping_title' => 'تخطيط المبدأ',
 	'ow_conceptmapping_help' => '<p>الأفعال الممكنة: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  إدراج رابطة</li>
-<li>&action=get&concept=<concept_id>  قراءة رابطة</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... إدراج رابطة</li>
+<li>&action=get&concept=<concept_id> قراءة رابطة</li>
 <li>&action=list_sets عرض قائمة لبوادىء سياقات البيانات الممكنة وما الذى تشير إليه.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> لمعنى معرف واحد فى مبدأ، يعرض الآخرون كلهم</li>
-<li>&action=help  عرض مساعدة مفيدة.</li>
+<li>&action=help عرض مساعدة مفيدة.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>ربط المبدأ يسمح لك بتعرف أى معنى معرف فى مجموعة بيانات مطابق لمعانى معرفة فى مجموعات بيانات أخرى.</p>',
 	'ow_conceptmapping_no_action_specified' => 'العمليه "$1" مش مدعومه.',
@@ -888,11 +889,11 @@ $wdMessages['arz'] = array(
 	'ow_Permission_denied' => '<h2>السماح مرفوض</h2>',
 	'ow_copy_no_action_specified' => 'من فضلك حدد فعلا',
 	'ow_copy_help' => 'المساعدة لسه ما اشتغلتش.',
-	'ow_please_proved_dmid' => 'على ما يبدو دخلك يفقد ?dmid=<something>  (dmid=رقم المعنى المعرف)<br />
+	'ow_please_proved_dmid' => 'على ما يبدو دخلك يفقد ?dmid=<something> (dmid=رقم المعنى المعرف)<br />
 من فضلك اتصل بإدارى خادم.',
-	'ow_please_proved_dc1' => 'على ما يبدو دخلك يفقد ?dc1=<something>  (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />
+	'ow_please_proved_dc1' => 'على ما يبدو دخلك يفقد ?dc1=<something> (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />
 من فضلك اتصل بإدارى خادم.',
-	'ow_please_proved_dc2' => 'على ما يبدو فدخلك يفقد ?dc2=<something>  (dc2=سياق مجموعة البيانات 2، مجموعة البيانات للنسخ منها)<br />
+	'ow_please_proved_dc2' => 'على ما يبدو فدخلك يفقد ?dc2=<something> (dc2=سياق مجموعة البيانات 2، مجموعة البيانات للنسخ منها)<br />
 من فضلك اتصل بإدارى خادم.',
 	'ow_copy_successful' => '<h2>النسخ نجح</h2>
 بياناتك يبدو أنها قد تم نسخها بنجاح.
@@ -931,7 +932,7 @@ $wdMessages['arz'] = array(
 /** Asturian (Asturianu)
  * @author Esbardu
  */
-$wdMessages['ast'] = array(
+$messages['ast'] = array(
 	'ow_Language' => 'Llingua',
 );
 
@@ -939,7 +940,7 @@ $wdMessages['ast'] = array(
  * @author Sab
  * @author Wikimistusik
  */
-$wdMessages['avk'] = array(
+$messages['avk'] = array(
 	'languages' => 'Wikidata : avapofesiki',
 	'langman_title' => 'Avapofesiki',
 	'datasearch' => 'Wikidata : Origaneyara',
@@ -952,11 +953,11 @@ $wdMessages['avk'] = array(
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Mecoba rebana',
 	'ow_conceptmapping_help' => '<p>rotisa tegira se : <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  walbura va skura</li>
-<li>&action=get&concept=<concept_id>  sutera va dimskura</li>
-<li>&action=list_sets  va vexala dem rotisa orkafa osta yo is sinafa vuestera buldar.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... walbura va skura</li>
+<li>&action=get&concept=<concept_id> sutera va dimskura</li>
+<li>&action=list_sets va vexala dem rotisa orkafa osta yo is sinafa vuestera buldar.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> tori tanoya tentunafa sugdala ke envaks, va kotar buldar</li>
-<li>&action=help  Nedira va pomapara.</li>
+<li>&action=help Nedira va pomapara.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Envaksskura pu rin rictal da inde tentunafa sugdala koe tanoya origlospa tir milkafa gu tentunafa sugdala se koe ara origlospa yo ropilkomodal.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Skalewé ! Jin me grupaskí inde "$1".',
@@ -1037,7 +1038,7 @@ $wdMessages['avk'] = array(
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
-$wdMessages['bcl'] = array(
+$messages['bcl'] = array(
 	'languages' => 'Wikidata: Manager kan tataramon',
 	'datasearch' => 'Wikidata: Data search',
 );
@@ -1047,7 +1048,7 @@ $wdMessages['bcl'] = array(
  * @author Jim-by
  * @author Red Winged Duck
  */
-$wdMessages['be-tarask'] = array(
+$messages['be-tarask'] = array(
 	'languages' => 'Вікізьвесткі: кіраваньне мовамі',
 	'langman-desc' => 'Дазваляе дадаваць і зьмяняць устаноўкі моваў з дапамогай [[Special:Languages]]',
 	'langman_title' => 'Кіраваньне мовамі',
@@ -1093,7 +1094,7 @@ $wdMessages['be-tarask'] = array(
 Упэўніцеся, што Ваша праграма захавала ці экспартавала ў файл адпаведным чынам.</p>',
 	'ow_importtsv_not_tsv' => '<p>Гэта ня слушны файл у фармаце TSV.</p>',
 	'ow_importtsv_bad_columns' => "<p>Няслушная назва слупка '$1'.<br />
-Слупкі павінны мець назвы адпаведна 'definition_iso' ці 'translations_iso',  
+Слупкі павінны мець назвы адпаведна 'definition_iso' ці 'translations_iso',
 дзе iso зьяўляецца кодам мовы.</p>",
 	'ow_importtsv_test_run_title' => 'Тэставы запуск імпартаваньня зьвестак TSV',
 	'ow_importtsv_nothing_added' => 'Нічога не дададзена.',
@@ -1139,11 +1140,11 @@ $wdMessages['be-tarask'] = array(
 	'conceptmapping' => 'ВікіЗьвесткі: Адпаведнасьць канцэпцыяў',
 	'ow_conceptmapping_title' => 'Адпаведнасьць канцэпцыяў',
 	'ow_conceptmapping_help' => '<p>магчымыя дзеяньні: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  уставіць адпаведнасьць</li>
-<li>&action=get&concept=<concept_id>  прачытаць адпаведнасьць</li>
-<li>&action=list_sets  паказаць сьпіс магчымых прыставак кантэкстаў зьвестак і куды яны спасылаюцца.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... уставіць адпаведнасьць</li>
+<li>&action=get&concept=<concept_id> прачытаць адпаведнасьць</li>
+<li>&action=list_sets паказаць сьпіс магчымых прыставак кантэкстаў зьвестак і куды яны спасылаюцца.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> для аднаго вызначанага значэньня ў кантэксьце, вывесьці ўсе іншыя</li>
-<li>&action=help  Паказаць дапамогу.</li>
+<li>&action=help Паказаць дапамогу.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Усталяваньне адпаведнасьцяў канцэпцыяў дазваляе Вам пазначыць, якое пэўнае значэньне ў адным наборы зьвестак ідэнтычна іншым наборам зьвестак.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Дзеяньне «$1» не падтрымліваецца.',
@@ -1277,7 +1278,7 @@ $wdMessages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-$wdMessages['bg'] = array(
+$messages['bg'] = array(
 	'langman_not_allowed' => 'Нямате право да променяте езиковите настройки.',
 	'langman_adding' => 'Добавяне на езика $1 с ключ $2.',
 	'langman_langname' => 'Име на езика:',
@@ -1368,7 +1369,7 @@ $wdMessages['bg'] = array(
 /** Bengali (বাংলা)
  * @author Bellayet
  */
-$wdMessages['bn'] = array(
+$messages['bn'] = array(
 	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',
 	'langman_title' => 'ভাষা ব্যবস্থাপক',
 	'datasearch' => 'Wikidata: তথ্য অনুসন্ধান',
@@ -1377,7 +1378,7 @@ $wdMessages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fulup
  */
-$wdMessages['br'] = array(
+$messages['br'] = array(
 	'languages' => 'Wikidata: Merer yezhoù',
 	'langman_title' => 'Merer yezhoù',
 	'langman_not_allowed' => "N'oc'h ket aotreet da zegas kemmoù en arventennoù yezh.",
@@ -1422,7 +1423,7 @@ $wdMessages['br'] = array(
 Bezit sur eo bet enrollet pe ezporzhiet ar restr ent reizh gant hoc'h arload.</p>",
 	'ow_importtsv_not_tsv' => "<p>Evit doare n'eo ket ur restr TSV reizh.</p>",
 	'ow_importtsv_bad_columns' => "<p>Anv bann direizh '$1'.<br />
-Rankout a ra ar bannoù bezañ anvet 'definition_iso' pe 'translations_iso',  
+Rankout a ra ar bannoù bezañ anvet 'definition_iso' pe 'translations_iso',
 e-lec'h m'eo iso kod ar yezh.</p>",
 	'ow_importtsv_test_run_title' => 'Test enporzhiañ roadennoù TSV',
 	'ow_importtsv_nothing_added' => "N'eus bet ouzhpenn netra.",
@@ -1586,7 +1587,7 @@ Dibabit un dastumad da enporzhiañ. E prenestr testenn ar yezhoù, merkit ur rol
 /** Bosnian (Bosanski)
  * @author CERminator
  */
-$wdMessages['bs'] = array(
+$messages['bs'] = array(
 	'languages' => 'Wikidata: Upravljač jezika',
 	'langman-desc' => 'Dodavanje i izmjena jezičnih postavki sa [[Special:Languages]]',
 	'langman_title' => 'Upravitelj jezika',
@@ -1664,11 +1665,11 @@ Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivan
 	'ow_transaction_second_dm' => 'Drugo definisano značenje',
 	'ow_transaction_summary' => 'Sažetak',
 	'ow_conceptmapping_help' => '<p>moguće akcije: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  ubacivanje mappinga</li>
-<li>&action=get&concept=<concept_id>  ponovno čitanje mappinga</li>
-<li>&action=list_sets  vraća spisak mogućih podataka u kontekstu prefiksa i na što se odnose.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... ubacivanje mappinga</li>
+<li>&action=get&concept=<concept_id> ponovno čitanje mappinga</li>
+<li>&action=list_sets vraća spisak mogućih podataka u kontekstu prefiksa i na što se odnose.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> za jedno definisano značenje u konceptu, vraća sva ostala</li>
-<li>&action=help  Prikazivanje pomoći.</li>
+<li>&action=help Prikazivanje pomoći.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Concept Mapping omogućava Vam da odredite koje je definisano značenje u jednom setu podataka isto sa određenim značenjima u drugim setovima podataka.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akcija "$1" nije podržana.',
@@ -1786,7 +1787,7 @@ Molimo kontaktirajte operatora servera ili administratora.',
  * @author Solde
  * @author Toniher
  */
-$wdMessages['ca'] = array(
+$messages['ca'] = array(
 	'languages' => 'Wikidata: Gestor de llengües',
 	'langman_title' => 'Gestor de llengües',
 	'langman_header' => 'Introduïu el codi de la llengua i el seu nom en anglès a continuació:',
@@ -1841,7 +1842,7 @@ $wdMessages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$wdMessages['ckb-arab'] = array(
+$messages['ckb-arab'] = array(
 	'langman-desc' => 'به [[Special:Languages]] زمان زیاد بکە و هەڵبژاردەکانی بگۆڕە ‌',
 	'langman_title' => 'جێبەجێکەری زمان',
 	'langman_not_allowed' => 'ڕێگەت پێ‌نەدراوە بۆ گۆڕانی هەڵبژاردەکانی زمان.',
@@ -1935,7 +1936,7 @@ $wdMessages['ckb-arab'] = array(
  * @author Matěj Grabovský
  * @author Mormegil
  */
-$wdMessages['cs'] = array(
+$messages['cs'] = array(
 	'languages' => 'Wikidata: Správce jazyků',
 	'langman_title' => 'Správce jazyků',
 	'langman_not_allowed' => 'Nemáte oprávnění měnit jazykové nastavení.',
@@ -1959,11 +1960,11 @@ Prosím, podívejte se na [[{{MediaWiki:Ow editing policy url}}|naše pravidla o
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'žádné vybrané',
 	'ow_conceptmapping_help' => '<p>možné činnosti: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  vložit mapování</li>
-<li>&action=get&concept=<concept_id>  přečíst mapování</li>
-<li>&action=list_sets  vrátit seznam možných předpon datových kontextů a na co odkazují</li>
-<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix>  pro jeden definovaný význam v rámci pojmu, vrátit všechny ostatní</li>
-<li>&action=help  zobrazit nápovědu</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... vložit mapování</li>
+<li>&action=get&concept=<concept_id> přečíst mapování</li>
+<li>&action=list_sets vrátit seznam možných předpon datových kontextů a na co odkazují</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pro jeden definovaný význam v rámci pojmu, vrátit všechny ostatní</li>
+<li>&action=help zobrazit nápovědu</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mapování pojmů vám umožňuje určit, který definovaný význam v jedné množině dat je shodný s definovanými významy v ostatních možinách dat.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akce „$1“ není podporována.',
@@ -2051,7 +2052,7 @@ Nastal problém s konzistencí databáze. Wikidata nemůže najít platné údaj
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
-$wdMessages['cu'] = array(
+$messages['cu'] = array(
 	'ow_Language' => 'ѩꙁꙑ́къ',
 	'ow_LinkAttributeValues' => 'съвѧ́ꙁи',
 );
@@ -2059,7 +2060,7 @@ $wdMessages['cu'] = array(
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
-$wdMessages['da'] = array(
+$messages['da'] = array(
 	'ow_history' => 'Historik',
 	'ow_dm_OK' => 'OK',
 	'ow_Language' => 'Sprog',
@@ -2076,7 +2077,7 @@ $wdMessages['da'] = array(
  * @author Revolus
  * @author Umherirrender
  */
-$wdMessages['de'] = array(
+$messages['de'] = array(
 	'languages' => 'Wikidata: Sprachen-Manager',
 	'langman-desc' => 'Spracheinstellungen mit [[Special:Languages]] hinzufügen und ändern',
 	'langman_title' => 'Sprachen-Manager',
@@ -2298,7 +2299,7 @@ Bitte kontaktiere den Serveradminstrator.',
  * @author ChrisiPK
  * @author Umherirrender
  */
-$wdMessages['de-formal'] = array(
+$messages['de-formal'] = array(
 	'langman_not_allowed' => 'Sie haben nicht die Berechtigung die Spracheneinstellungen zu ändern.',
 	'importlangnames_not_allowed' => 'Sie haben keine Berechtigung um Sprachennamen zu importieren.',
 	'ow_importtsv_header' => '<p>Definitionen und Übersetzungen aus einer Textdatei, die Tabulatoren als Trenner verwendet, importieren. Diese Datei kann aus OpenOffice.org, Excel oder einem anderen Tabellenkalkulationsprogramm exportiert sein.</p>
@@ -2332,7 +2333,7 @@ Vielleicht kamen Sie direkt zu dieser Seite?',
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
-$wdMessages['dsb'] = array(
+$messages['dsb'] = array(
 	'languages' => 'Wikidata: Zastojnik rěcow',
 	'langman-desc' => 'Rěcne nastajenja z [[Special:Languages]] pśidaś a změniś',
 	'langman_title' => 'Zastojnik rěcow',
@@ -2423,11 +2424,11 @@ Pšosym glědaj [[{{MediaWiki:Ow editing policy url}}|naše wobźěłowańske za
 	'conceptmapping' => 'Wikidaty: Zwězanje zapśimjeśow',
 	'ow_conceptmapping_title' => 'Zwězanje zapśimjeśow',
 	'ow_conceptmapping_help' => '<p>móžne akcije: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  zwězanje zasajźiś</li>
-<li>&action=get&concept=<concept_id>  zwězanje pśecytaś</li>
-<li>&action=list_sets  lisćinu móžnych prefiksow datowego konteksta a na což se póśěguju wrośiś.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... zwězanje zasajźiś</li>
+<li>&action=get&concept=<concept_id> zwězanje pśecytaś</li>
+<li>&action=list_sets lisćinu móžnych prefiksow datowego konteksta a na což se póśěguju wrośiś.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> za jaden definěrowany wóznam w zapśimjeśu, wroś wše druge</li>
-<li>&action=help  Wužytnu pomoc pokazaś.</li>
+<li>&action=help Wužytnu pomoc pokazaś.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Concept Mapping zmóžnja identificěrowaś, kótary definěrowany wóznam jo identiski z definěrowanym wóznamom w drugich datowych sajźbach.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akcija "$1" se njepódpěra.',
@@ -2563,7 +2564,7 @@ Pšosym staj se z serwerowym operatorom abo administratorom do zwiska.',
  * @author Crazymadlover
  * @author Omnipaedista
  */
-$wdMessages['el'] = array(
+$messages['el'] = array(
 	'languages' => 'Wikidata: Διαχειριστής γλώσσας',
 	'langman_title' => 'Διαχειριστής γλώσσας',
 	'langman_langname' => 'Όνομα γλώσσας:',
@@ -2636,7 +2637,7 @@ $wdMessages['el'] = array(
  * @author Malafaya
  * @author Yekrats
  */
-$wdMessages['eo'] = array(
+$messages['eo'] = array(
 	'languages' => 'Vikidatenoj: Lingva administrilo',
 	'langman_title' => 'Lingva administrilo',
 	'langman_req_fields' => 'Ambaŭ lingvo-nomo kaj kodo ISO 639-3 estas devigaj!',
@@ -2755,7 +2756,7 @@ Neniu kopia operacio okazis.',
  * @author McDutchie
  * @author Sanbec
  */
-$wdMessages['es'] = array(
+$messages['es'] = array(
 	'languages' => 'Wikidata: Gestor de lenguas',
 	'langman-desc' => 'Agregue y cambie configuraciones de lenguaje con [[Special:Languages]]',
 	'langman_title' => 'Gestor de lenguas',
@@ -2801,7 +2802,7 @@ $wdMessages['es'] = array(
 Asegúrate que tu aplicación ha sido grabada o se exportó el archivo correctamente.</p>',
 	'ow_importtsv_not_tsv' => '<p>Parece ser que no aparece un archivo TSV válido.</p>',
 	'ow_importtsv_bad_columns' => "<p>Nombre de columna incorrecto '$1'.<br />
-Las columnas deberían ser nombradas 'definition_iso' o 'translations_iso',  
+Las columnas deberían ser nombradas 'definition_iso' o 'translations_iso',
 donde iso es el código del lenguaje.</p>",
 	'ow_importtsv_test_run_title' => 'Corre examen para la importación de datos TSV',
 	'ow_importtsv_nothing_added' => 'Nada se ha añadido.',
@@ -2846,11 +2847,11 @@ Seleccionar una colección a exportar. En la tabla de textos de lenguajes, ingre
 	'conceptmapping' => 'Wikidata: mapeamento de conceptos',
 	'ow_conceptmapping_title' => 'Mapeo conceptual',
 	'ow_conceptmapping_help' => '<p>acciones posibles: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  insertar una correspondencia</li>
-<li>&action=get&concept=<concept_id>  leer una correspondencia almacenada</li>
-<li>&action=list_sets  devuelve una lista de posibles prefijos de contexto de datos y a qué se pueden referir</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... insertar una correspondencia</li>
+<li>&action=get&concept=<concept_id> leer una correspondencia almacenada</li>
+<li>&action=list_sets devuelve una lista de posibles prefijos de contexto de datos y a qué se pueden referir</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para un sentido definido en un concepto, devuelve todos los otros</li>
-<li>&action=help  Muestra un mensaje de ayuda.</li>
+<li>&action=help Muestra un mensaje de ayuda.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Ligar los conceptos permite identificar los sentidos definidos en un juego de datos que son idénticos a sentidos definidos en otros juegos de datos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'La acción «$1» no está soportada.',
@@ -2978,7 +2979,7 @@ Contacta por favor el operador o el administrador del servicio.',
  * @author Avjoska
  * @author Silvar
  */
-$wdMessages['et'] = array(
+$messages['et'] = array(
 	'languages' => 'Wikiandmed: keele haldaja',
 	'langman_title' => 'Keele haldaja',
 	'datasearch' => 'Wikiandmed: andmeotsing',
@@ -3015,7 +3016,7 @@ $wdMessages['et'] = array(
  * @author Pi
  * @author Theklan
  */
-$wdMessages['eu'] = array(
+$messages['eu'] = array(
 	'languages' => 'WIkidata: Hizkuntza administraria',
 	'langman_title' => 'Hizkuntza kudeatzailea',
 	'langman_not_allowed' => 'Ez duzu hizkuntza ezarpenak aldatzeko baimenik',
@@ -3138,7 +3139,7 @@ Mesedez harremanetan ipini zerbitzari operadore edo administratzailearekin.',
  * @author Huji
  * @author Mardetanha
  */
-$wdMessages['fa'] = array(
+$messages['fa'] = array(
 	'langman_title' => 'مدیریت زبان',
 	'ow_save' => 'ذخیره',
 	'ow_history' => 'تاریخچه',
@@ -3193,7 +3194,7 @@ $wdMessages['fa'] = array(
  * @author Silvonen
  * @author Str4nd
  */
-$wdMessages['fi'] = array(
+$messages['fi'] = array(
 	'languages' => 'Wikidata: kielten hallinta',
 	'langman-desc' => 'Lisää ja muuta kieliasetuksia [[Special:Languages|toimintosivun avulla]].',
 	'langman_title' => 'Kielten hallinta',
@@ -3234,10 +3235,10 @@ $wdMessages['fi'] = array(
 	'ow_importtsv_test_run_title' => 'TSV-tietueitten koetuonti',
 	'ow_importtsv_nothing_added_test' => 'Mitään ei lisätty (koetuonti).',
 	'ow_importtsv_results' => 'Lisätty $1 {{PLURAL:$1|määritelmä|määritelmää}} ja $2 {{PLURAL:$2|käännös|käännöstä}}.',
-	'ow_impexptsv_unknown_lang' => '<p>Tuntematon tai virheellinen kieli: $1. <br /> 
+	'ow_impexptsv_unknown_lang' => '<p>Tuntematon tai virheellinen kieli: $1. <br />
 Kielten pitää olla ISO 639-3 kielten koodeilla.</p>',
 	'ow_exporttsv_title' => 'Vie kokoelma TSV:lle',
-	'ow_exporttsv_header' => "<p>Vie kokoelma sarkaimin erotetussa teksti-muodossa jonka voit tuoda OpenOffice.org, Excel tai muuhun taulukkolaskentaohjelmistoon. <br /> 
+	'ow_exporttsv_header' => "<p>Vie kokoelma sarkaimin erotetussa teksti-muodossa jonka voit tuoda OpenOffice.org, Excel tai muuhun taulukkolaskentaohjelmistoon. <br />
 Valitse kokoelma vietäväksi. Syötä kielten tekstikenttään pilkuilla eroteltu luettelo ISO 639-3 kielikoodeista. Aloita kielistä joista tulet kääntämään (valitse niin monta kuin haluat), ja lisää lopuksi ne joihin sinä käännät. Napsauta sitten 'Create' luodaksesi tiedoston.</p>",
 	'ow_exporttsv_languages' => 'Kielet:',
 	'ow_exporttsv_not_allowed' => 'Sinulla ei ole lupaa tehdä TSV-vientiä.',
@@ -3308,7 +3309,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
  * @author Urhixidur
  * @author Verdy p
  */
-$wdMessages['fr'] = array(
+$messages['fr'] = array(
 	'languages' => 'Wikidata : gestionnaire de langues',
 	'langman-desc' => 'Ajouter et modifier les paramètres de langues avec [[Special:Languages]]',
 	'langman_title' => 'Gestionnaire de langues',
@@ -3354,7 +3355,7 @@ $wdMessages['fr'] = array(
 Assurez-vous que votre application a sauvegardé ou exporté le fichier correctement.</p>',
 	'ow_importtsv_not_tsv' => '<p>Ceci ne semble pas être un fichier TSV valide.</p>',
 	'ow_importtsv_bad_columns' => '<p>Nom de colonne « $1 » invalide.<br />
-Les colonnes doivent être nomées « definition_<i>iso</i> » ou « translations_<i>iso</i> »,  
+Les colonnes doivent être nomées « definition_<i>iso</i> » ou « translations_<i>iso</i> »,
 où <i>iso</i> est le code de langue ISO 639-3.</p>',
 	'ow_importtsv_test_run_title' => 'Test d’importation de données TSV',
 	'ow_importtsv_nothing_added' => 'Rien n’a été ajouté.',
@@ -3538,7 +3539,7 @@ Veuillez contacter l’opérateur ou l’administrateur du serveur.',
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
-$wdMessages['fy'] = array(
+$messages['fy'] = array(
 	'ow_save' => 'Fêstlizze',
 	'ow_Source' => 'Boarne',
 );
@@ -3546,7 +3547,7 @@ $wdMessages['fy'] = array(
 /** Irish (Gaeilge)
  * @author Alison
  */
-$wdMessages['ga'] = array(
+$messages['ga'] = array(
 	'languages' => 'Vicísonraí: Bainisteoir teangacha',
 	'langman_title' => 'Bainisteoir teangacha',
 	'datasearch' => 'Vicísonraí: Cuardaigh sonraí',
@@ -3581,7 +3582,7 @@ $wdMessages['ga'] = array(
  * @author Toliño
  * @author Xosé
  */
-$wdMessages['gl'] = array(
+$messages['gl'] = array(
 	'languages' => 'Wikidata: Xestor de linguas',
 	'langman-desc' => 'Engadir e modificar a configuración de lingua con [[Special:Languages]]',
 	'langman_title' => 'Xestor de linguas',
@@ -3627,7 +3628,7 @@ $wdMessages['gl'] = array(
 Asegúrese de que a súa aplicación salvou ou exportou o ficheiro correctamente.</p>',
 	'ow_importtsv_not_tsv' => '<p>Isto parece non ser un ficheiro TSV válido.</p>',
 	'ow_importtsv_bad_columns' => '<p>Nome de columna incorrecto "$1".<br />
-As columnas deberían ser nomeadas como "definition_iso" ou "translations_iso",  
+As columnas deberían ser nomeadas como "definition_iso" ou "translations_iso",
 onde tamén está o código de lingua ISO.</p>',
 	'ow_importtsv_test_run_title' => 'Escritura de proba para importar datos TSV',
 	'ow_importtsv_nothing_added' => 'Non se engadiu nada.',
@@ -3673,11 +3674,11 @@ Por favor, vexa [[{{MediaWiki:Ow editing policy url}}|a nosa política de edici�
 	'conceptmapping' => 'Wikidata: Mapeamento de conceptos',
 	'ow_conceptmapping_title' => 'Mapeamento de conceptos',
 	'ow_conceptmapping_help' => '<p>accións posibles: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  inserir un mapa</li>
-<li>&action=get&concept=<concept_id>  ler un mapa</li>
-<li>&action=list_sets  devolver unha lista cos prefixos de contexto posibles e a que se refiren.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... inserir un mapa</li>
+<li>&action=get&concept=<concept_id> ler un mapa</li>
+<li>&action=list_sets devolver unha lista cos prefixos de contexto posibles e a que se refiren.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para unha definición dun concepto, devolver todo o demais</li>
-<li>&action=help  Amosar a axuda útil.</li>
+<li>&action=help Amosar a axuda útil.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>O mapa de conceptos permítelle identificar cal é a definición nun conxunto de datos que é idéntico ás definicións noutros conxuntos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'A acción "$1" non está soportada.',
@@ -3811,7 +3812,7 @@ Por favor, póñase en contacto cun operador ou administrador do servidor.',
  * @author LeighvsOptimvsMaximvs
  * @author Omnipaedista
  */
-$wdMessages['grc'] = array(
+$messages['grc'] = array(
 	'langman_langname' => 'Ὄνομα γλώττης:',
 	'langman_iso639-3' => 'Κῶδιξ ISO 639-3:',
 	'langman_iso639-2' => 'Κῶδιξ ISO 639-2:',
@@ -3858,7 +3859,7 @@ $wdMessages['grc'] = array(
  * @author Als-Holder
  * @author Malafaya
  */
-$wdMessages['gsw'] = array(
+$messages['gsw'] = array(
 	'languages' => 'Wikidata: Sproche-Manager',
 	'langman-desc' => 'Sprochyystellige mit [[Special:Languages]] zuefiege un ändere',
 	'langman_title' => 'Sprochmanager',
@@ -3888,7 +3889,7 @@ $wdMessages['gsw'] = array(
 	'datasearch_showing_only' => 'Zeigt nume e Maximalzahl vu $1 {{PLURAL:$1|Träffer|Träffer}}.',
 	'datasearch_match_ext_ids' => 'Träffer Extärni Identifier <i>$1</i>',
 	'datasearch_match_words' => 'Werter mit <i>$1</i> un assoziierte Bedytige',
-	'datasearch_match_words_lang' => 'Werter in <i>$1</i> mit  <i>$2</i> un assoziierte Bedytige',
+	'datasearch_match_words_lang' => 'Werter in <i>$1</i> mit <i>$2</i> un assoziierte Bedytige',
 	'importtsv' => 'Wikidata: Importier TSV',
 	'ow_importtsv_title1' => 'TSV importiere',
 	'ow_importtsv_title2' => 'Definitione un Ibersetzige importiere',
@@ -4078,14 +4079,14 @@ Bitte kontaktier dr Serveradminschtrator.',
 /** Gujarati (ગુજરાતી)
  * @author Dineshjk
  */
-$wdMessages['gu'] = array(
+$messages['gu'] = array(
 	'ow_transaction_user' => 'સભ્ય નામ:',
 );
 
 /** Manx (Gaelg)
  * @author MacTire02
  */
-$wdMessages['gv'] = array(
+$messages['gv'] = array(
 	'languages' => 'Wikidata: Reireyder çhengey',
 	'langman_title' => 'Reireyder çhengey',
 	'ow_save' => 'Sauail',
@@ -4103,7 +4104,7 @@ $wdMessages['gv'] = array(
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */
-$wdMessages['hak'] = array(
+$messages['hak'] = array(
 	'ow_Source' => 'Lòi-ngièn',
 );
 
@@ -4111,7 +4112,7 @@ $wdMessages['hak'] = array(
  * @author Kalani
  * @author Singularity
  */
-$wdMessages['haw'] = array(
+$messages['haw'] = array(
 	'ow_history' => 'Mōʻaukala',
 	'ow_dm_OK' => 'Hiki nō',
 	'ow_Language' => 'ʻŌlelo',
@@ -4122,7 +4123,7 @@ $wdMessages['haw'] = array(
  * @author YaronSh
  * @author דניאל ב.
  */
-$wdMessages['he'] = array(
+$messages['he'] = array(
 	'languages' => 'ויקי־דאטא: מנהל השפות',
 	'langman-desc' => 'הוספה ושינוי של הגדרות שפה באמצעות [[Special:Languages]]',
 	'langman_title' => 'מנהל השפות',
@@ -4182,11 +4183,11 @@ $wdMessages['he'] = array(
 	'ow_transaction_second_dm' => 'המשמעות המוגדרת השנייה',
 	'ow_transaction_summary' => 'תקציר',
 	'ow_conceptmapping_help' => '<p>פעולות אפשריות: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  הוספת מיפוי</li>
-<li>&action=get&concept=<concept_id>  קריאת מיפוי בחזרה</li>
-<li>&action=list_sets  החזרת רשימה של קידומות הקשר אפשריות ולמה הן מפנות.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... הוספת מיפוי</li>
+<li>&action=get&concept=<concept_id> קריאת מיפוי בחזרה</li>
+<li>&action=list_sets החזרת רשימה של קידומות הקשר אפשריות ולמה הן מפנות.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> עבור משמעות אחת מוגדרת ברעיון, החזרת כל השאר</li>
-<li>&action=help  הצגת עזרה מועילה.</li>
+<li>&action=help הצגת עזרה מועילה.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>מיפוי תפיסתי מאפשר לכם לזהות איזו משמעות מוגדרת בערכת נתונים אחת זהה למשמעויות מוגדרות בערכות נתונים אחרות.</p>',
 	'ow_conceptmapping_no_action_specified' => 'הפעולה "$1" אינה נתמכת.',
@@ -4314,7 +4315,7 @@ $wdMessages['he'] = array(
  * @author Ashishbhatnagar72
  * @author Kaustubh
  */
-$wdMessages['hi'] = array(
+$messages['hi'] = array(
 	'languages' => 'Wikidata: भाषा प्रबंधक',
 	'langman_title' => 'भाषा प्रबंधक',
 	'datasearch' => 'Wikidata: आंकडा़ खोज',
@@ -4344,7 +4345,7 @@ $wdMessages['hi'] = array(
 /** Hiligaynon (Ilonggo)
  * @author Jose77
  */
-$wdMessages['hil'] = array(
+$messages['hil'] = array(
 	'ow_history' => 'Saysay',
 );
 
@@ -4352,7 +4353,7 @@ $wdMessages['hil'] = array(
  * @author CERminator
  * @author Dalibor Bosits
  */
-$wdMessages['hr'] = array(
+$messages['hr'] = array(
 	'ow_save' => 'Spremi',
 	'ow_class_attr_type_link' => 'Poveznica',
 );
@@ -4360,7 +4361,7 @@ $wdMessages['hr'] = array(
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
-$wdMessages['hsb'] = array(
+$messages['hsb'] = array(
 	'languages' => 'Wikidata: Zrjadowak rěčow',
 	'langman-desc' => 'Rěčne nastajenja z [[Special:Languages]] přidać a změnić',
 	'langman_title' => 'Zrjadowak rěčow',
@@ -4449,11 +4450,11 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
 	'conceptmapping' => 'Wikidaty: Zwjazanje zapřijećow',
 	'ow_conceptmapping_title' => 'Zwjazanje zapřijećow',
 	'ow_conceptmapping_help' => '<p>Móžne akcije: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  Zwjazanje zasunyć</li>
-<li>&action=get&concept=<concept_id>  Zwjazanje wotwołać</li>
-<li>&action=list_sets  Lisćinu móžnych prefiksow konteksta datow pokazać  a na štož so poćahuja.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... Zwjazanje zasunyć</li>
+<li>&action=get&concept=<concept_id> Zwjazanje wotwołać</li>
+<li>&action=list_sets Lisćinu móžnych prefiksow konteksta datow pokazać a na štož so poćahuja.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> Za definowany woznam w konteksće wšě druhe pokazać</li>
-<li>&action=help  Wužitnu pomoc pokazać.</li>
+<li>&action=help Wužitnu pomoc pokazać.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Concept mapping ći dowola identifikować, kotry definowany woznam en sadźbje datow je identiski z definowanymi woznami w druhich sadźbach datow.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akcija "$1" so njepodpěruje.',
@@ -4577,7 +4578,7 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
  * @author Dani
  * @author Gondnok
  */
-$wdMessages['hu'] = array(
+$messages['hu'] = array(
 	'langman_title' => 'Nyelv kezelő',
 	'ow_save' => 'Mentés',
 	'ow_history' => 'Történet',
@@ -4643,7 +4644,7 @@ Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
  * @author Malafaya
  * @author McDutchie
  */
-$wdMessages['ia'] = array(
+$messages['ia'] = array(
 	'languages' => 'Wikidatos: Gestion de linguas',
 	'langman-desc' => 'Adder e cambiar configurationes de linguas con [[Special:Languages]]',
 	'langman_title' => 'Gestion de linguas',
@@ -4735,11 +4736,11 @@ Per favor vide [[{{MediaWiki:Ow editing policy url}}|nostre politica de modifica
 	'conceptmapping' => 'Wikidatos: Correspondentia de conceptos',
 	'ow_conceptmapping_title' => 'Correspondentia de conceptos',
 	'ow_conceptmapping_help' => '<p>actiones possibile: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  inserer un correspondentia</li>
-<li>&action=get&concept=<concept_id>  revider un correspondentia</li>
-<li>&action=list_sets  retornar un lista de possibile prefixos de contexto de datos e a que illos refere.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... inserer un correspondentia</li>
+<li>&action=get&concept=<concept_id> revider un correspondentia</li>
+<li>&action=list_sets retornar un lista de possibile prefixos de contexto de datos e a que illos refere.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pro un significato definite in un concepto, retornar tote le alteres</li>
-<li>&action=help  Monstrar adjuta utile.</li>
+<li>&action=help Monstrar adjuta utile.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Le correspondentia de conceptos te permitte identificar qual significato definite in un collection de datos es identic a significatos definite in altere collectiones de datos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Le action "$1" non es supportate.',
@@ -4875,7 +4876,7 @@ Per favor contacta le operator o administrator del servitor.',
  * @author Irwangatot
  * @author Rex
  */
-$wdMessages['id'] = array(
+$messages['id'] = array(
 	'languages' => 'Wikidata: Pengelola bahasa',
 	'langman_title' => 'Pengelola bahasa',
 	'langman_field_optional' => '(opsional)',
@@ -4931,7 +4932,7 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 /** Ido (Ido)
  * @author Malafaya
  */
-$wdMessages['io'] = array(
+$messages['io'] = array(
 	'langman_addlang' => 'Adjuntar linguo',
 	'datasearch_language' => 'Linguo:',
 	'datasearch_found_word' => 'Vorto trovita',
@@ -4996,7 +4997,7 @@ $wdMessages['io'] = array(
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
-$wdMessages['is'] = array(
+$messages['is'] = array(
 	'ow_save' => 'Vista',
 	'ow_uipref_datasets' => 'Sjálfgefið útlit',
 	'ow_uiprefs' => 'Wikigögn',
@@ -5009,7 +5010,7 @@ $wdMessages['is'] = array(
  * @author Melos
  * @author Nemo bis
  */
-$wdMessages['it'] = array(
+$messages['it'] = array(
 	'langman_not_allowed' => 'Non si dispone dei permessi necessari per modificare le impostazioni della lingua.',
 	'langman_header' => 'Inserisci il codice della lingua e il nome della lingua (in inglese) qui di seguito:',
 	'langman_req_fields' => 'Sono richiesti il nome della lingua e il codice ISO 639-3!',
@@ -5127,7 +5128,7 @@ Non è stata eseguita l'operazione di copia.",
  * @author Hosiryuhosi
  * @author JtFuruhata
  */
-$wdMessages['ja'] = array(
+$messages['ja'] = array(
 	'languages' => 'ウィキデータ: 言語管理',
 	'langman-desc' => '[[Special:Languages]] を使用して言語設定を追加および変更する',
 	'langman_title' => '言語管理',
@@ -5216,11 +5217,11 @@ $wdMessages['ja'] = array(
 	'conceptmapping' => 'ウィキデータ: 概念写像',
 	'ow_conceptmapping_title' => '概念写像',
 	'ow_conceptmapping_help' => '<p>可能な操作: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  関連付けを作成</li>
-<li>&action=get&concept=<concept_id>  関連する内容を取得</li>
-<li>&action=list_sets  取得可能なデータの接頭辞とその関連項目の一覧を取得</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... 関連付けを作成</li>
+<li>&action=get&concept=<concept_id> 関連する内容を取得</li>
+<li>&action=list_sets 取得可能なデータの接頭辞とその関連項目の一覧を取得</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> ある概念に対する意味定義の一つから他の意味定義すべてを取得</li>
-<li>&action=help  ヘルプの表示</li>
+<li>&action=help ヘルプの表示</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>概念写像では、あるデータ集合に含まれる意味定義を他のデータ集合にある意味定義と同一概念のものとして関連付けることができます。</p>',
 	'ow_conceptmapping_no_action_specified' => '「$1」という操作はサポートされていません。',
@@ -5352,7 +5353,7 @@ $wdMessages['ja'] = array(
  * @author Meursault2004
  * @author Pras
  */
-$wdMessages['jv'] = array(
+$messages['jv'] = array(
 	'languages' => 'Wikidata: Pangurus basa',
 	'langman_title' => 'Pangurus basa',
 	'datasearch' => 'Wikidata: Panggolèkan data',
@@ -5366,13 +5367,13 @@ Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan k
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ora ana sing disèlèksi',
 	'ow_conceptmapping_help' => "<p>tumindak sing bisa diayahi: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  nyisipaké pamétaan (''mapping'')</li>
-<li>&action=get&concept=<concept_id>  waca pamétaan ''mapping'' manèh</li>
-<li>&action=list_sets  mbalêkaké dhaptar awalan kontèks data sing bisa lan apa sing dirujuk.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... nyisipaké pamétaan (''mapping'')</li>
+<li>&action=get&concept=<concept_id> waca pamétaan ''mapping'' manèh</li>
+<li>&action=list_sets mbalêkaké dhaptar awalan kontèks data sing bisa lan apa sing dirujuk.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> kanggo siji makna ing konsèp, balèkaké kabèh liyané</li>
-<li>&action=help  Tuduhaké pitulung.</li>
+<li>&action=help Tuduhaké pitulung.</li>
 </ul></p>",
-	'ow_conceptmapping_uitext' => '<p>Pamétaan konsèp agawé panjenengan bisa ngenali makna  endi jroning sèt-data  padha karo makna jroning sèt-data liya.</p>',
+	'ow_conceptmapping_uitext' => '<p>Pamétaan konsèp agawé panjenengan bisa ngenali makna endi jroning sèt-data padha karo makna jroning sèt-data liya.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Tindakan "$1" ora didhukung.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'ora dilebokaké',
@@ -5465,7 +5466,7 @@ Mangga hubungi operator server utawa pangurus.',
  * @author Sopho
  * @author Temuri rajavi
  */
-$wdMessages['ka'] = array(
+$messages['ka'] = array(
 	'languages' => 'ვიკიდატა: ენების მენეჯერი',
 	'langman_title' => 'ენების მენეჯერი',
 	'langman_iso639-3' => 'ISO 639-3 კოდი:',
@@ -5572,22 +5573,22 @@ $wdMessages['ka'] = array(
 );
 
 /** Kazakh (Қазақша) */
-$wdMessages['kk'] = array(
+$messages['kk'] = array(
 	'langman_title' => 'Тілдерді меңгеру',
 );
 
 /** Kazakh (China) (‫قازاقشا (جۇنگو)‬) */
-$wdMessages['kk-cn'] = array(
+$messages['kk-cn'] = array(
 	'langman_title' => 'تٴىلدەردٴى مەڭگەرۋ',
 );
 
 /** Kazakh (Kazakhstan) (‪Қазақша (Қазақстан)‬) */
-$wdMessages['kk-kz'] = array(
+$messages['kk-kz'] = array(
 	'langman_title' => 'Тілдерді меңгеру',
 );
 
 /** Kazakh (Turkey) (‪Qazaqşa (Türkïya)‬) */
-$wdMessages['kk-tr'] = array(
+$messages['kk-tr'] = array(
 	'langman_title' => 'Tilderdi meñgerw',
 );
 
@@ -5598,7 +5599,7 @@ $wdMessages['kk-tr'] = array(
  * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
  */
-$wdMessages['km'] = array(
+$messages['km'] = array(
 	'languages' => 'ទិន្នន័យវិគី៖ អ្នកគ្រប់គ្រង​ភាសា',
 	'langman_title' => 'អ្នកគ្រប់គ្រង​ភាសា',
 	'langman_header' => 'វាយបញ្ចូលលេខកូដភាសានិងឈ្មោះជាភាសាអង់គ្លេសរបស់វាខាងក្រោម៖',
@@ -5696,7 +5697,7 @@ $wdMessages['km'] = array(
 /** Korean (한국어)
  * @author Yknok29
  */
-$wdMessages['ko'] = array(
+$messages['ko'] = array(
 	'languages' => '위키자료집: 언어 관리자',
 	'langman-desc' => '언어 설정을 바꾸거나 추가하시려면 [[Special:Languages]]로 가세요.',
 	'langman_title' => '언어 관리자',
@@ -5776,14 +5777,14 @@ $wdMessages['ko'] = array(
 /** Krio (Krio)
  * @author Jose77
  */
-$wdMessages['kri'] = array(
+$messages['kri'] = array(
 	'ow_history' => 'Istri',
 );
 
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */
-$wdMessages['krj'] = array(
+$messages['krj'] = array(
 	'ow_history' => 'Kasaysayan',
 	'ow_dm_OK' => 'OK dun',
 );
@@ -5791,7 +5792,7 @@ $wdMessages['krj'] = array(
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
-$wdMessages['ksh'] = array(
+$messages['ksh'] = array(
 	'languages' => 'Sproche verwallde för Wikidata.',
 	'langman-desc' => 'Donn de Enstellunge för Shprooche dobei, udder ömmoodelle, met [[Special:Languages|{{#special:Languages}}]].',
 	'langman_title' => 'Sproche-Verwaldung',
@@ -5839,7 +5840,7 @@ $wdMessages['ksh'] = array(
 	'ow_importtsv_test_run_title' => 'Versoochslouf för en Datei met Reije met Wääte un Tabulatore dozwesche ze empoteere',
 	'ow_importtsv_nothing_added' => 'Nix dobei jedonn.',
 	'ow_importtsv_nothing_added_test' => 'Nix dobei jedonn (Do häs jo nor ene Versochslouf jemaat).',
-	'ow_importtsv_results' => 'Han {{PLURAL:$1|ein Bedüggdeniß|$1 Bedüggdeniße|kei Bedüggdeniß}} un  {{PLURAL:$1|ein Övversäzung|$2 Övversäzunge|kein Övversäzung}} neu opjenumme un dobei jedonn.',
+	'ow_importtsv_results' => 'Han {{PLURAL:$1|ein Bedüggdeniß|$1 Bedüggdeniße|kei Bedüggdeniß}} un {{PLURAL:$1|ein Övversäzung|$2 Övversäzunge|kein Övversäzung}} neu opjenumme un dobei jedonn.',
 	'ow_impexptsv_unknown_lang' => '<p>He di Shprooch es nit bikannt, odder se es verkeeht: $1.<br />Shprooche möße övver dänne ier ISO 639-3 Koods annjejovve wääde.</p>',
 	'exporttsv' => 'Wikidata: En Datei uß Reije met Wääte met Tabulatore dozwesche expoteere',
 	'ow_exporttsv_title' => 'En Sammlong als en Datei uß Reije met Wääte met Tabulatore dozwesche expoteere',
@@ -6025,7 +6026,7 @@ Wi et ußsüht, es de Datebangk nit mieh konsistent. Wikidata kunnt kein jöltij
 /** Kurdish (Kurdî / كوردی)
  * @author Bangin
  */
-$wdMessages['ku'] = array(
+$messages['ku'] = array(
 	'ow_history' => 'Dîrok',
 	'ow_Source' => 'Çavkanî',
 );
@@ -6033,7 +6034,7 @@ $wdMessages['ku'] = array(
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */
-$wdMessages['ku-latn'] = array(
+$messages['ku-latn'] = array(
 	'ow_history' => 'Dîrok',
 	'ow_Source' => 'Çavkanî',
 );
@@ -6041,14 +6042,14 @@ $wdMessages['ku-latn'] = array(
 /** Cornish (Kernewek)
  * @author Kw-Moon
  */
-$wdMessages['kw'] = array(
+$messages['kw'] = array(
 	'datasearch_language' => 'Yeth:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$wdMessages['lb'] = array(
+$messages['lb'] = array(
 	'languages' => 'Wikidata: Sproochmanager',
 	'langman-desc' => 'Sproochastellungen mat [[Special:Languages]] derbäisetzen an änneren',
 	'langman_title' => 'Sproochmanager',
@@ -6234,7 +6235,7 @@ Vläicht koumt Dir direkt op dës Säit: Normalerweis braucht Dir net hei ze sin
 /** Lingua Franca Nova (Lingua Franca Nova)
  * @author Malafaya
  */
-$wdMessages['lfn'] = array(
+$messages['lfn'] = array(
 	'langman_addlang' => 'Ajunta lingua',
 	'ow_exporttsv_languages' => 'Linguas:',
 	'ow_save' => 'Fisa',
@@ -6272,21 +6273,21 @@ $wdMessages['lfn'] = array(
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */
-$wdMessages['li'] = array(
+$messages['li'] = array(
 	'ow_save' => 'Opslaon',
 );
 
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */
-$wdMessages['lt'] = array(
+$messages['lt'] = array(
 	'datasearch' => 'Wikidata: Duomenų paieška',
 );
 
 /** Maithili (मैथिली)
  * @author Ggajendra
  */
-$wdMessages['mai'] = array(
+$messages['mai'] = array(
 	'langman_title' => 'भाषा प्रबंधक',
 	'datasearch' => 'विकी सूचनाकोष: सूचनाकोष ताकू',
 );
@@ -6294,7 +6295,7 @@ $wdMessages['mai'] = array(
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
-$wdMessages['mg'] = array(
+$messages['mg'] = array(
 	'langman_title' => 'Mpitantana fiteny',
 	'langman_langname' => 'Anaram-piteny :',
 	'langman_iso639-3' => 'Kaody ISO 639-3 :',
@@ -6316,7 +6317,7 @@ $wdMessages['mg'] = array(
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
-$wdMessages['mhr'] = array(
+$messages['mhr'] = array(
 	'ow_save' => 'Аралаш',
 	'ow_history' => 'Историй',
 	'ow_LinkAttributeValues' => 'Ссылке-влак',
@@ -6325,7 +6326,7 @@ $wdMessages['mhr'] = array(
 /** Macedonian (Македонски)
  * @author Brest
  */
-$wdMessages['mk'] = array(
+$messages['mk'] = array(
 	'langman_langname' => 'Име на јазик:',
 	'langman_iso639-3' => 'ISO 639-3 код:',
 	'langman_iso639-2' => 'ISO 639-2 код:',
@@ -6389,7 +6390,7 @@ $wdMessages['mk'] = array(
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
-$wdMessages['ml'] = array(
+$messages['ml'] = array(
 	'langman_title' => 'ഭാഷാ പരിപാലകന്‍',
 	'ow_save' => 'സേവ് ചെയ്യുക',
 	'ow_history' => 'നാള്‍വഴി',
@@ -6419,7 +6420,7 @@ $wdMessages['ml'] = array(
  * @author Kaustubh
  * @author Mahitgar
  */
-$wdMessages['mr'] = array(
+$messages['mr'] = array(
 	'languages' => 'विकिविदा:भाषाप्रबंधक',
 	'langman_title' => 'भाषा प्रबंधक',
 	'datasearch' => 'विकिविदा:विदा शोध',
@@ -6432,11 +6433,11 @@ $wdMessages['mr'] = array(
 	'ow_uiprefs' => 'विकिविदा',
 	'ow_none_selected' => 'कोणतेही निवडले नाही',
 	'ow_conceptmapping_help' => '<p>शक्य क्रिया: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  एक मॅपिंग टाका</li>
-<li>&action=get&concept=<concept_id>  एक मॅपिंग वाचा</li>
-<li>&action=list_sets  शक्य असलेले डाटा कन्टेक्स्ट उपपदांची यादी व ती काय दर्शवितात त्याच्यासकट द्या.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... एक मॅपिंग टाका</li>
+<li>&action=get&concept=<concept_id> एक मॅपिंग वाचा</li>
+<li>&action=list_sets शक्य असलेले डाटा कन्टेक्स्ट उपपदांची यादी व ती काय दर्शवितात त्याच्यासकट द्या.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> एखाद्या विशिष्ट अर्थासाठी, इतर सर्व द्या</li>
-<li>&action=help  माहितीपूर्ण मदत दाखवा.</li>
+<li>&action=help माहितीपूर्ण मदत दाखवा.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>कन्सेप्ट मॅपिंग मुळे तुम्हाला एखाद्या डाटाबेस मध्ये असणारा अर्थ दुसर्‍या डाटाबेस मधल्या कुठल्या अर्थाशी तंतोतंत जुळतो हे कळते.</p>',
 	'ow_conceptmapping_no_action_specified' => '"$1" कसे करावे मला ठावूक नाही,क्षमस्व',
@@ -6522,28 +6523,28 @@ $wdMessages['mr'] = array(
 /** Malay (Bahasa Melayu)
  * @author Aurora
  */
-$wdMessages['ms'] = array(
+$messages['ms'] = array(
 	'ow_dm_OK' => 'OK',
 );
 
 /** Maltese (Malti)
  * @author Roderick Mallia
  */
-$wdMessages['mt'] = array(
+$messages['mt'] = array(
 	'ow_Language' => 'Lingwa',
 );
 
 /** Mirandese (Mirandés)
  * @author Malafaya
  */
-$wdMessages['mwl'] = array(
+$messages['mwl'] = array(
 	'ow_Language' => 'Lhéngua',
 );
 
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
-$wdMessages['myv'] = array(
+$messages['myv'] = array(
 	'languages' => 'Келень кирдий',
 	'langman_title' => 'Келень кирдий',
 	'langman_langname' => 'Келенть лемезэ:',
@@ -6589,7 +6590,7 @@ $wdMessages['myv'] = array(
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
-$wdMessages['nah'] = array(
+$messages['nah'] = array(
 	'ow_save' => 'Ticpiyāz',
 	'ow_history' => 'Tlahcuilōlloh',
 	'ow_uiprefs' => 'Huiquidatah',
@@ -6609,7 +6610,7 @@ $wdMessages['nah'] = array(
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
-$wdMessages['nds'] = array(
+$messages['nds'] = array(
 	'ow_save' => 'Spiekern',
 	'ow_history' => 'Historie',
 	'ow_uiprefs' => 'Wikidata',
@@ -6645,7 +6646,7 @@ $wdMessages['nds'] = array(
  * @author Siebrand
  * @author Tvdm
  */
-$wdMessages['nl'] = array(
+$messages['nl'] = array(
 	'languages' => 'Wikidata: Taalmanager',
 	'langman-desc' => 'Toevoegen en wijzigen van taalinstellingen via [[Special:Languages]]',
 	'langman_title' => 'Taalmanager',
@@ -6871,7 +6872,7 @@ Vergeet niet om dit te controleren!',
  * @author Gunnernett
  * @author Harald Khan
  */
-$wdMessages['nn'] = array(
+$messages['nn'] = array(
 	'languages' => 'Wikidata: Språkhandsamar',
 	'langman-desc' => 'Legg til og endre språkinstillingar med [[Special:Languages]]',
 	'langman_title' => 'Språkhandsamar',
@@ -6917,7 +6918,7 @@ $wdMessages['nn'] = array(
 Forviss deg om at programmet ditt har lagra eller eksportert fila på rett vis.</p>',
 	'ow_importtsv_not_tsv' => '<p>Dette ser ikkje ut til å vera ei gyldig TSV-fil.</p>',
 	'ow_importtsv_bad_columns' => "<p>Ikkje rett kolonnenamn '$1'.<br />
-Kolonner skal verta kalla 'definition_iso' eller 'translations_iso',  
+Kolonner skal verta kalla 'definition_iso' eller 'translations_iso',
 der iso er språkkoda.</p>",
 	'ow_importtsv_test_run_title' => 'Testkøyring for importering av TSV-data',
 	'ow_importtsv_nothing_added' => 'Ingenting lagt til.',
@@ -6962,11 +6963,11 @@ Vel ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparere
 	'conceptmapping' => 'Wikidata: Omgrepskartlegging',
 	'ow_conceptmapping_title' => 'Omgrepskartlegging',
 	'ow_conceptmapping_help' => '<p>moglege handlingar: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  set inn eit kart</li>
-<li>&action=get&concept=<concept_id>  sjå att eit kart</li>
-<li>&action=list_sets  viser ei liste over moglege datakontekst-prefiks og kva dei refererer til.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... set inn eit kart</li>
+<li>&action=get&concept=<concept_id> sjå att eit kart</li>
+<li>&action=list_sets viser ei liste over moglege datakontekst-prefiks og kva dei refererer til.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> viser alle andre for ei definert tyding i eit konsept</li>
-<li>&action=help  Viser hjelp.</li>
+<li>&action=help Viser hjelp.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Kart over konsept lèt deg finne ut kva definert tyding i ei datavising som er lik definerte tydingar i andre datavisingar.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Handlinga «$1» er ikkje støtta.',
@@ -7089,7 +7090,7 @@ Vel ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparere
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$wdMessages['no'] = array(
+$messages['no'] = array(
 	'languages' => 'Wikidata: Språkbehandler',
 	'langman-desc' => 'Legg til og endre språkinstillinger med [[Special:Languages]]',
 	'langman_title' => 'Språkbehandler',
@@ -7306,7 +7307,7 @@ Velg en samlign for eksportering. Skriv inn en kommaseparert liste av ISO 639-3-
 /** Northern Sotho (Sesotho sa Leboa)
  * @author Mohau
  */
-$wdMessages['nso'] = array(
+$messages['nso'] = array(
 	'ow_GotoSource' => 'Eya go mothopo',
 	'ow_Language' => 'Polelo',
 	'ow_Spelling' => 'Mopeleto',
@@ -7325,7 +7326,7 @@ $wdMessages['nso'] = array(
 /** Occitan (Occitan)
  * @author Cedric31
  */
-$wdMessages['oc'] = array(
+$messages['oc'] = array(
 	'languages' => 'Wikidata: Gestion de las lengas',
 	'langman-desc' => 'Apondre e modificar los paramètres de lengas amb [[Special:Languages]]',
 	'langman_title' => 'Gestion de las lengas',
@@ -7371,7 +7372,7 @@ $wdMessages['oc'] = array(
 Siatz segur(a) que vòstra aplicacion a salvat o exportat lo fichièr corrèctament.</p>",
 	'ow_importtsv_not_tsv' => '<p>Aquò sembla pas èsser un fichièr TSV valid.</p>',
 	'ow_importtsv_bad_columns' => '<p>Nom de colomna « $1 » invalida.<br />
-las colomnas devon èsser nomenadas « definition_iso » o « translations_iso »,   
+las colomnas devon èsser nomenadas « definition_iso » o « translations_iso »,
 ont iso es lo còde de lenga.</p>',
 	'ow_importtsv_test_run_title' => "Tèst d'importacion per las donadas TSV",
 	'ow_importtsv_nothing_added' => 'Res es pas estat apondut.',
@@ -7417,11 +7418,11 @@ Vejatz [[{{MediaWiki:Ow editing policy url}}|nòstras règlas d'edicion]].",
 	'conceptmapping' => 'Wikidata: Esquèma conceptual',
 	'ow_conceptmapping_title' => 'Esquèma conceptual',
 	'ow_conceptmapping_help' => "<p>accions possiblas : <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  inserir una mapa</li>
-<li>&action=get&concept=<concept_id>  tornar veire una mapa</li>
-<li>&action=list_sets  retorna una lista dels prefixes de contèxtes possibles e sus qué se referisson.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... inserir una mapa</li>
+<li>&action=get&concept=<concept_id> tornar veire una mapa</li>
+<li>&action=list_sets retorna una lista dels prefixes de contèxtes possibles e sus qué se referisson.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> per un definit dins lo sens d'un concèpte, retorna totes los autres.</li>
-<li>&action=help  Vejatz l’ajuda completa.</li>
+<li>&action=help Vejatz l’ajuda completa.</li>
 </ul></p>",
 	'ow_conceptmapping_uitext' => "<p>La mapa dels concèptes vos permet d'identificar
 que lo sens definit dins una donada siá identic
@@ -7547,14 +7548,14 @@ Contactatz l’administrator.',
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
  */
-$wdMessages['or'] = array(
+$messages['or'] = array(
 	'ow_history' => 'ଇତିହାସ',
 );
 
 /** Ossetic (Иронау)
  * @author Amikeco
  */
-$wdMessages['os'] = array(
+$messages['os'] = array(
 	'ow_save' => 'Афтæ уæд',
 	'ow_history' => 'Истори',
 	'ow_dm_OK' => 'Афтæ уæд!',
@@ -7567,7 +7568,7 @@ $wdMessages['os'] = array(
 /** Deitsch (Deitsch)
  * @author Xqt
  */
-$wdMessages['pdc'] = array(
+$messages['pdc'] = array(
 	'langman_langname' => 'Schproochnaame:',
 	'importlangnames_not_found' => '<strong>Ken Schprooch fer „$1“ gfunne!</strong>',
 	'datasearch_language' => 'Schprooch:',
@@ -7588,7 +7589,7 @@ $wdMessages['pdc'] = array(
  * @author Sp5uhe
  * @author Wpedzich
  */
-$wdMessages['pl'] = array(
+$messages['pl'] = array(
 	'languages' => 'Wikidata: Menadżer języków',
 	'langman-desc' => 'Dodawanie i zmiana ustawień językowych na [[Special:Languages]]',
 	'langman_title' => 'Menadżer języków',
@@ -7679,11 +7680,11 @@ Wybierz kolekcję do wyeksportowania. W polu tekstowym „Języki” wpisz rozdz
 	'conceptmapping' => 'Wikidata: Mapowanie pojęć',
 	'ow_conceptmapping_title' => 'Mapowanie pojęć',
 	'ow_conceptmapping_help' => '<p>możliwe działania: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  wstawia mapowanie</li>
-<li>&action=get&concept=<concept_id>  odczytuje mapowanie</li>
-<li>&action=list_sets  zwraca listę możliwych prefiksów kontekstu danych i ich odnośników</li>
-<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> w odniesieniu do  jednego zdefiniowanego znaczenia w pojęciu zwraca pozostałe definicje</li>
-<li>&action=help  pokazuje pomoc</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... wstawia mapowanie</li>
+<li>&action=get&concept=<concept_id> odczytuje mapowanie</li>
+<li>&action=list_sets zwraca listę możliwych prefiksów kontekstu danych i ich odnośników</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> w odniesieniu do jednego zdefiniowanego znaczenia w pojęciu zwraca pozostałe definicje</li>
+<li>&action=help pokazuje pomoc</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Odwzorowywanie pojęć pozwala na identyfikację tego, które ze zdefiniowanych w jednym zestawie danych znaczeń są identyczne do znaczeń zdefiniowanych w drugim zestawie danych.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akcja „$1” nie jest obsługiwana.',
@@ -7805,7 +7806,7 @@ Wybierz kolekcję do wyeksportowania. W polu tekstowym „Języki” wpisz rozdz
 /** Piedmontese (Piemontèis)
  * @author Bèrto 'd Sèra
  */
-$wdMessages['pms'] = array(
+$messages['pms'] = array(
 	'languages' => 'Wikidata: Gestor dle lenghe',
 	'langman_title' => 'Gestor dle lenghe',
 	'datasearch' => 'Wikidata: Arsërca antra ij dat',
@@ -7847,7 +7848,7 @@ $wdMessages['pms'] = array(
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
-$wdMessages['ps'] = array(
+$messages['ps'] = array(
 	'languages' => 'Wikidata: د ژبې سمبالګر',
 	'langman_title' => 'د ژبې سمبالګر',
 	'ow_save' => 'خوندي کول',
@@ -7855,11 +7856,11 @@ $wdMessages['ps'] = array(
 	'ow_uiprefs' => 'ويکيډاټا',
 	'ow_none_selected' => 'هېڅ هم نه دی ټاکل شوی',
 	'ow_conceptmapping_help' => '<p>شونې کړنې: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
-<li>&action=get&concept=<concept_id>  read a mapping back</li>
-<li>&action=list_sets  return a list of possible data context prefixes and what they refer to.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... insert a mapping</li>
+<li>&action=get&concept=<concept_id> read a mapping back</li>
+<li>&action=list_sets return a list of possible data context prefixes and what they refer to.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> for one defined meaning in a concept, return all others</li>
-<li>&action=help  Show helpful help.</li>
+<li>&action=help Show helpful help.</li>
 </ul></p>',
 	'ow_conceptmapping_no_action_specified' => 'بښنه غواړم، زه نه پوهېږم چې څنګه "$1".',
 	'ow_dm_not_present' => 'نه دی ورکړ شوی',
@@ -7897,7 +7898,7 @@ $wdMessages['ps'] = array(
  * @author Malafaya
  * @author Waldir
  */
-$wdMessages['pt'] = array(
+$messages['pt'] = array(
 	'languages' => 'Wikidata: Gestor de línguas',
 	'langman-desc' => 'Adicione e modifique configurações de línguas com [[Special:Languages]]',
 	'langman_title' => 'Gestor de línguas',
@@ -7943,7 +7944,7 @@ $wdMessages['pt'] = array(
 Certifique-se de que a sua aplicação gravou ou exportou o ficheiro correctamente.</p>',
 	'ow_importtsv_not_tsv' => '<p>Este ficheiro não aparenta ser um ficheiro TSV válido.</p>',
 	'ow_importtsv_bad_columns' => "<p>Nome de coluna '$1' incorrecto.<br />
-As colunas deverão ter o nome 'definition_iso' ou 'translations_iso',  
+As colunas deverão ter o nome 'definition_iso' ou 'translations_iso',
 onde iso é o código da língua.</p>",
 	'ow_importtsv_test_run_title' => 'Teste de execução de importação de dados TSV',
 	'ow_importtsv_nothing_added' => 'Nada adicionado.',
@@ -8122,7 +8123,7 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
  * @author Heldergeovane
  * @author Jorge Morais
  */
-$wdMessages['pt-br'] = array(
+$messages['pt-br'] = array(
 	'languages' => 'Wikidata: Gestor de línguas',
 	'langman-desc' => 'Adicione e mude configurações de língua com [[Special:Languages]]',
 	'langman_title' => 'Gestor de línguas',
@@ -8168,7 +8169,7 @@ $wdMessages['pt-br'] = array(
 Certifique-se de que a sua aplicação gravou ou exportou o arquivo corretamente.</p>',
 	'ow_importtsv_not_tsv' => '<p>Este arquivo não aparenta ser um arquivo TSV válido.</p>',
 	'ow_importtsv_bad_columns' => "<p>Nome de coluna '$1' incorreto.<br />
-As colunas deverão ter o nome 'definition_iso' ou 'translations_iso',   
+As colunas deverão ter o nome 'definition_iso' ou 'translations_iso',
 onde iso é o código da língua.</p>",
 	'ow_importtsv_test_run_title' => 'Teste de execução de importação de dados TSV',
 	'ow_importtsv_nothing_added' => 'Nada adicionado.',
@@ -8214,11 +8215,11 @@ Por favor, veja [[{{MediaWiki:Ow editing policy url}}|nossa política de ediçã
 	'conceptmapping' => 'Wikidata: Mapeamento de conceitos',
 	'ow_conceptmapping_title' => 'Mapeamento de Conceitos',
 	'ow_conceptmapping_help' => '<p>ações possíveis: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  inserir um mapeamento</li>
-<li>&action=get&concept=<concept_id>  ler um mapeamento de volta</li>
-<li>&action=list_sets  retornar uma lista de prefixos de contexto de dados possíveis e a que se referem.</li>
-<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix>  para um significado definido num conceito, retornar todos os outros</li>
-<li>&action=help  Mostrar ajuda preciosa.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... inserir um mapeamento</li>
+<li>&action=get&concept=<concept_id> ler um mapeamento de volta</li>
+<li>&action=list_sets retornar uma lista de prefixos de contexto de dados possíveis e a que se referem.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para um significado definido num conceito, retornar todos os outros</li>
+<li>&action=help Mostrar ajuda preciosa.</li>
 </ul>
 </p>',
 	'ow_conceptmapping_uitext' => '<p>O Mapeamento de Conceitos permite-lhe identificar que significado definido em um conjunto de dados é idêntico a significados definidos em outro conjunto de dados.</p>',
@@ -8353,7 +8354,7 @@ Por favor, contate o operador ou administrador do servidor.',
 /** Tarifit (Tarifit)
  * @author Jose77
  */
-$wdMessages['rif'] = array(
+$messages['rif'] = array(
 	'ow_history' => 'Amzruy',
 	'ow_LinkAttributeValues' => 'Tiẓdyin',
 );
@@ -8362,7 +8363,7 @@ $wdMessages['rif'] = array(
  * @author KlaudiuMihaila
  * @author Mihai
  */
-$wdMessages['ro'] = array(
+$messages['ro'] = array(
 	'langman_langname' => 'Numele limbii:',
 	'langman_iso639-3' => 'Cod ISO 639-3:',
 	'langman_iso639-2' => 'Cod ISO 639-2:',
@@ -8435,7 +8436,7 @@ Poate aţi ajuns la această pagină direct? În mod normal nu ar trebui să fi�
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
-$wdMessages['roa-tara'] = array(
+$messages['roa-tara'] = array(
 	'langman_langname' => "Nome d'a lènghe:",
 	'langman_iso639-3' => 'Codece ISO 639-3:',
 	'langman_iso639-2' => 'Codece ISO 639-2:',
@@ -8500,7 +8501,7 @@ $wdMessages['roa-tara'] = array(
  * @author Osd
  * @author Александр Сигачёв
  */
-$wdMessages['ru'] = array(
+$messages['ru'] = array(
 	'languages' => 'Викиданные: Языковой менеджер',
 	'langman-desc' => 'Добавление и изменение языковых настроек с помощью [[Special:Languages]]',
 	'langman_title' => 'Языковой менеджер',
@@ -8546,7 +8547,7 @@ $wdMessages['ru'] = array(
 Убедитесь, что ваше приложение правильно сохраняет или экспортирует файл.</p>',
 	'ow_importtsv_not_tsv' => '<p>По всей видимости, формат файла отличается от TSV.</p>',
 	'ow_importtsv_bad_columns' => '<p>Ошибочное имя столбца «$1».<br />
-Столбцы должны называться «definition_iso» или «translations_iso»,  
+Столбцы должны называться «definition_iso» или «translations_iso»,
 где вместо «iso» должен быть код языка.</p>',
 	'ow_importtsv_test_run_title' => 'Пробный запуск импорта TSV-данных',
 	'ow_importtsv_nothing_added' => 'Ничего не добавлено.',
@@ -8591,11 +8592,11 @@ $wdMessages['ru'] = array(
 	'conceptmapping' => 'Викиданные: Соответствие концептов',
 	'ow_conceptmapping_title' => 'Соответствие концептов',
 	'ow_conceptmapping_help' => '<p>возможные действия: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  вставить соответствие</li>
-<li>&action=get&concept=<concept_id>  прочитать соответствие</li>
-<li>&action=list_sets  вывести список возможных приставок контекстов данных и мест, куда они ссылаются.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... вставить соответствие</li>
+<li>&action=get&concept=<concept_id> прочитать соответствие</li>
+<li>&action=list_sets вывести список возможных приставок контекстов данных и мест, куда они ссылаются.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> для одного определённого значения в концепте вывести все остальные</li>
-<li>&action=help  вывести спрвочную информацию.</li>
+<li>&action=help вывести спрвочную информацию.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Установка соответствий концептов позволяет вам указать какое определённое значение в одном наборе данных тождественно определённым значениям в других наборах данных.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Не поддерживается действие «$1».',
@@ -8717,7 +8718,7 @@ $wdMessages['ru'] = array(
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
  * @author OC Ripper
  */
-$wdMessages['sh'] = array(
+$messages['sh'] = array(
 	'ow_show' => 'Prikaži',
 	'ow_suggest_previous' => 'Prethodna',
 );
@@ -8725,7 +8726,7 @@ $wdMessages['sh'] = array(
 /** Slovak (Slovenčina)
  * @author Helix84
  */
-$wdMessages['sk'] = array(
+$messages['sk'] = array(
 	'languages' => 'Wikidata: Správca jazykov',
 	'langman-desc' => 'Pridať a zmeniť jazykové nastavenia pomocou [[Special:Languages]]',
 	'langman_title' => 'Správca jazykov',
@@ -8761,7 +8762,7 @@ $wdMessages['sk'] = array(
 	'ow_importtsv_title2' => 'Importovať definície a preklady',
 	'ow_importtsv_header' => '<p>Importovať definície a preklady z textového súboru s poľami oddelenými tabulátormi, ktorý je možné exportovať z OpenOffice.org, Excelu či iného tabuľkového kalkulátora.</p>
 <p>Formát súboru musí byť rovnaký ako súbory exportované stránkou [[Special:ExportTSV|ExportTSV]]. Ak zmeníte názvy stĺpcov, import zlyhá. Ak zmeníte ID alebo definujúci výraz ktoréhokoľvek Definovaného významu, daný riadok bude ignorovaný. Ak pridáte stĺpce, musia byť v tvare „definitions_iso“ alebo „translations_iso“, kde iso je ISO-639_3 jazykový kód.</p>
-<p>Ak je začiarknuté pole „Simulácia“,  oznámia sa všetky operácie, ktoré by sa vykonali, ale žiadne zmeny sa v skutočnosti nevykonajú. Odporúča sa pred samotným importom vykonať simuláciu.</p>',
+<p>Ak je začiarknuté pole „Simulácia“, oznámia sa všetky operácie, ktoré by sa vykonali, ale žiadne zmeny sa v skutočnosti nevykonajú. Odporúča sa pred samotným importom vykonať simuláciu.</p>',
 	'ow_importtsv_not_allowed' => 'Nemáte oprávnenie vykonať import TSV.',
 	'ow_importtsv_importing' => 'Importujú sa údaje TSV',
 	'ow_importtsv_import_failed' => 'Import zlyhal',
@@ -8771,7 +8772,7 @@ $wdMessages['sk'] = array(
 Uistite sa, že vaša aplikácia uložila alebo exportovala súbor správne.</p>',
 	'ow_importtsv_not_tsv' => '<p>Zdá sa, že toto nie je platný TSV súbor.</p>',
 	'ow_importtsv_bad_columns' => '<p>Nesprávny názov stĺpca „$1“.<br />
-Stĺpce by mali byť pomenované „definition_iso“ alebo „translations_iso“,  
+Stĺpce by mali byť pomenované „definition_iso“ alebo „translations_iso“,
 kde iso je kód jazyka.</p>',
 	'ow_importtsv_test_run_title' => 'Simulácia importu údajov z TSV',
 	'ow_importtsv_nothing_added' => 'Nič nebolo pridané.',
@@ -8817,11 +8818,11 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 	'conceptmapping' => 'Wikidata: Mapovanie pojmu',
 	'ow_conceptmapping_title' => 'Mapovanie pojmu',
 	'ow_conceptmapping_help' => '<p>možné činnosti: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  vložiť mapovanie</li>
-<li>&action=get&concept=<concept_id>  prečítať mapovanie</li>
-<li>&action=list_sets  vrátiť zoznam možných predpon dátových kontextov a na čo odkazujú.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... vložiť mapovanie</li>
+<li>&action=get&concept=<concept_id> prečítať mapovanie</li>
+<li>&action=list_sets vrátiť zoznam možných predpon dátových kontextov a na čo odkazujú.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pre jeden Definovaný význam v rámci pojmu, vrátiť všetky ostatné</li>
-<li>&action=help  Zobraziť pomocníka.</li>
+<li>&action=help Zobraziť pomocníka.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mapovanie pojmov vám umožňuje určiť, ktorý Definovaný význam v jednej množine dát je zhodný s Definovanými významami v ostatných množinách dát.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Operácia „$1“ nie je podporovaná.',
@@ -8943,7 +8944,7 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 /** Lower Silesian (Schläsch)
  * @author Schläsinger
  */
-$wdMessages['sli'] = array(
+$messages['sli'] = array(
 	'langman_title' => 'Sproacha-Manager',
 	'langman_iso639-3' => 'ISO-639-3-Code:',
 	'langman_iso639-2' => 'ISO-639-2-Code:',
@@ -8959,7 +8960,7 @@ $wdMessages['sli'] = array(
 /** Somali (Soomaaliga)
  * @author Yariiska
  */
-$wdMessages['so'] = array(
+$messages['so'] = array(
 	'ow_save' => 'Kaydi',
 	'ow_history' => 'Taariikh',
 );
@@ -8967,7 +8968,7 @@ $wdMessages['so'] = array(
 /** Albanian (Shqip)
  * @author Puntori
  */
-$wdMessages['sq'] = array(
+$messages['sq'] = array(
 	'ow_save' => 'Ruaje',
 	'ow_history' => 'Historia',
 	'ow_dm_OK' => 'Mirë',
@@ -8981,7 +8982,7 @@ $wdMessages['sq'] = array(
  * @author Millosh
  * @author Михајло Анђелковић
  */
-$wdMessages['sr-ec'] = array(
+$messages['sr-ec'] = array(
 	'languages' => 'Википодаци: Менаџер за језике',
 	'langman-desc' => 'Додајте језике и подешавајте их на [[Special:Languages]]',
 	'langman_title' => 'Менаџер за језике',
@@ -9139,7 +9140,7 @@ $wdMessages['sr-ec'] = array(
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-$wdMessages['stq'] = array(
+$messages['stq'] = array(
 	'languages' => 'Wikidata: Sproakmanager',
 	'langman_title' => 'Sproakmanager',
 	'langman_not_allowed' => 'Du hääst nit ju Begjuchtigenge, do Sproakenienstaalengen tou annerjen.',
@@ -9312,7 +9313,7 @@ Sproaken mouten dän ISO-639-3-Sproakencode äntspreeke.</p>',
 	'ow_copy_help' => 'Der is noch neen Hälpe implementierd.',
 	'ow_please_proved_dmid' => 'Dät lät, dät an dien Iengoawe failt "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
 Kontaktier dän Serveradminstrator.',
-	'ow_please_proved_dc1' => 'Dät lät, as wan an dien Iengoawe  failt "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
+	'ow_please_proved_dc1' => 'Dät lät, as wan an dien Iengoawe failt "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
 Kontaktier dän Serveradminstrator.',
 	'ow_please_proved_dc2' => 'Dät lät, as wan an dien Iengoawe failt "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO) <br />
 Kontaktier dän Serveradminstrator.',
@@ -9346,7 +9347,7 @@ Kontaktier dän Serveradminstrator.',
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */
-$wdMessages['su'] = array(
+$messages['su'] = array(
 	'ow_save' => 'Simpen',
 	'ow_history' => 'Jujutan',
 	'ow_Language' => 'Basa',
@@ -9359,7 +9360,7 @@ $wdMessages['su'] = array(
  * @author Najami
  * @author Sannab
  */
-$wdMessages['sv'] = array(
+$messages['sv'] = array(
 	'languages' => 'Wikidata: Språkhanterare',
 	'langman-desc' => 'Lägg till och ändra språkinställningar med [[Special:Languages]]',
 	'langman_title' => 'Språkhanterare',
@@ -9405,7 +9406,7 @@ $wdMessages['sv'] = array(
 Kontrollera att ditt program har sparat eller exporterat filen på rätt sätt.</p>',
 	'ow_importtsv_not_tsv' => '<p>Detta verkar inte vara en giltig TSV-fil.</p>',
 	'ow_importtsv_bad_columns' => "<p>Felaktigt kolumnnamn '$1'.<br />
-Kolumner skall heta 'definition_iso' eller 'translations_iso', 
+Kolumner skall heta 'definition_iso' eller 'translations_iso',
 där iso är språkkoden.</p>",
 	'ow_importtsv_test_run_title' => 'Testkörning för import av TSV-data',
 	'ow_importtsv_nothing_added' => 'Ingenting har lagts till.',
@@ -9589,7 +9590,7 @@ Var god kontakta serveroperatören eller systemadministratören.',
  * @author Herr Kriss
  * @author Lajsikonik
  */
-$wdMessages['szl'] = array(
+$messages['szl'] = array(
 	'languages' => 'Wikidata:Menadżyr godek',
 	'langman_title' => 'Menadżyr godek',
 	'datasearch' => 'Wikidata:Sznupańy za danymi',
@@ -9602,11 +9603,11 @@ $wdMessages['szl'] = array(
 	'ow_uiprefs' => 'Dane wiki',
 	'ow_none_selected' => 'Ńic ńy je zaznoczůne',
 	'ow_conceptmapping_help' => '<p>możliwe dziołańo: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  wstowjo mapowańy</li>
-<li>&action=get&concept=<concept_id>  uodczytujy mapowańy</li>
-<li>&action=list_sets  zwroco lista możliwych prefiksůw kůnteksta danych a jeich uodnośńikůw</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... wstowjo mapowańy</li>
+<li>&action=get&concept=<concept_id> uodczytujy mapowańy</li>
+<li>&action=list_sets zwroco lista możliwych prefiksůw kůnteksta danych a jeich uodnośńikůw</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> w uodńyśeńu do jednygo zdefińjowanygo znoczyńo w pojyńću zwroco pozostołe definicyje</li>
-<li>&action=help  pokozuje půmoc</li>
+<li>&action=help pokozuje půmoc</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Uodwzorowywańy pojyńć dozwalo na identyfikacyjo tego, kere ze zdefińjowanych w jednym zestowj danych znoczyń sům identyczne do znoczy0ń zdefińjowanych we drugim zestowje danych.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Wyboczće, ńy wjym, jako zuůnaczyć "$1".',
@@ -9689,7 +9690,7 @@ Sprowdź eli jeij adres je poprawny.',
 /** Tamil (தமிழ்)
  * @author Trengarasu
  */
-$wdMessages['ta'] = array(
+$messages['ta'] = array(
 	'ow_save' => 'சேமி',
 );
 
@@ -9697,7 +9698,7 @@ $wdMessages['ta'] = array(
  * @author Mpradeep
  * @author Veeven
  */
-$wdMessages['te'] = array(
+$messages['te'] = array(
 	'languages' => 'వికీడాటా: భాషా నిర్వహణ',
 	'langman_title' => 'భాషా నిర్వహణ',
 	'langman_langname' => 'భాష పేరు:',
@@ -9779,7 +9780,7 @@ $wdMessages['te'] = array(
 /** Tetum (Tetun)
  * @author MF-Warburg
  */
-$wdMessages['tet'] = array(
+$messages['tet'] = array(
 	'ow_history' => 'Istória',
 	'ow_dm_OK' => 'OK',
 	'ow_Language' => 'Lian',
@@ -9791,7 +9792,7 @@ $wdMessages['tet'] = array(
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
-$wdMessages['tg-cyrl'] = array(
+$messages['tg-cyrl'] = array(
 	'languages' => 'Викидода: Идоракуни забон',
 	'langman_title' => 'Идоракуни забон',
 	'datasearch' => 'Викидода: Ҷустуҷӯи дода',
@@ -9862,7 +9863,7 @@ $wdMessages['tg-cyrl'] = array(
  * @author Octahedron80
  * @author Passawuth
  */
-$wdMessages['th'] = array(
+$messages['th'] = array(
 	'langman_langname' => 'ชื่อภาษา:',
 	'langman_iso639-3' => 'รหัส ISO 639-3:',
 	'langman_iso639-2' => 'รหัส ISO 639-2:',
@@ -9894,14 +9895,14 @@ $wdMessages['th'] = array(
 /** Turkmen (Türkmençe)
  * @author Runningfridgesrule
  */
-$wdMessages['tk'] = array(
+$messages['tk'] = array(
 	'ow_history' => 'Geçmiş',
 );
 
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
-$wdMessages['tl'] = array(
+$messages['tl'] = array(
 	'languages' => 'Wikidata: Tagapamahala ng wika',
 	'langman-desc' => 'Magdagdag at baguhin ang mga katakdaang pangwika sa pamamagitan ng [[Special:Languages]]',
 	'langman_title' => 'Tagapamahala ng wika',
@@ -9937,7 +9938,7 @@ $wdMessages['tl'] = array(
 	'ow_importtsv_title2' => 'Angkatin ang mga kahulugan at mga salinwika',
 	'ow_importtsv_header' => "<p>Umangkat ng mga kahulugan at mga salinwika mula sa isang teksto ng talaksang hinangganan ng panglaylay/tab na maaaring iniluwas mo mula sa OpenOffice.org, Excel o iba pang sopwer na may \"nakalatag na pilas\" (''spreadsheet'').</p>
 <p>Ang anyo/pormat ng talaksan ay dapat na katulad ng sa mga talaksang iniluwas sa ibabaw ng pahinang [[Special:ExportTSV|ExportTSV]]. Kung binago mo ang mga pangalan ng pababang hanay, mabibigo ang pag-aangkat. Kung binago mo ang id o ang pagsasaad na nagbibigay ng kahulugan sa anumang nilarawang kahulugan, hindi papansinin ang guhit na iyan. Kung nagdagdag ka ng pababang mga hanay, dapat silang nasa anyong 'definitions_iso' o 'translations_iso', kung saan ang iso ay isang kodigo ng wika ng ISO 639-3.</p>
-<p>Kung may tsek ang kahong 'pagpapatakbong sinusubok', iuulat ang alin mang mga galaw na isasagawa, subalit wala talagang ginagawang mga pagbabago.  Hinihikayat kang magsagawa muna ng isang pagpapatakbong sinusubok bago ka magsakatapuran ng isang tunay na pag-aangkat.</p>",
+<p>Kung may tsek ang kahong 'pagpapatakbong sinusubok', iuulat ang alin mang mga galaw na isasagawa, subalit wala talagang ginagawang mga pagbabago. Hinihikayat kang magsagawa muna ng isang pagpapatakbong sinusubok bago ka magsakatapuran ng isang tunay na pag-aangkat.</p>",
 	'ow_importtsv_not_allowed' => 'Wala kang pahintulot na gumawa ng isang pag-angkat ng isang TSV.',
 	'ow_importtsv_importing' => 'Inaangkat ang dato ng TSV',
 	'ow_importtsv_import_failed' => 'Nabigo ang pag-aangkat',
@@ -9947,7 +9948,7 @@ $wdMessages['tl'] = array(
 Pakitiyak lamang na tama ang pagkakasagip o pag-aangkat ng talaksan na ginawa ng iyong aplikasyon/sopwer.</p>',
 	'ow_importtsv_not_tsv' => '<p>Mukhang hindi ito isang tanggap na talaksang TSV.</p>',
 	'ow_importtsv_bad_columns' => "<p>Hindi tamang pangalan ng pahabang hanay ang '$1'.<br />
-Dapat na pangalanan ang pahabang mga hanay bilang 'definition_iso' o 'translations_iso',  
+Dapat na pangalanan ang pahabang mga hanay bilang 'definition_iso' o 'translations_iso',
 kung saan ang iso ay isang kodigo ng wika.</p>",
 	'ow_importtsv_test_run_title' => 'Pagpapatakbong sinusubok para sa pag-aangkat ng dato ng TSV',
 	'ow_importtsv_nothing_added' => 'Walang idinagdag.',
@@ -9967,7 +9968,7 @@ Pumili ng isang kalipunang iluluwas. Sa loob ng kahon ng tektso ng mga wika, mag
 	'ow_history' => 'Kasaysayan',
 	'ow_datasets' => 'Pampili ng pangkat ng dato',
 	'ow_noedit_title' => 'Wala kang pahintulot upang makagawa ng pagbabago',
-	'ow_noedit' => 'Wala kang pahintulot para makapagbago ng mga pahina sa loob ng pangkat ng datong "$1". 
+	'ow_noedit' => 'Wala kang pahintulot para makapagbago ng mga pahina sa loob ng pangkat ng datong "$1".
 Pakitingnan ang [[{{MediaWiki:Ow editing policy url}}|aming patakaran sa pamamatnugot]].',
 	'ow_uipref_datasets' => 'Likas na nakatakdang anyo ng tinitingnan:',
 	'ow_uiprefs' => 'Wikidata',
@@ -9993,11 +9994,11 @@ Pakitingnan ang [[{{MediaWiki:Ow editing policy url}}|aming patakaran sa pamamat
 	'conceptmapping' => 'Wikidata: Pagmamapa ng diwa',
 	'ow_conceptmapping_title' => 'Pagmamapa ng Diwa',
 	'ow_conceptmapping_help' => '<p>mga maaaring gawin: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  magsingit ng isang pagmamapa</li>
-<li>&action=get&concept=<concept_id>  magbasa ng isang pagmamapang pabalik</li>
-<li>&action=list_sets  magbalik ng isang talaan ng mga maaaring maging unlaping kontekstong pangdato at kung ano ang tinutukoy nila.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... magsingit ng isang pagmamapa</li>
+<li>&action=get&concept=<concept_id> magbasa ng isang pagmamapang pabalik</li>
+<li>&action=list_sets magbalik ng isang talaan ng mga maaaring maging unlaping kontekstong pangdato at kung ano ang tinutukoy nila.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para sa isang tinukoy/nilarawang kahulugan sa loob ng isang diwa o konsepto, ibalik ang lahat ng iba pa</li>
-<li>&action=help  Ipakita ang mga nakakatulong na pantulong.</li>
+<li>&action=help Ipakita ang mga nakakatulong na pantulong.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => "<p>Nagpapahintulot ang Pagmamapa ng Konsepto o ng Diwa (''Concept Mapping'') na matukoy mo kung anong nilarawang kahulugang nagmula sa isang pangkat ng dato ang katulad sa nilarawang mga kahulugang nasa iba pang mga kapangkatan ng dato.</p>",
 	'ow_conceptmapping_no_action_specified' => 'Hindi tinatangkilik/sinusuportahan ang galaw na "$1".',
@@ -10099,7 +10100,7 @@ Huwag kalimutang suriin uli para makatiyak!',
 	'ow_copy_unsuccessful' => '<h3>Hindi matagumpay ang pagkopya</h3>
 Walang naganap na pagsasakatuparan ng pagkopya',
 	'ow_no_action_specified' => '<h3>Walang tinukoy na galaw</h3>
-Maaaring tuwiran kang nakarating sa pahinang ito?  Sa karaniwan, hindi mo kailangang magparito.',
+Maaaring tuwiran kang nakarating sa pahinang ito? Sa karaniwan, hindi mo kailangang magparito.',
 	'ow_db_consistency_not_found' => "<h2>Kamalian</h2>
 Mayroong suliranin hinggil sa pagkakasundu-sundo ng kalipunan ng dato, hindi matagpuan ng ''wikidata'' (dato ng wiki/wikidato) ang tanggap na datong may kaugnayan sa ID (pagkakakilanlan) ng nilarawang kahulugang ito.
 Maaaring nawala ito.
@@ -10133,7 +10134,7 @@ Makipagugnayan sa isang tagapamalakad/tagapagpatakbo ng serbidor o tagapangasiwa
  * @author Karduelis
  * @author Nyasar
  */
-$wdMessages['tr'] = array(
+$messages['tr'] = array(
 	'languages' => 'Wikidata: Lisan idarecisi',
 	'langman-desc' => '[[Special:Languages]] ile dil ayarlarını ekle ve değiştir',
 	'langman_title' => 'Lisan idarecisi',
@@ -10183,7 +10184,7 @@ $wdMessages['tr'] = array(
 /** ئۇيغۇرچە (ئۇيغۇرچە)
  * @author Alfredie
  */
-$wdMessages['ug-arab'] = array(
+$messages['ug-arab'] = array(
 	'ow_transaction_user' => 'ئىشلەتكۇچى ئىسمى:',
 	'ow_dm_OK' => 'ماقۇل',
 	'ow_Language' => 'تىل',
@@ -10192,7 +10193,7 @@ $wdMessages['ug-arab'] = array(
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */
-$wdMessages['ug-latn'] = array(
+$messages['ug-latn'] = array(
 	'ow_transaction_user' => 'Ishletkuchi ismi:',
 	'ow_dm_OK' => 'Maqul',
 	'ow_Language' => 'Til',
@@ -10203,7 +10204,7 @@ $wdMessages['ug-latn'] = array(
  * @author Ahonc
  * @author Aleksandrit
  */
-$wdMessages['uk'] = array(
+$messages['uk'] = array(
 	'languages' => 'Вікідані: Мовний менеджер',
 	'langman-desc' => 'Додавання або зміна мовних налаштувань за допомогою [[Special:Languages]]',
 	'langman_title' => 'Мовний менеджер',
@@ -10231,11 +10232,11 @@ $wdMessages['uk'] = array(
 	'ow_uiprefs' => 'Вікідані',
 	'ow_none_selected' => 'Нічого не обрано',
 	'ow_conceptmapping_help' => '<p>можливі дії: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  вставити відповідність</li>
-<li>&action=get&concept=<concept_id>  зчитати відповідність</li>
-<li>&action=list_sets  вивести список можливих префісів контекстів даних і місць, куди вони посилаються.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... вставити відповідність</li>
+<li>&action=get&concept=<concept_id> зчитати відповідність</li>
+<li>&action=list_sets вивести список можливих префісів контекстів даних і місць, куди вони посилаються.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> для одного визначеного значення у формулюванні вивести всі інші</li>
-<li>&action=help  Показати довідку.</li>
+<li>&action=help Показати довідку.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Встановлення відповідностей концептів дозволяє вам вказати яке певне значення в одному наборі даних тотожне певним значенням в інших наборах даних.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Дія «$1» не підтримується.',
@@ -10304,7 +10305,7 @@ $wdMessages['uk'] = array(
 	'ow_Permission_denied' => '<h2>Доступ заборонений</h2>',
 	'ow_copy_no_action_specified' => 'Будь ласка, зазначте дію',
 	'ow_copy_help' => 'Довідка ще не реалізована.',
-	'ow_please_proved_dmid' => "Схоже, що у вхідних даних відсутнє «?dmid=<ID>» (dmid — ідентифікатор певного значення)<br /> 
+	'ow_please_proved_dmid' => "Схоже, що у вхідних даних відсутнє «?dmid=<ID>» (dmid — ідентифікатор певного значення)<br />
 Будь ласка, зв'яжіться з адміністратором сервера.",
 	'ow_please_proved_dc1' => "Схоже, що у вхідних даних відсутнє «?dc1=<щось>» (dc1 — контекст набору даних; набір даних, звідки копіювати)<br /> Будь ласка, зв'яжіться з адміністратором сервера.",
 	'ow_copy_unsuccessful' => '<h3>Копіювання невдале</h3>
@@ -10315,7 +10316,7 @@ $wdMessages['uk'] = array(
  * @author Triple-ADHD-AS
  * @author Игорь Бродский
  */
-$wdMessages['vep'] = array(
+$messages['vep'] = array(
 	'languages' => 'Wikiandmused: keliden menadžer',
 	'langman_langname' => 'Kelen nimi:',
 	'langman_iso639-3' => 'Kod ISO 639-3:',
@@ -10464,7 +10465,7 @@ $wdMessages['vep'] = array(
  * @author Minh Nguyen
  * @author Vinhtantran
  */
-$wdMessages['vi'] = array(
+$messages['vi'] = array(
 	'languages' => 'Wikidata: Quản lý ngôn ngữ',
 	'langman_title' => 'Quản lý ngôn ngữ',
 	'datasearch' => 'Wikidata: Tìm kiếm cho dữ liệu',
@@ -10506,7 +10507,7 @@ $wdMessages['vi'] = array(
  * @author Malafaya
  * @author Smeira
  */
-$wdMessages['vo'] = array(
+$messages['vo'] = array(
 	'datasearch' => 'Wikidata: Nünodisuk',
 	'datasearch_language' => 'Pük:',
 	'ow_save' => 'Dakipolöd',
@@ -10559,21 +10560,21 @@ $wdMessages['vo'] = array(
 );
 
 /** Yue (粵語) */
-$wdMessages['yue'] = array(
+$messages['yue'] = array(
 	'languages' => 'Wikidata: 語言管理員',
 	'langman_title' => '語言管理員',
 	'datasearch' => 'Wikidata: 資料搜尋',
 );
 
 /** Chinese (中文) */
-$wdMessages['zh'] = array(
+$messages['zh'] = array(
 	'languages' => 'Wikidata: 语言管理员',
 	'langman_title' => '语言管理员',
 	'datasearch' => 'Wikidata: 数据搜寻',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬) */
-$wdMessages['zh-cn'] = array(
+$messages['zh-cn'] = array(
 	'languages' => 'Wikidata: 语言管理员',
 	'langman_title' => '语言管理员',
 	'datasearch' => 'Wikidata: 数据搜寻',
@@ -10584,7 +10585,7 @@ $wdMessages['zh-cn'] = array(
  * @author Gaoxuewei
  * @author Wmr89502270
  */
-$wdMessages['zh-hans'] = array(
+$messages['zh-hans'] = array(
 	'languages' => 'Wikidata: 语言管理员',
 	'langman_title' => '语言管理员',
 	'langman_not_allowed' => '您无权修改语言设置。',
@@ -10609,11 +10610,11 @@ $wdMessages['zh-hans'] = array(
 	'ow_uiprefs' => 'Wiki数据',
 	'ow_none_selected' => '未选择',
 	'ow_conceptmapping_help' => '<p>可能的action： <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  插入一个映射</li>
-<li>&action=get&concept=<concept_id>  阅读映射返回</li>
-<li>&action=list_sets  返回一个关于可能的背景前缀和他们可能提到的列表。</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... 插入一个映射</li>
+<li>&action=get&concept=<concept_id> 阅读映射返回</li>
+<li>&action=list_sets 返回一个关于可能的背景前缀和他们可能提到的列表。</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> 为一个已经定义的概念返回所有其他的</li>
-<li>&action=help  阅读帮助</li>
+<li>&action=help 阅读帮助</li>
 </ul></p>',
 	'ow_Language' => '语言',
 	'ow_OptionAttributeOption' => '选择',
@@ -10625,7 +10626,7 @@ $wdMessages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
  */
-$wdMessages['zh-hant'] = array(
+$messages['zh-hant'] = array(
 	'languages' => 'Wikidata: 語言管理員',
 	'langman-desc' => '增加與更改[[Special:Languages]]的語言設定',
 	'langman_title' => '語言管理員',
@@ -10656,28 +10657,28 @@ $wdMessages['zh-hant'] = array(
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬) */
-$wdMessages['zh-hk'] = array(
+$messages['zh-hk'] = array(
 	'languages' => 'Wikidata: 語言管理員',
 	'langman_title' => '語言管理員',
 	'datasearch' => 'Wikidata: 資料搜尋',
 );
 
 /** Chinese (Singapore) (‪中文(新加坡)‬) */
-$wdMessages['zh-sg'] = array(
+$messages['zh-sg'] = array(
 	'languages' => 'Wikidata: 语言管理员',
 	'langman_title' => '语言管理员',
 	'datasearch' => 'Wikidata: 数据搜寻',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬) */
-$wdMessages['zh-tw'] = array(
+$messages['zh-tw'] = array(
 	'languages' => 'Wikidata: 語言管理員',
 	'langman_title' => '語言管理員',
 	'datasearch' => 'Wikidata: 資料搜尋',
 );
 
 /** Yue (粵語) */
-$wdMessages['zh-yue'] = array(
+$messages['zh-yue'] = array(
 	'languages' => 'Wikidata: 語言管理員',
 	'langman_title' => '語言管理員',
 	'datasearch' => 'Wikidata: 資料搜尋',

@@ -10,7 +10,6 @@ if (!defined('MEDIAWIKI')) die();
  * @license  GPLv2 or later
  */
 
-
 $wgExtensionFunctions[] = 'wfSpecialConceptMapping';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'SpecialConceptMapping',
@@ -18,12 +17,6 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 function wfSpecialConceptMapping() {
-	# Add messages
-	#require_once "$IP/includes/SpecialPage.php";
-
-        #global $wgMessageCache;
-        #$wgMessageCache->addMessages(array('conceptmapping'=>'Wikidata: Concept mapping'),'en');
-                
 	require_once("Wikidata.php");
 	require_once("WikiDataAPI.php");
 	require_once("Utilities.php");
