@@ -130,7 +130,7 @@ class DefaultWikidataApplication {
 		$this->save(new QueryAtTransactionInformation($wgRequest->getInt('transaction'), false));
 
 		// Update page caches
-		Title::touchArray(array($wgTitle));
+		$wgTitle->invalidateCache();
 
 		// Add change to RC log
 		$now = wfTimestampNow();
