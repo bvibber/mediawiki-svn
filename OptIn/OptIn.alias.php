@@ -25,6 +25,11 @@ $aliases['ja'] = array(
 	'OptIn' => array( 'ユーザビリティー改善参加' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'OptIn' => array( 'Benotzerfrëndlechkeetsinitiative matmaachen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'OptIn' => array( 'BruikbaarheidsinitiatiefOptin' ),
