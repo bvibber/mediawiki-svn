@@ -34,16 +34,16 @@ See also the [[Special:MostRevisors|\'\'\'pages with the most revisors\'\'\']] a
 $messages['qqq'] = array(
 	'cooperationstatistics-desc' => 'Short description of the extension, shown on [[Special:Version]].',
 	'cooperationstatistics-text' => 'Consider translating the + sign to " or more" if "number+" is not a commonplace notation in your language.',
-	'cooperationstatistics-articles' => 'This message supports PLURAL.
-* $1 is the number of editors
-* $2 is the number of pages in the previous column',
+	'cooperationstatistics-articles' => 'This message supports PLURAL.',
 	'cooperationstatistics-nbusers' => 'This message supports PLURAL.
 * $1 is the number of editors
 * $2 is the number of pages in the previous column',
 	'cooperationstatistics-nblessusers' => 'This message supports PLURAL.
 * $1 is the number of editors
 * $2 is the number of pages in the previous column',
-	'cooperationstatistics-nbmoreusers' => 'This message supports PLURAL for $1',
+	'cooperationstatistics-nbmoreusers' => 'This message supports PLURAL.
+* $1 is the number of editors
+* $2 is the number of pages in the previous column',
 );
 
 /** French (Français)
