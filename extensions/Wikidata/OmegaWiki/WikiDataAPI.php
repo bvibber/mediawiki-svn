@@ -28,6 +28,7 @@ class Expression {
 	}
 	
 	function createPage() {
+		# FIXME: This method is no longer present.
 		$expressionNameSpaceId = Namespace::getIndexForName('expression');
 		wfDebug("NS ID: $expressionNameSpaceId \n");
 		return createPage($expressionNameSpaceId, getPageTitle($this->spelling));
@@ -768,6 +769,7 @@ function addCollection($definedMeaningId, $collectionType) {
 }
 
 function addDefinedMeaning($definingExpressionId) {
+	# FIXME: This method is no longer present.
 	$definedMeaningNameSpaceId = Namespace::getIndexForName('definedmeaning');
 	$dc=wdGetDataSetContext();
 	

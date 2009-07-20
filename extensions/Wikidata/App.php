@@ -81,6 +81,9 @@ $wgShowClassicPageTitles = false;
 $wgDefinedMeaningPageTitlePrefix = "";
 $wgExpressionPageTitlePrefix = "Multiple meanings";
 require_once("$IP/extensions/Wikidata/OmegaWiki/GotoSourceTemplate.php");
+
+$dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles['Wikidata'] = $dir . 'SpecialLanguages.i18n.php';
 			        			
 $wgGotoSourceTemplates = array(5 => $swissProtGotoSourceTemplate);  
 
@@ -195,11 +198,7 @@ function modifyTabs($skin, $content_actions) {
 function initializeWikidata() {
 	global $wgExtensionPreferences, $wdSiteContext, $wgPropertyToColumnFilters;
 	
-	# Add extension messages to the cache (initialize it here because they will be needed below)
-	global $wgMessageCache, $wdMessages;
-	foreach( $wdMessages as $language => $translations ) {
-		$wgMessageCache->addMessages( $translations, $language );
-	}
+	wfLoadExtensionMessages( 'Wikidata' );
 
 	$dbr =& wfGetDB(DB_MASTER);
 	$dbr->query("SET NAMES utf8");
@@ -216,10 +215,9 @@ function initializeWikidata() {
 		'size' => 10,
 		'options' => $datasetarray
 	);
-                            	
-	global 
-		$messageCacheOK;
-		
+
+	# FIXME: Temporary hack to ensure OmegaWikiAttributes does not exception.
+	global $messageCacheOK;
 	$messageCacheOK = true;
 	
 	global

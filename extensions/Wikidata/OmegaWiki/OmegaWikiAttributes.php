@@ -325,10 +325,10 @@ class OmegaWikiAttributes {
 	
 	public function __get($key) {
 		if (!$this->setup()) 
-			throw new Exception("OmegaWikiAttributes accessed, but was not properly initialized");
+			throw new MwException("OmegaWikiAttributes accessed, but was not properly initialized");
 		$attributes=&$this->attributes;
 		if (!array_key_exists($key, $attributes)) {
-			throw new Exception("Key does not exist: " . $key);
+			throw new MwException("Key does not exist: " . $key);
 		}
 		return $attributes[$key];
 	}	
