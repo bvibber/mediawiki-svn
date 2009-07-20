@@ -12,6 +12,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.integrator.data.Record;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.DatabaseWikiWordStoreBuilder;
 
@@ -68,13 +69,13 @@ public class DatabaseForeignPropertyStoreBuilder extends DatabaseWikiWordStoreBu
 		super.flush();
 	}
 	
-	public void storeProperty(String authority, String extId, String property, String value, String qualifier) throws PersistenceException {
+	public void storeProperty(String authority, String extId, String property, Object value, Record qualifiers) throws PersistenceException {
 		try {
 			propertyInserter.updateString("foreign_authority", authority);
 			propertyInserter.updateString("foreign_id", extId);
 			propertyInserter.updateString("property", property);
-			propertyInserter.updateString("value", value);
-			propertyInserter.updateString("qualifier", qualifier);
+			propertyInserter.updateObject("value", value);
+			//propertyInserter.updateString("qualifier", qualifier); //FIXME: store qualifiers
 			propertyInserter.updateRow();
 		} catch (SQLException e) {
 			throw new PersistenceException(e);

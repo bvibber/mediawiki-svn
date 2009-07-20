@@ -2,7 +2,6 @@ package de.brightbyte.wikiword.integrator.store;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -13,6 +12,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.integrator.data.Record;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.DatabaseWikiWordStoreBuilder;
 
@@ -70,10 +70,11 @@ public class DatabaseForeignRecordStoreBuilder extends DatabaseWikiWordStoreBuil
 	}
 	
 
-	public void storeRecord(Map<String, Object> rec) throws PersistenceException {
+	public void storeRecord(Record rec) throws PersistenceException {
 		try {
-			for (Map.Entry<String, Object> e : rec.entrySet()) {
-				recordInserter.updateObject(e.getKey(), e.getValue());
+			for (String key: rec.keys()) {
+				Object v = rec.get(key);
+				recordInserter.updateObject(key, v);
 			}
 			recordInserter.updateRow();
 		} catch (SQLException e) {

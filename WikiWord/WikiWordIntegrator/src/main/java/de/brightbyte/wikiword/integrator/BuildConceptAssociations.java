@@ -2,31 +2,29 @@ package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
 
-import de.brightbyte.data.Functors;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.db.SqlDialect;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.integrator.data.Association;
-import de.brightbyte.wikiword.integrator.data.FeatureMapping;
-import de.brightbyte.wikiword.integrator.data.FeatureSets;
 import de.brightbyte.wikiword.integrator.processor.ConceptAssociationPassThrough;
 import de.brightbyte.wikiword.integrator.processor.ConceptAssociationProcessor;
-import de.brightbyte.wikiword.integrator.store.AssociationFeature2ConceptAssociationStoreBuilder;
-import de.brightbyte.wikiword.integrator.store.AssociationFeatureStoreBuilder;
+import de.brightbyte.wikiword.integrator.store.ConceptAssociationStoreBuilder;
 import de.brightbyte.wikiword.integrator.store.DatabaseConceptAssociationStoreBuilder;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
-public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationFeatureStoreBuilder, ConceptAssociationProcessor, Association> {
+public class BuildConceptAssociations extends AbstractIntegratorApp<ConceptAssociationStoreBuilder, ConceptAssociationProcessor, Association> {
 	
 	@Override
-	protected WikiWordStoreFactory<? extends AssociationFeatureStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
+	protected WikiWordStoreFactory<? extends ConceptAssociationStoreBuilder> createConceptStoreFactory() throws IOException, PersistenceException {
 		DatabaseConceptAssociationStoreBuilder.Factory mappingStoreFactory= new DatabaseConceptAssociationStoreBuilder.Factory(
 				getTargetTableName(), 
 				getConfiguredDataset(), 
 				getConfiguredDataSource(), 
 				tweaks);
 		
+		return mappingStoreFactory;
+		
+		/*
 		FeatureSetSourceDescriptor sourceDescriptor = getSourceDescriptor();
 		
 		//TODO: make aggrregators/accessors configurable
@@ -55,11 +53,12 @@ public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationF
 				mappingStoreFactory,
 				fm, cm, am
 				);
+				*/
 	}
 	
 	@Override
 	protected void run() throws Exception {
-		AssociationFeatureStoreBuilder store = getStoreBuilder();
+		ConceptAssociationStoreBuilder store = getStoreBuilder();
 		this.propertyProcessor = createProcessor(store); 
 
 		section("-- fetching properties --------------------------------------------------");
@@ -80,7 +79,7 @@ public class BuildConceptAssociations extends AbstractIntegratorApp<AssociationF
 	}
 
 	@Override
-	protected ConceptAssociationProcessor createProcessor(AssociationFeatureStoreBuilder conceptStore) throws InstantiationException {
+	protected ConceptAssociationProcessor createProcessor(ConceptAssociationStoreBuilder conceptStore) throws InstantiationException {
 		//		FIXME: parameter list is restrictive, pass descriptor 
 		return instantiate(sourceDescriptor, "conceptAssociationProcessorClass", ConceptAssociationPassThrough.class, conceptStore);
 	}

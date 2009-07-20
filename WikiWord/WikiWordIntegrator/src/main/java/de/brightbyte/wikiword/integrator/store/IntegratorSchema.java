@@ -33,7 +33,8 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 		
 		table.addField( new DatabaseField(this, "property", getTextType(255), null, true, KeyType.INDEX) );
 		table.addField( new DatabaseField(this, "value", getTextType(255), null, true, null) );
-		table.addField( new DatabaseField(this, "qualifier", getTextType(64), null, false, null) );
+		//table.addField( new DatabaseField(this, "qualifier", getTextType(64), null, false, null) );
+		//FIXME: custom qualifier fields!
 
 		table.addKey( new DatabaseKey(this, KeyType.INDEX, "property_value", new String[] {"property", "value"}) );
 		table.addKey( new DatabaseKey(this, KeyType.INDEX, "foreign_property", new String[] {"foreign_authority", "foreign_id", "property"}) );
@@ -71,6 +72,7 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 		return table;
 	}
 
+	/*
 	public RelationTable newConceptMappingTable(String name) {
 		RelationTable table = new RelationTable(this, name, getDefaultTableAttributes());
 		
@@ -92,7 +94,7 @@ public class IntegratorSchema extends WikiWordStoreSchema {
 		addTable(table);
 		return table;
 	}
-
+*/
 	public void loadForeignRecordTable(String table) throws SQLException {
 		DatabaseTable t = loadTableDefinition(table);
 		addTable(t);

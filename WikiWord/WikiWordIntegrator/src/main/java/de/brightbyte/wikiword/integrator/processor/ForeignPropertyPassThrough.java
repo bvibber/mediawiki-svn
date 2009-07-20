@@ -1,14 +1,18 @@
 package de.brightbyte.wikiword.integrator.processor;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.integrator.data.ForeignEntityFeatureSet;
 import de.brightbyte.wikiword.integrator.data.ForeignEntityRecord;
+import de.brightbyte.wikiword.integrator.data.FeatureSet.Feature;
 import de.brightbyte.wikiword.integrator.store.ForeignPropertyStoreBuilder;
 
-public class ForeignPropertyPassThrough extends AbstractForeignEntityProcessor {
+public class ForeignPropertyPassThrough extends AbstractProcessor<ForeignEntityFeatureSet> implements ForeignEntityProcessor<ForeignEntityFeatureSet> {
 	protected ForeignPropertyStoreBuilder store;
 	protected String qualifier;
 	
@@ -17,15 +21,21 @@ public class ForeignPropertyPassThrough extends AbstractForeignEntityProcessor {
 		this.store = store;
 	}
 	
-	@Override
-	protected  void processForeignEntity(ForeignEntityRecord e) throws PersistenceException {
-		Set<Entry<String, List<Object>>> entries = e.getProperties().entrySet();
-		for (Entry<String, List<Object>> p: entries) {
-			String prop = p.getKey();
-			List<Object> vv = p.getValue();
+	
+	public void processEntites(DataCursor<ForeignEntityFeatureSet> cursor) throws PersistenceException {
+		process(cursor);
+	}
+	
+	protected void processEntry(ForeignEntityFeatureSet e) throws PersistenceException {
+		processForeignEntity(e);
+	}
+	
+	protected  void processForeignEntity(ForeignEntityFeatureSet e) throws PersistenceException {
+		for (String prop: e.keys()) {
+			Collection<? extends Feature<? extends Object>> features = e.getFeatures(prop);
 			
-			for (Object v: vv) {
-				store.storeProperty(e.getAuthority(), e.getID(), prop, String.valueOf(v), qualifier);
+			for ( Feature<? extends Object> feature: features) {
+				store.storeProperty(e.getAuthority(), e.getID(), prop, feature.getValue(), feature.getQualifiers());
 			}
 		}
 	}

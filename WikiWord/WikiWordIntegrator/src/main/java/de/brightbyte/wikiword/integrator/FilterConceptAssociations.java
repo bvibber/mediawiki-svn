@@ -4,18 +4,20 @@ import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.filter.Filter;
 import de.brightbyte.wikiword.integrator.data.Association;
 import de.brightbyte.wikiword.integrator.data.FilteredAssociationCursor;
-import de.brightbyte.wikiword.integrator.store.AssociationFeatureStoreBuilder;
+import de.brightbyte.wikiword.integrator.store.ConceptAssociationStoreBuilder;
 
 public class FilterConceptAssociations extends BuildConceptAssociations {
 	
 	@Override
 	protected void run() throws Exception {
-		AssociationFeatureStoreBuilder store = getStoreBuilder();
+		ConceptAssociationStoreBuilder store = getStoreBuilder();
 		this.propertyProcessor = createProcessor(store); 
 
 		section("-- fetching properties --------------------------------------------------");
 		DataCursor<Association> asc = openAssociationCursor(); 
 
+		//FIXME: wia mapping cursor, for filtering!
+		
 		DataCursor<Association> cursor = new FilteredAssociationCursor(asc, createAssociationFilter(sourceDescriptor));
 		
 		section("-- process properties --------------------------------------------------");

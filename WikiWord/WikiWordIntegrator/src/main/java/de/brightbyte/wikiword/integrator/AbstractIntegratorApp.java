@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,13 +35,12 @@ import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.StoreBackedApp;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.InputFileHelper;
-import de.brightbyte.wikiword.integrator.data.FeatureAssemblingCursor;
 import de.brightbyte.wikiword.integrator.data.Association;
 import de.brightbyte.wikiword.integrator.data.AssociationCursor;
-import de.brightbyte.wikiword.integrator.data.FeatureSet;
-import de.brightbyte.wikiword.integrator.data.FeatureSetMangler;
-import de.brightbyte.wikiword.integrator.data.FeatureSetValueSplitter;
+import de.brightbyte.wikiword.integrator.data.DefaultRecordMangler;
 import de.brightbyte.wikiword.integrator.data.MangelingCursor;
+import de.brightbyte.wikiword.integrator.data.Record;
+import de.brightbyte.wikiword.integrator.data.RecordMangler;
 import de.brightbyte.wikiword.integrator.data.ResultSetRecordCursor;
 import de.brightbyte.wikiword.integrator.data.TsvRecordCursor;
 import de.brightbyte.wikiword.integrator.processor.WikiWordProcessor;
@@ -149,81 +149,86 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 		args.declareHelp("<dataset>", "name of the wiki/thesaurus to process");
 	}
 	
+	protected static final String FOREIGN_AUTHORITY_FIELD_NAME = "foreignAuthorityField";
+	protected static final String FOREIGN_ID_FIELD_NAME = "foreignIdField";
+	protected static final String FOREIGN_NAME_FIELD_NAME = "foreignNameField";
+	protected static final String CONCEPT_ID_FIELD_NAME = "conceptIdField";
+	protected static final String CONCEPT_NAME_FIELD_NAME = "conceptNameField";
+	
 	protected DataCursor<Association> openAssociationCursor() throws IOException, SQLException, PersistenceException {
-		Iterable<String> foreignFields = sourceDescriptor.getTweak("foreign-fields", (Iterable<String>)null);
-		Iterable<String> conceptFields = sourceDescriptor.getTweak("concept-fields", (Iterable<String>)null);
-		Iterable<String> propertyFields = sourceDescriptor.getTweak("property-fields", (Iterable<String>)null);
-		
-		if (foreignFields==null) {
-			foreignFields = getDefaultForeignFields();
-		}
 
-		if (conceptFields==null) {
-			conceptFields = getDefaultConceptFields();
-		}
+		DataCursor<Record> fsc = openRecordCursor();
 		
-		if (propertyFields==null) {
-			propertyFields = getDefaultPropertyFields();
-		}
-		
-		DataCursor<FeatureSet> fsc = openFeatureSetCursor();
+		Map<String, String> fields = getDefaultFields();
 
 		DataCursor<Association> cursor = 
 			new AssociationCursor(fsc, 
-					foreignFields, 
-					conceptFields, 
-					propertyFields );
+					fields.get(FOREIGN_AUTHORITY_FIELD_NAME), 
+					fields.get(FOREIGN_ID_FIELD_NAME), 
+					fields.get(FOREIGN_NAME_FIELD_NAME),
+					fields.get(CONCEPT_ID_FIELD_NAME),
+					fields.get(CONCEPT_NAME_FIELD_NAME));
 		
 		return cursor;
 	}
 	
-	protected Iterable<String> getDefaultFields(SqlDialect dialect) {
-		ArrayList<String> fields = new ArrayList<String>();
+	protected Map<String, String> getDefaultFields() {
+		HashMap<String, String> fields = new HashMap<String, String>();
 		
-		for (String f: getDefaultForeignFields()) if (f!=null) fields.add(dialect.quoteQualifiedName(f));
-		for (String f: getDefaultConceptFields()) if (f!=null) fields.add(dialect.quoteQualifiedName(f));
-		for (String f: getDefaultPropertyFields()) if (f!=null) fields.add(dialect.quoteQualifiedName(f));
+		fields.put( FOREIGN_AUTHORITY_FIELD_NAME, (sourceDescriptor.getTweak("foreign-authority-field", null) == null) ? 
+				("=" + sourceDescriptor.getAuthorityName()) : 
+					sourceDescriptor.getTweak("foreign-authority-field", (String)null) );
+					
+		fields.put(FOREIGN_ID_FIELD_NAME, sourceDescriptor.getTweak("foreign-id-field", (String)null) );
+		fields.put(FOREIGN_NAME_FIELD_NAME, sourceDescriptor.getTweak("foreign-name-field", (String)null) );
+
+		fields.put(CONCEPT_ID_FIELD_NAME, sourceDescriptor.getTweak("concept-id-field", (String)null) );
+		fields.put(CONCEPT_NAME_FIELD_NAME, sourceDescriptor.getTweak("concept-name-field", (String)null) );
+		
+		//FIXME: more fields
+		/*
+		sourceDescriptor.getTweak("foreign-property-field", (String)null),
+		sourceDescriptor.getTweak("concept-property-field", (String)null),
+		sourceDescriptor.getTweak("concept-property-source-field", (String)null),
+		sourceDescriptor.getTweak("concept-property-freq-field", (String)null),
+		sourceDescriptor.getTweak("association-weight-field", (String)null),
+		sourceDescriptor.getTweak("association-value-field", (String)null),
+		sourceDescriptor.getTweak("association-annotation-field", (String)null),
+		sourceDescriptor.getTweak("mapping-filter-field", (String)null) 
+		*/
+		
 		
 		return fields;
 	}
 	
-	protected List<String> getDefaultForeignFields() {
-		return Arrays.asList(new String[] {
-				(sourceDescriptor.getTweak("foreign-authority-field", null) == null) ? 
-						("=" + sourceDescriptor.getAuthorityName()) : 
-							sourceDescriptor.getTweak("foreign-authority-field", (String)null),
-							
-				sourceDescriptor.getTweak("foreign-id-field", (String)null),
-				sourceDescriptor.getTweak("foreign-name-field", (String)null)
-		});
-	}
-	
-	protected List<String> getDefaultConceptFields() {
-		return Arrays.asList(new String[] {
-				sourceDescriptor.getTweak("concept-id-field", (String)null),
-				sourceDescriptor.getTweak("concept-name-field", (String)null)
-		});
-	}
-
-	protected List<String> getDefaultPropertyFields() {
-		return Arrays.asList(new String[] {
-				sourceDescriptor.getTweak("foreign-property-field", (String)null),
-				sourceDescriptor.getTweak("concept-property-field", (String)null),
-				sourceDescriptor.getTweak("concept-property-source-field", (String)null),
-				sourceDescriptor.getTweak("concept-property-freq-field", (String)null),
-				sourceDescriptor.getTweak("association-weight-field", (String)null),
-				sourceDescriptor.getTweak("association-value-field", (String)null),
-				sourceDescriptor.getTweak("association-annotation-field", (String)null),
-				sourceDescriptor.getTweak("mapping-filter-field", (String)null)
-		});
-	}
 	
 	public static URL getBuiltinScriptUrl(String name, String ext) {
 		URL u =RunIntegratorSql.class.getResource(name+ext);
 		return u;
 	}
-		
+	
+	/*
 	protected DataCursor<FeatureSet> openFeatureSetCursor() throws IOException, SQLException, PersistenceException {
+		String propField = sourceDescriptor.getPropertyNameField();
+		if (propField!=null) {
+			String valueField = sourceDescriptor.getPropertyValueField();
+			String subjectField = sourceDescriptor.getPropertySubjectField();
+			rc = new FeatureAssemblingCursor(rc, subjectField, propField, valueField);
+		}
+		
+		FeatureSetMangler mangler = sourceDescriptor.getRowMangler();
+		
+		if (mangler==null) {
+			Map<String, Chunker> splitters = sourceDescriptor.getDataFieldChunkers();
+			if (splitters!=null) mangler = FeatureSetValueSplitter.multiFromChunkerMap(splitters);
+		}
+		
+		if (mangler!=null) {
+			rc = new MangelingCursor(rc, mangler);
+		}
+	} */
+	
+	protected DataCursor<Record> openRecordCursor() throws IOException, SQLException, PersistenceException {
 		FeatureSetSourceDescriptor sourceDescriptor = getSourceDescriptor();
 
 		String enc = sourceDescriptor.getDataEncoding();
@@ -261,7 +266,7 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 			if (t!=null) sql = getSqlQuery(t, sourceDescriptor, schema.getDialect());
 		}
 		
-		DataCursor<FeatureSet> fsc;
+		DataCursor<Record> rc;
 		String[] fields = sourceDescriptor.getDataFields();
 		
 		if (sql!=null) {
@@ -274,46 +279,48 @@ public abstract class AbstractIntegratorApp<S extends WikiWordStoreBuilder, P ex
 			
 			//DatabaseUtil.dumpData(rs, ConsoleIO.output, " | ");
 			
-			fsc = new ResultSetRecordCursor(rs, fields);
+			rc = new ResultSetRecordCursor(rs, fields);
 		} else {
 			LineCursor lines = new LineCursor(in, enc);
 			
 			Chunker chunker = sourceDescriptor.getCsvLineChunker();
 			
-			fsc = new TsvRecordCursor(lines, chunker);
+			rc = new TsvRecordCursor(lines, chunker);
 			
 			if (sourceDescriptor.getSkipBadRows()) {
-				((TsvRecordCursor)fsc).setParseErrorHandler( new LoggingErrorHandler<ChunkingCursor, ParseException, PersistenceException>(out));
+				((TsvRecordCursor)rc).setParseErrorHandler( new LoggingErrorHandler<ChunkingCursor, ParseException, PersistenceException>(out));
 			}
 			
 			if (fields!=null) {
-				if (sourceDescriptor.getSkipHeader()) ((TsvRecordCursor)fsc).readFields();
-				((TsvRecordCursor)fsc).setFields(fields);
+				if (sourceDescriptor.getSkipHeader()) ((TsvRecordCursor)rc).readFields();
+				((TsvRecordCursor)rc).setFields(fields);
 			} else {
-				((TsvRecordCursor)fsc).readFields();
-				fields = ((TsvRecordCursor)fsc).getFields();
+				((TsvRecordCursor)rc).readFields();
+				fields = ((TsvRecordCursor)rc).getFields();
 			}
 		}
-		
-		String propField = sourceDescriptor.getPropertyNameField();
-		if (propField!=null) {
-			String valueField = sourceDescriptor.getPropertyValueField();
-			String subjectField = sourceDescriptor.getPropertySubjectField();
-			fsc = new FeatureAssemblingCursor(fsc, subjectField, propField, valueField);
-		}
-		
-		FeatureSetMangler mangler = sourceDescriptor.getRowMangler();
+
+		RecordMangler mangler = sourceDescriptor.getRowMangler();
 		
 		if (mangler==null) {
 			Map<String, Chunker> splitters = sourceDescriptor.getDataFieldChunkers();
-			if (splitters!=null) mangler = FeatureSetValueSplitter.multiFromChunkerMap(splitters);
+			if (splitters!=null) {
+				mangler = new DefaultRecordMangler();
+				
+				for (String f: fields) {
+					Chunker chunker = splitters.get(f);
+					
+					if (chunker!=null) ((DefaultRecordMangler)mangler).addConverter(f, f, String.class, chunker, Iterable.class);
+					else ((DefaultRecordMangler)mangler).addMapping(f, f, Object.class);
+				}
+			}
 		}
 		
 		if (mangler!=null) {
-			fsc = new MangelingCursor(fsc, mangler);
+			rc = new MangelingCursor<Record>(rc, mangler);
 		}
-		
-		return fsc;
+
+		return rc;
 	}
 	
 	protected abstract String getSqlQuery(String table, FeatureSetSourceDescriptor sourceDescriptor, SqlDialect dialct);

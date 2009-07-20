@@ -15,7 +15,7 @@ import de.brightbyte.text.Chunker;
 import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.InputFileHelper;
-import de.brightbyte.wikiword.integrator.data.FeatureSetMangler;
+import de.brightbyte.wikiword.integrator.data.RecordMangler;
 
 public class FeatureSetSourceDescriptor extends TweakSet {
 	
@@ -88,8 +88,8 @@ public class FeatureSetSourceDescriptor extends TweakSet {
 		return getTweak("field-chunkers", (Map<String, Chunker>)null);
 	}
 	
-	public FeatureSetMangler getRowMangler() { 
-		return getTweak("row-mangler", (FeatureSetMangler)null);
+	public RecordMangler getRowMangler() { 
+		return getTweak("row-mangler", (RecordMangler)null);
 	}
 	
 	public String getPropertyValueField() {

@@ -2,15 +2,17 @@ package de.brightbyte.wikiword.integrator;
 
 import java.io.IOException;
 
+import de.brightbyte.data.Functor;
+import de.brightbyte.data.cursor.ConvertingCursor;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.db.SqlDialect;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.StringUtils;
-import de.brightbyte.wikiword.integrator.data.FeatureSet;
+import de.brightbyte.wikiword.integrator.data.DefaultForeignEntityRecord;
 import de.brightbyte.wikiword.integrator.data.ForeignEntityRecord;
-import de.brightbyte.wikiword.integrator.data.ForeignEntityFeatureSetCursor;
-import de.brightbyte.wikiword.integrator.processor.ForeignPropertyPassThrough;
+import de.brightbyte.wikiword.integrator.data.Record;
 import de.brightbyte.wikiword.integrator.processor.ForeignEntityProcessor;
+import de.brightbyte.wikiword.integrator.processor.ForeignPropertyPassThrough;
 import de.brightbyte.wikiword.integrator.store.DatabaseForeignPropertyStoreBuilder;
 import de.brightbyte.wikiword.integrator.store.ForeignPropertyStoreBuilder;
 import de.brightbyte.wikiword.store.WikiWordStoreFactory;
@@ -28,8 +30,10 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 		this.propertyProcessor = createProcessor(store); //FIXME
 		
 		section("-- fetching properties --------------------------------------------------");
-		DataCursor<FeatureSet> fsc = openFeatureSetCursor();
-		DataCursor<ForeignEntityRecord> cursor = new ForeignEntityFeatureSetCursor(fsc, sourceDescriptor.getAuthorityName(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField());
+		DataCursor<Record> fsc = openRecordCursor();
+		
+		Functor<? extends ForeignEntityRecord, Record> converter = new DefaultForeignEntityRecord.FromRecord( sourceDescriptor.getAuthorityName(), sourceDescriptor.getPropertySubjectField(), sourceDescriptor.getPropertySubjectNameField() );
+		DataCursor<ForeignEntityRecord> cursor = new ConvertingCursor<Record, ForeignEntityRecord>(fsc,  converter);
 		
 		section("-- process properties --------------------------------------------------");
 		store.prepareImport();
@@ -42,7 +46,7 @@ public class LoadForeignProperties extends AbstractIntegratorApp<ForeignProperty
 
 	@Override
 	protected String getSqlQuery(String table, FeatureSetSourceDescriptor sourceDescriptor, SqlDialect dialect) {
-		String fields = StringUtils.join(", ", getDefaultFields(dialect));
+		String fields = StringUtils.join(", ", getDefaultFields().values());
 		return "SELECT " + fields + " FROM " + dialect.quoteQualifiedName(getQualifiedTableName(table));
 	}
 
