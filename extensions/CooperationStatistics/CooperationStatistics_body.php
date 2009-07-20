@@ -89,9 +89,9 @@ class CooperationStatistics extends SpecialPage {
 		$wgOut->addHTML( "			</td>
 		<td align='left'>" );
 
-		if ( $msg == 'init' ) $wgOut->addWikiMsg( 'cooperationstatistics-nblessusers', $nb_of_revuser );
-		if ( $msg == '=' ) $wgOut->addWikiMsg( 'cooperationstatistics-nbusers', $nb_of_revuser );
-		if ( $msg == 'end' ) $wgOut->addWikiMsg( 'cooperationstatistics-nbmoreusers', $nb_of_revuser );
+		if ( $msg == 'init' ) $wgOut->addWikiMsg( 'cooperationstatistics-nblessusers', $nb_of_revuser, $nbpages );
+		if ( $msg == '=' ) $wgOut->addWikiMsg( 'cooperationstatistics-nbusers', $nb_of_revuser, $nbpages );
+		if ( $msg == 'end' ) $wgOut->addWikiMsg( 'cooperationstatistics-nbmoreusers', $nb_of_revuser, $nbpages );
 
 		$wgOut->addHTML( "			</td>
 	</tr>" );

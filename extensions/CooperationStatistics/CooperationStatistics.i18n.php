@@ -15,10 +15,10 @@ From [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperatio
 See also the [[Special:MostRevisors|\'\'\'pages with the most revisors\'\'\']] and [[Special:MostRevisions|pages with the most revisions]].',
 	'cooperationstatistics-tablearticle' => 'Page count',
 	'cooperationstatistics-tablevalue' => 'Number of editors',
-	'cooperationstatistics-articles' => '$1 pages',
-	'cooperationstatistics-nbusers' => 'have $1 editors',
-	'cooperationstatistics-nblessusers' => 'have $1 or less editors',
-	'cooperationstatistics-nbmoreusers' => 'have $1 or more editors',
+	'cooperationstatistics-articles' => '$1 {{PLURAL|page|pages}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|has|have}} $1 {{PLURAL:$1|editor|editors}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|has|have}} $1 {{PLURAL:$1|editor|or less editors}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|has|have}} $1 or more editors',
 	'cooperationstatistics-legendmore' => 'or more editors.',
 
 	// Settings. Do not translate
@@ -34,9 +34,15 @@ See also the [[Special:MostRevisors|\'\'\'pages with the most revisors\'\'\']] a
 $messages['qqq'] = array(
 	'cooperationstatistics-desc' => 'Short description of the extension, shown on [[Special:Version]].',
 	'cooperationstatistics-text' => 'Consider translating the + sign to " or more" if "number+" is not a commonplace notation in your language.',
-	'cooperationstatistics-articles' => 'This message supports PLURAL for $1',
-	'cooperationstatistics-nbusers' => 'This message supports PLURAL for $1',
-	'cooperationstatistics-nblessusers' => 'This message supports PLURAL for $1',
+	'cooperationstatistics-articles' => 'This message supports PLURAL.
+* $1 is the number of editors
+* $2 is the number of pages in the previous column',
+	'cooperationstatistics-nbusers' => 'This message supports PLURAL.
+* $1 is the number of editors
+* $2 is the number of pages in the previous column',
+	'cooperationstatistics-nblessusers' => 'This message supports PLURAL.
+* $1 is the number of editors
+* $2 is the number of pages in the previous column',
 	'cooperationstatistics-nbmoreusers' => 'This message supports PLURAL for $1',
 );
 
