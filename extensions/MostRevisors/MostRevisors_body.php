@@ -129,9 +129,11 @@ class MostRevisors extends IncludableSpecialPage {
 		if ( !is_null( $title ) ) {
 			$skin = $wgUser->getSkin();
 			$link = $row->page_is_redirect
-			? '<span class="allpagesredirect">' . $skin->makeKnownLinkObj( $title ) . '</span>'
-			: $skin->makeKnownLinkObj( $title );
-			$link .= " - $row->value " . wfMsg( 'mostrevisors-users' );
+				? '<span class="allpagesredirect">' . $skin->makeKnownLinkObj( $title ) . '</span>'
+				: $skin->makeKnownLinkObj( $title );
+			$link .= ' ' . wfMsgExt( 'mostrevisors-users', array( 'parsemag'), $row->value );
+			// FIXME: check if target page of the link below exists before linking to it.
+			// FIXME: move brackets from code into message, see http://www.mediawiki.org/wiki/Internationalisation#Symbols.2C_colons.2C_brackets.2C_etc._are_parts_of_messages
 			if ( $wgMostRevisorsLinkContributors == True ) $link .= " (" . $skin->makeKnownLinkObj( Title::makeTitleSafe( - 1, 'Contributors/' . $title ), wfMsg( 'mostrevisors-viewcontributors' ) ) . ")";
 			return( "<li>{$link}</li>\n" );
 		} else {

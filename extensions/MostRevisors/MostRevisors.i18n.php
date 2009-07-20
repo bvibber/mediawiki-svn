@@ -19,11 +19,11 @@ $messages['en'] = array(
 	'mostrevisors-submit' => 'Go',
 	'mostrevisors-showredir' => 'Show redirect pages',
 	'mostrevisors-hideredir' => 'Hide redirect pages',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editors}}',
 	'mostrevisors-viewcontributors' => 'View main contributors',
 	//'mostrevisors-text' => 'Show [[Special:MostRevisions|pages with the most revisors]], starting from [[MediaWiki:Mostrevisors-limit-few-revisors|{{MediaWiki:Mostrevisors-limit-few-revisors}} revisors]].',
 
 	// Settings. Do not translate these messages.
-	'mostrevisors-users' => 'editors',
 	'mostrevisors-limit-few-revisors' => '1',
 );
 
