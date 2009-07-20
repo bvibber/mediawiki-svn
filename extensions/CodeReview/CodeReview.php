@@ -40,10 +40,13 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiCodeUpdate'] = $dir . 'ApiCodeUpdate.php';
 $wgAutoloadClasses['ApiCodeDiff'] = $dir . 'ApiCodeDiff.php';
 $wgAutoloadClasses['ApiCodeComments'] = $dir . 'ApiCodeComments.php';
+
 $wgAutoloadClasses['CodeDiffHighlighter'] = $dir . 'DiffHighlighter.php';
 $wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'CodeRepoListView.php';
 $wgAutoloadClasses['CodeRevision'] = $dir . 'CodeRevision.php';
+$wgAutoloadClasses['SubversionAdaptor'] = $dir . 'Subversion.php';
+
 $wgAutoloadClasses['CodeRevisionAuthorView'] = $dir . 'CodeRevisionAuthorView.php';
 $wgAutoloadClasses['CodeRevisionAuthorLink'] = $dir . 'CodeRevisionAuthorLink.php';
 $wgAutoloadClasses['CodeRevisionListView'] = $dir . 'CodeRevisionListView.php';
@@ -55,13 +58,13 @@ $wgAutoloadClasses['CodeAuthorListView'] = $dir . 'CodeAuthorListView.php';
 $wgAutoloadClasses['CodeStatusListView'] = $dir . 'CodeStatusListView.php';
 $wgAutoloadClasses['CodeTagListView'] = $dir . 'CodeTagListView.php';
 $wgAutoloadClasses['CodeCommentsListView'] = $dir . 'CodeCommentsListView.php';
+$wgAutoloadClasses['CodeStatusChangeListView'] = $dir . 'CodeStatusChangeListView.php';
 $wgAutoloadClasses['CodeReleaseNotes'] = $dir . 'CodeReleaseNotes.php';
 $wgAutoloadClasses['CodeComment'] = $dir . 'CodeComment.php';
 $wgAutoloadClasses['CodePropChange'] = $dir . 'CodePropChange.php';
 $wgAutoloadClasses['SpecialCode'] = $dir . 'SpecialCode.php';
 $wgAutoloadClasses['CodeView'] = $dir . 'SpecialCode.php';
 $wgAutoloadClasses['SpecialRepoAdmin'] = $dir . 'SpecialRepoAdmin.php';
-$wgAutoloadClasses['SubversionAdaptor'] = $dir . 'Subversion.php';
 
 $wgSpecialPages['Code'] = 'SpecialCode';
 $wgSpecialPageGroups['Code'] = 'developer';
