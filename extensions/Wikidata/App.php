@@ -84,9 +84,6 @@ require_once("$IP/extensions/Wikidata/OmegaWiki/GotoSourceTemplate.php");
 			        			
 $wgGotoSourceTemplates = array(5 => $swissProtGotoSourceTemplate);  
 
-$dir = dirname( __FILE__ ) . '/';
-$wgExtensionMessagesFiles['Wikidata'] = $dir . 'SpecialLanguages.i18n.php';
-
 require_once("{$IP}/extensions/Wikidata/AddPrefs.php");
 require_once("{$IP}/extensions/Wikidata/SpecialLanguages.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSuggest.php");
@@ -122,10 +119,8 @@ function addWikidataHeader() {
 }
 
 function wdIsWikidataNs() {
-	global $wgTitle;
-	$ns=Namespace::get($wgTitle->getNamespace());	
-	return
-	($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning' || $ns->getHandlerClass()=='ExpressionPage');
+	global $wgTitle, $wdHandlerClasses;
+	return array_key_exists( $wgTitle->getNamespace(), $wdHandlerClasses );
 
 }
 
@@ -156,11 +151,11 @@ function addHistoryLinkTrail(&$trail) {
  * @param $tabs as passed by MW
  */
 function modifyTabs($skin, $content_actions) {
-	global $wgUser, $wgTitle, $wdTesting, $wgCommunity_dc, $wdShowEditCopy;
+	global $wgUser, $wgTitle, $wdTesting, $wgCommunity_dc, $wdShowEditCopy, $wdHandlerClasses;
 	$dc=wdGetDataSetContext();
-	$ns=Namespace::get($wgTitle->getNamespace());
+	$ns=$wgTitle->getNamespace();
 	$editChanged = false;
-	if($ns->getHandlerClass()=='DefinedMeaning') {
+	if(array_key_exists( $ns, $wdHandlerClasses ) && $wdHandlerClasses[ $ns ] == 'DefinedMeaning' ) {
 	
 		# Hackishly determine which DMID we're on by looking at the page title component
 		$tt=$wgTitle->getText();
@@ -199,8 +194,12 @@ function modifyTabs($skin, $content_actions) {
 
 function initializeWikidata() {
 	global $wgExtensionPreferences, $wdSiteContext, $wgPropertyToColumnFilters;
-
-	wfLoadExensionMessages( 'Wikidata' );
+	
+	# Add extension messages to the cache (initialize it here because they will be needed below)
+	global $wgMessageCache, $wdMessages;
+	foreach( $wdMessages as $language => $translations ) {
+		$wgMessageCache->addMessages( $translations, $language );
+	}
 
 	$dbr =& wfGetDB(DB_MASTER);
 	$dbr->query("SET NAMES utf8");
@@ -217,7 +216,12 @@ function initializeWikidata() {
 		'size' => 10,
 		'options' => $datasetarray
 	);
-
+                            	
+	global 
+		$messageCacheOK;
+		
+	$messageCacheOK = true;
+	
 	global
 		$wgRecordSetLanguage;
 		
@@ -232,3 +236,4 @@ function initializeWikidata() {
 
 	return true;
 }
+

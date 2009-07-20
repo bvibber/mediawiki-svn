@@ -52,11 +52,11 @@ Index: includes/Article.php
  
  		wfProfileIn( __METHOD__ );
  
-+		global $wgWikiDataHandlerClasses, $wgWikiDataHandlerPath;
++		global $wdHandlerClasses, $wdHandlerPath;
 +		$ns = $this->mTitle->getNamespace();
-+		if( array_key_exists( $ns, $wgWikiDataHandlerClasses ) ) {
-+		$handlerClass = $wgWikiDataHandlerClasses[ $ns ];
-+			$handlerFile = $wgWikiDataHandlerPath . $handlerClass . '.php';
++		if( array_key_exists( $ns, $wdHandlerClasses ) ) {
++		$handlerClass = $wdHandlerClasses[ $ns ];
++			$handlerFile = $wdHandlerPath . $handlerClass . '.php';
 +			if( file_exists( $handlerFile ) ) {
 +                        	require_once $handlerFile;
 +	                        $handlerInstance = new $handlerClass();
@@ -112,11 +112,11 @@ Index: includes/EditPage.php
  			return;
  		} else {
 +
-+			global $wgWikiDataHandlerClasses, $wgWikiDataHandlerPath;
++			global $wdHandlerClasses, $wdHandlerPath;
 +			$namespaceId = $this->mTitle->getNamespace();
-+	                if( array_key_exists( $namespaceId, $wgWikiDataHandlerClasses ) ) {
-+				$handlerClass = $wgWikiDataHandlerClasses[ $namespaceId ];
-+				$handlerFile = $wgWikiDataHandlerPath . $handlerClass . '.php';
++	                if( array_key_exists( $namespaceId, $wdHandlerClasses ) ) {
++				$handlerClass = $wdHandlerClasses[ $namespaceId ];
++				$handlerFile = $wdHandlerPath . $handlerClass . '.php';
 +				if( file_exists( $handlerFile ) ) {
 +					require_once $handlerFile;
 +					$handlerInstance = new $handlerClass();
@@ -141,9 +141,9 @@ Index: includes/Namespace.php
  	 */
  	public static function isMovable( $index ) {
 -		global $wgAllowImageMoving;
-+		global $wgAllowImageMoving, $wgWikiDataHandlerClasses;
++		global $wgAllowImageMoving, $wdHandlerClasses;
 +		# FIXME: This means that namespaces with custom handlers are assumed to never be movable.
-+		if( array_key_exists( $index, $wgWikiDataHandlerClasses ) ) return false; 
++		if( array_key_exists( $index, $wdHandlerClasses ) ) return false; 
  		return !( $index < NS_MAIN || ($index == NS_FILE && !$wgAllowImageMoving)  || $index == NS_CATEGORY );
  	}
  
@@ -189,11 +189,11 @@ Index: includes/PageHistory.php
  
  		wfProfileIn( __METHOD__ );
  
-+		global $wgWikiDataHandlerClasses, $wgWikiDataHandlerPath;
++		global $wdHandlerClasses, $wdHandlerPath;
 +		$namespaceId = $this->mTitle->getNamespace();
-+		if( array_key_exists( $namespaceId, $wgWikiDataHandlerClasses ) ) {
-+		$handlerClass = $wgWikiDataHandlerClasses[ $namespaceId ];
-+			$handlerFile = $wgWikiDataHandlerPath . $handlerClass . '.php';
++		if( array_key_exists( $namespaceId, $wdHandlerClasses ) ) {
++		$handlerClass = $wdHandlerClasses[ $namespaceId ];
++			$handlerFile = $wdHandlerPath . $handlerClass . '.php';
 +			if( file_exists( $handlerFile ) ) {
 +                        	require_once $handlerFile;
 +	                        $handlerInstance = new $handlerClass();
