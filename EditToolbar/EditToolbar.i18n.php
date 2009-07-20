@@ -58,12 +58,11 @@ $messages['en'] = array(
 	'edittoolbar-group-insert' => 'Insert',
 	'edittoolbar-tool-gallery' => 'Picture gallery',
 	'edittoolbar-tool-gallery-example' => "File:Example.jpg|Caption1
-
 File:Example.jpg|Caption2",
 	'edittoolbar-tool-newline' => 'New line',
 	'edittoolbar-tool-table' => 'Table',
 	'edittoolbar-tool-table-example' => "-
-! header 1\
+! header 1
 ! header 2
 ! header 3
 |-
