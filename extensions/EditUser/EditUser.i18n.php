@@ -562,6 +562,7 @@ $messages['id'] = array(
 	'edituser-dosearch' => 'Cari',
 	'edituser-nouser' => 'Pengguna yang dimaksud tidak ditemukan',
 	'edituser-exempt' => 'Pengguna yang dimaksud tidak dapat disunting',
+	'right-edituser' => 'Sunting preferensi pengguna lain',
 	'right-edituser-exempt' => 'Orang lain tidak dapat menyunting preferensi pengguna ini',
 );
 

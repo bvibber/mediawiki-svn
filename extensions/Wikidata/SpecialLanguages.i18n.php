@@ -1097,7 +1097,7 @@ $messages['be-tarask'] = array(
 Упэўніцеся, што Ваша праграма захавала ці экспартавала ў файл адпаведным чынам.</p>',
 	'ow_importtsv_not_tsv' => '<p>Гэта ня слушны файл у фармаце TSV.</p>',
 	'ow_importtsv_bad_columns' => "<p>Няслушная назва слупка '$1'.<br />
-Слупкі павінны мець назвы адпаведна 'definition_iso' ці 'translations_iso',
+Слупкі павінны мець назвы адпаведна 'definition_iso' ці 'translations_iso',  
 дзе iso зьяўляецца кодам мовы.</p>",
 	'ow_importtsv_test_run_title' => 'Тэставы запуск імпартаваньня зьвестак TSV',
 	'ow_importtsv_nothing_added' => 'Нічога не дададзена.',
@@ -1143,11 +1143,11 @@ $messages['be-tarask'] = array(
 	'conceptmapping' => 'ВікіЗьвесткі: Адпаведнасьць канцэпцыяў',
 	'ow_conceptmapping_title' => 'Адпаведнасьць канцэпцыяў',
 	'ow_conceptmapping_help' => '<p>магчымыя дзеяньні: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... уставіць адпаведнасьць</li>
-<li>&action=get&concept=<concept_id> прачытаць адпаведнасьць</li>
-<li>&action=list_sets паказаць сьпіс магчымых прыставак кантэкстаў зьвестак і куды яны спасылаюцца.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  уставіць адпаведнасьць</li>
+<li>&action=get&concept=<concept_id>  прачытаць адпаведнасьць</li>
+<li>&action=list_sets  паказаць сьпіс магчымых прыставак кантэкстаў зьвестак і куды яны спасылаюцца.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> для аднаго вызначанага значэньня ў кантэксьце, вывесьці ўсе іншыя</li>
-<li>&action=help Паказаць дапамогу.</li>
+<li>&action=help  Паказаць дапамогу.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Усталяваньне адпаведнасьцяў канцэпцыяў дазваляе Вам пазначыць, якое пэўнае значэньне ў адным наборы зьвестак ідэнтычна іншым наборам зьвестак.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Дзеяньне «$1» не падтрымліваецца.',
@@ -1235,6 +1235,7 @@ $messages['be-tarask'] = array(
 	'ow_meaningsoftitle' => 'Значэньне «$1»',
 	'ow_meaningsofsubtitle' => '<em>Вікі-спасылка:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Доступ забаронены</h2>',
+	'copy' => 'Wikidata: Капіяваньне',
 	'ow_copy_no_action_specified' => 'Калі ласка, пазначце дзеяньне',
 	'ow_copy_help' => 'Дапамога яшчэ ня зьдзейсьнена.',
 	'ow_please_proved_dmid' => 'Падобна, што ва ўведзеных зьвестках адсутнічае «?dmid=<ID>» (dmid=Ідэнтыфікатар вызначанага значэньня)<br />
@@ -3232,16 +3233,19 @@ $messages['fi'] = array(
 	'ow_importtsv_import_failed' => 'Tuonti ei onnistunut',
 	'ow_importtsv_file' => 'TSV-tiedosto:',
 	'ow_importtsv_test_run' => 'Koetuonti:',
-	'ow_importtsv_not_utf8' => '<p> Tämä ei näytä olevan UTF-8-koodattu tiedosto. Tiedoston <i>täytyy</i> olla UTF-8-koodattu. Varmista että sovellusohjelmasi on tallentanut tai vienyt tiedoston oikein. </p>',
-	'ow_importtsv_not_tsv' => '<p> Tämä ei näytä olevan toimiva TSV-tiedosto. </p>',
-	'ow_importtsv_bad_columns' => "<p>Väärä sarakkeen nimi '$1'. <br /> Sarakkeet kuuluu nimetä 'definition_iso' tai 'translations_iso', jossa iso on kielikoodi.</p>",
+	'ow_importtsv_not_utf8' => '<p>Tämä ei näytä olevan UTF-8-koodattu tiedosto. Tiedoston <i>täytyy</i> olla UTF-8-koodattu.
+Varmista, että sovellusohjelmasi on tallentanut tai vienyt tiedoston oikein.</p>',
+	'ow_importtsv_not_tsv' => '<p>Tämä ei näytä olevan kelvollinen TSV-tiedosto.</p>',
+	'ow_importtsv_bad_columns' => "<p>Virheellinen sarakenimi '$1'.<br />
+Sarakkeet kuuluu nimetä 'definition_iso' tai 'translations_iso',
+jossa iso on kielikoodi.</p>",
 	'ow_importtsv_test_run_title' => 'TSV-tietueitten koetuonti',
 	'ow_importtsv_nothing_added_test' => 'Mitään ei lisätty (koetuonti).',
 	'ow_importtsv_results' => 'Lisätty $1 {{PLURAL:$1|määritelmä|määritelmää}} ja $2 {{PLURAL:$2|käännös|käännöstä}}.',
-	'ow_impexptsv_unknown_lang' => '<p>Tuntematon tai virheellinen kieli: $1. <br />
-Kielten pitää olla ISO 639-3 kielten koodeilla.</p>',
+	'ow_impexptsv_unknown_lang' => '<p>Tuntematon tai virheellinen kieli: $1.<br />
+Kielen pitää olla ISO 639-3 -kielikoodi.</p>',
 	'ow_exporttsv_title' => 'Vie kokoelma TSV:lle',
-	'ow_exporttsv_header' => "<p>Vie kokoelma sarkaimin erotetussa teksti-muodossa jonka voit tuoda OpenOffice.org, Excel tai muuhun taulukkolaskentaohjelmistoon. <br />
+	'ow_exporttsv_header' => "<p>Vie kokoelma sarkaimin erotetussa teksti-muodossa jonka voit tuoda OpenOffice.org, Excel tai muuhun taulukkolaskentaohjelmistoon. <br /> 
 Valitse kokoelma vietäväksi. Syötä kielten tekstikenttään pilkuilla eroteltu luettelo ISO 639-3 kielikoodeista. Aloita kielistä joista tulet kääntämään (valitse niin monta kuin haluat), ja lisää lopuksi ne joihin sinä käännät. Napsauta sitten 'Create' luodaksesi tiedoston.</p>",
 	'ow_exporttsv_languages' => 'Kielet:',
 	'ow_exporttsv_not_allowed' => 'Sinulla ei ole lupaa tehdä TSV-vientiä.',
@@ -3358,7 +3362,7 @@ $messages['fr'] = array(
 Assurez-vous que votre application a sauvegardé ou exporté le fichier correctement.</p>',
 	'ow_importtsv_not_tsv' => '<p>Ceci ne semble pas être un fichier TSV valide.</p>',
 	'ow_importtsv_bad_columns' => '<p>Nom de colonne « $1 » invalide.<br />
-Les colonnes doivent être nomées « definition_<i>iso</i> » ou « translations_<i>iso</i> »,
+Les colonnes doivent être nomées « definition_<i>iso</i> » ou « translations_<i>iso</i> »,  
 où <i>iso</i> est le code de langue ISO 639-3.</p>',
 	'ow_importtsv_test_run_title' => 'Test d’importation de données TSV',
 	'ow_importtsv_nothing_added' => 'Rien n’a été ajouté.',
@@ -3496,6 +3500,7 @@ Veuillez vérifier l’adresse internet de la page.',
 	'ow_meaningsoftitle' => 'Sens de « $1 »',
 	'ow_meaningsofsubtitle' => '<em>lien wiki :</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Permission refusée</h2>',
+	'copy' => 'Wikidata : Copier',
 	'ow_copy_no_action_specified' => 'Veuillez spécifier une action',
 	'ow_copy_help' => 'L’aide n’a pas encore été implémentée.',
 	'ow_please_proved_dmid' => 'Il manque un ?dmid=<ID> dans votre entrée (dmid=identificateur de sens défini)<br />
@@ -3892,7 +3897,7 @@ $messages['gsw'] = array(
 	'datasearch_showing_only' => 'Zeigt nume e Maximalzahl vu $1 {{PLURAL:$1|Träffer|Träffer}}.',
 	'datasearch_match_ext_ids' => 'Träffer Extärni Identifier <i>$1</i>',
 	'datasearch_match_words' => 'Werter mit <i>$1</i> un assoziierte Bedytige',
-	'datasearch_match_words_lang' => 'Werter in <i>$1</i> mit <i>$2</i> un assoziierte Bedytige',
+	'datasearch_match_words_lang' => 'Werter in <i>$1</i> mit  <i>$2</i> un assoziierte Bedytige',
 	'importtsv' => 'Wikidata: Importier TSV',
 	'ow_importtsv_title1' => 'TSV importiere',
 	'ow_importtsv_title2' => 'Definitione un Ibersetzige importiere',
@@ -4043,6 +4048,7 @@ Lueg [[{{MediaWiki:Ow editing policy url}}|unseri Richtlinie]].',
 	'ow_meaningsoftitle' => 'Bedytige vu „$1“',
 	'ow_meaningsofsubtitle' => '<em>Wikilink:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>ERLAUBNIS VERWEIGERET</h2>',
+	'copy' => 'Wikidate: Kopii',
 	'ow_copy_no_action_specified' => 'Bitte leg e Aktion fescht.',
 	'ow_copy_help' => 'S isch kei Hilf implementiert.',
 	'ow_please_proved_dmid' => 'In Dyynere Yygab fählt „?dmid=<something>“ (dmid=Defined Meaning ID)<br />
@@ -4453,11 +4459,11 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
 	'conceptmapping' => 'Wikidaty: Zwjazanje zapřijećow',
 	'ow_conceptmapping_title' => 'Zwjazanje zapřijećow',
 	'ow_conceptmapping_help' => '<p>Móžne akcije: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... Zwjazanje zasunyć</li>
-<li>&action=get&concept=<concept_id> Zwjazanje wotwołać</li>
-<li>&action=list_sets Lisćinu móžnych prefiksow konteksta datow pokazać a na štož so poćahuja.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  Zwjazanje zasunyć</li>
+<li>&action=get&concept=<concept_id>  Zwjazanje wotwołać</li>
+<li>&action=list_sets  Lisćinu móžnych prefiksow konteksta datow pokazać  a na štož so poćahuja.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> Za definowany woznam w konteksće wšě druhe pokazać</li>
-<li>&action=help Wužitnu pomoc pokazać.</li>
+<li>&action=help  Wužitnu pomoc pokazać.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Concept mapping ći dowola identifikować, kotry definowany woznam en sadźbje datow je identiski z definowanymi woznami w druhich sadźbach datow.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akcija "$1" so njepodpěruje.',
@@ -4543,6 +4549,7 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
 	'ow_meaningsoftitle' => 'Woznamy za "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wikiwotkaz:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>DOWOLNOSĆ ZAPOWĚDŹENA</h2>',
+	'copy' => 'Wikidata: Kopija',
 	'ow_copy_no_action_specified' => 'Podaj prošu akciju',
 	'ow_copy_help' => 'Pomoc hišće njeje implementowana.',
 	'ow_please_proved_dmid' => 'Zda so, zo w twojim zapodaću "?dmid=<ID>" (dmid=Defined Meaning ID) faluje.<br />Prošu skontaktuj serweroweho administratora.',
@@ -4574,6 +4581,7 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
 	'ow_nstab_definedmeaning' => 'definowany woznam',
 	'ow_nstab_edit_copy' => 'kopiju wobdźěłać',
 	'right-addlanguage' => 'Rěčne nastajenja přidać a změnić',
+	'ow_shown_datasets' => 'Pokazane datowe sadźby',
 );
 
 /** Hungarian (Magyar)
@@ -4739,11 +4747,11 @@ Per favor vide [[{{MediaWiki:Ow editing policy url}}|nostre politica de modifica
 	'conceptmapping' => 'Wikidatos: Correspondentia de conceptos',
 	'ow_conceptmapping_title' => 'Correspondentia de conceptos',
 	'ow_conceptmapping_help' => '<p>actiones possibile: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... inserer un correspondentia</li>
-<li>&action=get&concept=<concept_id> revider un correspondentia</li>
-<li>&action=list_sets retornar un lista de possibile prefixos de contexto de datos e a que illos refere.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  inserer un correspondentia</li>
+<li>&action=get&concept=<concept_id>  revider un correspondentia</li>
+<li>&action=list_sets  retornar un lista de possibile prefixos de contexto de datos e a que illos refere.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pro un significato definite in un concepto, retornar tote le alteres</li>
-<li>&action=help Monstrar adjuta utile.</li>
+<li>&action=help  Monstrar adjuta utile.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Le correspondentia de conceptos te permitte identificar qual significato definite in un collection de datos es identic a significatos definite in altere collectiones de datos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Le action "$1" non es supportate.',
@@ -4831,6 +4839,7 @@ Per favor verifica le adresse web.',
 	'ow_meaningsoftitle' => 'Significatos de "$1"',
 	'ow_meaningsofsubtitle' => '<em>Ligamine Wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Permission refusate</h2>',
+	'copy' => 'Wikidatos: Copiar',
 	'ow_copy_no_action_specified' => 'Per favor specifica un action',
 	'ow_copy_help' => 'Le adjuta non es ancora implementate.',
 	'ow_please_proved_dmid' => 'Pare que manca un "?dmid=<ID>" a tu entrata (dmid=ID del Significato Definite)<br />
@@ -5220,11 +5229,11 @@ $messages['ja'] = array(
 	'conceptmapping' => 'ウィキデータ: 概念写像',
 	'ow_conceptmapping_title' => '概念写像',
 	'ow_conceptmapping_help' => '<p>可能な操作: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... 関連付けを作成</li>
-<li>&action=get&concept=<concept_id> 関連する内容を取得</li>
-<li>&action=list_sets 取得可能なデータの接頭辞とその関連項目の一覧を取得</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  関連付けを作成</li>
+<li>&action=get&concept=<concept_id>  関連する内容を取得</li>
+<li>&action=list_sets  取得可能なデータの接頭辞とその関連項目の一覧を取得</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> ある概念に対する意味定義の一つから他の意味定義すべてを取得</li>
-<li>&action=help ヘルプの表示</li>
+<li>&action=help  ヘルプの表示</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>概念写像では、あるデータ集合に含まれる意味定義を他のデータ集合にある意味定義と同一概念のものとして関連付けることができます。</p>',
 	'ow_conceptmapping_no_action_specified' => '「$1」という操作はサポートされていません。',
@@ -5310,6 +5319,7 @@ $messages['ja'] = array(
 	'ow_meaningsoftitle' => '「$1」の意味',
 	'ow_meaningsofsubtitle' => '<em>ウィキリンク:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>不許可</h2>',
+	'copy' => 'ウィキデータ: 複製',
 	'ow_copy_no_action_specified' => '操作を指定してください',
 	'ow_copy_help' => 'ヘルプはまだ実装されていません。',
 	'ow_please_proved_dmid' => 'あなたの入力には "?dmid=<ID>" (dmid = 意味定義識別子) が欠けているようです。<br />
@@ -5843,7 +5853,7 @@ $messages['ksh'] = array(
 	'ow_importtsv_test_run_title' => 'Versoochslouf för en Datei met Reije met Wääte un Tabulatore dozwesche ze empoteere',
 	'ow_importtsv_nothing_added' => 'Nix dobei jedonn.',
 	'ow_importtsv_nothing_added_test' => 'Nix dobei jedonn (Do häs jo nor ene Versochslouf jemaat).',
-	'ow_importtsv_results' => 'Han {{PLURAL:$1|ein Bedüggdeniß|$1 Bedüggdeniße|kei Bedüggdeniß}} un {{PLURAL:$1|ein Övversäzung|$2 Övversäzunge|kein Övversäzung}} neu opjenumme un dobei jedonn.',
+	'ow_importtsv_results' => 'Han {{PLURAL:$1|ein Bedüggdeniß|$1 Bedüggdeniße|kei Bedüggdeniß}} un  {{PLURAL:$1|ein Övversäzung|$2 Övversäzunge|kein Övversäzung}} neu opjenumme un dobei jedonn.',
 	'ow_impexptsv_unknown_lang' => '<p>He di Shprooch es nit bikannt, odder se es verkeeht: $1.<br />Shprooche möße övver dänne ier ISO 639-3 Koods annjejovve wääde.</p>',
 	'exporttsv' => 'Wikidata: En Datei uß Reije met Wääte met Tabulatore dozwesche expoteere',
 	'ow_exporttsv_title' => 'En Sammlong als en Datei uß Reije met Wääte met Tabulatore dozwesche expoteere',
@@ -6836,6 +6846,7 @@ Controleer het webadres.',
 	'ow_meaningsoftitle' => 'Betekenissen van "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wikiverwijzing:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Toestemming geweigerd</h2>',
+	'copy' => 'Wikidata: Kopiëren',
 	'ow_copy_no_action_specified' => 'Geef alstublieft een handeling aan',
 	'ow_copy_help' => 'Een hulpfunctie is nog niet beschikbaar.',
 	'ow_please_proved_dmid' => 'Uw invoer mist een "?dmid=<ID>" (dmid=Defined Meaning-ID)<br />Neem alstublieft contact op met een systeembeheerder.',
@@ -6868,6 +6879,7 @@ Vergeet niet om dit te controleren!',
 	'ow_nstab_definedmeaning' => 'gedefinieerde betekenis',
 	'ow_nstab_edit_copy' => 'kopie bewerken',
 	'right-addlanguage' => 'Toevoegen en wijzigen van taalinstellingen',
+	'ow_shown_datasets' => 'Weergegeven datasets',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -8550,7 +8562,7 @@ $messages['ru'] = array(
 Убедитесь, что ваше приложение правильно сохраняет или экспортирует файл.</p>',
 	'ow_importtsv_not_tsv' => '<p>По всей видимости, формат файла отличается от TSV.</p>',
 	'ow_importtsv_bad_columns' => '<p>Ошибочное имя столбца «$1».<br />
-Столбцы должны называться «definition_iso» или «translations_iso»,
+Столбцы должны называться «definition_iso» или «translations_iso»,  
 где вместо «iso» должен быть код языка.</p>',
 	'ow_importtsv_test_run_title' => 'Пробный запуск импорта TSV-данных',
 	'ow_importtsv_nothing_added' => 'Ничего не добавлено.',
@@ -8595,11 +8607,11 @@ $messages['ru'] = array(
 	'conceptmapping' => 'Викиданные: Соответствие концептов',
 	'ow_conceptmapping_title' => 'Соответствие концептов',
 	'ow_conceptmapping_help' => '<p>возможные действия: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... вставить соответствие</li>
-<li>&action=get&concept=<concept_id> прочитать соответствие</li>
-<li>&action=list_sets вывести список возможных приставок контекстов данных и мест, куда они ссылаются.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  вставить соответствие</li>
+<li>&action=get&concept=<concept_id>  прочитать соответствие</li>
+<li>&action=list_sets  вывести список возможных приставок контекстов данных и мест, куда они ссылаются.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> для одного определённого значения в концепте вывести все остальные</li>
-<li>&action=help вывести спрвочную информацию.</li>
+<li>&action=help  вывести спрвочную информацию.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Установка соответствий концептов позволяет вам указать какое определённое значение в одном наборе данных тождественно определённым значениям в других наборах данных.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Не поддерживается действие «$1».',
@@ -8685,6 +8697,7 @@ $messages['ru'] = array(
 	'ow_meaningsoftitle' => 'Значение «$1»',
 	'ow_meaningsofsubtitle' => '<em>Вики-ссылка:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Доступ запрещён</h2>',
+	'copy' => 'Викиданные: Копирование',
 	'ow_copy_no_action_specified' => 'Пожалуйста, укажите действие',
 	'ow_copy_help' => 'Справка ещё не реализована.',
 	'ow_please_proved_dmid' => 'Похоже, что во входных данных отсутствует «?dmid=<ID>» (dmid — идентификатор определённого значения)<br /> Пожалуйста, свяжитесь с администратором сервера.',

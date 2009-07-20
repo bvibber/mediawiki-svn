@@ -719,6 +719,7 @@ $wgCustomToolbarMessages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Str4nd
  */
@@ -751,7 +752,7 @@ $wgCustomToolbarMessages['fi'] = array(
 	'ct_horizontal_tip' => 'Lisää vaakasuora viiva (käytä niukasti)',
 	'ct_horizontal_caption' => 'Vaakasuora viiva',
 	'ct_upload' => 'Tallenna $1',
-	'ct_select' => 'Valitse $1 tallentaaksesi',
+	'ct_select' => 'Valitse $1 tallentaaksesi:',
 	'ct_caption' => 'Lisää kuvateksti (valinnainen)',
 	'ct_link' => 'Lisää linkin nimi (valinnainen)',
 	'ct_close' => 'Sulje ikkuna',

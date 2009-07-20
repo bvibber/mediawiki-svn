@@ -1901,7 +1901,7 @@ $mvMVDTypeDefaultDisp sollte eine Teilmenge von $mvMVDTypeAllAvailable sein',
 	'mv_list_streams_docu' => 'Es existieren die folgenden Streams:',
 	'mv_list_streams_none' => 'Es existieren keine Streams',
 	'mvvideofeed' => 'Metavid-Video-Feed exportieren',
-	'mvexportask' => 'Video-Feed semantisch exportieren',
+	'mvexportask' => 'Semantischen Video-Feed exportieren',
 	'video_feed_cat' => 'Video-Einspeisung für die Kategorie:',
 	'mv_cat_search_note' => 'Hinweis: Nur Kategorien erster Ordnung werden gelistet.
 Suche nach $1 für alle Metadaten im Kategoriebereich',
@@ -2034,7 +2034,7 @@ Zur Stream-Ansicht springen: $2',
 	'mv_prev_cat' => 'Vorherige Kategorie: $1',
 	'mv_next_cat' => 'Nächste Kategorie: $1',
 	'mv_search_stream' => 'Stream suchen',
-	'mv_search_stream_title' => 'Aktuellen Stream suchen',
+	'mv_search_stream_title' => 'Im aktuellen Stream suchen',
 	'mv_new_ht_en' => 'Neue Kopie',
 	'mv_new_anno_en' => 'Neue Markierung oder Bemerkung',
 	'mv_mang_layers' => 'Ebenen verwalten',
@@ -2043,10 +2043,12 @@ Zur Stream-Ansicht springen: $2',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Pill
  * @author Revolus
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'wgfogg_wrong_version' => 'Sie besitzen eine veraltete Version von Firefogg. <a href="http://firefogg.org">Bitte führen Sie ein Update durch.</a>.',
 	'mv_user_cant_edit' => 'Sie können sich zum Bearbeiten [$1 anmelden], $2',
 );
 
@@ -3239,6 +3241,7 @@ $messages['grc'] = array(
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
+ * @author Purodha
  */
 $messages['gsw'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video-Metadata-Editor & Media-Search]',
@@ -3344,7 +3347,6 @@ Alli Änderige gehn derno verlore.',
 	'cut_clip' => 'Clips zueschnyde',
 	'expand_track' => 'Strang expandiere',
 	'colapse_track' => 'Strang zueklappe',
-	'play_clip' => 'Vu dr Playline-Position abspile',
 	'pixle2sec' => 'Pixel in Sekunde',
 	'rmclip' => 'Clip useneh',
 	'clip_in' => 'Clip yy',
@@ -5273,6 +5275,7 @@ $messages['ksh'] = array(
 	'select_playback' => 'Entellunge för et Afshpelle',
 	'link_back' => 'Retuur-Lengk',
 	'error_load_lib' => '<i lang="en">mv_embed:</i> Kann de nüdejje JavaSkrepp Projrammbiplijoteek nit lade. Dat Skrepp övver <i lang="en">DOM</i> en de Web-Sigg enzefööje hät nit jeflupp. Noch ens versöke, dat Skrepp ze laade?',
+	'error_swap_vid' => 'Fähler: <code>mv_embed</code> kunnt de Viddejo-Makeerung för de Schnettshtäll vun <code>mv_embed</code> nit ußwääßelle',
 	'download_segment' => 'Ußwahl för erunger ze laade:',
 	'download_full' => 'Donn dä janze Viddejo erunge laade:',
 	'download_clip' => '
@@ -5293,9 +5296,7 @@ Loor op dä Sigg <i lang="en"><a href="http://metavid.org/wiki/Client_Playback">
 Aam Engk vun dä
 sequence
 aanhange',
-	'missing_video_stream' => ' De Viddejo-Dattei för he dä 
-stream
-is nit doh',
+	'missing_video_stream' => 'De Viddejo-Dattei för he dä Daateshtrohm es nit doh',
 	'select_transcript_set' => 'Donn de Nivvohs vum Täx ußwähle',
 	'auto_scroll' => 'automattesch wigger_Rolle',
 	'close' => 'zoh maache',
@@ -5326,6 +5327,7 @@ wigger afshpelle',
 	'rsd_box_layout' => 'Als ene Kaßte',
 	'rsd_list_layout' => 'Als en Leß',
 	'rsd_results_desc' => 'Eruß kohm',
+	'rsd_no_results' => 'Beim Söhke noh <b>$1</b> kohm nix erus',
 	'rsd_results_next' => 'näx',
 	'rsd_results_prev' => 'vörijje',
 	'mv_upload' => 'Huh laade',
@@ -5382,10 +5384,7 @@ Donn ene einzel
 clip
 ußsöke, öm dä ze ändere',
 	'metavid' => 'Metavid Sigg',
-	'mv_missing_stream' => '
-Dä
-stream 
-„$1“ fäählt',
+	'mv_missing_stream' => 'Dä Dahteshtrohm „$1“ fäählt.',
 	'specialpages-group-mv_group' => 'MetaVidWiki Söndersigge',
 	'mv_warning_wiki' => '<i>Opjepaß: <i lang="en">MetaVid</i> Viddejo Protokolle [[Help:FAQ#How_accurate_is_the_information.3F|künne unjenou sin]], donn uns hellfe, [[Help:Participation#Improving_Archive_Accuracy|noch e besser Aschiif opzeboue]]</i>',
 	'mv_ogg_low_quality' => ' Striimbaa övver et Nez - <i lang="en">Ogg Theora</i> 300&nbsp;Killobits&nbsp;de&nbsp;Sekund',
@@ -5394,66 +5393,38 @@ stream
 	'mv_archive_org_mp4' => 'Ene em <i lang="en">Archive.org-MP4</i> enjepackte H.264-Schtroom',
 	'mv_archive_org_link' => 'Lengks op ojinaal MPEG2-Dateije vun Archive.org',
 	'mv_error_stream_missing' => '<span class="error">Fähler: För dä Shtroom jidd_et kein Viddejo_Dattei.</span><br />Beß esu joot, un donn dat eenem [[{{MediaWiki:Grouppage-sysop}}|Wiki_Kööbeß]] verzälle.',
-	'mv_stream_added' => '
-Do häs dä 
-stream 
-„$1“ dobei jedonn',
-	'mv_stream_meta' => '
-stream  
-Sigg',
-	'mv_add_stream' => '
-<i lang="en">MetaVid</i> 
-stream  
-dobei donn',
-	'mv_edit_stream' => '
-<i lang="en">MetaVid</i> 
-stream  
-ändere',
+	'mv_stream_added' => 'Do häs dä Dahteshtrohm „$1“ dobei jedonn.',
+	'mv_stream_meta' => 'Dahteshtrohm-Sigg',
+	'mv_add_stream' => '<i lang="en">MetaVid</i> Dahteshtrohm dobei donn',
+	'mv_edit_stream' => '<i lang="en">MetaVid</i> Dahteshtrohm ändere',
 	'mvexportsearch' => '<i lang="en">MetaVid</i> Expoot',
 	'mvexportsequence' => '
 <i lang="en">MetaVid</i> 
 sequence  
 expoteere',
-	'mvexportstream' => '
-<i lang="en">MetaVid</i> 
-stream  
-expooteere',
+	'mvexportstream' => '<i lang="en">MetaVid</i> Dahteshtrohm expooteere',
 	'mv_move_delete_msg' => 'op $1 ömjenannt',
-	'mv_add_stream_page' => '
-<i lang="en">MetaVid</i> Stream 
-dobei donn',
-	'mv_edit_strea_docu' => '
-<p>Stream ändere als <b>Wiki-Köbes</b><br />
+	'mv_add_stream_page' => '<i lang="en">MetaVid</i> Dahteshtrohm dobei donn',
+	'mv_edit_strea_docu' => '<p>Dahteshtrohm ändere als ene <b>Wiki-Köbes</b><br />
 De Aansich för der nommaale Metmaacher es op dä Sigg: $1',
-	'mv_add_stream_docu' => '
-<p>Donn ene neue 
-stream 
-dobei, övver dat Feld heh dronger.</p>
-<p>Mieh Enfommazjuhne fingk mer op dä <a href="$1">Hülp-Sigg övver et 
-stream-
-Dobei-Donn</a>.</p>',
-	'mv_add_stream_submit' => '
-stream
-dobei donn',
-	'mv_no_stream_files' => '
-Mer han kei 
-stream  
-Datteije',
-	'mv_edit_stream_files' => '
-stream  
-Datteije ändere',
+	'mv_add_stream_docu' => '<p>Donn ene neue Dahteshtrohm dobei, övver dat Feld heh dronger.</p>
+<p>Mieh Enfommazjuhne fingk mer op dä <a href="$1">Hülp-Sigg övver et Dahteshtrohm-Dobei-Donn</a>.</p>',
+	'mv_add_stream_submit' => 'Dahteshtrohm dobei donn',
+	'mv_no_stream_files' => 'Mer han kei Dahteshtrohm-Datteije',
+	'mv_edit_stream_files' => 'Dahteshtrohm-Datteije ändere',
 	'mv_path_type_url_anx' => 'kumplätte Medije-URL',
 	'mv_path_type_wiki_title' => 'Medije-Tittel em Wiki',
+	'mv_path_type_url_file' => 'Donn de kumplätte <i lang="en">URL</i> vun en Meedijedattei övver et Söhke heh em Wiki eruß fenge',
+	'mv_path_type_mp4_stream' => 'MP4 Dahteshtrohm-ßööver',
 	'mv_path_type_label' => 'Tüp fun enem Paad',
 	'mv_base_offset_label' => 'Aanfangs-Afshtand',
 	'mv_duration_label' => 'Door',
-	'mv_file_desc_label' => 'Tex för dä stream ze beschrieve',
-	'mv_delete_stream_file' => 'Verwieß op de Strom-Dattei fottschmiiße',
+	'mv_file_desc_label' => 'Nohreesh udder Tex för dä Dahteshtrohm ze beschrieve',
+	'mv_delete_stream_file' => 'Verwieß op de Dahteshtrohm-Dattei fottschmiiße',
 	'mv_save_changes' => 'Änderunge faßhallde',
-	'mv_file_with_same_desc' => 'Fähler: Mer han ald en Shtrom-Dattei met dämsellve Beschrievungsschlössel: <i>$1</i>',
-	'mv_removed_file_stream' => '
-stream
-Dattei „$1“ fottjeschmeße',
+	'mv_file_with_same_desc' => 'Fähler: Mer han ald en Dahteshtrohm-Dattei met dämsellve Beschrievungsschlössel: <i>$1</i>',
+	'mv_updated_stream_files' => 'Dahtesaz övver Dahteshtrohm-Datteije op der neuste Shtand jebraat',
+	'mv_removed_file_stream' => 'Dahteshtrohm-Dattei „$1“ fottjeschmeße',
 	'mv_missing_stream_text' => 'Dä jewönschte 
 stream
 <b>$1</b> es nit ze han.<br />
@@ -5464,58 +5435,38 @@ udder <a href="$3">donn ene
 stream
 dobei</a>.',
 	'mv_user_cant_edit' => 'Do künntß Desch [$1 enlogge] möße, för hee jet ze ändere. Söns: $2',
-	'mv_add_stream_file' => 'En
-stream
-Dattei dobei donn',
+	'mv_add_stream_file' => 'En Dahteshtrohm-Dattei dobei donn',
 	'mv_media_path' => 'Dä Pat noh dä Meedije-Dattaj',
-	'mv_file_list' => '
-Stream
-Datteije',
-	'mv_label_stream_name' => '
-Däm
-stream
-singe Name',
-	'mv_label_stream_desc' => '
-Dä
-stream
-beschrevve',
-	'add_stream_permission' => ' Der fähld et Rääsch, ene neue
-<i lang="en">stream</i>
-dobei ze donn',
-	'edit_stream_missing' => '!!FIZZY!!Dä Name för dä Date-Schtrom es nit aanjejovve',
+	'mv_file_list' => 'Dahteshtrohm-Datteije',
+	'mv_label_stream_name' => 'Däm Daateshtrohm singe Name',
+	'mv_label_stream_desc' => 'Dä Dahteshtrohm beschrevve',
+	'add_stream_permission' => 'Dier fähld et Rääsch, ene neue Dahteshtrohm derbei ze donn',
+	'edit_stream_missing' => 'Dä Name för dä Dahteshtrohm es nit aanjejovve',
 	'mv_missing_req_time' => '!!FIZZY!!De Zick för de Aanforderung es nit aanjejovve',
 	'mv_missing_cat' => 'Dä Name för die Saachjrupp es nit aanjejovve',
-	'mv_stream_already_exists' => '
-Dä 
-stream
-„<a href="$2">$1</a>“ jidd_et alld',
-	'mv_summary_add_stream' => ' Dä 
-stream 
-wood övver e Fommulaa dobei jedonn',
-	'mv_error_stream_insert' => ' dä 
-stream 
-kunnt nit enjeföösh wääde',
+	'mv_stream_already_exists' => 'Dä Dahteshtrohm „<a href="$2">$1</a>“ jidd_et alld',
+	'mv_summary_add_stream' => 'Dä Dahteshtrohm wood övver e Fommulaa dobei jedonn',
+	'mv_error_stream_insert' => 'dä Dahteshtrohm kunnt nit enjeföösh wääde',
 	'mv_redirect_and_delete_reason' => 'Ömleidungssigg fott jeschmeße',
 	'mv_remove_reason' => 'Dä Jrond för et fottschmiiße:',
-	'mv_stream_delete_warrning' => "'''Dä
-stream
-heh fott ze schmiiße määt och {{PLURAL:$1|eij Shtöck|$1 Shtöcke|kei}}
+	'mv_stream_delete_warrning' => "
+'''Dä Dahteshtrohm heh fott ze schmiiße määt och {{PLURAL:$1|eij Shtöck|$1 Shtöcke|kei}}
 associative metadata
 fott.
 '''<br />",
-	'mv_label_stream_type' => '
-stream
-Zoot',
+	'mv_label_stream_type' => 'De Zoot Dahteshtrohm',
 	'mv_metavid_file' => 'Die Dattei jit et ald op hee däm Server',
+	'mv_metavid_live' => 'Ene lebändijje Dahteshtrohm opsäze',
 	'mv_upload_file' => 'Dattei huhlaade',
 	'mv_external_file' => 'En Dattei ußerhallef',
 	'mv_tool_search' => 'Sööke',
-	'mv_tool_search_title' => '
-En däm 
-stream
-söhke',
+	'mv_tool_search_title' => 'Ennerhallef vun däm Dahteshtrohm söhke',
 	'mv_search_transcripts_for' => 'Söhk en de Viddejos noh $1 (donn dä Kaßte verschteische)',
+	'mv_tool_navigate_title' => '
+Navigate
+dä jannze Dahteshtrohm',
 	'mv_tool_export' => 'Expotteere',
+	'mv_tool_export_title' => 'Dahteshtrohm-Mettadahte expoteere',
 	'mv_tool_embed' => 'Enbenge',
 	'mv_tool_embed_title' => '
 options for the current requested segment
@@ -5546,17 +5497,34 @@ Enfommazjuhne als Aanmerkunge dobei don, die nit jekallt sin.',
 	'mvd_default_mismatch_text' => 'Do es ene Fähler en Dinge Dattei met de Enshtellunge. <code lang="en">$mvMVDTypeDefaultDisp</code> sullt ene Deijl vun <code lang="en">$mvMVDTypeAllAvailable</code> sin.',
 	'mv_data_page_title' => '$1 för $2 vun $3 aan',
 	'mv_time_separator' => 'vun $1 bes $2',
-	'mv_list_streams_docu' => '
-Et jitt hee di  
-streams',
-	'mv_list_streams_none' => '
-Et jitt kei 
-streams',
-	'mvBadMVDtitle' => 'de Zoot fählt, der
-stream
-fählt, udder et Fomaat vun de Zick eß Jedreße',
-	'mvMVDFormat' => 'De MVD Tittelle sullte esu opjebout sin: 
-mvd:Zoot:stream_Name/Aanfangs_Zick/Engk_Zick',
+	'mv_list_streams' => '<i lang="en">MetaVid</i> Dahteshtröhm opleste',
+	'mv_list_streams_page' => '{{int:mv_list_streams}}',
+	'mv_list_streams_docu' => 'Et jitt hee di Dahteshtröhm',
+	'mv_list_streams_none' => 'Et jitt kei Dahteshtröhm',
+	'mvvideofeed' => '<i lang="en">MetaVid</i> Viddejo Kannal ov Enspeisung expotteere',
+	'mvexportask' => 'Semantesch Viddejo Kannal ov Enspeisung expotteere',
+	'video_feed_cat' => 'Viddejo Kannal ov Enspeisung för de Saachjropp:',
+	'mv_cat_search_note' => 'Opjepaß: Bloß de bövverschte 
+Kategorien
+wääde opjeleß.
+Öm alle Metta_Daate en 
+category
+Berette ze fenge, donn noh
+$1 söhke.',
+	'mv-category-media-count' => '
+En dä Saachjropp 
+{{PLURAL:$1|es ein 
+Mediensegment
+|sinn_er $1 
+Mediensegmente
+|kei 
+segments
+}}',
+	'mv_mvd_linkback' => 'Deil ussem Daateshtrohm $1<br />
+Jangk op di Aansech als Dahteshtrohm: $2',
+	'mvBadMVDtitle' => 'de Zoot fählt, der Dahteshtrohm fählt, udder et Fomaat vun de Zick eß Jedreße',
+	'mvMVDFormat' => "De MVD Tittelle sullte esu opjebout sin: 
+<code>mvd:''Zoot'':''Dahteshtrohm_Name''/''Aanfangs_Zick''/''Engk_Zick''</code>",
 	'mv_play' => 'Afshpelle',
 	'mv_edit' => 'Ändere',
 	'mv_history' => 'Versione',
@@ -5602,10 +5570,13 @@ fott schmiiße',
 	'mv_bill' => 'Projrammleß',
 	'mv_search_category' => 'Saachjrupp',
 	'mv_search_smw_property' => 'Semantesch Eijenschaffte',
+	'mv_search_smw_property_numeric' => 'Ene semantesche Zahle-Wäät',
 	'mv_search_and' => ', un',
 	'mv_search_or' => 'odder',
 	'mv_search_not' => 'nit',
+	'mv_search_stream_name' => 'Däm Daateshtrohm singe Name',
 	'mv_search_date_range' => 'Ene Berett vun Datte',
+	'mv_stream_name' => 'Däm Daateshtrohm singe Name',
 	'mv_date_range' => 'ene Berett vun Datte',
 	'mv_date_last_week' => 'Lez Woch',
 	'mv_category_results' => 'Jefonge Saachjroppe',
@@ -5620,15 +5591,31 @@ fott schmiiße',
 	'mv_category' => 'Saachjrupp',
 	'mv_search_no_results' => 'Kei Meedije jefonge',
 	'mv_media_matches' => 'Jefonge Meedije',
+	'mv_remove_filter' => 'Felter fottnämme',
+	'mv_advaced_search' => 'Opwändesch noh Medije Söhke',
+	'mv_expand_play' => '
+Expand 
+un {{int:Mv play inline}}',
 	'mv_play_inline' => '<i lang="en">inline</i> afshpelle',
+	'mv_view_in_stream_interface' => 'Mem Engerfäiß för Daateshtröhm beloore',
 	'mv_view_wiki_page' => 'Sigg em Wiki aanloore',
 	'mv_error_mvd_not_found' => 'Ene Fähler es opjetrodde: <i lang="en">mvd</i> nit jefonge',
 	'mv_edit_sequence' => '
 De 
 sequence
 „$1“ aam Ändere',
+	'mv_editor_options' => 'Enstellunge för et Beärbeide',
+	'mv_editor_mode' => 'Aat vum Beärbeide',
 	'mv_sequence_add_manual' => 'Övver der Name dobei donn',
+	'mv_sequence_add_manual_desc' => '
+Donn
+clips
+övver dä Dahteshtrohm-Name dobei',
 	'mv_sequence_add_search' => 'Dobei donn övver et Söhke',
+	'mv_sequence_add_search_desc' => '
+Donn
+clips
+övver et Medije-Söke derbei',
 	'mv_seq_add_end' => 'Aam Engk vun en 
 <i lang="en">sequence</i>
 dobei donn',
@@ -5644,9 +5631,27 @@ dobei donn',
 	'mv_seconds' => '{{PLURAL:$1|Ei Sekundt|$1 Sekunde|kein Sekundt}}',
 	'mv_seconds_singular' => '$1 Sekunde',
 	'mv_stream_length' => 'Dämm Viddejo sing jesampte Duuer:',
+	'mv_add_clip_by_name' => '
+Donn ene
+clip
+övver singe Name derbei',
+	'mv_stream_resource_export' => '
+Dahteshtrohm
+
+resources
+
+expotteere',
 	'mv_export_cmml' => '<code lang="en">CMML</code> äxpoteere',
+	'mv_navigate_stream' => '
+Em janze Dahteshtrohm
+navigate',
+	'mv_stream_overview' => 'Dahteshtrohm-Övverseesh',
 	'mv_edit_time' => 'De Zick ändere',
 	'mv_embed_options' => 'Ußwahle för enzebenge',
+	'mv_overlay' => '
+Overlay
+Wärkzüsh',
+	'mv_stream_tool_heading' => 'Dahteshtrohm-Wärkzüsh',
 	'mv_tool_missing' => 'dat jewönschte Werkzüch jidd et jaa nit',
 	'mv_bad_tool_request' => 'Dat es en kapodde Aanjab för enem Werkzüch singe Nahme. Dä Enndraach sullt esu sußsinn: <code>Wärkzüch-Nahme|Nahme-zom-Aanzeije</code>',
 	'mv_prev_speech' => 'De vörijje Redd: $1',
@@ -5655,16 +5660,15 @@ dobei donn',
 	'mv_next_bill' => 'De nääkßte Projrammleß: $1',
 	'mv_prev_cat' => 'Vörijje Saachjrupp: $1',
 	'mv_next_cat' => 'Näx Saachjrupp: $1',
+	'mv_search_stream' => 'Daateshtrohm söhke',
+	'mv_search_stream_title' => 'Em aktowälle Daateshtrohm söhke',
 	'mv_new_anno_en' => 'En neu Makeerung udder Aanmerkung',
 	'mv_mang_layers' => 'Nivvohs verwallde',
-	'mv_mang_layers_title' => ' Enshtellunge för de Nivoh-Aanzeije em aktoälle
-
-stream
-
-verwallde',
+	'mv_mang_layers_title' => 'Enshtellunge för de Nivoh-Aanzeije em aktoälle Dahteshtrohm verwallde',
 	'mv_protect_source_material' => 'Ojinaal Quell - dat Matrijaal es för em Verändere jeschöz!',
 	'right-mv_delete_mvd' => 'Donn de <i lang="en">MetaVid</i> Mettadaate fott schmiiße',
 	'action-mv_delete_mvd' => 'donn dat Schtök us de  <i lang="en">MetaVid</i> Mettadaate fott schmiiße',
+	'right-mv_edit_stream' => 'Dahteshtrohm-Datteije beärbeide',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -6174,6 +6178,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Purodha
  * @author SPQRobin
  * @author Siebrand
  * @author Tvdm
@@ -6283,7 +6288,6 @@ Alle wijzigingen worden ongedaan gemaakt.',
 	'cut_clip' => 'Clips uitsnijden',
 	'expand_track' => 'Track uitvouwen',
 	'colapse_track' => 'Track inklappen',
-	'play_clip' => 'Afspelen vanaf positie',
 	'pixle2sec' => 'pixels naar seconden',
 	'rmclip' => 'Clip verwijderen',
 	'clip_in' => 'clip toevoegen',
@@ -6514,7 +6518,7 @@ Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
 	'mv_edit_time' => 'Bewerkingstijd',
 	'mv_embed_options' => 'Embedinstellingen',
 	'mv_overlay' => 'Overlay-instellingen',
-	'mv_stream_tool_heading' => 'Extra',
+	'mv_stream_tool_heading' => 'Streamhulpmiddelen',
 	'mv_tool_missing' => 'het hulpmiddel uit de opdracht bestaat niet',
 	'mv_bad_tool_request' => 'Onjuiste invoer voor hulpmiddel. Deze hoort in de volgende vorm: hulpmiddelnaam|weer_te_geven_hulpmiddelnaam',
 	'mv_prev_speech' => 'Vorige toespraak: $1',
@@ -8739,6 +8743,7 @@ $messages['su'] = array(
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
+ * @author Purodha
  */
 $messages['sv'] = array(
 	'metavid' => 'Metavid-sida',
@@ -8826,7 +8831,7 @@ $mvMVDTypeDefaultDisp borde vara ett undersätt av $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 för $2 från $3',
 	'mv_time_separator' => '$1 till $2',
 	'mv_list_streams' => 'Metavid listar dataflöder',
-	'mv_list_streams_page' => 'Mv listar dataflöden',
+	'mv_list_streams_page' => 'MetaVid listar dataflöden',
 	'mv_list_streams_docu' => 'Följande dataflöden finns:',
 	'mv_list_streams_none' => 'Inga dataflöden finns',
 	'mvvideofeed' => 'Metavid exportering av videokälla',

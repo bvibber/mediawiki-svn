@@ -45,11 +45,16 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Darth Kule
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'closewikis-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'closewikis-page-close-wiki' => '{{Identical/Wiki}}',
+	'closewikis-page-reopen-wiki' => '{{Identical/Wiki}}',
+	'closewikis-page-reopen-reason' => '{{Identical/Reason}}',
+	'closewikis-list-header-wiki' => '{{Identical/Wiki}}',
 	'right-editclosedwikis' => '{{doc-right}}',
 );
 
@@ -119,6 +124,13 @@ $messages['arz'] = array(
 	'closewikis-log-reopen' => 'أعاد فتح $2',
 	'right-editclosedwikis' => 'تعديل الويكيات المغلقة',
 	'right-closewikis' => 'إغلاق الويكيات',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'closewikis-page-reopen-reason' => 'Прычына:',
 );
 
 /** Bulgarian (Български)
@@ -679,6 +691,40 @@ $messages['ia'] = array(
 	'closewikis-log-reopen' => 'reaperiva $2',
 	'right-editclosedwikis' => 'Modificar wikis claudite',
 	'right-closewikis' => 'Clauder wikis',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'closewikis-desc' => 'Mengijinkan penutupan situs wiki di sebuah lahan wiki',
+	'closewikis-page' => 'Tutup wiki',
+	'closewikis-page-close' => 'Tutup wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Alasan (ditampilkan):',
+	'closewikis-page-close-reason' => 'Alasan (dicatat log):',
+	'closewikis-page-close-submit' => 'Tutup',
+	'closewikis-page-close-success' => 'Wiki ditutup dengan sukses',
+	'closewikis-page-reopen' => 'Buka ulang wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Alasan:',
+	'closewikis-page-reopen-submit' => 'Buka kembali',
+	'closewikis-page-reopen-success' => 'Wiki dibuka kembali dengan sukses',
+	'closewikis-page-err-nowiki' => 'Wiki tidak sah',
+	'closewikis-page-err-closed' => 'Wiki telah ditutup',
+	'closewikis-page-err-opened' => 'Wiki tidak ditutup',
+	'closewikis-list' => 'Daftar wiki yang ditutup',
+	'closewikis-list-intro' => 'Daftar ini adalah wiki-wiki yang ditutup oleh pengelola.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Ditutup oleh',
+	'closewikis-list-header-timestamp' => 'Ditutup pada',
+	'closewikis-list-header-dispreason' => 'Alasan yang ditampilkan',
+	'closewikis-log' => 'Log penutupan wiki',
+	'closewikis-log-header' => 'Daftar ini adalah log penutupan dan pembukaan ulang wiki oleh pengelola.',
+	'closewikis-log-close' => 'ditutup $2',
+	'closewikis-log-reopen' => 'dibuka ulang $2',
+	'right-editclosedwikis' => 'Sunting wiki yang ditutup',
+	'right-closewikis' => 'Tutup wiki',
 );
 
 /** Italian (Italiano)

@@ -61,9 +61,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  */
 $messages['fi'] = array(
-	'clientside-desc' => 'Tarjoaa HTML:n, CSS:n ja JavaScriptin tapaisiin klientti-puolen formaattien muotoon koodaavat toiminnot',
+	'clientside-desc' => 'Tarjoaa toimintoja tuottaa asiakaspuolen koodia, kuten HTML, CSS ja JavaScript.',
 );
 
 /** French (Français)

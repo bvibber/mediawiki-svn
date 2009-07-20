@@ -46,6 +46,21 @@ $messages['qqq'] = array(
 * $2 is the number of pages in the previous column',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'cooperationstatistics' => 'Статыстыка супрацоўніцтва',
+	'cooperationstatistics-tablearticle' => 'Лічыльнік старонак',
+	'cooperationstatistics-tablevalue' => 'Колькасьць рэдактараў',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|старонка|старонкі|старонак}}',
+	'cooperationstatistics-nbusers' => 'мае $1 {{PLURAL:$1|рэдактара|рэдактараў|рэдактараў}}',
+	'cooperationstatistics-nblessusers' => 'мае $1 ці меней рэдактараў',
+	'cooperationstatistics-nbmoreusers' => 'мае $1 ці болей рэдактараў',
+	'cooperationstatistics-legendmore' => 'ці болей рэдактараў.',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -61,7 +76,7 @@ Voyez aussi les [[Special:MostRevisors|'''pages avec le plus de relecteurs''']] 
 	'cooperationstatistics-nbusers' => 'ont $1 éditeurs',
 	'cooperationstatistics-nblessusers' => 'ont $1 éditeurs ou moins',
 	'cooperationstatistics-nbmoreusers' => 'ont $1 éditeurs ou moins',
-	'cooperationstatistics-legendmore' => "  ou plus d'éditeurs.",
+	'cooperationstatistics-legendmore' => "ou plus d'éditeurs.",
 );
 
 /** Galician (Galego)
@@ -80,7 +95,7 @@ Olle tamén as [[Special:MostRevisors|'''páxinas con máis revisores''']] e as 
 	'cooperationstatistics-nbusers' => 'ten $1 editores',
 	'cooperationstatistics-nblessusers' => 'ten $1 ou menos editores',
 	'cooperationstatistics-nbmoreusers' => 'ten $1 ou máis editores',
-	'cooperationstatistics-legendmore' => '  ou máis editores.',
+	'cooperationstatistics-legendmore' => 'ou máis editores.',
 );
 
 /** Swiss German (Alemannisch)
@@ -98,7 +113,58 @@ Luege au d [[Special:MostRevisors|'''Syte mit dr meischte Bearbeiter''']] un d [
 	'cooperationstatistics-nbusers' => 'hän $1 Bearbeiter',
 	'cooperationstatistics-nblessusers' => 'hän $1 oder weniger Bearbeiter',
 	'cooperationstatistics-nbmoreusers' => 'hän $1 oder meh Bearbeiter',
-	'cooperationstatistics-legendmore' => ' oder meh Bearbeiter',
+	'cooperationstatistics-legendmore' => 'oder meh Bearbeiter',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'cooperationstatistics' => 'Kooperaciska statistika',
+	'cooperationstatistics-desc' => '[[Special:CooperationStatistics|Kooperacisku statistiku wo hłownym mjenowym rumje]] pokazać.',
+	'cooperationstatistics-text' => "Kooperacisku statistiku wo hłownym mjenowym rumje pokazać.
+Z [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] do [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] kontrolerow.<br />
+Hlej tež [[Special:MostRevisors|'''strony z najwjace kontrolerami''']] a [[Special:MostRevisions|strony z najwjace wersijemi]].",
+	'cooperationstatistics-tablearticle' => 'Ličenje stronow',
+	'cooperationstatistics-tablevalue' => 'Ličba wobdźěłarjow',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|strona|stronje|strony|stronow}}',
+	'cooperationstatistics-nbusers' => 'maja $1 {{PLURAL:$1|wobdźěłarja|wobdźěłarjow|wobdźěłarjow|wobdźěłarjow}}',
+	'cooperationstatistics-nblessusers' => 'maja $1 {{PLURAL:$1|wobdźěłarja|wobdźěłarjow|wobdźěłarjow|wobdźěłarjow}} abo mjenje',
+	'cooperationstatistics-nbmoreusers' => 'maja $1 {{PLURAL:$1|wobdźěłarja|wobdźěłarjow|wobdźěłarjow|wobdźěłarjow}} abo wjace',
+	'cooperationstatistics-legendmore' => 'abo wjace wobdźěłarjow.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'cooperationstatistics' => 'Statisticas de cooperation',
+	'cooperationstatistics-desc' => 'Monstra [[Special:CooperationStatistics|statisticas de cooperation in le spatio de nomines principal]].',
+	'cooperationstatistics-text' => "Monstra statisticas de cooperation in le spatio de nomines principal.
+De [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] a[[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] contributores.<br />
+Vide etiam le [[Special:MostRevisors|'''paginas con le plus contributores''']] e le [[Special:MostRevisions|paginas con le plus versiones]].",
+	'cooperationstatistics-tablearticle' => 'Numero de paginas',
+	'cooperationstatistics-tablevalue' => 'Numero de contributores',
+	'cooperationstatistics-articles' => '$1 paginas',
+	'cooperationstatistics-nbusers' => 'ha $1 contributores',
+	'cooperationstatistics-nblessusers' => 'ha $1 contributores o minus',
+	'cooperationstatistics-nbmoreusers' => 'ha $1 contributores o plus',
+	'cooperationstatistics-legendmore' => 'o plus contributores.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'cooperationstatistics' => 'Statistik kerjasama',
+	'cooperationstatistics-desc' => 'Menampilkan [[Special:CooperationStatistics|statistik kerjasama di ruang nama utama]].',
+	'cooperationstatistics-tablearticle' => 'Jumlah halaman',
+	'cooperationstatistics-tablevalue' => 'Jumlah penyunting',
+	'cooperationstatistics-articles' => '$1 halaman',
+	'cooperationstatistics-nbusers' => 'punya $1 penyunting',
+	'cooperationstatistics-nblessusers' => 'punya kurang dari $1 penyunting',
+	'cooperationstatistics-nbmoreusers' => 'punya lebih dari $1 penyunting',
+	'cooperationstatistics-legendmore' => 'penyunting atau lebih.',
 );
 
 /** Italian (Italiano)
@@ -116,13 +182,17 @@ Consultare anche le [[Special:MostRevisors|'''pagine con più revisori''']] e le
 	'cooperationstatistics-nbusers' => 'hanno $1 autori',
 	'cooperationstatistics-nblessusers' => 'hanno $1 autori o meno',
 	'cooperationstatistics-nbmoreusers' => 'hanno $1 autori o più',
-	'cooperationstatistics-legendmore' => ' o più autori.',
+	'cooperationstatistics-legendmore' => 'o più autori.',
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'cooperationstatistics' => '協力状況',
+	'cooperationstatistics-desc' => '[[Special:CooperationStatistics|標準名前空間における編集協力の状況]]を表示する。',
+	'cooperationstatistics-text' => "標準名前空間における編集協力の状況を表示する。編集者が[[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]]から[[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}人以上]]までのページ。<br />[[Special:MostRevisors|'''最も編集者の多いページ''']]および[[Special:MostRevisions|最も版の多いページ]]も参照してください。",
 	'cooperationstatistics-tablearticle' => '合計ページ数',
 	'cooperationstatistics-tablevalue' => '編集者の人数',
 	'cooperationstatistics-articles' => '$1ページ',
@@ -143,11 +213,11 @@ Vun [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperation
 Loor och  noh de [[Special:MostRevisors|'''Sigge met de miehßte Schriiver''']] un de [[Special:MostRevisions|Sigge met de miehßte Änderunge]].",
 	'cooperationstatistics-tablearticle' => 'Aanzahl Sigge',
 	'cooperationstatistics-tablevalue' => 'Aanzahl Schriiver',
-	'cooperationstatistics-articles' => '$1 Sigge',
-	'cooperationstatistics-nbusers' => 'han $1 Schriever',
-	'cooperationstatistics-nblessusers' => 'han $1 udder winnijer Schriever',
-	'cooperationstatistics-nbmoreusers' => 'han $1 udder mieh Schriever',
-	'cooperationstatistics-legendmore' => ' udder mieh Schriiver.',
+	'cooperationstatistics-articles' => '{{PLURAL:$1|Ein Sigg hät|$1 Sigge han|Kei Sigg hät}}',
+	'cooperationstatistics-nbusers' => ' $1 Schriever',
+	'cooperationstatistics-nblessusers' => ' $1 udder winnijer Schriever',
+	'cooperationstatistics-nbmoreusers' => ' $1 udder mieh Schriever',
+	'cooperationstatistics-legendmore' => 'udder mieh Schriiver.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -165,7 +235,21 @@ Kuckt och d'[[Special:MostRevisors|'''Säite mat de meeschte Reviseuren''']] an 
 	'cooperationstatistics-nbusers' => 'hunn $1 Editeuren',
 	'cooperationstatistics-nblessusers' => 'hunn $1 oder manner Editeuren',
 	'cooperationstatistics-nbmoreusers' => 'hunn $1 oder méi Editeuren',
-	'cooperationstatistics-legendmore' => '  oder méi Editeuren.',
+	'cooperationstatistics-legendmore' => 'oder méi Editeuren.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'cooperationstatistics' => 'Samenwerkingsstatistieken',
+	'cooperationstatistics-tablearticle' => "Aantal pagina's",
+	'cooperationstatistics-tablevalue' => 'Aantal bewerkers',
+	'cooperationstatistics-articles' => "$1 {{PLURAL:$1|pagina|pagina's}}",
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|heeft}} $1 {{PLURAL:$1|bewerker|bewerkers}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|heeft}} $1 {{PLURAL:$1|bewerker|of minder bewerkers}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|heeft}} $1 of meer bewerkers',
+	'cooperationstatistics-legendmore' => 'of meer bewerkers.',
 );
 
 /** Occitan (Occitan)
@@ -183,21 +267,25 @@ Vejatz tanben las [[Special:MostRevisors|'''paginas amb lo mai de relectors''']]
 	'cooperationstatistics-nbusers' => 'an $1 editors',
 	'cooperationstatistics-nblessusers' => 'an $1 editors o mens',
 	'cooperationstatistics-nbmoreusers' => 'an $1 editors o mens',
-	'cooperationstatistics-legendmore' => "  o mai d'editors.",
+	'cooperationstatistics-legendmore' => "o mai d'editors.",
 );
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'cooperationstatistics' => 'Статистика сотрудничества',
 	'cooperationstatistics-desc' => 'Показывает [[Special:CooperationStatistics|статистику сотрудничества в основном пространстве имён]].',
-	'cooperationstatistics-tablearticle' => 'Счётчик страниц',
+	'cooperationstatistics-text' => "Показать статистику сотрудничества в основном пространстве имён.
+От [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] до [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] редакторов.<br />
+См. также [[Special:MostRevisors|'''страницы с наибольшим количеством редакторов''']] и [[Special:MostRevisions|страницы с наибольшим количеством редакций]].",
+	'cooperationstatistics-tablearticle' => 'Число страниц',
 	'cooperationstatistics-tablevalue' => 'Число редакторов',
 	'cooperationstatistics-articles' => '$1 страниц',
 	'cooperationstatistics-nbusers' => 'имеет $1 редакторов',
 	'cooperationstatistics-nblessusers' => 'имеет $1 или меньше редакторов',
 	'cooperationstatistics-nbmoreusers' => 'имеет $1 или больше редакторов',
-	'cooperationstatistics-legendmore' => '  или больше редакторов.',
+	'cooperationstatistics-legendmore' => 'или больше редакторов.',
 );
 

@@ -487,6 +487,37 @@ $messages['ia'] = array(
 	'tog-riched_toggle_remember_state' => 'Memorar le ultime selection de editor',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'fckeditor-desc' => 'Mengijinkan penyuntingan menggunakan penyunting WYSIWYG FCKeditor',
+	'textrichditor' => 'Penyunting Kaya',
+	'prefs-fckeditor' => 'Penyunting Kaya',
+	'tog-riched_disable' => 'Matikan penyunting kaya',
+	'tog-riched_disable_ns_main' => 'Matikan penyunting kaya di dalam ruang nama utama',
+	'tog-riched_disable_ns_talk' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:talk}}"',
+	'tog-riched_disable_ns_user' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:user}}"',
+	'tog-riched_disable_ns_user_talk' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:user_talk}}"',
+	'tog-riched_disable_ns_project' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:project}}"',
+	'tog-riched_disable_ns_project_talk' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:project_talk}}"',
+	'tog-riched_disable_ns_image' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:file}}"',
+	'tog-riched_disable_ns_image_talk' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:file_talk}}"',
+	'tog-riched_disable_ns_mediawiki' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:mediawiki}}"',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:mediawiki_talk}}"',
+	'tog-riched_disable_ns_template' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:template}}"',
+	'tog-riched_disable_ns_template_talk' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:template_talk}}"',
+	'tog-riched_disable_ns_help' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:help}}"',
+	'tog-riched_disable_ns_help_talk' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:help_talk}}"',
+	'tog-riched_disable_ns_category' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:category}}"',
+	'tog-riched_disable_ns_category_talk' => 'Matikan penyunting kaya di dalam ruang nama "{{ns:category_talk}}"',
+	'rich_editor_new_window' => 'Buka penyunting kaya lewat jendela baru',
+	'tog-riched_start_disabled' => 'Mulai dengan penyunting kaya dimatikan',
+	'tog-riched_use_popup' => 'Buka penyunting kaya lewat pop-up',
+	'tog-riched_use_toggle' => 'Gunakan tuas untuk mengganti antara wikiteks dan penyunting kaya (ganti textarea dengan penyunting kaya)',
+	'tog-riched_toggle_remember_state' => 'Ingat keadaan tuas terakhir',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

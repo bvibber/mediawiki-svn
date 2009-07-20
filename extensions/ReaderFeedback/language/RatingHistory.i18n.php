@@ -269,6 +269,13 @@ In der folgenden Grafik wird die '''Anzahl Bewertungen pro Tag''' <font color=\"
 	'right-feedback' => 'Bewerten einer Seite',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Pill
+ */
+$messages['de-formal'] = array(
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Danke, dass Sie sich für die Bewertung dieser Seite einen Moment Zeit genommen haben!</font>''",
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -79,9 +79,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  */
 $messages['fi'] = array(
-	'pipeescape-desc' => 'Parser toiminto <code>#!</code> Kun haluat "|" -merkin olevan vain "|" -merkin',
+	'pipeescape-desc' => 'Jäsentimen toiminto <code>#!</code>, kun haluat putkimerkin olevan vain putkimerkki.',
 );
 
 /** French (Français)
