@@ -7,7 +7,7 @@
 # fallback array. English is default!
 # (although it's always nice to specify)
 # if set to false, there is no fallback
-$fallback=array(
+$fallback = array(
 	'en'  => false,
 	'af'  => 'en',
 	'ar'  => 'en',
@@ -78,84 +78,84 @@ $fallback=array(
 );
 
 # is this language rtl or ltr? assumes ltr as default
-$direction=array(
-	"ar"=>"rtl"
+$direction = array(
+	"ar" => "rtl"
 );
 
 # Words starting with '%' (ie %action, or %questions_total) are
 # "variable names", for use by the program. Don't translate those!
 
-$messages=array();
+$messages = array();
 
 /** English */
 $messages['en'] = array(
-	"voctrain_Hello_World"=>"HELLO WIKI!",
-	"voctrain_Permission_Denied"=>"Permission Denied",
-	"voctrain_try_again_"=>"try again?",
-	"voctrain_Action_unknown"=>"Action unknown",
+	"voctrain_Hello_World" => "HELLO WIKI!",
+	"voctrain_Permission_Denied" => "Permission Denied",
+	"voctrain_try_again_" => "try again?",
+	"voctrain_Action_unknown" => "Action unknown",
 	"voctrain_I_don_t_know_what_to_do_with_action_" =>
 		"I don't know what to do with '%action'.",
 	"voctrain_User_added" => "User added",
-	"voctrain_Hello_username_welcome_to_the_omega_language_trainer" => 
+	"voctrain_Hello_username_welcome_to_the_omega_language_trainer" =>
 		"Hello, %username, welcome to the omega language trainer",
-	"voctrain_continue"=>"continue",
-	"voctrain_hello_place"=>"hello there %place",
-	"voctrain_bye"=>"goodbye",
-	"voctrain_Set_up_your_exercise"=>"Set up your exercise",
-	"voctrain_Number_of_questions"=>"Number of questions",
-	"voctrain_Languages"=>"Languages",
-	"voctrain_Please_specify_the_languages_you_want_to_test_in"=>"Please specify the languages you want to test in",
-	"voctrain_eg_eng_for_English_deu_for_Deutch_German_"=>"(eg, eng for English, deu for German).",
-	"voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_"=>"Depending on your test set, some combinations might work better than others.",
-	"voctrain_Questions"=>"Questions",
-	"voctrain_Answers"=>"Answers",
-	"voctrain_start_exercise"=>"start exercise",
-	"voctrain_collection"=>"collection",
-	"voctrain_ISO_639_3_format"=>"ISO-639-3 format",
-	"voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_"=>"There are %questions_remaining questions remaining, out of a total of %questions_total.",
-	"voctrain_Definition"=>"Definition",
-	"voctrain_Dictionary_definition_to_help_you"=>"Dictionary definition to help you",
-	"voctrain_Word"=>"Word",
-	"voctrain_Please_type_your_answer_here"=>"Please type your answer here",
-	"voctrain_submit_answer"=>"submit answer",
-	"voctrain_peek"=>"peek",
-	"voctrain_skip"=>"skip",
-	"voctrain_I_know_it_do_not_ask_again"=>"I know it/do not ask again",
-	"voctrain_abort_exercise"=>"abort exercise",
-	"voctrain_list_answers"=>"list answers",
-	"voctrain_Question"=>"Question",
-	"voctrain_The_word_to_translate"=>"The word to translate",
-	"voctrain_Answer"=>"Answer",
-	"voctrain_one_of"=>"one of",
-	"voctrain_list_of_questions_and_answers"=>"list of questions and answers",
-	"voctrain_Answer_s_"=>"Answer(s)",
-	"voctrain_logout"=>"logout",
-	"voctrain_Powered_by"=>"Powered by",
-	"voctrain_Omegawiki"=>"Omegawiki",
-	"voctrain_Exercise_complete"=>"Exercise complete",
-	"voctrain_Exercise_terminated"=>"Exercise terminated",
-	"voctrain_Start_a_new_exercise"=>"Start a new exercise",
-	"voctrain_User_name"=>"User name",
-	"voctrain_Password"=>"Password",
-	"voctrain_Login"=>"Login",
-	"voctrain_Create_new_user"=>"Create new user",
-	"voctrain_Switch_language"=>"Switch language",
-	"voctrain_Language"=>"Language",
-	"voctrain_Log_in"=>"Log in",
-	"voctrain_Omegawiki_vocabulary_trainer"=>"Omegawiki vocabulary trainer",
-	"voctrain_Definitions"=>"Definitions",
-	"voctrain_Could_not_create_new_user"=>"Could not create new user",
-	"voctrain_Type_a_username_and_optional_password_or_try_a_different_username_"=>"Type a username and optional password, (or try a different username)",
-	"voctrain_Vocview"=>"Vocabulary viewer",
-	"voctrain_Dictionary_definitions"=> "dictionary_definitions",
-	"voctrain_Translation"=> "Translation",
-	"voctrain_unhide_definition"=>"unhide definition",
-	"voctrain_unhide_words"=>"unhide words",
-	"voctrain_hiding"=>"Hiding",
-	"voctrain_hide_definitions_in_question_language"=>"Hide definitions in question language",
-	"voctrain_hide_words_in_question_language"=>"Hide words in question language",
-	"voctrain_Separate_values_by_commas_to_use_multiple_languages_"=>"Separate values by commas to use multiple languages.",
-	"voctrain_other"=>"other"
+	"voctrain_continue" => "continue",
+	"voctrain_hello_place" => "hello there %place",
+	"voctrain_bye" => "goodbye",
+	"voctrain_Set_up_your_exercise" => "Set up your exercise",
+	"voctrain_Number_of_questions" => "Number of questions",
+	"voctrain_Languages" => "Languages",
+	"voctrain_Please_specify_the_languages_you_want_to_test_in" => "Please specify the languages you want to test in",
+	"voctrain_eg_eng_for_English_deu_for_Deutch_German_" => "(eg, eng for English, deu for German).",
+	"voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_" => "Depending on your test set, some combinations might work better than others.",
+	"voctrain_Questions" => "Questions",
+	"voctrain_Answers" => "Answers",
+	"voctrain_start_exercise" => "start exercise",
+	"voctrain_collection" => "collection",
+	"voctrain_ISO_639_3_format" => "ISO-639-3 format",
+	"voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_" => "There are %questions_remaining questions remaining, out of a total of %questions_total.",
+	"voctrain_Definition" => "Definition",
+	"voctrain_Dictionary_definition_to_help_you" => "Dictionary definition to help you",
+	"voctrain_Word" => "Word",
+	"voctrain_Please_type_your_answer_here" => "Please type your answer here",
+	"voctrain_submit_answer" => "submit answer",
+	"voctrain_peek" => "peek",
+	"voctrain_skip" => "skip",
+	"voctrain_I_know_it_do_not_ask_again" => "I know it/do not ask again",
+	"voctrain_abort_exercise" => "abort exercise",
+	"voctrain_list_answers" => "list answers",
+	"voctrain_Question" => "Question",
+	"voctrain_The_word_to_translate" => "The word to translate",
+	"voctrain_Answer" => "Answer",
+	"voctrain_one_of" => "one of",
+	"voctrain_list_of_questions_and_answers" => "list of questions and answers",
+	"voctrain_Answer_s_" => "Answer(s)",
+	"voctrain_logout" => "logout",
+	"voctrain_Powered_by" => "Powered by",
+	"voctrain_Omegawiki" => "Omegawiki",
+	"voctrain_Exercise_complete" => "Exercise complete",
+	"voctrain_Exercise_terminated" => "Exercise terminated",
+	"voctrain_Start_a_new_exercise" => "Start a new exercise",
+	"voctrain_User_name" => "User name",
+	"voctrain_Password" => "Password",
+	"voctrain_Login" => "Login",
+	"voctrain_Create_new_user" => "Create new user",
+	"voctrain_Switch_language" => "Switch language",
+	"voctrain_Language" => "Language",
+	"voctrain_Log_in" => "Log in",
+	"voctrain_Omegawiki_vocabulary_trainer" => "Omegawiki vocabulary trainer",
+	"voctrain_Definitions" => "Definitions",
+	"voctrain_Could_not_create_new_user" => "Could not create new user",
+	"voctrain_Type_a_username_and_optional_password_or_try_a_different_username_" => "Type a username and optional password, (or try a different username)",
+	"voctrain_Vocview" => "Vocabulary viewer",
+	"voctrain_Dictionary_definitions" => "dictionary_definitions",
+	"voctrain_Translation" => "Translation",
+	"voctrain_unhide_definition" => "unhide definition",
+	"voctrain_unhide_words" => "unhide words",
+	"voctrain_hiding" => "Hiding",
+	"voctrain_hide_definitions_in_question_language" => "Hide definitions in question language",
+	"voctrain_hide_words_in_question_language" => "Hide words in question language",
+	"voctrain_Separate_values_by_commas_to_use_multiple_languages_" => "Separate values by commas to use multiple languages.",
+	"voctrain_other" => "other"
 );
 
 /** Message documentation (Message documentation)

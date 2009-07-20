@@ -1,5 +1,5 @@
 <?php
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * A Special Page extension to copy defined meanings between datasets.
  * 
@@ -22,11 +22,11 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 function wfSpecialCopy() {
-	require_once("Wikidata.php");
-	require_once("WikiDataAPI.php");
-	require_once("Utilities.php");
-	require_once("DefinedMeaningModel.php");
-	require_once("Copy.php");
+	require_once( "Wikidata.php" );
+	require_once( "WikiDataAPI.php" );
+	require_once( "Utilities.php" );
+	require_once( "DefinedMeaningModel.php" );
+	require_once( "Copy.php" );
 	class SpecialCopy extends UnlistedSpecialPage {
 
 		function SpecialCopy() {
@@ -35,25 +35,25 @@ function wfSpecialCopy() {
 		function execute( $par ) {
 			global $wgOut, $wgRequest, $wgUser, $wdTermDBDataSet;
 
-			#$wgOut->setPageTitle("Special:Copy");
-			if(!$wgUser->isAllowed('wikidata-copy')) {
+			# $wgOut->setPageTitle("Special:Copy");
+			if ( !$wgUser->isAllowed( 'wikidata-copy' ) ) {
 
-				$wgOut->addHTML(wfMsgSc("Permission_denied"));
+				$wgOut->addHTML( wfMsgSc( "Permission_denied" ) );
 				return false;
 			}
 
-			$action=$wgRequest->getText('action');
-			if(!$action) {
+			$action = $wgRequest->getText( 'action' );
+			if ( !$action ) {
 				$this->ui();
-			} elseif ($action=="copy") {
+			} elseif ( $action == "copy" ) {
 				$this->copy_by_param();
-			} elseif ($action=="list") {
+			} elseif ( $action == "list" ) {
 				$this->list_sets();
-			} elseif ($action=="help"){
+			} elseif ( $action == "help" ) {
 				$this->help();
 			} else {
-				$wgOut->addWikiText(wfMsgSc("no_action_specified",$action));	
-				$wgOut->addWikiText(wfMsgSc("copy_help"));
+				$wgOut->addWikiText( wfMsgSc( "no_action_specified", $action ) );
+				$wgOut->addWikiText( wfMsgSc( "copy_help" ) );
 			}
 		}
 
@@ -61,7 +61,7 @@ function wfSpecialCopy() {
 		protected function ui() {
 
 			global $wgOut ;
-			$wgOut->addWikiText(wfMsgSc("no_action_specified"));
+			$wgOut->addWikiText( wfMsgSc( "no_action_specified" ) );
 
 		}
 
@@ -70,45 +70,45 @@ function wfSpecialCopy() {
 		 */
 		protected function help() {
 			global $wgOut;
-			$wgOut->addWikiText("<h2>Help</h2>");
-			$wgOut->addWikiText(wfMsgSc("copy_help"));
+			$wgOut->addWikiText( "<h2>Help</h2>" );
+			$wgOut->addWikiText( wfMsgSc( "copy_help" ) );
 		}
 		
 		/**read in and partially validate parameters,
 		 * then call _doCopy()
 		 */
 		protected function copy_by_param() {
-			global 
+			global
 				$wgRequest, $wgOut;
 			
-			$dmid_dirty=$wgRequest->getText("dmid");
-			$dc1_dirty=$wgRequest->getText("dc1");
-			$dc2_dirty=$wgRequest->getText("dc2");	
+			$dmid_dirty = $wgRequest->getText( "dmid" );
+			$dc1_dirty = $wgRequest->getText( "dc1" );
+			$dc2_dirty = $wgRequest->getText( "dc2" );
 
-			$abort=false; 	# check all input before aborting
+			$abort = false; 	# check all input before aborting
 
-			if (is_null($dmid_dirty)) {
-				$wgOut->addWikiText(wfMsgSc("please_provide_dmid"));
-				$abort=true;
+			if ( is_null( $dmid_dirty ) ) {
+				$wgOut->addWikiText( wfMsgSc( "please_provide_dmid" ) );
+				$abort = true;
 			}
-			if (is_null($dc1_dirty)) {
-				$wgOut->addWikiText(wfMsgSc("please_provide_dc1"));
-				$abort=true;
+			if ( is_null( $dc1_dirty ) ) {
+				$wgOut->addWikiText( wfMsgSc( "please_provide_dc1" ) );
+				$abort = true;
 			}
-			if (is_null($dc2_dirty)) {
-				$wgOut->addWikiText(wfMsgSc("please_provide_dc2"));
-				$abort=true;
+			if ( is_null( $dc2_dirty ) ) {
+				$wgOut->addWikiText( wfMsgSc( "please_provide_dc2" ) );
+				$abort = true;
 			}
 
-			if ($abort)
+			if ( $abort )
 				return;
 
-			#seems ok so far, let's try and copy.
-			$success=$this->_doCopy($dmid_dirty, $dc1_dirty, $dc2_dirty);
-			if ($success)
+			# seems ok so far, let's try and copy.
+			$success = $this->_doCopy( $dmid_dirty, $dc1_dirty, $dc2_dirty );
+			if ( $success )
 				$this->autoredir();
 			else
-				$wgOut->addWikiText(wfMsgSc("copy_unsuccessful"));
+				$wgOut->addWikiText( wfMsgSc( "copy_unsuccessful" ) );
 		}
 
 		/** automatically redirects to another page.
@@ -117,55 +117,55 @@ function wfSpecialCopy() {
 		protected function autoredir() {
 			global $wgOut, $wgRequest;
 
-			$dmid_dirty=$wgRequest->getText("dmid");	
-			$dc1_dirty=$wgRequest->getText("dc1");	
-			$dc2_dirty=$wgRequest->getText("dc2");	
+			$dmid_dirty = $wgRequest->getText( "dmid" );
+			$dc1_dirty = $wgRequest->getText( "dc1" );
+			$dc2_dirty = $wgRequest->getText( "dc2" );
 
 			# Where should we redirect to?
-			$meanings=getDefinedMeaningDataAssociatedByConcept($dmid_dirty, $dc1_dirty);
-			$targetdmm=$meanings[$dc2_dirty];
-			$title=$targetdmm->getTitleObject();
-			$url=$title->getLocalURL("dataset=$dc2_dirty&action=edit");
+			$meanings = getDefinedMeaningDataAssociatedByConcept( $dmid_dirty, $dc1_dirty );
+			$targetdmm = $meanings[$dc2_dirty];
+			$title = $targetdmm->getTitleObject();
+			$url = $title->getLocalURL( "dataset=$dc2_dirty&action=edit" );
 
 			# do the redirect
 			$wgOut->disable();
-			header('Location: '.$url);
-			#$wgOut->addHTML("<a href=\"$url\">$url</a>");
+			header( 'Location: ' . $url );
+			# $wgOut->addHTML("<a href=\"$url\">$url</a>");
 		}
 
 
 		/* Using Copy.php; perform a copy of a defined meaning from one dataset to another,
 		   provided the user has permission to do so,*/
-		protected function _doCopy($dmid_dirty, $dc1_dirty, $dc2_dirty) {
-			global 
+		protected function _doCopy( $dmid_dirty, $dc1_dirty, $dc2_dirty ) {
+			global
 				$wgCommunityEditPermission, $wgOut, $wgUser, $wgCommunity_dc;
 			
 			# escape parameters
-			$dmid=mysql_real_escape_string($dmid_dirty);
-			$dc1=mysql_real_escape_string($dc1_dirty);
-			$dc2=mysql_real_escape_string($dc2_dirty);
+			$dmid = mysql_real_escape_string( $dmid_dirty );
+			$dc1 = mysql_real_escape_string( $dc1_dirty );
+			$dc2 = mysql_real_escape_string( $dc2_dirty );
 
 			# check permission
-			if (!($wgUser->isAllowed('wikidata-copy')) or $dc2!=$wgCommunity_dc) {
-				$wgOut->addHTML(wfMsgSc("Permission_denied"));
+			if ( !( $wgUser->isAllowed( 'wikidata-copy' ) ) or $dc2 != $wgCommunity_dc ) {
+				$wgOut->addHTML( wfMsgSc( "Permission_denied" ) );
 				return false; # we didn't perform the copy.
 			}
 
 			# copy
-			CopyTools::newCopyTransaction($dc1, $dc2);
-			$dmc=new DefinedMeaningCopier($dmid, $dc1, $dc2);
-			$dmc->dup(); 
+			CopyTools::newCopyTransaction( $dc1, $dc2 );
+			$dmc = new DefinedMeaningCopier( $dmid, $dc1, $dc2 );
+			$dmc->dup();
 
 			# For purposes of current "edit copy", 
 			# having the dm be already_there() is ok.
 			# (hence commented out)
-			#if ($dmc->already_there() ) {
+			# if ($dmc->already_there() ) {
 			#	$wgOut->addHTML(wfMsgSc("already_there"));
 			#	return false;
-			#}
+			# }
 
 			return true; # seems everything went ok.
-	
+
 		}
 	}
 	SpecialPage::addPage( new SpecialCopy );
