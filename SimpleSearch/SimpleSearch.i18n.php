@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'simplesearch-search' => 'Search',
 );
 
+/** Message documentation (Message documentation)
+ * @author Bennylin
+ */
+$messages['qqq'] = array(
+	'simplesearch-search' => '{{Identical/Search}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -25,6 +32,15 @@ $messages['be-tarask'] = array(
 	'simplesearch' => 'Просты пошук',
 	'simplesearch-desc' => 'Дадае дадатковыя магчымасьці да спрошчанага пошуку ў афармленьні «Вэктар»',
 	'simplesearch-search' => 'Пошук',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'simplesearch' => 'Jednostavna pretraga',
+	'simplesearch-desc' => 'Dodaje dodatnu funkcionalnost u Vector jednostavnu pretragu',
+	'simplesearch-search' => 'Traži',
 );
 
 /** German (Deutsch)
@@ -99,6 +115,15 @@ $messages['ia'] = array(
 	'simplesearch-search' => 'Cercar',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'simplesearch' => 'Pencarian sederhana',
+	'simplesearch-desc' => 'Tambahkan fungsionalitas tambahan untuk pencarian sederhana Vector',
+	'simplesearch-search' => 'Cari',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */
@@ -169,6 +194,15 @@ $messages['ru'] = array(
 	'simplesearch' => 'Простой поиск',
 	'simplesearch-desc' => 'Добавляет больше функциональности в простой поиск Vector',
 	'simplesearch-search' => 'Поиск',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'simplesearch' => 'Судургу көрдөөһүн',
+	'simplesearch-desc' => 'Vector диэн судургу көрдөөччүгэ эбии кыахтары биэрэр',
+	'simplesearch-search' => 'Көрдөөһүн',
 );
 
 /** Turkish (Türkçe)
