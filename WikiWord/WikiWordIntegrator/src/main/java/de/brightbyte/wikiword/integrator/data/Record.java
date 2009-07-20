@@ -2,7 +2,7 @@ package de.brightbyte.wikiword.integrator.data;
 
 import de.brightbyte.abstraction.AbstractAccessor;
 
-public interface Record {
+public interface Record extends Cloneable {
 	
 	public static class Accessor<V> extends AbstractAccessor<Record, V> {
 
@@ -32,4 +32,6 @@ public interface Record {
 	public Object getPrimitive(String key);
 	
 	public Iterable<String> keys();
+	
+	public Record clone();
 }

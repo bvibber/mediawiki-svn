@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DefaultRecord implements Record, Serializable {
+public class DefaultRecord implements Record, Serializable, Cloneable {
 
 	private static final long serialVersionUID = 5538610907302985392L;
 	
@@ -112,4 +112,16 @@ public class DefaultRecord implements Record, Serializable {
 		if (v!=null && v instanceof Collection) return true;
 		return false;
 	}
+	
+	public DefaultRecord clone() {
+		try {
+			DefaultRecord r = (DefaultRecord)super.clone();
+			r.data = new HashMap<String, Object>(data.size());
+			r.data.putAll(data);
+			return r;
+		} catch (CloneNotSupportedException e) {
+			throw new Error("CloneNotSupported in clonable object");
+		}
+	}
+	
 }
