@@ -31,7 +31,11 @@ $messages['en'] = array(
 	'deletequeue-permissions-noedit' => "You must be able to edit a page to be able to affect its deletion status.",
 
 	// Nomination forms
-	'deletequeue-generic-reasons' => "* Generic reasons\n ** Vandalism\n ** Spam\n ** Maintenance\n ** Out of project scope",
+	'deletequeue-generic-reasons' => "* Generic reasons
+** Vandalism
+** Spam
+** Maintenance
+** Out of project scope",
 	'deletequeue-nom-alreadyqueued' => 'This page is already in a deletion queue.',
 
 	// Speedy deletion
@@ -44,8 +48,9 @@ You must select a reason for deletion from the drop-down list below, and add any
 
 	// Proposed deletion
 	'deletequeue-prod-title' => "Propose deletion of \"$1\"",
-	'deletequeue-prod-text' => "You can use this form to propose that \"'''$1'''\" is deleted.\n
-	If, after five days, nobody has contested this page's deletion, it will be deleted after final review by an administrator.",
+	'deletequeue-prod-text' => "You can use this form to propose that \"'''$1'''\" is deleted.
+
+If, after five days, nobody has contested this page's deletion, it will be deleted after final review by an administrator.",
 	'deletequeue-prod-reasons' => '-',
 
 	'deletequeue-delnom-reason' => 'Reason for nomination:',

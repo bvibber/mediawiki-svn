@@ -14,12 +14,11 @@ $messages = array();
 $messages['en'] = array(
 	'createbox-desc'   => 'Specialised inputbox for page creation',
 	'createbox-create' => 'Create',
-	'createbox-exists' => "Sorry, \"'''{{FULLPAGENAME}}'''\" already " .
-			"exists.\n\nYou cannot create this page, but you can " .
-			"[{{fullurl:{{FULLPAGENAME}}|action=edit}} edit it], " .
-			"[{{fullurl:{{FULLPAGENAME}}}} read it], or choose to " .
-			"create a different page using the box below.\n\n" .
-			"<createbox>break=no</createbox>",
+	'createbox-exists' => "Sorry, \"'''{{FULLPAGENAME}}'''\" already exists.
+
+You cannot create this page, but you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit it], [{{fullurl:{{FULLPAGENAME}}}} read it], or choose to create a different page using the box below.
+
+<createbox>break=no</createbox>",
 );
 
 /** Message documentation (Message documentation)
