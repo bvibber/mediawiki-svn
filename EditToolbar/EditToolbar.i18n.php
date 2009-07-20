@@ -57,10 +57,23 @@ $messages['en'] = array(
 	'edittoolbar-tool-subscript-example' => 'Subscript text',
 	'edittoolbar-group-insert' => 'Insert',
 	'edittoolbar-tool-gallery' => 'Picture gallery',
-	'edittoolbar-tool-gallery-example' => "File:Example.jpg|Caption1\nFile:Example.jpg|Caption2",
+	'edittoolbar-tool-gallery-example' => "File:Example.jpg|Caption1
+
+File:Example.jpg|Caption2",
 	'edittoolbar-tool-newline' => 'New line',
 	'edittoolbar-tool-table' => 'Table',
-	'edittoolbar-tool-table-example' => "-\n! header 1\n! header 2\n! header 3\n|-\n| row 1, cell 1\n| row 1, cell 2\n| row 1, cell 3\n|-\n| row 2, cell 1\n| row 2, cell 2\n| row 2, cell 3",
+	'edittoolbar-tool-table-example' => "-
+! header 1\
+! header 2
+! header 3
+|-
+| row 1, cell 1
+| row 1, cell 2
+| row 1, cell 3
+|-
+| row 2, cell 1
+| row 2, cell 2
+| row 2, cell 3",
 	/* Special characters Section */
 	'edittoolbar-section-characters' => 'Special characters',
 	/* Help Section */
