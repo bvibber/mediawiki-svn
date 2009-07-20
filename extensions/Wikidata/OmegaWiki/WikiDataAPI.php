@@ -28,8 +28,8 @@ class Expression {
 	}
 	
 	function createPage() {
-		# FIXME: This method is no longer present.
-		$expressionNameSpaceId = Namespace::getIndexForName( 'expression' );
+		# FIXME: Replace with method for Namespace::getIndexForName.
+		$expressionNameSpaceId = 16;
 		wfDebug( "NS ID: $expressionNameSpaceId \n" );
 		return createPage( $expressionNameSpaceId, getPageTitle( $this->spelling ) );
 	}
@@ -769,8 +769,8 @@ function addCollection( $definedMeaningId, $collectionType ) {
 }
 
 function addDefinedMeaning( $definingExpressionId ) {
-	# FIXME: This method is no longer present.
-	$definedMeaningNameSpaceId = Namespace::getIndexForName( 'definedmeaning' );
+	# FIXME: Replace with method for Namspace::getIndexForName.
+	$definedMeaningNameSpaceId = 24;
 	$dc = wdGetDataSetContext();
 	
 	$definedMeaningId = newObjectId( "{$dc}_defined_meaning" );
