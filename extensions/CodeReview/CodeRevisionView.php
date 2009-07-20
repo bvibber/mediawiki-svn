@@ -35,7 +35,8 @@ class CodeRevisionView extends CodeView {
 			$view->execute();
 			return;
 		}
-		$this->mStatus = $this->mStatus ? $this->mStatus : $this->mRev->getStatus();
+		if( $this->mStatus == '' )
+			$this->mStatus = $this->mRev->getStatus();
 
 		$redirectOnPost = $this->checkPostings();
 		if ( $redirectOnPost ) {
@@ -247,7 +248,7 @@ class CodeRevisionView extends CodeView {
 			$repo = $this->mRepo->getName();
 			$rev = $this->mRev->getId();
 			return Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
-				self::buildStatusList( $this->mRev->getStatus(), $this ) .
+				self::buildStatusList( $this->mStatus, $this ) .
 				xml::closeElement( 'select' );
 		} else {
 			return htmlspecialchars( $this->statusDesc( $this->mRev->getStatus() ) );
