@@ -20,7 +20,7 @@ public class FeatureSetHasFeatureFilter implements Filter<FeatureSet> {
 	}
 
 	public boolean matches(FeatureSet fs) {
-		return fs.get(feature) != null;
+		return fs.getFeatures(feature) != null;
 	}
 
 }

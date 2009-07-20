@@ -1,6 +1,6 @@
 package de.brightbyte.wikiword.integrator.data.filter;
 
-import de.brightbyte.wikiword.integrator.data.FeatureSet;
+import de.brightbyte.wikiword.integrator.data.ConceptEntityRecord;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 
 /**
@@ -18,5 +18,5 @@ public interface MappingCandidateSelector {
 	 * @param candidates
 	 * @return the best candidate, or null to indicate that no sufficiently good candidate was found.
 	 */
-	public FeatureSet selectCandidate(MappingCandidates candidates);
+	public ConceptEntityRecord selectCandidate(MappingCandidates candidates);
 }

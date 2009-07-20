@@ -3,7 +3,7 @@ package de.brightbyte.wikiword.integrator.data.filter;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import de.brightbyte.wikiword.integrator.data.FeatureSet;
+import de.brightbyte.wikiword.integrator.data.ConceptEntityRecord;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 
 /**
@@ -23,10 +23,10 @@ public class MappingCandidateThresholdFilter implements MappingCandidateFilter {
 		this.threshold = threshold;
 	}
 
-	public Collection<FeatureSet> filterCandidates(MappingCandidates candidates) {
-		ArrayList<FeatureSet> res = new ArrayList<FeatureSet>();
+	public Collection<ConceptEntityRecord> filterCandidates(MappingCandidates candidates) {
+		ArrayList<ConceptEntityRecord> res = new ArrayList<ConceptEntityRecord>();
 		
-		for (FeatureSet candidate: candidates.getCandidates()) {
+		for (ConceptEntityRecord candidate: candidates.getCandidates()) {
 			int score = scorer.getCandidateScore(candidates.getSubject(), candidate);
 			if (score>=threshold) res.add(candidate);
 		}

@@ -2,6 +2,9 @@ package de.brightbyte.wikiword.integrator.data;
 
 import java.util.Collection;
 
+import de.brightbyte.abstraction.AbstractAccessor;
+import de.brightbyte.abstraction.PropertyAccessor;
+import de.brightbyte.data.Aggregator;
 import de.brightbyte.data.LabeledVector;
 
 public interface FeatureSet {

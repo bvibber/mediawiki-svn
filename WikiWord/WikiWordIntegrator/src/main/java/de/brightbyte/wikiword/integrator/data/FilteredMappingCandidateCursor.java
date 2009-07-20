@@ -19,18 +19,18 @@ public class FilteredMappingCandidateCursor implements DataCursor<MappingCandida
 	protected MappingCandidateFilter filter;
 	
 	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, String field) {
-		this(cursor, FeatureSets.fieldAccessor(field, Integer.class));
+		this(cursor, new Record.Accessor<Integer>(field, Integer.class));
 	}
 	
 	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, String field, int threshold) {
-		this(cursor, FeatureSets.fieldAccessor(field, Integer.class), threshold);
+		this(cursor,  new Record.Accessor<Integer>(field, Integer.class), threshold);
 	}
 	
-	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, PropertyAccessor<FeatureSet, ? extends Number> accessor) {
+	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, PropertyAccessor<Record, ? extends Number> accessor) {
 		this(cursor, new MappingCandidateFeatureScorer(accessor));
 	}
 	
-	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, PropertyAccessor<FeatureSet, ? extends Number> accessor, int threshold) {
+	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, PropertyAccessor<Record, ? extends Number> accessor, int threshold) {
 		this(cursor, new MappingCandidateFeatureScorer(accessor), threshold);
 	}
 	

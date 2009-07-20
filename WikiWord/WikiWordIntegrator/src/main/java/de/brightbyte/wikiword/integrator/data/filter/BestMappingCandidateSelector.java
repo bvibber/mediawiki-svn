@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.integrator.data.filter;
 
+import de.brightbyte.wikiword.integrator.data.ConceptEntityRecord;
 import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 
@@ -18,11 +19,11 @@ public class BestMappingCandidateSelector implements MappingCandidateSelector {
 		this.scorer = scorer;
 	}
 
-	public FeatureSet selectCandidate(MappingCandidates candidates) {
+	public ConceptEntityRecord selectCandidate(MappingCandidates candidates) {
 		int bestScore = 0;
-		FeatureSet best =null;
+		ConceptEntityRecord best =null;
 		
-		for (FeatureSet candidate: candidates.getCandidates()) {
+		for (ConceptEntityRecord candidate: candidates.getCandidates()) {
 			int score = scorer.getCandidateScore(candidates.getSubject(), candidate);
 
 			if (best==null) {

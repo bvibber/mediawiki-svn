@@ -3,7 +3,7 @@ package de.brightbyte.wikiword.integrator.data.filter;
 import java.util.Collection;
 import java.util.Collections;
 
-import de.brightbyte.wikiword.integrator.data.FeatureSet;
+import de.brightbyte.wikiword.integrator.data.ConceptEntityRecord;
 import de.brightbyte.wikiword.integrator.data.MappingCandidates;
 
 /**
@@ -21,8 +21,8 @@ public class MappingCandidateSelectorFilter implements MappingCandidateFilter {
 		this.selector = selector;
 	}
 
-	public Collection<FeatureSet> filterCandidates(MappingCandidates candidates) {
-		FeatureSet selected = selector.selectCandidate(candidates);
+	public Collection<ConceptEntityRecord> filterCandidates(MappingCandidates candidates) {
+		ConceptEntityRecord selected = selector.selectCandidate(candidates);
 		if (selected==null) return Collections.emptyList();
 		else return Collections.singleton(selected);
 	}

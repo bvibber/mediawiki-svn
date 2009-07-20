@@ -1,12 +1,9 @@
 package de.brightbyte.wikiword.integrator.data.filter;
 
-import java.util.Collection;
 import java.util.regex.Pattern;
 
 import de.brightbyte.data.filter.Filter;
-import de.brightbyte.wikiword.integrator.data.FeatureSet;
 import de.brightbyte.wikiword.integrator.data.Record;
-import de.brightbyte.wikiword.integrator.data.FeatureSet.Feature;
 
 /**
  *  Filter that matches any FeatureSet with a given feature, where one of the feature's values 
@@ -17,7 +14,7 @@ import de.brightbyte.wikiword.integrator.data.FeatureSet.Feature;
  *
  * @param <T> The type of the feature values
  */
-public class FeatureSetFeatureValueFilter<T> implements Filter<FeatureSet> {
+public class RecordFieldValueFilter<T> implements Filter<Record> {
 	
 	/**
 	 * Filter matching one specific value.
@@ -63,25 +60,29 @@ public class FeatureSetFeatureValueFilter<T> implements Filter<FeatureSet> {
 		}
 	}
 
-	protected String feature;
+	protected String field;
 	protected Filter<T> filter;
 	
-	public FeatureSetFeatureValueFilter(String feature, Filter<T> filter) {
-		if (feature==null) throw new NullPointerException();
+	public RecordFieldValueFilter(String field, Filter<T> filter) {
+		if (field==null) throw new NullPointerException();
 		if (filter==null) throw new NullPointerException();
-		this.feature = feature;
+		this.field = field;
 		this.filter = filter;
 	}
 
-	public boolean matches(FeatureSet fs) {
-		Collection<? extends Feature<? extends Object>> values = fs.getFeatures(feature);
-		if (values==null) return false;
+	public boolean matches(Record r) {
+		Object value = r.get(field);
+		if (value==null) return false;
 		
-		for (Feature<? extends Object> v: values) {
-			if (filter.matches((T)v.getValue())) return true;
+		if (value instanceof Iterable) {
+			for (Object v: (Iterable)value) {
+				if (filter.matches((T)v)) return true;
+			}
+
+			return false;
+		} else {
+			return filter.matches((T)value);
 		}
-		
-		return false;
 	}
 
 }
