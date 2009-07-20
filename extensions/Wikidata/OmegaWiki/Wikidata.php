@@ -79,7 +79,7 @@ class DefaultWikidataApplication {
 		$this->viewInformation = $viewInformation;
 
 		initializeOmegaWikiAttributes( $viewInformation );
-		initializeObjectAttributeEditors( $viewInformation );
+		#initializeObjectAttributeEditors( $viewInformation );
 	}
 	
 	protected function getDataSetPanel() {

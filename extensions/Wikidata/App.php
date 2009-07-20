@@ -31,8 +31,11 @@ $wgAutoloadClasses['ApiWikiDataFormatXml'] = $dir . 'includes/api/ApiWikiDataFor
 $wgAPIModules['wikidata'] = 'ApiWikiData';
 $wgExtensionMessagesFiles['Wikidata'] = $dir . 'SpecialLanguages.i18n.php';
 
-# FIXME: Rename this to make Wikidata more agnostic.
+# FIXME: Rename this to reduce chance of collision.
 $wgAutoloadClasses['OmegaWiki'] = $dir . 'OmegaWiki/OmegaWiki.php';
+$wgAutoloadClasses['DefinedMeaning'] = $dir . 'OmegaWiki/DefinedMeaning.php';
+$wgAutoloadClasses['NeedsTranslationTo'] = $dir . 'OmegaWiki/NeedsTranslationTo.php';
+$wgAutoloadClasses['Search'] = $dir . 'OmegaWiki/Search.php';
 
 # FIXME: These should be modified to make Wikidata more reusable.
 $wgAvailableRights[] = 'editwikidata-uw';
