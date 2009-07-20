@@ -38,41 +38,6 @@ Index: maintenance/updaters.inc
  }
  
  function do_populate_parent_id() {
-Index: includes/Article.php
-===================================================================
---- includes/Article.php	(revision 53499)
-+++ includes/Article.php	(working copy)
-@@ -725,10 +725,29 @@
- 	public function view() {
- 		global $wgUser, $wgOut, $wgRequest, $wgContLang;
- 		global $wgEnableParserCache, $wgStylePath, $wgParser;
--		global $wgUseTrackbacks;
-+		global $wgUseTrackbacks, $wgNamespaceRobotPolicies, $wgArticleRobotPolicies, $wgTitle;
-+		global $wgDefaultRobotPolicy;
- 
- 		wfProfileIn( __METHOD__ );
- 
-+		global $wdHandlerClasses, $wdHandlerPath;
-+		$ns = $this->mTitle->getNamespace();
-+		if( array_key_exists( $ns, $wdHandlerClasses ) ) {
-+		$handlerClass = $wdHandlerClasses[ $ns ];
-+			$handlerFile = $wdHandlerPath . $handlerClass . '.php';
-+			if( file_exists( $handlerFile ) ) {
-+                        	require_once $handlerFile;
-+	                        $handlerInstance = new $handlerClass();
-+        	                $handlerInstance->view();
-+				return;
-+			} else {
-+				$wgOut->showErrorPage( 'namespace_handler_not_found', 'namespace_handler_not_found_error',
-+				$handlerFile, $wgContLang->getFormattedNsText( $ns ) );
-+			}
-+                }
-+
-+		$parserCache = ParserCache::singleton();
-+
- 		# Get variables from query string
- 		$oldid = $this->getOldID();
- 		$parserCache = ParserCache::singleton();
 Index: includes/SearchEngine.php
 ===================================================================
 --- includes/SearchEngine.php	(revision 53499)
@@ -146,24 +111,7 @@ Index: includes/Namespace.php
 +		if( array_key_exists( $index, $wdHandlerClasses ) ) return false; 
  		return !( $index < NS_MAIN || ($index == NS_FILE && !$wgAllowImageMoving)  || $index == NS_CATEGORY );
  	}
- 
-Index: includes/SkinTemplate.php
-===================================================================
---- includes/SkinTemplate.php	(revision 53499)
-+++ includes/SkinTemplate.php	(working copy)
-@@ -749,10 +749,11 @@
- 			wfProfileIn( __METHOD__ . '-live' );
- 			if ( $this->mTitle->exists() ) {
- 
-+				wfRunHooks( 'GetHistoryLinkTrail', array( &$trail ) );
- 				$content_actions['history'] = array(
- 					'class' => ($action == 'history') ? 'selected' : false,
- 					'text' => wfMsg( 'history_short' ),
--					'href' => $this->mTitle->getLocalUrl( 'action=history' ),
-+					'href' => $this->mTitle->getLocalUrl( 'action=history'  . $trail ),
- 					'rel' => 'archives',
- 				);
- 
+
 Index: includes/DefaultSettings.php
 ===================================================================
 --- includes/DefaultSettings.php	(revision 53499)
@@ -208,36 +156,4 @@ Index: includes/PageHistory.php
  		/*
  		 * Setup page variables.
  		 */
-Index: includes/Skin.php
-===================================================================
---- includes/Skin.php	(revision 53499)
-+++ includes/Skin.php	(working copy)
-@@ -1650,6 +1650,10 @@
- 	function editUrlOptions() {
- 		global $wgArticle;
- 
-+		$trail = '';
-+		wfRunHooks( 'GetEditLinkTrail', array( &$trail ) );
-+		# FIXME: $trail should be appended to $return but that is now an array.
-+
- 		$options = array( 'action' => 'edit' );
- 
- 		if( $this->mRevisionId && ! $wgArticle->isCurrent() ) {
-@@ -1749,6 +1753,10 @@
- 	}
- 
- 	function historyLink() {
-+		$trail = '';
-+		wfRunHooks( 'GetHistoryLinkTrail', array( &$trail ) );
-+		# FIXME: $trail should be appended to $return but that is now an array.
-+
- 		return $this->link(
- 			$this->mTitle,
- 			wfMsgHtml( 'history' ),
-@@ -2086,4 +2094,4 @@
- 	public function commonPrintStylesheet() {
- 		return true;
- 	}
--}
-\ No newline at end of file
-+} 
+

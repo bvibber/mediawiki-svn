@@ -23,11 +23,16 @@ $wgExtensionFunctions[] = 'initializeWikidata';
 $wgHooks['BeforePageDisplay'][] = 'addWikidataHeader';
 $wgHooks['SkinTemplateTabs'][] = 'modifyTabs';
 $wgHooks['GetPreferences'][] = 'wfWikiDataGetPreferences';
-$wgAutoloadClasses['ApiWikiData'] = $dir . '/extensions/Wikidata/includes/api/ApiWikiData.php';
-$wgAutoloadClasses['ApiWikiDataFormatBase'] = $dir . '/extensions/Wikidata/includes/api/ApiWikiDataFormatBase.php';
-$wgAutoloadClasses['ApiWikiDataFormatXml'] = $dir . '/extensions/Wikidata/includes/api/ApiWikiDataFormatXml.php';
+$wgHooks['ArticleFromTitle'][] = 'efWikidataOverrideArticle';
+$wgAutoloadClasses['WikidataArticle'] = $dir . 'includes/WikidataArticle.php';
+$wgAutoloadClasses['ApiWikiData'] = $dir . 'includes/api/ApiWikiData.php';
+$wgAutoloadClasses['ApiWikiDataFormatBase'] = $dir . 'includes/api/ApiWikiDataFormatBase.php';
+$wgAutoloadClasses['ApiWikiDataFormatXml'] = $dir . 'includes/api/ApiWikiDataFormatXml.php';
 $wgAPIModules['wikidata'] = 'ApiWikiData';
 $wgExtensionMessagesFiles['Wikidata'] = $dir . 'SpecialLanguages.i18n.php';
+
+# FIXME: Rename this to make Wikidata more agnostic.
+$wgAutoloadClasses['OmegaWiki'] = $dir . 'OmegaWiki/OmegaWiki.php';
 
 # FIXME: These should be modified to make Wikidata more reusable.
 $wgAvailableRights[] = 'editwikidata-uw';
@@ -229,5 +234,14 @@ function wfWikiDataGetPreferences( $user, &$preferences ) {
 		'label' => wfMsg( 'ow_shown_datasets' ),
 		'prefix' => 'ow_datasets-',
 	);
+	return true;
+}
+
+function efWikidataOverrideArticle( &$title, &$article ) {
+	global $wdHandlerClasses;
+	$ns = $title->getNamespace();
+	if ( array_key_exists( $ns, $wdHandlerClasses ) ) {
+		$article = new WikidataArticle( $title );
+	}
 	return true;
 }
