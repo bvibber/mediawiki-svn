@@ -69,11 +69,6 @@ class OmegaWikiAttributes {
 		$viewInformation = $this->viewInformation;
 
 		if ( !is_null( $viewInformation ) ) {
-			global $messageCacheOK;
-			if ( !$messageCacheOK ) {
-				# We're not ready to do this yet!
-				return False; # so we get out, but with viewinfo cached
-			}
 			if ( !$this->setup_completed ) {
 				$this->hardValues( $viewInformation );
 			}

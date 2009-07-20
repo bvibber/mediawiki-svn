@@ -10,6 +10,8 @@ $messages = array();
 /** English
  */
 $messages['en'] = array(
+	'wikidata-desc' => 'Adds wiki-like database for various types of content.',
+
 	'languages' => 'Wikidata: Language manager',
 	'langman-desc' => 'Add and change language settings with [[Special:Languages]]',
 	'langman_title' => 'Language manager',
