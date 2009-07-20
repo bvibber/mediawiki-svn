@@ -54,7 +54,7 @@ public class CollapsingMappingCandidateCursorTest extends TestCase {
 		exp.add(new MappingCandidates(a, FeatureSets.merge(y, q)));
 
 		DataCursor<Association> sourceCursor = new IteratorCursor<Association>(source.iterator());
-		DataCursor<MappingCandidates> cursor = new CollapsingMappingCandidateCursor(sourceCursor, "authority", "name", "name");
+		DataCursor<MappingCandidates> cursor = new MappingCandidateCursor(sourceCursor, "authority", "name", "name");
 		
 		assertEquals(exp, slurp(cursor));
 	}

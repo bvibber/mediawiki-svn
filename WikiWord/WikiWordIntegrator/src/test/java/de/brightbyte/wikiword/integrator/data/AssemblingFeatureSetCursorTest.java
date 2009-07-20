@@ -57,7 +57,7 @@ public class AssemblingFeatureSetCursorTest extends TestCase {
 		List<FeatureSet> source= Arrays.asList(new FeatureSet[] {a, b, x});
 		
 		DataCursor<FeatureSet> sourceCursor = new IteratorCursor<FeatureSet>(source.iterator());
-		DataCursor<FeatureSet> cursor = new AssemblingFeatureSetCursor(sourceCursor, "id", "property", "value");
+		DataCursor<FeatureSet> cursor = new FeatureAssemblingCursor(sourceCursor, "id", "property", "value");
 		
 		assertEquals(exp, slurp(cursor));
 	}

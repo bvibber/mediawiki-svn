@@ -76,7 +76,7 @@ public class CollapsingFeatureSetCursorTest extends TestCase {
 		exp.add(pq);
 
 		DataCursor<FeatureSet> sourceCursor = new IteratorCursor<FeatureSet>(source.iterator());
-		DataCursor<FeatureSet> cursor = new CollapsingFeatureSetCursor(sourceCursor, "id");
+		DataCursor<FeatureSet> cursor = new FeatureBuilderCursor(sourceCursor, "id");
 		
 		assertEquals(exp, slurp(cursor));
 	}

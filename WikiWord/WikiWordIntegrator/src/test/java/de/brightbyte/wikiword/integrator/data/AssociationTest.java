@@ -1,79 +1,100 @@
 package de.brightbyte.wikiword.integrator.data;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import de.brightbyte.data.Accumulator;
+import de.brightbyte.data.Functors;
 import junit.framework.TestCase;
 
 public class AssociationTest extends TestCase {
 
-	public void testMerge() {
-		FeatureSet aSource = new DefaultFeatureSet("name");
-		FeatureSet aProps =  new DefaultFeatureSet("name");
-		FeatureSet aTarget = new DefaultFeatureSet("name");
-		
-		aSource.put("name", "aSource");
-		aProps.put("name", "aProps");
-		aTarget.put("name", "aTarget");
-		
-		Association a = new Association(aSource, aProps, aTarget);
+	public void testAggregate() {
+		Map<String, Accumulator<?, ?>> accumulators = new HashMap<String, Accumulator<?, ?>>();
+		accumulators.put("terms", Functors.append2());
+		accumulators.put("weight", Functors.Integer.sum2);
+		accumulators.put("score", Functors.Double.max2);
 
-		FeatureSet bSource = new DefaultFeatureSet("name");
-		FeatureSet bProps =  new DefaultFeatureSet("name");
-		FeatureSet bTarget = new DefaultFeatureSet("name");
+		DefaultRecord ar = new DefaultRecord();
 		
-		bSource.put("name", "bSource");
-		bProps.put("name", "bProps");
-		bTarget.put("name", "bTarget");
+		ar.add("id", "X5");
+		ar.add("name", "FIVE");
+		ar.add("concept", 5);
+		ar.add("label", "five");
 		
-		Association b = new Association(bSource, bProps, bTarget);
-		
-		FeatureSet cSource = new DefaultFeatureSet("name");
-		FeatureSet cProps =  new DefaultFeatureSet("name");
-		FeatureSet cTarget = new DefaultFeatureSet("name");
-		
-		cSource.put("name", "cSource");
-		cProps.put("name", "cProps");
-		cTarget.put("name", "cTarget");
-		
-		Association c = new Association(cSource, cProps, cTarget);
+		ar.add("terms", "A");
+		ar.add("terms", "A");
+		ar.add("terms", "a");
 
-		//---------------------------------------------------
+		ar.add("weight", 2);
+		ar.add("score", 2.3);
 		
-		FeatureSet abSource = new DefaultFeatureSet("name");
-		FeatureSet abProps =  new DefaultFeatureSet("name");
-		FeatureSet abTarget = new DefaultFeatureSet("name");
-		
-		abSource.put("name", "aSource");
-		abProps.put("name", "aProps");
-		abTarget.put("name", "aTarget");
+		DefaultAssociation a = new DefaultAssociation(ar, "authority", "id", "name", "concept", "label");
 
-		abSource.put("name", "bSource");
-		abProps.put("name", "bProps");
-		abTarget.put("name", "bTarget");
+		DefaultRecord br = new DefaultRecord();
+		br.add("terms", "B");
+
+		br.add("weight", 3);
+		br.add("score", 1.7);
 		
-		Association ab = new Association(abSource, abProps, abTarget);
+		DefaultAssociation b = new DefaultAssociation(br, "authority", "id", "name", "concept", "label");
 		
-		assertEquals(ab, Association.merge(a, b));
+		DefaultRecord cr = new DefaultRecord();
+		
+		cr.add("terms", "C");
+
+		br.add("weight", 1);
+		br.add("score", 0.9);
+		
+		DefaultAssociation c = new DefaultAssociation(cr, "authority", "id", "name", "concept", "label");
 
 		//---------------------------------------------------
+		
+		DefaultRecord abr = new DefaultRecord();
+		
+		abr.add("id", "X5");
+		abr.add("name", "FIVE");
+		abr.add("concept", 5);
+		abr.add("label", "five");
 
-		FeatureSet abcSource = new DefaultFeatureSet("name");
-		FeatureSet abcProps =  new DefaultFeatureSet("name");
-		FeatureSet abcTarget = new DefaultFeatureSet("name");
+		abr.add("terms", "A");
+		abr.add("terms", "A");
+		abr.add("terms", "a");
 		
-		abcSource.put("name", "aSource");
-		abcProps.put("name", "aProps");
-		abcTarget.put("name", "aTarget");
+		abr.add("terms", "B");
+
+		abr.add("weight", 8);
+		abr.add("score", 2.3);
 		
-		abcSource.put("name", "bSource");
-		abcProps.put("name", "bProps");
-		abcTarget.put("name", "bTarget");
+		DefaultAssociation ab = new DefaultAssociation(abr, "authority", "id", "name", "concept", "label");
 		
-		abcSource.put("name", "cSource");
-		abcProps.put("name", "cProps");
-		abcTarget.put("name", "cTarget");
+		a.aggregate(b, accumulators);
+		assertEquals(ab, a);
+
+		//---------------------------------------------------
+
+		DefaultRecord abcr = new DefaultRecord();
 		
-		Association abc = new Association(abcSource, abcProps, abcTarget);
+		abcr.add("id", "X5");
+		abcr.add("name", "FIVE");
+		abcr.add("concept", 5);
+		abcr.add("label", "five");
+
+		abcr.add("terms", "A");
+		abcr.add("terms", "A");
+		abcr.add("terms", "a");
 		
-		assertEquals(abc, Association.merge(a, b, c));
+		abcr.add("terms", "B");
+		
+		abcr.add("terms", "C");
+
+		abr.add("weight", 9);
+		abr.add("score", 2.3);
+		
+		DefaultAssociation abc = new DefaultAssociation(abcr, "authority", "id", "name", "concept", "label");
+		
+		a.aggregate(c, accumulators);
+		assertEquals(abc, a);
 	}
 
 }

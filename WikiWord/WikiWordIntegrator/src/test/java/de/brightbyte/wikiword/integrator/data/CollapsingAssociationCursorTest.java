@@ -51,7 +51,7 @@ public class CollapsingAssociationCursorTest extends TestCase {
 		exp.add(new Association(a, y, q));
 
 		DataCursor<Association> sourceCursor = new IteratorCursor<Association>(source.iterator());
-		DataCursor<Association> cursor = new CollapsingAssociationCursor(sourceCursor, "name", "name");
+		DataCursor<Association> cursor = new AggregatingAssociationCursor(sourceCursor, "name", "name");
 		
 		assertEquals(exp, slurp(cursor));
 	}
