@@ -15,6 +15,7 @@ $wgHooks['BeforePageDisplay'][] = 'addWikidataHeader';
 # $wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail'; # non-standard hook; merged with modifyTabs
 # $wgHooks['GetHistoryLinkTrail'][]='addHistoryLinkTrail'; # non-standard hook; merged with modifyTabs
 $wgHooks['SkinTemplateTabs'][] = 'modifyTabs';
+$wgHooks['GetPreferences'][] = 'wfWikiDataGetPreferences';
 $wgExtensionFunctions[] = 'initializeWikidata';
 
 $wgCustomHandlerPath = array( '*' => "{$IP}/extensions/Wikidata/OmegaWiki/" );
@@ -87,7 +88,7 @@ $wgExtensionMessagesFiles['Wikidata'] = $dir . 'SpecialLanguages.i18n.php';
 			        			
 $wgGotoSourceTemplates = array( 5 => $swissProtGotoSourceTemplate );
 
-require_once( "{$IP}/extensions/Wikidata/AddPrefs.php" );
+#require_once( "{$IP}/extensions/Wikidata/AddPrefs.php" );
 require_once( "{$IP}/extensions/Wikidata/SpecialLanguages.php" );
 require_once( "{$IP}/extensions/Wikidata/OmegaWiki/SpecialSuggest.php" );
 require_once( "{$IP}/extensions/Wikidata/OmegaWiki/SpecialSelect.php" );
@@ -196,26 +197,13 @@ function modifyTabs( $skin, $content_actions ) {
 }
 
 function initializeWikidata() {
-	global $wgExtensionPreferences, $wdSiteContext, $wgPropertyToColumnFilters;
+	global $wdSiteContext, $wgPropertyToColumnFilters;
 	
 	wfLoadExtensionMessages( 'Wikidata' );
 
 	$dbr =& wfGetDB( DB_MASTER );
 	$dbr->query( "SET NAMES utf8" );
 	
-	$datasets = wdGetDatasets();
-	$datasetarray[''] = wfMsgHtml( 'ow_none_selected' );
-	foreach ( $datasets as $datasetid => $dataset ) {
-		$datasetarray[$datasetid] = $dataset->fetchName();
-	}
-	$wgExtensionPreferences[] = array(
-		'name' => 'ow_uipref_datasets',
-		'section' => 'ow_uiprefs',
-		'type' => PREF_OPTIONS_T,
-		'size' => 10,
-		'options' => $datasetarray
-	);
-
 	# FIXME: Temporary hack to ensure OmegaWikiAttributes does not exception.
 	global $messageCacheOK;
 	$messageCacheOK = true;
@@ -235,3 +223,18 @@ function initializeWikidata() {
 	return true;
 }
 
+function wfWikiDataGetPreferences( $user, &$preferences ) {
+	$datasets = wdGetDatasets();
+	# $datasetarray[wfMsgHtml( 'ow_none_selected' )] = '';
+	foreach ( $datasets as $datasetid => $dataset ) {
+		$datasetarray[$dataset->fetchName()] = $datasetid;
+	}
+	$preferences['ow_uipref_datasets'] = array(
+		'type' => 'multiselect',
+		'options' => $datasetarray,
+		'section' => 'omegawiki',
+		'label' => wfMsg( 'ow_shown_datasets' ),
+		'prefix' => 'ow_datasets-',
+	);
+	return true;
+}

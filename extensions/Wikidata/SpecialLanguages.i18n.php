@@ -250,6 +250,9 @@ Please contact the server operator or administrator.",
 	'ow_nstab_definedmeaning' => 'defined meaning',
 	'ow_nstab_edit_copy' => 'edit copy',
 	'right-addlanguage' => 'Add and change language settings',
+
+	'ow_shown_datasets' => 'Shown datasets',
+	'prefs-omegawiki' => 'OmegaWiki',
 );
 
 /** Message documentation (Message documentation)
