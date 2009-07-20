@@ -335,3 +335,57 @@ $messages['vec'] = array(
 	'fundraiserportal-tourmaline-close' => 'Scondi da desso in avanti',
 );
 
+/** 
+ * Cantonese
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'fundraiserportal' => '捐款指南',
+	'fundraiserportal-desc' => '加 "請捐款" 指南到側欄最頂度。',
+	'fundraiserportal-plain-button' => '支持維基百科！',
+	'fundraiserportal-ruby-button' => '而家就捐',
+	'fundraiserportal-rubytext-button' => '而家就捐',
+	'fundraiserportal-rubytext-message' => '每次捐款幫到我哋為每一位畀到免費而自由嘅維基百科。',
+	'fundraiserportal-rubytext-close' => '而家閂咗佢',
+	'fundraiserportal-sapphire-button' => '而家就捐',
+	'fundraiserportal-tourmaline-button' => '而家就捐',
+	'fundraiserportal-tourmaline-message' => '每次捐款幫到我哋為每一位畀到免費而自由嘅維基百科。',
+	'fundraiserportal-tourmaline-close' => '而家閂咗佢',
+);
+
+/** 
+ * Chinese (Simplified)
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'fundraiserportal' => '捐款主题',
+	'fundraiserportal-desc' => '在侧边栏的最顶处加入 "请捐款" 主题。',
+	'fundraiserportal-plain-button' => '支持维基百科！',
+	'fundraiserportal-ruby-button' => '立即捐款',
+	'fundraiserportal-rubytext-button' => '立即捐款',
+	'fundraiserportal-rubytext-message' => '每次的捐款帮助我们为每一位维持免费维基百科的自由。',
+	'fundraiserportal-rubytext-close' => '现在就隐藏这个',
+	'fundraiserportal-sapphire-button' => '立即捐款',
+	'fundraiserportal-tourmaline-button' => '立即捐款',
+	'fundraiserportal-tourmaline-message' => '每次的捐款帮助我们为每一位维持免费维基百科的自由。',
+	'fundraiserportal-tourmaline-close' => '现在就隐藏这个',
+);
+
+/** 
+ * Chinese (Traditional)
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'fundraiserportal' => '捐款主題',
+	'fundraiserportal-desc' => '在側邊欄的最頂處加入 "請捐款" 主題。',
+	'fundraiserportal-plain-button' => '支持維基百科！',
+	'fundraiserportal-ruby-button' => '立即捐款',
+	'fundraiserportal-rubytext-button' => '立即捐款',
+	'fundraiserportal-rubytext-message' => '每次的捐款幫助我們為每一位維持免費維基百科的自由。',
+	'fundraiserportal-rubytext-close' => '現在就隱藏這個',
+	'fundraiserportal-sapphire-button' => '立即捐款',
+	'fundraiserportal-tourmaline-button' => '立即捐款',
+	'fundraiserportal-tourmaline-message' => '每次的捐款幫助我們為每一位維持免費維基百科的自由。',
+	'fundraiserportal-tourmaline-close' => '現在就隱藏這個',
+);
+
