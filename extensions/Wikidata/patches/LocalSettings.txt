@@ -55,8 +55,8 @@ $wgNamespacesWithSubpages = array(
 
 $wgMetaNamespace = 'Meta';
 
-$wgWikiDataHandlerPath = "$IP/extensions/Wikidata/OmegaWiki/";
-$wgWikiDataHandlerClasses = array(
+$wdHandlerPath = "$IP/extensions/Wikidata/OmegaWiki/";
+$wdHandlerClasses = array(
 	28 => 'NeedsTranslationTo',
 	24 => 'DefinedMeaning',
 	16 => 'OmegaWiki',
