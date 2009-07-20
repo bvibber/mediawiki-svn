@@ -431,14 +431,29 @@ class CodeRevisionView extends CodeView {
 		// Uses messages 'code-change-status', 'code-change-tags'
 		$line .= '&nbsp;' . wfMsgExt( "code-change-{$change->attrib}", 'parseinline', $revId );
 		$line .= " <i>[";
+		// Items that were changed or set...
 		if ( $change->removed ) {
 			$line .= '<b>' . wfMsg( 'code-change-removed' ) . '</b> ';
-			$line .= htmlspecialchars( $change->removed );
-			$line .= $change->added ? "&nbsp;" : "";
+			// Status changes...
+			if( $change->attrib == 'status' ) {
+				$line .= wfMsgHtml( 'code-status-'.$change->removed );
+				$line .= $change->added ? "&nbsp;" : ""; // spacing
+			// Tag changes
+			} else if( $change->attrib == 'tags' ) {
+				$line .= htmlspecialchars( $change->removed );
+				$line .= $change->added ? "&nbsp;" : ""; // spacing
+			}
 		}
+		// Items that were changed to something else...
 		if ( $change->added ) {
 			$line .= '<b>' . wfMsg( 'code-change-added' ) . '</b> ';
-			$line .=  htmlspecialchars( $change->added );
+			// Status changes...
+			if( $change->attrib == 'status' ) {
+				$line .= wfMsgHtml( 'code-status-'.$change->added );
+			// Tag changes...
+			} else {
+				$line .= htmlspecialchars( $change->added );
+			}
 		}
 		$line .= "]</i>";
 		return "<li>$line</li>";
