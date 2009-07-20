@@ -2,19 +2,41 @@ package de.brightbyte.wikiword.integrator.data;
 
 import java.util.Map;
 
+import de.brightbyte.data.Functor;
+import de.brightbyte.db.DatabaseUtil;
+
 
 public class DefaultConceptEntityRecord extends DefaultRecord implements  ConceptEntityRecord{
 
+	public static class FromRecord implements Functor<DefaultConceptEntityRecord, Record> {
+		protected String idField;
+		protected String nameField;
+
+		public FromRecord(String authorityId, String idField, String nameField) {
+			if (idField==null) throw new NullPointerException();
+			if (nameField==null) nameField = idField;
+		}
+
+		public DefaultConceptEntityRecord apply(Record rec) {
+			return new DefaultConceptEntityRecord(rec, idField, nameField);
+		}
+	}
+	
 	protected String idField;
 	protected String nameField;
 	
 	public DefaultConceptEntityRecord(String idField, String nameField) {
-		this(null, idField, nameField);
+		this((Map<String, Object>)null, idField, nameField);
 	}
 	
+	public DefaultConceptEntityRecord(Record rec, String idField, String nameField) {
+		this(rec instanceof DefaultRecord ? ((DefaultRecord)rec).data : null, idField, nameField);
+		if (!(rec instanceof DefaultRecord)) addAll(rec);
+	}
+
 	protected DefaultConceptEntityRecord(Map<String, Object> data, String idField, String nameField) {
 		super(data);
-		
+
 		if (idField==null) throw new NullPointerException();
 		if (nameField==null) nameField = idField;
 		
@@ -22,17 +44,26 @@ public class DefaultConceptEntityRecord extends DefaultRecord implements  Concep
 		this.nameField = nameField;
 	}
 
-	public String getID() {
-		return idField==null ? null : getStringProperty(idField);
+	public int getID() {
+		return idField==null ? null : getIntProperty(idField);
 	}
 
 	public String getName() {
 		return nameField==null ? null : getStringProperty(nameField);
 	}
 
+	private int getIntProperty(String field) {
+		Object v = get(field);
+		return DatabaseUtil.asInt(v);
+	}
+
 	private String getStringProperty(String field) {
 		Object v = get(field);
-		return String.valueOf(v);
+		return DatabaseUtil.asString(v);
+	}
+	
+	public boolean add(String key, Object value) {
+		throw new UnsupportedOperationException("concept entity is unmodifiable");
 	}
 
 	@Override

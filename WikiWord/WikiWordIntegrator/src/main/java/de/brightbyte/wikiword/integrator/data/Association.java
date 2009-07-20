@@ -1,9 +1,11 @@
 package de.brightbyte.wikiword.integrator.data;
 
-public interface Association extends Record, Cloneable {
+public interface Association extends Cloneable {
 
 	public ForeignEntityRecord getForeignEntity();
 	public ConceptEntityRecord getConceptEntity();
-	public DefaultAssociation clone();
+	public Record getQualifiers();
+	
+	public Association clone();
 	
 }

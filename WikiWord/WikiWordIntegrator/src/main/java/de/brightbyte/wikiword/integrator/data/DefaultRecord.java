@@ -48,9 +48,13 @@ public class DefaultRecord implements Record, Serializable, Cloneable {
 		if (old==null) {
 			data.put(key, value);
 		}
+		else if (old==value || old.equals(value)) {
+			return false;
+		}
 		else if (old instanceof Collection) {
 			if (value instanceof Collection) ((Collection<Object>)old).addAll((Collection<Object>)value);
-			else ((Collection<Object>)old).add(value);
+			else if (!((Collection<Object>)old).contains(value)) ((Collection<Object>)old).add(value);
+			else return false;
 		}
 		else {
 			Collection<Object> r = new ArrayList<Object>();
@@ -69,6 +73,16 @@ public class DefaultRecord implements Record, Serializable, Cloneable {
 		int c = 0;
 		
 		for (String k: r.keys()) {
+			if (add(k, r.get(k))) c++;
+		}
+		
+		return c;
+	}
+	
+	public int addAll(Map<String, Object> r) {
+		int c = 0;
+		
+		for (String k: r.keySet()) {
 			if (add(k, r.get(k))) c++;
 		}
 		

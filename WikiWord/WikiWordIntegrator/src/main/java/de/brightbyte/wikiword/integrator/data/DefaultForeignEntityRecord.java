@@ -2,18 +2,33 @@ package de.brightbyte.wikiword.integrator.data;
 
 import java.util.Map;
 
+import de.brightbyte.data.Functor;
+
 
 public class DefaultForeignEntityRecord extends DefaultRecord implements  ForeignEntityRecord{
 
+	public static class FromRecord implements Functor<DefaultForeignEntityRecord, Record> {
+		protected String authorityId;
+		protected String idField;
+		protected String nameField;
+
+		public FromRecord(String authorityId, String idField, String nameField) {
+			if (authorityId==null) throw new NullPointerException();
+			if (idField==null) throw new NullPointerException();
+			if (nameField==null) nameField = idField;
+		}
+
+		public DefaultForeignEntityRecord apply(Record rec) {
+			return new DefaultForeignEntityRecord(rec, authorityId, idField, nameField);
+		}
+		
+	}
+	
 	protected String authorityId;
 	protected String idField;
 	protected String nameField;
 	
-	public DefaultForeignEntityRecord(String authorityId, String idField, String nameField) {
-		this(null, authorityId, idField, nameField);
-	}
-	
-	protected DefaultForeignEntityRecord(Map<String, Object> data, String authorityId, String idField, String nameField) {
+	public DefaultForeignEntityRecord(Map<String, Object> data, String authorityId, String idField, String nameField) {
 		super(data);
 		
 		if (authorityId==null) throw new NullPointerException();
@@ -23,6 +38,16 @@ public class DefaultForeignEntityRecord extends DefaultRecord implements  Foreig
 		this.authorityId = authorityId;
 		this.idField = idField;
 		this.nameField = nameField;
+	}
+	
+	public DefaultForeignEntityRecord(Record rec, String authorityId, String idField, String nameField) {
+		this(rec instanceof DefaultRecord ? ((DefaultRecord)rec).data : null, authorityId, idField, nameField);
+		if (!(rec instanceof DefaultRecord)) addAll(data);
+	}
+
+	protected DefaultForeignEntityRecord( String authorityId, String idField, String nameField) {
+		this((Map<String, Object>)null, authorityId, idField, nameField);
+		addAll(data);
 	}
 
 	public String getAuthority() {
@@ -41,7 +66,11 @@ public class DefaultForeignEntityRecord extends DefaultRecord implements  Foreig
 		Object v = get(field);
 		return String.valueOf(v);
 	}
-
+	
+	public boolean add(String key, Object value) {
+		throw new UnsupportedOperationException("foreign entity is unmodifiable");
+	}
+	
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;
