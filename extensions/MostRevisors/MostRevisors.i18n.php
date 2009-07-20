@@ -20,7 +20,7 @@ $messages['en'] = array(
 	'mostrevisors-showredir' => 'Show redirect pages',
 	'mostrevisors-hideredir' => 'Hide redirect pages',
 	'mostrevisors-viewcontributors' => 'View main contributors',
-	'mostrevisors-text' => 'Show [[Special:MostRevisions|pages with the most revisors]], starting from [[MediaWiki:mostrevisors-limit-few-revisors|{{MediaWiki:Mostrevisors-limit-few-revisors}} revisors]].',
+	'mostrevisors-text' => 'Show [[Special:MostRevisions|pages with the most revisors]], starting from [[MediaWiki:Mostrevisors-limit-few-revisors|{{MediaWiki:Mostrevisors-limit-few-revisors}} revisors]].',
 
 	// Settings. Do not translate these messages.
 	'mostrevisors-users' => 'editors',
