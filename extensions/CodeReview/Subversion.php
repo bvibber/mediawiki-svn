@@ -120,10 +120,11 @@ class SubversionShell extends SubversionAdaptor {
 		$lang = wfIsWindows() ? "" : "LC_ALL=en_US.utf-8 ";
 		$command = sprintf(
 			"{$lang}svn log -v -r%s:%s --non-interactive %s %s",
-			wfEscapeShellArg( $this->_rev( $startRev, 'BASE' ) ),
-			wfEscapeShellArg( $this->_rev( $endRev, 'HEAD' ) ),
+			intval( $this->_rev( $startRev, 'BASE' ) ),
+			intval( $this->_rev( $endRev, 'HEAD' ) ),
 			$this->getExtraArgs(),
-			wfEscapeShellArg( $this->mRepo . $path ) );
+			wfEscapeShellArg( $this->mRepo . $path )
+		);
 
 		$lines = explode( "\n", wfShellExec( $command ) );
 		$out = array();
