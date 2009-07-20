@@ -436,7 +436,6 @@ class SpecialRecordAdmin extends SpecialPage {
 				. '">(' . wfMsg( 'recordadmin-createlink' ) . ')</a><br />';
 		}
 		$this->form = $form;
-		print $this->formAtts;
 	}
 
 
