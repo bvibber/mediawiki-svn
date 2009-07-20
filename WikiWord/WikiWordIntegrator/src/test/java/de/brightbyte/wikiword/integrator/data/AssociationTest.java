@@ -11,7 +11,7 @@ public class AssociationTest extends TestCase {
 
 	public void testAggregate() {
 		Map<String, Accumulator<?, ?>> accumulators = new HashMap<String, Accumulator<?, ?>>();
-		accumulators.put("terms", Functors.append2());
+		accumulators.put("terms", Functors.concat2("|"));
 		accumulators.put("weight", Functors.Integer.sum2);
 		accumulators.put("score", Functors.Double.max2);
 
@@ -23,7 +23,7 @@ public class AssociationTest extends TestCase {
 		ar.add("label", "five");
 		
 		ar.add("terms", "A");
-		ar.add("terms", "A");
+		ar.add("terms", "A", true);
 		ar.add("terms", "a");
 
 		ar.add("weight", 2);
@@ -43,8 +43,8 @@ public class AssociationTest extends TestCase {
 		
 		cr.add("terms", "C");
 
-		br.add("weight", 1);
-		br.add("score", 0.9);
+		cr.add("weight", 1);
+		cr.add("score", 0.9);
 		
 		DefaultAssociation c = new DefaultAssociation(cr, "authority", "id", "name", "concept", "label");
 
@@ -57,13 +57,9 @@ public class AssociationTest extends TestCase {
 		abr.add("concept", 5);
 		abr.add("label", "five");
 
-		abr.add("terms", "A");
-		abr.add("terms", "A");
-		abr.add("terms", "a");
-		
-		abr.add("terms", "B");
+		abr.add("terms", "A|A|a|B");
 
-		abr.add("weight", 8);
+		abr.add("weight", 5);
 		abr.add("score", 2.3);
 		
 		DefaultAssociation ab = new DefaultAssociation(abr, "authority", "id", "name", "concept", "label");
@@ -80,16 +76,10 @@ public class AssociationTest extends TestCase {
 		abcr.add("concept", 5);
 		abcr.add("label", "five");
 
-		abcr.add("terms", "A");
-		abcr.add("terms", "A");
-		abcr.add("terms", "a");
-		
-		abcr.add("terms", "B");
-		
-		abcr.add("terms", "C");
+		abcr.add("terms", "A|A|a|B|C");
 
-		abr.add("weight", 9);
-		abr.add("score", 2.3);
+		abcr.add("weight", 6);
+		abcr.add("score", 2.3);
 		
 		DefaultAssociation abc = new DefaultAssociation(abcr, "authority", "id", "name", "concept", "label");
 		

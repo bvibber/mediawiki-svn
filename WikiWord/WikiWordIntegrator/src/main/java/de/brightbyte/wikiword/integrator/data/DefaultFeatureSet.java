@@ -18,6 +18,10 @@ public class DefaultFeatureSet implements FeatureSet {
 			this.qualifiers = qualifiers;
 		}
 		
+		public String toString() {
+			return String.valueOf(value);
+		}
+		
 		@Override
 		public int hashCode() {
 			final int PRIME = 31;
@@ -113,6 +117,31 @@ public class DefaultFeatureSet implements FeatureSet {
 
 		public Iterable<String> keys() {
 			return data.keySet();
+		}
+
+		@Override
+		public int hashCode() {
+			final int PRIME = 31;
+			int result = 1;
+			result = PRIME * result + ((data == null) ? 0 : data.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final DefaultFeatureSet other = (DefaultFeatureSet) obj;
+			if (data == null) {
+				if (other.data != null)
+					return false;
+			} else if (!data.equals(other.data))
+				return false;
+			return true;
 		}
 		
 		

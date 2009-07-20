@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.integrator.data;
 
 import de.brightbyte.abstraction.AbstractAccessor;
+import de.brightbyte.db.DatabaseUtil;
 
 public interface Record extends Cloneable {
 	
@@ -11,7 +12,8 @@ public interface Record extends Cloneable {
 		}
 
 		public V getValue(Record obj) {
-			return (V)obj.get(property);
+			Object v = obj.get(property);
+			return (V)DatabaseUtil.as(v, getType());
 		}
 
 		public boolean isMutable() {

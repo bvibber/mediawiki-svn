@@ -10,14 +10,22 @@ public class FeatureAssemblingCursor<R> implements DataCursor<FeatureSet> {
 	protected PropertyMapping<R> qualfierMapping = null;
 	protected R prev;
 	
-	protected PropertyAccessor<R, Object> recordIdAccessor;
-	protected PropertyAccessor<R, String>  propertyNameAccessor;
-	protected PropertyAccessor<R, Object>  propertyValueAccessor;
+	protected PropertyAccessor<R, ? extends Object> recordIdAccessor;
+	protected PropertyAccessor<R, ? extends String>  propertyNameAccessor;
+	protected PropertyAccessor<R, ? extends Object>  propertyValueAccessor;
 	
+	public static FeatureAssemblingCursor<Record> newForRecordCursor(DataCursor<Record> cursor,
+			String recordIdField, String PropertyNameField, String propertyValueField) {
+		return new FeatureAssemblingCursor<Record>(cursor, 
+				new Record.Accessor<Integer>(recordIdField, Integer.class),
+				new Record.Accessor<String>(PropertyNameField, String.class),
+				new Record.Accessor<Object>(propertyValueField, Object.class));
+	}
+			
 	public FeatureAssemblingCursor(DataCursor<R> cursor,  
-			PropertyAccessor<R, Object> recordIdAccessor, 
-			PropertyAccessor<R, String> propertyNameAccessor, 
-			PropertyAccessor<R, Object> propertyValueAccessor) {
+			PropertyAccessor<R, ? extends Object> recordIdAccessor, 
+			PropertyAccessor<R, ? extends String> propertyNameAccessor, 
+			PropertyAccessor<R, ? extends Object> propertyValueAccessor) {
 		if (cursor==null) throw new NullPointerException();
 		if (recordIdAccessor==null) throw new NullPointerException();
 		if (propertyNameAccessor==null) throw new NullPointerException();
@@ -54,8 +62,10 @@ public class FeatureAssemblingCursor<R> implements DataCursor<FeatureSet> {
 			f.addFeature(key, value, qualifiers);
 
 			prev = cursor.next();
+			if (prev==null) break;
+			
 			Object id =  recordIdAccessor.getValue(prev);
-			if (prev==null || !currentId.equals(id)) break;
+			if (!currentId.equals(id)) break;
 		}
 		
 		return f;

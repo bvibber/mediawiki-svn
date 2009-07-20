@@ -38,8 +38,9 @@ public class AggregatingAssociationCursor implements DataCursor<Association> {
 			prev = cursor.next();
 			if (prev==null) break;
 			
-			if (prev.getConceptEntity().getID() == a.getConceptEntity().getID()) break;
-			if (prev.getForeignEntity().getID().equals( a.getForeignEntity().getID())) break;
+			if (prev.getConceptEntity().getID() != a.getConceptEntity().getID()) break;
+			if (!prev.getForeignEntity().getAuthority().equals( a.getForeignEntity().getAuthority())) break;
+			if (!prev.getForeignEntity().getID().equals( a.getForeignEntity().getID())) break;
 			
 			((DefaultAssociation)a).aggregate((DefaultAssociation)prev, accumulators);
 		}

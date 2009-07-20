@@ -35,6 +35,10 @@ public class DefaultRecord implements Record, Serializable, Cloneable {
 	}
 
 	public boolean add(String key, Object value) {
+		return add(key, value, false);
+	}
+	
+	public boolean add(String key, Object value, boolean allowDupes) {
 		Object old = data.get(key);
 		
 		if (value instanceof Object[]) {
@@ -48,12 +52,12 @@ public class DefaultRecord implements Record, Serializable, Cloneable {
 		if (old==null) {
 			data.put(key, value);
 		}
-		else if (old==value || old.equals(value)) {
+		else if (!allowDupes && (old==value || old.equals(value))) {
 			return false;
 		}
 		else if (old instanceof Collection) {
 			if (value instanceof Collection) ((Collection<Object>)old).addAll((Collection<Object>)value);
-			else if (!((Collection<Object>)old).contains(value)) ((Collection<Object>)old).add(value);
+			else if (allowDupes || !((Collection<Object>)old).contains(value)) ((Collection<Object>)old).add(value);
 			else return false;
 		}
 		else {
