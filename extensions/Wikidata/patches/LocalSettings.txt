@@ -1,6 +1,3 @@
-This is a patch that will allow you to run the Wikidata extension on MediaWiki
-trunk r32000 (i.e. outside of the Wikidata branch).
-
 $wgExtraNamespaces = array(
 	16 => 'Expression',
 	17 => 'Expression_talk',
