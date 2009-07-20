@@ -60,7 +60,7 @@ class CooperationStatistics extends SpecialPage {
 			'chs' => $wgCoopStatsChartDimensions,
 			'cht' => 'p3',
 			'chd' => 't:' . implode( ',', $stats ),
-			'chl' => implode( ' ' . wfMsg( 'cooperationstatistics-users' ) . ' |', array_keys( $stats ) ) . wfMsg( 'cooperationstatistics-legendmore' )
+			'chl' => implode( wfMsg( 'word-separator' ) . wfMsg( 'cooperationstatistics-users' ) . ' |', array_keys( $stats ) ) . wfMsg( 'word-separator' ) . wfMsg( 'cooperationstatistics-legendmore' )
 		) );
 	}
 

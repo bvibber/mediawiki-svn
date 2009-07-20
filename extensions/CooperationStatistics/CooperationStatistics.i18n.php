@@ -19,7 +19,7 @@ See also the [[Special:MostRevisors|\'\'\'pages with the most revisors\'\'\']] a
 	'cooperationstatistics-nbusers' => 'have $1 editors',
 	'cooperationstatistics-nblessusers' => 'have $1 or less editors',
 	'cooperationstatistics-nbmoreusers' => 'have $1 or more editors',
-	'cooperationstatistics-legendmore' => ' or more editors.',
+	'cooperationstatistics-legendmore' => 'or more editors.',
 
 	// Settings. Do not translate
 	'cooperationstatistics-users' => 'editors',
@@ -29,10 +29,15 @@ See also the [[Special:MostRevisors|\'\'\'pages with the most revisors\'\'\']] a
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'cooperationstatistics-desc' => 'Short description of the extension, shown on [[Special:Version]].',
 	'cooperationstatistics-text' => 'Consider translating the + sign to " or more" if "number+" is not a commonplace notation in your language.',
+	'cooperationstatistics-articles' => 'This message supports PLURAL for $1',
+	'cooperationstatistics-nbusers' => 'This message supports PLURAL for $1',
+	'cooperationstatistics-nblessusers' => 'This message supports PLURAL for $1',
+	'cooperationstatistics-nbmoreusers' => 'This message supports PLURAL for $1',
 );
 
 /** French (Français)
