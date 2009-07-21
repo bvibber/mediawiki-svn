@@ -7,9 +7,9 @@ create-language-views.pl - Create the views needed to render l18n-enabled maps w
 =head1 SYNOPSIS
 
     perl wikipedia-language-codes.pl > wikipedia-languages.yml
-    perl create-language-views.pl --languages wikipedia-languages.yml --psql-user gis > create_views.sql
-    perl create-language-views.pl --languages wikipedia-languages.yml --psql-user gis --delete > delete_views.sql
-    psql -U gis gis < create_views.sql
+    perl create-language-views.pl --languages wikipedia-languages.yml --psql-user gis --psql-db gis > create_views.sql
+    perl create-language-views.pl --languages wikipedia-languages.yml --psql-user gis --psql-db gis --delete > delete_views.sql
+    psql -U gis -d gis < create_views.sql
 
 =head1 OPTIONS
 
@@ -26,6 +26,10 @@ A YAML file to read languages from, e.g. F<wikipedia-languages.yml>
 =item --psql-user
 
 The PostgreSQL user to use.
+
+=item --psql-db
+
+The PostgreSQL database to use.
 
 =item --delete
 
@@ -60,6 +64,7 @@ Getopt::Long::Parser->new(
 	'h|help' => \my $help,
 	'languages=s' => \my $languages,
     'psql-user=s' => \my $psql_user,
+    'psql-db=s' => \my $psql_db,
     'delete' => \my $delete,
     'style=s' => \my $style,
 ) or help();
@@ -81,6 +86,12 @@ unless (-r $languages)
 if (not defined $psql_user)
 {
     warn "--psql-user must be supplied";
+    help();
+}
+
+if (not defined $psql_db)
+{
+    warn "--psql-db must be supplied";
     help();
 }
 
@@ -208,7 +219,7 @@ sub do_query
 {
     my $query = shift;
 
-    my $out = qx[ echo "$query" | psql -t -A -U $psql_user ];
+    my $out = qx[ echo "$query" | psql -t -A -U $psql_user -d $psql_db ];
     return $out;
 }
 
