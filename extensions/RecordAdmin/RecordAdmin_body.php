@@ -475,7 +475,6 @@ class SpecialRecordAdmin extends SpecialPage {
 					$html = preg_replace( "|(<option[^<>]*) selected|", "$1", $html ); # remove the currently selected option
 					if ( $v ) {
 						foreach( split( "\n", $v ) as $v ) {
-							print $v;
 							$html = preg_match( "|<option[^>]+value\s*=|s", $html )
 								? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|s", "$1 selected$2", $html )
 								: preg_replace( "|(<option[^>]*)(?=>$v</option>)|s", "$1 selected", $html );
