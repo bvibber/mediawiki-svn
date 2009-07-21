@@ -136,7 +136,10 @@ for my $language (@languages)
     for my $table (@tables) {
         my @munged_columns = munged_columns($code, @{ $columns{$table} });
 
-        my $view_name = "view_${table}_lang_${code}";
+        # Due to https://trac.mapnik.org/ticket/393
+        my $munged_code = $code; $munged_code =~ s/-/_/g;
+
+        my $view_name = "view_${table}_lang_${munged_code}";
 
         if ($delete) {
             say "DROP VIEW \"$view_name\";";

@@ -169,9 +169,12 @@ sub language_replacement
 {
     my ($xml, $code) = @_;
 
+    # Due to https://trac.mapnik.org/ticket/393
+    my $munged_code = $code; $munged_code =~ s/-/_/g;
+
     # %PREFIX%_point
     # view_planet_osm_point_lang_aa
-    $xml =~ s/%PREFIX%_(\S+)/"view_planet_osm_${1}_lang_${code}"/g;
+    $xml =~ s/%PREFIX%_(\S+)/view_planet_osm_${1}_lang_${munged_code}/g;
 
     return $xml;
 }
