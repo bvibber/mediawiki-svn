@@ -86,12 +86,12 @@ class SlippyMapHook {
 	 * Hook to add JS variables to <head>
 	 */
 	public function jsVariables( $vars ) {
-		global $wgLang, $wgSlippyMapAutoLoadMaps;
+		global $wgContLang, $wgSlippyMapAutoLoadMaps;
 
 		$vars['wgSlippyMapCode'] = wfMsg( 'slippymap_code' );
 		$vars['wgSlippyMapButtonCode'] = wfMsg( 'slippymap_button_code' );
 		$vars['wgSlippyMapResetview'] = wfMsg( 'slippymap_resetview' );
-		$vars['wgSlippyMapLanguageCode'] = $wgLang->getCode();
+		$vars['wgSlippyMapLanguageCode'] = $wgContLang->getCode();
 		$vars['wgSlippyMapSlippyByDefault'] = $wgSlippyMapAutoLoadMaps;
 
 		return true;
