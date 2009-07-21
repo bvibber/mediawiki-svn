@@ -261,7 +261,7 @@ function efWikidataOverrideEditPage( $article, $user ) {
 		$editor = new WikidataEditPage( $article );
 		$editor->edit();
 	}
-	return false;
+	return !wdIsWikidataNs() ;	
 }
 
 function efWikidataOverridePageHistory( $output, $article, $title, $user, $request, $wiki ) {
@@ -277,5 +277,5 @@ function efWikidataHandlerNamespacePreventMove( $oldtitle, $newtitle, $user, &$e
 	if ( wdIsWikidataNs() ) {
 		$error = wfMsg( 'wikidata-handler-namespace-move-error' );
 	}
-	return !( wdIsWikidataNs() );
+	return !wdIsWikidataNs();
 }
