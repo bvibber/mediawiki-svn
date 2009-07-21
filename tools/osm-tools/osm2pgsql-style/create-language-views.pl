@@ -100,7 +100,7 @@ if (not defined $psql_db)
 #
 
 # The tables we're creating views for
-my @tables = split_query( "select table_name from information_schema.tables where table_name ~ '^planet_osm';" );
+my @tables = split_query( "select table_name from information_schema.tables where table_name ~ '^planet_osm_(point|line|polygon|roads)';" );
 
 if (not @tables) {
     die "There were no tables beginning with 'planet_osm' in your database, or perhaps the database connection failed";
