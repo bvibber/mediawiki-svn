@@ -26,6 +26,7 @@ $wgHooks[ 'GetPreferences'        ][] = 'efWikidataGetPreferences';
 $wgHooks[ 'ArticleFromTitle'      ][] = 'efWikidataOverrideArticle';
 $wgHooks[ 'CustomEditor'          ][] = 'efWikidataOverrideEditPage';
 $wgHooks[ 'MediaWikiPerformAction'][] = 'efWikidataOverridePageHistory';
+$wgHooks[ 'AbortMove'             ][] = 'efWikidataHandlerNamespacePreventMove';
 $wgAutoloadClasses[ 'WikidataArticle'      ] = $dir . 'includes/WikidataArticle.php';
 $wgAutoloadClasses[ 'WikidataEditPage'     ] = $dir . 'includes/WikidataEditPage.php';
 $wgAutoloadClasses[ 'WikidataPageHistory'  ] = $dir . 'includes/WikidataPageHistory.php';
@@ -174,7 +175,7 @@ function modifyTabs( $skin, $content_actions ) {
 	$dc = wdGetDataSetContext();
 	$ns = $wgTitle->getNamespace();
 	$editChanged = false;
-	if ( array_key_exists( $ns, $wdHandlerClasses ) && $wdHandlerClasses[ $ns ] == 'DefinedMeaning' ) {
+	if ( wdIsWikidataNs() && $wdHandlerClasses[ $ns ] == 'DefinedMeaning' ) {
 	
 		# Hackishly determine which DMID we're on by looking at the page title component
 		$tt = $wgTitle->getText();
@@ -198,6 +199,9 @@ function modifyTabs( $skin, $content_actions ) {
 			);
 		}
 	}
+
+	// Prevent move tab being shown.
+	if( wdIsWikidataNs() ) unset( $content_actions['move'] );
 
 	// Add context dataset (old hooks 'GetEditLinkTrail' and 'GetHistoryLinkTrail')
 	if ( !$editChanged && $content_actions['edit'] != null ) {
@@ -248,18 +252,12 @@ function efWikidataGetPreferences( $user, &$preferences ) {
 }
 
 function efWikidataOverrideArticle( &$title, &$article ) {
-	global $wdHandlerClasses;
-	$ns = $title->getNamespace();
-	if ( array_key_exists( $ns, $wdHandlerClasses ) ) {
-		$article = new WikidataArticle( $title );
-	}
+	if ( wdIsWikidataNs() ) $article = new WikidataArticle( $title );
 	return true;
 }
 
 function efWikidataOverrideEditPage( $article, $user ) {
-	global $wdHandlerClasses;
-	$ns = $article->mTitle->getNamespace();
-	if ( array_key_exists( $ns, $wdHandlerClasses ) ) {
+	if ( wdIsWikidataNs() ) {
 		$editor = new WikidataEditPage( $article );
 		$editor->edit();
 	}
@@ -268,13 +266,16 @@ function efWikidataOverrideEditPage( $article, $user ) {
 
 function efWikidataOverridePageHistory( $output, $article, $title, $user, $request, $wiki ) {
 	$action = $request->getVal( 'action' );
-	if( $action === 'history' ) {
-		global $wdHandlerClasses;
-		$ns = $title->getNamespace();
-		if ( array_key_exists( $ns, $wdHandlerClasses ) ) {
-			$history = new WikidataPageHistory( $article );
-			$history->history();
-		}
+	if ( $action === 'history' && wdIsWikidataNs() ) {
+		$history = new WikidataPageHistory( $article );
+		$history->history();
 	}
-	return !( $action === 'history' );
+	return !( $action === 'history' && wdIsWikidataNs() );
+}
+
+function efWikidataHandlerNamespacePreventMove( $oldtitle, $newtitle, $user, &$error, $reason ) {
+	if ( wdIsWikidataNs() ) {
+		$error = wfMsg( 'wikidata-handler-namespace-move-error' );
+	}
+	return !( wdIsWikidataNs() );
 }

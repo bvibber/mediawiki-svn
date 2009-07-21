@@ -12,6 +12,9 @@ $messages = array();
 $messages['en'] = array(
 	'wikidata-desc' => 'Adds wiki-like database for various types of content',
 
+	# Messages related to the handler classes.
+	'wikidata-handler-namespace-move-error' => 'Namespaces handled by the Wikidata extension cannot be moved.',
+
 	'languages' => 'Wikidata: Language manager',
 	'langman-desc' => 'Add and change language settings with [[Special:Languages]]',
 	'langman_title' => 'Language manager',

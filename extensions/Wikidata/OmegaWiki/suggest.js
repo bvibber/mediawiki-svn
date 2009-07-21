@@ -57,8 +57,8 @@ function updateSuggestions(suggestPrefix) {
 		URL = '../' + URL;
 
 	URL = 
-		URL + 
-		'/Special:Suggest?search-text=' + encodeURI(suggestText.value) + 
+		wgScript +
+		'?title=Special:Suggest&search-text=' + encodeURI(suggestText.value) + 
 		'&prefix=' + encodeURI(suggestPrefix) + 
 		'&query=' + encodeURI(suggestQuery) + 
 		'&offset=' + encodeURI(suggestOffset) + 
