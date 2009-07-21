@@ -1,0 +1,21 @@
+# This is a configuration file for our cgi-bin/export script
+
+
+limits:
+  # Maximum load before we start to refuse service
+  max_load: 40.0
+
+  # Resource limits passed to setrlimit(3)
+  rlimit:
+    as:
+      min: 4000000000
+      max: 4000000000
+
+    cpu:
+      min: 300
+      max: 300
+
+maptypes:
+  - osm-like
+
+locales: /sql/misc-data/wikipedia-languages.yml  

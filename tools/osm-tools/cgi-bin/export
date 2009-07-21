@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # This script has been copied from
@@ -13,20 +13,36 @@ import shutil
 import sys
 import tempfile
 import resource
+import yaml
+
+#
+# Config data
+#
+
+config = yaml.load(open('/sql/etc/export-config.yml'))
+
+cpu_min = config['limits']['rlimit']['cpu']['min']
+cpu_max = config['limits']['rlimit']['cpu']['max']
+
+as_min = config['limits']['rlimit']['as']['min']
+as_max = config['limits']['rlimit']['as']['max']
+
+max_load = config['limits']['max_load']
+
+maptypes = config['maptypes']
+locales = yaml.load(open(config['locales']))
 
 # Limit maximum CPU time
 # The Postscript output format can sometimes take hours
-resource.setrlimit(resource.RLIMIT_CPU,(300,300))
+resource.setrlimit(resource.RLIMIT_CPU,(cpu_min, cpu_max))
 
 # Limit memory usage
 # Some odd requests can cause extreme memory usage
-resource.setrlimit(resource.RLIMIT_AS,(4000000000, 4000000000))
+resource.setrlimit(resource.RLIMIT_AS,(as_min, as_max))
 
 # Routine to output HTTP headers
-def output_headers(content_type, filename = "", length = 0):
+def output_headers(content_type, length = 0):
   print "Content-Type: %s" % content_type
-  if filename:
-    print "Content-Disposition: attachment; filename=\"%s\"" % filename
   if length:
     print "Content-Length: %d" % length
   print ""
@@ -58,7 +74,7 @@ form = cgi.FieldStorage()
 
 # Abort if the load average on the machine is too high
 loadavg = float(open("/proc/loadavg").readline().split(" ")[0])
-if loadavg > 40.0:
+if loadavg > max_load:
   print "Status: 503 Service Unavailable"
   output_error("The load average on the server is too high at the moment. Please wait a few minutes before trying again.")
  
@@ -72,6 +88,16 @@ elif not form.has_key("scale"):
 elif not form.has_key("format"):
   # No format specified
   output_error("No format specified")
+elif not form.has_key("maptype"):
+  # No format specified
+  output_error("No maptype specified")
+elif not form.has_key("locale"):
+  # No format specified
+  output_error("No locale specified")
+elif not form.getvalue("maptype") in maptypes:
+  output_error("Invalid maptype, valid types are %s" % maptypes)
+elif not form.getvalue("locale") in locales:
+  output_error("Invalid locale %s valid are %s" % (form.getvalue("locale"), locales))
 else:
   # Create projection object
   prj = mapnik.Projection("+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over");
@@ -100,7 +126,7 @@ else:
       map = mapnik.Map(width, height)
 
       # Load map configuration
-      mapnik.load_map(map, "/home/jburgess/live/osm.xml")
+      mapnik.load_map(map, "/sql/mapnik-stylesheets/%s/osm-%s.xml" % (form.getvalue("maptype"), form.getvalue("locale")))
 
       # Zoom the map to the bounding box
       map.zoom_to_box(bbox)
@@ -110,34 +136,7 @@ else:
         image = mapnik.Image(map.width, map.height)
         mapnik.render(map, image)
         png = image.tostring("png") 
-        output_headers("image/png", "map.png", len(png))
+        output_headers("image/png", len(png))
         print png
-      elif form.getvalue("format") == "jpeg":
-        image = mapnik.Image(map.width, map.height)
-        mapnik.render(map, image)
-        jpeg = image.tostring("jpeg") 
-        output_headers("image/jpeg", "map.jpg", len(jpeg))
-        print jpeg
-      elif form.getvalue("format") == "svg":
-        file = tempfile.NamedTemporaryFile()
-        surface = cairo.SVGSurface(file.name, map.width, map.height)
-        mapnik.render(map, surface)
-        surface.finish()
-        output_headers("image/svg+xml", "map.svg", file_size(file))
-        output_file(file)
-      elif form.getvalue("format") == "pdf":
-        file = tempfile.NamedTemporaryFile()
-        surface = cairo.PDFSurface(file.name, map.width, map.height)
-        mapnik.render(map, surface)
-        surface.finish()
-        output_headers("application/pdf", "map.pdf", file_size(file))
-        output_file(file)
-      elif form.getvalue("format") == "ps":
-        file = tempfile.NamedTemporaryFile()
-        surface = cairo.PSSurface(file.name, map.width, map.height)
-        mapnik.render(map, surface)
-        surface.finish()
-        output_headers("application/postscript", "map.ps", file_size(file))
-        output_file(file)
       else:
         output_error("Unknown format '%s'" % form.getvalue("format"))
