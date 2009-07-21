@@ -68,35 +68,6 @@ Index: includes/SearchEngine.php
  			# Now try all lower case (i.e. first letter capitalized)
  			#
  			$title = Title::newFromText( $wgContLang->lc( $term ) );
-Index: includes/EditPage.php
-===================================================================
---- includes/EditPage.php	(revision 53499)
-+++ includes/EditPage.php	(working copy)
-@@ -400,6 +400,24 @@
- 			wfProfileOut( __METHOD__ );
- 			return;
- 		} else {
-+
-+			global $wdHandlerClasses, $wdHandlerPath;
-+			$namespaceId = $this->mTitle->getNamespace();
-+	                if( array_key_exists( $namespaceId, $wdHandlerClasses ) ) {
-+				$handlerClass = $wdHandlerClasses[ $namespaceId ];
-+				$handlerFile = $wdHandlerPath . $handlerClass . '.php';
-+				if( file_exists( $handlerFile ) ) {
-+					require_once $handlerFile;
-+					$handlerInstance = new $handlerClass();
-+					$handlerInstance->edit();
-+					return;
-+				} else {
-+					$wgOut->showErrorPage( 'namespace_handler_not_found', 'namespace_handler_not_found_error',
-+					$handlerFie, $wgContLang->getFormattedNsText( $namespaceId ) );
-+				}
-+			}
-+
-+
- 			if ( $this->save ) {
- 				$this->formtype = 'save';
- 			} else if ( $this->preview ) {
 Index: includes/Namespace.php
 ===================================================================
 --- includes/Namespace.php	(revision 53499)

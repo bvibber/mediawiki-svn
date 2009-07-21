@@ -24,7 +24,9 @@ $wgHooks['BeforePageDisplay'][] = 'addWikidataHeader';
 $wgHooks['SkinTemplateTabs'][] = 'modifyTabs';
 $wgHooks['GetPreferences'][] = 'wfWikiDataGetPreferences';
 $wgHooks['ArticleFromTitle'][] = 'efWikidataOverrideArticle';
+$wgHooks['CustomEditor'][] = 'efWikidataOverrideEditPage';
 $wgAutoloadClasses['WikidataArticle'] = $dir . 'includes/WikidataArticle.php';
+$wgAutoloadClasses['WikidataEditPage'] = $dir . 'includes/WikidataEditPage.php';
 $wgAutoloadClasses['ApiWikiData'] = $dir . 'includes/api/ApiWikiData.php';
 $wgAutoloadClasses['ApiWikiDataFormatBase'] = $dir . 'includes/api/ApiWikiDataFormatBase.php';
 $wgAutoloadClasses['ApiWikiDataFormatXml'] = $dir . 'includes/api/ApiWikiDataFormatXml.php';
@@ -247,4 +249,14 @@ function efWikidataOverrideArticle( &$title, &$article ) {
 		$article = new WikidataArticle( $title );
 	}
 	return true;
+}
+
+function efWikidataOverrideEditPage( $article, $user ) {
+	global $wdHandlerClasses;
+	$ns = $article->mTitle->getNamespace();
+	if ( array_key_exists( $ns, $wdHandlerClasses ) ) {
+		$editor = new WikidataEditPage( $article );
+		$editor->edit();
+	}
+	return false;
 }
