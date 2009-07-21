@@ -24,14 +24,18 @@ public class FeatureAssemblingCursorTest extends TestCase {
 		a.add("id", 1);
 		a.add("property", "name");
 		a.add("value", "A");
-		a.add("value", "a");
 		a.add("xyzzy", "bla");
+
+		DefaultRecord a2 = new DefaultRecord();
+		a2.add("id", 1);
+		a2.add("property", "name");
+		a2.add("value", "a");
 
 		DefaultRecord b = new DefaultRecord();
 		b.add("id", 1);
 		b.add("property", "foo");
 		b.add("value", "X");
-		b.add("value", "Y");
+		//b.add("value", "Y"); //NOTE: multi-value records are not supported in this context!
 		
 		DefaultRecord x = new DefaultRecord();
 		x.add("id", 2);
@@ -50,7 +54,7 @@ public class FeatureAssemblingCursorTest extends TestCase {
 		one.addFeature("name", "A", null);
 		one.addFeature("name", "a", null);
 		one.addFeature("foo", "X", null);
-		one.addFeature("foo", "Y", null);
+		//one.addFeature("foo", "Y", null);
 
 		DefaultFeatureSet two = new DefaultFeatureSet();
 		two.addFeature("id", 2, null);
@@ -58,7 +62,7 @@ public class FeatureAssemblingCursorTest extends TestCase {
 		two.addFeature("alias", "Foo", null);
 		
 		List<FeatureSet> exp= Arrays.asList(new FeatureSet[] {one, two});
-		List<Record> source= Arrays.asList(new Record[] {a, b, x, y});
+		List<Record> source= Arrays.asList(new Record[] {a, a2, b, x, y});
 		
 		DataCursor<Record> sourceCursor = new IteratorCursor<Record>(source.iterator());
 		DataCursor<FeatureSet> cursor = FeatureAssemblingCursor.newForRecordCursor(sourceCursor, "id", "property", "value");

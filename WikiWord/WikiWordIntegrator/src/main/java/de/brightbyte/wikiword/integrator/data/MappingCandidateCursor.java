@@ -33,7 +33,8 @@ public class MappingCandidateCursor implements DataCursor<MappingCandidates> {
 			prev = cursor.next();
 			if (prev==null) break;
 			
-			if (prev.getForeignEntity().getID().equals( fe.getID())) break;
+			if (!prev.getForeignEntity().getAuthority().equals( fe.getAuthority())) break;
+			if (!prev.getForeignEntity().getID().equals( fe.getID())) break;
 
 			candidates.add(prev.getConceptEntity());
 		}

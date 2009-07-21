@@ -3,6 +3,7 @@ package de.brightbyte.wikiword.integrator.data;
 import java.util.Collection;
 
 import de.brightbyte.abstraction.PropertyAccessor;
+import de.brightbyte.data.Functors;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.integrator.data.filter.BestMappingCandidateSelector;
@@ -19,11 +20,11 @@ public class FilteredMappingCandidateCursor implements DataCursor<MappingCandida
 	protected MappingCandidateFilter filter;
 	
 	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, String field) {
-		this(cursor, new Record.Accessor<Integer>(field, Integer.class));
+		this(cursor, new Record.AggregatingAccessor<Number, Double>(field, Double.class, Functors.Double.max));
 	}
 	
 	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, String field, int threshold) {
-		this(cursor,  new Record.Accessor<Integer>(field, Integer.class), threshold);
+		this(cursor,  new Record.AggregatingAccessor<Number, Double>(field, Double.class, Functors.Double.max), threshold);
 	}
 	
 	public FilteredMappingCandidateCursor(DataCursor<MappingCandidates> cursor, PropertyAccessor<Record, ? extends Number> accessor) {

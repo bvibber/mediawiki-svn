@@ -12,13 +12,29 @@ public class DefaultRecord implements Record, Serializable, Cloneable {
 	private static final long serialVersionUID = 5538610907302985392L;
 	
 	protected Map<String, Object> data;
+
+	private boolean unmodifiable;
 	
 	public DefaultRecord() {
-		this(null);
+		this((Map<String, Object>)null);
+	}
+
+	public DefaultRecord(Record... data) {
+		this();
+		
+		for (Record r: data) {
+			addAll(r);
+		}
 	}
 	
 	protected DefaultRecord(Map<String, Object> data) {
-		if (data==null) data = new HashMap<String, Object>();
+		if (data==null) {
+			data = new HashMap<String, Object>();
+			unmodifiable = false;
+		} else {
+			unmodifiable = true;
+		}
+		
 		this.data = data;
 	}
 	
@@ -39,6 +55,8 @@ public class DefaultRecord implements Record, Serializable, Cloneable {
 	}
 	
 	public boolean add(String key, Object value, boolean allowDupes) {
+		if (unmodifiable) throw new UnsupportedOperationException("derived record is unmodifiable");
+		
 		Object old = data.get(key);
 		
 		if (value instanceof Object[]) {

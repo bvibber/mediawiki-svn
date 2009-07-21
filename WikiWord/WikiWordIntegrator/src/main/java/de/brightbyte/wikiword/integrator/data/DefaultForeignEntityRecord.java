@@ -8,50 +8,50 @@ import de.brightbyte.data.Functor;
 public class DefaultForeignEntityRecord extends DefaultRecord implements  ForeignEntityRecord{
 
 	public static class FromRecord implements Functor<DefaultForeignEntityRecord, Record> {
-		protected String authorityId;
+		protected String authorityField;
 		protected String idField;
 		protected String nameField;
 
-		public FromRecord(String authorityId, String idField, String nameField) {
-			if (authorityId==null) throw new NullPointerException();
+		public FromRecord(String authorityField, String idField, String nameField) {
+			if (authorityField==null) throw new NullPointerException();
 			if (idField==null) throw new NullPointerException();
 			if (nameField==null) nameField = idField;
 		}
 
 		public DefaultForeignEntityRecord apply(Record rec) {
-			return new DefaultForeignEntityRecord(rec, authorityId, idField, nameField);
+			return new DefaultForeignEntityRecord(rec, authorityField, idField, nameField);
 		}
 		
 	}
 	
-	protected String authorityId;
+	protected String authorityField;
 	protected String idField;
 	protected String nameField;
 	
-	public DefaultForeignEntityRecord(Map<String, Object> data, String authorityId, String idField, String nameField) {
+	public DefaultForeignEntityRecord(Map<String, Object> data, String authorityField, String idField, String nameField) {
 		super(data);
 		
-		if (authorityId==null) throw new NullPointerException();
+		if (authorityField==null) throw new NullPointerException();
 		if (idField==null) throw new NullPointerException();
 		if (nameField==null) nameField = idField;
 		
-		this.authorityId = authorityId;
+		this.authorityField = authorityField;
 		this.idField = idField;
 		this.nameField = nameField;
 	}
 	
-	public DefaultForeignEntityRecord(Record rec, String authorityId, String idField, String nameField) {
-		this(rec instanceof DefaultRecord ? ((DefaultRecord)rec).data : null, authorityId, idField, nameField);
+	public DefaultForeignEntityRecord(Record rec, String authorityField, String idField, String nameField) {
+		this(rec instanceof DefaultRecord ? ((DefaultRecord)rec).data : null, authorityField, idField, nameField);
 		if (!(rec instanceof DefaultRecord)) addAll(data);
 	}
 
-	protected DefaultForeignEntityRecord( String authorityId, String idField, String nameField) {
-		this((Map<String, Object>)null, authorityId, idField, nameField);
+	protected DefaultForeignEntityRecord( String authorityField, String idField, String nameField) {
+		this((Map<String, Object>)null, authorityField, idField, nameField);
 		addAll(data);
 	}
 
 	public String getAuthority() {
-		return authorityId;
+		return authorityField;
 	}
 
 	public String getID() {
@@ -67,17 +67,13 @@ public class DefaultForeignEntityRecord extends DefaultRecord implements  Foreig
 		return String.valueOf(v);
 	}
 	
-	public boolean add(String key, Object value) {
-		throw new UnsupportedOperationException("foreign entity is unmodifiable");
-	}
-	
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;
 		int result = super.hashCode();
-		result = PRIME * result + ((authorityId == null) ? 0 : authorityId.hashCode());
-		result = PRIME * result + ((idField == null) ? 0 : idField.hashCode());
-		result = PRIME * result + ((nameField == null) ? 0 : nameField.hashCode());
+		result = PRIME * result + getID().hashCode();
+		result = PRIME * result + getAuthority().hashCode();
+		result = PRIME * result + ((getName() == null) ? 0 : getName().hashCode());
 		return result;
 	}
 
@@ -87,25 +83,32 @@ public class DefaultForeignEntityRecord extends DefaultRecord implements  Foreig
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (!(obj instanceof ForeignEntity))
 			return false;
-		final DefaultForeignEntityRecord other = (DefaultForeignEntityRecord) obj;
-		if (authorityId == null) {
-			if (other.authorityId != null)
-				return false;
-		} else if (!authorityId.equals(other.authorityId))
-			return false;
-		if (idField == null) {
-			if (other.idField != null)
-				return false;
-		} else if (!idField.equals(other.idField))
-			return false;
-		if (nameField == null) {
-			if (other.nameField != null)
-				return false;
-		} else if (!nameField.equals(other.nameField))
-			return false;
-		return super.equals(obj);
+		
+		final ForeignEntity other = (ForeignEntity) obj;
+		
+		if (!getAuthority().equals(other.getAuthority())) return false;
+		if (!getID().equals(other.getID())) return false;
+		
+		if (getName()!=null && other.getName()!=null) {
+			if (!getName().equals(other.getName())) return false;
+		}
+
+		return true;
 	}
+
+	public String getAuthorityField() {
+		return authorityField;
+	}
+
+	public String getIDField() {
+		return idField;
+	}
+
+	public String getNameField() {
+		return nameField;
+	}
+	
 
 }

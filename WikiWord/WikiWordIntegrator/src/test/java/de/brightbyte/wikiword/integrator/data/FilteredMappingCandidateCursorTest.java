@@ -18,30 +18,32 @@ public class FilteredMappingCandidateCursorTest extends TestCase {
 	}
 
 	public void testNext() throws PersistenceException {
-		FeatureSet a = new DefaultFeatureSet("name");
-		a.put("name", "A");
+		DefaultForeignEntityRecord a = new DefaultForeignEntityRecord("authority", "name", "name");
+		a.add("auhtority", "ACME");
+		a.add("name", "A");
 
-		FeatureSet b = new DefaultFeatureSet("name");
-		b.put("name", "B");
+		DefaultForeignEntityRecord b = new DefaultForeignEntityRecord("authority", "name", "name");
+		b.add("auhtority", "ACME");
+		b.add("name", "B");
 		
-		FeatureSet x = new DefaultFeatureSet("name");
-		x.put("id", 10);
-		x.put("value", 3);
-		x.put("value", 3);
+		DefaultConceptEntityRecord x = new DefaultConceptEntityRecord("id", "name");
+		x.add("id", 10);
+		x.add("value", 3);
+		x.add("value", 3);
 
-		FeatureSet y = new DefaultFeatureSet("name");
-		y.put("id", 11);
-		y.put("value", 4);
-		y.put("value", 1);
+		DefaultConceptEntityRecord y = new DefaultConceptEntityRecord("id", "name");
+		y.add("id", 11);
+		y.add("value", 4);
+		y.add("value", 1);
 		
-		FeatureSet p = new DefaultFeatureSet("foo");
-		p.put("id", 20);
-		p.put("concept", "five");
-		p.put("value", 3);
+		DefaultConceptEntityRecord p = new DefaultConceptEntityRecord("id", "name");
+		p.add("id", 20);
+		p.add("concept", "five");
+		p.add("value", 7);
 
-		FeatureSet q = new DefaultFeatureSet("foo");
-		q.put("id", 21);
-		q.put("value", 7);
+		DefaultConceptEntityRecord q = new DefaultConceptEntityRecord("id", "name");
+		q.add("id", 21);
+		q.add("value", 3);
 		
 		//--------------------------------------
 		ArrayList<MappingCandidates> source = new ArrayList<MappingCandidates>();
@@ -49,8 +51,8 @@ public class FilteredMappingCandidateCursorTest extends TestCase {
 		source.add(new MappingCandidates(b, p, q));
 		
 		ArrayList<MappingCandidates> exp = new ArrayList<MappingCandidates>();
-		exp.add(new MappingCandidates(a, x));
-		exp.add(new MappingCandidates(b, q));
+		exp.add(new MappingCandidates(a, y));
+		exp.add(new MappingCandidates(b, p));
 		
 		DataCursor<MappingCandidates> sourceCursor = new IteratorCursor<MappingCandidates>(source.iterator());
 		DataCursor<MappingCandidates> cursor = new FilteredMappingCandidateCursor(sourceCursor, "value");

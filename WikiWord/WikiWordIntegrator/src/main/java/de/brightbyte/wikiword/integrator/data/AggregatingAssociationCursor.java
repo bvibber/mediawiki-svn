@@ -32,7 +32,7 @@ public class AggregatingAssociationCursor implements DataCursor<Association> {
 		if (prev==null) prev = cursor.next();
 		if (prev==null) return null;
 		
-		Association a = prev.clone(); 
+		DefaultAssociation a = new DefaultAssociation(prev); 
 		
 		while (true) {
 			prev = cursor.next();
@@ -42,7 +42,7 @@ public class AggregatingAssociationCursor implements DataCursor<Association> {
 			if (!prev.getForeignEntity().getAuthority().equals( a.getForeignEntity().getAuthority())) break;
 			if (!prev.getForeignEntity().getID().equals( a.getForeignEntity().getID())) break;
 			
-			((DefaultAssociation)a).aggregate((DefaultAssociation)prev, accumulators);
+			((DefaultAssociation)a).aggregate(prev, accumulators);
 		}
 		
 		return a;

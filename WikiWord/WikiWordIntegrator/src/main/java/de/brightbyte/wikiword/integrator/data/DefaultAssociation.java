@@ -32,7 +32,7 @@ public class DefaultAssociation implements  Association {
 		if (foreignIdField==null) throw new NullPointerException(); 
 		if (conceptIdField==null) throw new NullPointerException(); 
 		if (foreignNameField==null) foreignNameField = foreignIdField; 
-		if (conceptNameField==null) conceptNameField = conceptNameField; 
+		if (conceptNameField==null) conceptNameField = conceptIdField; 
 		
 		this.data = data;
 		this.foreignAuthorityField = foreignAuthorityField;
@@ -45,6 +45,15 @@ public class DefaultAssociation implements  Association {
 		
 		foreignEntity = new DefaultForeignEntityRecord(this.data, foreignAuthorityField, foreignIdField, foreignNameField);
 		conceptEntity = new DefaultConceptEntityRecord(this.data, conceptIdField, conceptNameField);
+	}
+
+	public DefaultAssociation(Association assoc) {
+		this(new DefaultRecord(assoc.getForeignEntity(), assoc.getConceptEntity(), assoc.getQualifiers()),
+				assoc.getForeignEntity().getAuthorityField(), 
+				assoc.getForeignEntity().getIDField(),
+				assoc.getForeignEntity().getNameField(),
+				assoc.getConceptEntity().getIDField(),
+				assoc.getConceptEntity().getNameField());
 	}
 
 	public ConceptEntityRecord getConceptEntity() {
@@ -75,38 +84,65 @@ public class DefaultAssociation implements  Association {
 			}
 	}
 
-	public void aggregate(DefaultAssociation add, Map<String, Accumulator<?, ?>> accumulators) {
+	public void aggregate(Association other, Map<String, Accumulator<?, ?>> accumulators) {
+		if (other instanceof DefaultAssociation) {
 			for (Map.Entry<String, Accumulator<?, ?>> e: accumulators.entrySet()) {
 				String field = e.getKey();
-				Accumulator<Object, Object> accumulator = (Accumulator<Object, Object>)e.getValue(); //XXX: unsafe case
+				Accumulator<Object, Object> accumulator = (Accumulator<Object, Object>)e.getValue(); //XXX: unsafe cast
+				Object b = ((DefaultAssociation)other).data.get(field);
 				
-				Object a = data.get(field); 
-				Object b = add.data.get(field); 
-				Object v = null;
-				Collection c = null;
-				
-				if (a==null) v  = b;
-				else if (b==null) v  = a;
-				else { 
-					//deal with multi-value fields
-					if (a instanceof Collection) {
-						if (b instanceof Collection) {
-							((Collection)a).addAll((Collection)b);
-						} else {
-							((Collection)a).add(b);
-						}
-						c = (Collection)a;
-					} else if (b instanceof Collection) {
-						c = new ArrayList();
-						c.addAll((Collection)b);
-						c.add(a);
+				margeValue(field, b, accumulator);
+			}
+		} else {
+			margeValues(other.getForeignEntity(), accumulators);
+			margeValues(other.getConceptEntity(), accumulators);
+			margeValues(other.getQualifiers(), accumulators);
+		}
+	}
+
+	protected void margeValues(Record rec, Map<String, Accumulator<?, ?>> accumulators) {
+		for (String field: rec.keys()) {
+			if (!accumulators.containsKey(field)) continue;
+			Accumulator<Object, Object> accumulator = (Accumulator<Object, Object>)accumulators.get(field);  //XXX: unsafe cast
+			
+			Object b = rec.get(field);
+			margeValue(field, b, accumulator);
+		}
+	}
+	
+	protected void margeValue(String field, Object b, Accumulator<Object, Object> accumulator) {
+			Object a = data.get(field); 
+			Object v = null;
+			Collection c = null;
+			
+			if (a==null) v  = b;
+			else if (b==null) v  = a;
+			else { 
+				//deal with multi-value fields
+				if (a instanceof Collection) {
+					if (b instanceof Collection) {
+						((Collection)a).addAll((Collection)b);
 					} else {
-						v = accumulator.apply(a, b); //XXX: unsafe type assumption in apply. not sure accumulator matches object type
+						((Collection)a).add(b);
 					}
+					c = (Collection)a;
+				} else if (b instanceof Collection) {
+					c = new ArrayList();
+					c.addAll((Collection)b);
+					c.add(a);
+				} else if (accumulator == null) {
+					c = new ArrayList();
+					c.add(a);
+					c.add(b);
+				} else {
+					v = accumulator.apply(a, b); //XXX: unsafe type assumption in apply. not sure accumulator matches object type
 				}
-				
-				if (c!=null) { //if we have a collectiopn, aggregate
-					if (c.isEmpty()) return;
+			}
+			
+			if (c!=null) { //if we have a collectiopn, aggregate
+				if (c.isEmpty()) return;
+				if (accumulator == null) v = c;
+				else {
 					v = null;
 					
 					for (Object x: c) {
@@ -115,24 +151,19 @@ public class DefaultAssociation implements  Association {
 							v = accumulator.apply(v, x);
 						}
 					}
-				} 
-				
-				data.set(field, v);
-			}
+				}
+			} 
+			
+			data.set(field, v);
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;
 		int result = 1;
-		result = PRIME * result + ((conceptEntity == null) ? 0 : conceptEntity.hashCode());
-		result = PRIME * result + ((conceptIdField == null) ? 0 : conceptIdField.hashCode());
-		result = PRIME * result + ((conceptNameField == null) ? 0 : conceptNameField.hashCode());
-		result = PRIME * result + ((data == null) ? 0 : data.hashCode());
-		result = PRIME * result + ((foreignAuthorityField == null) ? 0 : foreignAuthorityField.hashCode());
-		result = PRIME * result + ((foreignEntity == null) ? 0 : foreignEntity.hashCode());
-		result = PRIME * result + ((foreignIdField == null) ? 0 : foreignIdField.hashCode());
-		result = PRIME * result + ((foreignNameField == null) ? 0 : foreignNameField.hashCode());
+		result = PRIME * result + getForeignEntity().hashCode();
+		result = PRIME * result + getConceptEntity().hashCode();
+		result = PRIME * result + getQualifiers().hashCode();
 		return result;
 	}
 
@@ -142,49 +173,14 @@ public class DefaultAssociation implements  Association {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (! (obj instanceof Association))
 			return false;
-		final DefaultAssociation other = (DefaultAssociation) obj;
-		if (conceptEntity == null) {
-			if (other.conceptEntity != null)
-				return false;
-		} else if (!conceptEntity.equals(other.conceptEntity))
-			return false;
-		if (conceptIdField == null) {
-			if (other.conceptIdField != null)
-				return false;
-		} else if (!conceptIdField.equals(other.conceptIdField))
-			return false;
-		if (conceptNameField == null) {
-			if (other.conceptNameField != null)
-				return false;
-		} else if (!conceptNameField.equals(other.conceptNameField))
-			return false;
-		if (data == null) {
-			if (other.data != null)
-				return false;
-		} else if (!data.equals(other.data))
-			return false;
-		if (foreignAuthorityField == null) {
-			if (other.foreignAuthorityField != null)
-				return false;
-		} else if (!foreignAuthorityField.equals(other.foreignAuthorityField))
-			return false;
-		if (foreignEntity == null) {
-			if (other.foreignEntity != null)
-				return false;
-		} else if (!foreignEntity.equals(other.foreignEntity))
-			return false;
-		if (foreignIdField == null) {
-			if (other.foreignIdField != null)
-				return false;
-		} else if (!foreignIdField.equals(other.foreignIdField))
-			return false;
-		if (foreignNameField == null) {
-			if (other.foreignNameField != null)
-				return false;
-		} else if (!foreignNameField.equals(other.foreignNameField))
-			return false;
+		final Association other = (Association) obj;
+
+		if (!getForeignEntity().equals(other.getForeignEntity())) return false;
+		if (!getConceptEntity().equals(other.getConceptEntity())) return false;
+		if (!getQualifiers().equals(other.getQualifiers())) return false;
+		
 		return true;
 	}
 	

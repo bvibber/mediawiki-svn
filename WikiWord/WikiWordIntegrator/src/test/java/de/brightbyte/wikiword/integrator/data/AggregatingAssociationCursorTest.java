@@ -55,19 +55,21 @@ public class AggregatingAssociationCursorTest extends TestCase {
 		source.add(new GenericAssociation(a, x, p));
 		source.add(new GenericAssociation(a, y, p));
 		source.add(new GenericAssociation(a, y, q));
-		source.add(new GenericAssociation(b, y, q));
+		source.add(new DefaultAssociation(new DefaultRecord(b, y, q), "authority", "id", "name", "concept", "label"));
 		source.add(new GenericAssociation(a, y, q));
 		
 		ArrayList<Association> exp = new ArrayList<Association>();
-		exp.add(new GenericAssociation(a, x, p));
-		exp.add(new GenericAssociation(a, y, pq));
-		exp.add(new GenericAssociation(b, y, q));
-		exp.add(new GenericAssociation(a, y, q));
+		exp.add(new GenericAssociation(a, x, new DefaultRecord(a, x, p)));
+		exp.add(new GenericAssociation(a, y, new DefaultRecord(a, y, pq)));
+		exp.add(new GenericAssociation(b, y, new DefaultRecord(b, y, q)));
+		exp.add(new GenericAssociation(a, y, new DefaultRecord(a, y, q)));
 
 		DataCursor<Association> sourceCursor = new IteratorCursor<Association>(source.iterator());
-		DataCursor<Association> cursor = new AggregatingAssociationCursor(sourceCursor);
+		AggregatingAssociationCursor cursor = new AggregatingAssociationCursor(sourceCursor);
+		cursor.addAccumulator("foo", null); ///XXX: adding "no" accumulator preserves the field as multi-value!
 		
-		assertEquals(exp, slurp(cursor));
+		Collection<Association> act = slurp(cursor);
+		assertEquals(exp, act);
 	}
 
 }
