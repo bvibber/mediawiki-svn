@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 $wgExtensionCredits['other'][] = array(
 	'path'            => __FILE__,
 	'name'            => 'Wikidata',
-	'version'         => '1.0.0',
+	'version'         => '0.1.0',
 	'author'          => array(
 		'Erik Möller',
 		'Kim Bruning',
