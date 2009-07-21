@@ -47,7 +47,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Get posted form values if any
 		$posted = array();
-		foreach ( $_REQUEST as $k => $v ) if ( ereg( '^ra_(.+)$', $k, $m ) ) $posted[$m[1]] = $v;
+		foreach ( $_REQUEST as $k => $v ) if ( preg_match( '|^ra_(\\w+)|', $k, $m ) ) $posted[$m[1]] = is_array( $v ) ? join( "\n", $v ) : $v;
 
 		# Read in and prepare the form for this record type if one has been selected
 		if ( $type ) $this->preProcessForm( $type );
@@ -450,10 +450,10 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( !is_array( $values ) ) $values = $this->valuesFromText( $values );
 
 		# Add the values into the form's HTML depending on their type
-		foreach ( $this->types as $k => $type ) {
+		foreach( $this->types as $k => $type ) {
 
 			# Get this input element's html text and position and length
-			preg_match( "|<([a-zA-Z]+)[^<]+?name=\"ra_$k\".*?>(.*?</\\1>)?|s", $this->form, $m, PREG_OFFSET_CAPTURE );
+			preg_match( "|<([a-zA-Z]+)[^<]+?name=\"ra_$k\\[?\\]?\".*?>(.*?</\\1>)?|s", $this->form, $m, PREG_OFFSET_CAPTURE );
 			list( $html, $pos ) = $m[0];
 			$len = strlen( $html );
 
@@ -471,11 +471,15 @@ class SpecialRecordAdmin extends SpecialPage {
 				break;
 				case 'list':
 					$html = preg_replace_callback("|\{\{.+\}\}|s", array($this, 'parsePart'), $html);  # parse any braces
-					if ( empty( $this->record ) ) $html = preg_replace( "|(<option[^<>]*) selected|", "$1", $html ); # remove the currently selected option
+					#if ( empty( $this->record ) ) 
+					$html = preg_replace( "|(<option[^<>]*) selected|", "$1", $html ); # remove the currently selected option
 					if ( $v ) {
-						$html = preg_match( "|<option[^>]+value\s*=|s", $html )
-							? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|s", "$1 selected$2", $html )
-							: preg_replace( "|(<option[^>]*)(?=>$v</option>)|s", "$1 selected", $html );
+						foreach( split( "\n", $v ) as $v ) {
+							print $v;
+							$html = preg_match( "|<option[^>]+value\s*=|s", $html )
+								? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|s", "$1 selected$2", $html )
+								: preg_replace( "|(<option[^>]*)(?=>$v</option>)|s", "$1 selected", $html );
+						}
 					}
 				break;
 				case 'blob':
@@ -504,7 +508,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function examineForm() {
 		$this->types = array();
-		preg_match_all( "|<([a-zA-Z]+)[^<]+?name=\"ra_(.+?)\".*?>|", $this->form, $m );
+		preg_match_all( "|<([a-zA-Z]+)[^<]+?name=\"ra_(.+?)\\[?\\]?\".*?>|", $this->form, $m );
 		foreach ( $m[2] as $i => $k ) {
 			$tag = $m[1][$i];
 			$type = preg_match( "|type\s*=\s*\"(.+?)\"|", $m[0][$i], $n ) ? $n[1] : '';
