@@ -20,20 +20,20 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionFunctions[] = 'initializeWikidata';
-$wgHooks['BeforePageDisplay'][] = 'addWikidataHeader';
-$wgHooks['SkinTemplateTabs'][] = 'modifyTabs';
-$wgHooks['GetPreferences'][] = 'wfWikiDataGetPreferences';
-$wgHooks['ArticleFromTitle'][] = 'efWikidataOverrideArticle';
-$wgHooks['CustomEditor'][] = 'efWikidataOverrideEditPage';
-$wgHooks['MediaWikiPerformAction'][] = 'efWikidataOverridePageHistory';
-$wgAutoloadClasses['WikidataArticle'] = $dir . 'includes/WikidataArticle.php';
-$wgAutoloadClasses['WikidataEditPage'] = $dir . 'includes/WikidataEditPage.php';
-$wgAutoloadClasses['WikidataPageHistory'] = $dir . 'includes/WikidataPageHistory.php';
-$wgAutoloadClasses['ApiWikiData'] = $dir . 'includes/api/ApiWikiData.php';
-$wgAutoloadClasses['ApiWikiDataFormatBase'] = $dir . 'includes/api/ApiWikiDataFormatBase.php';
-$wgAutoloadClasses['ApiWikiDataFormatXml'] = $dir . 'includes/api/ApiWikiDataFormatXml.php';
+$wgHooks[ 'BeforePageDisplay'     ][] = 'addWikidataHeader';
+$wgHooks[ 'SkinTemplateTabs'      ][] = 'modifyTabs';
+$wgHooks[ 'GetPreferences'        ][] = 'efWikidataGetPreferences';
+$wgHooks[ 'ArticleFromTitle'      ][] = 'efWikidataOverrideArticle';
+$wgHooks[ 'CustomEditor'          ][] = 'efWikidataOverrideEditPage';
+$wgHooks[ 'MediaWikiPerformAction'][] = 'efWikidataOverridePageHistory';
+$wgAutoloadClasses[ 'WikidataArticle'      ] = $dir . 'includes/WikidataArticle.php';
+$wgAutoloadClasses[ 'WikidataEditPage'     ] = $dir . 'includes/WikidataEditPage.php';
+$wgAutoloadClasses[ 'WikidataPageHistory'  ] = $dir . 'includes/WikidataPageHistory.php';
+$wgAutoloadClasses[ 'ApiWikiData'          ] = $dir . 'includes/api/ApiWikiData.php';
+$wgAutoloadClasses[ 'ApiWikiDataFormatBase'] = $dir . 'includes/api/ApiWikiDataFormatBase.php';
+$wgAutoloadClasses[ 'ApiWikiDataFormatXml' ] = $dir . 'includes/api/ApiWikiDataFormatXml.php';
 $wgAPIModules['wikidata'] = 'ApiWikiData';
-$wgExtensionMessagesFiles['Wikidata'] = $dir . 'SpecialLanguages.i18n.php';
+$wgExtensionMessagesFiles['Wikidata'] = $dir . 'Wikidata.i18n.php';
 
 # FIXME: Rename this to reduce chance of collision.
 $wgAutoloadClasses['OmegaWiki'] = $dir . 'OmegaWiki/OmegaWiki.php';
@@ -228,9 +228,12 @@ function initializeWikidata() {
 	return true;
 }
 
-function wfWikiDataGetPreferences( $user, &$preferences ) {
+/**
+ * FIXME: This does not seem to do anything, need to check whether the
+ *        preferences are still being detected.
+ */
+function efWikidataGetPreferences( $user, &$preferences ) {
 	$datasets = wdGetDatasets();
-	$datasetarray[wfMsgHtml( 'ow_none_selected' )] = '';
 	foreach ( $datasets as $datasetid => $dataset ) {
 		$datasetarray[$dataset->fetchName()] = $datasetid;
 	}
