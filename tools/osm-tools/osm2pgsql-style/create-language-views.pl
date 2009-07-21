@@ -8,6 +8,7 @@ create-language-views.pl - Create the views needed to render l18n-enabled maps w
 
     perl wikipedia-language-codes.pl > wikipedia-languages.yml
     perl create-language-views.pl --languages wikipedia-languages.yml --psql-user gis > create_views.sql
+    perl create-language-views.pl --languages wikipedia-languages.yml --psql-user gis --delete > delete_views.sql
     psql -U gis gis < create_views.sql
 
 =head1 OPTIONS
@@ -25,6 +26,10 @@ A YAML file to read languages from, e.g. F<wikipedia-languages.yml>
 =item --psql-user
 
 The PostgreSQL user to use.
+
+=item --delete
+
+Create SQL to delete the views and associated data.
 
 =head1 LINKS
 
@@ -55,6 +60,7 @@ Getopt::Long::Parser->new(
 	'h|help' => \my $help,
 	'languages=s' => \my $languages,
     'psql-user=s' => \my $psql_user,
+    'delete' => \my $delete,
     'style=s' => \my $style,
 ) or help();
 
@@ -120,11 +126,16 @@ for my $language (@languages)
         my @munged_columns = munged_columns($code, @{ $columns{$table} });
 
         my $view_name = "view_${table}_lang_${code}";
-        say "CREATE VIEW \"$view_name\" as";
-        say "    SELECT";
-        say join ",\n", map { "        $_" } @munged_columns;
-        say "FROM $table;";
-        say "";
+
+        if ($delete) {
+            say "DROP VIEW \"$view_name\";";
+        } else {
+            say "CREATE VIEW \"$view_name\" as";
+            say "    SELECT";
+            say join ",\n", map { "        $_" } @munged_columns;
+            say "FROM $table;";
+            say "";
+        }
 
         push @{ $created_views{ $table} } => $view_name;
     }
@@ -154,7 +165,11 @@ while (my ($table, $views) = each %created_views) {
     say "";
 
     for my $view (@views) {
-        say qq[INSERT INTO geometry_columns VALUES ('', 'public', '$view', 'way', 2, 900913, '$type');];
+        if ($delete) {
+            say qq[DELETE FROM geometry_columns WHERE f_table_catalog = '' AND f_table_schema = 'public' AND f_table_name = '$view' AND f_geometry_column = 'way' AND coord_dimension = 2 AND srid = 900913 AND type = '$type';];
+        } else {
+            say qq[INSERT INTO geometry_columns VALUES ('', 'public', '$view', 'way', 2, 900913, '$type');];
+        }
     }
 }
 
