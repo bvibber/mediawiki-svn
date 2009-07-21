@@ -25,8 +25,10 @@ $wgHooks['SkinTemplateTabs'][] = 'modifyTabs';
 $wgHooks['GetPreferences'][] = 'wfWikiDataGetPreferences';
 $wgHooks['ArticleFromTitle'][] = 'efWikidataOverrideArticle';
 $wgHooks['CustomEditor'][] = 'efWikidataOverrideEditPage';
+$wgHooks['MediaWikiPerformAction'][] = 'efWikidataOverridePageHistory';
 $wgAutoloadClasses['WikidataArticle'] = $dir . 'includes/WikidataArticle.php';
 $wgAutoloadClasses['WikidataEditPage'] = $dir . 'includes/WikidataEditPage.php';
+$wgAutoloadClasses['WikidataPageHistory'] = $dir . 'includes/WikidataPageHistory.php';
 $wgAutoloadClasses['ApiWikiData'] = $dir . 'includes/api/ApiWikiData.php';
 $wgAutoloadClasses['ApiWikiDataFormatBase'] = $dir . 'includes/api/ApiWikiDataFormatBase.php';
 $wgAutoloadClasses['ApiWikiDataFormatXml'] = $dir . 'includes/api/ApiWikiDataFormatXml.php';
@@ -259,4 +261,17 @@ function efWikidataOverrideEditPage( $article, $user ) {
 		$editor->edit();
 	}
 	return false;
+}
+
+function efWikidataOverridePageHistory( $output, $article, $title, $user, $request, $wiki ) {
+	$action = $request->getVal( 'action' );
+	if( $action === 'history' ) {
+		global $wdHandlerClasses;
+		$ns = $title->getNamespace();
+		if ( array_key_exists( $ns, $wdHandlerClasses ) ) {
+			$history = new WikidataPageHistory( $article );
+			$history->history();
+		}
+	}
+	return !( $action === 'history' );
 }

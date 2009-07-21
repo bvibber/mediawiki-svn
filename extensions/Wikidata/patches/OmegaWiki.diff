@@ -100,31 +100,3 @@ Index: includes/DefaultSettings.php
  /**
   * Display user edit counts in various prominent places.
   */
-Index: includes/PageHistory.php
-===================================================================
---- includes/PageHistory.php	(revision 53499)
-+++ includes/PageHistory.php	(working copy)
-@@ -77,6 +77,22 @@
- 
- 		wfProfileIn( __METHOD__ );
- 
-+		global $wdHandlerClasses, $wdHandlerPath;
-+		$namespaceId = $this->mTitle->getNamespace();
-+		if( array_key_exists( $namespaceId, $wdHandlerClasses ) ) {
-+		$handlerClass = $wdHandlerClasses[ $namespaceId ];
-+			$handlerFile = $wdHandlerPath . $handlerClass . '.php';
-+			if( file_exists( $handlerFile ) ) {
-+                        	require_once $handlerFile;
-+	                        $handlerInstance = new $handlerClass();
-+        	                $handlerInstance->history();
-+				return;
-+			} else {
-+				$wgOut->showErrorPage( 'namespace_handler_not_found', 'namespace_handler_not_found_error',
-+				$handlerFile, $wgContLang->getFormattedNsText( $namespaceId ) );
-+			}
-+                }
-+
- 		/*
- 		 * Setup page variables.
- 		 */
-
