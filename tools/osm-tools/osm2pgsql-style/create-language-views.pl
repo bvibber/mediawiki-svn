@@ -60,9 +60,21 @@ Getopt::Long::Parser->new(
 
 help() if $help;
 
+if (not defined $languages)
+{
+    warn "--languages must be supplied";
+    help();
+}
+
 unless (-r $languages)
 {
     warn "Can't read the file `$languages'";
+    help();
+}
+
+if (not defined $psql_user)
+{
+    warn "--psql-user must be supplied";
     help();
 }
 
@@ -72,6 +84,10 @@ unless (-r $languages)
 
 # The tables we're creating views for
 my @tables = split_query( "select table_name from information_schema.tables where table_name ~ '^planet_osm';" );
+
+if (not @tables) {
+    die "There were no tables beginning with 'planet_osm' in your database, or perhaps the database connection failed";
+}
 
 # Columns in those tables
 my %columns;
