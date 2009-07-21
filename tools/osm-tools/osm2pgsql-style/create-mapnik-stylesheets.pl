@@ -6,11 +6,11 @@ create-mapnik-stylesheets.pl - Create the the mapnik stylesheets needed to rende
 
 =head1 SYNOPSIS
 
-    perl wikipedia-language-codes.pl > wikipedia-languages.yml
+    perl wikipedia-language-codes.pl > /sql/misc-data/wikipedia-languages.yml
     perl create-mapnik-stylesheets.pl \
-        --out-dir /tmp/osm.xml \
-        --languages wikipedia-languages.yml \
-        --osm-template ~/src/osm/applications/rendering/mapnik/osm-template.xml \
+        --out-dir /sql/mapnik-stylesheets/osm-like \
+        --languages /sql/misc-data/wikipedia-languages.yml \
+        --osm-template /usr/local/src/osm/applications/rendering/mapnik/osm-template.xml \
         --symbols-dir /usr/local/src/osm/applications/rendering/mapnik/symbols \
         --world-boundaries-dir /sql/world_boundaries/unpacked \
         --psql-host localhost \

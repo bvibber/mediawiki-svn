@@ -7,7 +7,7 @@ wikipedia-language-codes - Get the list of language codes currently used on Wiki
 =head1 SYNOPSIS
 
     # Spew out a list of Wikipedia language codes and corresponding languages 
-    wikipedia-language-codes.pl > wikipedia-languages.yml
+    wikipedia-language-codes.pl > /sql/misc-data/wikipedia-languages.yml
 
 =head1 OPTIONS
 

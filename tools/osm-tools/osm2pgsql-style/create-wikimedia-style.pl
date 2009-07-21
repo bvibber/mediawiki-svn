@@ -8,8 +8,8 @@ create-wikimedia-style - Munge L<osm2pgsql(1)>'s F<default.style> and create a c
 
     # Read a list of language codes created with
     # wikipedia-language-codes and emit a wikimedia.style
-    wikipedia-language-codes.pl > wikipedia-languages.yml
-    create-wikimedia-style.pl --languages wikipedia-languages.yml --style /usr/local/src/osm/applications/utils/export/osm2pgsql/default.style > wikimedia.style
+    wikipedia-language-codes.pl > /sql/misc-data/wikipedia-languages.yml
+    create-wikimedia-style.pl --languages /sql/misc-data/wikipedia-languages.yml --style /usr/local/src/osm/applications/utils/export/osm2pgsql/default.style > wikimedia.style
 
 =head1 OPTIONS
 

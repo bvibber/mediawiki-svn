@@ -6,9 +6,9 @@ create-language-views.pl - Create the views needed to render l18n-enabled maps w
 
 =head1 SYNOPSIS
 
-    perl wikipedia-language-codes.pl > wikipedia-languages.yml
-    perl create-language-views.pl --languages wikipedia-languages.yml --psql-user gis --psql-db gis > create_views.sql
-    perl create-language-views.pl --languages wikipedia-languages.yml --psql-user gis --psql-db gis --delete > delete_views.sql
+    perl wikipedia-language-codes.pl > /sql/misc-data/wikipedia-languages.yml
+    perl create-language-views.pl --languages /sql/misc-data/wikipedia-languages.yml --psql-user gis --psql-db gis > create_views.sql
+    perl create-language-views.pl --languages /sql/misc-data/wikipedia-languages.yml --psql-user gis --psql-db gis --delete > delete_views.sql
     psql -U gis -d gis < create_views.sql
 
 =head1 OPTIONS
@@ -21,7 +21,7 @@ Print a usage message listing all available options
 
 =item --languages
 
-A YAML file to read languages from, e.g. F<wikipedia-languages.yml>
+A YAML file to read languages from, e.g. F</sql/misc-data/wikipedia-languages.yml>
 
 =item --psql-user
 
