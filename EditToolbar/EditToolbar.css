@@ -23,6 +23,7 @@ div#edittoolbar {
 	border-bottom-width: 0;
 	background-color: #F3F3F3;
 	height: 32px;
+	clear: both;
 }
 /* Sections */
 div#edittoolbar div.sections {
