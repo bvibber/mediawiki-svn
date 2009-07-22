@@ -22,6 +22,7 @@ $messages['en'] = array(
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editors}}',
 	'mostrevisors-viewcontributors' => 'View main contributors',
 	//'mostrevisors-text' => 'Show [[Special:MostRevisions|pages with the most revisors]], starting from [[MediaWiki:Mostrevisors-limit-few-revisors|{{MediaWiki:Mostrevisors-limit-few-revisors}} revisors]].',
+	//'mostrevisors-text' => 'Show [[Special:MostRevisions|pages with the most revisors]], starting from [[MediaWiki:Mostrevisors-limit-few-revisors|{{MediaWiki:Mostrevisors-limit-few-revisors}} {{PLURAL:{{MediaWiki:Mostrevisors-limit-few-revisors}}|revisor|revisors}}]].',
 
 	// Settings. Do not translate these messages.
 	'mostrevisors-limit-few-revisors' => '1',
