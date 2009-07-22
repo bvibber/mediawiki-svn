@@ -1,18 +1,105 @@
 <?php
 
+/* TODO:
+ * Memcached
+ * Warnings for API edit
+ * Better documentation
+*/
+
 class IndexFunction {
 
-	// Utility function to get the target pageid for a possible index-title
-	static function getIndexTarget( Title $title ) {
-		$ns = $title->getNamespace();
-		$t = $title->getDBkey();
+	var $mTo = array(); // An array of titles for pages being indexed
+	var $mFrom = null; // A title object representing the index-title
+
+	function __construct() {}
+
+	// Constructor for a known index-title
+	public static function newFromTitle( Title $indextitle ) {
+		$ns = $indextitle->getNamespace();
+		$t = $indextitle->getDBkey();
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'indexes', 'in_from', 
 			array( 'in_namespace' => $ns, 'in_title' => $t ),
 			__METHOD__
 		);
-		return $res;
+		if ( !$res->numRows() ) {
+			return null;
+		}
+		$ind = new IndexFunction();
+		$ids = array();
+		foreach ( $res as $row ) {
+			$ids[] = $row->in_from;
+		}
+		$ind->mTo = Title::newFromIDs( $ids );
+		$ind->mFrom = $indextitle;
+		return $ind;
 	}
+
+	// Constructor for known target
+	public static function newFromTarget( Title $target ) {
+		$pageid = $target->getArticleID();
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'indexes', array('in_namespace', 'in_title'),
+			array( 'in_from' => $pageid ),
+			__METHOD__
+		);
+		if ( !$res->numRows() ) {
+			return null;
+		}
+		$ind = new IndexFunction();
+		$row = $res->fetchRow();
+		$ind->mFrom = Title::makeTitle( $row->in_namespace, $row->in_title );
+		return $ind;
+	}
+
+	public function getIndexTitle() {
+		return $this->mFrom;
+	}
+
+	public function getTargets() {
+		if ( $this->mTo ) {
+			return $this->mTo;
+		}
+		$dbr = wfGetDB( DB_SLAVE );
+		$ns = $this->mFrom->getNamespace();
+		$t = $this->mFrom->getDBkey();
+		$res = $dbr->select( 'indexes', 'in_from', 
+			array( 'in_namespace' => $ns, 'in_title' => $t ),
+			__METHOD__
+		);
+		$ids = array();
+		foreach ( $res as $row ) {
+			$ids[] = $row->in_from;
+		}
+		$this->mTo = Title::newFromIDs( $ids );
+		return $this->mTo;
+	}
+	
+	// Makes an HTML <ul> list of targets
+	public function makeTargetList() {
+		global $wgUser;
+		$sk = $wgUser->getSkin();
+		$targets = $this->getTargets();
+		$list = Xml::openElement( 'ul' );
+		foreach( $targets as $t ) {
+			$link = $sk->link( $t, $t->getPrefixedText(), array(), array(), array('known', 'noclasses') );
+			$list.= Xml::tags( 'li', null, $link );
+		}
+		$list .= Xml::CloseElement( 'ul' );
+		return $list;
+	}
+
+	// Returns true if a redirect should go to a special page
+	// ie - if there are multiple targets
+	public function useSpecialPage() {
+		if ( !$this->mTo ) {
+			$this->getTargets();
+		}
+		return count( $this->mTo) > 1;
+	}
+}
+
+class IndexFunctionHooks {
 	
 	// Makes "Go" searches for an index title go directly to their target
 	static function redirectSearch( $term, &$title ) {
@@ -20,17 +107,17 @@ class IndexFunction {
 		if ( is_null($title) ) {
 			return true;
 		}
-		$res = self::getIndexTarget( $title );
-		if ( $res->numRows() == 0 ) {
+		$index = IndexFunction::newFromTitle( $title );
+		if ( !$index ) {
 			return true;
-		} elseif ( $res->numRows() > 1 ) {
+		} elseif ( $index->useSpecialPage() ) {
 			global $wgOut;
 			$title = SpecialPage::getTitleFor( 'Index', $title->getPrefixedText() );
 			$wgOut->redirect( $title->getLocalURL() );
 			return true;
 		}
-		$res = $res->fetchRow();
-		$title = Title::newFromId( $res );
+		$targets = $index->getTargets();
+		$title = $targets[0];
 		return false;
 	}
 
@@ -39,19 +126,17 @@ class IndexFunction {
 		if ( $article->exists() ) {
 			return true;
 		}
-		$res = self::getIndexTarget( $title );
-		if ( $res->numRows() == 0 ) {
+		$index = IndexFunction::newFromTitle( $title );
+		if ( !$index ) {
 			return true;
-		} elseif ( $res->numRows() > 1 ) {
+		} elseif ($index->useSpecialPage() ) {
 			global $wgOut;
 			$t = SpecialPage::getTitleFor( 'Index', $title->getPrefixedText() );
 			$wgOut->redirect( $t->getLocalURL() );
 			return true;
-		} else {
-			$res = $res->fetchRow();
-			$redir = Title::newFromID( $res );
-		}
-		$target = $redir;
+		} 
+		$targets = $index->getTargets();
+		$target = $targets[0];
 		$article->mIsRedirect = true;
 		$ignoreRedirect = false;
 		return true;
@@ -62,8 +147,8 @@ class IndexFunction {
 		if ( in_array( 'known', $options ) ) {
 			return true;
 		}
-		$res = self::getIndexTarget( $target );
-		if ( $res->numRows() == 0 ) {
+		$index = IndexFunction::newFromTitle( $target );
+		if ( !$index ) {
 			return true;
 		}
 		$attribs['class'] = str_replace( 'new', 'mw-index', $attribs['class'] );
@@ -189,23 +274,46 @@ class IndexFunction {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'indexes', 
 			array( 'in_namespace'=>$ns, 'in_title'=>$dbkey ),
-			 __METHOD__ );
+			 __METHOD__ 
+		);
 		return true;
 	}
 
 	// Show a warning when editing an index-title
 	static function editWarning( $editpage ) {
 		$t = $editpage->mTitle;
-		$target = self::getIndexTarget( $t );
-		if ( $target->numRows() != 1 ) { # FIXME
+		$index = IndexFunction::newFromTitle( $t );
+		if (!$index) {
 			return true;
 		}
-		$target = $target->fetchRow();
-		$page = Title::newFromID( $target['in_from'] );
 		wfLoadExtensionMessages( 'IndexFunction' );
-		$warn = wfMsgExt( 'indexfunc-editwarn', array( 'parse' ), $page->getPrefixedText() );
-		$editpage->editFormTextBeforeContent .= "<span class='error'>$warn</span>";
+		$list = $index->makeTargetList();
+		$c = count( $index->getTargets() );
+		$warn = wfMsgExt( 'indexfunc-editwarning', array( 'parsemag' ), $list, $c );
+		$editpage->editFormTextTop .= "<span class='error'>$warn</span>";
 		return true;
 	}
+
+	static function afterMove( &$form, &$orig, &$new ) {
+		global $wgOut;
+		$index = IndexFunction::newFromTitle( $new );
+		if ( !$index ) {
+			return true;
+		}
+		$c = count( $index->getTargets() );
+		$list = $index->makeTargetList();
+		$newns = $new->getNamespace();
+		$newdbk = $new->getDBkey();
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete( 'indexes', 
+			array( 'in_namespace'=>$newns, 'in_title'=>$newdbk ),
+			 __METHOD__ 
+		);
+		$msg = wfMsgExt( 'indexfunc-movewarn', array( 'parsemag' ), $new->getPrefixedText(), $list, $c );
+		$msg = "<span class='error'>$msg</span>";
+		$wgOut->addHTML( $msg );
+		return true;
+	}
+
 }
 

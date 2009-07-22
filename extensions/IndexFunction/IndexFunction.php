@@ -13,21 +13,23 @@ $dir = dirname(__FILE__) . '/';
 
 # Register function 
 $wgHooks['ParserFirstCallInit'][] = 'efIndexSetup';
-$wgHooks['LanguageGetMagic'][] = 'IndexFunction::addIndexFunction';
+$wgHooks['LanguageGetMagic'][] = 'IndexFunctionHooks::addIndexFunction';
 # Add to database
-$wgHooks['OutputPageParserOutput'][] = 'IndexFunction::doIndexes'; 
+$wgHooks['OutputPageParserOutput'][] = 'IndexFunctionHooks::doIndexes'; 
 # Make links to indexes blue
-$wgHooks['LinkEnd'][] = 'IndexFunction::blueLinkIndexes'; 
+$wgHooks['LinkEnd'][] = 'IndexFunctionHooks::blueLinkIndexes'; 
 # Make links to indexes redirect
-$wgHooks['InitializeArticleMaybeRedirect'][] = 'IndexFunction::doRedirect';
+$wgHooks['InitializeArticleMaybeRedirect'][] = 'IndexFunctionHooks::doRedirect';
 # Make "go" searches for indexes redirect
-$wgHooks['SearchGetNearMatch'][] = 'IndexFunction::redirectSearch';
+$wgHooks['SearchGetNearMatch'][] = 'IndexFunctionHooks::redirectSearch';
 # Remove things from the index table when a page is deleted
-$wgHooks['ArticleDeleteComplete'][] = 'IndexFunction::onDelete';
+$wgHooks['ArticleDeleteComplete'][] = 'IndexFunctionHooks::onDelete';
 # Remove things from the index table when creating a new page
-$wgHooks['ArticleInsertComplete'][] = 'IndexFunction::onCreate';
+$wgHooks['ArticleInsertComplete'][] = 'IndexFunctionHooks::onCreate';
 # Show a warning when editing an index title
-$wgHooks['EditPage::showEditForm:initial'][] = 'IndexFunction::editWarning';
+$wgHooks['EditPage::showEditForm:initial'][] = 'IndexFunctionHooks::editWarning';
+# Show a warning after page move, and do some cleanup
+$wgHooks['SpecialMovepageAfterMove'][] = 'IndexFunctionHooks::afterMove';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efIndexUpdateSchema';
 
@@ -38,10 +40,11 @@ $wgExtensionAliasesFiles['IndexFunction'] = $dir . 'IndexFunction.alias.php';
 $wgAutoloadClasses['SpecialIndex'] = $dir . 'SpecialIndex.php';
 
 $wgExtensionMessagesFiles['IndexFunction'] = $dir . 'IndexFunction.i18n.php';
+$wgAutoloadClasses['IndexFunctionHooks'] = $dir . 'IndexFunction_body.php';
 $wgAutoloadClasses['IndexFunction'] = $dir . 'IndexFunction_body.php';
 
 function efIndexSetup( &$parser ) {
-	$parser->setFunctionHook( 'index-func', array( 'IndexFunction', 'indexRender' ) );
+	$parser->setFunctionHook( 'index-func', array( 'IndexFunctionHooks', 'indexRender' ) );
 	return true;
 }
 
