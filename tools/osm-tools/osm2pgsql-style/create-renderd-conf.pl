@@ -97,7 +97,6 @@ for my $language (@languages)
 
     print <<LANGUAGE
 
-;;; Rendering for $code ($name)
 [$code]
 URI=/tiles/osm-like/$code/
 XML=/sql/mapnik-stylesheets/osm-like/osm-$code.xml
