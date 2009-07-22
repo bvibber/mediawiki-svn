@@ -26,12 +26,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'fundraiserportal-desc' => 'This is a short description of this extension.
-It is shown in [[Special:Version]].
-Do not translate link targets, and tag names.',
+	'fundraiserportal-desc' => '{{desc}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -52,6 +51,17 @@ $messages['be-tarask'] = array(
 	'fundraiserportal-tourmaline-close' => 'Схаваць гэта',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'fundraiserportal-plain-button' => 'Cefnogwch Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Rhoi Nawr',
+	'fundraiserportal-rubytext-button' => 'Rhoi Nawr',
+	'fundraiserportal-rubytext-close' => 'Cuddio hwn o hyn ymlaen',
+	'fundraiserportal-tourmaline-close' => 'Cuddio hwn o hyn ymlaen',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -65,6 +75,23 @@ $messages['de'] = array(
 	'fundraiserportal-sapphire-button' => 'Jetzt spenden',
 	'fundraiserportal-tourmaline-button' => 'Jetzt spenden',
 	'fundraiserportal-tourmaline-message' => 'Jede Spende hilft uns, Wikipedia für jeden frei verfügbar zu halten.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'fundraiserportal' => 'Portal pósćiwańskich akcijow',
+	'fundraiserportal-desc' => 'Pśidawa portal "pšosym pósćiś" górjejce na bocnicy.',
+	'fundraiserportal-plain-button' => 'Pódpěraj Wikipediju!',
+	'fundraiserportal-ruby-button' => 'Něnto pósćiś',
+	'fundraiserportal-rubytext-button' => 'Něnto pósćiś',
+	'fundraiserportal-rubytext-message' => 'Kuždy dar nam pomoga Wikipediju za kuždego licho k dispoziciji źaržaś.',
+	'fundraiserportal-rubytext-close' => 'Wótněnta to schowaś',
+	'fundraiserportal-sapphire-button' => 'Něnto pósćiś',
+	'fundraiserportal-tourmaline-button' => 'Něnto pósćiś',
+	'fundraiserportal-tourmaline-message' => 'Kuždy dar nam pomoga Wikipediju za kuždego licho k dispoziciji źaržaś.',
+	'fundraiserportal-tourmaline-close' => 'Wótněnta to schowaś',
 );
 
 /** Spanish (Español)
@@ -299,6 +326,15 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'fundraiserportal' => 'Portál fundraisingu',
 	'fundraiserportal-desc' => 'Pridáva portál „Prosím, prispejte“ na vrch bočného panelu.',
+	'fundraiserportal-plain-button' => 'Podporte Wikipédiu!',
+	'fundraiserportal-ruby-button' => 'Prispejte teraz',
+	'fundraiserportal-rubytext-button' => 'Prispejte teraz',
+	'fundraiserportal-rubytext-message' => 'Každý dar nám pomáha zachovať Wikipédiu slobodnou pre každého.',
+	'fundraiserportal-rubytext-close' => 'Odteraz nezobrazovať',
+	'fundraiserportal-sapphire-button' => 'Prispejte teraz',
+	'fundraiserportal-tourmaline-button' => 'Prispejte teraz',
+	'fundraiserportal-tourmaline-message' => 'Každý dar nám pomáha zachovať Wikipédiu slobodnou pre každého.',
+	'fundraiserportal-tourmaline-close' => 'Odteraz nezobrazovať',
 );
 
 /** Turkish (Türkçe)
