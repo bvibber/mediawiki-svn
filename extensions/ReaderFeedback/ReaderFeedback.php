@@ -140,5 +140,10 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efReaderFeedbackSchemaUpdates';
 function efReaderFeedbackSchemaUpdates() {
 	global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables;
 	$base = dirname(__FILE__);
+	if( $wgDBtype == 'mysql' ) {
+		$wgExtNewTables[] = array( 'reader_feedback', "$base/readerfeedback.sql" ); // Initial install tables
+	} elseif( $wgDBtype == 'postgres' ) {
+		$wgExtNewTables[] = array( 'reader_feedback', "$base/reader_feedback.pg.sql" ); // Initial install tables
+	}
 	return true;
 }
