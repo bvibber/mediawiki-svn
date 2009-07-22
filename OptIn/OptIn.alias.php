@@ -40,3 +40,8 @@ $aliases['pl'] = array(
 	'OptIn' => array( 'Włączenie Inicjatywy Użyteczności' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'OptIn' => array( 'PrihlásenieDoIniciatívyPoužiteľnosti' ),
+);
+
