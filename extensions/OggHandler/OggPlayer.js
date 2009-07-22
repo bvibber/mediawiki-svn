@@ -346,7 +346,52 @@ var wgOggPlayer = {
 		}
 		return hasObj;
 	},
+    'webkitVersionIsAtLeast' : function ( minimumString ) {
+        var version = function() {
+            // grab (AppleWebKit/)(xxx.x.x)
+            var webKitFields = RegExp("( AppleWebKit/)([^ ]+)").exec(navigator.userAgent);
+            if (!webKitFields || webKitFields.length < 3)
+                return null;
+            var versionString = webKitFields[2];
+            var isNightlyBuild = versionString.indexOf("+") != -1;
 
+            // Remove '+' or any other stray characters
+            var invalidCharacter = RegExp("[^\\.0-9]").exec(versionString);
+            if (invalidCharacter)
+                versionString = versionString.slice(0, invalidCharacter.index);
+        
+            var version = versionString.split(".");
+            version.isNightlyBuild = isNightlyBuild;
+            return version;
+        }
+        var toIntOrZero = function (s) {
+            var toInt = parseInt(s);
+            return isNaN(toInt) ? 0 : toInt;
+        }
+
+        if (minimumString === undefined)
+            minimumString = "";
+        
+        var minimum = minimumString.split(".");
+        var version = version();
+
+        if (!version)
+            return false;
+            
+        if (version.isNightlyBuild)
+            return true;
+
+        for (var i = 0; i < minimum.length; i++) {
+            var versionField = toIntOrZero(version[i]);
+            var minimumField = toIntOrZero(minimum[i]);
+            
+            if (versionField > minimumField)
+                return true;
+            if (versionField < minimumField)
+                return false;
+        }
+        return true;
+    },
 	'addOption' : function ( select, value, text, selected ) {
 			var option = document.createElement( 'option' );
 			option.value = value;
@@ -550,7 +595,7 @@ var wgOggPlayer = {
 				' height=' + this.hq( (params.height>0)?params.height:this.controlsHeightGuess ) + 
 				' src=' + this.hq( params.videoUrl ) +
 				' autoplay';
-		if (!this.safari)
+		if (!this.safari || this.webkitVersionIsAtLeast('530.19.2'))
 			html += ' controls';
 		html += ' ></' + mtag + '></div>';
 		elt.innerHTML = html;
