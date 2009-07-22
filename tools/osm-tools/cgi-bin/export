@@ -97,7 +97,7 @@ elif not form.has_key("locale"):
 elif not form.getvalue("maptype") in maptypes:
   output_error("Invalid maptype, valid types are %s" % maptypes)
 elif not form.getvalue("locale") in locales:
-  output_error("Invalid locale %s valid are %s" % (form.getvalue("locale"), locales))
+  output_error("Invalid locale, valid are %s" % locales.keys())
 else:
   # Create projection object
   prj = mapnik.Projection("+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over");
