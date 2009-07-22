@@ -63,12 +63,18 @@ class SpecialIndex extends UnlistedSpecialPage {
 		$keys = array_keys( $list );
 		$set = '(' . implode(',', $keys) . ')';
 		
-		$excludecats = wfMsg('index-exclude-categories');
-		if ($excludecats) {
-			$excludecats = str_replace(' ', '_', $excludecats);
-			$excludecats = explode( '\n', $excludecats );
-			foreach( $excludecats as $index => $cat ) {
-				$excludecats[$index] = $dbr->addQuotes( $cat );
+		$exclude = wfMsg('index-exclude-categories');
+		$excludecats = array();
+		if ($exclude) {
+			$exclude = explode( '\n', $exclude );
+			foreach( $exclude as $cat ) {
+				if (!$cat) {
+					continue;
+				}
+				$cat = Title::newFromText( $cat, NS_CATEGORY );
+				if ( !is_null($cat) ) {
+					$excludecats[] = $dbr->addQuotes( $cat->getDBkey() );
+				}
 			}
 			$excludecats = 'AND cl_to NOT IN (' . implode(',', $excludecats) . ')';
 		} else {
