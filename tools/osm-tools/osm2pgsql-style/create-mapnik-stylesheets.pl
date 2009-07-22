@@ -10,7 +10,7 @@ create-mapnik-stylesheets.pl - Create the the mapnik stylesheets needed to rende
     perl create-mapnik-stylesheets.pl \
         --out-dir /sql/mapnik-stylesheets/osm-like \
         --languages /sql/misc-data/wikipedia-languages.yml \
-        --osm-template /usr/local/src/osm/applications/rendering/mapnik/osm-template.xml \
+        --osm-template /usr/local/src/osm/applications/rendering/mapnik/osm-template-fontset.xml \
         --symbols-dir /usr/local/src/osm/applications/rendering/mapnik/symbols \
         --world-boundaries-dir /sql/world_boundaries/unpacked \
         --psql-host localhost \
