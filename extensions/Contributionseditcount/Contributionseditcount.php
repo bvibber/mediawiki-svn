@@ -31,6 +31,6 @@ function wfContributionseditcount( $uid ) {
 		$wgOut->addWikiText( wfMsgExt( 'contributionseditcount', array( 'parsemag' ),
 						$wgLang->formatNum( User::edits( $uid ) ),
 						User::whoIs( $uid ) ) );
-		return true;
 	}
+	return true;
 }
