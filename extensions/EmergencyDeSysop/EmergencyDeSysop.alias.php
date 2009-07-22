@@ -116,6 +116,11 @@ $aliases['sa'] = array(
 	'EmergencyDeSysop' => array( 'आपत्कालप्रचालकनिष्कासन' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'EmergencyDeSysop' => array( 'NúdzovéZbavenieSprávcu' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'EmergencyDeSysop' => array( 'Biglaang pagtanggal bilang tagapagpatakbo ng sistema' ),

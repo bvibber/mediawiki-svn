@@ -78,6 +78,25 @@ $messages['de'] = array(
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|Bearbeiter|Bearbeiter}}',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'mostrevisors' => 'Boki z nejwěcej pśeglědarjami',
+	'mostrevisors-desc' => '[[Special:MostRevisors|Boki z nejwěcej pśeglědarjami]] nalicyś',
+	'mostrevisors-header' => "'''Toś ten bok nalicyjo {{PLURAL:$1|bok|$1 boka|$1 boki|$1 bokow}} z nejwěcej pśeglědarjami we wikiju.'''",
+	'mostrevisors-limitlinks' => 'Až k $1 {{PLURAL:$1|bokoju|bokoma|bokam|bokam}} pokazaś',
+	'mostrevisors-namespace' => 'Mjenjowy rum:',
+	'mostrevisors-none' => 'Žedne zapiski namakane.',
+	'mostrevisors-ns-header' => "'''Toś ten bok nalicyjo {{PLURAL:$1|bok|$1 boka|$1 boki|$1 bokow}} z nejwěcej pśeglědarjami w mjenjowem rumje $2.'''",
+	'mostrevisors-showing' => '{{PLURAL:$1|Nalicyjo se bok|Nalicyjotej se $1 boka|Nalicyju se $1 boki|Nalicyjo se $1 bokow}}:',
+	'mostrevisors-submit' => 'Wótpósłaś',
+	'mostrevisors-showredir' => 'Dalejpósrědnjenja pokazaś',
+	'mostrevisors-hideredir' => 'Dalejpósrědnjenja schowaś',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|wobźěłaŕ|wobźěłarja|wobźěłarje|wobźěłarjow}}',
+	'mostrevisors-viewcontributors' => 'Głownych wobźěłarjow se woglědaś',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -95,6 +114,25 @@ $messages['fr'] = array(
 	'mostrevisors-hideredir' => 'masquer les pages de redirection',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|éditeur|éditeurs}}',
 	'mostrevisors-viewcontributors' => 'Voir les contributeurs principaux',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'mostrevisors' => 'Páxinas con máis revisores',
+	'mostrevisors-desc' => 'Lista [[Special:MostRevisors|as páxinas co maior número de revisores]]',
+	'mostrevisors-header' => "'''Esta páxina contén a lista {{PLURAL:$1|coa páxina|coas $1 páxinas}} con maior número de revisores do wiki.'''",
+	'mostrevisors-limitlinks' => 'Mostrar ata $1 páxinas',
+	'mostrevisors-namespace' => 'Espazo de nomes:',
+	'mostrevisors-none' => 'Non se atopou ningunha entrada.',
+	'mostrevisors-ns-header' => "'''Esta páxina contén a lista {{PLURAL:\$1|coa páxina|coas \$1 páxinas}} con maior número de revisores no espazo de nomes \"\$2\".'''",
+	'mostrevisors-showing' => 'Lista {{PLURAL:$1|da páxina|das $1 páxinas}}:',
+	'mostrevisors-submit' => 'Mostrar',
+	'mostrevisors-showredir' => 'Mostrar as páxinas de redirección',
+	'mostrevisors-hideredir' => 'Agochar as páxinas de redirección',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editores}}',
+	'mostrevisors-viewcontributors' => 'Ver os principais contribuíntes',
 );
 
 /** Swiss German (Alemannisch)
@@ -286,5 +324,31 @@ $messages['ru'] = array(
 	'mostrevisors-showredir' => 'Показать страницы перенаправлений',
 	'mostrevisors-hideredir' => 'Скрыть страницы перенаправлений',
 	'mostrevisors-viewcontributors' => 'Показать основных редакторов',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'mostrevisors' => 'Stránky s najväčším počtom kontrolórov',
+	'mostrevisors-desc' => 'Zoznam [[Special:MostRevisors|stránok s najväčším počtom kontrolórov]]',
+	'mostrevisors-header' => "'''Táto stránka obsahuje {{PLURAL:$1|stránku|$1 stránky|$1 stránok}} na wiki s najväčším počtom kontrolórov.'''",
+	'mostrevisors-limitlinks' => 'Zobraziť najviac $1 stránok',
+	'mostrevisors-namespace' => 'Menný priestor:',
+	'mostrevisors-none' => 'Neboli nájdené žiadne záznamy.',
+	'mostrevisors-ns-header' => "'''Táto stránka obsahuje {{PLURAL:$1|stránku|$1 stránky|$1 stránok}} na wiki s najväčším počtom kontrolórov v mennom priestore $2.'''",
+	'mostrevisors-showing' => 'Zoznam {{PLURAL:$1|$1 stránky|$1 stránok}}:',
+	'mostrevisors-submit' => 'Vykonať',
+	'mostrevisors-showredir' => 'Zobraziť presmerovacie stránky',
+	'mostrevisors-hideredir' => 'Skryť presmerovacie stránky',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|používateľ|používatelia|používateľov}}',
+	'mostrevisors-viewcontributors' => 'Zobraziť hlavných prispievateľov',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'mostrevisors-submit' => 'వెళ్ళు',
 );
 

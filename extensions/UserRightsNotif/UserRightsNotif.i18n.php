@@ -23,6 +23,7 @@ $2",
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Lloffiwr
  * @author Purodha
  * @author Siebrand
@@ -37,7 +38,7 @@ $1 is probably the name of the wiki.',
 * $4 is a timestamp in the content language
 * $5 are the groups that have been added
 * $6 are the groups that have been removed',
-	'userrightsnotif-desc' => 'Short description of the Userrightsnotif extension, shown in [[Special:Version]].',
+	'userrightsnotif-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

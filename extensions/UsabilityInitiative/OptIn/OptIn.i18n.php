@@ -433,28 +433,38 @@ Wenn du die Suche verwendest, werden die Titeltreffer zuerst angezeigt. Sie hilf
  */
 $messages['dsb'] = array(
 	'optin' => 'Iniciatiwa wužywajobnosći wubraśe',
-	'optin-desc' => 'Zmóžnja wužywarjam pólěpšenja wužywajobnosći iniciatiwy wužywajobnosći wubraś',
-	'optin-needlogin' => 'Musyš se [$1 pśizjawiś], aby pólěpšenja wužywajobnosći iniciatiwy wužywajobnosći wubrał.',
-	'optin-intro' => 'Iniciatiwa wužywajobnosći Wikipedije jo nowu suknju a nowu wobźěłowańsku kšomu wuwył, aby wužywajobnosć Wikipedije pólěpšyła. Toś te pólěpšenja hyšći njejsu za wšych wužywarjow zmóznjone, ale móžoš je pśez kliknjenje na "{{int:optin-submit-in}}" dołojce wubraś.',
-	'optin-success-in' => 'Sy wuspěšnje pólěpšenja wužywajobnosći iniciatiwy wužywajobnosći wubrał.
-Móžoš je kuždy cas pśez kliknjenje na "{{int:optin-submit-out}}" dołojce wótwóliś.',
-	'optin-success-out' => 'Sy wuspěšnje pólěpšenja wužywajobnosći iniciatiwy wužywajobnosći wótwólił.
-Móžoš je kuždy cas pśez kliknjenje na "{{int:optin-submit-in}}" dołojce wubraś.',
-	'optin-submit-out' => 'Wótwóliś',
-	'optin-survey-intro' => 'Źěkujomy se za wuproběrowanje pólěpšenjow wužywajobnosći iniciatiwy wužywajobnosći.
-Móžoš je pśez kliknjenje na "{{int:optin-submit-out}}" dołojce na boku wótwóliś.
-
-My by rady wěźeli, co mysliš wó našem nowem wužywarskem pówjerchu, togodla my by se wjaselili, jolic ty by wupołnił opcionalny napšašnik, nježli až kliknjoš na "{{int:optin-submit-out}}".',
-	'optin-survey-question-whyoptout' => 'Cogodla wótwólujoš toś ten wužywarski pówjerch?',
-	'optin-survey-answer-whyoptout-hard' => 'Wobźěłowanje boka jo pśeśěžko było.',
+	'optin-desc' => 'Wužywarjam dowóliś Betu wopytaś, slědne pólěpšenja wužywajobnosći iniciatiwy wužywajobnosći',
+	'optin-title-optedout' => 'Betu wopytaś',
+	'optin-title-optedin' => 'Betu spušćiś',
+	'optin-title-justoptedin' => 'Witaj do Bety',
+	'optin-title-justoptedout' => 'Źěkujomy se, až sy wopytał Betu',
+	'optin-needlogin' => 'Musyš se [$1 pśizjawiś], aby Betu wopytał.',
+	'optin-intro' => 'Iniciatiwa wužywajobnosći Wikipedije jo južo žurnje źěłała, aby pólěpšyła wužywajobnosć Wikipedije. By ty rady Betu wopytaś?',
+	'optin-success-in' => 'Wopytujoš něnto Betu.
+Móžoš kuždy cas pśez kliknjenje na wótkaz "{{int:optin-leave}}" górjejce na wobrazowce wótwóliś.',
+	'optin-success-out' => 'Sy wuspěšnje Betu spušćił.
+Móžoš ju hyšći raz kuždy cas pśez kliknjenje na wótkaz "{{int:optin-try}}" górjejce napšawo na wobrazowce wopytaś.',
+	'optin-accept-long' => 'Betu wopytaś',
+	'optin-accept-long-anon' => 'Pśizjawiś se a Betu wopytaś',
+	'optin-deny-short' => 'Ně, źěkujomy se',
+	'optin-submit-out' => 'Betu spušćiś',
+	'optin-try' => 'Betu wopytaś',
+	'optin-leave' => 'Betu spušćiś',
+	'optin-survey-yes' => 'Jo',
+	'optin-survey-no' => 'Ně',
+	'optin-survey-intro' => 'Źěkujomy se za wopytanje Bety.
+My by rady wěźeli, co mysliš wó našem nowem wužywarskem pówjerchu, togodla my by se wjaselili, jolic ty by wupołnił opcionalny napšašnik dołojce, nježli až kliknjoš na "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-whyoptout' => 'Cogodla spušćaś Betu? (Pšosym wubjeŕ wšykne, kótarež pśitrjefje.)',
+	'optin-survey-answer-whyoptout-hard' => 'Wužywanje jo było pśekomplicěrowane.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Njejo pórědnje funkcioněrowało.',
 	'optin-survey-answer-whyoptout-other' => 'Druga pśicyna:',
 	'optin-survey-question-feedback' => 'Pšosym daj nam swóje měnjenja k wěsći:',
 	'optin-survey-question-browser' => 'Kótary wobglědowak wužywaš?',
 	'optin-survey-answer-browser-other' => 'Drugi wobglědowak:',
 	'optin-survey-question-os' => 'Kótary źěłowy system wužywaš?',
-	'optin-survey-answer-os-other' => 'Drugi:',
+	'optin-survey-answer-os-other' => 'Drugi źěłowy system:',
 	'optin-survey-question-res' => 'Kótare jo rozeznaśe twójeje wobrazowki?',
+	'optin-survey-answer-changes-other' => 'Druge:',
 );
 
 /** Greek (Ελληνικά)
@@ -1505,6 +1515,7 @@ Mir wiere frou fir ze wëssen wat Dir vun deem neien Interface denkt, dofir wier
 	'optin-survey-question-techfail-ifyes' => 'Wa jo, da begrënnt oder erklärt et:',
 	'optin-survey-question-usedtoolbar' => "Hutt Dir déi nei erweiderbar Toolbar benotzt fir eng Säit z'änneren?",
 	'optin-survey-question-usedtoolbar-ifyes' => 'Wa jo, wat hutt Dir doru gutt fonnt? Wat huet Iech net esougutt gefall?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Wann neen, firwat? Wäert Dir se an der Zukunft benotzen? Gitt w.e.g. en Erklärung.',
 	'optin-survey-question-different' => 'Wat kënne mir anescht maache fir datt Dir eis Beta-Versioun weider benotzt?',
 	'optin-survey-question-feedback' => 'Sot eis w.e.g. Är Meenung:',
 	'optin-survey-question-browser' => 'Watfir e Browser benotzt Dir?',
@@ -2134,20 +2145,28 @@ $messages['sk'] = array(
 	'optin-title-optedin' => 'Opustiť Beta',
 	'optin-title-justoptedin' => 'Vitajte v Beta',
 	'optin-title-justoptedout' => 'Ďakujeme, že ste skúsili Beta',
+	'optin-title-feedback' => 'Vaše komentáre',
 	'optin-needlogin' => 'Ak sa chcete skúsiť Beta, musíte sa najskôr [$1 prihlásiť].',
 	'optin-intro' => 'Iniciatíva použiteľnosti projektu Wikipédia pracuje s cieľom vylepšiť použiteľnosť Wikipédie. Chcete skúsiť Beta?',
+	'optin-feedback-intro' => 'Ďakujeme, že ste skúsili Beta.
+Radi by sme vedeli, čo si o našom novom rozhraní myslíte, preto by sme ocenili, keby ste vyplnili nasledovný nepovinný dotazník.',
+	'optin-feedback-back' => 'Ak nechcete dotazník vyplniť, môžete sa vrátiť na $1.',
 	'optin-success-in' => 'Teraz skúšate Beta.
 Kedykoľvek môžete skúšanie opustiť kliknutím na „{{int:optin-leave}}“ v pravom hornom rohu.',
 	'optin-leave-cancel' => 'Ak si želáte pokračovať v používaní Beta, môžete sa vrátiť späť na $1',
 	'optin-success-out' => 'Úspešne ste opustili Beta.
 Kedykoľvek ho môžete znova vyskúšať kliknutím na „{{int:optin-try}}“ v pravom hornom rohu.',
+	'optin-success-feedback' => 'Ďakujeme za vaše komentáre!',
 	'optin-accept-short' => 'Urobme to!',
 	'optin-accept-long' => 'Vyskúšať Beta',
+	'optin-accept-long-anon' => 'Prihlásiť sa a skúsiť Beta',
 	'optin-deny-short' => 'Nie, ďakujem',
 	'optin-deny-long' => 'späť na predošlú stránku',
 	'optin-submit-out' => 'Opustiť Beta',
+	'optin-submit-feedback' => 'Vaše komentáre',
 	'optin-try' => 'Skúsiť Beta',
 	'optin-leave' => 'Opustiť Beta',
+	'optin-feedback' => 'Vaše komentáre',
 	'optin-survey-yes' => 'Áno',
 	'optin-survey-no' => 'Nie',
 	'optin-survey-intro' => 'Ďakujeme, že ste skúsili Beta.
@@ -2166,6 +2185,7 @@ Chceli by sme vedieť, čo si myslíte o novom rozhraní, takže by sme ocenili 
 	'optin-survey-question-techfail-ifyes' => 'Ak áno, rozveďte alebo vysvetlite ich, prosím:',
 	'optin-survey-question-usedtoolbar' => 'Používali ste nový rozšíriteľný panel nástrojov na upravovanie stránky?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Ak áno, čo sa vám na ňom páčilo? Čo sa vám nepáčilo?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Ak nie, prečo? Skúsite v budúcnosti? Vysvetlite, prosím.',
 	'optin-survey-question-different' => 'Čo sme mohli spraviť inak aby ste neprestali používať testovacie rozhranie Beta?',
 	'optin-survey-question-feedback' => 'Ak máte ďalšie komentáre, napíšte ich prosím:',
 	'optin-survey-question-browser' => 'Ktorý prehliadač používate?',
@@ -2173,6 +2193,15 @@ Chceli by sme vedieť, čo si myslíte o novom rozhraní, takže by sme ocenili 
 	'optin-survey-question-os' => 'Ktorý operačný systém používate?',
 	'optin-survey-answer-os-other' => 'Iný operačný systém:',
 	'optin-survey-question-res' => 'Aké je rozlíšenie vašej obrazovky?',
+	'optin-survey-question-changes' => 'Aké zmeny by ste radi videli v Beta v budúcnosti (vyberte najviac tri)?',
+	'optin-survey-answer-changes-nav' => 'Celkovo uľahčiť navigáciu po webovej lokalite.',
+	'optin-survey-answer-changes-edittools' => 'Zväčšiť počet a vylepšiť nástroje na úpravy.',
+	'optin-survey-answer-changes-upload' => 'Zlepšiť obsah a nahrávanie multimediálnych súborov.',
+	'optin-survey-answer-changes-richtext' => 'Vyvinúť nástroje na úpravu podobné editorom obohateného textu.',
+	'optin-survey-answer-changes-lookfeel' => 'Aktualizovať „vzhľad a správanie“ webovej lokality.',
+	'optin-survey-answer-changes-predictability' => 'Zlepšiť predpovedateľnosť výkonnosti.',
+	'optin-survey-answer-changes-compat' => 'Zlepšiť kompatibilitu s lokálnymi wiki.',
+	'optin-survey-answer-changes-other' => 'Iné:',
 	'optin-improvements' => '== Čo bolo zlepšené? ==
 [[File:UsabilityNavigation.png|left]]
 ;Rozšírená navigácia

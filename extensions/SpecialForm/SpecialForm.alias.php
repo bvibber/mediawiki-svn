@@ -139,6 +139,11 @@ $aliases['oc'] = array(
 	'Form' => array( 'Formulari' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Form' => array( 'Formulár' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Form' => array( 'Formë' ),

@@ -147,6 +147,11 @@ $aliases['sa'] = array(
 	'ViewAPC' => array( 'एपीसिपश्यति' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ViewAPC' => array( 'ZobraziťAPC' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ViewAPC' => array( 'ShihAPC' ),

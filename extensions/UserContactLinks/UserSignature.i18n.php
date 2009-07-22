@@ -13,13 +13,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'usercontactlink-baduser' => '{{Identical|Incorrect username}}',
-	'usercontactlink-desc' => 'Short description of this extension, shown on [[Special:Version]].',
+	'usercontactlink-desc' => '{{desc}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)

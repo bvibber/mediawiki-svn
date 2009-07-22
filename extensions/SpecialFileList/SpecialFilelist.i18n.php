@@ -26,7 +26,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'filelist' => '{{Identical|File list}}',
 	'filelist-desc' => 'Short description of the Filelist extension, shown on [[Special:Version]]. Do not translate or change links.',
-	'filelist-image-desc' => '{{Identical/Description}}',
+	'filelist-image-desc' => '{{Identical|Description}}',
 );
 
 /** Amharic (አማርኛ) */

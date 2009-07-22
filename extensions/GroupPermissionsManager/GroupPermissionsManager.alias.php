@@ -118,6 +118,7 @@ $aliases['ja'] = array(
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
+	'GroupPermissions' => array( 'JroppeRääschte', 'JruppeRääschte' ),
 	'SortPermissions' => array( 'Rääschte_Zotteere', 'RääschteZotteere' ),
 );
 
@@ -172,6 +173,13 @@ $aliases['sa'] = array(
 	'GroupPermissions' => array( 'गटसंमती' ),
 	'RemoveUnusedGroups' => array( 'अप्रयूक्तगटत्यजति' ),
 	'SortPermissions' => array( 'अनुज्ञासंविचिनोति' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'GroupPermissions' => array( 'SkupinovéOprávnenia' ),
+	'RemoveUnusedGroups' => array( 'OdstrániťNepoužívanéSkupiny' ),
+	'SortPermissions' => array( 'TriedenieOprávnení' ),
 );
 
 /** Swedish (Svenska) */

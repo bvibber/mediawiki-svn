@@ -272,9 +272,7 @@ Please contact the server operator or administrator.",
  */
 $messages['qqq'] = array(
 	'languages' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
-	'langman-desc' => 'A short description of this extension shown in [[Special:Version]].
-{{doc-important|Do not translate tag names.}}
-{{doc-important|Do not translate links.}}',
+	'langman-desc' => '{{desc}}',
 	'langman_title' => 'Title in Language manager special page ([http://www.omegawiki.org/Special:Languages http://www.omegawiki.org/Special:Languages])',
 	'langman_header' => 'Translate the word "English"; don\'t change it to your own language!',
 	'langman_adding' => "$1 is the language name; $2 is the language's ISO 639-3 code.",
@@ -301,6 +299,7 @@ $messages['qqq'] = array(
 	'ow_transaction_rollback_header' => '{{Identical|Rollback}}',
 	'ow_transaction_remove' => '{{Identical|Remove}}',
 	'ow_transaction_summary' => '{{Identical|Summary}}',
+	'ow_conceptmapping_uitext' => 'A "dataset" is an independant collection of data, such as an ontology, a thesaurus, or a specific dictionary.',
 	'ow_conceptmapping_no_action_specified' => '* $1 is a parameter that is not supported (for example manually changed in a URL). It can be anything that has been provided by a client.',
 	'ow_dm_OK' => '{{Identical|OK}}',
 	'ow_dm_not_present' => 'Used on [http://www.omegawiki.org/index.php?title=Special:ConceptMapping Special:ConceptMapping]',
@@ -353,6 +352,7 @@ Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki pag
 	'ow_nstab_definedmeaning' => 'Tab title when displaying a Defined Meaning',
 	'ow_nstab_edit_copy' => "Tab title when copying across datasets. The word 'edit' is a verb here.",
 	'right-addlanguage' => '{{doc-right|addlanguage}}',
+	'ow_shown_datasets' => 'A "dataset" is an independant collection of data, such as an ontology, a thesaurus, or a specific dictionary.',
 );
 
 /** Karelian (Karjala)
@@ -1057,6 +1057,8 @@ $messages['bcl'] = array(
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
+	'wikidata-desc' => 'Дадае базы зьвестак падобныя на вікі для розных тыпаў зьместу',
+	'wikidata-handler-namespace-move-error' => 'Старонкі ў прасторы назваў, якую выкарыстоўвае пашырэньне Wikidata, ня могуць быць перанесеныя.',
 	'languages' => 'Вікізьвесткі: кіраваньне мовамі',
 	'langman-desc' => 'Дазваляе дадаваць і зьмяняць устаноўкі моваў з дапамогай [[Special:Languages]]',
 	'langman_title' => 'Кіраваньне мовамі',
@@ -1282,6 +1284,7 @@ $messages['be-tarask'] = array(
 	'ow_nstab_definedmeaning' => 'вызначанае значэньне',
 	'ow_nstab_edit_copy' => 'рэдагаваць копію',
 	'right-addlanguage' => 'даданьне і зьмена установак моваў',
+	'ow_shown_datasets' => 'Паказаныя наборы зьвестак',
 );
 
 /** Bulgarian (Български)
@@ -2268,6 +2271,7 @@ Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_meaningsoftitle' => 'Bedeutungen von „$1“',
 	'ow_meaningsofsubtitle' => '<em>Wikilink:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>ERLAUBNIS VERWEIGERT</h2>',
+	'copy' => 'Wikidata: Kopieren',
 	'ow_copy_no_action_specified' => 'Bitte lege eine Aktion fest.',
 	'ow_copy_help' => 'Es ist keine Hilfe implementiert.',
 	'ow_please_proved_dmid' => 'Deiner Eingabe fehlt „?dmid=<something>“ (dmid=Defined Meaning ID)<br />
@@ -3641,7 +3645,7 @@ $messages['gl'] = array(
 Asegúrese de que a súa aplicación salvou ou exportou o ficheiro correctamente.</p>',
 	'ow_importtsv_not_tsv' => '<p>Isto parece non ser un ficheiro TSV válido.</p>',
 	'ow_importtsv_bad_columns' => '<p>Nome de columna incorrecto "$1".<br />
-As columnas deberían ser nomeadas como "definition_iso" ou "translations_iso",
+As columnas deberían ser nomeadas como "definition_iso" ou "translations_iso",  
 onde tamén está o código de lingua ISO.</p>',
 	'ow_importtsv_test_run_title' => 'Escritura de proba para importar datos TSV',
 	'ow_importtsv_nothing_added' => 'Non se engadiu nada.',
@@ -3687,11 +3691,11 @@ Por favor, vexa [[{{MediaWiki:Ow editing policy url}}|a nosa política de edici�
 	'conceptmapping' => 'Wikidata: Mapeamento de conceptos',
 	'ow_conceptmapping_title' => 'Mapeamento de conceptos',
 	'ow_conceptmapping_help' => '<p>accións posibles: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... inserir un mapa</li>
-<li>&action=get&concept=<concept_id> ler un mapa</li>
-<li>&action=list_sets devolver unha lista cos prefixos de contexto posibles e a que se refiren.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  inserir un mapa</li>
+<li>&action=get&concept=<concept_id>  ler un mapa</li>
+<li>&action=list_sets  devolver unha lista cos prefixos de contexto posibles e a que se refiren.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para unha definición dun concepto, devolver todo o demais</li>
-<li>&action=help Amosar a axuda útil.</li>
+<li>&action=help  Amosar a axuda útil.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>O mapa de conceptos permítelle identificar cal é a definición nun conxunto de datos que é idéntico ás definicións noutros conxuntos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'A acción "$1" non está soportada.',
@@ -3779,6 +3783,7 @@ Por favor, comprobe o enderezo da páxina web.',
 	'ow_meaningsoftitle' => 'Significados de "$1"',
 	'ow_meaningsofsubtitle' => '<em>Ligazón Wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>PERMISO DENEGADO</h2>',
+	'copy' => 'Wikidata: Copiar',
 	'ow_copy_no_action_specified' => 'Precisar unha acción',
 	'ow_copy_help' => 'Os contidos de axuda aínda non foron redactados.',
 	'ow_please_proved_dmid' => 'Parace que na súa contribución falta "?dmid=<ID>" (dmid=Definición ID)<br />
@@ -3873,6 +3878,8 @@ $messages['grc'] = array(
  * @author Malafaya
  */
 $messages['gsw'] = array(
+	'wikidata-desc' => 'Fiegt Wiki-artigi Datebanke yy fir verschideni Inhaltstype',
+	'wikidata-handler-namespace-move-error' => 'Syte in Namensryym, wu vu dr Wikidata-Erwyterig brucht wäre, chenne nit verschobe wäre.',
 	'languages' => 'Wikidata: Sproche-Manager',
 	'langman-desc' => 'Sprochyystellige mit [[Special:Languages]] zuefiege un ändere',
 	'langman_title' => 'Sprochmanager',
@@ -4088,6 +4095,7 @@ Bitte kontaktier dr Serveradminschtrator.',
 	'ow_nstab_definedmeaning' => 'Definierti Bedytig',
 	'ow_nstab_edit_copy' => 'Kopii bearbeite',
 	'right-addlanguage' => 'Sprochyystellige zuefiege un ändere',
+	'ow_shown_datasets' => 'Aazeigti Datesammlige',
 );
 
 /** Gujarati (ગુજરાતી)
@@ -4376,6 +4384,8 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'wikidata-desc' => 'Přidawa wikijowu datowu banku za rozdźělne wobsahowe typy',
+	'wikidata-handler-namespace-move-error' => 'Mjenowe rumy nałožene přez rozšěrjenje Wikidata njedadźa so přesunyć.',
 	'languages' => 'Wikidata: Zrjadowak rěčow',
 	'langman-desc' => 'Rěčne nastajenja z [[Special:Languages]] přidać a změnić',
 	'langman_title' => 'Zrjadowak rěčow',
@@ -4661,6 +4671,8 @@ Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'wikidata-desc' => 'Procura un base de datos wiki-esc pro varie typos de contento',
+	'wikidata-handler-namespace-move-error' => 'Le spatios de nomines gerite per le extension Wikidatos non pote esser renominate.',
 	'languages' => 'Wikidatos: Gestion de linguas',
 	'langman-desc' => 'Adder e cambiar configurationes de linguas con [[Special:Languages]]',
 	'langman_title' => 'Gestion de linguas',
@@ -4886,6 +4898,7 @@ Per favor contacta le operator o administrator del servitor.',
 	'ow_nstab_definedmeaning' => 'significato definite',
 	'ow_nstab_edit_copy' => 'modificar copia',
 	'right-addlanguage' => 'Adder e cambiar configurationes de linguas',
+	'ow_shown_datasets' => 'Collectiones de datos monstrate',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -5811,6 +5824,8 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'wikidata-desc' => 'Brengk en wiki_aadijje Dahtebangk met, för ungerscheidlijje Zoote Enhhalde.',
+	'wikidata-handler-namespace-move-error' => 'Sigge en de Appachtemangs vum Zohsazprojramm „Wikidata“ kam_mer nit ömnänne.',
 	'languages' => 'Sproche verwallde för Wikidata.',
 	'langman-desc' => 'Donn de Enstellunge för Shprooche dobei, udder ömmoodelle, met [[Special:Languages|{{#special:Languages}}]].',
 	'langman_title' => 'Sproche-Verwaldung',
@@ -5887,7 +5902,7 @@ Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es z
 	'ow_transaction_previous_version' => 'Vörijje Version',
 	'ow_transaction_restore' => 'Wider zerök holle',
 	'ow_transaction_remove' => 'Fott nämme',
-	'ow_transaction_operation' => ' Operazjuhn',
+	'ow_transaction_operation' => 'Operazjuhn',
 	'ow_transaction_is_latest' => 'Es et Letzte',
 	'ow_transaction_class_member' => 'En dä Klaß',
 	'ow_transaction_object' => 'Objäk',
@@ -5903,7 +5918,7 @@ Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es z
 <li><code>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> </code> — jif all de övverijje faßjelaate un explizeete Bedüggdeniße uß för ein bestemmpte faßjelaate un explizeete Bedüggdeniß en enem Konzep</li>
 <li><code>&action=help </code> — Zeich Hülp aan.</li>
 </ul></p>',
-	'ow_conceptmapping_uitext' => '<p>Pär „{{int:ow_conceptmapping_title}}“ läsch mer faß, wat för en faßjelaate un explizeete Bedüggdeniß em eine <i lang="en">Dataset</i> desellve sin, wi ander faßjelaate un explizeete Bedüggdeniße en andere <i lang="en">Datasets</i>.</p>',
+	'ow_conceptmapping_uitext' => '<p>Pär „{{int:ow_conceptmapping_title}}“ läsch mer faß, wat för en faßjelaate un explizeete Bedüggdeniß en ein Datesamlung desellve sin, wi ander faßjelaate un explizeete Bedüggdeniße en andere Datesammlunge.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Deit mer leid, en Akziun „$1“ kenne mer nit.',
 	'ow_dm_OK' => 'Lohß Jonn!',
 	'ow_dm_not_present' => 'nit enjejovve',
@@ -5990,6 +6005,7 @@ Don ens noh dä Webaddress loore.',
 	'ow_meaningsoftitle' => 'Bedüggdeniße fun „$1“',
 	'ow_meaningsofsubtitle' => '<em>Wikilink:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Nit Zojelohße</h2>',
+	'copy' => 'Wikidata: Koppeere',
 	'ow_copy_no_action_specified' => 'Beß esu joot un donn en Akßjuhn faßlääje',
 	'ow_copy_help' => 'Künnt sinn, mer künne Der spääder ens hellefe. Jetz ham_mer noch kei Hölp.',
 	'ow_please_proved_dmid' => "'''Verdammp!''' Et süht esu uß, wi wenn en Dingem Oprof hee en
@@ -6039,6 +6055,7 @@ Wi et ußsüht, es de Datebangk nit mieh konsistent. Wikidata kunnt kein jöltij
 	'ow_nstab_definedmeaning' => 'explizeete Bedüggdeniß',
 	'ow_nstab_edit_copy' => 'en Koppi ändere',
 	'right-addlanguage' => 'Enstellunge för Shprooche dobei donn udder ändere',
+	'ow_shown_datasets' => 'Aanjezeich Datesammlunge',
 );
 
 /** Kurdish (Kurdî / كوردی)
@@ -6068,6 +6085,7 @@ $messages['kw'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'wikidata-handler-namespace-move-error' => 'Säiten an den Nummraim déi vun der Wikidata Erweiderung geréiert ginn kënnen net geréckelt ginn.',
 	'languages' => 'Wikidata: Sproochmanager',
 	'langman-desc' => 'Sproochastellungen mat [[Special:Languages]] derbäisetzen an änneren',
 	'langman_title' => 'Sproochmanager',
@@ -6217,6 +6235,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_meaningsoftitle' => 'Bedeitung vun "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wiki-Link:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>ERLAABNIS REFUSÉIERT</h2>',
+	'copy' => 'Wikidata: Kopéieren',
 	'ow_copy_no_action_specified' => 'Gitt w.e.g. eng Aktioun un',
 	'ow_copy_help' => "D'Hellëf gouf nach net implementéiert.",
 	'ow_copy_successful' => '<h2>Kopie ass gemaach</h2>
@@ -6665,6 +6684,8 @@ $messages['nds'] = array(
  * @author Tvdm
  */
 $messages['nl'] = array(
+	'wikidata-desc' => 'Voegt een wiki-achtige database toe voor verschillende soorten inhoud',
+	'wikidata-handler-namespace-move-error' => "Pagina's in naamruimten die door de uitbreiding Wikidata beheerd worden kunnen niet verplaatst worden.",
 	'languages' => 'Wikidata: Taalmanager',
 	'langman-desc' => 'Toevoegen en wijzigen van taalinstellingen via [[Special:Languages]]',
 	'langman_title' => 'Taalmanager',
@@ -8522,6 +8543,8 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'wikidata-desc' => 'Добавляет вики-подобную базу данных для различных видов контента',
+	'wikidata-handler-namespace-move-error' => 'Страницы в пространстве имён, обрабатываемых расширением Викиданные (Wikidata) не могут быть переименованы.',
 	'languages' => 'Викиданные: Языковой менеджер',
 	'langman-desc' => 'Добавление и изменение языковых настроек с помощью [[Special:Languages]]',
 	'langman_title' => 'Языковой менеджер',
@@ -8734,6 +8757,7 @@ $messages['ru'] = array(
 	'ow_nstab_definedmeaning' => 'определённое значение',
 	'ow_nstab_edit_copy' => 'править копию',
 	'right-addlanguage' => 'добавление и изменение языковых настроек',
+	'ow_shown_datasets' => 'Показанные наборы данных',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
@@ -8748,6 +8772,8 @@ $messages['sh'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'wikidata-desc' => 'Pridáva databázu v štýle wiki pre rozličné druhy obsahu',
+	'wikidata-handler-namespace-move-error' => 'Nemožno presunúť stránky v menných priestoroch, o ktoré sa stará rozšírenie Wikidata.',
 	'languages' => 'Wikidata: Správca jazykov',
 	'langman-desc' => 'Pridať a zmeniť jazykové nastavenia pomocou [[Special:Languages]]',
 	'langman_title' => 'Správca jazykov',
@@ -8783,7 +8809,7 @@ $messages['sk'] = array(
 	'ow_importtsv_title2' => 'Importovať definície a preklady',
 	'ow_importtsv_header' => '<p>Importovať definície a preklady z textového súboru s poľami oddelenými tabulátormi, ktorý je možné exportovať z OpenOffice.org, Excelu či iného tabuľkového kalkulátora.</p>
 <p>Formát súboru musí byť rovnaký ako súbory exportované stránkou [[Special:ExportTSV|ExportTSV]]. Ak zmeníte názvy stĺpcov, import zlyhá. Ak zmeníte ID alebo definujúci výraz ktoréhokoľvek Definovaného významu, daný riadok bude ignorovaný. Ak pridáte stĺpce, musia byť v tvare „definitions_iso“ alebo „translations_iso“, kde iso je ISO-639_3 jazykový kód.</p>
-<p>Ak je začiarknuté pole „Simulácia“, oznámia sa všetky operácie, ktoré by sa vykonali, ale žiadne zmeny sa v skutočnosti nevykonajú. Odporúča sa pred samotným importom vykonať simuláciu.</p>',
+<p>Ak je začiarknuté pole „Simulácia“,  oznámia sa všetky operácie, ktoré by sa vykonali, ale žiadne zmeny sa v skutočnosti nevykonajú. Odporúča sa pred samotným importom vykonať simuláciu.</p>',
 	'ow_importtsv_not_allowed' => 'Nemáte oprávnenie vykonať import TSV.',
 	'ow_importtsv_importing' => 'Importujú sa údaje TSV',
 	'ow_importtsv_import_failed' => 'Import zlyhal',
@@ -8793,7 +8819,7 @@ $messages['sk'] = array(
 Uistite sa, že vaša aplikácia uložila alebo exportovala súbor správne.</p>',
 	'ow_importtsv_not_tsv' => '<p>Zdá sa, že toto nie je platný TSV súbor.</p>',
 	'ow_importtsv_bad_columns' => '<p>Nesprávny názov stĺpca „$1“.<br />
-Stĺpce by mali byť pomenované „definition_iso“ alebo „translations_iso“,
+Stĺpce by mali byť pomenované „definition_iso“ alebo „translations_iso“,  
 kde iso je kód jazyka.</p>',
 	'ow_importtsv_test_run_title' => 'Simulácia importu údajov z TSV',
 	'ow_importtsv_nothing_added' => 'Nič nebolo pridané.',
@@ -8839,11 +8865,11 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 	'conceptmapping' => 'Wikidata: Mapovanie pojmu',
 	'ow_conceptmapping_title' => 'Mapovanie pojmu',
 	'ow_conceptmapping_help' => '<p>možné činnosti: <ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&... vložiť mapovanie</li>
-<li>&action=get&concept=<concept_id> prečítať mapovanie</li>
-<li>&action=list_sets vrátiť zoznam možných predpon dátových kontextov a na čo odkazujú.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  vložiť mapovanie</li>
+<li>&action=get&concept=<concept_id>  prečítať mapovanie</li>
+<li>&action=list_sets  vrátiť zoznam možných predpon dátových kontextov a na čo odkazujú.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> pre jeden Definovaný význam v rámci pojmu, vrátiť všetky ostatné</li>
-<li>&action=help Zobraziť pomocníka.</li>
+<li>&action=help  Zobraziť pomocníka.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mapovanie pojmov vám umožňuje určiť, ktorý Definovaný význam v jednej množine dát je zhodný s Definovanými významami v ostatných množinách dát.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Operácia „$1“ nie je podporovaná.',
@@ -8929,6 +8955,7 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 	'ow_meaningsoftitle' => 'Významy „$1“',
 	'ow_meaningsofsubtitle' => '<em>Wiki odkaz:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>NEMÁTE POTREBNÉ OPRÁVNENIE</h2>',
+	'copy' => 'Wikidata: Kopírovať',
 	'ow_copy_no_action_specified' => 'Prosím, zadajte činnosť',
 	'ow_copy_help' => 'Pomocník zatiaľ nie je implementovaný.',
 	'ow_please_proved_dmid' => 'Zdá sa, že vo vašom vstupe chýba „?dmid=<ID>“ (dmid=ID Definovaného významu)<br />Prosím kontaktujte správcu servera.',
@@ -8960,6 +8987,7 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 	'ow_nstab_definedmeaning' => 'definovaný význam',
 	'ow_nstab_edit_copy' => 'upraviť kópiu',
 	'right-addlanguage' => 'Pridať a zmeniť jazykové nastavenia pomocou',
+	'ow_shown_datasets' => 'Zobrazené množiny dát',
 );
 
 /** Lower Silesian (Schläsch)

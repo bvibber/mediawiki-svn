@@ -21,10 +21,11 @@ You may lose your changes to this page if you leave this page now.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'ajaxlogin-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links or tag names.',
+	'ajaxlogin-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

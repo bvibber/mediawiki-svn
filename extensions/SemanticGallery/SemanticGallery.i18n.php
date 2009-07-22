@@ -15,13 +15,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Najami
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'semanticgallery-desc' => 'Short description of the extension.
-Shown in [[Special:Version]].
-Do not translate links.',
+	'semanticgallery-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

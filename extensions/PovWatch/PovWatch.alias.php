@@ -74,6 +74,11 @@ $aliases['sa'] = array(
 	'PovWatch' => array( 'पक्षवृत्तीनिरिक्षा' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'PovWatch' => array( 'SledovaniePOV' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'PovWatch' => array( 'Povövervakning' ),

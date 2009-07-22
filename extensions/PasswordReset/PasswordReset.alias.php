@@ -117,6 +117,12 @@ $aliases['ko'] = array(
 	'PasswordReset' => array( '암호변경' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'PasswordReset' => array( 'NeuPaßwoot' ),
+	'Disabledusers' => array( 'Stilljelaate Metmaacher', 'StilljelaateMetmaacher' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PasswordReset' => array( 'Zrécksetzen vum Passwuert' ),
@@ -162,6 +168,12 @@ $aliases['oc'] = array(
 $aliases['sa'] = array(
 	'PasswordReset' => array( 'सङ्केतशब्दपुन:प्रयु्क्ता' ),
 	'Disabledusers' => array( 'असमर्थयोजक' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'PasswordReset' => array( 'ObnovenieHesla' ),
+	'Disabledusers' => array( 'ZamknutíPoužívatelia' ),
 );
 
 /** Swahili (Kiswahili) */

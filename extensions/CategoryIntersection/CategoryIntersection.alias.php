@@ -209,7 +209,7 @@ $aliases['shi'] = array(
 
 /** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'CategoryIntersection' => array( 'Prienik kategórií' ),
+	'CategoryIntersection' => array( 'PrienikKategórií' ),
 );
 
 /** Seeltersk (Seeltersk) */

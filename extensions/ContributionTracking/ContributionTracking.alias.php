@@ -93,6 +93,11 @@ $aliases['sa'] = array(
 	'ContributionTracking' => array( 'योगदानउन्नयति' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ContributionTracking' => array( 'SledovaniePríspevkov' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'ContributionTracking' => array( 'Pagbakas ng ambag' ),

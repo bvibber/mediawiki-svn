@@ -21,6 +21,11 @@ $aliases['ja'] = array(
 	'FreenodeChat' => array( 'Freenodeチャット' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'FreenodeChat' => array( 'FreenodeTschätt', 'FreenodeSchätt' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'FreenodeChat' => array( 'Chat am Freenode' ),

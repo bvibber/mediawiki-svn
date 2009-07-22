@@ -25,7 +25,7 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'logentry-append' => '{{Identical/Append}}',
+	'logentry-append' => '{{Identical|Append}}',
 	'logentry-parserhook-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',

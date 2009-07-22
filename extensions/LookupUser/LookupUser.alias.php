@@ -87,6 +87,11 @@ $aliases['sa'] = array(
 	'LookupUser' => array( 'योजकपश्यन्तु' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'LookupUser' => array( 'VyhľadaniePoužívateľa' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'LookupUser' => array( 'TafutaMtumiaji' ),

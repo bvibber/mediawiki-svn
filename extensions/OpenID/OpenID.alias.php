@@ -79,6 +79,12 @@ $aliases['sa'] = array(
 	'OpenIDXRDS' => array( 'उद्घटपरिचयपत्रXRDS' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'OpenIDLogin' => array( 'OpenIDPrihlásenie' ),
+	'OpenIDConvert' => array( 'OpenIDKonverzia' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'OpenIDLogin' => array( 'Paglagda sa OpenID' ),

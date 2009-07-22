@@ -114,6 +114,11 @@ $aliases['no'] = array(
 	'ShowProcesslist' => array( 'Vis prosessliste' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ShowProcesslist' => array( 'ZobraziťZoznamProcesov' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'ShowProcesslist' => array( 'Ipakita ang talaan ng proseso' ),

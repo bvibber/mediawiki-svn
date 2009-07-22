@@ -114,6 +114,11 @@ $aliases['sa'] = array(
 	'TemplateLink' => array( 'बिंबधरसम्बद्धम्' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'TemplateLink' => array( 'OdkazŠablóny' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'TemplateLink' => array( 'Kawing sa suleras' ),

@@ -129,6 +129,11 @@ $aliases['sa'] = array(
 	'PurgeCache' => array( 'पुनातिसंगणकसंस्मृति' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'PurgeCache' => array( 'VyčistiťCache' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'PurgeCache' => array( 'ล้างแคช' ),

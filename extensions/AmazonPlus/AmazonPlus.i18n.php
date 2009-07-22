@@ -44,7 +44,7 @@ $messages['en'] = array(
  * @author Skizzerz
  */
 $messages['qqq'] = array(
-	'amazonplus-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'amazonplus-desc' => '{{desc}}',
 	'amazonplus-nores' => 'Error message, automatically wrapped in a span tag with class="error."
 
 {{Identical|Sorry, no results}}',

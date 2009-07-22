@@ -149,6 +149,11 @@ $aliases['sa'] = array(
 	'SpecialUserStats' => array( 'सदस्यसांख्यिकी' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'SpecialUserStats' => array( 'ŠtatistikyPoužívateľov' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'SpecialUserStats' => array( 'Användarstatistik' ),

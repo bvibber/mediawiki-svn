@@ -110,7 +110,7 @@ $aliases['ia'] = array(
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'HideRevision' => array( 'Sembunyikan revisi', 'SembunyikanRevisi' ),
-	'Oversight' => array( 'Pemantau', 'Pengawas revisi', 'PengawasRevisi' ),
+	'Oversight' => array( 'Pengawas revisi', 'PengawasRevisi' ),
 );
 
 /** Italian (Italiano) */
@@ -188,6 +188,12 @@ $aliases['ro'] = array(
 $aliases['sa'] = array(
 	'HideRevision' => array( 'आवृत्तीलुपयति' ),
 	'Oversight' => array( 'वृजावलोकन' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'HideRevision' => array( 'SkryťRevíziu' ),
+	'Oversight' => array( 'Dozor' ),
 );
 
 /** Swedish (Svenska) */

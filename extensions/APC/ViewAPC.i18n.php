@@ -2911,6 +2911,7 @@ $messages['lb'] = array(
 	'viewapc-ls-sort-deleted' => 'Geläscht',
 	'viewapc-ls-sort-timeout' => 'Timeout',
 	'viewapc-ls-limit-none' => 'Alleguer',
+	'viewapc-delete-failed' => "D'Entrée <nowiki>$1</nowiki> vum Tëschespäicher (Cache) konnt net geläscht ginn",
 	'viewapc-version-info' => "Informatiounen iwwert d'Versioun",
 	'viewapc-version-changelog' => 'Lëscht vun den Ännerungen',
 	'viewapc-version-failed' => "Et ass net mégilech d'Informatioune vun der Versioun ze fannen.",

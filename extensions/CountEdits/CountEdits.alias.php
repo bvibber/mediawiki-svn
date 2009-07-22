@@ -147,6 +147,11 @@ $aliases['sa'] = array(
 	'CountEdits' => array( 'सम्पादन्‌गणन' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'CountEdits' => array( 'PočítaniePríspevkov' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'CountEdits' => array( 'HesabuUhariri' ),

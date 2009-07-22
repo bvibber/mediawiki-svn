@@ -109,6 +109,12 @@ $aliases['ps'] = array(
 	'SignDocument' => array( 'لاسوند لاسليک کول' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'SignDocument' => array( 'PodpísaťDokument' ),
+	'CreateSignDocument' => array( 'VytvoriťPodpísanýDokument' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'SignDocument' => array( 'Signera dokument' ),

@@ -37,7 +37,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'lookupuser-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
-	'lookupuser-no-email' => '{{Identical/Notprovided}}',
+	'lookupuser-no-email' => '{{Identical|Notprovided}}',
 	'right-lookupuser' => '{{doc-right}}',
 );
 

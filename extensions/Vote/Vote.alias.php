@@ -199,6 +199,11 @@ $aliases['sa'] = array(
 	'Vote' => array( 'मत' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Vote' => array( 'Hlasovať' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Vote' => array( 'Voto' ),

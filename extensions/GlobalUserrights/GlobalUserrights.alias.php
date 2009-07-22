@@ -70,7 +70,7 @@ $aliases['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'GlobalUserrights' => array( 'Hak pengguna global', 'HakPenggunaGlobal' ),
+	'GlobalUserrights' => array( 'Keanggotaan grup global', 'KeanggotaanGrupGlobal' ),
 );
 
 /** Italian (Italiano) */
@@ -131,6 +131,11 @@ $aliases['ro'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'GlobalUserrights' => array( 'वैश्विकयोजकाधिकार' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'GlobalUserrights' => array( 'GlobálnePoužívateľskéPráva' ),
 );
 
 /** Tagalog (Tagalog) */

@@ -23,7 +23,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'authors-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'authors_authors' => '{{Identical|Author}}',
-	'authors_anonymous' => '{{Identical/Anonymous}}',
+	'authors_anonymous' => '{{Identical|Anonymous}}',
 );
 
 /** Arabic (العربية)

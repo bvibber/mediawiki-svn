@@ -147,6 +147,11 @@ $aliases['sa'] = array(
 	'CloseWiki' => array( 'वृविकि' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'CloseWiki' => array( 'ZatvoriťWiki' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'CloseWiki' => array( 'FungaWiki' ),

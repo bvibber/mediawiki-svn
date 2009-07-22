@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Piwik' => array( 'بيويك' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Piwik' => array( 'Piwik-Shtatistike', 'PiwikShtatistike' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'Piwik' => array( 'पिविकि' ),

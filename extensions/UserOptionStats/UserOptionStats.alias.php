@@ -29,6 +29,11 @@ $aliases['ja'] = array(
 	'UserOptionStats' => array( '利用者オプション統計' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'UserOptionStats' => array( 'MetmaacherEnstellungsStatistik' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'UserOptionStats' => array( 'Statistike vun de Benotzerastellungen' ),
@@ -47,5 +52,10 @@ $aliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'UserOptionStats' => array( 'Gebruikersinstellingenstatistieken' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'UserOptionStats' => array( 'ŠtatistikyPoužívateľskýchVolieb' ),
 );
 

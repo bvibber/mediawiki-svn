@@ -172,6 +172,11 @@ $aliases['sa'] = array(
 	'Badimages' => array( 'कुचित्र:' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Badimages' => array( 'ZléObrázky' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'Badimages' => array( 'ภาพเสีย' ),

@@ -124,6 +124,11 @@ $aliases['sa'] = array(
 	'InspectCache' => array( 'संगणकसंस्मृतिपरिक्षती' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'InspectCache' => array( 'SkúmanieCache' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'InspectCache' => array( 'ChunguzaMabaki' ),

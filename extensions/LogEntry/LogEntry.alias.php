@@ -70,6 +70,11 @@ $aliases['ja'] = array(
 	'LogEntry' => array( '記録項目' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'LogEntry' => array( 'LogbochEnndraach' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'LogEntry' => array( 'ЗаписВоДневник' ),
@@ -93,6 +98,11 @@ $aliases['no'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'LogEntry' => array( 'अंकनप्रविष्टि' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'LogEntry' => array( 'PoložkaZáznamu' ),
 );
 
 /** Tagalog (Tagalog) */

@@ -73,3 +73,8 @@ $aliases['nl'] = array(
 	'AdminLinks' => array( 'Beheerdersverwijzingen' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'AdminLinks' => array( 'OdkazySprávcu' ),
+);
+

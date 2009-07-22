@@ -196,6 +196,13 @@ $messages['ja'] = array(
 	'emailaddressimage-desc' => '電子メールアドレスを画像で表示する<tt>&lt;email&gt;</tt>タグを追加する',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'emailaddressimage-desc' => 'ამატებს <tt>&lt;email&gt;</tt> ელ–ფოსტის მისამართის გამოსახულების სახით საჩვენებლად',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

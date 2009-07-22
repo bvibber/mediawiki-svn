@@ -181,6 +181,12 @@ $aliases['sa'] = array(
 	'WhiteListEdit' => array( 'धवलसूचीसम्पादनम्‌' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'WhiteList' => array( 'BielaListina' ),
+	'WhiteListEdit' => array( 'UpraviťBieluListinu' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'WhiteList' => array( 'บัญชีขาว' ),

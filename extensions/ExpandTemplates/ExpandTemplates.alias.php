@@ -219,6 +219,11 @@ $aliases['sa'] = array(
 	'ExpandTemplates' => array( 'बिंबधरविस्तारकरोसि' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ExpandTemplates' => array( 'RozbalenieŠablón' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'ExpandTemplates' => array( 'Utöka mallar' ),

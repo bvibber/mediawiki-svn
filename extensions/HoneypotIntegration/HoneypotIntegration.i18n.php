@@ -17,10 +17,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'honeypot-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'honeypot-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

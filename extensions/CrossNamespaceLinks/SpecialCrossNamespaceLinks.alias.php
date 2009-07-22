@@ -179,6 +179,11 @@ $aliases['sa'] = array(
 	'CrossNamespaceLinks' => array( 'आन्तरनामविश्वसम्बद्ध:' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'CrossNamespaceLinks' => array( 'OdkazyMedziMennýmiPriestormi' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'CrossNamespaceLinks' => array( 'Mga kawing ng pagtawid ng espasyo ng pangalan' ),

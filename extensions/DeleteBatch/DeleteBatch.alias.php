@@ -148,6 +148,11 @@ $aliases['sa'] = array(
 	'DeleteBatch' => array( 'गणपरित्याग' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'DeleteBatch' => array( 'DávkovéMazanie' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'DeleteBatch' => array( 'FutaFungu' ),

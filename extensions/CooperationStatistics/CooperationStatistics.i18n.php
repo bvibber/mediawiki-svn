@@ -61,6 +61,34 @@ $messages['be-tarask'] = array(
 	'cooperationstatistics-legendmore' => 'ці болей рэдактараў.',
 );
 
+/** German (Deutsch)
+ * @author Pill
+ */
+$messages['de'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|Seite|Seiten}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|hat|haben}} $1 {{PLURAL:$1|Bearbeiter|Bearbeiter}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|hat|haben}} $1 {{PLURAL:$1|Bearbeiter|oder weniger Bearbeiter}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|hat|haben}} $1 oder mehr Bearbeiter',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'cooperationstatistics' => 'Kooperaciska statistika',
+	'cooperationstatistics-desc' => '[[Special:CooperationStatistics|Kooperacisku statistiku wó głownem mjenjowem rumje]] pokazaś.',
+	'cooperationstatistics-text' => "Kooperacisku statistiku wó głownem mjenjowem rumje pokazaś.
+Wót [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] do [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] pśeglědarjow.<br />
+Glědaj teke [[Special:MostRevisors|'''boki z nejwěcej pśeglědarjami''']] a [[Special:MostRevisions|boki z nejwěcej wersijami]].",
+	'cooperationstatistics-tablearticle' => 'Licenje bokow',
+	'cooperationstatistics-tablevalue' => 'Licba wobźěłarjow',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|bok|boka|boki|bokow}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|ma|matej|maju|ma}} $1 {{PLURAL:$1|wobźěłarja|wobźěłarjowu|wobźěłarjow|wobźěłarjow}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|ma|matej|maju|ma}} $1 {{PLURAL:$1|wobźěłarja|wobźěłarjowu|wobźěłarjow|wobźěłarjow}} abo mjenje',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|ma|matej|maju|ma}} $1 {{PLURAL:$1|wobźěłarja|wobźěłarjowu|wobźěłarjow|wobźěłarjow}} abo wěcej',
+	'cooperationstatistics-legendmore' => 'abo wobźěłarjow.',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -213,10 +241,10 @@ Vun [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperation
 Loor och  noh de [[Special:MostRevisors|'''Sigge met de miehßte Schriiver''']] un de [[Special:MostRevisions|Sigge met de miehßte Änderunge]].",
 	'cooperationstatistics-tablearticle' => 'Aanzahl Sigge',
 	'cooperationstatistics-tablevalue' => 'Aanzahl Schriiver',
-	'cooperationstatistics-articles' => '{{PLURAL:$1|Ein Sigg hät|$1 Sigge han|Kei Sigg hät}}',
-	'cooperationstatistics-nbusers' => ' $1 Schriever',
-	'cooperationstatistics-nblessusers' => ' $1 udder winnijer Schriever',
-	'cooperationstatistics-nbmoreusers' => ' $1 udder mieh Schriever',
+	'cooperationstatistics-articles' => '{{PLURAL:$1|Ein Sigg|$1 Sigge|Kei Sigg}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|hät|hann|hät}} {{PLURAL:$|$1 Schriever}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|hät|hann|hät}} {{PLURAL:$1|$1 Schriever|$1 udder winnijer Schriever|keine Schriiver}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|hät|hann|hät}} $1 udder mieh Schriever',
 	'cooperationstatistics-legendmore' => 'udder mieh Schriiver.',
 );
 
@@ -272,6 +300,7 @@ Vejatz tanben las [[Special:MostRevisors|'''paginas amb lo mai de relectors''']]
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -282,10 +311,36 @@ $messages['ru'] = array(
 См. также [[Special:MostRevisors|'''страницы с наибольшим количеством редакторов''']] и [[Special:MostRevisions|страницы с наибольшим количеством редакций]].",
 	'cooperationstatistics-tablearticle' => 'Число страниц',
 	'cooperationstatistics-tablevalue' => 'Число редакторов',
-	'cooperationstatistics-articles' => '$1 страниц',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|страница|страницы|страниц}}',
 	'cooperationstatistics-nbusers' => 'имеет $1 редакторов',
 	'cooperationstatistics-nblessusers' => 'имеет $1 или меньше редакторов',
 	'cooperationstatistics-nbmoreusers' => 'имеет $1 или больше редакторов',
 	'cooperationstatistics-legendmore' => 'или больше редакторов.',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'cooperationstatistics' => 'Štatistika spolupráce',
+	'cooperationstatistics-desc' => 'Zobraziť [[Special:CooperationStatistics|štatistiku spolupráce v hlavnom mennom priestore]].',
+	'cooperationstatistics-text' => "Zobraziť štatistiku spolupráce v hlavnom mennom priestore.
+Od [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] do [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revízorov.<br />
+Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov''']] a [[Special:MostRevisions|stránky s najväčším počtom revízií]].",
+	'cooperationstatistics-tablearticle' => 'Počet stránok',
+	'cooperationstatistics-tablevalue' => 'Počet redaktorov',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|stránka|stránky|stránok}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|má|majú}} $1 {{PLURAL:$1|redaktora|redaktorov}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|má|majú}} $1 {{PLURAL:$1|redaktora|alebo menej redaktorov}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|má|majú}} $1 alebo viac redaktorov.',
+	'cooperationstatistics-legendmore' => 'alebo viac redaktorov.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'cooperationstatistics' => 'సహకార గణాంకాలు',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|పేజీ|పేజీలు}}',
 );
 

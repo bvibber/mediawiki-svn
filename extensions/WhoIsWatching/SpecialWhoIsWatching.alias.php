@@ -160,6 +160,11 @@ $aliases['sa'] = array(
 	'WhoIsWatching' => array( 'अन्यकतम्‌पश्यति' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'WhoIsWatching' => array( 'KtoSleduje' ),
+);
+
 /** Sundanese (Basa Sunda) */
 $aliases['su'] = array(
 	'WhoIsWatching' => array( 'SahaNuMoncorong' ),

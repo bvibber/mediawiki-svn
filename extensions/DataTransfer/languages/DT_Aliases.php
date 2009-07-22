@@ -137,6 +137,11 @@ $aliases['sa'] = array(
 	'ViewXML' => array( 'XMLपश्यति' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ViewXML' => array( 'ZobraziťXML' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ViewXML' => array( 'ShihXML' ),

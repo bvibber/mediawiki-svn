@@ -160,6 +160,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Aotake
+ * @author Bennylin
  * @author Darth Kule
  * @author Fryed-peach
  * @author Malafaya
@@ -212,7 +213,8 @@ $messages['qqq'] = array(
 	'voctrain_Exercise_complete' => 'end exercise: page heading',
 	'voctrain_Exercise_terminated' => 'end exercise: page heading',
 	'voctrain_Start_a_new_exercise' => 'end exercise: Start a new exercise',
-	'voctrain_User_name' => 'login: User name',
+	'voctrain_User_name' => 'login: User name
+{{Identical|Username}}',
 	'voctrain_Password' => 'login: Password',
 	'voctrain_Login' => 'login: button',
 	'voctrain_Create_new_user' => 'login: button',

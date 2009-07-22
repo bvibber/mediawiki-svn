@@ -14,10 +14,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'wikiarticlefeeds-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'wikiarticlefeeds-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

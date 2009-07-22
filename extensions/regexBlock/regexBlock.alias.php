@@ -70,6 +70,11 @@ $aliases['nl'] = array(
 	'RegexBlock' => array( 'RegexBlokkade' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'RegexBlock' => array( 'BlokovanieRegVýrazom' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'RegexBlock' => array( 'Paghadlang sa karaniwang pagsasaad' ),

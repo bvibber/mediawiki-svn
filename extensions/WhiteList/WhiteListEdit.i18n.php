@@ -98,12 +98,13 @@ This page is only applicable to restricted users",
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'whitelist-desc' => 'Short description of the White List extension, shown on [[Special:Version]].{{doc-important|Do not translate or change links.}}',
+	'whitelist-desc' => '{{desc}}',
 	'mywhitelistpages' => '{{Identical|My pages}}',
 	'whitelisttablemodifyall' => '{{Identical|All}}',
 	'whitelisttablemodifynone' => '{{Identical|None}}',

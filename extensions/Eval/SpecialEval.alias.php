@@ -135,6 +135,11 @@ $aliases['sa'] = array(
 	'Eval' => array( 'ईवाल्‌' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Eval' => array( 'Vyhodnotenie' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'Eval' => array( 'Pagsusuri' ),

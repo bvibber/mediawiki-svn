@@ -78,6 +78,11 @@ $aliases['nl'] = array(
 	'CommunityVoice' => array( 'Gemeenschapsstem' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'CommunityVoice' => array( 'HlasKomunity' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'CommunityVoice' => array( 'Tinig ng pamayanan' ),

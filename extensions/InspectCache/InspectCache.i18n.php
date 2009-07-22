@@ -31,7 +31,7 @@ $messages['qqq'] = array(
 	'inspectcache-ok' => '{{Identical|OK}}',
 	'inspectcache-delete' => '{{Identical|Delete}}',
 	'inspectcache-list' => 'Text on button to have the keys listing shown.
-{{Identical/List}}',
+{{Identical|List}}',
 );
 
 /** Niuean (ko e vagahau Niuē)

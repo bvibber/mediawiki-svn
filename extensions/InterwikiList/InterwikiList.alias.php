@@ -185,6 +185,11 @@ $aliases['sa'] = array(
 	'InterwikiList' => array( 'आंन्तरविकिसूची' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'InterwikiList' => array( 'ZoznamInterwiki' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'InterwikiList' => array( 'Interwikilista' ),

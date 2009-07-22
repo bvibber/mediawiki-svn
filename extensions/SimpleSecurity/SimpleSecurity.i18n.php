@@ -40,7 +40,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'security' => '{{doc-important|The translation for this message cannot be equal to that of {{msg-mw|protectlogpage}} ({{int:protectlogpage}})!}}',
-	'security-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'security-desc' => '{{desc}}',
 	'badaccess-read' => '$1 is a page title that is restricted to access.',
 	'security-info' => '$1 is {{msg-mw|Security-info-toggle}} with a link',
 	'security-inforestrict' => '* $1 is an action name

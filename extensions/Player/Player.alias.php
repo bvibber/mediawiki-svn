@@ -102,6 +102,11 @@ $aliases['sa'] = array(
 	'Player' => array( 'खेळाडू' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Player' => array( 'Hráč' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Player' => array( 'Spelare' ),

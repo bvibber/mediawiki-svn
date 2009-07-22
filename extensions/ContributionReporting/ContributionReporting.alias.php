@@ -196,6 +196,13 @@ $aliases['sa'] = array(
 	'ContributionTotal' => array( 'सकलयोगदान' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ContributionHistory' => array( 'HistóriaPríspevkov' ),
+	'ContributionStatistics' => array( 'ŠtatistikyPríspevkov' ),
+	'ContributionTotal' => array( 'SumaPríspevkov' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ContributionHistory' => array( 'HistoriaeKontributit' ),

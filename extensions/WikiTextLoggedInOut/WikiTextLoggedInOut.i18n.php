@@ -8,11 +8,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'wikitextloggedinout-desc' => 'Short description of the Wikitextloggedinout extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
+	'wikitextloggedinout-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

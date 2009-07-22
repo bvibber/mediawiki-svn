@@ -303,6 +303,13 @@ $aliases['sa'] = array(
 	'ViewConfig' => array( 'संकूटसङ्केतपश्यति' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Configure' => array( 'Konfigurovať' ),
+	'Extensions' => array( 'Rozšírenia' ),
+	'ViewConfig' => array( 'ZobraziťKonfiguráciu' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Configure' => array( 'Konfiguro' ),

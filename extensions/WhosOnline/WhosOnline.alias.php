@@ -184,6 +184,11 @@ $aliases['sa'] = array(
 	'WhosOnline' => array( 'अन्यकतम्‌सद्यस्क' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'WhosOnline' => array( 'KtoJePrihlásený' ),
+);
+
 /** Sundanese (Basa Sunda) */
 $aliases['su'] = array(
 	'WhosOnline' => array( 'SahaNuManco' ),

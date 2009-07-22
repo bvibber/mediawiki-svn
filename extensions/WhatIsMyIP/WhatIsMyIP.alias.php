@@ -177,6 +177,11 @@ $aliases['sa'] = array(
 	'WhatIsMyIP' => array( 'मदियअङ्कसंकेतकिमस्ती' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'WhatIsMyIP' => array( 'AkúMámIP' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'WhatIsMyIP' => array( 'IPjaIme' ),

@@ -224,6 +224,13 @@ $messages['ja'] = array(
 	'didyoumean-desc' => '類似した名前のページへのリンクを追加する',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'didyoumean-desc' => 'ამატებს ბმულებს "მსგავსი" სათაურების მქონე გვერდებში',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  * @author គីមស៊្រុន

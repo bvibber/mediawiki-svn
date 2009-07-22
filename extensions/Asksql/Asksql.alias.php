@@ -127,6 +127,11 @@ $aliases['sa'] = array(
 	'Asksql' => array( 'एस्‌क्यूएल्‌पृच्छा' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Asksql' => array( 'SQLPožiadavka' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'Asksql' => array( 'Tanungin ang SQL' ),

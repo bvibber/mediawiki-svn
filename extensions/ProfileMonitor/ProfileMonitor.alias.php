@@ -64,6 +64,11 @@ $aliases['sa'] = array(
 	'ProfileMonitor' => array( 'व्यक्तिविवरणावेक्षते' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ProfileMonitor' => array( 'MonitorProfilu' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'ProfileMonitor' => array( 'Tagapagmatyag ng talaan ng katangian' ),

@@ -23,7 +23,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'formatchanges-desc' => 'Short description of the extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
-	'formatchanges-anonymous' => '{{Identical/Anonymous}}',
+	'formatchanges-anonymous' => '{{Identical|Anonymous}}',
 	'formatchanges-createdby' => '* $1 is a link to a page with the page title as link description
 * $2 is a link to a user page with the user name as link description
 * $3 is the time at which the page was created',

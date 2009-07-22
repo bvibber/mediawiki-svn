@@ -92,6 +92,11 @@ $aliases['sa'] = array(
 	'ImageTagging' => array( 'छायाचित्रवीजक' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ImageTagging' => array( 'OznačovanieObrázkov' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'ImageTagging' => array( 'MabanoyaPicha' ),

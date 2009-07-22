@@ -132,6 +132,11 @@ $aliases['sa'] = array(
 	'NewsChannel' => array( 'वृत्तवाहिनी' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'NewsChannel' => array( 'KanálNoviniek' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'NewsChannel' => array( 'KanalLajmesh' ),

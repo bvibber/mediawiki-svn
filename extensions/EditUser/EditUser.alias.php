@@ -162,6 +162,11 @@ $aliases['sa'] = array(
 	'EditUser' => array( 'सम्पादन्‌योजक' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'EditUser' => array( 'ÚpravaPoužívateľa' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'EditUser' => array( 'Redigera användare' ),

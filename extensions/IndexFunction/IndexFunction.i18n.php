@@ -30,12 +30,14 @@ Please remove "$1" from the <nowiki>{{#index:}}</nowiki> on the above {{PLURAL:$
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Fryed-peach
  * @author Purodha
  * @author Raymond
  */
 $messages['qqq'] = array(
 	'indexfunc-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links or tag names.',
+	'indexfunc-badtitle' => '{{Identical|Invalid title}}',
 	'index-legend' => 'Used in [[Special:Index]].',
 	'index-search' => '{{Identical|Search}}',
 	'index-submit' => '{{Identical|Submit}}',
@@ -48,7 +50,12 @@ $messages['qqq'] = array(
 $messages['be-tarask'] = array(
 	'indexfunc-desc' => 'Функцыя парсэра для стварэньня аўтаматычных перанакіраваньняў і старонак неадназначнасьцяў',
 	'indexfunc-badtitle' => 'Няслушная назва: «$1»',
+	'indexfunc-editwarning' => 'Папярэджаньне: Гэтая назва зьяўляецца індэкснай для {{PLURAL:$2|наступнай старонкі|наступных старонак}}: $1
+Упэўніцеся, што старонка, якую Вы зьбіраецеся стварыць, яшчэ не існуе зь іншай назвай.
+Калі Вы створыце гэту старонку, выдаліце гэту назву з <nowiki>{{#index:}}</nowiki> у {{PLURAL:$2|наступнай старонцы|наступных старонках}}.',
 	'indexfunc-index-exists' => 'Старонка «$1» ужо існуе',
+	'indexfunc-movewarn' => 'Папярэджаньне: «$1» зьяўляецца індэкснай назвай для {{PLURAL:$3|наступнай старонкі|наступных старонак}}: $2
+Калі ласка, выдаліце «$1» з <nowiki>{{#index:}}</nowiki> у {{PLURAL:$3|наступнай старонцы|наступных старонках}}.',
 	'index-legend' => 'Пошук у індэксе',
 	'index-search' => 'Пошук:',
 	'index-submit' => 'Адправіць',
@@ -109,7 +116,14 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'indexfunc-desc' => 'Funcións analíticas para crear redireccións automáticas e páxinas de homónimos',
 	'indexfunc-badtitle' => 'Título inválido: "$1"',
+	'indexfunc-editwarning' => 'Aviso: este título é un título de índice para {{PLURAL:$2|a seguinte páxina|as seguintes páxinas}}:
+$1
+Asegúrese de que a páxina que está a piques de crear aínda non foi creada cun título diferente.
+Se crea esta páxina, elimine este título de <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|na páxina de enriba|nas páxinas de enriba}}.',
 	'indexfunc-index-exists' => 'A páxina "$1" xa existe',
+	'indexfunc-movewarn' => 'Aviso: "$1" é un título de índice para {{PLURAL:$3|a seguinte páxina|as seguintes páxinas}}:
+$2
+Por favor, elimine "$1" de <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|na páxina de enriba|nas páxinas de enriba}}.',
 	'index-legend' => 'Procurar no índice',
 	'index-search' => 'Procurar:',
 	'index-submit' => 'Enviar',
@@ -167,7 +181,15 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'indexfunc-desc' => 'Fungsi parser untuk membuat pengalihan otomatis dan halaman disambiguasi',
+	'indexfunc-badtitle' => 'Judul tidak sah: "$1"',
+	'indexfunc-index-exists' => 'Halaman "$1" sudah ada',
+	'index-legend' => 'Cari di indeks',
+	'index-search' => 'Cari:',
 	'index-submit' => 'Kirim',
+	'index-disambig-start' => "'''$1''' dapat mengacu kepada:",
+	'index-missing-param' => 'Halaman ini tidak dapat digunakan tanpa parameter',
+	'index-emptylist' => 'Tidah ada halaman yang berhubungan dengan "$1"',
 );
 
 /** Japanese (日本語)
@@ -221,7 +243,14 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'indexfunc-desc' => "Parserfunctie om automatisch doorverwijzingen en doorverwijspagina's aan te maken",
 	'indexfunc-badtitle' => 'Ongeldige paginanaam: "$1"',
+	'indexfunc-editwarning' => "Waarschuwing: deze pagina is een indexpagina voor de volgende {{PLURAL:$2|pagina|pagina's}}:
+$1
+Zorg ervoor dat de pagina die u wilt aanmaken niet al bestaat onder een andere naam.
+Als u deze pagina aanmaakt, verwijder deze dan uit de <nowiki>{{#index:}}</nowiki> in de bovenstaande {{PLURAL:$2|pagina|pagina's}}.",
 	'indexfunc-index-exists' => 'De pagina "$1" bestaat al',
+	'indexfunc-movewarn' => 'Waarschuwing: "$1" is een indexpagina voor de volgende {{PLURAL:$3|pagina|pagina\'s}}:
+$2
+Verwijder "$1" uit de <nowiki>{{#index:}}</nowiki> op de bovenstaande {{PLURAL:$3|pagina|pagina\'s}}.',
 	'index-legend' => 'De index doorzoeken',
 	'index-search' => 'Zoeken:',
 	'index-submit' => 'OK',
@@ -251,7 +280,14 @@ $messages['oc'] = array(
 $messages['ru'] = array(
 	'indexfunc-desc' => 'Функция парсера для создания автоматических перенаправлений и страниц неоднозначностей',
 	'indexfunc-badtitle' => 'Ошибочный заголовок «$1»',
+	'indexfunc-editwarning' => 'Предупреждение. Это название является индексным для {{PLURAL:$2|следующей страницы|следующих страниц}}:
+$1
+Убедитесь, что страница, которую вы собираетесь создать, не существует под другим названием.
+Если вы создаёте эту страницу, удалите это название из <nowiki>{{#index:}}</nowiki> на {{PLURAL:$2|указанной выше странице|указанных выше страницах}}.',
 	'indexfunc-index-exists' => 'Страница «[[$1]]» уже существует',
+	'indexfunc-movewarn' => 'Предупреждение. «$1» является индексным названием для {{PLURAL:$3|следующей страницы|следующих страниц}}:
+$2
+Пожалуйста, удалите «$1» из <nowiki>{{#index:}}</nowiki> на {{PLURAL:$2|указанной выше странице|указанных выше страницах}}.',
 	'index-legend' => 'Поиск по индексу',
 	'index-search' => 'Поиск:',
 	'index-submit' => 'Отправить',
@@ -266,7 +302,14 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'indexfunc-desc' => 'Funkcia syntaktického analyzátora na automatickú tvorbu presmerovaní a rozlišovacích stránok',
 	'indexfunc-badtitle' => 'Neplatný názov: „$1“',
+	'indexfunc-editwarning' => 'Upozornenie: Tento názov je indexový názov {{PLURAL:$2|nasledovnej stránky|nasledovných stránok}}:
+$1
+Uistite sa, že stránka, ktorú sa chystáte vytvoriť už neexistuje pod iným názvom.
+Ak túto stránku vytvoríte, odstráňte jej názov z <nowiki>{{#index:}}</nowiki> v hore {{PLURAL:$2|uvedenej stránke|uvedených stránkach}}.',
 	'indexfunc-index-exists' => 'Stránka „$1“ už existuje',
+	'indexfunc-movewarn' => 'Upozornenie: „$1“ je indexový názov {{PLURAL:$3|nasledovnej stránky|nasledovných stránok}}:
+$2
+Prosím, odstráňte „$1“ z <nowiki>{{#index:}}</nowiki> v hore {{PLURAL:$3|uvedenej stránke|uvedených stránkach}}.',
 	'index-legend' => 'Hľadať v indexe',
 	'index-search' => 'Hľadať:',
 	'index-submit' => 'Odoslať',

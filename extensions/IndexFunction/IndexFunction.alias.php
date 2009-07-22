@@ -13,3 +13,8 @@ $aliases['en'] = array(
 	'Index' => array( 'Index' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Index' => array( '索引' ),
+);
+

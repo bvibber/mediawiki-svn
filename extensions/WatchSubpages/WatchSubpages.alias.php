@@ -149,6 +149,11 @@ $aliases['sa'] = array(
 	'WatchSubpages' => array( 'उपपृष्ठनिरीक्षा' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'WatchSubpages' => array( 'SledovaniePodstránok' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'WatchSubpages' => array( 'AngaliaKurasandogo' ),

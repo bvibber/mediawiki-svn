@@ -12,11 +12,13 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'contributorsaddon-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links. "Main contributions" comes from {{msg-mw|contributors-toolbox}}.',
+	'contributorsaddon-desc' => '{{desc}}
+"Main contributions" comes from {{msg-mw|contributors-toolbox}}.',
 );
 
 /** Arabic (العربية)

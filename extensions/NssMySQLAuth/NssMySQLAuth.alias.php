@@ -112,6 +112,11 @@ $aliases['sa'] = array(
 	'AccountManager' => array( 'उपयोजकसंज्ञाप्रबन्धक' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'AccountManager' => array( 'SprávcaÚčtu' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'AccountManager' => array( 'MenaxhuesLlogarie' ),

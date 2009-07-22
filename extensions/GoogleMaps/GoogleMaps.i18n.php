@@ -82,13 +82,14 @@ $wgGoogleMapsMessages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Lloffiwr
  * @author Passawuth
  * @author Purodha
  */
 $wgGoogleMapsMessages['qqq'] = array(
-	'gm-desc' => 'Short description of this [http://www.mediawiki.org/wiki/Extension:Google_Maps extension], shown on [[Special:Version]]. Do not translate or change tag names, or link anchors.',
+	'gm-desc' => '{{desc|url=http://www.mediawiki.org/wiki/Extension:Google_Maps}}',
 	'gm-incompatible-browser' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-incompatible-browser-link' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-no-editor' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
@@ -3687,6 +3688,7 @@ $wgGoogleMapsMessages['pdc'] = array(
  * @author Dodek
  * @author Masti
  * @author McMonster
+ * @author Quolav
  * @author Sp5uhe
  */
 $wgGoogleMapsMessages['pl'] = array(
@@ -3720,7 +3722,7 @@ Spróbuj użyć najnowszej wersji <a href="http://www.microsoft.com/ie">Internet
 	'gm-refresh-points' => 'Odśwież punkty',
 	'gm-width' => 'Szerokość',
 	'gm-height' => 'Wysokość',
-	'gm-scale-control' => 'Powiększenie',
+	'gm-scale-control' => 'Podziałka liniowa',
 	'gm-overview-control' => 'Przegląd',
 	'gm-selector-control' => 'Wybór mapa/satelita',
 	'gm-zoom-control' => 'Nawigacja',

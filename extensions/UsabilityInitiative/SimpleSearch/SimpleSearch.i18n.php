@@ -97,6 +97,16 @@ $messages['gsw'] = array(
 	'simplesearch-search' => 'Suechi',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'simplesearch' => 'חיפוש פשוט',
+	'simplesearch-desc' => 'הוספת תכונות נוספות לחיפוש המפושט של וקטור',
+	'simplesearch-search' => 'חיפוש',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -203,6 +213,15 @@ $messages['sah'] = array(
 	'simplesearch' => 'Судургу көрдөөһүн',
 	'simplesearch-desc' => 'Vector диэн судургу көрдөөччүгэ эбии кыахтары биэрэр',
 	'simplesearch-search' => 'Көрдөөһүн',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'simplesearch' => 'Jednoduché vyhľadávanie',
+	'simplesearch-desc' => 'Pridáva ďalšiu funkcionalitu k zjednodušenému vyhľadávaniu témy vzhľadu Vector',
+	'simplesearch-search' => 'Hľadať',
 );
 
 /** Turkish (Türkçe)

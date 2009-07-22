@@ -46,12 +46,13 @@ Please be patient.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'youtubeauthsub-desc' => 'Short description of this extension, shown on [[Special:Version]].{{doc-important|Do not translate or change links.}}',
+	'youtubeauthsub-desc' => '{{desc}}',
 	'youtubeauthsub_title' => '{{Identical|Title}}',
 	'youtubeauthsub_description' => '{{Identical|Description}}',
 	'youtubeauthsub_category' => '{{Identical|Category}}',
@@ -1317,9 +1318,13 @@ Tulung sabar dhisik.',
 );
 
 /** Georgian (ქართული)
+ * @author David1010
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
+	'youtubeauthsub_title' => 'სათაური',
+	'youtubeauthsub_password' => 'პაროლი YouTube–ზე',
+	'youtubeauthsub_username' => 'მომხმარებლის სახელი YouTube–ზე',
 	'youtubeauthsub_category' => 'კატეგორია',
 	'youtubeauthsub_uploadbutton' => 'ატვირთვა',
 );

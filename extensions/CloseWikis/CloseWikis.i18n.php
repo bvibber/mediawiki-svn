@@ -51,10 +51,10 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'closewikis-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
-	'closewikis-page-close-wiki' => '{{Identical/Wiki}}',
-	'closewikis-page-reopen-wiki' => '{{Identical/Wiki}}',
-	'closewikis-page-reopen-reason' => '{{Identical/Reason}}',
-	'closewikis-list-header-wiki' => '{{Identical/Wiki}}',
+	'closewikis-page-close-wiki' => '{{Identical|Wiki}}',
+	'closewikis-page-reopen-wiki' => '{{Identical|Wiki}}',
+	'closewikis-page-reopen-reason' => '{{Identical|Reason}}',
+	'closewikis-list-header-wiki' => '{{Identical|Wiki}}',
 	'right-editclosedwikis' => '{{doc-right}}',
 );
 

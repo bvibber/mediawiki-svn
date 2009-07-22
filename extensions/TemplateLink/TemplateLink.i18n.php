@@ -21,11 +21,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Masterches
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'templatelink' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'templatelink' => '{{desc}}',
 	'templatelink_desc' => 'Short description of the TemplateLink extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'templatelink_newtitle' => 'A page is transcluded when it is inserted by reference in an other one (a part of the source page will be referenced in the present document and so be included)',
 );

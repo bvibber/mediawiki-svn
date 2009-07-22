@@ -177,6 +177,11 @@ $aliases['sa'] = array(
 	'ChangeAuthor' => array( 'सम्पादकपरिवर्तयति' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ChangeAuthor' => array( 'ZmeniťAutora' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ChangeAuthor' => array( 'NdërroAutor' ),

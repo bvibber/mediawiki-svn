@@ -150,6 +150,11 @@ $aliases['sa'] = array(
 	'CreatePage' => array( 'पृष्ठस्यसृजन' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'CreatePage' => array( 'VytvoriťStránku' ),
+);
+
 /** Sundanese (Basa Sunda) */
 $aliases['su'] = array(
 	'CreatePage' => array( 'JieunKaca' ),

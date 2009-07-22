@@ -140,6 +140,12 @@ $aliases['sa'] = array(
 	'TaskListByProject' => array( 'प्रकल्पकार्यसूची' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'TaskList' => array( 'ZoznamÚloh' ),
+	'TaskListByProject' => array( 'ZoznamÚlohPodľaProjektu' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'TaskList' => array( 'Talaan ng gawain' ),

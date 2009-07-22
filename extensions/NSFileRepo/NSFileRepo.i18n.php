@@ -70,6 +70,13 @@ $messages['gsw'] = array(
 	'nsfilerepo-desc' => 'Features z Verfiegig stelle, wu uf Namensryym basiere, go Dateie uffelade',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'nsfilerepo-desc' => 'הוספת תכונות מבוססות מרחב שם לקבצים שהועלו',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

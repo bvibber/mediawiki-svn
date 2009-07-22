@@ -189,6 +189,11 @@ $aliases['sa'] = array(
 	'ImportUsers' => array( 'आयातयोजक:' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ImportUsers' => array( 'ImportPoužívateľov' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ImportUsers' => array( 'ImportoPërdorues' ),

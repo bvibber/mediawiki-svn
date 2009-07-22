@@ -18,11 +18,12 @@ Please use the page [[MediaWiki:Number_of_watching_users_pageview]] to define an
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'whoiswatching-desc' => 'Short description of the Whoiswatching extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
+	'whoiswatching-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

@@ -165,6 +165,12 @@ $aliases['sa'] = array(
 	'RepoAdmin' => array( 'रेपोप्रचालक' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Code' => array( 'Kód', 'KontrolaKódu' ),
+	'RepoAdmin' => array( 'SprávcaÚložiska' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Code' => array( 'Kodi', 'Onyesha kodi' ),

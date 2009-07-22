@@ -165,6 +165,11 @@ $aliases['sa'] = array(
 	'Watchers' => array( 'पश्यक्‌' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Watchers' => array( 'Sledujúci' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Watchers' => array( 'Waangalizi' ),

@@ -65,6 +65,11 @@ $aliases['sa'] = array(
 	'RecordAdmin' => array( 'प्रचालकअङ्कन' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'RecordAdmin' => array( 'SprávcaZáznamu' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'RecordAdmin' => array( 'RekodizaMkabidhi' ),

@@ -20,7 +20,7 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'protectsection_desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.
+	'protectsection_desc' => '{{desc}}
 
 {{Identical|Authorised user}}',
 	'right-protectsection' => '{{doc-right|protectsection}}',

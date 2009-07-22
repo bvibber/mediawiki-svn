@@ -183,7 +183,9 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'slippymap_desc' => 'Zmóžnja wužywanje toflicki <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> za zwobraznjenje pśesuwajobneje kórty OpenLayer. Kórty su z [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_desc' => 'Pśidawa toflicku <tt>&lt;slippymap&gt;</tt>, kótaraž zmóžnja zasajźenje statiskich a dynamiskich geografiskich kórtow. Pódpěra někotare kórtowe słužby inkluziwnje [http://openstreetmap.org openstreetMap] a NASA Worldwind',
+	'slippymap_error' => 'zmólka $1: $2',
+	'slippymap_errors' => 'zmólki $1:',
 	'slippymap_code' => 'Wikikod za toś ten kórtowy naglěd:',
 	'slippymap_button_code' => 'Wikikod pokazaś',
 	'slippymap_resetview' => 'Naglěd slědk stajiś',

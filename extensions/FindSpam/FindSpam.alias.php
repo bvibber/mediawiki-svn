@@ -147,6 +147,11 @@ $aliases['sa'] = array(
 	'FindSpam' => array( 'समाप्नोतिअतिपत्राचार' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'FindSpam' => array( 'HľadanieSpamu' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'FindSpam' => array( 'GjejGabime' ),

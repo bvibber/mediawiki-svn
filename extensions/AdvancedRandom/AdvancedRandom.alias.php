@@ -112,6 +112,11 @@ $aliases['sa'] = array(
 	'AdvancedRandom' => array( 'प्रगताअविशीष्ट' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'AdvancedRandom' => array( 'RozšírenéNáhodné' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'AdvancedRandom' => array( 'Mas masulong na paghanap ng alin mang pahina' ),

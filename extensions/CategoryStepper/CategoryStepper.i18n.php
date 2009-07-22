@@ -300,6 +300,14 @@ $messages['jv'] = array(
 	'categorystepper-start' => '(Wiwitan kategori)',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'categorystepper-end' => '(კატეგორიის დასასრული)',
+	'categorystepper-start' => '(კატეგორიის დასაწყისი)',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

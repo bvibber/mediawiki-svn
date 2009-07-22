@@ -24,11 +24,12 @@ When checking or unchecking multiple pages, holding the shift key allows you to 
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'watchsubpages-desc' => 'Short description of this extension, shown on [[Special:Version]].{{doc-important|Do not translate or change links.}}',
+	'watchsubpages-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

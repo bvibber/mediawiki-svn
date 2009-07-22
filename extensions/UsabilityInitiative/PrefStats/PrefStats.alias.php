@@ -32,6 +32,11 @@ $aliases['ja'] = array(
 	'PrefStats' => array( '設定統計' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'PrefStats' => array( 'StatistikeFörEnstellunge', 'StatistikeFörEnshtellunge', 'EnstellungStatistike', 'EnstellungStatistik' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PrefStats' => array( 'Statistike vun den Astellungen' ),
@@ -40,5 +45,10 @@ $aliases['lb'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'PrefStats' => array( 'Voorkeurenstatistieken' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'PrefStats' => array( 'ŠtatistikyNastavení' ),
 );
 

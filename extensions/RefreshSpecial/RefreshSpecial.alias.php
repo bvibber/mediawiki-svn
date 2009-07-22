@@ -87,6 +87,11 @@ $aliases['no'] = array(
 	'RefreshSpecial' => array( 'Oppdater spesialsider' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'RefreshSpecial' => array( 'ŠpeciálneObnovenie' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'RefreshSpecial' => array( 'Natatanging pagsasariwa' ),

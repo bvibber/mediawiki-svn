@@ -14,12 +14,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'mootools12core-desc' => 'Short description of this extension, shown on [[Special:Version]].
-{{doc-important|Do not translate or change links.}}',
+	'mootools12core-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

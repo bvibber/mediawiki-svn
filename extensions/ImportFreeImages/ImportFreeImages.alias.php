@@ -132,6 +132,11 @@ $aliases['sa'] = array(
 	'ImportFreeImages' => array( 'आयातमुक्तछायाचित्र' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ImportFreeImages' => array( 'ImportSlobodnýchObrázkov' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ImportFreeImages' => array( 'ImportoFiguraFalas' ),

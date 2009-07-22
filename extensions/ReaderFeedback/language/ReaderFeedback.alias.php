@@ -315,7 +315,10 @@ $aliases['sa'] = array(
  * @author Helix84
  */
 $aliases['sk'] = array(
+	'LikedPages' => array( 'OdkazovanéStránky' ),
 	'ProblemPages' => array( 'ProblémovéStránky' ),
+	'RatingHistory' => array( 'HistóriaHodnotenia' ),
+	'ReaderFeedback' => array( 'SpätnáVäzbaČitateľov' ),
 );
 
 /** Albanian (Shqip) */

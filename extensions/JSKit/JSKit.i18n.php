@@ -15,10 +15,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Skizzerz
  */
 $messages['qqq'] = array(
-	'jskit-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'jskit-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

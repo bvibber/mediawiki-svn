@@ -133,6 +133,19 @@ $aliases['sa'] = array(
 	'MvVideoFeed' => array( 'मेविचलछायाप्रविष्टी' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'MediaSearch' => array( 'HľadanieMultimédií' ),
+	'Mv_Add_Stream' => array( 'PridanieStreamuMV' ),
+	'MVAdmin' => array( 'SprávcaMV' ),
+	'MvExportSearch' => array( 'ExportHľadaniaMV' ),
+	'MvExportSequence' => array( 'ExportSekvencieMV' ),
+	'MvExportStream' => array( 'ExportStreamuMV' ),
+	'Mv_List_Streams' => array( 'ZoznamStreamovMV' ),
+	'MV_SpecialSearch' => array( 'ŠpeciálneHľadanieMV' ),
+	'MvVideoFeed' => array( 'VideokanálMV' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'MediaSearch' => array( 'KërkimMediash' ),

@@ -122,6 +122,11 @@ $aliases['sa'] = array(
 	'ChemicalSources' => array( 'रसायनस्रोत' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'ChemicalSources' => array( 'ChemickéZdroje' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ChemicalSources' => array( 'BurimeKimike' ),

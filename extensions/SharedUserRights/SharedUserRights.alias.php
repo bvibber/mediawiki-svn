@@ -102,6 +102,11 @@ $aliases['no'] = array(
 	'SharedUserRights' => array( 'Delte brukerrettigheter' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'SharedUserRights' => array( 'ZdieľanéPoužívateľskéPráva' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'SharedUserRights' => array( 'Pinagsasaluhang mga karapatan ng tagagamit', 'Mga karapatan ng pandaigdigang tagagamit' ),

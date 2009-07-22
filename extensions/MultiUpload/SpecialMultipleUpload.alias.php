@@ -88,6 +88,11 @@ $aliases['ko'] = array(
 	'MultipleUpload' => array( '다중올리기' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'MultipleUpload' => array( 'HuhlaadeEmPöngel' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'MultipleUpload' => array( 'Vill Fichieren eroplueden' ),
@@ -128,6 +133,11 @@ $aliases['pt-br'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'MultipleUpload' => array( 'अनेकभारंन्यस्यति' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'MultipleUpload' => array( 'Multinahrávanie' ),
 );
 
 /** Albanian (Shqip) */

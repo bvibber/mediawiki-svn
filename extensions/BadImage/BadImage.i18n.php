@@ -1148,12 +1148,20 @@ $messages['jv'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author David1010
  * @author Malafaya
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
+	'badimages' => 'უხარისხო სურათების სია',
 	'badimages-add-btn' => 'დამატება',
+	'badimages-added' => '$1 დამატებულია სიაში.',
+	'badimages-name' => 'სახელი:',
 	'badimages-reason' => 'მიზეზი:',
+	'badimages-remove' => '(წაშლა)',
+	'badimages-remove-btn' => 'წაშლა',
+	'badimages-removed' => '$1 წაშლილია სიიდან.',
+	'badimages-log-name' => 'უხარისხო სურათების სია',
 );
 
 /** Khmer (ភាសាខ្មែរ)

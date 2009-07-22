@@ -105,6 +105,11 @@ $aliases['sa'] = array(
 	'RandomInCategory' => array( 'अविशिष्टवर्ग' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'RandomInCategory' => array( 'NáhodnéVKategórii' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'RandomInCategory' => array( 'Alinmang kaurian' ),

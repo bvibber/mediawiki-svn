@@ -187,6 +187,11 @@ $aliases['sa'] = array(
 	'Contributors' => array( 'योगदाता' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Contributors' => array( 'Prispievatelia' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Contributors' => array( 'Kontribues' ),

@@ -31,7 +31,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'contrib-tracking-error' => '{{Identical|Error}}',
-	'contrib-tracking-button' => '{{Identical/Continue}}',
+	'contrib-tracking-button' => '{{Identical|Continue}}',
 );
 
 /** Aragonese (Aragonés)

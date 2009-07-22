@@ -112,6 +112,11 @@ $aliases['sa'] = array(
 	'DeleteQueue' => array( 'अनुपङ्क्तिपरित्याग' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'DeleteQueue' => array( 'ZmazanieFrontu' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'DeleteQueue' => array( 'Radera kö' ),

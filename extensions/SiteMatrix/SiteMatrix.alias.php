@@ -194,6 +194,11 @@ $aliases['pt-br'] = array(
 	'SiteMatrix' => array( 'Lista de wikis da Wikimedia' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'SiteMatrix' => array( 'MaticaLokalít' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'SiteMatrix' => array( 'Lista över Wikimedias wikier' ),

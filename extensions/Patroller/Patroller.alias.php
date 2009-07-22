@@ -112,6 +112,11 @@ $aliases['sa'] = array(
 	'Patroller' => array( 'पॅटरोलर' ),
 );
 
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Patroller' => array( 'Strážca' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Patroller' => array( 'Patrullues' ),

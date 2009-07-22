@@ -125,6 +125,11 @@ $aliases['km'] = array(
 	'Invitations' => array( 'ការអញ្ជើញ' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Invitations' => array( 'Enlaadunge', 'Enladunge' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Invitations' => array( 'Invitatiounen' ),
@@ -183,6 +188,11 @@ $aliases['ro'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'Invitations' => array( 'आमन्त्रण' ),
+);
+
+/** Slovak (Slovenčina) */
+$aliases['sk'] = array(
+	'Invitations' => array( 'Pozvánky' ),
 );
 
 /** Albanian (Shqip) */
