@@ -15,7 +15,7 @@ From [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperatio
 See also the [[Special:MostRevisors|\'\'\'pages with the most revisors\'\'\']] and [[Special:MostRevisions|pages with the most revisions]].',
 	'cooperationstatistics-tablearticle' => 'Page count',
 	'cooperationstatistics-tablevalue' => 'Number of editors',
-	'cooperationstatistics-articles' => '$1 {{PLURAL|page|pages}}',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|page|pages}}',
 	'cooperationstatistics-nbusers' => '{{PLURAL:$2|has|have}} $1 {{PLURAL:$1|editor|editors}}',
 	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|has|have}} $1 {{PLURAL:$1|editor|or less editors}}',
 	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|has|have}} $1 or more editors',
