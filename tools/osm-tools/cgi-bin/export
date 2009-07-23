@@ -14,6 +14,9 @@ import sys
 import tempfile
 import resource
 import yaml
+import md5
+import datetime
+
 
 #
 # Config data
@@ -41,11 +44,22 @@ resource.setrlimit(resource.RLIMIT_CPU,(cpu_min, cpu_max))
 resource.setrlimit(resource.RLIMIT_AS,(as_min, as_max))
 
 # Routine to output HTTP headers
-def output_headers(content_type, length = 0):
+def output_headers(content_type, length = 0, etag = 0):
   print "Content-Type: %s" % content_type
+
+  #Add caching headers
+  print "Cache-Control: max-age=%i" % config['caching']['max-age']
+  today = datetime.datetime.utcnow()
+  delta = datetime.timedelta(days=(config['caching']['max-age']/86400), seconds = ((config['caching']['max-age']%86400)))
+  expire = today + delta
+  print "Expires: %s GMT" % expire.strftime("%a, %d %b %Y %H:%M:%S")
+  if etag:
+    print "Etag : \"%s\"" % etag
+
   if length:
     print "Content-Length: %d" % length
   print ""
+  
 
 # Routine to output the contents of a file
 def output_file(file):
@@ -135,8 +149,16 @@ else:
       if form.getvalue("format") == "png":
         image = mapnik.Image(map.width, map.height)
         mapnik.render(map, image)
-        png = image.tostring("png") 
-        output_headers("image/png", len(png))
+        png = image.tostring("png")
+        etag = md5.new(png)
+        
+        etagquotes = "\"%s\"" % etag.hexdigest()
+        if os.environ.has_key('HTTP_IF_NONE_MATCH'):
+          if (os.environ['HTTP_IF_NONE_MATCH'] == etagquotes):
+            print "Status: 304 Not Modified"
+            exit
+                
+        output_headers("image/png", len(png),etag.hexdigest())
         print png
       else:
         output_error("Unknown format '%s'" % form.getvalue("format"))
