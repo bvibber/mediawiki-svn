@@ -3,7 +3,7 @@
  * Special:CooperationStatistics
  */
 
-class CooperationStatistics extends SpecialPage {
+class CooperationStatistics extends IncludableSpecialPage {
 	public function __construct() {
 		parent::__construct( 'CooperationStatistics' );
 	}
@@ -14,7 +14,8 @@ class CooperationStatistics extends SpecialPage {
 		wfLoadExtensionMessages( 'CooperationStatistics' );
 		$nb_of_revuser = wfMsg( 'cooperationstatistics-limit-few-revisors' );
 		$nbpages = $this->getNbOfPages( $nb_of_revuser, '<=' );
-		$this->OutputTableRaw( $nbpages, $nb_of_revuser, 'init' );
+		if( !$this->mIncluding )
+			$this->OutputTableRaw( $nbpages, $nb_of_revuser, 'init' );
 
 		$retval = array();
 		$retval[$nb_of_revuser] = $this->getNbOfPages( $nb_of_revuser, '=' );
@@ -22,13 +23,15 @@ class CooperationStatistics extends SpecialPage {
 		$range = 1 + wfMsg( 'cooperationstatistics-limit-many-revisors' ) - $nb_of_revuser;
 		for ( $j = 0; $j < $range; $j++ ) {
 			$nbpages = $this->getNbOfPages( $nb_of_revuser, '=' );
-			$this->OutputTableRaw( $nbpages, $nb_of_revuser, '=' );
+			if( !$this->mIncluding )
+				$this->OutputTableRaw( $nbpages, $nb_of_revuser, '=' );
 			$retval[$nb_of_revuser] = $nbpages;
 			$nb_of_revuser++;
 		}
 
 		$nbpages = $this->getNbOfPages( $nb_of_revuser, '>=' );
-		$this->OutputTableRaw( $nbpages, $nb_of_revuser, 'end' );
+		if( !$this->mIncluding )
+			$this->OutputTableRaw( $nbpages, $nb_of_revuser, 'end' );
 		$retval[$nb_of_revuser] = $nbpages;
 
 		if ( $wgCooperationStatsGoogleCharts == True ) {
