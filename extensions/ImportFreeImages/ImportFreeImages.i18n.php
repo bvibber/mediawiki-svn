@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'importfreeimages-desc'           => 'Provides a way of [[Special:ImportFreeImages|importing properly licensed photos]] from [http://www.flickr.com flickr]',
 	'importfreeimages_description'    => 'This page allows you to search properly licensed photos from flickr and import them into your wiki.',
 	'importfreeimages_noapikey'       => 'You have not configured your Flickr API Key.
-To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc.api_keys.html here] and set wgFlickrAPIKey in ImportFreeImages.php.',
+To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc.api_keys.html here] and set $wgFlickrAPIKey in ImportFreeImages.php.',
 	'importfreeimages_nophotosfound'  => 'No photos were found for your search criteria \'$1\', please try again.',
 	'importfreeimages_invalidurl'     => 'The URL "$1" is not a valid Flickr image.',
 	'importfreeimages_owner'          => 'Author',
@@ -25,6 +25,7 @@ To do so, please obtain a API key from  [http://www.flickr.com/services/api/misc
 	'importfreeimages_filefromflickr' => '$1 by user <b>[$2]</b> from flickr. Original URL',
 	'importfreeimages_promptuserforfilename' => 'Please enter a destination filename:',
 	'importfreeimages_returntoform'   => 'Or, click <a href=\'$1\'>here</a> to return to your search results',
+	'importfreeimages_nophpflickr' => 'You have not installed phpFlickr, please set $wgIFphpFlickr in your LocalSettings.php.',
 );
 
 /** Message documentation (Message documentation)

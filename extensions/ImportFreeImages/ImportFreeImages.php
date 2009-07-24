@@ -17,6 +17,7 @@ $wgIFI_FlickrAPIKey = ''; // the flickr API key. This is required for the extens
 $wgIFI_CreditsTemplate = 'flickr'; // use this to format the image content with some key parameters
 $wgIFI_GetOriginal = true; // import the original version of the photo
 $wgIFI_PromptForFilename = true;  // prompt the user through javascript for the destination filename
+$wgIFphpFlickr = 'phpFlickr-2.2.0/phpFlickr.php'; // Path to your phpFlickr file
 
 $wgIFI_ResultsPerPage = 20;
 $wgIFI_ResultsPerRow = 4;
@@ -34,7 +35,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'ImportFreeImages',
 	'author' => 'Travis Derouin',
-	'version' => '1.0',
+	'version' => '1.1',
 	'description' => 'Provides a way of importing properly licensed photos from flickr.',
 	'descriptionmsg' => 'importfreeimages-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',

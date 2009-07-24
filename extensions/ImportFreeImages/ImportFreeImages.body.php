@@ -21,12 +21,18 @@ class ImportFreeImages extends SpecialPage {
 	public function execute( $par ) {
 		global $wgUser, $wgOut, $wgRequest, $wgIFI_FlickrAPIKey, $wgEnableUploads;
 		global $wgIFI_ResultsPerPage, $wgIFI_FlickrSort, $wgIFI_FlickrLicense, $wgIFI_ResultsPerRow;
-		global $wgIFI_PromptForFilename, $wgIFI_FlickrSearchBy, $wgIFI_ThumbType;
+		global $wgIFI_PromptForFilename, $wgIFI_FlickrSearchBy, $wgIFI_ThumbType, $wgIFphpFlickr;
 
 		wfLoadExtensionMessages( 'ImportFreeImages' );
 
+		$this->setHeaders();
+
 		wfSetupSession();
-		require_once("phpFlickr-2.2.0/phpFlickr.php");
+		if( !is_readable( $wgIFphpFlickr ) ) {
+			$wgOut->errorpage( 'error', 'importfreeimages_nophpflickr' );
+			return;
+		}
+		require_once( $wgIFphpFlickr );
 
 		$importPage = SpecialPage::getTitleFor( 'ImportFreeImages' );
 
@@ -77,7 +83,7 @@ class ImportFreeImages extends SpecialPage {
 		$q = $wgRequest->getText( 'q' );
 
 		global $wgScript;
-		$wgOut->addHTML( wfMsg( 'importfreeimages-description' ) . "<br /><br />
+		$wgOut->addHTML( wfMsg( 'importfreeimages_description' ) . "<br /><br />
 			<form method=GET action=\"$wgScript\">".wfMsg('search').
 			Xml::hidden( 'title', $importPage->getPrefixedDBkey() ) .
 			": <input type=text name=q value='" . htmlspecialchars($q) . "'><input type=submit value=".wfMsg('search')."></form>");
