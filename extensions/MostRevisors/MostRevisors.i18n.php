@@ -30,12 +30,13 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author Fryed-peach
  * @author McDutchie
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'mostrevisors' => 'The [http://www.mediawiki.org/wiki/Extension:MostRevisors documentation for this extension] seems to indicate that "revisor" here is another word for "editor" or "contributor".',
-	'mostrevisors-desc' => 'Short description of the extension, shown on [[Special:Version]].',
+	'mostrevisors-desc' => '{{desc}}',
 	'mostrevisors-limitlinks' => '* $1 is a series of links for different numbers, separated by {{msg-mw|pipe-separator}}',
 	'mostrevisors-namespace' => '{{Identical|Namespace}}',
 	'mostrevisors-submit' => '{{Identical|Go}}',
@@ -58,6 +59,23 @@ $messages['be-tarask'] = array(
 	'mostrevisors-showredir' => 'Паказаць перанакіраваньні',
 	'mostrevisors-hideredir' => 'Схаваць перанакіраваньні',
 	'mostrevisors-viewcontributors' => 'Паказаць асноўных аўтараў',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'mostrevisors' => 'Stranice sa najviše revizora',
+	'mostrevisors-desc' => 'Prikazuje [[Special:MostRevisors|stranice sa najviše revizora]]',
+	'mostrevisors-limitlinks' => 'Prikazuj do $1 stranica',
+	'mostrevisors-namespace' => 'Imenski prostor:',
+	'mostrevisors-none' => 'Nijedna stavka nije pronađena.',
+	'mostrevisors-showing' => '{{PLURAL:$1|Prikazana je stranica|Prikazane su $1 stranice|Prikazano je $1 stranica}}:',
+	'mostrevisors-submit' => 'Idi',
+	'mostrevisors-showredir' => 'Prikaži stranice preusmjerenja',
+	'mostrevisors-hideredir' => 'Sakrij stranice preusmjerenja',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|uređivač|uređivači}}',
+	'mostrevisors-viewcontributors' => 'Vidi glavne urednike',
 );
 
 /** German (Deutsch)
@@ -195,7 +213,19 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'mostrevisors' => 'Halaman dengan penyunting terbanyak',
+	'mostrevisors-desc' => 'Daftar [[Special:MostRevisors|halaman dengan penyunting terbanyak]]',
+	'mostrevisors-header' => "'''Halaman ini mendaftarkan {{PLURAL:$1||}}$1 halaman di wiki dengan penyunting terbanyak.'''",
+	'mostrevisors-limitlinks' => 'Tunjukkan $1 halaman',
 	'mostrevisors-namespace' => 'Ruang nama:',
+	'mostrevisors-none' => 'Entri tidak ditemukan',
+	'mostrevisors-ns-header' => "'''Halaman ini mendaftarkan {{PLURAL:$1||}}$1 halaman di ruang nama $2 dengan penyunting terbanyak.'''",
+	'mostrevisors-showing' => 'Memperlihatkan {{PLURAL:$1||}}$1 halaman:',
+	'mostrevisors-submit' => 'Tuju ke',
+	'mostrevisors-showredir' => 'Tunjukkan halaman pengalihan',
+	'mostrevisors-hideredir' => 'Sembunyikan halaman pengalihan',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1||}}penyunting',
+	'mostrevisors-viewcontributors' => 'Tunjukkan penyunting utama',
 );
 
 /** Italian (Italiano)

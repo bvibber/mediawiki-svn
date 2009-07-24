@@ -126,6 +126,13 @@ $messages['hi'] = array(
 	'contributorsaddon-desc' => 'मुख्य योगदानकर्ता" कड़ीयोंपर माउस लेके जाने के बाद दिखने वाले पॉप-अप के लिये जावास्क्रीप्ट बढाता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'contributorsaddon-desc' => 'Gadugang JavaScript nga gabutwa sa "Nangunahan nga mga kontribyutor" links',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

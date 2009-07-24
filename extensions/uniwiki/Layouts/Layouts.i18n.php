@@ -28,7 +28,7 @@ $messages['en'] = array(
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'layouts-desc' => 'Short description of this extension, shown on [[Special:Version]].',
+	'layouts-desc' => '{{desc}}',
 	'layouts_title' => '{{Identical|Createpage}}',
 	'layouts_continue' => '{{Identical|Continue}}',
 	'layouts_unknown' => '{{Identical|Unknown}}',

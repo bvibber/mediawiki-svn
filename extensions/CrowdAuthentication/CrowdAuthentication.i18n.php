@@ -138,6 +138,13 @@ $messages['hi'] = array(
 	'crowdauthentication-desc' => 'ऍट्लेशिअन क्राउड के लिये प्रमाणिकरण प्लग-इन',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'crowdauthentication-desc' => 'Pagpamatuod plugin para Atlassian Tinawo',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

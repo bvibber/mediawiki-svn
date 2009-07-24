@@ -183,6 +183,13 @@ $messages['hi'] = array(
 	'breadcrumbs-desc' => 'विकिमें सदस्यका पाथ दर्शाता हैं।',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'breadcrumbs-desc' => 'Ginapakita ang alagyan sang mga user pa-agi sa wiki.',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */

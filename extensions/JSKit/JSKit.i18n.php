@@ -128,6 +128,13 @@ $messages['he'] = array(
 	'jskit-desc' => 'הטמעת כלי js-kit לתוך דף ויקי',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'jskit-desc' => 'Nagatipon js-kit tools sa wiki pahina',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

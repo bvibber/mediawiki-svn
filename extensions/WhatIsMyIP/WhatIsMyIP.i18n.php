@@ -660,6 +660,8 @@ $messages['tl'] = array(
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'whatismyip' => 'IP adresim',
+	'whatismyip-desc' => 'Kullanıcının güncel [[Special:WhatIsMyIP|IP adresini]] gösterir',
 	'whatismyip-out' => 'IP adresiniz:',
 );
 

@@ -166,6 +166,18 @@ $messages['cs'] = array(
 	'right-findspam' => 'Hledat nedávno přidaný spam',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'findspam' => 'Chwilio am sbam',
+	'findspam-desc' => "Yn ychwanegu [[Special:FindSpam|tudalen arbennig]] sy'n galluogi dyn i ddod o hyd i sbam newydd",
+	'findspam-ip' => 'Cyfeiriad IP:',
+	'findspam-ok' => 'Iawn',
+	'findspam-notextfound' => "Dim cyfraniadau i'w cael",
+	'right-findspam' => 'Chwilio am sbam newydd ei ychwanegu',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

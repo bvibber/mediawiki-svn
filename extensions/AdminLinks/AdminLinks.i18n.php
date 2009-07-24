@@ -33,7 +33,7 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'adminlinks-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate link targets.',
+	'adminlinks-desc' => '{{desc}}',
 	'adminlinks_documentation' => 'The label for a link to documentation for a certain extension, whose name is passed in.',
 	'adminlinks_users' => '{{Identical|User}}',
 	'right-adminlinks' => '{{doc-right}}',

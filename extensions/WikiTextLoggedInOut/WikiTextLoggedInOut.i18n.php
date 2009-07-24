@@ -131,6 +131,13 @@ $messages['he'] = array(
 	'wikitextloggedinout-desc' => 'שתי תגיות, <tt>&lt;loggedin&gt;</tt> ו־<tt>&lt;loggedout&gt;</tt>, המציגות טקסט שונה למשתמשים אנונימיים ולמשתמשים רשומים',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'wikitextloggedinout-desc' => "Duwa ka parser hooks, <tt>&lt;loggedin&gt;</tt> kag <tt>&lt;loggedout&gt;</tt> para makit-an ang sari-sari nga teksto depende sa mga users' login estado",
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

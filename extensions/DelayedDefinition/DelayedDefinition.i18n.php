@@ -14,9 +14,11 @@ $messages['en'] = array(
 	'delaydef-error-redef'          => 'Error: Attempted redefinition of $1.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Fryed-peach
+ */
 $messages['qqq'] = array(
-	'delaydef-desc' => 'Short description of the DelayedDefinition extension, shown on [[Special:Version]].',
+	'delaydef-desc' => '{{desc}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

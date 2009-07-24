@@ -22,10 +22,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'useroptionstats-desc' => 'A short description of this extension. Used in [[Special:Version]]. Do not translate link targets.',
+	'useroptionstats-desc' => '{{desc}}',
 	'uos-unknown' => '{{Identical|Default}}',
 	'uos-other' => '{{Identical|Other}}',
 );

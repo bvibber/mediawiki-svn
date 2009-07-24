@@ -941,6 +941,7 @@ Si iste error persiste, le base de datos es probabilemente defecte.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Rex
  */
 $messages['id'] = array(
@@ -949,7 +950,7 @@ $messages['id'] = array(
 	'changeauthor-title' => 'Mengganti penulis suatu revisi',
 	'changeauthor-search-box' => 'Mencari revisi',
 	'changeauthor-pagename-or-revid' => 'Nama halaman atau kode revisi:',
-	'changeauthor-pagenameform-go' => 'Kirim',
+	'changeauthor-pagenameform-go' => 'Tuju ke',
 	'changeauthor-comment' => 'Komentar:',
 	'changeauthor-changeauthors-multi' => 'Ganti {{PLURAL:$1|penulis|penulis}}',
 	'changeauthor-explanation-multi' => "Dalam formulir ini Anda dapat mengubah penulis suatu revisi.

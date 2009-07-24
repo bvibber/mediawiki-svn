@@ -105,6 +105,13 @@ $messages['he'] = array(
 	'Editsectionhilitelink-desc' => 'סימון הפרק המתאים של הדף בעת העברת העכבר על גבי קישור העריכה',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'Editsectionhilitelink-desc' => 'Pasanagan ang ensakto nga seksyon sang pahina kung imo gina giho ang mouse sa ilan link',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

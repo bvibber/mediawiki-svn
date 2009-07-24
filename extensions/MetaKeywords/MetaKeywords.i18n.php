@@ -161,6 +161,13 @@ $messages['he'] = array(
 	'metakeywords-desc' => 'מתן האפשרות להגדרת תגיות <tt><nowiki><meta "keywords"></nowiki></tt> ו־<tt><nowiki><meta "description"></nowiki></tt> לכל מרחב שם בנפרד',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'metakeywords-desc' => 'nagapasugot sang konpigurasyon sang <tt><nowiki><meta "keywords"></nowiki></tt> kag <tt><nowiki><meta "description"></nowiki></tt> tags kada ngalanespasyo',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

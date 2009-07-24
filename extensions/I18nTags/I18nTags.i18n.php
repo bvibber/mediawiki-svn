@@ -137,6 +137,13 @@ $messages['hi'] = array(
 	'i18ntags-desc' => 'सभी उपलब्ध भाषाओंमें संख्यालेखन, व्याकरण और अनेकवचन देने की i18n कार्योंका इस्तेमाल करें',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'i18ntags-desc' => 'Isudlon ang i18n panksiyon para pormatan numeru, gramar kag ang plural sa bisan anu nga lengwahe',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

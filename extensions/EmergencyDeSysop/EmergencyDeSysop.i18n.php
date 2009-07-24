@@ -31,6 +31,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author Purodha
  * @author SPQRobin
  */
@@ -38,6 +39,7 @@ $messages['qqq'] = array(
 	'emergencydesysop-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
+	'emergencydesysop-submit' => '{{Identical|Submit}}',
 	'emergencydesysop-nogroups' => '{{Identical|None}}',
 	'right-emergencydesysop' => 'This is a user right description, as shown on [[Special:ListGroupRights]], e.g.',
 );
@@ -375,7 +377,20 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'emergencydesysop' => 'Pemecatan Admin Darurat',
+	'emergencydesysop-desc' => 'Mengijinkan seorang pengurus untuk mengorbankan hak-haknya untuk memecat seorang pengurus yang lain',
+	'emergencydesysop-title' => 'Menghilangkan akses pengurus dari pengguna saat ini dan seorang pengurus lain',
+	'emergencydesysop-otheradmin' => 'Pengurus lain yang akan dikeluarkan',
+	'emergencydesysop-reason' => 'Alasan pengeluaran',
+	'emergencydesysop-submit' => 'Kirim',
+	'emergencydesysop-incomplete' => 'Semua harus diisi. Silakan dicoba lagi.',
+	'emergencydesysop-notasysop' => 'Pengguna yang dimaksud bukanlah seorang pengurus.',
 	'emergencydesysop-nogroups' => 'Tidak ada',
+	'emergencydesysop-done' => 'Proses selesai, ANda dan [[$1]] telah dikeluarkan dari daftar pengurus.',
+	'emergencydesysop-invalidtarget' => 'Pengguna yang dituju tidak ada.',
+	'emergencydesysop-blocked' => 'Anda tidak dapat mengakses halaman ini ketika sedang diblok',
+	'emergencydesysop-noright' => 'Anda tidak memiliki ijin yang cukup untuk mengakses halaman ini',
+	'right-emergencydesysop' => 'Mampu untuk memecat seorang pengurus lain, bersama-sama',
 );
 
 /** Italian (Italiano)

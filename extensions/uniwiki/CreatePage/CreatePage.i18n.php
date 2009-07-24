@@ -32,7 +32,7 @@ Would you like to edit the existing page?',
 $messages['qqq'] = array(
 	'createpage' => 'Name of special page [[Special:CreatePage]] in [[Special:SpecialPages]] and its title.
 {{Identical|Createpage}}',
-	'createpage-desc' => 'Short description of the extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
+	'createpage-desc' => '{{desc}}',
 	'createpage_submitbutton' => '{{Identical|Submit}}',
 	'createpage-badtitle' => 'Error message displayed in CreatePage special page when is specified an invalid title. See for example [[Special:CreatePage/]]',
 );

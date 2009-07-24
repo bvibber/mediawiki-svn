@@ -182,6 +182,13 @@ $messages['hi'] = array(
 	'didyoumean-desc' => '"समान" शीर्षक होने वाले पन्नोंमें कड़ीयाँ देता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'didyoumean-desc' => 'Nagadugang sang mga link nga may ara pahina nga "parehas" mga titulo',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */

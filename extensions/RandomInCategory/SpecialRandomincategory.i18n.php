@@ -407,7 +407,7 @@ $messages['id'] = array(
 	'randomincategory-toolbox' => 'Halaman sembarang',
 	'randomincategory-nocategory' => 'Kategori $1 tidak ada atau kosong',
 	'randomincategory-label' => 'Kategori:',
-	'randomincategory-submit' => 'Cari',
+	'randomincategory-submit' => 'Tuju ke',
 );
 
 /** Ido (Ido)

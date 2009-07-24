@@ -4640,6 +4640,7 @@ $messages['lb'] = array(
 	'configure-arrayinput-oneperline' => "''(e pro Linn)''",
 	'configure-summary' => "Dës Spezialsäit erlaabt et Iech fir dës Wiki ze configuréieren, kuckt [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuratioun's Astellungen] fir méi Informatiounen.",
 	'configure-btn-save' => 'Confuguratioun späicheren',
+	'configure-db-table-error' => "D'Datebank déi dir uginn hutt huet net déi gebrauchten Tabellen. Benotzt w.e.g. configure.sql an dëser Datebank.",
 	'configure-edit-old' => "'''Passt op''': Dir ännert eng <strong>al</strong> Versioun vun der Configuratioun (sou wéi den $1).",
 	'configure-error' => "D'Configuration konnt net gespäichert ginn",
 	'configure-js-add' => 'Eng nei Entrée derbäisetzen',

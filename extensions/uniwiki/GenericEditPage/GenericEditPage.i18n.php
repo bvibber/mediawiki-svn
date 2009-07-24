@@ -39,7 +39,7 @@ Add some using the tools in the menu bar.',
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'gep-desc' => 'Short description of the Gep extension, shown on [[Special:Version]].',
+	'gep-desc' => '{{desc}}',
 	'gep-categories' => '{{Identical|Categories}}',
 	'gep-addcategorybutton' => '{{Identical|Add}}',
 	'gep-addsectionbutton' => '{{Identical|Add}}',

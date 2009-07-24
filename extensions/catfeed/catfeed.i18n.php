@@ -138,6 +138,14 @@ $messages['hi'] = array(
 पन्ने के अंदर ही अवतरण बन जाते हैं, जो कि विकिन्युज के लिये विशेष उपयुक्त हैं।',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'catfeed-desc' => 'Naga-gamit sang gamay-gamay nga butang halin sa mga bag-o nga gin-islan feeds.
+Himu-an in-pahina bersiyon, labi na gid ang mga mapuslanon para sa Wikinews',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

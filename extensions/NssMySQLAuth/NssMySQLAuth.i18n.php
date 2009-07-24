@@ -30,6 +30,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author EugeneZelenko
  * @author Purodha
  */
@@ -39,6 +40,8 @@ $messages['qqq'] = array(
 	'nss-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
+	'nss-create-account-header' => '{{Identical|Create account}}',
+	'nss-create-account' => '{{Identical|Create account}}',
 );
 
 /** Arabic (العربية)
@@ -433,8 +436,19 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'accountmanager' => 'Pengelola akun',
 	'am-username' => 'nama pengguna',
 	'am-email' => 'surel',
+	'am-active' => 'aktif',
+	'am-updated' => 'Perubahan yang Anda lakukan telah disimpan',
+	'nss-rights' => 'hak',
+	'nss-save-changes' => 'Simpan perubahan',
+	'nss-create-account-header' => 'Buat akun baru',
+	'nss-create-account' => 'Buat akun',
+	'nss-no-mail' => 'Jangan kirimi surel',
+	'nss-welcome-mail' => 'Sebuah akun dengan nama pengguna $1 dan kata sandi $2 telah dibuatkan untuk Anda.',
+	'nss-welcome-mail-subject' => 'Pembuatan akun',
+	'nss-db-error' => 'Terjadi kesalahan saat membaca basis data yang terotentikasi',
 );
 
 /** Japanese (日本語)

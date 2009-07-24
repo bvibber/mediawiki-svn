@@ -116,6 +116,13 @@ $messages['hi'] = array(
 	'htmlets-desc' => '<tt><nowiki><htmlet></nowiki></tt> टैग का इस्तेमाल करके फ़ाइलमें इन-लाइन HTML स्निपेट्ट्स डालने की अनुमति देता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'htmlets-desc' => 'Nagahatag sa imo inline HTML snippets halin sa mga file nga ang ginagamit <tt><nowiki><htmlet></nowiki></tt> tag',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

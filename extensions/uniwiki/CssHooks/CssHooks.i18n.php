@@ -14,11 +14,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'csshooks-desc' => 'Short description of the extension, shown in [[Special:Version]].',
+	'csshooks-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

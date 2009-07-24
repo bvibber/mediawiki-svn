@@ -154,6 +154,13 @@ $messages['hi'] = array(
 	'emailaddressimage-desc' => 'एखाद इमेल एड्रेस चित्र के रूप में दर्शाने के लिये <tt>&lt;email&gt;</tt> टैग देता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'emailaddressimage-desc' => 'Nagadugang <tt>&lt;email&gt;</tt> para makita ang e-mail adres bilang imahe',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

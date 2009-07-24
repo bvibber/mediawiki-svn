@@ -208,6 +208,13 @@ $messages['hi'] = array(
 	'doublewiki-desc' => 'एक लेख और उसका अन्य विकिपर उपलब्ध अनुवाद उसी पन्नेपर दो विभागोंमें दर्शाता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'doublewiki-desc' => 'Nagapakita sang paghina kag iya gin-islan hambalanon halin sa iban nga wiki sa duwa ka kolum sang parehas nga pahina',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

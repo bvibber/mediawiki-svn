@@ -18,10 +18,11 @@ It lists all of the pages in category "$1" as well as all subcategories of categ
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'autocreatecategorypages-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'autocreatecategorypages-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

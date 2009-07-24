@@ -499,6 +499,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -514,6 +515,7 @@ $messages['fi'] = array(
 	'povwatch_added' => 'lisätty',
 	'right-povwatch_admin' => 'ylläpitää muiden käyttäjien tarkkailusivuille lisäämisen käyttöoikeuksia',
 	'right-povwatch_user' => 'lisätä sivuja muiden käyttäjien tarkkailulistoille',
+	'action-povwatch_user' => 'lisätä tätä sivua toisen käyttäjän tarkkailulistalle',
 );
 
 /** French (Français)

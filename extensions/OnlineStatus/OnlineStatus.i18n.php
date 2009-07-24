@@ -27,12 +27,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Bennylin
  * @author EugeneZelenko
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'onlinestatus-desc' => 'Short description of the Onlinestatus extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'onlinestatus-tab' => '{{Identical|Status}}',
+	'onlinestatus-toggles-desc' => '{{Identical|Status}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -499,7 +501,20 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
+	'onlinestatus-desc' => 'Menambahkan preferensi untuk menunjukkan pengguna ini sedang hadir atau tidak di wiki',
+	'onlinestatus-js-anon' => 'Galat: Anda harus masuk log untuk menggunakan fitur ini',
+	'onlinestatus-js-changed' => 'Status Anda telah diganti menjadi "$1"',
+	'onlinestatus-js-error' => 'Tidak dapat mengganti status, nilai "$1" tidak sah',
+	'onlinestatus-subtitle-offline' => 'Pengguna ini sedang luring',
+	'onlinestatus-subtitle-online' => 'Pengguna ini sedang daring',
 	'onlinestatus-tab' => 'Status',
+	'onlinestatus-toggles-desc' => 'Status Anda:',
+	'onlinestatus-toggles-explain' => 'Fitur ini mengijinkan pengguna lain untuk mengetahui status daring atau luring Anda dengan melihat halaman pengguna Anda.',
+	'onlinestatus-toggles-show' => 'Tunjukkan status daring pada halaman pengguna saya',
+	'onlinestatus-toggle-offline' => 'Luring',
+	'onlinestatus-toggle-online' => 'Daring',
+	'onlinestatus-pref-onlineonlogin' => 'Ganti status saya menjadi daring (di dalam jaringan) jika masuk log',
+	'onlinestatus-pref-offlineonlogout' => 'Ganti status saya menjadi luring (di luar jaringan) jika keluar log',
 );
 
 /** Japanese (日本語)

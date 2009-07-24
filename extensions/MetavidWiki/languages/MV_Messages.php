@@ -338,7 +338,7 @@ Jump to stream view: $2',
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'mv-desc' => 'A short description of this extension, being shown on [[Special:Version]]. Do not translate tags. Do not translate link targets.',
+	'mv-desc' => '{{desc}}',
 	'mv_edit_strea_docu' => "\"'''Admin'''\" here means that you are editing the stream as an admin, allowing you to do more than as a regular user.",
 	'mv_user_cant_edit' => '$1 is login link and $2 is a link with {{msg-mw|cancel}} as label.',
 	'mv_label_stream_name' => '{{Identical|Stream name}}',
@@ -359,12 +359,14 @@ $messages['qqq'] = array(
 	'mv_existing_categories' => '{{Identical|Category}}',
 	'mv_search_spoken_by' => '{{Identical|Spoken by}}',
 	'mv_search_categories' => '{{Identical|Categories}}',
+	'mv_search_bills' => "This ''bill'' is a list of titles.",
 	'mv_search_category' => '{{Identical|Category}}',
 	'mv_search_and' => '{{Identical|And}}',
 	'mv_search_stream_name' => '{{Identical|Stream name}}',
 	'mv_search_date_range' => '{{Identical|Date range}}',
 	'mv_stream_name' => '{{Identical|Stream name}}',
 	'mv_date_range' => '{{Identical|Date range}}',
+	'mv_bill_results' => "This ''bill'' is a list of titles.",
 	'mv_spoken_by' => '{{Identical|Spoken by}}',
 	'mv_category' => '{{Identical|Category}}',
 	'mv_edithelpsequence' => "Leave \"'''Help:'''\" unchanged.",
@@ -1609,7 +1611,7 @@ Zur Stream-Ansicht springen: $2',
 	'mv_seconds' => '$1 {{PLURAL:$1|Sekunde|Sekunden}}',
 	'mv_seconds_singular' => '$1 Sekunde',
 	'mv_stream_length' => 'Gesamte Videolänge:',
-	'mv_sequence_timeline' => 'Sequenzen-Zeitleiste',
+	'mv_sequence_timeline' => 'Sequenzen-Zeitleiste:',
 	'mv_edit_sequence_desc_help' => 'Sequenzbeschreibung',
 	'mv_edithelpsequence' => 'Help:Sequenz-Bearbeitung',
 	'mv_seq_summary' => 'Bearbeitungszusammenfassung der Sequenz',
@@ -2736,7 +2738,7 @@ Zue dr Stream-Aasicht gumpe: $2',
 	'mv_seconds' => '$1 {{PLURAL:$1|Sekund|Sekunde}}',
 	'mv_seconds_singular' => '$1 Sekund',
 	'mv_stream_length' => 'Gsamti Videolengi:',
-	'mv_sequence_timeline' => 'Sequänze-Zytlyscht',
+	'mv_sequence_timeline' => 'Sequänze-Zytlyscht:',
 	'mv_edit_sequence_desc_help' => 'Sequänzbschrybig',
 	'mv_edithelpsequence' => 'Help:Sequänz-Bearbeitig',
 	'mv_seq_summary' => 'Bearbeitigszämmefassig vu dr Sequänz',
@@ -4119,9 +4121,9 @@ $messages['ksh'] = array(
 	'mv_missing_stream' => 'Dä Dahteshtrohm „$1“ fäählt.',
 	'specialpages-group-mv_group' => 'MetaVidWiki Söndersigge',
 	'mv_warning_wiki' => '<i>Opjepaß: <i lang="en">MetaVid</i> Viddejo Protokolle [[Help:FAQ#How_accurate_is_the_information.3F|künne unjenou sin]], donn uns hellfe, [[Help:Participation#Improving_Archive_Accuracy|noch e besser Aschiif opzeboue]]</i>',
-	'mv_ogg_low_quality' => ' Striimbaa övver et Nez - <i lang="en">Ogg Theora</i> 300&nbsp;Killobits&nbsp;de&nbsp;Sekund',
+	'mv_ogg_low_quality' => 'Dahteshtrohm övver et Nez - <i lang="en">Ogg Theora</i> 300&nbsp;Killobits&nbsp;de&nbsp;Sekund',
 	'mv_ogg_high_quality' => 'Huh Qualiteit - <i lang="en">Ogg Theora</i> 900&nbsp;Killobits&nbsp;de&nbsp;Sekund',
-	'mv_flash_low_quality' => ' Striimbaa övver et Nez - <i lang="en">Flash</i> Viddejo',
+	'mv_flash_low_quality' => 'Dahteshtrohm övver et Nez - <i lang="en">Flash</i> Viddejo',
 	'mv_archive_org_mp4' => 'Ene em <i lang="en">Archive.org-MP4</i> enjepackte H.264-Schtroom',
 	'mv_archive_org_link' => 'Lengks op ojinaal MPEG2-Dateije vun Archive.org',
 	'mv_error_stream_missing' => '<span class="error">Fähler: För dä Shtroom jidd_et kein Viddejo_Dattei.</span><br />Beß esu joot, un donn dat eenem [[{{MediaWiki:Grouppage-sysop}}|Wiki_Kööbeß]] verzälle.',
@@ -4194,15 +4196,15 @@ Metta_Daate fott.
 	'mv_tool_search' => 'Sööke',
 	'mv_tool_search_title' => 'Ennerhallef vun däm Dahteshtrohm söhke',
 	'mv_search_transcripts_for' => 'Söhk en de Viddejos noh $1 (donn dä Kaßte verschteische)',
-	'mv_tool_navigate_title' => '
-Navigate
-dä jannze Dahteshtrohm',
+	'mv_tool_navigate' => 'Eröm jonn',
+	'mv_tool_navigate_title' => 'En däm jannze Dahteshtrohm eröm jonn',
 	'mv_tool_export' => 'Expotteere',
 	'mv_tool_export_title' => 'Dahteshtrohm-Mettadahte expoteere',
 	'mv_tool_embed' => 'Enbenge',
 	'mv_tool_embed_title' => '
-options for the current requested segment
-Enbenge',
+Enschtellunge för et jraad nohjefroochte
+segment
+enbenge',
 	'mv_tool_overlay' => '
 Schabloone 
 overlays',
@@ -4211,12 +4213,8 @@ overlays',
 	'mv_results_found' => 'Jefonge Viddejo-Daate <b>$1</b> beß <b>$2</b> vun <b>$3</b>',
 	'mv_tool_mang_layers' => 'Nivohs verwallde',
 	'mv_update_layers' => 'Novohs op ene neue Shtand bränge',
-	'mv_watch_clip' => '
-clip
-beloore',
-	'mv_close_clip' => '
-clip
-zoh maache',
+	'mv_watch_clip' => 'Ußschnet beloore',
+	'mv_close_clip' => 'Ußschnet zoh maache',
 	'mv_improve_transcript' => '
 transcrip
 verbessere',
@@ -4268,6 +4266,7 @@ Jangk op di Aansech als Dahteshtrohm: $2',
 	'mv_play' => 'Afshpelle',
 	'mv_edit' => 'Ändere',
 	'mv_history' => 'Versione',
+	'mv_history_title' => 'Verjangeheit vum Beärbeide un Viddejo-Zerääschmaache',
 	'mv_edit_title' => 'Tex ändere',
 	'mv_edit_adjust_title' => 'Tex un Viddejo-Aanpassung ändere',
 	'mv_remove' => 'fott nämme',
@@ -4294,7 +4293,7 @@ Jangk op di Aansech als Dahteshtrohm: $2',
 	'mv_viewprevnext' => 'Zeish ($1) ($2)',
 	'mediasearch' => 'Noh Meedije söhke',
 	'mv_search_sel_t' => 'Wi sull jesöhk wähde?',
-	'mv_do_media_search' => 'Donn de <i lang="en">MetaVid</i> Meedije Söhke noh „$1“',
+	'mv_do_media_search' => 'Donn en de <i lang="en">MetaVid</i> Meedije Söhke noh „$1“',
 	'mv_results_for' => 'Wat för „$1“ erus kohm',
 	'mv_video_search' => 'Viddejo söhke',
 	'mv_page_search' => 'Donn en de Wiki_Sigge noh „$1“ söhke',
@@ -4324,15 +4323,13 @@ Jangk op di Aansech als Dahteshtrohm: $2',
 	'mv_most_recent' => 'De Neuste',
 	'mv_most_viewed' => 'Am miehßte aanjeloort',
 	'mv_spoken_by' => 'jeshproche vum',
-	'mv_speech_by' => 'En Redd vum',
+	'mv_speech_by' => 'Jeschwadt vum',
 	'mv_category' => 'Saachjrupp',
 	'mv_search_no_results' => 'Kei Meedije jefonge',
 	'mv_media_matches' => 'Jefonge Meedije',
 	'mv_remove_filter' => 'Felter fottnämme',
 	'mv_advaced_search' => 'Opwändesch noh Medije Söhke',
-	'mv_expand_play' => '
-Expand 
-un {{int:Mv play inline}}',
+	'mv_expand_play' => 'Expandeere un {{int:Mv play inline}}',
 	'mv_play_inline' => '<i lang="en">inline</i> afshpelle',
 	'mv_view_in_stream_interface' => 'Mem Engerfäiß för Daateshtröhm beloore',
 	'mv_view_wiki_page' => 'Sigg em Wiki aanloore',
@@ -4352,17 +4349,12 @@ Resource
 	'mv_resource_locator' => '
 Resource 
 fenge',
-	'mv_unknown_clipboard_action' => '
-Unbikannte 
-Axjuhn
-för der Zweschespeicher.',
+	'mv_unknown_clipboard_action' => 'En unbikannte Akßjuhn för der Zweschespeicher.',
 	'mv_media_search' => 'Meedijje Söhke',
 	'mv_editor_options' => 'Enstellunge för et Beärbeide',
 	'mv_editor_mode' => 'Aat vum Beärbeide',
-	'mv_simple_editor_desc' => '
-Eijfach Beärbeide (iMovie style)',
-	'mv_advanced_editor_desc' => '
-Beärbeide met alle Schikaane (Final Cut style)',
+	'mv_simple_editor_desc' => 'Eijfach Beärbeide (em Shtil vun <i lang="en">iMovie</i>)',
+	'mv_advanced_editor_desc' => 'Beärbeide met alle Schikaane (em Shtil vun <i lang="en">Final Cut</i>)',
 	'mv_transitions' => 'Övverjäng',
 	'mv_save_sequence' => 'Donn de 
 Sequenz 
@@ -4371,20 +4363,11 @@ speichere',
 Donn de aktoälle 
 sequence
 speishere',
-	'mv_sequence_add' => '
-Donn
-clips 
-dobei',
+	'mv_sequence_add' => 'Donn Ußschnedde dobei',
 	'mv_sequence_add_manual' => 'Övver der Name dobei donn',
-	'mv_sequence_add_manual_desc' => '
-Donn
-clips
-övver dä Dahteshtrohm-Name dobei',
+	'mv_sequence_add_manual_desc' => 'Donn Ußschnedde övver dä Dahteshtrohm-Name dobei',
 	'mv_sequence_add_search' => 'Dobei donn övver et Söhke',
-	'mv_sequence_add_search_desc' => '
-Donn
-clips
-övver et Medije-Söke derbei',
+	'mv_sequence_add_search_desc' => 'Donn Ußschnedde övver et Medije-Söke derbei',
 	'mv_seq_add_end' => 'Aam Engk vun en 
 <i lang="en">sequence</i>
 dobei donn',
@@ -4401,7 +4384,8 @@ dobei donn',
 	'mv_seconds_singular' => '$1 Sekunde',
 	'mv_stream_length' => 'Dämm Viddejo sing jesampte Duuer:',
 	'mv_sequence_timeline' => '
-Sequence timeline:',
+Sequence 
+Zick-Reih:',
 	'mv_edit_sequence_desc_help' => '
 Sequence 
 beschrevve',
@@ -4409,20 +4393,13 @@ beschrevve',
 Sequence
 _Beärbeide',
 	'mv_seq_summary' => 'Koot Zosammejefass',
-	'mv_add_clip_by_name' => '
-Donn ene
-clip
-övver singe Name derbei',
+	'mv_add_clip_by_name' => 'Donn ene Ußschnedde övver singe Name derbei',
 	'mv_stream_resource_export' => '
 Dahteshtrohm
-
 resources
-
 expotteere',
 	'mv_export_cmml' => '<code lang="en">CMML</code> äxpoteere',
-	'mv_navigate_stream' => '
-Em janze Dahteshtrohm
-navigate',
+	'mv_navigate_stream' => 'Em janze Dahteshtrohm eröm jonn',
 	'mv_stream_overview' => 'Dahteshtrohm-Övverseesh',
 	'mv_edit_time' => 'De Zick ändere',
 	'mv_embed_options' => 'Ußwahle för enzebenge',
@@ -4432,7 +4409,7 @@ Wärkzüsh',
 	'mv_stream_tool_heading' => 'Dahteshtrohm-Wärkzüsh',
 	'mv_tool_missing' => 'dat jewönschte Werkzüch jidd et jaa nit',
 	'mv_bad_tool_request' => 'Dat es en kapodde Aanjab för enem Werkzüch singe Nahme. Dä Enndraach sullt esu sußsinn: <code>Wärkzüch-Nahme|Nahme-zom-Aanzeije</code>',
-	'mv_prev_speech' => 'De vörijje Redd: $1',
+	'mv_prev_speech' => 'Der vörijje Kall: $1',
 	'mv_next_speech' => 'De nähkste Redd: $1',
 	'mv_prev_bill' => 'De vörijje Projrammleß: $1',
 	'mv_next_bill' => 'De nääkßte Projrammleß: $1',
@@ -4459,6 +4436,7 @@ $messages['ku-latn'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Purodha
  * @author Robby
  * @author לערי ריינהארט
  */

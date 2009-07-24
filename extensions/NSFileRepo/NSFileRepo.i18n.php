@@ -15,10 +15,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Raymond
  */
 $messages['qqq'] = array(
-	'nsfilerepo-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links or tag names.',
+	'nsfilerepo-desc' => '{{desc}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

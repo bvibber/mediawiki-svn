@@ -149,6 +149,13 @@ $messages['hi'] = array(
 	'gnuplot-desc' => 'Gnuplot में <code><nowiki><gnuplot></nowiki></code> टैग बढायें',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'gnuplot-desc' => 'Nagadugang ang tag <code><nowiki><gnuplot></nowiki></code> para magamit ang Gnuplot',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

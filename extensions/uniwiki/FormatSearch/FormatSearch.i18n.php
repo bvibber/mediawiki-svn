@@ -14,11 +14,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'formatsearch-desc' => 'Short description of the extension, shown in [[Special:Version]].',
+	'formatsearch-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

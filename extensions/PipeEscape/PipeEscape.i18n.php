@@ -27,12 +27,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'pipeescape-desc' => 'Short description of the [[:mw:Extension:Pipe_Escape|Pipe_Escape]] extension.
-Shown in [[Special:Version]].
-Do not translate link targets, or function names.',
+	'pipeescape-desc' => '{{desc|name=[[:mw:Extension:Pipe_Escape|Pipe_Escape]]}}',
 );
 
 /** Arabic (العربية)

@@ -416,6 +416,7 @@ Postavite varijablu $wgLocalTmpDirectory kao direktorijum za pisanje.',
 	'webstore_temp_lock' => 'Greška pri zaključavanju privremene datoteke "$1".',
 	'webstore_no_file' => 'Nijedna datoteka nije postavljena.',
 	'webstore_invalid_zone' => 'Nevaljana zona "$1".',
+	'webstore_curl' => 'Greška iz cURL: $1',
 	'webstore_404' => 'Datoteka nije nađena.',
 	'webstore_php_warning' => 'PHP upozorenje: $1',
 	'webstore_metadata_not_found' => 'Datoteka nije nađena: $1',
@@ -423,6 +424,9 @@ Postavite varijablu $wgLocalTmpDirectory kao direktorijum za pisanje.',
 
 $1',
 	'webstore_no_response' => 'Nema odgovora od servera',
+	'webstore_backend_error' => 'Greška sa servera skladišta:
+
+$1',
 	'webstore_php_error' => 'PHP greške koje su se desile:',
 );
 

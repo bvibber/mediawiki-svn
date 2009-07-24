@@ -177,6 +177,13 @@ $messages['he'] = array(
 	'antibot-desc' => 'מערכת פשוטה לבדיקת בוטים של ספאם',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'antibot-desc' => 'Simple nga framework para sa spambot naga usisa kag gahatag payloads',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

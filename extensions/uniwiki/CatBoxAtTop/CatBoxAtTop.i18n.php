@@ -16,11 +16,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'catboxattop-desc' => 'Short description of the extension, shown in [[Special:Version]].',
+	'catboxattop-desc' => '{{desc}}',
 	'catboxattop-categories' => '{{Identical|Categories}}',
 );
 

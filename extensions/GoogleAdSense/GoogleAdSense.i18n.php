@@ -157,6 +157,13 @@ $messages['he'] = array(
 	'googleadsense-desc' => 'הוספת [http://www.google.com/adsense Google AdSense] לסרגל הצד',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'googleadsense-desc' => 'Nagadugang [http://www.google.com/adsense Google AdSense] diri sa may sidebar',
+);
+
 /** Croatian (Hrvatski)
  * @author Suradnik13
  */

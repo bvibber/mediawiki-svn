@@ -12,10 +12,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Raymond
  */
 $messages['qqq'] = array(
-	'clientside-desc' => 'Short description of the extension. Shown in [[Special:Version]].',
+	'clientside-desc' => '{{desc}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -93,6 +94,13 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'clientside-desc' => 'הוספת פונקציות ליצירת קוד בפורמטים הפועלים בצד הלקוח, כגון שפת HTML, שפת CSS ושפת JavaScript',
+);
+
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'clientside-desc' => 'Nagahatag panksiyon para sa pagbuhat koda sa mga kliyente-side nga na na-format parehas sang HTML, CSS kag JavaScript',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

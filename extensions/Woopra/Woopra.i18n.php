@@ -153,6 +153,13 @@ $messages['he'] = array(
 	'woopra-desc' => 'אפשרות ל[http://www.woopra.com/ תוכנת המעקב החי Woopra] לעבוד עבור התקנת מדיה־ויקי שלכם',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'woopra-desc' => 'Gapasugot para sa [http://www.woopra.com/ Woopra Live Tracking Software] para obrahon sa imo MediaWiki nga installation',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

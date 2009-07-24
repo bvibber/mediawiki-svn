@@ -163,6 +163,13 @@ $messages['hi'] = array(
 	'editown-desc' => 'जिन सदस्योंको Editall अधिकार नहीं है वे सिर्फ खुद बनाये पन्ने ही संपादित कर सकतें हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'editown-desc' => 'Mga user nga wala sang editall nga karapatan ay maka ilis lamang mga pahina nga ila lang mismo gin-obra',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

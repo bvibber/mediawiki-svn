@@ -186,6 +186,13 @@ $messages['hi'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> टैग, एक चित्र के रुप में दर्शाता हैं',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'fixedimage-desc' => 'Nagadugang <tt><nowiki><fundraising></nowiki></tt> tag bilang imahe',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

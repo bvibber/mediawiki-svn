@@ -147,6 +147,13 @@ $messages['arc'] = array(
 	'optin-survey-answer-os-other' => '',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'optin-title-optedout' => 'تجريب بيتا',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1709,16 +1716,17 @@ Via zoekprofielen is het vinden van verschillende soorten inhoud eenvoudiger, te
  * @author Harald Khan
  */
 $messages['nn'] = array(
-	'optin-needlogin' => 'Du må [$1 logga inn] for å ta i bruk "Usability Initiative" sine utvidingar.',
-	'optin-survey-question-whyoptout' => 'Kvifor vel du å ikkje nytta dette oppsettet?',
-	'optin-survey-answer-whyoptout-hard' => 'Det var for vanskeleg å redigera ei side.',
+	'optin-needlogin' => 'Du må [$1 logga inn] for å prøva ut Beta.',
+	'optin-survey-no' => 'Nei',
+	'optin-survey-question-whyoptout' => 'Kvifor går du ut av Beta! (Ver venleg å vél alle aktuelle grunnar.)',
+	'optin-survey-answer-whyoptout-hard' => 'Det var for vanskeleg å bruka.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Det fungerte ikkje på rett vis.',
 	'optin-survey-answer-whyoptout-other' => 'Anna årsak:',
 	'optin-survey-question-feedback' => 'Ver venleg og send ei tilbakemelding:',
 	'optin-survey-question-browser' => 'Kva for ein nettlesar nyttar du?',
 	'optin-survey-answer-browser-other' => 'Annan nettlesar:',
 	'optin-survey-question-os' => 'Kva for operativsystem nyttar du?',
-	'optin-survey-answer-os-other' => 'Anna:',
+	'optin-survey-answer-os-other' => 'Anna operativsystem:',
 	'optin-survey-question-res' => 'Kva er oppløysinga på skjermen din?',
 );
 

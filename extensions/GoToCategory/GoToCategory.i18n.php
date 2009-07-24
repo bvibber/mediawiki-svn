@@ -108,6 +108,13 @@ $messages['he'] = array(
 	'gotocategory-desc' => 'בדיקת מונחי החיפוש מול מרחב הקטגוריות בעת שימוש באפשרות הישירה "לדף"',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'gotocategory-desc' => "Naga usisa sang mga termino batuk sa Kategorya: ngalanespsayo para sa Lakat 'laktod sa pahina' pagi-huan",
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

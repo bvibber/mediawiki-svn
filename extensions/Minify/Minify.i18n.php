@@ -94,6 +94,13 @@ $messages['he'] = array(
 	'minify-desc' => 'כיווץ פלט CSS ו־JavaScript ב־action=raw',
 );
 
+/** Hiligaynon (Ilonggo)
+ * @author Tagimata
+ */
+$messages['hil'] = array(
+	'minify-desc' => 'Ginapagamay CSS kaga JavaScript resulta sang output halin sa aksiyon=hilaw',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
