@@ -1,6 +1,5 @@
 //javascript for all pages (adds auto_complete for search, and our linkback logo, and re-writes mvd links)
 _global = this;
-mwAddOnloadHook(mv_setup_allpage);
 var mv_setup_allpage_flag=false;
 if( typeof wgServer!='undefined' && typeof  wgScript != 'undefined'){
     var base_roe_url = wgServer + wgScript + '?title=Special:MvExportStream&feed_format=roe&stream_name=';
@@ -15,7 +14,7 @@ if(typeof wgScriptPath=='undefined')
 	var wgScriptPath = '/w';		
 
 var gMvd={};
-function mv_setup_allpage(){
+js2AddOnloadHook(function(){
 	js_log("mv embed done loading now setup 'all page'");		
 	//make sure we have jQuery and any base required libs:
 	mvJsLoader.jQueryCheck(function(){ 		
@@ -33,7 +32,7 @@ function mv_setup_allpage(){
 			}
 		});
 	});
-}
+});
 function mv_do_sequence_edit_swap(mode){
     if(mode=='text'){
         $j('#seq_edit_container,#swich_seq_text').hide();        

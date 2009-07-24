@@ -49,9 +49,9 @@ gMsg['mv_open_edit'] ='you can only edit one at a time, please save or cancel ot
 
 //@@todo context sensitive init scripts
 //init the interface on page load
-mwAddOnloadHook(mv_load_interface_libs);
+js2AddOnloadHook(mv_load_interface_libs);
 
-function mv_load_interface_libs(){
+js2AddOnloadHook( function(){
 	js_log('f:mv_load_interface_libs');
 	//make sure the mv_embed stuff is loaded 
 	mvJsLoader.jQueryCheck(function(){
@@ -70,7 +70,7 @@ function mv_load_interface_libs(){
   			mv_stream_interface.init();
 	  	});
 	});
-}
+});
 /*
  * init_interface (on DOM ready)
  *
