@@ -161,9 +161,7 @@ EOT
 		global $wgRequest, $psLogEveryPlayRequestPerUser;
 		// do the insert into the userPlayerStats table:
 		$dbr =& wfGetDB( DB_READ );	
-		if ( !isset( $wgRequest->data['cs'] ) || !is_array( $wgRequest->data['cs'] ) ) {
-			$wgRequest->data['cs'] = array();
-		}
+		$cs = $wgRequest->getArray( 'cs', array() );
 		// set up insert array:
 		$insAry = array(
 				'user_hash'			=> $wgRequest->getVal( 'uh' ),
@@ -174,19 +172,13 @@ EOT
 				//'b_os'				=> $wgRequest->getVal( 'b_os' ),
 				'flash_version'		=> $wgRequest->getVal( 'fv' ),
 				'java_version'		=> $wgRequest->getVal( 'jv' ),
-				'html5_video_enabled' => ( in_array( 'videoElement',  $wgRequest->data['cs'] ) ) ? true:false,
-				'java_enabled'		=> ( in_array( 'cortado', $wgRequest->data['cs'] ) ) ? true:false,
-				'totem_enabled'		=> ( in_array( 'totem', $wgRequest->data['cs'] ) ) ? true:false,
-				'flash_enabled'		=> ( in_array( 'flash', $wgRequest->data['cs'] ) ) ? true:false,
-				'quicktime_enabled'	=> ( in_array( array( 'quicktime-mozilla', 'quicktime-activex' ),
-		$wgRequest->data['cs'] )
-		) ? true:false,
-				'vlc_enabled'		=> ( in_array( array( 'vlc-mozilla', 'vlc-activex' ),
-		$wgRequest->data['cs'] )
-		) ? true:false,
-				'mplayer_enabled'	=> ( in_array( 'mplayerplug-in',
-		$wgRequest->data['cs'] )
-		) ? true:false
+				'html5_video_enabled' => in_array( 'videoElement', $cs ),
+				'java_enabled'		=> in_array( 'cortado', $cs ),
+				'totem_enabled'		=> in_array( 'totem', $cs ),
+				'flash_enabled'		=> in_array( 'flash', $cs ),
+				'quicktime_enabled'	=> in_array( array( 'quicktime-mozilla', 'quicktime-activex' ), $cs ),
+				'vlc_enabled'		=> in_array( array( 'vlc-mozilla', 'vlc-activex' ), $cs ),
+				'mplayer_enabled'	=> in_array( 'mplayerplug-in', $cs ),
 		);
 		// check for user hash (don't collect multiple times for the same user)
 		// $user_hash =
