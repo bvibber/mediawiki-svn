@@ -103,17 +103,14 @@ class CooperationStatistics extends IncludableSpecialPage {
 	}
 
 	private function getNbOfPages( $nb, $relation ) {
-		if ( $relation == '<=' ) $sql = self::getSQLlower( $nb );
-		if ( $relation == '=' ) $sql = self::getSQL( $nb );
-		if ( $relation == '>=' ) $sql = self::getSQLupper( $nb );
-
+		$sql = self::getSQL( $nb, $relation );
 		$db = wfGetDB( DB_SLAVE );
 		$res = $db->query( $sql, __METHOD__ );
 
 		return $db->numRows( $res );
 	}
 
-	private function getSQL( $nb_of_revuser ) {
+	private function getSQL( $nb_of_revuser, $symbol ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		list( $revision, $page ) = $dbr->tableNamesN( 'revision', 'page' );
 
@@ -126,41 +123,7 @@ class CooperationStatistics extends IncludableSpecialPage {
 			JOIN $page ON page_id = rev_page
 			WHERE page_is_redirect=0 AND page_namespace = " . NS_MAIN . "
 			GROUP BY page_namespace, page_title
-			HAVING COUNT(distinct rev_user)=$nb_of_revuser
-			";
-	}
-
-	private function getSQLupper( $nb_of_revuser ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $revision, $page ) = $dbr->tableNamesN( 'revision', 'page' );
-
-		return
-			"
-			SELECT
-				page_title as title,
-				COUNT(distinct rev_user) as value
-			FROM $revision
-			JOIN $page ON page_id = rev_page
-			WHERE page_is_redirect=0 AND page_namespace = " . NS_MAIN . "
-			GROUP BY page_namespace, page_title
-			HAVING COUNT(distinct rev_user)>=$nb_of_revuser
-			";
-	}
-
-	private function getSQLlower( $nb_of_revuser ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $revision, $page ) = $dbr->tableNamesN( 'revision', 'page' );
-
-		return
-			"
-			SELECT
-				page_title as title,
-				COUNT(distinct rev_user) as value
-			FROM $revision
-			JOIN $page ON page_id = rev_page
-			WHERE page_is_redirect=0 AND page_namespace = " . NS_MAIN . "
-			GROUP BY page_namespace, page_title
-			HAVING COUNT(distinct rev_user)<=$nb_of_revuser
+			HAVING COUNT(distinct rev_user)$symbol$nb_of_revuser
 			";
 	}
 }
