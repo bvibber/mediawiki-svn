@@ -179,7 +179,7 @@ function UW_GenericEditPage_extractCategoriesIntoBox( &$text ) {
 
 	/* add any categories that may have been passed with the
 	 * GET request as if they started out on the page */
-	$data = $wgRequest->data;
+	$data = $wgRequest->getValues();
 	foreach ( $data as $key => $value ) {
 		if ( $key == 'category' ) {
 			$category = substr ( $value, 9 ); // value = category-categoryname
@@ -699,7 +699,7 @@ function UW_GenericEditPage_editPageCss ( &$out ) {
 
 function UW_GenericEditPage_combineBeforeSave ( &$editpage_Obj ) {
 	global $wgRequest, $wgSwitchMode;
-	$data = $wgRequest->data;
+	$data = $wgRequest->getValues();
 
 	/* if this request was triggered by the user
 	 * pressing the "switch mode" button, then
