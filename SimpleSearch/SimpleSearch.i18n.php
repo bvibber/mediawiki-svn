@@ -24,6 +24,14 @@ $messages['qqq'] = array(
 	'simplesearch-search' => '{{Identical/Search}}',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'simplesearch' => 'كلام بسيط',
+	'simplesearch-search' => 'تدوير',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
