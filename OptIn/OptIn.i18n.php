@@ -40,7 +40,7 @@ You can try it out again at anytime by clicking the "{{int:optin-try}}" link on 
 	'optin-submit-feedback' => 'Give feedback',
 	'optin-try' => 'Try Beta',
 	'optin-leave' => 'Leave Beta',
-	'optin-feedback' => 'Give feedback',
+	'optin-feedback' => 'Beta feedback',
 	'optin-survey-yes' => 'Yes',
 	'optin-survey-no' => 'No',
 	'optin-survey-intro' => "Thank you for trying the Beta.
